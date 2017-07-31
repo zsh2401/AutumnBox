@@ -1,0 +1,14 @@
+E:\VSProject\CSharp\AutumnBox\bin\AutumnBox.exe.config
+E:\VSProject\CSharp\AutumnBox\bin\AutumnBox.exe
+E:\VSProject\CSharp\AutumnBox\bin\AutumnBox.pdb
+E:\VSProject\CSharp\AutumnBox\AutumnBox\obj\Release\AutumnBox.csprojResolveAssemblyReference.cache
+E:\VSProject\CSharp\AutumnBox\AutumnBox\obj\Release\MainWindow.g.cs
+E:\VSProject\CSharp\AutumnBox\AutumnBox\obj\Release\App.g.cs
+E:\VSProject\CSharp\AutumnBox\AutumnBox\obj\Release\AutumnBox_MarkupCompile.cache
+E:\VSProject\CSharp\AutumnBox\AutumnBox\obj\Release\AutumnBox_MarkupCompile.lref
+E:\VSProject\CSharp\AutumnBox\AutumnBox\obj\Release\MainWindow.baml
+E:\VSProject\CSharp\AutumnBox\AutumnBox\obj\Release\AutumnBox.g.resources
+E:\VSProject\CSharp\AutumnBox\AutumnBox\obj\Release\AutumnBox.Properties.Resources.resources
+E:\VSProject\CSharp\AutumnBox\AutumnBox\obj\Release\AutumnBox.csproj.GenerateResource.Cache
+E:\VSProject\CSharp\AutumnBox\AutumnBox\obj\Release\AutumnBox.exe
+E:\VSProject\CSharp\AutumnBox\AutumnBox\obj\Release\AutumnBox.pdb

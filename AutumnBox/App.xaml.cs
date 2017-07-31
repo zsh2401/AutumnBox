@@ -13,5 +13,6 @@ namespace AutumnBox
     /// </summary>
     public partial class App : Application
     {
+
     }
 }

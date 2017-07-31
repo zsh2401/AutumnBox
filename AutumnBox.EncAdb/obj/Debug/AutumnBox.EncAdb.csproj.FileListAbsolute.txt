@@ -1,0 +1,5 @@
+E:\VSProject\CSharp\AutumnBox\AutumnBox.EncAdb\bin\Debug\AutumnBox.EncAdb.dll
+E:\VSProject\CSharp\AutumnBox\AutumnBox.EncAdb\bin\Debug\AutumnBox.EncAdb.pdb
+E:\VSProject\CSharp\AutumnBox\AutumnBox.EncAdb\obj\Debug\AutumnBox.EncAdb.csprojResolveAssemblyReference.cache
+E:\VSProject\CSharp\AutumnBox\AutumnBox.EncAdb\obj\Debug\AutumnBox.EncAdb.dll
+E:\VSProject\CSharp\AutumnBox\AutumnBox.EncAdb\obj\Debug\AutumnBox.EncAdb.pdb
