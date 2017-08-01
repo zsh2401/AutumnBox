@@ -66,6 +66,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DyanamicIcons.resx</DependentUpon>
     </Compile>
+    <Compile Include="UI\Main.cs" />
+    <Compile Include="UI\Main.EventHandlers.cs" />
     <Compile Include="UI\Main.xaml.cs">
       <DependentUpon>Main.xaml</DependentUpon>
     </Compile>
@@ -134,7 +136,12 @@
   <ItemGroup>
     <Resource Include="Images\DynamicIcons\close_selected.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\AutumnBox.Basic\AutumnBox.Basic.csproj">
+      <Project>{84044fb2-bd38-4283-8065-b639270ece0f}</Project>
+      <Name>AutumnBox.Basic</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\DynamicIcons\min_normal.png" />
     <Resource Include="Images\DynamicIcons\min_selected.png" />

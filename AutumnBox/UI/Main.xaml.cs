@@ -1,9 +1,11 @@
-﻿using AutumnBox.Images.DynamicIcons;
+﻿using AutumnBox.Basic;
+using AutumnBox.Basic.Devices;
+using AutumnBox.Images.DynamicIcons;
 using System;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
 
 namespace AutumnBox
 {
@@ -12,24 +14,20 @@ namespace AutumnBox
     /// </summary>
     public partial class Window1 : Window
     {
-        private string _langname = "zh-cn";
+        Core core;
         public Window1()
         {
             InitializeComponent();
+            core = new Core();
+            InitEvents();
+            core.dl.Start();
+            ChangeButtonByStatus(DeviceStatus.NO_DEVICE);
+            this.Closed += new EventHandler((obj, e) =>
+            {
+                core.dl.Stop();
+            });
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            if (_langname == "zh-cn")
-            {
-                Application.Current.Resources.Source = new Uri(@"Lang\en-us.xaml", UriKind.Relative);
-                _langname = "en-us";
-            }
-            else {
-                Application.Current.Resources.Source = new Uri(@"Lang\zh-cn.xaml", UriKind.Relative);
-                _langname = "zh-cn";
-            }
-        }
 
         private void CustomTitleBar_MouseMove(object sender, MouseEventArgs e)
         {
@@ -88,9 +86,19 @@ namespace AutumnBox
             };
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void DevicesListBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
-
+            if (this.DevicesListBox.SelectedIndex != -1)
+            {
+                DeviceInfo info = core.GetDeviceInfo(this.DevicesListBox.SelectedItem.ToString());
+                this.AndroidVersionLabel.Content = info.androidVersion;
+                this.CodeLabel.Content = info.code;
+                this.ModelLabel.Content = Regex.Replace(info.brand, @"[\r\n]", "") + " " + info.model;
+            }
+            else {
+                ChangeButtonByStatus(DeviceStatus.NO_DEVICE);
+            }
         }
+
     }
 }

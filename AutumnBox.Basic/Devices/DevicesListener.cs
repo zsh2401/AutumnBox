@@ -23,6 +23,9 @@ namespace AutumnBox.Basic.Devices
             this.at = at;
             this.ft = ft;
         }
+        public void Stop() {
+            devicesListenerThread.Abort();
+        }
         public void Start() {
             devicesListenerThread = new Thread(this.Listener);
             devicesListenerThread.Name = "DevicesListener";
@@ -43,10 +46,6 @@ namespace AutumnBox.Basic.Devices
                     Thread.Sleep(1000);
                 }
             }
-        }
-        ~DevicesListener() {
-            devicesListenerThread.Abort();
-            Log.d("DevicesListener","Ok");
         }
     }
 }

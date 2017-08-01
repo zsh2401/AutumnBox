@@ -55,16 +55,16 @@
             <Image HorizontalAlignment="Left" Height="19" Margin="13,7,0,0" VerticalAlignment="Top" Width="19" Source="/AutumnBox;component/Images/Icons/title_icon.png" Stretch="Fill" RenderTransformOrigin="0.579,-1.368"/>
         </Grid>
         <Grid HorizontalAlignment="Left" Height="200" Margin="10,51,0,0" VerticalAlignment="Top" Width="864" Background="#33040000">
-            <ListBox x:Name="DevicesListBox" HorizontalAlignment="Left" Height="181" Margin="615,9,0,0" VerticalAlignment="Top" Width="240"/>
+            <ListBox x:Name="DevicesListBox" HorizontalAlignment="Left" Height="181" Margin="615,9,0,0" VerticalAlignment="Top" Width="240" SelectionChanged="DevicesListBox_SelectionChanged"/>
             <Image x:Name="DeviceStatusImage" HorizontalAlignment="Left" Height="51" Margin="60,32,0,0" VerticalAlignment="Top" Width="42" Source="/AutumnBox;component/Images/DynamicIcons/no_selected.png"/>
             <Label x:Name="DeviceStatusLabel" Content="{DynamicResource PleaseSelectedADevice}" HorizontalAlignment="Left" Margin="10,117,0,0" VerticalAlignment="Top" Height="43" Width="153" Foreground="#FFF9F9F9" FontSize="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Microsoft YaHei UI Light"/>
             <Grid HorizontalAlignment="Left" Height="194" Margin="202,10,0,-3" VerticalAlignment="Top" Width="413">
                 <Label Content="{DynamicResource ResourceKey=AndroidVersion}" HorizontalAlignment="Left" Margin="10,8,0,0" VerticalAlignment="Top" Height="42" Width="110" Foreground="WhiteSmoke" FontFamily="Microsoft YaHei UI Light" FontSize="16"/>
                 <Label Content="{DynamicResource ResourceKey=Model}" HorizontalAlignment="Left" Margin="10,62,0,0" VerticalAlignment="Top" Height="42" Width="110" Foreground="WhiteSmoke" FontFamily="Microsoft YaHei UI Light" FontSize="16"/>
                 <Label Content="{DynamicResource ResourceKey=Code}" HorizontalAlignment="Left" Margin="10,124,0,0" VerticalAlignment="Top" Height="42" Width="110" Foreground="WhiteSmoke" FontFamily="Microsoft YaHei UI Light" FontSize="16"/>
-                <Label x:Name="AndroidVersionLabel" Content="{DynamicResource ResourceKey=PleaseSelectedADevice}" HorizontalAlignment="Left" Margin="142,8,-122,0" VerticalAlignment="Top" Height="42" Width="258" Foreground="WhiteSmoke" FontFamily="Microsoft YaHei UI Light" FontSize="16"/>
-                <Label x:Name="ModelLabel" Content="{DynamicResource ResourceKey=PleaseSelectedADevice}" HorizontalAlignment="Left" Margin="142,62,-122,0" VerticalAlignment="Top" Height="42" Width="258" Foreground="WhiteSmoke" FontFamily="Microsoft YaHei UI Light" FontSize="16"/>
-                <Label x:Name="CodeLabel" Content="{DynamicResource ResourceKey=PleaseSelectedADevice}" HorizontalAlignment="Left" Margin="142,124,-122,0" VerticalAlignment="Top" Height="42" Width="258" Foreground="WhiteSmoke" FontFamily="Microsoft YaHei UI Light" FontSize="16"/>
+                <Label x:Name="AndroidVersionLabel" Content="{DynamicResource ResourceKey=PleaseSelectedADevice}" HorizontalAlignment="Left" Margin="96,8,0,0" VerticalAlignment="Top" Height="42" Width="304" Foreground="WhiteSmoke" FontFamily="Microsoft JhengHei" FontSize="14"/>
+                <Label x:Name="ModelLabel" Content="{DynamicResource ResourceKey=PleaseSelectedADevice}" HorizontalAlignment="Left" Margin="96,62,0,0" VerticalAlignment="Top" Height="42" Width="304" Foreground="WhiteSmoke" FontFamily="Microsoft JhengHei" FontSize="14"/>
+                <Label x:Name="CodeLabel" Content="{DynamicResource ResourceKey=PleaseSelectedADevice}" HorizontalAlignment="Left" Margin="96,124,0,0" VerticalAlignment="Top" Height="42" Width="304" Foreground="WhiteSmoke" FontFamily="Microsoft JhengHei" FontSize="14"/>
             </Grid>
         </Grid>
         <TabControl HorizontalAlignment="Left" Height="437" Margin="10,256,0,0" VerticalAlignment="Top" Width="1102" Background="Transparent">
@@ -77,14 +77,14 @@
                         </Grid.ColumnDefinitions>
                         <Image HorizontalAlignment="Left" Height="69" Margin="10,26,0,0" VerticalAlignment="Top" Width="76" Source="/AutumnBox;component/Images/DynamicIcons/poweron.png"/>
                         <Image HorizontalAlignment="Left" Height="69" Margin="91,26,0,0" VerticalAlignment="Top" Width="76" Source="/AutumnBox;component/Images/DynamicIcons/recovery.png"/>
-                        <Button Content="{StaticResource PushFileToSdcard}" HorizontalAlignment="Left" Margin="292,51,0,0" VerticalAlignment="Top" Width="616" Height="53" Background="#00E6E1E1" BorderBrush="#FF020000" FontSize="18" FontFamily="Microsoft YaHei UI Light" Grid.ColumnSpan="2"/>
+                        <Button x:Name="buttonPushFileToSdcard" Content="{StaticResource PushFileToSdcard}" HorizontalAlignment="Left" Margin="292,51,0,0" VerticalAlignment="Top" Width="616" Height="53" Background="#00E6E1E1" BorderBrush="#FF020000" FontSize="18" FontFamily="Microsoft YaHei UI Light" Grid.ColumnSpan="2"/>
                         <Label Content="{StaticResource OnlyROP}" HorizontalAlignment="Left" Margin="10,116,0,0" VerticalAlignment="Top" Width="180" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Microsoft YaHei UI Light" FontSize="16"/>
 
                     </Grid>
                     <Grid Background="#3FE5E5E5" Margin="10,196,10,10">
                         <Image HorizontalAlignment="Left" Height="69" Margin="52,48,0,0" VerticalAlignment="Top" Width="76" Source="/AutumnBox;component/Images/DynamicIcons/fastboot.png"/>
                         <Label Content="{StaticResource OnlyBootloader}" HorizontalAlignment="Left" Margin="10,134,0,0" VerticalAlignment="Top" Width="171" Height="31" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Microsoft YaHei UI Light" FontSize="16"/>
-                        <Button Content="{StaticResource FlashCustomRecoveryImg}" HorizontalAlignment="Left" Margin="295,64,0,0" VerticalAlignment="Top" Width="616" Height="53" Background="#00E6E1E1" BorderBrush="#FF020000" Click="Button_Click_1" FontSize="18" FontFamily="Microsoft YaHei UI Light"/>
+                        <Button x:Name="buttonFlashCustomRecovery" Content="{StaticResource FlashCustomRecoveryImg}" HorizontalAlignment="Left" Margin="295,64,0,0" VerticalAlignment="Top" Width="616" Height="53" Background="#00E6E1E1" BorderBrush="#FF020000" FontSize="18" FontFamily="Microsoft YaHei UI Light"/>
                     </Grid>
                 </Grid>
             </TabItem>
@@ -115,9 +115,9 @@
             </TabItem>
         </TabControl>
         <Grid HorizontalAlignment="Left" Height="203" Margin="880,48,0,0" VerticalAlignment="Top" Width="221" Background="#3FE5E5E5">
-            <Button Content="{StaticResource RebootToSystem}" Margin="10,21,19,0" VerticalAlignment="Top" Height="39" Background="#00E6E1E1" BorderBrush="#FF020000" FontSize="18" FontFamily="Microsoft YaHei UI Light"/>
-            <Button Content="{StaticResource RebootToRecovery}" Margin="10,81,0,0" VerticalAlignment="Top" Height="41" Background="#00E6E1E1" BorderBrush="#FF020000" FontSize="18" FontFamily="Microsoft YaHei UI Light" HorizontalAlignment="Left" Width="192"/>
-            <Button Content="{StaticResource RebootToBootloader}" Margin="10,140,19,0" VerticalAlignment="Top" Height="41" Background="#00E6E1E1" BorderBrush="#FF020000" FontSize="18" FontFamily="Microsoft YaHei UI Light"/>
+            <Button x:Name="buttonRebootToSystem" Content="{StaticResource RebootToSystem}" Margin="10,21,19,0" VerticalAlignment="Top" Height="39" Background="#00E6E1E1" BorderBrush="#FF020000" FontSize="18" FontFamily="Microsoft YaHei UI Light"/>
+            <Button x:Name="buttonRebootToRecovery" Content="{StaticResource RebootToRecovery}" Margin="10,81,0,0" VerticalAlignment="Top" Height="41" Background="#00E6E1E1" BorderBrush="#FF020000" FontSize="18" FontFamily="Microsoft YaHei UI Light" HorizontalAlignment="Left" Width="192"/>
+            <Button x:Name="buttonRebootToBootloader" Content="{StaticResource RebootToBootloader}" Margin="10,140,19,0" VerticalAlignment="Top" Height="41" Background="#00E6E1E1" BorderBrush="#FF020000" FontSize="18" FontFamily="Microsoft YaHei UI Light"/>
         </Grid>
     </Grid>
 

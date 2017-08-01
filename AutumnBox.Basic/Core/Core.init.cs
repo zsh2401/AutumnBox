@@ -1,10 +1,6 @@
 ﻿using AutumnBox.Basic.AdbEnc;
 using AutumnBox.Basic.Devices;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutumnBox.Basic
 {
@@ -35,7 +31,6 @@ namespace AutumnBox.Basic
                 return ft.Execute(command);
             };
             dl = new DevicesListener(at, ft);
-            dl.Start();
         }
     }
 }

@@ -27,15 +27,17 @@ namespace Tester
             ////测试重载运算符
             //Console.WriteLine((at.GetDevice() + ft.GetDevice()) == result);
             Core core = new Core();
-            core.dl.DevicesChange += new DevicesListener.DevicesChangeHandler((obj, hs) => {
-                Console.WriteLine("Devices Changed!!!!");
-                foreach (DictionaryEntry de in hs) {
-                    Console.WriteLine($"Status -> {de.Value}  ID{de.Key}");
-                }
-            });
-            DeviceInfo info = core.GetDeviceInfo("9dd1b490");
-            Console.WriteLine(info.deviceStatus);
-            core.Reboot("9dd1b490");
+            //core.dl.DevicesChange += new DevicesListener.DevicesChangeHandler((obj, hs) => {
+            //    Console.WriteLine("Devices Changed!!!!");
+            //    foreach (DictionaryEntry de in hs) {
+            //        Console.WriteLine($"Status -> {de.Value}  ID{de.Key}");
+            //    }
+            //});
+            //DeviceInfo info = core.GetDeviceInfo("9dd1b490");
+            //Console.WriteLine(info.deviceStatus);
+            //core.Reboot("9dd1b490");
+            core.dl.Start();
+            Console.ReadKey();
             //string[] x = { "9dd1b490", @"E:\VSProject\CSharp\MiDreamer\MDCore\Core.Constructor.cs" };
             //core.PushFileToSdcard(x);
             //core.Reboot("9dd1b490",RebootOptions.Bootloader);

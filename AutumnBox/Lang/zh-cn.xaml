@@ -29,4 +29,5 @@
     <s:String x:Key="OnlyROP">仅开机或恢复模式可用</s:String>
     <s:String x:Key="PushFileToSdcard">推送文件到存储目录</s:String>
     <s:String x:Key="FlashCustomRecoveryImg">刷入自选Recovery</s:String>
+    <s:String x:Key="Doing">正在进行操作,稍安勿躁</s:String>
 </ResourceDictionary>

@@ -1,10 +1,4 @@
-﻿using AutumnBox.Basic.Devices;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections;
 
 namespace AutumnBox.Basic
 {
@@ -30,18 +24,6 @@ namespace AutumnBox.Basic
             }
             return ht;
         }
-        private DeviceStatus GetDeviceStatus(string id) {
-            switch ((at.GetDevices() + ft.GetDevices())[id])
-            {
-                case "device":
-                    return DeviceStatus.RUNNING;
-                case "recovery":
-                    return DeviceStatus.RECOVERY;
-                case "fastboot":
-                    return DeviceStatus.FASTBOOT;
-                default:
-                    return DeviceStatus.NO_DEVICE;
-            }
-        }
+        
     }
 }
