@@ -103,13 +103,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AutumnBox.EncAdb\AutumnBox.EncAdb.csproj">
-      <Project>{84044fb2-bd38-4283-8065-b639270ece0f}</Project>
-      <Name>AutumnBox.EncAdb</Name>
-      <EmbedInteropTypes>False</EmbedInteropTypes>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Page Include="Lang\en-us.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

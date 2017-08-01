@@ -1,0 +1,7 @@
+E:\VSProject\CSharp\AutumnBox\AutumnBox.EncAdb\obj\Debug\AutumnBox.Core.csprojResolveAssemblyReference.cache
+E:\VSProject\CSharp\AutumnBox\AutumnBox.EncAdb\obj\Debug\AutumnBox.EncAdb.Other.Paths.resources
+E:\VSProject\CSharp\AutumnBox\AutumnBox.EncAdb\obj\Debug\AutumnBox.Core.csproj.GenerateResource.Cache
+E:\VSProject\CSharp\AutumnBox\AutumnBox.EncAdb\obj\Debug\AutumnBox.EncAdb.dll
+E:\VSProject\CSharp\AutumnBox\AutumnBox.EncAdb\obj\Debug\AutumnBox.EncAdb.pdb
+E:\VSProject\CSharp\AutumnBox\AutumnBox.EncAdb\bin\Debug\AutumnBox.EncAdb.dll
+E:\VSProject\CSharp\AutumnBox\AutumnBox.EncAdb\bin\Debug\AutumnBox.EncAdb.pdb
