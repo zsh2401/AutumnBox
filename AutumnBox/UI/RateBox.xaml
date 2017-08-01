@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AutumnBox.UI"
         mc:Ignorable="d"
-        Title="RateBox" Height="128.571" Width="319.565" ResizeMode="NoResize" WindowStyle="None">
-    <Grid>
+        Title="RateBox" Height="128.571" Width="319.565" ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterOwner">
+    <Grid Margin="0,0,0,10">
         <Label Content="{DynamicResource Doing}" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="109" Width="300" Background="White" Foreground="Black" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="24" FontFamily="Microsoft YaHei UI Light"/>
     </Grid>
 </Window>

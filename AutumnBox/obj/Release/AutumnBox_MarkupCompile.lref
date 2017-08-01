@@ -1,4 +1,8 @@
 ﻿
-
-FE:\VSProject\CSharp\AutumnBox\AutumnBox\MainWindow.xaml;;
+FE:\VSProject\CSharp\AutumnBox\AutumnBox\App.xaml;;
+FE:\VSProject\CSharp\AutumnBox\AutumnBox\Lang\en-us.xaml;;
+FE:\VSProject\CSharp\AutumnBox\AutumnBox\Lang\zh-cn.xaml;;
+FE:\VSProject\CSharp\AutumnBox\AutumnBox\UI\Main.xaml;;
+FE:\VSProject\CSharp\AutumnBox\AutumnBox\UI\MMessageBox.xaml;;
+FE:\VSProject\CSharp\AutumnBox\AutumnBox\UI\RateBox.xaml;;
 

@@ -1,5 +1,6 @@
 ﻿using AutumnBox.Basic.Devices;
 using System;
+using System.Text.RegularExpressions;
 using System.Windows;
 
 namespace AutumnBox
@@ -55,6 +56,19 @@ namespace AutumnBox
                     this.buttonFlashCustomRecovery.IsEnabled = false;
                     break;
             }
+        }
+
+        private delegate void NormalEventHandler();
+        private event NormalEventHandler SetUIFinish;
+        private void SetUIByDevices() {
+            this.Dispatcher.Invoke(new Action(() => {
+                DeviceInfo info = core.GetDeviceInfo(this.DevicesListBox.SelectedItem.ToString());
+                ChangeButtonByStatus(core.GetDeviceStatus(this.DevicesListBox.SelectedItem.ToString()));
+                this.AndroidVersionLabel.Content = info.androidVersion;
+                this.CodeLabel.Content = info.code;
+                this.ModelLabel.Content = Regex.Replace(info.brand, @"[\r\n]", "") + " " + info.model;
+                SetUIFinish?.Invoke();
+            }));
         }
     }
 }

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:AutumnBox"
         xmlns:mui="http://firstfloorsoftware.com/ModernUI" x:Name="MainWindow" x:Class="AutumnBox.Window1"
         mc:Ignorable="d"
-        Title="AutumnBox" Height="702.712" Width="1126.321" Foreground="#FF1B1919" ResizeMode="NoResize" WindowStyle="None">
+        Title="AutumnBox" Height="702.712" Width="1126.321" Foreground="#FF1B1919" ResizeMode="NoResize" WindowStyle="None" Closed="MainWindow_Closed">
     <Window.Background>
         <ImageBrush ImageSource="/AutumnBox;component/Images/bg.png"/>
     </Window.Background>
@@ -77,7 +77,7 @@
                         </Grid.ColumnDefinitions>
                         <Image HorizontalAlignment="Left" Height="69" Margin="10,26,0,0" VerticalAlignment="Top" Width="76" Source="/AutumnBox;component/Images/DynamicIcons/poweron.png"/>
                         <Image HorizontalAlignment="Left" Height="69" Margin="91,26,0,0" VerticalAlignment="Top" Width="76" Source="/AutumnBox;component/Images/DynamicIcons/recovery.png"/>
-                        <Button x:Name="buttonPushFileToSdcard" Content="{StaticResource PushFileToSdcard}" HorizontalAlignment="Left" Margin="292,51,0,0" VerticalAlignment="Top" Width="616" Height="53" Background="#00E6E1E1" BorderBrush="#FF020000" FontSize="18" FontFamily="Microsoft YaHei UI Light" Grid.ColumnSpan="2"/>
+                        <Button x:Name="buttonPushFileToSdcard" Content="{StaticResource PushFileToSdcard}" HorizontalAlignment="Left" Margin="292,51,0,0" VerticalAlignment="Top" Width="616" Height="53" Background="#00E6E1E1" BorderBrush="#FF020000" FontSize="18" FontFamily="Microsoft YaHei UI Light" Grid.ColumnSpan="2" Click="buttonPushFileToSdcard_Click"/>
                         <Label Content="{StaticResource OnlyROP}" HorizontalAlignment="Left" Margin="10,116,0,0" VerticalAlignment="Top" Width="180" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Microsoft YaHei UI Light" FontSize="16"/>
 
                     </Grid>

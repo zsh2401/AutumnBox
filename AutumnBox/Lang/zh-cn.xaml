@@ -30,4 +30,8 @@
     <s:String x:Key="PushFileToSdcard">推送文件到存储目录</s:String>
     <s:String x:Key="FlashCustomRecoveryImg">刷入自选Recovery</s:String>
     <s:String x:Key="Doing">正在进行操作,稍安勿躁</s:String>
+    <s:String x:Key="OK">好的</s:String>
+    <s:String x:Key="Notice">提示</s:String>
+    <s:String x:Key="PushOK">如果一切正常,您将会在手机存储目录(/sdcard)下看到您刚才推送的文件,值得注意的是,如果这个文件名有中文,那么最终手机中的那个文件不会有任何中文,您需要仔细辨别</s:String>
+    <s:String x:Key="FlashOK">如果一切正常,您的手机将会重启到刚才刷入的Recovery中!</s:String>
 </ResourceDictionary>
