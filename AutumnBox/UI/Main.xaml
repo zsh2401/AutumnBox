@@ -115,9 +115,9 @@
             </TabItem>
         </TabControl>
         <Grid HorizontalAlignment="Left" Height="203" Margin="880,48,0,0" VerticalAlignment="Top" Width="221" Background="#3FE5E5E5">
-            <Button x:Name="buttonRebootToSystem" Content="{StaticResource RebootToSystem}" Margin="10,21,19,0" VerticalAlignment="Top" Height="39" Background="#00E6E1E1" BorderBrush="#FF020000" FontSize="18" FontFamily="Microsoft YaHei UI Light"/>
-            <Button x:Name="buttonRebootToRecovery" Content="{StaticResource RebootToRecovery}" Margin="10,81,0,0" VerticalAlignment="Top" Height="41" Background="#00E6E1E1" BorderBrush="#FF020000" FontSize="18" FontFamily="Microsoft YaHei UI Light" HorizontalAlignment="Left" Width="192"/>
-            <Button x:Name="buttonRebootToBootloader" Content="{StaticResource RebootToBootloader}" Margin="10,140,19,0" VerticalAlignment="Top" Height="41" Background="#00E6E1E1" BorderBrush="#FF020000" FontSize="18" FontFamily="Microsoft YaHei UI Light"/>
+            <Button x:Name="buttonRebootToSystem" Content="{StaticResource RebootToSystem}" Margin="10,21,19,0" VerticalAlignment="Top" Height="39" Background="#00E6E1E1" BorderBrush="#FF020000" FontSize="18" FontFamily="Microsoft YaHei UI Light" Click="buttonRebootToSystem_Click"/>
+            <Button x:Name="buttonRebootToRecovery" Content="{StaticResource RebootToRecovery}" Margin="10,81,0,0" VerticalAlignment="Top" Height="41" Background="#00E6E1E1" BorderBrush="#FF020000" FontSize="18" FontFamily="Microsoft YaHei UI Light" HorizontalAlignment="Left" Width="192" Click="buttonRebootToRecovery_Click"/>
+            <Button x:Name="buttonRebootToBootloader" Content="{StaticResource RebootToBootloader}" Margin="10,140,19,0" VerticalAlignment="Top" Height="41" Background="#00E6E1E1" BorderBrush="#FF020000" FontSize="18" FontFamily="Microsoft YaHei UI Light" Click="buttonRebootToBootloader_Click"/>
         </Grid>
     </Grid>
 

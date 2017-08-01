@@ -1,7 +1,9 @@
 ﻿using AutumnBox.Basic.Devices;
+using AutumnBox.Images.DynamicIcons;
 using System;
 using System.Text.RegularExpressions;
 using System.Windows;
+using System.Windows.Media;
 
 namespace AutumnBox
 {
@@ -34,6 +36,7 @@ namespace AutumnBox
             switch (status)
             {
                 case DeviceStatus.FASTBOOT:
+                    this.DeviceStatusImage.Source = Tools.BitmapToBitmapImage(DyanamicIcons.fastboot);
                     this.buttonRebootToBootloader.IsEnabled = true;
                     this.buttonRebootToSystem.IsEnabled = true;
                     this.buttonPushFileToSdcard.IsEnabled = false;
@@ -41,7 +44,15 @@ namespace AutumnBox
                     this.buttonRebootToRecovery.IsEnabled = false;
                     break;
                 case DeviceStatus.RECOVERY:
+                    this.DeviceStatusImage.Source = Tools.BitmapToBitmapImage(DyanamicIcons.recovery);
+                    this.buttonRebootToBootloader.IsEnabled = true;
+                    this.buttonRebootToSystem.IsEnabled = true;
+                    this.buttonPushFileToSdcard.IsEnabled = true;
+                    this.buttonFlashCustomRecovery.IsEnabled = false;
+                    this.buttonRebootToRecovery.IsEnabled = true;
+                    break;
                 case DeviceStatus.RUNNING:
+                    this.DeviceStatusImage.Source = Tools.BitmapToBitmapImage(DyanamicIcons.poweron);
                     this.buttonRebootToBootloader.IsEnabled = true;
                     this.buttonRebootToSystem.IsEnabled = true;
                     this.buttonPushFileToSdcard.IsEnabled = true;
@@ -49,6 +60,7 @@ namespace AutumnBox
                     this.buttonRebootToRecovery.IsEnabled = true;
                     break;
                 default:
+                    this.DeviceStatusImage.Source = Tools.BitmapToBitmapImage(DyanamicIcons.no_selected);
                     this.buttonRebootToRecovery.IsEnabled = false;
                     this.buttonRebootToBootloader.IsEnabled = false;
                     this.buttonRebootToSystem.IsEnabled = false;
@@ -67,6 +79,17 @@ namespace AutumnBox
                 this.AndroidVersionLabel.Content = info.androidVersion;
                 this.CodeLabel.Content = info.code;
                 this.ModelLabel.Content = Regex.Replace(info.brand, @"[\r\n]", "") + " " + info.model;
+                switch (info.deviceStatus) {
+                    case DeviceStatus.RUNNING:
+                        this.DeviceStatusImage.Source = Tools.BitmapToBitmapImage(DyanamicIcons.poweron);
+                        break;
+                    case DeviceStatus.FASTBOOT:
+                        break;
+                    case DeviceStatus.RECOVERY:
+                        break;
+                    case DeviceStatus.NO_DEVICE:
+                        break;
+                }
                 SetUIFinish?.Invoke();
             }));
         }

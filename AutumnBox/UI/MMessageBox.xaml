@@ -9,7 +9,7 @@
     <Grid x:Name="___无名称_">
         <Button Content="{DynamicResource OK}" HorizontalAlignment="Left" Margin="111,190,0,0" VerticalAlignment="Top" Width="163" Height="24" BorderBrush="Black" Background="#00DDDDDD" FontFamily="Microsoft YaHei UI Light" Click="Button_Click"/>
         <Label x:Name="labelTitle" Content="Title" HorizontalAlignment="Left" Width="381" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Microsoft YaHei UI Light" FontSize="16" MouseMove="labelTitle_MouseMove" Margin="0,6,0,189"/>
-        <TextBlock x:Name="textBlockContent" TextAlignment="Center" HorizontalAlignment="Left" Margin="10,35,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="137" Width="361" FontFamily="Microsoft YaHei UI Light" FontSize="22"/>
+        <TextBlock x:Name="textBlockContent" TextAlignment="Center" HorizontalAlignment="Left" Margin="10,43,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="129" Width="361" FontFamily="Microsoft YaHei UI Light" FontSize="22" Foreground="Black"/>
 
     </Grid>
 </Window>

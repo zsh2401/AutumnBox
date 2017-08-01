@@ -19,6 +19,9 @@ namespace AutumnBox
                     this.rateBox.Close();
                 }));
             });
+            core.RebootFinish += new Basic.Core.FinishEventHandler((o)=> {
+            MMessageBox.ShowDialog(this, FindResource("Notice").ToString(), FindResource("RebootOK").ToString());
+            });
         }
         private void DevicesChange(Object obj, DevicesHashtable devicesHashtable)
         {

@@ -132,5 +132,20 @@ namespace AutumnBox
             this.Close();
             Environment.Exit(0);
         }
+
+        private void buttonRebootToRecovery_Click(object sender, RoutedEventArgs e)
+        {
+            core.Reboot(DevicesListBox.SelectedItem.ToString(),Basic.Other.RebootOptions.Recovery);
+        }
+
+        private void buttonRebootToBootloader_Click(object sender, RoutedEventArgs e)
+        {
+            core.Reboot(DevicesListBox.SelectedItem.ToString(), Basic.Other.RebootOptions.Bootloader);
+        }
+
+        private void buttonRebootToSystem_Click(object sender, RoutedEventArgs e)
+        {
+            core.Reboot(DevicesListBox.SelectedItem.ToString(), Basic.Other.RebootOptions.System);
+        }
     }
 }

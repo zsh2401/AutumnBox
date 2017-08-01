@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:AutumnBox.UI"
         mc:Ignorable="d"
         Title="RateBox" Height="128.571" Width="319.565" ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterOwner">
-    <Grid Margin="0,0,0,10">
-        <Label Content="{DynamicResource Doing}" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="109" Width="300" Background="White" Foreground="Black" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="24" FontFamily="Microsoft YaHei UI Light"/>
+    <Grid MouseMove="Grid_MouseMove" Background="White">
+        <Label Content="{DynamicResource Doing}" HorizontalAlignment="Left" Margin="10,21,0,0" VerticalAlignment="Top" Height="98" Width="300" Background="White" Foreground="Black" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="24" FontFamily="Microsoft YaHei UI Light"/>
     </Grid>
 </Window>
