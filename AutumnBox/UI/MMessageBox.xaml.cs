@@ -23,6 +23,7 @@ namespace AutumnBox.UI
         {
             InitializeComponent();
             this.Topmost = true;
+            //this.
         }
         public static void ShowDialog(Window owner, string title, string content) {
             MMessageBox m = new MMessageBox();
