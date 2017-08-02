@@ -3,7 +3,6 @@ using AutumnBox.Images.DynamicIcons;
 using System;
 using System.Text.RegularExpressions;
 using System.Windows;
-using System.Windows.Media;
 
 namespace AutumnBox
 {
@@ -27,16 +26,38 @@ namespace AutumnBox
                 _langname = "zh-cn";
             }
         }
+
+        private delegate void NormalEventHandler();
+        private event NormalEventHandler SetUIFinish;
         /// <summary>
-        /// 根据设备状态改变按钮状态
+        /// 根据设备改变界面,如果按钮状态,显示文字,这个方法需要用新线程来操作.并且完成后将会发生事件
+        /// 通过事件可以便可以关闭进度窗
         /// </summary>
-        /// <param name="status"></param>
-        private void ChangeButtonByStatus(DeviceStatus status)
+        /// <param name="id">设备的id</param>
+        private void SetUIByDevices(object arg) {
+            string id = arg.ToString();
+            this.Dispatcher.Invoke(new Action(() => {
+                //根据状态改变按钮状态和设备状态图片
+                ChangeUIByStatus(core.GetDeviceStatus(id));
+                //获取设备信息
+                DeviceInfo info = core.GetDeviceInfo(id);
+                this.AndroidVersionLabel.Content = info.androidVersion;
+                this.CodeLabel.Content = info.code;
+                this.ModelLabel.Content = Regex.Replace(info.brand, @"[\r\n]", "") + " " + info.model;
+                SetUIFinish?.Invoke();
+            }));
+        }
+        /// <summary>
+        /// 根据设备状态改变按钮,图片等的状态
+        /// </summary>
+        /// <param name="status">设备的状态</param>
+        private void ChangeUIByStatus(DeviceStatus status)
         {
             switch (status)
             {
                 case DeviceStatus.FASTBOOT:
                     this.DeviceStatusImage.Source = Tools.BitmapToBitmapImage(DyanamicIcons.fastboot);
+                    this.DeviceStatusLabel.Content = FindResource("DeviceInFastboot").ToString();
                     this.buttonRebootToBootloader.IsEnabled = true;
                     this.buttonRebootToSystem.IsEnabled = true;
                     this.buttonPushFileToSdcard.IsEnabled = false;
@@ -45,6 +66,7 @@ namespace AutumnBox
                     break;
                 case DeviceStatus.RECOVERY:
                     this.DeviceStatusImage.Source = Tools.BitmapToBitmapImage(DyanamicIcons.recovery);
+                    this.DeviceStatusLabel.Content = FindResource("DeviceInRecovery").ToString();
                     this.buttonRebootToBootloader.IsEnabled = true;
                     this.buttonRebootToSystem.IsEnabled = true;
                     this.buttonPushFileToSdcard.IsEnabled = true;
@@ -53,6 +75,7 @@ namespace AutumnBox
                     break;
                 case DeviceStatus.RUNNING:
                     this.DeviceStatusImage.Source = Tools.BitmapToBitmapImage(DyanamicIcons.poweron);
+                    this.DeviceStatusLabel.Content = FindResource("DeviceInRunning").ToString();
                     this.buttonRebootToBootloader.IsEnabled = true;
                     this.buttonRebootToSystem.IsEnabled = true;
                     this.buttonPushFileToSdcard.IsEnabled = true;
@@ -61,6 +84,7 @@ namespace AutumnBox
                     break;
                 default:
                     this.DeviceStatusImage.Source = Tools.BitmapToBitmapImage(DyanamicIcons.no_selected);
+                    this.DeviceStatusLabel.Content = FindResource("PleaseSelectedADevice").ToString();
                     this.buttonRebootToRecovery.IsEnabled = false;
                     this.buttonRebootToBootloader.IsEnabled = false;
                     this.buttonRebootToSystem.IsEnabled = false;
@@ -68,30 +92,6 @@ namespace AutumnBox
                     this.buttonFlashCustomRecovery.IsEnabled = false;
                     break;
             }
-        }
-
-        private delegate void NormalEventHandler();
-        private event NormalEventHandler SetUIFinish;
-        private void SetUIByDevices() {
-            this.Dispatcher.Invoke(new Action(() => {
-                DeviceInfo info = core.GetDeviceInfo(this.DevicesListBox.SelectedItem.ToString());
-                ChangeButtonByStatus(core.GetDeviceStatus(this.DevicesListBox.SelectedItem.ToString()));
-                this.AndroidVersionLabel.Content = info.androidVersion;
-                this.CodeLabel.Content = info.code;
-                this.ModelLabel.Content = Regex.Replace(info.brand, @"[\r\n]", "") + " " + info.model;
-                switch (info.deviceStatus) {
-                    case DeviceStatus.RUNNING:
-                        this.DeviceStatusImage.Source = Tools.BitmapToBitmapImage(DyanamicIcons.poweron);
-                        break;
-                    case DeviceStatus.FASTBOOT:
-                        break;
-                    case DeviceStatus.RECOVERY:
-                        break;
-                    case DeviceStatus.NO_DEVICE:
-                        break;
-                }
-                SetUIFinish?.Invoke();
-            }));
         }
     }
 }

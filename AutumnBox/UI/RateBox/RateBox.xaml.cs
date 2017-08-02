@@ -8,10 +8,10 @@ namespace AutumnBox.UI
     /// </summary>
     public partial class RateBox : Window
     {
-        public RateBox()
+        public RateBox(Window owner)
         {
             InitializeComponent();
-            //this.Topmost = 
+            this.Owner = owner;
         }
         public new void ShowDialog() {
                 base.ShowDialog();

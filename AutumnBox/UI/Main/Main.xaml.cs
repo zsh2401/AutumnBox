@@ -25,7 +25,7 @@ namespace AutumnBox
             core = new Core();
             InitEvents();
             core.dl.Start();
-            ChangeButtonByStatus(DeviceStatus.NO_DEVICE);
+            ChangeUIByStatus(DeviceStatus.NO_DEVICE);
         }
 
         private void CustomTitleBar_MouseMove(object sender, MouseEventArgs e)
@@ -91,9 +91,8 @@ namespace AutumnBox
         {
             if (this.DevicesListBox.SelectedIndex != -1)
             {
-                new Thread(SetUIByDevices).Start();
-                rateBox = new RateBox();
-                rateBox.Owner = this;
+                new Thread(new ParameterizedThreadStart(SetUIByDevices)).Start(this.DevicesListBox.SelectedItem.ToString());
+                rateBox = new RateBox(this);
                 rateBox.ShowDialog();
             }
             else
@@ -101,7 +100,7 @@ namespace AutumnBox
                 this.AndroidVersionLabel.Content = Application.Current.FindResource("PleaseSelectedADevice").ToString();
                 this.CodeLabel.Content = Application.Current.FindResource("PleaseSelectedADevice").ToString();
                 this.ModelLabel.Content = Application.Current.FindResource("PleaseSelectedADevice").ToString();
-                ChangeButtonByStatus(DeviceStatus.NO_DEVICE);
+                ChangeUIByStatus(DeviceStatus.NO_DEVICE);
             }
         }
 
@@ -117,8 +116,7 @@ namespace AutumnBox
                 Thread t = new Thread(new ParameterizedThreadStart(core.PushFileToSdcard));
                 string[] args = { this.DevicesListBox.SelectedItem.ToString(),fileDialog.FileName};
                 t.Start(args);
-                this.rateBox = new RateBox();
-                this.rateBox.Owner = this;
+                this.rateBox = new RateBox(this);
                 this.rateBox.ShowDialog();
             }
             else
@@ -146,6 +144,27 @@ namespace AutumnBox
         private void buttonRebootToSystem_Click(object sender, RoutedEventArgs e)
         {
             core.Reboot(DevicesListBox.SelectedItem.ToString(), Basic.Other.RebootOptions.System);
+        }
+
+        private void buttonFlashCustomRecovery_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog fileDialog = new OpenFileDialog();
+            fileDialog.Reset();
+            fileDialog.Title = "选择一个文件";
+            fileDialog.Filter = "镜像文件(*.img)|*.img|全部文件(*.*)|*.*";
+            fileDialog.Multiselect = false;
+            if (fileDialog.ShowDialog() == true)
+            {
+                Thread t = new Thread(new ParameterizedThreadStart(core.FlashCustomRecovery));
+                string[] args = { this.DevicesListBox.SelectedItem.ToString(), fileDialog.FileName };
+                t.Start(args);
+                this.rateBox = new RateBox(this);
+                this.rateBox.ShowDialog();
+            }
+            else
+            {
+                return;
+            }
         }
     }
 }

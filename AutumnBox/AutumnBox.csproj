@@ -66,15 +66,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DyanamicIcons.resx</DependentUpon>
     </Compile>
-    <Compile Include="UI\Main.cs" />
-    <Compile Include="UI\Main.EventHandlers.cs" />
-    <Compile Include="UI\Main.xaml.cs">
+    <Compile Include="UI\Main\Main.cs" />
+    <Compile Include="UI\Main\Main.EventHandlers.cs" />
+    <Compile Include="UI\Main\Main.xaml.cs">
       <DependentUpon>Main.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\MMessageBox.xaml.cs">
       <DependentUpon>MMessageBox.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\RateBox.xaml.cs">
+    <Compile Include="UI\RateBox\RateBox.xaml.cs">
       <DependentUpon>RateBox.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
@@ -110,7 +110,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Main.xaml">
+    <Page Include="UI\Main\Main.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -118,7 +118,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\RateBox.xaml">
+    <Page Include="UI\RateBox\RateBox.xaml">
       <SubType>Designer</SubType>
       <Generator>XamlIntelliSenseFileGenerator</Generator>
     </Page>
