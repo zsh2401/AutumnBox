@@ -13,8 +13,9 @@ namespace AutumnBox.UI
             InitializeComponent();
             this.Owner = owner;
         }
-        public new void ShowDialog() {
-                base.ShowDialog();
+        public new void ShowDialog()
+        {
+            base.ShowDialog();
         }
 
         private void Grid_MouseMove(object sender, MouseEventArgs e)

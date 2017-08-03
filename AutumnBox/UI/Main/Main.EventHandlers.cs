@@ -22,16 +22,42 @@ namespace AutumnBox
             core.PushFinish += new Basic.Core.FinishEventHandler(PushFinish);
             //刷入Recovery完成时的事件
             core.FlashRecoveryFinish += new Basic.Core.FinishEventHandler(FuckFinish);
-            this.SetUIFinish += new NormalEventHandler(()=> {
-                this.rateBox.Dispatcher.Invoke(new Action(() => {
+            this.SetUIFinish += new NormalEventHandler(() =>
+            {
+                this.rateBox.Dispatcher.Invoke(new Action(() =>
+                {
                     this.rateBox.Close();
                 }));
             });
+            //重新上锁小米手机完成时的事件
+            core.RelockMiFinish += new Basic.Core.FinishEventHandler(RelockMiFinish);
+            //解锁小米系统时的事件
+            core.UnlockMiSystemFinish += new Basic.Core.FinishEventHandler(UnlockMiSystemFinish);
             //重启完成时的事件
-            core.RebootFinish += new Basic.Core.FinishEventHandler((o)=> {
-            MMessageBox.ShowDialog(this, FindResource("Notice").ToString(), FindResource("RebootOK").ToString());
+            core.RebootFinish += new Basic.Core.FinishEventHandler((o) =>
+            {
+                MMessageBox.ShowDialog(this, FindResource("Notice").ToString(), FindResource("RebootOK").ToString());
             });
         }
+
+        private void UnlockMiSystemFinish(OutputData o)
+        {
+            this.rateBox.Dispatcher.Invoke(new Action(() =>
+            {
+                this.rateBox.Close();
+                MMessageBox.ShowDialog(this, Application.Current.FindResource("Notice").ToString(), Application.Current.FindResource("IfAllOK").ToString());
+            }));
+        }
+
+        private void RelockMiFinish(OutputData o)
+        {
+            this.rateBox.Dispatcher.Invoke(new Action(() =>
+            {
+                try { this.rateBox.Close(); } catch { }
+                MMessageBox.ShowDialog(this, FindResource("Notice").ToString(), FindResource("IfAllOK").ToString());
+            }));
+        }
+
         /// <summary>
         /// 设变发生改变时的事件
         /// </summary>
@@ -53,7 +79,8 @@ namespace AutumnBox
                     this.DevicesListBox.Items.Add(entry.Key);
                 }
                 //如果只有一个设备,那么帮用户选中它
-                if (devicesHashtable.Count == 1) {
+                if (devicesHashtable.Count == 1)
+                {
                     this.DevicesListBox.SelectedIndex = 0;
                 }
             }));
@@ -62,7 +89,8 @@ namespace AutumnBox
         /// 推送文件到SDCARD完成的事件
         /// </summary>
         /// <param name="outputData">操作时的输出数据</param>
-        private void PushFinish(OutputData outputData) {
+        private void PushFinish(OutputData outputData)
+        {
             this.rateBox.Dispatcher.Invoke(new Action(() =>
             {
                 this.rateBox.Close();

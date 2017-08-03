@@ -2,6 +2,7 @@
 using AutumnBox.Basic.Devices;
 using AutumnBox.Basic.Other;
 using System.Collections;
+using System.Threading;
 
 namespace AutumnBox.Basic
 {
@@ -54,6 +55,36 @@ namespace AutumnBox.Basic
                     break;
             }
             RebootFinish?.Invoke(outputData);
+        }
+        /// <summary>
+        /// 重新给小米手机上锁
+        /// </summary>
+        /// <param name="arg">设备id</param>
+        public void RelockMi(object arg) {
+            string id = arg.ToString();
+            OutputData o =  fe($" -s {arg.ToString()} oem lock");
+            Reboot(arg.ToString(), RebootOptions.System);
+            Thread.Sleep(2000);
+            Reboot(id, RebootOptions.System);
+            RelockMiFinish?.Invoke(o);
+        }
+        /// <summary>
+        /// 解锁小米手机系统分区,获取完整的root权限
+        /// </summary>
+        /// <param name="arg">设备id</param>
+        public void UnlockMiSystem(object arg) {
+            string id = arg.ToString();
+            ae($" -s {id} root");
+            OutputData o = ae($" -s {id} disable-verity");
+            UnlockMiSystemFinish?.Invoke(o);
+            Reboot(id, RebootOptions.System);
+        }
+        /// <summary>
+        /// 进行sideload刷机
+        /// </summary>
+        /// <param name="arg">一个列表,列表0元素为设备id,后面的所有元素为要刷入的文件</param>
+        public void Sideload(object arg) {
+            //TODO
         }
         /// <summary>
         /// 获取设备信息

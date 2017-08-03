@@ -58,6 +58,9 @@ namespace AutumnBox
                 case DeviceStatus.FASTBOOT:
                     this.DeviceStatusImage.Source = Tools.BitmapToBitmapImage(DyanamicIcons.fastboot);
                     this.DeviceStatusLabel.Content = FindResource("DeviceInFastboot").ToString();
+                    this.buttonSideload.IsEnabled = false;
+                    this.buttonUnlockMiSystem.IsEnabled = false;
+                    this.buttonRelockMi.IsEnabled = true;
                     this.buttonRebootToBootloader.IsEnabled = true;
                     this.buttonRebootToSystem.IsEnabled = true;
                     this.buttonPushFileToSdcard.IsEnabled = false;
@@ -66,6 +69,9 @@ namespace AutumnBox
                     break;
                 case DeviceStatus.RECOVERY:
                     this.DeviceStatusImage.Source = Tools.BitmapToBitmapImage(DyanamicIcons.recovery);
+                    this.buttonSideload.IsEnabled = true;
+                    this.buttonUnlockMiSystem.IsEnabled = true;
+                    this.buttonRelockMi.IsEnabled = false;
                     this.DeviceStatusLabel.Content = FindResource("DeviceInRecovery").ToString();
                     this.buttonRebootToBootloader.IsEnabled = true;
                     this.buttonRebootToSystem.IsEnabled = true;
@@ -75,6 +81,9 @@ namespace AutumnBox
                     break;
                 case DeviceStatus.RUNNING:
                     this.DeviceStatusImage.Source = Tools.BitmapToBitmapImage(DyanamicIcons.poweron);
+                    this.buttonSideload.IsEnabled = true;
+                    this.buttonUnlockMiSystem.IsEnabled = true;
+                    this.buttonRelockMi.IsEnabled = false;
                     this.DeviceStatusLabel.Content = FindResource("DeviceInRunning").ToString();
                     this.buttonRebootToBootloader.IsEnabled = true;
                     this.buttonRebootToSystem.IsEnabled = true;
@@ -85,6 +94,9 @@ namespace AutumnBox
                 default:
                     this.DeviceStatusImage.Source = Tools.BitmapToBitmapImage(DyanamicIcons.no_selected);
                     this.DeviceStatusLabel.Content = FindResource("PleaseSelectedADevice").ToString();
+                    this.buttonSideload.IsEnabled = false;
+                    this.buttonUnlockMiSystem.IsEnabled = false;
+                    this.buttonRelockMi.IsEnabled = false;
                     this.buttonRebootToRecovery.IsEnabled = false;
                     this.buttonRebootToBootloader.IsEnabled = false;
                     this.buttonRebootToSystem.IsEnabled = false;

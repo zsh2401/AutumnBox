@@ -166,5 +166,13 @@ namespace AutumnBox
                 return;
             }
         }
+
+        private void buttonUnlockMiSystem_Click(object sender, RoutedEventArgs e)
+        {
+            new Thread(
+                new ParameterizedThreadStart(core.UnlockMiSystem)).Start(this.DevicesListBox.SelectedItem);
+            this.rateBox = new RateBox(this);
+            rateBox.ShowDialog();
+        }
     }
 }

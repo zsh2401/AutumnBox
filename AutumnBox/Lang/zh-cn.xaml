@@ -32,6 +32,10 @@
     <s:String x:Key="OnlyBootloader">仅Fastboot状态可用</s:String>
     <s:String x:Key="OnlyROP">仅开机或恢复模式可用</s:String>
     <s:String x:Key="PushFileToSdcard">推送文件到存储目录</s:String>
+    <s:String x:Key="UnlockMiSystem">解锁小米系统,获取完整ROOT</s:String>
+    <s:String x:Key="SideloadFlash">SideLoad刷机</s:String>
+    <s:String x:Key="RelockMi">重新上锁小米手机</s:String>
+    <s:String x:Key="IfAllOK">如果一切正常,您的手机将会重启</s:String>
     <s:String x:Key="FlashCustomRecoveryImg">刷入自选Recovery</s:String>
     <s:String x:Key="Doing">正在进行操作,稍安勿躁</s:String>
     <s:String x:Key="OK">好的</s:String>

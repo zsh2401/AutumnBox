@@ -8,11 +8,15 @@ namespace AutumnBox.Basic
     {
         public delegate void FinishEventHandler(OutputData o);
         public delegate void StartEvnetHandler(object args);
-        public StartEvnetHandler PushStart;
-        public FinishEventHandler PushFinish;
-        public FinishEventHandler RebootFinish;
-        public StartEvnetHandler FlashRecoveryStart;
-        public FinishEventHandler FlashRecoveryFinish;
+        public event StartEvnetHandler PushStart;
+        public event FinishEventHandler PushFinish;
+        public event FinishEventHandler RebootFinish;
+        public event StartEvnetHandler FlashRecoveryStart;
+        public event FinishEventHandler FlashRecoveryFinish;
+        public event FinishEventHandler UnlockMiSystemFinish;
+        public event FinishEventHandler RelockMiFinish;
+        public event FinishEventHandler SideloadFinish;
+
 
         public DevicesListener dl;
         private FastbootTools ft;
