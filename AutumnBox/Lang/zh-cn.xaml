@@ -2,6 +2,9 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:AutumnBox"
                     xmlns:s="clr-namespace:System;assembly=mscorlib">
+    <s:String x:Key="Tools">工具</s:String>
+    <s:String x:Key="Normal">常规</s:String>
+    <s:String x:Key="Command">命令行</s:String>
     <s:String x:Key="LanguageName">简体中文</s:String>
     <s:String x:Key="Menu">菜单</s:String>
     <s:String x:Key="About">关于</s:String>
@@ -21,6 +24,7 @@
     <s:String x:Key="NormalFunctions">常规功能</s:String>
     <s:String x:Key="ExpFunctions">实验功能</s:String>
     <s:String x:Key="AndroidShell">手机Shell操作</s:String>
+    <s:String x:Key="WindowsCmd">CMD</s:String>
     <s:String x:Key="AdbCmd">Adb命令行操作</s:String>
     <s:String x:Key="RebootToSystem">重启到系统</s:String>
     <s:String x:Key="RebootToRecovery">重启到恢复模式</s:String>

@@ -26,7 +26,6 @@ namespace AutumnBox
             InitEvents();
             core.dl.Start();
             ChangeUIByStatus(DeviceStatus.NO_DEVICE);
-            //this.Test.Children.Add(new Page1());
         }
 
         private void CustomTitleBar_MouseMove(object sender, MouseEventArgs e)

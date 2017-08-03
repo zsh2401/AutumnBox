@@ -168,5 +168,8 @@
     <Resource Include="Images\DynamicIcons\poweron.png" />
     <Resource Include="Images\DynamicIcons\recovery.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fastboot.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
