@@ -9,6 +9,8 @@ namespace AutumnBox
     //除基本的按钮点击逻辑外的UI逻辑
     public partial class Window1
     {
+        private Object setUILock = new object();
+        public Object rateBoxLock = new object();
         private string _langname = "zh-cn";
         /// <summary>
         /// 更改语言
@@ -35,17 +37,19 @@ namespace AutumnBox
         /// </summary>
         /// <param name="id">设备的id</param>
         private void SetUIByDevices(object arg) {
-            string id = arg.ToString();
-            this.Dispatcher.Invoke(new Action(() => {
-                //根据状态改变按钮状态和设备状态图片
-                ChangeUIByStatus(core.GetDeviceStatus(id));
-                //获取设备信息
-                DeviceInfo info = core.GetDeviceInfo(id);
-                this.AndroidVersionLabel.Content = info.androidVersion;
-                this.CodeLabel.Content = info.code;
-                this.ModelLabel.Content = Regex.Replace(info.brand, @"[\r\n]", "") + " " + info.model;
-                SetUIFinish?.Invoke();
-            }));
+            //lock (setUILock) {
+                string id = arg.ToString();
+                this.Dispatcher.Invoke(new Action(() => {
+                    //根据状态改变按钮状态和设备状态图片
+                    ChangeUIByStatus(core.GetDeviceStatus(id));
+                    //获取设备信息
+                    DeviceInfo info = core.GetDeviceInfo(id);
+                    this.AndroidVersionLabel.Content = info.androidVersion;
+                    this.CodeLabel.Content = info.code;
+                    this.ModelLabel.Content = Regex.Replace(info.brand, @"[\r\n]", "") + " " + info.model;
+                    SetUIFinish?.Invoke();
+                }));
+
         }
         /// <summary>
         /// 根据设备状态改变按钮,图片等的状态

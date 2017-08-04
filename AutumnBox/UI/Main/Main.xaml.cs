@@ -1,5 +1,6 @@
 ﻿using AutumnBox.Basic;
 using AutumnBox.Basic.Devices;
+using AutumnBox.Debug;
 using AutumnBox.Images.DynamicIcons;
 using AutumnBox.UI;
 using Microsoft.Win32;
@@ -19,13 +20,17 @@ namespace AutumnBox
     {
         Core core;
         RateBox rateBox;
+        string TAG = "MainWindow";
         public Window1()
         {
+            Log.InitLogFile();
+            Log.d(TAG,"Log Init Finish,Start Init Window");
             InitializeComponent();
             core = new Core();
             InitEvents();
             core.dl.Start();
             ChangeUIByStatus(DeviceStatus.NO_DEVICE);
+            Log.d(TAG, "Init Window Finish");
         }
 
         private void CustomTitleBar_MouseMove(object sender, MouseEventArgs e)
@@ -114,7 +119,7 @@ namespace AutumnBox
             if (fileDialog.ShowDialog() == true)
             {
                 Thread t = new Thread(new ParameterizedThreadStart(core.PushFileToSdcard));
-                string[] args = { this.DevicesListBox.SelectedItem.ToString(),fileDialog.FileName};
+                string[] args = { this.DevicesListBox.SelectedItem.ToString(), fileDialog.FileName };
                 t.Start(args);
                 this.rateBox = new RateBox(this);
                 this.rateBox.ShowDialog();
@@ -160,6 +165,9 @@ namespace AutumnBox
                 t.Start(args);
                 this.rateBox = new RateBox(this);
                 this.rateBox.ShowDialog();
+                //Rate
+                //Thread t = new Thread(R);
+                //core.FlashCustomRecovery(new String[] { this.DevicesListBox.SelectedItem.ToString(), fileDialog.FileName });
             }
             else
             {
@@ -171,6 +179,16 @@ namespace AutumnBox
         {
             new Thread(
                 new ParameterizedThreadStart(core.UnlockMiSystem)).Start(this.DevicesListBox.SelectedItem);
+            this.rateBox = new RateBox(this);
+            rateBox.ShowDialog();
+        }
+
+        private void buttonRelockMi_Click(object sender, RoutedEventArgs e)
+        {
+            if (!ChoiceBox.Show(this, TryFindResource("Warning").ToString(), FindResource("RelockWarning").ToString())) return;
+            if (!ChoiceBox.Show(this, TryFindResource("Warning").ToString(), FindResource("RelockWarningAgain").ToString())) return;
+            new Thread(
+                new ParameterizedThreadStart(core.RelockMi)).Start(this.DevicesListBox.SelectedItem);
             this.rateBox = new RateBox(this);
             rateBox.ShowDialog();
         }

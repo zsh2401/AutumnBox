@@ -32,6 +32,12 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>title_icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>AutumnBox.App</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Windows.Shell">
       <HintPath>..\..\..\Microsoft.Windows.Shell.dll</HintPath>
@@ -66,6 +72,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DyanamicIcons.resx</DependentUpon>
     </Compile>
+    <Compile Include="UI\ChoiceBox.xaml.cs">
+      <DependentUpon>ChoiceBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Main\Main.cs" />
     <Compile Include="UI\Main\Main.EventHandlers.cs" />
     <Compile Include="UI\Main\Main.xaml.cs">
@@ -74,7 +83,7 @@
     <Compile Include="UI\MMessageBox.xaml.cs">
       <DependentUpon>MMessageBox.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\RateBox\RateBox.xaml.cs">
+    <Compile Include="UI\RateBox.xaml.cs">
       <DependentUpon>RateBox.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
@@ -110,6 +119,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UI\ChoiceBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UI\Main\Main.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -118,7 +131,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\RateBox\RateBox.xaml">
+    <Page Include="UI\RateBox.xaml">
       <SubType>Designer</SubType>
       <Generator>XamlIntelliSenseFileGenerator</Generator>
     </Page>
@@ -170,6 +183,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\fastboot.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="title_icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

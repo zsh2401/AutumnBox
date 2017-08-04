@@ -2,6 +2,11 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:AutumnBox"
                     xmlns:s="clr-namespace:System;assembly=mscorlib">
+    <s:String x:Key="Agree">同意</s:String>
+    <s:String x:Key="Cancel">取消</s:String>
+    <s:String x:Key="RelockWarning">注意,本功能将会彻底清除您的设备上的数据!请做好数据备份谨慎而行!并且在操作时不要拔掉设备,否则后果自负</s:String>
+    <s:String x:Key="RelockWarningAgain">请再次注意,本功能将会清除设备的所有数据,并且不要在操作时拔掉设备!你确定要这么做了吗?按下按钮立即开始重新上锁!</s:String>
+    <s:String x:Key="Warning">警告</s:String>
     <s:String x:Key="Tools">工具</s:String>
     <s:String x:Key="Normal">常规</s:String>
     <s:String x:Key="Command">命令行</s:String>
