@@ -196,5 +196,10 @@ namespace AutumnBox
         {
             new DonateWindow(this).ShowDialog();
         }
+
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        {
+            MMessageBox.ShowDialog(this, FindResource("About").ToString(),FindResource("AboutMessage").ToString());
+        }
     }
 }

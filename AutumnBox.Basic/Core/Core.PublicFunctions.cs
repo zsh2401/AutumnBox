@@ -77,7 +77,7 @@ namespace AutumnBox.Basic
             ae($" -s {id} root");
             OutputData o = ae($" -s {id} disable-verity");
             UnlockMiSystemFinish?.Invoke(o);
-            Thread.Sleep(500);
+            Thread.Sleep(2000);
             Reboot(id, RebootOptions.System);
         }
         /// <summary>

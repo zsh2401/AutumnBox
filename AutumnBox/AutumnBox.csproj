@@ -207,5 +207,11 @@
   <ItemGroup>
     <Resource Include="Images\donate.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\leaves.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\about_white.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
