@@ -1,0 +1,20 @@
+
+[14:3:9] MainWindow : Log Init Finish,Start Init Window
+[14:3:9] MainWindow : Init Window Finish
+[14:3:9] MainWindowEvent : Device Change
+[14:6:17] MainWindowEvent : Device Change
+[14:6:18] MainWindowEvent : SetUIFinish
+[14:6:19] MainWindowEvent : Device Change
+[14:6:21] MainWindowEvent : SetUIFinish
+
+[13:44:58] MainWindow : Log Init Finish,Start Init Window
+[13:44:58] MainWindow : Init Window Finish
+
+[13:45:41] MainWindow : Log Init Finish,Start Init Window
+[13:45:42] MainWindow : Init Window Finish
+
+[13:46:0] MainWindow : Log Init Finish,Start Init Window
+[13:46:0] MainWindow : Init Window Finish
+
+[13:47:58] MainWindow : Log Init Finish,Start Init Window
+[13:47:58] MainWindow : Init Window Finish

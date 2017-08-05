@@ -17,6 +17,7 @@ namespace AutumnBox.Basic
             }
             catch
             {
+                ht.Clear();
                 ht.Add("name",GET_FAIL);
                 ht.Add("brand", GET_FAIL);
                 ht.Add("androidVersion", GET_FAIL);

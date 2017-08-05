@@ -67,6 +67,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Debug\Log.cs" />
     <Compile Include="Images\DynamicIcons\DyanamicIcons.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -87,6 +88,7 @@
       <DependentUpon>RateBox.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Util\Config.cs" />
     <Compile Include="Util\Tools.cs" />
   </ItemGroup>
   <ItemGroup>

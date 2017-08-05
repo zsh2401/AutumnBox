@@ -19,7 +19,9 @@ namespace AutumnBox.Basic.Devices
         private Thread devicesListenerThread;
         private FastbootTools ft;
         private AdbTools at;
-        internal DevicesListener(AdbTools at, FastbootTools ft) {
+        private int interval;
+        internal DevicesListener(AdbTools at, FastbootTools ft,int interval = 500) {
+            this.interval = interval;
             this.at = at;
             this.ft = ft;
         }
@@ -33,6 +35,7 @@ namespace AutumnBox.Basic.Devices
         }
         private void Listener() {
             DevicesHashtable last= new DevicesHashtable();
+            at.Execute("help");
             while (true) {
                 while (true)
                 {
@@ -43,7 +46,7 @@ namespace AutumnBox.Basic.Devices
                         last = now;
                         DevicesChange?.Invoke(this, now);
                     }
-                    Thread.Sleep(1000);
+                    Thread.Sleep(interval);
                 }
             }
         }
