@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutumnBox.Basic.DebugTools;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -11,10 +12,11 @@ namespace AutumnBox.Basic.AdbEnc
     /// <summary>
     /// 封装Cmd命令行
     /// </summary>
-    internal class Cmd
+    internal class Cmd:ICommandExecuter
     {
         public const string NOT_FOUND = "NOT_FOUND";
         protected Process cmdProcess = new Process();
+        private string TAG = "CMD";
         public Cmd()
         {
             //初始化Cmd
@@ -30,11 +32,11 @@ namespace AutumnBox.Basic.AdbEnc
         /// </summary>
         /// <param name="command">完整命令</param>
         /// <returns>输出数据的数据结构</returns>
-        public OutputData ExecuteCommand(string command)
+        public OutputData Execute(string command)
         {
             List<string> output = new List<string>();
             string error = "";
-            Debug.WriteLine("执行命令 -> " + command);
+            Log.d(TAG,$"Execute Command {command}");
             cmdProcess.StartInfo.Arguments = "/c " + command;
             cmdProcess.Start();
             StreamReader x = cmdProcess.StandardOutput;

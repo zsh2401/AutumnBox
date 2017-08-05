@@ -18,7 +18,7 @@ namespace AutumnBox.Basic
         public event FinishEventHandler SideloadFinish;
 
 
-        public DevicesListener dl;
+        public DevicesListener devicesListener;
         private FastbootTools ft;
         private AdbTools at;
 
@@ -34,7 +34,7 @@ namespace AutumnBox.Basic
             {
                 return ft.Execute(command);
             };
-            dl = new DevicesListener(at, ft);
+            devicesListener = new DevicesListener(at, ft);
         }
     }
 }

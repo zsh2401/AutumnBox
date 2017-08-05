@@ -6,4 +6,7 @@ namespace AutumnBox.Basic.AdbEnc
     {
         DevicesHashtable GetDevices();
     }
+    internal interface ICommandExecuter {
+        OutputData Execute(string command);
+    }
 }

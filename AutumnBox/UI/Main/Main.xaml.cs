@@ -18,7 +18,7 @@ namespace AutumnBox
     /// </summary>
     public partial class Window1 : Window
     {
-        Core core;
+        Core core = new Core();
         RateBox rateBox;
         string TAG = "MainWindow";
         public Window1()
@@ -26,10 +26,9 @@ namespace AutumnBox
             Log.InitLogFile();
             Log.d(TAG,"Log Init Finish,Start Init Window");
             InitializeComponent();
-            core = new Core();
-            InitEvents();
-            core.dl.Start();
-            ChangeButtonAndImageByStatus(DeviceStatus.NO_DEVICE);
+            InitEvents();//绑定各种事件
+            ChangeButtonAndImageByStatus(DeviceStatus.NO_DEVICE);//将所有按钮设置成关闭状态
+            core.devicesListener.Start();//开始设备监听
             Log.d(TAG, "Init Window Finish");
         }
 

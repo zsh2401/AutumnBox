@@ -4,15 +4,17 @@ using System.Collections.Generic;
 
 namespace AutumnBox.Basic.AdbEnc
 {
-    internal class FastbootTools:Cmd,ITools
+    /// <summary>
+    /// 封装fastboot工具
+    /// </summary>
+    internal class FastbootTools:Cmd,ITools, ICommandExecuter
     {
         public FastbootTools():base()
         {
-
         }
-        public OutputData Execute(string command)
+        public new OutputData Execute(string command)
         {
-            return base.ExecuteCommand(Paths.FASTBOOT_TOOLS + " " + command);
+            return base.Execute(Paths.FASTBOOT_TOOLS + " " + command);
         }
         public DevicesHashtable GetDevices()
         {

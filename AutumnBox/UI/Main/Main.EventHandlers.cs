@@ -1,6 +1,4 @@
-﻿/*本文件中的代码均为主界面中的一些自定义的事件*/
-
-using AutumnBox.Basic.AdbEnc;
+﻿using AutumnBox.Basic.AdbEnc;
 using AutumnBox.Basic.Devices;
 using AutumnBox.UI;
 using System;
@@ -10,6 +8,9 @@ using System.Windows;
 using AutumnBox.Debug;
 namespace AutumnBox
 {
+    /// <summary>
+    /// 各种界面事件
+    /// </summary>
     public partial class Window1
     {
         string mweTag = "MainWindowEvent";
@@ -19,7 +20,7 @@ namespace AutumnBox
         private void InitEvents()
         {
             //设备列表发生改变时的事件
-            core.dl.DevicesChange += new DevicesListener.DevicesChangeHandler(DevicesChange);
+            core.devicesListener.DevicesChange += new DevicesListener.DevicesChangeHandler(DevicesChange);
             //推送文件到手机完成时的事件
             core.PushFinish += new Basic.Core.FinishEventHandler(PushFinish);
             //刷入Recovery完成时的事件
@@ -71,7 +72,6 @@ namespace AutumnBox
             MMessageBox.ShowDialog(this, FindResource("Notice").ToString(), FindResource("IfAllOK").ToString());
         }
 
-        Object devicesChangeLock = new object();
         /// <summary>
         /// 设变发生改变时的事件
         /// </summary>
