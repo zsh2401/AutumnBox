@@ -4,7 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AutumnBox"
-        xmlns:mui="http://firstfloorsoftware.com/ModernUI" x:Name="MainWindow" x:Class="AutumnBox.Window1"
+        xmlns:mui="http://firstfloorsoftware.com/ModernUI"
+    xmlns:ui="clr-namespace:AutumnBox.UI" x:Name="MainWindow" x:Class="AutumnBox.Window1"
         mc:Ignorable="d"
         Title="AutumnBox" Height="669.712" Width="1053.321" Foreground="#FF1B1919" ResizeMode="NoResize" WindowStyle="None" Closed="MainWindow_Closed" Background="White">
     <Grid HorizontalAlignment="Left" Width="1054" Margin="0,0,-1,0" Height="670" VerticalAlignment="Top">
@@ -32,7 +33,7 @@
                             <Image Source="pack://application:,,,/Images/Icons/contact.png"/>
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem Header="{DynamicResource Donate}" Foreground="Black" Background="#00000000" >
+                    <MenuItem Header="{DynamicResource Donate}" Foreground="Black" Background="#00000000" Click="MenuItem_Click" >
                         <MenuItem.Icon>
                             <Image Source="pack://application:,,,/Images/Icons/donate.png"/>
                         </MenuItem.Icon>
@@ -93,18 +94,21 @@
                         </TabItem>
                         <TabItem Header="{StaticResource ExpFunctions}" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" Margin="-2,0,2,0" HorizontalAlignment="Right" Width="200" Background="#FF009AD6" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" FontSize="16" FontFamily="Microsoft YaHei UI Light" Height="40">
                             <Grid Margin="0,0,0,2">
-                                <Grid Margin="10,10,0,0" Height="131" VerticalAlignment="Top" Background="#00000000" HorizontalAlignment="Left" Width="923">
+                                <Grid Margin="10,10,0,0" Height="131" VerticalAlignment="Top" Background="#00000000" HorizontalAlignment="Left" Width="442">
 
-                                    <Image HorizontalAlignment="Left" Height="100" Margin="10,1,0,0" VerticalAlignment="Top" Width="100" Source="/AutumnBox;component/Images/DynamicIcons/poweron.png"/>
-                                    <Image HorizontalAlignment="Left" Height="91" Margin="110,10,0,0" VerticalAlignment="Top" Width="104" Source="/AutumnBox;component/Images/DynamicIcons/recovery.png"/>
-                                    <Label Content="{StaticResource OnlyROP}" HorizontalAlignment="Left" Margin="19,101,0,0" VerticalAlignment="Top" Width="180" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Microsoft YaHei UI Light" FontSize="16" BorderBrush="White" Foreground="#FF130E0E" Height="30"/>
-                                    <Button x:Name="buttonUnlockMiSystem" Content="{StaticResource UnlockMiSystem}" Margin="242,10,0,0" VerticalAlignment="Top" Height="111" Background="#007C7272" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" FontSize="18" FontFamily="Microsoft YaHei UI Light" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" RenderTransformOrigin="0.494,0.085" HorizontalAlignment="Left" Width="305" Click="buttonUnlockMiSystem_Click"/>
-                                    <Button x:Name="buttonSideload" Content="{StaticResource SideloadFlash}" Margin="594,10,0,0" VerticalAlignment="Top" Height="111" Background="#007C7272" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" FontSize="18" FontFamily="Microsoft YaHei UI Light" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" RenderTransformOrigin="0.494,0.085" HorizontalAlignment="Left" Width="305"/>
+                                    <Image HorizontalAlignment="Left" Height="100" Margin="22,-5,0,0" VerticalAlignment="Top" Width="100" Source="/AutumnBox;component/Images/DynamicIcons/poweron.png"/>
+                                    <Label Content="{StaticResource OnlyPoweron}" HorizontalAlignment="Left" Margin="5,100,0,0" VerticalAlignment="Top" Width="131" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Microsoft YaHei UI Light" FontSize="16" BorderBrush="White" Foreground="#FF130E0E" Height="30"/>
+                                    <Button x:Name="buttonUnlockMiSystem" Content="{StaticResource UnlockMiSystem}" Margin="141,10,0,0" VerticalAlignment="Top" Height="111" Background="#007C7272" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" FontSize="18" FontFamily="Microsoft YaHei UI Light" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" RenderTransformOrigin="0.494,0.085" Click="buttonUnlockMiSystem_Click" HorizontalAlignment="Left" Width="285"/>
                                 </Grid>
                                 <Grid Margin="10,162,8,10" Background="#00000000">
                                     <Image HorizontalAlignment="Left" Height="98" Margin="49,0,0,0" VerticalAlignment="Top" Width="100" Source="/AutumnBox;component/Images/DynamicIcons/fastboot.png"/>
                                     <Label Content="{StaticResource OnlyBootloader}" HorizontalAlignment="Left" Margin="10,103,0,0" VerticalAlignment="Top" Width="171" Height="31" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Microsoft YaHei UI Light" FontSize="16" BorderBrush="White" Foreground="#FF130E0E"/>
-                                    <Button x:Name="buttonRelockMi" Content="{DynamicResource RelockMi}" Margin="242,10,0,0" VerticalAlignment="Top" Height="111" Background="#007C7272" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" FontSize="18" FontFamily="Microsoft YaHei UI Light" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" RenderTransformOrigin="0.494,0.085" HorizontalAlignment="Left" Width="305" Click="buttonRelockMi_Click"/>
+                                    <Button x:Name="buttonRelockMi" Content="{DynamicResource RelockMi}" Margin="186,10,0,0" VerticalAlignment="Top" Height="111" Background="#007C7272" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" FontSize="18" FontFamily="Microsoft YaHei UI Light" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" RenderTransformOrigin="0.494,0.085" HorizontalAlignment="Left" Width="305" Click="buttonRelockMi_Click"/>
+                                </Grid>
+                                <Grid Margin="478,10,0,0" Height="131" VerticalAlignment="Top" Background="#00000000" HorizontalAlignment="Left" Width="466">
+                                    <Label Content="{StaticResource OnlyRecovery}" HorizontalAlignment="Left" Margin="0,101,0,0" VerticalAlignment="Top" Width="154" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Microsoft YaHei UI Light" FontSize="16" BorderBrush="White" Foreground="#FF130E0E" Height="30"/>
+                                    <Button x:Name="buttonSideload" Content="{StaticResource SideloadFlash}" Margin="154,10,0,0" VerticalAlignment="Top" Height="111" Background="#007C7272" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" FontSize="18" FontFamily="Microsoft YaHei UI Light" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" RenderTransformOrigin="0.494,0.085" HorizontalAlignment="Left" Width="305"/>
+                                    <Image HorizontalAlignment="Left" Height="91" Margin="19,10,0,0" VerticalAlignment="Top" Width="104" Source="/AutumnBox;component/Images/DynamicIcons/recovery.png"/>
                                 </Grid>
                             </Grid>
                         </TabItem>
@@ -124,7 +128,9 @@
                 </Grid>
             </TabItem>
             <TabItem Header="{DynamicResource Tools}" Background="#FF009AD6" Margin="-2,0,0,-2" BorderBrush="#FF009AD6" MinHeight="160" FontFamily="Microsoft YaHei UI Light">
-                <Grid Background="#00E5E5E5" Margin="0,0,-3,7"/>
+                <Grid Background="#00E5E5E5" Margin="0,0,-3,7">
+                    <!--<ui:ImageGif ImgSource ="ss">-->
+                </Grid>
             </TabItem>
         </TabControl>
     </Grid>

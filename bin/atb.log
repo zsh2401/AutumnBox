@@ -76,3 +76,56 @@
 [14:44:16] MainWindowEvent : Device Change
 [14:44:25] MainWindowEvent : Device Change
 [14:44:27] MainWindowEvent : SetUIFinish
+
+[15:11:13] MainWindow : Log Init Finish,Start Init Window
+[15:11:14] MainWindow : Init Window Finish
+[15:11:15] MainWindowEvent : Device Change
+[15:11:20] MainWindowEvent : SetUIFinish
+
+[15:52:42] MainWindow : Log Init Finish,Start Init Window
+[15:52:42] MainWindow : Init Window Finish
+
+[15:53:25] MainWindow : Log Init Finish,Start Init Window
+[15:53:26] MainWindow : Init Window Finish
+
+[15:54:8] MainWindow : Log Init Finish,Start Init Window
+[15:54:8] MainWindow : Init Window Finish
+
+[15:54:30] MainWindow : Log Init Finish,Start Init Window
+[15:54:31] MainWindow : Init Window Finish
+
+[15:58:35] MainWindow : Log Init Finish,Start Init Window
+[15:58:35] MainWindow : Init Window Finish
+
+[16:1:30] MainWindow : Log Init Finish,Start Init Window
+[16:1:30] MainWindow : Init Window Finish
+
+[16:2:19] MainWindow : Log Init Finish,Start Init Window
+[16:2:19] MainWindow : Init Window Finish
+
+[16:4:16] MainWindow : Log Init Finish,Start Init Window
+[16:4:16] MainWindow : Init Window Finish
+
+[16:9:0] MainWindow : Log Init Finish,Start Init Window
+[16:9:0] MainWindow : Init Window Finish
+
+[16:11:20] MainWindow : Log Init Finish,Start Init Window
+[16:11:20] MainWindow : Init Window Finish
+
+[16:12:5] MainWindow : Log Init Finish,Start Init Window
+[16:12:6] MainWindow : Init Window Finish
+
+[16:14:36] MainWindow : Log Init Finish,Start Init Window
+[16:14:36] MainWindow : Init Window Finish
+
+[16:15:29] MainWindow : Log Init Finish,Start Init Window
+[16:15:29] MainWindow : Init Window Finish
+
+[16:22:32] MainWindow : Log Init Finish,Start Init Window
+[16:22:33] MainWindow : Init Window Finish
+
+[16:23:3] MainWindow : Log Init Finish,Start Init Window
+[16:23:4] MainWindow : Init Window Finish
+
+[16:24:10] MainWindow : Log Init Finish,Start Init Window
+[16:24:11] MainWindow : Init Window Finish

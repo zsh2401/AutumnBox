@@ -1,0 +1,9 @@
+C:\Users\yuqiang\Desktop\WPF Show GIf\WPFAnimatedGIF\WpfAnimatedGif\bin\Debug\WpfAnimatedGif.dll
+C:\Users\yuqiang\Desktop\WPF Show GIf\WPFAnimatedGIF\WpfAnimatedGif\bin\Debug\WpfAnimatedGif.pdb
+C:\Users\yuqiang\Desktop\WPF Show GIf\WPFAnimatedGIF\WpfAnimatedGif\obj\Debug\WpfAnimatedGif.dll
+C:\Users\yuqiang\Desktop\WPF Show GIf\WPFAnimatedGIF\WpfAnimatedGif\obj\Debug\WpfAnimatedGif.pdb
+C:\Users\zsh24\Desktop\方法三\WPFAnimatedGIF\WpfAnimatedGif\bin\Debug\WpfAnimatedGif.dll
+C:\Users\zsh24\Desktop\方法三\WPFAnimatedGIF\WpfAnimatedGif\bin\Debug\WpfAnimatedGif.pdb
+C:\Users\zsh24\Desktop\方法三\WPFAnimatedGIF\WpfAnimatedGif\obj\Debug\WpfAnimatedGif.csprojResolveAssemblyReference.cache
+C:\Users\zsh24\Desktop\方法三\WPFAnimatedGIF\WpfAnimatedGif\obj\Debug\WpfAnimatedGif.dll
+C:\Users\zsh24\Desktop\方法三\WPFAnimatedGIF\WpfAnimatedGif\obj\Debug\WpfAnimatedGif.pdb

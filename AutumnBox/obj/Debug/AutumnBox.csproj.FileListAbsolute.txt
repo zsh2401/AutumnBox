@@ -26,3 +26,5 @@ E:\VSProject\CSharp\AutumnBox\AutumnBox\obj\Debug\UI\ChoiceBox.g.cs
 E:\VSProject\CSharp\AutumnBox\AutumnBox\obj\Debug\UI\RateBox.g.cs
 E:\VSProject\CSharp\AutumnBox\AutumnBox\obj\Debug\UI\ChoiceBox.baml
 E:\VSProject\CSharp\AutumnBox\AutumnBox\obj\Debug\UI\RateBox.baml
+E:\VSProject\CSharp\AutumnBox\AutumnBox\obj\Debug\UI\DonateWindow.g.cs
+E:\VSProject\CSharp\AutumnBox\AutumnBox\obj\Debug\UI\DonateWindow.baml

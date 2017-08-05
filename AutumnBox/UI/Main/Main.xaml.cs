@@ -104,7 +104,7 @@ namespace AutumnBox
                 this.AndroidVersionLabel.Content = Application.Current.FindResource("PleaseSelectedADevice").ToString();
                 this.CodeLabel.Content = Application.Current.FindResource("PleaseSelectedADevice").ToString();
                 this.ModelLabel.Content = Application.Current.FindResource("PleaseSelectedADevice").ToString();
-                ChangeUIByStatus(DeviceStatus.NO_DEVICE);
+                ChangeButtonAndImageByStatus(DeviceStatus.NO_DEVICE);
             }
         }
 
@@ -190,6 +190,11 @@ namespace AutumnBox
                 new ParameterizedThreadStart(core.RelockMi)).Start(this.DevicesListBox.SelectedItem);
             this.rateBox = new RateBox(this);
             rateBox.ShowDialog();
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            new DonateWindow(this).ShowDialog();
         }
     }
 }

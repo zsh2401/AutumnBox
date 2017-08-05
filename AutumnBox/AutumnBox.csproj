@@ -76,6 +76,9 @@
     <Compile Include="UI\ChoiceBox.xaml.cs">
       <DependentUpon>ChoiceBox.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\DonateWindow.xaml.cs">
+      <DependentUpon>DonateWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Main\Main.cs" />
     <Compile Include="UI\Main\Main.EventHandlers.cs" />
     <Compile Include="UI\Main\Main.xaml.cs">
@@ -125,6 +128,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UI\DonateWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UI\Main\Main.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -161,6 +168,10 @@
       <Project>{84044fb2-bd38-4283-8065-b639270ece0f}</Project>
       <Name>AutumnBox.Basic</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WpfAnimatedGif\WpfAnimatedGif.csproj">
+      <Project>{d129789c-3096-4d0b-8dd7-fe24a4df4b21}</Project>
+      <Name>WpfAnimatedGif</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\DynamicIcons\min_normal.png" />
@@ -188,6 +199,13 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="title_icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\alipay.jpg" />
+    <Resource Include="Images\wechatpay.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\donate.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

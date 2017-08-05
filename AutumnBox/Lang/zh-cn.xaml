@@ -16,6 +16,7 @@
     <s:String x:Key="AboutThisSoftware">关于本软件</s:String>
     <s:String x:Key="Contact">联系开发者</s:String>
     <s:String x:Key="Donate">捐赠开发者</s:String>
+    <s:String x:Key="DonateWindowTitle">捐赠本软件</s:String>
     <s:String x:Key="Help">帮助</s:String>
     <s:String x:Key="DeviceIsPowerOn">您的设备正处于开机状态</s:String>
     <s:String x:Key="DeviceIsInRecovery">您的设备正处于恢复模式</s:String>
@@ -36,6 +37,8 @@
     <s:String x:Key="RebootToBootloader">重启到Fastboot模式</s:String>
     <s:String x:Key="OnlyBootloader">仅Fastboot状态可用</s:String>
     <s:String x:Key="OnlyROP">仅开机或恢复模式可用</s:String>
+    <s:String x:Key="OnlyRecovery">仅恢复模式可用</s:String>
+    <s:String x:Key="OnlyPoweron">仅开机可用</s:String>
     <s:String x:Key="PushFileToSdcard">推送文件到存储目录</s:String>
     <s:String x:Key="UnlockMiSystem">解锁小米系统,获取完整ROOT</s:String>
     <s:String x:Key="SideloadFlash">SideLoad刷机</s:String>

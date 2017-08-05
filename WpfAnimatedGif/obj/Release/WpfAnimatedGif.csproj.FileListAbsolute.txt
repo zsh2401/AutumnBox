@@ -1,0 +1,5 @@
+C:\Users\zsh24\Desktop\方法三\WPFAnimatedGIF\WpfAnimatedGif\bin\Release\WpfAnimatedGif.xml
+C:\Users\zsh24\Desktop\方法三\WPFAnimatedGIF\WpfAnimatedGif\bin\Release\WpfAnimatedGif.dll
+C:\Users\zsh24\Desktop\方法三\WPFAnimatedGIF\WpfAnimatedGif\bin\Release\WpfAnimatedGif.pdb
+C:\Users\zsh24\Desktop\方法三\WPFAnimatedGIF\WpfAnimatedGif\obj\Release\WpfAnimatedGif.dll
+C:\Users\zsh24\Desktop\方法三\WPFAnimatedGIF\WpfAnimatedGif\obj\Release\WpfAnimatedGif.pdb
