@@ -13,20 +13,20 @@
             <ImageBrush ImageSource="/AutumnBox;component/Images/bg.png"/>
         </Grid.Background>
         <Grid Background="#FF009AD6" MouseMove="Grid_MouseMove" RenderTransformOrigin="0.498,0.712" HorizontalAlignment="Left" Width="1054" Height="36" VerticalAlignment="Top">
-            <Menu Background="#00F0F0F0" Margin="906,4,106,0" RenderTransformOrigin="0.499,0.479">
-                <MenuItem Height="29" Width="30" Foreground="#FFFBFAFA" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" >
+            <Menu Background="#00F0F0F0" Margin="878,4,106,0" RenderTransformOrigin="0.499,0.479">
+                <MenuItem Height="29" Width="70" Foreground="#FFFBFAFA" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" >
                     <MenuItem.Icon>
                         <Image Source="/AutumnBox;component/Images/Icons/about_white.png" Margin="0,-4,-8,-3"/>
                     </MenuItem.Icon>
-                    <!--<MenuItem.Header>
+                    <MenuItem.Header>
                         <TextBlock Width="37" TextAlignment="Center" Text="{DynamicResource About}" Foreground="#FFFBFAFA" VerticalAlignment="Center" Margin="0,4" />
-                    </MenuItem.Header>-->
+                    </MenuItem.Header>
                     <MenuItem Header="{DynamicResource AboutThisSoftware}" Foreground="Black" Background="#00000000" Click="MenuItem_Click_1" >
                         <MenuItem.Icon>
                             <Image Source="pack://application:,,,/Images/Icons/about.png"/>
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem Header="{DynamicResource Contact}" Foreground="Black" Background="#00000000" >
+                    <MenuItem Header="{DynamicResource Contact}" Foreground="Black" Background="#00000000" Click="MenuItem_Click_2" >
                         <MenuItem.Icon>
                             <Image Source="pack://application:,,,/Images/Icons/contact.png"/>
                         </MenuItem.Icon>

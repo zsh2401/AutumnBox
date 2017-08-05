@@ -9,11 +9,14 @@
     <s:String x:Key="Warning">警告</s:String>
     <s:String x:Key="Tools">工具</s:String>
     <s:String x:Key="Normal">常规</s:String>
+    <s:String x:Key="AboutMessage">这是一个简单无比的项目</s:String>
     <s:String x:Key="Command">命令行</s:String>
     <s:String x:Key="LanguageName">简体中文</s:String>
     <s:String x:Key="Menu">菜单</s:String>
     <s:String x:Key="About">关于</s:String>
+    <s:String x:Key="Close">关闭</s:String>
     <s:String x:Key="AboutThisSoftware">关于本软件</s:String>
+    <s:String x:Key="DeveloperInfo">E-MAIL  zsh2401@163.com&#xD;&#xA;QQ 1210626737&#xD;&#xA;Coolapk zsh2401</s:String>
     <s:String x:Key="Contact">联系开发者</s:String>
     <s:String x:Key="Donate">捐赠开发者</s:String>
     <s:String x:Key="DonateWindowTitle">捐赠本软件</s:String>

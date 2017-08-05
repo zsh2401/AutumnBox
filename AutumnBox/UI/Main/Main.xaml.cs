@@ -201,5 +201,10 @@ namespace AutumnBox
         {
             MMessageBox.ShowDialog(this, FindResource("About").ToString(),FindResource("AboutMessage").ToString());
         }
+
+        private void MenuItem_Click_2(object sender, RoutedEventArgs e)
+        {
+            new ContactWindow(this).ShowDialog();
+        }
     }
 }
