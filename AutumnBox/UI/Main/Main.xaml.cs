@@ -29,7 +29,7 @@ namespace AutumnBox
             core = new Core();
             InitEvents();
             core.dl.Start();
-            ChangeUIByStatus(DeviceStatus.NO_DEVICE);
+            ChangeButtonAndImageByStatus(DeviceStatus.NO_DEVICE);
             Log.d(TAG, "Init Window Finish");
         }
 
