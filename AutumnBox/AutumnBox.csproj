@@ -42,8 +42,15 @@
     <Reference Include="Microsoft.Windows.Shell">
       <HintPath>..\..\..\Microsoft.Windows.Shell.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\..\..\EvoClientDev\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.SQLite, Version=1.0.105.2, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\bin\System.Data.SQLite.dll</HintPath>
+    </Reference>
     <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -98,6 +105,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Util\Config.cs" />
+    <Compile Include="Util\Exceptions.cs" />
     <Compile Include="Util\Tools.cs" />
   </ItemGroup>
   <ItemGroup>

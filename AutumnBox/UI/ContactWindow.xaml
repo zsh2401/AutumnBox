@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AutumnBox.UI"
         mc:Ignorable="d"
-        Title="ContactWindow" Height="300" Width="565" ResizeMode="NoResize" WindowStyle="None">
+        Title="ContactWindow" Height="300" Width="565" ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterOwner">
     <Grid>
         <Label x:Name="labelTitle" Content="{DynamicResource Contact}" HorizontalAlignment="Left" Width="566" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Microsoft YaHei UI Light" FontSize="20" MouseMove="labelTitle_MouseMove" Margin="0,0,-1,247" Background="#FF009AD6" Height="53.2"/>
         <Label x:Name="labelClose" Content="{DynamicResource Close}" HorizontalAlignment="Left" Width="566" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Microsoft YaHei UI Light" FontSize="20" Margin="-1,247,0,0" Background="#FF009AD6" Height="53.2" MouseDown="labelTitle_Copy_MouseDown"/>

@@ -30,3 +30,5 @@ E:\VSProject\CSharp\AutumnBox\AutumnBox\obj\Debug\UI\DonateWindow.g.cs
 E:\VSProject\CSharp\AutumnBox\AutumnBox\obj\Debug\UI\DonateWindow.baml
 E:\VSProject\CSharp\AutumnBox\AutumnBox\obj\Debug\UI\ContactWindow.g.cs
 E:\VSProject\CSharp\AutumnBox\AutumnBox\obj\Debug\UI\ContactWindow.baml
+E:\VSProject\CSharp\AutumnBox\AutumnBox\obj\Debug\AboutWindow.g.cs
+E:\VSProject\CSharp\AutumnBox\AutumnBox\obj\Debug\AboutWindow.baml
