@@ -44,7 +44,10 @@ namespace Tester
             //Console.WriteLine(AdbGetInterfaceName());
             //Console.ReadKey();
             ConfigSql t = new ConfigSql();
-            Console.WriteLine(t.Read("boolValues", "test"));
+            t.Set("intValues", "test",null);
+            Console.WriteLine(t.Read("intValues","test"));
+            //t.Set("boolValues","test",false);
+            //Console.WriteLine(t.Read("boolValues", "test"));
             //SQLiteTest sqlTest = new SQLiteTest();
         }
         //[DllImport("AdbWinApi.dll", CallingConvention = CallingConvention.Winapi)]

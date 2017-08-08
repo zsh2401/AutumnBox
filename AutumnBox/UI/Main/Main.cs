@@ -13,24 +13,14 @@ namespace AutumnBox
     {
         private Object setUILock = new object();
         public Object rateBoxLock = new object();
-        private string _langname = "zh-cn";
         /// <summary>
         /// 更改语言
         /// </summary>
-        private void ChangeLanguage()
+        private void ChangeLanguage(string languageName)
         {
-            if (_langname == "zh-cn")
-            {
-                Application.Current.Resources.Source = new Uri(@"Lang\en-us.xaml", UriKind.Relative);
-                _langname = "en-us";
-            }
-            else
-            {
-                Application.Current.Resources.Source = new Uri(@"Lang\zh-cn.xaml", UriKind.Relative);
-                _langname = "zh-cn";
-            }
+            if (FindResource("LanguageName").ToString() != languageName)
+                Application.Current.Resources.Source = new Uri($@"Lang\{languageName}.xaml", UriKind.Relative);
         }
-
         private delegate void NormalEventHandler();
         private event NormalEventHandler SetUIFinish;//设置UI的完成事件,这个事件的处理方法将会关闭进度窗
         /// <summary>
@@ -44,7 +34,7 @@ namespace AutumnBox
             this.Dispatcher.Invoke(new Action(() =>
             {
                 //根据状态改变按钮状态和设备状态图片
-                
+
                 //获取设备信息
                 DeviceInfo info = core.GetDeviceInfo(id);
                 //根据状态将图片和按钮状态进行设置
@@ -67,7 +57,8 @@ namespace AutumnBox
             bool inRecovery = false;
             bool inRunning = false;
             bool notFound = false;
-            switch (status) {
+            switch (status)
+            {
                 case DeviceStatus.FASTBOOT:
                     inBootLoader = true;
                     break;
@@ -82,12 +73,12 @@ namespace AutumnBox
                     break;
             }
             this.buttonSideload.IsEnabled = inRecovery;
-            this.buttonUnlockMiSystem.IsEnabled = (inRecovery||inRunning);
+            this.buttonUnlockMiSystem.IsEnabled = (inRecovery || inRunning);
             this.buttonRelockMi.IsEnabled = inBootLoader;
             this.buttonRebootToBootloader.IsEnabled = !notFound;
             this.buttonRebootToSystem.IsEnabled = !notFound;
             this.buttonRebootToRecovery.IsEnabled = (inRunning || inRecovery);
-            this.buttonPushFileToSdcard.IsEnabled = (inRecovery||inRunning);
+            this.buttonPushFileToSdcard.IsEnabled = (inRecovery || inRunning);
             this.buttonFlashCustomRecovery.IsEnabled = inBootLoader;
             switch (status)
             {

@@ -1,8 +1,10 @@
-﻿using AutumnBox.Basic;
+﻿#define LANGUAGE_TEST
+using AutumnBox.Basic;
 using AutumnBox.Basic.Devices;
 using AutumnBox.Debug;
 using AutumnBox.Images.DynamicIcons;
 using AutumnBox.UI;
+using AutumnBox.Util;
 using Microsoft.Win32;
 using System;
 using System.Text.RegularExpressions;
@@ -23,13 +25,46 @@ namespace AutumnBox
         string TAG = "MainWindow";
         public Window1()
         {
+
             Log.InitLogFile();
-            Log.d(TAG,"Log Init Finish,Start Init Window");
+            Log.d(TAG, "Log Init Finish,Start Init Window");
+            //#if LANGUAGE_TEST
+            //            ChangeLanguage("en-us");
+            //#else
+            //            if (Config.language == "not_set")
+            //            {
+            //                if (
+            //                Thread.CurrentThread.CurrentCulture.LCID == 0x0C04 &&//如果当前系统语言为中文（香港特别行政区，中国）
+            //                Thread.CurrentThread.CurrentCulture.LCID == 0x1404 &&//..中文（澳门特别行政区） 
+            //                Thread.CurrentThread.CurrentCulture.LCID == 0x0804 &&//..中文（中国） 
+            //                Thread.CurrentThread.CurrentCulture.LCID == 0x0004 &&//..中文（简体） 
+            //                Thread.CurrentThread.CurrentCulture.LCID == 0x1004 &&//..中文（新加坡） 
+            //                Thread.CurrentThread.CurrentCulture.LCID == 0x0404 &&//..中文（台湾） 
+            //                Thread.CurrentThread.CurrentCulture.LCID == 0x7C04//..中文（繁体） 
+            //                )
+            //                {
+            //                    ChangeLanguage("zh-cn");
+            //                    Config.language = "zh-cn";
+            //                }
+            //                else
+            //                {
+            //                    ChangeLanguage("en-us");
+            //                    Config.language = "en-us";
+            //                }
+            //            }
+            //            else {
+            //                if (Config.language != "zh-cn") {
+            //                    ChangeLanguage(Config.language);
+            //                }
+            //            }
+            //#endif
             InitializeComponent();
+
             InitEvents();//绑定各种事件
             ChangeButtonAndImageByStatus(DeviceStatus.NO_DEVICE);//将所有按钮设置成关闭状态
             core.devicesListener.Start();//开始设备监听
             Log.d(TAG, "Init Window Finish");
+
         }
 
         private void CustomTitleBar_MouseMove(object sender, MouseEventArgs e)
@@ -137,7 +172,7 @@ namespace AutumnBox
 
         private void buttonRebootToRecovery_Click(object sender, RoutedEventArgs e)
         {
-            core.Reboot(DevicesListBox.SelectedItem.ToString(),Basic.Other.RebootOptions.Recovery);
+            core.Reboot(DevicesListBox.SelectedItem.ToString(), Basic.Other.RebootOptions.Recovery);
         }
 
         private void buttonRebootToBootloader_Click(object sender, RoutedEventArgs e)
@@ -199,7 +234,7 @@ namespace AutumnBox
 
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)
         {
-            MMessageBox.ShowDialog(this, FindResource("About").ToString(),FindResource("AboutMessage").ToString());
+            MMessageBox.ShowDialog(this, FindResource("About").ToString(), FindResource("AboutMessage").ToString());
         }
 
         private void MenuItem_Click_2(object sender, RoutedEventArgs e)

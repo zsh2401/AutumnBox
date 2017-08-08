@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Util
 {
-    internal class CreateTableException:Exception
-    {
+    internal class ExecuteCommandException : Exception {
+        public ExecuteCommandException(string message,Exception e) 
+            :base(message:message,innerException:e){}
+    }
+    internal class SetValueException : Exception {
+        public SetValueException(string message) : base(message) { }
     }
 }
