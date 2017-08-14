@@ -24,6 +24,7 @@ namespace AutumnBox
         Core core = new Core();
         RateBox rateBox;
         string TAG = "MainWindow";
+        private string nowDev { get { return DevicesListBox.SelectedItem.ToString(); } }
         public Window1()
         {
 
@@ -269,6 +270,11 @@ namespace AutumnBox
             {
                 core.Sideload(new string[] { DevicesListBox.SelectedItem.ToString(), fd.FileName });
             }
+        }
+
+        private void buttonUnlockScreenLock_Click(object sender, RoutedEventArgs e)
+        {
+            core.UnlockScreenLock(nowDev);
         }
     }
 }

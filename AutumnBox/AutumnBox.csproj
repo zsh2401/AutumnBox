@@ -89,6 +89,10 @@
     <Compile Include="UI\ContactWindow.xaml.cs">
       <DependentUpon>ContactWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\CustomBar.DataModel.cs" />
+    <Compile Include="UI\CustomBar.xaml.cs">
+      <DependentUpon>CustomBar.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\DonateWindow.xaml.cs">
       <DependentUpon>DonateWindow.xaml</DependentUpon>
     </Compile>
@@ -147,6 +151,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\ContactWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\CustomBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -234,6 +242,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\jkr.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\loading.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

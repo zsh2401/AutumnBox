@@ -17,7 +17,7 @@ namespace AutumnBox.Basic
         public event FinishEventHandler UnlockMiSystemFinish;
         public event FinishEventHandler RelockMiFinish;
         public event FinishEventHandler SideloadFinish;
-
+        public event FinishEventHandler UnlockScreenLockFinish;
         public DevicesListener devicesListener;
 
         private FastbootTools ft;

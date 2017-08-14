@@ -4,9 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AutumnBox.UI"
+        xmlns:gif="http://wpfanimatedgif.codeplex.com"
         mc:Ignorable="d"
-        Title="RateBox" Height="128.571" Width="319.565" ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterOwner">
-    <Grid MouseMove="Grid_MouseMove" Background="White">
-        <Label Content="{DynamicResource Doing}" HorizontalAlignment="Left" Margin="10,21,0,0" VerticalAlignment="Top" Height="98" Width="300" Background="White" Foreground="Black" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="24" FontFamily="Microsoft YaHei UI Light"/>
+        Title="RateBox" Height="222.571" Width="272.565" ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterOwner" Background="#FFBCDAAE">
+    <Grid MouseMove="Grid_MouseMove" Background="White" Margin="1,1,1,1">
+        <Label Content="{DynamicResource Doing}" HorizontalAlignment="Left" Margin="0,125,-0.435,0" VerticalAlignment="Top" Height="86" Width="271" Background="White" Foreground="Black" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="24" FontFamily="Microsoft YaHei UI Light"/>
+        <Image Name="img"
+               Stretch="Fill"
+               gif:ImageBehavior.AnimatedSource="/AutumnBox;component/Images/loading.gif" Height="147" VerticalAlignment="Top" HorizontalAlignment="Left" Width="271" Margin="0,0,-0.435,0"/>
     </Grid>
+
 </Window>

@@ -93,7 +93,9 @@ namespace AutumnBox.Basic
             string[] a = (string[])args;
 #if inAutumnBox
             Process.Start(files["sideloadbat"].ToString(), $"{a[0]} {a[1]}");
+            SideloadFinish?.Invoke(new OutputData());
 #endif
+            
         }
         /// <summary>
         /// 获取设备信息
@@ -113,6 +115,11 @@ namespace AutumnBox.Basic
                 id = id
             };
         }
+        /// <summary>
+        /// 获取设备状态
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public DeviceStatus GetDeviceStatus(string id)
         {
             switch ((at.GetDevices() + ft.GetDevices())[id])
@@ -128,6 +135,17 @@ namespace AutumnBox.Basic
                 default:
                     return DeviceStatus.NO_DEVICE;
             }
+        }
+        /// <summary>
+        /// 删除设备的屏幕锁
+        /// </summary>
+        /// <param name="id">设备id</param>
+        public void UnlockScreenLock(object id)
+        {
+            ae($"-s{id.ToString()} shell \"rm -rf /data/system/password.key\"");
+            ae($"-s{id.ToString()} shell \"rm -rf /data/system/gesture.key\"");
+            //Reboot(id.ToString(),RebootOptions.System);
+            UnlockScreenLockFinish?.Invoke(new OutputData());
         }
     }
 }

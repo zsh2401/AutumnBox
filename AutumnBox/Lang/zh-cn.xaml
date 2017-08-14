@@ -5,6 +5,7 @@
     <s:String x:Key="LanguageName">简体中文</s:String>
 
 
+    <s:String x:Key="UnlockScreenLock">解除手机屏幕锁</s:String>
     <s:String x:Key="BookMarker">书签</s:String>
     <s:String x:Key="SideloadTip">为了保险起见,在您选择完刷机包后,将会启动一个命令行窗口进行sideload操作,请不要关闭那个窗口</s:String>
     <s:String x:Key="NotInSideload">请确保您的设备处于sideload模式!!!!!</s:String>

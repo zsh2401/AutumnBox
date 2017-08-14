@@ -137,3 +137,63 @@
 
 [18:58:1] MainWindow : Log Init Finish,Start Init Window
 [18:58:3] MainWindow : Init Window Finish
+[19:1:34] MainWindowEvent : Device Change
+[19:1:38] MainWindowEvent : SetUIFinish
+[19:1:39] MainWindowEvent : Device Change
+[19:1:40] MainWindowEvent : Device Change
+[19:1:42] MainWindowEvent : SetUIFinish
+
+[19:5:21] MainWindow : Log Init Finish,Start Init Window
+[19:5:23] MainWindow : Init Window Finish
+[19:5:24] MainWindowEvent : Device Change
+[19:5:29] MainWindowEvent : SetUIFinish
+
+[19:18:29] MainWindow : Log Init Finish,Start Init Window
+[19:18:31] MainWindow : Init Window Finish
+[19:18:32] MainWindowEvent : Device Change
+[19:18:36] MainWindowEvent : SetUIFinish
+[19:18:48] MainWindowEvent : Device Change
+[19:19:2] MainWindowEvent : Device Change
+[19:19:3] MainWindowEvent : SetUIFinish
+[19:21:34] MainWindowEvent : Push finish
+[19:22:28] MainWindowEvent : Device Change
+[19:22:49] MainWindowEvent : Device Change
+[19:22:51] MainWindowEvent : SetUIFinish
+
+[19:31:17] MainWindow : Log Init Finish,Start Init Window
+[19:31:19] MainWindow : Init Window Finish
+[19:31:20] MainWindowEvent : Device Change
+[19:31:24] MainWindowEvent : SetUIFinish
+
+[0:46:42] MainWindow : Log Init Finish,Start Init Window
+[0:46:44] MainWindow : Init Window Finish
+[0:46:45] MainWindowEvent : Device Change
+[0:46:49] MainWindowEvent : SetUIFinish
+[0:46:59] MainWindowEvent : Push finish
+
+[0:48:14] MainWindow : Log Init Finish,Start Init Window
+[0:48:15] MainWindow : Init Window Finish
+[0:48:16] MainWindowEvent : Device Change
+[0:48:19] MainWindowEvent : SetUIFinish
+[0:48:26] MainWindowEvent : Push finish
+
+[0:50:11] MainWindow : Log Init Finish,Start Init Window
+[0:50:13] MainWindow : Init Window Finish
+[0:50:13] MainWindowEvent : Device Change
+[0:50:17] MainWindowEvent : SetUIFinish
+[0:50:42] MainWindowEvent : Device Change
+[0:50:46] MainWindowEvent : Device Change
+[0:50:48] MainWindowEvent : SetUIFinish
+[0:50:56] MainWindowEvent : Device Change
+[0:51:35] MainWindowEvent : Device Change
+[0:51:37] MainWindowEvent : SetUIFinish
+
+[0:53:53] MainWindow : Log Init Finish,Start Init Window
+[0:53:54] MainWindow : Init Window Finish
+[0:53:55] MainWindowEvent : Device Change
+[0:53:59] MainWindowEvent : SetUIFinish
+
+[0:56:41] MainWindow : Log Init Finish,Start Init Window
+[0:56:42] MainWindow : Init Window Finish
+[0:56:43] MainWindowEvent : Device Change
+[0:56:47] MainWindowEvent : SetUIFinish
