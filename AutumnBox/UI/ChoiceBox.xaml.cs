@@ -32,6 +32,9 @@ namespace AutumnBox.UI
             choiceBox.ShowDialog();
             return choiceBox.Result;
         }
+        public static bool ShowDialog(Window owner, string title, string content) {
+            return Show(owner,title,content);
+        }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {

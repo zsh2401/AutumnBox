@@ -1,0 +1,139 @@
+
+[19:24:18] MainWindow : Log Init Finish,Start Init Window
+[19:24:19] MainWindow : Init Window Finish
+[19:32:21] MainWindowEvent : Device Change
+[19:32:26] MainWindowEvent : SetUIFinish
+[19:33:20] MainWindowEvent : Device Change
+[19:33:30] MainWindowEvent : Device Change
+[19:33:31] MainWindowEvent : SetUIFinish
+[19:34:40] MainWindowEvent : UnlockMiSystemFinish Event 
+[19:34:44] MainWindowEvent : Device Change
+[19:35:3] MainWindowEvent : Device Change
+[19:35:9] MainWindowEvent : SetUIFinish
+[19:35:42] MainWindowEvent : Device Change
+[19:35:51] MainWindowEvent : Device Change
+[19:35:53] MainWindowEvent : SetUIFinish
+
+[19:51:2] MainWindow : Log Init Finish,Start Init Window
+[19:51:3] MainWindow : Init Window Finish
+[19:51:8] MainWindowEvent : Device Change
+[19:51:16] MainWindowEvent : SetUIFinish
+
+[19:52:13] MainWindow : Log Init Finish,Start Init Window
+[19:52:14] MainWindow : Init Window Finish
+[19:52:16] MainWindowEvent : Device Change
+[19:52:20] MainWindowEvent : SetUIFinish
+
+[19:55:0] MainWindow : Log Init Finish,Start Init Window
+[19:55:0] MainWindow : Init Window Finish
+[19:55:1] MainWindowEvent : Device Change
+[19:55:5] MainWindowEvent : SetUIFinish
+
+[20:16:28] MainWindow : Log Init Finish,Start Init Window
+[20:16:30] MainWindow : Init Window Finish
+[20:16:33] MainWindowEvent : Device Change
+[20:16:41] MainWindowEvent : SetUIFinish
+
+[20:21:53] MainWindow : Log Init Finish,Start Init Window
+[20:21:53] MainWindow : Init Window Finish
+[20:21:55] MainWindowEvent : Device Change
+[20:22:0] MainWindowEvent : SetUIFinish
+[20:22:8] MainWindowEvent : Device Change
+[20:22:14] MainWindowEvent : Device Change
+[20:22:15] MainWindowEvent : SetUIFinish
+[20:22:45] MainWindowEvent : SideloadFlashFinish Event 
+[20:23:11] MainWindowEvent : Device Change
+[20:23:14] MainWindowEvent : Device Change
+[20:23:15] MainWindowEvent : SetUIFinish
+[20:23:49] MainWindowEvent : Device Change
+[20:23:51] MainWindowEvent : Device Change
+[20:23:52] MainWindowEvent : SetUIFinish
+[20:27:26] MainWindowEvent : Device Change
+[20:27:28] MainWindowEvent : Device Change
+[20:27:29] MainWindowEvent : SetUIFinish
+
+[20:30:55] MainWindow : Log Init Finish,Start Init Window
+[20:30:57] MainWindow : Init Window Finish
+[20:30:58] MainWindowEvent : Device Change
+[20:31:3] MainWindowEvent : SetUIFinish
+[20:31:40] MainWindowEvent : SideloadFlashFinish Event 
+
+[18:46:32] MainWindow : Log Init Finish,Start Init Window
+[18:46:33] MainWindow : Init Window Finish
+
+[18:54:49] MainWindow : Log Init Finish,Start Init Window
+[18:54:49] MainWindow : Init Window Finish
+[18:55:50] MainWindowEvent : Device Change
+[18:55:53] MainWindowEvent : SetUIFinish
+[18:55:56] MainWindowEvent : Device Change
+[18:55:58] MainWindowEvent : Device Change
+[18:56:3] MainWindowEvent : SetUIFinish
+
+[19:6:50] MainWindow : Log Init Finish,Start Init Window
+[19:6:51] MainWindow : Init Window Finish
+
+[19:11:28] MainWindow : Log Init Finish,Start Init Window
+[19:11:28] MainWindow : Init Window Finish
+[19:13:20] MainWindowEvent : Device Change
+[19:13:22] MainWindowEvent : SetUIFinish
+[19:13:25] MainWindowEvent : Device Change
+[19:13:36] MainWindowEvent : Device Change
+[19:13:37] MainWindowEvent : SetUIFinish
+
+[19:44:1] MainWindow : Log Init Finish,Start Init Window
+[19:44:1] MainWindow : Init Window Finish
+[19:44:2] MainWindowEvent : Device Change
+[19:44:5] MainWindowEvent : SetUIFinish
+[19:44:13] MainWindowEvent : Device Change
+[19:44:16] MainWindowEvent : Device Change
+[19:44:17] MainWindowEvent : SetUIFinish
+
+[19:45:20] MainWindow : Log Init Finish,Start Init Window
+[19:45:20] MainWindow : Init Window Finish
+[19:45:22] MainWindowEvent : Device Change
+[19:45:25] MainWindowEvent : SetUIFinish
+
+[19:45:44] MainWindow : Log Init Finish,Start Init Window
+[19:45:44] MainWindow : Init Window Finish
+[19:45:45] MainWindowEvent : Device Change
+[19:45:48] MainWindowEvent : SetUIFinish
+
+[19:47:14] MainWindow : Log Init Finish,Start Init Window
+[19:47:14] MainWindow : Init Window Finish
+[19:47:15] MainWindowEvent : Device Change
+[19:47:18] MainWindowEvent : SetUIFinish
+
+[19:48:18] MainWindow : Log Init Finish,Start Init Window
+[19:48:18] MainWindow : Init Window Finish
+[19:48:19] MainWindowEvent : Device Change
+[19:48:22] MainWindowEvent : SetUIFinish
+
+[19:49:2] MainWindow : Log Init Finish,Start Init Window
+[19:49:2] MainWindow : Init Window Finish
+[19:49:3] MainWindowEvent : Device Change
+[19:49:6] MainWindowEvent : SetUIFinish
+
+[19:49:22] MainWindow : Log Init Finish,Start Init Window
+[19:49:22] MainWindow : Init Window Finish
+[19:49:23] MainWindowEvent : Device Change
+[19:49:27] MainWindowEvent : SetUIFinish
+[19:50:25] MainWindowEvent : Device Change
+[19:50:27] MainWindowEvent : Device Change
+[19:50:28] MainWindowEvent : SetUIFinish
+
+[19:53:4] MainWindow : Log Init Finish,Start Init Window
+[19:53:4] MainWindow : Init Window Finish
+[19:53:5] MainWindowEvent : Device Change
+[19:53:9] MainWindowEvent : SetUIFinish
+
+[19:53:41] MainWindow : Log Init Finish,Start Init Window
+[19:53:41] MainWindow : Init Window Finish
+[19:53:42] MainWindowEvent : Device Change
+[19:53:45] MainWindowEvent : SetUIFinish
+[19:54:22] MainWindowEvent : Device Change
+
+[18:56:14] MainWindow : Log Init Finish,Start Init Window
+[18:56:16] MainWindow : Init Window Finish
+
+[18:58:1] MainWindow : Log Init Finish,Start Init Window
+[18:58:3] MainWindow : Init Window Finish

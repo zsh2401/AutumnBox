@@ -1,0 +1,12 @@
+﻿<Window x:Class="AutumnBox.UI.AboutWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="AboutWindow" Height="426.5" Width="617.5" WindowStyle="None" WindowStartupLocation="CenterOwner" Background="{x:Null}" ResizeMode="NoResize">
+    <Grid Background="White">
+        <Label x:Name="labelClose" Content="{DynamicResource Close}" HorizontalAlignment="Left" Width="618" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Microsoft YaHei UI Light" FontSize="20" Margin="0,373,0,0" Background="#FF009AD6" Height="53.2" MouseDown="labelClose_MouseDown"/>
+        <Label x:Name="labelTitle" Content="{DynamicResource AboutThisSoftware}" HorizontalAlignment="Left" Width="618" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Microsoft YaHei UI Light" FontSize="20" Margin="0,0,0,373" Background="#FF009AD6" Height="53.2" MouseDown="labelTitle_MouseDown"/>
+    </Grid>
+</Window>

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AutumnBox.Basic;
+using System;
+using System.Diagnostics;
 
 namespace Tester
 {
@@ -7,7 +9,7 @@ namespace Tester
     /// </summary>
     class Program
     {
-        
+
         static void Main(string[] args)
         {
             ////测试设备列表获取
@@ -43,13 +45,35 @@ namespace Tester
             //core.FlashCustomRecovery(x);
             //Console.WriteLine(AdbGetInterfaceName());
             //Console.ReadKey();
-            ConfigSql t = new ConfigSql();
-            t.Set("intValues", "test",null);
-            Console.WriteLine(t.Read("intValues","test"));
+            //ConfigSql t = new ConfigSql();
+            //t.Set("intValues", "test",null);
+            //Console.WriteLine(t.Read("intValues","test"));
             //t.Set("boolValues","test",false);
             //Console.WriteLine(t.Read("boolValues", "test"));
             //SQLiteTest sqlTest = new SQLiteTest();
+            //Core core = new Core();
+            //core.Sideload(new string[] { "9dd1b490", @"D:\☆下载暂存\aicp_cancro_n-12.1-NIGHTLY-20170812.zip" });
+            //Process.Start("t.bat", @"9dd1b490 D:\☆下载暂存\aicp_cancro_n-12.1-NIGHTLY-20170812.zip");
+            //ProcessStartInfo i = new ProcessStartInfo();
+            ////i.WorkingDirectory = @"adb\";
+            //i.Arguments = @"9dd1b490 D:\☆下载暂存\aicp_cancro_n-12.1-NIGHTLY-20170812.zip";
+            //i.FileName = @"util\t.bat";
+            //Process.Start(i);
+            //Process p = new Process();
+            //p.StartInfo.Arguments = "dir";
+            //p.StartInfo.FileName = @"util\t2.bat";
+            //p.StartInfo.CreateNoWindow = true;
+            //p.Exited += new EventHandler(P_Exited);
+            //p.Start();
+            Core c = new Core();
+            c.Sideload(new string[] { "9dd1b490", @"D:\☆下载暂存\aicp_cancro_n-12.1-NIGHTLY-20170812.zip" });
         }
+
+        //private static void P_Exited(object sender, EventArgs e)
+        //{
+        //    Console.WriteLine("Ok!");
+        //    Debug.WriteLine("OK");
+        //}
         //[DllImport("AdbWinApi.dll", CallingConvention = CallingConvention.Winapi)]
         //public extern static int AdbGetUsbDeviceDescriptor();
 

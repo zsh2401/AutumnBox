@@ -15,5 +15,6 @@ namespace AutumnBox.Basic.Devices
         RUNNING,
         RECOVERY,
         FASTBOOT,
+        SIDELOAD,
     }
 }

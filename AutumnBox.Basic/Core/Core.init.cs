@@ -1,6 +1,7 @@
 ﻿using AutumnBox.Basic.AdbEnc;
 using AutumnBox.Basic.Devices;
 using System;
+using System.Collections;
 
 namespace AutumnBox.Basic
 {
@@ -17,13 +18,15 @@ namespace AutumnBox.Basic
         public event FinishEventHandler RelockMiFinish;
         public event FinishEventHandler SideloadFinish;
 
-
         public DevicesListener devicesListener;
+
         private FastbootTools ft;
         private AdbTools at;
 
         private Func<string,OutputData> ae;
         private Func<string, OutputData> fe;
+
+        private Hashtable files = new Hashtable { { "sideloadbat", @"util\sideload.bat" } };
         public Core() {
             at = new AdbTools();
             ft = new FastbootTools();

@@ -57,6 +57,7 @@ namespace AutumnBox
             bool inRecovery = false;
             bool inRunning = false;
             bool notFound = false;
+            bool inSideload = false;
             switch (status)
             {
                 case DeviceStatus.FASTBOOT:
@@ -68,11 +69,14 @@ namespace AutumnBox
                 case DeviceStatus.RUNNING:
                     inRunning = true;
                     break;
+                case DeviceStatus.SIDELOAD:
+                    inSideload = true;
+                    break;
                 default:
                     notFound = true;
                     break;
             }
-            this.buttonSideload.IsEnabled = inRecovery;
+            this.buttonSideload.IsEnabled = (inSideload||inRecovery||inRunning);
             this.buttonUnlockMiSystem.IsEnabled = (inRecovery || inRunning);
             this.buttonRelockMi.IsEnabled = inBootLoader;
             this.buttonRebootToBootloader.IsEnabled = !notFound;
@@ -93,6 +97,10 @@ namespace AutumnBox
                 case DeviceStatus.RUNNING:
                     this.DeviceStatusImage.Source = Tools.BitmapToBitmapImage(DyanamicIcons.poweron);
                     this.DeviceStatusLabel.Content = FindResource("DeviceInRunning").ToString();
+                    break;
+                case DeviceStatus.SIDELOAD:
+                    this.DeviceStatusImage.Source = Tools.BitmapToBitmapImage(DyanamicIcons.recovery);
+                    this.DeviceStatusLabel.Content = FindResource("DeviceInSideload").ToString();
                     break;
                 default:
                     this.DeviceStatusImage.Source = Tools.BitmapToBitmapImage(DyanamicIcons.no_selected);

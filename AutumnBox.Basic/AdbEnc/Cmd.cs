@@ -31,7 +31,7 @@ namespace AutumnBox.Basic.AdbEnc
         /// 执行命令
         /// </summary>
         /// <param name="command">完整命令</param>
-        /// <returns>输出数据的数据结构</returns>
+        /// <returns>输出数据</returns>
         public OutputData Execute(string command)
         {
             List<string> output = new List<string>();

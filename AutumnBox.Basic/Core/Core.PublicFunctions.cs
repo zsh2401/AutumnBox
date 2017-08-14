@@ -1,7 +1,9 @@
-﻿using AutumnBox.Basic.AdbEnc;
+﻿#define inAutumnBox
+using AutumnBox.Basic.AdbEnc;
 using AutumnBox.Basic.Devices;
 using AutumnBox.Basic.Other;
 using System.Collections;
+using System.Diagnostics;
 using System.Threading;
 
 namespace AutumnBox.Basic
@@ -60,10 +62,11 @@ namespace AutumnBox.Basic
         /// 重新给小米手机上锁
         /// </summary>
         /// <param name="arg">设备id</param>
-        public void RelockMi(object arg) {
-            string id = arg.ToString();
-            OutputData o =  fe($" -s {arg.ToString()} oem lock");
-            Reboot(arg.ToString(), RebootOptions.System);
+        public void RelockMi(object args)
+        {
+            string id = args.ToString();
+            OutputData o = fe($" -s {args.ToString()} oem lock");
+            Reboot(args.ToString(), RebootOptions.System);
             Thread.Sleep(2000);
             Reboot(id, RebootOptions.System);
             RelockMiFinish?.Invoke(o);
@@ -72,8 +75,9 @@ namespace AutumnBox.Basic
         /// 解锁小米手机系统分区,获取完整的root权限
         /// </summary>
         /// <param name="arg">设备id</param>
-        public void UnlockMiSystem(object arg) {
-            string id = arg.ToString();
+        public void UnlockMiSystem(object args)
+        {
+            string id = args.ToString();
             ae($" -s {id} root");
             OutputData o = ae($" -s {id} disable-verity");
             UnlockMiSystemFinish?.Invoke(o);
@@ -84,8 +88,12 @@ namespace AutumnBox.Basic
         /// 进行sideload刷机
         /// </summary>
         /// <param name="arg">一个列表,列表0元素为设备id,后面的所有元素为要刷入的文件</param>
-        public void Sideload(object arg) {
-            //TODO
+        public void Sideload(object args)
+        {
+            string[] a = (string[])args;
+#if inAutumnBox
+            Process.Start(files["sideloadbat"].ToString(), $"{a[0]} {a[1]}");
+#endif
         }
         /// <summary>
         /// 获取设备信息
@@ -115,6 +123,8 @@ namespace AutumnBox.Basic
                     return DeviceStatus.RECOVERY;
                 case "fastboot":
                     return DeviceStatus.FASTBOOT;
+                case "sideload":
+                    return DeviceStatus.SIDELOAD;
                 default:
                     return DeviceStatus.NO_DEVICE;
             }

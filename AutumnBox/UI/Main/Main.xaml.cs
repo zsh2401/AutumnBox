@@ -7,6 +7,7 @@ using AutumnBox.UI;
 using AutumnBox.Util;
 using Microsoft.Win32;
 using System;
+using System.Diagnostics;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows;
@@ -64,6 +65,9 @@ namespace AutumnBox
             ChangeButtonAndImageByStatus(DeviceStatus.NO_DEVICE);//将所有按钮设置成关闭状态
             core.devicesListener.Start();//开始设备监听
             Log.d(TAG, "Init Window Finish");
+            string szTmp = "http://miui.com";
+            Uri uri = new Uri(szTmp);
+            //Web.Navigate(uri);
 
         }
 
@@ -199,9 +203,6 @@ namespace AutumnBox
                 t.Start(args);
                 this.rateBox = new RateBox(this);
                 this.rateBox.ShowDialog();
-                //Rate
-                //Thread t = new Thread(R);
-                //core.FlashCustomRecovery(new String[] { this.DevicesListBox.SelectedItem.ToString(), fileDialog.FileName });
             }
             else
             {
@@ -234,12 +235,40 @@ namespace AutumnBox
 
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)
         {
-            MMessageBox.ShowDialog(this, FindResource("About").ToString(), FindResource("AboutMessage").ToString());
+            //MMessageBox.ShowDialog(this, FindResource("About").ToString(), FindResource("AboutMessage").ToString());
+            new AboutWindow(this).ShowDialog();
         }
 
         private void MenuItem_Click_2(object sender, RoutedEventArgs e)
         {
             new ContactWindow(this).ShowDialog();
+        }
+
+        private void TextBlock_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Process.Start("explorer.exe", "http://dwnld.aicp-rom.com/");
+        }
+
+        private void TextBlock_MouseDown_1(object sender, MouseButtonEventArgs e)
+        {
+            Process.Start("explorer.exe", "https://www.lineageos.org/");
+        }
+
+        private void buttonSideload_Click(object sender, RoutedEventArgs e)
+        {
+            if (core.GetDeviceStatus(DevicesListBox.SelectedItem.ToString()) != DeviceStatus.SIDELOAD)
+            {
+                MMessageBox.ShowDialog(this, FindResource("Notice").ToString(), FindResource("SideloadTur").ToString());
+                return;
+            }
+            if (!ChoiceBox.ShowDialog(this, FindResource("Notice").ToString(), FindResource("SideloadTip").ToString())) return;
+            OpenFileDialog fd = new OpenFileDialog();
+            fd.Multiselect = false;
+            fd.Filter = "刷机包文件|*.zip";
+            if (fd.ShowDialog() == true)
+            {
+                core.Sideload(new string[] { DevicesListBox.SelectedItem.ToString(), fd.FileName });
+            }
         }
     }
 }

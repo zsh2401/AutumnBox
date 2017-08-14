@@ -12,28 +12,36 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace AutumnBox
+namespace AutumnBox.UI
 {
     /// <summary>
     /// AboutWindow.xaml 的交互逻辑
     /// </summary>
     public partial class AboutWindow : Window
     {
-        public AboutWindow()
+        public AboutWindow(Window owner)
         {
+            Owner = owner;
             InitializeComponent();
         }
 
-        private void labelTitle_MouseMove(object sender, MouseEventArgs e)
+        private void Label_MouseMove(object sender, MouseEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed) {
-                this.DragMove();
+                DragMove();
             }
         }
 
         private void labelClose_MouseDown(object sender, MouseButtonEventArgs e)
         {
             this.Close();
+        }
+
+        private void labelTitle_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed) {
+                DragMove();
+            }
         }
     }
 }

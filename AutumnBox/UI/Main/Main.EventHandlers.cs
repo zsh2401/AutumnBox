@@ -43,6 +43,16 @@ namespace AutumnBox
             {
                 MMessageBox.ShowDialog(this, FindResource("Notice").ToString(), FindResource("RebootOK").ToString());
             });
+            core.SideloadFinish += Core_SideloadFinish;
+        }
+
+        private void Core_SideloadFinish(OutputData o)
+        {
+            Log.d(mweTag, "SideloadFlashFinish Event ");
+            this.rateBox.Dispatcher.Invoke(new Action(() =>
+            {
+                this.rateBox.Close();
+            }));
         }
 
         /// <summary>

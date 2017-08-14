@@ -16,6 +16,6 @@
         <Image x:Name="imageClose" Height="30" Margin="441,0,10,582" VerticalAlignment="Bottom" Source="/AutumnBox;component/Images/DynamicIcons/close_normal.png" MouseDown="Image_MouseDown" MouseEnter="Image_MouseEnter" MouseLeave="imageClose_MouseLeave"/>
         <Image Name="img"
                Stretch="Fill"
-               gif:ImageBehavior.AnimatedSource="/AutumnBox;component/Images/donate.jpg" Margin="0,40,0,0" Height="265" VerticalAlignment="Top" HorizontalAlignment="Left" Width="479"/>
+               gif:ImageBehavior.AnimatedSource="/AutumnBox;component/Images/jkr.gif" Margin="0,40,0,0" Height="265" VerticalAlignment="Top" HorizontalAlignment="Left" Width="479"/>
     </Grid>
 </Window>

@@ -3,8 +3,23 @@
                     xmlns:local="clr-namespace:AutumnBox"
                     xmlns:s="clr-namespace:System;assembly=mscorlib">
     <s:String x:Key="LanguageName">简体中文</s:String>
-    
-    
+
+
+    <s:String x:Key="BookMarker">书签</s:String>
+    <s:String x:Key="SideloadTip">为了保险起见,在您选择完刷机包后,将会启动一个命令行窗口进行sideload操作,请不要关闭那个窗口</s:String>
+    <s:String x:Key="NotInSideload">请确保您的设备处于sideload模式!!!!!</s:String>
+    <s:String x:Key="DeviceInSideload">设备在sideload模式</s:String>
+    <s:String x:Key="SideloadTur">1.确保您刷入的是支持sideload的Recovery 2.在Recovery下进入sideload模式(ADB线刷)</s:String>
+    <s:String x:Key="MIFlash">MIUI线刷工具(Miflash)</s:String>
+    <s:String x:Key="MIUILineFlashRom">MIUI线刷包</s:String>
+    <s:String x:Key="MIUIRom">MIUI卡刷包</s:String>
+    <s:String x:Key="MokeeRom">Mokee魔趣刷机包</s:String>
+    <s:String x:Key="LineageOS">Lineage OS 刷机包</s:String>
+    <s:String x:Key="AICPRom">AICP刷机包</s:String>
+    <s:String x:Key="SaveDevice">救砖</s:String>
+    <s:String x:Key="FlashDevice">刷机</s:String>
+    <s:String x:Key="FlashRecovery">刷入Recovery</s:String>
+    <s:String x:Key="Downloads">下载更多工具以及刷机包</s:String>
     <s:String x:Key="Agree">同意</s:String>
     <s:String x:Key="Cancel">取消</s:String>
     <s:String x:Key="RelockWarning">注意,本功能将会彻底清除您的设备上的数据!请做好数据备份谨慎而行!并且在操作时不要拔掉设备,否则后果自负</s:String>
