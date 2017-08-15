@@ -1,4 +1,0 @@
-E:\VSProject\CSharp\AutumnBox\AutumnBox.EncAdb\bin\Release\AutumnBox.EncAdb.dll
-E:\VSProject\CSharp\AutumnBox\AutumnBox.EncAdb\bin\Release\AutumnBox.EncAdb.pdb
-E:\VSProject\CSharp\AutumnBox\AutumnBox.EncAdb\obj\Release\AutumnBox.EncAdb.dll
-E:\VSProject\CSharp\AutumnBox\AutumnBox.EncAdb\obj\Release\AutumnBox.EncAdb.pdb

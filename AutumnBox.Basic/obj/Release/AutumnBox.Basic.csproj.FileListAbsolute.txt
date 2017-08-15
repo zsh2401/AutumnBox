@@ -1,6 +1,0 @@
-E:\VSProject\CSharp\AutumnBox\bin\AutumnBox.Basic.dll
-E:\VSProject\CSharp\AutumnBox\bin\AutumnBox.Basic.pdb
-E:\VSProject\CSharp\AutumnBox\AutumnBox.Basic\obj\Release\AutumnBox.Basic.Other.Paths.resources
-E:\VSProject\CSharp\AutumnBox\AutumnBox.Basic\obj\Release\AutumnBox.Basic.csproj.GenerateResource.Cache
-E:\VSProject\CSharp\AutumnBox\AutumnBox.Basic\obj\Release\AutumnBox.Basic.dll
-E:\VSProject\CSharp\AutumnBox\AutumnBox.Basic\obj\Release\AutumnBox.Basic.pdb

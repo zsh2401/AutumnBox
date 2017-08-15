@@ -10,3 +10,6 @@ bin/WpfAnimatedGif.xml
 *.zip
 #dirs
 AutumnBox/obj/
+AutumnBox.basic/obj/
+WpfAnimatedGif/obj/
+Tester/obj/

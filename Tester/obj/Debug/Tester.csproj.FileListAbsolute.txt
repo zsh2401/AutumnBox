@@ -1,6 +1,0 @@
-E:\VSProject\CSharp\AutumnBox\Tester\obj\Debug\Tester.csprojResolveAssemblyReference.cache
-E:\VSProject\CSharp\AutumnBox\bin\Tester.exe.config
-E:\VSProject\CSharp\AutumnBox\bin\Tester.exe
-E:\VSProject\CSharp\AutumnBox\bin\Tester.pdb
-E:\VSProject\CSharp\AutumnBox\Tester\obj\Debug\Tester.exe
-E:\VSProject\CSharp\AutumnBox\Tester\obj\Debug\Tester.pdb
