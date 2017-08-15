@@ -34,3 +34,5 @@ E:\VSProject\CSharp\AutumnBox\AutumnBox\obj\Debug\UI\AboutWindow.g.cs
 E:\VSProject\CSharp\AutumnBox\AutumnBox\obj\Debug\UI\AboutWindow.baml
 E:\VSProject\CSharp\AutumnBox\AutumnBox\obj\Debug\UI\CustomBar.baml
 E:\VSProject\CSharp\AutumnBox\AutumnBox\obj\Debug\UI\CustomBar.g.cs
+E:\VSProject\CSharp\AutumnBox\AutumnBox\obj\Debug\UI\UpdateNoticeWindow.g.cs
+E:\VSProject\CSharp\AutumnBox\AutumnBox\obj\Debug\UI\UpdateNoticeWindow.baml

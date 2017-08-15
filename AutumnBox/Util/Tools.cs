@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json.Linq;
+﻿//#define TEST_LOCAL_API
+using AutumnBox.Util;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -31,7 +33,8 @@ namespace AutumnBox
             }
             return bitmapImage;
         }
-        public static string GetHtmlCode(string url) {
+        public static string GetHtmlCode(string url)
+        {
             string strHTML = "";
             WebClient myWebClient = new WebClient();
             Stream myStream = myWebClient.OpenRead(url);

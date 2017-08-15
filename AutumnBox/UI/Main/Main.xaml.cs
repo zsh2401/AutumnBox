@@ -31,16 +31,33 @@ namespace AutumnBox
             Log.InitLogFile();
             Log.d(TAG, "Log Init Finish,Start Init Window");
             InitializeComponent();
+
+            InitEvents();//绑定各种事件
+            ChangeButtonAndImageByStatus(DeviceStatus.NO_DEVICE);//将所有按钮设置成关闭状态
+            
             webFlashHelper.Navigate(AppDomain.CurrentDomain.BaseDirectory + "HTML/flash_help.htm");
             webSaveDevice.Navigate(AppDomain.CurrentDomain.BaseDirectory + "HTML/save_fucking_device.htm");
             webFlashRecHelp.Navigate(AppDomain.CurrentDomain.BaseDirectory + "HTML/flash_recovery.htm");
 
-            new Thread(InitNotice).Start();
+            UpdateChecker updateChecker = new UpdateChecker();
+            updateChecker.UpdateCheckFinish += UpdateChecker_UpdateCheckFinish;
+            updateChecker.Check();
 
-            InitEvents();//绑定各种事件
-            ChangeButtonAndImageByStatus(DeviceStatus.NO_DEVICE);//将所有按钮设置成关闭状态
+            Thread initNoticeThread = new Thread(InitNotice);
+            initNoticeThread.Name = "InitNoticeThread";
+            initNoticeThread.Start();
+
             core.devicesListener.Start();//开始设备监听
             Log.d(TAG, "Init Window Finish");
+        }
+
+        private void UpdateChecker_UpdateCheckFinish(bool haveUpdate, VersionInfo updateVersionInfo)
+        {
+            if (haveUpdate) {
+                this.Dispatcher.Invoke(new Action(()=> {
+                    new UpdateNoticeWindow(this,updateVersionInfo).ShowDialog();
+                }));
+            }
         }
 
         private void CustomTitleBar_MouseMove(object sender, MouseEventArgs e)

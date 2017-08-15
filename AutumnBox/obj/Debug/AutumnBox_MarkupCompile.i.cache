@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 E:\VSProject\CSharp\AutumnBox\AutumnBox\App.xaml
-101212654831
+11155437059
 
-242000973682
+28-1631560973
 20-1361593270
-Lang\en-us.xaml;Lang\zh-cn.xaml;UI\AboutWindow.xaml;UI\ChoiceBox.xaml;UI\ContactWindow.xaml;UI\CustomBar.xaml;UI\DonateWindow.xaml;UI\Main\Main.xaml;UI\MMessageBox.xaml;UI\RateBox.xaml;
+Lang\en-us.xaml;Lang\zh-cn.xaml;UI\AboutWindow.xaml;UI\ChoiceBox.xaml;UI\ContactWindow.xaml;UI\CustomBar.xaml;UI\DonateWindow.xaml;UI\Main\Main.xaml;UI\MMessageBox.xaml;UI\RateBox.xaml;UI\UpdateNoticeWindow.xaml;
 
-True
+False
 

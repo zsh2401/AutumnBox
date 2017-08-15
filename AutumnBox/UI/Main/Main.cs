@@ -117,5 +117,6 @@ namespace AutumnBox
                 textBoxGG.Text = Notice.GetNotice().content;
             }));
         }
+            
     }
 }

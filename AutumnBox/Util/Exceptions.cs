@@ -13,4 +13,7 @@ namespace AutumnBox.Util
     internal class SetValueException : Exception {
         public SetValueException(string message) : base(message) { }
     }
+    internal class NotSetEventHandlerException : Exception {
+        public NotSetEventHandlerException(string message):base(message){ }
+    }
 }

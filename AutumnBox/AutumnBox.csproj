@@ -80,6 +80,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DyanamicIcons.resx</DependentUpon>
     </Compile>
+    <Compile Include="SoftwareData.cs" />
     <Compile Include="UI\AboutWindow.xaml.cs">
       <DependentUpon>AboutWindow.xaml</DependentUpon>
     </Compile>
@@ -108,10 +109,15 @@
       <DependentUpon>RateBox.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="UI\UpdateNoticeWindow.xaml.cs">
+      <DependentUpon>UpdateNoticeWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Util\Config.cs" />
     <Compile Include="Util\Exceptions.cs" />
     <Compile Include="Util\Notice.cs" />
     <Compile Include="Util\Tools.cs" />
+    <Compile Include="Util\UpdateChecker.cs" />
+    <Compile Include="Util\VersionInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -174,6 +180,10 @@
     <Page Include="UI\RateBox.xaml">
       <SubType>Designer</SubType>
       <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="UI\UpdateNoticeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
