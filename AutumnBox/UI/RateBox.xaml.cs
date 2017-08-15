@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Threading;
+using System.Windows;
 using System.Windows.Input;
 
 namespace AutumnBox.UI
@@ -17,7 +18,6 @@ namespace AutumnBox.UI
         {
             base.ShowDialog();
         }
-
         private void Grid_MouseMove(object sender, MouseEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
