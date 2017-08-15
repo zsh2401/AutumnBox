@@ -32,8 +32,5 @@ E:\VSProject\CSharp\AutumnBox\AutumnBox\obj\Debug\UI\ContactWindow.g.cs
 E:\VSProject\CSharp\AutumnBox\AutumnBox\obj\Debug\UI\ContactWindow.baml
 E:\VSProject\CSharp\AutumnBox\AutumnBox\obj\Debug\UI\AboutWindow.g.cs
 E:\VSProject\CSharp\AutumnBox\AutumnBox\obj\Debug\UI\AboutWindow.baml
-E:\VSProject\CSharp\AutumnBox\bin\Debug\AutumnBox.exe.config
-E:\VSProject\CSharp\AutumnBox\bin\Debug\AutumnBox.exe
-E:\VSProject\CSharp\AutumnBox\bin\Debug\AutumnBox.pdb
 E:\VSProject\CSharp\AutumnBox\AutumnBox\obj\Debug\UI\CustomBar.baml
 E:\VSProject\CSharp\AutumnBox\AutumnBox\obj\Debug\UI\CustomBar.g.cs

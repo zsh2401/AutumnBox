@@ -4,6 +4,3 @@ E:\VSProject\CSharp\AutumnBox\bin\Tester.exe
 E:\VSProject\CSharp\AutumnBox\bin\Tester.pdb
 E:\VSProject\CSharp\AutumnBox\Tester\obj\Debug\Tester.exe
 E:\VSProject\CSharp\AutumnBox\Tester\obj\Debug\Tester.pdb
-E:\VSProject\CSharp\AutumnBox\bin\Debug\Tester.exe.config
-E:\VSProject\CSharp\AutumnBox\bin\Debug\Tester.exe
-E:\VSProject\CSharp\AutumnBox\bin\Debug\Tester.pdb

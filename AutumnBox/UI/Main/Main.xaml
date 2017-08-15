@@ -124,7 +124,7 @@
                         </TabItem>
                         <TabItem Header="{StaticResource FlashRecovery}" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" Margin="-2,0,2,0" HorizontalAlignment="Right" Width="200" Background="#7F009AD6" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" FontSize="16" FontFamily="Microsoft YaHei UI Light">
                             <Grid Background="#00E5E5E5" Margin="0,0,0,2">
-                                <WebBrowser x:Name="webFlashRecHelp" HorizontalAlignment="Left" Height="551" Margin="9,6,0,0" VerticalAlignment="Top" Width="922"/>
+                                <WebBrowser x:Name="webFlashRecHelp" HorizontalAlignment="Left" Height="551" Margin="9,6,0,0" VerticalAlignment="Top" Width="922" Source="{x:Null}"/>
                             </Grid>
                         </TabItem>
                     </TabControl>
@@ -136,12 +136,15 @@
                         <TabItem Header="{StaticResource Downloads}" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" Margin="-2,0,2,0" HorizontalAlignment="Right" Width="200" Background="#7F009AD6" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" FontSize="16" FontFamily="Microsoft YaHei UI Light">
                             <Grid Background="#00E5E5E5" Margin="0,0,0,2">
                                 <TextBlock x:Name="url1" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="{DynamicResource AICPRom}" VerticalAlignment="Top" TextDecorations="Underline" Foreground="#FF3FADE0" Width="335" MouseDown="TextBlock_MouseDown" FontSize="48" Height="86"/>
-                                <TextBlock HorizontalAlignment="Left" Margin="436,74,0,0" TextWrapping="Wrap" Text="{DynamicResource LineageOS}" VerticalAlignment="Top" TextDecorations="Underline" Foreground="#FF3FADE0" Width="495" FontSize="48" MouseDown="TextBlock_MouseDown_1" Height="72"/>
-                                <TextBlock HorizontalAlignment="Left" Margin="37,380,0,0" TextWrapping="Wrap" Text="{DynamicResource MIUILineFlashRom}" VerticalAlignment="Top" TextDecorations="Underline" Foreground="#FF3FADE0" Width="275" FontSize="48" Height="67"/>
-                                <TextBlock HorizontalAlignment="Left" Margin="544,356,0,0" TextWrapping="Wrap" Text="{DynamicResource MIUIRom}" VerticalAlignment="Top" TextDecorations="Underline" Foreground="#FF3FADE0" Width="274" FontSize="48" Height="62"/>
-                                <TextBlock HorizontalAlignment="Left" Margin="347,259,0,0" TextWrapping="Wrap" Text="{DynamicResource MIFlash}" VerticalAlignment="Top" TextDecorations="Underline" Foreground="#FF3FADE0" Width="492" FontSize="48" Height="73"/>
-                                <TextBlock HorizontalAlignment="Left" Margin="37,163,0,0" TextWrapping="Wrap" Text="{DynamicResource MokeeRom}" VerticalAlignment="Top" TextDecorations="Underline" Foreground="#FF3FADE0" Width="393" FontSize="48" Height="75"/>
+                                <TextBlock HorizontalAlignment="Left" Margin="344,24,0,0" TextWrapping="Wrap" Text="{DynamicResource LineageOS}" VerticalAlignment="Top" TextDecorations="Underline" Foreground="#FF3FADE0" Width="495" FontSize="48" MouseDown="TextBlock_MouseDown_1" Height="72"/>
+                                <TextBlock HorizontalAlignment="Left" Margin="31,206,0,0" TextWrapping="Wrap" Text="{DynamicResource MIUILineFlashRom}" VerticalAlignment="Top" TextDecorations="Underline" Foreground="#FF3FADE0" Width="275" FontSize="48" Height="67" MouseDown="TextBlock_MouseDown_4"/>
+                                <TextBlock HorizontalAlignment="Left" Margin="426,256,0,0" TextWrapping="Wrap" Text="{DynamicResource MIUIRom}" VerticalAlignment="Top" TextDecorations="Underline" Foreground="#FF3FADE0" Width="274" FontSize="48" Height="62" MouseDown="TextBlock_MouseDown_5"/>
+                                <TextBlock HorizontalAlignment="Left" Margin="449,127,0,0" TextWrapping="Wrap" Text="{DynamicResource MIFlash}" VerticalAlignment="Top" TextDecorations="Underline" Foreground="#FF3FADE0" Width="492" FontSize="48" Height="73" MouseDown="TextBlock_MouseDown_3"/>
+                                <TextBlock HorizontalAlignment="Left" Margin="0,101,0,0" TextWrapping="Wrap" Text="{DynamicResource MokeeRom}" VerticalAlignment="Top" TextDecorations="Underline" Foreground="#FF3FADE0" Width="393" FontSize="48" Height="75" MouseDown="TextBlock_MouseDown_2"/>
                                 <StackPanel HorizontalAlignment="Left" Height="100" Margin="426,318,0,0" VerticalAlignment="Top" Width="100"/>
+                                <TextBlock HorizontalAlignment="Left" Margin="33,343,0,0" TextWrapping="Wrap" Text="{DynamicResource TWRP }" VerticalAlignment="Top" TextDecorations="Underline" Foreground="#FF3FADE0" Width="393" FontSize="48" Height="75" MouseDown="TextBlock_MouseDown_6"/>
+                                <TextBlock HorizontalAlignment="Left" Margin="480,369,0,0" TextWrapping="Wrap" Text="{DynamicResource GAPPS}" VerticalAlignment="Top" TextDecorations="Underline" Foreground="#FF3FADE0" Width="393" FontSize="48" Height="75" MouseDown="TextBlock_MouseDown_7"/>
+                                <TextBlock HorizontalAlignment="Left" Margin="68,450,0,0" TextWrapping="Wrap" Text="{DynamicResource ABOS}" VerticalAlignment="Top" TextDecorations="Underline" Foreground="#FF3FADE0" Width="476" FontSize="48" Height="74" MouseDown="TextBlock_MouseDown_8"/>
                             </Grid>
                         </TabItem>
                     </TabControl>

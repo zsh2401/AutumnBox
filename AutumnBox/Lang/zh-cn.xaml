@@ -18,6 +18,9 @@
     <s:String x:Key="MokeeRom">Mokee魔趣刷机包</s:String>
     <s:String x:Key="LineageOS">Lineage OS 刷机包</s:String>
     <s:String x:Key="AICPRom">AICP刷机包</s:String>
+    <s:String x:Key="TWRP">TWRP Recovery</s:String>
+    <s:String x:Key="GAPPS">GAPPS谷歌套件包</s:String>
+    <s:String x:Key="ABOS">AutumnBox开源代码</s:String>
     <s:String x:Key="SaveDevice">救砖</s:String>
     <s:String x:Key="FlashDevice">刷机</s:String>
     <s:String x:Key="FlashRecovery">刷入Recovery</s:String>

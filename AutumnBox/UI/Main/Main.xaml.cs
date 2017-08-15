@@ -275,5 +275,40 @@ namespace AutumnBox
         {
             core.UnlockScreenLock(nowDev);
         }
+
+        private void TextBlock_MouseDown_2(object sender, MouseButtonEventArgs e)
+        {
+            Process.Start("explorer.exe", "https://download.mokeedev.com/");
+        }
+
+        private void TextBlock_MouseDown_3(object sender, MouseButtonEventArgs e)
+        {
+            Process.Start("explorer.exe", "http://www.miui.com/thread-6685031-1-1.html");
+        }
+
+        private void TextBlock_MouseDown_4(object sender, MouseButtonEventArgs e)
+        {
+            Process.Start("explorer.exe", "http://www.miui.com/shuaji-393.html");
+        }
+
+        private void TextBlock_MouseDown_5(object sender, MouseButtonEventArgs e)
+        {
+            Process.Start("explorer.exe", "http://www.miui.com/download.html");
+        }
+
+        private void TextBlock_MouseDown_6(object sender, MouseButtonEventArgs e)
+        {
+            Process.Start("explorer.exe", "https://twrp.me/Devices/");
+        }
+
+        private void TextBlock_MouseDown_7(object sender, MouseButtonEventArgs e)
+        {
+            Process.Start("explorer.exe", "http://opengapps.org/");
+        }
+
+        private void TextBlock_MouseDown_8(object sender, MouseButtonEventArgs e)
+        {
+            Process.Start("explorer.exe", "https://github.com/zsh2401/AutumnBox");
+        }
     }
 }
