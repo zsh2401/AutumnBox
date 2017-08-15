@@ -110,6 +110,7 @@
     </Compile>
     <Compile Include="Util\Config.cs" />
     <Compile Include="Util\Exceptions.cs" />
+    <Compile Include="Util\Notice.cs" />
     <Compile Include="Util\Tools.cs" />
   </ItemGroup>
   <ItemGroup>

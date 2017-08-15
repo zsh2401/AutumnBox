@@ -1,7 +1,9 @@
 ﻿using AutumnBox.Basic.Devices;
 using AutumnBox.Images.DynamicIcons;
+using AutumnBox.Util;
 using System;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Windows;
 
 namespace AutumnBox
@@ -76,7 +78,7 @@ namespace AutumnBox
                     notFound = true;
                     break;
             }
-            this.buttonSideload.IsEnabled = (inSideload||inRecovery||inRunning);
+            this.buttonSideload.IsEnabled = (inSideload || inRecovery || inRunning);
             this.buttonUnlockMiSystem.IsEnabled = (inRecovery || inRunning);
             this.buttonRelockMi.IsEnabled = inBootLoader;
             this.buttonRebootToBootloader.IsEnabled = !notFound;
@@ -107,6 +109,13 @@ namespace AutumnBox
                     this.DeviceStatusLabel.Content = FindResource("PleaseSelectedADevice").ToString();
                     break;
             }
+        }
+        private void InitNotice()
+        {
+            textBoxGG.Dispatcher.Invoke(new Action(() =>
+            {
+                textBoxGG.Text = Notice.GetNotice().content;
+            }));
         }
     }
 }

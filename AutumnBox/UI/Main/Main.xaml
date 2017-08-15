@@ -107,7 +107,7 @@
                             </Grid>
                         </TabItem>
                     </TabControl>
-                    <TextBox HorizontalAlignment="Left" Height="23" Margin="10,220,0,0" TextWrapping="Wrap" Text="..." VerticalAlignment="Top" Width="960"/>
+                    <TextBox x:Name="textBoxGG" HorizontalAlignment="Left" Height="23" Margin="10,220,0,0" TextWrapping="Wrap" Text="..." VerticalAlignment="Top" Width="960" IsReadOnly="True" Background="#7FFFFFFF"/>
                 </Grid>
             </TabItem>
             <TabItem Header="{DynamicResource Help}" Background="#FF009AD6" Margin="-2,0,0,-2" BorderBrush="#FF009AD6" MinHeight="160" FontFamily="Microsoft YaHei UI Light">

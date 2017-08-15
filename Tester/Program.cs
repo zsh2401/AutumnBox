@@ -1,7 +1,7 @@
 ﻿using AutumnBox.Basic;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Diagnostics;
-
 namespace Tester
 {
     /// <summary>
@@ -65,10 +65,16 @@ namespace Tester
             //p.StartInfo.CreateNoWindow = true;
             //p.Exited += new EventHandler(P_Exited);
             //p.Start();
-            Core c = new Core();
-            c.Sideload(new string[] { "9dd1b490", @"D:\☆下载暂存\aicp_cancro_n-12.1-NIGHTLY-20170812.zip" });
+            //Core c = new Core();
+            //c.Sideload(new string[] { "9dd1b490", @"D:\☆下载暂存\aicp_cancro_n-12.1-NIGHTLY-20170812.zip" });
+            //Console.WriteLine(Tools.GetHtmlCode("http://www.baidu.com"));
+            //Print(Tools.GetHtmlCode("https://raw.githubusercontent.com/zsh2401/AutumnBox/master/Api/gg.json"));
+            Print(Tools.GetNotice());
         }
 
+        public static void Print(string str) {
+            Console.WriteLine(str);
+        }
         //private static void P_Exited(object sender, EventArgs e)
         //{
         //    Console.WriteLine("Ok!");

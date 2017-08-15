@@ -16,3 +16,15 @@
 [23:11:36] MainWindow : Init Window Finish
 [23:11:38] MainWindowEvent : Device Change
 [23:11:45] MainWindowEvent : SetUIFinish
+
+[23:47:11] MainWindow : Log Init Finish,Start Init Window
+
+[23:47:56] MainWindow : Log Init Finish,Start Init Window
+[23:47:57] MainWindow : Init Window Finish
+[23:47:59] MainWindowEvent : Device Change
+[23:48:3] MainWindowEvent : SetUIFinish
+
+[23:48:36] MainWindow : Log Init Finish,Start Init Window
+[23:48:37] MainWindow : Init Window Finish
+[23:48:39] MainWindowEvent : Device Change
+[23:48:43] MainWindowEvent : SetUIFinish
