@@ -7,8 +7,6 @@ using AutumnBox.Util;
 using Microsoft.Win32;
 using System;
 using System.Diagnostics;
-using System.IO;
-using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows;
 using System.Windows.Input;
@@ -34,7 +32,7 @@ namespace AutumnBox
 
             InitEvents();//绑定各种事件
             ChangeButtonAndImageByStatus(DeviceStatus.NO_DEVICE);//将所有按钮设置成关闭状态
-            this.Title += StaticData.nowVersion.version;
+            
             Log.d("App Version", StaticData.nowVersion.version);
             webFlashHelper.Navigate(AppDomain.CurrentDomain.BaseDirectory + "HTML/flash_help.htm");
             webSaveDevice.Navigate(AppDomain.CurrentDomain.BaseDirectory + "HTML/save_fucking_device.htm");
@@ -308,6 +306,12 @@ namespace AutumnBox
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
             core.devicesListener.Start();//开始设备监听
+#if DEBUG
+            this.labelTitle.Content += "  " + StaticData.nowVersion.version + "Debug";
+#else
+            this.labelTitle.Content += "  " + StaticData.nowVersion.version + "Realease";
+#endif
+
         }
     }
 }

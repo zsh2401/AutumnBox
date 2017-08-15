@@ -13,7 +13,7 @@
             <ImageBrush ImageSource="/AutumnBox;component/Images/bg.png"/>
         </Grid.Background>
         <Grid Background="#FF009AD6" MouseMove="Grid_MouseMove" RenderTransformOrigin="0.498,0.712" HorizontalAlignment="Left" Width="1054" Height="36" VerticalAlignment="Top">
-            <Menu Background="#00F0F0F0" Margin="488,4,473,0" RenderTransformOrigin="0.499,0.479">
+            <Menu Background="#00F0F0F0" Margin="860,4,101,0" RenderTransformOrigin="0.499,0.479">
                 <MenuItem Height="29" Width="70" Foreground="#FFFBFAFA" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" >
                     <MenuItem.Icon>
                         <Image Source="/AutumnBox;component/Images/Icons/about_white.png" Margin="0,-4,-8,-3"/>
@@ -50,7 +50,7 @@
                     </Label.Background>
                 </Label>
             </Grid>
-            <Label Content="{DynamicResource ResourceKey=AppName}" HorizontalAlignment="Left" Margin="42,4,0,0" Width="441" Foreground="WhiteSmoke" FontFamily="Microsoft YaHei UI Light" FontSize="16" Height="27" VerticalAlignment="Top" VerticalContentAlignment="Center" Background="{x:Null}"/>
+            <Label x:Name="labelTitle" Content="{DynamicResource ResourceKey=AppName}" HorizontalAlignment="Left" Margin="42,4,0,0" Width="261" Foreground="WhiteSmoke" FontFamily="Microsoft YaHei UI Light" FontSize="16" Height="27" VerticalAlignment="Top" VerticalContentAlignment="Center" Background="{x:Null}"/>
             <Image HorizontalAlignment="Left" Height="27" Margin="10,4,0,0" VerticalAlignment="Top" Width="27" Source="/AutumnBox;component/Images/Icons/title_icon.png" Stretch="Fill" RenderTransformOrigin="0.579,-1.368"/>
         </Grid>
         <TabControl HorizontalAlignment="Left" Height="634" Margin="0,36,0,0" VerticalAlignment="Top" Width="1053" TabStripPlacement="Left" BorderBrush="White" Background="{x:Null}">

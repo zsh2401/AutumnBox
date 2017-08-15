@@ -1,11 +1,5 @@
-﻿#define TEST_GITHUB
-using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
+﻿using Newtonsoft.Json.Linq;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutumnBox.Util
 {
@@ -25,10 +19,10 @@ namespace AutumnBox.Util
             return new Notice(d["content"].ToString(),int.Parse(d["version"].ToString()),d);
         }
         private static JObject GetSourceData() {
-#if TEST_GITHUB
-            return JObject.Parse(Tools.GetHtmlCode(noticeApiUrl));
-#else
+#if TEST_LOCAL_API
             return JObject.Parse(File.ReadAllText("../Api/gg.json"));
+#else
+            return JObject.Parse(Tools.GetHtmlCode(noticeApiUrl));
 #endif
         }
     }

@@ -36,3 +36,8 @@ E:\VSProject\CSharp\AutumnBox\AutumnBox\obj\Debug\UI\CustomBar.baml
 E:\VSProject\CSharp\AutumnBox\AutumnBox\obj\Debug\UI\CustomBar.g.cs
 E:\VSProject\CSharp\AutumnBox\AutumnBox\obj\Debug\UI\UpdateNoticeWindow.g.cs
 E:\VSProject\CSharp\AutumnBox\AutumnBox\obj\Debug\UI\UpdateNoticeWindow.baml
+E:\VSProject\CSharp\AutumnBox\bin\AutumnBox.exe.manifest
+E:\VSProject\CSharp\AutumnBox\bin\AutumnBox.application
+E:\VSProject\CSharp\AutumnBox\AutumnBox\obj\Debug\AutumnBox.TrustInfo.xml
+E:\VSProject\CSharp\AutumnBox\AutumnBox\obj\Debug\AutumnBox.exe.manifest
+E:\VSProject\CSharp\AutumnBox\AutumnBox\obj\Debug\AutumnBox.application

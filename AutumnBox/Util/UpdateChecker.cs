@@ -1,5 +1,4 @@
-﻿#define TEST_LOCAL_API
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
 using System;
 using System.IO;
 using System.Threading;
