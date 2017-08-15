@@ -80,7 +80,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DyanamicIcons.resx</DependentUpon>
     </Compile>
-    <Compile Include="SoftwareData.cs" />
+    <Compile Include="StaticData.cs" />
     <Compile Include="UI\AboutWindow.xaml.cs">
       <DependentUpon>AboutWindow.xaml</DependentUpon>
     </Compile>

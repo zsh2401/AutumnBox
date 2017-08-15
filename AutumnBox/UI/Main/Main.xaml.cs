@@ -34,7 +34,8 @@ namespace AutumnBox
 
             InitEvents();//绑定各种事件
             ChangeButtonAndImageByStatus(DeviceStatus.NO_DEVICE);//将所有按钮设置成关闭状态
-            
+            this.Title += StaticData.nowVersion.version;
+            Log.d("App Version", StaticData.nowVersion.version);
             webFlashHelper.Navigate(AppDomain.CurrentDomain.BaseDirectory + "HTML/flash_help.htm");
             webSaveDevice.Navigate(AppDomain.CurrentDomain.BaseDirectory + "HTML/save_fucking_device.htm");
             webFlashRecHelp.Navigate(AppDomain.CurrentDomain.BaseDirectory + "HTML/flash_recovery.htm");
@@ -47,8 +48,7 @@ namespace AutumnBox
             initNoticeThread.Name = "InitNoticeThread";
             initNoticeThread.Start();
 
-            core.devicesListener.Start();//开始设备监听
-            Log.d(TAG, "Init Window Finish");
+            
         }
 
         private void UpdateChecker_UpdateCheckFinish(bool haveUpdate, VersionInfo updateVersionInfo)
@@ -298,6 +298,16 @@ namespace AutumnBox
         private void TextBlock_MouseDown_8(object sender, MouseButtonEventArgs e)
         {
             Process.Start("explorer.exe", "https://github.com/zsh2401/AutumnBox");
+        }
+
+        private void MainWindow_Initialized(object sender, EventArgs e)
+        {
+            Log.d(TAG, "Init Window Finish");
+        }
+
+        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            core.devicesListener.Start();//开始设备监听
         }
     }
 }

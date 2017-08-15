@@ -26,7 +26,6 @@ namespace AutumnBox.Util
         }
         private void UpdateCheck()
         {
-            Thread.Sleep(6000);
             VersionInfo newVersionInfo = GetUpdateInfo();
             if (StaticData.nowVersion.build < newVersionInfo.build)
             {

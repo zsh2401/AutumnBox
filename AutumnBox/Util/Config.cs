@@ -32,7 +32,7 @@ namespace AutumnBox.Util
                 "create table stringValues (key char(20), value char(20)) ",
                 "insert into stringValues (key,value) values ('language','not_set')",
                 "insert into intValues (key,value) values ('passwordKey',1210626737)",
-                "insert into intValues (key,value) values ('notUpdateVersion',1)",
+                $"insert into intValues (key,value) values ('notUpdateVersion',{StaticData.nowVersion})",
                 "insert into boolValues (key,value) values ('isShowTur',1)",
         };
         private const string SQL_PATH = "atbrelease.data";

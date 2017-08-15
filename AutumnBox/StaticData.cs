@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace AutumnBox
 {
@@ -15,9 +16,9 @@ namespace AutumnBox
             {
                 return new VersionInfo
                 {
-                    content = "初号机",
+                    content = "",
                     build = 1,
-                    version = "0.11.0",
+                    version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString(),
                     time = new DateTime(2017, 8, 16)
                 };
             }
