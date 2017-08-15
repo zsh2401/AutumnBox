@@ -96,9 +96,8 @@
                                     <Image HorizontalAlignment="Left" Height="100" Margin="10,1,0,0" VerticalAlignment="Top" Width="100" Source="/AutumnBox;component/Images/DynamicIcons/poweron.png" RenderTransformOrigin="0.5,0.33"/>
                                     <Button x:Name="buttonUnlockMiSystem" Content="{StaticResource UnlockMiSystem}" Margin="258,10,0,0" VerticalAlignment="Top" Height="111" Background="#007C7272" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" FontSize="18" FontFamily="Microsoft YaHei UI Light" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" RenderTransformOrigin="0.494,0.085" Click="buttonUnlockMiSystem_Click" HorizontalAlignment="Left" Width="285"/>
                                     <Image HorizontalAlignment="Left" Height="91" Margin="110,10,0,0" VerticalAlignment="Top" Width="104" Source="/AutumnBox;component/Images/DynamicIcons/recovery.png"/>
-                                    <Button x:Name="buttonSideload" Content="{StaticResource SideloadFlash}" Margin="592,10,0,0" VerticalAlignment="Top" Height="55" Background="#007C7272" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" FontSize="18" FontFamily="Microsoft YaHei UI Light" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" RenderTransformOrigin="0.494,0.085" HorizontalAlignment="Left" Width="305" Click="buttonSideload_Click"/>
+                                    <Button x:Name="buttonSideload" Content="{StaticResource SideloadFlash}" Margin="592,10,0,0" VerticalAlignment="Top" Height="111" Background="#007C7272" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" FontSize="18" FontFamily="Microsoft YaHei UI Light" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" RenderTransformOrigin="0.494,0.085" HorizontalAlignment="Left" Width="305" Click="buttonSideload_Click"/>
                                     <Label Content="{StaticResource OnlyROP}" HorizontalAlignment="Left" Margin="19,101,0,0" VerticalAlignment="Top" Width="180" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Microsoft YaHei UI Light" FontSize="16" BorderBrush="White" Foreground="Black" Height="30"/>
-                                    <Button x:Name="buttonUnlockScreenLock" Content="{StaticResource UnlockScreenLock}" Margin="592,70,0,0" VerticalAlignment="Top" Height="51" Background="#007C7272" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" FontSize="18" FontFamily="Microsoft YaHei UI Light" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" RenderTransformOrigin="0.494,0.085" HorizontalAlignment="Left" Width="305" Click="buttonUnlockScreenLock_Click"/>
                                 </Grid>
                                 <Grid Margin="10,162,8,10" Background="#00000000">
                                     <Image HorizontalAlignment="Left" Height="98" Margin="49,0,0,0" VerticalAlignment="Top" Width="100" Source="/AutumnBox;component/Images/DynamicIcons/fastboot.png"/>
@@ -114,13 +113,19 @@
                 <Grid Background="#00E5E5E5" Margin="0,0,-3,7">
                     <TabControl HorizontalAlignment="Left" Margin="10,10,0,10" Width="947" Background="Transparent" BorderBrush="#FF009AD6">
                         <TabItem Header="{StaticResource FlashDevice}" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" Margin="-2,0,2,0" HorizontalAlignment="Right" Width="200" Background="#7F009AD6" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" FontSize="16" FontFamily="Microsoft YaHei UI Light">
-                            <Grid Background="#00E5E5E5" Margin="0,0,0,2"/>
+                            <Grid Background="#00E5E5E5" Margin="0,0,0,2">
+                                <WebBrowser x:Name="webFlashHelper" HorizontalAlignment="Left" Height="551" Margin="9,6,0,0" VerticalAlignment="Top" Width="922"/>
+                            </Grid>
                         </TabItem>
                         <TabItem Header="{StaticResource SaveDevice}" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" Margin="-2,0,2,0" HorizontalAlignment="Right" Width="200" Background="#7F009AD6" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" FontSize="16" FontFamily="Microsoft YaHei UI Light">
-                            <Grid Background="#00E5E5E5" Margin="0,0,0,2"/>
+                            <Grid Background="#00E5E5E5" Margin="0,0,0,2">
+                                <WebBrowser x:Name="webSaveDevice" HorizontalAlignment="Left" Height="551" Margin="9,6,0,0" VerticalAlignment="Top" Width="922"/>
+                            </Grid>
                         </TabItem>
                         <TabItem Header="{StaticResource FlashRecovery}" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" Margin="-2,0,2,0" HorizontalAlignment="Right" Width="200" Background="#7F009AD6" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" FontSize="16" FontFamily="Microsoft YaHei UI Light">
-                            <Grid Background="#00E5E5E5" Margin="0,0,0,2"/>
+                            <Grid Background="#00E5E5E5" Margin="0,0,0,2">
+                                <WebBrowser x:Name="webFlashRecHelp" HorizontalAlignment="Left" Height="551" Margin="9,6,0,0" VerticalAlignment="Top" Width="922"/>
+                            </Grid>
                         </TabItem>
                     </TabControl>
                 </Grid>

@@ -142,10 +142,18 @@ namespace AutumnBox.Basic
         /// <param name="id">设备id</param>
         public void UnlockScreenLock(object id)
         {
-            ae($"-s{id.ToString()} shell \"rm -rf /data/system/password.key\"");
-            ae($"-s{id.ToString()} shell \"rm -rf /data/system/gesture.key\"");
-            //Reboot(id.ToString(),RebootOptions.System);
+            ae($"-s{id.ToString()} root");
+            ae($"-s{id.ToString()} shell \"rm -rf /data/system/*password.key\"");
+            ae($"-s{id.ToString()} shell \"rm -rf /data/system/*gesture.key\"");
             UnlockScreenLockFinish?.Invoke(new OutputData());
+        }
+        /// <summary>
+        /// 关机
+        /// </summary>
+        /// <param name="id"></param>
+        public void Shutdown(object id)
+        {
+           //TODO
         }
     }
 }

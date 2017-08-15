@@ -8,6 +8,7 @@ using AutumnBox.Util;
 using Microsoft.Win32;
 using System;
 using System.Diagnostics;
+using System.IO;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows;
@@ -61,15 +62,13 @@ namespace AutumnBox
             //            }
             //#endif
             InitializeComponent();
-
+            webFlashHelper.Navigate(AppDomain.CurrentDomain.BaseDirectory + "HTML/flash_help.htm");
+            webSaveDevice.Navigate(AppDomain.CurrentDomain.BaseDirectory + "HTML/save_fucking_device.htm");
+            webFlashRecHelp.Navigate(AppDomain.CurrentDomain.BaseDirectory + "HTML/flash_recovery.htm");
             InitEvents();//绑定各种事件
             ChangeButtonAndImageByStatus(DeviceStatus.NO_DEVICE);//将所有按钮设置成关闭状态
             core.devicesListener.Start();//开始设备监听
             Log.d(TAG, "Init Window Finish");
-            string szTmp = "http://miui.com";
-            Uri uri = new Uri(szTmp);
-            //Web.Navigate(uri);
-
         }
 
         private void CustomTitleBar_MouseMove(object sender, MouseEventArgs e)
@@ -133,7 +132,7 @@ namespace AutumnBox
 
         private void DevicesListBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
-            if (this.DevicesListBox.SelectedIndex != -1)
+            if (this.DevicesListBox.SelectedIndex != -1)//如果选择了设备
             {
                 new Thread(new ParameterizedThreadStart(SetUIByDevices)).Start(this.DevicesListBox.SelectedItem.ToString());
                 rateBox = new RateBox(this);
