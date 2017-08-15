@@ -26,6 +26,10 @@ namespace AutumnBox.Util
             set { new ConfigSql().Set("intValues", "skipBuild", value); }
             get {return int.Parse(new ConfigSql().Read("intValues", "skipBuild").ToString());}
         }
+        internal static bool isFristLaunch {
+            set { new ConfigSql().Set("boolValues", "isFristLaunch", value); }
+            get { return bool.Parse(new ConfigSql().Read("boolValues", "isFristLaunch").ToString()); }
+        }
     }
 
     internal class ConfigSql
@@ -38,6 +42,7 @@ namespace AutumnBox.Util
                 "insert into intValues (key,value) values ('passwordKey',1210626737)",
                 $"insert into intValues (key,value) values ('skipBuild',{StaticData.nowVersion.build.ToString()})",
                 "insert into boolValues (key,value) values ('isShowTur',1)",
+                "insert into boolValues (key,value) values ('isFristLaunch',1)",
         };
         private const string SQL_PATH = "atbrelease.data";
         private SQLiteConnection dbConnection;

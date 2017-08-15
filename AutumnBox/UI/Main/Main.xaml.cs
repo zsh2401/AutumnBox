@@ -305,6 +305,10 @@ namespace AutumnBox
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
+            if (Config.isFristLaunch) {
+                MMessageBox.ShowDialog(this,FindResource("Notice2").ToString(),FindResource("FristLaunchNotice").ToString());
+                Config.isFristLaunch = false;
+            }
             core.devicesListener.Start();//开始设备监听
 #if DEBUG
             this.labelTitle.Content += "  " + StaticData.nowVersion.version + "_Debug";
