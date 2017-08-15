@@ -6,6 +6,7 @@
 
 
     <!--<s:String x:Key="AboutMessage">此版本不再提示</s:String>-->
+    <s:String x:Key="Notice_">公告</s:String>
     <s:String x:Key="SkipThisVersion">此版本不再提示</s:String>
     <s:String x:Key="GithubRelease">Github Release</s:String>
     <s:String x:Key="BaiduPan">百度网盘</s:String>

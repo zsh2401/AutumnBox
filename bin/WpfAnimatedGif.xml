@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WpfAnimatedGif</name>
+    </assembly>
+    <members>
+        <member name="T:WpfAnimatedGif.ImageBehavior">
+            <summary>
+            Provides attached properties that display animated GIFs in a standard Image control.
+            </summary>
+        </member>
+        <member name="M:WpfAnimatedGif.ImageBehavior.GetAnimatedSource(System.Windows.Controls.Image)">
+            <summary>
+            Gets the value of the <c>AnimatedSource</c> attached property for the specified object.
+            </summary>
+            <param name="obj">The element from which to read the property value.</param>
+            <returns>The currently displayed animated image.</returns>
+        </member>
+        <member name="M:WpfAnimatedGif.ImageBehavior.SetAnimatedSource(System.Windows.Controls.Image,System.Windows.Media.ImageSource)">
+            <summary>
+            Sets the value of the <c>AnimatedSource</c> attached property for the specified object.
+            </summary>
+            <param name="obj">The element on which to set the property value.</param>
+            <param name="value">The animated image to display.</param>
+        </member>
+        <member name="F:WpfAnimatedGif.ImageBehavior.AnimatedSourceProperty">
+            <summary>
+            Identifies the <c>AnimatedSource</c> attached property.
+            </summary>
+        </member>
+        <member name="M:WpfAnimatedGif.ImageBehavior.GetRepeatBehavior(System.Windows.Controls.Image)">
+            <summary>
+            Gets the value of the <c>RepeatBehavior</c> attached property for the specified object.
+            </summary>
+            <param name="obj">The element from which to read the property value.</param>
+            <returns>The repeat behavior of the animated image.</returns>
+        </member>
+        <member name="M:WpfAnimatedGif.ImageBehavior.SetRepeatBehavior(System.Windows.Controls.Image,System.Windows.Media.Animation.RepeatBehavior)">
+            <summary>
+            Sets the value of the <c>RepeatBehavior</c> attached property for the specified object.
+            </summary>
+            <param name="obj">The element on which to set the property value.</param>
+            <param name="value">The repeat behavior of the animated image.</param>
+        </member>
+        <member name="F:WpfAnimatedGif.ImageBehavior.RepeatBehaviorProperty">
+            <summary>
+            Identifies the <c>RepeatBehavior</c> attached property.
+            </summary>
+        </member>
+    </members>
+</doc>

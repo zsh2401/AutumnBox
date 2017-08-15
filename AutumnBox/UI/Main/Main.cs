@@ -114,7 +114,7 @@ namespace AutumnBox
         {
             textBoxGG.Dispatcher.Invoke(new Action(() =>
             {
-                textBoxGG.Text = Notice.GetNotice().content;
+                textBoxGG.Text = FindResource("Notice_") +" : " + Notice.GetNotice().content;
             }));
         }
             

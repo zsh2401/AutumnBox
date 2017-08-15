@@ -4,7 +4,7 @@
   <description asmv2:iconFile="title_icon.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="AutumnBox" version="0.11.0.8149" language="neutral" processorArchitecture="msil" />
+    <assemblyIdentity name="AutumnBox" version="0.11.0.8785" language="neutral" processorArchitecture="msil" />
     <commandLine file="AutumnBox.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -43,13 +43,13 @@
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AutumnBox.exe" size="2484208">
-      <assemblyIdentity name="AutumnBox" version="0.11.0.8149" language="neutral" processorArchitecture="msil" />
+      <assemblyIdentity name="AutumnBox" version="0.11.0.8785" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>DnAMrID/GlkI4Dl0mRduNAepzU7jCyxfCIF7hqSUUh0=</dsig:DigestValue>
+        <dsig:DigestValue>aYDnEwqzxkVcj+CylVogv1YiUCqQfDbbTSg20hGI1co=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -61,7 +61,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>kKVNBEiZ33q8eHaGn3FKHBcALkEwQQTwR/wxA7sA+4c=</dsig:DigestValue>
+        <dsig:DigestValue>vX9lBhE8KQGZGPTfXgRPVo/mX418uI4pSNFQWcbl3qw=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -109,7 +109,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>QBs7l8Z59la846fbI9pzjzn747r5vRrJWcDBXna0cCI=</dsig:DigestValue>
+        <dsig:DigestValue>UsMA4XcMR1zaDFLm+gWoSnG0AkVCxfz644j57eY9Su4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

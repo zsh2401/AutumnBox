@@ -21,6 +21,7 @@ namespace Tester
         {
             string strHTML = "";
             WebClient myWebClient = new WebClient();
+            //myWebClient.Headers
             Stream myStream = myWebClient.OpenRead(url);
             StreamReader sr = new StreamReader(myStream, Encoding.GetEncoding("utf-8"));
             strHTML = sr.ReadToEnd();
