@@ -1,5 +1,8 @@
 *.pdb
 *.log
 *.config
-AutumnBox.application
-AutumnBox.exe.manifest
+bin/AutumnBox.application
+bin/AutumnBox.exe.manifest
+bin/Tester.exe
+bin/app.publish
+bin/WpfAnimatedGif.xml
