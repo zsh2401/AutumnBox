@@ -1,3 +1,4 @@
+#files
 *.pdb
 *.log
 *.config
@@ -6,3 +7,6 @@ bin/AutumnBox.exe.manifest
 bin/Tester.exe
 bin/app.publish
 bin/WpfAnimatedGif.xml
+*.zip
+#dirs
+AutumnBox/obj/

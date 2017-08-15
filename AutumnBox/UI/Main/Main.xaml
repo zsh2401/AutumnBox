@@ -145,7 +145,6 @@
                                 <StackPanel HorizontalAlignment="Left" Height="100" Margin="426,318,0,0" VerticalAlignment="Top" Width="100"/>
                                 <TextBlock HorizontalAlignment="Left" Margin="33,343,0,0" TextWrapping="Wrap" Text="{DynamicResource TWRP }" VerticalAlignment="Top" TextDecorations="Underline" Foreground="#FF3FADE0" Width="393" FontSize="48" Height="75" MouseDown="TextBlock_MouseDown_6"/>
                                 <TextBlock HorizontalAlignment="Left" Margin="480,369,0,0" TextWrapping="Wrap" Text="{DynamicResource GAPPS}" VerticalAlignment="Top" TextDecorations="Underline" Foreground="#FF3FADE0" Width="393" FontSize="48" Height="75" MouseDown="TextBlock_MouseDown_7"/>
-                                <TextBlock HorizontalAlignment="Left" Margin="68,450,0,0" TextWrapping="Wrap" Text="{DynamicResource ABOS}" VerticalAlignment="Top" TextDecorations="Underline" Foreground="#FF3FADE0" Width="476" FontSize="48" Height="74" MouseDown="TextBlock_MouseDown_8"/>
                             </Grid>
                         </TabItem>
                     </TabControl>

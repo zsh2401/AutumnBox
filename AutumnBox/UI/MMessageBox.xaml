@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AutumnBox.UI"
         mc:Ignorable="d"
-        Title="MMessageBox" Height="329.488" Width="565.941" WindowStyle="None" WindowStartupLocation="CenterOwner" Foreground="White" ResizeMode="NoResize">
+        Title="MMessageBox" Height="300.488" Width="565.941" WindowStyle="None" WindowStartupLocation="CenterOwner" Foreground="White" ResizeMode="NoResize">
     <Grid x:Name="___无名称_">
-        <Button Content="{DynamicResource OK}" HorizontalAlignment="Left" Margin="201,275,0,0" VerticalAlignment="Top" Width="163" Height="44" BorderBrush="Black" Background="#00DDDDDD" FontFamily="Microsoft YaHei UI Light" Click="Button_Click"/>
-        <Label x:Name="labelTitle" Content="Title" HorizontalAlignment="Left" Width="566" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Microsoft YaHei UI Light" FontSize="20" MouseMove="labelTitle_MouseMove" Margin="0,0,0,276" Background="#FF009AD6"/>
-        <TextBlock x:Name="textBlockContent" TextAlignment="Center" HorizontalAlignment="Left" Margin="10,57,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="213" Width="546" FontFamily="Microsoft YaHei UI Light" FontSize="18" Foreground="Black"/>
+        <Label x:Name="labelTitle" Content="Title" HorizontalAlignment="Left" Width="566" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Microsoft YaHei UI Light" FontSize="20" MouseMove="labelTitle_MouseMove" Background="#FF009AD6" Height="53" VerticalAlignment="Top"/>
+        <TextBlock x:Name="textBlockContent" TextAlignment="Center" HorizontalAlignment="Left" Margin="10,57,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="232" Width="546" FontFamily="Microsoft YaHei UI Light" FontSize="18" Foreground="Black"/>
+        <Image x:Name="imageClose" Height="30" Margin="528,10,10,0" VerticalAlignment="Top" Source="/AutumnBox;component/Images/DynamicIcons/close_normal.png" MouseDown="imageClose_MouseDown" MouseEnter="imageClose_MouseEnter" MouseLeave="imageClose_MouseLeave"/>
 
     </Grid>
 </Window>

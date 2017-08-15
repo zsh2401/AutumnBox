@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AutumnBox.UI"
         mc:Ignorable="d"
-        Title="ContactWindow" Height="300" Width="565" ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterOwner">
+        Title="ContactWindow" Height="256.5" Width="565" ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterOwner">
     <Grid>
-        <Label x:Name="labelTitle" Content="{DynamicResource Contact}" HorizontalAlignment="Left" Width="566" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Microsoft YaHei UI Light" FontSize="20" MouseMove="labelTitle_MouseMove" Margin="0,0,-1,247" Background="#FF009AD6" Height="53.2"/>
-        <Label x:Name="labelClose" Content="{DynamicResource Close}" HorizontalAlignment="Left" Width="566" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Microsoft YaHei UI Light" FontSize="20" Margin="-1,247,0,0" Background="#FF009AD6" Height="53.2" MouseDown="labelTitle_Copy_MouseDown"/>
+        <Label x:Name="labelTitle" Content="{DynamicResource Contact}" HorizontalAlignment="Left" Width="566" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Microsoft YaHei UI Light" FontSize="20" MouseMove="labelTitle_MouseMove" Margin="0,0,-1,0" Background="#FF009AD6" Height="53.2" VerticalAlignment="Top"/>
         <Label Content="E-MAIL  : zsh2401@163.com&#xA;QQ : 1210626737&#xA;Coolapk(酷市场) : zsh2401&#xD;&#xA;MIUI BBS(MIUI论坛) : Ryme2401" HorizontalAlignment="Left" Margin="10,58,0,0" VerticalAlignment="Top" Height="184" Width="545" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Microsoft YaHei UI Light" FontSize="24"/>
+        <Image x:Name="imageClose" Height="30" Margin="527,10,10,0" VerticalAlignment="Top" Source="/AutumnBox;component/Images/DynamicIcons/close_normal.png" MouseDown="imageClose_MouseDown" MouseEnter="imageClose_MouseEnter" MouseLeave="imageClose_MouseLeave"/>
 
     </Grid>
 </Window>

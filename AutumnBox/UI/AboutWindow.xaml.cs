@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutumnBox.Images.DynamicIcons;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -26,28 +27,33 @@ namespace AutumnBox.UI
             InitializeComponent();
         }
 
-        private void Label_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (e.LeftButton == MouseButtonState.Pressed) {
-                DragMove();
-            }
-        }
-
-        private void labelClose_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            this.Close();
-        }
 
         private void labelTitle_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (e.LeftButton == MouseButtonState.Pressed) {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
                 DragMove();
             }
         }
 
         private void TextBlock_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            Process.Start("explorer.exe","https://github.com/zsh2401/AutumnBox/");
+            Process.Start("explorer.exe", "https://github.com/zsh2401/AutumnBox/");
+        }
+
+        private void imageClose_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void imageClose_MouseEnter(object sender, MouseEventArgs e)
+        {
+            this.imageClose.Source = Tools.BitmapToBitmapImage(DyanamicIcons.close_selected);
+        }
+
+        private void imageClose_MouseLeave(object sender, MouseEventArgs e)
+        {
+            this.imageClose.Source = Tools.BitmapToBitmapImage(DyanamicIcons.close_normal);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutumnBox.Images.DynamicIcons;
+using System;
 using System.Windows;
 using System.Windows.Input;
 
@@ -14,27 +15,41 @@ namespace AutumnBox.UI
             InitializeComponent();
             this.Topmost = true;
         }
-        public static void ShowDialog(Window owner, string title, string content) {
-            owner.Dispatcher.Invoke(new Action(() => {
+        public static void ShowDialog(Window owner, string title, string content)
+        {
+            owner.Dispatcher.Invoke(new Action(() =>
+            {
                 MMessageBox m = new MMessageBox();
                 m.textBlockContent.Text = content;
                 m.labelTitle.Content = title;
                 m.Owner = owner;
                 m.ShowDialog();
             }));
-            
+
         }
 
         private void labelTitle_MouseMove(object sender, MouseEventArgs e)
         {
-            if (e.LeftButton == MouseButtonState.Pressed) {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
                 this.DragMove();
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+
+        private void imageClose_MouseDown(object sender, MouseButtonEventArgs e)
         {
             this.Close();
+        }
+
+        private void imageClose_MouseEnter(object sender, MouseEventArgs e)
+        {
+            this.imageClose.Source = Tools.BitmapToBitmapImage(DyanamicIcons.close_selected);
+        }
+
+        private void imageClose_MouseLeave(object sender, MouseEventArgs e)
+        {
+            this.imageClose.Source = Tools.BitmapToBitmapImage(DyanamicIcons.close_normal);
         }
     }
 }
