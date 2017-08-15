@@ -74,7 +74,7 @@
                         <Button x:Name="buttonRebootToRecovery" Content="{StaticResource RebootToRecovery}" Margin="10,81,10,0" VerticalAlignment="Top" Height="41" Background="{x:Null}" BorderBrush="#33000000" FontSize="18" FontFamily="Microsoft YaHei UI Light" Click="buttonRebootToRecovery_Click" Foreground="Black"/>
                         <Button x:Name="buttonRebootToBootloader" Content="{StaticResource RebootToBootloader}" Margin="10,140,10,0" VerticalAlignment="Top" Height="41" Background="{x:Null}" BorderBrush="#33000000" FontSize="18" FontFamily="Microsoft YaHei UI Light" Click="buttonRebootToBootloader_Click" Foreground="Black"/>
                     </Grid>
-                    <TabControl HorizontalAlignment="Left" Margin="10,236,0,10" Width="960" Background="#B2FFFFFF" BorderBrush="#FF009AD6">
+                    <TabControl HorizontalAlignment="Left" Margin="10,248,0,10" Width="960" Background="#B2FFFFFF" BorderBrush="#FF009AD6">
                         <TabItem Header="{StaticResource NormalFunctions}" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" Margin="-2,0,2,0" HorizontalAlignment="Right" Width="200" Height="40" Background="#FF009AD6" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" FontSize="16" FontFamily="Microsoft YaHei UI Light">
                             <Grid Margin="0,0,0,-2" HorizontalAlignment="Left" Width="954">
                                 <Grid Margin="10,10,0,0" Height="131" VerticalAlignment="Top" Background="#00000000" HorizontalAlignment="Left" Width="923">
@@ -107,6 +107,7 @@
                             </Grid>
                         </TabItem>
                     </TabControl>
+                    <TextBox HorizontalAlignment="Left" Height="23" Margin="10,220,0,0" TextWrapping="Wrap" Text="..." VerticalAlignment="Top" Width="960"/>
                 </Grid>
             </TabItem>
             <TabItem Header="{DynamicResource Help}" Background="#FF009AD6" Margin="-2,0,0,-2" BorderBrush="#FF009AD6" MinHeight="160" FontFamily="Microsoft YaHei UI Light">
