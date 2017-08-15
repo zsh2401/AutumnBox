@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -42,6 +43,11 @@ namespace AutumnBox.UI
             if (e.LeftButton == MouseButtonState.Pressed) {
                 DragMove();
             }
+        }
+
+        private void TextBlock_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Process.Start("explorer.exe","https://github.com/zsh2401/AutumnBox/");
         }
     }
 }

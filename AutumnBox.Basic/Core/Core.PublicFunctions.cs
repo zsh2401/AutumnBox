@@ -155,5 +155,8 @@ namespace AutumnBox.Basic
         {
            //TODO
         }
+        public void KillAdb() {
+            ae("kill-server");
+        }
     }
 }

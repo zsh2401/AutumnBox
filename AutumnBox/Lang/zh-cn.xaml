@@ -5,6 +5,7 @@
     <s:String x:Key="LanguageName">简体中文</s:String>
 
 
+    <!--<s:String x:Key="AboutMessage">此版本不再提示</s:String>-->
     <s:String x:Key="SkipThisVersion">此版本不再提示</s:String>
     <s:String x:Key="GithubRelease">Github Release</s:String>
     <s:String x:Key="BaiduPan">百度网盘</s:String>
@@ -35,7 +36,11 @@
     <s:String x:Key="Warning">警告</s:String>
     <s:String x:Key="Tools">工具</s:String>
     <s:String x:Key="Normal">常规</s:String>
-    <s:String x:Key="AboutMessage">这是一个简单无比的项目</s:String>
+    <s:String x:Key="AboutMessage1">这是一个遵守GPL3.0协议的开源软件,请在必要的时候遵守开源协议</s:String>
+    <s:String x:Key="AboutMessage2">开发者电子邮件 zsh2401@163.com</s:String>
+    <s:String x:Key="AboutMessageOS">前往开源地址</s:String>
+    <s:String x:Key="AboutMessage_Thanks">鸣谢以下开源项目做出的卓越贡献</s:String>
+    <s:String x:Key="AboutMessage_OSList">Newtonsoft.json                         System.Data.Sqlite</s:String>
     <s:String x:Key="Command">命令行</s:String>
     <s:String x:Key="Menu">菜单</s:String>
     <s:String x:Key="About">关于</s:String>

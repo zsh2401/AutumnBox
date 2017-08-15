@@ -8,5 +8,22 @@
     <Grid Background="White">
         <Label x:Name="labelClose" Content="{DynamicResource Close}" HorizontalAlignment="Left" Width="618" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Microsoft YaHei UI Light" FontSize="20" Margin="0,373,0,0" Background="#FF009AD6" Height="53.2" MouseDown="labelClose_MouseDown"/>
         <Label x:Name="labelTitle" Content="{DynamicResource AboutThisSoftware}" HorizontalAlignment="Left" Width="618" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Microsoft YaHei UI Light" FontSize="20" Margin="0,0,0,373" Background="#FF009AD6" Height="53.2" MouseDown="labelTitle_MouseDown"/>
+        <Image HorizontalAlignment="Left" Height="79" Margin="10,58,0,0" VerticalAlignment="Top" Width="79" Source="/AutumnBox;component/title_icon.ico"/>
+        <Label Content="AutumnBox" HorizontalAlignment="Left" Margin="94,58,0,0" VerticalAlignment="Top" Height="79" Width="286" FontSize="48" FontFamily="Microsoft YaHei UI Light"/>
+        <Label Content="{DynamicResource AboutMessage1}" HorizontalAlignment="Left" Margin="10,153,0,0" VerticalAlignment="Top" Width="370" FontFamily="Microsoft YaHei UI Light"/>
+        <Label Content="{DynamicResource AboutMessage2}" HorizontalAlignment="Left" Margin="10,183,0,0" VerticalAlignment="Top" Width="228" FontFamily="Microsoft YaHei UI Light"/>
+        <Label Content="{DynamicResource AboutMessage_Thanks}" HorizontalAlignment="Left" Margin="10,314,0,0" VerticalAlignment="Top" Width="210" FontFamily="Microsoft YaHei UI Light"/>
+        <Label Content="{DynamicResource AboutMessage_OSList}" HorizontalAlignment="Left" Margin="10,344,0,0" VerticalAlignment="Top" Width="210" FontFamily="Microsoft YaHei UI Light" Height="24"/>
+        <TextBlock HorizontalAlignment="Left" Margin="389,157,0,0" TextWrapping="Wrap" Text="{DynamicResource AboutMessageOS}" VerticalAlignment="Top" Foreground="#FF52B08E" FontFamily="Microsoft YaHei UI Light" TextDecorations="Underline" Height="18" Width="76" RenderTransformOrigin="0.5,0.5" MouseDown="TextBlock_MouseDown">
+            <TextBlock.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.226"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TextBlock.RenderTransform>
+        </TextBlock>
+
     </Grid>
 </Window>

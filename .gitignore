@@ -1,0 +1,5 @@
+*.pdb
+*.log
+*.config
+AutumnBox.application
+AutumnBox.exe.manifest

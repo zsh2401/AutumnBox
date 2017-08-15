@@ -3,6 +3,7 @@ using AutumnBox.Util;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -42,6 +43,17 @@ namespace AutumnBox
             strHTML = sr.ReadToEnd();
             myStream.Close();
             return strHTML;
+        }
+        public static void KillProcess(string processName) {
+            Process[] process;//创建一个PROCESS类数组
+            process = Process.GetProcesses();//获取当前任务管理器所有运行中程序
+            foreach (Process proces in process)//遍历
+            {
+                if (proces.ProcessName == processName)
+                {
+                    proces.Kill();
+                }
+            }
         }
     }
 }

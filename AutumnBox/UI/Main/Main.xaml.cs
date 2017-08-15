@@ -31,7 +31,7 @@ namespace AutumnBox
 
             InitEvents();//绑定各种事件
             ChangeButtonAndImageByStatus(DeviceStatus.NO_DEVICE);//将所有按钮设置成关闭状态
-            
+
             Log.d("App Version", StaticData.nowVersion.version);
             webFlashHelper.Navigate(AppDomain.CurrentDomain.BaseDirectory + "HTML/flash_help.htm");
             webSaveDevice.Navigate(AppDomain.CurrentDomain.BaseDirectory + "HTML/save_fucking_device.htm");
@@ -48,9 +48,11 @@ namespace AutumnBox
 
         private void UpdateChecker_UpdateCheckFinish(bool haveUpdate, VersionInfo updateVersionInfo)
         {
-            if (haveUpdate) {
-                this.Dispatcher.Invoke(new Action(()=> {
-                    new UpdateNoticeWindow(this,updateVersionInfo).ShowDialog();
+            if (haveUpdate)
+            {
+                this.Dispatcher.Invoke(new Action(() =>
+                {
+                    new UpdateNoticeWindow(this, updateVersionInfo).ShowDialog();
                 }));
             }
         }
@@ -155,6 +157,7 @@ namespace AutumnBox
         private void MainWindow_Closed(object sender, EventArgs e)
         {
             this.Close();
+            core.KillAdb();
             Environment.Exit(0);
         }
 

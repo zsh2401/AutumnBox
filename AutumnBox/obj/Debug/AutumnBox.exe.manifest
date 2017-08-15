@@ -4,7 +4,7 @@
   <description asmv2:iconFile="title_icon.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="AutumnBox" version="0.11.0.6390" language="neutral" processorArchitecture="msil" />
+    <assemblyIdentity name="AutumnBox" version="0.11.0.7490" language="neutral" processorArchitecture="msil" />
     <commandLine file="AutumnBox.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AutumnBox.exe" size="2494448">
-      <assemblyIdentity name="AutumnBox" version="0.11.0.6390" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AutumnBox.exe" size="2495984">
+      <assemblyIdentity name="AutumnBox" version="0.11.0.7490" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>rnOhR0eLF7369dxnRj0ux2LjT7CRRF6NqOi0fUOIg30=</dsig:DigestValue>
+        <dsig:DigestValue>cSsZT6ZQQ33XDLx3d8rs01fkh7uu3gIILZNtoQ+hRrc=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

@@ -38,7 +38,7 @@ namespace Tester
             WebClient myWebClient = new WebClient();
             Stream myStream = myWebClient.OpenRead(ggUrl);
             StreamReader sr = new StreamReader(myStream, Encoding.GetEncoding("utf-8"));
-            strHTML = sr.ReadToEnd();
+            str = sr.ReadToEnd();
             myStream.Close();
 #endif
             JObject j = JObject.Parse(str);
