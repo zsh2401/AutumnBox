@@ -12,7 +12,7 @@ namespace AutumnBox
                 return new VersionInfo
                 {
                     content = "",
-                    build = 2,
+                    build = 3,
                     version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString(),
                     time = new DateTime(2017, 8, 16)
                 };

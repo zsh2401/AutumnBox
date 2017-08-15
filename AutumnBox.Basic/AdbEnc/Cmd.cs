@@ -53,7 +53,7 @@ namespace AutumnBox.Basic.AdbEnc
                 error = cmdProcess.StandardError.ReadToEnd();
             }catch { }
             try{cmdProcess.WaitForExit(); }catch { }
-            cmdProcess.Close();
+            try { cmdProcess.Close(); } catch { }
             OutputData o = new OutputData();
             o.output = output;
             o.error = error;

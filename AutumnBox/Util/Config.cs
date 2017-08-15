@@ -22,11 +22,13 @@ namespace AutumnBox.Util
             set { new ConfigSql().Set("stringValues", "language", value); }
             get { return new ConfigSql().Read("stringValues", "language").ToString(); }
         }
-        internal static int skipBuild {
+        internal static int skipBuild
+        {
             set { new ConfigSql().Set("intValues", "skipBuild", value); }
-            get {return int.Parse(new ConfigSql().Read("intValues", "skipBuild").ToString());}
+            get { return int.Parse(new ConfigSql().Read("intValues", "skipBuild").ToString()); }
         }
-        internal static bool isFristLaunch {
+        internal static bool isFristLaunch
+        {
             set { new ConfigSql().Set("boolValues", "isFristLaunch", value); }
             get { return bool.Parse(new ConfigSql().Read("boolValues", "isFristLaunch").ToString()); }
         }
@@ -113,13 +115,14 @@ namespace AutumnBox.Util
         public void Set(string table, string key, object value)
         {
             string sql;
-            if (value is int || value is uint || value is short || value is byte)
+            if (value is int)
             {
                 sql = $"update {table} set value={value} where key='{key}'";
             }
             else if (value is bool)
             {
-                sql = $"update {table} set value={Convert.ToInt32(value)} where key='{key}'";
+                Log.d("ConfigSql Set", Convert.ToInt32(value).ToString());
+                sql = $"update {table} set value={Convert.ToInt32(value).ToString()} where key='{key}'";
             }
             else if (value is string)
             {
@@ -138,8 +141,10 @@ namespace AutumnBox.Util
         /// <param name="c"></param>
         private void ExecuteSqlCommand(string c)
         {
-                SQLiteCommand command = new SQLiteCommand(c, dbConnection);
-                command.ExecuteNonQuery();
+            Log.d("ConfigSql", "ExecuteSql " + c);
+            SQLiteCommand command = new SQLiteCommand(c, dbConnection);
+            command.ExecuteNonQuery();
+            Log.d("ConfigSql", "ExecuteSqlFinish" + c);
         }
     }
 }
