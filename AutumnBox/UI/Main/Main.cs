@@ -1,4 +1,5 @@
 ﻿using AutumnBox.Basic.Devices;
+using AutumnBox.Debug;
 using AutumnBox.Images.DynamicIcons;
 using AutumnBox.Util;
 using System;
@@ -33,14 +34,12 @@ namespace AutumnBox
         private void SetUIByDevices(object arg)
         {
             string id = arg.ToString();
+            DeviceInfo info = core.GetDeviceInfo(id);
+            DeviceStatus status = info.deviceStatus;
             this.Dispatcher.Invoke(new Action(() =>
             {
-                //根据状态改变按钮状态和设备状态图片
-
-                //获取设备信息
-                DeviceInfo info = core.GetDeviceInfo(id);
                 //根据状态将图片和按钮状态进行设置
-                ChangeButtonAndImageByStatus(info.deviceStatus);
+                ChangeButtonAndImageByStatus(status);
                 //更改文字
                 this.AndroidVersionLabel.Content = info.androidVersion;
                 this.CodeLabel.Content = info.code;
