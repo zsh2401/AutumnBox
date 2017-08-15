@@ -50,7 +50,7 @@
                     </Label.Background>
                 </Label>
             </Grid>
-            <Label x:Name="labelTitle" Content="{DynamicResource ResourceKey=AppName}" HorizontalAlignment="Left" Margin="42,4,0,0" Width="261" Foreground="WhiteSmoke" FontFamily="Microsoft YaHei UI Light" FontSize="16" Height="27" VerticalAlignment="Top" VerticalContentAlignment="Center" Background="{x:Null}"/>
+            <Label x:Name="labelTitle" Content="{DynamicResource ResourceKey=AppName}" HorizontalAlignment="Left" Margin="42,4,0,0" Width="292" Foreground="WhiteSmoke" FontFamily="Microsoft YaHei UI Light" FontSize="16" Height="32" VerticalAlignment="Top" VerticalContentAlignment="Center" Background="{x:Null}"/>
             <Image HorizontalAlignment="Left" Height="27" Margin="10,4,0,0" VerticalAlignment="Top" Width="27" Source="/AutumnBox;component/Images/Icons/title_icon.png" Stretch="Fill" RenderTransformOrigin="0.579,-1.368"/>
         </Grid>
         <TabControl HorizontalAlignment="Left" Height="634" Margin="0,36,0,0" VerticalAlignment="Top" Width="1053" TabStripPlacement="Left" BorderBrush="White" Background="{x:Null}">

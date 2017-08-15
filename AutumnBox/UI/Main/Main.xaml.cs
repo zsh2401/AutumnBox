@@ -25,7 +25,6 @@ namespace AutumnBox
         private string nowDev { get { return DevicesListBox.SelectedItem.ToString(); } }
         public Window1()
         {
-
             Log.InitLogFile();
             Log.d(TAG, "Log Init Finish,Start Init Window");
             InitializeComponent();
@@ -45,8 +44,6 @@ namespace AutumnBox
             Thread initNoticeThread = new Thread(InitNotice);
             initNoticeThread.Name = "InitNoticeThread";
             initNoticeThread.Start();
-
-            
         }
 
         private void UpdateChecker_UpdateCheckFinish(bool haveUpdate, VersionInfo updateVersionInfo)
@@ -307,9 +304,9 @@ namespace AutumnBox
         {
             core.devicesListener.Start();//开始设备监听
 #if DEBUG
-            this.labelTitle.Content += "  " + StaticData.nowVersion.version + "Debug";
+            this.labelTitle.Content += "  " + StaticData.nowVersion.version + "_Debug";
 #else
-            this.labelTitle.Content += "  " + StaticData.nowVersion.version + "Realease";
+            this.labelTitle.Content += "  " + StaticData.nowVersion.version + "_Realease";
 #endif
 
         }

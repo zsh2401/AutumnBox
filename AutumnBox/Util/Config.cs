@@ -22,6 +22,10 @@ namespace AutumnBox.Util
             set { new ConfigSql().Set("stringValues", "language", value); }
             get { return new ConfigSql().Read("stringValues", "language").ToString(); }
         }
+        internal static int skipBuild {
+            set { new ConfigSql().Set("intValues", "skipBuild", value); }
+            get {return int.Parse(new ConfigSql().Read("intValues", "skipBuild").ToString());}
+        }
     }
 
     internal class ConfigSql
@@ -32,7 +36,7 @@ namespace AutumnBox.Util
                 "create table stringValues (key char(20), value char(20)) ",
                 "insert into stringValues (key,value) values ('language','not_set')",
                 "insert into intValues (key,value) values ('passwordKey',1210626737)",
-                $"insert into intValues (key,value) values ('notUpdateVersion',{StaticData.nowVersion})",
+                $"insert into intValues (key,value) values ('skipBuild',{StaticData.nowVersion.build.ToString()})",
                 "insert into boolValues (key,value) values ('isShowTur',1)",
         };
         private const string SQL_PATH = "atbrelease.data";
@@ -61,7 +65,7 @@ namespace AutumnBox.Util
         /// </summary>
         private void InitSql()
         {
-
+            try { dbConnection.Close(); } catch { }
             SQLiteConnection.CreateFile(SQL_PATH);
             dbConnection = new SQLiteConnection($"Data Source={SQL_PATH};Version=3;");
             dbConnection.Open();
@@ -104,7 +108,7 @@ namespace AutumnBox.Util
         public void Set(string table, string key, object value)
         {
             string sql;
-            if (value is int && value is uint && value is short && value is byte)
+            if (value is int || value is uint || value is short || value is byte)
             {
                 sql = $"update {table} set value={value} where key='{key}'";
             }

@@ -226,3 +226,50 @@
 [2:38:19] App Version : 0.11.0.4746
 [2:38:24] MainWindowEvent : Device Change
 [2:38:27] MainWindowEvent : SetUIFinish
+
+[3:3:16] MainWindow : Log Init Finish,Start Init Window
+[3:3:18] App Version : 0.11.0.5488
+[3:3:22] MainWindowEvent : Device Change
+[3:3:25] MainWindowEvent : SetUIFinish
+
+[3:19:17] MainWindow : Log Init Finish,Start Init Window
+[3:19:20] App Version : 0.11.0.5976
+
+[3:20:47] MainWindow : Log Init Finish,Start Init Window
+[3:20:49] App Version : 0.11.0.6021
+
+[3:22:24] MainWindow : Log Init Finish,Start Init Window
+[3:22:26] App Version : 0.11.0.6070
+
+[3:25:42] MainWindow : Log Init Finish,Start Init Window
+[3:25:44] App Version : 0.11.0.6169
+[3:25:51] MainWindowEvent : Device Change
+[3:25:54] MainWindowEvent : SetUIFinish
+
+[3:28:3] MainWindow : Log Init Finish,Start Init Window
+[3:28:5] App Version : 0.11.0.6239
+[3:28:10] MainWindowEvent : Device Change
+[3:28:13] MainWindowEvent : SetUIFinish
+
+[3:28:26] MainWindow : Log Init Finish,Start Init Window
+[3:28:27] App Version : 0.11.0.6252
+[3:28:30] MainWindowEvent : Device Change
+[3:28:33] MainWindowEvent : SetUIFinish
+
+[3:31:0] MainWindow : Log Init Finish,Start Init Window
+[3:31:3] App Version : 0.11.0.6328
+
+[3:31:57] MainWindow : Log Init Finish,Start Init Window
+[3:31:59] App Version : 0.11.0.6356
+[3:32:5] MainWindowEvent : Device Change
+[3:32:8] MainWindowEvent : SetUIFinish
+
+[3:32:30] MainWindow : Log Init Finish,Start Init Window
+[3:32:31] App Version : 0.11.0.6374
+[3:32:34] MainWindowEvent : Device Change
+[3:32:37] MainWindowEvent : SetUIFinish
+
+[3:33:4] MainWindow : Log Init Finish,Start Init Window
+[3:33:5] App Version : 0.11.0.6390
+[3:33:10] MainWindowEvent : Device Change
+[3:33:13] MainWindowEvent : SetUIFinish

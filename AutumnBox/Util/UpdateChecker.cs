@@ -26,7 +26,7 @@ namespace AutumnBox.Util
         private void UpdateCheck()
         {
             VersionInfo newVersionInfo = GetUpdateInfo();
-            if (StaticData.nowVersion.build < newVersionInfo.build)
+            if (StaticData.nowVersion.build < newVersionInfo.build&&Config.skipBuild != newVersionInfo.build)
             {
                 UpdateCheckFinish(true, newVersionInfo);
             }

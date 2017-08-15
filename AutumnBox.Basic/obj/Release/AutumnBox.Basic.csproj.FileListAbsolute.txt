@@ -4,3 +4,4 @@ E:\VSProject\CSharp\AutumnBox\AutumnBox.Basic\obj\Release\AutumnBox.Basic.Other.
 E:\VSProject\CSharp\AutumnBox\AutumnBox.Basic\obj\Release\AutumnBox.Basic.csproj.GenerateResource.Cache
 E:\VSProject\CSharp\AutumnBox\AutumnBox.Basic\obj\Release\AutumnBox.Basic.dll
 E:\VSProject\CSharp\AutumnBox\AutumnBox.Basic\obj\Release\AutumnBox.Basic.pdb
+E:\VSProject\CSharp\AutumnBox\AutumnBox.Basic\obj\Release\AutumnBox.Basic.csprojResolveAssemblyReference.cache
