@@ -4,8 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="AboutWindow" Height="369.5" Width="505" WindowStyle="None" WindowStartupLocation="CenterOwner" Background="{x:Null}" ResizeMode="NoResize">
-    <Grid Background="White">
+        Title="AboutWindow" Height="369.5" Width="505" WindowStyle="None" WindowStartupLocation="CenterOwner" Background="#FF009AD6" ResizeMode="NoResize">
+    <Grid Background="White" Margin="4,0,4,4">
         <Label x:Name="labelTitle" Content="{DynamicResource AboutThisSoftware}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Microsoft YaHei UI Light" FontSize="20" Background="#FF009AD6" Height="53" MouseDown="labelTitle_MouseDown" VerticalAlignment="Top"/>
         <Image HorizontalAlignment="Left" Height="79" Margin="10,58,0,0" VerticalAlignment="Top" Width="79" Source="/AutumnBox;component/title_icon.ico"/>
         <Label Content="AutumnBox" HorizontalAlignment="Left" Margin="94,58,0,0" VerticalAlignment="Top" Height="79" Width="286" FontSize="48" FontFamily="Microsoft YaHei UI Light"/>
@@ -23,7 +23,9 @@
                 </TransformGroup>
             </TextBlock.RenderTransform>
         </TextBlock>
-        <Image x:Name="imageClose" Height="30" Margin="467,10,0,0" VerticalAlignment="Top" Source="/AutumnBox;component/Images/DynamicIcons/close_normal.png" MouseDown="imageClose_MouseDown" MouseEnter="imageClose_MouseEnter" MouseLeave="imageClose_MouseLeave" HorizontalAlignment="Left" Width="28"/>
+        <Image x:Name="imageClose" Height="30" Margin="459,10,0,0" VerticalAlignment="Top" Source="/AutumnBox;component/Images/DynamicIcons/close_normal.png" MouseDown="imageClose_MouseDown" MouseEnter="imageClose_MouseEnter" MouseLeave="imageClose_MouseLeave" HorizontalAlignment="Left" Width="28"/>
+        <Label x:Name="labelCDate" Content="{DynamicResource CompileDate}" HorizontalAlignment="Left" Margin="385,73,0,0" VerticalAlignment="Top" Width="102" FontSize="9"/>
+        <Label x:Name="labelBuild" Content="Build" HorizontalAlignment="Left" Margin="385,116,0,0" VerticalAlignment="Top" Width="102" FontSize="9"/>
 
     </Grid>
 </Window>

@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutumnBox.Util
 {
-   public struct VersionInfo
+    public struct VersionInfo
     {
         public string content;
         public int build;

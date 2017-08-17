@@ -14,7 +14,7 @@ namespace AutumnBox
                     content = "",
                     build = 3,
                     version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString(),
-                    time = new DateTime(2017, 8, 16)
+                    time = new DateTime(2017, 8, 18)
                 };
             }
         }

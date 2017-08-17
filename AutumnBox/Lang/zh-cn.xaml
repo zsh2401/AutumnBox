@@ -5,6 +5,7 @@
     <s:String x:Key="LanguageName">简体中文</s:String>
 
 
+    <s:String x:Key="CompileDate">编译日期</s:String>
     <s:String x:Key="Notice2">本段文字只会显示一次!请仔细阅读!</s:String>
     <s:String x:Key="FristLaunchNotice">本软件还处于测试阶段,可能出现的bug希望您能立即反馈!另外,如果你有什么建议也可以通过关于->联系开发者中的联系方式告诉我,还有一件事!这个软件的某些操作可能会被杀软误报,请关闭杀软或者允许操作,我保证本软件没有恶意代码!</s:String>
     <s:String x:Key="Notice_">公告</s:String>

@@ -5,25 +5,24 @@ using System.Threading;
 
 namespace AutumnBox.Util
 {
+    /// <summary>
+    /// 更新检测器,使用Check方法检测完成后会执行UpdateCheckFinish事件
+    /// </summary>
     internal class UpdateChecker
     {
         public delegate void UpdateCheckFinishHandler(bool haveUpdate, VersionInfo updateVersionInfo);
         public event UpdateCheckFinishHandler UpdateCheckFinish;
-        public UpdateChecker()
-        {
-
-        }
         public void Check()
         {
             if (UpdateCheckFinish == null)
             {
                 throw new NotSetEventHandlerException("没有设置事件!这还检测个皮皮虾的更新啊!!!");
             }
-            Thread UpdateCheckThread = new Thread(UpdateCheck);
+            Thread UpdateCheckThread = new Thread(_Check);
             UpdateCheckThread.Name = "Update Check Thread";
             UpdateCheckThread.Start();
         }
-        private void UpdateCheck()
+        private void _Check()
         {
             VersionInfo newVersionInfo = GetUpdateInfo();
             if (StaticData.nowVersion.build < newVersionInfo.build&&Config.skipBuild != newVersionInfo.build)

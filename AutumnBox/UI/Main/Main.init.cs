@@ -5,7 +5,7 @@ using AutumnBox.UI;
 using AutumnBox.Util;
 using System;
 using System.Threading;
-/*此文件存放本类初始化的代码*/
+/*此文件存放本类部分初始化的代码*/
 namespace AutumnBox
 {
     public partial class Window1
@@ -39,8 +39,12 @@ namespace AutumnBox
             bool isDebug = false;
 #endif
             //这里其实不用这么麻烦的语法的...但是为了记下这个语法,我还是用一下吧...
+            
             this.labelTitle.Content +=
                 isDebug ? "  " + StaticData.nowVersion.version + "-Debug" : "  " + StaticData.nowVersion.version + "-Release";
+
+            //this.labelTitle.Content += "-Build:" + StaticData.nowVersion.build.ToString();
+            //this.labelTitle.Content += FindResource("CompileDate").ToString() + 
         }
 
         

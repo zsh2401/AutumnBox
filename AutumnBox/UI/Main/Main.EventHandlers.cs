@@ -47,13 +47,23 @@ namespace AutumnBox
             });
         }
 
+        /// <summary>
+        /// 获取公告完成的事件处理
+        /// </summary>
+        /// <param name="notice">获取到的公告</param>
         private void NoticeGetter_NoticeGetFinish(Notice notice)
         {
             textBoxGG.Dispatcher.Invoke(new Action(() =>
             {
-                textBoxGG.Text = FindResource("Notice_") + " : " + Notice.GetNotice().content;
+                textBoxGG.Text = FindResource("Notice_") + " : " + notice.content;
             }));
         }
+
+        /// <summary>
+        /// 检测更新完成后的处理
+        /// </summary>
+        /// <param name="haveUpdate">是否有更新</param>
+        /// <param name="updateVersionInfo">更新信息</param>
         private void UpdateChecker_UpdateCheckFinish(bool haveUpdate, VersionInfo updateVersionInfo)
         {
             if (haveUpdate)
@@ -64,7 +74,6 @@ namespace AutumnBox
                 }));
             }
         }
-
 
         /// <summary>
         /// 解锁小米系统完成时的事件
