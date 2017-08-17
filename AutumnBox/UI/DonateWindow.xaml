@@ -6,12 +6,12 @@
         xmlns:local="clr-namespace:AutumnBox.UI"
         xmlns:gif="http://wpfanimatedgif.codeplex.com"
         mc:Ignorable="d"
-        Title="DonateWindow" Height="617.161" Width="478.619" ResizeMode="NoResize" WindowStartupLocation="CenterOwner" WindowStyle="None">
-    <Grid>
-        <Image HorizontalAlignment="Left" Height="317" Margin="10,290,0,0" VerticalAlignment="Top" Width="217" Source="/AutumnBox;component/Images/alipay.jpg"/>
-        <Image HorizontalAlignment="Left" Height="317" Margin="227,290,0,0" VerticalAlignment="Top" Width="242" Source="/AutumnBox;component/Images/wechatpay.png"/>
+        Title="DonateWindow" Height="617.161" Width="478.619" ResizeMode="NoResize" WindowStartupLocation="CenterOwner" WindowStyle="None" Background="#FF009AD6">
+    <Grid Margin="3,0,3,3" Background="White">
+        <Image HorizontalAlignment="Left" Height="317" Margin="0,297,0,0" VerticalAlignment="Top" Width="217" Source="/AutumnBox;component/Images/alipay.jpg"/>
+        <Image HorizontalAlignment="Left" Height="317" Margin="233,297,-2,0" VerticalAlignment="Top" Width="242" Source="/AutumnBox;component/Images/wechatpay.png"/>
         <Label VerticalAlignment="Top" Height="40" Background="#FF009AD6" MouseMove="Label_MouseMove">
-            <TextBlock TextWrapping="Wrap" Text="{DynamicResource DonateWindowTitle}" Height="30" Width="419" FontFamily="Microsoft YaHei UI Light" FontSize="18" Foreground="White"/>
+            <TextBlock TextWrapping="Wrap" Text="{DynamicResource DonateWindowTitle}" Height="30" Width="98" FontFamily="Microsoft YaHei UI Light" FontSize="18" Foreground="White"/>
         </Label>
         <Image x:Name="imageClose" Height="30" Margin="441,0,10,582" VerticalAlignment="Bottom" Source="/AutumnBox;component/Images/DynamicIcons/close_normal.png" MouseDown="Image_MouseDown" MouseEnter="Image_MouseEnter" MouseLeave="imageClose_MouseLeave"/>
         <Image Name="img"
