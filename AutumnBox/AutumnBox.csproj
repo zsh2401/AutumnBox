@@ -146,6 +146,7 @@
       <DependentUpon>UpdateNoticeWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Util\Config.cs" />
+    <Compile Include="Util\ConfigSql.cs" />
     <Compile Include="Util\Exceptions.cs" />
     <Compile Include="Util\Notice.cs" />
     <Compile Include="Util\Tools.cs" />
