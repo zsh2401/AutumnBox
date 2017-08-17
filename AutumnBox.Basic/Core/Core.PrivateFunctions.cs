@@ -29,9 +29,8 @@ namespace AutumnBox.Basic
 
 #if DEBUG
             try { ht.Add("model", ae($" -s {id} shell \"cat /system/build.prop").output); }
-            catch { ht.Add("model", GET_FAIL); }
+            catch { ht.Add("all", GET_FAIL); }
 #endif
-
             return ht;
         }
 

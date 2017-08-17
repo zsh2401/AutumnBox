@@ -11,6 +11,7 @@ bin/WpfAnimatedGif.xml
 bin/*.exe
 bin/AutumnBox.basic.dll
 bin/WpfAnimatedGif.dll
+bin/atbrelease.data
 #dirs
 AutumnBox/obj/
 AutumnBox.basic/obj/
