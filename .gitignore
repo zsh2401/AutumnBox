@@ -8,8 +8,11 @@ bin/Tester.exe
 bin/app.publish
 bin/WpfAnimatedGif.xml
 *.zip
+bin/*.exe
+bin/*.dll
 #dirs
 AutumnBox/obj/
 AutumnBox.basic/obj/
 WpfAnimatedGif/obj/
 Tester/obj/
+
