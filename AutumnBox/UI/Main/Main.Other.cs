@@ -33,20 +33,21 @@ namespace AutumnBox
         /// <param name="id">设备的id</param>
         private void SetUIByDevices(object arg)
         {
-            string id = arg.ToString();
-            DeviceInfo info = core.GetDeviceInfo(id);
-            DeviceStatus status = info.deviceStatus;
-            this.Dispatcher.Invoke(new Action(() =>
-            {
-                //根据状态将图片和按钮状态进行设置
-                ChangeButtonAndImageByStatus(status);
-                //更改文字
-                this.AndroidVersionLabel.Content = info.androidVersion;
-                this.CodeLabel.Content = info.code;
-                this.ModelLabel.Content = Regex.Replace(info.brand, @"[\r\n]", "") + " " + info.model;
-                SetUIFinish?.Invoke();
-            }));
-
+            lock (setUILock) {
+                string id = arg.ToString();
+                DeviceInfo info = core.GetDeviceInfo(id);
+                DeviceStatus status = info.deviceStatus;
+                this.Dispatcher.Invoke(new Action(() =>
+                {
+                    //根据状态将图片和按钮状态进行设置
+                    ChangeButtonAndImageByStatus(status);
+                    //更改文字
+                    this.AndroidVersionLabel.Content = info.androidVersion;
+                    this.CodeLabel.Content = info.code;
+                    this.ModelLabel.Content = Regex.Replace(info.brand, @"[\r\n]", "") + " " + info.model;
+                    SetUIFinish?.Invoke();
+                }));
+            }
         }
         /// <summary>
         /// 根据设备状态改变按钮,图片等的状态
@@ -109,13 +110,6 @@ namespace AutumnBox
                     break;
             }
         }
-        private void InitNotice()
-        {
-            textBoxGG.Dispatcher.Invoke(new Action(() =>
-            {
-                textBoxGG.Text = FindResource("Notice_") +" : " + Notice.GetNotice().content;
-            }));
-        }
-            
+
     }
 }

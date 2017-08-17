@@ -27,16 +27,7 @@ namespace AutumnBox
             CustomInit();
         }
 
-        private void UpdateChecker_UpdateCheckFinish(bool haveUpdate, VersionInfo updateVersionInfo)
-        {
-            if (haveUpdate)
-            {
-                this.Dispatcher.Invoke(new Action(() =>
-                {
-                    new UpdateNoticeWindow(this, updateVersionInfo).ShowDialog();
-                }));
-            }
-        }
+
 
         private void CustomTitleBar_MouseMove(object sender, MouseEventArgs e)
         {

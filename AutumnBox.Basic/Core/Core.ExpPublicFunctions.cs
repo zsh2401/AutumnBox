@@ -5,9 +5,7 @@ using AutumnBox.Basic.Other;
 using System.Collections;
 using System.Diagnostics;
 using System.Threading;
-/*
- 此文件中的方法为可供外界调用的实验性方法
-     */
+/*此文件中的方法为可供外部调用的实验性方法*/
 namespace AutumnBox.Basic
 {
     public partial class Core
@@ -97,18 +95,10 @@ namespace AutumnBox.Basic
         /// <param name="id">设备id</param>
         public void UnlockScreenLock(object id)
         {
-            ae($"-s{id.ToString()} root");
-            ae($"-s{id.ToString()} shell \"rm -rf /data/system/*password.key\"");
-            ae($"-s{id.ToString()} shell \"rm -rf /data/system/*gesture.key\"");
-            UnlockScreenLockFinish?.Invoke(new OutputData());
-        }
-        /// <summary>
-        /// 关机
-        /// </summary>
-        /// <param name="id"></param>
-        public void Shutdown(object id)
-        {
-            //TODO
+            //ae($"-s{id.ToString()} root");
+            //ae($"-s{id.ToString()} shell \"rm -rf /data/system/*password.key\"");
+            //ae($"-s{id.ToString()} shell \"rm -rf /data/system/*gesture.key\"");
+            //UnlockScreenLockFinish?.Invoke(new OutputData());
         }
         /// <summary>
         /// 杀死ADB服务

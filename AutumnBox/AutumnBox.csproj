@@ -130,8 +130,9 @@
     <Compile Include="UI\DonateWindow.xaml.cs">
       <DependentUpon>DonateWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Main\Main.cs" />
+    <Compile Include="UI\Main\Main.Other.cs" />
     <Compile Include="UI\Main\Main.EventHandlers.cs" />
+    <Compile Include="UI\Main\Main.Init.cs" />
     <Compile Include="UI\Main\Main.xaml.cs">
       <DependentUpon>Main.xaml</DependentUpon>
     </Compile>
@@ -149,6 +150,7 @@
     <Compile Include="Util\ConfigSql.cs" />
     <Compile Include="Util\Exceptions.cs" />
     <Compile Include="Util\Notice.cs" />
+    <Compile Include="Util\NoticeGetter.cs" />
     <Compile Include="Util\Tools.cs" />
     <Compile Include="Util\UpdateChecker.cs" />
     <Compile Include="Util\VersionInfo.cs" />

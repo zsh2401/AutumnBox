@@ -6,6 +6,8 @@ using System.Collections;
 using System.Threading;
 using System.Windows;
 using AutumnBox.Debug;
+using AutumnBox.Util;
+
 namespace AutumnBox
 {
     /// <summary>
@@ -43,17 +45,26 @@ namespace AutumnBox
             {
                 MMessageBox.ShowDialog(this, FindResource("Notice").ToString(), FindResource("RebootOK").ToString());
             });
-            core.SideloadFinish += Core_SideloadFinish;
         }
 
-        private void Core_SideloadFinish(OutputData o)
+        private void NoticeGetter_NoticeGetFinish(Notice notice)
         {
-            Log.d(mweTag, "SideloadFlashFinish Event ");
-            this.rateBox.Dispatcher.Invoke(new Action(() =>
+            textBoxGG.Dispatcher.Invoke(new Action(() =>
             {
-                this.rateBox.Close();
+                textBoxGG.Text = FindResource("Notice_") + " : " + Notice.GetNotice().content;
             }));
         }
+        private void UpdateChecker_UpdateCheckFinish(bool haveUpdate, VersionInfo updateVersionInfo)
+        {
+            if (haveUpdate)
+            {
+                this.Dispatcher.Invoke(new Action(() =>
+                {
+                    new UpdateNoticeWindow(this, updateVersionInfo).ShowDialog();
+                }));
+            }
+        }
+
 
         /// <summary>
         /// 解锁小米系统完成时的事件

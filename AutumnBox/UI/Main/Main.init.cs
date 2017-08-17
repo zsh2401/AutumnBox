@@ -5,7 +5,7 @@ using AutumnBox.UI;
 using AutumnBox.Util;
 using System;
 using System.Threading;
-
+/*此文件存放本类初始化的代码*/
 namespace AutumnBox
 {
     public partial class Window1
@@ -13,6 +13,7 @@ namespace AutumnBox
         Core core = new Core();
         RateBox rateBox;
         string TAG = "MainWindow";
+        //现在选取的设备
         private string nowDev { get { return DevicesListBox.SelectedItem.ToString(); } }
         public void CustomInit() {
             InitEvents();//绑定各种事件
@@ -23,13 +24,14 @@ namespace AutumnBox
             webSaveDevice.Navigate(AppDomain.CurrentDomain.BaseDirectory + "HTML/save_fucking_device.htm");
             webFlashRecHelp.Navigate(AppDomain.CurrentDomain.BaseDirectory + "HTML/flash_recovery.htm");
 
+            //更新检测器
             UpdateChecker updateChecker = new UpdateChecker();
             updateChecker.UpdateCheckFinish += UpdateChecker_UpdateCheckFinish;
             updateChecker.Check();
-
-            Thread initNoticeThread = new Thread(InitNotice);
-            initNoticeThread.Name = "InitNoticeThread";
-            initNoticeThread.Start();
+            //公告获取器
+            NoticeGetter noticeGetter = new NoticeGetter();
+            noticeGetter.NoticeGetFinish += NoticeGetter_NoticeGetFinish;
+            noticeGetter.Get();
 
 #if DEBUG
             bool isDebug = true;
@@ -40,5 +42,7 @@ namespace AutumnBox
             this.labelTitle.Content +=
                 isDebug ? "  " + StaticData.nowVersion.version + "-Debug" : "  " + StaticData.nowVersion.version + "-Release";
         }
+
+        
     }
 }
