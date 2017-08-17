@@ -9,7 +9,8 @@ bin/app.publish
 bin/WpfAnimatedGif.xml
 *.zip
 bin/*.exe
-bin/*.dll
+bin/AutumnBox.basic.dll
+bin/WpfAnimatedGif.dll
 #dirs
 AutumnBox/obj/
 AutumnBox.basic/obj/

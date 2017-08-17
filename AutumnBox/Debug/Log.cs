@@ -1,4 +1,5 @@
-﻿using System;
+﻿//#define DELETE_LAST_LOG
+using System;
 using System.Diagnostics;
 using System.IO;
 
@@ -20,10 +21,10 @@ namespace AutumnBox.Debug
         }
         public static void InitLogFile()
         {
-            StreamWriter sw = new StreamWriter(LogPath, true);
-            sw.WriteLine("");
-            sw.Flush();
-            sw.Close();
+#if DELETE_LAST_LOG
+            File.Delete(LogPath);
+            File.Create(LogPath);
+#endif
         }
 
         static void WriteToLogFile(string message)

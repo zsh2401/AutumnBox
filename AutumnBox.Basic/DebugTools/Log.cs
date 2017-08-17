@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Diagnostics;
+using System.IO;
 
 namespace AutumnBox.Basic.DebugTools
 {
     /// <summary>
     /// 日志记录器
     /// </summary>
-    internal class Log
+    internal static class Log
     {
+        public static readonly string LOG_FILE = "basic.log";
         /// <summary>
         /// 打印信息并且存储到log文件
         /// </summary>
@@ -26,11 +28,14 @@ namespace AutumnBox.Basic.DebugTools
             Debug.WriteLine($"[{DateTime.Now.Hour}:{DateTime.Now.Minute}:{DateTime.Now.Second}] { tag} : {message}");
         }
         /// <summary>
-        /// 将传入的信息增添到log文件
+        /// 将传入的信息写到log文件(增添的方式)
         /// </summary>
         /// <param name="content"></param>
         static void WriteToLogFile(string content) {
-            
+            StreamWriter sw = new StreamWriter(LOG_FILE, true);
+            sw.WriteLine(content);
+            sw.Flush();
+            sw.Close();
         }
     }
 }
