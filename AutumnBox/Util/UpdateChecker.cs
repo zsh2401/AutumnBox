@@ -2,6 +2,7 @@
 using Newtonsoft.Json.Linq;
 using System;
 using System.IO;
+using System.Net;
 using System.Threading;
 
 namespace AutumnBox.Util
@@ -18,38 +19,32 @@ namespace AutumnBox.Util
         private const string TAG = "UpdateChecker";
         public void Check()
         {
-            
             if (UpdateCheckFinish == null)
             {
                 throw new NotSetEventHandlerException("没有设置事件!这还检测个皮皮虾的更新啊!!!");
             }
             Thread UpdateCheckThread = new Thread(_Check);
             UpdateCheckThread.Name = "Update Check Thread";
-#if! DEBUG
-            try
-            {
-                UpdateCheckThread.Start();
-            }
-            catch {
-                Log.d(TAG, "Check Update Fail");
-            }
-#else 
             UpdateCheckThread.Start();
-#endif
-
         }
         private void _Check()
         {
-            VersionInfo newVersionInfo = GetUpdateInfo();
-            if (new Version(StaticData.nowVersion.version) < new Version(newVersionInfo.version)//服务器端的版本号大于当前程序
+            try
+            {
+                VersionInfo newVersionInfo = GetUpdateInfo();
+                if (new Version(StaticData.nowVersion.version) < new Version(newVersionInfo.version)//服务器端的版本号大于当前程序
                 &&//并且
                 Config.skipVersion != newVersionInfo.version)//没有设置跳过这个版本
-            {
-                UpdateCheckFinish(true, newVersionInfo);
+                {
+                    UpdateCheckFinish(true, newVersionInfo);
+                }
+                else
+                {
+                    UpdateCheckFinish(false, newVersionInfo);
+                }
             }
-            else
-            {
-                UpdateCheckFinish(false, newVersionInfo);
+            catch (WebException e) {
+                Log.d(TAG,"Update Check Fail" + e.Message);
             }
         }
         private static VersionInfo GetUpdateInfo()
@@ -58,7 +53,14 @@ namespace AutumnBox.Util
 #if TEST_LOCAL_API
             j = JObject.Parse(File.ReadAllText(LOCAL_UPDATE_CHECK_FILE));
 #else
-            j = JObject.Parse(Tools.GetHtmlCode(UPDATE_CHECK_URL));
+            try
+            {
+                j = JObject.Parse(Tools.GetHtmlCode(UPDATE_CHECK_URL));
+            }
+            catch (WebException e){
+                throw e;
+            }
+            
 #endif
 #if! DEBUG
             return new VersionInfo
