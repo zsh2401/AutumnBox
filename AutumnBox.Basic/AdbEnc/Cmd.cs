@@ -12,7 +12,7 @@ namespace AutumnBox.Basic.AdbEnc
     /// <summary>
     /// 封装Cmd命令行
     /// </summary>
-    internal class Cmd:ICommandExecuter
+    internal class Cmd : ICommandExecuter
     {
         public const string NOT_FOUND = "NOT_FOUND";
         protected Process cmdProcess = new Process();
@@ -34,9 +34,11 @@ namespace AutumnBox.Basic.AdbEnc
         /// <returns>输出数据</returns>
         public OutputData Execute(string command)
         {
-            List<string> output = new List<string>();
-            string error = "";
-            Log.d(TAG,$"Execute Command {command}");
+            //List<string> output = new List<string>();
+            //string error = "";
+#if DEBUG
+            Log.d(TAG, $"Execute Command {command}");
+#endif
             cmdProcess.StartInfo.Arguments = "/c " + command;
             cmdProcess.Start();
             //获取执行命令时输出的内容
@@ -44,17 +46,19 @@ namespace AutumnBox.Basic.AdbEnc
             string str = x.ReadToEnd();
             //将原始输出分行并且存储到一个string列表
             string[] lines = str.Split(new string[] { "\r\n" }, StringSplitOptions.None);
-
+            //实例化一个OutputData,用于存储执行命令产生的输出
             OutputData o = new OutputData();
             try
             {
-                o.output = lines.ToList();
-                o.error = cmdProcess.StandardError.ReadToEnd();
-            }catch { }
-
-            try{cmdProcess.WaitForExit(); }catch { }
-            try { cmdProcess.Close(); } catch { }
-            
+                o.output = lines.ToList();//按行存储的正常输出List<string>
+                o.error = cmdProcess.StandardError.ReadToEnd();//错误输出
+            }
+            catch (Exception e)
+            {
+                Log.d(TAG, e.Message);
+            }
+            try { cmdProcess.WaitForExit(); } catch (Exception e) { Log.d(TAG, e.Message); }
+            try { cmdProcess.Close(); } catch (Exception e) { Log.d(TAG, e.Message); }
             return o;
         }
     }
