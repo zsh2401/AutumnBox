@@ -1,5 +1,6 @@
 ﻿using AutumnBox.Basic.AdbEnc;
 using AutumnBox.Basic.DebugTools;
+using AutumnBox.Basic.Other;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,9 +20,10 @@ namespace AutumnBox.Basic.Devices
         private Thread devicesListenerThread;
         private FastbootTools ft;
         private AdbTools at;
-        private string TAG = "DevicesListener";
-        private int interval;
-        internal DevicesListener(AdbTools at, FastbootTools ft,int interval = 500) {
+        private const string TAG = "DevicesListener";
+        private const int defaultInterval = 1000;
+        private readonly int interval;
+        internal DevicesListener(AdbTools at, FastbootTools ft,int interval = defaultInterval) {
             this.interval = interval;
             this.at = at;
             this.ft = ft;
@@ -30,6 +32,9 @@ namespace AutumnBox.Basic.Devices
             devicesListenerThread.Abort();
         }
         public void Start() {
+            if (DevicesChange == null) {
+                throw new EventNotBoundException();
+            }
             devicesListenerThread = new Thread(this.Listener);
             devicesListenerThread.Name = "DevicesListener";
             devicesListenerThread.Start();

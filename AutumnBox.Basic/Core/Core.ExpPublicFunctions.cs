@@ -5,59 +5,14 @@ using AutumnBox.Basic.Other;
 using System.Collections;
 using System.Diagnostics;
 using System.Threading;
-
+/*
+ 此文件中的方法为可供外界调用的实验性方法
+     */
 namespace AutumnBox.Basic
 {
     public partial class Core
     {
-        /// <summary>
-        /// 向一个处于fastboot模式的设备刷入电脑上指定的recovery镜像
-        /// </summary>
-        /// <param name="obj">这个参数必须为一个string列表,列表0是id,列表1是文件名</param>
-        public void FlashCustomRecovery(object obj)
-        {
-            string[] args = (string[])obj;
-            FlashRecoveryStart?.Invoke(args);
-            fe($" -s {args[0]} flash recovery \"{args[1]}\"");
-            fe($" -s  {args[0]}  boot {args[1]}");
-            FlashRecoveryFinish?.Invoke(new OutputData());
-        }
-        /// <summary>
-        /// 向一个设备推送文件
-        /// </summary>
-        /// <param name="obj">这个参数必须为一个string列表,列表0是id,列表1是文件名</param>
-        public void PushFileToSdcard(object obj)
-        {
-            string[] args = (string[])obj;
-            PushStart?.Invoke(obj);
-            OutputData output = ae($" -s {args[0]} push \"{args[1]}\" /sdcard/");
-            PushFinish?.Invoke(output);
-        }
-        /// <summary>
-        /// 重启设备
-        /// </summary>
-        /// <param name="id">设备id</param>
-        /// <param name="option">重启到的状态,不填默认重启到系统/param>
-        public void Reboot(string id, RebootOptions option = RebootOptions.System)
-        {
-            DeviceStatus ds = GetDeviceStatus(id);
-            OutputData outputData;
-            switch (option)
-            {
-                case RebootOptions.Bootloader:
-                    if (ds == DeviceStatus.FASTBOOT) outputData = fe($" -s {id} reboot-bootloader");
-                    else outputData = ae($" -s {id} reboot-bootloader");
-                    break;
-                case RebootOptions.Recovery:
-                    outputData = ae($" -s {id} reboot recovery");
-                    break;
-                default:
-                    if (ds == DeviceStatus.FASTBOOT) outputData = fe($" -s {id} reboot");
-                    else outputData = ae($" -s {id} reboot");
-                    break;
-            }
-            RebootFinish?.Invoke(outputData);
-        }
+       
         /// <summary>
         /// 重新给小米手机上锁
         /// </summary>
@@ -95,7 +50,7 @@ namespace AutumnBox.Basic
             Process.Start(files["sideloadbat"].ToString(), $"{a[0]} {a[1]}");
             SideloadFinish?.Invoke(new OutputData());
 #endif
-            
+
         }
         /// <summary>
         /// 获取设备信息
@@ -153,10 +108,22 @@ namespace AutumnBox.Basic
         /// <param name="id"></param>
         public void Shutdown(object id)
         {
-           //TODO
+            //TODO
         }
-        public void KillAdb() {
+        /// <summary>
+        /// 杀死ADB服务
+        /// </summary>
+        public void KillAdb()
+        {
             ae("kill-server");
+        }
+        /// <summary>
+        /// 激活黑域服务
+        /// </summary>
+        /// <param name="id">设备id</param>
+        public void ActivateBrevent(object id)
+        {
+            ae($"-s {id} shell 'sh /data/data/me.piebridge.brevent/brevent.sh'");
         }
     }
 }

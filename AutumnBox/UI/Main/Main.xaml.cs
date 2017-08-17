@@ -309,7 +309,7 @@ namespace AutumnBox
 #if DEBUG
             this.labelTitle.Content += "  " + StaticData.nowVersion.version + "-Debug";
 #else
-            this.labelTitle.Content += "  " + StaticData.nowVersion.version + "-Realease";
+            this.labelTitle.Content += "  " + StaticData.nowVersion.version + "-Release";
 #endif
             if (Config.isFristLaunch)
             {

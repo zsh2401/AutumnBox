@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Devices
 {
-    public class DevicesHashtable:Hashtable
+    public class DevicesHashtable : Hashtable
     {
         public DevicesHashtable() : base()
         {
@@ -65,21 +65,29 @@ namespace AutumnBox.Basic.Devices
         {
             return this == (DevicesHashtable)obj;
         }
-        public override object this[object index] {
-            get {
-                
+        public override object this[object index]
+        {
+            get
+            {
+
                 try
                 {
                     //Debug.WriteLine(index);
                     return base[index];
                 }
-                catch(System.NullReferenceException) {
+                catch (System.NullReferenceException)
+                {
                     return String.Empty;
                 }
             }
-            set {
+            set
+            {
                 base[index] = value;
             }
+        }
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
     }
 }

@@ -39,24 +39,22 @@ namespace AutumnBox.Basic.AdbEnc
             Log.d(TAG,$"Execute Command {command}");
             cmdProcess.StartInfo.Arguments = "/c " + command;
             cmdProcess.Start();
+            //获取执行命令时输出的内容
             StreamReader x = cmdProcess.StandardOutput;
             string str = x.ReadToEnd();
+            //将原始输出分行并且存储到一个string列表
             string[] lines = str.Split(new string[] { "\r\n" }, StringSplitOptions.None);
-            int i = 0;
+
+            OutputData o = new OutputData();
             try
             {
-                foreach (string line in lines)
-                {
-                    output.Add(line);
-                    i++;
-                }
-                error = cmdProcess.StandardError.ReadToEnd();
+                o.output = lines.ToList();
+                o.error = cmdProcess.StandardError.ReadToEnd();
             }catch { }
+
             try{cmdProcess.WaitForExit(); }catch { }
             try { cmdProcess.Close(); } catch { }
-            OutputData o = new OutputData();
-            o.output = output;
-            o.error = error;
+            
             return o;
         }
     }

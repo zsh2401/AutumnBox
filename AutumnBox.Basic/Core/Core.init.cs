@@ -2,10 +2,10 @@
 using AutumnBox.Basic.Devices;
 using System;
 using System.Collections;
-
+/*此文件中的代码是有关core的实例化的*/
 namespace AutumnBox.Basic
 {
-    public partial class Core
+    public sealed partial class Core
     {
         public delegate void FinishEventHandler(OutputData o);
         public delegate void StartEvnetHandler(object args);

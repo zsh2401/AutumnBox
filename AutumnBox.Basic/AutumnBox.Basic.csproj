@@ -44,14 +44,16 @@
     <Compile Include="AdbEnc\FastbootTools.cs" />
     <Compile Include="AdbEnc\Interfaces.cs" />
     <Compile Include="AdbEnc\OutputData.cs" />
+    <Compile Include="Core\Core.BasicPublicFuncions.cs" />
     <Compile Include="Core\Core.Init.cs" />
     <Compile Include="Core\Core.PrivateFunctions.cs" />
-    <Compile Include="Core\Core.PublicFunctions.cs" />
+    <Compile Include="Core\Core.ExpPublicFunctions.cs" />
     <Compile Include="DebugTools\Log.cs" />
     <Compile Include="Devices\DevicesHashtable.cs" />
     <Compile Include="Devices\DeviceInfoStruct.cs" />
     <Compile Include="Devices\DevicesListener.cs" />
     <Compile Include="Devices\DeviceStatusEnum.cs" />
+    <Compile Include="Other\EventNotBoundException.cs" />
     <Compile Include="Other\Paths.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -61,6 +63,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="AdbEnc\AdbTools.cs" />
     <Compile Include="StaticFunctions\DevicesTools.cs" />
+    <Compile Include="StaticFunctions\ExtendFunctions.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
