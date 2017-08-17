@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using AutumnBox.Debug;
+using Newtonsoft.Json.Linq;
 using System;
 using System.IO;
 using System.Threading;
@@ -12,15 +13,30 @@ namespace AutumnBox.Util
     {
         public delegate void UpdateCheckFinishHandler(bool haveUpdate, VersionInfo updateVersionInfo);
         public event UpdateCheckFinishHandler UpdateCheckFinish;
+        private const string UPDATE_CHECK_URL = "https://raw.githubusercontent.com/zsh2401/AutumnBox/master/Api/update2401.json";
+        private const string LOCAL_UPDATE_CHECK_FILE = "../Api/update2401.json";
+        private const string TAG = "UpdateChecker";
         public void Check()
         {
+            
             if (UpdateCheckFinish == null)
             {
                 throw new NotSetEventHandlerException("没有设置事件!这还检测个皮皮虾的更新啊!!!");
             }
             Thread UpdateCheckThread = new Thread(_Check);
             UpdateCheckThread.Name = "Update Check Thread";
+#if! DEBUG
+            try
+            {
+                UpdateCheckThread.Start();
+            }
+            catch {
+                Log.d(TAG, "Check Update Fail");
+            }
+#else 
             UpdateCheckThread.Start();
+#endif
+
         }
         private void _Check()
         {
@@ -40,23 +56,35 @@ namespace AutumnBox.Util
         {
             JObject j;
 #if TEST_LOCAL_API
-            j = JObject.Parse(File.ReadAllText("../Api/update.json"));
+            j = JObject.Parse(File.ReadAllText(LOCAL_UPDATE_CHECK_FILE));
 #else
-            j = JObject.Parse(Tools.GetHtmlCode("https://raw.githubusercontent.com/zsh2401/AutumnBox/master/Api/update.json"));
+            j = JObject.Parse(Tools.GetHtmlCode(UPDATE_CHECK_URL));
 #endif
+#if! DEBUG
             return new VersionInfo
             {
-                version = j["Version"].ToString(),
-                build = int.Parse(j["Build"].ToString()),
-                content = j["UpdateContent"].ToString(),
+                version = j["Release"]["Version"].ToString(),
+                content = j["Release"]["UpdateContent"].ToString(),
                 time = new DateTime(
-                    year: int.Parse(j["Date"][0].ToString()),
-                    month: int.Parse(j["Date"][1].ToString()),
-                    day: int.Parse(j["Date"][2].ToString())),
-                baiduPanDownloadUrl = j["BaiduPan"].ToString(),
-                githubReleaseDownloadUrl = j["GithubRelease"].ToString()
+                    year: int.Parse(j["Release"]["Date"][0].ToString()),
+                    month: int.Parse(j["Release"]["Date"][1].ToString()),
+                    day: int.Parse(j["Release"]["Date"][2].ToString())),
+                baiduPanDownloadUrl = j["Release"]["BaiduPan"].ToString(),
+                githubReleaseDownloadUrl = j["Release"]["GithubRelease"].ToString()
             };
-
+#elif DEBUG
+            return new VersionInfo
+            {
+                version = j["Debug"]["Version"].ToString(),
+                content = j["Debug"]["UpdateContent"].ToString(),
+                time = new DateTime(
+                    year: int.Parse(j["Debug"]["Date"][0].ToString()),
+                    month: int.Parse(j["Debug"]["Date"][1].ToString()),
+                    day: int.Parse(j["Debug"]["Date"][2].ToString())),
+                baiduPanDownloadUrl = j["Debug"]["BaiduPan"].ToString(),
+                githubReleaseDownloadUrl = j["Debug"]["GithubRelease"].ToString()
+            };
+#endif
         }
     }
 }

@@ -17,9 +17,6 @@ namespace AutumnBox.Util
         internal delegate void NoticeGetFinishHandler(Notice notice);
         internal event NoticeGetFinishHandler NoticeGetFinish;
         private static string noticeApiUrl = "https://raw.githubusercontent.com/zsh2401/AutumnBox/master/Api/gg.json";
-        internal readonly string content;
-        internal readonly int version;
-        private JObject sourceData;
         /// <summary>
         /// 开始获取公告
         /// </summary>
