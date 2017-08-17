@@ -19,31 +19,12 @@ namespace AutumnBox
     /// </summary>
     public partial class Window1 : Window
     {
-        Core core = new Core();
-        RateBox rateBox;
-        string TAG = "MainWindow";
-        private string nowDev { get { return DevicesListBox.SelectedItem.ToString(); } }
         public Window1()
         {
             Log.InitLogFile();
             Log.d(TAG, "Log Init Finish,Start Init Window");
             InitializeComponent();
-
-            InitEvents();//绑定各种事件
-            ChangeButtonAndImageByStatus(DeviceStatus.NO_DEVICE);//将所有按钮设置成关闭状态
-
-            Log.d("App Version", StaticData.nowVersion.version);
-            webFlashHelper.Navigate(AppDomain.CurrentDomain.BaseDirectory + "HTML/flash_help.htm");
-            webSaveDevice.Navigate(AppDomain.CurrentDomain.BaseDirectory + "HTML/save_fucking_device.htm");
-            webFlashRecHelp.Navigate(AppDomain.CurrentDomain.BaseDirectory + "HTML/flash_recovery.htm");
-
-            UpdateChecker updateChecker = new UpdateChecker();
-            updateChecker.UpdateCheckFinish += UpdateChecker_UpdateCheckFinish;
-            updateChecker.Check();
-
-            Thread initNoticeThread = new Thread(InitNotice);
-            initNoticeThread.Name = "InitNoticeThread";
-            initNoticeThread.Start();
+            CustomInit();
         }
 
         private void UpdateChecker_UpdateCheckFinish(bool haveUpdate, VersionInfo updateVersionInfo)
@@ -302,15 +283,16 @@ namespace AutumnBox
         {
             Log.d(TAG, "Init Window Finish");
         }
-
+        /// <summary>
+        /// 各方面加载完毕,毫秒毫秒钟就要开始渲染了!
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
             core.devicesListener.Start();//开始设备监听
-#if DEBUG
-            this.labelTitle.Content += "  " + StaticData.nowVersion.version + "-Debug";
-#else
-            this.labelTitle.Content += "  " + StaticData.nowVersion.version + "-Release";
-#endif
+
+            //哦,如果是第一次启动本软件,那么就显示一下提示吧!
             if (Config.isFristLaunch)
             {
                 MMessageBox.ShowDialog(this, FindResource("Notice2").ToString(), FindResource("FristLaunchNotice").ToString());
