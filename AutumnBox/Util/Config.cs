@@ -22,10 +22,10 @@ namespace AutumnBox.Util
             set { new ConfigSql().Set("stringValues", "language", value); }
             get { return new ConfigSql().Read("stringValues", "language").ToString(); }
         }
-        internal static int skipBuild
+        internal static string skipVersion
         {
-            set { new ConfigSql().Set("intValues", "skipBuild", value); }
-            get { return int.Parse(new ConfigSql().Read("intValues", "skipBuild").ToString()); }
+            set { new ConfigSql().Set("stringValues", "skipVersion", value); }
+            get { return new ConfigSql().Read("stringValues", "skipVersion").ToString(); }
         }
         internal static bool isFristLaunch
         {

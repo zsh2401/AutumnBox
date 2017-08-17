@@ -68,8 +68,11 @@ namespace Tester
             //Core c = new Core();
             //c.Sideload(new string[] { "9dd1b490", @"D:\☆下载暂存\aicp_cancro_n-12.1-NIGHTLY-20170812.zip" });
             //Console.WriteLine(Tools.GetHtmlCode("http://www.baidu.com"));
-            Print(Tools.GetHtmlCode("https://raw.githubusercontent.com/zsh2401/AutumnBox/master/Api/gg.json"));
+            //Print(Tools.GetHtmlCode("https://raw.githubusercontent.com/zsh2401/AutumnBox/master/Api/gg.json"));
             //Print(Tools.GetNotice());
+            Version v1 = new Version("0.12.8.11231");
+            Version v2 = new Version("1.0.1");
+            Print((v1 < v2).ToString());
         }
 
         public static void Print(string str) {

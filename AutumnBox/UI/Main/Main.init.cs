@@ -4,7 +4,6 @@ using AutumnBox.Debug;
 using AutumnBox.UI;
 using AutumnBox.Util;
 using System;
-using System.Threading;
 /*此文件存放本类部分初始化的代码*/
 namespace AutumnBox
 {

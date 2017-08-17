@@ -13,7 +13,7 @@ namespace AutumnBox.Util
                 "create table stringValues (key char(20), value char(20)) ",
                 "insert into stringValues (key,value) values ('language','not_set')",
                 "insert into intValues (key,value) values ('passwordKey',1210626737)",
-                $"insert into intValues (key,value) values ('skipBuild',{StaticData.nowVersion.build.ToString()})",
+                $"insert into stringValues (key,value) values ('skipVersion','{StaticData.nowVersion.version.ToString()}')",
                 "insert into boolValues (key,value) values ('isShowTur',1)",
                 "insert into boolValues (key,value) values ('isFristLaunch',1)",
         };

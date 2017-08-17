@@ -26,7 +26,6 @@ namespace AutumnBox.UI
             Owner = owner;
             InitializeComponent();
             this.labelCDate.Content += " " + StaticData.nowVersion.time.ToString("y-M-dd");
-            this.labelBuild.Content += " " + StaticData.nowVersion.build.ToString();
         }
 
         private void labelTitle_MouseDown(object sender, MouseButtonEventArgs e)

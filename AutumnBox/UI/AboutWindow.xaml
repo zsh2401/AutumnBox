@@ -24,8 +24,7 @@
             </TextBlock.RenderTransform>
         </TextBlock>
         <Image x:Name="imageClose" Height="30" Margin="459,10,0,0" VerticalAlignment="Top" Source="/AutumnBox;component/Images/DynamicIcons/close_normal.png" MouseDown="imageClose_MouseDown" MouseEnter="imageClose_MouseEnter" MouseLeave="imageClose_MouseLeave" HorizontalAlignment="Left" Width="28"/>
-        <Label x:Name="labelCDate" Content="{DynamicResource CompileDate}" HorizontalAlignment="Left" Margin="385,73,0,0" VerticalAlignment="Top" Width="102" FontSize="9"/>
-        <Label x:Name="labelBuild" Content="Build" HorizontalAlignment="Left" Margin="385,116,0,0" VerticalAlignment="Top" Width="102" FontSize="9"/>
+        <Label x:Name="labelCDate" Content="{DynamicResource CompileDate}" HorizontalAlignment="Left" Margin="385,58,0,0" VerticalAlignment="Top" Width="102" FontSize="9"/>
 
     </Grid>
 </Window>
