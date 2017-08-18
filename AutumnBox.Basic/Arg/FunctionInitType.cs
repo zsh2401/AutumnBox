@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Arg
 {
-    internal enum FunctionInitType
+#if DEBUG
+    public enum FunctionInitType
+#else
+     internal enum FunctionInitType
+#endif
     {
         All = 0,
         Adb,

@@ -12,7 +12,7 @@ namespace AutumnBox.Basic.AdbEnc
     /// <summary>
     /// 封装Cmd命令行
     /// </summary>
-    internal class Cmd : ICommandExecuter
+    internal class Cmd
     {
         public const string NOT_FOUND = "NOT_FOUND";
         protected Process cmdProcess = new Process();

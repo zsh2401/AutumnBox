@@ -15,7 +15,7 @@ namespace AutumnBox.Basic.Functions
     internal sealed class BrventServiceActivator : Function, IThreadFunctionRunner
     {
         public event EventsHandlers.FinishEventHandler ActivatedFinish;
-        private Thread mainThread;
+        //private Thread mainThread;
         public BrventServiceActivator() : base(FunctionInitType.Adb) { }
         /// <summary>
         /// 供外部调用的方法

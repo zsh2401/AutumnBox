@@ -10,7 +10,7 @@ namespace AutumnBox.Basic.AdbEnc
     /// <summary>
     /// 封装Adb工具
     /// </summary>
-    internal class AdbTools:Cmd,ITools, ICommandExecuter
+    internal class AdbTools:Cmd,ITools
     {
         public AdbTools() :base(){
         }

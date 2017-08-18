@@ -9,7 +9,7 @@ namespace AutumnBox.Basic.AdbEnc
     /// <summary>
     /// 封装fastboot工具
     /// </summary>
-    internal class FastbootTools:Cmd,ITools, ICommandExecuter
+    internal class FastbootTools:Cmd,ITools
     {
         public FastbootTools():base()
         {

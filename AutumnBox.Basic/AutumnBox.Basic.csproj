@@ -54,14 +54,18 @@
     <Compile Include="Core\Core.PrivateFunctions.cs" />
     <Compile Include="Core\Core.ExpPublicFunctions.cs" />
     <Compile Include="DebugTools\Log.cs" />
+    <Compile Include="DebugTools\Tester.cs" />
     <Compile Include="Devices\DevicesHashtable.cs" />
     <Compile Include="Devices\DeviceInfoStruct.cs" />
     <Compile Include="Devices\DevicesListener.cs" />
     <Compile Include="Devices\DeviceStatusEnum.cs" />
+    <Compile Include="Devices\DevicesTools.cs" />
     <Compile Include="EventHandlers\Events.cs" />
+    <Compile Include="Functions\CustomRecoveryFlasher.cs" />
     <Compile Include="Functions\FileSender.cs" />
     <Compile Include="Functions\Function.cs" />
     <Compile Include="Functions\IFunctionRunner.cs" />
+    <Compile Include="Functions\RebootOperator.cs" />
     <Compile Include="Other\Exceptions.cs" />
     <Compile Include="Other\Paths.Designer.cs">
       <AutoGen>True</AutoGen>

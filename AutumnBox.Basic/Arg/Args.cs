@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutumnBox.Basic.Devices;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,5 +18,10 @@ namespace AutumnBox.Basic.Arg
     public struct FileArgs:IArgs {
         public string deviceID;
         public string[] files;
+    }
+    public struct RebootArgs : IArgs {
+        public string deviceID;
+        public RebootOptions rebootOption;
+        public DeviceStatus nowStatus; 
     }
 }

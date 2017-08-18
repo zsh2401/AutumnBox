@@ -1,6 +1,10 @@
 ﻿using AutumnBox.Basic;
+using AutumnBox.Basic.Arg;
+using AutumnBox.Basic.Devices;
 using Newtonsoft.Json.Linq;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Diagnostics;
 namespace Tester
 {
@@ -68,12 +72,29 @@ namespace Tester
             //Core c = new Core();
             //c.Sideload(new string[] { "9dd1b490", @"D:\☆下载暂存\aicp_cancro_n-12.1-NIGHTLY-20170812.zip" });
             //Console.WriteLine(Tools.GetHtmlCode("http://www.baidu.com"));
-            try
-            {
-                Print(Tools.GetHtmlCode("https://raw.githubusercontent.com/zsh2401/AutumnBox/master/Api/update2401.jsonss"));
-            }
-            catch { }
+            //try
+            //{
+            //    Print(Tools.GetHtmlCode("https://raw.githubusercontent.com/zsh2401/AutumnBox/master/Api/update2401.jsonss"));
+            //}
+            //catch { }
+            //AutumnBox.Basic.DebugTools.Tester t = new AutumnBox.Basic.DebugTools.Tester();
+
+            //AutumnBox.Basic.DebugTools.Tester.Reboot("9dd1b490", RebootOptions.System);
+            //string mi4ID = "9dd1b490";
+            //Print(DevicesTools.GetDeviceStatus(mi4ID).ToString());
+            //Print(DevicesTools.GetBuildInfo(mi4ID)["name"].ToString());
+            //DevicesHashtable devices = DevicesTools.GetDevices();
+            //foreach (DictionaryEntry i in devices) {
+            //    Print(i.Key.ToString() + i.Value.ToString());
+            //}
+            //Print(DevicesTools.GetDeviceInfo(mi4ID).androidVersion);
+            //AutumnBox.Basic.StaticFunctions.DevicesTools
             
+            List<DeviceInfo> l = DevicesTools.GetDevicesInfo();
+            foreach (DeviceInfo i in l) {
+                Print(i.brand + i.model);
+            }
+            Console.ReadKey();
             //Print(Tools.GetNotice());
             //Version v1 = new Version("0.12.8.11231");
             //Version v2 = new Version("1.0.1");

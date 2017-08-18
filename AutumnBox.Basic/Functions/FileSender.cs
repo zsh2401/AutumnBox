@@ -14,10 +14,16 @@ namespace AutumnBox.Basic.Functions
     /// </summary>
     class FileSender:Function,IThreadFunctionRunner
     {
-        private Thread mainThread;
         public event EventsHandlers.SimpleFinishEventHandler sendAllFinish;
         public event EventsHandlers.SimpleFinishEventHandler sendSingleFinish;
         public FileSender() : base(FunctionInitType.Adb) { }
+        public FileSender(EventsHandlers.SimpleFinishEventHandler sendAllFinishHandler, 
+            EventsHandlers.SimpleFinishEventHandler sendSingleFinishHandler, 
+            IArgs args) : base(FunctionInitType.Adb) {
+            this.sendAllFinish += sendAllFinishHandler;
+            this.sendSingleFinish += sendSingleFinishHandler;
+            Run(args);
+        }
         public void Run(IArgs args) {
             if (sendAllFinish == null) {
                 throw new EventNotBoundException();
