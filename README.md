@@ -1,3 +1,3 @@
-![show](image/demo.png)
+![show](Image/demo.png)
 ##AutumnBox 
 README TEST
