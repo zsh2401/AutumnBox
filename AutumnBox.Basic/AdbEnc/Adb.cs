@@ -6,17 +6,19 @@ using System.Diagnostics;
 
 namespace AutumnBox.Basic.AdbEnc
 {
-    [Obsolete]
     /// <summary>
     /// 封装Adb工具
     /// </summary>
-    internal class AdbTools:Cmd,ITools, ICommandExecuter
+    internal class Adb:Cmd,ITools, ICommandExecuter
     {
-        public AdbTools() :base(){
+        public Adb() :base(){
         }
         internal new OutputData Execute(string command)
         {
             return base.Execute(Paths.ADB_TOOLS + " " + command);
+        }
+        internal OutputData Execute(string id, string command) {
+            return base.Execute(Paths.ADB_TOOLS + $" -s {id} " + command);
         }
         public DevicesHashtable GetDevices()
         {

@@ -40,10 +40,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdbEnc\Adb.cs" />
     <Compile Include="AdbEnc\Cmd.cs" />
+    <Compile Include="AdbEnc\Fastboot.cs" />
     <Compile Include="AdbEnc\FastbootTools.cs" />
     <Compile Include="AdbEnc\Interfaces.cs" />
     <Compile Include="AdbEnc\OutputData.cs" />
+    <Compile Include="Arg\Args.cs" />
+    <Compile Include="Arg\FunctionInitType.cs" />
+    <Compile Include="Arg\RebootOptions.cs" />
     <Compile Include="Core\Core.BasicPublicFuncions.cs" />
     <Compile Include="Core\Core.Init.cs" />
     <Compile Include="Core\Core.PrivateFunctions.cs" />
@@ -53,7 +58,11 @@
     <Compile Include="Devices\DeviceInfoStruct.cs" />
     <Compile Include="Devices\DevicesListener.cs" />
     <Compile Include="Devices\DeviceStatusEnum.cs" />
-    <Compile Include="Other\EventNotBoundException.cs" />
+    <Compile Include="EventHandlers\Events.cs" />
+    <Compile Include="Functions\FileSender.cs" />
+    <Compile Include="Functions\Function.cs" />
+    <Compile Include="Functions\IFunctionRunner.cs" />
+    <Compile Include="Other\Exceptions.cs" />
     <Compile Include="Other\Paths.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -64,6 +73,7 @@
     <Compile Include="AdbEnc\AdbTools.cs" />
     <Compile Include="StaticFunctions\DevicesTools.cs" />
     <Compile Include="StaticFunctions\ExtendFunctions.cs" />
+    <Compile Include="Functions\BrventServiceActivator.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

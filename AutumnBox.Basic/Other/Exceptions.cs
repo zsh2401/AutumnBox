@@ -7,4 +7,5 @@ using System.Threading.Tasks;
 namespace AutumnBox.Basic.Other
 {
     public class EventNotBoundException:Exception{ }
+    public class ArgErrorException { }
 }

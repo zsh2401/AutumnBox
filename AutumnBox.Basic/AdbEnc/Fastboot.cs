@@ -1,22 +1,24 @@
 ﻿using AutumnBox.Basic.Devices;
 using AutumnBox.Basic.Other;
-using System;
 using System.Collections.Generic;
 
 namespace AutumnBox.Basic.AdbEnc
 {
-    [Obsolete]
     /// <summary>
     /// 封装fastboot工具
     /// </summary>
-    internal class FastbootTools:Cmd,ITools, ICommandExecuter
+    internal class Fastboot:Cmd,ITools, ICommandExecuter
     {
-        public FastbootTools():base()
+        public Fastboot():base()
         {
         }
         public new OutputData Execute(string command)
         {
             return base.Execute(Paths.FASTBOOT_TOOLS + " " + command);
+        }
+        public new OutputData Execute(string id,string command)
+        {
+            return base.Execute(Paths.FASTBOOT_TOOLS + $" -s {id} " + command);
         }
         public DevicesHashtable GetDevices()
         {
