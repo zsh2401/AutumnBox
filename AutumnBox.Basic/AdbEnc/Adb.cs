@@ -31,5 +31,8 @@ namespace AutumnBox.Basic.AdbEnc
             }
             return hs;
         }
+        public static void KillAdb() {
+            new Adb().Execute("kill-server");
+        }
     }
 }

@@ -13,7 +13,7 @@ namespace Tester
     /// </summary>
     class Program
     {
-
+        static string mi4ID = "9dd1b490";
         static void Main(string[] args)
         {
             ////测试设备列表获取
@@ -80,7 +80,7 @@ namespace Tester
             //AutumnBox.Basic.DebugTools.Tester t = new AutumnBox.Basic.DebugTools.Tester();
 
             //AutumnBox.Basic.DebugTools.Tester.Reboot("9dd1b490", RebootOptions.System);
-            //string mi4ID = "9dd1b490";
+
             //Print(DevicesTools.GetDeviceStatus(mi4ID).ToString());
             //Print(DevicesTools.GetBuildInfo(mi4ID)["name"].ToString());
             //DevicesHashtable devices = DevicesTools.GetDevices();
@@ -89,11 +89,15 @@ namespace Tester
             //}
             //Print(DevicesTools.GetDeviceInfo(mi4ID).androidVersion);
             //AutumnBox.Basic.StaticFunctions.DevicesTools
-            
-            List<DeviceInfo> l = DevicesTools.GetDevicesInfo();
-            foreach (DeviceInfo i in l) {
-                Print(i.brand + i.model);
-            }
+
+            //List<DeviceInfo> l = DevicesTools.GetDevicesInfo();
+            //foreach (DeviceInfo i in l) {
+            //    Print(i.brand + i.model);
+            //}
+            //AutumnBox.Basic.DebugTools.Tester.SendFileToSdcard(mi4ID, new string[] { @"E:\AutumnBox\bin\AutumnBox.exe" });
+            //AutumnBox.Basic.DebugTools.Tester.Reboot(mi4ID,RebootOptions.Bootloader);
+            //AutumnBox.Basic.DebugTools.Tester.FlashCustomRecovery(mi4ID, @"D:\☆下载暂存\twrp-3.0.2-0-cancro-launguagefix.img");
+            //AutumnBox.Basic.DebugTools.Tester.Reboot(mi4ID,RebootOptions.System);
             Console.ReadKey();
             //Print(Tools.GetNotice());
             //Version v1 = new Version("0.12.8.11231");

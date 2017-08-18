@@ -28,7 +28,6 @@ namespace AutumnBox.Basic.Devices
                 if (!right.Contains(i.Key.ToString())) return false;//如果b不包含a的任何一个,排除
                 if (right[i.Value.ToString()] != left[i.Value.ToString()]) return false;//如果有一个值不同,也排除
             }
-
             return true;
         }
         /// <summary>

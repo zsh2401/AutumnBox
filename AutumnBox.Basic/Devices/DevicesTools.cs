@@ -9,8 +9,16 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic
 {
+    /// <summary>
+    /// 关于设备的一些静态函数
+    /// </summary>
     public static class DevicesTools
     {
+        /// <summary>
+        /// 获取设备状态
+        /// </summary>
+        /// <param name="id">设备id</param>
+        /// <returns>设备状态</returns>
         public static DeviceStatus GetDeviceStatus(string id)
         {
             switch (GetDevices()[id].ToString())
@@ -27,10 +35,19 @@ namespace AutumnBox.Basic
                     return DeviceStatus.NO_DEVICE;
             }
         }
+        /// <summary>
+        /// 获取设备列表
+        /// </summary>
+        /// <returns>设备列表</returns>
         public static DevicesHashtable GetDevices()
         {
             return new Adb().GetDevices() + new Fastboot().GetDevices();
         }
+        /// <summary>
+        /// 获取一个设备的信息
+        /// </summary>
+        /// <param name="id">设备的id</param>
+        /// <returns>设备信息</returns>
         public static DeviceInfo GetDeviceInfo(string id)
         {
             Hashtable ht = GetBuildInfo(id);
@@ -44,6 +61,11 @@ namespace AutumnBox.Basic
                 id = id
             };
         }
+        /// <summary>
+        /// 获取设备的build信息
+        /// </summary>
+        /// <param name="id">设备id</param>
+        /// <returns>设备build信息</returns>
         public static Hashtable GetBuildInfo(string id)
         {
             Adb adb = new Adb();
@@ -67,10 +89,19 @@ namespace AutumnBox.Basic
 #endif
             return ht;
         }
+        /// <summary>
+        /// 获取当前连接的所有设备的信息
+        /// </summary>
+        /// <returns>存储所有设备信息的list</returns>
         public static List<DeviceInfo> GetDevicesInfo()
         {
             return GetDevicesInfo(GetDevices());
         }
+        /// <summary>
+        /// 获取指定的多个设备的信息
+        /// </summary>
+        /// <param name="devices">需要获取的设备的列表</param>
+        /// <returns>存储所有设备信息的list</returns> 
         public static List<DeviceInfo> GetDevicesInfo(DevicesHashtable devices)
         {
             List<DeviceInfo> result = new List<DeviceInfo>();

@@ -1,4 +1,5 @@
 ﻿using AutumnBox.Basic.Arg;
+using AutumnBox.Basic.DebugTools;
 using AutumnBox.Basic.Other;
 using System.Threading;
 
@@ -9,8 +10,9 @@ namespace AutumnBox.Basic.Functions
     /// </summary>
     internal class CustomRecoveryFlasher:Function,IThreadFunctionRunner
     {
-        public event EventsHandlers.FinishEventHandler FlashFinish;
-        public CustomRecoveryFlasher():base(FunctionInitType.Adb) { }
+        public string TAG = "CustomRecoveryFlasher";
+        public event EventsHandlers.SimpleFinishEventHandler FlashFinish;
+        public CustomRecoveryFlasher():base(FunctionInitType.Fastboot) { }
         public void Run(IArgs args) {
             if (FlashFinish == null) { throw new EventNotBoundException(); }
             mainThread = new Thread(new ParameterizedThreadStart(_Run));
@@ -19,7 +21,9 @@ namespace AutumnBox.Basic.Functions
         }
         private void _Run(object args) {
             FileArgs _args = (FileArgs)args;
-            FlashFinish(adb.Execute(_args.deviceID,_args.files[0]));
+            Log.d(TAG,_args.deviceID);
+            fastboot.Execute(_args.deviceID, $"flash recovery  \"{_args.files[0]}\"");
+            FlashFinish();
         }
     }
 }
