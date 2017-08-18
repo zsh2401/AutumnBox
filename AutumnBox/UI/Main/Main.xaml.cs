@@ -178,8 +178,7 @@ namespace AutumnBox
         {
             if (!ChoiceBox.Show(this, TryFindResource("Warning").ToString(), FindResource("RelockWarning").ToString())) return;
             if (!ChoiceBox.Show(this, TryFindResource("Warning").ToString(), FindResource("RelockWarningAgain").ToString())) return;
-            new Thread(
-                new ParameterizedThreadStart(core.RelockMi)).Start(this.DevicesListBox.SelectedItem);
+            core.RelockMi(nowDev);
             ShowRateBox();
         }
 
@@ -210,24 +209,19 @@ namespace AutumnBox
 
         private void buttonSideload_Click(object sender, RoutedEventArgs e)
         {
-            if (core.GetDeviceStatus(DevicesListBox.SelectedItem.ToString()) != DeviceStatus.SIDELOAD)
-            {
-                MMessageBox.ShowDialog(this, FindResource("Notice").ToString(), FindResource("SideloadTur").ToString());
-                return;
-            }
-            if (!ChoiceBox.ShowDialog(this, FindResource("Notice").ToString(), FindResource("SideloadTip").ToString())) return;
-            OpenFileDialog fd = new OpenFileDialog();
-            fd.Multiselect = false;
-            fd.Filter = "刷机包文件|*.zip";
-            if (fd.ShowDialog() == true)
-            {
-                core.Sideload(new string[] { DevicesListBox.SelectedItem.ToString(), fd.FileName });
-            }
-        }
-
-        private void buttonUnlockScreenLock_Click(object sender, RoutedEventArgs e)
-        {
-            core.UnlockScreenLock(nowDev);
+            //if (DevicesTools.GetDeviceStatus(DevicesListBox.SelectedItem.ToString()) != DeviceStatus.SIDELOAD)
+            //{
+            //    MMessageBox.ShowDialog(this, FindResource("Notice").ToString(), FindResource("SideloadTur").ToString());
+            //    return;
+            //}
+            //if (!ChoiceBox.ShowDialog(this, FindResource("Notice").ToString(), FindResource("SideloadTip").ToString())) return;
+            //OpenFileDialog fd = new OpenFileDialog();
+            //fd.Multiselect = false;
+            //fd.Filter = "刷机包文件|*.zip";
+            //if (fd.ShowDialog() == true)
+            //{
+            //    core.Sideload(new string[] { DevicesListBox.SelectedItem.ToString(), fd.FileName });
+            //}
         }
 
         private void TextBlock_MouseDown_2(object sender, MouseButtonEventArgs e)

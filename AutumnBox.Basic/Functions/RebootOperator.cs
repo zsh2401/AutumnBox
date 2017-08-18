@@ -6,6 +6,9 @@ using System.Threading;
 
 namespace AutumnBox.Basic.Functions
 {
+    /// <summary>
+    /// 手机重启器
+    /// </summary>
     internal class RebootOperator : Function, IThreadFunctionRunner
     {
         public event EventsHandlers.FinishEventHandler RebootFinish;
@@ -16,7 +19,6 @@ namespace AutumnBox.Basic.Functions
         }
         public void Run(IArgs args)
         {
-            if (RebootFinish == null) { throw new EventNotBoundException(); }
             mainThread.Start(args);
         }
         private void _Run(object args)
@@ -48,7 +50,7 @@ namespace AutumnBox.Basic.Functions
             else {
                 throw new System.Exception();
             }
-            RebootFinish(commandExecuter.Execute(_args.deviceID,command));
+            RebootFinish?.Invoke(commandExecuter.Execute(_args.deviceID,command));
         }
     }
 }

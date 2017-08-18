@@ -27,9 +27,8 @@ namespace AutumnBox.Basic.Functions
             Args _a = (Args)args;
             adb.Execute(_a.deviceID, "root");
             Thread.Sleep(300);
-            OutputData o = adb.Execute(_a.deviceID, "disable - verity");
-            Thread.Sleep(300);
-            new RebootOperator().Run(new RebootArgs { deviceID = _a.deviceID,rebootOption = RebootOptions.System});
+            OutputData o = adb.Execute(_a.deviceID, "disable-verity");
+            adb.Execute(_a.deviceID,"reboot");
             UnlockFinish(o);
         }
     }

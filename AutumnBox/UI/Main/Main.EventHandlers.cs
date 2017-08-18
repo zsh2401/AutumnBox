@@ -46,6 +46,16 @@ namespace AutumnBox
                 core.devicesListener.Pause(2000);
                 MMessageBox.ShowDialog(this, FindResource("Notice").ToString(), FindResource("RebootOK").ToString());
             });
+            core.ActivatedBrvent += Core_ActivatedBrvent;
+        }
+
+        private void Core_ActivatedBrvent(OutputData _out)
+        {
+            this.Dispatcher.Invoke(new Action(() =>
+            {
+                HideRateBox();
+            }));
+            MMessageBox.ShowDialog(this,FindResource("Notice").ToString(),"现在,您的设备应该已经成功激活了黑域!");
         }
 
         /// <summary>
