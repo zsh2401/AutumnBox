@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="d:\vs2017\team tools\static analysis tools\fxcop\Xml\CodeAnalysisReport.xsl"?>
+<FxCopReport Version="15.0">
+ <Targets>
+  <Target Name="E:\VSProject\CSharp\AutumnBox\bin\AutumnBox.Basic.dll">
+   <Modules>
+    <Module Name="autumnbox.basic.dll">
+     <Namespaces>
+      <Namespace Name="AutumnBox.Basic">
+       <Types>
+        <Type Name="Core" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#ActivatedBrvent" Kind="Event" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DeclareEventHandlersCorrectly" Category="Microsoft.Design" CheckId="CA1009" Status="Active" Created="2017-08-18 23:13:53Z" FixCategory="Breaking">
+             <Issue Name="First" Certainty="95" Level="Error">将 'EventsHandlers.FinishEventHandler' 的第一个参数声明为一个名为“sender”的对象。</Issue>
+             <Issue Name="Second" Certainty="95" Level="Error">将 'EventsHandlers.FinishEventHandler' 的第二个参数声明为 EventArgs，或者声明为扩展 EventArgs 的类型的名为“e”的实例。</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#FlashCustomRecoveryFinish" Kind="Event" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DeclareEventHandlersCorrectly" Category="Microsoft.Design" CheckId="CA1009" Status="Active" Created="2017-08-18 23:13:53Z" FixCategory="Breaking">
+             <Issue Name="First" Certainty="95" Level="Error">将 'EventsHandlers.SimpleFinishEventHandler' 的第一个参数声明为一个名为“sender”的对象。</Issue>
+             <Issue Name="Second" Certainty="95" Level="Error">将 'EventsHandlers.SimpleFinishEventHandler' 的第二个参数声明为 EventArgs，或者声明为扩展 EventArgs 的类型的名为“e”的实例。</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#RebootFinish" Kind="Event" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DeclareEventHandlersCorrectly" Category="Microsoft.Design" CheckId="CA1009" Status="Active" Created="2017-08-18 23:13:53Z" FixCategory="Breaking">
+             <Issue Name="First" Certainty="95" Level="Error">将 'EventsHandlers.FinishEventHandler' 的第一个参数声明为一个名为“sender”的对象。</Issue>
+             <Issue Name="Second" Certainty="95" Level="Error">将 'EventsHandlers.FinishEventHandler' 的第二个参数声明为 EventArgs，或者声明为扩展 EventArgs 的类型的名为“e”的实例。</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#SendFileFinish" Kind="Event" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DeclareEventHandlersCorrectly" Category="Microsoft.Design" CheckId="CA1009" Status="Active" Created="2017-08-18 23:13:53Z" FixCategory="Breaking">
+             <Issue Name="First" Certainty="95" Level="Error">将 'EventsHandlers.SimpleFinishEventHandler' 的第一个参数声明为一个名为“sender”的对象。</Issue>
+             <Issue Name="Second" Certainty="95" Level="Error">将 'EventsHandlers.SimpleFinishEventHandler' 的第二个参数声明为 EventArgs，或者声明为扩展 EventArgs 的类型的名为“e”的实例。</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#XiaomiBootloaderRelockFinish" Kind="Event" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DeclareEventHandlersCorrectly" Category="Microsoft.Design" CheckId="CA1009" Status="Active" Created="2017-08-18 23:13:53Z" FixCategory="Breaking">
+             <Issue Name="First" Certainty="95" Level="Error">将 'EventsHandlers.FinishEventHandler' 的第一个参数声明为一个名为“sender”的对象。</Issue>
+             <Issue Name="Second" Certainty="95" Level="Error">将 'EventsHandlers.FinishEventHandler' 的第二个参数声明为 EventArgs，或者声明为扩展 EventArgs 的类型的名为“e”的实例。</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#XiaomiSystemUnlockFinish" Kind="Event" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DeclareEventHandlersCorrectly" Category="Microsoft.Design" CheckId="CA1009" Status="Active" Created="2017-08-18 23:13:53Z" FixCategory="Breaking">
+             <Issue Name="First" Certainty="95" Level="Error">将 'EventsHandlers.FinishEventHandler' 的第一个参数声明为一个名为“sender”的对象。</Issue>
+             <Issue Name="Second" Certainty="95" Level="Error">将 'EventsHandlers.FinishEventHandler' 的第二个参数声明为 EventArgs，或者声明为扩展 EventArgs 的类型的名为“e”的实例。</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+      <Namespace Name="AutumnBox.Basic.AdbEnc">
+       <Types>
+        <Type Name="Cmd" Kind="Class" Accessibility="Assembly" ExternallyVisible="False">
+         <Messages>
+          <Message TypeName="TypesThatOwnDisposableFieldsShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1001" Status="Active" Created="2017-08-18 23:13:53Z" FixCategory="NonBreaking">
+           <Issue Name="NonBreaking" Certainty="95" Level="CriticalError">在 'Cmd' 上实现 IDisposable，因为它创建下列 IDisposable 类型的成员: 'Process'。</Issue>
+          </Message>
+         </Messages>
+        </Type>
+       </Types>
+      </Namespace>
+      <Namespace Name="AutumnBox.Basic.Devices">
+       <Types>
+        <Type Name="DevicesHashtable" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="MarkISerializableTypesWithSerializable" Category="Microsoft.Usage" CheckId="CA2237" Status="Active" Created="2017-08-18 23:13:53Z" FixCategory="NonBreaking">
+           <Issue Certainty="75" Level="Warning">将 [Serializable] 添加到 'DevicesHashtable'，原因是此类型实现了 ISerializable。</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="DevicesListener" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="TypesThatOwnDisposableFieldsShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1001" Status="Active" Created="2017-08-18 23:13:53Z" FixCategory="DependsOnFix">
+           <Issue Name="DependsOnFix" Certainty="95" Level="CriticalError">在 'DevicesListener' 上实现 IDisposable，因为它创建下列 IDisposable 类型的成员: 'Task'。如果以前提供过 'DevicesListener'，对于现有使用者来说，向此类型添加用于实现 IDisposable 的新成员属于重大更改。</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="#DevicesChange" Kind="Event" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DeclareEventHandlersCorrectly" Category="Microsoft.Design" CheckId="CA1009" Status="Active" Created="2017-08-18 23:13:53Z" FixCategory="Breaking">
+             <Issue Name="First" Certainty="95" Level="Error">将 'DevicesListener.DevicesChangeHandler' 的第一个参数声明为一个名为“sender”的对象。</Issue>
+             <Issue Name="Second" Certainty="95" Level="Error">将 'DevicesListener.DevicesChangeHandler' 的第二个参数声明为 EventArgs，或者声明为扩展 EventArgs 的类型的名为“e”的实例。</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+      <Namespace Name="AutumnBox.Basic.Other">
+       <Types>
+        <Type Name="EventNotBoundException" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="MarkISerializableTypesWithSerializable" Category="Microsoft.Usage" CheckId="CA2237" Status="Active" Created="2017-08-18 23:13:53Z" FixCategory="NonBreaking">
+           <Issue Certainty="95" Level="Error">将 [Serializable] 添加到 'EventNotBoundException'，原因是此类型实现了 ISerializable。</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="Paths" Kind="Class" Accessibility="Assembly" ExternallyVisible="False">
+         <Members>
+          <Member Name="#.ctor()" Kind="Method" Static="False" Accessibility="Assembly" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="ExcludedInSource" Created="2017-08-18 23:13:53Z" FixCategory="NonBreaking" LastSeen="0001-01-01 00:00:00Z" />
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+     </Namespaces>
+    </Module>
+   </Modules>
+  </Target>
+ </Targets>
+ <Rules>
+  <Rule TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811">
+   <Name>避免使用未调用的私有代码</Name>
+   <Description>存在对外部不可见的未调用代码，该代码不是已知的运行时入口点。如果错误地引发此冲突，请向 Visual Studio 代码分析团队发送问题报告。</Description>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182264.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="performancerules.dll" Version="15.0.0.0" />
+  </Rule>
+  <Rule TypeName="DeclareEventHandlersCorrectly" Category="Microsoft.Design" CheckId="CA1009">
+   <Name>正确声明事件处理程序</Name>
+   <Description>按照约定，.NET 事件有两个参数，分别用于指定事件发送方和事件数据。事件处理程序签名应遵循以下形式: void MyEventHandler(object sender, EventArgs e)。“sender”参数的类型始终是 System.Object，即使该参数可能使用更具体的类型。“e”参数的类型始终是 System.EventArgs。不提供事件数据的事件应使用 System.EventHandler 委托类型。事件处理程序返回 void 以便将每个事件发送给多个目标方法。目标返回的任何值在第一次调用之后将会丢失。</Description>
+   <Resolution Name="First">将 {0} 的第一个参数声明为一个名为“sender”的对象。</Resolution>
+   <Resolution Name="Second">将 {0} 的第二个参数声明为 EventArgs，或者声明为扩展 EventArgs 的类型的名为“e”的实例。</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182133.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">Error</MessageLevel>
+   <File Name="designrules.dll" Version="15.0.0.0" />
+  </Rule>
+  <Rule TypeName="MarkISerializableTypesWithSerializable" Category="Microsoft.Usage" CheckId="CA2237">
+   <Name>用 SerializableAttribute 标记 ISerializable 类型</Name>
+   <Description>System.Runtime.Serialization.ISerializable 接口允许该类型自定义自身的序列化，而 Serializable 特性使运行时能够将该类型识别为可序列化的类型。</Description>
+   <Resolution Name="Default">将 [Serializable] 添加到 {0}，原因是此类型实现了 ISerializable。</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182350.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="usagerules.dll" Version="15.0.0.0" />
+  </Rule>
+  <Rule TypeName="TypesThatOwnDisposableFieldsShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1001">
+   <Name>具有可释放字段的类型应该是可释放的</Name>
+   <Description>声明可释放成员的类型也应实现 IDisposable。如果该类型没有任何非托管资源，请不要在其上实现终结器。</Description>
+   <Resolution Name="DependsOnFix">在 {0} 上实现 IDisposable，因为它创建下列 IDisposable 类型的成员: {1}。如果以前提供过 {0}，对于现有使用者来说，向此类型添加用于实现 IDisposable 的新成员属于重大更改。</Resolution>
+   <Resolution Name="NonBreaking">在 {0} 上实现 IDisposable，因为它创建下列 IDisposable 类型的成员: {1}。</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182172.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">CriticalError</MessageLevel>
+   <File Name="designrules.dll" Version="15.0.0.0" />
+  </Rule>
+ </Rules>
+ <Localized>
+  <String Key="Category">类别</String>
+  <String Key="Certainty">确定性</String>
+  <String Key="CollapseAll">全部折叠</String>
+  <String Key="CheckId">检查 ID</String>
+  <String Key="Error">错误</String>
+  <String Key="Errors">错误</String>
+  <String Key="ExpandAll">全部展开</String>
+  <String Key="Help">帮助</String>
+  <String Key="Line">行</String>
+  <String Key="Messages">消息</String>
+  <String Key="LocationNotStoredInPdb">[位置未存储在 Pdb 中]</String>
+  <String Key="Project">项目</String>
+  <String Key="Resolution">解析</String>
+  <String Key="Rule">规则</String>
+  <String Key="RuleFile">规则文件</String>
+  <String Key="RuleDescription">规则说明</String>
+  <String Key="Source">源</String>
+  <String Key="Status">状态</String>
+  <String Key="Target">目标</String>
+  <String Key="Warning">警告</String>
+  <String Key="Warnings">警告</String>
+  <String Key="ReportTitle">代码分析报告</String>
+ </Localized>
+</FxCopReport>

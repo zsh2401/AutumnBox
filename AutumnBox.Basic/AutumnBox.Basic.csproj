@@ -60,26 +60,27 @@
     <Compile Include="Devices\DevicesListener.cs" />
     <Compile Include="Devices\DeviceStatusEnum.cs" />
     <Compile Include="Devices\DevicesTools.cs" />
-    <Compile Include="EventHandlers\Events.cs" />
+    <Compile Include="EventHandlers\EventsHandlers.cs" />
     <Compile Include="Functions\CustomRecoveryFlasher.cs" />
     <Compile Include="Functions\FileSender.cs" />
     <Compile Include="Functions\Function.cs" />
     <Compile Include="Functions\IFunctionRunner.cs" />
     <Compile Include="Functions\RebootOperator.cs" />
+    <Compile Include="Functions\XiaomiBootloaderRelocker.cs" />
+    <Compile Include="Functions\XiaomiSystemUnlocker.cs" />
     <Compile Include="Other\Exceptions.cs" />
     <Compile Include="Other\Paths.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Paths.resx</DependentUpon>
     </Compile>
-    <Compile Include="Other\RebootOptions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="AdbEnc\AdbTools.cs" />
-    <Compile Include="StaticFunctions\DevicesTools.cs" />
-    <Compile Include="StaticFunctions\ExtendFunctions.cs" />
     <Compile Include="Functions\BrventServiceActivator.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="title_icon.ico" />
+  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Other\Paths.resx">
       <Generator>ResXFileCodeGenerator</Generator>

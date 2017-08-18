@@ -17,45 +17,55 @@ namespace AutumnBox.Basic.Devices
     {
         public delegate void DevicesChangeHandler(object obj, DevicesHashtable hs);
         public event DevicesChangeHandler DevicesChange;
-        private Thread devicesListenerThread;
-        private FastbootTools ft;
-        private AdbTools at;
+        private Task devicesListenerTask;
         private const string TAG = "DevicesListener";
         private const int defaultInterval = 1000;
         private readonly int interval;
-        internal DevicesListener(AdbTools at, FastbootTools ft,int interval = defaultInterval) {
+        [Obsolete]
+        internal DevicesListener(AdbTools at, FastbootTools ft, int interval = defaultInterval)
+        {
             this.interval = interval;
-            this.at = at;
-            this.ft = ft;
         }
-        public void Stop() {
-            devicesListenerThread.Abort();
+        internal DevicesListener() { }
+        public void Stop()
+        {
+            //devicesListenerTask
+            //Task.
         }
-        public void Start() {
-            if (DevicesChange == null) {
+        public void Pause(int second = 1000)
+        {
+            devicesListenerTask.Wait(second);
+        }
+        public void Start()
+        {
+            if (DevicesChange == null)
+            {
                 throw new EventNotBoundException();
             }
-            devicesListenerThread = new Thread(this.Listener);
-            devicesListenerThread.Name = "DevicesListener";
-            devicesListenerThread.Start();
+            devicesListenerTask = new Task(this.Listener);
+            devicesListenerTask.Start();
         }
-        private void Listener() {
-            DevicesHashtable last= new DevicesHashtable();
-            at.Execute("devices");
-            while (true) {
+        private void Listener()
+        {
+            DevicesHashtable last = new DevicesHashtable();
+            new Adb().Execute("devices");
+            while (true)
+            {
                 while (true)
                 {
                     //此处重载了运算符,当执行+时,会把两个hashmap的值相加并返回
-                    DevicesHashtable now = at.GetDevices() + ft.GetDevices();
+                    DevicesHashtable now = DevicesTools.GetDevices();
                     if (last != now)
                     {
                         last = now;
-                        Log.d(TAG,"Devices Change");
+                        Log.d(TAG, "Devices Change");
                         DevicesChange?.Invoke(this, now);
                     }
                     Thread.Sleep(interval);
                 }
             }
         }
+
+
     }
 }

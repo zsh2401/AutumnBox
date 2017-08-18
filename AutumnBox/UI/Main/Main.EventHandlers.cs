@@ -24,25 +24,26 @@ namespace AutumnBox
             //设备列表发生改变时的事件
             core.devicesListener.DevicesChange += new DevicesListener.DevicesChangeHandler(DevicesChange);
             //推送文件到手机完成时的事件
-            core.PushFinish += new Basic.Core.FinishEventHandler(PushFinish);
+            core.SendFileFinish += new Basic.EventsHandlers.SimpleFinishEventHandler(PushFinish);
             //刷入Recovery完成时的事件
-            core.FlashRecoveryFinish += new Basic.Core.FinishEventHandler(FuckFinish);
+            core.FlashCustomRecoveryFinish += new Basic.EventsHandlers.SimpleFinishEventHandler(FuckFinish);
             //设置UI完成时的事件
             this.SetUIFinish += new NormalEventHandler(() =>
             {
                 this.rateBox.Dispatcher.Invoke(new Action(() =>
                 {
-                    this.rateBox.Close();
+                    this.HideRateBox();
                 }));
                 Log.d(mweTag,"SetUIFinish");
             });
             //重新上锁小米手机完成时的事件
-            core.RelockMiFinish += new Basic.Core.FinishEventHandler(RelockMiFinish);
+            core.XiaomiBootloaderRelockFinish += new Basic.EventsHandlers.FinishEventHandler(RelockMiFinish);
             //解锁小米系统时的事件
-            core.UnlockMiSystemFinish += new Basic.Core.FinishEventHandler(UnlockMiSystemFinish);
+            core.XiaomiSystemUnlockFinish += new Basic.EventsHandlers.FinishEventHandler(UnlockMiSystemFinish);
             //重启完成时的事件
-            core.RebootFinish += new Basic.Core.FinishEventHandler((o) =>
+            core.RebootFinish += new Basic.EventsHandlers.FinishEventHandler((o) =>
             {
+                core.devicesListener.Pause(2000);
                 MMessageBox.ShowDialog(this, FindResource("Notice").ToString(), FindResource("RebootOK").ToString());
             });
         }
@@ -84,7 +85,7 @@ namespace AutumnBox
             Log.d(mweTag,"UnlockMiSystemFinish Event ");
             this.rateBox.Dispatcher.Invoke(new Action(() =>
             {
-                this.rateBox.Close();
+                this.HideRateBox();
             }));
         }
 
@@ -97,7 +98,7 @@ namespace AutumnBox
             Log.d(mweTag,"Relock Mi Finish");
             this.rateBox.Dispatcher.Invoke(new Action(() =>
             {
-                this.rateBox.Close(); 
+                this.HideRateBox(); 
             }));
             MMessageBox.ShowDialog(this, FindResource("Notice").ToString(), FindResource("IfAllOK").ToString());
         }
@@ -135,12 +136,12 @@ namespace AutumnBox
         /// 推送文件到SDCARD完成的事件
         /// </summary>
         /// <param name="outputData">操作时的输出数据</param>
-        private void PushFinish(OutputData outputData)
+        private void PushFinish()
         {
             Log.d(mweTag, "Push finish");
             this.rateBox.Dispatcher.Invoke(new Action(() =>
             {
-                this.rateBox.Close();
+                this.HideRateBox();
             }));
             MMessageBox.ShowDialog(this, Application.Current.FindResource("Notice").ToString(), Application.Current.FindResource("PushOK").ToString());
         }
@@ -149,12 +150,12 @@ namespace AutumnBox
         /// 刷入自定义Recovery完成时发生的事件
         /// </summary>
         /// <param name="outputData">操作时的数据数据</param>
-        private void FuckFinish(OutputData outputData)
+        private void FuckFinish()
         {
             Log.d(mweTag,"Flash Custom Recovery Finish");
             this.rateBox.Dispatcher.Invoke(new Action(() =>
             {
-                this.rateBox.Close();
+                this.HideRateBox();
             }));
             MMessageBox.ShowDialog(this, Application.Current.FindResource("Notice").ToString(), Application.Current.FindResource("FlashOK").ToString());
         }

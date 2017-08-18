@@ -23,6 +23,7 @@ namespace AutumnBox.Basic.Functions
             FileArgs _args = (FileArgs)args;
             Log.d(TAG,_args.deviceID);
             fastboot.Execute(_args.deviceID, $"flash recovery  \"{_args.files[0]}\"");
+            fastboot.Execute(_args.deviceID, $"boot \"{_args.files[0]}\"");
             FlashFinish();
         }
     }

@@ -1,4 +1,5 @@
 ﻿using AutumnBox.Basic;
+using AutumnBox.Basic.Arg;
 using AutumnBox.Basic.Devices;
 using AutumnBox.Debug;
 using AutumnBox.Images.DynamicIcons;
@@ -93,8 +94,7 @@ namespace AutumnBox
             if (this.DevicesListBox.SelectedIndex != -1)//如果选择了设备
             {
                 new Thread(new ParameterizedThreadStart(SetUIByDevices)).Start(this.DevicesListBox.SelectedItem.ToString());
-                rateBox = new RateBox(this);
-                rateBox.ShowDialog();
+                ShowRateBox();
             }
             else
             {
@@ -114,11 +114,10 @@ namespace AutumnBox
             fileDialog.Multiselect = false;
             if (fileDialog.ShowDialog() == true)
             {
-                Thread t = new Thread(new ParameterizedThreadStart(core.PushFileToSdcard));
-                string[] args = { this.DevicesListBox.SelectedItem.ToString(), fileDialog.FileName };
-                t.Start(args);
-                this.rateBox = new RateBox(this);
-                this.rateBox.ShowDialog();
+                core.PushFileToSdcard(nowDev, fileDialog.FileName);
+                //this.rateBox = new RateBox(this);
+                //this.rateBox.ShowDialog();
+                ShowRateBox();
             }
             else
             {
@@ -129,23 +128,24 @@ namespace AutumnBox
         private void MainWindow_Closed(object sender, EventArgs e)
         {
             this.Close();
+            core.devicesListener.Stop();
             core.KillAdb();
             Environment.Exit(0);
         }
 
         private void buttonRebootToRecovery_Click(object sender, RoutedEventArgs e)
         {
-            core.Reboot(DevicesListBox.SelectedItem.ToString(), Basic.Other.RebootOptions.Recovery);
+            core.Reboot(DevicesListBox.SelectedItem.ToString(), RebootOptions.Recovery);
         }
 
         private void buttonRebootToBootloader_Click(object sender, RoutedEventArgs e)
         {
-            core.Reboot(DevicesListBox.SelectedItem.ToString(), Basic.Other.RebootOptions.Bootloader);
+            core.Reboot(DevicesListBox.SelectedItem.ToString(), RebootOptions.Bootloader);
         }
 
         private void buttonRebootToSystem_Click(object sender, RoutedEventArgs e)
         {
-            core.Reboot(DevicesListBox.SelectedItem.ToString(), Basic.Other.RebootOptions.System);
+            core.Reboot(DevicesListBox.SelectedItem.ToString(), RebootOptions.System);
         }
 
         private void buttonFlashCustomRecovery_Click(object sender, RoutedEventArgs e)
@@ -157,11 +157,8 @@ namespace AutumnBox
             fileDialog.Multiselect = false;
             if (fileDialog.ShowDialog() == true)
             {
-                Thread t = new Thread(new ParameterizedThreadStart(core.FlashCustomRecovery));
-                string[] args = { this.DevicesListBox.SelectedItem.ToString(), fileDialog.FileName };
-                t.Start(args);
-                this.rateBox = new RateBox(this);
-                this.rateBox.ShowDialog();
+                core.FlashCustomRecovery(nowDev, fileDialog.FileName);
+                ShowRateBox();
             }
             else
             {
@@ -171,10 +168,10 @@ namespace AutumnBox
 
         private void buttonUnlockMiSystem_Click(object sender, RoutedEventArgs e)
         {
-            new Thread(
-                new ParameterizedThreadStart(core.UnlockMiSystem)).Start(this.DevicesListBox.SelectedItem);
-            this.rateBox = new RateBox(this);
-            rateBox.ShowDialog();
+            //new Thread(
+            //new ParameterizedThreadStart(core.UnlockMiSystem)).Start(this.DevicesListBox.SelectedItem);
+            core.UnlockMiSystem(nowDev);
+            ShowRateBox();
         }
 
         private void buttonRelockMi_Click(object sender, RoutedEventArgs e)
@@ -183,8 +180,7 @@ namespace AutumnBox
             if (!ChoiceBox.Show(this, TryFindResource("Warning").ToString(), FindResource("RelockWarningAgain").ToString())) return;
             new Thread(
                 new ParameterizedThreadStart(core.RelockMi)).Start(this.DevicesListBox.SelectedItem);
-            this.rateBox = new RateBox(this);
-            rateBox.ShowDialog();
+            ShowRateBox();
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
@@ -194,7 +190,6 @@ namespace AutumnBox
 
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)
         {
-            //MMessageBox.ShowDialog(this, FindResource("About").ToString(), FindResource("AboutMessage").ToString());
             new AboutWindow(this).ShowDialog();
         }
 

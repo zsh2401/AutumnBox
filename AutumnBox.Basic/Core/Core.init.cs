@@ -7,19 +7,18 @@ namespace AutumnBox.Basic
 {
     public sealed partial class Core
     {
-        public delegate void FinishEventHandler(OutputData o);
-        public delegate void StartEvnetHandler(object args);
-        public event StartEvnetHandler PushStart;
-        public event FinishEventHandler PushFinish;
-        public event FinishEventHandler RebootFinish;
-        public event StartEvnetHandler FlashRecoveryStart;
-        public event FinishEventHandler FlashRecoveryFinish;
-        public event FinishEventHandler UnlockMiSystemFinish;
-        public event FinishEventHandler RelockMiFinish;
-        public event FinishEventHandler SideloadFinish;
-        public event FinishEventHandler UnlockScreenLockFinish;
+        public event EventsHandlers.SimpleFinishEventHandler SendFileFinish;
+        public event EventsHandlers.FinishEventHandler ActivatedBrvent;
+        public event EventsHandlers.SimpleFinishEventHandler FlashCustomRecoveryFinish;
+        public event EventsHandlers.FinishEventHandler RebootFinish;
+        public event EventsHandlers.FinishEventHandler XiaomiSystemUnlockFinish;
+        public event EventsHandlers.FinishEventHandler XiaomiBootloaderRelockFinish;
+
+
         public DevicesListener devicesListener;
 
+        private Adb adb;
+        private Fastboot fastboot;
         private FastbootTools ft;
         private AdbTools at;
 
@@ -30,6 +29,8 @@ namespace AutumnBox.Basic
         public Core() {
             at = new AdbTools();
             ft = new FastbootTools();
+            adb = new Adb();
+            fastboot = new Fastboot();
             ae = (command) => {
                 return at.Execute(command);
             };

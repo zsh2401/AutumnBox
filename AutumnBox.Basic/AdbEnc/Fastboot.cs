@@ -16,7 +16,7 @@ namespace AutumnBox.Basic.AdbEnc
         {
             return base.Execute(Paths.FASTBOOT_TOOLS + " " + command);
         }
-        public new OutputData Execute(string id,string command)
+        public OutputData Execute(string id,string command)
         {
             return base.Execute(Paths.FASTBOOT_TOOLS + $" -s {id} " + command);
         }

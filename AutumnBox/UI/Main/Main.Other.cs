@@ -1,6 +1,8 @@
-﻿using AutumnBox.Basic.Devices;
+﻿using AutumnBox.Basic;
+using AutumnBox.Basic.Devices;
 using AutumnBox.Debug;
 using AutumnBox.Images.DynamicIcons;
+using AutumnBox.UI;
 using AutumnBox.Util;
 using System;
 using System.Text.RegularExpressions;
@@ -35,7 +37,7 @@ namespace AutumnBox
         {
             lock (setUILock) {
                 string id = arg.ToString();
-                DeviceInfo info = core.GetDeviceInfo(id);
+                DeviceInfo info = DevicesTools.GetDeviceInfo(id);
                 DeviceStatus status = info.deviceStatus;
                 this.Dispatcher.Invoke(new Action(() =>
                 {
@@ -110,6 +112,28 @@ namespace AutumnBox
                     break;
             }
         }
-
+        /// <summary>
+        /// 通过此方法来显示进度框可以确保不会同时出现多个进度窗口
+        /// </summary>
+        private void ShowRateBox() {
+            try
+            {
+                if (!this.rateBox.IsActive)
+                {
+                    this.rateBox = new RateBox(this);
+                    rateBox.ShowDialog();
+                }
+            }
+            catch {
+                this.rateBox = new RateBox(this);
+                rateBox.ShowDialog();
+            }
+        }
+        /// <summary>
+        /// 隐藏进度窗口
+        /// </summary>
+        private void HideRateBox() {
+            this.rateBox.Close();
+        }
     }
 }

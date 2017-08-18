@@ -14,7 +14,7 @@ namespace AutumnBox.Basic.Functions
     /// </summary>
     class XiaomiSystemUnlocker : Function, IThreadFunctionRunner
     {
-        public event EventsHandlers.FinishEventHandler unlockFinish;
+        public event EventsHandlers.FinishEventHandler UnlockFinish;
         private string TAG = "Xiaomi Bootloader Relock";
         public XiaomiSystemUnlocker():base(FunctionInitType.Adb) {
             mainThread = new Thread(new ParameterizedThreadStart(_Run));
@@ -30,7 +30,7 @@ namespace AutumnBox.Basic.Functions
             OutputData o = adb.Execute(_a.deviceID, "disable - verity");
             Thread.Sleep(300);
             new RebootOperator().Run(new RebootArgs { deviceID = _a.deviceID,rebootOption = RebootOptions.System});
-            unlockFinish(o);
+            UnlockFinish(o);
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using AutumnBox.Basic.AdbEnc;
 using AutumnBox.Basic.Arg;
 using AutumnBox.Basic.Devices;
+using AutumnBox.Basic.Functions;
 using AutumnBox.Basic.Other;
 using System;
 using System.Collections.Generic;
@@ -16,24 +17,21 @@ namespace AutumnBox.Basic
         /// 向一个处于fastboot模式的设备刷入电脑上指定的recovery镜像
         /// </summary>
         /// <param name="obj">这个参数必须为一个string列表,列表0是id,列表1是文件名</param>
-        public void FlashCustomRecovery(object obj)
+        public void FlashCustomRecovery(string id, string file)
         {
-            string[] args = (string[])obj;
-            FlashRecoveryStart?.Invoke(args);
-            fe($" -s {args[0]} flash recovery \"{args[1]}\"");
-            fe($" -s  {args[0]}  boot {args[1]}");
-            FlashRecoveryFinish?.Invoke(new OutputData());
+            CustomRecoveryFlasher flasher = new CustomRecoveryFlasher();
+            flasher.FlashFinish += this.FlashCustomRecoveryFinish;
+            flasher.Run(new FileArgs { deviceID = id, files = new string[] { file } });
         }
         /// <summary>
         /// 向一个设备推送文件
         /// </summary>
         /// <param name="obj">这个参数必须为一个string列表,列表0是id,列表1是文件名</param>
-        public void PushFileToSdcard(object obj)
+        public void PushFileToSdcard(string id, string file)
         {
-            string[] args = (string[])obj;
-            PushStart?.Invoke(obj);
-            OutputData output = ae($" -s {args[0]} push \"{args[1]}\" /sdcard/");
-            PushFinish?.Invoke(output);
+            FileSender fs = new FileSender();
+            fs.sendAllFinish += this.SendFileFinish;
+            fs.Run(new FileArgs { deviceID = id, files = new string[] { file } });
         }
         /// <summary>
         /// 重启设备
@@ -42,23 +40,13 @@ namespace AutumnBox.Basic
         /// <param name="option">重启到的状态,不填默认重启到系统/param>
         public void Reboot(string id, RebootOptions option = RebootOptions.System)
         {
-            DeviceStatus ds = GetDeviceStatus(id);
-            OutputData outputData;
-            switch (option)
-            {
-                case RebootOptions.Bootloader:
-                    if (ds == DeviceStatus.FASTBOOT) outputData = fe($" -s {id} reboot-bootloader");
-                    else outputData = ae($" -s {id} reboot-bootloader");
-                    break;
-                case RebootOptions.Recovery:
-                    outputData = ae($" -s {id} reboot recovery");
-                    break;
-                default:
-                    if (ds == DeviceStatus.FASTBOOT) outputData = fe($" -s {id} reboot");
-                    else outputData = ae($" -s {id} reboot");
-                    break;
-            }
-            RebootFinish?.Invoke(outputData);
+            RebootOperator ro = new RebootOperator();
+            ro.RebootFinish += this.RebootFinish;
+            ro.Run(new RebootArgs { deviceID = id, nowStatus = DevicesTools.GetDeviceStatus(id), rebootOption = option }); ;
+        }
+        public void KillAdb()
+        {
+            Adb.KillAdb();
         }
     }
 }

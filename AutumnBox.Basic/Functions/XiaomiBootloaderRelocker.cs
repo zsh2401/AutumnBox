@@ -10,7 +10,7 @@ namespace AutumnBox.Basic.Functions
 {
     internal class XiaomiBootloaderRelocker : Function, IThreadFunctionRunner
     {
-        public event EventsHandlers.FinishEventHandler relockFinish;
+        public event EventsHandlers.FinishEventHandler RelockFinish;
         private string TAG = "Xiaomi Bootloader Relock";
         public XiaomiBootloaderRelocker() : base(Arg.FunctionInitType.Fastboot)
         {
@@ -24,7 +24,7 @@ namespace AutumnBox.Basic.Functions
         private void _Run(object arg)
         {
             Args _args = (Args)arg;
-            relockFinish?.Invoke(fastboot.Execute(_args.deviceID, " oem lock"));
+            RelockFinish?.Invoke(fastboot.Execute(_args.deviceID, " oem lock"));
         }
     }
 }
