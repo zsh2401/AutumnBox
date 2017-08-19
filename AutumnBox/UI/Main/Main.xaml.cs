@@ -207,22 +207,22 @@ namespace AutumnBox
             Process.Start("explorer.exe", "https://www.lineageos.org/");
         }
 
-        private void buttonSideload_Click(object sender, RoutedEventArgs e)
-        {
-            //if (DevicesTools.GetDeviceStatus(DevicesListBox.SelectedItem.ToString()) != DeviceStatus.SIDELOAD)
-            //{
-            //    MMessageBox.ShowDialog(this, FindResource("Notice").ToString(), FindResource("SideloadTur").ToString());
-            //    return;
-            //}
-            //if (!ChoiceBox.ShowDialog(this, FindResource("Notice").ToString(), FindResource("SideloadTip").ToString())) return;
-            //OpenFileDialog fd = new OpenFileDialog();
-            //fd.Multiselect = false;
-            //fd.Filter = "刷机包文件|*.zip";
-            //if (fd.ShowDialog() == true)
-            //{
-            //    core.Sideload(new string[] { DevicesListBox.SelectedItem.ToString(), fd.FileName });
-            //}
-        }
+        //private void buttonSideload_Click(object sender, RoutedEventArgs e)
+        //{
+        //    if (DevicesTools.GetDeviceStatus(DevicesListBox.SelectedItem.ToString()) != DeviceStatus.SIDELOAD)
+        //    {
+        //        MMessageBox.ShowDialog(this, FindResource("Notice").ToString(), FindResource("SideloadTur").ToString());
+        //        return;
+        //    }
+        //    if (!ChoiceBox.ShowDialog(this, FindResource("Notice").ToString(), FindResource("SideloadTip").ToString())) return;
+        //    OpenFileDialog fd = new OpenFileDialog();
+        //    fd.Multiselect = false;
+        //    fd.Filter = "刷机包文件|*.zip";
+        //    if (fd.ShowDialog() == true)
+        //    {
+        //        core.Sideload(new string[] { DevicesListBox.SelectedItem.ToString(), fd.FileName });
+        //    }
+        //}
 
         private void TextBlock_MouseDown_2(object sender, MouseButtonEventArgs e)
         {
@@ -278,6 +278,12 @@ namespace AutumnBox
                 MMessageBox.ShowDialog(this, FindResource("Notice2").ToString(), FindResource("FristLaunchNotice").ToString());
                 Config.isFristLaunch = false;
             }
+        }
+
+        private void buttonStartBrventService_Click(object sender, RoutedEventArgs e)
+        {
+            core.StartBrventService(nowDev);
+            ShowRateBox();
         }
     }
 }

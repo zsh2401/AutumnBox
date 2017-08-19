@@ -34,8 +34,7 @@ namespace AutumnBox.Basic.Functions
         private void _Run(object arg)
         {
             Args _arg = (Args)arg;
-            ActivatedFinish(base.adb.Execute(_arg.deviceID, "shell 'sh /data/data/me.piebridge.brevent/brevent.sh'"));
+            ActivatedFinish(base.adb.Execute(_arg.deviceID, "shell sh /data/data/me.piebridge.brevent/brevent.sh"));
         }
-
     }
 }

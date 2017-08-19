@@ -5,6 +5,7 @@
     <s:String x:Key="LanguageName">简体中文</s:String>
 
 
+    <s:String x:Key="StartBrventService">启动黑域服务</s:String>
     <s:String x:Key="UpdateContent">更新内容</s:String>
     <s:String x:Key="HaveAUpdate">检测到一个更新!</s:String>
     <s:String x:Key="CompileDate">编译日期</s:String>

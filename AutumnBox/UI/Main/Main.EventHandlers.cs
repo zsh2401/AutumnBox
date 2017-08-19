@@ -43,7 +43,7 @@ namespace AutumnBox
             //重启完成时的事件
             core.RebootFinish += new Basic.EventsHandlers.FinishEventHandler((o) =>
             {
-                core.devicesListener.Pause(2000);
+                //core.devicesListener.Pause(2000);
                 MMessageBox.ShowDialog(this, FindResource("Notice").ToString(), FindResource("RebootOK").ToString());
             });
             core.ActivatedBrvent += Core_ActivatedBrvent;

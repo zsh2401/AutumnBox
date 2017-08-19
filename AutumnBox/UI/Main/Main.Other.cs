@@ -80,7 +80,7 @@ namespace AutumnBox
                     notFound = true;
                     break;
             }
-            this.buttonSideload.IsEnabled = (inSideload || inRecovery || inRunning);
+            //this.buttonSideload.IsEnabled = (inSideload || inRecovery || inRunning);
             this.buttonUnlockMiSystem.IsEnabled = (inRecovery || inRunning);
             this.buttonRelockMi.IsEnabled = inBootLoader;
             this.buttonRebootToBootloader.IsEnabled = !notFound;
