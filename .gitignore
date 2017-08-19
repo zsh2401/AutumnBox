@@ -14,10 +14,10 @@ bin/*.exe
 bin/AutumnBox.basic.dll
 bin/WpfAnimatedGif.dll
 bin/*.sqlite
+*.suo
 #dirs
 AutumnBox/obj/
 AutumnBox.basic/obj/
 WpfAnimatedGif/obj/
 Tester/obj/
-HTML
-autumnbox.github.io
+
