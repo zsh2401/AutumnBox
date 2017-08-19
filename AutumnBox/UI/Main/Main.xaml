@@ -57,7 +57,7 @@
             <TabItem Header="{DynamicResource Normal}" Background="#FF009AD6" Margin="-2,-2,0,0" BorderBrush="#FF009AD6" MinHeight="160" FontFamily="Microsoft YaHei UI Light">
                 <Grid Background="#00E5E5E5" Margin="0,0,-3,7">
                     <Grid HorizontalAlignment="Left" Height="204" Margin="10,10,0,0" VerticalAlignment="Top" Width="753" Background="#B2FFFFFF">
-                        <ListBox x:Name="DevicesListBox" HorizontalAlignment="Left" Height="184" Margin="531,10,0,0" VerticalAlignment="Top" Width="222" SelectionChanged="DevicesListBox_SelectionChanged" Background="#00000000" Foreground="#FF009AD6" BorderBrush="#FFABADB3"/>
+                        <ListBox x:Name="DevicesListBox" HorizontalAlignment="Left" Height="154" Margin="531,10,0,0" VerticalAlignment="Top" Width="222" SelectionChanged="DevicesListBox_SelectionChanged" Background="#00000000" Foreground="#FF009AD6" BorderBrush="#FFABADB3"/>
                         <Image x:Name="DeviceStatusImage" HorizontalAlignment="Left" Height="100" Margin="38,10,0,0" VerticalAlignment="Top" Width="100" Source="/AutumnBox;component/Images/DynamicIcons/no_selected.png"/>
                         <Label x:Name="DeviceStatusLabel" Content="{DynamicResource PleaseSelectedADevice}" HorizontalAlignment="Left" Margin="0,130,0,0" VerticalAlignment="Top" Height="55" Width="181" Foreground="Black" FontSize="14" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Microsoft YaHei UI Light"/>
                         <Grid HorizontalAlignment="Left" Height="174" Margin="166,16,0,0" VerticalAlignment="Top" Width="365">
@@ -68,6 +68,7 @@
                             <Label x:Name="ModelLabel" Content="{DynamicResource ResourceKey=PleaseSelectedADevice}" HorizontalAlignment="Left" Margin="96,62,0,0" VerticalAlignment="Top" Height="42" Width="259" Foreground="Black" FontFamily="Microsoft YaHei Light" FontSize="16" Background="{x:Null}"/>
                             <Label x:Name="CodeLabel" Content="{DynamicResource ResourceKey=PleaseSelectedADevice}" HorizontalAlignment="Left" Margin="96,125,0,0" VerticalAlignment="Top" Height="42" Width="259" Foreground="Black" FontFamily="Microsoft YaHei Light" FontSize="16" Background="{x:Null}"/>
                         </Grid>
+                        <Button x:Name="buttonLinkHelp" Content="{StaticResource LinkHelp}" Margin="531,166,0,0" VerticalAlignment="Top" Height="30" Background="{x:Null}" BorderBrush="#33000000" FontSize="11" FontFamily="Microsoft YaHei UI Light" Foreground="Black"/>
                     </Grid>
                     <Grid HorizontalAlignment="Left" Height="204" Margin="763,10,0,0" VerticalAlignment="Top" Width="239" Background="#B2FFFFFF">
                         <Button x:Name="buttonRebootToSystem" Content="{StaticResource RebootToSystem}" Margin="10,21,10,0" VerticalAlignment="Top" Height="39" Background="{x:Null}" BorderBrush="#33000000" FontSize="18" FontFamily="Microsoft YaHei UI Light" Click="buttonRebootToSystem_Click" Foreground="Black"/>
