@@ -59,7 +59,7 @@ namespace AutumnBox.Basic
             //#endif
         }
         public Thread StartBrventService(string id) {
-            BrventServiceActivator activator = new BrventServiceActivator();
+            BreventServiceActivator activator = new BreventServiceActivator();
             activator.ActivatedFinish += this.ActivatedBrvent;
             return activator.Run(new Args { deviceID = id });
         }

@@ -7,6 +7,7 @@ using System.Threading;
 using System.Windows;
 using AutumnBox.Debug;
 using AutumnBox.Util;
+using AutumnBox.Basic.Functions;
 
 namespace AutumnBox
 {
@@ -51,11 +52,15 @@ namespace AutumnBox
 
         private void Core_ActivatedBrvent(OutputData _out)
         {
+            Log.d(TAG,_out.error.ToString());
+            foreach (string line in _out.output) {
+                Log.d(TAG,line);
+            }
             this.Dispatcher.Invoke(new Action(() =>
             {
                 HideRateBox();
             }));
-            MMessageBox.ShowDialog(this,FindResource("Notice").ToString(),"现在,您的设备应该已经成功激活了黑域!");
+            MMessageBox.ShowDialog(this,FindResource("Notice").ToString(),"现在,您的设备应该已经成功激活了黑域!但为了保险起见,将会展示脚本输出的信息" + new BreventShOutputHandler(_out).output);
         }
 
         /// <summary>

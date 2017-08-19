@@ -28,8 +28,6 @@ namespace AutumnBox
             CustomInit();
         }
 
-
-
         private void CustomTitleBar_MouseMove(object sender, MouseEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
@@ -286,6 +284,14 @@ namespace AutumnBox
         private void buttonLinkHelp_Click(object sender, RoutedEventArgs e)
         {
             new LinkHelpWindow(this).Show();
+        }
+
+        private void buttonStartShell_Click(object sender, RoutedEventArgs e)
+        {
+            ProcessStartInfo info = new ProcessStartInfo();
+            info.WorkingDirectory = "adb/";
+            info.FileName = "cmd.exe";
+            Process.Start(info);
         }
     }
 }

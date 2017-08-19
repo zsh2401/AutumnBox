@@ -12,10 +12,10 @@ namespace AutumnBox.Basic.Functions
     /// <summary>
     /// 黑域服务激活器
     /// </summary>
-    internal sealed class BrventServiceActivator : Function, ICanReturnThreadFunction
+    internal sealed class BreventServiceActivator : Function, ICanReturnThreadFunction
     {
         public event EventsHandlers.FinishEventHandler ActivatedFinish;
-        public BrventServiceActivator() : base(FunctionInitType.Adb) { }
+        public BreventServiceActivator() : base(FunctionInitType.Adb) { }
         /// <summary>
         /// 供外部调用的方法
         /// </summary>
