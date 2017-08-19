@@ -20,15 +20,17 @@ namespace AutumnBox
             ChangeButtonAndImageByStatus(DeviceStatus.NO_DEVICE);//将所有按钮设置成关闭状态
 
             Log.d("App Version", StaticData.nowVersion.version);
-            Guider guider = new Guider();
             new Thread(() => {
+                Guider guider = new Guider();
                 if (guider.isOk)
                 {
                     try
                     {
-                        webFlashHelper.Navigate(guider["urls"]["flashhelp"].ToString());
-                        webSaveDevice.Navigate(guider["urls"]["savedevicehelp"].ToString());
-                        webFlashRecHelp.Navigate(guider["urls"]["flashrecoveryhelp"].ToString());
+                        this.Dispatcher.Invoke(new Action(()=> {
+                            webFlashHelper.Navigate(guider["urls"]["flashhelp"].ToString());
+                            webSaveDevice.Navigate(guider["urls"]["savedevicehelp"].ToString());
+                            webFlashRecHelp.Navigate(guider["urls"]["flashrecoveryhelp"].ToString());
+                        }));
                     }
                     catch (Exception e)
                     {
@@ -64,6 +66,5 @@ namespace AutumnBox
             //this.labelTitle.Content += "-Build:" + StaticData.nowVersion.build.ToString();
             //this.labelTitle.Content += FindResource("CompileDate").ToString() + 
         }
-
     }
 }

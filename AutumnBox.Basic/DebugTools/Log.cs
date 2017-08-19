@@ -32,10 +32,16 @@ namespace AutumnBox.Basic.DebugTools
         /// </summary>
         /// <param name="content"></param>
         static void WriteToLogFile(string content) {
-            StreamWriter sw = new StreamWriter(LOG_FILE, true);
-            sw.WriteLine(content);
-            sw.Flush();
-            sw.Close();
+            try
+            {
+                StreamWriter sw = new StreamWriter(LOG_FILE, true);
+                sw.WriteLine(content);
+                sw.Flush();
+                sw.Close();
+            }
+            catch {
+
+            }
         }
     }
 }

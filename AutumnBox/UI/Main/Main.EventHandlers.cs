@@ -44,7 +44,7 @@ namespace AutumnBox
             //重启完成时的事件
             core.RebootFinish += new Basic.EventsHandlers.FinishEventHandler((o) =>
             {
-                //core.devicesListener.Pause(2000);
+                core.devicesListener.Pause(2000);
                 MMessageBox.ShowDialog(this, FindResource("Notice").ToString(), FindResource("RebootOK").ToString());
             });
             core.ActivatedBrvent += Core_ActivatedBrvent;
@@ -60,7 +60,14 @@ namespace AutumnBox
             {
                 HideRateBox();
             }));
-            MMessageBox.ShowDialog(this,FindResource("Notice").ToString(),"现在,您的设备应该已经成功激活了黑域!但为了保险起见,将会展示脚本输出的信息" + new BreventShOutputHandler(_out).output);
+            BreventShOutputHandler handler =  new BreventShOutputHandler(_out);
+            if (handler.isOk)
+            {
+                MMessageBox.ShowDialog(this, FindResource("Notice").ToString(), FindResource("StartBreventServiceSuc").ToString() + handler.output);
+            }
+            else {
+                MMessageBox.ShowDialog(this, FindResource("Notice").ToString(),FindResource("StartBreventServiceFail").ToString() + handler.output);
+            }
         }
 
         /// <summary>

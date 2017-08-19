@@ -291,6 +291,11 @@ namespace AutumnBox
             ProcessStartInfo info = new ProcessStartInfo();
             info.WorkingDirectory = "adb/";
             info.FileName = "cmd.exe";
+            if (Tools.IsWin10) {
+                if (ChoiceBox.ShowDialog(this, FindResource("Notice").ToString(), FindResource("ShellChoiceTip").ToString(), "Powershell", "CMD")) {
+                    info.FileName = "powershell.exe";
+                }
+            }
             Process.Start(info);
         }
     }

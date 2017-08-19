@@ -12,20 +12,23 @@ namespace AutumnBox.Basic.Functions
     /// <summary>
     /// 文件发送器
     /// </summary>
-    class FileSender:Function,ICanReturnThreadFunction
+    class FileSender : Function, ICanReturnThreadFunction
     {
         public event EventsHandlers.SimpleFinishEventHandler sendAllFinish;
         public event EventsHandlers.SimpleFinishEventHandler sendSingleFinish;
         public FileSender() : base(FunctionInitType.Adb) { }
-        public FileSender(EventsHandlers.SimpleFinishEventHandler sendAllFinishHandler, 
-            EventsHandlers.SimpleFinishEventHandler sendSingleFinishHandler, 
-            IArgs args) : base(FunctionInitType.Adb) {
+        public FileSender(EventsHandlers.SimpleFinishEventHandler sendAllFinishHandler,
+            EventsHandlers.SimpleFinishEventHandler sendSingleFinishHandler,
+            IArgs args) : base(FunctionInitType.Adb)
+        {
             this.sendAllFinish += sendAllFinishHandler;
             this.sendSingleFinish += sendSingleFinishHandler;
             Run(args);
         }
-        public Thread Run(IArgs args) {
-            if (sendAllFinish == null) {
+        public Thread Run(IArgs args)
+        {
+            if (sendAllFinish == null)
+            {
                 throw new EventNotBoundException();
             }
             mainThread = new Thread(new ParameterizedThreadStart(_Run));
@@ -33,10 +36,16 @@ namespace AutumnBox.Basic.Functions
             mainThread.Start(args);
             return mainThread;
         }
-        private void _Run(object args) {
+        private void _Run(object args)
+        {
             FileArgs _arg = (FileArgs)args;
-            foreach (string file in _arg.files) {
-                adb.Execute(_arg.deviceID,$" push {file} /sdcard/");
+            string filename;
+            string[] x;
+            foreach (string filepath in _arg.files)
+            {
+                x = filepath.Split('\\');
+                filename = x[x.Length - 1];
+                adb.Execute(_arg.deviceID, $"push \"{filepath}\" /sdcard/{filename}");
                 sendSingleFinish?.Invoke();
             }
             sendAllFinish();

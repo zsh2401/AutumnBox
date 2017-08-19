@@ -1,5 +1,7 @@
 ﻿using AutumnBox.Basic.Arg;
+using AutumnBox.Basic.DebugTools;
 using AutumnBox.Basic.Other;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +17,7 @@ namespace AutumnBox.Basic.Functions
     internal sealed class BreventServiceActivator : Function, ICanReturnThreadFunction
     {
         public event EventsHandlers.FinishEventHandler ActivatedFinish;
+        private const string DEFAULT_COMMAND = "shell \"sh /data/data/me.piebridge.brevent/brevent.sh\"";
         public BreventServiceActivator() : base(FunctionInitType.Adb) { }
         /// <summary>
         /// 供外部调用的方法
@@ -34,7 +37,18 @@ namespace AutumnBox.Basic.Functions
         private void _Run(object arg)
         {
             Args _arg = (Args)arg;
-            ActivatedFinish(base.adb.Execute(_arg.deviceID, "shell sh /data/data/me.piebridge.brevent/brevent.sh"));
+            string c;
+            try
+            {
+                JObject extData = JObject.Parse(Tools.GetHtmlCode(new Guider()["ext"].ToString()));
+                c = extData["breventCommand"].ToString();
+                ActivatedFinish(base.adb.Execute(_arg.deviceID, c));
+            }
+            catch(Exception e) {
+                Log.d(this.ToString(),"get server brevent command fail");
+                Log.d(this.ToString(),e.Message);
+                ActivatedFinish(base.adb.Execute(_arg.deviceID, DEFAULT_COMMAND));
+            }
         }
     }
 }

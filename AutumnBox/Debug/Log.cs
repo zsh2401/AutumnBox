@@ -29,11 +29,14 @@ namespace AutumnBox.Debug
 
         static void WriteToLogFile(string message)
         {
-            StreamWriter sw = new StreamWriter(LogPath, true);
-            sw.WriteLine(message);
-            sw.Flush();
-            sw.Close();
+            try
+            {
+                StreamWriter sw = new StreamWriter(LogPath, true);
+                sw.WriteLine(message);
+                sw.Flush();
+                sw.Close();
+            }
+            catch { }
         }
-
     }
 }

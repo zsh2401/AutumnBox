@@ -116,6 +116,8 @@ namespace Tester
             //Version v1 = new Version("0.12.8.11231");
             //Version v2 = new Version("1.0.1");
             //Print((v1 < v2).ToString());
+            //Print((Environment.OSVersion.Version.Major == 10).ToString());
+            //Print(Environment.OSVersion.Version.Major.ToString());
         }
 
         public static void Print(string str) {

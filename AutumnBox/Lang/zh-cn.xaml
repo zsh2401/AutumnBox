@@ -4,10 +4,15 @@
                     xmlns:s="clr-namespace:System;assembly=mscorlib">
     <s:String x:Key="LanguageName">简体中文</s:String>
 
+    <s:String x:Key="StartBreventServiceFail">"启动黑域服务时,似乎出现了一些问题,请将此处截图给黑域开发者或AutumnBox开发者"</s:String>
+    <s:String x:Key="StartBreventServiceSuc">现在,您的设备应该已经成功激活了黑域!但为了保险起见,将会展示脚本输出的信息</s:String>
+    <s:String x:Key="ShellChoiceTip">检测到您是Windows10 系统,请问您想用那种命令行界面?如果您不懂什么是Powershell,请用传统的CMD</s:String>
     <s:String x:Key="ADB_CMD">ADB命令行</s:String>
     <s:String x:Key="StartBrventTip">请确保您已经安装了最新版本黑域,并且已在手机上进入黑域软件的界面!!</s:String>
-    <s:String x:Key="LinkAnswer2">* 点击关于->联系开发者 与开发者取得联系</s:String>
-    <s:String x:Key="LinkQuestion2">* 更多问题?</s:String>
+    <s:String x:Key="LinkQuestion2">* 还是连不上?</s:String>
+    <s:String x:Key="LinkAnswer2">* 在手机上进入开发者模式打开USB调试</s:String>
+    <s:String x:Key="LinkAnswer3">* 点击关于->联系开发者 与开发者取得联系</s:String>
+    <s:String x:Key="LinkQuestion3">* 更多问题?</s:String>
     <s:String x:Key="LinkAnswer1">* 请确保您的已经在电脑上安装相应的手机驱动,比如你是小米手机,请百度搜索小米手机驱动并下载安装</s:String>
     <s:String x:Key="LinkQuestion1">* 插上了设备但软件却检测不到?</s:String>
     <s:String x:Key="LinkHelp">找不到设备?连接帮助在这里!</s:String>
@@ -93,7 +98,7 @@
     <s:String x:Key="Doing">正在进行操作,稍安勿躁</s:String>
     <s:String x:Key="OK">好的</s:String>
     <s:String x:Key="Notice">提示</s:String>
-    <s:String x:Key="PushOK">如果一切正常,您将会在手机存储目录(/sdcard)下看到您刚才推送的文件,值得注意的是,如果这个文件名有中文,那么最终手机中的那个文件不会有任何中文,您需要仔细辨别</s:String>
+    <s:String x:Key="PushOK">如果一切正常,您将会在手机存储目录(/sdcard)下看到您刚才推送的文件</s:String>
     <s:String x:Key="FlashOK">如果一切正常,您的手机将会重启到刚才刷入的Recovery中!</s:String>
     <s:String x:Key="RebootOK">如果一切正常,您的手机将会重启</s:String>
     <s:String x:Key="DeviceInRunning">设备处于开机状态</s:String>
