@@ -25,7 +25,6 @@ namespace AutumnBox.Util
         private const string TAG = "UpdateChecker";
         public UpdateChecker()
         {
-            guider = new Guider();
         }
         /// <summary>
         /// 开始检测更新
@@ -42,6 +41,7 @@ namespace AutumnBox.Util
         }
         private void _Check()
         {
+            guider = new Guider();
             try
             {
                 VersionInfo newVersionInfo = GetUpdateInfo();

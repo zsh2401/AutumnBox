@@ -4,6 +4,7 @@ using AutumnBox.Debug;
 using AutumnBox.UI;
 using AutumnBox.Util;
 using System;
+using System.Threading;
 /*此文件存放本类部分初始化的代码*/
 namespace AutumnBox
 {
@@ -20,23 +21,27 @@ namespace AutumnBox
 
             Log.d("App Version", StaticData.nowVersion.version);
             Guider guider = new Guider();
-            if (guider.isOk)
-            {
-                try
+            new Thread(() => {
+                if (guider.isOk)
                 {
-                    webFlashHelper.Navigate(guider["urls"]["flashhelp"].ToString());
-                    webSaveDevice.Navigate(guider["urls"]["savedevicehelp"].ToString());
-                    webFlashRecHelp.Navigate(guider["urls"]["flashrecoveryhelp"].ToString());
+                    try
+                    {
+                        webFlashHelper.Navigate(guider["urls"]["flashhelp"].ToString());
+                        webSaveDevice.Navigate(guider["urls"]["savedevicehelp"].ToString());
+                        webFlashRecHelp.Navigate(guider["urls"]["flashrecoveryhelp"].ToString());
+                    }
+                    catch (Exception e)
+                    {
+                        Log.d(TAG, "web browser set fail");
+                        Log.d(TAG, e.Message);
+                    }
                 }
-                catch (Exception e)
+                else
                 {
-                    Log.d(TAG, "web browser set fail");
-                    Log.d(TAG, e.Message);
+                    Log.d(TAG, "web browser set fail because guider is not ok");
                 }
-            }
-            else {
-                Log.d(TAG, "web browser set fail because guider is not ok");
-            }
+            }).Start();
+           
             //更新检测器
             UpdateChecker updateChecker = new UpdateChecker();
             updateChecker.UpdateCheckFinish += UpdateChecker_UpdateCheckFinish;

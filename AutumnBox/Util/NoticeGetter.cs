@@ -34,7 +34,7 @@ namespace AutumnBox.Util
         private Guider guider;
         public NoticeGetter()
         {
-            guider = new Guider();
+            //guider = new Guider();
         }
         /// <summary>
         /// 开始获取公告
@@ -56,6 +56,7 @@ namespace AutumnBox.Util
         /// </summary>
         private void _Get()
         {
+            guider = new Guider();
             try
             {
                 NoticeGetFinish(GetNotice());
