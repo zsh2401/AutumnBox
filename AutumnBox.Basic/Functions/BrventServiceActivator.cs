@@ -12,16 +12,15 @@ namespace AutumnBox.Basic.Functions
     /// <summary>
     /// 黑域服务激活器
     /// </summary>
-    internal sealed class BrventServiceActivator : Function, IThreadFunctionRunner
+    internal sealed class BrventServiceActivator : Function, ICanReturnThreadFunction
     {
         public event EventsHandlers.FinishEventHandler ActivatedFinish;
-        //private Thread mainThread;
         public BrventServiceActivator() : base(FunctionInitType.Adb) { }
         /// <summary>
         /// 供外部调用的方法
         /// </summary>
         /// <param name="arg"></param>
-        public void Run(IArgs arg)
+        public Thread Run(IArgs arg)
         {
             if (ActivatedFinish == null)
             {
@@ -30,6 +29,7 @@ namespace AutumnBox.Basic.Functions
             mainThread = new Thread(new ParameterizedThreadStart(_Run));
             mainThread.Name = "Brvent Activator Thread";
             mainThread.Start(arg);
+            return mainThread;
         }
         private void _Run(object arg)
         {

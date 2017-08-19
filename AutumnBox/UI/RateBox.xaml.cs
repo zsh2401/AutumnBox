@@ -9,10 +9,16 @@ namespace AutumnBox.UI
     /// </summary>
     public partial class RateBox : Window
     {
+        private Thread rateThread;
         public RateBox(Window owner)
         {
             InitializeComponent();
             this.Owner = owner;
+        }
+        public RateBox(Window owner,Thread t):this(owner)
+        {
+            this.rateThread = t;
+            this.buttonCancel.Visibility = Visibility.Visible;
         }
         public new void ShowDialog()
         {
@@ -24,6 +30,12 @@ namespace AutumnBox.UI
             {
                 this.DragMove();
             }
+        }
+
+        private void buttonStartBrventService_Click(object sender, RoutedEventArgs e)
+        {
+            this.rateThread.Abort();
+            this.Close();
         }
     }
 }

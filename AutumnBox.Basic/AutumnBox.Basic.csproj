@@ -64,6 +64,7 @@
     <Compile Include="Functions\CustomRecoveryFlasher.cs" />
     <Compile Include="Functions\FileSender.cs" />
     <Compile Include="Functions\Function.cs" />
+    <Compile Include="Functions\ICanReturnThreadFunction.cs" />
     <Compile Include="Functions\IFunctionRunner.cs" />
     <Compile Include="Functions\RebootOperator.cs" />
     <Compile Include="Functions\XiaomiBootloaderRelocker.cs" />

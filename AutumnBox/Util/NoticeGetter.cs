@@ -41,7 +41,6 @@ namespace AutumnBox.Util
         /// </summary>
         public void Get()
         {
-            Log.d(TAG, "guider is ok ? " + guider.isOk.ToString());
             if (NoticeGetFinish == null)
             {
 #if! DEBUG
@@ -57,13 +56,20 @@ namespace AutumnBox.Util
         /// </summary>
         private void _Get()
         {
-            NoticeGetFinish(GetNotice());
+            try
+            {
+                NoticeGetFinish(GetNotice());
+            }
+            catch(Exception e) {
+                Log.d(TAG,"Get notice fail...");
+                Log.d(TAG,e.Message);
+            }
         }
         /// <summary>
         /// 获取公告
         /// </summary>
         /// <returns>公告数据结构</returns>
-        public Notice GetNotice()
+        private Notice GetNotice()
         {
             JObject d = GetSourceData();
             return new Notice
@@ -81,16 +87,7 @@ namespace AutumnBox.Util
         {
             if (guider.isOk)
             {
-                try
-                {
-                    return JObject.Parse(Tools.GetHtmlCode(guider["apis"]["daily_notice"].ToString()));
-                }
-                catch (Exception e)
-                {
-                    Log.d(TAG, "Notice Get Fail");
-                    Log.d(TAG, e.Message);
-                    return JObject.Parse(DEFAULT_NOTICE_JSON);
-                }
+                 return JObject.Parse(Tools.GetHtmlCode(guider["apis"]["daily_notice"].ToString()));
             }
             else
             {

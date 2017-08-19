@@ -4,6 +4,7 @@
                     xmlns:s="clr-namespace:System;assembly=mscorlib">
     <s:String x:Key="LanguageName">简体中文</s:String>
 
+    <s:String x:Key="StartBrventTip">请确保您已经安装了最新版本黑域,并且已在手机上进入黑域软件的界面!!</s:String>
     <s:String x:Key="LinkAnswer2">* 点击关于->联系开发者 与开发者取得联系</s:String>
     <s:String x:Key="LinkQuestion2">* 更多问题?</s:String>
     <s:String x:Key="LinkAnswer1">* 请确保您的已经在电脑上安装相应的手机驱动,比如你是小米手机,请百度搜索小米手机驱动并下载安装</s:String>

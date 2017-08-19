@@ -114,10 +114,7 @@ namespace AutumnBox
             fileDialog.Multiselect = false;
             if (fileDialog.ShowDialog() == true)
             {
-                core.PushFileToSdcard(nowDev, fileDialog.FileName);
-                //this.rateBox = new RateBox(this);
-                //this.rateBox.ShowDialog();
-                ShowRateBox();
+                ShowRateBox(core.PushFileToSdcard(nowDev, fileDialog.FileName));
             }
             else
             {
@@ -282,8 +279,8 @@ namespace AutumnBox
 
         private void buttonStartBrventService_Click(object sender, RoutedEventArgs e)
         {
-            core.StartBrventService(nowDev);
-            ShowRateBox();
+            if (!ChoiceBox.Show(this, FindResource("Notice").ToString(), FindResource("StartBrventTip").ToString())) return;
+            ShowRateBox(core.StartBrventService(nowDev));
         }
 
         private void buttonLinkHelp_Click(object sender, RoutedEventArgs e)

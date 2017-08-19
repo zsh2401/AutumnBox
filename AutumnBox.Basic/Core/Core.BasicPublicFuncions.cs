@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 /*此文件中的方法,是已经通过实验,确定可以正常工作的功能*/
 namespace AutumnBox.Basic
@@ -27,11 +28,11 @@ namespace AutumnBox.Basic
         /// 向一个设备推送文件
         /// </summary>
         /// <param name="obj">这个参数必须为一个string列表,列表0是id,列表1是文件名</param>
-        public void PushFileToSdcard(string id, string file)
+        public Thread PushFileToSdcard(string id, string file)
         {
             FileSender fs = new FileSender();
             fs.sendAllFinish += this.SendFileFinish;
-            fs.Run(new FileArgs { deviceID = id, files = new string[] { file } });
+            return fs.Run(new FileArgs { deviceID = id, files = new string[] { file } });
         }
         /// <summary>
         /// 重启设备

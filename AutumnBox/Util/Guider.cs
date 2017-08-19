@@ -9,18 +9,20 @@ using System.Threading.Tasks;
 namespace AutumnBox.Util
 {
     /// <summary>
-    /// 引导者,这里包含着有关autumnbox 的外部链接
+    /// 引导器,这里包含着有关autumnbox 的外部链接
     /// </summary>
     internal class Guider
     {
+        private const string GUIDE_URL = "https://zsh2401.github.io/autumnbox/api/guide.json";//引导链接
+
         private JObject sourceData;
         private const string TAG = "Guider";
         public bool isOk { get; private set; }
-        private const string GUIDE_URL= "https://zsh2401.github.io/autumnbox/api/guide.json";
         public Guider() {
             try
             {
                 sourceData = GetSourceData(GUIDE_URL);
+                Log.d(TAG,"Init suc");
                 isOk = true;
             }
             catch (Exception e){
@@ -28,10 +30,11 @@ namespace AutumnBox.Util
                 Log.d(TAG, e.Message);
                 sourceData = JObject.Parse("{\"ok\":\"false\"}");
                 isOk = false;
+                Log.d(TAG, "Init Fail");
+                Log.d(TAG, e.Message);
             }
-            Log.d(TAG, "Init ok");
         }
-        public JToken this[string index] {
+        public JToken this[object index] {
             get {
                     return sourceData[index];
             }

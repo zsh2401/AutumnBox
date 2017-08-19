@@ -12,7 +12,7 @@ namespace AutumnBox.Basic.Functions
     /// <summary>
     /// 文件发送器
     /// </summary>
-    class FileSender:Function,IThreadFunctionRunner
+    class FileSender:Function,ICanReturnThreadFunction
     {
         public event EventsHandlers.SimpleFinishEventHandler sendAllFinish;
         public event EventsHandlers.SimpleFinishEventHandler sendSingleFinish;
@@ -24,13 +24,14 @@ namespace AutumnBox.Basic.Functions
             this.sendSingleFinish += sendSingleFinishHandler;
             Run(args);
         }
-        public void Run(IArgs args) {
+        public Thread Run(IArgs args) {
             if (sendAllFinish == null) {
                 throw new EventNotBoundException();
             }
             mainThread = new Thread(new ParameterizedThreadStart(_Run));
             mainThread.Name = "File Sender Thread";
             mainThread.Start(args);
+            return mainThread;
         }
         private void _Run(object args) {
             FileArgs _arg = (FileArgs)args;

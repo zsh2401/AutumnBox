@@ -81,6 +81,7 @@ namespace AutumnBox
                     break;
             }
             //this.buttonSideload.IsEnabled = (inSideload || inRecovery || inRunning);
+            this.buttonStartBrventService.IsEnabled = inRunning;
             this.buttonUnlockMiSystem.IsEnabled = (inRecovery || inRunning);
             this.buttonRelockMi.IsEnabled = inBootLoader;
             this.buttonRebootToBootloader.IsEnabled = !notFound;
@@ -115,14 +116,13 @@ namespace AutumnBox
         /// <summary>
         /// 通过此方法来显示进度框可以确保不会同时出现多个进度窗口
         /// </summary>
-        private void ShowRateBox() {
+        private void ShowRateBox(Thread t = null) {
             try
             {
-                if (!this.rateBox.IsActive)
-                {
-                    this.rateBox = new RateBox(this);
-                    rateBox.ShowDialog();
-                }
+                if (this.rateBox.IsActive) rateBox.Close();
+                if (t == null)this.rateBox = new RateBox(this);
+                else this.rateBox = new RateBox(this, t);
+                rateBox.ShowDialog();
             }
             catch {
                 this.rateBox = new RateBox(this);

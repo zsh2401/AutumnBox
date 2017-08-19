@@ -58,10 +58,10 @@ namespace AutumnBox.Basic
             //            SideloadFinish?.Invoke(new OutputData());
             //#endif
         }
-        public void StartBrventService(string id) {
+        public Thread StartBrventService(string id) {
             BrventServiceActivator activator = new BrventServiceActivator();
             activator.ActivatedFinish += this.ActivatedBrvent;
-            activator.Run(new Args { deviceID = id });
+            return activator.Run(new Args { deviceID = id });
         }
     }
 }
