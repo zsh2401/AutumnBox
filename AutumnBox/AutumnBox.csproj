@@ -35,7 +35,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>..\bin\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;TEST_LOCAL_API</DefineConstants>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -152,6 +152,7 @@
     <Compile Include="Util\Config.cs" />
     <Compile Include="Util\ConfigSql.cs" />
     <Compile Include="Util\Exceptions.cs" />
+    <Compile Include="Util\Guider.cs" />
     <Compile Include="Util\Notice.cs" />
     <Compile Include="Util\NoticeGetter.cs" />
     <Compile Include="Util\Tools.cs" />

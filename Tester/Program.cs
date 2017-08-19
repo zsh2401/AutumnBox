@@ -1,6 +1,7 @@
 ﻿using AutumnBox.Basic;
 using AutumnBox.Basic.Arg;
 using AutumnBox.Basic.Devices;
+using AutumnBox.Util;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections;
@@ -98,7 +99,19 @@ namespace Tester
             //AutumnBox.Basic.DebugTools.Tester.Reboot(mi4ID,RebootOptions.Bootloader);
             //AutumnBox.Basic.DebugTools.Tester.FlashCustomRecovery(mi4ID, @"D:\☆下载暂存\twrp-3.0.2-0-cancro-launguagefix.img");
             //AutumnBox.Basic.DebugTools.Tester.Reboot(mi4ID,RebootOptions.System);
-            Console.ReadKey();
+            //Print(new AutumnBox.Util.NoticeGetter().GetNotice().content);
+            //Print(new AutumnBox.Util.UpdateChecker().GetUpdateInfo().content);
+            //UpdateChecker checker = new UpdateChecker();
+            //checker.UpdateCheckFinish += new UpdateChecker.UpdateCheckFinishHandler((value,info) => {
+            //    Print(info.content);
+            //});
+            //checker.Check();
+            //NoticeGetter getter = new NoticeGetter();
+            //getter.NoticeGetFinish += new NoticeGetter.NoticeGetFinishHandler((notice)=> {
+            //    Print(notice.content);
+            //});
+            //getter.Get();
+            //Console.ReadKey();
             //Print(Tools.GetNotice());
             //Version v1 = new Version("0.12.8.11231");
             //Version v2 = new Version("1.0.1");

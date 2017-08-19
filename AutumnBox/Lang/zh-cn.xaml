@@ -4,7 +4,10 @@
                     xmlns:s="clr-namespace:System;assembly=mscorlib">
     <s:String x:Key="LanguageName">简体中文</s:String>
 
-
+    <s:String x:Key="LinkAnswer2">* 点击关于->联系开发者 与开发者取得联系</s:String>
+    <s:String x:Key="LinkQuestion2">* 更多问题?</s:String>
+    <s:String x:Key="LinkAnswer1">* 请确保您的已经在电脑上安装相应的手机驱动,比如你是小米手机,请百度搜索小米手机驱动并下载安装</s:String>
+    <s:String x:Key="LinkQuestion1">* 插上了设备但软件却检测不到?</s:String>
     <s:String x:Key="LinkHelp">找不到设备?连接帮助在这里!</s:String>
     <s:String x:Key="StartBrventService">启动黑域服务</s:String>
     <s:String x:Key="UpdateContent">更新内容</s:String>

@@ -19,10 +19,24 @@ namespace AutumnBox
             ChangeButtonAndImageByStatus(DeviceStatus.NO_DEVICE);//将所有按钮设置成关闭状态
 
             Log.d("App Version", StaticData.nowVersion.version);
-            webFlashHelper.Navigate(AppDomain.CurrentDomain.BaseDirectory + "HTML/flash_help.htm");
-            webSaveDevice.Navigate(AppDomain.CurrentDomain.BaseDirectory + "HTML/save_fucking_device.htm");
-            webFlashRecHelp.Navigate(AppDomain.CurrentDomain.BaseDirectory + "HTML/flash_recovery.htm");
-
+            Guider guider = new Guider();
+            if (guider.isOk)
+            {
+                try
+                {
+                    webFlashHelper.Navigate(guider["urls"]["flashhelp"].ToString());
+                    webSaveDevice.Navigate(guider["urls"]["savedevicehelp"].ToString());
+                    webFlashRecHelp.Navigate(guider["urls"]["flashrecoveryhelp"].ToString());
+                }
+                catch (Exception e)
+                {
+                    Log.d(TAG, "web browser set fail");
+                    Log.d(TAG, e.Message);
+                }
+            }
+            else {
+                Log.d(TAG, "web browser set fail because guider is not ok");
+            }
             //更新检测器
             UpdateChecker updateChecker = new UpdateChecker();
             updateChecker.UpdateCheckFinish += UpdateChecker_UpdateCheckFinish;
@@ -46,6 +60,5 @@ namespace AutumnBox
             //this.labelTitle.Content += FindResource("CompileDate").ToString() + 
         }
 
-        
     }
 }

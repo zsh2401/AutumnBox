@@ -68,7 +68,7 @@
                             <Label x:Name="ModelLabel" Content="{DynamicResource ResourceKey=PleaseSelectedADevice}" HorizontalAlignment="Left" Margin="96,62,0,0" VerticalAlignment="Top" Height="42" Width="259" Foreground="Black" FontFamily="Microsoft YaHei Light" FontSize="16" Background="{x:Null}"/>
                             <Label x:Name="CodeLabel" Content="{DynamicResource ResourceKey=PleaseSelectedADevice}" HorizontalAlignment="Left" Margin="96,125,0,0" VerticalAlignment="Top" Height="42" Width="259" Foreground="Black" FontFamily="Microsoft YaHei Light" FontSize="16" Background="{x:Null}"/>
                         </Grid>
-                        <Button x:Name="buttonLinkHelp" Content="{StaticResource LinkHelp}" Margin="531,166,0,0" VerticalAlignment="Top" Height="30" Background="{x:Null}" BorderBrush="#33000000" FontSize="11" FontFamily="Microsoft YaHei UI Light" Foreground="Black"/>
+                        <Button x:Name="buttonLinkHelp" Content="{StaticResource LinkHelp}" Margin="531,166,0,0" VerticalAlignment="Top" Height="30" Background="{x:Null}" BorderBrush="#33000000" FontSize="11" FontFamily="Microsoft YaHei UI Light" Foreground="Black" Click="buttonLinkHelp_Click"/>
                     </Grid>
                     <Grid HorizontalAlignment="Left" Height="204" Margin="763,10,0,0" VerticalAlignment="Top" Width="239" Background="#B2FFFFFF">
                         <Button x:Name="buttonRebootToSystem" Content="{StaticResource RebootToSystem}" Margin="10,21,10,0" VerticalAlignment="Top" Height="39" Background="{x:Null}" BorderBrush="#33000000" FontSize="18" FontFamily="Microsoft YaHei UI Light" Click="buttonRebootToSystem_Click" Foreground="Black"/>

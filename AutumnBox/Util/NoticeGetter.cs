@@ -1,4 +1,13 @@
-﻿using Newtonsoft.Json.Linq;
+﻿#region About
+/*NoticeGetter是一个公告获取器
+   实例化之后,绑定一个公告获取完成的事件
+   使用Get方法会新建一个线程获取公告
+   获取完成后将会发生公告完成事件,并且会向事件处理函数传入公告信息
+ */
+#endregion
+#define TEST_LOCAL_API
+using AutumnBox.Debug;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -12,19 +21,32 @@ namespace AutumnBox.Util
     /// <summary>
     /// 公告获取器,获取完成后会发生NoticeGetFinish事件
     /// </summary>
+#if !DEBUG
     internal class NoticeGetter
+#else
+    public class NoticeGetter
+#endif
     {
-        internal delegate void NoticeGetFinishHandler(Notice notice);
-        internal event NoticeGetFinishHandler NoticeGetFinish;
-        private static string noticeApiUrl = "https://raw.githubusercontent.com/zsh2401/AutumnBox/master/Api/gg.json";
+        public delegate void NoticeGetFinishHandler(Notice notice);
+        public event NoticeGetFinishHandler NoticeGetFinish;
+        private const string DEFAULT_NOTICE_JSON = "{ \"content\":\"...\", \"version\":1 }";
+        private const string TAG = "Notice Getter";
+        private Guider guider;
+        public NoticeGetter()
+        {
+            guider = new Guider();
+        }
         /// <summary>
         /// 开始获取公告
         /// </summary>
         public void Get()
         {
+            Log.d(TAG, "guider is ok ? " + guider.isOk.ToString());
             if (NoticeGetFinish == null)
             {
+#if! DEBUG
                 throw new NotSetEventHandlerException("你不设置事件,那么这里获取完公告,怎么告诉你啊?:)");
+#endif
             }
             Thread t = new Thread(_Get);
             t.Name = "Notice Check Thread";
@@ -41,10 +63,11 @@ namespace AutumnBox.Util
         /// 获取公告
         /// </summary>
         /// <returns>公告数据结构</returns>
-        public static Notice GetNotice()
+        public Notice GetNotice()
         {
             JObject d = GetSourceData();
-            return new Notice {
+            return new Notice
+            {
                 content = d["content"].ToString(),
                 version = int.Parse(d["version"].ToString()),
                 sourceData = d
@@ -54,13 +77,25 @@ namespace AutumnBox.Util
         /// 获取原始的从网页爬下来的json数据
         /// </summary>
         /// <returns></returns>
-        private static JObject GetSourceData()
+        private JObject GetSourceData()
         {
-#if TEST_LOCAL_API//当处于DEBUG编译时,这个编译符也会被定义
-            return JObject.Parse(File.ReadAllText("../Api/gg.json"));
-#else
-            return JObject.Parse(Tools.GetHtmlCode(noticeApiUrl));
-#endif
+            if (guider.isOk)
+            {
+                try
+                {
+                    return JObject.Parse(Tools.GetHtmlCode(guider["apis"]["daily_notice"].ToString()));
+                }
+                catch (Exception e)
+                {
+                    Log.d(TAG, "Notice Get Fail");
+                    Log.d(TAG, e.Message);
+                    return JObject.Parse(DEFAULT_NOTICE_JSON);
+                }
+            }
+            else
+            {
+                return JObject.Parse(DEFAULT_NOTICE_JSON);
+            }
         }
     }
 

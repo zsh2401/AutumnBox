@@ -20,8 +20,9 @@ namespace AutumnBox.UI
     /// </summary>
     public partial class LinkHelpWindow : Window
     {
-        public LinkHelpWindow()
+        public LinkHelpWindow(Window owner)
         {
+            this.Owner = owner;
             InitializeComponent();
         }
         private void imageClose_MouseEnter(object sender, MouseEventArgs e)

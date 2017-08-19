@@ -285,5 +285,10 @@ namespace AutumnBox
             core.StartBrventService(nowDev);
             ShowRateBox();
         }
+
+        private void buttonLinkHelp_Click(object sender, RoutedEventArgs e)
+        {
+            new LinkHelpWindow(this).Show();
+        }
     }
 }
