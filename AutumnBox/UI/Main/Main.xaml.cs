@@ -163,16 +163,16 @@ namespace AutumnBox
 
         private void buttonUnlockMiSystem_Click(object sender, RoutedEventArgs e)
         {
-            //new Thread(
-            //new ParameterizedThreadStart(core.UnlockMiSystem)).Start(this.DevicesListBox.SelectedItem);
+            if (!ChoiceBox.Show(this, FindResource("Notice").ToString(), FindResource("UnlockXiaomiSystemTip").ToString()))return;
             core.UnlockMiSystem(nowDev);
             ShowRateBox();
+            MMessageBox.ShowDialog(this, FindResource("Notice").ToString(),FindResource("IfAllOK").ToString());
         }
 
         private void buttonRelockMi_Click(object sender, RoutedEventArgs e)
         {
-            if (!ChoiceBox.Show(this, TryFindResource("Warning").ToString(), FindResource("RelockWarning").ToString())) return;
-            if (!ChoiceBox.Show(this, TryFindResource("Warning").ToString(), FindResource("RelockWarningAgain").ToString())) return;
+            if (!ChoiceBox.Show(this, FindResource("Warning").ToString(), FindResource("RelockWarning").ToString())) return;
+            if (!ChoiceBox.Show(this, FindResource("Warning").ToString(), FindResource("RelockWarningAgain").ToString())) return;
             core.RelockMi(nowDev);
             ShowRateBox();
         }

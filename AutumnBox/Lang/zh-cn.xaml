@@ -4,7 +4,9 @@
                     xmlns:s="clr-namespace:System;assembly=mscorlib">
     <s:String x:Key="LanguageName">简体中文</s:String>
 
-    <s:String x:Key="StartBreventServiceFail">"启动黑域服务时,似乎出现了一些问题,请将此处截图给黑域开发者或AutumnBox开发者"</s:String>
+
+    <s:String x:Key="UnlockXiaomiSystemTip">注意,这不是解除Bootloader锁! 这个功能是帮助已经拥有MIUI开发版root权限的设备使用的,该功能能让你获得完整的root权限!可以修改系统分区!</s:String>
+    <s:String x:Key="StartBreventServiceFail">启动黑域服务时,似乎出现了一些问题,请将此处截图给黑域开发者或AutumnBox开发者</s:String>
     <s:String x:Key="StartBreventServiceSuc">现在,您的设备应该已经成功激活了黑域!但为了保险起见,将会展示脚本输出的信息</s:String>
     <s:String x:Key="ShellChoiceTip">检测到您是Windows10 系统,请问您想用那种命令行界面?如果您不懂什么是Powershell,请用传统的CMD</s:String>
     <s:String x:Key="ADB_CMD">ADB命令行</s:String>
@@ -48,7 +50,7 @@
     <s:String x:Key="Downloads">下载更多工具以及刷机包</s:String>
     <s:String x:Key="Agree">同意</s:String>
     <s:String x:Key="Cancel">取消</s:String>
-    <s:String x:Key="RelockWarning">注意,本功能将会彻底清除您的设备上的数据!请做好数据备份谨慎而行!并且在操作时不要拔掉设备,否则后果自负</s:String>
+    <s:String x:Key="RelockWarning">注意,本功能将会把您的设备重新上Bootloader锁,这样您的设备将会变得比较安全但是您将失去root权限,最重要的是将会彻底清除您的设备上的数据!请做好数据备份谨慎而行!并且在操作时不要拔掉设备,否则后果自负</s:String>
     <s:String x:Key="RelockWarningAgain">请再次注意,本功能将会清除设备的所有数据,并且不要在操作时拔掉设备!你确定要这么做了吗?按下按钮立即开始重新上锁!</s:String>
     <s:String x:Key="Warning">警告</s:String>
     <s:String x:Key="Tools">工具</s:String>

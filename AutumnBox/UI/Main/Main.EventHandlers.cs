@@ -118,11 +118,15 @@ namespace AutumnBox
         private void RelockMiFinish(OutputData o)
         {
             Log.d(mweTag,"Relock Mi Finish");
+            this.Dispatcher.Invoke(new Action(()=> {
+                this.core.Reboot(nowDev, Basic.Arg.RebootOptions.System);
+            }));
             this.rateBox.Dispatcher.Invoke(new Action(() =>
             {
                 this.HideRateBox(); 
             }));
-            MMessageBox.ShowDialog(this, FindResource("Notice").ToString(), FindResource("IfAllOK").ToString());
+            //MMessageBox.ShowDialog(this, FindResource("Notice").ToString(), FindResource("IfAllOK").ToString());
+
         }
 
         /// <summary>

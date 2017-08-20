@@ -25,6 +25,8 @@ namespace AutumnBox.Basic.Functions
         {
             Args _args = (Args)arg;
             RelockFinish?.Invoke(fastboot.Execute(_args.deviceID, " oem lock"));
+            Thread.Sleep(3000);
+            //new RebootOperator().Run(new RebootArgs { deviceID = _args.deviceID, rebootOption = RebootOptions.System });
         }
     }
 }
