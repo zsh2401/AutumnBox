@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AutumnBox.Basic
+namespace AutumnBox.Basic.Devices
 {
     /// <summary>
     /// 关于设备的一些静态函数

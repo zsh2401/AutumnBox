@@ -125,8 +125,6 @@ namespace AutumnBox
             {
                 this.HideRateBox(); 
             }));
-            //MMessageBox.ShowDialog(this, FindResource("Notice").ToString(), FindResource("IfAllOK").ToString());
-
         }
 
         /// <summary>

@@ -68,10 +68,6 @@
       <Project>{84044fb2-bd38-4283-8065-b639270ece0f}</Project>
       <Name>AutumnBox.Basic</Name>
     </ProjectReference>
-    <ProjectReference Include="..\AutumnBox\AutumnBox.csproj">
-      <Project>{55081483-1689-4e52-a4f1-22ab75ff8900}</Project>
-      <Name>AutumnBox</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

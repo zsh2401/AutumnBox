@@ -1,10 +1,11 @@
-﻿using AutumnBox.Basic.AdbEnc;
-using AutumnBox.Basic.DebugTools;
-using AutumnBox.Basic.Other;
+﻿/*
+ @zsh2401
+ 2017/9/6
+ 设备监听器,监听设备拔插
+ */
+using AutumnBox.Basic.AdbEnc;
+using AutumnBox.Basic.Util;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -16,56 +17,60 @@ namespace AutumnBox.Basic.Devices
     public class DevicesListener
     {
         public delegate void DevicesChangeHandler(object obj, DevicesHashtable hs);
-        public event DevicesChangeHandler DevicesChange;
+        public event DevicesChangeHandler DevicesChange;//当连接设备的情况变化时发生
         private Task devicesListenerTask;
         private const string TAG = "DevicesListener";
         private const int defaultInterval = 1000;
+        private bool Continue = true;
         private readonly int interval;
-        [Obsolete]
-        internal DevicesListener(AdbTools at, FastbootTools ft, int interval = defaultInterval)
+        public DevicesListener(int interval = defaultInterval)
         {
             this.interval = interval;
         }
-        internal DevicesListener() { }
+        /// <summary>
+        /// 停止监听
+        /// </summary>
         public void Stop()
         {
-            //devicesListenerTask
-            //Task.
+            Continue = false;
         }
+        /// <summary>
+        /// 暂停监听
+        /// </summary>
+        /// <param name="second">暂停时间(毫秒)</param>
         public void Pause(int second = 1000)
         {
             devicesListenerTask.Wait(second);
         }
+        /// <summary>
+        /// 开始监听
+        /// </summary>
         public void Start()
         {
             if (DevicesChange == null)
             {
                 throw new EventNotBoundException();
             }
-            devicesListenerTask = new Task(this.Listener);
+            devicesListenerTask = new Task(this.Listen);
             devicesListenerTask.Start();
         }
-        private void Listener()
+        private void Listen()
         {
             DevicesHashtable last = new DevicesHashtable();
             new Adb().Execute("devices");
-            while (true)
+            while (Continue == true)
             {
-                while (true)
+                //此处重载了运算符,当执行+时,会把两个hashmap的值相加并返回
+                DevicesHashtable now = DevicesTools.GetDevices();
+                if (last != now)
                 {
-                    //此处重载了运算符,当执行+时,会把两个hashmap的值相加并返回
-                    DevicesHashtable now = DevicesTools.GetDevices();
-                    if (last != now)
-                    {
-                        last = now;
-                        Log.d(TAG, "Devices Change");
-                        DevicesChange?.Invoke(this, now);
-                    }
-                    Thread.Sleep(interval);
+                    last = now;
+                    //GC.Collect();
+                    Log.d(TAG, "Devices Change");
+                    DevicesChange?.Invoke(this, now);
                 }
+                Thread.Sleep(interval);
             }
         }
-
-
     }
 }

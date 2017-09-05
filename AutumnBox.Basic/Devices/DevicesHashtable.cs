@@ -1,4 +1,6 @@
-﻿using System;
+﻿
+using AutumnBox.Basic.Util;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -8,12 +10,20 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Devices
 {
+    /// <summary>
+    /// 重载了一些运算符的用于存储当前连接设备的hashtable
+    /// </summary>
+    [Serializable]
     public class DevicesHashtable : Hashtable
     {
-        public DevicesHashtable() : base()
-        {
-
+        public string GetFristDevice() {
+            foreach (DictionaryEntry i in this)
+            {
+                return i.Key.ToString();
+            }
+            throw new DeviceNotFoundException();
         }
+        public DevicesHashtable() : base() {}
         /// <summary>
         /// 重载相等判断的运算符
         /// </summary>
@@ -64,6 +74,10 @@ namespace AutumnBox.Basic.Devices
         {
             return this == (DevicesHashtable)obj;
         }
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
         public override object this[object index]
         {
             get
@@ -71,7 +85,6 @@ namespace AutumnBox.Basic.Devices
 
                 try
                 {
-                    //Debug.WriteLine(index);
                     return base[index];
                 }
                 catch (System.NullReferenceException)
@@ -84,9 +97,6 @@ namespace AutumnBox.Basic.Devices
                 base[index] = value;
             }
         }
-        public override int GetHashCode()
-        {
-            return base.GetHashCode();
-        }
+       
     }
 }

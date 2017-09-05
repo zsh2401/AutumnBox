@@ -4,6 +4,6 @@
              xmlns:local="clr-namespace:AutumnBox"
              StartupUri="UI/Main/Main.xaml">
     <Application.Resources>
-        <ResourceDictionary Source="Lang/zh-cn.xaml"/>
+        <ResourceDictionary Source="Lang/zh-CN.xaml"/>
     </Application.Resources>
 </Application>

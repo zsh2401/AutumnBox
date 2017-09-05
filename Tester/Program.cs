@@ -1,12 +1,11 @@
-﻿using AutumnBox.Basic;
-using AutumnBox.Basic.Arg;
+﻿using AutumnBox.Basic.AdbEnc;
 using AutumnBox.Basic.Devices;
-using AutumnBox.Util;
-using Newtonsoft.Json.Linq;
+using AutumnBox.Basic.Functions;
+using AutumnBox.Basic.Util;
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Diagnostics;
+
 namespace Tester
 {
     /// <summary>
@@ -17,6 +16,66 @@ namespace Tester
         static string mi4ID = "9dd1b490";
         static void Main(string[] args)
         {
+            DeviceLink link = DeviceLink.Create(mi4ID);
+            var fm = new BreventServiceActivator();
+            fm.Finish += (s, a) => { Console.WriteLine(a.OutputData.nOutPut); };
+           ( fm as ICanGetRealTimeOut).OutputDataReceived += (s, o) => { Console.WriteLine(o.Data); };
+            link.ExecuteFunction(fm);
+
+            //foreach (DictionaryEntry i in DevicesTools.GetDevices()) {
+            //    Console.WriteLine(i.Key.ToString());
+            //}
+            //Adb adb = new Adb();
+            //var d = adb.GetDevices();
+            //foreach (DictionaryEntry i in d) {
+            //    Console.WriteLine(i.Key);
+            //}
+            //Process cmdProcess = new Process();
+            //cmdProcess.StartInfo.FileName = "cmd.exe";
+            //cmdProcess.StartInfo.CreateNoWindow = true;         // 不创建新窗口    
+            //cmdProcess.StartInfo.UseShellExecute = false;       //不启用shell启动进程  
+            //cmdProcess.StartInfo.RedirectStandardInput = true;  // 重定向输入    
+            //cmdProcess.StartInfo.RedirectStandardOutput = true; // 重定向标准输出    
+            //cmdProcess.StartInfo.RedirectStandardError = true;  // 重定向错误输出  
+
+            //cmdProcess.StartInfo.Arguments = @"/c ping www.baidu.com";
+            //cmdProcess.Start();
+            //cmdProcess.BeginOutputReadLine();
+            //cmdProcess.BeginErrorReadLine();
+            //cmdProcess.OutputDataReceived += (s, d) => { Console.WriteLine(d.Data); };
+            //cmdProcess.ErrorDataReceived += (s, d) => { Console.WriteLine(d.Data); };
+            //cmdProcess.WaitForExit();
+            //cmdProcess.Close();
+            //link.Execute(fm);
+            //new BreventServiceActivator().DeviceID
+            //new Adb().Execute("device");
+            //Device d = Device.GetDeviceFromID(mi4ID);
+            //var rf = new XiaomiBootloaderRelocker();
+            //var rf = new XiaomiSystemUnlocker();
+            //rf.DeviceID = mi4ID;
+            //Console.WriteLine(d.Info.deviceStatus);
+            //rf.Args = new RebootArgs { deviceID = mi4ID, nowStatus = d.Info.deviceStatus, rebootOption = RebootOptions.System };
+            //d.Execute(rf);
+            //Console.WriteLine(new AutumnBox.Basic.AdbEnc.Adb().Execute("help").output[0]);
+            //Adb adb = new Adb();
+            //var x = adb.GetDevices();
+            //foreach (DictionaryEntry i in x) {
+            //    Console.WriteLine(i.Key);
+            //}
+
+            //rf.
+            //rf.Finish += (s, e) => { Console.WriteLine("Ok"); };
+            //rf.Args = new Args { deviceID = mi4ID };
+            //rf.Args = new FileArgs {deviceID = mi4ID, files = new string[] { @"E:\VSProject\CSharp\AutumnKMCCC\KMCCC.sln" } };
+            //rf.Args = new RebootArgs { deviceID = mi4ID, nowStatus = DevicesTools.GetDeviceStatus(mi4ID), rebootOption = RebootOptions.System };
+
+
+
+            //Console.WriteLine(DevicesTools.GetDeviceStatus(mi4ID));
+            //devices
+
+            //d.Execute
+            //AutumnBox.Basic.
             ////测试设备列表获取
             //AdbTools at = new AdbTools();
             //DevicesHashtable normal_devices = at.GetDevice();

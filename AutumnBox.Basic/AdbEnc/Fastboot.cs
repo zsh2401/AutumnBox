@@ -1,5 +1,5 @@
 ﻿using AutumnBox.Basic.Devices;
-using AutumnBox.Basic.Other;
+using AutumnBox.Basic.Util;
 using System.Collections.Generic;
 
 namespace AutumnBox.Basic.AdbEnc
@@ -7,7 +7,7 @@ namespace AutumnBox.Basic.AdbEnc
     /// <summary>
     /// 封装fastboot工具
     /// </summary>
-    internal class Fastboot:Cmd,ITools, IAdbCommandExecuter
+    internal class Fastboot:Cmd,IDevicesGetter, IAdbCommandExecuter
     {
         public Fastboot():base()
         {
