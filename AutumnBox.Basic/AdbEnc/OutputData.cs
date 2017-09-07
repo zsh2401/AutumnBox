@@ -5,13 +5,19 @@ namespace AutumnBox.Basic.AdbEnc
     public struct OutputData
     {
         public string error;
-        public string nOutPut { get {
+        public string nOutPut
+        {
+            get
+            {
                 string x = "";
-                foreach (string line in output) {
-                    x += line + "\r\n";
+                foreach (string line in output)
+                {
+                    if (line != null)
+                        x += line + "\r\n";
                 }
                 return x;
-            } }
+            }
+        }
         public List<string> output;
     }
 }

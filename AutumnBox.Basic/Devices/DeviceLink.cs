@@ -39,7 +39,8 @@ namespace AutumnBox.Basic.Devices
         //}
         public Thread ExecuteFunction(FunctionModule func)
         {
-            func.DeviceID = this.DeviceID;//设置设备id
+            //设置设备id
+            func.DeviceID = this.DeviceID;
             //运行功能模块
             return func.Run();
         }

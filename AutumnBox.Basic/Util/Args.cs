@@ -14,4 +14,8 @@ namespace AutumnBox.Basic.Util
         public RebootOptions rebootOption;
         public DeviceStatus nowStatus; 
     }
+    public struct ApplicationLaunchArgs {
+        public string PackageName;
+        public string ActivityName;
+    }
 }

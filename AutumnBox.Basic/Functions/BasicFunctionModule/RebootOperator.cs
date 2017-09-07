@@ -14,8 +14,6 @@ namespace AutumnBox.Basic.Functions
         public static new FunctionRequiredDeviceStatus RequiredDeviceStatus = FunctionRequiredDeviceStatus.All;
         public RebootOperator(RebootArgs rebootArgs) : base(RequiredDeviceStatus){
             this.args = rebootArgs;
-            var d = this.ToString().Split('.');
-            TAG = d[d.Length - 1];
         }
         protected override void MainMethod()
         {

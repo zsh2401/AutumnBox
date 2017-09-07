@@ -66,7 +66,7 @@ namespace AutumnBox.Basic.Devices
                 {
                     last = now;
                     //GC.Collect();
-                    Log.d(TAG, "Devices Change");
+                    Logger.D(TAG, "Devices Change");
                     DevicesChange?.Invoke(this, now);
                 }
                 Thread.Sleep(interval);

@@ -8,8 +8,6 @@ namespace AutumnBox.Basic.Functions
         private static new FunctionRequiredDeviceStatus RequiredDeviceStatus = FunctionRequiredDeviceStatus.Fastboot;
         public XiaomiBootloaderRelocker() : base(RequiredDeviceStatus)
         {
-            var d = this.ToString().Split('.');
-            TAG = d[d.Length - 1];
         }
         protected override void MainMethod()
         {

@@ -61,6 +61,7 @@
     <Compile Include="Devices\DevicesTools.cs" />
     <Compile Include="Functions\BasicFunctionModule\CustomRecoveryFlasher.cs" />
     <Compile Include="Functions\BasicFunctionModule\FileSender.cs" />
+    <Compile Include="Functions\ExpFunctionsModule\ApplicationLauncher.cs" />
     <Compile Include="Functions\FunctionRequiredDeviceStatus.cs" />
     <Compile Include="Functions\FunctionModule.cs" />
     <Compile Include="Functions\ICanGetRealTimeOut.cs" />
@@ -75,7 +76,6 @@
     <Compile Include="Util\Exceptions.cs" />
     <Compile Include="Util\FinishEventArgs.cs" />
     <Compile Include="Util\Logger.cs" />
-    <Compile Include="Util\Log.cs" />
     <Compile Include="Util\Paths.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

@@ -31,17 +31,15 @@ namespace AutumnBox.Basic.Util
             try
             {
                 sourceData = GetSourceData(GUIDE_URL);
-                Log.d(TAG, "Init suc");
+                Logger.D(TAG, "Init suc");
                 isOk = true;
             }
             catch (Exception e)
             {
-                Log.d(TAG, "Get guide fail");
-                Log.d(TAG, e.Message);
+                Logger.D(TAG, "Get guide fail");
+                Logger.D(TAG, e.Message);
                 sourceData = JObject.Parse("{\"ok\":\"false\"}");
                 isOk = false;
-                Log.d(TAG, "Init Fail");
-                Log.d(TAG, e.Message);
             }
         }
         public JToken this[object index]

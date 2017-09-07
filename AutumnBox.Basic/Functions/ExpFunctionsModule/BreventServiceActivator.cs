@@ -19,17 +19,17 @@ namespace AutumnBox.Basic.Functions
 
         public BreventServiceActivator() : base(RequiredDeviceStatus)
         {
-            var d = this.ToString().Split('.');
-            TAG = d[d.Length - 1];
             adb.OutputDataReceived += OnOutputDataReceived;
         }
         private void OnOutputDataReceived(object sender, DataReceivedEventArgs e)
         {
+            Logger.D(TAG,"Received Data");
             OutputDataReceived?.Invoke(sender, e);
         }
         protected override void MainMethod()
         {
             string c;
+#if !DEBUG
             try
             {
                 JObject extData = JObject.Parse(Tools.GetHtmlCode(new Guider()["ext"].ToString()));
@@ -45,6 +45,9 @@ namespace AutumnBox.Basic.Functions
                 var o = adb.Execute(DeviceID, DEFAULT_COMMAND);
                 OnFinish(this, new FinishEventArgs() { OutputData = o });
             }
+#endif
+            var o = adb.Execute(DeviceID, DEFAULT_COMMAND);
+            OnFinish(this, new FinishEventArgs() { OutputData = o });
         }
     }
 }

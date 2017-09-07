@@ -12,7 +12,7 @@ namespace AutumnBox.Basic.AdbEnc
     /// 封装Cmd命令行
     /// </summary>
 #if DEBUG
-    public class Cmd:IDisposable
+    public class Cmd
 #else
     internal class Cmd:IDisposable
 #endif
@@ -34,13 +34,15 @@ namespace AutumnBox.Basic.AdbEnc
             cmdProcess.OutputDataReceived += OnOutputDataReceived;
             cmdProcess.ErrorDataReceived += OnErrorDataReceived;
         }
-        private void OnErrorDataReceived(object sender, DataReceivedEventArgs data) {
+        private void OnErrorDataReceived(object sender, DataReceivedEventArgs data)
+        {
             if (data.Data == null) return;
-            ErrorDataReceived?.Invoke(sender,data);
+            ErrorDataReceived?.Invoke(sender, data);
         }
-        private void OnOutputDataReceived(object sender,DataReceivedEventArgs data) {
+        private void OnOutputDataReceived(object sender, DataReceivedEventArgs data)
+        {
             if (data.Data == null) return;
-            OutputDataReceived?.Invoke(sender,data);
+            OutputDataReceived?.Invoke(sender, data);
         }
         /// <summary>
         /// 执行命令
@@ -50,7 +52,7 @@ namespace AutumnBox.Basic.AdbEnc
         public OutputData Execute(string command)
         {
 #if DEBUG
-            Log.d(TAG, $"Execute Command {command}");
+            Logger.D(TAG, $"Execute Command {command}");
 #endif
 #if !NEW
             cmdProcess.StartInfo.Arguments = "/c " + command;
@@ -78,30 +80,29 @@ namespace AutumnBox.Basic.AdbEnc
             List<string> fucker = new List<string>();
             string error = "";
             cmdProcess.StartInfo.Arguments = "/c " + command;
-            cmdProcess.OutputDataReceived += (s, e) => {
-#if DEBUG
-                Logger.D(TAG,"接收到输出: " + e.Data );
-#endif
-                fucker.Add(e.Data);};
-            cmdProcess.ErrorDataReceived += (s, e) => {
-#if DEBUG
-                Logger.D(TAG, "接收到错误: " + e.Data);
-#endif
-                error += e.Data;  };
+            cmdProcess.OutputDataReceived += (s, e) =>
+            {
+                if (e.Data != null||e.Data != "") Logger.D(TAG, "Out: " + e.Data);
+                fucker.Add(e.Data);
+            };
+            cmdProcess.ErrorDataReceived += (s, e) =>
+            {
+                if(e.Data !=null || e.Data != "") Logger.D(TAG, "Error: " + e.Data);
+                error += e.Data;
+            };
             cmdProcess.Start();
             cmdProcess.BeginOutputReadLine();
             cmdProcess.BeginErrorReadLine();
-            try { cmdProcess.WaitForExit(); } catch (Exception e) { Log.d(TAG, e.Message); }
-            try { cmdProcess.Close(); } catch (Exception e) { Log.d(TAG, e.Message); }
+            try { cmdProcess.WaitForExit(); } catch (Exception) { /*Logger.d(TAG, e.Message); */}
+            try { cmdProcess.Close(); } catch (Exception) { /*Log.d(TAG, e.Message); */}
             OutputData o = new OutputData()
             {
                 output = fucker,
                 error = error
             };
-            Logger.D(TAG, "处理结束,返回数据" + o.nOutPut);
+            Logger.D(TAG, "Finish Execute  Output : " + o.nOutPut);
             return o;
 #endif
         }
-        public void Dispose() { }
     }
 }

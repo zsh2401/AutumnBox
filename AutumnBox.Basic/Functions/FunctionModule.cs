@@ -29,7 +29,7 @@ namespace AutumnBox.Basic.Functions
         /// 构造
         /// </summary>
         /// <param name="needStatus">功能模块需要的手机状态</param>
-        protected FunctionModule(FunctionRequiredDeviceStatus needStatus)
+        protected FunctionModule(FunctionRequiredDeviceStatus needStatus = FunctionRequiredDeviceStatus.All)
         {
             switch (needStatus)
             {
@@ -44,6 +44,8 @@ namespace AutumnBox.Basic.Functions
                     adb = new Adb();
                     break;
             }
+            var d = this.ToString().Split('.');
+            TAG = d[d.Length - 1];
         }
         /// <summary>
         /// 开始执行方法,并返回线程以便进行取消

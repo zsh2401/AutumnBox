@@ -12,8 +12,6 @@ namespace AutumnBox.Basic.Functions
         private FileArgs args;
         public CustomRecoveryFlasher(FileArgs fileArg):base(RequiredDeviceStatus) {
             this.args = fileArg;
-            var d = this.ToString().Split('.');
-            TAG = d[d.Length - 1];
         }
         protected override void MainMethod() {
             Logger.D(TAG,"Start MainMethod");

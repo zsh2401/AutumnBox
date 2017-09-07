@@ -30,12 +30,10 @@ namespace AutumnBox.Basic.AdbEnc
 
             List<string> x = Execute(" devices").output;
             DevicesHashtable hs = new DevicesHashtable();
-            Logger.D("ff",x.Count.ToString());
             for (int i = 1; i < x.Count - 2; i++)
             {
                 Logger.D("Adb Device Get", x[i].Split('\t')[0] + x[i].Split('\t')[1]);
                 hs.Add(x[i].Split('\t')[0], x[i].Split('\t')[1]);
-                Debug.WriteLine($"{x[i].Split('\t')[0]}  -- {x[i].Split('\t')[1]}");
             }
             return hs;
         }
