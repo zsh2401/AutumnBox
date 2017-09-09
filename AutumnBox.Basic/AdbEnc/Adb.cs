@@ -8,16 +8,12 @@ namespace AutumnBox.Basic.AdbEnc
     /// <summary>
     /// 封装Adb工具
     /// </summary>
-#if DEBUG
-    public class Adb : Cmd, IDevicesGetter, IAdbCommandExecuter
-#else
-    internal class Adb:Cmd,IDevicesGetter, IAdbCommandExecuter
-#endif
+    internal class Adb : Cmd, IDevicesGetter, IAdbCommandExecuter
     {
         public Adb() : base()
         {
         }
-        public new OutputData Execute(string command)
+        public override OutputData Execute(string command)
         {
             return base.Execute(Paths.ADB_TOOLS + " " + command);
         }
@@ -27,19 +23,24 @@ namespace AutumnBox.Basic.AdbEnc
         }
         public DevicesHashtable GetDevices()
         {
-
-            List<string> x = Execute(" devices").output;
+            //if (Process.GetProcessesByName("adb").Length == 0) Execute("start-server");
+            List<string> output = Execute(" devices").output;
             DevicesHashtable hs = new DevicesHashtable();
-            for (int i = 1; i < x.Count - 2; i++)
+            for (int i = 1; i < output.Count - 2; i++)
             {
-                Logger.D("Adb Device Get", x[i].Split('\t')[0] + x[i].Split('\t')[1]);
-                hs.Add(x[i].Split('\t')[0], x[i].Split('\t')[1]);
+                //Logger.D("Adb Device Get", output[i].Split('\t')[0] + output[i].Split('\t')[1]);
+                hs.Add(output[i].Split('\t')[0], output[i].Split('\t')[1]);
             }
             return hs;
         }
         public static void KillAdb()
         {
             new Adb().Execute("kill-server");
+        }
+        public static void RestartAdb()
+        {
+            KillAdb();
+            new Adb().Execute("start-server");
         }
     }
 }

@@ -1,4 +1,9 @@
-﻿using AutumnBox.Basic.AdbEnc;
+﻿/*
+ 关于设备的各种工具类
+ @zsh2401
+ 2017/9/8
+ */
+using AutumnBox.Basic.AdbEnc;
 using AutumnBox.Basic.Devices;
 using System;
 using System.Collections;
@@ -12,7 +17,7 @@ namespace AutumnBox.Basic.Devices
     /// <summary>
     /// 关于设备的一些静态函数
     /// </summary>
-    public static class DevicesTools
+    public static class DevicesHelper
     {
         /// <summary>
         /// 获取设备状态

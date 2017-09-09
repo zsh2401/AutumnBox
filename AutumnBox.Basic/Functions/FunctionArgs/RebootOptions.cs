@@ -1,4 +1,4 @@
-﻿namespace AutumnBox.Basic.Util
+﻿namespace AutumnBox.Basic.Functions
 {
     /// <summary>
     /// 重启枚举

@@ -1,18 +1,28 @@
-﻿using AutumnBox.Basic.Util;
+﻿using AutumnBox.Basic.Functions.Event;
+using AutumnBox.Basic.Util;
 using System.Threading;
+using System.Diagnostics;
 
 namespace AutumnBox.Basic.Functions
 {
     /// <summary>
     /// 文件发送器
     /// </summary>
-    public sealed class FileSender : FunctionModule
+    public sealed class FileSender : FunctionModule,ICanGetRealTimeOut, IFunctionCanStop
     {
         private static new FunctionRequiredDeviceStatus RequiredDeviceStatus = FunctionRequiredDeviceStatus.RunningOrRecovery;
         public event SimpleFinishEventHandler sendSingleFinish;
+        public event DataReceivedEventHandler OutputDataReceived;
+        public event DataReceivedEventHandler ErrorDataReceived;
+
         private FileArgs args;
+
+        public int CmdProcessPID { get { return adb.Pid; } }
+
         public FileSender(FileArgs fileArg) : base(RequiredDeviceStatus) {
             this.args= fileArg;
+            adb.OutputDataReceived += OutputDataReceived;
+            adb.ErrorDataReceived += ErrorDataReceived;
         }
         protected override void MainMethod()
         {
@@ -26,6 +36,12 @@ namespace AutumnBox.Basic.Functions
                 sendSingleFinish?.Invoke();
             }
            OnFinish(this, new FinishEventArgs());
+        }
+
+        public void Stop()
+        {
+            //adb.cmdProcess.kill
+            AdbEnc.Adb.KillAdb();
         }
     }
 }

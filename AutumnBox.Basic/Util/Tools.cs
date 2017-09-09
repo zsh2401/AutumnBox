@@ -1,14 +1,21 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
+using System.Diagnostics;
 using System.IO;
+using System.Management;
 using System.Net;
 using System.Text;
 
 namespace AutumnBox.Basic.Util
 {
-    public static class Tools
+    internal static class Tools
     {
-        public static string GetHtmlCode(string url)
+        /// <summary>
+        /// 获取网页代码
+        /// </summary>
+        /// <param name="url"></param>
+        /// <returns></returns>
+        internal static string GetHtmlCode(string url)
         {
             string strHTML = "";
             WebClient myWebClient = new WebClient();
@@ -17,6 +24,34 @@ namespace AutumnBox.Basic.Util
             strHTML = sr.ReadToEnd();
             myStream.Close();
             return strHTML;
+        }
+        /// <summary>
+        /// 杀死进程和他的子进程
+        /// Code from https://stackoverflow.com/questions/30249873/process-kill-doesnt-seem-to-kill-the-process
+        /// </summary>
+        /// <param name="pid"></param>
+        internal static void KillProcessAndChildrens(int pid)
+        {
+            ManagementObjectSearcher processSearcher = new ManagementObjectSearcher
+              ("Select * From Win32_Process Where ParentProcessID=" + pid);
+            ManagementObjectCollection processCollection = processSearcher.Get();
+            try
+            {
+                Process proc = Process.GetProcessById(pid);
+                if (!proc.HasExited) proc.Kill();
+            }
+            catch (ArgumentException)
+            {
+                // Process already exited.
+            }
+
+            if (processCollection != null)
+            {
+                foreach (ManagementObject mo in processCollection)
+                {
+                    KillProcessAndChildrens(Convert.ToInt32(mo["ProcessID"])); //kill child processes(also kills childrens of childrens etc.)
+                }
+            }
         }
     }
     internal class Guider

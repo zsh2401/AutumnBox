@@ -13,4 +13,6 @@ namespace AutumnBox.Basic.Util
     public class ArgErrorException : Exception { }
     [Serializable]
     public class DeviceNotFoundException : Exception { }
+    [Serializable]
+    public class FuncNotSupportStopException : Exception { }
 }

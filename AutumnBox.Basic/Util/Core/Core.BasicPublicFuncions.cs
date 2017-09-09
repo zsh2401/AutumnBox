@@ -4,7 +4,7 @@ using AutumnBox.Basic.Functions;
 using AutumnBox.Basic.Util;
 using System.Threading;
 /*此文件中的方法,是已经通过实验,确定可以正常工作的功能*/
-namespace AutumnBox.Basic
+namespace AutumnBox.Basic.Util
 {
     public partial class Core
     {

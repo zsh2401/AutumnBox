@@ -1,10 +1,10 @@
 ﻿using AutumnBox.Basic.AdbEnc;
 using AutumnBox.Basic.Devices;
 using AutumnBox.Basic.Functions;
-using AutumnBox.Basic.Util;
 using System;
-using System.Collections;
 using System.Diagnostics;
+using System.Runtime.InteropServices;
+using System.Threading;
 
 namespace Tester
 {
@@ -13,15 +13,82 @@ namespace Tester
     /// </summary>
     class Program
     {
-        static string mi4ID = "9dd1b490";
+        //static string mi4ID = "9dd1b490";
+        //[DllImport("kernel32.dll")]
+        //static extern bool GenerateConsoleCtrlEvent(int dwCtrlEvent, int dwProcessGroupId);
+
+        //[DllImport("kernel32.dll")]
+        //static extern bool SetConsoleCtrlHandler(IntPtr handlerRoutine, bool add);
+
+        //[DllImport("kernel32.dll")]
+        //static extern bool AttachConsole(int dwProcessId);
         static void Main(string[] args)
         {
-            DeviceLink link = DeviceLink.Create(mi4ID);
-            var fm = new BreventServiceActivator();
-            fm.Finish += (s, a) => { Console.WriteLine(a.OutputData.nOutPut); };
-           ( fm as ICanGetRealTimeOut).OutputDataReceived += (s, o) => { Console.WriteLine(o.Data); };
-            link.ExecuteFunction(fm);
+            //DeviceLink link = DeviceLink.Create();
+            DevicesHelper.GetDevices();
+            FileSender fs = new FileSender(new FileArgs() { files = new string[] { "E:/MiDreamOut.zip" } });
+            
+            //var rm = link.Execute(fs);
+            //rm.FuncStop();
+            //DevicesListener listener = new DevicesListener();
+            //listener.DevicesChange += (s, e) => { Console.WriteLine("Devices Change"); };
+            //listener.Start();
+            //Adb adb = new Adb();
+            //var t = new Thread(() => { adb.Execute("push E:/MiDreamOut.zip /sdcard/"); });
+            //t.Start();
+            //Console.ReadKey();
+            //Console.WriteLine("Clear");
+            //adb.Stop();
+            //Console.WriteLine(p.Threads[0].Id);
 
+            //adb.cmdProcess.input
+            //var sw = adb.cmdProcess.StandardInput;
+            //adb.cmdProcess.k
+            //sw.WriteLine("{Ctrl}+{C}");
+            //adb.cmdProcess.Kill();
+            //DevicesTools.GetDevices();
+
+            //DeviceLink link = DeviceLink.Create();
+            //var fs = new FileSender(new FileArgs { files = new string[] { @"D:\☆下载暂存\RiseCraft第三大道定制(1).7z.baiduyun.downloading" } });
+            //fs.Finish += (s,e)=>  { Console.WriteLine("Finish"); };
+            //var ba = new BreventServiceActivator();
+            //ba.Finish += (s, e) => { Console.WriteLine("Finish"); };
+            //var rm =  link.Execute(fs);
+            //Console.ReadKey();
+            //Console.WriteLine(1);
+            //listener.Stop();
+            //Console.WriteLine(1);
+            //Adb.RestartAdb();
+            //listener.Start();
+            //rm.Stop();
+            //Console.ReadKey();
+            //Cmd cmd = new Cmd();
+            //cmd.OutputDataReceived += (s, e) => { Console.WriteLine(e.Data); };
+            //var t= new Thread(() => { cmd.Execute("ping www.baidu.com"); });
+            //t.Start();
+            //Thread.Sleep(2000);
+            ////t.Abort();
+            //cmd.cmdProcess.Kill();
+            //Console.WriteLine(cmd.cmdProcess.HasExited);
+            //Console.ReadKey();
+            //var fm = new BreventServiceActivator();
+            //RunningManager rm;
+            //fm.ErrorDataReceived += (s, e) => { Console.WriteLine(e.Data); };
+            //fm.OutputDataReceived += (s, e) => { Console.WriteLine(e.Data); };
+            //fm.Finish += (s, e) => { Console.WriteLine("Finish"); };
+            //rm = DeviceLink.Create().Execute(fm);
+            //Thread.Sleep(2000);
+            //rm.Stop();
+            //Console.WriteLine(rm.FunctionIsFinish);
+            //Console.ReadKey();
+            //var fm = new RebootOperator(new RebootArgs {
+            //    nowStatus = DevicesTools.GetDeviceStatus(link.DeviceID),rebootOption = RebootOptions.System}
+            //);
+            //var fm = new ApplicationLauncher(new ApplicationLaunchArgs { PackageName = "me.piebridge.brevent", ActivityName = ".ui.BreventActivity" });
+            //fm.Finish += (s, a) => { Console.WriteLine(a.OutputData.nOutPut); };
+            ////( fm as ICanGetRealTimeOut).OutputDataReceived += (s, o) => { Console.WriteLine(o.Data); };
+            //link.Execute(fm);
+            //Console.ReadKey();
             //foreach (DictionaryEntry i in DevicesTools.GetDevices()) {
             //    Console.WriteLine(i.Key.ToString());
             //}
@@ -179,7 +246,8 @@ namespace Tester
             //Print(Environment.OSVersion.Version.Major.ToString());
         }
 
-        public static void Print(string str) {
+        public static void Print(string str)
+        {
             Console.WriteLine(str);
         }
         //private static void P_Exited(object sender, EventArgs e)

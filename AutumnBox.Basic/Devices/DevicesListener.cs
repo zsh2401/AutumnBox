@@ -1,11 +1,11 @@
 ﻿/*
  @zsh2401
- 2017/9/6
+ 2017/9/8
  设备监听器,监听设备拔插
  */
 using AutumnBox.Basic.AdbEnc;
 using AutumnBox.Basic.Util;
-using System;
+using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -14,14 +14,14 @@ namespace AutumnBox.Basic.Devices
     /// <summary>
     /// 设备监听器
     /// </summary>
-    public class DevicesListener
+    public class DevicesListener:BaseObject
     {
         public delegate void DevicesChangeHandler(object obj, DevicesHashtable hs);
         public event DevicesChangeHandler DevicesChange;//当连接设备的情况变化时发生
         private Task devicesListenerTask;
-        private const string TAG = "DevicesListener";
         private const int defaultInterval = 1000;
         private bool Continue = true;
+        private DevicesHashtable last = new DevicesHashtable();
         private readonly int interval;
         public DevicesListener(int interval = defaultInterval)
         {
@@ -47,6 +47,7 @@ namespace AutumnBox.Basic.Devices
         /// </summary>
         public void Start()
         {
+            Continue = true;
             if (DevicesChange == null)
             {
                 throw new EventNotBoundException();
@@ -56,17 +57,15 @@ namespace AutumnBox.Basic.Devices
         }
         private void Listen()
         {
-            DevicesHashtable last = new DevicesHashtable();
-            new Adb().Execute("devices");
-            while (Continue == true)
+            while (Continue)
             {
+                if (Process.GetProcessesByName("adb").Length == 0) new Adb().Execute("start-server");
                 //此处重载了运算符,当执行+时,会把两个hashmap的值相加并返回
-                DevicesHashtable now = DevicesTools.GetDevices();
+                DevicesHashtable now = DevicesHelper.GetDevices();
                 if (last != now)
                 {
                     last = now;
-                    //GC.Collect();
-                    Logger.D(TAG, "Devices Change");
+                    LogD("Devices Change");
                     DevicesChange?.Invoke(this, now);
                 }
                 Thread.Sleep(interval);

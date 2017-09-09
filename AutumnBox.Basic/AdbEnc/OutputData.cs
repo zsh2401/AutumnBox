@@ -1,4 +1,9 @@
-﻿using System.Collections.Generic;
+﻿/*
+ 输出的内容的结构体
+ @zsh2401
+ 2017/9/8
+ */
+using System.Collections.Generic;
 
 namespace AutumnBox.Basic.AdbEnc
 {

@@ -1,7 +1,10 @@
-﻿using AutumnBox.Basic.Util;
-using Newtonsoft.Json.Linq;
-using System;
-using System.Threading;
+﻿/*
+ 黑域激活器
+ @zsh2401
+ 2017/9/8
+ */
+using AutumnBox.Basic.Functions.Event;
+using AutumnBox.Basic.Util;
 using System.Diagnostics;
 
 namespace AutumnBox.Basic.Functions
@@ -9,27 +12,31 @@ namespace AutumnBox.Basic.Functions
     /// <summary>
     /// 黑域服务激活器
     /// </summary>
-    public sealed class BreventServiceActivator : FunctionModule, ICanGetRealTimeOut
+    public sealed class BreventServiceActivator : FunctionModule, ICanGetRealTimeOut, IFunctionCanStop
     {
         private const string DEFAULT_COMMAND = "shell \"sh /data/data/me.piebridge.brevent/brevent.sh\"";
 
         private static new FunctionRequiredDeviceStatus RequiredDeviceStatus = FunctionRequiredDeviceStatus.Running;
 
+        public int CmdProcessPID { get { return adb.Pid; } }
+
         public event DataReceivedEventHandler OutputDataReceived;
+        public event DataReceivedEventHandler ErrorDataReceived;
 
         public BreventServiceActivator() : base(RequiredDeviceStatus)
         {
+            adb.ErrorDataReceived += ErrorDataReceived;
             adb.OutputDataReceived += OnOutputDataReceived;
         }
         private void OnOutputDataReceived(object sender, DataReceivedEventArgs e)
         {
-            Logger.D(TAG,"Received Data");
+            Logger.D(TAG, "Received Data");
             OutputDataReceived?.Invoke(sender, e);
         }
         protected override void MainMethod()
         {
-            string c;
 #if !DEBUG
+            string c;
             try
             {
                 JObject extData = JObject.Parse(Tools.GetHtmlCode(new Guider()["ext"].ToString()));

@@ -1,25 +1,22 @@
 ﻿#define NEW
 using AutumnBox.Basic.Util;
 using System;
+using System.Management;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 
 namespace AutumnBox.Basic.AdbEnc
 {
     /// <summary>
     /// 封装Cmd命令行
     /// </summary>
-#if DEBUG
-    public class Cmd
-#else
-    internal class Cmd:IDisposable
-#endif
+    internal class Cmd:BaseObject
     {
-        public const string NOT_FOUND = "NOT_FOUND";
+        public int Pid { get { return cmdProcess.Id; } }
         protected Process cmdProcess = new Process();
-        private string TAG = "CMD";
         public event DataReceivedEventHandler OutputDataReceived;
         public event DataReceivedEventHandler ErrorDataReceived;
         public Cmd()
@@ -49,12 +46,44 @@ namespace AutumnBox.Basic.AdbEnc
         /// </summary>
         /// <param name="command">完整命令</param>
         /// <returns>输出数据</returns>
-        public OutputData Execute(string command)
+        public virtual OutputData Execute(string command)
         {
 #if DEBUG
             Logger.D(TAG, $"Execute Command {command}");
 #endif
-#if !NEW
+#if NEW
+            List<string> fucker = new List<string>();
+            string error = "";
+            cmdProcess.StartInfo.Arguments = "/c " + command;
+            cmdProcess.OutputDataReceived += (s, e) =>
+            {
+                /* if (e.Data != null || e.Data != "") */
+                LogD("Out: " + e.Data);
+                fucker.Add(e.Data);
+            };
+            cmdProcess.ErrorDataReceived += (s, e) =>
+            {
+                /*if (e.Data != null || e.Data != "") */
+                LogD("Error: " + e.Data);
+                error += e.Data;
+            };
+            cmdProcess.Start();
+            try
+            {
+                cmdProcess.BeginOutputReadLine();
+                cmdProcess.BeginErrorReadLine();
+            }
+            catch { }
+            try { cmdProcess.WaitForExit(); } catch (Exception) { /*Logger.d(TAG, e.Message); */}
+            try { cmdProcess.Close(); } catch (Exception) {  /*Log.d(TAG, e.Message); */}
+            OutputData o = new OutputData()
+            {
+                output = fucker,
+                error = error
+            };
+            LogD("Finish Execute");
+            return o;
+#else
             cmdProcess.StartInfo.Arguments = "/c " + command;
             cmdProcess.Start();
             //获取执行命令时输出的内容
@@ -75,32 +104,6 @@ namespace AutumnBox.Basic.AdbEnc
             }
             try { cmdProcess.WaitForExit(); } catch (Exception e) { Log.d(TAG, e.Message); }
             try { cmdProcess.Close(); } catch (Exception e) { Log.d(TAG, e.Message); }
-            return o;
-#else
-            List<string> fucker = new List<string>();
-            string error = "";
-            cmdProcess.StartInfo.Arguments = "/c " + command;
-            cmdProcess.OutputDataReceived += (s, e) =>
-            {
-                if (e.Data != null||e.Data != "") Logger.D(TAG, "Out: " + e.Data);
-                fucker.Add(e.Data);
-            };
-            cmdProcess.ErrorDataReceived += (s, e) =>
-            {
-                if(e.Data !=null || e.Data != "") Logger.D(TAG, "Error: " + e.Data);
-                error += e.Data;
-            };
-            cmdProcess.Start();
-            cmdProcess.BeginOutputReadLine();
-            cmdProcess.BeginErrorReadLine();
-            try { cmdProcess.WaitForExit(); } catch (Exception) { /*Logger.d(TAG, e.Message); */}
-            try { cmdProcess.Close(); } catch (Exception) { /*Log.d(TAG, e.Message); */}
-            OutputData o = new OutputData()
-            {
-                output = fucker,
-                error = error
-            };
-            Logger.D(TAG, "Finish Execute  Output : " + o.nOutPut);
             return o;
 #endif
         }

@@ -37,7 +37,7 @@ namespace AutumnBox
         {
             lock (setUILock) {
                 string id = arg.ToString();
-                DeviceInfo info = DevicesTools.GetDeviceInfo(id);
+                DeviceInfo info = DevicesHelper.GetDeviceInfo(id);
                 DeviceStatus status = info.deviceStatus;
                 this.Dispatcher.Invoke(new Action(() =>
                 {

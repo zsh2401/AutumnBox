@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AutumnBox.Basic.Devices
+﻿namespace AutumnBox.Basic.Devices
 {
-    public struct DeviceInfo {
-        public string model;//型号
-        public string brand;//厂商
-        public string code;//代号
-        public string id;//id
-        public string androidVersion;//安卓版本
-        public DeviceStatus deviceStatus;
+    public struct DeviceInfo
+    {
+        public string model { internal set; get; }//型号
+        public string brand { internal set; get; }//厂商
+        public string code { internal set; get; }//代号
+        public string id { internal set; get; }//id
+        public string m { get { return brand + " " + model; } }
+        public string androidVersion { internal set; get; }//安卓版本
+        public DeviceStatus deviceStatus { internal set; get; }//设备状态
     }
 }

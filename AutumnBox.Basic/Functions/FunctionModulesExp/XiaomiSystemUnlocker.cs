@@ -1,4 +1,10 @@
-﻿using AutumnBox.Basic.AdbEnc;
+﻿/*
+ 小米系统解锁器
+ @zsh2401
+ 2017/9/8
+ */
+using AutumnBox.Basic.AdbEnc;
+using AutumnBox.Basic.Functions.Event;
 using AutumnBox.Basic.Util;
 using System.Threading;
 
@@ -10,13 +16,9 @@ namespace AutumnBox.Basic.Functions
     public sealed class XiaomiSystemUnlocker : FunctionModule
     {
         private static new FunctionRequiredDeviceStatus RequiredDeviceStatus = FunctionRequiredDeviceStatus.Running;
-        public XiaomiSystemUnlocker() : base(RequiredDeviceStatus)
-        {
-        }
+        public XiaomiSystemUnlocker() : base(RequiredDeviceStatus){}
         protected override void MainMethod()
         {
-            var d = this.ToString().Split('.');
-            TAG = d[d.Length - 1];
             adb.Execute(DeviceID, "root");
             Thread.Sleep(300);
             OutputData o = adb.Execute(DeviceID, "disable-verity");

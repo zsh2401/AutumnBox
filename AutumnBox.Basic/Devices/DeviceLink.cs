@@ -8,14 +8,14 @@ namespace AutumnBox.Basic.Devices
     /// <summary>
     /// 设备连接对象
     /// </summary>
-    public sealed class DeviceLink
+    public sealed class DeviceLink:BaseObject
     {
         public string DeviceID { get; private set; }
         public DeviceInfo DeviceInfo { get; private set; }
         private DeviceLink(string id)
         {
             DeviceID = id;
-            DeviceInfo = DevicesTools.GetDeviceInfo(id);
+            DeviceInfo = DevicesHelper.GetDeviceInfo(id);
         }
 
         ///// <summary>
@@ -37,10 +37,11 @@ namespace AutumnBox.Basic.Devices
         //    functionModule.DeviceID = this.DeviceID;
         //    return functionModule.Run();
         //}
-        public Thread ExecuteFunction(FunctionModule func)
+        public RunningManager Execute(FunctionModule func)
         {
             //设置设备id
             func.DeviceID = this.DeviceID;
+            if (!func.IsFinishEventBound) throw new EventNotBoundException();
             //运行功能模块
             return func.Run();
         }
@@ -52,7 +53,7 @@ namespace AutumnBox.Basic.Devices
         /// <returns></returns>
         public static DeviceLink Create(string id = null)
         {
-            string _id = (id != null) ? id : DevicesTools.GetDevices().GetFristDevice();
+            string _id = (id != null) ? id : DevicesHelper.GetDevices().GetFristDevice();
             return new DeviceLink(_id);
         }
     }

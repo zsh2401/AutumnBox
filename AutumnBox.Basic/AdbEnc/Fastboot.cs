@@ -12,7 +12,7 @@ namespace AutumnBox.Basic.AdbEnc
         public Fastboot():base()
         {
         }
-        public new OutputData Execute(string command)
+        public override OutputData Execute(string command)
         {
             return base.Execute(Paths.FASTBOOT_TOOLS + " " + command);
         }

@@ -3,7 +3,7 @@ using AutumnBox.Basic.Devices;
 using System;
 using System.Collections;
 /*此文件中的代码是有关core的实例化的*/
-namespace AutumnBox.Basic
+namespace AutumnBox.Basic.Util
 {
     [Obsolete]
     /// <summary>

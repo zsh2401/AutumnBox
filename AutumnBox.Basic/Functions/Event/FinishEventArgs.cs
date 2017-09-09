@@ -1,7 +1,7 @@
 ﻿using AutumnBox.Basic.AdbEnc;
 using System;
 
-namespace AutumnBox.Basic.Util
+namespace AutumnBox.Basic.Functions.Event
 {
     public class FinishEventArgs:EventArgs
     {
