@@ -10,7 +10,7 @@ namespace AutumnBox
 {
     public partial class Window1
     {
-        Core core = new Core();
+        
         RateBox rateBox;
         string TAG = "MainWindow";
         //现在选取的设备

@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using AutumnBox.Basic.AdbEnc;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -8,8 +9,17 @@ using System.Text;
 
 namespace AutumnBox.Basic.Util
 {
-    internal static class Tools
+    public static class Tools
     {
+        public static void KillAdb()
+        {
+            new Adb().Execute("kill-server");
+        }
+        public static void RestartAdb()
+        {
+            KillAdb();
+            new Adb().Execute("start-server");
+        }
         /// <summary>
         /// 获取网页代码
         /// </summary>

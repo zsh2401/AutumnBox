@@ -5,6 +5,7 @@
     /// </summary>
     public enum DeviceStatus
     {
+        DEBUGGING_DEVICE  = -2,
         NO_DEVICE = -1,
         RUNNING,
         RECOVERY,

@@ -1,10 +1,12 @@
 ﻿using AutumnBox.Basic.Devices;
+using AutumnBox.Basic.Functions;
 using AutumnBox.Debug;
 using AutumnBox.Images.DynamicIcons;
 using AutumnBox.UI;
 using AutumnBox.Util;
 using Microsoft.Win32;
 using System;
+using System.Collections;
 using System.Diagnostics;
 using System.Threading;
 using System.Windows;
@@ -89,7 +91,18 @@ namespace AutumnBox
         {
             if (this.DevicesListBox.SelectedIndex != -1)//如果选择了设备
             {
-                new Thread(new ParameterizedThreadStart(SetUIByDevices)).Start(this.DevicesListBox.SelectedItem.ToString());
+                //new Thread(new ParameterizedThreadStart(SetUIByDevices)).Start(this.DevicesListBox.SelectedItem.ToString());
+                //var f = (DevicesListBox.ItemsSource as DevicesHashtable)[DevicesListBox.SelectedItem.ToString()];
+                //var s = f as DictionaryEntry;
+                //DeviceStatus status;
+
+                new Thread(() =>
+                {
+                    this.Dispatcher.Invoke(() =>
+                    {
+                        SetUIByDevices(DevicesListBox.SelectedItem.ToString(), DevicesHelper.GetDeviceStatus(DevicesListBox.SelectedItem.ToString()));
+                    });
+                }).Start();
                 ShowRateBox();
             }
             else
@@ -110,7 +123,10 @@ namespace AutumnBox
             fileDialog.Multiselect = false;
             if (fileDialog.ShowDialog() == true)
             {
-                ShowRateBox(core.PushFileToSdcard(nowDev, fileDialog.FileName));
+                FileSender fs = new FileSender(new FileArgs { files = new string[] { fileDialog.FileName } });
+                RunningManager rm = App.nowLink.Execute(fs);
+                fs.Finish += this.FuncFinish;
+                ShowRateBox(rm);
             }
             else
             {
@@ -121,24 +137,43 @@ namespace AutumnBox
         private void MainWindow_Closed(object sender, EventArgs e)
         {
             this.Close();
-            core.devicesListener.Stop();
-            core.KillAdb();
+            App.devicesListener.Stop();
+            Basic.Util.Tools.KillAdb();
             Environment.Exit(0);
         }
 
         private void buttonRebootToRecovery_Click(object sender, RoutedEventArgs e)
         {
-            core.Reboot(DevicesListBox.SelectedItem.ToString(), RebootOptions.Recovery);
+            RebootOperator ro = new RebootOperator(new RebootArgs
+            {
+                rebootOption = RebootOptions.Recovery,
+                nowStatus = App.nowLink.DeviceInfo.deviceStatus
+            });
+            ro.Finish += this.FuncFinish;
+            App.nowLink.Execute(ro);
         }
 
         private void buttonRebootToBootloader_Click(object sender, RoutedEventArgs e)
         {
-            core.Reboot(DevicesListBox.SelectedItem.ToString(), RebootOptions.Bootloader);
+            RebootOperator ro = new RebootOperator(new RebootArgs
+            {
+                rebootOption = RebootOptions.Bootloader,
+                nowStatus = App.nowLink.DeviceInfo.deviceStatus
+            });
+            ro.Finish += this.FuncFinish;
+            App.nowLink.Execute(ro);
+
         }
 
         private void buttonRebootToSystem_Click(object sender, RoutedEventArgs e)
         {
-            core.Reboot(DevicesListBox.SelectedItem.ToString(), RebootOptions.System);
+            RebootOperator ro = new RebootOperator(new RebootArgs
+            {
+                rebootOption = RebootOptions.System,
+                nowStatus = App.nowLink.DeviceInfo.deviceStatus
+            });
+            ro.Finish += this.FuncFinish;
+            App.nowLink.Execute(ro);
         }
 
         private void buttonFlashCustomRecovery_Click(object sender, RoutedEventArgs e)
@@ -150,8 +185,10 @@ namespace AutumnBox
             fileDialog.Multiselect = false;
             if (fileDialog.ShowDialog() == true)
             {
-                core.FlashCustomRecovery(nowDev, fileDialog.FileName);
-                ShowRateBox();
+                CustomRecoveryFlasher flasher = new CustomRecoveryFlasher(new FileArgs() { files = new string[] { fileDialog.FileName } });
+                flasher.Finish += this.FuncFinish;
+                RunningManager rm = App.nowLink.Execute(flasher);
+                ShowRateBox(rm);
             }
             else
             {
@@ -161,18 +198,22 @@ namespace AutumnBox
 
         private void buttonUnlockMiSystem_Click(object sender, RoutedEventArgs e)
         {
-            if (!ChoiceBox.Show(this, FindResource("Notice").ToString(), FindResource("UnlockXiaomiSystemTip").ToString()))return;
-            core.UnlockMiSystem(nowDev);
-            ShowRateBox();
-            MMessageBox.ShowDialog(this, FindResource("Notice").ToString(),FindResource("IfAllOK").ToString());
+            if (!ChoiceBox.Show(this, FindResource("Notice").ToString(), FindResource("UnlockXiaomiSystemTip").ToString())) return;
+            MMessageBox.ShowDialog(this, FindResource("Notice").ToString(), FindResource("IfAllOK").ToString());
+            XiaomiSystemUnlocker unlocker = new XiaomiSystemUnlocker();
+            unlocker.Finish += this.FuncFinish;
+            var rm = App.nowLink.Execute(unlocker);
+            ShowRateBox(rm);
         }
 
         private void buttonRelockMi_Click(object sender, RoutedEventArgs e)
         {
             if (!ChoiceBox.Show(this, FindResource("Warning").ToString(), FindResource("RelockWarning").ToString())) return;
             if (!ChoiceBox.Show(this, FindResource("Warning").ToString(), FindResource("RelockWarningAgain").ToString())) return;
-            core.RelockMi(nowDev);
-            ShowRateBox();
+            XiaomiBootloaderRelocker relocker = new XiaomiBootloaderRelocker();
+            relocker.Finish += this.FuncFinish;
+            var rm = App.nowLink.Execute(relocker);
+            ShowRateBox(rm);
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
@@ -263,8 +304,7 @@ namespace AutumnBox
         /// <param name="e"></param>
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            core.devicesListener.Start();//开始设备监听
-
+            App.devicesListener.Start();//开始设备监听
             //哦,如果是第一次启动本软件,那么就显示一下提示吧!
             if (Config.isFristLaunch)
             {
@@ -276,7 +316,10 @@ namespace AutumnBox
         private void buttonStartBrventService_Click(object sender, RoutedEventArgs e)
         {
             if (!ChoiceBox.Show(this, FindResource("Notice").ToString(), FindResource("StartBrventTip").ToString())) return;
-            ShowRateBox(core.StartBrventService(nowDev));
+            BreventServiceActivator activator = new BreventServiceActivator();
+            activator.Finish += this.FuncFinish;
+            var rm = App.nowLink.Execute(activator);
+            ShowRateBox(rm);
         }
 
         private void buttonLinkHelp_Click(object sender, RoutedEventArgs e)
@@ -289,8 +332,10 @@ namespace AutumnBox
             ProcessStartInfo info = new ProcessStartInfo();
             info.WorkingDirectory = "adb/";
             info.FileName = "cmd.exe";
-            if (Tools.IsWin10) {
-                if (ChoiceBox.ShowDialog(this, FindResource("Notice").ToString(), FindResource("ShellChoiceTip").ToString(), "Powershell", "CMD")) {
+            if (Tools.IsWin10)
+            {
+                if (ChoiceBox.ShowDialog(this, FindResource("Notice").ToString(), FindResource("ShellChoiceTip").ToString(), "Powershell", "CMD"))
+                {
                     info.FileName = "powershell.exe";
                 }
             }

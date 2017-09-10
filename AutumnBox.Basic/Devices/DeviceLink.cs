@@ -8,14 +8,15 @@ namespace AutumnBox.Basic.Devices
     /// <summary>
     /// 设备连接对象
     /// </summary>
-    public sealed class DeviceLink:BaseObject
+    public sealed class DeviceLink : BaseObject
     {
         public string DeviceID { get; private set; }
         public DeviceInfo DeviceInfo { get; private set; }
-        private DeviceLink(string id)
+        private DeviceLink(string id, DeviceStatus status)
         {
             DeviceID = id;
-            DeviceInfo = DevicesHelper.GetDeviceInfo(id);
+            if (status != DeviceStatus.DEBUGGING_DEVICE)
+                DeviceInfo = DevicesHelper.GetDeviceInfo(id);
         }
 
         ///// <summary>
@@ -51,10 +52,19 @@ namespace AutumnBox.Basic.Devices
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public static DeviceLink Create(string id = null)
+        public static DeviceLink Create(string id = null, string status = null)
         {
-            string _id = (id != null) ? id : DevicesHelper.GetDevices().GetFristDevice();
-            return new DeviceLink(_id);
+            string _id = id ?? DevicesHelper.GetDevices().GetFristDevice();
+            DeviceStatus _status = status == null ?
+                DevicesHelper.StringStatusToEnumStatus(status) :
+                DevicesHelper.GetDeviceStatus(_id);
+            //return new DeviceLink(_id)
+
+            return Create(_id, status);
+        }
+        public static DeviceLink Create(string id, DeviceStatus status)
+        {
+            return new DeviceLink(id, status);
         }
     }
 }

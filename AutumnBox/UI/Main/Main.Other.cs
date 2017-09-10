@@ -1,5 +1,6 @@
 ﻿using AutumnBox.Basic;
 using AutumnBox.Basic.Devices;
+using AutumnBox.Basic.Functions;
 using AutumnBox.Debug;
 using AutumnBox.Images.DynamicIcons;
 using AutumnBox.UI;
@@ -33,12 +34,19 @@ namespace AutumnBox
         /// 通过事件可以便可以关闭进度窗
         /// </summary>
         /// <param name="id">设备的id</param>
-        private void SetUIByDevices(object arg)
+        private void SetUIByDevices(string id,DeviceStatus status)
         {
-            lock (setUILock) {
-                string id = arg.ToString();
-                DeviceInfo info = DevicesHelper.GetDeviceInfo(id);
-                DeviceStatus status = info.deviceStatus;
+            Log.d(TAG,$"Start set UI by device {id}");
+            lock (setUILock)
+            {
+                if (status == DeviceStatus.DEBUGGING_DEVICE) {
+                    ChangeButtonAndImageByStatus(status);
+                    SetUIFinish?.Invoke();
+                    return;
+                }
+                Log.d(TAG,"Getting Device Info");
+                var buildInfo = DevicesHelper.GetBuildInfo(id);
+                DeviceInfo info = DevicesHelper.GetDeviceInfo(id,buildInfo,status);
                 this.Dispatcher.Invoke(new Action(() =>
                 {
                     //根据状态将图片和按钮状态进行设置
@@ -107,6 +115,9 @@ namespace AutumnBox
                     this.DeviceStatusImage.Source = Tools.BitmapToBitmapImage(DyanamicIcons.recovery);
                     this.DeviceStatusLabel.Content = FindResource("DeviceInSideload").ToString();
                     break;
+                case DeviceStatus.DEBUGGING_DEVICE:
+                    this.DeviceStatusLabel.Content = FindResource("DeviceIsDebugging").ToString();
+                    break;
                 default:
                     this.DeviceStatusImage.Source = Tools.BitmapToBitmapImage(DyanamicIcons.no_selected);
                     this.DeviceStatusLabel.Content = FindResource("PleaseSelectedADevice").ToString();
@@ -116,24 +127,31 @@ namespace AutumnBox
         /// <summary>
         /// 通过此方法来显示进度框可以确保不会同时出现多个进度窗口
         /// </summary>
-        private void ShowRateBox(Thread t = null) {
+        private void ShowRateBox(RunningManager rm = null)
+        {
             try
             {
-                if (this.rateBox.IsActive) rateBox.Close();
-                if (t == null)this.rateBox = new RateBox(this);
-                else this.rateBox = new RateBox(this, t);
+                if (rm == null) {
+                    rateBox = new RateBox(this);
+                    rateBox.ShowDialog();
+                    return;
+                }
+                if (rateBox.IsActive) rateBox.Close();
+                rateBox = new RateBox(this, rm);
                 rateBox.ShowDialog();
             }
-            catch {
-                this.rateBox = new RateBox(this);
+            catch
+            {
+                this.rateBox = new RateBox(this, rm);
                 rateBox.ShowDialog();
             }
         }
         /// <summary>
         /// 隐藏进度窗口
         /// </summary>
-        private void HideRateBox() {
-            this.rateBox.Close();
+        private void HideRateBox()
+        {
+            try { this.rateBox.Close(); } catch  { }
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using AutumnBox.Basic.Devices;
+using System.Windows;
 
 namespace AutumnBox
 {
@@ -7,5 +8,11 @@ namespace AutumnBox
     /// </summary>
     public partial class App : Application
     {
+        internal static DeviceLink nowLink;
+        internal static DevicesListener devicesListener = new DevicesListener();
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+        }
     }
 }

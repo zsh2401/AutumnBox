@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using AutumnBox.Basic.Functions;
+using System;
 using System.Windows;
 using System.Windows.Input;
 
@@ -9,16 +10,20 @@ namespace AutumnBox.UI
     /// </summary>
     public partial class RateBox : Window
     {
-        private Thread rateThread;
+        private RunningManager rm;
+        [Obsolete]
         public RateBox(Window owner)
         {
             InitializeComponent();
             this.Owner = owner;
         }
-        public RateBox(Window owner,Thread t):this(owner)
+        public RateBox(Window owner, RunningManager rm)
         {
-            this.rateThread = t;
-            this.buttonCancel.Visibility = Visibility.Visible;
+            InitializeComponent();
+            this.rm = rm;
+            if (rm.FuncCanStop)
+                buttonCancel.Visibility = Visibility.Visible;
+            this.Owner = owner;
         }
         public new void ShowDialog()
         {
@@ -34,7 +39,7 @@ namespace AutumnBox.UI
 
         private void buttonStartBrventService_Click(object sender, RoutedEventArgs e)
         {
-            this.rateThread.Abort();
+            this.rm.FuncStop();
             this.Close();
         }
     }

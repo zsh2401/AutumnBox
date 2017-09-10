@@ -2,6 +2,7 @@
 using AutumnBox.Basic.Devices;
 using AutumnBox.Basic.Functions;
 using System;
+using System.Collections;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Threading;
@@ -25,8 +26,14 @@ namespace Tester
         static void Main(string[] args)
         {
             //DeviceLink link = DeviceLink.Create();
-            DevicesHelper.GetDevices();
-            FileSender fs = new FileSender(new FileArgs() { files = new string[] { "E:/MiDreamOut.zip" } });
+
+            //var deviceList = DevicesHelper.GetDevices();
+            //Console.WriteLine("设备列表");
+            //foreach (DictionaryEntry i in deviceList) {
+            //    Console.WriteLine(i.ToString());
+            //}
+            //Console.ReadKey();
+            //FileSender fs = new FileSender(new FileArgs() { files = new string[] { "E:/MiDreamOut.zip" } });
             
             //var rm = link.Execute(fs);
             //rm.FuncStop();

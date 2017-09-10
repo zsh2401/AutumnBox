@@ -16,6 +16,10 @@ namespace AutumnBox.Basic.Functions
         public RebootOperator(RebootArgs rebootArgs) : base(RequiredDeviceStatus){
             this.args = rebootArgs;
         }
+        //public RebootOperator(RebootOptions option)
+        //{
+        //    args = new RebootArgs { rebootOption = option };
+        //}
         protected override void MainMethod()
         {
             IAdbCommandExecuter commandExecuter;

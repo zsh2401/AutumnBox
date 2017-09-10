@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>AutumnBox.Basic</RootNamespace>
     <AssemblyName>AutumnBox.Basic</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -51,6 +52,8 @@
     <Compile Include="AdbEnc\Interfaces.cs" />
     <Compile Include="AdbEnc\OutputData.cs" />
     <Compile Include="Functions\Event\StartEventArgs.cs" />
+    <Compile Include="Functions\ICanGetRealTimeOut.cs" />
+    <Compile Include="Functions\OutReceiver.cs" />
     <Compile Include="Util\Core\Core.BasicPublicFuncions.cs" />
     <Compile Include="Util\Core\Core.Init.cs" />
     <Compile Include="Util\Core\Core.PrivateFunctions.cs" />
@@ -72,7 +75,6 @@
     <Compile Include="Functions\FunctionArgs\RebootOptions.cs" />
     <Compile Include="Functions\FunctionRequiredDeviceStatus.cs" />
     <Compile Include="Functions\FunctionModule.cs" />
-    <Compile Include="Functions\ICanGetRealTimeOut.cs" />
     <Compile Include="Functions\FunctionModulesBasic\RebootOperator.cs" />
     <Compile Include="Functions\FunctionModulesExp\XiaomiBootloaderRelocker.cs" />
     <Compile Include="Functions\FunctionModulesExp\XiaomiSystemUnlocker.cs" />

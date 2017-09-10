@@ -12,7 +12,6 @@ namespace AutumnBox.Basic.Functions
     public struct FileArgs:IArgs {
         public string[] files;
     }
-    [Obsolete]
     public struct RebootArgs:IArgs {
         public RebootOptions rebootOption;
         public DeviceStatus nowStatus; 

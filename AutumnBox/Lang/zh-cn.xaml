@@ -4,7 +4,6 @@
                     xmlns:s="clr-namespace:System;assembly=mscorlib">
     <s:String x:Key="LanguageName">简体中文</s:String>
 
-
     <s:String x:Key="UnlockXiaomiSystemTip">注意,这不是解除Bootloader锁! 这个功能是帮助已经拥有MIUI开发版root权限的设备使用的,该功能能让你获得完整的root权限!可以修改系统分区!</s:String>
     <s:String x:Key="StartBreventServiceFail">启动黑域服务时,似乎出现了一些问题,请将此处截图给黑域开发者或AutumnBox开发者</s:String>
     <s:String x:Key="StartBreventServiceSuc">现在,您的设备应该已经成功激活了黑域!但为了保险起见,将会展示脚本输出的信息</s:String>
@@ -73,6 +72,7 @@
     <s:String x:Key="DeviceIsPowerOn">您的设备正处于开机状态</s:String>
     <s:String x:Key="DeviceIsInRecovery">您的设备正处于恢复模式</s:String>
     <s:String x:Key="DeviceIsInFastboot">您的设备正处于Fastboot模式</s:String>
+    <s:String x:Key="DeviceIsDebugging">这是一个模拟设备</s:String>
     <s:String x:Key="NotFoundDevices">没有找到设备</s:String>
     <s:String x:Key="Model">设备型号</s:String>
     <s:String x:Key="Code">设备代号</s:String>

@@ -19,6 +19,22 @@ namespace AutumnBox.Basic.Devices
     /// </summary>
     public static class DevicesHelper
     {
+        public static DeviceStatus StringStatusToEnumStatus(string statusString) {
+            switch (statusString) {
+                case "running":
+                    return DeviceStatus.RUNNING;
+                case "recovery":
+                    return DeviceStatus.RECOVERY;
+                case "fastboot":
+                    return DeviceStatus.FASTBOOT;
+                case "sideload":
+                    return DeviceStatus.SIDELOAD;
+                case "debugging_device":
+                    return DeviceStatus.DEBUGGING_DEVICE;
+                default:
+                    return DeviceStatus.NO_DEVICE;
+            }
+        }
         /// <summary>
         /// 获取设备状态
         /// </summary>
@@ -36,6 +52,8 @@ namespace AutumnBox.Basic.Devices
                     return DeviceStatus.FASTBOOT;
                 case "sideload":
                     return DeviceStatus.SIDELOAD;
+                case "debugging_device":
+                    return DeviceStatus.DEBUGGING_DEVICE;
                 default:
                     return DeviceStatus.NO_DEVICE;
             }
@@ -46,7 +64,14 @@ namespace AutumnBox.Basic.Devices
         /// <returns>设备列表</returns>
         public static DevicesHashtable GetDevices()
         {
+#if DEBUG
+            var ls = new Adb().GetDevices() + new Fastboot().GetDevices();
+            ls.Add("zsh2401TestDebug", "debugging_device");
+            return ls;
+#else 
             return new Adb().GetDevices() + new Fastboot().GetDevices();
+#endif
+
         }
         /// <summary>
         /// 获取一个设备的信息
@@ -63,6 +88,23 @@ namespace AutumnBox.Basic.Devices
                 androidVersion = ht["androidVersion"].ToString(),
                 model = ht["model"].ToString(),
                 deviceStatus = GetDeviceStatus(id),
+                id = id
+            };
+        }
+        /// <summary>
+        /// 获取一个设备的信息
+        /// </summary>
+        /// <param name="id">设备的id</param>
+        /// <returns>设备信息</returns>
+        public static DeviceInfo GetDeviceInfo(string id,Hashtable buildInfo,DeviceStatus status)
+        {
+            return new DeviceInfo
+            {
+                brand = buildInfo["brand"].ToString(),
+                code = buildInfo["name"].ToString(),
+                androidVersion = buildInfo["androidVersion"].ToString(),
+                model = buildInfo["model"].ToString(),
+                deviceStatus = status,
                 id = id
             };
         }

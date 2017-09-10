@@ -23,7 +23,7 @@ namespace AutumnBox.Basic.AdbEnc
         }
         public DevicesHashtable GetDevices()
         {
-            //if (Process.GetProcessesByName("adb").Length == 0) Execute("start-server");
+            if (Process.GetProcessesByName("adb").Length == 0) Execute("start-server");
             List<string> output = Execute(" devices").output;
             DevicesHashtable hs = new DevicesHashtable();
             for (int i = 1; i < output.Count - 2; i++)
