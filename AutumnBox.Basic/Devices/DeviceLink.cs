@@ -53,15 +53,14 @@ namespace AutumnBox.Basic.Devices
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public static DeviceLink Create(string id = null, string status = null)
+        public static DeviceLink Create(string id)
         {
-            string _id = id ?? DevicesHelper.GetDevices().GetFristDevice();
-            DeviceStatus _status = status != null ?
-                DevicesHelper.StringStatusToEnumStatus(status) :
-                DevicesHelper.GetDeviceStatus(_id);
-            //return new DeviceLink(_id)
-
-            return Create(_id, status);
+            //string _id = id ?? DevicesHelper.GetDevices().GetFristDevice();
+            //DeviceStatus _status = status != null ?
+            //    DevicesHelper.StringStatusToEnumStatus(status) :
+            //    DevicesHelper.GetDeviceStatus(_id);
+            DeviceStatus status = DevicesHelper.GetDeviceStatus(id);
+            return Create(id, status);
         }
         public static DeviceLink Create(string id, DeviceStatus status)
         {

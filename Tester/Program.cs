@@ -27,17 +27,17 @@ namespace Tester
         static void Main(string[] args)
         {
 
-            //DevicesListener l = new DevicesListener();
-            //l.DevicesChange += (s, h) => { Console.WriteLine("Device Change"); };
-            //l.Start();
+            DevicesListener l = new DevicesListener();
+            l.DevicesChange += (s, h) => { Console.WriteLine("Device Change"); };
+            l.Start();
 
             //DevicesHelper.GetBuildInfo(mi6ID);
-            DeviceLink link;
-            foreach (DictionaryEntry e in DevicesHelper.GetDevices())
-            {
-                link = DeviceLink.Create(e);
-                break;
-            }
+            //DeviceLink link;
+            //foreach (DictionaryEntry e in DevicesHelper.GetDevices())
+            //{
+            //    link = DeviceLink.Create(e);
+            //    break;
+            //}
             Console.ReadKey();
             //link
 

@@ -15,6 +15,7 @@ namespace AutumnBox
 {
     internal class Tools
     {
+
         public static bool IsWin10 {
             get {
                 return Environment.OSVersion.Version.Major == 10;

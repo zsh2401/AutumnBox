@@ -8,6 +8,7 @@ using AutumnBox.Util;
 using System;
 using System.Text.RegularExpressions;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 
 namespace AutumnBox
@@ -29,28 +30,28 @@ namespace AutumnBox
         }
         private delegate void NormalEventHandler();
         private event NormalEventHandler SetUIFinish;//设置UI的完成事件,这个事件的处理方法将会关闭进度窗
+        
         /// <summary>
         /// 根据设备改变界面,如果按钮状态,显示文字,这个方法需要用新线程来操作.并且完成后将会发生事件
         /// 通过事件可以便可以关闭进度窗
         /// </summary>
         /// <param name="id">设备的id</param>
-        private void SetUIByDevices(string id,DeviceStatus status)
+        private void SetUIByDevices()
         {
-            Log.d(TAG,$"Start set UI by device {id}");
             lock (setUILock)
             {
-                if (status == DeviceStatus.DEBUGGING_DEVICE) {
-                    ChangeButtonAndImageByStatus(status);
-                    SetUIFinish?.Invoke();
-                    return;
-                }
+                string id = "";
+                this.Dispatcher.Invoke(()=> {
+                    id = DevicesListBox.SelectedItem.ToString();
+                    Log.d(TAG,"Get id " + id);
+                });
+                App.nowLink = DeviceLink.Create(id);
                 Log.d(TAG,"Getting Device Info");
-                var buildInfo = DevicesHelper.GetBuildInfo(id);
-                DeviceInfo info = DevicesHelper.GetDeviceInfo(id,buildInfo,status);
+                DeviceInfo info = App.nowLink.DeviceInfo;
                 this.Dispatcher.Invoke(new Action(() =>
                 {
                     //根据状态将图片和按钮状态进行设置
-                    ChangeButtonAndImageByStatus(status);
+                    ChangeButtonAndImageByStatus(info.deviceStatus);
                     //更改文字
                     this.AndroidVersionLabel.Content = info.androidVersion;
                     this.CodeLabel.Content = info.code;
@@ -151,7 +152,8 @@ namespace AutumnBox
         /// </summary>
         private void HideRateBox()
         {
-            try { this.rateBox.Close(); } catch  { }
+            try {
+                this.rateBox.Close(); } catch  { }
         }
     }
 }

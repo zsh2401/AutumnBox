@@ -95,13 +95,13 @@ namespace AutumnBox
                 //var f = (DevicesListBox.ItemsSource as DevicesHashtable)[DevicesListBox.SelectedItem.ToString()];
                 //var s = f as DictionaryEntry;
                 //DeviceStatus status;
-
                 new Thread(() =>
                 {
-                    this.Dispatcher.Invoke(() =>
-                    {
-                        SetUIByDevices(DevicesListBox.SelectedItem.ToString(), DevicesHelper.GetDeviceStatus(DevicesListBox.SelectedItem.ToString()));
-                    });
+                    SetUIByDevices();
+                    //this.Dispatcher.Invoke(() =>
+                    //{
+                    //    SetUIByDevices(DevicesListBox.SelectedItem.ToString(), DevicesHelper.GetDeviceStatus(DevicesListBox.SelectedItem.ToString()));
+                    //});
                 }).Start();
                 ShowRateBox();
             }
@@ -124,8 +124,8 @@ namespace AutumnBox
             if (fileDialog.ShowDialog() == true)
             {
                 FileSender fs = new FileSender(new FileArgs { files = new string[] { fileDialog.FileName } });
-                RunningManager rm = App.nowLink.Execute(fs);
                 fs.Finish += this.FuncFinish;
+                RunningManager rm = App.nowLink.Execute(fs);
                 ShowRateBox(rm);
             }
             else
@@ -325,6 +325,10 @@ namespace AutumnBox
         private void buttonLinkHelp_Click(object sender, RoutedEventArgs e)
         {
             new LinkHelpWindow(this).Show();
+            Application.Current.Resources.MergedDictionaries[1] = new ResourceDictionary()
+            {
+                Source = new Uri("UI/Color2.xaml", UriKind.Relative)
+            };
         }
 
         private void buttonStartShell_Click(object sender, RoutedEventArgs e)

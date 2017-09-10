@@ -24,18 +24,21 @@ namespace AutumnBox
             //设备列表发生改变时的事件
             App.devicesListener.DevicesChange += (s, devicesHashtable) =>
             {
-                Log.d(TAG,"Devices change handing.....");
+                Log.d(TAG, "Devices change handing.....");
                 this.Dispatcher.Invoke(() =>
                 {
-                    if (devicesHashtable.Count == 1) DevicesListBox.SelectedIndex = 0;
                     DevicesListBox.Items.Clear();
-                    foreach(DictionaryEntry i in devicesHashtable)
+                    Log.d(TAG, "Clear");
+                    foreach (DictionaryEntry i in devicesHashtable)
                     {
-                        Log.d(TAG,"adding");
+                        Log.d(TAG, "Adding");
                         DevicesListBox.Items.Add(i.Key);
                     }
+                    if (devicesHashtable.Count == 1)
+                    {
+                        DevicesListBox.SelectedIndex = 0;
+                    }
                 });
-                Log.d(TAG, "handle sucessful");
             };
 
             //推送文件到手机完成时的事件

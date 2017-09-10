@@ -121,20 +121,20 @@ namespace AutumnBox.Basic.Devices
             Hashtable ht = new Hashtable();
             try { ht.Add("name", adb.Execute(id, "shell \"cat /system/build.prop | grep \"product.name\"\"").output[0].Split('=')[1]); }
             catch { ht.Add("name", ".."); }
-            Thread.Sleep(1000);
+            //Thread.Sleep(1000);
             try { ht.Add("brand", adb.Execute(id, "shell \"cat /system/build.prop | grep \"product.brand\"\"").output[0].Split('=')[1]); }
             catch { ht.Add("brand", ".."); }
-            Thread.Sleep(1000);
+            //Thread.Sleep(1000);
             try { ht.Add("androidVersion", adb.Execute(id, "shell \"cat /system/build.prop | grep \"build.version.release\"\"").output[0].Split('=')[1]); }
             catch { ht.Add("androidVersion", ".."); }
-            Thread.Sleep(1000);
+            //Thread.Sleep(1000);
             try { ht.Add("model", adb.Execute(id, "shell \"cat /system/build.prop | grep \"product.model\"\"").output[0].Split('=')[1]); }
             catch { ht.Add("model", ".."); }
-            Thread.Sleep(1000);
-#if DEBUG
-            try { ht.Add("all", adb.Execute(id, "shell \"cat /system/build.prop\"").nOutPut); }
-            catch { ht.Add("all", ".."); }
-#endif
+            //Thread.Sleep(1000);
+//#if DEBUG
+//            try { ht.Add("all", adb.Execute(id, "shell \"cat /system/build.prop\"").nOutPut); }
+//            catch { ht.Add("all", ".."); }
+//#endif
             return ht;
         }
         /// <summary>

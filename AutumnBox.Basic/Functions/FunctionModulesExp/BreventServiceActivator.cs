@@ -5,6 +5,8 @@
  */
 using AutumnBox.Basic.Functions.Event;
 using AutumnBox.Basic.Util;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Diagnostics;
 
 namespace AutumnBox.Basic.Functions
@@ -46,15 +48,16 @@ namespace AutumnBox.Basic.Functions
             }
             catch (Exception e)
             {
-                Log.d(this.ToString(), "get server brevent command fail");
-                Log.d(this.ToString(), e.Message);
-                Log.d(this.ToString(), this.DeviceID);
+                LogD("get server brevent command fail");
+                LogD(e.Message);
+                LogD(this.DeviceID);
                 var o = adb.Execute(DeviceID, DEFAULT_COMMAND);
                 OnFinish(this, new FinishEventArgs() { OutputData = o });
             }
-#endif
+#else
             var o = adb.Execute(DeviceID, DEFAULT_COMMAND);
             OnFinish(this, new FinishEventArgs() { OutputData = o });
+#endif
         }
     }
 }
