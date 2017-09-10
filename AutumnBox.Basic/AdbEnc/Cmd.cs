@@ -13,7 +13,7 @@ namespace AutumnBox.Basic.AdbEnc
     /// <summary>
     /// 封装Cmd命令行
     /// </summary>
-    internal class Cmd:BaseObject
+    internal class Cmd : BaseObject
     {
         public int Pid { get { return cmdProcess.Id; } }
         protected Process cmdProcess = new Process();
@@ -30,6 +30,7 @@ namespace AutumnBox.Basic.AdbEnc
             cmdProcess.StartInfo.RedirectStandardError = true;  // 重定向错误输出  
             cmdProcess.OutputDataReceived += OnOutputDataReceived;
             cmdProcess.ErrorDataReceived += OnErrorDataReceived;
+
         }
         private void OnErrorDataReceived(object sender, DataReceivedEventArgs data)
         {
@@ -54,28 +55,31 @@ namespace AutumnBox.Basic.AdbEnc
 #if NEW
             List<string> fucker = new List<string>();
             string error = "";
-            cmdProcess.StartInfo.Arguments = "/c " + command;
             cmdProcess.OutputDataReceived += (s, e) =>
             {
-                /* if (e.Data != null || e.Data != "") */
                 LogD("Out: " + e.Data);
                 fucker.Add(e.Data);
             };
             cmdProcess.ErrorDataReceived += (s, e) =>
             {
-                /*if (e.Data != null || e.Data != "") */
-                LogD("Error: " + e.Data);
+                LogD("Error: " + e.Data + "\n");
                 error += e.Data;
             };
+            cmdProcess.StartInfo.Arguments = "/c " + command;
+            
             cmdProcess.Start();
             try
             {
                 cmdProcess.BeginOutputReadLine();
                 cmdProcess.BeginErrorReadLine();
             }
-            catch { }
-            try { cmdProcess.WaitForExit(); } catch (Exception) { /*Logger.d(TAG, e.Message); */}
-            try { cmdProcess.Close(); } catch (Exception) {  /*Log.d(TAG, e.Message); */}
+            catch (Exception e) { LogE("异步读取失败", e); }
+            try { cmdProcess.WaitForExit();
+                cmdProcess.CancelOutputRead();
+                cmdProcess.CancelErrorRead();
+            } catch (Exception e) { LogE("等待退出或关闭流失败", e); }
+            try { cmdProcess.Close(); } catch (Exception e) { LogE("关闭失败", e); }
+
             OutputData o = new OutputData()
             {
                 output = fucker,

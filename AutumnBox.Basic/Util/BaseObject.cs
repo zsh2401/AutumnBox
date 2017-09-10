@@ -11,21 +11,15 @@ namespace AutumnBox.Basic.Util
         protected string TAG;
         public BaseObject() {
             this.TAG = this.GetType().Name;
-            //try
-            //{
-            //    var d = this.ToString().Split('.');
-            //    TAG = d[d.Length - 1];
-            //}
-            //catch (Exception e)
-            //{
-            //    Logger.E(TAG, "Init TAG fail", e);
-            //}
         }
         protected void LogD(string message) {
             Logger.D(TAG, message);
         }
         protected void LogT(string message) {
             Logger.T(TAG, message);
+        }
+        protected void LogE(string message,Exception e, bool showInTrace = true) {
+            Logger.E(TAG, message, e, true);
         }
     }
 }

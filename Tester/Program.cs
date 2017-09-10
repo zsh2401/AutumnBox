@@ -14,7 +14,8 @@ namespace Tester
     /// </summary>
     class Program
     {
-        //static string mi4ID = "9dd1b490";
+        static string mi4ID = "9dd1b490";
+        static string mi6ID = "af0fe186";
         //[DllImport("kernel32.dll")]
         //static extern bool GenerateConsoleCtrlEvent(int dwCtrlEvent, int dwProcessGroupId);
 
@@ -25,7 +26,21 @@ namespace Tester
         //static extern bool AttachConsole(int dwProcessId);
         static void Main(string[] args)
         {
-            //DeviceLink link = DeviceLink.Create();
+
+            //DevicesListener l = new DevicesListener();
+            //l.DevicesChange += (s, h) => { Console.WriteLine("Device Change"); };
+            //l.Start();
+
+            //DevicesHelper.GetBuildInfo(mi6ID);
+            DeviceLink link;
+            foreach (DictionaryEntry e in DevicesHelper.GetDevices())
+            {
+                link = DeviceLink.Create(e);
+                break;
+            }
+            Console.ReadKey();
+            //link
+
 
             //var deviceList = DevicesHelper.GetDevices();
             //Console.WriteLine("设备列表");
@@ -34,7 +49,7 @@ namespace Tester
             //}
             //Console.ReadKey();
             //FileSender fs = new FileSender(new FileArgs() { files = new string[] { "E:/MiDreamOut.zip" } });
-            
+
             //var rm = link.Execute(fs);
             //rm.FuncStop();
             //DevicesListener listener = new DevicesListener();

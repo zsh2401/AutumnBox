@@ -1,6 +1,7 @@
 ﻿using AutumnBox.Basic.Functions;
 using AutumnBox.Basic.Util;
 using System;
+using System.Collections;
 using System.Threading;
 
 namespace AutumnBox.Basic.Devices
@@ -15,7 +16,7 @@ namespace AutumnBox.Basic.Devices
         private DeviceLink(string id, DeviceStatus status)
         {
             DeviceID = id;
-            if (status != DeviceStatus.DEBUGGING_DEVICE)
+            if (status != DeviceStatus.FASTBOOT || status != DeviceStatus.DEBUGGING_DEVICE)
                 DeviceInfo = DevicesHelper.GetDeviceInfo(id);
         }
 
@@ -55,7 +56,7 @@ namespace AutumnBox.Basic.Devices
         public static DeviceLink Create(string id = null, string status = null)
         {
             string _id = id ?? DevicesHelper.GetDevices().GetFristDevice();
-            DeviceStatus _status = status == null ?
+            DeviceStatus _status = status != null ?
                 DevicesHelper.StringStatusToEnumStatus(status) :
                 DevicesHelper.GetDeviceStatus(_id);
             //return new DeviceLink(_id)
@@ -65,6 +66,10 @@ namespace AutumnBox.Basic.Devices
         public static DeviceLink Create(string id, DeviceStatus status)
         {
             return new DeviceLink(id, status);
+        }
+        public static DeviceLink Create(DictionaryEntry e)
+        {
+            return Create(e.Key.ToString(), DevicesHelper.StringStatusToEnumStatus(e.Value.ToString()));
         }
     }
 }

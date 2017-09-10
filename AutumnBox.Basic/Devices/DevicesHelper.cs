@@ -1,4 +1,5 @@
-﻿/*
+﻿//#define USE_EMU_DEVICE
+/*
  关于设备的各种工具类
  @zsh2401
  2017/9/8
@@ -10,6 +11,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Devices
@@ -64,7 +66,7 @@ namespace AutumnBox.Basic.Devices
         /// <returns>设备列表</returns>
         public static DevicesHashtable GetDevices()
         {
-#if DEBUG
+#if USE_EMU_DEVICE
             var ls = new Adb().GetDevices() + new Fastboot().GetDevices();
             ls.Add("zsh2401TestDebug", "debugging_device");
             return ls;
@@ -116,22 +118,21 @@ namespace AutumnBox.Basic.Devices
         public static Hashtable GetBuildInfo(string id)
         {
             Adb adb = new Adb();
-            Fastboot fastboot = new Fastboot();
             Hashtable ht = new Hashtable();
             try { ht.Add("name", adb.Execute(id, "shell \"cat /system/build.prop | grep \"product.name\"\"").output[0].Split('=')[1]); }
             catch { ht.Add("name", ".."); }
-
+            Thread.Sleep(1000);
             try { ht.Add("brand", adb.Execute(id, "shell \"cat /system/build.prop | grep \"product.brand\"\"").output[0].Split('=')[1]); }
             catch { ht.Add("brand", ".."); }
-
+            Thread.Sleep(1000);
             try { ht.Add("androidVersion", adb.Execute(id, "shell \"cat /system/build.prop | grep \"build.version.release\"\"").output[0].Split('=')[1]); }
             catch { ht.Add("androidVersion", ".."); }
-
+            Thread.Sleep(1000);
             try { ht.Add("model", adb.Execute(id, "shell \"cat /system/build.prop | grep \"product.model\"\"").output[0].Split('=')[1]); }
             catch { ht.Add("model", ".."); }
-
+            Thread.Sleep(1000);
 #if DEBUG
-            try { ht.Add("model", adb.Execute(id, "shell \"cat /system/build.prop").output); }
+            try { ht.Add("all", adb.Execute(id, "shell \"cat /system/build.prop\"").nOutPut); }
             catch { ht.Add("all", ".."); }
 #endif
             return ht;

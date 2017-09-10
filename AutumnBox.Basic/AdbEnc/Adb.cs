@@ -19,7 +19,7 @@ namespace AutumnBox.Basic.AdbEnc
         }
         public OutputData Execute(string id, string command)
         {
-            return base.Execute(Paths.ADB_TOOLS + $" -s {id} " + command);
+            return Execute($" -s {id} " + command);
         }
         public DevicesHashtable GetDevices()
         {
