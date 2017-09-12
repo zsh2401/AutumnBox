@@ -5,6 +5,7 @@ using System;
 using System.Collections;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
+using System.Text.RegularExpressions;
 using System.Threading;
 
 namespace Tester
@@ -29,18 +30,32 @@ namespace Tester
         }
         static void Main(string[] args)
         {
-            var x = new FileSender(new FileArgs() { files = new string[] { "E:/MiDreamOut.zip" } });
-            DeviceLink link = DeviceLink.Create(mi6ID);
-            var rm = link.InitRM(x);
-            rm.FuncStarted += (s, e) => { Console.WriteLine("Start!"); };
-            rm.FuncFinished += (s, e) => { Console.WriteLine("Finish"); };
-            rm.OutputReceived += (s, e) => { Console.WriteLine(e.Data); };
-            rm.ErrorReceived += (s, e) => { Console.WriteLine(e.Data); };
-            rm.ExecuterStared += (s, e) => { Console.WriteLine(e.PID); };
-            //Console.WriteLine(rm)
-            rm.FuncStart();
-            Console.ReadKey();
-            rm.FuncStop();
+            //string x = " [30%] wadfsadasasasasd";
+            string x = "[ 98%] /sdcard/D:\\xxxxx_x64.zip";
+            //var rex = new Regex("[(?<MYSTR>\\w+)]");
+            //String str1 = rex.Match(x).Groups["MYSTR"].ToString();
+            //Regex rg = new Regex("(?<=(" + "[" + "))[.\\s\\S]*?(?=(" + "]" + "))", RegexOptions.Multiline | RegexOptions.Singleline);
+            //Regex rg = new Regex(@"\(([^)]*)\)");
+            Regex rg = new Regex("\\ (.*?)\\%");
+            var r = rg.Match(x).Result("$1");
+            
+            //string result = rg.Match(x).Result("$1").Remove(0, 2).Remove(r.Length - 3,1);
+            Print(r);
+            //var rex = new Regex("（(?<MYSTR>\\w+)）");
+            //String str1 = rex.Match("aaaa（bbbbbb）jlkoihj").Groups["MYSTR"].ToString();
+            //Console.WriteLine(str1);
+            //var x = new FileSender(new FileArgs() { files = new string[] { "E:/MiDreamOut.zip" } });
+            //DeviceLink link = DeviceLink.Create(mi6ID);
+            //var rm = link.InitRM(x);
+            //rm.FuncStarted += (s, e) => { Console.WriteLine("Start!"); };
+            //rm.FuncFinished += (s, e) => { Console.WriteLine("Finish"); };
+            //rm.OutputReceived += (s, e) => { Console.WriteLine(e.Data); };
+            //rm.ErrorReceived += (s, e) => { Console.WriteLine(e.Data); };
+            //rm.ExecuterStared += (s, e) => { Console.WriteLine(e.PID); };
+            ////Console.WriteLine(rm)
+            //rm.FuncStart();
+            //Console.ReadKey();
+            //rm.FuncStop();
             //x.
             //DevicesListener l = new DevicesListener();
             //l.DevicesChange += (s, h) => { Console.WriteLine("Device Change"); };
