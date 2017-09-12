@@ -10,6 +10,7 @@ bin/app.publish
 bin/WpfAnimatedGif.xml
 *.zip
 *.bak
+push
 bin/*.exe
 bin/AutumnBox.basic.dll
 bin/WpfAnimatedGif.dll
