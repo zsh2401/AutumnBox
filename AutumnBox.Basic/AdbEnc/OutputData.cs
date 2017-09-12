@@ -9,7 +9,7 @@ namespace AutumnBox.Basic.AdbEnc
 {
     public struct OutputData
     {
-        public string error;
+        public string error { get; internal set; }
         public string nOutPut
         {
             get
@@ -23,6 +23,7 @@ namespace AutumnBox.Basic.AdbEnc
                 return x;
             }
         }
-        public List<string> output;
+        public List<string> output { get; internal set; }
+        public string AllOut { get; internal set; }
     }
 }

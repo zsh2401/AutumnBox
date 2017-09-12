@@ -7,6 +7,8 @@ using AutumnBox.Debug;
 using AutumnBox.Util;
 using AutumnBox.Basic.Util;
 using AutumnBox.Basic.Functions.Event;
+using AutumnBox.Basic.Util.ExecutedResultHandler;
+using AutumnBox.Basic.Functions.Interface;
 
 namespace AutumnBox
 {
@@ -136,14 +138,15 @@ namespace AutumnBox
             {
                 HideRateBox();
             }));
-            BreventShOutputHandler handler = new BreventShOutputHandler(e.OutputData);
-            if (handler.isOk)
+            if ((sender as IOutAnalysable) == null) return;
+            var outString = (sender as IOutAnalysable).OutHandler.OutputData.nOutPut;
+            if ((sender as IOutAnalysable).OutHandler.FuncIsSuccess)
             {
-                MMessageBox.ShowDialog(this, FindResource("Notice").ToString(), FindResource("StartBreventServiceSuc").ToString() + handler.output);
+                MMessageBox.ShowDialog(this, FindResource("Notice").ToString(), FindResource("StartBreventServiceSuc").ToString() + outString);
             }
             else
             {
-                MMessageBox.ShowDialog(this, FindResource("Notice").ToString(), FindResource("StartBreventServiceFail").ToString() + handler.output);
+                MMessageBox.ShowDialog(this, FindResource("Notice").ToString(), FindResource("StartBreventServiceFail").ToString() + outString);
             }
         }
 

@@ -55,15 +55,18 @@ namespace AutumnBox.Basic.AdbEnc
 #if NEW
             List<string> fucker = new List<string>();
             string error = "";
+            string allOut = "";
             cmdProcess.OutputDataReceived += (s, e) =>
             {
                 LogD("Out: " + e.Data);
                 fucker.Add(e.Data);
+                allOut += e.Data;
             };
             cmdProcess.ErrorDataReceived += (s, e) =>
             {
                 LogD("Error: " + e.Data + "\n");
                 error += e.Data;
+                allOut += e.Data;
             };
             cmdProcess.StartInfo.Arguments = "/c " + command;
             
@@ -83,7 +86,8 @@ namespace AutumnBox.Basic.AdbEnc
             OutputData o = new OutputData()
             {
                 output = fucker,
-                error = error
+                error = error,
+                AllOut = allOut
             };
             LogD("Finish Execute");
             return o;

@@ -57,17 +57,18 @@ namespace AutumnBox.Basic.Functions
             TAG = this.GetType().Name;
         }
         /// <summary>
-        /// 开始执行方法,并返回线程以便进行取消
+        /// 开始执行函数
         /// </summary>
+        /// <param name="delayTime">延迟执行的时间,如果不写则延迟0秒</param>
         /// <returns></returns>
-        internal virtual RunningManager Run()
+        internal virtual RunningManager Run(int delayTime = 0)
         {
             OnStart(this, new StartEventArgs());
-            MainThread = new Thread(MainMethod);
+            MainThread = new Thread(() => { Thread.Sleep(delayTime); MainMethod(); });
             MainThread.Name = TAG + " MainMethod";
             var rm = new RunningManager(this);
             MainThread.Start();
-            LogD("Run MainMethod");
+            LogD($"Run MainMethod DelayTime{delayTime}(ms)");
             return rm;
         }
 

@@ -1,7 +1,6 @@
 ﻿using AutumnBox.Basic.Functions.Event;
-using AutumnBox.Basic.Util;
-using System.Threading;
 using System.Diagnostics;
+using AutumnBox.Basic.Functions.Interface;
 
 namespace AutumnBox.Basic.Functions
 {
@@ -36,12 +35,6 @@ namespace AutumnBox.Basic.Functions
                 sendSingleFinish?.Invoke();
             }
            OnFinish(this, new FinishEventArgs());
-        }
-
-        public void Stop()
-        {
-            //adb.cmdProcess.kill
-            AdbEnc.Adb.KillAdb();
         }
     }
 }

@@ -39,13 +39,13 @@ namespace AutumnBox.Basic.Devices
         //    functionModule.DeviceID = this.DeviceID;
         //    return functionModule.Run();
         //}
-        public RunningManager Execute(FunctionModule func)
+        public RunningManager Execute(FunctionModule func,int DelayMS = 0)
         {
             //设置设备id
             func.DeviceID = this.DeviceID;
             if (!func.IsFinishEventBound) throw new EventNotBoundException();
             //运行功能模块
-            return func.Run();
+            return func.Run(DelayMS);
         }
 
         /// <summary>
