@@ -53,5 +53,8 @@ namespace AutumnBox.Basic.Devices
         {
             return Create(e.Key.ToString(), DevicesHelper.StringStatusToEnumStatus(e.Value.ToString()));
         }
+        public static DeviceLink Create(DevicesHashtable devices,string id) {
+            return Create(id, DevicesHelper.StringStatusToEnumStatus(devices[id].ToString()));
+        }
     }
 }

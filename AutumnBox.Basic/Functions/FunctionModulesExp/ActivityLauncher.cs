@@ -1,6 +1,7 @@
 ﻿/*
  Activity启动器
  */
+using AutumnBox.Basic.AdbEnc;
 using AutumnBox.Basic.Functions.Event;
 using AutumnBox.Basic.Util;
 namespace AutumnBox.Basic.Functions
@@ -11,12 +12,12 @@ namespace AutumnBox.Basic.Functions
         public ActivityLauncher(ActivityLaunchArgs args) : base(FunctionArgs.ExecuterInitType.Adb) {
             this.Args = args;
         }
-        protected override void MainMethod()
+        protected override OutputData MainMethod()
         {
             Logger.D(TAG,$"Try Launch {DeviceID} Activity : {Args.ActivityName}");
             string command = $"shell am start -n {Args.PackageName}/{Args.PackageName + Args.ActivityName}";
             var o = MainExecuter.Execute(this.DeviceID,command);
-            OnFinish(this,new FinishEventArgs() { OutputData =o});
+            return o;
         }
     }
 }

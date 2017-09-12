@@ -1,5 +1,6 @@
 ﻿using AutumnBox.Basic.AdbEnc;
 using AutumnBox.Basic.Functions.Event;
+using AutumnBox.Basic.Functions.Interface;
 using AutumnBox.Basic.Util;
 using System.Diagnostics;
 
@@ -54,6 +55,7 @@ namespace AutumnBox.Basic.Functions
             add { Fm.MainExecuter.ExecuteStarted += value; }
             remove { Fm.MainExecuter.ExecuteStarted -= value; }
         }
+        public event RunningManagerFinishHandler Finished;
         #endregion
         //PRIVATE
         private FunctionModule Fm { get; set; }
@@ -74,7 +76,7 @@ namespace AutumnBox.Basic.Functions
         public void FuncStart()
         {
             if (!Fm.IsFinishEventBound) throw new EventNotBoundException();
-            Fm.Finished += (s, e) => { _funcIsFinish = true; };
+            Fm.Finished += (s, e) => { _funcIsFinish = true; Finished?.Invoke(this, new RMFinishEventArgs()); };
             if (FunctionIsFinish) return;
             Logger.D("FuntionIsFinish?", Fm.IsFinishEventBound.ToString());
             Fm.Run();

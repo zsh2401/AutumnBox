@@ -1,6 +1,7 @@
 ﻿using AutumnBox.Basic.Functions.Event;
 using System.Diagnostics;
 using AutumnBox.Basic.Functions.Interface;
+using AutumnBox.Basic.AdbEnc;
 
 namespace AutumnBox.Basic.Functions
 {
@@ -14,19 +15,22 @@ namespace AutumnBox.Basic.Functions
 
         public FileSender(FileArgs fileArg) : base() {
             this.args= fileArg;
+            for (int i = 0;i < args.files.Length; i++) {
+                args.files[i].Replace('\\','/');
+            }
         }
-        protected override void MainMethod()
+        protected override  OutputData MainMethod()
         {
             string filename;
             string[] x;
             foreach (string filepath in args.files)
             {
-                x = filepath.Split('\\');
+                x = filepath.Split('/');
                 filename = x[x.Length - 1];
                 MainExecuter.Execute(DeviceID, $"push \"{filepath}\" /sdcard/{filename}");
                 sendSingleFinish?.Invoke();
             }
-           OnFinish(this, new FinishEventArgs());
+            return new OutputData();
         }
     }
 }

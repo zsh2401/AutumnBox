@@ -53,8 +53,9 @@
     <Compile Include="AdbEnc\Interfaces.cs" />
     <Compile Include="AdbEnc\OutputData.cs" />
     <Compile Include="AutumnBox\Basic\AdbEnc\Events.cs" />
+    <Compile Include="Functions\Event\RMFinishEventArgs.cs" />
     <Compile Include="Functions\Event\StartEventArgs.cs" />
-    <Compile Include="Functions\ExecutedResultHandler\Handler.cs" />
+    <Compile Include="Functions\ExecutedResultHandler\ExecuteResult.cs" />
     <Compile Include="Functions\FunctionArgs\ExecuterInitType.cs" />
     <Compile Include="Functions\FunctionModulesExp\ScreenLockDeleter.cs" />
     <Compile Include="Functions\Interface\IOutAnalysable.cs" />
@@ -77,7 +78,6 @@
     <Compile Include="Functions\ExecutedResultHandler\BreventShOutputHandler.cs" />
     <Compile Include="Functions\FunctionArgs\Args.cs" />
     <Compile Include="Functions\FunctionArgs\RebootOptions.cs" />
-    <Compile Include="Functions\FunctionRequiredDeviceStatus.cs" />
     <Compile Include="Functions\FunctionModule.cs" />
     <Compile Include="Functions\FunctionModulesBasic\RebootOperator.cs" />
     <Compile Include="Functions\FunctionModulesExp\XiaomiBootloaderRelocker.cs" />

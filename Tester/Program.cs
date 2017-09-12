@@ -29,13 +29,7 @@ namespace Tester
         }
         static void Main(string[] args)
         {
-            //unsafe {
-            //    int _x = 3;
-            //    int* x = &_x;
-            //    Test(x);
-            //}
-
-            var x  = new BreventServiceActivator();
+            var x = new FileSender(new FileArgs() { files = new string[] { "E:/MiDreamOut.zip" } });
             DeviceLink link = DeviceLink.Create(mi6ID);
             var rm = link.InitRM(x);
             rm.FuncStarted += (s, e) => { Console.WriteLine("Start!"); };
@@ -45,6 +39,8 @@ namespace Tester
             rm.ExecuterStared += (s, e) => { Console.WriteLine(e.PID); };
             //Console.WriteLine(rm)
             rm.FuncStart();
+            Console.ReadKey();
+            rm.FuncStop();
             //x.
             //DevicesListener l = new DevicesListener();
             //l.DevicesChange += (s, h) => { Console.WriteLine("Device Change"); };

@@ -31,25 +31,6 @@ namespace AutumnBox.Basic.Functions
                 return Finished != null ? true : false;
             }
         }//判断完成事件是否被绑定
-        //[Obsolete]
-        //internal FunctionModule(FunctionRequiredDeviceStatus needStatus = FunctionRequiredDeviceStatus.All) : base()
-        //{
-        //    switch (needStatus)
-        //    {
-        //        case FunctionRequiredDeviceStatus.Fastboot:
-        //            //fastboot = new Fastboot();
-        //            MainExecuter = new Fastboot();
-        //            break;
-        //        case FunctionRequiredDeviceStatus.All:
-        //            adb = new Adb();
-        //            fastboot = new Fastboot();
-        //            break;
-        //        default:
-        //            MainExecuter = new Adb();
-        //            break;
-        //    }
-        //    TAG = this.GetType().Name;
-        //}
         internal FunctionModule(ExecuterInitType type = ExecuterInitType.Adb)
         {
             switch (type)
@@ -73,12 +54,14 @@ namespace AutumnBox.Basic.Functions
         {
             if (MainExecuter == null) throw new Exception();
             OnStart(this, new StartEventArgs());
-            MainThread = new Thread(() => { Thread.Sleep(delayTime); MainMethod(); });
+            MainThread = new Thread(() => { Thread.Sleep(delayTime); CoreRun(); });
             MainThread.Name = TAG + " MainMethod";
             MainThread.Start();
             LogD($"Run MainMethod DelayTime {delayTime} (ms)");
         }
-
+        protected virtual void CoreRun() {
+            OnFinish(this, new FinishEventArgs { OutputData = MainMethod(), IsFinish = true } );
+        }
         /// <summary>
         /// 准备执行核心功能
         /// </summary>
@@ -103,6 +86,6 @@ namespace AutumnBox.Basic.Functions
         /// <summary>
         /// 模块的核心代码,需要子类进行实现
         /// </summary>
-        protected abstract void MainMethod();
+        protected abstract OutputData MainMethod();
     }
 }

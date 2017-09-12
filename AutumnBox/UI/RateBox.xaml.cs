@@ -21,8 +21,7 @@ namespace AutumnBox.UI
         {
             InitializeComponent();
             this.rm = rm;
-            if (rm.FuncCanStop)
-                buttonCancel.Visibility = Visibility.Visible;
+            buttonCancel.Visibility = Visibility.Visible;
             this.Owner = owner;
         }
         public new void ShowDialog()

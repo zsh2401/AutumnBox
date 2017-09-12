@@ -24,7 +24,7 @@ namespace AutumnBox.Basic.Functions
                     break;
             }
         }
-        protected override void MainMethod()
+        protected override OutputData MainMethod()
         {
             string command;
 
@@ -45,7 +45,7 @@ namespace AutumnBox.Basic.Functions
                 throw new System.Exception();
             }
             var o = MainExecuter.Execute(DeviceID, command);
-            OnFinish(this, new FinishEventArgs() { OutputData = o });
+            return o;
         }
     }
 }

@@ -11,6 +11,7 @@ using System;
 using System.Diagnostics;
 using AutumnBox.Basic.Functions.ExecutedResultHandler;
 using AutumnBox.Basic.Util.ExecutedResultHandler;
+using AutumnBox.Basic.AdbEnc;
 
 namespace AutumnBox.Basic.Functions
 {
@@ -21,11 +22,8 @@ namespace AutumnBox.Basic.Functions
     {
         private const string DEFAULT_COMMAND = "shell \"sh /data/data/me.piebridge.brevent/brevent.sh\"";
 
-        private static new FunctionRequiredDeviceStatus RequiredDeviceStatus = FunctionRequiredDeviceStatus.Running;
-
         //public int CmdProcessPID { internal get { return adb.Pid; } }
 
-        public Handler OutHandler { get; private set; }
 
         //public event DataReceivedEventHandler OutputDataReceived;
         //public event DataReceivedEventHandler ErrorDataReceived;
@@ -35,7 +33,7 @@ namespace AutumnBox.Basic.Functions
         //    Logger.D(TAG, "Received Data");
         //    OutputDataReceived?.Invoke(sender, e);
         //}
-        protected override void MainMethod()
+        protected override OutputData MainMethod()
         {
 #if !DEBUG
             string c;
@@ -56,8 +54,7 @@ namespace AutumnBox.Basic.Functions
             }
 #else
             var o = MainExecuter.Execute(DeviceID, DEFAULT_COMMAND);
-            OutHandler = new BreventShOutputHandler(o);
-            OnFinish(this, new FinishEventArgs() { OutputData = o });
+            return o;
 #endif
         }
     }
