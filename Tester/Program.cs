@@ -24,12 +24,31 @@ namespace Tester
 
         //[DllImport("kernel32.dll")]
         //static extern bool AttachConsole(int dwProcessId);
+        unsafe static void Test(int* fuck) {
+            Console.WriteLine(*fuck);
+        }
         static void Main(string[] args)
         {
+            //unsafe {
+            //    int _x = 3;
+            //    int* x = &_x;
+            //    Test(x);
+            //}
 
-            DevicesListener l = new DevicesListener();
-            l.DevicesChange += (s, h) => { Console.WriteLine("Device Change"); };
-            l.Start();
+            var x  = new BreventServiceActivator();
+            DeviceLink link = DeviceLink.Create(mi6ID);
+            var rm = link.InitRM(x);
+            rm.FuncStarted += (s, e) => { Console.WriteLine("Start!"); };
+            rm.FuncFinished += (s, e) => { Console.WriteLine("Finish"); };
+            rm.OutputReceived += (s, e) => { Console.WriteLine(e.Data); };
+            rm.ErrorReceived += (s, e) => { Console.WriteLine(e.Data); };
+            rm.ExecuterStared += (s, e) => { Console.WriteLine(e.PID); };
+            //Console.WriteLine(rm)
+            rm.FuncStart();
+            //x.
+            //DevicesListener l = new DevicesListener();
+            //l.DevicesChange += (s, h) => { Console.WriteLine("Device Change"); };
+            //l.Start();
 
             //DevicesHelper.GetBuildInfo(mi6ID);
             //DeviceLink link;

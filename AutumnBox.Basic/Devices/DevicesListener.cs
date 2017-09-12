@@ -5,6 +5,7 @@
  */
 using AutumnBox.Basic.AdbEnc;
 using AutumnBox.Basic.Util;
+using System;
 using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
@@ -14,7 +15,7 @@ namespace AutumnBox.Basic.Devices
     /// <summary>
     /// 设备监听器
     /// </summary>
-    public class DevicesListener:BaseObject
+    public class DevicesListener:BaseObject,IDisposable
     {
         public delegate void DevicesChangeHandler(object obj, DevicesHashtable hs);
         public event DevicesChangeHandler DevicesChange;//当连接设备的情况变化时发生
@@ -70,6 +71,11 @@ namespace AutumnBox.Basic.Devices
                 }
                 Thread.Sleep(interval);
             }
+        }
+
+        public void Dispose()
+        {
+            devicesListenerTask.Dispose();
         }
     }
 }

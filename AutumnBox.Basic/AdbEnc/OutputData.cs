@@ -25,5 +25,10 @@ namespace AutumnBox.Basic.AdbEnc
         }
         public List<string> output { get; internal set; }
         public string AllOut { get; internal set; }
+        internal void Clear() {
+            error = "";
+            AllOut = "";
+            try { output.Clear(); } catch { }
+        }
     }
 }

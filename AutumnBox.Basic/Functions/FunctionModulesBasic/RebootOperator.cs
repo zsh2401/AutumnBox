@@ -1,8 +1,7 @@
 ﻿using AutumnBox.Basic.AdbEnc;
 using AutumnBox.Basic.Devices;
 using AutumnBox.Basic.Functions.Event;
-using AutumnBox.Basic.Util;
-using System.Threading;
+using AutumnBox.Basic.Functions.FunctionArgs;
 
 namespace AutumnBox.Basic.Functions
 {
@@ -12,27 +11,23 @@ namespace AutumnBox.Basic.Functions
     public class RebootOperator : FunctionModule
     {
         private RebootArgs args;
-        public static new FunctionRequiredDeviceStatus RequiredDeviceStatus = FunctionRequiredDeviceStatus.All;
-        public RebootOperator(RebootArgs rebootArgs) : base(RequiredDeviceStatus){
-            this.args = rebootArgs;
-        }
-        //public RebootOperator(RebootOptions option)
-        //{
-        //    args = new RebootArgs { rebootOption = option };
-        //}
-        protected override void MainMethod()
+        public RebootOperator(RebootArgs rebootArgs) : base(ExecuterInitType.None)
         {
-            IAdbCommandExecuter commandExecuter;
-            string command;
+            this.args = rebootArgs;
             switch (args.nowStatus)
             {
                 case DeviceStatus.FASTBOOT:
-                    commandExecuter = fastboot;
+                    MainExecuter = new Fastboot();
                     break;
                 default:
-                    commandExecuter = adb;
+                    MainExecuter = new Adb();
                     break;
             }
+        }
+        protected override void MainMethod()
+        {
+            string command;
+
             if (args.rebootOption == RebootOptions.Bootloader)
             {
                 command = "reboot-bootloader";
@@ -49,8 +44,8 @@ namespace AutumnBox.Basic.Functions
             {
                 throw new System.Exception();
             }
-            var o = commandExecuter.Execute(DeviceID, command);
-            OnFinish(this, new FinishEventArgs() { OutputData =o});
+            var o = MainExecuter.Execute(DeviceID, command);
+            OnFinish(this, new FinishEventArgs() { OutputData = o });
         }
     }
 }

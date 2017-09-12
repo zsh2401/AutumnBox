@@ -20,32 +20,15 @@ namespace AutumnBox.Basic.Devices
                 DeviceInfo = DevicesHelper.GetDeviceInfo(id);
         }
 
-        ///// <summary>
-        ///// 执行一个需要特殊参数的功能模块
-        ///// </summary>
-        ///// <param name="functionModule">功能函数</param>
-        ///// <returns></returns>
-        //public Thread Execute(IArgFunctionModule functionModule)
-        //{
-        //    return functionModule.Run();
-        //}
-        ///// <summary>
-        ///// 执行一个无需特殊参数的功能模块
-        ///// </summary>
-        ///// <param name="functionModule"></param>
-        ///// <returns></returns>
-        //public Thread Execute(INoArgFunctionModule functionModule)
-        //{
-        //    functionModule.DeviceID = this.DeviceID;
-        //    return functionModule.Run();
-        //}
-        public RunningManager Execute(FunctionModule func,int DelayMS = 0)
-        {
-            //设置设备id
+        /// <summary>
+        /// 获取一个与本连接相关的功能模块托管器
+        /// </summary>
+        /// <param name="func">功能模块</param>
+        /// <returns>托管器</returns>
+        public RunningManager InitRM(FunctionModule func) {
             func.DeviceID = this.DeviceID;
-            if (!func.IsFinishEventBound) throw new EventNotBoundException();
-            //运行功能模块
-            return func.Run(DelayMS);
+            var rm = new RunningManager(func);
+            return rm;
         }
 
         /// <summary>

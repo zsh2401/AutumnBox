@@ -9,15 +9,14 @@ namespace AutumnBox.Basic.Functions
     /// </summary>
     public sealed class CustomRecoveryFlasher: FunctionModule
     {
-        private static new FunctionRequiredDeviceStatus RequiredDeviceStatus = FunctionRequiredDeviceStatus.Fastboot;
         private FileArgs args;
-        public CustomRecoveryFlasher(FileArgs fileArg):base(RequiredDeviceStatus) {
+        public CustomRecoveryFlasher(FileArgs fileArg):base(FunctionArgs.ExecuterInitType.Fastboot) {
             this.args = fileArg;
         }
         protected override void MainMethod() {
             Logger.D(TAG,"Start MainMethod");
-            var output =  fastboot.Execute(DeviceID, $"flash recovery  \"{args.files[0]}\"");
-            fastboot.Execute(DeviceID, $"boot \"{args.files[0]}\"");
+            var output =  MainExecuter.Execute(DeviceID, $"flash recovery  \"{args.files[0]}\"");
+            MainExecuter.Execute(DeviceID, $"boot \"{args.files[0]}\"");
             OnFinish(this,new FinishEventArgs() {  OutputData=output });
         }
     }

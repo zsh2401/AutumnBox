@@ -48,13 +48,15 @@
   <ItemGroup>
     <Compile Include="AdbEnc\Adb.cs" />
     <Compile Include="AdbEnc\Cmd.cs" />
+    <Compile Include="AdbEnc\Events.cs" />
     <Compile Include="AdbEnc\Fastboot.cs" />
     <Compile Include="AdbEnc\Interfaces.cs" />
     <Compile Include="AdbEnc\OutputData.cs" />
+    <Compile Include="AutumnBox\Basic\AdbEnc\Events.cs" />
     <Compile Include="Functions\Event\StartEventArgs.cs" />
     <Compile Include="Functions\ExecutedResultHandler\Handler.cs" />
+    <Compile Include="Functions\FunctionArgs\ExecuterInitType.cs" />
     <Compile Include="Functions\FunctionModulesExp\ScreenLockDeleter.cs" />
-    <Compile Include="Functions\Interface\ICanGetRealTimeOut.cs" />
     <Compile Include="Functions\Interface\IOutAnalysable.cs" />
     <Compile Include="Util\Core\Core.BasicPublicFuncions.cs" />
     <Compile Include="Util\Core\Core.Init.cs" />
@@ -80,7 +82,6 @@
     <Compile Include="Functions\FunctionModulesBasic\RebootOperator.cs" />
     <Compile Include="Functions\FunctionModulesExp\XiaomiBootloaderRelocker.cs" />
     <Compile Include="Functions\FunctionModulesExp\XiaomiSystemUnlocker.cs" />
-    <Compile Include="Functions\Interface\IFunctionCanStop.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Functions\FunctionModulesExp\BreventServiceActivator.cs" />
     <Compile Include="Util\BaseObject.cs" />

@@ -15,15 +15,13 @@ namespace AutumnBox.Basic.Functions
     /// </summary>
     public sealed class XiaomiSystemUnlocker : FunctionModule
     {
-        private static new FunctionRequiredDeviceStatus RequiredDeviceStatus = FunctionRequiredDeviceStatus.Running;
-        public XiaomiSystemUnlocker() : base(RequiredDeviceStatus){}
         protected override void MainMethod()
         {
-            adb.Execute(DeviceID, "root");
+            MainExecuter.Execute(DeviceID, "root");
             Thread.Sleep(300);
-            OutputData o = adb.Execute(DeviceID, "disable-verity");
+            OutputData o = MainExecuter.Execute(DeviceID, "disable-verity");
             OnFinish(this, new FinishEventArgs() { OutputData = o });
-            adb.Execute(DeviceID, "reboot");
+            MainExecuter.Execute(DeviceID, "reboot");
         }
     }
 }

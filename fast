@@ -1,5 +1,5 @@
 #!/usr/bin/bash
-$commitText = $1
+commitText = $1
 echo '获取commit文本 ${commitText}'
 git add . > /dev/null
 git commit -m $1 > /dev/null

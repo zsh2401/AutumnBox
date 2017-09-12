@@ -17,29 +17,24 @@ namespace AutumnBox.Basic.Functions
     /// <summary>
     /// 黑域服务激活器
     /// </summary>
-    public sealed class BreventServiceActivator : FunctionModule, ICanGetRealTimeOut, IFunctionCanStop,IOutAnalysable
+    public sealed class BreventServiceActivator : FunctionModule, IOutAnalysable
     {
         private const string DEFAULT_COMMAND = "shell \"sh /data/data/me.piebridge.brevent/brevent.sh\"";
 
         private static new FunctionRequiredDeviceStatus RequiredDeviceStatus = FunctionRequiredDeviceStatus.Running;
 
-        public int CmdProcessPID { get { return adb.Pid; } }
+        //public int CmdProcessPID { internal get { return adb.Pid; } }
 
         public Handler OutHandler { get; private set; }
 
-        public event DataReceivedEventHandler OutputDataReceived;
-        public event DataReceivedEventHandler ErrorDataReceived;
+        //public event DataReceivedEventHandler OutputDataReceived;
+        //public event DataReceivedEventHandler ErrorDataReceived;
 
-        public BreventServiceActivator() : base(RequiredDeviceStatus)
-        {
-            adb.ErrorDataReceived += ErrorDataReceived;
-            adb.OutputDataReceived += OnOutputDataReceived;
-        }
-        private void OnOutputDataReceived(object sender, DataReceivedEventArgs e)
-        {
-            Logger.D(TAG, "Received Data");
-            OutputDataReceived?.Invoke(sender, e);
-        }
+        //private void OnOutputDataReceived(object sender, DataReceivedEventArgs e)
+        //{
+        //    Logger.D(TAG, "Received Data");
+        //    OutputDataReceived?.Invoke(sender, e);
+        //}
         protected override void MainMethod()
         {
 #if !DEBUG
@@ -60,7 +55,7 @@ namespace AutumnBox.Basic.Functions
                 OnFinish(this, new FinishEventArgs() { OutputData = o });
             }
 #else
-            var o = adb.Execute(DeviceID, DEFAULT_COMMAND);
+            var o = MainExecuter.Execute(DeviceID, DEFAULT_COMMAND);
             OutHandler = new BreventShOutputHandler(o);
             OnFinish(this, new FinishEventArgs() { OutputData = o });
 #endif
