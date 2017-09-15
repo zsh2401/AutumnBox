@@ -20,17 +20,17 @@
                     </MenuItem.Header>
                     <MenuItem Header="{DynamicResource AboutThisSoftware}" Foreground="Black" Background="#00000000" Click="MenuItem_Click_1" >
                         <MenuItem.Icon>
-                            <Image Source="pack://application:,,,/Images/Icons/about.png"/>
+                            <Image Source="pack://application:,,,/Images/Icons/about.png" Width="30"/>
                         </MenuItem.Icon>
                     </MenuItem>
                     <MenuItem Header="{DynamicResource Contact}" Foreground="Black" Background="#00000000" Click="MenuItem_Click_2" >
                         <MenuItem.Icon>
-                            <Image Source="pack://application:,,,/Images/Icons/contact.png"/>
+                            <Image Source="pack://application:,,,/Images/Icons/contact.png" Width="30" Height="30.2"/>
                         </MenuItem.Icon>
                     </MenuItem>
                     <MenuItem Header="{DynamicResource Donate}" Foreground="Black" Background="#00000000" Click="MenuItem_Click" >
                         <MenuItem.Icon>
-                            <Image Source="pack://application:,,,/Images/Icons/donate.png"/>
+                            <Image Source="pack://application:,,,/Images/Icons/donate.png" Height="30"/>
                         </MenuItem.Icon>
                     </MenuItem>
                 </MenuItem>
@@ -106,7 +106,8 @@
                             </Grid>
                         </TabItem>
                     </TabControl>
-                    <TextBox x:Name="textBoxGG" HorizontalAlignment="Left" Height="23" Margin="10,220,0,0" TextWrapping="Wrap" Text="..." VerticalAlignment="Top" Width="992" IsReadOnly="True" Background="#7FFFFFFF"/>
+                    <TextBox x:Name="textBoxGG" HorizontalAlignment="Left" Height="23" Margin="10,220,0,0" TextWrapping="Wrap" Text="..." VerticalAlignment="Top" Width="859" IsReadOnly="True" Background="#7FFFFFFF"/>
+                    <Button x:Name="buttonChangeTheme" Content="{StaticResource ChangeTheme}" Margin="874,219,4,0" VerticalAlignment="Top" Height="24" Background="{x:Null}" BorderBrush="#33000000" FontSize="14" FontFamily="Microsoft YaHei UI Light" Click="buttonChangeTheme_Click" Foreground="Black"/>
                 </Grid>
             </TabItem>
             <TabItem Header="{DynamicResource Help}" Background="{DynamicResource BasicBrush}" Margin="-2,0,0,-2" BorderBrush="{DynamicResource BasicBrush}" MinHeight="160" FontFamily="Microsoft YaHei UI Light">

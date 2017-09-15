@@ -353,5 +353,10 @@ namespace AutumnBox
             }
             Process.Start(info);
         }
+
+        private void buttonChangeTheme_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

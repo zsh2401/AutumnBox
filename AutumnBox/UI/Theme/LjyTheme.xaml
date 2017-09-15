@@ -2,6 +2,6 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:AutumnBox.UI">
     <SolidColorBrush x:Key="ForgBrush" Color="#FFFFFFFF"/>
-    <SolidColorBrush x:Key="BackBrush" Color="#FF000000"/>
+    <SolidColorBrush x:Key="BackBrush" Color="#FFFFFFFF"/>
     <SolidColorBrush x:Key="BasicBrush" Color="#FF009A80"/>
 </ResourceDictionary>

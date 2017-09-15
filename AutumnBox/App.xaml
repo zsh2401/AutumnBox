@@ -7,7 +7,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Lang/zh-CN.xaml"></ResourceDictionary>
-                <ResourceDictionary Source="UI/Color.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="UI/Theme/BasicTheme.xaml"></ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
