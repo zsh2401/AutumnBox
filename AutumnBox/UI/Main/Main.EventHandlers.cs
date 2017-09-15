@@ -22,19 +22,21 @@ namespace AutumnBox
         private void InitEvents()
         {
             //设备列表发生改变时的事件
-            App.devicesListener.DevicesChange += (s, devicesHashtable) =>
+            App.devicesListener.DevicesChange += (s, devicesList) =>
             {
                 Log.d(TAG, "Devices change handing.....");
                 this.Dispatcher.Invoke(() =>
                 {
                     DevicesListBox.Items.Clear();
                     Log.d(TAG, "Clear");
-                    foreach (DictionaryEntry i in devicesHashtable)
-                    {
-                        Log.d(TAG, "Adding");
-                        DevicesListBox.Items.Add(i.Key);
-                    }
-                    if (devicesHashtable.Count == 1)
+                    //foreach (DictionaryEntry i in devicesHashtable)
+                    //{
+                    //    Log.d(TAG, "Adding");
+                    //    DevicesListBox.Items.Add(i.Key);
+                    //}
+                    devicesList.ForEach((info)=> { DevicesListBox.Items.Add(info); });
+                    DevicesListBox.DisplayMemberPath = "Id";
+                    if (devicesList.Count == 1)
                     {
                         DevicesListBox.SelectedIndex = 0;
                     }
@@ -130,8 +132,8 @@ namespace AutumnBox
         /// <param name="e"></param>
         private void ActivatedBrvent(object sender, FinishEventArgs e)
         {
-            Log.d(TAG, e.OutputData.error.ToString());
-            Log.d(TAG, e.OutputData.nOutPut);
+            Log.d(TAG, e.OutErrorData.Error.ToString());
+            Log.d(TAG, e.OutErrorData.Out.ToString());
             this.Dispatcher.Invoke(new Action(() =>
             {
                 HideRateBox();

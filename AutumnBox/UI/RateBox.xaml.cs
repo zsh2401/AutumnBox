@@ -1,7 +1,9 @@
 ﻿using AutumnBox.Basic.Functions;
 using System;
+using System.Drawing;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Media.Imaging;
 
 namespace AutumnBox.UI
 {
@@ -35,7 +37,10 @@ namespace AutumnBox.UI
                 this.DragMove();
             }
         }
-
+        public new void Close() {
+            //(img.Source as Bitmap).Dispose();
+            base.Close();
+        }
         private void buttonStartBrventService_Click(object sender, RoutedEventArgs e)
         {
             this.rm.FuncStop();

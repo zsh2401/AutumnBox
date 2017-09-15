@@ -11,13 +11,23 @@ namespace AutumnBox.Basic.Devices
     /// </summary>
     public sealed class DeviceLink : BaseObject
     {
-        public string DeviceID { get; private set; }
-        public DeviceInfo DeviceInfo { get; private set; }
+        public string DeviceID { get { return _info.Id; }set { _info.Id = value; } }
+        public DeviceSimpleInfo Info { get { return _info; } }
+        public DeviceSimpleInfo _info;
+        public DeviceInfo DeviceInfo { get { return _deviceInfo; } }
+        public DeviceInfo _deviceInfo;
+        /// <summary>
+        /// 构造函数
+        /// </summary>
+        /// <param name="id">设备ID</param>
+        /// <param name="status">状态</param>
         private DeviceLink(string id, DeviceStatus status)
         {
             DeviceID = id;
+            _info.Id = id;
+            _info.Status = status;
             if (status != DeviceStatus.FASTBOOT || status != DeviceStatus.DEBUGGING_DEVICE)
-                DeviceInfo = DevicesHelper.GetDeviceInfo(id);
+                _deviceInfo = DevicesHelper.GetDeviceInfo(id,DevicesHelper.GetBuildInfo(id),status);
         }
 
         /// <summary>
@@ -25,9 +35,12 @@ namespace AutumnBox.Basic.Devices
         /// </summary>
         /// <param name="func">功能模块</param>
         /// <returns>托管器</returns>
-        public RunningManager InitRM(FunctionModule func) {
+        public RunningManager InitRM(FunctionModule func)
+        {
+            LogD("Init FunctionModule " + func.GetType().Name);
             func.DeviceID = this.DeviceID;
             var rm = new RunningManager(func);
+            LogD("Init FunctionModule Finish");
             return rm;
         }
 
@@ -36,6 +49,11 @@ namespace AutumnBox.Basic.Devices
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+        public static DeviceLink Create()
+        {
+            var info = DevicesHelper.GetDevices()[0];
+            return Create(info);
+        }
         public static DeviceLink Create(string id)
         {
             //string _id = id ?? DevicesHelper.GetDevices().GetFristDevice();
@@ -49,11 +67,15 @@ namespace AutumnBox.Basic.Devices
         {
             return new DeviceLink(id, status);
         }
+        public static DeviceLink Create(DeviceSimpleInfo info) {
+            return Create(info.Id, info.Status);
+        }
         public static DeviceLink Create(DictionaryEntry e)
         {
             return Create(e.Key.ToString(), DevicesHelper.StringStatusToEnumStatus(e.Value.ToString()));
         }
-        public static DeviceLink Create(DevicesHashtable devices,string id) {
+        public static DeviceLink Create(DevicesHashtable devices, string id)
+        {
             return Create(id, DevicesHelper.StringStatusToEnumStatus(devices[id].ToString()));
         }
     }

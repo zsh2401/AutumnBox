@@ -45,7 +45,11 @@ namespace AutumnBox
                     id = DevicesListBox.SelectedItem.ToString();
                     Log.d(TAG,"Get id " + id);
                 });
-                App.nowLink = DeviceLink.Create(id);
+                DeviceSimpleInfo sinfo = new DeviceSimpleInfo();
+                this.Dispatcher.Invoke(()=> {
+                    sinfo = (DeviceSimpleInfo)DevicesListBox.SelectedItem;
+                });
+                App.nowLink = DeviceLink.Create(sinfo);
                 Log.d(TAG,"Getting Device Info");
                 DeviceInfo info = App.nowLink.DeviceInfo;
                 this.Dispatcher.Invoke(new Action(() =>
@@ -153,7 +157,8 @@ namespace AutumnBox
         private void HideRateBox()
         {
             try {
-                this.rateBox.Close(); } catch  { }
+                this.rateBox.Close();
+            } catch  { }
         }
     }
 }

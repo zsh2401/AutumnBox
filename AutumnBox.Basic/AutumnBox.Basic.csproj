@@ -46,23 +46,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdbEnc\Adb.cs" />
-    <Compile Include="AdbEnc\Cmd.cs" />
-    <Compile Include="AdbEnc\Events.cs" />
-    <Compile Include="AdbEnc\Fastboot.cs" />
-    <Compile Include="AdbEnc\Interfaces.cs" />
-    <Compile Include="AdbEnc\OutputData.cs" />
-    <Compile Include="AutumnBox\Basic\AdbEnc\Events.cs" />
+    <Compile Include="Executer\CommandExecuter.cs" />
+    <Compile Include="Executer\Events.cs" />
+    <Compile Include="Executer\OutErrorData.cs" />
+    <Compile Include="Devices\DevicesList.cs" />
     <Compile Include="Functions\Event\RMFinishEventArgs.cs" />
     <Compile Include="Functions\Event\StartEventArgs.cs" />
     <Compile Include="Functions\ExecutedResultHandler\ExecuteResult.cs" />
     <Compile Include="Functions\FunctionArgs\ExecuterInitType.cs" />
     <Compile Include="Functions\FunctionModulesExp\ScreenLockDeleter.cs" />
     <Compile Include="Functions\Interface\IOutAnalysable.cs" />
-    <Compile Include="Util\Core\Core.BasicPublicFuncions.cs" />
-    <Compile Include="Util\Core\Core.Init.cs" />
-    <Compile Include="Util\Core\Core.PrivateFunctions.cs" />
-    <Compile Include="Util\Core\Core.ExpPublicFunctions.cs" />
     <Compile Include="Devices\DeviceLink.cs" />
     <Compile Include="Devices\DevicesHashtable.cs" />
     <Compile Include="Devices\DeviceInfoStruct.cs" />
@@ -92,7 +85,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Paths.resx</DependentUpon>
     </Compile>
-    <Compile Include="Util\Tester.cs" />
     <Compile Include="Util\Tools.cs" />
   </ItemGroup>
   <ItemGroup>

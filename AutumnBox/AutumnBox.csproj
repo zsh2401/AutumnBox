@@ -259,9 +259,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\bg.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\Icons\about.png" />
   </ItemGroup>
   <ItemGroup>

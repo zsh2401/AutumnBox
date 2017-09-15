@@ -3,9 +3,8 @@
  @zsh2401
  2017/9/8
  */
-using AutumnBox.Basic.AdbEnc;
+using AutumnBox.Basic.Executer;
 using AutumnBox.Basic.Functions.Event;
-using AutumnBox.Basic.Functions.FunctionArgs;
 using AutumnBox.Basic.Util;
 using System;
 using System.Threading;
@@ -15,15 +14,15 @@ namespace AutumnBox.Basic.Functions
     /// <summary>
     /// 各种功能模块的父类
     /// </summary>
-    public abstract class FunctionModule : BaseObject
+    public abstract class FunctionModule : BaseObject,IDisposable
     {
         //PROTECTED
         protected Thread MainThread { get; set; }//异步执行的主要线程
         //INTERNAL
-        internal IAdbCommandExecuter MainExecuter { get;set; }
+        internal CommandExecuter executer = new CommandExecuter();
         internal event StartEventHandler Started;//当功能模块开始执行时发生
         internal event FinishEventHandler Finished;//完成操作时的事件
-        internal virtual string DeviceID { get; set; }//功能执行时的设备ID
+        internal string DeviceID { get; set; }//功能执行时的设备ID
         internal bool IsFinishEventBound
         {
             get
@@ -31,20 +30,6 @@ namespace AutumnBox.Basic.Functions
                 return Finished != null ? true : false;
             }
         }//判断完成事件是否被绑定
-        internal FunctionModule(ExecuterInitType type = ExecuterInitType.Adb)
-        {
-            switch (type)
-            {
-                case ExecuterInitType.Adb:
-                    MainExecuter = new Adb();
-                    break;
-                case ExecuterInitType.Fastboot:
-                    MainExecuter = new Fastboot();
-                    break;
-                case ExecuterInitType.None:
-                    break;
-            }
-        }
         /// <summary>
         /// 开始执行函数
         /// </summary>
@@ -52,15 +37,15 @@ namespace AutumnBox.Basic.Functions
         /// <returns></returns>
         internal virtual void Run(int delayTime = 0)
         {
-            if (MainExecuter == null) throw new Exception();
-            OnStart(this, new StartEventArgs());
             MainThread = new Thread(() => { Thread.Sleep(delayTime); CoreRun(); });
             MainThread.Name = TAG + " MainMethod";
+            OnStart(this, new StartEventArgs());
             MainThread.Start();
             LogD($"Run MainMethod DelayTime {delayTime} (ms)");
         }
         protected virtual void CoreRun() {
-            OnFinish(this, new FinishEventArgs { OutputData = MainMethod(), IsFinish = true } );
+            var o = MainMethod();
+            OnFinish(this, new FinishEventArgs { OutErrorData = o, IsFinish = true } );
         }
         /// <summary>
         /// 准备执行核心功能
@@ -86,6 +71,12 @@ namespace AutumnBox.Basic.Functions
         /// <summary>
         /// 模块的核心代码,需要子类进行实现
         /// </summary>
-        protected abstract OutputData MainMethod();
+        //protected abstract OutputData MainMethod();
+        protected abstract OutErrorData MainMethod();
+
+        public void Dispose()
+        {
+            executer.Dispose();
+        }
     }
 }

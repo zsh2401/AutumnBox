@@ -1,11 +1,12 @@
-﻿using AutumnBox.Basic.AdbEnc;
+﻿using AutumnBox.Basic.Executer;
 using System;
 
 namespace AutumnBox.Basic.Functions.Event
 {
     public class FinishEventArgs:EventArgs
     {
-        public OutputData OutputData { get; internal set; }
+        public OutErrorData OutErrorData { get; internal set; }
+        
         public bool IsFinish { get; internal set; }
     }
 }

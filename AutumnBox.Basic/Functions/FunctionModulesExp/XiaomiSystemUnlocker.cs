@@ -3,9 +3,8 @@
  @zsh2401
  2017/9/8
  */
-using AutumnBox.Basic.AdbEnc;
+using AutumnBox.Basic.Executer;
 using AutumnBox.Basic.Functions.Event;
-using AutumnBox.Basic.Util;
 using System.Threading;
 
 namespace AutumnBox.Basic.Functions
@@ -15,17 +14,17 @@ namespace AutumnBox.Basic.Functions
     /// </summary>
     public sealed class XiaomiSystemUnlocker : FunctionModule
     {
-        protected override OutputData MainMethod()
+        protected override OutErrorData MainMethod()
         {
-            MainExecuter.Execute(DeviceID, "root");
+            executer.Execute(DeviceID, "root");
             Thread.Sleep(300);
-            OutputData o = MainExecuter.Execute(DeviceID, "disable-verity");
+            OutErrorData o = executer.Execute(DeviceID, "disable-verity");
             return o;
         }
         protected override void OnFinish(object sender, FinishEventArgs a)
         {
             base.OnFinish(sender, a);
-            MainExecuter.Execute(DeviceID, "reboot");
+            executer.Execute(DeviceID, "reboot");
         }
     }
 }

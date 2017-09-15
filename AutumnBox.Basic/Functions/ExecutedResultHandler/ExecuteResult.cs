@@ -1,4 +1,4 @@
-﻿using AutumnBox.Basic.AdbEnc;
+﻿using AutumnBox.Basic.Executer;
 
 namespace AutumnBox.Basic.Functions.ExecutedResultHandler
 {
@@ -6,6 +6,6 @@ namespace AutumnBox.Basic.Functions.ExecutedResultHandler
     {
         public string Message;
         public bool IsOK;
-        public OutputData OutputData;
+        public OutErrorData OutputData;
     }
 }

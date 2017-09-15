@@ -3,15 +3,8 @@
  @zsh2401
  2017/9/8
  */
-using AutumnBox.Basic.Functions.Event;
+using AutumnBox.Basic.Executer;
 using AutumnBox.Basic.Functions.Interface;
-using AutumnBox.Basic.Util;
-using Newtonsoft.Json.Linq;
-using System;
-using System.Diagnostics;
-using AutumnBox.Basic.Functions.ExecutedResultHandler;
-using AutumnBox.Basic.Util.ExecutedResultHandler;
-using AutumnBox.Basic.AdbEnc;
 
 namespace AutumnBox.Basic.Functions
 {
@@ -21,19 +14,7 @@ namespace AutumnBox.Basic.Functions
     public sealed class BreventServiceActivator : FunctionModule, IOutAnalysable
     {
         private const string DEFAULT_COMMAND = "shell \"sh /data/data/me.piebridge.brevent/brevent.sh\"";
-
-        //public int CmdProcessPID { internal get { return adb.Pid; } }
-
-
-        //public event DataReceivedEventHandler OutputDataReceived;
-        //public event DataReceivedEventHandler ErrorDataReceived;
-
-        //private void OnOutputDataReceived(object sender, DataReceivedEventArgs e)
-        //{
-        //    Logger.D(TAG, "Received Data");
-        //    OutputDataReceived?.Invoke(sender, e);
-        //}
-        protected override OutputData MainMethod()
+        protected override OutErrorData MainMethod()
         {
 #if !DEBUG
             string c;
@@ -53,7 +34,7 @@ namespace AutumnBox.Basic.Functions
                 OnFinish(this, new FinishEventArgs() { OutputData = o });
             }
 #else
-            var o = MainExecuter.Execute(DeviceID, DEFAULT_COMMAND);
+            var o = executer.Execute(DeviceID, DEFAULT_COMMAND);
             return o;
 #endif
         }

@@ -1,7 +1,5 @@
-﻿using AutumnBox.Basic.AdbEnc;
-using AutumnBox.Basic.Devices;
-using AutumnBox.Basic.Functions.Event;
-using AutumnBox.Basic.Functions.FunctionArgs;
+﻿using AutumnBox.Basic.Devices;
+using AutumnBox.Basic.Executer;
 
 namespace AutumnBox.Basic.Functions
 {
@@ -10,21 +8,28 @@ namespace AutumnBox.Basic.Functions
     /// </summary>
     public class RebootOperator : FunctionModule
     {
+        enum Executer
+        {
+            Adb,
+            Fastboot,
+        }
+        private Executer t;
         private RebootArgs args;
-        public RebootOperator(RebootArgs rebootArgs) : base(ExecuterInitType.None)
+
+        public RebootOperator(RebootArgs rebootArgs)
         {
             this.args = rebootArgs;
             switch (args.nowStatus)
             {
                 case DeviceStatus.FASTBOOT:
-                    MainExecuter = new Fastboot();
+                    t = Executer.Fastboot;
                     break;
                 default:
-                    MainExecuter = new Adb();
+                    t = Executer.Adb;
                     break;
             }
         }
-        protected override OutputData MainMethod()
+        protected override OutErrorData MainMethod()
         {
             string command;
 
@@ -44,7 +49,15 @@ namespace AutumnBox.Basic.Functions
             {
                 throw new System.Exception();
             }
-            var o = MainExecuter.Execute(DeviceID, command);
+            OutErrorData o;
+            switch (t) {
+                case Executer.Adb:
+                    o = executer.Execute(DeviceID, command);
+                    break;
+                default:
+                    o = executer.FBExecute(DeviceID, command);
+                    break;
+            }
             return o;
         }
     }

@@ -1,12 +1,5 @@
-﻿using AutumnBox.Basic.AdbEnc;
-using AutumnBox.Basic.Devices;
-using AutumnBox.Basic.Functions;
+﻿using AutumnBox.Basic.Devices;
 using System;
-using System.Collections;
-using System.Diagnostics;
-using System.Runtime.InteropServices;
-using System.Text.RegularExpressions;
-using System.Threading;
 
 namespace Tester
 {
@@ -25,22 +18,58 @@ namespace Tester
 
         //[DllImport("kernel32.dll")]
         //static extern bool AttachConsole(int dwProcessId);
-        unsafe static void Test(int* fuck) {
+        unsafe static void Test(int* fuck)
+        {
             Console.WriteLine(*fuck);
         }
         static void Main(string[] args)
         {
+            //DeviceLink link = DeviceLink.Create();
+
+            //Print(link.Info.Status.ToString());
+            //var x = new FileSender(new FileArgs() { files = new string[] { "E:/MiDreamOut.zip" } });
+            //var rm = link.InitRM(x);
+            //rm.FuncStarted += (s, e) => { Console.WriteLine("Start!"); };
+            //rm.FuncFinished += (s, e) => { Console.WriteLine("Finish"); };
+            //rm.OutputReceived += (s, e) => { Console.WriteLine(e.Data); };
+            //rm.ErrorReceived += (s, e) => { Console.WriteLine(e.Data); };
+            //rm.ExecuterStared += (s, e) => { Console.WriteLine(e.PID); };
+            //Console.ReadKey();
+            //rm.FuncStart();
+            DevicesListener dl = new DevicesListener();
+            //var o = new List<string>() + new List<string>();
+            dl.DevicesChange += (obj, list) => { Print("Devices Change"); list.ForEach((info) => { Print(info.Id); }); };
+            dl.Start();
+            DevicesHelper.GetBuildInfo(mi6ID);
+            Console.ReadKey();
+            //var o = DevicesHelper.GetDevices();
+            //o.ForEach((a)=> { Console.WriteLine(a); });
+            //List<string> ls = new List<string>();
+            //List<string> sb = new List<string>();
+            //ls.Add("sasdas");
+            //sb.Add("sasdas");
+            //bool q = ls == sb
+            //Print(q.ToString());
+            Console.ReadKey();
+            //rm.FuncStop();
             //string x = " [30%] wadfsadasasasasd";
-            string x = "[ 98%] /sdcard/D:\\xxxxx_x64.zip";
+            //string x = "[ 98%] /sdcard/D:\\xxxxx_x64.zip";
             //var rex = new Regex("[(?<MYSTR>\\w+)]");
             //String str1 = rex.Match(x).Groups["MYSTR"].ToString();
             //Regex rg = new Regex("(?<=(" + "[" + "))[.\\s\\S]*?(?=(" + "]" + "))", RegexOptions.Multiline | RegexOptions.Singleline);
             //Regex rg = new Regex(@"\(([^)]*)\)");
-            Regex rg = new Regex("\\ (.*?)\\%");
-            var r = rg.Match(x).Result("$1");
-            
+            //Regex rg = new Regex("\\ (.*?)\\%");
+            //var r = rg.Match(x).Result("$1");
+            //CommandExecuter executer = new CommandExecuter();
+            //DevicesHashtable dh = new DevicesHashtable();
+            ////executer.GetDevices(ref dh);
+            //var o = executer.Execute("reboot ");
+            //Print(o.Out.ToString());
+            //foreach (DictionaryEntry x in dh) {
+            //    Print(x.Key.ToString());
+            //}
             //string result = rg.Match(x).Result("$1").Remove(0, 2).Remove(r.Length - 3,1);
-            Print(r);
+            //Print(r);
             //var rex = new Regex("（(?<MYSTR>\\w+)）");
             //String str1 = rex.Match("aaaa（bbbbbb）jlkoihj").Groups["MYSTR"].ToString();
             //Console.WriteLine(str1);

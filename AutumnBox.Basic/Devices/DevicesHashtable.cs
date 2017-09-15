@@ -14,6 +14,7 @@ namespace AutumnBox.Basic.Devices
     /// 重载了一些运算符的用于存储当前连接设备的hashtable
     /// </summary>
     [Serializable]
+    [Obsolete]
     public class DevicesHashtable : Hashtable
     {
         public string GetFristDevice() {

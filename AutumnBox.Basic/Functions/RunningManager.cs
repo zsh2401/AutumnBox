@@ -1,4 +1,4 @@
-﻿using AutumnBox.Basic.AdbEnc;
+﻿using AutumnBox.Basic.Executer;
 using AutumnBox.Basic.Functions.Event;
 using AutumnBox.Basic.Functions.Interface;
 using AutumnBox.Basic.Util;
@@ -22,22 +22,22 @@ namespace AutumnBox.Basic.Functions
         {
             add
             {
-                Fm.MainExecuter.OutputDataReceived += value;
+                Fm.executer.OutputDataReceived += value;
             }
             remove
             {
-                Fm.MainExecuter.OutputDataReceived -= value;
+                Fm.executer.OutputDataReceived -= value;
             }
         }
         public event DataReceivedEventHandler ErrorReceived
         {
             add
             {
-                Fm.MainExecuter.ErrorDataReceived += value;
+                Fm.executer.ErrorDataReceived += value;
             }
             remove
             {
-                Fm.MainExecuter.ErrorDataReceived -= value;
+                Fm.executer.ErrorDataReceived -= value;
             }
         }
         public event StartEventHandler FuncStarted
@@ -52,8 +52,8 @@ namespace AutumnBox.Basic.Functions
         }
         public event ExecuteStartHandler ExecuterStared
         {
-            add { Fm.MainExecuter.ExecuteStarted += value; }
-            remove { Fm.MainExecuter.ExecuteStarted -= value; }
+            add { Fm.executer.ExecuteStarted += value; }
+            remove { Fm.executer.ExecuteStarted -= value; }
         }
         public event RunningManagerFinishHandler Finished;
         #endregion
@@ -68,7 +68,9 @@ namespace AutumnBox.Basic.Functions
         internal RunningManager(FunctionModule fm)
         {
             this.Fm = fm;
-            Fm.MainExecuter.ExecuteStarted += (s_, e_) => { _pid = e_.PID; };
+            //绑定好事件,在进程开始时获取PID用于结束进程
+            
+            Fm.executer.ExecuteStarted += (s_, e_) => { _pid = e_.PID; };
         }
         /// <summary>
         /// 开始执行托管的功能模块

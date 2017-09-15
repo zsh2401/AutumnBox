@@ -1,14 +1,12 @@
-﻿using AutumnBox.Basic.AdbEnc;
-using AutumnBox.Basic.Functions.Event;
-using System.Threading;
+﻿using AutumnBox.Basic.Executer;
 
 namespace AutumnBox.Basic.Functions
 {
     public class XiaomiBootloaderRelocker : FunctionModule
     {
-        protected override OutputData MainMethod()
+        protected override OutErrorData MainMethod()
         {
-            var o = MainExecuter.Execute(DeviceID, " oem lock");
+            var o = executer.Execute(DeviceID, " oem lock");
             return o;
         }
     }

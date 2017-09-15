@@ -10,4 +10,19 @@
         public string androidVersion { internal set; get; }//安卓版本
         public DeviceStatus deviceStatus { internal set; get; }//设备状态
     }
+    public struct DeviceSimpleInfo {
+        public string Id { get; internal set; }
+        public DeviceStatus Status { get; internal set; }
+        public override string ToString()
+        {
+            return Id;
+        }
+        public static bool operator ==(DeviceSimpleInfo left, DeviceSimpleInfo right) {
+            return (left.Id == right.Id);
+        }
+        public static bool operator !=(DeviceSimpleInfo left, DeviceSimpleInfo right)
+        {
+            return !(left.Id == right.Id);
+        }
+    }
 }

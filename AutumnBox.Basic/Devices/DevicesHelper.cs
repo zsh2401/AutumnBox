@@ -4,15 +4,9 @@
  @zsh2401
  2017/9/8
  */
-using AutumnBox.Basic.AdbEnc;
-using AutumnBox.Basic.Devices;
+using AutumnBox.Basic.Executer;
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Devices
 {
@@ -21,9 +15,10 @@ namespace AutumnBox.Basic.Devices
     /// </summary>
     public static class DevicesHelper
     {
+        private static CommandExecuter executer = new CommandExecuter();
         public static DeviceStatus StringStatusToEnumStatus(string statusString) {
             switch (statusString) {
-                case "running":
+                case "device":
                     return DeviceStatus.RUNNING;
                 case "recovery":
                     return DeviceStatus.RECOVERY;
@@ -44,36 +39,18 @@ namespace AutumnBox.Basic.Devices
         /// <returns>设备状态</returns>
         public static DeviceStatus GetDeviceStatus(string id)
         {
-            switch (GetDevices()[id].ToString())
-            {
-                case "device":
-                    return DeviceStatus.RUNNING;
-                case "recovery":
-                    return DeviceStatus.RECOVERY;
-                case "fastboot":
-                    return DeviceStatus.FASTBOOT;
-                case "sideload":
-                    return DeviceStatus.SIDELOAD;
-                case "debugging_device":
-                    return DeviceStatus.DEBUGGING_DEVICE;
-                default:
-                    return DeviceStatus.NO_DEVICE;
-            }
+            throw new NotImplementedException();
+            //return StringStatusToEnumStatus(GetDevices().ToString());
         }
         /// <summary>
         /// 获取设备列表
         /// </summary>
         /// <returns>设备列表</returns>
-        public static DevicesHashtable GetDevices()
+        public static DevicesList GetDevices()
         {
-#if USE_EMU_DEVICE
-            var ls = new Adb().GetDevices() + new Fastboot().GetDevices();
-            ls.Add("zsh2401TestDebug", "debugging_device");
-            return ls;
-#else 
-            return new Adb().GetDevices() + new Fastboot().GetDevices();
-#endif
-
+            DevicesList d = new DevicesList();
+            executer.GetDevices(ref d);
+            return d;
         }
         /// <summary>
         /// 获取一个设备的信息
@@ -117,47 +94,20 @@ namespace AutumnBox.Basic.Devices
         /// <returns>设备build信息</returns>
         public static Hashtable GetBuildInfo(string id)
         {
-            Adb adb = new Adb();
             Hashtable ht = new Hashtable();
-            try { ht.Add("name", adb.Execute(id, "shell \"cat /system/build.prop | grep \"product.name\"\"").output[0].Split('=')[1]); }
+            var executer = new CommandExecuter();
+            try { ht.Add("name", executer.Execute(id, "shell \"cat /system/build.prop | grep \"product.name\"\"").LineOut[0].Split('=')[1]); }
             catch { ht.Add("name", ".."); }
-            //Thread.Sleep(1000);
-            try { ht.Add("brand", adb.Execute(id, "shell \"cat /system/build.prop | grep \"product.brand\"\"").output[0].Split('=')[1]); }
+    
+            try { ht.Add("brand", executer.Execute(id, "shell \"cat /system/build.prop | grep \"product.brand\"\"").LineOut[0].Split('=')[1]); }
             catch { ht.Add("brand", ".."); }
-            //Thread.Sleep(1000);
-            try { ht.Add("androidVersion", adb.Execute(id, "shell \"cat /system/build.prop | grep \"build.version.release\"\"").output[0].Split('=')[1]); }
+
+            try { ht.Add("androidVersion", executer.Execute(id, "shell \"cat /system/build.prop | grep \"build.version.release\"\"").LineOut[0].Split('=')[1]); }
             catch { ht.Add("androidVersion", ".."); }
-            //Thread.Sleep(1000);
-            try { ht.Add("model", adb.Execute(id, "shell \"cat /system/build.prop | grep \"product.model\"\"").output[0].Split('=')[1]); }
+            try { ht.Add("model", executer.Execute(id, "shell \"cat /system/build.prop | grep \"product.model\"\"").LineOut[0].Split('=')[1]); }
             catch { ht.Add("model", ".."); }
-            //Thread.Sleep(1000);
-//#if DEBUG
-//            try { ht.Add("all", adb.Execute(id, "shell \"cat /system/build.prop\"").nOutPut); }
-//            catch { ht.Add("all", ".."); }
-//#endif
+
             return ht;
-        }
-        /// <summary>
-        /// 获取当前连接的所有设备的信息
-        /// </summary>
-        /// <returns>存储所有设备信息的list</returns>
-        public static List<DeviceInfo> GetDevicesInfo()
-        {
-            return GetDevicesInfo(GetDevices());
-        }
-        /// <summary>
-        /// 获取指定的多个设备的信息
-        /// </summary>
-        /// <param name="devices">需要获取的设备的列表</param>
-        /// <returns>存储所有设备信息的list</returns> 
-        public static List<DeviceInfo> GetDevicesInfo(DevicesHashtable devices)
-        {
-            List<DeviceInfo> result = new List<DeviceInfo>();
-            foreach (DictionaryEntry i in devices)
-            {
-                result.Add(GetDeviceInfo(i.Key.ToString()));
-            }
-            return result;
         }
     }
 }

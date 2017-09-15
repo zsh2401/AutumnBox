@@ -1,7 +1,4 @@
-﻿using AutumnBox.Basic.AdbEnc;
-using AutumnBox.Basic.Functions.ExecutedResultHandler;
-using System;
-namespace AutumnBox.Basic.Util.ExecutedResultHandler
+﻿namespace AutumnBox.Basic.Util.ExecutedResultHandler
 {
     //public class BreventShOutputHandler:Handler
     //{

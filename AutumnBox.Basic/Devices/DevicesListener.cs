@@ -3,7 +3,7 @@
  2017/9/8
  设备监听器,监听设备拔插
  */
-using AutumnBox.Basic.AdbEnc;
+using AutumnBox.Basic.Executer;
 using AutumnBox.Basic.Util;
 using System;
 using System.Diagnostics;
@@ -15,14 +15,14 @@ namespace AutumnBox.Basic.Devices
     /// <summary>
     /// 设备监听器
     /// </summary>
-    public class DevicesListener:BaseObject,IDisposable
+    public sealed class DevicesListener:BaseObject,IDisposable
     {
-        public delegate void DevicesChangeHandler(object obj, DevicesHashtable hs);
+        public delegate void DevicesChangeHandler(object sender, DevicesList hs);
         public event DevicesChangeHandler DevicesChange;//当连接设备的情况变化时发生
         private Task devicesListenerTask;
-        private const int defaultInterval = 1000;
+        private const int defaultInterval = 2000;
         private bool Continue = true;
-        private DevicesHashtable last = new DevicesHashtable();
+        private DevicesList last = new DevicesList();
         private readonly int interval;
         public DevicesListener(int interval = defaultInterval)
         {
@@ -60,9 +60,9 @@ namespace AutumnBox.Basic.Devices
         {
             while (Continue)
             {
-                if (Process.GetProcessesByName("adb").Length == 0) new Adb().Execute("start-server");
+                if (Process.GetProcessesByName("adb").Length == 0) new CommandExecuter().Execute("start-server");
                 //此处重载了运算符,当执行+时,会把两个hashmap的值相加并返回
-                DevicesHashtable now = DevicesHelper.GetDevices();
+                DevicesList now = DevicesHelper.GetDevices();
                 if (last != now)
                 {
                     last = now;

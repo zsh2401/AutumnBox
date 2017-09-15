@@ -29,7 +29,6 @@ bin/WpfAnimatedGif.xml
 *.bak
 *.suo
 fast
-push
 bin/*.dll
 bin/*.sqlite
 
