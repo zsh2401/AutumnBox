@@ -6,7 +6,7 @@
       <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
         <!-- UAC 清单选项
              如果想要更改 Windows 用户帐户控制级别，请使用
-             以下节点之一替换 requestedExecutionLevel 节点。n
+             以下节点之一替换 requestedExecutionLevel 节点。
         <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
         <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
         <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />

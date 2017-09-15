@@ -81,12 +81,12 @@
       <HintPath>..\..\..\Microsoft.Windows.Shell.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>..\Lib\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\UseDll\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.SQLite">
-      <HintPath>..\Lib\System.Data.SQLite.dll</HintPath>
+      <HintPath>..\UseDll\System.Data.SQLite.dll</HintPath>
     </Reference>
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
@@ -125,6 +125,9 @@
     <Compile Include="StaticData.cs" />
     <Compile Include="UI\AboutWindow.xaml.cs">
       <DependentUpon>AboutWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ChangeThemeWindow.xaml.cs">
+      <DependentUpon>ChangeThemeWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\ChoiceBox.xaml.cs">
       <DependentUpon>ChoiceBox.xaml</DependentUpon>
@@ -180,7 +183,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>DyanamicIcons.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="app.manifest" />
+    <None Include="app.manifest">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="AutumnBox_TemporaryKey.pfx" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
@@ -204,15 +209,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UI\ChangeThemeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UI\ChoiceBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Color2.xaml">
+    <Page Include="UI\Theme\LjyTheme.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Color.xaml">
+    <Page Include="UI\Theme\BasicTheme.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
