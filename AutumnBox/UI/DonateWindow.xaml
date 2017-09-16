@@ -6,16 +6,15 @@
         xmlns:local="clr-namespace:AutumnBox.UI"
         xmlns:gif="http://wpfanimatedgif.codeplex.com"
         mc:Ignorable="d"
-        Title="DonateWindow" Height="617.161" Width="478.619" ResizeMode="NoResize" WindowStartupLocation="CenterOwner" WindowStyle="None" Background="#FF009AD6">
+        Title="DonateWindow" Height="607.161" Width="453.619" ResizeMode="NoResize" WindowStartupLocation="CenterOwner" WindowStyle="None" Background="#FF009AD6">
     <Grid Margin="3,0,3,3" Background="White">
         <Image HorizontalAlignment="Left" Height="317" Margin="0,297,0,0" VerticalAlignment="Top" Width="217" Source="/AutumnBox;component/Images/alipay.jpg"/>
-        <Image HorizontalAlignment="Left" Height="317" Margin="233,297,-2,0" VerticalAlignment="Top" Width="242" Source="/AutumnBox;component/Images/wechatpay.png"/>
+        <Image HorizontalAlignment="Left" Height="317" Margin="208,287,0,0" VerticalAlignment="Top" Width="242" Source="/AutumnBox;component/Images/wechatpay.png"/>
         <Label VerticalAlignment="Top" Height="40" Background="#FF009AD6" MouseMove="Label_MouseMove">
             <TextBlock TextWrapping="Wrap" Text="{DynamicResource DonateWindowTitle}" Height="30" Width="98" FontFamily="Microsoft YaHei UI Light" FontSize="18" Foreground="White"/>
         </Label>
-        <Image x:Name="imageClose" Height="30" Margin="441,0,10,582" VerticalAlignment="Bottom" Source="/AutumnBox;component/Images/DynamicIcons/close_normal.png" MouseDown="Image_MouseDown" MouseEnter="Image_MouseEnter" MouseLeave="imageClose_MouseLeave"/>
+        <Image x:Name="imageClose" Height="30" Margin="0,0,10,574" VerticalAlignment="Bottom" Source="/AutumnBox.Res;component/Images/DynamicIcons/close_normal.png" MouseDown="Image_MouseDown" MouseEnter="Image_MouseEnter" MouseLeave="imageClose_MouseLeave" HorizontalAlignment="Right" Width="22"/>
         <Image Name="img"
-               Stretch="Fill"
-               gif:ImageBehavior.AnimatedSource="/AutumnBox;component/Images/jkr.gif" Margin="0,40,0,0" Height="265" VerticalAlignment="Top" HorizontalAlignment="Left" Width="479"/>
+               gif:ImageBehavior.AnimatedSource="/AutumnBox.Res;component/Images/jkr.gif" Margin="0,40,0,0" Height="243" VerticalAlignment="Top" HorizontalAlignment="Left" Width="448"/>
     </Grid>
 </Window>

@@ -8,7 +8,10 @@ using System;
 namespace AutumnBox.Basic.Util
 {
     [Serializable]
-    public class EventNotBoundException : Exception { }
+    public class EventNotBoundException : Exception {
+        public EventNotBoundException() { }
+        public EventNotBoundException(string message):base(message) {}
+    }
     [Serializable]
     public class ArgErrorException : Exception { }
     [Serializable]

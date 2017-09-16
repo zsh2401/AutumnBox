@@ -11,7 +11,7 @@ namespace AutumnBox
     public partial class App : Application
     {
         internal static DeviceLink nowLink;//当前的设备连接
-        internal static DevicesListener devicesListener = new DevicesListener();//设备监听器
+        internal static DevicesMonitor devicesListener = new DevicesMonitor();//设备监听器
         protected override void OnStartup(StartupEventArgs e)
         {
             new Thread(AutoGC).Start();

@@ -2,7 +2,10 @@
 
 namespace AutumnBox.Basic.Util
 {
-    public class BaseObject
+    /// <summary>
+    /// 基类
+    /// </summary>
+    public class BaseObject:Object
     {
         protected string TAG;
         public BaseObject() {

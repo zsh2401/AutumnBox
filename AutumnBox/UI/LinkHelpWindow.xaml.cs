@@ -1,17 +1,5 @@
-﻿using AutumnBox.Images.DynamicIcons;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
+﻿using System.Windows;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace AutumnBox.UI
 {
@@ -27,12 +15,12 @@ namespace AutumnBox.UI
         }
         private void imageClose_MouseEnter(object sender, MouseEventArgs e)
         {
-            this.imageClose.Source = Tools.BitmapToBitmapImage(DyanamicIcons.close_selected);
+            this.imageClose.Source = Tools.BitmapToBitmapImage(Res.DynamicIcons.close_selected);
         }
 
         private void imageClose_MouseLeave(object sender, MouseEventArgs e)
         {
-            this.imageClose.Source = Tools.BitmapToBitmapImage(DyanamicIcons.close_normal);
+            this.imageClose.Source = Tools.BitmapToBitmapImage(Res.DynamicIcons.close_normal);
         }
 
         private void labelTitle_MouseMove(object sender, MouseEventArgs e)

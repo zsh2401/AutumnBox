@@ -16,46 +16,15 @@ namespace AutumnBox
     public partial class Window1
     {
         string mweTag = "MainWindowEvent";
+
         /// <summary>
         /// 初始化各种事件
         /// </summary>
         private void InitEvents()
         {
             //设备列表发生改变时的事件
-            App.devicesListener.DevicesChange += (s, devicesList) =>
-            {
-                Log.d(TAG, "Devices change handing.....");
-                this.Dispatcher.Invoke(() =>
-                {
-                    DevicesListBox.Items.Clear();
-                    Log.d(TAG, "Clear");
-                    //foreach (DictionaryEntry i in devicesHashtable)
-                    //{
-                    //    Log.d(TAG, "Adding");
-                    //    DevicesListBox.Items.Add(i.Key);
-                    //}
-                    devicesList.ForEach((info)=> { DevicesListBox.Items.Add(info); });
-                    DevicesListBox.DisplayMemberPath = "Id";
-                    if (devicesList.Count == 1)
-                    {
-                        DevicesListBox.SelectedIndex = 0;
-                    }
-                });
-            };
-
-            //推送文件到手机完成时的事件
-            //core.SendFileFinish += new Basic.EventsHandlers.SimpleFinishEventHandler(PushFinish);
-            //设置UI完成时的事件
-            this.SetUIFinish += new NormalEventHandler(() =>
-            {
-                this.rateBox.Dispatcher.Invoke(new Action(() =>
-                {
-                    this.HideRateBox();
-                }));
-                Log.d(mweTag, "SetUIFinish");
-            });
+            App.devicesListener.DevicesChange += DevicesChange;
         }
-
 
         #region 界面的事件
         /// <summary>
@@ -110,6 +79,7 @@ namespace AutumnBox
             }
             else if (sender is Basic.Functions.CustomRecoveryFlasher)
             {
+                FlashCustomRecFinish(sender, e);
                 //TODO
             }
             else if (sender is Basic.Functions.RebootOperator)
@@ -125,6 +95,7 @@ namespace AutumnBox
                 RelockMiFinish(sender, e);
             }
         }
+
         /// <summary>
         /// 黑域启动完毕
         /// </summary>
@@ -138,16 +109,7 @@ namespace AutumnBox
             {
                 HideRateBox();
             }));
-            //if ((sender as IOutAnalysable) == null) return;
-            ////var outString = (sender as IOutAnalysable).OutHandler.OutputData.nOutPut;
-            //if ((sender as IOutAnalysable).OutHandler.FuncIsSuccess)
-            //{
-            //    MMessageBox.ShowDialog(this, FindResource("Notice").ToString(), FindResource("StartBreventServiceSuc").ToString() + outString);
-            //}
-            //else
-            //{
-            //    MMessageBox.ShowDialog(this, FindResource("Notice").ToString(), FindResource("StartBreventServiceFail").ToString() + outString);
-            //}
+
         }
 
         /// <summary>
@@ -185,28 +147,24 @@ namespace AutumnBox
         /// </summary>
         /// <param name="obj">发生事件的"地方"</param>
         /// <param name="devicesHashtable">当前设备列表</param>
-        private void DevicesChange(Object sender, DevicesHashtable devicesHashtable)
+        private void DevicesChange(Object sender, DevicesList devices)
         {
             /*
              * 由于是从设备监听器线程发生的事件
              * 并且需要操作主界面,因此要用匿名函数来进行操作
              */
-            Log.d(mweTag, "Device Change");
-            this.DevicesListBox.Dispatcher.Invoke(new Action(() =>
+            Log.d(TAG, "Devices change handing.....");
+            this.Dispatcher.Invoke(() =>
             {
-                //清空主界面listbox列表
-                this.DevicesListBox.Items.Clear();
-                //添加设备列表到主界面设备列表listbox
-                foreach (DictionaryEntry entry in devicesHashtable)
+                DevicesListBox.Items.Clear();
+                Log.d(TAG, "Clear");
+                devices.ForEach((info) => { DevicesListBox.Items.Add(info); });
+                DevicesListBox.DisplayMemberPath = "Id";
+                if (devices.Count == 1)
                 {
-                    this.DevicesListBox.Items.Add(entry.Key);
+                    DevicesListBox.SelectedIndex = 0;
                 }
-                //如果只有一个设备,那么帮用户选中它
-                if (devicesHashtable.Count == 1)
-                {
-                    this.DevicesListBox.SelectedIndex = 0;
-                }
-            }));
+            });
         }
 
         /// <summary>
@@ -227,7 +185,7 @@ namespace AutumnBox
         /// 刷入自定义Recovery完成时发生的事件
         /// </summary>
         /// <param name="outputData">操作时的数据数据</param>
-        private void FuckFinish()
+        private void FlashCustomRecFinish(object sender, FinishEventArgs e)
         {
             Log.d(mweTag, "Flash Custom Recovery Finish");
             this.rateBox.Dispatcher.Invoke(new Action(() =>

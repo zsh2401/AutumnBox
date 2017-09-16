@@ -1,5 +1,4 @@
-﻿using AutumnBox.Images.DynamicIcons;
-using System;
+﻿using System;
 using System.Windows;
 using System.Windows.Input;
 
@@ -44,12 +43,12 @@ namespace AutumnBox.UI
 
         private void imageClose_MouseEnter(object sender, MouseEventArgs e)
         {
-            this.imageClose.Source = Tools.BitmapToBitmapImage(DyanamicIcons.close_selected);
+            this.imageClose.Source = Tools.BitmapToBitmapImage(Res.DynamicIcons.close_selected);
         }
 
         private void imageClose_MouseLeave(object sender, MouseEventArgs e)
         {
-            this.imageClose.Source = Tools.BitmapToBitmapImage(DyanamicIcons.close_normal);
+            this.imageClose.Source = Tools.BitmapToBitmapImage(Res.DynamicIcons.close_normal);
         }
     }
 }

@@ -13,7 +13,7 @@ namespace AutumnBox.Basic.Functions
         {
             this.args = fileArg;
         }
-        protected override OutErrorData MainMethod()
+        protected override OutputData MainMethod()
         {
             Logger.D(TAG, "Start MainMethod");
             var output = executer.Execute(DeviceID, $"flash recovery  \"{args.files[0]}\"");

@@ -72,7 +72,7 @@ namespace AutumnBox.Basic.Functions
         /// 模块的核心代码,需要子类进行实现
         /// </summary>
         //protected abstract OutputData MainMethod();
-        protected abstract OutErrorData MainMethod();
+        protected abstract OutputData MainMethod();
 
         public void Dispose()
         {

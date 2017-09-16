@@ -14,11 +14,11 @@ namespace AutumnBox.Basic.Functions
     /// </summary>
     public sealed class XiaomiSystemUnlocker : FunctionModule
     {
-        protected override OutErrorData MainMethod()
+        protected override OutputData MainMethod()
         {
             executer.Execute(DeviceID, "root");
             Thread.Sleep(300);
-            OutErrorData o = executer.Execute(DeviceID, "disable-verity");
+            OutputData o = executer.Execute(DeviceID, "disable-verity");
             return o;
         }
         protected override void OnFinish(object sender, FinishEventArgs a)

@@ -11,8 +11,8 @@
         public DeviceStatus deviceStatus { internal set; get; }//设备状态
     }
     public struct DeviceSimpleInfo {
-        public string Id { get; internal set; }
-        public DeviceStatus Status { get; internal set; }
+        public string Id { get; set; }
+        public DeviceStatus Status { get; set; }
         public override string ToString()
         {
             return Id;

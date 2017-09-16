@@ -48,25 +48,24 @@
   <ItemGroup>
     <Compile Include="Executer\CommandExecuter.cs" />
     <Compile Include="Executer\Events.cs" />
-    <Compile Include="Executer\OutErrorData.cs" />
+    <Compile Include="Executer\OutputData.cs" />
     <Compile Include="Devices\DevicesList.cs" />
-    <Compile Include="Functions\Event\RMFinishEventArgs.cs" />
-    <Compile Include="Functions\Event\StartEventArgs.cs" />
+    <Compile Include="Functions\Event\EventArgs.cs" />
     <Compile Include="Functions\ExecutedResultHandler\ExecuteResult.cs" />
-    <Compile Include="Functions\FunctionArgs\ExecuterInitType.cs" />
+    <Compile Include="Functions\FunctionArgs\KeyCode.cs" />
     <Compile Include="Functions\FunctionModulesExp\ScreenLockDeleter.cs" />
+    <Compile Include="Functions\FunctionMoudlesAdvance\ScreenClicker.cs" />
     <Compile Include="Functions\Interface\IOutAnalysable.cs" />
     <Compile Include="Devices\DeviceLink.cs" />
     <Compile Include="Devices\DevicesHashtable.cs" />
     <Compile Include="Devices\DeviceInfoStruct.cs" />
-    <Compile Include="Devices\DevicesListener.cs" />
+    <Compile Include="Devices\DevicesMonitor.cs" />
     <Compile Include="Devices\DeviceStatusEnum.cs" />
     <Compile Include="Devices\DevicesHelper.cs" />
     <Compile Include="Functions\RunningManager.cs" />
     <Compile Include="Functions\FunctionModulesBasic\CustomRecoveryFlasher.cs" />
     <Compile Include="Functions\FunctionModulesBasic\FileSender.cs" />
     <Compile Include="Functions\Event\EventsHandlers.cs" />
-    <Compile Include="Functions\Event\FinishEventArgs.cs" />
     <Compile Include="Functions\FunctionModulesExp\ActivityLauncher.cs" />
     <Compile Include="Functions\ExecutedResultHandler\BreventShOutputHandler.cs" />
     <Compile Include="Functions\FunctionArgs\Args.cs" />
@@ -93,8 +92,6 @@
       <LastGenOutput>Paths.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Functions\FunctionMoudlesAdvance\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -3,7 +3,7 @@ using System.Text;
 
 namespace AutumnBox.Basic.Executer
 {
-    public struct OutErrorData
+    public struct OutputData
     {
         public List<string> LineOut { get; internal set; }
         public List<string> LineError { get; internal set; }
@@ -33,13 +33,13 @@ namespace AutumnBox.Basic.Executer
             Out.Clear();
             Error.Clear();
         }
-        internal static OutErrorData Get()
+        internal static OutputData Get()
         {
-            OutErrorData o = new OutErrorData();
+            OutputData o = new OutputData();
             o.Init();
             return o;
         }
-        internal static void Get(out OutErrorData d)
+        internal static void Get(out OutputData d)
         {
             d = Get();
         }

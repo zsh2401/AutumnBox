@@ -1,12 +1,10 @@
 ﻿using AutumnBox.Basic.Devices;
 using AutumnBox.Basic.Functions;
 using AutumnBox.Debug;
-using AutumnBox.Images.DynamicIcons;
 using AutumnBox.UI;
 using AutumnBox.Util;
 using Microsoft.Win32;
 using System;
-using System.Collections;
 using System.Diagnostics;
 using System.Threading;
 using System.Windows;
@@ -54,7 +52,7 @@ namespace AutumnBox
         {
             this.LabelClose.Background = new ImageBrush
             {
-                ImageSource = Tools.BitmapToBitmapImage(DyanamicIcons.close_normal)
+                ImageSource = Tools.BitmapToBitmapImage(Res.DynamicIcons.close_normal)
             };
         }
 
@@ -62,7 +60,7 @@ namespace AutumnBox
         {
             this.LabelClose.Background = new ImageBrush
             {
-                ImageSource = Tools.BitmapToBitmapImage(DyanamicIcons.close_selected)
+                ImageSource = Tools.BitmapToBitmapImage(Res.DynamicIcons.close_selected)
             };
         }
 
@@ -75,7 +73,7 @@ namespace AutumnBox
         {
             this.LabelMin.Background = new ImageBrush
             {
-                ImageSource = Tools.BitmapToBitmapImage(DyanamicIcons.min_selected)
+                ImageSource = Tools.BitmapToBitmapImage(Res.DynamicIcons.min_selected)
             };
         }
 
@@ -83,7 +81,7 @@ namespace AutumnBox
         {
             this.LabelMin.Background = new ImageBrush
             {
-                ImageSource = Tools.BitmapToBitmapImage(DyanamicIcons.min_normal)
+                ImageSource = Tools.BitmapToBitmapImage(Res.DynamicIcons.min_normal)
             };
         }
 
@@ -91,17 +89,9 @@ namespace AutumnBox
         {
             if (this.DevicesListBox.SelectedIndex != -1)//如果选择了设备
             {
-                //new Thread(new ParameterizedThreadStart(SetUIByDevices)).Start(this.DevicesListBox.SelectedItem.ToString());
-                //var f = (DevicesListBox.ItemsSource as DevicesHashtable)[DevicesListBox.SelectedItem.ToString()];
-                //var s = f as DictionaryEntry;
-                //DeviceStatus status;
                 new Thread(() =>
                 {
                     SetUIByDevices();
-                    //this.Dispatcher.Invoke(() =>
-                    //{
-                    //    SetUIByDevices(DevicesListBox.SelectedItem.ToString(), DevicesHelper.GetDeviceStatus(DevicesListBox.SelectedItem.ToString()));
-                    //});
                 }).Start();
                 ShowRateBox();
             }
@@ -333,10 +323,10 @@ namespace AutumnBox
         private void buttonLinkHelp_Click(object sender, RoutedEventArgs e)
         {
             new LinkHelpWindow(this).Show();
-            Application.Current.Resources.MergedDictionaries[1] = new ResourceDictionary()
-            {
-                Source = new Uri("UI/Color2.xaml", UriKind.Relative)
-            };
+            //Application.Current.Resources.MergedDictionaries[1] = new ResourceDictionary()
+            //{
+            //    Source = new Uri("UI/Color2.xaml", UriKind.Relative)
+            //};
         }
 
         private void buttonStartShell_Click(object sender, RoutedEventArgs e)

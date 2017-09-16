@@ -1,14 +1,9 @@
-﻿using AutumnBox.Basic;
-using AutumnBox.Basic.Devices;
+﻿using AutumnBox.Basic.Devices;
 using AutumnBox.Basic.Functions;
 using AutumnBox.Debug;
-using AutumnBox.Images.DynamicIcons;
 using AutumnBox.UI;
-using AutumnBox.Util;
 using System;
 using System.Text.RegularExpressions;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace AutumnBox
@@ -28,8 +23,8 @@ namespace AutumnBox
             if (FindResource("LanguageName").ToString() != languageName)
                 Application.Current.Resources.Source = new Uri($@"Lang\{languageName}.xaml", UriKind.Relative);
         }
-        private delegate void NormalEventHandler();
-        private event NormalEventHandler SetUIFinish;//设置UI的完成事件,这个事件的处理方法将会关闭进度窗
+        //private delegate void NormalEventHandler();
+        //private event NormalEventHandler SetUIFinish;//设置UI的完成事件,这个事件的处理方法将会关闭进度窗
         
         /// <summary>
         /// 根据设备改变界面,如果按钮状态,显示文字,这个方法需要用新线程来操作.并且完成后将会发生事件
@@ -40,11 +35,6 @@ namespace AutumnBox
         {
             lock (setUILock)
             {
-                string id = "";
-                this.Dispatcher.Invoke(()=> {
-                    id = DevicesListBox.SelectedItem.ToString();
-                    Log.d(TAG,"Get id " + id);
-                });
                 DeviceSimpleInfo sinfo = new DeviceSimpleInfo();
                 this.Dispatcher.Invoke(()=> {
                     sinfo = (DeviceSimpleInfo)DevicesListBox.SelectedItem;
@@ -60,8 +50,10 @@ namespace AutumnBox
                     this.AndroidVersionLabel.Content = info.androidVersion;
                     this.CodeLabel.Content = info.code;
                     this.ModelLabel.Content = Regex.Replace(info.brand, @"[\r\n]", "") + " " + info.model;
-                    SetUIFinish?.Invoke();
                 }));
+                this.Dispatcher.Invoke(()=> {
+                    HideRateBox();
+                });
             }
         }
         /// <summary>
@@ -105,26 +97,26 @@ namespace AutumnBox
             switch (status)
             {
                 case DeviceStatus.FASTBOOT:
-                    this.DeviceStatusImage.Source = Tools.BitmapToBitmapImage(DyanamicIcons.fastboot);
+                    this.DeviceStatusImage.Source = Tools.BitmapToBitmapImage(Res.DynamicIcons.fastboot );
                     this.DeviceStatusLabel.Content = FindResource("DeviceInFastboot").ToString();
                     break;
                 case DeviceStatus.RECOVERY:
-                    this.DeviceStatusImage.Source = Tools.BitmapToBitmapImage(DyanamicIcons.recovery);
+                    this.DeviceStatusImage.Source = Tools.BitmapToBitmapImage(Res.DynamicIcons.recovery);
                     this.DeviceStatusLabel.Content = FindResource("DeviceInRecovery").ToString();
                     break;
                 case DeviceStatus.RUNNING:
-                    this.DeviceStatusImage.Source = Tools.BitmapToBitmapImage(DyanamicIcons.poweron);
+                    this.DeviceStatusImage.Source = Tools.BitmapToBitmapImage(Res.DynamicIcons.poweron);
                     this.DeviceStatusLabel.Content = FindResource("DeviceInRunning").ToString();
                     break;
                 case DeviceStatus.SIDELOAD:
-                    this.DeviceStatusImage.Source = Tools.BitmapToBitmapImage(DyanamicIcons.recovery);
+                    this.DeviceStatusImage.Source = Tools.BitmapToBitmapImage(Res.DynamicIcons.recovery);
                     this.DeviceStatusLabel.Content = FindResource("DeviceInSideload").ToString();
                     break;
                 case DeviceStatus.DEBUGGING_DEVICE:
                     this.DeviceStatusLabel.Content = FindResource("DeviceIsDebugging").ToString();
                     break;
                 default:
-                    this.DeviceStatusImage.Source = Tools.BitmapToBitmapImage(DyanamicIcons.no_selected);
+                    this.DeviceStatusImage.Source = Tools.BitmapToBitmapImage(Res.DynamicIcons.no_selected);
                     this.DeviceStatusLabel.Content = FindResource("PleaseSelectedADevice").ToString();
                     break;
             }

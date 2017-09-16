@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Functions.FunctionArgs
 {
-    internal enum ExecuterInitType
+    public enum KeyCode
     {
-        None = -1,
-        Adb,
-        Fastboot,
+        KEYCODE_MENU = 1,
+        KEYCODE_HOME = 3,
     }
 }

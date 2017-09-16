@@ -29,7 +29,7 @@ namespace AutumnBox.Basic.Functions
                     break;
             }
         }
-        protected override OutErrorData MainMethod()
+        protected override OutputData MainMethod()
         {
             string command;
 
@@ -49,7 +49,7 @@ namespace AutumnBox.Basic.Functions
             {
                 throw new System.Exception();
             }
-            OutErrorData o;
+            OutputData o;
             switch (t) {
                 case Executer.Adb:
                     o = executer.Execute(DeviceID, command);

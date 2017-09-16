@@ -6,6 +6,6 @@ namespace AutumnBox.Basic.Functions.ExecutedResultHandler
     {
         public string Message;
         public bool IsOK;
-        public OutErrorData OutputData;
+        public OutputData OutputData;
     }
 }

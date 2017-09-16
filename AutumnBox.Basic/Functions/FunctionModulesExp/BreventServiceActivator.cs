@@ -14,7 +14,7 @@ namespace AutumnBox.Basic.Functions
     public sealed class BreventServiceActivator : FunctionModule, IOutAnalysable
     {
         private const string DEFAULT_COMMAND = "shell \"sh /data/data/me.piebridge.brevent/brevent.sh\"";
-        protected override OutErrorData MainMethod()
+        protected override OutputData MainMethod()
         {
 #if !DEBUG
             string c;

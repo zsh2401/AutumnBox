@@ -1,4 +1,6 @@
-﻿using System;
+﻿//#define SHOW_OUTPUT
+//#define SHOW_COMMAND
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using AutumnBox.Basic.Devices;
@@ -6,11 +8,7 @@ using AutumnBox.Basic.Util;
 
 namespace AutumnBox.Basic.Executer
 {
-#if DEBUG
     public sealed class CommandExecuter:BaseObject,IDisposable
-#else
-    internal sealed class CommandExecuter : BaseObject, IDisposable
-#endif
     {
         enum ExeType
         {
@@ -30,7 +28,7 @@ namespace AutumnBox.Basic.Executer
             remove { MainProcess.ErrorDataReceived -= value; }
         }
 
-        private OutErrorData tempOut;
+        private OutputData tempOut;
         private Process MainProcess = new Process();
         private static readonly string ADB_PATH = Paths.ADB_TOOLS;
         private static readonly string FB_PATH = Paths.FASTBOOT_TOOLS;
@@ -43,24 +41,28 @@ namespace AutumnBox.Basic.Executer
             MainProcess.StartInfo.RedirectStandardInput = true;  // 重定向输入    
             MainProcess.StartInfo.RedirectStandardOutput = true; // 重定向标准输出    
             MainProcess.StartInfo.RedirectStandardError = true;  // 重定向错误输出  
-            OutErrorData.Get(out tempOut);
+            OutputData.Get(out tempOut);
             MainProcess.OutputDataReceived += (s, e) =>
             {
+#if SHOW_OUTPUT
                 LogD("Out: " + e.Data);
+#endif
                 tempOut.LineOut.Add(e.Data);
                 tempOut.Out.AppendLine(e.Data);
             };
             MainProcess.ErrorDataReceived += (s, e) =>
             {
+#if SHOW_OUTPUT
                 LogD("Error: " + e.Data);
+#endif
                 tempOut.LineError.Add(e.Data);
                 tempOut.Error.AppendLine(e.Data);
             };
         }
-        public void GetDevices(ref DevicesList devices)
+        public void GetDevices(out DevicesList devices)
         {
             if (Process.GetProcessesByName("adb").Length == 0) Execute("start-server");
-            devices.Clear();
+            devices = new DevicesList();
             //Adb devices
             List<string> l;
             l = Execute("devices").LineOut;
@@ -72,7 +74,6 @@ namespace AutumnBox.Basic.Executer
                         Id = l[i].Split('\t')[0],
                         Status = DevicesHelper.StringStatusToEnumStatus(l[i].Split('\t')[1])
                     });
-                //devices.Add(l[i].Split('\t')[0], l[i].Split('\t')[1]);
             }
             //Fastboot devices
             l = FBExecute("devices").LineOut;
@@ -103,7 +104,7 @@ namespace AutumnBox.Basic.Executer
             //Tools.KillProcessAndChildrens(MainProcess.Id);
         }
 #region Execute Command
-        private OutErrorData CExecute(string command, ExeType type = ExeType.Adb)
+        private OutputData CExecute(string command, ExeType type = ExeType.Adb)
         {
             tempOut.Clear();
             if (type == ExeType.Adb)
@@ -114,7 +115,9 @@ namespace AutumnBox.Basic.Executer
             {
                 this.MainProcess.StartInfo.FileName = FB_PATH;
             }
+#if SHOW_COMMAND
             LogD($"Execute Command {command}");
+#endif
             MainProcess.StartInfo.Arguments = command;
             MainProcess.Start();
             try
@@ -135,19 +138,19 @@ namespace AutumnBox.Basic.Executer
 
             return tempOut;
         }
-        public OutErrorData Execute(string command)
+        public OutputData Execute(string command)
         {
             return CExecute(command, ExeType.Adb);
         }
-        public OutErrorData Execute(string id, string command)
+        public OutputData Execute(string id, string command)
         {
             return CExecute($"-s {id} {command}", ExeType.Adb);
         }
-        public OutErrorData FBExecute(string command)
+        public OutputData FBExecute(string command)
         {
             return CExecute(command, ExeType.Fastboot);
         }
-        public OutErrorData FBExecute(string id, string command)
+        public OutputData FBExecute(string id, string command)
         {
             return CExecute($"-s {id} {command}", ExeType.Fastboot);
         }

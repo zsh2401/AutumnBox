@@ -1,4 +1,5 @@
 ﻿using AutumnBox.Basic.Devices;
+using AutumnBox.Basic.Functions;
 using System;
 
 namespace Tester
@@ -10,6 +11,7 @@ namespace Tester
     {
         static string mi4ID = "9dd1b490";
         static string mi6ID = "af0fe186";
+        
         //[DllImport("kernel32.dll")]
         //static extern bool GenerateConsoleCtrlEvent(int dwCtrlEvent, int dwProcessGroupId);
 
@@ -24,6 +26,21 @@ namespace Tester
         }
         static void Main(string[] args)
         {
+            //DevicesMonitor monitor = new DevicesMonitor();
+            //monitor.DevicesChange += (s,e) => { Print("Device Change"); };
+            //monitor.Start();
+            DeviceLink link = DeviceLink.Create();
+            var rm = link.InitRM(new ScreenClicker(AutumnBox.Basic.Functions.FunctionArgs.KeyCode.KEYCODE_MENU));
+            rm.FuncFinished += (s, e) => {
+                Print(e.OutErrorData.Out.ToString());
+                Print(e.OutErrorData.Error.ToString());
+            };
+            rm.FuncStart();
+            //var a = new DeviceSimpleInfo { Id = mi4ID, Status = DeviceStatus.FASTBOOT };
+            //var b = new DeviceSimpleInfo { Id = mi6ID, Status = DeviceStatus.RUNNING };
+            //DevicesList old = new DevicesList() { a };
+            //DevicesList _new = new DevicesList() { a,b,a,b,b,b};
+            //Print((old != _new).ToString());
             //DeviceLink link = DeviceLink.Create();
 
             //Print(link.Info.Status.ToString());
@@ -36,11 +53,11 @@ namespace Tester
             //rm.ExecuterStared += (s, e) => { Console.WriteLine(e.PID); };
             //Console.ReadKey();
             //rm.FuncStart();
-            DevicesListener dl = new DevicesListener();
-            //var o = new List<string>() + new List<string>();
-            dl.DevicesChange += (obj, list) => { Print("Devices Change"); list.ForEach((info) => { Print(info.Id); }); };
-            dl.Start();
-            DevicesHelper.GetBuildInfo(mi6ID);
+            //DevicesMonitor dl = new DevicesMonitor();
+            ////var o = new List<string>() + new List<string>();
+            //dl.DevicesChange += (obj, list) => { Print("Devices Change"); list.ForEach((info) => { Print(info.Id); }); };
+            //dl.Start();
+            //DevicesHelper.GetBuildInfo(mi6ID);
             Console.ReadKey();
             //var o = DevicesHelper.GetDevices();
             //o.ForEach((a)=> { Console.WriteLine(a); });

@@ -117,11 +117,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Debug\Log.cs" />
-    <Compile Include="Images\DynamicIcons\DyanamicIcons.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DyanamicIcons.resx</DependentUpon>
-    </Compile>
     <Compile Include="StaticData.cs" />
     <Compile Include="UI\AboutWindow.xaml.cs">
       <DependentUpon>AboutWindow.xaml</DependentUpon>
@@ -179,10 +174,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Images\DynamicIcons\DyanamicIcons.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>DyanamicIcons.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <None Include="app.manifest">
       <SubType>Designer</SubType>
     </None>
@@ -197,14 +188,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Lang\en-US.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Lang\zh-CN.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="UI\AboutWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -214,14 +197,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\ChoiceBox.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UI\Theme\LjyTheme.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UI\Theme\BasicTheme.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -259,68 +234,17 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\Icons\about.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Icons\contact.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Icons\donate.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\DynamicIcons\close_normal.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\DynamicIcons\close_selected.png" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\AutumnBox.Basic\AutumnBox.Basic.csproj">
       <Project>{84044fb2-bd38-4283-8065-b639270ece0f}</Project>
       <Name>AutumnBox.Basic</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\DynamicIcons\min_normal.png" />
-    <Resource Include="Images\DynamicIcons\min_selected.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\DynamicIcons\android_robot.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\DynamicIcons\no_selected.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\main_bg.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Icons\title_icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\DynamicIcons\fastboot.png" />
-    <Resource Include="Images\DynamicIcons\poweron.png" />
-    <Resource Include="Images\DynamicIcons\recovery.png" />
+    <ProjectReference Include="..\AutumnBox.Res\AutumnBox.Res.csproj">
+      <Project>{eee9312c-4210-4fdb-a753-e2506a2e3e45}</Project>
+      <Name>AutumnBox.Res</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="title_icon.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\alipay.jpg" />
-    <Resource Include="Images\wechatpay.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\donate.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Icons\leaves.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Icons\about_white.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\jkr.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\loading.gif" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">

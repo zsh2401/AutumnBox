@@ -17,7 +17,7 @@ namespace AutumnBox.Basic.Functions
                 args.files[i].Replace('\\','/');
             }
         }
-        protected override  OutErrorData MainMethod()
+        protected override  OutputData MainMethod()
         {
             string filename;
             string[] x;
@@ -28,7 +28,7 @@ namespace AutumnBox.Basic.Functions
                 executer.Execute(DeviceID, $"push \"{filepath}\" /sdcard/{filename}");
                 sendSingleFinish?.Invoke();
             }
-            return OutErrorData.Get();
+            return OutputData.Get();
         }
     }
 }
