@@ -61,11 +61,12 @@
             last.ForEach((info)=> { LogD(info.Id); });
             while (Continue)
             {
-                if (Process.GetProcessesByName("adb").Length == 0) executer.Execute("start-server");
+                if (Process.GetProcessesByName("adb").Length == 0) CommandExecuter.Start();
                 executer.GetDevices(out DevicesList now);
                 if (now != last)
                 {
                     LogD("Devices Change");
+                    //last.Clear();
                     last = now;
                     DevicesChange.Invoke(this, last);
                 }

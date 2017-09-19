@@ -33,7 +33,7 @@
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Lib\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\UsedDll\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -47,7 +47,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Executer\CommandExecuter.cs" />
+    <Compile Include="Executer\CommandExecuter.ExecuteFunctions.cs" />
     <Compile Include="Executer\Events.cs" />
+    <Compile Include="Executer\IAdbCommandExecuter.cs" />
+    <Compile Include="Executer\IDevicesGetter.cs" />
     <Compile Include="Executer\OutputData.cs" />
     <Compile Include="Devices\DevicesList.cs" />
     <Compile Include="Functions\Event\EventArgs.cs" />

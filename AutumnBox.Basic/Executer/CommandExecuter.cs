@@ -8,14 +8,15 @@ using AutumnBox.Basic.Util;
 
 namespace AutumnBox.Basic.Executer
 {
-    public sealed class CommandExecuter:BaseObject,IDisposable
+    public enum ExeType
     {
-        enum ExeType
-        {
-            Adb,
-            Fastboot
-        }
+        Adb,
+        Fastboot
+    }
+    public sealed partial class CommandExecuter : BaseObject, IDisposable, IDevicesGetter,IAdbCommandExecuter
+    {
         //事件
+        public event ProcessStartEventHandler ProcessStared;
         public event ExecuteStartHandler ExecuteStarted;
         public event DataReceivedEventHandler OutputDataReceived
         {
@@ -27,8 +28,24 @@ namespace AutumnBox.Basic.Executer
             add { MainProcess.ErrorDataReceived += value; }
             remove { MainProcess.ErrorDataReceived -= value; }
         }
+        /// <summary>
+        /// 当前的执行类型
+        /// </summary>
+        private ExeType NowExeType
+        {
+            get { return exeType; }
+            set
+            {
+                MainProcess.StartInfo.FileName = (value == ExeType.Adb) ? ADB_PATH : FB_PATH;
+                exeType = value;
+            }
+        }
+        private ExeType exeType;
 
         private OutputData tempOut;
+        /// <summary>
+        /// 执行器的底层进程
+        /// </summary>
         private Process MainProcess = new Process();
         private static readonly string ADB_PATH = Paths.ADB_TOOLS;
         private static readonly string FB_PATH = Paths.FASTBOOT_TOOLS;
@@ -59,16 +76,21 @@ namespace AutumnBox.Basic.Executer
                 tempOut.Error.AppendLine(e.Data);
             };
         }
-        public void GetDevices(out DevicesList devices)
+        /// <summary>
+        /// 获取设备信息
+        /// </summary>
+        /// <param name="devList"></param>
+        public void GetDevices(out DevicesList devList)
         {
-            if (Process.GetProcessesByName("adb").Length == 0) Execute("start-server");
-            devices = new DevicesList();
+            if (Process.GetProcessesByName("adb").Length == 0) ExecuteWithoutDevice("start-server");
+            devList = new DevicesList();
             //Adb devices
             List<string> l;
-            l = Execute("devices").LineOut;
+            ExecuteWithoutDevice("devices", out OutputData o);
+            l = o.LineOut;
             for (int i = 1; i < l.Count - 2; i++)
             {
-                devices.Add(
+                devList.Add(
                     new DeviceSimpleInfo
                     {
                         Id = l[i].Split('\t')[0],
@@ -76,12 +98,13 @@ namespace AutumnBox.Basic.Executer
                     });
             }
             //Fastboot devices
-            l = FBExecute("devices").LineOut;
+            ExecuteWithoutDevice("devices", out OutputData ofb,ExeType.Fastboot);
+            l = ofb.LineOut;
             for (int i = 0; i < l.Count - 1; i++)
             {
                 try
                 {
-                    devices.Add(
+                    devList.Add(
                     new DeviceSimpleInfo
                     {
                         Id = l[i].Split('\t')[0],
@@ -91,70 +114,65 @@ namespace AutumnBox.Basic.Executer
                 catch { }
             }
         }
-        public static void Kill() {
-            new CommandExecuter().Execute("kill-server");
+        /// <summary>
+        /// 获取设备信息
+        /// </summary>
+        /// <param name="devList">设备信息列表</param>
+        public DevicesList GetDevices() {
+            GetDevices(out DevicesList devList);
+            return devList;
         }
-        public static void Restart() {
+        /// <summary>
+        /// 启动adb服务
+        /// </summary>
+        public static void Start()
+        {
+            new CommandExecuter().ExecuteWithoutDevice("start-server");
+        }
+        /// <summary>
+        /// 关闭adb服务
+        /// </summary>
+        public static void Kill()
+        {
+            new CommandExecuter().ExecuteWithoutDevice("kill-server");
+        }
+        /// <summary>
+        /// 重启adb服务
+        /// </summary>
+        public static void Restart()
+        {
             Kill();
-            new CommandExecuter().Execute("start-server");
+            Start();
         }
+        /// <summary>
+        /// 释放
+        /// </summary>
         public void Dispose()
         {
             MainProcess.Dispose();
             //Tools.KillProcessAndChildrens(MainProcess.Id);
         }
-#region Execute Command
-        private OutputData CExecute(string command, ExeType type = ExeType.Adb)
-        {
-            tempOut.Clear();
-            if (type == ExeType.Adb)
-            {
-                this.MainProcess.StartInfo.FileName = ADB_PATH;
-            }
-            else
-            {
-                this.MainProcess.StartInfo.FileName = FB_PATH;
-            }
-#if SHOW_COMMAND
-            LogD($"Execute Command {command}");
-#endif
-            MainProcess.StartInfo.Arguments = command;
-            MainProcess.Start();
-            try
-            {
-                MainProcess.BeginOutputReadLine();
-                MainProcess.BeginErrorReadLine();
-            }
-            catch (Exception e) { LogE("Begin Out failed", e); }
-            ExecuteStarted?.Invoke(this, new ExecuteStartEventArgs() { PID = MainProcess.Id });
-            try
-            {
-                MainProcess.WaitForExit();
-                MainProcess.CancelOutputRead();
-                MainProcess.CancelErrorRead();
-                MainProcess.Close();
-            }
-            catch (Exception e) { LogE("等待退出或关闭流失败", e); }
+        #region Execute Command
 
-            return tempOut;
-        }
-        public OutputData Execute(string command)
-        {
-            return CExecute(command, ExeType.Adb);
-        }
-        public OutputData Execute(string id, string command)
-        {
-            return CExecute($"-s {id} {command}", ExeType.Adb);
-        }
-        public OutputData FBExecute(string command)
-        {
-            return CExecute(command, ExeType.Fastboot);
-        }
-        public OutputData FBExecute(string id, string command)
-        {
-            return CExecute($"-s {id} {command}", ExeType.Fastboot);
-        }
-#endregion
+        //public OutputData Execute(string command)
+        //{
+        //    return CExecute(command, ExeType.Adb);
+        //}
+        //public OutputData Execute(string id, string command)
+        //{
+        //    OutputData o;
+        //    Execute(new CommandData { DeviceID = id, Command = command, ExeType = ExeType.Adb }, out o);
+        //    return o;
+        //}
+        //public OutputData FBExecute(string command)
+        //{
+        //    return CExecute(command, ExeType.Fastboot);
+        //}
+        //public OutputData FBExecute(string id, string command)
+        //{
+        //    return CExecute($"-s {id} {command}", ExeType.Fastboot);
+        //}
+        #endregion
 
     }
 }

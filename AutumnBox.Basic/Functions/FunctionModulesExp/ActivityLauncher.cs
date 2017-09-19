@@ -18,7 +18,7 @@ namespace AutumnBox.Basic.Functions
         {
             Logger.D(TAG,$"Try Launch {DeviceID} Activity : {Args.ActivityName}");
             string command = $"shell am start -n {Args.PackageName}/{Args.PackageName + Args.ActivityName}";
-            var o = executer.Execute(this.DeviceID,command);
+            executer.ExecuteWithDevice(this.DeviceID,command,out OutputData o);
             return o;
         }
     }

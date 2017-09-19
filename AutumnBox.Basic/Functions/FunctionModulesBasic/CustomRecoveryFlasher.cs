@@ -9,15 +9,15 @@ namespace AutumnBox.Basic.Functions
     public sealed class CustomRecoveryFlasher : FunctionModule
     {
         private FileArgs args;
-        public CustomRecoveryFlasher(FileArgs fileArg) 
+        public CustomRecoveryFlasher(FileArgs fileArg)
         {
             this.args = fileArg;
         }
         protected override OutputData MainMethod()
         {
             Logger.D(TAG, "Start MainMethod");
-            var output = executer.Execute(DeviceID, $"flash recovery  \"{args.files[0]}\"");
-            executer.Execute(DeviceID, $"boot \"{args.files[0]}\"");
+            executer.ExecuteWithDevice(DeviceID, $"flash recovery  \"{args.files[0]}\"", out OutputData output);
+            executer.ExecuteWithDevice(DeviceID, $"boot \"{args.files[0]}\"");
             return output;
         }
     }

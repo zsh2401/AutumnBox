@@ -20,12 +20,12 @@
                     </MenuItem.Header>
                     <MenuItem Header="{DynamicResource AboutThisSoftware}" Foreground="Black" Background="#00000000" Click="MenuItem_Click_1" >
                         <MenuItem.Icon>
-                            <Image Source="/AutumnBox.Res;component/Images/Icons/about.png" Width="30"/>
+                            <Image Source="/AutumnBox.Res;component/Images/Icons/about.png" Width="15" Height="15" Stretch="Fill"/>
                         </MenuItem.Icon>
                     </MenuItem>
                     <MenuItem Header="{DynamicResource Contact}" Foreground="Black" Background="#00000000" Click="MenuItem_Click_2" >
                         <MenuItem.Icon>
-                            <Image Source="/AutumnBox.Res;component/Images/Icons/contact.png"  Width="30" Height="30.2"/>
+                            <Image Source="/AutumnBox.Res;component/Images/Icons/contact.png"  Width="15" Height="15" Stretch="Fill"/>
                         </MenuItem.Icon>
                     </MenuItem>
                     <MenuItem Header="{DynamicResource Donate}" Foreground="Black" Background="#00000000" Click="MenuItem_Click" >

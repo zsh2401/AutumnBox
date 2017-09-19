@@ -16,15 +16,15 @@ namespace AutumnBox.Basic.Functions
     {
         protected override OutputData MainMethod()
         {
-            executer.Execute(DeviceID, "root");
+            ae(DeviceID, "root");
             Thread.Sleep(300);
-            OutputData o = executer.Execute(DeviceID, "disable-verity");
+            OutputData o = ae(DeviceID, "disable-verity");
             return o;
         }
         protected override void OnFinish(object sender, FinishEventArgs a)
         {
             base.OnFinish(sender, a);
-            executer.Execute(DeviceID, "reboot");
+            ae(DeviceID, "reboot");
         }
     }
 }

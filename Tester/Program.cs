@@ -26,16 +26,17 @@ namespace Tester
         }
         static void Main(string[] args)
         {
-            //DevicesMonitor monitor = new DevicesMonitor();
-            //monitor.DevicesChange += (s,e) => { Print("Device Change"); };
-            //monitor.Start();
-            DeviceLink link = DeviceLink.Create();
-            var rm = link.InitRM(new ScreenClicker(AutumnBox.Basic.Functions.FunctionArgs.KeyCode.KEYCODE_MENU));
-            rm.FuncFinished += (s, e) => {
-                Print(e.OutErrorData.Out.ToString());
-                Print(e.OutErrorData.Error.ToString());
-            };
-            rm.FuncStart();
+            DevicesMonitor monitor = new DevicesMonitor();
+            monitor.DevicesChange += (s, e) => { Print("Device Change"); e.ForEach((i)=> { Console.WriteLine(i.Id); }); };
+            monitor.Start();
+            DevicesHelper.GetDevices().ForEach((a)=> { Print("?asdad" + a.Id); });
+            //DeviceLink link = DeviceLink.Create();
+            //var rm = link.InitRM(new ScreenClicker(AutumnBox.Basic.Functions.FunctionArgs.KeyCode.KEYCODE_MENU));
+            //rm.FuncFinished += (s, e) => {
+            //    Print(e.OutErrorData.Out.ToString());
+            //    Print(e.OutErrorData.Error.ToString());
+            //};
+            //rm.FuncStart();
             //var a = new DeviceSimpleInfo { Id = mi4ID, Status = DeviceStatus.FASTBOOT };
             //var b = new DeviceSimpleInfo { Id = mi6ID, Status = DeviceStatus.RUNNING };
             //DevicesList old = new DevicesList() { a };

@@ -16,7 +16,7 @@ namespace AutumnBox.Basic.Functions
         }
         protected override OutputData MainMethod()
         {
-            var o = executer.Execute($"shell input keyevent {KEY_CODE}");
+            var o = ae(DeviceID,$"shell input keyevent {KEY_CODE}");
             return o;
         }
     }

@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>AutumnBox</RootNamespace>
     <AssemblyName>AutumnBox</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
@@ -81,12 +81,12 @@
       <HintPath>..\..\..\Microsoft.Windows.Shell.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>..\UseDll\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\UsedDll\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.SQLite">
-      <HintPath>..\UseDll\System.Data.SQLite.dll</HintPath>
+      <HintPath>..\UsedDll\System.Data.SQLite.dll</HintPath>
     </Reference>
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
@@ -185,7 +185,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Page Include="UI\AboutWindow.xaml">
@@ -234,16 +236,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AutumnBox.Basic\AutumnBox.Basic.csproj">
-      <Project>{84044fb2-bd38-4283-8065-b639270ece0f}</Project>
-      <Name>AutumnBox.Basic</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\AutumnBox.Res\AutumnBox.Res.csproj">
-      <Project>{eee9312c-4210-4fdb-a753-e2506a2e3e45}</Project>
-      <Name>AutumnBox.Res</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="title_icon.ico" />
   </ItemGroup>
   <ItemGroup>
@@ -255,6 +247,18 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="NetUtil\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AutumnBox.Basic\AutumnBox.Basic.csproj">
+      <Project>{84044fb2-bd38-4283-8065-b639270ece0f}</Project>
+      <Name>AutumnBox.Basic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AutumnBox.Res\AutumnBox.Res.csproj">
+      <Project>{eee9312c-4210-4fdb-a753-e2506a2e3e45}</Project>
+      <Name>AutumnBox.Res</Name>
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

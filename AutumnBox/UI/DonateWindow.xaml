@@ -8,8 +8,8 @@
         mc:Ignorable="d"
         Title="DonateWindow" Height="607.161" Width="453.619" ResizeMode="NoResize" WindowStartupLocation="CenterOwner" WindowStyle="None" Background="#FF009AD6">
     <Grid Margin="3,0,3,3" Background="White">
-        <Image HorizontalAlignment="Left" Height="317" Margin="0,297,0,0" VerticalAlignment="Top" Width="217" Source="/AutumnBox;component/Images/alipay.jpg"/>
-        <Image HorizontalAlignment="Left" Height="317" Margin="208,287,0,0" VerticalAlignment="Top" Width="242" Source="/AutumnBox;component/Images/wechatpay.png"/>
+        <Image HorizontalAlignment="Left" Height="317" Margin="0,297,0,0" VerticalAlignment="Top" Width="217" Source="/AutumnBox.Res;component/Images/alipay.jpg"/>
+        <Image HorizontalAlignment="Left" Height="317" Margin="208,287,0,0" VerticalAlignment="Top" Width="242" Source="/AutumnBox.Res;component/Images/wechatpay.png"/>
         <Label VerticalAlignment="Top" Height="40" Background="#FF009AD6" MouseMove="Label_MouseMove">
             <TextBlock TextWrapping="Wrap" Text="{DynamicResource DonateWindowTitle}" Height="30" Width="98" FontFamily="Microsoft YaHei UI Light" FontSize="18" Foreground="White"/>
         </Label>

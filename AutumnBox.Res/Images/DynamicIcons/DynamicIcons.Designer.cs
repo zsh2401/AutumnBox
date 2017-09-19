@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AutumnBox.Res{
+namespace AutumnBox.Res {
     using System;
     
     

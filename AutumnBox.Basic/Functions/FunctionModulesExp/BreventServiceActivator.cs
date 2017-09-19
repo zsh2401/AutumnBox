@@ -34,7 +34,7 @@ namespace AutumnBox.Basic.Functions
                 OnFinish(this, new FinishEventArgs() { OutputData = o });
             }
 #else
-            var o = executer.Execute(DeviceID, DEFAULT_COMMAND);
+             executer.ExecuteWithDevice(DeviceID, DEFAULT_COMMAND,out OutputData o);
             return o;
 #endif
         }

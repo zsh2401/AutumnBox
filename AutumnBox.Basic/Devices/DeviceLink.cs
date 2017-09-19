@@ -11,6 +11,11 @@ namespace AutumnBox.Basic.Devices
     /// </summary>
     public sealed class DeviceLink : BaseObject
     {
+        //Hashtable 
+        public enum LinkType {
+            USB = 0,
+            LOCAL_NET,
+        }
         public string DeviceID { get { return _info.Id; } set { _info.Id = value; } }
 
         public DeviceSimpleInfo Info { get { return _info; } }
@@ -38,6 +43,15 @@ namespace AutumnBox.Basic.Devices
             return rm;
         }
         /// <summary>
+        /// 获取一个与本连接相关的功能模块托管器
+        /// </summary>
+        /// <param name="func">功能模块</param>
+        /// <returns>托管器</returns>
+        public RunningManager GetFuncRunningManager(FunctionModule func)
+        {
+            return InitRM(func);
+        }
+        /// <summary>
         /// 根据新的设备信息重设连接
         /// </summary>
         /// <param name="info"></param>
@@ -58,7 +72,7 @@ namespace AutumnBox.Basic.Devices
         }
 
         /// <summary>
-        /// 获取设备连接实例,如果不传入id,将自动获取第一个设备连接
+        /// 使用连接列表的第一个设备创建连接实例
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -67,6 +81,11 @@ namespace AutumnBox.Basic.Devices
             var info = DevicesHelper.GetDevices()[0];
             return Create(info);
         }
+        /// <summary>
+        /// 使用指定设备创建连接实例
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public static DeviceLink Create(string id)
         {
             //string _id = id ?? DevicesHelper.GetDevices().GetFristDevice();
@@ -76,18 +95,31 @@ namespace AutumnBox.Basic.Devices
             DeviceStatus status = DevicesHelper.GetDeviceStatus(id);
             return Create(id, status);
         }
+        /// <summary>
+        /// 使用指定设备及其状态创建实例,这将会节约一些时间
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="status"></param>
+        /// <returns></returns>
         public static DeviceLink Create(string id, DeviceStatus status)
         {
             return new DeviceLink(id, status);
         }
+        /// <summary>
+        /// 通过设备简单信息创建连接,能节约时间
+        /// </summary>
+        /// <param name="info"></param>
+        /// <returns></returns>
         public static DeviceLink Create(DeviceSimpleInfo info)
         {
             return Create(info.Id, info.Status);
         }
+        [Obsolete("已经过期,将会在未来版本完全移除,请使用其它重载代替")]
         public static DeviceLink Create(DictionaryEntry e)
         {
             return Create(e.Key.ToString(), DevicesHelper.StringStatusToEnumStatus(e.Value.ToString()));
         }
+        [Obsolete("已经过期,将会在未来版本完全移除,请使用其它重载代替")]
         public static DeviceLink Create(DevicesHashtable devices, string id)
         {
             return Create(id, DevicesHelper.StringStatusToEnumStatus(devices[id].ToString()));

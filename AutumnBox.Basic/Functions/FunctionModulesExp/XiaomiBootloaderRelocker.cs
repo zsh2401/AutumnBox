@@ -6,7 +6,7 @@ namespace AutumnBox.Basic.Functions
     {
         protected override OutputData MainMethod()
         {
-            var o = executer.Execute(DeviceID, " oem lock");
+            var o = ae(DeviceID, " oem lock");
             return o;
         }
     }

@@ -1,5 +1,8 @@
 ﻿namespace AutumnBox.Basic.Devices
 {
+    /// <summary>
+    /// 完整的设备信息结构体,主要用于获取设备的详细信息
+    /// </summary>
     public struct DeviceInfo
     {
         public string model { internal set; get; }//型号
@@ -10,6 +13,9 @@
         public string androidVersion { internal set; get; }//安卓版本
         public DeviceStatus deviceStatus { internal set; get; }//设备状态
     }
+    /// <summary>
+    /// 简单的仅包含设备id和设备状态的结构体,主要用于设备列表 DevicesList
+    /// </summary>
     public struct DeviceSimpleInfo {
         public string Id { get; set; }
         public DeviceStatus Status { get; set; }

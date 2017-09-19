@@ -1,13 +1,13 @@
-﻿using AutumnBox.Basic.Executer;
-using AutumnBox.Basic.Functions.Event;
-using AutumnBox.Basic.Functions.Interface;
-using AutumnBox.Basic.Util;
-using System.Diagnostics;
-
-namespace AutumnBox.Basic.Functions
+﻿namespace AutumnBox.Basic.Functions
 {
+    using AutumnBox.Basic.Executer;
+    using AutumnBox.Basic.Functions.Event;
+    using AutumnBox.Basic.Functions.Interface;
+    using AutumnBox.Basic.Util;
+    using System;
+    using System.Diagnostics;
     /// <summary>
-    /// 运行时托管器
+    /// 功能模块运行时托管器,一个托管器仅可以托管/包装一个功能模块
     /// </summary>
     public sealed class RunningManager
     {
@@ -69,8 +69,7 @@ namespace AutumnBox.Basic.Functions
         {
             this.Fm = fm;
             //绑定好事件,在进程开始时获取PID用于结束进程
-            
-            Fm.executer.ExecuteStarted += (s_, e_) => { _pid = e_.PID; };
+            Fm.executer.ProcessStared += (s_, e_) => { _pid = e_.PID; };
         }
         /// <summary>
         /// 开始执行托管的功能模块
@@ -84,7 +83,7 @@ namespace AutumnBox.Basic.Functions
             Fm.Run();
         }
         /// <summary>
-        /// 停止执行管理的正在运行的功能,但需要该功能模块实现IFunctionCanStop
+        /// 强制停止执行管理的正在运行的功能
         /// </summary>
         public void FuncStop()
         {

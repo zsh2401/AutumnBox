@@ -25,7 +25,7 @@ namespace AutumnBox.Basic.Functions
             {
                 x = filepath.Split('/');
                 filename = x[x.Length - 1];
-                executer.Execute(DeviceID, $"push \"{filepath}\" /sdcard/{filename}");
+                executer.ExecuteWithDevice(DeviceID, $"push \"{filepath}\" /sdcard/{filename}");
                 sendSingleFinish?.Invoke();
             }
             return OutputData.Get();
