@@ -58,6 +58,7 @@
     <Compile Include="Functions\FunctionArgs\KeyCode.cs" />
     <Compile Include="Functions\FunctionModulesExp\ScreenLockDeleter.cs" />
     <Compile Include="Functions\FunctionMoudlesAdvance\ScreenClicker.cs" />
+    <Compile Include="Functions\Interface\IFunctionModule.cs" />
     <Compile Include="Functions\Interface\IOutAnalysable.cs" />
     <Compile Include="Devices\DeviceLink.cs" />
     <Compile Include="Devices\DevicesHashtable.cs" />
