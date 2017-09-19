@@ -10,7 +10,7 @@ namespace AutumnBox
     /// </summary>
     public partial class App : Application
     {
-        internal static DeviceLink nowLink;//当前的设备连接
+        internal static DeviceLink nowLink = DeviceLink.CreateNone();//当前的设备连接
         internal static DevicesMonitor devicesListener = new DevicesMonitor();//设备监听器
         protected override void OnStartup(StartupEventArgs e)
         {

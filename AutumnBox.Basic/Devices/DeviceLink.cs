@@ -16,6 +16,9 @@ namespace AutumnBox.Basic.Devices
             USB = 0,
             LOCAL_NET,
         }
+        public bool IsOK { get {
+                return (DeviceID == null)?true:false ;
+            } }
         public string DeviceID { get { return _info.Id; } set { _info.Id = value; } }
 
         public DeviceSimpleInfo Info { get { return _info; } }
@@ -28,7 +31,9 @@ namespace AutumnBox.Basic.Devices
         {
             Reset(new DeviceSimpleInfo { Id = id, Status = status });
         }
+        private DeviceLink() {
 
+        }
         /// <summary>
         /// 获取一个与本连接相关的功能模块托管器
         /// </summary>
@@ -71,6 +76,9 @@ namespace AutumnBox.Basic.Devices
                 _deviceInfo = DevicesHelper.GetDeviceInfo(Info.Id, DevicesHelper.GetBuildInfo(Info.Id), Info.Status);
         }
 
+        public static DeviceLink CreateNone() {
+            return new DeviceLink();
+        }
         /// <summary>
         /// 使用连接列表的第一个设备创建连接实例
         /// </summary>

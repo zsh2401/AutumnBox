@@ -25,7 +25,7 @@ namespace AutumnBox
         }
         //private delegate void NormalEventHandler();
         //private event NormalEventHandler SetUIFinish;//设置UI的完成事件,这个事件的处理方法将会关闭进度窗
-        
+
         /// <summary>
         /// 根据设备改变界面,如果按钮状态,显示文字,这个方法需要用新线程来操作.并且完成后将会发生事件
         /// 通过事件可以便可以关闭进度窗
@@ -36,11 +36,12 @@ namespace AutumnBox
             lock (setUILock)
             {
                 DeviceSimpleInfo sinfo = new DeviceSimpleInfo();
-                this.Dispatcher.Invoke(()=> {
+                this.Dispatcher.Invoke(() =>
+                {
                     sinfo = (DeviceSimpleInfo)DevicesListBox.SelectedItem;
                 });
-                App.nowLink = DeviceLink.Create(sinfo);
-                Log.d(TAG,"Getting Device Info");
+                App.nowLink.Reset(sinfo);
+                Log.d(TAG, "Getting Device Info");
                 DeviceInfo info = App.nowLink.DeviceInfo;
                 this.Dispatcher.Invoke(new Action(() =>
                 {
@@ -51,7 +52,8 @@ namespace AutumnBox
                     this.CodeLabel.Content = info.code;
                     this.ModelLabel.Content = Regex.Replace(info.brand, @"[\r\n]", "") + " " + info.model;
                 }));
-                this.Dispatcher.Invoke(()=> {
+                this.Dispatcher.Invoke(() =>
+                {
                     HideRateBox();
                 });
             }
@@ -97,7 +99,7 @@ namespace AutumnBox
             switch (status)
             {
                 case DeviceStatus.FASTBOOT:
-                    this.DeviceStatusImage.Source = Tools.BitmapToBitmapImage(Res.DynamicIcons.fastboot );
+                    this.DeviceStatusImage.Source = Tools.BitmapToBitmapImage(Res.DynamicIcons.fastboot);
                     this.DeviceStatusLabel.Content = FindResource("DeviceInFastboot").ToString();
                     break;
                 case DeviceStatus.RECOVERY:
@@ -128,7 +130,8 @@ namespace AutumnBox
         {
             try
             {
-                if (rm == null) {
+                if (rm == null)
+                {
                     rateBox = new RateBox(this);
                     rateBox.ShowDialog();
                     return;
@@ -148,9 +151,11 @@ namespace AutumnBox
         /// </summary>
         private void HideRateBox()
         {
-            try {
+            try
+            {
                 this.rateBox.Close();
-            } catch  { }
+            }
+            catch { }
         }
     }
 }

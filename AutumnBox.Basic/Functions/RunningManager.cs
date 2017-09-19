@@ -57,8 +57,8 @@
         }
         public event RunningManagerFinishHandler Finished;
         #endregion
+        public FunctionModule Fm { get; private set; }
         //PRIVATE
-        private FunctionModule Fm { get; set; }
         private int _pid;
         private bool _funcIsFinish = false;
         /// <summary>
@@ -71,6 +71,9 @@
             //绑定好事件,在进程开始时获取PID用于结束进程
             Fm.executer.ProcessStared += (s_, e_) => { _pid = e_.PID; };
         }
+        //internal RunningManager(IExtendsFunctionMoudle fm) {
+
+        //}
         /// <summary>
         /// 开始执行托管的功能模块
         /// </summary>

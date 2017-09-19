@@ -28,6 +28,13 @@ namespace AutumnBox.UI
         public FileSendingWindow(Window Owner, RunningManager rm)
         {
             this.rm = rm;
+            rm.Finished += (s, e) =>
+            {
+                this.Dispatcher.Invoke(() =>
+                {
+                    this.Close();
+                });
+            };
             rm.OutputReceived += (s, e) =>
             {
                 Match m;
@@ -43,6 +50,7 @@ namespace AutumnBox.UI
                     ProgressBarMain.Dispatcher.Invoke(() =>
                     {
                         ProgressBarMain.Value = double.Parse(r);
+                        LabelProgressMessage.Content = r.ToString() + "%";
                     });
                 }
                 catch (Exception se)
@@ -53,5 +61,18 @@ namespace AutumnBox.UI
             };
             InitializeComponent();
         }
+
+        private void buttonCancel_Click(object sender, RoutedEventArgs e)
+        {
+            rm.FuncStop();
+            this.Close();
+        }
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Log.d(this.GetType().Name, "Mouse Down on Window");
+            UIHelper.DragMove(this, e);
+        }
+
     }
 }
