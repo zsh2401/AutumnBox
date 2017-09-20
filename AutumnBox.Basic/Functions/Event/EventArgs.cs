@@ -13,7 +13,7 @@ namespace AutumnBox.Basic.Functions.Event
     /// </summary>
     public class FinishEventArgs : EventArgs
     {
-        public OutputData OutErrorData { get; internal set; }
+        public OutputData OutputData { get; internal set; }
 
         public bool IsFinish { get; internal set; }
     }

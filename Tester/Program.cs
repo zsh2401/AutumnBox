@@ -26,12 +26,18 @@ namespace Tester
         }
         static void Main(string[] args)
         {
-            DevicesMonitor monitor = new DevicesMonitor();
-            monitor.DevicesChange += (s, e) => { Print("Device Change"); e.ForEach((i)=> { Console.WriteLine(i.Id); }); };
-            monitor.Start();
-            DevicesHelper.GetDevices().ForEach((a)=> { Print("?asdad" + a.Id); });
-            //DeviceLink link = DeviceLink.Create();
-            //var rm = link.InitRM(new ScreenClicker(AutumnBox.Basic.Functions.FunctionArgs.KeyCode.KEYCODE_MENU));
+            //DevicesMonitor monitor = new DevicesMonitor();
+            //monitor.DevicesChange += (s, e) => { Print("Device Change"); e.ForEach((i)=> { Console.WriteLine(i.Id); }); };
+            //monitor.Start();
+            //DevicesHelper.GetDevices().ForEach((a)=> { Print("?asdad" + a.Id); });
+            DeviceLink link = DeviceLink.Create();
+            var rm = link.GetRunningManager(new TestingFunction());
+            rm.FuncEvents.Finished+= (s, e) =>
+            {
+                Print(e.OutputData.Out.ToString());
+                Print(e.OutputData.Error.ToString());
+            };
+            rm.FuncStart();
             //rm.FuncFinished += (s, e) => {
             //    Print(e.OutErrorData.Out.ToString());
             //    Print(e.OutErrorData.Error.ToString());

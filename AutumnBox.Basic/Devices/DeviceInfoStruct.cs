@@ -30,5 +30,23 @@
         {
             return !(left.Id == right.Id);
         }
+        /// <summary>
+        /// 要不是为了消除警告...
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public override bool Equals(object obj)
+        {
+            return base.Equals(obj);
+        }
+        /// <summary>
+        /// 要不是为了消除警告...
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 }

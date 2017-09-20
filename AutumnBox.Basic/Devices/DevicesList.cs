@@ -27,6 +27,19 @@ namespace AutumnBox.Basic.Devices
         {
             return (!(left == right));
         }
-
+        public override bool Equals(object obj)
+        {
+            if (obj == null) return false;
+            if (this == (DevicesList)obj) return true;
+            return false;
+        }
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+        public override string ToString()
+        {
+            return base.ToString();
+        }
     }
 }

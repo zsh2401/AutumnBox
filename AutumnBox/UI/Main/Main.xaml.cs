@@ -114,8 +114,8 @@ namespace AutumnBox
             if (fileDialog.ShowDialog() == true)
             {
                 FileSender fs = new FileSender(new FileArgs { files = new string[] { fileDialog.FileName } });
-                RunningManager rm = App.nowLink.InitRM(fs);
-                rm.FuncFinished += FuncFinish;
+                RunningManager rm = App.nowLink.GetRunningManager(fs);
+                rm.FuncEvents.Finished += FuncFinish;
                 rm.FuncStart();
                 //ShowRateBox(rm);
                 new FileSendingWindow(this, rm).ShowDialog();
@@ -141,8 +141,8 @@ namespace AutumnBox
                 rebootOption = RebootOptions.Recovery,
                 nowStatus = App.nowLink.DeviceInfo.deviceStatus
             });
-            var rm = App.nowLink.InitRM(ro);
-            rm.FuncFinished += FuncFinish;
+            var rm = App.nowLink.GetRunningManager(ro);
+            rm.FuncEvents.Finished += FuncFinish;
             rm.FuncStart();
         }
 
@@ -153,8 +153,8 @@ namespace AutumnBox
                 rebootOption = RebootOptions.Bootloader,
                 nowStatus = App.nowLink.DeviceInfo.deviceStatus
             });
-            var rm = App.nowLink.InitRM(ro);
-            rm.FuncFinished += FuncFinish;
+            var rm = App.nowLink.GetRunningManager(ro);
+            rm.FuncEvents.Finished += FuncFinish;
             rm.FuncStart();
         }
 
@@ -165,8 +165,8 @@ namespace AutumnBox
                 rebootOption = RebootOptions.System,
                 nowStatus = App.nowLink.DeviceInfo.deviceStatus
             });
-            var rm = App.nowLink.InitRM(ro);
-            rm.FuncFinished += FuncFinish;
+            var rm = App.nowLink.GetRunningManager(ro);
+            rm.FuncEvents.Finished += FuncFinish;
             rm.FuncStart();
         }
 
@@ -180,8 +180,8 @@ namespace AutumnBox
             if (fileDialog.ShowDialog() == true)
             {
                 CustomRecoveryFlasher flasher = new CustomRecoveryFlasher(new FileArgs() { files = new string[] { fileDialog.FileName } });
-                var rm = App.nowLink.InitRM(flasher);
-                rm.FuncFinished += FuncFinish;
+                var rm = App.nowLink.GetRunningManager(flasher);
+                rm.FuncEvents.Finished += FuncFinish;
                 rm.FuncStart();
                 ShowRateBox(rm);
             }
@@ -196,8 +196,8 @@ namespace AutumnBox
             if (!ChoiceBox.Show(this, FindResource("Notice").ToString(), FindResource("UnlockXiaomiSystemTip").ToString())) return;
             MMessageBox.ShowDialog(this, FindResource("Notice").ToString(), FindResource("IfAllOK").ToString());
             XiaomiSystemUnlocker unlocker = new XiaomiSystemUnlocker();
-            var rm = App.nowLink.InitRM(unlocker);
-            rm.FuncFinished += FuncFinish;
+            var rm = App.nowLink.GetRunningManager(unlocker);
+            rm.FuncEvents.Finished += FuncFinish;
             rm.FuncStart();
             ShowRateBox(rm);
         }
@@ -207,8 +207,8 @@ namespace AutumnBox
             if (!ChoiceBox.Show(this, FindResource("Warning").ToString(), FindResource("RelockWarning").ToString())) return;
             if (!ChoiceBox.Show(this, FindResource("Warning").ToString(), FindResource("RelockWarningAgain").ToString())) return;
             XiaomiBootloaderRelocker relocker = new XiaomiBootloaderRelocker();
-            var rm = App.nowLink.InitRM(relocker);
-            rm.FuncFinished += FuncFinish;
+            var rm = App.nowLink.GetRunningManager(relocker);
+            rm.FuncEvents.Finished += FuncFinish;
             rm.FuncStart();
             ShowRateBox(rm);
         }
@@ -314,8 +314,8 @@ namespace AutumnBox
         {
             if (!ChoiceBox.Show(this, FindResource("Notice").ToString(), FindResource("StartBrventTip").ToString())) return;
             BreventServiceActivator activator = new BreventServiceActivator();
-            var rm = App.nowLink.InitRM(activator);
-            rm.FuncFinished += FuncFinish;
+            var rm = App.nowLink.GetRunningManager(activator);
+            rm.FuncEvents.Finished += FuncFinish;
             rm.FuncStart();
             ShowRateBox(rm);
         }

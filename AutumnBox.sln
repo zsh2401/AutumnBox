@@ -11,7 +11,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutumnBox.Basic", "AutumnBo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutumnBox.Res", "AutumnBox.Res\AutumnBox.Res.csproj", "{EEE9312C-4210-4FDB-A753-E2506A2E3E45}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "AutumnBox.EFM", "AutumnBox.EFM\AutumnBox.EFM.shproj", "{8FF02854-B55D-4589-A1C7-B2DA2FFC4358}"
+EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		AutumnBox.EFM\AutumnBox.EFM.projitems*{84044fb2-bd38-4283-8065-b639270ece0f}*SharedItemsImports = 4
+		AutumnBox.EFM\AutumnBox.EFM.projitems*{8ff02854-b55d-4589-a1c7-b2da2ffc4358}*SharedItemsImports = 13
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU

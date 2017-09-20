@@ -56,8 +56,6 @@
     <Compile Include="Functions\Event\EventArgs.cs" />
     <Compile Include="Functions\ExecutedResultHandler\ExecuteResult.cs" />
     <Compile Include="Functions\FunctionArgs\KeyCode.cs" />
-    <Compile Include="Functions\FunctionModulesExp\ScreenLockDeleter.cs" />
-    <Compile Include="Functions\FunctionMoudlesAdvance\ScreenClicker.cs" />
     <Compile Include="Functions\Interface\IFunctionModule.cs" />
     <Compile Include="Functions\Interface\IOutAnalysable.cs" />
     <Compile Include="Devices\DeviceLink.cs" />
@@ -70,16 +68,12 @@
     <Compile Include="Functions\FunctionModulesBasic\CustomRecoveryFlasher.cs" />
     <Compile Include="Functions\FunctionModulesBasic\FileSender.cs" />
     <Compile Include="Functions\Event\EventsHandlers.cs" />
-    <Compile Include="Functions\FunctionModulesExp\ActivityLauncher.cs" />
     <Compile Include="Functions\ExecutedResultHandler\BreventShOutputHandler.cs" />
     <Compile Include="Functions\FunctionArgs\Args.cs" />
     <Compile Include="Functions\FunctionArgs\RebootOptions.cs" />
     <Compile Include="Functions\FunctionModule.cs" />
     <Compile Include="Functions\FunctionModulesBasic\RebootOperator.cs" />
-    <Compile Include="Functions\FunctionModulesExp\XiaomiBootloaderRelocker.cs" />
-    <Compile Include="Functions\FunctionModulesExp\XiaomiSystemUnlocker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Functions\FunctionModulesExp\BreventServiceActivator.cs" />
     <Compile Include="Util\BaseObject.cs" />
     <Compile Include="Util\Exceptions.cs" />
     <Compile Include="Util\Logger.cs" />
@@ -97,5 +91,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
+  <Import Project="..\AutumnBox.EFM\AutumnBox.EFM.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -11,21 +11,20 @@ namespace AutumnBox.Basic.Devices
     /// </summary>
     public sealed class DeviceLink : BaseObject
     {
-        //Hashtable 
         public enum LinkType {
             USB = 0,
             LOCAL_NET,
         }
         public bool IsOK { get {
-                return (DeviceID == null)?true:false ;
+                return (DeviceID == null) ? true : false;
             } }
         public string DeviceID { get { return _info.Id; } set { _info.Id = value; } }
 
         public DeviceSimpleInfo Info { get { return _info; } }
-        public DeviceSimpleInfo _info = new DeviceSimpleInfo();
+        private DeviceSimpleInfo _info = new DeviceSimpleInfo();
 
         public DeviceInfo DeviceInfo { get { return _deviceInfo; } }
-        public DeviceInfo _deviceInfo = new DeviceInfo();
+        private DeviceInfo _deviceInfo = new DeviceInfo();
 
         private DeviceLink(string id, DeviceStatus status)
         {
@@ -34,6 +33,7 @@ namespace AutumnBox.Basic.Devices
         private DeviceLink() {
 
         }
+        [Obsolete("Please use GetFuncRunningManager")]
         /// <summary>
         /// 获取一个与本连接相关的功能模块托管器
         /// </summary>
@@ -47,14 +47,19 @@ namespace AutumnBox.Basic.Devices
             LogD("Init FunctionModule Finish");
             return rm;
         }
+        //public RunningManager GetCustomFuncRunningManager(ICustomFunccti) { }
         /// <summary>
         /// 获取一个与本连接相关的功能模块托管器
         /// </summary>
         /// <param name="func">功能模块</param>
         /// <returns>托管器</returns>
-        public RunningManager GetFuncRunningManager(FunctionModule func)
+        public RunningManager GetRunningManager(FunctionModule func)
         {
-            return InitRM(func);
+            LogD("Init FunctionModule " + func.GetType().Name);
+            func.DeviceID = this.DeviceID;
+            var rm = new RunningManager(func);
+            LogD("Init FunctionModule Finish");
+            return rm;
         }
         /// <summary>
         /// 根据新的设备信息重设连接
@@ -64,8 +69,7 @@ namespace AutumnBox.Basic.Devices
         {
             _info.Id = info.Id;
             _info.Status = info.Status;
-            if (info.Status != DeviceStatus.FASTBOOT)
-                _deviceInfo = DevicesHelper.GetDeviceInfo(info.Id, DevicesHelper.GetBuildInfo(info.Id), info.Status);
+            RefreshInfo();
         }
         /// <summary>
         /// 刷新设备build信息
@@ -121,16 +125,6 @@ namespace AutumnBox.Basic.Devices
         public static DeviceLink Create(DeviceSimpleInfo info)
         {
             return Create(info.Id, info.Status);
-        }
-        [Obsolete("已经过期,将会在未来版本完全移除,请使用其它重载代替")]
-        public static DeviceLink Create(DictionaryEntry e)
-        {
-            return Create(e.Key.ToString(), DevicesHelper.StringStatusToEnumStatus(e.Value.ToString()));
-        }
-        [Obsolete("已经过期,将会在未来版本完全移除,请使用其它重载代替")]
-        public static DeviceLink Create(DevicesHashtable devices, string id)
-        {
-            return Create(id, DevicesHelper.StringStatusToEnumStatus(devices[id].ToString()));
         }
     }
 }

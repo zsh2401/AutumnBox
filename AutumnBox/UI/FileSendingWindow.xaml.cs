@@ -28,14 +28,14 @@ namespace AutumnBox.UI
         public FileSendingWindow(Window Owner, RunningManager rm)
         {
             this.rm = rm;
-            rm.Finished += (s, e) =>
+            rm.FuncEvents.Finished += (s, e) =>
             {
                 this.Dispatcher.Invoke(() =>
                 {
                     this.Close();
                 });
             };
-            rm.OutputReceived += (s, e) =>
+            rm.FuncEvents.OutputReceived += (s, e) =>
             {
                 Match m;
                 try

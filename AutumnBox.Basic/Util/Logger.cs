@@ -14,7 +14,7 @@ namespace AutumnBox.Basic.Util
     /// </summary>
     internal static class Logger
     {
-        private static readonly string TAG = "Logger";
+        //private static readonly string TAG = "Logger";
         public static readonly string LOG_FILE = "basic.log";
         /// <summary>
         /// DEBUG状态下打印信息

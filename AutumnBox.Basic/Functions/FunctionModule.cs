@@ -6,6 +6,7 @@
 using AutumnBox.Basic.Devices;
 using AutumnBox.Basic.Executer;
 using AutumnBox.Basic.Functions.Event;
+using AutumnBox.Basic.Functions.Interface;
 using AutumnBox.Basic.Util;
 using System;
 using System.Threading;
@@ -17,26 +18,35 @@ namespace AutumnBox.Basic.Functions
     /// </summary>
     public abstract class FunctionModule : BaseObject, IDisposable
     {
+        //Internal
+        internal event StartEventHandler Started;//当功能模块开始执行时发生
+        internal event FinishEventHandler Finished;//完成操作时的事件
         //PROTECTED
         protected Thread MainThread { get; set; }//异步执行的主要线程
-        protected Func<string, string, OutputData> ae { get; private set; }
-        protected Func<string, string, OutputData> fe { get; private set; }
+        /// <summary>
+        /// 向已绑定的设备执行adb命令
+        /// </summary>
+        protected Func<string, OutputData> ae { get; private set; }
+        /// <summary>
+        /// 向已绑定的设备执行fastboot命令
+        /// </summary>
+        protected Func<string, OutputData> fe { get; private set; }
+        /// <summary>
+        /// 执行器
+        /// </summary>
         protected internal  CommandExecuter executer = new CommandExecuter();
-        protected internal event StartEventHandler Started;//当功能模块开始执行时发生
-        protected internal event FinishEventHandler Finished;//完成操作时的事件
-        protected internal string DeviceID { get; set; }//功能执行时的设备ID
-
-        //Set by DeviceLink Object
-        [Obsolete]
-        internal DeviceLink.LinkType LinkType { get; set; }
+        /// <summary>
+        /// 功能模块执行时指定的设备id
+        /// </summary>
+        protected internal string DeviceID { get; internal set; }//功能执行时的设备ID
         protected internal FunctionModule()
         {
-            ae = (id,command) => {
-                executer.ExecuteWithDevice(id, command, out OutputData o, ExeType.Adb);
+            ae = (command) => {
+                executer.ExecuteWithDevice(DeviceID, command, out OutputData o, ExeType.Adb);
                 return o;
             };
-            fe = (id, command) => {
-                executer.ExecuteWithDevice(id, command, out OutputData o, ExeType.Fastboot);
+            fe = (command) => {
+                executer.ExecuteWithDevice(DeviceID, command, out OutputData o, ExeType.Fastboot);
                 return o;
             };
             TAG = GetType().Name;
@@ -58,7 +68,7 @@ namespace AutumnBox.Basic.Functions
         /// <returns></returns>
         internal void Run(int delayTime = 0)
         {
-            MainThread = new Thread(() => { Thread.Sleep(delayTime); CoreRun(); });
+            MainThread = new Thread(() => { Thread.Sleep(delayTime); _Run(); });
             MainThread.Name = TAG + " MainMethod";
             MainThread.Start();
             LogD($"Run MainMethod DelayTime {delayTime} (ms)");
@@ -66,11 +76,11 @@ namespace AutumnBox.Basic.Functions
         /// <summary>
         /// 运行过程
         /// </summary>
-        private void CoreRun()
+        private void _Run()
         {
             OnStart(this, new StartEventArgs());
             var o = MainMethod();
-            OnFinish(this, new FinishEventArgs { OutErrorData = o, IsFinish = true });
+            OnFinish(this, new FinishEventArgs { OutputData = o, IsFinish = true });
         }
 
         /// <summary>

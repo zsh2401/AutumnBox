@@ -23,7 +23,24 @@ namespace AutumnBox
         private void InitEvents()
         {
             //设备列表发生改变时的事件
-            App.devicesListener.DevicesChange += DevicesChange;
+            App.devicesListener.DevicesChange += (s, devList) => {
+                /*
+             * 由于是从设备监听器线程发生的事件
+             * 并且需要操作主界面,因此要用匿名函数来进行操作
+             */
+                Log.d(TAG, "Devices change handing.....");
+                this.Dispatcher.Invoke(() =>
+                {
+                    DevicesListBox.Items.Clear();
+                    Log.d(TAG, "Clear");
+                    devList.ForEach((info) => { DevicesListBox.Items.Add(info); });
+                    DevicesListBox.DisplayMemberPath = "Id";
+                    if (devList.Count == 1)
+                    {
+                        DevicesListBox.SelectedIndex = 0;
+                    }
+                });
+            };
         }
 
         #region 界面的事件
@@ -103,8 +120,8 @@ namespace AutumnBox
         /// <param name="e"></param>
         private void ActivatedBrvent(object sender, FinishEventArgs e)
         {
-            Log.d(TAG, e.OutErrorData.Error.ToString());
-            Log.d(TAG, e.OutErrorData.Out.ToString());
+            Log.d(TAG, e.OutputData.Error.ToString());
+            Log.d(TAG, e.OutputData.Out.ToString());
             this.Dispatcher.Invoke(new Action(() =>
             {
                 HideRateBox();
@@ -149,22 +166,7 @@ namespace AutumnBox
         /// <param name="devicesHashtable">当前设备列表</param>
         private void DevicesChange(Object sender, DevicesList devices)
         {
-            /*
-             * 由于是从设备监听器线程发生的事件
-             * 并且需要操作主界面,因此要用匿名函数来进行操作
-             */
-            Log.d(TAG, "Devices change handing.....");
-            this.Dispatcher.Invoke(() =>
-            {
-                DevicesListBox.Items.Clear();
-                Log.d(TAG, "Clear");
-                devices.ForEach((info) => { DevicesListBox.Items.Add(info); });
-                DevicesListBox.DisplayMemberPath = "Id";
-                if (devices.Count == 1)
-                {
-                    DevicesListBox.SelectedIndex = 0;
-                }
-            });
+            
         }
 
         /// <summary>
