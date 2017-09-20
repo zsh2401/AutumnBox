@@ -47,7 +47,6 @@ namespace AutumnBox.Basic.Devices
             LogD("Init FunctionModule Finish");
             return rm;
         }
-        //public RunningManager GetCustomFuncRunningManager(ICustomFunccti) { }
         /// <summary>
         /// 获取一个与本连接相关的功能模块托管器
         /// </summary>
@@ -69,12 +68,12 @@ namespace AutumnBox.Basic.Devices
         {
             _info.Id = info.Id;
             _info.Status = info.Status;
-            RefreshInfo();
+            RefreshDeviceInfo();
         }
         /// <summary>
         /// 刷新设备build信息
         /// </summary>
-        public void RefreshInfo()
+        public void RefreshDeviceInfo()
         {
             if (Info.Status != DeviceStatus.FASTBOOT)
                 _deviceInfo = DevicesHelper.GetDeviceInfo(Info.Id, DevicesHelper.GetBuildInfo(Info.Id), Info.Status);

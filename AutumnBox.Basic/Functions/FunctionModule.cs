@@ -39,6 +39,9 @@ namespace AutumnBox.Basic.Functions
         /// 功能模块执行时指定的设备id
         /// </summary>
         protected internal string DeviceID { get; internal set; }//功能执行时的设备ID
+        /// <summary>
+        /// 构造!
+        /// </summary>
         protected internal FunctionModule()
         {
             ae = (command) => {

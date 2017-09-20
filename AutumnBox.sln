@@ -13,9 +13,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutumnBox.Res", "AutumnBox.
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "AutumnBox.EFM", "AutumnBox.EFM\AutumnBox.EFM.shproj", "{8FF02854-B55D-4589-A1C7-B2DA2FFC4358}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "AutumnBox.SharedTools", "AutumnBox.SharedTools\AutumnBox.SharedTools.shproj", "{4A7C7D40-E258-4E50-B141-F4E437982E23}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		AutumnBox.SharedTools\AutumnBox.SharedTools.projitems*{4a7c7d40-e258-4e50-b141-f4e437982e23}*SharedItemsImports = 13
 		AutumnBox.EFM\AutumnBox.EFM.projitems*{84044fb2-bd38-4283-8065-b639270ece0f}*SharedItemsImports = 4
+		AutumnBox.SharedTools\AutumnBox.SharedTools.projitems*{84044fb2-bd38-4283-8065-b639270ece0f}*SharedItemsImports = 4
 		AutumnBox.EFM\AutumnBox.EFM.projitems*{8ff02854-b55d-4589-a1c7-b2da2ffc4358}*SharedItemsImports = 13
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

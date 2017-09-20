@@ -69,6 +69,13 @@
     {
         private FunctionModule Fm { get; set; }
         private RunningManager Rm { get; set; }
+        private void AddCheck()
+        {
+            if (Rm.Status != RunningManagerStatus.Loaded)
+            {
+                throw new EventAddException("Please add eventhandler on Function not started");
+            }
+        }
         public event DataReceivedEventHandler OutputReceived
         {
             add
@@ -112,13 +119,6 @@
         {
             add { AddCheck(); Fm.executer.ProcessStared += value; }
             remove { Fm.executer.ProcessStared -= value; }
-        }
-        public void AddCheck()
-        {
-            if (Rm.Status != RunningManagerStatus.Loaded)
-            {
-                throw new EventAddException("Please add eventhandler on Function not started");
-            }
         }
         public static FuncEventsContainer Get(RunningManager rm)
         {

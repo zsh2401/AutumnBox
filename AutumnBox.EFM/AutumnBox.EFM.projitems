@@ -16,4 +16,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)XiaomiBootloaderRelocker.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)XiaomiSystemUnlocker.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)README.txt" />
+  </ItemGroup>
 </Project>
