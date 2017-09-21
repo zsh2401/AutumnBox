@@ -1,11 +1,10 @@
-﻿using AutumnBox.Basic.Functions;
-using AutumnBox.Basic.Util;
-using System;
-using System.Collections;
-using System.Threading;
-
-namespace AutumnBox.Basic.Devices
+﻿namespace AutumnBox.Basic.Devices
 {
+    using AutumnBox.Basic.Functions;
+    using AutumnBox.Basic.Util;
+    using System;
+    using System.Collections;
+    using System.Threading;
     /// <summary>
     /// 设备连接对象
     /// </summary>
@@ -30,10 +29,8 @@ namespace AutumnBox.Basic.Devices
         {
             Reset(new DeviceSimpleInfo { Id = id, Status = status });
         }
-        private DeviceLink() {
-
-        }
-        [Obsolete("Please use GetFuncRunningManager")]
+        private DeviceLink() { }
+        [Obsolete("You can try use : RunningManager.Create(AnyLink.Info);")]
         /// <summary>
         /// 获取一个与本连接相关的功能模块托管器
         /// </summary>
@@ -47,6 +44,7 @@ namespace AutumnBox.Basic.Devices
             LogD("Init FunctionModule Finish");
             return rm;
         }
+        [Obsolete("You can try use : RunningManager.Create(AnyLink.Info);")]
         /// <summary>
         /// 获取一个与本连接相关的功能模块托管器
         /// </summary>
@@ -56,6 +54,7 @@ namespace AutumnBox.Basic.Devices
         {
             LogD("Init FunctionModule " + func.GetType().Name);
             func.DeviceID = this.DeviceID;
+            func.DevSimpleInfo = this.Info;
             var rm = new RunningManager(func);
             LogD("Init FunctionModule Finish");
             return rm;
@@ -79,6 +78,10 @@ namespace AutumnBox.Basic.Devices
                 _deviceInfo = DevicesHelper.GetDeviceInfo(Info.Id, DevicesHelper.GetBuildInfo(Info.Id), Info.Status);
         }
 
+        /// <summary>
+        /// 创建一个空的设备连接
+        /// </summary>
+        /// <returns></returns>
         public static DeviceLink CreateNone() {
             return new DeviceLink();
         }
@@ -99,22 +102,8 @@ namespace AutumnBox.Basic.Devices
         /// <returns></returns>
         public static DeviceLink Create(string id)
         {
-            //string _id = id ?? DevicesHelper.GetDevices().GetFristDevice();
-            //DeviceStatus _status = status != null ?
-            //    DevicesHelper.StringStatusToEnumStatus(status) :
-            //    DevicesHelper.GetDeviceStatus(_id);
             DeviceStatus status = DevicesHelper.GetDeviceStatus(id);
-            return Create(id, status);
-        }
-        /// <summary>
-        /// 使用指定设备及其状态创建实例,这将会节约一些时间
-        /// </summary>
-        /// <param name="id"></param>
-        /// <param name="status"></param>
-        /// <returns></returns>
-        public static DeviceLink Create(string id, DeviceStatus status)
-        {
-            return new DeviceLink(id, status);
+            return Create(new DeviceSimpleInfo { Id =  id,  Status = status });
         }
         /// <summary>
         /// 通过设备简单信息创建连接,能节约时间
@@ -123,7 +112,7 @@ namespace AutumnBox.Basic.Devices
         /// <returns></returns>
         public static DeviceLink Create(DeviceSimpleInfo info)
         {
-            return Create(info.Id, info.Status);
+            return new DeviceLink(info.Id,info.Status);
         }
     }
 }

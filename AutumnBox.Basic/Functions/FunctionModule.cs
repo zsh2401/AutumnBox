@@ -1,28 +1,28 @@
-﻿/*
- 功能模块父类
- @zsh2401
- 2017/9/8
- */
-using AutumnBox.Basic.Devices;
-using AutumnBox.Basic.Executer;
-using AutumnBox.Basic.Functions.Event;
-using AutumnBox.Basic.Functions.Interface;
-using AutumnBox.Basic.Util;
-using System;
-using System.Threading;
-
-namespace AutumnBox.Basic.Functions
+﻿namespace AutumnBox.Basic.Functions
 {
+    using AutumnBox.Basic.Devices;
+    using AutumnBox.Basic.Executer;
+    using AutumnBox.Basic.Functions.Event;
+    using AutumnBox.Basic.Util;
+    using System;
+    using System.Threading;
     /// <summary>
     /// 各种功能模块的父类
     /// </summary>
     public abstract class FunctionModule : BaseObject, IDisposable
     {
-        //Internal
-        internal event StartEventHandler Started;//当功能模块开始执行时发生
-        internal event FinishEventHandler Finished;//完成操作时的事件
-        //PROTECTED
-        protected Thread MainThread { get; set; }//异步执行的主要线程
+        /// <summary>
+        /// 当功能模块开始执行时发生
+        /// </summary>
+        internal event StartEventHandler Started;
+        /// <summary>
+        /// 完成操作时的事件
+        /// </summary>
+        internal event FinishEventHandler Finished;
+        /// <summary>
+        /// 异步执行的主要线程
+        /// </summary>
+        protected Thread MainThread { get; set; }
         /// <summary>
         /// 向已绑定的设备执行adb命令
         /// </summary>
@@ -34,26 +34,17 @@ namespace AutumnBox.Basic.Functions
         /// <summary>
         /// 执行器
         /// </summary>
-        protected internal  CommandExecuter executer = new CommandExecuter();
+        protected internal  CommandExecuter Executer = new CommandExecuter();
         /// <summary>
         /// 功能模块执行时指定的设备id
         /// </summary>
-        protected internal string DeviceID { get; internal set; }//功能执行时的设备ID
-        /// <summary>
-        /// 构造!
-        /// </summary>
-        protected internal FunctionModule()
-        {
-            ae = (command) => {
-                executer.ExecuteWithDevice(DeviceID, command, out OutputData o, ExeType.Adb);
-                return o;
-            };
-            fe = (command) => {
-                executer.ExecuteWithDevice(DeviceID, command, out OutputData o, ExeType.Fastboot);
-                return o;
-            };
-            TAG = GetType().Name;
-        }
+        protected internal string DeviceID {
+            get { return _deviceID; }
+            internal set { if (_deviceID == null) _deviceID = value;
+                else throw new Exception("You can change device ID again");
+            } }
+        private string _deviceID;
+        protected internal DeviceSimpleInfo DevSimpleInfo { get;internal set; }
         /// <summary>
         /// 判断完成事件是否被绑定
         /// </summary>
@@ -64,8 +55,24 @@ namespace AutumnBox.Basic.Functions
                 return Finished != null ? true : false;
             }
         }
+
         /// <summary>
-        /// 开始执行函数
+        /// 构造!此类无法单独构造,必须被继承
+        /// </summary>
+        protected FunctionModule()
+        {
+            ae = (command) => {
+                Executer.ExecuteWithDevice(DeviceID, command, out OutputData o, ExeType.Adb);
+                return o;
+            };
+            fe = (command) => {
+                Executer.ExecuteWithDevice(DeviceID, command, out OutputData o, ExeType.Fastboot);
+                return o;
+            };
+            TAG = GetType().Name;
+        }
+        /// <summary>
+        /// 开始执行函数,有功能模块托管器进行托管
         /// </summary>
         /// <param name="delayTime">延迟执行的时间,如果不写则立刻开始</param>
         /// <returns></returns>
@@ -106,15 +113,16 @@ namespace AutumnBox.Basic.Functions
             Logger.D(TAG, "Finish");
             Finished?.Invoke(sender, a);
         }
-
         /// <summary>
         /// 模块的核心代码,强制要求子类进行实现
         /// </summary>
         protected abstract OutputData MainMethod();
-
+        /// <summary>
+        /// 释放资源
+        /// </summary>
         public void Dispose()
         {
-            executer.Dispose();
+            Executer.Dispose();
         }
     }
 }

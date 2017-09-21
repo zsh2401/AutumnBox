@@ -9,7 +9,7 @@ namespace AutumnBox.Basic.Executer
 {
     public interface IAdbCommandExecuter
     {
-        event ExecuteStartHandler ExecuteStarted;
+        event ProcessStartEventHandler ProcessStarted;
         event DataReceivedEventHandler OutputDataReceived;
         event DataReceivedEventHandler ErrorDataReceived;
         void ExecuteWithDevice(string id, string command, out OutputData o, ExeType type);

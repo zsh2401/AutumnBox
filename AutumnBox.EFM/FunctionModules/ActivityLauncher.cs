@@ -15,7 +15,7 @@
         {
             Logger.D(TAG,$"Try Launch {DeviceID} Activity : {Args.ActivityName}");
             string command = $"shell am start -n {Args.PackageName}/{Args.PackageName + Args.ActivityName}";
-            executer.ExecuteWithDevice(this.DeviceID,command,out OutputData o);
+            var o = ae(command);
             return o;
         }
     }

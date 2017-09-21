@@ -55,11 +55,9 @@
     <Compile Include="Devices\DevicesList.cs" />
     <Compile Include="Functions\Event\EventArgs.cs" />
     <Compile Include="Functions\ExecutedResultHandler\ExecuteResult.cs" />
-    <Compile Include="Functions\FunctionArgs\KeyCode.cs" />
     <Compile Include="Functions\Interface\IFunctionModule.cs" />
     <Compile Include="Functions\Interface\IOutAnalysable.cs" />
     <Compile Include="Devices\DeviceLink.cs" />
-    <Compile Include="Devices\DevicesHashtable.cs" />
     <Compile Include="Devices\DeviceInfoStruct.cs" />
     <Compile Include="Devices\DevicesMonitor.cs" />
     <Compile Include="Devices\DeviceStatusEnum.cs" />
@@ -68,7 +66,6 @@
     <Compile Include="Functions\FunctionModulesBasic\CustomRecoveryFlasher.cs" />
     <Compile Include="Functions\FunctionModulesBasic\FileSender.cs" />
     <Compile Include="Functions\Event\EventsHandlers.cs" />
-    <Compile Include="Functions\ExecutedResultHandler\BreventShOutputHandler.cs" />
     <Compile Include="Functions\FunctionArgs\Args.cs" />
     <Compile Include="Functions\FunctionArgs\RebootOptions.cs" />
     <Compile Include="Functions\FunctionModule.cs" />

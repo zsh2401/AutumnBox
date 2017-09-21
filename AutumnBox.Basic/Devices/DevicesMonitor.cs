@@ -58,7 +58,6 @@
         {
             CommandExecuter executer = new CommandExecuter();
             DevicesList last = new DevicesList();
-            last.ForEach((info)=> { LogD(info.Id); });
             while (Continue)
             {
                 if (Process.GetProcessesByName("adb").Length == 0) CommandExecuter.Start();
@@ -66,7 +65,6 @@
                 if (now != last)
                 {
                     LogD("Devices Change");
-                    //last.Clear();
                     last = now;
                     DevicesChange.Invoke(this, last);
                 }

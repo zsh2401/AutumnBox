@@ -20,6 +20,7 @@
 *.swp
 *.user
 *.xml
+*.lastcodeanalysissucceeded
 bin/AutumnBox.application
 bin/AutumnBox.exe.manifest
 bin/Tester.exe

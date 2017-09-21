@@ -13,7 +13,7 @@
             <Menu Background="#00F0F0F0" Margin="348,4,445,0" RenderTransformOrigin="0.499,0.479">
                 <MenuItem Height="29" Width="169" Foreground="#FFFBFAFA" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" >
                     <MenuItem.Icon>
-                        <Image Source="/AutumnBox.Res;component/Images/Icons/about_white.png" Margin="0,-4,-8,-3"/>
+                        <Image Source="/AutumnBox.Res;component/Images/Icons/about_white.png" Margin="0,-4,-8,-3" SnapsToDevicePixels="True"/>
                     </MenuItem.Icon>
                     <MenuItem.Header>
                         <TextBlock Width="59" TextAlignment="Center" Text="{DynamicResource About}" Foreground="#FFFBFAFA" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0,0,-20,0" />
@@ -51,11 +51,11 @@
             <Image HorizontalAlignment="Left" Height="27" Margin="10,4,0,1" VerticalAlignment="Top" Width="27" Source="/AutumnBox.Res;component/Images/Icons/title_icon.png" Stretch="Fill" RenderTransformOrigin="0.579,-1.368"/>
         </Grid>
         <TabControl HorizontalAlignment="Left" Height="634" Margin="0,36,0,0" VerticalAlignment="Top" Width="1053" TabStripPlacement="Left" BorderBrush="{DynamicResource BackBrush}" Background="{x:Null}">
-            <TabItem Header="{DynamicResource Normal}" Background="{DynamicResource BasicBrush}" Margin="-2,-2,0,0" BorderBrush="{DynamicResource BasicBrush}" MinHeight="160" FontFamily="Microsoft YaHei UI Light">
+            <TabItem Header="{DynamicResource Normal}" Background="{DynamicResource BasicBrush}" Margin="-2,-3,0,0" BorderBrush="{DynamicResource BasicBrush}" MinHeight="160" FontFamily="Microsoft YaHei UI Light">
                 <Grid Background="#00E5E5E5" Margin="0,0,-3,7">
                     <Grid HorizontalAlignment="Left" Height="204" Margin="10,10,0,0" VerticalAlignment="Top" Width="753" Background="#B2FFFFFF">
                         <ListBox x:Name="DevicesListBox" HorizontalAlignment="Left" Height="154" Margin="531,10,0,0" VerticalAlignment="Top" Width="222" SelectionChanged="DevicesListBox_SelectionChanged" Background="#00000000" Foreground="{DynamicResource BasicBrush}" BorderBrush="#FFABADB3"/>
-                        <Image x:Name="DeviceStatusImage" HorizontalAlignment="Left" Height="100" Margin="39,0,0,0" VerticalAlignment="Top" Width="100" Source="/AutumnBox;component/Images/DynamicIcons/no_selected.png"/>
+                        <Image x:Name="DeviceStatusImage" HorizontalAlignment="Left" Height="100" Margin="39,0,0,0" VerticalAlignment="Top" Width="100" Source="/AutumnBox.Res;component/Images/DynamicIcons/no_selected.png"/>
                         <Label x:Name="DeviceStatusLabel" Content="{DynamicResource PleaseSelectedADevice}" HorizontalAlignment="Left" Margin="0,100,0,0" VerticalAlignment="Top" Height="55" Width="181" Foreground="Black" FontSize="14" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Microsoft YaHei UI Light"/>
                         <Grid HorizontalAlignment="Left" Height="174" Margin="166,16,0,0" VerticalAlignment="Top" Width="365">
                             <Label Content="{DynamicResource ResourceKey=AndroidVersion}" HorizontalAlignment="Left" Margin="10,8,0,0" VerticalAlignment="Top" Height="42" Width="81" Foreground="Black" FontFamily="Microsoft YaHei UI Light" FontSize="16" Background="{x:Null}"/>

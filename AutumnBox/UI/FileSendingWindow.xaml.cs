@@ -1,22 +1,21 @@
-﻿using AutumnBox.Basic.Functions;
-using AutumnBox.Debug;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-
-namespace AutumnBox.UI
+﻿namespace AutumnBox.UI
 {
+    using AutumnBox.Basic.Functions;
+    using AutumnBox.Debug;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Text.RegularExpressions;
+    using System.Threading.Tasks;
+    using System.Windows;
+    using System.Windows.Controls;
+    using System.Windows.Data;
+    using System.Windows.Documents;
+    using System.Windows.Input;
+    using System.Windows.Media;
+    using System.Windows.Media.Imaging;
+    using System.Windows.Shapes;
     /// <summary>
     /// FileSendingWindow.xaml 的交互逻辑
     /// </summary>
@@ -27,6 +26,7 @@ namespace AutumnBox.UI
         Regex rg3 = new Regex("\\[(.*?)\\%");
         public FileSendingWindow(Window Owner, RunningManager rm)
         {
+            this.Owner = Owner;
             this.rm = rm;
             rm.FuncEvents.Finished += (s, e) =>
             {
@@ -40,7 +40,7 @@ namespace AutumnBox.UI
                 Match m;
                 try
                 {
-                    Log.d("SendingWindow", e.Data);
+                    //Log.d("SendingWindow", e.Data);
                     m = rg12.Match(e.Data);
                     if (!m.Success)
                     {

@@ -10,19 +10,27 @@ namespace AutumnBox.Basic.Executer
 {
     public enum ExeType
     {
+        Null = -1,
         Adb,
         Fastboot
     }
     public sealed partial class CommandExecuter : BaseObject, IDisposable, IDevicesGetter,IAdbCommandExecuter
     {
-        //事件
-        public event ProcessStartEventHandler ProcessStared;
-        public event ExecuteStartHandler ExecuteStarted;
+        /// <summary>
+        /// 执行器主进程开始时发生,可通过该事件获取进程PID
+        /// </summary>
+        public event ProcessStartEventHandler ProcessStarted;
+        /// <summary>
+        /// 接收到重定向输出时发生
+        /// </summary>
         public event DataReceivedEventHandler OutputDataReceived
         {
             add { MainProcess.OutputDataReceived += value; }
             remove { MainProcess.OutputDataReceived -= value; }
         }
+        /// <summary>
+        /// 接收到重定向错误时发生
+        /// </summary>
         public event DataReceivedEventHandler ErrorDataReceived
         {
             add { MainProcess.ErrorDataReceived += value; }
@@ -33,7 +41,9 @@ namespace AutumnBox.Basic.Executer
         /// </summary>
         private ExeType NowExeType
         {
-            get { return exeType; }
+            get {
+                return exeType;
+            }
             set
             {
                 MainProcess.StartInfo.FileName = (value == ExeType.Adb) ? ADB_PATH : FB_PATH;
@@ -41,7 +51,9 @@ namespace AutumnBox.Basic.Executer
             }
         }
         private ExeType exeType;
-
+        /// <summary>
+        /// 执行命令时输出的缓存
+        /// </summary>
         private OutputData tempOut;
         /// <summary>
         /// 执行器的底层进程
@@ -64,16 +76,14 @@ namespace AutumnBox.Basic.Executer
 #if SHOW_OUTPUT
                 LogD("Out: " + e.Data);
 #endif
-                tempOut.LineOut.Add(e.Data);
-                tempOut.Out.AppendLine(e.Data);
+                tempOut.OutAdd(e.Data);
             };
             MainProcess.ErrorDataReceived += (s, e) =>
             {
 #if SHOW_OUTPUT
                 LogD("Error: " + e.Data);
 #endif
-                tempOut.LineError.Add(e.Data);
-                tempOut.Error.AppendLine(e.Data);
+                tempOut.ErrorAdd(e.Data);
             };
         }
         /// <summary>
@@ -122,6 +132,7 @@ namespace AutumnBox.Basic.Executer
             GetDevices(out DevicesList devList);
             return devList;
         }
+
         /// <summary>
         /// 启动adb服务
         /// </summary>
@@ -152,27 +163,5 @@ namespace AutumnBox.Basic.Executer
             MainProcess.Dispose();
             //Tools.KillProcessAndChildrens(MainProcess.Id);
         }
-        #region Execute Command
-
-        //public OutputData Execute(string command)
-        //{
-        //    return CExecute(command, ExeType.Adb);
-        //}
-        //public OutputData Execute(string id, string command)
-        //{
-        //    OutputData o;
-        //    Execute(new CommandData { DeviceID = id, Command = command, ExeType = ExeType.Adb }, out o);
-        //    return o;
-        //}
-        //public OutputData FBExecute(string command)
-        //{
-        //    return CExecute(command, ExeType.Fastboot);
-        //}
-        //public OutputData FBExecute(string id, string command)
-        //{
-        //    return CExecute($"-s {id} {command}", ExeType.Fastboot);
-        //}
-        #endregion
-
     }
 }

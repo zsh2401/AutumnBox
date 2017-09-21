@@ -16,8 +16,8 @@ namespace AutumnBox.Basic.Functions
         protected override OutputData MainMethod()
         {
             Logger.D(TAG, "Start MainMethod");
-            executer.ExecuteWithDevice(DeviceID, $"flash recovery  \"{args.files[0]}\"", out OutputData output);
-            executer.ExecuteWithDevice(DeviceID, $"boot \"{args.files[0]}\"");
+            OutputData output = ae($"flash recovery  \"{args.files[0]}\"");
+            ae($"boot \"{args.files[0]}\"");
             return output;
         }
     }

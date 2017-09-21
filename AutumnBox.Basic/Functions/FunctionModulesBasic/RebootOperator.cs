@@ -52,10 +52,10 @@ namespace AutumnBox.Basic.Functions
             OutputData o;
             switch (t) {
                 case Executer.Adb:
-                    o = ae(DeviceID, command);
+                    o = ae(command);
                     break;
                 default:
-                    o = fe(DeviceID, command);
+                    o = fe(command);
                     break;
             }
             return o;

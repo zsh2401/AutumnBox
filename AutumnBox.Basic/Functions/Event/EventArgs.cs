@@ -18,17 +18,8 @@ namespace AutumnBox.Basic.Functions.Event
         public bool IsFinish { get; internal set; }
     }
     /// <summary>
-    /// 运行时管理器完成时的事件参数
-    /// </summary>
-    public class RMFinishEventArgs : EventArgs
-    {
-        ExecuteResult ExecuteResult;
-    }
-    /// <summary>
     /// 功能模块开始执行时的事件参数
     /// </summary>
     public class StartEventArgs : EventArgs
-    {
-        public IArgs Args { get; set; }
-    }
+    {}
 }

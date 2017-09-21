@@ -14,7 +14,7 @@ namespace AutumnBox
         internal static DevicesMonitor devicesListener = new DevicesMonitor();//设备监听器
         protected override void OnStartup(StartupEventArgs e)
         {
-            new Thread(AutoGC).Start();
+            new Thread(AutoGC) { Name = "Auto GC..."}.Start();
             base.OnStartup(e);
         }
         /// <summary>

@@ -15,7 +15,7 @@ namespace AutumnBox.Basic.Functions
         private const string DEFAULT_COMMAND = "shell \"sh /data/data/me.piebridge.brevent/brevent.sh\"";
         protected override OutputData MainMethod()
         {
-             executer.ExecuteWithDevice(DeviceID, DEFAULT_COMMAND,out OutputData o);
+             var o = ae(DEFAULT_COMMAND);
             return o;
         }
     }

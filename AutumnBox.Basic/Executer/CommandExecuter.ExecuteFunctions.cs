@@ -23,14 +23,13 @@ namespace AutumnBox.Basic.Executer
 #endif
             MainProcess.StartInfo.Arguments = " " + command;
             MainProcess.Start();
-            ProcessStared?.Invoke(this,new ProcessStartEventArgs() { PID = MainProcess.Id});
+            ProcessStarted?.Invoke(this,new ProcessStartEventArgs() { PID = MainProcess.Id});
             try
             {
                 MainProcess.BeginOutputReadLine();
                 MainProcess.BeginErrorReadLine();
             }
             catch (Exception e) { LogE("Begin Out failed", e); }
-            ExecuteStarted?.Invoke(this, new ExecuteStartEventArgs() { PID = MainProcess.Id });
             try
             {
                 MainProcess.WaitForExit();

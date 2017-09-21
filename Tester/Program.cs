@@ -1,9 +1,18 @@
 ﻿using AutumnBox.Basic.Devices;
 using AutumnBox.Basic.Functions;
 using System;
+using AutumnBox.Basic.Executer;
 
 namespace Tester
 {
+    class Fuck : FunctionModule
+    {
+        //Base64FormattingOptions.
+        protected override OutputData MainMethod()
+        {
+            return ae("get the fucker!");
+        }
+    }
     /// <summary>
     /// 测试
     /// </summary>
@@ -31,13 +40,14 @@ namespace Tester
             //monitor.Start();
             //DevicesHelper.GetDevices().ForEach((a)=> { Print("?asdad" + a.Id); });
             DeviceLink link = DeviceLink.Create();
-            var rm = link.GetRunningManager(new TestingFunction());
+            var rm = link.GetRunningManager(new Fuck());
             rm.FuncEvents.Finished+= (s, e) =>
             {
                 Print(e.OutputData.Out.ToString());
                 Print(e.OutputData.Error.ToString());
             };
             rm.FuncStart();
+            
             //rm.FuncFinished += (s, e) => {
             //    Print(e.OutErrorData.Out.ToString());
             //    Print(e.OutErrorData.Error.ToString());
@@ -65,7 +75,6 @@ namespace Tester
             //dl.DevicesChange += (obj, list) => { Print("Devices Change"); list.ForEach((info) => { Print(info.Id); }); };
             //dl.Start();
             //DevicesHelper.GetBuildInfo(mi6ID);
-            Console.ReadKey();
             //var o = DevicesHelper.GetDevices();
             //o.ForEach((a)=> { Console.WriteLine(a); });
             //List<string> ls = new List<string>();
@@ -121,7 +130,6 @@ namespace Tester
             //    link = DeviceLink.Create(e);
             //    break;
             //}
-            Console.ReadKey();
             //link
 
 

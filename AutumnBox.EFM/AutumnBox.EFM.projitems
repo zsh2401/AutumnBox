@@ -9,14 +9,20 @@
     <Import_RootNamespace>AutumnBox.Basic.Functions</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)ActivityLauncher.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)BreventServiceActivator.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ScreenLockDeleter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)TestingFunction.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)XiaomiBootloaderRelocker.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)XiaomiSystemUnlocker.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ExecutedResultHandler\BreventShOutputHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FunctionArgs\KeyCode.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FunctionModules\ActivityLauncher.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FunctionModules\BreventServiceActivator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FunctionModules\ScreenLockDeleter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FunctionModules\XiaomiBootloaderRelocker.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FunctionModules\XiaomiSystemUnlocker.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="$(MSBuildThisFileDirectory)README.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Events\" />
+    <Folder Include="$(MSBuildThisFileDirectory)FunctionModules\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Interface\" />
   </ItemGroup>
 </Project>

@@ -1,8 +1,8 @@
 ﻿namespace AutumnBox.Basic.Functions
 {
+    using AutumnBox.Basic.Devices;
     using AutumnBox.Basic.Executer;
     using AutumnBox.Basic.Functions.Event;
-    using AutumnBox.Basic.Functions.Interface;
     using AutumnBox.Basic.Util;
     using System;
     using System.Diagnostics;
@@ -11,25 +11,35 @@
     /// </summary>
     public sealed class RunningManager
     {
-        public FuncEventsContainer FuncEvents { get; private set; }//各种功能模块的事件都放在里面方便添加处理函数
-        public RunningManagerStatus Status { get; private set; }//当前托管器的状态
-        public FunctionModule Fm { get; private set; }//被托管的功能模块
-        private int _pid;//在功能模块中的命令执行器开始时,pid将会被赋值,以用于终止执行
+        /// <summary>
+        /// 被托管的功能模块的各种事件
+        /// </summary>
+        public FuncEventsContainer FuncEvents { get; private set; }
+        /// <summary>
+        /// 当前托管器的状态
+        /// </summary>
+        public RunningManagerStatus Status { get; private set; }
+        /// <summary>
+        /// 被托管的功能模块
+        /// </summary>
+        public FunctionModule Fm { get; private set; }
+        /// <summary>
+        /// 在功能模块中的命令执行器开始时,pid将会被赋值,以用于终止执行
+        /// </summary>
+        private int _pid;
         /// <summary>
         /// 构造!
         /// </summary>
         /// <param name="fm"></param>
         internal RunningManager(FunctionModule fm)
         {
+            Status = RunningManagerStatus.Loading;
             this.Fm = fm;
             this.FuncEvents = FuncEventsContainer.Get(this);
             //绑定好事件,在进程开始时获取PID用于结束进程
-            Fm.executer.ProcessStared += (s_, e_) => { _pid = e_.PID; };
+            FuncEvents.ProcessStarted += (s_, e_) => { _pid = e_.PID; };
             Status = RunningManagerStatus.Loaded;
         }
-        //internal RunningManager(IExtendsFunctionMoudle fm) {
-
-        //}
         /// <summary>
         /// 开始执行托管的功能模块
         /// </summary>
@@ -41,7 +51,6 @@
             Logger.D("FuntionIsFinish?", Fm.IsFinishEventBound.ToString());
             Status = RunningManagerStatus.Running;
             Fm.Run();
-
         }
         /// <summary>
         /// 强制停止执行管理的正在运行的功能
@@ -51,12 +60,25 @@
             Tools.KillProcessAndChildrens(_pid);
             Status = RunningManagerStatus.Cancel;
         }
+        /// <summary>
+        /// 无需设备连接实例即可创建功能模块托管器
+        /// </summary>
+        /// <param name="info"></param>
+        /// <param name="fm"></param>
+        /// <returns></returns>
+        public static RunningManager Create(DeviceSimpleInfo info, FunctionModule fm) {
+            if(fm.IsFinishEventBound)throw new EventNotBoundException();
+            fm.DeviceID = info.Id;
+            fm.DevSimpleInfo = info;
+            return new RunningManager(fm);
+        }
     }
     /// <summary>
     /// Nothing....
     /// </summary>
     public enum RunningManagerStatus
     {
+        Loading = -1,
         Loaded = 0,
         Running,
         Finished,
@@ -71,21 +93,21 @@
         private RunningManager Rm { get; set; }
         private void AddCheck()
         {
-            if (Rm.Status != RunningManagerStatus.Loaded)
-            {
-                throw new EventAddException("Please add eventhandler on Function not started");
-            }
+            //if (Rm.Status != RunningManagerStatus.Loaded && Rm.Status != RunningManagerStatus.Loading)
+            //{
+            //    throw new EventAddException("Please add eventhandler on Function not started");
+            //}
         }
         public event DataReceivedEventHandler OutputReceived
         {
             add
             {
                 AddCheck();
-                Fm.executer.OutputDataReceived += value;
+                Fm.Executer.OutputDataReceived += value;
             }
             remove
             {
-                Fm.executer.OutputDataReceived -= value;
+                Fm.Executer.OutputDataReceived -= value;
             }
         }
         public event DataReceivedEventHandler ErrorReceived
@@ -93,11 +115,11 @@
             add
             {
                 AddCheck();
-                Fm.executer.ErrorDataReceived += value;
+                Fm.Executer.ErrorDataReceived += value;
             }
             remove
             {
-                Fm.executer.ErrorDataReceived -= value;
+                Fm.Executer.ErrorDataReceived -= value;
             }
         }
         public event StartEventHandler Started
@@ -110,15 +132,10 @@
             add { AddCheck(); Fm.Finished += value; }
             remove { Fm.Finished -= value; }
         }
-        public event ExecuteStartHandler ExecuterStared
-        {
-            add { AddCheck(); Fm.executer.ExecuteStarted += value; }
-            remove { Fm.executer.ExecuteStarted -= value; }
-        }
         public event ProcessStartEventHandler ProcessStarted
         {
-            add { AddCheck(); Fm.executer.ProcessStared += value; }
-            remove { Fm.executer.ProcessStared -= value; }
+            add { AddCheck(); Fm.Executer.ProcessStarted += value; }
+            remove { Fm.Executer.ProcessStarted -= value; }
         }
         public static FuncEventsContainer Get(RunningManager rm)
         {

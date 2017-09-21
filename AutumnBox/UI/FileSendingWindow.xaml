@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AutumnBox.UI"
         mc:Ignorable="d"
-        Title="FileSendingWindow" Height="165" Width="331.5" WindowStyle="None" ResizeMode="NoResize" MouseDown="Window_MouseDown" Background="{DynamicResource BasicBrush}">
+        Title="FileSendingWindow" Height="165" Width="331.5" WindowStyle="None" ResizeMode="NoResize" MouseDown="Window_MouseDown" Background="{DynamicResource BasicBrush}" WindowStartupLocation="CenterOwner">
     <Grid Margin="3,3,3,3" Background="White">
         <ProgressBar x:Name="ProgressBarMain" Margin="10,0,4,39" BorderBrush="{x:Null}" Height="10" VerticalAlignment="Bottom"/>
         <Label Content="{DynamicResource Doing}" Margin="10,0,4,69" VerticalAlignment="Bottom" Height="33" Background="{x:Null}" Foreground="Black" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="19" FontFamily="Microsoft YaHei UI Light"/>
