@@ -23,6 +23,7 @@ namespace AutumnBox
             Log.InitLogFile();
             Log.d(TAG, "Log Init Finish,Start Init Window");
             InitializeComponent();
+            //buttonChangeTheme.click
             CustomInit();
         }
 

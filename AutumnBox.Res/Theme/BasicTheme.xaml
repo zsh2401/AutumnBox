@@ -5,4 +5,5 @@
     <SolidColorBrush x:Key="ForgBrush" Color="#FFFFFFFF"/>
     <SolidColorBrush x:Key="BackBrush" Color="#FFFFFFFF"/>
     <SolidColorBrush x:Key="BasicBrush" Color="#FF009AD6"/>
+
 </ResourceDictionary>

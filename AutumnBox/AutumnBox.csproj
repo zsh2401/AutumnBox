@@ -39,6 +39,7 @@
     <DefineConstants>TRACE;DEBUG</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -48,6 +49,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>title_icon.ico</ApplicationIcon>
@@ -117,6 +119,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Debug\Log.cs" />
+    <Compile Include="Helper\UIHelper.cs" />
     <Compile Include="StaticData.cs" />
     <Compile Include="UI\AboutWindow.xaml.cs">
       <DependentUpon>AboutWindow.xaml</DependentUpon>
@@ -130,9 +133,13 @@
     <Compile Include="UI\ContactWindow.xaml.cs">
       <DependentUpon>ContactWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Custom\CstmButton.xaml.cs">
+      <DependentUpon>CstmButton.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Custom\CstmTitle.xaml.cs">
       <DependentUpon>CstmTitle.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Custom\CstmButton.cs" />
     <Compile Include="UI\DonateWindow.xaml.cs">
       <DependentUpon>DonateWindow.xaml</DependentUpon>
     </Compile>
@@ -163,6 +170,7 @@
     <Compile Include="Util\ConfigSql.cs" />
     <Compile Include="Util\Exceptions.cs" />
     <Compile Include="Util\Guider.cs" />
+    <Compile Include="Helper\LanguageHelper.cs" />
     <Compile Include="Util\Notice.cs" />
     <Compile Include="Util\NoticeGetter.cs" />
     <Compile Include="Util\Tools.cs" />
@@ -207,6 +215,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\ContactWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Custom\CstmButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

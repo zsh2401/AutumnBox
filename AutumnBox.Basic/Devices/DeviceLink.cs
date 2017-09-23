@@ -4,16 +4,23 @@
     using AutumnBox.Basic.Util;
     using System;
     using System.Collections;
+    using System.Collections.Generic;
     using System.Threading;
     /// <summary>
     /// 设备连接对象
     /// </summary>
     public sealed class DeviceLink : BaseObject
     {
+        public enum LinkStatus {
+            WaitToInit,
+            Loading,
+            Loaded
+        }
         public enum LinkType {
             USB = 0,
             LOCAL_NET,
         }
+        public List<RunningManager> Waiting { get; private set; }
         public bool IsOK { get {
                 return (DeviceID == null) ? true : false;
             } }
@@ -30,7 +37,7 @@
             Reset(new DeviceSimpleInfo { Id = id, Status = status });
         }
         private DeviceLink() { }
-        [Obsolete("You can try use : RunningManager.Create(AnyLink.Info);")]
+        [Obsolete("You can try to use : RunningManager.Create(AnyLink.Info,AnyFunctionModule);")]
         /// <summary>
         /// 获取一个与本连接相关的功能模块托管器
         /// </summary>
@@ -44,7 +51,7 @@
             LogD("Init FunctionModule Finish");
             return rm;
         }
-        [Obsolete("You can try use : RunningManager.Create(AnyLink.Info);")]
+        [Obsolete("You can try to use : RunningManager.Create(AnyLink.Info,AnyFunctionModule);")]
         /// <summary>
         /// 获取一个与本连接相关的功能模块托管器
         /// </summary>
@@ -52,12 +59,7 @@
         /// <returns>托管器</returns>
         public RunningManager GetRunningManager(FunctionModule func)
         {
-            LogD("Init FunctionModule " + func.GetType().Name);
-            func.DeviceID = this.DeviceID;
-            func.DevSimpleInfo = this.Info;
-            var rm = new RunningManager(func);
-            LogD("Init FunctionModule Finish");
-            return rm;
+            return RunningManager.Create(this.Info, func);
         }
         /// <summary>
         /// 根据新的设备信息重设连接
@@ -94,16 +96,6 @@
         {
             var info = DevicesHelper.GetDevices()[0];
             return Create(info);
-        }
-        /// <summary>
-        /// 使用指定设备创建连接实例
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        public static DeviceLink Create(string id)
-        {
-            DeviceStatus status = DevicesHelper.GetDeviceStatus(id);
-            return Create(new DeviceSimpleInfo { Id =  id,  Status = status });
         }
         /// <summary>
         /// 通过设备简单信息创建连接,能节约时间

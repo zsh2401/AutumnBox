@@ -14,18 +14,6 @@ namespace AutumnBox
     public partial class Window1
     {
         private Object setUILock = new object();
-        public Object rateBoxLock = new object();
-        /// <summary>
-        /// 更改语言
-        /// </summary>
-        private void ChangeLanguage(string languageName)
-        {
-            if (FindResource("LanguageName").ToString() != languageName)
-                Application.Current.Resources.Source = new Uri($@"Lang\{languageName}.xaml", UriKind.Relative);
-        }
-        //private delegate void NormalEventHandler();
-        //private event NormalEventHandler SetUIFinish;//设置UI的完成事件,这个事件的处理方法将会关闭进度窗
-
         /// <summary>
         /// 根据设备改变界面,如果按钮状态,显示文字,这个方法需要用新线程来操作.并且完成后将会发生事件
         /// 通过事件可以便可以关闭进度窗
@@ -51,11 +39,8 @@ namespace AutumnBox
                     this.AndroidVersionLabel.Content = info.androidVersion;
                     this.CodeLabel.Content = info.code;
                     this.ModelLabel.Content = Regex.Replace(info.brand, @"[\r\n]", "") + " " + info.model;
-                }));
-                this.Dispatcher.Invoke(() =>
-                {
                     HideRateBox();
-                });
+                }));
             }
         }
         /// <summary>
