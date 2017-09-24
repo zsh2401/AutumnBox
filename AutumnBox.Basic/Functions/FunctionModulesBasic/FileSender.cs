@@ -11,7 +11,7 @@ namespace AutumnBox.Basic.Functions
     {
         public event SimpleFinishEventHandler sendSingleFinish;
         public FileArgs Args { get; private set; }
-
+        
         public FileSender(FileArgs fileArg) : base() {
             this.Args= fileArg;
             foreach (string file in fileArg.files) {
@@ -23,7 +23,7 @@ namespace AutumnBox.Basic.Functions
                 Args.files[i].Replace('\\','/');
             }
         }
-        protected override  OutputData MainMethod()
+        protected override OutputData MainMethod()
         {
             string filename;
             string[] x;
@@ -31,10 +31,10 @@ namespace AutumnBox.Basic.Functions
             {
                 x = filepath.Split('/');
                 filename = x[x.Length - 1];
-                ae($"push \"{filepath}\" /sdcard/{filename}");
+                Ae($"push \"{filepath}\" /sdcard/{filename}");
                 sendSingleFinish?.Invoke();
             }
-            return OutputData.Get();
+            return new OutputData();
         }
     }
 }

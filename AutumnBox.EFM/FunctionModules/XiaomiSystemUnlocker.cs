@@ -15,15 +15,15 @@ namespace AutumnBox.Basic.Functions
     {
         protected override OutputData MainMethod()
         {
-            ae("root");
+            Ae("root");
             Thread.Sleep(300);
-            OutputData o = ae("disable-verity");
+            OutputData o = Ae("disable-verity");
             return o;
         }
-        protected override void OnFinish(object sender, FinishEventArgs a)
+        protected override void OnFinish(FinishEventArgs a)
         {
-            base.OnFinish(sender, a);
-            ae("reboot");
+            base.OnFinish(a);
+            Ae("reboot");
         }
     }
 }

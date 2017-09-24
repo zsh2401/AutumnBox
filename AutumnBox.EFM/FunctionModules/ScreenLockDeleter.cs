@@ -6,9 +6,9 @@ namespace AutumnBox.Basic.Functions.FunctionModulesExp
     {
         protected override OutputData MainMethod()
         {
-            ae("root");
-            ae("shell rm /data/system/gesture.key");
-            ae("adb shell rm /data/system/password.key");
+            Ae("root");
+            Ae("shell rm /data/system/gesture.key");
+            Ae("adb shell rm /data/system/password.key");
             return new OutputData();
         }
     }

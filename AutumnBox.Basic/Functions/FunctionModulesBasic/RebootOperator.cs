@@ -8,12 +8,12 @@ namespace AutumnBox.Basic.Functions
     /// </summary>
     public class RebootOperator : FunctionModule
     {
-        enum Executer
+        enum ExecuterType
         {
             Adb,
             Fastboot,
         }
-        private Executer t;
+        private ExecuterType t;
         private RebootArgs args;
 
         public RebootOperator(RebootArgs rebootArgs)
@@ -22,10 +22,10 @@ namespace AutumnBox.Basic.Functions
             switch (args.nowStatus)
             {
                 case DeviceStatus.FASTBOOT:
-                    t = Executer.Fastboot;
+                    t = ExecuterType.Fastboot;
                     break;
                 default:
-                    t = Executer.Adb;
+                    t = ExecuterType.Adb;
                     break;
             }
         }
@@ -51,11 +51,11 @@ namespace AutumnBox.Basic.Functions
             }
             OutputData o;
             switch (t) {
-                case Executer.Adb:
-                    o = ae(command);
+                case ExecuterType.Adb:
+                    o = Ae(command);
                     break;
                 default:
-                    o = fe(command);
+                    o = Fe(command);
                     break;
             }
             return o;

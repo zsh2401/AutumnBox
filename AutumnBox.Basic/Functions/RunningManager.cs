@@ -50,6 +50,7 @@ namespace AutumnBox.Basic.Functions
     using AutumnBox.Basic.Devices;
     using AutumnBox.Basic.Executer;
     using AutumnBox.Basic.Functions.Event;
+    using AutumnBox.Basic.Functions.Interface;
     using AutumnBox.Basic.Util;
     using System;
     using System.Diagnostics;
@@ -82,7 +83,7 @@ namespace AutumnBox.Basic.Functions
         {
             Status = RunningManagerStatus.Loading;
             this.Fm = fm;
-            this.FuncEvents = FuncEventsContainer.Get(this);
+            this.FuncEvents = new FuncEventsContainer(this);
             //绑定好事件,在进程开始时获取PID用于结束进程
             FuncEvents.ProcessStarted += (s_, e_) => { _pid = e_.PID; };
             Status = RunningManagerStatus.Loaded;
@@ -113,8 +114,9 @@ namespace AutumnBox.Basic.Functions
         /// <param name="info"></param>
         /// <param name="fm"></param>
         /// <returns></returns>
-        public static RunningManager Create(DeviceSimpleInfo info, FunctionModule fm) {
-            if(fm.IsFinishEventBound)throw new EventNotBoundException();
+        public static RunningManager Create(DeviceSimpleInfo info, FunctionModule fm)
+        {
+            if (fm.IsFinishEventBound) throw new EventNotBoundException();
             fm.DeviceID = info.Id;
             fm.DevSimpleInfo = info;
             return new RunningManager(fm);
@@ -134,17 +136,9 @@ namespace AutumnBox.Basic.Functions
     /// <summary>
     /// 整合了一些功能模块的事件
     /// </summary>
-    public struct FuncEventsContainer
+    public class FuncEventsContainer
     {
-        private FunctionModule Fm { get; set; }
-        private RunningManager Rm { get; set; }
-        private void AddCheck()
-        {
-            //if (Rm.Status != RunningManagerStatus.Loaded && Rm.Status != RunningManagerStatus.Loading)
-            //{
-            //    throw new EventAddException("Please add eventhandler on Function not started");
-            //}
-        }
+        public IOutReceiver OutReceiver { get; set; }
         public event DataReceivedEventHandler OutputReceived
         {
             add
@@ -184,9 +178,30 @@ namespace AutumnBox.Basic.Functions
             add { AddCheck(); Fm.Executer.ProcessStarted += value; }
             remove { Fm.Executer.ProcessStarted -= value; }
         }
-        public static FuncEventsContainer Get(RunningManager rm)
+
+        private FunctionModule Fm { get; set; }
+        private RunningManager Rm { get; set; }
+        private void AddCheck()
         {
-            return new FuncEventsContainer { Fm = rm.Fm };
+            //if (Rm.Status != RunningManagerStatus.Loaded && Rm.Status != RunningManagerStatus.Loading)
+            //{
+            //    throw new EventAddException("Please add eventhandler on Function not started");
+            //}
+        }
+        internal FuncEventsContainer(RunningManager rm)
+        {
+            this.Fm = rm.Fm;
+            OutputReceived += OnOutputReceived;
+            ErrorReceived += OnErrorReceived;
+        }
+
+        private void OnOutputReceived(object sender, DataReceivedEventArgs e)
+        {
+            OutReceiver.OutReceived(sender,e);
+        }
+        private void OnErrorReceived(object sender, DataReceivedEventArgs e)
+        {
+            OutReceiver.ErrorReceived(sender, e);
         }
     }
 }

@@ -59,6 +59,8 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SQLiteTest.cs" />
+    <Compile Include="Tester.cs" />
+    <Compile Include="TestFunction.cs" />
     <Compile Include="Tools.cs" />
   </ItemGroup>
   <ItemGroup>

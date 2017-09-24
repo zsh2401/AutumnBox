@@ -58,25 +58,29 @@ namespace AutumnBox.Basic.Functions
         /// <summary>
         /// 向已绑定的设备执行adb命令
         /// </summary>
-        protected Func<string, OutputData> ae { get; private set; }
+        protected Func<string, OutputData> Ae { get; private set; }
         /// <summary>
         /// 向已绑定的设备执行fastboot命令
         /// </summary>
-        protected Func<string, OutputData> fe { get; private set; }
+        protected Func<string, OutputData> Fe { get; private set; }
         /// <summary>
         /// 执行器
         /// </summary>
-        protected internal  CommandExecuter Executer = new CommandExecuter();
+        protected internal CommandExecuter Executer = new CommandExecuter();
         /// <summary>
         /// 功能模块执行时指定的设备id
         /// </summary>
-        protected internal string DeviceID {
+        protected internal string DeviceID
+        {
             get { return _deviceID; }
-            internal set { if (_deviceID == null) _deviceID = value;
+            internal set
+            {
+                if (_deviceID == null) _deviceID = value;
                 else throw new Exception("You can change device ID again");
-            } }
+            }
+        }
         private string _deviceID;
-        protected internal DeviceSimpleInfo DevSimpleInfo { get;internal set; }
+        protected internal DeviceSimpleInfo DevSimpleInfo { get; internal set; }
         /// <summary>
         /// 判断完成事件是否被绑定
         /// </summary>
@@ -93,11 +97,13 @@ namespace AutumnBox.Basic.Functions
         /// </summary>
         protected FunctionModule()
         {
-            ae = (command) => {
+            Ae = (command) =>
+            {
                 Executer.ExecuteWithDevice(DeviceID, command, out OutputData o, ExeType.Adb);
                 return o;
             };
-            fe = (command) => {
+            Fe = (command) =>
+            {
                 Executer.ExecuteWithDevice(DeviceID, command, out OutputData o, ExeType.Fastboot);
                 return o;
             };
@@ -110,19 +116,29 @@ namespace AutumnBox.Basic.Functions
         /// <returns></returns>
         internal void Run(int delayTime = 0)
         {
-            MainThread = new Thread(() => { Thread.Sleep(delayTime); _Run(); });
-            MainThread.Name = TAG + " MainMethod";
-            MainThread.Start();
+            MainThread = new Thread(() => { Thread.Sleep(delayTime); _Run(); })
+            {
+                Name = TAG + " MainMethod"
+            };
             LogD($"Run MainMethod DelayTime {delayTime} (ms)");
+            MainThread.Start();
         }
         /// <summary>
         /// 运行过程
         /// </summary>
         private void _Run()
         {
-            OnStart(this, new StartEventArgs());
-            var o = MainMethod();
-            OnFinish(this, new FinishEventArgs { OutputData = o, IsFinish = true });
+            OnStart(new StartEventArgs());
+            var output = MainMethod();
+            HandingOutput(output,out ExecuteResult executeResult);
+            OnFinish(new FinishEventArgs { Result = executeResult });
+        }
+        /// <summary>
+        /// 释放资源
+        /// </summary>
+        public void Dispose()
+        {
+            Executer.Dispose();
         }
 
         /// <summary>
@@ -130,31 +146,32 @@ namespace AutumnBox.Basic.Functions
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="a"></param>
-        protected virtual void OnStart(object sender, StartEventArgs a)
+        protected virtual void OnStart(StartEventArgs a)
         {
-            Logger.D(TAG, "Start");
-            Started?.Invoke(sender, a);
-        }
-        /// <summary>
-        /// 当核心代码执行完成时,将调用此方法
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="o"></param>
-        protected virtual void OnFinish(object sender, FinishEventArgs a)
-        {
-            Logger.D(TAG, "Finish");
-            Finished?.Invoke(sender, a);
+            Logger.D(TAG, "Started");
+            Started?.Invoke(this, a);
         }
         /// <summary>
         /// 模块的核心代码,强制要求子类进行实现
         /// </summary>
         protected abstract OutputData MainMethod();
         /// <summary>
-        /// 释放资源
+        /// 处理输出数据
         /// </summary>
-        public void Dispose()
+        /// <param name="output"></param>
+        /// <param name="result"></param>
+        protected virtual void HandingOutput(OutputData output,out ExecuteResult result) {
+            result = new ExecuteResult(output);
+        }
+        /// <summary>
+        /// 当核心代码执行完成时,将调用此方法
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="o"></param>
+        protected virtual void OnFinish(FinishEventArgs a)
         {
-            Executer.Dispose();
+            Logger.D(TAG, "Finished");
+            Finished?.Invoke(this, a);
         }
     }
 }

@@ -14,7 +14,7 @@ namespace AutumnBox.Basic.Executer
         Adb,
         Fastboot
     }
-    public sealed partial class CommandExecuter : BaseObject, IDisposable, IDevicesGetter,IAdbCommandExecuter
+    public sealed partial class CommandExecuter : BaseObject, IDisposable, IDevicesGetter
     {
         /// <summary>
         /// 执行器主进程开始时发生,可通过该事件获取进程PID
@@ -70,7 +70,7 @@ namespace AutumnBox.Basic.Executer
             MainProcess.StartInfo.RedirectStandardInput = true;  // 重定向输入    
             MainProcess.StartInfo.RedirectStandardOutput = true; // 重定向标准输出    
             MainProcess.StartInfo.RedirectStandardError = true;  // 重定向错误输出  
-            OutputData.Get(out tempOut);
+            tempOut = new OutputData();
             MainProcess.OutputDataReceived += (s, e) =>
             {
 #if SHOW_OUTPUT

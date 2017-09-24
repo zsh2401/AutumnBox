@@ -107,6 +107,7 @@ namespace AutumnBox
 
         private void buttonPushFileToSdcard_Click(object sender, RoutedEventArgs e)
         {
+            //e.Handled;
             OpenFileDialog fileDialog = new OpenFileDialog();
             fileDialog.Reset();
             fileDialog.Title = "选择一个文件";

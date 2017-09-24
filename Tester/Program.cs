@@ -10,7 +10,7 @@ namespace Tester
         //Base64FormattingOptions.
         protected override OutputData MainMethod()
         {
-            return ae("get the fucker!");
+            return Ae("get the fucker!");
         }
     }
     /// <summary>
@@ -35,18 +35,22 @@ namespace Tester
         }
         static void Main(string[] args)
         {
+            //var rm = RunningManager.Create(new DeviceSimpleInfo() { Id = "cadasdas",Status = DeviceStatus.RUNNING },new BreventServiceActivator());
+            //rm.FuncEvents.OutReceiver += this;
+            //rm.FuncStart();
+            new Tester().Run();
             //DevicesMonitor monitor = new DevicesMonitor();
             //monitor.DevicesChange += (s, e) => { Print("Device Change"); e.ForEach((i)=> { Console.WriteLine(i.Id); }); };
             //monitor.Start();
             //DevicesHelper.GetDevices().ForEach((a)=> { Print("?asdad" + a.Id); });
-            DeviceLink link = DeviceLink.Create();
-            var rm = link.GetRunningManager(new Fuck());
-            rm.FuncEvents.Finished+= (s, e) =>
-            {
-                Print(e.OutputData.Out.ToString());
-                Print(e.OutputData.Error.ToString());
-            };
-            rm.FuncStart();
+            //DeviceLink link = DeviceLink.Create();
+            //var rm = link.GetRunningManager(new Fuck());
+            //rm.FuncEvents.Finished+= (s, e) =>
+            //{
+            //    Print(e.OutputData.Out.ToString());
+            //    Print(e.OutputData.Error.ToString());
+            //};
+            //rm.FuncStart();
             
             //rm.FuncFinished += (s, e) => {
             //    Print(e.OutErrorData.Out.ToString());
@@ -83,7 +87,7 @@ namespace Tester
             //sb.Add("sasdas");
             //bool q = ls == sb
             //Print(q.ToString());
-            Console.ReadKey();
+            //Console.ReadKey();
             //rm.FuncStop();
             //string x = " [30%] wadfsadasasasasd";
             //string x = "[ 98%] /sdcard/D:\\xxxxx_x64.zip";

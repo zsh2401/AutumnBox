@@ -6,7 +6,7 @@ namespace AutumnBox.Basic.Functions
     {
         protected override OutputData MainMethod()
         {
-            var o = ae(" oem lock");
+            var o = Ae(" oem lock");
             return o;
         }
     }
