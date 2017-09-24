@@ -9,7 +9,6 @@
     <Import_RootNamespace>AutumnBox.Basic.Functions</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)ExecutedResultHandler\BreventShOutputHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)FunctionArgs\KeyCode.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)FunctionModules\ActivityLauncher.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)FunctionModules\BreventServiceActivator.cs" />

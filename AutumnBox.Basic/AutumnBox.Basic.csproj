@@ -53,7 +53,7 @@
     <Compile Include="Executer\OutputData.cs" />
     <Compile Include="Devices\DevicesList.cs" />
     <Compile Include="Functions\Event\EventArgs.cs" />
-    <Compile Include="Functions\ExecutedResultHandler\ExecuteResult.cs" />
+    <Compile Include="Functions\ExecuteResult.cs" />
     <Compile Include="Functions\Interface\IOutAnalysable.cs" />
     <Compile Include="Devices\DeviceLink.cs" />
     <Compile Include="Devices\DeviceInfoStruct.cs" />
