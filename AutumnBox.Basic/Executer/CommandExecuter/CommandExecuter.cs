@@ -1,13 +1,12 @@
 ﻿//#define SHOW_OUTPUT
 //#define SHOW_COMMAND
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using AutumnBox.Basic.Devices;
-using AutumnBox.Basic.Util;
-
 namespace AutumnBox.Basic.Executer
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Diagnostics;
+    using AutumnBox.Basic.Devices;
+    using AutumnBox.Basic.Util;
     public enum ExeType
     {
         Null = -1,
@@ -16,6 +15,8 @@ namespace AutumnBox.Basic.Executer
     }
     public sealed partial class CommandExecuter : BaseObject, IDisposable, IDevicesGetter
     {
+        private static readonly string ADB_FILENAME = Paths.ADB_FILENAME;
+        private static readonly string FB_FILENAME = Paths.FASTBOOT_FILENAME;
         /// <summary>
         /// 执行器主进程开始时发生,可通过该事件获取进程PID
         /// </summary>
@@ -46,7 +47,7 @@ namespace AutumnBox.Basic.Executer
             }
             set
             {
-                MainProcess.StartInfo.FileName = (value == ExeType.Adb) ? ADB_PATH : FB_PATH;
+                MainProcess.StartInfo.FileName = (value == ExeType.Adb) ? ADB_FILENAME : FB_FILENAME;
                 exeType = value;
             }
         }
@@ -59,12 +60,13 @@ namespace AutumnBox.Basic.Executer
         /// 执行器的底层进程
         /// </summary>
         private Process MainProcess = new Process();
-        private static readonly string ADB_PATH = Paths.ADB_TOOLS;
-        private static readonly string FB_PATH = Paths.FASTBOOT_TOOLS;
+        /// <summary>
+        /// 构造!
+        /// </summary>
         public CommandExecuter()
         {
             //初始化Cmd
-            MainProcess.StartInfo.FileName = "unknow";
+            MainProcess.StartInfo.FileName = "xxx";
             MainProcess.StartInfo.CreateNoWindow = true;         // 不创建新窗口    
             MainProcess.StartInfo.UseShellExecute = false;       //不启用shell启动进程  
             MainProcess.StartInfo.RedirectStandardInput = true;  // 重定向输入    
@@ -92,11 +94,11 @@ namespace AutumnBox.Basic.Executer
         /// <param name="devList"></param>
         public void GetDevices(out DevicesList devList)
         {
-            if (Process.GetProcessesByName("adb").Length == 0) ExecuteWithoutDevice("start-server");
+            if (Process.GetProcessesByName("adb").Length == 0) AdbExecute("start-server");
             devList = new DevicesList();
             //Adb devices
             List<string> l;
-            ExecuteWithoutDevice("devices", out OutputData o);
+            var o = AdbExecute("devices");
             l = o.LineOut;
             for (int i = 1; i < l.Count - 2; i++)
             {
@@ -108,7 +110,7 @@ namespace AutumnBox.Basic.Executer
                     });
             }
             //Fastboot devices
-            ExecuteWithoutDevice("devices", out OutputData ofb,ExeType.Fastboot);
+           var ofb =  FastbootExecute("devices");
             l = ofb.LineOut;
             for (int i = 0; i < l.Count - 1; i++)
             {
@@ -138,14 +140,14 @@ namespace AutumnBox.Basic.Executer
         /// </summary>
         public static void Start()
         {
-            new CommandExecuter().ExecuteWithoutDevice("start-server");
+            new CommandExecuter().AdbExecute("start-server");
         }
         /// <summary>
         /// 关闭adb服务
         /// </summary>
         public static void Kill()
         {
-            new CommandExecuter().ExecuteWithoutDevice("kill-server");
+            new CommandExecuter().AdbExecute("kill-server");
         }
         /// <summary>
         /// 重启adb服务
@@ -161,7 +163,6 @@ namespace AutumnBox.Basic.Executer
         public void Dispose()
         {
             MainProcess.Dispose();
-            //Tools.KillProcessAndChildrens(MainProcess.Id);
         }
     }
 }

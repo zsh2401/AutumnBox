@@ -8,32 +8,37 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
 using AutumnBox.Basic.Functions.Event;
+using AutumnBox.Basic.Executer;
 
 namespace Tester
 {
-    public class Tester:IOutReceiver
+    public class Tester : IOutReceiver
     {
         public DeviceSimpleInfo defaultInfo = new DeviceSimpleInfo() { Id = "xxxxx", Status = DeviceStatus.RUNNING };
-        public void Run() {
+        public void Run()
+        {
             _Run();
             Pause();
         }
-        public void _Run() {
-            RunningManager rm = RunningManager.Create(defaultInfo,new TestFunction());
+        public void _Run()
+        {
+            var rm = RunningManager.Create(new DeviceSimpleInfo(),new TestFunction());
             rm.FuncEvents.OutReceiver = this;
-            rm.FuncEvents.Finished += (s, e) => { Print(e.OutputData.ToString()); };
+            rm.FuncEvents.Finished += (s, e) => { };
             rm.FuncStart();
         }
-        public void Print(string message) {
+        public void Print(string message)
+        {
             Console.WriteLine(message);
         }
-        public void Pause() {
+        public void Pause()
+        {
             Console.ReadKey();
         }
 
         public void OutReceived(object sender, DataReceivedEventArgs e)
         {
-            Print("RealTime out  : " + e.Data);   
+            Print("RealTime out  : " + e.Data);
         }
 
         public void ErrorReceived(object sender, DataReceivedEventArgs e)

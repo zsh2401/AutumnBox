@@ -117,10 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ADB_TOOLS" xml:space="preserve">
-    <value>adb\adb.exe</value>
+  <data name="ADB_FILENAME" xml:space="preserve">
+    <value>adb/adb.exe</value>
   </data>
-  <data name="FASTBOOT_TOOLS" xml:space="preserve">
-    <value>adb\fastboot.exe</value>
+  <data name="FASTBOOT_FILENAME" xml:space="preserve">
+    <value>adb/fastboot.exe</value>
   </data>
 </root>

@@ -57,7 +57,7 @@ namespace AutumnBox.Basic.Functions
     /// <summary>
     /// 功能模块运行时托管器,一个托管器仅可以托管/包装一个功能模块,并只可以执行一次
     /// </summary>
-    public sealed class RunningManager
+    public sealed class RunningManager:BaseObject
     {
         /// <summary>
         /// 被托管的功能模块的各种事件
@@ -79,7 +79,7 @@ namespace AutumnBox.Basic.Functions
         /// 构造!
         /// </summary>
         /// <param name="fm"></param>
-        internal RunningManager(FunctionModule fm)
+        private RunningManager(FunctionModule fm)
         {
             Status = RunningManagerStatus.Loading;
             this.Fm = fm;
@@ -116,8 +116,6 @@ namespace AutumnBox.Basic.Functions
         /// <returns></returns>
         public static RunningManager Create(DeviceSimpleInfo info, FunctionModule fm)
         {
-            if (fm.IsFinishEventBound) throw new EventNotBoundException();
-            fm.DeviceID = info.Id;
             fm.DevSimpleInfo = info;
             return new RunningManager(fm);
         }
@@ -136,7 +134,7 @@ namespace AutumnBox.Basic.Functions
     /// <summary>
     /// 整合了一些功能模块的事件
     /// </summary>
-    public class FuncEventsContainer
+    public class FuncEventsContainer:BaseObject
     {
         public IOutReceiver OutReceiver { get; set; }
         public event DataReceivedEventHandler OutputReceived

@@ -9,7 +9,6 @@ namespace AutumnBox.Basic.Executer
 {
     public interface IDevicesGetter
     {
-        void GetDevices(out DevicesList devList);
         DevicesList GetDevices();
     }
 }

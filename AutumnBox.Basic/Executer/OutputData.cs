@@ -1,10 +1,9 @@
-﻿using AutumnBox.Basic.Util;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace AutumnBox.Basic.Executer
+﻿namespace AutumnBox.Basic.Executer
 {
+    using AutumnBox.Basic.Util;
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
     public class OutputData : BaseObject
     {
         public List<string> LineAll { get; private set; }
@@ -42,6 +41,14 @@ namespace AutumnBox.Basic.Executer
             Out = new StringBuilder();
             Error = new StringBuilder();
             All = new StringBuilder();
+        }
+        public void Append(OutputData output) {
+            LineAll.AddRange(output.LineAll);
+            LineOut.AddRange(output.LineOut);
+            LineError.AddRange(output.LineError);
+            All.Append(output.ToString());
+            Out.Append(output.Out.ToString());
+            Error.Append(output.Error.ToString());
         }
         public static OutputData operator +(OutputData left, OutputData right) {
             left.LineAll.AddRange(right.LineAll);

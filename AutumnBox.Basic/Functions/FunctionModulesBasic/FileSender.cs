@@ -1,9 +1,8 @@
-﻿using AutumnBox.Basic.Executer;
-using AutumnBox.Basic.Functions.Event;
-using System.IO;
-
-namespace AutumnBox.Basic.Functions
+﻿namespace AutumnBox.Basic.Functions
 {
+    using AutumnBox.Basic.Executer;
+    using AutumnBox.Basic.Functions.Event;
+    using System.IO;
     /// <summary>
     /// 文件发送器
     /// </summary>

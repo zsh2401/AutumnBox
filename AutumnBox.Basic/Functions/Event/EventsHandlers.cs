@@ -4,7 +4,7 @@
  */
 namespace AutumnBox.Basic.Functions.Event
 {
-    public delegate void StartEventHandler(object sender, StartEventArgs e = null);
-    public delegate void FinishEventHandler(object sender,FinishEventArgs e=null);
+    public delegate void StartEventHandler(object sender, StartEventArgs e);
+    public delegate void FinishEventHandler(object sender,FinishEventArgs e);
     public delegate void SimpleFinishEventHandler();
 }

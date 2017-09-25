@@ -37,11 +37,12 @@ namespace AutumnBox.Basic.Functions
     using AutumnBox.Basic.Functions.Event;
     using AutumnBox.Basic.Util;
     using System;
+    using System.Diagnostics;
     using System.Threading;
     /// <summary>
     /// 各种功能模块的父类
     /// </summary>
-    public abstract class FunctionModule : BaseObject, IDisposable
+    public abstract class FunctionModule : BaseObject
     {
         /// <summary>
         /// 当功能模块开始执行时发生
@@ -51,18 +52,15 @@ namespace AutumnBox.Basic.Functions
         /// 完成操作时的事件
         /// </summary>
         internal event FinishEventHandler Finished;
-        /// <summary>
-        /// 异步执行的主要线程
-        /// </summary>
-        protected Thread MainThread { get; set; }
+
         /// <summary>
         /// 向已绑定的设备执行adb命令
         /// </summary>
-        protected Func<string, OutputData> Ae { get; private set; }
+        protected readonly Func<string, OutputData> Ae;
         /// <summary>
         /// 向已绑定的设备执行fastboot命令
         /// </summary>
-        protected Func<string, OutputData> Fe { get; private set; }
+        protected readonly Func<string, OutputData> Fe;
         /// <summary>
         /// 执行器
         /// </summary>
@@ -70,21 +68,19 @@ namespace AutumnBox.Basic.Functions
         /// <summary>
         /// 功能模块执行时指定的设备id
         /// </summary>
-        protected internal string DeviceID
-        {
-            get { return _deviceID; }
-            internal set
-            {
-                if (_deviceID == null) _deviceID = value;
-                else throw new Exception("You can change device ID again");
-            }
-        }
-        private string _deviceID;
+        protected internal string DeviceID{get { return DevSimpleInfo.Id; }}
+        /// <summary>
+        /// 异步执行的主要线程
+        /// </summary>
+        private Thread MainThread { get; set; }
+        /// <summary>
+        /// 绑定的设备简单信息
+        /// </summary>
         protected internal DeviceSimpleInfo DevSimpleInfo { get; internal set; }
         /// <summary>
         /// 判断完成事件是否被绑定
         /// </summary>
-        protected internal bool IsFinishEventBound
+        public bool IsFinishEventBound
         {
             get
             {
@@ -92,35 +88,27 @@ namespace AutumnBox.Basic.Functions
             }
         }
 
-        /// <summary>
-        /// 构造!此类无法单独构造,必须被继承
-        /// </summary>
-        protected FunctionModule()
-        {
+        protected FunctionModule() {
             Ae = (command) =>
-            {
-                Executer.ExecuteWithDevice(DeviceID, command, out OutputData o, ExeType.Adb);
-                return o;
-            };
+            { return Executer.AdbExecute(DeviceID, command); };
             Fe = (command) =>
-            {
-                Executer.ExecuteWithDevice(DeviceID, command, out OutputData o, ExeType.Fastboot);
-                return o;
-            };
+            { return Executer.FastbootExecute(DeviceID, command); };
             TAG = GetType().Name;
+        }
+        protected FunctionModule(DeviceSimpleInfo info):this() {
+            DevSimpleInfo = info;
         }
         /// <summary>
         /// 开始执行函数,有功能模块托管器进行托管
         /// </summary>
         /// <param name="delayTime">延迟执行的时间,如果不写则立刻开始</param>
         /// <returns></returns>
-        internal void Run(int delayTime = 0)
+        internal void Run()
         {
-            MainThread = new Thread(() => { Thread.Sleep(delayTime); _Run(); })
+            MainThread = new Thread(() => {  _Run(); })
             {
                 Name = TAG + " MainMethod"
             };
-            LogD($"Run MainMethod DelayTime {delayTime} (ms)");
             MainThread.Start();
         }
         /// <summary>
@@ -130,17 +118,10 @@ namespace AutumnBox.Basic.Functions
         {
             OnStart(new StartEventArgs());
             var output = MainMethod();
-            HandingOutput(output,out ExecuteResult executeResult);
+            HandingOutput(output, out ExecuteResult executeResult);
             OnFinish(new FinishEventArgs { Result = executeResult });
         }
-        /// <summary>
-        /// 释放资源
-        /// </summary>
-        public void Dispose()
-        {
-            Executer.Dispose();
-        }
-
+        
         /// <summary>
         /// 准备执行核心功能时,将调用此方法
         /// </summary>
@@ -160,7 +141,8 @@ namespace AutumnBox.Basic.Functions
         /// </summary>
         /// <param name="output"></param>
         /// <param name="result"></param>
-        protected virtual void HandingOutput(OutputData output,out ExecuteResult result) {
+        protected virtual void HandingOutput(OutputData output, out ExecuteResult result)
+        {
             result = new ExecuteResult(output);
         }
         /// <summary>

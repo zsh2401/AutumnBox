@@ -23,7 +23,7 @@ namespace AutumnBox
         private void InitEvents()
         {
             //设备列表发生改变时的事件
-            App.devicesListener.DevicesChange += (s, devList) => {
+            App.devicesListener.DevicesChanged += (s, e) => {
                 /*
              * 由于是从设备监听器线程发生的事件
              * 并且需要操作主界面,因此要用匿名函数来进行操作
@@ -33,9 +33,9 @@ namespace AutumnBox
                 {
                     DevicesListBox.Items.Clear();
                     Log.d(TAG, "Clear");
-                    devList.ForEach((info) => { DevicesListBox.Items.Add(info); });
+                    e.DevicesList.ForEach((info) => { DevicesListBox.Items.Add(info); });
                     DevicesListBox.DisplayMemberPath = "Id";
-                    if (devList.Count == 1)
+                    if (e.DevicesList.Count == 1)
                     {
                         DevicesListBox.SelectedIndex = 0;
                     }

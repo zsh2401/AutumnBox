@@ -46,8 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Executer\CommandExecuter.cs" />
-    <Compile Include="Executer\CommandExecuter.ExecuteFunctions.cs" />
+    <Compile Include="Devices\Events.cs" />
+    <Compile Include="Executer\CommandExecuter\CommandExecuter.cs" />
+    <Compile Include="Executer\CommandExecuter\ExecuteFunc.cs" />
     <Compile Include="Executer\Events.cs" />
     <Compile Include="Executer\IDevicesGetter.cs" />
     <Compile Include="Executer\OutputData.cs" />

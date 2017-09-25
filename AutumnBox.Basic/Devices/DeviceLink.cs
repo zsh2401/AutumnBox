@@ -20,7 +20,6 @@
             USB = 0,
             LOCAL_NET,
         }
-        public List<RunningManager> Waiting { get; private set; }
         public bool IsOK { get {
                 return (DeviceID == null) ? true : false;
             } }
@@ -46,10 +45,7 @@
         public RunningManager InitRM(FunctionModule func)
         {
             LogD("Init FunctionModule " + func.GetType().Name);
-            func.DeviceID = this.DeviceID;
-            var rm = new RunningManager(func);
-            LogD("Init FunctionModule Finish");
-            return rm;
+            return RunningManager.Create(this._info, func);
         }
         [Obsolete("You can try to use : RunningManager.Create(AnyLink.Info,AnyFunctionModule);")]
         /// <summary>

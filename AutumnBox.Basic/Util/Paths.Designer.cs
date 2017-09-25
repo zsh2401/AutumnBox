@@ -61,20 +61,20 @@ namespace AutumnBox.Basic.Util {
         }
         
         /// <summary>
-        ///   查找类似 adb\adb.exe 的本地化字符串。
+        ///   查找类似 adb/adb.exe 的本地化字符串。
         /// </summary>
-        internal static string ADB_TOOLS {
+        internal static string ADB_FILENAME {
             get {
-                return ResourceManager.GetString("ADB_TOOLS", resourceCulture);
+                return ResourceManager.GetString("ADB_FILENAME", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   查找类似 adb\fastboot.exe 的本地化字符串。
+        ///   查找类似 adb/fastboot.exe 的本地化字符串。
         /// </summary>
-        internal static string FASTBOOT_TOOLS {
+        internal static string FASTBOOT_FILENAME {
             get {
-                return ResourceManager.GetString("FASTBOOT_TOOLS", resourceCulture);
+                return ResourceManager.GetString("FASTBOOT_FILENAME", resourceCulture);
             }
         }
     }
