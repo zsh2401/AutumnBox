@@ -7,8 +7,7 @@ namespace AutumnBox.Basic.Executer
     using System.Diagnostics;
     using AutumnBox.Basic.Devices;
     using AutumnBox.Basic.Util;
-
-    public sealed partial class CommandExecuter : BaseObject, IDisposable, IDevicesGetter
+    public sealed partial class CommandExecuter : BaseObject, IDisposable
     {
         /// <summary>
         /// 执行器主进程开始时发生,可通过该事件获取进程PID
@@ -38,52 +37,6 @@ namespace AutumnBox.Basic.Executer
         /// 执行器的底层进程
         /// </summary>
         private ABProcess ABProcess = new ABProcess();
-        /// <summary>
-        /// 获取设备信息
-        /// </summary>
-        /// <param name="devList"></param>
-        public void GetDevices(out DevicesList devList)
-        {
-            if (Process.GetProcessesByName("adb").Length == 0) AdbExecute("start-server");
-            devList = new DevicesList();
-            //Adb devices
-            List<string> l;
-            var o = AdbExecute("devices");
-            l = o.LineOut;
-            for (int i = 1; i < l.Count - 1; i++)
-            {
-                devList.Add(
-                    new DeviceSimpleInfo
-                    {
-                        Id = l[i].Split('\t')[0],
-                        Status = DevicesHelper.StringStatusToEnumStatus(l[i].Split('\t')[1])
-                    });
-            }
-            //Fastboot devices
-           var ofb =  FastbootExecute("devices");
-            l = ofb.LineOut;
-            for (int i = 0; i < l.Count; i++)
-            {
-                try
-                {
-                    devList.Add(
-                    new DeviceSimpleInfo
-                    {
-                        Id = l[i].Split('\t')[0],
-                        Status = DevicesHelper.StringStatusToEnumStatus(l[i].Split('\t')[1])
-                    });
-                }
-                catch { }
-            }
-        }
-        /// <summary>
-        /// 获取设备信息
-        /// </summary>
-        /// <param name="devList">设备信息列表</param>
-        public DevicesList GetDevices() {
-            GetDevices(out DevicesList devList);
-            return devList;
-        }
 
         /// <summary>
         /// 启动adb服务

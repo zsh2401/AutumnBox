@@ -1,6 +1,7 @@
 ﻿namespace AutumnBox.UI
 {
     using AutumnBox.Basic.Functions;
+    using AutumnBox.Basic.Functions.Interface;
     using AutumnBox.Basic.Functions.RunningManager;
     using AutumnBox.Debug;
     using System;
@@ -17,10 +18,12 @@
     using System.Windows.Media;
     using System.Windows.Media.Imaging;
     using System.Windows.Shapes;
+    using System.Diagnostics;
+
     /// <summary>
     /// FileSendingWindow.xaml 的交互逻辑
     /// </summary>
-    public partial class FileSendingWindow : Window
+    public partial class FileSendingWindow : Window,IOutReceiver
     {
         private RunningManager rm;
         Regex rg12 = new Regex("\\ (.*?)\\%");
@@ -29,6 +32,7 @@
         {
             this.Owner = Owner;
             this.rm = rm;
+            rm.FuncEvents.OutReceiver = this;
             rm.FuncEvents.Finished += (s, e) =>
             {
                 this.Dispatcher.Invoke(() =>
@@ -36,31 +40,35 @@
                     this.Close();
                 });
             };
-            rm.FuncEvents.OutputReceived += (s, e) =>
-            {
-                Match m;
-                try
-                {
-                    //Log.d("SendingWindow", e.Data);
-                    m = rg12.Match(e.Data);
-                    if (!m.Success)
-                    {
-                        m = rg3.Match(e.Data);
-                    }
-                    var r = m.Result("$1");
-                    ProgressBarMain.Dispatcher.Invoke(() =>
-                    {
-                        ProgressBarMain.Value = double.Parse(r);
-                        LabelProgressMessage.Content = r.ToString() + "%";
-                    });
-                }
-                catch (Exception se)
-                {
-                    Log.d(e.ToString(), se.Message);
-                }
-
-            };
+            rm.FuncEvents.OutputReceived += this.OutReceived;
             InitializeComponent();
+        }
+
+        public void ErrorReceived(object sender, DataReceivedEventArgs e)
+        {
+        }
+
+        public void OutReceived(object sender, DataReceivedEventArgs e)
+        {
+            Match m;
+            try
+            {
+                m = rg12.Match(e.Data);
+                if (!m.Success)
+                {
+                    m = rg3.Match(e.Data);
+                }
+                var r = m.Result("$1");
+                ProgressBarMain.Dispatcher.Invoke(() =>
+                {
+                    ProgressBarMain.Value = double.Parse(r);
+                    LabelProgressMessage.Content = r.ToString() + "%";
+                });
+            }
+            catch (Exception se)
+            {
+                Log.d(e.ToString(), se.Message);
+            }
         }
 
         private void buttonCancel_Click(object sender, RoutedEventArgs e)

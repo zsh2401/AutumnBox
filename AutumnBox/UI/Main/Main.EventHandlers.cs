@@ -1,15 +1,13 @@
-﻿using AutumnBox.Basic.Devices;
-using AutumnBox.UI;
-using System;
-using System.Collections;
-using System.Windows;
-using AutumnBox.Debug;
-using AutumnBox.Util;
-using AutumnBox.Basic.Functions.Event;
-using AutumnBox.Basic.Functions.Interface;
-
-namespace AutumnBox
+﻿namespace AutumnBox
 {
+    using AutumnBox.Basic.Devices;
+    using AutumnBox.UI;
+    using System;
+    using System.Windows;
+    using AutumnBox.Debug;
+    using AutumnBox.Util;
+    using AutumnBox.Basic.Functions.Event;
+    using AutumnBox.Basic.Functions;
     /// <summary>
     /// 各种界面事件
     /// </summary>
@@ -82,32 +80,32 @@ namespace AutumnBox
         private void FuncFinish(object sender, FinishEventArgs e)
         {
             HideRateBox();
-            if (sender is Basic.Functions.FileSender)
+            if (sender is FileSender)
             {
                 PushFinish(sender, e);
             }
-            else if (sender is Basic.Functions.BreventServiceActivator)
+            else if (sender is BreventServiceActivator)
             {
                 ActivatedBrvent(sender, e);
             }
-            else if (sender is Basic.Functions.ActivityLauncher)
+            else if (sender is ActivityLauncher)
             {
                 //TODO
             }
-            else if (sender is Basic.Functions.CustomRecoveryFlasher)
+            else if (sender is CustomRecoveryFlasher)
             {
                 FlashCustomRecFinish(sender, e);
                 //TODO
             }
-            else if (sender is Basic.Functions.RebootOperator)
+            else if (sender is RebootOperator)
             {
                 //TODO
             }
-            else if (sender is Basic.Functions.XiaomiSystemUnlocker)
+            else if (sender is XiaomiSystemUnlocker)
             {
                 UnlockMiSystemFinish(sender, e);
             }
-            else if (sender is Basic.Functions.XiaomiBootloaderRelocker)
+            else if (sender is XiaomiBootloaderRelocker)
             {
                 RelockMiFinish(sender, e);
             }

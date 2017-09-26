@@ -1,4 +1,5 @@
-﻿namespace AutumnBox.Basic.Executer
+﻿#define SHOW_OUT
+namespace AutumnBox.Basic.Executer
 {
     using AutumnBox.Basic.Util;
     using System;
@@ -23,20 +24,26 @@
             };
             this.OutputDataReceived += (s, e) =>
             {
-
-#if SHOW_OUT
-                 Logger.D(this.GetType().Name, e.Data);
-#endif
                 if (e.Data != null)
+                {
+#if SHOW_OUT
+                    Logger.D(this.GetType().Name, e.Data);
+#endif
                     _tempOut.OutAdd(e.Data);
+                }
+
             };
             this.ErrorDataReceived += (s, e) =>
             {
-#if SHOW_OUT
-                 Logger.D(this.GetType().Name, e.Data);
-#endif
                 if (e.Data != null)
+                {
+#if SHOW_OUT
+                    Logger.D(this.GetType().Name, e.Data);
+#endif
+
                     _tempOut.ErrorAdd(e.Data);
+                }
+
             };
         }
         private void BeginRead()

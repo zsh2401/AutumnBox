@@ -24,7 +24,6 @@ namespace Tester
         }
         public void _Run()
         {
-
             new DevicesGetter().GetDevices().ForEach((i)=> { Print(i.Id); });
         }
         public void Print(string message)

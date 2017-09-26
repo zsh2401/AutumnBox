@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace AutumnBox.Basic.Functions.FunctionArgs
+﻿namespace AutumnBox.Basic.Functions.FunctionArgs
 {
     public struct ScreenShoterArgs
     {
