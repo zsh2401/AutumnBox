@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Diagnostics;
 using AutumnBox.Basic.Functions.Event;
 using AutumnBox.Basic.Executer;
+using AutumnBox.Basic.Functions.RunningManager;
+using AutumnBox.Basic.Functions.FunctionModules;
 
 namespace Tester
 {
@@ -22,10 +24,8 @@ namespace Tester
         }
         public void _Run()
         {
-            var rm = RunningManager.Create(new DeviceSimpleInfo(),new TestFunction());
-            rm.FuncEvents.OutReceiver = this;
-            rm.FuncEvents.Finished += (s, e) => { };
-            rm.FuncStart();
+
+            new DevicesGetter().GetDevices().ForEach((i)=> { Print(i.Id); });
         }
         public void Print(string message)
         {

@@ -15,9 +15,9 @@
         internal void OutAdd(string Out)
         {
             All.AppendLine(Out);
+            this.Out.AppendLine(Out);
             LineAll.Add(Out);
             LineOut.Add(Out);
-            this.Out.AppendLine(Out);
         }
         internal void ErrorAdd(string Error)
         {
@@ -28,10 +28,12 @@
         }
         internal void Clear()
         {
-            LineOut.Clear();
-            LineError.Clear();
             Out.Clear();
             Error.Clear();
+            All.Clear();
+            LineAll.Clear();
+            LineOut.Clear();
+            LineError.Clear();
         }
         public OutputData()
         {

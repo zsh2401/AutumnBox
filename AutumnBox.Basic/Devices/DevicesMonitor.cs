@@ -55,12 +55,12 @@
         /// </summary>
         private void Listening()
         {
-            CommandExecuter executer = new CommandExecuter();
+            IDevicesGetter executer = new DevicesGetter();
             DevicesList last = new DevicesList();
             while (Continue)
             {
                 if (Process.GetProcessesByName("adb").Length == 0) CommandExecuter.Start();
-                executer.GetDevices(out DevicesList now);
+                var now =  executer.GetDevices();
                 if (now != last)
                 {
                     LogD("Devices Change");

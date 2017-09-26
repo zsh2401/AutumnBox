@@ -1,8 +1,7 @@
-﻿using AutumnBox.Basic.Executer;
-using System;
-
-namespace AutumnBox.Basic.Functions.Event
+﻿namespace AutumnBox.Basic.Functions.Event
 {
+    using AutumnBox.Basic.Executer;
+    using System;
     /// <summary>
     /// 功能完成执行的事件参数
     /// </summary>

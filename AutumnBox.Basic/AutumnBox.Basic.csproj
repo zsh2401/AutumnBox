@@ -46,15 +46,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Devices\DevicesGetter.cs" />
     <Compile Include="Devices\Events.cs" />
     <Compile Include="Executer\CommandExecuter\CommandExecuter.cs" />
     <Compile Include="Executer\CommandExecuter\ExecuteFunc.cs" />
+    <Compile Include="Executer\CommandExecuter\ExeType.cs" />
     <Compile Include="Executer\Events.cs" />
-    <Compile Include="Executer\IDevicesGetter.cs" />
+    <Compile Include="Functions\RunningManager\RunningManagerStatus.cs" />
+    <Compile Include="Functions\RunningManager\FuncEventsContainer.cs" />
+    <Compile Include="Util\Interface\IComandeExecuter.cs" />
+    <Compile Include="Util\Interface\IDevicesChangedListener.cs" />
+    <Compile Include="Util\Interface\IDevicesGetter.cs" />
     <Compile Include="Executer\OutputData.cs" />
     <Compile Include="Devices\DevicesList.cs" />
+    <Compile Include="Executer\ABProcess.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Functions\Event\EventArgs.cs" />
     <Compile Include="Functions\ExecuteResult.cs" />
+    <Compile Include="Executer\Command.cs" />
+    <Compile Include="Functions\FunctionModule\Events.cs" />
+    <Compile Include="Functions\FunctionModule\ExecuteType.cs" />
+    <Compile Include="Functions\FunctionModule\FunctionModule.cs" />
+    <Compile Include="Functions\FunctionModule\FunctionModule.Executer.cs" />
+    <Compile Include="Functions\Interface\IFunctionModule.cs" />
     <Compile Include="Functions\Interface\IOutAnalysable.cs" />
     <Compile Include="Devices\DeviceLink.cs" />
     <Compile Include="Devices\DeviceInfoStruct.cs" />
@@ -62,13 +77,12 @@
     <Compile Include="Devices\DeviceStatusEnum.cs" />
     <Compile Include="Devices\DevicesHelper.cs" />
     <Compile Include="Functions\Interface\IOutReceiver.cs" />
-    <Compile Include="Functions\RunningManager.cs" />
+    <Compile Include="Functions\RunningManager\RunningManager.cs" />
     <Compile Include="Functions\FunctionModulesBasic\CustomRecoveryFlasher.cs" />
     <Compile Include="Functions\FunctionModulesBasic\FileSender.cs" />
     <Compile Include="Functions\Event\EventsHandlers.cs" />
     <Compile Include="Functions\FunctionArgs\Args.cs" />
     <Compile Include="Functions\FunctionArgs\RebootOptions.cs" />
-    <Compile Include="Functions\FunctionModule.cs" />
     <Compile Include="Functions\FunctionModulesBasic\RebootOperator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util\BaseObject.cs" />

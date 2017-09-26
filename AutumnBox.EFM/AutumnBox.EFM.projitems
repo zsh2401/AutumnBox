@@ -10,9 +10,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)FunctionArgs\KeyCode.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FunctionArgs\ScreenShoterArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)FunctionModules\ActivityLauncher.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)FunctionModules\BreventServiceActivator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)FunctionModules\ScreenLockDeleter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FunctionModules\ScreenShoter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)FunctionModules\XiaomiBootloaderRelocker.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)FunctionModules\XiaomiSystemUnlocker.cs" />
   </ItemGroup>
@@ -21,7 +23,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Events\" />
-    <Folder Include="$(MSBuildThisFileDirectory)FunctionModules\" />
     <Folder Include="$(MSBuildThisFileDirectory)Interface\" />
   </ItemGroup>
 </Project>

@@ -18,8 +18,8 @@ namespace Tester
     /// </summary>
     class Program
     {
-        static string mi4ID = "9dd1b490";
-        static string mi6ID = "af0fe186";
+        public static string mi4ID = "9dd1b490";
+        public static string mi6ID = "af0fe186";
         
         //[DllImport("kernel32.dll")]
         //static extern bool GenerateConsoleCtrlEvent(int dwCtrlEvent, int dwProcessGroupId);

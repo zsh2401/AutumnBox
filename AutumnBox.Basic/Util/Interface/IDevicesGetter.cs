@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AutumnBox.Basic.Executer
+namespace AutumnBox.Basic.Util
 {
     public interface IDevicesGetter
     {

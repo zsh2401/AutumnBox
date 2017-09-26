@@ -45,15 +45,11 @@
 // #/*]     ]<.    [-]<[-]<[- ]<[    -]<               [-  ]<;*/elif  e    //b
 // |(1        <<     ( __LINE__        /*               >>   `*//45))  |     01U
 //            #                       /*               */     endif            //
-namespace AutumnBox.Basic.Functions
+namespace AutumnBox.Basic.Functions.RunningManager
 {
     using AutumnBox.Basic.Devices;
-    using AutumnBox.Basic.Executer;
-    using AutumnBox.Basic.Functions.Event;
-    using AutumnBox.Basic.Functions.Interface;
     using AutumnBox.Basic.Util;
     using System;
-    using System.Diagnostics;
     /// <summary>
     /// 功能模块运行时托管器,一个托管器仅可以托管/包装一个功能模块,并只可以执行一次
     /// </summary>
@@ -98,7 +94,7 @@ namespace AutumnBox.Basic.Functions
             Fm.Finished += (s, e) => { Status = RunningManagerStatus.Finished; };
             Logger.D("FuntionIsFinish?", Fm.IsFinishEventBound.ToString());
             Status = RunningManagerStatus.Running;
-            Fm.Run();
+            Fm.RunByRunningManager();
         }
         /// <summary>
         /// 强制停止执行管理的正在运行的功能
@@ -107,6 +103,12 @@ namespace AutumnBox.Basic.Functions
         {
             Tools.KillProcessAndChildrens(_pid);
             Status = RunningManagerStatus.Cancel;
+        }
+        /// <summary>
+        /// 强制停止执行管理的正在运行的功能
+        /// </summary>
+        public void FuncKill() {
+            FuncStop();
         }
         /// <summary>
         /// 无需设备连接实例即可创建功能模块托管器
@@ -118,88 +120,6 @@ namespace AutumnBox.Basic.Functions
         {
             fm.DevSimpleInfo = info;
             return new RunningManager(fm);
-        }
-    }
-    /// <summary>
-    /// Nothing....
-    /// </summary>
-    public enum RunningManagerStatus
-    {
-        Loading = -1,
-        Loaded = 0,
-        Running,
-        Finished,
-        Cancel,
-    }
-    /// <summary>
-    /// 整合了一些功能模块的事件
-    /// </summary>
-    public class FuncEventsContainer:BaseObject
-    {
-        public IOutReceiver OutReceiver { get; set; }
-        public event DataReceivedEventHandler OutputReceived
-        {
-            add
-            {
-                AddCheck();
-                Fm.Executer.OutputDataReceived += value;
-            }
-            remove
-            {
-                Fm.Executer.OutputDataReceived -= value;
-            }
-        }
-        public event DataReceivedEventHandler ErrorReceived
-        {
-            add
-            {
-                AddCheck();
-                Fm.Executer.ErrorDataReceived += value;
-            }
-            remove
-            {
-                Fm.Executer.ErrorDataReceived -= value;
-            }
-        }
-        public event StartEventHandler Started
-        {
-            add { AddCheck(); Fm.Started += value; }
-            remove { Fm.Started -= value; }
-        }
-        public event FinishEventHandler Finished
-        {
-            add { AddCheck(); Fm.Finished += value; }
-            remove { Fm.Finished -= value; }
-        }
-        public event ProcessStartEventHandler ProcessStarted
-        {
-            add { AddCheck(); Fm.Executer.ProcessStarted += value; }
-            remove { Fm.Executer.ProcessStarted -= value; }
-        }
-
-        private FunctionModule Fm { get; set; }
-        private RunningManager Rm { get; set; }
-        private void AddCheck()
-        {
-            //if (Rm.Status != RunningManagerStatus.Loaded && Rm.Status != RunningManagerStatus.Loading)
-            //{
-            //    throw new EventAddException("Please add eventhandler on Function not started");
-            //}
-        }
-        internal FuncEventsContainer(RunningManager rm)
-        {
-            this.Fm = rm.Fm;
-            OutputReceived += OnOutputReceived;
-            ErrorReceived += OnErrorReceived;
-        }
-
-        private void OnOutputReceived(object sender, DataReceivedEventArgs e)
-        {
-            OutReceiver.OutReceived(sender,e);
-        }
-        private void OnErrorReceived(object sender, DataReceivedEventArgs e)
-        {
-            OutReceiver.ErrorReceived(sender, e);
         }
     }
 }

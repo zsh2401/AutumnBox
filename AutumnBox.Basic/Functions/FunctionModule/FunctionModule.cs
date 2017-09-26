@@ -35,6 +35,7 @@ namespace AutumnBox.Basic.Functions
     using AutumnBox.Basic.Devices;
     using AutumnBox.Basic.Executer;
     using AutumnBox.Basic.Functions.Event;
+    using AutumnBox.Basic.Functions.Interface;
     using AutumnBox.Basic.Util;
     using System;
     using System.Diagnostics;
@@ -42,8 +43,9 @@ namespace AutumnBox.Basic.Functions
     /// <summary>
     /// 各种功能模块的父类
     /// </summary>
-    public abstract class FunctionModule : BaseObject
+    public abstract partial class FunctionModule : BaseObject
     {
+        #region 事件
         /// <summary>
         /// 当功能模块开始执行时发生
         /// </summary>
@@ -52,7 +54,20 @@ namespace AutumnBox.Basic.Functions
         /// 完成操作时的事件
         /// </summary>
         internal event FinishEventHandler Finished;
-
+        /// <summary>
+        /// 执行时接收到输出时发生
+        /// </summary>
+        internal event DataReceivedEventHandler OutReceived;
+        /// <summary>
+        /// 执行时接收到错误输出时发生
+        /// </summary>
+        internal event DataReceivedEventHandler ErrorReceived;
+        /// <summary>
+        /// 低层开始命令进行时发生,可获取PID
+        /// </summary>
+        internal event ProcessStartedEventHandler ProcessStarted;
+        #endregion
+        #region 保护属性
         /// <summary>
         /// 向已绑定的设备执行adb命令
         /// </summary>
@@ -64,19 +79,16 @@ namespace AutumnBox.Basic.Functions
         /// <summary>
         /// 执行器
         /// </summary>
-        protected internal CommandExecuter Executer = new CommandExecuter();
+        protected CommandExecuter Executer = new CommandExecuter();
         /// <summary>
         /// 功能模块执行时指定的设备id
         /// </summary>
-        protected internal string DeviceID{get { return DevSimpleInfo.Id; }}
-        /// <summary>
-        /// 异步执行的主要线程
-        /// </summary>
-        private Thread MainThread { get; set; }
+        protected internal string DeviceID { get { return DevSimpleInfo.Id; } }
         /// <summary>
         /// 绑定的设备简单信息
-        /// </summary>
+        /// </summary>s
         protected internal DeviceSimpleInfo DevSimpleInfo { get; internal set; }
+        #endregion
         /// <summary>
         /// 判断完成事件是否被绑定
         /// </summary>
@@ -87,25 +99,41 @@ namespace AutumnBox.Basic.Functions
                 return Finished != null ? true : false;
             }
         }
-
-        protected FunctionModule() {
+        /// <summary>
+        /// 异步执行的主要线程
+        /// </summary>
+        private Thread MainThread { get; set; }
+        /// <summary>
+        /// 构造
+        /// </summary>
+        protected FunctionModule()
+        {
             Ae = (command) =>
             { return Executer.AdbExecute(DeviceID, command); };
             Fe = (command) =>
             { return Executer.FastbootExecute(DeviceID, command); };
+            Executer.OutputDataReceived += (s, e) => { OnOutReceived(e); };
+            Executer.ErrorDataReceived += (s, e) => { OnErrorReceived(e); };
+            Executer.ProcessStarted += (s, e) => { OnProcessStarted(e); };
             TAG = GetType().Name;
         }
-        protected FunctionModule(DeviceSimpleInfo info):this() {
+        /// <summary>
+        /// 构造
+        /// </summary>
+        /// <param name="info"></param>
+        protected FunctionModule(DeviceSimpleInfo info) : this()
+        {
             DevSimpleInfo = info;
         }
         /// <summary>
-        /// 开始执行函数,有功能模块托管器进行托管
+        /// 开始执行函数,但不建议直接调用,建议使用RunningManager进行托管
         /// </summary>
         /// <param name="delayTime">延迟执行的时间,如果不写则立刻开始</param>
         /// <returns></returns>
-        internal void Run()
+        internal void RunByRunningManager()
         {
-            MainThread = new Thread(() => {  _Run(); })
+            if (DevSimpleInfo == null) throw new ArgumentNullException();
+            MainThread = new Thread(() => { _Run(); })
             {
                 Name = TAG + " MainMethod"
             };
@@ -121,7 +149,7 @@ namespace AutumnBox.Basic.Functions
             HandingOutput(output, out ExecuteResult executeResult);
             OnFinish(new FinishEventArgs { Result = executeResult });
         }
-        
+        #region 主体
         /// <summary>
         /// 准备执行核心功能时,将调用此方法
         /// </summary>
@@ -136,6 +164,26 @@ namespace AutumnBox.Basic.Functions
         /// 模块的核心代码,强制要求子类进行实现
         /// </summary>
         protected abstract OutputData MainMethod();
+        protected virtual void OnProcessStarted(ProcessStartedEventArgs e)
+        {
+            ProcessStarted?.Invoke(this, e);
+        }
+        /// <summary>
+        /// 引发OutReceived事件
+        /// </summary>
+        /// <param name="e"></param>
+        protected virtual void OnOutReceived(DataReceivedEventArgs e)
+        {
+            OutReceived?.Invoke(this, e);
+        }
+        /// <summary>
+        /// 引发ErrorReceived事件
+        /// </summary>
+        /// <param name="e"></param>
+        protected virtual void OnErrorReceived(DataReceivedEventArgs e)
+        {
+            ErrorReceived?.Invoke(this, e);
+        }
         /// <summary>
         /// 处理输出数据
         /// </summary>
@@ -150,10 +198,11 @@ namespace AutumnBox.Basic.Functions
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="o"></param>
-        protected virtual void OnFinish(FinishEventArgs a)
+        protected virtual void OnFinish(FinishEventArgs e)
         {
             Logger.D(TAG, "Finished");
-            Finished?.Invoke(this, a);
+            Finished?.Invoke(this, e);
         }
+        #endregion
     }
 }

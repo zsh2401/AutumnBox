@@ -2,8 +2,8 @@
 
 namespace AutumnBox.Basic.Executer
 {
-    public class ProcessStartEventArgs : EventArgs {
+    public class ProcessStartedEventArgs : EventArgs {
         public int PID { get; internal set; }
     }
-    public delegate void ProcessStartEventHandler(object sender, ProcessStartEventArgs e);
+    public delegate void ProcessStartedEventHandler(object sender, ProcessStartedEventArgs e);
 }

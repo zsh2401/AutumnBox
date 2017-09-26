@@ -1,6 +1,7 @@
 ﻿namespace AutumnBox.Basic.Devices
 {
     using AutumnBox.Basic.Functions;
+    using AutumnBox.Basic.Functions.RunningManager;
     using AutumnBox.Basic.Util;
     using System;
     using System.Collections;

@@ -1,77 +1,63 @@
-﻿/*
- 命令执行器的主要执行命令函数
- */
+﻿//#define SHOW_COMMAND
 namespace AutumnBox.Basic.Executer
 {
+    using AutumnBox.Basic.Devices;
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    partial class CommandExecuter {
+    partial class CommandExecuter
+    {
         /// <summary>
-        /// 基础的命令执行器
+        /// 执行传入的命令
         /// </summary>
         /// <param name="command"></param>
-        /// <param name="o"></param>
-        public OutputData BasicExecute(ExeType type,string command)
+        /// <returns></returns>
+        public OutputData Execute(Command command)
         {
-            tempOut.Clear();
-            NowExeType = type;
 #if SHOW_COMMAND
-            LogD($"Execute Command {command}");
+            LogD(command.FileName +" " + command.FullCommand);
 #endif
-            MainProcess.StartInfo.Arguments = " " + command;
-            MainProcess.Start();
-            ProcessStarted?.Invoke(this,new ProcessStartEventArgs() { PID = MainProcess.Id});
-            try
-            {
-                MainProcess.BeginOutputReadLine();
-                MainProcess.BeginErrorReadLine();
-            }
-            catch (Exception e) { LogE("Begin Out failed", e); }
-            try
-            {
-                MainProcess.WaitForExit();
-                MainProcess.CancelOutputRead();
-                MainProcess.CancelErrorRead();
-                MainProcess.Close();
-            }
-            catch (Exception e) { LogE("等待退出或关闭流失败", e); }
-            return tempOut;
+            return ABProcess.RunToExited(command.FileName, command.FullCommand);
         }
+
+        [Obsolete("Use executer.Execute(Command) to instead")]
         /// <summary>
         /// 执行adb命令
         /// </summary>
         /// <param name="command"></param>
         /// <returns></returns>
-        public OutputData AdbExecute(string command) {
-            return BasicExecute(ExeType.Adb, command);
+        public OutputData AdbExecute(string command)
+        {
+            return Execute(new Command(command));
         }
+        [Obsolete("Use executer.Execute(Command) to instead")]
         /// <summary>
         /// 向指定设备执行adb命令
         /// </summary>
         /// <param name="command"></param>
         /// <returns></returns>
-        public OutputData AdbExecute(string devId, string command) {
-            return AdbExecute($" -s {devId} {command}");
+        public OutputData AdbExecute(string devId, string command)
+        {
+            return Execute(new Command(new DeviceSimpleInfo() { Id = devId }, command));
         }
+        [Obsolete("Use executer.Execute(Command) to instead")]
         /// <summary>
         /// 执行fastboot命令
         /// </summary>
         /// <param name="command"></param>
         /// <returns></returns>
-        public OutputData FastbootExecute(string command) {
-            return BasicExecute(ExeType.Fastboot, command);
+        public OutputData FastbootExecute(string command)
+        {
+            return Execute(new Command(command, ExeType.Fastboot));
         }
+        [Obsolete("Use executer.Execute(Command) to instead")]
         /// <summary>
         /// 向指定设备执行fastboot命令
         /// </summary>
         /// <param name="devId"></param>
         /// <param name="command"></param>
         /// <returns></returns>
-        public OutputData FastbootExecute(string devId,string command) {
-            return FastbootExecute($" -s {devId} {command}");
+        public OutputData FastbootExecute(string devId, string command)
+        {
+            return Execute(new Command(new DeviceSimpleInfo() { Id = devId }, command, ExeType.Fastboot));
         }
     }
 }
