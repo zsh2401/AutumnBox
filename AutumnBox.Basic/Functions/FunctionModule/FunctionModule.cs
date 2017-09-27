@@ -29,7 +29,6 @@
  *                   别人笑我忒疯癫，我笑自己命太贱；
  *                   不见满街漂亮妹，哪个归得程序员？
 */
-
 namespace AutumnBox.Basic.Functions
 {
     using AutumnBox.Basic.Devices;
@@ -43,17 +42,17 @@ namespace AutumnBox.Basic.Functions
     /// <summary>
     /// 各种功能模块的父类
     /// </summary>
-    public abstract partial class FunctionModule : BaseObject
+    public abstract class FunctionModule : BaseObject,IDisposable
     {
         #region 事件
         /// <summary>
         /// 当功能模块开始执行时发生
         /// </summary>
-        internal event StartEventHandler Started;
+        internal event StartedEventHandler Started;
         /// <summary>
         /// 完成操作时的事件
         /// </summary>
-        internal event FinishEventHandler Finished;
+        internal event FinishedEventHandler Finished;
         /// <summary>
         /// 执行时接收到输出时发生
         /// </summary>
@@ -79,7 +78,7 @@ namespace AutumnBox.Basic.Functions
         /// <summary>
         /// 执行器
         /// </summary>
-        protected CommandExecuter Executer = new CommandExecuter();
+        protected readonly CommandExecuter Executer = new CommandExecuter();
         /// <summary>
         /// 功能模块执行时指定的设备id
         /// </summary>
@@ -100,18 +99,14 @@ namespace AutumnBox.Basic.Functions
             }
         }
         /// <summary>
-        /// 异步执行的主要线程
-        /// </summary>
-        private Thread MainThread { get; set; }
-        /// <summary>
         /// 构造
         /// </summary>
         protected FunctionModule()
         {
             Ae = (command) =>
-            { return Executer.AdbExecute(DeviceID, command); };
+            { return Executer.Execute(new Command(DevSimpleInfo, command)); };
             Fe = (command) =>
-            { return Executer.FastbootExecute(DeviceID, command); };
+            { return Executer.Execute(new Command(DevSimpleInfo, command, ExeType.Fastboot)); };
             Executer.OutputDataReceived += (s, e) => { OnOutReceived(e); };
             Executer.ErrorDataReceived += (s, e) => { OnErrorReceived(e); };
             Executer.ProcessStarted += (s, e) => { OnProcessStarted(e); };
@@ -133,11 +128,10 @@ namespace AutumnBox.Basic.Functions
         internal void RunByRunningManager()
         {
             if (DevSimpleInfo == null) throw new ArgumentNullException();
-            MainThread = new Thread(() => { _Run(); })
+            new Thread(() => { _Run(); })
             {
                 Name = TAG + " MainMethod"
-            };
-            MainThread.Start();
+            }.Start();
         }
         /// <summary>
         /// 运行过程
@@ -166,6 +160,7 @@ namespace AutumnBox.Basic.Functions
         protected abstract OutputData MainMethod();
         protected virtual void OnProcessStarted(ProcessStartedEventArgs e)
         {
+            LogD($"Process ID {e.PID}");
             ProcessStarted?.Invoke(this, e);
         }
         /// <summary>
@@ -202,6 +197,11 @@ namespace AutumnBox.Basic.Functions
         {
             Logger.D(TAG, "Finished");
             Finished?.Invoke(this, e);
+        }
+
+        public void Dispose()
+        {
+            Executer.Dispose();
         }
         #endregion
     }

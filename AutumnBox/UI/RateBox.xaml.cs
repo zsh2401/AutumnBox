@@ -14,7 +14,6 @@ namespace AutumnBox.UI
     public partial class RateBox : Window
     {
         private RunningManager rm;
-        [Obsolete]
         public RateBox(Window owner)
         {
             InitializeComponent();

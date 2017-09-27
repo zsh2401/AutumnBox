@@ -2,10 +2,17 @@
 {
     using AutumnBox.Basic.Executer;
     using AutumnBox.Basic.Util;
+    using System;
     using System.Diagnostics;
-    public class DevicesGetter : BaseObject, IDevicesGetter
+    public sealed class DevicesGetter : BaseObject, IDevicesGetter,IDisposable
     {
         private CommandExecuter executer = new CommandExecuter();
+
+        public void Dispose()
+        {
+            executer.Dispose();
+        }
+
         public DevicesList GetDevices()
         {
             if (Process.GetProcessesByName("adb").Length == 0) CommandExecuter.Start();

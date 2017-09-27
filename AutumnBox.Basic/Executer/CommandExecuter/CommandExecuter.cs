@@ -9,6 +9,7 @@ namespace AutumnBox.Basic.Executer
     using AutumnBox.Basic.Util;
     public sealed partial class CommandExecuter : BaseObject, IDisposable
     {
+        /*Events*/
         /// <summary>
         /// 执行器主进程开始时发生,可通过该事件获取进程PID
         /// </summary>
@@ -33,33 +34,12 @@ namespace AutumnBox.Basic.Executer
             add { ABProcess.ErrorDataReceived += value; }
             remove { ABProcess.ErrorDataReceived -= value; }
         }
+        /*Events*/
+
         /// <summary>
         /// 执行器的底层进程
         /// </summary>
         private ABProcess ABProcess = new ABProcess();
-
-        /// <summary>
-        /// 启动adb服务
-        /// </summary>
-        public static void Start()
-        {
-            new CommandExecuter().AdbExecute("start-server");
-        }
-        /// <summary>
-        /// 关闭adb服务
-        /// </summary>
-        public static void Kill()
-        {
-            new CommandExecuter().AdbExecute("kill-server");
-        }
-        /// <summary>
-        /// 重启adb服务
-        /// </summary>
-        public static void Restart()
-        {
-            Kill();
-            Start();
-        }
         /// <summary>
         /// 释放
         /// </summary>

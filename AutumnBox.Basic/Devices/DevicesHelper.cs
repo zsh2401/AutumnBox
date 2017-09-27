@@ -102,15 +102,16 @@ namespace AutumnBox.Basic.Devices
         {
             Hashtable ht = new Hashtable();
             var executer = new CommandExecuter();
-            try { ht.Add("name", executer.AdbExecute(id, "shell \"cat /system/build.prop | grep \"product.name\"\"").LineOut[0].Split('=')[1]); }
+            
+            try { ht.Add("name", executer.Execute(new Command(id, "shell \"cat /system/build.prop | grep \"product.name\"\"")).LineOut[0].Split('=')[1]); }
             catch { ht.Add("name", ".."); }
     
-            try { ht.Add("brand", executer.AdbExecute(id, "shell \"cat /system/build.prop | grep \"product.brand\"\"").LineOut[0].Split('=')[1]); }
+            try { ht.Add("brand", executer.Execute(new Command(id, "shell \"cat /system/build.prop | grep \"product.brand\"\"")).LineOut[0].Split('=')[1]); }
             catch { ht.Add("brand", ".."); }
 
-            try { ht.Add("androidVersion", executer.AdbExecute(id, "shell \"cat /system/build.prop | grep \"build.version.release\"\"").LineOut[0].Split('=')[1]); }
+            try { ht.Add("androidVersion", executer.Execute(new Command(id, "shell \"cat /system/build.prop | grep \"build.version.release\"\"")).LineOut[0].Split('=')[1]); }
             catch { ht.Add("androidVersion", ".."); }
-            try { ht.Add("model", executer.AdbExecute(id, "shell \"cat /system/build.prop | grep \"product.model\"\"").LineOut[0].Split('=')[1]); }
+            try { ht.Add("model", executer.Execute(new Command(id, "shell \"cat /system/build.prop | grep \"product.model\"\"")).LineOut[0].Split('=')[1]); }
             catch { ht.Add("model", ".."); }
 
             return ht;

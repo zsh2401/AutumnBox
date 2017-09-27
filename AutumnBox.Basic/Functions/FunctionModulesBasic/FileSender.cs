@@ -8,7 +8,7 @@
     /// </summary>
     public sealed class FileSender : FunctionModule
     {
-        public event SimpleFinishEventHandler sendSingleFinish;
+        public event SingleFileSendedEventHandler sendSingleFinish;
         public FileArgs Args { get; private set; }
         
         public FileSender(FileArgs fileArg) : base() {
@@ -31,7 +31,7 @@
                 x = filepath.Split('/');
                 filename = x[x.Length - 1];
                 Ae($"push \"{filepath}\" /sdcard/{filename}");
-                sendSingleFinish?.Invoke();
+                sendSingleFinish?.Invoke(this,new SingleFileSendedEventArgs(filepath));
             }
             return new OutputData();
         }

@@ -49,11 +49,13 @@
     <Compile Include="Devices\DevicesGetter.cs" />
     <Compile Include="Devices\Events.cs" />
     <Compile Include="Executer\CommandExecuter\CommandExecuter.cs" />
-    <Compile Include="Executer\CommandExecuter\ExecuteFunc.cs" />
+    <Compile Include="Executer\CommandExecuter\CommandExecuter.Static.cs" />
+    <Compile Include="Executer\CommandExecuter\CommandExecuter.ExeFunc.cs" />
     <Compile Include="Executer\CommandExecuter\ExeType.cs" />
     <Compile Include="Executer\Events.cs" />
     <Compile Include="Functions\RunningManager\RunningManagerStatus.cs" />
     <Compile Include="Functions\RunningManager\FuncEventsContainer.cs" />
+    <Compile Include="Util\DebugInfo.cs" />
     <Compile Include="Util\Interface\IComandeExecuter.cs" />
     <Compile Include="Util\Interface\IDevicesChangedListener.cs" />
     <Compile Include="Util\Interface\IDevicesGetter.cs" />
@@ -68,7 +70,6 @@
     <Compile Include="Functions\FunctionModule\Events.cs" />
     <Compile Include="Functions\FunctionModule\ExecuteType.cs" />
     <Compile Include="Functions\FunctionModule\FunctionModule.cs" />
-    <Compile Include="Functions\FunctionModule\FunctionModule.Executer.cs" />
     <Compile Include="Functions\Interface\IFunctionModule.cs" />
     <Compile Include="Functions\Interface\IOutAnalysable.cs" />
     <Compile Include="Devices\DeviceLink.cs" />

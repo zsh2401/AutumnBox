@@ -21,7 +21,7 @@ namespace AutumnBox.UI.Custom
     /// </summary>
     public partial class CstmButton : UserControl
     {
-        public event RoutedEventHandler Click;
+        //public event RoutedEventHandler Click;
         public static readonly
             DependencyProperty NeedStatusProperty = 
             DependencyProperty.Register("NeedStatus", typeof(DeviceStatus), typeof(CstmButton));

@@ -14,8 +14,8 @@ namespace AutumnBox.Basic.Functions.Interface
         event DataReceivedEventHandler OutReceived;
         event DataReceivedEventHandler ErrorReceived;
         event ProcessStartedEventHandler ProcessStarted;
-        event StartEventHandler Started;
-        event FinishEventHandler Finished;
+        event StartedEventHandler Started;
+        event FinishedEventHandler Finished;
         void Run();
     }
 }

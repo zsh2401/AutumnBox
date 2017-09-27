@@ -37,18 +37,17 @@
             Reset(new DeviceSimpleInfo { Id = id, Status = status });
         }
         private DeviceLink() { }
-        [Obsolete("You can try to use : RunningManager.Create(AnyLink.Info,AnyFunctionModule);")]
-        /// <summary>
-        /// 获取一个与本连接相关的功能模块托管器
-        /// </summary>
-        /// <param name="func">功能模块</param>
-        /// <returns>托管器</returns>
-        public RunningManager InitRM(FunctionModule func)
-        {
-            LogD("Init FunctionModule " + func.GetType().Name);
-            return RunningManager.Create(this._info, func);
-        }
-        [Obsolete("You can try to use : RunningManager.Create(AnyLink.Info,AnyFunctionModule);")]
+        //[Obsolete("You can try to use : RunningManager.Create(AnyLink.Info,AnyFunctionModule);")]
+        ///// <summary>
+        ///// 获取一个与本连接相关的功能模块托管器
+        ///// </summary>
+        ///// <param name="func">功能模块</param>
+        ///// <returns>托管器</returns>
+        //public RunningManager InitRM(FunctionModule func)
+        //{
+        //    LogD("Init FunctionModule " + func.GetType().Name);
+        //    return RunningManager.Create(this._info, func);
+        //}
         /// <summary>
         /// 获取一个与本连接相关的功能模块托管器
         /// </summary>

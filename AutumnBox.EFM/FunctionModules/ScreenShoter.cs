@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using AutumnBox.Basic.Executer;
-using AutumnBox.Basic.Functions.FunctionArgs;
-
-namespace AutumnBox.Basic.Functions.FunctionModules
+﻿namespace AutumnBox.Basic.Functions.FunctionModules
 {
+    using AutumnBox.Basic.Executer;
+    using AutumnBox.Basic.Functions.FunctionArgs;
     public sealed class ScreenShoter : FunctionModule
     {
         ScreenShoterArgs Args;
@@ -16,7 +12,7 @@ namespace AutumnBox.Basic.Functions.FunctionModules
         {
             OutputData o = new OutputData();
             o.Append(Ae("shell /system/bin/screencap -p /sdcard/screenshot.png"));
-            o.Append(Ae("pull /sdcard/screenshot.png " + Args.localPath));
+            o.Append(Ae("pull /sdcard/screenshot.png " + Args.LocalPath));
             o.Append(Ae("shell rm -rf /sdcard/screenshot.png"));
             return o;
         }

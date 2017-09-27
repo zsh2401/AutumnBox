@@ -1,5 +1,4 @@
-﻿#define SHOW_OUT
-namespace AutumnBox.Basic.Executer
+﻿namespace AutumnBox.Basic.Executer
 {
     using AutumnBox.Basic.Util;
     using System;
@@ -8,7 +7,7 @@ namespace AutumnBox.Basic.Executer
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
-    internal class ABProcess : Process
+    internal sealed class ABProcess : Process
     {
         public event ProcessStartedEventHandler ProcessStarted;
         private OutputData _tempOut = new OutputData();
@@ -26,9 +25,8 @@ namespace AutumnBox.Basic.Executer
             {
                 if (e.Data != null)
                 {
-#if SHOW_OUT
-                    Logger.D(this.GetType().Name, e.Data);
-#endif
+                    if (DebugInfo.SHOW_OUTPUT)
+                        Logger.D(this.GetType().Name, e.Data);
                     _tempOut.OutAdd(e.Data);
                 }
 
@@ -37,10 +35,8 @@ namespace AutumnBox.Basic.Executer
             {
                 if (e.Data != null)
                 {
-#if SHOW_OUT
-                    Logger.D(this.GetType().Name, e.Data);
-#endif
-
+                    if (DebugInfo.SHOW_OUTPUT)
+                        Logger.D(this.GetType().Name, e.Data);
                     _tempOut.ErrorAdd(e.Data);
                 }
 
@@ -67,6 +63,8 @@ namespace AutumnBox.Basic.Executer
         }
         public OutputData RunToExited(string fileName, string args)
         {
+            if (DebugInfo.SHOW_COMMAND)
+                Logger.D(this.GetType().Name,$"{fileName} {args}");
             _tempOut.Clear();
             StartInfo.FileName = fileName;
             StartInfo.Arguments = args;

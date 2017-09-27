@@ -35,12 +35,12 @@
                 Fm.ErrorReceived -= value;
             }
         }
-        public event StartEventHandler Started
+        public event StartedEventHandler Started
         {
             add { AddCheck(); Fm.Started += value; }
             remove { Fm.Started -= value; }
         }
-        public event FinishEventHandler Finished
+        public event FinishedEventHandler Finished
         {
             add { AddCheck(); Fm.Finished += value; }
             remove { Fm.Finished -= value; }

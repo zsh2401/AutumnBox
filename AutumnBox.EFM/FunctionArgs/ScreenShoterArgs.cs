@@ -1,7 +1,8 @@
 ﻿namespace AutumnBox.Basic.Functions.FunctionArgs
 {
-    public struct ScreenShoterArgs
+    public class ScreenShoterArgs
     {
-        public string localPath { get; set; }
+        public string LocalPath { get { return localPath; } set { localPath = value; } }
+        string localPath = ".";
     }
 }
