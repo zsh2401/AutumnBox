@@ -10,7 +10,7 @@ namespace AutumnBox.Basic.Functions
     /// <summary>
     /// 黑域服务激活器
     /// </summary>
-    public sealed class BreventServiceActivator : FunctionModule, IOutAnalysable
+    public sealed class BreventServiceActivator : FunctionModule
     {
         private const string DEFAULT_COMMAND = "shell \"sh /data/data/me.piebridge.brevent/brevent.sh\"";
         protected override OutputData MainMethod()
@@ -18,12 +18,12 @@ namespace AutumnBox.Basic.Functions
              var o = Ae(DEFAULT_COMMAND);
             return o;
         }
-        protected override void HandingOutput(OutputData output, out ExecuteResult result)
+        protected override void HandingOutput(OutputData output, ref ExecuteResult result)
         {
             result = new ExecuteResult(output);
             if (output.Error != null) result.IsSuccessful = false;
             if(output.Out.ToString().ToLower().Contains("warning")) result.IsSuccessful = false;
-            base.HandingOutput(output, out result);
+            base.HandingOutput(output, ref result);
         }
     }
 }

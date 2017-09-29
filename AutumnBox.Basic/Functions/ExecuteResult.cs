@@ -9,7 +9,7 @@
         public string Message
         {
             get { return _message; }
-            internal set { _message = value; _isHandled = true; }
+            internal set { _message = value; }
         }
         /// <summary>
         /// 是否正确完成
@@ -17,7 +17,7 @@
         public bool IsSuccessful
         {
             get { return _isSuccessful; }
-            internal set { _isSuccessful = value; _isHandled = true; }
+            internal set { _isSuccessful = value;  }
         }
         /// <summary>
         /// 具体输出
@@ -27,10 +27,6 @@
             get { return _outputData; }
             internal set { _outputData = value; }
         }
-        /// <summary>
-        /// 是否已经进行处理
-        /// </summary>
-        public bool IsHandled { get { return _isHandled; } }
 
         public ExecuteResult()
         {
@@ -39,7 +35,6 @@
         {
             this.OutputData = o;
         }
-        private bool _isHandled = false;
         private string _message = string.Empty;
         private bool _isSuccessful = true;
         private OutputData _outputData;

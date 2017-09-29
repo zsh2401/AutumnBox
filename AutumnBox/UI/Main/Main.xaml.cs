@@ -120,7 +120,6 @@ namespace AutumnBox
                 RunningManager rm = App.nowLink.GetRunningManager(fs);
                 rm.FuncEvents.Finished += FuncFinish;
                 rm.FuncStart();
-                //ShowRateBox(rm);
                 new FileSendingWindow(this, rm).ShowDialog();
             }
             else

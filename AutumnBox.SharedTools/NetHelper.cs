@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Net;
-using System.Text;
-
-namespace AutumnBox.SharedTools
+﻿namespace AutumnBox.SharedTools
 {
+    using System.IO;
+    using System.Net;
+    using System.Text;
     public static class NetHelper
     {
         public static string GetHtmlCode(string url)

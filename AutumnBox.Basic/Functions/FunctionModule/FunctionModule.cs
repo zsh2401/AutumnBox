@@ -42,7 +42,7 @@ namespace AutumnBox.Basic.Functions
     /// <summary>
     /// 各种功能模块的父类
     /// </summary>
-    public abstract class FunctionModule : BaseObject,IDisposable
+    public abstract class FunctionModule : BaseObject, IDisposable
     {
         #region 事件
         /// <summary>
@@ -65,6 +65,10 @@ namespace AutumnBox.Basic.Functions
         /// 低层开始命令进行时发生,可获取PID
         /// </summary>
         internal event ProcessStartedEventHandler ProcessStarted;
+        /// <summary>
+        /// 如果是被非正常停止的,此值为True
+        /// </summary>
+        protected internal bool WasFrociblyStop = false;
         #endregion
         #region 保护属性
         /// <summary>
@@ -82,11 +86,11 @@ namespace AutumnBox.Basic.Functions
         /// <summary>
         /// 功能模块执行时指定的设备id
         /// </summary>
-        protected internal string DeviceID { get { return DevSimpleInfo.Id; } }
+        protected string DeviceID { get { return DevSimpleInfo.Id; } }
         /// <summary>
         /// 绑定的设备简单信息
         /// </summary>s
-        protected internal DeviceSimpleInfo DevSimpleInfo { get; internal set; }
+        protected internal DeviceSimpleInfo DevSimpleInfo { get; set; }
         #endregion
         /// <summary>
         /// 判断完成事件是否被绑定
@@ -138,10 +142,16 @@ namespace AutumnBox.Basic.Functions
         /// </summary>
         private void _Run()
         {
-            OnStart(new StartEventArgs());
-            var output = MainMethod();
-            HandingOutput(output, out ExecuteResult executeResult);
-            OnFinish(new FinishEventArgs { Result = executeResult });
+            OnStarted(new StartEventArgs());
+            var fullOutput = MainMethod();
+            ExecuteResult executeResult = new ExecuteResult
+            {
+
+                IsSuccessful = !(WasFrociblyStop),
+                OutputData = fullOutput
+            };
+            HandingOutput(fullOutput, ref executeResult);
+            OnFinished(new FinishEventArgs { Result = executeResult });
         }
         #region 主体
         /// <summary>
@@ -149,7 +159,7 @@ namespace AutumnBox.Basic.Functions
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="a"></param>
-        protected virtual void OnStart(StartEventArgs a)
+        protected virtual void OnStarted(StartEventArgs a)
         {
             Logger.D(TAG, "Started");
             Started?.Invoke(this, a);
@@ -184,21 +194,22 @@ namespace AutumnBox.Basic.Functions
         /// </summary>
         /// <param name="output"></param>
         /// <param name="result"></param>
-        protected virtual void HandingOutput(OutputData output, out ExecuteResult result)
+        protected virtual void HandingOutput(OutputData output, ref ExecuteResult executeResult)
         {
-            result = new ExecuteResult(output);
         }
         /// <summary>
-        /// 当核心代码执行完成时,将调用此方法
+        /// 引发Finished事件
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="o"></param>
-        protected virtual void OnFinish(FinishEventArgs e)
+        protected virtual void OnFinished(FinishEventArgs e)
         {
             Logger.D(TAG, "Finished");
             Finished?.Invoke(this, e);
         }
-
+        /// <summary>
+        /// 析构!
+        /// </summary>
         public void Dispose()
         {
             Executer.Dispose();

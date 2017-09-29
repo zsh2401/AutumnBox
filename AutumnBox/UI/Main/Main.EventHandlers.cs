@@ -124,7 +124,9 @@
             {
                 HideRateBox();
             }));
-
+            if (!e.Result.IsSuccessful) {
+                MMessageBox.ShowDialog(this,"Fail","Fuck");
+            }
         }
 
         /// <summary>
@@ -174,11 +176,13 @@
         private void PushFinish(object sender, FinishEventArgs e)
         {
             Log.d(mweTag, "Push finish");
-            this.rateBox.Dispatcher.Invoke(new Action(() =>
+            if (e.Result.IsSuccessful)
             {
-                this.HideRateBox();
-            }));
-            MMessageBox.ShowDialog(this, Application.Current.FindResource("Notice").ToString(), Application.Current.FindResource("PushOK").ToString());
+                MMessageBox.ShowDialog(this, Application.Current.Resources["Notice"].ToString(), Application.Current.FindResource("PushOK").ToString());
+            }
+            else {
+                MMessageBox.ShowDialog(this, Application.Current.Resources["Notice"].ToString(), "Push_Failed 0x123123121232");
+            }
         }
 
         /// <summary>

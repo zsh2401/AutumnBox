@@ -3,9 +3,28 @@
     using AutumnBox.Basic.Util;
     using System;
     using System.Collections.Generic;
+    using System.Diagnostics;
     using System.Text;
+    public interface IOutSender {
+        event DataReceivedEventHandler OutReceived;
+        event DataReceivedEventHandler ErrorReceived;
+    }
     public class OutputData : BaseObject
     {
+        public IOutSender OutSender {
+            set {
+                if (outSender != null)
+                {
+                    throw new EventAddException("Only set one!");
+                }
+                else {
+                    outSender = value;
+                    outSender.ErrorReceived += (s, e) => { if (e != null) ErrorAdd(e.Data); };
+                    outSender.OutReceived += (s, e) => { if (e != null) OutAdd(e.Data); };
+                }
+            }
+        }
+        private IOutSender outSender = null;
         public List<string> LineAll { get; private set; }
         public List<string> LineOut { get; private set; }
         public List<string> LineError { get; private set; }

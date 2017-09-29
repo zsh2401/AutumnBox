@@ -20,9 +20,9 @@ namespace AutumnBox.Basic.Functions
             OutputData o = Ae("disable-verity");
             return o;
         }
-        protected override void OnFinish(FinishEventArgs a)
+        protected override void OnFinished(FinishEventArgs a)
         {
-            base.OnFinish(a);
+            base.OnFinished(a);
             Ae("reboot");
         }
     }

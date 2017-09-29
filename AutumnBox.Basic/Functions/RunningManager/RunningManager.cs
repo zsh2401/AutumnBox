@@ -56,18 +56,6 @@ namespace AutumnBox.Basic.Functions.RunningManager
     public sealed class RunningManager:BaseObject
     {
         /// <summary>
-        /// 被托管的功能模块的各种事件
-        /// </summary>
-        public FuncEventsContainer FuncEvents { get; private set; }
-        /// <summary>
-        /// 当前托管器的状态
-        /// </summary>
-        public RunningManagerStatus Status { get; private set; }
-        /// <summary>
-        /// 被托管的功能模块
-        /// </summary>
-        public FunctionModule Fm { get; private set; }
-        /// <summary>
         /// 在功能模块中的命令执行器开始时,pid将会被赋值,以用于终止执行
         /// </summary>
         private int _pid;
@@ -77,21 +65,36 @@ namespace AutumnBox.Basic.Functions.RunningManager
         /// <param name="fm"></param>
         private RunningManager(FunctionModule fm)
         {
-            Status = RunningManagerStatus.Loading;
             this.Fm = fm;
             this.FuncEvents = new FuncEventsContainer(this);
             //绑定好事件,在进程开始时获取PID用于结束进程
             FuncEvents.ProcessStarted += (s_, e_) => { _pid = e_.PID; };
             Status = RunningManagerStatus.Loaded;
         }
+        /*        PUBLIC         */
+        /// <summary>
+        /// 被托管的功能模块的各种事件
+        /// </summary>
+        public FuncEventsContainer FuncEvents { get; private set; }
+        /// <summary>
+        /// 当前托管器的状态
+        /// </summary>
+        public RunningManagerStatus Status { get; private set; } = RunningManagerStatus.Loading;
+        /// <summary>
+        /// 被托管的功能模块
+        /// </summary>
+        public FunctionModule Fm { get; private set; }
         /// <summary>
         /// 开始执行托管的功能模块
         /// </summary>
         public void FuncStart()
         {
+            //检查完成事件是否被订阅
             if (!Fm.IsFinishEventBound) throw new EventNotBoundException();
+            //检查是否已经被执行过一次
             if (this.Status != RunningManagerStatus.Loaded) throw new Exception("this Running Manager is finished,Please use new Running Manager");
-            Fm.Finished += (s, e) => { Status = RunningManagerStatus.Finished; };
+            //绑定事件,在完成时将托管器设定为已完成
+            Fm.Finished += (s, e) => { if(e.Result.IsSuccessful) Status = RunningManagerStatus.Finished; };
             Logger.D("FuntionIsFinish?", Fm.IsFinishEventBound.ToString());
             Status = RunningManagerStatus.Running;
             Fm.RunByRunningManager();
@@ -101,14 +104,9 @@ namespace AutumnBox.Basic.Functions.RunningManager
         /// </summary>
         public void FuncStop()
         {
+            Fm.WasFrociblyStop = true;
             Tools.KillProcessAndChildrens(_pid);
             Status = RunningManagerStatus.Cancel;
-        }
-        /// <summary>
-        /// 强制停止执行管理的正在运行的功能
-        /// </summary>
-        public void FuncKill() {
-            FuncStop();
         }
         /// <summary>
         /// 无需设备连接实例即可创建功能模块托管器

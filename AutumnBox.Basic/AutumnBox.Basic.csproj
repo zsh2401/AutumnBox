@@ -68,10 +68,8 @@
     <Compile Include="Functions\ExecuteResult.cs" />
     <Compile Include="Executer\Command.cs" />
     <Compile Include="Functions\FunctionModule\Events.cs" />
-    <Compile Include="Functions\FunctionModule\ExecuteType.cs" />
     <Compile Include="Functions\FunctionModule\FunctionModule.cs" />
     <Compile Include="Functions\Interface\IFunctionModule.cs" />
-    <Compile Include="Functions\Interface\IOutAnalysable.cs" />
     <Compile Include="Devices\DeviceLink.cs" />
     <Compile Include="Devices\DeviceInfoStruct.cs" />
     <Compile Include="Devices\DevicesMonitor.cs" />
