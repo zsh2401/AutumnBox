@@ -19,6 +19,7 @@
     using System.Windows.Media.Imaging;
     using System.Windows.Shapes;
     using System.Diagnostics;
+    using AutumnBox.Helper;
 
     /// <summary>
     /// FileSendingWindow.xaml 的交互逻辑

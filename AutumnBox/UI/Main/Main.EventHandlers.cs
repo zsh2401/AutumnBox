@@ -61,13 +61,13 @@
         /// <param name="updateVersionInfo">更新信息</param>
         private void UpdateChecker_UpdateCheckFinish(bool haveUpdate, VersionInfo updateVersionInfo)
         {
-            if (haveUpdate)
-            {
-                this.Dispatcher.Invoke(new Action(() =>
-                {
-                    new UpdateNoticeWindow(this, updateVersionInfo).ShowDialog();
-                }));
-            }
+            //if (haveUpdate)
+            //{
+            //    this.Dispatcher.Invoke(new Action(() =>
+            //    {
+            //        new UpdateNoticeWindow(this, updateVersionInfo).ShowDialog();
+            //    }));
+            //}
         }
         #endregion
 

@@ -3,6 +3,7 @@
     using AutumnBox.Basic;
     using AutumnBox.Basic.Devices;
     using AutumnBox.Debug;
+    using AutumnBox.NetUtil;
     using AutumnBox.UI;
     using AutumnBox.Util;
     using System;
@@ -17,27 +18,36 @@
         {
             InitEvents();//绑定各种事件
             ChangeButtonAndImageByStatus(DeviceStatus.NO_DEVICE);//将所有按钮设置成关闭状态
-            GetNotice();//开始获取公告
-            UpdateCheck();//更新检测
-            InitWebPage();//初始化浏览器
 #if DEBUG
             this.labelTitle.Content += "  " + StaticData.nowVersion.version + "-Debug";
 #else
             this.labelTitle.Content += "  " + StaticData.nowVersion.version + "-Release";
 #endif
         }
-        void GetNotice() {
-            //公告获取器
-            NoticeGetter noticeGetter = new NoticeGetter();
-            noticeGetter.NoticeGetFinish += NoticeGetter_NoticeGetFinish;
-            noticeGetter.Get();
+        void GetNotice()
+        {
+            new MOTDGetter().Run((s, e) =>
+            {
+                textBoxGG.Dispatcher.Invoke(() =>
+                {
+                    textBoxGG.Text = e.Header + " : " + e.Message;
+                });
+            });
         }
         void UpdateCheck()
         {
-            //更新检测器
-            UpdateChecker updateChecker = new UpdateChecker();
-            updateChecker.UpdateCheckFinish += UpdateChecker_UpdateCheckFinish;
-            updateChecker.Check();
+            UpdateCheckFinishedEventArgs ex = new UpdateCheckFinishedEventArgs();
+            new NetUtil.UpdateChecker().Run((s, e) =>
+            {
+                this.Dispatcher.Invoke(() =>
+                {
+                    ex = e;
+                });
+            });
+            if (ex.NeedUpdate) {
+                new WTF().ShowDialog();
+            }
+
         }
         void InitWebPage()
         {

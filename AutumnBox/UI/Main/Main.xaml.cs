@@ -2,6 +2,7 @@
 using AutumnBox.Basic.Functions;
 using AutumnBox.Basic.Functions.RunningManager;
 using AutumnBox.Debug;
+using AutumnBox.Helper;
 using AutumnBox.UI;
 using AutumnBox.Util;
 using Microsoft.Win32;
@@ -294,6 +295,7 @@ namespace AutumnBox
 
         private void MainWindow_Initialized(object sender, EventArgs e)
         {
+    
             Log.d(TAG, "Init Window Finish");
         }
         /// <summary>
@@ -310,6 +312,10 @@ namespace AutumnBox
                 MMessageBox.ShowDialog(this, FindResource("Notice2").ToString(), FindResource("FristLaunchNotice").ToString());
                 Config.IsFirstLaunch = false;
             }
+            BlurHelper.EnableBlur(this);
+            GetNotice();//开始获取公告
+            UpdateCheck();//更新检测
+            InitWebPage();//初始化浏览器
         }
 
         private void buttonStartBrventService_Click(object sender, RoutedEventArgs e)
@@ -348,7 +354,8 @@ namespace AutumnBox
 
         private void buttonChangeTheme_Click(object sender, RoutedEventArgs e)
         {
-
+            //new UpdateNoticeWindow().ShowDialog();
         }
+
     }
 }

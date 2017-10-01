@@ -13,6 +13,7 @@ using AutumnBox.Basic.Functions.RunningManager;
 using AutumnBox.Basic.Functions.FunctionModules;
 using Newtonsoft.Json.Linq;
 using AutumnBox.Util;
+using AutumnBox.NetUtil;
 
 namespace Tester
 {
@@ -26,11 +27,11 @@ namespace Tester
         }
         public void _Run()
         {
-            JConfig jc = new JConfig();
-            jc.Save();
-            Print(AutumnBox.Util.Config.IsFirstLaunch.ToString());
-            //jc.SourceData["IsFistLaunch"] = false;
-
+            new AutumnBox.NetUtil.UpdateChecker().Run((s, e) =>
+            {
+                Print(e.NeedUpdate.ToString());
+                Print(e.Message);
+            });
         }
         public void Print(string message)
         {

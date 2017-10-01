@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Util
 {
-    public class JConfig
+    public class ConfigJson
     {
         private static class Default
         {
@@ -30,7 +30,7 @@ namespace AutumnBox.Util
         private static readonly string KEY = "1210626737";
         private static readonly string CONFIG_FILE = "alo.j";
         public JObject SourceData { get; private set; }
-        public JConfig()
+        public ConfigJson()
         {
             Read();
         }

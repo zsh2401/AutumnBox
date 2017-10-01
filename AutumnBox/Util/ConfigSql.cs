@@ -5,6 +5,7 @@ using System.IO;
 
 namespace AutumnBox.Util
 {
+    [Obsolete]
     internal class ConfigSql
     {
         private readonly string[] initSqls = {

@@ -12,7 +12,7 @@ namespace AutumnBox.Util
 {
     public static class Config
     {
-        private static JConfig jConfig = new JConfig();
+        private static ConfigJson jConfig = new ConfigJson();
         public static bool IsFirstLaunch { get {
                 return Convert.ToBoolean(jConfig["IsFirstLaunch"]);
             } set {

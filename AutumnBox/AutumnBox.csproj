@@ -120,7 +120,11 @@
     </Compile>
     <Compile Include="DebugInfo.cs" />
     <Compile Include="Debug\Log.cs" />
+    <Compile Include="Helper\BlurHelper.cs" />
     <Compile Include="Helper\UIHelper.cs" />
+    <Compile Include="NetUtil\ApiUrl.cs" />
+    <Compile Include="NetUtil\MOTDGetter.cs" />
+    <Compile Include="NetUtil\UpdateChecker.cs" />
     <Compile Include="StaticData.cs" />
     <Compile Include="UI\AboutWindow.xaml.cs">
       <DependentUpon>AboutWindow.xaml</DependentUpon>
@@ -163,16 +167,18 @@
       <DependentUpon>RateBox.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="UI\UIHelper.cs" />
     <Compile Include="UI\UpdateNoticeWindow.xaml.cs">
       <DependentUpon>UpdateNoticeWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\WTF.xaml.cs">
+      <DependentUpon>WTF.xaml</DependentUpon>
     </Compile>
     <Compile Include="Util\Config.cs" />
     <Compile Include="Util\ConfigSql.cs" />
     <Compile Include="Util\Exceptions.cs" />
     <Compile Include="Util\Guider.cs" />
     <Compile Include="Helper\LanguageHelper.cs" />
-    <Compile Include="Util\JConfig.cs" />
+    <Compile Include="Util\ConfigJson.cs" />
     <Compile Include="Util\Notice.cs" />
     <Compile Include="Util\NoticeGetter.cs" />
     <Compile Include="Util\Tools.cs" />
@@ -253,6 +259,10 @@
       <Generator>XamlIntelliSenseFileGenerator</Generator>
     </Page>
     <Page Include="UI\UpdateNoticeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\WTF.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -9,6 +9,7 @@ namespace AutumnBox
 {
     internal static class DebugInfo
     {
+        public static readonly bool USE_LOCAL_API = true;
         public static readonly bool USE_EN =
 #if USE_EN
             true;
