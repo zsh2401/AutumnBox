@@ -118,6 +118,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="DebugInfo.cs" />
     <Compile Include="Debug\Log.cs" />
     <Compile Include="Helper\UIHelper.cs" />
     <Compile Include="StaticData.cs" />
@@ -171,6 +172,7 @@
     <Compile Include="Util\Exceptions.cs" />
     <Compile Include="Util\Guider.cs" />
     <Compile Include="Helper\LanguageHelper.cs" />
+    <Compile Include="Util\JConfig.cs" />
     <Compile Include="Util\Notice.cs" />
     <Compile Include="Util\NoticeGetter.cs" />
     <Compile Include="Util\Tools.cs" />

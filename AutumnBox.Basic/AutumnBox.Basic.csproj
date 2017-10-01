@@ -55,7 +55,7 @@
     <Compile Include="Executer\Events.cs" />
     <Compile Include="Functions\RunningManager\RunningManagerStatus.cs" />
     <Compile Include="Functions\RunningManager\FuncEventsContainer.cs" />
-    <Compile Include="Util\DebugInfo.cs" />
+    <Compile Include="DebugInfo.cs" />
     <Compile Include="Util\Interface\IComandeExecuter.cs" />
     <Compile Include="Util\Interface\IDevicesChangedListener.cs" />
     <Compile Include="Util\Interface\IDevicesGetter.cs" />

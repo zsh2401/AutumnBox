@@ -13,6 +13,7 @@
             StreamReader sr = new StreamReader(myStream, Encoding.GetEncoding("utf-8"));
             strHTML = sr.ReadToEnd();
             myStream.Close();
+            sr.Close();
             return strHTML;
         }
     }

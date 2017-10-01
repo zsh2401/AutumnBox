@@ -29,7 +29,7 @@ namespace AutumnBox.UI
         private void buttonClose_Click(object sender, RoutedEventArgs e)
         {
             if (CheckBoxSkip.IsChecked == true) {
-                Config.skipVersion = info.version;
+                Config.SkipVersion = info.version;
             }
             this.Close();
         }

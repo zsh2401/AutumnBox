@@ -47,7 +47,7 @@ namespace AutumnBox.Util
                 VersionInfo newVersionInfo = GetUpdateInfo();
                 if (new Version(StaticData.nowVersion.version) < new Version(newVersionInfo.version)//服务器端的版本号大于当前程序
                 &&//并且
-                Config.skipVersion != newVersionInfo.version)//没有设置跳过这个版本
+                Config.SkipVersion != newVersionInfo.version)//没有设置跳过这个版本
                 {
                     UpdateCheckFinish(true, newVersionInfo);
                 }

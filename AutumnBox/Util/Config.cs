@@ -10,27 +10,18 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Util
 {
-    internal static class Config
+    public static class Config
     {
-        internal static bool isShowSideloadTur
-        {
-            set { new ConfigSql().Set("boolValues", "isShowSideloadTur", value); }
-            get { return Convert.ToBoolean(new ConfigSql().Read("boolValues", "isShowSideloadTur")); }
-        }
-        internal static string language
-        {
-            set { new ConfigSql().Set("stringValues", "language", value); }
-            get { return new ConfigSql().Read("stringValues", "language").ToString(); }
-        }
-        internal static string skipVersion
-        {
-            set { new ConfigSql().Set("stringValues", "skipVersion", value); }
-            get { return new ConfigSql().Read("stringValues", "skipVersion").ToString(); }
-        }
-        internal static bool isFristLaunch
-        {
-            set { new ConfigSql().Set("boolValues", "isFristLaunch", value); }
-            get { return bool.Parse(new ConfigSql().Read("boolValues", "isFristLaunch").ToString()); }
-        }
+        private static JConfig jConfig = new JConfig();
+        public static bool IsFirstLaunch { get {
+                return Convert.ToBoolean(jConfig["IsFirstLaunch"]);
+            } set {
+                jConfig["IsFirstLaunch"] = value;
+            } }
+        public static string SkipVersion { get {
+                return jConfig["SkipVersion"].ToString();
+            } set {
+                jConfig["SkipVersion"] = value;
+            } }
     }
 }

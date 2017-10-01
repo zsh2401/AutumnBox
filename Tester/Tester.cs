@@ -11,6 +11,8 @@ using AutumnBox.Basic.Functions.Event;
 using AutumnBox.Basic.Executer;
 using AutumnBox.Basic.Functions.RunningManager;
 using AutumnBox.Basic.Functions.FunctionModules;
+using Newtonsoft.Json.Linq;
+using AutumnBox.Util;
 
 namespace Tester
 {
@@ -24,7 +26,11 @@ namespace Tester
         }
         public void _Run()
         {
-            new DevicesGetter().GetDevices().ForEach((i)=> { Print(i.Id); });
+            JConfig jc = new JConfig();
+            jc.Save();
+            Print(AutumnBox.Util.Config.IsFirstLaunch.ToString());
+            //jc.SourceData["IsFistLaunch"] = false;
+
         }
         public void Print(string message)
         {
@@ -47,7 +53,7 @@ namespace Tester
 
         public void FuncFinished(object sender, FinishEventArgs e)
         {
-            Print(e.Result.IsHandled.ToString());
+            //Print(e.Result.IsHandled.ToString());
         }
     }
 }

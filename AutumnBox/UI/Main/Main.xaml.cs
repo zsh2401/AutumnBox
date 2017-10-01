@@ -305,10 +305,10 @@ namespace AutumnBox
         {
             App.devicesListener.Start();//开始设备监听
             //哦,如果是第一次启动本软件,那么就显示一下提示吧!
-            if (Config.isFristLaunch)
+            if (Config.IsFirstLaunch)
             {
                 MMessageBox.ShowDialog(this, FindResource("Notice2").ToString(), FindResource("FristLaunchNotice").ToString());
-                Config.isFristLaunch = false;
+                Config.IsFirstLaunch = false;
             }
         }
 
