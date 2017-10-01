@@ -55,7 +55,7 @@ namespace AutumnBox
         {
             this.LabelClose.Background = new ImageBrush
             {
-                ImageSource = Tools.BitmapToBitmapImage(Res.DynamicIcons.close_normal)
+                ImageSource = UIHelper.BitmapToBitmapImage(Res.DynamicIcons.close_normal)
             };
         }
 
@@ -63,7 +63,7 @@ namespace AutumnBox
         {
             this.LabelClose.Background = new ImageBrush
             {
-                ImageSource = Tools.BitmapToBitmapImage(Res.DynamicIcons.close_selected)
+                ImageSource = UIHelper.BitmapToBitmapImage(Res.DynamicIcons.close_selected)
             };
         }
 
@@ -76,7 +76,7 @@ namespace AutumnBox
         {
             this.LabelMin.Background = new ImageBrush
             {
-                ImageSource = Tools.BitmapToBitmapImage(Res.DynamicIcons.min_selected)
+                ImageSource = UIHelper.BitmapToBitmapImage(Res.DynamicIcons.min_selected)
             };
         }
 
@@ -84,7 +84,7 @@ namespace AutumnBox
         {
             this.LabelMin.Background = new ImageBrush
             {
-                ImageSource = Tools.BitmapToBitmapImage(Res.DynamicIcons.min_normal)
+                ImageSource = UIHelper.BitmapToBitmapImage(Res.DynamicIcons.min_normal)
             };
         }
 
@@ -342,7 +342,7 @@ namespace AutumnBox
             ProcessStartInfo info = new ProcessStartInfo();
             info.WorkingDirectory = "adb/";
             info.FileName = "cmd.exe";
-            if (Tools.IsWin10)
+            if (SystemHelper.IsWin10)
             {
                 if (ChoiceBox.ShowDialog(this, FindResource("Notice").ToString(), FindResource("ShellChoiceTip").ToString(), "Powershell", "CMD"))
                 {

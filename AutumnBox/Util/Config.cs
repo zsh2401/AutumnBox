@@ -25,5 +25,17 @@ namespace AutumnBox.Util
                 jConfig.SourceData["SkipVersion"] = value;
                 jConfig.Save();
             } }
+        public static string Lang
+        {
+            get
+            {
+                return jConfig["Lang"].ToString();
+            }
+            set
+            {
+                jConfig.SourceData["Lang"] = value;
+                jConfig.Save();
+            }
+        }
     }
 }

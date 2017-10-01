@@ -121,6 +121,7 @@
     <Compile Include="DebugInfo.cs" />
     <Compile Include="Debug\Log.cs" />
     <Compile Include="Helper\BlurHelper.cs" />
+    <Compile Include="Helper\SystemHelper.cs" />
     <Compile Include="Helper\UIHelper.cs" />
     <Compile Include="NetUtil\ApiUrl.cs" />
     <Compile Include="NetUtil\MOTDGetter.cs" />
@@ -138,13 +139,6 @@
     <Compile Include="UI\ContactWindow.xaml.cs">
       <DependentUpon>ContactWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Custom\CstmButton.xaml.cs">
-      <DependentUpon>CstmButton.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UI\Custom\CstmTitle.xaml.cs">
-      <DependentUpon>CstmTitle.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UI\Custom\CstmButton.cs" />
     <Compile Include="UI\DonateWindow.xaml.cs">
       <DependentUpon>DonateWindow.xaml</DependentUpon>
     </Compile>
@@ -176,10 +170,7 @@
     <Compile Include="Util\Guider.cs" />
     <Compile Include="Helper\LanguageHelper.cs" />
     <Compile Include="Util\ConfigJson.cs" />
-    <Compile Include="Util\Notice.cs" />
-    <Compile Include="Util\NoticeGetter.cs" />
     <Compile Include="Util\Tools.cs" />
-    <Compile Include="Util\UpdateChecker.cs" />
     <Compile Include="Util\VersionInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -223,14 +214,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Custom\CstmButton.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UI\Custom\CstmTitle.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="UI\DonateWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -269,9 +252,6 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Debug\TodoList.txt" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AutumnBox.Basic\AutumnBox.Basic.csproj">

@@ -27,8 +27,8 @@ namespace Tester
         }
         public void _Run()
         {
-            Print(AutumnBox.Util.Config.IsFirstLaunch.ToString());
-            AutumnBox.Util.Config.IsFirstLaunch = false;
+            Print(AutumnBox.Util.Config.SkipVersion);
+            AutumnBox.Util.Config.SkipVersion = "xasdas";
             //Print(AutumnBox.Util.Config.IsFirstLaunch.ToString());
         }
         public void Print(string message)

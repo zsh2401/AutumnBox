@@ -40,7 +40,7 @@ namespace AutumnBox.Util
             }
         }
         private JObject GetSourceData(string url) {
-            return JObject.Parse(Tools.GetHtmlCode(url));
+            return JObject.Parse(SharedTools.NetHelper.GetHtmlCode(url));
         }
     }
 }

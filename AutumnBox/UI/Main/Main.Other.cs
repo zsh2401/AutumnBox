@@ -2,6 +2,7 @@
 using AutumnBox.Basic.Functions;
 using AutumnBox.Basic.Functions.RunningManager;
 using AutumnBox.Debug;
+using AutumnBox.Helper;
 using AutumnBox.UI;
 using System;
 using System.Text.RegularExpressions;
@@ -85,26 +86,26 @@ namespace AutumnBox
             switch (status)
             {
                 case DeviceStatus.FASTBOOT:
-                    this.DeviceStatusImage.Source = Tools.BitmapToBitmapImage(Res.DynamicIcons.fastboot);
+                    this.DeviceStatusImage.Source = UIHelper.BitmapToBitmapImage(Res.DynamicIcons.fastboot);
                     this.DeviceStatusLabel.Content = FindResource("DeviceInFastboot").ToString();
                     break;
                 case DeviceStatus.RECOVERY:
-                    this.DeviceStatusImage.Source = Tools.BitmapToBitmapImage(Res.DynamicIcons.recovery);
+                    this.DeviceStatusImage.Source = UIHelper.BitmapToBitmapImage(Res.DynamicIcons.recovery);
                     this.DeviceStatusLabel.Content = FindResource("DeviceInRecovery").ToString();
                     break;
                 case DeviceStatus.RUNNING:
-                    this.DeviceStatusImage.Source = Tools.BitmapToBitmapImage(Res.DynamicIcons.poweron);
+                    this.DeviceStatusImage.Source = UIHelper.BitmapToBitmapImage(Res.DynamicIcons.poweron);
                     this.DeviceStatusLabel.Content = FindResource("DeviceInRunning").ToString();
                     break;
                 case DeviceStatus.SIDELOAD:
-                    this.DeviceStatusImage.Source = Tools.BitmapToBitmapImage(Res.DynamicIcons.recovery);
+                    this.DeviceStatusImage.Source = UIHelper.BitmapToBitmapImage(Res.DynamicIcons.recovery);
                     this.DeviceStatusLabel.Content = FindResource("DeviceInSideload").ToString();
                     break;
                 case DeviceStatus.DEBUGGING_DEVICE:
                     this.DeviceStatusLabel.Content = FindResource("DeviceIsDebugging").ToString();
                     break;
                 default:
-                    this.DeviceStatusImage.Source = Tools.BitmapToBitmapImage(Res.DynamicIcons.no_selected);
+                    this.DeviceStatusImage.Source = UIHelper.BitmapToBitmapImage(Res.DynamicIcons.no_selected);
                     this.DeviceStatusLabel.Content = FindResource("PleaseSelectedADevice").ToString();
                     break;
             }

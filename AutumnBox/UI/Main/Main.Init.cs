@@ -42,9 +42,7 @@
                 {
                     this.Dispatcher.Invoke(() =>
                     {
-
                         new UpdateNoticeWindow(this, e).ShowDialog();
-
                     });
                 }
             });

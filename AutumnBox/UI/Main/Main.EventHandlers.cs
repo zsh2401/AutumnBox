@@ -41,36 +41,6 @@
             };
         }
 
-        #region 界面的事件
-        /// <summary>
-        /// 获取公告完成的事件处理
-        /// </summary>
-        /// <param name="notice">获取到的公告</param>
-        private void NoticeGetter_NoticeGetFinish(Notice notice)
-        {
-            textBoxGG.Dispatcher.Invoke(new Action(() =>
-            {
-                textBoxGG.Text = FindResource("Notice_") + " : " + notice.content;
-            }));
-        }
-
-        /// <summary>
-        /// 检测更新完成后的处理
-        /// </summary>
-        /// <param name="haveUpdate">是否有更新</param>
-        /// <param name="updateVersionInfo">更新信息</param>
-        private void UpdateChecker_UpdateCheckFinish(bool haveUpdate, VersionInfo updateVersionInfo)
-        {
-            //if (haveUpdate)
-            //{
-            //    this.Dispatcher.Invoke(new Action(() =>
-            //    {
-            //        new UpdateNoticeWindow(this, updateVersionInfo).ShowDialog();
-            //    }));
-            //}
-        }
-        #endregion
-
         #region 功能事件
         /// <summary>
         /// 通用事件处理

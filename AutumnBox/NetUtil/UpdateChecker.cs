@@ -29,11 +29,15 @@ namespace AutumnBox.NetUtil
             string data = File.ReadAllText(@"E:\zsh2401.github.io\softsupport\autumnbox\update\index.html");
 #endif
             JObject j = JObject.Parse(data);
+            bool needUpdate = 
+                //当前版本小于检测到的版本
+                (new Version(StaticData.nowVersion.version) < new Version(j["Version"].ToString())
+                &&
+                //并且没有被设置跳过
+                new Version(Config.SkipVersion) != new Version(j["Version"].ToString()));
             var e = new UpdateCheckFinishedEventArgs
             {
-                NeedUpdate = (new Version(StaticData.nowVersion.version) < new Version(j["Version"].ToString()) 
-                && 
-                new Version(Config.SkipVersion) != new Version(j["Version"].ToString())),
+                NeedUpdate = needUpdate,
                 Time = new DateTime(Convert.ToInt32(j["Date"][0].ToString()),
                 Convert.ToInt32(j["Date"][1].ToString()),
                 Convert.ToInt32(j["Date"][2].ToString())),

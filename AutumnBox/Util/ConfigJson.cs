@@ -21,11 +21,10 @@ namespace AutumnBox.Util
                 {
                     { "Lang","zh-CN"},
                     { "IsFirstLaunch",true },
-                    { "SkipVersion", "xx" }
+                    { "SkipVersion", "0.10.0" }
                 };
             return j;
         }
-        private static readonly string KEY = "1210626737";
         private static readonly string CONFIG_FILE = "alo.j";
         public JObject SourceData { get; private set; }
         public ConfigJson()
@@ -39,16 +38,22 @@ namespace AutumnBox.Util
                 SourceData = defaultJ;
                 Save();
             }
+            catch (Exception e) {
+                Log.d("Catcho e Exp",e.ToString());
+            }
         }
         public void Save()
         {
-            Log.d("ConfigJson Saving", this.SourceData.ToString());
-            WriteToFile(CONFIG_FILE, this.SourceData.ToString());
+            //Log.d("ConfigJson Saving", this.SourceData.ToString());
+            File.WriteAllText(CONFIG_FILE, this.SourceData.ToString()); 
         }
         private void Read()
         {
-            string content = String.Empty;
-            ReadForFile(CONFIG_FILE, ref content);
+            FileStream fs = new FileStream(CONFIG_FILE, FileMode.Open, FileAccess.Read);
+            StreamReader sr = new StreamReader(fs);
+            string  content = sr.ReadToEnd();
+            fs.Close();
+            sr.Close();
             SourceData = JObject.Parse(content);
         }
         public JToken this[string key]
@@ -57,19 +62,6 @@ namespace AutumnBox.Util
             set { SourceData[key] = value; }
         }
         /***************STATIC***************/
-        private static bool IsEn()
-        {
-            try
-            {
-                string content = File.ReadAllText(CONFIG_FILE);
-                JObject.Parse(content);
-                return false;
-            }
-            catch (JsonReaderException)
-            {
-                return true;
-            }
-        }
         private static string En(string Key, string content)
         {
             //http://www.jb51.net/article/58442.htm
@@ -91,47 +83,6 @@ namespace AutumnBox.Util
             }
             return new string(data);
         }
-        private static void InitFile()
-        {
-            WriteToFile(CONFIG_FILE, defaultJ.ToString());
-        }
-        private static bool ReadForFile(string path, ref string content)
-        {
-#if DEBUG
-            if (IsEn())
-            {
-                InitFile();
-            }
-#else
-            if (!IsEn()) {
-                InitFile();
-            }
-#endif
-            try
-            {
-                FileStream fs = new FileStream(CONFIG_FILE, FileMode.Open, FileAccess.Read);
-                StreamReader sr = new StreamReader(fs);
-                content = sr.ReadToEnd();
-#if! DEBUG
-                content = De(KEY, content);
-#endif
-                fs.Close();
-                sr.Close();
-                return true;
-            }
-            catch (FileNotFoundException)
-            {
-                return false;
-            }
-        }
-        private static void WriteToFile(string path, string content)
-        {
-            Log.d("Saving", content);
-#if DEBUG
-            File.WriteAllText(CONFIG_FILE, content);
-#else
-            File.WriteAllText(CONFIG_FILE,En(KEY, content));
-#endif
-        }
+
     }
 }
