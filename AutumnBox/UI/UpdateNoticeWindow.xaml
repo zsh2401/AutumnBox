@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AutumnBox.UI"
         mc:Ignorable="d"
-        Title="UpdateNoticeWindow" Height="300" Width="300" ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterScreen" Topmost="True" Background="{DynamicResource BasicBrush}">
+        Title="UpdateNoticeWindow" Height="300" Width="300" ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterOwner" Topmost="True" Background="{DynamicResource BasicBrush}">
     <Grid Margin="3,0,3,3" Background="White">
         <TextBlock x:Name="buttonBaiduPanDownlod" HorizontalAlignment="Left" Margin="21,220,0,0" TextWrapping="Wrap" Text="{DynamicResource BaiduPan}" VerticalAlignment="Top" TextDecorations="Underline" Foreground="#FF3FADE0" Width="87" FontSize="18" Height="26" MouseDown="buttonBaiduPanDownlod_MouseDown"/>
         <TextBlock x:Name="buttonGithubReleaseDownload" HorizontalAlignment="Left" Margin="160,220,0,0" TextWrapping="Wrap" Text="{DynamicResource GithubRelease}" VerticalAlignment="Top" TextDecorations="Underline" Foreground="#FF3FADE0" Width="130" FontSize="18" Height="26" MouseDown="buttonGithubReleaseDownload_MouseDown"/>

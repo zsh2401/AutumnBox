@@ -16,7 +16,8 @@ namespace AutumnBox.UI
         string version;
         public UpdateNoticeWindow(Window owner, UpdateCheckFinishedEventArgs e)
         {
-            LH.Content = " ";
+            InitializeComponent();
+            LH.Content = e.Header;
             TextBoxContent.Text = e.Message;
             baiduUrl = e.BaiduPanUrl;
             version = e.Version;

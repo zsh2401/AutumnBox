@@ -170,9 +170,6 @@
     <Compile Include="UI\UpdateNoticeWindow.xaml.cs">
       <DependentUpon>UpdateNoticeWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\WTF.xaml.cs">
-      <DependentUpon>WTF.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Util\Config.cs" />
     <Compile Include="Util\ConfigSql.cs" />
     <Compile Include="Util\Exceptions.cs" />
@@ -259,10 +256,6 @@
       <Generator>XamlIntelliSenseFileGenerator</Generator>
     </Page>
     <Page Include="UI\UpdateNoticeWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UI\WTF.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

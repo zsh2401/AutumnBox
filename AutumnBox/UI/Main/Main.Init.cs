@@ -36,18 +36,18 @@
         }
         void UpdateCheck()
         {
-            UpdateCheckFinishedEventArgs ex = new UpdateCheckFinishedEventArgs();
             new NetUtil.UpdateChecker().Run((s, e) =>
             {
-                this.Dispatcher.Invoke(() =>
+                if (e.NeedUpdate)
                 {
-                    ex = e;
-                });
-            });
-            if (ex.NeedUpdate) {
-                new WTF().ShowDialog();
-            }
+                    this.Dispatcher.Invoke(() =>
+                    {
 
+                        new UpdateNoticeWindow(this, e).ShowDialog();
+
+                    });
+                }
+            });
         }
         void InitWebPage()
         {

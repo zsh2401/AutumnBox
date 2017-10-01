@@ -16,12 +16,14 @@ namespace AutumnBox.Util
         public static bool IsFirstLaunch { get {
                 return Convert.ToBoolean(jConfig["IsFirstLaunch"]);
             } set {
-                jConfig["IsFirstLaunch"] = value;
+                jConfig.SourceData["IsFirstLaunch"] = value;
+                jConfig.Save();
             } }
         public static string SkipVersion { get {
                 return jConfig["SkipVersion"].ToString();
             } set {
-                jConfig["SkipVersion"] = value;
+                jConfig.SourceData["SkipVersion"] = value;
+                jConfig.Save();
             } }
     }
 }

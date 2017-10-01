@@ -20,22 +20,22 @@ namespace AutumnBox.Util
             private static JObject Init()
             {
                 JObject j = new JObject();
-                j.Add("SkipVersion", SkipVersion);
-                j.Add("IsFristLaunch", IsFirstLaunch);
+                j.Add("SkipVersion", "   ");
+                j.Add("IsFristLaunch", false);
                 return j;
             }
-            public static readonly string SkipVersion = String.Empty;
-            public static readonly bool IsFirstLaunch = true;
         }
         private static readonly string KEY = "1210626737";
         private static readonly string CONFIG_FILE = "alo.j";
         public JObject SourceData { get; private set; }
         public ConfigJson()
         {
+            Log.d("fuck",Default.defaultJ.ToString());
             Read();
         }
         public void Save()
         {
+            Log.d("ConfigJson Saving",this.SourceData.ToString());
             WriteToFile(CONFIG_FILE, this.SourceData.ToString());
         }
         private void Read()

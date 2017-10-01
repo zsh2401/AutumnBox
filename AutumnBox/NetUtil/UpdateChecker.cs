@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 namespace AutumnBox.NetUtil
 {
     public class UpdateCheckFinishedEventArgs:EventArgs {
+        public string Header { get; set; } = "Ok!";
         public bool NeedUpdate { get; set; } = false;
         public string Version { get; set; }
         public string Message { get; set; }
