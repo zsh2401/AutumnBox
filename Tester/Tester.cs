@@ -27,11 +27,9 @@ namespace Tester
         }
         public void _Run()
         {
-            new AutumnBox.NetUtil.UpdateChecker().Run((s, e) =>
-            {
-                Print(e.NeedUpdate.ToString());
-                Print(e.Message);
-            });
+            Print(AutumnBox.Util.Config.IsFirstLaunch.ToString());
+            AutumnBox.Util.Config.IsFirstLaunch = false;
+            //Print(AutumnBox.Util.Config.IsFirstLaunch.ToString());
         }
         public void Print(string message)
         {

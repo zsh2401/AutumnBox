@@ -14,41 +14,45 @@ namespace AutumnBox.Util
 {
     public class ConfigJson
     {
-        private static class Default
+        public static readonly JObject defaultJ = Init();
+        private static JObject Init()
         {
-            public static readonly JObject defaultJ = Init();
-            private static JObject Init()
-            {
-                JObject j = new JObject();
-                j.Add("SkipVersion", "   ");
-                j.Add("IsFristLaunch", false);
-                return j;
-            }
+            JObject j = new JObject
+                {
+                    { "Lang","zh-CN"},
+                    { "IsFirstLaunch",true },
+                    { "SkipVersion", "xx" }
+                };
+            return j;
         }
         private static readonly string KEY = "1210626737";
         private static readonly string CONFIG_FILE = "alo.j";
         public JObject SourceData { get; private set; }
         public ConfigJson()
         {
-            Log.d("fuck",Default.defaultJ.ToString());
-            Read();
+            try
+            {
+                Read();
+            }
+            catch (FileNotFoundException)
+            {
+                SourceData = defaultJ;
+                Save();
+            }
         }
         public void Save()
         {
-            Log.d("ConfigJson Saving",this.SourceData.ToString());
+            Log.d("ConfigJson Saving", this.SourceData.ToString());
             WriteToFile(CONFIG_FILE, this.SourceData.ToString());
         }
         private void Read()
         {
             string content = String.Empty;
-            if (!File.Exists(CONFIG_FILE))
-            {
-                WriteToFile(CONFIG_FILE, Default.defaultJ.ToString());
-            }
             ReadForFile(CONFIG_FILE, ref content);
             SourceData = JObject.Parse(content);
         }
-        public JToken this[string key] {
+        public JToken this[string key]
+        {
             get { return SourceData[key]; }
             set { SourceData[key] = value; }
         }
@@ -57,9 +61,7 @@ namespace AutumnBox.Util
         {
             try
             {
-                string content = String.Empty;
-                //ReadForFile(CONFIG_FILE, ref content);
-
+                string content = File.ReadAllText(CONFIG_FILE);
                 JObject.Parse(content);
                 return false;
             }
@@ -91,12 +93,17 @@ namespace AutumnBox.Util
         }
         private static void InitFile()
         {
-            WriteToFile(CONFIG_FILE, Default.defaultJ.ToString());
+            WriteToFile(CONFIG_FILE, defaultJ.ToString());
         }
         private static bool ReadForFile(string path, ref string content)
         {
 #if DEBUG
-            if (IsEn()) {
+            if (IsEn())
+            {
+                InitFile();
+            }
+#else
+            if (!IsEn()) {
                 InitFile();
             }
 #endif
@@ -119,17 +126,12 @@ namespace AutumnBox.Util
         }
         private static void WriteToFile(string path, string content)
         {
-            FileStream fs = new FileStream(CONFIG_FILE, FileMode.OpenOrCreate, FileAccess.ReadWrite);
-            StreamWriter sw = new StreamWriter(fs);
+            Log.d("Saving", content);
 #if DEBUG
-            sw.Write(content);
+            File.WriteAllText(CONFIG_FILE, content);
 #else
-            sw.Write(En(KEY, content));
-            Log.d("JCONFIG", En(KEY, content));
+            File.WriteAllText(CONFIG_FILE,En(KEY, content));
 #endif
-            sw.Flush();
-            sw.Close();
-            fs.Close();
         }
     }
 }

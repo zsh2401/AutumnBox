@@ -14,7 +14,7 @@ namespace AutumnBox.Util
     {
         private static ConfigJson jConfig = new ConfigJson();
         public static bool IsFirstLaunch { get {
-                return Convert.ToBoolean(jConfig["IsFirstLaunch"]);
+                return Convert.ToBoolean(jConfig.SourceData["IsFirstLaunch"]);
             } set {
                 jConfig.SourceData["IsFirstLaunch"] = value;
                 jConfig.Save();

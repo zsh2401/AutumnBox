@@ -1,4 +1,5 @@
 ﻿using AutumnBox.SharedTools;
+using AutumnBox.Util;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -30,11 +31,15 @@ namespace AutumnBox.NetUtil
             JObject j = JObject.Parse(data);
             var e = new UpdateCheckFinishedEventArgs
             {
-                NeedUpdate = new Version(StaticData.nowVersion.version) <= new Version(j["Version"].ToString()),
+                NeedUpdate = (new Version(StaticData.nowVersion.version) < new Version(j["Version"].ToString()) 
+                && 
+                new Version(Config.SkipVersion) != new Version(j["Version"].ToString())),
                 Time = new DateTime(Convert.ToInt32(j["Date"][0].ToString()),
                 Convert.ToInt32(j["Date"][1].ToString()),
                 Convert.ToInt32(j["Date"][2].ToString())),
                 Message = j["Message"].ToString(),
+                Version = j["Version"].ToString(),
+                Header = j["Header"].ToString(),
                 BaiduPanUrl = j["BaiduPan"].ToString(),
                 GithubReleaseUrl = j["GithubRelease"].ToString()
             };
