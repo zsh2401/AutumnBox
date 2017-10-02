@@ -12,7 +12,7 @@ namespace AutumnBox.Basic.Util
     /// <summary>
     /// 日志记录器
     /// </summary>
-    internal static class Logger
+    public static class Logger
     {
         public static readonly string LOG_FILE = "basic.log";
         /// <summary>
@@ -20,7 +20,7 @@ namespace AutumnBox.Basic.Util
         /// </summary>
         /// <param name="tag"></param>
         /// <param name="message"></param>
-        public static void D(string tag, string message)
+        public static void D(object tag, string message)
         {
 #if DEBUG
             T(tag, message);
@@ -31,10 +31,17 @@ namespace AutumnBox.Basic.Util
         /// </summary>
         /// <param name="tag"></param>
         /// <param name="message"></param>
-        public static void T(string tag, string message)
+        public static void T(object tag, string message)
         {
-            //string m = $"[{DateTime.Now.Hour}:{DateTime.Now.Minute}:{DateTime.Now.Second}] { tag} : {message}";
-            string m = SharedTools.Logger.ToFullMessage(tag,message);
+            string t;
+            if (tag is string)
+            {
+                t = tag.ToString();
+            }
+            else {
+                t = tag.GetType().Name;
+            }
+            string m = SharedTools.Logger.ToFullMessage(t,message);
             Trace.WriteLine(m);
             SharedTools.Logger.WriteToFile(LOG_FILE,m);
         }
@@ -44,7 +51,7 @@ namespace AutumnBox.Basic.Util
         /// <param name="tag"></param>
         /// <param name="message"></param>
         /// <param name="e"></param>
-        public static void E(string tag, string message, Exception e, bool showInRelease = true)
+        public static void E(object tag, string message, Exception e, bool showInRelease = true)
         {
             if (showInRelease)
             {

@@ -1,13 +1,11 @@
-﻿//#define SHOW_OUTPUT
-//#define SHOW_COMMAND
-namespace AutumnBox.Basic.Executer
+﻿namespace AutumnBox.Basic.Executer
 {
     using System;
     using System.Collections.Generic;
     using System.Diagnostics;
     using AutumnBox.Basic.Devices;
     using AutumnBox.Basic.Util;
-    public sealed partial class CommandExecuter : BaseObject, IDisposable
+    public sealed partial class CommandExecuter : BaseObject, IDisposable,IOutSender
     {
         /*Events*/
         /// <summary>

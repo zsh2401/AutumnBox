@@ -12,18 +12,24 @@
     /// </summary>
     public sealed class DeviceLink : BaseObject
     {
-        public enum LinkStatus {
+        public enum LinkStatus
+        {
             WaitToInit,
             Loading,
             Loaded
         }
-        public enum LinkType {
+        public enum LinkType
+        {
             USB = 0,
             LOCAL_NET,
         }
-        public bool IsOK { get {
+        public bool IsOK
+        {
+            get
+            {
                 return (DeviceID == null) ? true : false;
-            } }
+            }
+        }
         public string DeviceID { get { return _info.Id; } set { _info.Id = value; } }
 
         public DeviceSimpleInfo Info { get { return _info; } }
@@ -37,17 +43,6 @@
             Reset(new DeviceSimpleInfo { Id = id, Status = status });
         }
         private DeviceLink() { }
-        //[Obsolete("You can try to use : RunningManager.Create(AnyLink.Info,AnyFunctionModule);")]
-        ///// <summary>
-        ///// 获取一个与本连接相关的功能模块托管器
-        ///// </summary>
-        ///// <param name="func">功能模块</param>
-        ///// <returns>托管器</returns>
-        //public RunningManager InitRM(FunctionModule func)
-        //{
-        //    LogD("Init FunctionModule " + func.GetType().Name);
-        //    return RunningManager.Create(this._info, func);
-        //}
         /// <summary>
         /// 获取一个与本连接相关的功能模块托管器
         /// </summary>
@@ -72,15 +67,16 @@
         /// </summary>
         public void RefreshDeviceInfo()
         {
-            if (Info.Status != DeviceStatus.FASTBOOT)
-                _deviceInfo = DevicesHelper.GetDeviceInfo(Info.Id, DevicesHelper.GetBuildInfo(Info.Id), Info.Status);
+            //if (Info.Status != DeviceStatus.FASTBOOT)
+            _deviceInfo = DevicesHelper.GetDeviceInfo(Info.Id, DevicesHelper.GetBuildInfo(Info.Id), Info.Status);
         }
 
         /// <summary>
         /// 创建一个空的设备连接
         /// </summary>
         /// <returns></returns>
-        public static DeviceLink CreateNone() {
+        public static DeviceLink CreateNone()
+        {
             return new DeviceLink();
         }
         /// <summary>
@@ -100,7 +96,7 @@
         /// <returns></returns>
         public static DeviceLink Create(DeviceSimpleInfo info)
         {
-            return new DeviceLink(info.Id,info.Status);
+            return new DeviceLink(info.Id, info.Status);
         }
     }
 }

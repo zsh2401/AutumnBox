@@ -15,7 +15,11 @@ namespace AutumnBox.Basic.Functions
         private const string DEFAULT_COMMAND = "shell \"sh /data/data/me.piebridge.brevent/brevent.sh\"";
         protected override OutputData MainMethod()
         {
-             var o = Ae(DEFAULT_COMMAND);
+            var o = 
+                new ActivityLauncher(new ActivityLaunchArgs()
+                { PackageName = "me.piebridge.brevent", ActivityName = ".ui.BreventActivity" })
+                { DevSimpleInfo = this.DevSimpleInfo}.FastRun();
+            o.Append(Ae(DEFAULT_COMMAND));
             return o;
         }
         protected override void HandingOutput(OutputData output, ref ExecuteResult result)

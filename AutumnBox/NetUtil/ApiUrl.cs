@@ -8,7 +8,7 @@ namespace AutumnBox.NetUtil
 {
     class ApiUrl
     {
-        public static readonly string MOTD = "https://zsh2401.github.io/softsupport/autumnbox/motd/";
-        public static readonly string Update = "https://zsh2401.github.io/softsupport/autumnbox/update/";
+        public static readonly string MOTD = "https://api.zsh2401.top/softsupport/autumnbox/motd/";
+        public static readonly string Update = "https://api.zsh2401.top/softsupport/autumnbox/update/";
     }
 }

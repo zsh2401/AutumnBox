@@ -137,6 +137,13 @@ namespace AutumnBox.Basic.Functions
                 Name = TAG + " MainMethod"
             }.Start();
         }
+        internal OutputData FastRun() {
+            LogD("Fast Run");
+            OutputData o = new OutputData();
+            Finished += (s, e) => { o = e.OutputData; };
+            _Run();
+            return o;
+        }
         /// <summary>
         /// 运行过程
         /// </summary>

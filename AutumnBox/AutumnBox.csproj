@@ -121,6 +121,7 @@
     <Compile Include="DebugInfo.cs" />
     <Compile Include="Debug\Log.cs" />
     <Compile Include="Helper\BlurHelper.cs" />
+    <Compile Include="Helper\IChangeByStatus.cs" />
     <Compile Include="Helper\SystemHelper.cs" />
     <Compile Include="Helper\UIHelper.cs" />
     <Compile Include="NetUtil\ApiUrl.cs" />
@@ -139,6 +140,9 @@
     <Compile Include="UI\ContactWindow.xaml.cs">
       <DependentUpon>ContactWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Cstm\CstmButton.xaml.cs">
+      <DependentUpon>CstmButton.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\DonateWindow.xaml.cs">
       <DependentUpon>DonateWindow.xaml</DependentUpon>
     </Compile>
@@ -148,9 +152,12 @@
     <Compile Include="UI\LinkHelpWindow.xaml.cs">
       <DependentUpon>LinkHelpWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Main\Main.Other.cs" />
-    <Compile Include="UI\Main\Main.EventHandlers.cs" />
-    <Compile Include="UI\Main\Main.Init.cs" />
+    <Compile Include="UI\Main\Main._ButtonEventHandlers.cs" />
+    <Compile Include="UI\Main\Main._RateBox.cs" />
+    <Compile Include="UI\Main\Main._OtherControlEventHandler.cs" />
+    <Compile Include="UI\Main\Main.UIChanger.cs" />
+    <Compile Include="UI\Main\Main.FuncEventHandlers.cs" />
+    <Compile Include="UI\Main\Main.CstmInit.cs" />
     <Compile Include="UI\Main\Main.xaml.cs">
       <DependentUpon>Main.xaml</DependentUpon>
     </Compile>
@@ -211,6 +218,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\ContactWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Cstm\CstmButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

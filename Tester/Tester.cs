@@ -14,6 +14,7 @@ using AutumnBox.Basic.Functions.FunctionModules;
 using Newtonsoft.Json.Linq;
 using AutumnBox.Util;
 using AutumnBox.NetUtil;
+using AutumnBox.Basic.Functions.FunctionArgs;
 
 namespace Tester
 {
@@ -22,14 +23,22 @@ namespace Tester
         public DeviceSimpleInfo defaultInfo = new DeviceSimpleInfo() { Id = "xxxxx", Status = DeviceStatus.RUNNING };
         public void Run()
         {
+            CommandExecuter.Restart();
             _Run();
             Pause();
         }
         public void _Run()
         {
-            Print(AutumnBox.Util.Config.SkipVersion);
-            AutumnBox.Util.Config.SkipVersion = "xasdas";
-            //Print(AutumnBox.Util.Config.IsFirstLaunch.ToString());
+            var rm = RunningManager.Create(
+                new DeviceSimpleInfo()
+                { Id = Program.mi4ID},new MiFlash(
+                    new MiFlasherArgs()
+                    { batFileName = @"D:\☆下载暂存\cancro_images_7.9.21_20170921.0000.00_6.0_cn\flash_all.bat" }));
+            Print("CreateFinished");
+            rm.FuncEvents.OutReceiver = this;
+            rm.FuncEvents.Finished += (s,e) => { Print(e.Result.IsSuccessful.ToString()); };
+            Print("WillStart");
+            rm.FuncStart();
         }
         public void Print(string message)
         {

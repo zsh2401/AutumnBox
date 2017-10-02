@@ -10,7 +10,14 @@
     public class FuncEventsContainer : BaseObject
     {
         /****************************PUBLIC************************/
-        public IOutReceiver OutReceiver { get; set; }
+        bool IsSetOutReceiver = false;
+        public IOutReceiver OutReceiver { set {
+                if (!IsSetOutReceiver) {
+                    OutputReceived += value.OutReceived;
+                    ErrorReceived += value.ErrorReceived;
+                    IsSetOutReceiver = true;
+                }
+            } }
         public event DataReceivedEventHandler OutputReceived
         {
             add

@@ -26,7 +26,7 @@
     <s:String x:Key="Notice_">公告</s:String>
     <s:String x:Key="ChangeTheme">更改主题</s:String>
     <s:String x:Key="SkipThisVersion">此版本不再提示</s:String>
-    <s:String x:Key="GithubRelease">Github Release</s:String>
+    <s:String x:Key="Github">Github</s:String>
     <s:String x:Key="BaiduPan">百度网盘</s:String>
     <s:String x:Key="Shutdown">关机</s:String>
     <s:String x:Key="UnlockScreenLock">解除手机屏幕锁</s:String>

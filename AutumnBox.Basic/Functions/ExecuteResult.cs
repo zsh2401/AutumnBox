@@ -6,26 +6,18 @@
         /// <summary>
         /// 提示信息
         /// </summary>
-        public string Message
-        {
-            get { return _message; }
-            internal set { _message = value; }
-        }
+        public string Message { get; internal set; } = string.Empty;
         /// <summary>
         /// 是否正确完成
         /// </summary>
-        public bool IsSuccessful
-        {
-            get { return _isSuccessful; }
-            internal set { _isSuccessful = value;  }
-        }
+        public bool IsSuccessful { get; internal set; } = true;
         /// <summary>
         /// 具体输出
         /// </summary>
         public OutputData OutputData
         {
-            get { return _outputData; }
-            internal set { _outputData = value; }
+            get;
+            internal set;
         }
 
         public ExecuteResult()
@@ -35,8 +27,5 @@
         {
             this.OutputData = o;
         }
-        private string _message = string.Empty;
-        private bool _isSuccessful = true;
-        private OutputData _outputData;
     }
 }

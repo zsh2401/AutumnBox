@@ -6,8 +6,8 @@
     using System.Diagnostics;
     using System.Text;
     public interface IOutSender {
-        event DataReceivedEventHandler OutReceived;
-        event DataReceivedEventHandler ErrorReceived;
+        event DataReceivedEventHandler OutputDataReceived;
+        event DataReceivedEventHandler ErrorDataReceived;
     }
     public class OutputData : BaseObject
     {
@@ -19,8 +19,8 @@
                 }
                 else {
                     outSender = value;
-                    outSender.ErrorReceived += (s, e) => { if (e != null) ErrorAdd(e.Data); };
-                    outSender.OutReceived += (s, e) => { if (e != null) OutAdd(e.Data); };
+                    outSender.ErrorDataReceived += (s, e) => { if (e != null) ErrorAdd(e.Data); };
+                    outSender.OutputDataReceived += (s, e) => { if (e != null) OutAdd(e.Data); };
                 }
             }
         }

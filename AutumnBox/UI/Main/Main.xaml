@@ -4,12 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AutumnBox"
+        xmlns:cstm="clr-namespace:AutumnBox.UI.Cstm"
         xmlns:mui="http://firstfloorsoftware.com/ModernUI"
     xmlns:ui="clr-namespace:AutumnBox.UI" x:Name="MainWindow" x:Class="AutumnBox.Window1"
         mc:Ignorable="d"
-        Title="AutumnBox" Height="669.712" Width="1053.321" Foreground="#FF1B1919" ResizeMode="NoResize" Closed="MainWindow_Closed" Background="White" Loaded="MainWindow_Loaded" Initialized="MainWindow_Initialized" WindowStyle="None">
+        Title="AutumnBox" Height="669.712" Width="1053.321" Foreground="#FF1B1919" ResizeMode="NoResize" Closed="MainWindow_Closed" Background="White" Loaded="MainWindow_Loaded" WindowStyle="None">
     <Grid HorizontalAlignment="Left" Width="1054" Margin="0,0,-1,0" Height="670" VerticalAlignment="Top">
-        <Grid Background="{DynamicResource BasicBrush}" MouseMove="Grid_MouseMove" RenderTransformOrigin="0.498,0.712" HorizontalAlignment="Left" Width="1054" Height="36" VerticalAlignment="Top">
+        <Grid Background="{DynamicResource BasicBrush}" RenderTransformOrigin="0.498,0.712" HorizontalAlignment="Left" Width="1054" Height="36" VerticalAlignment="Top">
             <Menu Background="#00F0F0F0" Margin="348,4,445,0" RenderTransformOrigin="0.499,0.479">
                 <MenuItem Height="29" Width="169" Foreground="#FFFBFAFA" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" >
                     <MenuItem.Icon>
@@ -54,7 +55,7 @@
             <TabItem Header="{DynamicResource Normal}" Background="{DynamicResource BasicBrush}" Margin="-2,-3,0,0" BorderBrush="{DynamicResource BasicBrush}" MinHeight="160" FontFamily="Microsoft YaHei UI Light">
                 <Grid Background="#00E5E5E5" Margin="0,0,-3,7">
                     <Grid HorizontalAlignment="Left" Height="204" Margin="10,10,0,0" VerticalAlignment="Top" Width="753" Background="White">
-                        <ListBox x:Name="DevicesListBox" HorizontalAlignment="Left" Height="154" Margin="531,10,0,0" VerticalAlignment="Top" Width="222" SelectionChanged="DevicesListBox_SelectionChanged" Background="#00000000" Foreground="{DynamicResource BasicBrush}" BorderBrush="#FFABADB3"/>
+                        <ListBox x:Name="DevicesListBox" DisplayMemberPath="Id" HorizontalAlignment="Left" Height="154" Margin="531,10,0,0" VerticalAlignment="Top" Width="222" SelectionChanged="DevicesListBox_SelectionChanged" Background="#00000000" Foreground="{DynamicResource BasicBrush}" BorderBrush="#FFABADB3"/>
                         <Image x:Name="DeviceStatusImage" HorizontalAlignment="Left" Height="100" Margin="39,0,0,0" VerticalAlignment="Top" Width="100" Source="/AutumnBox.Res;component/Images/DynamicIcons/no_selected.png"/>
                         <Label x:Name="DeviceStatusLabel" Content="{DynamicResource PleaseSelectedADevice}" HorizontalAlignment="Left" Margin="0,100,0,0" VerticalAlignment="Top" Height="55" Width="181" Foreground="Black" FontSize="14" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Microsoft YaHei UI Light"/>
                         <Grid HorizontalAlignment="Left" Height="174" Margin="166,16,0,0" VerticalAlignment="Top" Width="365">
@@ -69,9 +70,9 @@
                     </Grid>
                     <Grid HorizontalAlignment="Left" Height="204" Margin="763,10,0,0" VerticalAlignment="Top" Width="239" Background="White">
                         <Button x:Name="buttonRebootToSystem" Content="{StaticResource RebootToSystem}" Margin="10,10,10,0" VerticalAlignment="Top" Height="33" Background="{x:Null}" BorderBrush="#33000000" FontSize="18" FontFamily="Microsoft YaHei UI Light" Click="buttonRebootToSystem_Click" Foreground="Black"/>
-                        <Button x:Name="buttonRebootToRecovery" Content="{StaticResource RebootToRecovery}" Margin="10,48,10,0" VerticalAlignment="Top" Height="33" Background="{x:Null}" BorderBrush="#33000000" FontSize="18" FontFamily="Microsoft YaHei UI Light" Click="buttonRebootToRecovery_Click" Foreground="Black"/>
+                        <Button x:Name="buttonRebootToRecovery" Content="{StaticResource RebootToRecovery}" Margin="10,48,10,0" VerticalAlignment="Top" Height="33" Background="{x:Null}" BorderBrush="#33000000" FontSize="18" FontFamily="Microsoft YaHei UI Light" Click="ButtonRebootToRecovery_Click" Foreground="Black"/>
                         <Button x:Name="buttonRebootToBootloader" Content="{StaticResource RebootToBootloader}" Margin="10,86,10,0" VerticalAlignment="Top" Height="33" Background="{x:Null}" BorderBrush="#33000000" FontSize="18" FontFamily="Microsoft YaHei UI Light" Click="buttonRebootToBootloader_Click" Foreground="Black"/>
-                        <Button x:Name="buttonStartShell"  Content="{StaticResource ADB_CMD}" Margin="11,124,10,0" VerticalAlignment="Top" Height="70" Background="{x:Null}" BorderBrush="#33000000" FontSize="18" FontFamily="Microsoft YaHei UI Light" Click="buttonStartShell_Click" Foreground="Black"/>
+                        <Button x:Name="buttonStartShell"  Content="{StaticResource ADB_CMD}" Margin="11,124,10,0" VerticalAlignment="Top" Height="70" Background="{x:Null}" BorderBrush="#33000000" FontSize="18" FontFamily="Microsoft YaHei UI Light" Click="ButtonStartShell_Click" Foreground="Black"/>
                     </Grid>
                     <TabControl HorizontalAlignment="Left" Margin="10,248,0,10" Width="992" Background="White" BorderBrush="{DynamicResource BasicBrush}">
                         <TabItem Header="{StaticResource NormalFunctions}" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" Margin="-2,0,2,0" HorizontalAlignment="Right" Width="200" Height="40" Background="{DynamicResource BasicBrush}" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" FontSize="16" FontFamily="Microsoft YaHei UI Light">
@@ -79,7 +80,7 @@
                                 <Grid Margin="10,10,0,0" Height="131" VerticalAlignment="Top" Background="#00000000" HorizontalAlignment="Left" Width="923">
                                     <Image HorizontalAlignment="Left" Height="100" Margin="10,1,0,0" VerticalAlignment="Top" Width="100" Source="/AutumnBox.Res;component/Images/DynamicIcons/poweron.png"/>
                                     <Image HorizontalAlignment="Left" Height="91" Margin="110,10,0,0" VerticalAlignment="Top" Width="104" Source="/AutumnBox.Res;component/Images/DynamicIcons/recovery.png"/>
-                                    <Button x:Name="buttonPushFileToSdcard"   Content="{StaticResource PushFileToSdcard}" Margin="242,10,0,0" VerticalAlignment="Top" Height="111" Background="#007C7272" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" FontSize="18" FontFamily="Microsoft YaHei UI Light" Click="buttonPushFileToSdcard_Click" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Black" RenderTransformOrigin="0.494,0.085" HorizontalAlignment="Left" Width="671"/>
+                                    <Button  x:Name="buttonPushFileToSdcard"   Content="{StaticResource PushFileToSdcard}" Margin="242,10,0,0" VerticalAlignment="Top" Height="111" Background="#007C7272" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" FontSize="18" FontFamily="Microsoft YaHei UI Light" Click="buttonPushFileToSdcard_Click" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Black" RenderTransformOrigin="0.494,0.085" HorizontalAlignment="Left" Width="671"/>
                                     <Label Content="{StaticResource OnlyROP}" HorizontalAlignment="Left" Margin="19,101,0,0" VerticalAlignment="Top" Width="180" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Microsoft YaHei UI Light" FontSize="16" BorderBrush="White" Foreground="Black" Height="30"/>
                                 </Grid>
                                 <Grid Margin="10,162,10,0" Background="#00000000">

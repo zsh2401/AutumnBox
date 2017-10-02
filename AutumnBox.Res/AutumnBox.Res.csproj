@@ -143,7 +143,10 @@
   <ItemGroup>
     <Resource Include="Images\wechatpay.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Images\baidupan.png" />
+    <Resource Include="Images\github.png" />
+  </ItemGroup>
   <ItemGroup>
     <Page Include="Lang\en-US.xaml">
       <Generator>MSBuild:Compile</Generator>

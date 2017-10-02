@@ -9,12 +9,18 @@
     <Import_RootNamespace>AutumnBox.Basic.Functions</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)FunctionArgs\DpiChangerArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)FunctionArgs\KeyCode.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FunctionArgs\MiFlasherArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)FunctionArgs\ScreenShoterArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)FunctionModules\ActivityLauncher.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)FunctionModules\BreventServiceActivator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FunctionModules\DpiChanger.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FunctionModules\MiFlash.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FunctionModules\NewTestingFM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)FunctionModules\ScreenLockDeleter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)FunctionModules\ScreenShoter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FunctionModules\SideloadFlasher.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)FunctionModules\XiaomiBootloaderRelocker.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)FunctionModules\XiaomiSystemUnlocker.cs" />
   </ItemGroup>

@@ -21,7 +21,7 @@ namespace AutumnBox
         /// 通过事件可以便可以关闭进度窗
         /// </summary>
         /// <param name="id">设备的id</param>
-        private void SetUIByDevices()
+        private void Refresh()
         {
             lock (setUILock)
             {
@@ -31,12 +31,12 @@ namespace AutumnBox
                     sinfo = (DeviceSimpleInfo)DevicesListBox.SelectedItem;
                 });
                 App.nowLink.Reset(sinfo);
-                Log.d(TAG, "Getting Device Info");
                 DeviceInfo info = App.nowLink.DeviceInfo;
                 this.Dispatcher.Invoke(new Action(() =>
                 {
                     //根据状态将图片和按钮状态进行设置
-                    ChangeButtonAndImageByStatus(info.deviceStatus);
+                    ChangeButtonByStatus(info.deviceStatus);
+                    ChangeImageByStatus(info.deviceStatus);
                     //更改文字
                     this.AndroidVersionLabel.Content = info.androidVersion;
                     this.CodeLabel.Content = info.code;
@@ -45,11 +45,7 @@ namespace AutumnBox
                 }));
             }
         }
-        /// <summary>
-        /// 根据设备状态改变按钮,图片等的状态
-        /// </summary>
-        /// <param name="status">设备的状态</param>
-        private void ChangeButtonAndImageByStatus(DeviceStatus status)
+        private void ChangeButtonByStatus(DeviceStatus status)
         {
             bool inBootLoader = false;
             bool inRecovery = false;
@@ -83,6 +79,8 @@ namespace AutumnBox
             this.buttonRebootToRecovery.IsEnabled = (inRunning || inRecovery);
             this.buttonPushFileToSdcard.IsEnabled = (inRecovery || inRunning);
             this.buttonFlashCustomRecovery.IsEnabled = inBootLoader;
+        }
+        private void ChangeImageByStatus(DeviceStatus status) {
             switch (status)
             {
                 case DeviceStatus.FASTBOOT:
@@ -109,40 +107,6 @@ namespace AutumnBox
                     this.DeviceStatusLabel.Content = FindResource("PleaseSelectedADevice").ToString();
                     break;
             }
-        }
-        /// <summary>
-        /// 通过此方法来显示进度框可以确保不会同时出现多个进度窗口
-        /// </summary>
-        private void ShowRateBox(RunningManager rm = null)
-        {
-            try
-            {
-                if (rm == null)
-                {
-                    rateBox = new RateBox(this);
-                    rateBox.ShowDialog();
-                    return;
-                }
-                if (rateBox.IsActive) rateBox.Close();
-                rateBox = new RateBox(this, rm);
-                rateBox.ShowDialog();
-            }
-            catch
-            {
-                this.rateBox = new RateBox(this, rm);
-                rateBox.ShowDialog();
-            }
-        }
-        /// <summary>
-        /// 隐藏进度窗口
-        /// </summary>
-        private void HideRateBox()
-        {
-            try
-            {
-                this.rateBox.Close();
-            }
-            catch { }
         }
     }
 }

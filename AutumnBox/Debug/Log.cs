@@ -5,6 +5,7 @@ using System.IO;
 
 namespace AutumnBox.Debug
 {
+    [Obsolete("use AutumnBox.Basic.Logger")]
     public static class Log
     {
         static string LogPath = "atb.log";

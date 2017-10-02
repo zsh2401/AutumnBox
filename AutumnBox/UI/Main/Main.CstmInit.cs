@@ -10,14 +10,14 @@
     using System.Threading;
     public partial class Window1
     {
-        RateBox rateBox;
         string TAG = "MainWindow";
         //现在选取的设备
         //private string nowDev { get { return DevicesListBox.SelectedItem.ToString(); } }
         void CustomInit()
         {
             InitEvents();//绑定各种事件
-            ChangeButtonAndImageByStatus(DeviceStatus.NO_DEVICE);//将所有按钮设置成关闭状态
+            ChangeButtonByStatus(DeviceStatus.NO_DEVICE);//将所有按钮设置成关闭状态
+            ChangeImageByStatus(DeviceStatus.NO_DEVICE);
 #if DEBUG
             this.labelTitle.Content += "  " + StaticData.nowVersion.version + "-Debug";
 #else
@@ -36,7 +36,7 @@
         }
         void UpdateCheck()
         {
-            new NetUtil.UpdateChecker().Run((s, e) =>
+            new UpdateChecker().Run((s, e) =>
             {
                 if (e.NeedUpdate)
                 {

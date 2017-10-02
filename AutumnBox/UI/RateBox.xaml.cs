@@ -1,5 +1,6 @@
 ﻿using AutumnBox.Basic.Functions;
 using AutumnBox.Basic.Functions.RunningManager;
+using AutumnBox.Helper;
 using System;
 using System.Drawing;
 using System.Windows;
@@ -17,13 +18,13 @@ namespace AutumnBox.UI
         public RateBox(Window owner)
         {
             InitializeComponent();
+            buttonCancel.Visibility = Visibility.Hidden;
             this.Owner = owner;
         }
         public RateBox(Window owner, RunningManager rm)
         {
             InitializeComponent();
             this.rm = rm;
-            buttonCancel.Visibility = Visibility.Visible;
             this.Owner = owner;
         }
         public new void ShowDialog()
@@ -32,13 +33,9 @@ namespace AutumnBox.UI
         }
         private void Grid_MouseMove(object sender, MouseEventArgs e)
         {
-            if (e.LeftButton == MouseButtonState.Pressed)
-            {
-                this.DragMove();
-            }
+            UIHelper.DragMove(this,e);
         }
         public new void Close() {
-            //(img.Source as Bitmap).Dispose();
             base.Close();
         }
         private void buttonStartBrventService_Click(object sender, RoutedEventArgs e)

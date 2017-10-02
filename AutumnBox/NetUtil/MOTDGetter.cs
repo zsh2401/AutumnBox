@@ -33,6 +33,7 @@ namespace AutumnBox.NetUtil
             }
             catch (Exception e)
             {
+                Basic.Util.Logger.E(this, "Motd Getting Expception", e);
                 Log.d("MOTDGetter", e.ToString() + e.Message);
             }
         }

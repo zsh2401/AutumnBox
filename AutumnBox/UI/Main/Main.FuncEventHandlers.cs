@@ -95,7 +95,7 @@
                 HideRateBox();
             }));
             if (!e.Result.IsSuccessful) {
-                MMessageBox.ShowDialog(this,"Fail","Fuck");
+                MMessageBox.ShowDialog(this,"Fail",e.Result.OutputData.ToString());
             }
         }
 
@@ -127,16 +127,6 @@
             {
                 this.HideRateBox();
             }));
-        }
-
-        /// <summary>
-        /// 设变发生改变时的事件
-        /// </summary>
-        /// <param name="obj">发生事件的"地方"</param>
-        /// <param name="devicesHashtable">当前设备列表</param>
-        private void DevicesChange(Object sender, DevicesList devices)
-        {
-            
         }
 
         /// <summary>

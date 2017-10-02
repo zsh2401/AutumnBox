@@ -49,11 +49,13 @@ namespace AutumnBox.UI
         private void buttonGithubReleaseDownload_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Process.Start(githubUrl);
+            Close();
         }
 
         private void buttonBaiduPanDownlod_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Process.Start(baiduUrl);
+            Close();
         }
     }
 }

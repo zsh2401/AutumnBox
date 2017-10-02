@@ -12,7 +12,7 @@
                Stretch="Fill"
                gif:ImageBehavior.AnimatedSource="/AutumnBox.Res;component/Images/loading.gif" Height="142" VerticalAlignment="Top" HorizontalAlignment="Left" Width="271"/>
         <Label Content="{DynamicResource Doing}" HorizontalAlignment="Left" Margin="0,109,0,0" VerticalAlignment="Top" Height="67" Width="271" Background="White" Foreground="Black" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="24" FontFamily="Microsoft YaHei UI Light"/>
-        <Button x:Name="buttonCancel" Content="{StaticResource Cancel}" Margin="10,181,0,0" VerticalAlignment="Top" Height="30" Background="#007C7272" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" FontSize="18" FontFamily="Microsoft YaHei UI Light" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" RenderTransformOrigin="0.494,0.085" HorizontalAlignment="Left" Width="251" Click="buttonStartBrventService_Click" Visibility="Hidden"/>
+        <Button x:Name="buttonCancel" Content="{StaticResource Cancel}" Margin="10,181,0,0" VerticalAlignment="Top" Height="30" Background="#007C7272" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" FontSize="18" FontFamily="Microsoft YaHei UI Light" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" RenderTransformOrigin="0.494,0.085" HorizontalAlignment="Left" Width="251" Click="buttonStartBrventService_Click"/>
     </Grid>
 
 </Window>
