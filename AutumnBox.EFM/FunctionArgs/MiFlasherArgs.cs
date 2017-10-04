@@ -4,7 +4,7 @@ using System.Text;
 
 namespace AutumnBox.Basic.Functions.FunctionArgs
 {
-    public class MiFlasherArgs
+    public class MiFlasherArgs:FMArgs
     {
         public string batFileName { get; set; }
     }

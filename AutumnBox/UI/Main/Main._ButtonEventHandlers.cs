@@ -1,5 +1,6 @@
 ﻿using AutumnBox.Basic.Functions;
 using AutumnBox.Basic.Functions.RunningManager;
+using AutumnBox.Debug;
 using AutumnBox.Helper;
 using AutumnBox.UI;
 using Microsoft.Win32;
@@ -17,7 +18,7 @@ namespace AutumnBox
     {
         private void buttonStartBrventService_Click(object sender, RoutedEventArgs e)
         {
-            if (!ChoiceBox.Show(this, FindResource("Notice").ToString(), FindResource("StartBrventTip").ToString())) return;
+            if (!ChoiceBox.Show(this, App.Current.Resources["Notice"].ToString(), App.Current.Resources["StartBrventTip"].ToString())) return;
             BreventServiceActivator activator = new BreventServiceActivator();
             var rm = App.nowLink.GetRunningManager(activator);
             rm.FuncEvents.Finished += FuncFinish;
@@ -28,10 +29,6 @@ namespace AutumnBox
         private void buttonLinkHelp_Click(object sender, RoutedEventArgs e)
         {
             new LinkHelpWindow(this).Show();
-            //Application.Current.Resources.MergedDictionaries[1] = new ResourceDictionary()
-            //{
-            //    Source = new Uri("UI/Color2.xaml", UriKind.Relative)
-            //};
         }
 
         private void ButtonStartShell_Click(object sender, RoutedEventArgs e)
@@ -41,7 +38,8 @@ namespace AutumnBox
             info.FileName = "cmd.exe";
             if (SystemHelper.IsWin10)
             {
-                if (ChoiceBox.ShowDialog(this, FindResource("Notice").ToString(), FindResource("ShellChoiceTip").ToString(), "Powershell", "CMD"))
+                Log.d(TAG,"sadasasas"); ;
+                if (ChoiceBox.ShowDialog(this, App.Current.Resources["Notice"].ToString(), App.Current.Resources["ShellChoiceTip"].ToString(), "Powershell", "CMD"))
                 {
                     info.FileName = "powershell.exe";
                 }
@@ -51,7 +49,7 @@ namespace AutumnBox
 
         private void buttonChangeTheme_Click(object sender, RoutedEventArgs e)
         {
-            //new UpdateNoticeWindow().ShowDialog();
+            //TODO
         }
         private void buttonPushFileToSdcard_Click(object sender, RoutedEventArgs e)
         {
@@ -142,7 +140,7 @@ namespace AutumnBox
         private void buttonUnlockMiSystem_Click(object sender, RoutedEventArgs e)
         {
             if (!ChoiceBox.Show(this, FindResource("Notice").ToString(), FindResource("UnlockXiaomiSystemTip").ToString())) return;
-            MMessageBox.ShowDialog(this, FindResource("Notice").ToString(), FindResource("IfAllOK").ToString());
+            MMessageBox.ShowDialog(this, FindResource("Notice").ToString(), FindResource("msgIfAllOK").ToString());
             XiaomiSystemUnlocker unlocker = new XiaomiSystemUnlocker();
             var rm = App.nowLink.GetRunningManager(unlocker);
             rm.FuncEvents.Finished += FuncFinish;
@@ -152,8 +150,8 @@ namespace AutumnBox
 
         private void buttonRelockMi_Click(object sender, RoutedEventArgs e)
         {
-            if (!ChoiceBox.Show(this, FindResource("Warning").ToString(), FindResource("RelockWarning").ToString())) return;
-            if (!ChoiceBox.Show(this, FindResource("Warning").ToString(), FindResource("RelockWarningAgain").ToString())) return;
+            if (!ChoiceBox.Show(this, App.Current.Resources["Warning"].ToString(), App.Current.Resources["msgRelockWarning"].ToString())) return;
+            if (!ChoiceBox.Show(this, App.Current.Resources["Warning"].ToString(), App.Current.Resources["msgRelockWarningAgain"].ToString())) return;
             XiaomiBootloaderRelocker relocker = new XiaomiBootloaderRelocker();
             var rm = App.nowLink.GetRunningManager(relocker);
             rm.FuncEvents.Finished += FuncFinish;

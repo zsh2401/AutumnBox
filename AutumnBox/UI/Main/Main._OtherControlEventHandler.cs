@@ -80,64 +80,48 @@ namespace AutumnBox
         }
         private void TextBlock_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            Process.Start("explorer.exe", "http://dwnld.aicp-rom.com/");
+            Process.Start("explorer.exe", App.Current.Resources["linkAICP"].ToString());
         }
 
         private void TextBlock_MouseDown_1(object sender, MouseButtonEventArgs e)
         {
-            Process.Start("explorer.exe", "https://www.lineageos.org/");
+            //linkLineageOS
+            Process.Start(App.Current.Resources["linkLineageOS"].ToString());
         }
-
-        //private void buttonSideload_Click(object sender, RoutedEventArgs e)
-        //{
-        //    if (DevicesTools.GetDeviceStatus(DevicesListBox.SelectedItem.ToString()) != DeviceStatus.SIDELOAD)
-        //    {
-        //        MMessageBox.ShowDialog(this, FindResource("Notice").ToString(), FindResource("SideloadTur").ToString());
-        //        return;
-        //    }
-        //    if (!ChoiceBox.ShowDialog(this, FindResource("Notice").ToString(), FindResource("SideloadTip").ToString())) return;
-        //    OpenFileDialog fd = new OpenFileDialog();
-        //    fd.Multiselect = false;
-        //    fd.Filter = "刷机包文件|*.zip";
-        //    if (fd.ShowDialog() == true)
-        //    {
-        //        core.Sideload(new string[] { DevicesListBox.SelectedItem.ToString(), fd.FileName });
-        //    }
-        //}
 
         private void TextBlock_MouseDown_2(object sender, MouseButtonEventArgs e)
         {
-            Process.Start("explorer.exe", "https://download.mokeedev.com/");
+            Process.Start(App.Current.Resources["linkMokee"].ToString());
         }
 
         private void TextBlock_MouseDown_3(object sender, MouseButtonEventArgs e)
         {
-            Process.Start("explorer.exe", "http://www.miui.com/thread-6685031-1-1.html");
+            Process.Start(App.Current.Resources["linkMiFlashToolBox"].ToString());
         }
 
         private void TextBlock_MouseDown_4(object sender, MouseButtonEventArgs e)
         {
-            Process.Start("explorer.exe", "http://www.miui.com/shuaji-393.html");
+            Process.Start(App.Current.Resources["linkMiLineFlashPackage"].ToString());
         }
 
         private void TextBlock_MouseDown_5(object sender, MouseButtonEventArgs e)
         {
-            Process.Start("explorer.exe", "http://www.miui.com/download.html");
+            Process.Start(App.Current.Resources["linkDownloadMIUI"].ToString());
         }
 
         private void TextBlock_MouseDown_6(object sender, MouseButtonEventArgs e)
         {
-            Process.Start("explorer.exe", "https://twrp.me/Devices/");
+            Process.Start(App.Current.Resources["linkDownloadTwrp"].ToString());
         }
 
         private void TextBlock_MouseDown_7(object sender, MouseButtonEventArgs e)
         {
-            Process.Start("explorer.exe", "http://opengapps.org/");
+            Process.Start(App.Current.Resources["linkOpenGAPPS"].ToString());
         }
 
         private void TextBlock_MouseDown_8(object sender, MouseButtonEventArgs e)
         {
-            Process.Start("explorer.exe", "https://github.com/zsh2401/AutumnBox");
+            Process.Start(App.Current.Resources["linkAutumnBoxOS"].ToString());
         }
 
     }

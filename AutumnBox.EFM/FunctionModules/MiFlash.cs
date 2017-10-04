@@ -1,21 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿/*我想要传达给你的话语*/
 using AutumnBox.Basic.Executer;
-using System.Diagnostics;
 using AutumnBox.Basic.Functions.FunctionArgs;
-using AutumnBox.Basic.Devices;
 
 namespace AutumnBox.Basic.Functions.FunctionModules
 {
     /// <summary>
     /// 模拟的Miflash线刷功能模块,未完成,请勿使用
     /// </summary>
-    public class MiFlash : FunctionModule
+    public sealed class MiFlash : FunctionModule
     {
         private OutputData temtOut = new OutputData();
         private ABProcess MainProcess = new ABProcess();
-        public FunctionArgs.MiFlasherArgs Args;
+        public MiFlasherArgs Args;
         public MiFlash(MiFlasherArgs args)
         {
             this.Args = args;
@@ -33,7 +29,7 @@ namespace AutumnBox.Basic.Functions.FunctionModules
             {
                 if (e.Data != null)
                 {
-                    temtOut.OutAdd(e.Data);
+                    temtOut.ErrorAdd(e.Data);
                     LogT("Error : " + e.Data);
                     OnErrorReceived(e);
                 }
@@ -41,14 +37,6 @@ namespace AutumnBox.Basic.Functions.FunctionModules
         }
         protected override OutputData MainMethod()
         {
-            //MainProcess.StartInfo.Arguments = $"-s {DeviceID}";
-            //LogD(MainProcess.StartInfo.FileName + " " + MainProcess.StartInfo.Arguments);
-            //MainProcess.Start();
-            //MainProcess.BeginErrorReadLine();
-            //MainProcess.BeginOutputReadLine();
-            //MainProcess.WaitForExit();
-            //MainProcess.CancelOutputRead();
-            //MainProcess.CancelErrorRead();
             MainProcess.StartInfo.WorkingDirectory = @"adb\";
             temtOut.Append(MainProcess.RunToExited(Args.batFileName, $"-s {DeviceID}"));
             return temtOut;

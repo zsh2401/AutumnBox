@@ -32,7 +32,6 @@
                     DevicesListBox.Items.Clear();
                     Log.d(TAG, "Clear");
                     e.DevicesList.ForEach((info) => { DevicesListBox.Items.Add(info); });
-                    DevicesListBox.DisplayMemberPath = "Id";
                     if (e.DevicesList.Count == 1)
                     {
                         DevicesListBox.SelectedIndex = 0;
@@ -138,7 +137,7 @@
             Log.d(mweTag, "Push finish");
             if (e.Result.IsSuccessful)
             {
-                MMessageBox.ShowDialog(this, Application.Current.Resources["Notice"].ToString(), Application.Current.FindResource("PushOK").ToString());
+                MMessageBox.ShowDialog(this, Application.Current.Resources["Notice"].ToString(), Application.Current.FindResource("msgPushOK").ToString());
             }
             else {
                 MMessageBox.ShowDialog(this, Application.Current.Resources["Notice"].ToString(), "Push_Failed 0x123123121232");
@@ -156,7 +155,7 @@
             {
                 this.HideRateBox();
             }));
-            MMessageBox.ShowDialog(this, Application.Current.FindResource("Notice").ToString(), Application.Current.FindResource("FlashOK").ToString());
+            MMessageBox.ShowDialog(this, Application.Current.FindResource("Notice").ToString(), Application.Current.FindResource("msgFlashOK").ToString());
         }
         #endregion
     }

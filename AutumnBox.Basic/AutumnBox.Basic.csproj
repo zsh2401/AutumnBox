@@ -53,6 +53,7 @@
     <Compile Include="Executer\CommandExecuter\CommandExecuter.ExeFunc.cs" />
     <Compile Include="Executer\CommandExecuter\ExeType.cs" />
     <Compile Include="Executer\Events.cs" />
+    <Compile Include="Functions\FunctionArgs\FunctionArgs.cs" />
     <Compile Include="Functions\RunningManager\RunningManagerStatus.cs" />
     <Compile Include="Functions\RunningManager\FuncEventsContainer.cs" />
     <Compile Include="DebugInfo.cs" />

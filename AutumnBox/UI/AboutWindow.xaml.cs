@@ -27,7 +27,7 @@ namespace AutumnBox.UI
 
         private void TextBlock_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            Process.Start("explorer.exe", "https://github.com/zsh2401/AutumnBox/");
+            Process.Start(App.Current.Resources["linkAutumnBoxOS"].ToString());
         }
 
         private void imageClose_MouseDown(object sender, MouseButtonEventArgs e)

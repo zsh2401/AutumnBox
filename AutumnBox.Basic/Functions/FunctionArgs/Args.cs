@@ -4,32 +4,32 @@
  一些功能模块所需的参数
  */
 using AutumnBox.Basic.Devices;
+using AutumnBox.Basic.Functions.FunctionArgs;
 using System;
 
 namespace AutumnBox.Basic.Functions
 {
-    /// <summary>
-    /// 为了标记他们都是功能模块的参数而设立的接口
-    /// </summary>
-    public interface IArgs { }
 
     /// <summary>
     /// 用于文件发送器和自定义REC刷入器
     /// </summary>
-    public struct FileArgs:IArgs {
+    public class FileArgs : FMArgs
+    {
         public string[] files;
     }
     /// <summary>
     /// 用于重启器的参数
     /// </summary>
-    public struct RebootArgs:IArgs {
+    public class RebootArgs : FMArgs
+    {
         public RebootOptions rebootOption;
-        public DeviceStatus nowStatus; 
+        public DeviceStatus nowStatus;
     }
     /// <summary>
     /// 用于活动启动器的参数
     /// </summary>
-    public struct ActivityLaunchArgs:IArgs {
+    public class ActivityLaunchArgs : FMArgs
+    {
         public string PackageName;
         public string ActivityName;
     }

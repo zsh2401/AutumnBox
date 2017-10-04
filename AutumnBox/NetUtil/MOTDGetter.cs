@@ -22,7 +22,7 @@ namespace AutumnBox.NetUtil
             try
             {
 #if !DEBUG
-               JObject o = JObject.Parse(NetHelper.GetHtmlCode(ApiUrl.MOTD));
+                JObject o = JObject.Parse(NetHelper.GetHtmlCode(ApiUrl.MOTD));
 #else
                 JObject o = JObject.Parse(File.ReadAllText(@"E:\zsh2401.github.io\softsupport\autumnbox\motd\index.html"));
 #endif

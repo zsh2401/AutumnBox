@@ -72,6 +72,7 @@
             BeginRead();
             ProcessStarted?.Invoke(this, new ProcessStartedEventArgs() { PID = Id });
             WaitForExit();
+            int exitCode  = ExitCode;
             CancelRead();
             return _tempOut;
         }

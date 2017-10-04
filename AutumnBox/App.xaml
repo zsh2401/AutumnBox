@@ -8,6 +8,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/AutumnBox.Res;component/Lang/zh-CN.xaml"></ResourceDictionary>
                 <ResourceDictionary Source="/AutumnBox.Res;component/Theme/BasicTheme.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="/AutumnBox.Res;component/Other/links.xaml"></ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

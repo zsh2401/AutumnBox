@@ -25,7 +25,7 @@ namespace AutumnBox
             Log.InitLogFile();
             Log.d(TAG, "Log Init Finish,Start Init Window");
             InitializeComponent();
-            //buttonChangeTheme.click
+            Log.d(TAG, "Start customInit");
             CustomInit();
         }
 
@@ -69,5 +69,9 @@ namespace AutumnBox
             InitWebPage();//初始化浏览器
         }
 
+        private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            UIHelper.DragMove(this, e);
+        }
     }
 }
