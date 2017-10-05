@@ -123,17 +123,11 @@
     <Compile Include="NetUtil\MOTDGetter.cs" />
     <Compile Include="NetUtil\UpdateChecker.cs" />
     <Compile Include="StaticData.cs" />
-    <Compile Include="UI\AboutWindow.xaml.cs">
-      <DependentUpon>AboutWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="UI\ChangeThemeWindow.xaml.cs">
       <DependentUpon>ChangeThemeWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\ChoiceBox.xaml.cs">
       <DependentUpon>ChoiceBox.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UI\ContactWindow.xaml.cs">
-      <DependentUpon>ContactWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Cstm\CstmButton.xaml.cs">
       <DependentUpon>CstmButton.xaml</DependentUpon>
@@ -198,19 +192,11 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="UI\AboutWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="UI\ChangeThemeWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\ChoiceBox.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UI\ContactWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

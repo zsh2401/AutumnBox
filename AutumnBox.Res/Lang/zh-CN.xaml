@@ -2,6 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:AutumnBox.Res"
                     xmlns:s="clr-namespace:System;assembly=mscorlib">
+    
     <s:String x:Key="AppName">AutumnBox</s:String>
     <s:String x:Key="LanguageName">简体中文</s:String>
 
@@ -28,7 +29,6 @@
     <s:String x:Key="tbiOnRecovery">恢复模式/开机/Sideload</s:String>
     <s:String x:Key="tbiOnFastboot">Fastboot/9008</s:String>
     <s:String x:Key="tbiOnRunning">开机状态功能</s:String>
-    
     <s:String x:Key="tbiDownloads">下载更多工具以及刷机包</s:String>
     <s:String x:Key="tbiHelp">帮助</s:String>
     <s:String x:Key="tbiSaveDevice">救砖</s:String>
