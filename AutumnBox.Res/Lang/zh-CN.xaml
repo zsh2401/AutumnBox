@@ -40,6 +40,7 @@
     <s:String x:Key="tbiBookMarker">书签</s:String>
     <s:String x:Key="tbiTools">工具</s:String>
     <s:String x:Key="tbiNormal">常规</s:String>
+    <s:String x:Key="tbiAbout">关于</s:String>
     <!--tabitem-->
 
     <!--信息(主要用于MMesssageBox)-->

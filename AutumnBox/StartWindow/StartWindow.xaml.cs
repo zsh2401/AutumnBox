@@ -3,6 +3,7 @@ using AutumnBox.Helper;
 using AutumnBox.NetUtil;
 using AutumnBox.UI;
 using AutumnBox.Util;
+using System.Diagnostics;
 using System.Windows;
 
 namespace AutumnBox
@@ -24,9 +25,11 @@ namespace AutumnBox
             ChangeButtonByStatus(DeviceStatus.NO_DEVICE);//将所有按钮设置成关闭状态
             ChangeImageByStatus(DeviceStatus.NO_DEVICE);
 #if DEBUG
-            this.labelTitle.Content += "  " + StaticData.nowVersion.version + "-Debug";
+            LabelVersion.Content = StaticData.nowVersion.version + "-Debug";
+            labelTitle.Content += "  " + StaticData.nowVersion.version + "-Debug";
 #else
-            this.labelTitle.Content += "  " + StaticData.nowVersion.version + "-Release";
+            LabelVersion.Content = StaticData.nowVersion.version + "-Release";
+            labelTitle.Content += "  " + StaticData.nowVersion.version + "-Release";
 #endif
         }
         /// <summary>
@@ -34,16 +37,17 @@ namespace AutumnBox
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void DevicesChanged(object sender, DevicesChangeEventArgs e) {
+        private void DevicesChanged(object sender, DevicesChangeEventArgs e)
+        {
             Logger.D(TAG, "Devices change handing.....");
-                this.Dispatcher.Invoke(() =>
+            this.Dispatcher.Invoke(() =>
+            {
+                DevicesListBox.ItemsSource = e.DevicesList;
+                if (e.DevicesList.Count == 1)
                 {
-                    DevicesListBox.ItemsSource = e.DevicesList;
-                    if (e.DevicesList.Count == 1)
-                    {
-                        DevicesListBox.SelectedIndex = 0;
-                    }
-                });
+                    DevicesListBox.SelectedIndex = 0;
+                }
+            });
         }
         /// <summary>
         /// 各方面加载完毕,毫秒毫秒钟就要开始渲染了!

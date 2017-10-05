@@ -3,6 +3,7 @@ using AutumnBox.Helper;
 using System;
 using System.Drawing;
 using System.Text.RegularExpressions;
+using System.Threading;
 
 namespace AutumnBox
 {
@@ -17,25 +18,33 @@ namespace AutumnBox
         /// </summary>
         private void RefreshUI()
         {
-            lock (setUILock)
-            {
-                Dispatcher.Invoke(() =>
+            new Thread(()=> {
+                lock (setUILock)
                 {
-                    App.SelectedDevice = ((DeviceSimpleInfo)DevicesListBox.SelectedItem);
-                });
-                var info = DevicesHelper.GetDeviceInfo(App.SelectedDevice.Id);
-                this.Dispatcher.Invoke(new Action(() =>
-                {
-                    //根据状态将图片和按钮状态进行设置
-                    ChangeButtonByStatus(info.deviceStatus);
-                    ChangeImageByStatus(info.deviceStatus);
-                    //更改文字
-                    this.AndroidVersionLabel.Content = info.androidVersion;
-                    this.CodeLabel.Content = info.code;
-                    this.ModelLabel.Content = Regex.Replace(info.brand, @"[\r\n]", "") + " " + info.model;
-                    UIHelper.CloseRateBox();
-                }));
-            }
+                    var info = DevicesHelper.GetDeviceInfo(App.SelectedDevice.Id);
+                    this.Dispatcher.Invoke(new Action(() =>
+                    {
+                        //根据状态将图片和按钮状态进行设置
+                        ChangeButtonByStatus(info.deviceStatus);
+                        ChangeImageByStatus(info.deviceStatus);
+                        switch (info.deviceStatus)
+                        {
+                            case DeviceStatus.FASTBOOT:
+                                TabFunctions.SelectedIndex = 1;
+                                break;
+                            default:
+                                TabFunctions.SelectedIndex = 0;
+                                break;
+                        }
+                        //更改文字
+                        this.AndroidVersionLabel.Content = info.androidVersion;
+                        this.CodeLabel.Content = info.code;
+                        this.ModelLabel.Content = Regex.Replace(info.brand, @"[\r\n]", "") + " " + info.model;
+                        UIHelper.CloseRateBox();
+                    }));
+                }
+            }).Start();
+            UIHelper.ShowRateBox(this);
         }
         /// <summary>
         /// 根据设备状态改变按钮状态

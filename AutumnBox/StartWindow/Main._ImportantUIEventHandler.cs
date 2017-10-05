@@ -18,11 +18,8 @@
         {
             if (this.DevicesListBox.SelectedIndex != -1)//如果选择了设备
             {
-                new Thread(() =>
-                {
-                    RefreshUI();
-                }).Start();
-                UIHelper.ShowRateBox(this);
+                App.SelectedDevice = ((DeviceSimpleInfo)DevicesListBox.SelectedItem);
+                RefreshUI();
             }
             else
             {

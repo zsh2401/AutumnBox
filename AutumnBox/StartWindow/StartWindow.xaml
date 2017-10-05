@@ -9,32 +9,8 @@
         mc:Ignorable="d"
         Title="AutumnBox" Height="669.712" Width="1053.321" Foreground="#FF1B1919" ResizeMode="NoResize" Closed="MainWindow_Closed" Background="White" Loaded="MainWindow_Loaded" WindowStyle="None">
     <Grid HorizontalAlignment="Left" Width="1054" Margin="0,0,-1,0" Height="670" VerticalAlignment="Top">
+
         <Grid Background="{DynamicResource BasicBrush}" RenderTransformOrigin="0.498,0.712" HorizontalAlignment="Left" Width="1054" Height="36" VerticalAlignment="Top" MouseDown="Grid_MouseDown">
-            <Menu Background="#00F0F0F0" Margin="348,4,445,0" RenderTransformOrigin="0.499,0.479">
-                <MenuItem Height="29" Width="169" Foreground="#FFFBFAFA" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" >
-                    <MenuItem.Icon>
-                        <Image Source="/AutumnBox.Res;component/Images/Icons/about_white.png" Margin="0,-4,-8,-3" SnapsToDevicePixels="True"/>
-                    </MenuItem.Icon>
-                    <MenuItem.Header>
-                        <TextBlock Width="59" TextAlignment="Center" Text="{DynamicResource About}" Foreground="#FFFBFAFA" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0,0,-20,0" />
-                    </MenuItem.Header>
-                    <MenuItem Header="{DynamicResource AboutThisSoftware}" Foreground="Black" Background="#00000000" Click="MenuItem_Click_1" >
-                        <MenuItem.Icon>
-                            <Image Source="/AutumnBox.Res;component/Images/Icons/about.png" Width="15" Height="15" Stretch="Fill"/>
-                        </MenuItem.Icon>
-                    </MenuItem>
-                    <MenuItem Header="{DynamicResource Contact}" Foreground="Black" Background="#00000000" Click="MenuItem_Click_2" >
-                        <MenuItem.Icon>
-                            <Image Source="/AutumnBox.Res;component/Images/Icons/contact.png"  Width="15" Height="15" Stretch="Fill"/>
-                        </MenuItem.Icon>
-                    </MenuItem>
-                    <MenuItem Header="{DynamicResource Donate}" Foreground="Black" Background="#00000000" Click="MenuItem_Click" >
-                        <MenuItem.Icon>
-                            <Image Source="/AutumnBox.Res;component/Images/Icons/donate.png"  Height="30"/>
-                        </MenuItem.Icon>
-                    </MenuItem>
-                </MenuItem>
-            </Menu>
             <Grid Height="32" Margin="941,4,5,0" VerticalAlignment="Top" Background="#00000000">
                 <Label x:Name="LabelMin" Content="Label" HorizontalAlignment="Left" Margin="7,5,0,0" VerticalAlignment="Top" Height="21" Width="40" Foreground="{x:Null}" MouseDown="LabelMin_MouseDown" MouseEnter="LabelMin_MouseEnter" MouseLeave="LabelMin_MouseLeave">
                     <Label.Background>
@@ -51,19 +27,19 @@
             <Image HorizontalAlignment="Left" Height="27" Margin="10,4,0,1" VerticalAlignment="Top" Width="27" Source="/AutumnBox.Res;component/Images/Icons/title_icon.png" Stretch="Fill" RenderTransformOrigin="0.579,-1.368"/>
         </Grid>
         <TabControl HorizontalAlignment="Left" Height="634" Margin="0,36,0,0" VerticalAlignment="Top" Width="1053" TabStripPlacement="Left" BorderBrush="{DynamicResource BackBrush}" Background="{x:Null}">
-            <TabItem Header="{DynamicResource tbiNormal}" Background="{DynamicResource BasicBrush}" Margin="-2,-3,0,0" BorderBrush="{DynamicResource BasicBrush}" MinHeight="160" FontFamily="Microsoft YaHei UI Light">
+            <TabItem Header="{DynamicResource tbiTools}" Background="{DynamicResource BasicBrush}" Margin="-2,-3,0,3" BorderBrush="{DynamicResource BasicBrush}" MinHeight="130" FontFamily="Microsoft YaHei UI Light" Height="130">
                 <Grid Background="#00E5E5E5" Margin="0,0,-3,7">
                     <Grid HorizontalAlignment="Left" Height="204" Margin="10,10,0,0" VerticalAlignment="Top" Width="753" Background="White">
                         <ListBox x:Name="DevicesListBox" DisplayMemberPath="Id" HorizontalAlignment="Left" Height="154" Margin="531,10,0,0" VerticalAlignment="Top" Width="222" SelectionChanged="DevicesListBox_SelectionChanged" Background="#00000000" Foreground="{DynamicResource BasicBrush}" BorderBrush="#FFABADB3"/>
-                        <Image x:Name="DeviceStatusImage" HorizontalAlignment="Left" Height="100" Margin="39,0,0,0" VerticalAlignment="Top" Width="100" Source="/AutumnBox.Res;component/Images/DynamicIcons/no_selected.png"/>
-                        <Label x:Name="DeviceStatusLabel" Content="{DynamicResource PleaseSelectedADevice}" HorizontalAlignment="Left" Margin="0,100,0,0" VerticalAlignment="Top" Height="55" Width="181" Foreground="Black" FontSize="14" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Microsoft YaHei UI Light"/>
-                        <Grid HorizontalAlignment="Left" Height="174" Margin="166,16,0,0" VerticalAlignment="Top" Width="365">
-                            <Label Content="{DynamicResource ResourceKey=AndroidVersion}" HorizontalAlignment="Left" Margin="10,8,0,0" VerticalAlignment="Top" Height="42" Width="81" Foreground="Black" FontFamily="Microsoft YaHei UI Light" FontSize="16" Background="{x:Null}"/>
-                            <Label Content="{DynamicResource ResourceKey=Model}" HorizontalAlignment="Left" Margin="10,62,0,0" VerticalAlignment="Top" Height="42" Width="81" Foreground="Black" FontFamily="Microsoft YaHei UI Light" FontSize="16" Background="{x:Null}"/>
-                            <Label Content="{DynamicResource ResourceKey=Code}" Margin="10,124,277,0" VerticalAlignment="Top" Height="42" Foreground="Black" FontFamily="Microsoft YaHei UI Light" FontSize="16" Background="{x:Null}"/>
-                            <Label x:Name="AndroidVersionLabel" Content="{DynamicResource ResourceKey=PleaseSelectedADevice}" Margin="96,8,10,0" VerticalAlignment="Top" Height="42" Foreground="Black" FontFamily="Microsoft YaHei Light" FontSize="16" Background="{x:Null}"/>
-                            <Label x:Name="ModelLabel" Content="{DynamicResource ResourceKey=PleaseSelectedADevice}" HorizontalAlignment="Left" Margin="96,62,0,0" VerticalAlignment="Top" Height="42" Width="259" Foreground="Black" FontFamily="Microsoft YaHei Light" FontSize="16" Background="{x:Null}"/>
-                            <Label x:Name="CodeLabel" Content="{DynamicResource ResourceKey=PleaseSelectedADevice}" HorizontalAlignment="Left" Margin="96,125,0,0" VerticalAlignment="Top" Height="42" Width="259" Foreground="Black" FontFamily="Microsoft YaHei Light" FontSize="16" Background="{x:Null}"/>
+                        <Image x:Name="DeviceStatusImage" HorizontalAlignment="Left" Height="100" Margin="37,16,0,0" VerticalAlignment="Top" Width="100" Source="/AutumnBox.Res;component/Images/DynamicIcons/no_selected.png"/>
+                        <Label x:Name="DeviceStatusLabel" Content="{DynamicResource PleaseSelectedADevice}" HorizontalAlignment="Left" Margin="5,121,0,0" VerticalAlignment="Top" Height="43" Width="161" Foreground="Black" FontSize="14" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Microsoft YaHei UI Light"/>
+                        <Grid x:Name="GridBuildInfo" HorizontalAlignment="Left" Height="184" Margin="166,10,0,0" VerticalAlignment="Top" Width="360" Background="White" MouseDown="GridBuildInfo_MouseDown">
+                            <Label Content="{DynamicResource ResourceKey=AndroidVersion}" HorizontalAlignment="Left" Margin="10,23,0,0" VerticalAlignment="Top" Height="28" Width="76" Foreground="Black" FontFamily="Microsoft YaHei UI Light" FontSize="16" Background="{x:Null}"/>
+                            <Label Content="{DynamicResource ResourceKey=Model}" HorizontalAlignment="Left" Margin="10,68,0,0" VerticalAlignment="Top" Height="30" Width="76" Foreground="Black" FontFamily="Microsoft YaHei UI Light" FontSize="16" Background="{x:Null}" RenderTransformOrigin="0.506,1.433"/>
+                            <Label Content="{DynamicResource ResourceKey=Code}" Margin="10,117,274,0" VerticalAlignment="Top" Height="32" Foreground="Black" FontFamily="Microsoft YaHei UI Light" FontSize="16" Background="{x:Null}"/>
+                            <Label x:Name="AndroidVersionLabel" Content="{DynamicResource ResourceKey=PleaseSelectedADevice}" Margin="91,22,10,0" VerticalAlignment="Top" Height="29" Foreground="Black" FontFamily="Microsoft YaHei Light" FontSize="16" Background="{x:Null}"/>
+                            <Label x:Name="ModelLabel" Content="{DynamicResource ResourceKey=PleaseSelectedADevice}" HorizontalAlignment="Left" Margin="91,68,0,0" VerticalAlignment="Top" Height="31" Width="259" Foreground="Black" FontFamily="Microsoft YaHei Light" FontSize="16" Background="{x:Null}"/>
+                            <Label x:Name="CodeLabel" Content="{DynamicResource ResourceKey=PleaseSelectedADevice}" HorizontalAlignment="Left" Margin="91,117,0,0" VerticalAlignment="Top" Height="32" Width="259" Foreground="Black" FontFamily="Microsoft YaHei Light" FontSize="16" Background="{x:Null}"/>
                         </Grid>
                         <Button x:Name="buttonLinkHelp" Content="{StaticResource LinkHelp}" Margin="531,166,0,0" VerticalAlignment="Top" Height="30" Background="{x:Null}" BorderBrush="#33000000" FontSize="11" FontFamily="Microsoft YaHei UI Light" Foreground="Black" Click="ButtonLinkHelp_Click"/>
                     </Grid>
@@ -94,7 +70,7 @@
                     <Button x:Name="buttonChangeTheme" Content="{StaticResource btnChangeTheme}" Margin="874,219,4,0" VerticalAlignment="Top" Height="24" Background="{x:Null}" BorderBrush="#33000000" FontSize="14" FontFamily="Microsoft YaHei UI Light" Click="ButtonChangeTheme_Click" Foreground="Black"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="{DynamicResource tbiHelp}" Background="{DynamicResource BasicBrush}" Margin="-2,0,0,-2" BorderBrush="{DynamicResource BasicBrush}" MinHeight="160" FontFamily="Microsoft YaHei UI Light">
+            <TabItem Header="{DynamicResource tbiHelp}" Background="{DynamicResource BasicBrush}" Margin="-2,-3,0,3" BorderBrush="{DynamicResource BasicBrush}" MinHeight="129" FontFamily="Microsoft YaHei UI Light" Height="130">
                 <Grid Background="#00E5E5E5" Margin="0,0,-3,7">
                     <TabControl HorizontalAlignment="Left" Margin="10,10,0,10" Width="947" Background="Transparent" BorderBrush="{DynamicResource BasicBrush}">
                         <TabItem Header="{StaticResource tbiFlashDevice}" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" Margin="-2,0,2,0" HorizontalAlignment="Right" Width="200" Background="#7F009AD6" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" FontSize="16" FontFamily="Microsoft YaHei UI Light">
@@ -113,14 +89,15 @@
                             </Grid>
                         </TabItem>
                     </TabControl>
+
                 </Grid>
             </TabItem>
-            <TabItem Header="{DynamicResource tbiBookMarker}" Background="{DynamicResource BasicBrush}" Margin="-2,0,0,-2" BorderBrush="{DynamicResource BasicBrush}" MinHeight="160" FontFamily="Microsoft YaHei UI Light">
+            <TabItem Header="{DynamicResource tbiBookMarker}" Background="{DynamicResource BasicBrush}" Margin="-2,-3,0,3" BorderBrush="{DynamicResource BasicBrush}" MinHeight="130" FontFamily="Microsoft YaHei UI Light" Height="130">
                 <Grid Background="#00E5E5E5" Margin="0,0,-3,7">
                     <TabControl HorizontalAlignment="Left" Margin="10,10,0,10" Width="947" Background="Transparent" BorderBrush="{DynamicResource BasicBrush}">
                         <TabItem Header="{StaticResource tbiDownloads}" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" Margin="-2,0,2,0" HorizontalAlignment="Right" Width="200" Background="#7F009AD6" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" FontSize="16" FontFamily="Microsoft YaHei UI Light">
                             <Grid Background="#00E5E5E5" Margin="0,0,0,2">
-                                <TextBlock x:Name="url1" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="{DynamicResource bmAICPRom}" VerticalAlignment="Top" TextDecorations="Underline" Foreground="#FF3FADE0" Width="335" MouseDown="TextBlock_MouseDown" FontSize="48" Height="86"/>
+                                <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="{DynamicResource bmAICPRom}" VerticalAlignment="Top" TextDecorations="Underline" Foreground="#FF3FADE0" Width="335" MouseDown="TextBlock_MouseDown" FontSize="48" Height="86"/>
                                 <TextBlock HorizontalAlignment="Left" Margin="344,24,0,0" TextWrapping="Wrap" Text="{DynamicResource bmLineageOS}" VerticalAlignment="Top" TextDecorations="Underline" Foreground="#FF3FADE0" Width="495" FontSize="48" MouseDown="TextBlock_MouseDown_1" Height="72"/>
                                 <TextBlock HorizontalAlignment="Left" Margin="31,206,0,0" TextWrapping="Wrap" Text="{DynamicResource bmMIUILineFlashRom}" VerticalAlignment="Top" TextDecorations="Underline" Foreground="#FF3FADE0" Width="275" FontSize="48" Height="67" MouseDown="TextBlock_MouseDown_4"/>
                                 <TextBlock HorizontalAlignment="Left" Margin="426,256,0,0" TextWrapping="Wrap" Text="{DynamicResource bmMIUIRom}" VerticalAlignment="Top" TextDecorations="Underline" Foreground="#FF3FADE0" Width="274" FontSize="48" Height="62" MouseDown="TextBlock_MouseDown_5"/>
@@ -134,6 +111,46 @@
                     </TabControl>
                 </Grid>
             </TabItem>
+            <TabItem Header="{DynamicResource tbiAbout}" Background="{DynamicResource BasicBrush}" Margin="-2,-3,0,3" BorderBrush="{DynamicResource BasicBrush}" MinHeight="130" FontFamily="Microsoft YaHei UI Light" Height="130">
+                <Grid Background="#00E5E5E5" Margin="0,0,-3,7">
+                    <TabControl HorizontalAlignment="Left" Margin="10,10,0,10" Width="947" Background="Transparent" BorderBrush="{DynamicResource BasicBrush}">
+                        <TabItem Header="{StaticResource tbiAbout}" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" Margin="-2,0,2,0" HorizontalAlignment="Right" Width="200" Background="#7F009AD6" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" FontSize="16" FontFamily="Microsoft YaHei UI Light">
+                            <Grid Background="#00E5E5E5" Margin="0,0,0,2">
+                                <Image HorizontalAlignment="Left" Height="232" Margin="10,10,0,0" VerticalAlignment="Top" Width="225" Source="/AutumnBox;component/title_icon.ico" RenderTransformOrigin="0.519,-0.013"/>
+                                <Label Content="AutumnBox" HorizontalAlignment="Left" Margin="235,82,0,0" VerticalAlignment="Top" Height="126" Width="546" FontSize="100" FontFamily="Microsoft YaHei UI Light"/>
+                                <Label Content="{DynamicResource AboutMessage1}" HorizontalAlignment="Left" Margin="0,304,0,0" VerticalAlignment="Top" Width="426" FontFamily="Microsoft YaHei UI Light" FontSize="14"/>
+                                <Label Content="{DynamicResource AboutMessage2}" HorizontalAlignment="Left" Margin="0,338,0,0" VerticalAlignment="Top" Width="235" FontFamily="Microsoft YaHei UI Light" FontSize="14"/>
+                                <Label Content="{DynamicResource AboutMessage_Thanks}" HorizontalAlignment="Left" Margin="0,489,0,0" VerticalAlignment="Top" Width="360" FontFamily="Microsoft YaHei UI Light" FontSize="14"/>
+                                <Label Content="{DynamicResource AboutMessage_OSList}" HorizontalAlignment="Left" Margin="0,524,0,0" VerticalAlignment="Top" Width="266" FontFamily="Microsoft YaHei UI Light" Height="33" FontSize="14"/>
+                                <TextBlock x:Name="TextBlockGoToOS" HorizontalAlignment="Left" Margin="465,308,0,0" TextWrapping="Wrap" Text="{DynamicResource AboutMessageOS}" VerticalAlignment="Top" Foreground="#FF52B08E" FontFamily="Microsoft YaHei UI Light" TextDecorations="Underline" Height="20" Width="154" RenderTransformOrigin="2.278,-0.968" FontSize="15" MouseDown="TextBlockGoToOS_MouseDown">
+                                    <TextBlock.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform/>
+                                            <SkewTransform/>
+                                            <RotateTransform Angle="0.226"/>
+                                            <TranslateTransform X="0.102" Y="0.92"/>
+                                        </TransformGroup>
+                                    </TextBlock.RenderTransform>
+                                </TextBlock>
+                                <TextBlock x:Name="TextBlockDonate" HorizontalAlignment="Left" Margin="269,342,0,0" TextWrapping="Wrap" Text="{DynamicResource Donate}" VerticalAlignment="Top" Foreground="#FF52B08E" FontFamily="Microsoft YaHei UI Light" TextDecorations="Underline" Height="20" Width="83" RenderTransformOrigin="2.278,-0.968" FontSize="15" MouseDown="TextBlockDonate_MouseDown">
+                                    <TextBlock.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform/>
+                                            <SkewTransform/>
+                                            <RotateTransform Angle="0.226"/>
+                                            <TranslateTransform X="0.102" Y="0.92"/>
+                                        </TransformGroup>
+                                    </TextBlock.RenderTransform>
+                                </TextBlock>
+                                <Image Source="/AutumnBox.Res;component/Images/Icons/donate.png" HorizontalAlignment="Left" Height="28" Margin="235,338,0,0" VerticalAlignment="Top" Width="31"/>
+                                <Image Source="/AutumnBox.Res;component/Images/github.png" HorizontalAlignment="Left" Height="28" Margin="426,304,0,0" VerticalAlignment="Top" Width="31"/>
+                                <Label x:Name="LabelVersion" Content="*.*.*.*-*" HorizontalAlignment="Left" Margin="240,212,0,0" VerticalAlignment="Top" Width="151"/>
+                            </Grid>
+                        </TabItem>
+                    </TabControl>
+                </Grid>
+            </TabItem>
         </TabControl>
+        <Label Content="" HorizontalAlignment="Left" Margin="38,36,0,0" VerticalAlignment="Top" Background="White" Width="3" Height="634"/>
     </Grid>
 </Window>
