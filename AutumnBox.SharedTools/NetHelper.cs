@@ -7,12 +7,8 @@
     {
         public static string GetHtmlCode(string url)
         {
-            string strHTML = "";
-            WebClient myWebClient = new WebClient();
-            Stream myStream = myWebClient.OpenRead(url);
-            StreamReader sr = new StreamReader(myStream, Encoding.GetEncoding("utf-8"));
-            strHTML = sr.ReadToEnd();
-            myStream.Close();
+            StreamReader sr = new StreamReader(new WebClient().OpenRead(url), Encoding.GetEncoding("utf-8"));
+            string strHTML = sr.ReadToEnd();
             sr.Close();
             return strHTML;
         }

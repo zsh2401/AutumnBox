@@ -1,14 +1,6 @@
-﻿using AutumnBox.Basic.Util;
-using AutumnBox.Debug;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutumnBox.Util
 {
@@ -39,7 +31,7 @@ namespace AutumnBox.Util
                 Save();
             }
             catch (Exception e) {
-                Log.d("Catcho e Exp",e.ToString());
+                Logger.D("Catcho e Exp",e.ToString());
             }
         }
         public void Save()
@@ -52,8 +44,8 @@ namespace AutumnBox.Util
             FileStream fs = new FileStream(CONFIG_FILE, FileMode.Open, FileAccess.Read);
             StreamReader sr = new StreamReader(fs);
             string  content = sr.ReadToEnd();
-            fs.Close();
             sr.Close();
+            fs.Close();
             SourceData = JObject.Parse(content);
         }
         public JToken this[string key]

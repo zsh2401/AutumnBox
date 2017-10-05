@@ -29,7 +29,6 @@ namespace Tester
         }
         public void _Run()
         {
-            double x = 1E7;
             var rm = RunningManager.Create(
                 new DeviceSimpleInfo()
                 { Id = Program.mi4ID},new MiFlash(

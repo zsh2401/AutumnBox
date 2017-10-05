@@ -20,7 +20,7 @@ namespace AutumnBox.UI.Cstm
     /// <summary>
     /// CstmButton.xaml 的交互逻辑
     /// </summary>
-    public partial class CstmButton : Button,IChangeByStatus
+    public partial class CstmButton : Button
     {
         public static readonly DependencyProperty ContorlNameProperty =
             DependencyProperty.Register("ContorlName", typeof(string), typeof(CstmButton), new PropertyMetadata());
@@ -28,8 +28,6 @@ namespace AutumnBox.UI.Cstm
         {
             InitializeComponent();
         }
-
-        public bool NeedStatus { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public void ChangeByStatus(DeviceStatus nowStatus)
         {

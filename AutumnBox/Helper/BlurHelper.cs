@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutumnBox.Util;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -11,8 +12,9 @@ namespace AutumnBox.Helper
 {
     class BlurHelper
     {
-        [DllImport("user32.dll")]
-        internal static extern int SetWindowCompositionAttribute(IntPtr hwnd, ref WindowCompositionAttributeData data);
+#pragma warning disable CS1060 // 变量已被赋值，但从未使用过它的值
+       
+#pragma warning restore CS1060// 变量已被赋值，但从未使用过它的值
 
         internal enum AccentState
         {
@@ -69,7 +71,7 @@ namespace AutumnBox.Helper
                 SizeOfData = accentStructSize,
                 Data = accentPtr
             };
-            SetWindowCompositionAttribute(WindowPtr, ref data);
+            NativeMethods.SetWindowCompositionAttribute(WindowPtr, ref data);
 
             Marshal.FreeHGlobal(accentPtr);
         }

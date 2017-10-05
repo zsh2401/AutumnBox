@@ -1,22 +1,18 @@
 ﻿using AutumnBox.Basic.Functions;
 using AutumnBox.Basic.Functions.RunningManager;
-using AutumnBox.Debug;
+using AutumnBox.Basic.Util;
 using AutumnBox.Helper;
 using AutumnBox.UI;
 using Microsoft.Win32;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace AutumnBox
 {
     public partial class StartWindow
     {
-        private void buttonStartBrventService_Click(object sender, RoutedEventArgs e)
+        private void ButtonStartBrventService_Click(object sender, RoutedEventArgs e)
         {
             if (!ChoiceBox.Show(this, App.Current.Resources["Notice"].ToString(), App.Current.Resources["StartBrventTip"].ToString())) return;
             BreventServiceActivator activator = new BreventServiceActivator();
@@ -26,19 +22,21 @@ namespace AutumnBox
             UIHelper.ShowRateBox(this,rm);
         }
 
-        private void buttonLinkHelp_Click(object sender, RoutedEventArgs e)
+        private void ButtonLinkHelp_Click(object sender, RoutedEventArgs e)
         {
             new LinkHelpWindow(this).Show();
         }
 
         private void ButtonStartShell_Click(object sender, RoutedEventArgs e)
         {
-            ProcessStartInfo info = new ProcessStartInfo();
-            info.WorkingDirectory = "adb/";
-            info.FileName = "cmd.exe";
+            ProcessStartInfo info = new ProcessStartInfo
+            {
+                WorkingDirectory = "adb/",
+                FileName = "cmd.exe"
+            };
             if (SystemHelper.IsWin10)
             {
-                Log.d(TAG,"sadasasas"); ;
+                Logger.D(TAG,"sadasasas"); ;
                 if (ChoiceBox.ShowDialog(this, App.Current.Resources["Notice"].ToString(), App.Current.Resources["ShellChoiceTip"].ToString(), "Powershell", "CMD"))
                 {
                     info.FileName = "powershell.exe";
@@ -47,12 +45,12 @@ namespace AutumnBox
             Process.Start(info);
         }
 
-        private void buttonChangeTheme_Click(object sender, RoutedEventArgs e)
+        private void ButtonChangeTheme_Click(object sender, RoutedEventArgs e)
         {
             //TODO
         }
 
-        private void buttonPushFileToSdcard_Click(object sender, RoutedEventArgs e)
+        private void ButtonPushFileToSdcard_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog fileDialog = new OpenFileDialog();
             fileDialog.Reset();
@@ -93,7 +91,7 @@ namespace AutumnBox
             rm.FuncStart();
         }
 
-        private void buttonRebootToBootloader_Click(object sender, RoutedEventArgs e)
+        private void ButtonRebootToBootloader_Click(object sender, RoutedEventArgs e)
         {
             RebootOperator ro = new RebootOperator(new RebootArgs
             {
@@ -105,7 +103,7 @@ namespace AutumnBox
             rm.FuncStart();
         }
 
-        private void buttonRebootToSystem_Click(object sender, RoutedEventArgs e)
+        private void ButtonRebootToSystem_Click(object sender, RoutedEventArgs e)
         {
             RebootOperator ro = new RebootOperator(new RebootArgs
             {
@@ -117,7 +115,7 @@ namespace AutumnBox
             rm.FuncStart();
         }
 
-        private void buttonFlashCustomRecovery_Click(object sender, RoutedEventArgs e)
+        private void ButtonFlashCustomRecovery_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog fileDialog = new OpenFileDialog();
             fileDialog.Reset();
@@ -138,7 +136,7 @@ namespace AutumnBox
             }
         }
 
-        private void buttonUnlockMiSystem_Click(object sender, RoutedEventArgs e)
+        private void ButtonUnlockMiSystem_Click(object sender, RoutedEventArgs e)
         {
             if (!ChoiceBox.Show(this, FindResource("Notice").ToString(), FindResource("UnlockXiaomiSystemTip").ToString())) return;
             MMessageBox.ShowDialog(this, FindResource("Notice").ToString(), FindResource("msgIfAllOK").ToString());
@@ -149,7 +147,7 @@ namespace AutumnBox
             UIHelper.ShowRateBox(this,rm);
         }
 
-        private void buttonRelockMi_Click(object sender, RoutedEventArgs e)
+        private void ButtonRelockMi_Click(object sender, RoutedEventArgs e)
         {
             if (!ChoiceBox.Show(this, App.Current.Resources["Warning"].ToString(), App.Current.Resources["msgRelockWarning"].ToString())) return;
             if (!ChoiceBox.Show(this, App.Current.Resources["Warning"].ToString(), App.Current.Resources["msgRelockWarningAgain"].ToString())) return;

@@ -116,7 +116,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DebugInfo.cs" />
-    <Compile Include="Debug\Log.cs" />
     <Compile Include="Helper\BlurHelper.cs" />
     <Compile Include="Helper\SystemHelper.cs" />
     <Compile Include="Helper\UIHelper.cs" />
@@ -170,6 +169,8 @@
     <Compile Include="Util\ConfigSql.cs" />
     <Compile Include="Helper\LanguageHelper.cs" />
     <Compile Include="Util\ConfigJson.cs" />
+    <Compile Include="Util\Logger.cs" />
+    <Compile Include="Util\NativeMethods.cs" />
     <Compile Include="Util\VersionInfo.cs" />
   </ItemGroup>
   <ItemGroup>

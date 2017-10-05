@@ -1,10 +1,8 @@
 ﻿namespace AutumnBox
 {
-    using AutumnBox.Basic.Devices;
     using AutumnBox.UI;
     using System;
     using System.Windows;
-    using AutumnBox.Debug;
     using AutumnBox.Util;
     using AutumnBox.Basic.Functions.Event;
     using AutumnBox.Basic.Functions;
@@ -63,8 +61,8 @@
         /// <param name="e"></param>
         private void ActivatedBrvent(object sender, FinishEventArgs e)
         {
-            Log.d(TAG, e.OutputData.Error.ToString());
-            Log.d(TAG, e.OutputData.Out.ToString());
+            Logger.D(TAG, e.OutputData.Error.ToString());
+            Logger.D(TAG, e.OutputData.Out.ToString());
             this.Dispatcher.Invoke(new Action(() =>
             {
                 UIHelper.CloseRateBox();
@@ -80,7 +78,7 @@
         /// <param name="o"></param>
         private void UnlockMiSystemFinish(object sender, FinishEventArgs e)
         {
-            Log.d(mweTag, "UnlockMiSystemFinish Event ");
+            Logger.D(mweTag, "UnlockMiSystemFinish Event ");
             this.Dispatcher.Invoke(new Action(() =>
             {
                 UIHelper.CloseRateBox();
@@ -93,7 +91,7 @@
         /// <param name="o"></param>
         private void RelockMiFinish(object sender, FinishEventArgs e)
         {
-            Log.d(mweTag, "Relock Mi Finish");
+            Logger.D(mweTag, "Relock Mi Finish");
             this.Dispatcher.Invoke(new Action(() =>
             {
                 //this.core.Reboot(nowDev, Basic.Arg.RebootOptions.System);
@@ -110,7 +108,7 @@
         /// <param name="outputData">操作时的输出数据</param>
         private void PushFinish(object sender, FinishEventArgs e)
         {
-            Log.d(mweTag, "Push finish");
+            Logger.D(mweTag, "Push finish");
             if (e.Result.IsSuccessful)
             {
                 MMessageBox.ShowDialog(this, Application.Current.Resources["Notice"].ToString(), Application.Current.FindResource("msgPushOK").ToString());
@@ -126,7 +124,7 @@
         /// <param name="outputData">操作时的数据数据</param>
         private void FlashCustomRecFinish(object sender, FinishEventArgs e)
         {
-            Log.d(mweTag, "Flash Custom Recovery Finish");
+            Logger.D(mweTag, "Flash Custom Recovery Finish");
             this.Dispatcher.Invoke(new Action(() =>
             {
                 UIHelper.CloseRateBox();

@@ -1,12 +1,7 @@
-﻿using AutumnBox.Debug;
-using AutumnBox.SharedTools;
+﻿using AutumnBox.SharedTools;
 using Newtonsoft.Json.Linq;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutumnBox.NetUtil
 {
@@ -26,15 +21,16 @@ namespace AutumnBox.NetUtil
 #else
                 JObject o = JObject.Parse(File.ReadAllText(@"E:\zsh2401.github.io\softsupport\autumnbox\motd\index.html"));
 #endif
-                MOTDGetFinishedEventArgs e = new MOTDGetFinishedEventArgs();
-                e.Header = o["header"].ToString();
-                e.Message = o["message"].ToString();
+                MOTDGetFinishedEventArgs e = new MOTDGetFinishedEventArgs
+                {
+                    Header = o["header"].ToString(),
+                    Message = o["message"].ToString()
+                };
                 GetFinished(this, e);
             }
             catch (Exception e)
             {
-                Basic.Util.Logger.E(this, "Motd Getting Expception", e);
-                Log.d("MOTDGetter", e.ToString() + e.Message);
+                Util.Logger.E(this, "Motd Getting Expception", e);
             }
         }
     }

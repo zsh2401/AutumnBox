@@ -1,12 +1,7 @@
-﻿using AutumnBox.Basic.Devices;
-using AutumnBox.Basic.Functions;
-using AutumnBox.Basic.Functions.RunningManager;
-using AutumnBox.Debug;
-using AutumnBox.Helper;
+﻿using AutumnBox.Helper;
 using AutumnBox.UI;
 using System;
 using System.Diagnostics;
-using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;

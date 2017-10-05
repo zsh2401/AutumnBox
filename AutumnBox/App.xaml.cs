@@ -1,5 +1,6 @@
 ﻿using AutumnBox.Basic.Devices;
 using AutumnBox.Basic.Functions.RunningManager;
+using AutumnBox.Util;
 using System;
 using System.Runtime.InteropServices;
 using System.Threading;
@@ -38,8 +39,6 @@ namespace AutumnBox
             }
         }
         #region 内存回收 http://www.cnblogs.com/xcsn/p/4678322.html
-        [DllImport("kernel32.dll", EntryPoint = "SetProcessWorkingSetSize")]
-        public static extern int SetProcessWorkingSetSize(IntPtr process, int minSize, int maxSize);
         /// <summary>
         /// 释放内存
         /// </summary>
@@ -49,7 +48,7 @@ namespace AutumnBox
             GC.WaitForPendingFinalizers();
             if (Environment.OSVersion.Platform == PlatformID.Win32NT)
             {
-                App.SetProcessWorkingSetSize(System.Diagnostics.Process.GetCurrentProcess().Handle, -1, -1);
+               NativeMethods.SetProcessWorkingSetSize(System.Diagnostics.Process.GetCurrentProcess().Handle, -1, -1);
             }
         }
         #endregion

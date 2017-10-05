@@ -45,6 +45,7 @@
         {
             ABProcess.Dispose();
             Kill();
+            GC.SuppressFinalize(this);
         }
     }
 }

@@ -1,15 +1,8 @@
 ﻿using AutumnBox.Basic.Devices;
-using AutumnBox.Basic.Functions;
-using AutumnBox.Basic.Functions.RunningManager;
-using AutumnBox.Debug;
 using AutumnBox.Helper;
-using AutumnBox.UI;
 using System;
-using System.Collections;
 using System.Drawing;
 using System.Text.RegularExpressions;
-using System.Windows;
-using System.Windows.Controls;
 
 namespace AutumnBox
 {
@@ -54,7 +47,9 @@ namespace AutumnBox
             bool inRecovery = false;
             bool inRunning = false;
             bool notFound = false;
+#pragma warning disable CS0219 // 变量已被赋值，但从未使用过它的值
             bool inSideload = false;
+#pragma warning restore CS0219 // 变量已被赋值，但从未使用过它的值
             switch (status)
             {
                 case DeviceStatus.FASTBOOT:

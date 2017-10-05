@@ -1,13 +1,7 @@
 ﻿namespace AutumnBox
 {
-    using AutumnBox.Basic;
     using AutumnBox.Basic.Devices;
-    using AutumnBox.Debug;
     using AutumnBox.Helper;
-    using AutumnBox.NetUtil;
-    using AutumnBox.UI;
-    using AutumnBox.Util;
-    using System;
     using System.Threading;
     using System.Windows;
     using System.Windows.Controls;

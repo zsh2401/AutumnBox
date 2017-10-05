@@ -1,19 +1,9 @@
 ﻿using AutumnBox.Basic.Devices;
-using AutumnBox.Basic.Functions;
-using AutumnBox.Basic.Functions.RunningManager;
-using AutumnBox.Debug;
 using AutumnBox.Helper;
 using AutumnBox.NetUtil;
 using AutumnBox.UI;
 using AutumnBox.Util;
-using Microsoft.Win32;
-using System;
-using System.Diagnostics;
-using System.Threading;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
-using System.Windows.Media;
 
 namespace AutumnBox
 {
@@ -23,13 +13,14 @@ namespace AutumnBox
     public partial class StartWindow : Window
     {
         string TAG = "MainWindow";
+
         public StartWindow()
         {
-            Log.InitLogFile();
-            Log.d(TAG, "Log Init Finish,Start Init Window");
+            Logger.InitLogFile();
+            Logger.D(TAG, "Log Init Finish,Start Init Window");
             InitializeComponent();
             App.devicesListener.DevicesChanged += DevicesChanged;
-            Log.d(TAG, "Start customInit");
+            Logger.D(TAG, "Start customInit");
             ChangeButtonByStatus(DeviceStatus.NO_DEVICE);//将所有按钮设置成关闭状态
             ChangeImageByStatus(DeviceStatus.NO_DEVICE);
 #if DEBUG
@@ -44,7 +35,7 @@ namespace AutumnBox
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void DevicesChanged(object sender, DevicesChangeEventArgs e) {
-                Log.d(TAG, "Devices change handing.....");
+            Logger.D(TAG, "Devices change handing.....");
                 this.Dispatcher.Invoke(() =>
                 {
                     DevicesListBox.ItemsSource = e.DevicesList;
@@ -65,7 +56,7 @@ namespace AutumnBox
             //哦,如果是第一次启动本软件,那么就显示一下提示吧!
             if (Config.IsFirstLaunch)
             {
-                MMessageBox.ShowDialog(this, FindResource("Notice2").ToString(), FindResource("FristLaunchNotice").ToString());
+                MMessageBox.ShowDialog(this, FindResource("Notice2").ToString(), App.Current.Resources["msgFristLaunchNotice"].ToString());
                 Config.IsFirstLaunch = false;
             }
             BlurHelper.EnableBlur(this);
@@ -98,31 +89,35 @@ namespace AutumnBox
         }
         void InitWebPage()
         {
-            new Thread(() =>
-            {
-                Guider guider = new Guider();
-                if (guider.isOk)
-                {
-                    try
-                    {
-                        this.Dispatcher.Invoke(new Action(() =>
-                        {
-                            webFlashHelper.Navigate(guider["urls"]["flashhelp"].ToString());
-                            webSaveDevice.Navigate(guider["urls"]["savedevicehelp"].ToString());
-                            webFlashRecHelp.Navigate(guider["urls"]["flashrecoveryhelp"].ToString());
-                        }));
-                    }
-                    catch (Exception e)
-                    {
-                        Log.d(TAG, "web browser set fail");
-                        Log.d(TAG, e.Message);
-                    }
-                }
-                else
-                {
-                    Log.d(TAG, "web browser set fail because guider is not ok");
-                }
-            }).Start();
+            webFlashHelper.Navigate(HelpUrl.flashhelp);
+            webSaveDevice.Navigate(HelpUrl.savedevice);
+            webFlashRecHelp.Navigate(HelpUrl.flashrecovery);
+            //new Thread(() =>
+            //{
+
+            //Guider guider = new Guider();
+            //    if (guider.isOk)
+            //    {
+            //        try
+            //        {
+            //            this.Dispatcher.Invoke(new Action(() =>
+            //            {
+            //                webFlashHelper.Navigate(guider["urls"]["flashhelp"].ToString());
+            //                webSaveDevice.Navigate(guider["urls"]["savedevicehelp"].ToString());
+            //                webFlashRecHelp.Navigate(guider["urls"]["flashrecoveryhelp"].ToString());
+            //            }));
+            //        }
+            //        catch (Exception e)
+            //        {
+            //            Logger.D(TAG, "web browser set fail");
+            //            Logger.D(TAG, e.Message);
+            //        }
+            //    }
+            //    else
+            //    {
+            //        Logger.D(TAG, "web browser set fail because guider is not ok");
+            //    }
+            //}).Start();
         }
     }
 }

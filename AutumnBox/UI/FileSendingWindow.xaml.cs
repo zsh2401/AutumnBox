@@ -1,25 +1,14 @@
 ﻿namespace AutumnBox.UI
 {
-    using AutumnBox.Basic.Functions;
     using AutumnBox.Basic.Functions.Interface;
     using AutumnBox.Basic.Functions.RunningManager;
-    using AutumnBox.Debug;
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
     using System.Text.RegularExpressions;
-    using System.Threading.Tasks;
     using System.Windows;
-    using System.Windows.Controls;
-    using System.Windows.Data;
-    using System.Windows.Documents;
     using System.Windows.Input;
-    using System.Windows.Media;
-    using System.Windows.Media.Imaging;
-    using System.Windows.Shapes;
     using System.Diagnostics;
     using AutumnBox.Helper;
+    using AutumnBox.Util;
 
     /// <summary>
     /// FileSendingWindow.xaml 的交互逻辑
@@ -69,11 +58,11 @@
             }
             catch (Exception se)
             {
-                Log.d(e.ToString(), se.Message);
+                Logger.D(e.ToString(), se.Message);
             }
         }
 
-        private void buttonCancel_Click(object sender, RoutedEventArgs e)
+        private void ButtonCancel_Click(object sender, RoutedEventArgs e)
         {
             rm.FuncStop();
             this.Close();
@@ -81,7 +70,7 @@
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            Log.d(this.GetType().Name, "Mouse Down on Window");
+            Logger.D(this.GetType().Name, "Mouse Down on Window");
             UIHelper.DragMove(this, e);
         }
 

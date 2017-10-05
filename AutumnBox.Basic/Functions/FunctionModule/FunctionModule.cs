@@ -219,7 +219,9 @@ namespace AutumnBox.Basic.Functions
         /// </summary>
         public void Dispose()
         {
+#pragma warning disable CA1063
             Executer.Dispose();
+#pragma warning disable CA1063
         }
         #endregion
     }
