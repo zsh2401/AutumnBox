@@ -1,8 +1,11 @@
 ﻿using AutumnBox.Basic.Devices;
+using AutumnBox.Basic.Functions.RunningManager;
 using System;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows;
+using System.Windows.Navigation;
+
 namespace AutumnBox
 {
     /// <summary>
@@ -10,12 +13,18 @@ namespace AutumnBox
     /// </summary>
     public partial class App : Application
     {
-        internal static DeviceLink nowLink = DeviceLink.CreateNone();//当前的设备连接
+        internal static Window OwnerWindow { get; private set; }
+        internal static DeviceSimpleInfo SelectedDevice;
         internal static DevicesMonitor devicesListener = new DevicesMonitor();//设备监听器
         protected override void OnStartup(StartupEventArgs e)
         {
-            new Thread(AutoGC) { Name = "Auto GC..."}.Start();
+            new Thread(AutoGC) { Name = "Auto GC..." }.Start();
             base.OnStartup(e);
+        }
+        protected override void OnLoadCompleted(NavigationEventArgs e)
+        {
+            base.OnLoadCompleted(e);
+            OwnerWindow = this.MainWindow;
         }
         /// <summary>
         /// 无限循环的内存回收方法

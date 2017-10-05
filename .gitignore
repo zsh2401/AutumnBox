@@ -27,6 +27,7 @@ bin/Tester.exe
 bin/app.publish
 bin/WpfAnimatedGif.xml
 *.zip
+*.rar
 *.lnk
 *.bak
 *.suo

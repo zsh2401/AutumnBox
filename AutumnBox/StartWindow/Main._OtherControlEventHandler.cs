@@ -16,7 +16,7 @@ namespace AutumnBox
     /// <summary>
     /// 除基本的按钮点击逻辑外的UI逻辑
     /// </summary>
-    public partial class Window1
+    public partial class StartWindow
     {
         private void CustomTitleBar_MouseMove(object sender, MouseEventArgs e)
         {

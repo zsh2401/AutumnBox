@@ -8,38 +8,14 @@
     using AutumnBox.Util;
     using AutumnBox.Basic.Functions.Event;
     using AutumnBox.Basic.Functions;
+    using AutumnBox.Helper;
+
     /// <summary>
     /// 各种界面事件
     /// </summary>
-    public partial class Window1
+    public partial class StartWindow
     {
         string mweTag = "MainWindowEvent";
-
-        /// <summary>
-        /// 初始化各种事件
-        /// </summary>
-        private void InitEvents()
-        {
-            //设备列表发生改变时的事件
-            App.devicesListener.DevicesChanged += (s, e) => {
-                /*
-             * 由于是从设备监听器线程发生的事件
-             * 并且需要操作主界面,因此要用匿名函数来进行操作
-             */
-                Log.d(TAG, "Devices change handing.....");
-                this.Dispatcher.Invoke(() =>
-                {
-                    DevicesListBox.Items.Clear();
-                    Log.d(TAG, "Clear");
-                    e.DevicesList.ForEach((info) => { DevicesListBox.Items.Add(info); });
-                    if (e.DevicesList.Count == 1)
-                    {
-                        DevicesListBox.SelectedIndex = 0;
-                    }
-                });
-            };
-        }
-
         #region 功能事件
         /// <summary>
         /// 通用事件处理
@@ -48,7 +24,7 @@
         /// <param name="e"></param>
         private void FuncFinish(object sender, FinishEventArgs e)
         {
-            HideRateBox();
+            UIHelper.CloseRateBox();
             if (sender is FileSender)
             {
                 PushFinish(sender, e);
@@ -91,7 +67,7 @@
             Log.d(TAG, e.OutputData.Out.ToString());
             this.Dispatcher.Invoke(new Action(() =>
             {
-                HideRateBox();
+                UIHelper.CloseRateBox();
             }));
             if (!e.Result.IsSuccessful) {
                 MMessageBox.ShowDialog(this,"Fail",e.Result.OutputData.ToString());
@@ -105,9 +81,9 @@
         private void UnlockMiSystemFinish(object sender, FinishEventArgs e)
         {
             Log.d(mweTag, "UnlockMiSystemFinish Event ");
-            this.rateBox.Dispatcher.Invoke(new Action(() =>
+            this.Dispatcher.Invoke(new Action(() =>
             {
-                this.HideRateBox();
+                UIHelper.CloseRateBox();
             }));
         }
 
@@ -122,9 +98,9 @@
             {
                 //this.core.Reboot(nowDev, Basic.Arg.RebootOptions.System);
             }));
-            this.rateBox.Dispatcher.Invoke(new Action(() =>
+            this.Dispatcher.Invoke(new Action(() =>
             {
-                this.HideRateBox();
+                UIHelper.CloseRateBox();
             }));
         }
 
@@ -151,9 +127,9 @@
         private void FlashCustomRecFinish(object sender, FinishEventArgs e)
         {
             Log.d(mweTag, "Flash Custom Recovery Finish");
-            this.rateBox.Dispatcher.Invoke(new Action(() =>
+            this.Dispatcher.Invoke(new Action(() =>
             {
-                this.HideRateBox();
+                UIHelper.CloseRateBox();
             }));
             MMessageBox.ShowDialog(this, Application.Current.FindResource("Notice").ToString(), Application.Current.FindResource("msgFlashOK").ToString());
         }

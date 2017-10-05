@@ -5,33 +5,32 @@ using AutumnBox.Debug;
 using AutumnBox.Helper;
 using AutumnBox.UI;
 using System;
+using System.Collections;
+using System.Drawing;
 using System.Text.RegularExpressions;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace AutumnBox
 {
     /// <summary>
     /// 除基本的按钮点击逻辑外的UI逻辑
     /// </summary>
-    public partial class Window1
+    public partial class StartWindow
     {
-        private Object setUILock = new object();
+        private Object setUILock = new System.Object();
         /// <summary>
-        /// 根据设备改变界面,如果按钮状态,显示文字,这个方法需要用新线程来操作.并且完成后将会发生事件
-        /// 通过事件可以便可以关闭进度窗
+        /// 根据当前选中的设备刷新界面信息
         /// </summary>
-        /// <param name="id">设备的id</param>
-        private void Refresh()
+        private void RefreshUI()
         {
             lock (setUILock)
             {
-                DeviceSimpleInfo sinfo = new DeviceSimpleInfo();
-                this.Dispatcher.Invoke(() =>
+                Dispatcher.Invoke(() =>
                 {
-                    sinfo = (DeviceSimpleInfo)DevicesListBox.SelectedItem;
+                    App.SelectedDevice = ((DeviceSimpleInfo)DevicesListBox.SelectedItem);
                 });
-                App.nowLink.Reset(sinfo);
-                DeviceInfo info = App.nowLink.DeviceInfo;
+                var info = DevicesHelper.GetDeviceInfo(App.SelectedDevice.Id);
                 this.Dispatcher.Invoke(new Action(() =>
                 {
                     //根据状态将图片和按钮状态进行设置
@@ -41,10 +40,14 @@ namespace AutumnBox
                     this.AndroidVersionLabel.Content = info.androidVersion;
                     this.CodeLabel.Content = info.code;
                     this.ModelLabel.Content = Regex.Replace(info.brand, @"[\r\n]", "") + " " + info.model;
-                    HideRateBox();
+                    UIHelper.CloseRateBox();
                 }));
             }
         }
+        /// <summary>
+        /// 根据设备状态改变按钮状态
+        /// </summary>
+        /// <param name="status"></param>
         private void ChangeButtonByStatus(DeviceStatus status)
         {
             bool inBootLoader = false;
@@ -70,41 +73,45 @@ namespace AutumnBox
                     notFound = true;
                     break;
             }
-            //this.buttonSideload.IsEnabled = (inSideload || inRecovery || inRunning);
-            this.buttonStartBrventService.IsEnabled = inRunning;
-            this.buttonUnlockMiSystem.IsEnabled = (inRecovery || inRunning);
-            this.buttonRelockMi.IsEnabled = inBootLoader;
+            UIHelper.SetGridButtonStatus(GridRRS, (!notFound && !inBootLoader));
+            UIHelper.SetGridButtonStatus(GridOnFastboot, (!notFound && inBootLoader));
+            //this.ButtonMiFlash.IsEnabled = inBootLoader;
+            //this.ButtonSideload.IsEnabled = inSideload;
+            //this.buttonStartBrventService.IsEnabled = inRunning;
+            //this.buttonUnlockMiSystem.IsEnabled = (inRecovery || inRunning);
+            //this.buttonRelockMi.IsEnabled = inBootLoader;
             this.buttonRebootToBootloader.IsEnabled = !notFound;
             this.buttonRebootToSystem.IsEnabled = !notFound;
             this.buttonRebootToRecovery.IsEnabled = (inRunning || inRecovery);
-            this.buttonPushFileToSdcard.IsEnabled = (inRecovery || inRunning);
-            this.buttonFlashCustomRecovery.IsEnabled = inBootLoader;
+            //this.buttonPushFileToSdcard.IsEnabled = (inRecovery || inRunning);
+            //this.buttonFlashCustomRecovery.IsEnabled = inBootLoader;
         }
-        private void ChangeImageByStatus(DeviceStatus status) {
+        /// <summary>
+        /// 设备状态改变图片
+        /// </summary>
+        /// <param name="status"></param>
+        private void ChangeImageByStatus(DeviceStatus status)
+        {
+            Action<Bitmap, string> SetDevInfoImgAndText = (bitmap, key) => {
+                this.DeviceStatusImage.Source = UIHelper.BitmapToBitmapImage(bitmap);
+                this.DeviceStatusLabel.Content = App.Current.Resources[key].ToString();
+            };
             switch (status)
             {
                 case DeviceStatus.FASTBOOT:
-                    this.DeviceStatusImage.Source = UIHelper.BitmapToBitmapImage(Res.DynamicIcons.fastboot);
-                    this.DeviceStatusLabel.Content = FindResource("DeviceInFastboot").ToString();
+                    SetDevInfoImgAndText(Res.DynamicIcons.fastboot, "DeviceInFastboot");
                     break;
                 case DeviceStatus.RECOVERY:
-                    this.DeviceStatusImage.Source = UIHelper.BitmapToBitmapImage(Res.DynamicIcons.recovery);
-                    this.DeviceStatusLabel.Content = FindResource("DeviceInRecovery").ToString();
+                    SetDevInfoImgAndText(Res.DynamicIcons.recovery, "DeviceInRecovery");
                     break;
                 case DeviceStatus.RUNNING:
-                    this.DeviceStatusImage.Source = UIHelper.BitmapToBitmapImage(Res.DynamicIcons.poweron);
-                    this.DeviceStatusLabel.Content = FindResource("DeviceInRunning").ToString();
+                    SetDevInfoImgAndText(Res.DynamicIcons.poweron, "DeviceInRunning");
                     break;
                 case DeviceStatus.SIDELOAD:
-                    this.DeviceStatusImage.Source = UIHelper.BitmapToBitmapImage(Res.DynamicIcons.recovery);
-                    this.DeviceStatusLabel.Content = FindResource("DeviceInSideload").ToString();
-                    break;
-                case DeviceStatus.DEBUGGING_DEVICE:
-                    this.DeviceStatusLabel.Content = FindResource("DeviceIsDebugging").ToString();
+                    SetDevInfoImgAndText(Res.DynamicIcons.recovery, "DeviceInSideload");
                     break;
                 default:
-                    this.DeviceStatusImage.Source = UIHelper.BitmapToBitmapImage(Res.DynamicIcons.no_selected);
-                    this.DeviceStatusLabel.Content = FindResource("PleaseSelectedADevice").ToString();
+                    SetDevInfoImgAndText(Res.DynamicIcons.no_selected, "PleaseSelectedADevice");
                     break;
             }
         }

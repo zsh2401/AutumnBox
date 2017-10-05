@@ -14,16 +14,16 @@ using System.Windows;
 
 namespace AutumnBox
 {
-    public partial class Window1
+    public partial class StartWindow
     {
         private void buttonStartBrventService_Click(object sender, RoutedEventArgs e)
         {
             if (!ChoiceBox.Show(this, App.Current.Resources["Notice"].ToString(), App.Current.Resources["StartBrventTip"].ToString())) return;
             BreventServiceActivator activator = new BreventServiceActivator();
-            var rm = App.nowLink.GetRunningManager(activator);
+            var rm = App.SelectedDevice.GetRunningManger(activator);
             rm.FuncEvents.Finished += FuncFinish;
             rm.FuncStart();
-            ShowRateBox(rm);
+            UIHelper.ShowRateBox(this,rm);
         }
 
         private void buttonLinkHelp_Click(object sender, RoutedEventArgs e)
@@ -51,6 +51,7 @@ namespace AutumnBox
         {
             //TODO
         }
+
         private void buttonPushFileToSdcard_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog fileDialog = new OpenFileDialog();
@@ -61,7 +62,7 @@ namespace AutumnBox
             if (fileDialog.ShowDialog() == true)
             {
                 FileSender fs = new FileSender(new FileArgs { files = new string[] { fileDialog.FileName } });
-                RunningManager rm = App.nowLink.GetRunningManager(fs);
+                RunningManager rm = App.SelectedDevice.GetRunningManger(fs);
                 rm.FuncEvents.Finished += FuncFinish;
                 rm.FuncStart();
                 new FileSendingWindow(this, rm).ShowDialog();
@@ -85,9 +86,9 @@ namespace AutumnBox
             RebootOperator ro = new RebootOperator(new RebootArgs
             {
                 rebootOption = RebootOptions.Recovery,
-                nowStatus = App.nowLink.DeviceInfo.deviceStatus
+                nowStatus = App.SelectedDevice.Status
             });
-            var rm = App.nowLink.GetRunningManager(ro);
+            var rm = App.SelectedDevice.GetRunningManger(ro);
             rm.FuncEvents.Finished += FuncFinish;
             rm.FuncStart();
         }
@@ -97,9 +98,9 @@ namespace AutumnBox
             RebootOperator ro = new RebootOperator(new RebootArgs
             {
                 rebootOption = RebootOptions.Bootloader,
-                nowStatus = App.nowLink.DeviceInfo.deviceStatus
+                nowStatus = App.SelectedDevice.Status
             });
-            var rm = App.nowLink.GetRunningManager(ro);
+            var rm = App.SelectedDevice.GetRunningManger(ro);
             rm.FuncEvents.Finished += FuncFinish;
             rm.FuncStart();
         }
@@ -109,9 +110,9 @@ namespace AutumnBox
             RebootOperator ro = new RebootOperator(new RebootArgs
             {
                 rebootOption = RebootOptions.System,
-                nowStatus = App.nowLink.DeviceInfo.deviceStatus
+                nowStatus = App.SelectedDevice.Status
             });
-            var rm = App.nowLink.GetRunningManager(ro);
+            var rm = App.SelectedDevice.GetRunningManger(ro);
             rm.FuncEvents.Finished += FuncFinish;
             rm.FuncStart();
         }
@@ -126,10 +127,10 @@ namespace AutumnBox
             if (fileDialog.ShowDialog() == true)
             {
                 CustomRecoveryFlasher flasher = new CustomRecoveryFlasher(new FileArgs() { files = new string[] { fileDialog.FileName } });
-                var rm = App.nowLink.GetRunningManager(flasher);
+                var rm = App.SelectedDevice.GetRunningManger(flasher);
                 rm.FuncEvents.Finished += FuncFinish;
                 rm.FuncStart();
-                ShowRateBox(rm);
+                UIHelper.ShowRateBox(this,rm);
             }
             else
             {
@@ -142,10 +143,10 @@ namespace AutumnBox
             if (!ChoiceBox.Show(this, FindResource("Notice").ToString(), FindResource("UnlockXiaomiSystemTip").ToString())) return;
             MMessageBox.ShowDialog(this, FindResource("Notice").ToString(), FindResource("msgIfAllOK").ToString());
             XiaomiSystemUnlocker unlocker = new XiaomiSystemUnlocker();
-            var rm = App.nowLink.GetRunningManager(unlocker);
+            var rm = App.SelectedDevice.GetRunningManger(unlocker);
             rm.FuncEvents.Finished += FuncFinish;
             rm.FuncStart();
-            ShowRateBox(rm);
+            UIHelper.ShowRateBox(this,rm);
         }
 
         private void buttonRelockMi_Click(object sender, RoutedEventArgs e)
@@ -153,10 +154,10 @@ namespace AutumnBox
             if (!ChoiceBox.Show(this, App.Current.Resources["Warning"].ToString(), App.Current.Resources["msgRelockWarning"].ToString())) return;
             if (!ChoiceBox.Show(this, App.Current.Resources["Warning"].ToString(), App.Current.Resources["msgRelockWarningAgain"].ToString())) return;
             XiaomiBootloaderRelocker relocker = new XiaomiBootloaderRelocker();
-            var rm = App.nowLink.GetRunningManager(relocker);
+            var rm = App.SelectedDevice.GetRunningManger(relocker);
             rm.FuncEvents.Finished += FuncFinish;
             rm.FuncStart();
-            ShowRateBox(rm);
+            UIHelper.ShowRateBox(this,rm);
         }
     }
 }

@@ -25,6 +25,10 @@
     <!--按钮-->
 
     <!--tabitem-->
+    <s:String x:Key="tbiOnRecovery">恢复模式/开机/Sideload</s:String>
+    <s:String x:Key="tbiOnFastboot">Fastboot/9003</s:String>
+    <s:String x:Key="tbiOnRunning">开机状态功能</s:String>
+    
     <s:String x:Key="tbiDownloads">下载更多工具以及刷机包</s:String>
     <s:String x:Key="tbiHelp">帮助</s:String>
     <s:String x:Key="tbiSaveDevice">救砖</s:String>
