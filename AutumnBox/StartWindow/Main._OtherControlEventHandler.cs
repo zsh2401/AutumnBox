@@ -27,12 +27,6 @@ namespace AutumnBox
         private void MenuItem_Click(object sender, RoutedEventArgs e) =>
             new DonateWindow(this).ShowDialog();
 
-        private void MenuItem_Click_1(object sender, RoutedEventArgs e) =>
-            new AboutWindow(this).ShowDialog();
-
-        private void MenuItem_Click_2(object sender, RoutedEventArgs e) =>
-            new ContactWindow(this).ShowDialog();
-
         private void LabelClose_MouseLeave(object sender, MouseEventArgs e) =>
             this.LabelClose.Background = new ImageBrush
             {
