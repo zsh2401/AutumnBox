@@ -1,4 +1,17 @@
-﻿using System.Reflection;
+/* =============================================================================*\
+*
+* Filename: AssemblyInfo.cs
+* Description: 
+*
+* Version: 1.0
+* Created: 9/16/2017 15:26:05(UTC+8:00)
+* Compiler: Visual Studio 2017
+* 
+* Author: zsh2401
+* Company: I am free man
+*
+\* =============================================================================*/
+using System.Reflection;
 using System.Resources;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;

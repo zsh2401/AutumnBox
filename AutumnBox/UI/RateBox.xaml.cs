@@ -1,4 +1,17 @@
-﻿using AutumnBox.Basic.Functions;
+/* =============================================================================*\
+*
+* Filename: RateBox.xaml.cs
+* Description: 
+*
+* Version: 1.0
+* Created: 8/4/2017 12:12:58(UTC+8:00)
+* Compiler: Visual Studio 2017
+* 
+* Author: zsh2401
+* Company: I am free man
+*
+\* =============================================================================*/
+using AutumnBox.Basic.Functions;
 using AutumnBox.Basic.Functions.RunningManager;
 using AutumnBox.Helper;
 using System;

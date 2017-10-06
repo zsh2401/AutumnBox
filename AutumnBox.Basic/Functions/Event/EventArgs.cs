@@ -1,4 +1,17 @@
-﻿namespace AutumnBox.Basic.Functions.Event
+/* =============================================================================*\
+*
+* Filename: EventArgs.cs
+* Description: 
+*
+* Version: 1.0
+* Created: 9/16/2017 15:16:14(UTC+8:00)
+* Compiler: Visual Studio 2017
+* 
+* Author: zsh2401
+* Company: I am free man
+*
+\* =============================================================================*/
+namespace AutumnBox.Basic.Functions.Event
 {
     using AutumnBox.Basic.Executer;
     using System;

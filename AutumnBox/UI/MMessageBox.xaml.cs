@@ -1,4 +1,17 @@
-﻿using AutumnBox.Helper;
+/* =============================================================================*\
+*
+* Filename: MMessageBox.xaml.cs
+* Description: 
+*
+* Version: 1.0
+* Created: 8/1/2017 12:49:17(UTC+8:00)
+* Compiler: Visual Studio 2017
+* 
+* Author: zsh2401
+* Company: I am free man
+*
+\* =============================================================================*/
+using AutumnBox.Helper;
 using System;
 using System.Windows;
 using System.Windows.Input;

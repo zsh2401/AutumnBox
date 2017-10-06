@@ -1,4 +1,17 @@
-﻿/*我想要传达给你的话语*/
+/* =============================================================================*\
+*
+* Filename: MiFlash.cs
+* Description: 
+*
+* Version: 1.0
+* Created: 10/2/2017 19:54:11(UTC+8:00)
+* Compiler: Visual Studio 2017
+* 
+* Author: zsh2401
+* Company: I am free man
+*
+\* =============================================================================*/
+/*我想要传达给你的话语*/
 using AutumnBox.Basic.Executer;
 using AutumnBox.Basic.Functions.FunctionArgs;
 

@@ -1,4 +1,17 @@
-﻿namespace AutumnBox.UI
+/* =============================================================================*\
+*
+* Filename: FileSendingWindow.xaml.cs
+* Description: 
+*
+* Version: 1.0
+* Created: 9/13/2017 01:06:09(UTC+8:00)
+* Compiler: Visual Studio 2017
+* 
+* Author: zsh2401
+* Company: I am free man
+*
+\* =============================================================================*/
+namespace AutumnBox.UI
 {
     using AutumnBox.Basic.Functions.Interface;
     using AutumnBox.Basic.Functions.RunningManager;

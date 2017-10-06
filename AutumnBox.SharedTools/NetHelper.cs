@@ -1,4 +1,17 @@
-﻿namespace AutumnBox.SharedTools
+/* =============================================================================*\
+*
+* Filename: NetHelper.cs
+* Description: 
+*
+* Version: 1.0
+* Created: 9/20/2017 19:24:26(UTC+8:00)
+* Compiler: Visual Studio 2017
+* 
+* Author: zsh2401
+* Company: I am free man
+*
+\* =============================================================================*/
+namespace AutumnBox.SharedTools
 {
     using System.IO;
     using System.Net;

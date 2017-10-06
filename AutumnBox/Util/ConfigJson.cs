@@ -1,4 +1,17 @@
-﻿using Newtonsoft.Json.Linq;
+/* =============================================================================*\
+*
+* Filename: ConfigJson.cs
+* Description: 
+*
+* Version: 1.0
+* Created: 9/30/2017 18:32:35(UTC+8:00)
+* Compiler: Visual Studio 2017
+* 
+* Author: zsh2401
+* Company: I am free man
+*
+\* =============================================================================*/
+using Newtonsoft.Json.Linq;
 using System;
 using System.IO;
 

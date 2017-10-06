@@ -1,4 +1,17 @@
-﻿using AutumnBox.Basic.Devices;
+/* =============================================================================*\
+*
+* Filename: RebootOperator.cs
+* Description: 
+*
+* Version: 1.0
+* Created: 9/5/2017 18:24:15(UTC+8:00)
+* Compiler: Visual Studio 2017
+* 
+* Author: zsh2401
+* Company: I am free man
+*
+\* =============================================================================*/
+using AutumnBox.Basic.Devices;
 using AutumnBox.Basic.Executer;
 
 namespace AutumnBox.Basic.Functions

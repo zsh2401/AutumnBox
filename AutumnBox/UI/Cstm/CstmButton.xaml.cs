@@ -1,4 +1,17 @@
-﻿using AutumnBox.Helper;
+/* =============================================================================*\
+*
+* Filename: CstmButton.xaml.cs
+* Description: 
+*
+* Version: 1.0
+* Created: 10/2/2017 23:08:35(UTC+8:00)
+* Compiler: Visual Studio 2017
+* 
+* Author: zsh2401
+* Company: I am free man
+*
+\* =============================================================================*/
+using AutumnBox.Helper;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -1,4 +1,17 @@
-﻿using System;
+/* =============================================================================*\
+*
+* Filename: ChoiceBox.xaml.cs
+* Description: 
+*
+* Version: 1.0
+* Created: 8/4/2017 12:13:27(UTC+8:00)
+* Compiler: Visual Studio 2017
+* 
+* Author: zsh2401
+* Company: I am free man
+*
+\* =============================================================================*/
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

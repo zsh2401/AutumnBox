@@ -1,4 +1,17 @@
-﻿using Newtonsoft.Json.Linq;
+/* =============================================================================*\
+*
+* Filename: Tools.cs
+* Description: 
+*
+* Version: 1.0
+* Created: 9/3/2017 15:51:56(UTC+8:00)
+* Compiler: Visual Studio 2017
+* 
+* Author: zsh2401
+* Company: I am free man
+*
+\* =============================================================================*/
+using Newtonsoft.Json.Linq;
 using System;
 using System.Diagnostics;
 using System.IO;

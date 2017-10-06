@@ -1,4 +1,17 @@
-﻿using System;
+/* =============================================================================*\
+*
+* Filename: SystemHelper.cs
+* Description: 
+*
+* Version: 1.0
+* Created: 10/2/2017 05:04:40(UTC+8:00)
+* Compiler: Visual Studio 2017
+* 
+* Author: zsh2401
+* Company: I am free man
+*
+\* =============================================================================*/
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;

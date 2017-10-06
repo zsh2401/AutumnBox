@@ -1,4 +1,17 @@
-﻿using AutumnBox.Basic.Devices;
+/* =============================================================================*\
+*
+* Filename: App.xaml.cs
+* Description: 
+*
+* Version: 1.0
+* Created: 7/31/2017 05:34:44(UTC+8:00)
+* Compiler: Visual Studio 2017
+* 
+* Author: zsh2401
+* Company: I am free man
+*
+\* =============================================================================*/
+using AutumnBox.Basic.Devices;
 using AutumnBox.Basic.Functions.RunningManager;
 using AutumnBox.Util;
 using System;

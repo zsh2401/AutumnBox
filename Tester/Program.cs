@@ -1,4 +1,17 @@
-﻿using AutumnBox.Basic.Devices;
+/* =============================================================================*\
+*
+* Filename: Program.cs
+* Description: 
+*
+* Version: 1.0
+* Created: 8/1/2017 07:43:40(UTC+8:00)
+* Compiler: Visual Studio 2017
+* 
+* Author: zsh2401
+* Company: I am free man
+*
+\* =============================================================================*/
+using AutumnBox.Basic.Devices;
 using AutumnBox.Basic.Functions;
 using System;
 using AutumnBox.Basic.Executer;

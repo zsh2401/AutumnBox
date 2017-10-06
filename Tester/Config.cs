@@ -1,4 +1,17 @@
-﻿//#define SQLTEST
+/* =============================================================================*\
+*
+* Filename: Config.cs
+* Description: 
+*
+* Version: 1.0
+* Created: 8/7/2017 21:08:22(UTC+8:00)
+* Compiler: Visual Studio 2017
+* 
+* Author: zsh2401
+* Company: I am free man
+*
+\* =============================================================================*/
+//#define SQLTEST
 using System;
 using System.IO;
 

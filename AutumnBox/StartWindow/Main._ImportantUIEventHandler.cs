@@ -1,4 +1,17 @@
-﻿namespace AutumnBox
+/* =============================================================================*\
+*
+* Filename: Main._ImportantUIEventHandler.cs
+* Description: 
+*
+* Version: 1.0
+* Created: 10/6/2017 03:31:15(UTC+8:00)
+* Compiler: Visual Studio 2017
+* 
+* Author: zsh2401
+* Company: I am free man
+*
+\* =============================================================================*/
+namespace AutumnBox
 {
     using AutumnBox.Basic.Devices;
     using AutumnBox.Helper;
