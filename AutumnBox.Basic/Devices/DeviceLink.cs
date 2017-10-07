@@ -11,15 +11,13 @@
 * Company: I am free man
 *
 \* =============================================================================*/
+using AutumnBox.Basic.Function;
+using AutumnBox.Basic.Function.RunningManager;
+using AutumnBox.Basic.Util;
+using System;
 namespace AutumnBox.Basic.Devices
 {
-    using AutumnBox.Basic.Functions;
-    using AutumnBox.Basic.Functions.RunningManager;
-    using AutumnBox.Basic.Util;
-    using System;
-    using System.Collections;
-    using System.Collections.Generic;
-    using System.Threading;
+    [Obsolete]
     /// <summary>
     /// 设备连接对象
     /// </summary>

@@ -90,8 +90,9 @@ namespace AutumnBox
                     notFound = true;
                     break;
             }
-            UIHelper.SetGridButtonStatus(GridRRS, (!notFound && !inBootLoader));
-            UIHelper.SetGridButtonStatus(GridOnFastboot, (!notFound && inBootLoader));
+            UIHelper.SetGridButtonStatus(GridPoweronFuncs, inRunning);
+            UIHelper.SetGridButtonStatus(GridRecFuncs, inRecovery);
+            UIHelper.SetGridButtonStatus(GridFastbootFuncs, inBootLoader);
             //this.ButtonMiFlash.IsEnabled = inBootLoader;
             //this.ButtonSideload.IsEnabled = inSideload;
             //this.buttonStartBrventService.IsEnabled = inRunning;

@@ -11,11 +11,12 @@
 * Company: I am free man
 *
 \* =============================================================================*/
-using AutumnBox.Basic.Functions;
-using AutumnBox.Basic.Functions.RunningManager;
-using AutumnBox.Basic.Util;
+using AutumnBox.Basic.Function;
+using AutumnBox.Basic.Function.Args;
+using AutumnBox.Basic.Function.Modules;
+using AutumnBox.Basic.Function.RunningManager;
 using AutumnBox.Helper;
-using AutumnBox.UI;
+using AutumnBox.Windows;
 using Microsoft.Win32;
 using System;
 using System.Diagnostics;
@@ -27,7 +28,7 @@ namespace AutumnBox
     {
         private void ButtonStartBrventService_Click(object sender, RoutedEventArgs e)
         {
-            if (!ChoiceBox.Show(this, App.Current.Resources["Notice"].ToString(), App.Current.Resources["StartBrventTip"].ToString())) return;
+            if (!ChoiceBox.Show(this, App.Current.Resources["Notice"].ToString(), App.Current.Resources["msgStartBrventTip"].ToString())) return;
             BreventServiceActivator activator = new BreventServiceActivator();
             var rm = App.SelectedDevice.GetRunningManger(activator);
             rm.FuncEvents.Finished += FuncFinish;
@@ -49,8 +50,7 @@ namespace AutumnBox
             };
             if (SystemHelper.IsWin10)
             {
-                Logger.D(TAG,"sadasasas"); ;
-                if (ChoiceBox.ShowDialog(this, App.Current.Resources["Notice"].ToString(), App.Current.Resources["ShellChoiceTip"].ToString(), "Powershell", "CMD"))
+                if (ChoiceBox.ShowDialog(this, App.Current.Resources["Notice"].ToString(), App.Current.Resources["msgShellChoiceTip"].ToString(), "Powershell", "CMD"))
                 {
                     info.FileName = "powershell.exe";
                 }
@@ -67,7 +67,7 @@ namespace AutumnBox
         {
             OpenFileDialog fileDialog = new OpenFileDialog();
             fileDialog.Reset();
-            fileDialog.Title = "选择一个文件";
+            fileDialog.Title = App.Current.Resources["SelecteAFile"].ToString();
             fileDialog.Filter = "刷机包/压缩包文件(*.zip)|*.zip|镜像文件(*.img)|*.img|全部文件(*.*)|*.*";
             fileDialog.Multiselect = false;
             if (fileDialog.ShowDialog() == true)
@@ -151,7 +151,7 @@ namespace AutumnBox
 
         private void ButtonUnlockMiSystem_Click(object sender, RoutedEventArgs e)
         {
-            if (!ChoiceBox.Show(this, FindResource("Notice").ToString(), FindResource("UnlockXiaomiSystemTip").ToString())) return;
+            if (!ChoiceBox.Show(this, FindResource("Notice").ToString(), FindResource("msgUnlockXiaomiSystemTip").ToString())) return;
             MMessageBox.ShowDialog(this, FindResource("Notice").ToString(), FindResource("msgIfAllOK").ToString());
             XiaomiSystemUnlocker unlocker = new XiaomiSystemUnlocker();
             var rm = App.SelectedDevice.GetRunningManger(unlocker);

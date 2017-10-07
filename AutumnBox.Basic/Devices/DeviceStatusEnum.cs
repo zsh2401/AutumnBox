@@ -18,12 +18,11 @@ namespace AutumnBox.Basic.Devices
     /// </summary>
     public enum DeviceStatus
     {
-        Unknow = -3,
-        DEBUGGING_DEVICE  = -2,
-        NO_DEVICE = -1,
-        RUNNING,
-        RECOVERY,
-        FASTBOOT,
-        SIDELOAD,
+        UNKNOW = -1,
+        NO_DEVICE = 0,
+        RUNNING = 1,
+        RECOVERY = 2,
+        FASTBOOT = 3,
+        SIDELOAD = 4,
     }
 }

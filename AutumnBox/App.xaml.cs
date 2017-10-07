@@ -12,10 +12,8 @@
 *
 \* =============================================================================*/
 using AutumnBox.Basic.Devices;
-using AutumnBox.Basic.Functions.RunningManager;
 using AutumnBox.Util;
 using System;
-using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows;
 using System.Windows.Navigation;
@@ -27,8 +25,9 @@ namespace AutumnBox
     /// </summary>
     public partial class App : Application
     {
+        internal static ResourceDictionary cResources { get { return Current.Resources; } }
         internal static Window OwnerWindow { get; private set; }
-        internal static DeviceSimpleInfo SelectedDevice;
+        internal static DeviceSimpleInfo SelectedDevice = new DeviceSimpleInfo() { Status = DeviceStatus.NO_DEVICE };
         internal static DevicesMonitor devicesListener = new DevicesMonitor();//设备监听器
         protected override void OnStartup(StartupEventArgs e)
         {

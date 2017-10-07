@@ -18,7 +18,7 @@ namespace AutumnBox.Basic.Executer
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
-    public partial class CommandExecuter
+    partial class CommandExecuter
     {
         /// <summary>
         /// 启动adb服务

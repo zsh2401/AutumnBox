@@ -45,7 +45,7 @@ namespace AutumnBox.Basic.Executer
             Info = info;
         }
         public Command(string id, string command, ExeType exeType = ExeType.Adb) :
-            this(new DeviceSimpleInfo() { Id = id, Status = DeviceStatus.Unknow }, command, exeType)
+            this(new DeviceSimpleInfo() { Id = id, Status = DeviceStatus.UNKNOW }, command, exeType)
         { }
         public Command(string command, ExeType executeType = ExeType.Adb)
         {

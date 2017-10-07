@@ -124,22 +124,22 @@
     <Compile Include="NetUtil\MOTDGetter.cs" />
     <Compile Include="NetUtil\UpdateChecker.cs" />
     <Compile Include="StaticData.cs" />
-    <Compile Include="UI\ChangeThemeWindow.xaml.cs">
+    <Compile Include="Windows\ChangeThemeWindow.xaml.cs">
       <DependentUpon>ChangeThemeWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\ChoiceBox.xaml.cs">
+    <Compile Include="Windows\ChoiceBox.xaml.cs">
       <DependentUpon>ChoiceBox.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Cstm\CstmButton.xaml.cs">
       <DependentUpon>CstmButton.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\DonateWindow.xaml.cs">
+    <Compile Include="Windows\DonateWindow.xaml.cs">
       <DependentUpon>DonateWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\FileSendingWindow.xaml.cs">
+    <Compile Include="Windows\FileSendingWindow.xaml.cs">
       <DependentUpon>FileSendingWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\LinkHelpWindow.xaml.cs">
+    <Compile Include="Windows\LinkHelpWindow.xaml.cs">
       <DependentUpon>LinkHelpWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="StartWindow\Main.FuncBtnClickHandler.cs" />
@@ -150,14 +150,14 @@
     <Compile Include="StartWindow\StartWindow.xaml.cs">
       <DependentUpon>StartWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\MMessageBox.xaml.cs">
+    <Compile Include="Windows\MMessageBox.xaml.cs">
       <DependentUpon>MMessageBox.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\RateBox.xaml.cs">
+    <Compile Include="Windows\RateBox.xaml.cs">
       <DependentUpon>RateBox.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="UI\UpdateNoticeWindow.xaml.cs">
+    <Compile Include="Windows\UpdateNoticeWindow.xaml.cs">
       <DependentUpon>UpdateNoticeWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Util\Config.cs" />
@@ -193,11 +193,11 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="UI\ChangeThemeWindow.xaml">
+    <Page Include="Windows\ChangeThemeWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\ChoiceBox.xaml">
+    <Page Include="Windows\ChoiceBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -205,15 +205,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\DonateWindow.xaml">
+    <Page Include="Windows\DonateWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\FileSendingWindow.xaml">
+    <Page Include="Windows\FileSendingWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\LinkHelpWindow.xaml">
+    <Page Include="Windows\LinkHelpWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -221,15 +221,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\MMessageBox.xaml">
+    <Page Include="Windows\MMessageBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\RateBox.xaml">
+    <Page Include="Windows\RateBox.xaml">
       <SubType>Designer</SubType>
       <Generator>XamlIntelliSenseFileGenerator</Generator>
     </Page>
-    <Page Include="UI\UpdateNoticeWindow.xaml">
+    <Page Include="Windows\UpdateNoticeWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -255,6 +255,9 @@
       <Private>True</Private>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Themes\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

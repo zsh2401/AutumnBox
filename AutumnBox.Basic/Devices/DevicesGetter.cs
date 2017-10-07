@@ -20,12 +20,10 @@ namespace AutumnBox.Basic.Devices
     public sealed class DevicesGetter : BaseObject, IDevicesGetter,IDisposable
     {
         private CommandExecuter executer = new CommandExecuter();
-
         public void Dispose()
         {
             executer.Dispose();
         }
-
         public DevicesList GetDevices()
         {
             if (Process.GetProcessesByName("adb").Length == 0) CommandExecuter.Start();
@@ -37,7 +35,6 @@ namespace AutumnBox.Basic.Devices
             FastbootParse(fastbootDevicesOutput, ref devList);
             return devList;
         }
-
         private void AdbPrase(OutputData o, ref DevicesList devList)
         {
             var l = o.LineOut;

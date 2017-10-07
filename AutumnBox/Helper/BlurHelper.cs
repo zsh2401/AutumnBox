@@ -25,10 +25,6 @@ namespace AutumnBox.Helper
 {
     class BlurHelper
     {
-#pragma warning disable CS1060 // 变量已被赋值，但从未使用过它的值
-       
-#pragma warning restore CS1060// 变量已被赋值，但从未使用过它的值
-
         internal enum AccentState
         {
             ACCENT_DISABLED = 0,

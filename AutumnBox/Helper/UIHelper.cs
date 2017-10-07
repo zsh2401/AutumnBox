@@ -12,7 +12,7 @@
 *
 \* =============================================================================*/
 using AutumnBox.Basic.Devices;
-using AutumnBox.Basic.Functions.RunningManager;
+using AutumnBox.Basic.Function.RunningManager;
 using AutumnBox.UI;
 using System;
 using System.Collections.Generic;
@@ -28,6 +28,13 @@ namespace AutumnBox.Helper
 {
     public static class UIHelper
     {
+        public static string GetString(string key) {
+            try {
+                return App.cResources[key].ToString();
+            } catch {
+                return key;
+            }
+        }
         /// <summary>
         /// 设置一个grid下的所有button的开启与否
         /// </summary>
@@ -38,10 +45,12 @@ namespace AutumnBox.Helper
             var o = grid.Children;
             foreach (object a in o)
             {
-                Button btn = (a as Button);
-                if (btn != null)
+                if (a is Button)
                 {
-                    btn.IsEnabled = status;
+                     (a as Button).IsEnabled = status;
+                }
+                else if (a is Grid) {
+                    SetGridButtonStatus((a as Grid), status);
                 }
             }
         }

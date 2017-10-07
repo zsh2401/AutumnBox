@@ -17,9 +17,11 @@ namespace AutumnBox
     using System;
     using System.Windows;
     using AutumnBox.Util;
-    using AutumnBox.Basic.Functions.Event;
-    using AutumnBox.Basic.Functions;
+    using AutumnBox.Basic.Function.Event;
+    using AutumnBox.Basic.Function;
     using AutumnBox.Helper;
+    using AutumnBox.Windows;
+    using AutumnBox.Basic.Function.Modules;
 
     /// <summary>
     /// 各种界面事件

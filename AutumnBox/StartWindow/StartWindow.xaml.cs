@@ -12,13 +12,19 @@
 *
 \* =============================================================================*/
 using AutumnBox.Basic.Devices;
+using AutumnBox.Basic.Function;
+using AutumnBox.Basic.Function.Args;
+using AutumnBox.Basic.Function.Modules;
+using AutumnBox.Basic.Function.RunningManager;
 using AutumnBox.Helper;
 using AutumnBox.NetUtil;
 using AutumnBox.UI;
 using AutumnBox.Util;
+using AutumnBox.Windows;
+using Microsoft.Win32;
 using System.Diagnostics;
 using System.Windows;
-
+using static AutumnBox.Helper.UIHelper;
 namespace AutumnBox
 {
     /// <summary>
@@ -27,7 +33,7 @@ namespace AutumnBox
     public partial class StartWindow : Window
     {
         string TAG = "MainWindow";
-
+        //ResourceDictionary Resources = App.Current.Resources;
         public StartWindow()
         {
             Logger.InitLogFile();
@@ -50,7 +56,7 @@ namespace AutumnBox
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void DevicesChanged(object sender, DevicesChangeEventArgs e)
+        private void DevicesChanged(object sender, DevicesChangedEventArgs e)
         {
             Logger.D(TAG, "Devices change handing.....");
             this.Dispatcher.Invoke(() =>
@@ -109,32 +115,34 @@ namespace AutumnBox
             webFlashHelper.Navigate(HelpUrl.flashhelp);
             webSaveDevice.Navigate(HelpUrl.savedevice);
             webFlashRecHelp.Navigate(HelpUrl.flashrecovery);
-            //new Thread(() =>
-            //{
+        }
 
-            //Guider guider = new Guider();
-            //    if (guider.isOk)
-            //    {
-            //        try
-            //        {
-            //            this.Dispatcher.Invoke(new Action(() =>
-            //            {
-            //                webFlashHelper.Navigate(guider["urls"]["flashhelp"].ToString());
-            //                webSaveDevice.Navigate(guider["urls"]["savedevicehelp"].ToString());
-            //                webFlashRecHelp.Navigate(guider["urls"]["flashrecoveryhelp"].ToString());
-            //            }));
-            //        }
-            //        catch (Exception e)
-            //        {
-            //            Logger.D(TAG, "web browser set fail");
-            //            Logger.D(TAG, e.Message);
-            //        }
-            //    }
-            //    else
-            //    {
-            //        Logger.D(TAG, "web browser set fail because guider is not ok");
-            //    }
-            //}).Start();
+        private void ButtonSideload_Click(object sender, RoutedEventArgs e)
+        {
+            if (App.SelectedDevice.Status != DeviceStatus.SIDELOAD) {
+                MMessageBox.ShowDialog(this, GetString("Warning"),GetString(""));
+            }
+        }
+
+        private void ButtonInstallApk_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog fileDialog = new OpenFileDialog();
+            fileDialog.Reset();
+            fileDialog.Title = App.Current.Resources["SelecteAFile"].ToString();
+            fileDialog.Filter = "安卓安装包(*.apk)|*.apk";
+            fileDialog.Multiselect = false;
+            if (fileDialog.ShowDialog() == true)
+            {
+                FileSender fs = new FileSender(new FileArgs { files = new string[] { fileDialog.FileName } });
+                RunningManager rm = App.SelectedDevice.GetRunningManger(fs);
+                rm.FuncEvents.Finished += FuncFinish;
+                rm.FuncStart();
+                new FileSendingWindow(this, rm).ShowDialog();
+            }
+            else
+            {
+                return;
+            }
         }
     }
 }

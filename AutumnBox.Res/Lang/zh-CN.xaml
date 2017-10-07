@@ -7,6 +7,8 @@
     <s:String x:Key="LanguageName">简体中文</s:String>
 
     <!--按钮-->
+    <s:String x:Key="btnInstallApk">安装APK</s:String>
+    <s:String x:Key="btnScreenShot">截图并保存到电脑</s:String>
     <s:String x:Key="btnMiFlash">MiFlash线刷</s:String>
     <s:String x:Key="btnADBCMD">ADB命令行</s:String>
     <s:String x:Key="btnRebootToSystem">重启到系统</s:String>
@@ -19,14 +21,15 @@
     <s:String x:Key="btnFlashCustomRecoveryImg">刷入自选Recovery</s:String>
     <s:String x:Key="btnChangeTheme">更改主题</s:String>
     <s:String x:Key="btnOK">好的</s:String>
-    <s:String x:Key="btnStartBrventService">启动黑域服务</s:String>
+    <s:String x:Key="btnStartBrventService">免ROOT启动黑域服务</s:String>
     <s:String x:Key="btnClose">关闭</s:String>
     <s:String x:Key="btnAgree">同意</s:String>
     <s:String x:Key="btnCancel">取消</s:String>
     <!--按钮-->
 
     <!--tabitem-->
-    <s:String x:Key="tbiOnRecovery">恢复模式/开机/Sideload</s:String>
+    <s:String x:Key="tbiOnPowerOn">开机</s:String>
+    <s:String x:Key="tbiOnRecovery">恢复模式/Sideload</s:String>
     <s:String x:Key="tbiOnFastboot">Fastboot/9008</s:String>
     <s:String x:Key="tbiOnRunning">开机状态功能</s:String>
     <s:String x:Key="tbiDownloads">下载更多工具以及刷机包</s:String>
@@ -52,13 +55,14 @@
     <s:String x:Key="msgIfAllOK">如果一切正常,您的手机将会重启</s:String>
     <s:String x:Key="msgNotice">提示</s:String>
     <s:String x:Key="msgDoing">正在进行操作,稍安勿躁</s:String>
+    <s:String x:Key="msgDeviceNotOnSideload">设备未处于Sideload模式,请在Recovery内手动进入Sideload模式!</s:String>
+    <s:String x:Key="msgUnlockXiaomiSystemTip">注意,这不是解除Bootloader锁! 这个功能是帮助已经拥有MIUI开发版root权限的设备使用的,该功能能让你获得完整的root权限!可以修改系统分区!</s:String>
+    <s:String x:Key="msgStartBreventServiceFail">启动黑域服务时,似乎出现了一些问题,请将此处截图给黑域开发者或AutumnBox开发者</s:String>
+    <s:String x:Key="msgStartBreventServiceSuc">现在,您的设备应该已经成功激活了黑域!但为了保险起见,将会展示脚本输出的信息</s:String>
+    <s:String x:Key="msgShellChoiceTip">检测到您是Windows10 系统,请问您想用那种命令行界面?如果您不懂什么是Powershell,请用传统的CMD</s:String>
+    <s:String x:Key="msgStartBrventTip">请确保您已经安装了最新版本黑域,并且已在手机上进入黑域软件的界面!!</s:String>
     <!--信息-->
-
-    <s:String x:Key="UnlockXiaomiSystemTip">注意,这不是解除Bootloader锁! 这个功能是帮助已经拥有MIUI开发版root权限的设备使用的,该功能能让你获得完整的root权限!可以修改系统分区!</s:String>
-    <s:String x:Key="StartBreventServiceFail">启动黑域服务时,似乎出现了一些问题,请将此处截图给黑域开发者或AutumnBox开发者</s:String>
-    <s:String x:Key="StartBreventServiceSuc">现在,您的设备应该已经成功激活了黑域!但为了保险起见,将会展示脚本输出的信息</s:String>
-    <s:String x:Key="ShellChoiceTip">检测到您是Windows10 系统,请问您想用那种命令行界面?如果您不懂什么是Powershell,请用传统的CMD</s:String>
-    <s:String x:Key="StartBrventTip">请确保您已经安装了最新版本黑域,并且已在手机上进入黑域软件的界面!!</s:String>
+    
 
     <!--QA-->
     <s:String x:Key="LinkQuestion2">* 还是连不上?</s:String>
@@ -106,7 +110,7 @@
     <!--设备状态提示-->
 
     <s:String x:Key="CompileDate">编译日期</s:String>
-    
+    <s:String x:Key="SelecteAFile">选择一个文件</s:String>
     <s:String x:Key="Warning">警告</s:String>
 
     
@@ -115,7 +119,7 @@
     <s:String x:Key="AboutMessage2">开发者电子邮件 zsh2401@163.com</s:String>
     <s:String x:Key="AboutMessageOS">前往开源地址</s:String>
     <s:String x:Key="AboutMessage_Thanks">鸣谢以下开源项目做出的卓越贡献</s:String>
-    <s:String x:Key="AboutMessage_OSList">Newtonsoft.json                         System.Data.Sqlite</s:String>
+    <s:String x:Key="AboutMessage_OSList">Newtonsoft.Json                         System.Data.Sqlite</s:String>
     <!--关于信息-->
     
     <s:String x:Key="Menu">菜单</s:String>

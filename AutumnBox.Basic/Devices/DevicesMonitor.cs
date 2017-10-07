@@ -11,14 +11,31 @@
 * Company: I am free man
 *
 \* =============================================================================*/
+using AutumnBox.Basic.Executer;
+using AutumnBox.Basic.Util;
+using System;
+using System.Diagnostics;
+using System.Threading;
+using System.Threading.Tasks;
 namespace AutumnBox.Basic.Devices
 {
-    using AutumnBox.Basic.Executer;
-    using AutumnBox.Basic.Util;
-    using System;
-    using System.Diagnostics;
-    using System.Threading;
-    using System.Threading.Tasks;
+    /// <summary>
+    /// 连接设备变化的事件
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    public delegate void DevicesChangedHandler(object sender, DevicesChangedEventArgs e);
+    /// <summary>
+    /// 连接设备变化的事件的参数
+    /// </summary>
+    public class DevicesChangedEventArgs : EventArgs
+    {
+        public DevicesList DevicesList { get; }
+        public DevicesChangedEventArgs(DevicesList devList)
+        {
+            DevicesList = devList;
+        }
+    }
     /// <summary>
     /// 设备监听器
     /// </summary>
@@ -78,7 +95,7 @@ namespace AutumnBox.Basic.Devices
                 {
                     LogD("Devices Change");
                     last = now;
-                    DevicesChanged.Invoke(this, new DevicesChangeEventArgs(now));
+                    DevicesChanged.Invoke(this, new DevicesChangedEventArgs(now));
                 }
                 Thread.Sleep(interval);
             }

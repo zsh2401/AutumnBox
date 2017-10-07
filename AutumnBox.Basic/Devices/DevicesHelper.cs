@@ -1,7 +1,7 @@
 /* =============================================================================*\
 *
 * Filename: DevicesHelper.cs
-* Description: 
+* Description:  Static Functions About Device(s)
 *
 * Version: 1.0
 * Created: 8/19/2017 03:42:33(UTC+8:00)
@@ -11,11 +11,6 @@
 * Company: I am free man
 *
 \* =============================================================================*/
-/*
- 关于设备的各种工具类
- @zsh2401
- 2017/9/8
- */
 namespace AutumnBox.Basic.Devices
 {
     using AutumnBox.Basic.Executer;
@@ -42,8 +37,6 @@ namespace AutumnBox.Basic.Devices
                     return DeviceStatus.FASTBOOT;
                 case "sideload":
                     return DeviceStatus.SIDELOAD;
-                case "debugging_device":
-                    return DeviceStatus.DEBUGGING_DEVICE;
                 default:
                     return DeviceStatus.NO_DEVICE;
             }
@@ -89,6 +82,24 @@ namespace AutumnBox.Basic.Devices
                 id = id
             };
         }
+        /// <summary>
+        /// 获取一个设备的信息
+        /// </summary>
+        /// <param name="id">设备的id</param>
+        /// <returns>设备信息</returns>
+        public static DeviceInfo GetDeviceInfo(DeviceSimpleInfo info) {
+            var buildInfo = GetBuildInfo(info.Id);
+            return new DeviceInfo
+            {
+                brand = buildInfo["brand"].ToString(),
+                code = buildInfo["name"].ToString(),
+                androidVersion = buildInfo["androidVersion"].ToString(),
+                model = buildInfo["model"].ToString(),
+                deviceStatus = info.Status,
+                id = info.Id,
+            };
+        }
+        [Obsolete("Please use GetDeviceInfo(devSimpleInfo)")]
         /// <summary>
         /// 获取一个设备的信息
         /// </summary>
