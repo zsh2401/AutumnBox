@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Devices\DeviceAdvanceInfo.cs" />
     <Compile Include="Devices\DevicesGetter.cs" />
     <Compile Include="Executer\CommandExecuter\CommandExecuter.cs" />
     <Compile Include="Executer\CommandExecuter\CommandExecuter.Static.cs" />

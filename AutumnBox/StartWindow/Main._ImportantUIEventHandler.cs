@@ -15,6 +15,7 @@ namespace AutumnBox
 {
     using AutumnBox.Basic.Devices;
     using AutumnBox.Helper;
+    using AutumnBox.Util;
     using System.Threading;
     using System.Windows;
     using System.Windows.Controls;
@@ -34,13 +35,9 @@ namespace AutumnBox
                 App.SelectedDevice = ((DeviceSimpleInfo)DevicesListBox.SelectedItem);
                 RefreshUI();
             }
-            else
-            {
-                this.AndroidVersionLabel.Content = Application.Current.FindResource("PleaseSelectedADevice").ToString();
-                this.CodeLabel.Content = Application.Current.FindResource("PleaseSelectedADevice").ToString();
-                this.ModelLabel.Content = Application.Current.FindResource("PleaseSelectedADevice").ToString();
-                ChangeButtonByStatus(DeviceStatus.NO_DEVICE);
-                ChangeImageByStatus(DeviceStatus.NO_DEVICE);
+            else if (this.DevicesListBox.SelectedIndex == -1) {
+                App.SelectedDevice = new DeviceSimpleInfo() { Status = DeviceStatus.NO_DEVICE };
+                RefreshUI();
             }
         }
 
@@ -61,7 +58,7 @@ namespace AutumnBox
         /// <param name="e"></param>
         private void TabControl_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
-
+            Logger.D(this,"Change to" + TabFunctions.SelectedIndex.ToString());
         }
     }
 }

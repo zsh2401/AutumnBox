@@ -7,16 +7,17 @@
     <s:String x:Key="LanguageName">简体中文</s:String>
 
     <!--按钮-->
-    <s:String x:Key="btnInstallApk">安装APK</s:String>
-    <s:String x:Key="btnScreenShot">截图并保存到电脑</s:String>
-    <s:String x:Key="btnMiFlash">MiFlash线刷</s:String>
+    <s:String x:Key="btnDpiChange">修改DPI(Deving)</s:String>
+    <s:String x:Key="btnInstallApk">安装APK(Deving)</s:String>
+    <s:String x:Key="btnScreenShot">截图并保存到电脑(Deving)</s:String>
+    <s:String x:Key="btnMiFlash">MiFlash线刷(Deving)</s:String>
     <s:String x:Key="btnADBCMD">ADB命令行</s:String>
     <s:String x:Key="btnRebootToSystem">重启到系统</s:String>
     <s:String x:Key="btnRebootToRecovery">重启到恢复模式</s:String>
     <s:String x:Key="btnRebootToBootloader">重启到Fastboot模式</s:String>
     <s:String x:Key="btnPushFileToSdcard">推送文件到存储目录</s:String>
     <s:String x:Key="btnUnlockMiSystem">解锁小米系统,获取完整ROOT</s:String>
-    <s:String x:Key="btnSideloadFlash">SideLoad刷机</s:String>
+    <s:String x:Key="btnSideloadFlash">SideLoad刷机(Deving)</s:String>
     <s:String x:Key="btnRelockMi">重新上锁小米手机</s:String>
     <s:String x:Key="btnFlashCustomRecoveryImg">刷入自选Recovery</s:String>
     <s:String x:Key="btnChangeTheme">更改主题</s:String>
@@ -28,6 +29,7 @@
     <!--按钮-->
 
     <!--tabitem-->
+    <s:String x:Key="tbiWelcome">欢迎</s:String>
     <s:String x:Key="tbiOnPowerOn">开机</s:String>
     <s:String x:Key="tbiOnRecovery">恢复模式/Sideload</s:String>
     <s:String x:Key="tbiOnFastboot">Fastboot/9008</s:String>
@@ -75,10 +77,11 @@
     <!--QA-->
 
     <!--静态界面标记-->
+    <s:String x:Key="ThankMessage1">感谢您使用AutumnBox!</s:String>
+    <s:String x:Key="ThankMessage2">这是一个开源免费的自由软件</s:String>
+    <s:String x:Key="ThankMessage3">如果您觉得不错,欢迎捐赠或在Github进行Star,详情在界面左边点击"关于"选项卡</s:String>
     <s:String x:Key="Notice">提示</s:String>
-    <s:String x:Key="Model">设备型号</s:String>
-    <s:String x:Key="Code">设备代号</s:String>
-    <s:String x:Key="AndroidVersion">安卓版本</s:String>
+    
     <s:String x:Key="OnlyBootloader">仅Fastboot状态可用</s:String>
     <s:String x:Key="OnlyROP">仅开机或恢复模式可用</s:String>
     <s:String x:Key="OnlyRecovery">仅恢复模式可用</s:String>
@@ -86,8 +89,23 @@
     <s:String x:Key="Github">Github</s:String>
     <s:String x:Key="BaiduPan">百度网盘</s:String>
     <s:String x:Key="SkipThisVersion">此版本不再提示</s:String>
+    <s:String x:Key="GetFail">获取失败</s:String>
+    <s:String x:Key="Getting">获取中</s:String>
+    <s:String x:Key="Devices">已连接设备列表</s:String>
     <!--静态界面标记-->
-
+    
+    <!--设备信息标记-->
+    <s:String x:Key="diHWBattery">电量</s:String>
+    <s:String x:Key="diHWSOC">SOC</s:String>
+    <s:String x:Key="diHWStorage">闪存</s:String>
+    <s:String x:Key="diHWRom">Rom</s:String>
+    <s:String x:Key="diHWRam">Ram</s:String>
+    <s:String x:Key="diHWScreen">屏幕</s:String>
+    <s:String x:Key="diModel">设备型号</s:String>
+    <s:String x:Key="diCode">设备代号</s:String>
+    <s:String x:Key="diAndroidVersion">安卓版本</s:String>
+    <!--设备信息标记-->
+    
     <!--书签-->
     <s:String x:Key="bmMIFlash">MIUI线刷工具(Miflash)</s:String>
     <s:String x:Key="bmMIUILineFlashRom">MIUI线刷包</s:String>

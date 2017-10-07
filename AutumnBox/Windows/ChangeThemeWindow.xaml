@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AutumnBox.UI"
         mc:Ignorable="d"
-        Title="ChangeThemeWindow" Height="176" Width="300" WindowStyle="None" ResizeMode="NoResize">
+        Title="ChangeThemeWindow" Height="176" Width="300" WindowStyle="None" ResizeMode="NoResize" ShowInTaskbar="False">
     <Grid>
         
     </Grid>

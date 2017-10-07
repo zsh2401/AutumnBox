@@ -12,7 +12,7 @@
 *
 \* =============================================================================*/
 using AutumnBox.Basic.Devices;
-using AutumnBox.Basic.Functions;
+using AutumnBox.Basic.Function;
 using System;
 using AutumnBox.Basic.Executer;
 

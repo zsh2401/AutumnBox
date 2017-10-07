@@ -13,10 +13,12 @@
 \* =============================================================================*/
 using AutumnBox.Basic.Devices;
 using AutumnBox.Helper;
+using AutumnBox.Util;
 using System;
 using System.Drawing;
 using System.Text.RegularExpressions;
 using System.Threading;
+using System.Windows.Controls;
 
 namespace AutumnBox
 {
@@ -31,39 +33,93 @@ namespace AutumnBox
         /// </summary>
         private void RefreshUI()
         {
-            new Thread(()=> {
+            new Thread(() =>
+            {
                 lock (setUILock)
                 {
-                    var info = DevicesHelper.GetDeviceInfo(App.SelectedDevice.Id);
+                    SetDeviceInfoLabels();
+                    SetAdvanceInfo();
                     this.Dispatcher.Invoke(new Action(() =>
                     {
+                        SetButtons();
                         //根据状态将图片和按钮状态进行设置
-                        ChangeButtonByStatus(info.deviceStatus);
-                        ChangeImageByStatus(info.deviceStatus);
-                        switch (info.deviceStatus)
+                        switch (App.SelectedDevice.Status)
                         {
-                            case DeviceStatus.FASTBOOT:
+                            case DeviceStatus.RUNNING:
+                                Logger.D(this, "Change selectedIndex to 1");
                                 TabFunctions.SelectedIndex = 1;
                                 break;
+                            case DeviceStatus.RECOVERY:
+                                Logger.D(this, "Change selectedIndex to 2");
+                                TabFunctions.SelectedIndex = 2;
+                                break;
+                            case DeviceStatus.FASTBOOT:
+                                Logger.D(this, "Change selectedIndex to 3");
+                                TabFunctions.SelectedIndex = 3;
+                                break;
                             default:
+                                Logger.D(this, "Change selectedIndex to 0");
                                 TabFunctions.SelectedIndex = 0;
                                 break;
                         }
-                        //更改文字
-                        this.AndroidVersionLabel.Content = info.androidVersion;
-                        this.CodeLabel.Content = info.code;
-                        this.ModelLabel.Content = Regex.Replace(info.brand, @"[\r\n]", "") + " " + info.model;
                         UIHelper.CloseRateBox();
                     }));
                 }
             }).Start();
             UIHelper.ShowRateBox(this);
         }
+        private void SetAdvanceInfo()
+        {
+            if (App.SelectedDevice.Status == DeviceStatus.RECOVERY || App.SelectedDevice.Status == DeviceStatus.RUNNING)
+            {
+                new Thread(() =>
+                {
+                    Action<Label, int, string> setInt = (label, content, unit) =>
+                    {
+                        if (content != 0) label.Content = content.ToString() + unit;
+                        else label.Content = App.Current.Resources["GetFail"];
+                    };
+                    Action<Label, double, string> setDouble = (label, content, unit) =>
+                    {
+                        if (content != 0.0) label.Content = content.ToString() + unit;
+                        else label.Content = App.Current.Resources["GetFail"];
+                    };
+                    Action<Label, string> setString = (label, content) =>
+                    {
+                        if (content != String.Empty) label.Content = content.ToString();
+                        else label.Content = App.Current.Resources["GetFail"];
+                    };
+                    this.Dispatcher.Invoke(() =>
+                    {
+                        UIHelper.SetGridLabelsContent(GridMemoryInfo, App.Current.Resources["Getting"].ToString());
+                        UIHelper.SetGridLabelsContent(GridHardwareInfo, App.Current.Resources["Getting"].ToString());
+                    });
+                    var info = DevicesHelper.GetDeviceAdvanceInfo(App.SelectedDevice.Id);
+                    this.Dispatcher.Invoke(() =>
+                    {
+                        setDouble(LabelRom, info.StorageTotal, "GB");
+                        setDouble(LabelRam, info.MemTotal, "GB");
+                        setInt(LabelBattery, info.BatteryLevel, "%");
+                        setInt(LabelRom, info.StorageTotal, "GB");
+                        setString(LabelSOC, info.SOCInfo);
+                        setString(LabelScreen, info.ScreenInfo);
+                        setString(LabelFlashMemInfo, info.FlashMemoryType);
+                    });
+                })
+                { Name = "SetAdvanceInfo.." }.Start();
+            }
+            else {
+                this.Dispatcher.Invoke(()=> {
+                    UIHelper.SetGridLabelsContent(GridHardwareInfo, "....");
+                    UIHelper.SetGridLabelsContent(GridMemoryInfo, "....");
+                });
+            }
+        }
         /// <summary>
         /// 根据设备状态改变按钮状态
         /// </summary>
         /// <param name="status"></param>
-        private void ChangeButtonByStatus(DeviceStatus status)
+        private void SetButtons()
         {
             bool inBootLoader = false;
             bool inRecovery = false;
@@ -72,7 +128,7 @@ namespace AutumnBox
 #pragma warning disable CS0219 // 变量已被赋值，但从未使用过它的值
             bool inSideload = false;
 #pragma warning restore CS0219 // 变量已被赋值，但从未使用过它的值
-            switch (status)
+            switch (App.SelectedDevice.Status)
             {
                 case DeviceStatus.FASTBOOT:
                     inBootLoader = true;
@@ -93,44 +149,57 @@ namespace AutumnBox
             UIHelper.SetGridButtonStatus(GridPoweronFuncs, inRunning);
             UIHelper.SetGridButtonStatus(GridRecFuncs, inRecovery);
             UIHelper.SetGridButtonStatus(GridFastbootFuncs, inBootLoader);
-            //this.ButtonMiFlash.IsEnabled = inBootLoader;
-            //this.ButtonSideload.IsEnabled = inSideload;
-            //this.buttonStartBrventService.IsEnabled = inRunning;
-            //this.buttonUnlockMiSystem.IsEnabled = (inRecovery || inRunning);
-            //this.buttonRelockMi.IsEnabled = inBootLoader;
             this.buttonRebootToBootloader.IsEnabled = !notFound;
             this.buttonRebootToSystem.IsEnabled = !notFound;
             this.buttonRebootToRecovery.IsEnabled = (inRunning || inRecovery);
-            //this.buttonPushFileToSdcard.IsEnabled = (inRecovery || inRunning);
-            //this.buttonFlashCustomRecovery.IsEnabled = inBootLoader;
         }
         /// <summary>
-        /// 设备状态改变图片
+        /// 根据最新的信息设置设备状态表
         /// </summary>
-        /// <param name="status"></param>
-        private void ChangeImageByStatus(DeviceStatus status)
+        private void SetDeviceInfoLabels()
         {
-            Action<Bitmap, string> SetDevInfoImgAndText = (bitmap, key) => {
+            Action<Bitmap, string> SetDevInfoImgAndText = (bitmap, key) =>
+            {
                 this.DeviceStatusImage.Source = UIHelper.BitmapToBitmapImage(bitmap);
                 this.DeviceStatusLabel.Content = App.Current.Resources[key].ToString();
             };
-            switch (status)
+            if (App.SelectedDevice.Status == DeviceStatus.NO_DEVICE)
             {
-                case DeviceStatus.FASTBOOT:
-                    SetDevInfoImgAndText(Res.DynamicIcons.fastboot, "DeviceInFastboot");
-                    break;
-                case DeviceStatus.RECOVERY:
-                    SetDevInfoImgAndText(Res.DynamicIcons.recovery, "DeviceInRecovery");
-                    break;
-                case DeviceStatus.RUNNING:
-                    SetDevInfoImgAndText(Res.DynamicIcons.poweron, "DeviceInRunning");
-                    break;
-                case DeviceStatus.SIDELOAD:
-                    SetDevInfoImgAndText(Res.DynamicIcons.recovery, "DeviceInSideload");
-                    break;
-                default:
-                    SetDevInfoImgAndText(Res.DynamicIcons.no_selected, "PleaseSelectedADevice");
-                    break;
+                this.Dispatcher.Invoke(() =>
+                {
+                    this.AndroidVersionLabel.Content = App.Current.Resources["PleaseSelectedADevice"];
+                    this.CodeLabel.Content = App.Current.Resources["PleaseSelectedADevice"];
+                    this.ModelLabel.Content = App.Current.Resources["PleaseSelectedADevice"];
+                });
+            }
+            else
+            {
+                //更改文字
+                var info = DevicesHelper.GetDeviceInfo(App.SelectedDevice);
+                this.Dispatcher.Invoke(() =>
+                {
+                    this.AndroidVersionLabel.Content = info.androidVersion;
+                    this.CodeLabel.Content = info.code;
+                    this.ModelLabel.Content = info.m;
+                    switch (App.SelectedDevice.Status)
+                    {
+                        case DeviceStatus.FASTBOOT:
+                            SetDevInfoImgAndText(Res.DynamicIcons.fastboot, "DeviceInFastboot");
+                            break;
+                        case DeviceStatus.RECOVERY:
+                            SetDevInfoImgAndText(Res.DynamicIcons.recovery, "DeviceInRecovery");
+                            break;
+                        case DeviceStatus.RUNNING:
+                            SetDevInfoImgAndText(Res.DynamicIcons.poweron, "DeviceInRunning");
+                            break;
+                        case DeviceStatus.SIDELOAD:
+                            SetDevInfoImgAndText(Res.DynamicIcons.recovery, "DeviceInSideload");
+                            break;
+                        default:
+                            SetDevInfoImgAndText(Res.DynamicIcons.no_selected, "PleaseSelectedADevice");
+                            break;
+                    }
+                });
             }
         }
     }

@@ -41,8 +41,7 @@ namespace AutumnBox
             InitializeComponent();
             App.devicesListener.DevicesChanged += DevicesChanged;
             Logger.D(TAG, "Start customInit");
-            ChangeButtonByStatus(DeviceStatus.NO_DEVICE);//将所有按钮设置成关闭状态
-            ChangeImageByStatus(DeviceStatus.NO_DEVICE);
+            
 #if DEBUG
             LabelVersion.Content = StaticData.nowVersion.version + "-Debug";
             labelTitle.Content += "  " + StaticData.nowVersion.version + "-Debug";
@@ -75,6 +74,7 @@ namespace AutumnBox
         /// <param name="e"></param>
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
+            RefreshUI();
             App.devicesListener.Start();//开始设备监听
             //哦,如果是第一次启动本软件,那么就显示一下提示吧!
             if (Config.IsFirstLaunch)
@@ -86,6 +86,7 @@ namespace AutumnBox
             GetNotice();//开始获取公告
             UpdateCheck();//更新检测
             InitWebPage();//初始化浏览器
+            
         }
         void GetNotice()
         {

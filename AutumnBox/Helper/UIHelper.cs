@@ -54,6 +54,16 @@ namespace AutumnBox.Helper
                 }
             }
         }
+        public static void SetGridLabelsContent(Grid grid, object content) {
+            var o = grid.Children;
+            foreach (object a in o)
+            {
+                if (a is Label)
+                {
+                    (a as Label).Content = content;
+                }
+            }
+        }
         /// <summary>
         /// 将Bitmap转为BitmapImage
         /// </summary>

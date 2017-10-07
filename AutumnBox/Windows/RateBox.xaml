@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:AutumnBox.UI"
         xmlns:gif="http://wpfanimatedgif.codeplex.com"
         mc:Ignorable="d"
-        Title="RateBox" Height="222.571" Width="272.565" ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterOwner" Background="#FFBCDAAE">
+        Title="RateBox" Height="222.571" Width="272.565" ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterOwner" Background="#FFBCDAAE" ShowInTaskbar="False">
     <Grid MouseMove="Grid_MouseMove" Background="White" Margin="1,1,1,1">
         <Image Name="img"
                Stretch="Fill"
