@@ -15,7 +15,6 @@ using AutumnBox.Basic.Devices;
 using System;
 using System.Diagnostics;
 using AutumnBox.Basic.Executer;
-using AutumnBox.Basic.Function.Interface;
 using AutumnBox.Basic.Function.Event;
 
 namespace Tester

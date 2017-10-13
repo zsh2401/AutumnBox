@@ -20,7 +20,6 @@ namespace AutumnBox.Basic.Function.Modules
 {
     using AutumnBox.Basic.Executer;
     using AutumnBox.Basic.Function.Args;
-    using AutumnBox.Basic.Function.Interface;
     /// <summary>
     /// 黑域服务激活器
     /// </summary>
@@ -38,7 +37,6 @@ namespace AutumnBox.Basic.Function.Modules
         }
         protected override void HandingOutput(OutputData output, ref ExecuteResult result)
         {
-            result = new ExecuteResult(output);
             if (output.Error != null) result.ResultType = ExecuteResult.Type.Unsuccessful;
             if(output.Out.ToString().ToLower().Contains("warning")) result.ResultType = ExecuteResult.Type.Unsuccessful;
             base.HandingOutput(output, ref result);

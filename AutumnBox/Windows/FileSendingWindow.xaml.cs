@@ -13,7 +13,6 @@
 \* =============================================================================*/
 namespace AutumnBox.Windows
 {
-    using AutumnBox.Basic.Function.Interface;
     using AutumnBox.Basic.Function.RunningManager;
     using System;
     using System.Text.RegularExpressions;
@@ -22,6 +21,7 @@ namespace AutumnBox.Windows
     using System.Diagnostics;
     using AutumnBox.Helper;
     using AutumnBox.Util;
+    using AutumnBox.Basic.Executer;
 
     /// <summary>
     /// FileSendingWindow.xaml 的交互逻辑

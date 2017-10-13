@@ -13,7 +13,7 @@
 \* =============================================================================*/
 using System.Diagnostics;
 
-namespace AutumnBox.Basic.Function.Interface
+namespace AutumnBox.Basic.Executer
 {
     public interface IOutReceiver
     {

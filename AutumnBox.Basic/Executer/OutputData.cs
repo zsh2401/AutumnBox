@@ -18,10 +18,7 @@ namespace AutumnBox.Basic.Executer
     using System.Collections.Generic;
     using System.Diagnostics;
     using System.Text;
-    public interface IOutSender {
-        event DataReceivedEventHandler OutputDataReceived;
-        event DataReceivedEventHandler ErrorDataReceived;
-    }
+    
     public class OutputData : BaseObject
     {
         public IOutSender OutSender {

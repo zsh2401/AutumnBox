@@ -52,6 +52,7 @@
     <Compile Include="Executer\CommandExecuter\CommandExecuter.Static.cs" />
     <Compile Include="Executer\CommandExecuter\CommandExecuter.ExeFunc.cs" />
     <Compile Include="Executer\CommandExecuter\ExeType.cs" />
+    <Compile Include="Executer\IOutSender.cs" />
     <Compile Include="Executer\Events.cs" />
     <Compile Include="Function\Args\FMArgs.cs" />
     <Compile Include="Function\RunningManager\RunningManagerStatus.cs" />
@@ -73,7 +74,7 @@
     <Compile Include="Devices\DevicesMonitor.cs" />
     <Compile Include="Devices\DeviceStatus.cs" />
     <Compile Include="Devices\DevicesHelper.cs" />
-    <Compile Include="Function\Interface\IOutReceiver.cs" />
+    <Compile Include="Executer\IOutReceiver.cs" />
     <Compile Include="Function\RunningManager\RunningManager.cs" />
     <Compile Include="Function\Modules\CustomRecoveryFlasher.cs" />
     <Compile Include="Function\Modules\FileSender.cs" />
@@ -97,7 +98,9 @@
       <LastGenOutput>Paths.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Function\Interface\" />
+  </ItemGroup>
   <Import Project="..\AutumnBox.EFM\AutumnBox.EFM.projitems" Label="Shared" />
   <Import Project="..\AutumnBox.SharedTools\AutumnBox.SharedTools.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

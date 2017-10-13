@@ -14,7 +14,6 @@
 namespace AutumnBox.Basic.Function.RunningManager
 {
     using AutumnBox.Basic.Executer;
-    using AutumnBox.Basic.Function.Interface;
     using AutumnBox.Basic.Util;
     using System.Diagnostics;
     /// <summary>
