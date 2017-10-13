@@ -164,12 +164,12 @@ namespace AutumnBox.Basic.Devices
             Hashtable ht = GetBuildInfo(id);
             return new DeviceInfo
             {
-                brand = ht["brand"].ToString(),
-                code = ht["name"].ToString(),
-                androidVersion = ht["androidVersion"].ToString(),
-                model = ht["model"].ToString(),
-                deviceStatus = GetDeviceStatus(id),
-                id = id
+                Brand = ht["brand"].ToString(),
+                Code = ht["name"].ToString(),
+                AndroidVersion = ht["androidVersion"].ToString(),
+                Model = ht["model"].ToString(),
+                DeviceStatus = GetDeviceStatus(id),
+                Id = id
             };
         }
         /// <summary>
@@ -182,12 +182,12 @@ namespace AutumnBox.Basic.Devices
             var buildInfo = GetBuildInfo(info.Id);
             return new DeviceInfo
             {
-                brand = buildInfo["brand"].ToString(),
-                code = buildInfo["name"].ToString(),
-                androidVersion = buildInfo["androidVersion"].ToString(),
-                model = buildInfo["model"].ToString(),
-                deviceStatus = info.Status,
-                id = info.Id,
+                Brand = buildInfo["brand"].ToString(),
+                Code = buildInfo["name"].ToString(),
+                AndroidVersion = buildInfo["androidVersion"].ToString(),
+                Model = buildInfo["model"].ToString(),
+                DeviceStatus = info.Status,
+                Id = info.Id,
             };
         }
 

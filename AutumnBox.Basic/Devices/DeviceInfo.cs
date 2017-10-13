@@ -22,13 +22,13 @@ namespace AutumnBox.Basic.Devices
     /// </summary>
     public struct DeviceInfo
     {
-        public string model { internal set; get; }//型号
-        public string brand { internal set; get; }//厂商
-        public string code { internal set; get; }//代号
-        public string id { internal set; get; }//id
-        public string m { get { return brand + " " + model; } }
-        public string androidVersion { internal set; get; }//安卓版本
-        public DeviceStatus deviceStatus { internal set; get; }//设备状态
+        public string Model { internal set; get; }//型号
+        public string Brand { internal set; get; }//厂商
+        public string Code { internal set; get; }//代号
+        public string Id { internal set; get; }//id
+        public string M { get { return Brand + " " + Model; } }
+        public string AndroidVersion { internal set; get; }//安卓版本
+        public DeviceStatus DeviceStatus { internal set; get; }//设备状态
     }
     /// <summary>
     /// 简单的仅包含设备id和设备状态的结构体,主要用于设备列表 DevicesList

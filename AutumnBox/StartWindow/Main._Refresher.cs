@@ -165,9 +165,9 @@ namespace AutumnBox
                 var info = DevicesHelper.GetDeviceInfo(App.SelectedDevice);
                 this.Dispatcher.Invoke(() =>
                 {
-                    this.AndroidVersionLabel.Content = info.androidVersion;
-                    this.CodeLabel.Content = info.code;
-                    this.ModelLabel.Content = info.m;
+                    this.AndroidVersionLabel.Content = info.AndroidVersion;
+                    this.CodeLabel.Content = info.Code;
+                    this.ModelLabel.Content = info.M;
                     switch (App.SelectedDevice.Status)
                     {
                         case DeviceStatus.FASTBOOT:

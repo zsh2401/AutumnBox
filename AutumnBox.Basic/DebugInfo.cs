@@ -11,11 +11,11 @@
 * Company: I am free man
 *
 \* =============================================================================*/
-namespace AutumnBox.Basic.Util
+namespace AutumnBox.Basic
 {
     internal static class DebugInfo
     { 
         public static readonly bool SHOW_OUTPUT = false;
-        public static readonly bool SHOW_COMMAND = true;
+        public static readonly bool SHOW_COMMAND = false;
     }
 }

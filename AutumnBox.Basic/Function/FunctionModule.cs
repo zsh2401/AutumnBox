@@ -155,7 +155,7 @@ namespace AutumnBox.Basic.Function
         /// 析构!
         /// </summary>
         public void Dispose()
-        {
+        {                   
 #pragma warning disable CA1063
             Executer.Dispose();
 #pragma warning disable CA1063
