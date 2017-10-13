@@ -28,17 +28,17 @@ namespace AutumnBox.UI
     public partial class RateBox : Window
     {
         private RunningManager rm;
-        public RateBox(Window owner)
+        public RateBox()
         {
             InitializeComponent();
             buttonCancel.Visibility = Visibility.Hidden;
-            this.Owner = owner;
+            this.Owner = App.OwnerWindow;
         }
-        public RateBox(Window owner, RunningManager rm)
+        public RateBox(RunningManager rm)
         {
             InitializeComponent();
             this.rm = rm;
-            this.Owner = owner;
+            this.Owner = App.OwnerWindow;
         }
         public new void ShowDialog()
         {

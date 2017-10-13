@@ -26,7 +26,6 @@ namespace AutumnBox.UI.Grids
     /// </summary>
     public partial class PoweronFunctions : UserControl
     {
-        public Grid MainGrid { get { return this._MainGrid; } }
         public PoweronFunctions()
         {
             InitializeComponent();
@@ -34,7 +33,7 @@ namespace AutumnBox.UI.Grids
 
         private void ButtonStartBrventService_Click(object sender, RoutedEventArgs e)
         {
-            if (!ChoiceBox.Show(App.OwnerWindow, App.Current.Resources["Notice"].ToString(), App.Current.Resources["msgStartBrventTip"].ToString())) return;
+            if (!ChoiceBox.Show( App.Current.Resources["Notice"].ToString(), App.Current.Resources["msgStartBrventTip"].ToString())) return;
             BreventServiceActivator activator = new BreventServiceActivator();
             var rm = App.SelectedDevice.GetRunningManger(activator);
             rm.FuncEvents.Finished += ((StartWindow)App.OwnerWindow).FuncFinish;
@@ -80,8 +79,8 @@ namespace AutumnBox.UI.Grids
 
         private void ButtonUnlockMiSystem_Click(object sender, RoutedEventArgs e)
         {
-            if (!ChoiceBox.Show(App.OwnerWindow, FindResource("Notice").ToString(), FindResource("msgUnlockXiaomiSystemTip").ToString())) return;
-            MMessageBox.ShowDialog(App.OwnerWindow, FindResource("Notice").ToString(), FindResource("msgIfAllOK").ToString());
+            if (!ChoiceBox.Show( FindResource("Notice").ToString(), FindResource("msgUnlockXiaomiSystemTip").ToString())) return;
+            MMessageBox.ShowDialog( FindResource("Notice").ToString(), FindResource("msgIfAllOK").ToString());
             XiaomiSystemUnlocker unlocker = new XiaomiSystemUnlocker();
             var rm = App.SelectedDevice.GetRunningManger(unlocker);
             rm.FuncEvents.Finished += App.OwnerWindow.FuncFinish;

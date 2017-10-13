@@ -31,10 +31,9 @@ namespace AutumnBox.Windows
         private RunningManager rm;
         Regex rg12 = new Regex("\\ (.*?)\\%");
         Regex rg3 = new Regex("\\[(.*?)\\%");
-        public FileSendingWindow(RunningManager rm):this(App.OwnerWindow,rm) {}
-        public FileSendingWindow(Window Owner, RunningManager rm)
+        public FileSendingWindow(RunningManager rm)
         {
-            this.Owner = Owner;
+            this.Owner = App.OwnerWindow;
             this.rm = rm;
             rm.FuncEvents.OutReceiver = this;
             rm.FuncEvents.Finished += (s, e) =>

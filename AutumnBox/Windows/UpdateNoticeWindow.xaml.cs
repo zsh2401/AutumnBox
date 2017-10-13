@@ -27,7 +27,7 @@ namespace AutumnBox.UI
         string baiduUrl;
         string githubUrl;
         string version;
-        public UpdateNoticeWindow(Window owner, UpdateCheckFinishedEventArgs e)
+        public UpdateNoticeWindow(UpdateCheckFinishedEventArgs e)
         {
             InitializeComponent();
             LH.Content = e.Header;
@@ -35,11 +35,11 @@ namespace AutumnBox.UI
             baiduUrl = e.BaiduPanUrl;
             version = e.Version;
             githubUrl = e.GithubReleaseUrl;
-            Owner = owner;
+            Owner = App.OwnerWindow;
         }
-        public static void FastShow(Window owner, UpdateCheckFinishedEventArgs e)
+        public static void FastShow(UpdateCheckFinishedEventArgs e)
         {
-            new UpdateNoticeWindow(owner, e).ShowDialog();
+            new UpdateNoticeWindow(e).ShowDialog();
         }
 
         private void labelTitle_MouseMove(object sender, MouseEventArgs e)

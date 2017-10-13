@@ -37,16 +37,16 @@ namespace AutumnBox.Windows
         {
             InitializeComponent();
         }
-        public  static bool Show(Window owner,string title,string content) {
+        public  static bool Show(string title,string content) {
             ChoiceBox choiceBox = new ChoiceBox();
             choiceBox.labelTitle.Content = title;
             choiceBox.textBlockContent.Text = content;
-            choiceBox.Owner = owner;
+            choiceBox.Owner = App.OwnerWindow;
             choiceBox.ShowDialog();
             return choiceBox.Result;
         }
         public static bool ShowDialog(Window owner, string title, string content) {
-            return Show(owner,title,content);
+            return Show(title,content);
         }
         public static bool ShowDialog(Window owner, string title, string content, string btnOkString, string btnCancelString) {
             ChoiceBox choiceBox = new ChoiceBox();

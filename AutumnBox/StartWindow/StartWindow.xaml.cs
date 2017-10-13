@@ -79,7 +79,7 @@ namespace AutumnBox
             //哦,如果是第一次启动本软件,那么就显示一下提示吧!
             if (Config.IsFirstLaunch)
             {
-                MMessageBox.ShowDialog(this, FindResource("Notice2").ToString(), App.Current.Resources["msgFristLaunchNotice"].ToString());
+                MMessageBox.ShowDialog( FindResource("Notice2").ToString(), App.Current.Resources["msgFristLaunchNotice"].ToString());
                 Config.IsFirstLaunch = false;
             }
             //BlurHelper.EnableBlur(this);
@@ -106,7 +106,7 @@ namespace AutumnBox
                 {
                     this.Dispatcher.Invoke(() =>
                     {
-                        new UpdateNoticeWindow(this, e).ShowDialog();
+                        new UpdateNoticeWindow(e).ShowDialog();
                     });
                 }
             });
@@ -121,7 +121,7 @@ namespace AutumnBox
         private void ButtonSideload_Click(object sender, RoutedEventArgs e)
         {
             if (App.SelectedDevice.Status != DeviceStatus.SIDELOAD) {
-                MMessageBox.ShowDialog(this, GetString("Warning"),GetString(""));
+                MMessageBox.ShowDialog( GetString("Warning"),GetString(""));
             }
         }
 
@@ -147,6 +147,11 @@ namespace AutumnBox
         }
 
         private void ButtonScreentShot_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ButtonMiFlash_Click(object sender, RoutedEventArgs e)
         {
 
         }

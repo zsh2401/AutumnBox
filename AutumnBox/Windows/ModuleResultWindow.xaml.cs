@@ -49,11 +49,11 @@ namespace AutumnBox.Windows
             TextBlockAdvise.Text = _Result.Advise;
             TextBlockMessage.Text = _Result.Message;
         }
-        public static void FastShow(Window owner, ExecuteResult result)
+        public static void FastShow(ExecuteResult result)
         {
             new ModuleResultWindow(result)
             {
-                Owner = owner,
+                Owner = App.OwnerWindow,
             }.ShowDialog();
         }
 

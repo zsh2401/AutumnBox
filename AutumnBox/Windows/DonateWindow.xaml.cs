@@ -22,10 +22,10 @@ namespace AutumnBox.Windows
     /// </summary>
     public partial class DonateWindow : Window
     {
-        public DonateWindow(Window owner)
+        public DonateWindow()
         {
             InitializeComponent();
-            this.Owner = owner;
+            this.Owner = App.OwnerWindow;
         }
 
         private void Label_MouseMove(object sender, MouseEventArgs e)

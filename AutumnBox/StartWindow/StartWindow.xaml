@@ -80,7 +80,7 @@
                             </Grid>-->
                         </TabItem>
                         <TabItem TabIndex="1" Header="{StaticResource tbiOnPowerOn}" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" Margin="-2,0,0,0" HorizontalAlignment="Left" Width="200" Height="40" Background="{DynamicResource BasicBrush}" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" FontSize="16" FontFamily="Microsoft YaHei UI Light">
-                            <grids:PoweronFunctions x:Name="GridPoweronFuncs"></grids:PoweronFunctions>
+                            <grids:PoweronFunctions x:Name="PoweronFuncs"></grids:PoweronFunctions>
                             <!--<Grid x:Name="GridPoweronFuncs" Margin="0,0,-2,-2" HorizontalAlignment="Left" Width="988">
                                 <Button  x:Name="buttonPushFileToSdcardPoweron"   Content="{StaticResource btnPushFileToSdcard}" Margin="10,189,0,0" VerticalAlignment="Top" Height="108" Background="#007C7272" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" FontSize="18" FontFamily="Microsoft YaHei UI Light" Click="ButtonPushFileToSdcard_Click" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Black" RenderTransformOrigin="0.494,0.085" HorizontalAlignment="Left" Width="708"/>
                                 <Button  x:Name="ButtonInstallApk"   Content="{StaticResource btnInstallApk}" Margin="723,10,0,0" VerticalAlignment="Top" Height="76" Background="#007C7272" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" FontSize="18" FontFamily="Microsoft YaHei UI Light" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Black" RenderTransformOrigin="0.494,0.085" HorizontalAlignment="Left" Width="255" Click="ButtonInstallApk_Click"/>
@@ -91,17 +91,19 @@
                             </Grid>-->
                         </TabItem>
                         <TabItem TabIndex="2" Header="{StaticResource tbiOnRecovery}" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" Margin="-2,0,0,0" HorizontalAlignment="Left" Width="200" Height="40" Background="{DynamicResource BasicBrush}" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" FontSize="16" FontFamily="Microsoft YaHei UI Light">
-                            <Grid Name="GridRecFuncs" Margin="0,0,-2,-2" HorizontalAlignment="Left" Width="988">
+                            <grids:RecoveryFunctions x:Name="RecoveryFuncs"></grids:RecoveryFunctions>
+                            <!--<Grid Name="GridRecFuncs" Margin="0,0,-2,-2" HorizontalAlignment="Left" Width="988">
                                 <Button  x:Name="buttonPushFileToSdcard"   Content="{StaticResource btnPushFileToSdcard}" Margin="10,53,0,0" VerticalAlignment="Top" Height="102" Background="#007C7272" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" FontSize="18" FontFamily="Microsoft YaHei UI Light" Click="ButtonPushFileToSdcard_Click" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Black" RenderTransformOrigin="0.494,0.085" HorizontalAlignment="Left" Width="968"/>
                                 <Button x:Name="ButtonSideload" Content="{StaticResource btnSideloadFlash}" HorizontalAlignment="Left" Margin="10,160,0,0" VerticalAlignment="Top" Width="968" Height="116" Background="#00E6E1E1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" FontSize="18" FontFamily="Microsoft YaHei UI Light" Foreground="Black" Click="ButtonSideload_Click" RenderTransformOrigin="0.697,1.991"/>
-                            </Grid>
+                            </Grid>-->
                         </TabItem>
                         <TabItem  TabIndex="3" Header="{StaticResource tbiOnFastboot}" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" Margin="-2,0,0,0" HorizontalAlignment="Left" Width="200" Height="40" Background="{DynamicResource BasicBrush}" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" FontSize="16" FontFamily="Microsoft YaHei UI Light">
-                            <Grid Name="GridFastbootFuncs" Margin="0,0,-2,-2" HorizontalAlignment="Left" Width="988">
-                                <Button  x:Name="ButtonMiFlash"   Content="{StaticResource btnMiFlash}" Margin="10,153,0,0" VerticalAlignment="Top" Height="111" Background="#007C7272" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" FontSize="18" FontFamily="Microsoft YaHei UI Light" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Black" RenderTransformOrigin="0.494,0.085" HorizontalAlignment="Left" Width="565"/>
+                            <grids:FastbootFunctions x:Name="FastbootFuncs"></grids:FastbootFunctions>
+                            <!--<Grid Name="GridFastbootFuncs" Margin="0,0,-2,-2" HorizontalAlignment="Left" Width="988">
+                                <Button  x:Name="ButtonMiFlash"   Content="{StaticResource btnMiFlash}" Margin="10,153,0,0" VerticalAlignment="Top" Height="111" Background="#007C7272" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" FontSize="18" FontFamily="Microsoft YaHei UI Light" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Black" RenderTransformOrigin="0.494,0.085" HorizontalAlignment="Left" Width="565" Click="ButtonMiFlash_Click"/>
                                 <Button x:Name="buttonFlashCustomRecovery" Content="{StaticResource btnFlashCustomRecoveryImg}" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="968" Height="123" Background="#00E6E1E1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" FontSize="18" FontFamily="Microsoft YaHei UI Light" Click="ButtonFlashCustomRecovery_Click" Foreground="Black"/>
                                 <Button x:Name="buttonRelockMi" Content="{DynamicResource btnRelockMi}" Margin="580,153,0,0" VerticalAlignment="Top" Height="111" Background="#007C7272" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" FontSize="18" FontFamily="Microsoft YaHei UI Light" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" RenderTransformOrigin="0.494,0.085" HorizontalAlignment="Left" Width="398" Click="ButtonRelockMi_Click"/>
-                            </Grid>
+                            </Grid>-->
                         </TabItem>
 
                     </TabControl>

@@ -28,7 +28,7 @@ namespace AutumnBox
     {
         private void ButtonStartBrventService_Click(object sender, RoutedEventArgs e)
         {
-            if (!ChoiceBox.Show(this, App.Current.Resources["Notice"].ToString(), App.Current.Resources["msgStartBrventTip"].ToString())) return;
+            if (!ChoiceBox.Show(App.Current.Resources["Notice"].ToString(), App.Current.Resources["msgStartBrventTip"].ToString())) return;
             BreventServiceActivator activator = new BreventServiceActivator();
             var rm = App.SelectedDevice.GetRunningManger(activator);
             rm.FuncEvents.Finished += FuncFinish;
@@ -38,7 +38,7 @@ namespace AutumnBox
 
         private void ButtonLinkHelp_Click(object sender, RoutedEventArgs e)
         {
-            new LinkHelpWindow(this).Show();
+            new LinkHelpWindow().Show();
         }
 
         private void ButtonStartShell_Click(object sender, RoutedEventArgs e)
@@ -76,7 +76,7 @@ namespace AutumnBox
                 RunningManager rm = App.SelectedDevice.GetRunningManger(fs);
                 rm.FuncEvents.Finished += FuncFinish;
                 rm.FuncStart();
-                new FileSendingWindow(this, rm).ShowDialog();
+                new FileSendingWindow(rm).ShowDialog();
             }
             else
             {
@@ -151,8 +151,8 @@ namespace AutumnBox
 
         private void ButtonUnlockMiSystem_Click(object sender, RoutedEventArgs e)
         {
-            if (!ChoiceBox.Show(this, FindResource("Notice").ToString(), FindResource("msgUnlockXiaomiSystemTip").ToString())) return;
-            MMessageBox.ShowDialog(this, FindResource("Notice").ToString(), FindResource("msgIfAllOK").ToString());
+            if (!ChoiceBox.Show(FindResource("Notice").ToString(), FindResource("msgUnlockXiaomiSystemTip").ToString())) return;
+            MMessageBox.ShowDialog(FindResource("Notice").ToString(), FindResource("msgIfAllOK").ToString());
             XiaomiSystemUnlocker unlocker = new XiaomiSystemUnlocker();
             var rm = App.SelectedDevice.GetRunningManger(unlocker);
             rm.FuncEvents.Finished += FuncFinish;
@@ -162,8 +162,8 @@ namespace AutumnBox
 
         private void ButtonRelockMi_Click(object sender, RoutedEventArgs e)
         {
-            if (!ChoiceBox.Show(this, App.Current.Resources["Warning"].ToString(), App.Current.Resources["msgRelockWarning"].ToString())) return;
-            if (!ChoiceBox.Show(this, App.Current.Resources["Warning"].ToString(), App.Current.Resources["msgRelockWarningAgain"].ToString())) return;
+            if (!ChoiceBox.Show( App.Current.Resources["Warning"].ToString(), App.Current.Resources["msgRelockWarning"].ToString())) return;
+            if (!ChoiceBox.Show(App.Current.Resources["Warning"].ToString(), App.Current.Resources["msgRelockWarningAgain"].ToString())) return;
             XiaomiBootloaderRelocker relocker = new XiaomiBootloaderRelocker();
             var rm = App.SelectedDevice.GetRunningManger(relocker);
             rm.FuncEvents.Finished += FuncFinish;

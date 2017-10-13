@@ -114,17 +114,17 @@ namespace AutumnBox.Helper
             {
                 if (rm == null)
                 {
-                    rateBox = new RateBox(App.OwnerWindow);
+                    rateBox = new RateBox();
                     rateBox.ShowDialog();
                     return;
                 }
                 if (rateBox.IsActive) rateBox.Close();
-                rateBox = new RateBox(App.OwnerWindow, rm);
+                rateBox = new RateBox(rm);
                 rateBox.ShowDialog();
             }
             catch
             {
-                rateBox = new RateBox(App.OwnerWindow, rm);
+                rateBox = new RateBox(rm);
                 rateBox.ShowDialog();
             }
         }

@@ -33,13 +33,13 @@ namespace AutumnBox
             Process.Start(App.Current.Resources["linkAutumnBoxOS"].ToString());
 
         private void TextBlockDonate_MouseDown(object sender, MouseButtonEventArgs e) =>
-            new DonateWindow(this).ShowDialog();
+            new DonateWindow().ShowDialog();
 
         private void CustomTitleBar_MouseMove(object sender, MouseEventArgs e) =>
-            UIHelper.DragMove(this, e);
+            UIHelper.DragMove(this,e);
 
         private void MenuItem_Click(object sender, RoutedEventArgs e) =>
-            new DonateWindow(this).ShowDialog();
+            new DonateWindow().ShowDialog();
 
         private void LabelClose_MouseLeave(object sender, MouseEventArgs e) =>
             this.LabelClose.Background = new ImageBrush

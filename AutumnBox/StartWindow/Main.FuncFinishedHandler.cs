@@ -37,36 +37,38 @@ namespace AutumnBox
         /// <param name="e"></param>
         public void FuncFinish(object sender, FinishEventArgs e)
         {
-            UIHelper.CloseRateBox();
-            if (sender is FileSender)
-            {
-                PushFinish(sender, e);
-            }
-            else if (sender is BreventServiceActivator)
-            {
-                ActivatedBrvent(sender, e);
-            }
-            else if (sender is ActivityLauncher)
-            {
-                //TODO
-            }
-            else if (sender is CustomRecoveryFlasher)
-            {
-                FlashCustomRecFinish(sender, e);
-                //TODO
-            }
-            else if (sender is RebootOperator)
-            {
-                //TODO
-            }
-            else if (sender is XiaomiSystemUnlocker)
-            {
-                UnlockMiSystemFinish(sender, e);
-            }
-            else if (sender is XiaomiBootloaderRelocker)
-            {
-                RelockMiFinish(sender, e);
-            }
+            this.Dispatcher.Invoke(()=> {
+                UIHelper.CloseRateBox();
+                if (sender is FileSender)
+                {
+                    PushFinish(sender, e);
+                }
+                else if (sender is BreventServiceActivator)
+                {
+                    ActivatedBrvent(sender, e);
+                }
+                else if (sender is ActivityLauncher)
+                {
+                    //TODO
+                }
+                else if (sender is CustomRecoveryFlasher)
+                {
+                    FlashCustomRecFinish(sender, e);
+                    //TODO
+                }
+                else if (sender is RebootOperator)
+                {
+                    //TODO
+                }
+                else if (sender is XiaomiSystemUnlocker)
+                {
+                    UnlockMiSystemFinish(sender, e);
+                }
+                else if (sender is XiaomiBootloaderRelocker)
+                {
+                    RelockMiFinish(sender, e);
+                }
+            });
         }
 
         /// <summary>
@@ -88,7 +90,7 @@ namespace AutumnBox
                 e.Result.Advise = App.Current.Resources["advsBrventActivtedUnsuccess"].ToString();
                 this.Dispatcher.Invoke(() =>
                 {
-                    ModuleResultWindow.FastShow(this, e.Result);
+                    ModuleResultWindow.FastShow(e.Result);
                 });
             }
         }
@@ -132,11 +134,11 @@ namespace AutumnBox
             Logger.D(mweTag, "Push finish");
             if (e.Result.ResultType == ExecuteResult.Type.Successful)
             {
-                MMessageBox.ShowDialog(this, Application.Current.Resources["Notice"].ToString(), Application.Current.FindResource("msgPushOK").ToString());
+                MMessageBox.ShowDialog(Application.Current.Resources["Notice"].ToString(), Application.Current.FindResource("msgPushOK").ToString());
             }
             else
             {
-                MMessageBox.ShowDialog(this, Application.Current.Resources["Notice"].ToString(), "Push_Failed 0x123123121232");
+                MMessageBox.ShowDialog(Application.Current.Resources["Notice"].ToString(), "Push_Failed 0x123123121232");
             }
         }
 
@@ -151,7 +153,7 @@ namespace AutumnBox
             {
                 UIHelper.CloseRateBox();
             }));
-            MMessageBox.ShowDialog(this, Application.Current.FindResource("Notice").ToString(), Application.Current.FindResource("msgFlashOK").ToString());
+            MMessageBox.ShowDialog(Application.Current.FindResource("Notice").ToString(), Application.Current.FindResource("msgFlashOK").ToString());
         }
         #endregion
     }

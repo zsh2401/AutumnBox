@@ -41,7 +41,6 @@ namespace AutumnBox.Basic.Devices
             var l = o.LineOut;
             for (int i = 1; i < l.Count - 1; i++)
             {
-                LogD(l[i]);
                 devList.Add(
                     new DeviceSimpleInfo
                     {

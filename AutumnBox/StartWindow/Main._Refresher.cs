@@ -134,9 +134,9 @@ namespace AutumnBox
                     break;
             }
             //GridPoweronFuncs.
-            UIHelper.SetGridButtonStatus(GridPoweronFuncs._MainGrid, inRunning);
-            UIHelper.SetGridButtonStatus(GridRecFuncs, inRecovery);
-            UIHelper.SetGridButtonStatus(GridFastbootFuncs, inBootLoader);
+            UIHelper.SetGridButtonStatus(PoweronFuncs.MainGrid, inRunning);
+            UIHelper.SetGridButtonStatus(RecoveryFuncs.MainGrid, inRecovery);
+            UIHelper.SetGridButtonStatus(FastbootFuncs.MainGrid, inBootLoader);
             this.buttonRebootToBootloader.IsEnabled = !notFound;
             this.buttonRebootToSystem.IsEnabled = !notFound;
             this.buttonRebootToRecovery.IsEnabled = (inRunning || inRecovery);

@@ -28,16 +28,13 @@ namespace AutumnBox.Windows
             InitializeComponent();
             this.Topmost = true;
         }
-        public static void ShowDialog(Window owner, string title, string content)
+        public static void ShowDialog( string title, string content)
         {
-            owner.Dispatcher.Invoke(new Action(() =>
-            {
-                MMessageBox m = new MMessageBox();
-                m.textBlockContent.Text = content;
-                m.labelTitle.Content = title;
-                m.Owner = owner;
-                m.ShowDialog();
-            }));
+            MMessageBox m = new MMessageBox();
+            m.textBlockContent.Text = content;
+            m.labelTitle.Content = title;
+            m.Owner = App.OwnerWindow;
+            m.ShowDialog();
         }
 
         private void labelTitle_MouseMove(object sender, MouseEventArgs e)

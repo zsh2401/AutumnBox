@@ -22,9 +22,9 @@ namespace AutumnBox.Windows
     /// </summary>
     public partial class LinkHelpWindow : Window
     {
-        public LinkHelpWindow(Window owner)
+        public LinkHelpWindow()
         {
-            this.Owner = owner;
+            this.Owner = App.OwnerWindow;
             InitializeComponent();
         }
         private void imageClose_MouseEnter(object sender, MouseEventArgs e)
