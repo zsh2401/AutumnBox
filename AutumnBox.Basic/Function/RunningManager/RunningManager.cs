@@ -108,7 +108,7 @@ namespace AutumnBox.Basic.Function.RunningManager
             //检查是否已经被执行过一次
             if (this.Status != RunningManagerStatus.Loaded) throw new Exception("this Running Manager is finished,Please use new Running Manager");
             //绑定事件,在完成时将托管器设定为已完成
-            Fm.Finished += (s, e) => { if(e.Result.IsSuccessful) Status = RunningManagerStatus.Finished; };
+            Fm.Finished += (s, e) => {Status = RunningManagerStatus.Finished; };
             Logger.D("FuntionIsFinish?", Fm.IsFinishEventBound.ToString());
             Status = RunningManagerStatus.Running;
             Fm.RunByRunningManager();

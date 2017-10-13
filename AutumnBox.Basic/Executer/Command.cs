@@ -20,6 +20,9 @@ namespace AutumnBox.Basic.Executer
     /// </summary>
     public class Command
     {
+        /// <summary>
+        /// 文件名
+        /// </summary>
         public string FileName
         {
             get
@@ -27,21 +30,41 @@ namespace AutumnBox.Basic.Executer
                 return ExecuteType == ExeType.Adb ? Paths.ADB_FILENAME : Paths.FASTBOOT_FILENAME;
             }
         }
+        /// <summary>
+        /// 完全的命令
+        /// </summary>
         public string FullCommand
         {
             get
             {
                 return isDesignatedDevice ?
-                $" -s {Info.Id} {SpecificCommand}" : SpecificCommand;
+                $" -s {Info?.Id} {SpecificCommand}" : SpecificCommand;
             }
         }
+        /// <summary>
+        /// 执行的类型
+        /// </summary>
         public ExeType ExecuteType { get; private set; }
-        bool isDesignatedDevice = false;
+        /// <summary>
+        /// 是否指定了设备
+        /// </summary>
+        bool isDesignatedDevice
+        {
+            get
+            {
+                return (Info != null);
+            }
+        }
+        /// <summary>
+        /// 具体命令
+        /// </summary>
         string SpecificCommand;
-        public DeviceSimpleInfo Info { get; private set; }
+        /// <summary>
+        /// 设备信息
+        /// </summary>
+        public DeviceSimpleInfo? Info { get; private set; }
         public Command(DeviceSimpleInfo info, string command, ExeType executeType = ExeType.Adb) : this(command, executeType)
         {
-            isDesignatedDevice = true;
             Info = info;
         }
         public Command(string id, string command, ExeType exeType = ExeType.Adb) :
@@ -52,18 +75,48 @@ namespace AutumnBox.Basic.Executer
             this.ExecuteType = executeType;
             SpecificCommand = command;
         }
-        public static Command MakeADB(string id,string command) {
+        /// <summary>
+        /// 获取一个adb指令
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="command"></param>
+        /// <returns></returns>
+        public static Command MakeADB(string id, string command)
+        {
             return new Command(id, command, ExeType.Adb);
         }
-        public static Command MakeFastboot(string id, string command) {
-            return new Command(id,command, ExeType.Fastboot);
+        /// <summary>
+        /// 获取一个fastboot指令
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="command"></param>
+        /// <returns></returns>
+        public static Command MakeFastboot(string id, string command)
+        {
+            return new Command(id, command, ExeType.Fastboot);
         }
-        public static Command MakeADB(string command) {
+        /// <summary>
+        /// 获取一个adb指令
+        /// </summary>
+        /// <param name="command"></param>
+        /// <returns></returns>
+        public static Command MakeADB(string command)
+        {
             return new Command(command, ExeType.Adb);
         }
-        public static Command MakeFastboot(string command) {
+        /// <summary>
+        /// 获取一个adb指令
+        /// </summary>
+        /// <param name="command"></param>
+        /// <returns></returns>
+        public static Command MakeFastboot(string command)
+        {
             return new Command(command, ExeType.Fastboot);
         }
+        /// <summary>
+        /// 获取完整的指令(无文件名)
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return FullCommand;

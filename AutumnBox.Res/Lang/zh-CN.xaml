@@ -94,6 +94,9 @@
     <s:String x:Key="Devices">已连接设备列表</s:String>
     <s:String x:Key="RootEnable">开启</s:String>
     <s:String x:Key="RootDisable">关闭</s:String>
+    <s:String x:Key="Message">信息</s:String>
+    <s:String x:Key="Advise">建议</s:String>
+    <s:String x:Key="OutputTip">完整的输出文本,包含了最确切的信息,如果遇到错误,请将这里的输出文本复制给您要问的人</s:String>
     <!--静态界面标记-->
     
     <!--设备信息标记-->
@@ -129,10 +132,19 @@
     <s:String x:Key="DeviceInFastboot">设备处于Fastboot状态</s:String>
     <s:String x:Key="DeviceInSideload">设备在sideload模式</s:String>
     <!--设备状态提示-->
-
+    
+    <!--建议-->
+    <s:String x:Key="errormsgBrventActivtedUnsuccess">可能导致失败的原因:您未安装黑域;打开黑域界面失败;指令过期</s:String>
+    <s:String x:Key="advsBrventActivtedUnsuccess">请确保您安装了最新的黑域并至少打开了黑域界面,或您可尝试更新本工具箱</s:String>
+    <!--建议-->
     <s:String x:Key="CompileDate">编译日期</s:String>
     <s:String x:Key="SelecteAFile">选择一个文件</s:String>
     <s:String x:Key="Warning">警告</s:String>
+    <s:String x:Key="Success">成功</s:String>
+    <s:String x:Key="MaybeSuccess">可能成功</s:String>
+    <s:String x:Key="MaybeUnsuccess">可能失败</s:String>
+    <s:String x:Key="Unsuccess">失败</s:String>
+    <s:String x:Key="Fail">失败</s:String>
 
     
     <!--关于信息-->

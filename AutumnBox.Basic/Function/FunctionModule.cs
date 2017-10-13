@@ -167,7 +167,8 @@ namespace AutumnBox.Basic.Function
         /// 单线程运行
         /// </summary>
         /// <returns></returns>
-        internal OutputData FastRun() {
+        internal OutputData FastRun()
+        {
             LogD("Fast Run");
             OutputData o = new OutputData();
             Finished += (s, e) => { o = e.OutputData; };
@@ -183,7 +184,8 @@ namespace AutumnBox.Basic.Function
             var fullOutput = MainMethod();
             ExecuteResult executeResult = new ExecuteResult(fullOutput)
             {
-                IsSuccessful = !(WasFrociblyStop),
+                WasForcblyStop = WasFrociblyStop,
+                ResultType = WasFrociblyStop ? ExecuteResult.Type.Unsuccessful : ExecuteResult.Type.Successful,
             };
             HandingOutput(fullOutput, ref executeResult);
             OnFinished(new FinishEventArgs { Result = executeResult });

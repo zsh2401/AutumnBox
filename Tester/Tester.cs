@@ -31,7 +31,9 @@ namespace Tester
         }
         public void _Run()
         {
-            Print(DevicesHelper.DeviceIsRoot(Program.mi6ID));
+            Print(new Command("devices").ToString());
+            //Print(new CommandExecuter().AdbExecute("devices"));
+            //Print(new Command(Program.mi6ID, "shell \"cat /system/build.prop | grep \"product.name\"\"").ToString());
         }
         public void Print(object message)
         {

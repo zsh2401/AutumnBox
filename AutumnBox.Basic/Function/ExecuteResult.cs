@@ -16,22 +16,38 @@ namespace AutumnBox.Basic.Function
     using AutumnBox.Basic.Executer;
     public class ExecuteResult
     {
-        /// <summary>
-        /// 提示信息
-        /// </summary>
-        public string Message { get; internal set; } = string.Empty;
-        /// <summary>
-        /// 是否正确完成
-        /// </summary>
-        public bool IsSuccessful { get; internal set; } = true;
+        public enum Type
+        {
+            Successful,
+            Unsuccessful,
+            MaybeSuccessful,
+            MaybeUnsuccessful,
+        }
         /// <summary>
         /// 具体输出
         /// </summary>
-        public OutputData OutputData
-        {
-            get;
-            internal set;
-        }
+        public OutputData OutputData { get; internal set; }
+        /// <summary>
+        /// 是否是强制停止的
+        /// </summary>
+        public bool WasForcblyStop { get; internal set; } = false;
+        /// <summary>
+        /// 提示信息
+        /// </summary>
+        public string Message { get; set; } = string.Empty;
+        /// <summary>
+        /// 判断是否成功
+        /// </summary>
+        public Type ResultType { get; set; } = Type.Successful;
+        /// <summary>
+        /// 建议信息,一般交由界面进行设置
+        /// </summary>
+        public string Advise { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 初始化
+        /// </summary>
+        /// <param name="o"></param>
         public ExecuteResult(OutputData o)
         {
             this.OutputData = o;

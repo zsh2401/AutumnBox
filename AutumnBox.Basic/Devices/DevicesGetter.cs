@@ -26,20 +26,22 @@ namespace AutumnBox.Basic.Devices
         }
         public DevicesList GetDevices()
         {
-            if (Process.GetProcessesByName("adb").Length == 0) CommandExecuter.Start();
-
-            DevicesList devList = new DevicesList();
-            var adbDevicesOutput = executer.Execute(new Command("devices"));
-            AdbPrase(adbDevicesOutput, ref devList);
-            var fastbootDevicesOutput = executer.Execute(new Command("devices", ExeType.Fastboot));
-            FastbootParse(fastbootDevicesOutput, ref devList);
-            return devList;
+            lock (executer) {
+                if (Process.GetProcessesByName("adb").Length == 0) CommandExecuter.Start();
+                DevicesList devList = new DevicesList();
+                var adbDevicesOutput = executer.Execute(new Command("devices"));
+                AdbPrase(adbDevicesOutput, ref devList);
+                var fastbootDevicesOutput = executer.Execute(new Command("devices", ExeType.Fastboot));
+                FastbootParse(fastbootDevicesOutput, ref devList);
+                return devList;
+            }
         }
         private void AdbPrase(OutputData o, ref DevicesList devList)
         {
             var l = o.LineOut;
             for (int i = 1; i < l.Count - 1; i++)
             {
+                LogD(l[i]);
                 devList.Add(
                     new DeviceSimpleInfo
                     {
