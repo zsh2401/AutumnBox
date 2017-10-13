@@ -61,7 +61,7 @@ namespace AutumnBox
                         UIHelper.CloseRateBox();
                     }));
                 }).Start();
-                UIHelper.ShowRateBox(this);
+                UIHelper.ShowRateBox();
             }
         }
         /// <summary>
@@ -133,7 +133,8 @@ namespace AutumnBox
                     notFound = true;
                     break;
             }
-            UIHelper.SetGridButtonStatus(GridPoweronFuncs, inRunning);
+            //GridPoweronFuncs.
+            UIHelper.SetGridButtonStatus(GridPoweronFuncs._MainGrid, inRunning);
             UIHelper.SetGridButtonStatus(GridRecFuncs, inRecovery);
             UIHelper.SetGridButtonStatus(GridFastbootFuncs, inBootLoader);
             this.buttonRebootToBootloader.IsEnabled = !notFound;
@@ -145,6 +146,7 @@ namespace AutumnBox
         /// </summary>
         private void SetDeviceInfoLabels()
         {
+            //AutumnBox.
             Action<Bitmap, string> SetDevInfoImgAndText = (bitmap, key) =>
             {
                 this.DeviceStatusImage.Source = UIHelper.BitmapToBitmapImage(bitmap);

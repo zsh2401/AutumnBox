@@ -134,16 +134,21 @@ namespace AutumnBox
             fileDialog.Multiselect = false;
             if (fileDialog.ShowDialog() == true)
             {
-                FileSender fs = new FileSender(new FileArgs { files = new string[] { fileDialog.FileName } });
-                RunningManager rm = App.SelectedDevice.GetRunningManger(fs);
-                rm.FuncEvents.Finished += FuncFinish;
-                rm.FuncStart();
-                new FileSendingWindow(this, rm).ShowDialog();
+                //FileSender fs = new FileSender(new FileArgs { files = new string[] { fileDialog.FileName } });
+                //RunningManager rm = App.SelectedDevice.GetRunningManger(fs);
+                //rm.FuncEvents.Finished += FuncFinish;
+                //rm.FuncStart();
+                //new FileSendingWindow(this, rm).ShowDialog();
             }
             else
             {
                 return;
             }
+        }
+
+        private void ButtonScreentShot_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

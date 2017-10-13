@@ -123,6 +123,12 @@
     <Compile Include="NetUtil\MOTDGetter.cs" />
     <Compile Include="NetUtil\UpdateChecker.cs" />
     <Compile Include="StaticData.cs" />
+    <Compile Include="UI\Grids\PoweronFunctions.xaml.cs">
+      <DependentUpon>PoweronFunctions.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Grids\WelcomeGrid.xaml.cs">
+      <DependentUpon>WelcomeGrid.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\ChangeThemeWindow.xaml.cs">
       <DependentUpon>ChangeThemeWindow.xaml</DependentUpon>
     </Compile>
@@ -194,6 +200,14 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="UI\Grids\PoweronFunctions.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Grids\WelcomeGrid.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\ChangeThemeWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

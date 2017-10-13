@@ -26,7 +26,7 @@ namespace AutumnBox
     public partial class App : Application
     {
         internal static ResourceDictionary cResources { get { return Current.Resources; } }
-        internal static Window OwnerWindow { get; private set; }
+        internal static StartWindow OwnerWindow { get { return (Current.MainWindow as StartWindow); } }
         internal static DeviceSimpleInfo SelectedDevice = new DeviceSimpleInfo() { Status = DeviceStatus.NO_DEVICE };
         internal static DevicesMonitor devicesListener = new DevicesMonitor();//设备监听器
         protected override void OnStartup(StartupEventArgs e)
@@ -37,7 +37,6 @@ namespace AutumnBox
         protected override void OnLoadCompleted(NavigationEventArgs e)
         {
             base.OnLoadCompleted(e);
-            OwnerWindow = this.MainWindow;
         }
         /// <summary>
         /// 无限循环的内存回收方法

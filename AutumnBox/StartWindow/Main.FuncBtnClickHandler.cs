@@ -33,7 +33,7 @@ namespace AutumnBox
             var rm = App.SelectedDevice.GetRunningManger(activator);
             rm.FuncEvents.Finished += FuncFinish;
             rm.FuncStart();
-            UIHelper.ShowRateBox(this,rm);
+            UIHelper.ShowRateBox(rm);
         }
 
         private void ButtonLinkHelp_Click(object sender, RoutedEventArgs e)
@@ -60,7 +60,7 @@ namespace AutumnBox
 
         private void ButtonChangeTheme_Click(object sender, RoutedEventArgs e)
         {
-            //TODO
+            new ChangeThemeWindow().Show();
         }
 
         private void ButtonPushFileToSdcard_Click(object sender, RoutedEventArgs e)
@@ -141,7 +141,7 @@ namespace AutumnBox
                 var rm = App.SelectedDevice.GetRunningManger(flasher);
                 rm.FuncEvents.Finished += FuncFinish;
                 rm.FuncStart();
-                UIHelper.ShowRateBox(this,rm);
+                UIHelper.ShowRateBox(rm);
             }
             else
             {
@@ -157,7 +157,7 @@ namespace AutumnBox
             var rm = App.SelectedDevice.GetRunningManger(unlocker);
             rm.FuncEvents.Finished += FuncFinish;
             rm.FuncStart();
-            UIHelper.ShowRateBox(this,rm);
+            UIHelper.ShowRateBox(rm);
         }
 
         private void ButtonRelockMi_Click(object sender, RoutedEventArgs e)
@@ -168,7 +168,7 @@ namespace AutumnBox
             var rm = App.SelectedDevice.GetRunningManger(relocker);
             rm.FuncEvents.Finished += FuncFinish;
             rm.FuncStart();
-            UIHelper.ShowRateBox(this,rm);
+            UIHelper.ShowRateBox(rm);
         }
     }
 }

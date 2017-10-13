@@ -35,7 +35,7 @@ namespace AutumnBox
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void FuncFinish(object sender, FinishEventArgs e)
+        public void FuncFinish(object sender, FinishEventArgs e)
         {
             UIHelper.CloseRateBox();
             if (sender is FileSender)

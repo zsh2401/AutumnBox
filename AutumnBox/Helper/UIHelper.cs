@@ -64,6 +64,17 @@ namespace AutumnBox.Helper
                 }
             }
         }
+        public static void SetPanelButtonStatus(Panel panel, bool status) {
+            foreach (object o in panel.Children) {
+                if (o is Panel)
+                {
+                    SetPanelButtonStatus((Grid)o, status);
+                }
+                else if (o is Button) {
+                    (o as Button).IsEnabled = status;
+                }
+            }
+        }
         /// <summary>
         /// 将Bitmap转为BitmapImage
         /// </summary>
@@ -98,22 +109,22 @@ namespace AutumnBox.Helper
             }
         }
         private static RateBox rateBox;
-        public static void ShowRateBox(Window Owner,RunningManager rm=null) {
+        public static void ShowRateBox(RunningManager rm=null) {
             try
             {
                 if (rm == null)
                 {
-                    rateBox = new RateBox(Owner);
+                    rateBox = new RateBox(App.OwnerWindow);
                     rateBox.ShowDialog();
                     return;
                 }
                 if (rateBox.IsActive) rateBox.Close();
-                rateBox = new RateBox(Owner, rm);
+                rateBox = new RateBox(App.OwnerWindow, rm);
                 rateBox.ShowDialog();
             }
             catch
             {
-                rateBox = new RateBox(Owner, rm);
+                rateBox = new RateBox(App.OwnerWindow, rm);
                 rateBox.ShowDialog();
             }
         }

@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AutumnBox"
         xmlns:cstm="clr-namespace:AutumnBox.UI.Cstm"
+        xmlns:grids="clr-namespace:AutumnBox.UI.Grids"
         xmlns:UI="clr-namespace:AutumnBox.UI"
     xmlns:ui="clr-namespace:AutumnBox.UI" x:Name="MainWindow" x:Class="AutumnBox.StartWindow"
         mc:Ignorable="d"
@@ -71,23 +72,23 @@
                     </Grid>
                     <TabControl Name="TabFunctions" SelectionChanged="TabControl_SelectionChanged" HorizontalAlignment="Left" Margin="10,248,0,10" Width="992" Background="White" BorderBrush="{DynamicResource BasicBrush}">
                         <TabItem TabIndex="0" Header="{StaticResource tbiWelcome}" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" Margin="-2,0,0,0" HorizontalAlignment="Left" Width="200" Height="40" Background="{DynamicResource BasicBrush}" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" FontSize="16" FontFamily="Microsoft YaHei UI Light">
-                            <Grid Name="GridWelcome" Margin="0,0,-2,-2" HorizontalAlignment="Left" Width="988">
+                            <grids:WelcomeGrid></grids:WelcomeGrid>
+                            <!--<Grid Name="GridWelcome" Margin="0,0,-2,-2" HorizontalAlignment="Left" Width="988">
                                 <Label Content="{StaticResource ThankMessage1}" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="36"/>
                                 <Label Content="{StaticResource ThankMessage2}" HorizontalAlignment="Left" Margin="10,71,0,0" VerticalAlignment="Top" FontSize="20"/>
                                 <Label Content="{StaticResource ThankMessage3}" HorizontalAlignment="Left" Margin="10,111,0,0" VerticalAlignment="Top" FontSize="20"/>
-
-                            </Grid>
+                            </Grid>-->
                         </TabItem>
                         <TabItem TabIndex="1" Header="{StaticResource tbiOnPowerOn}" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" Margin="-2,0,0,0" HorizontalAlignment="Left" Width="200" Height="40" Background="{DynamicResource BasicBrush}" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" FontSize="16" FontFamily="Microsoft YaHei UI Light">
-                            <Grid x:Name="GridPoweronFuncs" Margin="0,0,-2,-2" HorizontalAlignment="Left" Width="988">
+                            <grids:PoweronFunctions x:Name="GridPoweronFuncs"></grids:PoweronFunctions>
+                            <!--<Grid x:Name="GridPoweronFuncs" Margin="0,0,-2,-2" HorizontalAlignment="Left" Width="988">
                                 <Button  x:Name="buttonPushFileToSdcardPoweron"   Content="{StaticResource btnPushFileToSdcard}" Margin="10,189,0,0" VerticalAlignment="Top" Height="108" Background="#007C7272" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" FontSize="18" FontFamily="Microsoft YaHei UI Light" Click="ButtonPushFileToSdcard_Click" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Black" RenderTransformOrigin="0.494,0.085" HorizontalAlignment="Left" Width="708"/>
                                 <Button  x:Name="ButtonInstallApk"   Content="{StaticResource btnInstallApk}" Margin="723,10,0,0" VerticalAlignment="Top" Height="76" Background="#007C7272" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" FontSize="18" FontFamily="Microsoft YaHei UI Light" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Black" RenderTransformOrigin="0.494,0.085" HorizontalAlignment="Left" Width="255" Click="ButtonInstallApk_Click"/>
-                                <Button  x:Name="ButtonScreentShot"   Content="{StaticResource btnScreenShot}" Margin="723,91,0,0" VerticalAlignment="Top" Height="83" Background="#007C7272" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" FontSize="18" FontFamily="Microsoft YaHei UI Light" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Black" RenderTransformOrigin="0.494,0.085" HorizontalAlignment="Left" Width="255"/>
+                                <Button  x:Name="ButtonScreentShot"   Content="{StaticResource btnScreenShot}" Margin="723,91,0,0" VerticalAlignment="Top" Height="83" Background="#007C7272" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" FontSize="18" FontFamily="Microsoft YaHei UI Light" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Black" RenderTransformOrigin="0.494,0.085" HorizontalAlignment="Left" Width="255" Click="ButtonScreentShot_Click"/>
                                 <Button x:Name="buttonUnlockMiSystem"  Content="{StaticResource btnUnlockMiSystem}" Margin="723,247,0,0" VerticalAlignment="Top" Height="50" Background="#007C7272" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" FontSize="18" FontFamily="Microsoft YaHei UI Light" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" RenderTransformOrigin="0.494,0.085" Click="ButtonUnlockMiSystem_Click" HorizontalAlignment="Left" Width="255"/>
                                 <Button x:Name="buttonStartBrventService" Content="{StaticResource btnStartBrventService}" Margin="10,10,0,0" VerticalAlignment="Top" Height="164" Background="#007C7272" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" FontSize="18" FontFamily="Microsoft YaHei UI Light" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" RenderTransformOrigin="0.494,0.085" HorizontalAlignment="Left" Width="708" Click="ButtonStartBrventService_Click"/>
                                 <Button x:Name="ButtonStartBrventService" Content="{StaticResource btnDpiChange}" Margin="723,190,0,0" VerticalAlignment="Top" Height="52" Background="#007C7272" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" FontSize="18" FontFamily="Microsoft YaHei UI Light" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" RenderTransformOrigin="0.494,0.085" HorizontalAlignment="Left" Width="255"/>
-
-                            </Grid>
+                            </Grid>-->
                         </TabItem>
                         <TabItem TabIndex="2" Header="{StaticResource tbiOnRecovery}" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" Margin="-2,0,0,0" HorizontalAlignment="Left" Width="200" Height="40" Background="{DynamicResource BasicBrush}" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" FontSize="16" FontFamily="Microsoft YaHei UI Light">
                             <Grid Name="GridRecFuncs" Margin="0,0,-2,-2" HorizontalAlignment="Left" Width="988">

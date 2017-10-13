@@ -35,6 +35,7 @@ namespace AutumnBox.Windows
         public ChangeThemeWindow()
         {
             InitializeComponent();
+            Owner = App.OwnerWindow;
         }
     }
 }
