@@ -33,9 +33,9 @@ namespace AutumnBox
         /// </summary>
         private void RefreshUI()
         {
-            new Thread(() =>
+            lock (setUILock)
             {
-                lock (setUILock)
+                new Thread(() =>
                 {
                     SetDeviceInfoLabels();
                     SetAdvanceInfo();
@@ -46,70 +46,57 @@ namespace AutumnBox
                         switch (App.SelectedDevice.Status)
                         {
                             case DeviceStatus.RUNNING:
-                                Logger.D(this, "Change selectedIndex to 1");
                                 TabFunctions.SelectedIndex = 1;
                                 break;
                             case DeviceStatus.RECOVERY:
-                                Logger.D(this, "Change selectedIndex to 2");
                                 TabFunctions.SelectedIndex = 2;
                                 break;
                             case DeviceStatus.FASTBOOT:
-                                Logger.D(this, "Change selectedIndex to 3");
                                 TabFunctions.SelectedIndex = 3;
                                 break;
                             default:
-                                Logger.D(this, "Change selectedIndex to 0");
                                 TabFunctions.SelectedIndex = 0;
                                 break;
                         }
                         UIHelper.CloseRateBox();
                     }));
-                }
-            }).Start();
-            UIHelper.ShowRateBox(this);
+                }).Start();
+                UIHelper.ShowRateBox(this);
+            }
         }
+        /// <summary>
+        /// 获取高级信息
+        /// </summary>
         private void SetAdvanceInfo()
         {
             if (App.SelectedDevice.Status == DeviceStatus.RECOVERY || App.SelectedDevice.Status == DeviceStatus.RUNNING)
             {
+                this.Dispatcher.Invoke(() =>
+                {
+                    UIHelper.SetGridLabelsContent(GridMemoryInfo, App.Current.Resources["Getting"].ToString());
+                    UIHelper.SetGridLabelsContent(GridHardwareInfo, App.Current.Resources["Getting"].ToString());
+                });
                 new Thread(() =>
                 {
-                    Action<Label, int, string> setInt = (label, content, unit) =>
-                    {
-                        if (content != 0) label.Content = content.ToString() + unit;
-                        else label.Content = App.Current.Resources["GetFail"];
-                    };
-                    Action<Label, double, string> setDouble = (label, content, unit) =>
-                    {
-                        if (content != 0.0) label.Content = content.ToString() + unit;
-                        else label.Content = App.Current.Resources["GetFail"];
-                    };
-                    Action<Label, string> setString = (label, content) =>
-                    {
-                        if (content != String.Empty) label.Content = content.ToString();
-                        else label.Content = App.Current.Resources["GetFail"];
-                    };
-                    this.Dispatcher.Invoke(() =>
-                    {
-                        UIHelper.SetGridLabelsContent(GridMemoryInfo, App.Current.Resources["Getting"].ToString());
-                        UIHelper.SetGridLabelsContent(GridHardwareInfo, App.Current.Resources["Getting"].ToString());
-                    });
                     var info = DevicesHelper.GetDeviceAdvanceInfo(App.SelectedDevice.Id);
                     this.Dispatcher.Invoke(() =>
                     {
-                        setDouble(LabelRom, info.StorageTotal, "GB");
-                        setDouble(LabelRam, info.MemTotal, "GB");
-                        setInt(LabelBattery, info.BatteryLevel, "%");
-                        setInt(LabelRom, info.StorageTotal, "GB");
-                        setString(LabelSOC, info.SOCInfo);
-                        setString(LabelScreen, info.ScreenInfo);
-                        setString(LabelFlashMemInfo, info.FlashMemoryType);
+                        LabelRom.Content = (info.StorageTotal != null) ? info.StorageTotal + "GB" : App.Current.Resources["GetFail"].ToString();
+                        LabelRam.Content = (info.MemTotal != null) ? info.MemTotal + "GB" : App.Current.Resources["GetFail"].ToString();
+                        LabelBattery.Content = (info.BatteryLevel != null) ? info.BatteryLevel + "%" : App.Current.Resources["GetFail"].ToString();
+                        LabelSOC.Content = (info.SOCInfo != null) ? info.SOCInfo : App.Current.Resources["GetFail"].ToString();
+                        LabelScreen.Content = (info.MemTotal != null) ? info.ScreenInfo : App.Current.Resources["GetFail"].ToString();
+                        LabelFlashMemInfo.Content = (info.FlashMemoryType != null) ? info.FlashMemoryType : App.Current.Resources["GetFail"].ToString();
+                        Logger.D(this,info.IsRoot.ToString());
+                        LabelRootStatus.Content = (info.IsRoot) ? App.Current.Resources["RootEnable"].ToString(): App.Current.Resources["RootDisable"].ToString();
                     });
                 })
                 { Name = "SetAdvanceInfo.." }.Start();
             }
-            else {
-                this.Dispatcher.Invoke(()=> {
+            else
+            {
+                this.Dispatcher.Invoke(() =>
+                {
                     UIHelper.SetGridLabelsContent(GridHardwareInfo, "....");
                     UIHelper.SetGridLabelsContent(GridMemoryInfo, "....");
                 });

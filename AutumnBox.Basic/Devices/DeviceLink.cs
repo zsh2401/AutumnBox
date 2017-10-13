@@ -78,8 +78,7 @@ namespace AutumnBox.Basic.Devices
         /// </summary>
         public void RefreshDeviceInfo()
         {
-            //if (Info.Status != DeviceStatus.FASTBOOT)
-            _deviceInfo = DevicesHelper.GetDeviceInfo(Info.Id, DevicesHelper.GetBuildInfo(Info.Id), Info.Status);
+            _deviceInfo = DevicesHelper.GetDeviceInfo(Info);
         }
 
         /// <summary>

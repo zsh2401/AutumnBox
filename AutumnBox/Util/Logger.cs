@@ -56,9 +56,9 @@ namespace AutumnBox.Util
             {
                 t = tag.GetType().Name;
             }
-            string m = SharedTools.Logger.ToFullMessage(t, message);
+            string m = SharedTools.LogHelper.ToFullMessage(t, message);
             Trace.WriteLine(m);
-            SharedTools.Logger.WriteToFile(LOG_FILE, m);
+            SharedTools.LogHelper.WriteToFile(LOG_FILE, m);
         }
         /// <summary>
         /// RELEASE和DEBUG下打印错误

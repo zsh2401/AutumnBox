@@ -17,6 +17,8 @@ namespace AutumnBox.Basic.Devices
     using AutumnBox.Basic.Util;
     using System;
     using System.Collections;
+    using System.Threading;
+
     /// <summary>
     /// 关于设备的一些静态函数
     /// </summary>
@@ -24,6 +26,23 @@ namespace AutumnBox.Basic.Devices
     {
         private static readonly string TAG = "DevicesHelper";
         private static CommandExecuter executer = new CommandExecuter();
+        private static object _ExecuterLocker = new object();
+        private static IDevicesGetter _DeviceGetter = new DevicesGetter();
+        public static bool DeviceIsRoot(string id)
+        {
+            lock (_ExecuterLocker)
+            {
+                var o = executer.AdbExecute(id,"shell su ls");
+                Logger.D(TAG,o.All.ToString());
+                if (o.All.ToString().Contains("not found"))
+                {
+                    return false;
+                }
+                else {
+                    return true;
+                }
+            }
+        }
         /// <summary>
         /// 获取一个设备的进阶性质信息
         /// </summary>
@@ -84,6 +103,7 @@ namespace AutumnBox.Basic.Devices
                 info.BatteryLevel = Convert.ToInt32(output.Split(':')[1].TrimStart());
             }
             catch (Exception e) { Logger.E(TAG, "Get Battery info fail", e); }
+            info.IsRoot = DeviceIsRoot(id);
             return info;
         }
         /// <summary>
@@ -130,7 +150,9 @@ namespace AutumnBox.Basic.Devices
         /// <returns>设备列表</returns>
         public static DevicesList GetDevices()
         {
-            return new DevicesGetter().GetDevices();
+            lock (_DeviceGetter) {
+                return _DeviceGetter.GetDevices();
+            }
         }
         /// <summary>
         /// 获取一个设备的信息
@@ -168,24 +190,7 @@ namespace AutumnBox.Basic.Devices
                 id = info.Id,
             };
         }
-        [Obsolete("Please use GetDeviceInfo(devSimpleInfo)")]
-        /// <summary>
-        /// 获取一个设备的信息
-        /// </summary>
-        /// <param name="id">设备的id</param>
-        /// <returns>设备信息</returns>
-        public static DeviceInfo GetDeviceInfo(string id, Hashtable buildInfo, DeviceStatus status)
-        {
-            return new DeviceInfo
-            {
-                brand = buildInfo["brand"].ToString(),
-                code = buildInfo["name"].ToString(),
-                androidVersion = buildInfo["androidVersion"].ToString(),
-                model = buildInfo["model"].ToString(),
-                deviceStatus = status,
-                id = id
-            };
-        }
+
         /// <summary>
         /// 获取设备的build信息
         /// </summary>

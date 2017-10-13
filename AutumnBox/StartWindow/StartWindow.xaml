@@ -54,12 +54,14 @@
                         <Label Content="{StaticResource diHWSOC}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="166,107,0,0" Width="42"/>
                         <Label Content="{StaticResource diHWRam}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="37" Margin="439,117,0,0"/>
                         <Label Content="{StaticResource diHWRom}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="439,149,0,0" Width="37"/>
-                        <Grid x:Name="GridMemoryInfo" HorizontalAlignment="Left" Height="69" Margin="478,114,0,0" VerticalAlignment="Top" Width="88" Background="White" MouseDown="GridBuildInfo_MouseDown">
+                        <Grid x:Name="GridMemoryInfo" HorizontalAlignment="Left" Height="90" Margin="478,114,0,0" VerticalAlignment="Top" Width="88" Background="White" MouseDown="GridBuildInfo_MouseDown">
                             <Label x:Name="LabelRam" Content="....." HorizontalAlignment="Left" VerticalAlignment="Top" Margin="2,3,0,0" Width="81"/>
                             <Label x:Name="LabelRom" Content="....." HorizontalAlignment="Left" VerticalAlignment="Top" Margin="2,33,0,0" Width="81"/>
+                            <Label x:Name="LabelRootStatus" Content="....." HorizontalAlignment="Left" VerticalAlignment="Top" Margin="2,63,0,0" Width="81"/>
                         </Grid>
                         <Label Content="{StaticResource diHWBattery}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="166,185,0,0" Width="42"/>
                         <Label Content="{StaticResource Devices}" HorizontalAlignment="Left" Margin="571,0,0,0" VerticalAlignment="Top" Width="182" HorizontalContentAlignment="Center"/>
+                        <Label Content="{StaticResource diSWRoot}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="439,179,0,0" Width="37" RenderTransformOrigin="0.486,0.52"/>
                     </Grid>
                     <Grid HorizontalAlignment="Left" Height="204" Margin="763,10,0,0" VerticalAlignment="Top" Width="239" Background="White">
                         <Button x:Name="buttonRebootToSystem" Content="{StaticResource btnRebootToSystem}" Margin="10,10,10,0" VerticalAlignment="Top" Height="33" Background="{x:Null}" BorderBrush="#33000000" FontSize="18" FontFamily="Microsoft YaHei UI Light" Click="ButtonRebootToSystem_Click" Foreground="Black"/>

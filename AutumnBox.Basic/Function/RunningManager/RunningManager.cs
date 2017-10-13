@@ -62,6 +62,7 @@ namespace AutumnBox.Basic.Function.RunningManager
 {
     using AutumnBox.Basic.Devices;
     using AutumnBox.Basic.Util;
+    using AutumnBox.SharedTools;
     using System;
     /// <summary>
     /// 功能模块运行时托管器,一个托管器仅可以托管/包装一个功能模块,并只可以执行一次
@@ -118,7 +119,7 @@ namespace AutumnBox.Basic.Function.RunningManager
         public void FuncStop()
         {
             Fm.WasFrociblyStop = true;
-            Tools.KillProcessAndChildrens(_pid);
+            SystemHelper.KillProcessAndChildrens(_pid);
             Status = RunningManagerStatus.Cancel;
         }
         /// <summary>

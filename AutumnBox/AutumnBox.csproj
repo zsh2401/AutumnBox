@@ -161,7 +161,6 @@
       <DependentUpon>UpdateNoticeWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Util\Config.cs" />
-    <Compile Include="Util\ConfigSql.cs" />
     <Compile Include="Helper\LanguageHelper.cs" />
     <Compile Include="Util\ConfigJson.cs" />
     <Compile Include="Util\Logger.cs" />

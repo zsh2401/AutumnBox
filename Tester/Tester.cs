@@ -31,8 +31,7 @@ namespace Tester
         }
         public void _Run()
         {
-            var v = DevicesHelper.GetDeviceAdvanceInfo(Program.mi4ID);
-            Print(v.BatteryLevel);
+            Print(DevicesHelper.DeviceIsRoot(Program.mi6ID));
         }
         public void Print(object message)
         {

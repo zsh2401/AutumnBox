@@ -71,7 +71,7 @@
     <Compile Include="Devices\DeviceLink.cs" />
     <Compile Include="Devices\DeviceInfo.cs" />
     <Compile Include="Devices\DevicesMonitor.cs" />
-    <Compile Include="Devices\DeviceStatusEnum.cs" />
+    <Compile Include="Devices\DeviceStatus.cs" />
     <Compile Include="Devices\DevicesHelper.cs" />
     <Compile Include="Function\Interface\IOutReceiver.cs" />
     <Compile Include="Function\RunningManager\RunningManager.cs" />
@@ -90,7 +90,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Paths.resx</DependentUpon>
     </Compile>
-    <Compile Include="Util\Tools.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Util\Paths.resx">

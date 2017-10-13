@@ -88,7 +88,7 @@ namespace AutumnBox
         {
             this.Close();
             App.devicesListener.Stop();
-            Basic.Util.Tools.KillAdb();
+            Basic.Executer.CommandExecuter.Kill();
             Environment.Exit(0);
         }
 

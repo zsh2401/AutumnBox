@@ -18,7 +18,7 @@ using System.Text;
 
 namespace AutumnBox.SharedTools
 {
-    public static class Logger
+    public static class LogHelper
     {
         public static string ToFullMessage(string tag, string message) {
             string t = $"[{DateTime.Now.ToString("[yy-MM-dd hh:mm:ss]")}";

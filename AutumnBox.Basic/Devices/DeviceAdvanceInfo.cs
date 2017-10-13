@@ -19,14 +19,15 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Devices
 {
-    public class DeviceAdvanceInfo
+    public struct DeviceAdvanceInfo
     {
-        public string ID { get; set; } = String.Empty;
-        public string ScreenInfo { get; set; } = String.Empty;
-        public int BatteryLevel { get; set; } = 0;
-        public double MemTotal { get; set; } = 0.0;
-        public int StorageTotal { get; set; } = 0;
-        public string FlashMemoryType { get; set; } = String.Empty;
-        public string SOCInfo { get; set; } = String.Empty;
+        public string ID { get; set; } 
+        public string ScreenInfo { get; set; } 
+        public int? BatteryLevel { get; set; } 
+        public double? MemTotal { get; set; }
+        public int? StorageTotal { get; set; } 
+        public string FlashMemoryType { get; set; } 
+        public string SOCInfo { get; set; }
+        public bool IsRoot { get; set; }
     }
 }
