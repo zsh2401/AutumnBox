@@ -82,7 +82,7 @@ namespace AutumnBox
                 MMessageBox.ShowDialog(this, FindResource("Notice2").ToString(), App.Current.Resources["msgFristLaunchNotice"].ToString());
                 Config.IsFirstLaunch = false;
             }
-            BlurHelper.EnableBlur(this);
+            //BlurHelper.EnableBlur(this);
             GetNotice();//开始获取公告
             UpdateCheck();//更新检测
             InitWebPage();//初始化浏览器
