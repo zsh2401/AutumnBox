@@ -14,15 +14,15 @@
 namespace AutumnBox.Basic.Function
 {
     using AutumnBox.Basic.Executer;
+    public enum ResultLevel
+    {
+        Successful = 0,
+        MaybeSuccessful = 1,
+        MaybeUnsuccessful = 2,
+        Unsuccessful = 3,
+    }
     public class ExecuteResult
     {
-        public enum Type
-        {
-            Successful,
-            Unsuccessful,
-            MaybeSuccessful,
-            MaybeUnsuccessful,
-        }
         /// <summary>
         /// 具体输出
         /// </summary>
@@ -38,7 +38,7 @@ namespace AutumnBox.Basic.Function
         /// <summary>
         /// 判断是否成功
         /// </summary>
-        public Type ResultType { get; set; } = Type.Successful;
+        public ResultLevel Level { get; set; } = ResultLevel.Successful;
         /// <summary>
         /// 建议信息,一般交由界面进行设置
         /// </summary>

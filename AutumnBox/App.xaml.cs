@@ -12,6 +12,7 @@
 *
 \* =============================================================================*/
 using AutumnBox.Basic.Devices;
+using AutumnBox.Basic.Executer;
 using AutumnBox.Util;
 using System;
 using System.Threading;
@@ -28,11 +29,17 @@ namespace AutumnBox
         internal static ResourceDictionary cResources { get { return Current.Resources; } }
         internal static StartWindow OwnerWindow { get { return (Current.MainWindow as StartWindow); } }
         internal static DeviceSimpleInfo SelectedDevice = new DeviceSimpleInfo() { Status = DeviceStatus.NO_DEVICE };
-        internal static DevicesMonitor devicesListener = new DevicesMonitor();//设备监听器
+        internal static DevicesMonitor DevicesListener = new DevicesMonitor();//设备监听器
         protected override void OnStartup(StartupEventArgs e)
         {
             new Thread(AutoGC) { Name = "Auto GC..." }.Start();
             base.OnStartup(e);
+        }
+        protected override void OnExit(ExitEventArgs e)
+        {
+            DevicesListener.Stop();
+            CommandExecuter.Kill();
+            base.OnExit(e);
         }
         protected override void OnLoadCompleted(NavigationEventArgs e)
         {

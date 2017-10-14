@@ -123,6 +123,15 @@
     <Compile Include="NetUtil\MOTDGetter.cs" />
     <Compile Include="NetUtil\UpdateChecker.cs" />
     <Compile Include="StaticData.cs" />
+    <Compile Include="UI\Cstm\BookMarksControl.xaml.cs">
+      <DependentUpon>BookMarksControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Grids\AboutControl.xaml.cs">
+      <DependentUpon>AboutControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Grids\DeviceInfoPanel.xaml.cs">
+      <DependentUpon>DeviceInfoPanel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Grids\FastbootFunctions.xaml.cs">
       <DependentUpon>FastbootFunctions.xaml</DependentUpon>
     </Compile>
@@ -150,13 +159,13 @@
     <Compile Include="Windows\FileSendingWindow.xaml.cs">
       <DependentUpon>FileSendingWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\IRefreshable.cs" />
     <Compile Include="Windows\LinkHelpWindow.xaml.cs">
       <DependentUpon>LinkHelpWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="StartWindow\Main.FuncBtnClickHandler.cs" />
     <Compile Include="StartWindow\Main._ImportantUIEventHandler.cs" />
     <Compile Include="StartWindow\Main._OtherControlEventHandler.cs" />
-    <Compile Include="StartWindow\Main._Refresher.cs" />
     <Compile Include="StartWindow\Main.FuncFinishedHandler.cs" />
     <Compile Include="StartWindow\StartWindow.xaml.cs">
       <DependentUpon>StartWindow.xaml</DependentUpon>
@@ -206,6 +215,18 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="UI\Cstm\BookMarksControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Grids\AboutControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Grids\DeviceInfoPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UI\Grids\FastbootFunctions.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

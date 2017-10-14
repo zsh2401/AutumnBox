@@ -84,7 +84,7 @@ namespace AutumnBox
             {
                 UIHelper.CloseRateBox();
             }));
-            if (e.Result.ResultType != ExecuteResult.Type.Successful)
+            if (e.Result.Level != ResultLevel.Successful)
             {
                 e.Result.Message = App.Current.Resources["errormsgBrventActivtedUnsuccess"].ToString();
                 e.Result.Advise = App.Current.Resources["advsBrventActivtedUnsuccess"].ToString();
@@ -132,7 +132,7 @@ namespace AutumnBox
         private void PushFinish(object sender, FinishEventArgs e)
         {
             Logger.D(mweTag, "Push finish");
-            if (e.Result.ResultType == ExecuteResult.Type.Successful)
+            if (e.Result.Level == ResultLevel.Successful)
             {
                 MMessageBox.ShowDialog(Application.Current.Resources["Notice"].ToString(), Application.Current.FindResource("msgPushOK").ToString());
             }

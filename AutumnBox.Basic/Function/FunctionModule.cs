@@ -185,7 +185,7 @@ namespace AutumnBox.Basic.Function
             ExecuteResult executeResult = new ExecuteResult(fullOutput)
             {
                 WasForcblyStop = WasFrociblyStop,
-                ResultType = WasFrociblyStop ? ExecuteResult.Type.Unsuccessful : ExecuteResult.Type.Successful,
+                Level = WasFrociblyStop ? ResultLevel.Unsuccessful : ResultLevel.Successful,
             };
             HandingOutput(fullOutput, ref executeResult);
             OnFinished(new FinishEventArgs { Result = executeResult });

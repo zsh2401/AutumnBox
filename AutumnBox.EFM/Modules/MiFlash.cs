@@ -56,7 +56,7 @@ namespace AutumnBox.Basic.Function.Modules
         }
         protected override void HandingOutput(OutputData output, ref ExecuteResult executeResult)
         {
-            if (MainProcess.ExitCode == 1) executeResult.ResultType = ExecuteResult.Type.Unsuccessful;
+            if (MainProcess.ExitCode == 1) executeResult.Level = ResultLevel.Unsuccessful;
             executeResult.Message = output.LineAll[output.LineAll.Count - 1];
         }
     }

@@ -26,21 +26,21 @@ namespace AutumnBox.Windows
         {
             _Result = result;
             InitializeComponent();
-            switch (_Result.ResultType)
+            switch (_Result.Level)
             {
-                case ExecuteResult.Type.Successful:
+                case ResultLevel.Successful:
                     TextBlockTitle.Text = App.Current.Resources["Success"].ToString();
                     TextBlockTitle.Foreground = new SolidColorBrush(Colors.Green);
                     break;
-                case ExecuteResult.Type.MaybeSuccessful:
+                case ResultLevel.MaybeSuccessful:
                     TextBlockTitle.Text = App.Current.Resources["MaybeSuccess"].ToString();
                     TextBlockTitle.Foreground = new SolidColorBrush(Colors.GreenYellow);
                     break;
-                case ExecuteResult.Type.MaybeUnsuccessful:
+                case ResultLevel.MaybeUnsuccessful:
                     TextBlockTitle.Text = App.Current.Resources["MaybeUnsuccess"].ToString();
                     TextBlockTitle.Foreground = new SolidColorBrush(Colors.OrangeRed);
                     break;
-                case ExecuteResult.Type.Unsuccessful:
+                case ResultLevel.Unsuccessful:
                     TextBlockTitle.Text = App.Current.Resources["Unsuccess"].ToString();
                     TextBlockTitle.Foreground = new SolidColorBrush(Colors.Red);
                     break;
@@ -49,6 +49,7 @@ namespace AutumnBox.Windows
             TextBlockAdvise.Text = _Result.Advise;
             TextBlockMessage.Text = _Result.Message;
         }
+
         public static void FastShow(ExecuteResult result)
         {
             new ModuleResultWindow(result)

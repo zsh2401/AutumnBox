@@ -37,8 +37,8 @@ namespace AutumnBox.Basic.Function.Modules
         }
         protected override void HandingOutput(OutputData output, ref ExecuteResult result)
         {
-            if (output.Error != null) result.ResultType = ExecuteResult.Type.Unsuccessful;
-            if(output.Out.ToString().ToLower().Contains("warning")) result.ResultType = ExecuteResult.Type.Unsuccessful;
+            if (output.Error != null) result.Level = ResultLevel.Unsuccessful;
+            if(output.Out.ToString().ToLower().Contains("warning")) result.Level = ResultLevel.Unsuccessful;
             base.HandingOutput(output, ref result);
         }
     }

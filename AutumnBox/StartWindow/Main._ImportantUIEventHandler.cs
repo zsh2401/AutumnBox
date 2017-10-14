@@ -28,14 +28,14 @@ namespace AutumnBox
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void DevicesListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
+        private void DevicesListBox_SelectionChanged(object sender, SelectionChangedEventArgs e) { 
             if (this.DevicesListBox.SelectedIndex != -1)//如果选择了设备
             {
                 App.SelectedDevice = ((DeviceSimpleInfo)DevicesListBox.SelectedItem);
                 RefreshUI();
             }
-            else if (this.DevicesListBox.SelectedIndex == -1) {
+            else if (this.DevicesListBox.SelectedIndex == -1)
+            {
                 App.SelectedDevice = new DeviceSimpleInfo() { Status = DeviceStatus.NO_DEVICE };
                 RefreshUI();
             }
@@ -46,19 +46,6 @@ namespace AutumnBox
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            UIHelper.DragMove(this, e);
-        }
-
-        /// <summary>
-        /// 主界面的被选择功能选项卡发生改变时发生
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void TabControl_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
-        {
-            Logger.D(this,"Change to" + TabFunctions.SelectedIndex.ToString());
-        }
+        private void Grid_MouseDown(object sender, MouseButtonEventArgs e) => UIHelper.DragMove(this, e);
     }
 }
