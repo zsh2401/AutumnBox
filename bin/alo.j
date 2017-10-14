@@ -1,5 +1,5 @@
 {
   "Lang": "zh-CN",
   "IsFirstLaunch": false,
-  "SkipVersion": "0.20.0"
+  "SkipVersion": "0.10.0"
 }

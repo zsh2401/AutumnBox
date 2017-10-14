@@ -169,9 +169,8 @@
     <Compile Include="Windows\LinkHelpWindow.xaml.cs">
       <DependentUpon>LinkHelpWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="StartWindow\Main._BtnClickHandler.cs" />
-    <Compile Include="StartWindow\Main._ImportantUIEventHandler.cs" />
-    <Compile Include="StartWindow\Main.FuncFinishedHandler.cs" />
+    <Compile Include="StartWindow\StartWindow._BtnClickHandler.cs" />
+    <Compile Include="StartWindow\StartWindow._FuncEventHandler.cs" />
     <Compile Include="StartWindow\StartWindow.xaml.cs">
       <DependentUpon>StartWindow.xaml</DependentUpon>
     </Compile>
@@ -323,6 +322,5 @@
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

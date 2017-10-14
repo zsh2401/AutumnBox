@@ -29,7 +29,6 @@ namespace AutumnBox
     public partial class StartWindow
     {
         string mweTag = "MainWindowEvent";
-        #region 功能事件
         /// <summary>
         /// 通用事件处理
         /// </summary>
@@ -37,7 +36,8 @@ namespace AutumnBox
         /// <param name="e"></param>
         public void FuncFinish(object sender, FinishEventArgs e)
         {
-            this.Dispatcher.Invoke(()=> {
+            this.Dispatcher.Invoke(() =>
+            {
                 UIHelper.CloseRateBox();
                 if (sender is FileSender)
                 {
@@ -155,6 +155,5 @@ namespace AutumnBox
             }));
             MMessageBox.ShowDialog(Application.Current.FindResource("Notice").ToString(), Application.Current.FindResource("msgFlashOK").ToString());
         }
-        #endregion
     }
 }

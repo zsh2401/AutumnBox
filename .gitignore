@@ -4,6 +4,7 @@
 #files
 *.log
 *.exe
+!/Adb/*.exe
 *.exe.config
 *.exe.config
 *.exp

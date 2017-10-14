@@ -25,6 +25,7 @@ using Microsoft.Win32;
 using System;
 using System.Diagnostics;
 using System.Windows;
+using System.Windows.Controls;
 using static AutumnBox.Helper.UIHelper;
 namespace AutumnBox
 {
@@ -166,6 +167,26 @@ namespace AutumnBox
             this.RebootGrid.buttonRebootToSystem.IsEnabled = !notFound;
             this.RebootGrid.buttonRebootToRecovery.IsEnabled = (inRunning || inRecovery);
         }
+        /// <summary>
+        /// 当设备选择列表的被选项变化时发生
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void DevicesListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (this.DevicesListBox.SelectedIndex != -1)//如果选择了设备
+            {
+                App.SelectedDevice = ((DeviceSimpleInfo)DevicesListBox.SelectedItem);
+            }
+            else if (this.DevicesListBox.SelectedIndex == -1)
+            {
+                App.SelectedDevice = new DeviceSimpleInfo() { Status = DeviceStatus.NO_DEVICE };
+            }
+            RefreshUI();
+        }
+        /// <summary>
+        /// 获取公告
+        /// </summary>
         void GetNotice()
         {
             new MOTDGetter().Run((s, e) =>
@@ -176,6 +197,9 @@ namespace AutumnBox
                 });
             });
         }
+        /// <summary>
+        /// 更新检测
+        /// </summary>
         void UpdateCheck()
         {
             new UpdateChecker().Run((s, e) =>
@@ -189,12 +213,14 @@ namespace AutumnBox
                 }
             });
         }
+        /// <summary>
+        /// 初始化帮助网页
+        /// </summary>
         void InitWebPage()
         {
             webFlashHelper.Navigate(HelpUrl.flashhelp);
             webSaveDevice.Navigate(HelpUrl.savedevice);
             webFlashRecHelp.Navigate(HelpUrl.flashrecovery);
         }
-
     }
 }
