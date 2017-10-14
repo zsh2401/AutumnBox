@@ -22,7 +22,10 @@ namespace AutumnBox.UI.Cstm
     public partial class CstmTitleBar : UserControl
     {
         public Window OwnerWindow { private get; set; }
-        public CstmTitleBar() => InitializeComponent();
+        public CstmTitleBar()
+        {
+            InitializeComponent();
+        }
         private void ImgClose_MouseEnter(object sender, MouseEventArgs e) =>
             ImgClose.Source = UIHelper.BitmapToBitmapImage(Res.DynamicIcons.close_selected);
 
@@ -37,7 +40,6 @@ namespace AutumnBox.UI.Cstm
 
         private void ImgClose_MouseDown(object sender, MouseButtonEventArgs e) =>
             OwnerWindow.Close();
-
         private void ImgMin_MouseDown(object sender, MouseButtonEventArgs e) =>
             OwnerWindow.WindowState = WindowState.Minimized;
 

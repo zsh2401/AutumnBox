@@ -101,6 +101,22 @@ namespace AutumnBox.Helper
                 m.DragMove();
             }
         }
+        //public static Window GetParentWindow(FrameworkElement frameworkElement) {
+        //    try
+        //    {
+        //        if (frameworkElement.Parent is Window)
+        //        {
+        //            return (frameworkElement.Parent as Window);
+        //        }
+        //        else
+        //        {
+        //            return GetParentWindow((frameworkElement.Parent as DependencyObject));
+        //        }
+        //    }
+        //    catch {
+        //        return null;
+        //    }
+        //}
         public static void DragMove(Window m, MouseEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)

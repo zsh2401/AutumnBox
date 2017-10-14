@@ -32,13 +32,12 @@ namespace AutumnBox
             if (this.DevicesListBox.SelectedIndex != -1)//如果选择了设备
             {
                 App.SelectedDevice = ((DeviceSimpleInfo)DevicesListBox.SelectedItem);
-                RefreshUI();
             }
             else if (this.DevicesListBox.SelectedIndex == -1)
             {
                 App.SelectedDevice = new DeviceSimpleInfo() { Status = DeviceStatus.NO_DEVICE };
-                RefreshUI();
             }
+            RefreshUI();
         }
 
         /// <summary>

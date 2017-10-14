@@ -36,6 +36,7 @@ namespace AutumnBox.Windows
         {
             InitializeComponent();
             Owner = App.OwnerWindow;
+            TitleBar.OwnerWindow = this;
         }
     }
 }

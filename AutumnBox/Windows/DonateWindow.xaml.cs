@@ -26,28 +26,8 @@ namespace AutumnBox.Windows
         {
             InitializeComponent();
             this.Owner = App.OwnerWindow;
-        }
-
-        private void Label_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (e.LeftButton == MouseButtonState.Pressed) {
-                this.DragMove();
-            }
-        }
-
-        private void Image_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            this.Close();
-        }
-
-        private void Image_MouseEnter(object sender, MouseEventArgs e)
-        {
-            this.imageClose.Source = UIHelper.BitmapToBitmapImage(Res.DynamicIcons.close_selected);
-        }
-
-        private void imageClose_MouseLeave(object sender, MouseEventArgs e)
-        {
-            this.imageClose.Source = UIHelper.BitmapToBitmapImage(Res.DynamicIcons.close_normal);
+            TitleBar.OwnerWindow = this;
+            TitleBar.ImgMin.Visibility = Visibility.Hidden;
         }
     }
 }

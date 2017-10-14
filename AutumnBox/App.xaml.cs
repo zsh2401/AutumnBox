@@ -32,13 +32,16 @@ namespace AutumnBox
         internal static DevicesMonitor DevicesListener = new DevicesMonitor();//设备监听器
         protected override void OnStartup(StartupEventArgs e)
         {
+            Logger.T(this, "OnStartup");
             new Thread(AutoGC) { Name = "Auto GC..." }.Start();
             base.OnStartup(e);
         }
         protected override void OnExit(ExitEventArgs e)
         {
+            Logger.T(this,"App is exitting....");
             DevicesListener.Stop();
             CommandExecuter.Kill();
+            Environment.Exit(0);
             base.OnExit(e);
         }
         protected override void OnLoadCompleted(NavigationEventArgs e)

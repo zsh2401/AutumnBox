@@ -4,9 +4,10 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AutumnBox.UI"
+        xmlns:cstm="clr-namespace:AutumnBox.UI.Cstm"
         mc:Ignorable="d"
         Title="ChangeThemeWindow" Height="176" Width="300" WindowStyle="None" ResizeMode="NoResize" ShowInTaskbar="False" WindowStartupLocation="CenterOwner">
     <Grid>
-        
+        <cstm:CstmTitleBar x:Name="TitleBar" Margin="0,0,0,152"></cstm:CstmTitleBar>
     </Grid>
 </Window>

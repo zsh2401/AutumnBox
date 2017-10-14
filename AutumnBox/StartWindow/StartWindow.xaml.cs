@@ -42,6 +42,7 @@ namespace AutumnBox
             App.DevicesListener.DevicesChanged += DevicesChanged;
             Logger.D(TAG, "Start customInit");
             TitleBar.OwnerWindow = this;
+            TitleBar.ImgMin.Visibility = Visibility.Visible;
             DevInfoPanel.RefreshStart += (s) =>
             {
                 this.Dispatcher.Invoke(() =>
@@ -56,13 +57,13 @@ namespace AutumnBox
                     UIHelper.CloseRateBox();
                 });
             };
-//#if DEBUG
-//            AboutControl.LabelVersion.Content = StaticData.nowVersion.version + "-Debug";
-//            labelTitle.Content += "  " + StaticData.nowVersion.version + "-Debug";
-//#else
-//            LabelVersion.Content = StaticData.nowVersion.version + "-Release";
-//            labelTitle.Content += "  " + StaticData.nowVersion.version + "-Release";
-//#endif
+#if DEBUG
+            AboutControl.LabelVersion.Content = StaticData.nowVersion.version + "-Debug";
+            TitleBar.Title.Content += "  " + StaticData.nowVersion.version + "-Debug";
+#else
+            LabelVersion.Content = StaticData.nowVersion.version + "-Release";
+            TitleBar.Title.Content += "  " + StaticData.nowVersion.version + "-Release";
+#endif
         }
         /// <summary>
         /// 当设备监听器引发连接设备变化的事件时发生,可通过此事件获取最新的连接设备信息

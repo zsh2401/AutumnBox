@@ -171,7 +171,6 @@
     </Compile>
     <Compile Include="StartWindow\Main._BtnClickHandler.cs" />
     <Compile Include="StartWindow\Main._ImportantUIEventHandler.cs" />
-    <Compile Include="StartWindow\Main._OtherControlEventHandler.cs" />
     <Compile Include="StartWindow\Main.FuncFinishedHandler.cs" />
     <Compile Include="StartWindow\StartWindow.xaml.cs">
       <DependentUpon>StartWindow.xaml</DependentUpon>
