@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="AutumnBox.UI.Grids.WelcomeGrid"
+﻿<Grid x:Class="AutumnBox.UI.Grids.WelcomeGrid"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -11,4 +11,4 @@
         <Label Content="{StaticResource ThankMessage2}" HorizontalAlignment="Left" Margin="10,71,0,0" VerticalAlignment="Top" FontSize="20"/>
         <Label Content="{StaticResource ThankMessage3}" HorizontalAlignment="Left" Margin="10,111,0,0" VerticalAlignment="Top" FontSize="20"/>
     </Grid>
-</UserControl>
+</Grid>

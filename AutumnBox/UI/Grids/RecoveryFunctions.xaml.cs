@@ -23,7 +23,7 @@ namespace AutumnBox.UI.Grids
     /// <summary>
     /// RecoveryFunctions.xaml 的交互逻辑
     /// </summary>
-    public partial class RecoveryFunctions : UserControl
+    public partial class RecoveryFunctions :Grid
     {
         public RecoveryFunctions()
         {

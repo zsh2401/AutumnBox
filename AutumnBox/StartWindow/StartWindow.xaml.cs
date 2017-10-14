@@ -41,6 +41,7 @@ namespace AutumnBox
             InitializeComponent();
             App.DevicesListener.DevicesChanged += DevicesChanged;
             Logger.D(TAG, "Start customInit");
+            TitleBar.OwnerWindow = this;
             DevInfoPanel.RefreshStart += (s) =>
             {
                 this.Dispatcher.Invoke(() =>
@@ -55,13 +56,13 @@ namespace AutumnBox
                     UIHelper.CloseRateBox();
                 });
             };
-#if DEBUG
-            AboutControl.LabelVersion.Content = StaticData.nowVersion.version + "-Debug";
-            labelTitle.Content += "  " + StaticData.nowVersion.version + "-Debug";
-#else
-            LabelVersion.Content = StaticData.nowVersion.version + "-Release";
-            labelTitle.Content += "  " + StaticData.nowVersion.version + "-Release";
-#endif
+//#if DEBUG
+//            AboutControl.LabelVersion.Content = StaticData.nowVersion.version + "-Debug";
+//            labelTitle.Content += "  " + StaticData.nowVersion.version + "-Debug";
+//#else
+//            LabelVersion.Content = StaticData.nowVersion.version + "-Release";
+//            labelTitle.Content += "  " + StaticData.nowVersion.version + "-Release";
+//#endif
         }
         /// <summary>
         /// 当设备监听器引发连接设备变化的事件时发生,可通过此事件获取最新的连接设备信息
@@ -157,12 +158,12 @@ namespace AutumnBox
                     notFound = true;
                     break;
             }
-            UIHelper.SetGridButtonStatus(PoweronFuncs.MainGrid, inRunning);
-            UIHelper.SetGridButtonStatus(RecoveryFuncs.MainGrid, inRecovery);
-            UIHelper.SetGridButtonStatus(FastbootFuncs.MainGrid, inBootLoader);
-            this.buttonRebootToBootloader.IsEnabled = !notFound;
-            this.buttonRebootToSystem.IsEnabled = !notFound;
-            this.buttonRebootToRecovery.IsEnabled = (inRunning || inRecovery);
+            SetGridButtonStatus(PoweronFuncs, inRunning);
+            SetGridButtonStatus(RecoveryFuncs, inRecovery);
+            SetGridButtonStatus(FastbootFuncs, inBootLoader);
+            this.RebootGrid.buttonRebootToBootloader.IsEnabled = !notFound;
+            this.RebootGrid.buttonRebootToSystem.IsEnabled = !notFound;
+            this.RebootGrid.buttonRebootToRecovery.IsEnabled = (inRunning || inRecovery);
         }
         void GetNotice()
         {
@@ -193,5 +194,6 @@ namespace AutumnBox
             webSaveDevice.Navigate(HelpUrl.savedevice);
             webFlashRecHelp.Navigate(HelpUrl.flashrecovery);
         }
+
     }
 }

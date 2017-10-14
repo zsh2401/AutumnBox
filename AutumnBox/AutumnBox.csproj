@@ -126,6 +126,9 @@
     <Compile Include="UI\Cstm\BookMarksControl.xaml.cs">
       <DependentUpon>BookMarksControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Cstm\CstmTitleBar.xaml.cs">
+      <DependentUpon>CstmTitleBar.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Grids\AboutControl.xaml.cs">
       <DependentUpon>AboutControl.xaml</DependentUpon>
     </Compile>
@@ -137,6 +140,9 @@
     </Compile>
     <Compile Include="UI\Grids\PoweronFunctions.xaml.cs">
       <DependentUpon>PoweronFunctions.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Grids\RebootButtonsGrid.xaml.cs">
+      <DependentUpon>RebootButtonsGrid.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Grids\RecoveryFunctions.xaml.cs">
       <DependentUpon>RecoveryFunctions.xaml</DependentUpon>
@@ -163,7 +169,7 @@
     <Compile Include="Windows\LinkHelpWindow.xaml.cs">
       <DependentUpon>LinkHelpWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="StartWindow\Main.FuncBtnClickHandler.cs" />
+    <Compile Include="StartWindow\Main._BtnClickHandler.cs" />
     <Compile Include="StartWindow\Main._ImportantUIEventHandler.cs" />
     <Compile Include="StartWindow\Main._OtherControlEventHandler.cs" />
     <Compile Include="StartWindow\Main.FuncFinishedHandler.cs" />
@@ -219,6 +225,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UI\Cstm\CstmTitleBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UI\Grids\AboutControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -232,6 +242,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\Grids\PoweronFunctions.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Grids\RebootButtonsGrid.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

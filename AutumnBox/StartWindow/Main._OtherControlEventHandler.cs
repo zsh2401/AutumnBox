@@ -32,32 +32,32 @@ namespace AutumnBox
         private void CustomTitleBar_MouseMove(object sender, MouseEventArgs e) =>
             UIHelper.DragMove(this,e);
 
-        private void LabelClose_MouseLeave(object sender, MouseEventArgs e) =>
-            this.LabelClose.Background = new ImageBrush
-            {
-                ImageSource = UIHelper.BitmapToBitmapImage(Res.DynamicIcons.close_normal)
-            };
+        //private void LabelClose_MouseLeave(object sender, MouseEventArgs e) =>
+        //    this.LabelClose.Background = new ImageBrush
+        //    {
+        //        ImageSource = UIHelper.BitmapToBitmapImage(Res.DynamicIcons.close_normal)
+        //    };
 
-        private void LabelClose_MouseEnter(object sender, MouseEventArgs e) =>
-            this.LabelClose.Background = new ImageBrush
-            {
-                ImageSource = UIHelper.BitmapToBitmapImage(Res.DynamicIcons.close_selected)
-            };
+        //private void LabelClose_MouseEnter(object sender, MouseEventArgs e) =>
+        //    this.LabelClose.Background = new ImageBrush
+        //    {
+        //        ImageSource = UIHelper.BitmapToBitmapImage(Res.DynamicIcons.close_selected)
+        //    };
 
-        private void LabelMin_MouseDown(object sender, MouseButtonEventArgs e) =>
-            this.WindowState = WindowState.Minimized;
+        //private void LabelMin_MouseDown(object sender, MouseButtonEventArgs e) =>
+        //    this.WindowState = WindowState.Minimized;
 
-        private void LabelMin_MouseEnter(object sender, MouseEventArgs e) =>
-            this.LabelMin.Background = new ImageBrush
-            {
-                ImageSource = UIHelper.BitmapToBitmapImage(Res.DynamicIcons.min_selected)
-            };
+        //private void LabelMin_MouseEnter(object sender, MouseEventArgs e) =>
+        //    this.LabelMin.Background = new ImageBrush
+        //    {
+        //        ImageSource = UIHelper.BitmapToBitmapImage(Res.DynamicIcons.min_selected)
+        //    };
 
-        private void LabelMin_MouseLeave(object sender, MouseEventArgs e) =>
-            this.LabelMin.Background = new ImageBrush
-            {
-                ImageSource = UIHelper.BitmapToBitmapImage(Res.DynamicIcons.min_normal)
-            };
+        //private void LabelMin_MouseLeave(object sender, MouseEventArgs e) =>
+        //    this.LabelMin.Background = new ImageBrush
+        //    {
+        //        ImageSource = UIHelper.BitmapToBitmapImage(Res.DynamicIcons.min_normal)
+        //    };
 
         private void TextBlock_MouseDown(object sender, MouseButtonEventArgs e) =>
             Process.Start("explorer.exe", App.Current.Resources["linkAICP"].ToString());

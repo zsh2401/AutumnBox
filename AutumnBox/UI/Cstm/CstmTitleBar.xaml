@@ -1,0 +1,14 @@
+﻿<UserControl x:Class="AutumnBox.UI.Cstm.CstmTitleBar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AutumnBox.UI.Cstm"
+             mc:Ignorable="d" Width="auto" MinWidth="240" Height="auto" MinHeight="20">
+    <Grid Background="{StaticResource BasicBrush}" MouseDown="Grid_MouseDown">
+        <Image HorizontalAlignment="Left" Margin="4,1,0,2" Width="24" Source="/AutumnBox.Res;component/Images/Icons/title_icon.png" RenderTransformOrigin="0.579,-1.368"/>
+        <Label Content="{StaticResource AppName}" Foreground="{StaticResource ForgBrush}" Margin="41,-4,0,-3" FontFamily="Microsoft YaHei Light" FontSize="18" Width="107" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Image Name="ImgClose" Margin="0,1,9,1" Source="/AutumnBox.Res;component/Images/DynamicIcons/close_normal.png" MouseEnter="ImgClose_MouseEnter" MouseLeave="ImgClose_MouseLeave" MouseDown="ImgClose_MouseDown" HorizontalAlignment="Right" Width="25"/>
+        <Image Name="ImgMin" Margin="0,1,45,2" Source="/AutumnBox.Res;component/Images/DynamicIcons/min_normal.png" MouseEnter="ImgMin_MouseEnter" MouseLeave="ImgMin_MouseLeave" MouseDown="ImgMin_MouseDown" HorizontalAlignment="Right" Width="24" Stretch="Fill"/>
+    </Grid>
+</UserControl>

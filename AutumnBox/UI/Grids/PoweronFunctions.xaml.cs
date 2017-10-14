@@ -24,7 +24,7 @@ namespace AutumnBox.UI.Grids
     /// <summary>
     /// PoweronFunctions.xaml 的交互逻辑
     /// </summary>
-    public partial class PoweronFunctions : UserControl
+    public partial class PoweronFunctions : Grid
     {
         public PoweronFunctions()
         {

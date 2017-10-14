@@ -23,7 +23,7 @@ namespace AutumnBox.UI.Grids
     /// <summary>
     /// FastbootFunctions.xaml 的交互逻辑
     /// </summary>
-    public partial class FastbootFunctions : UserControl
+    public partial class FastbootFunctions : Grid
     {
         public FastbootFunctions()
         {

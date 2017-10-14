@@ -52,41 +52,5 @@ namespace AutumnBox
         {
             new ChangeThemeWindow().Show();
         }
-
-        private void ButtonRebootToRecovery_Click(object sender, RoutedEventArgs e)
-        {
-            RebootOperator ro = new RebootOperator(new RebootArgs
-            {
-                rebootOption = RebootOptions.Recovery,
-                nowStatus = App.SelectedDevice.Status
-            });
-            var rm = App.SelectedDevice.GetRunningManger(ro);
-            rm.FuncEvents.Finished += FuncFinish;
-            rm.FuncStart();
-        }
-
-        private void ButtonRebootToBootloader_Click(object sender, RoutedEventArgs e)
-        {
-            RebootOperator ro = new RebootOperator(new RebootArgs
-            {
-                rebootOption = RebootOptions.Bootloader,
-                nowStatus = App.SelectedDevice.Status
-            });
-            var rm = App.SelectedDevice.GetRunningManger(ro);
-            rm.FuncEvents.Finished += FuncFinish;
-            rm.FuncStart();
-        }
-
-        private void ButtonRebootToSystem_Click(object sender, RoutedEventArgs e)
-    {
-        RebootOperator ro = new RebootOperator(new RebootArgs
-        {
-            rebootOption = RebootOptions.System,
-            nowStatus = App.SelectedDevice.Status
-        });
-        var rm = App.SelectedDevice.GetRunningManger(ro);
-        rm.FuncEvents.Finished += FuncFinish;
-        rm.FuncStart();
-    }
     }
 }
