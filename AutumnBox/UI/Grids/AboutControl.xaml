@@ -4,14 +4,14 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AutumnBox.UI.Grids"
-             mc:Ignorable="d" Background="White" Width="940" Height="570">
+             mc:Ignorable="d" Width="940" Height="570">
     <Grid>
         <Image HorizontalAlignment="Left" Height="232" Margin="10,10,0,0" VerticalAlignment="Top" Width="225" Source="/AutumnBox;component/title_icon.ico" RenderTransformOrigin="0.519,-0.013"/>
-        <Label Content="AutumnBox" HorizontalAlignment="Left" Margin="235,82,0,0" VerticalAlignment="Top" Height="126" Width="546" FontSize="100" FontFamily="Microsoft YaHei UI Light"/>
-        <Label Content="{DynamicResource AboutMessage1}" HorizontalAlignment="Left" Margin="0,304,0,0" VerticalAlignment="Top" Width="426" FontFamily="Microsoft YaHei UI Light" FontSize="14"/>
-        <Label Content="{DynamicResource AboutMessage2}" HorizontalAlignment="Left" Margin="0,338,0,0" VerticalAlignment="Top" Width="235" FontFamily="Microsoft YaHei UI Light" FontSize="14"/>
-        <Label Content="{DynamicResource AboutMessage_Thanks}" HorizontalAlignment="Left" Margin="0,489,0,0" VerticalAlignment="Top" Width="360" FontFamily="Microsoft YaHei UI Light" FontSize="14"/>
-        <Label Content="{DynamicResource AboutMessage_OSList}" HorizontalAlignment="Left" Margin="0,524,0,0" VerticalAlignment="Top" Width="266" FontFamily="Microsoft YaHei UI Light" Height="33" FontSize="14"/>
+        <Label Foreground="{DynamicResource ForgBrush}" Content="AutumnBox" HorizontalAlignment="Left" Margin="235,82,0,0" VerticalAlignment="Top" Height="126" Width="546" FontSize="100" FontFamily="Microsoft YaHei UI Light"/>
+        <Label Foreground="{DynamicResource ForgBrush}" Content="{DynamicResource AboutMessage1}" HorizontalAlignment="Left" Margin="0,304,0,0" VerticalAlignment="Top" Width="426" FontFamily="Microsoft YaHei UI Light" FontSize="14"/>
+        <Label Foreground="{DynamicResource ForgBrush}" Content="{DynamicResource AboutMessage2}" HorizontalAlignment="Left" Margin="0,338,0,0" VerticalAlignment="Top" Width="235" FontFamily="Microsoft YaHei UI Light" FontSize="14"/>
+        <Label Foreground="{DynamicResource ForgBrush}" Content="{DynamicResource AboutMessage_Thanks}" HorizontalAlignment="Left" Margin="0,489,0,0" VerticalAlignment="Top" Width="360" FontFamily="Microsoft YaHei UI Light" FontSize="14"/>
+        <Label Foreground="{DynamicResource ForgBrush}" Content="{DynamicResource AboutMessage_OSList}" HorizontalAlignment="Left" Margin="0,524,0,0" VerticalAlignment="Top" Width="266" FontFamily="Microsoft YaHei UI Light" Height="33" FontSize="14"/>
         <TextBlock x:Name="TextBlockGoToOS" HorizontalAlignment="Left" Margin="465,308,0,0" TextWrapping="Wrap" Text="{DynamicResource AboutMessageOS}" VerticalAlignment="Top" Foreground="#FF52B08E" FontFamily="Microsoft YaHei UI Light" TextDecorations="Underline" Height="20" Width="154" RenderTransformOrigin="2.278,-0.968" FontSize="15" MouseDown="TextBlockGoToOS_MouseDown">
             <TextBlock.RenderTransform>
                 <TransformGroup>
@@ -34,6 +34,6 @@
         </TextBlock>
         <Image Source="/AutumnBox.Res;component/Images/Icons/donate.png" HorizontalAlignment="Left" Height="28" Margin="235,338,0,0" VerticalAlignment="Top" Width="31"/>
         <Image Source="/AutumnBox.Res;component/Images/github.png" HorizontalAlignment="Left" Height="28" Margin="426,304,0,0" VerticalAlignment="Top" Width="31"/>
-        <Label x:Name="LabelVersion" Content="*.*.*.*-*" HorizontalAlignment="Left" Margin="240,212,0,0" VerticalAlignment="Top" Width="151"/>
+        <Label Foreground="{DynamicResource ForgBrush}" x:Name="LabelVersion" Content="*.*.*.*-*" HorizontalAlignment="Left" Margin="240,212,0,0" VerticalAlignment="Top" Width="151"/>
     </Grid>
 </UserControl>

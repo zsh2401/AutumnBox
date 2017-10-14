@@ -1,9 +1,11 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:AutumnBox.Res">
-
-    <SolidColorBrush x:Key="ForgBrush" Color="#FFFFFFFF"/>
+                    xmlns:local="clr-namespace:AutumnBox.Res"
+                    xmlns:s="clr-namespace:System;assembly=mscorlib">
+    <s:String x:Key="ThemeName">Basic</s:String>
+    <SolidColorBrush x:Key="ForgBrushOnBasic" Color="#FF000000"/>
+    <SolidColorBrush x:Key="ForgBrush" Color="#FF000000"/>
+    <SolidColorBrush x:Key="BorderBrush" Color="#FF000000"/>
     <SolidColorBrush x:Key="BackBrush" Color="#FFFFFFFF"/>
     <SolidColorBrush x:Key="BasicBrush" Color="#FF009AD6"/>
-
 </ResourceDictionary>

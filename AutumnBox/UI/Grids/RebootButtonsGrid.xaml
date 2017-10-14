@@ -4,8 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AutumnBox.UI.Grids"
-             mc:Ignorable="d" d:DesignWidth="300" Height="129.878" Background="{StaticResource BackBrush}">
-    <Button x:Name="buttonRebootToSystem" Content="{StaticResource btnRebootToSystem}" Margin="10,10,10,0" VerticalAlignment="Top" Height="33" Background="{x:Null}" BorderBrush="#33000000" FontSize="18" FontFamily="Microsoft YaHei UI Light" Click="ButtonRebootToSystem_Click" Foreground="Black"/>
-    <Button x:Name="buttonRebootToRecovery" Content="{StaticResource btnRebootToRecovery}" Margin="10,48,10,0" VerticalAlignment="Top" Height="33" Background="{x:Null}" BorderBrush="#33000000" FontSize="18" FontFamily="Microsoft YaHei UI Light" Click="ButtonRebootToRecovery_Click" Foreground="Black"/>
-    <Button x:Name="buttonRebootToBootloader" Content="{StaticResource btnRebootToBootloader}" Margin="10,86,10,0" VerticalAlignment="Top" Height="33" Background="{x:Null}" BorderBrush="#33000000" FontSize="18" FontFamily="Microsoft YaHei UI Light" Click="ButtonRebootToBootloader_Click" Foreground="Black"/>
+             mc:Ignorable="d" d:DesignWidth="300" Height="129.878">
+    <Button x:Name="buttonRebootToSystem" Content="{DynamicResource btnRebootToSystem}" Margin="10,10,10,0" VerticalAlignment="Top" Height="33" Background="{x:Null}" BorderBrush="{DynamicResource BorderBrush}" FontSize="18" FontFamily="Microsoft YaHei UI Light" Click="ButtonRebootToSystem_Click" Foreground="{DynamicResource ForgBrush}"/>
+    <Button x:Name="buttonRebootToRecovery" Content="{DynamicResource btnRebootToRecovery}" Margin="10,48,10,0" VerticalAlignment="Top" Height="33" Background="{x:Null}" BorderBrush="{DynamicResource BorderBrush}" FontSize="18" FontFamily="Microsoft YaHei UI Light" Click="ButtonRebootToRecovery_Click" Foreground="{DynamicResource ForgBrush}"/>
+    <Button x:Name="buttonRebootToBootloader" Content="{DynamicResource btnRebootToBootloader}" Margin="10,86,10,0" VerticalAlignment="Top" Height="33" Background="{x:Null}" BorderBrush="{DynamicResource BorderBrush}" FontSize="18" FontFamily="Microsoft YaHei UI Light" Click="ButtonRebootToBootloader_Click" Foreground="{DynamicResource ForgBrush}"/>
 </Grid>

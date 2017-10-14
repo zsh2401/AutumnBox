@@ -26,6 +26,9 @@ namespace AutumnBox
 {
     public partial class StartWindow
     {
+        bool IsNightMode { get {
+                return App.Current.Resources["ThemeName"].ToString() == "Night";
+            } }
         private void ButtonLinkHelp_Click(object sender, RoutedEventArgs e)
         {
             new LinkHelpWindow().Show();
@@ -50,7 +53,14 @@ namespace AutumnBox
 
         private void ButtonChangeTheme_Click(object sender, RoutedEventArgs e)
         {
-            new ChangeThemeWindow().Show();
+            if (!IsNightMode)
+            {
+                App.Current.Resources.MergedDictionaries[2].Source = new Uri($@"/AutumnBox.Res;component/Theme/NightTheme.xaml", UriKind.Relative);
+            }
+            else
+            {
+                App.Current.Resources.MergedDictionaries[2].Source = new Uri($@"/AutumnBox.Res;component/Theme/BasicTheme.xaml", UriKind.Relative);
+            }
         }
     }
 }

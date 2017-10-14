@@ -5,10 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AutumnBox.UI.Grids"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="988" OpacityMask="Black" Background="White">
-    <Grid>
-        <Label Content="{StaticResource ThankMessage1}" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="36"/>
-        <Label Content="{StaticResource ThankMessage2}" HorizontalAlignment="Left" Margin="10,71,0,0" VerticalAlignment="Top" FontSize="20"/>
-        <Label Content="{StaticResource ThankMessage3}" HorizontalAlignment="Left" Margin="10,111,0,0" VerticalAlignment="Top" FontSize="20"/>
-    </Grid>
+             d:DesignHeight="300" d:DesignWidth="988" OpacityMask="Black">
+    <Label Content="{DynamicResource ThankMessage1}" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="36" Foreground="{DynamicResource ForgBrush}"/>
+    <Label Content="{DynamicResource ThankMessage2}" HorizontalAlignment="Left" Margin="10,71,0,0" VerticalAlignment="Top" FontSize="20" Foreground="{DynamicResource ForgBrush}"/>
+    <Label Content="{DynamicResource ThankMessage3}" HorizontalAlignment="Left" Margin="10,111,0,0" VerticalAlignment="Top" FontSize="20" Foreground="{DynamicResource ForgBrush}"/>
 </Grid>

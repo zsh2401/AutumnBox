@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:AutumnBox.UI"
         xmlns:cstm="clr-namespace:AutumnBox.UI.Cstm"
         mc:Ignorable="d"
-        Title="ChangeThemeWindow" Height="176" Width="300" WindowStyle="None" ResizeMode="NoResize" ShowInTaskbar="False" WindowStartupLocation="CenterOwner">
+        Title="ChangeThemeWindow" Height="176" Width="401.333" WindowStyle="None" ResizeMode="NoResize" ShowInTaskbar="False" WindowStartupLocation="CenterOwner">
     <Grid>
         <cstm:CstmTitleBar x:Name="TitleBar" Margin="0,0,0,152"></cstm:CstmTitleBar>
     </Grid>

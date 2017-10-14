@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AutumnBox.UI.Cstm"
-             mc:Ignorable="d" Background="White" Width="982" Height="478">
+             mc:Ignorable="d" Background="{x:Null}" Width="982" Height="478">
     <Grid>
         <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="{DynamicResource bmAICPRom}" VerticalAlignment="Top" TextDecorations="Underline" Foreground="#FF3FADE0" Width="335" MouseDown="TextBlock_MouseDown" FontSize="48" Height="86"/>
         <TextBlock HorizontalAlignment="Left" Margin="344,24,0,0" TextWrapping="Wrap" Text="{DynamicResource bmLineageOS}" VerticalAlignment="Top" TextDecorations="Underline" Foreground="#FF3FADE0" Width="495" FontSize="48" MouseDown="TextBlock_MouseDown_1" Height="72"/>
