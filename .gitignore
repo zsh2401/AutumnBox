@@ -29,9 +29,10 @@
 fast
 !AutumnBox.Basic/Adb/*.exe
 !AutumnBox.Basic/Adb/*.dll
+Bin/*.*
+!Bin/readme.txt
 #dirs
 .vs/
-Bin/
 obj/
 AutumnBox/obj/
 AutumnBox.basic/obj/
