@@ -31,7 +31,7 @@ fast
 !AutumnBox.Basic/Adb/*.dll
 #dirs
 .vs/
-#Bin/
+Bin/
 obj/
 AutumnBox/obj/
 AutumnBox.basic/obj/
