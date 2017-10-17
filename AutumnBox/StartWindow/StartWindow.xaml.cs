@@ -123,47 +123,12 @@ namespace AutumnBox
         {
             lock (setUILock)
             {
-                SetButtons();
+                PoweronFuncs.Refresh(App.SelectedDevice);
+                RecoveryFuncs.Refresh(App.SelectedDevice);
+                FastbootFuncs.Refresh(App.SelectedDevice);
+                RebootGrid.Refresh(App.SelectedDevice);
                 DevInfoPanel.Refresh(App.SelectedDevice);
             }
-        }
-        /// <summary>
-        /// 根据设备状态改变按钮状态
-        /// </summary>
-        /// <param name="status"></param>
-        private void SetButtons()
-        {
-            bool inBootLoader = false;
-            bool inRecovery = false;
-            bool inRunning = false;
-            bool notFound = false;
-#pragma warning disable CS0219 // 变量已被赋值，但从未使用过它的值
-            bool inSideload = false;
-#pragma warning restore CS0219 // 变量已被赋值，但从未使用过它的值
-            switch (App.SelectedDevice.Status)
-            {
-                case DeviceStatus.FASTBOOT:
-                    inBootLoader = true;
-                    break;
-                case DeviceStatus.RECOVERY:
-                    inRecovery = true;
-                    break;
-                case DeviceStatus.RUNNING:
-                    inRunning = true;
-                    break;
-                case DeviceStatus.SIDELOAD:
-                    inSideload = true;
-                    break;
-                default:
-                    notFound = true;
-                    break;
-            }
-            SetGridButtonStatus(PoweronFuncs, inRunning);
-            SetGridButtonStatus(RecoveryFuncs, inRecovery);
-            SetGridButtonStatus(FastbootFuncs, inBootLoader);
-            this.RebootGrid.buttonRebootToBootloader.IsEnabled = !notFound;
-            this.RebootGrid.buttonRebootToSystem.IsEnabled = !notFound;
-            this.RebootGrid.buttonRebootToRecovery.IsEnabled = (inRunning || inRecovery);
         }
         /// <summary>
         /// 当设备选择列表的被选项变化时发生

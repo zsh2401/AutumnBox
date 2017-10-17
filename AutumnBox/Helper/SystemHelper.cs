@@ -11,6 +11,7 @@
 * Company: I am free man
 *
 \* =============================================================================*/
+using AutumnBox.Basic.Executer;
 using AutumnBox.Util;
 using System;
 using System.Collections.Generic;
@@ -61,7 +62,13 @@ namespace AutumnBox.Helper
             object[] objAttrs = from.GetType().GetCustomAttributes(typeof(T), true);
             return objAttrs;
         }
-
+        public static void AppExit(int exitCode = 0)
+        {
+            Logger.T("SystemHelper", "Exiting.....");
+            App.DevicesListener.Stop();
+            CommandExecuter.Kill();
+            Environment.Exit(exitCode);
+        }
         #region ÄÚ´æ»ØÊÕ http://www.cnblogs.com/xcsn/p/4678322.html
         static bool continueAutoGC = true;
         /// <summary>

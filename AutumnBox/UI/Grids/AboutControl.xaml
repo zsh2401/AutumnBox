@@ -34,6 +34,7 @@
         </TextBlock>
         <Image Source="/AutumnBox.Res;component/Images/Icons/donate.png" HorizontalAlignment="Left" Height="28" Margin="235,338,0,0" VerticalAlignment="Top" Width="31"/>
         <Image Source="/AutumnBox.Res;component/Images/github.png" HorizontalAlignment="Left" Height="28" Margin="426,304,0,0" VerticalAlignment="Top" Width="31"/>
-        <Label Foreground="{DynamicResource ForgBrush}" x:Name="LabelVersion" Content="*.*.*.*-*" HorizontalAlignment="Left" Margin="240,212,0,0" VerticalAlignment="Top" Width="151"/>
+        <Label Foreground="{DynamicResource ForgBrush}" x:Name="LabelVersion" Content="*.*.*.*-*" HorizontalAlignment="Left" Margin="240,208,0,0" VerticalAlignment="Top" Width="181"/>
+        <Label Foreground="{DynamicResource ForgBrush}" x:Name="LabelCompiledDate" Content="00-00-0000" HorizontalAlignment="Left" Margin="240,239,0,0" VerticalAlignment="Top" Width="150"/>
     </Grid>
 </UserControl>

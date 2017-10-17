@@ -15,17 +15,56 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using AutumnBox.Basic.Devices;
 
 namespace AutumnBox.UI.Grids
 {
     /// <summary>
     /// RebootButtonsGrid.xaml 的交互逻辑
     /// </summary>
-    public partial class RebootButtonsGrid : Grid
+    public partial class RebootButtonsGrid : Grid, IDeviceInfoRefreshable
     {
         public RebootButtonsGrid()
         {
             InitializeComponent();
+        }
+
+        public event EventHandler RefreshStart;
+        public event EventHandler RefreshFinished;
+
+        public void SetDefault()
+        {
+            buttonRebootToBootloader.IsEnabled = false;
+            buttonRebootToRecovery.IsEnabled = false;
+            buttonRebootToSystem.IsEnabled = false;
+        }
+
+        public void Refresh(DeviceSimpleInfo deviceSimpleInfo)
+        {
+            this.Dispatcher.Invoke(() =>
+            {
+                RefreshStart?.Invoke(this, new EventArgs());
+                switch (deviceSimpleInfo.Status)
+                {
+                    case DeviceStatus.FASTBOOT:
+                        buttonRebootToBootloader.IsEnabled = true;
+                        buttonRebootToRecovery.IsEnabled = false;
+                        buttonRebootToSystem.IsEnabled = true;
+                        break;
+                    case DeviceStatus.RECOVERY:
+                    case DeviceStatus.RUNNING:
+                        buttonRebootToBootloader.IsEnabled = true;
+                        buttonRebootToRecovery.IsEnabled = true;
+                        buttonRebootToSystem.IsEnabled = true;
+                        break;
+                    default:
+                        buttonRebootToBootloader.IsEnabled = false;
+                        buttonRebootToRecovery.IsEnabled = false;
+                        buttonRebootToSystem.IsEnabled = false;
+                        break;
+                }
+                RefreshFinished?.Invoke(this, new EventArgs());
+            });
         }
 
         private void ButtonRebootToSystem_Click(object sender, RoutedEventArgs e)

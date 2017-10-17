@@ -46,7 +46,7 @@ namespace AutumnBox.NetUtil
                 string data = File.ReadAllText(@"E:\zsh2401.github.io\softsupport\autumnbox\update\index.html");
 #endif
                 JObject j = JObject.Parse(data);
-                bool needUpdate =(
+                bool needUpdate = (
                     //当前版本小于检测到的版本
                     DebugInfo.NowVersion < new Version(j["Version"].ToString())
                     &&

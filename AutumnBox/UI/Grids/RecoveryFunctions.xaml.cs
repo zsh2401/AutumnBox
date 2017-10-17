@@ -17,17 +17,35 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using AutumnBox.Basic.Devices;
+using AutumnBox.Helper;
 
 namespace AutumnBox.UI.Grids
 {
     /// <summary>
     /// RecoveryFunctions.xaml 的交互逻辑
     /// </summary>
-    public partial class RecoveryFunctions :Grid
+    public partial class RecoveryFunctions : Grid, IDeviceInfoRefreshable
     {
         public RecoveryFunctions()
         {
             InitializeComponent();
+        }
+
+        public event EventHandler RefreshStart;
+        public event EventHandler RefreshFinished;
+
+        public void Refresh(DeviceSimpleInfo deviceSimpleInfo)
+        {
+            RefreshStart?.Invoke(this, new EventArgs());
+            UIHelper.SetGridButtonStatus(this,
+                (deviceSimpleInfo.Status == DeviceStatus.RECOVERY || deviceSimpleInfo.Status == DeviceStatus.SIDELOAD));
+            RefreshFinished?.Invoke(this, new EventArgs());
+        }
+
+        public void SetDefault()
+        {
+            UIHelper.SetGridButtonStatus(this, false);
         }
 
         private void ButtonPushFileToSdcard_Click(object sender, RoutedEventArgs e)

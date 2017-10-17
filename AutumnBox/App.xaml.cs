@@ -27,7 +27,6 @@ namespace AutumnBox
     /// </summary>
     public partial class App : Application
     {
-        internal static ResourceDictionary cResources { get { return Current.Resources; } }
         internal static StartWindow OwnerWindow { get { return (Current.MainWindow as StartWindow); } }
         internal static DeviceSimpleInfo SelectedDevice = new DeviceSimpleInfo() { Status = DeviceStatus.NO_DEVICE };
         internal static DevicesMonitor DevicesListener = new DevicesMonitor();//设备监听器
@@ -39,11 +38,8 @@ namespace AutumnBox
         }
         protected override void OnExit(ExitEventArgs e)
         {
-            Logger.T(this,"App is exitting....");
-            DevicesListener.Stop();
-            CommandExecuter.Kill();
-            Environment.Exit(0);
             base.OnExit(e);
+            SystemHelper.AppExit();
         }
     }
 }

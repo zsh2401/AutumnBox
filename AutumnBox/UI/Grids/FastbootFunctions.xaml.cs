@@ -17,17 +17,33 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using AutumnBox.Basic.Devices;
 
 namespace AutumnBox.UI.Grids
 {
     /// <summary>
     /// FastbootFunctions.xaml 的交互逻辑
     /// </summary>
-    public partial class FastbootFunctions : Grid
+    public partial class FastbootFunctions : Grid, IDeviceInfoRefreshable
     {
         public FastbootFunctions()
         {
             InitializeComponent();
+        }
+
+        public event EventHandler RefreshStart;
+        public event EventHandler RefreshFinished;
+
+        public void Refresh(DeviceSimpleInfo deviceSimpleInfo)
+        {
+            RefreshStart?.Invoke(this, new EventArgs());
+            UIHelper.SetGridButtonStatus(this, deviceSimpleInfo.Status == DeviceStatus.FASTBOOT);
+            RefreshFinished?.Invoke(this, new EventArgs());
+        }
+
+        public void SetDefault()
+        {
+            UIHelper.SetGridButtonStatus(this, false);
         }
 
         private void ButtonFlashCustomRecovery_Click(object sender, RoutedEventArgs e)
