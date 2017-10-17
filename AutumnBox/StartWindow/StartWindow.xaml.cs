@@ -181,5 +181,7 @@ namespace AutumnBox
                 }
             };
         }
+
+        private void btnHelp_Click(object sender, RoutedEventArgs e) => Process.Start(Urls.HELP_PAGE);
     }
 }

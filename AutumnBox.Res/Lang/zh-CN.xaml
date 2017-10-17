@@ -2,11 +2,12 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:AutumnBox.Res"
                     xmlns:s="clr-namespace:System;assembly=mscorlib">
-    
+
     <s:String x:Key="AppName">AutumnBox</s:String>
     <s:String x:Key="LanguageName">简体中文</s:String>
 
     <!--按钮-->
+    <s:String x:Key="btnHelp">帮助</s:String>
     <s:String x:Key="btnDpiChange">修改DPI(Deving)</s:String>
     <s:String x:Key="btnInstallApk">安装APK(Deving)</s:String>
     <s:String x:Key="btnScreenShot">截图并保存到电脑(Deving)</s:String>
@@ -64,7 +65,7 @@
     <s:String x:Key="msgShellChoiceTip">检测到您是Windows10 系统,请问您想用那种命令行界面?如果您不懂什么是Powershell,请用传统的CMD</s:String>
     <s:String x:Key="msgStartBrventTip">请确保您已经安装了最新版本黑域,并且已在手机上进入黑域软件的界面!!</s:String>
     <!--信息-->
-    
+
 
     <!--QA-->
     <s:String x:Key="LinkQuestion2">* 还是连不上?</s:String>
@@ -98,7 +99,7 @@
     <s:String x:Key="Advise">建议</s:String>
     <s:String x:Key="OutputTip">完整的输出文本,包含了最确切的信息,如果遇到错误,请将这里的输出文本复制给您要问的人</s:String>
     <!--静态界面标记-->
-    
+
     <!--设备信息标记-->
     <s:String x:Key="diSWRoot">Root</s:String>
     <s:String x:Key="diHWBattery">电量</s:String>
@@ -111,7 +112,7 @@
     <s:String x:Key="diCode">设备代号</s:String>
     <s:String x:Key="diAndroidVersion">安卓版本</s:String>
     <!--设备信息标记-->
-    
+
     <!--书签-->
     <s:String x:Key="bmMIFlash">MIUI线刷工具(Miflash)</s:String>
     <s:String x:Key="bmMIUILineFlashRom">MIUI线刷包</s:String>
@@ -123,7 +124,7 @@
     <s:String x:Key="bmGAPPS">GAPPS谷歌套件包</s:String>
     <s:String x:Key="bmABOS">AutumnBox开源代码</s:String>
     <!--书签-->
-    
+
     <!--设备状态提示-->
     <s:String x:Key="NotFoundDevices">没有找到设备</s:String>
     <s:String x:Key="PleaseSelectedADevice">请选择一个设备</s:String>
@@ -132,7 +133,7 @@
     <s:String x:Key="DeviceInFastboot">设备处于Fastboot状态</s:String>
     <s:String x:Key="DeviceInSideload">设备在sideload模式</s:String>
     <!--设备状态提示-->
-    
+
     <!--建议-->
     <s:String x:Key="errormsgBrventActivtedUnsuccess">可能导致失败的原因:您未安装黑域;打开黑域界面失败;指令过期</s:String>
     <s:String x:Key="advsBrventActivtedUnsuccess">请确保您安装了最新的黑域并至少打开了黑域界面,或您可尝试更新本工具箱</s:String>
@@ -146,7 +147,7 @@
     <s:String x:Key="Unsuccess">失败</s:String>
     <s:String x:Key="Fail">失败</s:String>
 
-    
+
     <!--关于信息-->
     <s:String x:Key="AboutMessage1">这是一个遵守GPL3.0协议的开源软件,请在必要的时候遵守开源协议</s:String>
     <s:String x:Key="AboutMessage2">开发者电子邮件 zsh2401@163.com</s:String>
@@ -154,7 +155,7 @@
     <s:String x:Key="AboutMessage_Thanks">鸣谢以下开源项目做出的卓越贡献</s:String>
     <s:String x:Key="AboutMessage_OSList">Newtonsoft.Json                         System.Data.Sqlite</s:String>
     <!--关于信息-->
-    
+
     <s:String x:Key="Menu">菜单</s:String>
     <s:String x:Key="About">关于</s:String>
     <s:String x:Key="AboutThisSoftware">关于本软件</s:String>
