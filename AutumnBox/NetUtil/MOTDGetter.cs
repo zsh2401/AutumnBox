@@ -23,7 +23,7 @@ namespace AutumnBox.NetUtil
         public string Header { get; set; }
         public string Message { get; set; }
     }
-    [NetUnitProperty(UseLocalApi = false)]
+    [NetUnitProperty(UseLocalApi = false,MustAddFininshedEventHandler = true)]
     public class MOTDGetter : NetUnitBase,INetUnit
     {
         public event Action<object, MOTDGetFinishedEventArgs> GetFinished;

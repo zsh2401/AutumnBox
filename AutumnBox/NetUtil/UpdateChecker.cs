@@ -33,18 +33,19 @@ namespace AutumnBox.NetUtil
         public DateTime Time { get; set; }
         public string GithubReleaseUrl { get; set; }
     }
-    public class UpdateChecker : INetUnit
+    [NetUnitProperty(UseLocalApi = false, MustAddFininshedEventHandler = true)]
+    public class UpdateChecker : NetUnitBase, INetUnit
     {
         public event Action<object, UpdateCheckFinishedEventArgs> CheckFinished;
-        public void Run()
+        public override void Run()
         {
             try
             {
-#if !DEBUG
-            string data = NetHelper.GetHtmlCode(ApiUrl.Update);
-#else
-                string data = File.ReadAllText(@"E:\zsh2401.github.io\softsupport\autumnbox\update\index.html");
-#endif
+                string data;
+                if (!PropertyInfo.UseLocalApi)
+                    data = NetHelper.GetHtmlCode(Urls.UPDATE_API);
+                else
+                    data = File.ReadAllText(@"E:\zsh2401.github.io\softsupport\autumnbox\update\index.html");
                 JObject j = JObject.Parse(data);
                 bool needUpdate = (
                     //当前版本小于检测到的版本
