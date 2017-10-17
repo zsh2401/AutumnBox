@@ -73,5 +73,9 @@
       <Name>AutumnBox</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="MethodTest\" />
+    <Folder Include="ObjTest\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

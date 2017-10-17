@@ -33,9 +33,10 @@ namespace AutumnBox.NetUtil
         public DateTime Time { get; set; }
         public string GithubReleaseUrl { get; set; }
     }
-    public class UpdateChecker
+    public class UpdateChecker : INetUnit
     {
-        public void Run(Action<object, UpdateCheckFinishedEventArgs> CheckFinished)
+        public event Action<object, UpdateCheckFinishedEventArgs> CheckFinished;
+        public void Run()
         {
             try
             {
@@ -45,9 +46,9 @@ namespace AutumnBox.NetUtil
                 string data = File.ReadAllText(@"E:\zsh2401.github.io\softsupport\autumnbox\update\index.html");
 #endif
                 JObject j = JObject.Parse(data);
-                bool needUpdate =
+                bool needUpdate =(
                     //当前版本小于检测到的版本
-                    (new Version(StaticData.nowVersion.version) < new Version(j["Version"].ToString())
+                    DebugInfo.NowVersion < new Version(j["Version"].ToString())
                     &&
                     //并且没有被设置跳过
                     new Version(Config.SkipVersion) != new Version(j["Version"].ToString()));

@@ -26,15 +26,11 @@ using System.Windows.Media.Imaging;
 
 namespace AutumnBox.Helper
 {
+    /// <summary>
+    /// UI帮助类,与UI相关的静态函数
+    /// </summary>
     public static class UIHelper
     {
-        public static string GetString(string key) {
-            try {
-                return App.cResources[key].ToString();
-            } catch {
-                return key;
-            }
-        }
         /// <summary>
         /// 设置一个grid下的所有button的开启与否
         /// </summary>
@@ -54,6 +50,11 @@ namespace AutumnBox.Helper
                 }
             }
         }
+        /// <summary>
+        /// 设置一个grid下的所有labels的内容
+        /// </summary>
+        /// <param name="grid"></param>
+        /// <param name="content"></param>
         public static void SetGridLabelsContent(Grid grid, object content) {
             var o = grid.Children;
             foreach (object a in o)
@@ -64,6 +65,11 @@ namespace AutumnBox.Helper
                 }
             }
         }
+        /// <summary>
+        /// 设置一个panel下的所有button的内容
+        /// </summary>
+        /// <param name="panel"></param>
+        /// <param name="status"></param>
         public static void SetPanelButtonStatus(Panel panel, bool status) {
             foreach (object o in panel.Children) {
                 if (o is Panel)
@@ -94,6 +100,11 @@ namespace AutumnBox.Helper
             }
             return bitmapImage;
         }
+        /// <summary>
+        /// DragMove
+        /// </summary>
+        /// <param name="m"></param>
+        /// <param name="e"></param>
         public static void DragMove(Window m, MouseButtonEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
@@ -101,22 +112,11 @@ namespace AutumnBox.Helper
                 m.DragMove();
             }
         }
-        //public static Window GetParentWindow(FrameworkElement frameworkElement) {
-        //    try
-        //    {
-        //        if (frameworkElement.Parent is Window)
-        //        {
-        //            return (frameworkElement.Parent as Window);
-        //        }
-        //        else
-        //        {
-        //            return GetParentWindow((frameworkElement.Parent as DependencyObject));
-        //        }
-        //    }
-        //    catch {
-        //        return null;
-        //    }
-        //}
+        /// <summary>
+        /// DragMove
+        /// </summary>
+        /// <param name="m"></param>
+        /// <param name="e"></param>
         public static void DragMove(Window m, MouseEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
@@ -124,7 +124,14 @@ namespace AutumnBox.Helper
                 m.DragMove();
             }
         }
+        /// <summary>
+        /// 一个进度窗
+        /// </summary>
         private static RateBox rateBox;
+        /// <summary>
+        /// 为了保证不同时出现多个ratebox而设计的函数
+        /// </summary>
+        /// <param name="rm"></param>
         public static void ShowRateBox(RunningManager rm=null) {
             try
             {
@@ -144,6 +151,9 @@ namespace AutumnBox.Helper
                 rateBox.ShowDialog();
             }
         }
+        /// <summary>
+        /// 关闭进度窗
+        /// </summary>
         public static void CloseRateBox() {
             try
             {

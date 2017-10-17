@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.UI
 {
-    public interface IRefreshable
+    public interface IDeviceInfoRefreshable
     {
-        Action<object> RefreshStart { get; set; }
-        Action<object> RefreshFinished { get; set; }
-        void Refresh();
+        event EventHandler RefreshStart;
+        event EventHandler RefreshFinished;
+        void SetDefault();
         void Refresh(DeviceSimpleInfo deviceSimpleInfo);
     }
 }

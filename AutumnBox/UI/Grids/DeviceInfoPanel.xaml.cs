@@ -24,22 +24,23 @@ namespace AutumnBox.UI.Grids
     /// <summary>
     /// DeviceInfoPanel.xaml 的交互逻辑
     /// </summary>
-    public partial class DeviceInfoPanel : UserControl, IRefreshable
+    public partial class DeviceInfoPanel : UserControl, IDeviceInfoRefreshable
     {
-        Action<Bitmap, string> SetDevInfoImgAndText;
-        public Action<object> RefreshStart { get; set; }
-        public Action<object> RefreshFinished { get; set; }
+        static Action<Bitmap, string> _SetStatusPanel;
 
         public DeviceInfoPanel()
         {
             InitializeComponent();
-            SetDevInfoImgAndText = (bitmap, key) =>
+            _SetStatusPanel = (bitmap, key) =>
             {
                 this.DeviceStatusImage.Source = UIHelper.BitmapToBitmapImage(bitmap);
                 this.DeviceStatusLabel.Content = App.Current.Resources[key].ToString();
             };
         }
-        public void Refresh() {
+        public event EventHandler RefreshStart;
+        public event EventHandler RefreshFinished;
+        public void Refresh()
+        {
             Refresh(App.SelectedDevice);
         }
         public void Refresh(DeviceSimpleInfo devSimpleInfo)
@@ -53,16 +54,17 @@ namespace AutumnBox.UI.Grids
                 SetDefault();
             }
         }
-        private void SetDefault()
+        public void SetDefault()
         {
             this.Dispatcher.Invoke(() =>
             {
                 UIHelper.SetGridLabelsContent(GridBuildInfo, App.Current.Resources["PleaseSelectedADevice"]);
                 UIHelper.SetGridLabelsContent(GridHardwareInfo, "....");
                 UIHelper.SetGridLabelsContent(GridMemoryInfo, "....");
-                SetDevInfoImgAndText(Res.DynamicIcons.no_selected, "PleaseSelectedADevice");
+                _SetStatusPanel(Res.DynamicIcons.no_selected, "PleaseSelectedADevice");
             });
         }
+
         private void SetByDeviceSimpleInfo(DeviceSimpleInfo devSimpleInfo)
         {
             new Thread(() =>
@@ -84,25 +86,24 @@ namespace AutumnBox.UI.Grids
                     switch (App.SelectedDevice.Status)
                     {
                         case DeviceStatus.FASTBOOT:
-                            SetDevInfoImgAndText(Res.DynamicIcons.fastboot, "DeviceInFastboot");
+                            _SetStatusPanel(Res.DynamicIcons.fastboot, "DeviceInFastboot");
                             break;
                         case DeviceStatus.RECOVERY:
-                            SetDevInfoImgAndText(Res.DynamicIcons.recovery, "DeviceInRecovery");
+                            _SetStatusPanel(Res.DynamicIcons.recovery, "DeviceInRecovery");
                             break;
                         case DeviceStatus.RUNNING:
-                            SetDevInfoImgAndText(Res.DynamicIcons.poweron, "DeviceInRunning");
+                            _SetStatusPanel(Res.DynamicIcons.poweron, "DeviceInRunning");
                             break;
                         case DeviceStatus.SIDELOAD:
-                            SetDevInfoImgAndText(Res.DynamicIcons.recovery, "DeviceInSideload");
+                            _SetStatusPanel(Res.DynamicIcons.recovery, "DeviceInSideload");
                             break;
                     }
                 });
-                RefreshFinished?.Invoke(this);
+                RefreshFinished?.Invoke(this, new EventArgs());
             })
             { Name = "Refreshing" }.Start();
-            RefreshStart?.Invoke(this);
+            RefreshStart?.Invoke(this, new EventArgs());
         }
-
         private void GridClick(object sender, MouseButtonEventArgs e)
         {
             Refresh(App.SelectedDevice);

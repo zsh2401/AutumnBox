@@ -23,6 +23,9 @@ using System.Windows.Interop;
 
 namespace AutumnBox.Helper
 {
+    /// <summary>
+    /// 窗体透明帮助类,来自开源代码
+    /// </summary>
     class BlurHelper
     {
         internal enum AccentState
@@ -66,8 +69,6 @@ namespace AutumnBox.Helper
             {
                 AccentState = AccentState.ACCENT_ENABLE_BLURBEHIND,
                 AccentFlags = 0x20 | 0x40 | 0x80 | 0x100,
-                //GradientColor = 0x000000FF,
-                //AnimationId = 
             };
             var accentStructSize = Marshal.SizeOf(accent);
 

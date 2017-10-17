@@ -72,9 +72,7 @@
   <PropertyGroup>
     <TargetZone>LocalIntranet</TargetZone>
   </PropertyGroup>
-  <PropertyGroup>
-    <ApplicationManifest>app.manifest</ApplicationManifest>
-  </PropertyGroup>
+  <PropertyGroup />
   <PropertyGroup>
     <SignManifests>true</SignManifests>
   </PropertyGroup>
@@ -119,10 +117,13 @@
     <Compile Include="Helper\BlurHelper.cs" />
     <Compile Include="Helper\SystemHelper.cs" />
     <Compile Include="Helper\UIHelper.cs" />
-    <Compile Include="NetUtil\ApiUrl.cs" />
+    <Compile Include="NetUtil\INetUnit.cs" />
+    <Compile Include="NetUtil\Urls.cs" />
     <Compile Include="NetUtil\MOTDGetter.cs" />
+    <Compile Include="NetUtil\NetUnitBase.cs" />
+    <Compile Include="NetUtil\NetUnitPropertyAttribute.cs" />
+    <Compile Include="NetUtil\Reporter.cs" />
     <Compile Include="NetUtil\UpdateChecker.cs" />
-    <Compile Include="StaticData.cs" />
     <Compile Include="UI\Cstm\BookMarksControl.xaml.cs">
       <DependentUpon>BookMarksControl.xaml</DependentUpon>
     </Compile>
@@ -165,12 +166,12 @@
     <Compile Include="Windows\FileSendingWindow.xaml.cs">
       <DependentUpon>FileSendingWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\IRefreshable.cs" />
+    <Compile Include="UI\IDeviceInfoRefreshable.cs" />
     <Compile Include="Windows\LinkHelpWindow.xaml.cs">
       <DependentUpon>LinkHelpWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="StartWindow\StartWindow._BtnClickHandler.cs" />
-    <Compile Include="StartWindow\StartWindow._FuncEventHandler.cs" />
+    <Compile Include="StartWindow\StartWindow.FuncModuleEventHandler.cs" />
     <Compile Include="StartWindow\StartWindow.xaml.cs">
       <DependentUpon>StartWindow.xaml</DependentUpon>
     </Compile>
@@ -203,10 +204,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="app.manifest">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="AutumnBox_TemporaryKey.pfx" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

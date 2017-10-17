@@ -13,6 +13,7 @@
 \* =============================================================================*/
 using AutumnBox.Basic.Devices;
 using AutumnBox.Basic.Executer;
+using AutumnBox.Helper;
 using AutumnBox.Util;
 using System;
 using System.Threading;
@@ -33,7 +34,7 @@ namespace AutumnBox
         protected override void OnStartup(StartupEventArgs e)
         {
             Logger.T(this, "OnStartup");
-            new Thread(AutoGC) { Name = "Auto GC..." }.Start();
+            SystemHelper.StartAutoGC();
             base.OnStartup(e);
         }
         protected override void OnExit(ExitEventArgs e)
@@ -44,34 +45,5 @@ namespace AutumnBox
             Environment.Exit(0);
             base.OnExit(e);
         }
-        protected override void OnLoadCompleted(NavigationEventArgs e)
-        {
-            base.OnLoadCompleted(e);
-        }
-        /// <summary>
-        /// 无限循环的内存回收方法
-        /// </summary>
-        private void AutoGC()
-        {
-            while (true)
-            {
-                ClearMemory();
-                Thread.Sleep(1000);
-            }
-        }
-        #region 内存回收 http://www.cnblogs.com/xcsn/p/4678322.html
-        /// <summary>
-        /// 释放内存
-        /// </summary>
-        public static void ClearMemory()
-        {
-            GC.Collect();
-            GC.WaitForPendingFinalizers();
-            if (Environment.OSVersion.Platform == PlatformID.Win32NT)
-            {
-               NativeMethods.SetProcessWorkingSetSize(System.Diagnostics.Process.GetCurrentProcess().Handle, -1, -1);
-            }
-        }
-        #endregion
     }
 }

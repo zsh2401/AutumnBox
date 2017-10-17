@@ -12,16 +12,12 @@
 *
 \* =============================================================================*/
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace AutumnBox.Helper
 {
     /// <summary>
-    /// 待完成
+    /// 界面的语言切换帮助类
     /// </summary>
     public static class LanguageHelper
     {
@@ -31,6 +27,10 @@ namespace AutumnBox.Helper
             en_US,
         }
         public static LanguageType CurrentLanguage { get; private set; }
+        /// <summary>
+        /// 变更语言
+        /// </summary>
+        /// <param name="lang"></param>
         public static void ChangeLanuage(LanguageType lang)
         {
             throw new NotImplementedException();

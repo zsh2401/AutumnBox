@@ -26,9 +26,13 @@ namespace AutumnBox
 {
     public partial class StartWindow
     {
-        bool IsNightMode { get {
+        bool IsNightMode
+        {
+            get
+            {
                 return App.Current.Resources["ThemeName"].ToString() == "Night";
-            } }
+            }
+        }
         private void ButtonLinkHelp_Click(object sender, RoutedEventArgs e)
         {
             new LinkHelpWindow().Show();

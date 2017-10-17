@@ -22,12 +22,13 @@ namespace AutumnBox
 {
     internal static class DebugInfo
     {
-        public static readonly bool USE_LOCAL_API = true;
-        public static readonly bool USE_EN =
-#if USE_EN
-            true;
-#else
-            false;
-#endif
+        public static readonly DateTime CompiledDate = new DateTime(2017, 10, 17);
+        public static Version NowVersion
+        {
+            get
+            {
+                return System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
+            }
+        }
     }
 }

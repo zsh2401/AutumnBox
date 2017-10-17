@@ -16,6 +16,8 @@ using System;
 using System.Diagnostics;
 using AutumnBox.Basic.Executer;
 using AutumnBox.Basic.Function.Event;
+using AutumnBox.Helper;
+using AutumnBox.NetUtil;
 
 namespace Tester
 {
@@ -30,9 +32,7 @@ namespace Tester
         }
         public void _Run()
         {
-            Print(new Command("devices").ToString());
-            //Print(new CommandExecuter().AdbExecute("devices"));
-            //Print(new Command(Program.mi6ID, "shell \"cat /system/build.prop | grep \"product.name\"\"").ToString());
+            //var o = MOTDGetter.t.init
         }
         public void Print(object message)
         {

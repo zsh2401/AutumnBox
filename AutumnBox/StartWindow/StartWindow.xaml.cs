@@ -35,16 +35,16 @@ namespace AutumnBox
     public partial class StartWindow : Window
     {
         string TAG = "MainWindow";
+        private Object setUILock = new System.Object();
         public StartWindow()
         {
             Logger.InitLogFile();
             Logger.D(TAG, "Log Init Finish,Start Init Window");
             InitializeComponent();
             App.DevicesListener.DevicesChanged += DevicesChanged;
-            Logger.D(TAG, "Start customInit");
             TitleBar.OwnerWindow = this;
             TitleBar.ImgMin.Visibility = Visibility.Visible;
-            DevInfoPanel.RefreshStart += (s) =>
+            DevInfoPanel.RefreshStart += (s, e) =>
             {
                 this.Dispatcher.Invoke(() =>
                 {
@@ -52,15 +52,17 @@ namespace AutumnBox
                     UIHelper.ShowRateBox();
                 });
             };
-            DevInfoPanel.RefreshFinished += (s) => {
-                this.Dispatcher.Invoke(() => {
+            DevInfoPanel.RefreshFinished += (s, e) =>
+            {
+                this.Dispatcher.Invoke(() =>
+                {
                     Logger.D(this, "RefreshFinished..");
                     UIHelper.CloseRateBox();
                 });
             };
 #if DEBUG
-            AboutControl.LabelVersion.Content = StaticData.nowVersion.version + "-Debug";
-            TitleBar.Title.Content += "  " + StaticData.nowVersion.version + "-Debug";
+            AboutControl.LabelVersion.Content = DebugInfo.NowVersion + "-Debug";
+            TitleBar.Title.Content += "  " + DebugInfo.NowVersion + "-Debug";
 #else
             LabelVersion.Content = StaticData.nowVersion.version + "-Release";
             TitleBar.Title.Content += "  " + StaticData.nowVersion.version + "-Release";
@@ -98,11 +100,9 @@ namespace AutumnBox
                 MMessageBox.ShowDialog(FindResource("Notice2").ToString(), App.Current.Resources["msgFristLaunchNotice"].ToString());
                 Config.IsFirstLaunch = false;
             }
-            //BlurHelper.EnableBlur(this);
             GetNotice();//开始获取公告
             UpdateCheck();//更新检测
             InitWebPage();//初始化浏览器
-
         }
         /// <summary>
         /// 当窗口关闭时发生
@@ -116,7 +116,6 @@ namespace AutumnBox
             Basic.Executer.CommandExecuter.Kill();
             Environment.Exit(0);
         }
-        private Object setUILock = new System.Object();
         /// <summary>
         /// 根据当前选中的设备刷新界面信息
         /// </summary>
@@ -125,7 +124,6 @@ namespace AutumnBox
             lock (setUILock)
             {
                 SetButtons();
-                Logger.D(this, "Refreshing..");
                 DevInfoPanel.Refresh(App.SelectedDevice);
             }
         }
@@ -189,20 +187,26 @@ namespace AutumnBox
         /// </summary>
         void GetNotice()
         {
-            new MOTDGetter().Run((s, e) =>
+            var getter = new MOTDGetter();
+            getter.GetFinished += (s, e) =>
             {
-                textBoxGG.Dispatcher.Invoke(() =>
+                Dispatcher.Invoke(() =>
                 {
-                    textBoxGG.Text = e.Header + " : " + e.Message;
+                    textBoxGG.Dispatcher.Invoke(() =>
+                    {
+                        textBoxGG.Text = e.Header + " : " + e.Message;
+                    });
                 });
-            });
+            };
+            getter.Run();
         }
         /// <summary>
         /// 更新检测
         /// </summary>
         void UpdateCheck()
         {
-            new UpdateChecker().Run((s, e) =>
+            var checker = new UpdateChecker();
+            checker.CheckFinished += (s, e) =>
             {
                 if (e.NeedUpdate)
                 {
@@ -211,16 +215,14 @@ namespace AutumnBox
                         new UpdateNoticeWindow(e).ShowDialog();
                     });
                 }
-            });
+            };
         }
         /// <summary>
         /// 初始化帮助网页
         /// </summary>
         void InitWebPage()
         {
-            webFlashHelper.Navigate(HelpUrl.flashhelp);
-            webSaveDevice.Navigate(HelpUrl.savedevice);
-            webFlashRecHelp.Navigate(HelpUrl.flashrecovery);
+            webFlashHelper.Navigate(Urls.HELP_PAGE);
         }
     }
 }

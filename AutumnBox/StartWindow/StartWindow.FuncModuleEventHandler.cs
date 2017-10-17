@@ -13,7 +13,6 @@
 \* =============================================================================*/
 namespace AutumnBox
 {
-    using AutumnBox.UI;
     using System;
     using System.Windows;
     using AutumnBox.Util;

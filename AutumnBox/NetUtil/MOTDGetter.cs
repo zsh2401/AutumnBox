@@ -14,8 +14,8 @@
 using AutumnBox.SharedTools;
 using Newtonsoft.Json.Linq;
 using System;
+using System.Collections;
 using System.IO;
-
 namespace AutumnBox.NetUtil
 {
     public class MOTDGetFinishedEventArgs : EventArgs
@@ -23,23 +23,24 @@ namespace AutumnBox.NetUtil
         public string Header { get; set; }
         public string Message { get; set; }
     }
-    public class MOTDGetter
+    [NetUnitProperty(UseLocalApi = false)]
+    public class MOTDGetter : NetUnitBase,INetUnit
     {
-        public void Run(Action<object, MOTDGetFinishedEventArgs> GetFinished)
+        public event Action<object, MOTDGetFinishedEventArgs> GetFinished;
+        public override void Run()
         {
+            new Hashtable()["fuck"] = null;
             try
             {
-#if !DEBUG
-                JObject o = JObject.Parse(NetHelper.GetHtmlCode(ApiUrl.MOTD));
-#else
-                JObject o = JObject.Parse(File.ReadAllText(@"E:\zsh2401.github.io\softsupport\autumnbox\motd\index.html"));
-#endif
+                JObject o;
+                if (PropertyInfo.UseLocalApi) o = JObject.Parse(NetHelper.GetHtmlCode(Urls.MOTD_API));
+                else o = JObject.Parse(File.ReadAllText(@"E:\zsh2401.github.io\softsupport\autumnbox\motd\index.html"));
                 MOTDGetFinishedEventArgs e = new MOTDGetFinishedEventArgs
                 {
                     Header = o["header"].ToString(),
                     Message = o["message"].ToString()
                 };
-                GetFinished(this, e);
+                GetFinished?.Invoke(this, e);
             }
             catch (Exception e)
             {
