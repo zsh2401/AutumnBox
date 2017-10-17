@@ -102,7 +102,6 @@ namespace AutumnBox
             }
             GetNotice();//开始获取公告
             UpdateCheck();//更新检测
-            InitWebPage();//初始化浏览器
         }
         /// <summary>
         /// 当窗口关闭时发生
@@ -181,13 +180,6 @@ namespace AutumnBox
                     });
                 }
             };
-        }
-        /// <summary>
-        /// 初始化帮助网页
-        /// </summary>
-        void InitWebPage()
-        {
-            webFlashHelper.Navigate(Urls.HELP_PAGE);
         }
     }
 }
