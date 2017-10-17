@@ -11,7 +11,7 @@
 * Company: I am free man
 *
 \* =============================================================================*/
-namespace AutumnBox.Basic.Function.RunningManager
+namespace AutumnBox.Basic.Function
 {
     using AutumnBox.Basic.Executer;
     using AutumnBox.Basic.Util;

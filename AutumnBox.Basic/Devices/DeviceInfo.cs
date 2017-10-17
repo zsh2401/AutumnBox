@@ -12,9 +12,6 @@
 *
 \* =============================================================================*/
 using AutumnBox.Basic.Function;
-using AutumnBox.Basic.Function.RunningManager;
-using System;
-
 namespace AutumnBox.Basic.Devices
 {
     /// <summary>

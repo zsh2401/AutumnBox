@@ -58,7 +58,7 @@
 // #/*]     ]<.    [-]<[-]<[- ]<[    -]<               [-  ]<;*/elif  e    //b
 // |(1        <<     ( __LINE__        /*               >>   `*//45))  |     01U
 //            #                       /*               */     endif            //
-namespace AutumnBox.Basic.Function.RunningManager
+namespace AutumnBox.Basic.Function
 {
     using AutumnBox.Basic.Devices;
     using AutumnBox.Basic.Util;
