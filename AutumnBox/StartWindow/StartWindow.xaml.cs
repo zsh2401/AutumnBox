@@ -12,21 +12,15 @@
 *
 \* =============================================================================*/
 using AutumnBox.Basic.Devices;
-using AutumnBox.Basic.Function;
-using AutumnBox.Basic.Function.Args;
-using AutumnBox.Basic.Function.Modules;
-using AutumnBox.Basic.Function.RunningManager;
 using AutumnBox.Helper;
 using AutumnBox.NetUtil;
 using AutumnBox.UI;
 using AutumnBox.Util;
 using AutumnBox.Windows;
-using Microsoft.Win32;
 using System;
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
-using static AutumnBox.Helper.UIHelper;
 namespace AutumnBox
 {
     /// <summary>

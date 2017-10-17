@@ -12,13 +12,9 @@
 *
 \* =============================================================================*/
 using AutumnBox.Basic.Function;
-using AutumnBox.Basic.Function.RunningManager;
 using AutumnBox.Helper;
-using System;
-using System.Drawing;
 using System.Windows;
 using System.Windows.Input;
-using System.Windows.Media.Imaging;
 
 namespace AutumnBox.UI
 {

@@ -11,13 +11,8 @@
 * Company: I am free man
 *
 \* =============================================================================*/
-using AutumnBox.Basic.Function;
-using AutumnBox.Basic.Function.Args;
-using AutumnBox.Basic.Function.Modules;
-using AutumnBox.Basic.Function.RunningManager;
 using AutumnBox.Helper;
 using AutumnBox.Windows;
-using Microsoft.Win32;
 using System;
 using System.Diagnostics;
 using System.Windows;

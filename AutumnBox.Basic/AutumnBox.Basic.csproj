@@ -55,8 +55,8 @@
     <Compile Include="Executer\IOutSender.cs" />
     <Compile Include="Executer\Events.cs" />
     <Compile Include="Function\Args\FMArgs.cs" />
-    <Compile Include="Function\RunningManager\RunningManagerStatus.cs" />
-    <Compile Include="Function\RunningManager\FuncEventsContainer.cs" />
+    <Compile Include="Function\RunningManagerStatus.cs" />
+    <Compile Include="Function\FuncEventsContainer.cs" />
     <Compile Include="DebugInfo.cs" />
     <Compile Include="Util\Interface\IDevicesChangedListener.cs" />
     <Compile Include="Util\Interface\IDevicesGetter.cs" />
@@ -75,7 +75,7 @@
     <Compile Include="Devices\DeviceStatus.cs" />
     <Compile Include="Devices\DevicesHelper.cs" />
     <Compile Include="Executer\IOutReceiver.cs" />
-    <Compile Include="Function\RunningManager\RunningManager.cs" />
+    <Compile Include="Function\RunningManager.cs" />
     <Compile Include="Function\Modules\CustomRecoveryFlasher.cs" />
     <Compile Include="Function\Modules\FileSender.cs" />
     <Compile Include="Function\Event\EventsHandlers.cs" />
