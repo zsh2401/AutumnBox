@@ -17,7 +17,7 @@ using System.Diagnostics;
 using System.Management;
 using System.Text;
 
-namespace AutumnBox.SharedTools
+namespace AutumnBox.Shared
 {
     public static class SystemHelper
     {

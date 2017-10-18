@@ -62,7 +62,7 @@ namespace AutumnBox.Basic.Function
 {
     using AutumnBox.Basic.Devices;
     using AutumnBox.Basic.Util;
-    using AutumnBox.SharedTools;
+    using AutumnBox.Shared;
     using System;
     using static Basic.Debug;
     /// <summary>
@@ -129,7 +129,7 @@ namespace AutumnBox.Basic.Function
         /// <param name="info"></param>
         /// <param name="fm"></param>
         /// <returns></returns>
-        public static RunningManager Create(DeviceSimpleInfo info, FunctionModule fm)
+        public static RunningManager Create(DeviceBasicInfo info, FunctionModule fm)
         {
             fm.DevSimpleInfo = info;
             return new RunningManager(fm);

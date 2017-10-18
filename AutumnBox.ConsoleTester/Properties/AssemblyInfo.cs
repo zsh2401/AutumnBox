@@ -1,28 +1,15 @@
-/* =============================================================================*\
-*
-* Filename: AssemblyInfo.cs
-* Description: 
-*
-* Version: 1.0
-* Created: 8/1/2017 07:43:40(UTC+8:00)
-* Compiler: Visual Studio 2017
-* 
-* Author: zsh2401
-* Company: I am free man
-*
-\* =============================================================================*/
-using System.Reflection;
+﻿using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // 有关程序集的一般信息由以下
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("Tester")]
+[assembly: AssemblyTitle("AutumnBox.ConsoleTester")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Tester")]
+[assembly: AssemblyProduct("AutumnBox.ConsoleTester")]
 [assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -33,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // 如果此项目向 COM 公开，则下列 GUID 用于类型库的 ID
-[assembly: Guid("c7c85d28-289a-4346-8cb6-c1b8226b2292")]
+[assembly: Guid("ab494016-2d55-4e67-90a7-bc9ae44c4892")]
 
 // 程序集的版本信息由下列四个值组成: 
 //

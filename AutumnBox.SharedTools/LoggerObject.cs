@@ -17,7 +17,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Text;
 
-namespace AutumnBox.SharedTools
+namespace AutumnBox.Shared
 {
     public sealed class LoggerObject
     {

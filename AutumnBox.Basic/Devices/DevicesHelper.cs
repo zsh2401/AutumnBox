@@ -54,9 +54,9 @@ namespace AutumnBox.Basic.Devices
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public static DeviceAdvanceInfo GetDeviceAdvanceInfo(string id)
+        public static DeviceHardwareInfo GetDeviceAdvanceInfo(string id)
         {
-            DeviceAdvanceInfo info = new DeviceAdvanceInfo();
+            DeviceHardwareInfo info = new DeviceHardwareInfo();
             info.ID = id;
             try
             {
@@ -109,7 +109,6 @@ namespace AutumnBox.Basic.Devices
                 info.BatteryLevel = Convert.ToInt32(output.Split(':')[1].TrimStart());
             }
             catch (Exception e) { Logger.T(TAG, "Get Battery info fail", e); }
-            info.IsRoot = CheckRoot(id);
             return info;
         }
         /// <summary>
@@ -166,10 +165,10 @@ namespace AutumnBox.Basic.Devices
         /// </summary>
         /// <param name="id">设备的id</param>
         /// <returns>设备信息</returns>
-        public static DeviceInfo GetDeviceInfo(string id)
+        public static DeviceBuildInfo GetDeviceInfo(string id)
         {
             Hashtable ht = GetBuildInfo(id);
-            return new DeviceInfo
+            return new DeviceBuildInfo
             {
                 Brand = ht["brand"].ToString(),
                 Code = ht["name"].ToString(),
@@ -184,10 +183,10 @@ namespace AutumnBox.Basic.Devices
         /// </summary>
         /// <param name="id">设备的id</param>
         /// <returns>设备信息</returns>
-        public static DeviceInfo GetDeviceInfo(DeviceSimpleInfo info)
+        public static DeviceBuildInfo GetDeviceInfo(DeviceBasicInfo info)
         {
             var buildInfo = GetBuildInfo(info.Id);
-            return new DeviceInfo
+            return new DeviceBuildInfo
             {
                 Brand = buildInfo["brand"].ToString(),
                 Code = buildInfo["name"].ToString(),
@@ -197,7 +196,6 @@ namespace AutumnBox.Basic.Devices
                 Id = info.Id,
             };
         }
-
         /// <summary>
         /// 获取设备的build信息
         /// </summary>

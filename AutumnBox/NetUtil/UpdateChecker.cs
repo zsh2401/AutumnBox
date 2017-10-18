@@ -11,7 +11,7 @@
 * Company: I am free man
 *
 \* =============================================================================*/
-using AutumnBox.SharedTools;
+using AutumnBox.Shared;
 using AutumnBox.Util;
 using Newtonsoft.Json.Linq;
 using System;
@@ -34,7 +34,7 @@ namespace AutumnBox.NetUtil
         public string GithubReleaseUrl { get; set; }
     }
     [NetUnitProperty(UseLocalApi = false, MustAddFininshedEventHandler = true)]
-    public class UpdateChecker : NetUnitBase, INetUnit
+    public class UpdateChecker : NetUnitBase, INetUtil
     {
         public event Action<object, UpdateCheckFinishedEventArgs> CheckFinished;
         public override void Run()

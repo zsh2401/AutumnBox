@@ -105,7 +105,7 @@ namespace AutumnBox.Basic.Function
         /// <summary>
         /// 绑定的设备简单信息
         /// </summary>s
-        protected internal DeviceSimpleInfo DevSimpleInfo { get; set; }
+        protected internal DeviceBasicInfo DevSimpleInfo { get; set; }
         #endregion
         /// <summary>
         /// 判断完成事件是否被绑定
@@ -135,7 +135,7 @@ namespace AutumnBox.Basic.Function
         /// 构造
         /// </summary>
         /// <param name="info"></param>
-        protected FunctionModule(DeviceSimpleInfo info) : this()
+        protected FunctionModule(DeviceBasicInfo info) : this()
         {
             DevSimpleInfo = info;
         }

@@ -39,7 +39,7 @@ namespace AutumnBox.UI.Grids
             buttonRebootToSystem.IsEnabled = false;
         }
 
-        public void Refresh(DeviceSimpleInfo deviceSimpleInfo)
+        public void Refresh(DeviceBasicInfo deviceSimpleInfo)
         {
             this.Dispatcher.Invoke(() =>
             {

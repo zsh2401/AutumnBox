@@ -14,7 +14,7 @@
 using AutumnBox.Basic.Devices;
 using AutumnBox.Basic.Executer;
 using AutumnBox.Helper;
-using AutumnBox.SharedTools;
+using AutumnBox.Shared;
 using AutumnBox.Util;
 using System;
 using System.Threading;
@@ -29,7 +29,7 @@ namespace AutumnBox
     public partial class App : Application
     {
         internal static StartWindow OwnerWindow { get { return (Current.MainWindow as StartWindow); } }
-        internal static DeviceSimpleInfo SelectedDevice = new DeviceSimpleInfo() { Status = DeviceStatus.NO_DEVICE };
+        internal static DeviceBasicInfo SelectedDevice = new DeviceBasicInfo() { Status = DeviceStatus.NO_DEVICE };
         internal static DevicesMonitor DevicesListener = new DevicesMonitor();//设备监听器
         internal static LoggerObject Logger = new LoggerObject("atmb.log");
         public static void LogD(object tag, string msg, Exception e = null)

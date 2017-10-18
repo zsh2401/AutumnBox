@@ -43,7 +43,7 @@ namespace AutumnBox.UI.Grids
         {
             Refresh(App.SelectedDevice);
         }
-        public void Refresh(DeviceSimpleInfo devSimpleInfo)
+        public void Refresh(DeviceBasicInfo devSimpleInfo)
         {
             if (devSimpleInfo.Status == DeviceStatus.RUNNING || devSimpleInfo.Status == DeviceStatus.RECOVERY)
             {
@@ -65,12 +65,13 @@ namespace AutumnBox.UI.Grids
             });
         }
 
-        private void SetByDeviceSimpleInfo(DeviceSimpleInfo devSimpleInfo)
+        private void SetByDeviceSimpleInfo(DeviceBasicInfo devSimpleInfo)
         {
             new Thread(() =>
             {
                 var simpleInfo = DevicesHelper.GetDeviceInfo(devSimpleInfo.Id);
                 var advInfo = DevicesHelper.GetDeviceAdvanceInfo(devSimpleInfo.Id);
+                bool IsRoot = DevicesHelper.CheckRoot(devSimpleInfo.Id);
                 this.Dispatcher.Invoke(() =>
                 {
                     LabelRom.Content = (advInfo.StorageTotal != null) ? advInfo.StorageTotal + "GB" : App.Current.Resources["GetFail"].ToString();
@@ -79,7 +80,7 @@ namespace AutumnBox.UI.Grids
                     LabelSOC.Content = advInfo.SOCInfo ?? App.Current.Resources["GetFail"].ToString();
                     LabelScreen.Content = advInfo.ScreenInfo ?? App.Current.Resources["GetFail"].ToString();
                     LabelFlashMemInfo.Content = advInfo.FlashMemoryType ?? App.Current.Resources["GetFail"].ToString();
-                    LabelRootStatus.Content = (advInfo.IsRoot) ? App.Current.Resources["RootEnable"].ToString() : App.Current.Resources["RootDisable"].ToString();
+                    LabelRootStatus.Content = IsRoot ? App.Current.Resources["RootEnable"].ToString() : App.Current.Resources["RootDisable"].ToString();
                     LabelAndroidVersion.Content = simpleInfo.AndroidVersion;
                     LabelModel.Content = simpleInfo.M;
                     LabelCode.Content = simpleInfo.Code;

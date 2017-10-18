@@ -131,11 +131,11 @@ namespace AutumnBox
         {
             if (this.DevicesListBox.SelectedIndex != -1)//如果选择了设备
             {
-                App.SelectedDevice = ((DeviceSimpleInfo)DevicesListBox.SelectedItem);
+                App.SelectedDevice = ((DeviceBasicInfo)DevicesListBox.SelectedItem);
             }
             else if (this.DevicesListBox.SelectedIndex == -1)
             {
-                App.SelectedDevice = new DeviceSimpleInfo() { Status = DeviceStatus.NO_DEVICE };
+                App.SelectedDevice = new DeviceBasicInfo() { Status = DeviceStatus.NO_DEVICE };
             }
             RefreshUI();
         }

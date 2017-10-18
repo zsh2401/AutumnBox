@@ -6,11 +6,11 @@
     <SharedGUID>4a7c7d40-e258-4e50-b141-f4e437982e23</SharedGUID>
   </PropertyGroup>
   <PropertyGroup Label="Configuration">
-    <Import_RootNamespace>AutumnBox.SharedTools</Import_RootNamespace>
+    <Import_RootNamespace>AutumnBox.Shared</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)LoggerObject.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)LogHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)NativeMethods.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)NetHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SystemHelper.cs" />
   </ItemGroup>

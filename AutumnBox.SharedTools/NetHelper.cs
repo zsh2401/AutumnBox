@@ -11,7 +11,7 @@
 * Company: I am free man
 *
 \* =============================================================================*/
-namespace AutumnBox.SharedTools
+namespace AutumnBox.Shared
 {
     using System.IO;
     using System.Net;

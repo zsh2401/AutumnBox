@@ -46,8 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Devices\DeviceAdvanceInfo.cs" />
+    <Compile Include="Devices\DeviceHardwareInfo.cs" />
     <Compile Include="Devices\DevicesGetter.cs" />
+    <Compile Include="Devices\DeviceBasicInfo.cs" />
     <Compile Include="Executer\CommandExecuter\CommandExecuter.cs" />
     <Compile Include="Executer\CommandExecuter\CommandExecuter.Static.cs" />
     <Compile Include="Executer\CommandExecuter\CommandExecuter.ExeFunc.cs" />
@@ -69,8 +70,7 @@
     <Compile Include="Function\ExecuteResult.cs" />
     <Compile Include="Executer\Command.cs" />
     <Compile Include="Function\FunctionModule.cs" />
-    <Compile Include="Devices\DeviceLink.cs" />
-    <Compile Include="Devices\DeviceInfo.cs" />
+    <Compile Include="Devices\DeviceBuildInfo.cs" />
     <Compile Include="Devices\DevicesMonitor.cs" />
     <Compile Include="Devices\DeviceStatus.cs" />
     <Compile Include="Devices\DevicesHelper.cs" />

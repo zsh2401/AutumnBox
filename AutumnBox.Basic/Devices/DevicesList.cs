@@ -19,7 +19,7 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Devices
 {
-    public class DevicesList : List<DeviceSimpleInfo>
+    public class DevicesList : List<DeviceBasicInfo>
     {
         public static DevicesList operator +(DevicesList left, DevicesList right)
         {

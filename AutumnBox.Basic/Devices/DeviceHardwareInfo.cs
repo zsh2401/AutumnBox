@@ -19,7 +19,7 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Devices
 {
-    public struct DeviceAdvanceInfo
+    public struct DeviceHardwareInfo
     {
         public string ID { get; set; } 
         public string ScreenInfo { get; set; } 
@@ -28,6 +28,5 @@ namespace AutumnBox.Basic.Devices
         public int? StorageTotal { get; set; } 
         public string FlashMemoryType { get; set; } 
         public string SOCInfo { get; set; }
-        public bool IsRoot { get; set; }
     }
 }

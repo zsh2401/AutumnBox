@@ -42,7 +42,7 @@ namespace AutumnBox.Basic.Devices
             for (int i = 1; i < l.Count - 1; i++)
             {
                 devList.Add(
-                    new DeviceSimpleInfo
+                    new DeviceBasicInfo
                     {
                         Id = l[i].Split('\t')[0],
                         Status = DevicesHelper.StringStatusToEnumStatus(l[i].Split('\t')[1])
@@ -57,7 +57,7 @@ namespace AutumnBox.Basic.Devices
                 try
                 {
                     devList.Add(
-                    new DeviceSimpleInfo
+                    new DeviceBasicInfo
                     {
                         Id = l[i].Split('\t')[0],
                         Status = DevicesHelper.StringStatusToEnumStatus(l[i].Split('\t')[1])

@@ -11,7 +11,7 @@
 * Company: I am free man
 *
 \* =============================================================================*/
-using AutumnBox.SharedTools;
+using AutumnBox.Shared;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections;
@@ -24,7 +24,7 @@ namespace AutumnBox.NetUtil
         public string Message { get; set; }
     }
     [NetUnitProperty(UseLocalApi = false,MustAddFininshedEventHandler = true)]
-    public class MOTDGetter : NetUnitBase,INetUnit
+    public class MOTDGetter : NetUnitBase,INetUtil
     {
         public event Action<object, MOTDGetFinishedEventArgs> GetFinished;
         public override void Run()

@@ -42,7 +42,7 @@ namespace AutumnBox.Basic.Executer
         /// <returns></returns>
         public OutputData AdbExecute(string devId, string command)
         {
-            return Execute(new Command(new DeviceSimpleInfo() { Id = devId }, command));
+            return Execute(new Command(new DeviceBasicInfo() { Id = devId }, command));
         }
         /// <summary>
         /// 执行fastboot命令
@@ -61,7 +61,7 @@ namespace AutumnBox.Basic.Executer
         /// <returns></returns>
         public OutputData FastbootExecute(string devId, string command)
         {
-            return Execute(new Command(new DeviceSimpleInfo() { Id = devId }, command, ExeType.Fastboot));
+            return Execute(new Command(new DeviceBasicInfo() { Id = devId }, command, ExeType.Fastboot));
         }
     }
 }

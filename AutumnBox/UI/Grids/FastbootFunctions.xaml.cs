@@ -34,7 +34,7 @@ namespace AutumnBox.UI.Grids
         public event EventHandler RefreshStart;
         public event EventHandler RefreshFinished;
 
-        public void Refresh(DeviceSimpleInfo deviceSimpleInfo)
+        public void Refresh(DeviceBasicInfo deviceSimpleInfo)
         {
             RefreshStart?.Invoke(this, new EventArgs());
             UIHelper.SetGridButtonStatus(this, deviceSimpleInfo.Status == DeviceStatus.FASTBOOT);

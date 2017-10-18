@@ -1,6 +1,6 @@
 ﻿namespace AutumnBox.NetUtil
 {
-    public interface INetUnit
+    public interface INetUtil
     {
         void Run();
     }

@@ -18,44 +18,75 @@ namespace AutumnBox.Basic.Executer
     using System.Collections.Generic;
     using System.Diagnostics;
     using System.Text;
-    
+
     public class OutputData : BaseObject
     {
-        public IOutSender OutSender {
-            set {
-                if (outSender != null)
+        public IOutSender OutSender
+        {
+            set
+            {
+                if (_OutSender != null)
                 {
                     throw new EventAddException("Only set one!");
                 }
-                else {
-                    outSender = value;
-                    outSender.ErrorDataReceived += (s, e) => { if (e != null) ErrorAdd(e.Data); };
-                    outSender.OutputDataReceived += (s, e) => { if (e != null) OutAdd(e.Data); };
+                else
+                {
+                    _OutSender = value;
+                    _OutSender.ErrorDataReceived += (s, e) => { if (e != null) ErrorAdd(e.Data); };
+                    _OutSender.OutputDataReceived += (s, e) => { if (e != null) OutAdd(e.Data); };
                 }
             }
         }
-        private IOutSender outSender = null;
-        public List<string> LineAll { get; private set; }
-        public List<string> LineOut { get; private set; }
-        public List<string> LineError { get; private set; }
-        public StringBuilder All { get; private set; }
-        public StringBuilder Out { get; private set; }
-        public StringBuilder Error { get; private set; }
-        internal void OutAdd(string Out)
+        private IOutSender _OutSender = null;
+        public List<string> LineAll { get; private set; } = new List<string>();
+        public List<string> LineOut { get; private set; } = new List<string>();
+        public List<string> LineError { get; private set; } = new List<string>();
+        public StringBuilder All { get; private set; } = new StringBuilder();
+        public StringBuilder Out { get; private set; } = new StringBuilder();
+        public StringBuilder Error { get; private set; } = new StringBuilder();
+        private bool _IsClosed = false;
+        /// <summary>
+        /// 添加输出信息
+        /// </summary>
+        /// <param name="outData"></param>
+        public void OutAdd(string outData)
         {
-            All.AppendLine(Out);
-            this.Out.AppendLine(Out);
-            LineAll.Add(Out);
-            LineOut.Add(Out);
+            if (_IsClosed) return;
+            All.AppendLine(outData);
+            Out.AppendLine(outData);
+            LineAll.Add(outData);
+            LineOut.Add(outData);
         }
-        internal void ErrorAdd(string Error)
+        /// <summary>
+        /// 添加错误输出信息
+        /// </summary>
+        /// <param name="errorData"></param>
+        public void ErrorAdd(string errorData)
         {
-            All.AppendLine(Error);
-            LineAll.Add(Error);
-            LineError.Add(Error);
-            this.Error.AppendLine(Error);
+            if (_IsClosed) return;
+            All.AppendLine(errorData);
+            LineAll.Add(errorData);
+            LineError.Add(errorData);
+            this.Error.AppendLine(errorData);
         }
-        internal void Clear()
+        /// <summary>
+        /// 添加另一个OutputData对象的内容
+        /// </summary>
+        /// <param name="output"></param>
+        public void Append(OutputData output)
+        {
+            if (_IsClosed) return;
+            LineAll.AddRange(output.LineAll);
+            LineOut.AddRange(output.LineOut);
+            LineError.AddRange(output.LineError);
+            All.Append(output.ToString());
+            Out.Append(output.Out.ToString());
+            Error.Append(output.Error.ToString());
+        }
+        /// <summary>
+        /// 清空内容
+        /// </summary>
+        public void Clear()
         {
             Out.Clear();
             Error.Clear();
@@ -64,32 +95,17 @@ namespace AutumnBox.Basic.Executer
             LineOut.Clear();
             LineError.Clear();
         }
-        public OutputData()
+        /// <summary>
+        /// 停止添加内容,执行后将不可再添加内容
+        /// </summary>
+        public void StopAdding()
         {
-            LineError = new List<string>();
-            LineOut = new List<string>();
-            LineAll = new List<string>();
-            Out = new StringBuilder();
-            Error = new StringBuilder();
-            All = new StringBuilder();
+            _IsClosed = true;
         }
-        public void Append(OutputData output) {
-            LineAll.AddRange(output.LineAll);
-            LineOut.AddRange(output.LineOut);
-            LineError.AddRange(output.LineError);
-            All.Append(output.ToString());
-            Out.Append(output.Out.ToString());
-            Error.Append(output.Error.ToString());
-        }
-        public static OutputData operator +(OutputData left, OutputData right) {
-            left.LineAll.AddRange(right.LineAll);
-            left.LineOut.AddRange(right.LineOut);
-            left.LineError.AddRange(right.LineError);
-            left.All.Append(right.ToString());
-            left.Out.Append(right.Out.ToString());
-            left.Error.Append(right.Error.ToString());
-            return left;
-        }
+        /// <summary>
+        /// 获取完整的输出数据
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return All.ToString();

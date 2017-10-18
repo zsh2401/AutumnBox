@@ -12,6 +12,6 @@ namespace AutumnBox.UI
         event EventHandler RefreshStart;
         event EventHandler RefreshFinished;
         void SetDefault();
-        void Refresh(DeviceSimpleInfo deviceSimpleInfo);
+        void Refresh(DeviceBasicInfo deviceSimpleInfo);
     }
 }

@@ -62,13 +62,13 @@ namespace AutumnBox.Basic.Executer
         /// <summary>
         /// 设备信息
         /// </summary>
-        public DeviceSimpleInfo? Info { get; private set; }
-        public Command(DeviceSimpleInfo info, string command, ExeType executeType = ExeType.Adb) : this(command, executeType)
+        public DeviceBasicInfo? Info { get; private set; }
+        public Command(DeviceBasicInfo info, string command, ExeType executeType = ExeType.Adb) : this(command, executeType)
         {
             Info = info;
         }
         public Command(string id, string command, ExeType exeType = ExeType.Adb) :
-            this(new DeviceSimpleInfo() { Id = id, Status = DeviceStatus.UNKNOW }, command, exeType)
+            this(new DeviceBasicInfo() { Id = id, Status = DeviceStatus.UNKNOW }, command, exeType)
         { }
         public Command(string command, ExeType executeType = ExeType.Adb)
         {

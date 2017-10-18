@@ -43,7 +43,7 @@ namespace AutumnBox.NetUtil
         protected bool UseLocalApi { get { return PropertyInfo.UseLocalApi; } }
         protected string GetHtmlCode(string url)
         {
-            return SharedTools.NetHelper.GetHtmlCode(url);
+            return Shared.NetHelper.GetHtmlCode(url);
         }
         public abstract void Run();
     }
