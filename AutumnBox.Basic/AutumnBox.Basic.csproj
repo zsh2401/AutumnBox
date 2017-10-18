@@ -57,7 +57,7 @@
     <Compile Include="Function\Args\FMArgs.cs" />
     <Compile Include="Function\RunningManagerStatus.cs" />
     <Compile Include="Function\FuncEventsContainer.cs" />
-    <Compile Include="DebugInfo.cs" />
+    <Compile Include="Debug.cs" />
     <Compile Include="Util\Interface\IDevicesChangedListener.cs" />
     <Compile Include="Util\Interface\IDevicesGetter.cs" />
     <Compile Include="Executer\OutputData.cs" />
@@ -85,7 +85,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util\BaseObject.cs" />
     <Compile Include="Util\Exceptions.cs" />
-    <Compile Include="Util\Logger.cs" />
     <Compile Include="Util\Paths.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

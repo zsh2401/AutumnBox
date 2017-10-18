@@ -13,6 +13,7 @@
 \* =============================================================================*/
 namespace AutumnBox.Basic.Util
 {
+    using static Debug;
     using System;
     /// <summary>
     /// 基类
@@ -25,7 +26,7 @@ namespace AutumnBox.Basic.Util
         protected void LogT(string message) { Logger.T(TAG, message); }
         protected void LogE(string message, Exception e, bool showInTrace = true)
         {
-            Logger.E(TAG, message, e, true);
+            Logger.T(TAG, message, e);
         }
     }
 }

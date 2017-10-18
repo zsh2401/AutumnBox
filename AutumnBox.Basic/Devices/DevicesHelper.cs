@@ -18,7 +18,7 @@ namespace AutumnBox.Basic.Devices
     using System;
     using System.Collections;
     using System.Threading;
-
+    using static Basic.Debug;
     /// <summary>
     /// 关于设备的一些静态函数
     /// </summary>
@@ -28,17 +28,23 @@ namespace AutumnBox.Basic.Devices
         private static CommandExecuter executer = new CommandExecuter();
         private static object _ExecuterLocker = new object();
         private static IDevicesGetter _DeviceGetter = new DevicesGetter();
-        public static bool DeviceIsRoot(string id)
+        /// <summary>
+        /// 检查指定设备是否有root权限
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public static bool CheckRoot(string id)
         {
-            lock (_ExecuterLocker)
+            lock (executer)
             {
-                var o = executer.AdbExecute(id,"shell su ls");
-                Logger.D(TAG,o.All.ToString());
+                var o = executer.AdbExecute(id, "shell su ls");
+                Logger.D(TAG, o.All.ToString());
                 if (o.All.ToString().Contains("not found"))
                 {
                     return false;
                 }
-                else {
+                else
+                {
                     return true;
                 }
             }
@@ -55,18 +61,18 @@ namespace AutumnBox.Basic.Devices
             try
             {
                 string output = (executer.Execute(new Command(id, "shell \"cat /proc/meminfo | grep MemTotal\"")).LineOut[0]);
-                Logger.T(TAG, "MemTotal " + output);
+                Debug.Logger.T(TAG, "MemTotal " + output);
                 string result = System.Text.RegularExpressions.Regex.Replace(output, @"[^0-9]+", "");
                 info.MemTotal = Math.Round((Convert.ToDouble(result) / 1024.0 / 1024.0), MidpointRounding.AwayFromZero);
             }
-            catch (Exception e) { Logger.E(TAG, "Get MemTotal fail", e); }
+            catch (Exception e) { Logger.T(TAG, "Get MemTotal fail", e); }
             try
             {
                 string output = (executer.Execute(new Command(id, "shell \"cat /proc/hwinfo | grep LCD\"")).LineOut[0]);
                 Logger.T(TAG, "hwinfo LCD " + output);
                 info.ScreenInfo = output.Split(':')[1].TrimStart();
             }
-            catch (Exception e) { Logger.E(TAG, "Get LCD info fail", e); }
+            catch (Exception e) { Logger.T(TAG, "Get LCD info fail", e); }
             try
             {
                 string output = (executer.Execute(new Command(id, "shell \"cat /proc/cpuinfo | grep Hardware\"")).LineOut[0]);
@@ -75,7 +81,7 @@ namespace AutumnBox.Basic.Devices
 
                 info.SOCInfo = hehe[hehe.Length - 1];
             }
-            catch (Exception e) { Logger.E(TAG, "Get cpuinfo fail", e); }
+            catch (Exception e) { Logger.T(TAG, "Get cpuinfo fail", e); }
             bool GetFlashMemoryInfoSucessful = false;
             try
             {
@@ -84,7 +90,7 @@ namespace AutumnBox.Basic.Devices
                 info.FlashMemoryType = output.Split(':')[1].TrimStart() + " EMMC";
                 GetFlashMemoryInfoSucessful = true;
             }
-            catch (Exception e) { Logger.E(TAG, "Get EMMC info fail", e); }
+            catch (Exception e) { Logger.T(TAG, "Get EMMC info fail", e); }
             try
             {
                 if (GetFlashMemoryInfoSucessful == false)
@@ -95,15 +101,15 @@ namespace AutumnBox.Basic.Devices
                     GetFlashMemoryInfoSucessful = true;
                 }
             }
-            catch (Exception e) { Logger.E(TAG, "Get UFS info fail", e); }
+            catch (Exception e) { Logger.T(TAG, "Get UFS info fail", e); }
             try
             {
                 string output = (executer.Execute(new Command(id, "shell \"dumpsys battery | grep level\"")).LineOut[0]);
                 Logger.T(TAG, "BatteryLevel info  " + output);
                 info.BatteryLevel = Convert.ToInt32(output.Split(':')[1].TrimStart());
             }
-            catch (Exception e) { Logger.E(TAG, "Get Battery info fail", e); }
-            info.IsRoot = DeviceIsRoot(id);
+            catch (Exception e) { Logger.T(TAG, "Get Battery info fail", e); }
+            info.IsRoot = CheckRoot(id);
             return info;
         }
         /// <summary>
@@ -150,8 +156,9 @@ namespace AutumnBox.Basic.Devices
         /// <returns>设备列表</returns>
         public static DevicesList GetDevices()
         {
-            lock (_DeviceGetter) {
-                return _DeviceGetter.GetDevices();
+            using (DevicesGetter getter = new DevicesGetter())
+            {
+                return getter.GetDevices();
             }
         }
         /// <summary>

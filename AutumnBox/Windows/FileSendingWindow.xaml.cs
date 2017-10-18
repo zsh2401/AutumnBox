@@ -70,7 +70,7 @@ namespace AutumnBox.Windows
             }
             catch (Exception se)
             {
-                Logger.D(e.ToString(), se.Message);
+                App.LogD(e.ToString(), se.Message);
             }
         }
 
@@ -82,7 +82,7 @@ namespace AutumnBox.Windows
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            Logger.D(this.GetType().Name, "Mouse Down on Window");
+            App.LogD(this.GetType().Name, "Mouse Down on Window");
             UIHelper.DragMove(this, e);
         }
 

@@ -13,6 +13,7 @@
 \* =============================================================================*/
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Text;
 
@@ -21,6 +22,7 @@ namespace AutumnBox.SharedTools
     public static class LogHelper
     {
         public static string ToFullMessage(string tag, string message) {
+            Debug.WriteLine("");
             string t = $"[{DateTime.Now.ToString("[yy-MM-dd hh:mm:ss]")}";
             return $"{t} { tag} : {message}"; 
         }

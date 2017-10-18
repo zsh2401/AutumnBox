@@ -32,8 +32,7 @@ namespace AutumnBox
         private Object setUILock = new System.Object();
         public StartWindow()
         {
-            Logger.InitLogFile();
-            Logger.D(TAG, "Log Init Finish,Start Init Window");
+            App.LogD(TAG, "Log Init Finish,Start Init Window");
             InitializeComponent();
             App.DevicesListener.DevicesChanged += DevicesChanged;
             TitleBar.OwnerWindow = this;
@@ -42,7 +41,7 @@ namespace AutumnBox
             {
                 this.Dispatcher.Invoke(() =>
                 {
-                    Logger.D(this, "RefreshStart..");
+                    App.LogD(this, "RefreshStart..");
                     UIHelper.ShowRateBox();
                 });
             };
@@ -50,7 +49,7 @@ namespace AutumnBox
             {
                 this.Dispatcher.Invoke(() =>
                 {
-                    Logger.D(this, "RefreshFinished..");
+                    App.LogD(this, "RefreshFinished..");
                     UIHelper.CloseRateBox();
                 });
             };
@@ -69,7 +68,7 @@ namespace AutumnBox
         /// <param name="e"></param>
         private void DevicesChanged(object sender, DevicesChangedEventArgs e)
         {
-            Logger.D(TAG, "Devices change handing.....");
+            App.LogD(TAG, "Devices change handing.....");
             this.Dispatcher.Invoke(() =>
             {
                 DevicesListBox.ItemsSource = e.DevicesList;

@@ -14,6 +14,7 @@
 using AutumnBox.Basic.Devices;
 using AutumnBox.Basic.Executer;
 using AutumnBox.Helper;
+using AutumnBox.SharedTools;
 using AutumnBox.Util;
 using System;
 using System.Threading;
@@ -30,16 +31,27 @@ namespace AutumnBox
         internal static StartWindow OwnerWindow { get { return (Current.MainWindow as StartWindow); } }
         internal static DeviceSimpleInfo SelectedDevice = new DeviceSimpleInfo() { Status = DeviceStatus.NO_DEVICE };
         internal static DevicesMonitor DevicesListener = new DevicesMonitor();//设备监听器
+        internal static LoggerObject Logger = new LoggerObject("atmb.log");
+        public static void LogD(object tag, string msg, Exception e = null)
+        {
+            if (e == null) Logger.D(tag, msg);
+            else Logger.D(tag, msg, e);
+        }
+        public static void LogT(object tag, string msg, Exception e = null)
+        {
+            if (e == null) Logger.T(tag, msg);
+            else Logger.T(tag, msg, e);
+        }
         protected override void OnStartup(StartupEventArgs e)
         {
             Logger.T(this, "OnStartup");
-            SystemHelper.StartAutoGC();
+            Helper.SystemHelper.StartAutoGC();
             base.OnStartup(e);
         }
         protected override void OnExit(ExitEventArgs e)
         {
             base.OnExit(e);
-            SystemHelper.AppExit();
+            Helper.SystemHelper.AppExit();
         }
     }
 }

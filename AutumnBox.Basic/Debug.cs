@@ -11,11 +11,14 @@
 * Company: I am free man
 *
 \* =============================================================================*/
+using AutumnBox.SharedTools;
+
 namespace AutumnBox.Basic
 {
-    internal static class DebugInfo
-    { 
-        public static readonly bool SHOW_OUTPUT = false;
-        public static readonly bool SHOW_COMMAND = false;
+    internal static class Debug
+    {
+        internal static LoggerObject Logger = new LoggerObject("basic.log");
+        public static readonly bool SHOW_OUTPUT = true;
+        public static readonly bool SHOW_COMMAND = true;
     }
 }

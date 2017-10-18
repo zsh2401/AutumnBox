@@ -64,7 +64,7 @@ namespace AutumnBox.Helper
         }
         public static void AppExit(int exitCode = 0)
         {
-            Logger.T("SystemHelper", "Exiting.....");
+            App.Logger.T("SystemHelper", "Exiting.....");
             App.DevicesListener.Stop();
             CommandExecuter.Kill();
             Environment.Exit(exitCode);

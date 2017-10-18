@@ -191,7 +191,6 @@
     <Compile Include="Util\Config.cs" />
     <Compile Include="Helper\LanguageHelper.cs" />
     <Compile Include="Util\ConfigJson.cs" />
-    <Compile Include="Util\Logger.cs" />
     <Compile Include="Util\NativeMethods.cs" />
     <Compile Include="Util\VersionInfo.cs" />
   </ItemGroup>

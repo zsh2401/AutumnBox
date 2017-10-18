@@ -14,7 +14,7 @@
 using AutumnBox.Basic.Executer;
 using AutumnBox.Basic.Function.Args;
 using AutumnBox.Basic.Util;
-
+using static AutumnBox.Basic.Debug;
 namespace AutumnBox.Basic.Function.Modules
 {
     /// <summary>

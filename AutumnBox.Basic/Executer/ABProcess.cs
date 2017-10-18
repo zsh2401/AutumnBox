@@ -13,13 +13,9 @@
 \* =============================================================================*/
 namespace AutumnBox.Basic.Executer
 {
-    using AutumnBox.Basic.Util;
     using System;
-    using System.Collections.Generic;
     using System.Diagnostics;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
+    using static Basic.Debug;
     internal sealed class ABProcess : Process
     {
         public event ProcessStartedEventHandler ProcessStarted;
@@ -38,7 +34,7 @@ namespace AutumnBox.Basic.Executer
             {
                 if (e.Data != null)
                 {
-                    if (DebugInfo.SHOW_OUTPUT)
+                    if (Basic.Debug.SHOW_OUTPUT)
                         Logger.D(this.GetType().Name, e.Data);
                     _tempOut.OutAdd(e.Data);
                 }
@@ -48,7 +44,7 @@ namespace AutumnBox.Basic.Executer
             {
                 if (e.Data != null)
                 {
-                    if (DebugInfo.SHOW_OUTPUT)
+                    if (Basic.Debug.SHOW_OUTPUT)
                         Logger.D(this.GetType().Name, e.Data);
                     _tempOut.ErrorAdd(e.Data);
                 }
@@ -62,7 +58,7 @@ namespace AutumnBox.Basic.Executer
                 BeginOutputReadLine();
                 BeginErrorReadLine();
             }
-            catch (Exception e) { Logger.E(this.GetType().Name, "Begin Out failed", e); }
+            catch (Exception e) { Logger.T(this.GetType().Name, "Begin Out failed", e); }
         }
         private void CancelRead()
         {
@@ -72,11 +68,11 @@ namespace AutumnBox.Basic.Executer
                 base.CancelErrorRead();
                 Close();
             }
-            catch (Exception e) { Logger.E(this.GetType().Name, "等待退出或关闭流失败", e); }
+            catch (Exception e) { Logger.D(this.GetType().Name, "等待退出或关闭流失败", e); }
         }
         public OutputData RunToExited(string fileName, string args)
         {
-            if (DebugInfo.SHOW_COMMAND)
+            if (Basic.Debug.SHOW_COMMAND)
                 Logger.D(this.GetType().Name,$"{fileName} {args}");
             _tempOut.Clear();
             StartInfo.FileName = fileName;

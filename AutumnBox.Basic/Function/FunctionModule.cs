@@ -51,6 +51,7 @@ namespace AutumnBox.Basic.Function
     using System;
     using System.Diagnostics;
     using System.Threading;
+    using static Debug;
     public delegate void StartedEventHandler(object sender, StartEventArgs e);
     public delegate void FinishedEventHandler(object sender, FinishEventArgs e);
     /// <summary>

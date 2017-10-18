@@ -44,7 +44,7 @@ namespace AutumnBox.NetUtil
             }
             catch (Exception e)
             {
-                Util.Logger.E(this, "Motd Getting Expception", e);
+                App.LogT(this, "Motd Getting Expception", e);
             }
         }
     }

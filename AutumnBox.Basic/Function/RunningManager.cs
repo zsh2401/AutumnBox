@@ -64,6 +64,7 @@ namespace AutumnBox.Basic.Function
     using AutumnBox.Basic.Util;
     using AutumnBox.SharedTools;
     using System;
+    using static Basic.Debug;
     /// <summary>
     /// 功能模块运行时托管器,一个托管器仅可以托管/包装一个功能模块,并只可以执行一次
     /// </summary>

@@ -18,11 +18,29 @@ namespace AutumnBox.Basic.Devices
     /// </summary>
     public enum DeviceStatus
     {
+        /// <summary>
+        /// 未知状态
+        /// </summary>
         UNKNOW = -1,
+        /// <summary>
+        /// 无设备
+        /// </summary>
         NO_DEVICE = 0,
+        /// <summary>
+        /// 开机状态
+        /// </summary>
         RUNNING = 1,
+        /// <summary>
+        /// 处于恢复模式
+        /// </summary>
         RECOVERY = 2,
+        /// <summary>
+        /// 处于Fastboot模式
+        /// </summary>
         FASTBOOT = 3,
+        /// <summary>
+        /// 处于sideload模式
+        /// </summary>
         SIDELOAD = 4,
     }
 }

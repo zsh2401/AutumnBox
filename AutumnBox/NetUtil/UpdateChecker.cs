@@ -67,7 +67,7 @@ namespace AutumnBox.NetUtil
                 };
                 CheckFinished?.Invoke(this, e);
             }
-            catch (Exception ex) { Basic.Util.Logger.E(this, "Update Getting Fail", ex); }
+            catch (Exception ex) { App.LogT(this, "Update Getting Fail", ex); }
         }
     }
 }

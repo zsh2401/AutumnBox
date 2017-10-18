@@ -44,7 +44,7 @@ namespace AutumnBox.Util
                 Save();
             }
             catch (Exception e) {
-                Logger.D("Catcho e Exp",e.ToString());
+                App.LogD("Catcho e Exp",e.ToString());
             }
         }
         public void Save()
