@@ -36,7 +36,7 @@ namespace AutumnBox.Basic.Function.Modules
                     LogT("Out : " + e.Data);
                     OnOutReceived(e);
                 }
-                
+
             };
             MainProcess.ErrorDataReceived += (s, e) =>
             {
@@ -54,10 +54,10 @@ namespace AutumnBox.Basic.Function.Modules
             temtOut.Append(MainProcess.RunToExited(Args.batFileName, $"-s {DeviceID}"));
             return temtOut;
         }
-        protected override void HandingOutput(OutputData output, ref ExecuteResult executeResult)
+        protected override void HandingOutput(ref ExecuteResult executeResult)
         {
             if (MainProcess.ExitCode == 1) executeResult.Level = ResultLevel.Unsuccessful;
-            executeResult.Message = output.LineAll[output.LineAll.Count - 1];
+            executeResult.Message = executeResult.OutputData.LineAll[executeResult.OutputData.LineAll.Count - 1];
         }
     }
 }

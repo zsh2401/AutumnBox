@@ -55,7 +55,7 @@
     <Compile Include="Executer\CommandExecuter\ExeType.cs" />
     <Compile Include="Executer\IOutSender.cs" />
     <Compile Include="Executer\Events.cs" />
-    <Compile Include="Function\Args\FMArgs.cs" />
+    <Compile Include="Function\Args\ModuleArgs.cs" />
     <Compile Include="Function\RunningManagerStatus.cs" />
     <Compile Include="Function\FuncEventsContainer.cs" />
     <Compile Include="Debug.cs" />

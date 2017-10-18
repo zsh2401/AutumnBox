@@ -46,6 +46,7 @@ namespace AutumnBox.Basic.Function
 {
     using AutumnBox.Basic.Devices;
     using AutumnBox.Basic.Executer;
+    using AutumnBox.Basic.Function.Args;
     using AutumnBox.Basic.Function.Event;
     using AutumnBox.Basic.Util;
     using System;
@@ -106,6 +107,7 @@ namespace AutumnBox.Basic.Function
         /// 绑定的设备简单信息
         /// </summary>s
         protected internal DeviceBasicInfo DevSimpleInfo { get; set; }
+        protected internal ModuleArgs Args { get; set; }
         #endregion
         /// <summary>
         /// 判断完成事件是否被绑定
@@ -116,6 +118,11 @@ namespace AutumnBox.Basic.Function
             {
                 return Finished != null ? true : false;
             }
+        }
+        protected FunctionModule(ModuleArgs args)
+        {
+            Args = args;
+            DevSimpleInfo = Args.DevBasicInfo;
         }
         /// <summary>
         /// 构造
@@ -156,7 +163,7 @@ namespace AutumnBox.Basic.Function
         /// 析构!
         /// </summary>
         public void Dispose()
-        {                   
+        {
 #pragma warning disable CA1063
             Executer.Dispose();
 #pragma warning disable CA1063
@@ -182,13 +189,14 @@ namespace AutumnBox.Basic.Function
         private void _Run()
         {
             OnStarted(new StartEventArgs());
+            HandlingMouduleArgs(Args);
             var fullOutput = MainMethod();
             ExecuteResult executeResult = new ExecuteResult(fullOutput)
             {
                 WasForcblyStop = WasFrociblyStop,
                 Level = WasFrociblyStop ? ResultLevel.Unsuccessful : ResultLevel.Successful,
             };
-            HandingOutput(fullOutput, ref executeResult);
+            HandingOutput(ref executeResult);
             OnFinished(new FinishEventArgs { Result = executeResult });
         }
         #region 主体
@@ -201,6 +209,10 @@ namespace AutumnBox.Basic.Function
         {
             Logger.D(TAG, "Started");
             Started?.Invoke(this, a);
+        }
+        protected virtual void HandlingMouduleArgs(ModuleArgs args)
+        {
+
         }
         /// <summary>
         /// 模块的核心代码,强制要求子类进行实现
@@ -232,7 +244,7 @@ namespace AutumnBox.Basic.Function
         /// </summary>
         /// <param name="output"></param>
         /// <param name="result"></param>
-        protected virtual void HandingOutput(OutputData output, ref ExecuteResult executeResult)
+        protected virtual void HandingOutput(ref ExecuteResult executeResult)
         {
         }
         /// <summary>
