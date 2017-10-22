@@ -198,6 +198,7 @@ namespace AutumnBox.Basic.Function
             };
             HandingOutput(ref executeResult);
             OnFinished(new FinishEventArgs { Result = executeResult });
+            var t = DateTime.Now - DateTime.Now;
         }
         #region 主体
         /// <summary>
