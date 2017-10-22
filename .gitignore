@@ -1,6 +1,7 @@
-#zsh2401
-#2017/10/15
-#giti
+#    zsh2401@163.com    #
+#    2017/10/22         #
+#    giti file          #
+#
 #files
 *.log
 *.exe
@@ -29,11 +30,11 @@
 fast
 !AutumnBox.Basic/Adb/*.exe
 !AutumnBox.Basic/Adb/*.dll
-Bin/Adb
 Bin/*.*
 !Bin/readme.txt
 #dirs
 .vs/
+Bin/Adb
 obj/
 AutumnBox/obj/
 AutumnBox.basic/obj/
