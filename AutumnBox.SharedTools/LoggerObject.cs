@@ -53,14 +53,18 @@ namespace AutumnBox.Shared
         }
         private void WriteToFile(string fullMsg)
         {
-            using (FileStream fs = new FileStream(_LogFileName, FileMode.OpenOrCreate, FileAccess.ReadWrite))
+            try
             {
-                using (StreamWriter sw = new StreamWriter(fs))
+                using (FileStream fs = new FileStream(_LogFileName, FileMode.OpenOrCreate, FileAccess.Write))
                 {
-                    sw.WriteLine(fullMsg);
-                    sw.Flush();
+                    using (StreamWriter sw = new StreamWriter(fs))
+                    {
+                        sw.WriteLine(fullMsg);
+                        sw.Flush();
+                    }
                 }
             }
+            catch { }
         }
         private static string ParseTag(object tag)
         {

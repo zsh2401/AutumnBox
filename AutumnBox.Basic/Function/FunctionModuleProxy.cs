@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Function
 {
-    public class FunctionModuleProxy<T> where T : IFunctionModule, new()
+    public class FunctionModuleProxy
     {
         public event DataReceivedEventHandler OutReceived
         {
@@ -33,14 +33,9 @@ namespace AutumnBox.Basic.Function
             add { FunctionModule.Finished += value; }
             remove { FunctionModule.Finished -= value; }
         }
-        public Type FunctionObjType { get { return typeof(T); } }
         private IFunctionModule FunctionModule;
-        public FunctionModuleProxy(ModuleArgs args)
+        private FunctionModuleProxy()
         {
-            FunctionModule = new T
-            {
-                Args = args
-            };
         }
         public void AsyncRun() =>
             FunctionModule.AsyncRun();
@@ -52,5 +47,15 @@ namespace AutumnBox.Basic.Function
         {
             FunctionModule.KillProcess();
         }
+        public static FunctionModuleProxy Create<T>(ModuleArgs e) where T : IFunctionModule, new()
+        {
+            FunctionModuleProxy fmp = new FunctionModuleProxy()
+            {
+                FunctionModule = new T()
+            };
+            fmp.FunctionModule.Args = e;
+            return fmp;
+        }
     }
 }
+

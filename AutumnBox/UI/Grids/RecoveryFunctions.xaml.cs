@@ -46,11 +46,10 @@ namespace AutumnBox.UI.Grids
             fileDialog.Multiselect = false;
             if (fileDialog.ShowDialog() == true)
             {
-                FileSender fs = new FileSender(new FileArgs { files = new string[] { fileDialog.FileName } });
-                RunningManager rm = App.SelectedDevice.GetRunningManger(fs);
-                rm.FuncEvents.Finished += App.OwnerWindow.FuncFinish;
-                rm.FuncStart();
-                new FileSendingWindow(rm).ShowDialog();
+                var fmp = FunctionModuleProxy.Create<FileSender>(new FileArgs(App.SelectedDevice) { files = new string[] { fileDialog.FileName } });
+                fmp.Finished += App.OwnerWindow.FuncFinish;
+                fmp.AsyncRun();
+                new FileSendingWindow(fmp).ShowDialog();
             }
             else
             {

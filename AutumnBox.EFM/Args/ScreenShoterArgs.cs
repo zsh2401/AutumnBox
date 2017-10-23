@@ -11,10 +11,13 @@
 * Company: I am free man
 *
 \* =============================================================================*/
+using AutumnBox.Basic.Devices;
+
 namespace AutumnBox.Basic.Function.Args
 {
     public class ScreenShoterArgs: ModuleArgs
     {
+        public ScreenShoterArgs(DeviceBasicInfo device) : base(device) { }
         public string LocalPath { get { return localPath; } set { localPath = value; } }
         string localPath = ".";
     }

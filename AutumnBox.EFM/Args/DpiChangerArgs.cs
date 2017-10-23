@@ -11,14 +11,16 @@
 * Company: I am free man
 *
 \* =============================================================================*/
+using AutumnBox.Basic.Devices;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace AutumnBox.Basic.Function.Args
 {
-    public class DpiChangerArgs: ModuleArgs
+    public class DpiChangerArgs : ModuleArgs
     {
+        public DpiChangerArgs(DeviceBasicInfo device) : base(device) { }
         public int Dpi { get; set; }
     }
 }

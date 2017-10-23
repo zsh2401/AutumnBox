@@ -23,17 +23,17 @@ namespace AutumnBox.UI
     /// </summary>
     public partial class RateBox : Window
     {
-        private RunningManager rm;
+        private FunctionModuleProxy ModuleProxy;
         public RateBox()
         {
             InitializeComponent();
             buttonCancel.Visibility = Visibility.Hidden;
             this.Owner = App.OwnerWindow;
         }
-        public RateBox(RunningManager rm)
+        public RateBox(FunctionModuleProxy fmp)
         {
             InitializeComponent();
-            this.rm = rm;
+            this.ModuleProxy = fmp;
             this.Owner = App.OwnerWindow;
         }
         public new void ShowDialog()
@@ -42,14 +42,15 @@ namespace AutumnBox.UI
         }
         private void Grid_MouseMove(object sender, MouseEventArgs e)
         {
-            UIHelper.DragMove(this,e);
+            UIHelper.DragMove(this, e);
         }
-        public new void Close() {
+        public new void Close()
+        {
             base.Close();
         }
         private void buttonStartBrventService_Click(object sender, RoutedEventArgs e)
         {
-            this.rm.FuncStop();
+            this.ModuleProxy.ForceStop();
             this.Close();
         }
     }

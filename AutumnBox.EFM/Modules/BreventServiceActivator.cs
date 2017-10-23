@@ -32,7 +32,7 @@ namespace AutumnBox.Basic.Function.Modules
             //    new ActivityLauncher(new ActivityLaunchArgs()
             //    { PackageName = "me.piebridge.brevent", ActivityName = ".ui.BreventActivity" })
             //    { DevSimpleInfo = this.DevSimpleInfo }.FastRun();
-            var o = new FunctionModuleProxy<ActivityLauncher>(new ActivityLaunchArgs()
+            var o = FunctionModuleProxy.Create<ActivityLauncher>(new ActivityLaunchArgs(Args.DeviceBasicInfo)
             { PackageName = "me.piebridge.brevent", ActivityName = ".ui.BreventActivity" }).SyncRun().OutputData;
             o.Append(Ae(DEFAULT_COMMAND));
             return o;

@@ -69,38 +69,35 @@ namespace AutumnBox.UI.Grids
 
         private void ButtonRebootToSystem_Click(object sender, RoutedEventArgs e)
         {
-            RebootOperator ro = new RebootOperator(new RebootArgs
+            var fmp = FunctionModuleProxy.Create<RebootOperator>(new RebootArgs(App.SelectedDevice)
             {
                 rebootOption = RebootOptions.System,
                 nowStatus = App.SelectedDevice.Status
             });
-            var rm = App.SelectedDevice.GetRunningManger(ro);
-            rm.FuncEvents.Finished += App.OwnerWindow.FuncFinish;
-            rm.FuncStart();
+            fmp.Finished += App.OwnerWindow.FuncFinish;
+            fmp.AsyncRun();
         }
 
         private void ButtonRebootToRecovery_Click(object sender, RoutedEventArgs e)
         {
-            RebootOperator ro = new RebootOperator(new RebootArgs
+            var fmp = FunctionModuleProxy.Create<RebootOperator>(new RebootArgs(App.SelectedDevice)
             {
                 rebootOption = RebootOptions.Recovery,
                 nowStatus = App.SelectedDevice.Status
             });
-            var rm = App.SelectedDevice.GetRunningManger(ro);
-            rm.FuncEvents.Finished += App.OwnerWindow.FuncFinish;
-            rm.FuncStart();
+            fmp.Finished += App.OwnerWindow.FuncFinish;
+            fmp.AsyncRun();
         }
 
         private void ButtonRebootToBootloader_Click(object sender, RoutedEventArgs e)
         {
-            RebootOperator ro = new RebootOperator(new RebootArgs
+            var fmp = FunctionModuleProxy.Create<RebootOperator>(new RebootArgs(App.SelectedDevice)
             {
                 rebootOption = RebootOptions.Bootloader,
                 nowStatus = App.SelectedDevice.Status
             });
-            var rm = App.SelectedDevice.GetRunningManger(ro);
-            rm.FuncEvents.Finished += App.OwnerWindow.FuncFinish;
-            rm.FuncStart();
+            fmp.Finished += App.OwnerWindow.FuncFinish;
+            fmp.AsyncRun();
         }
     }
 }

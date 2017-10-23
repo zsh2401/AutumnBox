@@ -21,5 +21,9 @@ namespace AutumnBox.ConsoleTester.ObjTest
             Console.WriteLine("Execute Main Method");
             return new OutputData();
         }
+        public static void StartTest()
+        {
+            var o = FunctionModuleProxy.Create<TestModuleTest>(new FileArgs(new Basic.Devices.DeviceBasicInfo()));
+        }
     }
 }

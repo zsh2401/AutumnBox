@@ -11,6 +11,7 @@
 * Company: I am free man
 *
 \* =============================================================================*/
+using AutumnBox.Basic.Devices;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -19,6 +20,7 @@ namespace AutumnBox.Basic.Function.Args
 {
     public class MiFlasherArgs: ModuleArgs
     {
+        public MiFlasherArgs(DeviceBasicInfo devInfo) : base(devInfo) { }
         public string batFileName { get; set; }
     }
 }

@@ -37,9 +37,10 @@ namespace AutumnBox.Helper
             {
                 if (a is Button)
                 {
-                     (a as Button).IsEnabled = status;
+                    (a as Button).IsEnabled = status;
                 }
-                else if (a is Grid) {
+                else if (a is Grid)
+                {
                     SetGridButtonStatus((a as Grid), status);
                 }
             }
@@ -49,7 +50,8 @@ namespace AutumnBox.Helper
         /// </summary>
         /// <param name="grid"></param>
         /// <param name="content"></param>
-        public static void SetGridLabelsContent(Grid grid, object content) {
+        public static void SetGridLabelsContent(Grid grid, object content)
+        {
             var o = grid.Children;
             foreach (object a in o)
             {
@@ -64,13 +66,16 @@ namespace AutumnBox.Helper
         /// </summary>
         /// <param name="panel"></param>
         /// <param name="status"></param>
-        public static void SetPanelButtonStatus(Panel panel, bool status) {
-            foreach (object o in panel.Children) {
+        public static void SetPanelButtonStatus(Panel panel, bool status)
+        {
+            foreach (object o in panel.Children)
+            {
                 if (o is Panel)
                 {
                     SetPanelButtonStatus((Grid)o, status);
                 }
-                else if (o is Button) {
+                else if (o is Button)
+                {
                     (o as Button).IsEnabled = status;
                 }
             }
@@ -126,32 +131,34 @@ namespace AutumnBox.Helper
         /// 为了保证不同时出现多个ratebox而设计的函数
         /// </summary>
         /// <param name="rm"></param>
-        public static void ShowRateBox(RunningManager rm=null) {
+        public static void ShowRateBox(FunctionModuleProxy fmp = null)
+        {
             try
             {
-                if (rm == null)
+                if (fmp == null)
                 {
                     rateBox = new RateBox();
                     rateBox.ShowDialog();
                     return;
                 }
                 if (rateBox.IsActive) rateBox.Close();
-                rateBox = new RateBox(rm);
+                rateBox = new RateBox(fmp);
                 rateBox.ShowDialog();
             }
             catch
             {
-                rateBox = new RateBox(rm);
+                rateBox = new RateBox(fmp);
                 rateBox.ShowDialog();
             }
         }
         /// <summary>
         /// 关闭进度窗
         /// </summary>
-        public static void CloseRateBox() {
+        public static void CloseRateBox()
+        {
             try
             {
-               rateBox.Close();
+                rateBox.Close();
             }
             catch { }
         }

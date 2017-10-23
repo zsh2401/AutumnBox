@@ -22,16 +22,17 @@ namespace AutumnBox.Basic.Function.Modules
     /// </summary>
     public sealed class CustomRecoveryFlasher : FunctionModule
     {
-        private FileArgs args;
-        public CustomRecoveryFlasher(FileArgs fileArg)
+        private FileArgs _Args;
+        protected override void HandlingModuleArgs(ModuleArgs e)
         {
-            this.args = fileArg;
+            base.HandlingModuleArgs(e);
+            _Args = (FileArgs)e;
         }
         protected override OutputData MainMethod()
         {
             Logger.D(TAG, "Start MainMethod");
-            OutputData output = Ae($"flash recovery  \"{args.files[0]}\"");
-            Ae($"boot \"{args.files[0]}\"");
+            OutputData output = Ae($"flash recovery  \"{_Args.files[0]}\"");
+            Ae($"boot \"{_Args.files[0]}\"");
             return output;
         }
     }

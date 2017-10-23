@@ -38,11 +38,10 @@ namespace AutumnBox.UI.Grids
         private void ButtonStartBrventService_Click(object sender, RoutedEventArgs e)
         {
             if (!ChoiceBox.Show(App.Current.Resources["Notice"].ToString(), App.Current.Resources["msgStartBrventTip"].ToString())) return;
-            BreventServiceActivator activator = new BreventServiceActivator();
-            var rm = App.SelectedDevice.GetRunningManger(activator);
-            rm.FuncEvents.Finished += ((StartWindow)App.OwnerWindow).FuncFinish;
-            rm.FuncStart();
-            UIHelper.ShowRateBox(rm);
+            var fmp = FunctionModuleProxy.Create<BreventServiceActivator>(new ModuleArgs(App.SelectedDevice));
+            fmp.Finished += App.OwnerWindow.FuncFinish;
+            fmp.AsyncRun();
+            UIHelper.ShowRateBox(fmp);
         }
 
         private void ButtonPushFileToSdcard_Click(object sender, RoutedEventArgs e)
@@ -54,11 +53,10 @@ namespace AutumnBox.UI.Grids
             fileDialog.Multiselect = false;
             if (fileDialog.ShowDialog() == true)
             {
-                FileSender fs = new FileSender(new FileArgs { files = new string[] { fileDialog.FileName } });
-                RunningManager rm = App.SelectedDevice.GetRunningManger(fs);
-                rm.FuncEvents.Finished += (App.OwnerWindow as StartWindow).FuncFinish;
-                rm.FuncStart();
-                new FileSendingWindow(rm).ShowDialog();
+                var fmp = FunctionModuleProxy.Create<FileSender>(new FileArgs(App.SelectedDevice) { files = new string[] { fileDialog.FileName } });
+                fmp.Finished += (App.OwnerWindow as StartWindow).FuncFinish;
+                fmp.AsyncRun();
+                new FileSendingWindow(fmp).ShowDialog();
             }
             else
             {
@@ -85,13 +83,10 @@ namespace AutumnBox.UI.Grids
         {
             if (!ChoiceBox.Show(FindResource("Notice").ToString(), FindResource("msgUnlockXiaomiSystemTip").ToString())) return;
             MMessageBox.ShowDialog(FindResource("Notice").ToString(), FindResource("msgIfAllOK").ToString());
-            XiaomiSystemUnlocker unlocker = new XiaomiSystemUnlocker();
-            var rm = App.SelectedDevice.GetRunningManger(unlocker);
-            rm.FuncEvents.Finished += App.OwnerWindow.FuncFinish;
-            rm.FuncStart();
-            UIHelper.ShowRateBox(rm);
+            var fmp = FunctionModuleProxy.Create<XiaomiBootloaderRelocker>(new ModuleArgs(App.SelectedDevice));
+            fmp.Finished += App.OwnerWindow.FuncFinish;
+            fmp.AsyncRun();
+            UIHelper.ShowRateBox(fmp);
         }
-
-
     }
 }

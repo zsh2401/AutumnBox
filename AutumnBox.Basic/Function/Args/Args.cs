@@ -21,6 +21,7 @@ namespace AutumnBox.Basic.Function.Args
     /// </summary>
     public class FileArgs : ModuleArgs
     {
+        public FileArgs(DeviceBasicInfo device) : base(device) { }
         public string[] files;
     }
     /// <summary>
@@ -28,6 +29,7 @@ namespace AutumnBox.Basic.Function.Args
     /// </summary>
     public class RebootArgs : ModuleArgs
     {
+        public RebootArgs(DeviceBasicInfo device) : base(device) { }
         public RebootOptions rebootOption;
         public DeviceStatus nowStatus;
     }
@@ -36,10 +38,13 @@ namespace AutumnBox.Basic.Function.Args
     /// </summary>
     public class ActivityLaunchArgs : ModuleArgs
     {
+        public ActivityLaunchArgs(DeviceBasicInfo device) : base(device) { }
         public string PackageName;
         public string ActivityName;
     }
-    public class InstallApkArgs : ModuleArgs {
+    public class InstallApkArgs : ModuleArgs
+    {
+        public InstallApkArgs(DeviceBasicInfo device) : base(device) { }
         public string ApkPath { get; set; }
     }
 }

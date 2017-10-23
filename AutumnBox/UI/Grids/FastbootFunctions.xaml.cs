@@ -18,6 +18,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using AutumnBox.Basic.Devices;
+using AutumnBox.Basic.Function;
 
 namespace AutumnBox.UI.Grids
 {
@@ -55,11 +56,10 @@ namespace AutumnBox.UI.Grids
             fileDialog.Multiselect = false;
             if (fileDialog.ShowDialog() == true)
             {
-                CustomRecoveryFlasher flasher = new CustomRecoveryFlasher(new FileArgs() { files = new string[] { fileDialog.FileName } });
-                var rm = App.SelectedDevice.GetRunningManger(flasher);
-                rm.FuncEvents.Finished += App.OwnerWindow.FuncFinish;
-                rm.FuncStart();
-                UIHelper.ShowRateBox(rm);
+                var fmp = FunctionModuleProxy.Create<CustomRecoveryFlasher>(new FileArgs(App.SelectedDevice) { files = new string[] { fileDialog.FileName } });
+                fmp.Finished += App.OwnerWindow.FuncFinish;
+                fmp.AsyncRun();
+                UIHelper.ShowRateBox(fmp);
             }
             else
             {
@@ -76,11 +76,10 @@ namespace AutumnBox.UI.Grids
         {
             if (!ChoiceBox.Show(App.Current.Resources["Warning"].ToString(), App.Current.Resources["msgRelockWarning"].ToString())) return;
             if (!ChoiceBox.Show(App.Current.Resources["Warning"].ToString(), App.Current.Resources["msgRelockWarningAgain"].ToString())) return;
-            XiaomiBootloaderRelocker relocker = new XiaomiBootloaderRelocker();
-            var rm = App.SelectedDevice.GetRunningManger(relocker);
-            rm.FuncEvents.Finished += App.OwnerWindow.FuncFinish;
-            rm.FuncStart();
-            UIHelper.ShowRateBox(rm);
+            var fmp = FunctionModuleProxy.Create<XiaomiBootloaderRelocker>(new ModuleArgs(App.SelectedDevice));
+            fmp.Finished += App.OwnerWindow.FuncFinish;
+            fmp.AsyncRun();
+            UIHelper.ShowRateBox(fmp);
         }
     }
 }

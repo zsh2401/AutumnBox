@@ -1,5 +1,6 @@
 ﻿using AutumnBox.Basic.Function;
 using AutumnBox.Basic.Function.Args;
+using AutumnBox.ConsoleTester.ObjTest;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,8 @@ namespace AutumnBox.ConsoleTester
     {
         static void Main(string[] args)
         {
-            var o = new FunctionModuleProxy<ObjTest.TestModuleTest>(new FileArgs());
+            TestModuleTest.StartTest();
+            Console.ReadKey();
         }
     }
 }
