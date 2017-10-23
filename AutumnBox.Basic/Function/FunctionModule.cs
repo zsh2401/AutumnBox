@@ -162,7 +162,7 @@ namespace AutumnBox.Basic.Function
         /// <summary>
         /// 构造
         /// </summary>
-        public FunctionModule()
+        protected FunctionModule()
         {
             Ae = (command) =>
             { return Executer.Execute(new Command(DevSimpleInfo, command)); };

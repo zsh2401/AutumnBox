@@ -33,7 +33,7 @@ namespace AutumnBox.Basic.Function
             add { FunctionModule.Finished += value; }
             remove { FunctionModule.Finished -= value; }
         }
-        private IFunctionModule FunctionModule;
+        public IFunctionModule FunctionModule { get; private set; }
         private FunctionModuleProxy()
         {
         }
