@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Function
 {
+
     public class FunctionModuleProxy
     {
         public event DataReceivedEventHandler OutReceived
