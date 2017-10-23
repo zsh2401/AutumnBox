@@ -67,6 +67,14 @@ namespace AutumnBox
                 {
                     RelockMiFinish(sender, e);
                 }
+                else if (sender is ApkInstaller)
+                {
+                    MMessageBox.ShowDialog("Finished", "Install successful");
+                }
+                else if (sender is ScreenShoter) {
+                    MMessageBox.ShowDialog(App.Current.Resources["Success"].ToString(), App.Current.Resources["msgSaveSuccessful"].ToString());
+                    //ModuleResultWindow.FastShow(e.Result);
+                }
             });
         }
 

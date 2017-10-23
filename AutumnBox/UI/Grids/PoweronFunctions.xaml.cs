@@ -8,6 +8,7 @@ using System.Windows;
 using System.Windows.Controls;
 using AutumnBox.Basic.Devices;
 using AutumnBox.Basic.Function;
+using System.Windows.Forms;
 
 namespace AutumnBox.UI.Grids
 {
@@ -35,6 +36,7 @@ namespace AutumnBox.UI.Grids
             UIHelper.SetGridButtonStatus(this, status);
             RefreshFinished?.Invoke(this, new EventArgs());
         }
+
         private void ButtonStartBrventService_Click(object sender, RoutedEventArgs e)
         {
             if (!ChoiceBox.Show(App.Current.Resources["Notice"].ToString(), App.Current.Resources["msgStartBrventTip"].ToString())) return;
@@ -46,7 +48,7 @@ namespace AutumnBox.UI.Grids
 
         private void ButtonPushFileToSdcard_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog fileDialog = new OpenFileDialog();
+            Microsoft.Win32.OpenFileDialog fileDialog = new Microsoft.Win32.OpenFileDialog();
             fileDialog.Reset();
             fileDialog.Title = App.Current.Resources["SelecteAFile"].ToString();
             fileDialog.Filter = "刷机包/压缩包文件(*.zip)|*.zip|镜像文件(*.img)|*.img|全部文件(*.*)|*.*";
@@ -66,17 +68,39 @@ namespace AutumnBox.UI.Grids
 
         private void ButtonInstallApk_Click(object sender, RoutedEventArgs e)
         {
-
+            Microsoft.Win32.OpenFileDialog fileDialog = new Microsoft.Win32.OpenFileDialog();
+            fileDialog.Reset();
+            fileDialog.Title = App.Current.Resources["SelecteAFile"].ToString();
+            fileDialog.Filter = "安卓安装包ApkFile(*.apk)|*.apk";
+            fileDialog.Multiselect = false;
+            if (fileDialog.ShowDialog() == true)
+            {
+                var fmp = FunctionModuleProxy.Create<ApkInstaller>(new InstallApkArgs(App.SelectedDevice) { ApkPath = fileDialog.FileName });
+                fmp.Finished += App.OwnerWindow.FuncFinish;
+                fmp.AsyncRun();
+                UIHelper.ShowRateBox(fmp);
+            }
+            else
+            {
+                return;
+            }
         }
 
         private void ButtonScreentShot_Click(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        private void ButtonStartBrventService_Click_1(object sender, RoutedEventArgs e)
-        {
-
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+            //sfd.file
+            if (fbd.ShowDialog() == DialogResult.OK)
+            {
+                var fmp = FunctionModuleProxy.Create<ScreenShoter>(new ScreenShoterArgs(App.SelectedDevice) { LocalPath = fbd.SelectedPath });
+                fmp.Finished += App.OwnerWindow.FuncFinish;
+                fmp.AsyncRun();
+                UIHelper.ShowRateBox(fmp);
+            }
+            else
+            {
+                return;
+            }
         }
 
         private void ButtonUnlockMiSystem_Click(object sender, RoutedEventArgs e)
