@@ -186,6 +186,19 @@ namespace AutumnBox.Basic.Function
             OnFinished(new FinishEventArgs { Result = executeResult });
             Status = WasFrociblyStop ? ModuleStatus.ForceStoped : ModuleStatus.Finished;
         }
+        /// <summary>
+        /// 简单处理运行结果
+        /// </summary>
+        /// <param name="fullOutput"></param>
+        /// <returns></returns>
+        private ExecuteResult SimpleInitResult(OutputData fullOutput)
+        {
+            return new ExecuteResult(fullOutput)
+            {
+                WasForcblyStop = WasFrociblyStop,
+                Level = WasFrociblyStop ? ResultLevel.Unsuccessful : ResultLevel.Successful,
+            };
+        }
 
 
         #region 保护字段
@@ -214,19 +227,6 @@ namespace AutumnBox.Basic.Function
 
 
         #region 虚方法
-        /// <summary>
-        /// 简单处理运行结果
-        /// </summary>
-        /// <param name="fullOutput"></param>
-        /// <returns></returns>
-        private ExecuteResult SimpleInitResult(OutputData fullOutput)
-        {
-            return new ExecuteResult(fullOutput)
-            {
-                WasForcblyStop = WasFrociblyStop,
-                Level = WasFrociblyStop ? ResultLevel.Unsuccessful : ResultLevel.Successful,
-            };
-        }
         /// <summary>
         /// 开始运行时发生
         /// </summary>
