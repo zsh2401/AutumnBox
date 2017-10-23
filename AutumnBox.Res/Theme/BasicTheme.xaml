@@ -5,7 +5,7 @@
     <s:String x:Key="ThemeName">Basic</s:String>
     <SolidColorBrush x:Key="ForgBrushOnBasic" Color="#FF000000"/>
     <SolidColorBrush x:Key="ForgBrush" Color="#FF000000"/>
-    <SolidColorBrush x:Key="BorderBrush" Color="#FF000000"/>
+    <SolidColorBrush x:Key="BorderBrush" Color="#FFABADB3"/>
     <SolidColorBrush x:Key="BackBrush" Color="#FFFFFFFF"/>
     <SolidColorBrush x:Key="BasicBrush" Color="#FF009AD6"/>
 </ResourceDictionary>
