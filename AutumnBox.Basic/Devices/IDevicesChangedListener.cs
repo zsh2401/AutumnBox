@@ -11,7 +11,7 @@
 * Company: I am free man
 *
 \* =============================================================================*/
-namespace AutumnBox.Basic.Util.Interface
+namespace AutumnBox.Basic.Devices
 {
     using AutumnBox.Basic.Devices;
     public interface IDevicesChangedListener

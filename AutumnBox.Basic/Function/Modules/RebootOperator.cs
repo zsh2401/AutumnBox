@@ -28,12 +28,12 @@ namespace AutumnBox.Basic.Function.Modules
             Fastboot,
         }
         private ExecuterType t;
-        private RebootArgs args;
-
-        public RebootOperator(RebootArgs rebootArgs)
+        private RebootArgs _Args;
+        protected override void HandlingModuleArgs(ModuleArgs e)
         {
-            this.args = rebootArgs;
-            switch (args.nowStatus)
+            base.HandlingModuleArgs(e);
+            this._Args = (e as RebootArgs);
+            switch (_Args.nowStatus)
             {
                 case DeviceStatus.FASTBOOT:
                     t = ExecuterType.Fastboot;
@@ -47,15 +47,15 @@ namespace AutumnBox.Basic.Function.Modules
         {
             string command;
 
-            if (args.rebootOption == RebootOptions.Bootloader)
+            if (_Args.rebootOption == RebootOptions.Bootloader)
             {
                 command = "reboot-bootloader";
             }
-            else if (args.rebootOption == RebootOptions.System)
+            else if (_Args.rebootOption == RebootOptions.System)
             {
                 command = "reboot";
             }
-            else if (args.nowStatus != DeviceStatus.FASTBOOT && args.rebootOption == RebootOptions.Recovery)
+            else if (_Args.nowStatus != DeviceStatus.FASTBOOT && _Args.rebootOption == RebootOptions.Recovery)
             {
                 command = "reboot recovery";
             }
@@ -64,7 +64,8 @@ namespace AutumnBox.Basic.Function.Modules
                 throw new System.Exception();
             }
             OutputData o;
-            switch (t) {
+            switch (t)
+            {
                 case ExecuterType.Adb:
                     o = Ae(command);
                     break;

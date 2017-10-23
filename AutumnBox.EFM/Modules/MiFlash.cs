@@ -24,10 +24,9 @@ namespace AutumnBox.Basic.Function.Modules
     {
         private OutputData temtOut = new OutputData();
         private ABProcess MainProcess = new ABProcess();
-        public MiFlasherArgs Args;
-        public MiFlash(MiFlasherArgs args)
+        public MiFlasherArgs _Args;
+        public MiFlash()
         {
-            this.Args = args;
             MainProcess.OutputDataReceived += (s, e) =>
             {
                 if (e.Data != null)
@@ -48,10 +47,15 @@ namespace AutumnBox.Basic.Function.Modules
                 }
             };
         }
+        protected override void HandlingModuleArgs(ModuleArgs e)
+        {
+            base.HandlingModuleArgs(e);
+            this._Args = (e as MiFlasherArgs);
+        }
         protected override OutputData MainMethod()
         {
             MainProcess.StartInfo.WorkingDirectory = @"adb\";
-            temtOut.Append(MainProcess.RunToExited(Args.batFileName, $"-s {DeviceID}"));
+            temtOut.Append(MainProcess.RunToExited(_Args.batFileName, $"-s {DeviceID}"));
             return temtOut;
         }
         protected override void HandingOutput(ref ExecuteResult executeResult)

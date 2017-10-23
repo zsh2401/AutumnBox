@@ -19,8 +19,10 @@ namespace AutumnBox.Basic.Function.Modules
     public class DpiChanger : FunctionModule
     {
         private int dpi;
-        public DpiChanger(DpiChangerArgs args) {
-            dpi = args.Dpi;
+        protected override void HandlingModuleArgs(ModuleArgs e)
+        {
+            base.HandlingModuleArgs(e);
+            dpi = (e as DpiChangerArgs).Dpi;
         }
         protected override OutputData MainMethod()
         {

@@ -18,7 +18,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AutumnBox.Basic.Util
+namespace AutumnBox.Basic.Devices
 {
     public interface IDevicesGetter
     {

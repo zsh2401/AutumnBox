@@ -49,44 +49,145 @@ namespace AutumnBox.Basic.Function
     using AutumnBox.Basic.Function.Args;
     using AutumnBox.Basic.Function.Event;
     using AutumnBox.Basic.Util;
+    using AutumnBox.Shared;
     using System;
     using System.Diagnostics;
     using System.Threading;
     using static Debug;
-    public delegate void StartedEventHandler(object sender, StartEventArgs e);
-    public delegate void FinishedEventHandler(object sender, FinishEventArgs e);
+
     /// <summary>
     /// 各种功能模块的父类
     /// </summary>
-    public abstract class FunctionModule : BaseObject, IDisposable
+    public abstract class FunctionModule : BaseObject, IDisposable, IFunctionModule
     {
-        #region 事件
+        #region IFunctionModule
+        /// <summary>
+        /// 核心进程id
+        /// </summary>
+        public int CoreProcessPid { get; private set; }
+        /// <summary>
+        /// 参数
+        /// </summary>
+        public ModuleArgs Args
+        {
+            get { return _ModuleArgs; }
+            set
+            {
+                _ModuleArgs = value;
+                HandlingModuleArgs(value);
+            }
+        }
+        private ModuleArgs _ModuleArgs;
+
+
+
         /// <summary>
         /// 当功能模块开始执行时发生
         /// </summary>
-        internal event StartedEventHandler Started;
+        public event EventHandler Startup;
         /// <summary>
         /// 完成操作时的事件
         /// </summary>
-        internal event FinishedEventHandler Finished;
+        public event FinishedEventHandler Finished;
         /// <summary>
         /// 执行时接收到输出时发生
         /// </summary>
-        internal event DataReceivedEventHandler OutReceived;
+        public event DataReceivedEventHandler OutReceived;
         /// <summary>
         /// 执行时接收到错误输出时发生
         /// </summary>
-        internal event DataReceivedEventHandler ErrorReceived;
+        public event DataReceivedEventHandler ErrorReceived;
         /// <summary>
-        /// 低层开始命令进行时发生,可获取PID
+        /// 核心进程开始时发生
         /// </summary>
-        internal event ProcessStartedEventHandler ProcessStarted;
+        public event ProcessStartedEventHandler CoreProcessStarted;
+
+
+
         /// <summary>
         /// 如果是被非正常停止的,此值为True
         /// </summary>
-        protected internal bool WasFrociblyStop = false;
+        public bool WasFrociblyStop { get; private set; } = false;
+        /// <summary>
+        /// 判断完成事件是否被绑定
+        /// </summary>
+        public bool IsFinishedEventRegistered
+        {
+            get
+            {
+                return Finished != null ? true : false;
+            }
+        }
+        /// <summary>
+        /// 异步执行
+        /// </summary>
+        public void AsyncRun()
+        {
+            if (DevSimpleInfo == null) throw new ArgumentNullException();
+            new Thread(() => { Run(); })
+            {
+                Name = TAG + " MainMethod"
+            }.Start();
+        }
+        /// <summary>
+        /// 同步执行
+        /// </summary>
+        /// <returns></returns>
+        public ExecuteResult SyncRun()
+        {
+            //LogD("Fast Run");
+            ExecuteResult eresult = null;
+            Finished += (s, e) => { eresult = e.Result; };
+            Run();
+            return eresult;
+        }
+        public void KillProcess()
+        {
+            SystemHelper.KillProcessAndChildrens(CoreProcessPid);
+            WasFrociblyStop = true;
+        }
         #endregion
-        #region 保护属性
+
+
+
+        /// <summary>
+        /// 析构
+        /// </summary>
+        public void Dispose()
+        {
+#pragma warning disable CA1063
+            Executer.Dispose();
+#pragma warning disable CA1063
+        }
+        /// <summary>
+        /// 构造
+        /// </summary>
+        public FunctionModule()
+        {
+            Ae = (command) =>
+            { return Executer.Execute(new Command(DevSimpleInfo, command)); };
+            Fe = (command) =>
+            { return Executer.Execute(new Command(DevSimpleInfo, command, ExeType.Fastboot)); };
+            Executer.OutputDataReceived += (s, e) => { OnOutReceived(e); };
+            Executer.ErrorDataReceived += (s, e) => { OnErrorReceived(e); };
+            Executer.ProcessStarted += (s, e) => { OnProcessStarted(e); };
+            TAG = GetType().Name;
+        }
+        /// <summary>
+        /// 运行过程
+        /// </summary>
+        private void Run()
+        {
+            OnStartup(new EventArgs());
+            var fullOutput = MainMethod();
+            var executeResult = SimpleInitResult(fullOutput);
+            HandingOutput(ref executeResult);
+            OnFinished(new FinishEventArgs { Result = executeResult });
+        }
+
+
+
+        #region 保护字段
         /// <summary>
         /// 向已绑定的设备执行adb命令
         /// </summary>
@@ -106,123 +207,50 @@ namespace AutumnBox.Basic.Function
         /// <summary>
         /// 绑定的设备简单信息
         /// </summary>s
-        protected internal DeviceBasicInfo DevSimpleInfo { get; set; }
-        protected internal ModuleArgs Args { get; set; }
+        protected internal DeviceBasicInfo DevSimpleInfo { get { return Args.DeviceBasicInfo; } }
         #endregion
+
+
+
+        #region 虚方法
         /// <summary>
-        /// 判断完成事件是否被绑定
+        /// 简单处理运行结果
         /// </summary>
-        public bool IsFinishEventBound
-        {
-            get
-            {
-                return Finished != null ? true : false;
-            }
-        }
-        protected FunctionModule(ModuleArgs args)
-        {
-            Args = args;
-            DevSimpleInfo = Args.DevBasicInfo;
-        }
-        /// <summary>
-        /// 构造
-        /// </summary>
-        protected FunctionModule()
-        {
-            Ae = (command) =>
-            { return Executer.Execute(new Command(DevSimpleInfo, command)); };
-            Fe = (command) =>
-            { return Executer.Execute(new Command(DevSimpleInfo, command, ExeType.Fastboot)); };
-            Executer.OutputDataReceived += (s, e) => { OnOutReceived(e); };
-            Executer.ErrorDataReceived += (s, e) => { OnErrorReceived(e); };
-            Executer.ProcessStarted += (s, e) => { OnProcessStarted(e); };
-            TAG = GetType().Name;
-        }
-        /// <summary>
-        /// 构造
-        /// </summary>
-        /// <param name="info"></param>
-        protected FunctionModule(DeviceBasicInfo info) : this()
-        {
-            DevSimpleInfo = info;
-        }
-        /// <summary>
-        /// 开始执行函数,但不建议直接调用,建议使用RunningManager进行托管
-        /// </summary>
-        /// <param name="delayTime">延迟执行的时间,如果不写则立刻开始</param>
+        /// <param name="fullOutput"></param>
         /// <returns></returns>
-        internal void RunByRunningManager()
+        private ExecuteResult SimpleInitResult(OutputData fullOutput)
         {
-            if (DevSimpleInfo == null) throw new ArgumentNullException();
-            new Thread(() => { _Run(); })
-            {
-                Name = TAG + " MainMethod"
-            }.Start();
-        }
-        /// <summary>
-        /// 析构!
-        /// </summary>
-        public void Dispose()
-        {
-#pragma warning disable CA1063
-            Executer.Dispose();
-#pragma warning disable CA1063
-        }
-        /// <summary>
-        /// 强行取消运行
-        /// </summary>
-        /// <summary>
-        /// 单线程运行
-        /// </summary>
-        /// <returns></returns>
-        internal OutputData FastRun()
-        {
-            LogD("Fast Run");
-            OutputData o = new OutputData();
-            Finished += (s, e) => { o = e.OutputData; };
-            _Run();
-            return o;
-        }
-        /// <summary>
-        /// 运行过程
-        /// </summary>
-        private void _Run()
-        {
-            OnStarted(new StartEventArgs());
-            HandlingMouduleArgs(Args);
-            var fullOutput = MainMethod();
-            ExecuteResult executeResult = new ExecuteResult(fullOutput)
+            return new ExecuteResult(fullOutput)
             {
                 WasForcblyStop = WasFrociblyStop,
                 Level = WasFrociblyStop ? ResultLevel.Unsuccessful : ResultLevel.Successful,
             };
-            HandingOutput(ref executeResult);
-            OnFinished(new FinishEventArgs { Result = executeResult });
-            var t = DateTime.Now - DateTime.Now;
         }
-        #region 主体
         /// <summary>
-        /// 准备执行核心功能时,将调用此方法
+        /// 开始运行时发生
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="a"></param>
-        protected virtual void OnStarted(StartEventArgs a)
-        {
-            Logger.D(TAG, "Started");
-            Started?.Invoke(this, a);
-        }
-        protected virtual void HandlingMouduleArgs(ModuleArgs args)
+        /// <param name="e"></param>
+        protected virtual void OnStartup(EventArgs e)
         {
 
         }
         /// <summary>
+        /// 处理功能模块参数
+        /// </summary>
+        /// <param name="e"></param>
+        protected virtual void HandlingModuleArgs(ModuleArgs e) { }
+        /// <summary>
         /// 模块的核心代码,强制要求子类进行实现
         /// </summary>
         protected abstract OutputData MainMethod();
+        /// <summary>
+        /// 引发进程开始事件
+        /// </summary>
+        /// <param name="e"></param>
         protected virtual void OnProcessStarted(ProcessStartedEventArgs e)
         {
-            LogD($"Process ID {e.PID}");
-            ProcessStarted?.Invoke(this, e);
+            CoreProcessPid = e.PID;
+            CoreProcessStarted?.Invoke(this, e);
         }
         /// <summary>
         /// 引发OutReceived事件
@@ -245,9 +273,7 @@ namespace AutumnBox.Basic.Function
         /// </summary>
         /// <param name="output"></param>
         /// <param name="result"></param>
-        protected virtual void HandingOutput(ref ExecuteResult executeResult)
-        {
-        }
+        protected virtual void HandingOutput(ref ExecuteResult executeResult) { }
         /// <summary>
         /// 引发Finished事件
         /// </summary>
@@ -255,7 +281,6 @@ namespace AutumnBox.Basic.Function
         /// <param name="o"></param>
         protected virtual void OnFinished(FinishEventArgs e)
         {
-            Logger.D(TAG, "Finished");
             Finished?.Invoke(this, e);
         }
         #endregion

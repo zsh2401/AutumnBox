@@ -22,15 +22,16 @@ namespace AutumnBox.Basic.Function.Modules
     /// </summary>
     public sealed class ActivityLauncher : FunctionModule
     {
-        private ActivityLaunchArgs Args;
-        public ActivityLauncher(ActivityLaunchArgs args)
+        private ActivityLaunchArgs _Args;
+        protected override void HandlingModuleArgs(ModuleArgs e)
         {
-            this.Args = args;
+            base.HandlingModuleArgs(e);
+            _Args = (ActivityLaunchArgs)e;
         }
         protected override OutputData MainMethod()
         {
-            Logger.D(TAG, $"Try Launch {DeviceID} Activity : {Args.ActivityName}");
-            string command = $"shell am start -n {Args.PackageName}/{Args.PackageName + Args.ActivityName}";
+            Logger.D(TAG, $"Try Launch {DeviceID} Activity : {_Args.ActivityName}");
+            string command = $"shell am start -n {_Args.PackageName}/{_Args.PackageName + _Args.ActivityName}";
             var o = Ae(command);
             return o;
         }

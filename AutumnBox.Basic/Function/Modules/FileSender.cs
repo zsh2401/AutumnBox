@@ -23,29 +23,34 @@ namespace AutumnBox.Basic.Function.Modules
     public sealed class FileSender : FunctionModule
     {
         public event SingleFileSendedEventHandler sendSingleFinish;
-        public FileArgs Args { get; private set; }
-        
-        public FileSender(FileArgs fileArg) : base() {
-            this.Args= fileArg;
-            foreach (string file in fileArg.files) {
-                if (!File.Exists(file)) {
+        public FileArgs _Args { get; private set; }
+
+        protected override void HandlingModuleArgs(ModuleArgs e)
+        {
+            base.HandlingModuleArgs(e);
+            this._Args = e as FileArgs;
+            foreach (string file in _Args.files)
+            {
+                if (!File.Exists(file))
+                {
                     throw new FileNotFoundException();
                 }
             }
-            for (int i = 0;i < Args.files.Length; i++) {
-                Args.files[i].Replace('\\','/');
+            for (int i = 0; i < _Args.files.Length; i++)
+            {
+                _Args.files[i].Replace('\\', '/');
             }
         }
         protected override OutputData MainMethod()
         {
             string filename;
             string[] x;
-            foreach (string filepath in Args.files)
+            foreach (string filepath in _Args.files)
             {
                 x = filepath.Split('/');
                 filename = x[x.Length - 1];
                 Ae($"push \"{filepath}\" /sdcard/{filename}");
-                sendSingleFinish?.Invoke(this,new SingleFileSendedEventArgs(filepath));
+                sendSingleFinish?.Invoke(this, new SingleFileSendedEventArgs(filepath));
             }
             return new OutputData();
         }

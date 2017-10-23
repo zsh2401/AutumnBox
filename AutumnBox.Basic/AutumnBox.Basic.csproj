@@ -56,17 +56,18 @@
     <Compile Include="Executer\IOutSender.cs" />
     <Compile Include="Executer\Events.cs" />
     <Compile Include="Function\Args\ModuleArgs.cs" />
-    <Compile Include="Function\RunningManagerStatus.cs" />
-    <Compile Include="Function\FuncEventsContainer.cs" />
+    <Compile Include="Function\Event\FileSenderEvents.cs" />
+    <Compile Include="Function\Event\FunctionModuleEvents.cs" />
+    <Compile Include="Function\FunctionModuleProxy.cs" />
+    <Compile Include="Function\IFunctionModule.cs" />
     <Compile Include="Debug.cs" />
-    <Compile Include="Util\Interface\IDevicesChangedListener.cs" />
-    <Compile Include="Util\Interface\IDevicesGetter.cs" />
+    <Compile Include="Devices\IDevicesChangedListener.cs" />
+    <Compile Include="Devices\IDevicesGetter.cs" />
     <Compile Include="Executer\OutputData.cs" />
     <Compile Include="Devices\DevicesList.cs" />
     <Compile Include="Executer\ABProcess.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Function\Event\EventArgs.cs" />
     <Compile Include="Function\ExecuteResult.cs" />
     <Compile Include="Executer\Command.cs" />
     <Compile Include="Function\FunctionModule.cs" />
@@ -75,10 +76,8 @@
     <Compile Include="Devices\DeviceStatus.cs" />
     <Compile Include="Devices\DevicesHelper.cs" />
     <Compile Include="Executer\IOutReceiver.cs" />
-    <Compile Include="Function\RunningManager.cs" />
     <Compile Include="Function\Modules\CustomRecoveryFlasher.cs" />
     <Compile Include="Function\Modules\FileSender.cs" />
-    <Compile Include="Function\Event\EventsHandlers.cs" />
     <Compile Include="Function\Args\Args.cs" />
     <Compile Include="Function\Args\RebootOptions.cs" />
     <Compile Include="Function\Modules\RebootOperator.cs" />
@@ -97,9 +96,7 @@
       <LastGenOutput>Paths.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Function\Interface\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Adb\adb.exe">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

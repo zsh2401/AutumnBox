@@ -17,15 +17,17 @@ namespace AutumnBox.Basic.Function.Modules
     using AutumnBox.Basic.Function.Args;
     public sealed class ScreenShoter : FunctionModule
     {
-        ScreenShoterArgs Args;
-        public ScreenShoter(ScreenShoterArgs args) {
-            Args = args;
+        ScreenShoterArgs _Args;
+        protected override void HandlingModuleArgs(ModuleArgs e)
+        {
+            base.HandlingModuleArgs(e);
+            _Args = (ScreenShoterArgs)e;
         }
         protected override OutputData MainMethod()
         {
             OutputData o = new OutputData();
             o.Append(Ae("shell /system/bin/screencap -p /sdcard/screenshot.png"));
-            o.Append(Ae("pull /sdcard/screenshot.png " + Args.LocalPath));
+            o.Append(Ae("pull /sdcard/screenshot.png " + _Args.LocalPath));
             o.Append(Ae("shell rm -rf /sdcard/screenshot.png"));
             return o;
         }

@@ -18,6 +18,6 @@ namespace AutumnBox.Basic.Function.Args
 {
     public class ModuleArgs:BaseObject
     {
-        public DeviceBasicInfo DevBasicInfo { get; set; }
+        public DeviceBasicInfo DeviceBasicInfo { get; set; }
     }
 }

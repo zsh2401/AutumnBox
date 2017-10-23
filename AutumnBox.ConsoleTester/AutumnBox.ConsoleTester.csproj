@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ObjTest\TestModuleTest.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -50,7 +51,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="MethodTest\" />
-    <Folder Include="ObjTest\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AutumnBox.Basic\AutumnBox.Basic.csproj">
+      <Project>{84044FB2-BD38-4283-8065-B639270ECE0F}</Project>
+      <Name>AutumnBox.Basic</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
