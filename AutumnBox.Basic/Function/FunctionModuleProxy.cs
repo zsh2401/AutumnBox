@@ -35,11 +35,19 @@ namespace AutumnBox.Basic.Function
             remove { FunctionModule.Finished -= value; }
         }
         public IFunctionModule FunctionModule { get; private set; }
-        private FunctionModuleProxy()
+        public ModuleStatus ModuleStatus { get { return FunctionModule.Status; } }
+        private FunctionModuleProxy() { }
+        /// <summary>
+        /// 异步运行
+        /// </summary>
+        public void AsyncRun()
         {
-        }
-        public void AsyncRun() =>
             FunctionModule.AsyncRun();
+        }
+        /// <summary>
+        /// 同步运行
+        /// </summary>
+        /// <returns></returns>
         public ExecuteResult SyncRun()
         {
             return FunctionModule.SyncRun();

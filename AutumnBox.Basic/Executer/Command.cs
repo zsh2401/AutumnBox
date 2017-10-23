@@ -18,7 +18,7 @@ namespace AutumnBox.Basic.Executer
     /// <summary>
     /// 封装命令
     /// </summary>
-    public class Command
+    public sealed class Command:BaseObject
     {
         /// <summary>
         /// 文件名

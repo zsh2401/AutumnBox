@@ -78,9 +78,7 @@ namespace AutumnBox.Basic.Function
             }
         }
         private ModuleArgs _ModuleArgs;
-
-
-
+        public ModuleStatus Status { get; private set; } = ModuleStatus.Loading;
         /// <summary>
         /// 当功能模块开始执行时发生
         /// </summary>
@@ -101,9 +99,6 @@ namespace AutumnBox.Basic.Function
         /// 核心进程开始时发生
         /// </summary>
         public event ProcessStartedEventHandler CoreProcessStarted;
-
-
-
         /// <summary>
         /// 如果是被非正常停止的,此值为True
         /// </summary>
@@ -123,6 +118,7 @@ namespace AutumnBox.Basic.Function
         /// </summary>
         public void AsyncRun()
         {
+            if (!IsFinishedEventRegistered) throw new EventNotBoundException();
             if (DevSimpleInfo == null) throw new ArgumentNullException();
             new Thread(() => { Run(); })
             {
@@ -135,12 +131,14 @@ namespace AutumnBox.Basic.Function
         /// <returns></returns>
         public ExecuteResult SyncRun()
         {
-            //LogD("Fast Run");
             ExecuteResult eresult = null;
             Finished += (s, e) => { eresult = e.Result; };
             Run();
             return eresult;
         }
+        /// <summary>
+        /// 强制杀死核心进程
+        /// </summary>
         public void KillProcess()
         {
             SystemHelper.KillProcessAndChildrens(CoreProcessPid);
@@ -158,6 +156,7 @@ namespace AutumnBox.Basic.Function
 #pragma warning disable CA1063
             Executer.Dispose();
 #pragma warning disable CA1063
+            KillProcess();
         }
         /// <summary>
         /// 构造
@@ -172,19 +171,21 @@ namespace AutumnBox.Basic.Function
             Executer.ErrorDataReceived += (s, e) => { OnErrorReceived(e); };
             Executer.ProcessStarted += (s, e) => { OnProcessStarted(e); };
             TAG = GetType().Name;
+            Status = ModuleStatus.WaitingToRun;
         }
         /// <summary>
         /// 运行过程
         /// </summary>
         private void Run()
         {
+            Status = ModuleStatus.Running;
             OnStartup(new EventArgs());
             var fullOutput = MainMethod();
             var executeResult = SimpleInitResult(fullOutput);
             HandingOutput(ref executeResult);
             OnFinished(new FinishEventArgs { Result = executeResult });
+            Status = WasFrociblyStop ? ModuleStatus.ForceStoped : ModuleStatus.Finished;
         }
-
 
 
         #region 保护字段
@@ -232,7 +233,7 @@ namespace AutumnBox.Basic.Function
         /// <param name="e"></param>
         protected virtual void OnStartup(EventArgs e)
         {
-
+            Startup?.Invoke(this, new EventArgs());
         }
         /// <summary>
         /// 处理功能模块参数

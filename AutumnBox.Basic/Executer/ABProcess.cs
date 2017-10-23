@@ -16,7 +16,7 @@ namespace AutumnBox.Basic.Executer
     using System;
     using System.Diagnostics;
     using static Basic.Debug;
-    internal sealed class ABProcess : Process
+    public sealed class ABProcess : Process
     {
         public event ProcessStartedEventHandler ProcessStarted;
         private OutputData _tempOut = new OutputData();

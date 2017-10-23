@@ -17,6 +17,7 @@ namespace AutumnBox.Basic.Function
         event EventHandler Startup;
         event FinishedEventHandler Finished;
         event ProcessStartedEventHandler CoreProcessStarted;
+        ModuleStatus Status { get; }
         bool IsFinishedEventRegistered { get; }
         int CoreProcessPid { get; }
         bool WasFrociblyStop { get; }

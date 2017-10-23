@@ -19,7 +19,7 @@ namespace AutumnBox.Basic.Executer
     using System.Diagnostics;
     using System.Text;
 
-    public class OutputData : BaseObject
+    public sealed class OutputData : BaseObject
     {
         public IOutSender OutSender
         {

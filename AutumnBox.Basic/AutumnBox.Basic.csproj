@@ -76,6 +76,7 @@
     <Compile Include="Devices\DeviceStatus.cs" />
     <Compile Include="Devices\DevicesHelper.cs" />
     <Compile Include="Executer\IOutReceiver.cs" />
+    <Compile Include="Function\ModuleStatus.cs" />
     <Compile Include="Function\Modules\CustomRecoveryFlasher.cs" />
     <Compile Include="Function\Modules\FileSender.cs" />
     <Compile Include="Function\Args\Args.cs" />

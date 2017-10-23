@@ -21,7 +21,7 @@ namespace AutumnBox.Basic.Function
         MaybeUnsuccessful = 2,
         Unsuccessful = 3,
     }
-    public class ExecuteResult
+    public sealed class ExecuteResult
     {
         /// <summary>
         /// 具体输出
