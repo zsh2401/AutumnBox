@@ -68,9 +68,9 @@ namespace AutumnBox.UI.Grids
                 App.LogD(this, "Get basic info finished");
                 this.Dispatcher.Invoke(() =>
                 {
-                    LabelAndroidVersion.Content = simpleInfo.AndroidVersion;
-                    LabelModel.Content = simpleInfo.M;
-                    LabelCode.Content = simpleInfo.Code;
+                    LabelAndroidVersion.Content = simpleInfo.AndroidVersion ?? App.Current.Resources["GetFail"].ToString();
+                    LabelModel.Content = simpleInfo.M ?? App.Current.Resources["GetFail"].ToString();
+                    LabelCode.Content = simpleInfo.Code ?? App.Current.Resources["GetFail"].ToString();
                     LabelRom.Content = App.Current.Resources["Getting"].ToString();
                     LabelRam.Content = App.Current.Resources["Getting"].ToString();
                     LabelBattery.Content = App.Current.Resources["Getting"].ToString();
