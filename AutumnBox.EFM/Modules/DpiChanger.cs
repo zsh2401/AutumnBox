@@ -22,7 +22,7 @@ namespace AutumnBox.Basic.Function.Modules
         protected override void HandlingModuleArgs(ModuleArgs e)
         {
             base.HandlingModuleArgs(e);
-            dpi = (e as DpiChangerArgs).Dpi;
+            dpi = ((DpiChangerArgs)e).Dpi;
         }
         protected override OutputData MainMethod()
         {

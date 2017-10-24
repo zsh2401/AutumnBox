@@ -26,7 +26,7 @@ namespace AutumnBox.Basic.Function
         /// <summary>
         /// 具体输出
         /// </summary>
-        public OutputData OutputData { get; internal set; }
+        public OutputData OutputData { get; private set; }
         /// <summary>
         /// 是否是强制停止的
         /// </summary>
@@ -43,7 +43,6 @@ namespace AutumnBox.Basic.Function
         /// 建议信息,一般交由界面进行设置
         /// </summary>
         public string Advise { get; set; } = string.Empty;
-
         /// <summary>
         /// 初始化
         /// </summary>

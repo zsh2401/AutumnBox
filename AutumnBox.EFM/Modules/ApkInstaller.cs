@@ -11,15 +11,12 @@
 * Company: I am free man
 *
 \* =============================================================================*/
-using System;
-using System.Collections.Generic;
-using System.Text;
 using AutumnBox.Basic.Executer;
 using AutumnBox.Basic.Function.Args;
 
 namespace AutumnBox.Basic.Function.Modules
 {
-    public class ApkInstaller : FunctionModule
+    public sealed class ApkInstaller : FunctionModule
     {
         private InstallApkArgs _Args;
         protected override void HandlingModuleArgs(ModuleArgs e)
@@ -32,6 +29,10 @@ namespace AutumnBox.Basic.Function.Modules
             OutputData o = new OutputData() { OutSender = this.Executer };
             Ae($"install {_Args.ApkPath}");
             return o;
+        }
+        protected override void HandingOutput(ref ExecuteResult executeResult)
+        {
+            base.HandingOutput(ref executeResult);
         }
     }
 }
