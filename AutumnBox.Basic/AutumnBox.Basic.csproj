@@ -49,10 +49,12 @@
     <Compile Include="Devices\DeviceHardwareInfo.cs" />
     <Compile Include="Devices\DevicesGetter.cs" />
     <Compile Include="Devices\DeviceBasicInfo.cs" />
-    <Compile Include="Executer\CommandExecuter\CommandExecuter.cs" />
-    <Compile Include="Executer\CommandExecuter\CommandExecuter.Static.cs" />
-    <Compile Include="Executer\CommandExecuter\CommandExecuter.ExeFunc.cs" />
-    <Compile Include="Executer\CommandExecuter\ExeType.cs" />
+    <Compile Include="Devices\IGetatableById.cs" />
+    <Compile Include="Executer\CommandExecuter.cs" />
+    <Compile Include="Executer\CommandExecuter.Static.cs" />
+    <Compile Include="Executer\CommandExecuter.ExeFunc.cs" />
+    <Compile Include="Executer\Executer.cs" />
+    <Compile Include="Executer\ExeType.cs" />
     <Compile Include="Executer\IOutSender.cs" />
     <Compile Include="Executer\Events.cs" />
     <Compile Include="Function\Args\ModuleArgs.cs" />

@@ -17,6 +17,7 @@ namespace AutumnBox.Basic.Devices
     using AutumnBox.Basic.Util;
     using System;
     using System.Collections;
+    using System.Diagnostics;
     using System.Threading;
     using static Basic.Debug;
     /// <summary>
@@ -56,14 +57,20 @@ namespace AutumnBox.Basic.Devices
         /// <returns></returns>
         public static DeviceHardwareInfo GetDeviceAdvanceInfo(string id)
         {
-            DeviceHardwareInfo info = new DeviceHardwareInfo();
-            info.ID = id;
+            DeviceHardwareInfo info = new DeviceHardwareInfo
+            {
+                ID = id
+            };
+            CommandExecuter.Start();
             try
             {
                 string output = (executer.Execute(new Command(id, "shell \"cat /proc/meminfo | grep MemTotal\"")).LineOut[0]);
-                Debug.Logger.T(TAG, "MemTotal " + output);
+                Logger.T(TAG, "MemTotal " + output);
                 string result = System.Text.RegularExpressions.Regex.Replace(output, @"[^0-9]+", "");
-                info.MemTotal = Math.Round((Convert.ToDouble(result) / 1024.0 / 1024.0), MidpointRounding.AwayFromZero);
+                Logger.T(TAG, "MemTotal kb " + result);
+                double gbMem = Math.Round((Convert.ToDouble(result) / 1024.0 / 1024.0), MidpointRounding.AwayFromZero);
+                Logger.T(TAG, "MemTotal gb " + gbMem);
+                info.MemTotal = gbMem;
             }
             catch (Exception e) { Logger.T(TAG, "Get MemTotal fail", e); }
             try
@@ -109,6 +116,7 @@ namespace AutumnBox.Basic.Devices
                 info.BatteryLevel = Convert.ToInt32(output.Split(':')[1].TrimStart());
             }
             catch (Exception e) { Logger.T(TAG, "Get Battery info fail", e); }
+
             return info;
         }
         /// <summary>

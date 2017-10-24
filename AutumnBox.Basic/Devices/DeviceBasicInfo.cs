@@ -53,9 +53,5 @@ namespace AutumnBox.Basic.Devices
         {
             return base.GetHashCode();
         }
-        //public RunningManager GetRunningManger(FunctionModule fm)
-        //{
-        //    return RunningManager.Create(this, fm);
-        //}
     }
 }
