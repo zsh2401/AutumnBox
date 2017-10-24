@@ -60,13 +60,12 @@ namespace AutumnBox.UI.Grids
                 _SetStatusPanel(Res.DynamicIcons.no_selected, "PleaseSelectedADevice");
             });
         }
-
         private void SetByDeviceSimpleInfo(DeviceBasicInfo devSimpleInfo)
         {
             new Thread(() =>
             {
-                var simpleInfo = DevicesHelper.GetDeviceInfo(devSimpleInfo.Id);
-                App.LogD(this,"Get basic info finished");
+                var simpleInfo = DeviceInfoHelper.GetBuildInfo(devSimpleInfo.Id);
+                App.LogD(this, "Get basic info finished");
                 this.Dispatcher.Invoke(() =>
                 {
                     LabelAndroidVersion.Content = simpleInfo.AndroidVersion;
@@ -97,8 +96,8 @@ namespace AutumnBox.UI.Grids
                     App.LogD(this, "Finish Base refresh");
                     RefreshFinished?.Invoke(this, new EventArgs());
                 });
-                var advInfo = DevicesHelper.GetDeviceAdvanceInfo(devSimpleInfo.Id);
-                bool IsRoot = DevicesHelper.CheckRoot(devSimpleInfo.Id);
+                var advInfo = DeviceInfoHelper.GetHwInfo(devSimpleInfo.Id);
+                bool IsRoot = DeviceInfoHelper.CheckRoot(devSimpleInfo.Id);
                 this.Dispatcher.Invoke(() =>
                 {
                     LabelRom.Content = (advInfo.StorageTotal != null) ? advInfo.StorageTotal + "GB" : App.Current.Resources["GetFail"].ToString();

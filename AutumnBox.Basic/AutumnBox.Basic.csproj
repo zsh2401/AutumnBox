@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Devices\DeviceHardwareInfo.cs" />
+    <Compile Include="Devices\DeviceInfoHelper.cs" />
     <Compile Include="Devices\DevicesGetter.cs" />
     <Compile Include="Devices\DeviceBasicInfo.cs" />
     <Compile Include="Devices\IGetatableById.cs" />

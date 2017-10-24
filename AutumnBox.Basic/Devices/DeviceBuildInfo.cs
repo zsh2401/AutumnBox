@@ -19,12 +19,11 @@ namespace AutumnBox.Basic.Devices
     /// </summary>
     public struct DeviceBuildInfo
     {
+        public string Id { internal set; get; }//id
         public string Model { internal set; get; }//型号
         public string Brand { internal set; get; }//厂商
         public string Code { internal set; get; }//代号
-        public string Id { internal set; get; }//id
         public string M { get { return Brand + " " + Model; } }
         public string AndroidVersion { internal set; get; }//安卓版本
-        public DeviceStatus DeviceStatus { internal set; get; }//设备状态
     }
 }

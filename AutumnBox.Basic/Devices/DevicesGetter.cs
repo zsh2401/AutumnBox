@@ -45,7 +45,7 @@ namespace AutumnBox.Basic.Devices
                     new DeviceBasicInfo
                     {
                         Id = l[i].Split('\t')[0],
-                        Status = DevicesHelper.StringStatusToEnumStatus(l[i].Split('\t')[1])
+                        Status = DeviceInfoHelper.StringStatusToEnumStatus(l[i].Split('\t')[1])
                     });
             }
         }
@@ -60,7 +60,7 @@ namespace AutumnBox.Basic.Devices
                     new DeviceBasicInfo
                     {
                         Id = l[i].Split('\t')[0],
-                        Status = DevicesHelper.StringStatusToEnumStatus(l[i].Split('\t')[1])
+                        Status = DeviceInfoHelper.StringStatusToEnumStatus(l[i].Split('\t')[1])
                     });
                 }
                 catch { }
