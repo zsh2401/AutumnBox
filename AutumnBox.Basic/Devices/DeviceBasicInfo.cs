@@ -11,8 +11,6 @@
 * Company: I am free man
 *
 \* =============================================================================*/
-using AutumnBox.Basic.Function;
-using System;
 
 namespace AutumnBox.Basic.Devices
 {
@@ -23,6 +21,14 @@ namespace AutumnBox.Basic.Devices
     {
         public string Id { get; set; }
         public DeviceStatus Status { get; set; }
+        public static implicit operator string(DeviceBasicInfo info)
+        {
+            return info.Id;
+        }
+        public static implicit operator DeviceStatus(DeviceBasicInfo info)
+        {
+            return info.Status;
+        }
         public override string ToString()
         {
             return Id;

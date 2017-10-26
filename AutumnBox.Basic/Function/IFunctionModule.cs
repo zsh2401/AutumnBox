@@ -10,20 +10,17 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Function
 {
-    public interface IFunctionModule : IDisposable
+    public interface IFunctionModule
     {
         event DataReceivedEventHandler OutReceived;
         event DataReceivedEventHandler ErrorReceived;
-        event EventHandler Startup;
+        event StartupEventHandler Startup;
         event FinishedEventHandler Finished;
         event ProcessStartedEventHandler CoreProcessStarted;
         ModuleStatus Status { get; }
         bool IsFinishedEventRegistered { get; }
-        int CoreProcessPid { get; }
-        bool WasFrociblyStop { get; }
-        ModuleArgs Args { get; set; }
-        void AsyncRun();
-        ExecuteResult SyncRun();
-        void KillProcess();
+        ExecuteResult Run(ModuleArgs args);
+        void BeginRun(ModuleArgs args);
+        void ForceStop();
     }
 }

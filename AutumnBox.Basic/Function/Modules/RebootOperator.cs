@@ -14,6 +14,7 @@
 using AutumnBox.Basic.Devices;
 using AutumnBox.Basic.Executer;
 using AutumnBox.Basic.Function.Args;
+using AutumnBox.Basic.Function.Event;
 
 namespace AutumnBox.Basic.Function.Modules
 {
@@ -29,10 +30,10 @@ namespace AutumnBox.Basic.Function.Modules
         }
         private ExecuterType t;
         private RebootArgs _Args;
-        protected override void HandlingModuleArgs(ModuleArgs e)
+        protected override void OnStartup(StartupEventArgs e)
         {
-            base.HandlingModuleArgs(e);
-            this._Args = (e as RebootArgs);
+            base.OnStartup(e);
+            this._Args = (e.ModuleArgs as RebootArgs);
             switch (_Args.nowStatus)
             {
                 case DeviceStatus.FASTBOOT:

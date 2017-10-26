@@ -65,24 +65,12 @@ namespace AutumnBox.Basic.Function
         /// 核心进程id
         /// </summary>
         public int CoreProcessPid { get; private set; }
-        /// <summary>
-        /// 参数
-        /// </summary>
-        public ModuleArgs Args
-        {
-            get { return _ModuleArgs; }
-            set
-            {
-                _ModuleArgs = value;
-                HandlingModuleArgs(value);
-            }
-        }
-        private ModuleArgs _ModuleArgs;
+        protected ModuleArgs OriginArgs;
         public ModuleStatus Status { get; private set; } = ModuleStatus.Loading;
         /// <summary>
         /// 当功能模块开始执行时发生
         /// </summary>
-        public event EventHandler Startup;
+        public event StartupEventHandler Startup;
         /// <summary>
         /// 完成操作时的事件
         /// </summary>
@@ -116,11 +104,12 @@ namespace AutumnBox.Basic.Function
         /// <summary>
         /// 异步执行
         /// </summary>
-        public void AsyncRun()
+        public void BeginRun(ModuleArgs args)
         {
+            OriginArgs = args;
             if (!IsFinishedEventRegistered) throw new EventNotBoundException();
             if (DevSimpleInfo == null) throw new ArgumentNullException();
-            new Thread(() => { Run(); })
+            new Thread(() => { _Run(args); })
             {
                 Name = TAG + " MainMethod"
             }.Start();
@@ -129,17 +118,18 @@ namespace AutumnBox.Basic.Function
         /// 同步执行
         /// </summary>
         /// <returns></returns>
-        public ExecuteResult SyncRun()
+        public ExecuteResult Run(ModuleArgs args)
         {
+            OriginArgs = args;
             ExecuteResult eresult = null;
             Finished += (s, e) => { eresult = e.Result; };
-            Run();
+            _Run(args);
             return eresult;
         }
         /// <summary>
         /// 强制杀死核心进程
         /// </summary>
-        public void KillProcess()
+        public void ForceStop()
         {
             SystemHelper.KillProcessAndChildrens(CoreProcessPid);
             WasFrociblyStop = true;
@@ -156,7 +146,7 @@ namespace AutumnBox.Basic.Function
 #pragma warning disable CA1063
             Executer.Dispose();
 #pragma warning disable CA1063
-            KillProcess();
+            ForceStop();
         }
         /// <summary>
         /// 构造
@@ -176,10 +166,10 @@ namespace AutumnBox.Basic.Function
         /// <summary>
         /// 运行过程
         /// </summary>
-        private void Run()
+        private void _Run(ModuleArgs args)
         {
             Status = ModuleStatus.Running;
-            OnStartup(new EventArgs());
+            OnStartup(new StartupEventArgs() { ModuleArgs = args });
             var fullOutput = MainMethod();
             var executeResult = SimpleInitResult(fullOutput);
             HandingOutput(ref executeResult);
@@ -221,7 +211,7 @@ namespace AutumnBox.Basic.Function
         /// <summary>
         /// 绑定的设备简单信息
         /// </summary>s
-        protected internal DeviceBasicInfo DevSimpleInfo { get { return Args.DeviceBasicInfo; } }
+        protected internal DeviceBasicInfo DevSimpleInfo { get { return OriginArgs.DeviceBasicInfo; } }
         #endregion
 
 
@@ -231,15 +221,10 @@ namespace AutumnBox.Basic.Function
         /// 开始运行时发生
         /// </summary>
         /// <param name="e"></param>
-        protected virtual void OnStartup(EventArgs e)
+        protected virtual void OnStartup(StartupEventArgs e)
         {
-            Startup?.Invoke(this, new EventArgs());
+            Startup?.Invoke(this, e);
         }
-        /// <summary>
-        /// 处理功能模块参数
-        /// </summary>
-        /// <param name="e"></param>
-        protected virtual void HandlingModuleArgs(ModuleArgs e) { }
         /// <summary>
         /// 模块的核心代码,强制要求子类进行实现
         /// </summary>

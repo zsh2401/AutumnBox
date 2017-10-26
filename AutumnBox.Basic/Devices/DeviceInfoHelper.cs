@@ -97,6 +97,10 @@ namespace AutumnBox.Basic.Devices
             });
             return status;
         }
+        public static int? GetDpi(string id)
+        {
+            return null;
+        }
         public static int? GetBatteryLevel(string id)
         {
             try

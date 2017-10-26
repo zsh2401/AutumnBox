@@ -6,15 +6,16 @@ using System.Text;
 using System.Threading.Tasks;
 using AutumnBox.Basic.Executer;
 using AutumnBox.Basic.Function.Args;
+using AutumnBox.Basic.Function.Event;
 
 namespace AutumnBox.ConsoleTester.ObjTest
 {
     public class TestModuleTest : FunctionModule
     {
-        protected override void HandlingModuleArgs(ModuleArgs e)
+        protected override void OnStartup(StartupEventArgs e)
         {
-            base.HandlingModuleArgs(e);
-            Console.WriteLine(e is FileArgs);
+            base.OnStartup(e);
+            Console.WriteLine(e.ModuleArgs is FileArgs);
         }
         protected override OutputData MainMethod()
         {

@@ -13,16 +13,17 @@
 \* =============================================================================*/
 using AutumnBox.Basic.Executer;
 using AutumnBox.Basic.Function.Args;
+using AutumnBox.Basic.Function.Event;
 
 namespace AutumnBox.Basic.Function.Modules
 {
     public sealed class ApkInstaller : FunctionModule
     {
         private InstallApkArgs _Args;
-        protected override void HandlingModuleArgs(ModuleArgs e)
+        protected override void OnStartup(StartupEventArgs e)
         {
-            base.HandlingModuleArgs(e);
-            _Args = (InstallApkArgs)e;
+            base.OnStartup(e);
+            _Args = (InstallApkArgs)e.ModuleArgs;
         }
         protected override OutputData MainMethod()
         {

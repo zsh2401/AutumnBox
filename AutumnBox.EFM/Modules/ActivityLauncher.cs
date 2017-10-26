@@ -17,16 +17,18 @@ namespace AutumnBox.Basic.Function.Modules
     using AutumnBox.Basic.Executer;
     using AutumnBox.Basic.Function.Args;
     using AutumnBox.Basic.Util;
+    using AutumnBox.Basic.Function.Event;
+
     /// <summary>
     /// 活动启动器
     /// </summary>
     public sealed class ActivityLauncher : FunctionModule
     {
         private ActivityLaunchArgs _Args;
-        protected override void HandlingModuleArgs(ModuleArgs e)
+        protected override void OnStartup(StartupEventArgs e)
         {
-            base.HandlingModuleArgs(e);
-            _Args = (ActivityLaunchArgs)e;
+            base.OnStartup(e);
+            _Args = (ActivityLaunchArgs)e.ModuleArgs;
         }
         protected override OutputData MainMethod()
         {

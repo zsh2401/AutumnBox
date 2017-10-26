@@ -18,7 +18,9 @@ using System.Diagnostics;
 
 namespace AutumnBox.Basic.Function
 {
-
+    /// <summary>
+    /// 功能模块代理器,更加方便的管理功能模块
+    /// </summary>
     public class FunctionModuleProxy
     {
         public event DataReceivedEventHandler OutReceived
@@ -31,7 +33,7 @@ namespace AutumnBox.Basic.Function
             add { FunctionModule.ErrorReceived += value; }
             remove { FunctionModule.ErrorReceived -= value; }
         }
-        public event EventHandler Startup
+        public event StartupEventHandler Startup
         {
             add { FunctionModule.Startup += value; }
             remove { FunctionModule.Startup -= value; }
@@ -41,10 +43,11 @@ namespace AutumnBox.Basic.Function
             add { FunctionModule.Finished += value; }
             remove { FunctionModule.Finished -= value; }
         }
+        private ModuleArgs fmArgs;
         /// <summary>
         /// 代理的模块
         /// </summary>
-        public IFunctionModule FunctionModule { get; private set; }
+        private IFunctionModule FunctionModule { get; set; }
         /// <summary>
         /// 代理的模块的状态
         /// </summary>
@@ -58,22 +61,22 @@ namespace AutumnBox.Basic.Function
         /// </summary>
         public void AsyncRun()
         {
-            FunctionModule.AsyncRun();
+            FunctionModule.BeginRun(fmArgs);
         }
         /// <summary>
         /// 同步运行
         /// </summary>
         /// <returns></returns>
-        public ExecuteResult SyncRun()
+        public ExecuteResult FastRun()
         {
-            return FunctionModule.SyncRun();
+            return FunctionModule.Run(fmArgs);
         }
         /// <summary>
         /// 强制停止被代理的模块
         /// </summary>
         public void ForceStop()
         {
-            FunctionModule.KillProcess();
+            FunctionModule.ForceStop();
         }
         /// <summary>
         /// 创建一个新的模块与代理器
@@ -81,13 +84,13 @@ namespace AutumnBox.Basic.Function
         /// <typeparam name="T"></typeparam>
         /// <param name="e"></param>
         /// <returns></returns>
-        public static FunctionModuleProxy Create<T>(ModuleArgs e) where T : IFunctionModule, new()
+        public static FunctionModuleProxy Create<T>(ModuleArgs args) where T : IFunctionModule, new()
         {
             FunctionModuleProxy fmp = new FunctionModuleProxy()
             {
                 FunctionModule = new T()
             };
-            fmp.FunctionModule.Args = e;
+            fmp.fmArgs = args;
             return fmp;
         }
     }

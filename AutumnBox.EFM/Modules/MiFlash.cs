@@ -14,6 +14,7 @@
 /*我想要传达给你的话语*/
 using AutumnBox.Basic.Executer;
 using AutumnBox.Basic.Function.Args;
+using AutumnBox.Basic.Function.Event;
 
 namespace AutumnBox.Basic.Function.Modules
 {
@@ -47,10 +48,10 @@ namespace AutumnBox.Basic.Function.Modules
                 }
             };
         }
-        protected override void HandlingModuleArgs(ModuleArgs e)
+        protected override void OnStartup(StartupEventArgs e)
         {
-            base.HandlingModuleArgs(e);
-            this._Args = (e as MiFlasherArgs);
+            base.OnStartup(e);
+            this._Args = (e.ModuleArgs as MiFlasherArgs);
         }
         protected override OutputData MainMethod()
         {

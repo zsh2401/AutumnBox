@@ -13,16 +13,17 @@
 \* =============================================================================*/
 using AutumnBox.Basic.Executer;
 using AutumnBox.Basic.Function.Args;
+using AutumnBox.Basic.Function.Event;
 
 namespace AutumnBox.Basic.Function.Modules
 {
     public class DpiChanger : FunctionModule
     {
         private int dpi;
-        protected override void HandlingModuleArgs(ModuleArgs e)
+        protected override void OnStartup(StartupEventArgs e)
         {
-            base.HandlingModuleArgs(e);
-            dpi = ((DpiChangerArgs)e).Dpi;
+            base.OnStartup(e);
+            dpi = ((DpiChangerArgs)e.ModuleArgs).Dpi;
         }
         protected override OutputData MainMethod()
         {

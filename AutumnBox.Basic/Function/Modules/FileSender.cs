@@ -25,10 +25,10 @@ namespace AutumnBox.Basic.Function.Modules
         public event SingleFileSendedEventHandler sendSingleFinish;
         public FileArgs _Args { get; private set; }
 
-        protected override void HandlingModuleArgs(ModuleArgs e)
+        protected override void OnStartup(StartupEventArgs e)
         {
-            base.HandlingModuleArgs(e);
-            this._Args = e as FileArgs;
+            base.OnStartup(e);
+            this._Args = e.ModuleArgs as FileArgs;
             foreach (string file in _Args.files)
             {
                 if (!File.Exists(file))

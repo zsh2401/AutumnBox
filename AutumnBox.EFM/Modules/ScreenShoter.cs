@@ -15,15 +15,16 @@ namespace AutumnBox.Basic.Function.Modules
 {
     using AutumnBox.Basic.Executer;
     using AutumnBox.Basic.Function.Args;
+    using AutumnBox.Basic.Function.Event;
     using System;
 
     public sealed class ScreenShoter : FunctionModule
     {
         ScreenShoterArgs _Args;
-        protected override void HandlingModuleArgs(ModuleArgs e)
+        protected override void OnStartup(StartupEventArgs e)
         {
-            base.HandlingModuleArgs(e);
-            _Args = (ScreenShoterArgs)e;
+            base.OnStartup(e);
+            _Args = (ScreenShoterArgs)e.ModuleArgs;
         }
         protected override OutputData MainMethod()
         {

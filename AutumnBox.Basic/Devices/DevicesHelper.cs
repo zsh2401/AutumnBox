@@ -13,13 +13,6 @@
 \* =============================================================================*/
 namespace AutumnBox.Basic.Devices
 {
-    using AutumnBox.Basic.Executer;
-    using AutumnBox.Basic.Util;
-    using System;
-    using System.Collections;
-    using System.Diagnostics;
-    using System.Threading;
-    using static Basic.Debug;
     /// <summary>
     /// 关于设备的一些静态函数
     /// </summary>

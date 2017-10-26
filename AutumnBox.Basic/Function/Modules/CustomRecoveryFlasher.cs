@@ -13,6 +13,7 @@
 \* =============================================================================*/
 using AutumnBox.Basic.Executer;
 using AutumnBox.Basic.Function.Args;
+using AutumnBox.Basic.Function.Event;
 using AutumnBox.Basic.Util;
 using static AutumnBox.Basic.Debug;
 namespace AutumnBox.Basic.Function.Modules
@@ -23,10 +24,10 @@ namespace AutumnBox.Basic.Function.Modules
     public sealed class CustomRecoveryFlasher : FunctionModule
     {
         private FileArgs _Args;
-        protected override void HandlingModuleArgs(ModuleArgs e)
+        protected override void OnStartup(StartupEventArgs e)
         {
-            base.HandlingModuleArgs(e);
-            _Args = (FileArgs)e;
+            base.OnStartup(e);
+            _Args = (FileArgs)e.ModuleArgs;
         }
         protected override OutputData MainMethod()
         {
