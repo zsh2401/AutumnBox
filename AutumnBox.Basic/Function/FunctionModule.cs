@@ -60,12 +60,38 @@ namespace AutumnBox.Basic.Function
     /// </summary>
     public abstract class FunctionModule : BaseObject, IDisposable, IFunctionModule
     {
-        #region IFunctionModule
+
         /// <summary>
         /// 核心进程id
         /// </summary>
-        public int CoreProcessPid { get; private set; }
+        private int CoreProcessPid { get; set; }
+        /// <summary>
+        /// 源模块参数
+        /// </summary>
         protected ModuleArgs OriginArgs;
+        /// <summary>
+        /// 向已绑定的设备执行adb命令
+        /// </summary>
+        protected readonly Func<string, OutputData> Ae;
+        /// <summary>
+        /// 向已绑定的设备执行fastboot命令
+        /// </summary>
+        protected readonly Func<string, OutputData> Fe;
+        /// <summary>
+        /// 执行器
+        /// </summary>
+        protected readonly CommandExecuter Executer = new CommandExecuter();
+        /// <summary>
+        /// 功能模块执行时指定的设备id
+        /// </summary>
+        protected string DeviceID { get { return DevSimpleInfo.Id; } }
+        /// <summary>
+        /// 绑定的设备简单信息
+        /// </summary>s
+        protected internal DeviceBasicInfo DevSimpleInfo { get { return OriginArgs.DeviceBasicInfo; } }
+        /// <summary>
+        /// 模块状态
+        /// </summary>
         public ModuleStatus Status { get; private set; } = ModuleStatus.Loading;
         /// <summary>
         /// 当功能模块开始执行时发生
@@ -88,10 +114,6 @@ namespace AutumnBox.Basic.Function
         /// </summary>
         public event ProcessStartedEventHandler CoreProcessStarted;
         /// <summary>
-        /// 如果是被非正常停止的,此值为True
-        /// </summary>
-        public bool WasFrociblyStop { get; private set; } = false;
-        /// <summary>
         /// 判断完成事件是否被绑定
         /// </summary>
         public bool IsFinishedEventRegistered
@@ -100,6 +122,48 @@ namespace AutumnBox.Basic.Function
             {
                 return Finished != null ? true : false;
             }
+        }
+
+
+        /// <summary>
+        /// 构造
+        /// </summary>
+        protected FunctionModule()
+        {
+            Ae = (command) =>
+            { return Executer.Execute(new Command(DevSimpleInfo, command)); };
+            Fe = (command) =>
+            { return Executer.Execute(new Command(DevSimpleInfo, command, ExeType.Fastboot)); };
+            Executer.OutputDataReceived += (s, e) => { OnOutReceived(e); };
+            Executer.ErrorDataReceived += (s, e) => { OnErrorReceived(e); };
+            Executer.ProcessStarted += (s, e) => { OnProcessStarted(e); };
+            TAG = GetType().Name;
+            Status = ModuleStatus.WaitingToRun;
+        }
+        /// <summary>
+        /// 运行过程
+        /// </summary>
+        private void _Run(ModuleArgs args)
+        {
+            Status = ModuleStatus.Running;
+            OnStartup(new StartupEventArgs() { ModuleArgs = args });
+            var fullOutput = MainMethod();
+            var executeResult = SimpleInitResult(fullOutput);
+            HandingOutput(ref executeResult);
+            OnFinished(new FinishEventArgs { Result = executeResult });
+            Status = (Status == ModuleStatus.ForceStoped) ? ModuleStatus.ForceStoped : ModuleStatus.Finished;
+        }
+        /// <summary>
+        /// 简单处理运行结果
+        /// </summary>
+        /// <param name="fullOutput"></param>
+        /// <returns></returns>
+        private ExecuteResult SimpleInitResult(OutputData fullOutput)
+        {
+            return new ExecuteResult(fullOutput)
+            {
+                Level = (Status == ModuleStatus.ForceStoped) ? ResultLevel.Unsuccessful : ResultLevel.Successful,
+            };
         }
         /// <summary>
         /// 异步执行
@@ -132,12 +196,8 @@ namespace AutumnBox.Basic.Function
         public void ForceStop()
         {
             SystemHelper.KillProcessAndChildrens(CoreProcessPid);
-            WasFrociblyStop = true;
+            Status = ModuleStatus.ForceStoped;
         }
-        #endregion
-
-
-
         /// <summary>
         /// 析构
         /// </summary>
@@ -148,74 +208,6 @@ namespace AutumnBox.Basic.Function
 #pragma warning disable CA1063
             ForceStop();
         }
-        /// <summary>
-        /// 构造
-        /// </summary>
-        protected FunctionModule()
-        {
-            Ae = (command) =>
-            { return Executer.Execute(new Command(DevSimpleInfo, command)); };
-            Fe = (command) =>
-            { return Executer.Execute(new Command(DevSimpleInfo, command, ExeType.Fastboot)); };
-            Executer.OutputDataReceived += (s, e) => { OnOutReceived(e); };
-            Executer.ErrorDataReceived += (s, e) => { OnErrorReceived(e); };
-            Executer.ProcessStarted += (s, e) => { OnProcessStarted(e); };
-            TAG = GetType().Name;
-            Status = ModuleStatus.WaitingToRun;
-        }
-        /// <summary>
-        /// 运行过程
-        /// </summary>
-        private void _Run(ModuleArgs args)
-        {
-            Status = ModuleStatus.Running;
-            OnStartup(new StartupEventArgs() { ModuleArgs = args });
-            var fullOutput = MainMethod();
-            var executeResult = SimpleInitResult(fullOutput);
-            HandingOutput(ref executeResult);
-            OnFinished(new FinishEventArgs { Result = executeResult });
-            Status = WasFrociblyStop ? ModuleStatus.ForceStoped : ModuleStatus.Finished;
-        }
-        /// <summary>
-        /// 简单处理运行结果
-        /// </summary>
-        /// <param name="fullOutput"></param>
-        /// <returns></returns>
-        private ExecuteResult SimpleInitResult(OutputData fullOutput)
-        {
-            return new ExecuteResult(fullOutput)
-            {
-                WasForcblyStop = WasFrociblyStop,
-                Level = WasFrociblyStop ? ResultLevel.Unsuccessful : ResultLevel.Successful,
-            };
-        }
-
-
-        #region 保护字段
-        /// <summary>
-        /// 向已绑定的设备执行adb命令
-        /// </summary>
-        protected readonly Func<string, OutputData> Ae;
-        /// <summary>
-        /// 向已绑定的设备执行fastboot命令
-        /// </summary>
-        protected readonly Func<string, OutputData> Fe;
-        /// <summary>
-        /// 执行器
-        /// </summary>
-        protected readonly CommandExecuter Executer = new CommandExecuter();
-        /// <summary>
-        /// 功能模块执行时指定的设备id
-        /// </summary>
-        protected string DeviceID { get { return DevSimpleInfo.Id; } }
-        /// <summary>
-        /// 绑定的设备简单信息
-        /// </summary>s
-        protected internal DeviceBasicInfo DevSimpleInfo { get { return OriginArgs.DeviceBasicInfo; } }
-        #endregion
-
-
-
         #region 虚方法
         /// <summary>
         /// 开始运行时发生
