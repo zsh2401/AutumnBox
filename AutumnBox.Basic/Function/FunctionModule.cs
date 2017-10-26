@@ -54,13 +54,11 @@ namespace AutumnBox.Basic.Function
     using System.Diagnostics;
     using System.Threading;
     using static Debug;
-
     /// <summary>
     /// 各种功能模块的父类
     /// </summary>
     public abstract class FunctionModule : BaseObject, IDisposable, IFunctionModule
     {
-
         /// <summary>
         /// 核心进程id
         /// </summary>
