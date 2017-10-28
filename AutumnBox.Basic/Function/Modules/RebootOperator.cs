@@ -30,10 +30,10 @@ namespace AutumnBox.Basic.Function.Modules
         }
         private ExecuterType t;
         private RebootArgs _Args;
-        protected override void OnStartup(StartupEventArgs e)
+        protected override void AnalyzeArgs(ModuleArgs args)
         {
-            base.OnStartup(e);
-            this._Args = (e.ModuleArgs as RebootArgs);
+            base.AnalyzeArgs(args);
+            this._Args = (RebootArgs)args;
             switch (_Args.nowStatus)
             {
                 case DeviceStatus.FASTBOOT:

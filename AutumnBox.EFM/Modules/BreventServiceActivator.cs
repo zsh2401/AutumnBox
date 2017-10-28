@@ -33,11 +33,11 @@ namespace AutumnBox.Basic.Function.Modules
             o.Append(Ae(DEFAULT_COMMAND));
             return o;
         }
-        protected override void ProcessOutput(ref ExecuteResult result)
+        protected override void AnalyzeOutput(ref ExecuteResult result)
         {
             if (result.OutputData.Error != null) result.Level = ResultLevel.Unsuccessful;
             if (result.OutputData.Out.ToString().ToLower().Contains("warning")) result.Level = ResultLevel.Unsuccessful;
-            base.ProcessOutput(ref result);
+            base.AnalyzeOutput(ref result);
         }
     }
 }

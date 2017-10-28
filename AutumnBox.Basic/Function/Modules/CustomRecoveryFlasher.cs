@@ -24,10 +24,10 @@ namespace AutumnBox.Basic.Function.Modules
     public sealed class CustomRecoveryFlasher : FunctionModule
     {
         private FileArgs _Args;
-        protected override void OnStartup(StartupEventArgs e)
+        protected override void AnalyzeArgs(ModuleArgs args)
         {
-            base.OnStartup(e);
-            _Args = (FileArgs)e.ModuleArgs;
+            base.AnalyzeArgs(args);
+            _Args = (FileArgs)args;
         }
         protected override OutputData MainMethod()
         {

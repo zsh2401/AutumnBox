@@ -21,10 +21,10 @@ namespace AutumnBox.Basic.Function.Modules
     public sealed class ScreenShoter : FunctionModule
     {
         ScreenShoterArgs _Args;
-        protected override void OnStartup(StartupEventArgs e)
+        protected override void AnalyzeArgs(ModuleArgs args)
         {
-            base.OnStartup(e);
-            _Args = (ScreenShoterArgs)e.ModuleArgs;
+            base.AnalyzeArgs(args);
+            _Args = (ScreenShoterArgs)args;
         }
         protected override OutputData MainMethod()
         {

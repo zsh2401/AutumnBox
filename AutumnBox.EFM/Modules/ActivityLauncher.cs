@@ -25,10 +25,10 @@ namespace AutumnBox.Basic.Function.Modules
     public sealed class ActivityLauncher : FunctionModule
     {
         private ActivityLaunchArgs _Args;
-        protected override void OnStartup(StartupEventArgs e)
+        protected override void AnalyzeArgs(ModuleArgs args)
         {
-            base.OnStartup(e);
-            _Args = (ActivityLaunchArgs)e.ModuleArgs;
+            base.AnalyzeArgs(args);
+            _Args = (ActivityLaunchArgs)args;
         }
         protected override OutputData MainMethod()
         {

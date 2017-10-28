@@ -48,9 +48,9 @@ namespace AutumnBox.Basic.Function.Modules
                 }
             };
         }
-        protected override void ProcessArgs(ModuleArgs args)
+        protected override void AnalyzeArgs(ModuleArgs args)
         {
-            base.ProcessArgs(args);
+            base.AnalyzeArgs(args);
             this._Args = (MiFlasherArgs)args;
         }
         protected override OutputData MainMethod()
@@ -59,7 +59,7 @@ namespace AutumnBox.Basic.Function.Modules
             temtOut.Append(MainProcess.RunToExited(_Args.batFileName, $"-s {DeviceID}"));
             return temtOut;
         }
-        protected override void ProcessOutput(ref ExecuteResult executeResult)
+        protected override void AnalyzeOutput(ref ExecuteResult executeResult)
         {
             if (MainProcess.ExitCode == 1) executeResult.Level = ResultLevel.Unsuccessful;
             executeResult.Message = executeResult.OutputData.LineAll[executeResult.OutputData.LineAll.Count - 1];

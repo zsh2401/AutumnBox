@@ -66,7 +66,7 @@ namespace AutumnBox.Basic.Function
         /// <summary>
         /// 源模块参数
         /// </summary>
-        public ModuleArgs Args {protected get; set; }
+        public ModuleArgs Args { protected get; set; }
         /// <summary>
         /// 向已绑定的设备执行adb命令
         /// </summary>
@@ -141,13 +141,13 @@ namespace AutumnBox.Basic.Function
         {
             OnStartup(new StartupEventArgs());
             Status = ModuleStatus.Running;
-            ProcessArgs(Args);
+            AnalyzeArgs(Args);
             var fullOutput = MainMethod();
             var executeResult = new ExecuteResult(fullOutput)
             {
                 Level = (Status == ModuleStatus.ForceStoped) ? ResultLevel.Unsuccessful : ResultLevel.Successful,
             };
-            ProcessOutput(ref executeResult);
+            AnalyzeOutput(ref executeResult);
             Status = (Status == ModuleStatus.ForceStoped) ? ModuleStatus.ForceStoped : ModuleStatus.Finished;
             OnFinished(new FinishEventArgs { Result = executeResult });
         }
@@ -183,7 +183,7 @@ namespace AutumnBox.Basic.Function
         /// 处理参数
         /// </summary>
         /// <param name="args"></param>
-        protected virtual void ProcessArgs(ModuleArgs args) { }
+        protected virtual void AnalyzeArgs(ModuleArgs args) { }
         /// <summary>
         /// 模块的核心代码,强制要求子类进行实现
         /// </summary>
@@ -218,7 +218,7 @@ namespace AutumnBox.Basic.Function
         /// </summary>
         /// <param name="output"></param>
         /// <param name="result"></param>
-        protected virtual void ProcessOutput(ref ExecuteResult executeResult) { }
+        protected virtual void AnalyzeOutput(ref ExecuteResult executeResult) { }
         /// <summary>
         /// 引发Finished事件
         /// </summary>

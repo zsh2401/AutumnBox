@@ -12,10 +12,9 @@ namespace AutumnBox.ConsoleTester.ObjTest
 {
     public class TestModuleTest : FunctionModule
     {
-        protected override void OnStartup(StartupEventArgs e)
+        protected override void AnalyzeArgs(ModuleArgs args)
         {
-            base.OnStartup(e);
-            Console.WriteLine(e.ModuleArgs is FileArgs);
+            base.AnalyzeArgs(args);
         }
         protected override OutputData MainMethod()
         {
