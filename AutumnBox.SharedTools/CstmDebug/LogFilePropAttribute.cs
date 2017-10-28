@@ -15,7 +15,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace AutumnBox.Shared
+namespace AutumnBox.Shared.CstmDebug
 {
     [AttributeUsage(AttributeTargets.Assembly)]
     public class LogFilePropAttribute : Attribute

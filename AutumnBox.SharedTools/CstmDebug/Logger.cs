@@ -17,17 +17,18 @@ using System.Diagnostics;
 using System.IO;
 using System.Text;
 
-namespace AutumnBox.Shared
+namespace AutumnBox.Shared.CstmDebug
 {
     public static class Logger
     {
         private static readonly string DEFAULT_LOGFLODER = "logs/";
         private static readonly string DEFAULT_LOGFILE = "default.log";
-        private static readonly string Prefix;
+        private static readonly string NewFloder;
         static Logger()
         {
             if (!Directory.Exists(DEFAULT_LOGFLODER)) Directory.CreateDirectory(DEFAULT_LOGFLODER);
-            Prefix = DateTime.Now.ToString("mm_ss_");
+            NewFloder = DateTime.Now.ToString("yy_MM_dd/");
+            if (!Directory.Exists(DEFAULT_LOGFLODER + NewFloder)) Directory.CreateDirectory(DEFAULT_LOGFLODER + NewFloder);
         }
         public static void D(object sender, string message, bool IsError = false)
         {
@@ -68,11 +69,9 @@ namespace AutumnBox.Shared
         {
             try
             {
-                LogSenderPropAttribute attr;
-                var attrs = sender.GetType().GetCustomAttributes(typeof(LogSenderPropAttribute), true);
-                int length = attrs.Length;
-                attr = (LogSenderPropAttribute)attrs[length - 1];
-                return attr.TAG;
+                var senderAttr = Attribute.GetCustomAttribute(sender.GetType(), typeof(LogSenderPropAttribute));
+                if (senderAttr != null)
+                    return ((LogSenderPropAttribute)senderAttr).TAG;
             }
             catch { }
             if (sender is string) return sender.ToString();
@@ -89,7 +88,7 @@ namespace AutumnBox.Shared
             }
             try
             {
-                StreamWriter sw = new StreamWriter(DEFAULT_LOGFLODER + Prefix + _LogFileName, true);
+                StreamWriter sw = new StreamWriter(DEFAULT_LOGFLODER + NewFloder + _LogFileName, true);
                 sw.WriteLine(fullMessage);
                 sw.Flush();
                 sw.Close();

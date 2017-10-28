@@ -19,6 +19,7 @@ namespace AutumnBox.Basic.Function.Modules
     using AutumnBox.Basic.Util;
     using AutumnBox.Basic.Function.Event;
     using AutumnBox.Shared;
+    using AutumnBox.Shared.CstmDebug;
 
     /// <summary>
     /// 活动启动器

@@ -16,6 +16,7 @@ using AutumnBox.Basic.Function.Args;
 using AutumnBox.Basic.Function.Event;
 using AutumnBox.Basic.Util;
 using AutumnBox.Shared;
+using AutumnBox.Shared.CstmDebug;
 using static AutumnBox.Basic.Debug;
 namespace AutumnBox.Basic.Function.Modules
 {

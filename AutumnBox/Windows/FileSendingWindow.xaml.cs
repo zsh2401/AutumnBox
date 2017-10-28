@@ -24,6 +24,7 @@ namespace AutumnBox.Windows
     using AutumnBox.Basic.Function;
     using AutumnBox.Basic.Function.Modules;
     using AutumnBox.Shared;
+    using AutumnBox.Shared.CstmDebug;
 
     /// <summary>
     /// FileSendingWindow.xaml 的交互逻辑

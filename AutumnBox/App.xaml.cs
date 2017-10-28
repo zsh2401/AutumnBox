@@ -15,6 +15,7 @@ using AutumnBox.Basic.Devices;
 using AutumnBox.Basic.Executer;
 using AutumnBox.Helper;
 using AutumnBox.Shared;
+using AutumnBox.Shared.CstmDebug;
 using AutumnBox.Util;
 using System;
 using System.Threading;

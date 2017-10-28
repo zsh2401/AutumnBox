@@ -12,6 +12,7 @@
 *
 \* =============================================================================*/
 using AutumnBox.Shared;
+using AutumnBox.Shared.CstmDebug;
 using Newtonsoft.Json.Linq;
 using System;
 using System.IO;
@@ -50,7 +51,6 @@ namespace AutumnBox.Util
         }
         public void Save()
         {
-            //Log.d("ConfigJson Saving", this.SourceData.ToString());
             File.WriteAllText(CONFIG_FILE, this.SourceData.ToString()); 
         }
         private void Read()

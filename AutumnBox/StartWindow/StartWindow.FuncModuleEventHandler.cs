@@ -22,6 +22,7 @@ namespace AutumnBox
     using AutumnBox.Windows;
     using AutumnBox.Basic.Function.Modules;
     using AutumnBox.Shared;
+    using AutumnBox.Shared.CstmDebug;
 
     /// <summary>
     /// 各种界面事件

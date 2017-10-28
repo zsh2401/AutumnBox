@@ -12,6 +12,7 @@
 *
 \* =============================================================================*/
 using AutumnBox.Shared;
+using AutumnBox.Shared.CstmDebug;
 using AutumnBox.Util;
 using Newtonsoft.Json.Linq;
 using System;

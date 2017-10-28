@@ -13,7 +13,7 @@
 \* =============================================================================*/
 using System;
 
-namespace AutumnBox.Shared
+namespace AutumnBox.Shared.CstmDebug
 {
     [AttributeUsage(AttributeTargets.Class)]
     public class LogSenderPropAttribute : Attribute
