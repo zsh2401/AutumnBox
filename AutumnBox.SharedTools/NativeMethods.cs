@@ -17,7 +17,7 @@ using System.Text;
 
 namespace AutumnBox.Shared
 {
-    public class NativeMethods
+    public static class NativeMethods
     {
     }
 }

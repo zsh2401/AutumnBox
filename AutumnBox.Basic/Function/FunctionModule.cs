@@ -136,7 +136,7 @@ namespace AutumnBox.Basic.Function
             Executer.ProcessStarted += (s, e) => { OnProcessStarted(e); };
             Status = ModuleStatus.WaitingToRun;
         }
-        public void Run()
+        public void SyncRun()
         {
             OnStartup(new StartupEventArgs());
             Status = ModuleStatus.Running;

@@ -50,7 +50,7 @@ namespace AutumnBox.Basic.Function
         /// <summary>
         /// 开始运行
         /// </summary>
-        void Run();
+        void SyncRun();
         /// <summary>
         /// 强制停止
         /// </summary>

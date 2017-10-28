@@ -64,7 +64,7 @@ namespace AutumnBox.Basic.Function
             if (!FunctionModule.IsFinishedEventRegistered) throw new EventNotBoundException();
             new Thread(() =>
             {
-                FunctionModule.Run();
+                FunctionModule.SyncRun();
             })
             { Name = "Function Module Thread" }.Start();
         }
@@ -79,7 +79,7 @@ namespace AutumnBox.Basic.Function
             {
                 result = e.Result;
             };
-            FunctionModule.Run();
+            FunctionModule.SyncRun();
             return result;
         }
         /// <summary>
