@@ -31,5 +31,13 @@ namespace AutumnBox.Basic.Function.Modules
             Ae($"install {_Args.ApkPath}");
             return o;
         }
+        protected override void AnalyzeOutput(ref ExecuteResult executeResult)
+        {
+            base.AnalyzeOutput(ref executeResult);
+            if (executeResult.OutputData.LineError.Count != 0)
+            {
+                executeResult.Level = ResultLevel.MaybeSuccessful;
+            }
+        }
     }
 }
