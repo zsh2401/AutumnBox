@@ -15,6 +15,7 @@ using AutumnBox.Basic.Function.Args;
 using AutumnBox.Basic.Function.Event;
 using System;
 using System.Diagnostics;
+using System.Threading;
 
 namespace AutumnBox.Basic.Function
 {
@@ -43,7 +44,6 @@ namespace AutumnBox.Basic.Function
             add { FunctionModule.Finished += value; }
             remove { FunctionModule.Finished -= value; }
         }
-        private ModuleArgs fmArgs;
         /// <summary>
         /// 代理的模块
         /// </summary>
@@ -61,7 +61,12 @@ namespace AutumnBox.Basic.Function
         /// </summary>
         public void AsyncRun()
         {
-            FunctionModule.BeginRun(fmArgs);
+            if (!FunctionModule.IsFinishedEventRegistered) throw new EventNotBoundException();
+            new Thread(() =>
+            {
+                FunctionModule.Run();
+            })
+            { Name = "Function Module Thread" }.Start();
         }
         /// <summary>
         /// 同步运行
@@ -69,7 +74,13 @@ namespace AutumnBox.Basic.Function
         /// <returns></returns>
         public ExecuteResult FastRun()
         {
-            return FunctionModule.Run(fmArgs);
+            ExecuteResult result = null;
+            FunctionModule.Finished += (s, e) =>
+            {
+                result = e.Result;
+            };
+            FunctionModule.Run();
+            return result;
         }
         /// <summary>
         /// 强制停止被代理的模块
@@ -90,7 +101,7 @@ namespace AutumnBox.Basic.Function
             {
                 FunctionModule = new T()
             };
-            fmp.fmArgs = args;
+            fmp.FunctionModule.Args = args;
             return fmp;
         }
     }

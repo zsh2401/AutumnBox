@@ -28,17 +28,16 @@ namespace AutumnBox.Basic.Function.Modules
         private const string DEFAULT_COMMAND = "shell \"sh /data/data/me.piebridge.brevent/brevent.sh\"";
         protected override OutputData MainMethod()
         {
-
-            var o = FunctionModuleProxy.Create<ActivityLauncher>(new ActivityLaunchArgs(OriginArgs.DeviceBasicInfo)
+            var o = FunctionModuleProxy.Create<ActivityLauncher>(new ActivityLaunchArgs(Args.DeviceBasicInfo)
             { PackageName = "me.piebridge.brevent", ActivityName = ".ui.BreventActivity" }).FastRun().OutputData;
             o.Append(Ae(DEFAULT_COMMAND));
             return o;
         }
-        protected override void HandingOutput(ref ExecuteResult result)
+        protected override void ProcessOutput(ref ExecuteResult result)
         {
             if (result.OutputData.Error != null) result.Level = ResultLevel.Unsuccessful;
             if (result.OutputData.Out.ToString().ToLower().Contains("warning")) result.Level = ResultLevel.Unsuccessful;
-            base.HandingOutput(ref result);
+            base.ProcessOutput(ref result);
         }
     }
 }

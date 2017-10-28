@@ -17,10 +17,10 @@ namespace AutumnBox.Basic.Function
         event StartupEventHandler Startup;
         event FinishedEventHandler Finished;
         event ProcessStartedEventHandler CoreProcessStarted;
+        ModuleArgs Args { set; }
         ModuleStatus Status { get; }
         bool IsFinishedEventRegistered { get; }
-        ExecuteResult Run(ModuleArgs args);
-        void BeginRun(ModuleArgs args);
+        void Run();
         void ForceStop();
     }
 }

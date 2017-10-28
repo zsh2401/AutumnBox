@@ -12,7 +12,6 @@ namespace AutumnBox.Basic.Function.Event
     public delegate void FinishedEventHandler(object sender, FinishEventArgs e);
     public class StartupEventArgs : EventArgs
     {
-        public ModuleArgs ModuleArgs { get; set; }
     }
     /// <summary>
     /// 功能完成执行的事件参数

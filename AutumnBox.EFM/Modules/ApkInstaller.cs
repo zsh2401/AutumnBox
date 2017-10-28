@@ -20,20 +20,16 @@ namespace AutumnBox.Basic.Function.Modules
     public sealed class ApkInstaller : FunctionModule
     {
         private InstallApkArgs _Args;
-        protected override void OnStartup(StartupEventArgs e)
+        protected override void ProcessArgs(ModuleArgs args)
         {
-            base.OnStartup(e);
-            _Args = (InstallApkArgs)e.ModuleArgs;
+            base.ProcessArgs(args);
+            _Args = (InstallApkArgs)args;
         }
         protected override OutputData MainMethod()
         {
             OutputData o = new OutputData() { OutSender = this.Executer };
             Ae($"install {_Args.ApkPath}");
             return o;
-        }
-        protected override void HandingOutput(ref ExecuteResult executeResult)
-        {
-            base.HandingOutput(ref executeResult);
         }
     }
 }

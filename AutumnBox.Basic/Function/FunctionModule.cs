@@ -66,7 +66,7 @@ namespace AutumnBox.Basic.Function
         /// <summary>
         /// 源模块参数
         /// </summary>
-        protected ModuleArgs OriginArgs;
+        public ModuleArgs Args {protected get; set; }
         /// <summary>
         /// 向已绑定的设备执行adb命令
         /// </summary>
@@ -86,7 +86,7 @@ namespace AutumnBox.Basic.Function
         /// <summary>
         /// 绑定的设备简单信息
         /// </summary>s
-        protected internal DeviceBasicInfo DevSimpleInfo { get { return OriginArgs.DeviceBasicInfo; } }
+        protected internal DeviceBasicInfo DevSimpleInfo { get { return Args.DeviceBasicInfo; } }
         /// <summary>
         /// 模块状态
         /// </summary>
@@ -122,7 +122,6 @@ namespace AutumnBox.Basic.Function
             }
         }
 
-
         /// <summary>
         /// 构造
         /// </summary>
@@ -138,56 +137,21 @@ namespace AutumnBox.Basic.Function
             TAG = GetType().Name;
             Status = ModuleStatus.WaitingToRun;
         }
-        /// <summary>
-        /// 运行过程
-        /// </summary>
-        private void _Run(ModuleArgs args)
+        public void Run()
         {
+            OnStartup(new StartupEventArgs());
             Status = ModuleStatus.Running;
-            OnStartup(new StartupEventArgs() { ModuleArgs = args });
+            ProcessArgs(Args);
             var fullOutput = MainMethod();
-            var executeResult = SimpleInitResult(fullOutput);
-            HandingOutput(ref executeResult);
-            OnFinished(new FinishEventArgs { Result = executeResult });
-            Status = (Status == ModuleStatus.ForceStoped) ? ModuleStatus.ForceStoped : ModuleStatus.Finished;
-        }
-        /// <summary>
-        /// 简单处理运行结果
-        /// </summary>
-        /// <param name="fullOutput"></param>
-        /// <returns></returns>
-        private ExecuteResult SimpleInitResult(OutputData fullOutput)
-        {
-            return new ExecuteResult(fullOutput)
+            var executeResult = new ExecuteResult(fullOutput)
             {
                 Level = (Status == ModuleStatus.ForceStoped) ? ResultLevel.Unsuccessful : ResultLevel.Successful,
             };
+            ProcessOutput(ref executeResult);
+            Status = (Status == ModuleStatus.ForceStoped) ? ModuleStatus.ForceStoped : ModuleStatus.Finished;
+            OnFinished(new FinishEventArgs { Result = executeResult });
         }
-        /// <summary>
-        /// 异步执行
-        /// </summary>
-        public void BeginRun(ModuleArgs args)
-        {
-            OriginArgs = args;
-            if (!IsFinishedEventRegistered) throw new EventNotBoundException();
-            if (DevSimpleInfo == null) throw new ArgumentNullException();
-            new Thread(() => { _Run(args); })
-            {
-                Name = TAG + " MainMethod"
-            }.Start();
-        }
-        /// <summary>
-        /// 同步执行
-        /// </summary>
-        /// <returns></returns>
-        public ExecuteResult Run(ModuleArgs args)
-        {
-            OriginArgs = args;
-            ExecuteResult eresult = null;
-            Finished += (s, e) => { eresult = e.Result; };
-            _Run(args);
-            return eresult;
-        }
+
         /// <summary>
         /// 强制杀死核心进程
         /// </summary>
@@ -215,6 +179,11 @@ namespace AutumnBox.Basic.Function
         {
             Startup?.Invoke(this, e);
         }
+        /// <summary>
+        /// 处理参数
+        /// </summary>
+        /// <param name="args"></param>
+        protected virtual void ProcessArgs(ModuleArgs args) { }
         /// <summary>
         /// 模块的核心代码,强制要求子类进行实现
         /// </summary>
@@ -249,7 +218,7 @@ namespace AutumnBox.Basic.Function
         /// </summary>
         /// <param name="output"></param>
         /// <param name="result"></param>
-        protected virtual void HandingOutput(ref ExecuteResult executeResult) { }
+        protected virtual void ProcessOutput(ref ExecuteResult executeResult) { }
         /// <summary>
         /// 引发Finished事件
         /// </summary>
