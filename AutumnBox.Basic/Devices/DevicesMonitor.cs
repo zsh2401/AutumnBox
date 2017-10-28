@@ -14,6 +14,7 @@
 using AutumnBox.Basic.Executer;
 using AutumnBox.Basic.Function.Event;
 using AutumnBox.Basic.Util;
+using AutumnBox.Shared;
 using System;
 using System.Diagnostics;
 using System.Threading;
@@ -40,7 +41,7 @@ namespace AutumnBox.Basic.Devices
     /// <summary>
     /// 设备监听器
     /// </summary>
-    public sealed class DevicesMonitor:BaseObject,IDisposable
+    public sealed class DevicesMonitor:IDisposable
     {
         public event DevicesChangedHandler DevicesChanged;//当连接设备的情况变化时发生
         private const int defaultInterval = 1000;
@@ -94,7 +95,7 @@ namespace AutumnBox.Basic.Devices
                 var now =  executer.GetDevices();
                 if (now != last)
                 {
-                    LogD("Devices Change");
+                    Logger.D(this,"Devices Change");
                     last = now;
                     DevicesChanged.Invoke(this, new DevicesChangedEventArgs(now));
                 }

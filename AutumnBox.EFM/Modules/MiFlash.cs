@@ -15,6 +15,7 @@
 using AutumnBox.Basic.Executer;
 using AutumnBox.Basic.Function.Args;
 using AutumnBox.Basic.Function.Event;
+using AutumnBox.Shared;
 
 namespace AutumnBox.Basic.Function.Modules
 {
@@ -33,7 +34,7 @@ namespace AutumnBox.Basic.Function.Modules
                 if (e.Data != null)
                 {
                     temtOut.OutAdd(e.Data);
-                    LogT("Out : " + e.Data);
+                    Logger.D(this, "Out: " + e.Data);
                     OnOutReceived(e);
                 }
 
@@ -43,7 +44,7 @@ namespace AutumnBox.Basic.Function.Modules
                 if (e.Data != null)
                 {
                     temtOut.ErrorAdd(e.Data);
-                    LogT("Error : " + e.Data);
+                    Logger.T(this, "Error : " + e.Data);
                     OnErrorReceived(e);
                 }
             };

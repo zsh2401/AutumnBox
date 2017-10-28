@@ -13,6 +13,7 @@
 \* =============================================================================*/
 namespace AutumnBox.Basic.Executer
 {
+    using AutumnBox.Shared;
     using System;
     using System.Diagnostics;
     using static Basic.Debug;
@@ -34,8 +35,8 @@ namespace AutumnBox.Basic.Executer
             {
                 if (e.Data != null)
                 {
-                    if (Basic.Debug.SHOW_OUTPUT)
-                        Logger.D(this.GetType().Name, e.Data);
+                    if (SHOW_OUTPUT)
+                        Logger.D(this, e.Data);
                     _tempOut.OutAdd(e.Data);
                 }
 

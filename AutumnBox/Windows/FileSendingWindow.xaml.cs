@@ -23,6 +23,7 @@ namespace AutumnBox.Windows
     using AutumnBox.Basic.Executer;
     using AutumnBox.Basic.Function;
     using AutumnBox.Basic.Function.Modules;
+    using AutumnBox.Shared;
 
     /// <summary>
     /// FileSendingWindow.xaml 的交互逻辑
@@ -71,7 +72,7 @@ namespace AutumnBox.Windows
             }
             catch (Exception se)
             {
-                App.LogD(e.ToString(), se.Message);
+                Logger.D(e.ToString(), se.Message);
             }
         }
 
@@ -83,7 +84,7 @@ namespace AutumnBox.Windows
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            App.LogD(this.GetType().Name, "Mouse Down on Window");
+            Logger.D(this.GetType().Name, "Mouse Down on Window");
             UIHelper.DragMove(this, e);
         }
 

@@ -54,10 +54,11 @@ namespace AutumnBox.Basic.Function
     using System.Diagnostics;
     using System.Threading;
     using static Debug;
+    [LogProp(TAG = "BaseObj")]
     /// <summary>
     /// 各种功能模块的父类
     /// </summary>
-    public abstract class FunctionModule : BaseObject, IDisposable, IFunctionModule
+    public abstract class FunctionModule :  IDisposable, IFunctionModule
     {
         /// <summary>
         /// 核心进程id
@@ -134,7 +135,6 @@ namespace AutumnBox.Basic.Function
             Executer.OutputDataReceived += (s, e) => { OnOutReceived(e); };
             Executer.ErrorDataReceived += (s, e) => { OnErrorReceived(e); };
             Executer.ProcessStarted += (s, e) => { OnProcessStarted(e); };
-            TAG = GetType().Name;
             Status = ModuleStatus.WaitingToRun;
         }
         public void Run()

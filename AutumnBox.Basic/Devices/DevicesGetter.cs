@@ -17,7 +17,7 @@ namespace AutumnBox.Basic.Devices
     using AutumnBox.Basic.Util;
     using System;
     using System.Diagnostics;
-    public sealed class DevicesGetter : BaseObject, IDevicesGetter,IDisposable
+    public sealed class DevicesGetter : IDevicesGetter,IDisposable
     {
         private CommandExecuter executer = new CommandExecuter();
         public void Dispose()

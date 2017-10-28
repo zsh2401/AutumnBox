@@ -4,7 +4,7 @@
 * Description: 
 *
 * Version: 1.0
-* Created: 2017/10/18 12:06:57(UTC+8:00)
+* Created: 2017/10/28 15:35:06 (UTC+8:00)
 * Compiler: Visual Studio 2017
 * 
 * Author: zsh2401
@@ -17,59 +17,84 @@ using System.Diagnostics;
 using System.IO;
 using System.Text;
 
-namespace AutumnBox.SharedTools
+namespace AutumnBox.Shared
 {
-    public sealed class Logger
+    public static class Logger
     {
-        private string _LogFileName;
-        public Logger(string logFileName)
+        private static readonly string DEFAULT_LOGFLODER = "logs/";
+        private static readonly string DEFAULT_LOGFILE = "default.log";
+        private static readonly string Prefix;
+        static Logger()
         {
+            if (!Directory.Exists(DEFAULT_LOGFLODER)) Directory.CreateDirectory(DEFAULT_LOGFLODER);
+            Prefix = DateTime.Now.ToString("mm_ss_");
         }
-        public void InitFile() { }
-        public void D(object tag, string msg)
+        public static void D(object sender, string message, bool IsError = false)
         {
-            string fullMsg = ToFullMessage(tag, msg);
-            Debug.WriteLine(fullMsg);
-            WriteToFile(fullMsg);
+            string full = ToFullMessage(sender, message, IsError);
+            Debug.WriteLine(full);
+            WriteToFile(sender, full);
         }
-        public void D(object tag, string msg, Exception e)
+        public static void D(object sender, string message, Exception e)
         {
-            string fullMsg = $"{ToFullMessage(tag, msg)}\n{ToFullMessage(e, e.Message)}";
-            Debug.WriteLine(fullMsg);
-            WriteToFile(fullMsg);
+            D(sender, message, true);
+            D(sender, e.ToString() + e.Message, true);
         }
-        public void T(object tag, string msg)
+        public static void T(object sender, string message, bool IsError = false)
         {
-            string fullMsg = ToFullMessage(tag, msg);
-            Trace.WriteLine(fullMsg);
-            WriteToFile(fullMsg);
+            string full = ToFullMessage(sender, message, IsError);
+            Trace.WriteLine(full);
+            WriteToFile(sender, full);
         }
-        public void T(object tag, string msg, Exception e)
+        public static void T(object sender, string message, Exception e)
         {
-            string fullMsg = $"{ToFullMessage(tag, msg)}\n{ToFullMessage(e, e.Message)}";
-            Trace.WriteLine(fullMsg);
-            WriteToFile(fullMsg);
+            T(sender, message, true);
+            T(sender, e.ToString() + e.Message, true);
         }
-        private void WriteToFile(string fullMsg)
+
+        private static string ToFullMessage(object sender, string message, bool IsError = false)
         {
-            using (FileStream fs = new FileStream(_LogFileName, FileMode.OpenOrCreate, FileAccess.ReadWrite))
+            string t = $"[{DateTime.Now.ToString("yy-MM-dd_hh:mm:ss")}]";
+            if (IsError)
             {
-                using (StreamWriter sw = new StreamWriter(fs))
-                {
-                    sw.WriteLine(fullMsg);
-                    sw.Flush();
-                }
+                return $"{t} [{ SenderToTag(sender)}/WARNING]  : {message}";
+            }
+            else
+            {
+                return $"{t} [{ SenderToTag(sender)}/INFO]  : {message}";
             }
         }
-        private static string ParseTag(object tag)
+        private static string SenderToTag(object sender)
         {
-            if (tag is string) return tag.ToString();
-            else return tag.GetType().Name;
+            try
+            {
+                LogPropAttribute attr;
+                var attrs = sender.GetType().GetCustomAttributes(typeof(LogPropAttribute), true);
+                int length = attrs.Length;
+                attr = (LogPropAttribute)attrs[length - 1];
+                return attr.TAG;
+            }
+            catch { }
+            if (sender is string) return sender.ToString();
+            else return sender.GetType().Name;
         }
-        private static string ToFullMessage(object tag, string msg)
+        private static void WriteToFile(object sender, string fullMessage)
         {
-            string t = $"[{DateTime.Now.ToString("[yy-MM-dd hh:mm:ss]")}";
-            return $"{t} { ParseTag(tag)} : {msg}";
+            string _LogFileName = DEFAULT_LOGFILE;
+            var attrs = System.Reflection.Assembly.GetAssembly(sender.GetType()).
+                GetCustomAttributes(typeof(LogFilePropAttribute), true);
+            if (attrs.Length != 0)
+            {
+                _LogFileName = ((LogFilePropAttribute)attrs[attrs.Length - 1]).FileName;
+            }
+            try
+            {
+                StreamWriter sw = new StreamWriter(DEFAULT_LOGFLODER + Prefix + _LogFileName, true);
+                sw.WriteLine(fullMessage);
+                sw.Flush();
+                sw.Close();
+            }
+            catch { }
         }
     }
 }

@@ -18,6 +18,7 @@ namespace AutumnBox.Basic.Function.Modules
     using AutumnBox.Basic.Function.Args;
     using AutumnBox.Basic.Util;
     using AutumnBox.Basic.Function.Event;
+    using AutumnBox.Shared;
 
     /// <summary>
     /// 活动启动器
@@ -32,7 +33,7 @@ namespace AutumnBox.Basic.Function.Modules
         }
         protected override OutputData MainMethod()
         {
-            Logger.D(TAG, $"Try Launch {DeviceID} Activity : {_Args.ActivityName}");
+            Logger.D(this, $"Try Launch {DeviceID} Activity : {_Args.ActivityName}");
             string command = $"shell am start -n {_Args.PackageName}/{_Args.PackageName + _Args.ActivityName}";
             var o = Ae(command);
             return o;

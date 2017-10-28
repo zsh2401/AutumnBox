@@ -16,7 +16,7 @@ using AutumnBox.Basic.Util;
 
 namespace AutumnBox.Basic.Function.Args
 {
-    public class ModuleArgs : BaseObject
+    public class ModuleArgs
     {
         public ModuleArgs(DeviceBasicInfo device)
         {

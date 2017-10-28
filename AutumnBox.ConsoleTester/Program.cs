@@ -1,20 +1,26 @@
-﻿using AutumnBox.Basic.Devices;
-using AutumnBox.Basic.Function;
-using AutumnBox.Basic.Function.Args;
-using AutumnBox.ConsoleTester.ObjTest;
+﻿using AutumnBox.Shared;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 
 namespace AutumnBox.ConsoleTester
 {
+    [LogProp(TAG = "Public")]
     class Program
     {
         static void Main(string[] args)
         {
-            TestModuleTest.StartTest();
+            var p = new Program();
+            //var full = new TestModuleTest().GetType().Namespace;
+            Logger.D(p,"fuck");
+            Thread.Sleep(1000);
+            Logger.D(p, "fuck");
+            Thread.Sleep(1000);
+            Logger.D(p, "fuck");
+            Thread.Sleep(1000);
+            Logger.D(p, "fuck");
+            Thread.Sleep(1000);
+            Logger.D(p, "fuck");
+            //Console.WriteLine(nameof(AutumnBox.Basic));
             Console.ReadKey();
         }
     }

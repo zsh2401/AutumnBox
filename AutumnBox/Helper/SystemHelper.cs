@@ -12,6 +12,7 @@
 *
 \* =============================================================================*/
 using AutumnBox.Basic.Executer;
+using AutumnBox.Shared;
 using AutumnBox.Util;
 using System;
 using System.Collections.Generic;
@@ -64,7 +65,7 @@ namespace AutumnBox.Helper
         }
         public static void AppExit(int exitCode = 0)
         {
-            App.Logger.T("SystemHelper", "Exiting.....");
+            Logger.T("SystemHelper", "Exiting.....");
             App.DevicesListener.Stop();
             CommandExecuter.Kill();
             Environment.Exit(exitCode);
@@ -106,7 +107,7 @@ namespace AutumnBox.Helper
             GC.WaitForPendingFinalizers();
             if (Environment.OSVersion.Platform == PlatformID.Win32NT)
             {
-                NativeMethods.SetProcessWorkingSetSize(System.Diagnostics.Process.GetCurrentProcess().Handle, -1, -1);
+                Util.NativeMethods.SetProcessWorkingSetSize(System.Diagnostics.Process.GetCurrentProcess().Handle, -1, -1);
             }
         }
         #endregion

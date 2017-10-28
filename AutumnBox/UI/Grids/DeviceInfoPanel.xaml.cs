@@ -1,6 +1,7 @@
 ﻿using AutumnBox.Basic.Devices;
 using AutumnBox.Basic.Util;
 using AutumnBox.Helper;
+using AutumnBox.Shared;
 using AutumnBox.Windows;
 using System;
 using System.Collections.Generic;
@@ -21,12 +22,13 @@ using System.Windows.Shapes;
 
 namespace AutumnBox.UI.Grids
 {
+    [LogProp(TAG = "DevInfoPanel")]
     /// <summary>
     /// DeviceInfoPanel.xaml 的交互逻辑
     /// </summary>
     public partial class DeviceInfoPanel : UserControl, IDeviceInfoRefreshable
     {
-        static Action<Bitmap, string> _SetStatusPanel;
+        private static Action<Bitmap, string> _SetStatusPanel;
 
         public DeviceInfoPanel()
         {
@@ -65,7 +67,7 @@ namespace AutumnBox.UI.Grids
             new Thread(() =>
             {
                 var simpleInfo = DeviceInfoHelper.GetBuildInfo(devSimpleInfo.Id);
-                App.LogD(this, "Get basic info finished");
+                Logger.D(this, "Get basic info finished");
                 this.Dispatcher.Invoke(() =>
                 {
                     LabelAndroidVersion.Content = simpleInfo.AndroidVersion ?? App.Current.Resources["GetFail"].ToString();
@@ -93,7 +95,7 @@ namespace AutumnBox.UI.Grids
                             _SetStatusPanel(Res.DynamicIcons.recovery, "DeviceInSideload");
                             break;
                     }
-                    App.LogD(this, "Finish Base refresh");
+                    Logger.D(this, "Finish Base refresh");
                     RefreshFinished?.Invoke(this, new EventArgs());
                 });
                 var advInfo = DeviceInfoHelper.GetHwInfo(devSimpleInfo.Id);

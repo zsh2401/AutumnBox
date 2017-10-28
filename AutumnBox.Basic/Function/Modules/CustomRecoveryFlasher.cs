@@ -15,6 +15,7 @@ using AutumnBox.Basic.Executer;
 using AutumnBox.Basic.Function.Args;
 using AutumnBox.Basic.Function.Event;
 using AutumnBox.Basic.Util;
+using AutumnBox.Shared;
 using static AutumnBox.Basic.Debug;
 namespace AutumnBox.Basic.Function.Modules
 {
@@ -31,7 +32,7 @@ namespace AutumnBox.Basic.Function.Modules
         }
         protected override OutputData MainMethod()
         {
-            Logger.D(TAG, "Start MainMethod");
+            Logger.D(this, "Start MainMethod");
             OutputData output = Ae($"flash recovery  \"{_Args.files[0]}\"");
             Ae($"boot \"{_Args.files[0]}\"");
             return output;

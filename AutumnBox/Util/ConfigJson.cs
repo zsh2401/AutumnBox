@@ -11,6 +11,7 @@
 * Company: I am free man
 *
 \* =============================================================================*/
+using AutumnBox.Shared;
 using Newtonsoft.Json.Linq;
 using System;
 using System.IO;
@@ -44,7 +45,7 @@ namespace AutumnBox.Util
                 Save();
             }
             catch (Exception e) {
-                App.LogD("Catcho e Exp",e.ToString());
+                Logger.D("Catcho e Exp",e.ToString());
             }
         }
         public void Save()

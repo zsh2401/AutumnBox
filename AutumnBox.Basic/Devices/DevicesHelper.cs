@@ -11,6 +11,8 @@
 * Company: I am free man
 *
 \* =============================================================================*/
+using AutumnBox.Shared;
+
 namespace AutumnBox.Basic.Devices
 {
     /// <summary>

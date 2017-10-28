@@ -89,7 +89,6 @@
     <Compile Include="Function\Args\RebootOptions.cs" />
     <Compile Include="Function\Modules\RebootOperator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Util\BaseObject.cs" />
     <Compile Include="Util\Paths.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
