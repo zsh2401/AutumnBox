@@ -53,7 +53,7 @@ namespace AutumnBox.Basic.Function
     using System;
     using System.Diagnostics;
     using System.Threading;
-    using static Debug;
+    using static DebugSettings;
     /// <summary>
     /// 各种功能模块的父类
     /// </summary>

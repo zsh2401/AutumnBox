@@ -15,6 +15,7 @@ namespace AutumnBox.Basic.Executer
 {
     using AutumnBox.Basic.Devices;
     using AutumnBox.Basic.Util;
+
     /// <summary>
     /// 封装命令
     /// </summary>
@@ -27,7 +28,7 @@ namespace AutumnBox.Basic.Executer
         {
             get
             {
-                return ExecuteType == ExeType.Adb ? Paths.ADB_FILENAME : Paths.FASTBOOT_FILENAME;
+                return ExecuteType == ExeType.Adb ? ConstData.ADB_PATH : ConstData.FASTBOOT_PATH;
             }
         }
         /// <summary>

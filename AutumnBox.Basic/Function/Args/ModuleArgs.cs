@@ -12,7 +12,6 @@
 *
 \* =============================================================================*/
 using AutumnBox.Basic.Devices;
-using AutumnBox.Basic.Util;
 
 namespace AutumnBox.Basic.Function.Args
 {

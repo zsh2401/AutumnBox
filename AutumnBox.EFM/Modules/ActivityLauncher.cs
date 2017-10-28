@@ -13,7 +13,7 @@
 \* =============================================================================*/
 namespace AutumnBox.Basic.Function.Modules
 {
-    using static AutumnBox.Basic.Debug;
+    using static AutumnBox.Basic.DebugSettings;
     using AutumnBox.Basic.Executer;
     using AutumnBox.Basic.Function.Args;
     using AutumnBox.Basic.Util;

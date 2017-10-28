@@ -20,7 +20,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static AutumnBox.Basic.Debug;
+using static AutumnBox.Basic.DebugSettings;
 namespace AutumnBox.Basic.Devices
 {
     public static class DeviceInfoHelper

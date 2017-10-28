@@ -14,10 +14,7 @@
 namespace AutumnBox.Basic.Executer
 {
     using AutumnBox.Basic.Function.Event;
-    using AutumnBox.Basic.Util;
-    using System;
     using System.Collections.Generic;
-    using System.Diagnostics;
     using System.Text;
 
     public sealed class OutputData

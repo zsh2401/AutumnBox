@@ -14,7 +14,7 @@
 
 namespace AutumnBox.Basic
 {
-    internal static class Debug
+    internal static class DebugSettings
     {
         public static readonly bool SHOW_OUTPUT = false;
         public static readonly bool SHOW_COMMAND = false;

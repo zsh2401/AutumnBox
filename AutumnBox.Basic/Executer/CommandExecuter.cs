@@ -14,10 +14,7 @@
 namespace AutumnBox.Basic.Executer
 {
     using System;
-    using System.Collections.Generic;
     using System.Diagnostics;
-    using AutumnBox.Basic.Devices;
-    using AutumnBox.Basic.Util;
     public sealed partial class CommandExecuter : IDisposable,IOutSender
     {
         /*Events*/

@@ -66,7 +66,7 @@
     <Compile Include="Function\Event\FunctionModuleEvents.cs" />
     <Compile Include="Function\FunctionModuleProxy.cs" />
     <Compile Include="Function\IFunctionModule.cs" />
-    <Compile Include="Debug.cs" />
+    <Compile Include="DebugSettings.cs" />
     <Compile Include="Devices\IDevicesChangedListener.cs" />
     <Compile Include="Devices\IDevicesGetter.cs" />
     <Compile Include="Executer\OutputData.cs" />
@@ -89,17 +89,7 @@
     <Compile Include="Function\Args\RebootOptions.cs" />
     <Compile Include="Function\Modules\RebootOperator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Util\Paths.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Paths.resx</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Util\Paths.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Paths.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
+    <Compile Include="Util\ConstData.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

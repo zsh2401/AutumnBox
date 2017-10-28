@@ -17,7 +17,7 @@ namespace AutumnBox.Basic.Executer
     using AutumnBox.Shared.CstmDebug;
     using System;
     using System.Diagnostics;
-    using static Basic.Debug;
+    using static Basic.DebugSettings;
     public sealed class ABProcess : Process
     {
         public event ProcessStartedEventHandler ProcessStarted;
@@ -46,7 +46,7 @@ namespace AutumnBox.Basic.Executer
             {
                 if (e.Data != null)
                 {
-                    if (Basic.Debug.SHOW_OUTPUT)
+                    if (Basic.DebugSettings.SHOW_OUTPUT)
                         Logger.D(this.GetType().Name, e.Data);
                     _tempOut.ErrorAdd(e.Data);
                 }
@@ -74,7 +74,7 @@ namespace AutumnBox.Basic.Executer
         }
         public OutputData RunToExited(string fileName, string args)
         {
-            if (Basic.Debug.SHOW_COMMAND)
+            if (Basic.DebugSettings.SHOW_COMMAND)
                 Logger.D(this.GetType().Name,$"{fileName} {args}");
             _tempOut.Clear();
             StartInfo.FileName = fileName;
