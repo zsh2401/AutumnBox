@@ -57,7 +57,7 @@ namespace AutumnBox.Basic.Function
     /// <summary>
     /// 各种功能模块的父类
     /// </summary>
-    public abstract class FunctionModule :  IDisposable, IFunctionModule
+    public abstract class FunctionModule : IDisposable, IFunctionModule
     {
         /// <summary>
         /// 核心进程id
@@ -145,10 +145,14 @@ namespace AutumnBox.Basic.Function
             var executeResult = new ExecuteResult(fullOutput)
             {
                 Level = (Status == ModuleStatus.ForceStoped) ? ResultLevel.Unsuccessful : ResultLevel.Successful,
+                WasForcblyStop = (Status == ModuleStatus.ForceStoped) ? true : false
             };
             AnalyzeOutput(ref executeResult);
             Status = (Status == ModuleStatus.ForceStoped) ? ModuleStatus.ForceStoped : ModuleStatus.Finished;
-            OnFinished(new FinishEventArgs { Result = executeResult });
+            OnFinished(new FinishEventArgs
+            {
+                Result = executeResult
+            });
         }
 
         /// <summary>

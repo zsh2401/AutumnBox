@@ -53,6 +53,7 @@
     <s:String x:Key="msgRelockWarning">注意,本功能将会把您的设备重新上Bootloader锁,这样您的设备将会变得比较安全但是您将失去root权限,最重要的是将会彻底清除您的设备上的数据!请做好数据备份谨慎而行!并且在操作时不要拔掉设备,否则后果自负</s:String>
     <s:String x:Key="msgRelockWarningAgain">请再次注意,本功能将会清除设备的所有数据,并且不要在操作时拔掉设备!你确定要这么做了吗?按下按钮立即开始重新上锁!</s:String>
     <s:String x:Key="msgPushOK">如果一切正常,您将会在手机存储目录(/sdcard)下看到您刚才推送的文件</s:String>
+    <s:String x:Key="msgPushFail">因为一些未知的原因,推送失败了!</s:String>
     <s:String x:Key="msgFlashOK">如果一切正常,您的手机将会重启到刚才刷入的Recovery中!</s:String>
     <s:String x:Key="msgFristLaunchNotice">本软件还处于测试阶段,可能出现的bug希望您能立即反馈!另外,如果你有什么建议也可以通过关于->联系开发者中的联系方式告诉我,还有一件事!这个软件的某些操作可能会被杀软误报,请关闭杀软或者允许操作,我保证本软件没有恶意代码!</s:String>
     <s:String x:Key="msgIfAllOK">如果一切正常,您的手机将会重启</s:String>
@@ -138,7 +139,9 @@
     <!--建议-->
     <s:String x:Key="errormsgBrventActivtedUnsuccess">可能导致失败的原因:您未安装黑域;打开黑域界面失败;指令过期</s:String>
     <s:String x:Key="advsBrventActivtedUnsuccess">请确保您安装了最新的黑域并至少打开了黑域界面,或您可尝试更新本工具箱</s:String>
+    <s:String x:Key="advsFileSendUnsuccess">您可以截图后,给zsh2401@gmail.com发送邮件</s:String>
     <!--建议-->
+    
     <s:String x:Key="CompileDate">编译日期</s:String>
     <s:String x:Key="SelecteAFile">选择一个文件</s:String>
     <s:String x:Key="Warning">警告</s:String>

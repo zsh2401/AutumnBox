@@ -11,17 +11,11 @@
 * Company: I am free man
 *
 \* =============================================================================*/
-using AutumnBox.Basic.Util;
-using AutumnBox.Shared;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using AutumnBox.Shared.CstmDebug;
 
 namespace AutumnBox.ConsoleTester.ObjTest
 {
-    [LogProp(TAG = "testing...")]
+    [LogSenderProp(TAG = "testing...")]
     internal class LogPropTest
     {
         public void Run() {

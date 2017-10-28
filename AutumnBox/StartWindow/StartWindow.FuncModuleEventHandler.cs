@@ -73,9 +73,9 @@ namespace AutumnBox
                 {
                     MMessageBox.ShowDialog("Finished", "Install successful");
                 }
-                else if (sender is ScreenShoter) {
+                else if (sender is ScreenShoter)
+                {
                     MMessageBox.ShowDialog(App.Current.Resources["Success"].ToString(), App.Current.Resources["msgSaveSuccessful"].ToString());
-                    //ModuleResultWindow.FastShow(e.Result);
                 }
             });
         }
@@ -89,6 +89,7 @@ namespace AutumnBox
         {
             Logger.D(this, e.OutputData.Error.ToString());
             Logger.D(this, e.OutputData.Out.ToString());
+            Logger.D(this, "Enter the ActivatedBrevent Handler in the GUI");
             this.Dispatcher.Invoke(new Action(() =>
             {
                 UIHelper.CloseRateBox();
@@ -110,7 +111,7 @@ namespace AutumnBox
         /// <param name="o"></param>
         private void UnlockMiSystemFinish(object sender, FinishEventArgs e)
         {
-            Logger.D(mweTag, "UnlockMiSystemFinish Event ");
+            Logger.D(this, "Enter the Unlock Mi  System Finish Handler in the GUI");
             this.Dispatcher.Invoke(new Action(() =>
             {
                 UIHelper.CloseRateBox();
@@ -123,11 +124,7 @@ namespace AutumnBox
         /// <param name="o"></param>
         private void RelockMiFinish(object sender, FinishEventArgs e)
         {
-            Logger.D(mweTag, "Relock Mi Finish");
-            this.Dispatcher.Invoke(new Action(() =>
-            {
-                //this.core.Reboot(nowDev, Basic.Arg.RebootOptions.System);
-            }));
+            Logger.D(this, "Enter the Relock Mi Finish Handler in the GUI");
             this.Dispatcher.Invoke(new Action(() =>
             {
                 UIHelper.CloseRateBox();
@@ -140,14 +137,17 @@ namespace AutumnBox
         /// <param name="outputData">操作时的输出数据</param>
         private void PushFinish(object sender, FinishEventArgs e)
         {
-            Logger.D(mweTag, "Push finish");
+            Logger.D(this, "Enter the Push Finish Handler in the GUI");
             if (e.Result.Level == ResultLevel.Successful)
             {
                 MMessageBox.ShowDialog(Application.Current.Resources["Notice"].ToString(), Application.Current.FindResource("msgPushOK").ToString());
             }
             else
             {
-                MMessageBox.ShowDialog(Application.Current.Resources["Notice"].ToString(), "Push_Failed 0x123123121232");
+                if (e.Result.WasForcblyStop) { Logger.T(this, "File send was force stoped by user"); return; };
+                e.Result.Message = Application.Current.FindResource("msgPushFail").ToString();
+                e.Result.Advise = Application.Current.FindResource("advsFileSendUnsuccess").ToString();
+                ModuleResultWindow.FastShow(e.Result);
             }
         }
 
