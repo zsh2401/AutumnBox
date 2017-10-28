@@ -11,7 +11,7 @@
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)LogFilePropAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Logger.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)LogPropAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)LogSenderPropAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)NativeMethods.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)NetHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SystemHelper.cs" />

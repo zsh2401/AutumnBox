@@ -68,10 +68,10 @@ namespace AutumnBox.Shared
         {
             try
             {
-                LogPropAttribute attr;
-                var attrs = sender.GetType().GetCustomAttributes(typeof(LogPropAttribute), true);
+                LogSenderPropAttribute attr;
+                var attrs = sender.GetType().GetCustomAttributes(typeof(LogSenderPropAttribute), true);
                 int length = attrs.Length;
-                attr = (LogPropAttribute)attrs[length - 1];
+                attr = (LogSenderPropAttribute)attrs[length - 1];
                 return attr.TAG;
             }
             catch { }

@@ -4,7 +4,7 @@ using System.Threading;
 
 namespace AutumnBox.ConsoleTester
 {
-    [LogProp(TAG = "Public")]
+    [LogSenderPropAttribute(TAG = "Public")]
     class Program
     {
         static void Main(string[] args)

@@ -22,7 +22,7 @@ using System.Windows.Shapes;
 
 namespace AutumnBox.UI.Grids
 {
-    [LogProp(TAG = "DevInfoPanel")]
+    [LogSenderPropAttribute(TAG = "DevInfoPanel")]
     /// <summary>
     /// DeviceInfoPanel.xaml 的交互逻辑
     /// </summary>

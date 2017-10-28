@@ -23,7 +23,7 @@ namespace AutumnBox.NetUtil
         public string Header { get; set; }
         public string Message { get; set; }
     }
-    [LogProp(TAG ="MOTD Getter")]
+    [LogSenderPropAttribute(TAG ="MOTD Getter")]
     [NetUnitProperty(UseLocalApi = false,MustAddFininshedEventHandler = true)]
     public class MOTDGetter : NetUnitBase,INetUtil
     {

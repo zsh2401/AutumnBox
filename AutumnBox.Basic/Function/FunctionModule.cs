@@ -54,7 +54,6 @@ namespace AutumnBox.Basic.Function
     using System.Diagnostics;
     using System.Threading;
     using static Debug;
-    [LogProp(TAG = "BaseObj")]
     /// <summary>
     /// 各种功能模块的父类
     /// </summary>

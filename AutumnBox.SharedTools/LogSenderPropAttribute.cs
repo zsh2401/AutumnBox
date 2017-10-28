@@ -16,7 +16,7 @@ using System;
 namespace AutumnBox.Shared
 {
     [AttributeUsage(AttributeTargets.Class)]
-    public class LogPropAttribute : Attribute
+    public class LogSenderPropAttribute : Attribute
     {
         public string TAG { get; set; }
     }
