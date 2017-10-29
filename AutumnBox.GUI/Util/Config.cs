@@ -11,6 +11,7 @@
 * Company: I am free man
 *
 \* =============================================================================*/
+using AutumnBox.Shared.CstmDebug;
 using Newtonsoft.Json;
 using System;
 
@@ -18,41 +19,43 @@ namespace AutumnBox.GUI.Util
 {
     public static class Config
     {
-        private static ConfigJson _JConfig = new ConfigJson();
+        private static IConfigOperator Operator = new ConfigOperator();
         public static bool IsFirstLaunch
         {
             get
             {
-                return _JConfig.IsFirstLaunch;
+                Logger.D("Config", "Get Is firstLaunch value " + Operator.Data.IsFirstLaunch);
+                return Operator.Data.IsFirstLaunch;
             }
             set
             {
-                _JConfig.IsFirstLaunch = value;
-                _JConfig.SaveToDisk();
+                Operator.Data.IsFirstLaunch = value;
+                Logger.D("Config", "ifl set, now value " + Operator.Data.IsFirstLaunch.ToString());
+                Operator.SaveToDisk();
             }
         }
         public static string SkipVersion
         {
             get
             {
-                return _JConfig.SkipVersion;
+                return Operator.Data.SkipVersion;
             }
             set
             {
-                _JConfig.SkipVersion = value;
-                _JConfig.SaveToDisk();
+                Operator.Data.SkipVersion = value;
+                Operator.SaveToDisk();
             }
         }
         public static string Lang
         {
             get
             {
-                return _JConfig.Lang;
+                return Operator.Data.Lang;
             }
             set
             {
-                _JConfig.Lang = value;
-                _JConfig.SaveToDisk();
+                Operator.Data.Lang = value;
+                Operator.SaveToDisk();
             }
         }
     }

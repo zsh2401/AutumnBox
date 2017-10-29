@@ -32,23 +32,27 @@ namespace AutumnBox.Shared.CstmDebug
         }
         public static void D(object sender, string message, bool IsError = false)
         {
+            if (!GetShowProp(sender)) return;
             string full = ToFullMessage(sender, message, IsError);
             Debug.WriteLine(full);
             WriteToFile(sender, full);
         }
         public static void D(object sender, string message, Exception e)
         {
+            if (!GetShowProp(sender)) return;
             D(sender, message, true);
             D(sender, e.ToString() + e.Message, true);
         }
         public static void T(object sender, string message, bool IsError = false)
         {
+            if (!GetShowProp(sender)) return;
             string full = ToFullMessage(sender, message, IsError);
             Trace.WriteLine(full);
             WriteToFile(sender, full);
         }
         public static void T(object sender, string message, Exception e)
         {
+            if (!GetShowProp(sender)) return;
             T(sender, message, true);
             T(sender, e.ToString() + e.Message, true);
         }
@@ -65,13 +69,28 @@ namespace AutumnBox.Shared.CstmDebug
                 return $"{t} [{ SenderToTag(sender)}/INFO]  : {message}";
             }
         }
+        private static bool GetShowProp(object sender)
+        {
+            try
+            {
+                return ((LogSenderPropAttribute)
+                    Attribute.GetCustomAttribute(sender.GetType(), typeof(LogSenderPropAttribute))).Show;
+            }
+            catch
+            {
+                return true;
+            }
+        }
         private static string SenderToTag(object sender)
         {
             try
             {
-                var senderAttr = Attribute.GetCustomAttribute(sender.GetType(), typeof(LogSenderPropAttribute));
-                if (senderAttr != null)
-                    return ((LogSenderPropAttribute)senderAttr).TAG;
+                string tag = ((LogSenderPropAttribute)
+                    Attribute.GetCustomAttribute(sender.GetType(), typeof(LogSenderPropAttribute))).TAG ?? throw new NullReferenceException();
+                if (tag != LogSenderPropAttribute.NOT_LOAD_TAG)
+                {
+                    return tag;
+                }
             }
             catch { }
             if (sender is string) return sender.ToString();

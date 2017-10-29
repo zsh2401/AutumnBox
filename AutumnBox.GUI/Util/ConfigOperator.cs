@@ -22,43 +22,17 @@ using System.Reflection;
 
 namespace AutumnBox.GUI.Util
 {
-
-    [LogSenderProp(TAG = "Config Object")]
-    [JsonObject(MemberSerialization.OptOut)]
-    public class ConfigJson
+    [LogSenderProp(Show = false)]
+    public class ConfigOperator : IConfigOperator
     {
-        [JsonProperty("IsFirstLaunch")]
-        public bool IsFirstLaunch { get; set; } = true;
-        [JsonProperty("SkipVersion")]
-        public string SkipVersion { get; set; } = "0.0.0";
-        [JsonProperty("Lang")]
-        public string Lang { get; set; } = "zh-CN";
-
-        private class JObjectGetter
-        {
-            private JObject Source;
-            private ConfigJson Owner;
-            public JObjectGetter(ConfigJson owner, String jsontext)
-            {
-                Source = JObject.Parse(jsontext);
-                Owner = owner;
-            }
-            public JObjectGetter(ConfigJson owner, JObject jObject)
-            {
-                Source = jObject;
-                Owner = owner;
-            }
-            public JToken Get(string propName)
-            {
-                return Source[DataHelper.JsonPropertyNameOf(Owner, propName)] ?? throw new NullReferenceException();
-            }
-        }
+        public ConfigTemplate Data { get; private set; } = new ConfigTemplate();
         private static readonly string ConfigFileName = "autumnbox.json";
-        public ConfigJson()
+        public ConfigOperator()
         {
             Logger.D(this, "Start Check");
             if (HaveError() || HaveLost())
             {
+                Logger.D(this, "Some error checked, init file");
                 SaveToDisk();
             }
             Logger.D(this, "Finished Check");
@@ -69,26 +43,22 @@ namespace AutumnBox.GUI.Util
         {
             if (HaveError()) SaveToDisk();
             if (!File.Exists(ConfigFileName)) { SaveToDisk(); return; }
-            JObjectGetter getter = new JObjectGetter(this, File.ReadAllText(ConfigFileName));
-            Logger.D(this, "getter inited");
-            IsFirstLaunch = (bool)getter.Get(nameof(IsFirstLaunch));
-            Logger.D(this, "ifl finished");
-            SkipVersion = (string)getter.Get(nameof(SkipVersion));
-            Logger.D(this, "sv finish");
-            Lang = (string)getter.Get(nameof(Lang));
-            Logger.D(this, "lang finished");
+            Data = (ConfigTemplate)(JsonConvert.DeserializeObject(File.ReadAllText(ConfigFileName), Data.GetType()));
+            Logger.D(this, "Is first launch? " + Data.IsFirstLaunch.ToString());
         }
         public void SaveToDisk()
         {
             if (!File.Exists(ConfigFileName)) File.Create(ConfigFileName);
             using (StreamWriter sw = new StreamWriter(ConfigFileName, false))
             {
-                sw.Write(JsonConvert.SerializeObject(this));
+                string text = JsonConvert.SerializeObject(Data);
+                Logger.D(this, text);
+                sw.Write(text);
                 sw.Flush();
             }
         }
 
-        public bool HaveError()
+        private bool HaveError()
         {
             Logger.D(this, "enter error check");
             try
@@ -98,17 +68,18 @@ namespace AutumnBox.GUI.Util
             catch (JsonReaderException) { return true; }
             catch (FileNotFoundException) { return true; }
         }
-        public bool HaveLost()
+        private bool HaveLost()
         {
             Logger.D(this, "enter lost check");
             JObject j = JObject.Parse(File.ReadAllText(ConfigFileName));
             Logger.D(this, "read finish");
-            foreach (var prop in this.GetType().GetProperties())
+            foreach (var prop in Data.GetType().GetProperties())
             {
                 if (!(prop.IsDefined(typeof(JsonPropertyAttribute)))) continue;
                 var attr = (JsonPropertyAttribute)prop.GetCustomAttribute(typeof(JsonPropertyAttribute));
-                if (j[attr.PropertyName] == null) return true;
+                if (j[attr.PropertyName] == null) { Logger.D(this, "have lost"); return true; };
             }
+            Logger.D(this, "no lost");
             return false;
         }
     }

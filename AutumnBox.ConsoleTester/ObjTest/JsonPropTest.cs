@@ -24,20 +24,17 @@ using System.Threading.Tasks;
 namespace AutumnBox.ConsoleTester.ObjTest
 {
     [JsonObject(MemberSerialization.OptOut)]
-    public class JsonPropTest
+    public static class JsonPropTest
     {
         [JsonProperty("Name")]
-        public string Name { get; set; } = "haha";
+        public static string Name { get; set; } = "haha";
         [JsonProperty("NamesJsonProp")]
-        public string[] Names { get; set; } = { "x", "x" };
-        public void Fuck()
-        {
-            //Console.WriteLine(nameof(Names));
-        }
+        public static string[] Names { get; set; } = { "x", "x" };
         public static void Run()
         {
-            var fuck = new JsonPropTest();
-            Console.WriteLine(DataHelper.JsonPropertyNameOf(fuck, nameof(fuck.Names)));
+            //var fuck = new JsonPropTest();
+            //JsonConvert.SerializeObject()
+            //Console.WriteLine(DataHelper.JsonPropertyNameOf(typeof(fuck), nameof(fuck.Names)));
             //string json = JsonConvert.SerializeObject(new JsonPropTest());
             //var props = new JsonPropTest().GetType().GetProperties();
 
