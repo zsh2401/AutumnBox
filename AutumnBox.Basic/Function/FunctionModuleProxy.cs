@@ -13,12 +13,14 @@
 \* =============================================================================*/
 using AutumnBox.Basic.Function.Args;
 using AutumnBox.Basic.Function.Event;
+using AutumnBox.Shared.CstmDebug;
 using System;
 using System.Diagnostics;
 using System.Threading;
 
 namespace AutumnBox.Basic.Function
 {
+    [LogSenderProp(TAG = "FMP")]
     /// <summary>
     /// 功能模块代理器,更加方便的管理功能模块
     /// </summary>
@@ -62,6 +64,7 @@ namespace AutumnBox.Basic.Function
         public void AsyncRun()
         {
             if (!FunctionModule.IsFinishedEventRegistered) throw new EventNotBoundException();
+            if (!(FunctionModule.Status == ModuleStatus.Ready)) throw new Exception("FM not ready");
             new Thread(() =>
             {
                 FunctionModule.SyncRun();
@@ -74,6 +77,7 @@ namespace AutumnBox.Basic.Function
         /// <returns></returns>
         public ExecuteResult FastRun()
         {
+            if (!(FunctionModule.Status == ModuleStatus.Ready)) throw new Exception("FM not ready");
             ExecuteResult result = null;
             FunctionModule.Finished += (s, e) =>
             {

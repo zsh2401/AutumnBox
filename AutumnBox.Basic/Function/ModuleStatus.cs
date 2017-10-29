@@ -15,10 +15,10 @@ namespace AutumnBox.Basic.Function
 {
     public enum ModuleStatus
     {
-        Loading = -1,
-        WaitingToRun = 0,
-        Running = 1,
-        Finished = 2,
-        ForceStoped = 3,
+        Loading = -3,
+        Ready = -2,
+        Running = -1,
+        Finished = 0,
+        ForceStoped = 1,
     }
 }

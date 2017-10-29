@@ -62,7 +62,7 @@ namespace AutumnBox.Basic.Function
         /// <summary>
         /// 核心进程id
         /// </summary>
-        private int CoreProcessPid { get; set; }
+        private int? CoreProcessPid { get; set; }
         /// <summary>
         /// 源模块参数
         /// </summary>
@@ -128,14 +128,17 @@ namespace AutumnBox.Basic.Function
         protected FunctionModule()
         {
             Ae = (command) =>
-            { return Executer.Execute(new Command(DevSimpleInfo, command)); };
+            { return Executer.Execute(new Command(Args.DeviceBasicInfo, command)); };
             Fe = (command) =>
-            { return Executer.Execute(new Command(DevSimpleInfo, command, ExeType.Fastboot)); };
+            { return Executer.Execute(new Command(Args.DeviceBasicInfo, command, ExeType.Fastboot)); };
             Executer.OutputDataReceived += (s, e) => { OnOutReceived(e); };
             Executer.ErrorDataReceived += (s, e) => { OnErrorReceived(e); };
             Executer.ProcessStarted += (s, e) => { OnProcessStarted(e); };
-            Status = ModuleStatus.WaitingToRun;
+            Status = ModuleStatus.Ready;
         }
+        /// <summary>
+        /// 同步运行
+        /// </summary>
         public void SyncRun()
         {
             OnStartup(new StartupEventArgs());
@@ -147,20 +150,20 @@ namespace AutumnBox.Basic.Function
                 Level = (Status == ModuleStatus.ForceStoped) ? ResultLevel.Unsuccessful : ResultLevel.Successful,
                 WasForcblyStop = (Status == ModuleStatus.ForceStoped) ? true : false
             };
-            AnalyzeOutput(ref executeResult);
             Status = (Status == ModuleStatus.ForceStoped) ? ModuleStatus.ForceStoped : ModuleStatus.Finished;
+            AnalyzeOutput(ref executeResult);
             OnFinished(new FinishEventArgs
             {
                 Result = executeResult
             });
         }
-
         /// <summary>
         /// 强制杀死核心进程
         /// </summary>
         public void ForceStop()
         {
-            SystemHelper.KillProcessAndChildrens(CoreProcessPid);
+            int pid = CoreProcessPid ?? throw new NullReferenceException();
+            SystemHelper.KillProcessAndChildrens(pid);
             Status = ModuleStatus.ForceStoped;
         }
         /// <summary>
@@ -171,8 +174,8 @@ namespace AutumnBox.Basic.Function
 #pragma warning disable CA1063
             Executer.Dispose();
 #pragma warning disable CA1063
-            ForceStop();
         }
+
         #region 虚方法
         /// <summary>
         /// 开始运行时发生
