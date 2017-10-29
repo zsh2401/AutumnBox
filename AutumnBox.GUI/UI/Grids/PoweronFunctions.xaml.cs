@@ -115,7 +115,7 @@ namespace AutumnBox.GUI.UI.Grids
 
         private void ButtonChangeDpi_Click(object sender, RoutedEventArgs e)
         {
-            MMessageBox.ShowDialog(FindResource("Notice").ToString(), DeviceInfoHelper.GetDpi(App.SelectedDevice).ToString());
+            //MMessageBox.ShowDialog(FindResource("Notice").ToString(), DeviceInfoHelper.GetDpi(App.SelectedDevice).ToString());
         }
     }
 }
