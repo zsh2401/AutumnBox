@@ -11,22 +11,22 @@
 * Company: I am free man
 *
 \* =============================================================================*/
-using AutumnBox.GUI.Helper;
-using AutumnBox.Shared;
 using AutumnBox.Shared.CstmDebug;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using System;
 using System.IO;
 using System.Reflection;
 
 namespace AutumnBox.GUI.Util
 {
-    [LogSenderProp(Show = false)]
+    [LogPropertyAttribute(Show = false)]
     public class ConfigOperator : IConfigOperator
     {
         public ConfigTemplate Data { get; private set; } = new ConfigTemplate();
         private static readonly string ConfigFileName = "autumnbox.json";
+        /// <summary>
+        /// 构造器
+        /// </summary>
         public ConfigOperator()
         {
             Logger.D(this, "Start Check");
@@ -38,7 +38,9 @@ namespace AutumnBox.GUI.Util
             Logger.D(this, "Finished Check");
             ReloadFromDisk();
         }
-
+        /// <summary>
+        /// 从硬盘重载数据
+        /// </summary>
         public void ReloadFromDisk()
         {
             if (HaveError()) SaveToDisk();
@@ -46,6 +48,9 @@ namespace AutumnBox.GUI.Util
             Data = (ConfigTemplate)(JsonConvert.DeserializeObject(File.ReadAllText(ConfigFileName), Data.GetType()));
             Logger.D(this, "Is first launch? " + Data.IsFirstLaunch.ToString());
         }
+        /// <summary>
+        /// 将数据存储到硬盘
+        /// </summary>
         public void SaveToDisk()
         {
             if (!File.Exists(ConfigFileName)) File.Create(ConfigFileName);
@@ -58,6 +63,10 @@ namespace AutumnBox.GUI.Util
             }
         }
 
+        /// <summary>
+        /// 检测硬盘上的数据是否有问题
+        /// </summary>
+        /// <returns>是否有问题</returns>
         private bool HaveError()
         {
             Logger.D(this, "enter error check");
@@ -68,6 +77,10 @@ namespace AutumnBox.GUI.Util
             catch (JsonReaderException) { return true; }
             catch (FileNotFoundException) { return true; }
         }
+        /// <summary>
+        /// 检测配置文件中的项是否有丢失
+        /// </summary>
+        /// <returns>项是否有丢失</returns>
         private bool HaveLost()
         {
             Logger.D(this, "enter lost check");

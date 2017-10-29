@@ -9,7 +9,7 @@ using System.Windows.Input;
 
 namespace AutumnBox.GUI.UI.Grids
 {
-    [LogSenderPropAttribute(TAG = "DevInfoPanel")]
+    [LogProperty(TAG = "DevInfoPanel")]
     /// <summary>
     /// DeviceInfoPanel.xaml 的交互逻辑
     /// </summary>

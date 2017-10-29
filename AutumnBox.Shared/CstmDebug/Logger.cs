@@ -73,8 +73,8 @@ namespace AutumnBox.Shared.CstmDebug
         {
             try
             {
-                return ((LogSenderPropAttribute)
-                    Attribute.GetCustomAttribute(sender.GetType(), typeof(LogSenderPropAttribute))).Show;
+                return ((LogPropertyAttribute)
+                    Attribute.GetCustomAttribute(sender.GetType(), typeof(LogPropertyAttribute))).Show;
             }
             catch
             {
@@ -85,9 +85,9 @@ namespace AutumnBox.Shared.CstmDebug
         {
             try
             {
-                string tag = ((LogSenderPropAttribute)
-                    Attribute.GetCustomAttribute(sender.GetType(), typeof(LogSenderPropAttribute))).TAG ?? throw new NullReferenceException();
-                if (tag != LogSenderPropAttribute.NOT_LOAD_TAG)
+                string tag = ((LogPropertyAttribute)
+                    Attribute.GetCustomAttribute(sender.GetType(), typeof(LogPropertyAttribute))).TAG ?? throw new NullReferenceException();
+                if (tag != LogPropertyAttribute.NOT_LOAD_TAG)
                 {
                     return tag;
                 }
@@ -100,10 +100,10 @@ namespace AutumnBox.Shared.CstmDebug
         {
             string _LogFileName = DEFAULT_LOGFILE;
             var attrs = System.Reflection.Assembly.GetAssembly(sender.GetType()).
-                GetCustomAttributes(typeof(LogFilePropAttribute), true);
+                GetCustomAttributes(typeof(LogFilePropertyAttribute), true);
             if (attrs.Length != 0)
             {
-                _LogFileName = ((LogFilePropAttribute)attrs[attrs.Length - 1]).FileName;
+                _LogFileName = ((LogFilePropertyAttribute)attrs[attrs.Length - 1]).FileName;
             }
             try
             {

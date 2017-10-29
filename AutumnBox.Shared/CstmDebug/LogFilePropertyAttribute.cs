@@ -18,10 +18,10 @@ using System.Text;
 namespace AutumnBox.Shared.CstmDebug
 {
     [AttributeUsage(AttributeTargets.Assembly)]
-    public class LogFilePropAttribute : Attribute
+    public class LogFilePropertyAttribute : Attribute
     {
         public string FileName { get; private set; }
-        public LogFilePropAttribute(string fileName)
+        public LogFilePropertyAttribute(string fileName)
         {
             FileName = fileName;
         }

@@ -16,9 +16,9 @@ using System;
 namespace AutumnBox.Shared.CstmDebug
 {
     [AttributeUsage(AttributeTargets.Class)]
-    public class LogSenderPropAttribute : Attribute
+    public class LogPropertyAttribute : Attribute
     {
-        public static readonly string NOT_LOAD_TAG = "xxxxxx";
+        public static readonly string NOT_LOAD_TAG = "Dream of us";
         public string TAG { get; set; } = NOT_LOAD_TAG;
         public bool Show { get; set; } = true;
     }

@@ -25,7 +25,7 @@ namespace AutumnBox.Basic.Devices
 {
     public static class DeviceInfoHelper
     {
-        [LogSenderPropAttribute(TAG = "DeviceInfoHelper")]
+        [LogPropertyAttribute(TAG = "DeviceInfoHelper")]
         public class DeviceInfoSender { }
         private static readonly object sender = new DeviceInfoSender();
         private static CommandExecuter Executer = new CommandExecuter();

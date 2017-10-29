@@ -20,7 +20,7 @@ using System.Threading;
 
 namespace AutumnBox.Basic.Function
 {
-    [LogSenderProp(TAG = "FMP")]
+    [LogProperty(TAG = "FMP")]
     /// <summary>
     /// 功能模块代理器,更加方便的管理功能模块
     /// </summary>

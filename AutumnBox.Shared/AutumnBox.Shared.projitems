@@ -9,9 +9,9 @@
     <Import_RootNamespace>AutumnBox.Shared</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)CstmDebug\LogFilePropAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CstmDebug\LogFilePropertyAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CstmDebug\Logger.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)CstmDebug\LogSenderPropAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CstmDebug\LogPropertyAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)NativeMethods.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)NetHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SystemHelper.cs" />
