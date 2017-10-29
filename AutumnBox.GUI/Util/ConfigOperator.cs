@@ -45,7 +45,10 @@ namespace AutumnBox.GUI.Util
         {
             if (HaveError()) SaveToDisk();
             if (!File.Exists(ConfigFileName)) { SaveToDisk(); return; }
-            Data = (ConfigTemplate)(JsonConvert.DeserializeObject(File.ReadAllText(ConfigFileName), Data.GetType()));
+            using (StreamReader sr = new StreamReader(ConfigFileName))
+            {
+                Data = (ConfigTemplate)(JsonConvert.DeserializeObject(sr.ReadToEnd(), Data.GetType()));
+            }
             Logger.D(this, "Is first launch? " + Data.IsFirstLaunch.ToString());
         }
         /// <summary>
@@ -53,7 +56,10 @@ namespace AutumnBox.GUI.Util
         /// </summary>
         public void SaveToDisk()
         {
-            if (!File.Exists(ConfigFileName)) File.Create(ConfigFileName);
+            if (!File.Exists(ConfigFileName))
+            {
+                using (FileStream fs = new FileStream(ConfigFileName, FileMode.OpenOrCreate, FileAccess.ReadWrite)) { }
+            }
             using (StreamWriter sw = new StreamWriter(ConfigFileName, false))
             {
                 string text = JsonConvert.SerializeObject(Data);
