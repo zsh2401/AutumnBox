@@ -17,7 +17,7 @@ namespace AutumnBox.Basic.Devices
     using AutumnBox.Basic.Util;
     using System;
     using System.Diagnostics;
-    public sealed class DevicesGetter : IDevicesGetter,IDisposable
+    public sealed class DevicesGetter : IDevicesGetter, IDisposable
     {
         private CommandExecuter executer = new CommandExecuter();
         public void Dispose()
@@ -26,7 +26,8 @@ namespace AutumnBox.Basic.Devices
         }
         public DevicesList GetDevices()
         {
-            lock (executer) {
+            lock (executer)
+            {
                 if (Process.GetProcessesByName("adb").Length == 0) CommandExecuter.Start();
                 DevicesList devList = new DevicesList();
                 var adbDevicesOutput = executer.Execute(new Command("devices"));
@@ -41,12 +42,16 @@ namespace AutumnBox.Basic.Devices
             var l = o.LineOut;
             for (int i = 1; i < l.Count - 1; i++)
             {
-                devList.Add(
-                    new DeviceBasicInfo
-                    {
-                        Id = l[i].Split('\t')[0],
-                        Status = DeviceInfoHelper.StringStatusToEnumStatus(l[i].Split('\t')[1])
-                    });
+                try
+                {
+                    devList.Add(
+                        new DeviceBasicInfo
+                        {
+                            Id = l[i].Split('\t')[0],
+                            Status = DeviceInfoHelper.StringStatusToEnumStatus(l[i].Split('\t')[1])
+                        });
+                }
+                catch { }
             }
         }
         private void FastbootParse(OutputData o, ref DevicesList devList)
