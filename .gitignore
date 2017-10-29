@@ -35,8 +35,4 @@ Bin/*
 #dirs
 .vs/
 obj/
-#AutumnBox/obj/
-#AutumnBox.basic/obj/
-#WpfAnimatedGif/obj/
-#Tester/obj/
 
