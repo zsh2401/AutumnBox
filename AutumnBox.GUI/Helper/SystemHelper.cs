@@ -47,16 +47,9 @@ namespace AutumnBox.GUI.Helper
             }
         }
         /// <summary>
-        /// 获取指定类的指定特性
+        /// 退出整个App
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="from"></param>
-        /// <returns></returns>
-        public static object[] GetAttributeFromObj<T>(object from) where T : Attribute
-        {
-            object[] objAttrs = from.GetType().GetCustomAttributes(typeof(T), true);
-            return objAttrs;
-        }
+        /// <param name="exitCode"></param>
         public static void AppExit(int exitCode = 0)
         {
             Logger.T("SystemHelper", "Exiting.....");
@@ -64,6 +57,7 @@ namespace AutumnBox.GUI.Helper
             CommandExecuter.Kill();
             Environment.Exit(exitCode);
         }
+
         #region 内存回收 http://www.cnblogs.com/xcsn/p/4678322.html
         static bool continueAutoGC = true;
         /// <summary>
