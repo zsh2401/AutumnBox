@@ -34,7 +34,7 @@ namespace AutumnBox.Basic.Function
         /// <summary>
         /// 提示信息
         /// </summary>
-        public string Message { get; set; } = string.Empty;
+        public string Message { get; set; }
         /// <summary>
         /// 判断是否成功
         /// </summary>
@@ -42,7 +42,7 @@ namespace AutumnBox.Basic.Function
         /// <summary>
         /// 建议信息,一般交由界面进行设置
         /// </summary>
-        public string Advise { get; set; } = string.Empty;
+        public string Advise { get; set; }
         /// <summary>
         /// 初始化
         /// </summary>

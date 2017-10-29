@@ -19,13 +19,14 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using static AutumnBox.Basic.DebugSettings;
 namespace AutumnBox.Basic.Devices
 {
     public static class DeviceInfoHelper
     {
-        [LogPropertyAttribute(TAG = "DeviceInfoHelper")]
+        [LogProperty(TAG = "DeviceInfoHelper")]
         public class DeviceInfoSender { }
         private static readonly object sender = new DeviceInfoSender();
         private static CommandExecuter Executer = new CommandExecuter();
@@ -103,6 +104,11 @@ namespace AutumnBox.Basic.Devices
         }
         public static int? GetDpi(string id)
         {
+            //等我学会正则表达式再说吧.....
+            //string fullText = Executer.Execute(new Command(id, "shell \"dumpsys display | grep mBaseDisplayInfo\"")).All.ToString();
+            ////string[] texts = fullText.Split(',');
+            ////Regex.IsMatch(fullText, @"(?<=density[(])\d{3}(?=,\d,\d[)];)");
+            //Logger.D(sender,Regex.IsMatch(fullText,"(?<=density \").* (?= \"\\()").ToString());
             return null;
         }
         public static int? GetBatteryLevel(string id)

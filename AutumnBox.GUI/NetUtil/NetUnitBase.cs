@@ -11,10 +11,12 @@
 * Company: I am free man
 *
 \* =============================================================================*/
+using AutumnBox.Shared.CstmDebug;
 using System;
 
 namespace AutumnBox.GUI.NetUtil
 {
+    [LogProperty(TAG = "Net Unit")]
     public abstract class NetUnitBase : Object
     {
         protected NetUnitPropertyAttribute PropertyInfo

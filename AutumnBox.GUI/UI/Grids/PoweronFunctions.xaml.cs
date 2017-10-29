@@ -111,5 +111,11 @@ namespace AutumnBox.GUI.UI.Grids
             fmp.AsyncRun();
             UIHelper.ShowRateBox(fmp);
         }
+
+
+        private void ButtonChangeDpi_Click(object sender, RoutedEventArgs e)
+        {
+            MMessageBox.ShowDialog(FindResource("Notice").ToString(), DeviceInfoHelper.GetDpi(App.SelectedDevice).ToString());
+        }
     }
 }

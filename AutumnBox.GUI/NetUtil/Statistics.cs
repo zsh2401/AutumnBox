@@ -16,7 +16,7 @@ using System;
 namespace AutumnBox.GUI.NetUtil
 {
     [NetUnitProperty(MustAddFininshedEventHandler = false)]
-    public class Reporter : NetUnitBase, INetUtil
+    public class Statistics : NetUnitBase, INetUtil
     {
         public override void Run()
         {

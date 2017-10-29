@@ -13,7 +13,6 @@
 \* =============================================================================*/
 using AutumnBox.Basic.Executer;
 using AutumnBox.Basic.Function.Args;
-using AutumnBox.Basic.Function.Event;
 
 namespace AutumnBox.Basic.Function.Modules
 {
@@ -27,9 +26,11 @@ namespace AutumnBox.Basic.Function.Modules
         }
         protected override OutputData MainMethod()
         {
-            OutputData o = new OutputData();
-            o.OutSender = Executer;
-            Ae("shell wm density 400");
+            OutputData o = new OutputData
+            {
+                OutSender = Executer
+            };
+            Ae($"shell wm density {dpi}");
             Ae("adb reboot");
             return o;
         }

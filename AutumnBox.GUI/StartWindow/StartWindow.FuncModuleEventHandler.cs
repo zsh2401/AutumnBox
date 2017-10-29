@@ -96,11 +96,11 @@ namespace AutumnBox.GUI
             {
                 e.Result.Message = App.Current.Resources["errormsgBrventActivtedUnsuccess"].ToString();
                 e.Result.Advise = App.Current.Resources["advsBrventActivtedUnsuccess"].ToString();
-                this.Dispatcher.Invoke(() =>
-                {
-                    ModuleResultWindow.FastShow(e.Result);
-                });
             }
+            this.Dispatcher.Invoke(() =>
+            {
+                ModuleResultWindow.FastShow(e.Result);
+            });
         }
 
         /// <summary>

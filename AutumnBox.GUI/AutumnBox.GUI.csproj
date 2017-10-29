@@ -124,7 +124,7 @@
     <Compile Include="NetUtil\MOTDGetter.cs" />
     <Compile Include="NetUtil\NetUnitBase.cs" />
     <Compile Include="NetUtil\NetUnitPropertyAttribute.cs" />
-    <Compile Include="NetUtil\Reporter.cs" />
+    <Compile Include="NetUtil\Statistics.cs" />
     <Compile Include="NetUtil\UpdateChecker.cs" />
     <Compile Include="UI\Cstm\BookMarksControl.xaml.cs">
       <DependentUpon>BookMarksControl.xaml</DependentUpon>

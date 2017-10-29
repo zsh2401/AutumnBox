@@ -36,8 +36,16 @@ namespace AutumnBox.GUI.Windows
                     break;
             }
             TextBoxOutput.Text = _Result.OutputData.All.ToString();
-            TextBlockAdvise.Text = _Result.Advise;
-            TextBlockMessage.Text = _Result.Message;
+            if (_Result.Advise == null)
+            {
+                TextBlockAdvise.Visibility = Visibility.Hidden;
+                LabelAdviseTip.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                TextBlockAdvise.Text = _Result.Advise;
+            }
+            TextBlockMessage.Text = _Result.Message??"Have a nice day!";
         }
 
         public static void FastShow(ExecuteResult result)
