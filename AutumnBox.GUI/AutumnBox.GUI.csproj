@@ -115,7 +115,9 @@
     </Compile>
     <Compile Include="DebugInfo.cs" />
     <Compile Include="Helper\BlurHelper.cs" />
+    <Compile Include="Helper\DataHelper.cs" />
     <Compile Include="Helper\SystemHelper.cs" />
+    <Compile Include="Helper\TextHelper.cs" />
     <Compile Include="Helper\UIHelper.cs" />
     <Compile Include="NetUtil\INetUtil.cs" />
     <Compile Include="NetUtil\Urls.cs" />
