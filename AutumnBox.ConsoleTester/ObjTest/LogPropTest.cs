@@ -15,7 +15,7 @@ using AutumnBox.Shared.CstmDebug;
 
 namespace AutumnBox.ConsoleTester.ObjTest
 {
-    [LogSenderProp(TAG = "testing...")]
+    [LogProperty(TAG = "testing...")]
     internal class LogPropTest
     {
         public void Run() {

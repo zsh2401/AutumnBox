@@ -1,12 +1,10 @@
 ﻿using AutumnBox.ConsoleTester.ObjTest;
-using AutumnBox.Shared;
 using AutumnBox.Shared.CstmDebug;
 using System;
-using System.Threading;
 
 namespace AutumnBox.ConsoleTester
 {
-    [LogSenderProp(TAG = "Public")]
+    //[LogProperty(TAG = "Public")]
     class Program
     {
         static void Main(string[] args)
