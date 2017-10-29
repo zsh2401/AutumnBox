@@ -30,14 +30,13 @@
 fast
 !AutumnBox.Basic/Adb/*.exe
 !AutumnBox.Basic/Adb/*.dll
-Bin/*.*
+Bin/*
 !Bin/readme.txt
 #dirs
 .vs/
-Bin/Adb
 obj/
-AutumnBox/obj/
-AutumnBox.basic/obj/
-WpfAnimatedGif/obj/
-Tester/obj/
+#AutumnBox/obj/
+#AutumnBox.basic/obj/
+#WpfAnimatedGif/obj/
+#Tester/obj/
 

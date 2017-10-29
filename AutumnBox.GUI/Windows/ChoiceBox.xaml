@@ -1,0 +1,16 @@
+﻿<Window x:Class="AutumnBox.GUI.Windows.ChoiceBox"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AutumnBox.GUI.UI"
+        mc:Ignorable="d"
+        Title="ChoiceBox" Height="320.282" Width="484.225" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterOwner" Background="#FF009AD6" ShowInTaskbar="False">
+    <Grid Margin="3,0,3,3" Background="White">
+        <Label x:Name="labelTitle" Content="Something...." HorizontalAlignment="Left" VerticalAlignment="Top" Width="478" Height="52" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18" FontFamily="Microsoft YaHei UI Light" Background="#FF009AD6" MouseMove="labelTitle_MouseMove"/>
+        <Button x:Name="btnCancel" Content="{DynamicResource btnCancel}" HorizontalAlignment="Left" Margin="77,282,0,0" VerticalAlignment="Top" Width="165" Background="White" Height="28" Click="Button_Click_1"/>
+        <Button x:Name="btnOk" Content="{DynamicResource btnOK}" HorizontalAlignment="Left" Margin="247,282,0,0" VerticalAlignment="Top" Width="165" Background="White" Height="28" Click="Button_Click"/>
+        <TextBlock x:Name="textBlockContent" TextAlignment="Center" HorizontalAlignment="Left" Margin="0,66,0,0" TextWrapping="Wrap" Text="Content" VerticalAlignment="Top" Height="211" Width="474" FontFamily="Microsoft YaHei UI Light" FontSize="18" Background="White"/>
+
+    </Grid>
+</Window>

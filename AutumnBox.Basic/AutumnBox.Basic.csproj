@@ -110,6 +110,6 @@
     </Content>
   </ItemGroup>
   <Import Project="..\AutumnBox.EFM\AutumnBox.EFM.projitems" Label="Shared" />
-  <Import Project="..\AutumnBox.SharedTools\AutumnBox.SharedTools.projitems" Label="Shared" />
+  <Import Project="..\AutumnBox.Shared\AutumnBox.Shared.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,0 +1,20 @@
+﻿<Window x:Class="AutumnBox.GUI.Windows.ModuleResultWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AutumnBox.GUI.Windows"
+        mc:Ignorable="d"
+        Background="{StaticResource BasicBrush}" Title="ModuleResultWindow" Height="365.333" Width="461" WindowStartupLocation="CenterOwner" WindowStyle="None" ResizeMode="NoResize" ShowInTaskbar="False" MouseDown="Window_MouseDown">
+    <Grid Background="White" Margin="3,3,3,3">
+        <TextBlock TextAlignment="Center" x:Name="TextBlockTitle" HorizontalAlignment="Left" TextWrapping="Wrap" Text="ErrorTitle" VerticalAlignment="Top" FontSize="45" FontFamily="Microsoft YaHei Light" Margin="10,0,0,0">
+        </TextBlock>
+        <TextBlock x:Name="TextBlockMessage" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="16" FontFamily="Microsoft YaHei UI Light" Margin="46,64,0,0" Width="404" Height="71"/>
+        <TextBox x:Name="TextBoxOutput" HorizontalAlignment="Left" Height="107" Margin="4,220,0,0" TextWrapping="Wrap" Text="output" VerticalAlignment="Top" Width="446" IsReadOnly="True" FontSize="10"/>
+        <TextBlock x:Name="TextBlockAdvise" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="16" FontFamily="Microsoft YaHei UI Light" Margin="46,144,0,0" Width="404" Height="55"/>
+        <Button  x:Name="ButtonClose"   Content="{DynamicResource btnClose}" Margin="4,332,0,0" VerticalAlignment="Top" Height="22" Background="#007C7272" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" FontFamily="Microsoft YaHei UI Light" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Black" RenderTransformOrigin="0.494,0.085" HorizontalAlignment="Left" Width="446" Click="ButtonClose_Click"/>
+        <Label Content="{StaticResource OutputTip}" HorizontalAlignment="Left" Margin="5,199,0,0" VerticalAlignment="Top" Width="445" FontSize="11"/>
+        <Label Content="{StaticResource Advise}" HorizontalAlignment="Left" Margin="4,139,0,0" VerticalAlignment="Top" FontFamily="Microsoft YaHei UI Light" FontSize="16" Background="{x:Null}" Foreground="#FF57DAB0"/>
+        <Label Content="{StaticResource Message}" HorizontalAlignment="Left" Margin="4,59,0,0" VerticalAlignment="Top" FontFamily="Microsoft YaHei UI Light" FontSize="16" Background="{x:Null}" Foreground="#FF57DAB0"/>
+    </Grid>
+</Window>
