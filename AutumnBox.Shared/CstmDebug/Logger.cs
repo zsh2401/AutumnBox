@@ -118,7 +118,7 @@ namespace AutumnBox.Shared.CstmDebug
         /// <returns></returns>
         private static string GetFullMessage(string tag, string message, int errorLevel)
         {
-            string t = DateTime.Now.ToString("yy-MM-dd_hh:mm:ss");
+            string t = DateTime.Now.ToString("yy-MM-dd_HH:mm:ss");
             switch (errorLevel)
             {
                 case 0:

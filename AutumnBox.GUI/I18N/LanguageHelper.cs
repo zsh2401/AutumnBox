@@ -18,6 +18,7 @@ using System.Windows;
 
 namespace AutumnBox.GUI.I18N
 {
+    //[Lang]
     /// <summary>
     /// 界面的语言切换帮助类
     /// </summary>
