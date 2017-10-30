@@ -1,4 +1,4 @@
-/* =============================================================================*\
+ï»¿/* =============================================================================*\
 *
 * Filename: BlurHelper.cs
 * Description: 
@@ -20,9 +20,9 @@ using System.Windows.Interop;
 namespace AutumnBox.GUI.Helper
 {
     /// <summary>
-    /// ´°ÌåÍ¸Ã÷°ïÖúÀà,À´×Ô¿ªÔ´´úÂë
+    /// çª—ä½“é€æ˜å¸®åŠ©ç±»,æ¥è‡ªå¼€æºä»£ç 
     /// </summary>
-    class BlurHelper
+    internal class BlurHelper
     {
         internal enum AccentState
         {

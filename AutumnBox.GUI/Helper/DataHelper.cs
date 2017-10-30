@@ -19,7 +19,7 @@ using System.Text;
 
 namespace AutumnBox.GUI.Helper
 {
-    [LogPropertyAttribute(TAG = "Data Helper")]
+    [LogProperty(TAG = "Data Helper")]
     public class DataHelperLogSender { }
     public static class DataHelper
     {

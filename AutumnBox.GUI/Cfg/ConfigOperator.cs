@@ -24,9 +24,6 @@ namespace AutumnBox.GUI.Cfg
     {
         public ConfigDataLayout Data { get; private set; } = new ConfigDataLayout();
         private static readonly string ConfigFileName = "autumnbox.json";
-        /// <summary>
-        /// ¹¹ÔìÆ÷
-        /// </summary>
         public ConfigOperator()
         {
             Logger.D(this, "Start Check");
