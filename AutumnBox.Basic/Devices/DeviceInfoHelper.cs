@@ -139,7 +139,7 @@ namespace AutumnBox.Basic.Devices
                 return null;
             }
         }
-        public static int? GetStorageTotal(string id)
+        public static double? GetStorageTotal(string id)
         {
             return null;
         }

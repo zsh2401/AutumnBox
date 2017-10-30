@@ -11,27 +11,17 @@
 * Company: I am free man
 *
 \* =============================================================================*/
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Devices
 {
-    public struct DeviceHardwareInfo : IGetatableById<DeviceHardwareInfo>
+    public struct DeviceHardwareInfo
     {
         public string ID { get; set; }
         public string ScreenInfo { get; set; }
         public int? BatteryLevel { get; set; }
         public double? MemTotal { get; set; }
-        public int? StorageTotal { get; set; }
+        public double? StorageTotal { get; set; }
         public string FlashMemoryType { get; set; }
         public string SOCInfo { get; set; }
-
-        public DeviceHardwareInfo GetByID(string id)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

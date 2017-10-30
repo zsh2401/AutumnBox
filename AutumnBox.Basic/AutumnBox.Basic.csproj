@@ -51,7 +51,6 @@
     <Compile Include="Devices\DeviceNotFoundException.cs" />
     <Compile Include="Devices\DevicesGetter.cs" />
     <Compile Include="Devices\DeviceBasicInfo.cs" />
-    <Compile Include="Devices\IGetatableById.cs" />
     <Compile Include="Executer\CommandExecuter.cs" />
     <Compile Include="Executer\CommandExecuter.Static.cs" />
     <Compile Include="Executer\CommandExecuter.ExeFunc.cs" />
