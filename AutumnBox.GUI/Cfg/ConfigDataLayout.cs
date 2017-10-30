@@ -12,16 +12,11 @@
 *
 \* =============================================================================*/
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace AutumnBox.GUI.Util
+namespace AutumnBox.GUI.Cfg
 {
     [JsonObject(MemberSerialization.OptOut)]
-    public class ConfigTemplate
+    internal class ConfigDataLayout
     {
         [JsonProperty("IsFirstLaunch")]
         public bool IsFirstLaunch { get; set; } = true;

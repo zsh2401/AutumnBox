@@ -15,7 +15,7 @@ using AutumnBox.Shared.CstmDebug;
 using Newtonsoft.Json;
 using System;
 
-namespace AutumnBox.GUI.Util
+namespace AutumnBox.GUI.Cfg
 {
     public static class Config
     {

@@ -12,6 +12,7 @@
 *
 \* =============================================================================*/
 using AutumnBox.Basic.Devices;
+using AutumnBox.GUI.Cfg;
 using AutumnBox.GUI.Helper;
 using AutumnBox.GUI.NetUtil;
 using AutumnBox.GUI.Util;

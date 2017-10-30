@@ -11,6 +11,7 @@
 * Company: I am free man
 *
 \* =============================================================================*/
+using AutumnBox.GUI.Cfg;
 using AutumnBox.GUI.Util;
 using AutumnBox.Shared;
 using AutumnBox.Shared.CstmDebug;

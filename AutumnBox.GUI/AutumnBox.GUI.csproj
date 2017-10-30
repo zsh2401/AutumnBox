@@ -153,8 +153,8 @@
     <Compile Include="UI\Grids\WelcomeGrid.xaml.cs">
       <DependentUpon>WelcomeGrid.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Util\IConfigOperator.cs" />
-    <Compile Include="Util\ConfigTemplate.cs" />
+    <Compile Include="Cfg\IConfigOperator.cs" />
+    <Compile Include="Cfg\ConfigDataLayout.cs" />
     <Compile Include="Windows\ChangeThemeWindow.xaml.cs">
       <DependentUpon>ChangeThemeWindow.xaml</DependentUpon>
     </Compile>
@@ -192,9 +192,9 @@
     <Compile Include="Windows\UpdateNoticeWindow.xaml.cs">
       <DependentUpon>UpdateNoticeWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Util\Config.cs" />
+    <Compile Include="Cfg\Config.cs" />
     <Compile Include="Helper\LanguageHelper.cs" />
-    <Compile Include="Util\ConfigOperator.cs" />
+    <Compile Include="Cfg\ConfigOperator.cs" />
     <Compile Include="Util\NativeMethods.cs" />
     <Compile Include="Util\VersionInfo.cs" />
   </ItemGroup>

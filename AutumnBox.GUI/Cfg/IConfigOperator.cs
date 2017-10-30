@@ -11,17 +11,12 @@
 * Company: I am free man
 *
 \* =============================================================================*/
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace AutumnBox.GUI.Util
+namespace AutumnBox.GUI.Cfg
 {
-    public interface IConfigOperator
+    internal interface IConfigOperator
     {
-        ConfigTemplate Data { get; }
+        ConfigDataLayout Data { get; }
         void SaveToDisk();
         void ReloadFromDisk();
     }

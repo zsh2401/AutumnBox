@@ -17,12 +17,12 @@ using Newtonsoft.Json.Linq;
 using System.IO;
 using System.Reflection;
 
-namespace AutumnBox.GUI.Util
+namespace AutumnBox.GUI.Cfg
 {
-    [LogPropertyAttribute(Show = false)]
-    public class ConfigOperator : IConfigOperator
+    [LogProperty(Show = false)]
+    internal class ConfigOperator : IConfigOperator
     {
-        public ConfigTemplate Data { get; private set; } = new ConfigTemplate();
+        public ConfigDataLayout Data { get; private set; } = new ConfigDataLayout();
         private static readonly string ConfigFileName = "autumnbox.json";
         /// <summary>
         /// ¹¹ÔìÆ÷
@@ -47,7 +47,7 @@ namespace AutumnBox.GUI.Util
             if (!File.Exists(ConfigFileName)) { SaveToDisk(); return; }
             using (StreamReader sr = new StreamReader(ConfigFileName))
             {
-                Data = (ConfigTemplate)(JsonConvert.DeserializeObject(sr.ReadToEnd(), Data.GetType()));
+                Data = (ConfigDataLayout)(JsonConvert.DeserializeObject(sr.ReadToEnd(), Data.GetType()));
             }
             Logger.D(this, "Is first launch? " + Data.IsFirstLaunch.ToString());
         }
