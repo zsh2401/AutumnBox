@@ -11,14 +11,12 @@
 * Company: I am free man
 *
 \* =============================================================================*/
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Function.Args
 {
+    /// <summary>
+    /// Android KeyCode,Unfinished
+    /// </summary>
     public enum KeyCode
     {
         KEYCODE_MENU = 1,
