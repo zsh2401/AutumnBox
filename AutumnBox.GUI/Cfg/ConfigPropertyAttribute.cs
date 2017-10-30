@@ -16,7 +16,7 @@ using System;
 namespace AutumnBox.GUI.Cfg
 {
     [AttributeUsage(AttributeTargets.Class)]
-    internal class ConfigPropertyAttribute : Attribute
+    internal sealed class ConfigPropertyAttribute : Attribute
     {
         public string ConfigFile { get; set; } = "default.datalayout";
         public bool RequiresEncryption { get; set; } = false;

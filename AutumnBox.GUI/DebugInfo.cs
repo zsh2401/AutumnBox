@@ -18,12 +18,5 @@ namespace AutumnBox.GUI
     internal static class DebugInfo
     {
         public static readonly DateTime CompiledDate = new DateTime(2017, 10, 17);
-        public static Version NowVersion
-        {
-            get
-            {
-                return System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
-            }
-        }
     }
 }

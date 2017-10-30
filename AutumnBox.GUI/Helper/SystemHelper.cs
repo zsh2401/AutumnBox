@@ -16,6 +16,7 @@ using AutumnBox.GUI.Util;
 using AutumnBox.Shared.CstmDebug;
 using System;
 using System.Diagnostics;
+using System.Linq;
 
 namespace AutumnBox.GUI.Helper
 {
@@ -24,6 +25,21 @@ namespace AutumnBox.GUI.Helper
     /// </summary>
     public static class SystemHelper
     {
+        public static DateTime CompiledDate
+        {
+            get
+            {
+                var o = (CompiledDateAttribute)Attribute.GetCustomAttribute(System.Reflection.Assembly.GetExecutingAssembly(), typeof(CompiledDateAttribute));
+                return o.DateTime;
+            }
+        }
+        public static Version NowVersion
+        {
+            get
+            {
+                return System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
+            }
+        }
         public static void KillProcess(string processName)
         {
             var list = Process.GetProcessesByName(processName);

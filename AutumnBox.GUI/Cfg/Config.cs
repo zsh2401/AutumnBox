@@ -12,8 +12,6 @@
 *
 \* =============================================================================*/
 using AutumnBox.Shared.CstmDebug;
-using Newtonsoft.Json;
-using System;
 
 namespace AutumnBox.GUI.Cfg
 {

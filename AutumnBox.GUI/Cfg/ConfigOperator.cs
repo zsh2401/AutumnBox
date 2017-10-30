@@ -21,7 +21,7 @@ using System.Reflection;
 namespace AutumnBox.GUI.Cfg
 {
     [LogProperty(Show = false)]
-    internal class ConfigOperator : IConfigOperator
+    internal sealed class ConfigOperator : IConfigOperator
     {
         public ConfigDataLayout Data { get; private set; } = new ConfigDataLayout();
         private readonly string ConfigFileName;

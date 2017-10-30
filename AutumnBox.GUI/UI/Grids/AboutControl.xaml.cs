@@ -1,4 +1,5 @@
-﻿using AutumnBox.GUI.Windows;
+﻿using AutumnBox.GUI.Helper;
+using AutumnBox.GUI.Windows;
 using System.Diagnostics;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -13,7 +14,7 @@ namespace AutumnBox.GUI.UI.Grids
         public AboutControl()
         {
             InitializeComponent();
-            LabelCompiledDate.Content = DebugInfo.CompiledDate.ToString("MM-dd-yyyy");
+            LabelCompiledDate.Content = SystemHelper.CompiledDate.ToString("MM-dd-yyyy");
         }
 
         private void TextBlockGoToOS_MouseDown(object sender, MouseButtonEventArgs e) =>

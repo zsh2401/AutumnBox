@@ -17,7 +17,7 @@
     <s:String x:Key="btnRebootToRecovery">重启到恢复模式</s:String>
     <s:String x:Key="btnRebootToBootloader">重启到Fastboot模式</s:String>
     <s:String x:Key="btnPushFileToSdcard">推送文件到存储目录</s:String>
-    <s:String x:Key="btnUnlockMiSystem">解锁小米系统,获取完整ROOT</s:String>
+    <s:String x:Key="btnUnlockSystem">解锁系统,获取完整ROOT</s:String>
     <s:String x:Key="btnSideloadFlash">SideLoad刷机(Deving)</s:String>
     <s:String x:Key="btnRelockMi">重新上锁小米手机</s:String>
     <s:String x:Key="btnFlashCustomRecoveryImg">刷入自选Recovery</s:String>
@@ -141,7 +141,7 @@
     <s:String x:Key="advsBrventActivtedUnsuccess">请确保您安装了最新的黑域并至少打开了黑域界面,或您可尝试更新本工具箱</s:String>
     <s:String x:Key="advsFileSendUnsuccess">您可以截图后,给zsh2401@gmail.com发送邮件</s:String>
     <!--建议-->
-    
+
     <s:String x:Key="CompileDate">编译日期</s:String>
     <s:String x:Key="SelecteAFile">选择一个文件</s:String>
     <s:String x:Key="Warning">警告</s:String>
@@ -157,7 +157,7 @@
     <s:String x:Key="AboutMessage2">开发者电子邮件 zsh2401@163.com</s:String>
     <s:String x:Key="AboutMessageOS">前往开源地址</s:String>
     <s:String x:Key="AboutMessage_Thanks">鸣谢以下开源项目做出的卓越贡献</s:String>
-    <s:String x:Key="AboutMessage_OSList">Newtonsoft.Json                         System.Data.Sqlite</s:String>
+    <s:String x:Key="AboutMessage_OSList">Newtonsoft.Json &amp; Google Android Debug Bridge &amp; Google Android &amp; Linux</s:String>
     <!--关于信息-->
 
     <s:String x:Key="Menu">菜单</s:String>

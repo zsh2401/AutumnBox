@@ -15,6 +15,7 @@ using System;
 
 namespace AutumnBox.GUI.Util
 {
+    [Obsolete]
     public struct VersionInfo
     {
         public string content;

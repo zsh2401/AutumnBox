@@ -11,7 +11,7 @@
         <Label Foreground="{DynamicResource ForgBrush}" Content="{DynamicResource AboutMessage1}" HorizontalAlignment="Left" Margin="0,304,0,0" VerticalAlignment="Top" Width="426" FontFamily="Microsoft YaHei UI Light" FontSize="14"/>
         <Label Foreground="{DynamicResource ForgBrush}" Content="{DynamicResource AboutMessage2}" HorizontalAlignment="Left" Margin="0,338,0,0" VerticalAlignment="Top" Width="235" FontFamily="Microsoft YaHei UI Light" FontSize="14"/>
         <Label Foreground="{DynamicResource ForgBrush}" Content="{DynamicResource AboutMessage_Thanks}" HorizontalAlignment="Left" Margin="0,489,0,0" VerticalAlignment="Top" Width="360" FontFamily="Microsoft YaHei UI Light" FontSize="14"/>
-        <Label Foreground="{DynamicResource ForgBrush}" Content="{DynamicResource AboutMessage_OSList}" HorizontalAlignment="Left" Margin="0,524,0,0" VerticalAlignment="Top" Width="266" FontFamily="Microsoft YaHei UI Light" Height="33" FontSize="14"/>
+        <Label Foreground="{DynamicResource ForgBrush}" Content="{DynamicResource AboutMessage_OSList}" Margin="0,0,10,13" FontFamily="Microsoft YaHei UI Light" FontSize="14" Height="33" VerticalAlignment="Bottom"/>
         <TextBlock x:Name="TextBlockGoToOS" HorizontalAlignment="Left" Margin="465,308,0,0" TextWrapping="Wrap" Text="{DynamicResource AboutMessageOS}" VerticalAlignment="Top" Foreground="#FF52B08E" FontFamily="Microsoft YaHei UI Light" TextDecorations="Underline" Height="20" Width="154" RenderTransformOrigin="2.278,-0.968" FontSize="15" MouseDown="TextBlockGoToOS_MouseDown">
             <TextBlock.RenderTransform>
                 <TransformGroup>
@@ -34,7 +34,7 @@
         </TextBlock>
         <Image Source="/AutumnBox.Res;component/Images/Icons/donate.png" HorizontalAlignment="Left" Height="28" Margin="235,338,0,0" VerticalAlignment="Top" Width="31"/>
         <Image Source="/AutumnBox.Res;component/Images/github.png" HorizontalAlignment="Left" Height="28" Margin="426,304,0,0" VerticalAlignment="Top" Width="31"/>
-        <Label Foreground="{DynamicResource ForgBrush}" x:Name="LabelVersion" Content="*.*.*.*-*" HorizontalAlignment="Left" Margin="240,208,0,0" VerticalAlignment="Top" Width="181"/>
-        <Label Foreground="{DynamicResource ForgBrush}" x:Name="LabelCompiledDate" Content="00-00-0000" HorizontalAlignment="Left" Margin="240,239,0,0" VerticalAlignment="Top" Width="150"/>
+        <Label Foreground="{DynamicResource ForgBrush}" x:Name="LabelVersion" Content="*.*.*.*-*" HorizontalAlignment="Left" Margin="240,208,0,0" VerticalAlignment="Top" Width="181" FontFamily="Microsoft YaHei Light"/>
+        <Label Foreground="{DynamicResource ForgBrush}" x:Name="LabelCompiledDate" Content="00-00-0000" HorizontalAlignment="Left" Margin="426,208,0,0" VerticalAlignment="Top" Width="150" FontFamily="Microsoft YaHei Light"/>
     </Grid>
 </UserControl>

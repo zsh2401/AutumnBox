@@ -17,7 +17,7 @@ namespace AutumnBox.GUI.Cfg
 {
     [JsonObject(MemberSerialization.OptOut)]
     [ConfigProperty(ConfigFile = "autumnbox.json")]
-    internal class ConfigDataLayout
+    internal sealed class ConfigDataLayout
     {
         [JsonProperty("IsFirstLaunch")]
         public bool IsFirstLaunch { get; set; } = true;

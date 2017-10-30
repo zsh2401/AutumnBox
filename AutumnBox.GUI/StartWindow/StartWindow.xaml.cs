@@ -54,8 +54,8 @@ namespace AutumnBox.GUI
                 });
             };
 #if DEBUG
-            AboutControl.LabelVersion.Content = DebugInfo.NowVersion + "-Debug";
-            TitleBar.Title.Content += "  " + DebugInfo.NowVersion + "-Debug";
+            AboutControl.LabelVersion.Content = SystemHelper.NowVersion + "-Debug";
+            TitleBar.Title.Content += "  " + SystemHelper.NowVersion + "-Debug";
 #else
             LabelVersion.Content = StaticData.nowVersion.version + "-Release";
             TitleBar.Title.Content += "  " + StaticData.nowVersion.version + "-Release";
@@ -85,6 +85,7 @@ namespace AutumnBox.GUI
         /// <param name="e"></param>
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
+            BlurHelper.EnableBlur(this);
             RefreshUI();
             App.DevicesListener.Start();//开始设备监听
             //哦,如果是第一次启动本软件,那么就显示一下提示吧!

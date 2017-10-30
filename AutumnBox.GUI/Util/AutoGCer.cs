@@ -24,11 +24,12 @@ namespace AutumnBox.GUI.Util
     /// <summary>
     /// AutoGC http://www.cnblogs.com/xcsn/p/4678322.html
     /// </summary>
-    internal class AutoGCer
+    internal sealed class AutoGCer
     {
         private bool continueAutoGC = true;
         public AutoGCer() { }
-        public void Start() {
+        public void Start()
+        {
             continueAutoGC = true;
             new Thread(AutoGC) { Name = "Auto GC" }.Start();
         }
