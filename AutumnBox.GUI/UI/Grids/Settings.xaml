@@ -8,7 +8,7 @@
             Height="570" Width="940" Background="White">
     <ComboBox x:Name="cbboxLang" HorizontalAlignment="Left" Margin="75,40,0,0" VerticalAlignment="Top" Width="225" BorderBrush="#FFFDF5F5" FontSize="14" FontFamily="Microsoft YaHei UI Light" SelectionChanged="cbboxLang_SelectionChanged" SelectedIndex="0"/>
     <Label Content="{DynamicResource Language}" HorizontalAlignment="Left" Margin="36,40,0,0" VerticalAlignment="Top" FontSize="14" FontFamily="Microsoft YaHei UI Light"/>
-    <Slider Name="ColorSlider" HorizontalAlignment="Left" Margin="50,172,0,0" Maximum="255" ValueChanged="Slider_ValueChanged" Value="0" VerticalAlignment="Top" Width="420"/>
+    <Slider Name="ColorSlider" HorizontalAlignment="Left" Margin="129,137,0,0" Maximum="255" ValueChanged="Slider_ValueChanged" Value="0" VerticalAlignment="Top" Width="276"/>
     <Label Content="{DynamicResource Transparency}" HorizontalAlignment="Left" Margin="36,127,0,0" VerticalAlignment="Top" FontSize="14" FontFamily="Microsoft YaHei UI Light"/>
 
 </Grid>
