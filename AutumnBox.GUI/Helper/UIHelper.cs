@@ -12,10 +12,12 @@
 *
 \* =============================================================================*/
 using AutumnBox.Basic.Function;
+using AutumnBox.GUI.Cfg;
 using AutumnBox.GUI.Windows;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace AutumnBox.GUI.Helper
@@ -25,6 +27,11 @@ namespace AutumnBox.GUI.Helper
     /// </summary>
     public static class UIHelper
     {
+        public static void SetOwnerTransparency(byte A)
+        {
+            Color now = ((SolidColorBrush)App.Current.Resources["BackBrush"]).Color;
+            App.OwnerWindow.Background = new SolidColorBrush(Color.FromArgb(A, now.R, now.G, now.B));
+        }
         /// <summary>
         /// 设置一个grid下的所有button的开启与否
         /// </summary>

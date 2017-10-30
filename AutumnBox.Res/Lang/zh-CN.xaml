@@ -80,6 +80,7 @@
     <!--QA-->
 
     <!--静态界面标记-->
+    <s:String x:Key="Transparency">透明度</s:String>
     <s:String x:Key="Language">语言</s:String>
     <s:String x:Key="ThankMessage1">感谢您使用AutumnBox!</s:String>
     <s:String x:Key="ThankMessage2">这是一个开源免费的自由软件</s:String>

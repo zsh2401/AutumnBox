@@ -23,6 +23,8 @@ using System;
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
+
 namespace AutumnBox.GUI
 {
     [LogProperty(TAG = "Main Window")]
@@ -86,6 +88,7 @@ namespace AutumnBox.GUI
         /// <param name="e"></param>
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
+            UIHelper.SetOwnerTransparency(Config.BackgroundA);
             //开启Blur透明效果
             BlurHelper.EnableBlur(this);
             //刷新一下界面

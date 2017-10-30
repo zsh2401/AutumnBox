@@ -20,7 +20,7 @@ using System.Reflection;
 
 namespace AutumnBox.GUI.Cfg
 {
-    [LogProperty(Show = false)]
+    [LogProperty(Show = true)]
     internal sealed class ConfigOperator : IConfigOperator
     {
         public ConfigDataLayout Data { get; private set; } = new ConfigDataLayout();
@@ -56,7 +56,7 @@ namespace AutumnBox.GUI.Cfg
             {
                 Data = (ConfigDataLayout)(JsonConvert.DeserializeObject(sr.ReadToEnd(), Data.GetType()));
             }
-            Logger.D( "Is first launch? " + Data.IsFirstLaunch.ToString());
+            Logger.D("a is???" + Data.BackgroundA);
         }
         /// <summary>
         /// 将数据存储到硬盘

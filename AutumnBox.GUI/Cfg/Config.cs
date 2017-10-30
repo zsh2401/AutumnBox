@@ -56,5 +56,17 @@ namespace AutumnBox.GUI.Cfg
                 Operator.SaveToDisk();
             }
         }
+        public static byte BackgroundA
+        {
+            get
+            {
+                return Operator.Data.BackgroundA;
+            }
+            set
+            {
+                Operator.Data.BackgroundA = value;
+                Operator.SaveToDisk();
+            }
+        }
     }
 }

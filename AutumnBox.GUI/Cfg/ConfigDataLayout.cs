@@ -25,7 +25,7 @@ namespace AutumnBox.GUI.Cfg
         public string SkipVersion { get; set; } = "0.0.0.0";
         [JsonProperty("Lang")]
         public string Lang { get; set; } = "zh-CN";
-        [JsonProperty("Ckh")]
-        public string[] Ckh { get; set; } = { "01", "02" };
+        [JsonProperty("BackgroundA")]
+        public byte BackgroundA { get; set; } = 255;
     }
 }
