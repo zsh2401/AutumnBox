@@ -12,18 +12,18 @@
 *
 \* =============================================================================*/
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Text;
 
 namespace AutumnBox.Shared.CstmDebug
 {
+    [LogProperty(TAG = "Logger Father!", Show = false)]
     public static class Logger
     {
         private static readonly string DEFAULT_LOGFLODER = "logs/";
         private static readonly string DEFAULT_LOGFILE = "default.log";
-        private static readonly string NewFloder;
+        private static string NewFloder;
         static Logger()
         {
             if (!Directory.Exists(DEFAULT_LOGFLODER)) Directory.CreateDirectory(DEFAULT_LOGFLODER);
@@ -34,7 +34,7 @@ namespace AutumnBox.Shared.CstmDebug
         {
             LogPropertyAttribute attrInfo = GetLogPropertyAttribute();
             if (!attrInfo.Show) return;
-            string full = GetFullMessage(attrInfo.TAG, message, isError);
+            string full = GetFullMessage(attrInfo.TAG, message, isError.ToErrorLevel());
             Debug.WriteLine(full);
             WriteToFile(full);
         }
@@ -42,8 +42,8 @@ namespace AutumnBox.Shared.CstmDebug
         {
             LogPropertyAttribute attrInfo = GetLogPropertyAttribute();
             if (!attrInfo.Show) return;
-            StringBuilder full = new StringBuilder(GetFullMessage(attrInfo.TAG, message, true));
-            full.Append(e.ToString() + e.Message);
+            StringBuilder full = new StringBuilder(GetFullMessage(attrInfo.TAG, message, 2));
+            full.Append(Environment.NewLine + GetFullMessage(attrInfo.TAG, e.ToString() + e.Message, 2));
             Debug.WriteLine(full.ToString());
             WriteToFile(full.ToString());
         }
@@ -51,7 +51,7 @@ namespace AutumnBox.Shared.CstmDebug
         {
             LogPropertyAttribute attrInfo = GetLogPropertyAttribute();
             if (!attrInfo.Show) return;
-            string full = GetFullMessage(attrInfo.TAG, message, isError);
+            string full = GetFullMessage(attrInfo.TAG, message, isError.ToErrorLevel());
             Trace.WriteLine(full);
             WriteToFile(full);
         }
@@ -59,10 +59,15 @@ namespace AutumnBox.Shared.CstmDebug
         {
             LogPropertyAttribute attrInfo = GetLogPropertyAttribute();
             if (!attrInfo.Show) return;
-            StringBuilder full = new StringBuilder(GetFullMessage(attrInfo.TAG, message, true));
-            full.Append(e.ToString() + e.Message);
+            StringBuilder full = new StringBuilder(GetFullMessage(attrInfo.TAG, message, 2));
+            full.Append(Environment.NewLine + GetFullMessage(attrInfo.TAG, e.ToString() + e.Message, 2));
             Trace.WriteLine(full.ToString());
             WriteToFile(full.ToString());
+        }
+        private static int ToErrorLevel(this bool isError)
+        {
+            if (isError) return 1;
+            else return 0;
         }
         /// <summary>
         /// 智能化获取log依赖,如果调用者没有Log特性,则返回一个常规的log特性
@@ -70,14 +75,11 @@ namespace AutumnBox.Shared.CstmDebug
         /// <returns></returns>
         private static LogPropertyAttribute GetLogPropertyAttribute()
         {
+            //return new LogPropertyAttribute();
             var calledMethod = new StackTrace().GetFrames()[2].GetMethod();
             //实例化结果,并且给上初始值,如果调用者没有定义LogProperty 
             //则使用默认类名做TAG,并且默认显示出来
-            LogPropertyAttribute result = new LogPropertyAttribute
-            {
-                TAG = calledMethod.ReflectedType.Name,
-                Show = true
-            };
+            LogPropertyAttribute result = new LogPropertyAttribute();
             //Try to Get method TAG
             var methodAttrs = calledMethod.GetCustomAttributes(typeof(LogPropertyAttribute), false);
             foreach (var attr in methodAttrs)
@@ -93,7 +95,7 @@ namespace AutumnBox.Shared.CstmDebug
             {
                 var a = (attr as LogPropertyAttribute);
                 //如果方法没有定义logprop或者定了logprop而不定义tag,则使用class的tag
-                result.TAG = a.TAG == LogPropertyAttribute.NOT_LOAD_TAG ? a.TAG : result.TAG;
+                result.TAG = (result.TAG != LogPropertyAttribute.NOT_LOAD_TAG) ? result.TAG : a.TAG;
                 //如果class决定不显示log,那么方法也别想显示
                 if (a.Show == false && result.Show == true)
                 {
@@ -101,22 +103,39 @@ namespace AutumnBox.Shared.CstmDebug
                 }
                 break;
             }
+            if (result.TAG == LogPropertyAttribute.NOT_LOAD_TAG)
+            {
+                result.TAG = calledMethod.ReflectedType.Name;
+            }
             return result;
         }
-        private static string GetFullMessage(string tag, string message, bool isError)
+        /// <summary>
+        /// Get Full message like [17-10-31_03:50:23][LoggerTest/EXCEPTION] : hehe
+        /// </summary>
+        /// <param name="tag"></param>
+        /// <param name="message"></param>
+        /// <param name="errorLevel"></param>
+        /// <returns></returns>
+        private static string GetFullMessage(string tag, string message, int errorLevel)
         {
-            string t = $"[{DateTime.Now.ToString("yy-MM-dd_hh:mm:ss")}]";
-            if (isError)
+            string t = DateTime.Now.ToString("yy-MM-dd_hh:mm:ss");
+            switch (errorLevel)
             {
-                return $"{t} [{ tag}/WARNING]  : {message}";
-            }
-            else
-            {
-                return $"{t} [{ tag}/INFO]  : {message}";
+                case 0:
+                    return $"[{t}][{tag}/INFO] : {message}";
+                case 1:
+                    return $"[{t}][{tag}/WARNING] : {message}";
+                default:
+                    return $"[{t}][{tag}/EXCEPTION] : {message}";
             }
         }
+        /// <summary>
+        /// Write Log msg To Log File
+        /// </summary>
+        /// <param name="fullMsg"></param>
         private static void WriteToFile(string fullMsg)
         {
+            //return;
             string _LogFileName = DEFAULT_LOGFILE;
             var assInfo = System.Reflection.Assembly.GetAssembly(new StackTrace().GetFrames()[2].GetMethod().ReflectedType);
             var assAttr = assInfo.GetCustomAttributes(typeof(LogFilePropertyAttribute), true);
@@ -133,99 +152,5 @@ namespace AutumnBox.Shared.CstmDebug
             }
             catch { }
         }
-
-        #region Obsolete
-        [Obsolete]
-        public static void D(object sender, string message, bool IsError = false)
-        {
-            if (!GetShowProp(sender)) return;
-            string full = ToFullMessage(sender, message, IsError);
-            Debug.WriteLine(full);
-            WriteToFile(sender, full);
-        }
-        [Obsolete]
-        public static void D(object sender, string message, Exception e)
-        {
-            if (!GetShowProp(sender)) return;
-            D(sender, message, true);
-            D(sender, e.ToString() + e.Message, true);
-        }
-        [Obsolete]
-        public static void T(object sender, string message, bool IsError = false)
-        {
-            if (!GetShowProp(sender)) return;
-            string full = ToFullMessage(sender, message, IsError);
-            Trace.WriteLine(full);
-            WriteToFile(sender, full);
-        }
-        [Obsolete]
-        public static void T(object sender, string message, Exception e)
-        {
-            if (!GetShowProp(sender)) return;
-            T(sender, message, true);
-            T(sender, e.ToString() + e.Message, true);
-        }
-        [Obsolete]
-        private static string ToFullMessage(object sender, string message, bool IsError = false)
-        {
-            string t = $"[{DateTime.Now.ToString("yy-MM-dd_hh:mm:ss")}]";
-            if (IsError)
-            {
-                return $"{t} [{ SenderToTag(sender)}/WARNING]  : {message}";
-            }
-            else
-            {
-                return $"{t} [{ SenderToTag(sender)}/INFO]  : {message}";
-            }
-        }
-        [Obsolete]
-        private static bool GetShowProp(object sender)
-        {
-            try
-            {
-                return ((LogPropertyAttribute)
-                    Attribute.GetCustomAttribute(sender.GetType(), typeof(LogPropertyAttribute))).Show;
-            }
-            catch
-            {
-                return true;
-            }
-        }
-        [Obsolete]
-        private static string SenderToTag(object sender)
-        {
-            try
-            {
-                string tag = ((LogPropertyAttribute)
-                    Attribute.GetCustomAttribute(sender.GetType(), typeof(LogPropertyAttribute))).TAG ?? throw new NullReferenceException();
-                if (tag != LogPropertyAttribute.NOT_LOAD_TAG)
-                {
-                    return tag;
-                }
-            }
-            catch { }
-            if (sender is string) return sender.ToString();
-            else return sender.GetType().Name;
-        }
-        [Obsolete]
-        private static void WriteToFile(object sender, string fullMessage)
-        {
-            string _LogFileName = DEFAULT_LOGFILE;
-            var attrs = System.Reflection.Assembly.GetAssembly(sender.GetType()).
-                GetCustomAttributes(typeof(LogFilePropertyAttribute), true);
-            if (attrs.Length != 0)
-            {
-                _LogFileName = ((LogFilePropertyAttribute)attrs[attrs.Length - 1]).FileName;
-            }
-            try
-            {
-                StreamWriter sw = new StreamWriter(DEFAULT_LOGFLODER + NewFloder + _LogFileName, true);
-                sw.WriteLine(fullMessage);
-                sw.Flush();
-                sw.Close();
-            }
-            catch (Exception e) { D("Fucked exp", e); }
-        }
-        #endregion
     }
 }
