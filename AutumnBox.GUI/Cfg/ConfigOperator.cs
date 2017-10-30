@@ -14,6 +14,7 @@
 using AutumnBox.Shared.CstmDebug;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System;
 using System.IO;
 using System.Reflection;
 
@@ -23,9 +24,10 @@ namespace AutumnBox.GUI.Cfg
     internal class ConfigOperator : IConfigOperator
     {
         public ConfigDataLayout Data { get; private set; } = new ConfigDataLayout();
-        private static readonly string ConfigFileName = "autumnbox.json";
+        private readonly string ConfigFileName;
         public ConfigOperator()
         {
+            ConfigFileName = ((ConfigPropertyAttribute)Data.GetType().GetCustomAttribute(typeof(ConfigPropertyAttribute))).ConfigFile;
             Logger.D(this, "Start Check");
             if (HaveError() || HaveLost())
             {
@@ -33,7 +35,15 @@ namespace AutumnBox.GUI.Cfg
                 SaveToDisk();
             }
             Logger.D(this, "Finished Check");
-            ReloadFromDisk();
+            try
+            {
+                ReloadFromDisk();
+            }
+            catch (Exception)
+            {
+                SaveToDisk();
+                ReloadFromDisk();
+            }
         }
         /// <summary>
         /// 从硬盘重载数据__
@@ -53,6 +63,7 @@ namespace AutumnBox.GUI.Cfg
         /// </summary>
         public void SaveToDisk()
         {
+
             if (!File.Exists(ConfigFileName))
             {
                 using (FileStream fs = new FileStream(ConfigFileName, FileMode.OpenOrCreate, FileAccess.ReadWrite)) { }
