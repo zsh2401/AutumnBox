@@ -36,7 +36,7 @@ namespace AutumnBox.GUI.Cfg
             ReloadFromDisk();
         }
         /// <summary>
-        /// 从硬盘重载数据
+        /// 从硬盘重载数据__
         /// </summary>
         public void ReloadFromDisk()
         {
