@@ -11,7 +11,9 @@
 * Company: I am free man
 *
 \* =============================================================================*/
+using AutumnBox.Shared.CstmDebug;
 using System;
+using System.Collections;
 using System.Windows;
 
 namespace AutumnBox.GUI.I18N
@@ -21,28 +23,31 @@ namespace AutumnBox.GUI.I18N
     /// </summary>
     public static class LanguageHelper
     {
-        public static Language[] GetLanguages() {
-            Language[] langs = new Language[] { new Language() { LanguageName = ""} };
-            return 
-        }
-        public enum LanguageType
+        public static event EventHandler LanguageChanged;
+        public static Language[] Langs;
+        public static readonly string Prefix = "pack://application:,,,/AutumnBox.Res;component/Lang/";
+        static LanguageHelper()
         {
-            zh_CN,
-            en_US,
+            Langs = new Language[]{
+                new Language("zh-CN.xaml"),
+                new Language("en-US.xaml")
+            };
         }
-        public static LanguageType CurrentLanguage { get; private set; }
-        /// <summary>
-        /// 变更语言
-        /// </summary>
-        /// <param name="lang"></param>
-        public static void ChangeLanuage(LanguageType lang)
+        public static void LoadLanguage(Language lang)
         {
-            throw new NotImplementedException();
-#pragma warning disable CS0162 // 检测到无法访问的代码
-            string _lang = lang.ToString().Replace('_', '-');
-#pragma warning restore CS0162 // 检测到无法访问的代码
-            if (App.Current.Resources["LanguageName"].ToString() != lang.ToString())
-                Application.Current.Resources.Source = new Uri($@"Lang\{_lang}.xaml", UriKind.Relative);
+            App.Current.Resources.MergedDictionaries[0] = LoadLangFromResource(lang);
+            LanguageChanged?.Invoke(new object(), new EventArgs());
+        }
+        public static ResourceDictionary LoadLangFromResource(Language lang)
+        {
+            Logger.D("Lang Setter", lang.FileName);
+            return LoadLangFromResource(lang.FileName);
+        }
+        public static ResourceDictionary LoadLangFromResource(string fileName)
+        {
+            Logger.D("Lang Setter", fileName);
+            var lang = new ResourceDictionary { Source = new Uri(Prefix + fileName) };
+            return lang;
         }
     }
 }

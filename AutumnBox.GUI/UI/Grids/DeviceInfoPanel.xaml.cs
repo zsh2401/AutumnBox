@@ -1,5 +1,6 @@
 ﻿using AutumnBox.Basic.Devices;
 using AutumnBox.GUI.Helper;
+using AutumnBox.GUI.I18N;
 using AutumnBox.Shared.CstmDebug;
 using System;
 using System.Drawing;
@@ -104,6 +105,11 @@ namespace AutumnBox.GUI.UI.Grids
         private void GridClick(object sender, MouseButtonEventArgs e)
         {
             Refresh(App.SelectedDevice);
+        }
+
+        private void LabelAndroidVersion_Loaded(object sender, System.Windows.RoutedEventArgs e)
+        {
+            LanguageHelper.LanguageChanged += (s, ex) => { Refresh(App.SelectedDevice); };
         }
     }
 }

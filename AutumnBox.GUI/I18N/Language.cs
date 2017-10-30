@@ -12,29 +12,29 @@
 *
 \* =============================================================================*/
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows;
 using System.Xml;
 
 namespace AutumnBox.GUI.I18N
 {
     public struct Language
     {
-        public string LanguageName { get; set; }
-        public string FilePath { get; set; }
-        public Language(string filePath)
+        public string LanguageName { get; private set; }
+        public string FileName { get; private set; }
+        public string FullUri { get; private set; }
+        public Language(string fileName)
         {
-            FilePath = filePath;
-            LanguageName = GetLangName(FilePath);
+            FileName = fileName;
+            LanguageName = GetLangName(FileName);
+            FullUri = LanguageHelper.Prefix + fileName;
         }
-        public static string GetLangName(string filePath)
+        public ResourceDictionary GetDictionary()
         {
-            using (var reader = XmlReader.Create($"pack://application:,,,/AutumnBox.Res;Component/Lang{filePath}"))
-            {
-                return reader["LanguageName"].ToString();
-            }
+            return LanguageHelper.LoadLangFromResource(this);
+        }
+        public static string GetLangName(string fileName)
+        {
+            return LanguageHelper.LoadLangFromResource(fileName)["LanguageName"].ToString();
         }
     }
 }

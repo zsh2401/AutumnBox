@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:AutumnBox.GUI.UI.Grids"
              mc:Ignorable="d" 
             Height="570" Width="940" Background="White">
-    <ComboBox HorizontalAlignment="Left" Margin="75,40,0,0" VerticalAlignment="Top" Width="225" BorderBrush="#FFFDF5F5" FontSize="14" FontFamily="Microsoft YaHei UI Light"/>
+    <ComboBox x:Name="cbboxLang" HorizontalAlignment="Left" Margin="75,40,0,0" VerticalAlignment="Top" Width="225" BorderBrush="#FFFDF5F5" FontSize="14" FontFamily="Microsoft YaHei UI Light" SelectionChanged="cbboxLang_SelectionChanged" SelectedIndex="0"/>
     <Label Content="{DynamicResource Language}" HorizontalAlignment="Left" Margin="36,40,0,0" VerticalAlignment="Top" FontSize="14" FontFamily="Microsoft YaHei UI Light"/>
 
 </Grid>

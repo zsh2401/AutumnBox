@@ -14,6 +14,7 @@
 using AutumnBox.Basic.Devices;
 using AutumnBox.GUI.Cfg;
 using AutumnBox.GUI.Helper;
+using AutumnBox.GUI.I18N;
 using AutumnBox.GUI.NetUtil;
 using AutumnBox.GUI.Util;
 using AutumnBox.GUI.Windows;
@@ -33,6 +34,7 @@ namespace AutumnBox.GUI
         public StartWindow()
         {
             Logger.D(this, "Log Init Finish,Start Init Window");
+            //LanguageHelper.Init();
             InitializeComponent();
             App.DevicesListener.DevicesChanged += DevicesChanged;
             TitleBar.OwnerWindow = this;
@@ -53,6 +55,7 @@ namespace AutumnBox.GUI
                     UIHelper.CloseRateBox();
                 });
             };
+
 #if DEBUG
             AboutControl.LabelVersion.Content = SystemHelper.NowVersion + "-Debug";
             TitleBar.Title.Content += "  " + SystemHelper.NowVersion + "-Debug";

@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using AutumnBox.GUI.I18N;
+using System.Windows.Controls;
 
 namespace AutumnBox.GUI.UI.Grids
 {
@@ -10,6 +11,13 @@ namespace AutumnBox.GUI.UI.Grids
         public Settings()
         {
             InitializeComponent();
+            cbboxLang.ItemsSource = LanguageHelper.Langs;
+            cbboxLang.DisplayMemberPath = "LanguageName";
+        }
+
+        private void cbboxLang_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            LanguageHelper.LoadLanguage((Language)cbboxLang.SelectedItem);
         }
     }
 }

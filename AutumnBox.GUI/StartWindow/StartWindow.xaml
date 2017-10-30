@@ -33,8 +33,8 @@
                     </TabControl>
                     <TextBox Foreground="{DynamicResource ForgBrush}" x:Name="textBoxGG" HorizontalAlignment="Left" Height="23" Margin="10,220,0,0" TextWrapping="Wrap" Text="..." VerticalAlignment="Top" Width="859" IsReadOnly="True" Background="{x:Null}"/>
                     <Button Foreground="{DynamicResource ForgBrush}" x:Name="btnHelp" Content="{DynamicResource btnHelp}" Margin="874,219,10,0" VerticalAlignment="Top" Height="24" Background="{x:Null}" BorderBrush="{DynamicResource BorderBrush}" FontSize="14" FontFamily="Microsoft YaHei UI Light" Click="btnHelp_Click" />
-                    <ListBox x:Name="DevicesListBox" DisplayMemberPath="Id" HorizontalAlignment="Left" Height="154" Margin="581,30,0,0" VerticalAlignment="Top" Width="182" SelectionChanged="DevicesListBox_SelectionChanged" Background="#00000000" Foreground="{DynamicResource BasicBrush}" BorderBrush="#FFABADB3"/>
-                    <Button x:Name="buttonLinkHelp"  Foreground="{DynamicResource ForgBrush}" Content="{DynamicResource LinkHelp}" Margin="581,184,249,0" VerticalAlignment="Top" Height="30" Background="{x:Null}" BorderBrush="#33000000" FontSize="11" FontFamily="Microsoft YaHei UI Light" Click="ButtonLinkHelp_Click"/>
+                    <ListBox x:Name="DevicesListBox" DisplayMemberPath="Id" HorizontalAlignment="Left" Height="154" Margin="581,30,0,0" VerticalAlignment="Top" Width="180" SelectionChanged="DevicesListBox_SelectionChanged" Background="#00000000" Foreground="{DynamicResource BasicBrush}" BorderBrush="#FFABADB3"/>
+                    <Button x:Name="buttonLinkHelp"  Foreground="{DynamicResource ForgBrush}" Content="{DynamicResource LinkHelp}" Margin="582,184,0,0" VerticalAlignment="Top" Height="30" Background="{x:Null}" BorderBrush="#33000000" FontSize="11" FontFamily="Microsoft YaHei UI Light" Click="ButtonLinkHelp_Click" Width="180" HorizontalAlignment="Left"/>
                     <Label Content="{DynamicResource Devices}" Foreground="{DynamicResource ForgBrush}" HorizontalAlignment="Left" Margin="581,0,0,0" VerticalAlignment="Top" Width="182" HorizontalContentAlignment="Center"/>
                 </Grid>
             </TabItem>
@@ -49,18 +49,16 @@
             </TabItem>
             <TabItem Foreground="{DynamicResource ForgBrushOnBasic}" Header="{DynamicResource tbiSettings}" Background="{DynamicResource BasicBrush}" Margin="-2,-3,0,3" BorderBrush="{DynamicResource BasicBrush}" MinHeight="130" FontFamily="Microsoft YaHei UI Light" Height="130">
                 <Grid Background="#00E5E5E5" Margin="0,0,-3,7">
-
                     <TabControl HorizontalAlignment="Left" Margin="10,10,0,10" Width="947" Background="Transparent" BorderBrush="{DynamicResource BasicBrush}">
-                        <TabItem Header="{DynamicResource tbiSettings}" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" Margin="-2,0,2,0" HorizontalAlignment="Right" Width="200" Background="#7F009AD6" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" FontSize="16" FontFamily="Microsoft YaHei UI Light">
-                            <grids:Settings x:Name="Settings"></grids:Settings>
-                        </TabItem>
                         <TabItem Header="{DynamicResource tbiAbout}" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" Margin="-2,0,2,0" HorizontalAlignment="Right" Width="200" Background="#7F009AD6" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" FontSize="16" FontFamily="Microsoft YaHei UI Light">
                             <grids:AboutControl x:Name="AboutControl"></grids:AboutControl>
+                        </TabItem>
+                        <TabItem Header="{DynamicResource tbiSettings}" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" Margin="-2,0,2,0" HorizontalAlignment="Right" Width="200" Background="#7F009AD6" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" FontSize="16" FontFamily="Microsoft YaHei UI Light">
+                            <grids:Settings x:Name="Settings"></grids:Settings>
                         </TabItem>
                     </TabControl>
                 </Grid>
             </TabItem>
         </TabControl>
-        <Label Content="" HorizontalAlignment="Left" Margin="38,36,0,0" VerticalAlignment="Top" Background="{DynamicResource BackBrush}" Width="3" Height="634"/>
     </Grid>
 </Window>

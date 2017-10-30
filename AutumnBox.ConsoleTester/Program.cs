@@ -9,6 +9,9 @@ namespace AutumnBox.ConsoleTester
     {
         static void Main(string[] args)
         {
+
+
+            Console.WriteLine(GUI.I18N.LanguageHelper.DefaultLanguage["LanguageName"].ToString());
             //new Config
             //var p = new Program();
             ////var full = new TestModuleTest().GetType().Namespace;
@@ -22,7 +25,7 @@ namespace AutumnBox.ConsoleTester
             //Thread.Sleep(1000);
             //Logger.D(p, "fuck");
             ////Console.WriteLine(nameof(AutumnBox.Basic));
-            JsonPropTest.Run();
+            //JsonPropTest.Run();
             Console.ReadKey();
         }
     }

@@ -5,11 +5,11 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AutumnBox.GUI.UI.Grids"
              mc:Ignorable="d" Width="940" Height="570">
-    <Grid>
+    <Grid Background="White">
         <Image HorizontalAlignment="Left" Height="232" Margin="10,10,0,0" VerticalAlignment="Top" Width="225" Source="/AutumnBox;component/title_icon.ico" RenderTransformOrigin="0.519,-0.013"/>
         <Label Foreground="{DynamicResource ForgBrush}" Content="AutumnBox" HorizontalAlignment="Left" Margin="235,82,0,0" VerticalAlignment="Top" Height="126" Width="546" FontSize="100" FontFamily="Microsoft YaHei UI Light"/>
-        <Label Foreground="{DynamicResource ForgBrush}" Content="{DynamicResource AboutMessage1}" HorizontalAlignment="Left" Margin="0,304,0,0" VerticalAlignment="Top" Width="426" FontFamily="Microsoft YaHei UI Light" FontSize="14"/>
-        <Label Foreground="{DynamicResource ForgBrush}" Content="{DynamicResource AboutMessage2}" HorizontalAlignment="Left" Margin="0,338,0,0" VerticalAlignment="Top" Width="235" FontFamily="Microsoft YaHei UI Light" FontSize="14"/>
+        <Label Foreground="{DynamicResource ForgBrush}" Content="{DynamicResource AboutMessage1}" HorizontalAlignment="Left" Margin="0,304,0,0" VerticalAlignment="Top" FontFamily="Microsoft YaHei UI Light" FontSize="14"/>
+        <Label Foreground="{DynamicResource ForgBrush}" Content="{DynamicResource AboutMessage2}" HorizontalAlignment="Left" Margin="0,338,0,0" VerticalAlignment="Top" FontFamily="Microsoft YaHei UI Light" FontSize="14" Width="228.2"/>
         <Label Foreground="{DynamicResource ForgBrush}" Content="{DynamicResource AboutMessage_Thanks}" HorizontalAlignment="Left" Margin="0,489,0,0" VerticalAlignment="Top" Width="360" FontFamily="Microsoft YaHei UI Light" FontSize="14"/>
         <Label Foreground="{DynamicResource ForgBrush}" Content="{DynamicResource AboutMessage_OSList}" Margin="0,0,10,13" FontFamily="Microsoft YaHei UI Light" FontSize="14" Height="33" VerticalAlignment="Bottom"/>
         <TextBlock x:Name="TextBlockGoToOS" HorizontalAlignment="Left" Margin="465,308,0,0" TextWrapping="Wrap" Text="{DynamicResource AboutMessageOS}" VerticalAlignment="Top" Foreground="#FF52B08E" FontFamily="Microsoft YaHei UI Light" TextDecorations="Underline" Height="20" Width="154" RenderTransformOrigin="2.278,-0.968" FontSize="15" MouseDown="TextBlockGoToOS_MouseDown">
