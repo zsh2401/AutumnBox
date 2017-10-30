@@ -1,4 +1,4 @@
-/* =============================================================================*\
+ï»¿/* =============================================================================*\
 *
 * Filename: ConfigJson.cs
 * Description: 
@@ -36,7 +36,7 @@ namespace AutumnBox.GUI.Cfg
             ReloadFromDisk();
         }
         /// <summary>
-        /// ´ÓÓ²ÅÌÖØÔØÊı¾İ
+        /// ä»ç¡¬ç›˜é‡è½½æ•°æ®
         /// </summary>
         public void ReloadFromDisk()
         {
@@ -49,7 +49,7 @@ namespace AutumnBox.GUI.Cfg
             Logger.D(this, "Is first launch? " + Data.IsFirstLaunch.ToString());
         }
         /// <summary>
-        /// ½«Êı¾İ´æ´¢µ½Ó²ÅÌ
+        /// å°†æ•°æ®å­˜å‚¨åˆ°ç¡¬ç›˜
         /// </summary>
         public void SaveToDisk()
         {
@@ -67,9 +67,9 @@ namespace AutumnBox.GUI.Cfg
         }
 
         /// <summary>
-        /// ¼ì²âÓ²ÅÌÉÏµÄÊı¾İÊÇ·ñÓĞÎÊÌâ
+        /// æ£€æµ‹ç¡¬ç›˜ä¸Šçš„æ•°æ®æ˜¯å¦æœ‰é—®é¢˜
         /// </summary>
-        /// <returns>ÊÇ·ñÓĞÎÊÌâ</returns>
+        /// <returns>æ˜¯å¦æœ‰é—®é¢˜</returns>
         private bool HaveError()
         {
             Logger.D(this, "enter error check");
@@ -81,9 +81,9 @@ namespace AutumnBox.GUI.Cfg
             catch (FileNotFoundException) { return true; }
         }
         /// <summary>
-        /// ¼ì²âÅäÖÃÎÄ¼şÖĞµÄÏîÊÇ·ñÓĞ¶ªÊ§
+        /// æ£€æµ‹é…ç½®æ–‡ä»¶ä¸­çš„é¡¹æ˜¯å¦æœ‰ä¸¢å¤±
         /// </summary>
-        /// <returns>ÏîÊÇ·ñÓĞ¶ªÊ§</returns>
+        /// <returns>é¡¹æ˜¯å¦æœ‰ä¸¢å¤±</returns>
         private bool HaveLost()
         {
             Logger.D(this, "enter lost check");
