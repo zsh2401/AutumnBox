@@ -47,9 +47,13 @@
                     </TabControl>
                 </Grid>
             </TabItem>
-            <TabItem Foreground="{DynamicResource ForgBrushOnBasic}" Header="{DynamicResource tbiAbout}" Background="{DynamicResource BasicBrush}" Margin="-2,-3,0,3" BorderBrush="{DynamicResource BasicBrush}" MinHeight="130" FontFamily="Microsoft YaHei UI Light" Height="130">
+            <TabItem Foreground="{DynamicResource ForgBrushOnBasic}" Header="{DynamicResource tbiSettings}" Background="{DynamicResource BasicBrush}" Margin="-2,-3,0,3" BorderBrush="{DynamicResource BasicBrush}" MinHeight="130" FontFamily="Microsoft YaHei UI Light" Height="130">
                 <Grid Background="#00E5E5E5" Margin="0,0,-3,7">
+
                     <TabControl HorizontalAlignment="Left" Margin="10,10,0,10" Width="947" Background="Transparent" BorderBrush="{DynamicResource BasicBrush}">
+                        <TabItem Header="{DynamicResource tbiSettings}" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" Margin="-2,0,2,0" HorizontalAlignment="Right" Width="200" Background="#7F009AD6" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" FontSize="16" FontFamily="Microsoft YaHei UI Light">
+                            <grids:Settings x:Name="Settings"></grids:Settings>
+                        </TabItem>
                         <TabItem Header="{DynamicResource tbiAbout}" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" Margin="-2,0,2,0" HorizontalAlignment="Right" Width="200" Background="#7F009AD6" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" FontSize="16" FontFamily="Microsoft YaHei UI Light">
                             <grids:AboutControl x:Name="AboutControl"></grids:AboutControl>
                         </TabItem>

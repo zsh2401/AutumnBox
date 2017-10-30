@@ -120,6 +120,7 @@
     <Compile Include="Helper\SystemHelper.cs" />
     <Compile Include="Helper\TextHelper.cs" />
     <Compile Include="Helper\UIHelper.cs" />
+    <Compile Include="I18N\Language.cs" />
     <Compile Include="NetUtil\INetUtil.cs" />
     <Compile Include="NetUtil\Urls.cs" />
     <Compile Include="NetUtil\MOTDGetter.cs" />
@@ -150,6 +151,9 @@
     </Compile>
     <Compile Include="UI\Grids\RecoveryFunctions.xaml.cs">
       <DependentUpon>RecoveryFunctions.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Grids\Settings.xaml.cs">
+      <DependentUpon>Settings.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Grids\WelcomeGrid.xaml.cs">
       <DependentUpon>WelcomeGrid.xaml</DependentUpon>
@@ -195,7 +199,7 @@
       <DependentUpon>UpdateNoticeWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Cfg\Config.cs" />
-    <Compile Include="Helper\LanguageHelper.cs" />
+    <Compile Include="I18N\LanguageHelper.cs" />
     <Compile Include="Cfg\ConfigOperator.cs" />
     <Compile Include="Util\NativeMethods.cs" />
     <Compile Include="Util\VersionInfo.cs" />
@@ -250,6 +254,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\Grids\RecoveryFunctions.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Grids\Settings.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

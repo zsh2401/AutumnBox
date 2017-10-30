@@ -47,6 +47,7 @@
     <s:String x:Key="tbiTools">工具</s:String>
     <s:String x:Key="tbiNormal">常规</s:String>
     <s:String x:Key="tbiAbout">关于</s:String>
+    <s:String x:Key="tbiSettings">设置</s:String>
     <!--tabitem-->
 
     <!--信息(主要用于MMesssageBox)-->
@@ -80,6 +81,7 @@
     <!--QA-->
 
     <!--静态界面标记-->
+    <s:String x:Key="Language">语言</s:String>
     <s:String x:Key="ThankMessage1">感谢您使用AutumnBox!</s:String>
     <s:String x:Key="ThankMessage2">这是一个开源免费的自由软件</s:String>
     <s:String x:Key="ThankMessage3">如果您觉得不错,欢迎捐赠或在Github进行Star,详情在界面左边点击"关于"选项卡</s:String>

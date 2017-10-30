@@ -14,13 +14,17 @@
 using System;
 using System.Windows;
 
-namespace AutumnBox.GUI.Helper
+namespace AutumnBox.GUI.I18N
 {
     /// <summary>
     /// 界面的语言切换帮助类
     /// </summary>
     public static class LanguageHelper
     {
+        public static Language[] GetLanguages() {
+            Language[] langs = new Language[] { new Language() { LanguageName = ""} };
+            return 
+        }
         public enum LanguageType
         {
             zh_CN,
