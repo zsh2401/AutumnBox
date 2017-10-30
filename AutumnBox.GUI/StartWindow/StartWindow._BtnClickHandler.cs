@@ -12,6 +12,7 @@
 *
 \* =============================================================================*/
 using AutumnBox.GUI.Helper;
+using AutumnBox.GUI.NetUtil;
 using AutumnBox.GUI.Windows;
 using System.Diagnostics;
 using System.Windows;
@@ -41,5 +42,7 @@ namespace AutumnBox.GUI
             }
             Process.Start(info);
         }
+
+        private void btnHelp_Click(object sender, RoutedEventArgs e) => Process.Start(Urls.HELP_PAGE);
     }
 }

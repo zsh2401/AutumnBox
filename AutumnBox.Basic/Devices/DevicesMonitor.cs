@@ -96,7 +96,7 @@ namespace AutumnBox.Basic.Devices
                 var now =  executer.GetDevices();
                 if (now != last)
                 {
-                    Logger.D(this,"Devices Change");
+                    Logger.D("Devices Change");
                     last = now;
                     DevicesChanged.Invoke(this, new DevicesChangedEventArgs(now));
                 }

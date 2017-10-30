@@ -27,7 +27,7 @@ namespace AutumnBox.GUI
         internal static DevicesMonitor DevicesListener = new DevicesMonitor();//设备监听器
         protected override void OnStartup(StartupEventArgs e)
         {
-            Logger.T(this, "OnStartup");
+            Logger.T("OnStartup");
             Helper.SystemHelper.GCer.Start();
             base.OnStartup(e);
         }

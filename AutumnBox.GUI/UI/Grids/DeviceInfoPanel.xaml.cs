@@ -55,7 +55,7 @@ namespace AutumnBox.GUI.UI.Grids
             new Thread(() =>
             {
                 var simpleInfo = DeviceInfoHelper.GetBuildInfo(devSimpleInfo.Id);
-                Logger.D(this, "Get basic info finished");
+                Logger.D( "Get basic info finished");
                 this.Dispatcher.Invoke(() =>
                 {
                     LabelAndroidVersion.Content = simpleInfo.AndroidVersion ?? App.Current.Resources["GetFail"].ToString();
@@ -83,7 +83,7 @@ namespace AutumnBox.GUI.UI.Grids
                             _SetStatusPanel(Res.DynamicIcons.recovery, "DeviceInSideload");
                             break;
                     }
-                    Logger.D(this, "Finish Base refresh");
+                    Logger.D( "Finish Base refresh");
                     RefreshFinished?.Invoke(this, new EventArgs());
                 });
                 var advInfo = DeviceInfoHelper.GetHwInfo(devSimpleInfo.Id);

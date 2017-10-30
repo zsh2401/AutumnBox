@@ -65,7 +65,7 @@ namespace AutumnBox.GUI.NetUtil
                 };
                 CheckFinished?.Invoke(this, e);
             }
-            catch (Exception ex) { Logger.T(this, "Update Getting Fail", ex); }
+            catch (Exception ex) { Logger.T( "Update Getting Fail", ex); }
         }
     }
 }

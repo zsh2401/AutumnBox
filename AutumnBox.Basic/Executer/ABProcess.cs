@@ -37,7 +37,7 @@ namespace AutumnBox.Basic.Executer
                 if (e.Data != null)
                 {
                     if (SHOW_OUTPUT)
-                        Logger.D(this, e.Data);
+                        Logger.D( e.Data);
                     _tempOut.OutAdd(e.Data);
                 }
 
@@ -47,7 +47,7 @@ namespace AutumnBox.Basic.Executer
                 if (e.Data != null)
                 {
                     if (Basic.DebugSettings.SHOW_OUTPUT)
-                        Logger.D(this.GetType().Name, e.Data);
+                        Logger.D( e.Data);
                     _tempOut.ErrorAdd(e.Data);
                 }
 
@@ -60,7 +60,7 @@ namespace AutumnBox.Basic.Executer
                 BeginOutputReadLine();
                 BeginErrorReadLine();
             }
-            catch (Exception e) { Logger.T(this.GetType().Name, "Begin Out failed", e); }
+            catch (Exception e) { Logger.T( "Begin Out failed", e); }
         }
         private void CancelRead()
         {
@@ -70,12 +70,12 @@ namespace AutumnBox.Basic.Executer
                 base.CancelErrorRead();
                 Close();
             }
-            catch (Exception e) { Logger.D(this.GetType().Name, "等待退出或关闭流失败", e); }
+            catch (Exception e) { Logger.D("等待退出或关闭流失败", e); }
         }
         public OutputData RunToExited(string fileName, string args)
         {
             if (Basic.DebugSettings.SHOW_COMMAND)
-                Logger.D(this.GetType().Name,$"{fileName} {args}");
+                Logger.D($"{fileName} {args}");
             _tempOut.Clear();
             StartInfo.FileName = fileName;
             StartInfo.Arguments = args;

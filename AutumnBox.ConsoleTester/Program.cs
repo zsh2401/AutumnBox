@@ -7,11 +7,12 @@ namespace AutumnBox.ConsoleTester
     //[LogProperty(TAG = "Public")]
     class Program
     {
+        //[LogProperty(TAG = "DDF")]
         static void Main(string[] args)
         {
-
-
-            Console.WriteLine(GUI.I18N.LanguageHelper.DefaultLanguage["LanguageName"].ToString());
+            Logger.D("fuck!!!");
+            MethodTest.StackTest.A();
+            //Console.WriteLine(GUI.I18N.LanguageHelper.DefaultLanguage["LanguageName"].ToString());
             //new Config
             //var p = new Program();
             ////var full = new TestModuleTest().GetType().Namespace;

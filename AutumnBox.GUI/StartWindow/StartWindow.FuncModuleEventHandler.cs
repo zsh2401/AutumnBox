@@ -40,11 +40,11 @@ namespace AutumnBox.GUI
                 UIHelper.CloseRateBox();
                 if (sender is FileSender)
                 {
-                    PushFinish(sender, e);
+                    PushFinish(e);
                 }
                 else if (sender is BreventServiceActivator)
                 {
-                    ActivatedBrvent(sender, e);
+                    ActivatedBrvent(e);
                 }
                 else if (sender is ActivityLauncher)
                 {
@@ -52,7 +52,7 @@ namespace AutumnBox.GUI
                 }
                 else if (sender is CustomRecoveryFlasher)
                 {
-                    FlashCustomRecFinish(sender, e);
+                    FlashCustomRecFinish(e);
                     //TODO
                 }
                 else if (sender is RebootOperator)
@@ -61,11 +61,11 @@ namespace AutumnBox.GUI
                 }
                 else if (sender is XiaomiSystemUnlocker)
                 {
-                    UnlockMiSystemFinish(sender, e);
+                    UnlockMiSystemFinish(e);
                 }
                 else if (sender is XiaomiBootloaderRelocker)
                 {
-                    RelockMiFinish(sender, e);
+                    RelockMiFinish(e);
                 }
                 else if (sender is ApkInstaller)
                 {
@@ -83,11 +83,11 @@ namespace AutumnBox.GUI
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void ActivatedBrvent(object sender, FinishEventArgs e)
+        private void ActivatedBrvent(FinishEventArgs e)
         {
-            Logger.D(this, e.OutputData.Error.ToString());
-            Logger.D(this, e.OutputData.Out.ToString());
-            Logger.D(this, "Enter the ActivatedBrevent Handler in the GUI");
+            Logger.D(e.OutputData.Error.ToString());
+            Logger.D(e.OutputData.Out.ToString());
+            Logger.D("Enter the ActivatedBrevent Handler in the GUI");
             this.Dispatcher.Invoke(new Action(() =>
             {
                 UIHelper.CloseRateBox();
@@ -107,9 +107,9 @@ namespace AutumnBox.GUI
         /// 解锁小米系统完成时的事件
         /// </summary>
         /// <param name="o"></param>
-        private void UnlockMiSystemFinish(object sender, FinishEventArgs e)
+        private void UnlockMiSystemFinish(FinishEventArgs e)
         {
-            Logger.D(this, "Enter the Unlock Mi  System Finish Handler in the GUI");
+            Logger.D("Enter the Unlock Mi  System Finish Handler in the GUI");
             this.Dispatcher.Invoke(new Action(() =>
             {
                 UIHelper.CloseRateBox();
@@ -120,9 +120,9 @@ namespace AutumnBox.GUI
         /// 重新给小米手机上锁完成时的事件
         /// </summary>
         /// <param name="o"></param>
-        private void RelockMiFinish(object sender, FinishEventArgs e)
+        private void RelockMiFinish(FinishEventArgs e)
         {
-            Logger.D(this, "Enter the Relock Mi Finish Handler in the GUI");
+            Logger.D( "Enter the Relock Mi Finish Handler in the GUI");
             this.Dispatcher.Invoke(new Action(() =>
             {
                 UIHelper.CloseRateBox();
@@ -133,16 +133,16 @@ namespace AutumnBox.GUI
         /// 推送文件到SDCARD完成的事件
         /// </summary>
         /// <param name="outputData">操作时的输出数据</param>
-        private void PushFinish(object sender, FinishEventArgs e)
+        private void PushFinish(FinishEventArgs e)
         {
-            Logger.D(this, "Enter the Push Finish Handler in the GUI");
+            Logger.D("Enter the Push Finish Handler in the GUI");
             if (e.Result.Level == ResultLevel.Successful)
             {
                 MMessageBox.ShowDialog(Application.Current.Resources["Notice"].ToString(), Application.Current.FindResource("msgPushOK").ToString());
             }
             else
             {
-                if (e.Result.WasForcblyStop) { Logger.T(this, "File send was force stoped by user"); return; };
+                if (e.Result.WasForcblyStop) { Logger.T("File send was force stoped by user"); return; };
                 e.Result.Message = Application.Current.FindResource("msgPushFail").ToString();
                 e.Result.Advise = Application.Current.FindResource("advsFileSendUnsuccess").ToString();
                 ModuleResultWindow.FastShow(e.Result);
@@ -153,9 +153,9 @@ namespace AutumnBox.GUI
         /// 刷入自定义Recovery完成时发生的事件
         /// </summary>
         /// <param name="outputData">操作时的数据数据</param>
-        private void FlashCustomRecFinish(object sender, FinishEventArgs e)
+        private void FlashCustomRecFinish(FinishEventArgs e)
         {
-            Logger.D(mweTag, "Flash Custom Recovery Finish");
+            Logger.D( "Flash Custom Recovery Finish");
             this.Dispatcher.Invoke(new Action(() =>
             {
                 UIHelper.CloseRateBox();

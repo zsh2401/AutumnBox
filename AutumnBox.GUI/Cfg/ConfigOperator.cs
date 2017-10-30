@@ -28,13 +28,13 @@ namespace AutumnBox.GUI.Cfg
         public ConfigOperator()
         {
             ConfigFileName = ((ConfigPropertyAttribute)Data.GetType().GetCustomAttribute(typeof(ConfigPropertyAttribute))).ConfigFile;
-            Logger.D(this, "Start Check");
+            Logger.D( "Start Check");
             if (HaveError() || HaveLost())
             {
-                Logger.D(this, "Some error checked, init file");
+                Logger.D( "Some error checked, init file");
                 SaveToDisk();
             }
-            Logger.D(this, "Finished Check");
+            Logger.D( "Finished Check");
             try
             {
                 ReloadFromDisk();
@@ -56,7 +56,7 @@ namespace AutumnBox.GUI.Cfg
             {
                 Data = (ConfigDataLayout)(JsonConvert.DeserializeObject(sr.ReadToEnd(), Data.GetType()));
             }
-            Logger.D(this, "Is first launch? " + Data.IsFirstLaunch.ToString());
+            Logger.D( "Is first launch? " + Data.IsFirstLaunch.ToString());
         }
         /// <summary>
         /// 将数据存储到硬盘
@@ -71,7 +71,7 @@ namespace AutumnBox.GUI.Cfg
             using (StreamWriter sw = new StreamWriter(ConfigFileName, false))
             {
                 string text = JsonConvert.SerializeObject(Data);
-                Logger.D(this, text);
+                Logger.D(text);
                 sw.Write(text);
                 sw.Flush();
             }
@@ -83,7 +83,7 @@ namespace AutumnBox.GUI.Cfg
         /// <returns>是否有问题</returns>
         private bool HaveError()
         {
-            Logger.D(this, "enter error check");
+            Logger.D( "enter error check");
             try
             {
                 JObject jObj = JObject.Parse(File.ReadAllText(ConfigFileName)); return false;
@@ -97,16 +97,16 @@ namespace AutumnBox.GUI.Cfg
         /// <returns>项是否有丢失</returns>
         private bool HaveLost()
         {
-            Logger.D(this, "enter lost check");
+            Logger.D( "enter lost check");
             JObject j = JObject.Parse(File.ReadAllText(ConfigFileName));
-            Logger.D(this, "read finish");
+            Logger.D( "read finish");
             foreach (var prop in Data.GetType().GetProperties())
             {
                 if (!(prop.IsDefined(typeof(JsonPropertyAttribute)))) continue;
                 var attr = (JsonPropertyAttribute)prop.GetCustomAttribute(typeof(JsonPropertyAttribute));
-                if (j[attr.PropertyName] == null) { Logger.D(this, "have lost"); return true; };
+                if (j[attr.PropertyName] == null) { Logger.D( "have lost"); return true; };
             }
-            Logger.D(this, "no lost");
+            Logger.D( "no lost");
             return false;
         }
     }

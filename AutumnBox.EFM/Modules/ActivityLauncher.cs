@@ -34,7 +34,7 @@ namespace AutumnBox.Basic.Function.Modules
         }
         protected override OutputData MainMethod()
         {
-            Logger.D(this, $"Try Launch {DeviceID} Activity : {_Args.ActivityName}");
+            Logger.D( $"Try Launch {DeviceID} Activity : {_Args.ActivityName}");
             string command = $"shell am start -n {_Args.PackageName}/{_Args.PackageName + _Args.ActivityName}";
             var o = Ae(command);
             return o;

@@ -114,7 +114,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Cfg\ConfigPropertyAttribute.cs" />
-    <Compile Include="DebugInfo.cs" />
     <Compile Include="Helper\BlurHelper.cs" />
     <Compile Include="Helper\DataHelper.cs" />
     <Compile Include="Helper\SystemHelper.cs" />

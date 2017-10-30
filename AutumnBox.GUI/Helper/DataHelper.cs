@@ -27,16 +27,16 @@ namespace AutumnBox.GUI.Helper
         public static string JsonPropertyNameOf(object owner, string propName)
         {
             var props = owner.GetType().GetProperties();
-            Logger.D(sender, $" {owner.ToString()}'s {propName}");
+            Logger.D( $" {owner.ToString()}'s {propName}");
             foreach (var _prop in props)
             {
                 if (!(propName == _prop.Name)) continue;
                 if (!_prop.IsDefined(typeof(JsonPropertyAttribute), true)) continue;
                 string jsonPropName = ((JsonPropertyAttribute)Attribute.GetCustomAttribute(_prop, typeof(JsonPropertyAttribute))).PropertyName;
-                Logger.D(sender, "get ok " + jsonPropName);
+                Logger.D( "get ok " + jsonPropName);
                 return jsonPropName;
             }
-            Logger.D(sender, $" return null");
+            Logger.D( $" return null");
             return null;
         }
     }

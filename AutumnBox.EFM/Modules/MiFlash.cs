@@ -35,7 +35,7 @@ namespace AutumnBox.Basic.Function.Modules
                 if (e.Data != null)
                 {
                     temtOut.OutAdd(e.Data);
-                    Logger.D(this, "Out: " + e.Data);
+                    Logger.D("Out: " + e.Data);
                     OnOutReceived(e);
                 }
 
@@ -45,7 +45,7 @@ namespace AutumnBox.Basic.Function.Modules
                 if (e.Data != null)
                 {
                     temtOut.ErrorAdd(e.Data);
-                    Logger.T(this, "Error : " + e.Data);
+                    Logger.T("Error : " + e.Data);
                     OnErrorReceived(e);
                 }
             };

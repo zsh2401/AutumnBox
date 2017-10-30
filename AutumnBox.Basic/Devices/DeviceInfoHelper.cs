@@ -39,7 +39,7 @@ namespace AutumnBox.Basic.Devices
             lock (Executer)
             {
                 var o = Executer.AdbExecute(id, "shell su ls");
-                Logger.D(sender, o.All.ToString());
+                Logger.D(o.All.ToString());
                 if (o.All.ToString().Contains("not found"))
                 {
                     return false;
@@ -108,7 +108,7 @@ namespace AutumnBox.Basic.Devices
             //string fullText = Executer.Execute(new Command(id, "shell \"dumpsys display | grep mBaseDisplayInfo\"")).All.ToString();
             ////string[] texts = fullText.Split(',');
             ////Regex.IsMatch(fullText, @"(?<=density[(])\d{3}(?=,\d,\d[)];)");
-            //Logger.D(sender,Regex.IsMatch(fullText,"(?<=density \").* (?= \"\\()").ToString());
+            //Logger.D( Regex.IsMatch(fullText,"(?<=density \").* (?= \"\\()").ToString());
             return null;
         }
         public static int? GetBatteryLevel(string id)
@@ -116,26 +116,26 @@ namespace AutumnBox.Basic.Devices
             try
             {
                 string output = (Executer.Execute(new Command(id, "shell \"dumpsys battery | grep level\"")).LineOut[0]);
-                Logger.T(sender, "BatteryLevel info  " + output);
+                Logger.T("BatteryLevel info  " + output);
                 return Convert.ToInt32(output.Split(':')[1].TrimStart());
             }
-            catch (Exception e) { Logger.T(sender, "Get Battery info fail", e); return null; }
+            catch (Exception e) { Logger.T("Get Battery info fail", e); return null; }
         }
         public static double? GetDevMemTotal(string id)
         {
             try
             {
                 string output = (Executer.Execute(new Command(id, "shell \"cat /proc/meminfo | grep MemTotal\"")).LineOut[0]);
-                Logger.T(sender, "MemTotal " + output);
+                Logger.T("MemTotal " + output);
                 string result = System.Text.RegularExpressions.Regex.Replace(output, @"[^0-9]+", "");
-                Logger.T(sender, "MemTotal kb " + result);
+                Logger.T("MemTotal kb " + result);
                 double gbMem = Math.Round((Convert.ToDouble(result) / 1024.0 / 1024.0), MidpointRounding.AwayFromZero);
-                Logger.T(sender, "MemTotal gb " + gbMem);
+                Logger.T("MemTotal gb " + gbMem);
                 return gbMem;
             }
             catch (Exception e)
             {
-                Logger.T(sender, "Get MemTotal fail", e);
+                Logger.T("Get MemTotal fail", e);
                 return null;
             }
         }
@@ -148,38 +148,38 @@ namespace AutumnBox.Basic.Devices
             try
             {
                 string output = (Executer.Execute(new Command(id, "shell \"cat /proc/cpuinfo | grep Hardware\"")).LineOut[0]);
-                Logger.T(sender, "cpuinfo " + output);
+                Logger.T("cpuinfo " + output);
                 var hehe = output.Split(' ');
                 return hehe[hehe.Length - 1];
             }
-            catch (Exception e) { Logger.T(sender, "Get cpuinfo fail", e); return null; }
+            catch (Exception e) { Logger.T("Get cpuinfo fail", e); return null; }
         }
         public static string GetScreenInfo(string id)
         {
             try
             {
                 string output = (Executer.Execute(new Command(id, "shell \"cat /proc/hwinfo | grep LCD\"")).LineOut[0]);
-                Logger.T(sender, "hwinfo LCD " + output);
+                Logger.T("hwinfo LCD " + output);
                 return output.Split(':')[1].TrimStart();
             }
-            catch (Exception e) { Logger.T(sender, "Get LCD info fail", e); return null; }
+            catch (Exception e) { Logger.T("Get LCD info fail", e); return null; }
         }
         public static string GetFlashMemoryType(string id)
         {
             try
             {
                 string output = (Executer.Execute(new Command(id, "shell \"cat /proc/hwinfo | grep EMMC\"")).LineOut[0]);
-                Logger.T(sender, "EMMC info  " + output);
+                Logger.T("EMMC info  " + output);
                 return output.Split(':')[1].TrimStart() + " EMMC";
             }
-            catch (Exception e) { Logger.T(sender, "Get EMMC info fail", e); }
+            catch (Exception e) { Logger.T("Get EMMC info fail", e); }
             try
             {
                 string output = (Executer.Execute(new Command(id, "shell \"cat /proc/hwinfo | grep UFS\"")).LineOut[0]);
-                Logger.T(sender, "UFS info  " + output);
+                Logger.T("UFS info  " + output);
                 return output.Split(':')[1].TrimStart() + " UFS";
             }
-            catch (Exception e) { Logger.T(sender, "Get UFS info fail", e); return null; }
+            catch (Exception e) { Logger.T("Get UFS info fail", e); return null; }
         }
         /// <summary>
         /// 将string的状态转为DevicesStatus枚举

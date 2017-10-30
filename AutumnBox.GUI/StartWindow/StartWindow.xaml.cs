@@ -33,8 +33,7 @@ namespace AutumnBox.GUI
         private Object setUILock = new System.Object();
         public StartWindow()
         {
-            Logger.D(this, "Log Init Finish,Start Init Window");
-            //LanguageHelper.Init();
+            Logger.D("new test!");
             InitializeComponent();
             App.DevicesListener.DevicesChanged += DevicesChanged;
             TitleBar.OwnerWindow = this;
@@ -43,7 +42,7 @@ namespace AutumnBox.GUI
             {
                 this.Dispatcher.Invoke(() =>
                 {
-                    Logger.D(this, "RefreshStart..");
+                    Logger.D("RefreshStart..");
                     UIHelper.ShowRateBox();
                 });
             };
@@ -51,11 +50,10 @@ namespace AutumnBox.GUI
             {
                 this.Dispatcher.Invoke(() =>
                 {
-                    Logger.D(this, "RefreshFinished..");
+                    Logger.D("RefreshFinished..");
                     UIHelper.CloseRateBox();
                 });
             };
-
 #if DEBUG
             AboutControl.LabelVersion.Content = SystemHelper.NowVersion + "-Debug";
             TitleBar.Title.Content += "  " + SystemHelper.NowVersion + "-Debug";
@@ -71,7 +69,7 @@ namespace AutumnBox.GUI
         /// <param name="e"></param>
         private void DevicesChanged(object sender, DevicesChangedEventArgs e)
         {
-            Logger.D(this, "Devices change handing.....");
+            Logger.D("Devices change handing.....");
             this.Dispatcher.Invoke(() =>
             {
                 DevicesListBox.ItemsSource = e.DevicesList;
@@ -88,17 +86,22 @@ namespace AutumnBox.GUI
         /// <param name="e"></param>
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
+            //开启Blur透明效果
             BlurHelper.EnableBlur(this);
+            //刷新一下界面
             RefreshUI();
-            App.DevicesListener.Start();//开始设备监听
+            //开始设备监听
+            App.DevicesListener.Start();
             //哦,如果是第一次启动本软件,那么就显示一下提示吧!
             if (Config.IsFirstLaunch)
             {
                 MMessageBox.ShowDialog(FindResource("Notice2").ToString(), App.Current.Resources["msgFristLaunchNotice"].ToString());
                 Config.IsFirstLaunch = false;
             }
-            GetNotice();//开始获取公告
-            UpdateCheck();//更新检测
+            //开始获取公告
+            GetNotice();
+            //更新检测
+            UpdateCheck();
         }
         /// <summary>
         /// 当窗口关闭时发生
@@ -107,10 +110,7 @@ namespace AutumnBox.GUI
         /// <param name="e"></param>
         private void MainWindow_Closed(object sender, EventArgs e)
         {
-            this.Close();
-            App.DevicesListener.Stop();
-            Basic.Executer.CommandExecuter.Kill();
-            Environment.Exit(0);
+            SystemHelper.AppExit(0);
         }
         /// <summary>
         /// 根据当前选中的设备刷新界面信息
@@ -178,7 +178,5 @@ namespace AutumnBox.GUI
                 }
             };
         }
-
-        private void btnHelp_Click(object sender, RoutedEventArgs e) => Process.Start(Urls.HELP_PAGE);
     }
 }

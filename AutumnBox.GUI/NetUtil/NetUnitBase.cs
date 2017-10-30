@@ -43,5 +43,7 @@ namespace AutumnBox.GUI.NetUtil
             return Shared.NetHelper.GetHtmlCode(url);
         }
         public abstract void Run();
+        //public abstract void LocalTestMethod();
+        //public abstract void ApiTestMethod();
     }
 }

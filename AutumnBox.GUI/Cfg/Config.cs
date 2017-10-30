@@ -22,13 +22,13 @@ namespace AutumnBox.GUI.Cfg
         {
             get
             {
-                Logger.D("Config", "Get Is firstLaunch value " + Operator.Data.IsFirstLaunch);
+                Logger.D("Get Is firstLaunch value " + Operator.Data.IsFirstLaunch);
                 return Operator.Data.IsFirstLaunch;
             }
             set
             {
                 Operator.Data.IsFirstLaunch = value;
-                Logger.D("Config", "ifl set, now value " + Operator.Data.IsFirstLaunch.ToString());
+                Logger.D("ifl set, now value " + Operator.Data.IsFirstLaunch.ToString());
                 Operator.SaveToDisk();
             }
         }

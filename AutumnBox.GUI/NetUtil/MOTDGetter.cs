@@ -24,14 +24,14 @@ namespace AutumnBox.GUI.NetUtil
         public string Header { get; set; }
         public string Message { get; set; }
     }
-    //[LogProperty(TAG ="MOTD Getter")]
+    [LogProperty(TAG = "MOTD Getter")]
     [NetUnitProperty(UseLocalApi = false,MustAddFininshedEventHandler = true)]
     public class MOTDGetter : NetUnitBase,INetUtil
     {
         public event Action<object, MOTDGetFinishedEventArgs> GetFinished;
         public override void Run()
         {
-            Logger.T(this,"Start get MOTD");
+            Logger.T("Start get MOTD");
             new Hashtable()["fuck"] = null;
             try
             {
@@ -47,7 +47,7 @@ namespace AutumnBox.GUI.NetUtil
             }
             catch (Exception e)
             {
-                Logger.T(this, "Motd Getting Expception", e);
+                Logger.T( "Motd Getting Expception", e);
             }
         }
     }

@@ -40,12 +40,12 @@ namespace AutumnBox.GUI.I18N
         }
         public static ResourceDictionary LoadLangFromResource(Language lang)
         {
-            Logger.D("Lang Setter", lang.FileName);
+            Logger.D( lang.FileName);
             return LoadLangFromResource(lang.FileName);
         }
         public static ResourceDictionary LoadLangFromResource(string fileName)
         {
-            Logger.D("Lang Setter", fileName);
+            Logger.D( fileName);
             var lang = new ResourceDictionary { Source = new Uri(Prefix + fileName) };
             return lang;
         }
