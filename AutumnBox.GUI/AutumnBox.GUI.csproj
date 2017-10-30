@@ -155,6 +155,7 @@
     </Compile>
     <Compile Include="Cfg\IConfigOperator.cs" />
     <Compile Include="Cfg\ConfigDataLayout.cs" />
+    <Compile Include="Util\AutoGCer.cs" />
     <Compile Include="Windows\ChangeThemeWindow.xaml.cs">
       <DependentUpon>ChangeThemeWindow.xaml</DependentUpon>
     </Compile>

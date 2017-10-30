@@ -28,7 +28,7 @@ namespace AutumnBox.GUI
         protected override void OnStartup(StartupEventArgs e)
         {
             Logger.T(this, "OnStartup");
-            Helper.SystemHelper.StartAutoGC();
+            Helper.SystemHelper.GCer.Start();
             base.OnStartup(e);
             //Main
         }
