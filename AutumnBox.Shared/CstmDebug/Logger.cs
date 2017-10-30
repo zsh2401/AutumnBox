@@ -32,47 +32,76 @@ namespace AutumnBox.Shared.CstmDebug
         }
         public static void D(string message, bool isError = false)
         {
-            string full = GetFullMessage(GetTag(), message, isError);
+            LogPropertyAttribute attrInfo = GetLogPropertyAttribute();
+            if (!attrInfo.Show) return;
+            string full = GetFullMessage(attrInfo.TAG, message, isError);
             Debug.WriteLine(full);
             WriteToFile(full);
         }
         public static void D(string message, Exception e)
         {
-            StringBuilder full = new StringBuilder(GetFullMessage(GetTag(), message, true));
+            LogPropertyAttribute attrInfo = GetLogPropertyAttribute();
+            if (!attrInfo.Show) return;
+            StringBuilder full = new StringBuilder(GetFullMessage(attrInfo.TAG, message, true));
             full.Append(e.ToString() + e.Message);
             Debug.WriteLine(full.ToString());
             WriteToFile(full.ToString());
         }
         public static void T(string message, bool isError = false)
         {
-            string full = GetFullMessage(GetTag(), message, isError);
+            LogPropertyAttribute attrInfo = GetLogPropertyAttribute();
+            if (!attrInfo.Show) return;
+            string full = GetFullMessage(attrInfo.TAG, message, isError);
             Trace.WriteLine(full);
             WriteToFile(full);
         }
         public static void T(string message, Exception e)
         {
-            StringBuilder full = new StringBuilder(GetFullMessage(GetTag(), message, true));
+            LogPropertyAttribute attrInfo = GetLogPropertyAttribute();
+            if (!attrInfo.Show) return;
+            StringBuilder full = new StringBuilder(GetFullMessage(attrInfo.TAG, message, true));
             full.Append(e.ToString() + e.Message);
             Trace.WriteLine(full.ToString());
             WriteToFile(full.ToString());
         }
-        private static string GetTag()
+        /// <summary>
+        /// 智能化获取log依赖,如果调用者没有Log特性,则返回一个常规的log特性
+        /// </summary>
+        /// <returns></returns>
+        private static LogPropertyAttribute GetLogPropertyAttribute()
         {
             var calledMethod = new StackTrace().GetFrames()[2].GetMethod();
+            //实例化结果,并且给上初始值,如果调用者没有定义LogProperty 
+            //则使用默认类名做TAG,并且默认显示出来
+            LogPropertyAttribute result = new LogPropertyAttribute
+            {
+                TAG = calledMethod.ReflectedType.Name,
+                Show = true
+            };
             //Try to Get method TAG
-            var methodAttrs = calledMethod.GetCustomAttributes(false);
+            var methodAttrs = calledMethod.GetCustomAttributes(typeof(LogPropertyAttribute), false);
             foreach (var attr in methodAttrs)
             {
-                if (attr is LogPropertyAttribute) { return ((LogPropertyAttribute)attr).TAG; }
+                var a = (attr as LogPropertyAttribute);
+                result.TAG = a.TAG;
+                result.Show = a.Show;
+                break;
             }
             //Try to Get class TAG
-            var classAttrs = calledMethod.ReflectedType.GetCustomAttributes(true);
+            var classAttrs = calledMethod.ReflectedType.GetCustomAttributes(typeof(LogPropertyAttribute), true);
             foreach (var attr in classAttrs)
             {
-                if (attr is LogPropertyAttribute) { return ((LogPropertyAttribute)attr).TAG; }
+                var a = (attr as LogPropertyAttribute);
+                //如果方法没有定义logprop或者定了logprop而不定义tag,则使用class的tag
+                result.TAG = a.TAG == LogPropertyAttribute.NOT_LOAD_TAG ? a.TAG : result.TAG;
+                //如果class决定不显示log,那么方法也别想显示
+                if (a.Show == false && result.Show == true)
+                {
+                    result.Show = a.Show;
+                }
+                break;
             }
-            //WTF
-            return calledMethod.ReflectedType.Name;
+            return result;
         }
         private static string GetFullMessage(string tag, string message, bool isError)
         {

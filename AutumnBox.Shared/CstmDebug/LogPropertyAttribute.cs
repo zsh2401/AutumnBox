@@ -15,7 +15,7 @@ using System;
 
 namespace AutumnBox.Shared.CstmDebug
 {
-    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = false)]
     public class LogPropertyAttribute : Attribute
     {
         public static readonly string NOT_LOAD_TAG = "Dream of us";

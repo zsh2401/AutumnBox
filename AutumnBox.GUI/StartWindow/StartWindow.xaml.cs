@@ -25,6 +25,7 @@ using System.Windows;
 using System.Windows.Controls;
 namespace AutumnBox.GUI
 {
+    [LogProperty(TAG = "Main Window")]
     /// <summary>
     /// Window1.xaml 的交互逻辑
     /// </summary>
@@ -33,7 +34,6 @@ namespace AutumnBox.GUI
         private Object setUILock = new System.Object();
         public StartWindow()
         {
-            Logger.D("new test!");
             InitializeComponent();
             App.DevicesListener.DevicesChanged += DevicesChanged;
             TitleBar.OwnerWindow = this;

@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MethodTest\LoggerTest.cs" />
     <Compile Include="MethodTest\StackTest.cs" />
     <Compile Include="ObjTest\FileSenderTest.cs" />
     <Compile Include="ObjTest\JsonPropTest.cs" />

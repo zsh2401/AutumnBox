@@ -1,4 +1,5 @@
-﻿using AutumnBox.ConsoleTester.ObjTest;
+﻿using AutumnBox.ConsoleTester.MethodTest;
+using AutumnBox.ConsoleTester.ObjTest;
 using AutumnBox.Shared.CstmDebug;
 using System;
 
@@ -10,8 +11,9 @@ namespace AutumnBox.ConsoleTester
         //[LogProperty(TAG = "DDF")]
         static void Main(string[] args)
         {
-            Logger.D("fuck!!!");
-            MethodTest.StackTest.A();
+            LoggerTest.Test();
+            //Logger.D("fuck!!!");
+            //MethodTest.StackTest.A();
             //Console.WriteLine(GUI.I18N.LanguageHelper.DefaultLanguage["LanguageName"].ToString());
             //new Config
             //var p = new Program();
