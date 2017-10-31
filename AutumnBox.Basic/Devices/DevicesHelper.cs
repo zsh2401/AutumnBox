@@ -12,15 +12,16 @@
 *
 \* =============================================================================*/
 using AutumnBox.Shared;
+using AutumnBox.Shared.CstmDebug;
 
 namespace AutumnBox.Basic.Devices
 {
+    [LogProperty(TAG = "DevicesHelper")]
     /// <summary>
     /// 关于设备的一些静态函数
     /// </summary>
     public static class DevicesHelper
     {
-        private static readonly string TAG = "DevicesHelper";
         /// <summary>
         /// 获取设备列表
         /// </summary>

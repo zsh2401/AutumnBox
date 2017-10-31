@@ -24,11 +24,9 @@ using System.Threading.Tasks;
 using static AutumnBox.Basic.DebugSettings;
 namespace AutumnBox.Basic.Devices
 {
+    [LogProperty(TAG = "DeviceInfoHelper")]
     public static class DeviceInfoHelper
     {
-        [LogProperty(TAG = "DeviceInfoHelper")]
-        public class DeviceInfoSender { }
-        private static readonly object sender = new DeviceInfoSender();
         private static CommandExecuter Executer = new CommandExecuter();
         static DeviceInfoHelper()
         {
