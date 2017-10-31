@@ -142,7 +142,7 @@ namespace AutumnBox.GUI
             }
             else if (this.DevicesListBox.SelectedIndex == -1)
             {
-                App.SelectedDevice = new DeviceBasicInfo() { Status = DeviceStatus.NO_DEVICE };
+                App.SelectedDevice = new DeviceBasicInfo() { Status = DeviceStatus.None };
             }
             RefreshUI();
         }

@@ -44,13 +44,16 @@ namespace AutumnBox.Basic.Function.Modules
         }
         protected override OutputData MainMethod()
         {
+            OutputData o = new OutputData();
+            o.OutSender = this.Executer;
             foreach (string filepath in _Args.files)
             {
                 FileInfo fi = new FileInfo(filepath);
-                Ae($"push \"{filepath}\" /sdcard/{fi.Name}");
+                Ae($"push \"{filepath}\" \"/sdcard/{fi.Name}\"");
                 sendSingleFinish?.Invoke(this, new SingleFileSendedEventArgs(filepath));
             }
-            return new OutputData();
+            Logger.D(o.ToString());
+            return o;
         }
     }
 }

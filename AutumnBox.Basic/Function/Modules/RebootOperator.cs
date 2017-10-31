@@ -36,7 +36,7 @@ namespace AutumnBox.Basic.Function.Modules
             this._Args = (RebootArgs)args;
             switch (_Args.nowStatus)
             {
-                case DeviceStatus.FASTBOOT:
+                case DeviceStatus.Fastboot:
                     t = ExecuterType.Fastboot;
                     break;
                 default:
@@ -56,7 +56,7 @@ namespace AutumnBox.Basic.Function.Modules
             {
                 command = "reboot";
             }
-            else if (_Args.nowStatus != DeviceStatus.FASTBOOT && _Args.rebootOption == RebootOptions.Recovery)
+            else if (_Args.nowStatus != DeviceStatus.Fastboot && _Args.rebootOption == RebootOptions.Recovery)
             {
                 command = "reboot recovery";
             }

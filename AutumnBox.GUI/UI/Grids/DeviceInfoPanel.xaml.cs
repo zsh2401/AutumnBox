@@ -31,9 +31,22 @@ namespace AutumnBox.GUI.UI.Grids
         public event EventHandler RefreshFinished;
         public void Refresh(DeviceBasicInfo devSimpleInfo)
         {
-            if (devSimpleInfo.Status == DeviceStatus.RUNNING || devSimpleInfo.Status == DeviceStatus.RECOVERY)
+            if (devSimpleInfo.Status == DeviceStatus.Poweron || devSimpleInfo.Status == DeviceStatus.Recovery)
             {
                 SetByDeviceSimpleInfo(devSimpleInfo);
+            }
+            else if (devSimpleInfo.Status == DeviceStatus.Unauthorized)
+            {
+                SetDefault();
+                UIHelper.SetGridLabelsContent(GridBuildInfo, App.Current.Resources["PleaseAllowUSBDebug"]);
+                _SetStatusPanel(Res.DynamicIcons.no_selected, "PleaseAllowUSBDebug");
+            }
+            else if (devSimpleInfo.Status == DeviceStatus.Fastboot)
+            {
+                UIHelper.SetGridLabelsContent(GridBuildInfo, "...");
+                UIHelper.SetGridLabelsContent(GridHardwareInfo, "....");
+                UIHelper.SetGridLabelsContent(GridMemoryInfo, "....");
+                _SetStatusPanel(Res.DynamicIcons.no_selected, "DeviceInFastboot");
             }
             else
             {
@@ -55,7 +68,7 @@ namespace AutumnBox.GUI.UI.Grids
             new Thread(() =>
             {
                 var simpleInfo = DeviceInfoHelper.GetBuildInfo(devSimpleInfo.Id);
-                Logger.D( "Get basic info finished");
+                Logger.D("Get basic info finished");
                 this.Dispatcher.Invoke(() =>
                 {
                     LabelAndroidVersion.Content = simpleInfo.AndroidVersion ?? App.Current.Resources["GetFail"].ToString();
@@ -70,20 +83,20 @@ namespace AutumnBox.GUI.UI.Grids
                     LabelRootStatus.Content = App.Current.Resources["Getting"].ToString();
                     switch (App.SelectedDevice.Status)
                     {
-                        case DeviceStatus.FASTBOOT:
+                        case DeviceStatus.Fastboot:
                             _SetStatusPanel(Res.DynamicIcons.fastboot, "DeviceInFastboot");
                             break;
-                        case DeviceStatus.RECOVERY:
+                        case DeviceStatus.Recovery:
                             _SetStatusPanel(Res.DynamicIcons.recovery, "DeviceInRecovery");
                             break;
-                        case DeviceStatus.RUNNING:
+                        case DeviceStatus.Poweron:
                             _SetStatusPanel(Res.DynamicIcons.poweron, "DeviceInRunning");
                             break;
-                        case DeviceStatus.SIDELOAD:
+                        case DeviceStatus.Sideload:
                             _SetStatusPanel(Res.DynamicIcons.recovery, "DeviceInSideload");
                             break;
                     }
-                    Logger.D( "Finish Base refresh");
+                    Logger.D("Finish Base refresh");
                     RefreshFinished?.Invoke(this, new EventArgs());
                 });
                 var advInfo = DeviceInfoHelper.GetHwInfo(devSimpleInfo.Id);

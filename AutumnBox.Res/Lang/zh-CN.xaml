@@ -131,6 +131,7 @@
 
     <!--设备状态提示-->
     <s:String x:Key="NotFoundDevices">没有找到设备</s:String>
+    <s:String x:Key="PleaseAllowUSBDebug">请允许USB调试</s:String>
     <s:String x:Key="PleaseSelectedADevice">请选择一个设备</s:String>
     <s:String x:Key="DeviceInRunning">设备处于开机状态</s:String>
     <s:String x:Key="DeviceInRecovery">设备处于恢复模式</s:String>

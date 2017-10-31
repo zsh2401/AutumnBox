@@ -31,7 +31,7 @@ namespace AutumnBox.GUI.UI.Grids
         public void Refresh(DeviceBasicInfo deviceSimpleInfo)
         {
             RefreshStart?.Invoke(this, new EventArgs());
-            bool status = deviceSimpleInfo.Status == DeviceStatus.RUNNING;
+            bool status = deviceSimpleInfo.Status == DeviceStatus.Poweron;
             UIHelper.SetGridButtonStatus(this, status);
             RefreshFinished?.Invoke(this, new EventArgs());
         }

@@ -33,9 +33,10 @@ namespace AutumnBox.Basic.Function.Modules
         }
         protected override OutputData MainMethod()
         {
-            Logger.D(  "Start MainMethod");
-            OutputData output = Ae($"flash recovery  \"{_Args.files[0]}\"");
-            Ae($"boot \"{_Args.files[0]}\"");
+            Logger.D( "Start MainMethod");
+            OutputData output = Fe($"flash recovery  \"{_Args.files[0]}\"");
+            Fe($"boot \"{_Args.files[0]}\"");
+            Logger.D(output.ToString());
             return output;
         }
     }

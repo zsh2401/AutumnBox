@@ -46,13 +46,13 @@ namespace AutumnBox.GUI.UI.Grids
                 RefreshStart?.Invoke(this, new EventArgs());
                 switch (deviceSimpleInfo.Status)
                 {
-                    case DeviceStatus.FASTBOOT:
+                    case DeviceStatus.Fastboot:
                         buttonRebootToBootloader.IsEnabled = true;
                         buttonRebootToRecovery.IsEnabled = false;
                         buttonRebootToSystem.IsEnabled = true;
                         break;
-                    case DeviceStatus.RECOVERY:
-                    case DeviceStatus.RUNNING:
+                    case DeviceStatus.Recovery:
+                    case DeviceStatus.Poweron:
                         buttonRebootToBootloader.IsEnabled = true;
                         buttonRebootToRecovery.IsEnabled = true;
                         buttonRebootToSystem.IsEnabled = true;

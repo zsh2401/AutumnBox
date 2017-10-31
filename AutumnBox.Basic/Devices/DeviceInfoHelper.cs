@@ -92,7 +92,7 @@ namespace AutumnBox.Basic.Devices
         }
         public static DeviceStatus GetStatus(string id)
         {
-            DeviceStatus status = DeviceStatus.NO_DEVICE;
+            DeviceStatus status = DeviceStatus.None;
             DevicesHelper.GetDevices().ForEach((i) =>
             {
                 if (i.Id == id)
@@ -191,15 +191,17 @@ namespace AutumnBox.Basic.Devices
             switch (statusString)
             {
                 case "device":
-                    return DeviceStatus.RUNNING;
+                    return DeviceStatus.Poweron;
                 case "recovery":
-                    return DeviceStatus.RECOVERY;
+                    return DeviceStatus.Recovery;
                 case "fastboot":
-                    return DeviceStatus.FASTBOOT;
+                    return DeviceStatus.Fastboot;
                 case "sideload":
-                    return DeviceStatus.SIDELOAD;
+                    return DeviceStatus.Sideload;
+                case "unauthorized":
+                    return DeviceStatus.Unauthorized;
                 default:
-                    return DeviceStatus.NO_DEVICE;
+                    return DeviceStatus.None;
             }
         }
     }

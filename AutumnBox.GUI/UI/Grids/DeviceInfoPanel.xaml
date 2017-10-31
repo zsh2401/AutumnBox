@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AutumnBox.GUI.UI.Grids"
              mc:Ignorable="d" 
-             d:DesignHeight="214" Width="567.667">
+             d:DesignHeight="214" Width="567.667" Background="White">
     <Grid>
         <Image x:Name="DeviceStatusImage" HorizontalAlignment="Left" Height="100" Margin="35,44,0,0" VerticalAlignment="Top" Width="100" Source="/AutumnBox.Res;component/Images/DynamicIcons/no_selected.png"/>
         <Label x:Name="DeviceStatusLabel" Content="{DynamicResource PleaseSelectedADevice}" HorizontalAlignment="Left" Margin="5,149,0,0" VerticalAlignment="Top" Height="43" Width="161" Foreground="{DynamicResource ForgBrush}" FontSize="14" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Microsoft YaHei UI Light"/>
