@@ -152,13 +152,13 @@ namespace AutumnBox.GUI
         void GetNotice()
         {
             var getter = new MOTDGetter();
-            getter.GetFinished += (s, e) =>
+            getter.Finished += (s, e) =>
             {
                 Dispatcher.Invoke(() =>
                 {
                     textBoxGG.Dispatcher.Invoke(() =>
                     {
-                        textBoxGG.Text = e.Header + " : " + e.Message;
+                        textBoxGG.Text = (e.Result as MOTDResult).Header + " : " + (e.Result as MOTDResult).Message;
                     });
                 });
             };
@@ -170,16 +170,17 @@ namespace AutumnBox.GUI
         void UpdateCheck()
         {
             var checker = new UpdateChecker();
-            checker.CheckFinished += (s, e) =>
+            checker.Finished += (s, e) =>
             {
-                if (e.NeedUpdate)
+                if ((e.Result as UpdateCheckResult).NeedUpdate)
                 {
                     this.Dispatcher.Invoke(() =>
                     {
-                        new UpdateNoticeWindow(e).ShowDialog();
+                        new UpdateNoticeWindow((UpdateCheckResult)e.Result).ShowDialog();
                     });
                 }
             };
+            checker.Run();
         }
     }
 }

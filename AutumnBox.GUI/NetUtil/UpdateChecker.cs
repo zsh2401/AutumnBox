@@ -21,7 +21,7 @@ using System.IO;
 
 namespace AutumnBox.GUI.NetUtil
 {
-    public class UpdateCheckFinishedEventArgs : EventArgs
+    public class UpdateCheckResult : NetUtilResult
     {
         public string Header { get; set; } = "Ok!";
         public bool NeedUpdate { get; set; } = false;
@@ -31,41 +31,41 @@ namespace AutumnBox.GUI.NetUtil
         public DateTime Time { get; set; }
         public string GithubReleaseUrl { get; set; }
     }
-    [NetUnitProperty(UseLocalApi = false, MustAddFininshedEventHandler = true)]
-    public class UpdateChecker : NetUnitBase, INetUtil
+    [LogProperty(TAG = "Update Check", Show = false)]
+    [NetUtilProperty(UseLocalApi = false, MustAddFininshedEventHandler = true)]
+    internal class UpdateChecker : NetUtil, INetUtil
     {
-        public event Action<object, UpdateCheckFinishedEventArgs> CheckFinished;
-        public override void Run()
+        public override NetUtilResult LocalMethod()
         {
-            try
+            throw new NotImplementedException();
+        }
+
+        public override NetUtilResult NetMethod()
+        {
+            Logger.D("Start GET");
+            string data = NetHelper.GetHtmlCode(Urls.UPDATE_API);
+            Logger.D("Get code finish " + data);
+            JObject j = JObject.Parse(data);
+            bool needUpdate = (
+                //当前版本小于检测到的版本
+                Helper.SystemHelper.CurrentVersion < new Version(j["Version"].ToString())
+                &&
+                //并且没有被设置跳过
+                new Version(Config.SkipVersion) != new Version(j["Version"].ToString()));
+            var e = new UpdateCheckResult
             {
-                string data;
-                if (!PropertyInfo.UseLocalApi)
-                    data = NetHelper.GetHtmlCode(Urls.UPDATE_API);
-                else
-                    data = File.ReadAllText(@"E:\zsh2401.github.io\softsupport\autumnbox\update\index.html");
-                JObject j = JObject.Parse(data);
-                bool needUpdate = (
-                    //当前版本小于检测到的版本
-                    Helper.SystemHelper.CurrentVersion< new Version(j["Version"].ToString())
-                    &&
-                    //并且没有被设置跳过
-                    new Version(Config.SkipVersion) != new Version(j["Version"].ToString()));
-                var e = new UpdateCheckFinishedEventArgs
-                {
-                    NeedUpdate = needUpdate,
-                    Time = new DateTime(Convert.ToInt32(j["Date"][0].ToString()),
-                    Convert.ToInt32(j["Date"][1].ToString()),
-                    Convert.ToInt32(j["Date"][2].ToString())),
-                    Message = j["Message"].ToString(),
-                    Version = j["Version"].ToString(),
-                    Header = j["Header"].ToString(),
-                    BaiduPanUrl = j["BaiduPan"].ToString(),
-                    GithubReleaseUrl = j["GithubRelease"].ToString()
-                };
-                CheckFinished?.Invoke(this, e);
-            }
-            catch (Exception ex) { Logger.T( "Update Getting Fail", ex); }
+                NeedUpdate = needUpdate,
+                Time = new DateTime(Convert.ToInt32(j["Date"][0].ToString()),
+                Convert.ToInt32(j["Date"][1].ToString()),
+                Convert.ToInt32(j["Date"][2].ToString())),
+                Message = j["Message"].ToString(),
+                Version = j["Version"].ToString(),
+                Header = j["Header"].ToString(),
+                BaiduPanUrl = j["BaiduPan"].ToString(),
+                GithubReleaseUrl = j["GithubRelease"].ToString()
+            };
+            Logger.D("get from net were success!");
+            return e;
         }
     }
 }

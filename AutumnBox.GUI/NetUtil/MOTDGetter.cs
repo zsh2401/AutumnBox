@@ -19,36 +19,37 @@ using System.Collections;
 using System.IO;
 namespace AutumnBox.GUI.NetUtil
 {
-    public class MOTDGetFinishedEventArgs : EventArgs
+    internal class MOTDResult : NetUtilResult
     {
         public string Header { get; set; }
         public string Message { get; set; }
     }
-    [LogProperty(TAG = "MOTD Getter")]
-    [NetUnitProperty(UseLocalApi = false,MustAddFininshedEventHandler = true)]
-    public class MOTDGetter : NetUnitBase,INetUtil
+    [LogProperty(TAG = "MOTD Getter",Show = false)]
+    [NetUtilProperty(UseLocalApi = false, MustAddFininshedEventHandler = true)]
+    internal class MOTDGetter : NetUtil, INetUtil
     {
-        public event Action<object, MOTDGetFinishedEventArgs> GetFinished;
-        public override void Run()
+        public override NetUtilResult LocalMethod()
         {
-            Logger.T("Start get MOTD");
-            new Hashtable()["fuck"] = null;
-            try
+            JObject o = JObject.Parse(File.ReadAllText(@"E:\zsh2401.github.io\softsupport\autumnbox\motd\index.html"));
+            MOTDResult result = new MOTDResult
             {
-                JObject o;
-                if (PropertyInfo.UseLocalApi) o = JObject.Parse(NetHelper.GetHtmlCode(Urls.MOTD_API));
-                else o = JObject.Parse(File.ReadAllText(@"E:\zsh2401.github.io\softsupport\autumnbox\motd\index.html"));
-                MOTDGetFinishedEventArgs e = new MOTDGetFinishedEventArgs
-                {
-                    Header = o["header"].ToString(),
-                    Message = o["message"].ToString()
-                };
-                GetFinished?.Invoke(this, e);
-            }
-            catch (Exception e)
+                Header = o["header"].ToString(),
+                Message = o["message"].ToString()
+            };
+            Logger.D("MOTD Get from local were success!" + result.Header + " " + result.Message);
+            return result;
+        }
+
+        public override NetUtilResult NetMethod()
+        {
+            JObject o = JObject.Parse(NetHelper.GetHtmlCode(Urls.MOTD_API));
+            MOTDResult result = new MOTDResult
             {
-                Logger.T( "Motd Getting Expception", e);
-            }
+                Header = o["header"].ToString(),
+                Message = o["message"].ToString()
+            };
+            Logger.D("MOTD Get from net success!" + result.Header + " " + result.Message);
+            return result;
         }
     }
 }

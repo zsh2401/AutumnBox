@@ -15,12 +15,18 @@ using System;
 
 namespace AutumnBox.GUI.NetUtil
 {
-    [NetUnitProperty(MustAddFininshedEventHandler = false)]
-    public class Statistics : NetUnitBase, INetUtil
+    [NetUtilProperty(MustAddFininshedEventHandler = false)]
+    internal class Statistics : NetUtil, INetUtil
     {
-        public override void Run()
+        public override NetUtilResult LocalMethod()
         {
             throw new NotImplementedException();
         }
+
+        public override NetUtilResult NetMethod()
+        {
+            throw new NotImplementedException();
+        }
+
     }
 }

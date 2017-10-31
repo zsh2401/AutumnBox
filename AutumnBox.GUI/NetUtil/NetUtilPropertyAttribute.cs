@@ -16,7 +16,7 @@ using System;
 namespace AutumnBox.GUI.NetUtil
 {
     [AttributeUsage(AttributeTargets.Class)]
-    public class NetUnitPropertyAttribute : Attribute
+    internal class NetUtilPropertyAttribute : Attribute
     {
         public bool UseLocalApi { get; set; } = false;
         public bool MustAddFininshedEventHandler { get; set; } = false;
