@@ -47,7 +47,7 @@ namespace AutumnBox.GUI.NetUtil
                 JObject j = JObject.Parse(data);
                 bool needUpdate = (
                     //当前版本小于检测到的版本
-                    Helper.SystemHelper.NowVersion< new Version(j["Version"].ToString())
+                    Helper.SystemHelper.CurrentVersion< new Version(j["Version"].ToString())
                     &&
                     //并且没有被设置跳过
                     new Version(Config.SkipVersion) != new Version(j["Version"].ToString()));

@@ -57,8 +57,8 @@ namespace AutumnBox.GUI
                 });
             };
 #if DEBUG
-            AboutControl.LabelVersion.Content = SystemHelper.NowVersion + "-Debug";
-            TitleBar.Title.Content += "  " + SystemHelper.NowVersion + "-Debug";
+            AboutControl.LabelVersion.Content = SystemHelper.CurrentVersion + "-Debug";
+            TitleBar.Title.Content += "  " + SystemHelper.CurrentVersion + "-Debug";
 #else
             LabelVersion.Content = StaticData.nowVersion.version + "-Release";
             TitleBar.Title.Content += "  " + StaticData.nowVersion.version + "-Release";

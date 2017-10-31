@@ -33,7 +33,7 @@ namespace AutumnBox.GUI.Helper
                 return o.DateTime;
             }
         }
-        public static Version NowVersion
+        public static Version CurrentVersion
         {
             get
             {
