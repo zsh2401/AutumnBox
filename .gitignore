@@ -27,6 +27,7 @@
 *.lnk
 *.bak
 *.suo
+*.dll
 fast
 !AutumnBox.Basic/Adb/*.exe
 !AutumnBox.Basic/Adb/*.dll
