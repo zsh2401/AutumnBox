@@ -169,9 +169,6 @@
     <Compile Include="Windows\ChoiceBox.xaml.cs">
       <DependentUpon>ChoiceBox.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Cstm\CstmButton.xaml.cs">
-      <DependentUpon>CstmButton.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Windows\DonateWindow.xaml.cs">
       <DependentUpon>DonateWindow.xaml</DependentUpon>
     </Compile>
@@ -275,10 +272,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Cstm\CstmButton.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Windows\DonateWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -327,17 +320,14 @@
       <Project>{84044fb2-bd38-4283-8065-b639270ece0f}</Project>
       <Name>AutumnBox.Basic</Name>
     </ProjectReference>
-    <ProjectReference Include="..\AutumnBox.Res\AutumnBox.Res.csproj">
+    <ProjectReference Include="..\AutumnBox.GUI.Resources\AutumnBox.GUI.Resources.csproj">
       <Project>{eee9312c-4210-4fdb-a753-e2506a2e3e45}</Project>
-      <Name>AutumnBox.Res</Name>
-      <Private>True</Private>
-      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <Name>AutumnBox.GUI.Resources</Name>
     </ProjectReference>
     <ProjectReference Include="..\AutumnBox.Support\AutumnBox.Support.csproj">
       <Project>{851B2EB0-0503-428D-BD87-063555B19451}</Project>
       <Name>AutumnBox.Support</Name>
     </ProjectReference>
   </ItemGroup>
-  <Import Project="..\AutumnBox.GUI.Resources\AutumnBox.GUI.Resources.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

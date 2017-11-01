@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AutumnBox.GUI.Resources {
+namespace AutumnBox.GUI.Resources.Images.DynamicIcons {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace AutumnBox.GUI.Resources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("AutumnBox.Res.Images.DynamicIcons.DynamicIcons", typeof(DynamicIcons).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("AutumnBox.GUI.Resources.Images.DynamicIcons.DynamicIcons", typeof(DynamicIcons).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

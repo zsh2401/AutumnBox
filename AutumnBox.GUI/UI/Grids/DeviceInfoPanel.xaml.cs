@@ -1,6 +1,7 @@
 ﻿using AutumnBox.Basic.Devices;
 using AutumnBox.GUI.Helper;
 using AutumnBox.GUI.I18N;
+using AutumnBox.GUI.Resources.Images.DynamicIcons;
 using AutumnBox.Support.CstmDebug;
 using System;
 using System.Drawing;
@@ -40,14 +41,14 @@ namespace AutumnBox.GUI.UI.Grids
             {
                 SetDefault();
                 UIHelper.SetGridLabelsContent(GridBuildInfo, App.Current.Resources["PleaseAllowUSBDebug"]);
-                _SetStatusPanel(Res.DynamicIcons.no_selected, "PleaseAllowUSBDebug");
+                _SetStatusPanel(DynamicIcons.no_selected, "PleaseAllowUSBDebug");
             }
             else if (devSimpleInfo.Status == DeviceStatus.Fastboot)
             {
                 UIHelper.SetGridLabelsContent(GridBuildInfo, "...");
                 UIHelper.SetGridLabelsContent(GridHardwareInfo, "....");
                 UIHelper.SetGridLabelsContent(GridMemoryInfo, "....");
-                _SetStatusPanel(Res.DynamicIcons.no_selected, "DeviceInFastboot");
+                _SetStatusPanel(DynamicIcons.no_selected, "DeviceInFastboot");
             }
             else
             {
@@ -61,7 +62,7 @@ namespace AutumnBox.GUI.UI.Grids
                 UIHelper.SetGridLabelsContent(GridBuildInfo, App.Current.Resources["PleaseSelectedADevice"]);
                 UIHelper.SetGridLabelsContent(GridHardwareInfo, "....");
                 UIHelper.SetGridLabelsContent(GridMemoryInfo, "....");
-                _SetStatusPanel(Res.DynamicIcons.no_selected, "PleaseSelectedADevice");
+                _SetStatusPanel(DynamicIcons.no_selected, "PleaseSelectedADevice");
             });
         }
         private void SetByDeviceSimpleInfo(DeviceBasicInfo devSimpleInfo)
@@ -85,16 +86,16 @@ namespace AutumnBox.GUI.UI.Grids
                     switch (App.SelectedDevice.Status)
                     {
                         case DeviceStatus.Fastboot:
-                            _SetStatusPanel(Res.DynamicIcons.fastboot, "DeviceInFastboot");
+                            _SetStatusPanel(DynamicIcons.fastboot, "DeviceInFastboot");
                             break;
                         case DeviceStatus.Recovery:
-                            _SetStatusPanel(Res.DynamicIcons.recovery, "DeviceInRecovery");
+                            _SetStatusPanel(DynamicIcons.recovery, "DeviceInRecovery");
                             break;
                         case DeviceStatus.Poweron:
-                            _SetStatusPanel(Res.DynamicIcons.poweron, "DeviceInRunning");
+                            _SetStatusPanel(DynamicIcons.poweron, "DeviceInRunning");
                             break;
                         case DeviceStatus.Sideload:
-                            _SetStatusPanel(Res.DynamicIcons.recovery, "DeviceInSideload");
+                            _SetStatusPanel(DynamicIcons.recovery, "DeviceInSideload");
                             break;
                     }
                     Logger.D(this,"Finish Base refresh");

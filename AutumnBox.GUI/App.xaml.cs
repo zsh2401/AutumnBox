@@ -31,6 +31,7 @@ namespace AutumnBox.GUI
             Logger.T("Startup");
             Helper.SystemHelper.GCer.Start();
             base.OnStartup(e);
+            //AutumnBox.GUI.Resources
         }
         protected override void OnExit(ExitEventArgs e)
         {

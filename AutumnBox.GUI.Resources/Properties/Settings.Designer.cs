@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AutumnBox.Res.Properties {
+namespace AutumnBox.GUI.Resources.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

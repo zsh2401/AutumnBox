@@ -1,4 +1,5 @@
 ﻿using AutumnBox.GUI.Helper;
+using AutumnBox.GUI.Resources.Images.DynamicIcons;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -16,16 +17,16 @@ namespace AutumnBox.GUI.UI.Cstm
             InitializeComponent();
         }
         private void ImgClose_MouseEnter(object sender, MouseEventArgs e) =>
-            ImgClose.Source = UIHelper.BitmapToBitmapImage(Res.DynamicIcons.close_selected);
+            ImgClose.Source = UIHelper.BitmapToBitmapImage(DynamicIcons.close_selected);
 
         private void ImgClose_MouseLeave(object sender, MouseEventArgs e) =>
-            ImgClose.Source = UIHelper.BitmapToBitmapImage(Res.DynamicIcons.close_normal);
+            ImgClose.Source = UIHelper.BitmapToBitmapImage(DynamicIcons.close_normal);
 
         private void ImgMin_MouseEnter(object sender, MouseEventArgs e) =>
-            ImgMin.Source = UIHelper.BitmapToBitmapImage(Res.DynamicIcons.min_selected);
+            ImgMin.Source = UIHelper.BitmapToBitmapImage(DynamicIcons.min_selected);
 
         private void ImgMin_MouseLeave(object sender, MouseEventArgs e) =>
-            ImgMin.Source = UIHelper.BitmapToBitmapImage(Res.DynamicIcons.min_normal);
+            ImgMin.Source = UIHelper.BitmapToBitmapImage(DynamicIcons.min_normal);
 
         private void ImgClose_MouseDown(object sender, MouseButtonEventArgs e) =>
             OwnerWindow.Close();
