@@ -11,7 +11,8 @@
 * Company: I am free man
 *
 \* =============================================================================*/
-using AutumnBox.Shared.CstmDebug;
+using AutumnBox.Support.CstmDebug;
+using AutumnBox.Support.Helper;
 using System;
 using System.Threading;
 
@@ -41,7 +42,7 @@ namespace AutumnBox.GUI.NetUtil
         protected bool UseLocalApi { get { return PropertyInfo.UseLocalApi; } }
         protected string GetHtmlCode(string url)
         {
-            return Shared.NetHelper.GetHtmlCode(url);
+            return NetHelper.GetHtmlCode(url);
         }
         public event NetUtilFinishEventHandler Finished;
         [LogProperty(Show = false)]

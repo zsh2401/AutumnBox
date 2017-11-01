@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -69,6 +70,10 @@
     <ProjectReference Include="..\AutumnBox.GUI\AutumnBox.GUI.csproj">
       <Project>{55081483-1689-4e52-a4f1-22ab75ff8900}</Project>
       <Name>AutumnBox.GUI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AutumnBox.Support\AutumnBox.Support.csproj">
+      <Project>{851B2EB0-0503-428D-BD87-063555B19451}</Project>
+      <Name>AutumnBox.Support</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

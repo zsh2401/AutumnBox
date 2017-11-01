@@ -1,7 +1,7 @@
 ﻿using AutumnBox.Basic.Devices;
 using AutumnBox.GUI.Helper;
 using AutumnBox.GUI.I18N;
-using AutumnBox.Shared.CstmDebug;
+using AutumnBox.Support.CstmDebug;
 using System;
 using System.Drawing;
 using System.Threading;
@@ -14,10 +14,11 @@ namespace AutumnBox.GUI.UI.Grids
     /// <summary>
     /// DeviceInfoPanel.xaml 的交互逻辑
     /// </summary>
-    public partial class DeviceInfoPanel : UserControl, IDeviceInfoRefreshable
+    public partial class DeviceInfoPanel : UserControl, IDeviceInfoRefreshable, ILogSender
     {
         private static Action<Bitmap, string> _SetStatusPanel;
-
+        public string LogTag => "DevInfoPanel";
+        public bool IsShowLog => true;
         public DeviceInfoPanel()
         {
             InitializeComponent();
@@ -68,7 +69,7 @@ namespace AutumnBox.GUI.UI.Grids
             new Thread(() =>
             {
                 var simpleInfo = DeviceInfoHelper.GetBuildInfo(devSimpleInfo.Id);
-                Logger.D("Get basic info finished");
+                Logger.D(this,"Get basic info finished");
                 this.Dispatcher.Invoke(() =>
                 {
                     LabelAndroidVersion.Content = simpleInfo.AndroidVersion ?? App.Current.Resources["GetFail"].ToString();
@@ -96,7 +97,7 @@ namespace AutumnBox.GUI.UI.Grids
                             _SetStatusPanel(Res.DynamicIcons.recovery, "DeviceInSideload");
                             break;
                     }
-                    Logger.D("Finish Base refresh");
+                    Logger.D(this,"Finish Base refresh");
                     RefreshFinished?.Invoke(this, new EventArgs());
                 });
                 var advInfo = DeviceInfoHelper.GetHwInfo(devSimpleInfo.Id);

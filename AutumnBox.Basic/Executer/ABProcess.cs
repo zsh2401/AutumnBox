@@ -13,8 +13,7 @@
 \* =============================================================================*/
 namespace AutumnBox.Basic.Executer
 {
-    using AutumnBox.Shared;
-    using AutumnBox.Shared.CstmDebug;
+    using AutumnBox.Support.CstmDebug;
     using System;
     using System.Diagnostics;
     using static Basic.DebugSettings;

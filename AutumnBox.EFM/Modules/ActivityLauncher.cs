@@ -13,13 +13,9 @@
 \* =============================================================================*/
 namespace AutumnBox.Basic.Function.Modules
 {
-    using static AutumnBox.Basic.DebugSettings;
     using AutumnBox.Basic.Executer;
     using AutumnBox.Basic.Function.Args;
-    using AutumnBox.Basic.Util;
-    using AutumnBox.Basic.Function.Event;
-    using AutumnBox.Shared;
-    using AutumnBox.Shared.CstmDebug;
+    using AutumnBox.Support.CstmDebug;
 
     /// <summary>
     /// 活动启动器

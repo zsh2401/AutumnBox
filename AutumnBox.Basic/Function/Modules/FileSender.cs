@@ -16,7 +16,7 @@ namespace AutumnBox.Basic.Function.Modules
     using AutumnBox.Basic.Executer;
     using AutumnBox.Basic.Function.Args;
     using AutumnBox.Basic.Function.Event;
-    using AutumnBox.Shared.CstmDebug;
+    using AutumnBox.Support.CstmDebug;
     using System.IO;
     /// <summary>
     /// 文件发送器

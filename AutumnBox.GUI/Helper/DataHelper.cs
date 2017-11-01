@@ -11,11 +11,9 @@
 * Company: I am free man
 *
 \* =============================================================================*/
-using AutumnBox.Shared.CstmDebug;
+using AutumnBox.Support.CstmDebug;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace AutumnBox.GUI.Helper
 {

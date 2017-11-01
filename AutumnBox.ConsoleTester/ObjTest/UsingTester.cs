@@ -11,7 +11,7 @@
 * Company: I am free man
 *
 \* =============================================================================*/
-using AutumnBox.Shared.CstmDebug;
+using AutumnBox.Support.CstmDebug;
 using System;
 using System.Collections.Generic;
 using System.Linq;

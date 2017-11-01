@@ -11,13 +11,11 @@
 * Company: I am free man
 *
 \* =============================================================================*/
-using AutumnBox.Shared.CstmDebug;
+using AutumnBox.Support.CstmDebug;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 
 namespace AutumnBox.ConsoleTester.MethodTest
 {
@@ -39,8 +37,14 @@ namespace AutumnBox.ConsoleTester.MethodTest
                 Console.WriteLine(((LogPropertyAttribute)a.First()).TAG);
             }
         }
-        public static void AB() {
+        public static void AB()
+        {
             B();
+        }
+        public static void ThreadTest()
+        {
+            new Thread(() => { Logger.D("asdadsas"); }).Start();
+            //Console.WriteLine(new StackFrame(1).GetMethod().Name);
         }
     }
 }

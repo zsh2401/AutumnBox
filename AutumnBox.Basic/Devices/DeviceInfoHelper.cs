@@ -12,16 +12,9 @@
 *
 \* =============================================================================*/
 using AutumnBox.Basic.Executer;
-using AutumnBox.Shared;
-using AutumnBox.Shared.CstmDebug;
+using AutumnBox.Support.CstmDebug;
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using static AutumnBox.Basic.DebugSettings;
 namespace AutumnBox.Basic.Devices
 {
     [LogProperty(TAG = "DeviceInfoHelper")]

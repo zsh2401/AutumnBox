@@ -48,12 +48,9 @@ namespace AutumnBox.Basic.Function
     using AutumnBox.Basic.Executer;
     using AutumnBox.Basic.Function.Args;
     using AutumnBox.Basic.Function.Event;
-    using AutumnBox.Basic.Util;
-    using AutumnBox.Shared;
+    using AutumnBox.Support.Helper;
     using System;
     using System.Diagnostics;
-    using System.Threading;
-    using static DebugSettings;
     /// <summary>
     /// 各种功能模块的父类
     /// </summary>

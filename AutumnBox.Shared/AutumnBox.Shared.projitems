@@ -10,10 +10,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)CstmDebug\CompiledDateAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CstmDebug\ILogSender.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CstmDebug\LogFilePropertyAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CstmDebug\Logger.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CstmDebug\LogPropertyAttribute.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)NativeMethods.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CstmDebug\LogSender.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)NetHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SystemHelper.cs" />
   </ItemGroup>

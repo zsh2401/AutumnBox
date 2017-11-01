@@ -12,11 +12,12 @@
 *
 \* =============================================================================*/
 using AutumnBox.Basic.Devices;
-using AutumnBox.Shared.CstmDebug;
+using AutumnBox.Support.CstmDebug;
 using System.Windows;
 
 namespace AutumnBox.GUI
 {
+    [LogProperty(TAG ="AB_App")]
     /// <summary>
     /// App.xaml 的交互逻辑
     /// </summary>
@@ -27,12 +28,13 @@ namespace AutumnBox.GUI
         internal static DevicesMonitor DevicesListener = new DevicesMonitor();//设备监听器
         protected override void OnStartup(StartupEventArgs e)
         {
-            Logger.T("OnStartup");
+            Logger.T("Startup");
             Helper.SystemHelper.GCer.Start();
             base.OnStartup(e);
         }
         protected override void OnExit(ExitEventArgs e)
         {
+            Logger.T("Exit");
             base.OnExit(e);
             Helper.SystemHelper.AppExit();
         }

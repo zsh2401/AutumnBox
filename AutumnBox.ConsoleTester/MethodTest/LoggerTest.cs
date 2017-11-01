@@ -11,21 +11,58 @@
 * Company: I am free man
 *
 \* =============================================================================*/
-using AutumnBox.Shared.CstmDebug;
+using AutumnBox.Support.CstmDebug;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace AutumnBox.ConsoleTester.MethodTest
 {
-    //[LogProperty(TAG = "Testing...", Show = true)]
-    public class LoggerTest
+    public class Dispatcher
     {
-        //[LogProperty(TAG = "Test Method",Show =false)]
+        public void Invoke(Action action)
+        {
+            action();
+        }
+    }
+    //[LogProperty(TAG = "Testing...", Show = true)]
+    public class LoggerTest : ILogSender
+    {
+        LogSender sender;
+        Dispatcher fuck = new Dispatcher();
+        public string LogTag { get; } = "Fuck";
+        public void LogSenderTest()
+        {
+            Logger.D(new LogSender(this),"GG");
+        }
+        public bool IsShowLog { get; } = true;
+
+        public LoggerTest()
+        {
+            sender = new LogSender(this);
+        }
+        [LogProperty(TAG = "FUCK")]
+        public void InternalClassTest()
+        {
+            Logger.D("Start");
+            new Thread(() =>
+            {
+                Console.WriteLine(new StackTrace().GetFrames()[3].GetMethod().Name);
+                fuck.Invoke(() =>
+                {
+                    Logger.D(sender, "fuck");
+                });
+            }).Start();
+        }
+        public void ILogSenderTest()
+        {
+            Logger.D(this, "HEHEHE");
+        }
         public static void Test()
         {
             Logger.D("Wow!");
@@ -48,6 +85,18 @@ namespace AutumnBox.ConsoleTester.MethodTest
             TimeSpan useTime = finishTime - startTime;
             Console.WriteLine("use " + useTime.TotalMilliseconds + $"ms by {maxValue} log print");
             Console.WriteLine("average " + Math.Round((useTime.TotalMilliseconds / maxValue), 3).ToString() + " ms");
+        }
+        public static void LambdaTest()
+        {
+            Action a = () =>
+            {
+                Action b = () =>
+                {
+                    Logger.D("Hehe");
+                };
+                b();
+            };
+            a();
         }
     }
 }

@@ -3,7 +3,7 @@ using System;
 
 namespace AutumnBox.Basic.Function.Event
 {
-    public delegate void StartupEventHandler(object sender, StartupEventArgs args);
+    public delegate void StartupEventHandler(object sender, StartupEventArgs e);
     public delegate void FinishedEventHandler(object sender, FinishEventArgs e);
     public class StartupEventArgs : EventArgs
     {

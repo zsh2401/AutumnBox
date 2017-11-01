@@ -20,8 +20,8 @@ namespace AutumnBox.GUI.Windows
     using System.Diagnostics;
     using AutumnBox.Basic.Executer;
     using AutumnBox.Basic.Function;
-    using AutumnBox.Shared.CstmDebug;
     using AutumnBox.GUI.Helper;
+    using AutumnBox.Support.CstmDebug;
 
     /// <summary>
     /// FileSendingWindow.xaml 的交互逻辑

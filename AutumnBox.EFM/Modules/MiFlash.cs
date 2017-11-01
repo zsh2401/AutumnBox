@@ -14,9 +14,7 @@
 /*我想要传达给你的话语*/
 using AutumnBox.Basic.Executer;
 using AutumnBox.Basic.Function.Args;
-using AutumnBox.Basic.Function.Event;
-using AutumnBox.Shared;
-using AutumnBox.Shared.CstmDebug;
+using AutumnBox.Support.CstmDebug;
 
 namespace AutumnBox.Basic.Function.Modules
 {

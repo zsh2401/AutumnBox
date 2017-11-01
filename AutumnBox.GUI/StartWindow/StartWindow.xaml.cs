@@ -14,16 +14,12 @@
 using AutumnBox.Basic.Devices;
 using AutumnBox.GUI.Cfg;
 using AutumnBox.GUI.Helper;
-using AutumnBox.GUI.I18N;
 using AutumnBox.GUI.NetUtil;
-using AutumnBox.GUI.Util;
 using AutumnBox.GUI.Windows;
-using AutumnBox.Shared.CstmDebug;
+using AutumnBox.Support.CstmDebug;
 using System;
-using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
 
 namespace AutumnBox.GUI
 {
@@ -31,9 +27,12 @@ namespace AutumnBox.GUI
     /// <summary>
     /// Window1.xaml 的交互逻辑
     /// </summary>
-    public partial class StartWindow : Window
+    public partial class StartWindow : Window, ILogSender
     {
         private Object setUILock = new System.Object();
+
+        public string LogTag => "Main Window";
+        public bool IsShowLog => true;
         public StartWindow()
         {
             InitializeComponent();
@@ -44,7 +43,7 @@ namespace AutumnBox.GUI
             {
                 this.Dispatcher.Invoke(() =>
                 {
-                    Logger.D("RefreshStart..");
+                    Logger.D(this,"Refresh Start..");
                     UIHelper.ShowRateBox();
                 });
             };
@@ -52,7 +51,7 @@ namespace AutumnBox.GUI
             {
                 this.Dispatcher.Invoke(() =>
                 {
-                    Logger.D("RefreshFinished..");
+                    Logger.D(this,"Refresh UI Finished..");
                     UIHelper.CloseRateBox();
                 });
             };

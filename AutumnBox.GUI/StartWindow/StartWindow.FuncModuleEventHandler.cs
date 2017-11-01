@@ -18,16 +18,15 @@ namespace AutumnBox.GUI
     using AutumnBox.Basic.Function.Event;
     using AutumnBox.Basic.Function;
     using AutumnBox.Basic.Function.Modules;
-    using AutumnBox.Shared.CstmDebug;
     using AutumnBox.GUI.Helper;
     using AutumnBox.GUI.Windows;
+    using AutumnBox.Support.CstmDebug;
 
     /// <summary>
     /// 各种界面事件
     /// </summary>
     public partial class StartWindow
     {
-        string mweTag = "MainWindowEvent";
         /// <summary>
         /// 通用事件处理
         /// </summary>

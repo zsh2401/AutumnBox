@@ -13,7 +13,7 @@
 \* =============================================================================*/
 using AutumnBox.Basic.Function.Args;
 using AutumnBox.Basic.Function.Event;
-using AutumnBox.Shared.CstmDebug;
+using AutumnBox.Support.CstmDebug;
 using System;
 using System.Diagnostics;
 using System.Threading;

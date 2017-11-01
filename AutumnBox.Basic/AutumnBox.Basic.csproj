@@ -90,7 +90,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util\ConstData.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\AutumnBox.Support\AutumnBox.Support.csproj">
+      <Project>{851B2EB0-0503-428D-BD87-063555B19451}</Project>
+      <Name>AutumnBox.Support</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Adb\adb.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -109,6 +114,5 @@
     </Content>
   </ItemGroup>
   <Import Project="..\AutumnBox.EFM\AutumnBox.EFM.projitems" Label="Shared" />
-  <Import Project="..\AutumnBox.Shared\AutumnBox.Shared.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

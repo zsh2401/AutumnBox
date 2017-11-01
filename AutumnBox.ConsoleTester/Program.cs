@@ -1,6 +1,5 @@
 ﻿using AutumnBox.ConsoleTester.MethodTest;
 using AutumnBox.ConsoleTester.ObjTest;
-using AutumnBox.Shared.CstmDebug;
 using System;
 using System.Threading;
 
@@ -10,9 +9,9 @@ namespace AutumnBox.ConsoleTester
     class Program
     {
         //[LogProperty(TAG = "DDF")]
-        static void Main(string[] args)
+        unsafe static void Main(string[] args)
         {
-            UsingTester.StartTest();
+            new LoggerTest().LogSenderTest();
             Console.ReadKey();
         }
     }

@@ -13,10 +13,9 @@
 \* =============================================================================*/
 using AutumnBox.Basic.Executer;
 using AutumnBox.GUI.Util;
-using AutumnBox.Shared.CstmDebug;
+using AutumnBox.Support.CstmDebug;
 using System;
 using System.Diagnostics;
-using System.Linq;
 
 namespace AutumnBox.GUI.Helper
 {

@@ -11,10 +11,8 @@
 * Company: I am free man
 *
 \* =============================================================================*/
-using AutumnBox.Shared;
-using AutumnBox.Shared.CstmDebug;
+using AutumnBox.Support.CstmDebug;
 using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // 有关程序集的一般信息由以下
