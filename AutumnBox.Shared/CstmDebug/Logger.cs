@@ -152,10 +152,11 @@ namespace AutumnBox.Shared.CstmDebug
             }
             try
             {
-                StreamWriter sw = new StreamWriter(DEFAULT_LOGFLODER + NewFloder + _LogFileName, true);
-                sw.WriteLine(fullMsg);
-                sw.Flush();
-                sw.Close();
+                using (StreamWriter writer = new StreamWriter(DEFAULT_LOGFLODER + NewFloder + _LogFileName, true))
+                {
+                    writer.WriteLine(fullMsg);
+                    writer.Flush();
+                }
             }
             catch { }
         }

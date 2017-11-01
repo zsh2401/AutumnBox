@@ -53,6 +53,7 @@
     <Compile Include="ObjTest\JsonPropTest.cs" />
     <Compile Include="ObjTest\LogPropTest.cs" />
     <Compile Include="ObjTest\TestModuleTest.cs" />
+    <Compile Include="ObjTest\UsingTester.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

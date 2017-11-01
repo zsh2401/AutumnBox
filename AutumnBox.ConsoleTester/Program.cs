@@ -12,9 +12,7 @@ namespace AutumnBox.ConsoleTester
         //[LogProperty(TAG = "DDF")]
         static void Main(string[] args)
         {
-            Logger.D("Start test");
-            LoggerTest.SpeedTest(1);
-            LoggerTest.SpeedTest(1000);
+            UsingTester.StartTest();
             Console.ReadKey();
         }
     }
