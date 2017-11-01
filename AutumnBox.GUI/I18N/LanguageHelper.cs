@@ -25,7 +25,7 @@ namespace AutumnBox.GUI.I18N
     {
         public static event EventHandler LanguageChanged;
         public static Language[] Langs;
-        public static readonly string Prefix = "pack://application:,,,/AutumnBox.Res;component/Lang/";
+        public static readonly string Prefix = "pack://application:,,,/AutumnBox.GUI.Resources;component/Lang/";
         static LanguageHelper()
         {
             Langs = new Language[]{
