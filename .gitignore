@@ -29,8 +29,10 @@
 *.suo
 *.dll
 fast
+makezip
 !AutumnBox.Basic/Adb/*.exe
 !AutumnBox.Basic/Adb/*.dll
+!UsedDll/*.dll
 Bin/*
 !Bin/readme.txt
 #dirs

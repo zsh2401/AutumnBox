@@ -81,7 +81,7 @@
       <HintPath>..\..\..\Microsoft.Windows.Shell.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>..\UsedDll\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\DllsUsed\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -101,7 +101,7 @@
     <Reference Include="PresentationFramework" />
     <Reference Include="WpfAnimatedGif, Version=0.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\UsedDll\WpfAnimatedGif.dll</HintPath>
+      <HintPath>..\DllsUsed\WpfAnimatedGif.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
