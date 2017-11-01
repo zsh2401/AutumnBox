@@ -9,16 +9,20 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutumnBox.Basic", "AutumnBo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutumnBox.Res", "AutumnBox.Res\AutumnBox.Res.csproj", "{EEE9312C-4210-4FDB-A753-E2506A2E3E45}"
 EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "AutumnBox.EFM", "AutumnBox.EFM\AutumnBox.EFM.shproj", "{8FF02854-B55D-4589-A1C7-B2DA2FFC4358}"
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "AutumnBox.Basic.EFM", "AutumnBox.Basic.EFM\AutumnBox.Basic.EFM.shproj", "{8FF02854-B55D-4589-A1C7-B2DA2FFC4358}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutumnBox.ConsoleTester", "AutumnBox.ConsoleTester\AutumnBox.ConsoleTester.csproj", "{AB494016-2D55-4E67-90A7-BC9AE44C4892}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutumnBox.Support", "AutumnBox.Support\AutumnBox.Support.csproj", "{851B2EB0-0503-428D-BD87-063555B19451}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "AutumnBox.GUI.Resources", "AutumnBox.GUI.Resources\AutumnBox.GUI.Resources.shproj", "{620CA329-8DD7-4C72-8AB6-A46CA45C628F}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		AutumnBox.EFM\AutumnBox.EFM.projitems*{84044fb2-bd38-4283-8065-b639270ece0f}*SharedItemsImports = 4
-		AutumnBox.EFM\AutumnBox.EFM.projitems*{8ff02854-b55d-4589-a1c7-b2da2ffc4358}*SharedItemsImports = 13
+		AutumnBox.GUI.Resources\AutumnBox.GUI.Resources.projitems*{55081483-1689-4e52-a4f1-22ab75ff8900}*SharedItemsImports = 4
+		AutumnBox.GUI.Resources\AutumnBox.GUI.Resources.projitems*{620ca329-8dd7-4c72-8ab6-a46ca45c628f}*SharedItemsImports = 13
+		AutumnBox.Basic.EFM\AutumnBox.Basic.EFM.projitems*{84044fb2-bd38-4283-8065-b639270ece0f}*SharedItemsImports = 4
+		AutumnBox.Basic.EFM\AutumnBox.Basic.EFM.projitems*{8ff02854-b55d-4589-a1c7-b2da2ffc4358}*SharedItemsImports = 13
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

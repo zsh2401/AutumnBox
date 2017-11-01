@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>620ca329-8dd7-4c72-8ab6-a46ca45c628f</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>AutumnBox.GUI.Resources</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)Images\alipay.jpg" />
+    <None Include="$(MSBuildThisFileDirectory)Images\baidupan.png" />
+    <None Include="$(MSBuildThisFileDirectory)Images\donate.jpg" />
+    <None Include="$(MSBuildThisFileDirectory)Images\DynamicIcons\android_robot.png" />
+    <None Include="$(MSBuildThisFileDirectory)Images\DynamicIcons\close_normal.png" />
+    <None Include="$(MSBuildThisFileDirectory)Images\DynamicIcons\close_selected.png" />
+    <None Include="$(MSBuildThisFileDirectory)Images\DynamicIcons\fastboot.png" />
+    <None Include="$(MSBuildThisFileDirectory)Images\DynamicIcons\min_normal.png" />
+    <None Include="$(MSBuildThisFileDirectory)Images\DynamicIcons\min_selected.png" />
+    <None Include="$(MSBuildThisFileDirectory)Images\DynamicIcons\no_selected.png" />
+    <None Include="$(MSBuildThisFileDirectory)Images\DynamicIcons\poweron.png" />
+    <None Include="$(MSBuildThisFileDirectory)Images\DynamicIcons\recovery.png" />
+    <None Include="$(MSBuildThisFileDirectory)Images\github.png" />
+    <None Include="$(MSBuildThisFileDirectory)Images\Icons\about.png" />
+    <None Include="$(MSBuildThisFileDirectory)Images\Icons\about_white.png" />
+    <None Include="$(MSBuildThisFileDirectory)Images\Icons\contact.png" />
+    <None Include="$(MSBuildThisFileDirectory)Images\Icons\donate.png" />
+    <None Include="$(MSBuildThisFileDirectory)Images\Icons\leaves.ico" />
+    <None Include="$(MSBuildThisFileDirectory)Images\Icons\refresh.png" />
+    <None Include="$(MSBuildThisFileDirectory)Images\Icons\title_icon.png" />
+    <None Include="$(MSBuildThisFileDirectory)Images\jkr.gif" />
+    <None Include="$(MSBuildThisFileDirectory)Images\loading.gif" />
+    <None Include="$(MSBuildThisFileDirectory)Images\main_bg.jpg" />
+    <None Include="$(MSBuildThisFileDirectory)Images\wechatpay.png" />
+    <None Include="$(MSBuildThisFileDirectory)Lang\en-US.xaml" />
+    <None Include="$(MSBuildThisFileDirectory)Lang\zh-CN.xaml" />
+    <None Include="$(MSBuildThisFileDirectory)Other\links.xaml" />
+    <None Include="$(MSBuildThisFileDirectory)Theme\BasicTheme.xaml" />
+    <None Include="$(MSBuildThisFileDirectory)Theme\NightTheme.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Images\DynamicIcons\DynamicIcons.resx">
+      <LastGenOutput>DynamicIcons.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Images\DynamicIcons\DynamicIcons.Designer.cs">
+      <DependentUpon>DynamicIcons.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+  </ItemGroup>
+</Project>

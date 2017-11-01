@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:AutumnBox.GUI.UI.Cstm"
              mc:Ignorable="d" Width="auto" MinWidth="400" Height="auto" MaxHeight="50" MinHeight="20">
     <Grid Background="{DynamicResource BasicBrush}" MouseDown="Grid_MouseDown">
-        <Image HorizontalAlignment="Left" Margin="4,1,0,2" Width="24" Source="/AutumnBox.Res;component/Images/Icons/title_icon.png" RenderTransformOrigin="0.579,-1.368"/>
+        <Image HorizontalAlignment="Left" Margin="4,1,0,2" Width="24" Source="pack://siteoforigin:,,,/AutumnBox.GUI.Resource/Images/Icons/title_icon.png" RenderTransformOrigin="0.579,-1.368"/>
         <Label Name="Title" Content="{DynamicResource AppName}" Foreground="White" Margin="41,-4,94,-3" FontFamily="Microsoft YaHei Light" FontSize="15" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
         <Image Name="ImgClose" Margin="0,1,9,1" Source="/AutumnBox.Res;component/Images/DynamicIcons/close_normal.png" MouseEnter="ImgClose_MouseEnter" MouseLeave="ImgClose_MouseLeave" MouseDown="ImgClose_MouseDown" HorizontalAlignment="Right" Width="25"/>
         <Image Name="ImgMin" Margin="0,1,45,2" Source="/AutumnBox.Res;component/Images/DynamicIcons/min_normal.png" MouseEnter="ImgMin_MouseEnter" MouseLeave="ImgMin_MouseLeave" MouseDown="ImgMin_MouseDown" HorizontalAlignment="Right" Width="24" Stretch="Fill" Visibility="Hidden"/>

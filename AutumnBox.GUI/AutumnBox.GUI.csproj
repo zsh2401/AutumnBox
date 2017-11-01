@@ -338,5 +338,6 @@
       <Name>AutumnBox.Support</Name>
     </ProjectReference>
   </ItemGroup>
+  <Import Project="..\AutumnBox.GUI.Resources\AutumnBox.GUI.Resources.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
