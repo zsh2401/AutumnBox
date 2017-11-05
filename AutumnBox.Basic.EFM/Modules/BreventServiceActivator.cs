@@ -25,7 +25,7 @@ namespace AutumnBox.Basic.Function.Modules
     /// </summary>
     public sealed class BreventServiceActivator : FunctionModule
     {
-        private const string DEFAULT_COMMAND = "shell \"sh /data/data/me.piebridge.brevent/brevent.sh\"";
+        private static readonly string DEFAULT_COMMAND = "shell \"sh /data/data/me.piebridge.brevent/brevent.sh\"";
         protected override OutputData MainMethod()
         {
             FunctionModuleProxy.Create<ActivityLauncher>(new ActivityLaunchArgs(Args.DeviceBasicInfo)
