@@ -11,7 +11,7 @@
 * Company: I am free man
 *
 \* =============================================================================*/
-#define LOG_TEST
+//#define LOG_TEST
 using System;
 using System.Diagnostics;
 using System.IO;
