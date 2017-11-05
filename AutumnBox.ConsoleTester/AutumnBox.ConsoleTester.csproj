@@ -51,6 +51,7 @@
     <Compile Include="MethodTest\LoggerTest.cs" />
     <Compile Include="MethodTest\StackTest.cs" />
     <Compile Include="ObjTest\FileSenderTest.cs" />
+    <Compile Include="ObjTest\FMPTest.cs" />
     <Compile Include="ObjTest\JsonPropTest.cs" />
     <Compile Include="ObjTest\LogPropTest.cs" />
     <Compile Include="ObjTest\TestModuleTest.cs" />

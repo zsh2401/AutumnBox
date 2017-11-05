@@ -93,6 +93,7 @@ namespace AutumnBox.Basic.Function
         {
             FunctionModule.ForceStop();
         }
+
         /// <summary>
         /// 创建一个新的模块与代理器
         /// </summary>
@@ -104,6 +105,25 @@ namespace AutumnBox.Basic.Function
             FunctionModuleProxy fmp = new FunctionModuleProxy()
             {
                 FunctionModule = new T()
+            };
+            fmp.FunctionModule.Args = args;
+            return fmp;
+        }
+        /// <summary>
+        /// 创建一个新的模块与代理器
+        /// </summary>
+        /// <param name="functionModule"></param>
+        /// <param name="args"></param>
+        /// <returns></returns>
+        public static FunctionModuleProxy Create(Type fmType, ModuleArgs args)
+        {
+            if (!(typeof(IFunctionModule).IsAssignableFrom(fmType)))
+            {
+                throw new ArgumentException("fmType is not implements IFunctionModule","fmType");
+            }
+            FunctionModuleProxy fmp = new FunctionModuleProxy()
+            {
+                FunctionModule = (IFunctionModule)Activator.CreateInstance(fmType)
             };
             fmp.FunctionModule.Args = args;
             return fmp;

@@ -11,7 +11,7 @@ namespace AutumnBox.ConsoleTester
         //[LogProperty(TAG = "DDF")]
         unsafe static void Main(string[] args)
         {
-            new LoggerTest().LogSenderTest();
+            FMPTest.CreateTest();
             Console.ReadKey();
         }
     }
