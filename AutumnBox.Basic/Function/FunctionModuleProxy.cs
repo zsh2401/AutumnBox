@@ -46,6 +46,7 @@ namespace AutumnBox.Basic.Function
             add { FunctionModule.Finished += value; }
             remove { FunctionModule.Finished -= value; }
         }
+        public Type FunctionModuleType { get { return FunctionModule.GetType(); } }
         /// <summary>
         /// 代理的模块
         /// </summary>
@@ -119,7 +120,7 @@ namespace AutumnBox.Basic.Function
         {
             if (!(typeof(IFunctionModule).IsAssignableFrom(fmType)))
             {
-                throw new ArgumentException("fmType is not implements IFunctionModule","fmType");
+                throw new ArgumentException("fmType is not implements IFunctionModule", "fmType");
             }
             FunctionModuleProxy fmp = new FunctionModuleProxy()
             {
