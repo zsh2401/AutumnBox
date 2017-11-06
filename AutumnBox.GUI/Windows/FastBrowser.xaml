@@ -6,9 +6,9 @@
         xmlns:local="clr-namespace:AutumnBox.GUI.Windows"
         xmlns:cstm="clr-namespace:AutumnBox.GUI.UI.Cstm"
         mc:Ignorable="d"
-        Title="FastBrowser" Height="373.5" Width="634" WindowStyle="None" WindowStartupLocation="CenterOwner" Background="{x:Null}" ResizeMode="NoResize">
+        Title="FastBrowser" Height="373.5" Width="634" WindowStartupLocation="CenterOwner" Background="{x:Null}" WindowStyle="ToolWindow">
     <Grid>
-        <cstm:CstmTitleBar x:Name="TitleBar" Height="45" VerticalAlignment="Top"/>
-        <WebBrowser x:Name="MainBrowser" Margin="0,45,0,0"/>
+        <!--<cstm:CstmTitleBar x:Name="TitleBar" Height="45" VerticalAlignment="Top"/>-->
+        <WebBrowser x:Name="MainBrowser"/>
     </Grid>
 </Window>

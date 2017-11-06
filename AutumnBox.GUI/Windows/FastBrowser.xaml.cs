@@ -23,7 +23,6 @@ namespace AutumnBox.GUI.Windows
         {
             InitializeComponent();
             this.Owner = App.OwnerWindow;
-            TitleBar.OwnerWindow = this;
             MainBrowser.Navigate(new Uri(url));
         }
     }
