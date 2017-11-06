@@ -5,13 +5,12 @@ using System.Threading;
 
 namespace AutumnBox.ConsoleTester
 {
-    //[LogProperty(TAG = "Public")]
     class Program
     {
-        //[LogProperty(TAG = "DDF")]
+        public readonly static string Mi6ID = "af0fe186";
         unsafe static void Main(string[] args)
         {
-            FMPTest.PropertyTest();
+            AndroidFullBackupTest.RunTest();
             Console.ReadKey();
         }
     }
