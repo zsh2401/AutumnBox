@@ -11,7 +11,7 @@
     <s:String x:Key="btnDpiChange">修改DPI(Deving)</s:String>
     <s:String x:Key="btnInstallApk">安装APK</s:String>
     <s:String x:Key="btnScreenShot">截图并保存到电脑</s:String>
-    <s:String x:Key="btnAndroidFullBackup">全量备份(无需ROOT)</s:String>
+    <s:String x:Key="btnAndroidFullBackup">全量备份</s:String>
     <s:String x:Key="btnMiFlash">MiFlash线刷(Deving)</s:String>
     <s:String x:Key="btnADBCMD">ADB命令行</s:String>
     <s:String x:Key="btnRebootToSystem">重启到系统</s:String>
@@ -24,7 +24,7 @@
     <s:String x:Key="btnFlashCustomRecoveryImg">刷入自选Recovery</s:String>
     <s:String x:Key="btnChangeTheme">更改主题</s:String>
     <s:String x:Key="btnOK">好的</s:String>
-    <s:String x:Key="btnStartBrventService">免ROOT启动黑域服务</s:String>
+    <s:String x:Key="btnStartBrventService">启动黑域服务</s:String>
     <s:String x:Key="btnClose">关闭</s:String>
     <s:String x:Key="btnAgree">同意</s:String>
     <s:String x:Key="btnCancel">取消</s:String>
@@ -81,6 +81,7 @@
     <!--QA-->
 
     <!--静态界面标记-->
+    <s:String x:Key="PoweronFunctionTip">此页功能均无需root</s:String>
     <s:String x:Key="Transparency">透明度</s:String>
     <s:String x:Key="Language">语言</s:String>
     <s:String x:Key="ThankMessage1">感谢您使用AutumnBox!</s:String>
