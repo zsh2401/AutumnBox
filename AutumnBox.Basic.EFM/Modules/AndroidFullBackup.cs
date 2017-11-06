@@ -11,12 +11,15 @@
 * Company: I am free man
 *
 \* =============================================================================*/
+using System.Diagnostics;
 using AutumnBox.Basic.Executer;
+using System.Threading;
 
 namespace AutumnBox.Basic.Function.Modules
 {
     public class AndroidFullBackup : FunctionModule
     {
+        private static readonly int _WaitTime = 2000;
         protected override OutputData MainMethod()
         {
             OutputData result = new OutputData
@@ -25,6 +28,19 @@ namespace AutumnBox.Basic.Function.Modules
             };
             Ae("backup -apk -shared -all -f/backup.ab");
             return result;
+        }
+        protected override void OnOutReceived(DataReceivedEventArgs e)
+        {
+            base.OnOutReceived(e);
+            try
+            {
+                if (e.Data.ToLower().Contains("now unlock your device"))
+                {
+                    Thread.Sleep(_WaitTime);
+                    ForceStop();
+                }
+            }
+            catch { }
         }
         protected override void AnalyzeOutput(ref ExecuteResult executeResult)
         {

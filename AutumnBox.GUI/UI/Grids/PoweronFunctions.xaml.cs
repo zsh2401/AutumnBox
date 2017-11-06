@@ -8,6 +8,7 @@ using AutumnBox.Basic.Function;
 using System.Windows.Forms;
 using AutumnBox.GUI.Helper;
 using AutumnBox.GUI.Windows;
+using AutumnBox.Support.CstmDebug;
 
 namespace AutumnBox.GUI.UI.Grids
 {
@@ -116,6 +117,14 @@ namespace AutumnBox.GUI.UI.Grids
         private void ButtonChangeDpi_Click(object sender, RoutedEventArgs e)
         {
             //MMessageBox.ShowDialog(FindResource("Notice").ToString(), DeviceInfoHelper.GetDpi(App.SelectedDevice).ToString());
+        }
+
+        private void ButtonFullBackup_Click(object sender, RoutedEventArgs ex)
+        {
+            var fmp = FunctionModuleProxy.Create(typeof(AndroidFullBackup), new ModuleArgs(App.SelectedDevice));
+            fmp.Finished += App.OwnerWindow.FuncFinish;
+            fmp.Finished += (s, e) => { Logger.D($"Full backup was launched?.... there is output : {e.OutputData.All}"); };
+            fmp.AsyncRun();
         }
     }
 }

@@ -25,7 +25,8 @@ namespace AutumnBox.ConsoleTester.ObjTest
         public static void RunTest()
         {
             var fmp = FunctionModuleProxy.Create(typeof(AndroidFullBackup), new ModuleArgs(new DeviceBasicInfo() { Id = Program.Mi6ID }));
-            fmp.Finished += (s, e) => {
+            fmp.Finished += (s, e) =>
+            {
                 Console.WriteLine($"launched level : {e.Result.Level.ToString()} ");
             };
             fmp.OutReceived += (s, e) =>

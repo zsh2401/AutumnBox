@@ -11,6 +11,7 @@
     <s:String x:Key="btnDpiChange">修改DPI(Deving)</s:String>
     <s:String x:Key="btnInstallApk">安装APK</s:String>
     <s:String x:Key="btnScreenShot">截图并保存到电脑</s:String>
+    <s:String x:Key="btnAndroidFullBackup">全量备份(无需ROOT)</s:String>
     <s:String x:Key="btnMiFlash">MiFlash线刷(Deving)</s:String>
     <s:String x:Key="btnADBCMD">ADB命令行</s:String>
     <s:String x:Key="btnRebootToSystem">重启到系统</s:String>
