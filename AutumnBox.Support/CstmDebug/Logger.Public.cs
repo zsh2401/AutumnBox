@@ -24,6 +24,9 @@ namespace AutumnBox.Support.CstmDebug
     {
         public static void D(string message, bool isWarning = false)
         {
+#if !DEBUG
+            return;
+#endif
             var methodCaller = GetCaller();
             LogPropertyAttribute attrInfo = GetLogPropertyAttribute(methodCaller);
             if (!attrInfo.Show) return;
@@ -33,6 +36,9 @@ namespace AutumnBox.Support.CstmDebug
         }
         public static void D(string message, Exception e)
         {
+#if !DEBUG
+            return;
+#endif
             var methodCaller = GetCaller();
             LogPropertyAttribute attrInfo = GetLogPropertyAttribute(methodCaller);
             if (!attrInfo.Show) return;
