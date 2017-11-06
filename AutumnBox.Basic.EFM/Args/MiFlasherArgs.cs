@@ -18,9 +18,16 @@ using System.Text;
 
 namespace AutumnBox.Basic.Function.Args
 {
-    public class MiFlasherArgs: ModuleArgs
+    public enum MiFlashType
+    {
+        FlashAll,
+        FlashAllExceptStorage,
+        FlashAllExceptStorageAndData,
+    }
+    public class MiFlasherArgs : ModuleArgs
     {
         public MiFlasherArgs(DeviceBasicInfo devInfo) : base(devInfo) { }
-        public string batFileName { get; set; }
+        public string  FloderPath { get; set; }
+        public MiFlashType Type { get; set; }
     }
 }

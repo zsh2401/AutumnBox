@@ -36,7 +36,7 @@ namespace AutumnBox.Basic.Executer
                 if (e.Data != null)
                 {
                     if (SHOW_OUTPUT)
-                        Logger.D( e.Data);
+                        Logger.D(e.Data);
                     _tempOut.OutAdd(e.Data);
                 }
 
@@ -46,7 +46,7 @@ namespace AutumnBox.Basic.Executer
                 if (e.Data != null)
                 {
                     if (Basic.DebugSettings.SHOW_OUTPUT)
-                        Logger.D( e.Data);
+                        Logger.D(e.Data);
                     _tempOut.ErrorAdd(e.Data);
                 }
 
@@ -59,7 +59,7 @@ namespace AutumnBox.Basic.Executer
                 BeginOutputReadLine();
                 BeginErrorReadLine();
             }
-            catch (Exception e) { Logger.T( "Begin Out failed", e); }
+            catch (Exception e) { Logger.T("Begin Out failed", e); }
         }
         private void CancelRead()
         {
@@ -78,11 +78,12 @@ namespace AutumnBox.Basic.Executer
             _tempOut.Clear();
             StartInfo.FileName = fileName;
             StartInfo.Arguments = args;
+            Logger.D(fileName + " " + args);
             base.Start();
             BeginRead();
             ProcessStarted?.Invoke(this, new ProcessStartedEventArgs() { PID = Id });
             WaitForExit();
-            int exitCode  = ExitCode;
+            int exitCode = ExitCode;
             CancelRead();
             return _tempOut;
         }

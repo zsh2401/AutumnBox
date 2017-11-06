@@ -58,7 +58,7 @@ namespace AutumnBox.GUI.UI.Grids
 
         private void ButtonMiFlash_Click(object sender, RoutedEventArgs e)
         {
-
+            new Windows.MiFlash().ShowDialog();
         }
 
         private void ButtonRelockMi_Click(object sender, RoutedEventArgs e)

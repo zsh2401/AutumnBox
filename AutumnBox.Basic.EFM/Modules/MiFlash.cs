@@ -18,11 +18,15 @@ using AutumnBox.Support.CstmDebug;
 
 namespace AutumnBox.Basic.Function.Modules
 {
+
     /// <summary>
     /// 模拟的Miflash线刷功能模块,未完成,请勿使用
     /// </summary>
     public sealed class MiFlash : FunctionModule
     {
+        public static readonly string flash_all_bat = "flash_all.bat";
+        public static readonly string flash_all_except_storage_bat = "flash_all_except_storage.bat";
+        public static readonly string flash_all_except_storage_and_data_bat = "flash_all_except_data_storage.bat";
         private OutputData temtOut = new OutputData();
         private ABProcess MainProcess = new ABProcess();
         public MiFlasherArgs _Args;
@@ -56,8 +60,21 @@ namespace AutumnBox.Basic.Function.Modules
         protected override OutputData MainMethod()
         {
             MainProcess.StartInfo.WorkingDirectory = @"adb\";
-            temtOut.Append(MainProcess.RunToExited(_Args.batFileName, $"-s {DeviceID}"));
+            temtOut.Append(MainProcess.RunToExited(_Args.FloderPath + "/" + GetBatFileNameBy(_Args.Type), $"-s {DeviceID}"));
+            //MainProcess.WaitForExit();
             return temtOut;
+        }
+        private static string GetBatFileNameBy(MiFlashType type)
+        {
+            switch (type)
+            {
+                case MiFlashType.FlashAll:
+                    return flash_all_bat;
+                case MiFlashType.FlashAllExceptStorage:
+                    return flash_all_except_storage_bat;
+                default:
+                    return flash_all_except_storage_and_data_bat;
+            }
         }
         protected override void AnalyzeOutput(ref ExecuteResult executeResult)
         {

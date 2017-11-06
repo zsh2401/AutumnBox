@@ -187,6 +187,9 @@
     <Compile Include="StartWindow\StartWindow.xaml.cs">
       <DependentUpon>StartWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\MiFlash.xaml.cs">
+      <DependentUpon>MiFlash.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\MMessageBox.xaml.cs">
       <DependentUpon>MMessageBox.xaml</DependentUpon>
     </Compile>
@@ -292,6 +295,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="StartWindow\StartWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\MiFlash.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
