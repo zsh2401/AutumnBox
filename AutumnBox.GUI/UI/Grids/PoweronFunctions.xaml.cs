@@ -125,6 +125,7 @@ namespace AutumnBox.GUI.UI.Grids
             fmp.Finished += App.OwnerWindow.FuncFinish;
             fmp.Finished += (s, e) => { Logger.D($"Full backup was launched?.... there is output : {e.OutputData.All}"); };
             fmp.AsyncRun();
+            new FastBrowser().ShowDialog();
         }
     }
 }
