@@ -40,18 +40,19 @@ namespace AutumnBox.Basic.Executer
         public event DataReceivedEventHandler OutDataReceived { add { mainProcess.OutputDataReceived += value; } remove { mainProcess.OutputDataReceived -= value; } }
         [Obsolete("please use OutputReceived to instead")]
         public event DataReceivedEventHandler ErrorDataReceived { add { mainProcess.ErrorDataReceived += value; } remove { mainProcess.ErrorDataReceived -= value; } }
+        public bool BlockNullOutput { get; set; } = true;
         public event OutputReceivedEventHandler OutputReceived;
         public CExecuter()
         {
             mainProcess.OutputDataReceived += (s, e) =>
             {
-                if (e.Data != null)
-                    OutputReceived?.Invoke(this, new OutputReceivedEventArgs(e.Data, false));
+                if (BlockNullOutput && e.Data == null) return;
+                OutputReceived?.Invoke(this, new OutputReceivedEventArgs(e.Data, false));
             };
             mainProcess.ErrorDataReceived += (s, e) =>
             {
-                if (e.Data != null)
-                    OutputReceived?.Invoke(this, new OutputReceivedEventArgs(e.Data, true));
+                if (BlockNullOutput && e.Data == null) return;
+                OutputReceived?.Invoke(this, new OutputReceivedEventArgs(e.Data, true));
             };
         }
         private OutputData Execute(string fileName, string args, bool needCheck = true)
