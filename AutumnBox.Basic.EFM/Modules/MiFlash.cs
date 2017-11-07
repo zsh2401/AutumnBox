@@ -15,6 +15,7 @@
 using AutumnBox.Basic.Executer;
 using AutumnBox.Basic.Function.Args;
 using AutumnBox.Support.CstmDebug;
+using System.IO;
 
 namespace AutumnBox.Basic.Function.Modules
 {
@@ -24,6 +25,7 @@ namespace AutumnBox.Basic.Function.Modules
     /// </summary>
     public sealed class MiFlash : FunctionModule
     {
+        public static readonly string flash_all_lock_bat = "flash_all_lock.bat";
         public static readonly string flash_all_bat = "flash_all.bat";
         public static readonly string flash_all_except_storage_bat = "flash_all_except_storage.bat";
         public static readonly string flash_all_except_storage_and_data_bat = "flash_all_except_data_storage.bat";
@@ -83,6 +85,10 @@ namespace AutumnBox.Basic.Function.Modules
                 if (MainProcess.ExitCode == 1) executeResult.Level = ResultLevel.Unsuccessful;
             }
             executeResult.Message = executeResult.OutputData.LineAll[executeResult.OutputData.LineAll.Count - 1];
+        }
+        public static bool HaveFlashAllAndLockBat(string path)
+        {
+            return File.Exists(path + "/" + flash_all_lock_bat);
         }
     }
 }

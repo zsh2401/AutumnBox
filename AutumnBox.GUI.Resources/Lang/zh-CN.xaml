@@ -10,6 +10,7 @@
     <s:String x:Key="rbtnFlashAll">全部清空</s:String>
     <s:String x:Key="rbtnFlashAllExceptStorage">保留内部存储</s:String>
     <s:String x:Key="rbtnFlashAllExceptStorageAndData">保留内部存储和Data分区</s:String>
+    <s:String x:Key="btnCreateShortcut">创建快捷方式到桌面</s:String>
     <s:String x:Key="btnStart">开始</s:String>
     <s:String x:Key="btnHelp">帮助</s:String>
     <s:String x:Key="btnDpiChange">修改DPI(Deving)</s:String>

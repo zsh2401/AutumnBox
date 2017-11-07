@@ -73,12 +73,12 @@ namespace AutumnBox.Basic.Executer
         }
         public OutputData RunToExited(string fileName, string args)
         {
-            if (SHOW_COMMAND)
-                Logger.D($"{fileName} {args}");
+#if SHOW_COMMAND
+            Logger.D($"{fileName} {args}");
+#endif
             _tempOut.Clear();
             StartInfo.FileName = fileName;
             StartInfo.Arguments = args;
-            Logger.D(fileName + " " + args);
             base.Start();
             BeginRead();
             ProcessStarted?.Invoke(this, new ProcessStartedEventArgs() { PID = Id });

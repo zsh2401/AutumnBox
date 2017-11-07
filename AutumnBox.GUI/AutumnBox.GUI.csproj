@@ -333,6 +333,7 @@
     <ProjectReference Include="..\AutumnBox.Basic\AutumnBox.Basic.csproj">
       <Project>{84044fb2-bd38-4283-8065-b639270ece0f}</Project>
       <Name>AutumnBox.Basic</Name>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
     </ProjectReference>
     <ProjectReference Include="..\AutumnBox.GUI.Resources\AutumnBox.GUI.Resources.csproj">
       <Project>{eee9312c-4210-4fdb-a753-e2506a2e3e45}</Project>
@@ -342,6 +343,17 @@
       <Project>{851B2EB0-0503-428D-BD87-063555B19451}</Project>
       <Name>AutumnBox.Support</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="IWshRuntimeLibrary">
+      <Guid>{F935DC20-1CF0-11D0-ADB9-00C04FD58A0B}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -30,5 +30,10 @@ namespace AutumnBox.GUI.UI.Grids
             UIHelper.SetOwnerTransparency((byte)ColorSlider.Value);
             Config.BackgroundA = (byte)ColorSlider.Value;
         }
+
+        private void buttonStartOrCancel_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            SystemHelper.CreateShortcutOnDesktop("AutumnBox",System.Environment.CurrentDirectory + "/AutumnBox.exe","The AutumnBox-Dream of us");
+        }
     }
 }

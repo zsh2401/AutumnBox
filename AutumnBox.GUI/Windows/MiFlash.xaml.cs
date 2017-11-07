@@ -33,6 +33,7 @@ namespace AutumnBox.GUI.Windows
             private System.Windows.Controls.Label timeLabel;
             public void Start(System.Windows.Controls.Label timeLabel)
             {
+                this.timeLabel = timeLabel;
                 thread = new Thread(_Main);
                 thread.Start();
             }
@@ -52,7 +53,7 @@ namespace AutumnBox.GUI.Windows
             public void Stop()
             {
                 thread.Abort();
-                
+
             }
         }
         private Timer timer = new Timer();
