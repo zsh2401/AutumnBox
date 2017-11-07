@@ -11,6 +11,7 @@
 * Company: I am free man
 *
 \* =============================================================================*/
+#define SHOW_COMMAND
 namespace AutumnBox.Basic.Executer
 {
     using AutumnBox.Support.CstmDebug;

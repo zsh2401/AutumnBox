@@ -54,7 +54,7 @@
     <Compile Include="Executer\CommandExecuter.cs" />
     <Compile Include="Executer\CommandExecuter.Static.cs" />
     <Compile Include="Executer\CommandExecuter.ExeFunc.cs" />
-    <Compile Include="Executer\Executer.cs" />
+    <Compile Include="Executer\CExecuter.cs" />
     <Compile Include="Executer\ExeType.cs" />
     <Compile Include="Executer\IOutSender.cs" />
     <Compile Include="Executer\Events.cs" />

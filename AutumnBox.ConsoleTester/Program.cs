@@ -10,7 +10,7 @@ namespace AutumnBox.ConsoleTester
         public readonly static string Mi6ID = "af0fe186";
         unsafe static void Main(string[] args)
         {
-            AndroidFullBackupTest.RunTest();
+            ExecuterTest.Start();
             Console.ReadKey();
         }
     }
