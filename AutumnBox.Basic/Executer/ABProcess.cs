@@ -73,7 +73,7 @@ namespace AutumnBox.Basic.Executer
         }
         public OutputData RunToExited(string fileName, string args)
         {
-            if (Basic.DebugSettings.SHOW_COMMAND)
+            if (SHOW_COMMAND)
                 Logger.D($"{fileName} {args}");
             _tempOut.Clear();
             StartInfo.FileName = fileName;

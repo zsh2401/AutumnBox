@@ -52,9 +52,10 @@ namespace AutumnBox.GUI.Windows
             public void Stop()
             {
                 thread.Abort();
+                
             }
         }
-
+        private Timer timer = new Timer();
         private FunctionModuleProxy Fmp = null;
         public MiFlash()
         {
@@ -71,16 +72,18 @@ namespace AutumnBox.GUI.Windows
             }
             else
             {
-                Start();
-                buttonStartOrCancel.Content = App.Current.Resources["btnCancel"];
+                if (Start())
+                {
+                    buttonStartOrCancel.Content = App.Current.Resources["btnCancel"];
+                }
             }
         }
-        private void Start()
+        private bool Start()
         {
             if (TextBoxPath.Text == App.Current.Resources["PleaseSelectFloderPackageWireFlash"].ToString())
             {
                 MMessageBox.ShowDialog(App.Current.Resources["Warning"].ToString(), App.Current.Resources["PleaseSelectFloderPackageWireFlash"].ToString());
-                return;
+                return false;
             }
             Fmp = FunctionModuleProxy.Create(typeof(Basic.Function.Modules.MiFlash),
             new MiFlasherArgs(App.SelectedDevice)
@@ -92,9 +95,10 @@ namespace AutumnBox.GUI.Windows
             {
                 this.Dispatcher.Invoke(() =>
                 {
-                    TextBoxOutput.AppendText("Out : " + ex.Data);
+                    TextBoxOutput.AppendText("\n" + ex.Data);
                     LabelNow.Foreground = new SolidColorBrush(Colors.Green);
                     LabelNow.Content = ex.Data;
+                    TextBoxOutput.ScrollToEnd();
                 });
 
             };
@@ -102,17 +106,27 @@ namespace AutumnBox.GUI.Windows
             {
                 this.Dispatcher.Invoke(() =>
                 {
-                    TextBoxOutput.AppendText("Error : " + ex.Data);
+                    TextBoxOutput.AppendText("\n" + ex.Data);
                     LabelNow.Foreground = new SolidColorBrush(Colors.Red);
                     LabelNow.Content = ex.Data;
+                    TextBoxOutput.ScrollToEnd();
                 });
             };
-            Fmp.Finished += (s, e) => { ModuleResultWindow.FastShow(e.Result); };
+            Fmp.Finished += (s, e) =>
+            {
+                this.Dispatcher.Invoke(() =>
+                {
+                    ModuleResultWindow.FastShow(e.Result);
+                });
+            };
             Fmp.AsyncRun();
+            timer.Start(this.LabelNow);
+            return true;
         }
         private void Stop()
         {
             Fmp.ForceStop();
+            timer.Stop();
         }
         private MiFlashType GetFlashType()
         {

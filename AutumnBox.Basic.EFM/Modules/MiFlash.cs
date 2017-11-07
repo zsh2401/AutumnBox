@@ -51,6 +51,7 @@ namespace AutumnBox.Basic.Function.Modules
                     OnErrorReceived(e);
                 }
             };
+            MainProcess.ProcessStarted += (s, e) => { OnProcessStarted(e); };
         }
         protected override void AnalyzeArgs(ModuleArgs args)
         {
@@ -60,8 +61,7 @@ namespace AutumnBox.Basic.Function.Modules
         protected override OutputData MainMethod()
         {
             MainProcess.StartInfo.WorkingDirectory = @"adb\";
-            temtOut.Append(MainProcess.RunToExited(_Args.FloderPath + "/" + GetBatFileNameBy(_Args.Type), $"-s {DeviceID}"));
-            //MainProcess.WaitForExit();
+            temtOut.Append(MainProcess.RunToExited("cmd.exe", "/c " + _Args.FloderPath + "/" + GetBatFileNameBy(_Args.Type) + $" -s {DeviceID}"));
             return temtOut;
         }
         private static string GetBatFileNameBy(MiFlashType type)
@@ -78,7 +78,10 @@ namespace AutumnBox.Basic.Function.Modules
         }
         protected override void AnalyzeOutput(ref ExecuteResult executeResult)
         {
-            if (MainProcess.ExitCode == 1) executeResult.Level = ResultLevel.Unsuccessful;
+            if (Status != ModuleStatus.ForceStoped)
+            {
+                if (MainProcess.ExitCode == 1) executeResult.Level = ResultLevel.Unsuccessful;
+            }
             executeResult.Message = executeResult.OutputData.LineAll[executeResult.OutputData.LineAll.Count - 1];
         }
     }

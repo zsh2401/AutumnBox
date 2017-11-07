@@ -48,6 +48,7 @@ namespace AutumnBox.Basic.Function
     using AutumnBox.Basic.Executer;
     using AutumnBox.Basic.Function.Args;
     using AutumnBox.Basic.Function.Event;
+    using AutumnBox.Support.CstmDebug;
     using AutumnBox.Support.Helper;
     using System;
     using System.Diagnostics;
@@ -160,8 +161,8 @@ namespace AutumnBox.Basic.Function
         public void ForceStop()
         {
             int pid = CoreProcessPid ?? throw new NullReferenceException();
-            SystemHelper.KillProcessAndChildrens(pid);
             Status = ModuleStatus.ForceStoped;
+            SystemHelper.KillProcessAndChildrens(pid);
         }
         /// <summary>
         /// 析构
@@ -197,6 +198,7 @@ namespace AutumnBox.Basic.Function
         /// <param name="e"></param>
         protected virtual void OnProcessStarted(ProcessStartedEventArgs e)
         {
+            Logger.D("Process start! get the pid");
             CoreProcessPid = e.PID;
             CoreProcessStarted?.Invoke(this, e);
         }
