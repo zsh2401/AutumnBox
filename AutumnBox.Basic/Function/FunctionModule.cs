@@ -110,6 +110,11 @@ namespace AutumnBox.Basic.Function
         /// </summary>
         public event ProcessStartedEventHandler CoreProcessStarted;
         /// <summary>
+        /// 执行时接收到任何输出时发生
+        /// </summary>
+        public event OutputReceivedEventHandler OutputReceived;
+
+        /// <summary>
         /// 判断完成事件是否被绑定
         /// </summary>
         public bool IsFinishedEventRegistered
@@ -131,6 +136,7 @@ namespace AutumnBox.Basic.Function
             { return Executer.Execute(Command.MakeForFastboot(Args.DeviceBasicInfo, command)); };
             Executer.OutputReceived += (s, e) =>
             {
+                OnOutputReceived(e);
                 if (!e.IsError)
                 {
                     OnOutReceived(e.SourceArgs);
@@ -201,6 +207,10 @@ namespace AutumnBox.Basic.Function
         /// 模块的核心代码,强制要求子类进行实现
         /// </summary>
         protected abstract OutputData MainMethod();
+        protected virtual void OnOutputReceived(OutputReceivedEventArgs e)
+        {
+            OutputReceived?.Invoke(this, e);
+        }
         /// <summary>
         /// 引发进程开始事件
         /// </summary>
