@@ -12,12 +12,14 @@
 *
 \* =============================================================================*/
 using AutumnBox.Basic.Devices;
+using AutumnBox.GUI.Helper;
+using AutumnBox.GUI.Windows;
 using AutumnBox.Support.CstmDebug;
 using System.Windows;
 
 namespace AutumnBox.GUI
 {
-    [LogProperty(TAG ="AB_App")]
+    [LogProperty(TAG = "AB_App")]
     /// <summary>
     /// App.xaml 的交互逻辑
     /// </summary>
@@ -28,10 +30,13 @@ namespace AutumnBox.GUI
         internal static DevicesMonitor DevicesListener = new DevicesMonitor();//设备监听器
         protected override void OnStartup(StartupEventArgs e)
         {
-            Logger.T("Startup");
-            Helper.SystemHelper.GCer.Start();
+            if (SystemHelper.HaveOtherAutumnBoxProcess())
+            {
+                MMessageBox.ShowDialog("警告/Warning", "不可以同时打开两个AutumnBox\nDo not run two AutumnBox at once");
+                System.Environment.Exit(1);
+            }
+            SystemHelper.GCer.Start();
             base.OnStartup(e);
-            //AutumnBox.GUI.Resources
         }
         protected override void OnExit(ExitEventArgs e)
         {

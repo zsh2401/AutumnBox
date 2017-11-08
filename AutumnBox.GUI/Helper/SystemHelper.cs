@@ -98,6 +98,10 @@ namespace AutumnBox.GUI.Helper
                 return Environment.OSVersion.Version.Major == 10;
             }
         }
+        public static bool HaveOtherAutumnBoxProcess()
+        {
+            return Process.GetProcessesByName("AutumnBox").Length != 1;
+        }
         public static void AppExit(int exitCode = 0)
         {
             Logger.T("Exiting.....");
