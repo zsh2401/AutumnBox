@@ -15,11 +15,12 @@ namespace AutumnBox.Basic.Devices
 {
     using AutumnBox.Basic.Executer;
     using AutumnBox.Basic.Util;
+    using AutumnBox.Support.CstmDebug;
     using System;
     using System.Diagnostics;
     public sealed class DevicesGetter : IDevicesGetter, IDisposable
     {
-        private CommandExecuter executer = new CommandExecuter();
+        private CExecuter executer = new CExecuter();
         public void Dispose()
         {
             executer.Dispose();
@@ -28,11 +29,10 @@ namespace AutumnBox.Basic.Devices
         {
             lock (executer)
             {
-                if (Process.GetProcessesByName("adb").Length == 0) CommandExecuter.Start();
                 DevicesList devList = new DevicesList();
-                var adbDevicesOutput = executer.Execute(new Command("devices"));
+                var adbDevicesOutput = executer.Execute(Command.MakeForAdb("devices"));
                 AdbPrase(adbDevicesOutput, ref devList);
-                var fastbootDevicesOutput = executer.Execute(new Command("devices", ExeType.Fastboot));
+                var fastbootDevicesOutput = executer.Execute(Command.MakeForFastboot("devices"));
                 FastbootParse(fastbootDevicesOutput, ref devList);
                 return devList;
             }

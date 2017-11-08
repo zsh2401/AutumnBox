@@ -90,7 +90,6 @@ namespace AutumnBox.Basic.Devices
             DevicesList last = new DevicesList();
             while (Continue)
             {
-                if (Process.GetProcessesByName("adb").Length == 0) CommandExecuter.Start();
                 var now =  executer.GetDevices();
                 if (now != last)
                 {

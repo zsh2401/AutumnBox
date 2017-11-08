@@ -51,13 +51,9 @@
     <Compile Include="Devices\DeviceNotFoundException.cs" />
     <Compile Include="Devices\DevicesGetter.cs" />
     <Compile Include="Devices\DeviceBasicInfo.cs" />
-    <Compile Include="Executer\CommandExecuter.cs" />
-    <Compile Include="Executer\CommandExecuter.Static.cs" />
-    <Compile Include="Executer\CommandExecuter.ExeFunc.cs" />
     <Compile Include="Executer\CExecuter.cs" />
     <Compile Include="Executer\ExeType.cs" />
     <Compile Include="Executer\IOutSender.cs" />
-    <Compile Include="Executer\Events.cs" />
     <Compile Include="Function\Args\ModuleArgs.cs" />
     <Compile Include="Function\Event\EventAddException.cs" />
     <Compile Include="Function\Event\EventNotBoundException.cs" />
@@ -70,9 +66,7 @@
     <Compile Include="Devices\IDevicesGetter.cs" />
     <Compile Include="Executer\OutputData.cs" />
     <Compile Include="Devices\DevicesList.cs" />
-    <Compile Include="Executer\ABProcess.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="Executer\ABProcess.cs" />
     <Compile Include="Function\ExecuteResult.cs" />
     <Compile Include="Executer\Command.cs" />
     <Compile Include="Function\FunctionModule.cs" />

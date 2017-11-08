@@ -76,7 +76,7 @@ namespace AutumnBox.Basic.Function
         /// <summary>
         /// 执行器
         /// </summary>
-        protected readonly CommandExecuter Executer = new CommandExecuter();
+        protected readonly CExecuter Executer = new CExecuter();
         /// <summary>
         /// 功能模块执行时指定的设备id
         /// </summary>
@@ -126,11 +126,20 @@ namespace AutumnBox.Basic.Function
         protected FunctionModule()
         {
             Ae = (command) =>
-            { return Executer.Execute(new Command(Args.DeviceBasicInfo, command)); };
+            { return Executer.Execute(Command.MakeForAdb(Args.DeviceBasicInfo, command)); };
             Fe = (command) =>
-            { return Executer.Execute(new Command(Args.DeviceBasicInfo, command, ExeType.Fastboot)); };
-            Executer.OutputDataReceived += (s, e) => { OnOutReceived(e); };
-            Executer.ErrorDataReceived += (s, e) => { OnErrorReceived(e); };
+            { return Executer.Execute(Command.MakeForFastboot(Args.DeviceBasicInfo, command)); };
+            Executer.OutputReceived += (s, e) =>
+            {
+                if (!e.IsError)
+                {
+                    OnOutReceived(e.SourceArgs);
+                }
+                else
+                {
+                    OnErrorReceived(e.SourceArgs);
+                }
+            };
             Executer.ProcessStarted += (s, e) => { OnProcessStarted(e); };
             Status = ModuleStatus.Ready;
         }
@@ -199,7 +208,7 @@ namespace AutumnBox.Basic.Function
         protected virtual void OnProcessStarted(ProcessStartedEventArgs e)
         {
             Logger.D("Process start! get the pid");
-            CoreProcessPid = e.PID;
+            CoreProcessPid = e.Pid;
             CoreProcessStarted?.Invoke(this, e);
         }
         /// <summary>

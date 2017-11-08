@@ -20,11 +20,7 @@ namespace AutumnBox.Basic.Devices
     [LogProperty(TAG = "DeviceInfoHelper")]
     public static class DeviceInfoHelper
     {
-        private static CommandExecuter Executer = new CommandExecuter();
-        static DeviceInfoHelper()
-        {
-            CommandExecuter.Start();
-        }
+        private static CExecuter Executer = new CExecuter();
         public static bool CheckRoot(string id)
         {
             lock (Executer)
@@ -61,18 +57,22 @@ namespace AutumnBox.Basic.Devices
             {
                 Id = id
             };
-            var executer = new CommandExecuter();
+            var executer = new CExecuter();
 
-            try { buildInfo.Code = executer.Execute(new Command(id, "shell \"cat /system/build.prop | grep \"product.name\"\"")).LineOut[0].Split('=')[1]; }
+            try {
+                var output = executer.Execute(Command.MakeForAdb(id, "shell \"cat /system/build.prop | grep \"product.name\"\""));
+                Logger.D(output.All.ToString());
+                buildInfo.Code = output.LineOut[0].Split('=')[1];
+            }
             catch { }
 
-            try { buildInfo.Brand = executer.Execute(new Command(id, "shell \"cat /system/build.prop | grep \"product.brand\"\"")).LineOut[0].Split('=')[1]; }
+            try { buildInfo.Brand = executer.Execute(Command.MakeForAdb(id, "shell \"cat /system/build.prop | grep \"product.brand\"\"")).LineOut[0].Split('=')[1]; }
             catch { }
 
-            try { buildInfo.AndroidVersion = executer.Execute(new Command(id, "shell \"cat /system/build.prop | grep \"build.version.release\"\"")).LineOut[0].Split('=')[1]; }
+            try { buildInfo.AndroidVersion = executer.Execute(Command.MakeForAdb(id, "shell \"cat /system/build.prop | grep \"build.version.release\"\"")).LineOut[0].Split('=')[1]; }
             catch { }
 
-            try { buildInfo.Model = executer.Execute(new Command(id, "shell \"cat /system/build.prop | grep \"product.model\"\"")).LineOut[0].Split('=')[1]; }
+            try { buildInfo.Model = executer.Execute(Command.MakeForAdb(id, "shell \"cat /system/build.prop | grep \"product.model\"\"")).LineOut[0].Split('=')[1]; }
             catch { }
 
             return buildInfo;
@@ -106,7 +106,7 @@ namespace AutumnBox.Basic.Devices
         {
             try
             {
-                string output = (Executer.Execute(new Command(id, "shell \"dumpsys battery | grep level\"")).LineOut[0]);
+                string output = (Executer.Execute( Command.MakeForAdb(id, "shell \"dumpsys battery | grep level\"")).LineOut[0]);
                 Logger.T("BatteryLevel info  " + output);
                 return Convert.ToInt32(output.Split(':')[1].TrimStart());
             }
@@ -116,7 +116,7 @@ namespace AutumnBox.Basic.Devices
         {
             try
             {
-                string output = (Executer.Execute(new Command(id, "shell \"cat /proc/meminfo | grep MemTotal\"")).LineOut[0]);
+                string output = (Executer.Execute( Command.MakeForAdb(id, "shell \"cat /proc/meminfo | grep MemTotal\"")).LineOut[0]);
                 Logger.T("MemTotal " + output);
                 string result = System.Text.RegularExpressions.Regex.Replace(output, @"[^0-9]+", "");
                 Logger.T("MemTotal kb " + result);
@@ -138,7 +138,7 @@ namespace AutumnBox.Basic.Devices
         {
             try
             {
-                string output = (Executer.Execute(new Command(id, "shell \"cat /proc/cpuinfo | grep Hardware\"")).LineOut[0]);
+                string output = (Executer.Execute( Command.MakeForAdb(id, "shell \"cat /proc/cpuinfo | grep Hardware\"")).LineOut[0]);
                 Logger.T("cpuinfo " + output);
                 var hehe = output.Split(' ');
                 return hehe[hehe.Length - 1];
@@ -149,7 +149,7 @@ namespace AutumnBox.Basic.Devices
         {
             try
             {
-                string output = (Executer.Execute(new Command(id, "shell \"cat /proc/hwinfo | grep LCD\"")).LineOut[0]);
+                string output = (Executer.Execute( Command.MakeForAdb(id, "shell \"cat /proc/hwinfo | grep LCD\"")).LineOut[0]);
                 Logger.T("hwinfo LCD " + output);
                 return output.Split(':')[1].TrimStart();
             }
@@ -159,14 +159,14 @@ namespace AutumnBox.Basic.Devices
         {
             try
             {
-                string output = (Executer.Execute(new Command(id, "shell \"cat /proc/hwinfo | grep EMMC\"")).LineOut[0]);
+                string output = (Executer.Execute( Command.MakeForAdb(id, "shell \"cat /proc/hwinfo | grep EMMC\"")).LineOut[0]);
                 Logger.T("EMMC info  " + output);
                 return output.Split(':')[1].TrimStart() + " EMMC";
             }
             catch (Exception e) { Logger.T("Get EMMC info fail", e); }
             try
             {
-                string output = (Executer.Execute(new Command(id, "shell \"cat /proc/hwinfo | grep UFS\"")).LineOut[0]);
+                string output = (Executer.Execute( Command.MakeForAdb(id, "shell \"cat /proc/hwinfo | grep UFS\"")).LineOut[0]);
                 Logger.T("UFS info  " + output);
                 return output.Split(':')[1].TrimStart() + " UFS";
             }

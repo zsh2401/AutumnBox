@@ -24,13 +24,7 @@ namespace AutumnBox.Basic.Executer
         /// <summary>
         /// 文件名
         /// </summary>
-        public string FileName
-        {
-            get
-            {
-                return ExecuteType == ExeType.Adb ? ConstData.ADB_PATH : ConstData.FASTBOOT_PATH;
-            }
-        }
+        public string FileName { get; private set; }
         /// <summary>
         /// 完全的命令
         /// </summary>
@@ -38,89 +32,31 @@ namespace AutumnBox.Basic.Executer
         {
             get
             {
-                return isDesignatedDevice ?
-                $" -s {Info?.Id} {SpecificCommand}" : SpecificCommand;
-            }
-        }
-        /// <summary>
-        /// 执行的类型
-        /// </summary>
-        public ExeType ExecuteType { get; private set; }
-        /// <summary>
-        /// 是否指定了设备
-        /// </summary>
-        bool isDesignatedDevice
-        {
-            get
-            {
-                return (Info != null);
+                return (DeviceID != null) ?
+                $" -s {DeviceID} {SpecificCommand}" : SpecificCommand;
             }
         }
         /// <summary>
         /// 具体命令
         /// </summary>
-        string SpecificCommand;
-        /// <summary>
-        /// 设备信息
-        /// </summary>
-        public DeviceBasicInfo? Info { get; private set; }
-        public Command(DeviceBasicInfo info, string command, ExeType executeType = ExeType.Adb) : this(command, executeType)
+        private string SpecificCommand;
+        private string DeviceID;
+        private Command() { }
+        public static Command MakeForAdb(string command)
         {
-            Info = info;
+            return new Command() { FileName = ConstData.ADB_PATH, SpecificCommand = command };
         }
-        public Command(string id, string command, ExeType exeType = ExeType.Adb) :
-            this(new DeviceBasicInfo() { Id = id, Status = DeviceStatus.Unknow}, command, exeType)
-        { }
-        public Command(string command, ExeType executeType = ExeType.Adb)
+        public static Command MakeForAdb(string id, string command)
         {
-            this.ExecuteType = executeType;
-            SpecificCommand = command;
+            return new Command() { FileName = ConstData.ADB_PATH, DeviceID = id, SpecificCommand = command };
         }
-        /// <summary>
-        /// 获取一个adb指令
-        /// </summary>
-        /// <param name="id"></param>
-        /// <param name="command"></param>
-        /// <returns></returns>
-        public static Command MakeADB(string id, string command)
+        public static Command MakeForFastboot(string command)
         {
-            return new Command(id, command, ExeType.Adb);
+            return new Command() { FileName = ConstData.FASTBOOT_PATH, SpecificCommand = command };
         }
-        /// <summary>
-        /// 获取一个fastboot指令
-        /// </summary>
-        /// <param name="id"></param>
-        /// <param name="command"></param>
-        /// <returns></returns>
-        public static Command MakeFastboot(string id, string command)
+        public static Command MakeForFastboot(string id, string command)
         {
-            return new Command(id, command, ExeType.Fastboot);
-        }
-        /// <summary>
-        /// 获取一个adb指令
-        /// </summary>
-        /// <param name="command"></param>
-        /// <returns></returns>
-        public static Command MakeADB(string command)
-        {
-            return new Command(command, ExeType.Adb);
-        }
-        /// <summary>
-        /// 获取一个adb指令
-        /// </summary>
-        /// <param name="command"></param>
-        /// <returns></returns>
-        public static Command MakeFastboot(string command)
-        {
-            return new Command(command, ExeType.Fastboot);
-        }
-        /// <summary>
-        /// 获取完整的指令(无文件名)
-        /// </summary>
-        /// <returns></returns>
-        public override string ToString()
-        {
-            return FullCommand;
+            return new Command() { FileName = ConstData.FASTBOOT_PATH, DeviceID = id, SpecificCommand = command };
         }
     }
 }

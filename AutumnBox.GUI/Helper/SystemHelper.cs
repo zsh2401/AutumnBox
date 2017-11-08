@@ -102,7 +102,7 @@ namespace AutumnBox.GUI.Helper
         {
             Logger.T("Exiting.....");
             App.DevicesListener.Stop();
-            CommandExecuter.Kill();
+            new CExecuter().Execute(Command.MakeForAdb("kill-server"));
             Environment.Exit(exitCode);
         }
         internal readonly static AutoGCer GCer = new AutoGCer();

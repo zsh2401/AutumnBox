@@ -15,6 +15,7 @@ namespace AutumnBox.Basic.Function
     /// </summary>
     public interface IFunctionModule
     {
+        event OutputReceivedEventHandler OutputReceived;
         /// <summary>
         /// 接收到常规输出时发生
         /// </summary>

@@ -11,6 +11,7 @@
 * Company: I am free man
 *
 \* =============================================================================*/
+using AutumnBox.Basic.Executer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,9 +29,10 @@ namespace AutumnBox.ConsoleTester.ObjTest
             {
                 Console.WriteLine(e.Text);
             };
+            //Console.WriteLine(new ABProcess().RunToExited("cmd.exe","/c help").All);
             executer.AdbExecute("help");
             executer.AdbExecute("devices");
-            executer.AdbExecute("version");
+            //executer.AdbExecute("version");
         }
     }
 }

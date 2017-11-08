@@ -21,39 +21,30 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Executer
 {
-    public delegate void OutputReceivedEventHandler(object sender, OutputReceivedEventArgs e);
-    public class OutputReceivedEventArgs : EventArgs
+    public sealed class CExecuter : IDisposable, IOutSender
     {
-        public bool IsError { get; private set; }
-        public string Text { get; private set; }
-        public OutputReceivedEventArgs(string text, bool isError = false)
-        {
-            Text = text;
-            IsError = isError;
-        }
-    }
-    public sealed class CExecuter
-    {
-        private ABProcess mainProcess = new ABProcess();
-        public event ProcessStartedEventHandler ProcessStart { add { mainProcess.ProcessStarted += value; } remove { mainProcess.ProcessStarted -= value; } }
+        public event ProcessStartedEventHandler ProcessStarted { add { MainProcess.ProcessStarted += value; } remove { MainProcess.ProcessStarted -= value; } }
         [Obsolete("please use OutputReceived to instead")]
-        public event DataReceivedEventHandler OutDataReceived { add { mainProcess.OutputDataReceived += value; } remove { mainProcess.OutputDataReceived -= value; } }
+        public event DataReceivedEventHandler OutputDataReceived { add { MainProcess.OutputDataReceived += value; } remove { MainProcess.OutputDataReceived -= value; } }
         [Obsolete("please use OutputReceived to instead")]
-        public event DataReceivedEventHandler ErrorDataReceived { add { mainProcess.ErrorDataReceived += value; } remove { mainProcess.ErrorDataReceived -= value; } }
-        public bool BlockNullOutput { get; set; } = true;
-        public event OutputReceivedEventHandler OutputReceived;
+        public event DataReceivedEventHandler ErrorDataReceived { add { MainProcess.ErrorDataReceived += value; } remove { MainProcess.ErrorDataReceived -= value; } }
+        public event OutputReceivedEventHandler OutputReceived { add { MainProcess.OutputReceived += value; } remove { MainProcess.OutputReceived -= value; } }
+        public bool BlockNullOutput { get { return MainProcess.BlockNullOutput; } set { MainProcess.BlockNullOutput = value; } }
+        public OutputData Execute(Command command)
+            => Execute(command.FileName, command.FullCommand);
+        public OutputData AdbExecute(string command)
+         => Execute(Command.MakeForAdb(command));
+        public OutputData AdbExecute(string devId, string command)
+            => Execute(Command.MakeForAdb(devId, command));
+        public OutputData FastbootExecute(string command)
+            => Execute(Command.MakeForFastboot(command));
+        public OutputData FastbootExecute(string devId, string command)
+            => Execute(Command.MakeForFastboot(devId, command));
+
+        private ABProcess MainProcess = new ABProcess();
+        private Object Locker = new object();
         public CExecuter()
         {
-            mainProcess.OutputDataReceived += (s, e) =>
-            {
-                if (BlockNullOutput && e.Data == null) return;
-                OutputReceived?.Invoke(this, new OutputReceivedEventArgs(e.Data, false));
-            };
-            mainProcess.ErrorDataReceived += (s, e) =>
-            {
-                if (BlockNullOutput && e.Data == null) return;
-                OutputReceived?.Invoke(this, new OutputReceivedEventArgs(e.Data, true));
-            };
         }
         private OutputData Execute(string fileName, string args, bool needCheck = true)
         {
@@ -61,24 +52,23 @@ namespace AutumnBox.Basic.Executer
             {
                 Check();
             }
-            return mainProcess.RunToExited(fileName, args);
+            lock (Locker)
+            {
+                MainProcess.StartInfo.WorkingDirectory = Environment.CurrentDirectory;
+                return MainProcess.RunToExited(fileName, args);
+            }
         }
-        public OutputData Execute(Command command)
-            => Execute(command.FileName, command.FullCommand);
-        public OutputData AdbExecute(string devId, string command)
-            => Execute(new Command(devId, command, ExeType.Adb));
-        public OutputData AdbExecute(string command)
-            => Execute(new Command(command, ExeType.Adb));
-        public OutputData FastbootExecute(string devId, string command)
-            => Execute(new Command(devId, command, ExeType.Fastboot));
-        public OutputData FastbootExecute(string command)
-            => Execute(new Command(command, ExeType.Fastboot));
         private static void Check()
         {
             if (Process.GetProcessesByName("adb").Length == 0)
             {
                 new CExecuter().Execute(ConstData.ADB_PATH, "start-server", false);
             }
+        }
+
+        public void Dispose()
+        {
+            MainProcess.Dispose();
         }
     }
 }

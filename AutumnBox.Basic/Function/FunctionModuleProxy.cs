@@ -11,6 +11,7 @@
 * Company: I am free man
 *
 \* =============================================================================*/
+using AutumnBox.Basic.Executer;
 using AutumnBox.Basic.Function.Args;
 using AutumnBox.Basic.Function.Event;
 using AutumnBox.Support.CstmDebug;
@@ -26,6 +27,11 @@ namespace AutumnBox.Basic.Function
     /// </summary>
     public class FunctionModuleProxy
     {
+        public event OutputReceivedEventHandler OutputReceived
+        {
+            add { FunctionModule.OutputReceived += value; }
+            remove { FunctionModule.OutputReceived -= value; }
+        }
         public event DataReceivedEventHandler OutReceived
         {
             add { FunctionModule.OutReceived += value; }

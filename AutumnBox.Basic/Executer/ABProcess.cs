@@ -18,8 +18,28 @@ namespace AutumnBox.Basic.Executer
     using System;
     using System.Diagnostics;
     using static Basic.DebugSettings;
+    public delegate void OutputReceivedEventHandler(object sender, OutputReceivedEventArgs e);
+    public delegate void ProcessStartedEventHandler(object sender, ProcessStartedEventArgs e);
+    public class OutputReceivedEventArgs : EventArgs
+    {
+        public bool IsError { get; private set; }
+        public string Text { get; private set; }
+        public DataReceivedEventArgs SourceArgs { get; private set; }
+        public OutputReceivedEventArgs(string text, DataReceivedEventArgs source, bool isError = false)
+        {
+            Text = text;
+            IsError = isError;
+            SourceArgs = source;
+        }
+    }
+    public class ProcessStartedEventArgs : EventArgs
+    {
+        public int Pid { get; set; }
+    }
     public sealed class ABProcess : Process
     {
+        public bool BlockNullOutput { get; set; } = true;
+        public event OutputReceivedEventHandler OutputReceived;
         public event ProcessStartedEventHandler ProcessStarted;
         private OutputData _tempOut = new OutputData();
         public ABProcess() : base()
@@ -32,25 +52,20 @@ namespace AutumnBox.Basic.Executer
                 UseShellExecute = false,
                 CreateNoWindow = true,
             };
-            this.OutputDataReceived += (s, e) =>
+            OutputReceived += (s, e) =>
             {
-                if (e.Data != null)
-                {
-                    if (SHOW_OUTPUT)
-                        Logger.D(e.Data);
-                    _tempOut.OutAdd(e.Data);
-                }
-
+                if (!e.IsError) _tempOut.OutAdd(e.Text);
+                else _tempOut.ErrorAdd(e.Text);
             };
-            this.ErrorDataReceived += (s, e) =>
+            OutputDataReceived += (s, e) =>
             {
-                if (e.Data != null)
-                {
-                    if (Basic.DebugSettings.SHOW_OUTPUT)
-                        Logger.D(e.Data);
-                    _tempOut.ErrorAdd(e.Data);
-                }
-
+                if (BlockNullOutput && e.Data == null) return;
+                OutputReceived?.Invoke(this, new OutputReceivedEventArgs(e.Data, e, false));
+            };
+            ErrorDataReceived += (s, e) =>
+            {
+                if (BlockNullOutput && e.Data == null) return;
+                OutputReceived?.Invoke(this, new OutputReceivedEventArgs(e.Data, e, true));
             };
         }
         private void BeginRead()
@@ -77,14 +92,15 @@ namespace AutumnBox.Basic.Executer
 #if SHOW_COMMAND
             Logger.D($"{fileName} {args}");
 #endif
+            //Init
             _tempOut.Clear();
             StartInfo.FileName = fileName;
             StartInfo.Arguments = args;
-            base.Start();
+            //Start
+            Start();
             BeginRead();
-            ProcessStarted?.Invoke(this, new ProcessStartedEventArgs() { PID = Id });
+            ProcessStarted?.Invoke(this, new ProcessStartedEventArgs() { Pid = Id });
             WaitForExit();
-            int exitCode = ExitCode;
             CancelRead();
             return _tempOut;
         }
