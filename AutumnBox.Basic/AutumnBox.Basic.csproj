@@ -52,7 +52,6 @@
     <Compile Include="Devices\DevicesGetter.cs" />
     <Compile Include="Devices\DeviceBasicInfo.cs" />
     <Compile Include="Executer\CExecuter.cs" />
-    <Compile Include="Executer\ExeType.cs" />
     <Compile Include="Executer\IOutSender.cs" />
     <Compile Include="Function\Args\ModuleArgs.cs" />
     <Compile Include="Function\Event\EventAddException.cs" />

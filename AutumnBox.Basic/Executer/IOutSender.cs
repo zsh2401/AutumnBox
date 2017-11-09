@@ -6,5 +6,6 @@ namespace AutumnBox.Basic.Executer
     {
         event DataReceivedEventHandler OutputDataReceived;
         event DataReceivedEventHandler ErrorDataReceived;
+        event OutputReceivedEventHandler OutputReceived;
     }
 }

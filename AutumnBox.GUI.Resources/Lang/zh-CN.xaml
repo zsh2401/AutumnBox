@@ -11,7 +11,11 @@
     <s:String x:Key="rbtnFlashAllExceptStorage">保留内部存储</s:String>
     <s:String x:Key="rbtnFlashAllExceptStorageAndData">保留内部存储和Data分区</s:String>
     <s:String x:Key="btnCreateShortcut">创建快捷方式到桌面</s:String>
-    <s:String x:Key="btnStart">开始</s:String>
+    <s:String x:Key="btnTapEmu">模拟点击</s:String>
+    <s:String x:Key="btnExtractRecImg">提取Recovery</s:String>
+    <s:String x:Key="btnExtractBootImg">提取Boot.img</s:String>
+    <s:String x:Key="btnFlashRecImg">刷入Recovery</s:String>
+    <s:String x:Key="btnFlashBootImg">刷入Boot.img</s:String>
     <s:String x:Key="btnHelp">帮助</s:String>
     <s:String x:Key="btnDpiChange">修改DPI(Deving)</s:String>
     <s:String x:Key="btnInstallApk">安装APK</s:String>

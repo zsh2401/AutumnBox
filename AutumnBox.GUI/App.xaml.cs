@@ -42,7 +42,7 @@ namespace AutumnBox.GUI
         {
             Logger.T("Exit");
             base.OnExit(e);
-            Helper.SystemHelper.AppExit();
+            SystemHelper.AppExit();
         }
     }
 }

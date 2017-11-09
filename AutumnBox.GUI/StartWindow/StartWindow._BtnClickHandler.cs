@@ -35,7 +35,7 @@ namespace AutumnBox.GUI
             };
             if (SystemHelper.IsWin10)
             {
-                if (ChoiceBox.ShowDialog(this, App.Current.Resources["Notice"].ToString(), App.Current.Resources["msgShellChoiceTip"].ToString(), "Powershell", "CMD"))
+                if (ChoiceBox.FastShow(this, App.Current.Resources["Notice"].ToString(), App.Current.Resources["msgShellChoiceTip"].ToString(), "Powershell", "CMD"))
                 {
                     info.FileName = "powershell.exe";
                 }

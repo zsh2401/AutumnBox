@@ -33,27 +33,26 @@ namespace AutumnBox.GUI.Windows
     public partial class ChoiceBox : Window
     {
         public bool Result;
-        public ChoiceBox()
+        private ChoiceBox()
         {
             InitializeComponent();
         }
-        public  static bool Show(string title,string content) {
+        public static bool FastShow(string title, string content, string btnOkString = null, string btnCancelString = null) {
             ChoiceBox choiceBox = new ChoiceBox();
             choiceBox.labelTitle.Content = title;
-            choiceBox.textBlockContent.Text = content;
-            choiceBox.Owner = App.OwnerWindow;
+            choiceBox.textBlockContent.Text = content ?? choiceBox.textBlockContent.Text;
+            choiceBox.btnCancel.Content = btnCancelString ?? choiceBox.btnCancel.Content;
+            choiceBox.btnOk.Content = btnOkString ?? choiceBox.btnOk.Content;
             choiceBox.ShowDialog();
             return choiceBox.Result;
         }
-        public static bool ShowDialog(Window owner, string title, string content) {
-            return Show(title,content);
-        }
-        public static bool ShowDialog(Window owner, string title, string content, string btnOkString, string btnCancelString) {
+        public static bool FastShow(Window owner, string title, string content, string btnOkString = null, string btnCancelString = null)
+        {
             ChoiceBox choiceBox = new ChoiceBox();
             choiceBox.labelTitle.Content = title;
-            choiceBox.textBlockContent.Text = content;
-            choiceBox.btnCancel.Content = btnCancelString;
-            choiceBox.btnOk.Content = btnOkString;
+            choiceBox.textBlockContent.Text = content ?? choiceBox.textBlockContent.Text;
+            choiceBox.btnCancel.Content = btnCancelString ?? choiceBox.btnCancel.Content;
+            choiceBox.btnOk.Content = btnOkString ?? choiceBox.btnOk.Content;
             choiceBox.Owner = owner;
             choiceBox.ShowDialog();
             return choiceBox.Result;
@@ -73,7 +72,8 @@ namespace AutumnBox.GUI.Windows
 
         private void labelTitle_MouseMove(object sender, MouseEventArgs e)
         {
-            if (e.LeftButton == MouseButtonState.Pressed) {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
                 this.DragMove();
             }
         }

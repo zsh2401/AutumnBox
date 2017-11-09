@@ -31,7 +31,7 @@
                             <grids:FastbootFunctions x:Name="FastbootFuncs"></grids:FastbootFunctions>
                         </TabItem>
                     </TabControl>
-                    <TextBox Foreground="{DynamicResource ForgBrush}" x:Name="textBoxGG" HorizontalAlignment="Left" Height="23" Margin="10,220,0,0" TextWrapping="Wrap" Text="..." VerticalAlignment="Top" Width="859" IsReadOnly="True" Background="{x:Null}"/>
+                    <TextBox Foreground="{DynamicResource ForgBrush}" x:Name="textBoxGG" HorizontalAlignment="Left" Height="23" Margin="10,220,0,0" TextWrapping="Wrap" Text="..." VerticalAlignment="Top" Width="859" IsReadOnly="True" Background="{x:Null}" FontSize="14"/>
                     <Button Foreground="{DynamicResource ForgBrush}" x:Name="btnHelp" Content="{DynamicResource btnHelp}" Margin="874,219,10,0" VerticalAlignment="Top" Height="24" Background="{x:Null}" BorderBrush="{DynamicResource BorderBrush}" FontSize="14" FontFamily="Microsoft YaHei UI Light" Click="btnHelp_Click" />
                     <ListBox x:Name="DevicesListBox" DisplayMemberPath="Id" HorizontalAlignment="Left" Height="154" Margin="581,30,0,0" VerticalAlignment="Top" Width="180" SelectionChanged="DevicesListBox_SelectionChanged" Background="#00000000" Foreground="{DynamicResource BasicBrush}" BorderBrush="#FFABADB3"/>
                     <Button x:Name="buttonLinkHelp"  Foreground="{DynamicResource ForgBrush}" Content="{DynamicResource LinkHelp}" Margin="582,184,0,0" VerticalAlignment="Top" Height="30" Background="{x:Null}" BorderBrush="#33000000" FontSize="11" FontFamily="Microsoft YaHei UI Light" Click="ButtonLinkHelp_Click" Width="180" HorizontalAlignment="Left"/>
