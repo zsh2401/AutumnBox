@@ -58,7 +58,7 @@ namespace AutumnBox.Basic.Executer
                 return MainProcess.RunToExited(fileName, args);
             }
         }
-        private static void Check()
+        public static void Check()
         {
             if (Process.GetProcessesByName("adb").Length == 0)
             {

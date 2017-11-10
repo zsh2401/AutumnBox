@@ -29,11 +29,33 @@ namespace AutumnBox.ConsoleTester.ObjTest
             {
                 shell.OutputReceived += (s, e) => { if (e.Text != "") Console.WriteLine("stdo: " + e.Text); };
                 shell.InputReceived += (s, e) => { Console.WriteLine("stdi: " + e.Command); };
-                //shell.BlockLastCommand = false;
+                shell.BlockLastCommand = false;
+                shell.BlockEmptyOutput = false;
+                shell.BlockNullOutput = false;
+                shell.Switch2Superuser();
                 while (!shell.HasExited)
                 {
                     shell.InputLine(Console.ReadLine());
                 }
+                Thread.Sleep(3000);
+                //shell.InputLine("help");
+            }
+        }
+        public static void RootTest()
+        {
+            using (var shell = new AndroidShell(Program.Mi4ID))
+            {
+                shell.OutputReceived += (s, e) => { Console.WriteLine("stdo: " + e.Text); };
+                shell.BlockLastCommand = false;
+                shell.InputReceived += (s, e) => { Console.WriteLine("stdi: " + e.Command); };
+                Thread.Sleep(3000);
+                Console.WriteLine(shell.IsSuperuser);
+                shell.Switch2Superuser();
+                Thread.Sleep(3000);
+                Console.WriteLine(shell.IsSuperuser);
+                shell.Switch2Normaluser();
+                Thread.Sleep(3000);
+                Console.WriteLine(shell.IsSuperuser);
                 Thread.Sleep(3000);
                 //shell.InputLine("help");
             }

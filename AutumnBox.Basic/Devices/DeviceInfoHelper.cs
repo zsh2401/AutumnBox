@@ -25,7 +25,7 @@ namespace AutumnBox.Basic.Devices
         {
             lock (Executer)
             {
-                var o = Executer.AdbExecute(id, "shell su ls");
+                var o = Executer.AdbExecute(id, "shell su ____sutest____");
                 Logger.D(o.All.ToString());
                 if (o.All.ToString().Contains("not found"))
                 {

@@ -11,7 +11,11 @@
 * Company: I am free man
 *
 \* =============================================================================*/
+#define LOG_OUTPUT
+#define LOG_FULL_OUTPUT
+#define LOG_INPUT
 using AutumnBox.Basic.Util;
+using AutumnBox.Support.CstmDebug;
 using AutumnBox.Support.Helper;
 using System;
 using System.Collections.Generic;
@@ -45,10 +49,10 @@ namespace AutumnBox.Basic.Executer
         public bool HasExited { get { return _mainProcess.HasExited; } }
         public string LatestLineOutput { get; private set; }
         public string LastCommand { get; private set; }
-        public int SafetyInterval { get { return _safetyInterval; } set { if (value > MinSafetyInterval) _safetyInterval = value; } }
-        private int _safetyInterval = 2000;
-        public static int MinSafetyInterval = 1000;
+        public bool IsEnableSaftyWait { get; set; } = true;
         public OutputData Output { get; private set; }
+        private static readonly string[] BlockedCommands = { "su" };
+        private static readonly string AndroidShellWaitMark = "__androidshellfinishedmark__";
         private Process _mainProcess;
         private string _devID;
         private StreamWriter _cmdWriter;
@@ -72,9 +76,16 @@ namespace AutumnBox.Basic.Executer
         }
         private void OnOutputReceived(OutputReceivedEventArgs e)
         {
+#if LOG_FULL_OUTPUT
+            Logger.D(e.Text);
+#endif
+            if (e.Text == AndroidShellWaitMark) { _isLocking = false; return; }
             if (e.Text == "" && BlockEmptyOutput) return;
             if (e.Text == null && BlockNullOutput) return;
             if (e.Text.Contains("$ " + LastCommand) || e.Text.Contains("# " + LastCommand)) return;
+#if !LOG_FULL_OUTPUT && LOG_OUTPUT
+            Logger.D(e.Text);
+#endif
             OutputReceived?.Invoke(this, e);
             LatestLineOutput = e.Text;
         }
@@ -85,6 +96,7 @@ namespace AutumnBox.Basic.Executer
         }
         private void Connect()
         {
+            CExecuter.Check();
             if (IsConnect) throw new Exception("do not connect again");
             _mainProcess.Start();
             _mainProcess.BeginOutputReadLine();
@@ -94,24 +106,74 @@ namespace AutumnBox.Basic.Executer
             _cmdWriter = _mainProcess.StandardInput;
             _cmdWriter.AutoFlush = true;
             IsConnect = true;
-            InputLine($"{ConstData.ADB_PATH.Replace('/', '\\')} -s {_devID} shell");
+            Thread.Sleep(200);
+            EnterToShell();
             Output = new OutputData
             {
                 OutSender = this
             };
         }
-
+        private bool _isLocking = false;
+        private void EnterToShell()
+        {
+            _cmdWriter.WriteLine($"{ConstData.ADB_PATH.Replace('/', '\\')} -s {_devID} shell");
+        }
+        public bool IsSuperuser
+        {
+            get
+            {
+                DrangerousInputLine("echo $USER");
+                Thread.Sleep(1000);
+                return Output.LineAll[Output.LineAll.Count - 1] == "root";
+            }
+        }
+        public bool Switch2Superuser()
+        {
+            DrangerousInputLine($"su");
+            Thread.Sleep(2000);
+            return IsSuperuser;
+            //if (LatestLineOutput.Contains("__sunotfound__"))
+            //{
+            //    return false;
+            //}
+            //return true;
+        }
+        public bool Switch2Normaluser()
+        {
+            if (IsSuperuser)
+            {
+                DrangerousInputLine("exit");
+                Thread.Sleep(2000);
+            }
+            return !IsSuperuser;
+        }
+        public void ForceStopLocking()
+        {
+            _isLocking = false;
+        }
         public void InputLine(string command)
         {
-            if (IsConnect)
+            if (BlockedCommands.Contains(command)) return;
+            if (command == "exit") { DrangerousInputLine("exit"); return; }
+#if LOG_INPUT
+            Logger.D(command);
+#endif
+            _isLocking = true;
+            _cmdWriter.WriteLine(command + $";echo {AndroidShellWaitMark}");
+            LastCommand = command;
+            OnInputReceived(new InputReceivedEventArgs() { Command = command });
+            while (_isLocking && IsEnableSaftyWait)
             {
-                _cmdWriter.WriteLine(command);
-                LastCommand = command;
-                OnInputReceived(new InputReceivedEventArgs() { Command = command });
-                Thread.Sleep(_safetyInterval);
+                Thread.Sleep(500);
             }
-            else
-                throw new Exception("shell not connect");
+        }
+        public void DrangerousInputLine(string command)
+        {
+#if LOG_INPUT
+            Logger.D(command);
+#endif
+            _cmdWriter.WriteLine(command);
+            OnInputReceived(new InputReceivedEventArgs() { Command = command });
         }
         public void ExitShell()
         {
