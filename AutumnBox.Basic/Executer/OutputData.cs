@@ -30,8 +30,13 @@ namespace AutumnBox.Basic.Executer
                 else
                 {
                     _OutSender = value;
-                    _OutSender.ErrorDataReceived += (s, e) => { if (e != null) ErrorAdd(e.Data); };
-                    _OutSender.OutputDataReceived += (s, e) => { if (e != null) OutAdd(e.Data); };
+                    _OutSender.OutputReceived += (s, e) =>
+                    {
+                        if (!e.IsError)
+                            OutAdd(e.Text);
+                        else
+                            ErrorAdd(e.Text);
+                    };
                 }
             }
         }

@@ -25,15 +25,10 @@ namespace AutumnBox.Basic.Function.Modules
 {
     public class ImageExtractor : FunctionModule
     {
-        private ABProcess MainProcess = new ABProcess();
-        private bool NotFoundSu = false;
+        private bool _suNotFound = false;
+        private bool _imgNotFound = false;
+        private AndroidShell _shell;
         private ImgExtractArgs _Args;
-        private StreamWriter CmdWriter;
-        public ImageExtractor()
-        {
-            MainProcess.StartInfo.FileName = "cmd.exe";
-            MainProcess.OutputReceived += (s, e) => { OnOutputReceived(e); };
-        }
         protected override void AnalyzeArgs(ModuleArgs args)
         {
             base.AnalyzeArgs(args);
@@ -41,49 +36,43 @@ namespace AutumnBox.Basic.Function.Modules
         }
         protected override OutputData MainMethod()
         {
+            _shell = new AndroidShell(DeviceID);
+            _shell.OutputReceived += (s, e) => { OnOutputReceived(e); };
             OutputData result = new OutputData
             {
-                OutSender = MainProcess
+                OutSender = _shell
             };
-            MainProcess.Start();
-            CmdWriter = MainProcess.StandardInput;
-            CmdWriter.AutoFlush = true;
-            MainProcess.BeginRead();
-            Thread.Sleep(1000);
-            CmdWriter.WriteLine($"{ConstData.ADB_PATH.Replace('/', '\\')} -s {DeviceID} shell");
-            CmdWriter.WriteLine($"su");
-            Thread.Sleep(2000);
-            if (result.All.ToString().Contains("not found"))
+            //检查root
+            _shell.InputLine("su");
+            if (_shell.LatestLineOutput.Contains("not found"))
             {
-                NotFoundSu = true;
-                ExitProcess();
+                _suNotFound = true;
                 return result;
             }
-            Thread.Sleep(2000);
-            if (_Args.ExtractImage == Image.Recovery)
-                WL($"cp /dev/block/platform/*/*/by-name/recovery /sdcard/recovery.img");
-            else
-                WL($"cp /dev/block/platform/*/*/by-name/boot /sdcard/boot.img");
-            ExitProcess();
-            return result;
-        }
-        private void WL(string cmd)
-        {
-            CmdWriter.WriteLine(cmd);
-        }
-        private void ExitProcess()
-        {
-            while (!MainProcess.HasExited)
+            string fileName = _Args.ExtractImage == Image.Recovery ? "recovery" : "boot";
+            //获取镜像路径
+            _shell.InputLine($"find /dev -name {fileName}");
+            if (_shell.LatestLineOutput == _shell.LastCommand)
             {
-                WL("exit");
+                _imgNotFound = true;
+                return result;
             }
-            CmdWriter.Close();
+            string imgPath = _shell.LatestLineOutput;
+            //复制到手机根目录
+            _shell.InputLine($"cp {imgPath} /sdcard/{fileName}.img ; echo copyfinish");
+            //无论复制是否成功,都会在结束后显示copyfinish,等待就行了
+            while (_shell.LatestLineOutput != "copyfinish") ;
+            //Ok!
+            Logger.D("Extractor finished.....");
+            _shell.Dispose();
+            return result;
         }
         protected override void AnalyzeOutput(ref ExecuteResult executeResult)
         {
             base.AnalyzeOutput(ref executeResult);
-            if (NotFoundSu) executeResult.Level = ResultLevel.Unsuccessful;
+            if (_suNotFound || _imgNotFound) executeResult.Level = ResultLevel.Unsuccessful;
             Logger.D($"Analyzing -----------------\n{executeResult.OutputData.All} \n------------------");
         }
+
     }
 }
