@@ -58,7 +58,7 @@ namespace AutumnBox.GUI
                 {
                     //TODO
                 }
-                else if (sender is XiaomiSystemUnlocker)
+                else if (sender is SystemUnlocker)
                 {
                     UnlockMiSystemFinish(e);
                 }

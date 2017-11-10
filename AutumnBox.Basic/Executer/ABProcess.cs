@@ -36,7 +36,7 @@ namespace AutumnBox.Basic.Executer
     {
         public int Pid { get; set; }
     }
-    public sealed class ABProcess : Process
+    public sealed class ABProcess : Process,IOutSender
     {
         public bool BlockNullOutput { get; set; } = true;
         public event OutputReceivedEventHandler OutputReceived;
@@ -68,7 +68,7 @@ namespace AutumnBox.Basic.Executer
                 OutputReceived?.Invoke(this, new OutputReceivedEventArgs(e.Data, e, true));
             };
         }
-        private void BeginRead()
+        public void BeginRead()
         {
             try
             {
@@ -77,7 +77,7 @@ namespace AutumnBox.Basic.Executer
             }
             catch (Exception e) { Logger.T("Begin Out failed", e); }
         }
-        private void CancelRead()
+        public void CancelRead()
         {
             try
             {
