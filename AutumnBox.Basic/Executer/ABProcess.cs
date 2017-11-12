@@ -36,7 +36,7 @@ namespace AutumnBox.Basic.Executer
     {
         public int Pid { get; set; }
     }
-    public sealed class ABProcess : Process,IOutSender
+    public sealed class ABProcess : Process, IOutSender
     {
         public bool BlockNullOutput { get; set; } = true;
         public event OutputReceivedEventHandler OutputReceived;
@@ -52,20 +52,17 @@ namespace AutumnBox.Basic.Executer
                 UseShellExecute = false,
                 CreateNoWindow = true,
             };
-            OutputReceived += (s, e) =>
-            {
-                if (!e.IsError) _tempOut.OutAdd(e.Text);
-                else _tempOut.ErrorAdd(e.Text);
-            };
             OutputDataReceived += (s, e) =>
             {
-                if (BlockNullOutput && e.Data == null) return;
+                if (BlockNullOutput && (e.Data == null || e.Data == String.Empty)) return;
                 OutputReceived?.Invoke(this, new OutputReceivedEventArgs(e.Data, e, false));
+                _tempOut.OutAdd(e.Data);
             };
             ErrorDataReceived += (s, e) =>
             {
-                if (BlockNullOutput && e.Data == null) return;
+                if (BlockNullOutput && (e.Data == null || e.Data == String.Empty)) return;
                 OutputReceived?.Invoke(this, new OutputReceivedEventArgs(e.Data, e, true));
+                _tempOut.ErrorAdd(e.Data);
             };
         }
         public void BeginRead()
@@ -92,11 +89,9 @@ namespace AutumnBox.Basic.Executer
 #if SHOW_COMMAND
             Logger.D($"{fileName} {args}");
 #endif
-            //Init
             _tempOut.Clear();
             StartInfo.FileName = fileName;
             StartInfo.Arguments = args;
-            //Start
             Start();
             BeginRead();
             ProcessStarted?.Invoke(this, new ProcessStartedEventArgs() { Pid = Id });

@@ -18,6 +18,8 @@ namespace AutumnBox.Basic.Devices
     using AutumnBox.Support.CstmDebug;
     using System;
     using System.Diagnostics;
+    using System.Text.RegularExpressions;
+
     public sealed class DevicesGetter : IDevicesGetter, IDisposable
     {
         private CExecuter executer = new CExecuter();
@@ -37,38 +39,37 @@ namespace AutumnBox.Basic.Devices
                 return devList;
             }
         }
-        private void AdbPrase(OutputData o, ref DevicesList devList)
+        private static readonly string devicePattern = @"(?i)^(?<id>[\w\d]+)[\t\u0020]+(?<status>\w+)[^?!.]$";
+        //private
+        private static readonly Regex _deviceRegex = new Regex(devicePattern, RegexOptions.Multiline);
+        private static void AdbPrase(OutputData o, ref DevicesList devList)
         {
-            var l = o.LineOut;
-            for (int i = 1; i < l.Count - 1; i++)
+            var matches = _deviceRegex.Matches(o.ToString());
+            foreach (Match match in matches)
             {
-                try
+                if (match.Success)
                 {
-                    devList.Add(
-                        new DeviceBasicInfo
-                        {
-                            Id = l[i].Split('\t')[0],
-                            Status = DeviceInfoHelper.StringStatusToEnumStatus(l[i].Split('\t')[1])
-                        });
-                }
-                catch { }
-            }
-        }
-        private void FastbootParse(OutputData o, ref DevicesList devList)
-        {
-            var l = o.LineOut;
-            for (int i = 0; i < l.Count; i++)
-            {
-                try
-                {
-                    devList.Add(
-                    new DeviceBasicInfo
+                    devList.Add(new DeviceBasicInfo
                     {
-                        Id = l[i].Split('\t')[0],
-                        Status = DeviceInfoHelper.StringStatusToEnumStatus(l[i].Split('\t')[1])
+                        Id = match.Result("${id}"),
+                        Status = DeviceInfoHelper.StringStatusToEnumStatus(match.Result("${status}"))
                     });
                 }
-                catch { }
+            }
+        }
+        private static void FastbootParse(OutputData o, ref DevicesList devList)
+        {
+            var matches = _deviceRegex.Matches(o.ToString());
+            foreach (Match match in matches)
+            {
+                if (match.Success)
+                {
+                    devList.Add(new DeviceBasicInfo
+                    {
+                        Id = match.Result("${id}"),
+                        Status = DeviceInfoHelper.StringStatusToEnumStatus(match.Result("${status}"))
+                    });
+                }
             }
         }
     }

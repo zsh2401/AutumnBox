@@ -43,9 +43,6 @@ namespace AutumnBox.Basic.Executer
 
         private ABProcess MainProcess = new ABProcess();
         private Object Locker = new object();
-        public CExecuter()
-        {
-        }
         private OutputData Execute(string fileName, string args, bool needCheck = true)
         {
             if (needCheck)
@@ -54,7 +51,6 @@ namespace AutumnBox.Basic.Executer
             }
             lock (Locker)
             {
-                MainProcess.StartInfo.WorkingDirectory = Environment.CurrentDirectory;
                 return MainProcess.RunToExited(fileName, args);
             }
         }

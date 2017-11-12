@@ -30,8 +30,7 @@ namespace AutumnBox.Basic.Function.Modules
             {
                 OutSender = Executer
             };
-            Ae($"shell wm density {dpi}");
-            Ae("adb reboot");
+            Ae($"shell \"wm density {dpi} && reboot || echo __fail__\"");
             return o;
         }
     }

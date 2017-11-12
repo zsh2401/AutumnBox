@@ -15,6 +15,8 @@ using AutumnBox.Basic.Executer;
 using AutumnBox.Support.CstmDebug;
 using System;
 using System.Collections;
+using System.Text.RegularExpressions;
+
 namespace AutumnBox.Basic.Devices
 {
     [LogProperty(TAG = "DeviceInfoHelper")]
@@ -59,7 +61,8 @@ namespace AutumnBox.Basic.Devices
             };
             var executer = new CExecuter();
 
-            try {
+            try
+            {
                 var output = executer.Execute(Command.MakeForAdb(id, "shell \"cat /system/build.prop | grep \"product.name\"\""));
                 Logger.D(output.All.ToString());
                 buildInfo.Code = output.LineOut[0].Split('=')[1];
@@ -93,20 +96,29 @@ namespace AutumnBox.Basic.Devices
             });
             return status;
         }
+        private static readonly string _testPattern = @"^.+)+$";
+        private static readonly string _dpiPattern = @"^.+\bdensity\b.(?<dpi>[\d]{3}).\(.+$";
+        [LogProperty(TAG = "displayinfo get")]
         public static int? GetDpi(string id)
         {
-            //等我学会正则表达式再说吧.....
-            //string fullText = Executer.Execute(new Command(id, "shell \"dumpsys display | grep mBaseDisplayInfo\"")).All.ToString();
-            ////string[] texts = fullText.Split(',');
-            ////Regex.IsMatch(fullText, @"(?<=density[(])\d{3}(?=,\d,\d[)];)");
-            //Logger.D( Regex.IsMatch(fullText,"(?<=density \").* (?= \"\\()").ToString());
-            return null;
+            var displayInfo = Executer.Execute(Command.MakeForAdb(id, "shell \"dumpsys display | grep mBaseDisplayInfo\"")).LineAll[0];
+            Logger.D(displayInfo);
+            var match = Regex.Match(displayInfo, _dpiPattern);
+            try
+            {
+                return Convert.ToInt32(match.Result("${dpi}"));
+            }
+            catch
+            {
+                return null;
+            }
+
         }
         public static int? GetBatteryLevel(string id)
         {
             try
             {
-                string output = (Executer.Execute( Command.MakeForAdb(id, "shell \"dumpsys battery | grep level\"")).LineOut[0]);
+                string output = (Executer.Execute(Command.MakeForAdb(id, "shell \"dumpsys battery | grep level\"")).LineOut[0]);
                 Logger.T("BatteryLevel info  " + output);
                 return Convert.ToInt32(output.Split(':')[1].TrimStart());
             }
@@ -116,7 +128,7 @@ namespace AutumnBox.Basic.Devices
         {
             try
             {
-                string output = (Executer.Execute( Command.MakeForAdb(id, "shell \"cat /proc/meminfo | grep MemTotal\"")).LineOut[0]);
+                string output = (Executer.Execute(Command.MakeForAdb(id, "shell \"cat /proc/meminfo | grep MemTotal\"")).LineOut[0]);
                 Logger.T("MemTotal " + output);
                 string result = System.Text.RegularExpressions.Regex.Replace(output, @"[^0-9]+", "");
                 Logger.T("MemTotal kb " + result);
@@ -132,13 +144,27 @@ namespace AutumnBox.Basic.Devices
         }
         public static double? GetStorageTotal(string id)
         {
+            var o = Executer.AdbExecute(id, "shell df /sdcard/");
+            var match = Regex.Match(o.All.ToString(), @"^.[\w|/]+[\t\u0020]+(?<size>\d+\.?\d+G?) .+$", RegexOptions.Multiline);
+            if (match.Success)
+            {
+                string result = match.Result("${size}");
+                if (result.ToLower().Contains("g"))
+                {
+                    return Convert.ToDouble(result.Remove(result.Length - 1, 1));
+                }
+                else
+                {
+                    return Math.Round(Convert.ToInt32(result) / 1024.0 / 1024.0, 2);
+                }
+            }
             return null;
         }
         public static string GetSocInfo(string id)
         {
             try
             {
-                string output = (Executer.Execute( Command.MakeForAdb(id, "shell \"cat /proc/cpuinfo | grep Hardware\"")).LineOut[0]);
+                string output = (Executer.Execute(Command.MakeForAdb(id, "shell \"cat /proc/cpuinfo | grep Hardware\"")).LineOut[0]);
                 Logger.T("cpuinfo " + output);
                 var hehe = output.Split(' ');
                 return hehe[hehe.Length - 1];
@@ -149,7 +175,7 @@ namespace AutumnBox.Basic.Devices
         {
             try
             {
-                string output = (Executer.Execute( Command.MakeForAdb(id, "shell \"cat /proc/hwinfo | grep LCD\"")).LineOut[0]);
+                string output = (Executer.Execute(Command.MakeForAdb(id, "shell \"cat /proc/hwinfo | grep LCD\"")).LineOut[0]);
                 Logger.T("hwinfo LCD " + output);
                 return output.Split(':')[1].TrimStart();
             }
@@ -159,14 +185,14 @@ namespace AutumnBox.Basic.Devices
         {
             try
             {
-                string output = (Executer.Execute( Command.MakeForAdb(id, "shell \"cat /proc/hwinfo | grep EMMC\"")).LineOut[0]);
+                string output = (Executer.Execute(Command.MakeForAdb(id, "shell \"cat /proc/hwinfo | grep EMMC\"")).LineOut[0]);
                 Logger.T("EMMC info  " + output);
                 return output.Split(':')[1].TrimStart() + " EMMC";
             }
             catch (Exception e) { Logger.T("Get EMMC info fail", e); }
             try
             {
-                string output = (Executer.Execute( Command.MakeForAdb(id, "shell \"cat /proc/hwinfo | grep UFS\"")).LineOut[0]);
+                string output = (Executer.Execute(Command.MakeForAdb(id, "shell \"cat /proc/hwinfo | grep UFS\"")).LineOut[0]);
                 Logger.T("UFS info  " + output);
                 return output.Split(':')[1].TrimStart() + " UFS";
             }

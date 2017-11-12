@@ -25,7 +25,7 @@ namespace AutumnBox.ConsoleTester.ObjTest
     {
         public static void Run()
         {
-            using (var shell = new AndroidShell(Program.Mi4ID))
+            using (var shell = new AndroidShell(Program.mi4))
             {
                 shell.OutputReceived += (s, e) => { if (e.Text != "") Console.WriteLine("stdo: " + e.Text); };
                 shell.InputReceived += (s, e) => { Console.WriteLine("stdi: " + e.Command); };
@@ -43,7 +43,7 @@ namespace AutumnBox.ConsoleTester.ObjTest
         }
         public static void RootTest()
         {
-            using (var shell = new AndroidShell(Program.Mi4ID))
+            using (var shell = new AndroidShell(Program.mi4))
             {
                 shell.OutputReceived += (s, e) => { Console.WriteLine("stdo: " + e.Text); };
                 shell.BlockLastCommand = false;

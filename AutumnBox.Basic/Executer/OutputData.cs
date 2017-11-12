@@ -55,10 +55,10 @@ namespace AutumnBox.Basic.Executer
         public void OutAdd(string outData)
         {
             if (_IsClosed) return;
-            All.AppendLine(outData);
-            Out.AppendLine(outData);
+            All.Append(outData + System.Environment.NewLine);
             LineAll.Add(outData);
             LineOut.Add(outData);
+            Out.Append(outData + System.Environment.NewLine);
         }
         /// <summary>
         /// 添加错误输出信息
@@ -67,10 +67,10 @@ namespace AutumnBox.Basic.Executer
         public void ErrorAdd(string errorData)
         {
             if (_IsClosed) return;
-            All.AppendLine(errorData);
+            All.Append(errorData + System.Environment.NewLine);
             LineAll.Add(errorData);
             LineError.Add(errorData);
-            this.Error.AppendLine(errorData);
+            Error.Append(errorData + System.Environment.NewLine);
         }
         /// <summary>
         /// 添加另一个OutputData对象的内容
@@ -91,9 +91,9 @@ namespace AutumnBox.Basic.Executer
         /// </summary>
         public void Clear()
         {
-            Out.Clear();
-            Error.Clear();
-            All.Clear();
+            Out = new StringBuilder();
+            Error = new StringBuilder();
+            All = new StringBuilder();
             LineAll.Clear();
             LineOut.Clear();
             LineError.Clear();

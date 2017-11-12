@@ -52,9 +52,11 @@
     <Compile Include="MethodTest\StackTest.cs" />
     <Compile Include="ObjTest\AndroidFullBackupTest.cs" />
     <Compile Include="ObjTest\AndroidShellTest.cs" />
+    <Compile Include="ObjTest\DpiChangerTest.cs" />
     <Compile Include="ObjTest\ExecuterTest.cs" />
     <Compile Include="ObjTest\FileSenderTest.cs" />
     <Compile Include="ObjTest\FMPTest.cs" />
+    <Compile Include="ObjTest\ImgExtractorTest.cs" />
     <Compile Include="ObjTest\JsonPropTest.cs" />
     <Compile Include="ObjTest\LogPropTest.cs" />
     <Compile Include="ObjTest\TestModuleTest.cs" />
