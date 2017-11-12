@@ -40,6 +40,7 @@ namespace AutumnBox.Basic.Executer
     }
     public sealed class AndroidShell : IOutSender, IDisposable
     {
+        public event ProcessStartedEventHandler ProcessStarted;
         public event InputReceivedEventHandler InputReceived;
         public event OutputReceivedEventHandler OutputReceived;
         public bool IsConnect { get; private set; }
@@ -72,7 +73,6 @@ namespace AutumnBox.Basic.Executer
                 }
             };
             _mainProcess.Exited += (s, e) => { };
-            Connect();
         }
         private void OnOutputReceived(OutputReceivedEventArgs e)
         {
@@ -94,11 +94,13 @@ namespace AutumnBox.Basic.Executer
             if (!BlockLastCommand)
                 InputReceived?.Invoke(this, e);
         }
-        private void Connect()
+        public void Connect()
         {
             CExecuter.Check();
             if (IsConnect) throw new Exception("do not connect again");
             _mainProcess.Start();
+            ProcessStarted?.Invoke(this, new ProcessStartedEventArgs() { Pid = _mainProcess.Id });
+            Logger.D("process started...pid " + _mainProcess.Id);
             _mainProcess.BeginOutputReadLine();
             _mainProcess.BeginErrorReadLine();
             _mainProcess.OutputDataReceived += (s, e) => { if (e == null & BlockNullOutput) return; OnOutputReceived(new OutputReceivedEventArgs(e.Data, e, false)); };

@@ -89,7 +89,6 @@ namespace AutumnBox.GUI.UI.Grids
         private void ButtonScreentShot_Click(object sender, RoutedEventArgs e)
         {
             FolderBrowserDialog fbd = new FolderBrowserDialog();
-            //sfd.file
             if (fbd.ShowDialog() == DialogResult.OK)
             {
                 var fmp = FunctionModuleProxy.Create<ScreenShoter>(new ScreenShoterArgs(App.SelectedDevice) { LocalPath = fbd.SelectedPath });
@@ -106,7 +105,7 @@ namespace AutumnBox.GUI.UI.Grids
         private void ButtonUnlockMiSystem_Click(object sender, RoutedEventArgs e)
         {
             if (!ChoiceBox.FastShow(FindResource("Notice").ToString(), FindResource("msgUnlockXiaomiSystemTip").ToString())) return;
-            MMessageBox.ShowDialog(FindResource("Notice").ToString(), FindResource("msgIfAllOK").ToString());
+            MMessageBox.FastShow(App.OwnerWindow, FindResource("Notice").ToString(), FindResource("msgIfAllOK").ToString());
             var fmp = FunctionModuleProxy.Create<XiaomiBootloaderRelocker>(new ModuleArgs(App.SelectedDevice));
             fmp.Finished += App.OwnerWindow.FuncFinish;
             fmp.AsyncRun();
@@ -126,6 +125,54 @@ namespace AutumnBox.GUI.UI.Grids
             fmp.Finished += (s, e) => { Logger.D($"Full backup was launched?.... there is output : {e.OutputData.All}"); };
             fmp.AsyncRun();
             new FastBrowser().ShowDialog();
+        }
+
+        private void ButtonExtractBootImg_Click(object sender, RoutedEventArgs e)
+        {
+            if (!ChoiceBox.FastShow(App.OwnerWindow, App.Current.Resources["Warning"].ToString(), App.Current.Resources["warrningNeedRootAccess"].ToString())) return;
+            FolderBrowserDialog fbd = new FolderBrowserDialog
+            {
+                Description = "请选择保存路径"
+            };
+            if (fbd.ShowDialog() != DialogResult.OK) return;
+            FunctionModuleProxy fmp =
+                FunctionModuleProxy.Create<ImageExtractor>(new ImgExtractArgs(App.SelectedDevice) { ExtractImage = Basic.Function.Args.Image.Boot, SavePath = fbd.SelectedPath });
+            fmp.Finished += App.OwnerWindow.FuncFinish;
+            fmp.AsyncRun();
+            UIHelper.ShowRateBox(fmp);
+        }
+
+        private void ButtonExtractRecImg_Click(object sender, RoutedEventArgs e)
+        {
+            if (!ChoiceBox.FastShow(App.OwnerWindow, App.Current.Resources["Warning"].ToString(), App.Current.Resources["warrningNeedRootAccess"].ToString())) return;
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+            fbd.Description = "请选择保存路径";
+            if (fbd.ShowDialog() != DialogResult.OK) return;
+            FunctionModuleProxy fmp =
+                FunctionModuleProxy.Create<ImageExtractor>(new ImgExtractArgs(App.SelectedDevice) { ExtractImage = Basic.Function.Args.Image.Recovery, SavePath = fbd.SelectedPath });
+            fmp.Finished += App.OwnerWindow.FuncFinish;
+            fmp.AsyncRun();
+            UIHelper.ShowRateBox(fmp);
+        }
+
+        private void ButtonFlashBootImg_Click(object sender, RoutedEventArgs e)
+        {
+            MMessageBox.FastShow(App.OwnerWindow, App.Current.Resources["Notice"].ToString(), App.Current.Resources["msgFunctionIsInTheDeveloping"].ToString());
+        }
+
+        private void ButtonDeleteScreenLock_Click(object sender, RoutedEventArgs e)
+        {
+            MMessageBox.FastShow(App.OwnerWindow, App.Current.Resources["Notice"].ToString(), App.Current.Resources["msgFunctionIsInTheDeveloping"].ToString());
+        }
+
+        private void ButtonFullBackup_Copy_Click(object sender, RoutedEventArgs e)
+        {
+            MMessageBox.FastShow(App.OwnerWindow, App.Current.Resources["Notice"].ToString(), App.Current.Resources["msgFunctionIsInTheDeveloping"].ToString());
+        }
+
+        private void ButtonFlashRecImg_Click(object sender, RoutedEventArgs e)
+        {
+            MMessageBox.FastShow(App.OwnerWindow, App.Current.Resources["Notice"].ToString(), App.Current.Resources["msgFunctionIsInTheDeveloping"].ToString());
         }
     }
 }

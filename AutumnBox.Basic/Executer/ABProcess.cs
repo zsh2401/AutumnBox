@@ -11,7 +11,7 @@
 * Company: I am free man
 *
 \* =============================================================================*/
-#define SHOW_COMMAND
+//#define SHOW_COMMAND
 namespace AutumnBox.Basic.Executer
 {
     using AutumnBox.Support.CstmDebug;
@@ -93,8 +93,8 @@ namespace AutumnBox.Basic.Executer
             StartInfo.FileName = fileName;
             StartInfo.Arguments = args;
             Start();
+            ProcessStarted?.Invoke(this,new ProcessStartedEventArgs() { Pid = this.Id});
             BeginRead();
-            ProcessStarted?.Invoke(this, new ProcessStartedEventArgs() { Pid = Id });
             WaitForExit();
             CancelRead();
             return _tempOut;

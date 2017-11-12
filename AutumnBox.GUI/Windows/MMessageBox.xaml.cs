@@ -26,12 +26,19 @@ namespace AutumnBox.GUI.Windows
             this.Topmost = true;
             TitleBar.OwnerWindow = this;
         }
-        public static void ShowDialog( string title, string content)
+        public static void FastShow(string title, string content)
         {
             MMessageBox m = new MMessageBox();
             m.textBlockContent.Text = content;
             m.labelTitle.Content = title;
-            m.Owner = App.OwnerWindow;
+            m.ShowDialog();
+        }
+        public static void FastShow(Window ownerWindow, string title, string content)
+        {
+            MMessageBox m = new MMessageBox();
+            m.textBlockContent.Text = content;
+            m.labelTitle.Content = title;
+            m.Owner = ownerWindow;
             m.ShowDialog();
         }
     }

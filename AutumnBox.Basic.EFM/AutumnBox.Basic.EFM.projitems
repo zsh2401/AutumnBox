@@ -21,7 +21,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Modules\ApkInstaller.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Modules\BreventServiceActivator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Modules\DpiChanger.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Modules\FilePuller.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Modules\MiFlash.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Modules\ImageExtractor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Modules\ScreenLockDeleter.cs" />

@@ -34,7 +34,9 @@ namespace AutumnBox.Basic.Function.Modules
         private bool FindImgPath(out string pathResult, string fileName)
         {
             //获取镜像路径
-            _shell.InputLine("find || echo fail");
+            _shell.InputLine("mkdir /sdcard/.autumnboxtest/");
+            _shell.InputLine("find /sdcard/.autumnboxtest/ || echo fail");
+            _shell.InputLine("rm -rf /sdcard/.autumnboxtest");
             _findNotFind = _shell.LatestLineOutput == "fail";
             if (!_findNotFind)
             {
@@ -52,7 +54,7 @@ namespace AutumnBox.Basic.Function.Modules
             else
             {
                 pathResult = $"/dev/block/platform/*/by-name/{fileName}";
-                return false;
+                return true;
             }
         }
         protected override void AnalyzeArgs(ModuleArgs args)
@@ -64,6 +66,8 @@ namespace AutumnBox.Basic.Function.Modules
         {
             _shell = new AndroidShell(DeviceID);
             _shell.OutputReceived += (s, e) => { OnOutputReceived(e); };
+            _shell.ProcessStarted += (s, e) => { OnProcessStarted(e); };
+            _shell.Connect();
             OutputData result = new OutputData
             {
                 OutSender = _shell
@@ -75,11 +79,12 @@ namespace AutumnBox.Basic.Function.Modules
                 return result;
             }
             string fileName = _Args.ExtractImage == Image.Recovery ? "recovery" : "boot";
-            if (FindImgPath(out string imgPath, fileName)) { return result; }
+            if (!FindImgPath(out string imgPath, fileName)) { return result; }
             //复制到手机根目录
             _shell.DrangerousInputLine(
                 $"cp {imgPath} /sdcard/{fileName}.img && echo __copyfinish__ || echo __copyfail__ "
                 );
+            Logger.D("copy finished...");
             //等待复制完毕,复制成功会显示copyfinish,否则显示copyfail
             while (true)
             {
@@ -96,15 +101,17 @@ namespace AutumnBox.Basic.Function.Modules
             //Ok!
             Logger.D("Extract finished.....");
             _shell.ExitShell();
-            var puller = FunctionModuleProxy.Create<FilePuller>(new FilePullArgs(DevSimpleInfo) { PhoneFilePath = $"/sdcard/{fileName}.img" });
+            var puller = FunctionModuleProxy.Create<FilePuller>(new FilePullArgs(DevSimpleInfo) { PhoneFilePath = $"/sdcard/{fileName}.img", LocalFilePath = _Args.SavePath });
             result.Append(puller.FastRun().OutputData);
-            //_shell.Dispose();
             return result;
         }
         protected override void AnalyzeOutput(ref ExecuteResult executeResult)
         {
             base.AnalyzeOutput(ref executeResult);
             if (_suNotFound || _imgNotFound || _copyFailed) executeResult.Level = ResultLevel.Unsuccessful;
+            Logger.D($"SU NOT FOUND {_suNotFound}");
+            Logger.D($"IMG NOT FOUND {_imgNotFound}");
+            Logger.D($"COPY FAIL {_copyFailed}");
             Logger.D($"Analyzing -----------------\n{executeResult.OutputData.All} \n------------------");
         }
     }

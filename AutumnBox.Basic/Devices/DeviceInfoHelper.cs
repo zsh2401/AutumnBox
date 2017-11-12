@@ -60,6 +60,7 @@ namespace AutumnBox.Basic.Devices
                 Id = id
             };
             var executer = new CExecuter();
+            var o = executer.Execute(Command.MakeForAdb(id, "\"cat /system/build.prop\"")).All;
 
             try
             {
@@ -96,14 +97,12 @@ namespace AutumnBox.Basic.Devices
             });
             return status;
         }
-        private static readonly string _testPattern = @"^.+)+$";
-        private static readonly string _dpiPattern = @"^.+\bdensity\b.(?<dpi>[\d]{3}).\(.+$";
         [LogProperty(TAG = "displayinfo get")]
         public static int? GetDpi(string id)
         {
             var displayInfo = Executer.Execute(Command.MakeForAdb(id, "shell \"dumpsys display | grep mBaseDisplayInfo\"")).LineAll[0];
             Logger.D(displayInfo);
-            var match = Regex.Match(displayInfo, _dpiPattern);
+            var match = Regex.Match(displayInfo, @"^.+\bdensity\b.(?<dpi>[\d]{3}).\(.+$");
             try
             {
                 return Convert.ToInt32(match.Result("${dpi}"));
@@ -129,12 +128,16 @@ namespace AutumnBox.Basic.Devices
             try
             {
                 string output = (Executer.Execute(Command.MakeForAdb(id, "shell \"cat /proc/meminfo | grep MemTotal\"")).LineOut[0]);
-                Logger.T("MemTotal " + output);
-                string result = System.Text.RegularExpressions.Regex.Replace(output, @"[^0-9]+", "");
-                Logger.T("MemTotal kb " + result);
-                double gbMem = Math.Round((Convert.ToDouble(result) / 1024.0 / 1024.0), MidpointRounding.AwayFromZero);
-                Logger.T("MemTotal gb " + gbMem);
-                return gbMem;
+                var m = Regex.Match(output, @"(?i)^\w+:[\t|\u0020]+(?<size>[\d]+).+$");
+                if (m.Success)
+                {
+                    double _gbMem = (Convert.ToDouble(m.Result("${size}")) / 1024.0 / 1024.0);
+                    return Math.Round(_gbMem, MidpointRounding.AwayFromZero);
+                }
+                else
+                {
+                    return null;
+                }
             }
             catch (Exception e)
             {
@@ -144,21 +147,28 @@ namespace AutumnBox.Basic.Devices
         }
         public static double? GetStorageTotal(string id)
         {
-            var o = Executer.AdbExecute(id, "shell df /sdcard/");
-            var match = Regex.Match(o.All.ToString(), @"^.[\w|/]+[\t\u0020]+(?<size>\d+\.?\d+G?) .+$", RegexOptions.Multiline);
-            if (match.Success)
+            try
             {
+                var o = Executer.AdbExecute(id, "shell df /sdcard/");
+                var match = Regex.Match(o.All.ToString(), @"^.[\w|/]+[\t|\u0020]+(?<size>\d+\.?\d+G?) .+$", RegexOptions.Multiline);
                 string result = match.Result("${size}");
-                if (result.ToLower().Contains("g"))
+                if (match.Success)
                 {
-                    return Convert.ToDouble(result.Remove(result.Length - 1, 1));
+                    if (result.ToLower().Contains("g"))
+                    {
+                        return Convert.ToDouble(result.Remove(result.Length - 1, 1));
+                    }
+                    else
+                    {
+                        return Math.Round(Convert.ToInt32(result) / 1024.0 / 1024.0, 2);
+                    }
                 }
                 else
                 {
-                    return Math.Round(Convert.ToInt32(result) / 1024.0 / 1024.0, 2);
+                    return null;
                 }
             }
-            return null;
+            catch (Exception e) { Logger.T("get storage fail ", e); return null; }
         }
         public static string GetSocInfo(string id)
         {

@@ -69,6 +69,8 @@
     <s:String x:Key="msgFristLaunchNotice">本软件还处于测试阶段,可能出现的bug希望您能立即反馈!另外,如果你有什么建议也可以通过关于->联系开发者中的联系方式告诉我,还有一件事!这个软件的某些操作可能会被杀软误报,请关闭杀软或者允许操作,我保证本软件没有恶意代码!</s:String>
     <s:String x:Key="msgIfAllOK">如果一切正常,您的手机将会重启</s:String>
     <s:String x:Key="msgNotice">提示</s:String>
+    <s:String x:Key="msgFunctionIsInTheDeveloping">此功能还在开发中...请关注更新.......</s:String>
+    <s:String x:Key="warrningNeedRootAccess">此功能需要root权限!但根据本软件的检测,您似乎没有root权限,当然,也有可能是我判断错了,确定要继续吗?</s:String>
     <s:String x:Key="msgDoing">正在进行操作,稍安勿躁</s:String>
     <s:String x:Key="msgDeviceNotOnSideload">设备未处于Sideload模式,请在Recovery内手动进入Sideload模式!</s:String>
     <s:String x:Key="msgUnlockXiaomiSystemTip">注意,这不是解除Bootloader锁! 这个功能是帮助已经拥有MIUI开发版root权限的设备使用的,该功能能让你获得完整的root权限!可以修改系统分区!</s:String>

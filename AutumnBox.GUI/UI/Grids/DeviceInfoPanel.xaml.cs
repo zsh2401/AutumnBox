@@ -17,6 +17,7 @@ namespace AutumnBox.GUI.UI.Grids
     /// </summary>
     public partial class DeviceInfoPanel : UserControl, IDeviceInfoRefreshable, ILogSender
     {
+        public bool CurrentDeviceIsRoot { get; private set; }
         private static Action<Bitmap, string> _SetStatusPanel;
         public string LogTag => "DevInfoPanel";
         public bool IsShowLog => true;
@@ -112,6 +113,7 @@ namespace AutumnBox.GUI.UI.Grids
                     LabelScreen.Content = advInfo.ScreenInfo ?? App.Current.Resources["GetFail"].ToString();
                     LabelFlashMemInfo.Content = advInfo.FlashMemoryType ?? App.Current.Resources["GetFail"].ToString();
                     LabelRootStatus.Content = IsRoot ? App.Current.Resources["RootEnable"].ToString() : App.Current.Resources["RootDisable"].ToString();
+                    CurrentDeviceIsRoot = IsRoot;
                 });
             })
             { Name = "Refreshing" }.Start();

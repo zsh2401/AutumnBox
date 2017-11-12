@@ -68,11 +68,11 @@ namespace AutumnBox.GUI
                 }
                 else if (sender is ApkInstaller)
                 {
-                    MMessageBox.ShowDialog("Finished", "Install successful");
+                    MMessageBox.FastShow(App.OwnerWindow, "Finished", "Install successful");
                 }
                 else if (sender is ScreenShoter)
                 {
-                    MMessageBox.ShowDialog(App.Current.Resources["Success"].ToString(), App.Current.Resources["msgSaveSuccessful"].ToString());
+                    MMessageBox.FastShow(App.OwnerWindow, App.Current.Resources["Success"].ToString(), App.Current.Resources["msgSaveSuccessful"].ToString());
                 }
             });
         }
@@ -137,7 +137,7 @@ namespace AutumnBox.GUI
             Logger.D("Enter the Push Finish Handler in the GUI");
             if (e.Result.Level == ResultLevel.Successful)
             {
-                MMessageBox.ShowDialog(Application.Current.Resources["Notice"].ToString(), Application.Current.FindResource("msgPushOK").ToString());
+                MMessageBox.FastShow(App.OwnerWindow, Application.Current.Resources["Notice"].ToString(), Application.Current.FindResource("msgPushOK").ToString());
             }
             else
             {
@@ -159,7 +159,7 @@ namespace AutumnBox.GUI
             {
                 UIHelper.CloseRateBox();
             }));
-            MMessageBox.ShowDialog(Application.Current.FindResource("Notice").ToString(), Application.Current.FindResource("msgFlashOK").ToString());
+            MMessageBox.FastShow(App.OwnerWindow, Application.Current.FindResource("Notice").ToString(), Application.Current.FindResource("msgFlashOK").ToString());
         }
     }
 }

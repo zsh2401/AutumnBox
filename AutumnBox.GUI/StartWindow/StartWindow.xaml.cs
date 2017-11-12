@@ -97,7 +97,7 @@ namespace AutumnBox.GUI
             //哦,如果是第一次启动本软件,那么就显示一下提示吧!
             if (Config.IsFirstLaunch)
             {
-                MMessageBox.ShowDialog(FindResource("Notice2").ToString(), App.Current.Resources["msgFristLaunchNotice"].ToString());
+                MMessageBox.FastShow(App.OwnerWindow, FindResource("Notice2").ToString(), App.Current.Resources["msgFristLaunchNotice"].ToString());
                 Config.IsFirstLaunch = false;
             }
             //开始获取公告

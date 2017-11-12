@@ -32,7 +32,7 @@ namespace AutumnBox.GUI
         {
             if (SystemHelper.HaveOtherAutumnBoxProcess())
             {
-                MMessageBox.ShowDialog("警告/Warning", "不可以同时打开两个AutumnBox\nDo not run two AutumnBox at once");
+                MMessageBox.FastShow(App.OwnerWindow,"警告/Warning", "不可以同时打开两个AutumnBox\nDo not run two AutumnBox at once");
                 System.Environment.Exit(1);
             }
             SystemHelper.GCer.Start();
