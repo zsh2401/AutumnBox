@@ -50,6 +50,7 @@ namespace AutumnBox.Basic.Executer
         public bool HasExited { get { return _mainProcess.HasExited; } }
         public string LatestLineOutput { get; private set; }
         public string LastCommand { get; private set; }
+        public int? LastExitcode { get; private set; }
         public OutputData Output { get; private set; }
         private Process _mainProcess;
         private string _devID;
@@ -92,7 +93,7 @@ namespace AutumnBox.Basic.Executer
                 try
                 {
                     Input("exit");
-                    Thread.Sleep(1000);
+                    Thread.Sleep(200);
                 }
                 catch { }
             }
@@ -104,7 +105,7 @@ namespace AutumnBox.Basic.Executer
             get
             {
                 SafetyInput("echo $USER");
-                Thread.Sleep(1000);
+                Thread.Sleep(200);
                 Logger.D("latest line" + LatestLineOutput);
                 return LatestLineOutput == "root";
             }
@@ -113,7 +114,7 @@ namespace AutumnBox.Basic.Executer
         {
             if (IsRuningAsSuperuser) return true;
             Input($"su");
-            Thread.Sleep(2000);
+            Thread.Sleep(500);
             var now = IsRuningAsSuperuser;
             Logger.D("return" + now);
             return now;
@@ -128,20 +129,24 @@ namespace AutumnBox.Basic.Executer
         }
         public bool SafetyInput(string command)
         {
+            LastExitcode = null;
             if (!IsConnect) return false;
-            Input(command + $"; echo $?", 0);
-            while (true)
-            {
-                try
-                {
-                    string lastline = Output.LineAll[Output.LineAll.Count - 1];
-                    if (IsNum(lastline) && lastline == "0")
-                        return true;
-                    else if (IsNum(lastline) && lastline != "0")
-                        return false;
-                }
-                catch { }
-            }
+            Input(command + $"; echo __ec$?", 0);
+            while (LastExitcode == null) ;
+            if (LastExitcode == 0) return true;
+            else return false;
+            //{
+            //    try
+            //    {
+            //        string lastline = Output.LineAll[Output.LineAll.Count - 2];
+            //        Logger.D("waiting... the last line " + lastline);
+            //        if (IsNum(lastline) && lastline == "0")
+            //            return true;
+            //        else if (IsNum(lastline) && lastline != "0")
+            //            return false;
+            //    }
+            //    catch (Exception) { }
+            //}
         }
         private static bool IsNum(string str)
         {
@@ -161,15 +166,23 @@ namespace AutumnBox.Basic.Executer
         }
         private void OnOutputReceived(OutputReceivedEventArgs e)
         {
-            Logger.D("full " + e.Text);
+            Logger.D("untreated output ->" + e.Text);
             if (!e.IsError) Output.OutAdd(e.Text);
             else Output.ErrorAdd(e.Text);
-            if (e.Text == "0" || IsNum(e.Text)) return;
-            if (e.Text == "" && BlockEmptyOutput) return;
             if (e.Text == null && BlockNullOutput) return;
+            if (e.Text == "" && BlockEmptyOutput) return;
             if (e.Text.Contains("$ " + LastCommand)) return;
+            try
+            {
+                if (e.Text.Contains("__ec") && !(e.Text.Contains("__ec$")))
+                {
+                    LastExitcode = Convert.ToInt32(e.Text.Remove(0, 4));
+                    return;
+                }
+            }
+            catch { }
             //_FULL_OUTPUT && LOG_
-            Logger.D(e.Text);
+            Logger.D("treated output ->" + e.Text);
             OutputReceived?.Invoke(this, e);
             LatestLineOutput = e.Text;
         }

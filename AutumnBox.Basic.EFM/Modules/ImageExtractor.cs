@@ -20,6 +20,7 @@ using System.IO;
 using System.Threading;
 using AutumnBox.Support.CstmDebug;
 using AutumnBox.Basic.Function.Args;
+using System.Text.RegularExpressions;
 
 namespace AutumnBox.Basic.Function.Modules
 {
@@ -34,10 +35,21 @@ namespace AutumnBox.Basic.Function.Modules
         private bool FindImgPath(out string pathResult, string fileName)
         {
             //获取镜像路径
+            Logger.D("find start....");
+            _shell.SafetyInput($"ls -l /dev/block/bootdevice/by-name/{_Args.ExtractImage.ToString().ToLower()}");
+            string result = _shell.LatestLineOutput;
+            Logger.D("finding...." + result);
+            Regex regex = new Regex(@"(?i)recovery[\u0020|\t]+->[\u0020|\t]+(?<filepath>.+)$");
+            var m = regex.Match(result);
+            if (m.Success)
+            {
+                pathResult = m.Result("${filepath}");
+                Logger.D("fined filepath  " + m.Result("${filepath}"));
+                return true;
+            }
             _shell.SafetyInput("mkdir /sdcard/.autumnboxtest/");
-            _shell.SafetyInput("find /sdcard/.autumnboxtest/ || echo fail");
+            _findNotFind = _shell.SafetyInput("find /sdcard/.autumnboxtest/");
             _shell.SafetyInput("rm -rf /sdcard/.autumnboxtest");
-            _findNotFind = _shell.LatestLineOutput == "fail";
             if (!_findNotFind)
             {
                 _shell.SafetyInput($"find /dev -name {fileName}");
@@ -80,29 +92,16 @@ namespace AutumnBox.Basic.Function.Modules
             }
             string fileName = _Args.ExtractImage == Image.Recovery ? "recovery" : "boot";
             if (!FindImgPath(out string imgPath, fileName)) { return result; }
+            Logger.D("Image real-path finded.....");
             //复制到手机根目录
-            _shell.Input(
-                $"cp {imgPath} /sdcard/{fileName}.img && echo __copyfinish__ || echo __copyfail__ "
-                );
-            Logger.D("copy finished...");
-            //等待复制完毕,复制成功会显示copyfinish,否则显示copyfail
-            while (true)
-            {
-                if (_shell.LatestLineOutput == "__copyfinish__")
-                {
-                    break;
-                }
-                else if (_shell.LatestLineOutput == "__copyfail__")
-                {
-                    _copyFailed = true;
-                    break;
-                }
-            }
+            _copyFailed = !(_shell.SafetyInput($"cp {imgPath} /sdcard/{fileName}.img"));
             //Ok!
-            Logger.D("Extract finished.....");
-            _shell.Disconnect();
+            Logger.D("Extract and Copy finished.....");
+            new Thread(_shell.Disconnect).Start();
+            Logger.D("shell disconnected....");
             var puller = FunctionModuleProxy.Create<FilePuller>(new FilePullArgs(DevSimpleInfo) { PhoneFilePath = $"/sdcard/{fileName}.img", LocalFilePath = _Args.SavePath });
             result.Append(puller.FastRun().OutputData);
+            Logger.D("pull finished....");
             return result;
         }
         protected override void AnalyzeOutput(ref ExecuteResult executeResult)
@@ -112,7 +111,7 @@ namespace AutumnBox.Basic.Function.Modules
             Logger.D($"SU NOT FOUND {_suNotFound}");
             Logger.D($"IMG NOT FOUND {_imgNotFound}");
             Logger.D($"COPY FAIL {_copyFailed}");
-            Logger.D($"Analyzing -----------------\n{executeResult.OutputData.All} \n------------------");
+            //Logger.D($"Analyzing -----------------\n{executeResult.OutputData.All} \n------------------");
         }
     }
 }
