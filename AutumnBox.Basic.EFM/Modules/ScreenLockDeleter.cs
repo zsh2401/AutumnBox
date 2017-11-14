@@ -12,6 +12,7 @@
 *
 \* =============================================================================*/
 using AutumnBox.Basic.Executer;
+using System.Threading;
 
 namespace AutumnBox.Basic.Function.Modules
 {
@@ -19,10 +20,18 @@ namespace AutumnBox.Basic.Function.Modules
     {
         protected override OutputData MainMethod()
         {
-            Ae("root");
-            Ae("shell rm /data/system/gesture.key");
-            Ae("adb shell rm /data/system/password.key");
-            return new OutputData();
+            AndroidShell _shell = new AndroidShell(Args.DeviceBasicInfo.Id);
+            OutputData output = new OutputData
+            {
+                OutSender = _shell
+            };
+            _shell.Connect();
+            _shell.Switch2Superuser();
+            _shell.SafetyInput("rm /data/system/gesture.key");
+            _shell.SafetyInput("adb shell rm /data/system/password.key");
+            new Thread(_shell.Disconnect).Start();
+            Ae("reboot");
+            return output;
         }
     }
 }

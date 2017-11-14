@@ -187,8 +187,15 @@ namespace AutumnBox.GUI.UI.Grids
 
         private void ButtonDeleteScreenLock_Click(object sender, RoutedEventArgs e)
         {
-
-            MMessageBox.FastShow(App.OwnerWindow, App.Current.Resources["Notice"].ToString(), App.Current.Resources["msgFunctionIsInTheDeveloping"].ToString());
+            if (!App.OwnerWindow.DevInfoPanel.CurrentDeviceIsRoot)
+            {
+                if (!ChoiceBox.FastShow(App.OwnerWindow, App.Current.Resources["Warning"].ToString(), App.Current.Resources["warrningNeedRootAccess"].ToString())) return;
+            }
+            if (!ChoiceBox.FastShow(App.OwnerWindow, App.Current.Resources["Warning"].ToString(), App.Current.Resources["msgDelScreenLock"].ToString())) return;
+            FunctionModuleProxy fmp = FunctionModuleProxy.Create<ScreenLockDeleter>(new ModuleArgs(App.SelectedDevice));
+            fmp.Finished += App.OwnerWindow.FuncFinish;
+            fmp.AsyncRun();
+            UIHelper.ShowRateBox();
         }
 
         private void ButtonFullBackup_Copy_Click(object sender, RoutedEventArgs e)
