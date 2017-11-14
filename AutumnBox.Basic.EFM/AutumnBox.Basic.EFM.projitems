@@ -12,6 +12,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Args\DpiChangerArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Args\FilePullArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Args\ImgExtractArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Args\ImgFlasherArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Args\KeyCode.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Args\MiFlasherArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Args\ScreenShoterArgs.cs" />
@@ -21,6 +22,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Modules\ApkInstaller.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Modules\BreventServiceActivator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Modules\DpiChanger.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Modules\ImgFlasher.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Modules\MiFlash.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Modules\ImageExtractor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Modules\ScreenLockDeleter.cs" />

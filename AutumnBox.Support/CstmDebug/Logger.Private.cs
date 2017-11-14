@@ -49,11 +49,6 @@ namespace AutumnBox.Support.CstmDebug
 #endif
             return result;
         }
-        /// <summary>
-        /// Core from https://stackoverflow.com/questions/23228075/determine-if-methodinfo-represents-a-lambda-expression
-        /// </summary>
-        /// <param name="method"></param>
-        /// <returns></returns>
         private static bool IsOk(this MethodBase method)
         {
             if (method.IsAnonymous()) return false;
@@ -61,6 +56,11 @@ namespace AutumnBox.Support.CstmDebug
             else if (method.IsDispatcher()) return false;
             else return true;
         }
+        /// <summary>
+        /// Core from https://stackoverflow.com/questions/23228075/determine-if-methodinfo-represents-a-lambda-expression
+        /// </summary>
+        /// <param name="method"></param>
+        /// <returns></returns>
         private static bool IsAnonymous(this MethodBase method)
         {
             var invalidChars = new[] { '<', '>' };

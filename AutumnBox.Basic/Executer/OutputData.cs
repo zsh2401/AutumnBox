@@ -54,6 +54,7 @@ namespace AutumnBox.Basic.Executer
         /// <param name="outData"></param>
         public void OutAdd(string outData)
         {
+            if (outData == null) return;
             if (_IsClosed) return;
             All.Append(outData + System.Environment.NewLine);
             LineAll.Add(outData);
@@ -66,6 +67,7 @@ namespace AutumnBox.Basic.Executer
         /// <param name="errorData"></param>
         public void ErrorAdd(string errorData)
         {
+            if (errorData == null) return;
             if (_IsClosed) return;
             All.Append(errorData + System.Environment.NewLine);
             LineAll.Add(errorData);

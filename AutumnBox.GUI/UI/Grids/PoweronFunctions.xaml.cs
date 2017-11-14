@@ -55,7 +55,7 @@ namespace AutumnBox.GUI.UI.Grids
             fileDialog.Multiselect = false;
             if (fileDialog.ShowDialog() == true)
             {
-                var fmp = FunctionModuleProxy.Create<FileSender>(new FileArgs(App.SelectedDevice) { files = new string[] { fileDialog.FileName } });
+                var fmp = FunctionModuleProxy.Create<FileSender>(new FileSenderArgs(App.SelectedDevice) { FilePath = fileDialog.FileName });
                 fmp.Finished += App.OwnerWindow.FuncFinish;
                 fmp.AsyncRun();
                 new FileSendingWindow(fmp).ShowDialog();
@@ -129,7 +129,10 @@ namespace AutumnBox.GUI.UI.Grids
 
         private void ButtonExtractBootImg_Click(object sender, RoutedEventArgs e)
         {
-            if (!ChoiceBox.FastShow(App.OwnerWindow, App.Current.Resources["Warning"].ToString(), App.Current.Resources["warrningNeedRootAccess"].ToString())) return;
+            if (!App.OwnerWindow.DevInfoPanel.CurrentDeviceIsRoot)
+            {
+                if (!ChoiceBox.FastShow(App.OwnerWindow, App.Current.Resources["Warning"].ToString(), App.Current.Resources["warrningNeedRootAccess"].ToString())) return;
+            }
             FolderBrowserDialog fbd = new FolderBrowserDialog
             {
                 Description = "请选择保存路径"
@@ -144,7 +147,10 @@ namespace AutumnBox.GUI.UI.Grids
 
         private void ButtonExtractRecImg_Click(object sender, RoutedEventArgs e)
         {
-            if (!ChoiceBox.FastShow(App.OwnerWindow, App.Current.Resources["Warning"].ToString(), App.Current.Resources["warrningNeedRootAccess"].ToString())) return;
+            if (!App.OwnerWindow.DevInfoPanel.CurrentDeviceIsRoot)
+            {
+                if (!ChoiceBox.FastShow(App.OwnerWindow, App.Current.Resources["Warning"].ToString(), App.Current.Resources["warrningNeedRootAccess"].ToString())) return;
+            }
             FolderBrowserDialog fbd = new FolderBrowserDialog();
             fbd.Description = "请选择保存路径";
             if (fbd.ShowDialog() != DialogResult.OK) return;
@@ -157,11 +163,31 @@ namespace AutumnBox.GUI.UI.Grids
 
         private void ButtonFlashBootImg_Click(object sender, RoutedEventArgs e)
         {
-            MMessageBox.FastShow(App.OwnerWindow, App.Current.Resources["Notice"].ToString(), App.Current.Resources["msgFunctionIsInTheDeveloping"].ToString());
+            if (!App.OwnerWindow.DevInfoPanel.CurrentDeviceIsRoot)
+            {
+                if (!ChoiceBox.FastShow(App.OwnerWindow, App.Current.Resources["Warning"].ToString(), App.Current.Resources["warrningNeedRootAccess"].ToString())) return;
+            }
+            Microsoft.Win32.OpenFileDialog fileDialog = new Microsoft.Win32.OpenFileDialog();
+            fileDialog.Reset();
+            fileDialog.Title = App.Current.Resources["SelecteAFile"].ToString();
+            fileDialog.Filter = "镜像文件(*.img)|*.img";
+            fileDialog.Multiselect = false;
+            if (fileDialog.ShowDialog() == true)
+            {
+                var fmp = FunctionModuleProxy.Create<ImgFlasher>(new ImgFlasherArgs(App.SelectedDevice) { ImgPath = fileDialog.FileName, ImgType = Basic.Function.Args.Image.Boot });
+                fmp.Finished += App.OwnerWindow.FuncFinish;
+                fmp.AsyncRun();
+                UIHelper.ShowRateBox(fmp);
+            }
+            else
+            {
+                return;
+            }
         }
 
         private void ButtonDeleteScreenLock_Click(object sender, RoutedEventArgs e)
         {
+
             MMessageBox.FastShow(App.OwnerWindow, App.Current.Resources["Notice"].ToString(), App.Current.Resources["msgFunctionIsInTheDeveloping"].ToString());
         }
 
@@ -172,7 +198,26 @@ namespace AutumnBox.GUI.UI.Grids
 
         private void ButtonFlashRecImg_Click(object sender, RoutedEventArgs e)
         {
-            MMessageBox.FastShow(App.OwnerWindow, App.Current.Resources["Notice"].ToString(), App.Current.Resources["msgFunctionIsInTheDeveloping"].ToString());
+            if (!App.OwnerWindow.DevInfoPanel.CurrentDeviceIsRoot)
+            {
+                if (!ChoiceBox.FastShow(App.OwnerWindow, App.Current.Resources["Warning"].ToString(), App.Current.Resources["warrningNeedRootAccess"].ToString())) return;
+            }
+            Microsoft.Win32.OpenFileDialog fileDialog = new Microsoft.Win32.OpenFileDialog();
+            fileDialog.Reset();
+            fileDialog.Title = App.Current.Resources["SelecteAFile"].ToString();
+            fileDialog.Filter = "镜像文件(*.img)|*.img";
+            fileDialog.Multiselect = false;
+            if (fileDialog.ShowDialog() == true)
+            {
+                var fmp = FunctionModuleProxy.Create<ImgFlasher>(new ImgFlasherArgs(App.SelectedDevice) { ImgPath = fileDialog.FileName, ImgType = Basic.Function.Args.Image.Recovery });
+                fmp.Finished += App.OwnerWindow.FuncFinish;
+                fmp.AsyncRun();
+                UIHelper.ShowRateBox(fmp);
+            }
+            else
+            {
+                return;
+            }
         }
     }
 }

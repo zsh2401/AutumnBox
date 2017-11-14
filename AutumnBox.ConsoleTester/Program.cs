@@ -1,6 +1,7 @@
 ﻿using AutumnBox.Basic.Devices;
 using AutumnBox.Basic.Executer;
 using AutumnBox.Basic.Function;
+using AutumnBox.Basic.Function.Args;
 using AutumnBox.Basic.Function.Modules;
 using AutumnBox.ConsoleTester.MethodTest;
 using AutumnBox.ConsoleTester.ObjTest;
@@ -27,11 +28,12 @@ namespace AutumnBox.ConsoleTester
         };
         unsafe static void Main(string[] args)
         {
-            var o = new CExecuter().Execute(Command.MakeForAdb(mi4, "shell \"cat /system/build.prop\"")).All;
-            Debug.WriteLine(o.ToString());
-            var m = Regex.Match(o.ToString(), @"(?i)ro\.product\.n a m e+=(?<result>.+)", RegexOptions.Multiline);
-            string str = m.Result("$result");
-            Console.WriteLine(str);
+            //AndroidShellTest.RootTest();
+            FunctionModuleProxy fmp =
+                FunctionModuleProxy.Create<ImgFlasher>(new ImgFlasherArgs(mi4) { ImgPath = @"D:\☆下载暂存\twrp.img" });
+            fmp.OutputReceived += (s, e) => { Console.WriteLine(e.Text); };
+            fmp.Finished += (s, e) => { Console.WriteLine(e.Result.Level); };
+            fmp.AsyncRun();
             Console.ReadKey();
         }
         public static void WriteWithColor(Action a, ConsoleColor color = ConsoleColor.White)

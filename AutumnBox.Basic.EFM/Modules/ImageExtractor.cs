@@ -34,13 +34,13 @@ namespace AutumnBox.Basic.Function.Modules
         private bool FindImgPath(out string pathResult, string fileName)
         {
             //获取镜像路径
-            _shell.InputLine("mkdir /sdcard/.autumnboxtest/");
-            _shell.InputLine("find /sdcard/.autumnboxtest/ || echo fail");
-            _shell.InputLine("rm -rf /sdcard/.autumnboxtest");
+            _shell.SafetyInput("mkdir /sdcard/.autumnboxtest/");
+            _shell.SafetyInput("find /sdcard/.autumnboxtest/ || echo fail");
+            _shell.SafetyInput("rm -rf /sdcard/.autumnboxtest");
             _findNotFind = _shell.LatestLineOutput == "fail";
             if (!_findNotFind)
             {
-                _shell.InputLine($"find /dev -name {fileName}");
+                _shell.SafetyInput($"find /dev -name {fileName}");
                 if (_shell.LatestLineOutput == _shell.LastCommand)
                 {
                     Logger.D("find img fail " + _shell.LatestLineOutput);
@@ -81,7 +81,7 @@ namespace AutumnBox.Basic.Function.Modules
             string fileName = _Args.ExtractImage == Image.Recovery ? "recovery" : "boot";
             if (!FindImgPath(out string imgPath, fileName)) { return result; }
             //复制到手机根目录
-            _shell.DrangerousInputLine(
+            _shell.Input(
                 $"cp {imgPath} /sdcard/{fileName}.img && echo __copyfinish__ || echo __copyfail__ "
                 );
             Logger.D("copy finished...");
@@ -100,7 +100,7 @@ namespace AutumnBox.Basic.Function.Modules
             }
             //Ok!
             Logger.D("Extract finished.....");
-            _shell.ExitShell();
+            _shell.Disconnect();
             var puller = FunctionModuleProxy.Create<FilePuller>(new FilePullArgs(DevSimpleInfo) { PhoneFilePath = $"/sdcard/{fileName}.img", LocalFilePath = _Args.SavePath });
             result.Append(puller.FastRun().OutputData);
             return result;

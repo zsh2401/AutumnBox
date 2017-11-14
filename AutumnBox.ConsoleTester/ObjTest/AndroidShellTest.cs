@@ -27,6 +27,7 @@ namespace AutumnBox.ConsoleTester.ObjTest
         {
             using (var shell = new AndroidShell(Program.mi4))
             {
+                shell.Connect();
                 shell.OutputReceived += (s, e) => { if (e.Text != "") Console.WriteLine("stdo: " + e.Text); };
                 shell.InputReceived += (s, e) => { Console.WriteLine("stdi: " + e.Command); };
                 shell.BlockLastCommand = false;
@@ -35,7 +36,7 @@ namespace AutumnBox.ConsoleTester.ObjTest
                 shell.Switch2Superuser();
                 while (!shell.HasExited)
                 {
-                    shell.InputLine(Console.ReadLine());
+                    shell.Input(Console.ReadLine());
                 }
                 Thread.Sleep(3000);
                 //shell.InputLine("help");
@@ -45,17 +46,18 @@ namespace AutumnBox.ConsoleTester.ObjTest
         {
             using (var shell = new AndroidShell(Program.mi4))
             {
+                shell.Connect();
                 shell.OutputReceived += (s, e) => { Console.WriteLine("stdo: " + e.Text); };
                 shell.BlockLastCommand = false;
                 shell.InputReceived += (s, e) => { Console.WriteLine("stdi: " + e.Command); };
                 Thread.Sleep(3000);
-                Console.WriteLine(shell.IsSuperuser);
+                Console.WriteLine(shell.IsRuningAsSuperuser);
                 shell.Switch2Superuser();
                 Thread.Sleep(3000);
-                Console.WriteLine(shell.IsSuperuser);
+                Console.WriteLine(shell.IsRuningAsSuperuser);
                 shell.Switch2Normaluser();
                 Thread.Sleep(3000);
-                Console.WriteLine(shell.IsSuperuser);
+                Console.WriteLine(shell.IsRuningAsSuperuser);
                 Thread.Sleep(3000);
                 //shell.InputLine("help");
             }

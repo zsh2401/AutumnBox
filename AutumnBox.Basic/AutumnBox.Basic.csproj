@@ -54,6 +54,7 @@
     <Compile Include="Executer\AndroidShell.cs" />
     <Compile Include="Executer\CExecuter.cs" />
     <Compile Include="Executer\IOutSender.cs" />
+    <Compile Include="Function\Args\FileSenderArgs.cs" />
     <Compile Include="Function\Args\ModuleArgs.cs" />
     <Compile Include="Function\Event\EventAddException.cs" />
     <Compile Include="Function\Event\EventNotBoundException.cs" />
