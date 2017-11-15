@@ -115,6 +115,7 @@ namespace AutumnBox.GUI.UI.Grids
 
         private void ButtonChangeDpi_Click(object sender, RoutedEventArgs e)
         {
+            DpiChangeWindow.FastShow(App.OwnerWindow);
             //MMessageBox.ShowDialog(FindResource("Notice").ToString(), DeviceInfoHelper.GetDpi(App.SelectedDevice).ToString());
         }
 
@@ -217,6 +218,11 @@ namespace AutumnBox.GUI.UI.Grids
                 fmp.AsyncRun();
                 UIHelper.ShowRateBox(fmp);
             }
+        }
+
+        private void ButtonIceBoxAct_Click(object sender, RoutedEventArgs e)
+        {
+            MMessageBox.FastShow(App.OwnerWindow, App.Current.Resources["Notice"].ToString(), App.Current.Resources["msgFunctionIsInTheDeveloping"].ToString());
         }
     }
 }

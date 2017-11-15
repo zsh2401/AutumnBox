@@ -47,12 +47,19 @@ namespace AutumnBox.Basic.Executer
             isSuccessful = exitCode == 0;
             return o;
         }
-        public OutputData QuicklyShell(string id, string command, out int isSuccessful)
+        public OutputData QuicklyShell(string id, string command, out int returnCode)
         {
             var o = Execute(Command.MakeForAdb($"-s {id} shell \"{command}\" ; echo __ec$?"));
-            string lastLine = o.LineAll[o.LineAll.Count - 1];
-            string strExitCode = Regex.Match(lastLine, @"__ec(?<code>\d+)").Result("${code}");
-            isSuccessful = Convert.ToInt32(strExitCode);
+            try
+            {
+                string lastLine = o.LineAll[o.LineAll.Count - 1];
+                string strExitCode = Regex.Match(lastLine, @"__ec(?<code>\d+)").Result("${code}");
+                returnCode = Convert.ToInt32(strExitCode);
+            }
+            catch (NullReferenceException)
+            {
+                returnCode = 1;
+            }
             return o;
         }
 

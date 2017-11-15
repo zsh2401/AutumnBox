@@ -9,7 +9,7 @@ namespace AutumnBox.GUI.UI.Cstm
     /// <summary>
     /// CstmTitleBar.xaml 的交互逻辑
     /// </summary>
-    public partial class CstmTitleBar : UserControl
+    public partial class CstmTitleBar : Grid
     {
         public Window OwnerWindow { private get; set; }
         public CstmTitleBar()

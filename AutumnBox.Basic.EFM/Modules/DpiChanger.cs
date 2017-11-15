@@ -13,11 +13,13 @@
 \* =============================================================================*/
 using AutumnBox.Basic.Executer;
 using AutumnBox.Basic.Function.Args;
+using AutumnBox.Support.CstmDebug;
 
 namespace AutumnBox.Basic.Function.Modules
 {
     public class DpiChanger : FunctionModule
     {
+        bool isSuccess;
         private int dpi;
         protected override void AnalyzeArgs(ModuleArgs args)
         {
@@ -30,8 +32,18 @@ namespace AutumnBox.Basic.Function.Modules
             {
                 OutSender = Executer
             };
-            Ae($"shell \"wm density {dpi} && reboot || echo __fail__\"");
+            Executer.QuicklyShell(DeviceID, $"wm density {dpi}", out isSuccess);
+            if (isSuccess)
+            {
+                Ae("reboot");
+            }
+            Logger.D("maybe finished....the output ->" + o.ToString());
             return o;
+        }
+        protected override void AnalyzeOutput(ref ExecuteResult executeResult)
+        {
+            base.AnalyzeOutput(ref executeResult);
+            if (!isSuccess) executeResult.Level = ResultLevel.Unsuccessful;
         }
     }
 }

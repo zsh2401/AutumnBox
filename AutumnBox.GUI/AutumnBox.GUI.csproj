@@ -169,6 +169,9 @@
     <Compile Include="Windows\DonateWindow.xaml.cs">
       <DependentUpon>DonateWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\DpiChangeWindow.xaml.cs">
+      <DependentUpon>DpiChangeWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\FastBrowser.xaml.cs">
       <DependentUpon>FastBrowser.xaml</DependentUpon>
     </Compile>
@@ -272,6 +275,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\DonateWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\DpiChangeWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

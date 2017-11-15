@@ -17,8 +17,10 @@
     <s:String x:Key="btnExtractBootImg">提取Boot.img</s:String>
     <s:String x:Key="btnFlashRecImg">刷入Recovery</s:String>
     <s:String x:Key="btnFlashBootImg">刷入Boot.img</s:String>
+    <s:String x:Key="btnIceBoxAct">激活冰箱</s:String>
     <s:String x:Key="btnHelp">帮助</s:String>
-    <s:String x:Key="btnDpiChange">修改DPI(Deving)</s:String>
+    <s:String x:Key="btnSaveAndReboot">保存并重启</s:String>
+    <s:String x:Key="btnDpiChange">修改DPI</s:String>
     <s:String x:Key="btnInstallApk">安装APK</s:String>
     <s:String x:Key="btnScreenShot">截图并保存到电脑</s:String>
     <s:String x:Key="btnAndroidFullBackup">全量备份</s:String>
@@ -114,13 +116,17 @@
     <s:String x:Key="BaiduPan">百度网盘</s:String>
     <s:String x:Key="SkipThisVersion">此版本不再提示</s:String>
     <s:String x:Key="GetFail">获取失败</s:String>
+    <s:String x:Key="OnSetting">设置中...</s:String>
     <s:String x:Key="Getting">获取中</s:String>
     <s:String x:Key="Devices">已连接设备列表</s:String>
     <s:String x:Key="RootEnable">开启</s:String>
     <s:String x:Key="RootDisable">关闭</s:String>
     <s:String x:Key="Message">信息</s:String>
     <s:String x:Key="Advise">建议</s:String>
+    <s:String x:Key="DefaultDpi">设备默认Dpi</s:String>
+    <s:String x:Key="TipForChangeDpi">请自行斟酌您要调整的DPI,如果调的太大或太小,会让你的手机无法使用,不过您仍然可以通过本工具恢复默认DPI</s:String>
     <s:String x:Key="OutputTip">完整的输出文本,包含了最确切的信息,如果遇到错误,请将这里的输出文本复制给您要问的人</s:String>
+    <s:String x:Key="TipForInputDpi">请输入您想要改动的DPI数值-></s:String>
     <!--静态界面标记-->
 
     <!--设备信息标记-->
