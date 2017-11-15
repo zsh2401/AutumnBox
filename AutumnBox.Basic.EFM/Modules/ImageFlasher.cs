@@ -24,7 +24,7 @@ using AutumnBox.Support.CstmDebug;
 
 namespace AutumnBox.Basic.Function.Modules
 {
-    public class ImgFlasher : FunctionModule
+    public class ImageFlasher : FunctionModule
     {
         AndroidShell _shell;
         ImgFlasherArgs _args;
