@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Executer
@@ -40,6 +41,20 @@ namespace AutumnBox.Basic.Executer
             => Execute(Command.MakeForFastboot(command));
         public OutputData FastbootExecute(string devId, string command)
             => Execute(Command.MakeForFastboot(devId, command));
+        public OutputData QuicklyShell(string id, string command, out bool isSuccessful)
+        {
+            var o = QuicklyShell(id, command, out int exitCode);
+            isSuccessful = exitCode == 0;
+            return o;
+        }
+        public OutputData QuicklyShell(string id, string command, out int isSuccessful)
+        {
+            var o = Execute(Command.MakeForAdb($"-s {id} shell \"{command}\" ; echo __ec$?"));
+            string lastLine = o.LineAll[o.LineAll.Count - 1];
+            string strExitCode = Regex.Match(lastLine, @"__ec(?<code>\d+)").Result("${code}");
+            isSuccessful = Convert.ToInt32(strExitCode);
+            return o;
+        }
 
         private ABProcess MainProcess = new ABProcess();
         private Object Locker = new object();
@@ -58,10 +73,12 @@ namespace AutumnBox.Basic.Executer
         {
             if (Process.GetProcessesByName("adb").Length == 0)
             {
-                new CExecuter().Execute(ConstData.ADB_PATH, "start-server", false);
+                using (CExecuter executer = new CExecuter())
+                {
+                    executer.Execute(ConstData.ADB_PATH, "start-server", false);
+                }
             }
         }
-
         public void Dispose()
         {
             MainProcess.Dispose();

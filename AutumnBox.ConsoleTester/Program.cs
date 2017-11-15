@@ -34,10 +34,11 @@ namespace AutumnBox.ConsoleTester
             //fmp.OutputReceived += (s, e) => { Console.WriteLine(e.Text); };
             //fmp.Finished += (s, e) => { Console.WriteLine(e.Result.Level); };
             //fmp.AsyncRun();
-            var a = new AndroidShell(mi4);
-            a.Connect();
-            var r = a.SafetyInput("ls fasfasfasfas");
-            Console.WriteLine(r);
+            //var a = new AndroidShell(mi4);
+            //a.Connect();
+            //var r = a.SafetyInput("ls fasfasfasfas");
+            IceBoxActivatorTest.Run();
+            //Console.WriteLine(r);
             Console.ReadKey();
         }
         public static void WriteWithColor(Action a, ConsoleColor color = ConsoleColor.White)

@@ -20,9 +20,22 @@ namespace AutumnBox.Basic.Function.Modules
 {
     public sealed class IceBoxActivator : FunctionModule
     {
+        private bool _exeResult;
+        private static readonly string _defaultCommand = "dpm set-device-owner com.catchingnow.icebox/.receiver.DPMReceiver";
         protected override OutputData MainMethod()
         {
-            throw new NotImplementedException();
+            var o =
+                Executer.QuicklyShell(DeviceID, _defaultCommand, out _exeResult);
+            if (_exeResult == true)
+            {
+                Ae("reboot");
+            }
+            return o;
+        }
+        protected override void AnalyzeOutput(ref ExecuteResult executeResult)
+        {
+            base.AnalyzeOutput(ref executeResult);
+            if (_exeResult == false) executeResult.Level = ResultLevel.Unsuccessful;
         }
     }
 }

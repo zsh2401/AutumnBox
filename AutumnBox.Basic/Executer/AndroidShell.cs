@@ -159,7 +159,10 @@ namespace AutumnBox.Basic.Executer
             _cmdWriter.WriteLine(command);
             Thread.Sleep(waitInterval);
         }
-        public void Dispose() { }
+        public void Dispose()
+        {
+            new Thread(Disconnect).Start();
+        }
         private void OnInputReceived(InputReceivedEventArgs e)
         {
             InputReceived?.Invoke(this, e);
