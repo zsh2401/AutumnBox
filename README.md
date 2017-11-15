@@ -1,6 +1,8 @@
 # AutumnBox 一个简约的刷机工具箱
-## Lines ±2500
-## Language C#
+## Code Lines : ±2500
+## Language : C#
+## Platform : Windows 7 & Windows 10
+## Environment : .Net framework 4.6.1
 ## 注意!本软件现在处于初级开发阶段,不保证任何一个commit可以正常工作!
 ![](https://zsh2401.github.io/softsupport/autumnbox/img/demo/0.21.0/demo0.png)
 ## AutumnBox是什么?
