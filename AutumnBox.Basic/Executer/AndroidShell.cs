@@ -135,18 +135,14 @@ namespace AutumnBox.Basic.Executer
             while (LastExitcode == null) ;
             if (LastExitcode == 0) return true;
             else return false;
-            //{
-            //    try
-            //    {
-            //        string lastline = Output.LineAll[Output.LineAll.Count - 2];
-            //        Logger.D("waiting... the last line " + lastline);
-            //        if (IsNum(lastline) && lastline == "0")
-            //            return true;
-            //        else if (IsNum(lastline) && lastline != "0")
-            //            return false;
-            //    }
-            //    catch (Exception) { }
-            //}
+        }
+        public int SafetyInputRetNum(string command)
+        {
+            LastExitcode = null;
+            if (!IsConnect) return 24010;
+            Input(command + $"; echo __ec$?", 0);
+            while (LastExitcode == null) ;
+            return LastExitcode??24010;
         }
         private static bool IsNum(string str)
         {
