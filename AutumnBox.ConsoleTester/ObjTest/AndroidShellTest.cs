@@ -11,6 +11,7 @@
 * Company: I am free man
 *
 \* =============================================================================*/
+using AutumnBox.Basic.Devices;
 using AutumnBox.Basic.Executer;
 using System;
 using System.Collections.Generic;
@@ -25,8 +26,9 @@ namespace AutumnBox.ConsoleTester.ObjTest
     {
         public static void Run()
         {
-            using (var shell = new AndroidShell(Program.mi4))
+            using (var shell = new AndroidShell(DevicesHelper.GetDevices().Last()))
             {
+                Console.WriteLine("start....");
                 shell.Connect();
                 shell.OutputReceived += (s, e) => { if (e.Text != "") Console.WriteLine("stdo: " + e.Text); };
                 shell.InputReceived += (s, e) => { Console.WriteLine("stdi: " + e.Command); };
@@ -41,12 +43,12 @@ namespace AutumnBox.ConsoleTester.ObjTest
                         Console.WriteLine(x.LineAll.Last());
                     }, ConsoleColor.Red);
                 }
-                Thread.Sleep(3000);
+                Console.WriteLine("end....");
             }
         }
         public static void RootTest()
         {
-            using (var shell = new AndroidShell(Program.mi4))
+            using (var shell = new AndroidShell(DevicesHelper.GetDevices().Last()))
             {
                 shell.Connect();
                 shell.OutputReceived += (s, e) => { Console.WriteLine("stdo: " + e.Text); };
