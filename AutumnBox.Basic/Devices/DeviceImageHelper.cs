@@ -12,6 +12,7 @@
 *
 \* =============================================================================*/
 using AutumnBox.Basic.Executer;
+using AutumnBox.Support.CstmDebug;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,25 +28,29 @@ namespace AutumnBox.Basic.Devices
     }
     public static class DeviceImageHelper
     {
-        private static bool CheckPath(AndroidShell shellAsSu,string path) {
-            throw new NotImplementedException();
-            shellAsSu.SafetyInput($"ls -l {path}");
-            return true; }
-        public static string FindByShell(AndroidShell shell, Images img)
+        private static bool CheckPath(AndroidShell shellAsSu, string path)
         {
-            throw new NotImplementedException();
-            if (!shell.IsConnect) shell.Connect();
-            shell.Switch2Superuser();
-            bool exeResult = shell.SafetyInput($"find /dev/ -name {img.ToString().ToLower()}");
-            if (exeResult)
+            return shellAsSu.SafetyInput($"ls -l {path}").IsSuccess;
+        }
+        public static string Find(AndroidShell shellAsSu, Images img)
+        {
+            var output = shellAsSu.SafetyInput($"find /dev/ -name {img.ToString().ToLower()}");
+            string path = $"/dev/block/platform/*/by-name/{img.ToString().ToLower()}";
+            if (output.IsSuccess && output.LineAll.Count > 0)
             {
-                return shell.LatestLineOutput;
+                path = output.LineAll[output.LineAll.Count - 1];
             }
-            return "/dev/block/platform/*/by-name";
+            Logger.D($"the path is {path}");
+            return (CheckPath(shellAsSu, path)) ? path : null;
         }
         public static string FindById(string id, Images img)
         {
-            throw new NotImplementedException();
+            using (AndroidShell su = new AndroidShell(id))
+            {
+                su.Connect();
+                su.Switch2Su();
+                return Find(su, img);
+            }
         }
     }
 }

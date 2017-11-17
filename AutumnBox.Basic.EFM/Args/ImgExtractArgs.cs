@@ -26,8 +26,8 @@ namespace AutumnBox.Basic.Function.Args
     public class ImgExtractArgs : ModuleArgs
     {
         public string SavePath { get; set; }
-        public Image ExtractImage { get; set; }
-        public ImgExtractArgs(DeviceBasicInfo device, Image extractImage = Image.Recovery) : base(device)
+        public Images ExtractImage { get; set; }
+        public ImgExtractArgs(DeviceBasicInfo device, Images extractImage = Images.Recovery) : base(device)
         {
             ExtractImage = extractImage;
         }

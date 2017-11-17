@@ -21,6 +21,7 @@ using System.Diagnostics;
 using System.Text.RegularExpressions;
 using System.IO;
 using AutumnBox.Support.CstmDebug;
+using AutumnBox.Basic.Devices;
 
 namespace AutumnBox.Basic.Function.Modules
 {
@@ -47,7 +48,7 @@ namespace AutumnBox.Basic.Function.Modules
                 OutSender = _shell
             };
             Logger.D("connected");
-            if (_shell.Switch2Superuser() != true) { _suNotFound = true; return output_r; }
+            if (_shell.Switch2Su() != true) { _suNotFound = true; return output_r; }
             Logger.D("switched to su");
             SendImageToSdcard();
             Logger.D("send finish");
@@ -77,23 +78,23 @@ namespace AutumnBox.Basic.Function.Modules
             string path = "i love you.....Na Cao";
             try
             {
-                path = FindImagePathOnTheDevice();
+                path = DeviceImageHelper.Find(_shell, _args.ImgType);
             }
             catch { return false; }
-            return _shell.SafetyInput($"mv /sdcard/{_imgTmpFileName} {path}");
+            return _shell.SafetyInput($"mv /sdcard/{_imgTmpFileName} {path}").IsSuccess;
         }
-        private string FindImagePathOnTheDevice()
-        {
-            _shell.SafetyInput($"ls -l /dev/block/bootdevice/by-name/{_args.ImgType.ToString().ToLower()}");
-            string result = _shell.LatestLineOutput;
-            Logger.D("finding...." + result);
-            Regex regex = new Regex(@"(?i)recovery[\u0020|\t]+->[\u0020|\t]+(?<filepath>.+)$");
-            var m = regex.Match(result);
-            if (m.Success)
-            {
-                return m.Result("${filepath}");
-            }
-            throw new FileNotFoundException();
-        }
+        //private string FindImagePathOnTheDevice()
+        //{
+        //    _shell.SafetyInput($"ls -l /dev/block/bootdevice/by-name/{_args.ImgType.ToString().ToLower()}");
+        //    string result = _shell.LatestLineOutput;
+        //    Logger.D("finding...." + result);
+        //    Regex regex = new Regex(@"(?i)recovery[\u0020|\t]+->[\u0020|\t]+(?<filepath>.+)$");
+        //    var m = regex.Match(result);
+        //    if (m.Success)
+        //    {
+        //        return m.Result("${filepath}");
+        //    }
+        //    throw new FileNotFoundException();
+        //}
     }
 }

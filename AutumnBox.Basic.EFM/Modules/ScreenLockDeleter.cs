@@ -26,7 +26,7 @@ namespace AutumnBox.Basic.Function.Modules
                 OutSender = _shell
             };
             _shell.Connect();
-            _shell.Switch2Superuser();
+            _shell.Switch2Su();
             _shell.SafetyInput("rm /data/system/gesture.key");
             _shell.SafetyInput("adb shell rm /data/system/password.key");
             new Thread(_shell.Disconnect).Start();

@@ -30,16 +30,18 @@ namespace AutumnBox.ConsoleTester.ObjTest
                 shell.Connect();
                 shell.OutputReceived += (s, e) => { if (e.Text != "") Console.WriteLine("stdo: " + e.Text); };
                 shell.InputReceived += (s, e) => { Console.WriteLine("stdi: " + e.Command); };
-                shell.BlockLastCommand = false;
-                shell.BlockEmptyOutput = false;
-                shell.BlockNullOutput = false;
-                shell.Switch2Superuser();
+                //shell.Switch2Su();
                 while (!shell.HasExited)
                 {
-                    shell.Input(Console.ReadLine());
+                    var x = shell.SafetyInput(Console.ReadLine());
+                    Program.WriteWithColor(() =>
+                    {
+                        Console.WriteLine($"line {x.LineAll.Count}");
+                        Console.WriteLine("return code: " + x.ReturnCode);
+                        Console.WriteLine(x.LineAll.Last());
+                    }, ConsoleColor.Red);
                 }
                 Thread.Sleep(3000);
-                //shell.InputLine("help");
             }
         }
         public static void RootTest()
@@ -48,16 +50,15 @@ namespace AutumnBox.ConsoleTester.ObjTest
             {
                 shell.Connect();
                 shell.OutputReceived += (s, e) => { Console.WriteLine("stdo: " + e.Text); };
-                shell.BlockLastCommand = false;
                 shell.InputReceived += (s, e) => { Console.WriteLine("stdi: " + e.Command); };
                 Thread.Sleep(3000);
-                Console.WriteLine(shell.IsRuningAsSuperuser);
-                shell.Switch2Superuser();
+                Console.WriteLine(shell.Switch2Su());
+                shell.Switch2Su();
                 Thread.Sleep(3000);
-                Console.WriteLine(shell.IsRuningAsSuperuser);
-                shell.Switch2Normaluser();
+                Console.WriteLine(shell.IsRunningAsSuperuser);
+                shell.Switch2Normal();
                 Thread.Sleep(3000);
-                Console.WriteLine(shell.IsRuningAsSuperuser);
+                Console.WriteLine(shell.IsRunningAsSuperuser);
                 Thread.Sleep(3000);
                 //shell.InputLine("help");
             }

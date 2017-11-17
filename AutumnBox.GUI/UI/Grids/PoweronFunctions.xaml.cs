@@ -140,7 +140,7 @@ namespace AutumnBox.GUI.UI.Grids
             };
             if (fbd.ShowDialog() != DialogResult.OK) return;
             FunctionModuleProxy fmp =
-                FunctionModuleProxy.Create<ImageExtractor>(new ImgExtractArgs(App.SelectedDevice) { ExtractImage = Basic.Function.Args.Image.Boot, SavePath = fbd.SelectedPath });
+                FunctionModuleProxy.Create<ImageExtractor>(new ImgExtractArgs(App.SelectedDevice) { ExtractImage = Images.Boot, SavePath = fbd.SelectedPath });
             fmp.Finished += App.OwnerWindow.FuncFinish;
             fmp.AsyncRun();
             UIHelper.ShowRateBox(fmp);
@@ -156,7 +156,7 @@ namespace AutumnBox.GUI.UI.Grids
             fbd.Description = "请选择保存路径";
             if (fbd.ShowDialog() != DialogResult.OK) return;
             FunctionModuleProxy fmp =
-                FunctionModuleProxy.Create<ImageExtractor>(new ImgExtractArgs(App.SelectedDevice) { ExtractImage = Basic.Function.Args.Image.Recovery, SavePath = fbd.SelectedPath });
+                FunctionModuleProxy.Create<ImageExtractor>(new ImgExtractArgs(App.SelectedDevice) { ExtractImage = Images.Recovery, SavePath = fbd.SelectedPath });
             fmp.Finished += App.OwnerWindow.FuncFinish;
             fmp.AsyncRun();
             UIHelper.ShowRateBox(fmp);
@@ -175,7 +175,7 @@ namespace AutumnBox.GUI.UI.Grids
             fileDialog.Multiselect = false;
             if (fileDialog.ShowDialog() == true)
             {
-                var fmp = FunctionModuleProxy.Create<ImageFlasher>(new ImgFlasherArgs(App.SelectedDevice) { ImgPath = fileDialog.FileName, ImgType = Basic.Function.Args.Image.Boot });
+                var fmp = FunctionModuleProxy.Create<ImageFlasher>(new ImgFlasherArgs(App.SelectedDevice) { ImgPath = fileDialog.FileName, ImgType = Images.Boot });
                 fmp.Finished += App.OwnerWindow.FuncFinish;
                 fmp.AsyncRun();
                 UIHelper.ShowRateBox(fmp);
@@ -213,7 +213,7 @@ namespace AutumnBox.GUI.UI.Grids
             fileDialog.Multiselect = false;
             if (fileDialog.ShowDialog() == true)
             {
-                var fmp = FunctionModuleProxy.Create<ImageFlasher>(new ImgFlasherArgs(App.SelectedDevice) { ImgPath = fileDialog.FileName, ImgType = Basic.Function.Args.Image.Recovery });
+                var fmp = FunctionModuleProxy.Create<ImageFlasher>(new ImgFlasherArgs(App.SelectedDevice) { ImgPath = fileDialog.FileName, ImgType = Images.Recovery });
                 fmp.Finished += App.OwnerWindow.FuncFinish;
                 fmp.AsyncRun();
                 UIHelper.ShowRateBox(fmp);

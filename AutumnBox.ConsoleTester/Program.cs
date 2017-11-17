@@ -37,8 +37,13 @@ namespace AutumnBox.ConsoleTester
             //var a = new AndroidShell(mi4);
             //a.Connect();
             //var r = a.SafetyInput("ls fasfasfasfas");
-            IceBoxActivatorTest.Run();
-            //Console.WriteLine(r);
+            //AndroidShellTest.RootTest();
+            Console.WriteLine("START!?....");
+            DateTime t = DateTime.Now;
+            var path = DeviceImageHelper.FindById(Program.mi4, Images.Boot);
+            Console.WriteLine("path ->" + path ?? "not found!!!!!");
+            var timespan = DateTime.Now - t;
+            Console.WriteLine("have use" + timespan.Seconds + " seconds");
             Console.ReadKey();
         }
         public static void WriteWithColor(Action a, ConsoleColor color = ConsoleColor.White)

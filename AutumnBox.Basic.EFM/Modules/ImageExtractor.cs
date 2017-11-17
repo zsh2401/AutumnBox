@@ -21,6 +21,7 @@ using System.Threading;
 using AutumnBox.Support.CstmDebug;
 using AutumnBox.Basic.Function.Args;
 using System.Text.RegularExpressions;
+using AutumnBox.Basic.Devices;
 
 namespace AutumnBox.Basic.Function.Modules
 {
@@ -32,43 +33,43 @@ namespace AutumnBox.Basic.Function.Modules
         private bool _findNotFind = false;
         private AndroidShell _shell;
         private ImgExtractArgs _Args;
-        private bool FindImgPath(out string pathResult, string fileName)
-        {
-            //获取镜像路径
-            Logger.D("find start....");
-            _shell.SafetyInput($"ls -l /dev/block/bootdevice/by-name/{_Args.ExtractImage.ToString().ToLower()}");
-            string result = _shell.LatestLineOutput;
-            Logger.D("finding...." + result);
-            Regex regex = new Regex(@"(?i)recovery[\u0020|\t]+->[\u0020|\t]+(?<filepath>.+)$");
-            var m = regex.Match(result);
-            if (m.Success)
-            {
-                pathResult = m.Result("${filepath}");
-                Logger.D("fined filepath  " + m.Result("${filepath}"));
-                return true;
-            }
-            _shell.SafetyInput("mkdir /sdcard/.autumnboxtest/");
-            _findNotFind = _shell.SafetyInput("find /sdcard/.autumnboxtest/");
-            _shell.SafetyInput("rm -rf /sdcard/.autumnboxtest");
-            if (!_findNotFind)
-            {
-                _shell.SafetyInput($"find /dev -name {fileName}");
-                if (_shell.LatestLineOutput == _shell.LastCommand)
-                {
-                    Logger.D("find img fail " + _shell.LatestLineOutput);
-                    _imgNotFound = true;
-                    pathResult = null;
-                    return false;
-                }
-                pathResult = _shell.LatestLineOutput;
-                return true;
-            }
-            else
-            {
-                pathResult = $"/dev/block/platform/*/by-name/{fileName}";
-                return true;
-            }
-        }
+        //private bool FindImgPath(out string pathResult, string fileName)
+        //{
+        //    //获取镜像路径
+        //    Logger.D("find start....");
+        //    _shell.SafetyInput($"ls -l /dev/block/bootdevice/by-name/{_Args.ExtractImage.ToString().ToLower()}");
+        //    string result = "";
+        //    Logger.D("finding...." + result);
+        //    Regex regex = new Regex(@"(?i)recovery[\u0020|\t]+->[\u0020|\t]+(?<filepath>.+)$");
+        //    var m = regex.Match(result);
+        //    if (m.Success)
+        //    {
+        //        pathResult = m.Result("${filepath}");
+        //        Logger.D("fined filepath  " + m.Result("${filepath}"));
+        //        return true;
+        //    }
+        //    _shell.SafetyInput("mkdir /sdcard/.autumnboxtest/");
+        //    _findNotFind = _shell.SafetyInput("find /sdcard/.autumnboxtest/").IsSuccess;
+        //    _shell.SafetyInput("rm -rf /sdcard/.autumnboxtest");
+        //    if (!_findNotFind)
+        //    {
+        //        _shell.SafetyInput($"find /dev -name {fileName}");
+        //        if (_shell.LatestLineOutput == _shell.LastCommand)
+        //        {
+        //            Logger.D("find img fail " + _shell.LatestLineOutput);
+        //            _imgNotFound = true;
+        //            pathResult = null;
+        //            return false;
+        //        }
+        //        pathResult = _shell.LatestLineOutput;
+        //        return true;
+        //    }
+        //    else
+        //    {
+        //        pathResult = $"/dev/block/platform/*/by-name/{fileName}";
+        //        return true;
+        //    }
+        //}
         protected override void AnalyzeArgs(ModuleArgs args)
         {
             base.AnalyzeArgs(args);
@@ -85,16 +86,21 @@ namespace AutumnBox.Basic.Function.Modules
                 OutSender = _shell
             };
             //尝试切换到root权限
-            if (!_shell.Switch2Superuser())
+            if (!_shell.Switch2Su())
             {
                 _suNotFound = true;
                 return result;
             }
-            string fileName = _Args.ExtractImage == Image.Recovery ? "recovery" : "boot";
-            if (!FindImgPath(out string imgPath, fileName)) { return result; }
+            string fileName = _Args.ExtractImage == Images.Recovery ? "recovery" : "boot";
+            string path;
+            path = DeviceImageHelper.Find(_shell, _Args.ExtractImage);
+            if (path == null)
+            {
+                return result;
+            }
             Logger.D("Image real-path finded.....");
             //复制到手机根目录
-            _copyFailed = !(_shell.SafetyInput($"cp {imgPath} /sdcard/{fileName}.img"));
+            _copyFailed = !(_shell.SafetyInput($"cp {path} /sdcard/{fileName}.img").IsSuccess);
             //Ok!
             Logger.D("Extract and Copy finished.....");
             new Thread(_shell.Disconnect).Start();

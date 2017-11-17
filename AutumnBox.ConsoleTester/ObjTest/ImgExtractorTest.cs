@@ -29,7 +29,7 @@ namespace AutumnBox.ConsoleTester.ObjTest
             WriteWithColor(() => Console.WriteLine("do you like PUBG?"), ConsoleColor.Red);
             var dev = new DevicesGetter().GetDevices()[0].Id;
             WriteWithColor(() => Console.WriteLine("Get Finished...?V35"), ConsoleColor.Green);
-            var fmp = FunctionModuleProxy.Create(typeof(ImageExtractor), new Basic.Function.Args.ImgExtractArgs(new DeviceBasicInfo() { Id = dev }, Basic.Function.Args.Image.Boot));
+            var fmp = FunctionModuleProxy.Create(typeof(ImageExtractor), new Basic.Function.Args.ImgExtractArgs(new DeviceBasicInfo() { Id = dev }, Images.Boot));
             fmp.OutputReceived += (s, e) => { Console.WriteLine("stdo " + e.Text); };
             fmp.Finished += (s, e) => { Console.ForegroundColor = ConsoleColor.Green; Console.WriteLine("Finished? " + e.Result.Level); };
             fmp.AsyncRun();
