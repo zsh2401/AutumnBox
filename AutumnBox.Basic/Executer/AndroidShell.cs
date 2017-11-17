@@ -63,14 +63,27 @@ namespace AutumnBox.Basic.Executer
             Time = DateTime.Now;
         }
     }
+    /// <summary>
+    /// 简单封装的,用于执行基础命令的AndroidShell类
+    /// </summary>
     public sealed class AndroidShell : IOutSender, IDisposable
     {
         private static readonly string _finishMark = "___ec$?";
         public event ProcessStartedEventHandler ProcessStarted;
         public event InputReceivedEventHandler InputReceived;
         public event OutputReceivedEventHandler OutputReceived;
+        /// <summary>
+        /// 是否退出
+        /// </summary>
         public bool HasExited { get { return _mainProcess.HasExited; } }
+        /// <summary>
+        /// 是否连接
+        /// </summary>
         public bool IsConnect { get; private set; } = false;
+        /// <summary>
+        /// 实例化
+        /// </summary>
+        /// <param name="id"></param>
         public AndroidShell(string id)
         {
             _devID = id;
@@ -90,6 +103,9 @@ namespace AutumnBox.Basic.Executer
             _mainProcess.OutputDataReceived += (s, e) => { OnOutputReceived(new OutputReceivedEventArgs(e.Data, e, false)); };
             _mainProcess.ErrorDataReceived += (s, e) => { OnOutputReceived(new OutputReceivedEventArgs(e.Data, e, true)); };
         }
+        /// <summary>
+        /// 是否运行在超级用户(root)下
+        /// </summary>
         public bool IsRunningAsSuperuser
         {
             get
@@ -97,7 +113,14 @@ namespace AutumnBox.Basic.Executer
                 return SafetyInput("echo $USER").LineAll.Last() == "root";
             }
         }
+        /// <summary>
+        /// 是否已经切换到超级用户
+        /// </summary>
         private bool _isSwitchedSu = false;
+        /// <summary>
+        /// 切换到超级用户
+        /// </summary>
+        /// <returns></returns>
         public bool Switch2Su()
         {
             if (_isSwitchedSu) return true;
@@ -110,6 +133,10 @@ namespace AutumnBox.Basic.Executer
             }
             return false;
         }
+        /// <summary>
+        /// 切换到普通用户
+        /// </summary>
+        /// <returns></returns>
         public bool Switch2Normal()
         {
             if (!_isSwitchedSu) return true;
@@ -117,12 +144,21 @@ namespace AutumnBox.Basic.Executer
             Thread.Sleep(200);
             return IsRunningAsSuperuser;
         }
+        /// <summary>
+        /// 输入一条指令,不会进行自动等待
+        /// </summary>
+        /// <param name="command"></param>
         public void Input(string command)
         {
             OnInputReceived(new InputReceivedEventArgs() { Command = command });
             _mainProcess.StandardInput.WriteLine(command);
             _mainProcess.StandardInput.Flush();
         }
+        /// <summary>
+        /// 输入一条指令,会进行线程等待并且可以获取返回值
+        /// </summary>
+        /// <param name="command"></param>
+        /// <returns></returns>
         public ShellOutput SafetyInput(string command)
         {
             _latestReturnCode = null;
@@ -134,6 +170,10 @@ namespace AutumnBox.Basic.Executer
             Logger.D("command execute finished");
             return _outTmp;
         }
+        /// <summary>
+        /// 连接到设备上
+        /// </summary>
+        /// <param name="asSuperuser"></param>
         public void Connect(bool asSuperuser = false)
         {
             CExecuter.Check();
@@ -142,8 +182,15 @@ namespace AutumnBox.Basic.Executer
             _mainProcess.BeginOutputReadLine();
             _mainProcess.BeginErrorReadLine();
             IsConnect = true;
+            if (asSuperuser)
+            {
+                Switch2Su();
+            }
             Thread.Sleep(200);
         }
+        /// <summary>
+        /// 断开连接
+        /// </summary>
         public void Disconnect()
         {
             new Thread(() =>
@@ -161,12 +208,18 @@ namespace AutumnBox.Basic.Executer
                 IsConnect = false;
             }).Start();
         }
+        /// <summary>
+        /// 析构
+        /// </summary>
         public void Dispose()
         {
             Disconnect();
         }
 
-
+        /// <summary>
+        /// 触发OutputReceived事件
+        /// </summary>
+        /// <param name="e"></param>
         private void OnOutputReceived(OutputReceivedEventArgs e)
         {
             if (e.Text == null || e.Text == "") return;
@@ -186,195 +239,57 @@ namespace AutumnBox.Basic.Executer
             }
             OutputReceived?.Invoke(this, e);
         }
+        /// <summary>
+        /// 触发InputReceived事件
+        /// </summary>
+        /// <param name="e"></param>
         private void OnInputReceived(InputReceivedEventArgs e)
         {
             _latestCommand = e.Command;
             InputReceived?.Invoke(this, e);
         }
+        /// <summary>
+        /// 主进程
+        /// </summary>
         private Process _mainProcess;
+        /// <summary>
+        /// 最近一次命令执行返回值
+        /// </summary>
         private int? _latestReturnCode = 0;
+        /// <summary>
+        /// 最近一次的命令
+        /// </summary>
         private string _latestCommand = "";
+        /// <summary>
+        /// 连接的设备ID
+        /// </summary>
         private string _devID;
+        /// <summary>
+        /// 最近的一行输出
+        /// </summary>
         private string _latestOutput { get { return _outTmp.LineAll[_outTmp.LineAll.Count - 1]; } }
+        /// <summary>
+        /// 用来存储输出的缓冲类
+        /// </summary>
         private ShellOutput _outTmp = null;
+        /// <summary>
+        /// 是否存储输出
+        /// </summary>
         private bool _isEnableRead = false;
+        /// <summary>
+        /// 开始获取输出
+        /// </summary>
         private void BeginRead()
         {
             _outTmp = new ShellOutput();
             _isEnableRead = true;
         }
+        /// <summary>
+        /// 停止获取输出
+        /// </summary>
         private void StopRead()
         {
             _isEnableRead = false;
         }
-        //public event ProcessStartedEventHandler ProcessStarted;
-        //public event InputReceivedEventHandler InputReceived;
-        //public event OutputReceivedEventHandler OutputReceived;
-        //public bool IsConnect { get; private set; }
-        //public bool BlockNullOutput { get; set; } = true;
-        //public bool BlockEmptyOutput { get; set; } = true;
-        //public bool BlockLastCommand { get; set; } = true;
-        //public bool HasExited { get { return _mainProcess.HasExited; } }
-        //public string LatestLineOutput { get; private set; }
-        //public string LastCommand { get; private set; } = "";
-        //public int? LastExitcode { get; private set; }
-        //public OutputData Output { get; private set; }
-        //private Process _mainProcess;
-        //private string _devID;
-        //private StreamWriter _cmdWriter;
-        //public AndroidShell(string id)
-        //{
-        //    _devID = id;
-        //    _mainProcess = new Process
-        //    {
-        //        StartInfo = new ProcessStartInfo()
-        //        {
-        //            RedirectStandardError = true,
-        //            RedirectStandardInput = true,
-        //            RedirectStandardOutput = true,
-        //            CreateNoWindow = true,
-        //            UseShellExecute = false,
-        //            FileName = ConstData.ADB_PATH.Replace("/", "\\"),
-        //            Arguments = $" -s {_devID} shell"
-        //        }
-        //    };
-        //    _mainProcess.OutputDataReceived += (s, e) => { OnOutputReceived(new OutputReceivedEventArgs(e.Data, e, false)); };
-        //    _mainProcess.ErrorDataReceived += (s, e) => { OnOutputReceived(new OutputReceivedEventArgs(e.Data, e, true)); };
-        //}
-        //public void Connect()
-        //{
-        //    CExecuter.Check();
-        //    Output = new OutputData();
-        //    _mainProcess.Start();
-        //    ProcessStarted?.Invoke(this, new ProcessStartedEventArgs() { Pid = _mainProcess.Id });
-        //    Logger.D("process started...pid " + _mainProcess.Id);
-        //    _cmdWriter = _mainProcess.StandardInput;
-        //    _mainProcess.BeginOutputReadLine();
-        //    _mainProcess.BeginErrorReadLine();
-        //    IsConnect = true;
-        //    Thread.Sleep(1000);
-        //}
-        //public void Disconnect()
-        //{
-        //    while (!_mainProcess.HasExited)
-        //    {
-        //        try
-        //        {
-        //            Input("exit");
-        //            Thread.Sleep(200);
-        //        }
-        //        catch { }
-        //    }
-        //    SystemHelper.KillProcessAndChildrens(_mainProcess.Id);
-        //    IsConnect = false;
-        //}
-        //public bool IsRuningAsSuperuser
-        //{
-        //    get
-        //    {
-        //        SafetyInput("echo $USER");
-        //        Thread.Sleep(200);
-        //        Logger.D("latest line" + LatestLineOutput);
-        //        return LatestLineOutput == "root";
-        //    }
-        //}
-        //public bool Switch2Superuser()
-        //{
-        //    if (IsRuningAsSuperuser) return true;
-        //    Input($"su");
-        //    Thread.Sleep(200);
-        //    var now = IsRuningAsSuperuser;
-        //    Logger.D("return" + now);
-        //    return now;
-        //}
-        //public bool Switch2Normaluser()
-        //{
-        //    if (IsRuningAsSuperuser)
-        //    {
-        //        Input("exit");
-        //    }
-        //    return !IsRuningAsSuperuser;
-        //}
-        //public int NSafetyInput(string command)
-        //{
-        //    LastExitcode = null;
-        //    if (!IsConnect) return 24010;
-        //    Input(command + $"; echo __ec$?", 0);
-        //    while (LastExitcode == null) ;
-        //    return LastExitcode ?? 24010;
-        //}
-        //public ShellOutput SafetyInput(string command)
-        //{
-        //    StartOutputGet();
-        //    LastExitcode = null;
-        //    if (!IsConnect)
-        //    {
-        //        throw new Exception("please shell.Connect()");
-        //    }
-        //    Input(command + $"; echo __ec$?", 0);
-        //    while (LastExitcode == null) ;
-        //    StopOutputGet();
-        //    _tmpOut.ReturnCode = LastExitcode ?? 24010;
-        //    return _tmpOut;
-        //}
-        //private static bool IsNum(string str)
-        //{
-        //    try { Convert.ToInt32(str); return true; } catch { return false; }
-        //}
-        //public void Input(string command, int waitInterval = 2000)
-        //{
-        //    if (!IsConnect) return;
-        //    LastCommand = command;
-        //    OnInputReceived(new InputReceivedEventArgs() { Command = command });
-        //    _cmdWriter.WriteLine(command);
-        //    Thread.Sleep(waitInterval);
-        //}
-        //public void Dispose()
-        //{
-        //    new Thread(Disconnect).Start();
-        //}
-        //private bool _isEnableOutputGetting = false;
-        //private ShellOutput _tmpOut;
-        //private void StartOutputGet()
-        //{
-        //    _tmpOut = new ShellOutput();
-        //    _isEnableOutputGetting = true;
-        //}
-        //private void StopOutputGet()
-        //{
-        //    _isEnableOutputGetting = false;
-        //}
-        //private void OnInputReceived(InputReceivedEventArgs e)
-        //{
-        //    InputReceived?.Invoke(this, e);
-        //}
-        //private void OnOutputReceived(OutputReceivedEventArgs e)
-        //{
-        //    Logger.D("untreated output ->" + e.Text);
-        //    /*一系列的无用输出屏蔽*/
-        //    if (!e.IsError) Output.OutAdd(e.Text);
-        //    else Output.ErrorAdd(e.Text);
-        //    //if (e.Text == null || e.Text == "") return;
-        //    if (e.Text == null && BlockNullOutput) return;
-        //    if (e.Text == "" && BlockEmptyOutput) return;
-        //    if (e.Text.Contains(LastCommand)) return;
-        //    try
-        //    {
-        //        if (e.Text.Contains("__ec") && !(e.Text.Contains("__ec$")))
-        //        {
-        //            LastExitcode = Convert.ToInt32(e.Text.Remove(0, 4));
-        //            return;
-        //        }
-        //    }
-        //    catch { }
-        //    /*过滤出来的有用信息*/
-        //    Logger.D("treated output ->" + e.Text);
-        //    LatestLineOutput = e.Text;
-        //    OutputReceived?.Invoke(this, e);
-        //    if (_isEnableOutputGetting)
-        //    {
-        //        _tmpOut.OutAdd(e.Text);
-        //    }
-        //}
     }
 }

@@ -32,6 +32,7 @@ namespace AutumnBox.Basic.Function.Modules
         private string _imgTmpFileName = "lateinautumn.img";
         private bool _suNotFound = false;
         private bool _success = true;
+        private bool _imageNotFound = false;
         protected override void AnalyzeArgs(ModuleArgs args)
         {
             base.AnalyzeArgs(args);
@@ -50,9 +51,16 @@ namespace AutumnBox.Basic.Function.Modules
             Logger.D("connected");
             if (_shell.Switch2Su() != true) { _suNotFound = true; return output_r; }
             Logger.D("switched to su");
+            string fullPath = DeviceImageHelper.Find(_shell, _args.ImgType);
+            if (fullPath == null)
+            {
+                _imageNotFound = true;
+                return output_r;
+            }
             SendImageToSdcard();
             Logger.D("send finish");
-            if (!MoveImageToBlock()) { _success = false; }
+            var r = _shell.SafetyInput($"mv /sdcard/{_imgTmpFileName} {fullPath}");
+            if (!r.IsSuccess) { _success = false; }
             Logger.D("move finish...");
             return output_r;
         }
@@ -62,6 +70,7 @@ namespace AutumnBox.Basic.Function.Modules
             if (_suNotFound || !_success) executeResult.Level = ResultLevel.Unsuccessful;
             Logger.D("_su not found?" + _suNotFound);
             Logger.D("_success?" + _success);
+            _shell.Disconnect();
         }
         private bool SendImageToSdcard()
         {
@@ -73,28 +82,5 @@ namespace AutumnBox.Basic.Function.Modules
                 });
             return fmp.FastRun().Level == ResultLevel.Successful;
         }
-        private bool MoveImageToBlock()
-        {
-            string path = "i love you.....Na Cao";
-            try
-            {
-                path = DeviceImageHelper.Find(_shell, _args.ImgType);
-            }
-            catch { return false; }
-            return _shell.SafetyInput($"mv /sdcard/{_imgTmpFileName} {path}").IsSuccess;
-        }
-        //private string FindImagePathOnTheDevice()
-        //{
-        //    _shell.SafetyInput($"ls -l /dev/block/bootdevice/by-name/{_args.ImgType.ToString().ToLower()}");
-        //    string result = _shell.LatestLineOutput;
-        //    Logger.D("finding...." + result);
-        //    Regex regex = new Regex(@"(?i)recovery[\u0020|\t]+->[\u0020|\t]+(?<filepath>.+)$");
-        //    var m = regex.Match(result);
-        //    if (m.Success)
-        //    {
-        //        return m.Result("${filepath}");
-        //    }
-        //    throw new FileNotFoundException();
-        //}
     }
 }

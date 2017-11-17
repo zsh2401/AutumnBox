@@ -8,6 +8,7 @@ using AutumnBox.ConsoleTester.ObjTest;
 using AutumnBox.GUI.Helper;
 using System;
 using System.Diagnostics;
+using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -37,7 +38,9 @@ namespace AutumnBox.ConsoleTester
             //var a = new AndroidShell(mi4);
             //a.Connect();
             //var r = a.SafetyInput("ls fasfasfasfas");
-            AndroidShellTest.RootTest();
+            string x = DeviceImageHelper.FindById(DevicesHelper.GetDevices().Last(), Images.Recovery);
+            Console.WriteLine("hehe ->" + x);
+            //AndroidShellTest.RootTest();
             //Console.WriteLine("START!?....");
             //DateTime t = DateTime.Now;
             //var path = DeviceImageHelper.FindById(Program.mi4, Images.Boot);
