@@ -6,6 +6,7 @@ using AutumnBox.Support.CstmDebug;
 using System;
 using System.Drawing;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -36,7 +37,8 @@ namespace AutumnBox.GUI.UI.Grids
         {
             if (devSimpleInfo.Status == DeviceStatus.Poweron || devSimpleInfo.Status == DeviceStatus.Recovery)
             {
-                SetByDeviceSimpleInfo(devSimpleInfo);
+                SetByDeviceSimpleInfoAsync(devSimpleInfo);
+                RefreshStart?.Invoke(this, new EventArgs());
             }
             else if (devSimpleInfo.Status == DeviceStatus.Unauthorized)
             {
@@ -66,58 +68,51 @@ namespace AutumnBox.GUI.UI.Grids
                 _SetStatusPanel(DynamicIcons.no_selected, "PleaseSelectedADevice");
             });
         }
-        private void SetByDeviceSimpleInfo(DeviceBasicInfo devSimpleInfo)
+        private async void SetByDeviceSimpleInfoAsync(DeviceBasicInfo devSimpleInfo)
         {
-            new Thread(() =>
+            var simpleInfo = await Task.Run(() =>
             {
-                var simpleInfo = DeviceInfoHelper.GetBuildInfo(devSimpleInfo.Id);
-                Logger.D(this,"Get basic info finished");
-                this.Dispatcher.Invoke(() =>
-                {
-                    LabelAndroidVersion.Content = simpleInfo.AndroidVersion ?? App.Current.Resources["GetFail"].ToString();
-                    LabelModel.Content = simpleInfo.M ?? App.Current.Resources["GetFail"].ToString();
-                    LabelCode.Content = simpleInfo.Code ?? App.Current.Resources["GetFail"].ToString();
-                    LabelRom.Content = App.Current.Resources["Getting"].ToString();
-                    LabelRam.Content = App.Current.Resources["Getting"].ToString();
-                    LabelBattery.Content = App.Current.Resources["Getting"].ToString();
-                    LabelSOC.Content = App.Current.Resources["Getting"].ToString();
-                    LabelScreen.Content = App.Current.Resources["Getting"].ToString();
-                    LabelFlashMemInfo.Content = App.Current.Resources["Getting"].ToString();
-                    LabelRootStatus.Content = App.Current.Resources["Getting"].ToString();
-                    switch (App.SelectedDevice.Status)
-                    {
-                        case DeviceStatus.Fastboot:
-                            _SetStatusPanel(DynamicIcons.fastboot, "DeviceInFastboot");
-                            break;
-                        case DeviceStatus.Recovery:
-                            _SetStatusPanel(DynamicIcons.recovery, "DeviceInRecovery");
-                            break;
-                        case DeviceStatus.Poweron:
-                            _SetStatusPanel(DynamicIcons.poweron, "DeviceInRunning");
-                            break;
-                        case DeviceStatus.Sideload:
-                            _SetStatusPanel(DynamicIcons.recovery, "DeviceInSideload");
-                            break;
-                    }
-                    Logger.D(this,"Finish Base refresh");
-                    RefreshFinished?.Invoke(this, new EventArgs());
-                });
-                var advInfo = DeviceInfoHelper.GetHwInfo(devSimpleInfo.Id);
-                bool IsRoot = DeviceInfoHelper.CheckRoot(devSimpleInfo.Id);
-                this.Dispatcher.Invoke(() =>
-                {
-                    LabelRom.Content = (advInfo.StorageTotal != null) ? advInfo.StorageTotal + "GB" : App.Current.Resources["GetFail"].ToString();
-                    LabelRam.Content = (advInfo.MemTotal != null) ? advInfo.MemTotal + "GB" : App.Current.Resources["GetFail"].ToString();
-                    LabelBattery.Content = (advInfo.BatteryLevel != null) ? advInfo.BatteryLevel + "%" : App.Current.Resources["GetFail"].ToString();
-                    LabelSOC.Content = advInfo.SOCInfo ?? App.Current.Resources["GetFail"].ToString();
-                    LabelScreen.Content = advInfo.ScreenInfo ?? App.Current.Resources["GetFail"].ToString();
-                    LabelFlashMemInfo.Content = advInfo.FlashMemoryType ?? App.Current.Resources["GetFail"].ToString();
-                    LabelRootStatus.Content = IsRoot ? App.Current.Resources["RootEnable"].ToString() : App.Current.Resources["RootDisable"].ToString();
-                    CurrentDeviceIsRoot = IsRoot;
-                });
-            })
-            { Name = "Refreshing" }.Start();
-            RefreshStart?.Invoke(this, new EventArgs());
+                return DeviceInfoHelper.GetBuildInfo(devSimpleInfo.Id);
+            });
+            LabelAndroidVersion.Content = simpleInfo.AndroidVersion ?? App.Current.Resources["GetFail"].ToString();
+            LabelModel.Content = simpleInfo.M ?? App.Current.Resources["GetFail"].ToString();
+            LabelCode.Content = simpleInfo.Code ?? App.Current.Resources["GetFail"].ToString();
+            LabelRom.Content = App.Current.Resources["Getting"].ToString();
+            LabelRam.Content = App.Current.Resources["Getting"].ToString();
+            LabelBattery.Content = App.Current.Resources["Getting"].ToString();
+            LabelSOC.Content = App.Current.Resources["Getting"].ToString();
+            LabelScreen.Content = App.Current.Resources["Getting"].ToString();
+            LabelFlashMemInfo.Content = App.Current.Resources["Getting"].ToString();
+            LabelRootStatus.Content = App.Current.Resources["Getting"].ToString();
+            switch (App.SelectedDevice.Status)
+            {
+                case DeviceStatus.Fastboot:
+                    _SetStatusPanel(DynamicIcons.fastboot, "DeviceInFastboot");
+                    break;
+                case DeviceStatus.Recovery:
+                    _SetStatusPanel(DynamicIcons.recovery, "DeviceInRecovery");
+                    break;
+                case DeviceStatus.Poweron:
+                    _SetStatusPanel(DynamicIcons.poweron, "DeviceInRunning");
+                    break;
+                case DeviceStatus.Sideload:
+                    _SetStatusPanel(DynamicIcons.recovery, "DeviceInSideload");
+                    break;
+            }
+            RefreshFinished?.Invoke(this, new EventArgs());
+            var advInfo = await Task.Run(() =>
+            {
+                return DeviceInfoHelper.GetHwInfo(devSimpleInfo.Id);
+            });
+            bool IsRoot = DeviceInfoHelper.CheckRoot(devSimpleInfo.Id);
+            LabelRom.Content = (advInfo.StorageTotal != null) ? advInfo.StorageTotal + "GB" : App.Current.Resources["GetFail"].ToString();
+            LabelRam.Content = (advInfo.MemTotal != null) ? advInfo.MemTotal + "GB" : App.Current.Resources["GetFail"].ToString();
+            LabelBattery.Content = (advInfo.BatteryLevel != null) ? advInfo.BatteryLevel + "%" : App.Current.Resources["GetFail"].ToString();
+            LabelSOC.Content = advInfo.SOCInfo ?? App.Current.Resources["GetFail"].ToString();
+            LabelScreen.Content = advInfo.ScreenInfo ?? App.Current.Resources["GetFail"].ToString();
+            LabelFlashMemInfo.Content = advInfo.FlashMemoryType ?? App.Current.Resources["GetFail"].ToString();
+            LabelRootStatus.Content = IsRoot ? App.Current.Resources["RootEnable"].ToString() : App.Current.Resources["RootDisable"].ToString();
+            CurrentDeviceIsRoot = IsRoot;
         }
         private void GridClick(object sender, MouseButtonEventArgs e)
         {

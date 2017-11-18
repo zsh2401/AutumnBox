@@ -38,8 +38,11 @@ namespace AutumnBox.ConsoleTester
             //var a = new AndroidShell(mi4);
             //a.Connect();
             //var r = a.SafetyInput("ls fasfasfasfas");
-            string x = DeviceImageHelper.FindById(DevicesHelper.GetDevices().Last(), Images.Recovery);
-            Console.WriteLine("hehe ->" + x);
+            //string x = DeviceImageHelper.FindById(DevicesHelper.GetDevices().Last(), Images.Recovery);
+            //Console.WriteLine("hehe ->" + x);
+            Console.WriteLine("start");
+            AsyncAwaitTest.DoAsync();
+            Console.WriteLine("finish");
             //AndroidShellTest.RootTest();
             //Console.WriteLine("START!?....");
             //DateTime t = DateTime.Now;
@@ -49,6 +52,7 @@ namespace AutumnBox.ConsoleTester
             //Console.WriteLine("have use" + timespan.Seconds + " seconds");
             Console.ReadKey();
         }
+        //public static void WriteWColor(this static Console,Action writeAct,ConsoleColor)
         public static void WriteWithColor(Action a, ConsoleColor color = ConsoleColor.White)
         {
             Console.ForegroundColor = color;

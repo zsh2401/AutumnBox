@@ -16,6 +16,7 @@ using AutumnBox.Support.CstmDebug;
 using System;
 using System.Collections;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Devices
 {
