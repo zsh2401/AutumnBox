@@ -53,7 +53,10 @@ namespace AutumnBox.Basic.Function
     using System;
     using System.Diagnostics;
     using System.Threading.Tasks;
+    public class ToolBundle
+    {
 
+    }
     /// <summary>
     /// 各种功能模块的父类
     /// </summary>
@@ -143,14 +146,27 @@ namespace AutumnBox.Basic.Function
             OnStartup(new StartupEventArgs());
             Status = ModuleStatus.Running;
             AnalyzeArgs(Args);
-            var fullOutput = MainMethod();
-            var executeResult = new ExecuteResult(fullOutput)
+            ExecuteResult executeResult;
+            if (Check(Args))
             {
-                Level = (Status == ModuleStatus.ForceStoped) ? ResultLevel.Unsuccessful : ResultLevel.Successful,
-                WasForcblyStop = (Status == ModuleStatus.ForceStoped) ? true : false
-            };
-            Status = (Status == ModuleStatus.ForceStoped) ? ModuleStatus.ForceStoped : ModuleStatus.Finished;
-            AnalyzeOutput(ref executeResult);
+                var fullOutput = MainMethod();
+                executeResult = new ExecuteResult(fullOutput)
+                {
+                    Level = (Status == ModuleStatus.ForceStoped) ? ResultLevel.Unsuccessful : ResultLevel.Successful,
+                    WasForcblyStop = (Status == ModuleStatus.ForceStoped) ? true : false
+                };
+                Status = (Status == ModuleStatus.ForceStoped) ? ModuleStatus.ForceStoped : ModuleStatus.Finished;
+                AnalyzeOutput(ref executeResult);
+            }
+            else
+            {
+                executeResult = new ExecuteResult(new OutputData())
+                {
+                    Level = ResultLevel.Unsuccessful,
+                    WasForcblyStop = false,
+                };
+                Status = ModuleStatus.UnableToRun;
+            }
             OnFinished(new FinishEventArgs
             {
                 Result = executeResult
@@ -193,6 +209,12 @@ namespace AutumnBox.Basic.Function
         /// <param name="args"></param>
         protected virtual void AnalyzeArgs(ModuleArgs args) { }
         /// <summary>
+        /// 在开始执行前进行检查,如果返回false将使功能模块终止运行
+        /// </summary>
+        /// <param name="args"></param>
+        /// <returns></returns>
+        protected virtual bool Check(ModuleArgs args) { return true; }
+        /// <summary>
         /// 模块的核心代码,强制要求子类进行实现
         /// </summary>
         protected abstract OutputData MainMethod();
@@ -202,7 +224,8 @@ namespace AutumnBox.Basic.Function
         /// <param name="e"></param>
         protected virtual void OnOutputReceived(OutputReceivedEventArgs e)
         {
-            Task.Run(()=> {
+            Task.Run(() =>
+            {
                 OutputReceived?.Invoke(this, e);
             });
         }
@@ -212,7 +235,8 @@ namespace AutumnBox.Basic.Function
         /// <param name="e"></param>
         protected virtual void OnProcessStarted(ProcessStartedEventArgs e)
         {
-            Task.Run(() => {
+            Task.Run(() =>
+            {
                 Logger.D("Process start! get the pid");
                 CoreProcessPid = e.Pid;
                 CoreProcessStarted?.Invoke(this, e);

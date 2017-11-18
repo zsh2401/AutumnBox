@@ -20,5 +20,6 @@ namespace AutumnBox.Basic.Function
         Running = -1,
         Finished = 0,
         ForceStoped = 1,
+        UnableToRun = 2,
     }
 }
