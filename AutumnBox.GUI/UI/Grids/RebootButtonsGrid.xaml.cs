@@ -16,6 +16,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using AutumnBox.Basic.Devices;
+using AutumnBox.GUI.Windows;
+using AutumnBox.GUI.Helper;
 
 namespace AutumnBox.GUI.UI.Grids
 {
@@ -34,9 +36,10 @@ namespace AutumnBox.GUI.UI.Grids
 
         public void SetDefault()
         {
-            buttonRebootToBootloader.IsEnabled = false;
-            buttonRebootToRecovery.IsEnabled = false;
-            buttonRebootToSystem.IsEnabled = false;
+            ButtonRebootToBootloader.IsEnabled = false;
+            ButtonRebootToRecovery.IsEnabled = false;
+            ButtonRebootToSystem.IsEnabled = false;
+            ButtonRebootToSnapdragon9008.IsEnabled = false;
         }
 
         public void Refresh(DeviceBasicInfo deviceSimpleInfo)
@@ -47,20 +50,23 @@ namespace AutumnBox.GUI.UI.Grids
                 switch (deviceSimpleInfo.Status)
                 {
                     case DeviceStatus.Fastboot:
-                        buttonRebootToBootloader.IsEnabled = true;
-                        buttonRebootToRecovery.IsEnabled = false;
-                        buttonRebootToSystem.IsEnabled = true;
+                        ButtonRebootToBootloader.IsEnabled = true;
+                        ButtonRebootToRecovery.IsEnabled = false;
+                        ButtonRebootToSystem.IsEnabled = true;
+                        ButtonRebootToSnapdragon9008.IsEnabled = true;
                         break;
                     case DeviceStatus.Recovery:
                     case DeviceStatus.Poweron:
-                        buttonRebootToBootloader.IsEnabled = true;
-                        buttonRebootToRecovery.IsEnabled = true;
-                        buttonRebootToSystem.IsEnabled = true;
+                        ButtonRebootToBootloader.IsEnabled = true;
+                        ButtonRebootToRecovery.IsEnabled = true;
+                        ButtonRebootToSystem.IsEnabled = true;
+                        ButtonRebootToSnapdragon9008.IsEnabled = true;
                         break;
                     default:
-                        buttonRebootToBootloader.IsEnabled = false;
-                        buttonRebootToRecovery.IsEnabled = false;
-                        buttonRebootToSystem.IsEnabled = false;
+                        ButtonRebootToBootloader.IsEnabled = false;
+                        ButtonRebootToRecovery.IsEnabled = false;
+                        ButtonRebootToSystem.IsEnabled = false;
+                        ButtonRebootToSnapdragon9008.IsEnabled = false;
                         break;
                 }
                 RefreshFinished?.Invoke(this, new EventArgs());
@@ -94,6 +100,26 @@ namespace AutumnBox.GUI.UI.Grids
             var fmp = FunctionModuleProxy.Create<RebootOperator>(new RebootArgs(App.SelectedDevice)
             {
                 rebootOption = RebootOptions.Bootloader,
+                nowStatus = App.SelectedDevice.Status
+            });
+            fmp.Finished += App.OwnerWindow.FuncFinish;
+            fmp.AsyncRun();
+        }
+
+        private void ButtonRebootToSnapdragon9008_Click(object sender, RoutedEventArgs e)
+        {
+            bool _needToContinue = ChoiceBox.FastShow(
+                App.OwnerWindow,
+                UIHelper.GetString("msgNotice"),
+                UIHelper.GetString("msgNoticeForRebootToEdlLine1") + "\n" +
+                UIHelper.GetString("msgNoticeForRebootToEdlLine2") + "\n" +
+                UIHelper.GetString("msgNoticeForRebootToEdlLine3"),
+                UIHelper.GetString("btnContinue"),
+                UIHelper.GetString("btnCancel"));
+            if (!_needToContinue) return;
+            var fmp = FunctionModuleProxy.Create<RebootOperator>(new RebootArgs(App.SelectedDevice)
+            {
+                rebootOption = RebootOptions.Snapdragon9008,
                 nowStatus = App.SelectedDevice.Status
             });
             fmp.Finished += App.OwnerWindow.FuncFinish;

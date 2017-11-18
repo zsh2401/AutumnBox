@@ -13,6 +13,7 @@
     <s:String x:Key="btnCreateShortcut">创建快捷方式到桌面</s:String>
     <s:String x:Key="btnTapEmu">模拟点击</s:String>
     <s:String x:Key="btnDeleteScreenLock">解除屏幕锁</s:String>
+    <s:String x:Key="btnRebootToSnapdragon9008">重启到高通9008救砖模式</s:String>
     <s:String x:Key="btnExtractRecImg">提取Recovery</s:String>
     <s:String x:Key="btnExtractBootImg">提取Boot.img</s:String>
     <s:String x:Key="btnFlashRecImg">刷入Recovery</s:String>
@@ -47,7 +48,7 @@
     <s:String x:Key="tbiWelcome">欢迎</s:String>
     <s:String x:Key="tbiOnPowerOn">开机</s:String>
     <s:String x:Key="tbiOnRecovery">恢复模式/Sideload</s:String>
-    <s:String x:Key="tbiOnFastboot">Fastboot/9008</s:String>
+    <s:String x:Key="tbiOnFastboot">Fastboot</s:String>
     <s:String x:Key="tbiDownloads">下载更多工具以及刷机包</s:String>
     <s:String x:Key="tbiHelp">帮助</s:String>
     <s:String x:Key="tbiSaveDevice">救砖</s:String>
@@ -87,6 +88,9 @@
     <s:String x:Key="msgIceBoxActLine2">如果您是国内定制ROM,请将类似小米账号,华为账号等的账号也一并删除!</s:String>
     <s:String x:Key="msgIceBoxActLine3">完成后请点击继续</s:String>
     <s:String x:Key="msgMiFlashFloderError">文件夹内没有正确的文件!请确保您选择的文件夹是线刷包解压后的文件夹!</s:String>
+    <s:String x:Key="msgNoticeForRebootToEdlLine1">请确保您的设备是高通骁龙处理器并且支持进入9008模式</s:String>
+    <s:String x:Key="msgNoticeForRebootToEdlLine2">当进入9008模式后,设备会完全黑屏,但您可以使用相关工具进行刷机</s:String>
+    <s:String x:Key="msgNoticeForRebootToEdlLine3">如果想要退出9008模式,长按电源键即可!</s:String>
     <!--信息-->
 
 

@@ -21,5 +21,6 @@ namespace AutumnBox.Basic.Function
         System = 0,
         Recovery,
         Bootloader,
+        Snapdragon9008,
     }
 }
