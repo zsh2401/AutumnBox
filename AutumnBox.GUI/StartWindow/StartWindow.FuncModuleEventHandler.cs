@@ -37,42 +37,31 @@ namespace AutumnBox.GUI
             this.Dispatcher.Invoke(() =>
             {
                 UIHelper.CloseRateBox();
-                if (sender is FileSender)
+                switch (sender.GetType().Name)
                 {
-                    PushFinish(e);
-                }
-                else if (sender is BreventServiceActivator)
-                {
-                    ActivatedBrvent(e);
-                }
-                else if (sender is ActivityLauncher)
-                {
-                    //TODO
-                }
-                else if (sender is CustomRecoveryFlasher)
-                {
-                    FlashCustomRecFinish(e);
-                    //TODO
-                }
-                else if (sender is RebootOperator)
-                {
-                    //TODO
-                }
-                else if (sender is SystemUnlocker)
-                {
-                    UnlockMiSystemFinish(e);
-                }
-                else if (sender is XiaomiBootloaderRelocker)
-                {
-                    RelockMiFinish(e);
-                }
-                else if (sender is ApkInstaller)
-                {
-                    MMessageBox.FastShow(App.OwnerWindow, "Finished", "Install successful");
-                }
-                else if (sender is ScreenShoter)
-                {
-                    MMessageBox.FastShow(App.OwnerWindow, App.Current.Resources["Success"].ToString(), App.Current.Resources["msgSaveSuccessful"].ToString());
+                    case nameof(FileSender):
+                        PushFinish(e);
+                        break;
+                    case nameof(BreventServiceActivator):
+                        ActivatedBrvent(e);
+                        break;
+                    case nameof(ActivityLauncher):
+                        ActivatedBrvent(e);
+                        break;
+                    case nameof(CustomRecoveryFlasher):
+                        FlashCustomRecFinish(e);
+                        break;
+                    case nameof(RebootOperator):
+                        break;
+                    case nameof(SystemUnlocker):
+                        UnlockMiSystemFinish(e);
+                        break;
+                    case nameof(XiaomiBootloaderRelocker):
+                        RelockMiFinish(e);
+                        break;
+                    default:
+                        ModuleResultWindow.FastShow(e.Result);
+                        break;
                 }
             });
         }
@@ -121,7 +110,7 @@ namespace AutumnBox.GUI
         /// <param name="o"></param>
         private void RelockMiFinish(FinishEventArgs e)
         {
-            Logger.D( "Enter the Relock Mi Finish Handler in the GUI");
+            Logger.D("Enter the Relock Mi Finish Handler in the GUI");
             this.Dispatcher.Invoke(new Action(() =>
             {
                 UIHelper.CloseRateBox();
@@ -154,7 +143,7 @@ namespace AutumnBox.GUI
         /// <param name="outputData">操作时的数据数据</param>
         private void FlashCustomRecFinish(FinishEventArgs e)
         {
-            Logger.D( "Flash Custom Recovery Finish");
+            Logger.D("Flash Custom Recovery Finish");
             this.Dispatcher.Invoke(new Action(() =>
             {
                 UIHelper.CloseRateBox();

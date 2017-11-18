@@ -222,7 +222,13 @@ namespace AutumnBox.GUI.UI.Grids
 
         private void ButtonIceBoxAct_Click(object sender, RoutedEventArgs e)
         {
-            MMessageBox.FastShow(App.OwnerWindow, App.Current.Resources["Notice"].ToString(), App.Current.Resources["msgFunctionIsInTheDeveloping"].ToString());
+            bool _continue = ChoiceBox.FastShow(App.OwnerWindow, 
+                UIHelper.GetString("msgNotice"), $"{UIHelper.GetString("msgIceBoxActLine1")}\n{UIHelper.GetString("msgIceBoxActLine2")}\n{UIHelper.GetString("msgIceBoxActLine3")}" , UIHelper.GetString("btnContinue"), UIHelper.GetString("btnCancel"));
+            if (!_continue) return;
+            var fmp = FunctionModuleProxy.Create<IceBoxActivator>(new ModuleArgs(App.SelectedDevice));
+            fmp.Finished += App.OwnerWindow.FuncFinish;
+            fmp.AsyncRun();
+            UIHelper.ShowRateBox();
         }
     }
 }

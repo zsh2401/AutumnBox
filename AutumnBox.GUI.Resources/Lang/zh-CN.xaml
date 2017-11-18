@@ -19,6 +19,7 @@
     <s:String x:Key="btnFlashBootImg">刷入Boot.img</s:String>
     <s:String x:Key="btnIceBoxAct">激活冰箱</s:String>
     <s:String x:Key="btnHelp">帮助</s:String>
+    <s:String x:Key="btnContinue">继续</s:String>
     <s:String x:Key="btnSaveAndReboot">保存并重启</s:String>
     <s:String x:Key="btnDpiChange">修改DPI</s:String>
     <s:String x:Key="btnInstallApk">安装APK</s:String>
@@ -82,6 +83,9 @@
     <s:String x:Key="msgShellChoiceTip">检测到您是Windows10 系统,请问您想用那种命令行界面?如果您不懂什么是Powershell,请用传统的CMD</s:String>
     <s:String x:Key="msgStartBrventTip">请确保您已经安装了最新版本黑域,并且已在手机上进入黑域软件的界面!!</s:String>
     <s:String x:Key="msgSaveSuccessful">保存成功!</s:String>
+    <s:String x:Key="msgIceBoxActLine1">请前往手机->账户设置,将所有账户删除!</s:String>
+    <s:String x:Key="msgIceBoxActLine2">如果您是国内定制ROM,请将类似小米账号,华为账号等的账号也一并删除!</s:String>
+    <s:String x:Key="msgIceBoxActLine3">完成后请点击继续</s:String>
     <s:String x:Key="msgMiFlashFloderError">文件夹内没有正确的文件!请确保您选择的文件夹是线刷包解压后的文件夹!</s:String>
     <!--信息-->
 

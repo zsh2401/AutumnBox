@@ -53,10 +53,6 @@ namespace AutumnBox.Basic.Function
     using System;
     using System.Diagnostics;
     using System.Threading.Tasks;
-    public class ToolBundle
-    {
-
-    }
     /// <summary>
     /// 各种功能模块的父类
     /// </summary>

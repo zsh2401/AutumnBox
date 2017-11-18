@@ -30,7 +30,8 @@ namespace AutumnBox.GUI.Helper
     {
         public static string GetString(string key)
         {
-            return App.Current.Resources[key].ToString() ?? key;
+            object tmp = App.Current.Resources[key];
+            return tmp == null ?key : tmp.ToString();
         }
         public static void SetOwnerTransparency(byte A)
         {
