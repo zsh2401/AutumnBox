@@ -75,7 +75,7 @@ namespace AutumnBox.Basic.Function.Modules
             }
             Logger.T("pull recovery to computer.....");
             var puller = FunctionModuleProxy.Create<FilePuller>(new FilePullArgs(DevSimpleInfo) { PhoneFilePath = $"/sdcard/{fileName}.img", LocalFilePath = _Args.SavePath });
-            result.Append(puller.FastRun().OutputData);
+            result.Append(puller.SyncRun().OutputData);
             Logger.D("pull finished....");
             return result;
         }

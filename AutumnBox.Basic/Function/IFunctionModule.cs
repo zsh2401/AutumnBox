@@ -17,14 +17,6 @@ namespace AutumnBox.Basic.Function
     {
         event OutputReceivedEventHandler OutputReceived;
         /// <summary>
-        /// 接收到常规输出时发生
-        /// </summary>
-        event DataReceivedEventHandler OutReceived;
-        /// <summary>
-        /// 接收到错误输出时发生
-        /// </summary>
-        event DataReceivedEventHandler ErrorReceived;
-        /// <summary>
         /// 模块开始运行时发生
         /// </summary>
         event StartupEventHandler Startup;
@@ -51,7 +43,7 @@ namespace AutumnBox.Basic.Function
         /// <summary>
         /// 开始运行
         /// </summary>
-        void SyncRun();
+        void Run();
         /// <summary>
         /// 强制停止
         /// </summary>

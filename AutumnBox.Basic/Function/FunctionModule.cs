@@ -52,6 +52,8 @@ namespace AutumnBox.Basic.Function
     using AutumnBox.Support.Helper;
     using System;
     using System.Diagnostics;
+    using System.Threading.Tasks;
+
     /// <summary>
     /// 各种功能模块的父类
     /// </summary>
@@ -98,14 +100,6 @@ namespace AutumnBox.Basic.Function
         /// </summary>
         public event FinishedEventHandler Finished;
         /// <summary>
-        /// 执行时接收到输出时发生
-        /// </summary>
-        public event DataReceivedEventHandler OutReceived;
-        /// <summary>
-        /// 执行时接收到错误输出时发生
-        /// </summary>
-        public event DataReceivedEventHandler ErrorReceived;
-        /// <summary>
         /// 核心进程开始时发生
         /// </summary>
         public event ProcessStartedEventHandler CoreProcessStarted;
@@ -137,14 +131,6 @@ namespace AutumnBox.Basic.Function
             Executer.OutputReceived += (s, e) =>
             {
                 OnOutputReceived(e);
-                if (!e.IsError)
-                {
-                    OnOutReceived(e.SourceArgs);
-                }
-                else
-                {
-                    OnErrorReceived(e.SourceArgs);
-                }
             };
             Executer.ProcessStarted += (s, e) => { OnProcessStarted(e); };
             Status = ModuleStatus.Ready;
@@ -152,7 +138,7 @@ namespace AutumnBox.Basic.Function
         /// <summary>
         /// 同步运行
         /// </summary>
-        public void SyncRun()
+        public void Run()
         {
             OnStartup(new StartupEventArgs());
             Status = ModuleStatus.Running;
@@ -196,7 +182,10 @@ namespace AutumnBox.Basic.Function
         /// <param name="e"></param>
         protected virtual void OnStartup(StartupEventArgs e)
         {
-            Startup?.Invoke(this, e);
+            Task.Run(() =>
+            {
+                Startup?.Invoke(this, e);
+            });
         }
         /// <summary>
         /// 处理参数
@@ -207,9 +196,15 @@ namespace AutumnBox.Basic.Function
         /// 模块的核心代码,强制要求子类进行实现
         /// </summary>
         protected abstract OutputData MainMethod();
+        /// <summary>
+        /// 引发OutputReceived事件
+        /// </summary>
+        /// <param name="e"></param>
         protected virtual void OnOutputReceived(OutputReceivedEventArgs e)
         {
-            OutputReceived?.Invoke(this, e);
+            Task.Run(()=> {
+                OutputReceived?.Invoke(this, e);
+            });
         }
         /// <summary>
         /// 引发进程开始事件
@@ -217,25 +212,11 @@ namespace AutumnBox.Basic.Function
         /// <param name="e"></param>
         protected virtual void OnProcessStarted(ProcessStartedEventArgs e)
         {
-            Logger.D("Process start! get the pid");
-            CoreProcessPid = e.Pid;
-            CoreProcessStarted?.Invoke(this, e);
-        }
-        /// <summary>
-        /// 引发OutReceived事件
-        /// </summary>
-        /// <param name="e"></param>
-        protected virtual void OnOutReceived(DataReceivedEventArgs e)
-        {
-            OutReceived?.Invoke(this, e);
-        }
-        /// <summary>
-        /// 引发ErrorReceived事件
-        /// </summary>
-        /// <param name="e"></param>
-        protected virtual void OnErrorReceived(DataReceivedEventArgs e)
-        {
-            ErrorReceived?.Invoke(this, e);
+            Task.Run(() => {
+                Logger.D("Process start! get the pid");
+                CoreProcessPid = e.Pid;
+                CoreProcessStarted?.Invoke(this, e);
+            });
         }
         /// <summary>
         /// 处理输出数据

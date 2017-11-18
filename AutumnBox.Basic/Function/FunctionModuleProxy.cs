@@ -18,6 +18,7 @@ using AutumnBox.Support.CstmDebug;
 using System;
 using System.Diagnostics;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Function
 {
@@ -31,16 +32,6 @@ namespace AutumnBox.Basic.Function
         {
             add { FunctionModule.OutputReceived += value; }
             remove { FunctionModule.OutputReceived -= value; }
-        }
-        public event DataReceivedEventHandler OutReceived
-        {
-            add { FunctionModule.OutReceived += value; }
-            remove { FunctionModule.OutReceived -= value; }
-        }
-        public event DataReceivedEventHandler ErrorReceived
-        {
-            add { FunctionModule.ErrorReceived += value; }
-            remove { FunctionModule.ErrorReceived -= value; }
         }
         public event StartupEventHandler Startup
         {
@@ -68,21 +59,19 @@ namespace AutumnBox.Basic.Function
         /// <summary>
         /// 异步运行
         /// </summary>
-        public void AsyncRun()
+        public async void AsyncRun()
         {
             if (!FunctionModule.IsFinishedEventRegistered) throw new EventNotBoundException();
             if (!(FunctionModule.Status == ModuleStatus.Ready)) throw new Exception("FM not ready");
-            new Thread(() =>
-            {
-                FunctionModule.SyncRun();
-            })
-            { Name = "Function Module Thread" }.Start();
+            await Task.Run(()=> {
+                FunctionModule.Run();
+            });
         }
         /// <summary>
         /// 同步运行
         /// </summary>
         /// <returns></returns>
-        public ExecuteResult FastRun()
+        public ExecuteResult SyncRun()
         {
             if (!(FunctionModule.Status == ModuleStatus.Ready)) throw new Exception("FM not ready");
             ExecuteResult result = null;
@@ -90,7 +79,7 @@ namespace AutumnBox.Basic.Function
             {
                 result = e.Result;
             };
-            FunctionModule.SyncRun();
+            FunctionModule.Run();
             return result;
         }
         /// <summary>

@@ -42,8 +42,16 @@ namespace AutumnBox.GUI.Windows
                     this.Close();
                 });
             };
-            fmp.ErrorReceived += this.ErrorReceived;
-            fmp.OutReceived += this.OutReceived;
+            fmp.OutputReceived += (s, e) =>
+            {
+                if (!e.IsError)
+                {
+                    this.OutReceived(s, e.SourceArgs);
+                }
+                else {
+                    this.ErrorReceived(s, e.SourceArgs);
+                }
+            };
             InitializeComponent();
         }
 

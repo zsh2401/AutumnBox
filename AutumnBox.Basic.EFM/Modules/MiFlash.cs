@@ -40,7 +40,7 @@ namespace AutumnBox.Basic.Function.Modules
                 {
                     temtOut.OutAdd(e.Data);
                     Logger.D("Out: " + e.Data);
-                    OnOutReceived(e);
+                    OnOutputReceived(new OutputReceivedEventArgs(e.Data,e,false));
                 }
 
             };
@@ -50,7 +50,7 @@ namespace AutumnBox.Basic.Function.Modules
                 {
                     temtOut.ErrorAdd(e.Data);
                     Logger.T("Error : " + e.Data);
-                    OnErrorReceived(e);
+                    OnOutputReceived(new OutputReceivedEventArgs(e.Data, e, true));
                 }
             };
             MainProcess.ProcessStarted += (s, e) => { OnProcessStarted(e); };

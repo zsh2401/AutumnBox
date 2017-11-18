@@ -32,7 +32,7 @@ namespace AutumnBox.Basic.Function.Modules
             };
             Logger.D("start brevent activity");
             FunctionModuleProxy.Create<ActivityLauncher>(new ActivityLaunchArgs(Args.DeviceBasicInfo)
-            { PackageName = "me.piebridge.brevent", ActivityName = ".ui.BreventActivity" }).FastRun();
+            { PackageName = "me.piebridge.brevent", ActivityName = ".ui.BreventActivity" }).SyncRun();
             Logger.D("try to execute command with quicklyshell ");
             Executer.QuicklyShell(DeviceID, DEFAULT_SHELL_COMMAND, out _exitResult);
             return o;

@@ -92,24 +92,13 @@ namespace AutumnBox.GUI.Windows
                 FloderPath = TextBoxPath.Text,
                 Type = GetFlashType(),
             });
-            Fmp.OutReceived += (s, ex) =>
+            Fmp.OutputReceived += (s, _e) =>
             {
                 this.Dispatcher.Invoke(() =>
                 {
-                    TextBoxOutput.AppendText("\n" + ex.Data);
-                    LabelNow.Foreground = new SolidColorBrush(Colors.Green);
-                    LabelNow.Content = ex.Data;
-                    TextBoxOutput.ScrollToEnd();
-                });
-
-            };
-            Fmp.ErrorReceived += (s, ex) =>
-            {
-                this.Dispatcher.Invoke(() =>
-                {
-                    TextBoxOutput.AppendText("\n" + ex.Data);
-                    LabelNow.Foreground = new SolidColorBrush(Colors.Red);
-                    LabelNow.Content = ex.Data;
+                    TextBoxOutput.AppendText("\n" + _e.Text);
+                    LabelNow.Foreground = _e.IsError ? new SolidColorBrush(Colors.Red) : new SolidColorBrush(Colors.Green);
+                    LabelNow.Content = _e.Text;
                     TextBoxOutput.ScrollToEnd();
                 });
             };

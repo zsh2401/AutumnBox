@@ -80,7 +80,7 @@ namespace AutumnBox.Basic.Function.Modules
                     FilePath = _args.ImgPath,
                     SaveName = _imgTmpFileName
                 });
-            return fmp.FastRun().Level == ResultLevel.Successful;
+            return fmp.SyncRun().Level == ResultLevel.Successful;
         }
     }
 }

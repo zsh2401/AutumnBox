@@ -38,8 +38,8 @@ namespace AutumnBox.Basic.Function.Modules
                 OutSender = this.Executer
             };
             FileInfo fi = new FileInfo(_Args.FilePath);
-            Ae($"push \"{fi.FullName}\" \"{_Args.SavePath  + _Args.SaveName}\"");
-            Logger.D(o.ToString());
+            Ae($"push \"{fi.FullName}\" \"{_Args.SavePath + _Args.SaveName}\"");
+            Logger.D("maybe finished? the output ->" + o.ToString());
             return o;
         }
     }

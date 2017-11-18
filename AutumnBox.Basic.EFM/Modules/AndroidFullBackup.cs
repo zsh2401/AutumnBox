@@ -29,12 +29,12 @@ namespace AutumnBox.Basic.Function.Modules
             Ae("backup -apk -shared -all -f/backup.ab");
             return result;
         }
-        protected override void OnOutReceived(DataReceivedEventArgs e)
+        protected override void OnOutputReceived(OutputReceivedEventArgs e)
         {
-            base.OnOutReceived(e);
+            base.OnOutputReceived(e);
             try
             {
-                if (e.Data.ToLower().Contains("now unlock your device"))
+                if (e.Text.ToLower().Contains("now unlock your device"))
                 {
                     Thread.Sleep(_WaitTime);
                     ForceStop();
