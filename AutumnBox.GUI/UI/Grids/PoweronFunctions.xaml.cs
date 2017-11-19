@@ -121,11 +121,17 @@ namespace AutumnBox.GUI.UI.Grids
 
         private void ButtonFullBackup_Click(object sender, RoutedEventArgs ex)
         {
-            var fmp = FunctionModuleProxy.Create(typeof(AndroidFullBackup), new ModuleArgs(App.SelectedDevice));
-            fmp.Finished += App.OwnerWindow.FuncFinish;
-            fmp.Finished += (s, e) => { Logger.D($"Full backup was launched?.... there is output : {e.OutputData.All}"); };
-            fmp.AsyncRun();
-            new FastBrowser().ShowDialog();
+            MMessageBox.FastShow(App.OwnerWindow, UIHelper.GetString("msgNotice"), UIHelper.GetString("msgNoticeForAndroidFullBackupRemove"));
+            //bool _screenIsOpen = ChoiceBox.FastShow(App.OwnerWindow,
+            //    UIHelper.GetString("msgNotice"), 
+            //    UIHelper.GetString("msgOpenTheScreenPls"),
+            //    UIHelper.GetString("btnContinue"),
+            //    UIHelper.GetString("btnCancel")) ;
+            //if (!_screenIsOpen) return;
+            //var fmp = FunctionModuleProxy.Create(typeof(AndroidFullBackup), new ModuleArgs(App.SelectedDevice));
+            //fmp.Finished += App.OwnerWindow.FuncFinish;
+            //fmp.Finished += (s, e) => { Logger.D($"Full backup was launched?.... there is output : {e.OutputData.All}"); };
+            //fmp.AsyncRun();
         }
 
         private void ButtonExtractBootImg_Click(object sender, RoutedEventArgs e)
@@ -222,8 +228,8 @@ namespace AutumnBox.GUI.UI.Grids
 
         private void ButtonIceBoxAct_Click(object sender, RoutedEventArgs e)
         {
-            bool _continue = ChoiceBox.FastShow(App.OwnerWindow, 
-                UIHelper.GetString("msgNotice"), $"{UIHelper.GetString("msgIceBoxActLine1")}\n{UIHelper.GetString("msgIceBoxActLine2")}\n{UIHelper.GetString("msgIceBoxActLine3")}" , UIHelper.GetString("btnContinue"), UIHelper.GetString("btnCancel"));
+            bool _continue = ChoiceBox.FastShow(App.OwnerWindow,
+                UIHelper.GetString("msgNotice"), $"{UIHelper.GetString("msgIceBoxActLine1")}\n{UIHelper.GetString("msgIceBoxActLine2")}\n{UIHelper.GetString("msgIceBoxActLine3")}", UIHelper.GetString("btnContinue"), UIHelper.GetString("btnCancel"));
             if (!_continue) return;
             var fmp = FunctionModuleProxy.Create<IceBoxActivator>(new ModuleArgs(App.SelectedDevice));
             fmp.Finished += App.OwnerWindow.FuncFinish;

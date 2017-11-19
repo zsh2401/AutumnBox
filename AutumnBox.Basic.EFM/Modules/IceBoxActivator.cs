@@ -15,27 +15,44 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using AutumnBox.Basic.Executer;
+using AutumnBox.Basic.Function.Event;
+using AutumnBox.Support.CstmDebug;
 
 namespace AutumnBox.Basic.Function.Modules
 {
+    public enum ErrorType
+    {
+        DeviceOwnerIsAlreadySet,
+        IceBoxHaveNoInstall
+    }
     public sealed class IceBoxActivator : FunctionModule
     {
         private bool _exeResult;
+        ToolsBundle _bundle;
         private static readonly string _defaultCommand = "dpm set-device-owner com.catchingnow.icebox/.receiver.DPMReceiver";
         protected override OutputData MainMethod(ToolsBundle bundle)
         {
+            _bundle = bundle;
             var o =
-                bundle.Executer.QuicklyShell(bundle.DeviceID, _defaultCommand, out _exeResult);
-            if (_exeResult == true)
-            {
-                bundle.Ae("reboot");
-            }
-            return o;
+                bundle.Executer.QuicklyShell(bundle.DeviceID, _defaultCommand);
+            _exeResult = o.IsSuccess;
+            return o.OutputData;
         }
-        protected override void AnalyzeOutput(BundleForAnalyzeOutput bundleForAnalyzeOutput)
+        protected override void AnalyzeOutput(BundleForAnalyzeOutput bundle)
         {
-            base.AnalyzeOutput(bundleForAnalyzeOutput);
-            if (_exeResult == false) bundleForAnalyzeOutput.Result.Level = ResultLevel.Unsuccessful;
+            base.AnalyzeOutput(bundle);
+            if (bundle.OutputData.All.ToString().ToLower().Contains("error"))
+            {
+                bundle.Result.Level = ResultLevel.Unsuccessful;
+                bundle.Other = ErrorType.IceBoxHaveNoInstall;
+            }
+            if (bundle.OutputData.All.ToString().ToLower().Contains("device owner is already set"))
+            {
+                bundle.Result.Level = ResultLevel.Unsuccessful;
+                bundle.Other = ErrorType.DeviceOwnerIsAlreadySet;
+            }
+            if (_exeResult == false) bundle.Result.Level = ResultLevel.Unsuccessful;
+            if (bundle.Result.Level == ResultLevel.Successful) _bundle.Ae("reboot");
         }
     }
 }

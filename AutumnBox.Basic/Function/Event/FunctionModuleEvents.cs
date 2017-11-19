@@ -15,5 +15,6 @@ namespace AutumnBox.Basic.Function.Event
     {
         public OutputData OutputData { get { return Result.OutputData; } }
         public ExecuteResult Result { get; internal set; }
+        public Object Other { get; internal set; }
     }
 }

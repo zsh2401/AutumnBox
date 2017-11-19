@@ -51,6 +51,7 @@ namespace AutumnBox.Basic.Function
     }
     public class BundleForAnalyzeOutput
     {
+        public Object Other { get; set; }
         public ExecuteResult Result { get; set; }
         public OutputData OutputData { get { return Result.OutputData; } }
     }

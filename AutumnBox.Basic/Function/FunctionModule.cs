@@ -114,6 +114,7 @@ namespace AutumnBox.Basic.Function
         {
             OnStartup(new StartupEventArgs());
             ExecuteResult executeResult;
+            BundleForAnalyzeOutput bundleForAnalyzeOutput = null;
             if (Check(_toolsBundle.Args))
             {
                 Status = ModuleStatus.Running;
@@ -124,7 +125,8 @@ namespace AutumnBox.Basic.Function
                     WasForcblyStop = (Status == ModuleStatus.ForceStoped) ? true : false
                 };
                 Status = (Status == ModuleStatus.ForceStoped) ? ModuleStatus.ForceStoped : ModuleStatus.Finished;
-                AnalyzeOutput(new BundleForAnalyzeOutput() { Result = executeResult });
+                bundleForAnalyzeOutput = new BundleForAnalyzeOutput() { Result = executeResult };
+                AnalyzeOutput(bundleForAnalyzeOutput);
             }
             else
             {
@@ -135,9 +137,11 @@ namespace AutumnBox.Basic.Function
                 };
                 Status = ModuleStatus.UnableToRun;
             }
+
             OnFinished(new FinishEventArgs
             {
-                Result = executeResult
+                Result = executeResult,
+                Other = bundleForAnalyzeOutput?.Other
             });
         }
         /// <summary>

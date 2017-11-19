@@ -25,10 +25,6 @@ namespace AutumnBox.Basic.Executer
     public sealed class CExecuter : IDisposable, IOutSender
     {
         public event ProcessStartedEventHandler ProcessStarted { add { MainProcess.ProcessStarted += value; } remove { MainProcess.ProcessStarted -= value; } }
-        [Obsolete("please use OutputReceived to instead")]
-        public event DataReceivedEventHandler OutputDataReceived { add { MainProcess.OutputDataReceived += value; } remove { MainProcess.OutputDataReceived -= value; } }
-        [Obsolete("please use OutputReceived to instead")]
-        public event DataReceivedEventHandler ErrorDataReceived { add { MainProcess.ErrorDataReceived += value; } remove { MainProcess.ErrorDataReceived -= value; } }
         public event OutputReceivedEventHandler OutputReceived { add { MainProcess.OutputReceived += value; } remove { MainProcess.OutputReceived -= value; } }
         public bool BlockNullOutput { get { return MainProcess.BlockNullOutput; } set { MainProcess.BlockNullOutput = value; } }
         public OutputData Execute(Command command)
@@ -46,6 +42,15 @@ namespace AutumnBox.Basic.Executer
             var o = QuicklyShell(id, command, out int exitCode);
             isSuccessful = exitCode == 0;
             return o;
+        }
+        public ShellOutput QuicklyShell(string id, string command)
+        {
+            var o = QuicklyShell(id, command, out int retCode);
+            var shell_output = new ShellOutput(o)
+            {
+                ReturnCode = retCode
+            };
+            return shell_output;
         }
         public OutputData QuicklyShell(string id, string command, out int returnCode)
         {

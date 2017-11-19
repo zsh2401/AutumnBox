@@ -40,7 +40,6 @@ namespace AutumnBox.Basic.Devices
             }
         }
         private static readonly string devicePattern = @"(?i)^(?<id>[\w\d]+)[\t\u0020]+(?<status>\w+)[^?!.]$";
-        //private
         private static readonly Regex _deviceRegex = new Regex(devicePattern, RegexOptions.Multiline);
         private static void AdbPrase(OutputData o, ref DevicesList devList)
         {

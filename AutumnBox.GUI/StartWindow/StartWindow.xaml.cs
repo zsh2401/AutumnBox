@@ -112,7 +112,7 @@ namespace AutumnBox.GUI
         /// <param name="e"></param>
         private void MainWindow_Closed(object sender, EventArgs e)
         {
-            SystemHelper.AppExit(0);
+            //SystemHelper.AppExit(0);
         }
         /// <summary>
         /// 根据当前选中的设备刷新界面信息

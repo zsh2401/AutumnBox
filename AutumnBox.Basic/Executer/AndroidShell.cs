@@ -31,10 +31,12 @@ namespace AutumnBox.Basic.Executer
 {
     public class ShellOutput
     {
+        public OutputData OutputData { get; private set; } = new OutputData();
         public bool IsSuccess { get { return ReturnCode == 0; } }
         public int ReturnCode { get; set; } = 0;
         public void OutAdd(string text)
         {
+            OutputData.OutAdd(text);
             LineAll.Add(text);
             All.AppendLine(text);
         }
@@ -51,6 +53,13 @@ namespace AutumnBox.Basic.Executer
                 });
                 return tmp;
             }
+        }
+        public ShellOutput() { }
+        public ShellOutput(OutputData o)
+        {
+            LineAll = o.LineAll;
+            All = o.All;
+            OutputData = o;
         }
     }
     public delegate void InputReceivedEventHandler(object sender, InputReceivedEventArgs e);

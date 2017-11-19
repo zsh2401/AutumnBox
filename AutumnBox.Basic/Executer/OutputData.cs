@@ -115,5 +115,9 @@ namespace AutumnBox.Basic.Executer
         {
             return All.ToString();
         }
+        public static explicit operator ShellOutput(OutputData output)
+        {
+            return new ShellOutput(output);
+        }
     }
 }
