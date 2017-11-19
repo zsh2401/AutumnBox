@@ -16,9 +16,9 @@ namespace AutumnBox.Basic.Function.Modules
     using AutumnBox.Basic.Executer;
     public class XiaomiBootloaderRelocker : FunctionModule
     {
-        protected override OutputData MainMethod()
+        protected override OutputData MainMethod(ToolsBundle toolsBundle)
         {
-            var o = Ae(" oem lock");
+            var o = toolsBundle.Ae(" oem lock");
             return o;
         }
     }

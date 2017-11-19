@@ -26,7 +26,7 @@ namespace AutumnBox.Basic.Function
     /// <summary>
     /// 功能模块代理器,更加方便的管理功能模块
     /// </summary>
-    public class FunctionModuleProxy
+    public sealed class FunctionModuleProxy:IOutSender
     {
         public event OutputReceivedEventHandler OutputReceived
         {

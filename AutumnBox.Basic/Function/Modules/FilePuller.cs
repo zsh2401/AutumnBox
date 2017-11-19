@@ -22,15 +22,18 @@ namespace AutumnBox.Basic.Function.Modules
     public class FilePuller : FunctionModule
     {
         private FilePullArgs _Args;
-        protected override void AnalyzeArgs(ModuleArgs args)
+        protected override void Create(BundleForCreate bundle)
         {
-            base.AnalyzeArgs(args);
-            _Args = (FilePullArgs)args;
-            if (_Args.PhoneFilePath == null) throw new NullReferenceException("please set FilePullArgs.PhoneFilePath!");
+            base.Create(bundle);
+            _Args = (FilePullArgs)bundle.Args;
         }
-        protected override OutputData MainMethod()
+        protected override bool Check(ModuleArgs args)
         {
-            return Ae($"pull {_Args.PhoneFilePath} {_Args.LocalFilePath}");
+            return (_Args.PhoneFilePath != null);
+        }
+        protected override OutputData MainMethod(ToolsBundle bundle)
+        {
+            return bundle.Ae($"pull {_Args.PhoneFilePath} {_Args.LocalFilePath}");
         }
     }
 }

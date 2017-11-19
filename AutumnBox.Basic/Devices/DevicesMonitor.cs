@@ -40,7 +40,7 @@ namespace AutumnBox.Basic.Devices
     /// <summary>
     /// 设备监听器
     /// </summary>
-    public sealed class DevicesMonitor:IDisposable
+    public sealed class DevicesMonitor : IDisposable
     {
         public event DevicesChangedHandler DevicesChanged;//当连接设备的情况变化时发生
         private const int defaultInterval = 1000;
@@ -80,7 +80,7 @@ namespace AutumnBox.Basic.Devices
         {
             devicesListenerTask.Wait(second);
         }
- 
+
         /// <summary>
         /// 无限循环的监听主函数
         /// </summary>
@@ -90,7 +90,23 @@ namespace AutumnBox.Basic.Devices
             DevicesList last = new DevicesList();
             while (Continue)
             {
-                var now =  executer.GetDevices();
+                var now = executer.GetDevices();
+                if (now != last)
+                {
+                    Logger.D("Devices Change");
+                    last = now;
+                    DevicesChanged.Invoke(this, new DevicesChangedEventArgs(now));
+                }
+                Thread.Sleep(interval);
+            }
+        }
+        private async void ListenAsync()
+        {
+            IDevicesGetter executer = new DevicesGetter();
+            DevicesList last = new DevicesList();
+            while (Continue)
+            {
+                var now = await Task.Run(() => { return executer.GetDevices(); });
                 if (now != last)
                 {
                     Logger.D("Devices Change");

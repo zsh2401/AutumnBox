@@ -20,7 +20,7 @@ namespace AutumnBox.Basic.Function.Modules
 {
     public class SideloadFlasher : FunctionModule
     {
-        protected override OutputData MainMethod()
+        protected override OutputData MainMethod(ToolsBundle bundle)
         {
             throw new NotImplementedException();
         }

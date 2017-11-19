@@ -30,15 +30,10 @@ namespace AutumnBox.Basic.Function.Modules
         }
         private ExecuterType t;
         private RebootArgs _Args;
-        protected override bool Check(ModuleArgs args)
+        protected override void Create(BundleForCreate bundle)
         {
-            bool isRebootToRecoveryOnBootloader = (_Args.nowStatus == DeviceStatus.Fastboot && _Args.rebootOption == RebootOptions.Recovery);
-            return !isRebootToRecoveryOnBootloader;
-        }
-        protected override void AnalyzeArgs(ModuleArgs args)
-        {
-            base.AnalyzeArgs(args);
-            this._Args = (RebootArgs)args;
+            base.Create(bundle);
+            this._Args = (RebootArgs)bundle.Args;
             switch (_Args.nowStatus)
             {
                 case DeviceStatus.Fastboot:
@@ -49,7 +44,12 @@ namespace AutumnBox.Basic.Function.Modules
                     break;
             }
         }
-        protected override OutputData MainMethod()
+        protected override bool Check(ModuleArgs args)
+        {
+            bool isRebootToRecoveryOnBootloader = (_Args.nowStatus == DeviceStatus.Fastboot && _Args.rebootOption == RebootOptions.Recovery);
+            return !isRebootToRecoveryOnBootloader;
+        }
+        protected override OutputData MainMethod(ToolsBundle toolsBundle)
         {
             string command = "reboot";
             if (_Args.rebootOption == RebootOptions.Bootloader)
@@ -76,10 +76,10 @@ namespace AutumnBox.Basic.Function.Modules
             switch (t)
             {
                 case ExecuterType.Adb:
-                    o = Ae(command);
+                    o = toolsBundle.Ae(command);
                     break;
                 default:
-                    o = Fe(command);
+                    o = toolsBundle.Fe(command);
                     break;
             }
             return o;

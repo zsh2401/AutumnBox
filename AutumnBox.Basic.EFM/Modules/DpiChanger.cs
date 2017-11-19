@@ -21,29 +21,29 @@ namespace AutumnBox.Basic.Function.Modules
     {
         bool isSuccess;
         private int dpi;
-        protected override void AnalyzeArgs(ModuleArgs args)
+        protected override void Create(BundleForCreate bundle)
         {
-            base.AnalyzeArgs(args);
-            dpi = ((DpiChangerArgs)args).Dpi;
+            base.Create(bundle);
+            dpi = ((DpiChangerArgs)bundle.Args).Dpi;
         }
-        protected override OutputData MainMethod()
+        protected override OutputData MainMethod(ToolsBundle bundle)
         {
             OutputData o = new OutputData
             {
-                OutSender = Executer
+                OutSender = bundle.Executer
             };
-            Executer.QuicklyShell(DeviceID, $"wm density {dpi}", out isSuccess);
+            bundle.Executer.QuicklyShell(bundle.DeviceID, $"wm density {dpi}", out isSuccess);
             if (isSuccess)
             {
-                Ae("reboot");
+                bundle.Ae("reboot");
             }
             Logger.D("maybe finished....the output ->" + o.ToString());
             return o;
         }
-        protected override void AnalyzeOutput(ref ExecuteResult executeResult)
+        protected override void AnalyzeOutput(BundleForAnalyzeOutput bundle)
         {
-            base.AnalyzeOutput(ref executeResult);
-            if (!isSuccess) executeResult.Level = ResultLevel.Unsuccessful;
+            base.AnalyzeOutput(bundle);
+            if (!isSuccess) bundle.Result.Level = ResultLevel.Unsuccessful;
         }
     }
 }

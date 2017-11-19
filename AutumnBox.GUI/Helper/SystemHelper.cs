@@ -98,6 +98,10 @@ namespace AutumnBox.GUI.Helper
                 return Environment.OSVersion.Version.Major == 10;
             }
         }
+        public static void ChangeAdbProt(uint port = 24010)
+        {
+            Environment.SetEnvironmentVariable("ADB_PORT", port.ToString(), EnvironmentVariableTarget.User);
+        }
         public static bool HaveOtherAutumnBoxProcess()
         {
             return Process.GetProcessesByName("AutumnBox").Length != 1;

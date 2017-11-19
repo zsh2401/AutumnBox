@@ -63,29 +63,15 @@ namespace AutumnBox.Basic.Function
         /// </summary>
         private int? CoreProcessPid { get; set; }
         /// <summary>
-        /// 源模块参数
+        /// 模块参数
         /// </summary>
-        public ModuleArgs Args { protected get; set; }
-        /// <summary>
-        /// 向已绑定的设备执行adb命令
-        /// </summary>
-        protected readonly Func<string, OutputData> Ae;
-        /// <summary>
-        /// 向已绑定的设备执行fastboot命令
-        /// </summary>
-        protected readonly Func<string, OutputData> Fe;
-        /// <summary>
-        /// 执行器
-        /// </summary>
-        protected readonly CExecuter Executer = new CExecuter();
-        /// <summary>
-        /// 功能模块执行时指定的设备id
-        /// </summary>
-        protected string DeviceID { get { return DevSimpleInfo.Id; } }
-        /// <summary>
-        /// 绑定的设备简单信息
-        /// </summary>s
-        protected internal DeviceBasicInfo DevSimpleInfo { get { return Args.DeviceBasicInfo; } }
+        public ModuleArgs Args
+        {
+            set
+            {
+                Create(new BundleForCreate(value));
+            }
+        }
         /// <summary>
         /// 模块状态
         /// </summary>
@@ -106,7 +92,6 @@ namespace AutumnBox.Basic.Function
         /// 执行时接收到任何输出时发生
         /// </summary>
         public event OutputReceivedEventHandler OutputReceived;
-
         /// <summary>
         /// 判断完成事件是否被绑定
         /// </summary>
@@ -117,42 +102,29 @@ namespace AutumnBox.Basic.Function
                 return Finished != null ? true : false;
             }
         }
-
+        private ToolsBundle _toolsBundle;
         /// <summary>
         /// 构造
         /// </summary>
-        protected FunctionModule()
-        {
-            Ae = (command) =>
-            { return Executer.Execute(Command.MakeForAdb(Args.DeviceBasicInfo, command)); };
-            Fe = (command) =>
-            { return Executer.Execute(Command.MakeForFastboot(Args.DeviceBasicInfo, command)); };
-            Executer.OutputReceived += (s, e) =>
-            {
-                OnOutputReceived(e);
-            };
-            Executer.ProcessStarted += (s, e) => { OnProcessStarted(e); };
-            Status = ModuleStatus.Ready;
-        }
+        protected FunctionModule() { }
         /// <summary>
         /// 同步运行
         /// </summary>
         public void Run()
         {
             OnStartup(new StartupEventArgs());
-            Status = ModuleStatus.Running;
-            AnalyzeArgs(Args);
             ExecuteResult executeResult;
-            if (Check(Args))
+            if (Check(_toolsBundle.Args))
             {
-                var fullOutput = MainMethod();
+                Status = ModuleStatus.Running;
+                var fullOutput = MainMethod(_toolsBundle);
                 executeResult = new ExecuteResult(fullOutput)
                 {
                     Level = (Status == ModuleStatus.ForceStoped) ? ResultLevel.Unsuccessful : ResultLevel.Successful,
                     WasForcblyStop = (Status == ModuleStatus.ForceStoped) ? true : false
                 };
                 Status = (Status == ModuleStatus.ForceStoped) ? ModuleStatus.ForceStoped : ModuleStatus.Finished;
-                AnalyzeOutput(ref executeResult);
+                AnalyzeOutput(new BundleForAnalyzeOutput() { Result = executeResult });
             }
             else
             {
@@ -183,11 +155,22 @@ namespace AutumnBox.Basic.Function
         public void Dispose()
         {
 #pragma warning disable CA1063
-            Executer.Dispose();
+            _toolsBundle.Executer.Dispose();
 #pragma warning disable CA1063
         }
 
         #region 虚方法
+        protected virtual void Create(BundleForCreate bundle)
+        {
+            CExecuter executer = new CExecuter();
+            _toolsBundle = new ToolsBundle(executer, bundle.Args);
+            executer.OutputReceived += (s, e) =>
+            {
+                OnOutputReceived(e);
+            };
+            executer.ProcessStarted += (s, e) => { OnProcessStarted(e); };
+            Status = ModuleStatus.Ready;
+        }
         /// <summary>
         /// 开始运行时发生
         /// </summary>
@@ -199,11 +182,11 @@ namespace AutumnBox.Basic.Function
                 Startup?.Invoke(this, e);
             });
         }
-        /// <summary>
-        /// 处理参数
-        /// </summary>
-        /// <param name="args"></param>
-        protected virtual void AnalyzeArgs(ModuleArgs args) { }
+        ///// <summary>
+        ///// 处理参数
+        ///// </summary>
+        ///// <param name="args"></param>
+        //protected virtual void AnalyzeArgs(ModuleArgs args) { }
         /// <summary>
         /// 在开始执行前进行检查,如果返回false将使功能模块终止运行
         /// </summary>
@@ -213,7 +196,7 @@ namespace AutumnBox.Basic.Function
         /// <summary>
         /// 模块的核心代码,强制要求子类进行实现
         /// </summary>
-        protected abstract OutputData MainMethod();
+        protected abstract OutputData MainMethod(ToolsBundle toolsBundle);
         /// <summary>
         /// 引发OutputReceived事件
         /// </summary>
@@ -243,7 +226,7 @@ namespace AutumnBox.Basic.Function
         /// </summary>
         /// <param name="output"></param>
         /// <param name="result"></param>
-        protected virtual void AnalyzeOutput(ref ExecuteResult executeResult) { }
+        protected virtual void AnalyzeOutput(BundleForAnalyzeOutput bundleForAnalyzeOutput) { }
         /// <summary>
         /// 引发Finished事件
         /// </summary>

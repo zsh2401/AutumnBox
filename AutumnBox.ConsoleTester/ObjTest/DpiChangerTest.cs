@@ -27,7 +27,7 @@ namespace AutumnBox.ConsoleTester.ObjTest
         {
             FunctionModuleProxy fmp =
                     FunctionModuleProxy.Create<DpiChanger>(new Basic.Function.Args.DpiChangerArgs(Program.mi4) { Dpi = 400 });
-            Console.WriteLine(fmp.FastRun().OutputData.All);
+            Console.WriteLine(fmp.SyncRun().OutputData.All);
         }
     }
 }

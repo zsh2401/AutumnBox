@@ -30,6 +30,7 @@ namespace AutumnBox.GUI
         internal static DevicesMonitor DevicesListener = new DevicesMonitor();//设备监听器
         protected override void OnStartup(StartupEventArgs e)
         {
+            //SystemHelper.ChangeAdbProt(24010);
             if (SystemHelper.HaveOtherAutumnBoxProcess())
             {
                 MMessageBox.FastShow(App.OwnerWindow,"警告/Warning", "不可以同时打开两个AutumnBox\nDo not run two AutumnBox at once");

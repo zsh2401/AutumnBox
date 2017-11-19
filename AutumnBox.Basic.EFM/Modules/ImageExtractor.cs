@@ -33,17 +33,17 @@ namespace AutumnBox.Basic.Function.Modules
         private bool _findNotFind = false;
         private AndroidShell _shell;
         private ImgExtractArgs _Args;
-        protected override void AnalyzeArgs(ModuleArgs args)
+        protected override void Create(BundleForCreate bundle)
         {
-            base.AnalyzeArgs(args);
-            _Args = (ImgExtractArgs)args;
+            base.Create(bundle);
+            _Args = (ImgExtractArgs)bundle.Args;
         }
-        protected override OutputData MainMethod()
+        protected override OutputData MainMethod(ToolsBundle toolsBundle)
         {
             OutputData result = new OutputData();
             string imagePath;
             string fileName = _Args.ExtractImage.ToString().ToLower();
-            using (AndroidShell _shell = new AndroidShell(DeviceID))
+            using (AndroidShell _shell = new AndroidShell(toolsBundle.DeviceID))
             {
                 _shell.OutputReceived += (s, e) => { OnOutputReceived(e); };
                 _shell.ProcessStarted += (s, e) => { OnProcessStarted(e); };
@@ -74,15 +74,15 @@ namespace AutumnBox.Basic.Function.Modules
                 Logger.T("Extract and Copy finished.....");
             }
             Logger.T("pull recovery to computer.....");
-            var puller = FunctionModuleProxy.Create<FilePuller>(new FilePullArgs(DevSimpleInfo) { PhoneFilePath = $"/sdcard/{fileName}.img", LocalFilePath = _Args.SavePath });
+            var puller = FunctionModuleProxy.Create<FilePuller>(new FilePullArgs(toolsBundle.Args.DeviceBasicInfo) { PhoneFilePath = $"/sdcard/{fileName}.img", LocalFilePath = _Args.SavePath });
             result.Append(puller.SyncRun().OutputData);
             Logger.D("pull finished....");
             return result;
         }
-        protected override void AnalyzeOutput(ref ExecuteResult executeResult)
+        protected override void AnalyzeOutput(BundleForAnalyzeOutput bundleForAnalyzeOutput)
         {
-            base.AnalyzeOutput(ref executeResult);
-            if (_suNotFound || _imgNotFound || _copyFailed) executeResult.Level = ResultLevel.Unsuccessful;
+            base.AnalyzeOutput(bundleForAnalyzeOutput);
+            if (_suNotFound || _imgNotFound || _copyFailed) bundleForAnalyzeOutput.Result.Level = ResultLevel.Unsuccessful;
             Logger.D($"SU NOT FOUND {_suNotFound}");
             Logger.D($"IMG NOT FOUND {_imgNotFound}");
             Logger.D($"COPY FAIL {_copyFailed}");

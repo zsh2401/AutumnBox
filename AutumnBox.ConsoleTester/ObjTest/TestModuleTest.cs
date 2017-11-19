@@ -10,20 +10,21 @@ using AutumnBox.Basic.Function.Event;
 
 namespace AutumnBox.ConsoleTester.ObjTest
 {
-    public class TestModuleTest : FunctionModule
-    {
-        protected override void AnalyzeArgs(ModuleArgs args)
-        {
-            base.AnalyzeArgs(args);
-        }
-        protected override OutputData MainMethod()
-        {
-            Console.WriteLine("Execute Main Method");
-            return new OutputData();
-        }
-        public static void StartTest()
-        {
-            var o = FunctionModuleProxy.Create<TestModuleTest>(new FileArgs(new Basic.Devices.DeviceBasicInfo()));
-        }
-    }
+    //public class TestModuleTest : FunctionModule
+    //{
+        //protected override void AnalyzeArgs(ModuleArgs args)
+        //{
+        //    base.AnalyzeArgs(args);
+        //}
+        //protected override 
+        //protected override OutputData MainMethod(ToolsBundle bundle)
+        //{
+        //    Console.WriteLine("Execute Main Method");
+        //    return new OutputData();
+        //}
+        //public static void StartTest()
+        //{
+        //    var o = FunctionModuleProxy.Create<TestModuleTest>(new FileArgs(new Basic.Devices.DeviceBasicInfo()));
+        //}
+    //}
 }

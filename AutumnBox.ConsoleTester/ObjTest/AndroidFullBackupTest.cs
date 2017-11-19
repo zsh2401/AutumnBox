@@ -29,12 +29,12 @@ namespace AutumnBox.ConsoleTester.ObjTest
             {
                 Console.WriteLine($"launched level : {e.Result.Level.ToString()} ");
             };
-            fmp.OutReceived += (s, e) =>
+            fmp.OutputReceived += (s, e) =>
             {
-                Console.WriteLine(e.Data);
+                Console.WriteLine(e.Text);
                 try
                 {
-                    if (e.Data.ToLower().Contains("now unlock your device"))
+                    if (e.Text.ToLower().Contains("now unlock your device"))
                     {
                         fmp.ForceStop();
                     }

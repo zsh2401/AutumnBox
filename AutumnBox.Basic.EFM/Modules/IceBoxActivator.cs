@@ -22,20 +22,20 @@ namespace AutumnBox.Basic.Function.Modules
     {
         private bool _exeResult;
         private static readonly string _defaultCommand = "dpm set-device-owner com.catchingnow.icebox/.receiver.DPMReceiver";
-        protected override OutputData MainMethod()
+        protected override OutputData MainMethod(ToolsBundle bundle)
         {
             var o =
-                Executer.QuicklyShell(DeviceID, _defaultCommand, out _exeResult);
+                bundle.Executer.QuicklyShell(bundle.DeviceID, _defaultCommand, out _exeResult);
             if (_exeResult == true)
             {
-                Ae("reboot");
+                bundle.Ae("reboot");
             }
             return o;
         }
-        protected override void AnalyzeOutput(ref ExecuteResult executeResult)
+        protected override void AnalyzeOutput(BundleForAnalyzeOutput bundleForAnalyzeOutput)
         {
-            base.AnalyzeOutput(ref executeResult);
-            if (_exeResult == false) executeResult.Level = ResultLevel.Unsuccessful;
+            base.AnalyzeOutput(bundleForAnalyzeOutput);
+            if (_exeResult == false) bundleForAnalyzeOutput.Result.Level = ResultLevel.Unsuccessful;
         }
     }
 }

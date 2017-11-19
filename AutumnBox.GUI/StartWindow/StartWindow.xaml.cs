@@ -43,7 +43,7 @@ namespace AutumnBox.GUI
             {
                 this.Dispatcher.Invoke(() =>
                 {
-                    Logger.D(this,"Refresh Start..");
+                    Logger.D(this, "Refresh Start..");
                     UIHelper.ShowRateBox();
                 });
             };
@@ -51,7 +51,7 @@ namespace AutumnBox.GUI
             {
                 this.Dispatcher.Invoke(() =>
                 {
-                    Logger.D(this,"Refresh UI Finished..");
+                    Logger.D(this, "Refresh UI Finished..");
                     UIHelper.CloseRateBox();
                 });
             };
@@ -59,8 +59,8 @@ namespace AutumnBox.GUI
             AboutControl.LabelVersion.Content = SystemHelper.CurrentVersion + "-Debug";
             TitleBar.Title.Content += "  " + SystemHelper.CurrentVersion + "-Debug";
 #else
-            LabelVersion.Content = StaticData.nowVersion.version + "-Release";
-            TitleBar.Title.Content += "  " + StaticData.nowVersion.version + "-Release";
+            AboutControl.LabelVersion.Content = SystemHelper.CurrentVersion + "-Release";
+            TitleBar.Title.Content += "  " + SystemHelper.CurrentVersion + "-Release";
 #endif
         }
         /// <summary>

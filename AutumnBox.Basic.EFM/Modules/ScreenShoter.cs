@@ -21,18 +21,18 @@ namespace AutumnBox.Basic.Function.Modules
     public sealed class ScreenShoter : FunctionModule
     {
         ScreenShoterArgs _Args;
-        protected override void AnalyzeArgs(ModuleArgs args)
+        protected override void Create(BundleForCreate bundle)
         {
-            base.AnalyzeArgs(args);
-            _Args = (ScreenShoterArgs)args;
+            base.Create(bundle);
+            _Args = (ScreenShoterArgs)bundle.Args;
         }
-        protected override OutputData MainMethod()
+        protected override OutputData MainMethod(ToolsBundle bundle)
         {
             OutputData o = new OutputData();
             string fileName = $"{DateTime.Now.ToString("yyyy_MM_dd_hh_MM_ss")}.png";
-            o.Append(Ae($"shell /system/bin/screencap -p /sdcard/{fileName}"));
-            o.Append(Ae($"pull /sdcard/{fileName} " + _Args.LocalPath + "\\" + fileName));
-            o.Append(Ae($"shell rm -rf /sdcard/{fileName}"));
+            o.Append(bundle.Ae($"shell /system/bin/screencap -p /sdcard/{fileName}"));
+            o.Append(bundle.Ae($"pull /sdcard/{fileName} " + _Args.LocalPath + "\\" + fileName));
+            o.Append(bundle.Ae($"shell rm -rf /sdcard/{fileName}"));
             return o;
         }
     }

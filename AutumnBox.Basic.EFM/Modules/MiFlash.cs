@@ -40,7 +40,7 @@ namespace AutumnBox.Basic.Function.Modules
                 {
                     temtOut.OutAdd(e.Data);
                     Logger.D("Out: " + e.Data);
-                    OnOutputReceived(new OutputReceivedEventArgs(e.Data,e,false));
+                    OnOutputReceived(new OutputReceivedEventArgs(e.Data, e, false));
                 }
 
             };
@@ -55,15 +55,15 @@ namespace AutumnBox.Basic.Function.Modules
             };
             MainProcess.ProcessStarted += (s, e) => { OnProcessStarted(e); };
         }
-        protected override void AnalyzeArgs(ModuleArgs args)
+        protected override void Create(BundleForCreate bundle)
         {
-            base.AnalyzeArgs(args);
-            this._Args = (MiFlasherArgs)args;
+            base.Create(bundle);
+            this._Args = (MiFlasherArgs)bundle.Args;
         }
-        protected override OutputData MainMethod()
+        protected override OutputData MainMethod(ToolsBundle toolsBundle)
         {
             MainProcess.StartInfo.WorkingDirectory = @"adb\";
-            temtOut.Append(MainProcess.RunToExited("cmd.exe", "/c " + _Args.FloderPath + "/" + GetBatFileNameBy(_Args.Type) + $" -s {DeviceID}"));
+            temtOut.Append(MainProcess.RunToExited("cmd.exe", "/c " + _Args.FloderPath + "/" + GetBatFileNameBy(_Args.Type) + $" -s {toolsBundle.DeviceID}"));
             return temtOut;
         }
         private static string GetBatFileNameBy(MiFlashType type)
@@ -78,13 +78,14 @@ namespace AutumnBox.Basic.Function.Modules
                     return flash_all_except_storage_and_data_bat;
             }
         }
-        protected override void AnalyzeOutput(ref ExecuteResult executeResult)
+        protected override void AnalyzeOutput(BundleForAnalyzeOutput bundle)
         {
+            base.AnalyzeOutput(bundle);
             if (Status != ModuleStatus.ForceStoped)
             {
-                if (MainProcess.ExitCode == 1) executeResult.Level = ResultLevel.Unsuccessful;
+                if (MainProcess.ExitCode == 1) bundle.Result.Level = ResultLevel.Unsuccessful;
             }
-            executeResult.Message = executeResult.OutputData.LineAll[executeResult.OutputData.LineAll.Count - 1];
+            bundle.Result.Message = bundle.Result.OutputData.LineAll[bundle.Result.OutputData.LineAll.Count - 1];
         }
         public static bool HaveFlashAllAndLockBat(string path)
         {

@@ -26,17 +26,19 @@ namespace AutumnBox.Basic.Function.Modules
     /// </summary>
     public sealed class SystemUnlocker : FunctionModule
     {
-        protected override OutputData MainMethod()
+        private ToolsBundle _toolsBundle;
+        protected override OutputData MainMethod(ToolsBundle toolsBundle)
         {
-            Ae("root");
+            this._toolsBundle = toolsBundle;
+            toolsBundle.Ae("root");
             Thread.Sleep(300);
-            OutputData o = Ae("disable-verity");
+            OutputData o = toolsBundle.Ae("disable-verity");
             return o;
         }
         protected override void OnFinished(FinishEventArgs e)
         {
             base.OnFinished(e);
-            Ae("reboot");
+            _toolsBundle.Ae("reboot");
         }
     }
 }

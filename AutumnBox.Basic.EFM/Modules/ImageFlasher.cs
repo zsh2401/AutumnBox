@@ -33,15 +33,15 @@ namespace AutumnBox.Basic.Function.Modules
         private bool _suNotFound = false;
         private bool _success = true;
         private bool _imageNotFound = false;
-        protected override void AnalyzeArgs(ModuleArgs args)
+        protected override void Create(BundleForCreate bundle)
         {
-            base.AnalyzeArgs(args);
-            _args = (ImgFlasherArgs)args;
+            base.Create(bundle);
+            _args = (ImgFlasherArgs)bundle.Args;
             _shell = new AndroidShell(_args.DeviceBasicInfo.Id);
             _shell.ProcessStarted += (s, e) => { OnProcessStarted(e); };
             _shell.OutputReceived += (s, e) => { OnOutputReceived(e); };
         }
-        protected override OutputData MainMethod()
+        protected override OutputData MainMethod(ToolsBundle toolsBundle)
         {
             _shell.Connect();
             OutputData output_r = new OutputData
@@ -64,10 +64,10 @@ namespace AutumnBox.Basic.Function.Modules
             Logger.D("move finish...");
             return output_r;
         }
-        protected override void AnalyzeOutput(ref ExecuteResult executeResult)
+        protected override void AnalyzeOutput(BundleForAnalyzeOutput bundleForAnalyzeOutput)
         {
-            base.AnalyzeOutput(ref executeResult);
-            if (_suNotFound || !_success) executeResult.Level = ResultLevel.Unsuccessful;
+            base.AnalyzeOutput(bundleForAnalyzeOutput);
+            if (_suNotFound || !_success)bundleForAnalyzeOutput.Result.Level = ResultLevel.Unsuccessful;
             Logger.D("_su not found?" + _suNotFound);
             Logger.D("_success?" + _success);
             _shell.Disconnect();
@@ -75,7 +75,7 @@ namespace AutumnBox.Basic.Function.Modules
         private bool SendImageToSdcard()
         {
             FunctionModuleProxy fmp =
-                FunctionModuleProxy.Create<FileSender>(new FileSenderArgs(DevSimpleInfo)
+                FunctionModuleProxy.Create<FileSender>(new FileSenderArgs(_args.DeviceBasicInfo)
                 {
                     FilePath = _args.ImgPath,
                     SaveName = _imgTmpFileName

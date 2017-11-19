@@ -20,13 +20,13 @@ namespace AutumnBox.Basic.Function.Modules
     public class AndroidFullBackup : FunctionModule
     {
         private static readonly int _WaitTime = 2000;
-        protected override OutputData MainMethod()
+        protected override OutputData MainMethod(ToolsBundle bundle)
         {
             OutputData result = new OutputData
             {
-                OutSender = this.Executer
+                OutSender = bundle.Executer
             };
-            Ae("backup -apk -shared -all -f/backup.ab");
+            bundle.Ae("backup -apk -shared -all -f/backup.ab");
             return result;
         }
         protected override void OnOutputReceived(OutputReceivedEventArgs e)
@@ -42,13 +42,13 @@ namespace AutumnBox.Basic.Function.Modules
             }
             catch { }
         }
-        protected override void AnalyzeOutput(ref ExecuteResult executeResult)
+        protected override void AnalyzeOutput(BundleForAnalyzeOutput bundle)
         {
-            base.AnalyzeOutput(ref executeResult);
-            if (executeResult.OutputData.All.ToString().ToLower().Contains("now unlock your device"))
+            base.AnalyzeOutput(bundle);
+            if (bundle.Result.OutputData.All.ToString().ToLower().Contains("now unlock your device"))
             {
-                executeResult.Level = ResultLevel.Successful;
-                executeResult.WasForcblyStop = false;
+                bundle.Result.Level = ResultLevel.Successful;
+                bundle.Result.WasForcblyStop = false;
             }
         }
     }

@@ -20,23 +20,23 @@ namespace AutumnBox.Basic.Function.Modules
     public sealed class ApkInstaller : FunctionModule
     {
         private InstallApkArgs _Args;
-        protected override void AnalyzeArgs(ModuleArgs args)
+        protected override void Create(BundleForCreate bundle)
         {
-            base.AnalyzeArgs(args);
-            _Args = (InstallApkArgs)args;
+            base.Create(bundle);
+            _Args = (InstallApkArgs)bundle.Args;
         }
-        protected override OutputData MainMethod()
+        protected override OutputData MainMethod(ToolsBundle bundle)
         {
-            OutputData o = new OutputData() { OutSender = this.Executer };
-            Ae($"install {_Args.ApkPath}");
+            OutputData o = new OutputData() { OutSender = bundle.Executer };
+            bundle.Ae($"install {_Args.ApkPath}");
             return o;
         }
-        protected override void AnalyzeOutput(ref ExecuteResult executeResult)
+        protected override void AnalyzeOutput(BundleForAnalyzeOutput bundle)
         {
-            base.AnalyzeOutput(ref executeResult);
-            if (executeResult.OutputData.LineError.Count != 0)
+            base.AnalyzeOutput(bundle);
+            if (bundle.OutputData.LineError.Count != 0)
             {
-                executeResult.Level = ResultLevel.MaybeSuccessful;
+                bundle.Result.Level = ResultLevel.MaybeSuccessful;
             }
         }
     }

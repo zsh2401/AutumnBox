@@ -25,20 +25,20 @@ namespace AutumnBox.Basic.Function.Modules
     {
         public FileSenderArgs _Args { get; private set; }
 
-        protected override void AnalyzeArgs(ModuleArgs args)
+        protected override void Create(BundleForCreate bundle)
         {
-            base.AnalyzeArgs(args);
-            this._Args = (FileSenderArgs)args;
+            base.Create(bundle);
+            this._Args = (FileSenderArgs)bundle.Args;
             _Args.FilePath = _Args.FilePath.Replace('\\', '/');
         }
-        protected override OutputData MainMethod()
+        protected override OutputData MainMethod(ToolsBundle bundle)
         {
             OutputData o = new OutputData
             {
-                OutSender = this.Executer
+                OutSender = bundle.Executer
             };
             FileInfo fi = new FileInfo(_Args.FilePath);
-            Ae($"push \"{fi.FullName}\" \"{_Args.SavePath + _Args.SaveName}\"");
+            bundle.Ae($"push \"{fi.FullName}\" \"{_Args.SavePath + _Args.SaveName}\"");
             Logger.D("maybe finished? the output ->" + o.ToString());
             return o;
         }

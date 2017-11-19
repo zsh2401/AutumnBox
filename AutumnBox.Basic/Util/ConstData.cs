@@ -22,7 +22,7 @@ namespace AutumnBox.Basic.Util
     internal static class ConstData
     {
         public static readonly string AUTUMNBOX_TEMP_FLODER = "/sdcard/autumnbox_temp";
-        public static readonly string ADB_PATH = "Adb/adb.exe";
-        public static readonly string FASTBOOT_PATH = "Adb/fastboot.exe";
+        public static readonly string ADB_PATH = "Adb\\adb.exe";
+        public static readonly string FASTBOOT_PATH = "Adb\\fastboot.exe";
     }
 }
