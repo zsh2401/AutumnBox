@@ -12,9 +12,12 @@
 *
 \* =============================================================================*/
 using AutumnBox.Basic.Devices;
+using AutumnBox.Basic.Util;
 using AutumnBox.GUI.Helper;
 using AutumnBox.GUI.Windows;
 using AutumnBox.Support.CstmDebug;
+using System;
+using System.Threading;
 using System.Windows;
 
 namespace AutumnBox.GUI
@@ -32,10 +35,10 @@ namespace AutumnBox.GUI
         {
             if (SystemHelper.HaveOtherAutumnBoxProcess())
             {
-                MMessageBox.FastShow(App.OwnerWindow,"警告/Warning", "不可以同时打开两个AutumnBox\nDo not run two AutumnBox at once");
-                System.Environment.Exit(1);
+                MMessageBox.FastShow(App.OwnerWindow, "警告/Warning", "不可以同时打开两个AutumnBox\nDo not run two AutumnBox at once");
+                Environment.Exit(1);
             }
-            SystemHelper.GCer.Start();
+            SystemHelper.AutoGC.Start();
             base.OnStartup(e);
         }
         protected override void OnExit(ExitEventArgs e)

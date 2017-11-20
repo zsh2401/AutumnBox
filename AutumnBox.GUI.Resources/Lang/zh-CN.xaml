@@ -38,6 +38,8 @@
     <s:String x:Key="btnFlashCustomRecoveryImg">刷入自选Recovery</s:String>
     <s:String x:Key="btnChangeTheme">更改主题</s:String>
     <s:String x:Key="btnOK">好的</s:String>
+    <s:String x:Key="btnIHaveCloseOtherPhoneHelper">我已关闭其它助手</s:String>
+    <s:String x:Key="btnExit">退出</s:String>
     <s:String x:Key="btnStartBrventService">启动黑域服务</s:String>
     <s:String x:Key="btnClose">关闭</s:String>
     <s:String x:Key="btnAgree">同意</s:String>
@@ -96,13 +98,18 @@
     <s:String x:Key="msgNoticeForAndroidFullBackupRemove">抱歉,此功能由于多方面限制,实在无用,将在未来版本进行移除</s:String>
     <s:String x:Key="msgNoticeIceBoxHaveNoInstall">您似乎没有安装冰箱App?</s:String>
     <s:String x:Key="msgNoticeDeviceOwnerIsAlreadySet">设备管理员已被设定</s:String>
+    <s:String x:Key="msgWarning">警告</s:String>
+    <s:String x:Key="msgStartAdbServerFailLine1">错误:无法启动ADB服务</s:String>
+    <s:String x:Key="msgStartAdbServerFailLine2">解决方案:彻底关闭所有其它的手机助手(在电脑上)</s:String>
+    <s:String x:Key="msgStartAdbServerFailLine3">例如: 360手机助手 豌豆荚等</s:String>
+    <s:String x:Key="msgStartAdbServerFailLine4">如果仍然无效,请进入任务管理器,彻底结束那些手机助手的进程!</s:String>
     <!--信息-->
 
 
     <!--QA-->
     <s:String x:Key="LinkQuestion2">* 还是连不上?</s:String>
     <s:String x:Key="LinkAnswer2">* 在手机上进入开发者模式打开USB调试</s:String>
-    <s:String x:Key="LinkAnswer3">* 点击关于->联系开发者 与开发者取得联系</s:String>
+    <s:String x:Key="LinkAnswer3">* 邮件zsh2401@163.com QQ 1210626737</s:String>
     <s:String x:Key="LinkQuestion3">* 更多问题?</s:String>
     <s:String x:Key="LinkAnswer1">* 请确保您的已经在电脑上安装相应的手机驱动,比如你是小米手机,请百度搜索小米手机驱动并下载安装</s:String>
     <s:String x:Key="LinkQuestion1">* 插上了设备但软件却检测不到?</s:String>

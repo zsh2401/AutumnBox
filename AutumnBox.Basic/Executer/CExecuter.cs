@@ -24,6 +24,7 @@ namespace AutumnBox.Basic.Executer
 {
     public sealed class CExecuter : IDisposable, IOutSender
     {
+        public static event EventHandler AdbStartsFailed;
         public event ProcessStartedEventHandler ProcessStarted { add { MainProcess.ProcessStarted += value; } remove { MainProcess.ProcessStarted -= value; } }
         public event OutputReceivedEventHandler OutputReceived { add { MainProcess.OutputReceived += value; } remove { MainProcess.OutputReceived -= value; } }
         public bool BlockNullOutput { get { return MainProcess.BlockNullOutput; } set { MainProcess.BlockNullOutput = value; } }
@@ -70,25 +71,23 @@ namespace AutumnBox.Basic.Executer
 
         private ABProcess MainProcess = new ABProcess();
         private Object Locker = new object();
-        private OutputData Execute(string fileName, string args, bool needCheck = true)
+        internal OutputData Execute(string fileName, string args, bool needCheck = true)
         {
             if (needCheck)
             {
-                Check();
+                if (!AdbHelper.Check())
+                {
+                    AdbStartsFailed?.Invoke(this, new EventArgs());
+                }
             }
             lock (Locker)
             {
-                return MainProcess.RunToExited(fileName, args);
-            }
-        }
-        public static void Check()
-        {
-            if (Process.GetProcessesByName("adb").Length == 0)
-            {
-                using (CExecuter executer = new CExecuter())
+                var o = MainProcess.RunToExited(fileName, args);
+                if (o.All.ToString().Contains("cannot connect to daemon"))
                 {
-                    executer.Execute(ConstData.ADB_PATH, "start-server", false);
+                    AdbStartsFailed?.Invoke(this, new EventArgs());
                 }
+                return o;
             }
         }
         public void Dispose()

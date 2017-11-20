@@ -3,6 +3,7 @@ using AutumnBox.Basic.Executer;
 using AutumnBox.Basic.Function;
 using AutumnBox.Basic.Function.Args;
 using AutumnBox.Basic.Function.Modules;
+using AutumnBox.Basic.Util;
 using AutumnBox.ConsoleTester.MethodTest;
 using AutumnBox.ConsoleTester.ObjTest;
 using AutumnBox.GUI.Helper;
@@ -38,8 +39,11 @@ namespace AutumnBox.ConsoleTester
             //    });
             //};
             //monitor.Start();
-            SystemHelper.ChangeAdbProt();
-            var o = new ABProcess().RunToExited("cmd.exe", "Adb\\adb.exe devices");
+            Console.WriteLine(AdbHelper.HaveOtherAdbProcess());
+            AdbHelper.KillOtherAdbProcess();
+            Console.WriteLine(AdbHelper.HaveOtherAdbProcess());
+            //SystemHelper.ChangeAdbProt();
+            //var o = new ABProcess().RunToExited("cmd.exe", "Adb\\adb.exe devices");
             Console.ReadKey();
         }
         public static void WriteWithColor(Action a, ConsoleColor color = ConsoleColor.White)

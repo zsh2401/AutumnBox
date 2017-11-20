@@ -185,7 +185,7 @@ namespace AutumnBox.Basic.Executer
         /// <param name="asSuperuser"></param>
         public void Connect(bool asSuperuser = false)
         {
-            CExecuter.Check();
+            AdbHelper.Check();
             _mainProcess.Start();
             ProcessStarted?.Invoke(this, new ProcessStartedEventArgs() { Pid = _mainProcess.Id });
             _mainProcess.BeginOutputReadLine();

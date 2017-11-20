@@ -12,12 +12,15 @@
 *
 \* =============================================================================*/
 using AutumnBox.Basic.Devices;
+using AutumnBox.Basic.Executer;
+using AutumnBox.Basic.Util;
 using AutumnBox.GUI.Cfg;
 using AutumnBox.GUI.Helper;
 using AutumnBox.GUI.NetUtil;
 using AutumnBox.GUI.Windows;
 using AutumnBox.Support.CstmDebug;
 using System;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -53,6 +56,21 @@ namespace AutumnBox.GUI
                 {
                     Logger.D(this, "Refresh UI Finished..");
                     UIHelper.CloseRateBox();
+                });
+            };
+            CExecuter.AdbStartsFailed += (s, e) =>
+            {
+                Dispatcher.Invoke(() =>
+                {
+                    bool _continue = ChoiceBox.FastShow(this, UIHelper.GetString("msgWarning"),
+                            UIHelper.GetString("msgStartAdbServerFailLine1") + Environment.NewLine +
+                            UIHelper.GetString("msgStartAdbServerFailLine2") + Environment.NewLine +
+                            UIHelper.GetString("msgStartAdbServerFailLine3") + Environment.NewLine +
+                            UIHelper.GetString("msgStartAdbServerFailLine4"),
+                            UIHelper.GetString("btnIHaveCloseOtherPhoneHelper"),
+                            UIHelper.GetString("btnExit"));
+                    if (_continue) AdbHelper.StartServer();
+                    else SystemHelper.AppExit(1);
                 });
             };
 #if DEBUG

@@ -14,6 +14,7 @@
 namespace AutumnBox.Basic.Executer
 {
     using AutumnBox.Basic.Function.Event;
+    using System;
     using System.Collections.Generic;
     using System.Text;
 
@@ -54,12 +55,21 @@ namespace AutumnBox.Basic.Executer
         /// <param name="outData"></param>
         public void OutAdd(string outData)
         {
-            if (outData == null) return;
-            if (_IsClosed) return;
-            All.Append(outData + System.Environment.NewLine);
-            LineAll.Add(outData);
-            LineOut.Add(outData);
-            Out.Append(outData + System.Environment.NewLine);
+            try
+            {
+                if (outData == null) return;
+                if (_IsClosed) return;
+                All.Append(outData + System.Environment.NewLine);
+                LineAll.Add(outData);//<----就是这里出现的异常!!!
+                LineOut.Add(outData);
+                Out.Append(outData + System.Environment.NewLine);
+            } catch(IndexOutOfRangeException) {
+                //2017 11 21 01:00的一次调试中
+                //我在显示关闭其它助手的提示后,关闭了360手机助手并点击了"我已关闭其它助手"
+                //然后出现了RateBox,半秒后便出现了这个奇怪的IndexOutOfRangeException??
+                //在StackOverFlow上搜寻后,有人说这是一个奇怪的BUG
+                //既然如此...下次就抓住这个BUG吧...
+            }
         }
         /// <summary>
         /// 添加错误输出信息

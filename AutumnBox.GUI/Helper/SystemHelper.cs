@@ -113,6 +113,6 @@ namespace AutumnBox.GUI.Helper
             new CExecuter().Execute(Command.MakeForAdb("kill-server"));
             Environment.Exit(exitCode);
         }
-        internal readonly static AutoGCer GCer = new AutoGCer();
+        internal readonly static AutoGC AutoGC = new AutoGC();
     }
 }
