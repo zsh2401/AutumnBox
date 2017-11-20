@@ -102,7 +102,7 @@
     <s:String x:Key="msgStartAdbServerFailLine1">错误:无法启动ADB服务</s:String>
     <s:String x:Key="msgStartAdbServerFailLine2">解决方案:彻底关闭所有其它的手机助手(在电脑上)</s:String>
     <s:String x:Key="msgStartAdbServerFailLine3">例如: 360手机助手 豌豆荚等</s:String>
-    <s:String x:Key="msgStartAdbServerFailLine4">如果仍然无效,请进入任务管理器,彻底结束那些手机助手的进程!</s:String>
+    <s:String x:Key="msgStartAdbServerFailLine4">如果仍然无效,请进入任务管理器,彻底结束那些手机助手的进程!什么?还是没用?重启电脑!</s:String>
     <!--信息-->
 
 

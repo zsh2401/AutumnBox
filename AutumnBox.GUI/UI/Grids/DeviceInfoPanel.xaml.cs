@@ -114,14 +114,15 @@ namespace AutumnBox.GUI.UI.Grids
             LabelRootStatus.Content = IsRoot ? App.Current.Resources["RootEnable"].ToString() : App.Current.Resources["RootDisable"].ToString();
             CurrentDeviceIsRoot = IsRoot;
         }
-        private void GridClick(object sender, MouseButtonEventArgs e)
-        {
-            Refresh(App.SelectedDevice);
-        }
 
         private void LabelAndroidVersion_Loaded(object sender, System.Windows.RoutedEventArgs e)
         {
             LanguageHelper.LanguageChanged += (s, ex) => { Refresh(App.SelectedDevice); };
+        }
+
+        private void ImgRefreshDevInfo_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Refresh(App.SelectedDevice);
         }
     }
 }

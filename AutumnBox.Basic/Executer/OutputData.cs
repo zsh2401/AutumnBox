@@ -77,12 +77,16 @@ namespace AutumnBox.Basic.Executer
         /// <param name="errorData"></param>
         public void ErrorAdd(string errorData)
         {
-            if (errorData == null) return;
-            if (_IsClosed) return;
-            All.Append(errorData + System.Environment.NewLine);
-            LineAll.Add(errorData);
-            LineError.Add(errorData);
-            Error.Append(errorData + System.Environment.NewLine);
+            try {
+                if (errorData == null) return;
+                if (_IsClosed) return;
+                All.Append(errorData + Environment.NewLine);
+                LineAll.Add(errorData);
+                LineError.Add(errorData);
+                Error.Append(errorData + Environment.NewLine);
+            } catch (IndexOutOfRangeException) {
+                //2017 11 21 01:24 出现跟上面一样的异常,奇怪!
+            }
         }
         /// <summary>
         /// 添加另一个OutputData对象的内容

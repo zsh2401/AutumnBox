@@ -12,6 +12,7 @@
 *
 \* =============================================================================*/
 using AutumnBox.Basic.Executer;
+using AutumnBox.Support.CstmDebug;
 using AutumnBox.Support.Helper;
 using System;
 using System.Collections.Generic;
@@ -51,6 +52,7 @@ namespace AutumnBox.Basic.Util
             {
                 o = process.RunToExited("cmd.exe", "/c " + ConstData.ADB_PATH + " start-server & echo %errorlevel%");
             }
+            Logger.D("the fuck output of adb start-server ->" + o.ToString());
             return !o.All.ToString().Contains("cannot connect to daemon");
         }
         public static bool StopServer()
