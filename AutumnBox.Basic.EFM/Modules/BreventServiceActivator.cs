@@ -16,6 +16,7 @@ namespace AutumnBox.Basic.Function.Modules
     using AutumnBox.Basic.Executer;
     using AutumnBox.Basic.Function.Args;
     using AutumnBox.Support.CstmDebug;
+    using System.Threading;
 
     /// <summary>
     /// 黑域服务激活器
@@ -34,6 +35,7 @@ namespace AutumnBox.Basic.Function.Modules
             FunctionModuleProxy.Create<ActivityLauncher>(new ActivityLaunchArgs(toolsBundle.Args.DeviceBasicInfo)
             { PackageName = "me.piebridge.brevent", ActivityName = ".ui.BreventActivity" }).SyncRun();
             Logger.D("try to execute command with quicklyshell ");
+            Thread.Sleep(2000);
             toolsBundle.Executer.QuicklyShell(toolsBundle.DeviceID, DEFAULT_SHELL_COMMAND, out _exitResult);
             return o;
         }

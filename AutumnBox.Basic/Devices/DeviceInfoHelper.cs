@@ -132,7 +132,7 @@ namespace AutumnBox.Basic.Devices
                 var m = Regex.Match(output, @"(?i)^\w+:[\t|\u0020]+(?<size>[\d]+).+$");
                 if (m.Success)
                 {
-                    double _gbMem = (Convert.ToDouble(m.Result("${size}")) / 1024.0 / 1024.0);
+                    double _gbMem = (Convert.ToDouble(m.Result("${size}")) / 1000.0 / 1000.0);
                     return Math.Round(_gbMem, MidpointRounding.AwayFromZero);
                 }
                 else
