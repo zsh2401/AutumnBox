@@ -29,57 +29,26 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Executer
 {
-    public class ShellOutput
-    {
-        public OutputData OutputData { get; private set; } = new OutputData();
-        public bool IsSuccess { get { return ReturnCode == 0; } }
-        public int ReturnCode { get; set; } = 0;
-        public void OutAdd(string text)
-        {
-            OutputData.OutAdd(text);
-            LineAll.Add(text);
-            All.AppendLine(text);
-        }
-        public List<string> LineAll { get; private set; } = new List<string>();
-        public StringBuilder All { get; private set; } = new StringBuilder();
-        public string AllString
-        {
-            get
-            {
-                string tmp = "";
-                LineAll.ForEach((s) =>
-                {
-                    tmp += s + "\n";
-                });
-                return tmp;
-            }
-        }
-        public ShellOutput() { }
-        public ShellOutput(OutputData o)
-        {
-            LineAll = o.LineAll;
-            All = o.All;
-            OutputData = o;
-        }
-    }
-    public delegate void InputReceivedEventHandler(object sender, InputReceivedEventArgs e);
-    public class InputReceivedEventArgs : EventArgs
-    {
-        public string Command { get; set; }
-        public readonly DateTime Time;
-        public InputReceivedEventArgs()
-        {
-            Time = DateTime.Now;
-        }
-    }
     /// <summary>
     /// 简单封装的,用于执行基础命令的AndroidShell类
     /// </summary>
     public sealed class AndroidShell : IOutSender, IDisposable
     {
+        /// <summary>
+        /// 每条常规命令后都会有这个命令,用来获取返回值
+        /// </summary>
         private static readonly string _finishMark = "___ec$?";
+        /// <summary>
+        /// 进程开始时发生
+        /// </summary>
         public event ProcessStartedEventHandler ProcessStarted;
+        /// <summary>
+        /// 接收到输入时发生
+        /// </summary>
         public event InputReceivedEventHandler InputReceived;
+        /// <summary>
+        /// 接收到输出时发生
+        /// </summary>
         public event OutputReceivedEventHandler OutputReceived;
         /// <summary>
         /// 是否退出

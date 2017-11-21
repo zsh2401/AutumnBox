@@ -53,8 +53,10 @@
     <Compile Include="Devices\DevicesGetter.cs" />
     <Compile Include="Devices\DeviceBasicInfo.cs" />
     <Compile Include="Executer\AndroidShell.cs" />
+    <Compile Include="Executer\AndroidShellEvents.cs" />
     <Compile Include="Executer\CExecuter.cs" />
     <Compile Include="Executer\IOutSender.cs" />
+    <Compile Include="Executer\ShellOutput.cs" />
     <Compile Include="Function\Args\FileSenderArgs.cs" />
     <Compile Include="Function\Args\ModuleArgs.cs" />
     <Compile Include="Function\Bundle.cs" />
