@@ -76,6 +76,7 @@ namespace AutumnBox.Basic.Function
         /// 模块状态
         /// </summary>
         public ModuleStatus Status { get; private set; } = ModuleStatus.Loading;
+        public static event FinishedEventHandler AnyFinished;
         /// <summary>
         /// 当功能模块开始执行时发生
         /// </summary>
@@ -102,6 +103,9 @@ namespace AutumnBox.Basic.Function
                 return Finished != null ? true : false;
             }
         }
+        /// <summary>
+        /// 用于传给MainMethod的工具包
+        /// </summary>
         private ToolsBundle _toolsBundle;
         /// <summary>
         /// 构造
@@ -119,12 +123,8 @@ namespace AutumnBox.Basic.Function
             {
                 Status = ModuleStatus.Running;
                 var fullOutput = MainMethod(_toolsBundle);
-                executeResult = new ExecuteResult(fullOutput)
-                {
-                    Level = (Status == ModuleStatus.ForceStoped) ? ResultLevel.Unsuccessful : ResultLevel.Successful,
-                    WasForcblyStop = (Status == ModuleStatus.ForceStoped) ? true : false
-                };
                 Status = (Status == ModuleStatus.ForceStoped) ? ModuleStatus.ForceStoped : ModuleStatus.Finished;
+                executeResult = new ExecuteResult(fullOutput);
                 bundleForAnalyzeOutput = new BundleForAnalyzeOutput() { Result = executeResult };
                 AnalyzeOutput(bundleForAnalyzeOutput);
             }
@@ -230,7 +230,11 @@ namespace AutumnBox.Basic.Function
         /// </summary>
         /// <param name="output"></param>
         /// <param name="result"></param>
-        protected virtual void AnalyzeOutput(BundleForAnalyzeOutput bundleForAnalyzeOutput) { }
+        protected virtual void AnalyzeOutput(BundleForAnalyzeOutput bundleResult)
+        {
+            bundleResult.Result.Level = (Status == ModuleStatus.ForceStoped) ? ResultLevel.Unsuccessful : ResultLevel.Successful;
+            bundleResult.Result.WasForcblyStop = (Status == ModuleStatus.ForceStoped) ? true : false;
+        }
         /// <summary>
         /// 引发Finished事件
         /// </summary>
@@ -239,6 +243,7 @@ namespace AutumnBox.Basic.Function
         protected virtual void OnFinished(FinishEventArgs e)
         {
             Finished?.Invoke(this, e);
+            AnyFinished?.Invoke(this, e);
         }
         #endregion
     }

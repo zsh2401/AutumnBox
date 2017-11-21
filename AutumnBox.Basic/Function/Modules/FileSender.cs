@@ -24,7 +24,6 @@ namespace AutumnBox.Basic.Function.Modules
     public sealed class FileSender : FunctionModule
     {
         public FileSenderArgs _Args { get; private set; }
-
         protected override void Create(BundleForCreate bundle)
         {
             base.Create(bundle);

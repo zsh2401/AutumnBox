@@ -11,14 +11,14 @@
 * Company: I am free man
 *
 \* =============================================================================*/
+using AutumnBox.Basic.Executer;
 namespace AutumnBox.Basic.Function.Modules
 {
-    using AutumnBox.Basic.Executer;
     public class XiaomiBootloaderRelocker : FunctionModule
     {
         protected override OutputData MainMethod(ToolsBundle toolsBundle)
         {
-            var o = toolsBundle.Ae(" oem lock");
+            var o = toolsBundle.Ae("oem lock");
             return o;
         }
     }

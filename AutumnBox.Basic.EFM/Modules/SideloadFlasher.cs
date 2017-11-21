@@ -15,11 +15,16 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using AutumnBox.Basic.Executer;
+using AutumnBox.Basic.Function.Args;
 
 namespace AutumnBox.Basic.Function.Modules
 {
     public class SideloadFlasher : FunctionModule
     {
+        protected override bool Check(ModuleArgs args)
+        {
+            return false;
+        }
         protected override OutputData MainMethod(ToolsBundle bundle)
         {
             throw new NotImplementedException();
