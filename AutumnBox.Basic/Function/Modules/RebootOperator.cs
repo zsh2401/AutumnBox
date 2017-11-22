@@ -45,10 +45,11 @@ namespace AutumnBox.Basic.Function.Modules
                     break;
             }
         }
-        protected override bool Check(ModuleArgs args)
+        protected override CheckResult Check(ModuleArgs args)
         {
             bool isRebootToRecoveryOnBootloader = (_Args.nowStatus == DeviceStatus.Fastboot && _Args.rebootOption == RebootOptions.Recovery);
-            return !isRebootToRecoveryOnBootloader;
+            if (isRebootToRecoveryOnBootloader) return CheckResult.DeviceStatusError;
+            else return CheckResult.OK;
         }
         protected override OutputData MainMethod(ToolsBundle toolsBundle)
         {

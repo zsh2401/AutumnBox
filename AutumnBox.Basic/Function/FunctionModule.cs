@@ -120,7 +120,7 @@ namespace AutumnBox.Basic.Function
             OnStartup(new StartupEventArgs());
             ExecuteResult executeResult;
             BundleForAnalyzeOutput bundleForAnalyzeOutput = null;
-            if (Check(_toolsBundle.Args))
+            if (Check(_toolsBundle.Args) == CheckResult.OK)
             {
                 Status = ModuleStatus.Running;
                 var fullOutput = MainMethod(_toolsBundle);
@@ -136,7 +136,7 @@ namespace AutumnBox.Basic.Function
                     Level = ResultLevel.Unsuccessful,
                     WasForcblyStop = false,
                 };
-                Status = ModuleStatus.UnableToRun;
+                Status = ModuleStatus.CannontStart;
             }
 
             OnFinished(new FinishEventArgs
@@ -192,7 +192,7 @@ namespace AutumnBox.Basic.Function
         /// </summary>
         /// <param name="args"></param>
         /// <returns></returns>
-        protected virtual bool Check(ModuleArgs args) { return true; }
+        protected virtual CheckResult Check(ModuleArgs args) { return CheckResult.OK; }
         /// <summary>
         /// 模块的核心代码,强制要求子类进行实现
         /// </summary>

@@ -63,6 +63,7 @@
     <Compile Include="Function\Bundles\BundleForAnalyzeOutput.cs" />
     <Compile Include="Function\Bundles\BundleForCreate.cs" />
     <Compile Include="Function\Bundles\ToolsBundle.cs" />
+    <Compile Include="Function\CheckResult.cs" />
     <Compile Include="Function\Event\EventAddException.cs" />
     <Compile Include="Function\Event\EventNotBoundException.cs" />
     <Compile Include="Function\Event\FileSenderEvents.cs" />

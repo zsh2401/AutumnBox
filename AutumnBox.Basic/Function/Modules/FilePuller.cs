@@ -28,9 +28,10 @@ namespace AutumnBox.Basic.Function.Modules
             base.Create(bundle);
             _Args = (FilePullArgs)bundle.Args;
         }
-        protected override bool Check(ModuleArgs args)
+        protected override CheckResult Check(ModuleArgs args)
         {
-            return (_Args.PhoneFilePath != null);
+            if (_Args.PhoneFilePath != null) return CheckResult.OK;
+            else return CheckResult.ArgNullError;
         }
         protected override OutputData MainMethod(ToolsBundle bundle)
         {

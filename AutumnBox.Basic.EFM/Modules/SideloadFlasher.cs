@@ -22,9 +22,9 @@ namespace AutumnBox.Basic.Function.Modules
 {
     public class SideloadFlasher : FunctionModule
     {
-        protected override bool Check(ModuleArgs args)
+        protected override CheckResult Check(ModuleArgs args)
         {
-            return false;
+            return CheckResult.Unfinish;
         }
         protected override OutputData MainMethod(ToolsBundle bundle)
         {
