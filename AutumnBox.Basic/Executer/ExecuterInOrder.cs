@@ -99,6 +99,7 @@ namespace AutumnBox.Basic.Executer
                 }
                 catch (InvalidOperationException e)
                 {
+                    GC.SuppressFinalize(e);
                 }
             }
         }

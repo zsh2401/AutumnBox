@@ -22,6 +22,7 @@ using AutumnBox.GUI.Windows;
 using AutumnBox.Support.CstmDebug;
 using System;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -73,10 +74,14 @@ namespace AutumnBox.GUI
                            UIHelper.GetString("msgStartAdbServerFailLine4"),
                            UIHelper.GetString("btnIHaveCloseOtherPhoneHelper"),
                            UIHelper.GetString("btnExit"));
-                    if (_continue) AdbHelper.StartServer();
-                    else SystemHelper.AppExit(1);
                 });
-                App.DevicesListener.Start();
+                if (_continue)
+                {
+                    Thread.Sleep(12 * 1000);
+                    AdbHelper.StartServer();
+                    App.DevicesListener.Start();
+                }
+                else SystemHelper.AppExit(1);
             };
 #if DEBUG
             AboutControl.LabelVersion.Content = SystemHelper.CurrentVersion + "-Debug";
