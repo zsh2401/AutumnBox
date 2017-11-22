@@ -120,15 +120,9 @@
     <Compile Include="Helper\TextHelper.cs" />
     <Compile Include="Helper\UIHelper.cs" />
     <Compile Include="I18N\Language.cs" />
-    <Compile Include="NetUtil\INetUtil.cs" />
-    <Compile Include="NetUtil\NetUtilFinishEventArgs.cs" />
-    <Compile Include="NetUtil\NetUtilFinishEventHandler.cs" />
-    <Compile Include="NetUtil\NetUtilResult.cs" />
     <Compile Include="NetUtil\Urls.cs" />
     <Compile Include="NetUtil\MOTDGetter.cs" />
-    <Compile Include="NetUtil\NetUtil.cs" />
-    <Compile Include="NetUtil\NetUtilPropertyAttribute.cs" />
-    <Compile Include="NetUtil\Statistics.cs" />
+    <Compile Include="NetUtil\RemoteDataGetter.cs" />
     <Compile Include="NetUtil\UpdateChecker.cs" />
     <Compile Include="UI\Cstm\BookMarksControl.xaml.cs">
       <DependentUpon>BookMarksControl.xaml</DependentUpon>

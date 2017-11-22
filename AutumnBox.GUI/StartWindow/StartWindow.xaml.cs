@@ -168,36 +168,26 @@ namespace AutumnBox.GUI
         /// </summary>
         void GetNotice()
         {
-            var getter = new MOTDGetter();
-            getter.Finished += (s, e) =>
+            new MOTDGetter().RunAsync((r) =>
             {
-                Dispatcher.Invoke(() =>
+                textBoxGG.Dispatcher.Invoke(() =>
                 {
-                    textBoxGG.Dispatcher.Invoke(() =>
-                    {
-                        textBoxGG.Text = (e.Result as MOTDResult).Header + " : " + (e.Result as MOTDResult).Message;
-                    });
+                    textBoxGG.Text = r.Header + r.Separator + r.Message;
                 });
-            };
-            getter.Run();
+            });
         }
         /// <summary>
         /// 更新检测
         /// </summary>
         void UpdateCheck()
         {
-            var checker = new UpdateChecker();
-            checker.Finished += (s, e) =>
+            new UpdateChecker().RunAsync((r) =>
             {
-                if ((e.Result as UpdateCheckResult).NeedUpdate)
+                if (r.NeedUpdate)
                 {
-                    this.Dispatcher.Invoke(() =>
-                    {
-                        new UpdateNoticeWindow((UpdateCheckResult)e.Result).ShowDialog();
-                    });
+                    new UpdateNoticeWindow(r).ShowDialog();
                 }
-            };
-            checker.Run();
+            });
         }
     }
 }

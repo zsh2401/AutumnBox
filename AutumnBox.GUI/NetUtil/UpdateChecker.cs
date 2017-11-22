@@ -19,7 +19,7 @@ using System;
 
 namespace AutumnBox.GUI.NetUtil
 {
-    public class UpdateCheckResult : NetUtilResult
+    public class UpdateCheckResult
     {
         public string Header { get; set; } = "Ok!";
         public bool NeedUpdate { get; set; } = false;
@@ -30,15 +30,14 @@ namespace AutumnBox.GUI.NetUtil
         public string GithubReleaseUrl { get; set; }
     }
     [LogProperty(TAG = "Update Check", Show = false)]
-    [NetUtilProperty(UseLocalApi = false, MustAddFininshedEventHandler = true)]
-    internal class UpdateChecker : NetUtil, INetUtil
+    internal class UpdateChecker : RemoteDataGetter<UpdateCheckResult>
     {
-        public override NetUtilResult LocalMethod()
+        public override UpdateCheckResult LocalMethod()
         {
             throw new NotImplementedException();
         }
 
-        public override NetUtilResult NetMethod()
+        public override UpdateCheckResult NetMethod()
         {
             Logger.D("Start GET");
             string data = NetHelper.GetHtmlCode(Urls.UPDATE_API);

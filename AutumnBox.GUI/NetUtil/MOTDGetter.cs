@@ -17,33 +17,35 @@ using Newtonsoft.Json.Linq;
 using System.IO;
 namespace AutumnBox.GUI.NetUtil
 {
-    internal class MOTDResult : NetUtilResult
+    internal class MOTDResult
     {
         public string Header { get; set; }
+        public string Separator { get; set; }
         public string Message { get; set; }
     }
-    [LogProperty(TAG = "MOTD Getter",Show = false)]
-    [NetUtilProperty(UseLocalApi = false, MustAddFininshedEventHandler = true)]
-    internal class MOTDGetter : NetUtil, INetUtil
+    [LogProperty(TAG = "MOTD Getter", Show = false)]
+    internal class MOTDGetter : RemoteDataGetter<MOTDResult>
     {
-        public override NetUtilResult LocalMethod()
+        public override MOTDResult LocalMethod()
         {
             JObject o = JObject.Parse(File.ReadAllText(@"E:\zsh2401.github.io\softsupport\autumnbox\motd\index.html"));
             MOTDResult result = new MOTDResult
             {
                 Header = o["header"].ToString(),
+                Separator = o["separator"].ToString(),
                 Message = o["message"].ToString()
             };
             Logger.D("MOTD Get from local were success!" + result.Header + " " + result.Message);
             return result;
         }
 
-        public override NetUtilResult NetMethod()
+        public override MOTDResult NetMethod()
         {
             JObject o = JObject.Parse(NetHelper.GetHtmlCode(Urls.MOTD_API));
             MOTDResult result = new MOTDResult
             {
                 Header = o["header"].ToString(),
+                Separator = o["separator"].ToString(),
                 Message = o["message"].ToString()
             };
             Logger.D("MOTD Get from net success!" + result.Header + " " + result.Message);
