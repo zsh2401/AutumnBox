@@ -22,6 +22,7 @@ using System.Text.RegularExpressions;
 using System.IO;
 using AutumnBox.Support.CstmDebug;
 using AutumnBox.Basic.Devices;
+using AutumnBox.Basic.Function.Bundles;
 
 namespace AutumnBox.Basic.Function.Modules
 {

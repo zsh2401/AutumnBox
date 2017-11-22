@@ -15,6 +15,7 @@ namespace AutumnBox.Basic.Function.Modules
 {
     using AutumnBox.Basic.Executer;
     using AutumnBox.Basic.Function.Args;
+    using AutumnBox.Basic.Function.Bundles;
     using AutumnBox.Support.CstmDebug;
     using System.Threading;
 

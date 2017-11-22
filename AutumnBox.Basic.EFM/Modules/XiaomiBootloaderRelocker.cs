@@ -12,6 +12,8 @@
 *
 \* =============================================================================*/
 using AutumnBox.Basic.Executer;
+using AutumnBox.Basic.Function.Bundles;
+
 namespace AutumnBox.Basic.Function.Modules
 {
     public class XiaomiBootloaderRelocker : FunctionModule

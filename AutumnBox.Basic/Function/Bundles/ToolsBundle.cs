@@ -1,10 +1,10 @@
 ﻿/* =============================================================================*\
 *
-* Filename: Bundle
+* Filename: ToolsBundle
 * Description: 
 *
 * Version: 1.0
-* Created: 2017/11/19 16:34:00 (UTC+8:00)
+* Created: 2017/11/22 19:30:04 (UTC+8:00)
 * Compiler: Visual Studio 2017
 * 
 * Author: zsh2401
@@ -19,19 +19,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AutumnBox.Basic.Function
+namespace AutumnBox.Basic.Function.Bundles
 {
-    public class Bundle
-    {
-    }
-    public class BundleForCreate : Bundle
-    {
-        public ModuleArgs Args { get; private set; }
-        public BundleForCreate(ModuleArgs args)
-        {
-            Args = args;
-        }
-    }
     public class ToolsBundle
     {
         public CExecuter Executer { get; private set; }
@@ -48,11 +37,5 @@ namespace AutumnBox.Basic.Function
             Fe = (command) =>
             { return Executer.Execute(Command.MakeForFastboot(Args.DeviceBasicInfo, command)); };
         }
-    }
-    public class BundleForAnalyzeOutput
-    {
-        public Object Other { get; set; }
-        public ExecuteResult Result { get; set; }
-        public OutputData OutputData { get { return Result.OutputData; } }
     }
 }

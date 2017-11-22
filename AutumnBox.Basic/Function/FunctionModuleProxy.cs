@@ -26,8 +26,9 @@ namespace AutumnBox.Basic.Function
     /// <summary>
     /// 功能模块代理器,更加方便的管理功能模块
     /// </summary>
-    public sealed class FunctionModuleProxy:IOutSender
+    public sealed class FunctionModuleProxy : IOutSender
     {
+        private uint registeredCount = 0;
         public event OutputReceivedEventHandler OutputReceived
         {
             add { FunctionModule.OutputReceived += value; }
@@ -40,8 +41,8 @@ namespace AutumnBox.Basic.Function
         }
         public event FinishedEventHandler Finished
         {
-            add { FunctionModule.Finished += value; }
-            remove { FunctionModule.Finished -= value; }
+            add { FunctionModule.Finished += value; registeredCount++; }
+            remove { FunctionModule.Finished -= value; registeredCount--; }
         }
         public Type FunctionModuleType { get { return FunctionModule.GetType(); } }
         /// <summary>
@@ -61,9 +62,10 @@ namespace AutumnBox.Basic.Function
         /// </summary>
         public async void AsyncRun()
         {
-            if (!FunctionModule.IsFinishedEventRegistered) throw new EventNotBoundException();
+            if (registeredCount == 0) throw new EventNotBoundException();
             if (!(FunctionModule.Status == ModuleStatus.Ready)) throw new Exception("FM not ready");
-            await Task.Run(()=> {
+            await Task.Run(() =>
+            {
                 FunctionModule.Run();
             });
         }

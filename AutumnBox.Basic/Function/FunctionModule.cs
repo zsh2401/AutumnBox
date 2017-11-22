@@ -47,6 +47,7 @@ namespace AutumnBox.Basic.Function
     using AutumnBox.Basic.Devices;
     using AutumnBox.Basic.Executer;
     using AutumnBox.Basic.Function.Args;
+    using AutumnBox.Basic.Function.Bundles;
     using AutumnBox.Basic.Function.Event;
     using AutumnBox.Support.CstmDebug;
     using AutumnBox.Support.Helper;
@@ -186,11 +187,6 @@ namespace AutumnBox.Basic.Function
                 Startup?.Invoke(this, e);
             });
         }
-        ///// <summary>
-        ///// 处理参数
-        ///// </summary>
-        ///// <param name="args"></param>
-        //protected virtual void AnalyzeArgs(ModuleArgs args) { }
         /// <summary>
         /// 在开始执行前进行检查,如果返回false将使功能模块终止运行
         /// </summary>

@@ -33,10 +33,6 @@ namespace AutumnBox.Basic.Function
         /// </summary>
         ModuleStatus Status { get; }
         /// <summary>
-        /// 是否已经注册了Finished事件
-        /// </summary>
-        bool IsFinishedEventRegistered { get; }
-        /// <summary>
         /// 模块的参数
         /// </summary>
         ModuleArgs Args { set; }
