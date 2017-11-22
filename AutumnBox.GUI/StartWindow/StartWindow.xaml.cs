@@ -59,20 +59,24 @@ namespace AutumnBox.GUI
                     UIHelper.CloseRateBox();
                 });
             };
-            CExecuter.AdbStartsFailed += (s, e) =>
+            AdbHelper.AdbServerStartsFailed += (s, e) =>
             {
+                App.DevicesListener.Stop();
+                bool _continue = true;
                 Dispatcher.Invoke(() =>
                 {
-                    bool _continue = ChoiceBox.FastShow(this, UIHelper.GetString("msgWarning"),
-                            UIHelper.GetString("msgStartAdbServerFailLine1") + Environment.NewLine +
-                            UIHelper.GetString("msgStartAdbServerFailLine2") + Environment.NewLine +
-                            UIHelper.GetString("msgStartAdbServerFailLine3") + Environment.NewLine +
-                            UIHelper.GetString("msgStartAdbServerFailLine4"),
-                            UIHelper.GetString("btnIHaveCloseOtherPhoneHelper"),
-                            UIHelper.GetString("btnExit"));
+
+                    _continue = ChoiceBox.FastShow(this, UIHelper.GetString("msgWarning"),
+                           UIHelper.GetString("msgStartAdbServerFailLine1") + Environment.NewLine +
+                           UIHelper.GetString("msgStartAdbServerFailLine2") + Environment.NewLine +
+                           UIHelper.GetString("msgStartAdbServerFailLine3") + Environment.NewLine +
+                           UIHelper.GetString("msgStartAdbServerFailLine4"),
+                           UIHelper.GetString("btnIHaveCloseOtherPhoneHelper"),
+                           UIHelper.GetString("btnExit"));
                     if (_continue) AdbHelper.StartServer();
                     else SystemHelper.AppExit(1);
                 });
+                App.DevicesListener.Start();
             };
 #if DEBUG
             AboutControl.LabelVersion.Content = SystemHelper.CurrentVersion + "-Debug";

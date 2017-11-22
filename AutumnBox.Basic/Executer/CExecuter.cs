@@ -13,6 +13,7 @@
 \* =============================================================================*/
 using AutumnBox.Basic.Adb;
 using AutumnBox.Basic.Util;
+using AutumnBox.Support.CstmDebug;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -28,10 +29,6 @@ namespace AutumnBox.Basic.Executer
     /// </summary>
     public sealed class CExecuter : IDisposable, IOutSender
     {
-        /// <summary>
-        /// 当启动ADB失败时,将引发这个事件
-        /// </summary>
-        public static event EventHandler AdbStartsFailed;
         /// <summary>
         /// 当核心进程开始时将引发这个事件
         /// </summary>
@@ -141,19 +138,18 @@ namespace AutumnBox.Basic.Executer
         /// <returns></returns>
         internal OutputData Execute(string fileName, string args, bool needCheck = true)
         {
-            if (needCheck)
-            {
-                if (!AdbHelper.Check())
-                {
-                    AdbStartsFailed?.Invoke(this, new EventArgs());
-                }
-            }
             lock (Locker)
             {
+                if (needCheck && !AdbHelper.Check())
+                {
+                    Logger.T("adb server check failed.......cannot start adb-server?");
+                    return new OutputData();
+                }
                 var o = MainProcess.RunToExited(fileName, args);
                 if (o.All.ToString().Contains("cannot connect to daemon"))
                 {
-                    AdbStartsFailed?.Invoke(this, new EventArgs());
+                    Logger.T("cannot cannect to daemon! fullout ->" + o.All.ToString());
+                    return new OutputData();
                 }
                 return o;
             }

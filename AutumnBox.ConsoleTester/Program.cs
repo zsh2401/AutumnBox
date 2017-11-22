@@ -30,21 +30,19 @@ namespace AutumnBox.ConsoleTester
         };
         unsafe static void Main(string[] args)
         {
-            //DevicesMonitor monitor = new DevicesMonitor();
-            //monitor.DevicesChanged += (s, e) =>
+            //while (true)
             //{
-            //    e.DevicesList.ForEach((i) =>
-            //    {
-            //        Console.WriteLine(i.ToString() + i.Status);
-            //    });
-            //};
-            //monitor.Start();
-            Console.WriteLine(AdbHelper.HaveOtherAdbProcess());
-            AdbHelper.KillOtherAdbProcess();
-            Console.WriteLine(AdbHelper.HaveOtherAdbProcess());
-            //SystemHelper.ChangeAdbProt();
-            //var o = new ABProcess().RunToExited("cmd.exe", "Adb\\adb.exe devices");
-            Console.ReadKey();
+            //    Console.WriteLine(ExecuterInOrder.GetMarkcode());
+            //}
+
+            ExecuterInOrder.Start();
+            int count = 0;
+            while (true)
+            {
+                Console.ReadKey();
+                count++;
+                ExecuterInOrder.AddCommand(Command.MakeForAdb("help"), (o) => { Console.WriteLine($"command {count} finished"); });
+            }
         }
         public static void WriteWithColor(Action a, ConsoleColor color = ConsoleColor.White)
         {

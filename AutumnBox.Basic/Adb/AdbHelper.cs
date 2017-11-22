@@ -26,7 +26,9 @@ namespace AutumnBox.Basic.Adb
 {
     public static class AdbHelper
     {
-        public static bool HaveOtherAdbProcess()
+        public static event EventHandler AdbServerStartsFailed;
+        public static event EventHandler AdbServerStopsFailed;
+        public static bool AlreadyHaveAdbProcess()
         {
             return Process.GetProcessesByName("adb").Length != 0;
         }
@@ -40,7 +42,7 @@ namespace AutumnBox.Basic.Adb
         }
         public static bool Check()
         {
-            if (!HaveOtherAdbProcess())
+            if (!AlreadyHaveAdbProcess())
             {
                 return StartServer();
             }
@@ -53,8 +55,9 @@ namespace AutumnBox.Basic.Adb
             {
                 o = process.RunToExited("cmd.exe", "/c " + ConstData.ADB_PATH + " start-server & echo %errorlevel%");
             }
-            Logger.D("the fuck output of adb start-server ->" + o.ToString());
-            return !o.All.ToString().Contains("cannot connect to daemon");
+            bool successful = !o.All.ToString().Contains("cannot connect to daemon");
+            if (!successful) AdbServerStartsFailed?.Invoke(new object(), new EventArgs());
+            return successful;
         }
         public static bool StopServer()
         {
@@ -63,7 +66,9 @@ namespace AutumnBox.Basic.Adb
             {
                 o = process.RunToExited("cmd.exe", "/c " + ConstData.ADB_PATH + " stop-server & echo %errorlevel%");
             }
-            return o.LineAll.Last() == "0";
+            bool successful = o.LineAll.Last() == "0";
+            if (!successful) AdbServerStopsFailed?.Invoke(new object(), new EventArgs());
+            return successful;
         }
         public static bool RestartServer()
         {
