@@ -27,9 +27,9 @@ namespace AutumnBox.Basic.Util
     {
         public static bool HaveOtherAdbProcess()
         {
-            return Process.GetProcessesByName("adb").Length == 0;
+            return Process.GetProcessesByName("adb").Length != 0;
         }
-        public static void KillOtherAdbProcess()
+        public static void KillAllAdbProcess()
         {
             Process[] processs = Process.GetProcessesByName("adb");
             foreach (var p in processs)
