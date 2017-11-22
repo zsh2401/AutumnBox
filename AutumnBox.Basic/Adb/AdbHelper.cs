@@ -12,6 +12,7 @@
 *
 \* =============================================================================*/
 using AutumnBox.Basic.Executer;
+using AutumnBox.Basic.Util;
 using AutumnBox.Support.CstmDebug;
 using AutumnBox.Support.Helper;
 using System;
@@ -21,7 +22,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AutumnBox.Basic.Util
+namespace AutumnBox.Basic.Adb
 {
     public static class AdbHelper
     {

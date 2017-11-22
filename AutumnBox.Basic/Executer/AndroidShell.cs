@@ -14,6 +14,7 @@
 #define LOG_OUTPUT
 #define LOG_FULL_OUTPUT
 #define LOG_INPUT
+using AutumnBox.Basic.Adb;
 using AutumnBox.Basic.Util;
 using AutumnBox.Support.CstmDebug;
 using AutumnBox.Support.Helper;
