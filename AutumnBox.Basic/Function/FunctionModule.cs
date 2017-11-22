@@ -57,7 +57,7 @@ namespace AutumnBox.Basic.Function
     /// <summary>
     /// 各种功能模块的父类
     /// </summary>
-    public abstract class FunctionModule : IDisposable, IFunctionModule
+    public abstract class FunctionModule :IFunctionModule
     {
         /// <summary>
         /// 核心进程id
@@ -150,20 +150,26 @@ namespace AutumnBox.Basic.Function
         /// </summary>
         public void ForceStop()
         {
-            int pid = CoreProcessPid ?? throw new NullReferenceException();
+            if (CoreProcessPid == null) return;
             Status = ModuleStatus.ForceStoped;
-            SystemHelper.KillProcessAndChildrens(pid);
+            SystemHelper.KillProcessAndChildrens((int)CoreProcessPid);
         }
         /// <summary>
         /// 析构
         /// </summary>
         public void Dispose()
         {
-#pragma warning disable CA1063
-            _toolsBundle.Executer.Dispose();
-#pragma warning disable CA1063
+            Dispose(true);
         }
-
+        protected void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                _toolsBundle.Executer.Dispose();
+                ForceStop();
+            }
+            GC.SuppressFinalize(this);
+        }
         #region 虚方法
         protected virtual void Create(BundleForCreate bundle)
         {

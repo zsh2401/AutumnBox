@@ -13,7 +13,7 @@ namespace AutumnBox.Basic.Function
     /// <summary>
     /// 功能模块接口
     /// </summary>
-    public interface IFunctionModule
+    public interface IFunctionModule:IDisposable
     {
         event OutputReceivedEventHandler OutputReceived;
         /// <summary>
