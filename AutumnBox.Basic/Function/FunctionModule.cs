@@ -57,7 +57,7 @@ namespace AutumnBox.Basic.Function
     /// <summary>
     /// 各种功能模块的父类
     /// </summary>
-    public abstract class FunctionModule :IFunctionModule
+    public abstract class FunctionModule : IFunctionModule, ILogSender
     {
         /// <summary>
         /// 核心进程id
@@ -104,6 +104,11 @@ namespace AutumnBox.Basic.Function
                 return Finished != null ? true : false;
             }
         }
+
+        public string LogTag => "FunctionModule";
+
+        public bool IsShowLog => true;
+
         /// <summary>
         /// 用于传给MainMethod的工具包
         /// </summary>
@@ -222,7 +227,7 @@ namespace AutumnBox.Basic.Function
         {
             Task.Run(() =>
             {
-                Logger.D("Process start! get the pid");
+                Logger.D(this, "Process start! get the pid ->" + e.Pid);
                 CoreProcessPid = e.Pid;
                 CoreProcessStarted?.Invoke(this, e);
             });
@@ -244,8 +249,8 @@ namespace AutumnBox.Basic.Function
         /// <param name="o"></param>
         protected virtual void OnFinished(FinishEventArgs e)
         {
-            Finished?.Invoke(this, e);
-            AnyFinished?.Invoke(this, e);
+            if (Finished == null) AnyFinished?.Invoke(this, e);
+            else Finished(this, e);
         }
         #endregion
     }

@@ -41,8 +41,8 @@ namespace AutumnBox.GUI.UI.Grids
         {
             if (!ChoiceBox.FastShow(App.Current.Resources["Notice"].ToString(), App.Current.Resources["msgStartBrventTip"].ToString())) return;
             var fmp = FunctionModuleProxy.Create<BreventServiceActivator>(new ModuleArgs(App.SelectedDevice));
-            fmp.Finished += App.OwnerWindow.FuncFinish;
-            fmp.AsyncRun();
+            //fmp.Finished += App.OwnerWindow.FuncFinish;
+            fmp.AsyncRun(false);
             UIHelper.ShowRateBox(fmp);
         }
 
