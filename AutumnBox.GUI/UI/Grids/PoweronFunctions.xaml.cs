@@ -41,7 +41,6 @@ namespace AutumnBox.GUI.UI.Grids
         {
             if (!ChoiceBox.FastShow(App.Current.Resources["Notice"].ToString(), App.Current.Resources["msgStartBrventTip"].ToString())) return;
             var fmp = FunctionModuleProxy.Create<BreventServiceActivator>(new ModuleArgs(App.SelectedDevice));
-            //fmp.Finished += App.OwnerWindow.FuncFinish;
             fmp.AsyncRun(false);
             UIHelper.ShowRateBox(fmp);
         }
@@ -232,9 +231,8 @@ namespace AutumnBox.GUI.UI.Grids
                 UIHelper.GetString("msgNotice"), $"{UIHelper.GetString("msgIceBoxActLine1")}\n{UIHelper.GetString("msgIceBoxActLine2")}\n{UIHelper.GetString("msgIceBoxActLine3")}", UIHelper.GetString("btnContinue"), UIHelper.GetString("btnCancel"));
             if (!_continue) return;
             var fmp = FunctionModuleProxy.Create<IceBoxActivator>(new ModuleArgs(App.SelectedDevice));
-            fmp.Finished += App.OwnerWindow.FuncFinish;
-            fmp.AsyncRun();
-            UIHelper.ShowRateBox();
+            fmp.AsyncRun(false);
+            UIHelper.ShowRateBox(fmp);
         }
     }
 }

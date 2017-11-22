@@ -60,9 +60,9 @@ namespace AutumnBox.Basic.Function
         /// <summary>
         /// 异步运行
         /// </summary>
-        public async void AsyncRun(bool enableEventRegisteredCheck = true)
+        public async void AsyncRun(bool checkEventRegistered = true)
         {
-            if (enableEventRegisteredCheck && registeredCount == 0) throw new EventNotBoundException();
+            if (checkEventRegistered && registeredCount == 0) throw new EventNotBoundException();
             if (!(FunctionModule.Status == ModuleStatus.Ready)) throw new Exception("FM not ready");
             await Task.Run(() =>
             {

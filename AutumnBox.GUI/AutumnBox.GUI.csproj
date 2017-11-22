@@ -350,4 +350,16 @@
     </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>echo "delete fuck file"
+#delete files
+del /S *.pdb
+del /S *.ab
+del /S *.exe.config
+del /S *.json
+del AutumnBox.ConsoleTester.exe
+#delete floders
+rd /S /Qapp.publish
+del /S /Q logs</PostBuildEvent>
+  </PropertyGroup>
 </Project>
