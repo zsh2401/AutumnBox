@@ -76,6 +76,20 @@
   <PropertyGroup>
     <SignManifests>false</SignManifests>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'PrivateTest|AnyCPU'">
+    <DebugSymbols>false</DebugSymbols>
+    <OutputPath>..\Bin\</OutputPath>
+    <DefineConstants>DEBUG;PRVT_T FUCK</DefineConstants>
+    <DebugType>none</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Optimize>true</Optimize>
+    <DocumentationFile>
+    </DocumentationFile>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Windows.Shell">
       <HintPath>..\..\..\Microsoft.Windows.Shell.dll</HintPath>
@@ -352,14 +366,12 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>echo "delete fuck file"
-#delete files
 del /S *.pdb
 del /S *.ab
 del /S *.exe.config
 del /S *.json
 del AutumnBox.ConsoleTester.exe
-#delete floders
-rd /S /Qapp.publish
-del /S /Q logs</PostBuildEvent>
+rd /S /Q app.publish
+rd /S /Q logs</PostBuildEvent>
   </PropertyGroup>
 </Project>

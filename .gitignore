@@ -28,6 +28,7 @@
 *.bak
 *.suo
 *.dll
+*.psd
 fast
 makezip
 !AutumnBox.Basic/Adb/*.exe

@@ -37,7 +37,7 @@ namespace AutumnBox.GUI.NetUtil
         {
             try
             {
-#if DEBUG
+#if DEBUG && USE_LOCAL_API
                 return LocalMethod();
 #else
             return NetMethod();
