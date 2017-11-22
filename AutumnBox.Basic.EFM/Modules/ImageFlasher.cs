@@ -42,7 +42,7 @@ namespace AutumnBox.Basic.Function.Modules
             _shell.ProcessStarted += (s, e) => { OnProcessStarted(e); };
             _shell.OutputReceived += (s, e) => { OnOutputReceived(e); };
         }
-        protected override OutputData MainMethod(ToolsBundle toolsBundle)
+        protected override OutputData MainMethod(BundleForTools toolsBundle)
         {
             _shell.Connect();
             OutputData output_r = new OutputData

@@ -39,7 +39,7 @@ namespace AutumnBox.Basic.Function.Modules
             base.Create(bundle);
             _Args = (ImgExtractArgs)bundle.Args;
         }
-        protected override OutputData MainMethod(ToolsBundle toolsBundle)
+        protected override OutputData MainMethod(BundleForTools toolsBundle)
         {
             OutputData result = new OutputData();
             string imagePath;

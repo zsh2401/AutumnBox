@@ -19,7 +19,7 @@ namespace AutumnBox.Basic.Function.Modules
 {
     public sealed class ScreenLockDeleter : FunctionModule
     {
-        protected override OutputData MainMethod(ToolsBundle bundle)
+        protected override OutputData MainMethod(BundleForTools bundle)
         {
             AndroidShell _shell = new AndroidShell(bundle.Args.DeviceBasicInfo.Id);
             OutputData output = new OutputData

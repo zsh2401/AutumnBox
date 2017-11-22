@@ -26,7 +26,7 @@ namespace AutumnBox.Basic.Function.Modules
     {
         private static readonly string DEFAULT_SHELL_COMMAND = "sh /data/data/me.piebridge.brevent/brevent.sh";
         private bool _exitResult;
-        protected override OutputData MainMethod(ToolsBundle toolsBundle)
+        protected override OutputData MainMethod(BundleForTools toolsBundle)
         {
             OutputData o = new OutputData
             {

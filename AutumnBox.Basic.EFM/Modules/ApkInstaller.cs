@@ -26,7 +26,7 @@ namespace AutumnBox.Basic.Function.Modules
             base.Create(bundle);
             _Args = (InstallApkArgs)bundle.Args;
         }
-        protected override OutputData MainMethod(ToolsBundle bundle)
+        protected override OutputData MainMethod(BundleForTools bundle)
         {
             OutputData o = new OutputData() { OutSender = bundle.Executer };
             bundle.Ae($"install {_Args.ApkPath}");

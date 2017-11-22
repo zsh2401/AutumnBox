@@ -62,7 +62,7 @@
     <Compile Include="Function\Bundles\Bundle.cs" />
     <Compile Include="Function\Bundles\BundleForAnalyzeOutput.cs" />
     <Compile Include="Function\Bundles\BundleForCreate.cs" />
-    <Compile Include="Function\Bundles\ToolsBundle.cs" />
+    <Compile Include="Function\Bundles\BundleForTools.cs" />
     <Compile Include="Function\CheckResult.cs" />
     <Compile Include="Function\Event\EventAddException.cs" />
     <Compile Include="Function\Event\EventNotBoundException.cs" />
@@ -91,7 +91,6 @@
     <Compile Include="Function\Args\Args.cs" />
     <Compile Include="Function\Args\RebootOptions.cs" />
     <Compile Include="Function\Modules\RebootOperator.cs" />
-    <Compile Include="Modules\ToolsBundle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util\AdbHelper.cs" />
     <Compile Include="Util\ConstData.cs" />

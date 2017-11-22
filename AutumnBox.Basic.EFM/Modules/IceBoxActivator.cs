@@ -29,9 +29,9 @@ namespace AutumnBox.Basic.Function.Modules
     public sealed class IceBoxActivator : FunctionModule
     {
         private bool _exeResult;
-        ToolsBundle _bundle;
+        BundleForTools _bundle;
         private static readonly string _defaultCommand = "dpm set-device-owner com.catchingnow.icebox/.receiver.DPMReceiver";
-        protected override OutputData MainMethod(ToolsBundle bundle)
+        protected override OutputData MainMethod(BundleForTools bundle)
         {
             _bundle = bundle;
             var o =

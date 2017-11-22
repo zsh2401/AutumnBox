@@ -31,7 +31,7 @@ namespace AutumnBox.Basic.Function.Modules
             this._Args = (FileSenderArgs)bundle.Args;
             _Args.FilePath = _Args.FilePath.Replace('\\', '/');
         }
-        protected override OutputData MainMethod(ToolsBundle bundle)
+        protected override OutputData MainMethod(BundleForTools bundle)
         {
             OutputData o = new OutputData
             {

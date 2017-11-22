@@ -27,7 +27,7 @@ namespace AutumnBox.Basic.Function.Modules
             base.Create(bundle);
             dpi = ((DpiChangerArgs)bundle.Args).Dpi;
         }
-        protected override OutputData MainMethod(ToolsBundle bundle)
+        protected override OutputData MainMethod(BundleForTools bundle)
         {
             OutputData o = new OutputData
             {

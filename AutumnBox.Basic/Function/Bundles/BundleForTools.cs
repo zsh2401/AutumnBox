@@ -21,14 +21,14 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Function.Bundles
 {
-    public class ToolsBundle
+    public class BundleForTools
     {
         public CExecuter Executer { get; private set; }
         public Func<string, OutputData> Ae { get; private set; }
         public Func<string, OutputData> Fe { get; private set; }
         public ModuleArgs Args { get; private set; }
         public string DeviceID { get { return Args.DeviceBasicInfo.Id; } }
-        public ToolsBundle(CExecuter executer, ModuleArgs args)
+        public BundleForTools(CExecuter executer, ModuleArgs args)
         {
             Executer = executer;
             Args = args;

@@ -21,7 +21,7 @@ namespace AutumnBox.Basic.Function.Modules
     public class AndroidFullBackup : FunctionModule
     {
         private static readonly int _WaitTime = 2000;
-        protected override OutputData MainMethod(ToolsBundle bundle)
+        protected override OutputData MainMethod(BundleForTools bundle)
         {
             OutputData result = new OutputData
             {

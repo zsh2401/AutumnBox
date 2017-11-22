@@ -61,7 +61,7 @@ namespace AutumnBox.Basic.Function.Modules
             base.Create(bundle);
             this._Args = (MiFlasherArgs)bundle.Args;
         }
-        protected override OutputData MainMethod(ToolsBundle toolsBundle)
+        protected override OutputData MainMethod(BundleForTools toolsBundle)
         {
             MainProcess.StartInfo.WorkingDirectory = @"adb\";
             temtOut.Append(MainProcess.RunToExited("cmd.exe", "/c " + _Args.FloderPath + "/" + GetBatFileNameBy(_Args.Type) + $" -s {toolsBundle.DeviceID}"));

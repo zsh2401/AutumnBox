@@ -51,7 +51,7 @@ namespace AutumnBox.Basic.Function.Modules
             if (isRebootToRecoveryOnBootloader) return CheckResult.DeviceStatusError;
             else return CheckResult.OK;
         }
-        protected override OutputData MainMethod(ToolsBundle toolsBundle)
+        protected override OutputData MainMethod(BundleForTools toolsBundle)
         {
             string command = "reboot";
             if (_Args.rebootOption == RebootOptions.Bootloader)

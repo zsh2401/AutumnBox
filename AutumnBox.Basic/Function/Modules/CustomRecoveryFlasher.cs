@@ -29,7 +29,7 @@ namespace AutumnBox.Basic.Function.Modules
             base.Create(bundle);
             _Args = (FileArgs)bundle.Args;
         }
-        protected override OutputData MainMethod(ToolsBundle toolsBundle)
+        protected override OutputData MainMethod(BundleForTools toolsBundle)
         {
             Logger.D( "Start MainMethod");
             OutputData output = toolsBundle.Fe($"flash recovery  \"{_Args.files[0]}\"");

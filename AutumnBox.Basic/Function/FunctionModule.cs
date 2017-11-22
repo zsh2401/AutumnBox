@@ -107,7 +107,7 @@ namespace AutumnBox.Basic.Function
         /// <summary>
         /// 用于传给MainMethod的工具包
         /// </summary>
-        private ToolsBundle _toolsBundle;
+        private BundleForTools _toolsBundle;
         /// <summary>
         /// 构造
         /// </summary>
@@ -174,7 +174,7 @@ namespace AutumnBox.Basic.Function
         protected virtual void Create(BundleForCreate bundle)
         {
             CExecuter executer = new CExecuter();
-            _toolsBundle = new ToolsBundle(executer, bundle.Args);
+            _toolsBundle = new BundleForTools(executer, bundle.Args);
             executer.OutputReceived += (s, e) =>
             {
                 OnOutputReceived(e);
@@ -202,7 +202,7 @@ namespace AutumnBox.Basic.Function
         /// <summary>
         /// 模块的核心代码,强制要求子类进行实现
         /// </summary>
-        protected abstract OutputData MainMethod(ToolsBundle toolsBundle);
+        protected abstract OutputData MainMethod(BundleForTools toolsBundle);
         /// <summary>
         /// 引发OutputReceived事件
         /// </summary>

@@ -27,7 +27,7 @@ namespace AutumnBox.Basic.Function.Modules
             base.Create(bundle);
             _Args = (ScreenShoterArgs)bundle.Args;
         }
-        protected override OutputData MainMethod(ToolsBundle bundle)
+        protected override OutputData MainMethod(BundleForTools bundle)
         {
             OutputData o = new OutputData();
             string fileName = $"{DateTime.Now.ToString("yyyy_MM_dd_hh_MM_ss")}.png";

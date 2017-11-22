@@ -27,8 +27,8 @@ namespace AutumnBox.Basic.Function.Modules
     /// </summary>
     public sealed class SystemUnlocker : FunctionModule
     {
-        private ToolsBundle _toolsBundle;
-        protected override OutputData MainMethod(ToolsBundle toolsBundle)
+        private BundleForTools _toolsBundle;
+        protected override OutputData MainMethod(BundleForTools toolsBundle)
         {
             this._toolsBundle = toolsBundle;
             toolsBundle.Ae("root");

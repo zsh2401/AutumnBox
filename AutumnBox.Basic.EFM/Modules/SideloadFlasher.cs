@@ -26,7 +26,7 @@ namespace AutumnBox.Basic.Function.Modules
         {
             return CheckResult.Unfinish;
         }
-        protected override OutputData MainMethod(ToolsBundle bundle)
+        protected override OutputData MainMethod(BundleForTools bundle)
         {
             throw new NotImplementedException();
         }

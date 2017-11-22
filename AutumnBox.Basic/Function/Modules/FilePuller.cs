@@ -33,7 +33,7 @@ namespace AutumnBox.Basic.Function.Modules
             if (_Args.PhoneFilePath != null) return CheckResult.OK;
             else return CheckResult.ArgNullError;
         }
-        protected override OutputData MainMethod(ToolsBundle bundle)
+        protected override OutputData MainMethod(BundleForTools bundle)
         {
             return bundle.Ae($"pull {_Args.PhoneFilePath} {_Args.LocalFilePath}");
         }
