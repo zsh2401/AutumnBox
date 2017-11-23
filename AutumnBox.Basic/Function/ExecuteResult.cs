@@ -39,6 +39,7 @@ namespace AutumnBox.Basic.Function
         /// 判断是否成功
         /// </summary>
         public ResultLevel Level { get; set; } = ResultLevel.Successful;
+        public CheckResult CheckResult { get; set; } = CheckResult.OK;
         /// <summary>
         /// 建议信息,一般交由界面进行设置
         /// </summary>

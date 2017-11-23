@@ -64,8 +64,9 @@
     <Compile Include="FlowFramework\FlowManager.cs" />
     <Compile Include="FlowFramework\Flows\TestingFlows.cs" />
     <Compile Include="FlowFramework\FunctionFlow.cs" />
-    <Compile Include="FlowFramework\Container\Result.cs" />
+    <Compile Include="FlowFramework\Container\FlowResult.cs" />
     <Compile Include="FlowFramework\Container\ToolKit.cs" />
+    <Compile Include="FlowFramework\States\CheckResult.cs" />
     <Compile Include="Function\Args\FileSenderArgs.cs" />
     <Compile Include="Function\Args\ModuleArgs.cs" />
     <Compile Include="Function\Bundles\Bundle.cs" />

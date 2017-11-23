@@ -11,37 +11,54 @@
 * Company: I am free man
 *
 \* =============================================================================*/
+using AutumnBox.Basic.Executer;
 using AutumnBox.Basic.FlowFramework.Args;
 using AutumnBox.Basic.FlowFramework.Container;
-using AutumnBox.Basic.FlowFramework.Flows;
+using AutumnBox.Basic.FlowFramework.States;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.FlowFramework
 {
     public class FlowManager
     {
-        private FunctionFlow<FlowArgs, Result> _flow;
-        public FlowManager()
+        public event OutputReceivedEventHandler OutputReceived;
+        private FunctionFlow _flow;
+        private FlowArgs _args;
+        private FlowResult result;
+        public async void RunAsync() { }
+        public void Run() { }
+        private void InitFlow()
         {
-            //_flow = new FLOW_T();
-            //_flow.Create();
+            result = new FlowResult();
+            try
+            {
+                _flow.Create(_args);
+                result.CheckResult = _flow.Check();
+            }
+            catch (Exception e)
+            {
+                result.CheckResult = CheckResult.Error;
+            }
         }
-        //public async void RunAsync()
-        //{
-        //   var  _flow = TestingFlows.Get(new TestingArgs());
-            
-        //}
-        //public static void Testing()
-        //{
-        //    TestingFlows.Get();
-        //}
-        public void Run()
+        private void FlowStart() {
+            if (result.CheckResult == CheckResult.OK) {
+                _flow.OnStartup(new Events.StartupEventArgs());
+                result.Output =  _flow.MainMethod(new ToolKit(_args,new CExecuter()));
+            }
+        }
+        public static FlowManager Create(Type flowType, FlowArgs args)
         {
-            _flow.OnStartup(new Events.StartupEventArgs());
+            return new FlowManager() { _flow = Activator.CreateInstance<FunctionFlow>(), _args = args };
         }
     }
+    //private FunctionFlow<FlowArgs, FlowResult> _flow;
+    //public async void RunAsync()
+    //{
+    //   var  _flow = TestingFlows.Get(new TestingArgs());
+
+    //}
+    //public static void Testing()
+    //{
+    //    TestingFlows.Get();
+    //}
 }

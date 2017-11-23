@@ -25,7 +25,7 @@ namespace AutumnBox.Basic.FlowFramework.Flows
     public class TestingArgs : FlowArgs {
 
     }
-    public class TestingFlows : FunctionFlow<TestingArgs, Result>
+    public class TestingFlows : FunctionFlow<TestingArgs, FlowResult>
     {
         protected internal override void MainMethod(ToolKit<TestingArgs> toolKit)
         {
