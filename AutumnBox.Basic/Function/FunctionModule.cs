@@ -153,7 +153,7 @@ namespace AutumnBox.Basic.Function
             }
             catch (Exception e)
             {
-                Logger.T("A exception happend on MainMethod !", e);
+                Logger.T("A exception happend !", e);
             }
         }
         /// <summary>
@@ -255,6 +255,10 @@ namespace AutumnBox.Basic.Function
         /// <param name="o"></param>
         protected virtual void OnFinished(FinishEventArgs e)
         {
+            if (e.Result.Level != ResultLevel.Successful)
+            {
+                Logger.T("finished...but unsuccess maybe the output ->" + e.OutputData);
+            }
             if (Finished == null) AnyFinished?.Invoke(this, e);
             else Finished(this, e);
         }

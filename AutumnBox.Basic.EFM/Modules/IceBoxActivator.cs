@@ -37,6 +37,7 @@ namespace AutumnBox.Basic.Function.Modules
             var o =
                 bundle.Executer.QuicklyShell(bundle.DeviceID, _defaultCommand);
             _exeResult = o.IsSuccess;
+            Logger.T($"Mainmethod Executed.. success ->{o.IsSuccess} exit code {o.ReturnCode}");
             return o.OutputData;
         }
         protected override void AnalyzeOutput(BundleForAnalyzingResult bundle)

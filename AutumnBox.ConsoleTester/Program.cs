@@ -34,7 +34,7 @@ namespace AutumnBox.ConsoleTester
             //{
             //    Console.WriteLine(ExecuterInOrder.GetMarkcode());
             //}
-
+            Regex.Match("sadas","sadsadassdaasd").Result($"fuck");
             ExecuterInOrder.Start();
             int count = 0;
             while (true)

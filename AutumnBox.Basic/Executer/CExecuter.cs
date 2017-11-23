@@ -108,6 +108,7 @@ namespace AutumnBox.Basic.Executer
         /// <returns></returns>
         public OutputData QuicklyShell(string id, string command, out int returnCode)
         {
+            Logger.T($"execute shell command ->{command} for dev {id}" );
             var o = Execute(Command.MakeForAdb($"-s {id} shell \"{command}\" ; echo __ec$?"));
             try
             {
@@ -115,9 +116,20 @@ namespace AutumnBox.Basic.Executer
                 string strExitCode = Regex.Match(lastLine, @"__ec(?<code>\d+)").Result("${code}");
                 returnCode = Convert.ToInt32(strExitCode);
             }
-            catch (NullReferenceException)
+            catch (NullReferenceException e)
             {
+                Logger.T("quickly shell failed...",e);
                 returnCode = 1;
+            }
+            catch (NotSupportedException e)
+            {
+                Logger.T("quickly shell failed...", e);
+                returnCode = 24010;
+            }
+            catch (IndexOutOfRangeException e)
+            {
+                Logger.T("quickly shell failed...", e);
+                returnCode = 24011;
             }
             return o;
         }
