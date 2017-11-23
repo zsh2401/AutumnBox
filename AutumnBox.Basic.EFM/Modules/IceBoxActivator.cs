@@ -39,7 +39,7 @@ namespace AutumnBox.Basic.Function.Modules
             _exeResult = o.IsSuccess;
             return o.OutputData;
         }
-        protected override void AnalyzeOutput(BundleForAnalyzeOutput bundle)
+        protected override void AnalyzeOutput(BundleForAnalyzingResult bundle)
         {
             base.AnalyzeOutput(bundle);
             if (bundle.OutputData.All.ToString().ToLower().Contains("error"))

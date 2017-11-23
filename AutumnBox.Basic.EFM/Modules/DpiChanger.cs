@@ -41,7 +41,7 @@ namespace AutumnBox.Basic.Function.Modules
             Logger.D("maybe finished....the output ->" + o.ToString());
             return o;
         }
-        protected override void AnalyzeOutput(BundleForAnalyzeOutput bundle)
+        protected override void AnalyzeOutput(BundleForAnalyzingResult bundle)
         {
             base.AnalyzeOutput(bundle);
             if (!isSuccess) bundle.Result.Level = ResultLevel.Unsuccessful;

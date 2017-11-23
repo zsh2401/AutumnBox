@@ -79,7 +79,7 @@ namespace AutumnBox.Basic.Function.Modules
                     return flash_all_except_storage_and_data_bat;
             }
         }
-        protected override void AnalyzeOutput(BundleForAnalyzeOutput bundle)
+        protected override void AnalyzeOutput(BundleForAnalyzingResult bundle)
         {
             base.AnalyzeOutput(bundle);
             if (Status != ModuleStatus.ForceStoped)

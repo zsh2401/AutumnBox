@@ -32,7 +32,7 @@ namespace AutumnBox.Basic.Function.Modules
             bundle.Ae($"install {_Args.ApkPath}");
             return o;
         }
-        protected override void AnalyzeOutput(BundleForAnalyzeOutput bundle)
+        protected override void AnalyzeOutput(BundleForAnalyzingResult bundle)
         {
             base.AnalyzeOutput(bundle);
             if (bundle.OutputData.LineError.Count != 0)

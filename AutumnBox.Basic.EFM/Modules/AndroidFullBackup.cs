@@ -43,7 +43,7 @@ namespace AutumnBox.Basic.Function.Modules
             }
             catch { }
         }
-        protected override void AnalyzeOutput(BundleForAnalyzeOutput bundle)
+        protected override void AnalyzeOutput(BundleForAnalyzingResult bundle)
         {
             base.AnalyzeOutput(bundle);
             if (bundle.Result.OutputData.All.ToString().ToLower().Contains("now unlock your device"))

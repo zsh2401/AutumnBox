@@ -80,7 +80,7 @@ namespace AutumnBox.Basic.Function.Modules
             Logger.D("pull finished....");
             return result;
         }
-        protected override void AnalyzeOutput(BundleForAnalyzeOutput bundleForAnalyzeOutput)
+        protected override void AnalyzeOutput(BundleForAnalyzingResult bundleForAnalyzeOutput)
         {
             base.AnalyzeOutput(bundleForAnalyzeOutput);
             if (_suNotFound || _imgNotFound || _copyFailed) bundleForAnalyzeOutput.Result.Level = ResultLevel.Unsuccessful;

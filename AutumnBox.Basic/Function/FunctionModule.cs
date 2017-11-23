@@ -122,33 +122,39 @@ namespace AutumnBox.Basic.Function
         /// </summary>
         public void Run()
         {
-            OnStartup(new StartupEventArgs());
-            ExecuteResult executeResult;
-            BundleForAnalyzeOutput bundleForAnalyzeOutput = null;
-            if (Check(_toolsBundle.Args) == CheckResult.OK)
+            try
             {
-                Status = ModuleStatus.Running;
-                var fullOutput = MainMethod(_toolsBundle);
-                Status = (Status == ModuleStatus.ForceStoped) ? ModuleStatus.ForceStoped : ModuleStatus.Finished;
-                executeResult = new ExecuteResult(fullOutput);
-                bundleForAnalyzeOutput = new BundleForAnalyzeOutput() { Result = executeResult };
-                AnalyzeOutput(bundleForAnalyzeOutput);
-            }
-            else
-            {
-                executeResult = new ExecuteResult(new OutputData())
+                OnStartup(new StartupEventArgs());
+                ExecuteResult executeResult;
+                BundleForAnalyzingResult bundleForAnalyzeOutput = null;
+                if (Check(_toolsBundle.Args) == CheckResult.OK)
                 {
-                    Level = ResultLevel.Unsuccessful,
-                    WasForcblyStop = false,
-                };
-                Status = ModuleStatus.CannontStart;
+                    Status = ModuleStatus.Running;
+                    var fullOutput = MainMethod(_toolsBundle);
+                    Status = (Status == ModuleStatus.ForceStoped) ? ModuleStatus.ForceStoped : ModuleStatus.Finished;
+                    executeResult = new ExecuteResult(fullOutput);
+                    bundleForAnalyzeOutput = new BundleForAnalyzingResult() { Result = executeResult };
+                    AnalyzeOutput(bundleForAnalyzeOutput);
+                }
+                else
+                {
+                    executeResult = new ExecuteResult(new OutputData())
+                    {
+                        Level = ResultLevel.Unsuccessful,
+                        WasForcblyStop = false,
+                    };
+                    Status = ModuleStatus.CannontStart;
+                }
+                OnFinished(new FinishEventArgs
+                {
+                    Result = executeResult,
+                    Other = bundleForAnalyzeOutput?.Other
+                });
             }
-
-            OnFinished(new FinishEventArgs
+            catch (Exception e)
             {
-                Result = executeResult,
-                Other = bundleForAnalyzeOutput?.Other
-            });
+                Logger.T("A exception happend on MainMethod !", e);
+            }
         }
         /// <summary>
         /// 强制杀死核心进程
@@ -227,7 +233,7 @@ namespace AutumnBox.Basic.Function
         {
             Task.Run(() =>
             {
-                Logger.D(this, "Process start! get the pid ->" + e.Pid);
+                Logger.D(this, $"{GetType().Name} Process start!  get the pid ->" + e.Pid);
                 CoreProcessPid = e.Pid;
                 CoreProcessStarted?.Invoke(this, e);
             });
@@ -237,7 +243,7 @@ namespace AutumnBox.Basic.Function
         /// </summary>
         /// <param name="output"></param>
         /// <param name="result"></param>
-        protected virtual void AnalyzeOutput(BundleForAnalyzeOutput bundleResult)
+        protected virtual void AnalyzeOutput(BundleForAnalyzingResult bundleResult)
         {
             bundleResult.Result.Level = (Status == ModuleStatus.ForceStoped) ? ResultLevel.Unsuccessful : ResultLevel.Successful;
             bundleResult.Result.WasForcblyStop = (Status == ModuleStatus.ForceStoped) ? true : false;

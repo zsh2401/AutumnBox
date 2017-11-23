@@ -65,7 +65,7 @@ namespace AutumnBox.Basic.Function.Modules
             Logger.D("move finish...");
             return output_r;
         }
-        protected override void AnalyzeOutput(BundleForAnalyzeOutput bundleForAnalyzeOutput)
+        protected override void AnalyzeOutput(BundleForAnalyzingResult bundleForAnalyzeOutput)
         {
             base.AnalyzeOutput(bundleForAnalyzeOutput);
             if (_suNotFound || !_success)bundleForAnalyzeOutput.Result.Level = ResultLevel.Unsuccessful;

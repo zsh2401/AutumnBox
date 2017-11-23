@@ -40,7 +40,7 @@ namespace AutumnBox.Basic.Function.Modules
             toolsBundle.Executer.QuicklyShell(toolsBundle.DeviceID, DEFAULT_SHELL_COMMAND, out _exitResult);
             return o;
         }
-        protected override void AnalyzeOutput(BundleForAnalyzeOutput bundle)
+        protected override void AnalyzeOutput(BundleForAnalyzingResult bundle)
         {
             base.AnalyzeOutput(bundle);
             Logger.D($"shell exitResult?? {_exitResult}");
