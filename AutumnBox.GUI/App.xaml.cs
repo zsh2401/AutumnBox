@@ -33,12 +33,15 @@ namespace AutumnBox.GUI
         internal static DevicesMonitor DevicesListener = new DevicesMonitor();//设备监听器
         protected override void OnStartup(StartupEventArgs e)
         {
+            Logger.D("Check have other autumnbox process");
             if (SystemHelper.HaveOtherAutumnBoxProcess())
             {
                 MMessageBox.FastShow(App.OwnerWindow, "警告/Warning", "不可以同时打开两个AutumnBox\nDo not run two AutumnBox at once");
                 Environment.Exit(1);
             }
+            Logger.D("check finished....start autogc");
             SystemHelper.AutoGC.Start();
+            Logger.D("start finished....startup!");
             base.OnStartup(e);
         }
         protected override void OnExit(ExitEventArgs e)

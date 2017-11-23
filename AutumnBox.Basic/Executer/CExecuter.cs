@@ -116,21 +116,14 @@ namespace AutumnBox.Basic.Executer
                 string strExitCode = Regex.Match(lastLine, @"__ec(?<code>\d+)").Result("${code}");
                 returnCode = Convert.ToInt32(strExitCode);
             }
-            catch (NullReferenceException e)
+            catch (Exception e)
             {
                 Logger.T("quickly shell failed...",e);
                 returnCode = 1;
+                if (e is NotSupportedException) returnCode = 24010;
+                else if (e is IndexOutOfRangeException) returnCode = 24011;
             }
-            catch (NotSupportedException e)
-            {
-                Logger.T("quickly shell failed...", e);
-                returnCode = 24010;
-            }
-            catch (IndexOutOfRangeException e)
-            {
-                Logger.T("quickly shell failed...", e);
-                returnCode = 24011;
-            }
+            Logger.D("return code ->" + returnCode);
             return o;
         }
         /// <summary>
