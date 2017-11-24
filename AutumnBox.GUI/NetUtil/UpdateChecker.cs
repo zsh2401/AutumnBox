@@ -14,27 +14,43 @@
 using AutumnBox.GUI.Cfg;
 using AutumnBox.Support.CstmDebug;
 using AutumnBox.Support.Helper;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
+using System.IO;
 
 namespace AutumnBox.GUI.NetUtil
 {
+    [JsonObject(MemberSerialization.OptOut)]
     public class UpdateCheckResult
     {
+        [JsonProperty("header")]
         public string Header { get; set; } = "Ok!";
-        public bool NeedUpdate { get; set; } = false;
-        public string Version { get; set; }
+        [JsonProperty("version")]
+        public string VersionString { get; set; }
+        [JsonProperty("message")]
         public string Message { get; set; }
+        [JsonProperty("baiduPanUrl")]
         public string BaiduPanUrl { get; set; }
-        public DateTime Time { get; set; }
+        [JsonProperty("githubReleaseUrl")]
         public string GithubReleaseUrl { get; set; }
+        [JsonProperty("time")]
+        public int[] TimeArray { get; set; }
+
+        public Version Version => new Version(VersionString);
+        public bool NeedUpdate =>
+            Version > Helper.SystemHelper.CurrentVersion //检测到的版本大于当前版本
+            && new Version(Config.SkipVersion) != Version;//并且没有被设置跳过
+        public DateTime Time => new DateTime(TimeArray[0], TimeArray[1], TimeArray[0]);
     }
     [LogProperty(TAG = "Update Check", Show = false)]
     internal class UpdateChecker : RemoteDataGetter<UpdateCheckResult>
     {
         public override UpdateCheckResult LocalMethod()
         {
-            throw new NotImplementedException();
+            JObject j = JObject.Parse(File.ReadAllText(@"E:\zsh2401.github.io\softsupport\autumnbox\update\index.html"));
+            var result = (UpdateCheckResult)JsonConvert.DeserializeObject(j.ToString(), typeof(UpdateCheckResult));
+            return result;
         }
 
         public override UpdateCheckResult NetMethod()
@@ -43,26 +59,9 @@ namespace AutumnBox.GUI.NetUtil
             string data = NetHelper.GetHtmlCode(Urls.UPDATE_API);
             Logger.D("Get code finish " + data);
             JObject j = JObject.Parse(data);
-            bool needUpdate = (
-                //当前版本小于检测到的版本
-                Helper.SystemHelper.CurrentVersion < new Version(j["Version"].ToString())
-                &&
-                //并且没有被设置跳过
-                new Version(Config.SkipVersion) != new Version(j["Version"].ToString()));
-            var e = new UpdateCheckResult
-            {
-                NeedUpdate = needUpdate,
-                Time = new DateTime(Convert.ToInt32(j["Date"][0].ToString()),
-                Convert.ToInt32(j["Date"][1].ToString()),
-                Convert.ToInt32(j["Date"][2].ToString())),
-                Message = j["Message"].ToString(),
-                Version = j["Version"].ToString(),
-                Header = j["Header"].ToString(),
-                BaiduPanUrl = j["BaiduPan"].ToString(),
-                GithubReleaseUrl = j["GithubRelease"].ToString()
-            };
+            var result = (UpdateCheckResult)JsonConvert.DeserializeObject(j.ToString(), typeof(UpdateCheckResult));
             Logger.D("get from net were success!");
-            return e;
+            return result;
         }
     }
 }

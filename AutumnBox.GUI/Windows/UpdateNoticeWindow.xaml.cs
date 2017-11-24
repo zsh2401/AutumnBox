@@ -34,7 +34,7 @@ namespace AutumnBox.GUI.Windows
             LH.Content = e.Header;
             TextBoxContent.Text = e.Message;
             baiduUrl = e.BaiduPanUrl;
-            version = e.Version;
+            version = e.Version.ToString();
             githubUrl = e.GithubReleaseUrl;
             Owner = App.OwnerWindow;
         }

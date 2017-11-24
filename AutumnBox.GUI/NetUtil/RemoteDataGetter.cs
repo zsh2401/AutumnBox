@@ -11,12 +11,12 @@
 * Company: I am free man
 *
 \* =============================================================================*/
+//#define USE_LOCAL_API
 using AutumnBox.Support.CstmDebug;
 using AutumnBox.Support.Helper;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-
 namespace AutumnBox.GUI.NetUtil
 {
     [LogProperty(TAG = "Net Unit", Show = false)]

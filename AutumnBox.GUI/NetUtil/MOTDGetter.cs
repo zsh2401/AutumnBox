@@ -13,15 +13,21 @@
 \* =============================================================================*/
 using AutumnBox.Support.CstmDebug;
 using AutumnBox.Support.Helper;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.IO;
 namespace AutumnBox.GUI.NetUtil
 {
-    internal class MOTDResult
+    [JsonObject(MemberSerialization.OptOut)]
+    public class MOTDResult
     {
+        [JsonProperty("header")]
         public string Header { get; set; }
+        [JsonProperty("separator")]
         public string Separator { get; set; }
+        [JsonProperty("message")]
         public string Message { get; set; }
+        internal MOTDResult() { }
     }
     [LogProperty(TAG = "MOTD Getter", Show = false)]
     internal class MOTDGetter : RemoteDataGetter<MOTDResult>
@@ -29,12 +35,7 @@ namespace AutumnBox.GUI.NetUtil
         public override MOTDResult LocalMethod()
         {
             JObject o = JObject.Parse(File.ReadAllText(@"E:\zsh2401.github.io\softsupport\autumnbox\motd\index.html"));
-            MOTDResult result = new MOTDResult
-            {
-                Header = o["header"].ToString(),
-                Separator = o["separator"].ToString(),
-                Message = o["message"].ToString()
-            };
+            var result = (MOTDResult)JsonConvert.DeserializeObject(o.ToString(), typeof(MOTDResult));
             Logger.D("MOTD Get from local were success!" + result.Header + " " + result.Message);
             return result;
         }
@@ -42,12 +43,7 @@ namespace AutumnBox.GUI.NetUtil
         public override MOTDResult NetMethod()
         {
             JObject o = JObject.Parse(NetHelper.GetHtmlCode(Urls.MOTD_API));
-            MOTDResult result = new MOTDResult
-            {
-                Header = o["header"].ToString(),
-                Separator = o["separator"].ToString(),
-                Message = o["message"].ToString()
-            };
+            var result = (MOTDResult)JsonConvert.DeserializeObject(o.ToString(), typeof(MOTDResult));
             Logger.D("MOTD Get from net success!" + result.Header + " " + result.Message);
             return result;
         }
