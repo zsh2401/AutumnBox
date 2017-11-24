@@ -16,6 +16,7 @@ using AutumnBox.Basic.FlowFramework.Container;
 using AutumnBox.Basic.FlowFramework.Events;
 using AutumnBox.Basic.FlowFramework.States;
 using AutumnBox.Support.CstmDebug;
+using System;
 using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.FlowFramework
@@ -60,9 +61,15 @@ namespace AutumnBox.Basic.FlowFramework
         {
             Task.Run(() =>
             {
-                OnAnyFinished(this,new FinishedEventArgs<FlowResult>(e.Result));
+                _resultTmp = e.Result;
+                OnAnyFinished(this, new FinishedEventArgs<FlowResult>(e.Result));
                 Finished?.Invoke(this, e);
             });
+        }
+        protected void Dispose(bool disposing)
+        {
+            if (disposing) _executer.Dispose();
+            GC.SuppressFinalize(this);
         }
     }
 }

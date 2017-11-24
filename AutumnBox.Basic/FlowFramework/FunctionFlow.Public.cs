@@ -25,7 +25,7 @@ namespace AutumnBox.Basic.FlowFramework
 {
     public abstract partial class FunctionFlow<TArgs, TResult>
         : FunctionFlow, IOutSender, IForceStoppable, IDisposable
-        where TArgs : FlowArgs,new()
+        where TArgs : FlowArgs, new()
         where TResult : FlowResult, new()
     {
         public event StartupEventHandler Startup;
@@ -35,6 +35,8 @@ namespace AutumnBox.Basic.FlowFramework
         public FlowStatus Status { get; private set; }
         public FunctionFlow()
         {
+            _executer = new CExecuter();
+            _resultTmp = new TResult();
             Status = FlowStatus.Creating;
             TAG = new LogSender(this.GetType().Name, true);
             Status = FlowStatus.Ready;
@@ -54,7 +56,11 @@ namespace AutumnBox.Basic.FlowFramework
                 MainFlow();
             });
         }
-        public TResult Run() { MainFlow(); throw new NotImplementedException(); }
+        public TResult Run()
+        {
+            MainFlow();
+            return _resultTmp;
+        }
         public void ForceStop()
         {
             if (_pid == null) return;
@@ -66,10 +72,5 @@ namespace AutumnBox.Basic.FlowFramework
             return new Stoper(this);
         }
         public void Dispose() => Dispose(true);
-        protected void Dispose(bool disposing)
-        {
-            if (disposing) _executer.Dispose();
-            GC.SuppressFinalize(this);
-        }
     }
 }
