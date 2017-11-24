@@ -58,6 +58,7 @@
     <Compile Include="Executer\ExecuterInOrder.cs" />
     <Compile Include="Executer\IOutSender.cs" />
     <Compile Include="Executer\ShellOutput.cs" />
+    <Compile Include="FlowFramework\FunctionFlow.cs" />
     <Compile Include="Flows\Args\FileSenderArgs.cs" />
     <Compile Include="FlowFramework\Args\FlowArgs.cs" />
     <Compile Include="Flows\Events\Events.cs" />

@@ -1,5 +1,8 @@
 ﻿using AutumnBox.Basic.Devices;
 using AutumnBox.Basic.Executer;
+using AutumnBox.Basic.FlowFramework;
+using AutumnBox.Basic.FlowFramework.Args;
+using AutumnBox.Basic.FlowFramework.Container;
 using AutumnBox.Basic.Function;
 using AutumnBox.Basic.Function.Args;
 using AutumnBox.Basic.Function.Modules;
@@ -31,7 +34,7 @@ namespace AutumnBox.ConsoleTester
         unsafe static void Main(string[] args)
         {
             Basic.Flows.FileSender fs = new Basic.Flows.FileSender();
-            fs.Init(new Basic.Flows.Args.FileSenderArgs { DevBasicInfo = Program.mi4, PathFrom = @"D:\☆下载暂存\密码1 腾讯steam加速.zip.tdl" });
+            fs.Init(new Basic.Flows.Args.FileSenderArgs { DevBasicInfo = mi4, PathFrom = @"D:\☆下载暂存\搞笑证书生成器.rar" });
             fs.Finished += (s, e) =>
             {
                 Console.WriteLine(e.Result.FileSendErrorType);
@@ -39,6 +42,11 @@ namespace AutumnBox.ConsoleTester
             fs.OutputReceived += (s, e) =>
             {
                 Console.WriteLine(e.Text);
+            };
+            FunctionFlow.AnyFinished += (s, e) =>
+            {
+                Console.WriteLine(s.GetType().Name +  "finished...");
+                Console.WriteLine(e.Result.Output.ToString());
             };
             fs.RunAsync();
             Console.ReadKey();

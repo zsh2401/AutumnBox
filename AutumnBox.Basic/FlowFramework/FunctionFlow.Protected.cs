@@ -14,16 +14,17 @@
 using AutumnBox.Basic.Executer;
 using AutumnBox.Basic.FlowFramework.Container;
 using AutumnBox.Basic.FlowFramework.Events;
+using AutumnBox.Basic.FlowFramework.States;
 using AutumnBox.Support.CstmDebug;
 using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.FlowFramework
 {
-    partial class FunctionFlow<ARGS_T, RESUL_T>
+    partial class FunctionFlow<TArgs, TResult>
     {
         protected readonly LogSender TAG;
-        protected ARGS_T Args { get; private set; }
-        protected virtual void Initialization(ARGS_T moduleArgs)
+        protected TArgs Args { get; private set; }
+        protected virtual void Initialization(TArgs moduleArgs)
         {
             Args = moduleArgs;
         }
@@ -35,7 +36,7 @@ namespace AutumnBox.Basic.FlowFramework
                 Startup?.Invoke(this, e);
             });
         }
-        protected abstract OutputData MainMethod(ToolKit<ARGS_T> toolKit);
+        protected abstract OutputData MainMethod(ToolKit<TArgs> toolKit);
         protected virtual void OnOutputReceived(OutputReceivedEventArgs e)
         {
             Task.Run(() =>
@@ -51,14 +52,15 @@ namespace AutumnBox.Basic.FlowFramework
                 ProcessStarted?.Invoke(this, e);
             });
         }
-        protected virtual void AnalyzeResuslt(RESUL_T result)
+        protected virtual void AnalyzeResult(TResult result)
         {
             result.ResultType = isForceStoped ? ResultType.Unsuccessful : result.ResultType;
         }
-        protected virtual void OnFinished(FinishedEventArgs<RESUL_T> e)
+        protected virtual void OnFinished(FinishedEventArgs<TResult> e)
         {
             Task.Run(() =>
             {
+                OnAnyFinished(this,new FinishedEventArgs<FlowResult>(e.Result));
                 Finished?.Invoke(this, e);
             });
         }

@@ -14,12 +14,13 @@
 using AutumnBox.Basic.Executer;
 using AutumnBox.Basic.FlowFramework.Container;
 using AutumnBox.Basic.FlowFramework.Events;
+using AutumnBox.Basic.FlowFramework.States;
 using AutumnBox.Support.CstmDebug;
 using System;
 
 namespace AutumnBox.Basic.FlowFramework
 {
-    partial class FunctionFlow<ARGS_T, RESUL_T>
+    partial class FunctionFlow<TArgs, TResult>
     {
         private CExecuter _executer = new CExecuter();
         private int? _pid;
@@ -38,22 +39,22 @@ namespace AutumnBox.Basic.FlowFramework
         private void _MainFlow()
         {
             /*Checking*/
-            RESUL_T result = new RESUL_T
+            TResult result = new TResult
             {
                 CheckResult = Check()
             };
             if (result.CheckResult != CheckResult.OK)
             {
-                OnFinished(new FinishedEventArgs<RESUL_T>(result));
+                OnFinished(new FinishedEventArgs<TResult>(result));
             }
             /*Startup*/
             OnStartup(new StartupEventArgs());
             /*Running*/
-            result.Output = MainMethod(new ToolKit<ARGS_T>(Args, _executer));
+            result.Output = MainMethod(new ToolKit<TArgs>(Args, _executer));
             /*Analying*/
-            AnalyzeResuslt(result);
+            AnalyzeResult(result);
             /*完成鸟~*/
-            OnFinished(new FinishedEventArgs<RESUL_T>(result));
+            OnFinished(new FinishedEventArgs<TResult>(result));
         }
     }
 }

@@ -32,7 +32,6 @@ namespace AutumnBox.Basic.Function.Modules
         private bool _imgNotFound = false;
         private bool _copyFailed = false;
         private bool _findNotFind = false;
-        private AndroidShell _shell;
         private ImgExtractArgs _Args;
         protected override void Create(BundleForCreate bundle)
         {

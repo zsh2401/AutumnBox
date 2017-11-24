@@ -17,13 +17,13 @@ using System;
 
 namespace AutumnBox.Basic.FlowFramework.Container
 {
-    public class ToolKit<ARGS_T> where ARGS_T : FlowArgs
+    public class ToolKit<TArgs> where TArgs : FlowArgs
     {
         public readonly Func<string, OutputData> Ae;
         public readonly Func<string, OutputData> Fe;
         public readonly CExecuter Executer;
-        public ARGS_T Args;
-        public ToolKit(ARGS_T args, CExecuter executer = null)
+        public TArgs Args;
+        public ToolKit(TArgs args, CExecuter executer = null)
         {
             Args = args;
             Executer = executer ?? new CExecuter();

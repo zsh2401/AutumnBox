@@ -15,6 +15,7 @@ using AutumnBox.Basic.Executer;
 using AutumnBox.Basic.FlowFramework.Args;
 using AutumnBox.Basic.FlowFramework.Container;
 using AutumnBox.Basic.FlowFramework.Events;
+using AutumnBox.Basic.FlowFramework.States;
 using AutumnBox.Support.CstmDebug;
 using AutumnBox.Support.Helper;
 using System;
@@ -22,13 +23,13 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.FlowFramework
 {
-    public abstract partial class FunctionFlow<ARGS_T, RESUL_T>
-        : IOutSender, IForceStoppable, IDisposable
-        where ARGS_T : FlowArgs
-        where RESUL_T : FlowResult, new()
+    public abstract partial class FunctionFlow<TArgs, TResult>
+        : FunctionFlow, IOutSender, IForceStoppable, IDisposable
+        where TArgs : FlowArgs,new()
+        where TResult : FlowResult, new()
     {
         public event StartupEventHandler Startup;
-        public event FinishedEventHandler<RESUL_T> Finished;
+        public event FinishedEventHandler<TResult> Finished;
         public event OutputReceivedEventHandler OutputReceived;
         public event ProcessStartedEventHandler ProcessStarted;
         public FlowStatus Status { get; private set; }
@@ -42,7 +43,7 @@ namespace AutumnBox.Basic.FlowFramework
                 OnOutputReceived(e);
             };
         }
-        public void Init(ARGS_T args)
+        public void Init(TArgs args)
         {
             Initialization(args);
         }
@@ -53,7 +54,7 @@ namespace AutumnBox.Basic.FlowFramework
                 MainFlow();
             });
         }
-        public RESUL_T Run() { MainFlow(); throw new NotImplementedException(); }
+        public TResult Run() { MainFlow(); throw new NotImplementedException(); }
         public void ForceStop()
         {
             if (_pid == null) return;
@@ -67,6 +68,7 @@ namespace AutumnBox.Basic.FlowFramework
         public void Dispose() => Dispose(true);
         protected void Dispose(bool disposing)
         {
+            if (disposing) _executer.Dispose();
             GC.SuppressFinalize(this);
         }
     }

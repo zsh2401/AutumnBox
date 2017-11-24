@@ -30,14 +30,12 @@ namespace AutumnBox.Basic.Flows
     {
         protected override OutputData MainMethod(ToolKit<FileSenderArgs> toolKit)
         {
-            var o = new OutputData();
             string command = $"push \"{toolKit.Args.PathFrom}\" \"{toolKit.Args.PathTo + "/" + toolKit.Args.FileName}\"";
-            o = toolKit.Ae(command);
-            return o;
+            return toolKit.Ae(command);
         }
-        protected override void AnalyzeResuslt(FileSenderResult result)
+        protected override void AnalyzeResult(FileSenderResult result)
         {
-            base.AnalyzeResuslt(result);
+            base.AnalyzeResult(result);
             result.FileSendErrorType = FileSendErrorType.Unknow;
         }
     }
