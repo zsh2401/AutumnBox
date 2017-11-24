@@ -19,7 +19,7 @@ namespace AutumnBox.Basic.FlowFramework.Container
     public class FlowResult
     {
         public CheckResult CheckResult { get; set; }
-        public OutputData Output { get; set; } = new OutputData();
+        public OutputData OutputData { get; set; } = new OutputData();
         public ResultType ResultType { get; set; } = ResultType.Successful;
     }
 }

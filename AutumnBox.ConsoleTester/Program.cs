@@ -33,22 +33,22 @@ namespace AutumnBox.ConsoleTester
         };
         unsafe static void Main(string[] args)
         {
-            Basic.Flows.FileSender fs = new Basic.Flows.FileSender();
-            fs.Init(new Basic.Flows.Args.FileSenderArgs { DevBasicInfo = mi4, PathFrom = @"D:\☆下载暂存\搞笑证书生成器.rar" });
-            fs.Finished += (s, e) =>
+            Basic.Flows.BreventServiceActivator fl = new Basic.Flows.BreventServiceActivator();
+            fl.Init(new FlowArgs() { DevBasicInfo = mi4 });
+            fl.Finished += (s, e) =>
             {
-                Console.WriteLine(e.Result.FileSendErrorType);
+                Console.WriteLine(e.Result.ResultType);
             };
-            fs.OutputReceived += (s, e) =>
+            fl.OutputReceived += (s, e) =>
             {
                 Console.WriteLine(e.Text);
             };
-            FunctionFlow.AnyFinished += (s, e) =>
+            FunctionFlowBase.AnyFinished += (s, e) =>
             {
-                Console.WriteLine(s.GetType().Name +  "finished...");
-                Console.WriteLine(e.Result.Output.ToString());
+                Console.WriteLine(s.GetType().Name + " ->finished...");
+                Console.WriteLine(e.Result.OutputData.ToString());
             };
-            fs.RunAsync();
+            fl.RunAsync();
             Console.ReadKey();
         }
         public static void WriteWithColor(Action a, ConsoleColor color = ConsoleColor.White)

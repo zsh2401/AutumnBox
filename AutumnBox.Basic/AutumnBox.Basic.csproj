@@ -59,12 +59,9 @@
     <Compile Include="Executer\IOutSender.cs" />
     <Compile Include="Executer\ShellOutput.cs" />
     <Compile Include="FlowFramework\FunctionFlow.cs" />
-    <Compile Include="Flows\Args\FileSenderArgs.cs" />
+    <Compile Include="FlowFramework\FunctionFlowBase.cs" />
     <Compile Include="FlowFramework\Args\FlowArgs.cs" />
-    <Compile Include="Flows\Events\Events.cs" />
-    <Compile Include="Flows\FileSender.cs" />
     <Compile Include="FlowFramework\States\CheckResult.cs" />
-    <Compile Include="Flows\Container\FileSenderResult.cs" />
     <Compile Include="FlowFramework\States\ResultType.cs" />
     <Compile Include="FlowFramework\Events\FlowEvents.cs" />
     <Compile Include="FlowFramework\States\FlowStatus.cs" />
@@ -75,7 +72,6 @@
     <Compile Include="FlowFramework\Container\ToolKit.cs" />
     <Compile Include="FlowFramework\IForceStoppable.cs" />
     <Compile Include="FlowFramework\Stoper.cs" />
-    <Compile Include="Flows\States\FlieSenderErrorType.cs" />
     <Compile Include="Function\Args\FileSenderArgs.cs" />
     <Compile Include="Function\Args\ModuleArgs.cs" />
     <Compile Include="Function\Bundles\Bundle.cs" />

@@ -49,6 +49,17 @@ namespace AutumnBox.Basic.Executer
         public StringBuilder Out { get; private set; } = new StringBuilder();
         public StringBuilder Error { get; private set; } = new StringBuilder();
         private bool _IsClosed = false;
+        public bool Contains(string str, bool ignoreCase = true)
+        {
+            if (ignoreCase)
+            {
+                return All.ToString().ToLower().Contains(str);
+            }
+            else
+            {
+                return All.ToString().Contains(str);
+            }
+        }
         /// <summary>
         /// 添加输出信息
         /// </summary>

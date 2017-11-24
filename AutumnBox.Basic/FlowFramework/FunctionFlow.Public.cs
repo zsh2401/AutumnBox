@@ -24,7 +24,7 @@ using System.Threading.Tasks;
 namespace AutumnBox.Basic.FlowFramework
 {
     public abstract partial class FunctionFlow<TArgs, TResult>
-        : FunctionFlow, IOutSender, IForceStoppable, IDisposable
+        : FunctionFlowBase, IOutSender, IForceStoppable, IDisposable
         where TArgs : FlowArgs, new()
         where TResult : FlowResult, new()
     {

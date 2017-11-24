@@ -51,7 +51,7 @@ namespace AutumnBox.Basic.FlowFramework
             /*Startup*/
             OnStartup(new StartupEventArgs());
             /*Running*/
-            result.Output = MainMethod(new ToolKit<TArgs>(Args, _executer));
+            result.OutputData = MainMethod(new ToolKit<TArgs>(Args, _executer));
             /*Analying*/
             AnalyzeResult(result);
             /*完成鸟~*/
