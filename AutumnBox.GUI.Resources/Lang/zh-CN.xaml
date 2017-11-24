@@ -67,6 +67,7 @@
     <!--tabitem-->
 
     <!--信息(主要用于MMesssageBox)-->
+    <s:String x:Key="msgIceBoxActUnknowError">未知的错误!</s:String>
     <s:String x:Key="msgRelockWarning">注意,本功能将会把您的设备重新上Bootloader锁,这样您的设备将会变得比较安全但是您将失去root权限,最重要的是将会彻底清除您的设备上的数据!请做好数据备份谨慎而行!并且在操作时不要拔掉设备,否则后果自负</s:String>
     <s:String x:Key="msgRelockWarningAgain">请再次注意,本功能将会清除设备的所有数据,并且不要在操作时拔掉设备!你确定要这么做了吗?按下按钮立即开始重新上锁!</s:String>
     <s:String x:Key="msgPushOK">如果一切正常,您将会在手机存储目录(/sdcard)下看到您刚才推送的文件</s:String>
@@ -185,6 +186,8 @@
     <!--设备状态提示-->
 
     <!--建议-->
+
+    <s:String x:Key="advIceBoxActUnknowError">请将下方的完整输出复制,并在冰箱评论区提问或联系AutumnBox开发者</s:String>
     <s:String x:Key="errormsgBrventActivtedUnsuccess">可能导致失败的原因:您未安装黑域;打开黑域界面失败;指令过期</s:String>
     <s:String x:Key="advsBrventActivtedUnsuccess">请确保您安装了最新的黑域并至少打开了黑域界面,或您可尝试更新本工具箱</s:String>
     <s:String x:Key="advsFileSendUnsuccess">您可以截图后,给zsh2401@gmail.com发送邮件</s:String>

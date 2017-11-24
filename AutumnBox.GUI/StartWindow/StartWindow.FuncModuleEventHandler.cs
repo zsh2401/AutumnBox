@@ -73,6 +73,10 @@ namespace AutumnBox.GUI
                                 e.Result.Message = UIHelper.GetString("msgNoticeIceBoxHaveNoInstall");
                                 e.Result.Advise = UIHelper.GetString("advsIceBoxHaveNoInstall");
                                 break;
+                            default:
+                                e.Result.Message = UIHelper.GetString("msgIceBoxActUnknowError");
+                                e.Result.Advise = UIHelper.GetString("advIceBoxActUnknowError");
+                                break;
                         }
                         ModuleResultWindow.FastShow(e.Result);
                         break;

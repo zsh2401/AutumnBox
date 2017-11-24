@@ -24,7 +24,9 @@ namespace AutumnBox.Basic.Function.Modules
     public enum ErrorType
     {
         DeviceOwnerIsAlreadySet,
-        IceBoxHaveNoInstall
+        IceBoxHaveNoInstall,
+        Unkonw,
+        DeviceAlreadyProvisioned
     }
     public sealed class IceBoxActivator : FunctionModule
     {
@@ -43,6 +45,7 @@ namespace AutumnBox.Basic.Function.Modules
         protected override void AnalyzeOutput(BundleForAnalyzingResult bundle)
         {
             base.AnalyzeOutput(bundle);
+            bundle.Other = ErrorType.Unkonw;
             if (bundle.OutputData.All.ToString().ToLower().Contains("error"))
             {
                 bundle.Result.Level = ResultLevel.Unsuccessful;
@@ -52,6 +55,16 @@ namespace AutumnBox.Basic.Function.Modules
             {
                 bundle.Result.Level = ResultLevel.Unsuccessful;
                 bundle.Other = ErrorType.DeviceOwnerIsAlreadySet;
+            }
+            if (bundle.OutputData.All.ToString().ToLower().Contains("device is already provisioned"))
+            {
+                bundle.Result.Level = ResultLevel.Unsuccessful;
+                bundle.Other = ErrorType.DeviceAlreadyProvisioned;
+            }
+            if (bundle.OutputData.All.ToString().ToLower().Contains("exception"))
+            {
+                bundle.Result.Level = ResultLevel.Unsuccessful;
+                bundle.Other = ErrorType.Unkonw;
             }
             if (_exeResult == false) bundle.Result.Level = ResultLevel.Unsuccessful;
             if (bundle.Result.Level == ResultLevel.Successful) _bundle.Ae("reboot");
