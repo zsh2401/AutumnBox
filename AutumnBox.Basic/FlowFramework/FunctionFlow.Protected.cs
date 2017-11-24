@@ -1,0 +1,66 @@
+﻿/* =============================================================================*\
+*
+* Filename: FunctionFlow
+* Description: 
+*
+* Version: 1.0
+* Created: 2017/11/23 14:52:17 (UTC+8:00)
+* Compiler: Visual Studio 2017
+* 
+* Author: zsh2401
+* Company: I am free man
+*
+\* =============================================================================*/
+using AutumnBox.Basic.Executer;
+using AutumnBox.Basic.FlowFramework.Container;
+using AutumnBox.Basic.FlowFramework.Events;
+using AutumnBox.Support.CstmDebug;
+using System.Threading.Tasks;
+
+namespace AutumnBox.Basic.FlowFramework
+{
+    partial class FunctionFlow<ARGS_T, RESUL_T>
+    {
+        protected readonly LogSender TAG;
+        protected ARGS_T Args { get; private set; }
+        protected virtual void Initialization(ARGS_T moduleArgs)
+        {
+            Args = moduleArgs;
+        }
+        protected virtual CheckResult Check() { return CheckResult.OK; }
+        protected virtual void OnStartup(StartupEventArgs e)
+        {
+            Task.Run(() =>
+            {
+                Startup?.Invoke(this, e);
+            });
+        }
+        protected abstract OutputData MainMethod(ToolKit<ARGS_T> toolKit);
+        protected virtual void OnOutputReceived(OutputReceivedEventArgs e)
+        {
+            Task.Run(() =>
+            {
+                OutputReceived?.Invoke(this, e);
+            });
+        }
+        protected virtual void OnProcessStarted(ProcessStartedEventArgs e)
+        {
+            _pid = e.Pid;
+            Task.Run(() =>
+            {
+                ProcessStarted?.Invoke(this, e);
+            });
+        }
+        protected virtual void AnalyzeResuslt(RESUL_T result)
+        {
+            result.ResultType = isForceStoped ? ResultType.Unsuccessful : result.ResultType;
+        }
+        protected virtual void OnFinished(FinishedEventArgs<RESUL_T> e)
+        {
+            Task.Run(() =>
+            {
+                Finished?.Invoke(this, e);
+            });
+        }
+    }
+}

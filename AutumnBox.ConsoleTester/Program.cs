@@ -30,19 +30,18 @@ namespace AutumnBox.ConsoleTester
         };
         unsafe static void Main(string[] args)
         {
-            //while (true)
-            //{
-            //    Console.WriteLine(ExecuterInOrder.GetMarkcode());
-            //}
-            Regex.Match("sadas","sadsadassdaasd").Result($"fuck");
-            ExecuterInOrder.Start();
-            int count = 0;
-            while (true)
+            Basic.FlowFramework.BasicFlows.FileSender fs = new Basic.FlowFramework.BasicFlows.FileSender();
+            fs.Init(new Basic.FlowFramework.Args.FileSenderArgs { DevBasicInfo = Program.mi4, PathFrom = @"D:\☆下载暂存\密码1 腾讯steam加速.zip.tdl" });
+            fs.Finished += (s, e) =>
             {
-                Console.ReadKey();
-                count++;
-                ExecuterInOrder.AddCommand(Command.MakeForAdb("help"), (o) => { Console.WriteLine($"command {count} finished"); });
-            }
+                Console.WriteLine(e.Result.FileSendErrorType);
+            };
+            fs.OutputReceived += (s, e) =>
+            {
+                Console.WriteLine(e.Text);
+            };
+            fs.RunAsync();
+            Console.ReadKey();
         }
         public static void WriteWithColor(Action a, ConsoleColor color = ConsoleColor.White)
         {
