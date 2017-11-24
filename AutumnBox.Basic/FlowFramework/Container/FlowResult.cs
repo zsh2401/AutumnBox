@@ -13,13 +13,15 @@
 \* =============================================================================*/
 using AutumnBox.Basic.Executer;
 using AutumnBox.Basic.FlowFramework.States;
+using System;
 
 namespace AutumnBox.Basic.FlowFramework.Container
 {
     public class FlowResult
     {
-        public CheckResult CheckResult { get; set; }
+        public CheckResult CheckResult { get; set; } = CheckResult.Error;
         public OutputData OutputData { get; set; } = new OutputData();
         public ResultType ResultType { get; set; } = ResultType.Successful;
+        public Exception Exception { get; set; }
     }
 }

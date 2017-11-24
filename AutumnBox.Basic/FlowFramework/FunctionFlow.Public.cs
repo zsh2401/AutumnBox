@@ -28,16 +28,16 @@ namespace AutumnBox.Basic.FlowFramework
         where TArgs : FlowArgs, new()
         where TResult : FlowResult, new()
     {
+        public bool EnableLazyTrigger { get; set; } = true;
         public event StartupEventHandler Startup;
         public event FinishedEventHandler<TResult> Finished;
         public event OutputReceivedEventHandler OutputReceived;
         public event ProcessStartedEventHandler ProcessStarted;
-        public FlowStatus Status { get; private set; }
+        public FlowStatus Status { get; private set; } = FlowStatus.Creating;
         public FunctionFlow()
         {
             _executer = new CExecuter();
             _resultTmp = new TResult();
-            Status = FlowStatus.Creating;
             TAG = new LogSender(this.GetType().Name, true);
             Status = FlowStatus.Ready;
             _executer.OutputReceived += (s, e) =>

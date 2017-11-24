@@ -187,6 +187,9 @@
       <DependentUpon>FileSendingWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\IDeviceInfoRefreshable.cs" />
+    <Compile Include="Windows\FlowResultWindow.xaml.cs">
+      <DependentUpon>FlowResultWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\LinkHelpWindow.xaml.cs">
       <DependentUpon>LinkHelpWindow.xaml</DependentUpon>
     </Compile>
@@ -231,6 +234,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Compile Include="StartWindow\StartWindow.FlowFinishedHandling.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -298,6 +302,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Windows\FlowResultWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\LinkHelpWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -338,6 +346,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AutumnBox.Basic.Flows\AutumnBox.Basic.Flows.csproj">
+      <Project>{3091ecae-7ff2-421d-b970-1c76d7cab0c0}</Project>
+      <Name>AutumnBox.Basic.Flows</Name>
+    </ProjectReference>
     <ProjectReference Include="..\AutumnBox.Basic\AutumnBox.Basic.csproj">
       <Project>{84044fb2-bd38-4283-8065-b639270ece0f}</Project>
       <Name>AutumnBox.Basic</Name>

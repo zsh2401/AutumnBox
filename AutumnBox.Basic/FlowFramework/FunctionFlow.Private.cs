@@ -35,6 +35,7 @@ namespace AutumnBox.Basic.FlowFramework
             catch (Exception e)
             {
                 Logger.T("a exception happend on mainflow... ->" + e);
+                OnFinished(new FinishedEventArgs<TResult>(new TResult() { ResultType = ResultType.Exception, Exception = e }));
             }
         }
         private void _MainFlow()

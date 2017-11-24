@@ -14,6 +14,7 @@
 using AutumnBox.Basic.Adb;
 using AutumnBox.Basic.Devices;
 using AutumnBox.Basic.Executer;
+using AutumnBox.Basic.FlowFramework;
 using AutumnBox.Basic.Function;
 using AutumnBox.Basic.Util;
 using AutumnBox.GUI.Cfg;
@@ -52,6 +53,7 @@ namespace AutumnBox.GUI
                     UIHelper.ShowRateBox();
                 });
             };
+            FunctionFlowBase.AnyFinished += FlowFinished;
             FunctionModule.AnyFinished += this.FuncFinish;
             DevInfoPanel.RefreshFinished += (s, e) =>
             {

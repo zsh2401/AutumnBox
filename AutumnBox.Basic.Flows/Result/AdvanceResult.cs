@@ -1,30 +1,28 @@
 ﻿/* =============================================================================*\
 *
-* Filename: ErrorType
+* Filename: AdvanceResult
 * Description: 
 *
 * Version: 1.0
-* Created: 2017/11/24 18:05:28 (UTC+8:00)
+* Created: 2017/11/25 1:05:07 (UTC+8:00)
 * Compiler: Visual Studio 2017
 * 
 * Author: zsh2401
 * Company: I am free man
 *
 \* =============================================================================*/
+using AutumnBox.Basic.Executer;
+using AutumnBox.Basic.FlowFramework.Container;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AutumnBox.Basic.FlowFramework.States
+namespace AutumnBox.Basic.Flows.Result
 {
-    public enum ResultType
+    public class AdvanceResult : FlowResult
     {
-        Exception = -1,
-        Successful = 0,
-        MaybeSuccessful = 1,
-        MaybeUnsuccessful = 2,
-        Unsuccessful = 3,
+        public ShellOutput ShellOutput { get; internal set; }
     }
 }

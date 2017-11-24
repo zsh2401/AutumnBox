@@ -33,11 +33,13 @@ namespace AutumnBox.ConsoleTester
         };
         unsafe static void Main(string[] args)
         {
-            Basic.Flows.BreventServiceActivator fl = new Basic.Flows.BreventServiceActivator();
+            //Basic.Flows.BreventServiceActivator fl = new Basic.Flows.BreventServiceActivator();
+            Basic.Flows.ShizukuManagerActivator fl = new Basic.Flows.ShizukuManagerActivator();
             fl.Init(new FlowArgs() { DevBasicInfo = mi4 });
             fl.Finished += (s, e) =>
             {
                 Console.WriteLine(e.Result.ResultType);
+                Console.WriteLine("fuck");
             };
             fl.OutputReceived += (s, e) =>
             {

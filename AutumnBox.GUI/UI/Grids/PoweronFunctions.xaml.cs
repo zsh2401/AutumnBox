@@ -40,9 +40,12 @@ namespace AutumnBox.GUI.UI.Grids
         private void ButtonStartBrventService_Click(object sender, RoutedEventArgs e)
         {
             if (!ChoiceBox.FastShow(App.Current.Resources["Notice"].ToString(), App.Current.Resources["msgStartBrventTip"].ToString())) return;
-            var fmp = FunctionModuleProxy.Create<BreventServiceActivator>(new ModuleArgs(App.SelectedDevice));
-            fmp.AsyncRun(false);
-            UIHelper.ShowRateBox(fmp);
+            //var fmp = FunctionModuleProxy.Create<BreventServiceActivator>(new ModuleArgs(App.SelectedDevice));
+            Basic.Flows.BreventServiceActivator bsa = new Basic.Flows.BreventServiceActivator();
+            bsa.Init(new Basic.FlowFramework.Args.FlowArgs() { DevBasicInfo = App.SelectedDevice });
+            bsa.EnableLazyTrigger = true;
+            bsa.RunAsync();
+            UIHelper.ShowRateBox(bsa);
         }
 
         private void ButtonPushFileToSdcard_Click(object sender, RoutedEventArgs e)
@@ -157,8 +160,10 @@ namespace AutumnBox.GUI.UI.Grids
             {
                 if (!ChoiceBox.FastShow(App.OwnerWindow, App.Current.Resources["Warning"].ToString(), App.Current.Resources["warrningNeedRootAccess"].ToString())) return;
             }
-            FolderBrowserDialog fbd = new FolderBrowserDialog();
-            fbd.Description = "请选择保存路径";
+            FolderBrowserDialog fbd = new FolderBrowserDialog
+            {
+                Description = "请选择保存路径"
+            };
             if (fbd.ShowDialog() != DialogResult.OK) return;
             FunctionModuleProxy fmp =
                 FunctionModuleProxy.Create<ImageExtractor>(new ImgExtractArgs(App.SelectedDevice) { ExtractImage = Images.Recovery, SavePath = fbd.SelectedPath });

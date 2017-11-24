@@ -11,6 +11,7 @@
 * Company: I am free man
 *
 \* =============================================================================*/
+using AutumnBox.Basic.FlowFramework;
 using AutumnBox.Basic.Function;
 using AutumnBox.GUI.Cfg;
 using AutumnBox.GUI.Windows;
@@ -31,7 +32,7 @@ namespace AutumnBox.GUI.Helper
         public static string GetString(string key)
         {
             object tmp = App.Current.Resources[key];
-            return tmp == null ?key : tmp.ToString();
+            return tmp == null ? key : tmp.ToString();
         }
         public static void SetOwnerTransparency(byte A)
         {
@@ -163,6 +164,18 @@ namespace AutumnBox.GUI.Helper
                 rateBox = new RateBox(fmp);
                 rateBox.ShowDialog();
             }
+        }
+        public static void ShowRateBox(IForceStoppable forceStoppable)
+        {
+            if (rateBox?.IsActive == true) return;
+            if (forceStoppable != null)
+                rateBox = new RateBox(forceStoppable);
+#if FINISHED
+            else
+                rateBox = new RateBox();
+#endif
+            rateBox.ShowDialog();
+
         }
         /// <summary>
         /// 关闭进度窗

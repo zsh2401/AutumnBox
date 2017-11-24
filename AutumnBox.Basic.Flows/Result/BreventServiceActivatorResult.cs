@@ -21,8 +21,8 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Flows.Result
 {
-    public class BreventServiceActivatorResult:FlowResult
+    public class BreventServiceActivatorResult : FlowResult
     {
-        public BreventServiceActivatorErrorType ErrorType { get; internal set; }
+        public BreventServiceActivatorErrorType ErrorType { get; internal set; } = BreventServiceActivatorErrorType.None;
     }
 }

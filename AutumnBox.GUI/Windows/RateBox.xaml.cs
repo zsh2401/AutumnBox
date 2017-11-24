@@ -11,6 +11,7 @@
 * Company: I am free man
 *
 \* =============================================================================*/
+using AutumnBox.Basic.FlowFramework;
 using AutumnBox.Basic.Function;
 using AutumnBox.GUI.Helper;
 using System.Windows;
@@ -23,11 +24,12 @@ namespace AutumnBox.GUI.Windows
     /// </summary>
     public partial class RateBox : Window
     {
+        private IForceStoppable stoppable;
         private FunctionModuleProxy ModuleProxy;
         public RateBox()
         {
             InitializeComponent();
-            buttonCancel.Visibility = Visibility.Hidden;
+            BtnCancel.Visibility = Visibility.Hidden;
             this.Owner = App.OwnerWindow;
         }
         public RateBox(FunctionModuleProxy fmp)
@@ -36,21 +38,20 @@ namespace AutumnBox.GUI.Windows
             this.ModuleProxy = fmp;
             this.Owner = App.OwnerWindow;
         }
-        public new void ShowDialog()
+        public RateBox(IForceStoppable stoppable)
         {
-            base.ShowDialog();
+            InitializeComponent();
+            this.stoppable = stoppable;
+            this.Owner = App.OwnerWindow;
         }
         private void Grid_MouseMove(object sender, MouseEventArgs e)
         {
             UIHelper.DragMove(this, e);
         }
-        public new void Close()
+        private void BtnCancel_Click(object sender, RoutedEventArgs e)
         {
-            base.Close();
-        }
-        private void buttonStartBrventService_Click(object sender, RoutedEventArgs e)
-        {
-            this.ModuleProxy.ForceStop();
+            this.ModuleProxy?.ForceStop();
+            this.stoppable?.ForceStop();
             this.Close();
         }
     }
