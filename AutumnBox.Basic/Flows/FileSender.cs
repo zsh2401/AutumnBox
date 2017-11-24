@@ -24,7 +24,7 @@ using AutumnBox.Basic.Flows.Container;
 using AutumnBox.Basic.FlowFramework;
 using AutumnBox.Basic.Flows.States;
 
-namespace AutumnBox.Basic.Flows.BasicFlows
+namespace AutumnBox.Basic.Flows
 {
     public class FileSender : FunctionFlow<FileSenderArgs, FileSenderResult>
     {

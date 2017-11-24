@@ -30,8 +30,8 @@ namespace AutumnBox.ConsoleTester
         };
         unsafe static void Main(string[] args)
         {
-            Basic.FlowFramework.BasicFlows.FileSender fs = new Basic.FlowFramework.BasicFlows.FileSender();
-            fs.Init(new Basic.FlowFramework.Args.FileSenderArgs { DevBasicInfo = Program.mi4, PathFrom = @"D:\☆下载暂存\密码1 腾讯steam加速.zip.tdl" });
+            Basic.Flows.FileSender fs = new Basic.Flows.FileSender();
+            fs.Init(new Basic.Flows.Args.FileSenderArgs { DevBasicInfo = Program.mi4, PathFrom = @"D:\☆下载暂存\密码1 腾讯steam加速.zip.tdl" });
             fs.Finished += (s, e) =>
             {
                 Console.WriteLine(e.Result.FileSendErrorType);
