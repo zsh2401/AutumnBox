@@ -8,7 +8,7 @@
         xmlns:grids="clr-namespace:AutumnBox.GUI.UI.Grids"
         x:Name="MainWindow" x:Class="AutumnBox.GUI.StartWindow"
         mc:Ignorable="d"
-        Background="{DynamicResource BackBrush}" Title="AutumnBox" Height="669.712" Width="1053.321" Foreground="#FF1B1919" ResizeMode="NoResize" Closed="MainWindow_Closed" Loaded="MainWindow_Loaded" WindowStyle="None" AllowsTransparency="True">
+        Background="{DynamicResource BackBrush}" Title="AutumnBox" Height="669.712" Width="1053.321" Foreground="#FF1B1919" ResizeMode="NoResize" Loaded="MainWindow_Loaded" WindowStyle="None" AllowsTransparency="True">
     <Grid HorizontalAlignment="Left" Width="1054" Margin="0,0,-1,0" Height="670" VerticalAlignment="Top">
         <cstm:CstmTitleBar x:Name="TitleBar" Margin="0,0,1,634"></cstm:CstmTitleBar>
         <TabControl HorizontalAlignment="Left" Height="634" Margin="0,36,0,0" VerticalAlignment="Top" Width="1053" TabStripPlacement="Left" BorderBrush="{DynamicResource BackBrush}" Background="{x:Null}">

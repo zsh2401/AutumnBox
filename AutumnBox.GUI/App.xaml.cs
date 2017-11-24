@@ -33,22 +33,31 @@ namespace AutumnBox.GUI
         internal static DevicesMonitor DevicesListener = new DevicesMonitor();//设备监听器
         protected override void OnStartup(StartupEventArgs e)
         {
-            Logger.D("Check have other autumnbox process");
+            Logger.T("Init static object start...");
+            SelectedDevice = new DeviceBasicInfo() { Status = DeviceStatus.None };
+            DevicesListener = new DevicesMonitor();
+            Logger.T("Init static object finished...");
+            Logger.D("Check have other autumnbox process?");
             if (SystemHelper.HaveOtherAutumnBoxProcess())
             {
-                MMessageBox.FastShow(App.OwnerWindow, "警告/Warning", "不可以同时打开两个AutumnBox\nDo not run two AutumnBox at once");
-                Environment.Exit(1);
+                Logger.T("have other autumnbox show MMessageBox and exit(1)");
+                MMessageBox.FastShow("警告/Warning", "不可以同时打开两个AutumnBox\nDo not run two AutumnBox at once");
+                SystemHelper.AppExit(1);
             }
             Logger.D("check finished....start autogc");
-            SystemHelper.AutoGC.Start();
-            Logger.D("start finished....startup!");
+            try { SystemHelper.AutoGC.Start(); }
+            catch (Exception e_)
+            {
+                Logger.T("Auto GC start is failed..... -> ", e_);
+            }
+            Logger.D("Startup!");
             base.OnStartup(e);
         }
         protected override void OnExit(ExitEventArgs e)
         {
-            Logger.T("Exit");
+            Logger.T("App OnExit.... Exit code ->" + e.ApplicationExitCode);
             base.OnExit(e);
-            SystemHelper.AppExit(0);
+            SystemHelper.AppExit(e.ApplicationExitCode);
         }
     }
 }

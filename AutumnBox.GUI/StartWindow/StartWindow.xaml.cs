@@ -36,7 +36,6 @@ namespace AutumnBox.GUI
     public partial class StartWindow : Window, ILogSender
     {
         private Object setUILock = new System.Object();
-
         public string LogTag => "Main Window";
         public bool IsShowLog => true;
         public StartWindow()
@@ -119,7 +118,9 @@ namespace AutumnBox.GUI
         {
             UIHelper.SetOwnerTransparency(Config.BackgroundA);
             //开启Blur透明效果
+#if ENABLE_BLUR
             BlurHelper.EnableBlur(this);
+#endif
             //刷新一下界面
             RefreshUI();
             //开始设备监听
@@ -127,22 +128,25 @@ namespace AutumnBox.GUI
             //哦,如果是第一次启动本软件,那么就显示一下提示吧!
             if (Config.IsFirstLaunch)
             {
-                MMessageBox.FastShow(App.OwnerWindow, FindResource("Notice2").ToString(), App.Current.Resources["msgFristLaunchNotice"].ToString());
+                MMessageBox.FastShow(App.OwnerWindow, FindResource("NoticeOnlyOne").ToString(), App.Current.Resources["msgFristLaunchNotice"].ToString());
                 Config.IsFirstLaunch = false;
             }
             //开始获取公告
-            GetNotice();
+            new MOTDGetter().RunAsync((r) =>
+            {
+                textBoxGG.Dispatcher.Invoke(() =>
+                {
+                    textBoxGG.Text = r.Header + r.Separator + r.Message;
+                });
+            });
             //更新检测
-            UpdateCheck();
-        }
-        /// <summary>
-        /// 当窗口关闭时发生
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void MainWindow_Closed(object sender, EventArgs e)
-        {
-            //SystemHelper.AppExit(0);
+            new UpdateChecker().RunAsync((r) =>
+            {
+                if (r.NeedUpdate)
+                {
+                    new UpdateNoticeWindow(r).ShowDialog();
+                }
+            });
         }
         /// <summary>
         /// 根据当前选中的设备刷新界面信息
@@ -174,32 +178,6 @@ namespace AutumnBox.GUI
                 App.SelectedDevice = new DeviceBasicInfo() { Status = DeviceStatus.None };
             }
             RefreshUI();
-        }
-        /// <summary>
-        /// 获取公告
-        /// </summary>
-        void GetNotice()
-        {
-            new MOTDGetter().RunAsync((r) =>
-            {
-                textBoxGG.Dispatcher.Invoke(() =>
-                {
-                    textBoxGG.Text = r.Header + r.Separator + r.Message;
-                });
-            });
-        }
-        /// <summary>
-        /// 更新检测
-        /// </summary>
-        void UpdateCheck()
-        {
-            new UpdateChecker().RunAsync((r) =>
-            {
-                if (r.NeedUpdate)
-                {
-                    new UpdateNoticeWindow(r).ShowDialog();
-                }
-            });
         }
     }
 }

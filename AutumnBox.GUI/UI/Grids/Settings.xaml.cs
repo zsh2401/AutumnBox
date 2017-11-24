@@ -15,25 +15,28 @@ namespace AutumnBox.GUI.UI.Grids
         public Settings()
         {
             InitializeComponent();
-            ColorSlider.Value = Config.BackgroundA;
-            cbboxLang.ItemsSource = LanguageHelper.Langs;
-            cbboxLang.DisplayMemberPath = "LanguageName";
+#if !ENABLE_BLUR
+            TransparencySlider.IsEnabled = false;
+#endif
+            TransparencySlider.Value = Config.BackgroundA;
+            CbBoxLanguage.ItemsSource = LanguageHelper.Langs;
+            CbBoxLanguage.DisplayMemberPath = "LanguageName";
         }
-
-        private void cbboxLang_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            LanguageHelper.LoadLanguage((Language)cbboxLang.SelectedItem);
-        }
-
+       
         private void Slider_ValueChanged(object sender, System.Windows.RoutedPropertyChangedEventArgs<double> e)
         {
-            UIHelper.SetOwnerTransparency((byte)ColorSlider.Value);
-            Config.BackgroundA = (byte)ColorSlider.Value;
+            UIHelper.SetOwnerTransparency((byte)TransparencySlider.Value);
+            Config.BackgroundA = (byte)TransparencySlider.Value;
         }
 
-        private void buttonStartOrCancel_Click(object sender, System.Windows.RoutedEventArgs e)
+        private void CbBoxLanguage_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            SystemHelper.CreateShortcutOnDesktop("AutumnBox",System.Environment.CurrentDirectory + "/AutumnBox.exe","The AutumnBox-Dream of us");
+            LanguageHelper.LoadLanguage((Language)CbBoxLanguage.SelectedItem);
+        }
+
+        private void BtnCreateShortcut_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            SystemHelper.CreateShortcutOnDesktop("AutumnBox", System.Environment.CurrentDirectory + "/AutumnBox.exe", "The AutumnBox-Dream of us");
         }
     }
 }

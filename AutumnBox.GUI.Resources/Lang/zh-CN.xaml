@@ -220,6 +220,6 @@
     <s:String x:Key="Donate">捐赠开发者</s:String>
     <s:String x:Key="DonateWindowTitle">捐赠本软件</s:String>
     <s:String x:Key="HaveAUpdate">检测到一个更新!</s:String>
-    <s:String x:Key="Notice2">本段文字只会显示一次!请仔细阅读!</s:String>
+    <s:String x:Key="NoticeOnlyOne">本段文字只会显示一次!请仔细阅读!</s:String>
     <s:String x:Key="Notice_">公告</s:String>
 </ResourceDictionary>
