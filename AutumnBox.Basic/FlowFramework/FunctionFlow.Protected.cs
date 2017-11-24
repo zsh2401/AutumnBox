@@ -62,14 +62,13 @@ namespace AutumnBox.Basic.FlowFramework
             Task.Run(() =>
             {
                 _resultTmp = e.Result;
-                if (EnableLazyTrigger && AnyFinishedIsRegistered)
+                if (Finished != null)
                 {
-                    OnAnyFinished(this, new FinishedEventArgs<FlowResult>(e.Result));
+                    Finished(this, e);
                 }
                 else
                 {
                     OnAnyFinished(this, new FinishedEventArgs<FlowResult>(e.Result));
-                    Finished?.Invoke(this, e);
                 }
             });
         }

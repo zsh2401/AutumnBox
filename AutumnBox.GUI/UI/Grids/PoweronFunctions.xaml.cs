@@ -40,10 +40,8 @@ namespace AutumnBox.GUI.UI.Grids
         private void ButtonStartBrventService_Click(object sender, RoutedEventArgs e)
         {
             if (!ChoiceBox.FastShow(App.Current.Resources["Notice"].ToString(), App.Current.Resources["msgStartBrventTip"].ToString())) return;
-            //var fmp = FunctionModuleProxy.Create<BreventServiceActivator>(new ModuleArgs(App.SelectedDevice));
             Basic.Flows.BreventServiceActivator bsa = new Basic.Flows.BreventServiceActivator();
             bsa.Init(new Basic.FlowFramework.Args.FlowArgs() { DevBasicInfo = App.SelectedDevice });
-            bsa.EnableLazyTrigger = true;
             bsa.RunAsync();
             UIHelper.ShowRateBox(bsa);
         }

@@ -28,7 +28,6 @@ namespace AutumnBox.Basic.FlowFramework
         where TArgs : FlowArgs, new()
         where TResult : FlowResult, new()
     {
-        public bool EnableLazyTrigger { get; set; } = true;
         public event StartupEventHandler Startup;
         public event FinishedEventHandler<TResult> Finished;
         public event OutputReceivedEventHandler OutputReceived;
