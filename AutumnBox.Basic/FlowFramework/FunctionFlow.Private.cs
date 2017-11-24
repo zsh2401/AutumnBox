@@ -34,28 +34,37 @@ namespace AutumnBox.Basic.FlowFramework
             }
             catch (Exception e)
             {
-                Logger.T("a exception happend on mainflow... ->" + e);
-                OnFinished(new FinishedEventArgs<TResult>(new TResult() { ResultType = ResultType.Exception, Exception = e }));
+                Logger.T("A exception happend on MainFlow()... ->" + e);
+                try
+                {
+                    OnFinished(new FinishedEventArgs<TResult>(new TResult() { ResultType = ResultType.Exception, Exception = e }));
+                }
+                catch (Exception e_)
+                {
+                    Logger.T("Exception happend on OnFinished() when already happend a expcetion and reporting.....fuck!", e_);
+                }
             }
         }
         private void _MainFlow()
         {
             /*Checking*/
+            Logger.T("Checking...");
             TResult result = new TResult
             {
                 CheckResult = Check()
             };
+            Logger.T("Check Result ->" + result.CheckResult);
             if (result.CheckResult != CheckResult.OK)
             {
                 OnFinished(new FinishedEventArgs<TResult>(result));
             }
-            /*Startup*/
+            Logger.T("Startup...");
             OnStartup(new StartupEventArgs());
-            /*Running*/
+            Logger.T("Running...");
             result.OutputData = MainMethod(new ToolKit<TArgs>(Args, _executer));
-            /*Analying*/
+            Logger.T("Analyzing...");
             AnalyzeResult(result);
-            /*完成鸟~*/
+            Logger.T("Finished...");
             OnFinished(new FinishedEventArgs<TResult>(result));
         }
     }

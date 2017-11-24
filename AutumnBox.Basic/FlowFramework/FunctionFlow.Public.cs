@@ -46,10 +46,13 @@ namespace AutumnBox.Basic.FlowFramework
         }
         public void Init(TArgs args)
         {
+            Logger.T("Init... Args type ->" + args.GetType().Name);
             Initialization(args);
         }
         public async void RunAsync()
         {
+            Logger.T("Run start async....");
+            if (Args == null) throw new Exception("have not init!!!! try Init()");
             await Task.Run(() =>
             {
                 MainFlow();
@@ -57,14 +60,18 @@ namespace AutumnBox.Basic.FlowFramework
         }
         public TResult Run()
         {
+            Logger.T("Run start sync....");
+            if (Args == null) throw new Exception("have not init!!!! try Init()");
             MainFlow();
             return _resultTmp;
         }
         public void ForceStop()
         {
+            Logger.T("Try to force Stop");
             if (_pid == null) return;
             SystemHelper.KillProcessAndChildrens((int)_pid);
             isForceStoped = true;
+            Logger.T("Force stoped...");
         }
         public Stoper GetStoper()
         {

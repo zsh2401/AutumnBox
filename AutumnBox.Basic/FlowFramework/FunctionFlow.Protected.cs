@@ -71,6 +71,7 @@ namespace AutumnBox.Basic.FlowFramework
                     OnAnyFinished(this, new FinishedEventArgs<FlowResult>(e.Result));
                 }
             });
+            Logger.T("Finished...Output ->" + e.Result.OutputData.ToString());
         }
         protected void Dispose(bool disposing)
         {
