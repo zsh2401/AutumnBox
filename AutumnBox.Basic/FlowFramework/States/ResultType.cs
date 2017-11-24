@@ -1,10 +1,10 @@
 ﻿/* =============================================================================*\
 *
-* Filename: BreventResult
+* Filename: ErrorType
 * Description: 
 *
 * Version: 1.0
-* Created: 2017/11/24 18:10:57 (UTC+8:00)
+* Created: 2017/11/24 18:05:28 (UTC+8:00)
 * Compiler: Visual Studio 2017
 * 
 * Author: zsh2401
@@ -17,14 +17,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AutumnBox.Basic.FlowFramework.Container
+namespace AutumnBox.Basic.FlowFramework.States
 {
-    public enum FileSendErrorType {
-        Unknow,
-        HaveNotEnoughSpace,
-    }
-    public class FileSenderResult:FlowResult
+    public enum ResultType
     {
-        public FileSendErrorType FileSendErrorType { get; set; } = FileSendErrorType.Unknow;
+        Successful = 0,
+        MaybeSuccessful = 1,
+        MaybeUnsuccessful = 2,
+        Unsuccessful = 3,
     }
 }

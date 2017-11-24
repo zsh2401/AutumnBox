@@ -1,10 +1,10 @@
 ﻿/* =============================================================================*\
 *
-* Filename: ErrorType
+* Filename: Events
 * Description: 
 *
 * Version: 1.0
-* Created: 2017/11/24 18:05:28 (UTC+8:00)
+* Created: 2017/11/24 18:41:46 (UTC+8:00)
 * Compiler: Visual Studio 2017
 * 
 * Author: zsh2401
@@ -17,13 +17,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AutumnBox.Basic.FlowFramework
+namespace AutumnBox.Basic.Flows.Events
 {
-    public enum ResultType
+    class Events
     {
-        Successful = 0,
-        MaybeSuccessful = 1,
-        MaybeUnsuccessful = 2,
-        Unsuccessful = 3,
     }
 }
