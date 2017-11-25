@@ -26,11 +26,11 @@ namespace AutumnBox.ConsoleTester.ObjTest
     {
         public static void CreateTest()
         {
-            var fmp = FunctionModuleProxy.Create(typeof(BreventServiceActivator), new ModuleArgs(new Basic.Devices.DeviceBasicInfo()));
+            //var fmp = FunctionModuleProxy.Create(typeof(BreventServiceActivator), new ModuleArgs(new Basic.Devices.DeviceBasicInfo()));
         }
         public static void PropertyTest() {
-            var fmp = FunctionModuleProxy.Create(typeof(BreventServiceActivator), new ModuleArgs(new Basic.Devices.DeviceBasicInfo()));
-            Console.WriteLine(fmp.FunctionModuleType);
+            //var fmp = FunctionModuleProxy.Create(typeof(BreventServiceActivator), new ModuleArgs(new Basic.Devices.DeviceBasicInfo()));
+            //Console.WriteLine(fmp.FunctionModuleType);
         }
     }
 }

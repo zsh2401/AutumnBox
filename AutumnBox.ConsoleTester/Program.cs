@@ -49,7 +49,8 @@ namespace AutumnBox.ConsoleTester
                 Console.WriteLine(s.GetType().Name + " ->finished...");
                 Console.WriteLine(e.Result.OutputData.ToString());
             };
-            fl.RunAsync();
+            //fl.RunAsync();
+            Console.WriteLine(DeviceInfoHelper.IsInstalled(mi6, "me.piebridge.brevent"));
             Console.ReadKey();
         }
         public static void WriteWithColor(Action a, ConsoleColor color = ConsoleColor.White)

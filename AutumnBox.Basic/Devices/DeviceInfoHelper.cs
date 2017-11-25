@@ -26,7 +26,8 @@ namespace AutumnBox.Basic.Devices
         private static CExecuter Executer = new CExecuter();
         public static bool CheckRoot(string id)
         {
-            using (AndroidShell shell = new AndroidShell(id)) {
+            using (AndroidShell shell = new AndroidShell(id))
+            {
                 shell.Connect();
                 return shell.Switch2Su();
             }
@@ -172,6 +173,16 @@ namespace AutumnBox.Basic.Devices
                 return hehe[hehe.Length - 1];
             }
             catch (Exception e) { Logger.T("Get cpuinfo fail", e); return null; }
+        }
+        public static bool? IsInstalled(string id, string packageName)
+        {
+            using (AndroidShell shell = new AndroidShell(id))
+            {
+                shell.Connect();
+                var result = shell.SafetyInput($"pm path {packageName}");
+                if (result.ReturnCode != 0) return null;
+                else return result.OutputData.Contains("base.apk");
+            }
         }
         public static string GetScreenInfo(string id)
         {
