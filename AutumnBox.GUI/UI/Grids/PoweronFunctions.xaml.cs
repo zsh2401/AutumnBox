@@ -258,7 +258,7 @@ namespace AutumnBox.GUI.UI.Grids
         {
             bool? result = await Task.Run(() =>
             {
-                return DeviceInfoHelper.IsInstalled(App.SelectedDevice, "shizuku");
+                return DeviceInfoHelper.IsInstalled(App.SelectedDevice, "moe.shizuku.privileged.api");
             });
             if (result == false) { MMessageBox.FastShow(UIHelper.GetString("Warning"), UIHelper.GetString("msgPlsInstallShizukuManagerFirst")); return; }
             Basic.Flows.ShizukuManagerActivator shizukuManagerActivator = new Basic.Flows.ShizukuManagerActivator();
