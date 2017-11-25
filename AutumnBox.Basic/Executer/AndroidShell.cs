@@ -85,7 +85,7 @@ namespace AutumnBox.Basic.Executer
         {
             get
             {
-                return SafetyInput("echo $USER").LineAll.Last() == "root";
+                return !(SafetyInput("ls /dev/").OutputData.Contains("permission denied"));
             }
         }
         /// <summary>
@@ -101,12 +101,8 @@ namespace AutumnBox.Basic.Executer
             if (_isSwitchedSu) return true;
             Input("su");
             Thread.Sleep(200);
-            if (IsRunningAsSuperuser)
-            {
-                _isSwitchedSu = true;
-                return true;
-            }
-            return false;
+            _isSwitchedSu = IsRunningAsSuperuser;
+            return IsRunningAsSuperuser;
         }
         /// <summary>
         /// 切换到普通用户
@@ -142,7 +138,7 @@ namespace AutumnBox.Basic.Executer
             while (_latestReturnCode == null) ;
             StopRead();
             _outTmp.ReturnCode = _latestReturnCode ?? 24010;
-            Logger.D("command execute finished");
+            Logger.D("command execute finished the output ->" + _outTmp.All.ToString());
             return _outTmp;
         }
         /// <summary>

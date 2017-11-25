@@ -105,13 +105,13 @@ namespace AutumnBox.GUI.UI.Grids
             {
                 return DeviceInfoHelper.GetHwInfo(devSimpleInfo.Id);
             });
-            bool IsRoot = DeviceInfoHelper.CheckRoot(devSimpleInfo.Id);
             LabelRom.Content = (advInfo.StorageTotal != null) ? advInfo.StorageTotal + "GB" : App.Current.Resources["GetFail"].ToString();
             LabelRam.Content = (advInfo.MemTotal != null) ? advInfo.MemTotal + "GB" : App.Current.Resources["GetFail"].ToString();
             LabelBattery.Content = (advInfo.BatteryLevel != null) ? advInfo.BatteryLevel + "%" : App.Current.Resources["GetFail"].ToString();
             LabelSOC.Content = advInfo.SOCInfo ?? App.Current.Resources["GetFail"].ToString();
             LabelScreen.Content = advInfo.ScreenInfo ?? App.Current.Resources["GetFail"].ToString();
             LabelFlashMemInfo.Content = advInfo.FlashMemoryType ?? App.Current.Resources["GetFail"].ToString();
+            bool IsRoot = await Task.Run(() => { return DeviceInfoHelper.CheckRoot(devSimpleInfo.Id); });
             LabelRootStatus.Content = IsRoot ? App.Current.Resources["RootEnable"].ToString() : App.Current.Resources["RootDisable"].ToString();
             CurrentDeviceIsRoot = IsRoot;
         }

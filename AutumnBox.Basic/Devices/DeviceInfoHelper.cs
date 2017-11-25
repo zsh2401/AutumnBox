@@ -26,18 +26,9 @@ namespace AutumnBox.Basic.Devices
         private static CExecuter Executer = new CExecuter();
         public static bool CheckRoot(string id)
         {
-            lock (Executer)
-            {
-                var o = Executer.AdbExecute(id, "shell su ____sutest____");
-                Logger.D(o.All.ToString());
-                if (o.All.ToString().Contains("not found"))
-                {
-                    return false;
-                }
-                else
-                {
-                    return true;
-                }
+            using (AndroidShell shell = new AndroidShell(id)) {
+                shell.Connect();
+                return shell.Switch2Su();
             }
         }
         public static DeviceHardwareInfo GetHwInfo(string id)
