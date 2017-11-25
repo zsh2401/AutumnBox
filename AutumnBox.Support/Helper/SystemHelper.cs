@@ -11,8 +11,10 @@
 * Company: I am free man
 *
 \* =============================================================================*/
+using AutumnBox.Support.CstmDebug;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Management;
 using System.Text;
@@ -38,6 +40,10 @@ namespace AutumnBox.Support.Helper
             catch (ArgumentException)
             {
                 // Process already exited.
+            }
+            catch (Win32Exception e)
+            {
+                Logger.T("Unknow exception", e);
             }
 
             if (processCollection != null)

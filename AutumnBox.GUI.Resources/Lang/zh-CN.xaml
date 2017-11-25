@@ -67,6 +67,7 @@
     <!--tabitem-->
 
     <!--信息(主要用于MMesssageBox)-->
+    <s:String x:Key="msgUnknowError">未知的错误!</s:String>
     <s:String x:Key="msgIceBoxActUnknowError">未知的错误!</s:String>
     <s:String x:Key="msgRelockWarning">注意,本功能将会把您的设备重新上Bootloader锁,这样您的设备将会变得比较安全但是您将失去root权限,最重要的是将会彻底清除您的设备上的数据!请做好数据备份谨慎而行!并且在操作时不要拔掉设备,否则后果自负</s:String>
     <s:String x:Key="msgRelockWarningAgain">请再次注意,本功能将会清除设备的所有数据,并且不要在操作时拔掉设备!你确定要这么做了吗?按下按钮立即开始重新上锁!</s:String>
@@ -99,11 +100,14 @@
     <s:String x:Key="msgNoticeForAndroidFullBackupRemove">抱歉,此功能由于多方面限制,实在无用,将在未来版本进行移除</s:String>
     <s:String x:Key="msgNoticeIceBoxHaveNoInstall">您似乎没有安装冰箱App?</s:String>
     <s:String x:Key="msgNoticeDeviceOwnerIsAlreadySet">设备管理员已被设定</s:String>
+    <s:String x:Key="msgNoticeHaveOtherUser">有多个用户</s:String>
+    <s:String x:Key="msgIceActAppHaveNoInstalled">您似乎没装这个App吧?.....</s:String>
     <s:String x:Key="msgWarning">警告</s:String>
     <s:String x:Key="msgStartAdbServerFailLine1">错误:无法启动ADB服务</s:String>
     <s:String x:Key="msgStartAdbServerFailLine2">解决方案:彻底关闭所有其它的手机助手(在电脑上)</s:String>
     <s:String x:Key="msgStartAdbServerFailLine3">例如: 360手机助手 豌豆荚等</s:String>
     <s:String x:Key="msgStartAdbServerFailLine4">如果仍然无效,请进入任务管理器,彻底结束那些手机助手的进程!什么?还是没用?重启电脑!</s:String>
+    
     <!--信息-->
 
 
@@ -186,7 +190,9 @@
     <!--设备状态提示-->
 
     <!--建议-->
-
+    <s:String x:Key="advIceActAppHaveNoInstalled">请先安装应用!</s:String>
+    <s:String x:Key="advIceActHaveOtherUser">请关闭应用双开或删除别的用户(注意,是用户)</s:String>
+    <s:String x:Key="advIceActUnknowError">请将下方的完整输出复制,并在该App的酷安评论区提问或联系AutumnBox开发者</s:String>
     <s:String x:Key="advIceBoxActUnknowError">请将下方的完整输出复制,并在冰箱评论区提问或联系AutumnBox开发者</s:String>
     <s:String x:Key="errormsgBrventActivtedUnsuccess">可能导致失败的原因:您未安装黑域;打开黑域界面失败;指令过期</s:String>
     <s:String x:Key="advsBrventActivtedUnsuccess">请确保您安装了最新的黑域并至少打开了黑域界面,或您可尝试更新本工具箱</s:String>

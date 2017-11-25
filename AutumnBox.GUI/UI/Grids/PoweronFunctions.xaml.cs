@@ -10,6 +10,7 @@ using AutumnBox.GUI.Helper;
 using AutumnBox.GUI.Windows;
 using AutumnBox.Support.CstmDebug;
 using System.Threading.Tasks;
+using AutumnBox.Basic.FlowFramework;
 
 namespace AutumnBox.GUI.UI.Grids
 {
@@ -234,9 +235,12 @@ namespace AutumnBox.GUI.UI.Grids
             bool _continue = ChoiceBox.FastShow(App.OwnerWindow,
                 UIHelper.GetString("msgNotice"), $"{UIHelper.GetString("msgIceBoxActLine1")}\n{UIHelper.GetString("msgIceBoxActLine2")}\n{UIHelper.GetString("msgIceBoxActLine3")}", UIHelper.GetString("btnContinue"), UIHelper.GetString("btnCancel"));
             if (!_continue) return;
-            var fmp = FunctionModuleProxy.Create<IceBoxActivator>(new ModuleArgs(App.SelectedDevice));
-            fmp.AsyncRun(false);
-            UIHelper.ShowRateBox(fmp);
+            Basic.Flows.IceBoxActivator iceBoxActivator = new Basic.Flows.IceBoxActivator();
+            iceBoxActivator.Init(new Basic.FlowFramework.Args.FlowArgs() { DevBasicInfo = App.SelectedDevice});
+            iceBoxActivator.RunAsync();
+            //var fmp = FunctionModuleProxy.Create<IceBoxActivator>(new ModuleArgs(App.SelectedDevice));
+            //fmp.AsyncRun(false);
+            UIHelper.ShowRateBox(iceBoxActivator);
         }
     }
 }

@@ -39,7 +39,7 @@ namespace AutumnBox.Basic.Flows
             _shellOutput = toolKit.Executer.QuicklyShell(toolKit.Args.DevBasicInfo, _defaultShellCommand);
             return _shellOutput.OutputData;
         }
-        [LogProperty(TAG = "IceActivator Analyzing Result",Show = true)]
+        [LogProperty(TAG = "IceActivator Analyzing Result", Show = true)]
         protected override void AnalyzeResult(IceSoftwareResult result)
         {
             base.AnalyzeResult(result);
@@ -48,16 +48,25 @@ namespace AutumnBox.Basic.Flows
             switch (result.ShellOutput.ReturnCode)
             {
                 case (int)LinuxReturnCodes.NoError:
-                    Logger.T("No error");
-                    result.ErrorType = IceActivatorErrType.None;
-                    result.ResultType = FlowFramework.States.ResultType.Successful;
+                    if (result.OutputData.Contains("unknown admin"))
+                    {
+                        Logger.D("unknow admin");
+                        result.ErrorType = IceActivatorErrType.UnknowAdmin;
+                        result.ResultType = FlowFramework.States.ResultType.Unsuccessful;
+                    }
+                    else
+                    {
+                        Logger.D("success??");
+                        result.ErrorType = IceActivatorErrType.None;
+                        result.ResultType = FlowFramework.States.ResultType.Successful;
+                    }
                     break;
                 default:
                     result.ErrorType = IceActivatorErrType.Unknow;
                     result.ResultType = FlowFramework.States.ResultType.Unsuccessful;
                     break;
             }
-            if (result.ErrorType == IceActivatorErrType.None) return;
+            if (result.ErrorType == IceActivatorErrType.None || result.ErrorType == IceActivatorErrType.UnknowAdmin) return;
             if (result.OutputData.Contains("already set"))
             {
                 result.ResultType = FlowFramework.States.ResultType.MaybeUnsuccessful;

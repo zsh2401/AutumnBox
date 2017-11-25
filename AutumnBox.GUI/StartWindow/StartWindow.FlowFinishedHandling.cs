@@ -21,6 +21,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AutumnBox.GUI.Helper;
 using AutumnBox.GUI.Windows;
+using AutumnBox.Basic.Flows.Result;
 
 namespace AutumnBox.GUI
 {
@@ -33,6 +34,10 @@ namespace AutumnBox.GUI
                 UIHelper.CloseRateBox();
                 switch (sender.GetType().Name)
                 {
+                    case nameof(IceBoxActivator):
+                    case nameof(AirForzenActivator):
+                        IceSoftwareActivated((IceActivator)sender, (IceSoftwareResult)e.Result);
+                        break;
                     case nameof(BreventServiceActivator):
                     case nameof(ShizukuManagerActivator):
                     default:
@@ -40,6 +45,33 @@ namespace AutumnBox.GUI
                         break;
                 }
             });
+        }
+        private void IceSoftwareActivated(IceActivator tor, IceSoftwareResult result)
+        {
+            string message = null;
+            string advise = null;
+            switch (result.ErrorType)
+            {
+                case Basic.Flows.States.IceActivatorErrType.None:
+                    break;
+                case Basic.Flows.States.IceActivatorErrType.DeviceOwnerIsAlreadySet:
+                    message = UIHelper.GetString("msgNoticeDeviceOwnerIsAlreadySet");
+                    advise = UIHelper.GetString("advsDeviceOwnerIsAlreadySet");
+                    break;
+                case Basic.Flows.States.IceActivatorErrType.HaveOtherUser:
+                    message = UIHelper.GetString("msgNoticeHaveOtherUser");
+                    advise = UIHelper.GetString("advIceBoxActHaveOtherUser");
+                    break;
+                case Basic.Flows.States.IceActivatorErrType.UnknowAdmin:
+                    message = UIHelper.GetString("msgIceActAppHaveNoInstalled");
+                    advise = UIHelper.GetString("advIceActAppHaveNoInstalled");
+                    break;
+                default:
+                    message = UIHelper.GetString("msgUnknowError");
+                    advise = UIHelper.GetString("advIceBoxActUnknowError");
+                    break;
+            }
+            new FlowResultWindow(result, message, advise).ShowDialog();
         }
     }
 }

@@ -22,6 +22,7 @@ namespace AutumnBox.Basic.Flows.States
     public enum IceActivatorErrType
     {
         None,
+        UnknowAdmin,
         HaveOtherUser,
         DeviceOwnerIsAlreadySet,
         Unknow,
