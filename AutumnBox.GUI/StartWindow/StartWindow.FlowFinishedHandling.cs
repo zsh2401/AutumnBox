@@ -38,8 +38,6 @@ namespace AutumnBox.GUI
                     case nameof(AirForzenActivator):
                         IceSoftwareActivated((IceActivator)sender, (IceSoftwareResult)e.Result);
                         break;
-                    case nameof(BreventServiceActivator):
-                    case nameof(ShizukuManagerActivator):
                     default:
                         new FlowResultWindow(e.Result).ShowDialog();
                         break;

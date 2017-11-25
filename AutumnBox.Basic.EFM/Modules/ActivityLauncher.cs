@@ -31,8 +31,9 @@ namespace AutumnBox.Basic.Function.Modules
         }
         protected override OutputData MainMethod(BundleForTools bundle)
         {
-            Logger.D( $"Try Launch {bundle.DeviceID} Activity : {_Args.ActivityName}");
-            string command = $"shell am start -n {_Args.PackageName}/{_Args.PackageName + _Args.ActivityName}";
+            Logger.D($"Try Launch {bundle.DeviceID} Activity : {_Args.ActivityName}");
+            string command = $"shell am start -n {_Args.PackageName}/{ _Args.ActivityName}";
+            Logger.D(command);
             var o = bundle.Ae(command);
             return o;
         }

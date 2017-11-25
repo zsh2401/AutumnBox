@@ -42,9 +42,9 @@ namespace AutumnBox.GUI
                     case nameof(FileSender):
                         PushFinish(e);
                         break;
-                    case nameof(BreventServiceActivator):
-                        ActivatedBrvent(e);
-                        break;
+                    //case nameof(BreventServiceActivator):
+                    //    ActivatedBrvent(e);
+                    //    break;
                     case nameof(ActivityLauncher):
                         ActivatedBrvent(e);
                         break;

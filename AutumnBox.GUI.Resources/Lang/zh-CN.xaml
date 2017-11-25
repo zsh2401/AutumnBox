@@ -19,6 +19,8 @@
     <s:String x:Key="btnFlashRecImg">刷入Recovery</s:String>
     <s:String x:Key="btnFlashBootImg">刷入Boot.img</s:String>
     <s:String x:Key="btnIceBoxAct">激活冰箱</s:String>
+    <s:String x:Key="btnAirForzenAct">激活空调狗</s:String>
+    <s:String x:Key="btnShizukuManagerAct">激活AppOps/ShizukuManager</s:String>
     <s:String x:Key="btnHelp">帮助</s:String>
     <s:String x:Key="btnContinue">继续</s:String>
     <s:String x:Key="btnSaveAndReboot">保存并重启</s:String>
@@ -88,9 +90,9 @@
     <s:String x:Key="msgShellChoiceTip">检测到您是Windows10 系统,请问您想用那种命令行界面?如果您不懂什么是Powershell,请用传统的CMD</s:String>
     <s:String x:Key="msgStartBrventTip">请确保您已经安装了最新版本黑域,并且已在手机上进入黑域软件的界面!!</s:String>
     <s:String x:Key="msgSaveSuccessful">保存成功!</s:String>
-    <s:String x:Key="msgIceBoxActLine1">请前往手机->账户设置,将所有账户删除!</s:String>
-    <s:String x:Key="msgIceBoxActLine2">如果您是国内定制ROM,请将类似小米账号,华为账号等的账号也一并删除!</s:String>
-    <s:String x:Key="msgIceBoxActLine3">完成后请点击继续</s:String>
+    <s:String x:Key="msgIceActLine1">请前往手机->账户设置,将所有账户删除!</s:String>
+    <s:String x:Key="msgIceActLine2">如果您是国内定制ROM,请将类似小米账号,华为账号等的账号也一并删除!</s:String>
+    <s:String x:Key="msgIceActLine3">完成后请点击继续</s:String>
     <s:String x:Key="msgMiFlashFloderError">文件夹内没有正确的文件!请确保您选择的文件夹是线刷包解压后的文件夹!</s:String>
     <s:String x:Key="msgNoticeForRebootToEdlLine1">请确保您的设备是高通骁龙处理器并且支持进入9008模式</s:String>
     <s:String x:Key="msgNoticeForRebootToEdlLine2">当进入9008模式后,设备会完全黑屏,但您可以使用相关工具进行刷机</s:String>
@@ -152,6 +154,7 @@
     <s:String x:Key="TipForChangeDpi">请自行斟酌您要调整的DPI,如果调的太大或太小,会让你的手机无法使用,不过您仍然可以通过本工具恢复默认DPI</s:String>
     <s:String x:Key="OutputTip">完整的输出文本,包含了最确切的信息,如果遇到错误,请将这里的输出文本复制给您要问的人</s:String>
     <s:String x:Key="TipForInputDpi">请输入您想要改动的DPI数值-></s:String>
+    <s:String x:Key="Bridge">桥</s:String>
     <!--静态界面标记-->
 
     <!--设备信息标记-->
@@ -198,7 +201,7 @@
     <s:String x:Key="advsBrventActivtedUnsuccess">请确保您安装了最新的黑域并至少打开了黑域界面,或您可尝试更新本工具箱</s:String>
     <s:String x:Key="advsFileSendUnsuccess">您可以截图后,给zsh2401@gmail.com发送邮件</s:String>
     <s:String x:Key="advsIceBoxHaveNoInstall">请安装冰箱App</s:String>
-    <s:String x:Key="advsDeviceOwnerIsAlreadySet">请确保已退出所有账户或有可能冰箱已被激活,请前往冰箱App</s:String>
+    <s:String x:Key="advsDeviceOwnerIsAlreadySet">请确保已退出所有账户,或前往App查看,可能已经激活</s:String>
     <!--建议-->
 
     <s:String x:Key="CompileDate">编译日期</s:String>

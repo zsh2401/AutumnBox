@@ -17,8 +17,10 @@ namespace AutumnBox.Basic.Function.Modules
     using AutumnBox.Basic.Function.Args;
     using AutumnBox.Basic.Function.Bundles;
     using AutumnBox.Support.CstmDebug;
+    using System;
     using System.Threading;
 
+    [Obsolete("Please use Basic.Flows.BreventServiceActivator",true)]
     /// <summary>
     /// 黑域服务激活器
     /// </summary>
@@ -34,7 +36,7 @@ namespace AutumnBox.Basic.Function.Modules
             };
             Logger.D("start brevent activity");
             FunctionModuleProxy.Create<ActivityLauncher>(new ActivityLaunchArgs(toolsBundle.Args.DeviceBasicInfo)
-            { PackageName = "me.piebridge.brevent", ActivityName = ".ui.BreventActivity" }).SyncRun();
+            { PackageName = "me.piebridge.brevent", ActivityName = "ui.BreventActivity" }).SyncRun();
             Logger.D("try to execute command with quicklyshell ");
             Thread.Sleep(2000);
             toolsBundle.Executer.QuicklyShell(toolsBundle.DeviceID, DEFAULT_SHELL_COMMAND, out _exitResult);

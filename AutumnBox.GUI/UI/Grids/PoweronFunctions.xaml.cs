@@ -41,7 +41,7 @@ namespace AutumnBox.GUI.UI.Grids
 
         private void ButtonStartBrventService_Click(object sender, RoutedEventArgs e)
         {
-            if (!ChoiceBox.FastShow(App.Current.Resources["Notice"].ToString(), App.Current.Resources["msgStartBrventTip"].ToString())) return;
+            if (!ChoiceBox.FastShow(App.OwnerWindow, App.Current.Resources["Notice"].ToString(), App.Current.Resources["msgStartBrventTip"].ToString())) return;
             Basic.Flows.BreventServiceActivator bsa = new Basic.Flows.BreventServiceActivator();
             bsa.Init(new Basic.FlowFramework.Args.FlowArgs() { DevBasicInfo = App.SelectedDevice });
             bsa.RunAsync();
@@ -233,14 +233,33 @@ namespace AutumnBox.GUI.UI.Grids
         private void ButtonIceBoxAct_Click(object sender, RoutedEventArgs e)
         {
             bool _continue = ChoiceBox.FastShow(App.OwnerWindow,
-                UIHelper.GetString("msgNotice"), $"{UIHelper.GetString("msgIceBoxActLine1")}\n{UIHelper.GetString("msgIceBoxActLine2")}\n{UIHelper.GetString("msgIceBoxActLine3")}", UIHelper.GetString("btnContinue"), UIHelper.GetString("btnCancel"));
+                UIHelper.GetString("msgNotice"),
+                $"{UIHelper.GetString("msgIceActLine1")}\n{UIHelper.GetString("msgIceActLine2")}\n{UIHelper.GetString("msgIceActLine3")}", UIHelper.GetString("btnContinue"), UIHelper.GetString("btnCancel"));
             if (!_continue) return;
             Basic.Flows.IceBoxActivator iceBoxActivator = new Basic.Flows.IceBoxActivator();
-            iceBoxActivator.Init(new Basic.FlowFramework.Args.FlowArgs() { DevBasicInfo = App.SelectedDevice});
+            iceBoxActivator.Init(new Basic.FlowFramework.Args.FlowArgs() { DevBasicInfo = App.SelectedDevice });
             iceBoxActivator.RunAsync();
-            //var fmp = FunctionModuleProxy.Create<IceBoxActivator>(new ModuleArgs(App.SelectedDevice));
-            //fmp.AsyncRun(false);
             UIHelper.ShowRateBox(iceBoxActivator);
+        }
+
+        private void ButtonAirForzenAct_Click(object sender, RoutedEventArgs e)
+        {
+            bool _continue = ChoiceBox.FastShow(App.OwnerWindow,
+                 UIHelper.GetString("msgNotice"),
+                $"{UIHelper.GetString("msgIceActLine1")}\n{UIHelper.GetString("msgIceActLine2")}\n{UIHelper.GetString("msgIceActLine3")}", UIHelper.GetString("btnContinue"), UIHelper.GetString("btnCancel"));
+            if (!_continue) return;
+            Basic.Flows.AirForzenActivator airForzenActivator = new Basic.Flows.AirForzenActivator();
+            airForzenActivator.Init(new Basic.FlowFramework.Args.FlowArgs() { DevBasicInfo = App.SelectedDevice });
+            airForzenActivator.RunAsync();
+            UIHelper.ShowRateBox(airForzenActivator);
+        }
+
+        private void ButtonShizukuManager_Click(object sender, RoutedEventArgs e)
+        {
+            Basic.Flows.ShizukuManagerActivator shizukuManagerActivator = new Basic.Flows.ShizukuManagerActivator();
+            shizukuManagerActivator.Init(new Basic.FlowFramework.Args.FlowArgs() { DevBasicInfo = App.SelectedDevice });
+            shizukuManagerActivator.RunAsync();
+            UIHelper.ShowRateBox(shizukuManagerActivator);
         }
     }
 }

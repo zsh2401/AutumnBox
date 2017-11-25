@@ -26,11 +26,16 @@ namespace AutumnBox.GUI.Windows
         {
             InitializeComponent();
             SetTitle(result.ResultType);
+            Owner = App.Current.MainWindow;
             TxtBMessage.Text = message ?? "Have a nice day!";
             if (advise == null)
             {
                 TxtBAdvise.Visibility = Visibility.Hidden;
                 TxtBAdviseTip.Visibility = Visibility.Hidden;
+                Height = 330;
+            }
+            else {
+                TxtBAdvise.Text = advise;
             }
             TxtBOutput.Text = result.OutputData.All.ToString();
         }
