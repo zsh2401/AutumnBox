@@ -35,7 +35,6 @@ namespace AutumnBox.GUI
         {
             Logger.T("Init static object start...");
             SelectedDevice = new DeviceBasicInfo() { Status = DeviceStatus.None };
-            DevicesListener = new DevicesMonitor();
             Logger.T("Init static object finished...");
             Logger.D("Check have other autumnbox process?");
             if (SystemHelper.HaveOtherAutumnBoxProcess())

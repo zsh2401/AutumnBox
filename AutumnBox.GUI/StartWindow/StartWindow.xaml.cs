@@ -69,7 +69,6 @@ namespace AutumnBox.GUI
                 bool _continue = true;
                 Dispatcher.Invoke(() =>
                 {
-
                     _continue = ChoiceBox.FastShow(this, UIHelper.GetString("msgWarning"),
                            UIHelper.GetString("msgStartAdbServerFailLine1") + Environment.NewLine +
                            UIHelper.GetString("msgStartAdbServerFailLine2") + Environment.NewLine +

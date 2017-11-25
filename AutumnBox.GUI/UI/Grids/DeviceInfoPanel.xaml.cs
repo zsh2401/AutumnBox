@@ -99,6 +99,7 @@ namespace AutumnBox.GUI.UI.Grids
                     _SetStatusPanel(DynamicIcons.recovery, "DeviceInSideload");
                     break;
             }
+            await Task.Run(() => { Thread.Sleep(1000); });
             RefreshFinished?.Invoke(this, new EventArgs());
             var advInfo = await Task.Run(() =>
             {
