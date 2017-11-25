@@ -41,18 +41,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AirForzenActivator.cs" />
     <Compile Include="Args\FileSenderArgs.cs" />
     <Compile Include="BreventServiceActivator.cs" />
     <Compile Include="Container\Fuck.cs" />
+    <Compile Include="IceActivator.cs" />
+    <Compile Include="IceBoxActivator.cs" />
     <Compile Include="Result\AdvanceResult.cs" />
     <Compile Include="Result\FileSenderResult.cs" />
     <Compile Include="Event\Events.cs" />
     <Compile Include="FileSender.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Result\BreventServiceActivatorResult.cs" />
+    <Compile Include="Result\IceSoftwareResult.cs" />
     <Compile Include="ShizukuManagerActivator.cs" />
     <Compile Include="States\BreventServiceActivatorErrorType.cs" />
     <Compile Include="States\FlieSenderErrorType.cs" />
+    <Compile Include="States\IceActivatorErrType.cs" />
     <Compile Include="States\LinuxReturnCodes.cs" />
   </ItemGroup>
   <ItemGroup>
