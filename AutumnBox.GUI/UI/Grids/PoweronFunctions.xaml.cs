@@ -254,8 +254,13 @@ namespace AutumnBox.GUI.UI.Grids
             UIHelper.ShowRateBox(airForzenActivator);
         }
 
-        private void ButtonShizukuManager_Click(object sender, RoutedEventArgs e)
+        private async void ButtonShizukuManager_Click(object sender, RoutedEventArgs e)
         {
+            bool? result = await Task.Run(() =>
+            {
+                return DeviceInfoHelper.IsInstalled(App.SelectedDevice, "shizuku");
+            });
+            if (result == false) { MMessageBox.FastShow(UIHelper.GetString("Warning"), UIHelper.GetString("msgPlsInstallShizukuManagerFirst")); return; }
             Basic.Flows.ShizukuManagerActivator shizukuManagerActivator = new Basic.Flows.ShizukuManagerActivator();
             shizukuManagerActivator.Init(new Basic.FlowFramework.Args.FlowArgs() { DevBasicInfo = App.SelectedDevice });
             shizukuManagerActivator.RunAsync();

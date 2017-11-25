@@ -180,8 +180,8 @@ namespace AutumnBox.Basic.Devices
             {
                 shell.Connect();
                 var result = shell.SafetyInput($"pm path {packageName}");
-                if (result.ReturnCode != 0) return null;
-                else return result.OutputData.Contains("base.apk");
+                if (result.ReturnCode == 127) return null; 
+                return result.ReturnCode == 0;
             }
         }
         public static string GetScreenInfo(string id)
