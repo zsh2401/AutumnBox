@@ -54,20 +54,24 @@ namespace AutumnBox.GUI
                 case Basic.Flows.States.DeviceOwnerSetterErrType.None:
                     break;
                 case Basic.Flows.States.DeviceOwnerSetterErrType.DeviceOwnerIsAlreadySet:
-                    message = UIHelper.GetString("msgNoticeDeviceOwnerIsAlreadySet");
+                    message = UIHelper.GetString("rmsgDeviceOwnerIsAlreadySet");
                     advise = UIHelper.GetString("advsDeviceOwnerIsAlreadySet");
                     break;
-                case Basic.Flows.States.DeviceOwnerSetterErrType.HaveOtherUser:
-                    message = UIHelper.GetString("msgNoticeHaveOtherUser");
-                    advise = UIHelper.GetString("advIceBoxActHaveOtherUser");
+                case Basic.Flows.States.DeviceOwnerSetterErrType.ServalAccountsOnTheDevice:
+                    message = UIHelper.GetString("rmsgAlreadyServalAccountsOnTheDevice");
+                    advise = UIHelper.GetString("advsAlreadyServalAccountsOnTheDevice");
+                    break;
+                case Basic.Flows.States.DeviceOwnerSetterErrType.ServalUserOnTheDevice:
+                    message = UIHelper.GetString("rmsgAlreadyServalUsersOnTheDevice");
+                    advise = UIHelper.GetString("advsAlreadyServalUsersOnTheDevice");
                     break;
                 case Basic.Flows.States.DeviceOwnerSetterErrType.UnknowAdmin:
-                    message = UIHelper.GetString("msgIceActAppHaveNoInstalled");
-                    advise = UIHelper.GetString("advIceActAppHaveNoInstalled");
+                    message = UIHelper.GetString("rmsgAppHaveNoInstalled");
+                    advise = UIHelper.GetString("advsAppHaveNoInstalled");
                     break;
                 default:
-                    message = UIHelper.GetString("msgUnknowError");
-                    advise = UIHelper.GetString("advIceBoxActUnknowError");
+                    message = UIHelper.GetString("rmsgUnknowError");
+                    advise = UIHelper.GetString("advsUnknowError");
                     break;
             }
             new FlowResultWindow(result, message, advise).ShowDialog();

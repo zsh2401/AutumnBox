@@ -21,12 +21,36 @@ namespace AutumnBox.Basic.Flows.States
 {
     public enum DeviceOwnerSetterErrType
     {
+        /// <summary>
+        /// 没有错误
+        /// </summary>
         None,
-        UnknowAdmin,
-        HaveOtherUser,
+        /// <summary>
+        /// 账户没删除干净
+        /// </summary>
+        ServalAccountsOnTheDevice,
+        /// <summary>
+        /// 多用户没删除干净||应用双开没删干净||访客模式没关掉
+        /// </summary>
+        ServalUserOnTheDevice,
+        /// <summary>
+        /// 这个是啥错误来着忘了,但是可以修复
+        /// </summary>
+        DeviceAlreadyProvisioned,
+        /// <summary>
+        /// 已设定设备所有者
+        /// </summary>
         DeviceOwnerIsAlreadySet,
+        /// <summary>
+        /// MIUI下才会出现的问题,开启USB调试的安全设置即可!
+        /// </summary>
+        MIUIUsbSecError,
+        /// <summary>
+        /// 压根没装这软件!
+        /// </summary>
+        UnknowAdmin,
+        /*Unknow Error*/
         Unknow,
         UnknowJavaException,
-        DeviceAlreadyProvisioned,
     }
 }

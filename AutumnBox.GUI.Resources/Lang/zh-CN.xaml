@@ -101,23 +101,34 @@
     <s:String x:Key="msgOpenTheScreenPls">请确保您的手机屏幕已经点亮并且解锁</s:String>
     <s:String x:Key="msgLookTheScreen">如果正常,将会弹出一个备份界面,然后就可以开始备份了</s:String>
     <s:String x:Key="msgNoticeForAndroidFullBackupRemove">抱歉,此功能由于多方面限制,实在无用,将在未来版本进行移除</s:String>
-    <s:String x:Key="msgNoticeIceBoxHaveNoInstall">您似乎没有安装冰箱App?</s:String>
-    <s:String x:Key="msgNoticeDeviceOwnerIsAlreadySet">设备管理员已被设定</s:String>
-    <s:String x:Key="msgNoticeHaveOtherUser">有多个用户</s:String>
     <s:String x:Key="msgPlsInstallAirForzenFirst">请先安装空调狗!</s:String>
     <s:String x:Key="msgPlsInstallBreventFirst">请先安装黑域!</s:String>
     <s:String x:Key="msgPlsInstallIslandFirst">请先安装Island!!</s:String>
     <s:String x:Key="msgPlsInstallIceBoxFirst">请先安装冰箱!!</s:String>
     <s:String x:Key="msgPlsInstallShizukuManagerFirst">请先安装ShizukuManager!酷市场和手机乐园都有!</s:String>
-    <s:String x:Key="msgIceActAppHaveNoInstalled">您似乎没装这个App吧?.....</s:String>
     <s:String x:Key="msgWarning">警告</s:String>
     <s:String x:Key="msgStartAdbServerFailLine1">错误:无法启动ADB服务</s:String>
     <s:String x:Key="msgStartAdbServerFailLine2">解决方案:彻底关闭所有其它的手机助手(在电脑上)</s:String>
     <s:String x:Key="msgStartAdbServerFailLine3">例如: 360手机助手 豌豆荚等</s:String>
     <s:String x:Key="msgStartAdbServerFailLine4">如果仍然无效,请进入任务管理器,彻底结束那些手机助手的进程!什么?还是没用?重启电脑!</s:String>
-    
-    <!--信息-->
 
+    <!--信息-->
+    <!--用于结果显示窗的文字-->
+    <s:String x:Key="rmsgDeviceOwnerIsAlreadySet">设备管理员已被设定</s:String>
+    <s:String x:Key="advsDeviceOwnerIsAlreadySet">请确保已退出所有账户,或前往App查看,可能已经激活</s:String> 
+    
+    <s:String x:Key="rmsgAlreadyServalAccountsOnTheDevice">有其它账户</s:String>
+    <s:String x:Key="advsAlreadyServalAccountsOnTheDevice">账户没删干净...谷歌账户或者定制ROM的账户都要删的!</s:String>
+    
+    <s:String x:Key="rmsgAlreadyServalUsersOnTheDevice">有其它用户</s:String>
+    <s:String x:Key="advsAlreadyServalUsersOnTheDevice">确保删除所有用户,关闭访客模式,关闭应用双开</s:String>
+    
+    <s:String x:Key="rmsgAppHaveNoInstalled">未安装App</s:String>
+    <s:String x:Key="advsAppHaveNoInstalled">请安装App</s:String>
+    
+    <s:String x:Key="rmsgUnknowError">未知错误</s:String>
+    <s:String x:Key="advsUnknowError">检查下面的完整输出,或将完整输出复制给要问的人</s:String>
+    <!--用于结果显示窗的文字-->
 
     <!--QA-->
     <s:String x:Key="LinkQuestion2">* 还是连不上?</s:String>
@@ -207,7 +218,7 @@
     <s:String x:Key="advsBrventActivtedUnsuccess">请确保您安装了最新的黑域并至少打开了黑域界面,或您可尝试更新本工具箱</s:String>
     <s:String x:Key="advsFileSendUnsuccess">您可以截图后,给zsh2401@gmail.com发送邮件</s:String>
     <s:String x:Key="advsIceBoxHaveNoInstall">请安装冰箱App</s:String>
-    <s:String x:Key="advsDeviceOwnerIsAlreadySet">请确保已退出所有账户,或前往App查看,可能已经激活</s:String>
+
     <!--建议-->
 
     <s:String x:Key="CompileDate">编译日期</s:String>

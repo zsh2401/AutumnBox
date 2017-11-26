@@ -40,7 +40,6 @@ namespace AutumnBox.Basic.Flows
         /// 要设置DeviceOwner的包的类名
         /// </summary>
         protected abstract string ClassName { get; }
-        //"dpm set-device-owner me.yourbay.airfrozen/.main.core.mgmt.MDeviceAdminReceiver";
         protected virtual string Command => $"dpm set-device-owner {PackageName}/{ClassName}";
         protected virtual bool NeedReboot { get; } = true;
         protected ShellOutput _shellOutput;
@@ -64,36 +63,29 @@ namespace AutumnBox.Basic.Flows
             _shellOutput = toolKit.Executer.QuicklyShell(toolKit.Args.DevBasicInfo, Command);
             return _shellOutput.OutputData;
         }
-        [LogProperty(TAG = "IceActivator Analyzing Result", Show = true)]
+        [LogProperty(TAG = "DeviceOwner setter....Analyzing Result", Show = true)]
         protected override void AnalyzeResult(DeviceOwnerSetterResult result)
         {
             base.AnalyzeResult(result);
             result.ShellOutput = _shellOutput;
             result.OutputData = result.ShellOutput.OutputData;
-            Logger.T("the return code ->" + result.ShellOutput.ReturnCode);
-            switch (result.ShellOutput.ReturnCode)
+            //如果结果输出中包含了success字样,则成功了,设置结果值并返回
+            if (result.OutputData.Contains("success",true))
             {
-                case (int)LinuxReturnCodes.NoError:
-                    if (result.OutputData.Contains("unknown admin"))
-                    {
-                        Logger.D("unknow admin");
-                        result.ErrorType = DeviceOwnerSetterErrType.UnknowAdmin;
-                        result.ResultType = FlowFramework.States.ResultType.Unsuccessful;
-                    }
-                    else
-                    {
-                        Logger.D("success??");
-                        result.ErrorType = DeviceOwnerSetterErrType.None;
-                        result.ResultType = FlowFramework.States.ResultType.Successful;
-                    }
-                    break;
-                default:
-                    result.ErrorType = DeviceOwnerSetterErrType.Unknow;
-                    result.ResultType = FlowFramework.States.ResultType.Unsuccessful;
-                    break;
+                result.ErrorType = DeviceOwnerSetterErrType.None;
+                result.ResultType = FlowFramework.States.ResultType.Successful;
+                return;
             }
-            if (result.ErrorType == DeviceOwnerSetterErrType.None || result.ErrorType == DeviceOwnerSetterErrType.UnknowAdmin) return;
-            if (result.OutputData.Contains("already set"))
+            result.ResultType = FlowFramework.States.ResultType.Unsuccessful;
+            result.ErrorType = DeviceOwnerSetterErrType.Unknow;
+            //用一堆该死的if/else if 判断输出来确定是哪一种错误
+            if (result.OutputData.Contains("unknown admin"))
+            {
+                Logger.D("unknow admin");
+                result.ErrorType = DeviceOwnerSetterErrType.UnknowAdmin;
+                result.ResultType = FlowFramework.States.ResultType.Unsuccessful;
+            }
+            else if (result.OutputData.Contains("already set"))
             {
                 result.ResultType = FlowFramework.States.ResultType.MaybeUnsuccessful;
                 result.ErrorType = DeviceOwnerSetterErrType.DeviceOwnerIsAlreadySet;
@@ -102,20 +94,26 @@ namespace AutumnBox.Basic.Flows
             {
                 result.ErrorType = DeviceOwnerSetterErrType.DeviceAlreadyProvisioned;
             }
-            else if (result.OutputData.Contains("several user on the device"))
+            else if (result.OutputData.Contains("several accounts on the device"))
             {
-                result.ErrorType = DeviceOwnerSetterErrType.HaveOtherUser;
+                result.ErrorType = DeviceOwnerSetterErrType.ServalAccountsOnTheDevice;
+            }
+            else if (result.OutputData.Contains("several users on the device"))
+            {
+                result.ErrorType = DeviceOwnerSetterErrType.ServalUserOnTheDevice;
             }
             else if (result.OutputData.Contains("exception") && result.OutputData.Contains("java"))
             {
                 result.ErrorType = DeviceOwnerSetterErrType.UnknowJavaException;
             }
+            //如果是这个错误,就尝试修复
             if (result.ErrorType == DeviceOwnerSetterErrType.DeviceAlreadyProvisioned)
             {
                 bool fixSuccess = TryFixDeviceAlreadyProvisioned();
                 result.ErrorType = fixSuccess ? DeviceOwnerSetterErrType.None : result.ErrorType;
                 result.ResultType = fixSuccess ? FlowFramework.States.ResultType.MaybeSuccessful : result.ResultType;
             }
+
         }
         protected override void OnFinished(FinishedEventArgs<DeviceOwnerSetterResult> e)
         {
