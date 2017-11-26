@@ -24,11 +24,13 @@ using AutumnBox.Basic.FlowFramework.Container;
 
 namespace AutumnBox.Basic.Flows
 {
-    public sealed class IceBoxActivator : IceActivator
+    public sealed class IceBoxActivator : DeviceOwnerSetter
     {
-        private static readonly
-            string _defaultCommand = "dpm set-device-owner com.catchingnow.icebox/.receiver.DPMReceiver";
-        protected override string _defaultShellCommand => _defaultCommand;
+        //private static readonly
+        //    string _defaultCommand = "dpm set-device-owner com.catchingnow.icebox/.receiver.DPMReceiver";
 
+        protected override string PackageName => "com.catchingnow.icebox";
+
+        protected override string ClassName => ".receiver.DPMReceiver";
     }
 }

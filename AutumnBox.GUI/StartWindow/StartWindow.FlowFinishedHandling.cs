@@ -34,9 +34,10 @@ namespace AutumnBox.GUI
                 UIHelper.CloseRateBox();
                 switch (sender.GetType().Name)
                 {
+                    case nameof(IslandActivator):
                     case nameof(IceBoxActivator):
                     case nameof(AirForzenActivator):
-                        IceSoftwareActivated((IceActivator)sender, (IceSoftwareResult)e.Result);
+                        IceSoftwareActivated((DeviceOwnerSetter)sender, (DeviceOwnerSetterResult)e.Result);
                         break;
                     default:
                         new FlowResultWindow(e.Result).ShowDialog();
@@ -44,23 +45,23 @@ namespace AutumnBox.GUI
                 }
             });
         }
-        private void IceSoftwareActivated(IceActivator tor, IceSoftwareResult result)
+        private void IceSoftwareActivated(DeviceOwnerSetter tor, DeviceOwnerSetterResult result)
         {
             string message = null;
             string advise = null;
             switch (result.ErrorType)
             {
-                case Basic.Flows.States.IceActivatorErrType.None:
+                case Basic.Flows.States.DeviceOwnerSetterErrType.None:
                     break;
-                case Basic.Flows.States.IceActivatorErrType.DeviceOwnerIsAlreadySet:
+                case Basic.Flows.States.DeviceOwnerSetterErrType.DeviceOwnerIsAlreadySet:
                     message = UIHelper.GetString("msgNoticeDeviceOwnerIsAlreadySet");
                     advise = UIHelper.GetString("advsDeviceOwnerIsAlreadySet");
                     break;
-                case Basic.Flows.States.IceActivatorErrType.HaveOtherUser:
+                case Basic.Flows.States.DeviceOwnerSetterErrType.HaveOtherUser:
                     message = UIHelper.GetString("msgNoticeHaveOtherUser");
                     advise = UIHelper.GetString("advIceBoxActHaveOtherUser");
                     break;
-                case Basic.Flows.States.IceActivatorErrType.UnknowAdmin:
+                case Basic.Flows.States.DeviceOwnerSetterErrType.UnknowAdmin:
                     message = UIHelper.GetString("msgIceActAppHaveNoInstalled");
                     advise = UIHelper.GetString("advIceActAppHaveNoInstalled");
                     break;

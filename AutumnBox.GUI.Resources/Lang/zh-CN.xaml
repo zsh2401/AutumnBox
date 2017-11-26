@@ -19,6 +19,7 @@
     <s:String x:Key="btnFlashRecImg">刷入Recovery</s:String>
     <s:String x:Key="btnFlashBootImg">刷入Boot.img</s:String>
     <s:String x:Key="btnIceBoxAct">激活冰箱</s:String>
+    <s:String x:Key="btnIslandAct">激活Island</s:String>
     <s:String x:Key="btnAirForzenAct">激活空调狗</s:String>
     <s:String x:Key="btnShizukuManagerAct">激活AppOps/ShizukuManager</s:String>
     <s:String x:Key="btnHelp">帮助</s:String>
@@ -103,6 +104,7 @@
     <s:String x:Key="msgNoticeIceBoxHaveNoInstall">您似乎没有安装冰箱App?</s:String>
     <s:String x:Key="msgNoticeDeviceOwnerIsAlreadySet">设备管理员已被设定</s:String>
     <s:String x:Key="msgNoticeHaveOtherUser">有多个用户</s:String>
+    <s:String x:Key="msgPlsInstallIslandFirst">请先安装Island!酷市场可以找到!!</s:String>
     <s:String x:Key="msgPlsInstallShizukuManagerFirst">请先安装ShizukuManager!酷市场和手机乐园都有!</s:String>
     <s:String x:Key="msgIceActAppHaveNoInstalled">您似乎没装这个App吧?.....</s:String>
     <s:String x:Key="msgWarning">警告</s:String>

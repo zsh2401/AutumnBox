@@ -28,6 +28,7 @@ namespace AutumnBox.GUI.Windows
             SetTitle(result.ResultType);
             Owner = App.Current.MainWindow;
             TxtBMessage.Text = message ?? "Have a nice day!";
+            TxtBOutput.Text = result.OutputData.All.ToString();
             if (advise == null)
             {
                 TxtBAdvise.Visibility = Visibility.Hidden;
@@ -37,7 +38,6 @@ namespace AutumnBox.GUI.Windows
             else {
                 TxtBAdvise.Text = advise;
             }
-            TxtBOutput.Text = result.OutputData.All.ToString();
         }
         private void SetTitle(ResultType type)
         {

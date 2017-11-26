@@ -256,15 +256,28 @@ namespace AutumnBox.GUI.UI.Grids
 
         private async void ButtonShizukuManager_Click(object sender, RoutedEventArgs e)
         {
-            bool? result = await Task.Run(() =>
+            bool? isInstallThisApp = await Task.Run(() =>
             {
                 return DeviceInfoHelper.IsInstalled(App.SelectedDevice, "moe.shizuku.privileged.api");
             });
-            if (result == false) { MMessageBox.FastShow(UIHelper.GetString("Warning"), UIHelper.GetString("msgPlsInstallShizukuManagerFirst")); return; }
+            if (isInstallThisApp == false) { MMessageBox.FastShow(UIHelper.GetString("Warning"), UIHelper.GetString("msgPlsInstallShizukuManagerFirst")); return; }
             Basic.Flows.ShizukuManagerActivator shizukuManagerActivator = new Basic.Flows.ShizukuManagerActivator();
             shizukuManagerActivator.Init(new Basic.FlowFramework.Args.FlowArgs() { DevBasicInfo = App.SelectedDevice });
             shizukuManagerActivator.RunAsync();
             UIHelper.ShowRateBox(shizukuManagerActivator);
+        }
+
+        private async void ButtonIslandAct_Click(object sender, RoutedEventArgs e)
+        {
+            bool? isInstallThisApp = await Task.Run(() =>
+            {
+                return DeviceInfoHelper.IsInstalled(App.SelectedDevice, "com.oasisfeng.island");
+            });
+            if (isInstallThisApp == false) { MMessageBox.FastShow(UIHelper.GetString("Warning"), UIHelper.GetString("msgPlsInstallIslandFirst")); return; }
+            Basic.Flows.IslandActivator islandActivator    = new Basic.Flows.IslandActivator();
+            islandActivator.Init(new Basic.FlowFramework.Args.FlowArgs() { DevBasicInfo = App.SelectedDevice });
+            islandActivator.RunAsync();
+            UIHelper.ShowRateBox(islandActivator);
         }
     }
 }
