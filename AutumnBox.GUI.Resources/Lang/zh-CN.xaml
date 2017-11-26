@@ -77,7 +77,7 @@
     <s:String x:Key="msgPushOK">如果一切正常,您将会在手机存储目录(/sdcard)下看到您刚才推送的文件</s:String>
     <s:String x:Key="msgPushFail">因为一些未知的原因,推送失败了!</s:String>
     <s:String x:Key="msgFlashOK">如果一切正常,您的手机将会重启到刚才刷入的Recovery中!</s:String>
-    <s:String x:Key="msgFristLaunchNotice">本软件还处于测试阶段,可能出现的bug希望您能立即反馈!另外,如果你有什么建议也可以通过关于->联系开发者中的联系方式告诉我,还有一件事!这个软件的某些操作可能会被杀软误报,请关闭杀软或者允许操作,我保证本软件没有恶意代码!</s:String>
+    <s:String x:Key="msgFristLaunchNotice">本软件还处于测试阶段,可能出现的bug希望您能立即反馈!这个软件的某些操作可能会被杀软误报,请关闭杀软或者允许操作,我保证本软件没有恶意代码!</s:String>
     <s:String x:Key="msgIfAllOK">如果一切正常,您的手机将会重启</s:String>
     <s:String x:Key="msgNotice">提示</s:String>
     <s:String x:Key="msgDelScreenLock">注意,此功能在当今大部分设备上已经失去效用,因此不要对该功能抱有太大希望</s:String>
@@ -91,8 +91,8 @@
     <s:String x:Key="msgShellChoiceTip">检测到您是Windows10 系统,请问您想用那种命令行界面?如果您不懂什么是Powershell,请用传统的CMD</s:String>
     <s:String x:Key="msgStartBrventTip">请确保您已经安装了最新版本黑域,并且已在手机上进入黑域软件的界面!!</s:String>
     <s:String x:Key="msgSaveSuccessful">保存成功!</s:String>
-    <s:String x:Key="msgIceActLine1">请前往手机->账户设置,将所有账户删除!</s:String>
-    <s:String x:Key="msgIceActLine2">如果您是国内定制ROM,请将类似小米账号,华为账号等的账号也一并删除!</s:String>
+    <s:String x:Key="msgIceActLine1">请前往手机->账户设置,将所有账户删除!(包括谷歌账户/手机云服务账户等)</s:String>
+    <s:String x:Key="msgIceActLine2">并且关闭应用双开,关闭访客模式,删除其它用户</s:String>
     <s:String x:Key="msgIceActLine3">完成后请点击继续</s:String>
     <s:String x:Key="msgMiFlashFloderError">文件夹内没有正确的文件!请确保您选择的文件夹是线刷包解压后的文件夹!</s:String>
     <s:String x:Key="msgNoticeForRebootToEdlLine1">请确保您的设备是高通骁龙处理器并且支持进入9008模式</s:String>
