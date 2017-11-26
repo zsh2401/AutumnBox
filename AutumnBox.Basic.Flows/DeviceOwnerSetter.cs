@@ -40,7 +40,13 @@ namespace AutumnBox.Basic.Flows
         /// 要设置DeviceOwner的包的类名
         /// </summary>
         protected abstract string ClassName { get; }
+        /// <summary>
+        /// 具体的指令
+        /// </summary>
         protected virtual string Command => $"dpm set-device-owner {PackageName}/{ClassName}";
+        /// <summary>
+        /// 执行完毕是否需要重启
+        /// </summary>
         protected virtual bool NeedReboot { get; } = true;
         protected ShellOutput _shellOutput;
         private ToolKit<FlowArgs> _toolKit;
@@ -56,6 +62,7 @@ namespace AutumnBox.Basic.Flows
             Logger.T(resultStep3.OutputData.ToString());
             return resultStep1.IsSuccess && resultStep2.IsSuccess && resultStep3.IsSuccess;
         }
+        [LogProperty(TAG="MM")]
         protected override OutputData MainMethod(ToolKit<FlowArgs> toolKit)
         {
             Logger.D("the command ->" + Command);
