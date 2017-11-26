@@ -37,7 +37,7 @@ namespace AutumnBox.GUI
                     case nameof(IslandActivator):
                     case nameof(IceBoxActivator):
                     case nameof(AirForzenActivator):
-                        IceSoftwareActivated((DeviceOwnerSetter)sender, (DeviceOwnerSetterResult)e.Result);
+                        DevicesOwnerSetted((DeviceOwnerSetter)sender, (DeviceOwnerSetterResult)e.Result);
                         break;
                     default:
                         new FlowResultWindow(e.Result).ShowDialog();
@@ -45,7 +45,7 @@ namespace AutumnBox.GUI
                 }
             });
         }
-        private void IceSoftwareActivated(DeviceOwnerSetter tor, DeviceOwnerSetterResult result)
+        private void DevicesOwnerSetted(DeviceOwnerSetter tor, DeviceOwnerSetterResult result)
         {
             string message = null;
             string advise = null;

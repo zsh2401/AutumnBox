@@ -11,6 +11,7 @@ using AutumnBox.GUI.Windows;
 using AutumnBox.Support.CstmDebug;
 using System.Threading.Tasks;
 using AutumnBox.Basic.FlowFramework;
+using AutumnBox.Basic.Flows;
 
 namespace AutumnBox.GUI.UI.Grids
 {
@@ -39,9 +40,15 @@ namespace AutumnBox.GUI.UI.Grids
             RefreshFinished?.Invoke(this, new EventArgs());
         }
 
-        private void ButtonStartBrventService_Click(object sender, RoutedEventArgs e)
+        private async void ButtonStartBrventService_Click(object sender, RoutedEventArgs e)
         {
-            if (!ChoiceBox.FastShow(App.OwnerWindow, App.Current.Resources["Notice"].ToString(), App.Current.Resources["msgStartBrventTip"].ToString())) return;
+            /*检查是否安装了这个App*/
+            bool? isInstallThisApp = await Task.Run(() =>
+            {
+                return DeviceInfoHelper.IsInstalled(App.SelectedDevice, Basic.Flows.BreventServiceActivator.AppPackageName);
+            });
+            if (isInstallThisApp == false) { MMessageBox.FastShow(App.OwnerWindow, UIHelper.GetString("Warning"), UIHelper.GetString("msgPlsInstallBreventFirst")); return; }
+            /*开始操作*/
             Basic.Flows.BreventServiceActivator bsa = new Basic.Flows.BreventServiceActivator();
             bsa.Init(new Basic.FlowFramework.Args.FlowArgs() { DevBasicInfo = App.SelectedDevice });
             bsa.RunAsync();
@@ -57,7 +64,7 @@ namespace AutumnBox.GUI.UI.Grids
             fileDialog.Multiselect = false;
             if (fileDialog.ShowDialog() == true)
             {
-                var fmp = FunctionModuleProxy.Create<FileSender>(new FileSenderArgs(App.SelectedDevice) { FilePath = fileDialog.FileName });
+                var fmp = FunctionModuleProxy.Create<Basic.Function.Modules.FileSender > (new FileSenderArgs(App.SelectedDevice) { FilePath = fileDialog.FileName });
                 fmp.Finished += App.OwnerWindow.FuncFinish;
                 fmp.AsyncRun();
                 new FileSendingWindow(fmp).ShowDialog();
@@ -230,25 +237,41 @@ namespace AutumnBox.GUI.UI.Grids
             }
         }
 
-        private void ButtonIceBoxAct_Click(object sender, RoutedEventArgs e)
+
+        private async void ButtonIceBoxAct_Click(object sender, RoutedEventArgs e)
         {
+            /*检查是否安装了这个App*/
+            bool? isInstallThisApp = await Task.Run(() =>
+            {
+                return DeviceInfoHelper.IsInstalled(App.SelectedDevice, Basic.Flows.IceBoxActivator.AppPackageName);
+            });
+            if (isInstallThisApp == false) { MMessageBox.FastShow(App.OwnerWindow, UIHelper.GetString("Warning"), UIHelper.GetString("msgPlsInstallIceBoxFirst")); return; }
+            /*提示用户删除账户*/
             bool _continue = ChoiceBox.FastShow(App.OwnerWindow,
                 UIHelper.GetString("msgNotice"),
                 $"{UIHelper.GetString("msgIceActLine1")}\n{UIHelper.GetString("msgIceActLine2")}\n{UIHelper.GetString("msgIceActLine3")}", UIHelper.GetString("btnContinue"), UIHelper.GetString("btnCancel"));
             if (!_continue) return;
+            /*开始操作 */
             Basic.Flows.IceBoxActivator iceBoxActivator = new Basic.Flows.IceBoxActivator();
             iceBoxActivator.Init(new Basic.FlowFramework.Args.FlowArgs() { DevBasicInfo = App.SelectedDevice });
             iceBoxActivator.RunAsync();
             UIHelper.ShowRateBox(iceBoxActivator);
         }
-
-        private void ButtonAirForzenAct_Click(object sender, RoutedEventArgs e)
+        private  async void ButtonAirForzenAct_Click(object sender, RoutedEventArgs e)
         {
+            /*检查是否安装了这个App*/
+            bool? isInstallThisApp = await Task.Run(() =>
+            {
+                return DeviceInfoHelper.IsInstalled(App.SelectedDevice, AirForzenActivator.AppPackageName);
+            });
+            if (isInstallThisApp == false) { MMessageBox.FastShow(App.OwnerWindow, UIHelper.GetString("Warning"), UIHelper.GetString("msgPlsInstallAirForzenFirst")); return; }
+            /*提示用户删除账户*/
             bool _continue = ChoiceBox.FastShow(App.OwnerWindow,
                  UIHelper.GetString("msgNotice"),
                 $"{UIHelper.GetString("msgIceActLine1")}\n{UIHelper.GetString("msgIceActLine2")}\n{UIHelper.GetString("msgIceActLine3")}", UIHelper.GetString("btnContinue"), UIHelper.GetString("btnCancel"));
             if (!_continue) return;
-            Basic.Flows.AirForzenActivator airForzenActivator = new Basic.Flows.AirForzenActivator();
+            /*开始操作*/
+            AirForzenActivator airForzenActivator = new AirForzenActivator();
             airForzenActivator.Init(new Basic.FlowFramework.Args.FlowArgs() { DevBasicInfo = App.SelectedDevice });
             airForzenActivator.RunAsync();
             UIHelper.ShowRateBox(airForzenActivator);
@@ -256,12 +279,14 @@ namespace AutumnBox.GUI.UI.Grids
 
         private async void ButtonShizukuManager_Click(object sender, RoutedEventArgs e)
         {
+            /*检查是否安装了这个App*/
             bool? isInstallThisApp = await Task.Run(() =>
             {
-                return DeviceInfoHelper.IsInstalled(App.SelectedDevice, "moe.shizuku.privileged.api");
+                return DeviceInfoHelper.IsInstalled(App.SelectedDevice,ShizukuManagerActivator.AppPackageName);
             });
-            if (isInstallThisApp == false) { MMessageBox.FastShow(UIHelper.GetString("Warning"), UIHelper.GetString("msgPlsInstallShizukuManagerFirst")); return; }
-            Basic.Flows.ShizukuManagerActivator shizukuManagerActivator = new Basic.Flows.ShizukuManagerActivator();
+            if (isInstallThisApp == false) { MMessageBox.FastShow(App.OwnerWindow ,UIHelper.GetString("Warning"), UIHelper.GetString("msgPlsInstallShizukuManagerFirst")); return; }
+            /*开始操作*/
+            ShizukuManagerActivator shizukuManagerActivator = new ShizukuManagerActivator();
             shizukuManagerActivator.Init(new Basic.FlowFramework.Args.FlowArgs() { DevBasicInfo = App.SelectedDevice });
             shizukuManagerActivator.RunAsync();
             UIHelper.ShowRateBox(shizukuManagerActivator);
@@ -269,12 +294,19 @@ namespace AutumnBox.GUI.UI.Grids
 
         private async void ButtonIslandAct_Click(object sender, RoutedEventArgs e)
         {
+            /*检查是否安装了这个App*/
             bool? isInstallThisApp = await Task.Run(() =>
             {
-                return DeviceInfoHelper.IsInstalled(App.SelectedDevice, "com.oasisfeng.island");
+                return DeviceInfoHelper.IsInstalled(App.SelectedDevice, IslandActivator.AppPackageName);
             });
-            if (isInstallThisApp == false) { MMessageBox.FastShow(UIHelper.GetString("Warning"), UIHelper.GetString("msgPlsInstallIslandFirst")); return; }
-            Basic.Flows.IslandActivator islandActivator    = new Basic.Flows.IslandActivator();
+            if (isInstallThisApp == false) { MMessageBox.FastShow(App.OwnerWindow, UIHelper.GetString("Warning"), UIHelper.GetString("msgPlsInstallIslandFirst")); return; }
+            /*提示用户删除账户*/
+            bool _continue = ChoiceBox.FastShow(App.OwnerWindow,
+                 UIHelper.GetString("msgNotice"),
+                $"{UIHelper.GetString("msgIceActLine1")}\n{UIHelper.GetString("msgIceActLine2")}\n{UIHelper.GetString("msgIceActLine3")}", UIHelper.GetString("btnContinue"), UIHelper.GetString("btnCancel"));
+            if (!_continue) return;
+            /*开始操作*/
+            IslandActivator islandActivator = new IslandActivator();
             islandActivator.Init(new Basic.FlowFramework.Args.FlowArgs() { DevBasicInfo = App.SelectedDevice });
             islandActivator.RunAsync();
             UIHelper.ShowRateBox(islandActivator);

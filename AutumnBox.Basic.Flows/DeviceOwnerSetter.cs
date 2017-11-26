@@ -69,6 +69,7 @@ namespace AutumnBox.Basic.Flows
         {
             base.AnalyzeResult(result);
             result.ShellOutput = _shellOutput;
+            result.OutputData = result.ShellOutput.OutputData;
             Logger.T("the return code ->" + result.ShellOutput.ReturnCode);
             switch (result.ShellOutput.ReturnCode)
             {

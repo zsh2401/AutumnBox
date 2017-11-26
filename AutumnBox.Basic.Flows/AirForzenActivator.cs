@@ -16,8 +16,9 @@ namespace AutumnBox.Basic.Flows
 {
     public sealed class AirForzenActivator : DeviceOwnerSetter
     {
+        public static readonly string AppPackageName = "me.yourbay.airfrozen";
 
-        protected override string PackageName => "me.yourbay.airfrozen";
+        protected override string PackageName => AppPackageName;
 
         protected override string ClassName => ".main.core.mgmt.MDeviceAdminReceiver";
     }

@@ -17,7 +17,8 @@ namespace AutumnBox.Basic.Flows
     public sealed class IslandActivator : DeviceOwnerSetter
     {
         //like this : "shell dpm set-device-owner com.oasisfeng.island/.IslandDeviceAdminReceiver";
-        protected override string PackageName => "com.oasisfeng.island";
+        public static readonly string AppPackageName = "com.oasisfeng.island";
+        protected override string PackageName => AppPackageName;
 
         protected override string ClassName => ".IslandDeviceAdminReceiver";
     }

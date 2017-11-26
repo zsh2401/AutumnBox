@@ -33,6 +33,7 @@ namespace AutumnBox.Basic.Flows
     {
         private int retCode = 0;
         private ShellOutput _shellOutput;
+        public static readonly string AppPackageName = "me.piebridge.brevent";
         private static readonly string _defaultShellCommand = "sh /data/data/me.piebridge.brevent/brevent.sh";
         protected override OutputData MainMethod(ToolKit<FlowArgs> toolKit)
         {

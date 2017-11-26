@@ -28,8 +28,8 @@ namespace AutumnBox.Basic.Flows
     {
         //private static readonly
         //    string _defaultCommand = "dpm set-device-owner com.catchingnow.icebox/.receiver.DPMReceiver";
-
-        protected override string PackageName => "com.catchingnow.icebox";
+        public static readonly string AppPackageName = "com.catchingnow.icebox";
+        protected override string PackageName => AppPackageName;
 
         protected override string ClassName => ".receiver.DPMReceiver";
     }

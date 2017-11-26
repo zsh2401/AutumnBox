@@ -30,13 +30,14 @@ namespace AutumnBox.Basic.Flows
 {
     public class ShizukuManagerActivator : FunctionFlow<FlowArgs, AdvanceResult>
     {
+        public static readonly string AppPackageName = "moe.shizuku.privileged.api";
         private ShellOutput _shellOutput;
         private static readonly string _defaultShell =
             "sh /sdcard/Android/data/moe.shizuku.privileged.api/files/start.sh";
         protected override OutputData MainMethod(ToolKit<FlowArgs> toolKit)
         {
             FunctionModuleProxy.Create<ActivityLauncher>(new ActivityLaunchArgs(toolKit.Args.DevBasicInfo)
-            { PackageName = "moe.shizuku.privileged.api", ActivityName = "moe.shizuku.manager.MainActivity" }).SyncRun();
+            { PackageName = AppPackageName, ActivityName = "moe.shizuku.manager.MainActivity" }).SyncRun();
             Thread.Sleep(2000);
             _shellOutput = toolKit.Executer.QuicklyShell(toolKit.Args.DevBasicInfo, _defaultShell);
             return _shellOutput.OutputData;
