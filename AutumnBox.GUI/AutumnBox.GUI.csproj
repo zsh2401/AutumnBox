@@ -100,6 +100,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -134,6 +135,8 @@
     <Compile Include="Helper\TextHelper.cs" />
     <Compile Include="Helper\UIHelper.cs" />
     <Compile Include="I18N\Language.cs" />
+    <Compile Include="NetUtil\DataSender.cs" />
+    <Compile Include="NetUtil\Stantisticians.cs" />
     <Compile Include="NetUtil\Urls.cs" />
     <Compile Include="NetUtil\MOTDGetter.cs" />
     <Compile Include="NetUtil\RemoteDataGetter.cs" />
@@ -171,6 +174,7 @@
     <Compile Include="Cfg\IConfigOperator.cs" />
     <Compile Include="Cfg\ConfigDataLayout.cs" />
     <Compile Include="Util\AutoGCer.cs" />
+    <Compile Include="Util\MachineInfo.cs" />
     <Compile Include="Windows\ChoiceBox.xaml.cs">
       <DependentUpon>ChoiceBox.xaml</DependentUpon>
     </Compile>
