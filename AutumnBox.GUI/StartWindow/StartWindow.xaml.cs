@@ -65,7 +65,7 @@ namespace AutumnBox.GUI
             };
             AdbHelper.AdbServerStartsFailed += (s, e) =>
             {
-                App.DevicesListener.Stop();
+                App.DevicesListener.Cancel();
                 bool _continue = true;
                 Dispatcher.Invoke(() =>
                 {
@@ -81,7 +81,7 @@ namespace AutumnBox.GUI
                 {
                     Thread.Sleep(12 * 1000);
                     AdbHelper.StartServer();
-                    App.DevicesListener.Start();
+                    App.DevicesListener.Begin();
                 }
                 else SystemHelper.AppExit(1);
             };
@@ -125,7 +125,7 @@ namespace AutumnBox.GUI
             //刷新一下界面
             RefreshUI();
             //开始设备监听
-            App.DevicesListener.Start();
+            App.DevicesListener.Begin();
             //哦,如果是第一次启动本软件,那么就显示一下提示吧!
             if (Config.IsFirstLaunch)
             {

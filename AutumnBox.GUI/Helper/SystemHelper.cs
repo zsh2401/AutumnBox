@@ -109,7 +109,7 @@ namespace AutumnBox.GUI.Helper
         public static void AppExit(int exitCode = 0)
         {
             Logger.T("Exiting.....");
-            App.DevicesListener.Stop();
+            App.DevicesListener.Cancel();
             new CExecuter().Execute(Command.MakeForAdb("kill-server"));
             Environment.Exit(exitCode);
         }

@@ -40,89 +40,50 @@ namespace AutumnBox.Basic.Devices
     /// <summary>
     /// 设备监听器
     /// </summary>
-    public sealed class DevicesMonitor : IDisposable
+    public sealed class DevicesMonitor
     {
         public event DevicesChangedHandler DevicesChanged;//当连接设备的情况变化时发生
-        private const int defaultInterval = 1000;
-        private Task devicesListenerTask;
-        private bool Continue = true;
-        private DevicesList last = new DevicesList();
-        private readonly int interval;
-        public DevicesMonitor(int interval = defaultInterval)
+        private bool _continue = true;
+        private readonly int _interval;
+        private IDevicesGetter _devGetter = new DevicesGetter();
+        public DevicesMonitor(int interval = 2000)
         {
-            this.interval = interval;
+            this._interval = interval;
         }
-        /// <summary>
-        /// 开始监听
-        /// </summary>
-        public  void Start()
-        {
-            if (DevicesChanged == null)
-            {
-                throw new EventNotBoundException("不绑定事件,那么开始这个监听器有毛线用处啊!!!");
-            }
-            Continue = true;
-            devicesListenerTask = new Task(this.Listening);
-            devicesListenerTask.Start();
-        }
-        /// <summary>
-        /// 停止监听
-        /// </summary>
-        public void Stop()
-        {
-            Continue = false;
-        }
-        /// <summary>
-        /// 暂停监听
-        /// </summary>
-        /// <param name="second">暂停时间(毫秒)</param>
-        public void Pause(int second = 1000)
-        {
-            devicesListenerTask.Wait(second);
-        }
-
-        /// <summary>
-        /// 无限循环的监听主函数
-        /// </summary>
-        private void Listening()
-        {
-            IDevicesGetter executer = new DevicesGetter();
-            DevicesList last = new DevicesList();
-            while (Continue)
-            {
-                var now = executer.GetDevices();
-                if (now != last)
-                {
-                    Logger.D("Devices Change");
-                    last = now;
-                    Logger.D("DevicesChanged?.invoke()");
-                    DevicesChanged?.Invoke(this, new DevicesChangedEventArgs(now));
-                }
-                Thread.Sleep(interval);
-            }
+        ///// <summary>
+        ///// 开始监听
+        ///// </summary>
+        //public void Start()
+        //{
+        //    if (DevicesChanged == null)
+        //    {
+        //        throw new EventNotBoundException("不绑定事件,那么开始这个监听器有毛线用处啊!!!");
+        //    }
+        //    //Continue = true;
+        //    //devicesListenerTask = new Task(this.Listening);
+        //    //devicesListenerTask.Start();
+        //}
+        public void Begin() {
+            _continue = true;
+            ListenAsync();
         }
         private async void ListenAsync()
         {
-            IDevicesGetter executer = new DevicesGetter();
-            DevicesList last = new DevicesList();
-            while (Continue)
+            var last = new DevicesList();
+            while (_continue)
             {
-                var now = await Task.Run(() => { return executer.GetDevices(); });
-                if (now != last)
-                {
-                    Logger.D("Devices Change");
+                var now = await Task.Run( ()=> { return _devGetter.GetDevices(); });
+                if (now != last) {
+                    Logger.T("Devices Changed");
                     last = now;
-                    DevicesChanged.Invoke(this, new DevicesChangedEventArgs(now));
+                    DevicesChanged?.Invoke(this,new DevicesChangedEventArgs(now));
                 }
-                Thread.Sleep(interval);
+                Thread.Sleep(_interval);
             }
         }
-        /// <summary>
-        /// 释放
-        /// </summary>
-        public void Dispose()
+        public void Cancel()
         {
-            devicesListenerTask.Dispose();
+            _continue = false;
         }
     }
 }
