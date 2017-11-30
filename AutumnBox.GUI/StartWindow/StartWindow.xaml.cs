@@ -135,10 +135,7 @@ namespace AutumnBox.GUI
             //开始获取公告
             new MOTDGetter().RunAsync((r) =>
             {
-                textBoxGG.Dispatcher.Invoke(() =>
-                {
-                    textBoxGG.Text = r.Header + r.Separator + r.Message;
-                });
+                textBoxGG.Text = r.Header + r.Separator + r.Message;
             });
             //更新检测
             new UpdateChecker().RunAsync((r) =>
