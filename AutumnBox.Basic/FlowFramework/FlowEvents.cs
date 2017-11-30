@@ -11,15 +11,8 @@
 * Company: I am free man
 *
 \* =============================================================================*/
-using AutumnBox.Basic.Executer;
-using AutumnBox.Basic.FlowFramework.Container;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace AutumnBox.Basic.FlowFramework.Events
+namespace AutumnBox.Basic.FlowFramework
 {
     public delegate void FinishedEventHandler<RESULT_T>(object sender, FinishedEventArgs<RESULT_T> e) where RESULT_T : FlowResult;
     public sealed class FinishedEventArgs<RESULT_T> where RESULT_T : FlowResult

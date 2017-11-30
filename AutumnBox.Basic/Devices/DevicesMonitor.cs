@@ -55,7 +55,7 @@ namespace AutumnBox.Basic.Devices
         /// <summary>
         /// 开始监听
         /// </summary>
-        public void Start()
+        public  void Start()
         {
             if (DevicesChanged == null)
             {

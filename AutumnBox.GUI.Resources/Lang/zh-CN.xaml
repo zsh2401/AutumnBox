@@ -11,6 +11,7 @@
     <s:String x:Key="rbtnFlashAllExceptStorage">保留内部存储</s:String>
     <s:String x:Key="rbtnFlashAllExceptStorageAndData">保留内部存储和Data分区</s:String>
     <s:String x:Key="btnCreateShortcut">创建快捷方式到桌面</s:String>
+    <s:String x:Key="btnVBHide">隐藏虚拟键</s:String>
     <s:String x:Key="btnTapEmu">模拟点击</s:String>
     <s:String x:Key="btnDeleteScreenLock">解除屏幕锁</s:String>
     <s:String x:Key="btnRebootToSnapdragon9008">重启到高通9008救砖模式</s:String>
@@ -41,6 +42,8 @@
     <s:String x:Key="btnFlashCustomRecoveryImg">刷入自选Recovery</s:String>
     <s:String x:Key="btnChangeTheme">更改主题</s:String>
     <s:String x:Key="btnOK">好的</s:String>
+    <s:String x:Key="btnHide">隐藏</s:String>
+    <s:String x:Key="btnUnhide">显示</s:String>
     <s:String x:Key="btnIHaveCloseOtherPhoneHelper">我已关闭其它助手</s:String>
     <s:String x:Key="btnExit">退出</s:String>
     <s:String x:Key="btnStartBrventService">启动黑域服务</s:String>
@@ -107,6 +110,7 @@
     <s:String x:Key="msgPlsInstallIceBoxFirst">请先安装冰箱!!</s:String>
     <s:String x:Key="msgPlsInstallShizukuManagerFirst">请先安装ShizukuManager!酷市场和手机乐园都有!</s:String>
     <s:String x:Key="msgWarning">警告</s:String>
+    <s:String x:Key="msgVirtualButtonHider">您是要隐藏虚拟键还是恢复虚拟键?</s:String>
     <s:String x:Key="msgStartAdbServerFailLine1">错误:无法启动ADB服务</s:String>
     <s:String x:Key="msgStartAdbServerFailLine2">解决方案:彻底关闭所有其它的手机助手(在电脑上)</s:String>
     <s:String x:Key="msgStartAdbServerFailLine3">例如: 360手机助手 豌豆荚等</s:String>
@@ -141,6 +145,7 @@
     <!--QA-->
 
     <!--静态界面标记-->
+    <s:String x:Key="PleaseSelected">请选择</s:String>
     <s:String x:Key="PleaseSelectFloderPackageWireFlash">请选择线刷包文件夹</s:String>
     <s:String x:Key="OutputRealTime">实时输出</s:String>
     <s:String x:Key="TimeUsed">已用时间</s:String>

@@ -1,30 +1,28 @@
-﻿/* =============================================================================*\
+﻿
+/* =============================================================================*\
 *
-* Filename: CheckResult
+* Filename: FlowArgs
 * Description: 
 *
 * Version: 1.0
-* Created: 2017/11/23 16:17:24 (UTC+8:00)
+* Created: 2017/11/23 15:11:47 (UTC+8:00)
 * Compiler: Visual Studio 2017
 * 
 * Author: zsh2401
 * Company: I am free man
 *
 \* =============================================================================*/
+using AutumnBox.Basic.Devices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AutumnBox.Basic.FlowFramework.States
+namespace AutumnBox.Basic.FlowFramework
 {
-    public enum CheckResult
+    public class FlowArgs
     {
-        Unfinish = -1,
-        OK,
-        Error,
-        ArgError,
-        UnknowError,
+        public DeviceBasicInfo DevBasicInfo { get; set; }
     }
 }

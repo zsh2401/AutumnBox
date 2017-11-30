@@ -17,7 +17,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AutumnBox.Basic.FlowFramework.States
+namespace AutumnBox.Basic.FlowFramework
 {
     public enum FlowStatus
     {

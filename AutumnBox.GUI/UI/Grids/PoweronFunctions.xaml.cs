@@ -50,7 +50,7 @@ namespace AutumnBox.GUI.UI.Grids
             if (isInstallThisApp == false) { MMessageBox.FastShow(App.OwnerWindow, UIHelper.GetString("Warning"), UIHelper.GetString("msgPlsInstallBreventFirst")); return; }
             /*开始操作*/
             Basic.Flows.BreventServiceActivator bsa = new Basic.Flows.BreventServiceActivator();
-            bsa.Init(new Basic.FlowFramework.Args.FlowArgs() { DevBasicInfo = App.SelectedDevice });
+            bsa.Init(new FlowArgs() { DevBasicInfo = App.SelectedDevice });
             bsa.RunAsync();
             UIHelper.ShowRateBox(bsa);
         }
@@ -64,7 +64,7 @@ namespace AutumnBox.GUI.UI.Grids
             fileDialog.Multiselect = false;
             if (fileDialog.ShowDialog() == true)
             {
-                var fmp = FunctionModuleProxy.Create<Basic.Function.Modules.FileSender > (new FileSenderArgs(App.SelectedDevice) { FilePath = fileDialog.FileName });
+                var fmp = FunctionModuleProxy.Create<Basic.Function.Modules.FileSender>(new FileSenderArgs(App.SelectedDevice) { FilePath = fileDialog.FileName });
                 fmp.Finished += App.OwnerWindow.FuncFinish;
                 fmp.AsyncRun();
                 new FileSendingWindow(fmp).ShowDialog();
@@ -253,11 +253,11 @@ namespace AutumnBox.GUI.UI.Grids
             if (!_continue) return;
             /*开始操作 */
             Basic.Flows.IceBoxActivator iceBoxActivator = new Basic.Flows.IceBoxActivator();
-            iceBoxActivator.Init(new Basic.FlowFramework.Args.FlowArgs() { DevBasicInfo = App.SelectedDevice });
+            iceBoxActivator.Init(new FlowArgs() { DevBasicInfo = App.SelectedDevice });
             iceBoxActivator.RunAsync();
             UIHelper.ShowRateBox(iceBoxActivator);
         }
-        private  async void ButtonAirForzenAct_Click(object sender, RoutedEventArgs e)
+        private async void ButtonAirForzenAct_Click(object sender, RoutedEventArgs e)
         {
             /*检查是否安装了这个App*/
             bool? isInstallThisApp = await Task.Run(() =>
@@ -272,7 +272,7 @@ namespace AutumnBox.GUI.UI.Grids
             if (!_continue) return;
             /*开始操作*/
             AirForzenActivator airForzenActivator = new AirForzenActivator();
-            airForzenActivator.Init(new Basic.FlowFramework.Args.FlowArgs() { DevBasicInfo = App.SelectedDevice });
+            airForzenActivator.Init(new FlowArgs() { DevBasicInfo = App.SelectedDevice });
             airForzenActivator.RunAsync();
             UIHelper.ShowRateBox(airForzenActivator);
         }
@@ -282,12 +282,12 @@ namespace AutumnBox.GUI.UI.Grids
             /*检查是否安装了这个App*/
             bool? isInstallThisApp = await Task.Run(() =>
             {
-                return DeviceInfoHelper.IsInstalled(App.SelectedDevice,ShizukuManagerActivator.AppPackageName);
+                return DeviceInfoHelper.IsInstalled(App.SelectedDevice, ShizukuManagerActivator.AppPackageName);
             });
-            if (isInstallThisApp == false) { MMessageBox.FastShow(App.OwnerWindow ,UIHelper.GetString("Warning"), UIHelper.GetString("msgPlsInstallShizukuManagerFirst")); return; }
+            if (isInstallThisApp == false) { MMessageBox.FastShow(App.OwnerWindow, UIHelper.GetString("Warning"), UIHelper.GetString("msgPlsInstallShizukuManagerFirst")); return; }
             /*开始操作*/
             ShizukuManagerActivator shizukuManagerActivator = new ShizukuManagerActivator();
-            shizukuManagerActivator.Init(new Basic.FlowFramework.Args.FlowArgs() { DevBasicInfo = App.SelectedDevice });
+            shizukuManagerActivator.Init(new FlowArgs() { DevBasicInfo = App.SelectedDevice });
             shizukuManagerActivator.RunAsync();
             UIHelper.ShowRateBox(shizukuManagerActivator);
         }
@@ -307,9 +307,26 @@ namespace AutumnBox.GUI.UI.Grids
             if (!_continue) return;
             /*开始操作*/
             IslandActivator islandActivator = new IslandActivator();
-            islandActivator.Init(new Basic.FlowFramework.Args.FlowArgs() { DevBasicInfo = App.SelectedDevice });
+            islandActivator.Init(new FlowArgs() { DevBasicInfo = App.SelectedDevice });
             islandActivator.RunAsync();
             UIHelper.ShowRateBox(islandActivator);
+        }
+
+        private void ButtonVirtualBtnHide_Click(object sender, RoutedEventArgs e)
+        {
+            var args = new VirtualButtonHiderArgs()
+            {
+                DevBasicInfo = App.SelectedDevice,
+                IsHide = ChoiceBox.FastShow(App.Current.MainWindow,
+                UIHelper.GetString("PleaseSelected"),
+                UIHelper.GetString("msgVirtualButtonHider"),
+                UIHelper.GetString("btnHide"),
+                UIHelper.GetString("btnUnhide")),
+            };
+            VirtualButtonHider hider = new VirtualButtonHider();
+            hider.Init(args);
+            hider.RunAsync();
+            UIHelper.ShowRateBox(hider);
         }
     }
 }

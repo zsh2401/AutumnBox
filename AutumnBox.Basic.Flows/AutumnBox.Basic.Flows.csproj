@@ -48,6 +48,7 @@
     <Compile Include="DeviceOwnerSetter.cs" />
     <Compile Include="IceBoxActivator.cs" />
     <Compile Include="IslandActivator.cs" />
+    <Compile Include="NetDebuggingOpener.cs" />
     <Compile Include="Result\AdvanceResult.cs" />
     <Compile Include="Result\FileSenderResult.cs" />
     <Compile Include="Event\Events.cs" />
@@ -60,6 +61,7 @@
     <Compile Include="States\FlieSenderErrorType.cs" />
     <Compile Include="States\DeviceOwnerSetterErrType.cs" />
     <Compile Include="States\LinuxReturnCodes.cs" />
+    <Compile Include="VirtualButtonHider.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AutumnBox.Basic\AutumnBox.Basic.csproj">

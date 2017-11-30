@@ -12,10 +12,9 @@
 *
 \* =============================================================================*/
 using AutumnBox.Basic.Executer;
-using AutumnBox.Basic.FlowFramework.States;
 using System;
 
-namespace AutumnBox.Basic.FlowFramework.Container
+namespace AutumnBox.Basic.FlowFramework
 {
     public class FlowResult
     {

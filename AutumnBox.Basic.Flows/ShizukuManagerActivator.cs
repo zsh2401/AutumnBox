@@ -12,14 +12,7 @@
 *
 \* =============================================================================*/
 using AutumnBox.Basic.FlowFramework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using AutumnBox.Basic.Executer;
-using AutumnBox.Basic.FlowFramework.Args;
-using AutumnBox.Basic.FlowFramework.Container;
 using AutumnBox.Basic.Flows.Result;
 using AutumnBox.Basic.Function;
 using AutumnBox.Basic.Function.Modules;
@@ -48,8 +41,8 @@ namespace AutumnBox.Basic.Flows
             result.ShellOutput = _shellOutput;
             result.ResultType =
                 _shellOutput.ReturnCode == 0 ?
-                FlowFramework.States.ResultType.Successful :
-                FlowFramework.States.ResultType.Unsuccessful;
+                ResultType.Successful :
+                ResultType.Unsuccessful;
         }
     }
 }

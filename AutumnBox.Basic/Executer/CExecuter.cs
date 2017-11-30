@@ -94,6 +94,7 @@ namespace AutumnBox.Basic.Executer
         /// <returns></returns>
         public ShellOutput QuicklyShell(string id, string command)
         {
+            Logger.D("quickly shell" + command);
             var o = QuicklyShell(id, command, out int retCode);
             var shell_output = new ShellOutput(o)
             {
@@ -108,7 +109,7 @@ namespace AutumnBox.Basic.Executer
         /// <returns></returns>
         public OutputData QuicklyShell(string id, string command, out int returnCode)
         {
-            Logger.T($"execute shell command ->{command} for dev {id}" );
+            Logger.T($"execute shell command ->{command} for dev {id}");
             var o = Execute(Command.MakeForAdb($"-s {id} shell \"{command}\" ; echo __ec$?"));
             try
             {
@@ -118,7 +119,7 @@ namespace AutumnBox.Basic.Executer
             }
             catch (Exception e)
             {
-                Logger.T("quickly shell failed...",e);
+                Logger.T("quickly shell failed...", e);
                 returnCode = 1;
                 if (e is NotSupportedException) returnCode = 24010;
                 else if (e is IndexOutOfRangeException) returnCode = 24011;

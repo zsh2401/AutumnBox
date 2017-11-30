@@ -12,17 +12,9 @@
 *
 \* =============================================================================*/
 using AutumnBox.Basic.FlowFramework;
-using AutumnBox.Basic.FlowFramework.Args;
 using AutumnBox.Basic.Flows.Result;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using AutumnBox.Basic.Executer;
-using AutumnBox.Basic.FlowFramework.Container;
 using AutumnBox.Basic.Flows.States;
-using AutumnBox.Basic.FlowFramework.Events;
 using AutumnBox.Support.CstmDebug;
 
 namespace AutumnBox.Basic.Flows
@@ -80,21 +72,21 @@ namespace AutumnBox.Basic.Flows
             if (result.OutputData.Contains("success",true))
             {
                 result.ErrorType = DeviceOwnerSetterErrType.None;
-                result.ResultType = FlowFramework.States.ResultType.Successful;
+                result.ResultType = ResultType.Successful;
                 return;
             }
-            result.ResultType = FlowFramework.States.ResultType.Unsuccessful;
+            result.ResultType = ResultType.Unsuccessful;
             result.ErrorType = DeviceOwnerSetterErrType.Unknow;
             //用一堆该死的if/else if 判断输出来确定是哪一种错误
             if (result.OutputData.Contains("unknown admin"))
             {
                 Logger.D("unknow admin");
                 result.ErrorType = DeviceOwnerSetterErrType.UnknowAdmin;
-                result.ResultType = FlowFramework.States.ResultType.Unsuccessful;
+                result.ResultType = ResultType.Unsuccessful;
             }
             else if (result.OutputData.Contains("already set"))
             {
-                result.ResultType = FlowFramework.States.ResultType.MaybeUnsuccessful;
+                result.ResultType = ResultType.MaybeUnsuccessful;
                 result.ErrorType = DeviceOwnerSetterErrType.DeviceOwnerIsAlreadySet;
             }
             else if (result.OutputData.Contains("device is already provisioned"))
@@ -118,7 +110,7 @@ namespace AutumnBox.Basic.Flows
             {
                 bool fixSuccess = TryFixDeviceAlreadyProvisioned();
                 result.ErrorType = fixSuccess ? DeviceOwnerSetterErrType.None : result.ErrorType;
-                result.ResultType = fixSuccess ? FlowFramework.States.ResultType.MaybeSuccessful : result.ResultType;
+                result.ResultType = fixSuccess ? ResultType.MaybeSuccessful : result.ResultType;
             }
 
         }
