@@ -175,6 +175,9 @@
     <Compile Include="Cfg\ConfigDataLayout.cs" />
     <Compile Include="Util\AutoGCer.cs" />
     <Compile Include="Util\MachineInfo.cs" />
+    <Compile Include="Windows\ApkInstallingWindow.xaml.cs">
+      <DependentUpon>ApkInstallingWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\ChoiceBox.xaml.cs">
       <DependentUpon>ChoiceBox.xaml</DependentUpon>
     </Compile>
@@ -285,6 +288,10 @@
     <Page Include="UI\Grids\WelcomeGrid.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\ApkInstallingWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\ChoiceBox.xaml">
       <SubType>Designer</SubType>

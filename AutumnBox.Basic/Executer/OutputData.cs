@@ -145,7 +145,7 @@ namespace AutumnBox.Basic.Executer
         {
             return All.ToString();
         }
-        internal OutputData() { }
+        public OutputData() { }
         public static explicit operator ShellOutput(OutputData output)
         {
             return new ShellOutput(output);

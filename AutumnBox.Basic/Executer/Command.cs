@@ -42,6 +42,10 @@ namespace AutumnBox.Basic.Executer
         private string SpecificCommand;
         private string DeviceID;
         private Command() { }
+        public static Command MakeForCmd(string command)
+        {
+            return new Command() { FileName ="cmd.exe", SpecificCommand = " /c " + command };
+        }
         public static Command MakeForAdb(string command)
         {
             return new Command() { FileName = ConstData.ADB_PATH, SpecificCommand = command };
