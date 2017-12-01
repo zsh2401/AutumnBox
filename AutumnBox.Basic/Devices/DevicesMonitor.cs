@@ -72,13 +72,15 @@ namespace AutumnBox.Basic.Devices
             var last = new DevicesList();
             while (_continue)
             {
-                var now = await Task.Run( ()=> { return _devGetter.GetDevices(); });
+                var now = await Task.Run( ()=> {
+                    Thread.Sleep(_interval);
+                    return _devGetter.GetDevices(); });
                 if (now != last) {
                     Logger.T("Devices Changed");
                     last = now;
                     DevicesChanged?.Invoke(this,new DevicesChangedEventArgs(now));
                 }
-                Thread.Sleep(_interval);
+
             }
         }
         public void Cancel()

@@ -12,6 +12,8 @@ using AutumnBox.Support.CstmDebug;
 using System.Threading.Tasks;
 using AutumnBox.Basic.FlowFramework;
 using AutumnBox.Basic.Flows;
+using System.IO;
+using System.Collections.Generic;
 
 namespace AutumnBox.GUI.UI.Grids
 {
@@ -81,13 +83,23 @@ namespace AutumnBox.GUI.UI.Grids
             fileDialog.Reset();
             fileDialog.Title = App.Current.Resources["SelecteAFile"].ToString();
             fileDialog.Filter = "安卓安装包ApkFile(*.apk)|*.apk";
-            fileDialog.Multiselect = false;
+            fileDialog.Multiselect = true;
+           
             if (fileDialog.ShowDialog() == true)
             {
-                var fmp = FunctionModuleProxy.Create<ApkInstaller>(new InstallApkArgs(App.SelectedDevice) { ApkPath = fileDialog.FileName });
-                fmp.Finished += App.OwnerWindow.FuncFinish;
-                fmp.AsyncRun();
-                UIHelper.ShowRateBox(fmp);
+                Basic.Flows.ApkInstaller installer = new Basic.Flows.ApkInstaller();
+                List<FileInfo> files = new List<FileInfo>();
+                foreach (string fileName in fileDialog.FileNames) {
+                    files.Add(new FileInfo(fileName));
+                }
+                var args = new ApkInstallerArgs()
+                {
+                    DevBasicInfo = App.SelectedDevice,
+                    Files = files,
+                };
+                installer.Init(args);
+                installer.RunAsync();
+                new ApkInstallingWindow(installer,files).ShowDialog();
             }
             else
             {

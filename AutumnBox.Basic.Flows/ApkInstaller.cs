@@ -33,6 +33,7 @@ namespace AutumnBox.Basic.Flows
         public FileInfo ApkFileInfo { get; internal set; }
         public bool IsSuccess { get; internal set; } = true;
         public bool NeedContinue { get; set; } = true;
+        public OutputData Output { get; internal set; } 
     }
     public delegate void AApkInstallltionComplete(object sender, AApkInstalltionCompleteArgs e);
     public sealed class ApkInstaller : FunctionFlow<ApkInstallerArgs, FlowResult>
@@ -40,6 +41,7 @@ namespace AutumnBox.Basic.Flows
         public event AApkInstallltionComplete AApkIstanlltionCompleted;
         protected override OutputData MainMethod(ToolKit<ApkInstallerArgs> toolKit)
         {
+            Logger.D($"Start installing....have {toolKit.Args.Files.Count} Apks");
             OutputData result = new OutputData()
             {
                 OutSender = toolKit.Executer
@@ -53,7 +55,8 @@ namespace AutumnBox.Basic.Flows
                 var args = new AApkInstalltionCompleteArgs()
                 {
                     ApkFileInfo = apkFileInfo,
-                    IsSuccess = r.Contains("__errorlevel__0")
+                    IsSuccess = r.Contains("__errorlevel__0"),
+                    Output = r,
                 };
                 AApkIstanlltionCompleted?.Invoke(this, args);
                 if (!args.NeedContinue) break;
