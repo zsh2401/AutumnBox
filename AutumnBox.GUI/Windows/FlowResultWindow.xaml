@@ -13,7 +13,8 @@
         <TextBlock x:Name="TxtBAdviseTip" HorizontalAlignment="Left" Margin="10,158,0,0" TextWrapping="Wrap" Text="{DynamicResource Advise}" VerticalAlignment="Top" FontSize="20"/>
         <TextBlock x:Name="TxtBMessage" HorizontalAlignment="Left" Margin="62,82,0,0" TextWrapping="Wrap" Text="..." VerticalAlignment="Top" Width="384" Height="74" FontSize="20"/>
         <TextBlock x:Name="TxtBAdvise" HorizontalAlignment="Left" Margin="62,158,0,0" TextWrapping="Wrap" Text="..." VerticalAlignment="Top" Width="384" Height="74" FontSize="20"/>
-        <TextBox x:Name="TxtBOutput" HorizontalAlignment="Left" Margin="4,0,0,47" TextWrapping="Wrap" Text="Output" Width="446" IsReadOnly="True" Height="117" VerticalAlignment="Bottom"/>
-        <Label Content="{StaticResource OutputTip}" HorizontalAlignment="Left" Margin="5,0,0,169" Width="445" FontSize="11" Height="26" VerticalAlignment="Bottom"/>
+        <TextBox x:Name="TxtBOutput" HorizontalAlignment="Left" Margin="4,0,0,47" TextWrapping="Wrap" Text="Output" Width="446" IsReadOnly="True" Height="117" VerticalAlignment="Bottom" BorderBrush="{DynamicResource BasicBrush}"/>
+        <Button  x:Name="ButtonCopy"   Content="{DynamicResource btnCopy}" Margin="411,0,4,163" Background="#007C7272" BorderBrush="{DynamicResource BasicBrush}" FontFamily="Microsoft YaHei UI Light" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Black" RenderTransformOrigin="0.494,0.085" FontSize="10" Click="ButtonCopy_Click" Height="17" VerticalAlignment="Bottom"/>
+        <TextBlock HorizontalAlignment="Left" Margin="4,0,0,164" TextWrapping="Wrap" Text="{DynamicResource OutputTip}" Width="388" Height="29" VerticalAlignment="Bottom" FontFamily="Microsoft JhengHei UI Light"/>
     </Grid>
 </Window>

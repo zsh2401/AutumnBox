@@ -65,5 +65,10 @@ namespace AutumnBox.GUI.Windows
         {
             Close();
         }
+
+        private void ButtonCopy_Click(object sender, RoutedEventArgs e)
+        {
+            Clipboard.SetText(TextBoxOutput.Text);
+        }
     }
 }

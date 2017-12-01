@@ -98,7 +98,6 @@ namespace AutumnBox.GUI.UI.Grids
                     Files = files,
                 };
                 installer.Init(args);
-                installer.RunAsync();
                 new ApkInstallingWindow(installer,files).ShowDialog();
             }
             else

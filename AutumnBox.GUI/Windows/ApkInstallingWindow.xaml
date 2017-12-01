@@ -6,16 +6,16 @@
         xmlns:local="clr-namespace:AutumnBox.GUI.Windows"
          xmlns:gif="http://wpfanimatedgif.codeplex.com"
         mc:Ignorable="d"
-        Title="ApkInstallingWindow" Height="286" Width="394.5" ResizeMode="NoResize" WindowStyle="None" Background="{DynamicResource BasicBrush}">
+        Title="ApkInstallingWindow" Height="331" Width="394.5" ResizeMode="NoResize" WindowStyle="None" Background="{DynamicResource BasicBrush}" Loaded="Window_Loaded" WindowStartupLocation="CenterOwner" MouseDown="Window_MouseDown">
     <Grid Background="{DynamicResource BackBrush}" Margin="3,3,3,3">
         <Image Name="img"
                Stretch="Fill"
                gif:ImageBehavior.AnimatedSource="/AutumnBox.GUI.Resources;component/Images/loading.gif" Height="203" VerticalAlignment="Top" HorizontalAlignment="Left" Width="387"/>
-        <Button x:Name="BtnCancel" Content="{DynamicResource btnCancel}" HorizontalAlignment="Left" Margin="10,0,0,10" Width="368" Background="White" Click="BtnCancel_Click" Height="28" VerticalAlignment="Bottom"/>
-        <TextBlock HorizontalAlignment="Left" Margin="0,138,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="368" Height="32" FontSize="22"><Run Text="正在进行操作,稍安勿躁"/></TextBlock>
-        <TextBlock x:Name="TBCountOfAll" HorizontalAlignment="Left" Margin="317,63,0,0" TextWrapping="Wrap" Text="99" VerticalAlignment="Top" FontSize="48" Foreground="{DynamicResource BackBrush}" Width="70"/>
-        <TextBlock HorizontalAlignment="Left" Margin="293,35,0,0" TextWrapping="Wrap" Text="/" VerticalAlignment="Top" FontSize="48" Foreground="{DynamicResource BackBrush}" Height="58"/>
-        <TextBlock x:Name="TBCountOfInstalled" HorizontalAlignment="Left" Margin="220,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="48" Foreground="{DynamicResource BackBrush}" Width="92" Height="58"><Run Text="99"/></TextBlock>
+        <Button x:Name="BtnCancel" Content="{DynamicResource btnCancel}" HorizontalAlignment="Left" Margin="10,0,0,10" Width="368" Background="White" Click="BtnCancel_Click" Height="33" VerticalAlignment="Bottom"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,134,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="201" Height="25" FontSize="18" FontFamily="Microsoft YaHei UI Light" Foreground="{DynamicResource ForgBrush}"><Run Text="正在进行操作,稍安勿躁"/></TextBlock>
+        <TextBlock x:Name="TBCountOfInstalled" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="48" Foreground="{DynamicResource BackBrush}" Width="180" Height="64" FontFamily="Microsoft YaHei UI Light" Text="0/0"/>
+        <TextBox x:Name="TBOutput" HorizontalAlignment="Left" Height="89" Margin="10,188,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="368" IsReadOnly="True"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,164,0,0" TextWrapping="Wrap" Text="{DynamicResource OutputRealTime}" VerticalAlignment="Top" Width="368" FontSize="14"/>
 
     </Grid>
 </Window>

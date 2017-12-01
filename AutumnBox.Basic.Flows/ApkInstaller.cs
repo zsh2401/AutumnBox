@@ -33,7 +33,7 @@ namespace AutumnBox.Basic.Flows
         public FileInfo ApkFileInfo { get; internal set; }
         public bool IsSuccess { get; internal set; } = true;
         public bool NeedContinue { get; set; } = true;
-        public OutputData Output { get; internal set; } 
+        public OutputData Output { get; internal set; }
     }
     public delegate void AApkInstallltionComplete(object sender, AApkInstalltionCompleteArgs e);
     public sealed class ApkInstaller : FunctionFlow<ApkInstallerArgs, FlowResult>
@@ -46,16 +46,18 @@ namespace AutumnBox.Basic.Flows
             {
                 OutSender = toolKit.Executer
             };
-            foreach(FileInfo apkFileInfo in toolKit.Args.Files)
+            foreach (FileInfo apkFileInfo in toolKit.Args.Files)
             {
-                Command command = 
+                Command command =
                     Command.MakeForCmd(
-                        $"{ConstData.ADB_PATH} -s {toolKit.Args.DevBasicInfo.ToString()} install \"{apkFileInfo.FullName}\";echo __errorlevel__%errorlevel%");
+                        $"{ConstData.ADB_PATH} -s {toolKit.Args.DevBasicInfo.ToString()} install \"{apkFileInfo.FullName}\"");
+                Logger.D("making command ->" + command.FileName + command.FullCommand);
                 var r = toolKit.Executer.Execute(command);
+                Logger.D(r.ToString());
                 var args = new AApkInstalltionCompleteArgs()
                 {
                     ApkFileInfo = apkFileInfo,
-                    IsSuccess = r.Contains("__errorlevel__0"),
+                    IsSuccess = r.Contains("success"),
                     Output = r,
                 };
                 AApkIstanlltionCompleted?.Invoke(this, args);
@@ -63,6 +65,11 @@ namespace AutumnBox.Basic.Flows
             }
             Logger.D(result.ToString());
             return result;
+        }
+        protected override void AnalyzeResult(FlowResult result)
+        {
+            base.AnalyzeResult(result);
+            if (result.OutputData.Contains("failure")) { result.ResultType = ResultType.MaybeSuccessful; }
         }
     }
 }

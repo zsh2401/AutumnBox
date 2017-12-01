@@ -53,7 +53,7 @@ namespace AutumnBox.Basic.Executer
         {
             if (ignoreCase)
             {
-                return All.ToString().ToLower().Contains(str);
+                return All.ToString().ToLower().Contains(str.ToLower());
             }
             else
             {

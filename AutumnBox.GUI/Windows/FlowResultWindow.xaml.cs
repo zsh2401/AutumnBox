@@ -63,5 +63,11 @@ namespace AutumnBox.GUI.Windows
         {
             UIHelper.DragMove(this, e);
         }
+
+        private void ButtonCopy_Click(object sender, RoutedEventArgs e)
+        {
+            Clipboard.SetText(TxtBOutput.Text);
+            ButtonCopy.Content = UIHelper.GetString("btnCopied");
+        }
     }
 }

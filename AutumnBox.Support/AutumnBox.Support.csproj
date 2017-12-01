@@ -51,6 +51,7 @@
     <Compile Include="CstmDebug\LogSender.cs" />
     <Compile Include="Helper\NetHelper.cs" />
     <Compile Include="Helper\SystemHelper.cs" />
+    <Compile Include="IdentifyEncoding.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

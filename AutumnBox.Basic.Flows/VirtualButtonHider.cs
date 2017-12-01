@@ -23,7 +23,7 @@ namespace AutumnBox.Basic.Flows
     }
     public class VirtualButtonHider : FunctionFlow<VirtualButtonHiderArgs, AdvanceResult>
     {
-        private static readonly string _commandOfToHide = "settings put global policy_controlimmersive.navigation=*";
+        private static readonly string _commandOfToHide = "settings put global policy_control immersive.navigation=*";
         private static readonly string _commandOfUnhide = "settings put global policy_control null";
         private ShellOutput Result;
         protected override OutputData MainMethod(ToolKit<VirtualButtonHiderArgs> toolKit)

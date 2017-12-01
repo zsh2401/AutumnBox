@@ -12,6 +12,8 @@
     <s:String x:Key="rbtnFlashAllExceptStorageAndData">保留内部存储和Data分区</s:String>
     <s:String x:Key="btnCreateShortcut">创建快捷方式到桌面</s:String>
     <s:String x:Key="btnVBHide">隐藏虚拟键</s:String>
+    <s:String x:Key="btnCopy">复制</s:String>
+    <s:String x:Key="btnCopied">已复制</s:String>
     <s:String x:Key="btnTapEmu">模拟点击</s:String>
     <s:String x:Key="btnDeleteScreenLock">解除屏幕锁</s:String>
     <s:String x:Key="btnRebootToSnapdragon9008">重启到高通9008救砖模式</s:String>
