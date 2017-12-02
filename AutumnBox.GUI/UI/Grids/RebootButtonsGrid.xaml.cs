@@ -80,7 +80,7 @@ namespace AutumnBox.GUI.UI.Grids
                 rebootOption = RebootOptions.System,
                 nowStatus = App.SelectedDevice.Status
             });
-            fmp.Finished += App.OwnerWindow.FuncFinish;
+            fmp.Finished += ((MainWindow)App.Current.MainWindow).FuncFinish;
             fmp.AsyncRun();
         }
 
@@ -91,7 +91,7 @@ namespace AutumnBox.GUI.UI.Grids
                 rebootOption = RebootOptions.Recovery,
                 nowStatus = App.SelectedDevice.Status
             });
-            fmp.Finished += App.OwnerWindow.FuncFinish;
+            fmp.Finished += ((MainWindow)App.Current.MainWindow).FuncFinish;
             fmp.AsyncRun();
         }
 
@@ -102,14 +102,14 @@ namespace AutumnBox.GUI.UI.Grids
                 rebootOption = RebootOptions.Bootloader,
                 nowStatus = App.SelectedDevice.Status
             });
-            fmp.Finished += App.OwnerWindow.FuncFinish;
+            fmp.Finished += ((MainWindow)App.Current.MainWindow).FuncFinish;
             fmp.AsyncRun();
         }
 
         private void ButtonRebootToSnapdragon9008_Click(object sender, RoutedEventArgs e)
         {
             bool _needToContinue = ChoiceBox.FastShow(
-                App.OwnerWindow,
+                App.Current.MainWindow,
                 UIHelper.GetString("msgNotice"),
                 UIHelper.GetString("msgNoticeForRebootToEdlLine1") + "\n" +
                 UIHelper.GetString("msgNoticeForRebootToEdlLine2") + "\n" +
@@ -122,7 +122,7 @@ namespace AutumnBox.GUI.UI.Grids
                 rebootOption = RebootOptions.Snapdragon9008,
                 nowStatus = App.SelectedDevice.Status
             });
-            fmp.Finished += App.OwnerWindow.FuncFinish;
+            fmp.Finished += ((MainWindow)App.Current.MainWindow).FuncFinish;
             fmp.AsyncRun();
         }
     }

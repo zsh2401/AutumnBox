@@ -22,6 +22,7 @@ using AutumnBox.GUI.UI.Grids;
 using AutumnBox.GUI.Windows;
 using AutumnBox.Support.CstmDebug;
 using System;
+using System.Diagnostics;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
@@ -32,12 +33,12 @@ namespace AutumnBox.GUI
     /// <summary>
     /// Window1.xaml 的交互逻辑
     /// </summary>
-    public partial class StartWindow : Window, ILogSender
+    public sealed partial class MainWindow : Window, ILogSender
     {
         private Object setUILock = new System.Object();
         public string LogTag => "Main Window";
         public bool IsShowLog => true;
-        public StartWindow()
+        public MainWindow()
         {
             InitializeComponent();
             App.DevicesListener.DevicesChanged += DevicesChanged;
@@ -91,10 +92,6 @@ namespace AutumnBox.GUI
             TitleBar.Title.Content += "  " + SystemHelper.CurrentVersion + "-Release";
 #endif
         }
-        public void Test()
-        {
-            new ChoiceGrid(this.GridToolsMain).Show();
-        }
         public ChoiceGrid.ChoiceResult ShowChoiceGrid(string title, string content, string btnLeftText = null, string btnRightText = null)
         {
             return ChoiceGrid.ChoiceResult.Cancel;
@@ -135,7 +132,7 @@ namespace AutumnBox.GUI
             //哦,如果是第一次启动本软件,那么就显示一下提示吧!
             if (Config.IsFirstLaunch)
             {
-                MMessageBox.FastShow(App.OwnerWindow, FindResource("NoticeOnlyOne").ToString(), App.Current.Resources["msgFristLaunchNotice"].ToString());
+                MMessageBox.FastShow(App.Current.MainWindow, FindResource("NoticeOnlyOne").ToString(), App.Current.Resources["msgFristLaunchNotice"].ToString());
                 Config.IsFirstLaunch = false;
             }
             //开始获取公告
@@ -182,6 +179,34 @@ namespace AutumnBox.GUI
                 App.SelectedDevice = new DeviceBasicInfo() { Status = DeviceStatus.None };
             }
             RefreshUI();
+        }
+        private void ButtonLinkHelp_Click(object sender, RoutedEventArgs e)
+        {
+            new LinkHelpWindow().Show();
+        }
+
+        private void ButtonStartShell_Click(object sender, RoutedEventArgs e)
+        {
+            ProcessStartInfo info = new ProcessStartInfo
+            {
+                WorkingDirectory = "adb/",
+                FileName = "cmd.exe"
+            };
+            if (SystemHelper.IsWin10)
+            {
+                if (ChoiceBox.FastShow(this, App.Current.Resources["Notice"].ToString(), App.Current.Resources["msgShellChoiceTip"].ToString(), "Powershell", "CMD"))
+                {
+                    info.FileName = "powershell.exe";
+                }
+            }
+            Process.Start(info);
+        }
+
+        private void btnHelp_Click(object sender, RoutedEventArgs e)
+        {
+            ////ChoiceGrid.Show();
+            //new ChoiceGrid(this.GridToolsMain).Show();
+            Process.Start(Urls.HELP_PAGE);
         }
     }
 }

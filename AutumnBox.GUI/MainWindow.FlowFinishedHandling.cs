@@ -19,7 +19,7 @@ using AutumnBox.Basic.FlowFramework;
 
 namespace AutumnBox.GUI
 {
-    partial class StartWindow
+    partial class MainWindow
     {
         public void FlowFinished(object sender, FinishedEventArgs<FlowResult> e)
         {

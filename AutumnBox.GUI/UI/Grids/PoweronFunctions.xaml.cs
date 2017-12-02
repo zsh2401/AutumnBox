@@ -48,7 +48,7 @@ namespace AutumnBox.GUI.UI.Grids
             {
                 return DeviceInfoHelper.IsInstalled(App.SelectedDevice, Basic.Flows.BreventServiceActivator.AppPackageName);
             });
-            if (isInstallThisApp == false) { MMessageBox.FastShow(App.OwnerWindow, UIHelper.GetString("Warning"), UIHelper.GetString("msgPlsInstallBreventFirst")); return; }
+            if (isInstallThisApp == false) { MMessageBox.FastShow(App.Current.MainWindow, UIHelper.GetString("Warning"), UIHelper.GetString("msgPlsInstallBreventFirst")); return; }
             /*开始操作*/
             Basic.Flows.BreventServiceActivator bsa = new Basic.Flows.BreventServiceActivator();
             bsa.Init(new FlowArgs() { DevBasicInfo = App.SelectedDevice });
@@ -66,7 +66,7 @@ namespace AutumnBox.GUI.UI.Grids
             if (fileDialog.ShowDialog() == true)
             {
                 var fmp = FunctionModuleProxy.Create<Basic.Function.Modules.FileSender>(new FileSenderArgs(App.SelectedDevice) { FilePath = fileDialog.FileName });
-                fmp.Finished += App.OwnerWindow.FuncFinish;
+                fmp.Finished += ((MainWindow)App.Current.MainWindow).FuncFinish;
                 fmp.AsyncRun();
                 new FileSendingWindow(fmp).ShowDialog();
             }
@@ -83,12 +83,13 @@ namespace AutumnBox.GUI.UI.Grids
             fileDialog.Title = App.Current.Resources["SelecteAFile"].ToString();
             fileDialog.Filter = "安卓安装包ApkFile(*.apk)|*.apk";
             fileDialog.Multiselect = true;
-           
+
             if (fileDialog.ShowDialog() == true)
             {
                 Basic.Flows.ApkInstaller installer = new Basic.Flows.ApkInstaller();
                 List<FileInfo> files = new List<FileInfo>();
-                foreach (string fileName in fileDialog.FileNames) {
+                foreach (string fileName in fileDialog.FileNames)
+                {
                     files.Add(new FileInfo(fileName));
                 }
                 var args = new ApkInstallerArgs()
@@ -97,7 +98,7 @@ namespace AutumnBox.GUI.UI.Grids
                     Files = files,
                 };
                 installer.Init(args);
-                new ApkInstallingWindow(installer,files).ShowDialog();
+                new ApkInstallingWindow(installer, files).ShowDialog();
             }
             else
             {
@@ -111,7 +112,7 @@ namespace AutumnBox.GUI.UI.Grids
             if (fbd.ShowDialog() == DialogResult.OK)
             {
                 var fmp = FunctionModuleProxy.Create<ScreenShoter>(new ScreenShoterArgs(App.SelectedDevice) { LocalPath = fbd.SelectedPath });
-                fmp.Finished += App.OwnerWindow.FuncFinish;
+                fmp.Finished += ((MainWindow)App.Current.MainWindow).FuncFinish;
                 fmp.AsyncRun();
                 UIHelper.ShowRateBox(fmp);
             }
@@ -123,24 +124,33 @@ namespace AutumnBox.GUI.UI.Grids
 
         private void ButtonUnlockMiSystem_Click(object sender, RoutedEventArgs e)
         {
-            if (!ChoiceBox.FastShow(FindResource("Notice").ToString(), FindResource("msgUnlockXiaomiSystemTip").ToString())) return;
-            MMessageBox.FastShow(App.OwnerWindow, FindResource("Notice").ToString(), FindResource("msgIfAllOK").ToString());
-            var fmp = FunctionModuleProxy.Create<XiaomiBootloaderRelocker>(new ModuleArgs(App.SelectedDevice));
-            fmp.Finished += App.OwnerWindow.FuncFinish;
-            fmp.AsyncRun();
-            UIHelper.ShowRateBox(fmp);
+            var choiceGrid = new ChoiceGrid(((MainWindow)App.Current.MainWindow).GridToolsMain,
+                new ChoiceGrid.ChoiceData()
+                {
+                    Title = FindResource("Notice").ToString(),
+                    Text = FindResource("msgUnlockSystemTip").ToString()
+                });
+            choiceGrid.Show((r) =>
+            {
+                if (r == ChoiceGrid.ChoiceResult.Right)
+                {
+                    var fmp = FunctionModuleProxy.Create<SystemUnlocker>(new ModuleArgs(App.SelectedDevice));
+                    fmp.Finished += ((MainWindow)App.Current.MainWindow).FuncFinish;
+                    fmp.AsyncRun();
+                    UIHelper.ShowRateBox(fmp);
+                }
+            });
         }
 
 
         private void ButtonChangeDpi_Click(object sender, RoutedEventArgs e)
         {
-            DpiChangeWindow.FastShow(App.OwnerWindow);
-            //MMessageBox.ShowDialog(FindResource("Notice").ToString(), DeviceInfoHelper.GetDpi(App.SelectedDevice).ToString());
+            DpiChangeWindow.FastShow(App.Current.MainWindow);
         }
 
         private void ButtonFullBackup_Click(object sender, RoutedEventArgs ex)
         {
-            MMessageBox.FastShow(App.OwnerWindow, UIHelper.GetString("msgNotice"), UIHelper.GetString("msgNoticeForAndroidFullBackupRemove"));
+            MMessageBox.FastShow(App.Current.MainWindow, UIHelper.GetString("msgNotice"), UIHelper.GetString("msgNoticeForAndroidFullBackupRemove"));
             //bool _screenIsOpen = ChoiceBox.FastShow(App.OwnerWindow,
             //    UIHelper.GetString("msgNotice"), 
             //    UIHelper.GetString("msgOpenTheScreenPls"),
@@ -155,9 +165,9 @@ namespace AutumnBox.GUI.UI.Grids
 
         private void ButtonExtractBootImg_Click(object sender, RoutedEventArgs e)
         {
-            if (!App.OwnerWindow.DevInfoPanel.CurrentDeviceIsRoot)
+            if (!((MainWindow)App.Current.MainWindow).DevInfoPanel.CurrentDeviceIsRoot)
             {
-                if (!ChoiceBox.FastShow(App.OwnerWindow, App.Current.Resources["Warning"].ToString(), App.Current.Resources["warrningNeedRootAccess"].ToString())) return;
+                if (!ChoiceBox.FastShow(App.Current.MainWindow, App.Current.Resources["Warning"].ToString(), App.Current.Resources["warrningNeedRootAccess"].ToString())) return;
             }
             FolderBrowserDialog fbd = new FolderBrowserDialog
             {
@@ -166,16 +176,16 @@ namespace AutumnBox.GUI.UI.Grids
             if (fbd.ShowDialog() != DialogResult.OK) return;
             FunctionModuleProxy fmp =
                 FunctionModuleProxy.Create<ImageExtractor>(new ImgExtractArgs(App.SelectedDevice) { ExtractImage = Images.Boot, SavePath = fbd.SelectedPath });
-            fmp.Finished += App.OwnerWindow.FuncFinish;
+            fmp.Finished += ((MainWindow)App.Current.MainWindow).FuncFinish;
             fmp.AsyncRun();
             UIHelper.ShowRateBox(fmp);
         }
 
         private void ButtonExtractRecImg_Click(object sender, RoutedEventArgs e)
         {
-            if (!App.OwnerWindow.DevInfoPanel.CurrentDeviceIsRoot)
+            if (!((MainWindow)App.Current.MainWindow).DevInfoPanel.CurrentDeviceIsRoot)
             {
-                if (!ChoiceBox.FastShow(App.OwnerWindow, App.Current.Resources["Warning"].ToString(), App.Current.Resources["warrningNeedRootAccess"].ToString())) return;
+                if (!ChoiceBox.FastShow(App.Current.MainWindow, App.Current.Resources["Warning"].ToString(), App.Current.Resources["warrningNeedRootAccess"].ToString())) return;
             }
             FolderBrowserDialog fbd = new FolderBrowserDialog
             {
@@ -184,16 +194,16 @@ namespace AutumnBox.GUI.UI.Grids
             if (fbd.ShowDialog() != DialogResult.OK) return;
             FunctionModuleProxy fmp =
                 FunctionModuleProxy.Create<ImageExtractor>(new ImgExtractArgs(App.SelectedDevice) { ExtractImage = Images.Recovery, SavePath = fbd.SelectedPath });
-            fmp.Finished += App.OwnerWindow.FuncFinish;
+            fmp.Finished += ((MainWindow)App.Current.MainWindow).FuncFinish;
             fmp.AsyncRun();
             UIHelper.ShowRateBox(fmp);
         }
 
         private void ButtonFlashBootImg_Click(object sender, RoutedEventArgs e)
         {
-            if (!App.OwnerWindow.DevInfoPanel.CurrentDeviceIsRoot)
+            if (!((MainWindow)App.Current.MainWindow).DevInfoPanel.CurrentDeviceIsRoot)
             {
-                if (!ChoiceBox.FastShow(App.OwnerWindow, App.Current.Resources["Warning"].ToString(), App.Current.Resources["warrningNeedRootAccess"].ToString())) return;
+                if (!ChoiceBox.FastShow(((MainWindow)App.Current.MainWindow), App.Current.Resources["Warning"].ToString(), App.Current.Resources["warrningNeedRootAccess"].ToString())) return;
             }
             Microsoft.Win32.OpenFileDialog fileDialog = new Microsoft.Win32.OpenFileDialog();
             fileDialog.Reset();
@@ -203,7 +213,7 @@ namespace AutumnBox.GUI.UI.Grids
             if (fileDialog.ShowDialog() == true)
             {
                 var fmp = FunctionModuleProxy.Create<ImageFlasher>(new ImgFlasherArgs(App.SelectedDevice) { ImgPath = fileDialog.FileName, ImgType = Images.Boot });
-                fmp.Finished += App.OwnerWindow.FuncFinish;
+                fmp.Finished += ((MainWindow)App.Current.MainWindow).FuncFinish;
                 fmp.AsyncRun();
                 UIHelper.ShowRateBox(fmp);
             }
@@ -211,27 +221,27 @@ namespace AutumnBox.GUI.UI.Grids
 
         private void ButtonDeleteScreenLock_Click(object sender, RoutedEventArgs e)
         {
-            if (!App.OwnerWindow.DevInfoPanel.CurrentDeviceIsRoot)
+            if (!((MainWindow)App.Current.MainWindow).DevInfoPanel.CurrentDeviceIsRoot)
             {
-                if (!ChoiceBox.FastShow(App.OwnerWindow, App.Current.Resources["Warning"].ToString(), App.Current.Resources["warrningNeedRootAccess"].ToString())) return;
+                if (!ChoiceBox.FastShow(((MainWindow)App.Current.MainWindow), App.Current.Resources["Warning"].ToString(), App.Current.Resources["warrningNeedRootAccess"].ToString())) return;
             }
-            if (!ChoiceBox.FastShow(App.OwnerWindow, App.Current.Resources["Warning"].ToString(), App.Current.Resources["msgDelScreenLock"].ToString())) return;
+            if (!ChoiceBox.FastShow(((MainWindow)App.Current.MainWindow), App.Current.Resources["Warning"].ToString(), App.Current.Resources["msgDelScreenLock"].ToString())) return;
             FunctionModuleProxy fmp = FunctionModuleProxy.Create<ScreenLockDeleter>(new ModuleArgs(App.SelectedDevice));
-            fmp.Finished += App.OwnerWindow.FuncFinish;
+            fmp.Finished += ((MainWindow)App.Current.MainWindow).FuncFinish;
             fmp.AsyncRun();
             UIHelper.ShowRateBox();
         }
 
         private void ButtonFullBackup_Copy_Click(object sender, RoutedEventArgs e)
         {
-            MMessageBox.FastShow(App.OwnerWindow, App.Current.Resources["Notice"].ToString(), App.Current.Resources["msgFunctionIsInTheDeveloping"].ToString());
+            MMessageBox.FastShow(((MainWindow)App.Current.MainWindow), App.Current.Resources["Notice"].ToString(), App.Current.Resources["msgFunctionIsInTheDeveloping"].ToString());
         }
 
         private void ButtonFlashRecImg_Click(object sender, RoutedEventArgs e)
         {
-            if (!App.OwnerWindow.DevInfoPanel.CurrentDeviceIsRoot)
+            if (!((MainWindow)App.Current.MainWindow).DevInfoPanel.CurrentDeviceIsRoot)
             {
-                if (!ChoiceBox.FastShow(App.OwnerWindow, App.Current.Resources["Warning"].ToString(), App.Current.Resources["warrningNeedRootAccess"].ToString())) return;
+                if (!ChoiceBox.FastShow(((MainWindow)App.Current.MainWindow), App.Current.Resources["Warning"].ToString(), App.Current.Resources["warrningNeedRootAccess"].ToString())) return;
             }
             Microsoft.Win32.OpenFileDialog fileDialog = new Microsoft.Win32.OpenFileDialog();
             fileDialog.Reset();
@@ -241,7 +251,7 @@ namespace AutumnBox.GUI.UI.Grids
             if (fileDialog.ShowDialog() == true)
             {
                 var fmp = FunctionModuleProxy.Create<ImageFlasher>(new ImgFlasherArgs(App.SelectedDevice) { ImgPath = fileDialog.FileName, ImgType = Images.Recovery });
-                fmp.Finished += App.OwnerWindow.FuncFinish;
+                fmp.Finished += ((MainWindow)App.Current.MainWindow).FuncFinish;
                 fmp.AsyncRun();
                 UIHelper.ShowRateBox(fmp);
             }
@@ -255,9 +265,9 @@ namespace AutumnBox.GUI.UI.Grids
             {
                 return DeviceInfoHelper.IsInstalled(App.SelectedDevice, Basic.Flows.IceBoxActivator.AppPackageName);
             });
-            if (isInstallThisApp == false) { MMessageBox.FastShow(App.OwnerWindow, UIHelper.GetString("Warning"), UIHelper.GetString("msgPlsInstallIceBoxFirst")); return; }
+            if (isInstallThisApp == false) { MMessageBox.FastShow(App.Current.MainWindow, UIHelper.GetString("Warning"), UIHelper.GetString("msgPlsInstallIceBoxFirst")); return; }
             /*提示用户删除账户*/
-            bool _continue = ChoiceBox.FastShow(App.OwnerWindow,
+            bool _continue = ChoiceBox.FastShow((App.Current.MainWindow),
                 UIHelper.GetString("msgNotice"),
                 $"{UIHelper.GetString("msgIceActLine1")}\n{UIHelper.GetString("msgIceActLine2")}\n{UIHelper.GetString("msgIceActLine3")}", UIHelper.GetString("btnContinue"), UIHelper.GetString("btnCancel"));
             if (!_continue) return;
@@ -274,9 +284,9 @@ namespace AutumnBox.GUI.UI.Grids
             {
                 return DeviceInfoHelper.IsInstalled(App.SelectedDevice, AirForzenActivator.AppPackageName);
             });
-            if (isInstallThisApp == false) { MMessageBox.FastShow(App.OwnerWindow, UIHelper.GetString("Warning"), UIHelper.GetString("msgPlsInstallAirForzenFirst")); return; }
+            if (isInstallThisApp == false) { MMessageBox.FastShow(App.Current.MainWindow, UIHelper.GetString("Warning"), UIHelper.GetString("msgPlsInstallAirForzenFirst")); return; }
             /*提示用户删除账户*/
-            bool _continue = ChoiceBox.FastShow(App.OwnerWindow,
+            bool _continue = ChoiceBox.FastShow(App.Current.MainWindow,
                  UIHelper.GetString("msgNotice"),
                 $"{UIHelper.GetString("msgIceActLine1")}\n{UIHelper.GetString("msgIceActLine2")}\n{UIHelper.GetString("msgIceActLine3")}", UIHelper.GetString("btnContinue"), UIHelper.GetString("btnCancel"));
             if (!_continue) return;
@@ -294,7 +304,7 @@ namespace AutumnBox.GUI.UI.Grids
             {
                 return DeviceInfoHelper.IsInstalled(App.SelectedDevice, ShizukuManagerActivator.AppPackageName);
             });
-            if (isInstallThisApp == false) { MMessageBox.FastShow(App.OwnerWindow, UIHelper.GetString("Warning"), UIHelper.GetString("msgPlsInstallShizukuManagerFirst")); return; }
+            if (isInstallThisApp == false) { MMessageBox.FastShow(App.Current.MainWindow, UIHelper.GetString("Warning"), UIHelper.GetString("msgPlsInstallShizukuManagerFirst")); return; }
             /*开始操作*/
             ShizukuManagerActivator shizukuManagerActivator = new ShizukuManagerActivator();
             shizukuManagerActivator.Init(new FlowArgs() { DevBasicInfo = App.SelectedDevice });
@@ -309,9 +319,9 @@ namespace AutumnBox.GUI.UI.Grids
             {
                 return DeviceInfoHelper.IsInstalled(App.SelectedDevice, IslandActivator.AppPackageName);
             });
-            if (isInstallThisApp == false) { MMessageBox.FastShow(App.OwnerWindow, UIHelper.GetString("Warning"), UIHelper.GetString("msgPlsInstallIslandFirst")); return; }
+            if (isInstallThisApp == false) { MMessageBox.FastShow(App.Current.MainWindow, UIHelper.GetString("Warning"), UIHelper.GetString("msgPlsInstallIslandFirst")); return; }
             /*提示用户删除账户*/
-            bool _continue = ChoiceBox.FastShow(App.OwnerWindow,
+            bool _continue = ChoiceBox.FastShow(App.Current.MainWindow,
                  UIHelper.GetString("msgNotice"),
                 $"{UIHelper.GetString("msgIceActLine1")}\n{UIHelper.GetString("msgIceActLine2")}\n{UIHelper.GetString("msgIceActLine3")}", UIHelper.GetString("btnContinue"), UIHelper.GetString("btnCancel"));
             if (!_continue) return;

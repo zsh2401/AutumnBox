@@ -30,19 +30,19 @@ namespace AutumnBox.GUI.Windows
         {
             InitializeComponent();
             BtnCancel.Visibility = Visibility.Hidden;
-            this.Owner = App.OwnerWindow;
+            this.Owner = App.Current.MainWindow;
         }
         public RateBox(FunctionModuleProxy fmp)
         {
             InitializeComponent();
             this.ModuleProxy = fmp;
-            this.Owner = App.OwnerWindow;
+            this.Owner = App.Current.MainWindow;
         }
         public RateBox(IForceStoppable stoppable)
         {
             InitializeComponent();
             this.stoppable = stoppable;
-            this.Owner = App.OwnerWindow;
+            this.Owner = App.Current.MainWindow;
         }
         private void Grid_MouseMove(object sender, MouseEventArgs e)
         {

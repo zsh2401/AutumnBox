@@ -25,7 +25,7 @@ namespace AutumnBox.GUI.Windows
     {
         public LinkHelpWindow()
         {
-            this.Owner = App.OwnerWindow;
+            this.Owner = App.Current.MainWindow;
             InitializeComponent();
         }
         private void imageClose_MouseEnter(object sender, MouseEventArgs e)
@@ -40,7 +40,8 @@ namespace AutumnBox.GUI.Windows
 
         private void labelTitle_MouseMove(object sender, MouseEventArgs e)
         {
-            if (e.LeftButton == MouseButtonState.Pressed) {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
                 this.DragMove();
             }
         }

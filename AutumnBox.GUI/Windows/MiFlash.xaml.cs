@@ -83,7 +83,7 @@ namespace AutumnBox.GUI.Windows
         {
             if (TextBoxPath.Text == App.Current.Resources["PleaseSelectFloderPackageWireFlash"].ToString())
             {
-                MMessageBox.FastShow(App.OwnerWindow, App.Current.Resources["Warning"].ToString(), App.Current.Resources["PleaseSelectFloderPackageWireFlash"].ToString());
+                MMessageBox.FastShow(App.Current.MainWindow, App.Current.Resources["Warning"].ToString(), App.Current.Resources["PleaseSelectFloderPackageWireFlash"].ToString());
                 return false;
             }
             Fmp = FunctionModuleProxy.Create(typeof(Basic.Function.Modules.MiFlash),
@@ -135,7 +135,7 @@ namespace AutumnBox.GUI.Windows
                 }
                 else
                 {
-                    MMessageBox.FastShow(App.OwnerWindow, App.Current.Resources["Warning"].ToString(), App.Current.Resources["msgMiFlashFloderError"].ToString());
+                    MMessageBox.FastShow(App.Current.MainWindow, App.Current.Resources["Warning"].ToString(), App.Current.Resources["msgMiFlashFloderError"].ToString());
                 }
             }
         }

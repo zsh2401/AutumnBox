@@ -29,11 +29,16 @@ namespace AutumnBox.GUI.UI.Grids
         }
         public class ChoiceData
         {
-            public string Title { get; set; } = "Title";
+            public string Title { get; set; }
             public string Text { get; set; } = "Text";
-            public string TextBtnLeft { get; set; } = "Left";
-            public string TextBtnRight { get; set; } = "Right";
+            public string TextBtnLeft { get; set; }
+            public string TextBtnRight { get; set; }
             public bool CanCancel { get; set; } = true;
+            public ChoiceData() {
+                Title = App.Current.Resources["Notice"].ToString();
+                TextBtnLeft = App.Current.Resources["btnCancel"].ToString();
+                TextBtnRight = App.Current.Resources["btnContinue"].ToString();
+            }
         }
         public class HidedEventArgs : EventArgs {
 			public ChoiceResult Result { get; internal set; }

@@ -4,7 +4,7 @@
     xmlns:local="clr-namespace:AutumnBox.GUI">
 
 
-    <Style TargetType="{x:Type local:CustomControl1}">
+    <!--<Style TargetType="{x:Type local:CustomControl1}">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:CustomControl1}">
@@ -15,5 +15,5 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-    </Style>
+    </Style>-->
 </ResourceDictionary>

@@ -25,7 +25,7 @@ namespace AutumnBox.GUI
     /// <summary>
     /// 各种界面事件
     /// </summary>
-    public partial class StartWindow
+    public partial class MainWindow
     {
         /// <summary>
         /// 通用事件处理
@@ -60,7 +60,7 @@ namespace AutumnBox.GUI
                         RelockMiFinish(e);
                         break;
                     case nameof(AndroidFullBackup):
-                        MMessageBox.FastShow(App.OwnerWindow, UIHelper.GetString("msgNotice"), UIHelper.GetString("msgLookTheScreen"));
+                        MMessageBox.FastShow(App.Current.MainWindow, UIHelper.GetString("msgNotice"), UIHelper.GetString("msgLookTheScreen"));
                         break;
                     default:
                         ModuleResultWindow.FastShow(e.Result);
@@ -129,7 +129,7 @@ namespace AutumnBox.GUI
             Logger.D("Enter the Push Finish Handler in the GUI");
             if (e.Result.Level == ResultLevel.Successful)
             {
-                MMessageBox.FastShow(App.OwnerWindow, Application.Current.Resources["Notice"].ToString(), Application.Current.FindResource("msgPushOK").ToString());
+                MMessageBox.FastShow(App.Current.MainWindow, Application.Current.Resources["Notice"].ToString(), Application.Current.FindResource("msgPushOK").ToString());
             }
             else
             {
@@ -151,7 +151,7 @@ namespace AutumnBox.GUI
             {
                 UIHelper.CloseRateBox();
             }));
-            MMessageBox.FastShow(App.OwnerWindow, Application.Current.FindResource("Notice").ToString(), Application.Current.FindResource("msgFlashOK").ToString());
+            MMessageBox.FastShow(App.Current.MainWindow, Application.Current.FindResource("Notice").ToString(), Application.Current.FindResource("msgFlashOK").ToString());
         }
     }
 }

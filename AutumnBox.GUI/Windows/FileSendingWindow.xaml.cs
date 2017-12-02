@@ -33,7 +33,7 @@ namespace AutumnBox.GUI.Windows
         Regex rg3 = new Regex("\\[(.*?)\\%");
         public FileSendingWindow(FunctionModuleProxy fmp)
         {
-            this.Owner = App.OwnerWindow;
+            this.Owner = App.Current.MainWindow;
             this.ModuleProxy = fmp;
             fmp.Finished += (s, e) =>
             {

@@ -28,7 +28,6 @@ namespace AutumnBox.GUI
     /// </summary>
     public partial class App : Application
     {
-        internal static StartWindow OwnerWindow { get { return (Current.MainWindow as StartWindow); } }
         internal static DeviceBasicInfo SelectedDevice = new DeviceBasicInfo() { Status = DeviceStatus.None };
         internal static DevicesMonitor DevicesListener = new DevicesMonitor();//设备监听器
         protected override void OnStartup(StartupEventArgs e)

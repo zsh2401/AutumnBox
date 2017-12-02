@@ -36,7 +36,7 @@ namespace AutumnBox.GUI.Windows
             baiduUrl = e.BaiduPanUrl;
             version = e.Version.ToString();
             githubUrl = e.GithubReleaseUrl;
-            Owner = App.OwnerWindow;
+            Owner = App.Current.MainWindow;
         }
         public static void FastShow(UpdateCheckResult e)
         {

@@ -14,6 +14,7 @@
 using AutumnBox.Basic.FlowFramework;
 using AutumnBox.Basic.Function;
 using AutumnBox.GUI.Cfg;
+using AutumnBox.GUI.UI.Grids;
 using AutumnBox.GUI.Windows;
 using System.Threading.Tasks;
 using System.Windows;
@@ -37,7 +38,7 @@ namespace AutumnBox.GUI.Helper
         public static void SetOwnerTransparency(byte A)
         {
             Color now = ((SolidColorBrush)App.Current.Resources["BackBrush"]).Color;
-            App.OwnerWindow.Background = new SolidColorBrush(Color.FromArgb(A, now.R, now.G, now.B));
+            App.Current.MainWindow.Background = new SolidColorBrush(Color.FromArgb(A, now.R, now.G, now.B));
         }
         /// <summary>
         /// 设置一个grid下的所有button的开启与否

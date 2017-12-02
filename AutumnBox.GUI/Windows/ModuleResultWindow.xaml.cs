@@ -52,7 +52,7 @@ namespace AutumnBox.GUI.Windows
         {
             new ModuleResultWindow(result)
             {
-                Owner = App.OwnerWindow,
+                Owner = App.Current.MainWindow,
             }.ShowDialog();
         }
 

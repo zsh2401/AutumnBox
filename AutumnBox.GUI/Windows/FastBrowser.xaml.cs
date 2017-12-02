@@ -22,7 +22,7 @@ namespace AutumnBox.GUI.Windows
         public FastBrowser(string url = "https://www.baidu.com")
         {
             InitializeComponent();
-            this.Owner = App.OwnerWindow;
+            this.Owner = App.Current.MainWindow;
             MainBrowser.Navigate(new Uri(url));
         }
     }

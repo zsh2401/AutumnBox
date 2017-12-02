@@ -208,10 +208,9 @@
     <Compile Include="Windows\LinkHelpWindow.xaml.cs">
       <DependentUpon>LinkHelpWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="StartWindow\StartWindow._BtnClickHandler.cs" />
-    <Compile Include="StartWindow\StartWindow.FuncModuleEventHandler.cs" />
-    <Compile Include="StartWindow\StartWindow.xaml.cs">
-      <DependentUpon>StartWindow.xaml</DependentUpon>
+    <Compile Include="MainWindow.FuncModuleEventHandler.cs" />
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\MiFlash.xaml.cs">
       <DependentUpon>MiFlash.xaml</DependentUpon>
@@ -249,7 +248,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <Compile Include="StartWindow\StartWindow.FlowFinishedHandling.cs" />
+    <Compile Include="MainWindow.FlowFinishedHandling.cs" />
     <Compile Include="UI\Grids\ChoiceGrid.InternalClasses.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -354,7 +353,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="StartWindow\StartWindow.xaml">
+    <Page Include="MainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

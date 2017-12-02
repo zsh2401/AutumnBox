@@ -23,7 +23,7 @@ namespace AutumnBox.GUI.Windows
         public DonateWindow()
         {
             InitializeComponent();
-            this.Owner = App.OwnerWindow;
+            this.Owner = App.Current.MainWindow;
             TitleBar.OwnerWindow = this;
             TitleBar.ImgMin.Visibility = Visibility.Hidden;
         }

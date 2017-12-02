@@ -47,7 +47,7 @@ namespace AutumnBox.GUI.UI.Grids
             if (fileDialog.ShowDialog() == true)
             {
                 var fmp = FunctionModuleProxy.Create<FileSender>(new FileSenderArgs(App.SelectedDevice) { FilePath = fileDialog.FileName });
-                fmp.Finished += App.OwnerWindow.FuncFinish;
+                fmp.Finished += ((MainWindow)App.Current.MainWindow).FuncFinish;
                 fmp.AsyncRun();
                 new FileSendingWindow(fmp).ShowDialog();
             }

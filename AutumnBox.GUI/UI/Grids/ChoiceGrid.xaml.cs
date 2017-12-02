@@ -38,9 +38,14 @@ namespace AutumnBox.GUI.UI.Grids
         };
         private ChoiceResult _result = ChoiceResult.Left;
         private readonly Grid _father;
-        public ChoiceGrid(Grid father, ChoiceData data = null)
+        private Action<ChoiceResult> _callback;
+        public ChoiceGrid(Grid father, ChoiceData data)
         {
             InitializeComponent();
+            BtnLeft.Content = data.TextBtnLeft;
+            BtnRight.Content = data.TextBtnRight;
+            TBTitle.Text = data.Title;
+            TBContent.Text = data.Text;
             _father = father;
             _father.Children.Add(this);
             this.Height = _father.ActualHeight;
@@ -48,7 +53,6 @@ namespace AutumnBox.GUI.UI.Grids
             SetTop(_father.ActualHeight);
             _hideAnimation.To = new Thickness(0, _father.ActualHeight, 0, 0);
         }
-
         private void SetTop(double topValue)
         {
             var margin = this.Margin;
@@ -56,8 +60,9 @@ namespace AutumnBox.GUI.UI.Grids
             this.Margin = margin;
         }
 
-        public void Show()
+        public void Show(Action<ChoiceResult> callback)
         {
+            this._callback = callback;
             this.BeginAnimation(MarginProperty, _riseAnimation);
         }
 
@@ -82,16 +87,13 @@ namespace AutumnBox.GUI.UI.Grids
         private void BtnRight_Click(object sender, RoutedEventArgs e)
         {
             Hide();
+            _callback?.Invoke(ChoiceResult.Right);
         }
 
         private void BtnLeft_Click(object sender, RoutedEventArgs e)
         {
             Hide();
-        }
-
-        private void Image_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            Hide();
+            _callback?.Invoke(ChoiceResult.Left);
         }
     }
 }

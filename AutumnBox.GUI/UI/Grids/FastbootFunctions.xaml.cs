@@ -46,7 +46,7 @@ namespace AutumnBox.GUI.UI.Grids
             if (fileDialog.ShowDialog() == true)
             {
                 var fmp = FunctionModuleProxy.Create<CustomRecoveryFlasher>(new FileArgs(App.SelectedDevice) { files = new string[] { fileDialog.FileName } });
-                fmp.Finished += App.OwnerWindow.FuncFinish;
+                fmp.Finished += ((MainWindow)App.Current.MainWindow).FuncFinish;
                 fmp.AsyncRun();
                 UIHelper.ShowRateBox(fmp);
             }
@@ -66,7 +66,7 @@ namespace AutumnBox.GUI.UI.Grids
             if (!ChoiceBox.FastShow(App.Current.Resources["Warning"].ToString(), App.Current.Resources["msgRelockWarning"].ToString())) return;
             if (!ChoiceBox.FastShow(App.Current.Resources["Warning"].ToString(), App.Current.Resources["msgRelockWarningAgain"].ToString())) return;
             var fmp = FunctionModuleProxy.Create<XiaomiBootloaderRelocker>(new ModuleArgs(App.SelectedDevice));
-            fmp.Finished += App.OwnerWindow.FuncFinish;
+            fmp.Finished += ((MainWindow)App.Current.MainWindow).FuncFinish;
             fmp.AsyncRun();
             UIHelper.ShowRateBox(fmp);
         }
