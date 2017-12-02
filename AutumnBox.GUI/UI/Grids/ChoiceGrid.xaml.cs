@@ -99,5 +99,15 @@ namespace AutumnBox.GUI.UI.Grids
                 this.Dispatcher.Invoke(() => { _callback?.Invoke(ChoiceResult.Left); });
             });
         }
+
+        private void Image_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            this.Hide();
+            Task.Run(() =>
+            {
+                Thread.Sleep(AnimationLength);
+                this.Dispatcher.Invoke(() => { _callback?.Invoke(ChoiceResult.Cancel); });
+            });
+        }
     }
 }

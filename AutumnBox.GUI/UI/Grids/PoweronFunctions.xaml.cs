@@ -13,6 +13,7 @@ using AutumnBox.Basic.FlowFramework;
 using AutumnBox.Basic.Flows;
 using System.IO;
 using System.Collections.Generic;
+using AutumnBox.Support.CstmDebug;
 
 namespace AutumnBox.GUI.UI.Grids
 {
@@ -124,15 +125,14 @@ namespace AutumnBox.GUI.UI.Grids
 
         private void ButtonUnlockMiSystem_Click(object sender, RoutedEventArgs e)
         {
-            var choiceGrid = new ChoiceGrid(((MainWindow)App.Current.MainWindow).GridToolsMain,
-                new ChoiceGrid.ChoiceData()
-                {
-                    Title = FindResource("msgNotice").ToString(),
-                    Text = FindResource("msgUnlockSystemTip").ToString(),
-                });
-            choiceGrid.Show((r) =>
+            UIHelper.ShowChoiceGrid(new ChoiceData()
             {
-                if (r == ChoiceGrid.ChoiceResult.Right)
+                Title = FindResource("msgNotice").ToString(),
+                Text = FindResource("msgUnlockSystemTip").ToString(),
+            },
+            (r) =>
+            {
+                if (r == ChoiceResult.Right)
                 {
                     var fmp = FunctionModuleProxy.Create<SystemUnlocker>(new ModuleArgs(App.SelectedDevice));
                     fmp.Finished += ((MainWindow)App.Current.MainWindow).FuncFinish;
@@ -141,7 +141,6 @@ namespace AutumnBox.GUI.UI.Grids
                 }
             });
         }
-
 
         private void ButtonChangeDpi_Click(object sender, RoutedEventArgs e)
         {
@@ -163,11 +162,15 @@ namespace AutumnBox.GUI.UI.Grids
             //fmp.AsyncRun();
         }
 
-        private void ButtonExtractBootImg_Click(object sender, RoutedEventArgs e)
+        private async void ButtonExtractBootImg_Click(object sender, RoutedEventArgs e)
         {
             if (!((MainWindow)App.Current.MainWindow).DevInfoPanel.CurrentDeviceIsRoot)
             {
-                if (!ChoiceBox.FastShow(App.Current.MainWindow, App.Current.Resources["Warning"].ToString(), App.Current.Resources["warrningNeedRootAccess"].ToString())) return;
+                ChoiceResult result = await Task.Run(() =>
+                {
+                    return UIHelper.RShowChoiceGrid("Warning", "warrningNeedRootAccess");
+                });
+                if (result != ChoiceResult.Right) return;
             }
             FolderBrowserDialog fbd = new FolderBrowserDialog
             {
@@ -263,20 +266,27 @@ namespace AutumnBox.GUI.UI.Grids
             /*检查是否安装了这个App*/
             bool? isInstallThisApp = await Task.Run(() =>
             {
-                return DeviceInfoHelper.IsInstalled(App.SelectedDevice, Basic.Flows.IceBoxActivator.AppPackageName);
+                return DeviceInfoHelper.IsInstalled(App.SelectedDevice, IceBoxActivator.AppPackageName);
             });
             if (isInstallThisApp == false) { MMessageBox.FastShow(App.Current.MainWindow, UIHelper.GetString("Warning"), UIHelper.GetString("msgPlsInstallIceBoxFirst")); return; }
             /*提示用户删除账户*/
-            bool _continue = ChoiceBox.FastShow((App.Current.MainWindow),
-                UIHelper.GetString("msgNotice"),
-                $"{UIHelper.GetString("msgIceActLine1")}\n{UIHelper.GetString("msgIceActLine2")}\n{UIHelper.GetString("msgIceActLine3")}", UIHelper.GetString("btnContinue"), UIHelper.GetString("btnCancel"));
+            bool _continue = await Task.Run(() =>
+            {
+                return UIHelper.ShowChoiceGrid(
+                    UIHelper.GetString("msgNotice"),
+                    $"{UIHelper.GetString("msgIceActLine1")}\n{UIHelper.GetString("msgIceActLine2")}\n{UIHelper.GetString("msgIceActLine3")}",
+                    UIHelper.GetString("btnCancel"),
+                    UIHelper.GetString("btnContinue"));
+            });
+            Logger.D(_continue.ToString());
             if (!_continue) return;
             /*开始操作 */
-            Basic.Flows.IceBoxActivator iceBoxActivator = new Basic.Flows.IceBoxActivator();
+            IceBoxActivator iceBoxActivator = new IceBoxActivator();
             iceBoxActivator.Init(new FlowArgs() { DevBasicInfo = App.SelectedDevice });
             iceBoxActivator.RunAsync();
             UIHelper.ShowRateBox(iceBoxActivator);
         }
+
         private async void ButtonAirForzenAct_Click(object sender, RoutedEventArgs e)
         {
             /*检查是否安装了这个App*/
@@ -286,9 +296,14 @@ namespace AutumnBox.GUI.UI.Grids
             });
             if (isInstallThisApp == false) { MMessageBox.FastShow(App.Current.MainWindow, UIHelper.GetString("Warning"), UIHelper.GetString("msgPlsInstallAirForzenFirst")); return; }
             /*提示用户删除账户*/
-            bool _continue = ChoiceBox.FastShow(App.Current.MainWindow,
-                 UIHelper.GetString("msgNotice"),
-                $"{UIHelper.GetString("msgIceActLine1")}\n{UIHelper.GetString("msgIceActLine2")}\n{UIHelper.GetString("msgIceActLine3")}", UIHelper.GetString("btnContinue"), UIHelper.GetString("btnCancel"));
+            bool _continue = await Task.Run(() =>
+            {
+                return UIHelper.ShowChoiceGrid(
+                    "msgNotice",
+                    $"{UIHelper.GetString("msgIceActLine1")}\n{UIHelper.GetString("msgIceActLine2")}\n{UIHelper.GetString("msgIceActLine3")}",
+                    "btnCancel",
+                    "btnContinue");
+            });
             if (!_continue) return;
             /*开始操作*/
             AirForzenActivator airForzenActivator = new AirForzenActivator();
@@ -332,17 +347,20 @@ namespace AutumnBox.GUI.UI.Grids
             UIHelper.ShowRateBox(islandActivator);
         }
 
-        private void ButtonVirtualBtnHide_Click(object sender, RoutedEventArgs e)
+        private async void ButtonVirtualBtnHide_Click(object sender, RoutedEventArgs e)
         {
-            var args = new VirtualButtonHiderArgs()
+            var args = await Task.Run(() =>
             {
-                DevBasicInfo = App.SelectedDevice,
-                IsHide = ChoiceBox.FastShow(App.Current.MainWindow,
-                UIHelper.GetString("PleaseSelected"),
-                UIHelper.GetString("msgVirtualButtonHider"),
-                UIHelper.GetString("btnHide"),
-                UIHelper.GetString("btnUnhide")),
-            };
+                return new VirtualButtonHiderArgs()
+                {
+                    DevBasicInfo = App.SelectedDevice,
+                    IsHide = UIHelper.ShowChoiceGrid(
+                    UIHelper.GetString("PleaseSelected"),
+                    UIHelper.GetString("msgVirtualButtonHider"),
+                    UIHelper.GetString("btnHide"),
+                    UIHelper.GetString("btnUnhide")),
+                };
+            });
             VirtualButtonHider hider = new VirtualButtonHider();
             hider.Init(args);
             hider.RunAsync();

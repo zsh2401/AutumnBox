@@ -17,20 +17,22 @@
                     <grids:DeviceInfoPanel x:Name="DevInfoPanel" Margin="10,0,436,406"></grids:DeviceInfoPanel>
                     <grids:RebootButtonsGrid x:Name="RebootGrid" Margin="768,0,0,457"></grids:RebootButtonsGrid>
                     <Button Foreground="{DynamicResource ForgBrush}" x:Name="buttonStartShell"  Content="{DynamicResource btnADBCMD}" Margin="778,169,10,0" VerticalAlignment="Top" Height="35" Background="{x:Null}" BorderBrush="{DynamicResource BorderBrush}" FontSize="18" FontFamily="Microsoft YaHei UI Light" Click="ButtonStartShell_Click" />
-                    <TabControl Name="TabFunctions" HorizontalAlignment="Left" Margin="10,248,0,10" Width="992" Background="{x:Null}" BorderBrush="{DynamicResource BasicBrush}">
-                        <TabItem Foreground="{DynamicResource ForgBrushOnBasic}" TabIndex="0" Header="{DynamicResource tbiWelcome}" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" Margin="-2,0,0,0" HorizontalAlignment="Left" Width="200" Background="{DynamicResource BasicBrush}" FontFamily="Microsoft YaHei UI Light" FontSize="16">
-                            <grids:WelcomeGrid Margin="0,0,0,-1"></grids:WelcomeGrid>
-                        </TabItem>
-                        <TabItem TabIndex="1" Header="{DynamicResource tbiOnPowerOn}" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" Margin="-2,0,0,0" HorizontalAlignment="Left" Width="200" Background="{DynamicResource BasicBrush}" Foreground="{DynamicResource ForgBrushOnBasic}" FontFamily="Microsoft YaHei UI Light" FontSize="16">
-                            <grids:PoweronFunctions x:Name="PoweronFuncs"></grids:PoweronFunctions>
-                        </TabItem>
-                        <TabItem TabIndex="2" Header="{DynamicResource tbiOnRecovery}" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" Margin="-2,0,0,0" HorizontalAlignment="Left" Width="200" Background="{DynamicResource BasicBrush}" Foreground="{DynamicResource ForgBrushOnBasic}" FontFamily="Microsoft YaHei UI Light" FontSize="16">
-                            <grids:RecoveryFunctions x:Name="RecoveryFuncs"></grids:RecoveryFunctions>
-                        </TabItem>
-                        <TabItem  TabIndex="3" Header="{DynamicResource tbiOnFastboot}" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" Margin="-2,0,0,0" HorizontalAlignment="Left" Width="200" Background="{DynamicResource BasicBrush}" Foreground="{DynamicResource ForgBrushOnBasic}" FontFamily="Microsoft YaHei UI Light" FontSize="16">
-                            <grids:FastbootFunctions x:Name="FastbootFuncs"></grids:FastbootFunctions>
-                        </TabItem>
-                    </TabControl>
+                    <Grid x:Name="GridMainTab" Margin="11,248,10,0">
+                        <TabControl Name="TabFunctions" HorizontalAlignment="Left" Width="995" Background="{x:Null}" BorderBrush="{DynamicResource BasicBrush}">
+                            <TabItem Foreground="{DynamicResource ForgBrushOnBasic}" TabIndex="0" Header="{DynamicResource tbiWelcome}" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" Margin="-2,0,0,0" HorizontalAlignment="Left" Width="200" Background="{DynamicResource BasicBrush}" FontFamily="Microsoft YaHei UI Light" FontSize="16">
+                                <grids:WelcomeGrid Margin="0,0,0,-1"></grids:WelcomeGrid>
+                            </TabItem>
+                            <TabItem TabIndex="1" Header="{DynamicResource tbiOnPowerOn}" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" Margin="-2,0,0,0" HorizontalAlignment="Left" Width="200" Background="{DynamicResource BasicBrush}" Foreground="{DynamicResource ForgBrushOnBasic}" FontFamily="Microsoft YaHei UI Light" FontSize="16">
+                                <grids:PoweronFunctions x:Name="PoweronFuncs"></grids:PoweronFunctions>
+                            </TabItem>
+                            <TabItem TabIndex="2" Header="{DynamicResource tbiOnRecovery}" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" Margin="-2,0,0,0" HorizontalAlignment="Left" Width="200" Background="{DynamicResource BasicBrush}" Foreground="{DynamicResource ForgBrushOnBasic}" FontFamily="Microsoft YaHei UI Light" FontSize="16">
+                                <grids:RecoveryFunctions x:Name="RecoveryFuncs"></grids:RecoveryFunctions>
+                            </TabItem>
+                            <TabItem  TabIndex="3" Header="{DynamicResource tbiOnFastboot}" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" Margin="-2,0,0,0" HorizontalAlignment="Left" Width="200" Background="{DynamicResource BasicBrush}" Foreground="{DynamicResource ForgBrushOnBasic}" FontFamily="Microsoft YaHei UI Light" FontSize="16">
+                                <grids:FastbootFunctions x:Name="FastbootFuncs"></grids:FastbootFunctions>
+                            </TabItem>
+                        </TabControl>
+                    </Grid>
                     <TextBox Foreground="{DynamicResource ForgBrush}" x:Name="textBoxGG" HorizontalAlignment="Left" Height="23" Margin="10,220,0,0" TextWrapping="Wrap" Text="..." VerticalAlignment="Top" Width="859" IsReadOnly="True" Background="{x:Null}" FontSize="14"/>
                     <Button Foreground="{DynamicResource ForgBrush}" x:Name="btnHelp" Content="{DynamicResource btnHelp}" Margin="874,219,10,0" VerticalAlignment="Top" Height="24" Background="{x:Null}" BorderBrush="{DynamicResource BorderBrush}" FontSize="14" FontFamily="Microsoft YaHei UI Light" Click="btnHelp_Click" />
                     <ListBox x:Name="DevicesListBox" DisplayMemberPath="Id" HorizontalAlignment="Left" Height="154" Margin="581,30,0,0" VerticalAlignment="Top" Width="180" SelectionChanged="DevicesListBox_SelectionChanged" Background="#00000000" Foreground="{DynamicResource BasicBrush}" BorderBrush="#FFABADB3"/>

@@ -92,9 +92,9 @@ namespace AutumnBox.GUI
             TitleBar.Title.Content += "  " + SystemHelper.CurrentVersion + "-Release";
 #endif
         }
-        public ChoiceGrid.ChoiceResult ShowChoiceGrid(string title, string content, string btnLeftText = null, string btnRightText = null)
+        public ChoiceResult ShowChoiceGrid(string title, string content, string btnLeftText = null, string btnRightText = null)
         {
-            return ChoiceGrid.ChoiceResult.Cancel;
+            return ChoiceResult.Cancel;
         }
         /// <summary>
         /// 当设备监听器引发连接设备变化的事件时发生,可通过此事件获取最新的连接设备信息

@@ -16,6 +16,9 @@ using AutumnBox.Basic.Function;
 using AutumnBox.GUI.Cfg;
 using AutumnBox.GUI.UI.Grids;
 using AutumnBox.GUI.Windows;
+using AutumnBox.Support.CstmDebug;
+using System;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -178,6 +181,22 @@ namespace AutumnBox.GUI.Helper
             rateBox.ShowDialog();
 
         }
+        public static void ShowChoiceGrid(ChoiceData data, Action<ChoiceResult> callback)
+        {
+            //try
+            //{
+            //    lock (choicer)
+            //    {
+            //        choicer = new ChoiceGrid(((MainWindow)App.Current.MainWindow).GridMainTab, data);
+            //        choicer.Show(callback);
+            //    }
+            //}
+            //catch (ArgumentNullException)
+            //{
+            //    choicer = new ChoiceGrid(((MainWindow)App.Current.MainWindow).GridMainTab, data);
+            //    choicer.Show(callback);
+            //}
+        }
         /// <summary>
         /// 关闭进度窗
         /// </summary>
@@ -189,5 +208,48 @@ namespace AutumnBox.GUI.Helper
             }
             catch { }
         }
+
+        private static bool _isForceStoped = false;
+        private static ChoiceGrid _choicer = new ChoiceGrid(new Grid(), new ChoiceData());
+        public static ChoiceResult RShowChoiceGrid(string titleKey, string textKey, string key_TextBtnLeft = null, string key_TextBtnRight = null)
+        {
+            bool _hasHide = false;
+            ChoiceResult result = ChoiceResult.Cancel;
+            var data = Make(titleKey, textKey, key_TextBtnLeft, key_TextBtnRight);
+            App.Current.Dispatcher.Invoke(() =>
+            {
+                lock (_choicer)
+                {
+                    _isForceStoped = false;
+                    _choicer = new ChoiceGrid(((MainWindow)App.Current.MainWindow).GridMainTab, data);
+                    _choicer.Show((r) =>
+                    {
+                        _hasHide = true;
+                        result = r;
+                    });
+                }
+            });
+            while (!_hasHide && !_isForceStoped) ;
+            return _isForceStoped ? ChoiceResult.Cancel:result ;
+        }
+        public static bool ShowChoiceGrid(string titleKey, string textKey, string key_TextBtnLeft = null, string key_TextBtnRight = null)
+        {
+            return RShowChoiceGrid(titleKey, textKey, key_TextBtnLeft, key_TextBtnRight) == ChoiceResult.Right;
+        }
+        public static void HideChoiceGrid()
+        {
+            _isForceStoped = true;
+        }
+        private static ChoiceData Make(string titleKey, string textKey, string key_TextBtnLeft = null, string key_TextBtnRight = null)
+        {
+            return new ChoiceData()
+            {
+                Title = GetString(titleKey),
+                Text = GetString(textKey),
+                TextBtnLeft = (key_TextBtnLeft == null) ? UIHelper.GetString("btnCancel") : UIHelper.GetString(key_TextBtnLeft),
+                TextBtnRight = (key_TextBtnRight == null) ? UIHelper.GetString("btnOK") : UIHelper.GetString(key_TextBtnRight),
+            };
+        }
+
     }
 }

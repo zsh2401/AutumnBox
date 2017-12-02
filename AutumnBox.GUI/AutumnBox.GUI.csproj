@@ -155,9 +155,11 @@
     <Compile Include="UI\Grids\AboutControl.xaml.cs">
       <DependentUpon>AboutControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Grids\ChoiceData.cs" />
     <Compile Include="UI\Grids\ChoiceGrid.xaml.cs">
       <DependentUpon>ChoiceGrid.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Grids\ChoiceResult.cs" />
     <Compile Include="UI\Grids\DeviceInfoPanel.xaml.cs">
       <DependentUpon>DeviceInfoPanel.xaml</DependentUpon>
     </Compile>
@@ -249,7 +251,6 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <Compile Include="MainWindow.FlowFinishedHandling.cs" />
-    <Compile Include="UI\Grids\ChoiceGrid.InternalClasses.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -500,6 +501,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\DynamicIcons\recovery.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\close.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
