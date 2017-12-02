@@ -24,6 +24,7 @@ using AutumnBox.Support.CstmDebug;
 using System;
 using System.Diagnostics;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -185,7 +186,7 @@ namespace AutumnBox.GUI
             new LinkHelpWindow().Show();
         }
 
-        private void ButtonStartShell_Click(object sender, RoutedEventArgs e)
+        private async void ButtonStartShell_Click(object sender, RoutedEventArgs e)
         {
             ProcessStartInfo info = new ProcessStartInfo
             {
@@ -194,9 +195,15 @@ namespace AutumnBox.GUI
             };
             if (SystemHelper.IsWin10)
             {
-                if (ChoiceBox.FastShow(this, App.Current.Resources["Notice"].ToString(), App.Current.Resources["msgShellChoiceTip"].ToString(), "Powershell", "CMD"))
+                var result = await Task.Run(()=> {
+                    return UIHelper.RShowChoiceGrid("Notice", "msgShellChoiceTip", "Powershell", "CMD");
+                });
+                if (result == ChoiceResult.Left)
                 {
                     info.FileName = "powershell.exe";
+                }
+                else if (result == ChoiceResult.Cancel) {
+                    return;
                 }
             }
             Process.Start(info);

@@ -106,16 +106,18 @@ namespace AutumnBox.GUI.UI.Grids
             fmp.AsyncRun();
         }
 
-        private void ButtonRebootToSnapdragon9008_Click(object sender, RoutedEventArgs e)
+        private async void ButtonRebootToSnapdragon9008_Click(object sender, RoutedEventArgs e)
         {
-            bool _needToContinue = ChoiceBox.FastShow(
-                App.Current.MainWindow,
-                UIHelper.GetString("msgNotice"),
-                UIHelper.GetString("msgNoticeForRebootToEdlLine1") + "\n" +
-                UIHelper.GetString("msgNoticeForRebootToEdlLine2") + "\n" +
-                UIHelper.GetString("msgNoticeForRebootToEdlLine3"),
-                UIHelper.GetString("btnContinue"),
-                UIHelper.GetString("btnCancel"));
+            bool _needToContinue = await Task.Run(() =>
+            {
+                return UIHelper.ShowChoiceGrid("msgNotice",
+                                    UIHelper.GetString("msgNoticeForRebootToEdlLine1") + "\n" +
+                                    UIHelper.GetString("msgNoticeForRebootToEdlLine2") + "\n" +
+                                     UIHelper.GetString("msgNoticeForRebootToEdlLine3"),
+                                    "btnCancel",
+                                    "btnContinue"
+                    );
+            });
             if (!_needToContinue) return;
             var fmp = FunctionModuleProxy.Create<RebootOperator>(new RebootArgs(App.SelectedDevice)
             {

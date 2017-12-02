@@ -210,27 +210,28 @@ namespace AutumnBox.GUI.Helper
         }
 
         private static bool _isForceStoped = false;
-        private static ChoiceGrid _choicer = new ChoiceGrid(new Grid(), new ChoiceData());
+        private static object choiceLock = new object();
+        private static ChoiceGrid _choicer;
         public static ChoiceResult RShowChoiceGrid(string titleKey, string textKey, string key_TextBtnLeft = null, string key_TextBtnRight = null)
         {
             bool _hasHide = false;
             ChoiceResult result = ChoiceResult.Cancel;
             var data = Make(titleKey, textKey, key_TextBtnLeft, key_TextBtnRight);
-            App.Current.Dispatcher.Invoke(() =>
+            lock (choiceLock)
             {
-                lock (_choicer)
+                _isForceStoped = false;
+                App.Current.Dispatcher.Invoke(() =>
                 {
-                    _isForceStoped = false;
                     _choicer = new ChoiceGrid(((MainWindow)App.Current.MainWindow).GridMainTab, data);
                     _choicer.Show((r) =>
                     {
                         _hasHide = true;
                         result = r;
                     });
-                }
-            });
-            while (!_hasHide && !_isForceStoped) ;
-            return _isForceStoped ? ChoiceResult.Cancel:result ;
+                });
+                while (!_hasHide && !_isForceStoped) ;
+            }
+            return _isForceStoped ? ChoiceResult.Cancel : result;
         }
         public static bool ShowChoiceGrid(string titleKey, string textKey, string key_TextBtnLeft = null, string key_TextBtnRight = null)
         {
@@ -239,6 +240,7 @@ namespace AutumnBox.GUI.Helper
         public static void HideChoiceGrid()
         {
             _isForceStoped = true;
+            _choicer?.Hide();
         }
         private static ChoiceData Make(string titleKey, string textKey, string key_TextBtnLeft = null, string key_TextBtnRight = null)
         {

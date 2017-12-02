@@ -184,11 +184,15 @@ namespace AutumnBox.GUI.UI.Grids
             UIHelper.ShowRateBox(fmp);
         }
 
-        private void ButtonExtractRecImg_Click(object sender, RoutedEventArgs e)
+        private async void ButtonExtractRecImg_Click(object sender, RoutedEventArgs e)
         {
             if (!((MainWindow)App.Current.MainWindow).DevInfoPanel.CurrentDeviceIsRoot)
             {
-                if (!ChoiceBox.FastShow(App.Current.MainWindow, App.Current.Resources["Warning"].ToString(), App.Current.Resources["warrningNeedRootAccess"].ToString())) return;
+                ChoiceResult result = await Task.Run(() =>
+                {
+                    return UIHelper.RShowChoiceGrid("Warning", "warrningNeedRootAccess");
+                });
+                if (result != ChoiceResult.Right) return;
             }
             FolderBrowserDialog fbd = new FolderBrowserDialog
             {
@@ -202,11 +206,15 @@ namespace AutumnBox.GUI.UI.Grids
             UIHelper.ShowRateBox(fmp);
         }
 
-        private void ButtonFlashBootImg_Click(object sender, RoutedEventArgs e)
+        private async void ButtonFlashBootImg_Click(object sender, RoutedEventArgs e)
         {
             if (!((MainWindow)App.Current.MainWindow).DevInfoPanel.CurrentDeviceIsRoot)
             {
-                if (!ChoiceBox.FastShow(((MainWindow)App.Current.MainWindow), App.Current.Resources["Warning"].ToString(), App.Current.Resources["warrningNeedRootAccess"].ToString())) return;
+                ChoiceResult result = await Task.Run(() =>
+                {
+                    return UIHelper.RShowChoiceGrid("Warning", "warrningNeedRootAccess");
+                });
+                if (result != ChoiceResult.Right) return;
             }
             Microsoft.Win32.OpenFileDialog fileDialog = new Microsoft.Win32.OpenFileDialog();
             fileDialog.Reset();
@@ -222,29 +230,36 @@ namespace AutumnBox.GUI.UI.Grids
             }
         }
 
-        private void ButtonDeleteScreenLock_Click(object sender, RoutedEventArgs e)
+        private async void ButtonDeleteScreenLock_Click(object sender, RoutedEventArgs e)
         {
             if (!((MainWindow)App.Current.MainWindow).DevInfoPanel.CurrentDeviceIsRoot)
             {
-                if (!ChoiceBox.FastShow(((MainWindow)App.Current.MainWindow), App.Current.Resources["Warning"].ToString(), App.Current.Resources["warrningNeedRootAccess"].ToString())) return;
+                ChoiceResult result = await Task.Run(() =>
+                {
+                    return UIHelper.RShowChoiceGrid("Warning", "warrningNeedRootAccess");
+                });
+                if (result != ChoiceResult.Right) return;
             }
-            if (!ChoiceBox.FastShow(((MainWindow)App.Current.MainWindow), App.Current.Resources["Warning"].ToString(), App.Current.Resources["msgDelScreenLock"].ToString())) return;
+            bool _continue = await Task.Run(() =>
+            {
+                return UIHelper.ShowChoiceGrid("Warning", "msgDelScreenLock");
+            });
+            if (!_continue) return;
             FunctionModuleProxy fmp = FunctionModuleProxy.Create<ScreenLockDeleter>(new ModuleArgs(App.SelectedDevice));
             fmp.Finished += ((MainWindow)App.Current.MainWindow).FuncFinish;
             fmp.AsyncRun();
             UIHelper.ShowRateBox();
         }
 
-        private void ButtonFullBackup_Copy_Click(object sender, RoutedEventArgs e)
-        {
-            MMessageBox.FastShow(((MainWindow)App.Current.MainWindow), App.Current.Resources["Notice"].ToString(), App.Current.Resources["msgFunctionIsInTheDeveloping"].ToString());
-        }
-
-        private void ButtonFlashRecImg_Click(object sender, RoutedEventArgs e)
+        private async void ButtonFlashRecImg_Click(object sender, RoutedEventArgs e)
         {
             if (!((MainWindow)App.Current.MainWindow).DevInfoPanel.CurrentDeviceIsRoot)
             {
-                if (!ChoiceBox.FastShow(((MainWindow)App.Current.MainWindow), App.Current.Resources["Warning"].ToString(), App.Current.Resources["warrningNeedRootAccess"].ToString())) return;
+                ChoiceResult result = await Task.Run(() =>
+                {
+                    return UIHelper.RShowChoiceGrid("Warning", "warrningNeedRootAccess");
+                });
+                if (result != ChoiceResult.Right) return;
             }
             Microsoft.Win32.OpenFileDialog fileDialog = new Microsoft.Win32.OpenFileDialog();
             fileDialog.Reset();
@@ -336,9 +351,14 @@ namespace AutumnBox.GUI.UI.Grids
             });
             if (isInstallThisApp == false) { MMessageBox.FastShow(App.Current.MainWindow, UIHelper.GetString("Warning"), UIHelper.GetString("msgPlsInstallIslandFirst")); return; }
             /*提示用户删除账户*/
-            bool _continue = ChoiceBox.FastShow(App.Current.MainWindow,
-                 UIHelper.GetString("msgNotice"),
-                $"{UIHelper.GetString("msgIceActLine1")}\n{UIHelper.GetString("msgIceActLine2")}\n{UIHelper.GetString("msgIceActLine3")}", UIHelper.GetString("btnContinue"), UIHelper.GetString("btnCancel"));
+            bool _continue = await Task.Run(() =>
+            {
+                return UIHelper.ShowChoiceGrid("msgNotice",
+                    $"{UIHelper.GetString("msgIceActLine1")}\n{UIHelper.GetString("msgIceActLine2")}\n{UIHelper.GetString("msgIceActLine3")}",
+                    "btnCancel",
+                    "btnContinue"
+                    );
+            });
             if (!_continue) return;
             /*开始操作*/
             IslandActivator islandActivator = new IslandActivator();
@@ -349,18 +369,20 @@ namespace AutumnBox.GUI.UI.Grids
 
         private async void ButtonVirtualBtnHide_Click(object sender, RoutedEventArgs e)
         {
-            var args = await Task.Run(() =>
+            var choiceResult = await Task.Run(() =>
             {
-                return new VirtualButtonHiderArgs()
-                {
-                    DevBasicInfo = App.SelectedDevice,
-                    IsHide = UIHelper.ShowChoiceGrid(
+                return UIHelper.RShowChoiceGrid(
                     UIHelper.GetString("PleaseSelected"),
                     UIHelper.GetString("msgVirtualButtonHider"),
                     UIHelper.GetString("btnHide"),
-                    UIHelper.GetString("btnUnhide")),
-                };
+                    UIHelper.GetString("btnUnhide"));
             });
+            if (choiceResult == ChoiceResult.Cancel) return;
+            var args = new VirtualButtonHiderArgs()
+            {
+                DevBasicInfo = App.SelectedDevice,
+                IsHide = (choiceResult == ChoiceResult.Right),
+            };
             VirtualButtonHider hider = new VirtualButtonHider();
             hider.Init(args);
             hider.RunAsync();
