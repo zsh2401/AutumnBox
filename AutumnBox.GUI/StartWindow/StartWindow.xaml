@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AutumnBox.GUI"
         xmlns:cstm="clr-namespace:AutumnBox.GUI.UI.Cstm"
+     xmlns:pages="clr-namespace:AutumnBox.GUI.UI.Pages"
         xmlns:grids="clr-namespace:AutumnBox.GUI.UI.Grids"
         x:Name="MainWindow" x:Class="AutumnBox.GUI.StartWindow"
         mc:Ignorable="d"

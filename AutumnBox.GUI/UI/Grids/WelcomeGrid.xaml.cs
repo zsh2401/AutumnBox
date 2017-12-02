@@ -18,7 +18,7 @@ namespace AutumnBox.GUI.UI.Grids
     /// <summary>
     /// WelcomeGrid.xaml 的交互逻辑
     /// </summary>
-    public partial class WelcomeGrid : Grid
+    public partial class WelcomeGrid : UserControl
     {
         public WelcomeGrid()
         {

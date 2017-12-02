@@ -22,7 +22,7 @@ namespace AutumnBox.GUI.UI.Grids
     /// <summary>
     /// ChoiceGrid.xaml 的交互逻辑
     /// </summary>
-    public partial class ChoiceGrid : Grid, IDisposable
+    public partial class ChoiceGrid : UserControl, IDisposable
     {
         public event HidedEventHandler Hided;
         public static readonly double AnimationLength = 0.5;

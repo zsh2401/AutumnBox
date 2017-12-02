@@ -1,4 +1,4 @@
-﻿<Grid x:Class="AutumnBox.GUI.UI.Grids.Settings"
+﻿<UserControl x:Class="AutumnBox.GUI.UI.Grids.Settings"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,11 +6,12 @@
              xmlns:local="clr-namespace:AutumnBox.GUI.UI.Grids"
              mc:Ignorable="d" 
             Height="570" Width="940" Background="White">
-    <ComboBox x:Name="CbBoxLanguage" HorizontalAlignment="Left" Margin="75,40,0,0" VerticalAlignment="Top" Width="225" BorderBrush="#FFFDF5F5" FontSize="14" FontFamily="Microsoft YaHei UI Light" SelectionChanged="CbBoxLanguage_SelectionChanged" SelectedIndex="0"/>
+    <Grid>
+        <ComboBox x:Name="CbBoxLanguage" HorizontalAlignment="Left" Margin="75,40,0,0" VerticalAlignment="Top" Width="225" BorderBrush="#FFFDF5F5" FontSize="14" FontFamily="Microsoft YaHei UI Light" SelectionChanged="CbBoxLanguage_SelectionChanged" SelectedIndex="0"/>
     <Label Content="{DynamicResource Language}" HorizontalAlignment="Left" Margin="36,40,0,0" VerticalAlignment="Top" FontSize="14" FontFamily="Microsoft YaHei UI Light"/>
     <Slider x:Name="TransparencySlider" HorizontalAlignment="Left" Margin="79,94,0,0" Maximum="255" ValueChanged="Slider_ValueChanged" Value="0" VerticalAlignment="Top" Width="276"/>
     <Label Content="{DynamicResource Transparency}" HorizontalAlignment="Left" Margin="22,84,0,0" VerticalAlignment="Top" FontSize="14" FontFamily="Microsoft YaHei UI Light"/>
     <Button x:Name="BtnCreateShortcut" Content="{DynamicResource btnCreateShortcut}" Margin="79,172,0,0" VerticalAlignment="Top" Height="26" Background="#007C7272" BorderBrush="{DynamicResource BorderBrush}" FontFamily="Microsoft YaHei UI Light" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="{DynamicResource ForgBrush}" RenderTransformOrigin="0.494,0.085" HorizontalAlignment="Left" Width="176" Click="BtnCreateShortcut_Click"/>
-    <Image Source="/AutumnBox.GUI.Resources;component/Images/misakasister.png" HorizontalAlignment="Left" Height="60" Margin="10,138,0,0" VerticalAlignment="Top" Width="74"/>
-
-</Grid>
+    <Image Source="/Resources/Images/misakasister.png" HorizontalAlignment="Left" Height="60" Margin="10,138,0,0" VerticalAlignment="Top" Width="74"/>
+    </Grid>
+</UserControl>

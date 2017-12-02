@@ -19,7 +19,7 @@ namespace AutumnBox.GUI.UI.Grids
     /// <summary>
     /// PoweronFunctions.xaml 的交互逻辑
     /// </summary>
-    public partial class PoweronFunctions : Grid, IDeviceInfoRefreshable
+    public partial class PoweronFunctions : System.Windows.Controls.UserControl, IDeviceInfoRefreshable
     {
         public PoweronFunctions()
         {
@@ -30,14 +30,14 @@ namespace AutumnBox.GUI.UI.Grids
         public event EventHandler RefreshFinished;
         public void SetDefault()
         {
-            UIHelper.SetGridButtonStatus(this, false);
+            UIHelper.SetGridButtonStatus(MainGrid, false);
         }
 
         public void Refresh(DeviceBasicInfo deviceSimpleInfo)
         {
             RefreshStart?.Invoke(this, new EventArgs());
             bool status = deviceSimpleInfo.Status == DeviceStatus.Poweron;
-            UIHelper.SetGridButtonStatus(this, status);
+            UIHelper.SetGridButtonStatus(MainGrid, status);
             RefreshFinished?.Invoke(this, new EventArgs());
         }
 

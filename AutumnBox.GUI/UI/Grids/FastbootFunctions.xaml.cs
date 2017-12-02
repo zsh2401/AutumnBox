@@ -14,7 +14,7 @@ namespace AutumnBox.GUI.UI.Grids
     /// <summary>
     /// FastbootFunctions.xaml 的交互逻辑
     /// </summary>
-    public partial class FastbootFunctions : Grid, IDeviceInfoRefreshable
+    public partial class FastbootFunctions : UserControl, IDeviceInfoRefreshable
     {
         public FastbootFunctions()
         {
@@ -27,13 +27,13 @@ namespace AutumnBox.GUI.UI.Grids
         public void Refresh(DeviceBasicInfo deviceSimpleInfo)
         {
             RefreshStart?.Invoke(this, new EventArgs());
-            UIHelper.SetGridButtonStatus(this, deviceSimpleInfo.Status == DeviceStatus.Fastboot);
+            UIHelper.SetGridButtonStatus(MainGrid, deviceSimpleInfo.Status == DeviceStatus.Fastboot);
             RefreshFinished?.Invoke(this, new EventArgs());
         }
 
         public void SetDefault()
         {
-            UIHelper.SetGridButtonStatus(this, false);
+            UIHelper.SetGridButtonStatus(MainGrid, false);
         }
 
         private void ButtonFlashCustomRecovery_Click(object sender, RoutedEventArgs e)

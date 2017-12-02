@@ -14,7 +14,7 @@ namespace AutumnBox.GUI.UI.Grids
     /// <summary>
     /// RecoveryFunctions.xaml 的交互逻辑
     /// </summary>
-    public partial class RecoveryFunctions : Grid, IDeviceInfoRefreshable
+    public partial class RecoveryFunctions : UserControl, IDeviceInfoRefreshable
     {
         public RecoveryFunctions()
         {
@@ -27,14 +27,14 @@ namespace AutumnBox.GUI.UI.Grids
         public void Refresh(DeviceBasicInfo deviceSimpleInfo)
         {
             RefreshStart?.Invoke(this, new EventArgs());
-            UIHelper.SetGridButtonStatus(this,
+            UIHelper.SetGridButtonStatus(MainGrid,
                 (deviceSimpleInfo.Status == DeviceStatus.Recovery || deviceSimpleInfo.Status == DeviceStatus.Sideload));
             RefreshFinished?.Invoke(this, new EventArgs());
         }
 
         public void SetDefault()
         {
-            UIHelper.SetGridButtonStatus(this, false);
+            UIHelper.SetGridButtonStatus(MainGrid, false);
         }
 
         private void ButtonPushFileToSdcard_Click(object sender, RoutedEventArgs e)

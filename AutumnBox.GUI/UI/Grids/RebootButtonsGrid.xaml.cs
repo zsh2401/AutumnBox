@@ -24,7 +24,7 @@ namespace AutumnBox.GUI.UI.Grids
     /// <summary>
     /// RebootButtonsGrid.xaml 的交互逻辑
     /// </summary>
-    public partial class RebootButtonsGrid : Grid, IDeviceInfoRefreshable
+    public partial class RebootButtonsGrid : UserControl, IDeviceInfoRefreshable
     {
         public RebootButtonsGrid()
         {
