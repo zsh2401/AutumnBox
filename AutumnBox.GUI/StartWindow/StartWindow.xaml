@@ -36,7 +36,7 @@
                     <ListBox x:Name="DevicesListBox" DisplayMemberPath="Id" HorizontalAlignment="Left" Height="154" Margin="581,30,0,0" VerticalAlignment="Top" Width="180" SelectionChanged="DevicesListBox_SelectionChanged" Background="#00000000" Foreground="{DynamicResource BasicBrush}" BorderBrush="#FFABADB3"/>
                     <Button x:Name="buttonLinkHelp"  Foreground="{DynamicResource ForgBrush}" Content="{DynamicResource LinkHelp}" Margin="582,184,0,0" VerticalAlignment="Top" Height="30" Background="{x:Null}" BorderBrush="#33000000" FontSize="11" FontFamily="Microsoft YaHei UI Light" Click="ButtonLinkHelp_Click" Width="180" HorizontalAlignment="Left"/>
                     <Label Content="{DynamicResource Devices}" Foreground="{DynamicResource ForgBrush}" HorizontalAlignment="Left" Margin="581,0,0,0" VerticalAlignment="Top" Width="182" HorizontalContentAlignment="Center"/>
-                    <grids:ChoiceGrid Margin="0,621,0,0" x:Name="ChoiceGrid" />
+                    <!--<grids:ChoiceGrid Margin="0,621,0,0" x:Name="ChoiceGrid" />-->
                     <!--</grids:ChoiceGrid>-->
                 </Grid>
             </TabItem>

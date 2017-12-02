@@ -141,6 +141,11 @@
     <Compile Include="NetUtil\MOTDGetter.cs" />
     <Compile Include="NetUtil\RemoteDataGetter.cs" />
     <Compile Include="NetUtil\UpdateChecker.cs" />
+    <Compile Include="Resources\DynamicIcons\DynamicIcons.Designer.cs">
+      <DependentUpon>DynamicIcons.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="UI\Cstm\BookMarksControl.xaml.cs">
       <DependentUpon>BookMarksControl.xaml</DependentUpon>
     </Compile>
@@ -253,6 +258,22 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Resources\ColorThemes\BasicTheme.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Langs\en-US.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Langs\zh-CN.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\links.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="UI\Cstm\BookMarksControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -393,6 +414,94 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\Images\alipay.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\baidupan.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\devinfo_refresh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\donate.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\github.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\jkr.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\loading.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\main_bg.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\misakasister.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\root.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\wechatpay.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\about.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\about_white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\contact.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\donate.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\leaves.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\refresh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\title_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\DynamicIcons\android_robot.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\DynamicIcons\close_normal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\DynamicIcons\close_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\DynamicIcons\DynamicIcons.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>DynamicIcons.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\DynamicIcons\fastboot.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\DynamicIcons\min_normal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\DynamicIcons\min_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\DynamicIcons\no_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\DynamicIcons\poweron.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\DynamicIcons\recovery.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

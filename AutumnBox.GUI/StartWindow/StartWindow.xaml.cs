@@ -91,9 +91,9 @@ namespace AutumnBox.GUI
             TitleBar.Title.Content += "  " + SystemHelper.CurrentVersion + "-Release";
 #endif
         }
-        public void Test() {
-            ChoiceGrid.Show();
-            //GridToolsMain.Children.Remove(this.);
+        public void Test()
+        {
+            new ChoiceGrid(this.GridToolsMain).Show();
         }
         public ChoiceGrid.ChoiceResult ShowChoiceGrid(string title, string content, string btnLeftText = null, string btnRightText = null)
         {
