@@ -12,7 +12,7 @@
 *
 \* =============================================================================*/
 using AutumnBox.GUI.Helper;
-using AutumnBox.GUI.Resources.Images.DynamicIcons;
+using AutumnBox.GUI.Resources.DynamicIcons;
 using System.Windows;
 using System.Windows.Input;
 

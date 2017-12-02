@@ -395,10 +395,6 @@
       <Name>AutumnBox.Basic</Name>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </ProjectReference>
-    <ProjectReference Include="..\AutumnBox.GUI.Resources\AutumnBox.GUI.Resources.csproj">
-      <Project>{eee9312c-4210-4fdb-a753-e2506a2e3e45}</Project>
-      <Name>AutumnBox.GUI.Resources</Name>
-    </ProjectReference>
     <ProjectReference Include="..\AutumnBox.Support\AutumnBox.Support.csproj">
       <Project>{851B2EB0-0503-428D-BD87-063555B19451}</Project>
       <Name>AutumnBox.Support</Name>
@@ -415,7 +411,6 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Resource Include="Resources\Images\alipay.jpg" />
   </ItemGroup>

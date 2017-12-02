@@ -1,7 +1,7 @@
 ﻿using AutumnBox.Basic.Devices;
 using AutumnBox.GUI.Helper;
 using AutumnBox.GUI.I18N;
-using AutumnBox.GUI.Resources.Images.DynamicIcons;
+using AutumnBox.GUI.Resources.DynamicIcons;
 using AutumnBox.Support.CstmDebug;
 using System;
 using System.Drawing;

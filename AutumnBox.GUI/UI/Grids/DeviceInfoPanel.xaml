@@ -7,8 +7,8 @@
              mc:Ignorable="d" 
              d:DesignHeight="214" Width="567.667" Background="White">
     <Grid>
-        <Image x:Name="DeviceStatusImage" HorizontalAlignment="Left" Height="100" Margin="40,50,0,0" VerticalAlignment="Top" Width="100" Source="/AutumnBox.GUI.Resources;component/Images/DynamicIcons/no_selected.png"/>
-        <Image x:Name="ImgRefreshDevInfo" HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="25" Source="/AutumnBox.GUI.Resources;component/Images/devinfo_refresh.png" MouseDown="ImgRefreshDevInfo_MouseDown" RenderTransformOrigin="-0.286,0.529" Margin="136,14,0,0"/>
+        <Image x:Name="DeviceStatusImage" HorizontalAlignment="Left" Height="100" Margin="40,50,0,0" VerticalAlignment="Top" Width="100" Source="/AutumnBox;component/Resources/DynamicIcons/no_selected.png"/>
+        <Image x:Name="ImgRefreshDevInfo" HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="25" Source="/AutumnBox;component/Resources/Image/devinfo_refresh.png" MouseDown="ImgRefreshDevInfo_MouseDown" RenderTransformOrigin="-0.286,0.529" Margin="136,14,0,0"/>
         <Label x:Name="DeviceStatusLabel" Content="{DynamicResource PleaseSelectedADevice}" HorizontalAlignment="Left" Margin="10,155,0,0" VerticalAlignment="Top" Height="43" Width="160" Foreground="{DynamicResource ForgBrush}" FontSize="14" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Microsoft YaHei UI Light"/>
         <Grid x:Name="GridBuildInfo" HorizontalAlignment="Left" Height="92" Margin="254,11,0,0" VerticalAlignment="Top" Width="260">
             <Label x:Name="LabelAndroidVersion" Content="{DynamicResource ResourceKey=PleaseSelectedADevice}" Margin="10,-1,10,64" VerticalAlignment="Bottom" Height="29" Foreground="{DynamicResource ForgBrush}" FontFamily="Microsoft YaHei Light" FontSize="14" Background="{x:Null}" Loaded="LabelAndroidVersion_Loaded"/>
