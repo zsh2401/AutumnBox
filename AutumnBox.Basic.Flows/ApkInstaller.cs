@@ -12,23 +12,19 @@
 *
 \* =============================================================================*/
 using AutumnBox.Basic.FlowFramework;
-using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using AutumnBox.Basic.Executer;
 using AutumnBox.Basic.Util;
 using AutumnBox.Support.CstmDebug;
 
 namespace AutumnBox.Basic.Flows
 {
-    public class ApkInstallerArgs : FlowArgs
+    public sealed class ApkInstallerArgs : FlowArgs
     {
         public List<FileInfo> Files { get; set; }
     }
-    public class AApkInstalltionCompleteArgs
+    public sealed class AApkInstalltionCompleteArgs
     {
         public FileInfo ApkFileInfo { get; internal set; }
         public bool IsSuccess { get; internal set; } = true;

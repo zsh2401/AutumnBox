@@ -62,24 +62,6 @@ namespace AutumnBox.GUI
                     case nameof(AndroidFullBackup):
                         MMessageBox.FastShow(App.OwnerWindow, UIHelper.GetString("msgNotice"), UIHelper.GetString("msgLookTheScreen"));
                         break;
-                    case nameof(IceBoxActivator):
-                        switch ((ErrorType)e.Other)
-                        {
-                            case ErrorType.DeviceOwnerIsAlreadySet:
-                                e.Result.Message = UIHelper.GetString("msgNoticeDeviceOwnerIsAlreadySet");
-                                e.Result.Advise = UIHelper.GetString("advsDeviceOwnerIsAlreadySet");
-                                break;
-                            case ErrorType.IceBoxHaveNoInstall:
-                                e.Result.Message = UIHelper.GetString("msgNoticeIceBoxHaveNoInstall");
-                                e.Result.Advise = UIHelper.GetString("advsIceBoxHaveNoInstall");
-                                break;
-                            default:
-                                e.Result.Message = UIHelper.GetString("msgUnknowError");
-                                e.Result.Advise = UIHelper.GetString("advIceBoxActUnknowError");
-                                break;
-                        }
-                        ModuleResultWindow.FastShow(e.Result);
-                        break;
                     default:
                         ModuleResultWindow.FastShow(e.Result);
                         break;

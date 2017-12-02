@@ -21,10 +21,10 @@ namespace AutumnBox.ConsoleTester.ObjTest
     {
         public static void Run()
         {
-            var fmp = FunctionModuleProxy.Create<IceBoxActivator>(new Basic.Function.Args.ModuleArgs(Program.mi4));
-            var result = fmp.SyncRun();
-            Console.WriteLine(result.OutputData.All);
-            Console.WriteLine(result.Level);
+            //var fmp = FunctionModuleProxy.Create<IceBoxActivator>(new Basic.Function.Args.ModuleArgs(Program.mi4));
+            //var result = fmp.SyncRun();
+            //Console.WriteLine(result.OutputData.All);
+            //Console.WriteLine(result.Level);
         }
     }
 }

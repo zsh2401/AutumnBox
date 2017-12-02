@@ -13,18 +13,16 @@
 \* =============================================================================*/
 using AutumnBox.Basic.Adb;
 using AutumnBox.Basic.Devices;
-using AutumnBox.Basic.Executer;
 using AutumnBox.Basic.FlowFramework;
 using AutumnBox.Basic.Function;
-using AutumnBox.Basic.Util;
 using AutumnBox.GUI.Cfg;
 using AutumnBox.GUI.Helper;
 using AutumnBox.GUI.NetUtil;
+using AutumnBox.GUI.UI.Grids;
 using AutumnBox.GUI.Windows;
 using AutumnBox.Support.CstmDebug;
 using System;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -92,6 +90,14 @@ namespace AutumnBox.GUI
             AboutControl.LabelVersion.Content = SystemHelper.CurrentVersion + "-Release";
             TitleBar.Title.Content += "  " + SystemHelper.CurrentVersion + "-Release";
 #endif
+        }
+        public void Test() {
+            ChoiceGrid.Show();
+            //GridToolsMain.Children.Remove(this.);
+        }
+        public ChoiceGrid.ChoiceResult ShowChoiceGrid(string title, string content, string btnLeftText = null, string btnRightText = null)
+        {
+            return ChoiceGrid.ChoiceResult.Cancel;
         }
         /// <summary>
         /// 当设备监听器引发连接设备变化的事件时发生,可通过此事件获取最新的连接设备信息

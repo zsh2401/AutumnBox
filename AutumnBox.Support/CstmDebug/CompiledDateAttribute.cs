@@ -27,5 +27,8 @@ namespace AutumnBox.Support.CstmDebug
         {
             DateTime = new DateTime(y, m, d);
         }
+        public CompiledDateAttribute(DateTime time) {
+            DateTime = time;
+        }
     }
 }

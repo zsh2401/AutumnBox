@@ -150,6 +150,9 @@
     <Compile Include="UI\Grids\AboutControl.xaml.cs">
       <DependentUpon>AboutControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Grids\ChoiceGrid.xaml.cs">
+      <DependentUpon>ChoiceGrid.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Grids\DeviceInfoPanel.xaml.cs">
       <DependentUpon>DeviceInfoPanel.xaml</DependentUpon>
     </Compile>
@@ -242,6 +245,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <Compile Include="StartWindow\StartWindow.FlowFinishedHandling.cs" />
+    <Compile Include="UI\Grids\ChoiceGrid.InternalClasses.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -258,6 +262,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\Grids\AboutControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Grids\ChoiceGrid.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

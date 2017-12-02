@@ -43,6 +43,9 @@ namespace AutumnBox.GUI
             Process.Start(info);
         }
 
-        private void btnHelp_Click(object sender, RoutedEventArgs e) => Process.Start(Urls.HELP_PAGE);
+        private void btnHelp_Click(object sender, RoutedEventArgs e) {
+            ChoiceGrid.Show();
+            //Process.Start(Urls.HELP_PAGE);
+        }
     }
 }
