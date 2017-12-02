@@ -1,6 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:AutumnBox.Gui.Resources.Langs"
+                    xmlns:local="clr-namespace:AutumnBox.GUI.I18N.Langs"
                     xmlns:s="clr-namespace:System;assembly=mscorlib">
 
     <s:String x:Key="AppName">AutumnBox</s:String>
@@ -84,7 +84,7 @@
     <s:String x:Key="msgFlashOK">如果一切正常,您的手机将会重启到刚才刷入的Recovery中!</s:String>
     <s:String x:Key="msgFristLaunchNotice">本软件还处于测试阶段,可能出现的bug希望您能立即反馈!这个软件的某些操作可能会被杀软误报,请关闭杀软或者允许操作,我保证本软件没有恶意代码!</s:String>
     <s:String x:Key="msgIfAllOK">如果一切正常,您的手机将会重启</s:String>
-    <s:String x:Key="msgNotice">提示</s:String>
+    <s:String x:Key="msgNotice">注意</s:String>
     <s:String x:Key="msgDelScreenLock">注意,此功能在当今大部分设备上已经失去效用,因此不要对该功能抱有太大希望</s:String>
     <s:String x:Key="msgFunctionIsInTheDeveloping">此功能还在开发中...请关注更新.......</s:String>
     <s:String x:Key="warrningNeedRootAccess">此功能需要root权限!但根据本软件的检测,您似乎没有root权限,当然,也有可能是我判断错了,确定要继续吗?</s:String>

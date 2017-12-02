@@ -1,6 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:AutumnBox.Gui.Resources.Langs"
+                    xmlns:local="clr-namespace:AutumnBox.GUI.I18N.Langs"
                     xmlns:s="clr-namespace:System;assembly=mscorlib">
     <s:String x:Key="AppName">AutumnBox</s:String>
     <s:String x:Key="LanguageName">English</s:String>

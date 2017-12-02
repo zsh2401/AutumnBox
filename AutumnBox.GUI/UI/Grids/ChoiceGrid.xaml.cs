@@ -24,19 +24,16 @@ namespace AutumnBox.GUI.UI.Grids
     /// </summary>
     public partial class ChoiceGrid : UserControl, IDisposable
     {
-        public event HidedEventHandler Hided;
-        public static readonly double AnimationLength = 0.5;
+        public static readonly int AnimationLength = 300;
         private readonly ThicknessAnimation _riseAnimation = new ThicknessAnimation()
         {
             To = new Thickness(0, 0, 0, 0),
-            Duration = TimeSpan.FromSeconds(AnimationLength),
+            Duration = TimeSpan.FromMilliseconds(AnimationLength),
         };
         private readonly ThicknessAnimation _hideAnimation = new ThicknessAnimation()
         {
-            To = new Thickness(0, 621, 0, 0),
-            Duration = TimeSpan.FromSeconds(AnimationLength),
+            Duration = TimeSpan.FromMilliseconds(AnimationLength),
         };
-        private ChoiceResult _result = ChoiceResult.Left;
         private readonly Grid _father;
         private Action<ChoiceResult> _callback;
         public ChoiceGrid(Grid father, ChoiceData data)
@@ -68,7 +65,6 @@ namespace AutumnBox.GUI.UI.Grids
 
         public void Hide()
         {
-            Hided?.Invoke(this, new HidedEventArgs() { Result = _result });
             this.BeginAnimation(MarginProperty, _hideAnimation);
             Task.Run(() =>
             {
@@ -87,13 +83,21 @@ namespace AutumnBox.GUI.UI.Grids
         private void BtnRight_Click(object sender, RoutedEventArgs e)
         {
             Hide();
-            _callback?.Invoke(ChoiceResult.Right);
+            Task.Run(() =>
+            {
+                Thread.Sleep(AnimationLength);
+                this.Dispatcher.Invoke(()=> { _callback?.Invoke(ChoiceResult.Right); });
+            });
         }
 
         private void BtnLeft_Click(object sender, RoutedEventArgs e)
         {
             Hide();
-            _callback?.Invoke(ChoiceResult.Left);
+            Task.Run(() =>
+            {
+                Thread.Sleep(AnimationLength);
+                this.Dispatcher.Invoke(() => { _callback?.Invoke(ChoiceResult.Left); });
+            });
         }
     }
 }

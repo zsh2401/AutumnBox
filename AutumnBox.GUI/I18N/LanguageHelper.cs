@@ -24,14 +24,14 @@ namespace AutumnBox.GUI.I18N
     public static class LanguageHelper
     {
         public static event EventHandler LanguageChanged;
-        public static Language[] Langs;
-        public static readonly string Prefix = "pack://application:,,,/AutumnBox.GUI.Resources;component/Lang/";
+        public static readonly Language[] Langs;
+        public static readonly string Prefix = "pack://application:,,,/AutumnBox.GUI;component/I18N/Langs/";
         static LanguageHelper()
         {
-            Langs = new Language[]{
-                new Language("zh-CN.xaml"),
-                new Language("en-US.xaml")
-            };
+            //Langs = new Language[]{
+            //    new Language("zh-CN.xaml"),
+            //    new Language("en-US.xaml")
+            //};
         }
         public static void LoadLanguage(Language lang)
         {

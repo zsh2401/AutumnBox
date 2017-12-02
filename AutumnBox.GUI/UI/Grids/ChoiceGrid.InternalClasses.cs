@@ -40,9 +40,5 @@ namespace AutumnBox.GUI.UI.Grids
                 TextBtnRight = App.Current.Resources["btnContinue"].ToString();
             }
         }
-        public class HidedEventArgs : EventArgs {
-			public ChoiceResult Result { get; internal set; }
-        }
-        public delegate void HidedEventHandler(object sender, HidedEventArgs e);
     }
 }

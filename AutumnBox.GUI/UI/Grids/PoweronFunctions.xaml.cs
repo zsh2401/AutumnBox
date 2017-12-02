@@ -127,8 +127,8 @@ namespace AutumnBox.GUI.UI.Grids
             var choiceGrid = new ChoiceGrid(((MainWindow)App.Current.MainWindow).GridToolsMain,
                 new ChoiceGrid.ChoiceData()
                 {
-                    Title = FindResource("Notice").ToString(),
-                    Text = FindResource("msgUnlockSystemTip").ToString()
+                    Title = FindResource("msgNotice").ToString(),
+                    Text = FindResource("msgUnlockSystemTip").ToString(),
                 });
             choiceGrid.Show((r) =>
             {
