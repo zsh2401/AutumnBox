@@ -11,10 +11,12 @@
 * Company: I am free man
 *
 \* =============================================================================*/
+using System;
 using System.Windows;
 
 namespace AutumnBox.GUI.Windows
 {
+    [Obsolete("please use GUI.UI.Cstm.MessageBlock to instead")]
     /// <summary>
     /// MMessageBox.xaml 的交互逻辑
     /// </summary>

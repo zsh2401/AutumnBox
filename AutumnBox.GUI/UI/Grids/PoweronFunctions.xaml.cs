@@ -50,7 +50,7 @@ namespace AutumnBox.GUI.UI.Grids
             {
                 return DeviceInfoHelper.IsInstalled(App.SelectedDevice, Basic.Flows.BreventServiceActivator.AppPackageName);
             });
-            if (isInstallThisApp == false) { MMessageBox.FastShow(App.Current.MainWindow, UIHelper.GetString("Warning"), UIHelper.GetString("msgPlsInstallBreventFirst")); return; }
+            if (isInstallThisApp == false) { BlockHelper.ShowMessageBlock("Warning", "msgPlsInstallBreventFirst"); return; }
             /*开始操作*/
             Basic.Flows.BreventServiceActivator bsa = new Basic.Flows.BreventServiceActivator();
             bsa.Init(new FlowArgs() { DevBasicInfo = App.SelectedDevice });
@@ -146,7 +146,7 @@ namespace AutumnBox.GUI.UI.Grids
 
         private void ButtonFullBackup_Click(object sender, RoutedEventArgs ex)
         {
-            MMessageBox.FastShow(App.Current.MainWindow, UIHelper.GetString("msgNotice"), UIHelper.GetString("msgNoticeForAndroidFullBackupRemove"));
+            BlockHelper.ShowMessageBlock("msgNotice", "msgNoticeForAndroidFullBackupRemove");
             //bool _screenIsOpen = ChoiceBox.FastShow(App.OwnerWindow,
             //    UIHelper.GetString("msgNotice"), 
             //    UIHelper.GetString("msgOpenTheScreenPls"),
@@ -279,7 +279,7 @@ namespace AutumnBox.GUI.UI.Grids
             {
                 return DeviceInfoHelper.IsInstalled(App.SelectedDevice, IceBoxActivator.AppPackageName);
             });
-            if (isInstallThisApp == false) { MMessageBox.FastShow(App.Current.MainWindow, UIHelper.GetString("Warning"), UIHelper.GetString("msgPlsInstallIceBoxFirst")); return; }
+            if (isInstallThisApp == false) { BlockHelper.ShowMessageBlock("Warning", "msgPlsInstallIceBoxFirst"); return; }
             /*提示用户删除账户*/
             bool _continue = await Task.Run(() =>
             {
@@ -305,7 +305,8 @@ namespace AutumnBox.GUI.UI.Grids
             {
                 return DeviceInfoHelper.IsInstalled(App.SelectedDevice, AirForzenActivator.AppPackageName);
             });
-            if (isInstallThisApp == false) { MMessageBox.FastShow(App.Current.MainWindow, UIHelper.GetString("Warning"), UIHelper.GetString("msgPlsInstallAirForzenFirst")); return; }
+
+            if (isInstallThisApp == false) { BlockHelper.ShowMessageBlock("Warning", "msgPlsInstallAirForzenFirst"); return; }
             /*提示用户删除账户*/
             bool _continue = await Task.Run(() =>
             {
@@ -330,7 +331,7 @@ namespace AutumnBox.GUI.UI.Grids
             {
                 return DeviceInfoHelper.IsInstalled(App.SelectedDevice, ShizukuManagerActivator.AppPackageName);
             });
-            if (isInstallThisApp == false) { MMessageBox.FastShow(App.Current.MainWindow, UIHelper.GetString("Warning"), UIHelper.GetString("msgPlsInstallShizukuManagerFirst")); return; }
+            if (isInstallThisApp == false) { BlockHelper.ShowMessageBlock("Warning", "msgPlsInstallShizukuManagerFirst"); return; }
             /*开始操作*/
             ShizukuManagerActivator shizukuManagerActivator = new ShizukuManagerActivator();
             shizukuManagerActivator.Init(new FlowArgs() { DevBasicInfo = App.SelectedDevice });
@@ -345,7 +346,7 @@ namespace AutumnBox.GUI.UI.Grids
             {
                 return DeviceInfoHelper.IsInstalled(App.SelectedDevice, IslandActivator.AppPackageName);
             });
-            if (isInstallThisApp == false) { MMessageBox.FastShow(App.Current.MainWindow, UIHelper.GetString("Warning"), UIHelper.GetString("msgPlsInstallIslandFirst")); return; }
+            if (isInstallThisApp == false) { BlockHelper.ShowMessageBlock("Warning", "msgPlsInstallIslandFirst"); return; }
             /*提示用户删除账户*/
             bool _continue = await Task.Run(() =>
             {

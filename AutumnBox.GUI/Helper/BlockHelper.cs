@@ -17,15 +17,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using static AutumnBox.GUI.Helper.UIHelper;
 namespace AutumnBox.GUI.Helper
 {
     public static class BlockHelper
     {
-        #region ChoiceBlock
-        private static object _choiceLock = new object();
-        private static ChoiceBlock _choiceBlock;
         private static MainWindow _mainWindow { get { return (MainWindow)App.Current.MainWindow; } }
+        private static Grid _mainGrid
+        {
+            get
+            {
+                return _mainWindow.GridMainTab;
+            }
+        }
+        #region ChoiceBlock
+        private static object _blockLock = new object();
+        private static ChoiceBlock _choiceBlock;
+
         public static void CloseChoiceBlock()
         {
             _choiceBlock.Hide();
@@ -33,11 +42,11 @@ namespace AutumnBox.GUI.Helper
         public static ChoiceResult ShowChoiceBlock(string keyTitle, string keyMessage, string keyTextLeftBtn = null, string keyTextRightBtn = null)
         {
             ChoiceResult returnResult = ChoiceResult.Cancel;
-            lock (_choiceLock)
+            lock (_blockLock)
             {
                 App.Current.Dispatcher.Invoke(() =>
                 {
-                    _choiceBlock = new ChoiceBlock(_mainWindow.GridMainTab, Make(keyTitle, keyMessage, keyTextLeftBtn, keyTextRightBtn));
+                    _choiceBlock = new ChoiceBlock(_mainGrid, Make(keyTitle, keyMessage, keyTextLeftBtn, keyTextRightBtn));
                     returnResult = _choiceBlock.Show();
                 });
             }
@@ -56,6 +65,19 @@ namespace AutumnBox.GUI.Helper
                 TextBtnLeft = (keyTextLeftBtn == null) ? UIHelper.GetString("btnCancel") : UIHelper.GetString(keyTextLeftBtn),
                 TextBtnRight = (keyTextRightBtn == null) ? UIHelper.GetString("btnOK") : UIHelper.GetString(keyTextRightBtn),
             };
+        }
+        #endregion
+
+        #region LoadingBlock
+        public static void ShowMessageBlock(string keyTitle, string keyMessage)
+        {
+            lock (_blockLock)
+            {
+                System.Windows.Application.Current.Dispatcher.Invoke(() =>
+                {
+                    new MessageBlock(_mainGrid, UIHelper.GetString(keyTitle), UIHelper.GetString(keyMessage)).Show();
+                });
+            }
         }
         #endregion
     }

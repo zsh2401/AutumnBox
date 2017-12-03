@@ -153,8 +153,8 @@
     <Compile Include="UI\Cstm\CstmTitleBar.xaml.cs">
       <DependentUpon>CstmTitleBar.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Cstm\MessageBox.xaml.cs">
-      <DependentUpon>MessageBox.xaml</DependentUpon>
+    <Compile Include="UI\Cstm\MessageBlock.xaml.cs">
+      <DependentUpon>MessageBlock.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Grids\AboutControl.xaml.cs">
       <DependentUpon>AboutControl.xaml</DependentUpon>
@@ -290,7 +290,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Cstm\MessageBox.xaml">
+    <Page Include="UI\Cstm\MessageBlock.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
