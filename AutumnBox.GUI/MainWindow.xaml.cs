@@ -18,6 +18,7 @@ using AutumnBox.Basic.Function;
 using AutumnBox.GUI.Cfg;
 using AutumnBox.GUI.Helper;
 using AutumnBox.GUI.NetUtil;
+using AutumnBox.GUI.UI.Cstm;
 using AutumnBox.GUI.UI.Grids;
 using AutumnBox.GUI.Windows;
 using AutumnBox.Support.CstmDebug;
@@ -195,14 +196,16 @@ namespace AutumnBox.GUI
             };
             if (SystemHelper.IsWin10)
             {
-                var result = await Task.Run(()=> {
-                    return UIHelper.RShowChoiceGrid("Notice", "msgShellChoiceTip", "Powershell", "CMD");
+                var result = await Task.Run(() =>
+                {
+                    return BlockHelper.ShowChoiceBlock("Notice", "msgShellChoiceTip", "Powershell", "CMD");
                 });
                 if (result == ChoiceResult.Left)
                 {
                     info.FileName = "powershell.exe";
                 }
-                else if (result == ChoiceResult.Cancel) {
+                else if (result == ChoiceResult.Cancel)
+                {
                     return;
                 }
             }

@@ -110,7 +110,7 @@ namespace AutumnBox.GUI.UI.Grids
         {
             bool _needToContinue = await Task.Run(() =>
             {
-                return UIHelper.ShowChoiceGrid("msgNotice",
+                return BlockHelper.BShowChoiceBlock("msgNotice",
                                     UIHelper.GetString("msgNoticeForRebootToEdlLine1") + "\n" +
                                     UIHelper.GetString("msgNoticeForRebootToEdlLine2") + "\n" +
                                      UIHelper.GetString("msgNoticeForRebootToEdlLine3"),

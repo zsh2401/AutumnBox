@@ -14,6 +14,7 @@ using AutumnBox.Basic.Flows;
 using System.IO;
 using System.Collections.Generic;
 using AutumnBox.Support.CstmDebug;
+using AutumnBox.GUI.UI.Cstm;
 
 namespace AutumnBox.GUI.UI.Grids
 {
@@ -123,23 +124,19 @@ namespace AutumnBox.GUI.UI.Grids
             }
         }
 
-        private void ButtonUnlockMiSystem_Click(object sender, RoutedEventArgs e)
+        private async void ButtonUnlockMiSystem_Click(object sender, RoutedEventArgs e)
         {
-            UIHelper.ShowChoiceGrid(new ChoiceData()
+            var result = await Task.Run(() =>
             {
-                Title = FindResource("msgNotice").ToString(),
-                Text = FindResource("msgUnlockSystemTip").ToString(),
-            },
-            (r) =>
-            {
-                if (r == ChoiceResult.Right)
-                {
-                    var fmp = FunctionModuleProxy.Create<SystemUnlocker>(new ModuleArgs(App.SelectedDevice));
-                    fmp.Finished += ((MainWindow)App.Current.MainWindow).FuncFinish;
-                    fmp.AsyncRun();
-                    UIHelper.ShowRateBox(fmp);
-                }
+                return BlockHelper.ShowChoiceBlock("msgNotice", "msgUnlockSystemTip");
             });
+            if (result == ChoiceResult.Right)
+            {
+                var fmp = FunctionModuleProxy.Create<SystemUnlocker>(new ModuleArgs(App.SelectedDevice));
+                fmp.Finished += ((MainWindow)App.Current.MainWindow).FuncFinish;
+                fmp.AsyncRun();
+                UIHelper.ShowRateBox(fmp);
+            }
         }
 
         private void ButtonChangeDpi_Click(object sender, RoutedEventArgs e)
@@ -168,7 +165,7 @@ namespace AutumnBox.GUI.UI.Grids
             {
                 ChoiceResult result = await Task.Run(() =>
                 {
-                    return UIHelper.RShowChoiceGrid("Warning", "warrningNeedRootAccess");
+                    return BlockHelper.ShowChoiceBlock("Warning", "warrningNeedRootAccess");
                 });
                 if (result != ChoiceResult.Right) return;
             }
@@ -190,7 +187,7 @@ namespace AutumnBox.GUI.UI.Grids
             {
                 ChoiceResult result = await Task.Run(() =>
                 {
-                    return UIHelper.RShowChoiceGrid("Warning", "warrningNeedRootAccess");
+                    return BlockHelper.ShowChoiceBlock("Warning", "warrningNeedRootAccess");
                 });
                 if (result != ChoiceResult.Right) return;
             }
@@ -212,7 +209,7 @@ namespace AutumnBox.GUI.UI.Grids
             {
                 ChoiceResult result = await Task.Run(() =>
                 {
-                    return UIHelper.RShowChoiceGrid("Warning", "warrningNeedRootAccess");
+                    return BlockHelper.ShowChoiceBlock("Warning", "warrningNeedRootAccess");
                 });
                 if (result != ChoiceResult.Right) return;
             }
@@ -236,13 +233,13 @@ namespace AutumnBox.GUI.UI.Grids
             {
                 ChoiceResult result = await Task.Run(() =>
                 {
-                    return UIHelper.RShowChoiceGrid("Warning", "warrningNeedRootAccess");
+                    return BlockHelper.ShowChoiceBlock("Warning", "warrningNeedRootAccess");
                 });
                 if (result != ChoiceResult.Right) return;
             }
             bool _continue = await Task.Run(() =>
             {
-                return UIHelper.ShowChoiceGrid("Warning", "msgDelScreenLock");
+                return BlockHelper.BShowChoiceBlock("Warning", "msgDelScreenLock");
             });
             if (!_continue) return;
             FunctionModuleProxy fmp = FunctionModuleProxy.Create<ScreenLockDeleter>(new ModuleArgs(App.SelectedDevice));
@@ -257,7 +254,7 @@ namespace AutumnBox.GUI.UI.Grids
             {
                 ChoiceResult result = await Task.Run(() =>
                 {
-                    return UIHelper.RShowChoiceGrid("Warning", "warrningNeedRootAccess");
+                    return BlockHelper.ShowChoiceBlock("Warning", "warrningNeedRootAccess");
                 });
                 if (result != ChoiceResult.Right) return;
             }
@@ -275,7 +272,6 @@ namespace AutumnBox.GUI.UI.Grids
             }
         }
 
-
         private async void ButtonIceBoxAct_Click(object sender, RoutedEventArgs e)
         {
             /*检查是否安装了这个App*/
@@ -287,11 +283,11 @@ namespace AutumnBox.GUI.UI.Grids
             /*提示用户删除账户*/
             bool _continue = await Task.Run(() =>
             {
-                return UIHelper.ShowChoiceGrid(
-                    UIHelper.GetString("msgNotice"),
+                return BlockHelper.BShowChoiceBlock(
+                    "msgNotice",
                     $"{UIHelper.GetString("msgIceActLine1")}\n{UIHelper.GetString("msgIceActLine2")}\n{UIHelper.GetString("msgIceActLine3")}",
-                    UIHelper.GetString("btnCancel"),
-                    UIHelper.GetString("btnContinue"));
+                    "btnCancel",
+                    "btnContinue");
             });
             Logger.D(_continue.ToString());
             if (!_continue) return;
@@ -313,7 +309,7 @@ namespace AutumnBox.GUI.UI.Grids
             /*提示用户删除账户*/
             bool _continue = await Task.Run(() =>
             {
-                return UIHelper.ShowChoiceGrid(
+                return BlockHelper.BShowChoiceBlock(
                     "msgNotice",
                     $"{UIHelper.GetString("msgIceActLine1")}\n{UIHelper.GetString("msgIceActLine2")}\n{UIHelper.GetString("msgIceActLine3")}",
                     "btnCancel",
@@ -353,7 +349,7 @@ namespace AutumnBox.GUI.UI.Grids
             /*提示用户删除账户*/
             bool _continue = await Task.Run(() =>
             {
-                return UIHelper.ShowChoiceGrid("msgNotice",
+                return BlockHelper.BShowChoiceBlock("msgNotice",
                     $"{UIHelper.GetString("msgIceActLine1")}\n{UIHelper.GetString("msgIceActLine2")}\n{UIHelper.GetString("msgIceActLine3")}",
                     "btnCancel",
                     "btnContinue"
@@ -371,11 +367,11 @@ namespace AutumnBox.GUI.UI.Grids
         {
             var choiceResult = await Task.Run(() =>
             {
-                return UIHelper.RShowChoiceGrid(
-                    UIHelper.GetString("PleaseSelected"),
-                    UIHelper.GetString("msgVirtualButtonHider"),
-                    UIHelper.GetString("btnHide"),
-                    UIHelper.GetString("btnUnhide"));
+                return BlockHelper.ShowChoiceBlock(
+                    "PleaseSelected",
+                    "msgVirtualButtonHider",
+                    "btnHide",
+                    "btnUnhide");
             });
             if (choiceResult == ChoiceResult.Cancel) return;
             var args = new VirtualButtonHiderArgs()

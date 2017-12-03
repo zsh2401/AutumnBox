@@ -32,8 +32,8 @@
                 </TransformGroup>
             </TextBlock.RenderTransform>
         </TextBlock>
-        <Image Source="/AutumnBox;component/Resources/Icon/donate.png" HorizontalAlignment="Left" Height="28" Margin="235,338,0,0" VerticalAlignment="Top" Width="31"/>
-        <Image Source="/AutumnBox;component/Resources/Image/github.png" HorizontalAlignment="Left" Height="28" Margin="426,304,0,0" VerticalAlignment="Top" Width="31"/>
+        <Image Source="/AutumnBox;component/Resources/Icons/donate.png" HorizontalAlignment="Left" Height="28" Margin="235,338,0,0" VerticalAlignment="Top" Width="31"/>
+        <Image Source="/AutumnBox;component/Resources/Images/github.png" HorizontalAlignment="Left" Height="28" Margin="426,304,0,0" VerticalAlignment="Top" Width="31"/>
         <Label Foreground="{DynamicResource ForgBrush}" x:Name="LabelVersion" Content="*.*.*.*-*" HorizontalAlignment="Left" Margin="240,208,0,0" VerticalAlignment="Top" Width="181" FontFamily="Microsoft YaHei Light"/>
         <Label Foreground="{DynamicResource ForgBrush}" x:Name="LabelCompiledDate" Content="00-00-0000" HorizontalAlignment="Left" Margin="426,208,0,0" VerticalAlignment="Top" Width="150" FontFamily="Microsoft YaHei Light"/>
     </Grid>
