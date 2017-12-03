@@ -17,14 +17,23 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AutumnBox.GUI.UI.Grids
+namespace AutumnBox.GUI.UI.Cstm
 {
     /// <summary>
     /// ChoiceGrid.xaml 的交互逻辑
     /// </summary>
-    public partial class ChoiceGrid : UserControl, IDisposable
+    public partial class ChoiceBlock : UserControl, IDisposable
     {
         public static readonly int AnimationLength = 300;
+        public bool HasExited { get; private set; } = true;
+        /// <summary>
+        /// 等待结束
+        /// </summary>
+        public void WaitToExit()
+        {
+            while (!HasExited) ;
+        }
+
         private readonly ThicknessAnimation _riseAnimation = new ThicknessAnimation()
         {
             To = new Thickness(0, 0, 0, 0),
@@ -35,8 +44,10 @@ namespace AutumnBox.GUI.UI.Grids
             Duration = TimeSpan.FromMilliseconds(AnimationLength),
         };
         private readonly Grid _father;
+
         private Action<ChoiceResult> _callback;
-        public ChoiceGrid(Grid father, ChoiceData data)
+
+        public ChoiceBlock(Grid father, ChoiceData data)
         {
             InitializeComponent();
             BtnLeft.Content = data.TextBtnLeft;
@@ -50,6 +61,7 @@ namespace AutumnBox.GUI.UI.Grids
             SetTop(_father.ActualHeight);
             _hideAnimation.To = new Thickness(0, _father.ActualHeight, 0, 0);
         }
+
         private void SetTop(double topValue)
         {
             var margin = this.Margin;
@@ -62,16 +74,40 @@ namespace AutumnBox.GUI.UI.Grids
             this._callback = callback;
             this.BeginAnimation(MarginProperty, _riseAnimation);
         }
-
+        public ChoiceResult Show()
+        {
+            ChoiceResult result = ChoiceResult.Cancel;
+            this.Dispatcher.Invoke(() =>
+            {
+                this.Show((r) =>
+                {
+                    result = r;
+                });
+            });
+            WaitToExit();
+            return result;
+        }
         public void Hide()
         {
-            this.BeginAnimation(MarginProperty, _hideAnimation);
-            Task.Run(() =>
+            Hide(ChoiceResult.Cancel);
+        }
+
+        private void Hide(ChoiceResult result)
+        {
+            this.Dispatcher.Invoke(() =>
             {
-                Thread.Sleep(5000);
-                Dispose();
+                HasExited = true;
+                this.BeginAnimation(MarginProperty, _hideAnimation);
+                Task.Run(() =>
+                {
+                    Thread.Sleep(AnimationLength);
+                    this.Dispatcher.Invoke(() => { _callback?.Invoke(result); });
+                    Thread.Sleep(5000);
+                    Dispose();
+                });
             });
         }
+
         public void Dispose()
         {
             this.Dispatcher.Invoke(() =>
@@ -80,24 +116,15 @@ namespace AutumnBox.GUI.UI.Grids
                 GC.SuppressFinalize(this);
             });
         }
+
         private void BtnRight_Click(object sender, RoutedEventArgs e)
         {
-            Hide();
-            Task.Run(() =>
-            {
-                Thread.Sleep(AnimationLength);
-                this.Dispatcher.Invoke(()=> { _callback?.Invoke(ChoiceResult.Right); });
-            });
+            Hide(ChoiceResult.Right);
         }
 
         private void BtnLeft_Click(object sender, RoutedEventArgs e)
         {
-            Hide();
-            Task.Run(() =>
-            {
-                Thread.Sleep(AnimationLength);
-                this.Dispatcher.Invoke(() => { _callback?.Invoke(ChoiceResult.Left); });
-            });
+            Hide(ChoiceResult.Left);
         }
 
         private void Image_MouseDown(object sender, MouseButtonEventArgs e)

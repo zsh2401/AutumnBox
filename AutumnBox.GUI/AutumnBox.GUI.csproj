@@ -129,6 +129,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Cfg\ConfigPropertyAttribute.cs" />
+    <Compile Include="Helper\BlockHelper.cs" />
     <Compile Include="Helper\BlurHelper.cs" />
     <Compile Include="Helper\DataHelper.cs" />
     <Compile Include="Helper\SystemHelper.cs" />
@@ -152,14 +153,17 @@
     <Compile Include="UI\Cstm\CstmTitleBar.xaml.cs">
       <DependentUpon>CstmTitleBar.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Cstm\MessageBox.xaml.cs">
+      <DependentUpon>MessageBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Grids\AboutControl.xaml.cs">
       <DependentUpon>AboutControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Grids\ChoiceData.cs" />
-    <Compile Include="UI\Grids\ChoiceGrid.xaml.cs">
-      <DependentUpon>ChoiceGrid.xaml</DependentUpon>
+    <Compile Include="UI\Cstm\ChoiceData.cs" />
+    <Compile Include="UI\Cstm\ChoiceBlock.xaml.cs">
+      <DependentUpon>ChoiceBlock.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Grids\ChoiceResult.cs" />
+    <Compile Include="UI\Cstm\ChoiceResult.cs" />
     <Compile Include="UI\Grids\DeviceInfoPanel.xaml.cs">
       <DependentUpon>DeviceInfoPanel.xaml</DependentUpon>
     </Compile>
@@ -286,11 +290,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UI\Cstm\MessageBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UI\Grids\AboutControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Grids\ChoiceGrid.xaml">
+    <Page Include="UI\Cstm\ChoiceBlock.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

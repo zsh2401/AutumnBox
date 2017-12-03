@@ -17,7 +17,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AutumnBox.GUI.UI.Grids
+namespace AutumnBox.GUI.UI.Cstm
 {
     public class ChoiceData
     {
