@@ -2,7 +2,6 @@
 using AutumnBox.Basic.Function.Modules;
 using System;
 using System.Windows;
-using System.Windows.Controls;
 using AutumnBox.Basic.Devices;
 using AutumnBox.Basic.Function;
 using System.Windows.Forms;
@@ -48,14 +47,40 @@ namespace AutumnBox.GUI.UI.Grids
             /*检查是否安装了这个App*/
             bool? isInstallThisApp = await Task.Run(() =>
             {
-                return DeviceInfoHelper.IsInstalled(App.SelectedDevice, Basic.Flows.BreventServiceActivator.AppPackageName);
+                return DeviceInfoHelper.IsInstalled(App.SelectedDevice, BreventServiceActivator.AppPackageName);
             });
             if (isInstallThisApp == false) { BlockHelper.ShowMessageBlock("Warning", "msgPlsInstallBreventFirst"); return; }
+            /*判断是否是安卓8.0操作系统*/
+            bool isAndroidO = true;
+            try
+            {
+                Version currentDevAndroidVersion = ((MainWindow)System.Windows.Application.Current.MainWindow).DevInfoPanel.CurrentDeviceAndroidVersion;
+                isAndroidO = currentDevAndroidVersion >= new Version("8.0");
+            }
+            catch (NullReferenceException) { }
+            /*如果是安卓O,询问*/
             /*开始操作*/
-            Basic.Flows.BreventServiceActivator bsa = new Basic.Flows.BreventServiceActivator();
-            bsa.Init(new FlowArgs() { DevBasicInfo = App.SelectedDevice });
-            bsa.RunAsync();
-            UIHelper.ShowRateBox(bsa);
+            bool fixAndroidOAdb = await Task.Run(() =>
+            {
+                try
+                {
+                    Version currentDevAndroidVersion = null;
+                    Dispatcher.Invoke(() =>
+                    {
+                        currentDevAndroidVersion = ((MainWindow)System.Windows.Application.Current.MainWindow).DevInfoPanel.CurrentDeviceAndroidVersion;
+                    });
+                    if (currentDevAndroidVersion >= new Version("8.0"))
+                    {
+                        return BlockHelper.BShowChoiceBlock("msgNotice", "msgBreventFixTip", "btnDoNotOpen", "btnOpen");
+                    }
+                }
+                catch (NullReferenceException) { }
+                return false;
+            });
+            BreventServiceActivator activator = new BreventServiceActivator();
+            activator.Init(new BreventServiceActivatorArgs() { DevBasicInfo = App.SelectedDevice, FixAndroidOAdb = fixAndroidOAdb });
+            activator.RunAsync();
+            UIHelper.ShowRateBox(activator);
         }
 
         private void ButtonPushFileToSdcard_Click(object sender, RoutedEventArgs e)

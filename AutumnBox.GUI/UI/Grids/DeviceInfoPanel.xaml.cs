@@ -18,6 +18,7 @@ namespace AutumnBox.GUI.UI.Grids
     /// </summary>
     public partial class DeviceInfoPanel : UserControl, IDeviceInfoRefreshable, ILogSender
     {
+        public Version CurrentDeviceAndroidVersion { get; private set; }
         public bool CurrentDeviceIsRoot { get; private set; }
         private static Action<Bitmap, string> _SetStatusPanel;
         public string LogTag => "DevInfoPanel";
@@ -84,6 +85,15 @@ namespace AutumnBox.GUI.UI.Grids
             LabelScreen.Content = App.Current.Resources["Getting"].ToString();
             LabelFlashMemInfo.Content = App.Current.Resources["Getting"].ToString();
             LabelRootStatus.Content = App.Current.Resources["Getting"].ToString();
+            LabelAndroidVersion.Content = "8.0";
+            try
+            {
+                CurrentDeviceAndroidVersion = new Version(LabelAndroidVersion.Content.ToString());
+            }
+            catch
+            {
+                CurrentDeviceAndroidVersion = null;
+            }
             switch (App.SelectedDevice.Status)
             {
                 case DeviceStatus.Fastboot:

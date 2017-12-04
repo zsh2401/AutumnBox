@@ -21,13 +21,16 @@ using AutumnBox.Basic.Flows.Result;
 
 namespace AutumnBox.Basic.Flows
 {
-    public class BreventServiceActivator : FunctionFlow<FlowArgs, BreventServiceActivatorResult>
+    public class BreventServiceActivatorArgs : FlowArgs {
+        public bool FixAndroidOAdb { get; set; } = true;
+    }
+    public class BreventServiceActivator : FunctionFlow<BreventServiceActivatorArgs, BreventServiceActivatorResult>
     {
         private int retCode = 0;
         private ShellOutput _shellOutput;
         public static readonly string AppPackageName = "me.piebridge.brevent";
         private static readonly string _defaultShellCommand = "sh /data/data/me.piebridge.brevent/brevent.sh";
-        protected override OutputData MainMethod(ToolKit<FlowArgs> toolKit)
+        protected override OutputData MainMethod(ToolKit<BreventServiceActivatorArgs> toolKit)
         {
             FunctionModuleProxy.Create<ActivityLauncher>(new ActivityLaunchArgs(toolKit.Args.DevBasicInfo)
             { PackageName = "me.piebridge.brevent", ActivityName = ".ui.BreventActivity" }).SyncRun();

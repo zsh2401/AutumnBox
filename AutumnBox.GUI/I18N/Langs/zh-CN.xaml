@@ -5,7 +5,7 @@
 
     <s:String x:Key="AppName">AutumnBox</s:String>
     <s:String x:Key="LanguageName">简体中文</s:String>
-
+    
     <!--按钮-->
     <s:String x:Key="rbtnFlashAll">全部清空</s:String>
     <s:String x:Key="rbtnFlashAllExceptStorage">保留内部存储</s:String>
@@ -14,6 +14,8 @@
     <s:String x:Key="btnVBHide">隐藏虚拟键</s:String>
     <s:String x:Key="btnCopy">复制</s:String>
     <s:String x:Key="btnCopied">已复制</s:String>
+    <s:String x:Key="btnOpen">开启</s:String>
+    <s:String x:Key="btnDoNotOpen">不开启</s:String>
     <s:String x:Key="btnTapEmu">模拟点击</s:String>
     <s:String x:Key="btnDeleteScreenLock">解除屏幕锁</s:String>
     <s:String x:Key="btnRebootToSnapdragon9008">重启到高通9008救砖模式</s:String>
@@ -75,6 +77,7 @@
     <!--tabitem-->
 
     <!--信息(主要用于MMesssageBox)-->
+    <s:String x:Key="msgBreventFixTip">检测到您是安卓8.0系统,为了防止ADB服务被异常终止,请问需要在激活后开启ADB网络调试以保证服务正常运行吗?这可能会带来不可测的风险!</s:String>
     <s:String x:Key="msgUnknowError">未知的错误!</s:String>
     <s:String x:Key="msgIceBoxActUnknowError">未知的错误!</s:String>
     <s:String x:Key="msgRelockWarning">注意,本功能将会把您的设备重新上Bootloader锁,这样您的设备将会变得比较安全但是您将失去root权限,最重要的是将会彻底清除您的设备上的数据!请做好数据备份谨慎而行!并且在操作时不要拔掉设备,否则后果自负</s:String>
