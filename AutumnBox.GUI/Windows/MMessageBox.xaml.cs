@@ -11,37 +11,34 @@
 * Company: I am free man
 *
 \* =============================================================================*/
+using AutumnBox.GUI.Helper;
 using System;
 using System.Windows;
 
 namespace AutumnBox.GUI.Windows
 {
-    [Obsolete("please use GUI.UI.Cstm.MessageBlock to instead")]
+    public struct MMessageBoxData
+    {
+        public string KeyTitle { get; set; }
+        public string KeyText { get; set; }
+    }
     /// <summary>
     /// MMessageBox.xaml 的交互逻辑
     /// </summary>
     public partial class MMessageBox : Window
     {
-        public MMessageBox()
+        public MMessageBoxData Data { get; set; }
+        public MMessageBox(Window owner)
         {
             InitializeComponent();
-            this.Topmost = true;
+            this.Owner = owner;
             TitleBar.OwnerWindow = this;
         }
-        public static void FastShow(string title, string content)
+        public new void ShowDialog()
         {
-            MMessageBox m = new MMessageBox();
-            m.textBlockContent.Text = content;
-            m.labelTitle.Content = title;
-            m.ShowDialog();
-        }
-        public static void FastShow(Window ownerWindow, string title, string content)
-        {
-            MMessageBox m = new MMessageBox();
-            m.textBlockContent.Text = content;
-            m.labelTitle.Content = title;
-            m.Owner = ownerWindow;
-            m.ShowDialog();
+            LabelTitle.Content = UIHelper.GetString(Data.KeyTitle ?? "msgNotice");
+            TBText.Text = UIHelper.GetString(Data.KeyText ?? "WTF?");
+            base.ShowDialog();
         }
     }
 }

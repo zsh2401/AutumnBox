@@ -22,7 +22,7 @@ using AutumnBox.Basic.Flows.Result;
 namespace AutumnBox.Basic.Flows
 {
     public class BreventServiceActivatorArgs : FlowArgs {
-        public bool FixAndroidOAdb { get; set; } = true;
+        public bool FixAndroidOAdb { get; set; } = false;
     }
     public class BreventServiceActivator : FunctionFlow<BreventServiceActivatorArgs, BreventServiceActivatorResult>
     {

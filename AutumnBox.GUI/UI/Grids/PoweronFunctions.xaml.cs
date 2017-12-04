@@ -13,7 +13,6 @@ using AutumnBox.Basic.Flows;
 using System.IO;
 using System.Collections.Generic;
 using AutumnBox.Support.CstmDebug;
-using AutumnBox.GUI.UI.Cstm;
 
 namespace AutumnBox.GUI.UI.Grids
 {
@@ -49,36 +48,34 @@ namespace AutumnBox.GUI.UI.Grids
             {
                 return DeviceInfoHelper.IsInstalled(App.SelectedDevice, BreventServiceActivator.AppPackageName);
             });
-            if (isInstallThisApp == false) { BlockHelper.ShowMessageBlock("Warning", "msgPlsInstallBreventFirst"); return; }
+            if (isInstallThisApp == false) { Box.ShowMessageDialog("Warning", "msgPlsInstallBreventFirst"); return; }
             /*判断是否是安卓8.0操作系统*/
-            bool isAndroidO = true;
+            bool isAndroidO = false;
             try
             {
                 Version currentDevAndroidVersion = ((MainWindow)System.Windows.Application.Current.MainWindow).DevInfoPanel.CurrentDeviceAndroidVersion;
                 isAndroidO = currentDevAndroidVersion >= new Version("8.0");
             }
             catch (NullReferenceException) { }
-            /*如果是安卓O,询问*/
-            /*开始操作*/
-            bool fixAndroidOAdb = await Task.Run(() =>
+            /*如果是安卓O,询问用户是否要在启动脚本后开启网络ADB*/
+            var args = new BreventServiceActivatorArgs() { DevBasicInfo = App.SelectedDevice };
+            if (isAndroidO)
             {
-                try
-                {
-                    Version currentDevAndroidVersion = null;
-                    Dispatcher.Invoke(() =>
-                    {
-                        currentDevAndroidVersion = ((MainWindow)System.Windows.Application.Current.MainWindow).DevInfoPanel.CurrentDeviceAndroidVersion;
-                    });
-                    if (currentDevAndroidVersion >= new Version("8.0"))
-                    {
-                        return BlockHelper.BShowChoiceBlock("msgNotice", "msgBreventFixTip", "btnDoNotOpen", "btnOpen");
-                    }
+                var result = Box.ShowChoiceDialog("msgNotice", "msgBreventFixTip", "btnDoNotOpen", "btnOpen");
+                switch (result) {
+                    case Windows.ChoiceResult.BtnCancel:
+                        return;
+                    case Windows.ChoiceResult.BtnLeft:
+                        args.FixAndroidOAdb = false;
+                        break;
+                    case Windows.ChoiceResult.BtnRight:
+                        args.FixAndroidOAdb = true;
+                        break;
                 }
-                catch (NullReferenceException) { }
-                return false;
-            });
+            }
+            /*开始操作*/
             BreventServiceActivator activator = new BreventServiceActivator();
-            activator.Init(new BreventServiceActivatorArgs() { DevBasicInfo = App.SelectedDevice, FixAndroidOAdb = fixAndroidOAdb });
+            activator.Init(args);
             activator.RunAsync();
             UIHelper.ShowRateBox(activator);
         }
@@ -149,13 +146,10 @@ namespace AutumnBox.GUI.UI.Grids
             }
         }
 
-        private async void ButtonUnlockMiSystem_Click(object sender, RoutedEventArgs e)
+        private void ButtonUnlockMiSystem_Click(object sender, RoutedEventArgs e)
         {
-            var result = await Task.Run(() =>
-            {
-                return BlockHelper.ShowChoiceBlock("msgNotice", "msgUnlockSystemTip");
-            });
-            if (result == ChoiceResult.Right)
+
+            if (Box.ShowChoiceDialog("msgNotice", "msgUnlockSystemTip") == Windows.ChoiceResult.BtnRight)
             {
                 var fmp = FunctionModuleProxy.Create<SystemUnlocker>(new ModuleArgs(App.SelectedDevice));
                 fmp.Finished += ((MainWindow)App.Current.MainWindow).FuncFinish;
@@ -171,7 +165,7 @@ namespace AutumnBox.GUI.UI.Grids
 
         private void ButtonFullBackup_Click(object sender, RoutedEventArgs ex)
         {
-            BlockHelper.ShowMessageBlock("msgNotice", "msgNoticeForAndroidFullBackupRemove");
+            //BlockHelper.ShowMessageBlock("msgNotice", "msgNoticeForAndroidFullBackupRemove");
             //bool _screenIsOpen = ChoiceBox.FastShow(App.OwnerWindow,
             //    UIHelper.GetString("msgNotice"), 
             //    UIHelper.GetString("msgOpenTheScreenPls"),
@@ -184,15 +178,11 @@ namespace AutumnBox.GUI.UI.Grids
             //fmp.AsyncRun();
         }
 
-        private async void ButtonExtractBootImg_Click(object sender, RoutedEventArgs e)
+        private void ButtonExtractBootImg_Click(object sender, RoutedEventArgs e)
         {
             if (!((MainWindow)App.Current.MainWindow).DevInfoPanel.CurrentDeviceIsRoot)
             {
-                ChoiceResult result = await Task.Run(() =>
-                {
-                    return BlockHelper.ShowChoiceBlock("Warning", "warrningNeedRootAccess");
-                });
-                if (result != ChoiceResult.Right) return;
+                if (!Box.BShowChoiceDialog("Warning", "warrningNeedRootAccess")) return;
             }
             FolderBrowserDialog fbd = new FolderBrowserDialog
             {
@@ -206,15 +196,11 @@ namespace AutumnBox.GUI.UI.Grids
             UIHelper.ShowRateBox(fmp);
         }
 
-        private async void ButtonExtractRecImg_Click(object sender, RoutedEventArgs e)
+        private void ButtonExtractRecImg_Click(object sender, RoutedEventArgs e)
         {
             if (!((MainWindow)App.Current.MainWindow).DevInfoPanel.CurrentDeviceIsRoot)
             {
-                ChoiceResult result = await Task.Run(() =>
-                {
-                    return BlockHelper.ShowChoiceBlock("Warning", "warrningNeedRootAccess");
-                });
-                if (result != ChoiceResult.Right) return;
+                if (!Box.BShowChoiceDialog("Warning", "warrningNeedRootAccess")) return;
             }
             FolderBrowserDialog fbd = new FolderBrowserDialog
             {
@@ -228,15 +214,11 @@ namespace AutumnBox.GUI.UI.Grids
             UIHelper.ShowRateBox(fmp);
         }
 
-        private async void ButtonFlashBootImg_Click(object sender, RoutedEventArgs e)
+        private void ButtonFlashBootImg_Click(object sender, RoutedEventArgs e)
         {
             if (!((MainWindow)App.Current.MainWindow).DevInfoPanel.CurrentDeviceIsRoot)
             {
-                ChoiceResult result = await Task.Run(() =>
-                {
-                    return BlockHelper.ShowChoiceBlock("Warning", "warrningNeedRootAccess");
-                });
-                if (result != ChoiceResult.Right) return;
+                if (!Box.BShowChoiceDialog("Warning", "warrningNeedRootAccess")) return;
             }
             Microsoft.Win32.OpenFileDialog fileDialog = new Microsoft.Win32.OpenFileDialog();
             fileDialog.Reset();
@@ -256,11 +238,7 @@ namespace AutumnBox.GUI.UI.Grids
         {
             if (!((MainWindow)App.Current.MainWindow).DevInfoPanel.CurrentDeviceIsRoot)
             {
-                ChoiceResult result = await Task.Run(() =>
-                {
-                    return BlockHelper.ShowChoiceBlock("Warning", "warrningNeedRootAccess");
-                });
-                if (result != ChoiceResult.Right) return;
+                if (!Box.BShowChoiceDialog("Warning", "warrningNeedRootAccess")) return;
             }
             bool _continue = await Task.Run(() =>
             {
@@ -273,15 +251,11 @@ namespace AutumnBox.GUI.UI.Grids
             UIHelper.ShowRateBox();
         }
 
-        private async void ButtonFlashRecImg_Click(object sender, RoutedEventArgs e)
+        private void ButtonFlashRecImg_Click(object sender, RoutedEventArgs e)
         {
             if (!((MainWindow)App.Current.MainWindow).DevInfoPanel.CurrentDeviceIsRoot)
             {
-                ChoiceResult result = await Task.Run(() =>
-                {
-                    return BlockHelper.ShowChoiceBlock("Warning", "warrningNeedRootAccess");
-                });
-                if (result != ChoiceResult.Right) return;
+                if (!Box.BShowChoiceDialog("Warning", "warrningNeedRootAccess")) return;
             }
             Microsoft.Win32.OpenFileDialog fileDialog = new Microsoft.Win32.OpenFileDialog();
             fileDialog.Reset();
@@ -304,7 +278,7 @@ namespace AutumnBox.GUI.UI.Grids
             {
                 return DeviceInfoHelper.IsInstalled(App.SelectedDevice, IceBoxActivator.AppPackageName);
             });
-            if (isInstallThisApp == false) { BlockHelper.ShowMessageBlock("Warning", "msgPlsInstallIceBoxFirst"); return; }
+            if (isInstallThisApp == false) { Box.ShowMessageDialog("Warning", "msgPlsInstallIceBoxFirst"); return; }
             /*提示用户删除账户*/
             bool _continue = await Task.Run(() =>
             {
@@ -331,7 +305,7 @@ namespace AutumnBox.GUI.UI.Grids
                 return DeviceInfoHelper.IsInstalled(App.SelectedDevice, AirForzenActivator.AppPackageName);
             });
 
-            if (isInstallThisApp == false) { BlockHelper.ShowMessageBlock("Warning", "msgPlsInstallAirForzenFirst"); return; }
+            if (isInstallThisApp == false) { Box.ShowMessageDialog("Warning", "msgPlsInstallAirForzenFirst"); return; }
             /*提示用户删除账户*/
             bool _continue = await Task.Run(() =>
             {
@@ -356,7 +330,7 @@ namespace AutumnBox.GUI.UI.Grids
             {
                 return DeviceInfoHelper.IsInstalled(App.SelectedDevice, ShizukuManagerActivator.AppPackageName);
             });
-            if (isInstallThisApp == false) { BlockHelper.ShowMessageBlock("Warning", "msgPlsInstallShizukuManagerFirst"); return; }
+            if (isInstallThisApp == false) { Box.ShowMessageDialog("Warning", "msgPlsInstallShizukuManagerFirst"); return; }
             /*开始操作*/
             ShizukuManagerActivator shizukuManagerActivator = new ShizukuManagerActivator();
             shizukuManagerActivator.Init(new FlowArgs() { DevBasicInfo = App.SelectedDevice });
@@ -371,7 +345,7 @@ namespace AutumnBox.GUI.UI.Grids
             {
                 return DeviceInfoHelper.IsInstalled(App.SelectedDevice, IslandActivator.AppPackageName);
             });
-            if (isInstallThisApp == false) { BlockHelper.ShowMessageBlock("Warning", "msgPlsInstallIslandFirst"); return; }
+            if (isInstallThisApp == false) { Box.ShowMessageDialog("Warning", "msgPlsInstallIslandFirst"); return; }
             /*提示用户删除账户*/
             bool _continue = await Task.Run(() =>
             {
@@ -389,21 +363,17 @@ namespace AutumnBox.GUI.UI.Grids
             UIHelper.ShowRateBox(islandActivator);
         }
 
-        private async void ButtonVirtualBtnHide_Click(object sender, RoutedEventArgs e)
+        private void ButtonVirtualBtnHide_Click(object sender, RoutedEventArgs e)
         {
-            var choiceResult = await Task.Run(() =>
-            {
-                return BlockHelper.ShowChoiceBlock(
-                    "PleaseSelected",
+            var choiceResult = Box.ShowChoiceDialog("PleaseSelected",
                     "msgVirtualButtonHider",
                     "btnHide",
                     "btnUnhide");
-            });
-            if (choiceResult == ChoiceResult.Cancel) return;
+            if (choiceResult == Windows.ChoiceResult.BtnCancel) return;
             var args = new VirtualButtonHiderArgs()
             {
                 DevBasicInfo = App.SelectedDevice,
-                IsHide = (choiceResult == ChoiceResult.Right),
+                IsHide = (choiceResult == Windows.ChoiceResult.BtnRight),
             };
             VirtualButtonHider hider = new VirtualButtonHider();
             hider.Init(args);

@@ -5,12 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AutumnBox.GUI.UI"
         mc:Ignorable="d"
-        Title="ChoiceBox" Height="320.282" Width="484.225" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterOwner" Background="#FF009AD6" ShowInTaskbar="False">
-    <Grid Margin="3,0,3,3" Background="White">
-        <Label x:Name="labelTitle" Content="Something...." HorizontalAlignment="Left" VerticalAlignment="Top" Width="478" Height="52" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18" FontFamily="Microsoft YaHei UI Light" Background="#FF009AD6" MouseMove="labelTitle_MouseMove"/>
-        <Button x:Name="btnCancel" Content="{DynamicResource btnCancel}" HorizontalAlignment="Left" Margin="77,282,0,0" VerticalAlignment="Top" Width="165" Background="White" Height="28" Click="Button_Click_1"/>
-        <Button x:Name="btnOk" Content="{DynamicResource btnOK}" HorizontalAlignment="Left" Margin="247,282,0,0" VerticalAlignment="Top" Width="165" Background="White" Height="28" Click="Button_Click"/>
-        <TextBlock x:Name="textBlockContent" TextAlignment="Center" HorizontalAlignment="Left" Margin="0,66,0,0" TextWrapping="Wrap" Text="Content" VerticalAlignment="Top" Height="211" Width="474" FontFamily="Microsoft YaHei UI Light" FontSize="18" Background="White"/>
+        Title="ChoiceBox" Height="320.282" Width="484.225" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterOwner" Background="{DynamicResource BasicBrush}" ShowInTaskbar="False" MouseDown="Window_MouseDown">
+    <Grid Margin="3,0,3,3" Background="{DynamicResource BackBrush}">
+        <Label x:Name="LabelTitle" Content="Something...." HorizontalAlignment="Left" VerticalAlignment="Top" Width="478" Height="52" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18" FontFamily="Microsoft YaHei UI Light" Background="#FF009AD6"/>
+        <Button x:Name="BtnLeft" Content="{DynamicResource btnCancel}" HorizontalAlignment="Left" Margin="77,282,0,0" VerticalAlignment="Top" Width="165" Background="White" Height="28" Click="BtnLeft_Click"/>
+        <Button x:Name="BtnRight" Content="{DynamicResource btnOK}" HorizontalAlignment="Left" Margin="247,282,0,0" VerticalAlignment="Top" Width="165" Background="White" Height="28" Click="BtnRight_Click"/>
+        <TextBlock x:Name="TBContent" TextAlignment="Center" HorizontalAlignment="Left" Margin="0,66,0,0" TextWrapping="Wrap" Text="Content" VerticalAlignment="Top" Height="211" Width="474" FontFamily="Microsoft YaHei UI Light" FontSize="18" Background="White"/>
+        <Image x:Name="ImgCancel" HorizontalAlignment="Left" Height="24" Margin="446,10,0,0" VerticalAlignment="Top" Width="22" Source="/AutumnBox;component/Resources/DynamicIcons/close_normal.png" MouseDown="ImgCancel_MouseDown"/>
 
     </Grid>
 </Window>

@@ -41,16 +41,16 @@ namespace AutumnBox.GUI.Helper
         }
         public static ChoiceResult ShowChoiceBlock(string keyTitle, string keyMessage, string keyTextLeftBtn = null, string keyTextRightBtn = null)
         {
-            ChoiceResult returnResult = ChoiceResult.Cancel;
             lock (_blockLock)
             {
                 App.Current.Dispatcher.Invoke(() =>
                 {
                     _choiceBlock = new ChoiceBlock(_mainGrid, Make(keyTitle, keyMessage, keyTextLeftBtn, keyTextRightBtn));
-                    returnResult = _choiceBlock.Show();
+                    _choiceBlock.Show();
                 });
             }
-            return returnResult;
+            _choiceBlock.WaitToClosed();
+            return _choiceBlock.Result ?? ChoiceResult.Cancel;
         }
         public static bool BShowChoiceBlock(string keyTitle, string keyMessage, string keyTextLeftBtn = null, string keyTextRightBtn = null)
         {
@@ -67,8 +67,6 @@ namespace AutumnBox.GUI.Helper
             };
         }
         #endregion
-
-        #region LoadingBlock
         public static void ShowMessageBlock(string keyTitle, string keyMessage)
         {
             lock (_blockLock)
@@ -79,6 +77,5 @@ namespace AutumnBox.GUI.Helper
                 });
             }
         }
-        #endregion
     }
 }

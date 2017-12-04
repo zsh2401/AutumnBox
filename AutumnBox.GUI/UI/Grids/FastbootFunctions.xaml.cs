@@ -63,8 +63,8 @@ namespace AutumnBox.GUI.UI.Grids
 
         private void ButtonRelockMi_Click(object sender, RoutedEventArgs e)
         {
-            if (!ChoiceBox.FastShow(App.Current.Resources["Warning"].ToString(), App.Current.Resources["msgRelockWarning"].ToString())) return;
-            if (!ChoiceBox.FastShow(App.Current.Resources["Warning"].ToString(), App.Current.Resources["msgRelockWarningAgain"].ToString())) return;
+            if (!Box.BShowChoiceDialog("Warning", "msgRelockWarning")) return;
+            if (!Box.BShowChoiceDialog("Warning", "msgRelockWarningAgain")) return;
             var fmp = FunctionModuleProxy.Create<XiaomiBootloaderRelocker>(new ModuleArgs(App.SelectedDevice));
             fmp.Finished += ((MainWindow)App.Current.MainWindow).FuncFinish;
             fmp.AsyncRun();

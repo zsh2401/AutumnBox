@@ -11,71 +11,71 @@
 * Company: I am free man
 *
 \* =============================================================================*/
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using AutumnBox.GUI.Helper;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace AutumnBox.GUI.Windows
 {
+    public enum ChoiceResult
+    {
+        BtnRight = 0,
+        BtnLeft = 1,
+        BtnCancel = -1,
+    }
+    public struct ChoiceBoxData
+    {
+        public string KeyTitle { get; set; }
+        public string KeyText { get; set; }
+        public string KeyBtnLeft { get; set; }
+        public string KeyBtnRight { get; set; }
+    }
     /// <summary>
     /// ChoiceBox.xaml 的交互逻辑
     /// </summary>
     public partial class ChoiceBox : Window
     {
-        public bool Result;
-        private ChoiceBox()
+        public ChoiceBoxData Data { get; set; } = new ChoiceBoxData();
+
+        private ChoiceResult _result = ChoiceResult.BtnCancel;
+
+        internal ChoiceBox(Window owner)
         {
             InitializeComponent();
-        }
-        public static bool FastShow(string title, string content, string btnOkString = null, string btnCancelString = null) {
-            ChoiceBox choiceBox = new ChoiceBox();
-            choiceBox.labelTitle.Content = title;
-            choiceBox.textBlockContent.Text = content ?? choiceBox.textBlockContent.Text;
-            choiceBox.btnCancel.Content = btnCancelString ?? choiceBox.btnCancel.Content;
-            choiceBox.btnOk.Content = btnOkString ?? choiceBox.btnOk.Content;
-            choiceBox.ShowDialog();
-            return choiceBox.Result;
-        }
-        public static bool FastShow(Window owner, string title, string content, string btnOkString = null, string btnCancelString = null)
-        {
-            ChoiceBox choiceBox = new ChoiceBox();
-            choiceBox.labelTitle.Content = title;
-            choiceBox.textBlockContent.Text = content ?? choiceBox.textBlockContent.Text;
-            choiceBox.btnCancel.Content = btnCancelString ?? choiceBox.btnCancel.Content;
-            choiceBox.btnOk.Content = btnOkString ?? choiceBox.btnOk.Content;
-            choiceBox.Owner = owner;
-            choiceBox.ShowDialog();
-            return choiceBox.Result;
+            this.Owner = owner;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        public new ChoiceResult ShowDialog()
         {
-            Result = true;
+            LabelTitle.Content = UIHelper.GetString(Data.KeyTitle ?? "msgNotice");
+            TBContent.Text = UIHelper.GetString(Data.KeyText ?? "WTF?");
+            BtnLeft.Content = UIHelper.GetString(Data.KeyBtnLeft ?? "btnCancel");
+            BtnRight.Content = UIHelper.GetString(Data.KeyBtnRight ?? "btnRight");
+            base.ShowDialog();
+            return _result;
+        }
+
+        private void ImgCancel_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            _result = ChoiceResult.BtnCancel;
             Close();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            Result = false;
+            UIHelper.DragMove(this, e);
+        }
+
+        private void BtnRight_Click(object sender, RoutedEventArgs e)
+        {
+            _result = ChoiceResult.BtnRight;
             Close();
         }
 
-        private void labelTitle_MouseMove(object sender, MouseEventArgs e)
+        private void BtnLeft_Click(object sender, RoutedEventArgs e)
         {
-            if (e.LeftButton == MouseButtonState.Pressed)
-            {
-                this.DragMove();
-            }
+            _result = ChoiceResult.BtnLeft;
+            Close();
         }
     }
 }

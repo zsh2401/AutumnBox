@@ -131,6 +131,7 @@
     <Compile Include="Cfg\ConfigPropertyAttribute.cs" />
     <Compile Include="Helper\BlockHelper.cs" />
     <Compile Include="Helper\BlurHelper.cs" />
+    <Compile Include="Helper\Box.cs" />
     <Compile Include="Helper\DataHelper.cs" />
     <Compile Include="Helper\SystemHelper.cs" />
     <Compile Include="Helper\TextHelper.cs" />

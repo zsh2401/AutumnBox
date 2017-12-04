@@ -60,7 +60,7 @@ namespace AutumnBox.GUI
                         RelockMiFinish(e);
                         break;
                     case nameof(AndroidFullBackup):
-                        BlockHelper.ShowMessageBlock("msgNotice", "msgLookTheScreen");
+                        Box.ShowMessageDialog("msgNotice", "msgLookTheScreen");
                         break;
                     default:
                         ModuleResultWindow.FastShow(e.Result);
@@ -129,7 +129,7 @@ namespace AutumnBox.GUI
             Logger.D("Enter the Push Finish Handler in the GUI");
             if (e.Result.Level == ResultLevel.Successful)
             {
-                BlockHelper.ShowMessageBlock("Notice", "msgPushOK");
+                Box.ShowMessageDialog("Notice", "msgPushOK");
             }
             else
             {
@@ -151,7 +151,7 @@ namespace AutumnBox.GUI
             {
                 UIHelper.CloseRateBox();
             }));
-            BlockHelper.ShowMessageBlock("Notice", "msgFlashOK");
+            Box.ShowMessageDialog("Notice", "msgFlashOK");
         }
     }
 }

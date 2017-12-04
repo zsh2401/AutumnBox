@@ -1,6 +1,7 @@
 ﻿using AutumnBox.Basic.Function;
 using AutumnBox.Basic.Function.Args;
 using AutumnBox.Basic.Function.Modules;
+using AutumnBox.GUI.Helper;
 using AutumnBox.Support.CstmDebug;
 using Microsoft.Win32;
 using System;
@@ -83,7 +84,7 @@ namespace AutumnBox.GUI.Windows
         {
             if (TextBoxPath.Text == App.Current.Resources["PleaseSelectFloderPackageWireFlash"].ToString())
             {
-                MMessageBox.FastShow(App.Current.MainWindow, App.Current.Resources["Warning"].ToString(), App.Current.Resources["PleaseSelectFloderPackageWireFlash"].ToString());
+                Box.ShowMessageDialog("Warning", "PleaseSelectFloderPackageWireFlash");
                 return false;
             }
             Fmp = FunctionModuleProxy.Create(typeof(Basic.Function.Modules.MiFlash),
@@ -135,7 +136,7 @@ namespace AutumnBox.GUI.Windows
                 }
                 else
                 {
-                    MMessageBox.FastShow(App.Current.MainWindow, App.Current.Resources["Warning"].ToString(), App.Current.Resources["msgMiFlashFloderError"].ToString());
+                    Box.ShowMessageDialog("Warning", "msgMiFlashFloderError");
                 }
             }
         }

@@ -70,13 +70,14 @@ namespace AutumnBox.GUI
                 bool _continue = true;
                 Dispatcher.Invoke(() =>
                 {
-                    _continue = ChoiceBox.FastShow(this, UIHelper.GetString("msgWarning"),
-                           UIHelper.GetString("msgStartAdbServerFailLine1") + Environment.NewLine +
+                    _continue = Box.BShowChoiceDialog("msgWarning",
+                        UIHelper.GetString("msgStartAdbServerFailLine1") + Environment.NewLine +
                            UIHelper.GetString("msgStartAdbServerFailLine2") + Environment.NewLine +
                            UIHelper.GetString("msgStartAdbServerFailLine3") + Environment.NewLine +
                            UIHelper.GetString("msgStartAdbServerFailLine4"),
-                           UIHelper.GetString("btnIHaveCloseOtherPhoneHelper"),
-                           UIHelper.GetString("btnExit"));
+                        "btnIHaveCloseOtherPhoneHelper",
+                        "btnExit"
+                        );
                 });
                 if (_continue)
                 {
@@ -93,10 +94,6 @@ namespace AutumnBox.GUI
             AboutControl.LabelVersion.Content = SystemHelper.CurrentVersion + "-Release";
             TitleBar.Title.Content += "  " + SystemHelper.CurrentVersion + "-Release";
 #endif
-        }
-        public ChoiceResult ShowChoiceGrid(string title, string content, string btnLeftText = null, string btnRightText = null)
-        {
-            return ChoiceResult.Cancel;
         }
         /// <summary>
         /// 当设备监听器引发连接设备变化的事件时发生,可通过此事件获取最新的连接设备信息
@@ -187,7 +184,7 @@ namespace AutumnBox.GUI
             new LinkHelpWindow().Show();
         }
 
-        private async void ButtonStartShell_Click(object sender, RoutedEventArgs e)
+        private  void ButtonStartShell_Click(object sender, RoutedEventArgs e)
         {
             ProcessStartInfo info = new ProcessStartInfo
             {
@@ -196,15 +193,12 @@ namespace AutumnBox.GUI
             };
             if (SystemHelper.IsWin10)
             {
-                var result = await Task.Run(() =>
-                {
-                    return BlockHelper.ShowChoiceBlock("Notice", "msgShellChoiceTip", "Powershell", "CMD");
-                });
-                if (result == ChoiceResult.Left)
+                var result = Box.ShowChoiceDialog("Notice", "msgShellChoiceTip", "Powershell", "CMD");
+                if (result == Windows.ChoiceResult.BtnLeft)
                 {
                     info.FileName = "powershell.exe";
                 }
-                else if (result == ChoiceResult.Cancel)
+                else if (result == Windows.ChoiceResult.BtnCancel)
                 {
                     return;
                 }
@@ -212,10 +206,8 @@ namespace AutumnBox.GUI
             Process.Start(info);
         }
 
-        private void btnHelp_Click(object sender, RoutedEventArgs e)
+        private void BtnHelp_Click(object sender, RoutedEventArgs e)
         {
-            ////ChoiceGrid.Show();
-            //new ChoiceGrid(this.GridToolsMain).Show();
             Process.Start(Urls.HELP_PAGE);
         }
     }

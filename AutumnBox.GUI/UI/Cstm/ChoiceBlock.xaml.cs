@@ -25,14 +25,15 @@ namespace AutumnBox.GUI.UI.Cstm
     public partial class ChoiceBlock : UserControl, IDisposable
     {
         public static readonly int AnimationLength = 300;
-        public bool HasExited { get; private set; } = true;
+        public bool HasClosed { get; private set; } = false;
         /// <summary>
         /// 等待结束
         /// </summary>
-        public void WaitToExit()
+        public void WaitToClosed()
         {
-            while (!HasExited) ;
+            while (!HasClosed) ;
         }
+        public ChoiceResult? Result { get; private set; } = null;
 
         private readonly ThicknessAnimation _riseAnimation = new ThicknessAnimation()
         {
@@ -71,21 +72,19 @@ namespace AutumnBox.GUI.UI.Cstm
 
         public void Show(Action<ChoiceResult> callback)
         {
+            this.HasClosed = false;
             this._callback = callback;
             this.BeginAnimation(MarginProperty, _riseAnimation);
         }
-        public ChoiceResult Show()
+        public void Show()
         {
-            ChoiceResult result = ChoiceResult.Cancel;
             this.Dispatcher.Invoke(() =>
             {
                 this.Show((r) =>
                 {
-                    result = r;
+                    Result = r;
                 });
             });
-            WaitToExit();
-            return result;
         }
         public void Hide()
         {
@@ -94,17 +93,15 @@ namespace AutumnBox.GUI.UI.Cstm
 
         private void Hide(ChoiceResult result)
         {
-            this.Dispatcher.Invoke(() =>
+            Dispatcher.Invoke(() =>
             {
-                HasExited = true;
-                this.BeginAnimation(MarginProperty, _hideAnimation);
-                Task.Run(() =>
+                BeginAnimation(MarginProperty, _hideAnimation);
+                _hideAnimation.Completed += (s, e) =>
                 {
-                    Thread.Sleep(AnimationLength);
-                    this.Dispatcher.Invoke(() => { _callback?.Invoke(result); });
-                    Thread.Sleep(5000);
+                    HasClosed = true;
+                    Dispatcher.Invoke(() => { _callback?.Invoke(result); });
                     Dispose();
-                });
+                };
             });
         }
 
@@ -129,12 +126,7 @@ namespace AutumnBox.GUI.UI.Cstm
 
         private void Image_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            this.Hide();
-            Task.Run(() =>
-            {
-                Thread.Sleep(AnimationLength);
-                this.Dispatcher.Invoke(() => { _callback?.Invoke(ChoiceResult.Cancel); });
-            });
+            this.Hide(ChoiceResult.Cancel);
         }
     }
 }
