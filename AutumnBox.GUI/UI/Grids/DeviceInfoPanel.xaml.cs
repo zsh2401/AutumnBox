@@ -85,7 +85,6 @@ namespace AutumnBox.GUI.UI.Grids
             LabelScreen.Content = App.Current.Resources["Getting"].ToString();
             LabelFlashMemInfo.Content = App.Current.Resources["Getting"].ToString();
             LabelRootStatus.Content = App.Current.Resources["Getting"].ToString();
-            LabelAndroidVersion.Content = "8.0";
             try
             {
                 CurrentDeviceAndroidVersion = new Version(LabelAndroidVersion.Content.ToString());
