@@ -56,19 +56,16 @@ namespace AutumnBox.Basic.FlowFramework
         }
         protected virtual void OnFinished(FinishedEventArgs<TResult> e)
         {
-            Task.Run(() =>
+            _resultTmp = e.Result;
+            NoArgFinished?.Invoke(this, new EventArgs());
+            if (Finished != null)
             {
-                _resultTmp = e.Result;
-                if (Finished != null)
-                {
-                    Finished(this, e);
-                }
-                else
-                {
-                    OnAnyFinished(this, new FinishedEventArgs<FlowResult>(e.Result));
-                }
-            });
-            Logger.T("Finished...Output ->" + e.Result.OutputData.ToString());
+                Finished(this, e);
+            }
+            else
+            {
+                OnAnyFinished(this, new FinishedEventArgs<FlowResult>(e.Result));
+            }
         }
         protected void Dispose(bool disposing)
         {

@@ -26,7 +26,6 @@ namespace AutumnBox.GUI
         {
             this.Dispatcher.Invoke(() =>
             {
-                UIHelper.CloseRateBox();
                 switch (sender.GetType().Name)
                 {
                     case nameof(IslandActivator):

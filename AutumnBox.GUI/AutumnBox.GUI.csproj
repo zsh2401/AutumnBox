@@ -228,8 +228,8 @@
     <Compile Include="Windows\ModuleResultWindow.xaml.cs">
       <DependentUpon>ModuleResultWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\RateBox.xaml.cs">
-      <DependentUpon>RateBox.xaml</DependentUpon>
+    <Compile Include="Windows\LoadingWindow.xaml.cs">
+      <DependentUpon>LoadingWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Windows\UpdateNoticeWindow.xaml.cs">
@@ -379,7 +379,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\RateBox.xaml">
+    <Page Include="Windows\LoadingWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>XamlIntelliSenseFileGenerator</Generator>
     </Page>

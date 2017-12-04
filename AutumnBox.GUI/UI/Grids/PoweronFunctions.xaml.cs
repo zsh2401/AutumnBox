@@ -77,7 +77,7 @@ namespace AutumnBox.GUI.UI.Grids
             BreventServiceActivator activator = new BreventServiceActivator();
             activator.Init(args);
             activator.RunAsync();
-            UIHelper.ShowRateBox(activator);
+            Box.ShowLoadingDialog(activator);
         }
 
         private void ButtonPushFileToSdcard_Click(object sender, RoutedEventArgs e)
@@ -138,7 +138,7 @@ namespace AutumnBox.GUI.UI.Grids
                 var fmp = FunctionModuleProxy.Create<ScreenShoter>(new ScreenShoterArgs(App.SelectedDevice) { LocalPath = fbd.SelectedPath });
                 fmp.Finished += ((MainWindow)App.Current.MainWindow).FuncFinish;
                 fmp.AsyncRun();
-                UIHelper.ShowRateBox(fmp);
+                Box.ShowLoadingDialog(fmp);
             }
             else
             {
@@ -154,7 +154,7 @@ namespace AutumnBox.GUI.UI.Grids
                 var fmp = FunctionModuleProxy.Create<SystemUnlocker>(new ModuleArgs(App.SelectedDevice));
                 fmp.Finished += ((MainWindow)App.Current.MainWindow).FuncFinish;
                 fmp.AsyncRun();
-                UIHelper.ShowRateBox(fmp);
+                Box.ShowLoadingDialog(fmp);
             }
         }
 
@@ -193,7 +193,7 @@ namespace AutumnBox.GUI.UI.Grids
                 FunctionModuleProxy.Create<ImageExtractor>(new ImgExtractArgs(App.SelectedDevice) { ExtractImage = Images.Boot, SavePath = fbd.SelectedPath });
             fmp.Finished += ((MainWindow)App.Current.MainWindow).FuncFinish;
             fmp.AsyncRun();
-            UIHelper.ShowRateBox(fmp);
+            Box.ShowLoadingDialog(fmp);
         }
 
         private void ButtonExtractRecImg_Click(object sender, RoutedEventArgs e)
@@ -211,7 +211,7 @@ namespace AutumnBox.GUI.UI.Grids
                 FunctionModuleProxy.Create<ImageExtractor>(new ImgExtractArgs(App.SelectedDevice) { ExtractImage = Images.Recovery, SavePath = fbd.SelectedPath });
             fmp.Finished += ((MainWindow)App.Current.MainWindow).FuncFinish;
             fmp.AsyncRun();
-            UIHelper.ShowRateBox(fmp);
+            Box.ShowLoadingDialog(fmp);
         }
 
         private void ButtonFlashBootImg_Click(object sender, RoutedEventArgs e)
@@ -230,7 +230,7 @@ namespace AutumnBox.GUI.UI.Grids
                 var fmp = FunctionModuleProxy.Create<ImageFlasher>(new ImgFlasherArgs(App.SelectedDevice) { ImgPath = fileDialog.FileName, ImgType = Images.Boot });
                 fmp.Finished += ((MainWindow)App.Current.MainWindow).FuncFinish;
                 fmp.AsyncRun();
-                UIHelper.ShowRateBox(fmp);
+                Box.ShowLoadingDialog(fmp);
             }
         }
 
@@ -248,7 +248,7 @@ namespace AutumnBox.GUI.UI.Grids
             FunctionModuleProxy fmp = FunctionModuleProxy.Create<ScreenLockDeleter>(new ModuleArgs(App.SelectedDevice));
             fmp.Finished += ((MainWindow)App.Current.MainWindow).FuncFinish;
             fmp.AsyncRun();
-            UIHelper.ShowRateBox();
+            Box.ShowLoadingDialog(fmp);
         }
 
         private void ButtonFlashRecImg_Click(object sender, RoutedEventArgs e)
@@ -267,7 +267,7 @@ namespace AutumnBox.GUI.UI.Grids
                 var fmp = FunctionModuleProxy.Create<ImageFlasher>(new ImgFlasherArgs(App.SelectedDevice) { ImgPath = fileDialog.FileName, ImgType = Images.Recovery });
                 fmp.Finished += ((MainWindow)App.Current.MainWindow).FuncFinish;
                 fmp.AsyncRun();
-                UIHelper.ShowRateBox(fmp);
+                Box.ShowLoadingDialog(fmp);
             }
         }
 
@@ -294,7 +294,7 @@ namespace AutumnBox.GUI.UI.Grids
             IceBoxActivator iceBoxActivator = new IceBoxActivator();
             iceBoxActivator.Init(new FlowArgs() { DevBasicInfo = App.SelectedDevice });
             iceBoxActivator.RunAsync();
-            UIHelper.ShowRateBox(iceBoxActivator);
+            Box.ShowLoadingDialog(iceBoxActivator);
         }
 
         private async void ButtonAirForzenAct_Click(object sender, RoutedEventArgs e)
@@ -320,7 +320,7 @@ namespace AutumnBox.GUI.UI.Grids
             AirForzenActivator airForzenActivator = new AirForzenActivator();
             airForzenActivator.Init(new FlowArgs() { DevBasicInfo = App.SelectedDevice });
             airForzenActivator.RunAsync();
-            UIHelper.ShowRateBox(airForzenActivator);
+            Box.ShowLoadingDialog(airForzenActivator);
         }
 
         private async void ButtonShizukuManager_Click(object sender, RoutedEventArgs e)
@@ -335,7 +335,7 @@ namespace AutumnBox.GUI.UI.Grids
             ShizukuManagerActivator shizukuManagerActivator = new ShizukuManagerActivator();
             shizukuManagerActivator.Init(new FlowArgs() { DevBasicInfo = App.SelectedDevice });
             shizukuManagerActivator.RunAsync();
-            UIHelper.ShowRateBox(shizukuManagerActivator);
+            Box.ShowLoadingDialog(shizukuManagerActivator);
         }
 
         private async void ButtonIslandAct_Click(object sender, RoutedEventArgs e)
@@ -360,7 +360,7 @@ namespace AutumnBox.GUI.UI.Grids
             IslandActivator islandActivator = new IslandActivator();
             islandActivator.Init(new FlowArgs() { DevBasicInfo = App.SelectedDevice });
             islandActivator.RunAsync();
-            UIHelper.ShowRateBox(islandActivator);
+            Box.ShowLoadingDialog(islandActivator);
         }
 
         private void ButtonVirtualBtnHide_Click(object sender, RoutedEventArgs e)
@@ -378,7 +378,7 @@ namespace AutumnBox.GUI.UI.Grids
             VirtualButtonHider hider = new VirtualButtonHider();
             hider.Init(args);
             hider.RunAsync();
-            UIHelper.ShowRateBox(hider);
+            Box.ShowLoadingDialog(hider);
         }
     }
 }

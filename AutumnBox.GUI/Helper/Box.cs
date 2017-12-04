@@ -13,6 +13,7 @@
 \* =============================================================================*/
 using AutumnBox.Basic.FlowFramework;
 using AutumnBox.GUI.Windows;
+using AutumnBox.Support.CstmDebug;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -61,8 +62,29 @@ namespace AutumnBox.GUI.Helper
             };
             messageBox.ShowDialog();
         }
-        public static void ShowLoadingDialog(IForceStoppable stoppable)
+        public static bool _loadingWindowIsAlreadyHaveOne = false;
+        public static void ShowLoadingDialog(ICompletable completable)
         {
+            if (_loadingWindowIsAlreadyHaveOne) return;
+            _loadingWindowIsAlreadyHaveOne = true;
+            new LoadingWindow(_owner).ShowDialog(completable);
+            _loadingWindowIsAlreadyHaveOne = false;
+        }
+        private static LoadingWindow _loadingWindow;
+        public static void ShowLoadingDialog()
+        {
+            if (_loadingWindowIsAlreadyHaveOne) return;
+            _loadingWindowIsAlreadyHaveOne = true;
+            _loadingWindow = new LoadingWindow(_owner);
+            _loadingWindow.ShowDialog();
+        }
+        public static void CloseLoadingDialog()
+        {
+            try
+            {
+                _loadingWindow.Close();
+                _loadingWindowIsAlreadyHaveOne = false;
+            } catch(Exception e) { Logger.T("A exception on close loadingwindow...", e); }
 
         }
     }

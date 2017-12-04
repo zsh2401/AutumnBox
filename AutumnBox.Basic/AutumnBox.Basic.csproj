@@ -62,6 +62,7 @@
     <Compile Include="FlowFramework\FunctionFlowBase.cs" />
     <Compile Include="FlowFramework\FlowArgs.cs" />
     <Compile Include="FlowFramework\CheckResult.cs" />
+    <Compile Include="FlowFramework\ICompletable.cs" />
     <Compile Include="FlowFramework\ResultType.cs" />
     <Compile Include="FlowFramework\FlowEvents.cs" />
     <Compile Include="FlowFramework\FlowStatus.cs" />

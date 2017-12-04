@@ -48,7 +48,7 @@ namespace AutumnBox.GUI.UI.Grids
                 var fmp = FunctionModuleProxy.Create<CustomRecoveryFlasher>(new FileArgs(App.SelectedDevice) { files = new string[] { fileDialog.FileName } });
                 fmp.Finished += ((MainWindow)App.Current.MainWindow).FuncFinish;
                 fmp.AsyncRun();
-                UIHelper.ShowRateBox(fmp);
+                Box.ShowLoadingDialog(fmp);
             }
             else
             {
@@ -68,7 +68,7 @@ namespace AutumnBox.GUI.UI.Grids
             var fmp = FunctionModuleProxy.Create<XiaomiBootloaderRelocker>(new ModuleArgs(App.SelectedDevice));
             fmp.Finished += ((MainWindow)App.Current.MainWindow).FuncFinish;
             fmp.AsyncRun();
-            UIHelper.ShowRateBox(fmp);
+            Box.ShowLoadingDialog(fmp);
         }
     }
 }

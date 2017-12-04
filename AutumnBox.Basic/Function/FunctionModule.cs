@@ -46,6 +46,7 @@ namespace AutumnBox.Basic.Function
 {
     using AutumnBox.Basic.Devices;
     using AutumnBox.Basic.Executer;
+    using AutumnBox.Basic.FlowFramework;
     using AutumnBox.Basic.Function.Args;
     using AutumnBox.Basic.Function.Bundles;
     using AutumnBox.Basic.Function.Event;
@@ -57,7 +58,7 @@ namespace AutumnBox.Basic.Function
     /// <summary>
     /// 各种功能模块的父类
     /// </summary>
-    public abstract class FunctionModule : IFunctionModule, ILogSender
+    public abstract class FunctionModule : IFunctionModule, ILogSender,ICompletable
     {
         /// <summary>
         /// 核心进程id
@@ -81,7 +82,7 @@ namespace AutumnBox.Basic.Function
         /// <summary>
         /// 当功能模块开始执行时发生
         /// </summary>
-        public event StartupEventHandler Startup;
+        public event Event.StartupEventHandler Startup;
         /// <summary>
         /// 完成操作时的事件
         /// </summary>
@@ -94,6 +95,8 @@ namespace AutumnBox.Basic.Function
         /// 执行时接收到任何输出时发生
         /// </summary>
         public event OutputReceivedEventHandler OutputReceived;
+        public event EventHandler NoArgFinished;
+
         /// <summary>
         /// 判断完成事件是否被绑定
         /// </summary>
@@ -124,7 +127,7 @@ namespace AutumnBox.Basic.Function
         {
             try
             {
-                OnStartup(new StartupEventArgs());
+                OnStartup(new Event.StartupEventArgs());
                 ExecuteResult executeResult;
                 BundleForAnalyzingResult bundleForAnalyzeOutput = null;
                 if (Check(_toolsBundle.Args) == CheckResult.OK)
@@ -197,7 +200,7 @@ namespace AutumnBox.Basic.Function
         /// 开始运行时发生
         /// </summary>
         /// <param name="e"></param>
-        protected virtual void OnStartup(StartupEventArgs e)
+        protected virtual void OnStartup(Event.StartupEventArgs e)
         {
             Task.Run(() =>
             {
@@ -259,6 +262,7 @@ namespace AutumnBox.Basic.Function
             {
                 Logger.T("finished...but unsuccess maybe the output ->" + e.OutputData);
             }
+            NoArgFinished?.Invoke(this, new EventArgs());
             if (Finished == null) AnyFinished?.Invoke(this, e);
             else Finished(this, e);
         }

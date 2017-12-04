@@ -22,37 +22,38 @@ namespace AutumnBox.GUI.Windows
     /// <summary>
     /// RateBox.xaml 的交互逻辑
     /// </summary>
-    public partial class RateBox : Window
+    public partial class LoadingWindow : Window
     {
-        private IForceStoppable stoppable;
-        private FunctionModuleProxy ModuleProxy;
-        public RateBox()
+        public LoadingWindow(Window owner)
         {
             InitializeComponent();
             BtnCancel.Visibility = Visibility.Hidden;
-            this.Owner = App.Current.MainWindow;
+            this.Owner = owner;
         }
-        public RateBox(FunctionModuleProxy fmp)
+        public new void ShowDialog()
         {
-            InitializeComponent();
-            this.ModuleProxy = fmp;
-            this.Owner = App.Current.MainWindow;
+            BtnCancel.Visibility = Visibility.Hidden;
+            base.ShowDialog();
         }
-        public RateBox(IForceStoppable stoppable)
+        public void ShowDialog(ICompletable flowOrFm)
         {
-            InitializeComponent();
-            this.stoppable = stoppable;
-            this.Owner = App.Current.MainWindow;
+            BtnCancel.Visibility = Visibility.Visible;
+            flowOrFm.NoArgFinished += (s, e) =>
+            {
+                this.Dispatcher.Invoke(()=> {
+                    Close();
+                });
+            };
+            this.BtnCancel.Click += (s, e) =>
+            {
+                flowOrFm.ForceStop();
+                Close();
+            };
+            base.ShowDialog();
         }
         private void Grid_MouseMove(object sender, MouseEventArgs e)
         {
             UIHelper.DragMove(this, e);
-        }
-        private void BtnCancel_Click(object sender, RoutedEventArgs e)
-        {
-            this.ModuleProxy?.ForceStop();
-            this.stoppable?.ForceStop();
-            this.Close();
         }
     }
 }

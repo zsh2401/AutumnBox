@@ -13,7 +13,7 @@ namespace AutumnBox.Basic.Function
     /// <summary>
     /// 功能模块接口
     /// </summary>
-    public interface IFunctionModule:IDisposable
+    public interface IFunctionModule:IDisposable, FlowFramework.ICompletable
     {
         event OutputReceivedEventHandler OutputReceived;
         /// <summary>

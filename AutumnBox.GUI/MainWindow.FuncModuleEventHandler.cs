@@ -36,7 +36,7 @@ namespace AutumnBox.GUI
         {
             this.Dispatcher.Invoke(() =>
             {
-                UIHelper.CloseRateBox();
+                Box.CloseLoadingDialog();
                 switch (sender.GetType().Name)
                 {
                     case nameof(FileSender):
@@ -81,7 +81,7 @@ namespace AutumnBox.GUI
             Logger.D("Enter the ActivatedBrevent Handler in the GUI");
             this.Dispatcher.Invoke(new Action(() =>
             {
-                UIHelper.CloseRateBox();
+                Box.CloseLoadingDialog();
             }));
             if (e.Result.Level != ResultLevel.Successful)
             {
@@ -103,7 +103,7 @@ namespace AutumnBox.GUI
             Logger.D("Enter the Unlock Mi  System Finish Handler in the GUI");
             this.Dispatcher.Invoke(new Action(() =>
             {
-                UIHelper.CloseRateBox();
+                Box.CloseLoadingDialog();
             }));
         }
 
@@ -116,7 +116,7 @@ namespace AutumnBox.GUI
             Logger.D("Enter the Relock Mi Finish Handler in the GUI");
             this.Dispatcher.Invoke(new Action(() =>
             {
-                UIHelper.CloseRateBox();
+                Box.CloseLoadingDialog();
             }));
         }
 
@@ -149,7 +149,7 @@ namespace AutumnBox.GUI
             Logger.D("Flash Custom Recovery Finish");
             this.Dispatcher.Invoke(new Action(() =>
             {
-                UIHelper.CloseRateBox();
+                Box.CloseLoadingDialog();
             }));
             Box.ShowMessageDialog("Notice", "msgFlashOK");
         }

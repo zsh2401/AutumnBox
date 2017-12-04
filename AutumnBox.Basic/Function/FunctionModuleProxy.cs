@@ -12,6 +12,7 @@
 *
 \* =============================================================================*/
 using AutumnBox.Basic.Executer;
+using AutumnBox.Basic.FlowFramework;
 using AutumnBox.Basic.Function.Args;
 using AutumnBox.Basic.Function.Event;
 using AutumnBox.Support.CstmDebug;
@@ -26,15 +27,22 @@ namespace AutumnBox.Basic.Function
     /// <summary>
     /// 功能模块代理器,更加方便的管理功能模块
     /// </summary>
-    public sealed class FunctionModuleProxy : IOutSender
+    public sealed class FunctionModuleProxy : IOutSender,ICompletable
     {
         private uint registeredCount = 0;
+
+        public event EventHandler NoArgFinished
+        {
+            add { FunctionModule.NoArgFinished += value; }
+            remove { FunctionModule.NoArgFinished -= value; }
+        }
+
         public event OutputReceivedEventHandler OutputReceived
         {
             add { FunctionModule.OutputReceived += value; }
             remove { FunctionModule.OutputReceived -= value; }
         }
-        public event StartupEventHandler Startup
+        public event Event.StartupEventHandler Startup
         {
             add { FunctionModule.Startup += value; }
             remove { FunctionModule.Startup -= value; }
