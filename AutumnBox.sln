@@ -15,6 +15,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutumnBox.Support", "Autumn
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutumnBox.Basic.Flows", "AutumnBox.Basic.Flows\AutumnBox.Basic.Flows.csproj", "{3091ECAE-7FF2-421D-B970-1C76D7CAB0C0}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9C12A545-FC99-4185-86D1-22D029637239}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+		Bin\无法启动解决办法.txt = Bin\无法启动解决办法.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		AutumnBox.Basic.EFM\AutumnBox.Basic.EFM.projitems*{84044fb2-bd38-4283-8065-b639270ece0f}*SharedItemsImports = 4
