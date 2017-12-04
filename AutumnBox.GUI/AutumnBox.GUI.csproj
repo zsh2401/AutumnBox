@@ -188,7 +188,7 @@
     </Compile>
     <Compile Include="Cfg\IConfigOperator.cs" />
     <Compile Include="Cfg\ConfigDataLayout.cs" />
-    <Compile Include="Util\AutoGCer.cs" />
+    <Compile Include="Util\AutoGC.cs" />
     <Compile Include="Util\MachineInfo.cs" />
     <Compile Include="Windows\ApkInstallingWindow.xaml.cs">
       <DependentUpon>ApkInstallingWindow.xaml</DependentUpon>
