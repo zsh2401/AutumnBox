@@ -102,10 +102,9 @@ namespace AutumnBox.GUI.Helper
         {
             Environment.SetEnvironmentVariable("ADB_PORT", port.ToString(), EnvironmentVariableTarget.User);
         }
-        public static bool HaveOtherAutumnBoxProcess()
-        {
-            return Process.GetProcessesByName("AutumnBox").Length != 1;
-        }
+        public static bool HaveOtherAutumnBoxProcess { get {
+                return Process.GetProcessesByName("AutumnBox").Length != 1;
+            } }
         public static void AppExit(int exitCode = 0)
         {
             Logger.T("Exiting.....");
