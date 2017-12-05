@@ -87,7 +87,7 @@ namespace AutumnBox.GUI
                 else SystemHelper.AppExit(1);
             };
 #if DEBUG
-            AboutControl.LabelVersion.Content = SystemHelper.CurrentVersion + "-Debug";
+            //AboutControl.LabelVersion.Content = SystemHelper.CurrentVersion + "-Debug";
             TitleBar.Title.Content += "  " + SystemHelper.CurrentVersion + "-Debug";
 #else
             AboutControl.LabelVersion.Content = SystemHelper.CurrentVersion + "-Release";
@@ -130,7 +130,7 @@ namespace AutumnBox.GUI
             //哦,如果是第一次启动本软件,那么就显示一下提示吧!
             if (Config.IsFirstLaunch)
             {
-                BlockHelper.ShowMessageBlock("NoticeOnlyOne", "msgFristLaunchNotice");
+                Box.ShowMessageDialog("NoticeOnlyOne", "msgFristLaunchNotice");
                 Config.IsFirstLaunch = false;
             }
             //开始获取公告

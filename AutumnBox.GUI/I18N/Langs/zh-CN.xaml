@@ -18,7 +18,7 @@
     <s:String x:Key="btnDoNotOpen">不开启</s:String>
     <s:String x:Key="btnTapEmu">模拟点击</s:String>
     <s:String x:Key="btnDeleteScreenLock">解除屏幕锁</s:String>
-    <s:String x:Key="btnRebootToSnapdragon9008">重启到高通9008救砖模式</s:String>
+
     <s:String x:Key="btnExtractRecImg">提取Recovery</s:String>
     <s:String x:Key="btnExtractBootImg">提取Boot.img</s:String>
     <s:String x:Key="btnFlashRecImg">刷入Recovery</s:String>
@@ -36,9 +36,10 @@
     <s:String x:Key="btnAndroidFullBackup">全量备份</s:String>
     <s:String x:Key="btnMiFlash">MiFlash线刷(Deving)</s:String>
     <s:String x:Key="btnADBCMD">ADB命令行</s:String>
-    <s:String x:Key="btnRebootToSystem">重启到系统</s:String>
-    <s:String x:Key="btnRebootToRecovery">重启到恢复模式</s:String>
-    <s:String x:Key="btnRebootToBootloader">重启到Fastboot模式</s:String>
+    <s:String x:Key="btnSystem">系统</s:String>
+    <s:String x:Key="btnRecovery">恢复模式</s:String>
+    <s:String x:Key="btnSnapdragon9008">高通9008救砖模式</s:String>
+    <s:String x:Key="btnBootloader">Fastboot模式</s:String>
     <s:String x:Key="btnPushFileToSdcard">推送文件到存储目录</s:String>
     <s:String x:Key="btnUnlockSystem">解锁系统,获取完整ROOT</s:String>
     <s:String x:Key="btnSideloadFlash">SideLoad刷机(Deving)</s:String>
@@ -150,6 +151,7 @@
     <!--QA-->
 
     <!--静态界面标记-->
+    <s:String x:Key="RebootTo">重启到</s:String>
     <s:String x:Key="PleaseSelected">请选择</s:String>
     <s:String x:Key="PleaseSelectFloderPackageWireFlash">请选择线刷包文件夹</s:String>
     <s:String x:Key="OutputRealTime">实时输出</s:String>

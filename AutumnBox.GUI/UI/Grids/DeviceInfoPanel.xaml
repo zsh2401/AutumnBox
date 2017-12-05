@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AutumnBox.GUI.UI.Grids"
              mc:Ignorable="d" 
-             d:DesignHeight="220" Width="600" Background="{DynamicResource BackBrush}">
+             d:DesignHeight="220" Width="600">
     <Grid>
         <Image x:Name="DeviceStatusImage" HorizontalAlignment="Left" Height="100" Margin="40,50,0,0" VerticalAlignment="Top" Width="100" Source="/AutumnBox;component/Resources/DynamicIcons/no_selected.png"/>
         <Image x:Name="ImgRefreshDevInfo" HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="25" Source="/AutumnBox;component/Resources/Images/devinfo_refresh.png" MouseDown="ImgRefreshDevInfo_MouseDown" RenderTransformOrigin="-0.286,0.529" Margin="136,14,0,0"/>

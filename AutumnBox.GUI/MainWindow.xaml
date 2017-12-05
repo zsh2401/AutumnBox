@@ -8,37 +8,34 @@
         xmlns:grids="clr-namespace:AutumnBox.GUI.UI.Grids"
         x:Name="_MainWindow" x:Class="AutumnBox.GUI.MainWindow"
         mc:Ignorable="d"
-        Background="{DynamicResource BackBrush}" Title="AutumnBox" Height="720" Width="1280" Foreground="#FF1B1919" ResizeMode="NoResize" Loaded="MainWindow_Loaded" WindowStyle="None" AllowsTransparency="True">
+        Background="{DynamicResource BackBrush}" Title="AutumnBox" Height="650" Width="1155" Foreground="#FF1B1919" ResizeMode="NoResize" Loaded="MainWindow_Loaded" WindowStyle="None" AllowsTransparency="True">
     <Grid Name="MainGrid">
-        <cstm:CstmTitleBar x:Name="TitleBar" Height="34" VerticalAlignment="Top"/>
-        <TabControl Margin="0,40,0,0" TabStripPlacement="Left" BorderBrush="{DynamicResource BackBrush}" Background="{x:Null}">
+        <Grid Name="GridToolsMain" Background="#00E5E5E5" Margin="0,45,0,0">
+            <grids:RebootButtonsGrid x:Name="RebootGrid" Margin="0,226,645,0" HorizontalAlignment="Right" Width="500" VerticalAlignment="Top" Height="81" BorderBrush="{DynamicResource BorderBrush}"/>
+            <grids:DeviceInfoPanel x:Name="DevInfoPanel" Margin="10,0,0,0" Height="222" VerticalAlignment="Top" HorizontalAlignment="Left" Width="650"/>
+            <Button Foreground="{DynamicResource ForgBrush}" x:Name="buttonStartShell"  Content="{DynamicResource btnADBCMD}" Margin="515,227,311,0" VerticalAlignment="Top" Height="80" Background="{x:Null}" BorderBrush="{DynamicResource BorderBrush}" FontSize="14" FontFamily="Microsoft YaHei UI Light" Click="ButtonStartShell_Click" />
+            <TabControl Name="TabFunctions" Background="{x:Null}" BorderBrush="{DynamicResource BasicBrush}" Margin="10,314,10,23">
+                <TabItem TabIndex="1" Header="{DynamicResource tbiOnPowerOn}" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" Margin="-2,0,0,0" HorizontalAlignment="Left" Width="200" Background="{DynamicResource BasicBrush}" Foreground="{DynamicResource ForgBrushOnBasic}" FontFamily="Microsoft YaHei UI Light" FontSize="16">
+                    <grids:PoweronFunctions x:Name="PoweronFuncs" Margin="0,0,0,0"></grids:PoweronFunctions>
+                </TabItem>
+                <TabItem TabIndex="2" Header="{DynamicResource tbiOnRecovery}" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" Margin="-2,0,0,0" HorizontalAlignment="Left" Width="200" Background="{DynamicResource BasicBrush}" Foreground="{DynamicResource ForgBrushOnBasic}" FontFamily="Microsoft YaHei UI Light" FontSize="16">
+                    <grids:RecoveryFunctions x:Name="RecoveryFuncs"/>
+                </TabItem>
+                <TabItem  TabIndex="3" Header="{DynamicResource tbiOnFastboot}" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" Margin="-2,0,0,0" HorizontalAlignment="Left" Width="200" Background="{DynamicResource BasicBrush}" Foreground="{DynamicResource ForgBrushOnBasic}" FontFamily="Microsoft YaHei UI Light" FontSize="16">
+                    <grids:FastbootFunctions x:Name="FastbootFuncs"></grids:FastbootFunctions>
+                </TabItem>
+            </TabControl>
+            <Label Background="{DynamicResource BasicBrush}" Content="" Margin="0,12,299,0" HorizontalAlignment="Right" Width="1" Height="290" VerticalAlignment="Top"/>
+            <TextBox Foreground="{DynamicResource ForgBrush}" x:Name="textBoxGG" Height="95" Margin="869,15,10,0" TextWrapping="Wrap" Text="..." VerticalAlignment="Top" IsReadOnly="True" Background="{x:Null}" FontSize="14"/>
+            <Button Foreground="{DynamicResource ForgBrush}" x:Name="BtnHelp" Content="{DynamicResource btnHelp}" Margin="0,141,10,0" VerticalAlignment="Top" Height="37" Background="{x:Null}" BorderBrush="{DynamicResource BorderBrush}" FontSize="14" FontFamily="Microsoft YaHei UI Light" Click="BtnHelp_Click" HorizontalAlignment="Right" Width="276" />
+            <ListBox x:Name="DevicesListBox" DisplayMemberPath="Id" Height="191" Margin="0,31,311,0" VerticalAlignment="Top" SelectionChanged="DevicesListBox_SelectionChanged" Background="#00000000" Foreground="{DynamicResource BasicBrush}" BorderBrush="#FFABADB3" HorizontalAlignment="Right" Width="179"/>
+            <Button x:Name="buttonLinkHelp"  Foreground="{DynamicResource ForgBrush}" Content="{DynamicResource LinkHelp}" Margin="0,203,87,0" VerticalAlignment="Top" Height="36" Background="{x:Null}" BorderBrush="{DynamicResource BorderBrush}" FontSize="14" FontFamily="Microsoft YaHei UI Light" Click="ButtonLinkHelp_Click" Width="179" HorizontalAlignment="Right"/>
+            <Label Content="{DynamicResource Devices}" Foreground="{DynamicResource ForgBrush}" Margin="0,0,311,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" HorizontalAlignment="Right" Width="179"/>
+        </Grid>
+        <cstm:CstmTitleBar x:Name="TitleBar" Height="24" VerticalAlignment="Top"/>
+        <!--<TabControl Margin="0,40,0,0" TabStripPlacement="Left" BorderBrush="{DynamicResource BackBrush}" Background="{x:Null}">
             <TabItem Foreground="{DynamicResource ForgBrushOnBasic}" Header="{DynamicResource tbiTools}" Background="{DynamicResource BasicBrush}" Margin="-2,-2,0,-10" BorderBrush="{DynamicResource BasicBrush}" MinHeight="130" FontFamily="Microsoft YaHei UI Light" FontSize="10">
-                <Grid Name="GridToolsMain" Background="#00E5E5E5" Margin="0,0,-3,7">
-                    <grids:DeviceInfoPanel x:Name="DevInfoPanel" Margin="10,10,0,0" Height="204" VerticalAlignment="Top" HorizontalAlignment="Left" Width="778"></grids:DeviceInfoPanel>
-                    <grids:RebootButtonsGrid x:Name="RebootGrid" Margin="0,10,10,493" HorizontalAlignment="Right" Width="241"></grids:RebootButtonsGrid>
-                    <Button Foreground="{DynamicResource ForgBrush}" x:Name="buttonStartShell"  Content="{DynamicResource btnADBCMD}" Margin="992,185,10,0" VerticalAlignment="Top" Height="30" Background="{x:Null}" BorderBrush="{DynamicResource BorderBrush}" FontSize="18" FontFamily="Microsoft YaHei UI Light" Click="ButtonStartShell_Click" />
-                    <Grid x:Name="GridMainTab" Margin="11,248,10,0">
-                        <TabControl Name="TabFunctions" Background="{x:Null}" BorderBrush="{DynamicResource BasicBrush}">
-                            <TabItem Foreground="{DynamicResource ForgBrushOnBasic}" TabIndex="0" Header="{DynamicResource tbiWelcome}" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" Margin="-2,0,0,0" HorizontalAlignment="Left" Width="200" Background="{DynamicResource BasicBrush}" FontFamily="Microsoft YaHei UI Light" FontSize="16">
-                                <grids:WelcomeGrid Margin="0,0,0,-1"></grids:WelcomeGrid>
-                            </TabItem>
-                            <TabItem TabIndex="1" Header="{DynamicResource tbiOnPowerOn}" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" Margin="-2,0,0,0" HorizontalAlignment="Left" Width="200" Background="{DynamicResource BasicBrush}" Foreground="{DynamicResource ForgBrushOnBasic}" FontFamily="Microsoft YaHei UI Light" FontSize="16">
-                                <grids:PoweronFunctions x:Name="PoweronFuncs" Margin="0,-2,-2,0"></grids:PoweronFunctions>
-                            </TabItem>
-                            <TabItem TabIndex="2" Header="{DynamicResource tbiOnRecovery}" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" Margin="-2,0,0,0" HorizontalAlignment="Left" Width="200" Background="{DynamicResource BasicBrush}" Foreground="{DynamicResource ForgBrushOnBasic}" FontFamily="Microsoft YaHei UI Light" FontSize="16">
-                                <grids:RecoveryFunctions x:Name="RecoveryFuncs"/>
-                            </TabItem>
-                            <TabItem  TabIndex="3" Header="{DynamicResource tbiOnFastboot}" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" Margin="-2,0,0,0" HorizontalAlignment="Left" Width="200" Background="{DynamicResource BasicBrush}" Foreground="{DynamicResource ForgBrushOnBasic}" FontFamily="Microsoft YaHei UI Light" FontSize="16">
-                                <grids:FastbootFunctions x:Name="FastbootFuncs"></grids:FastbootFunctions>
-                            </TabItem>
-                        </TabControl>
-                    </Grid>
-                    <TextBox Foreground="{DynamicResource ForgBrush}" x:Name="textBoxGG" Height="23" Margin="10,220,100,0" TextWrapping="Wrap" Text="..." VerticalAlignment="Top" IsReadOnly="True" Background="{x:Null}" FontSize="14"/>
-                    <Button Foreground="{DynamicResource ForgBrush}" x:Name="BtnHelp" Content="{DynamicResource btnHelp}" Margin="0,220,10,0" VerticalAlignment="Top" Height="24" Background="{x:Null}" BorderBrush="{DynamicResource BorderBrush}" FontSize="14" FontFamily="Microsoft YaHei UI Light" Click="BtnHelp_Click" HorizontalAlignment="Right" Width="85" />
-                    <ListBox x:Name="DevicesListBox" DisplayMemberPath="Id" Height="136" Margin="0,44,270,0" VerticalAlignment="Top" SelectionChanged="DevicesListBox_SelectionChanged" Background="#00000000" Foreground="{DynamicResource BasicBrush}" BorderBrush="#FFABADB3" HorizontalAlignment="Right" Width="180"/>
-                    <Button x:Name="buttonLinkHelp"  Foreground="{DynamicResource ForgBrush}" Content="{DynamicResource LinkHelp}" Margin="793,184,0,0" VerticalAlignment="Top" Height="30" Background="{x:Null}" BorderBrush="#33000000" FontSize="11" FontFamily="Microsoft YaHei UI Light" Click="ButtonLinkHelp_Click" Width="180" HorizontalAlignment="Left"/>
-                    <Label Content="{DynamicResource Devices}" Foreground="{DynamicResource ForgBrush}" Margin="0,14,271,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" HorizontalAlignment="Right" Width="179"/>
-                </Grid>
+ 
             </TabItem>
             <TabItem Foreground="{DynamicResource ForgBrushOnBasic}" Header="{DynamicResource tbiBookMarker}" Background="{DynamicResource BasicBrush}" Margin="-2,-3,0,3" BorderBrush="{DynamicResource BasicBrush}" MinHeight="130" FontFamily="Microsoft YaHei UI Light" Height="130" FontSize="10">
                 <Grid Background="#00E5E5E5" Margin="0,0,-3,7">
@@ -61,6 +58,6 @@
                     </TabControl>
                 </Grid>
             </TabItem>
-        </TabControl>
+        </TabControl>-->
     </Grid>
 </Window>

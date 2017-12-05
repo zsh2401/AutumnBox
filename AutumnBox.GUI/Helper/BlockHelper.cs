@@ -28,7 +28,7 @@ namespace AutumnBox.GUI.Helper
         {
             get
             {
-                return _mainWindow.GridMainTab;
+                return null;
             }
         }
         #region ChoiceBlock

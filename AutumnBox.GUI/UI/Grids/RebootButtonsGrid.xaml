@@ -4,11 +4,12 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AutumnBox.GUI.UI.Grids"
-             mc:Ignorable="d" d:DesignWidth="300" Height="168.878">
+             mc:Ignorable="d" Height="81" Width="497.333" MinWidth="400" MinHeight="50">
     <Grid>
-    <Button x:Name="ButtonRebootToSystem" Content="{DynamicResource btnRebootToSystem}" Margin="0,10,0,0" VerticalAlignment="Top" Height="33" Background="{x:Null}" BorderBrush="{DynamicResource BorderBrush}" FontSize="18" FontFamily="Microsoft YaHei UI Light" Click="ButtonRebootToSystem_Click" Foreground="{DynamicResource ForgBrush}"/>
-    <Button x:Name="ButtonRebootToRecovery" Content="{DynamicResource btnRebootToRecovery}" Margin="0,48,0,0" VerticalAlignment="Top" Height="33" Background="{x:Null}" BorderBrush="{DynamicResource BorderBrush}" FontSize="18" FontFamily="Microsoft YaHei UI Light" Click="ButtonRebootToRecovery_Click" Foreground="{DynamicResource ForgBrush}"/>
-    <Button x:Name="ButtonRebootToBootloader" Content="{DynamicResource btnRebootToBootloader}" Margin="0,86,0,0" VerticalAlignment="Top" Height="33" Background="{x:Null}" BorderBrush="{DynamicResource BorderBrush}" FontSize="18" FontFamily="Microsoft YaHei UI Light" Click="ButtonRebootToBootloader_Click" Foreground="{DynamicResource ForgBrush}"/>
-    <Button x:Name="ButtonRebootToSnapdragon9008" Content="{DynamicResource btnRebootToSnapdragon9008}" Margin="0,126,0,0" VerticalAlignment="Top" Height="33" Background="{x:Null}" BorderBrush="{DynamicResource BorderBrush}" FontSize="18" FontFamily="Microsoft YaHei UI Light" Foreground="{DynamicResource ForgBrush}" Click="ButtonRebootToSnapdragon9008_Click"/>
+        <Button x:Name="ButtonRebootToSystem" Content="{DynamicResource btnSystem}" Margin="124,0,0,0" VerticalAlignment="Top" Height="36" Background="{x:Null}" BorderBrush="{DynamicResource BorderBrush}" FontSize="14" FontFamily="Microsoft YaHei UI Light" Click="ButtonRebootToSystem_Click" Foreground="{DynamicResource ForgBrush}" HorizontalAlignment="Left" Width="175"/>
+        <Button x:Name="ButtonRebootToRecovery" Content="{DynamicResource btnRecovery}" VerticalAlignment="Top" Height="36" Background="{x:Null}" BorderBrush="{DynamicResource BorderBrush}" FontSize="14" FontFamily="Microsoft YaHei UI Light" Click="ButtonRebootToRecovery_Click" Foreground="{DynamicResource ForgBrush}" HorizontalAlignment="Right" Width="193"/>
+        <Button x:Name="ButtonRebootToBootloader" Content="{DynamicResource btnBootloader}" Margin="0,45,0,0" VerticalAlignment="Top" Height="36" Background="{x:Null}" BorderBrush="{DynamicResource BorderBrush}" FontSize="14" FontFamily="Microsoft YaHei UI Light" Click="ButtonRebootToBootloader_Click" Foreground="{DynamicResource ForgBrush}" HorizontalAlignment="Right" Width="193"/>
+        <Button x:Name="ButtonRebootToSnapdragon9008" Content="{DynamicResource btnSnapdragon9008}" Margin="124,45,0,0" VerticalAlignment="Top" Height="36" Background="{x:Null}" BorderBrush="{DynamicResource BorderBrush}" FontSize="14" FontFamily="Microsoft YaHei UI Light" Foreground="{DynamicResource ForgBrush}" Click="ButtonRebootToSnapdragon9008_Click" HorizontalAlignment="Left" Width="175"/>
+        <TextBlock HorizontalAlignment="Left" Margin="3,26,0,25" TextWrapping="Wrap" Text="{DynamicResource RebootTo}" VerticalAlignment="Center" Width="116" Height="30" FontSize="24" FontFamily="Microsoft YaHei UI Light"/>
     </Grid>
 </UserControl>
