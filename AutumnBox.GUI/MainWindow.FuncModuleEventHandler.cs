@@ -59,9 +59,6 @@ namespace AutumnBox.GUI
                     case nameof(XiaomiBootloaderRelocker):
                         RelockMiFinish(e);
                         break;
-                    case nameof(AndroidFullBackup):
-                        Box.ShowMessageDialog("msgNotice", "msgLookTheScreen");
-                        break;
                     default:
                         ModuleResultWindow.FastShow(e.Result);
                         break;

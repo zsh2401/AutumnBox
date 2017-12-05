@@ -9,7 +9,7 @@
     <Window.Resources>
         <Storyboard x:Key="ShowAnimation">
             <DoubleAnimation 
-                From="0" To="2" Duration="0:0:0.0"
+                From="0" To="0" Duration="0:0:0.0"
                 Storyboard.TargetName="MainWindow"
                 Storyboard.TargetProperty="Height" BeginTime="0:0:0.0">
             </DoubleAnimation>
