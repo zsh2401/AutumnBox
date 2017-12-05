@@ -1,6 +1,6 @@
 ﻿/* =============================================================================*\
 *
-* Filename: States
+* Filename: FlieSenderErrorType
 * Description: 
 *
 * Version: 1.0

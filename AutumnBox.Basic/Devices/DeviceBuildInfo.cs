@@ -1,9 +1,9 @@
 /* =============================================================================*\
 *
-* Filename: DeviceInfoStruct.cs
+* Filename: DeviceBuildInfo.cs
 * Description: 
 *
-* Version: 1.0
+* Version: 2.0
 * Created: 8/18/2017 22:09:36(UTC+8:00)
 * Compiler: Visual Studio 2017
 * 

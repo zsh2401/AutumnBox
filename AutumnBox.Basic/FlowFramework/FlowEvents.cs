@@ -21,6 +21,7 @@ namespace AutumnBox.Basic.FlowFramework
         public FinishedEventArgs(TResult result)
         {
             Result = result;
+
         }
     }
     public delegate void StartupEventHandler(object sender, StartupEventArgs e);

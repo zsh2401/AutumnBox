@@ -1,6 +1,6 @@
 /* =============================================================================*\
 *
-* Filename: DebugInfo.cs
+* Filename: DebugSettings.cs
 * Description: 
 *
 * Version: 1.0

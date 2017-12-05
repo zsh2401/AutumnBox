@@ -1,6 +1,6 @@
 ﻿/* =============================================================================*\
 *
-* Filename: Logger
+* Filename: Logger.Public
 * Description: 
 *
 * Version: 1.0

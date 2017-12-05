@@ -1,6 +1,6 @@
 ﻿/* =============================================================================*\
 *
-* Filename: BundleForAnalyzeOutput
+* Filename: BundleForAnalyzingResult
 * Description: 
 *
 * Version: 1.0

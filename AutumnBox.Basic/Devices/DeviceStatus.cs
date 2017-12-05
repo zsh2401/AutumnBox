@@ -1,6 +1,6 @@
 /* =============================================================================*\
 *
-* Filename: DeviceStatusEnum.cs
+* Filename: DeviceStatus
 * Description: 
 *
 * Version: 1.0

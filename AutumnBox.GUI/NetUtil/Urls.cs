@@ -1,6 +1,6 @@
 /* =============================================================================*\
 *
-* Filename: ApiUrl.cs
+* Filename: Urls.cs
 * Description: 
 *
 * Version: 1.0

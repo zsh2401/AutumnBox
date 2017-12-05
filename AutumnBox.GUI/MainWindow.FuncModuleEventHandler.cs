@@ -1,6 +1,6 @@
 /* =============================================================================*\
 *
-* Filename: Main.FuncFinishedHandler.cs
+* Filename: MainWindow.FuncModuleEventHandler.cs
 * Description: 
 *
 * Version: 1.0

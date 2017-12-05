@@ -1,6 +1,6 @@
 ﻿/* =============================================================================*\
 *
-* Filename: DeviceSimpleInfo
+* Filename: DeviceBasicInfo
 * Description: 
 *
 * Version: 1.0

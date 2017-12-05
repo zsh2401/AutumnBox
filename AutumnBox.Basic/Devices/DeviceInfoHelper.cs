@@ -1,6 +1,6 @@
 ﻿/* =============================================================================*\
 *
-* Filename: DeviceInfoGetter
+* Filename: DeviceeInfoHelper
 * Description: 
 *
 * Version: 1.0

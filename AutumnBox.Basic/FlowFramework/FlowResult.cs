@@ -1,9 +1,9 @@
 ﻿/* =============================================================================*\
 *
-* Filename: Result
+* Filename: FlowResult
 * Description: 
 *
-* Version: 1.0
+* Version: 1.1
 * Created: 2017/11/23 15:19:26 (UTC+8:00)
 * Compiler: Visual Studio 2017
 * 

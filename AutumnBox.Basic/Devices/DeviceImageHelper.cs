@@ -1,6 +1,6 @@
 ﻿/* =============================================================================*\
 *
-* Filename: DeviceImagePathFinder
+* Filename: DeviceImageHelper
 * Description: 
 *
 * Version: 1.0

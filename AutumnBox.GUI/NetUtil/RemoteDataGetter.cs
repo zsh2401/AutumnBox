@@ -1,6 +1,6 @@
 ﻿/* =============================================================================*\
 *
-* Filename: NetUnitBase
+* Filename: RemoteDataGetter
 * Description: 
 *
 * Version: 1.0

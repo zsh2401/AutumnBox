@@ -239,7 +239,6 @@
     <Compile Include="I18N\LanguageHelper.cs" />
     <Compile Include="Cfg\ConfigOperator.cs" />
     <Compile Include="Util\NativeMethods.cs" />
-    <Compile Include="Util\VersionInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -284,10 +283,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Resources\links.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

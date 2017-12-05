@@ -1,6 +1,6 @@
 ﻿/* =============================================================================*\
 *
-* Filename: FilePuller
+* Filename: FilePullerArgs
 * Description: 
 *
 * Version: 1.0
