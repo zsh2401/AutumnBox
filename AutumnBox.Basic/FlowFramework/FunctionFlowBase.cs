@@ -20,6 +20,6 @@ namespace AutumnBox.Basic.FlowFramework
         protected static void OnAnyFinished(object sender, FinishedEventArgs<FlowResult> e) {
             AnyFinished?.Invoke(sender, e);
         }
-        protected internal static bool AnyFinishedIsRegistered => (AnyFinished != null);
+        protected internal static bool AnyFinishedRegistered => (AnyFinished != null);
     }
 }

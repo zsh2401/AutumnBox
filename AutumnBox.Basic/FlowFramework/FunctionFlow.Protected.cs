@@ -44,11 +44,9 @@ namespace AutumnBox.Basic.FlowFramework
         }
         protected virtual void OnProcessStarted(ProcessStartedEventArgs e)
         {
+            Logger.D(e.Pid.ToString());
             _pid = e.Pid;
-            Task.Run(() =>
-            {
-                ProcessStarted?.Invoke(this, e);
-            });
+            ProcessStarted?.Invoke(this, e);
         }
         protected virtual void AnalyzeResult(TResult result)
         {

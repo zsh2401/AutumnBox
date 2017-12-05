@@ -65,7 +65,6 @@
     <Compile Include="FlowFramework\ICompletable.cs" />
     <Compile Include="FlowFramework\ResultType.cs" />
     <Compile Include="FlowFramework\FlowEvents.cs" />
-    <Compile Include="FlowFramework\FlowStatus.cs" />
     <Compile Include="FlowFramework\FunctionFlow.Private.cs" />
     <Compile Include="FlowFramework\FunctionFlow.Public.cs" />
     <Compile Include="FlowFramework\FunctionFlow.Protected.cs" />

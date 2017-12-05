@@ -14,11 +14,11 @@
 
 namespace AutumnBox.Basic.FlowFramework
 {
-    public delegate void FinishedEventHandler<RESULT_T>(object sender, FinishedEventArgs<RESULT_T> e) where RESULT_T : FlowResult;
-    public sealed class FinishedEventArgs<RESULT_T> where RESULT_T : FlowResult
+    public delegate void FinishedEventHandler<TResult>(object sender, FinishedEventArgs<TResult> e) where TResult : FlowResult;
+    public sealed class FinishedEventArgs<TResult> where TResult : FlowResult
     {
-        public RESULT_T Result { get; private set; }
-        public FinishedEventArgs(RESULT_T result)
+        public TResult Result { get; private set; }
+        public FinishedEventArgs(TResult result)
         {
             Result = result;
         }

@@ -39,7 +39,7 @@
         </Storyboard>
     </Window.Resources>
     <Window.Triggers>
-        <EventTrigger SourceName="MainWindow" RoutedEvent="Window.Loaded">
+        <EventTrigger SourceName="MWindow" RoutedEvent="Window.Loaded">
             <BeginStoryboard Name="showAnimation" 
                       Storyboard="{StaticResource ShowAnimation}">
             </BeginStoryboard>

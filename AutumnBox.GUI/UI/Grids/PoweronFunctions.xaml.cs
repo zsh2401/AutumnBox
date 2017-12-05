@@ -62,7 +62,8 @@ namespace AutumnBox.GUI.UI.Grids
             if (isAndroidO)
             {
                 var result = Box.ShowChoiceDialog("msgNotice", "msgBreventFixTip", "btnDoNotOpen", "btnOpen");
-                switch (result) {
+                switch (result)
+                {
                     case Windows.ChoiceResult.BtnCancel:
                         return;
                     case Windows.ChoiceResult.BtnLeft:
@@ -280,14 +281,10 @@ namespace AutumnBox.GUI.UI.Grids
             });
             if (isInstallThisApp == false) { Box.ShowMessageDialog("Warning", "msgPlsInstallIceBoxFirst"); return; }
             /*提示用户删除账户*/
-            bool _continue = await Task.Run(() =>
-            {
-                return BlockHelper.BShowChoiceBlock(
-                    "msgNotice",
+            bool _continue = Box.BShowChoiceDialog("msgNotice",
                     $"{UIHelper.GetString("msgIceActLine1")}\n{UIHelper.GetString("msgIceActLine2")}\n{UIHelper.GetString("msgIceActLine3")}",
                     "btnCancel",
                     "btnContinue");
-            });
             Logger.D(_continue.ToString());
             if (!_continue) return;
             /*开始操作 */
