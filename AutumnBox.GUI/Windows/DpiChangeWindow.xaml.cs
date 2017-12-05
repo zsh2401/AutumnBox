@@ -39,7 +39,6 @@ namespace AutumnBox.GUI.Windows
         public DpiChangeWindow()
         {
             InitializeComponent();
-            TitleBar.OwnerWindow = this;
             BtnOK.IsEnabled = true;
             new Thread(() =>
             {

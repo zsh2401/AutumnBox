@@ -3,6 +3,7 @@ using AutumnBox.GUI.Resources.DynamicIcons;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace AutumnBox.GUI.UI.Cstm
 {
@@ -11,10 +12,30 @@ namespace AutumnBox.GUI.UI.Cstm
     /// </summary>
     public partial class CstmTitleBar : UserControl
     {
-        public Window OwnerWindow { private get; set; }
+        public Window OwnerWindow
+        {
+            set
+            {
+                _ownerWindow = value;
+            }
+        }
+        private Window _ownerWindow;
         public CstmTitleBar()
         {
             InitializeComponent();
+        }
+        private static Window FindParentWindow(DependencyObject control)
+        {
+            var parent = VisualTreeHelper.GetParent(control);
+            if (parent == null)
+            {
+                return null;
+            }
+            else if (parent is Window)
+            {
+                return (Window)parent;
+            };
+            return FindParentWindow(parent);
         }
         private void ImgClose_MouseEnter(object sender, MouseEventArgs e) =>
             ImgClose.Source = UIHelper.BitmapToBitmapImage(DynamicIcons.close_selected);
@@ -29,11 +50,16 @@ namespace AutumnBox.GUI.UI.Cstm
             ImgMin.Source = UIHelper.BitmapToBitmapImage(DynamicIcons.min_normal);
 
         private void ImgClose_MouseDown(object sender, MouseButtonEventArgs e) =>
-            OwnerWindow.Close();
+            _ownerWindow.Close();
         private void ImgMin_MouseDown(object sender, MouseButtonEventArgs e) =>
-            OwnerWindow.WindowState = WindowState.Minimized;
+            _ownerWindow.WindowState = WindowState.Minimized;
 
         private void Grid_MouseDown(object sender, MouseButtonEventArgs e) =>
-            UIHelper.DragMove(OwnerWindow, e);
+            UIHelper.DragMove(_ownerWindow, e);
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            this._ownerWindow = FindParentWindow(this);
+        }
     }
 }

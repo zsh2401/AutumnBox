@@ -62,7 +62,6 @@ namespace AutumnBox.GUI.Windows
         public MiFlash()
         {
             InitializeComponent();
-            TitleBar.OwnerWindow = this;
         }
         private void buttonStartOrCancel_Click(object sender, RoutedEventArgs e)
         {

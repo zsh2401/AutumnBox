@@ -9,10 +9,10 @@
         mc:Ignorable="d"
         Title="DonateWindow" Height="607.161" Width="453.619" ResizeMode="NoResize" WindowStartupLocation="CenterOwner" WindowStyle="None" Background="#FF009AD6" ShowInTaskbar="False">
     <Grid Margin="3,0,3,3" Background="White">
-        <Image HorizontalAlignment="Left" Height="317" Margin="0,297,0,0" VerticalAlignment="Top" Width="217" Source="/AutumnBox.GUI.Resources;component/Images/alipay.jpg"/>
-        <Image HorizontalAlignment="Left" Height="317" Margin="208,287,0,0" VerticalAlignment="Top" Width="242" Source="/AutumnBox.GUI.Resources;component/Images/wechatpay.png"/>
+        <Image HorizontalAlignment="Left" Height="317" Margin="0,297,0,0" VerticalAlignment="Top" Width="217" Source="/AutumnBox;component/Resources/Images/alipay.jpg"/>
+        <Image HorizontalAlignment="Left" Height="317" Margin="208,287,0,0" VerticalAlignment="Top" Width="242" Source="/AutumnBox;component/Resources/Images/wechatpay.png"/>
         <cstm:CstmTitleBar x:Name="TitleBar" Margin="0,0,0,564"></cstm:CstmTitleBar>
         <Image Name="img"
-               gif:ImageBehavior.AnimatedSource="/AutumnBox.GUI.Resources;component/Images/jkr.gif" Margin="0,40,0,0" Height="243" VerticalAlignment="Top" HorizontalAlignment="Left" Width="448"/>
+               gif:ImageBehavior.AnimatedSource="/Resources/Images/jkr.gif" Margin="0,40,0,0" Height="243" VerticalAlignment="Top" HorizontalAlignment="Left" Width="448" Source="/AutumnBox;component/Resources/Images/jkr.gif"/>
     </Grid>
 </Window>

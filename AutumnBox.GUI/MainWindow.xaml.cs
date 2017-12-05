@@ -44,7 +44,6 @@ namespace AutumnBox.GUI
         {
             InitializeComponent();
             App.DevicesListener.DevicesChanged += DevicesChanged;
-            TitleBar.OwnerWindow = this;
             TitleBar.ImgMin.Visibility = Visibility.Visible;
             DevInfoPanel.RefreshStart += (s, e) =>
             {

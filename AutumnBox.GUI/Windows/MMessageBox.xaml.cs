@@ -31,8 +31,7 @@ namespace AutumnBox.GUI.Windows
         public MMessageBox(Window owner)
         {
             InitializeComponent();
-            this.Owner = owner;
-            TitleBar.OwnerWindow = this;
+            Owner = owner;
         }
         public new void ShowDialog()
         {

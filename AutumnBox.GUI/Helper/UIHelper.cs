@@ -141,57 +141,5 @@ namespace AutumnBox.GUI.Helper
                 m.DragMove();
             }
         }
-//        /// <summary>
-//        /// 一个进度窗
-//        /// </summary>
-//        private static RateBox rateBox;
-//        /// <summary>
-//        /// 为了保证不同时出现多个ratebox而设计的函数
-//        /// </summary>
-//        /// <param name="rm"></param>
-//        public static void ShowRateBox(FunctionModuleProxy fmp = null)
-//        {
-//            try
-//            {
-//                if (fmp == null)
-//                {
-//                    rateBox = new RateBox();
-//                    rateBox.ShowDialog();
-//                    return;
-//                }
-//                if (rateBox.IsActive) rateBox.Close();
-//                rateBox = new RateBox(fmp);
-//                rateBox.ShowDialog();
-//            }
-//            catch
-//            {
-//                rateBox = new RateBox(fmp);
-//                rateBox.ShowDialog();
-//            }
-//        }
-//        public static void ShowRateBox(IForceStoppable forceStoppable)
-//        {
-//            if (rateBox?.IsActive == true) return;
-//            if (forceStoppable != null)
-//                rateBox = new RateBox(forceStoppable);
-//#if FINISHED
-//            else
-//                rateBox = new RateBox();
-//#endif
-//            rateBox.ShowDialog();
-
-//        }
-//        /// <summary>
-//        /// 关闭进度窗
-//        /// </summary>
-//        public static void CloseRateBox()
-//        {
-//            try
-//            {
-//                rateBox.Close();
-//            }
-//            catch { }
-//        }
-
     }
 }
