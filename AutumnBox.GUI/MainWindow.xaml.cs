@@ -19,6 +19,7 @@ using AutumnBox.GUI.Cfg;
 using AutumnBox.GUI.Helper;
 using AutumnBox.GUI.NetUtil;
 using AutumnBox.GUI.UI.Cstm;
+using AutumnBox.GUI.UI.CstPanels;
 using AutumnBox.GUI.UI.Grids;
 using AutumnBox.GUI.Windows;
 using AutumnBox.Support.CstmDebug;
@@ -28,6 +29,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace AutumnBox.GUI
 {
@@ -87,10 +89,8 @@ namespace AutumnBox.GUI
                 else SystemHelper.AppExit(1);
             };
 #if DEBUG
-            //AboutControl.LabelVersion.Content = SystemHelper.CurrentVersion + "-Debug";
             TitleBar.Title.Content += "  " + SystemHelper.CurrentVersion + "-Debug";
 #else
-            AboutControl.LabelVersion.Content = SystemHelper.CurrentVersion + "-Release";
             TitleBar.Title.Content += "  " + SystemHelper.CurrentVersion + "-Release";
 #endif
         }
@@ -118,17 +118,26 @@ namespace AutumnBox.GUI
         /// <param name="e"></param>
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            UIHelper.SetOwnerTransparency(Config.BackgroundA);
+            //开启Blur透明效果
+            BlurHelper.EnableBlur(this);
+            //UIHelper.SetOwnerTransparency(0xFE);
             //刷新一下界面
             RefreshUI();
             //开始设备监听
             App.DevicesListener.Begin();
             //哦,如果是第一次启动本软件,那么就显示一下提示吧!
-            if (Config.IsFirstLaunch)
+            Task.Run(() =>
             {
-                Box.ShowMessageDialog("NoticeOnlyOne", "msgFristLaunchNotice");
-                Config.IsFirstLaunch = false;
-            }
+                Thread.Sleep(2000);
+                this.Dispatcher.Invoke(() =>
+                {
+                    if (Config.IsFirstLaunch)
+                    {
+                        new FastGrid(this.GridMain, new About());
+                        Config.IsFirstLaunch = false;
+                    }
+                });
+            });
             //开始获取公告
             new MOTDGetter().RunAsync((r) =>
             {
@@ -142,8 +151,6 @@ namespace AutumnBox.GUI
                     new UpdateNoticeWindow(r).ShowDialog();
                 }
             });
-            //开启Blur透明效果
-            //BlurHelper.EnableBlur(this);
         }
         /// <summary>
         /// 根据当前选中的设备刷新界面信息
@@ -176,12 +183,8 @@ namespace AutumnBox.GUI
             }
             RefreshUI();
         }
-        private void ButtonLinkHelp_Click(object sender, RoutedEventArgs e)
-        {
-            new LinkHelpWindow().Show();
-        }
 
-        private  void ButtonStartShell_Click(object sender, RoutedEventArgs e)
+        private void ButtonStartShell_Click(object sender, RoutedEventArgs e)
         {
             ProcessStartInfo info = new ProcessStartInfo
             {
@@ -203,9 +206,31 @@ namespace AutumnBox.GUI
             Process.Start(info);
         }
 
-        private void BtnHelp_Click(object sender, RoutedEventArgs e)
+
+        private void TextBlock_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             Process.Start(Urls.HELP_PAGE);
+        }
+
+        private void TBLinkHelpLink_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            new LinkHelpWindow().Show();
+        }
+
+
+        private void TBDonate_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            new DonateWindow().ShowDialog();
+        }
+
+        private void BtnAbout_Click(object sender, RoutedEventArgs e)
+        {
+            new FastGrid(this.GridMain, new About());
+        }
+
+        private void BtnSettings_Click(object sender, RoutedEventArgs e)
+        {
+            new FastGrid(this.GridMain, new Settings(), (SolidColorBrush)App.Current.Resources["BackBrush"]);
         }
     }
 }

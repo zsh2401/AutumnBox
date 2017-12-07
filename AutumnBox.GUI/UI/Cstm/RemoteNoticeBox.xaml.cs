@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AutumnBox.GUI.UI.Grids
+namespace AutumnBox.GUI.UI.Cstm
 {
     /// <summary>
-    /// WelcomeGrid.xaml 的交互逻辑
+    /// RemoteNoticeBox.xaml 的交互逻辑
     /// </summary>
-    public partial class WelcomeGrid : UserControl
+    public partial class RemoteNoticeBox : UserControl
     {
-        public WelcomeGrid()
+        public RemoteNoticeBox()
         {
             InitializeComponent();
         }

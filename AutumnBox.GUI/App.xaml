@@ -5,10 +5,10 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/I18N/Langs/zh-CN.xaml"></ResourceDictionary>
-                <ResourceDictionary Source="/Resources/ColorThemes/BasicTheme.xaml"></ResourceDictionary>
-                <ResourceDictionary Source="/Resources/links.xaml"></ResourceDictionary>
-                <ResourceDictionary Source="/Resources/animations.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="/I18N/Langs/zh-CN.xaml"/>
+                <ResourceDictionary Source="/Resources/ColorThemes/BasicTheme.xaml"/>
+                <ResourceDictionary Source="/Resources/links.xaml"/>
+                <ResourceDictionary Source="/Resources/animations.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

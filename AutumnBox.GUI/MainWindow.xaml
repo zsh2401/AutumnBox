@@ -8,15 +8,19 @@
         xmlns:grids="clr-namespace:AutumnBox.GUI.UI.Grids"
         x:Name="_MainWindow" x:Class="AutumnBox.GUI.MainWindow"
         mc:Ignorable="d"
-        Background="#7FFFFFFF" Title="AutumnBox" Height="682.667" Width="1155" Foreground="#FF1B1919" ResizeMode="NoResize" Loaded="MainWindow_Loaded" AllowsTransparency="True" WindowStyle="None">
-    <Grid Name="MainGrid">
-        <Grid Name="GridToolsMain" Background="#00E5E5E5" Margin="0,40,0,0" Height="653" VerticalAlignment="Top">
+        Background="{DynamicResource BasicBrush}" Title="AutumnBox" Height="682.667" Width="1155" Foreground="#FF1B1919" ResizeMode="NoResize" Loaded="MainWindow_Loaded" AllowsTransparency="True" WindowStyle="None">
+    <Grid Name="GridBase" Background="{DynamicResource BackBrush}" Margin="3,0,3,3">
+        <cstm:CstmTitleBar x:Name="TitleBar" Height="24" VerticalAlignment="Top"/>
+        <Grid Name="GridMain" Background="#00E5E5E5" Margin="0,40,0,0" Height="653" VerticalAlignment="Top">
             <grids:RebootButtonsGrid x:Name="RebootGrid" Margin="0,12,29,0" HorizontalAlignment="Right" Width="265" VerticalAlignment="Top" Height="126" BorderBrush="{DynamicResource BorderBrush}"/>
             <grids:DeviceInfoPanel x:Name="DevInfoPanel" Margin="10,0,0,0" Height="222" VerticalAlignment="Top" HorizontalAlignment="Left" Width="650"/>
-            <Button Foreground="{DynamicResource ForgBrush}" x:Name="buttonStartShell"  Content="{DynamicResource btnADBCMD}" Margin="861,142,29,0" VerticalAlignment="Top" Height="80" Background="{x:Null}" BorderBrush="{DynamicResource BorderBrush}" FontSize="14" FontFamily="Microsoft YaHei UI Light" Click="ButtonStartShell_Click" />
+            <Button Foreground="{DynamicResource ForgBrush}" x:Name="buttonStartShell"  Content="{DynamicResource btnADBCMD}" Margin="861,170,29,0" VerticalAlignment="Top" Height="52" Background="{x:Null}" BorderBrush="{DynamicResource BorderBrush}" FontSize="14" FontFamily="Microsoft YaHei UI Light" Click="ButtonStartShell_Click" />
+            <Button Foreground="{DynamicResource ForgBrush}" x:Name="BtnSettings"  Content="{DynamicResource btnSetting}" Margin="939,590,6,0" VerticalAlignment="Top" Height="35" Background="{x:Null}" BorderBrush="{DynamicResource BorderBrush}" FontSize="14" FontFamily="Microsoft YaHei UI Light" Click="BtnSettings_Click" />
+            <Button Foreground="{DynamicResource ForgBrush}" x:Name="BtnAbout"  Content="{DynamicResource btnAbout}" Margin="939,550,6,0" VerticalAlignment="Top" Height="35" Background="{x:Null}" BorderBrush="{DynamicResource BorderBrush}" FontSize="14" FontFamily="Microsoft YaHei UI Light" Click="BtnAbout_Click" />
+            <Image Source="/AutumnBox;component/Resources/Icons/donate.png" HorizontalAlignment="Left" Height="25" Margin="939,518,0,0" VerticalAlignment="Top" Width="26"/>
             <TabControl Name="TabFunctions" Background="{x:Null}" BorderBrush="{DynamicResource BasicBrush}" Margin="10,227,221,28">
                 <TabItem TabIndex="1" Header="{DynamicResource tbiOnPowerOn}" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" Margin="-2,0,0,0" HorizontalAlignment="Left" Width="200" Background="{DynamicResource BasicBrush}" Foreground="{DynamicResource ForgBrushOnBasic}" FontFamily="Microsoft YaHei UI Light" FontSize="16">
-                    <grids:PoweronFunctions x:Name="PoweronFuncs" Margin="-8,0,4,0"></grids:PoweronFunctions>
+                    <grids:PoweronFunctions x:Name="PoweronFuncs" Margin="0,0,-2,0"></grids:PoweronFunctions>
                 </TabItem>
                 <TabItem TabIndex="2" Header="{DynamicResource tbiOnRecovery}" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" Margin="-2,0,0,0" HorizontalAlignment="Left" Width="200" Background="{DynamicResource BasicBrush}" Foreground="{DynamicResource ForgBrushOnBasic}" FontFamily="Microsoft YaHei UI Light" FontSize="16">
                     <grids:RecoveryFunctions x:Name="RecoveryFuncs"/>
@@ -27,37 +31,11 @@
             </TabControl>
             <Label Background="{DynamicResource BasicBrush}" Content="" Margin="0,12,299,0" HorizontalAlignment="Right" Width="1" Height="213" VerticalAlignment="Top"/>
             <TextBox Foreground="{DynamicResource ForgBrush}" x:Name="textBoxGG" Height="88" Margin="939,255,10,0" TextWrapping="Wrap" Text="..." VerticalAlignment="Top" IsReadOnly="True" Background="{x:Null}" FontSize="14"/>
-            <Button Foreground="{DynamicResource ForgBrush}" x:Name="BtnHelp" Content="{DynamicResource btnHelp}" Margin="0,348,10,0" VerticalAlignment="Top" Height="38" Background="{x:Null}" BorderBrush="{DynamicResource BorderBrush}" FontSize="14" FontFamily="Microsoft YaHei UI Light" Click="BtnHelp_Click" HorizontalAlignment="Right" Width="206" />
             <ListBox x:Name="DevicesListBox" DisplayMemberPath="Id" Height="191" Margin="0,31,311,0" VerticalAlignment="Top" SelectionChanged="DevicesListBox_SelectionChanged" Background="#00000000" Foreground="{DynamicResource BasicBrush}" BorderBrush="#FFABADB3" HorizontalAlignment="Right" Width="179"/>
-            <Button x:Name="buttonLinkHelp"  Foreground="{DynamicResource ForgBrush}" Content="{DynamicResource LinkHelp}" Margin="0,390,38,0" VerticalAlignment="Top" Height="36" Background="{x:Null}" BorderBrush="{DynamicResource BorderBrush}" FontSize="14" FontFamily="Microsoft YaHei UI Light" Click="ButtonLinkHelp_Click" Width="178" HorizontalAlignment="Right"/>
             <Label Content="{DynamicResource Devices}" Foreground="{DynamicResource ForgBrush}" Margin="0,0,311,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" HorizontalAlignment="Right" Width="179"/>
+            <TextBlock x:Name="TBHelpLink" HorizontalAlignment="Left" Margin="939,348,0,0" TextWrapping="Wrap" Text="{DynamicResource btnHelp}" VerticalAlignment="Top" TextDecorations="Underline" Foreground="{DynamicResource BasicBrush}" FontSize="16" MouseDown="TextBlock_MouseDown"/>
+            <TextBlock x:Name="TBLinkHelpLink" HorizontalAlignment="Left" Margin="939,377,0,0" TextWrapping="Wrap" Text="{DynamicResource LinkHelp}" VerticalAlignment="Top" TextDecorations="Underline" Foreground="{DynamicResource BasicBrush}" FontSize="16" MouseDown="TBLinkHelpLink_MouseDown"/>
+            <TextBlock x:Name="TBDonate" HorizontalAlignment="Left" Margin="970,522,0,0" TextWrapping="Wrap" Text="{DynamicResource Donate}" VerticalAlignment="Top" TextDecorations="Underline" Foreground="{DynamicResource BasicBrush}" FontSize="16" MouseDown="TBDonate_MouseDown"/>
         </Grid>
-        <cstm:CstmTitleBar x:Name="TitleBar" Height="24" VerticalAlignment="Top"/>
-        <!--<TabControl Margin="0,40,0,0" TabStripPlacement="Left" BorderBrush="{DynamicResource BackBrush}" Background="{x:Null}">
-            <TabItem Foreground="{DynamicResource ForgBrushOnBasic}" Header="{DynamicResource tbiTools}" Background="{DynamicResource BasicBrush}" Margin="-2,-2,0,-10" BorderBrush="{DynamicResource BasicBrush}" MinHeight="130" FontFamily="Microsoft YaHei UI Light" FontSize="10">
- 
-            </TabItem>
-            <TabItem Foreground="{DynamicResource ForgBrushOnBasic}" Header="{DynamicResource tbiBookMarker}" Background="{DynamicResource BasicBrush}" Margin="-2,-3,0,3" BorderBrush="{DynamicResource BasicBrush}" MinHeight="130" FontFamily="Microsoft YaHei UI Light" Height="130" FontSize="10">
-                <Grid Background="#00E5E5E5" Margin="0,0,-3,7">
-                    <TabControl Margin="10,10,10,0" Background="Transparent" BorderBrush="{DynamicResource BasicBrush}">
-                        <TabItem  Header="{DynamicResource tbiDownloads}" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" Margin="-2,0,2,0" HorizontalAlignment="Right" Width="200" Background="#7F009AD6" Foreground="{DynamicResource ForgBrush}" FontSize="16" FontFamily="Microsoft YaHei UI Light">
-                            <cstm:BookMarksControl Margin="10,0,1,-2"/>
-                        </TabItem>
-                    </TabControl>
-                </Grid>
-            </TabItem>
-            <TabItem Foreground="{DynamicResource ForgBrushOnBasic}" Header="{DynamicResource tbiSettings}" Background="{DynamicResource BasicBrush}" Margin="0,0,0,0" BorderBrush="{DynamicResource BasicBrush}" MinHeight="130" FontFamily="Microsoft YaHei UI Light" Height="130" FontSize="10">
-                <Grid Background="#00E5E5E5" Margin="0,0,-3,7">
-                    <TabControl Margin="10,10,10,0" Background="Transparent" BorderBrush="{DynamicResource BasicBrush}">
-                        <TabItem Header="{DynamicResource tbiAbout}" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" Margin="0,0,0,0" HorizontalAlignment="Right" Width="200" Background="#7F009AD6" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" FontSize="16" FontFamily="Microsoft YaHei UI Light">
-                            <grids:AboutControl x:Name="AboutControl"/>
-                        </TabItem>
-                        <TabItem Header="{DynamicResource tbiSettings}" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" Margin="0,0,0,0" HorizontalAlignment="Right" Width="200" Background="#7F009AD6" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" FontSize="16" FontFamily="Microsoft YaHei UI Light">
-                            <grids:Settings x:Name="Settings" Margin="0,0,-1,0"></grids:Settings>
-                        </TabItem>
-                    </TabControl>
-                </Grid>
-            </TabItem>
-        </TabControl>-->
     </Grid>
 </Window>

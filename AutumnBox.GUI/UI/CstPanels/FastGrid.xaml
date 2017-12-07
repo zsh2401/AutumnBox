@@ -1,0 +1,11 @@
+﻿<UserControl x:Class="AutumnBox.GUI.UI.CstPanels.FastGrid"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AutumnBox.GUI.UI.Grids"
+             mc:Ignorable="d" Width="579.5" Height="358" Background="{DynamicResource BasicBrush}" Loaded="UserControl_Loaded">
+    <Grid x:Name="GridContent">
+        <Label Content="{DynamicResource btnClose}" VerticalAlignment="Top" Background="{DynamicResource BasicBrush}" FontSize="20" FontFamily="Microsoft YaHei UI Light" Foreground="White" HorizontalAlignment="Right" Width="54" MouseDown="Label_MouseDown"/>
+    </Grid>
+</UserControl>

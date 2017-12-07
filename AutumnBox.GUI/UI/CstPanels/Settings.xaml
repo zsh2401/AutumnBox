@@ -1,11 +1,11 @@
-﻿<UserControl x:Class="AutumnBox.GUI.UI.Grids.Settings"
+﻿<UserControl x:Class="AutumnBox.GUI.UI.CstPanels.Settings"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AutumnBox.GUI.UI.Grids"
              mc:Ignorable="d" 
-            Height="570" Width="940" Background="White">
+            Height="570" Width="940">
     <Grid>
         <ComboBox x:Name="CbBoxLanguage" HorizontalAlignment="Left" Margin="75,40,0,0" VerticalAlignment="Top" Width="225" BorderBrush="#FFFDF5F5" FontSize="14" FontFamily="Microsoft YaHei UI Light" SelectionChanged="CbBoxLanguage_SelectionChanged" SelectedIndex="0" IsEnabled="False"/>
     <Label Content="{DynamicResource Language}" HorizontalAlignment="Left" Margin="36,40,0,0" VerticalAlignment="Top" FontSize="14" FontFamily="Microsoft YaHei UI Light"/>
