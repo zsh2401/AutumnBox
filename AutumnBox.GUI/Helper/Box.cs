@@ -34,7 +34,16 @@ namespace AutumnBox.GUI.Helper
         }
         public static bool BShowChoiceDialog(string keyTitle, string keyText, string keyTextBtnLeft = null, string keyTextBtnRight = null)
         {
-            return ShowChoiceDialog(keyTitle, keyText, keyTextBtnLeft, keyTextBtnRight) == ChoiceResult.BtnRight;
+            return new ChoiceBox(_owner)
+            {
+                Data = new ChoiceBoxData()
+                {
+                    KeyTitle = keyTitle,
+                    KeyText = keyText,
+                    KeyBtnLeft = keyTextBtnLeft,
+                    KeyBtnRight = keyTextBtnRight,
+                }
+            }.BShowDialog() == true;
         }
         public static ChoiceResult ShowChoiceDialog(string keyTitle, string keyText, string keyTextBtnLeft = null, string keyTextBtnRight = null)
         {
@@ -84,7 +93,8 @@ namespace AutumnBox.GUI.Helper
             {
                 _loadingWindow.Close();
                 _loadingWindowIsAlreadyHaveOne = false;
-            } catch(Exception e) { Logger.T("A exception on close loadingwindow...", e); }
+            }
+            catch (Exception e) { Logger.T("A exception on close loadingwindow...", e); }
 
         }
     }

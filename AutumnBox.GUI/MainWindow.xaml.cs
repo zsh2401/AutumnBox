@@ -220,7 +220,7 @@ namespace AutumnBox.GUI
 
         private void TBDonate_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            new DonateWindow().ShowDialog();
+            new FastGrid(this.GridMain, new Donate());
         }
 
         private void BtnAbout_Click(object sender, RoutedEventArgs e)
@@ -230,7 +230,7 @@ namespace AutumnBox.GUI
 
         private void BtnSettings_Click(object sender, RoutedEventArgs e)
         {
-            new FastGrid(this.GridMain, new Settings(), (SolidColorBrush)App.Current.Resources["BackBrush"]);
+            new FastGrid(this.GridMain, new Settings());
         }
     }
 }

@@ -29,6 +29,6 @@ namespace AutumnBox.GUI.UI.CstPanels
             Process.Start(App.Current.Resources["linkAutumnBoxOS"].ToString());
 
         private void TextBlockDonate_MouseDown(object sender, MouseButtonEventArgs e) =>
-            new DonateWindow().ShowDialog();
+             new FastGrid(((MainWindow)App.Current.MainWindow).GridMain, new Donate());
     }
 }

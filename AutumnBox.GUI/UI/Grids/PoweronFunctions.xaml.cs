@@ -150,7 +150,7 @@ namespace AutumnBox.GUI.UI.Grids
         private void ButtonUnlockMiSystem_Click(object sender, RoutedEventArgs e)
         {
 
-            if (Box.ShowChoiceDialog("msgNotice", "msgUnlockSystemTip") == Windows.ChoiceResult.BtnRight)
+            if (Box.ShowChoiceDialog("msgNotice", "msgUnlockSystemTip") == ChoiceResult.BtnRight)
             {
                 var fmp = FunctionModuleProxy.Create<SystemUnlocker>(new ModuleArgs(App.SelectedDevice));
                 fmp.Finished += ((MainWindow)App.Current.MainWindow).FuncFinish;
@@ -239,7 +239,7 @@ namespace AutumnBox.GUI.UI.Grids
         {
             if (!((MainWindow)App.Current.MainWindow).DevInfoPanel.CurrentDeviceIsRoot)
             {
-                if (!Box.BShowChoiceDialog("Warning", "warrningNeedRootAccess")) return;
+                if (Box.BShowChoiceDialog("Warning", "warrningNeedRootAccess") == false) return;
             }
             bool _continue = await Task.Run(() =>
             {

@@ -39,16 +39,23 @@ namespace AutumnBox.GUI.Windows
         public ChoiceBoxData Data { get; set; } = new ChoiceBoxData();
 
         private ChoiceResult _result = ChoiceResult.BtnCancel;
-
         internal ChoiceBox(Window owner)
         {
+
             InitializeComponent();
             Owner = owner;
             closeAnimationByBtnCancel.Storyboard.Completed += (s, e) => Close();
             closeAnimationByBtnOK.Storyboard.Completed += (s, e) => Close();
             closeAnimationByImgCancel.Storyboard.Completed += (s, e) => Close();
         }
-
+        public bool? BShowDialog() {
+            LabelTitle.Content = UIHelper.GetString(Data.KeyTitle ?? "msgNotice");
+            TBContent.Text = UIHelper.GetString(Data.KeyText ?? "WTF?");
+            BtnLeft.Content = UIHelper.GetString(Data.KeyBtnLeft ?? "btnCancel");
+            BtnRight.Content = UIHelper.GetString(Data.KeyBtnRight ?? "btnRight");
+            try { base.ShowDialog(); } catch (InvalidOperationException e) { GC.SuppressFinalize(e); }
+            return this.DialogResult;
+        }
         public new ChoiceResult ShowDialog()
         {
             LabelTitle.Content = UIHelper.GetString(Data.KeyTitle ?? "msgNotice");
@@ -61,6 +68,7 @@ namespace AutumnBox.GUI.Windows
 
         private void ImgCancel_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            this.DialogResult = null;
             _result = ChoiceResult.BtnCancel;
         }
 
@@ -72,11 +80,13 @@ namespace AutumnBox.GUI.Windows
         private void BtnRight_Click(object sender, RoutedEventArgs e)
         {
             _result = ChoiceResult.BtnRight;
+            this.DialogResult = true;
         }
 
         private void BtnLeft_Click(object sender, RoutedEventArgs e)
         {
             _result = ChoiceResult.BtnLeft;
+            this.DialogResult = true;
         }
     }
 }
