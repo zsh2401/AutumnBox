@@ -63,7 +63,7 @@
         <Label x:Name="LabelTitle" Content="Something...." VerticalAlignment="Top" Height="52" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18" FontFamily="Microsoft YaHei UI Light" Background="#FF009AD6"/>
         <Button x:Name="BtnLeft" Content="{DynamicResource btnCancel}" HorizontalAlignment="Left" Margin="77,282,0,0" VerticalAlignment="Top" Width="165" Background="{x:Null}" Height="28" Click="BtnLeft_Click"/>
         <Button x:Name="BtnRight" Content="{DynamicResource btnOK}" HorizontalAlignment="Left" Margin="247,282,0,0" VerticalAlignment="Top" Width="165" Background="{x:Null}" Height="28" Click="BtnRight_Click"/>
-        <TextBlock x:Name="TBContent" TextAlignment="Center" Margin="0,66,10,0" TextWrapping="Wrap" Text="Content" VerticalAlignment="Top" Height="211" FontFamily="Microsoft YaHei UI Light" FontSize="18"/>
+        <TextBlock x:Name="TBContent" TextAlignment="Center" Margin="10,66,10,0" TextWrapping="Wrap" Text="Content" VerticalAlignment="Top" Height="211" FontFamily="Microsoft YaHei UI Light" FontSize="18"/>
         <Image x:Name="ImgCancel" Height="24" Margin="0,16,20,0" VerticalAlignment="Top" Source="/AutumnBox;component/Resources/DynamicIcons/close_normal.png" MouseDown="ImgCancel_MouseDown" HorizontalAlignment="Right" Width="22"/>
     </Grid>
 </Window>

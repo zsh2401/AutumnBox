@@ -8,13 +8,13 @@
         xmlns:grids="clr-namespace:AutumnBox.GUI.UI.Grids"
         x:Name="_MainWindow" x:Class="AutumnBox.GUI.MainWindow"
         mc:Ignorable="d"
-        Background="{DynamicResource BackBrush}" Title="AutumnBox" Height="650" Width="1155" Foreground="#FF1B1919" ResizeMode="NoResize" Loaded="MainWindow_Loaded" WindowStyle="None" AllowsTransparency="True">
+        Background="#7FFFFFFF" Title="AutumnBox" Height="682.667" Width="1155" Foreground="#FF1B1919" ResizeMode="NoResize" Loaded="MainWindow_Loaded" AllowsTransparency="True" WindowStyle="None">
     <Grid Name="MainGrid">
-        <Grid Name="GridToolsMain" Background="#00E5E5E5" Margin="0,45,0,0">
+        <Grid Name="GridToolsMain" Background="#00E5E5E5" Margin="0,40,0,0" Height="653" VerticalAlignment="Top">
             <grids:RebootButtonsGrid x:Name="RebootGrid" Margin="0,12,29,0" HorizontalAlignment="Right" Width="265" VerticalAlignment="Top" Height="126" BorderBrush="{DynamicResource BorderBrush}"/>
             <grids:DeviceInfoPanel x:Name="DevInfoPanel" Margin="10,0,0,0" Height="222" VerticalAlignment="Top" HorizontalAlignment="Left" Width="650"/>
             <Button Foreground="{DynamicResource ForgBrush}" x:Name="buttonStartShell"  Content="{DynamicResource btnADBCMD}" Margin="861,142,29,0" VerticalAlignment="Top" Height="80" Background="{x:Null}" BorderBrush="{DynamicResource BorderBrush}" FontSize="14" FontFamily="Microsoft YaHei UI Light" Click="ButtonStartShell_Click" />
-            <TabControl Name="TabFunctions" Background="{x:Null}" BorderBrush="{DynamicResource BorderBrush}" Margin="10,227,221,10">
+            <TabControl Name="TabFunctions" Background="{x:Null}" BorderBrush="{DynamicResource BasicBrush}" Margin="10,227,221,28">
                 <TabItem TabIndex="1" Header="{DynamicResource tbiOnPowerOn}" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" Margin="-2,0,0,0" HorizontalAlignment="Left" Width="200" Background="{DynamicResource BasicBrush}" Foreground="{DynamicResource ForgBrushOnBasic}" FontFamily="Microsoft YaHei UI Light" FontSize="16">
                     <grids:PoweronFunctions x:Name="PoweronFuncs" Margin="-8,0,4,0"></grids:PoweronFunctions>
                 </TabItem>
