@@ -29,7 +29,6 @@ namespace AutumnBox.GUI.Cfg
             {
                 Operator.Data.IsFirstLaunch = value;
                 Logger.D("ifl set, now value " + Operator.Data.IsFirstLaunch.ToString());
-                Operator.SaveToDisk();
             }
         }
         public static string SkipVersion
@@ -41,7 +40,6 @@ namespace AutumnBox.GUI.Cfg
             set
             {
                 Operator.Data.SkipVersion = value;
-                Operator.SaveToDisk();
             }
         }
         public static string Lang
@@ -53,7 +51,6 @@ namespace AutumnBox.GUI.Cfg
             set
             {
                 Operator.Data.Lang = value;
-                Operator.SaveToDisk();
             }
         }
         public static byte BackgroundA
@@ -65,7 +62,6 @@ namespace AutumnBox.GUI.Cfg
             set
             {
                 Operator.Data.BackgroundA = value;
-                Operator.SaveToDisk();
             }
         }
     }

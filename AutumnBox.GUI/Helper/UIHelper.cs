@@ -33,6 +33,15 @@ namespace AutumnBox.GUI.Helper
     /// </summary>
     public static class UIHelper
     {
+        public static readonly MainWindow MainWindow;
+        private static SolidColorBrush basicBrush;
+        private static SolidColorBrush backBrush;
+        static UIHelper()
+        {
+            MainWindow = (MainWindow)Application.Current.MainWindow;
+            basicBrush = (SolidColorBrush)Application.Current.Resources["BasicBrush"];
+            backBrush = (SolidColorBrush)Application.Current.Resources["BackBrush"];
+        }
         public static string GetString(string key)
         {
             object tmp = App.Current.Resources[key];
@@ -40,8 +49,8 @@ namespace AutumnBox.GUI.Helper
         }
         public static void SetOwnerTransparency(byte A)
         {
-            Color now = ((SolidColorBrush)App.Current.Resources["BackBrush"]).Color;
-            App.Current.MainWindow.Background = new SolidColorBrush(Color.FromArgb(A, now.R, now.G, now.B));
+            MainWindow.Background = new SolidColorBrush(Color.FromArgb(A, basicBrush.Color.R, basicBrush.Color.G, basicBrush.Color.B));
+            MainWindow.GridBase.Background = new SolidColorBrush(Color.FromArgb(A, backBrush.Color.R, backBrush.Color.G, backBrush.Color.B));
         }
         /// <summary>
         /// 设置一个grid下的所有button的开启与否

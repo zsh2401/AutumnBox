@@ -118,9 +118,11 @@ namespace AutumnBox.GUI
         /// <param name="e"></param>
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
+#if ENABLE_BLUR
+            UIHelper.SetOwnerTransparency(Config.BackgroundA);
             //开启Blur透明效果
             BlurHelper.EnableBlur(this);
-            //UIHelper.SetOwnerTransparency(0xFE);
+#endif
             //刷新一下界面
             RefreshUI();
             //开始设备监听

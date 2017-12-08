@@ -4,7 +4,6 @@ using AutumnBox.GUI.I18N;
 using System.Drawing;
 using System.Windows.Controls;
 using System.Windows.Media;
-
 namespace AutumnBox.GUI.UI.CstPanels
 {
     /// <summary>
@@ -25,8 +24,8 @@ namespace AutumnBox.GUI.UI.CstPanels
        
         private void Slider_ValueChanged(object sender, System.Windows.RoutedPropertyChangedEventArgs<double> e)
         {
-            //UIHelper.SetOwnerTransparency((byte)TransparencySlider.Value);
-            //Config.BackgroundA = (byte)TransparencySlider.Value;
+            UIHelper.SetOwnerTransparency((byte)TransparencySlider.Value);
+            Config.BackgroundA = (byte)TransparencySlider.Value;
         }
 
         private void CbBoxLanguage_SelectionChanged(object sender, SelectionChangedEventArgs e)

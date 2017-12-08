@@ -56,6 +56,7 @@ namespace AutumnBox.GUI.Cfg
             {
                 Data = (ConfigDataLayout)(JsonConvert.DeserializeObject(sr.ReadToEnd(), Data.GetType()));
             }
+            Data.ValueChanged += (s, e) => { SaveToDisk(); };
             Logger.D("a is???" + Data.BackgroundA);
         }
         /// <summary>
