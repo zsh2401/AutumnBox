@@ -48,20 +48,12 @@ namespace AutumnBox.GUI.Windows
             closeAnimationByBtnOK.Storyboard.Completed += (s, e) => Close();
             closeAnimationByImgCancel.Storyboard.Completed += (s, e) => Close();
         }
-        public bool? BShowDialog() {
-            LabelTitle.Content = UIHelper.GetString(Data.KeyTitle ?? "msgNotice");
-            TBContent.Text = UIHelper.GetString(Data.KeyText ?? "WTF?");
-            BtnLeft.Content = UIHelper.GetString(Data.KeyBtnLeft ?? "btnCancel");
-            BtnRight.Content = UIHelper.GetString(Data.KeyBtnRight ?? "btnRight");
-            try { base.ShowDialog(); } catch (InvalidOperationException e) { GC.SuppressFinalize(e); }
-            return this.DialogResult;
-        }
         public new ChoiceResult ShowDialog()
         {
             LabelTitle.Content = UIHelper.GetString(Data.KeyTitle ?? "msgNotice");
             TBContent.Text = UIHelper.GetString(Data.KeyText ?? "WTF?");
             BtnLeft.Content = UIHelper.GetString(Data.KeyBtnLeft ?? "btnCancel");
-            BtnRight.Content = UIHelper.GetString(Data.KeyBtnRight ?? "btnRight");
+            BtnRight.Content = UIHelper.GetString(Data.KeyBtnRight ?? "btnContinue");
             try { base.ShowDialog(); } catch (InvalidOperationException e) { GC.SuppressFinalize(e); }
             return _result;
         }

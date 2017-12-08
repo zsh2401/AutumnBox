@@ -183,7 +183,7 @@ namespace AutumnBox.GUI.UI.Grids
         {
             if (!((MainWindow)App.Current.MainWindow).DevInfoPanel.CurrentDeviceIsRoot)
             {
-                if (!Box.BShowChoiceDialog("Warning", "warrningNeedRootAccess")) return;
+                if (!Box.ShowChoiceDialog("Warning", "warrningNeedRootAccess").ToBool()) return;
             }
             FolderBrowserDialog fbd = new FolderBrowserDialog
             {
@@ -201,7 +201,7 @@ namespace AutumnBox.GUI.UI.Grids
         {
             if (!((MainWindow)App.Current.MainWindow).DevInfoPanel.CurrentDeviceIsRoot)
             {
-                if (!Box.BShowChoiceDialog("Warning", "warrningNeedRootAccess")) return;
+                if (!Box.ShowChoiceDialog("Warning", "warrningNeedRootAccess").ToBool()) return;
             }
             FolderBrowserDialog fbd = new FolderBrowserDialog
             {
@@ -219,7 +219,7 @@ namespace AutumnBox.GUI.UI.Grids
         {
             if (!((MainWindow)App.Current.MainWindow).DevInfoPanel.CurrentDeviceIsRoot)
             {
-                if (!Box.BShowChoiceDialog("Warning", "warrningNeedRootAccess")) return;
+                if (!Box.ShowChoiceDialog("Warning", "warrningNeedRootAccess").ToBool()) return;
             }
             Microsoft.Win32.OpenFileDialog fileDialog = new Microsoft.Win32.OpenFileDialog();
             fileDialog.Reset();
@@ -239,7 +239,7 @@ namespace AutumnBox.GUI.UI.Grids
         {
             if (!((MainWindow)App.Current.MainWindow).DevInfoPanel.CurrentDeviceIsRoot)
             {
-                if (Box.BShowChoiceDialog("Warning", "warrningNeedRootAccess") == false) return;
+                if (Box.ShowChoiceDialog("Warning", "warrningNeedRootAccess").ToBool() == false) return;
             }
             bool _continue = await Task.Run(() =>
             {
@@ -256,7 +256,7 @@ namespace AutumnBox.GUI.UI.Grids
         {
             if (!((MainWindow)App.Current.MainWindow).DevInfoPanel.CurrentDeviceIsRoot)
             {
-                if (!Box.BShowChoiceDialog("Warning", "warrningNeedRootAccess")) return;
+                if (!Box.ShowChoiceDialog("Warning", "warrningNeedRootAccess").ToBool()) return;
             }
             Microsoft.Win32.OpenFileDialog fileDialog = new Microsoft.Win32.OpenFileDialog();
             fileDialog.Reset();
@@ -281,10 +281,10 @@ namespace AutumnBox.GUI.UI.Grids
             });
             if (isInstallThisApp == false) { Box.ShowMessageDialog("Warning", "msgPlsInstallIceBoxFirst"); return; }
             /*提示用户删除账户*/
-            bool _continue = Box.BShowChoiceDialog("msgNotice",
+            bool _continue = Box.ShowChoiceDialog("msgNotice",
                     $"{UIHelper.GetString("msgIceActLine1")}\n{UIHelper.GetString("msgIceActLine2")}\n{UIHelper.GetString("msgIceActLine3")}",
                     "btnCancel",
-                    "btnContinue");
+                    "btnContinue").ToBool();
             Logger.D(_continue.ToString());
             if (!_continue) return;
             /*开始操作 */

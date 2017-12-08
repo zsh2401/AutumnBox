@@ -108,12 +108,12 @@ namespace AutumnBox.GUI.UI.Grids
 
         private  void ButtonRebootToSnapdragon9008_Click(object sender, RoutedEventArgs e)
         {
-            bool _needToContinue = Box.BShowChoiceDialog("msgNotice",
+            bool _needToContinue = Box.ShowChoiceDialog("msgNotice",
                                     UIHelper.GetString("msgNoticeForRebootToEdlLine1") + "\n" +
                                     UIHelper.GetString("msgNoticeForRebootToEdlLine2") + "\n" +
                                      UIHelper.GetString("msgNoticeForRebootToEdlLine3"),
                                     "btnCancel",
-                                    "btnContinue");
+                                    "btnContinue").ToBool();
             if (!_needToContinue) return;
             var fmp = FunctionModuleProxy.Create<RebootOperator>(new RebootArgs(App.SelectedDevice)
             {

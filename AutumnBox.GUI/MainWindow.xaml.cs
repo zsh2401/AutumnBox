@@ -71,14 +71,14 @@ namespace AutumnBox.GUI
                 bool _continue = true;
                 Dispatcher.Invoke(() =>
                 {
-                    _continue = Box.BShowChoiceDialog("msgWarning",
+                    _continue = Box.ShowChoiceDialog("msgWarning",
                         UIHelper.GetString("msgStartAdbServerFailLine1") + Environment.NewLine +
                            UIHelper.GetString("msgStartAdbServerFailLine2") + Environment.NewLine +
                            UIHelper.GetString("msgStartAdbServerFailLine3") + Environment.NewLine +
                            UIHelper.GetString("msgStartAdbServerFailLine4"),
                         "btnIHaveCloseOtherPhoneHelper",
                         "btnExit"
-                        );
+                        ).ToBool();
                 });
                 if (_continue)
                 {

@@ -25,6 +25,10 @@ namespace AutumnBox.GUI.Helper
 {
     public static class Box
     {
+        public static bool ToBool(this ChoiceResult result)
+        {
+            return result == ChoiceResult.BtnRight;
+        }
         private static readonly MainWindow _owner_m;
         private static readonly Window _owner;
         static Box()
@@ -32,7 +36,8 @@ namespace AutumnBox.GUI.Helper
             _owner = Application.Current.MainWindow;
             _owner_m = (MainWindow)_owner;
         }
-        public static bool BShowChoiceDialog(string keyTitle, string keyText, string keyTextBtnLeft = null, string keyTextBtnRight = null)
+        #region ChoiceWindow
+        public static ChoiceResult ShowChoiceDialog(string keyTitle, string keyText, string keyTextBtnLeft = null, string keyTextBtnRight = null)
         {
             return new ChoiceBox(_owner)
             {
@@ -43,22 +48,9 @@ namespace AutumnBox.GUI.Helper
                     KeyBtnLeft = keyTextBtnLeft,
                     KeyBtnRight = keyTextBtnRight,
                 }
-            }.BShowDialog() == true;
+            }.ShowDialog();
         }
-        public static ChoiceResult ShowChoiceDialog(string keyTitle, string keyText, string keyTextBtnLeft = null, string keyTextBtnRight = null)
-        {
-            var choiceBox = new ChoiceBox(_owner)
-            {
-                Data = new ChoiceBoxData()
-                {
-                    KeyTitle = keyTitle,
-                    KeyText = keyText,
-                    KeyBtnLeft = keyTextBtnLeft,
-                    KeyBtnRight = keyTextBtnRight,
-                }
-            };
-            return choiceBox.ShowDialog();
-        }
+        #endregion
         public static void ShowMessageDialog(string keyTitle, string keyText)
         {
             var messageBox = new MMessageBox(_owner)
@@ -71,6 +63,7 @@ namespace AutumnBox.GUI.Helper
             };
             messageBox.ShowDialog();
         }
+        #region LoadingWindow
         public static bool _loadingWindowIsAlreadyHaveOne = false;
         public static void ShowLoadingDialog(ICompletable completable)
         {
@@ -97,5 +90,6 @@ namespace AutumnBox.GUI.Helper
             catch (Exception e) { Logger.T("A exception on close loadingwindow...", e); }
 
         }
+        #endregion
     }
 }
