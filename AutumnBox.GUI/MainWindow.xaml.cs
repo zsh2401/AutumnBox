@@ -125,8 +125,6 @@ namespace AutumnBox.GUI
 #endif
             //刷新一下界面
             RefreshUI();
-            //开始设备监听
-            App.DevicesListener.Begin();
             //哦,如果是第一次启动本软件,那么就显示一下提示吧!
             Task.Run(() =>
             {
@@ -135,8 +133,13 @@ namespace AutumnBox.GUI
                 {
                     if (Config.IsFirstLaunch)
                     {
-                        new FastGrid(this.GridMain, new About());
+                        new FastGrid(this.GridMain, new About(), () => { App.DevicesListener.Begin(); });
                         Config.IsFirstLaunch = false;
+                    }
+                    else
+                    {
+                        //开始设备监听
+                        App.DevicesListener.Begin();
                     }
                 });
             });

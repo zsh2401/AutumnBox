@@ -243,7 +243,7 @@ namespace AutumnBox.GUI.UI.Grids
             }
             bool _continue = await Task.Run(() =>
             {
-                return BlockHelper.BShowChoiceBlock("Warning", "msgDelScreenLock");
+                return Box.ShowChoiceDialog("Warning", "msgDelScreenLock").ToBool();
             });
             if (!_continue) return;
             FunctionModuleProxy fmp = FunctionModuleProxy.Create<ScreenLockDeleter>(new ModuleArgs(App.SelectedDevice));

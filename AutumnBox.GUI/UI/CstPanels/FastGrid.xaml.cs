@@ -21,6 +21,7 @@ namespace AutumnBox.GUI.UI.CstPanels
     /// </summary>
     public partial class FastGrid : UserControl
     {
+        private Action hidedcallback;
         private readonly Panel _father;
         private readonly ThicknessAnimation riseAnimation;
         private readonly ThicknessAnimation hideAnimation;
@@ -48,10 +49,14 @@ namespace AutumnBox.GUI.UI.CstPanels
             hideAnimation.Completed += (s, e) =>
             {
                 _father.Children.Remove(this);
+                hidedcallback?.Invoke();
                 GC.SuppressFinalize(this);
             };
         }
-
+        public FastGrid(Panel father, UIElement chirden, Action onhidedcallback) : this(father, chirden)
+        {
+            hidedcallback = onhidedcallback;
+        }
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             BeginAnimation(MarginProperty, riseAnimation);

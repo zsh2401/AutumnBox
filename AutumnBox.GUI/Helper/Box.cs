@@ -39,16 +39,20 @@ namespace AutumnBox.GUI.Helper
         #region ChoiceWindow
         public static ChoiceResult ShowChoiceDialog(string keyTitle, string keyText, string keyTextBtnLeft = null, string keyTextBtnRight = null)
         {
-            return new ChoiceBox(_owner)
-            {
-                Data = new ChoiceBoxData()
+            ChoiceResult result = ChoiceResult.BtnCancel;
+            App.Current.Dispatcher.Invoke(()=> {
+                result =  new ChoiceBox(_owner)
                 {
-                    KeyTitle = keyTitle,
-                    KeyText = keyText,
-                    KeyBtnLeft = keyTextBtnLeft,
-                    KeyBtnRight = keyTextBtnRight,
-                }
-            }.ShowDialog();
+                    Data = new ChoiceBoxData()
+                    {
+                        KeyTitle = keyTitle,
+                        KeyText = keyText,
+                        KeyBtnLeft = keyTextBtnLeft,
+                        KeyBtnRight = keyTextBtnRight,
+                    }
+                }.ShowDialog();
+            });
+            return result;
         }
         #endregion
         public static void ShowMessageDialog(string keyTitle, string keyText)
