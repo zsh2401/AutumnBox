@@ -41,5 +41,5 @@ obj/
 !AutumnBox.Basic/Adb/*.exe
 !AutumnBox.Basic/Adb/*.dll
 !DllsUsed/*.dll
-!AutumnBox.Basic/google/platform-tools/**/*.*
+!Out/google/platform-tools/**/*.*
 
