@@ -56,7 +56,7 @@ namespace AutumnBox.Basic.Executer
         }
         public static Command MakeForFastboot(string command)
         {
-            return new Command() { FileName = ConstData.FullAdbFileName, SpecificCommand = command };
+            return new Command() { FileName = ConstData.FullFastbootFileName, SpecificCommand = command };
         }
         public static Command MakeForFastboot(string id, string command)
         {

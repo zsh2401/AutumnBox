@@ -54,6 +54,13 @@ namespace AutumnBox.GUI.UI.Grids
                 UIHelper.SetGridLabelsContent(GridMemoryInfo, "....");
                 _SetStatusPanel(DynamicIcons.no_selected, "DeviceInFastboot");
             }
+            else if (devSimpleInfo.Status == DeviceStatus.Offline)
+            {
+                UIHelper.SetGridLabelsContent(GridBuildInfo, "...");
+                UIHelper.SetGridLabelsContent(GridHardwareInfo, "....");
+                UIHelper.SetGridLabelsContent(GridMemoryInfo, "....");
+                _SetStatusPanel(DynamicIcons.no_selected, "DeviceOffline");
+            }
             else
             {
                 Reset();

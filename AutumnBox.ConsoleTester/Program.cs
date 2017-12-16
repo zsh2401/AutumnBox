@@ -19,6 +19,10 @@ namespace AutumnBox.ConsoleTester
         };
         unsafe static void Main(string[] args)
         {
+            var devices = new DevicesGetter().GetDevices();
+            devices.ForEach((i)=> {
+                Console.WriteLine(i.Id);
+            });
             //Basic.Flows.AirForzenActivator fl = new Basic.Flows.AirForzenActivator();
             //fl.Init(new FlowArgs() { DevBasicInfo = mi4 });
             //fl.Finished += (s, e) =>

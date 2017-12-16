@@ -51,7 +51,7 @@ namespace AutumnBox.Basic.Devices
                     devList.Add(new DeviceBasicInfo
                     {
                         Id = match.Result("${id}"),
-                        Status = DeviceInfoHelper.StringStatusToEnumStatus(match.Result("${status}"))
+                        Status = match.Result("${status}").ToDeviceStatus()
                     });
                 }
             }
@@ -66,7 +66,7 @@ namespace AutumnBox.Basic.Devices
                     devList.Add(new DeviceBasicInfo
                     {
                         Id = match.Result("${id}"),
-                        Status = DeviceInfoHelper.StringStatusToEnumStatus(match.Result("${status}"))
+                        Status = match.Result("${status}").ToDeviceStatus()
                     });
                 }
             }

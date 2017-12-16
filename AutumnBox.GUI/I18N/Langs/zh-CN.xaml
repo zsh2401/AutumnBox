@@ -222,6 +222,7 @@
     <s:String x:Key="DeviceInRecovery">设备处于恢复模式</s:String>
     <s:String x:Key="DeviceInFastboot">设备处于Fastboot状态</s:String>
     <s:String x:Key="DeviceInSideload">设备在sideload模式</s:String>
+    <s:String x:Key="DeviceOffline">设备异常离线</s:String>
     <!--设备状态提示-->
 
     <!--建议-->

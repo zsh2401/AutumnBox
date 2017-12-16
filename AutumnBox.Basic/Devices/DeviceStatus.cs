@@ -13,11 +13,35 @@
 \* =============================================================================*/
 namespace AutumnBox.Basic.Devices
 {
+    public static class DeviceStatusHelper {
+        public static DeviceStatus ToDeviceStatus(this string strStatus) {
+            switch (strStatus) {
+                case "device":
+                    return DeviceStatus.Poweron;
+                case "recovery":
+                    return DeviceStatus.Recovery;
+                case "fastboot":
+                    return DeviceStatus.Fastboot;
+                case "sideload":
+                    return DeviceStatus.Sideload;
+                case "unauthorized":
+                    return DeviceStatus.Unauthorized;
+                case "offline":
+                    return DeviceStatus.Offline;
+                default:
+                    return DeviceStatus.Unknow;
+            }
+        }
+    }
     /// <summary>
     /// 设备状态枚举
     /// </summary>
     public enum DeviceStatus
     {
+        /// <summary>
+        /// 处于offline
+        /// </summary>
+        Offline = -3,
         /// <summary>
         /// 未知状态
         /// </summary>
@@ -46,5 +70,6 @@ namespace AutumnBox.Basic.Devices
         /// 处于sideload模式
         /// </summary>
         Sideload = 4,
+
     }
 }
