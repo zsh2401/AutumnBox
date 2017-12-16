@@ -16,6 +16,7 @@ using AutumnBox.Basic.Executer;
 using AutumnBox.Support.CstmDebug;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
@@ -46,16 +47,51 @@ namespace AutumnBox.Basic.Devices
                 FlashMemoryType = GetFlashMemoryType(serial),
             };
         }
+        public static Dictionary<string, string> GetBuildInfoWithSu(Serial serial)
+        {
+            Dictionary<string, string> buildText = new Dictionary<string, string>();
+            using (AndroidShell shell = new AndroidShell(serial)) {
+                shell.Connect();
+                shell.Switch2Su();
+                var lines = shell.SafetyInput("cat /system/build.prop").OutputData.LineAll;
+                foreach (string line in lines)
+                {
+                    try { Logger.D(line.Split('=')[0] + "=" + line.Split('=')[1]); } catch (IndexOutOfRangeException) { }
+                    
+                    
+                    var split = line.Split('=');
+                    if (split.Length == 2)
+                    {
+
+                        buildText.Add(split[0], split[1]);
+                    }
+                }
+            }
+            return buildText;
+        }
+        public static Dictionary<string, string> GetBuildInfoHS(Serial serial)
+        {
+            Dictionary<string, string> buildText = new Dictionary<string, string>();
+            var executer = new CExecuter();
+            var lines = executer.Execute(Command.MakeForAdb(serial, "shell \"cat /system/build.prop\"")).LineAll;
+            foreach (string line in lines)
+            {
+                Logger.D("s");
+                var split = line.Split('=');
+                if (split.Length == 2)
+                {
+                    buildText.Add(split[0], split[1]);
+                }
+            }
+            return buildText;
+        }
         public static DeviceBuildInfo GetBuildInfo(Serial serial)
         {
-            Hashtable ht = new Hashtable();
             DeviceBuildInfo buildInfo = new DeviceBuildInfo
             {
                 Serial = serial
             };
             var executer = new CExecuter();
-            var o = executer.Execute(Command.MakeForAdb(serial, "\"cat /system/build.prop\"")).All;
-
             try
             {
                 var output = executer.Execute(Command.MakeForAdb(serial, "shell \"cat /system/build.prop | grep \"product.name\"\""));
@@ -177,7 +213,7 @@ namespace AutumnBox.Basic.Devices
             {
                 shell.Connect();
                 var result = shell.SafetyInput($"pm path {packageName}");
-                if (result.ReturnCode == 127) return null; 
+                if (result.ReturnCode == 127) return null;
                 return result.ReturnCode == 0;
             }
         }

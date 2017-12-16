@@ -138,7 +138,6 @@ namespace AutumnBox.Basic.Executer
             while (_latestReturnCode == null) ;
             StopRead();
             _outTmp.ReturnCode = _latestReturnCode ?? 24010;
-            Logger.D("command execute finished the output ->" + _outTmp.All.ToString());
             return _outTmp;
         }
         /// <summary>

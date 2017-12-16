@@ -27,7 +27,6 @@ namespace AutumnBox.Basic.Connection
         public Serial(string serialStr)
         {
             var strs = serialStr.Split(':');
-            Logger.D("xxx" + serialStr);
             if (strs.Length > 0)
             {
                 var ip = IPAddress.Parse(strs[0]);
