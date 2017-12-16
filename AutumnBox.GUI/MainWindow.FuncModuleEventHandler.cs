@@ -36,7 +36,7 @@ namespace AutumnBox.GUI
         {
             this.Dispatcher.Invoke(() =>
             {
-                Box.CloseLoadingDialog();
+                BoxHelper.CloseLoadingDialog();
                 switch (sender.GetType().Name)
                 {
                     case nameof(FileSender):
@@ -78,7 +78,7 @@ namespace AutumnBox.GUI
             Logger.D("Enter the ActivatedBrevent Handler in the GUI");
             this.Dispatcher.Invoke(new Action(() =>
             {
-                Box.CloseLoadingDialog();
+                BoxHelper.CloseLoadingDialog();
             }));
             if (e.Result.Level != ResultLevel.Successful)
             {
@@ -100,7 +100,7 @@ namespace AutumnBox.GUI
             Logger.D("Enter the Unlock Mi  System Finish Handler in the GUI");
             this.Dispatcher.Invoke(new Action(() =>
             {
-                Box.CloseLoadingDialog();
+                BoxHelper.CloseLoadingDialog();
             }));
         }
 
@@ -113,7 +113,7 @@ namespace AutumnBox.GUI
             Logger.D("Enter the Relock Mi Finish Handler in the GUI");
             this.Dispatcher.Invoke(new Action(() =>
             {
-                Box.CloseLoadingDialog();
+                BoxHelper.CloseLoadingDialog();
             }));
         }
 
@@ -126,7 +126,7 @@ namespace AutumnBox.GUI
             Logger.D("Enter the Push Finish Handler in the GUI");
             if (e.Result.Level == ResultLevel.Successful)
             {
-                Box.ShowMessageDialog("Notice", "msgPushOK");
+                BoxHelper.ShowMessageDialog("Notice", "msgPushOK");
             }
             else
             {
@@ -146,9 +146,9 @@ namespace AutumnBox.GUI
             Logger.D("Flash Custom Recovery Finish");
             this.Dispatcher.Invoke(new Action(() =>
             {
-                Box.CloseLoadingDialog();
+                BoxHelper.CloseLoadingDialog();
             }));
-            Box.ShowMessageDialog("Notice", "msgFlashOK");
+            BoxHelper.ShowMessageDialog("Notice", "msgFlashOK");
         }
     }
 }

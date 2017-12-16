@@ -71,7 +71,7 @@ namespace AutumnBox.Basic.Executer
                     RedirectStandardOutput = true,
                     CreateNoWindow = true,
                     UseShellExecute = false,
-                    FileName = ConstData.ADB_PATH.Replace("/", "\\"),
+                    FileName = ConstData.FullAdbFileName,
                     Arguments = $" -s {_devID} shell"
                 }
             };

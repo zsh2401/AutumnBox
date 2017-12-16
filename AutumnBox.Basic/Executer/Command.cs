@@ -48,19 +48,19 @@ namespace AutumnBox.Basic.Executer
         }
         public static Command MakeForAdb(string command)
         {
-            return new Command() { FileName = ConstData.ADB_PATH, SpecificCommand = command };
+            return new Command() { FileName = ConstData.FullAdbFileName, SpecificCommand = command };
         }
         public static Command MakeForAdb(string id, string command)
         {
-            return new Command() { FileName = ConstData.ADB_PATH, DeviceID = id, SpecificCommand = command };
+            return new Command() { FileName = ConstData.FullAdbFileName, DeviceID = id, SpecificCommand = command };
         }
         public static Command MakeForFastboot(string command)
         {
-            return new Command() { FileName = ConstData.FASTBOOT_PATH, SpecificCommand = command };
+            return new Command() { FileName = ConstData.FullAdbFileName, SpecificCommand = command };
         }
         public static Command MakeForFastboot(string id, string command)
         {
-            return new Command() { FileName = ConstData.FASTBOOT_PATH, DeviceID = id, SpecificCommand = command };
+            return new Command() { FileName = ConstData.FullFastbootFileName, DeviceID = id, SpecificCommand = command };
         }
     }
 }

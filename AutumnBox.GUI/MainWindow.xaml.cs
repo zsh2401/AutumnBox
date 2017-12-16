@@ -18,6 +18,7 @@ using AutumnBox.Basic.Function;
 using AutumnBox.GUI.Cfg;
 using AutumnBox.GUI.Helper;
 using AutumnBox.GUI.NetUtil;
+using AutumnBox.GUI.UI;
 using AutumnBox.GUI.UI.Cstm;
 using AutumnBox.GUI.UI.CstPanels;
 using AutumnBox.GUI.UI.Grids;
@@ -28,8 +29,11 @@ using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Linq;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace AutumnBox.GUI
 {
@@ -52,7 +56,7 @@ namespace AutumnBox.GUI
                 this.Dispatcher.Invoke(() =>
                 {
                     Logger.D(this, "Refresh Start..");
-                    Box.ShowLoadingDialog();
+                    BoxHelper.ShowLoadingDialog();
                 });
             };
             FunctionFlowBase.AnyFinished += FlowFinished;
@@ -62,7 +66,7 @@ namespace AutumnBox.GUI
                 this.Dispatcher.Invoke(() =>
                 {
                     Logger.D(this, "Refresh UI Finished..");
-                    Box.CloseLoadingDialog();
+                    BoxHelper.CloseLoadingDialog();
                 });
             };
             AdbHelper.AdbServerStartsFailed += (s, e) =>
@@ -71,7 +75,7 @@ namespace AutumnBox.GUI
                 bool _continue = true;
                 Dispatcher.Invoke(() =>
                 {
-                    _continue = Box.ShowChoiceDialog("msgWarning",
+                    _continue = BoxHelper.ShowChoiceDialog("msgWarning",
                         UIHelper.GetString("msgStartAdbServerFailLine1") + Environment.NewLine +
                            UIHelper.GetString("msgStartAdbServerFailLine2") + Environment.NewLine +
                            UIHelper.GetString("msgStartAdbServerFailLine3") + Environment.NewLine +
@@ -162,6 +166,7 @@ namespace AutumnBox.GUI
         /// </summary>
         private void RefreshUI()
         {
+            var startTime = DateTime.Now;
             lock (setUILock)
             {
                 PoweronFuncs.Refresh(App.SelectedDevice);
@@ -170,6 +175,26 @@ namespace AutumnBox.GUI
                 RebootGrid.Refresh(App.SelectedDevice);
                 DevInfoPanel.Refresh(App.SelectedDevice);
             }
+            var endTime = DateTime.Now;
+            var useTime = endTime - startTime;
+            Logger.D("refresh finished..use ms ->" + useTime.TotalMilliseconds.ToString());
+        }
+        public void Refresh()
+        {
+            var startTime = DateTime.Now;
+            lock (setUILock)
+            {
+                foreach (object c in GridMain.Children)
+                {
+                    if (c is IRefreshable)
+                    {
+                        (c as IRefreshable).Refresh(App.SelectedDevice);
+                    }
+                }
+            }
+            var endTime = DateTime.Now;
+            var useTime = endTime - startTime;
+            Logger.D("refresh finished..use ms ->" + useTime.TotalMilliseconds.ToString());
         }
         /// <summary>
         /// 当设备选择列表的被选项变化时发生
@@ -198,7 +223,7 @@ namespace AutumnBox.GUI
             };
             if (SystemHelper.IsWin10)
             {
-                var result = Box.ShowChoiceDialog("Notice", "msgShellChoiceTip", "Powershell", "CMD");
+                var result = BoxHelper.ShowChoiceDialog("Notice", "msgShellChoiceTip", "Powershell", "CMD");
                 if (result == Windows.ChoiceResult.BtnLeft)
                 {
                     info.FileName = "powershell.exe";

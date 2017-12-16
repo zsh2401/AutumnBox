@@ -83,7 +83,7 @@ namespace AutumnBox.GUI.Windows
         {
             if (TextBoxPath.Text == App.Current.Resources["PleaseSelectFloderPackageWireFlash"].ToString())
             {
-                Box.ShowMessageDialog("Warning", "PleaseSelectFloderPackageWireFlash");
+                BoxHelper.ShowMessageDialog("Warning", "PleaseSelectFloderPackageWireFlash");
                 return false;
             }
             Fmp = FunctionModuleProxy.Create(typeof(Basic.Function.Modules.MiFlash),
@@ -135,7 +135,7 @@ namespace AutumnBox.GUI.Windows
                 }
                 else
                 {
-                    Box.ShowMessageDialog("Warning", "msgMiFlashFloderError");
+                    BoxHelper.ShowMessageDialog("Warning", "msgMiFlashFloderError");
                 }
             }
         }

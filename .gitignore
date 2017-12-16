@@ -1,7 +1,8 @@
 #    zsh2401@163.com    #
-#    2017/10/22         #
+#    2017/12/16         #
 #    giti file          #
-#files
+
+##files
 *.log
 *.exe
 *.exe.config
@@ -31,12 +32,14 @@
 *.txt
 fast
 makezip
+Bin/*
+##dirs
+.vs/
+obj/
+##donot
+!Bin/*.txt
 !AutumnBox.Basic/Adb/*.exe
 !AutumnBox.Basic/Adb/*.dll
 !DllsUsed/*.dll
-Bin/*
-!Bin/readme.txt
-#dirs
-.vs/
-obj/
+!AutumnBox.Basic/google/platform-tools/**/*.*
 
