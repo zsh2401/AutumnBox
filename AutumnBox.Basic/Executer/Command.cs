@@ -13,6 +13,7 @@
 \* =============================================================================*/
 namespace AutumnBox.Basic.Executer
 {
+    using AutumnBox.Basic.Connection;
     using AutumnBox.Basic.Devices;
     using AutumnBox.Basic.Util;
 
@@ -32,35 +33,35 @@ namespace AutumnBox.Basic.Executer
         {
             get
             {
-                return (DeviceID != null) ?
-                $" -s {DeviceID} {SpecificCommand}" : SpecificCommand;
+                return (serial != null) ?
+                $" {serial.ToFullSerial()} {SpecificCommand}" : SpecificCommand;
             }
         }
         /// <summary>
         /// 具体命令
         /// </summary>
         private string SpecificCommand;
-        private string DeviceID;
+        private Serial serial;
         private Command() { }
         public static Command MakeForCmd(string command)
         {
-            return new Command() { FileName ="cmd.exe", SpecificCommand = " /c " + command };
+            return new Command() { FileName = "cmd.exe", SpecificCommand = " /c " + command };
         }
         public static Command MakeForAdb(string command)
         {
             return new Command() { FileName = ConstData.FullAdbFileName, SpecificCommand = command };
         }
-        public static Command MakeForAdb(string id, string command)
+        public static Command MakeForAdb(Serial serial, string command)
         {
-            return new Command() { FileName = ConstData.FullAdbFileName, DeviceID = id, SpecificCommand = command };
+            return new Command() { FileName = ConstData.FullAdbFileName, serial = serial, SpecificCommand = command };
         }
         public static Command MakeForFastboot(string command)
         {
             return new Command() { FileName = ConstData.FullFastbootFileName, SpecificCommand = command };
         }
-        public static Command MakeForFastboot(string id, string command)
+        public static Command MakeForFastboot(Serial serial, string command)
         {
-            return new Command() { FileName = ConstData.FullFastbootFileName, DeviceID = id, SpecificCommand = command };
+            return new Command() { FileName = ConstData.FullFastbootFileName, serial = serial, SpecificCommand = command };
         }
     }
 }

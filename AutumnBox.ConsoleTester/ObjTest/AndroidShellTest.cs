@@ -24,46 +24,46 @@ namespace AutumnBox.ConsoleTester.ObjTest
 {
     public class AndroidShellTest
     {
-        public static void Run()
-        {
-            using (var shell = new AndroidShell(DevicesHelper.GetDevices().Last()))
-            {
-                Console.WriteLine("start....");
-                shell.Connect();
-                shell.OutputReceived += (s, e) => { if (e.Text != "") Console.WriteLine("stdo: " + e.Text); };
-                shell.InputReceived += (s, e) => { Console.WriteLine("stdi: " + e.Command); };
-                //shell.Switch2Su();
-                while (!shell.HasExited)
-                {
-                    var x = shell.SafetyInput(Console.ReadLine());
-                    Program.WriteWithColor(() =>
-                    {
-                        Console.WriteLine($"line {x.LineAll.Count}");
-                        Console.WriteLine("return code: " + x.ReturnCode);
-                        Console.WriteLine(x.LineAll.Last());
-                    }, ConsoleColor.Red);
-                }
-                Console.WriteLine("end....");
-            }
-        }
-        public static void RootTest()
-        {
-            using (var shell = new AndroidShell(DevicesHelper.GetDevices().Last()))
-            {
-                shell.Connect();
-                shell.OutputReceived += (s, e) => { Console.WriteLine("stdo: " + e.Text); };
-                shell.InputReceived += (s, e) => { Console.WriteLine("stdi: " + e.Command); };
-                Thread.Sleep(3000);
-                Console.WriteLine(shell.Switch2Su());
-                shell.Switch2Su();
-                Thread.Sleep(3000);
-                Console.WriteLine(shell.IsRunningAsSuperuser);
-                shell.Switch2Normal();
-                Thread.Sleep(3000);
-                Console.WriteLine(shell.IsRunningAsSuperuser);
-                Thread.Sleep(3000);
-                //shell.InputLine("help");
-            }
-        }
+        //public static void Run()
+        //{
+        //    using (var shell = new AndroidShell(DevicesHelper.GetDevices().Last()))
+        //    {
+        //        Console.WriteLine("start....");
+        //        shell.Connect();
+        //        shell.OutputReceived += (s, e) => { if (e.Text != "") Console.WriteLine("stdo: " + e.Text); };
+        //        shell.InputReceived += (s, e) => { Console.WriteLine("stdi: " + e.Command); };
+        //        //shell.Switch2Su();
+        //        while (!shell.HasExited)
+        //        {
+        //            var x = shell.SafetyInput(Console.ReadLine());
+        //            Program.WriteWithColor(() =>
+        //            {
+        //                Console.WriteLine($"line {x.LineAll.Count}");
+        //                Console.WriteLine("return code: " + x.ReturnCode);
+        //                Console.WriteLine(x.LineAll.Last());
+        //            }, ConsoleColor.Red);
+        //        }
+        //        Console.WriteLine("end....");
+        //    }
+        //}
+        //public static void RootTest()
+        //{
+        //    using (var shell = new AndroidShell(DevicesHelper.GetDevices().Last()))
+        //    {
+        //        shell.Connect();
+        //        shell.OutputReceived += (s, e) => { Console.WriteLine("stdo: " + e.Text); };
+        //        shell.InputReceived += (s, e) => { Console.WriteLine("stdi: " + e.Command); };
+        //        Thread.Sleep(3000);
+        //        Console.WriteLine(shell.Switch2Su());
+        //        shell.Switch2Su();
+        //        Thread.Sleep(3000);
+        //        Console.WriteLine(shell.IsRunningAsSuperuser);
+        //        shell.Switch2Normal();
+        //        Thread.Sleep(3000);
+        //        Console.WriteLine(shell.IsRunningAsSuperuser);
+        //        Thread.Sleep(3000);
+        //        //shell.InputLine("help");
+        //    }
+        //}
     }
 }

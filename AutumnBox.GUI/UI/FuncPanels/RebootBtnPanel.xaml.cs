@@ -70,10 +70,10 @@ namespace AutumnBox.GUI.UI.Grids
 
         private void ButtonRebootToSystem_Click(object sender, RoutedEventArgs e)
         {
-            var fmp = FunctionModuleProxy.Create<RebootOperator>(new RebootArgs(App.SelectedDevice)
+            var fmp = FunctionModuleProxy.Create<RebootOperator>(new RebootArgs(App.CurrentDeviceConnection.DevInfo)
             {
                 rebootOption = RebootOptions.System,
-                nowStatus = App.SelectedDevice.Status
+                nowStatus = App.CurrentDeviceConnection.DevInfo.Status
             });
             fmp.Finished += ((MainWindow)App.Current.MainWindow).FuncFinish;
             fmp.AsyncRun();
@@ -81,10 +81,10 @@ namespace AutumnBox.GUI.UI.Grids
 
         private void ButtonRebootToRecovery_Click(object sender, RoutedEventArgs e)
         {
-            var fmp = FunctionModuleProxy.Create<RebootOperator>(new RebootArgs(App.SelectedDevice)
+            var fmp = FunctionModuleProxy.Create<RebootOperator>(new RebootArgs(App.CurrentDeviceConnection.DevInfo)
             {
                 rebootOption = RebootOptions.Recovery,
-                nowStatus = App.SelectedDevice.Status
+                nowStatus = App.CurrentDeviceConnection.DevInfo.Status
             });
             fmp.Finished += ((MainWindow)App.Current.MainWindow).FuncFinish;
             fmp.AsyncRun();
@@ -92,10 +92,10 @@ namespace AutumnBox.GUI.UI.Grids
 
         private void ButtonRebootToBootloader_Click(object sender, RoutedEventArgs e)
         {
-            var fmp = FunctionModuleProxy.Create<RebootOperator>(new RebootArgs(App.SelectedDevice)
+            var fmp = FunctionModuleProxy.Create<RebootOperator>(new RebootArgs(App.CurrentDeviceConnection.DevInfo)
             {
                 rebootOption = RebootOptions.Bootloader,
-                nowStatus = App.SelectedDevice.Status
+                nowStatus = App.CurrentDeviceConnection.DevInfo.Status
             });
             fmp.Finished += ((MainWindow)App.Current.MainWindow).FuncFinish;
             fmp.AsyncRun();
@@ -110,10 +110,10 @@ namespace AutumnBox.GUI.UI.Grids
                                     "btnCancel",
                                     "btnContinue").ToBool();
             if (!_needToContinue) return;
-            var fmp = FunctionModuleProxy.Create<RebootOperator>(new RebootArgs(App.SelectedDevice)
+            var fmp = FunctionModuleProxy.Create<RebootOperator>(new RebootArgs(App.CurrentDeviceConnection.DevInfo)
             {
                 rebootOption = RebootOptions.Snapdragon9008,
-                nowStatus = App.SelectedDevice.Status
+                nowStatus = App.CurrentDeviceConnection.DevInfo.Status
             });
             fmp.Finished += ((MainWindow)App.Current.MainWindow).FuncFinish;
             fmp.AsyncRun();

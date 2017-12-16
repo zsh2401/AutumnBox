@@ -11,6 +11,7 @@
 * Company: I am free man
 *
 \* =============================================================================*/
+using AutumnBox.Basic.Connection;
 using AutumnBox.Basic.Executer;
 using AutumnBox.Support.CstmDebug;
 using System;
@@ -56,7 +57,7 @@ namespace AutumnBox.Basic.Devices
             }
             return null;
         }
-        public static string FindById(string id, Images img)
+        public static string FindById(Serial id, Images img)
         {
             using (AndroidShell su = new AndroidShell(id))
             {

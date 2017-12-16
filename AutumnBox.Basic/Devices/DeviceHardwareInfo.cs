@@ -12,11 +12,13 @@
 *
 \* =============================================================================*/
 
+using AutumnBox.Basic.Connection;
+
 namespace AutumnBox.Basic.Devices
 {
     public struct DeviceHardwareInfo
     {
-        public string ID { get; set; }
+        public Serial Serial { get; set; }
         public string ScreenInfo { get; set; }
         public int? BatteryLevel { get; set; }
         public double? MemTotal { get; set; }

@@ -169,11 +169,11 @@ namespace AutumnBox.GUI
             var startTime = DateTime.Now;
             lock (setUILock)
             {
-                PoweronFuncs.Refresh(App.SelectedDevice);
-                RecoveryFuncs.Refresh(App.SelectedDevice);
-                FastbootFuncs.Refresh(App.SelectedDevice);
-                RebootGrid.Refresh(App.SelectedDevice);
-                DevInfoPanel.Refresh(App.SelectedDevice);
+                PoweronFuncs.Refresh(App.CurrentDeviceConnection.DevInfo);
+                RecoveryFuncs.Refresh(App.CurrentDeviceConnection.DevInfo);
+                FastbootFuncs.Refresh(App.CurrentDeviceConnection.DevInfo);
+                RebootGrid.Refresh(App.CurrentDeviceConnection.DevInfo);
+                DevInfoPanel.Refresh(App.CurrentDeviceConnection.DevInfo);
             }
             var endTime = DateTime.Now;
             var useTime = endTime - startTime;
@@ -188,7 +188,7 @@ namespace AutumnBox.GUI
                 {
                     if (c is IRefreshable)
                     {
-                        (c as IRefreshable).Refresh(App.SelectedDevice);
+                        (c as IRefreshable).Refresh(App.CurrentDeviceConnection.DevInfo);
                     }
                 }
             }
@@ -205,11 +205,11 @@ namespace AutumnBox.GUI
         {
             if (this.DevicesListBox.SelectedIndex != -1)//如果选择了设备
             {
-                App.SelectedDevice = ((DeviceBasicInfo)DevicesListBox.SelectedItem);
+                App.CurrentDeviceConnection.Reset((DeviceBasicInfo)DevicesListBox.SelectedItem);
             }
             else if (this.DevicesListBox.SelectedIndex == -1)
             {
-                App.SelectedDevice = new DeviceBasicInfo() { Status = DeviceStatus.None };
+                //App.SelectedDevice = new DeviceBasicInfo() { Status = DeviceStatus.None };
             }
             RefreshUI();
         }

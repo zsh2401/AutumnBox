@@ -35,7 +35,7 @@ namespace AutumnBox.Basic.Flows
             FunctionModuleProxy.Create<ActivityLauncher>(new ActivityLaunchArgs(toolKit.Args.DevBasicInfo)
             { PackageName = "me.piebridge.brevent", ActivityName = ".ui.BreventActivity" }).SyncRun();
             Thread.Sleep(2000);
-            _shellOutput = toolKit.Executer.QuicklyShell(toolKit.Args.DevBasicInfo.Id, _defaultShellCommand);
+            _shellOutput = toolKit.Executer.QuicklyShell(toolKit.Args.DevBasicInfo.Serial.ToString(), _defaultShellCommand);
             retCode = _shellOutput.ReturnCode;
             return _shellOutput.OutputData;
         }

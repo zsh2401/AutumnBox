@@ -12,34 +12,49 @@
 *
 \* =============================================================================*/
 
+using AutumnBox.Basic.Connection;
+using AutumnBox.Support.CstmDebug;
+using System;
+using System.Net;
+using System.Text.RegularExpressions;
+
 namespace AutumnBox.Basic.Devices
 {
+
     /// <summary>
     /// 简单的仅包含设备id和设备状态的结构体,主要用于设备列表 DevicesList
     /// </summary>
     public struct DeviceBasicInfo
     {
-        public string Id { get; set; }
-        public DeviceStatus Status { get; set; }
+        public Serial Serial { get; internal set; }
+        public DeviceStatus Status { get; internal set; }
         public static implicit operator string(DeviceBasicInfo info)
         {
-            return info.Id;
+            return info.Serial.ToString();
         }
         public static implicit operator DeviceStatus(DeviceBasicInfo info)
         {
             return info.Status;
         }
+        public static DeviceBasicInfo Make(string serialStr, DeviceStatus status)
+        {
+            return new DeviceBasicInfo
+            {
+                Serial = new Serial(serialStr),
+                Status = status,
+            };
+        }
         public override string ToString()
         {
-            return Id;
+            return Serial.ToString();
         }
         public static bool operator ==(DeviceBasicInfo left, DeviceBasicInfo right)
         {
-            return (left.Id == right.Id);
+            return (left.Serial.ToString() == right.Serial.ToString());
         }
         public static bool operator !=(DeviceBasicInfo left, DeviceBasicInfo right)
         {
-            return !(left.Id == right.Id);
+            return left.Serial.ToString() != right.Serial.ToString();
         }
         /// <summary>
         /// 要不是为了消除警告...
@@ -48,7 +63,14 @@ namespace AutumnBox.Basic.Devices
         /// <returns></returns>
         public override bool Equals(object obj)
         {
-            return base.Equals(obj);
+            if (obj is DeviceBasicInfo)
+            {
+                return this == (DeviceBasicInfo)obj;
+            }
+            else
+            {
+                return base.Equals(obj);
+            }
         }
         /// <summary>
         /// 要不是为了消除警告...

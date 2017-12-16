@@ -15,6 +15,7 @@
 #define LOG_FULL_OUTPUT
 #define LOG_INPUT
 using AutumnBox.Basic.Adb;
+using AutumnBox.Basic.Connection;
 using AutumnBox.Basic.Util;
 using AutumnBox.Support.CstmDebug;
 using AutumnBox.Support.Helper;
@@ -59,9 +60,8 @@ namespace AutumnBox.Basic.Executer
         /// 实例化
         /// </summary>
         /// <param name="id"></param>
-        public AndroidShell(string id)
+        public AndroidShell(Serial serial)
         {
-            _devID = id;
             _mainProcess = new Process
             {
                 StartInfo = new ProcessStartInfo()
@@ -72,7 +72,7 @@ namespace AutumnBox.Basic.Executer
                     CreateNoWindow = true,
                     UseShellExecute = false,
                     FileName = ConstData.FullAdbFileName,
-                    Arguments = $" -s {_devID} shell"
+                    Arguments = $" -s {serial.ToString()} shell"
                 }
             };
             _mainProcess.OutputDataReceived += (s, e) => { OnOutputReceived(new OutputReceivedEventArgs(e.Data, e, false)); };
@@ -231,10 +231,6 @@ namespace AutumnBox.Basic.Executer
         /// 最近一次的命令
         /// </summary>
         private string _latestCommand = "";
-        /// <summary>
-        /// 连接的设备ID
-        /// </summary>
-        private string _devID;
         /// <summary>
         /// 最近的一行输出
         /// </summary>

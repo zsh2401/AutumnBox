@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Connection\Serial.cs" />
     <Compile Include="Devices\DeviceHardwareInfo.cs" />
     <Compile Include="Devices\DeviceImageHelper.cs" />
     <Compile Include="Devices\DeviceInfoHelper.cs" />
@@ -109,6 +110,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="AdbHelper.cs" />
     <Compile Include="Util\ConstData.cs" />
+    <Compile Include="Connection\DeviceConnection.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AutumnBox.Support\AutumnBox.Support.csproj">

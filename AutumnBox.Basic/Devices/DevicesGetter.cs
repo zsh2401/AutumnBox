@@ -39,21 +39,17 @@ namespace AutumnBox.Basic.Devices
                 return devList;
             }
         }
-        private static readonly string devicePattern = @"(?i)^(?<id>[\w\d]+)[\t\u0020]+(?<status>\w+)[^?!.]$";
+        private static readonly string devicePattern = @"(?i)^(?<serial>[^\u0020|^\t]+)[^\w]+(?<status>\w+)[^?!.]$";
         private static readonly Regex _deviceRegex = new Regex(devicePattern, RegexOptions.Multiline);
         private static void AdbPrase(OutputData o, ref DevicesList devList)
         {
-            var matches = _deviceRegex.Matches(o.ToString());
+            var matches = _deviceRegex.Matches(o.All.ToString());
             foreach (Match match in matches)
             {
-                if (match.Success)
-                {
-                    devList.Add(new DeviceBasicInfo
-                    {
-                        Id = match.Result("${id}"),
-                        Status = match.Result("${status}").ToDeviceStatus()
-                    });
-                }
+                Logger.D("xxx" + match.Result("${serial}"));
+                devList.Add(DeviceBasicInfo.Make(
+                    match.Result("${serial}"),
+                    match.Result("${status}").ToDeviceStatus()));
             }
         }
         private static void FastbootParse(OutputData o, ref DevicesList devList)
@@ -61,14 +57,9 @@ namespace AutumnBox.Basic.Devices
             var matches = _deviceRegex.Matches(o.ToString());
             foreach (Match match in matches)
             {
-                if (match.Success)
-                {
-                    devList.Add(new DeviceBasicInfo
-                    {
-                        Id = match.Result("${id}"),
-                        Status = match.Result("${status}").ToDeviceStatus()
-                    });
-                }
+                devList.Add(DeviceBasicInfo.Make(
+                    match.Result("${serial}"),
+                    match.Result("${status}").ToDeviceStatus()));
             }
         }
     }

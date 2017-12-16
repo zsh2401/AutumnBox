@@ -33,7 +33,7 @@ namespace AutumnBox.Basic.Function.Modules
             {
                 OutSender = bundle.Executer
             };
-            bundle.Executer.QuicklyShell(bundle.DeviceID, $"wm density {dpi}", out isSuccess);
+            bundle.Executer.QuicklyShell(bundle.Serial.ToString(), $"wm density {dpi}", out isSuccess);
             if (isSuccess)
             {
                 bundle.Ae("reboot");

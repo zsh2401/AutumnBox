@@ -43,7 +43,7 @@ namespace AutumnBox.Basic.Function.Modules
             OutputData result = new OutputData();
             string imagePath;
             string fileName = _Args.ExtractImage.ToString().ToLower();
-            using (AndroidShell _shell = new AndroidShell(toolsBundle.DeviceID))
+            using (AndroidShell _shell = new AndroidShell(toolsBundle.Serial))
             {
                 _shell.OutputReceived += (s, e) => { OnOutputReceived(e); };
                 _shell.ProcessStarted += (s, e) => { OnProcessStarted(e); };

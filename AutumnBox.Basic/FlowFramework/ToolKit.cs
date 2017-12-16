@@ -27,9 +27,9 @@ namespace AutumnBox.Basic.FlowFramework
             Args = args;
             Executer = executer ?? new CExecuter();
             Ae = (command) =>
-            { return Executer.Execute(Command.MakeForAdb(Args.DevBasicInfo.Id, command)); };
+            { return Executer.Execute(Command.MakeForAdb(Args.DevBasicInfo.Serial, command)); };
             Fe = (command) =>
-            { return Executer.Execute(Command.MakeForFastboot(Args.DevBasicInfo.Id, command)); };
+            { return Executer.Execute(Command.MakeForFastboot(Args.DevBasicInfo.Serial, command)); };
         }
     }
 }

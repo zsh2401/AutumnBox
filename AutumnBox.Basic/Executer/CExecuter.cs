@@ -12,6 +12,7 @@
 *
 \* =============================================================================*/
 using AutumnBox.Basic.Adb;
+using AutumnBox.Basic.Connection;
 using AutumnBox.Basic.Util;
 using AutumnBox.Support.CstmDebug;
 using System;
@@ -60,8 +61,8 @@ namespace AutumnBox.Basic.Executer
         /// </summary>
         /// <param name="command"></param>
         /// <returns></returns>
-        public OutputData AdbExecute(string devId, string command)
-            => Execute(Command.MakeForAdb(devId, command));
+        public OutputData AdbExecute(Serial devSerial, string command)
+            => Execute(Command.MakeForAdb(devSerial, command));
         /// <summary>
         /// 执行Fastboot命令
         /// </summary>
@@ -74,8 +75,8 @@ namespace AutumnBox.Basic.Executer
         /// </summary>
         /// <param name="command"></param>
         /// <returns></returns>
-        public OutputData FastbootExecute(string devId, string command)
-            => Execute(Command.MakeForFastboot(devId, command));
+        public OutputData FastbootExecute(Serial devSerial, string command)
+            => Execute(Command.MakeForFastboot(devSerial, command));
         /// <summary>
         /// 执行Shell命令(没有ROOT权限)
         /// </summary>

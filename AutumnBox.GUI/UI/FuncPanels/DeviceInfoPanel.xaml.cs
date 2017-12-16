@@ -80,7 +80,7 @@ namespace AutumnBox.GUI.UI.Grids
         {
             var simpleInfo = await Task.Run(() =>
             {
-                return DeviceInfoHelper.GetBuildInfo(devSimpleInfo.Id);
+                return DeviceInfoHelper.GetBuildInfo(devSimpleInfo.Serial);
             });
             LabelAndroidVersion.Content = simpleInfo.AndroidVersion ?? App.Current.Resources["GetFail"].ToString();
             LabelModel.Content = simpleInfo.M ?? App.Current.Resources["GetFail"].ToString();
@@ -100,7 +100,7 @@ namespace AutumnBox.GUI.UI.Grids
             {
                 CurrentDeviceAndroidVersion = null;
             }
-            switch (App.SelectedDevice.Status)
+            switch (App.CurrentDeviceConnection.DevInfo.Status)
             {
                 case DeviceStatus.Fastboot:
                     _SetStatusPanel(DynamicIcons.fastboot, "DeviceInFastboot");
@@ -119,7 +119,7 @@ namespace AutumnBox.GUI.UI.Grids
             RefreshFinished?.Invoke(this, new EventArgs());
             var advInfo = await Task.Run(() =>
             {
-                return DeviceInfoHelper.GetHwInfo(devSimpleInfo.Id);
+                return DeviceInfoHelper.GetHwInfo(devSimpleInfo.Serial);
             });
             LabelRom.Content = (advInfo.StorageTotal != null) ? advInfo.StorageTotal + "GB" : App.Current.Resources["GetFail"].ToString();
             LabelRam.Content = (advInfo.MemTotal != null) ? advInfo.MemTotal + "GB" : App.Current.Resources["GetFail"].ToString();
@@ -127,19 +127,19 @@ namespace AutumnBox.GUI.UI.Grids
             LabelSOC.Content = advInfo.SOCInfo ?? App.Current.Resources["GetFail"].ToString();
             LabelScreen.Content = advInfo.ScreenInfo ?? App.Current.Resources["GetFail"].ToString();
             LabelFlashMemInfo.Content = advInfo.FlashMemoryType ?? App.Current.Resources["GetFail"].ToString();
-            bool IsRoot = await Task.Run(() => { return DeviceInfoHelper.CheckRoot(devSimpleInfo.Id); });
+            bool IsRoot = await Task.Run(() => { return DeviceInfoHelper.CheckRoot(devSimpleInfo.Serial); });
             LabelRootStatus.Content = IsRoot ? App.Current.Resources["RootEnable"].ToString() : App.Current.Resources["RootDisable"].ToString();
             CurrentDeviceIsRoot = IsRoot;
         }
 
         private void LabelAndroidVersion_Loaded(object sender, System.Windows.RoutedEventArgs e)
         {
-            LanguageHelper.LanguageChanged += (s, ex) => { Refresh(App.SelectedDevice); };
+            LanguageHelper.LanguageChanged += (s, ex) => { Refresh(App.CurrentDeviceConnection.DevInfo); };
         }
 
         private void ImgRefreshDevInfo_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            Refresh(App.SelectedDevice);
+            Refresh(App.CurrentDeviceConnection.DevInfo);
         }
     }
 }

@@ -21,7 +21,7 @@ namespace AutumnBox.Basic.Function.Modules
     {
         protected override OutputData MainMethod(BundleForTools bundle)
         {
-            AndroidShell _shell = new AndroidShell(bundle.Args.DeviceBasicInfo.Id);
+            AndroidShell _shell = new AndroidShell(bundle.Args.DeviceBasicInfo.Serial);
             OutputData output = new OutputData
             {
                 OutSender = _shell

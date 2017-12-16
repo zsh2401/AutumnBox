@@ -38,7 +38,7 @@ namespace AutumnBox.Basic.Function.Modules
         {
             base.Create(bundle);
             _args = (ImgFlasherArgs)bundle.Args;
-            _shell = new AndroidShell(_args.DeviceBasicInfo.Id);
+            _shell = new AndroidShell(_args.DeviceBasicInfo.Serial);
             _shell.ProcessStarted += (s, e) => { OnProcessStarted(e); };
             _shell.OutputReceived += (s, e) => { OnOutputReceived(e); };
         }

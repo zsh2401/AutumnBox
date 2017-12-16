@@ -11,6 +11,7 @@
 * Company: I am free man
 *
 \* =============================================================================*/
+using AutumnBox.Basic.Connection;
 using AutumnBox.Basic.Executer;
 using AutumnBox.Basic.Function.Args;
 using System;
@@ -27,15 +28,15 @@ namespace AutumnBox.Basic.Function.Bundles
         public Func<string, OutputData> Ae { get; private set; }
         public Func<string, OutputData> Fe { get; private set; }
         public ModuleArgs Args { get; private set; }
-        public string DeviceID { get { return Args.DeviceBasicInfo.Id; } }
+        public Serial Serial { get { return Args.DeviceBasicInfo.Serial; } }
         public BundleForTools(CExecuter executer, ModuleArgs args)
         {
             Executer = executer;
             Args = args;
             Ae = (command) =>
-            { return Executer.Execute(Command.MakeForAdb(Args.DeviceBasicInfo, command)); };
+            { return Executer.Execute(Command.MakeForAdb(Serial, command)); };
             Fe = (command) =>
-            { return Executer.Execute(Command.MakeForFastboot(Args.DeviceBasicInfo, command)); };
+            { return Executer.Execute(Command.MakeForFastboot(Serial, command)); };
         }
     }
 }

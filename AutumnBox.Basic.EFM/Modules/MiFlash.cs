@@ -64,7 +64,7 @@ namespace AutumnBox.Basic.Function.Modules
         protected override OutputData MainMethod(BundleForTools toolsBundle)
         {
             MainProcess.StartInfo.WorkingDirectory = @"adb\";
-            temtOut.Append(MainProcess.RunToExited("cmd.exe", "/c " + _Args.FloderPath + "/" + GetBatFileNameBy(_Args.Type) + $" -s {toolsBundle.DeviceID}"));
+            temtOut.Append(MainProcess.RunToExited("cmd.exe", "/c " + _Args.FloderPath + "/" + GetBatFileNameBy(_Args.Type) + $"{toolsBundle.Serial.ToFullSerial()}"));
             return temtOut;
         }
         private static string GetBatFileNameBy(MiFlashType type)

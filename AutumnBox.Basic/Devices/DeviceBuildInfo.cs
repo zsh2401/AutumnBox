@@ -11,6 +11,7 @@
 * Company: I am free man
 *
 \* =============================================================================*/
+using AutumnBox.Basic.Connection;
 using AutumnBox.Basic.Function;
 namespace AutumnBox.Basic.Devices
 {
@@ -19,7 +20,7 @@ namespace AutumnBox.Basic.Devices
     /// </summary>
     public struct DeviceBuildInfo
     {
-        public string Id { internal set; get; }//id
+        public Serial Serial { internal set; get; }//id
         public string Model { internal set; get; }//型号
         public string Brand { internal set; get; }//厂商
         public string Code { internal set; get; }//代号

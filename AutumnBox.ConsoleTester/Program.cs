@@ -1,49 +1,34 @@
-﻿using AutumnBox.Basic.Devices;
+﻿using AutumnBox.Basic.Connection;
+using AutumnBox.Basic.Devices;
+using AutumnBox.Basic.Executer;
 using AutumnBox.Support;
 using System;
+using System.Net;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace AutumnBox.ConsoleTester
 {
     class Program
     {
-        public readonly static DeviceBasicInfo mi6 = new DeviceBasicInfo()
-        {
-            Id = "af0fe186",
-            Status = DeviceStatus.Poweron,
-        };
-        public readonly static DeviceBasicInfo mi4 = new DeviceBasicInfo()
-        {
-            Id = "9dd1b490",
-            Status = DeviceStatus.Poweron,
-        };
+        //public readonly static DeviceBasicInfo mi6 = new DeviceBasicInfo()
+        //{
+        //    Id = "af0fe186",
+        //    Status = DeviceStatus.Poweron,
+        //};
+        //public readonly static DeviceBasicInfo mi4 = new DeviceBasicInfo()
+        //{
+        //    Id = "9dd1b490",
+        //    Status = DeviceStatus.Poweron,
+        //};
         unsafe static void Main(string[] args)
         {
+            IPAddress.Parse("192.168.0.12");
             var devices = new DevicesGetter().GetDevices();
-            devices.ForEach((i)=> {
-                Console.WriteLine(i.Id);
+            devices.ForEach((i) =>
+            {
+                Console.WriteLine(i.Serial.ToString());
             });
-            //Basic.Flows.AirForzenActivator fl = new Basic.Flows.AirForzenActivator();
-            //fl.Init(new FlowArgs() { DevBasicInfo = mi4 });
-            //fl.Finished += (s, e) =>
-            //{
-            //    Console.WriteLine(e.Result.ResultType);
-            //    Console.WriteLine(e.Result.ErrorType);
-            //};
-            //fl.OutputReceived += (s, e) =>
-            //{
-            //    Console.WriteLine(e.Text);
-            //};
-            //FunctionFlowBase.AnyFinished += (s, e) =>
-            //{
-            //    Console.WriteLine(s.GetType().Name + " ->finished...");
-            //    Console.WriteLine(e.Result.OutputData.ToString());
-            //};
-            ////fl.RunAsync();
-            //Console.WriteLine(DeviceInfoHelper.IsInstalled(mi6, "me.piebridge.brevent"));
-            //string fuck = "鈽嗕笅杞芥殏瀛榎";
-            //new IdentifyEncoding().GetEncodingName(Convert.ToSByte(fuck));
-            //Console.WriteLine(Encoding.UTF8.GetString(bytes));
             Console.ReadKey();
         }
         public static void WriteWithColor(Action a, ConsoleColor color = ConsoleColor.White)

@@ -11,7 +11,6 @@
 * Company: I am free man
 *
 \* =============================================================================*/
-using AutumnBox.GUI.Helper;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;

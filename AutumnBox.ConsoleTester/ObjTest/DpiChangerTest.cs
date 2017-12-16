@@ -23,11 +23,11 @@ namespace AutumnBox.ConsoleTester.ObjTest
 {
     class DpiChangerTest
     {
-        public static void Run()
-        {
-            FunctionModuleProxy fmp =
-                    FunctionModuleProxy.Create<DpiChanger>(new Basic.Function.Args.DpiChangerArgs(Program.mi4) { Dpi = 400 });
-            Console.WriteLine(fmp.SyncRun().OutputData.All);
-        }
+        //public static void Run()
+        //{
+        //    FunctionModuleProxy fmp =
+        //            FunctionModuleProxy.Create<DpiChanger>(new Basic.Function.Args.DpiChangerArgs(Program.mi4) { Dpi = 400 });
+        //    Console.WriteLine(fmp.SyncRun().OutputData.All);
+        //}
     }
 }
