@@ -31,6 +31,7 @@
 *.psd
 *.txt
 fast
+gfast.exe
 makezip
 Bin/*
 ##dirs
