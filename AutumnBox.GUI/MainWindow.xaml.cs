@@ -34,6 +34,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Collections;
 using System.Collections.Generic;
+using AutumnBox.Basic.Util;
 
 namespace AutumnBox.GUI
 {
@@ -218,7 +219,7 @@ namespace AutumnBox.GUI
         {
             ProcessStartInfo info = new ProcessStartInfo
             {
-                WorkingDirectory = "adb/",
+                WorkingDirectory = ConstData.toolsPath,
                 FileName = "cmd.exe"
             };
             if (SystemHelper.IsWin10)

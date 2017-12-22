@@ -39,9 +39,7 @@ Bin/*
 obj/
 packages/
 ##donot
-!Bin/*.txt
 !AutumnBox.Basic/Adb/*.exe
 !AutumnBox.Basic/Adb/*.dll
-!DllsUsed/*.dll
-!Out/google/platform-tools/**/*.*
-
+!lib/*.dll
+!out/google/platform-tools/**/*.*

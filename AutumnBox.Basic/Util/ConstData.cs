@@ -26,16 +26,16 @@ namespace AutumnBox.Basic.Util
         public static readonly string FastbootFilename = "fastboot.exe";
         public static string FullAdbFileName {
             get {
-                return PlatformToolsPath + AdbFilename;
+                return toolsPath + AdbFilename;
             }
         }
         public static string FullFastbootFileName
         {
             get
             {
-                return PlatformToolsPath + FastbootFilename;
+                return toolsPath + FastbootFilename;
             }
         }
-        public static readonly string PlatformToolsPath = "google\\platform-tools\\";
+        public static readonly string toolsPath = @"google\platform-tools\";
     }
 }
