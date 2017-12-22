@@ -26,7 +26,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{50E24258-E
 		docs\index.html = docs\index.html
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "__api", "__api", "{8969F331-46C6-4FED-B46C-FE1A1388EA23}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "__Api", "__Api", "{8969F331-46C6-4FED-B46C-FE1A1388EA23}"
 	ProjectSection(SolutionItems) = preProject
 		index.html = index.html
 	EndProjectSection
