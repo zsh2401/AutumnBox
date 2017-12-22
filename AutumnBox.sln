@@ -22,10 +22,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{50E24258-E8B4-4EB8-BC47-0C2A95A83CC1}"
 	ProjectSection(SolutionItems) = preProject
+		docs\CNAME = docs\CNAME
 		docs\index.html = docs\index.html
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "__api", "__api", "{8969F331-46C6-4FED-B46C-FE1A1388EA23}"
+	ProjectSection(SolutionItems) = preProject
+		index.html = index.html
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "motd", "motd", "{33DB2D88-7696-4800-AFCA-183EFF744BEA}"
 	ProjectSection(SolutionItems) = preProject

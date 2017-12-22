@@ -4,7 +4,7 @@
   <description asmv2:iconFile="title_icon.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="AutumnBox" version="0.21.11.28137" language="neutral" processorArchitecture="msil" />
+    <assemblyIdentity name="AutumnBox" version="0.21.11.28395" language="neutral" processorArchitecture="msil" />
     <commandLine file="AutumnBox.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -43,13 +43,13 @@
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AutumnBox.exe" size="2364416">
-      <assemblyIdentity name="AutumnBox" version="0.21.11.28137" language="neutral" processorArchitecture="msil" />
+      <assemblyIdentity name="AutumnBox" version="0.21.11.28395" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>xGr2X0SuHlz6om3hhVkuQSDnuxdFdveePGR50udD5hA=</dsig:DigestValue>
+        <dsig:DigestValue>/6oZmDziHF3zbgjB2WmNP5nQ8EFO2wdNlaoNllLMRbg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -61,7 +61,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>0YdBPWe/IFp8Ik7o0uzl3oT+R8B8FjC5RgqZGx4Z0GA=</dsig:DigestValue>
+        <dsig:DigestValue>6h1jH7MnweRYBtcSG6g2df3HP7Gq39kvvXVa/6aASEs=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -73,7 +73,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>+By4JvBwHEZLKoSaS6HbXsgtww1aJmahlvpLx1wVmH0=</dsig:DigestValue>
+        <dsig:DigestValue>1L/bnO12P5ULkc4ZYqCp+OGEIjEGI6rqadlfwNP1B/s=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -85,7 +85,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>rWGv53VfDrM2mVemV9fJFNCG7TLWAGOKXF0S5i/7aGs=</dsig:DigestValue>
+        <dsig:DigestValue>AMQPeCniOLf+KXg2VtZc4cAtxjxlb3iN+DRBHOAKN30=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
