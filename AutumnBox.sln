@@ -20,25 +20,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{50E24258-E8B4-4EB8-BC47-0C2A95A83CC1}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "api", "api", "{C6324411-8CCA-4678-B8C9-27176D29F709}"
 	ProjectSection(SolutionItems) = preProject
-		docs\CNAME = docs\CNAME
-		docs\index.html = docs\index.html
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "__Api", "__Api", "{8969F331-46C6-4FED-B46C-FE1A1388EA23}"
-	ProjectSection(SolutionItems) = preProject
-		index.html = index.html
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "motd", "motd", "{33DB2D88-7696-4800-AFCA-183EFF744BEA}"
-	ProjectSection(SolutionItems) = preProject
-		docs\__api\motd\index.html = docs\__api\motd\index.html
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "update", "update", "{5AEE9B2F-127F-42F1-B2ED-C0BFEED9D4AF}"
-	ProjectSection(SolutionItems) = preProject
-		docs\__api\update\index.html = docs\__api\update\index.html
+		docs\motd.html = docs\motd.html
+		docs\update.html = docs\update.html
 	EndProjectSection
 EndProject
 Global
@@ -87,9 +72,7 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{8969F331-46C6-4FED-B46C-FE1A1388EA23} = {50E24258-E8B4-4EB8-BC47-0C2A95A83CC1}
-		{33DB2D88-7696-4800-AFCA-183EFF744BEA} = {8969F331-46C6-4FED-B46C-FE1A1388EA23}
-		{5AEE9B2F-127F-42F1-B2ED-C0BFEED9D4AF} = {8969F331-46C6-4FED-B46C-FE1A1388EA23}
+		{C6324411-8CCA-4678-B8C9-27176D29F709} = {9C12A545-FC99-4185-86D1-22D029637239}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E8E55705-AE5C-4952-B4C7-9D7F81C38731}
