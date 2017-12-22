@@ -1,6 +1,0 @@
-#!/bin/sh
-
-set -e
-
-bundle exec jekyll build
-gem build jekyll-theme-midnight.gemspec
