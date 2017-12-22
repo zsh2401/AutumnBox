@@ -21,6 +21,23 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Bin\无法启动解决办法.txt = Bin\无法启动解决办法.txt
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{50E24258-E8B4-4EB8-BC47-0C2A95A83CC1}"
+	ProjectSection(SolutionItems) = preProject
+		docs\index.html = docs\index.html
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "__api", "__api", "{8969F331-46C6-4FED-B46C-FE1A1388EA23}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "motd", "motd", "{33DB2D88-7696-4800-AFCA-183EFF744BEA}"
+	ProjectSection(SolutionItems) = preProject
+		docs\__api\motd\index.html = docs\__api\motd\index.html
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "update", "update", "{5AEE9B2F-127F-42F1-B2ED-C0BFEED9D4AF}"
+	ProjectSection(SolutionItems) = preProject
+		docs\__api\update\index.html = docs\__api\update\index.html
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		AutumnBox.Basic.EFM\AutumnBox.Basic.EFM.projitems*{84044fb2-bd38-4283-8065-b639270ece0f}*SharedItemsImports = 4
@@ -65,6 +82,11 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8969F331-46C6-4FED-B46C-FE1A1388EA23} = {50E24258-E8B4-4EB8-BC47-0C2A95A83CC1}
+		{33DB2D88-7696-4800-AFCA-183EFF744BEA} = {8969F331-46C6-4FED-B46C-FE1A1388EA23}
+		{5AEE9B2F-127F-42F1-B2ED-C0BFEED9D4AF} = {8969F331-46C6-4FED-B46C-FE1A1388EA23}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E8E55705-AE5C-4952-B4C7-9D7F81C38731}
