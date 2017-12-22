@@ -18,7 +18,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9C12A545-FC99-4185-86D1-22D029637239}"
 	ProjectSection(SolutionItems) = preProject
 		README.md = README.md
-		Bin\无法启动解决办法.txt = Bin\无法启动解决办法.txt
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{50E24258-E8B4-4EB8-BC47-0C2A95A83CC1}"
