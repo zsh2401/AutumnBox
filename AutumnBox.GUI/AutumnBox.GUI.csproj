@@ -35,7 +35,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\Out\</OutputPath>
+    <OutputPath>..\out\</OutputPath>
     <DefineConstants>TRACE;DEBUG;ENABLE_BLUR</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -45,7 +45,7 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\Bin\</OutputPath>
+    <OutputPath>..\out\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -78,7 +78,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'PrivateTest|AnyCPU'">
     <DebugSymbols>false</DebugSymbols>
-    <OutputPath>..\Bin\</OutputPath>
+    <OutputPath>..\out\</OutputPath>
     <DefineConstants>DEBUG;PRVT_T FUCK</DefineConstants>
     <DebugType>none</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -94,8 +94,8 @@
     <Reference Include="Microsoft.Windows.Shell">
       <HintPath>..\..\..\Microsoft.Windows.Shell.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\DllsUsed\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -114,9 +114,8 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="WpfAnimatedGif, Version=0.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\DllsUsed\WpfAnimatedGif.dll</HintPath>
+    <Reference Include="WpfAnimatedGif, Version=1.4.15.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WpfAnimatedGif.1.4.15\lib\net\WpfAnimatedGif.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -247,6 +246,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

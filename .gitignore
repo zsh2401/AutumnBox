@@ -37,6 +37,7 @@ Bin/*
 ##dirs
 .vs/
 obj/
+packages/
 ##donot
 !Bin/*.txt
 !AutumnBox.Basic/Adb/*.exe
