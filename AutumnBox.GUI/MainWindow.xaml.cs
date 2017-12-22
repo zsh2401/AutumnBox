@@ -45,6 +45,7 @@ namespace AutumnBox.GUI
     public sealed partial class MainWindow : Window, ILogSender
     {
         private Object setUILock = new System.Object();
+        private List<IRefreshable> refreshables;
         public string LogTag => "Main Window";
         public bool IsShowLog => true;
         public MainWindow()
@@ -123,13 +124,14 @@ namespace AutumnBox.GUI
         /// <param name="e"></param>
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
+            refreshables = new CtrlFinder<IRefreshable>(this.GridMain.Children).Find();
 #if ENABLE_BLUR
             UIHelper.SetOwnerTransparency(Config.BackgroundA);
             //开启Blur透明效果
             BlurHelper.EnableBlur(this);
 #endif
             //刷新一下界面
-            RefreshUI();
+            Refresh();
             //哦,如果是第一次启动本软件,那么就显示一下提示吧!
             Task.Run(() =>
             {
@@ -162,40 +164,11 @@ namespace AutumnBox.GUI
                 }
             });
         }
-        /// <summary>
-        /// 根据当前选中的设备刷新界面信息
-        /// </summary>
-        private void RefreshUI()
-        {
-            var startTime = DateTime.Now;
-            lock (setUILock)
-            {
-                PoweronFuncs.Refresh(App.CurrentDeviceConnection.DevInfo);
-                RecoveryFuncs.Refresh(App.CurrentDeviceConnection.DevInfo);
-                FastbootFuncs.Refresh(App.CurrentDeviceConnection.DevInfo);
-                RebootGrid.Refresh(App.CurrentDeviceConnection.DevInfo);
-                DevInfoPanel.Refresh(App.CurrentDeviceConnection.DevInfo);
-            }
-            var endTime = DateTime.Now;
-            var useTime = endTime - startTime;
-            Logger.D("refresh finished..use ms ->" + useTime.TotalMilliseconds.ToString());
-        }
         public void Refresh()
         {
-            var startTime = DateTime.Now;
-            lock (setUILock)
-            {
-                foreach (object c in GridMain.Children)
-                {
-                    if (c is IRefreshable)
-                    {
-                        (c as IRefreshable).Refresh(App.CurrentDeviceConnection.DevInfo);
-                    }
-                }
-            }
-            var endTime = DateTime.Now;
-            var useTime = endTime - startTime;
-            Logger.D("refresh finished..use ms ->" + useTime.TotalMilliseconds.ToString());
+            refreshables.ForEach((ctrl)=> {
+                ctrl.Refresh(App.CurrentDeviceConnection.DevInfo);
+            });
         }
         /// <summary>
         /// 当设备选择列表的被选项变化时发生
@@ -210,9 +183,9 @@ namespace AutumnBox.GUI
             }
             else if (this.DevicesListBox.SelectedIndex == -1)
             {
-                //App.SelectedDevice = new DeviceBasicInfo() { Status = DeviceStatus.None };
+                App.CurrentDeviceConnection.Reset();
             }
-            RefreshUI();
+            Refresh();
         }
 
         private void ButtonStartShell_Click(object sender, RoutedEventArgs e)

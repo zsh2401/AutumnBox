@@ -183,6 +183,7 @@
     <Compile Include="Cfg\IConfigOperator.cs" />
     <Compile Include="Cfg\ConfigDataLayout.cs" />
     <Compile Include="UI\IAsyncRefreshable.cs" />
+    <Compile Include="UI\CtrlFinder.cs" />
     <Compile Include="Util\AutoGC.cs" />
     <Compile Include="Util\MachineInfo.cs" />
     <Compile Include="Windows\ApkInstallingWindow.xaml.cs">

@@ -50,19 +50,6 @@ namespace AutumnBox.Basic.Devices
         {
             this._interval = interval;
         }
-        ///// <summary>
-        ///// 开始监听
-        ///// </summary>
-        //public void Start()
-        //{
-        //    if (DevicesChanged == null)
-        //    {
-        //        throw new EventNotBoundException("不绑定事件,那么开始这个监听器有毛线用处啊!!!");
-        //    }
-        //    //Continue = true;
-        //    //devicesListenerTask = new Task(this.Listening);
-        //    //devicesListenerTask.Start();
-        //}
         public void Begin() {
             _continue = true;
             ListenAsync();

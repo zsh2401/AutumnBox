@@ -23,6 +23,8 @@ namespace AutumnBox.Basic.Devices
     public sealed class DevicesGetter : IDevicesGetter, IDisposable
     {
         private CExecuter executer = new CExecuter();
+        private static readonly Command adbDevicesCmd = Command.MakeForAdb("devices");
+        private static readonly Command fbDevicesCmd = Command.MakeForFastboot("devices");
         public void Dispose()
         {
             executer.Dispose();
@@ -32,17 +34,19 @@ namespace AutumnBox.Basic.Devices
             lock (executer)
             {
                 DevicesList devList = new DevicesList();
-                var adbDevicesOutput = executer.Execute(Command.MakeForAdb("devices"));
-                AdbPrase(adbDevicesOutput, ref devList);
-                var fastbootDevicesOutput = executer.Execute(Command.MakeForFastboot("devices"));
+                var adbDevicesOutput = executer.Execute(adbDevicesCmd);
+                var fastbootDevicesOutput = executer.Execute(fbDevicesCmd);
+                AdbParse(adbDevicesOutput, ref devList);
                 FastbootParse(fastbootDevicesOutput, ref devList);
                 return devList;
             }
         }
         private static readonly string devicePattern = @"(?i)^(?<serial>[^\u0020|^\t]+)[^\w]+(?<status>\w+)[^?!.]$";
         private static readonly Regex _deviceRegex = new Regex(devicePattern, RegexOptions.Multiline);
-        private static void AdbPrase(OutputData o, ref DevicesList devList)
+        [LogProperty(TAG = "Adb Parse")]
+        private static void AdbParse(OutputData o, ref DevicesList devList)
         {
+            Logger.D("Parsing...\n" + o.ToString());
             var matches = _deviceRegex.Matches(o.All.ToString());
             foreach (Match match in matches)
             {

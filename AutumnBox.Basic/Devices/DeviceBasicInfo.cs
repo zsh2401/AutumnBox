@@ -44,6 +44,9 @@ namespace AutumnBox.Basic.Devices
                 Status = status,
             };
         }
+        public string ToSampleString() {
+            return $"{Serial.ToString()} {Status}";
+        }
         public override string ToString()
         {
             return Serial.ToString();

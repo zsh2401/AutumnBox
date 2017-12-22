@@ -1,6 +1,7 @@
 ﻿using AutumnBox.Basic.Connection;
 using AutumnBox.Basic.Devices;
 using AutumnBox.Basic.Executer;
+using AutumnBox.Basic.Util;
 using AutumnBox.Support;
 using System;
 using System.Diagnostics;
@@ -30,22 +31,14 @@ namespace AutumnBox.ConsoleTester
         };
         unsafe static void Main(string[] args)
         {
-            //Process.Start("steam://open/console");
-            string[] lines  = File.ReadAllLines(@"C:\Windows\System32\drivers\etc\hosts");
-            string fullText = File.ReadAllText(@"C:\Windows\System32\drivers\etc\hosts");
-            StringBuilder sb = new StringBuilder(fullText);
-            sb.Append("23.52.74.146 steamcommunity.com");
-            File.WriteAllText(@"C:\Windows\System32\drivers\etc\hosts",sb.ToString());
-            //var devices = new DevicesGetter().GetDevices();
-            //devices.ForEach((i) =>
-            //{
-            //    Console.WriteLine(i.Serial.ToString());
-            //});
-            //var buildInfo = DeviceInfoHelper.GetBuildInfoWithSu(new Serial("192.168.0.12:5555"));
-            //foreach(var en in buildInfo)
-            //{
-            //    Console.WriteLine(en.Key,en.Value);
-            //}
+            //var o = new ABProcess().RunToExited(ConstData.FullAdbFileName,"help");
+            var o = new CExecuter().Execute(Command.MakeForAdb("devices"));
+
+            Console.WriteLine(o);
+            var devList = new DevicesGetter().GetDevices();
+            devList.ForEach((dev)=> {
+                Console.WriteLine(dev.ToString()); 
+            });
             Console.ReadKey();
         }
         public static void WriteWithColor(Action a, ConsoleColor color = ConsoleColor.White)
