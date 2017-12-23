@@ -7,14 +7,14 @@
     <framework targetVersion="4.5" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="AutumnBox.exe.manifest" size="8289">
+    <dependentAssembly dependencyType="install" codebase="AutumnBox.exe.manifest" size="8290">
       <assemblyIdentity name="AutumnBox.exe" version="1.0.0.1" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>zrVmMXq1Ky7f65x8wjlD2MYKpzuQH7+CNL6Qx8LTGWk=</dsig:DigestValue>
+        <dsig:DigestValue>dkRNaoJK9HUY+xfqXr5+7sv8uG0YbLIpt5x//6J2LBY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

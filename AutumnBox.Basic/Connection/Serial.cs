@@ -27,7 +27,7 @@ namespace AutumnBox.Basic.Connection
         public Serial(string serialStr)
         {
             var strs = serialStr.Split(':');
-            if (strs.Length > 0)
+            if (strs.Length > 1)
             {
                 var ip = IPAddress.Parse(strs[0]);
                 var port = Convert.ToInt32(strs[1]);

@@ -33,24 +33,22 @@ namespace AutumnBox.Basic.Devices
         {
             lock (executer)
             {
+                
                 DevicesList devList = new DevicesList();
                 var adbDevicesOutput = executer.Execute(adbDevicesCmd);
                 var fastbootDevicesOutput = executer.Execute(fbDevicesCmd);
-                AdbParse(adbDevicesOutput, ref devList);
+                AdbParse(adbDevicesOutput ,ref devList);
                 FastbootParse(fastbootDevicesOutput, ref devList);
                 return devList;
             }
         }
         private static readonly string devicePattern = @"(?i)^(?<serial>[^\u0020|^\t]+)[^\w]+(?<status>\w+)[^?!.]$";
         private static readonly Regex _deviceRegex = new Regex(devicePattern, RegexOptions.Multiline);
-        [LogProperty(TAG = "Adb Parse")]
         private static void AdbParse(OutputData o, ref DevicesList devList)
         {
-            Logger.D("Parsing...\n" + o.ToString());
-            var matches = _deviceRegex.Matches(o.All.ToString());
+            var matches = _deviceRegex.Matches(o.ToString());
             foreach (Match match in matches)
             {
-                Logger.D("xxx" + match.Result("${serial}"));
                 devList.Add(DeviceBasicInfo.Make(
                     match.Result("${serial}"),
                     match.Result("${status}").ToDeviceStatus()));

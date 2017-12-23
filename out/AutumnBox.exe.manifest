@@ -4,7 +4,7 @@
   <description asmv2:iconFile="title_icon.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="AutumnBox" version="0.21.11.33352" language="neutral" processorArchitecture="msil" />
+    <assemblyIdentity name="AutumnBox" version="0.21.11.34220" language="neutral" processorArchitecture="msil" />
     <commandLine file="AutumnBox.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -43,13 +43,13 @@
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AutumnBox.exe" size="2364416">
-      <assemblyIdentity name="AutumnBox" version="0.21.11.33352" language="neutral" processorArchitecture="msil" />
+      <assemblyIdentity name="AutumnBox" version="0.21.11.34220" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>EyS4IYQNiGuEgu1eXYnEilS7QOeJtTU8HJ3uLmObnTs=</dsig:DigestValue>
+        <dsig:DigestValue>MjqP5mZzfVZUp7gl1hryV9YLc7/doGEF2kLz2k6Z8V4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -61,7 +61,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>m0P+sj+jwi8skx1ZFlSoCXWl/ghiGb78X3GmYOK60gg=</dsig:DigestValue>
+        <dsig:DigestValue>HzZfnKWg260hbvHdUVyvjKqUH3n1jWnskW3315NaBOo=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -73,7 +73,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>hfn/KENE9AaCYAa3Q5fGG0Qcdxgf8VI3XZh6gURV4vI=</dsig:DigestValue>
+        <dsig:DigestValue>5CTfKBVG5JBN3wvD7iEsgSj9B9Yl5uh5jWJ8CHdWjDY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -85,7 +85,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>FCFWLggl7vw+UVqMhhVObqCJP3dXR7L5ewO7/YUEaR0=</dsig:DigestValue>
+        <dsig:DigestValue>c7TZc9Zv+EqggWquLcTvQ2Sj4KhJwam4rOT321j20P0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -102,14 +102,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="WpfAnimatedGif.dll" size="27648">
-      <assemblyIdentity name="WpfAnimatedGif" version="0.1.0.0" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="WpfAnimatedGif.dll" size="39936">
+      <assemblyIdentity name="WpfAnimatedGif" version="1.4.15.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>n77FSpWyux1gkmtxkpOIaNtRSVUxKFnim9nin9b17rQ=</dsig:DigestValue>
+        <dsig:DigestValue>zo74JfwQ5aMmW9OkxBjnASreH2G7637ZRZwTEeTmuRc=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

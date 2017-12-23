@@ -31,13 +31,11 @@ namespace AutumnBox.ConsoleTester
         };
         unsafe static void Main(string[] args)
         {
-            //var o = new ABProcess().RunToExited(ConstData.FullAdbFileName,"help");
-            var o = new CExecuter().Execute(Command.MakeForAdb("devices"));
-
-            Console.WriteLine(o);
+            //Console.WriteLine(IPAddress.TryParse("192.168.0.1", out IPAddress result));
             var devList = new DevicesGetter().GetDevices();
-            devList.ForEach((dev)=> {
-                Console.WriteLine(dev.ToString()); 
+            devList.ForEach((dev) =>
+            {
+                Console.WriteLine(dev.ToString());
             });
             Console.ReadKey();
         }

@@ -89,7 +89,7 @@ namespace AutumnBox.Basic.Executer
 #if SHOW_COMMAND
             Logger.D($"{fileName} {args}");
 #endif
-            _tempOut.Clear();
+            _tempOut = new OutputData();
             StartInfo.FileName = fileName;
             StartInfo.Arguments = args;
             Start();
