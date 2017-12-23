@@ -182,7 +182,6 @@
     <Compile Include="Cfg\IConfigOperator.cs" />
     <Compile Include="Cfg\ConfigDataLayout.cs" />
     <Compile Include="UI\IAsyncRefreshable.cs" />
-    <Compile Include="UI\CtrlFinder.cs" />
     <Compile Include="Util\AutoGC.cs" />
     <Compile Include="Util\MachineInfo.cs" />
     <Compile Include="Windows\ApkInstallingWindow.xaml.cs">
@@ -255,18 +254,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Resources\animations.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Resources\animations_by.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Resources\ColorThemes\BasicTheme.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="I18N\Langs\en-US.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -279,9 +266,21 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Resources\Styles\ButtonStyle.xaml">
+    <Page Include="Resources\Themes\BasicTheme.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Themes\BasicTheme_files\Brushes.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Themes\BasicTheme_files\ButtonStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Themes\BasicTheme_files\Colors.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\Cstm\BookMarksControl.xaml">
       <SubType>Designer</SubType>

@@ -124,7 +124,14 @@ namespace AutumnBox.GUI
         /// <param name="e"></param>
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            refreshables = new CtrlFinder<IRefreshable>(this.GridMain.Children).Find();
+            refreshables = new List<IRefreshable>
+            {
+                this.RebootGrid,
+                this.DevInfoPanel,
+                this.FastbootFuncs,
+                this.RecoveryFuncs,
+                this.PoweronFuncs
+            };
 #if ENABLE_BLUR
             UIHelper.SetOwnerTransparency(Config.BackgroundA);
             //开启Blur透明效果
@@ -198,18 +205,17 @@ namespace AutumnBox.GUI
             if (SystemHelper.IsWin10)
             {
                 var result = BoxHelper.ShowChoiceDialog("Notice", "msgShellChoiceTip", "Powershell", "CMD");
-                if (result == Windows.ChoiceResult.BtnLeft)
+                if (result == ChoiceResult.BtnLeft)
                 {
                     info.FileName = "powershell.exe";
                 }
-                else if (result == Windows.ChoiceResult.BtnCancel)
+                else if (result == ChoiceResult.BtnCancel)
                 {
                     return;
                 }
             }
             Process.Start(info);
         }
-
 
         private void TextBlock_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
@@ -220,7 +226,6 @@ namespace AutumnBox.GUI
         {
             new LinkHelpWindow().Show();
         }
-
 
         private void TBDonate_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
