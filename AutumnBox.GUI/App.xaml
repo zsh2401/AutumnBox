@@ -7,6 +7,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/I18N/Langs/zh-CN.xaml"/>
                 <ResourceDictionary Source="/Resources/ColorThemes/BasicTheme.xaml"/>
+                <ResourceDictionary Source="/Resources/Styles/ButtonStyle.xaml"/>
                 <ResourceDictionary Source="/Resources/links.xaml"/>
                 <ResourceDictionary Source="/Resources/animations.xaml"/>
             </ResourceDictionary.MergedDictionaries>
