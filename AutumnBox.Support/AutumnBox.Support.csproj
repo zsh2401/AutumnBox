@@ -55,4 +55,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy /y AutumnBox.Support.dll ..\\AutumnBox.GUI\\Resources\\lib\\</PostBuildEvent>
+  </PropertyGroup>
 </Project>

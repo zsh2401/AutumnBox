@@ -520,6 +520,15 @@
       <Name>AutumnBox.Support</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\lib\Newtonsoft.Json.dll" />
+    <EmbeddedResource Include="Resources\lib\WpfAnimatedGif.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\lib\AutumnBox.Basic.dll" />
+    <EmbeddedResource Include="Resources\lib\AutumnBox.Basic.Flows.dll" />
+    <EmbeddedResource Include="Resources\lib\AutumnBox.Support.dll" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>echo "delete fuck file"
@@ -527,8 +536,17 @@ del /S *.pdb
 del /S *.ab
 del /S *.exe.config
 del /S *.json
+del /S AutumnBox.application
+del /S Newtonsoft.Json.*
+del /S WpfAnimatedGif.*
+del /S AutumnBox.Basic.*
 del AutumnBox.ConsoleTester.exe
 rd /S /Q app.publish
 rd /S /Q logs</PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>echo coping dll to lib floder
+copy /y ..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll ..\AutumnBox.GUI\Resources\lib\
+copy /y ..\packages\WpfAnimatedGif.1.4.15\lib\net\WpfAnimatedGif.dll ..\AutumnBox.GUI\Resources\lib\</PreBuildEvent>
   </PropertyGroup>
 </Project>

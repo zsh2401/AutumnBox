@@ -87,7 +87,7 @@ namespace AutumnBox.GUI.Windows
                 return false;
             }
             Fmp = FunctionModuleProxy.Create(typeof(Basic.Function.Modules.MiFlash),
-            new MiFlasherArgs(App.CurrentDeviceConnection.DevInfo)
+            new MiFlasherArgs(App.StaticProperty.DeviceConnection.DevInfo)
             {
                 FloderPath = TextBoxPath.Text,
                 Type = GetFlashType(),

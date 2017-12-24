@@ -100,7 +100,7 @@ namespace AutumnBox.GUI.UI.Grids
             {
                 CurrentDeviceAndroidVersion = null;
             }
-            switch (App.CurrentDeviceConnection.DevInfo.Status)
+            switch (App.StaticProperty.DeviceConnection.DevInfo.Status)
             {
                 case DeviceStatus.Fastboot:
                     _SetStatusPanel(DynamicIcons.fastboot, "DeviceInFastboot");
@@ -134,12 +134,12 @@ namespace AutumnBox.GUI.UI.Grids
 
         private void LabelAndroidVersion_Loaded(object sender, System.Windows.RoutedEventArgs e)
         {
-            LanguageHelper.LanguageChanged += (s, ex) => { Refresh(App.CurrentDeviceConnection.DevInfo); };
+            LanguageHelper.LanguageChanged += (s, ex) => { Refresh(App.StaticProperty.DeviceConnection.DevInfo); };
         }
 
         private void ImgRefreshDevInfo_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            Refresh(App.CurrentDeviceConnection.DevInfo);
+            Refresh(App.StaticProperty.DeviceConnection.DevInfo);
         }
     }
 }

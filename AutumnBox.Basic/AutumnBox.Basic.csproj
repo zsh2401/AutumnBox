@@ -116,4 +116,11 @@
   </ItemGroup>
   <Import Project="..\AutumnBox.Basic.EFM\AutumnBox.Basic.EFM.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>copy /y AutumnBox.Basic.dll ..\\AutumnBox.GUI\\Resources\\lib\\</PostBuildEvent>
+  </PropertyGroup>
 </Project>

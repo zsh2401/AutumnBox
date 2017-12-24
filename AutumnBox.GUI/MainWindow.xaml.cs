@@ -52,7 +52,7 @@ namespace AutumnBox.GUI
         public MainWindow()
         {
             InitializeComponent();
-            App.DevicesListener.DevicesChanged += DevicesChanged;
+            App.StaticProperty.DevicesListener.DevicesChanged += DevicesChanged;
             TitleBar.ImgMin.Visibility = Visibility.Visible;
             DevInfoPanel.RefreshStart += (s, e) =>
             {
@@ -74,7 +74,7 @@ namespace AutumnBox.GUI
             };
             AdbHelper.AdbServerStartsFailed += (s, e) =>
             {
-                App.DevicesListener.Cancel();
+                App.StaticProperty.DevicesListener.Cancel();
                 bool _continue = true;
                 Dispatcher.Invoke(() =>
                 {
@@ -91,7 +91,7 @@ namespace AutumnBox.GUI
                 {
                     Thread.Sleep(12 * 1000);
                     AdbHelper.StartServer();
-                    App.DevicesListener.Begin();
+                    App.StaticProperty.DevicesListener.Begin();
                 }
                 else SystemHelper.AppExit(1);
             };
@@ -151,13 +151,13 @@ namespace AutumnBox.GUI
                 {
                     if (Config.IsFirstLaunch)
                     {
-                        new FastGrid(this.GridMain, new About(), () => { App.DevicesListener.Begin(); });
+                        new FastGrid(this.GridMain, new About(), () => { App.StaticProperty.DevicesListener.Begin(); });
                         Config.IsFirstLaunch = false;
                     }
                     else
                     {
                         //开始设备监听
-                        App.DevicesListener.Begin();
+                        App.StaticProperty.DevicesListener.Begin();
                     }
                 });
             });
@@ -177,7 +177,7 @@ namespace AutumnBox.GUI
         }
         public void Refresh()
         {
-            refreshables.ForEach((ctrl)=> { ctrl.Refresh(App.CurrentDeviceConnection.DevInfo); });
+            refreshables.ForEach((ctrl)=> { ctrl.Refresh(App.StaticProperty.DeviceConnection.DevInfo); });
         }
         /// <summary>
         /// 当设备选择列表的被选项变化时发生
@@ -188,11 +188,11 @@ namespace AutumnBox.GUI
         {
             if (this.DevicesListBox.SelectedIndex != -1)//如果选择了设备
             {
-                App.CurrentDeviceConnection.Reset((DeviceBasicInfo)DevicesListBox.SelectedItem);
+                App.StaticProperty.DeviceConnection.Reset((DeviceBasicInfo)DevicesListBox.SelectedItem);
             }
             else if (this.DevicesListBox.SelectedIndex == -1)
             {
-                App.CurrentDeviceConnection.Reset();
+                App.StaticProperty.DeviceConnection.Reset();
             }
             Refresh();
         }

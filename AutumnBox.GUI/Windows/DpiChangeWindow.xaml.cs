@@ -42,7 +42,7 @@ namespace AutumnBox.GUI.Windows
             BtnOK.IsEnabled = true;
             new Thread(() =>
             {
-                int? _deviceDefaultDpi = DeviceInfoHelper.GetDpi(App.CurrentDeviceConnection.Serial);
+                int? _deviceDefaultDpi = DeviceInfoHelper.GetDpi(App.StaticProperty.DeviceConnection.Serial);
                 this.Dispatcher.Invoke(() =>
                 {
                     TextBlockCurrentDpi.Text = (_deviceDefaultDpi == null) ? UIHelper.GetString("GetFail") : _deviceDefaultDpi.ToString();
@@ -56,7 +56,7 @@ namespace AutumnBox.GUI.Windows
         {
             runningFmp =
                 FunctionModuleProxy.Create<DpiChanger>
-               (new DpiChangerArgs(App.CurrentDeviceConnection.DevInfo) { Dpi = _textboxInputDpi });
+               (new DpiChangerArgs(App.StaticProperty.DeviceConnection.DevInfo) { Dpi = _textboxInputDpi });
             Logger.D("Dpi for input : " + _textboxInputDpi);
             runningFmp.Finished += (s, _e) =>
             {
