@@ -143,6 +143,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Content Include="Resources\lib\readme.txt" />
     <Compile Include="UI\Cstm\BookMarksControl.xaml.cs">
       <DependentUpon>BookMarksControl.xaml</DependentUpon>
     </Compile>

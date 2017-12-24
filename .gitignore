@@ -39,6 +39,7 @@ Bin/*
 obj/
 packages/
 ##donot
+!AutumnBox.GUI/Resources/lib/readme.txt
 !AutumnBox.Basic/Adb/*.exe
 !AutumnBox.Basic/Adb/*.dll
 !lib/*.dll
