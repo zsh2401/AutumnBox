@@ -4,8 +4,8 @@
 
     <SolidColorBrush x:Key="BtnBrush" Color="{StaticResource MouseLevelBtnColor}"></SolidColorBrush>
     <SolidColorBrush x:Key="ForgBrushOnBasic" Color="#FF000000"/>
-    <SolidColorBrush x:Key="ForgBrush" Color="#FF000000"/>
+    <SolidColorBrush x:Key="ForgBrush" Color="{DynamicResource FontColor}"/>
     <SolidColorBrush x:Key="BorderBrush" Color="#FFABADB3"/>
-    <SolidColorBrush x:Key="BackBrush" Color="#FFF1F2F3"/>
+    <SolidColorBrush x:Key="BackBrush" Color="{DynamicResource BackColor}"/>
     <SolidColorBrush x:Key="BasicBrush" Color="#FF009AD6"/>
 </ResourceDictionary>

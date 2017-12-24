@@ -8,10 +8,11 @@
         xmlns:grids="clr-namespace:AutumnBox.GUI.UI.Grids"
         x:Name="_MainWindow" x:Class="AutumnBox.GUI.MainWindow"
         mc:Ignorable="d"
-        Background="{DynamicResource BasicBrush}" Title="AutumnBox" Height="682.667" Width="1155" Foreground="#FF1B1919" ResizeMode="NoResize" Loaded="MainWindow_Loaded" AllowsTransparency="True" WindowStyle="None">
-    <Grid Name="GridBase" Background="{DynamicResource BackBrush}" Margin="3,0,3,3">
-        <cstm:CstmTitleBar x:Name="TitleBar" Height="24" VerticalAlignment="Top"/>
-        <Grid Name="GridMain" Background="#00E5E5E5" Margin="0,40,0,0" Height="653" VerticalAlignment="Top">
+        Background="{DynamicResource BackBrush}" Title="AutumnBox" Height="682.667" Width="1155" Foreground="#FF1B1919" ResizeMode="NoResize" Loaded="MainWindow_Loaded" AllowsTransparency="True" WindowStyle="None">
+    <Grid Name="GridBase" Margin="3,0,3,3">
+        <cstm:CstmTitleBar x:Name="TitleBar" Height="35" VerticalAlignment="Top"/>
+        <Label Content="Label" HorizontalAlignment="Left" Margin="-1,41,0,0" VerticalAlignment="Top" Height="1" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" Foreground="{x:Null}" Width="1149"/>
+        <Grid Name="GridMain" Background="#00E5E5E5" Margin="0,42,0,-13" Height="651" VerticalAlignment="Top">
             <grids:RebootBtnPanel x:Name="RebootGrid" Margin="0,12,23,0" HorizontalAlignment="Right" Width="265" VerticalAlignment="Top" Height="126" BorderBrush="{DynamicResource BorderBrush}"/>
             <grids:DeviceInfoPanel x:Name="DevInfoPanel" Margin="10,0,0,0" Height="222" VerticalAlignment="Top" HorizontalAlignment="Left" Width="650"/>
             <Button Foreground="{DynamicResource ForgBrush}" x:Name="buttonStartShell"  Content="{DynamicResource btnADBCMD}" Margin="861,170,23,0" VerticalAlignment="Top" Height="52" Background="{x:Null}" BorderBrush="{DynamicResource BorderBrush}" FontSize="14" FontFamily="Microsoft YaHei UI Light" Click="ButtonStartShell_Click" />
@@ -29,7 +30,7 @@
                     <grids:FastbootFuncPanel x:Name="FastbootFuncs"></grids:FastbootFuncPanel>
                 </TabItem>
             </TabControl>
-            <Label Background="{DynamicResource BasicBrush}" Content="" Margin="0,12,299,0" HorizontalAlignment="Right" Width="1" Height="213" VerticalAlignment="Top"/>
+            <Label Background="{DynamicResource {x:Static SystemColors.DesktopBrushKey}}" Content="" Margin="0,7,299,0" HorizontalAlignment="Right" Width="1" Height="218" VerticalAlignment="Top"/>
             <TextBox Foreground="{DynamicResource ForgBrush}" x:Name="textBoxGG" Height="88" Margin="939,255,10,0" TextWrapping="Wrap" Text="..." VerticalAlignment="Top" IsReadOnly="True" Background="{x:Null}" FontSize="14"/>
             <ListBox x:Name="DevicesListBox" DisplayMemberPath="Serial" Height="191" Margin="0,31,311,0" VerticalAlignment="Top" SelectionChanged="DevicesListBox_SelectionChanged" Background="#00000000" Foreground="{DynamicResource BasicBrush}" BorderBrush="#FFABADB3" HorizontalAlignment="Right" Width="179"/>
             <Label Content="{DynamicResource Devices}" Foreground="{DynamicResource ForgBrush}" Margin="0,0,311,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" HorizontalAlignment="Right" Width="179"/>
@@ -37,5 +38,6 @@
             <TextBlock x:Name="TBLinkHelpLink" HorizontalAlignment="Left" Margin="939,377,0,0" TextWrapping="Wrap" Text="{DynamicResource LinkHelp}" VerticalAlignment="Top" TextDecorations="Underline" Foreground="{DynamicResource BasicBrush}" FontSize="16" MouseDown="TBLinkHelpLink_MouseDown"/>
             <TextBlock x:Name="TBDonate" HorizontalAlignment="Left" Margin="970,522,0,0" TextWrapping="Wrap" Text="{DynamicResource Donate}" VerticalAlignment="Top" TextDecorations="Underline" Foreground="{DynamicResource BasicBrush}" FontSize="16" MouseDown="TBDonate_MouseDown"/>
         </Grid>
+
     </Grid>
 </Window>

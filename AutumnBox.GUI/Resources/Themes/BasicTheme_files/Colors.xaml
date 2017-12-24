@@ -2,9 +2,9 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:s="clr-namespace:System;assembly=mscorlib">
     <Color x:Key="BtnBackColor">#00000000</Color>
-    <Color x:Key="FontColor">#FF000000</Color>
+    <Color x:Key="FontColor">#FFc8c8c8</Color>
     <Color x:Key="BasicColor">#FF009AD6</Color>
-    <Color x:Key="BackColor">#FFF1F2F3</Color>
+    <Color x:Key="BackColor">#FF535353</Color>
     <Color x:Key="MouseOnBtnColor">#50009AD6</Color>
     <Color x:Key="MouseLevelBtnColor">#00000000</Color>
 </ResourceDictionary>
