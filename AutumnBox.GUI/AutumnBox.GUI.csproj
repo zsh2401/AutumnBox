@@ -186,6 +186,7 @@
     <Compile Include="Cfg\ConfigDataLayout.cs" />
     <Compile Include="UI\IAsyncRefreshable.cs" />
     <Compile Include="Util\AutoGC.cs" />
+    <Compile Include="Util\FieldsFinder.cs" />
     <Compile Include="Util\MachineInfo.cs" />
     <Compile Include="Windows\ApkInstallingWindow.xaml.cs">
       <DependentUpon>ApkInstallingWindow.xaml</DependentUpon>

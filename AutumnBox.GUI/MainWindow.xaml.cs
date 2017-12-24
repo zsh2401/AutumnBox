@@ -35,6 +35,7 @@ using System.Windows.Media;
 using System.Collections;
 using System.Collections.Generic;
 using AutumnBox.Basic.Util;
+using AutumnBox.GUI.Util;
 
 namespace AutumnBox.GUI
 {
@@ -124,13 +125,16 @@ namespace AutumnBox.GUI
         /// <param name="e"></param>
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
+
+            //refreshables = new FieldsFinder<MainWindow,IRefreshable>().FindFrom(this).ToList();
+
             refreshables = new List<IRefreshable>
             {
                 this.RebootGrid,
                 this.DevInfoPanel,
-                //this.FastbootFuncs,
-                //this.RecoveryFuncs,
-                //this.PoweronFuncs
+                this.FastbootFuncs,
+                this.RecoveryFuncs,
+                this.PoweronFuncs
             };
 #if ENABLE_BLUR
             UIHelper.SetOwnerTransparency(Config.BackgroundA);
@@ -173,9 +177,7 @@ namespace AutumnBox.GUI
         }
         public void Refresh()
         {
-            refreshables.ForEach((ctrl)=> {
-                ctrl.Refresh(App.CurrentDeviceConnection.DevInfo);
-            });
+            refreshables.ForEach((ctrl)=> { ctrl.Refresh(App.CurrentDeviceConnection.DevInfo); });
         }
         /// <summary>
         /// 当设备选择列表的被选项变化时发生
