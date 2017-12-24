@@ -4,8 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AutumnBox.GUI.UI.Grids"
-             mc:Ignorable="d" Width="579.5" Height="358" Background="{DynamicResource BasicBrush}" Loaded="UserControl_Loaded">
+             mc:Ignorable="d" Width="579.5" Height="358" Background="{DynamicResource BackBrush}" Loaded="UserControl_Loaded">
     <Grid x:Name="GridContent">
-        <Label Content="{DynamicResource btnClose}" VerticalAlignment="Top" Background="{DynamicResource BasicBrush}" FontSize="20" FontFamily="Microsoft YaHei UI Light" Foreground="White" HorizontalAlignment="Right" Width="54" MouseDown="Label_MouseDown"/>
+        <Button Content="{DynamicResource btnClose}" VerticalAlignment="Top" Background="{x:Null}" Foreground="{DynamicResource ForgBrush}" Height="34" FontFamily="Microsoft YaHei UI Light" Click="Button_Click" HorizontalAlignment="Right" Width="108"/>
     </Grid>
 </UserControl>

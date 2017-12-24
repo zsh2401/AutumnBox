@@ -128,9 +128,9 @@ namespace AutumnBox.GUI
             {
                 this.RebootGrid,
                 this.DevInfoPanel,
-                this.FastbootFuncs,
-                this.RecoveryFuncs,
-                this.PoweronFuncs
+                //this.FastbootFuncs,
+                //this.RecoveryFuncs,
+                //this.PoweronFuncs
             };
 #if ENABLE_BLUR
             UIHelper.SetOwnerTransparency(Config.BackgroundA);
@@ -219,7 +219,7 @@ namespace AutumnBox.GUI
 
         private void TextBlock_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            Process.Start(Urls.HELP_PAGE);
+           
         }
 
         private void TBLinkHelpLink_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
@@ -240,6 +240,11 @@ namespace AutumnBox.GUI
         private void BtnSettings_Click(object sender, RoutedEventArgs e)
         {
             new FastGrid(this.GridMain, new Settings());
+        }
+
+        private void BtnHelp_Click(object sender, RoutedEventArgs e)
+        {
+            Process.Start(Urls.HELP_PAGE);
         }
     }
 }

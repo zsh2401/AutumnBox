@@ -62,7 +62,7 @@ namespace AutumnBox.GUI.UI.CstPanels
             BeginAnimation(MarginProperty, riseAnimation);
         }
 
-        private void Label_MouseDown(object sender, MouseButtonEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
             BeginAnimation(MarginProperty, hideAnimation);
         }
