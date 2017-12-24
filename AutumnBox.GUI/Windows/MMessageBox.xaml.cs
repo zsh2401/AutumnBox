@@ -28,15 +28,35 @@ namespace AutumnBox.GUI.Windows
     public partial class MMessageBox : Window
     {
         public MMessageBoxData Data { get; set; }
-        public MMessageBox(Window owner)
+        public MMessageBox(Window owner = null)
         {
             InitializeComponent();
-            Owner = owner;
+            if (owner != null)
+                Owner = owner;
+            else
+                WindowStartupLocation = WindowStartupLocation.CenterScreen;
+        }
+        public void ShowDialog(string title, string message)
+        {
+            LabelTitle.Content = title;
+            TBText.Text = message;
+            base.ShowDialog();
         }
         public new void ShowDialog()
         {
-            LabelTitle.Content = UIHelper.GetString(Data.KeyTitle ?? "msgNotice");
-            TBText.Text = UIHelper.GetString(Data.KeyText ?? "WTF?");
+            try
+            {
+                LabelTitle.Content = UIHelper.GetString(Data.KeyTitle ?? "msgNotice");
+            }
+            catch
+            {
+                LabelTitle.Content = Data.KeyTitle;
+            }
+            try { TBText.Text = UIHelper.GetString(Data.KeyText ?? "WTF?"); }
+            catch
+            {
+                TBText.Text = Data.KeyText;
+            }
             base.ShowDialog();
         }
     }

@@ -83,17 +83,19 @@ namespace AutumnBox.GUI
                            UIHelper.GetString("msgStartAdbServerFailLine2") + Environment.NewLine +
                            UIHelper.GetString("msgStartAdbServerFailLine3") + Environment.NewLine +
                            UIHelper.GetString("msgStartAdbServerFailLine4"),
-                        "btnIHaveCloseOtherPhoneHelper",
-                        "btnExit"
+                        "btnExit",
+                        "btnIHaveCloseOtherPhoneHelper"
                         ).ToBool();
                 });
-                if (_continue)
+                if (!_continue)
                 {
-                    Thread.Sleep(12 * 1000);
-                    AdbHelper.StartServer();
-                    App.StaticProperty.DevicesListener.Begin();
+                    SystemHelper.AppExit(1);
                 }
-                else SystemHelper.AppExit(1);
+                Task.Run(()=> {
+                    Thread.Sleep(3000);
+                    App.Current.Dispatcher.Invoke(App.StaticProperty.DevicesListener.Begin);
+                });
+                
             };
 #if DEBUG
             TitleBar.Title.Content += "  " + SystemHelper.CurrentVersion + "-Debug";
@@ -219,21 +221,6 @@ namespace AutumnBox.GUI
             Process.Start(info);
         }
 
-        private void TextBlock_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-           
-        }
-
-        private void TBLinkHelpLink_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-            new LinkHelpWindow().Show();
-        }
-
-        private void TBDonate_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-            new FastGrid(this.GridMain, new Donate());
-        }
-
         private void BtnAbout_Click(object sender, RoutedEventArgs e)
         {
             new FastGrid(this.GridMain, new About());
@@ -244,9 +231,19 @@ namespace AutumnBox.GUI
             new FastGrid(this.GridMain, new Settings());
         }
 
-        private void BtnHelp_Click(object sender, RoutedEventArgs e)
+        private void TBHelp_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             Process.Start(Urls.HELP_PAGE);
+        }
+
+        private void BtnDonate_Click(object sender, RoutedEventArgs e)
+        {
+            new FastGrid(this.GridMain, new Donate());
+        }
+
+        private void BtnLinkHelp_Click(object sender, RoutedEventArgs e)
+        {
+            new LinkHelpWindow().Show();
         }
     }
 }

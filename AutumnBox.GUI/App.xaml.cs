@@ -14,6 +14,7 @@
 using AutumnBox.Basic.Connection;
 using AutumnBox.Basic.Devices;
 using AutumnBox.GUI.Helper;
+using AutumnBox.GUI.Windows;
 using AutumnBox.Support.CstmDebug;
 using System;
 using System.Diagnostics;
@@ -31,17 +32,17 @@ namespace AutumnBox.GUI
     {
         internal class StaticProperty
         {
-            internal static DeviceConnection DeviceConnection { get; private set; } 
-            internal static DevicesMonitor DevicesListener { get; private set; } 
-            static StaticProperty() {
+            internal static DeviceConnection DeviceConnection { get; private set; }
+            internal static DevicesMonitor DevicesListener { get; private set; }
+            static StaticProperty()
+            {
                 Debug.WriteLine("first?");
-                DeviceConnection = new DeviceConnection(); 
+                DeviceConnection = new DeviceConnection();
                 DevicesListener = new DevicesMonitor();//设备监听器
             }
         }
         static App()
         {
-            Debug.WriteLine("first!");
             AppDomain.CurrentDomain.AssemblyResolve += (s, args) =>
             {
                 string resName = "AutumnBox.GUI.Resources.lib." + args.Name.Split(',')[0] + ".dll";
@@ -55,12 +56,10 @@ namespace AutumnBox.GUI
         }
         protected override void OnStartup(StartupEventArgs e)
         {
-            Debug.WriteLine("first!");
             if (SystemHelper.HaveOtherAutumnBoxProcess)
             {
                 Logger.T("have other autumnbox show MMessageBox and exit(1)");
-                base.OnStartup(e);
-                BoxHelper.ShowMessageDialog("警告/Warning", "不可以同时打开两个AutumnBox\nDo not run two AutumnBox at once");
+                MessageBox.Show("不可以同时打开两个AutumnBox\nDo not run two AutumnBox at once", "警告/Warning");
                 SystemHelper.AppExit(1);
             }
             try { SystemHelper.AutoGC.Start(); }

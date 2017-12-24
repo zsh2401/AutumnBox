@@ -4,7 +4,7 @@
   <description asmv2:iconFile="title_icon.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="AutumnBox" version="0.21.11.3388" language="neutral" processorArchitecture="msil" />
+    <assemblyIdentity name="AutumnBox" version="0.21.11.4834" language="neutral" processorArchitecture="msil" />
     <commandLine file="AutumnBox.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AutumnBox.exe" size="3200512">
-      <assemblyIdentity name="AutumnBox" version="0.21.11.3388" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AutumnBox.exe" size="3201536">
+      <assemblyIdentity name="AutumnBox" version="0.21.11.4834" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>PnqrNvy6gAJLOnc3piiT3q8/OyFw/NdUAVcbdbtaYgo=</dsig:DigestValue>
+        <dsig:DigestValue>4KWhglfEoja0P5e8Rw1w7kuMz1pQX3/587atpHLMKkI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -61,7 +61,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>WR61lzhFI7ZGFRIcLQ5PqFZs8pffKlcAM5DyS6GFaaU=</dsig:DigestValue>
+        <dsig:DigestValue>s92dOlpPRzhw7l+dJa4YJiXmJesDlZiGwyk2DPX4xII=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -73,7 +73,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>bVafRwjtUlB/SuXdNagysqFe4ZFZge/Mga/LCS1baS0=</dsig:DigestValue>
+        <dsig:DigestValue>4+d37TDVQAoaaD0xWmVWT99kJfb7iIM3uX0dLhS05As=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -85,7 +85,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>DbOSLZy7K1k2cgICPDDLvVozJx3nPcFLecK+ubEDMvQ=</dsig:DigestValue>
+        <dsig:DigestValue>Y1WdDvLEzc+Bx2hA9WW4fiXZzdCI291oN2Bl2GXYRWE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -120,6 +120,15 @@
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
       <dsig:DigestValue>j79/DEvrTCLIiNuG0IfGdpl0pR/3nvo6xX+m6F3B3aI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\lib\readme.txt" size="299">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>P/AZV30CtFC2QOVUgKycGW8lHewFu9HJEU3zkEoxKS0=</dsig:DigestValue>
     </hash>
   </file>
   <file name="title_icon.ico" size="13658">

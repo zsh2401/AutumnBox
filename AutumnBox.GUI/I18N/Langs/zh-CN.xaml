@@ -29,7 +29,7 @@
     <s:String x:Key="btnIslandAct">激活Island</s:String>
     <s:String x:Key="btnAirForzenAct">激活空调狗</s:String>
     <s:String x:Key="btnShizukuManagerAct">激活AppOps/ShizukuManager</s:String>
-    <s:String x:Key="btnHelp">帮助</s:String>
+    <s:String x:Key="btnHelp">更多帮助</s:String>
     <s:String x:Key="btnContinue">继续</s:String>
     <s:String x:Key="btnSaveAndReboot">保存并重启</s:String>
     <s:String x:Key="btnDpiChange">修改DPI</s:String>
