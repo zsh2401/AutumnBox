@@ -143,12 +143,12 @@
     <!--用于结果显示窗的文字-->
 
     <!--QA-->
-    <s:String x:Key="LinkQuestion2">* 还是连不上?</s:String>
-    <s:String x:Key="LinkAnswer2">* 在手机上进入开发者模式打开USB调试</s:String>
-    <s:String x:Key="LinkAnswer3">* 邮件zsh2401@163.com QQ 1210626737</s:String>
-    <s:String x:Key="LinkQuestion3">* 更多问题?</s:String>
-    <s:String x:Key="LinkAnswer1">* 请确保您的已经在电脑上安装相应的手机驱动,比如你是小米手机,请百度搜索小米手机驱动并下载安装</s:String>
-    <s:String x:Key="LinkQuestion1">* 插上了设备但软件却检测不到?</s:String>
+    <s:String x:Key="LinkQuestion2">问: 还是连不上?</s:String>
+    <s:String x:Key="LinkAnswer2">答: 在手机上进入开发者模式打开USB调试</s:String>
+    <s:String x:Key="LinkAnswer3">答: 邮件zsh2401@163.com QQ 1210626737</s:String>
+    <s:String x:Key="LinkQuestion3">问: 更多问题?</s:String>
+    <s:String x:Key="LinkAnswer1">答:请确保您的已经在电脑上安装相应的手机驱动,比如你是小米手机,请百度搜索小米手机驱动并下载安装</s:String>
+    <s:String x:Key="LinkQuestion1">问: 插上了设备但软件却检测不到?</s:String>
     <s:String x:Key="LinkHelp">找不到设备?连接帮助在这里!</s:String>
     <!--QA-->
 

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:AutumnBox.GUI.Windows"
         xmlns:cstm="clr-namespace:AutumnBox.GUI.UI.Cstm"
         mc:Ignorable="d"
-        Title="MMessageBox" Height="260" Width="500" WindowStyle="None" WindowStartupLocation="CenterOwner" Foreground="White" ResizeMode="NoResize" Background="#FF009AD6" ShowInTaskbar="False">
+        Title="MMessageBox" Height="260" Width="500" WindowStyle="None" WindowStartupLocation="CenterOwner" Foreground="White" ResizeMode="NoResize" Background="{DynamicResource BorderBrush}" ShowInTaskbar="False">
     <Window.Resources>
         <Storyboard x:Key="ShowAnimation">
             <DoubleAnimation 
@@ -45,8 +45,8 @@
             </BeginStoryboard>
         </EventTrigger>
     </Window.Triggers>
-    <Grid  Margin="3,0,3,3" Background="{DynamicResource BackBrush}">
-        <cstm:CstmTitleBar x:Name="TitleBar" Height="40" VerticalAlignment="Top"/>
+    <Grid  Margin="3,3,3,3" Background="{DynamicResource BackBrush}">
+        <cstm:CstmTitleBar x:Name="TitleBar" Height="40" VerticalAlignment="Top" HorizontalAlignment="Right" Width="494"/>
         <Label x:Name="LabelTitle" Content="Title" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Microsoft YaHei UI Light" FontSize="20" Background="{x:Null}" Height="53" VerticalAlignment="Top" Margin="0,40,0,0"/>
         <TextBlock x:Name="TBText" TextAlignment="Center" Margin="10,98,10,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="152" FontFamily="Microsoft YaHei UI Light" FontSize="18" Foreground="Black"/>
     </Grid>
