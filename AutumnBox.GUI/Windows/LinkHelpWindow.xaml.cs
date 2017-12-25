@@ -12,7 +12,6 @@
 *
 \* =============================================================================*/
 using AutumnBox.GUI.Helper;
-using AutumnBox.GUI.Resources.DynamicIcons;
 using System.Windows;
 using System.Windows.Input;
 
@@ -27,15 +26,6 @@ namespace AutumnBox.GUI.Windows
         {
             this.Owner = App.Current.MainWindow;
             InitializeComponent();
-        }
-        private void imageClose_MouseEnter(object sender, MouseEventArgs e)
-        {
-            this.imageClose.Source = UIHelper.BitmapToBitmapImage(DynamicIcons.close_selected);
-        }
-
-        private void imageClose_MouseLeave(object sender, MouseEventArgs e)
-        {
-            this.imageClose.Source = UIHelper.BitmapToBitmapImage(DynamicIcons.close_normal);
         }
 
         private void labelTitle_MouseMove(object sender, MouseEventArgs e)

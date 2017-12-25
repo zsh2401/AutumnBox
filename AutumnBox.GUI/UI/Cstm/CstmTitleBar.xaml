@@ -7,7 +7,7 @@
     <Grid>
         <Image HorizontalAlignment="Left" Margin="4,1,0,5" Width="32" Source="/AutumnBox;component/title_icon.ico" RenderTransformOrigin="0.579,-1.368"/>
         <Label Name="Title" Content="{DynamicResource AppName}" Foreground="{DynamicResource ForgBrush}" Margin="41,0,94,0" FontFamily="Microsoft YaHei Light" FontSize="15" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Background="{x:Null}"/>
-        <Image Name="ImgClose" Margin="0,1,9,1" Source="/AutumnBox;component/Resources/DynamicIcons/close_normal.png" MouseEnter="ImgClose_MouseEnter" MouseLeave="ImgClose_MouseLeave" MouseDown="ImgClose_MouseDown" HorizontalAlignment="Right" Width="25"/>
-        <Image Name="ImgMin" Margin="0,1,45,2" Source="/AutumnBox;component/Resources/DynamicIcons/min_normal.png" MouseEnter="ImgMin_MouseEnter" MouseLeave="ImgMin_MouseLeave" MouseDown="ImgMin_MouseDown" HorizontalAlignment="Right" Width="24" Stretch="Fill" Visibility="Hidden"/>
+        <Image Name="ImgClose" Margin="0,1,9,1" Source="/AutumnBox;component/Resources/Images/Btn/close_normal.png" MouseEnter="ImgClose_MouseEnter" MouseLeave="ImgClose_MouseLeave" MouseDown="ImgClose_MouseDown" HorizontalAlignment="Right" Width="25"/>
+        <Image Name="ImgMin" Margin="0,1,45,2" Source="/AutumnBox;component/Resources/Images/Btn/min_normal.png" MouseEnter="ImgMin_MouseEnter" MouseLeave="ImgMin_MouseLeave" MouseDown="ImgMin_MouseDown" HorizontalAlignment="Right" Width="24" Stretch="Fill" Visibility="Hidden"/>
     </Grid>
 </UserControl>

@@ -1,5 +1,5 @@
 ﻿using AutumnBox.GUI.Helper;
-using AutumnBox.GUI.Resources.DynamicIcons;
+using AutumnBox.GUI.Resources.Images;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -38,16 +38,16 @@ namespace AutumnBox.GUI.UI.Cstm
             return FindParentWindow(parent);
         }
         private void ImgClose_MouseEnter(object sender, MouseEventArgs e) =>
-            ImgClose.Source = UIHelper.BitmapToBitmapImage(DynamicIcons.close_selected);
+            ImgClose.Source = ImageGetter.Get("Btn/close_selected.png");
 
         private void ImgClose_MouseLeave(object sender, MouseEventArgs e) =>
-            ImgClose.Source = UIHelper.BitmapToBitmapImage(DynamicIcons.close_normal);
+            ImgClose.Source = ImageGetter.Get("Btn/close_normal.png");
 
         private void ImgMin_MouseEnter(object sender, MouseEventArgs e) =>
-            ImgMin.Source = UIHelper.BitmapToBitmapImage(DynamicIcons.min_selected);
+            ImgMin.Source = ImageGetter.Get("Btn/min_selected.png");
 
         private void ImgMin_MouseLeave(object sender, MouseEventArgs e) =>
-            ImgMin.Source = UIHelper.BitmapToBitmapImage(DynamicIcons.min_normal);
+            ImgMin.Source = ImageGetter.Get("Btn/min_normal.png");
 
         private void ImgClose_MouseDown(object sender, MouseButtonEventArgs e) =>
             _ownerWindow.Close();

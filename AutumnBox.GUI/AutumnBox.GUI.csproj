@@ -138,12 +138,14 @@
     <Compile Include="NetUtil\MOTDGetter.cs" />
     <Compile Include="NetUtil\RemoteDataGetter.cs" />
     <Compile Include="NetUtil\UpdateChecker.cs" />
-    <Compile Include="Resources\DynamicIcons\DynamicIcons.Designer.cs">
-      <DependentUpon>DynamicIcons.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
+    <Compile Include="Resources\Images\DevStatus\DevStatusBitmapGetter.cs" />
+    <Resource Include="Resources\Images\DevStatus\rec.png" />
+    <Resource Include="Resources\Images\DevStatus\no_dev.png" />
+    <Resource Include="Resources\Images\DevStatus\fastboot.png" />
+    <Resource Include="Resources\Images\DevStatus\poweron.png" />
+    <Resource Include="Resources\Images\refresh.png" />
     <Content Include="Resources\lib\readme.txt" />
+    <Compile Include="Resources\Images\ImageGetter.cs" />
     <Compile Include="UI\Cstm\BookMarksControl.xaml.cs">
       <DependentUpon>BookMarksControl.xaml</DependentUpon>
     </Compile>
@@ -417,88 +419,34 @@
     <Resource Include="Resources\Images\baidupan.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\devinfo_refresh.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Images\donate.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\Images\github.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Images\jkr.gif" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\loading.gif" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\main_bg.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\Images\misakasister.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Images\root.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\wechatpay.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Icons\about.png" />
+    <Resource Include="Resources\Images\Icons\donate.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Icons\about_white.png" />
+    <Resource Include="Resources\Images\Icons\title_icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Icons\contact.png" />
+    <Resource Include="Resources\Images\Btn\close_normal.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Icons\donate.png" />
+    <Resource Include="Resources\Images\Btn\close_selected.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Icons\leaves.ico" />
+    <Resource Include="Resources\Images\Btn\min_normal.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Icons\refresh.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Icons\title_icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\DynamicIcons\android_robot.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\DynamicIcons\close_normal.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\DynamicIcons\close_selected.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\DynamicIcons\DynamicIcons.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>DynamicIcons.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\DynamicIcons\fastboot.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\DynamicIcons\min_normal.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\DynamicIcons\min_selected.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\DynamicIcons\no_selected.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\DynamicIcons\poweron.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\DynamicIcons\recovery.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Images\close.png" />
+    <Resource Include="Resources\Images\Btn\min_selected.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AutumnBox.Basic.Flows\AutumnBox.Basic.Flows.csproj">
@@ -523,6 +471,7 @@
     <EmbeddedResource Include="Resources\lib\AutumnBox.Basic.Flows.dll" />
     <EmbeddedResource Include="Resources\lib\AutumnBox.Support.dll" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>echo "delete fuck file"

@@ -31,7 +31,7 @@
                 </TransformGroup>
             </TextBlock.RenderTransform>
         </TextBlock>
-        <Image Source="/AutumnBox;component/Resources/Icons/donate.png" HorizontalAlignment="Left" Height="28" Margin="426,337,0,0" VerticalAlignment="Top" Width="31"/>
+        <Image Source="/AutumnBox;component/Resources/Images/Icons/donate.png" HorizontalAlignment="Left" Height="28" Margin="426,337,0,0" VerticalAlignment="Top" Width="31"/>
         <Image Source="/AutumnBox;component/Resources/Images/github.png" HorizontalAlignment="Left" Height="28" Margin="617,303,0,0" VerticalAlignment="Top" Width="31"/>
         <Label Foreground="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" x:Name="LabelVersion" Content="*.*.*.*-*" HorizontalAlignment="Left" Margin="240,208,0,0" VerticalAlignment="Top" Width="181" FontFamily="Microsoft YaHei UI Light"/>
         <Label Foreground="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" x:Name="LabelCompiledDate" Content="00-00-0000" HorizontalAlignment="Left" Margin="426,208,0,0" VerticalAlignment="Top" Width="150" FontFamily="Microsoft YaHei UI Light"/>

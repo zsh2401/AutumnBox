@@ -37,10 +37,11 @@ Bin/*
 ##dirs
 .vs/
 obj/
+out/
 packages/
 ##donot
 !AutumnBox.GUI/Resources/lib/readme.txt
 !AutumnBox.Basic/Adb/*.exe
 !AutumnBox.Basic/Adb/*.dll
 !lib/*.dll
-!out/google/platform-tools/**/*.*
+!out/google/**/*.*
