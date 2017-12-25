@@ -1,0 +1,5 @@
+﻿12-25-2017
+这个文件是为了保证lib文件夹被git包含而建立的.
+在AutumnBox.GUI开始编译前,其它的依赖库生成的dll文件将会被复制到lib文件夹.
+之后AutumnBox.GUI编译时,会把这些dll嵌入进exe
+当AutumnBox.GUI执行时,这些dll将会被从exe内加载

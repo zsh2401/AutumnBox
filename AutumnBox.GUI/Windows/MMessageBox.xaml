@@ -1,0 +1,53 @@
+﻿<Window x:Name="MWindow" x:Class="AutumnBox.GUI.Windows.MMessageBox"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AutumnBox.GUI.Windows"
+        xmlns:cstm="clr-namespace:AutumnBox.GUI.UI.Cstm"
+        mc:Ignorable="d"
+        Title="MMessageBox" Height="260" Width="500" WindowStyle="None" WindowStartupLocation="CenterOwner" Foreground="White" ResizeMode="NoResize" Background="{DynamicResource BorderBrush}" ShowInTaskbar="False">
+    <Window.Resources>
+        <Storyboard x:Key="ShowAnimation">
+            <DoubleAnimation 
+                To="0" Duration="0:0:0.0"
+                Storyboard.TargetName="MWindow"
+                Storyboard.TargetProperty="Height" BeginTime="0:0:0.0">
+            </DoubleAnimation>
+            <DoubleAnimation 
+                From="0" To="500" Duration="0:0:0.3"
+                Storyboard.TargetName="MWindow"
+                Storyboard.TargetProperty="Width" BeginTime="0:0:0.0">
+            </DoubleAnimation>
+            <DoubleAnimation 
+                From="0" To="320" Duration="0:0:0.3"
+                Storyboard.TargetName="MWindow"
+                Storyboard.TargetProperty="Height" BeginTime="0:0:0.3">
+            </DoubleAnimation>
+        </Storyboard>
+        <Storyboard x:Key="CloseAnimation">
+            <DoubleAnimation 
+                To="1" Duration="0:0:0.3"
+                Storyboard.TargetName="MWindow"
+                Storyboard.TargetProperty="Width" BeginTime="0:0:0.0">
+            </DoubleAnimation>
+            <DoubleAnimation 
+                  To="1" Duration="0:0:0.3"
+                Storyboard.TargetName="MWindow"
+                Storyboard.TargetProperty="Height" BeginTime="0:0:0.3">
+            </DoubleAnimation>
+        </Storyboard>
+    </Window.Resources>
+    <Window.Triggers>
+        <EventTrigger SourceName="MWindow" RoutedEvent="Window.Loaded">
+            <BeginStoryboard Name="showAnimation" 
+                      Storyboard="{StaticResource ShowAnimation}">
+            </BeginStoryboard>
+        </EventTrigger>
+    </Window.Triggers>
+    <Grid  Margin="3,3,3,3" Background="{DynamicResource BackBrush}">
+        <cstm:CstmTitleBar x:Name="TitleBar" Height="40" VerticalAlignment="Top" HorizontalAlignment="Right" Width="494"/>
+        <Label x:Name="LabelTitle" Content="Title" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Microsoft YaHei UI Light" FontSize="20" Background="{x:Null}" Height="53" VerticalAlignment="Top" Margin="0,40,0,0"/>
+        <TextBlock x:Name="TBText" TextAlignment="Center" Margin="10,98,10,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="152" FontFamily="Microsoft YaHei UI Light" FontSize="18" Foreground="Black"/>
+    </Grid>
+</Window>
