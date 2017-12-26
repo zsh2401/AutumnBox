@@ -1,6 +1,7 @@
 ﻿using AutumnBox.GUI.Cfg;
 using AutumnBox.GUI.Helper;
 using AutumnBox.GUI.I18N;
+using AutumnBox.Support.CstmDebug;
 using System.Drawing;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -11,6 +12,7 @@ namespace AutumnBox.GUI.UI.CstPanels
     /// </summary>
     public partial class Settings : UserControl
     {
+        bool isFirstChange;
         public Settings()
         {
             InitializeComponent();
@@ -20,6 +22,7 @@ namespace AutumnBox.GUI.UI.CstPanels
             TransparencySlider.Value = Config.BackgroundA;
             CbBoxLanguage.ItemsSource = LanguageHelper.Langs;
             CbBoxLanguage.DisplayMemberPath = "LanguageName";
+            CbBoxLanguage.SelectedIndex = LanguageHelper.GetLangIndex(App.Current.Resources["LanguageName"].ToString());
         }
        
         private void Slider_ValueChanged(object sender, System.Windows.RoutedPropertyChangedEventArgs<double> e)
@@ -31,7 +34,9 @@ namespace AutumnBox.GUI.UI.CstPanels
         private void CbBoxLanguage_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             LanguageHelper.LoadLanguage((Language)CbBoxLanguage.SelectedItem);
-        }
+            Config.Lang = ((Language)CbBoxLanguage.SelectedItem).FileName;
+            Logger.D(Config.Lang);
+        } 
 
         private void BtnCreateShortcut_Click(object sender, System.Windows.RoutedEventArgs e)
         {

@@ -66,7 +66,10 @@ namespace AutumnBox.GUI.Windows
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            UIHelper.DragMove(this, e);
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                try { this.DragMove(); } catch (InvalidOperationException) { }
+            }
         }
 
         private void BtnRight_Click(object sender, RoutedEventArgs e)

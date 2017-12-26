@@ -17,24 +17,47 @@ using System.Xml;
 
 namespace AutumnBox.GUI.I18N
 {
-    public struct Language
+#pragma warning disable CS0659 // 类型重写 Object.Equals(object o)，但不重写 Object.GetHashCode()
+    public sealed class Language
+#pragma warning restore CS0659 // 类型重写 Object.Equals(object o)，但不重写 Object.GetHashCode()
     {
-        public string LanguageName { get; private set; }
+
+        private const string pathPrefix = "pack://application:,,,/AutumnBox;component/I18N/Langs/";
+        public ResourceDictionary Resources
+        {
+            get
+            {
+                if (_resources == null)
+                {
+                    Reload();
+                }
+                return _resources;
+            }
+        }
+        private ResourceDictionary _resources;
+        public string LanguageName
+        {
+            get
+            {
+                return Resources["LanguageName"].ToString();
+            }
+        }
         public string FileName { get; private set; }
-        public string FullUri { get; private set; }
         public Language(string fileName)
         {
-            FileName = fileName;
-            LanguageName = GetLangName(FileName);
-            FullUri = LanguageHelper.Prefix + fileName;
+            this.FileName = fileName;
         }
-        public ResourceDictionary GetDictionary()
+        public void Reload()
         {
-            return LanguageHelper.LoadLangFromResource(this);
+            _resources = new ResourceDictionary { Source = new Uri(pathPrefix + FileName) };
         }
-        public static string GetLangName(string fileName)
+        public override bool Equals(object obj)
         {
-            return LanguageHelper.LoadLangFromResource(fileName)["LanguageName"].ToString();
+            if (obj is Language)
+            {
+                return this.FileName == ((Language)obj).FileName;
+            }
+            return base.Equals(obj);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using AutumnBox.GUI.Helper;
 using AutumnBox.GUI.Resources.Images;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -54,8 +55,13 @@ namespace AutumnBox.GUI.UI.Cstm
         private void ImgMin_MouseDown(object sender, MouseButtonEventArgs e) =>
             _ownerWindow.WindowState = WindowState.Minimized;
 
-        private void Grid_MouseDown(object sender, MouseButtonEventArgs e) =>
-            UIHelper.DragMove(_ownerWindow, e);
+        private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                try { _ownerWindow.DragMove(); } catch (InvalidOperationException) { }
+            }
+        }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {

@@ -13,6 +13,7 @@
 \* =============================================================================*/
 using AutumnBox.Support.CstmDebug;
 using System;
+using System.Collections.Generic;
 using System.Windows;
 
 namespace AutumnBox.GUI.I18N
@@ -24,30 +25,23 @@ namespace AutumnBox.GUI.I18N
     public static class LanguageHelper
     {
         public static event EventHandler LanguageChanged;
-        public static readonly Language[] Langs;
-        public static readonly string Prefix = "pack://application:,,,/AutumnBox.GUI;component/I18N/Langs/";
+        public static readonly List<Language> Langs;
+        public static readonly string Prefix = "pack://application:,,,/AutumnBox;component/I18N/Langs/";
         static LanguageHelper()
         {
-            //Langs = new Language[]{
-            //    new Language("zh-CN.xaml"),
-            //    new Language("en-US.xaml")
-            //};
+            Langs = new List<Language>(){
+                new Language("zh-CN.xaml"),
+                new Language("en-US.xaml")
+            };
+        }
+        public static int GetLangIndex(string langName)
+        {
+            return Langs.FindIndex((lang) => { return lang.LanguageName == langName; });
         }
         public static void LoadLanguage(Language lang)
         {
-            App.Current.Resources.MergedDictionaries[0] = LoadLangFromResource(lang);
+            App.Current.Resources.MergedDictionaries[0] = lang.Resources;
             LanguageChanged?.Invoke(new object(), new EventArgs());
-        }
-        public static ResourceDictionary LoadLangFromResource(Language lang)
-        {
-            Logger.D( lang.FileName);
-            return LoadLangFromResource(lang.FileName);
-        }
-        public static ResourceDictionary LoadLangFromResource(string fileName)
-        {
-            Logger.D( fileName);
-            var lang = new ResourceDictionary { Source = new Uri(Prefix + fileName) };
-            return lang;
         }
     }
 }

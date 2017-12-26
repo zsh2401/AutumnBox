@@ -189,7 +189,6 @@
     <Compile Include="Cfg\ConfigDataLayout.cs" />
     <Compile Include="UI\IAsyncRefreshable.cs" />
     <Compile Include="Util\AutoGC.cs" />
-    <Compile Include="Util\FieldsFinder.cs" />
     <Compile Include="Util\MachineInfo.cs" />
     <Compile Include="Windows\ApkInstallingWindow.xaml.cs">
       <DependentUpon>ApkInstallingWindow.xaml</DependentUpon>
@@ -469,7 +468,6 @@
   <ItemGroup>
     <EmbeddedResource Include="Resources\lib\AutumnBox.Basic.dll" />
     <EmbeddedResource Include="Resources\lib\AutumnBox.Basic.Flows.dll" />
-    <EmbeddedResource Include="Resources\lib\AutumnBox.Support.dll" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

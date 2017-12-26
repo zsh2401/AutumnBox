@@ -1,5 +1,6 @@
 ﻿using AutumnBox.Basic.Function;
 using AutumnBox.GUI.Helper;
+using System;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -58,7 +59,10 @@ namespace AutumnBox.GUI.Windows
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            UIHelper.DragMove(this, e);
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                try { this.DragMove(); } catch (InvalidOperationException) { }
+            }
         }
 
         private void ButtonClose_Click(object sender, RoutedEventArgs e)

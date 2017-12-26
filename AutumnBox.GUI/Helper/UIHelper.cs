@@ -11,18 +11,8 @@
 * Company: I am free man
 *
 \* =============================================================================*/
-using AutumnBox.Basic.FlowFramework;
-using AutumnBox.Basic.Function;
-using AutumnBox.GUI.Cfg;
-using AutumnBox.GUI.UI.Grids;
-using AutumnBox.GUI.Windows;
-using AutumnBox.Support.CstmDebug;
-using System;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
@@ -124,30 +114,6 @@ namespace AutumnBox.GUI.Helper
                 bitmapImage.Freeze();
             }
             return bitmapImage;
-        }
-        /// <summary>
-        /// DragMove
-        /// </summary>
-        /// <param name="m"></param>
-        /// <param name="e"></param>
-        public static void DragMove(Window m, MouseButtonEventArgs e)
-        {
-            if (e.LeftButton == MouseButtonState.Pressed)
-            {
-                try { m.DragMove(); } catch (InvalidOperationException) { }
-            }
-        }
-        /// <summary>
-        /// DragMove
-        /// </summary>
-        /// <param name="m"></param>
-        /// <param name="e"></param>
-        public static void DragMove(Window m, MouseEventArgs e)
-        {
-            if (e.LeftButton == MouseButtonState.Pressed)
-            {
-                m.DragMove();
-            }
         }
     }
 }

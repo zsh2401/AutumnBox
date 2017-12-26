@@ -14,6 +14,7 @@
 using AutumnBox.Basic.FlowFramework;
 using AutumnBox.Basic.Function;
 using AutumnBox.GUI.Helper;
+using System;
 using System.Windows;
 using System.Windows.Input;
 
@@ -53,7 +54,10 @@ namespace AutumnBox.GUI.Windows
         }
         private void Grid_MouseMove(object sender, MouseEventArgs e)
         {
-            UIHelper.DragMove(this, e);
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                try { this.DragMove(); } catch (InvalidOperationException) { }
+            }
         }
     }
 }

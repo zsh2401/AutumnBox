@@ -1,5 +1,6 @@
 ﻿using AutumnBox.Basic.FlowFramework;
 using AutumnBox.GUI.Helper;
+using System;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
@@ -61,7 +62,10 @@ namespace AutumnBox.GUI.Windows
         }
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            UIHelper.DragMove(this, e);
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                try { this.DragMove(); } catch (InvalidOperationException) { }
+            }
         }
 
         private void ButtonCopy_Click(object sender, RoutedEventArgs e)
