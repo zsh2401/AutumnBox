@@ -12,10 +12,11 @@
 *
 \* =============================================================================*/
 using AutumnBox.Support.CstmDebug;
-using AutumnBox.Support.Helper;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.IO;
+using System.Text;
+
 namespace AutumnBox.GUI.NetUtil
 {
     [JsonObject(MemberSerialization.OptOut)]
@@ -42,7 +43,9 @@ namespace AutumnBox.GUI.NetUtil
 
         public override MOTDResult NetMethod()
         {
-            JObject o = JObject.Parse(NetHelper.GetHtmlCode(Urls.MOTD_API));
+            byte[] bytes = webClient.DownloadData(Urls.MOTD_API);
+            string data = Encoding.UTF8.GetString(bytes);
+            JObject o = JObject.Parse(data);
             var result = (MOTDResult)JsonConvert.DeserializeObject(o.ToString(), typeof(MOTDResult));
             Logger.D("MOTD Get from net success!" + result.Header + " " + result.Message);
             return result;

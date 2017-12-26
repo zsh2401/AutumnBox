@@ -13,15 +13,19 @@
 \* =============================================================================*/
 //#define USE_LOCAL_API
 using AutumnBox.Support.CstmDebug;
-using AutumnBox.Support.Helper;
 using System;
-using System.Threading;
+using System.Net;
 using System.Threading.Tasks;
 namespace AutumnBox.GUI.NetUtil
 {
     [LogProperty(TAG = "Net Unit", Show = false)]
     internal abstract class RemoteDataGetter<RESULT_T> where RESULT_T : class
     {
+        protected readonly WebClient webClient;
+        public RemoteDataGetter()
+        {
+            webClient = new WebClient();
+        }
         public async void RunAsync(Action<RESULT_T> finishedHandler)
         {
             RESULT_T result = await Task.Run(() =>
@@ -40,7 +44,7 @@ namespace AutumnBox.GUI.NetUtil
 #if DEBUG && USE_LOCAL_API
                 return LocalMethod();
 #else
-            return NetMethod();
+                return NetMethod();
 #endif
             }
             catch (Exception e)

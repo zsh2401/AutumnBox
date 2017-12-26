@@ -13,11 +13,11 @@
 \* =============================================================================*/
 using AutumnBox.GUI.Cfg;
 using AutumnBox.Support.CstmDebug;
-using AutumnBox.Support.Helper;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.IO;
+using System.Text;
 
 namespace AutumnBox.GUI.NetUtil
 {
@@ -55,12 +55,12 @@ namespace AutumnBox.GUI.NetUtil
 
         public override UpdateCheckResult NetMethod()
         {
-            Logger.D("Start GET");
-            string data = NetHelper.GetHtmlCode(Urls.UPDATE_API);
-            Logger.D("Get code finish " + data);
+            Logger.D("Getting update info....");
+            byte[] bytes = webClient.DownloadData(Urls.MOTD_API);
+            string data = Encoding.UTF8.GetString(bytes);
             JObject j = JObject.Parse(data);
             var result = (UpdateCheckResult)JsonConvert.DeserializeObject(j.ToString(), typeof(UpdateCheckResult));
-            Logger.D("get from net were success!");
+            Logger.D("Geted " + data);
             return result;
         }
     }
