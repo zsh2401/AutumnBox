@@ -7,6 +7,9 @@
     <s:String x:Key="LanguageName">简体中文</s:String>
     
     <!--按钮-->
+    <s:String x:Key="btnDisableNetdebugging">关闭当前设备网络调试</s:String>
+    <s:String x:Key="btnEnableNetdebugging">开启当前设备网络调试</s:String>
+    <s:String x:Key="btnAddNetdebuggingDevice">添加网络设备</s:String>
     <s:String x:Key="btnAbout">关于</s:String>
     <s:String x:Key="btnSetting">设置</s:String>
     <s:String x:Key="rbtnFlashAll">全部清空</s:String>

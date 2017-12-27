@@ -5,14 +5,15 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AutumnBox.GUI.UI.FuncPanels"
              xmlns:CstPanels="clr-namespace:AutumnBox.GUI.UI.CstPanels" x:Class="AutumnBox.GUI.UI.FuncPanels.DevicesPanel"
-             mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300" Width="170" Height="150" MinWidth="170" MinHeight="150">
+             mc:Ignorable="d" Width="188.666" Height="232.667" MinWidth="170" MinHeight="150">
     <Grid>
-        <ListBox DisplayMemberPath="Serial" x:Name="ListBoxMain" HorizontalAlignment="Left" Width="170" Background="{x:Null}" Foreground="{DynamicResource ForgBrush}" BorderBrush="{DynamicResource BorderBrush}" Margin="0,30,0,0" SelectionChanged="ListBox_SelectionChanged"/>
-        <TextBlock HorizontalAlignment="Left" Margin="0,4,0,0" TextWrapping="Wrap" Text="{DynamicResource Devices}" VerticalAlignment="Top" FontSize="16">
+        <ListBox DisplayMemberPath="Serial" x:Name="ListBoxMain" Background="{x:Null}" Foreground="{DynamicResource ForgBrush}" BorderBrush="{DynamicResource BorderBrush}" Margin="5,30,10,65" SelectionChanged="ListBox_SelectionChanged"/>
+        <TextBlock HorizontalAlignment="Center" Margin="0,4,0,0" TextWrapping="Wrap" Text="{DynamicResource Devices}" VerticalAlignment="Top" FontSize="16" FontFamily="Microsoft YaHei UI Light">
             <TextBlock.Foreground>
                 <SolidColorBrush Color="{DynamicResource FontColor}"/>
             </TextBlock.Foreground>
         </TextBlock>
+        <Button x:Name="BtnAddNetDebuggingDevice" Content="{DynamicResource btnAddNetdebuggingDevice}" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="174" Background="{x:Null}" Height="25" Foreground="{DynamicResource ForgBrush}" FontSize="14" FontFamily="Microsoft YaHei UI Light" Margin="5,0,0,35"/>
+        <Button x:Name="BtnEnableDisableNetDebugging" Content="{DynamicResource btnEnableNetdebugging}" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="174" Background="{x:Null}" Height="25" Foreground="{DynamicResource ForgBrush}" FontSize="14" FontFamily="Microsoft YaHei UI Light" Margin="5,0,0,5"/>
     </Grid>
 </UserControl>

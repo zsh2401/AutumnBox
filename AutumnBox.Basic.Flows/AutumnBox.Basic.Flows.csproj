@@ -54,6 +54,8 @@
     <Compile Include="IceBoxActivator.cs" />
     <Compile Include="IslandActivator.cs" />
     <Compile Include="NetDebuggingOpener.cs" />
+    <Compile Include="NetDeviceAdder.cs" />
+    <Compile Include="NetDeviceRemover.cs" />
     <Compile Include="Result\AdvanceResult.cs" />
     <Compile Include="Result\FileSenderResult.cs" />
     <Compile Include="Event\Events.cs" />

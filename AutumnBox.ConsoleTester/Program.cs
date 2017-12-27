@@ -1,5 +1,6 @@
 ﻿using AutumnBox.Basic.Connection;
 using AutumnBox.Basic.Devices;
+using AutumnBox.Basic.Flows;
 using System;
 
 namespace AutumnBox.ConsoleTester
@@ -28,9 +29,9 @@ namespace AutumnBox.ConsoleTester
         };
         unsafe static void Main(string[] args)
         {
-            DeviceBuildPropGetter getter = new DeviceBuildPropGetter(mi6.Serial);
-            var dict = getter.GetFull();
-            Console.WriteLine(dict["ro.build.version.release"]);
+            var adder = new NetDeviceAdder();
+            adder.Init(new NetDeviceAdderArgs() { DevBasicInfo = mi6});
+            adder.Run();
             Console.ReadKey();
         }
         public static void WriteWithColor(Action a, ConsoleColor color = ConsoleColor.White)
