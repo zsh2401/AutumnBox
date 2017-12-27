@@ -122,6 +122,7 @@
     </PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>copy /y AutumnBox.Basic.dll ..\\AutumnBox.GUI\\Resources\\lib\\</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
 </Project>

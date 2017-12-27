@@ -55,6 +55,7 @@ namespace AutumnBox.GUI.NetUtil
 
         public override UpdateCheckResult NetMethod()
         {
+            throw new Exception();
             Logger.D("Getting update info....");
             byte[] bytes = webClient.DownloadData(Urls.MOTD_API);
             string data = Encoding.UTF8.GetString(bytes);

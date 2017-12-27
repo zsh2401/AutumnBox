@@ -127,9 +127,6 @@ namespace AutumnBox.GUI
         /// <param name="e"></param>
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-
-            //refreshables = new FieldsFinder<MainWindow,IRefreshable>().FindFrom(this).ToList();
-
             refreshables = new List<IRefreshable>
             {
                 this.RebootGrid,
@@ -173,7 +170,7 @@ namespace AutumnBox.GUI
             {
                 if (r.NeedUpdate)
                 {
-                    new UpdateNoticeWindow(r).ShowDialog();
+                    //new UpdateNoticeWindow(r).ShowDialog();
                 }
             });
         }

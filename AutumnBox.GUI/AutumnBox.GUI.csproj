@@ -90,6 +90,8 @@
     <DocumentationFile>
     </DocumentationFile>
   </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup />
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -144,7 +146,6 @@
     <Resource Include="Resources\Images\DevStatus\fastboot.png" />
     <Resource Include="Resources\Images\DevStatus\poweron.png" />
     <Resource Include="Resources\Images\refresh.png" />
-    <Content Include="Resources\lib\readme.txt" />
     <Compile Include="Resources\Images\ImageGetter.cs" />
     <Compile Include="UI\Cstm\BookMarksControl.xaml.cs">
       <DependentUpon>BookMarksControl.xaml</DependentUpon>
@@ -461,14 +462,6 @@
       <Name>AutumnBox.Support</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\lib\Newtonsoft.Json.dll" />
-    <EmbeddedResource Include="Resources\lib\WpfAnimatedGif.dll" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\lib\AutumnBox.Basic.dll" />
-    <EmbeddedResource Include="Resources\lib\AutumnBox.Basic.Flows.dll" />
-  </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
@@ -477,17 +470,14 @@ del /S *.pdb
 del /S *.ab
 del /S *.exe.config
 del /S *.json
+del /S *.xml
 del /S AutumnBox.application
-del /S Newtonsoft.Json.*
-del /S WpfAnimatedGif.*
-del /S AutumnBox.Basic.*
 del AutumnBox.ConsoleTester.exe
 rd /S /Q app.publish
 rd /S /Q logs</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PreBuildEvent>echo coping dll to lib floder
-copy /y ..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll ..\AutumnBox.GUI\Resources\lib\
-copy /y ..\packages\WpfAnimatedGif.1.4.15\lib\net\WpfAnimatedGif.dll ..\AutumnBox.GUI\Resources\lib\</PreBuildEvent>
+    <PreBuildEvent>
+    </PreBuildEvent>
   </PropertyGroup>
 </Project>

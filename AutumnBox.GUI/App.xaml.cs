@@ -43,16 +43,16 @@ namespace AutumnBox.GUI
         }
         static App()
         {
-            AppDomain.CurrentDomain.AssemblyResolve += (s, args) =>
-            {
-                string resName = "AutumnBox.GUI.Resources.lib." + args.Name.Split(',')[0] + ".dll";
-                using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(resName))
-                {
-                    byte[] assemblyData = new byte[stream.Length];
-                    stream.Read(assemblyData, 0, assemblyData.Length);
-                    return Assembly.Load(assemblyData);
-                }
-            };
+            //AppDomain.CurrentDomain.AssemblyResolve += (s, args) =>
+            //{
+            //    string resName = "AutumnBox.GUI.Resources.lib." + args.Name.Split(',')[0] + ".dll";
+            //    using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(resName))
+            //    {
+            //        byte[] assemblyData = new byte[stream.Length];
+            //        stream.Read(assemblyData, 0, assemblyData.Length);
+            //        return Assembly.Load(assemblyData);
+            //    }
+            //};
         }
         protected override void OnStartup(StartupEventArgs e)
         {
