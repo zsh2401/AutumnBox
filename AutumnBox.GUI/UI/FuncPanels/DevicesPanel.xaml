@@ -8,7 +8,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300" Width="170" Height="150" MinWidth="170" MinHeight="150">
     <Grid>
-        <ListBox HorizontalAlignment="Left" Height="92" VerticalAlignment="Top" Width="170" Background="{x:Null}" Foreground="{DynamicResource ForgBrush}" BorderBrush="{DynamicResource BorderBrush}" Margin="0,30,0,0"/>
+        <ListBox DisplayMemberPath="Serial" x:Name="ListBoxMain" HorizontalAlignment="Left" Width="170" Background="{x:Null}" Foreground="{DynamicResource ForgBrush}" BorderBrush="{DynamicResource BorderBrush}" Margin="0,30,0,0" SelectionChanged="ListBox_SelectionChanged"/>
         <TextBlock HorizontalAlignment="Left" Margin="0,4,0,0" TextWrapping="Wrap" Text="{DynamicResource Devices}" VerticalAlignment="Top" FontSize="16">
             <TextBlock.Foreground>
                 <SolidColorBrush Color="{DynamicResource FontColor}"/>

@@ -9,21 +9,23 @@ using AutumnBox.Basic.Function;
 using AutumnBox.GUI.Helper;
 using AutumnBox.GUI.Windows;
 
-namespace AutumnBox.GUI.UI.Grids
+namespace AutumnBox.GUI.UI.FuncPanels
 {
     /// <summary>
     /// FastbootFunctions.xaml 的交互逻辑
     /// </summary>
     public partial class FastbootFuncPanel : UserControl, IRefreshable
     {
+        private DeviceBasicInfo _currentDeviceInfo;
         public FastbootFuncPanel()
         {
             InitializeComponent();
         }
 
-        public void Refresh(DeviceBasicInfo deviceSimpleInfo)
+        public void Refresh(DeviceBasicInfo devInfo)
         {
-            UIHelper.SetGridButtonStatus(MainGrid, deviceSimpleInfo.Status == DeviceStatus.Fastboot);
+            _currentDeviceInfo = devInfo;
+            UIHelper.SetGridButtonStatus(MainGrid, _currentDeviceInfo.Status == DeviceStatus.Fastboot);
         }
 
         public void Reset()
@@ -40,7 +42,7 @@ namespace AutumnBox.GUI.UI.Grids
             fileDialog.Multiselect = false;
             if (fileDialog.ShowDialog() == true)
             {
-                var fmp = FunctionModuleProxy.Create<CustomRecoveryFlasher>(new FileArgs(App.StaticProperty.DeviceConnection.DevInfo) { files = new string[] { fileDialog.FileName } });
+                var fmp = FunctionModuleProxy.Create<CustomRecoveryFlasher>(new FileArgs(_currentDeviceInfo) { files = new string[] { fileDialog.FileName } });
                 fmp.Finished += ((MainWindow)App.Current.MainWindow).FuncFinish;
                 fmp.AsyncRun();
                 BoxHelper.ShowLoadingDialog(fmp);
@@ -60,7 +62,7 @@ namespace AutumnBox.GUI.UI.Grids
         {
             if (!BoxHelper.ShowChoiceDialog("Warning", "msgRelockWarning").ToBool()) return;
             if (!BoxHelper.ShowChoiceDialog("Warning", "msgRelockWarningAgain").ToBool()) return;
-            var fmp = FunctionModuleProxy.Create<XiaomiBootloaderRelocker>(new ModuleArgs(App.StaticProperty.DeviceConnection.DevInfo));
+            var fmp = FunctionModuleProxy.Create<XiaomiBootloaderRelocker>(new ModuleArgs(_currentDeviceInfo));
             fmp.Finished += ((MainWindow)App.Current.MainWindow).FuncFinish;
             fmp.AsyncRun();
             BoxHelper.ShowLoadingDialog(fmp);

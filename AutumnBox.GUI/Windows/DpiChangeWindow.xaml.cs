@@ -1,4 +1,5 @@
-﻿using AutumnBox.Basic.Devices;
+﻿using AutumnBox.Basic.Connection;
+using AutumnBox.Basic.Devices;
 using AutumnBox.Basic.Function;
 using AutumnBox.Basic.Function.Args;
 using AutumnBox.Basic.Function.Modules;
@@ -28,6 +29,7 @@ namespace AutumnBox.GUI.Windows
     public partial class DpiChangeWindow : Window
     {
         private int? _deviceDefaultDpi;
+        private readonly DeviceBasicInfo devinfo;
         FunctionModuleProxy runningFmp;
         private int _textboxInputDpi
         {
@@ -36,13 +38,14 @@ namespace AutumnBox.GUI.Windows
                 return Convert.ToInt32(TextBoxInput.Text);
             }
         }
-        public DpiChangeWindow()
+        public DpiChangeWindow(DeviceBasicInfo devinfo)
         {
             InitializeComponent();
+            this.devinfo = devinfo;
             BtnOK.IsEnabled = true;
             new Thread(() =>
             {
-                int? _deviceDefaultDpi = DeviceInfoHelper.GetDpi(App.StaticProperty.DeviceConnection.Serial);
+                int? _deviceDefaultDpi = DeviceInfoHelper.GetDpi(devinfo.Serial);
                 this.Dispatcher.Invoke(() =>
                 {
                     TextBlockCurrentDpi.Text = (_deviceDefaultDpi == null) ? UIHelper.GetString("GetFail") : _deviceDefaultDpi.ToString();
@@ -56,7 +59,7 @@ namespace AutumnBox.GUI.Windows
         {
             runningFmp =
                 FunctionModuleProxy.Create<DpiChanger>
-               (new DpiChangerArgs(App.StaticProperty.DeviceConnection.DevInfo) { Dpi = _textboxInputDpi });
+               (new DpiChangerArgs(devinfo) { Dpi = _textboxInputDpi });
             Logger.D("Dpi for input : " + _textboxInputDpi);
             runningFmp.Finished += (s, _e) =>
             {
@@ -69,13 +72,6 @@ namespace AutumnBox.GUI.Windows
             BtnOK.IsEnabled = false;
             BtnOK.Content = App.Current.Resources["OnSetting"];
             runningFmp.AsyncRun();
-        }
-
-        internal static void FastShow(Window owner = null)
-        {
-            var win = new DpiChangeWindow();
-            if (owner != null) win.Owner = owner;
-            win.ShowDialog();
         }
 
         private void TextBoxInput_PreviewTextInput(object sender, TextCompositionEventArgs e)

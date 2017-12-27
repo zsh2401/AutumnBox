@@ -9,26 +9,29 @@ using AutumnBox.Basic.Function;
 using AutumnBox.GUI.Helper;
 using AutumnBox.GUI.Windows;
 
-namespace AutumnBox.GUI.UI.Grids
+namespace AutumnBox.GUI.UI.FuncPanels
 {
     /// <summary>
     /// RecoveryFunctions.xaml 的交互逻辑
     /// </summary>
     public partial class RecFuncPanel : UserControl, IRefreshable
     {
+        private DeviceBasicInfo _currentDevInfo;
         public RecFuncPanel()
         {
             InitializeComponent();
         }
 
-        public void Refresh(DeviceBasicInfo deviceSimpleInfo)
+        public void Refresh(DeviceBasicInfo devInfo)
         {
+            this._currentDevInfo = devInfo;
             UIHelper.SetGridButtonStatus(MainGrid,
-                (deviceSimpleInfo.Status == DeviceStatus.Recovery || deviceSimpleInfo.Status == DeviceStatus.Sideload));
+                (_currentDevInfo.Status == DeviceStatus.Recovery || _currentDevInfo.Status == DeviceStatus.Sideload));
         }
 
         public void Reset()
         {
+            _currentDevInfo = new DeviceBasicInfo() { Status = DeviceStatus.None };
             UIHelper.SetGridButtonStatus(MainGrid, false);
         }
 
@@ -41,7 +44,7 @@ namespace AutumnBox.GUI.UI.Grids
             fileDialog.Multiselect = false;
             if (fileDialog.ShowDialog() == true)
             {
-                var fmp = FunctionModuleProxy.Create<FileSender>(new FileSenderArgs(App.StaticProperty.DeviceConnection.DevInfo) { FilePath = fileDialog.FileName });
+                var fmp = FunctionModuleProxy.Create<FileSender>(new FileSenderArgs(_currentDevInfo) { FilePath = fileDialog.FileName });
                 fmp.Finished += ((MainWindow)App.Current.MainWindow).FuncFinish;
                 fmp.AsyncRun();
                 new FileSendingWindow(fmp).ShowDialog();

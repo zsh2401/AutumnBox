@@ -26,8 +26,8 @@ namespace AutumnBox.Basic.Devices
     /// </summary>
     public struct DeviceBasicInfo
     {
-        public Serial Serial { get;  set; }
-        public DeviceStatus Status { get;  set; }
+        public Serial Serial { get; set; }
+        public DeviceStatus Status { get; set; }
         public static implicit operator string(DeviceBasicInfo info)
         {
             return info.Serial.ToString();

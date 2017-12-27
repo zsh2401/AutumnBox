@@ -14,7 +14,7 @@ using System.IO;
 using System.Collections.Generic;
 using AutumnBox.Support.CstmDebug;
 
-namespace AutumnBox.GUI.UI.Grids
+namespace AutumnBox.GUI.UI.FuncPanels
 {
     /// <summary>
     /// PoweronFunctions.xaml 的交互逻辑
@@ -25,9 +25,7 @@ namespace AutumnBox.GUI.UI.Grids
         {
             InitializeComponent();
         }
-
-        //public event EventHandler RefreshStart;
-        //public event EventHandler RefreshFinished;
+        private DeviceBasicInfo _currentDevInfo;
         public void Reset()
         {
             UIHelper.SetGridButtonStatus(MainGrid, false);
@@ -35,6 +33,7 @@ namespace AutumnBox.GUI.UI.Grids
 
         public void Refresh(DeviceBasicInfo deviceSimpleInfo)
         {
+            this._currentDevInfo = deviceSimpleInfo;
             bool status = deviceSimpleInfo.Status == DeviceStatus.Poweron;
             UIHelper.SetGridButtonStatus(MainGrid, status);
         }
@@ -44,7 +43,7 @@ namespace AutumnBox.GUI.UI.Grids
             /*检查是否安装了这个App*/
             bool? isInstallThisApp = await Task.Run(() =>
             {
-                return DeviceInfoHelper.IsInstalled(App.StaticProperty.DeviceConnection.Serial, BreventServiceActivator.AppPackageName);
+                return DeviceInfoHelper.IsInstalled(_currentDevInfo.Serial, BreventServiceActivator.AppPackageName);
             });
             if (isInstallThisApp == false) { BoxHelper.ShowMessageDialog("Warning", "msgPlsInstallBreventFirst"); return; }
             /*判断是否是安卓8.0操作系统*/
@@ -56,7 +55,7 @@ namespace AutumnBox.GUI.UI.Grids
             }
             catch (NullReferenceException) { }
             /*如果是安卓O,询问用户是否要在启动脚本后开启网络ADB*/
-            var args = new BreventServiceActivatorArgs() { DevBasicInfo = App.StaticProperty.DeviceConnection.DevInfo };
+            var args = new BreventServiceActivatorArgs() { DevBasicInfo = _currentDevInfo };
             if (isAndroidO)
             {
                 var result = BoxHelper.ShowChoiceDialog("msgNotice", "msgBreventFixTip", "btnDoNotOpen", "btnOpen");
@@ -88,7 +87,7 @@ namespace AutumnBox.GUI.UI.Grids
             fileDialog.Multiselect = false;
             if (fileDialog.ShowDialog() == true)
             {
-                var fmp = FunctionModuleProxy.Create<Basic.Function.Modules.FileSender>(new FileSenderArgs(App.StaticProperty.DeviceConnection.DevInfo) { FilePath = fileDialog.FileName });
+                var fmp = FunctionModuleProxy.Create<Basic.Function.Modules.FileSender>(new FileSenderArgs(_currentDevInfo) { FilePath = fileDialog.FileName });
                 fmp.Finished += ((MainWindow)App.Current.MainWindow).FuncFinish;
                 fmp.AsyncRun();
                 new FileSendingWindow(fmp).ShowDialog();
@@ -117,7 +116,7 @@ namespace AutumnBox.GUI.UI.Grids
                 }
                 var args = new ApkInstallerArgs()
                 {
-                    DevBasicInfo = App.StaticProperty.DeviceConnection.DevInfo,
+                    DevBasicInfo = _currentDevInfo,
                     Files = files,
                 };
                 installer.Init(args);
@@ -134,7 +133,7 @@ namespace AutumnBox.GUI.UI.Grids
             FolderBrowserDialog fbd = new FolderBrowserDialog();
             if (fbd.ShowDialog() == DialogResult.OK)
             {
-                var fmp = FunctionModuleProxy.Create<ScreenShoter>(new ScreenShoterArgs(App.StaticProperty.DeviceConnection.DevInfo) { LocalPath = fbd.SelectedPath });
+                var fmp = FunctionModuleProxy.Create<ScreenShoter>(new ScreenShoterArgs(_currentDevInfo) { LocalPath = fbd.SelectedPath });
                 fmp.Finished += ((MainWindow)App.Current.MainWindow).FuncFinish;
                 fmp.AsyncRun();
                 BoxHelper.ShowLoadingDialog(fmp);
@@ -150,7 +149,7 @@ namespace AutumnBox.GUI.UI.Grids
 
             if (BoxHelper.ShowChoiceDialog("msgNotice", "msgUnlockSystemTip") == ChoiceResult.BtnRight)
             {
-                var fmp = FunctionModuleProxy.Create<SystemUnlocker>(new ModuleArgs(App.StaticProperty.DeviceConnection.DevInfo));
+                var fmp = FunctionModuleProxy.Create<SystemUnlocker>(new ModuleArgs(_currentDevInfo));
                 fmp.Finished += ((MainWindow)App.Current.MainWindow).FuncFinish;
                 fmp.AsyncRun();
                 BoxHelper.ShowLoadingDialog(fmp);
@@ -159,7 +158,7 @@ namespace AutumnBox.GUI.UI.Grids
 
         private void ButtonChangeDpi_Click(object sender, RoutedEventArgs e)
         {
-            DpiChangeWindow.FastShow(App.Current.MainWindow);
+            new DpiChangeWindow(_currentDevInfo) { Owner = App.Current.MainWindow }.ShowDialog();
         }
 
         private void ButtonFullBackup_Click(object sender, RoutedEventArgs ex)
@@ -189,7 +188,7 @@ namespace AutumnBox.GUI.UI.Grids
             };
             if (fbd.ShowDialog() != DialogResult.OK) return;
             FunctionModuleProxy fmp =
-                FunctionModuleProxy.Create<ImageExtractor>(new ImgExtractArgs(App.StaticProperty.DeviceConnection.DevInfo) { ExtractImage = Images.Boot, SavePath = fbd.SelectedPath });
+                FunctionModuleProxy.Create<ImageExtractor>(new ImgExtractArgs(_currentDevInfo) { ExtractImage = Images.Boot, SavePath = fbd.SelectedPath });
             fmp.Finished += ((MainWindow)App.Current.MainWindow).FuncFinish;
             fmp.AsyncRun();
             BoxHelper.ShowLoadingDialog(fmp);
@@ -207,7 +206,7 @@ namespace AutumnBox.GUI.UI.Grids
             };
             if (fbd.ShowDialog() != DialogResult.OK) return;
             FunctionModuleProxy fmp =
-                FunctionModuleProxy.Create<ImageExtractor>(new ImgExtractArgs(App.StaticProperty.DeviceConnection.DevInfo) { ExtractImage = Images.Recovery, SavePath = fbd.SelectedPath });
+                FunctionModuleProxy.Create<ImageExtractor>(new ImgExtractArgs(_currentDevInfo) { ExtractImage = Images.Recovery, SavePath = fbd.SelectedPath });
             fmp.Finished += ((MainWindow)App.Current.MainWindow).FuncFinish;
             fmp.AsyncRun();
             BoxHelper.ShowLoadingDialog(fmp);
@@ -226,7 +225,7 @@ namespace AutumnBox.GUI.UI.Grids
             fileDialog.Multiselect = false;
             if (fileDialog.ShowDialog() == true)
             {
-                var fmp = FunctionModuleProxy.Create<ImageFlasher>(new ImgFlasherArgs(App.StaticProperty.DeviceConnection.DevInfo) { ImgPath = fileDialog.FileName, ImgType = Images.Boot });
+                var fmp = FunctionModuleProxy.Create<ImageFlasher>(new ImgFlasherArgs(_currentDevInfo) { ImgPath = fileDialog.FileName, ImgType = Images.Boot });
                 fmp.Finished += ((MainWindow)App.Current.MainWindow).FuncFinish;
                 fmp.AsyncRun();
                 BoxHelper.ShowLoadingDialog(fmp);
@@ -244,7 +243,7 @@ namespace AutumnBox.GUI.UI.Grids
                 return BoxHelper.ShowChoiceDialog("Warning", "msgDelScreenLock").ToBool();
             });
             if (!_continue) return;
-            FunctionModuleProxy fmp = FunctionModuleProxy.Create<ScreenLockDeleter>(new ModuleArgs(App.StaticProperty.DeviceConnection.DevInfo));
+            FunctionModuleProxy fmp = FunctionModuleProxy.Create<ScreenLockDeleter>(new ModuleArgs(_currentDevInfo));
             fmp.Finished += ((MainWindow)App.Current.MainWindow).FuncFinish;
             fmp.AsyncRun();
             BoxHelper.ShowLoadingDialog(fmp);
@@ -263,7 +262,7 @@ namespace AutumnBox.GUI.UI.Grids
             fileDialog.Multiselect = false;
             if (fileDialog.ShowDialog() == true)
             {
-                var fmp = FunctionModuleProxy.Create<ImageFlasher>(new ImgFlasherArgs(App.StaticProperty.DeviceConnection.DevInfo) { ImgPath = fileDialog.FileName, ImgType = Images.Recovery });
+                var fmp = FunctionModuleProxy.Create<ImageFlasher>(new ImgFlasherArgs(_currentDevInfo) { ImgPath = fileDialog.FileName, ImgType = Images.Recovery });
                 fmp.Finished += ((MainWindow)App.Current.MainWindow).FuncFinish;
                 fmp.AsyncRun();
                 BoxHelper.ShowLoadingDialog(fmp);
@@ -275,7 +274,7 @@ namespace AutumnBox.GUI.UI.Grids
             /*检查是否安装了这个App*/
             bool? isInstallThisApp = await Task.Run(() =>
             {
-                return DeviceInfoHelper.IsInstalled(App.StaticProperty.DeviceConnection.Serial, IceBoxActivator.AppPackageName);
+                return DeviceInfoHelper.IsInstalled(_currentDevInfo.Serial, IceBoxActivator.AppPackageName);
             });
             if (isInstallThisApp == false) { BoxHelper.ShowMessageDialog("Warning", "msgPlsInstallIceBoxFirst"); return; }
             /*提示用户删除账户*/
@@ -287,7 +286,7 @@ namespace AutumnBox.GUI.UI.Grids
             if (!_continue) return;
             /*开始操作 */
             IceBoxActivator iceBoxActivator = new IceBoxActivator();
-            iceBoxActivator.Init(new FlowArgs() { DevBasicInfo = App.StaticProperty.DeviceConnection.DevInfo });
+            iceBoxActivator.Init(new FlowArgs() { DevBasicInfo = _currentDevInfo });
             iceBoxActivator.RunAsync();
             BoxHelper.ShowLoadingDialog(iceBoxActivator);
         }
@@ -297,7 +296,7 @@ namespace AutumnBox.GUI.UI.Grids
             /*检查是否安装了这个App*/
             bool? isInstallThisApp = await Task.Run(() =>
             {
-                return DeviceInfoHelper.IsInstalled(App.StaticProperty.DeviceConnection.Serial, AirForzenActivator.AppPackageName);
+                return DeviceInfoHelper.IsInstalled(_currentDevInfo.Serial, AirForzenActivator.AppPackageName);
             });
 
             if (isInstallThisApp == false) { BoxHelper.ShowMessageDialog("Warning", "msgPlsInstallAirForzenFirst"); return; }
@@ -313,7 +312,7 @@ namespace AutumnBox.GUI.UI.Grids
             if (!_continue) return;
             /*开始操作*/
             AirForzenActivator airForzenActivator = new AirForzenActivator();
-            airForzenActivator.Init(new FlowArgs() { DevBasicInfo = App.StaticProperty.DeviceConnection.DevInfo });
+            airForzenActivator.Init(new FlowArgs() { DevBasicInfo = _currentDevInfo });
             airForzenActivator.RunAsync();
             BoxHelper.ShowLoadingDialog(airForzenActivator);
         }
@@ -323,12 +322,12 @@ namespace AutumnBox.GUI.UI.Grids
             /*检查是否安装了这个App*/
             bool? isInstallThisApp = await Task.Run(() =>
             {
-                return DeviceInfoHelper.IsInstalled(App.StaticProperty.DeviceConnection.Serial, ShizukuManagerActivator.AppPackageName);
+                return DeviceInfoHelper.IsInstalled(_currentDevInfo.Serial, ShizukuManagerActivator.AppPackageName);
             });
             if (isInstallThisApp == false) { BoxHelper.ShowMessageDialog("Warning", "msgPlsInstallShizukuManagerFirst"); return; }
             /*开始操作*/
             ShizukuManagerActivator shizukuManagerActivator = new ShizukuManagerActivator();
-            shizukuManagerActivator.Init(new FlowArgs() { DevBasicInfo = App.StaticProperty.DeviceConnection.DevInfo });
+            shizukuManagerActivator.Init(new FlowArgs() { DevBasicInfo = _currentDevInfo });
             shizukuManagerActivator.RunAsync();
             BoxHelper.ShowLoadingDialog(shizukuManagerActivator);
         }
@@ -338,7 +337,7 @@ namespace AutumnBox.GUI.UI.Grids
             /*检查是否安装了这个App*/
             bool? isInstallThisApp = await Task.Run(() =>
             {
-                return DeviceInfoHelper.IsInstalled(App.StaticProperty.DeviceConnection.Serial, IslandActivator.AppPackageName);
+                return DeviceInfoHelper.IsInstalled(_currentDevInfo.Serial, IslandActivator.AppPackageName);
             });
             if (isInstallThisApp == false) { BoxHelper.ShowMessageDialog("Warning", "msgPlsInstallIslandFirst"); return; }
             /*提示用户删除账户*/
@@ -353,7 +352,7 @@ namespace AutumnBox.GUI.UI.Grids
             if (!_continue) return;
             /*开始操作*/
             IslandActivator islandActivator = new IslandActivator();
-            islandActivator.Init(new FlowArgs() { DevBasicInfo = App.StaticProperty.DeviceConnection.DevInfo });
+            islandActivator.Init(new FlowArgs() { DevBasicInfo = _currentDevInfo });
             islandActivator.RunAsync();
             BoxHelper.ShowLoadingDialog(islandActivator);
         }
@@ -364,11 +363,11 @@ namespace AutumnBox.GUI.UI.Grids
                     "msgVirtualButtonHider",
                     "btnHide",
                     "btnUnhide");
-            if (choiceResult == Windows.ChoiceResult.BtnCancel) return;
+            if (choiceResult == ChoiceResult.BtnCancel) return;
             var args = new VirtualButtonHiderArgs()
             {
-                DevBasicInfo = App.StaticProperty.DeviceConnection.DevInfo,
-                IsHide = (choiceResult == Windows.ChoiceResult.BtnRight),
+                DevBasicInfo = _currentDevInfo,
+                IsHide = (choiceResult == ChoiceResult.BtnRight),
             };
             VirtualButtonHider hider = new VirtualButtonHider();
             hider.Init(args);

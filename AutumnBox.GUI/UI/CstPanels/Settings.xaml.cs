@@ -21,8 +21,7 @@ namespace AutumnBox.GUI.UI.CstPanels
 #endif
             TransparencySlider.Value = Config.BackgroundA;
             CbBoxLanguage.ItemsSource = LanguageHelper.Langs;
-            CbBoxLanguage.DisplayMemberPath = "LanguageName";
-            CbBoxLanguage.SelectedIndex = LanguageHelper.GetLangIndex(App.Current.Resources["LanguageName"].ToString());
+            //CbBoxLanguage.SelectedIndex = LanguageHelper.GetLangIndex(App.Current.Resources["LanguageName"].ToString());
         }
        
         private void Slider_ValueChanged(object sender, System.Windows.RoutedPropertyChangedEventArgs<double> e)

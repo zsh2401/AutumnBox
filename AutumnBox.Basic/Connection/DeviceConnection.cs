@@ -13,6 +13,10 @@ namespace AutumnBox.Basic.Connection
     {
         public Serial Serial { get { return DevInfo.Serial; } }
         public DeviceBasicInfo DevInfo { get; private set; }
+        public DeviceConnection()
+        {
+            Reset();
+        }
         public void Reset(DeviceBasicInfo basicInfo)
         {
             this.DevInfo = basicInfo;

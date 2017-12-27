@@ -1,9 +1,9 @@
-﻿<UserControl x:Class="AutumnBox.GUI.UI.Grids.RebootBtnPanel"
+﻿<UserControl x:Class="AutumnBox.GUI.UI.FuncPanels.RebootBtnPanel"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:AutumnBox.GUI.UI.Grids"
+             xmlns:local="clr-namespace:AutumnBox.GUI.UI.FuncPanels"
              mc:Ignorable="d" Height="124.833" Width="265.146">
     <Grid>
         <Button x:Name="ButtonRebootToSystem" Content="{DynamicResource btnSystem}" Margin="0,40,0,0" VerticalAlignment="Top" Height="36" Background="{x:Null}" BorderBrush="{DynamicResource BorderBrush}" FontSize="14" FontFamily="Microsoft YaHei UI Light" Click="ButtonRebootToSystem_Click" Foreground="{DynamicResource ForgBrush}" HorizontalAlignment="Left" Width="130"/>

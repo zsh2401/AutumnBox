@@ -32,12 +32,12 @@ namespace AutumnBox.GUI
     {
         internal class StaticProperty
         {
-            internal static DeviceConnection DeviceConnection { get; private set; }
+            //internal static DeviceConnection DeviceConnection { get; private set; }
             internal static DevicesMonitor DevicesListener { get; private set; }
             static StaticProperty()
             {
                 Debug.WriteLine("first?");
-                DeviceConnection = new DeviceConnection();
+                //DeviceConnection = new DeviceConnection();
                 DevicesListener = new DevicesMonitor();//设备监听器
             }
         }

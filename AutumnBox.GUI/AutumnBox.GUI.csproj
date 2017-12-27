@@ -174,9 +174,6 @@
     <Compile Include="UI\CstPanels\FastGrid.xaml.cs">
       <DependentUpon>FastGrid.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\FuncPanels\FunctionPanel.xaml.cs">
-      <DependentUpon>FunctionPanel.xaml</DependentUpon>
-    </Compile>
     <Compile Include="UI\FuncPanels\PoweronFuncPanel.xaml.cs">
       <DependentUpon>PoweronFuncPanel.xaml</DependentUpon>
     </Compile>
@@ -325,10 +322,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\CstPanels\FastGrid.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UI\FuncPanels\FunctionPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

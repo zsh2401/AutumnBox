@@ -19,13 +19,14 @@ using AutumnBox.Basic.Devices;
 using AutumnBox.GUI.Windows;
 using AutumnBox.GUI.Helper;
 
-namespace AutumnBox.GUI.UI.Grids
+namespace AutumnBox.GUI.UI.FuncPanels
 {
     /// <summary>
     /// RebootButtonsGrid.xaml 的交互逻辑
     /// </summary>
     public partial class RebootBtnPanel : UserControl, IRefreshable
     {
+        private DeviceBasicInfo _currentDevInfo;
         public RebootBtnPanel()
         {
             InitializeComponent();
@@ -33,6 +34,7 @@ namespace AutumnBox.GUI.UI.Grids
 
         public void Reset()
         {
+            _currentDevInfo = new DeviceBasicInfo() { Status = DeviceStatus.None };
             ButtonRebootToBootloader.IsEnabled = false;
             ButtonRebootToRecovery.IsEnabled = false;
             ButtonRebootToSystem.IsEnabled = false;
@@ -41,6 +43,7 @@ namespace AutumnBox.GUI.UI.Grids
 
         public void Refresh(DeviceBasicInfo deviceSimpleInfo)
         {
+            _currentDevInfo = deviceSimpleInfo;
             this.Dispatcher.Invoke(() =>
             {
                 switch (deviceSimpleInfo.Status)
@@ -70,10 +73,10 @@ namespace AutumnBox.GUI.UI.Grids
 
         private void ButtonRebootToSystem_Click(object sender, RoutedEventArgs e)
         {
-            var fmp = FunctionModuleProxy.Create<RebootOperator>(new RebootArgs(App.StaticProperty.DeviceConnection.DevInfo)
+            var fmp = FunctionModuleProxy.Create<RebootOperator>(new RebootArgs(_currentDevInfo)
             {
                 rebootOption = RebootOptions.System,
-                nowStatus = App.StaticProperty.DeviceConnection.DevInfo.Status
+                nowStatus = _currentDevInfo.Status
             });
             fmp.Finished += ((MainWindow)App.Current.MainWindow).FuncFinish;
             fmp.AsyncRun();
@@ -81,10 +84,10 @@ namespace AutumnBox.GUI.UI.Grids
 
         private void ButtonRebootToRecovery_Click(object sender, RoutedEventArgs e)
         {
-            var fmp = FunctionModuleProxy.Create<RebootOperator>(new RebootArgs(App.StaticProperty.DeviceConnection.DevInfo)
+            var fmp = FunctionModuleProxy.Create<RebootOperator>(new RebootArgs(_currentDevInfo)
             {
                 rebootOption = RebootOptions.Recovery,
-                nowStatus = App.StaticProperty.DeviceConnection.DevInfo.Status
+                nowStatus = _currentDevInfo.Status
             });
             fmp.Finished += ((MainWindow)App.Current.MainWindow).FuncFinish;
             fmp.AsyncRun();
@@ -92,16 +95,16 @@ namespace AutumnBox.GUI.UI.Grids
 
         private void ButtonRebootToBootloader_Click(object sender, RoutedEventArgs e)
         {
-            var fmp = FunctionModuleProxy.Create<RebootOperator>(new RebootArgs(App.StaticProperty.DeviceConnection.DevInfo)
+            var fmp = FunctionModuleProxy.Create<RebootOperator>(new RebootArgs(_currentDevInfo)
             {
                 rebootOption = RebootOptions.Bootloader,
-                nowStatus = App.StaticProperty.DeviceConnection.DevInfo.Status
+                nowStatus = _currentDevInfo.Status
             });
             fmp.Finished += ((MainWindow)App.Current.MainWindow).FuncFinish;
             fmp.AsyncRun();
         }
 
-        private  void ButtonRebootToSnapdragon9008_Click(object sender, RoutedEventArgs e)
+        private void ButtonRebootToSnapdragon9008_Click(object sender, RoutedEventArgs e)
         {
             bool _needToContinue = BoxHelper.ShowChoiceDialog("msgNotice",
                                     UIHelper.GetString("msgNoticeForRebootToEdlLine1") + "\n" +
@@ -110,10 +113,10 @@ namespace AutumnBox.GUI.UI.Grids
                                     "btnCancel",
                                     "btnContinue").ToBool();
             if (!_needToContinue) return;
-            var fmp = FunctionModuleProxy.Create<RebootOperator>(new RebootArgs(App.StaticProperty.DeviceConnection.DevInfo)
+            var fmp = FunctionModuleProxy.Create<RebootOperator>(new RebootArgs(_currentDevInfo)
             {
                 rebootOption = RebootOptions.Snapdragon9008,
-                nowStatus = App.StaticProperty.DeviceConnection.DevInfo.Status
+                nowStatus = _currentDevInfo
             });
             fmp.Finished += ((MainWindow)App.Current.MainWindow).FuncFinish;
             fmp.AsyncRun();

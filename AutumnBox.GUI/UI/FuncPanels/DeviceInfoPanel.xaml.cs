@@ -10,14 +10,16 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
 
-namespace AutumnBox.GUI.UI.Grids
+namespace AutumnBox.GUI.UI.FuncPanels
 {
+
     [LogProperty(TAG = "DevInfoPanel")]
     /// <summary>
     /// DeviceInfoPanel.xaml 的交互逻辑
     /// </summary>
     public partial class DeviceInfoPanel : UserControl, IAsyncRefreshable, ILogSender
     {
+        public DeviceBasicInfo DeviceInfo { get; private set; }
         public Version CurrentDeviceAndroidVersion { get; private set; }
         public bool CurrentDeviceIsRoot { get; private set; }
         public string LogTag => "DevInfoPanel";
@@ -35,6 +37,7 @@ namespace AutumnBox.GUI.UI.Grids
         }
         public void Refresh(DeviceBasicInfo devSimpleInfo)
         {
+            this.DeviceInfo = devSimpleInfo;
             if (devSimpleInfo.Status == DeviceStatus.Poweron || devSimpleInfo.Status == DeviceStatus.Recovery)
             {
                 SetByDeviceSimpleInfoAsync(devSimpleInfo);
@@ -77,7 +80,8 @@ namespace AutumnBox.GUI.UI.Grids
         }
         private async void SetByDeviceSimpleInfoAsync(DeviceBasicInfo devSimpleInfo)
         {
-            using (var propGetter = new DeviceBuildPropGetter(devSimpleInfo.Serial)) {
+            using (var propGetter = new DeviceBuildPropGetter(devSimpleInfo.Serial))
+            {
                 var buildInfo = await Task.Run(() =>
                 {
                     return propGetter.GetFull();
@@ -101,7 +105,7 @@ namespace AutumnBox.GUI.UI.Grids
             {
                 CurrentDeviceAndroidVersion = null;
             }
-            switch (App.StaticProperty.DeviceConnection.DevInfo.Status)
+            switch (devSimpleInfo.Status)
             {
                 case DeviceStatus.Fastboot:
                     SetStatusShow(DevStatusBitmapGetter.Get(devSimpleInfo.Status), "DeviceInFastboot");
@@ -135,12 +139,12 @@ namespace AutumnBox.GUI.UI.Grids
 
         private void LabelAndroidVersion_Loaded(object sender, System.Windows.RoutedEventArgs e)
         {
-            LanguageHelper.LanguageChanged += (s, ex) => { Refresh(App.StaticProperty.DeviceConnection.DevInfo); };
+            LanguageHelper.LanguageChanged += (s, ex) => { Refresh(DeviceInfo); };
         }
 
         private void ImgRefreshDevInfo_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            Refresh(App.StaticProperty.DeviceConnection.DevInfo);
+            Refresh(DeviceInfo);
         }
     }
 }
