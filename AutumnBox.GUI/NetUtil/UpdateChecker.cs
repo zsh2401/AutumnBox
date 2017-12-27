@@ -49,7 +49,7 @@ namespace AutumnBox.GUI.NetUtil
     {
         public override UpdateCheckResult LocalMethod()
         {
-            JObject j = JObject.Parse(File.ReadAllText(@"E:\zsh2401.github.io\softsupport\autumnbox\update\index.html"));
+            JObject j = JObject.Parse(File.ReadAllText(@"..\docs\api\update\index.html"));
             var result = (UpdateCheckResult)JsonConvert.DeserializeObject(j.ToString(), typeof(UpdateCheckResult));
             return result;
         }

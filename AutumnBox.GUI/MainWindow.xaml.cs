@@ -58,7 +58,7 @@ namespace AutumnBox.GUI
             {
                 this.Dispatcher.Invoke(() =>
                 {
-                    Logger.D(this, "Refresh Start..");
+                    Logger.D(this, "DevInfoPanel refreshing");
                     BoxHelper.ShowLoadingDialog();
                 });
             };
@@ -68,7 +68,7 @@ namespace AutumnBox.GUI
             {
                 this.Dispatcher.Invoke(() =>
                 {
-                    Logger.D(this, "Refresh UI Finished..");
+                    Logger.D(this, "DevInfoPanel refreshed...");
                     BoxHelper.CloseLoadingDialog();
                 });
             };
@@ -91,11 +91,11 @@ namespace AutumnBox.GUI
                 {
                     SystemHelper.AppExit(1);
                 }
-                Task.Run(()=> {
+                Task.Run(() =>
+                {
                     Thread.Sleep(3000);
                     App.Current.Dispatcher.Invoke(App.StaticProperty.DevicesListener.Begin);
                 });
-                
             };
 #if DEBUG
             TitleBar.Title.Content += "  " + SystemHelper.CurrentVersion + "-Debug";
@@ -145,12 +145,23 @@ namespace AutumnBox.GUI
             //哦,如果是第一次启动本软件,那么就显示一下提示吧!
             Task.Run(() =>
             {
-                Thread.Sleep(2000);
+                Thread.Sleep(1000);
                 this.Dispatcher.Invoke(() =>
                 {
                     if (Config.IsFirstLaunch)
                     {
-                        new FastGrid(this.GridMain, new About(), () => { App.StaticProperty.DevicesListener.Begin(); });
+                        new FastGrid(this.GridMain, new About(), () =>
+                        {
+                            App.StaticProperty.DevicesListener.Begin();
+                            //更新检测
+                            new UpdateChecker().RunAsync((r) =>
+                            {
+                                if (r.NeedUpdate)
+                                {
+                                    new UpdateNoticeWindow(r).ShowDialog();
+                                }
+                            });
+                        });
                         Config.IsFirstLaunch = false;
                     }
                     else
@@ -165,18 +176,10 @@ namespace AutumnBox.GUI
             {
                 textBoxGG.Text = r.Header + r.Separator + r.Message;
             });
-            //更新检测
-            new UpdateChecker().RunAsync((r) =>
-            {
-                if (r.NeedUpdate)
-                {
-                    new UpdateNoticeWindow(r).ShowDialog();
-                }
-            });
         }
         public void Refresh()
         {
-            refreshables.ForEach((ctrl)=> { ctrl.Refresh(App.StaticProperty.DeviceConnection.DevInfo); });
+            refreshables.ForEach((ctrl) => { ctrl.Refresh(App.StaticProperty.DeviceConnection.DevInfo); });
         }
         /// <summary>
         /// 当设备选择列表的被选项变化时发生

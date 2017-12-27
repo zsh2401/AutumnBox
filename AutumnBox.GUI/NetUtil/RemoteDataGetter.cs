@@ -19,7 +19,7 @@ using System.Threading.Tasks;
 namespace AutumnBox.GUI.NetUtil
 {
     [LogProperty(TAG = "Net Unit", Show = false)]
-    internal abstract class RemoteDataGetter<TResult> 
+    internal abstract class RemoteDataGetter<TResult>
         where TResult : class
     {
         protected readonly WebClient webClient;

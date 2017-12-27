@@ -36,7 +36,9 @@ namespace AutumnBox.GUI.Helper
         /// <param name="iconLocation">图标路径，格式为"可执行文件或DLL路径, 图标编号"，
         /// 例如System.Environment.SystemDirectory + "\\" + "shell32.dll, 165"</param>
         /// <remarks></remarks>
-        public static void CreateShortcut(string directory, string shortcutName, string targetPath,
+        public static void CreateShortcut(
+            string directory, string shortcutName,
+            string targetPath,
             string description = null, string iconLocation = null)
         {
             if (!Directory.Exists(directory))
@@ -102,9 +104,13 @@ namespace AutumnBox.GUI.Helper
         {
             Environment.SetEnvironmentVariable("ADB_PORT", port.ToString(), EnvironmentVariableTarget.User);
         }
-        public static bool HaveOtherAutumnBoxProcess { get {
+        public static bool HaveOtherAutumnBoxProcess
+        {
+            get
+            {
                 return Process.GetProcessesByName("AutumnBox").Length != 1;
-            } }
+            }
+        }
         public static void AppExit(int exitCode = 0)
         {
             Logger.T("Exiting.....");

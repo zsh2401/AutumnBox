@@ -36,7 +36,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>..\out\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;ENABLE_BLUR</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;ENABLE_BLUR USE_LOCAL_API</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
@@ -92,6 +92,9 @@
   </PropertyGroup>
   <PropertyGroup />
   <PropertyGroup />
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -161,6 +164,9 @@
     </Compile>
     <Compile Include="UI\FuncPanels\DeviceInfoPanel.xaml.cs">
       <DependentUpon>DeviceInfoPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FuncPanels\DevicesPanel.xaml.cs">
+      <DependentUpon>DevicesPanel.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\FuncPanels\FastbootFuncPanel.xaml.cs">
       <DependentUpon>FastbootFuncPanel.xaml</DependentUpon>
@@ -307,6 +313,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\FuncPanels\DeviceInfoPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\FuncPanels\DevicesPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

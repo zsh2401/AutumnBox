@@ -35,7 +35,7 @@ namespace AutumnBox.GUI.NetUtil
     {
         public override MOTDResult LocalMethod()
         {
-            JObject o = JObject.Parse(File.ReadAllText(@"E:\zsh2401.github.io\softsupport\autumnbox\motd\index.html"));
+            JObject o = JObject.Parse(File.ReadAllText(@"..\docs\api\motd\index.html"));
             var result = (MOTDResult)JsonConvert.DeserializeObject(o.ToString(), typeof(MOTDResult));
             Logger.D("MOTD Get from local were success!" + result.Header + " " + result.Message);
             return result;

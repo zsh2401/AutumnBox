@@ -1,0 +1,18 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AutumnBox.GUI.UI.FuncPanels"
+             xmlns:CstPanels="clr-namespace:AutumnBox.GUI.UI.CstPanels" x:Class="AutumnBox.GUI.UI.FuncPanels.DevicesPanel"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300" Width="170" Height="150" MinWidth="170" MinHeight="150">
+    <Grid>
+        <ListBox HorizontalAlignment="Left" Height="92" VerticalAlignment="Top" Width="170" Background="{x:Null}" Foreground="{DynamicResource ForgBrush}" BorderBrush="{DynamicResource BorderBrush}" Margin="0,30,0,0"/>
+        <TextBlock HorizontalAlignment="Left" Margin="0,4,0,0" TextWrapping="Wrap" Text="{DynamicResource Devices}" VerticalAlignment="Top" FontSize="16">
+            <TextBlock.Foreground>
+                <SolidColorBrush Color="{DynamicResource FontColor}"/>
+            </TextBlock.Foreground>
+        </TextBlock>
+    </Grid>
+</UserControl>
