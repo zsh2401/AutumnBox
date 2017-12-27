@@ -17,13 +17,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutumnBox.Basic.Flows", "Au
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9C12A545-FC99-4185-86D1-22D029637239}"
 	ProjectSection(SolutionItems) = preProject
+		docs\api\update\index.html = docs\api\update\index.html
+		docs\api\motd\index.html = docs\api\motd\index.html
 		README.md = README.md
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "api", "api", "{C6324411-8CCA-4678-B8C9-27176D29F709}"
-	ProjectSection(SolutionItems) = preProject
-		docs\motd.html = docs\motd.html
-		docs\update.html = docs\update.html
 	EndProjectSection
 EndProject
 Global
@@ -70,9 +66,6 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{C6324411-8CCA-4678-B8C9-27176D29F709} = {9C12A545-FC99-4185-86D1-22D029637239}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E8E55705-AE5C-4952-B4C7-9D7F81C38731}
