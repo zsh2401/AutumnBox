@@ -167,11 +167,17 @@ namespace AutumnBox.GUI
         }
         public void Refresh(DeviceBasicInfo devinfo)
         {
-            refreshables.ForEach((ctrl) => { ctrl.Refresh(devinfo); });
+            lock (setUILock)
+            {
+                refreshables.ForEach((ctrl) => { ctrl.Refresh(devinfo); });
+            }
         }
         public void Reset()
         {
-            refreshables.ForEach((ctrl) => { ctrl.Reset(); });
+            lock (setUILock)
+            {
+                refreshables.ForEach((ctrl) => { ctrl.Reset(); });
+            }
         }
         private void ButtonStartShell_Click(object sender, RoutedEventArgs e)
         {
@@ -218,11 +224,6 @@ namespace AutumnBox.GUI
         private void BtnLinkHelp_Click(object sender, RoutedEventArgs e)
         {
             new LinkHelpWindow().Show();
-        }
-
-        private void DevicesPanel_DeviceSelectChanged(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }
