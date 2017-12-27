@@ -19,16 +19,17 @@ using System.Threading.Tasks;
 namespace AutumnBox.GUI.NetUtil
 {
     [LogProperty(TAG = "Net Unit", Show = false)]
-    internal abstract class RemoteDataGetter<RESULT_T> where RESULT_T : class
+    internal abstract class RemoteDataGetter<TResult> 
+        where TResult : class
     {
         protected readonly WebClient webClient;
         public RemoteDataGetter()
         {
             webClient = new WebClient();
         }
-        public async void RunAsync(Action<RESULT_T> finishedHandler)
+        public async void RunAsync(Action<TResult> finishedHandler)
         {
-            RESULT_T result = await Task.Run(() =>
+            TResult result = await Task.Run(() =>
             {
                 return Run();
             });
@@ -37,7 +38,7 @@ namespace AutumnBox.GUI.NetUtil
                 finishedHandler(result);
             }
         }
-        public RESULT_T Run()
+        public TResult Run()
         {
             try
             {
@@ -53,7 +54,7 @@ namespace AutumnBox.GUI.NetUtil
                 return null;
             }
         }
-        public abstract RESULT_T LocalMethod();
-        public abstract RESULT_T NetMethod();
+        public abstract TResult LocalMethod();
+        public abstract TResult NetMethod();
     }
 }
