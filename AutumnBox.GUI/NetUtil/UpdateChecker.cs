@@ -17,6 +17,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.IO;
+using System.Net;
 using System.Text;
 
 namespace AutumnBox.GUI.NetUtil
@@ -27,13 +28,13 @@ namespace AutumnBox.GUI.NetUtil
         [JsonProperty("header")]
         public string Header { get; set; } = "Ok!";
         [JsonProperty("version")]
-        public string VersionString { get; set; }
+        public string VersionString { get; set; } = "0.0.0";
         [JsonProperty("message")]
-        public string Message { get; set; }
+        public string Message { get; set; } = "No update";
         [JsonProperty("baiduPanUrl")]
-        public string BaiduPanUrl { get; set; }
+        public string BaiduPanUrl { get; set; } = "http://www.baidu.com";
         [JsonProperty("githubReleaseUrl")]
-        public string GithubReleaseUrl { get; set; }
+        public string GithubReleaseUrl { get; set; } = "https://github.com/zsh2401/";
         [JsonProperty("time")]
         public int[] TimeArray { get; set; }
 
@@ -43,7 +44,7 @@ namespace AutumnBox.GUI.NetUtil
             && new Version(Config.SkipVersion) != Version;//并且没有被设置跳过
         public DateTime Time => new DateTime(TimeArray[0], TimeArray[1], TimeArray[0]);
     }
-    [LogProperty(TAG = "Update Check", Show = false)]
+    [LogProperty(TAG = "Update Check", Show = true)]
     internal class UpdateChecker : RemoteDataGetter<UpdateCheckResult>
     {
         public override UpdateCheckResult LocalMethod()
@@ -55,11 +56,9 @@ namespace AutumnBox.GUI.NetUtil
 
         public override UpdateCheckResult NetMethod()
         {
-            throw new Exception();
             Logger.D("Getting update info....");
-            byte[] bytes = webClient.DownloadData(Urls.MOTD_API);
+            byte[] bytes = new WebClient().DownloadData(Urls.UPDATE_API);
             string data = Encoding.UTF8.GetString(bytes);
-
             Logger.D(data);
             JObject j = JObject.Parse(data);
             var result = (UpdateCheckResult)JsonConvert.DeserializeObject(j.ToString(), typeof(UpdateCheckResult));

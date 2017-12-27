@@ -170,7 +170,7 @@ namespace AutumnBox.GUI
             {
                 if (r.NeedUpdate)
                 {
-                    //new UpdateNoticeWindow(r).ShowDialog();
+                    new UpdateNoticeWindow(r).ShowDialog();
                 }
             });
         }
