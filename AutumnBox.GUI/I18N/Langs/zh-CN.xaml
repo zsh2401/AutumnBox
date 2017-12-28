@@ -63,23 +63,9 @@
     <!--按钮-->
 
     <!--tabitem-->
-    <s:String x:Key="tbiWelcome">欢迎</s:String>
     <s:String x:Key="tbiOnPowerOn">开机</s:String>
     <s:String x:Key="tbiOnRecovery">恢复模式/Sideload</s:String>
     <s:String x:Key="tbiOnFastboot">Fastboot</s:String>
-    <s:String x:Key="tbiDownloads">下载更多工具以及刷机包</s:String>
-    <s:String x:Key="tbiHelp">帮助</s:String>
-    <s:String x:Key="tbiSaveDevice">救砖</s:String>
-    <s:String x:Key="tbiFlashDevice">刷机</s:String>
-    <s:String x:Key="tbiFlashRecovery">刷入Recovery</s:String>
-    <s:String x:Key="tbiNormalFunctions">常规功能</s:String>
-    <s:String x:Key="tbiExpFunctions">实验功能</s:String>
-    <s:String x:Key="tbiSpecificFunctions">针对性功能</s:String>
-    <s:String x:Key="tbiBookMarker">书签</s:String>
-    <s:String x:Key="tbiTools">工具</s:String>
-    <s:String x:Key="tbiNormal">常规</s:String>
-    <s:String x:Key="tbiAbout">关于</s:String>
-    <s:String x:Key="tbiSettings">设置</s:String>
     <!--tabitem-->
 
     <!--信息(主要用于MMesssageBox)-->
@@ -156,6 +142,7 @@
     <!--QA-->
 
     <!--静态界面标记-->
+    <s:String x:Key="ckbConnectOnOpened">添加后立刻连接</s:String>
     <s:String x:Key="RebootTo">重启到</s:String>
     <s:String x:Key="DonateDescription">我是一个穷苦的学生,您的捐赠是对我莫大的鼓励</s:String>
     <s:String x:Key="PleaseSelected">请选择</s:String>

@@ -6,14 +6,15 @@
              xmlns:local="clr-namespace:AutumnBox.GUI.UI.FuncPanels"
              xmlns:CstPanels="clr-namespace:AutumnBox.GUI.UI.CstPanels" x:Class="AutumnBox.GUI.UI.FuncPanels.DevicesPanel"
              mc:Ignorable="d" Width="188.666" Height="232.667" MinWidth="170" MinHeight="150">
-    <Grid>
+    <Grid x:Name="GridMain">
         <ListBox DisplayMemberPath="Serial" x:Name="ListBoxMain" Background="{x:Null}" Foreground="{DynamicResource ForgBrush}" BorderBrush="{DynamicResource BorderBrush}" Margin="5,30,10,65" SelectionChanged="ListBox_SelectionChanged"/>
         <TextBlock HorizontalAlignment="Center" Margin="0,4,0,0" TextWrapping="Wrap" Text="{DynamicResource Devices}" VerticalAlignment="Top" FontSize="16" FontFamily="Microsoft YaHei UI Light">
             <TextBlock.Foreground>
                 <SolidColorBrush Color="{DynamicResource FontColor}"/>
             </TextBlock.Foreground>
         </TextBlock>
-        <Button x:Name="BtnAddNetDebuggingDevice" Content="{DynamicResource btnAddNetdebuggingDevice}" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="174" Background="{x:Null}" Height="25" Foreground="{DynamicResource ForgBrush}" FontSize="14" FontFamily="Microsoft YaHei UI Light" Margin="5,0,0,35"/>
-        <Button x:Name="BtnEnableDisableNetDebugging" Content="{DynamicResource btnEnableNetdebugging}" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="174" Background="{x:Null}" Height="25" Foreground="{DynamicResource ForgBrush}" FontSize="14" FontFamily="Microsoft YaHei UI Light" Margin="5,0,0,5"/>
+        <Button x:Name="BtnAddNetDebuggingDevice" Content="{DynamicResource btnAddNetdebuggingDevice}" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="174" Background="{x:Null}" Height="25" Foreground="{DynamicResource ForgBrush}" FontSize="14" FontFamily="Microsoft YaHei UI Light" Margin="5,0,0,35" Click="BtnAddNetDebuggingDevice_Click"/>
+        <Button x:Name="BtnEnableDisableNetDebugging" Content="{DynamicResource btnEnableNetdebugging}" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="174" Background="{x:Null}" Height="25" Foreground="{DynamicResource ForgBrush}" FontSize="14" FontFamily="Microsoft YaHei UI Light" Margin="5,0,0,5" Click="BtnEnableDisableNetDebugging_Click"/>
+        <!--<Grid x:Name="GridAddNetDevice" HorizontalAlignment="Left" Height="233" Margin="5,0,0,0" VerticalAlignment="Top" Width="184"/>-->
     </Grid>
 </UserControl>

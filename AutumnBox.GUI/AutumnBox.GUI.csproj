@@ -162,6 +162,10 @@
     <Compile Include="UI\CstPanels\Donate.xaml.cs">
       <DependentUpon>Donate.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\CstPanels\ICloseNoticeReceivable.cs" />
+    <Compile Include="UI\CstPanels\NetDebuggingAdder.xaml.cs">
+      <DependentUpon>NetDebuggingAdder.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\FuncPanels\DeviceInfoPanel.xaml.cs">
       <DependentUpon>DeviceInfoPanel.xaml</DependentUpon>
     </Compile>
@@ -310,6 +314,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\CstPanels\Donate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\CstPanels\NetDebuggingAdder.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

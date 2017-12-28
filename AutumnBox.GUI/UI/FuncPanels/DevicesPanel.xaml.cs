@@ -1,5 +1,6 @@
 ﻿using AutumnBox.Basic.Connection;
 using AutumnBox.Basic.Devices;
+using AutumnBox.GUI.UI.CstPanels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -94,6 +95,16 @@ namespace AutumnBox.GUI.UI.FuncPanels
                 this.BtnEnableDisableNetDebugging.Visibility = Visibility.Hidden;
             }
             this.SelectionChanged(this, new EventArgs());
+        }
+
+        private void BtnEnableDisableNetDebugging_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void BtnAddNetDebuggingDevice_Click(object sender, RoutedEventArgs e)
+        {
+            new FastGrid(this.GridMain, new NetDebuggingAdder());
         }
     }
 }
