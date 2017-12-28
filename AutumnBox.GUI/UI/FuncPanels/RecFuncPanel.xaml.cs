@@ -26,12 +26,12 @@ namespace AutumnBox.GUI.UI.FuncPanels
         {
             this._currentDevInfo = devInfo;
             UIHelper.SetGridButtonStatus(MainGrid,
-                (_currentDevInfo.Status == DeviceStatus.Recovery || _currentDevInfo.Status == DeviceStatus.Sideload));
+                (_currentDevInfo.State == DeviceState.Recovery || _currentDevInfo.State == DeviceState.Sideload));
         }
 
         public void Reset()
         {
-            _currentDevInfo = new DeviceBasicInfo() { Status = DeviceStatus.None };
+            _currentDevInfo = new DeviceBasicInfo() { State = DeviceState.None };
             UIHelper.SetGridButtonStatus(MainGrid, false);
         }
 

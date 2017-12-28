@@ -27,25 +27,26 @@ namespace AutumnBox.Basic.Devices
     public struct DeviceBasicInfo
     {
         public Serial Serial { get; set; }
-        public DeviceStatus Status { get; set; }
+        public DeviceState State { get; set; }
         public static implicit operator string(DeviceBasicInfo info)
         {
             return info.Serial.ToString();
         }
-        public static implicit operator DeviceStatus(DeviceBasicInfo info)
+        public static implicit operator DeviceState(DeviceBasicInfo info)
         {
-            return info.Status;
+            return info.State;
         }
-        public static DeviceBasicInfo Make(string serialStr, DeviceStatus status)
+        public static DeviceBasicInfo Make(string serialStr, DeviceState state)
         {
             return new DeviceBasicInfo
             {
                 Serial = new Serial(serialStr),
-                Status = status,
+                State = state,
             };
         }
-        public string ToSampleString() {
-            return $"{Serial.ToString()} {Status}";
+        public string ToSampleString()
+        {
+            return $"{Serial.ToString()} {State}";
         }
         public override string ToString()
         {

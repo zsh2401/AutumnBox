@@ -38,30 +38,30 @@ namespace AutumnBox.GUI.UI.FuncPanels
         public void Refresh(DeviceBasicInfo devSimpleInfo)
         {
             this.DeviceInfo = devSimpleInfo;
-            if (devSimpleInfo.Status == DeviceStatus.Poweron || devSimpleInfo.Status == DeviceStatus.Recovery)
+            if (devSimpleInfo.State == DeviceState.Poweron || devSimpleInfo.State == DeviceState.Recovery)
             {
                 SetByDeviceSimpleInfoAsync(devSimpleInfo);
                 RefreshStart?.Invoke(this, new EventArgs());
             }
-            else if (devSimpleInfo.Status == DeviceStatus.Unauthorized)
+            else if (devSimpleInfo.State == DeviceState.Unauthorized)
             {
                 Reset();
                 UIHelper.SetGridLabelsContent(GridBuildInfo, App.Current.Resources["PleaseAllowUSBDebug"]);
-                SetStatusShow(DevStatusBitmapGetter.Get(devSimpleInfo.Status), "PleaseAllowUSBDebug");
+                SetStatusShow(DevStatusBitmapGetter.Get(devSimpleInfo.State), "PleaseAllowUSBDebug");
             }
-            else if (devSimpleInfo.Status == DeviceStatus.Fastboot)
+            else if (devSimpleInfo.State == DeviceState.Fastboot)
             {
                 UIHelper.SetGridLabelsContent(GridBuildInfo, "...");
                 UIHelper.SetGridLabelsContent(GridHardwareInfo, "....");
                 UIHelper.SetGridLabelsContent(GridMemoryInfo, "....");
-                SetStatusShow(DevStatusBitmapGetter.Get(devSimpleInfo.Status), "DeviceInFastboot");
+                SetStatusShow(DevStatusBitmapGetter.Get(devSimpleInfo.State), "DeviceInFastboot");
             }
-            else if (devSimpleInfo.Status == DeviceStatus.Offline)
+            else if (devSimpleInfo.State == DeviceState.Offline)
             {
                 UIHelper.SetGridLabelsContent(GridBuildInfo, "...");
                 UIHelper.SetGridLabelsContent(GridHardwareInfo, "....");
                 UIHelper.SetGridLabelsContent(GridMemoryInfo, "....");
-                SetStatusShow(DevStatusBitmapGetter.Get(devSimpleInfo.Status), "DeviceOffline");
+                SetStatusShow(DevStatusBitmapGetter.Get(devSimpleInfo.State), "DeviceOffline");
             }
             else
             {
@@ -75,7 +75,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
                 UIHelper.SetGridLabelsContent(GridBuildInfo, App.Current.Resources["PleaseSelectedADevice"]);
                 UIHelper.SetGridLabelsContent(GridHardwareInfo, "....");
                 UIHelper.SetGridLabelsContent(GridMemoryInfo, "....");
-                SetStatusShow(DevStatusBitmapGetter.Get(DeviceStatus.None), "PleaseSelectedADevice");
+                SetStatusShow(DevStatusBitmapGetter.Get(DeviceState.None), "PleaseSelectedADevice");
             });
         }
         private async void SetByDeviceSimpleInfoAsync(DeviceBasicInfo devSimpleInfo)
@@ -105,19 +105,19 @@ namespace AutumnBox.GUI.UI.FuncPanels
             {
                 CurrentDeviceAndroidVersion = null;
             }
-            switch (devSimpleInfo.Status)
+            switch (devSimpleInfo.State)
             {
-                case DeviceStatus.Fastboot:
-                    SetStatusShow(DevStatusBitmapGetter.Get(devSimpleInfo.Status), "DeviceInFastboot");
+                case DeviceState.Fastboot:
+                    SetStatusShow(DevStatusBitmapGetter.Get(devSimpleInfo.State), "DeviceInFastboot");
                     break;
-                case DeviceStatus.Recovery:
-                    SetStatusShow(DevStatusBitmapGetter.Get(devSimpleInfo.Status), "DeviceInRecovery");
+                case DeviceState.Recovery:
+                    SetStatusShow(DevStatusBitmapGetter.Get(devSimpleInfo.State), "DeviceInRecovery");
                     break;
-                case DeviceStatus.Poweron:
-                    SetStatusShow(DevStatusBitmapGetter.Get(devSimpleInfo.Status), "DeviceInRunning");
+                case DeviceState.Poweron:
+                    SetStatusShow(DevStatusBitmapGetter.Get(devSimpleInfo.State), "DeviceInRunning");
                     break;
-                case DeviceStatus.Sideload:
-                    SetStatusShow(DevStatusBitmapGetter.Get(devSimpleInfo.Status), "DeviceInSideload");
+                case DeviceState.Sideload:
+                    SetStatusShow(DevStatusBitmapGetter.Get(devSimpleInfo.State), "DeviceInSideload");
                     break;
             }
             //await Task.Run(() => { Thread.Sleep(1000); });

@@ -40,36 +40,36 @@ namespace AutumnBox.Basic.Flows
         /// 执行完毕是否需要重启
         /// </summary>
         protected virtual bool NeedReboot { get; } = true;
-        protected ShellOutput _shellOutput;
+        protected CommandExecuterResult _executeResult;
         private ToolKit<FlowArgs> _toolKit;
         protected virtual bool TryFixDeviceAlreadyProvisioned()
         {
             Logger.T("<already provisioned error!> try to fix.....");
-            var resultStep1 = _toolKit.Executer.QuicklyShell(_toolKit.Args.DevBasicInfo, "settings put global device_provisioned 0");
-            var resultStep2 = _toolKit.Executer.QuicklyShell(_toolKit.Args.DevBasicInfo, Command);
-            var resultStep3 = _toolKit.Executer.QuicklyShell(_toolKit.Args.DevBasicInfo, "settings put global device_provisioned 1");
-            Logger.T("fix result ->" + (resultStep1.IsSuccess && resultStep2.IsSuccess && resultStep3.IsSuccess));
-            Logger.T("fixing output ->\n" + resultStep1.OutputData.ToString());
-            Logger.T(resultStep2.OutputData.ToString());
-            Logger.T(resultStep3.OutputData.ToString());
-            return resultStep1.IsSuccess && resultStep2.IsSuccess && resultStep3.IsSuccess;
+            var resultStep1 = _toolKit.Executer.QuicklyShell(_toolKit.Args.DevBasicInfo.Serial, "settings put global device_provisioned 0");
+            var resultStep2 = _toolKit.Executer.QuicklyShell(_toolKit.Args.DevBasicInfo.Serial, Command);
+            var resultStep3 = _toolKit.Executer.QuicklyShell(_toolKit.Args.DevBasicInfo.Serial, "settings put global device_provisioned 1");
+            Logger.T("fix result ->" + (resultStep1.IsSuccessful && resultStep2.IsSuccessful && resultStep3.IsSuccessful));
+            Logger.T("fixing output ->\n" + resultStep1.Output.ToString());
+            Logger.T(resultStep2.Output.ToString());
+            Logger.T(resultStep3.Output.ToString());
+            return resultStep1.IsSuccessful && resultStep2.IsSuccessful && resultStep3.IsSuccessful;
         }
-        [LogProperty(TAG="MM")]
+        [LogProperty(TAG = "MM")]
         protected override OutputData MainMethod(ToolKit<FlowArgs> toolKit)
         {
             Logger.D("the command ->" + Command);
             _toolKit = toolKit;
-            _shellOutput = toolKit.Executer.QuicklyShell(toolKit.Args.DevBasicInfo, Command);
-            return _shellOutput.OutputData;
+            _executeResult = toolKit.Executer.QuicklyShell(toolKit.Args.DevBasicInfo.Serial, Command);
+            return _executeResult.Output;
         }
         [LogProperty(TAG = "DeviceOwner setter....Analyzing Result", Show = true)]
         protected override void AnalyzeResult(DeviceOwnerSetterResult result)
         {
             base.AnalyzeResult(result);
-            result.ShellOutput = _shellOutput;
+            result.ShellOutput = _executeResult.ToShellOutput();
             result.OutputData = result.ShellOutput.OutputData;
             //如果结果输出中包含了success字样,则成功了,设置结果值并返回
-            if (result.OutputData.Contains("success",true))
+            if (result.OutputData.Contains("success", true))
             {
                 result.ErrorType = DeviceOwnerSetterErrType.None;
                 result.ResultType = ResultType.Successful;

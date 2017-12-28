@@ -157,7 +157,7 @@
 
     <!--静态界面标记-->
     <s:String x:Key="RebootTo">重启到</s:String>
-    <s:String x:Key="DonateDescription">我是一个没有赚钱能力的穷苦学生,您的捐赠将对我的莫大的鼓励</s:String>
+    <s:String x:Key="DonateDescription">我是一个穷苦的学生,您的捐赠是对我莫大的鼓励</s:String>
     <s:String x:Key="PleaseSelected">请选择</s:String>
     <s:String x:Key="PleaseSelectFloderPackageWireFlash">请选择线刷包文件夹</s:String>
     <s:String x:Key="OutputRealTime">实时输出</s:String>

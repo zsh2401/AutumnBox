@@ -11,13 +11,12 @@
 * Company: I am free man
 *
 \* =============================================================================*/
-//#define SHOW_COMMAND
+#define SHOW_COMMAND
 namespace AutumnBox.Basic.Executer
 {
     using AutumnBox.Support.CstmDebug;
     using System;
     using System.Diagnostics;
-    using static Basic.DebugSettings;
     public delegate void OutputReceivedEventHandler(object sender, OutputReceivedEventArgs e);
     public delegate void ProcessStartedEventHandler(object sender, ProcessStartedEventArgs e);
     public class OutputReceivedEventArgs : EventArgs
@@ -93,9 +92,10 @@ namespace AutumnBox.Basic.Executer
             StartInfo.FileName = fileName;
             StartInfo.Arguments = args;
             Start();
-            ProcessStarted?.Invoke(this,new ProcessStartedEventArgs() { Pid = this.Id});
+            ProcessStarted?.Invoke(this, new ProcessStartedEventArgs() { Pid = this.Id });
             BeginRead();
             WaitForExit();
+            Logger.D(ExitCode.ToString());
             CancelRead();
             return _tempOut;
         }

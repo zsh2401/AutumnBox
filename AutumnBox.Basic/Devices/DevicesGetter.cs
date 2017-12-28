@@ -20,23 +20,19 @@ namespace AutumnBox.Basic.Devices
     using System.Diagnostics;
     using System.Text.RegularExpressions;
 
-    public sealed class DevicesGetter : IDevicesGetter, IDisposable
+    public sealed class DevicesGetter : IDevicesGetter
     {
-        private CExecuter executer = new CExecuter();
+        private CommandExecuter executer = new CommandExecuter();
         private static readonly Command adbDevicesCmd = Command.MakeForAdb("devices");
         private static readonly Command fbDevicesCmd = Command.MakeForFastboot("devices");
-        public void Dispose()
-        {
-            executer.Dispose();
-        }
         public DevicesList GetDevices()
         {
             lock (executer)
             {
                 
                 DevicesList devList = new DevicesList();
-                var adbDevicesOutput = executer.Execute(adbDevicesCmd);
-                var fastbootDevicesOutput = executer.Execute(fbDevicesCmd);
+                var adbDevicesOutput = executer.Execute(adbDevicesCmd).Output;
+                var fastbootDevicesOutput = executer.Execute(fbDevicesCmd).Output;
                 AdbParse(adbDevicesOutput ,ref devList);
                 FastbootParse(fastbootDevicesOutput, ref devList);
                 return devList;
@@ -51,7 +47,7 @@ namespace AutumnBox.Basic.Devices
             {
                 devList.Add(DeviceBasicInfo.Make(
                     match.Result("${serial}"),
-                    match.Result("${status}").ToDeviceStatus()));
+                    match.Result("${status}").ToDeviceState()));
             }
         }
         private static void FastbootParse(OutputData o, ref DevicesList devList)
@@ -61,7 +57,7 @@ namespace AutumnBox.Basic.Devices
             {
                 devList.Add(DeviceBasicInfo.Make(
                     match.Result("${serial}"),
-                    match.Result("${status}").ToDeviceStatus()));
+                    match.Result("${status}").ToDeviceState()));
             }
         }
     }

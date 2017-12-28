@@ -179,7 +179,7 @@ namespace AutumnBox.Basic.Function
         {
             if (disposing)
             {
-                _toolsBundle.Executer.Dispose();
+                //_toolsBundle.Executer.Dispose();
                 ForceStop();
             }
             GC.SuppressFinalize(this);
@@ -187,7 +187,7 @@ namespace AutumnBox.Basic.Function
         #region 虚方法
         protected virtual void Create(BundleForCreate bundle)
         {
-            CExecuter executer = new CExecuter();
+            CommandExecuter executer = new CommandExecuter();
             _toolsBundle = new BundleForTools(executer, bundle.Args);
             executer.OutputReceived += (s, e) =>
             {

@@ -19,7 +19,7 @@ namespace AutumnBox.Basic.Flows
     {
         protected override OutputData MainMethod(ToolKit<NetDeviceAdderArgs> toolKit)
         {
-            return toolKit.Executer.Execute(Command.MakeForCmd($"{ConstData.FullAdbFileName} ${toolKit.Args.DevBasicInfo.Serial.ToFullSerial()} tcpip 5555 && echo ___errorcode%errorlevel%"));
+            throw new System.Exception();
         }
         protected override void AnalyzeResult(FlowResult result)
         {

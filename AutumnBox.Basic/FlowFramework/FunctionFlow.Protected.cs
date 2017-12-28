@@ -67,7 +67,6 @@ namespace AutumnBox.Basic.FlowFramework
         }
         protected void Dispose(bool disposing)
         {
-            if (disposing) _executer.Dispose();
             GC.SuppressFinalize(this);
         }
     }

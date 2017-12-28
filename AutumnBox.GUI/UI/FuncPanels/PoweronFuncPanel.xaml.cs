@@ -34,7 +34,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
         public void Refresh(DeviceBasicInfo deviceSimpleInfo)
         {
             this._currentDevInfo = deviceSimpleInfo;
-            bool status = deviceSimpleInfo.Status == DeviceStatus.Poweron;
+            bool status = deviceSimpleInfo.State == DeviceState.Poweron;
             UIHelper.SetGridButtonStatus(MainGrid, status);
         }
 

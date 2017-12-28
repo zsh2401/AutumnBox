@@ -37,7 +37,7 @@ namespace AutumnBox.Basic.Function.Modules
             this._Args = (RebootArgs)bundle.Args;
             switch (_Args.nowStatus)
             {
-                case DeviceStatus.Fastboot:
+                case DeviceState.Fastboot:
                     t = ExecuterType.Fastboot;
                     break;
                 default:
@@ -47,7 +47,7 @@ namespace AutumnBox.Basic.Function.Modules
         }
         protected override CheckResult Check(ModuleArgs args)
         {
-            bool isRebootToRecoveryOnBootloader = (_Args.nowStatus == DeviceStatus.Fastboot && _Args.rebootOption == RebootOptions.Recovery);
+            bool isRebootToRecoveryOnBootloader = (_Args.nowStatus == DeviceState.Fastboot && _Args.rebootOption == RebootOptions.Recovery);
             if (isRebootToRecoveryOnBootloader) return CheckResult.DeviceStatusError;
             else return CheckResult.OK;
         }
@@ -66,11 +66,11 @@ namespace AutumnBox.Basic.Function.Modules
             {
                 command = "reboot recovery";
             }
-            else if (_Args.rebootOption == RebootOptions.Snapdragon9008 && _Args.nowStatus != DeviceStatus.Fastboot)
+            else if (_Args.rebootOption == RebootOptions.Snapdragon9008 && _Args.nowStatus != DeviceState.Fastboot)
             {
                 command = "reboot edl";
             }
-            else if (_Args.rebootOption == RebootOptions.Snapdragon9008 && _Args.nowStatus == DeviceStatus.Fastboot)
+            else if (_Args.rebootOption == RebootOptions.Snapdragon9008 && _Args.nowStatus == DeviceState.Fastboot)
             {
                 command = "reboot-edl";
             }

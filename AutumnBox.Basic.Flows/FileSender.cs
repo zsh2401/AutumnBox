@@ -24,7 +24,7 @@ namespace AutumnBox.Basic.Flows
         protected override OutputData MainMethod(ToolKit<FileSenderArgs> toolKit)
         {
             string command = $"push \"{toolKit.Args.PathFrom}\" \"{toolKit.Args.PathTo + "/" + toolKit.Args.FileName}\"";
-            return toolKit.Ae(command);
+            return toolKit.Ae(command).Output;
         }
         protected override void AnalyzeResult(FileSenderResult result)
         {

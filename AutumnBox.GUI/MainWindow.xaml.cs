@@ -50,7 +50,7 @@ namespace AutumnBox.GUI
             DevicesPanel.Monitor = App.StaticProperty.DevicesListener;
             DevicesPanel.SelectionChanged += (s, e) =>
             {
-                if (this.DevicesPanel.CurrentSelect.DevInfo.Status == DeviceStatus.None)//如果没选择
+                if (this.DevicesPanel.CurrentSelect.DevInfo.State == DeviceState.None)//如果没选择
                 {
                     Reset();
                 }

@@ -115,7 +115,7 @@ namespace AutumnBox.GUI.Helper
         {
             Logger.T("Exiting.....");
             App.StaticProperty.DevicesListener.Cancel();
-            new CExecuter().Execute(Command.MakeForAdb("kill-server"));
+            new CommandExecuter().Execute(Command.MakeForAdb("kill-server"));
             Environment.Exit(exitCode);
         }
         internal readonly static AutoGC AutoGC = new AutoGC();

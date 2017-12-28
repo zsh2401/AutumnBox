@@ -30,11 +30,11 @@ namespace AutumnBox.Basic.Flows
         {
             if (toolKit.Args.IsHide)
             {
-                Result = toolKit.Executer.QuicklyShell(toolKit.Args.DevBasicInfo, _commandOfToHide);
+                Result = toolKit.Executer.QuicklyShell(toolKit.Args.DevBasicInfo.Serial, _commandOfToHide).ToShellOutput();
             }
             else
             {
-                Result = toolKit.Executer.QuicklyShell(toolKit.Args.DevBasicInfo, _commandOfUnhide);
+                Result = toolKit.Executer.QuicklyShell(toolKit.Args.DevBasicInfo.Serial, _commandOfUnhide).ToShellOutput();
             }
             return Result.OutputData;
         }

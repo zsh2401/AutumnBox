@@ -34,7 +34,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
 
         public void Reset()
         {
-            _currentDevInfo = new DeviceBasicInfo() { Status = DeviceStatus.None };
+            _currentDevInfo = new DeviceBasicInfo() { State = DeviceState.None };
             ButtonRebootToBootloader.IsEnabled = false;
             ButtonRebootToRecovery.IsEnabled = false;
             ButtonRebootToSystem.IsEnabled = false;
@@ -46,16 +46,16 @@ namespace AutumnBox.GUI.UI.FuncPanels
             _currentDevInfo = deviceSimpleInfo;
             this.Dispatcher.Invoke(() =>
             {
-                switch (deviceSimpleInfo.Status)
+                switch (deviceSimpleInfo.State)
                 {
-                    case DeviceStatus.Fastboot:
+                    case DeviceState.Fastboot:
                         ButtonRebootToBootloader.IsEnabled = true;
                         ButtonRebootToRecovery.IsEnabled = false;
                         ButtonRebootToSystem.IsEnabled = true;
                         ButtonRebootToSnapdragon9008.IsEnabled = true;
                         break;
-                    case DeviceStatus.Recovery:
-                    case DeviceStatus.Poweron:
+                    case DeviceState.Recovery:
+                    case DeviceState.Poweron:
                         ButtonRebootToBootloader.IsEnabled = true;
                         ButtonRebootToRecovery.IsEnabled = true;
                         ButtonRebootToSystem.IsEnabled = true;
@@ -76,7 +76,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
             var fmp = FunctionModuleProxy.Create<RebootOperator>(new RebootArgs(_currentDevInfo)
             {
                 rebootOption = RebootOptions.System,
-                nowStatus = _currentDevInfo.Status
+                nowStatus = _currentDevInfo.State
             });
             fmp.Finished += ((MainWindow)App.Current.MainWindow).FuncFinish;
             fmp.AsyncRun();
@@ -87,7 +87,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
             var fmp = FunctionModuleProxy.Create<RebootOperator>(new RebootArgs(_currentDevInfo)
             {
                 rebootOption = RebootOptions.Recovery,
-                nowStatus = _currentDevInfo.Status
+                nowStatus = _currentDevInfo.State
             });
             fmp.Finished += ((MainWindow)App.Current.MainWindow).FuncFinish;
             fmp.AsyncRun();
@@ -98,7 +98,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
             var fmp = FunctionModuleProxy.Create<RebootOperator>(new RebootArgs(_currentDevInfo)
             {
                 rebootOption = RebootOptions.Bootloader,
-                nowStatus = _currentDevInfo.Status
+                nowStatus = _currentDevInfo.State
             });
             fmp.Finished += ((MainWindow)App.Current.MainWindow).FuncFinish;
             fmp.AsyncRun();

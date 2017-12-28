@@ -31,7 +31,7 @@ namespace AutumnBox.Basic.Function.Args
     {
         public RebootArgs(DeviceBasicInfo device) : base(device) { }
         public RebootOptions rebootOption;
-        public DeviceStatus nowStatus;
+        public DeviceState nowStatus;
     }
     /// <summary>
     /// 用于活动启动器的参数

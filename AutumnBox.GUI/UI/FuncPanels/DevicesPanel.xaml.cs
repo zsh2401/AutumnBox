@@ -48,7 +48,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
                 {
                     connection.Reset(new DeviceBasicInfo()
                     {
-                        Status = DeviceStatus.None
+                        State = DeviceState.None
                     });
                 }
                 return connection;

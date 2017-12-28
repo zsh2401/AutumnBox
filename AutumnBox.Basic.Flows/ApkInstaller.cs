@@ -53,8 +53,8 @@ namespace AutumnBox.Basic.Flows
                 var args = new AApkInstalltionCompleteArgs()
                 {
                     ApkFileInfo = apkFileInfo,
-                    IsSuccess = r.Contains("success"),
-                    Output = r,
+                    IsSuccess = r.Output.Contains("success"),
+                    Output = r.Output,
                 };
                 AApkIstanlltionCompleted?.Invoke(this, args);
                 if (!args.NeedContinue) break;

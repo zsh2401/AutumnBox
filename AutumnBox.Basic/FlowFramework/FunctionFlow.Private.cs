@@ -19,7 +19,7 @@ namespace AutumnBox.Basic.FlowFramework
 {
     partial class FunctionFlow<TArgs, TResult>
     {
-        private CExecuter _executer;
+        private Executer.CommandExecuter _executer;
         private int? _pid;
         private TResult _resultTmp;
         private bool isForceStoped = false;

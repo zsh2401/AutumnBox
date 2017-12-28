@@ -32,7 +32,7 @@ namespace AutumnBox.Basic.FlowFramework
 
         public FunctionFlow()
         {
-            _executer = new CExecuter();
+            _executer = new CommandExecuter();
             _resultTmp = new TResult();
             TAG = new LogSender(this.GetType().Name, true);
             _executer.ProcessStarted += (s, e) =>

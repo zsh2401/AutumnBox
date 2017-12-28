@@ -20,7 +20,8 @@ namespace AutumnBox.Basic.Flows
     {
         protected override OutputData MainMethod(ToolKit<FlowArgs> toolKit)
         {
-            return toolKit.Executer.Execute(Command.MakeForCmd($"{ConstData.FullAdbFileName} ${toolKit.Args.DevBasicInfo.Serial.ToFullSerial()} usb && echo ___errorcode%errorlevel%"));
+            throw new Exception();
+            //return toolKit.Executer.Execute(Command.MakeForCmd($"{ConstData.FullAdbFileName} ${toolKit.Args.DevBasicInfo.Serial.ToFullSerial()} usb && echo ___errorcode%errorlevel%"));
         }
         protected override void AnalyzeResult(FlowResult result)
         {

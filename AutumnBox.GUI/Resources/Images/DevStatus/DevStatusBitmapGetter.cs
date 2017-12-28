@@ -30,16 +30,16 @@ namespace AutumnBox.GUI.Resources
         static DevStatusBitmapGetter() {
             currentAssembly = Assembly.GetExecutingAssembly();
         }
-        public static BitmapImage Get(DeviceStatus status) {
+        public static BitmapImage Get(DeviceState status) {
             string path = nodev;
             switch (status) {
-                case DeviceStatus.Fastboot:
+                case DeviceState.Fastboot:
                     path = fastboot;
                     break;
-                case DeviceStatus.Recovery:
+                case DeviceState.Recovery:
                     path = rec;
                     break;
-                case DeviceStatus.Poweron:
+                case DeviceState.Poweron:
                     path = poweron;
                     break;
             }

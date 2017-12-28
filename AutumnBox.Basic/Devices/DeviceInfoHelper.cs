@@ -25,7 +25,7 @@ namespace AutumnBox.Basic.Devices
     [LogProperty(TAG = "DeviceInfoHelper")]
     public static class DeviceInfoHelper
     {
-        private static CExecuter Executer = new CExecuter();
+        private static Executer.CommandExecuter Executer = new Executer.CommandExecuter();
         public static bool CheckRoot(Serial id)
         {
             using (AndroidShell shell = new AndroidShell(id))
@@ -47,22 +47,13 @@ namespace AutumnBox.Basic.Devices
                 FlashMemoryType = GetFlashMemoryType(serial),
             };
         }
-        public static DeviceStatus GetStatus(Serial serial)
+        public static DeviceState GetState(Serial serial)
         {
-            DeviceStatus status = DeviceStatus.None;
-            DevicesHelper.GetDevices().ForEach((i) =>
-            {
-                if (i.Serial == serial)
-                {
-                    status = i.Status;
-                }
-            });
-            return status;
+            return Executer.Execute(Command.MakeForAdb(serial, "get-state")).Output.All.ToString().ToDeviceState();
         }
-        [LogProperty(TAG = "displayinfo get")]
         public static int? GetDpi(Serial serial)
         {
-            var displayInfo = Executer.Execute(Command.MakeForAdb(serial, "shell \"dumpsys display | grep mBaseDisplayInfo\"")).LineAll[0];
+            var displayInfo = Executer.Execute(Command.MakeForAdb(serial, "shell \"dumpsys display | grep mBaseDisplayInfo\"")).Output.LineAll[0];
             Logger.D(displayInfo);
             var match = Regex.Match(displayInfo, @"^.+\bdensity\b.(?<dpi>[\d]{3}).\(.+$");
             try
@@ -78,7 +69,7 @@ namespace AutumnBox.Basic.Devices
         {
             try
             {
-                string output = (Executer.Execute(Command.MakeForAdb(serial, "shell \"dumpsys battery | grep level\"")).LineOut[0]);
+                string output = (Executer.Execute(Command.MakeForAdb(serial, "shell \"dumpsys battery | grep level\"")).Output.LineOut[0]);
                 Logger.T("BatteryLevel info  " + output);
                 return Convert.ToInt32(output.Split(':')[1].TrimStart());
             }
@@ -88,7 +79,7 @@ namespace AutumnBox.Basic.Devices
         {
             try
             {
-                string output = (Executer.Execute(Command.MakeForAdb(serial, "shell \"cat /proc/meminfo | grep MemTotal\"")).LineOut[0]);
+                string output = (Executer.Execute(Command.MakeForAdb(serial, "shell \"cat /proc/meminfo | grep MemTotal\"")).Output.LineOut[0]);
                 var m = Regex.Match(output, @"(?i)^\w+:[\t|\u0020]+(?<size>[\d]+).+$");
                 if (m.Success)
                 {
@@ -110,7 +101,7 @@ namespace AutumnBox.Basic.Devices
         {
             try
             {
-                var o = Executer.AdbExecute(serial, "shell df /sdcard/");
+                var o = Executer.Execute(Command.MakeForAdb(serial, "shell df /sdcard/")).Output;
                 var match = Regex.Match(o.All.ToString(), @"^.[\w|/]+[\t|\u0020]+(?<size>\d+\.?\d+G?) .+$", RegexOptions.Multiline);
                 string result = match.Result("${size}");
                 if (match.Success)
@@ -135,7 +126,7 @@ namespace AutumnBox.Basic.Devices
         {
             try
             {
-                string output = (Executer.Execute(Command.MakeForAdb(serial, "shell \"cat /proc/cpuinfo | grep Hardware\"")).LineOut[0]);
+                string output = (Executer.Execute(Command.MakeForAdb(serial, "shell \"cat /proc/cpuinfo | grep Hardware\"")).Output.LineOut[0]);
                 Logger.T("cpuinfo " + output);
                 var hehe = output.Split(' ');
                 return hehe[hehe.Length - 1];
@@ -156,7 +147,7 @@ namespace AutumnBox.Basic.Devices
         {
             try
             {
-                string output = (Executer.Execute(Command.MakeForAdb(serial, "shell \"cat /proc/hwinfo | grep LCD\"")).LineOut[0]);
+                string output = (Executer.Execute(Command.MakeForAdb(serial, "shell \"cat /proc/hwinfo | grep LCD\"")).Output.LineOut[0]);
                 Logger.T("hwinfo LCD " + output);
                 return output.Split(':')[1].TrimStart();
             }
@@ -166,41 +157,18 @@ namespace AutumnBox.Basic.Devices
         {
             try
             {
-                string output = (Executer.Execute(Command.MakeForAdb(serial, "shell \"cat /proc/hwinfo | grep EMMC\"")).LineOut[0]);
+                string output = (Executer.Execute(Command.MakeForAdb(serial, "shell \"cat /proc/hwinfo | grep EMMC\"")).Output.LineOut[0]);
                 Logger.T("EMMC info  " + output);
                 return output.Split(':')[1].TrimStart() + " EMMC";
             }
             catch (Exception e) { Logger.T("Get EMMC info fail", e); }
             try
             {
-                string output = (Executer.Execute(Command.MakeForAdb(serial, "shell \"cat /proc/hwinfo | grep UFS\"")).LineOut[0]);
+                string output = (Executer.Execute(Command.MakeForAdb(serial, "shell \"cat /proc/hwinfo | grep UFS\"")).Output.LineOut[0]);
                 Logger.T("UFS info  " + output);
                 return output.Split(':')[1].TrimStart() + " UFS";
             }
             catch (Exception e) { Logger.T("Get UFS info fail", e); return null; }
-        }
-        /// <summary>
-        /// 将string的状态转为DevicesStatus枚举
-        /// </summary>
-        /// <param name="statusString"></param>
-        /// <returns></returns>
-        public static DeviceStatus StringStatusToEnumStatus(string statusString)
-        {
-            switch (statusString)
-            {
-                case "device":
-                    return DeviceStatus.Poweron;
-                case "recovery":
-                    return DeviceStatus.Recovery;
-                case "fastboot":
-                    return DeviceStatus.Fastboot;
-                case "sideload":
-                    return DeviceStatus.Sideload;
-                case "unauthorized":
-                    return DeviceStatus.Unauthorized;
-                default:
-                    return DeviceStatus.None;
-            }
         }
     }
 }

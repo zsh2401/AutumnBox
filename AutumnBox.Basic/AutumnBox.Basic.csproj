@@ -53,8 +53,8 @@
     <Compile Include="Devices\DeviceBasicInfo.cs" />
     <Compile Include="Executer\AndroidShell.cs" />
     <Compile Include="Executer\AndroidShellEvents.cs" />
-    <Compile Include="Executer\CExecuter.cs" />
-    <Compile Include="Executer\ExecuterInOrder.cs" />
+    <Compile Include="Executer\CommandExecuter.cs" />
+    <Compile Include="Executer\CommandExecuterResult.cs" />
     <Compile Include="Executer\IOutSender.cs" />
     <Compile Include="Executer\ShellOutput.cs" />
     <Compile Include="FlowFramework\FunctionFlow.cs" />
@@ -94,7 +94,7 @@
     <Compile Include="Executer\Command.cs" />
     <Compile Include="Function\FunctionModule.cs" />
     <Compile Include="Devices\DevicesMonitor.cs" />
-    <Compile Include="Devices\DeviceStatus.cs" />
+    <Compile Include="Devices\DeviceState.cs" />
     <Compile Include="Devices\DevicesHelper.cs" />
     <Compile Include="Executer\IOutReceiver.cs" />
     <Compile Include="Function\ModuleStatus.cs" />

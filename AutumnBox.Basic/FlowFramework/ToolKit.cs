@@ -18,14 +18,14 @@ namespace AutumnBox.Basic.FlowFramework
 {
     public class ToolKit<TArgs> where TArgs : FlowArgs
     {
-        public readonly Func<string, OutputData> Ae;
-        public readonly Func<string, OutputData> Fe;
-        public readonly CExecuter Executer;
+        public readonly Func<string, CommandExecuterResult> Ae;
+        public readonly Func<string, CommandExecuterResult> Fe;
+        public readonly CommandExecuter Executer;
         public TArgs Args;
-        public ToolKit(TArgs args, CExecuter executer = null)
+        public ToolKit(TArgs args, CommandExecuter executer = null)
         {
             Args = args;
-            Executer = executer ?? new CExecuter();
+            Executer = executer ?? new CommandExecuter();
             Ae = (command) =>
             { return Executer.Execute(Command.MakeForAdb(Args.DevBasicInfo.Serial, command)); };
             Fe = (command) =>

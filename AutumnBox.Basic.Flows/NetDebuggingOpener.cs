@@ -19,7 +19,7 @@ namespace AutumnBox.Basic.Flows
     {
         protected override OutputData MainMethod(ToolKit<FlowArgs> toolKit)
         {
-            return toolKit.Ae("tcpip 5555");
+            return toolKit.Ae("tcpip 5555").Output;
         }
     }
 }

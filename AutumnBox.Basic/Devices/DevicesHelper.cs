@@ -27,10 +27,7 @@ namespace AutumnBox.Basic.Devices
         /// <returns>设备列表</returns>
         public static DevicesList GetDevices()
         {
-            using (DevicesGetter getter = new DevicesGetter())
-            {
-                return getter.GetDevices();
-            }
+            return new DevicesGetter().GetDevices();
         }
     }
 }

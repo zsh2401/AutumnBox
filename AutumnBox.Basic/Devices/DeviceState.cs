@@ -14,29 +14,29 @@
 namespace AutumnBox.Basic.Devices
 {
     public static class DeviceStatusHelper {
-        public static DeviceStatus ToDeviceStatus(this string strStatus) {
+        public static DeviceState ToDeviceState(this string strStatus) {
             switch (strStatus) {
                 case "device":
-                    return DeviceStatus.Poweron;
+                    return DeviceState.Poweron;
                 case "recovery":
-                    return DeviceStatus.Recovery;
+                    return DeviceState.Recovery;
                 case "fastboot":
-                    return DeviceStatus.Fastboot;
+                    return DeviceState.Fastboot;
                 case "sideload":
-                    return DeviceStatus.Sideload;
+                    return DeviceState.Sideload;
                 case "unauthorized":
-                    return DeviceStatus.Unauthorized;
+                    return DeviceState.Unauthorized;
                 case "offline":
-                    return DeviceStatus.Offline;
+                    return DeviceState.Offline;
                 default:
-                    return DeviceStatus.Unknow;
+                    return DeviceState.Unknow;
             }
         }
     }
     /// <summary>
     /// 设备状态枚举
     /// </summary>
-    public enum DeviceStatus
+    public enum DeviceState
     {
         /// <summary>
         /// 处于offline

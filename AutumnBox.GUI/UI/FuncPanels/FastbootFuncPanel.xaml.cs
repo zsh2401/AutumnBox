@@ -25,7 +25,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
         public void Refresh(DeviceBasicInfo devInfo)
         {
             _currentDeviceInfo = devInfo;
-            UIHelper.SetGridButtonStatus(MainGrid, _currentDeviceInfo.Status == DeviceStatus.Fastboot);
+            UIHelper.SetGridButtonStatus(MainGrid, _currentDeviceInfo.State == DeviceState.Fastboot);
         }
 
         public void Reset()

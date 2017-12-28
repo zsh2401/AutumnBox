@@ -21,13 +21,14 @@ using AutumnBox.Basic.Flows.Result;
 
 namespace AutumnBox.Basic.Flows
 {
-    public class BreventServiceActivatorArgs : FlowArgs {
+    public class BreventServiceActivatorArgs : FlowArgs
+    {
         public bool FixAndroidOAdb { get; set; } = false;
     }
     public class BreventServiceActivator : FunctionFlow<BreventServiceActivatorArgs, BreventServiceActivatorResult>
     {
         private int retCode = 0;
-        private ShellOutput _shellOutput;
+        private CommandExecuterResult _executeResult;
         public static readonly string AppPackageName = "me.piebridge.brevent";
         private static readonly string _defaultShellCommand = "sh /data/data/me.piebridge.brevent/brevent.sh";
         protected override OutputData MainMethod(ToolKit<BreventServiceActivatorArgs> toolKit)
@@ -35,14 +36,14 @@ namespace AutumnBox.Basic.Flows
             FunctionModuleProxy.Create<ActivityLauncher>(new ActivityLaunchArgs(toolKit.Args.DevBasicInfo)
             { PackageName = "me.piebridge.brevent", ActivityName = ".ui.BreventActivity" }).SyncRun();
             Thread.Sleep(2000);
-            _shellOutput = toolKit.Executer.QuicklyShell(toolKit.Args.DevBasicInfo.Serial.ToString(), _defaultShellCommand);
-            retCode = _shellOutput.ReturnCode;
-            return _shellOutput.OutputData;
+            _executeResult = toolKit.Executer.QuicklyShell(toolKit.Args.DevBasicInfo.Serial, _defaultShellCommand);
+            retCode = _executeResult.ExitCode;
+            return _executeResult.Output;
         }
         protected override void AnalyzeResult(BreventServiceActivatorResult result)
         {
             base.AnalyzeResult(result);
-            switch (_shellOutput.ReturnCode)
+            switch (_executeResult.ExitCode)
             {
                 case 0://No error
                     result.ResultType = ResultType.Successful;

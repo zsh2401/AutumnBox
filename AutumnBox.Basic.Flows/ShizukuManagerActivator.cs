@@ -32,7 +32,7 @@ namespace AutumnBox.Basic.Flows
             FunctionModuleProxy.Create<ActivityLauncher>(new ActivityLaunchArgs(toolKit.Args.DevBasicInfo)
             { PackageName = AppPackageName, ActivityName = "moe.shizuku.manager.MainActivity" }).SyncRun();
             Thread.Sleep(2000);
-            _shellOutput = toolKit.Executer.QuicklyShell(toolKit.Args.DevBasicInfo, _defaultShell);
+            _shellOutput = toolKit.Executer.QuicklyShell(toolKit.Args.DevBasicInfo.Serial, _defaultShell).ToShellOutput();
             return _shellOutput.OutputData;
         }
         protected override void AnalyzeResult(AdvanceResult result)

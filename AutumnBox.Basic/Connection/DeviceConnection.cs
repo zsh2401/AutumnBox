@@ -23,7 +23,7 @@ namespace AutumnBox.Basic.Connection
         }
         public void Reset()
         {
-            this.DevInfo = new DeviceBasicInfo() { Status = DeviceStatus.None };
+            this.DevInfo = new DeviceBasicInfo() { State = DeviceState.None };
         }
         public AndroidShell GetShell()
         {
