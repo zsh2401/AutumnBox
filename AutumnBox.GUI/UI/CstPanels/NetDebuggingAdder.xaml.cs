@@ -1,4 +1,5 @@
-﻿using AutumnBox.Basic.Flows;
+﻿using AutumnBox.Basic.FlowFramework;
+using AutumnBox.Basic.Flows;
 using AutumnBox.Support.CstmDebug;
 using System;
 using System.Collections.Generic;
@@ -22,17 +23,13 @@ namespace AutumnBox.GUI.UI.CstPanels
     /// <summary>
     /// NetDebuggingAdder.xaml 的交互逻辑
     /// </summary>
-    public partial class NetDebuggingAdder : UserControl/*, ICloseNoticeReceivable*/
+    public partial class NetDebuggingAdder : UserControl, ICommunicableWithFastGrid
     {
-        private NetDeviceAdder adder;
+        private NetDeviceAdder adder = null;
+        public event EventHandler CallFatherToClose;
         public NetDebuggingAdder()
         {
             InitializeComponent();
-        }
-
-        public void FatherOnClosing()
-        {
-            adder?.ForceStop();
         }
 
         private async void Button_Click(object sender, RoutedEventArgs e)
@@ -40,24 +37,32 @@ namespace AutumnBox.GUI.UI.CstPanels
             NetDeviceAdderArgs args = null;
             try
             {
-                IPAddress ip = IPAddress.Parse(TBoxIP.ToString());
+                IPAddress ip = IPAddress.Parse(TBoxIP.Text.ToString());
                 args = new NetDeviceAdderArgs() { IPEndPoint = new IPEndPoint(ip, int.Parse(TBoxPort.Text)) };
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                TBStatus.Text = "Please Check you input";
+                Logger.D("parse textbox input error", ex);
+                new FastGrid(this.GridMain, new DevicesPanelMessageBox(App.Current.Resources["msgCheckInput"].ToString()));
                 return;
             }
             adder = new NetDeviceAdder();
             adder.Init(args);
-            BtnAdd.Content = "Adding...";
+            BtnAdd.Content = App.Current.Resources["btnConnecting"];
             var result = await Task.Run(() =>
             {
                 var r = adder.Run();
                 return r;
             });
-            BtnAdd.Content = App.Current.Resources["btnAddNetdebuggingDevice"];
-            TBStatus.Text = result.ExitCode == 0 ? "Added..." : "Failed";
+            BtnAdd.Content = App.Current.Resources["btnConnect"];
+            if (result.ResultType == ResultType.Successful)
+            {
+                CallFatherToClose?.Invoke(this, new EventArgs());
+            }
+            else
+            {
+                new FastGrid(this.GridMain, new DevicesPanelMessageBox(App.Current.Resources["msgFailed"].ToString()));
+            }
         }
 
         private const string ipCharPattern = @"\d|\.";
@@ -70,15 +75,14 @@ namespace AutumnBox.GUI.UI.CstPanels
         {
             e.Handled = !Regex.IsMatch(e.Text, @"\d");
         }
-
-        private void TBoxIP_TextChanged(object sender, TextChangedEventArgs e)
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            TBStatus.Text = "...";
+            //TBStatus.Text = "...";
         }
 
-        private void TBoxPort_TextChanged(object sender, TextChangedEventArgs e)
+        public void OnFatherClosed()
         {
-            TBStatus.Text = "...";
+            adder?.ForceStop();
         }
     }
 }

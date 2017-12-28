@@ -60,7 +60,7 @@ namespace AutumnBox.Basic.FlowFramework
             {
                 Finished(this, e);
             }
-            else
+            else if (!_isSync)
             {
                 OnAnyFinished(this, new FinishedEventArgs<FlowResult>(e.Result));
             }

@@ -34,27 +34,7 @@ namespace AutumnBox.ConsoleTester
         };
         unsafe static int Main(string[] args)
         {
-            var opener = new NetDebuggingOpener();
-            opener.Init(new NetDebuggingOpenerArgs() { DevBasicInfo = mi6 });
-            var openresult = opener.Run();
-
-            var adder = new NetDeviceAdder();
-            adder.Init(new NetDeviceAdderArgs() { /*DevBasicInfo = mi6, */IPEndPoint = new IPEndPoint(IPAddress.Parse("192.168.0.12"), 5555) });
-            var adderresult = adder.Run();
-            new DevicesGetter().GetDevices().ForEach(dev => Console.WriteLine(dev.Serial));
-
-            //var closer = new NetDebuggingCloser();
-            //closer.Init(new Basic.FlowFramework.FlowArgs() { DevBasicInfo = mi6net });
-            //var closeResult = closer.Run();
-
-            //var remover = new NetDeviceRemover();
-            //remover.Init(new Basic.FlowFramework.FlowArgs() { DevBasicInfo = mi6net });
-            //var removerResult = remover.Run();
-
-            Console.WriteLine(openresult.ExitCode + " " + adderresult.ExitCode + " " /*+ removerResult.ExitCode*/);
-            new DevicesGetter().GetDevices().ForEach(dev => Console.WriteLine(dev.Serial));
-            Console.ReadKey();
-            new DevicesGetter().GetDevices().ForEach(dev => Console.WriteLine(dev.Serial));
+            Console.WriteLine(null == null);
             Console.ReadKey();
             return 0;
         }

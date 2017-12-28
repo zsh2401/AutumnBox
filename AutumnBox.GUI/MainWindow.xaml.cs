@@ -64,7 +64,7 @@ namespace AutumnBox.GUI
                 this.Dispatcher.Invoke(() =>
                 {
                     Logger.D(this, "DevInfoPanel refreshing");
-                    BoxHelper.ShowLoadingDialog();
+                    //BoxHelper.ShowLoadingDialog();
                 });
             };
             FunctionFlowBase.AnyFinished += FlowFinished;
@@ -74,7 +74,7 @@ namespace AutumnBox.GUI
                 this.Dispatcher.Invoke(() =>
                 {
                     Logger.D(this, "DevInfoPanel refreshed...");
-                    BoxHelper.CloseLoadingDialog();
+                    //BoxHelper.CloseLoadingDialog();
                 });
             };
             AdbHelper.AdbServerStartsFailed += (s, e) =>

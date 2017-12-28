@@ -24,7 +24,7 @@ namespace AutumnBox.Basic.Devices
     /// <summary>
     /// 简单的仅包含设备id和设备状态的结构体,主要用于设备列表 DevicesList
     /// </summary>
-    public struct DeviceBasicInfo
+    public struct DeviceBasicInfo : IEquatable<DeviceBasicInfo>
     {
         public Serial Serial { get; set; }
         public DeviceState State { get; set; }
@@ -69,7 +69,7 @@ namespace AutumnBox.Basic.Devices
         {
             if (obj is DeviceBasicInfo)
             {
-                return this == (DeviceBasicInfo)obj;
+                return Equals((DeviceBasicInfo)obj);
             }
             else
             {
@@ -84,6 +84,11 @@ namespace AutumnBox.Basic.Devices
         public override int GetHashCode()
         {
             return base.GetHashCode();
+        }
+
+        public bool Equals(DeviceBasicInfo other)
+        {
+            return this.State == other.State && this.Serial == other.Serial;
         }
     }
 }

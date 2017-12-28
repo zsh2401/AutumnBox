@@ -25,6 +25,7 @@ namespace AutumnBox.GUI.UI.CstPanels
         private readonly Panel _father;
         private readonly ThicknessAnimation riseAnimation;
         private readonly ThicknessAnimation hideAnimation;
+        private ICommunicableWithFastGrid communicableChirden;
         public FastGrid(Panel father, UIElement chirden, Brush background = null)
         {
             InitializeComponent();
@@ -34,6 +35,11 @@ namespace AutumnBox.GUI.UI.CstPanels
             Height = _father.ActualHeight;
             Width = _father.ActualWidth;
             _father.Children.Add(this);
+            if (chirden is ICommunicableWithFastGrid)
+            {
+                communicableChirden = (ICommunicableWithFastGrid)chirden;
+                communicableChirden.CallFatherToClose += (s, e) => { Close(); };
+            }
             riseAnimation = new ThicknessAnimation()
             {
                 From = new Thickness(0, _father.ActualHeight, 0, 0),
@@ -61,10 +67,14 @@ namespace AutumnBox.GUI.UI.CstPanels
         {
             BeginAnimation(MarginProperty, riseAnimation);
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
+        public void Close()
         {
             BeginAnimation(MarginProperty, hideAnimation);
+            communicableChirden?.OnFatherClosed();
+        }
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }

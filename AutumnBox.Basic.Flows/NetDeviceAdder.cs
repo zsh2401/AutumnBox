@@ -13,13 +13,13 @@ using System.Net;
 
 namespace AutumnBox.Basic.Flows
 {
-    public class NetDeviceAdderArgs : FlowArgs
+    public sealed class NetDeviceAdderArgs : FlowArgs
     {
         public IPEndPoint IPEndPoint { get; set; }
     }
-    public class NetDeviceAdder : FunctionFlow<NetDeviceAdderArgs, AdvanceResult>
+    public sealed class NetDeviceAdder : FunctionFlow<NetDeviceAdderArgs, AdvanceResult>
     {
-        CommandExecuterResult _result;
+        private CommandExecuterResult _result;
         protected override OutputData MainMethod(ToolKit<NetDeviceAdderArgs> toolKit)
         {
             _result = toolKit.Executer.Execute(Command.MakeForAdb($"connect {toolKit.Args.IPEndPoint.ToString()}"));
@@ -30,6 +30,9 @@ namespace AutumnBox.Basic.Flows
             base.AnalyzeResult(result);
             result.ExitCode = _result.ExitCode;
             result.ResultType = _result.IsSuccessful ? ResultType.Successful : ResultType.Unsuccessful;
+            if (result.OutputData.Contains("unable")) {
+                result.ResultType = ResultType.Unsuccessful;
+            }
         }
     }
 }

@@ -55,6 +55,20 @@ namespace AutumnBox.GUI.UI.FuncPanels
                 return connection;
             }
         }
+        private DeviceBasicInfo _currentSelectDeviceInfo
+        {
+            get
+            {
+                try
+                {
+                    return (DeviceBasicInfo)ListBoxMain.SelectedItem;
+                }
+                catch (NullReferenceException)
+                {
+                    return new DeviceBasicInfo() { State = DeviceState.None };
+                }
+            }
+        }
         public event EventHandler SelectionChanged;
         public DevicesPanel()
         {
@@ -78,7 +92,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
         }
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (ListBoxMain.SelectedIndex > -1)
+            if (ListBoxMain.SelectedIndex > -1 && _currentSelectDeviceInfo.State == DeviceState.Poweron)
             {
                 this.BtnEnableDisableNetDebugging.Visibility = Visibility.Visible;
                 if (CurrentSelectionIsNetDebugging)
@@ -99,7 +113,14 @@ namespace AutumnBox.GUI.UI.FuncPanels
 
         private void BtnEnableDisableNetDebugging_Click(object sender, RoutedEventArgs e)
         {
-            
+            if (CurrentSelectionIsNetDebugging)
+            {
+                new FastGrid(this.GridMain, new CloseNetDebugging(_currentSelectDeviceInfo.Serial));
+            }
+            else
+            {
+                new FastGrid(this.GridMain, new OpenNetDebugging(_currentSelectDeviceInfo.Serial));
+            }
         }
 
         private void BtnAddNetDebuggingDevice_Click(object sender, RoutedEventArgs e)

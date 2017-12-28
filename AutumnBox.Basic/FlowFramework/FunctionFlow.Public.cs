@@ -58,8 +58,10 @@ namespace AutumnBox.Basic.FlowFramework
                 MainFlow();
             });
         }
+        private bool _isSync = false;
         public TResult Run()
         {
+            _isSync = true;
             Logger.T("Run start sync....");
             if (Args == null) throw new Exception("have not init!!!! try Init()");
             MainFlow();

@@ -159,12 +159,21 @@
     <Compile Include="UI\CstPanels\About.xaml.cs">
       <DependentUpon>About.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\CstPanels\CloseNetDebugging.xaml.cs">
+      <DependentUpon>CloseNetDebugging.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\CstPanels\DevicesPanelMessageBox.xaml.cs">
+      <DependentUpon>DevicesPanelMessageBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\CstPanels\Donate.xaml.cs">
       <DependentUpon>Donate.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\CstPanels\ICloseNoticeReceivable.cs" />
+    <Compile Include="UI\CstPanels\ICommunicableWithFastGrid.cs" />
     <Compile Include="UI\CstPanels\NetDebuggingAdder.xaml.cs">
       <DependentUpon>NetDebuggingAdder.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\CstPanels\OpenNetDebugging.xaml.cs">
+      <DependentUpon>OpenNetDebugging.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\FuncPanels\DeviceInfoPanel.xaml.cs">
       <DependentUpon>DeviceInfoPanel.xaml</DependentUpon>
@@ -313,11 +322,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UI\CstPanels\CloseNetDebugging.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\CstPanels\DevicesPanelMessageBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UI\CstPanels\Donate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\CstPanels\NetDebuggingAdder.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\CstPanels\OpenNetDebugging.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

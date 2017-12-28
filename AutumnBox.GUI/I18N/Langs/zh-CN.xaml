@@ -7,9 +7,14 @@
     <s:String x:Key="LanguageName">简体中文</s:String>
     
     <!--按钮-->
+
+    <s:String x:Key="btnDisconnect">仅断开网络调试</s:String>
+    <s:String x:Key="btnCloseDebugging">彻底关闭该设备网络调试</s:String>
     <s:String x:Key="btnDisableNetdebugging">关闭当前设备网络调试</s:String>
     <s:String x:Key="btnEnableNetdebugging">开启当前设备网络调试</s:String>
     <s:String x:Key="btnAddNetdebuggingDevice">添加网络设备</s:String>
+    <s:String x:Key="btnConnect">连接该设备</s:String>
+    <s:String x:Key="btnConnecting">连接中</s:String>
     <s:String x:Key="btnAbout">关于</s:String>
     <s:String x:Key="btnSetting">设置</s:String>
     <s:String x:Key="rbtnFlashAll">全部清空</s:String>
@@ -69,8 +74,10 @@
     <!--tabitem-->
 
     <!--信息(主要用于MMesssageBox)-->
+    <s:String x:Key="msgGettedIP">成功获取您的手机在当前局域网的IP,这个IP将可以用于网络调试连接</s:String>
     <s:String x:Key="msgBreventFixTip">检测到您是安卓8.0系统,为了防止ADB服务被异常终止,请问需要在激活后开启ADB网络调试以保证服务正常运行吗?这可能会带来不可测的风险!</s:String>
     <s:String x:Key="msgUnknowError">未知的错误!</s:String>
+    <s:String x:Key="msgCheckInput">请检查您输入的内容!</s:String>
     <s:String x:Key="msgIceBoxActUnknowError">未知的错误!</s:String>
     <s:String x:Key="msgRelockWarning">注意,本功能将会把您的设备重新上Bootloader锁,这样您的设备将会变得比较安全但是您将失去root权限,最重要的是将会彻底清除您的设备上的数据!请做好数据备份谨慎而行!并且在操作时不要拔掉设备,否则后果自负</s:String>
     <s:String x:Key="msgRelockWarningAgain">请再次注意,本功能将会清除设备的所有数据,并且不要在操作时拔掉设备!你确定要这么做了吗?按下按钮立即开始重新上锁!</s:String>
@@ -112,21 +119,23 @@
     <s:String x:Key="msgStartAdbServerFailLine2">解决方案:彻底关闭所有其它的手机助手(在电脑上)</s:String>
     <s:String x:Key="msgStartAdbServerFailLine3">例如: 360手机助手 豌豆荚等</s:String>
     <s:String x:Key="msgStartAdbServerFailLine4">如果仍然无效,请进入任务管理器,彻底结束那些手机助手的进程!什么?还是没用?重启电脑!</s:String>
-
+    <s:String x:Key="msgPleaseInputAPort">请输入一个小于65535的端口号</s:String>
+    <s:String x:Key="msgFailed">失败了</s:String>
+    <s:String x:Key="msgSuccessful">成功连接</s:String>
     <!--信息-->
     <!--用于结果显示窗的文字-->
     <s:String x:Key="rmsgDeviceOwnerIsAlreadySet">设备管理员已被设定</s:String>
-    <s:String x:Key="advsDeviceOwnerIsAlreadySet">请确保已退出所有账户,或前往App查看,可能已经激活</s:String> 
-    
+    <s:String x:Key="advsDeviceOwnerIsAlreadySet">请确保已退出所有账户,或前往App查看,可能已经激活</s:String>
+
     <s:String x:Key="rmsgAlreadyServalAccountsOnTheDevice">有其它账户</s:String>
     <s:String x:Key="advsAlreadyServalAccountsOnTheDevice">账户没删干净...谷歌账户或者定制ROM的账户都要删的!</s:String>
-    
+
     <s:String x:Key="rmsgAlreadyServalUsersOnTheDevice">有其它用户</s:String>
     <s:String x:Key="advsAlreadyServalUsersOnTheDevice">确保删除所有用户,关闭访客模式,关闭应用双开</s:String>
-    
+
     <s:String x:Key="rmsgAppHaveNoInstalled">未安装App</s:String>
     <s:String x:Key="advsAppHaveNoInstalled">请安装App</s:String>
-    
+
     <s:String x:Key="rmsgUnknowError">未知错误</s:String>
     <s:String x:Key="advsUnknowError">检查下面的完整输出,或将完整输出复制给要问的人</s:String>
     <!--用于结果显示窗的文字-->
@@ -177,6 +186,7 @@
     <s:String x:Key="OutputTip">完整的输出文本,包含了最确切的信息,如果遇到错误,请将这里的输出文本复制给您要问的人</s:String>
     <s:String x:Key="TipForInputDpi">请输入您想要改动的DPI数值-></s:String>
     <s:String x:Key="Bridge">桥</s:String>
+    <s:String x:Key="Port">端口</s:String>
     <!--静态界面标记-->
 
     <!--设备信息标记-->
@@ -245,6 +255,7 @@
     <s:String x:Key="AboutMessage_OSList">Newtonsoft.Json &amp; Google Android Debug Bridge &amp; Google Android &amp; Linux</s:String>
     <!--关于信息-->
 
+    <s:String x:Key="warningOpenNetDebugging">当你开启网络调试后,您的设备将会暴露在局域网内,这可能会带来风险,您确定要继续开启吗?</s:String>
     <s:String x:Key="Menu">菜单</s:String>
     <s:String x:Key="About">关于</s:String>
     <s:String x:Key="AboutThisSoftware">关于本软件</s:String>

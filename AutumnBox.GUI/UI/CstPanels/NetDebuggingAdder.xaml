@@ -6,12 +6,11 @@
              xmlns:local="clr-namespace:AutumnBox.GUI.UI.CstPanels"
              mc:Ignorable="d" 
              d:DesignHeight="233" d:DesignWidth="189">
-    <Grid>
-        <TextBox x:Name="TBoxIP" TextChanged="TBoxIP_TextChanged" MaxLines="1" PreviewTextInput="TBoxIP_PreviewTextInput"  Style="{DynamicResource TB_Input}" HorizontalAlignment="Left" Height="30" Margin="10,87,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="169" FontSize="20" FontFamily="Microsoft YaHei UI Light"/>
-        <TextBox x:Name="TBoxPort" TextChanged="TBoxPort_TextChanged" MaxLength="5" PreviewTextInput="TBoxPort_PreviewTextInput" MaxLines="1" Style="{DynamicResource TB_Input}" HorizontalAlignment="Left" Height="30" Margin="10,151,0,0" TextWrapping="Wrap" Text="5555" VerticalAlignment="Top" Width="169" FontSize="20" FontFamily="Microsoft YaHei UI Light"/>
-        <Button x:Name="BtnAdd" Foreground="{DynamicResource ForgBrush}" Content="{DynamicResource btnAddNetdebuggingDevice}" HorizontalAlignment="Left" Margin="10,189,0,0" VerticalAlignment="Top" Width="169" Background="{x:Null}" Height="34" Click="Button_Click"/>
+    <Grid x:Name="GridMain">
+        <TextBox  x:Name="TBoxIP" MaxLines="1" PreviewTextInput="TBoxIP_PreviewTextInput"  TextChanged="TextBox_TextChanged" Style="{DynamicResource TB_Input}" HorizontalAlignment="Left" Height="30" Margin="10,87,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="169" FontSize="20" FontFamily="Microsoft YaHei UI Light"/>
+        <TextBox  x:Name="TBoxPort" MaxLength="5" PreviewTextInput="TBoxPort_PreviewTextInput" TextChanged="TextBox_TextChanged" MaxLines="1" Style="{DynamicResource TB_Input}" HorizontalAlignment="Left" Height="30" Margin="10,151,0,0" TextWrapping="Wrap" Text="5555" VerticalAlignment="Top" Width="169" FontSize="20" FontFamily="Microsoft YaHei UI Light"/>
+        <Button x:Name="BtnAdd" Foreground="{DynamicResource ForgBrush}" Content="{DynamicResource btnConnect}" HorizontalAlignment="Left" Margin="10,189,0,0" VerticalAlignment="Top" Width="169" Background="{x:Null}" Height="34" Click="Button_Click"/>
         <TextBlock Foreground="{DynamicResource ForgBrush}" HorizontalAlignment="Left" Margin="10,59,0,0" TextWrapping="Wrap" Text="IP" VerticalAlignment="Top" FontSize="18" Width="82"/>
         <TextBlock Foreground="{DynamicResource ForgBrush}" HorizontalAlignment="Left" Margin="10,122,0,0" TextWrapping="Wrap" Text="Port" VerticalAlignment="Top" FontSize="18" Width="82"/>
-        <TextBlock Foreground="{DynamicResource ForgBrush}" x:Name="TBStatus" HorizontalAlignment="Left" Margin="10,35,0,0" TextWrapping="Wrap" Text="..." VerticalAlignment="Top" Width="169" FontSize="18"/>
     </Grid>
 </UserControl>

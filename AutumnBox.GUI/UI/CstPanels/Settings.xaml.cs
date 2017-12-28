@@ -32,9 +32,9 @@ namespace AutumnBox.GUI.UI.CstPanels
 
         private void CbBoxLanguage_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            LanguageHelper.LoadLanguage((Language)CbBoxLanguage.SelectedItem);
-            Config.Lang = ((Language)CbBoxLanguage.SelectedItem).FileName;
-            Logger.D(Config.Lang);
+            //LanguageHelper.LoadLanguage((Language)CbBoxLanguage.SelectedItem);
+            //Config.Lang = ((Language)CbBoxLanguage.SelectedItem).FileName;
+            //Logger.D(Config.Lang);
         } 
 
         private void BtnCreateShortcut_Click(object sender, System.Windows.RoutedEventArgs e)

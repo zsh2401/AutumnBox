@@ -17,6 +17,7 @@ using AutumnBox.Support.CstmDebug;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Net;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
@@ -50,6 +51,26 @@ namespace AutumnBox.Basic.Devices
         public static DeviceState GetState(Serial serial)
         {
             return Executer.Execute(Command.MakeForAdb(serial, "get-state")).Output.All.ToString().ToDeviceState();
+        }
+        private const string ipPattern = @"(?<ip>\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})";
+        public static IPAddress GetLocationIP(Serial serial)
+        {
+            var result = Executer.QuicklyShell(serial, "ifconfig wlan0");
+            var match = Regex.Match(result.Output.ToString(), ipPattern);
+            if (match.Success)
+            {
+                return IPAddress.Parse(match.Result("${ip}"));
+            }
+            else
+            {
+                result = Executer.QuicklyShell(serial, "ifconfig netcfg");
+                match = Regex.Match(result.Output.ToString(), ipPattern);
+                if (match.Success)
+                {
+                    return IPAddress.Parse(match.Result("${ip}"));
+                }
+            }
+            return null;
         }
         public static int? GetDpi(Serial serial)
         {

@@ -1,7 +1,7 @@
 ﻿/********************************************************************************
 ** auth： zsh2401@163.com
-** date： 2017/12/28 18:45:24
-** filename: IClosable.cs
+** date： 2017/12/28 21:52:46
+** filename: ICloseEventTrigger.cs
 ** compiler: Visual Studio 2017
 ** desc： ...
 *********************************************************************************/
@@ -13,8 +13,9 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.GUI.UI.CstPanels
 {
-    public interface ICloseNoticeReceivable
+    public interface ICommunicableWithFastGrid
     {
-        void FatherOnClosing();
+        event EventHandler CallFatherToClose;
+        void OnFatherClosed();
     }
 }

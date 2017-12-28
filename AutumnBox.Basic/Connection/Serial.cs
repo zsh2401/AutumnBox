@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Connection
 {
-    public class Serial
+    public class Serial : IEquatable<Serial>
     {
         public bool IsIpAdress
         {
@@ -37,6 +37,22 @@ namespace AutumnBox.Basic.Connection
             {
                 _serialNum = serialStr;
             }
+        }
+        public override bool Equals(object obj)
+        {
+            return base.Equals(obj);
+        }
+        public static bool operator ==(Serial left, Serial right)
+        {
+            return left?.ToString() == right?.ToString();
+        }
+        public static bool operator !=(Serial left, Serial right)
+        {
+            return left?.ToString() != right?.ToString();
+        }
+        public bool Equals(Serial other)
+        {
+            return this.ToString() == other.ToString();
         }
     }
 }
