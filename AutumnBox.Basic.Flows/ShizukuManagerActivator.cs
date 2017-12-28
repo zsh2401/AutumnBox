@@ -38,7 +38,7 @@ namespace AutumnBox.Basic.Flows
         protected override void AnalyzeResult(AdvanceResult result)
         {
             base.AnalyzeResult(result);
-            result.ShellOutput = _shellOutput;
+            result.ExitCode = _shellOutput.ReturnCode;
             result.ResultType =
                 _shellOutput.ReturnCode == 0 ?
                 ResultType.Successful :

@@ -7,6 +7,7 @@
 *********************************************************************************/
 using AutumnBox.Basic.Executer;
 using AutumnBox.Basic.FlowFramework;
+using AutumnBox.Basic.Flows.Result;
 using AutumnBox.Basic.Util;
 using System;
 using System.Collections.Generic;
@@ -16,20 +17,21 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Flows
 {
-    public class NetDeviceRemover : FunctionFlow
+    public class NetDeviceRemover : FunctionFlow<FlowArgs, AdvanceResult>
     {
+        private CommandExecuterResult _result;
         protected override OutputData MainMethod(ToolKit<FlowArgs> toolKit)
         {
-            throw new Exception();
-            //return toolKit.Executer.Execute(Command.MakeForCmd($"{ConstData.FullAdbFileName} ${toolKit.Args.DevBasicInfo.Serial.ToFullSerial()} usb && echo ___errorcode%errorlevel%"));
+            if (!toolKit.Args.DevBasicInfo.Serial.IsIpAdress)
+                throw new Exception($"{toolKit.Args.DevBasicInfo.Serial} is not a net debugging device");
+            _result = toolKit.Executer.Execute(Command.MakeForAdb($"disconnect {toolKit.Args.DevBasicInfo.Serial.ToString()}"));
+            return _result.Output;
         }
-        protected override void AnalyzeResult(FlowResult result)
+        protected override void AnalyzeResult(AdvanceResult result)
         {
-            if (!(result.OutputData.Contains("___errorcode0")))
-            {
-                result.ResultType = ResultType.MaybeUnsuccessful;
-            }
             base.AnalyzeResult(result);
+            result.ExitCode = _result.ExitCode;
+            result.ResultType = _result.IsSuccessful ? ResultType.Successful : ResultType.Unsuccessful;
         }
     }
 }

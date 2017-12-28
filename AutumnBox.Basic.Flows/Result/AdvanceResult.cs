@@ -18,6 +18,6 @@ namespace AutumnBox.Basic.Flows.Result
 {
     public class AdvanceResult : FlowResult
     {
-        public ShellOutput ShellOutput { get; internal set; }
+        public int ExitCode { get; set; } = 1;
     }
 }

@@ -1,28 +1,29 @@
 ﻿/********************************************************************************
 ** auth： zsh2401@163.com
-** date： 2017/12/28 1:34:05
-** filename: NetDeviceAdder.cs
+** date： 2017/12/28 17:52:05
+** filename: NetDebuggingCloser.cs
 ** compiler: Visual Studio 2017
 ** desc： ...
 *********************************************************************************/
 using AutumnBox.Basic.Executer;
 using AutumnBox.Basic.FlowFramework;
 using AutumnBox.Basic.Flows.Result;
-using AutumnBox.Basic.Util;
-using System.Net;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Flows
 {
-    public class NetDeviceAdderArgs : FlowArgs
+    public class NetDebuggingCloser : FunctionFlow<FlowArgs, AdvanceResult>
     {
-        public IPEndPoint IPEndPoint { get; set; }
-    }
-    public class NetDeviceAdder : FunctionFlow<NetDeviceAdderArgs, AdvanceResult>
-    {
-        CommandExecuterResult _result;
-        protected override OutputData MainMethod(ToolKit<NetDeviceAdderArgs> toolKit)
+        public CommandExecuterResult _result;
+        protected override OutputData MainMethod(ToolKit<FlowArgs> toolKit)
         {
-            _result = toolKit.Executer.Execute(Command.MakeForAdb($"connect {toolKit.Args.IPEndPoint.ToString()}"));
+            if (!toolKit.Args.DevBasicInfo.Serial.IsIpAdress)
+                throw new Exception($"{toolKit.Args.DevBasicInfo.Serial} is not a net debugging device");
+            _result = toolKit.Ae("usb");
             return _result.Output;
         }
         protected override void AnalyzeResult(AdvanceResult result)

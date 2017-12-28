@@ -5,6 +5,7 @@ using AutumnBox.Basic.Flows;
 using AutumnBox.Basic.Util;
 using System;
 using System.Diagnostics;
+using System.Net;
 
 namespace AutumnBox.ConsoleTester
 {
@@ -31,16 +32,31 @@ namespace AutumnBox.ConsoleTester
             Serial = new Serial("9dd1b490"),
             State = DeviceState.Poweron,
         };
-        unsafe static void Main(string[] args)
+        unsafe static int Main(string[] args)
         {
-            //var result = new CoffeExecuter().Execute(ConstData.FullAdbFileName,"fuck");
-            ////p.WaitForExit();
-            //Console.WriteLine(result.Output);
-            //Console.WriteLine(result.ExitCode);
-            //Console.WriteLine(DeviceInfoHelper.GetDpi(mi6.Serial));
-            var activator = new BreventServiceActivator();
-            activator.Init(new BreventServiceActivatorArgs() { DevBasicInfo = mi6 });
+            var opener = new NetDebuggingOpener();
+            opener.Init(new NetDebuggingOpenerArgs() { DevBasicInfo = mi6 });
+            var openresult = opener.Run();
+
+            var adder = new NetDeviceAdder();
+            adder.Init(new NetDeviceAdderArgs() { DevBasicInfo = mi6, IPEndPoint = new IPEndPoint(IPAddress.Parse("192.168.0.12"), 5555) });
+            var adderresult = adder.Run();
+            new DevicesGetter().GetDevices().ForEach(dev => Console.WriteLine(dev.Serial));
+
+            //var closer = new NetDebuggingCloser();
+            //closer.Init(new Basic.FlowFramework.FlowArgs() { DevBasicInfo = mi6net });
+            //var closeResult = closer.Run();
+
+            var remover = new NetDeviceRemover();
+            remover.Init(new Basic.FlowFramework.FlowArgs() { DevBasicInfo = mi6net });
+            var removerResult = remover.Run();
+
+            Console.WriteLine(openresult.ExitCode + " " + adderresult.ExitCode + " " + removerResult.ExitCode);
+            new DevicesGetter().GetDevices().ForEach(dev => Console.WriteLine(dev.Serial));
             Console.ReadKey();
+            new DevicesGetter().GetDevices().ForEach(dev => Console.WriteLine(dev.Serial));
+            Console.ReadKey();
+            return 0;
         }
         public static void WriteWithColor(Action a, ConsoleColor color = ConsoleColor.White)
         {

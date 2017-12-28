@@ -66,8 +66,8 @@ namespace AutumnBox.Basic.Flows
         protected override void AnalyzeResult(DeviceOwnerSetterResult result)
         {
             base.AnalyzeResult(result);
-            result.ShellOutput = _executeResult.ToShellOutput();
-            result.OutputData = result.ShellOutput.OutputData;
+            result.ExitCode = _executeResult.ExitCode;
+            result.OutputData = _executeResult.Output;
             //如果结果输出中包含了success字样,则成功了,设置结果值并返回
             if (result.OutputData.Contains("success", true))
             {
