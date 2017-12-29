@@ -43,30 +43,35 @@ namespace AutumnBox.GUI.UI.FuncPanels
             /*检查是否安装了这个App*/
             bool? isInstallThisApp = await Task.Run(() =>
             {
-                return DeviceInfoHelper.IsInstalled(_currentDevInfo.Serial, BreventServiceActivator.AppPackageName);
+                return DeviceInfoHelper.IsInstalled(_currentDevInfo.Serial, BreventServiceActivator._AppPackageName);
             });
             if (isInstallThisApp == false) { BoxHelper.ShowMessageDialog("Warning", "msgPlsInstallBreventFirst"); return; }
+
             /*判断是否是安卓8.0操作系统*/
             bool isAndroidO = false;
             try
             {
-                Version currentDevAndroidVersion = ((MainWindow)System.Windows.Application.Current.MainWindow).DevInfoPanel.CurrentDeviceAndroidVersion;
+                Version currentDevAndroidVersion = new DeviceBuildPropGetter(_currentDevInfo.Serial).GetAndroidVersion();
                 isAndroidO = currentDevAndroidVersion >= new Version("8.0");
             }
             catch (NullReferenceException) { }
+
             /*如果是安卓O,询问用户是否要在启动脚本后开启网络ADB*/
-            var args = new BreventServiceActivatorArgs() { DevBasicInfo = _currentDevInfo };
+            var args = new ShScriptExecuterArgs() { DevBasicInfo = _currentDevInfo };
             if (isAndroidO)
             {
-                var result = BoxHelper.ShowChoiceDialog("msgNotice", "msgBreventFixTip", "btnDoNotOpen", "btnOpen");
+                var result = BoxHelper.ShowChoiceDialog("msgNotice",
+                    "msgFixAndroidOLine0" + "\n" +
+                    "msgFixAndroidOLine1",
+                    "btnDoNotOpen", "btnOpen");
                 switch (result)
                 {
-                    case Windows.ChoiceResult.BtnCancel:
+                    case ChoiceResult.BtnCancel:
                         return;
-                    case Windows.ChoiceResult.BtnLeft:
+                    case ChoiceResult.BtnLeft:
                         args.FixAndroidOAdb = false;
                         break;
-                    case Windows.ChoiceResult.BtnRight:
+                    case ChoiceResult.BtnRight:
                         args.FixAndroidOAdb = true;
                         break;
                 }
@@ -108,7 +113,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
 
             if (fileDialog.ShowDialog() == true)
             {
-                Basic.Flows.ApkInstaller installer = new Basic.Flows.ApkInstaller();
+                ApkInstaller installer = new ApkInstaller();
                 List<FileInfo> files = new List<FileInfo>();
                 foreach (string fileName in fileDialog.FileNames)
                 {
@@ -159,21 +164,6 @@ namespace AutumnBox.GUI.UI.FuncPanels
         private void ButtonChangeDpi_Click(object sender, RoutedEventArgs e)
         {
             new DpiChangeWindow(_currentDevInfo) { Owner = App.Current.MainWindow }.ShowDialog();
-        }
-
-        private void ButtonFullBackup_Click(object sender, RoutedEventArgs ex)
-        {
-            //BlockHelper.ShowMessageBlock("msgNotice", "msgNoticeForAndroidFullBackupRemove");
-            //bool _screenIsOpen = ChoiceBox.FastShow(App.OwnerWindow,
-            //    UIHelper.GetString("msgNotice"), 
-            //    UIHelper.GetString("msgOpenTheScreenPls"),
-            //    UIHelper.GetString("btnContinue"),
-            //    UIHelper.GetString("btnCancel")) ;
-            //if (!_screenIsOpen) return;
-            //var fmp = FunctionModuleProxy.Create(typeof(AndroidFullBackup), new ModuleArgs(App.SelectedDevice));
-            //fmp.Finished += App.OwnerWindow.FuncFinish;
-            //fmp.Finished += (s, e) => { Logger.D($"Full backup was launched?.... there is output : {e.OutputData.All}"); };
-            //fmp.AsyncRun();
         }
 
         private void ButtonExtractBootImg_Click(object sender, RoutedEventArgs e)
@@ -322,14 +312,44 @@ namespace AutumnBox.GUI.UI.FuncPanels
             /*检查是否安装了这个App*/
             bool? isInstallThisApp = await Task.Run(() =>
             {
-                return DeviceInfoHelper.IsInstalled(_currentDevInfo.Serial, ShizukuManagerActivator.AppPackageName);
+                return DeviceInfoHelper.IsInstalled(_currentDevInfo.Serial, ShizukuManagerActivator._AppPackageName);
             });
-            if (isInstallThisApp == false) { BoxHelper.ShowMessageDialog("Warning", "msgPlsInstallShizukuManagerFirst"); return; }
+            if (isInstallThisApp == false) { BoxHelper.ShowMessageDialog("Warning", "msgPlsInstallBreventFirst"); return; }
+
+            /*判断是否是安卓8.0操作系统*/
+            bool isAndroidO = false;
+            try
+            {
+                Version currentDevAndroidVersion = new DeviceBuildPropGetter(_currentDevInfo.Serial).GetAndroidVersion();
+                isAndroidO = currentDevAndroidVersion >= new Version("8.0");
+            }
+            catch (NullReferenceException) { }
+
+            /*如果是安卓O,询问用户是否要在启动脚本后开启网络ADB*/
+            var args = new ShScriptExecuterArgs() { DevBasicInfo = _currentDevInfo };
+            if (isAndroidO)
+            {
+                var result = BoxHelper.ShowChoiceDialog("msgNotice",
+                    "msgFixAndroidOLine0" + "\n" +
+                    "msgFixAndroidOLine1",
+                    "btnDoNotOpen", "btnOpen");
+                switch (result)
+                {
+                    case ChoiceResult.BtnCancel:
+                        return;
+                    case ChoiceResult.BtnLeft:
+                        args.FixAndroidOAdb = false;
+                        break;
+                    case ChoiceResult.BtnRight:
+                        args.FixAndroidOAdb = true;
+                        break;
+                }
+            }
             /*开始操作*/
-            ShizukuManagerActivator shizukuManagerActivator = new ShizukuManagerActivator();
-            shizukuManagerActivator.Init(new FlowArgs() { DevBasicInfo = _currentDevInfo });
-            shizukuManagerActivator.RunAsync();
-            BoxHelper.ShowLoadingDialog(shizukuManagerActivator);
+            ShizukuManagerActivator activator = new ShizukuManagerActivator();
+            activator.Init(args);
+            activator.RunAsync();
+            BoxHelper.ShowLoadingDialog(activator);
         }
 
         private async void ButtonIslandAct_Click(object sender, RoutedEventArgs e)
@@ -356,7 +376,6 @@ namespace AutumnBox.GUI.UI.FuncPanels
             islandActivator.RunAsync();
             BoxHelper.ShowLoadingDialog(islandActivator);
         }
-
         private void ButtonVirtualBtnHide_Click(object sender, RoutedEventArgs e)
         {
             var choiceResult = BoxHelper.ShowChoiceDialog("PleaseSelected",

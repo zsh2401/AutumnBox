@@ -5,7 +5,7 @@
 
     <s:String x:Key="AppName">AutumnBox</s:String>
     <s:String x:Key="LanguageName">简体中文</s:String>
-    
+
     <!--按钮-->
 
     <s:String x:Key="btnDisconnect">仅断开网络调试</s:String>
@@ -75,7 +75,8 @@
 
     <!--信息(主要用于MMesssageBox)-->
     <s:String x:Key="msgGettedIP">成功获取您的手机在当前局域网的IP,这个IP将可以用于网络调试连接</s:String>
-    <s:String x:Key="msgBreventFixTip">检测到您是安卓8.0系统,为了防止ADB服务被异常终止,请问需要在激活后开启ADB网络调试以保证服务正常运行吗?这可能会带来不可测的风险!</s:String>
+    <s:String x:Key="msgFixAndroidOLine0">检测到您是安卓8.0系统,为了防止ADB服务被异常终止,请问需要在激活后开启ADB网络调试以保证服务正常运行吗?这可能会带来不可测的风险!</s:String>
+    <s:String x:Key="msgFixAndroidOLine1">如果您决定开启,请在执行过程中,保持设备解锁并亮屏,否则激活将是无效的</s:String>
     <s:String x:Key="msgUnknowError">未知的错误!</s:String>
     <s:String x:Key="msgCheckInput">请检查您输入的内容!</s:String>
     <s:String x:Key="msgIceBoxActUnknowError">未知的错误!</s:String>
@@ -255,7 +256,9 @@
     <s:String x:Key="AboutMessage_OSList">Newtonsoft.Json &amp; Google Android Debug Bridge &amp; Google Android &amp; Linux</s:String>
     <!--关于信息-->
 
-    <s:String x:Key="warningOpenNetDebugging">当你开启网络调试后,您的设备将会暴露在局域网内,这可能会带来风险,您确定要继续开启吗?</s:String>
+    <s:String x:Key="warningOpenNetDebuggingLine0">开启网络调试将带来不可预见的风险</s:String>
+    <s:String x:Key="warningOpenNetDebuggingLine1">请确保您的设备与电脑处于同一局域网下</s:String>
+    <s:String x:Key="warningOpenNetDebuggingLine2">请确保您已在开发者设置中打开网络调试</s:String>
     <s:String x:Key="Menu">菜单</s:String>
     <s:String x:Key="About">关于</s:String>
     <s:String x:Key="AboutThisSoftware">关于本软件</s:String>

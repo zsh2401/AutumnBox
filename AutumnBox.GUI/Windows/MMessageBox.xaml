@@ -47,7 +47,7 @@
     </Window.Triggers>
     <Grid  Margin="3,3,3,3" Background="{DynamicResource BackBrush}">
         <cstm:CstmTitleBar x:Name="TitleBar" Height="40" VerticalAlignment="Top" HorizontalAlignment="Right" Width="494"/>
-        <Label x:Name="LabelTitle" Content="Title" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Microsoft YaHei UI Light" FontSize="20" Background="{x:Null}" Height="53" VerticalAlignment="Top" Margin="0,40,0,0"/>
-        <TextBlock x:Name="TBText" TextAlignment="Center" Margin="10,98,10,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="152" FontFamily="Microsoft YaHei UI Light" FontSize="18" Foreground="Black"/>
+        <Label Foreground="{DynamicResource ForgBrush}"  x:Name="LabelTitle" Content="Title" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Microsoft YaHei UI Light" FontSize="20" Background="{x:Null}" Height="53" VerticalAlignment="Top" Margin="0,40,0,0"/>
+        <TextBlock x:Name="TBText" TextAlignment="Center" Margin="10,98,10,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="152" FontFamily="Microsoft YaHei UI Light" FontSize="18" Foreground="{DynamicResource ForgBrush}"/>
     </Grid>
 </Window>

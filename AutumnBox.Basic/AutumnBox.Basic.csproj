@@ -108,6 +108,7 @@
     <Compile Include="AdbHelper.cs" />
     <Compile Include="Util\ConstData.cs" />
     <Compile Include="Connection\DeviceConnection.cs" />
+    <Compile Include="Util\LinuxReturnCode.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AutumnBox.Support\AutumnBox.Support.csproj">

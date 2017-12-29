@@ -21,47 +21,11 @@ using AutumnBox.Basic.Flows.Result;
 
 namespace AutumnBox.Basic.Flows
 {
-    public class BreventServiceActivatorArgs : FlowArgs
+    public class BreventServiceActivator : ShScriptExecuter
     {
-        public bool FixAndroidOAdb { get; set; } = false;
-    }
-    public class BreventServiceActivator : FunctionFlow<BreventServiceActivatorArgs, BreventServiceActivatorResult>
-    {
-        private int retCode = 0;
-        private CommandExecuterResult _executeResult;
-        public static readonly string AppPackageName = "me.piebridge.brevent";
-        private static readonly string _defaultShellCommand = "sh /data/data/me.piebridge.brevent/brevent.sh";
-        protected override OutputData MainMethod(ToolKit<BreventServiceActivatorArgs> toolKit)
-        {
-            FunctionModuleProxy.Create<ActivityLauncher>(new ActivityLaunchArgs(toolKit.Args.DevBasicInfo)
-            { PackageName = "me.piebridge.brevent", ActivityName = ".ui.BreventActivity" }).SyncRun();
-            Thread.Sleep(2000);
-            _executeResult = toolKit.Executer.QuicklyShell(toolKit.Args.DevBasicInfo.Serial, _defaultShellCommand);
-            retCode = _executeResult.ExitCode;
-            return _executeResult.Output;
-        }
-        protected override void AnalyzeResult(BreventServiceActivatorResult result)
-        {
-            base.AnalyzeResult(result);
-            switch (_executeResult.ExitCode)
-            {
-                case 0://No error
-                    result.ResultType = ResultType.Successful;
-                    result.ErrorType = States.BreventServiceActivatorErrorType.None;
-                    break;
-                case 1://Error
-                    result.ResultType = ResultType.Unsuccessful;
-                    result.ErrorType = States.BreventServiceActivatorErrorType.Error;
-                    break;
-                case 127://Shell not found
-                    result.ErrorType = States.BreventServiceActivatorErrorType.ShNotFound | States.BreventServiceActivatorErrorType.ShNotFound;
-                    result.ResultType = ResultType.Unsuccessful;
-                    break;
-                default://Unknow error..
-                    result.ErrorType = States.BreventServiceActivatorErrorType.ShNotFound | States.BreventServiceActivatorErrorType.Unknow;
-                    result.ResultType = ResultType.MaybeUnsuccessful;
-                    break;
-            }
-        }
+        public static readonly string _AppPackageName = "me.piebridge.brevent";
+        protected override string ScriptPath => "/data/data/me.piebridge.brevent/brevent.sh";
+        protected override string AppActivity => ".ui.BreventActivity";
+        protected override string AppPackageName => _AppPackageName;
     }
 }
