@@ -10,7 +10,6 @@
         <TextBlock Foreground="#FFF13434" HorizontalAlignment="Left" Margin="10,38,0,0" TextWrapping="Wrap" Text="{DynamicResource warningOpenNetDebuggingLine0}" VerticalAlignment="Top" Width="169" Height="42" FontSize="15"/>
         <TextBlock Foreground="#FF58A5DA" HorizontalAlignment="Left" Margin="10,80,0,0" TextWrapping="Wrap" Text="{DynamicResource warningOpenNetDebuggingLine1}" VerticalAlignment="Top" Width="169" Height="42" FontSize="15"/>
         <TextBlock Foreground="#FF58A5DA" HorizontalAlignment="Left" Margin="10,122,0,0" TextWrapping="Wrap" Text="{DynamicResource warningOpenNetDebuggingLine2}" VerticalAlignment="Top" Width="169" Height="42" FontSize="15"/>
-
         <Button x:Name="BtnOk" Content="{DynamicResource btnOpen}" HorizontalAlignment="Left" Margin="10,198,0,0" VerticalAlignment="Top" Width="169" Background="{x:Null}" Foreground="{DynamicResource ForgBrush}" Click="BtnOk_Click"/>
         <TextBox x:Name="TBoxPort" Style="{DynamicResource TB_Input}" HorizontalAlignment="Left" Height="24" Margin="97,169,0,0" TextWrapping="Wrap" Text="5555" VerticalAlignment="Top" Width="82" MaxLength="5" MaxLines="1" PreviewTextInput="TextBox_PreviewTextInput"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,169,0,0" TextWrapping="Wrap" Text="{DynamicResource Port}" VerticalAlignment="Top" Foreground="{DynamicResource ForgBrush}" Height="24" Width="44" FontSize="16"/>
