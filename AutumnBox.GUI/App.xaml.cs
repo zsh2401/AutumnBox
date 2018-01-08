@@ -63,7 +63,7 @@ namespace AutumnBox.GUI
 
         private void Current_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
         {
-            new MMessageBox().ShowDialog("错误", "一个未知的错误的发生了,将程序目录的exception.txt发送给开发者以解决问题");
+            new MMessageBox().ShowDialog("错误/Unknow Exception",$"一个未知的错误的发生了,将程序目录的exception.txt发送给开发者以解决问题{Environment.NewLine}Please send exception.txt to zsh2401@163.com");
             string n = Environment.NewLine;
             string exstr =
                 $"AutumnBox Exception {DateTime.Now.ToString("MM/dd/yyyy    HH:mm:ss")}{n}{n}"+
