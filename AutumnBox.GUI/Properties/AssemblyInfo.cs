@@ -28,8 +28,6 @@ using System.Windows;
 [assembly: AssemblyCopyright("Copyright ©zsh2401  2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
-[assembly: LogFileProperty("atb.log")]
-[assembly: CompiledDate(2017, 12, 10)]
 // 将 ComVisible 设置为 false 会使此程序集中的类型
 //对 COM 组件不可见。如果需要从 COM 访问此程序集中的类型
 //请将此类型的 ComVisible 特性设置为 true。
@@ -68,3 +66,8 @@ using System.Windows;
 [assembly: AssemblyFileVersion("2018.1.7.0")]
 [assembly: NeutralResourcesLanguage("zh-CN")]
 
+//自定义的程序集Attribute
+//确定当前程序的Log位置
+[assembly: LogFileProperty("atb.log")]
+//编译日期
+[assembly: CompiledDate(2017, 12, 10)]

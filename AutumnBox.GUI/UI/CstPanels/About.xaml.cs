@@ -18,7 +18,7 @@ namespace AutumnBox.GUI.UI.CstPanels
         {
             InitializeComponent();
             LabelVersion.Content = SystemHelper.CurrentVersion.ToString();
-#if RELEASE
+#if! DEBUG
              LabelVersion.Content += "-release";
 #else
             LabelVersion.Content += "-debug";

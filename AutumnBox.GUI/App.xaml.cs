@@ -11,21 +11,16 @@
 * Company: I am free man
 *
 \* =============================================================================*/
-//#define DONT_CATCH_EXCEPTION
-using AutumnBox.Basic.Connection;
 using AutumnBox.Basic.Devices;
 using AutumnBox.GUI.Helper;
-using AutumnBox.GUI.Windows;
 using AutumnBox.Support.CstmDebug;
 using System;
-using System.Diagnostics;
 using System.IO;
-using System.Reflection;
 using System.Windows;
 namespace AutumnBox.GUI
 {
 
-    //[LogProperty(TAG = "AB_App")]
+    [LogProperty(TAG = "AB_App")]
     /// <summary>
     /// App.xaml 的交互逻辑
     /// </summary>
@@ -58,7 +53,6 @@ namespace AutumnBox.GUI
                 Logger.T("Auto GC failed...... -> ", e_);
             }
             base.OnStartup(e);
-            throw new Exception();
         }
 
         private void Current_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)

@@ -12,11 +12,10 @@ namespace AutumnBox.GUI.UI.CstPanels
     /// </summary>
     public partial class Settings : UserControl
     {
-        bool isFirstChange;
         public Settings()
         {
             InitializeComponent();
-#if !ENABLE_BLUR
+#if! ENABLE_BLUR
             TransparencySlider.IsEnabled = false;
 #endif
             TransparencySlider.Value = Config.BackgroundA;
