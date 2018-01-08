@@ -18,6 +18,7 @@ using AutumnBox.GUI.Windows;
 using AutumnBox.Support.CstmDebug;
 using System;
 using System.Diagnostics;
+using System.IO;
 using System.Reflection;
 using System.Windows;
 
@@ -32,30 +33,19 @@ namespace AutumnBox.GUI
     {
         internal class StaticProperty
         {
-            //internal static DeviceConnection DeviceConnection { get; private set; }
             internal static DevicesMonitor DevicesListener { get; private set; }
             static StaticProperty()
             {
-                Debug.WriteLine("first?");
-                //DeviceConnection = new DeviceConnection();
                 DevicesListener = new DevicesMonitor();//设备监听器
             }
         }
         static App()
         {
-            //AppDomain.CurrentDomain.AssemblyResolve += (s, args) =>
-            //{
-            //    string resName = "AutumnBox.GUI.Resources.lib." + args.Name.Split(',')[0] + ".dll";
-            //    using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(resName))
-            //    {
-            //        byte[] assemblyData = new byte[stream.Length];
-            //        stream.Read(assemblyData, 0, assemblyData.Length);
-            //        return Assembly.Load(assemblyData);
-            //    }
-            //};
+
         }
         protected override void OnStartup(StartupEventArgs e)
         {
+            App.Current.DispatcherUnhandledException += Current_DispatcherUnhandledException;
             if (SystemHelper.HaveOtherAutumnBoxProcess)
             {
                 Logger.T("have other autumnbox show MMessageBox and exit(1)");
@@ -68,7 +58,23 @@ namespace AutumnBox.GUI
                 Logger.T("Auto GC failed...... -> ", e_);
             }
             base.OnStartup(e);
+            //throw new Exception();
         }
+
+        private void Current_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
+        {
+            new MMessageBox().ShowDialog("错误", "一个未知的错误的发生了,将程序目录的exception.txt发送给开发者以解决问题");
+            string n = Environment.NewLine;
+            string exstr =
+                $"AutumnBox Exception {DateTime.Now.ToString("MM/dd/yyyy    HH:mm:ss")}{n}{n}"+
+                $"Exception:{n}{e.Exception.ToString()}{n}{n}{n}" +
+                $"Message:{n}{e.Exception.Message}{n}{n}{n}" +
+                $"Source:{n}{e.Exception.Source}{n}{n}{n}" +
+                $"Inner:{n}{e.Exception.InnerException?.ToString()??"None"}{n}";
+            File.WriteAllText("exception.txt", exstr);
+            Environment.Exit(1);
+        }
+
         protected override void OnExit(ExitEventArgs e)
         {
             Logger.T("App Exiting->" + e.ApplicationExitCode);
