@@ -42,18 +42,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Connection\Serial.cs" />
-    <Compile Include="Devices\DeviceBuildPropGetter.cs" />
-    <Compile Include="Devices\DeviceHardwareInfo.cs" />
-    <Compile Include="Devices\DeviceHardwareInfoGetter.cs" />
-    <Compile Include="Devices\DeviceImage.cs" />
-    <Compile Include="Devices\DeviceImageHelper.cs" />
-    <Compile Include="Devices\DeviceImageFinder.cs" />
-    <Compile Include="Devices\DeviceInfoHelper.cs" />
-    <Compile Include="Devices\DeviceNotFoundException.cs" />
-    <Compile Include="Devices\DevicesGetter.cs" />
-    <Compile Include="Devices\DeviceBasicInfo.cs" />
-    <Compile Include="Devices\IShareableShell.cs" />
+    <Compile Include="Device\Serial.cs" />
+    <Compile Include="Device\DeviceBuildPropGetter.cs" />
+    <Compile Include="Device\DeviceHardwareInfo.cs" />
+    <Compile Include="Device\DeviceHardwareInfoGetter.cs" />
+    <Compile Include="Device\DeviceImage.cs" />
+    <Compile Include="Device\DeviceImageHelper.cs" />
+    <Compile Include="Device\DeviceImageFinder.cs" />
+    <Compile Include="Device\DeviceInfoHelper.cs" />
+    <Compile Include="MultipleDevices\DevicesGetter.cs" />
+    <Compile Include="Device\DeviceBasicInfo.cs" />
+    <Compile Include="Device\IShareableShell.cs" />
     <Compile Include="Executer\AndroidShell.cs" />
     <Compile Include="Executer\AndroidShellEvents.cs" />
     <Compile Include="Executer\CommandExecuter.cs" />
@@ -88,17 +87,17 @@
     <Compile Include="Function\FunctionModuleProxy.cs" />
     <Compile Include="Function\IFunctionModule.cs" />
     <Compile Include="DebugSettings.cs" />
-    <Compile Include="Devices\IDevicesChangedListener.cs" />
-    <Compile Include="Devices\IDevicesGetter.cs" />
+    <Compile Include="MultipleDevices\IDevicesChangedListener.cs" />
+    <Compile Include="MultipleDevices\IDevicesGetter.cs" />
     <Compile Include="Executer\OutputData.cs" />
-    <Compile Include="Devices\DevicesList.cs" />
+    <Compile Include="MultipleDevices\DevicesList.cs" />
     <Compile Include="Executer\ABProcess.cs" />
     <Compile Include="Function\ExecuteResult.cs" />
     <Compile Include="Executer\Command.cs" />
     <Compile Include="Function\FunctionModule.cs" />
-    <Compile Include="Devices\DevicesMonitor.cs" />
-    <Compile Include="Devices\DeviceState.cs" />
-    <Compile Include="Devices\DevicesHelper.cs" />
+    <Compile Include="MultipleDevices\DevicesMonitor.cs" />
+    <Compile Include="Device\DeviceState.cs" />
+    <Compile Include="MultipleDevices\DevicesHelper.cs" />
     <Compile Include="Executer\IOutReceiver.cs" />
     <Compile Include="Function\ModuleStatus.cs" />
     <Compile Include="Function\Modules\CustomRecoveryFlasher.cs" />
@@ -110,7 +109,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="AdbHelper.cs" />
     <Compile Include="Util\ConstData.cs" />
-    <Compile Include="Connection\DeviceConnection.cs" />
+    <Compile Include="Device\DeviceConnection.cs" />
     <Compile Include="Util\LinuxReturnCode.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -119,6 +118,7 @@
       <Name>AutumnBox.Support</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="..\AutumnBox.Basic.EFM\AutumnBox.Basic.EFM.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

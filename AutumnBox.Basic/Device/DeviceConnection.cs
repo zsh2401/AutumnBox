@@ -1,13 +1,6 @@
-﻿using AutumnBox.Basic.Devices;
-using AutumnBox.Basic.Executer;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AutumnBox.Basic.Executer;
 
-namespace AutumnBox.Basic.Connection
+namespace AutumnBox.Basic.Device
 {
     public sealed class DeviceConnection
     {

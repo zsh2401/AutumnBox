@@ -1,23 +1,10 @@
 ﻿using AutumnBox.Basic.Function;
 using AutumnBox.Basic.Function.Args;
 using AutumnBox.Basic.Function.Modules;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using AutumnBox.Basic.Devices;
-using AutumnBox.GUI.Windows;
 using AutumnBox.GUI.Helper;
+using AutumnBox.Basic.Device;
 
 namespace AutumnBox.GUI.UI.FuncPanels
 {

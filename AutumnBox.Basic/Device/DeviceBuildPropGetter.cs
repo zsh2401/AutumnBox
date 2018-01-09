@@ -5,18 +5,12 @@
 ** compiler: Visual Studio 2017
 ** desc： ...
 *********************************************************************************/
-using AutumnBox.Basic.Connection;
 using AutumnBox.Basic.Executer;
-using AutumnBox.Support.CstmDebug;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
-namespace AutumnBox.Basic.Devices
+namespace AutumnBox.Basic.Device
 {
     public class DeviceBuildPropGetter : IDisposable
     {

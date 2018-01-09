@@ -5,10 +5,9 @@
 ** compiler: Visual Studio 2017
 ** desc： ...
 *********************************************************************************/
-using AutumnBox.Basic.Connection;
 using AutumnBox.Basic.Executer;
 
-namespace AutumnBox.Basic.Devices
+namespace AutumnBox.Basic.Device
 {
     public class DeviceHardwareInfoGetter
     {

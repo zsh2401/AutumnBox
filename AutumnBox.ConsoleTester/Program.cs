@@ -1,12 +1,5 @@
-﻿using AutumnBox.Basic.Connection;
-using AutumnBox.Basic.Devices;
-using AutumnBox.Basic.Executer;
-using AutumnBox.Basic.Flows;
-using AutumnBox.Basic.Util;
+﻿using AutumnBox.Basic.Device;
 using System;
-using System.Diagnostics;
-using System.IO;
-using System.Net;
 
 namespace AutumnBox.ConsoleTester
 {

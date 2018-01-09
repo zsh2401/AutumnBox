@@ -1,5 +1,4 @@
-﻿using AutumnBox.Basic.Devices;
-using System;
+﻿using AutumnBox.Basic.Device;
 
 namespace AutumnBox.GUI.UI
 {

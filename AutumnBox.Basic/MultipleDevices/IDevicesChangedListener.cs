@@ -11,9 +11,8 @@
 * Company: I am free man
 *
 \* =============================================================================*/
-namespace AutumnBox.Basic.Devices
+namespace AutumnBox.Basic.MultipleDevices
 {
-    using AutumnBox.Basic.Devices;
     public interface IDevicesChangedListener
     {
         void OnDevicesChanged(object sender, DevicesChangedEventArgs e);

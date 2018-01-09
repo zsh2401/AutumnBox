@@ -12,9 +12,9 @@
 *
 \* =============================================================================*/
 
-using AutumnBox.Basic.Connection;
+using AutumnBox.Basic.Device;
 
-namespace AutumnBox.Basic.Devices
+namespace AutumnBox.Basic.Device
 {
     public struct DeviceHardwareInfo
     {

@@ -12,13 +12,9 @@
 *
 \* =============================================================================*/
 
-using AutumnBox.Basic.Connection;
-using AutumnBox.Support.CstmDebug;
 using System;
-using System.Net;
-using System.Text.RegularExpressions;
 
-namespace AutumnBox.Basic.Devices
+namespace AutumnBox.Basic.Device
 {
 
     /// <summary>

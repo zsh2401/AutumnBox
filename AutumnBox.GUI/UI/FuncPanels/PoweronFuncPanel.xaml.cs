@@ -2,7 +2,6 @@
 using AutumnBox.Basic.Function.Modules;
 using System;
 using System.Windows;
-using AutumnBox.Basic.Devices;
 using AutumnBox.Basic.Function;
 using System.Windows.Forms;
 using AutumnBox.GUI.Helper;
@@ -13,6 +12,7 @@ using AutumnBox.Basic.Flows;
 using System.IO;
 using System.Collections.Generic;
 using AutumnBox.Support.CstmDebug;
+using AutumnBox.Basic.Device;
 
 namespace AutumnBox.GUI.UI.FuncPanels
 {

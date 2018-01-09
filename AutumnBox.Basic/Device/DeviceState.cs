@@ -11,7 +11,7 @@
 * Company: I am free man
 *
 \* =============================================================================*/
-namespace AutumnBox.Basic.Devices
+namespace AutumnBox.Basic.Device
 {
     public static class DeviceStatusHelper {
         public static DeviceState ToDeviceState(this string strStatus) {

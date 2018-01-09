@@ -5,7 +5,7 @@
 ** compiler: Visual Studio 2017
 ** desc： ...
 *********************************************************************************/
-using AutumnBox.Basic.Devices;
+using AutumnBox.Basic.Device;
 using AutumnBox.Basic.Executer;
 using AutumnBox.Basic.FlowFramework;
 using AutumnBox.Basic.Flows.Result;
@@ -14,10 +14,7 @@ using AutumnBox.Basic.Function.Args;
 using AutumnBox.Basic.Function.Modules;
 using AutumnBox.Support.CstmDebug;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 

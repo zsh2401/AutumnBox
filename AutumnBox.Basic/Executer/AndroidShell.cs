@@ -15,13 +15,11 @@
 #define LOG_FULL_OUTPUT
 #define LOG_INPUT
 using AutumnBox.Basic.Adb;
-using AutumnBox.Basic.Connection;
+using AutumnBox.Basic.Device;
 using AutumnBox.Basic.Util;
-using AutumnBox.Support.CstmDebug;
 using AutumnBox.Support.Helper;
 using System;
 using System.Diagnostics;
-using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading;
 

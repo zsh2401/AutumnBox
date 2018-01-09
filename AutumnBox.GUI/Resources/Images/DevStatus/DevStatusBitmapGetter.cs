@@ -5,17 +5,9 @@
 ** compiler: Visual Studio 2017
 ** desc： ...
 *********************************************************************************/
-using AutumnBox.Basic.Devices;
+using AutumnBox.Basic.Device;
 using AutumnBox.GUI.Resources.Images;
-using AutumnBox.GUI.Util;
-using AutumnBox.Support.CstmDebug;
-using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
 
 namespace AutumnBox.GUI.Resources

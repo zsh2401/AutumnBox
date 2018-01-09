@@ -11,14 +11,10 @@
 * Company: I am free man
 *
 \* =============================================================================*/
-using AutumnBox.Basic.Connection;
+using AutumnBox.Basic.Device;
 using AutumnBox.Basic.Executer;
 using AutumnBox.Basic.Function.Args;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Function.Bundles
 {

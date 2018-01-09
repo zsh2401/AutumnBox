@@ -13,8 +13,7 @@
 \* =============================================================================*/
 namespace AutumnBox.Basic.Executer
 {
-    using AutumnBox.Basic.Connection;
-    using AutumnBox.Basic.Devices;
+    using AutumnBox.Basic.Device;
     using AutumnBox.Basic.Util;
 
     /// <summary>

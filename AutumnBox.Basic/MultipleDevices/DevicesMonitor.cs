@@ -18,7 +18,7 @@ using System;
 using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
-namespace AutumnBox.Basic.Devices
+namespace AutumnBox.Basic.MultipleDevices
 {
     /// <summary>
     /// 连接设备变化的事件

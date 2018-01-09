@@ -11,13 +11,11 @@
 * Company: I am free man
 *
 \* =============================================================================*/
+using AutumnBox.Basic.Device;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace AutumnBox.Basic.Devices
+namespace AutumnBox.Basic.MultipleDevices
 {
     public class DevicesList : List<DeviceBasicInfo>
     {

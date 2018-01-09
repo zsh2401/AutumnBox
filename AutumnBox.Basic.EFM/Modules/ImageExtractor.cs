@@ -11,18 +11,11 @@
 * Company: I am free man
 *
 \* =============================================================================*/
-using System;
-using System.Collections.Generic;
-using System.Text;
 using AutumnBox.Basic.Executer;
-using AutumnBox.Basic.Util;
-using System.IO;
-using System.Threading;
 using AutumnBox.Support.CstmDebug;
 using AutumnBox.Basic.Function.Args;
-using System.Text.RegularExpressions;
-using AutumnBox.Basic.Devices;
 using AutumnBox.Basic.Function.Bundles;
+using AutumnBox.Basic.Device;
 
 namespace AutumnBox.Basic.Function.Modules
 {

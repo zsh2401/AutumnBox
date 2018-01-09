@@ -11,17 +11,13 @@
 * Company: I am free man
 *
 \* =============================================================================*/
-using AutumnBox.Basic.Connection;
 using AutumnBox.Basic.Executer;
 using AutumnBox.Support.CstmDebug;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Net;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
-namespace AutumnBox.Basic.Devices
+namespace AutumnBox.Basic.Device
 {
     [LogProperty(TAG = "DeviceInfoHelper")]
     public static class DeviceInfoHelper

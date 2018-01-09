@@ -6,7 +6,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AutumnBox.Basic.Connection
+namespace AutumnBox.Basic.Device
 {
     public class Serial : IEquatable<Serial>
     {

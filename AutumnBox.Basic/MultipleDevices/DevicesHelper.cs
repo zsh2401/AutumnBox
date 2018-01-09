@@ -13,7 +13,7 @@
 \* =============================================================================*/
 using AutumnBox.Support.CstmDebug;
 
-namespace AutumnBox.Basic.Devices
+namespace AutumnBox.Basic.MultipleDevices
 {
     [LogProperty(TAG = "DevicesHelper")]
     /// <summary>

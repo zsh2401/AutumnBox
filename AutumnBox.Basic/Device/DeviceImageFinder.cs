@@ -5,17 +5,12 @@
 ** compiler: Visual Studio 2017
 ** desc： ...
 *********************************************************************************/
-using AutumnBox.Basic.Connection;
 using AutumnBox.Basic.Executer;
 using AutumnBox.Basic.Util;
 using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace AutumnBox.Basic.Devices
+namespace AutumnBox.Basic.Device
 {
 
     public sealed class DeviceImageFinder : IDisposable

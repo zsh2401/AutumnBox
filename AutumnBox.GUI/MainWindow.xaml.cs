@@ -12,7 +12,6 @@
 *
 \* =============================================================================*/
 using AutumnBox.Basic.Adb;
-using AutumnBox.Basic.Devices;
 using AutumnBox.Basic.FlowFramework;
 using AutumnBox.Basic.Function;
 using AutumnBox.GUI.Cfg;
@@ -27,9 +26,9 @@ using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 using System.Collections.Generic;
 using AutumnBox.Basic.Util;
+using AutumnBox.Basic.Device;
 
 namespace AutumnBox.GUI
 {

@@ -1,10 +1,9 @@
-﻿using AutumnBox.Basic.Devices;
+﻿using AutumnBox.Basic.Device;
 using AutumnBox.GUI.Helper;
 using AutumnBox.GUI.I18N;
 using AutumnBox.GUI.Resources;
 using AutumnBox.Support.CstmDebug;
 using System;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Input;
