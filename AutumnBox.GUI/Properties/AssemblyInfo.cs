@@ -25,7 +25,7 @@ using System.Windows;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("zsh2401")]
 [assembly: AssemblyProduct("AutumnBox")]
-[assembly: AssemblyCopyright("Copyright ©zsh2401  2017")]
+[assembly: AssemblyCopyright("Copyright ©zsh2401  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 // 将 ComVisible 设置为 false 会使此程序集中的类型

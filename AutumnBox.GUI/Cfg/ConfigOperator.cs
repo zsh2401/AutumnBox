@@ -50,6 +50,7 @@ namespace AutumnBox.GUI.Cfg
         /// </summary>
         public void ReloadFromDisk()
         {
+            //throw new Exception();
             if (HaveError()) SaveToDisk();
             if (!File.Exists(ConfigFileName)) { SaveToDisk(); return; }
             using (StreamReader sr = new StreamReader(ConfigFileName))

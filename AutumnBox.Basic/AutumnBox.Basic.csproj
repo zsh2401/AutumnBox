@@ -46,11 +46,14 @@
     <Compile Include="Devices\DeviceBuildPropGetter.cs" />
     <Compile Include="Devices\DeviceHardwareInfo.cs" />
     <Compile Include="Devices\DeviceHardwareInfoGetter.cs" />
+    <Compile Include="Devices\DeviceImage.cs" />
     <Compile Include="Devices\DeviceImageHelper.cs" />
+    <Compile Include="Devices\DeviceImageFinder.cs" />
     <Compile Include="Devices\DeviceInfoHelper.cs" />
     <Compile Include="Devices\DeviceNotFoundException.cs" />
     <Compile Include="Devices\DevicesGetter.cs" />
     <Compile Include="Devices\DeviceBasicInfo.cs" />
+    <Compile Include="Devices\IShareableShell.cs" />
     <Compile Include="Executer\AndroidShell.cs" />
     <Compile Include="Executer\AndroidShellEvents.cs" />
     <Compile Include="Executer\CommandExecuter.cs" />

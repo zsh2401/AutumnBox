@@ -40,7 +40,9 @@ namespace AutumnBox.GUI
         }
         protected override void OnStartup(StartupEventArgs e)
         {
+#if !DEBUG
             App.Current.DispatcherUnhandledException += Current_DispatcherUnhandledException;
+#endif
             if (SystemHelper.HaveOtherAutumnBoxProcess)
             {
                 Logger.T("have other autumnbox show MMessageBox and exit(1)");
@@ -74,10 +76,8 @@ namespace AutumnBox.GUI
             }
             File.WriteAllText("logs\\exception.txt", exstr);
 
-#if! DEBUG
             e.Handled = true;
             Environment.Exit(1);
-#endif
         }
 
         protected override void OnExit(ExitEventArgs e)
