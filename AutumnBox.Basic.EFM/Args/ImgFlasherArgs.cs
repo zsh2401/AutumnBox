@@ -18,7 +18,7 @@ namespace AutumnBox.Basic.Function.Args
     public class ImgFlasherArgs : ModuleArgs
     {
         public string ImgPath { get; set; }
-        public Images ImgType { get; set; } = Images.Recovery;
+        public DeviceImage ImgType { get; set; } = DeviceImage.Recovery;
         public ImgFlasherArgs(DeviceBasicInfo device) : base(device)
         {
         }

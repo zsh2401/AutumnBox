@@ -47,7 +47,6 @@
     <Compile Include="Device\DeviceHardwareInfo.cs" />
     <Compile Include="Device\DeviceHardwareInfoGetter.cs" />
     <Compile Include="Device\DeviceImage.cs" />
-    <Compile Include="Device\DeviceImageHelper.cs" />
     <Compile Include="Device\DeviceImageFinder.cs" />
     <Compile Include="Device\DeviceInfoHelper.cs" />
     <Compile Include="MultipleDevices\DevicesGetter.cs" />

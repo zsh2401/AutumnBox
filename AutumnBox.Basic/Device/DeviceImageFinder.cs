@@ -39,6 +39,13 @@ namespace AutumnBox.Basic.Device
         {
             this.serial = serial;
         }
+        public static string PathOf(Serial serial, DeviceImage imageType)
+        {
+            using (DeviceImageFinder _o = new DeviceImageFinder(serial))
+            {
+                return _o.PathOf(imageType);
+            }
+        }
         public string PathOf(DeviceImage imageType)
         {
             return Find1(imageType) ?? Find2(imageType);
@@ -75,13 +82,7 @@ namespace AutumnBox.Basic.Device
             }
             return null;
         }
-        public static string PathOf(Serial serial, DeviceImage imageType)
-        {
-            using (DeviceImageFinder _o = new DeviceImageFinder(serial))
-            {
-                return _o.PathOf(imageType);
-            }
-        }
+
         private bool PathIsRight(string path)
         {
             return ShellAsSu.SafetyInput($"ls -l {path}").IsSuccess;

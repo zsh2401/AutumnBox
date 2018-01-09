@@ -49,7 +49,7 @@ namespace AutumnBox.Basic.Function.Modules
                     return result;
                 }
                 Logger.T("Switch to superuser success");
-                imagePath = DeviceImageHelper.Find(_shell, _Args.ExtractImage);
+                imagePath = DeviceImageFinder.PathOf(toolsBundle.Args.DeviceBasicInfo.Serial, _Args.ExtractImage);
                 if (imagePath == null)//获取失败
                 {
                     return result;

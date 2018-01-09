@@ -45,7 +45,7 @@ namespace AutumnBox.Basic.Function.Modules
             Logger.D("connected");
             if (_shell.Switch2Su() != true) { _suNotFound = true; return output_r; }
             Logger.D("switched to su");
-            string fullPath = DeviceImageHelper.Find(_shell, _args.ImgType);
+            string fullPath = DeviceImageFinder.PathOf(toolsBundle.Args.DeviceBasicInfo.Serial, _args.ImgType);
             if (fullPath == null)
             {
                 _imageNotFound = true;

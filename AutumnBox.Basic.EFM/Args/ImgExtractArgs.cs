@@ -15,16 +15,11 @@ using AutumnBox.Basic.Device;
 
 namespace AutumnBox.Basic.Function.Args
 {
-    public enum Image
-    {
-        Boot,
-        Recovery,
-    }
     public class ImgExtractArgs : ModuleArgs
     {
         public string SavePath { get; set; }
-        public Images ExtractImage { get; set; }
-        public ImgExtractArgs(DeviceBasicInfo device, Images extractImage = Images.Recovery) : base(device)
+        public DeviceImage ExtractImage { get; set; }
+        public ImgExtractArgs(DeviceBasicInfo device, DeviceImage extractImage = DeviceImage.Recovery) : base(device)
         {
             ExtractImage = extractImage;
         }

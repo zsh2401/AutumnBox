@@ -178,7 +178,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
             };
             if (fbd.ShowDialog() != DialogResult.OK) return;
             FunctionModuleProxy fmp =
-                FunctionModuleProxy.Create<ImageExtractor>(new ImgExtractArgs(_currentDevInfo) { ExtractImage = Images.Boot, SavePath = fbd.SelectedPath });
+                FunctionModuleProxy.Create<ImageExtractor>(new ImgExtractArgs(_currentDevInfo) { ExtractImage = DeviceImage.Boot, SavePath = fbd.SelectedPath });
             fmp.Finished += ((MainWindow)App.Current.MainWindow).FuncFinish;
             fmp.AsyncRun();
             BoxHelper.ShowLoadingDialog(fmp);
@@ -196,7 +196,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
             };
             if (fbd.ShowDialog() != DialogResult.OK) return;
             FunctionModuleProxy fmp =
-                FunctionModuleProxy.Create<ImageExtractor>(new ImgExtractArgs(_currentDevInfo) { ExtractImage = Images.Recovery, SavePath = fbd.SelectedPath });
+                FunctionModuleProxy.Create<ImageExtractor>(new ImgExtractArgs(_currentDevInfo) { ExtractImage = DeviceImage.Recovery, SavePath = fbd.SelectedPath });
             fmp.Finished += ((MainWindow)App.Current.MainWindow).FuncFinish;
             fmp.AsyncRun();
             BoxHelper.ShowLoadingDialog(fmp);
@@ -215,7 +215,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
             fileDialog.Multiselect = false;
             if (fileDialog.ShowDialog() == true)
             {
-                var fmp = FunctionModuleProxy.Create<ImageFlasher>(new ImgFlasherArgs(_currentDevInfo) { ImgPath = fileDialog.FileName, ImgType = Images.Boot });
+                var fmp = FunctionModuleProxy.Create<ImageFlasher>(new ImgFlasherArgs(_currentDevInfo) { ImgPath = fileDialog.FileName, ImgType = DeviceImage.Boot });
                 fmp.Finished += ((MainWindow)App.Current.MainWindow).FuncFinish;
                 fmp.AsyncRun();
                 BoxHelper.ShowLoadingDialog(fmp);
@@ -252,7 +252,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
             fileDialog.Multiselect = false;
             if (fileDialog.ShowDialog() == true)
             {
-                var fmp = FunctionModuleProxy.Create<ImageFlasher>(new ImgFlasherArgs(_currentDevInfo) { ImgPath = fileDialog.FileName, ImgType = Images.Recovery });
+                var fmp = FunctionModuleProxy.Create<ImageFlasher>(new ImgFlasherArgs(_currentDevInfo) { ImgPath = fileDialog.FileName, ImgType = DeviceImage.Recovery });
                 fmp.Finished += ((MainWindow)App.Current.MainWindow).FuncFinish;
                 fmp.AsyncRun();
                 BoxHelper.ShowLoadingDialog(fmp);
