@@ -18,6 +18,21 @@ namespace AutumnBox.Basic.Flows.Result
 {
     public class AdvanceResult : FlowResult
     {
-        public int ExitCode { get; set; } = 1;
+        public override ResultType ResultType
+        {
+            get
+            {
+                return IsSuccess ?ResultType.Successful:ResultType.Unsuccessful;
+            }
+            set { }
+        }
+        public bool IsSuccess
+        {
+            get
+            {
+                return ExitCode == 0;
+            }
+        }
+        public int ExitCode { get; set; } = 0;
     }
 }

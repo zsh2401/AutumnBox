@@ -13,7 +13,7 @@ using System.Linq;
 namespace AutumnBox.Basic.Device
 {
 
-    public sealed class DeviceImageFinder : IDisposable
+    public sealed class DeviceImageFinder : IDisposable,ISetableShell
     {
         private readonly Serial serial;
         public AndroidShell ShellAsSu

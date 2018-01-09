@@ -17,4 +17,8 @@ namespace AutumnBox.Basic.FlowFramework
     public abstract class FunctionFlow : FunctionFlow<FlowArgs, FlowResult>
     {
     }
+    public abstract class FunctionFlow<TArgs> : FunctionFlow<TArgs, FlowResult>
+        where TArgs : FlowArgs, new()
+    {
+    }
 }

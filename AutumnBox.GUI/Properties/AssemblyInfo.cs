@@ -21,7 +21,7 @@ using System.Windows;
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
 [assembly: AssemblyTitle("AutumnBox")]
-[assembly: AssemblyDescription("Late in Autumn")]
+[assembly: AssemblyDescription("A simple flash toolbox")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("zsh2401")]
 [assembly: AssemblyProduct("AutumnBox")]
@@ -63,7 +63,7 @@ using System.Windows;
 // 方法是按如下所示使用“*”: :
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("0.26.0.*")]
-[assembly: AssemblyFileVersion("2018.1.7.0")]
+[assembly: AssemblyFileVersion("2018.1.9.0")]
 [assembly: NeutralResourcesLanguage("zh-CN")]
 
 //自定义的程序集Attribute

@@ -6,15 +6,10 @@
 ** desc： ...
 *********************************************************************************/
 using AutumnBox.Basic.Executer;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Device
 {
-    interface IShareableShell
+    interface ISetableShell
     {
         AndroidShell ShellAsSu { set; }
     }

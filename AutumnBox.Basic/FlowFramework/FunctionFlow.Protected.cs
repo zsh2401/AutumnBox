@@ -24,6 +24,10 @@ namespace AutumnBox.Basic.FlowFramework
         protected TArgs Args { get; private set; }
         protected virtual void Initialization(TArgs moduleArgs)
         {
+            if (_isInited) {
+                throw new Exception("Args is setted!");
+            }
+            _isInited = true;
             Args = moduleArgs;
         }
         protected virtual CheckResult Check() { return CheckResult.OK; }

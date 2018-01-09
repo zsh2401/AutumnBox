@@ -177,11 +177,16 @@ namespace AutumnBox.GUI.UI.FuncPanels
                 Description = "请选择保存路径"
             };
             if (fbd.ShowDialog() != DialogResult.OK) return;
-            FunctionModuleProxy fmp =
-                FunctionModuleProxy.Create<ImageExtractor>(new ImgExtractArgs(_currentDevInfo) { ExtractImage = DeviceImage.Boot, SavePath = fbd.SelectedPath });
-            fmp.Finished += ((MainWindow)App.Current.MainWindow).FuncFinish;
-            fmp.AsyncRun();
-            BoxHelper.ShowLoadingDialog(fmp);
+            var args = new DeviceImageExtractorArgs()
+            {
+                DevBasicInfo = _currentDevInfo,
+                SavePath = fbd.SelectedPath,
+                ImageType = DeviceImage.Boot,
+            };
+            var extrator = new DeviceImageExtractor();
+            extrator.Init(args);
+            extrator.RunAsync();
+            BoxHelper.ShowLoadingDialog(extrator);
         }
 
         private void ButtonExtractRecImg_Click(object sender, RoutedEventArgs e)
@@ -195,11 +200,16 @@ namespace AutumnBox.GUI.UI.FuncPanels
                 Description = "请选择保存路径"
             };
             if (fbd.ShowDialog() != DialogResult.OK) return;
-            FunctionModuleProxy fmp =
-                FunctionModuleProxy.Create<ImageExtractor>(new ImgExtractArgs(_currentDevInfo) { ExtractImage = DeviceImage.Recovery, SavePath = fbd.SelectedPath });
-            fmp.Finished += ((MainWindow)App.Current.MainWindow).FuncFinish;
-            fmp.AsyncRun();
-            BoxHelper.ShowLoadingDialog(fmp);
+            var args = new DeviceImageExtractorArgs()
+            {
+                DevBasicInfo = _currentDevInfo,
+                SavePath = fbd.SelectedPath,
+                ImageType = DeviceImage.Recovery,
+            };
+            var extrator = new DeviceImageExtractor();
+            extrator.Init(args);
+            extrator.RunAsync();
+            BoxHelper.ShowLoadingDialog(extrator);
         }
 
         private void ButtonFlashBootImg_Click(object sender, RoutedEventArgs e)
@@ -215,10 +225,16 @@ namespace AutumnBox.GUI.UI.FuncPanels
             fileDialog.Multiselect = false;
             if (fileDialog.ShowDialog() == true)
             {
-                var fmp = FunctionModuleProxy.Create<ImageFlasher>(new ImgFlasherArgs(_currentDevInfo) { ImgPath = fileDialog.FileName, ImgType = DeviceImage.Boot });
-                fmp.Finished += ((MainWindow)App.Current.MainWindow).FuncFinish;
-                fmp.AsyncRun();
-                BoxHelper.ShowLoadingDialog(fmp);
+                var flasherArgs = new DeviceImageFlasherArgs()
+                {
+                    DevBasicInfo = _currentDevInfo,
+                    ImageType = DeviceImage.Boot,
+                    SourceFile = fileDialog.FileName,
+                };
+                DeviceImageFlasher flasher = new DeviceImageFlasher();
+                flasher.Init(flasherArgs);
+                flasher.RunAsync();
+                BoxHelper.ShowLoadingDialog(flasher);
             }
         }
 
@@ -252,10 +268,16 @@ namespace AutumnBox.GUI.UI.FuncPanels
             fileDialog.Multiselect = false;
             if (fileDialog.ShowDialog() == true)
             {
-                var fmp = FunctionModuleProxy.Create<ImageFlasher>(new ImgFlasherArgs(_currentDevInfo) { ImgPath = fileDialog.FileName, ImgType = DeviceImage.Recovery });
-                fmp.Finished += ((MainWindow)App.Current.MainWindow).FuncFinish;
-                fmp.AsyncRun();
-                BoxHelper.ShowLoadingDialog(fmp);
+                var flasherArgs = new DeviceImageFlasherArgs()
+                {
+                    DevBasicInfo = _currentDevInfo,
+                    ImageType = DeviceImage.Recovery,
+                    SourceFile = fileDialog.FileName,
+                };
+                DeviceImageFlasher flasher = new DeviceImageFlasher();
+                flasher.Init(flasherArgs);
+                flasher.RunAsync();
+                BoxHelper.ShowLoadingDialog(flasher);
             }
         }
 

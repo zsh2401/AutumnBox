@@ -51,7 +51,7 @@
     <Compile Include="Device\DeviceInfoHelper.cs" />
     <Compile Include="MultipleDevices\DevicesGetter.cs" />
     <Compile Include="Device\DeviceBasicInfo.cs" />
-    <Compile Include="Device\IShareableShell.cs" />
+    <Compile Include="Device\ISetableShell.cs" />
     <Compile Include="Executer\AndroidShell.cs" />
     <Compile Include="Executer\AndroidShellEvents.cs" />
     <Compile Include="Executer\CommandExecuter.cs" />

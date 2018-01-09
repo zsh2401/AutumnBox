@@ -1,4 +1,5 @@
 ﻿using AutumnBox.Basic.Device;
+using AutumnBox.Basic.Flows;
 using System;
 
 namespace AutumnBox.ConsoleTester
@@ -28,9 +29,12 @@ namespace AutumnBox.ConsoleTester
         };
         unsafe static int Main(string[] args)
         {
-            DeviceImageFinder finder = new DeviceImageFinder(mi6.Serial);
-            var path = finder.PathOf(DeviceImage.Boot);
-            Console.WriteLine(path);
+            var result = new DeviceImageExtractor().Run(new DeviceImageExtractorArgs() {
+                DevBasicInfo = mi6,
+                ImageType = DeviceImage.Boot,
+            }); ;
+            Console.WriteLine(result.OutputData);
+            Console.WriteLine(result.ResultType);
             Console.ReadKey();
             return 0;
         }

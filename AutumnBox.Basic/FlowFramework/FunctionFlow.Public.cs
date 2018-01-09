@@ -29,7 +29,7 @@ namespace AutumnBox.Basic.FlowFramework
         public event OutputReceivedEventHandler OutputReceived;
         public event ProcessStartedEventHandler ProcessStarted;
         public event EventHandler NoArgFinished;
-
+        private bool _isInited = false;
         public FunctionFlow()
         {
             _executer = new CommandExecuter();
@@ -46,9 +46,9 @@ namespace AutumnBox.Basic.FlowFramework
         }
         public void Init(TArgs args)
         {
-            Logger.T("Init... Args type ->" + args.GetType().Name);
             Initialization(args);
         }
+        private bool _isSync = false;
         public async void RunAsync()
         {
             Logger.T("Run start async....");
@@ -58,7 +58,19 @@ namespace AutumnBox.Basic.FlowFramework
                 MainFlow();
             });
         }
-        private bool _isSync = false;
+        public async void RunAsync(TArgs args)
+        {
+            Initialization(args);
+            await Task.Run(() =>
+            {
+                MainFlow();
+            });
+        }
+        public TResult Run(TArgs args)
+        {
+            Initialization(args);
+            return Run();
+        }
         public TResult Run()
         {
             _isSync = true;

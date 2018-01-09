@@ -50,7 +50,11 @@
     <Compile Include="Args\FileSenderArgs.cs" />
     <Compile Include="BreventServiceActivator.cs" />
     <Compile Include="Container\Fuck.cs" />
+    <Compile Include="DeviceImageExtractor.cs" />
+    <Compile Include="DeviceImageFlasher.cs" />
     <Compile Include="DeviceOwnerSetter.cs" />
+    <Compile Include="FilePuller.cs" />
+    <Compile Include="FilePusher.cs" />
     <Compile Include="IceBoxActivator.cs" />
     <Compile Include="IslandActivator.cs" />
     <Compile Include="NetDebuggingCloser.cs" />
