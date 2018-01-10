@@ -41,7 +41,6 @@ namespace AutumnBox.GUI.Windows
         private ChoiceResult _result = ChoiceResult.BtnCancel;
         internal ChoiceBox(Window owner)
         {
-
             InitializeComponent();
             Owner = owner;
             closeAnimationByBtnCancel.Storyboard.Completed += (s, e) => Close();
@@ -57,6 +56,7 @@ namespace AutumnBox.GUI.Windows
             try { base.ShowDialog(); } catch (InvalidOperationException e) { GC.SuppressFinalize(e); }
             return _result;
         }
+
 
         private void ImgCancel_MouseDown(object sender, MouseButtonEventArgs e)
         {

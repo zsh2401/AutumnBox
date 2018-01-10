@@ -43,6 +43,8 @@ namespace AutumnBox.Basic.Function
         /// <summary>
         /// 强制停止
         /// </summary>
+#pragma warning disable CS0108 // 成员隐藏继承的成员；缺少关键字 new
         void ForceStop();
+#pragma warning restore CS0108 // 成员隐藏继承的成员；缺少关键字 new
     }
 }

@@ -8,7 +8,11 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Device
 {
+#pragma warning disable CS0659 // 类型重写 Object.Equals(object o)，但不重写 Object.GetHashCode()
+#pragma warning disable CS0661 // 类型定义运算符 == 或运算符 !=，但不重写 Object.GetHashCode()
     public class Serial : IEquatable<Serial>
+#pragma warning restore CS0661 // 类型定义运算符 == 或运算符 !=，但不重写 Object.GetHashCode()
+#pragma warning restore CS0659 // 类型重写 Object.Equals(object o)，但不重写 Object.GetHashCode()
     {
         public bool IsIpAdress
         {

@@ -53,7 +53,7 @@ namespace AutumnBox.Basic.Flows
             if (_tooKit.Args.FixAndroidOAdb &&//如果需要在激活后开启ADB
                 (new DeviceBuildPropGetter(_tooKit.Args.DevBasicInfo.Serial).
                 GetAndroidVersion() >= new Version("8.0.0")//并且安卓版本是8.0
-                )&&
+                ) &&
                 _result.ExitCode == 0
                 )
             {
@@ -80,8 +80,8 @@ namespace AutumnBox.Basic.Flows
                         IPAddress ip = DeviceInfoHelper.GetLocationIP(_tooKit.Args.DevBasicInfo.Serial);//获取设备IP
 
                         //连接到该设备
-                        var connecter = new NetDeviceAdder();
-                        connecter.Init(new NetDeviceAdderArgs() { IPEndPoint = new IPEndPoint(ip, (int)port) });
+                        var connecter = new NetDeviceConnecter();
+                        connecter.Init(new NetDeviceConnecterArgs() { IPEndPoint = new IPEndPoint(ip, (int)port) });
                         connecter.Run();
                     }
 

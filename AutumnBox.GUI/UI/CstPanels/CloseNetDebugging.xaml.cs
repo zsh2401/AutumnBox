@@ -48,7 +48,7 @@ namespace AutumnBox.GUI.UI.CstPanels
 
         private async void BtnDisconnect_Click(object sender, RoutedEventArgs e)
         {
-            var remover = new NetDeviceRemover();
+            var remover = new NetDeviceDisconnecter();
             remover.Init(new Basic.FlowFramework.FlowArgs()
             {
                 DevBasicInfo = new DeviceBasicInfo()

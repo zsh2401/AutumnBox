@@ -1,7 +1,7 @@
 ﻿/********************************************************************************
 ** auth： zsh2401@163.com
-** date： 2017/12/28 1:34:05
-** filename: NetDeviceAdder.cs
+** date： 2017/12/28 1:42:44
+** filename: NetDeviceRemover.cs
 ** compiler: Visual Studio 2017
 ** desc： ...
 *********************************************************************************/
@@ -9,20 +9,22 @@ using AutumnBox.Basic.Executer;
 using AutumnBox.Basic.FlowFramework;
 using AutumnBox.Basic.Flows.Result;
 using AutumnBox.Basic.Util;
-using System.Net;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Flows
 {
-    public sealed class NetDeviceAdderArgs : FlowArgs
-    {
-        public IPEndPoint IPEndPoint { get; set; }
-    }
-    public sealed class NetDeviceAdder : FunctionFlow<NetDeviceAdderArgs, AdvanceResult>
+    public class NetDeviceDisconnecter : FunctionFlow<FlowArgs, AdvanceResult>
     {
         private CommandExecuterResult _result;
-        protected override OutputData MainMethod(ToolKit<NetDeviceAdderArgs> toolKit)
+        protected override OutputData MainMethod(ToolKit<FlowArgs> toolKit)
         {
-            _result = toolKit.Executer.Execute(Command.MakeForAdb($"connect {toolKit.Args.IPEndPoint.ToString()}"));
+            if (!toolKit.Args.DevBasicInfo.Serial.IsIpAdress)
+                throw new Exception($"{toolKit.Args.DevBasicInfo.Serial} is not a net debugging device");
+            _result = toolKit.Executer.Execute(Command.MakeForAdb($"disconnect {toolKit.Args.DevBasicInfo.Serial.ToString()}"));
             return _result.Output;
         }
         protected override void AnalyzeResult(AdvanceResult result)
@@ -30,9 +32,6 @@ namespace AutumnBox.Basic.Flows
             base.AnalyzeResult(result);
             result.ExitCode = _result.ExitCode;
             result.ResultType = _result.IsSuccessful ? ResultType.Successful : ResultType.Unsuccessful;
-            if (result.OutputData.Contains("unable")) {
-                result.ResultType = ResultType.Unsuccessful;
-            }
         }
     }
 }

@@ -25,7 +25,7 @@ namespace AutumnBox.GUI.UI.CstPanels
     /// </summary>
     public partial class NetDebuggingAdder : UserControl, ICommunicableWithFastGrid
     {
-        private NetDeviceAdder adder = null;
+        private NetDeviceConnecter adder = null;
         public event EventHandler CallFatherToClose;
         public NetDebuggingAdder()
         {
@@ -34,11 +34,11 @@ namespace AutumnBox.GUI.UI.CstPanels
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
-            NetDeviceAdderArgs args = null;
+            NetDeviceConnecterArgs args = null;
             try
             {
                 IPAddress ip = IPAddress.Parse(TBoxIP.Text.ToString());
-                args = new NetDeviceAdderArgs() { IPEndPoint = new IPEndPoint(ip, int.Parse(TBoxPort.Text)) };
+                args = new NetDeviceConnecterArgs() { IPEndPoint = new IPEndPoint(ip, int.Parse(TBoxPort.Text)) };
             }
             catch (Exception ex)
             {
@@ -46,7 +46,7 @@ namespace AutumnBox.GUI.UI.CstPanels
                 new FastGrid(this.GridMain, new DevicesPanelMessageBox(App.Current.Resources["msgCheckInput"].ToString()));
                 return;
             }
-            adder = new NetDeviceAdder();
+            adder = new NetDeviceConnecter();
             adder.Init(args);
             BtnAdd.Content = App.Current.Resources["btnConnecting"];
             var result = await Task.Run(() =>

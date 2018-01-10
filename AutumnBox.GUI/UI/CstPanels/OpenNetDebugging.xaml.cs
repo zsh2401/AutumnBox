@@ -89,8 +89,8 @@ namespace AutumnBox.GUI.UI.CstPanels
                                 );
                             });
                         }
-                        var connecter = new NetDeviceAdder();
-                        connecter.Init(new NetDeviceAdderArgs()
+                        var connecter = new NetDeviceConnecter();
+                        connecter.Init(new NetDeviceConnecterArgs()
                         {
                             IPEndPoint = new IPEndPoint(IP, port)
                         });

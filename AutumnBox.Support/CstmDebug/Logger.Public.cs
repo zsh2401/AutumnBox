@@ -24,21 +24,18 @@ namespace AutumnBox.Support.CstmDebug
     {
         public static void D(string message, bool isWarning = false)
         {
-#if !DEBUG
-            return;
-#endif
+#if DEBUG
             var methodCaller = GetCaller();
             LogPropertyAttribute attrInfo = GetLogPropertyAttribute(methodCaller);
             if (!attrInfo.Show) return;
             string full = GetFullMessage(attrInfo.TAG, message, isWarning.ToErrorLevel());
             Debug.WriteLine(full);
             WriteToFile(LogFileNameOf(methodCaller), full);
+#endif
         }
         public static void D(string message, Exception e)
         {
-#if !DEBUG
-            return;
-#endif
+#if DEBUG
             var methodCaller = GetCaller();
             LogPropertyAttribute attrInfo = GetLogPropertyAttribute(methodCaller);
             if (!attrInfo.Show) return;
@@ -46,6 +43,7 @@ namespace AutumnBox.Support.CstmDebug
             full.Append(Environment.NewLine + GetFullMessage(attrInfo.TAG, e.ToString() + e.Message, 2));
             Debug.WriteLine(full.ToString());
             WriteToFile(LogFileNameOf(methodCaller), full.ToString());
+#endif
         }
         public static void T(string message, bool isWarning = false)
         {

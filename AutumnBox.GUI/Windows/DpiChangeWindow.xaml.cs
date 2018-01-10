@@ -17,7 +17,6 @@ namespace AutumnBox.GUI.Windows
     /// </summary>
     public partial class DpiChangeWindow : Window
     {
-        private int? _deviceDefaultDpi;
         private readonly DeviceBasicInfo devinfo;
         FunctionModuleProxy runningFmp;
         private int _textboxInputDpi
