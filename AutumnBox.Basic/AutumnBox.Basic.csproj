@@ -72,7 +72,6 @@
     <Compile Include="FlowFramework\ToolKit.cs" />
     <Compile Include="FlowFramework\IForceStoppable.cs" />
     <Compile Include="FlowFramework\Stoper.cs" />
-    <Compile Include="Function\Args\FileSenderArgs.cs" />
     <Compile Include="Function\Args\ModuleArgs.cs" />
     <Compile Include="Function\Bundles\Bundle.cs" />
     <Compile Include="Function\Bundles\BundleForAnalyzingResult.cs" />
@@ -100,8 +99,6 @@
     <Compile Include="Executer\IOutReceiver.cs" />
     <Compile Include="Function\ModuleStatus.cs" />
     <Compile Include="Function\Modules\CustomRecoveryFlasher.cs" />
-    <Compile Include="Function\Modules\FilePuller.cs" />
-    <Compile Include="Function\Modules\FileSender.cs" />
     <Compile Include="Function\Args\Args.cs" />
     <Compile Include="Function\Args\RebootOptions.cs" />
     <Compile Include="Function\Modules\RebootOperator.cs" />

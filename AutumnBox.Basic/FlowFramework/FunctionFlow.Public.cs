@@ -29,12 +29,12 @@ namespace AutumnBox.Basic.FlowFramework
         public event OutputReceivedEventHandler OutputReceived;
         public event ProcessStartedEventHandler ProcessStarted;
         public event EventHandler NoArgFinished;
-        private bool _isInited = false;
+        public bool MustTiggerAnyFinishedEvent { get; set; } = false;
         public FunctionFlow()
         {
             _executer = new CommandExecuter();
             _resultTmp = new TResult();
-            TAG = new LogSender(this.GetType().Name, true);
+            TAG = new LogSender(this,this.GetType().Name, true);
             _executer.ProcessStarted += (s, e) =>
             {
                 OnProcessStarted(e);
@@ -52,7 +52,7 @@ namespace AutumnBox.Basic.FlowFramework
         public async void RunAsync()
         {
             Logger.T("Run start async....");
-            if (Args == null) throw new Exception("have not init!!!! try Init()");
+            if (_args == null) throw new Exception("have not init!!!! try Init()");
             await Task.Run(() =>
             {
                 MainFlow();
@@ -75,7 +75,7 @@ namespace AutumnBox.Basic.FlowFramework
         {
             _isSync = true;
             Logger.T("Run start sync....");
-            if (Args == null) throw new Exception("have not init!!!! try Init()");
+            if (_args == null) throw new Exception("have not init!!!! try Init()");
             MainFlow();
             return _resultTmp;
         }

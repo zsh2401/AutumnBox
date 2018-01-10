@@ -21,6 +21,7 @@ namespace AutumnBox.GUI
     using AutumnBox.GUI.Helper;
     using AutumnBox.GUI.Windows;
     using AutumnBox.Support.CstmDebug;
+    using AutumnBox.Basic.Flows;
 
     /// <summary>
     /// 各种界面事件
@@ -39,12 +40,6 @@ namespace AutumnBox.GUI
                 BoxHelper.CloseLoadingDialog();
                 switch (sender.GetType().Name)
                 {
-                    case nameof(FileSender):
-                        PushFinish(e);
-                        break;
-                    //case nameof(BreventServiceActivator):
-                    //    ActivatedBrvent(e);
-                    //    break;
                     case nameof(ActivityLauncher):
                         ActivatedBrvent(e);
                         break;

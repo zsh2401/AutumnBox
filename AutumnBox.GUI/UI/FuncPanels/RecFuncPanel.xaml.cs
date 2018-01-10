@@ -7,6 +7,7 @@ using AutumnBox.Basic.Function;
 using AutumnBox.GUI.Helper;
 using AutumnBox.GUI.Windows;
 using AutumnBox.Basic.Device;
+using AutumnBox.Basic.Flows;
 
 namespace AutumnBox.GUI.UI.FuncPanels
 {
@@ -43,10 +44,14 @@ namespace AutumnBox.GUI.UI.FuncPanels
             fileDialog.Multiselect = false;
             if (fileDialog.ShowDialog() == true)
             {
-                var fmp = FunctionModuleProxy.Create<FileSender>(new FileSenderArgs(_currentDevInfo) { FilePath = fileDialog.FileName });
-                fmp.Finished += ((MainWindow)App.Current.MainWindow).FuncFinish;
-                fmp.AsyncRun();
-                new FileSendingWindow(fmp).ShowDialog();
+                var args = new FilePusherArgs()
+                {
+                    DevBasicInfo = _currentDevInfo,
+                    SourceFile = fileDialog.FileName,
+                };
+                var pusher = new FilePusher();
+                pusher.RunAsync(args);
+                new FileSendingWindow(pusher).ShowDialog();
             }
             else
             {

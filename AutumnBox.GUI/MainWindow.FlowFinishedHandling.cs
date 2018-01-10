@@ -17,6 +17,7 @@ using AutumnBox.GUI.Windows;
 using AutumnBox.Basic.Flows.Result;
 using AutumnBox.Basic.FlowFramework;
 using System.Threading.Tasks;
+using AutumnBox.Support.CstmDebug;
 
 namespace AutumnBox.GUI
 {
@@ -33,11 +34,26 @@ namespace AutumnBox.GUI
                     case nameof(AirForzenActivator):
                         DevicesOwnerSetted((DeviceOwnerSetter)sender, (DeviceOwnerSetterResult)e.Result);
                         break;
+                    case nameof(FilePusher):
+                        PushFinished((AdvanceResult)e.Result);
+                        break;
                     default:
                         new FlowResultWindow(e.Result).ShowDialog();
                         break;
                 }
             });
+        }
+        public void PushFinished(AdvanceResult result)
+        {
+            Logger.D("Enter the Push Finish Handler in the GUI");
+            if (result.ResultType == ResultType.Successful)
+            {
+                BoxHelper.ShowMessageDialog("Notice", "msgPushOK");
+            }
+            else
+            {
+                new FlowResultWindow(result).ShowDialog();
+            }
         }
         private void DevicesOwnerSetted(DeviceOwnerSetter tor, DeviceOwnerSetterResult result)
         {

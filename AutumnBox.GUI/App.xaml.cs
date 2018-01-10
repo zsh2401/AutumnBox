@@ -16,6 +16,7 @@ using AutumnBox.GUI.Helper;
 using AutumnBox.Support.CstmDebug;
 using System;
 using System.IO;
+using System.Linq;
 using System.Windows;
 namespace AutumnBox.GUI
 {
@@ -57,21 +58,27 @@ namespace AutumnBox.GUI
             base.OnStartup(e);
         }
 
+        private string[] blockListFoExceptionSource = {
+            "PresentationCore"
+        };
         private void Current_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
         {
+            string src = e.Exception.Source;
+            if (blockListFoExceptionSource.Contains(src)) return;
             MessageBox.Show(
-                $"一个未知的错误的发生了,将logs文件夹压缩并发送给开发者以解决问题{Environment.NewLine}Please compress the logs folder and send it to zsh2401@163.com", 
+                $"一个未知的错误的发生了,将logs文件夹压缩并发送给开发者以解决问题{Environment.NewLine}Please compress the logs folder and send it to zsh2401@163.com",
                 "AutumnBox 错误/Unknow Exception",
             MessageBoxButton.OK,
             MessageBoxImage.Warning);
             string n = Environment.NewLine;
             string exstr =
-                $"AutumnBox Exception {DateTime.Now.ToString("MM/dd/yyyy    HH:mm:ss")}{n}{n}"+
+                $"AutumnBox Exception {DateTime.Now.ToString("MM/dd/yyyy    HH:mm:ss")}{n}{n}" +
                 $"Exception:{n}{e.Exception.ToString()}{n}{n}{n}" +
                 $"Message:{n}{e.Exception.Message}{n}{n}{n}" +
                 $"Source:{n}{e.Exception.Source}{n}{n}{n}" +
-                $"Inner:{n}{e.Exception.InnerException?.ToString()??"None"}{n}";
-            if (!Directory.Exists("logs")) {
+                $"Inner:{n}{e.Exception.InnerException?.ToString() ?? "None"}{n}";
+            if (!Directory.Exists("logs"))
+            {
                 Directory.CreateDirectory("logs");
             }
             File.WriteAllText("logs\\exception.txt", exstr);

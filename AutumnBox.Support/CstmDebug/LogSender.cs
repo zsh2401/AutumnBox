@@ -28,11 +28,6 @@ namespace AutumnBox.Support.CstmDebug
             LogTag = tag ?? owner.GetType().Name;
             IsShowLog = show;
         }
-        public LogSender(string tag, bool show)
-        {
-            LogTag = tag;
-            IsShowLog = show;
-        }
         public Type GetOwnerType()
         {
             return Owner.GetType();

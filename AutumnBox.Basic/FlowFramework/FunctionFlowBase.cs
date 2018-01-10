@@ -14,10 +14,14 @@
 
 namespace AutumnBox.Basic.FlowFramework
 {
-    public abstract class FunctionFlowBase
+    /// <summary>
+    /// all flow is this, this is all flow
+    /// </summary>
+    public abstract class FunctionFlowBase : object
     {
         public static event FinishedEventHandler<FlowResult> AnyFinished;
-        protected static void OnAnyFinished(object sender, FinishedEventArgs<FlowResult> e) {
+        protected static void OnAnyFinished(object sender, FinishedEventArgs<FlowResult> e)
+        {
             AnyFinished?.Invoke(sender, e);
         }
         protected internal static bool AnyFinishedRegistered => (AnyFinished != null);

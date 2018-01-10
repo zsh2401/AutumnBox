@@ -22,27 +22,29 @@ namespace AutumnBox.GUI.Windows
     using AutumnBox.Basic.Function;
     using AutumnBox.GUI.Helper;
     using AutumnBox.Support.CstmDebug;
+    using AutumnBox.Basic.Flows;
+    using AutumnBox.GUI.UI.CstPanels;
 
     /// <summary>
     /// FileSendingWindow.xaml 的交互逻辑
     /// </summary>
     public partial class FileSendingWindow : Window, IOutReceiver
     {
-        private FunctionModuleProxy ModuleProxy;
+        private FilePusher filePusher;
         Regex rg12 = new Regex("\\ (.*?)\\%");
         Regex rg3 = new Regex("\\[(.*?)\\%");
-        public FileSendingWindow(FunctionModuleProxy fmp)
+        public FileSendingWindow(FilePusher pusher)
         {
             this.Owner = App.Current.MainWindow;
-            this.ModuleProxy = fmp;
-            fmp.Finished += (s, e) =>
+            this.filePusher = pusher;
+            filePusher.Finished += (s, e) =>
             {
                 this.Dispatcher.Invoke(() =>
                 {
                     this.Close();
                 });
             };
-            fmp.OutputReceived += (s, e) =>
+            filePusher.OutputReceived += (s, e) =>
             {
                 if (!e.IsError)
                 {
@@ -84,7 +86,7 @@ namespace AutumnBox.GUI.Windows
 
         private void ButtonCancel_Click(object sender, RoutedEventArgs e)
         {
-            ModuleProxy.ForceStop();
+            filePusher.ForceStop();
             this.Close();
         }
 

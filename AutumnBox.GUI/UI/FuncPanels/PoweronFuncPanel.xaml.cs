@@ -92,10 +92,15 @@ namespace AutumnBox.GUI.UI.FuncPanels
             fileDialog.Multiselect = false;
             if (fileDialog.ShowDialog() == true)
             {
-                var fmp = FunctionModuleProxy.Create<Basic.Function.Modules.FileSender>(new FileSenderArgs(_currentDevInfo) { FilePath = fileDialog.FileName });
-                fmp.Finished += ((MainWindow)App.Current.MainWindow).FuncFinish;
-                fmp.AsyncRun();
-                new FileSendingWindow(fmp).ShowDialog();
+                var args = new FilePusherArgs() {
+                    DevBasicInfo = _currentDevInfo,
+                    SourceFile = fileDialog.FileName,
+                };
+                var pusher = new FilePusher();
+                pusher.Init(args);
+                pusher.MustTiggerAnyFinishedEvent = true;
+                pusher.RunAsync();
+                new FileSendingWindow(pusher).ShowDialog();
             }
             else
             {

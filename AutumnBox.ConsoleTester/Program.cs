@@ -29,12 +29,7 @@ namespace AutumnBox.ConsoleTester
         };
         unsafe static int Main(string[] args)
         {
-            var result = new DeviceImageExtractor().Run(new DeviceImageExtractorArgs() {
-                DevBasicInfo = mi6,
-                ImageType = DeviceImage.Boot,
-            }); ;
-            Console.WriteLine(result.OutputData);
-            Console.WriteLine(result.ResultType);
+            Console.WriteLine(true || false);
             Console.ReadKey();
             return 0;
         }

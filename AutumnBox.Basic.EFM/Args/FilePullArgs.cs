@@ -16,12 +16,4 @@ using AutumnBox.Basic.Device;
 
 namespace AutumnBox.Basic.Function.Args
 {
-    public class FilePullArgs : ModuleArgs
-    {
-        public string LocalFilePath { get; set; } = ".";
-        public string PhoneFilePath { get; set; } = String.Empty;
-        public FilePullArgs(DeviceBasicInfo device) : base(device)
-        {
-        }
-    }
 }

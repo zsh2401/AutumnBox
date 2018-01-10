@@ -19,8 +19,10 @@ namespace AutumnBox.Basic.FlowFramework
 {
     partial class FunctionFlow<TArgs, TResult>
     {
-        private Executer.CommandExecuter _executer;
+        private CommandExecuter _executer;
         private int? _pid;
+        private TArgs _args;
+        private bool _isInited = false;
         private TResult _resultTmp;
         private bool isForceStoped = false;
         private void MainFlow()
@@ -45,23 +47,23 @@ namespace AutumnBox.Basic.FlowFramework
         private void _MainFlow()
         {
             /*Checking*/
-            Logger.T("Checking...");
+            Logger.T(TAG,"Checking...");
             TResult result = new TResult
             {
                 CheckResult = Check()
             };
-            Logger.T("Check Result ->" + result.CheckResult);
+            Logger.T(TAG, "Check Result ->" + result.CheckResult);
             if (result.CheckResult != CheckResult.OK)
             {
                 OnFinished(new FinishedEventArgs<TResult>(result));
             }
-            Logger.T("Startup...");
+            Logger.T(TAG, "Startup...");
             OnStartup(new StartupEventArgs());
-            Logger.T("Running...");
-            result.OutputData = MainMethod(new ToolKit<TArgs>(Args, _executer));
-            Logger.T("Analyzing...");
+            Logger.T(TAG, "Running...");
+            result.OutputData = MainMethod(new ToolKit<TArgs>(_args, _executer));
+            Logger.T(TAG, "Analyzing Output...");
             AnalyzeResult(result);
-            Logger.T("Finished...");
+            Logger.T(TAG, "Finished...");
             OnFinished(new FinishedEventArgs<TResult>(result));
         }
     }

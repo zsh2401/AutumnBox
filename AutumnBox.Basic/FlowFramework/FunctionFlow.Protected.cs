@@ -21,14 +21,14 @@ namespace AutumnBox.Basic.FlowFramework
     partial class FunctionFlow<TArgs, TResult>
     {
         protected readonly LogSender TAG;
-        protected TArgs Args { get; private set; }
         protected virtual void Initialization(TArgs moduleArgs)
         {
-            if (_isInited) {
+            if (_isInited)
+            {
                 throw new Exception("Args is setted!");
             }
             _isInited = true;
-            Args = moduleArgs;
+            _args = moduleArgs;
         }
         protected virtual CheckResult Check() { return CheckResult.OK; }
         protected virtual void OnStartup(StartupEventArgs e)
@@ -58,14 +58,13 @@ namespace AutumnBox.Basic.FlowFramework
         }
         protected virtual void OnFinished(FinishedEventArgs<TResult> e)
         {
+            Logger.D(MustTiggerAnyFinishedEvent.ToString());
             _resultTmp = e.Result;
             NoArgFinished?.Invoke(this, new EventArgs());
-            if (Finished != null)
+            Finished?.Invoke(this, e);
+            if (!_isSync || MustTiggerAnyFinishedEvent)
             {
-                Finished(this, e);
-            }
-            else if (!_isSync)
-            {
+                Logger.D("AnyFinished event trigger");
                 OnAnyFinished(this, new FinishedEventArgs<FlowResult>(e.Result));
             }
         }
