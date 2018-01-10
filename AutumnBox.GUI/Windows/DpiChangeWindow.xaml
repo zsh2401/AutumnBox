@@ -9,7 +9,7 @@
         Title="DpiChangeWindow" Height="249.5" Width="353.167" ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterOwner" Background="{DynamicResource BorderBrush}" Closed="Window_Closed">
     <Grid Margin="3,3,3,3" Background="{DynamicResource BackBrush}">
         <cstm:CstmTitleBar x:Name="TitleBar" Margin="0,0,0,202"></cstm:CstmTitleBar>
-        <TextBox x:Name="TextBoxInput" HorizontalAlignment="Left" Height="22" Margin="202,182,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="135" PreviewTextInput="TextBoxInput_PreviewTextInput" FontSize="16" Background="{x:Null}"/>
+        <TextBox x:Name="TextBoxInput" HorizontalAlignment="Left" Height="22" Margin="202,182,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="135" PreviewTextInput="TextBoxInput_PreviewTextInput" FontSize="16" Background="{x:Null}" Foreground="{DynamicResource ForgBrush}"/>
         <Button x:Name="BtnOK" Content="{DynamicResource btnSaveAndReboot}" Margin="6,209,10,0" VerticalAlignment="Top" Background="{x:Null}" Height="28" Click="BtnOK_Click" Foreground="{DynamicResource ForgBrush}"/>
 
         <TextBlock HorizontalAlignment="Left" Margin="6,83,0,0" TextWrapping="Wrap" Text="{DynamicResource TipForChangeDpi}" VerticalAlignment="Top" Width="331" Height="94" FontFamily="Microsoft YaHei UI Light" FontSize="18" Foreground="{DynamicResource ForgBrush}"/>
