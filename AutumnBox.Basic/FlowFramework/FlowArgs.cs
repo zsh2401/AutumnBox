@@ -18,6 +18,7 @@ namespace AutumnBox.Basic.FlowFramework
 {
     public class FlowArgs
     {
+        public Serial Serial { get { return DevBasicInfo.Serial; } }
         public DeviceBasicInfo DevBasicInfo { get; set; }
     }
 }

@@ -19,6 +19,7 @@ using AutumnBox.Support.CstmDebug;
 
 namespace AutumnBox.Basic.Flows
 {
+    [LogProperty(TAG = "DeviceOwnerSetter")]
     /// <summary>
     /// 设备管理员设置器
     /// </summary>
@@ -54,7 +55,6 @@ namespace AutumnBox.Basic.Flows
             Logger.T(resultStep3.Output.ToString());
             return resultStep1.IsSuccessful && resultStep2.IsSuccessful && resultStep3.IsSuccessful;
         }
-        [LogProperty(TAG = "MM")]
         protected override OutputData MainMethod(ToolKit<FlowArgs> toolKit)
         {
             Logger.D("the command ->" + Command);
@@ -62,7 +62,6 @@ namespace AutumnBox.Basic.Flows
             _executeResult = toolKit.Executer.QuicklyShell(toolKit.Args.DevBasicInfo.Serial, Command);
             return _executeResult.Output;
         }
-        [LogProperty(TAG = "DeviceOwner setter....Analyzing Result", Show = true)]
         protected override void AnalyzeResult(DeviceOwnerSetterResult result)
         {
             base.AnalyzeResult(result);

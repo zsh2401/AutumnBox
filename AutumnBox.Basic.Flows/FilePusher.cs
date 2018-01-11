@@ -8,6 +8,7 @@
 using AutumnBox.Basic.Executer;
 using AutumnBox.Basic.FlowFramework;
 using AutumnBox.Basic.Flows.Result;
+using AutumnBox.Support.CstmDebug;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -29,11 +30,13 @@ namespace AutumnBox.Basic.Flows
         public string SourceFile { private get; set; }
         public string SavePath { get; set; } = "/sdcard/";
     }
+    [LogProperty(TAG ="File pushing")]
     public sealed class FilePusher : FunctionFlow<FilePusherArgs,AdvanceResult>
     {
         private CommandExecuterResult exeResult;
         protected override OutputData MainMethod(ToolKit<FilePusherArgs> toolKit)
         {
+            Logger.T("hehe");
             var command = Command.MakeForAdb(
                 $"push \"{toolKit.Args.SourceFileInfo.FullName}\" \"{toolKit.Args.SavePath + toolKit.Args.SourceFileInfo.Name}\""
                 );
