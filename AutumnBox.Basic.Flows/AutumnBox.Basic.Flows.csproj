@@ -55,7 +55,10 @@
     <Compile Include="FilePusher.cs" />
     <Compile Include="IceBoxActivator.cs" />
     <Compile Include="IslandActivator.cs" />
-    <Compile Include="MiFlasher.cs" />
+    <Compile Include="MiFlash\BatInfo.cs" />
+    <Compile Include="MiFlash\LineFlashPackageInfo.cs" />
+    <Compile Include="MiFlash\LineFlashPackageParser.cs" />
+    <Compile Include="MiFlash\MiFlasher.cs" />
     <Compile Include="NetDebuggingCloser.cs" />
     <Compile Include="NetDebuggingOpener.cs" />
     <Compile Include="NetDeviceConnecter.cs" />

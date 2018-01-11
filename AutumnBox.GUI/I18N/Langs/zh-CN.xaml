@@ -208,12 +208,15 @@
     <s:String x:Key="selectingLineFlashPackageDesc">请选择一个线刷包文件夹</s:String>
     <s:String x:Key="btnSelectLineFlashPackage">选择</s:String>
     <s:String x:Key="btnStartMiFlash">开始刷入</s:String>
-    <s:String x:Key="btnStopMiFlash">刷机中.......点击停止刷机</s:String>
+    <s:String x:Key="btnStopMiFlash">中断刷机</s:String>
     <s:String x:Key="mfPlzSelectLineFlashFloder">请选择线刷包文件夹</s:String>
     <s:String x:Key="mfReady">一切就绪</s:String>
     <s:String x:Key="mfFlashing">刷机中....</s:String>
     <s:String x:Key="mfSuccess">成功</s:String>
     <s:String x:Key="mfFail">失败</s:String>
+    <s:String x:Key="msgPlzSelectARightFloder">请选择一个正确的文件夹</s:String>
+    <s:String x:Key="mfbflash_all.bat">全部清空-flash_all.bat</s:String>
+    <s:String x:Key="mfbflash_all_lock.bat">全部清空并上锁-flash_all_lock.bat</s:String>
     <!--MiFlashWindow使用的-->
 
 

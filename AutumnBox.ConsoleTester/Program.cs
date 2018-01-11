@@ -1,6 +1,9 @@
 ﻿using AutumnBox.Basic.Device;
 using AutumnBox.Basic.Flows;
+using AutumnBox.Basic.Flows.MiFlash;
 using System;
+using System.IO;
+using System.Linq;
 
 namespace AutumnBox.ConsoleTester
 {
@@ -38,7 +41,7 @@ namespace AutumnBox.ConsoleTester
             flasher.Init(args);
             flasher.OutputReceived += (s, e) =>
             {
-                Console.WriteLine(e.Text);
+                Console.WriteLine("std o/e->" + e.Text);
             };
 
             flasher.Finished += (s, e) =>

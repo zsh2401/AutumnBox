@@ -17,7 +17,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AutumnBox.Basic.Flows
+namespace AutumnBox.Basic.Flows.MiFlash
 {
     public class MiFlasherArgs : FlowArgs
     {
