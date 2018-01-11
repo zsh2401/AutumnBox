@@ -25,12 +25,29 @@ namespace AutumnBox.ConsoleTester
         public readonly static DeviceBasicInfo mi4 = new DeviceBasicInfo()
         {
             Serial = new Serial("9dd1b490"),
-            State = DeviceState.Poweron,
+            State = DeviceState.Fastboot,
         };
-        unsafe static int Main(string[] args)
+        unsafe static int Main(string[] cmdargs)
         {
-            Console.WriteLine(true || false);
+            var args = new MiFlasherArgs()
+            {
+                DevBasicInfo = mi4,
+                BatFileName = @"D:\☆下载暂存\cancro_images_7.11.2_20171102.0000.00_6.0_cn\flash_all.bat"
+            };
+            MiFlasher flasher = new MiFlasher();
+            flasher.Init(args);
+            flasher.OutputReceived += (s, e) =>
+            {
+                Console.WriteLine(e.Text);
+            };
+
+            flasher.Finished += (s, e) =>
+            {
+                Console.WriteLine(e.Result.ResultType);
+            };
+            flasher.RunAsync();
             Console.ReadKey();
+            flasher.ForceStop();
             return 0;
         }
         public static void WriteWithColor(Action a, ConsoleColor color = ConsoleColor.White)

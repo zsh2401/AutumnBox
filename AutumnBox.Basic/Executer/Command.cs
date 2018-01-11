@@ -62,5 +62,9 @@ namespace AutumnBox.Basic.Executer
         {
             return new Command() { FileName = ConstData.FullFastbootFileName, serial = serial, SpecificCommand = command };
         }
+        public static Command MakeForCustom(string fileName, string commanad)
+        {
+            return new Command() { FileName = fileName, SpecificCommand = commanad };
+        }
     }
 }
