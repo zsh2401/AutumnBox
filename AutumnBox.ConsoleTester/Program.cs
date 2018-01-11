@@ -35,7 +35,7 @@ namespace AutumnBox.ConsoleTester
             var args = new MiFlasherArgs()
             {
                 DevBasicInfo = mi4,
-                BatFileName = @"D:\☆下载暂存\cancro_images_7.11.2_20171102.0000.00_6.0_cn\flash_all.bat"
+                BatFileName = @"S:\AutumnBox\test.bat"
             };
             MiFlasher flasher = new MiFlasher();
             flasher.Init(args);

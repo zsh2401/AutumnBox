@@ -10,6 +10,7 @@ using AutumnBox.Basic.Executer;
 using AutumnBox.Basic.FlowFramework;
 using AutumnBox.Basic.Flows.Result;
 using AutumnBox.Basic.Util;
+using AutumnBox.Support.CstmDebug;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -37,7 +38,7 @@ namespace AutumnBox.Basic.Flows.MiFlash
         protected override void AnalyzeResult(AdvanceResult result)
         {
             base.AnalyzeResult(result);
-            result.ResultType = retCode == 0 ? ResultType.Successful : ResultType.Unsuccessful;
+            result.ExitCode = retCode;
         }
         private OutputData _outputBuffer = new OutputData();
         protected override void OnOutputReceived(OutputReceivedEventArgs e)
