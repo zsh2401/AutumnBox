@@ -14,11 +14,19 @@
 using AutumnBox.Basic.Device;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace AutumnBox.Basic.MultipleDevices
 {
     public class DevicesList : List<DeviceBasicInfo>
     {
+        public bool Contains(Serial serial)
+        {
+            var haves = from _devInfo in this
+                        where _devInfo.Serial == serial
+                        select _devInfo;
+            return haves.Count() > 0;
+        }
         public static DevicesList operator +(DevicesList left, DevicesList right)
         {
             right.ForEach((info) => { left.Add(info); });

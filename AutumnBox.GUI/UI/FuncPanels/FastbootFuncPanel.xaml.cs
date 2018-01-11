@@ -6,6 +6,7 @@ using System.Windows.Controls;
 using AutumnBox.Basic.Function;
 using AutumnBox.GUI.Helper;
 using AutumnBox.Basic.Device;
+using AutumnBox.GUI.Windows;
 
 namespace AutumnBox.GUI.UI.FuncPanels
 {
@@ -64,6 +65,19 @@ namespace AutumnBox.GUI.UI.FuncPanels
             fmp.Finished += ((MainWindow)App.Current.MainWindow).FuncFinish;
             fmp.AsyncRun();
             BoxHelper.ShowLoadingDialog(fmp);
+        }
+
+        private void BtnMiFlash_Click(object sender, RoutedEventArgs e)
+        {
+            new MiFlashWindow()
+            {
+                ShowInfo = new MiFlashWindowShowInfo()
+                {
+                    Owner = App.Current.MainWindow,
+                    Serial = _currentDeviceInfo.Serial,
+                    DevicesMonitor = App.StaticProperty.DevicesListener,
+                }
+            }.ShowDialog();
         }
     }
 }

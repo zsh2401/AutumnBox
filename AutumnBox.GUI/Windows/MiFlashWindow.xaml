@@ -1,0 +1,23 @@
+﻿<Window x:Class="AutumnBox.GUI.Windows.MiFlashWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AutumnBox.GUI.Windows"
+        xmlns:cstm="clr-namespace:AutumnBox.GUI.UI.Cstm"
+        mc:Ignorable="d"
+        Title="MiFlashWindow" Height="517.692" Width="598.76" ResizeMode="NoResize" WindowStyle="None" Background="{DynamicResource BorderBrush}" Closing="Window_Closing" WindowStartupLocation="CenterOwner">
+    <Grid Background="{DynamicResource BackBrush}" Margin="3,3,3,3">
+        <cstm:CstmTitleBar VerticalAlignment="Top"/>
+        <TextBlock x:Name="TBSerial" Margin="113,45,10,0" TextWrapping="Wrap" Text="There is device serial" VerticalAlignment="Top" Foreground="{DynamicResource ForgBrush}" Height="32" FontSize="22" FontFamily="Microsoft YaHei UI Light"/>
+        <TextBox x:Name="TBFilePath" Style="{StaticResource TB_Input}" Height="27" Margin="10,151,158,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" Foreground="{DynamicResource {x:Static SystemColors.DesktopBrushKey}}" BorderBrush="{x:Null}" FontFamily="Microsoft YaHei UI Light" IsReadOnly="True"/>
+        <Button x:Name="BtnSelectFile" Content="{DynamicResource btnSelectLineFlashPackage}" Margin="0,151,10,0" VerticalAlignment="Top" Background="{DynamicResource BtnBrush}" BorderBrush="{x:Null}" Foreground="{DynamicResource ForgBrush}" Height="27" HorizontalAlignment="Right" Width="143" FontFamily="Microsoft YaHei UI Light" Click="BtnSelectFile_Click" FontSize="14"/>
+        <TextBlock Text="{DynamicResource CurrentDevice}" HorizontalAlignment="Left" Margin="10,45,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" FontSize="22" Width="98" Height="32" Foreground="{DynamicResource ForgBrush}" FontFamily="Microsoft YaHei UI Light"/>
+        <TextBox x:Name="TBOutput" Margin="10,246,10,10" TextWrapping="Wrap" FontFamily="Microsoft YaHei UI Light"/>
+        <TextBlock x:Name="TBState" Margin="10,98,10,0" TextWrapping="Wrap" Text="{DynamicResource mfPlzSelectLineFlashFloder}" VerticalAlignment="Top" Foreground="{DynamicResource ForgBrush}" FontSize="24" FontFamily="Microsoft YaHei UI Light"/>
+        <TextBlock Margin="10,218,335,0" TextWrapping="Wrap" Text="{DynamicResource OutputRealTime}" VerticalAlignment="Top" Foreground="{DynamicResource ForgBrush}" FontSize="18" FontFamily="Microsoft YaHei UI Light"/>
+        <Button x:Name="BtnMain" Content="{DynamicResource btnStartMiFlash}" Margin="0,186,10,0" BorderBrush="{x:Null}" Background="{DynamicResource BtnBrush}" Foreground="{DynamicResource ForgBrush}" FontSize="14" FontFamily="Microsoft YaHei UI Light" Click="BtnMain_Click" Height="27" VerticalAlignment="Top" HorizontalAlignment="Right" Width="143"/>
+        <ComboBox Margin="10,186,449,0" VerticalAlignment="Top" Height="22"/>
+
+    </Grid>
+</Window>

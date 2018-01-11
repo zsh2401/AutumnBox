@@ -7,7 +7,6 @@
     <s:String x:Key="LanguageName">简体中文</s:String>
 
     <!--按钮-->
-
     <s:String x:Key="btnDisconnect">仅断开网络调试</s:String>
     <s:String x:Key="btnCloseDebugging">彻底关闭该设备网络调试</s:String>
     <s:String x:Key="btnDisableNetdebugging">关闭当前设备网络调试</s:String>
@@ -44,7 +43,7 @@
     <s:String x:Key="btnInstallApk">安装APK</s:String>
     <s:String x:Key="btnScreenShot">截图并保存到电脑</s:String>
     <s:String x:Key="btnAndroidFullBackup">全量备份</s:String>
-    <s:String x:Key="btnMiFlash">MiFlash线刷(Deving)</s:String>
+    <s:String x:Key="btnMiFlash">MiFlash线刷</s:String>
     <s:String x:Key="btnADBCMD">ADB命令行</s:String>
     <s:String x:Key="btnSystem">系统</s:String>
     <s:String x:Key="btnRecovery">恢复模式</s:String>
@@ -124,6 +123,7 @@
     <s:String x:Key="msgFailed">失败了</s:String>
     <s:String x:Key="msgSuccessful">成功连接</s:String>
     <!--信息-->
+
     <!--用于结果显示窗的文字-->
     <s:String x:Key="rmsgDeviceOwnerIsAlreadySet">设备管理员已被设定</s:String>
     <s:String x:Key="advsDeviceOwnerIsAlreadySet">请确保已退出所有账户,或前往App查看,可能已经激活</s:String>
@@ -203,6 +203,20 @@
     <s:String x:Key="diAndroidVersion">安卓版本</s:String>
     <!--设备信息标记-->
 
+    <!--MiFlashWindow使用的-->
+    <s:String x:Key="CurrentDevice">当前设备</s:String>
+    <s:String x:Key="selectingLineFlashPackageDesc">请选择一个线刷包文件夹</s:String>
+    <s:String x:Key="btnSelectLineFlashPackage">选择</s:String>
+    <s:String x:Key="btnStartMiFlash">开始刷入</s:String>
+    <s:String x:Key="btnStopMiFlash">刷机中.......点击停止刷机</s:String>
+    <s:String x:Key="mfPlzSelectLineFlashFloder">请选择线刷包文件夹</s:String>
+    <s:String x:Key="mfReady">一切就绪</s:String>
+    <s:String x:Key="mfFlashing">刷机中....</s:String>
+    <s:String x:Key="mfSuccess">成功</s:String>
+    <s:String x:Key="mfFail">失败</s:String>
+    <!--MiFlashWindow使用的-->
+
+
     <!--书签-->
     <s:String x:Key="bmMIFlash">MIUI线刷工具(Miflash)</s:String>
     <s:String x:Key="bmMIUILineFlashRom">MIUI线刷包</s:String>
@@ -235,7 +249,6 @@
     <s:String x:Key="advsBrventActivtedUnsuccess">请确保您安装了最新的黑域并至少打开了黑域界面,或您可尝试更新本工具箱</s:String>
     <s:String x:Key="advsFileSendUnsuccess">您可以截图后,给zsh2401@gmail.com发送邮件</s:String>
     <s:String x:Key="advsIceBoxHaveNoInstall">请安装冰箱App</s:String>
-
     <!--建议-->
 
     <s:String x:Key="CompileDate">编译日期</s:String>
