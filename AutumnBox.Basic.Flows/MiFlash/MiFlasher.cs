@@ -55,8 +55,6 @@ namespace AutumnBox.Basic.Flows.MiFlash
         }
 
 
-
-
         private sealed class MiFlashBatExecuteProcess : Process
         {
             public event OutputReceivedEventHandler OutputReceived;

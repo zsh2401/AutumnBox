@@ -42,13 +42,16 @@ namespace AutumnBox.GUI.Windows
         }
         public new void ShowDialog()
         {
-
-            //ShowInfo.DevicesMonitor.DevicesChanged += DevicesMonitor_DevicesChanged;
             Owner = ShowInfo.Owner;
             TBSerial.Text = ShowInfo.Serial.ToString();
             base.ShowDialog();
         }
-
+        public new void Show()
+        {
+            Owner = ShowInfo.Owner;
+            TBSerial.Text = ShowInfo.Serial.ToString();
+            base.Show();
+        }
         private void DevicesMonitor_DevicesChanged(object sender, DevicesChangedEventArgs e)
         {
             if (!e.DevicesList.Contains(ShowInfo.Serial))

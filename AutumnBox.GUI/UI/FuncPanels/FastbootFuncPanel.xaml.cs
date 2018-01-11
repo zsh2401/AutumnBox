@@ -77,7 +77,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
                     Serial = _currentDeviceInfo.Serial,
                     DevicesMonitor = App.StaticProperty.DevicesListener,
                 }
-            }.ShowDialog();
+            }.Show();
         }
     }
 }
