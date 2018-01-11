@@ -32,25 +32,28 @@ namespace AutumnBox.ConsoleTester
         };
         unsafe static int Main(string[] cmdargs)
         {
-            var args = new MiFlasherArgs()
-            {
-                DevBasicInfo = mi4,
-                BatFileName = @"S:\AutumnBox\test.bat"
-            };
-            MiFlasher flasher = new MiFlasher();
-            flasher.Init(args);
-            flasher.OutputReceived += (s, e) =>
-            {
-                Console.WriteLine("std o/e->" + e.Text);
-            };
+            //var args = new MiFlasherArgs()
+            //{
+            //    DevBasicInfo = mi4,
+            //    BatFileName = @"S:\AutumnBox\test.bat"
+            //};
+            //MiFlasher flasher = new MiFlasher();
+            //flasher.Init(args);
+            //flasher.OutputReceived += (s, e) =>
+            //{
+            //    Console.WriteLine("std o/e->" + e.Text);
+            //};
 
-            flasher.Finished += (s, e) =>
-            {
-                Console.WriteLine(e.Result.ResultType);
-            };
-            flasher.RunAsync();
+            //flasher.Finished += (s, e) =>
+            //{
+            //    Console.WriteLine(e.Result.ResultType);
+            //};
+            //flasher.RunAsync();
+            //Console.ReadKey();
+            //flasher.ForceStop();
+            var product = new DeviceInfoGetterInFastboot(mi4.Serial).GetProduct();
+            Console.WriteLine(product);
             Console.ReadKey();
-            flasher.ForceStop();
             return 0;
         }
         public static void WriteWithColor(Action a, ConsoleColor color = ConsoleColor.White)

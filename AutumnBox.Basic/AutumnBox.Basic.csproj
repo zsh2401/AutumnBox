@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Device\DeviceInfoGetterInFastboot.cs" />
     <Compile Include="Device\Serial.cs" />
     <Compile Include="Device\DeviceBuildPropGetter.cs" />
     <Compile Include="Device\DeviceHardwareInfo.cs" />

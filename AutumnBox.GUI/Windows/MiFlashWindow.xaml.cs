@@ -218,7 +218,8 @@ namespace AutumnBox.GUI.Windows
                     }
                 });
             }
-            ~TBLoadingEffect() {
+            ~TBLoadingEffect()
+            {
                 Logger.D("Effect disposing...");
             }
         }
@@ -248,6 +249,27 @@ namespace AutumnBox.GUI.Windows
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
             new TBLoadingEffect(TBLoading);
+            Task.Run(() =>
+            {
+                try
+                {
+                    Serial serial = null;
+                    this.Dispatcher.Invoke(() =>
+                    {
+                        serial = ShowInfo.Serial;
+                    });
+                    var product = new DeviceInfoGetterInFastboot(serial).GetProduct();
+                    this.Dispatcher.Invoke(() =>
+                    {
+                        TBSerial.Text += product == null ? null : "--" + product;
+                    });
+                }
+                catch (Exception ex)
+                {
+                    Logger.T("A exception happend  when getting product info on fastboot", ex);
+                }
+
+            });
         }
     }
 }
