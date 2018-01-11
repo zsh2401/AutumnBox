@@ -17,6 +17,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 
 namespace AutumnBox.Basic.Flows.MiFlash
 {
@@ -27,6 +28,7 @@ namespace AutumnBox.Basic.Flows.MiFlash
     public sealed class MiFlasher : FunctionFlow<MiFlasherArgs, AdvanceResult>
     {
         int retCode;
+        
         protected override OutputData MainMethod(ToolKit<MiFlasherArgs> toolKit)
         {
             MiFlashBatExecuteProcess process = new MiFlashBatExecuteProcess(toolKit.Args.BatFileName, toolKit.Args.Serial);

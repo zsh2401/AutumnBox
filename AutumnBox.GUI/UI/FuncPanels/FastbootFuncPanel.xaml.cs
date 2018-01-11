@@ -54,7 +54,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
 
         private void ButtonMiFlash_Click(object sender, RoutedEventArgs e)
         {
-            new Windows.MiFlash().ShowDialog();
+            new MiFlashWindow().Show();
         }
 
         private void ButtonRelockMi_Click(object sender, RoutedEventArgs e)
@@ -75,7 +75,6 @@ namespace AutumnBox.GUI.UI.FuncPanels
                 {
                     Owner = App.Current.MainWindow,
                     Serial = _currentDeviceInfo.Serial,
-                    DevicesMonitor = App.StaticProperty.DevicesListener,
                 }
             }.Show();
         }

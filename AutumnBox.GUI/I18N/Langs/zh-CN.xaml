@@ -204,6 +204,7 @@
     <!--设备信息标记-->
 
     <!--MiFlashWindow使用的-->
+    <s:String x:Key="DownloadLineFlashPackage">下载MIUI线刷包</s:String>
     <s:String x:Key="CurrentDevice">当前设备</s:String>
     <s:String x:Key="selectingLineFlashPackageDesc">请选择一个线刷包文件夹</s:String>
     <s:String x:Key="btnSelectLineFlashPackage">选择</s:String>
@@ -217,6 +218,7 @@
     <s:String x:Key="msgPlzSelectARightFloder">请选择一个正确的文件夹</s:String>
     <s:String x:Key="mfbflash_all.bat">全部清空-flash_all.bat</s:String>
     <s:String x:Key="mfbflash_all_lock.bat">全部清空并上锁-flash_all_lock.bat</s:String>
+    <s:String x:Key="mfbflash_all_except_storage.bat">保留所有数据-flash_all_except_storage.bat</s:String>
     <!--MiFlashWindow使用的-->
 
 
