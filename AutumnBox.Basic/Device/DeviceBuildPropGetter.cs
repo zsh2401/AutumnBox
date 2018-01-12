@@ -12,25 +12,31 @@ using System.Text.RegularExpressions;
 
 namespace AutumnBox.Basic.Device
 {
+    public static class BuildPropKeys
+    {
+        public const string ProductName = "ro.product.name";
+        public const string Model = "ro.product.model";
+        public const string Brand = "ro.product.brand";
+        public const string SdkVersion = "ro.build.version.sdk";
+        public const string AndroidVersion = "ro.build.version.releas";
+    }
     public class DeviceBuildPropGetter : IDisposable
     {
-        private readonly AndroidShell shell;
+        private readonly CommandExecuter executer;
+        public Serial Serial { get; private set; }
         public DeviceBuildPropGetter(Serial serial)
         {
-            shell = new AndroidShell(serial);
-            shell.Connect();
+            executer = new CommandExecuter();
         }
         public string GetProductName()
         {
-            var executeResult = shell.SafetyInput("getprop ro.product.name");
-            return executeResult.IsSuccess ? executeResult.OutputData.ToString() : null;
+            return Get(BuildPropKeys.ProductName);
         }
         public Version GetAndroidVersion()
         {
             try
             {
-                var executeResult = shell.SafetyInput("getprop ro.build.version.release");
-                return new Version(executeResult.OutputData.ToString());
+                return new Version(Get(BuildPropKeys.AndroidVersion));
             }
             catch
             {
@@ -39,25 +45,27 @@ namespace AutumnBox.Basic.Device
         }
         public string GetModel()
         {
-            var executeResult = shell.SafetyInput("getprop ro.product.model");
-            return executeResult.IsSuccess ? executeResult.OutputData.ToString() : null;
+            return Get(BuildPropKeys.Model);
         }
         public string GetBrand()
         {
-            var executeResult = shell.SafetyInput("getprop ro.product.brand");
-            return executeResult.IsSuccess ? executeResult.OutputData.ToString() : null;
+            return Get(BuildPropKeys.Brand);
         }
         public int? GetSdkVersion()
         {
             try
             {
-                var executeResult = shell.SafetyInput("getprop ro.build.version.sdk");
-                return int.Parse(executeResult.OutputData.ToString());
+                return int.Parse(Get(BuildPropKeys.SdkVersion));
             }
             catch
             {
                 return null;
             }
+        }
+        public string Get(string key)
+        {
+            var exeResult = executer.QuicklyShell(Serial, $"getprop {key}");
+            return exeResult.IsSuccessful ? exeResult.Output.ToString() : null;
         }
 
         private const string propPattern = @"\[(?<pname>.+)\].+\[(?<pvalue>.+)\]";
@@ -66,8 +74,8 @@ namespace AutumnBox.Basic.Device
             try
             {
                 Dictionary<string, string> dict = new Dictionary<string, string>();
-                var o = shell.SafetyInput("getprop");
-                var matches = Regex.Matches(o.OutputData.ToString(), propPattern);
+                var exeResult = executer.QuicklyShell(Serial, $"getprop");
+                var matches = Regex.Matches(exeResult.Output.ToString(), propPattern);
                 foreach (Match match in matches)
                 {
                     dict.Add(match.Result("${pname}"), match.Result("${pvalue}"));
@@ -82,8 +90,6 @@ namespace AutumnBox.Basic.Device
 
         public void Dispose()
         {
-            shell.Disconnect();
-            shell.Dispose();
             GC.SuppressFinalize(this);
         }
     }
