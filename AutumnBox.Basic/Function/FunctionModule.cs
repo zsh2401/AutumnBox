@@ -180,7 +180,6 @@ namespace AutumnBox.Basic.Function
                 //_toolsBundle.Executer.Dispose();
                 ForceStop();
             }
-            GC.SuppressFinalize(this);
         }
         #region 虚方法
         protected virtual void Create(BundleForCreate bundle)

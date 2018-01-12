@@ -12,7 +12,7 @@ using System.Text.RegularExpressions;
 
 namespace AutumnBox.Basic.Device
 {
-    public class DeviceBuildPropGetter : IDisposable
+    public class DeviceBuildPropGetter
     {
         private readonly CommandExecuter executer;
         public Serial Serial { get; private set; }
@@ -78,11 +78,6 @@ namespace AutumnBox.Basic.Device
             {
                 return null;
             }
-        }
-
-        public void Dispose()
-        {
-            GC.SuppressFinalize(this);
         }
     }
 }

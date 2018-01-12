@@ -19,6 +19,6 @@ namespace AutumnBox.Basic.Device
         public const string Model = "ro.product.model";
         public const string Brand = "ro.product.brand";
         public const string SdkVersion = "ro.build.version.sdk";
-        public const string AndroidVersion = "ro.build.version.releas";
+        public const string AndroidVersion = "ro.build.version.release";
     }
 }

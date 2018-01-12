@@ -4,6 +4,7 @@ using AutumnBox.GUI.I18N;
 using AutumnBox.GUI.Resources;
 using AutumnBox.Support.CstmDebug;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -79,16 +80,16 @@ namespace AutumnBox.GUI.UI.FuncPanels
         }
         private async void SetByDeviceSimpleInfoAsync(DeviceBasicInfo devSimpleInfo)
         {
-            using (var propGetter = new DeviceBuildPropGetter(devSimpleInfo.Serial))
-            {
-                var buildInfo = await Task.Run(() =>
-                {
-                    return propGetter.GetFull();
-                });
-                LabelAndroidVersion.Content = buildInfo["ro.build.version.release"] ?? App.Current.Resources["GetFail"].ToString();
-                LabelModel.Content = buildInfo["ro.product.brand"] + " " + buildInfo["ro.product.model"] ?? App.Current.Resources["GetFail"].ToString();
-                LabelCode.Content = buildInfo["ro.product.name"] ?? App.Current.Resources["GetFail"].ToString();
-            }
+            var propGetter = new DeviceBuildPropGetter(devSimpleInfo.Serial);
+            Dictionary<string, string> buildInfo = await Task.Run(() =>
+                 {
+                     return propGetter.GetFull();
+                 });
+
+            LabelAndroidVersion.Content = buildInfo[BuildPropKeys.AndroidVersion] ?? App.Current.Resources["GetFail"].ToString();
+            LabelModel.Content = buildInfo[BuildPropKeys.Brand] + " " + buildInfo[BuildPropKeys.Model] ?? App.Current.Resources["GetFail"].ToString();
+            LabelCode.Content = buildInfo[BuildPropKeys.ProductName] ?? App.Current.Resources["GetFail"].ToString();
+
             LabelRom.Content = App.Current.Resources["Getting"].ToString();
             LabelRam.Content = App.Current.Resources["Getting"].ToString();
             LabelBattery.Content = App.Current.Resources["Getting"].ToString();

@@ -56,7 +56,6 @@ namespace AutumnBox.GUI.UI.CstPanels
             {
                 _father.Children.Remove(this);
                 hidedcallback?.Invoke();
-                GC.SuppressFinalize(this);
             };
         }
         public FastGrid(Panel father, UIElement chirden, Action onhidedcallback) : this(father, chirden)
