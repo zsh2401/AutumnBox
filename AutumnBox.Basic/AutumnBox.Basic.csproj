@@ -42,6 +42,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Device\BuildPropKeys.cs" />
+    <Compile Include="Device\DeviceBuildPropSetter.cs" />
+    <Compile Include="Device\DeviceHaveNoRootException.cs" />
     <Compile Include="Device\DeviceInfoGetterInFastboot.cs" />
     <Compile Include="Device\Serial.cs" />
     <Compile Include="Device\DeviceBuildPropGetter.cs" />

@@ -12,14 +12,6 @@ using System.Text.RegularExpressions;
 
 namespace AutumnBox.Basic.Device
 {
-    public static class BuildPropKeys
-    {
-        public const string ProductName = "ro.product.name";
-        public const string Model = "ro.product.model";
-        public const string Brand = "ro.product.brand";
-        public const string SdkVersion = "ro.build.version.sdk";
-        public const string AndroidVersion = "ro.build.version.releas";
-    }
     public class DeviceBuildPropGetter : IDisposable
     {
         private readonly CommandExecuter executer;
