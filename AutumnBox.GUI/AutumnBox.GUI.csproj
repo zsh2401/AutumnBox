@@ -506,6 +506,7 @@
 del /S *.ab
 del /S *.exe.config
 del /S *.xml
+if $(ConfigurationName) == Debug (del /S *.json)
 del /S AutumnBox.application
 del AutumnBox.ConsoleTester.exe
 rd /S /Q app.publish
