@@ -63,11 +63,11 @@ using System.Windows;
 // 方法是按如下所示使用“*”: :
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("0.28.0.*")]
-[assembly: AssemblyFileVersion("2018.1.12.0")]
+[assembly: AssemblyFileVersion("0.28.0")]
 [assembly: NeutralResourcesLanguage("zh-CN")]
 
 //自定义的程序集Attribute
 //确定当前程序的Log位置
 [assembly: LogFileProperty("atb.log")]
 //编译日期
-[assembly: CompiledDate(2018, 1, 12)]
+[assembly: CompiledDate(2018, 1, 13)]

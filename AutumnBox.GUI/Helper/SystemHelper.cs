@@ -82,7 +82,7 @@ namespace AutumnBox.GUI.Helper
         {
             get
             {
-                return System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
+                return System.Reflection.Assembly.GetExecutingAssembly().GetName().Version ;
             }
         }
         public static void KillProcess(string processName)

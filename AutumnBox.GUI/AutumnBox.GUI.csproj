@@ -506,11 +506,14 @@
 del /S *.ab
 del /S *.exe.config
 del /S *.xml
-if $(ConfigurationName) == Debug (del /S *.json)
+if $(ConfigurationName) == Release (
+del /S *.json
+)
 del /S AutumnBox.application
 del AutumnBox.ConsoleTester.exe
 rd /S /Q app.publish
-rd /S /Q logs</PostBuildEvent>
+rd /S /Q logs
+</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <PreBuildEvent>
