@@ -15,6 +15,7 @@ namespace AutumnBox.Basic.Executer
 {
     using AutumnBox.Basic.Device;
     using AutumnBox.Basic.Util;
+    using AutumnBox.Support.CstmDebug;
 
     /// <summary>
     /// 封装命令
@@ -36,6 +37,18 @@ namespace AutumnBox.Basic.Executer
                 $" {serial.ToFullSerial()} {SpecificCommand}" : SpecificCommand;
             }
         }
+        public override string ToString()
+        {
+            if (serial == null)
+            {
+                return SpecificCommand;
+            }
+            else
+            {
+                Logger.D("have serial");
+                return $"{serial.ToFullSerial()} {SpecificCommand}";
+            }
+        }
         /// <summary>
         /// 具体命令
         /// </summary>
@@ -50,17 +63,17 @@ namespace AutumnBox.Basic.Executer
         {
             return new Command() { FileName = ConstData.FullAdbFileName, SpecificCommand = command };
         }
-        public static Command MakeForAdb(Serial serial, string command)
+        public static Command MakeForAdb(Serial _serial, string command)
         {
-            return new Command() { FileName = ConstData.FullAdbFileName, serial = serial, SpecificCommand = command };
+            return new Command() { FileName = ConstData.FullAdbFileName, serial = _serial, SpecificCommand = command };
         }
         public static Command MakeForFastboot(string command)
         {
             return new Command() { FileName = ConstData.FullFastbootFileName, SpecificCommand = command };
         }
-        public static Command MakeForFastboot(Serial serial, string command)
+        public static Command MakeForFastboot(Serial _serial, string command)
         {
-            return new Command() { FileName = ConstData.FullFastbootFileName, serial = serial, SpecificCommand = command };
+            return new Command() { FileName = ConstData.FullFastbootFileName, serial = _serial, SpecificCommand = command };
         }
         public static Command MakeForCustom(string fileName, string commanad)
         {

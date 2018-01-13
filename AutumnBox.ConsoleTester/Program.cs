@@ -1,4 +1,5 @@
 ﻿using AutumnBox.Basic.Device;
+using AutumnBox.Basic.Executer;
 using System;
 namespace AutumnBox.ConsoleTester
 {
@@ -27,7 +28,10 @@ namespace AutumnBox.ConsoleTester
         };
         unsafe static int Main(string[] cmdargs)
         {
- 
+            //var img = DeviceImageFinder.PathOf(mi4.Serial,DeviceImage.Recovery);
+            //Com
+            Console.WriteLine(new CommandExecuter().QuicklyShell(mi6.Serial,"getprop").Output);
+            Console.ReadKey();
             return 0;
         }
         public static void WriteWithColor(Action a, ConsoleColor color = ConsoleColor.White)

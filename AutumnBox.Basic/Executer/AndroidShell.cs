@@ -83,7 +83,7 @@ namespace AutumnBox.Basic.Executer
         {
             get
             {
-                return !(SafetyInput("ls /").OutputData.Contains("permission denied"));
+                return SafetyInput("ls -l /system/bin/su").IsSuccess || SafetyInput("ls -l /system/xbin/su").IsSuccess;
             }
         }
         /// <summary>

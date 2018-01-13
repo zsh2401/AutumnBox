@@ -6,6 +6,7 @@
 ** desc： ...
 *********************************************************************************/
 using AutumnBox.Basic.Device;
+using AutumnBox.Support.CstmDebug;
 using System;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
@@ -61,7 +62,8 @@ namespace AutumnBox.Basic.Executer
         private const string exitCodePattern = @"exitcode(?<code>\d+)";
         public CommandExecuterResult QuicklyShell(Serial dev, string command)
         {
-            var result = Execute(Command.MakeForAdb(dev, $"shell \"{command};echo exitcode$?\""));
+            var cmd = Command.MakeForAdb(dev, $"shell \"{command} ; echo exitcode$?\"");
+            var result = Execute(cmd);
             var match = Regex.Match(result.Output.ToString(), exitCodePattern);
             int exitCode = 1;
             if (match.Success)

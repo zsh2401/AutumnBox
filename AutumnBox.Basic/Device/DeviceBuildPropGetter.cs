@@ -6,6 +6,7 @@
 ** desc： ...
 *********************************************************************************/
 using AutumnBox.Basic.Executer;
+using AutumnBox.Support.CstmDebug;
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
@@ -19,6 +20,7 @@ namespace AutumnBox.Basic.Device
         public DeviceBuildPropGetter(Serial serial)
         {
             executer = new CommandExecuter();
+            Serial = serial;
         }
         public string GetProductName()
         {
@@ -67,7 +69,8 @@ namespace AutumnBox.Basic.Device
             {
                 Dictionary<string, string> dict = new Dictionary<string, string>();
                 var exeResult = executer.QuicklyShell(Serial, $"getprop");
-                var matches = Regex.Matches(exeResult.Output.ToString(), propPattern);
+                Logger.D("getprop result " + exeResult.Output.ToString());
+                var matches = Regex.Matches(exeResult.Output.ToString(), propPattern, RegexOptions.Multiline);
                 foreach (Match match in matches)
                 {
                     dict.Add(match.Result("${pname}"), match.Result("${pvalue}"));

@@ -7,6 +7,7 @@
 *********************************************************************************/
 using AutumnBox.Basic.Executer;
 using AutumnBox.Basic.Util;
+using AutumnBox.Support.CstmDebug;
 using System;
 using System.Linq;
 
@@ -52,7 +53,8 @@ namespace AutumnBox.Basic.Device
         }
         private string Find1(DeviceImage image)
         {
-            var exeResult = ShellAsSu.SafetyInput("find /dev/ -name boot");
+            var exeResult = ShellAsSu.SafetyInput($"find /dev/ -name {image.ToString().ToLower()}");
+            Logger.D(exeResult.OutputData.ToString());
             if (exeResult.ReturnCode == (int)LinuxReturnCode.KeyHasExpired)
             {
                 return null;//无法使用find命令,当场返回!
