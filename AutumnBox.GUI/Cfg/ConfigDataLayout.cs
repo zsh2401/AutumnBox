@@ -20,33 +20,48 @@ namespace AutumnBox.GUI.Cfg
 {
     [JsonObject(MemberSerialization.OptOut)]
     [ConfigProperty(ConfigFile = "autumnbox.json")]
-    internal sealed class ConfigDataLayout
+    public sealed class ConfigDataLayout
     {
+        public delegate void ValueSetedHandler();
         public event EventHandler ValueChanged;
+        public ValueSetedHandler ValueSetedCallback { private get; set; }
+
         [JsonProperty("isFirstLaunch")]
         public bool IsFirstLaunch
         {
             get { return _isFirstLaunch; }
             set
             {
-                ValueChanged?.Invoke(this, new EventArgs());
+                Logger.D("Setting isFirstLaunch");
                 _isFirstLaunch = value;
+                ValueChanged?.Invoke(this, new EventArgs());
+                ValueSetedCallback?.Invoke();
             }
         }
         private bool _isFirstLaunch = true;
+
         [JsonProperty("skipVersion")]
         public string SkipVersion
         {
             get { return _skipVersion; }
             set
             {
-                ValueChanged?.Invoke(this, new EventArgs());
                 _skipVersion = value;
+                ValueChanged?.Invoke(this, new EventArgs());
             }
         }
         private string _skipVersion;
+
         [JsonProperty("langName")]
-        public string Lang { get { return _lang; } set { ValueChanged?.Invoke(this, new EventArgs()); _lang = value; } }
+        public string Lang
+        {
+            get { return _lang; }
+            set
+            {
+                _lang = value;
+                ValueChanged?.Invoke(this, new EventArgs());
+            }
+        }
         private string _lang = "zh-CN";
         [JsonProperty("backgroundA")]
         public byte BackgroundA
@@ -54,22 +69,24 @@ namespace AutumnBox.GUI.Cfg
             get { return _backgroundA; }
             set
             {
-                ValueChanged?.Invoke(this, new EventArgs());
                 _backgroundA = value;
+                ValueChanged?.Invoke(this, new EventArgs());
             }
         }
         private byte _backgroundA = 225;
+
         [JsonProperty("bgARGB")]
         public int[] BackgroundARGB
         {
             get { return _backgroundARGB; }
             set
             {
-                ValueChanged?.Invoke(this, new EventArgs());
                 _backgroundARGB = value;
+                ValueChanged?.Invoke(this, new EventArgs());
             }
         }
         private int[] _backgroundARGB = { 255, 255, 255, 255 };
+
         public ConfigDataLayout()
         {
             SkipVersion = SystemHelper.CurrentVersion.ToString();

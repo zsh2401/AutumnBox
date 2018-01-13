@@ -20,8 +20,8 @@ using System.Reflection;
 
 namespace AutumnBox.GUI.Cfg
 {
-    [LogProperty(Show = false)]
-    internal sealed class ConfigOperator : IConfigOperator
+    [LogProperty(TAG = "CfgO", Show = false)]
+    public sealed class ConfigOperator : IConfigOperator
     {
         public ConfigDataLayout Data { get; private set; } = new ConfigDataLayout();
         private readonly string ConfigFileName;
@@ -50,26 +50,21 @@ namespace AutumnBox.GUI.Cfg
         /// </summary>
         public void ReloadFromDisk()
         {
-            //throw new Exception();
-            if (HaveError()) SaveToDisk();
-            if (!File.Exists(ConfigFileName)) { SaveToDisk(); return; }
+            Logger.D("Reload config from disk");
+            if (HaveError()) { Logger.D("Have error"); ; SaveToDisk(); }
             using (StreamReader sr = new StreamReader(ConfigFileName))
             {
-                Data = (ConfigDataLayout)(JsonConvert.DeserializeObject(sr.ReadToEnd(), Data.GetType()));
+                Data = (ConfigDataLayout)(JsonConvert.DeserializeObject(sr.ReadToEnd(), typeof(ConfigDataLayout)));
             }
             Data.ValueChanged += (s, e) => { SaveToDisk(); };
-            Logger.D("a is???" + Data.BackgroundA);
         }
         /// <summary>
         /// 将数据存储到硬盘
         /// </summary>
         public void SaveToDisk()
         {
-
-            if (!File.Exists(ConfigFileName))
-            {
-                using (FileStream fs = new FileStream(ConfigFileName, FileMode.OpenOrCreate, FileAccess.ReadWrite)) { }
-            }
+            Logger.D("Save config to disk");
+            new FileStream(ConfigFileName, FileMode.OpenOrCreate, FileAccess.ReadWrite).Dispose();
             using (StreamWriter sw = new StreamWriter(ConfigFileName, false))
             {
                 string text = JsonConvert.SerializeObject(Data);
@@ -88,7 +83,8 @@ namespace AutumnBox.GUI.Cfg
             Logger.D("enter error check");
             try
             {
-                JObject jObj = JObject.Parse(File.ReadAllText(ConfigFileName)); return false;
+                JObject jObj = JObject.Parse(File.ReadAllText(ConfigFileName));
+                return false;
             }
             catch (JsonReaderException) { return true; }
             catch (FileNotFoundException) { return true; }

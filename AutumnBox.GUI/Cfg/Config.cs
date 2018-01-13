@@ -22,13 +22,11 @@ namespace AutumnBox.GUI.Cfg
         {
             get
             {
-                Logger.D("Get Is firstLaunch value " + Operator.Data.IsFirstLaunch);
                 return Operator.Data.IsFirstLaunch;
             }
             set
             {
                 Operator.Data.IsFirstLaunch = value;
-                Logger.D("ifl set, now value " + Operator.Data.IsFirstLaunch.ToString());
             }
         }
         public static string SkipVersion

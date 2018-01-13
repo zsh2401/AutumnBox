@@ -1,6 +1,7 @@
 ﻿using AutumnBox.Basic.Device;
 using AutumnBox.Basic.Flows;
 using AutumnBox.Basic.Flows.MiFlash;
+using AutumnBox.GUI.Cfg;
 using System;
 using System.IO;
 using System.Linq;
@@ -32,27 +33,13 @@ namespace AutumnBox.ConsoleTester
         };
         unsafe static int Main(string[] cmdargs)
         {
-            //var args = new MiFlasherArgs()
-            //{
-            //    DevBasicInfo = mi4,
-            //    BatFileName = @"S:\AutumnBox\test.bat"
-            //};
-            //MiFlasher flasher = new MiFlasher();
-            //flasher.Init(args);
-            //flasher.OutputReceived += (s, e) =>
-            //{
-            //    Console.WriteLine("std o/e->" + e.Text);
-            //};
+            IConfigOperator configOperator = new ConfigOperator();
+            Console.WriteLine(configOperator.Data.IsFirstLaunch);
+            configOperator.Data.IsFirstLaunch = false;
+            //configOperator.SaveToDisk();
+            configOperator.ReloadFromDisk();
 
-            //flasher.Finished += (s, e) =>
-            //{
-            //    Console.WriteLine(e.Result.ResultType);
-            //};
-            //flasher.RunAsync();
-            //Console.ReadKey();
-            //flasher.ForceStop();
-            var product = new DeviceInfoGetterInFastboot(mi4.Serial).GetProduct();
-            Console.WriteLine(product);
+            Console.WriteLine(configOperator.Data.IsFirstLaunch);
             Console.ReadKey();
             return 0;
         }

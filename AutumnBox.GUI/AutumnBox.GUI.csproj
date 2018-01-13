@@ -502,11 +502,9 @@
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>echo "delete fuck file"
-del /S *.pdb
+    <PostBuildEvent>del /S *.pdb
 del /S *.ab
 del /S *.exe.config
-del /S *.json
 del /S *.xml
 del /S AutumnBox.application
 del AutumnBox.ConsoleTester.exe
