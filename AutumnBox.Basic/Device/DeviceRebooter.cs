@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Device
 {
-    public enum RebootOption
+    public enum RebootOptions
     {
         System,
         Recovery,
@@ -27,7 +27,7 @@ namespace AutumnBox.Basic.Device
         {
             executer = new CommandExecuter();
         }
-        public async static void RebootAsync(DeviceBasicInfo dev, RebootOption option = RebootOption.System, FinishedCallback callback = null)
+        public async static void RebootAsync(DeviceBasicInfo dev, RebootOptions option = RebootOptions.System, FinishedCallback callback = null)
         {
             await Task.Run(() =>
             {
@@ -35,22 +35,22 @@ namespace AutumnBox.Basic.Device
             });
             callback?.Invoke();
         }
-        public static void Reboot(DeviceBasicInfo dev, RebootOption option)
+        public static void Reboot(DeviceBasicInfo dev, RebootOptions option)
         {
             if (dev.State != DeviceState.Fastboot && (int)dev.State >= 1)
             {
                 switch (option)
                 {
-                    case RebootOption.System:
+                    case RebootOptions.System:
                         executer.Execute(Command.MakeForAdb(dev.Serial, "reboot"));
                         break;
-                    case RebootOption.Recovery:
+                    case RebootOptions.Recovery:
                         executer.Execute(Command.MakeForAdb(dev.Serial, "reboot recovery"));
                         break;
-                    case RebootOption.Fastboot:
+                    case RebootOptions.Fastboot:
                         executer.Execute(Command.MakeForAdb(dev.Serial, "reboot-bootloader"));
                         break;
-                    case RebootOption.Snapdragon9008:
+                    case RebootOptions.Snapdragon9008:
                         executer.Execute(Command.MakeForAdb(dev.Serial, "reboot edl"));
                         break;
                 }
@@ -59,13 +59,13 @@ namespace AutumnBox.Basic.Device
             {
                 switch (option)
                 {
-                    case RebootOption.System:
+                    case RebootOptions.System:
                         executer.Execute(Command.MakeForFastboot(dev.Serial, "reboot"));
                         break;
-                    case RebootOption.Fastboot:
+                    case RebootOptions.Fastboot:
                         executer.Execute(Command.MakeForFastboot(dev.Serial, "reboot-bootloader"));
                         break;
-                    case RebootOption.Snapdragon9008:
+                    case RebootOptions.Snapdragon9008:
                         executer.Execute(Command.MakeForFastboot(dev.Serial, "reboot-edl"));
                         break;
                 }

@@ -60,17 +60,17 @@ namespace AutumnBox.GUI.UI.FuncPanels
 
         private void ButtonRebootToSystem_Click(object sender, RoutedEventArgs e)
         {
-            DeviceRebooter.RebootAsync(_currentDevInfo, RebootOption.System);
+            DeviceRebooter.RebootAsync(_currentDevInfo, RebootOptions.System);
         }
 
         private void ButtonRebootToRecovery_Click(object sender, RoutedEventArgs e)
         {
-            DeviceRebooter.RebootAsync(_currentDevInfo, RebootOption.Recovery);
+            DeviceRebooter.RebootAsync(_currentDevInfo, RebootOptions.Recovery);
         }
 
         private void ButtonRebootToBootloader_Click(object sender, RoutedEventArgs e)
         {
-            DeviceRebooter.RebootAsync(_currentDevInfo, RebootOption.Fastboot);
+            DeviceRebooter.RebootAsync(_currentDevInfo, RebootOptions.Fastboot);
         }
 
         private void ButtonRebootToSnapdragon9008_Click(object sender, RoutedEventArgs e)
@@ -82,7 +82,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
                                     "btnCancel",
                                     "btnContinue").ToBool();
             if (!_needToContinue) return;
-            DeviceRebooter.RebootAsync(_currentDevInfo, RebootOption.Snapdragon9008);
+            DeviceRebooter.RebootAsync(_currentDevInfo, RebootOptions.Snapdragon9008);
         }
     }
 }
