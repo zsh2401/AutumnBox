@@ -18,7 +18,11 @@ using System.Linq;
 
 namespace AutumnBox.Basic.MultipleDevices
 {
-    public class DevicesList : List<DeviceBasicInfo>
+#pragma warning disable CS0660 // 类型定义运算符 == 或运算符 !=，但不重写 Object.Equals(object o)
+#pragma warning disable CS0661 // 类型定义运算符 == 或运算符 !=，但不重写 Object.GetHashCode()
+    public class DevicesList : List<DeviceBasicInfo>, IEquatable<DevicesList>
+#pragma warning restore CS0661 // 类型定义运算符 == 或运算符 !=，但不重写 Object.GetHashCode()
+#pragma warning restore CS0660 // 类型定义运算符 == 或运算符 !=，但不重写 Object.Equals(object o)
     {
         public bool Contains(Serial serial)
         {
@@ -34,31 +38,28 @@ namespace AutumnBox.Basic.MultipleDevices
         }
         public static bool operator ==(DevicesList left, DevicesList right)
         {
-            if (left.Count != right.Count) return false;//长度不同就是不同
-            try
-            {//不包含也是不同
-                left.ForEach((i) => { if (!right.Contains(i)) { throw new Exception(); }; });
-            }
-            catch { return false; }
-            return true;
+            return left.Equals(right);
         }
         public static bool operator !=(DevicesList left, DevicesList right)
         {
-            return (!(left == right));
+            return !left.Equals(right);
         }
-        public override bool Equals(object obj)
+        public bool Equals(DevicesList other)
         {
-            if (obj == null) return false;
-            if (this == (DevicesList)obj) return true;
-            return false;
+            if (this.Count != other.Count) return false;
+            try
+            {
+                this.ForEach((deviceInfo) =>
+                {
+                    if (!other.Contains(deviceInfo)) throw new DeviceNotFoundOnEqualingException();
+                });
+                return true;
+            }
+            catch (DeviceNotFoundOnEqualingException)
+            {
+                return false;
+            }
         }
-        public override int GetHashCode()
-        {
-            return base.GetHashCode();
-        }
-        public override string ToString()
-        {
-            return base.ToString();
-        }
+        private class DeviceNotFoundOnEqualingException : Exception { }
     }
 }

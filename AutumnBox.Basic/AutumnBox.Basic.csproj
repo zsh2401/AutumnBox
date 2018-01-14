@@ -89,7 +89,6 @@
     <Compile Include="Function\FunctionModuleProxy.cs" />
     <Compile Include="Function\IFunctionModule.cs" />
     <Compile Include="DebugSettings.cs" />
-    <Compile Include="MultipleDevices\IDevicesChangedListener.cs" />
     <Compile Include="MultipleDevices\IDevicesGetter.cs" />
     <Compile Include="Executer\OutputData.cs" />
     <Compile Include="MultipleDevices\DevicesList.cs" />

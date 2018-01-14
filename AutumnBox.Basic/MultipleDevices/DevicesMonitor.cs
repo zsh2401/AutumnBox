@@ -42,15 +42,17 @@ namespace AutumnBox.Basic.MultipleDevices
     /// </summary>
     public sealed class DevicesMonitor
     {
+        private const int defaultInterval = 2000;
         public event DevicesChangedHandler DevicesChanged;//当连接设备的情况变化时发生
         private bool _continue = true;
         private readonly int _interval;
         private IDevicesGetter _devGetter = new DevicesGetter();
-        public DevicesMonitor(int interval = 2000)
+        public DevicesMonitor(int interval = defaultInterval)
         {
             this._interval = interval;
         }
-        public void Begin() {
+        public void Begin()
+        {
             _continue = true;
             ListenAsync();
         }
@@ -59,13 +61,16 @@ namespace AutumnBox.Basic.MultipleDevices
             var last = new DevicesList();
             while (_continue)
             {
-                var now = await Task.Run( ()=> {
+                var now = await Task.Run(() =>
+                {
                     Thread.Sleep(_interval);
-                    return _devGetter.GetDevices(); });
-                if (now != last) {
+                    return _devGetter.GetDevices();
+                });
+                if (now != last)
+                {
                     Logger.T("Devices Changed");
                     last = now;
-                    DevicesChanged?.Invoke(this,new DevicesChangedEventArgs(now));
+                    DevicesChanged?.Invoke(this, new DevicesChangedEventArgs(now));
                 }
 
             }
