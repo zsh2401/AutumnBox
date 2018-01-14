@@ -26,10 +26,27 @@ namespace AutumnBox.ConsoleTester
             Serial = new Serial("9dd1b490"),
             State = DeviceState.Fastboot,
         };
+        class EqualsTest : IEquatable<EqualsTest>
+        {
+            public String Name { get; set; }
+            public override bool Equals(object obj)
+            {
+                Console.WriteLine("default equals");
+                return base.Equals(obj);
+            }
+
+            public bool Equals(EqualsTest other)
+            {
+                Console.WriteLine("iequals");
+                return this.Name == other.Name;
+            }
+        }
         unsafe static int Main(string[] cmdargs)
         {
             var info = new DeviceSoftwareInfoGetter(mi4.Serial).IsRootEnable();
-            //Console.WriteLine(new CommandExecuter().QuicklyShell(mi6.Serial,"getprop").Output);
+            var a = new EqualsTest() { Name = "hehe" };
+            var b = new EqualsTest() { Name = "hehe" };
+            a.Equals((object)b);
             Console.ReadKey();
             return 0;
         }

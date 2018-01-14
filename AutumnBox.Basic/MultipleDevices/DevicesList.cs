@@ -18,11 +18,7 @@ using System.Linq;
 
 namespace AutumnBox.Basic.MultipleDevices
 {
-#pragma warning disable CS0660 // 类型定义运算符 == 或运算符 !=，但不重写 Object.Equals(object o)
-#pragma warning disable CS0661 // 类型定义运算符 == 或运算符 !=，但不重写 Object.GetHashCode()
     public class DevicesList : List<DeviceBasicInfo>, IEquatable<DevicesList>
-#pragma warning restore CS0661 // 类型定义运算符 == 或运算符 !=，但不重写 Object.GetHashCode()
-#pragma warning restore CS0660 // 类型定义运算符 == 或运算符 !=，但不重写 Object.Equals(object o)
     {
         public bool Contains(Serial serial)
         {
@@ -59,6 +55,21 @@ namespace AutumnBox.Basic.MultipleDevices
             {
                 return false;
             }
+        }
+        public override bool Equals(object obj)
+        {
+            if (obj is DevicesList)
+            {
+                return base.Equals((DevicesList)obj);
+            }
+            else
+            {
+                return base.Equals(obj);
+            }
+        }
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
         private class DeviceNotFoundOnEqualingException : Exception { }
     }

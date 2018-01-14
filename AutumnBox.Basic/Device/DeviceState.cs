@@ -1,9 +1,9 @@
 /* =============================================================================*\
 *
-* Filename: DeviceStatus
+* Filename: DeviceState
 * Description: 
 *
-* Version: 1.0
+* Version: 1.5
 * Created: 8/18/2017 22:09:36(UTC+8:00)
 * Compiler: Visual Studio 2017
 * 
@@ -13,7 +13,7 @@
 \* =============================================================================*/
 namespace AutumnBox.Basic.Device
 {
-    public static class DeviceStatusHelper {
+    public static class DeviceStateExt {
         public static DeviceState ToDeviceState(this string strStatus) {
             switch (strStatus) {
                 case "device":

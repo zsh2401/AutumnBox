@@ -25,15 +25,6 @@ namespace AutumnBox.Basic.Function.Args
         public string[] files;
     }
     /// <summary>
-    /// 用于重启器的参数
-    /// </summary>
-    public class RebootArgs : ModuleArgs
-    {
-        public RebootArgs(DeviceBasicInfo device) : base(device) { }
-        public RebootOptions rebootOption;
-        public DeviceState nowStatus;
-    }
-    /// <summary>
     /// 用于活动启动器的参数
     /// </summary>
     public class ActivityLaunchArgs : ModuleArgs

@@ -1,4 +1,9 @@
-﻿using AutumnBox.Support.CstmDebug;
+﻿/************************
+** auth： zsh2401@163.com
+** date:  2017/12/30 12:11:48
+** desc： ...
+************************/
+using AutumnBox.Support.CstmDebug;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,11 +13,7 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Device
 {
-#pragma warning disable CS0659 // 类型重写 Object.Equals(object o)，但不重写 Object.GetHashCode()
-#pragma warning disable CS0661 // 类型定义运算符 == 或运算符 !=，但不重写 Object.GetHashCode()
     public class Serial : IEquatable<Serial>
-#pragma warning restore CS0661 // 类型定义运算符 == 或运算符 !=，但不重写 Object.GetHashCode()
-#pragma warning restore CS0659 // 类型重写 Object.Equals(object o)，但不重写 Object.GetHashCode()
     {
         public bool IsIpAdress
         {
@@ -42,10 +43,7 @@ namespace AutumnBox.Basic.Device
                 _serialNum = serialStr;
             }
         }
-        public override bool Equals(object obj)
-        {
-            return base.Equals(obj);
-        }
+
         public static bool operator ==(Serial left, Serial right)
         {
             return left?.ToString() == right?.ToString();
@@ -57,6 +55,21 @@ namespace AutumnBox.Basic.Device
         public bool Equals(Serial other)
         {
             return this.ToString() == other.ToString();
+        }
+        public override bool Equals(object obj)
+        {
+            if (obj is Serial)
+            {
+                return this.Equals((Serial)obj);
+            }
+            else
+            {
+                return base.Equals(obj);
+            }
+        }
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
     }
 }

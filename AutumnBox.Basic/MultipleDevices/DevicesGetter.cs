@@ -15,10 +15,6 @@ namespace AutumnBox.Basic.MultipleDevices
 {
     using AutumnBox.Basic.Device;
     using AutumnBox.Basic.Executer;
-    using AutumnBox.Basic.Util;
-    using AutumnBox.Support.CstmDebug;
-    using System;
-    using System.Diagnostics;
     using System.Text.RegularExpressions;
 
     public sealed class DevicesGetter : IDevicesGetter

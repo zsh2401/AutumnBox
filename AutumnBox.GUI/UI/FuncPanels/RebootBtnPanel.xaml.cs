@@ -60,35 +60,17 @@ namespace AutumnBox.GUI.UI.FuncPanels
 
         private void ButtonRebootToSystem_Click(object sender, RoutedEventArgs e)
         {
-            var fmp = FunctionModuleProxy.Create<RebootOperator>(new RebootArgs(_currentDevInfo)
-            {
-                rebootOption = RebootOptions.System,
-                nowStatus = _currentDevInfo.State
-            });
-            fmp.Finished += ((MainWindow)App.Current.MainWindow).FuncFinish;
-            fmp.AsyncRun();
+            DeviceRebooter.RebootAsync(_currentDevInfo, RebootOption.System);
         }
 
         private void ButtonRebootToRecovery_Click(object sender, RoutedEventArgs e)
         {
-            var fmp = FunctionModuleProxy.Create<RebootOperator>(new RebootArgs(_currentDevInfo)
-            {
-                rebootOption = RebootOptions.Recovery,
-                nowStatus = _currentDevInfo.State
-            });
-            fmp.Finished += ((MainWindow)App.Current.MainWindow).FuncFinish;
-            fmp.AsyncRun();
+            DeviceRebooter.RebootAsync(_currentDevInfo, RebootOption.Recovery);
         }
 
         private void ButtonRebootToBootloader_Click(object sender, RoutedEventArgs e)
         {
-            var fmp = FunctionModuleProxy.Create<RebootOperator>(new RebootArgs(_currentDevInfo)
-            {
-                rebootOption = RebootOptions.Bootloader,
-                nowStatus = _currentDevInfo.State
-            });
-            fmp.Finished += ((MainWindow)App.Current.MainWindow).FuncFinish;
-            fmp.AsyncRun();
+            DeviceRebooter.RebootAsync(_currentDevInfo, RebootOption.Fastboot);
         }
 
         private void ButtonRebootToSnapdragon9008_Click(object sender, RoutedEventArgs e)
@@ -100,13 +82,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
                                     "btnCancel",
                                     "btnContinue").ToBool();
             if (!_needToContinue) return;
-            var fmp = FunctionModuleProxy.Create<RebootOperator>(new RebootArgs(_currentDevInfo)
-            {
-                rebootOption = RebootOptions.Snapdragon9008,
-                nowStatus = _currentDevInfo
-            });
-            fmp.Finished += ((MainWindow)App.Current.MainWindow).FuncFinish;
-            fmp.AsyncRun();
+            DeviceRebooter.RebootAsync(_currentDevInfo, RebootOption.Snapdragon9008);
         }
     }
 }
