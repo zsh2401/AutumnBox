@@ -11,7 +11,7 @@ using AutumnBox.Basic.Flows.Result;
 
 namespace AutumnBox.Basic.Flows
 {
-    public class FilePullerArgs : FlowArgs
+    public sealed class FilePullerArgs : FlowArgs
     {
         public string FilePathOnDevice { get; set; }
         public string SavePath { get; set; } = ".";

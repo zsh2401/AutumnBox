@@ -16,7 +16,7 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Flows
 {
-    public class DeviceImageFlasherArgs : FlowArgs
+    public sealed class DeviceImageFlasherArgs : FlowArgs
     {
         public DeviceImage ImageType { get; set; } = DeviceImage.Recovery;
         public string SourceFile { get; set; }

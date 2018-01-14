@@ -12,7 +12,7 @@ using AutumnBox.Support.CstmDebug;
 
 namespace AutumnBox.Basic.Flows
 {
-    public class DeviceImageExtractorArgs : FlowArgs
+    public sealed class DeviceImageExtractorArgs : FlowArgs
     {
         public DeviceImage ImageType { get; set; } = DeviceImage.Recovery;
         public string SavePath { get; set; } = ".";
