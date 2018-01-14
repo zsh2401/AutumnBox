@@ -57,7 +57,7 @@ namespace AutumnBox.Basic.Executer
         }
         public CommandExecuterResult Execute(Command cmd)
         {
-            return Execute(cmd.FileName, cmd.FullCommand);
+            return Execute(cmd.FileName, cmd.ToString());
         }
         private const string exitCodePattern = @"exitcode(?<code>\d+)";
         public CommandExecuterResult QuicklyShell(Serial dev, string command)

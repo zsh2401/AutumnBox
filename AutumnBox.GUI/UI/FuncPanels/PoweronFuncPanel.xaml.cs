@@ -43,7 +43,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
             /*检查是否安装了这个App*/
             bool? isInstallThisApp = await Task.Run(() =>
             {
-                return DeviceInfoHelper.IsInstalled(_currentDevInfo.Serial, BreventServiceActivator._AppPackageName);
+                return new DeviceSoftwareInfoGetter(_currentDevInfo.Serial).IsInstall(BreventServiceActivator._AppPackageName);
             });
             if (isInstallThisApp == false) { BoxHelper.ShowMessageDialog("Warning", "msgPlsInstallBreventFirst"); return; }
 
@@ -92,7 +92,8 @@ namespace AutumnBox.GUI.UI.FuncPanels
             fileDialog.Multiselect = false;
             if (fileDialog.ShowDialog() == true)
             {
-                var args = new FilePusherArgs() {
+                var args = new FilePusherArgs()
+                {
                     DevBasicInfo = _currentDevInfo,
                     SourceFile = fileDialog.FileName,
                 };
@@ -291,7 +292,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
             /*检查是否安装了这个App*/
             bool? isInstallThisApp = await Task.Run(() =>
             {
-                return DeviceInfoHelper.IsInstalled(_currentDevInfo.Serial, IceBoxActivator.AppPackageName);
+                return new DeviceSoftwareInfoGetter(_currentDevInfo.Serial).IsInstall(IceBoxActivator.AppPackageName);
             });
             if (isInstallThisApp == false) { BoxHelper.ShowMessageDialog("Warning", "msgPlsInstallIceBoxFirst"); return; }
             /*提示用户删除账户*/
@@ -313,7 +314,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
             /*检查是否安装了这个App*/
             bool? isInstallThisApp = await Task.Run(() =>
             {
-                return DeviceInfoHelper.IsInstalled(_currentDevInfo.Serial, AirForzenActivator.AppPackageName);
+                return new DeviceSoftwareInfoGetter(_currentDevInfo.Serial).IsInstall(AirForzenActivator.AppPackageName);
             });
 
             if (isInstallThisApp == false) { BoxHelper.ShowMessageDialog("Warning", "msgPlsInstallAirForzenFirst"); return; }
@@ -339,7 +340,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
             /*检查是否安装了这个App*/
             bool? isInstallThisApp = await Task.Run(() =>
             {
-                return DeviceInfoHelper.IsInstalled(_currentDevInfo.Serial, ShizukuManagerActivator._AppPackageName);
+                return new DeviceSoftwareInfoGetter(_currentDevInfo.Serial).IsInstall(ShizukuManagerActivator._AppPackageName);
             });
             if (isInstallThisApp == false) { BoxHelper.ShowMessageDialog("Warning", "msgPlsInstallBreventFirst"); return; }
 
@@ -384,7 +385,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
             /*检查是否安装了这个App*/
             bool? isInstallThisApp = await Task.Run(() =>
             {
-                return DeviceInfoHelper.IsInstalled(_currentDevInfo.Serial, IslandActivator.AppPackageName);
+                return new DeviceSoftwareInfoGetter(_currentDevInfo.Serial).IsInstall(IslandActivator.AppPackageName);
             });
             if (isInstallThisApp == false) { BoxHelper.ShowMessageDialog("Warning", "msgPlsInstallIslandFirst"); return; }
             /*提示用户删除账户*/

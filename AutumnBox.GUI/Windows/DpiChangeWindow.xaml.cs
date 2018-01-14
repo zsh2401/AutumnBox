@@ -33,7 +33,7 @@ namespace AutumnBox.GUI.Windows
             BtnOK.IsEnabled = true;
             new Thread(() =>
             {
-                int? _deviceDefaultDpi = DeviceInfoHelper.GetDpi(devinfo.Serial);
+                int? _deviceDefaultDpi = new DeviceHardwareInfoGetter(devinfo.Serial).GetDpi();
                 this.Dispatcher.Invoke(() =>
                 {
                     TextBlockCurrentDpi.Text = (_deviceDefaultDpi == null) ? UIHelper.GetString("GetFail") : _deviceDefaultDpi.ToString();

@@ -77,7 +77,7 @@ namespace AutumnBox.Basic.Flows
                     if (openerResult.ExitCode == 0)//如果开启成功
                     {
                         Thread.Sleep(2000);//稍等一会儿
-                        IPAddress ip = DeviceInfoHelper.GetLocationIP(_tooKit.Args.DevBasicInfo.Serial);//获取设备IP
+                        IPAddress ip = new DeviceSoftwareInfoGetter(_tooKit.Args.Serial).GetLocationIP();//获取设备IP
 
                         //连接到该设备
                         var connecter = new NetDeviceConnecter();

@@ -21,8 +21,8 @@ namespace AutumnBox.Basic.Device
         public Serial Serial { get; set; }
         public string ScreenInfo { get; set; }
         public int? BatteryLevel { get; set; }
-        public double? MemTotal { get; set; }
-        public double? StorageTotal { get; set; }
+        public double? SizeofRam { get; set; }
+        public double? SizeofRom { get; set; }
         public string FlashMemoryType { get; set; }
         public string SOCInfo { get; set; }
     }

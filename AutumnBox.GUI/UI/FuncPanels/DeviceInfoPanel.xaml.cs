@@ -141,19 +141,18 @@ namespace AutumnBox.GUI.UI.FuncPanels
                     SetStatusShow(DevStatusBitmapGetter.Get(devSimpleInfo.State), "DeviceInSideload");
                     break;
             }
-            //await Task.Run(() => { Thread.Sleep(1000); });
             RefreshFinished?.Invoke(this, new EventArgs());
             var advInfo = await Task.Run(() =>
             {
-                return DeviceInfoHelper.GetHwInfo(devSimpleInfo.Serial);
+                return new DeviceHardwareInfoGetter(DeviceInfo.Serial).Get();
             });
-            LabelRom.Content = (advInfo.StorageTotal != null) ? advInfo.StorageTotal + "GB" : App.Current.Resources["GetFail"].ToString();
-            LabelRam.Content = (advInfo.MemTotal != null) ? advInfo.MemTotal + "GB" : App.Current.Resources["GetFail"].ToString();
+            LabelRom.Content = (advInfo.SizeofRom != null) ? advInfo.SizeofRom + "GB" : App.Current.Resources["GetFail"].ToString();
+            LabelRam.Content = (advInfo.SizeofRam != null) ? advInfo.SizeofRam + "GB" : App.Current.Resources["GetFail"].ToString();
             LabelBattery.Content = (advInfo.BatteryLevel != null) ? advInfo.BatteryLevel + "%" : App.Current.Resources["GetFail"].ToString();
             LabelSOC.Content = advInfo.SOCInfo ?? App.Current.Resources["GetFail"].ToString();
             LabelScreen.Content = advInfo.ScreenInfo ?? App.Current.Resources["GetFail"].ToString();
             LabelFlashMemInfo.Content = advInfo.FlashMemoryType ?? App.Current.Resources["GetFail"].ToString();
-            bool IsRoot = await Task.Run(() => { return DeviceInfoHelper.CheckRoot(devSimpleInfo.Serial); });
+            bool IsRoot = await Task.Run(() => { return new DeviceSoftwareInfoGetter(devSimpleInfo.Serial).IsRootEnable(); });
             LabelRootStatus.Content = IsRoot ? App.Current.Resources["RootEnable"].ToString() : App.Current.Resources["RootDisable"].ToString();
             CurrentDeviceIsRoot = IsRoot;
         }

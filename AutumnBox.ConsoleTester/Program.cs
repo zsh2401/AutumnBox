@@ -28,9 +28,8 @@ namespace AutumnBox.ConsoleTester
         };
         unsafe static int Main(string[] cmdargs)
         {
-            //var img = DeviceImageFinder.PathOf(mi4.Serial,DeviceImage.Recovery);
-            //Com
-            Console.WriteLine(new CommandExecuter().QuicklyShell(mi6.Serial,"getprop").Output);
+            var info = new DeviceSoftwareInfoGetter(mi4.Serial).IsRootEnable();
+            //Console.WriteLine(new CommandExecuter().QuicklyShell(mi6.Serial,"getprop").Output);
             Console.ReadKey();
             return 0;
         }

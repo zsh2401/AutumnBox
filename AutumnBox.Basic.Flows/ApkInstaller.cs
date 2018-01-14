@@ -47,7 +47,6 @@ namespace AutumnBox.Basic.Flows
                 Command command =
                     Command.MakeForCmd(
                         $"{ConstData.FullAdbFileName} -s {toolKit.Args.DevBasicInfo.ToString()} install -r \"{apkFileInfo.FullName}\"");
-                Logger.D("making command ->" + command.FileName + command.FullCommand);
                 var r = toolKit.Executer.Execute(command);
                 Logger.D(r.ToString());
                 var args = new AApkInstalltionCompleteArgs()

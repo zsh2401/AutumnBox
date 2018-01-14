@@ -76,7 +76,7 @@ namespace AutumnBox.GUI.UI.CstPanels
                     await Task.Run(() =>
                     {
                         Thread.Sleep(3000);
-                        var IP = DeviceInfoHelper.GetLocationIP(_serial);
+                        var IP = new DeviceSoftwareInfoGetter(_serial).GetLocationIP();
                         if (IP != null)
                         {
                             this.Dispatcher.Invoke(() =>

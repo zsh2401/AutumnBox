@@ -46,13 +46,13 @@
     <Compile Include="Device\DeviceBuildPropSetter.cs" />
     <Compile Include="Device\DeviceHaveNoRootException.cs" />
     <Compile Include="Device\DeviceInfoGetterInFastboot.cs" />
+    <Compile Include="Device\DeviceSoftwareInfoGetter.cs" />
     <Compile Include="Device\Serial.cs" />
     <Compile Include="Device\DeviceBuildPropGetter.cs" />
     <Compile Include="Device\DeviceHardwareInfo.cs" />
     <Compile Include="Device\DeviceHardwareInfoGetter.cs" />
     <Compile Include="Device\DeviceImage.cs" />
     <Compile Include="Device\DeviceImageFinder.cs" />
-    <Compile Include="Device\DeviceInfoHelper.cs" />
     <Compile Include="MultipleDevices\DevicesGetter.cs" />
     <Compile Include="Device\DeviceBasicInfo.cs" />
     <Compile Include="Device\ISetableShell.cs" />
