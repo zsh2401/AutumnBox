@@ -54,6 +54,8 @@
     <Compile Include="Device\DeviceHardwareInfoGetter.cs" />
     <Compile Include="Device\DeviceImage.cs" />
     <Compile Include="Device\DeviceImageFinder.cs" />
+    <Compile Include="Executer\OutputReceivedEvent.cs" />
+    <Compile Include="Executer\ProcessStartedEvent.cs" />
     <Compile Include="MultipleDevices\DevicesGetter.cs" />
     <Compile Include="Device\DeviceBasicInfo.cs" />
     <Compile Include="Device\ISetableShell.cs" />
@@ -93,7 +95,6 @@
     <Compile Include="MultipleDevices\IDevicesGetter.cs" />
     <Compile Include="Executer\OutputData.cs" />
     <Compile Include="MultipleDevices\DevicesList.cs" />
-    <Compile Include="Executer\ABProcess.cs" />
     <Compile Include="Function\ExecuteResult.cs" />
     <Compile Include="Executer\Command.cs" />
     <Compile Include="Function\FunctionModule.cs" />

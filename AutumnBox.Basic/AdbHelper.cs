@@ -50,25 +50,16 @@ namespace AutumnBox.Basic.Adb
         }
         public static bool StartServer()
         {
-            OutputData o = new OutputData();
-            using (ABProcess process = new ABProcess())
-            {
-                o = process.RunToExited("cmd.exe", "/c " + ConstData.FullAdbFileName + " start-server & echo %errorlevel%");
-            }
-            bool successful = !o.All.ToString().Contains("cannot connect to daemon");
+            var result = new CommandExecuter().Execute(ConstData.FullAdbFileName, "start-server");
+            bool successful = result.IsSuccessful && !result.Output.All.ToString().Contains("cannot connect to daemon");
             if (!successful) AdbServerStartsFailed?.Invoke(new object(), new EventArgs());
             return successful;
         }
         public static bool StopServer()
         {
-            OutputData o = new OutputData();
-            using (ABProcess process = new ABProcess())
-            {
-                o = process.RunToExited("cmd.exe", "/c " + ConstData.FullAdbFileName + " stop-server & echo %errorlevel%");
-            }
-            bool successful = o.LineAll.Last() == "0";
-            if (!successful) AdbServerStopsFailed?.Invoke(new object(), new EventArgs());
-            return successful;
+            var result = new CommandExecuter().Execute(ConstData.FullAdbFileName, "start-server");
+            if (!result.IsSuccessful) AdbServerStopsFailed?.Invoke(new object(), new EventArgs());
+            return result.IsSuccessful;
         }
         public static bool RestartServer()
         {
