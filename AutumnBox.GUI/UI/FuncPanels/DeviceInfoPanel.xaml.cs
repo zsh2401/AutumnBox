@@ -12,6 +12,20 @@ using System.Windows.Media.Imaging;
 
 namespace AutumnBox.GUI.UI.FuncPanels
 {
+    internal static class DictExt
+    {
+        public static string Get(this Dictionary<string, string> dict, string key)
+        {
+            try
+            {
+                return dict[key];
+            }
+            catch (KeyNotFoundException)
+            {
+                return null;
+            }
+        }
+    }
 
     [LogProperty(TAG = "DevInfoPanel")]
     /// <summary>
@@ -86,9 +100,16 @@ namespace AutumnBox.GUI.UI.FuncPanels
                      return propGetter.GetFull();
                  });
 
-            LabelAndroidVersion.Content = buildInfo[BuildPropKeys.AndroidVersion] ?? App.Current.Resources["GetFail"].ToString();
-            LabelModel.Content = buildInfo[BuildPropKeys.Brand] + " " + buildInfo[BuildPropKeys.Model] ?? App.Current.Resources["GetFail"].ToString();
-            LabelCode.Content = buildInfo[BuildPropKeys.ProductName] ?? App.Current.Resources["GetFail"].ToString();
+            LabelAndroidVersion.Content = buildInfo.Get(BuildPropKeys.AndroidVersion) ?? App.Current.Resources["GetFail"].ToString();
+            string brandAndModel = null;
+            string brand = buildInfo.Get(BuildPropKeys.Brand);
+            string model = buildInfo.Get(BuildPropKeys.Model);
+            if (brand != null && model != null)
+            {
+                brandAndModel = brand + " " + model;
+            }
+            LabelModel.Content = brandAndModel ?? App.Current.Resources["GetFail"].ToString();
+            LabelCode.Content = buildInfo.Get(BuildPropKeys.ProductName) ?? App.Current.Resources["GetFail"].ToString();
 
             LabelRom.Content = App.Current.Resources["Getting"].ToString();
             LabelRam.Content = App.Current.Resources["Getting"].ToString();
