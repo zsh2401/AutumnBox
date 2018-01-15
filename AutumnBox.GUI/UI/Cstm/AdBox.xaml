@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AutumnBox.GUI.UI.Cstm"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300" Loaded="UserControl_Loaded" MouseDown="UserControl_MouseDown">
+             d:DesignHeight="146" d:DesignWidth="203" Loaded="UserControl_Loaded" MouseDown="UserControl_MouseDown">
     <Grid>
         <Image x:Name="ImgMain" RenderOptions.BitmapScalingMode="Fant"/>
     </Grid>

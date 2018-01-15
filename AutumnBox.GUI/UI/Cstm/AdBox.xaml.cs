@@ -24,68 +24,7 @@ using System.Windows.Shapes;
 
 namespace AutumnBox.GUI.UI.Cstm
 {
-    internal class AdImageGetter
-    {
-        [JsonObject(MemberSerialization.OptOut)]
-        private class RemoteAdInfo
-        {
-            [JsonProperty("name")]
-            public string Name { get; set; }
-            [JsonProperty("link")]
-            public string Link { get; set; }
-            [JsonProperty("click")]
-            public string Click { get; set; }
-        }
-        public class GettedImageEventArgs : EventArgs
-        {
-            public string ClickUrl { get; private set; }
-            public MemoryStream MemoryStream { get; private set; }
-            public GettedImageEventArgs(MemoryStream ms, string clickUrl)
-            {
-                this.MemoryStream = ms;
-                ClickUrl = clickUrl;
-            }
-        }
-        public event EventHandler<GettedImageEventArgs> GettedImage;
-        private const string tempPath = "tmp";
-#if TEST_LOCALHOST_API
-        private const string apiUrl = "http://localhost:24010/api/ad/";
-#else
-            private const string apiUrl = "http://atmb.top/api/ad/";
-#endif
-        public void Work()
-        {
-            try
-            {
-                Task.Run(() =>
-                {
-                    var remoteInfo = GetRemoteAdInfo();
-                    var ms = Download(remoteInfo);
-                    if (ms != null)
-                    {
-                        GettedImage?.Invoke(this, new GettedImageEventArgs(ms, remoteInfo.Click));
-                    }
-                });
-            }
-            catch (Exception e)
-            {
-                Logger.T("ad exception", e);
-            }
-
-        }
-        private readonly WebClient webClient = new WebClient();
-        private MemoryStream Download(RemoteAdInfo info)
-        {
-            var bytes = webClient.DownloadData(info.Link);
-            return new MemoryStream(bytes);
-        }
-        private RemoteAdInfo GetRemoteAdInfo()
-        {
-            Logger.D("getting remote info");
-            string html = webClient.DownloadString(apiUrl);
-            return (RemoteAdInfo)JsonConvert.DeserializeObject(html, typeof(RemoteAdInfo));
-        }
-    }
+    
     /// <summary>
     /// AdBox.xaml 的交互逻辑
     /// </summary>
