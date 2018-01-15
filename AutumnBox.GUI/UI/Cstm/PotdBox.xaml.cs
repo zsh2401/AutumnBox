@@ -1,5 +1,4 @@
-﻿//#define TEST_LOCALHOST_API
-using AutumnBox.GUI.Cfg;
+﻿using AutumnBox.GUI.Cfg;
 using AutumnBox.GUI.NetUtil;
 using AutumnBox.Support.CstmDebug;
 using Newtonsoft.Json;
@@ -54,10 +53,14 @@ namespace AutumnBox.GUI.UI.Cstm
 
         private void UserControl_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (clickUrl != null)
+            try
             {
-                Process.Start(clickUrl);
+                if (clickUrl != null)
+                {
+                    Process.Start(clickUrl);
+                }
             }
+            catch (Exception ex) { Logger.T($"click potd failed {e.ToString()}"); }
         }
     }
 }

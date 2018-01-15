@@ -2,6 +2,8 @@
 using AutumnBox.Basic.Device.PackageManage;
 using AutumnBox.Basic.Executer;
 using System;
+using System.Diagnostics;
+
 namespace AutumnBox.ConsoleTester
 {
     class Program
@@ -23,6 +25,7 @@ namespace AutumnBox.ConsoleTester
         };
         unsafe static int Main(string[] cmdargs)
         {
+            Process.Start("");
             var packages = PackageHelper.GetPackages(mi4.Serial);
             Console.WriteLine(packages.Count);
             Console.ReadKey();
