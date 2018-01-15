@@ -157,7 +157,10 @@ namespace AutumnBox.GUI.UI.FuncPanels
 
         private void ButtonUnlockMiSystem_Click(object sender, RoutedEventArgs e)
         {
-
+            if (!((MainWindow)App.Current.MainWindow).DevInfoPanel.CurrentDeviceIsRoot)
+            {
+                if (!BoxHelper.ShowChoiceDialog("Warning", "warrningNeedRootAccess").ToBool()) return;
+            }
             if (BoxHelper.ShowChoiceDialog("msgNotice", "msgUnlockSystemTip") == ChoiceResult.BtnRight)
             {
                 var fmp = FunctionModuleProxy.Create<SystemUnlocker>(new ModuleArgs(_currentDevInfo));
