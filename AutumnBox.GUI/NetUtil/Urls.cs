@@ -18,6 +18,7 @@ namespace AutumnBox.GUI.NetUtil
         internal const string HELP_PAGE = "https://github.com/zsh2401/AutumnBox/wiki/Chinese-Home";
         internal const string STATISTICS_API = "http://api.zsh2401.top/autumnbox/report.php";
         internal const string MOTD_API = "http://atmb.top/api/motd/";
+        internal const string POTD_API = "http://atmb.top/api/potd/";
         internal const string UPDATE_API = "http://atmb.top/api/update/";
         internal const string OFFICIAL_WEBSITE = "http://atmb.top";
     }

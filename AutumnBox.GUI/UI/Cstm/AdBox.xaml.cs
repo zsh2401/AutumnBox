@@ -1,5 +1,6 @@
 ﻿//#define TEST_LOCALHOST_API
 using AutumnBox.GUI.Cfg;
+using AutumnBox.GUI.NetUtil;
 using AutumnBox.Support.CstmDebug;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -24,7 +25,7 @@ using System.Windows.Shapes;
 
 namespace AutumnBox.GUI.UI.Cstm
 {
-    
+
     /// <summary>
     /// AdBox.xaml 的交互逻辑
     /// </summary>
@@ -37,20 +38,18 @@ namespace AutumnBox.GUI.UI.Cstm
         }
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            AdImageGetter imgGetter = new AdImageGetter();
-            imgGetter.GettedImage += (s, ea) =>
+            new PotdGetter().RunAsync((result) =>
             {
                 this.Dispatcher.Invoke(() =>
                 {
                     BitmapImage bmp = new BitmapImage();
                     bmp.BeginInit();
-                    bmp.StreamSource = ea.MemoryStream;
+                    bmp.StreamSource = result.ImageMemoryStream;
                     bmp.EndInit();
                     ImgMain.Source = bmp;
-                    clickUrl = ea.ClickUrl;
+                    clickUrl = result.ClickUrl;
                 });
-            };
-            imgGetter.Work();
+            });
         }
 
         private void UserControl_MouseDown(object sender, MouseButtonEventArgs e)

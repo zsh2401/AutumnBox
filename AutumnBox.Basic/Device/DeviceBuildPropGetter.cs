@@ -69,7 +69,6 @@ namespace AutumnBox.Basic.Device
             {
                 Dictionary<string, string> dict = new Dictionary<string, string>();
                 var exeResult = executer.QuicklyShell(Serial, $"getprop");
-                Logger.D("getprop result " + exeResult.Output.ToString());
                 var matches = Regex.Matches(exeResult.Output.ToString(), propPattern, RegexOptions.Multiline);
                 foreach (Match match in matches)
                 {

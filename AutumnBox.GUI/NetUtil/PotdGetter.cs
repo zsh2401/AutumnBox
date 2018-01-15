@@ -3,6 +3,7 @@
 ** date:  2018/1/15 23:35:50 (UTC +8:00)
 ** desc： ...
 *************************************************/
+using AutumnBox.Support.CstmDebug;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -31,16 +32,12 @@ namespace AutumnBox.GUI.NetUtil
             [JsonProperty("click")]
             public string Click { get; set; }
         }
-#if TEST_LOCAL_API
-        private const string apiUrl = "http://localhost:24010/api/ad/";
-#else
-        private const string apiUrl = "http://atmb.top/api/ad/";
-#endif
         public override PotdGetterResult LocalMethod()
         {
-            var html = webClient.DownloadString(apiUrl);
+            var html = webClient.DownloadString("http://localhost:24010/api/ad/");
             var remoteInfo = (RemoteAdInfo)JsonConvert.DeserializeObject(html, typeof(RemoteAdInfo));
             var imgData = webClient.DownloadData(remoteInfo.Link);
+            Logger.T("get finished..");
             return new PotdGetterResult()
             {
                 ClickUrl = remoteInfo.Click,
@@ -51,7 +48,7 @@ namespace AutumnBox.GUI.NetUtil
 
         public override PotdGetterResult NetMethod()
         {
-            var html = webClient.DownloadString(apiUrl);
+            var html = webClient.DownloadString(Urls.POTD_API);
             var remoteInfo = (RemoteAdInfo)JsonConvert.DeserializeObject(html, typeof(RemoteAdInfo));
             var imgData = webClient.DownloadData(remoteInfo.Link);
             return new PotdGetterResult()

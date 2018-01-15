@@ -11,14 +11,14 @@
 * Company: I am free man
 *
 \* =============================================================================*/
-//#define USE_LOCAL_API
+#define USE_LOCAL_API
 using AutumnBox.Support.CstmDebug;
 using System;
 using System.Net;
 using System.Threading.Tasks;
 namespace AutumnBox.GUI.NetUtil
 {
-    [LogProperty(TAG = "Net Unit", Show = false)]
+    [LogProperty(TAG = "Net Unit", Show = true)]
     internal abstract class RemoteDataGetter<TResult>
         where TResult : class
     {
