@@ -1,4 +1,4 @@
-﻿#define TEST_LOCALHOST_API
+﻿//#define TEST_LOCALHOST_API
 using AutumnBox.GUI.Cfg;
 using AutumnBox.Support.CstmDebug;
 using Newtonsoft.Json;
@@ -55,15 +55,23 @@ namespace AutumnBox.GUI.UI.Cstm
 #endif
         public void Work()
         {
-            Task.Run(() =>
+            try
             {
-                var remoteInfo = GetRemoteAdInfo();
-                var ms = Download(remoteInfo);
-                if (ms != null)
+                Task.Run(() =>
                 {
-                    GettedImage?.Invoke(this, new GettedImageEventArgs(ms, remoteInfo.Click));
-                }
-            });
+                    var remoteInfo = GetRemoteAdInfo();
+                    var ms = Download(remoteInfo);
+                    if (ms != null)
+                    {
+                        GettedImage?.Invoke(this, new GettedImageEventArgs(ms, remoteInfo.Click));
+                    }
+                });
+            }
+            catch (Exception e)
+            {
+                Logger.T("ad exception", e);
+            }
+
         }
         private readonly WebClient webClient = new WebClient();
         private MemoryStream Download(RemoteAdInfo info)
@@ -93,7 +101,8 @@ namespace AutumnBox.GUI.UI.Cstm
             AdImageGetter imgGetter = new AdImageGetter();
             imgGetter.GettedImage += (s, ea) =>
             {
-                this.Dispatcher.Invoke(()=> {
+                this.Dispatcher.Invoke(() =>
+                {
                     BitmapImage bmp = new BitmapImage();
                     bmp.BeginInit();
                     bmp.StreamSource = ea.MemoryStream;
@@ -107,7 +116,8 @@ namespace AutumnBox.GUI.UI.Cstm
 
         private void UserControl_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (clickUrl != null) {
+            if (clickUrl != null)
+            {
                 Process.Start(clickUrl);
             }
         }
