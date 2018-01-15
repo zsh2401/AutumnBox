@@ -10,5 +10,6 @@
     <s:String x:Key="linkDownloadMIUI">http://www.miui.com/download.htm</s:String>
     <s:String x:Key="linkDownloadTwrp">https://twrp.me/Devices/</s:String>
     <s:String x:Key="linkOpenGAPPS">http://opengapps.org/</s:String>
-    <s:String x:Key="linkAutumnBoxOS">https:github.com/zsh2401/AutumnBox</s:String>
+    <s:String x:Key="linkAutumnBoxOS">https://github.com/zsh2401/AutumnBox</s:String>
+    <s:String x:Key="linkAutumnBoxOfficialWebsite">http://atmb.top</s:String>
 </ResourceDictionary>

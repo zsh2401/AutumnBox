@@ -15,9 +15,10 @@ namespace AutumnBox.GUI.NetUtil
 {
     internal static class Urls
     {
-        internal readonly static string HELP_PAGE = "https://github.com/zsh2401/AutumnBox/wiki/Chinese-Home";
-        internal readonly static string STATISTICS_API = "http://api.zsh2401.top/autumnbox/report.php";
-        internal readonly static string MOTD_API = "http://atmb.top/api/motd/";
-        internal readonly static string UPDATE_API = "http://atmb.top/api/update/";
+        internal const string HELP_PAGE = "https://github.com/zsh2401/AutumnBox/wiki/Chinese-Home";
+        internal const string STATISTICS_API = "http://api.zsh2401.top/autumnbox/report.php";
+        internal const string MOTD_API = "http://atmb.top/api/motd/";
+        internal const string UPDATE_API = "http://atmb.top/api/update/";
+        internal const string OFFICIAL_WEBSITE = "http://atmb.top";
     }
 }

@@ -24,6 +24,8 @@
             <TextBox Foreground="{DynamicResource ForgBrush}" x:Name="textBoxGG" Height="88" Margin="940,285,6,0" TextWrapping="Wrap" Text="..." VerticalAlignment="Top" IsReadOnly="True" Background="{x:Null}" FontSize="14"/>
             <cpnel:DevicesPanel  x:Name="DevicesPanel" Margin="667,12,293,406"></cpnel:DevicesPanel>
             <TextBlock x:Name="TBHelp" HorizontalAlignment="Left" Margin="1046,221,0,0" TextWrapping="Wrap" Text="{DynamicResource btnHelp}" VerticalAlignment="Top" TextDecorations="Underline" Foreground="{DynamicResource ForgBrush}" FontSize="18" MouseDown="TBHelp_MouseDown" Height="24" Width="80"/>
+            <TextBlock x:Name="TBOfficialWebsite" HorizontalAlignment="Left" Margin="1082,255,0,0" TextWrapping="Wrap" Text="{DynamicResource OfficialWebsite}" VerticalAlignment="Top" TextDecorations="Underline" Foreground="{DynamicResource ForgBrush}" FontSize="18" MouseDown="TBOfficialWebsite_MouseDown"  Height="24" Width="44"/>
+
             <TabControl HorizontalAlignment="Left" Height="370" Margin="10,255,0,0" VerticalAlignment="Top" Width="924" Background="#20000000" BorderBrush="{DynamicResource BorderBrush}">
                 <TabItem TabIndex="0" Header="{DynamicResource tbiOnPowerOn}" Margin="-2,-2,-2,0" Foreground="{DynamicResource ForgBrush}" FontSize="16">
                     <cpnel:PoweronFuncPanel x:Name="PoweronFuncs" Margin="0,0,-2,0"></cpnel:PoweronFuncPanel>

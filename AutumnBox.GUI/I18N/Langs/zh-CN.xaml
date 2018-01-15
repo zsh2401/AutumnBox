@@ -152,6 +152,7 @@
     <!--QA-->
 
     <!--静态界面标记-->
+    <s:String x:Key="OfficialWebsite">官网</s:String>
     <s:String x:Key="ckbConnectOnOpened">添加后立刻连接</s:String>
     <s:String x:Key="RebootTo">重启到</s:String>
     <s:String x:Key="DonateDescription">我是一个穷苦的学生,您的捐赠是对我莫大的鼓励</s:String>

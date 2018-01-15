@@ -224,5 +224,10 @@ namespace AutumnBox.GUI
         {
             new LinkHelpWindow().Show();
         }
+
+        private void TBOfficialWebsite_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            Process.Start(Urls.OFFICIAL_WEBSITE);
+        }
     }
 }
