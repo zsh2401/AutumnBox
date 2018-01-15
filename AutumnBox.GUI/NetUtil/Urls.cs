@@ -21,6 +21,6 @@ namespace AutumnBox.GUI.NetUtil
         internal const string POTD_API = "http://atmb.top/api/potd/";
         internal const string UPDATE_API = "http://atmb.top/api/update/";
         internal const string OFFICIAL_WEBSITE = "http://atmb.top";
-        internal const string LINK_HELP = "https://github.com/zsh2401/AutumnBox/wiki/How-to-link-you-device";
+        internal const string LINK_HELP = "https://github.com/zsh2401/AutumnBox/wiki/zh_CN_%E5%A6%82%E4%BD%95%E8%BF%9E%E6%8E%A5%E6%82%A8%E7%9A%84%E8%AE%BE%E5%A4%87";
     }
 }
