@@ -87,6 +87,18 @@ namespace AutumnBox.GUI.Cfg
         }
         private int[] _backgroundARGB = { 255, 255, 255, 255 };
 
+        [JsonProperty("lastAdPath")]
+        public string LastAdPath
+        {
+            get { return _lastAdPath; }
+            set
+            {
+                _lastAdPath = value;
+                ValueChanged?.Invoke(this, new EventArgs());
+            }
+        }
+        private string _lastAdPath = "unknow";
+
         public ConfigDataLayout()
         {
             SkipVersion = SystemHelper.CurrentVersion.ToString();

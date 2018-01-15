@@ -62,5 +62,16 @@ namespace AutumnBox.GUI.Cfg
                 Operator.Data.BackgroundA = value;
             }
         }
+        public static string LastAdPath
+        {
+            get
+            {
+                return Operator.Data.LastAdPath;
+            }
+            set
+            {
+                Operator.Data.LastAdPath = value;
+            }
+        }
     }
 }

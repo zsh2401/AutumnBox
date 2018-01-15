@@ -160,6 +160,9 @@
     <Compile Include="UI\CstPanels\About.xaml.cs">
       <DependentUpon>About.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Cstm\AdBox.xaml.cs">
+      <DependentUpon>AdBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\CstPanels\CloseNetDebugging.xaml.cs">
       <DependentUpon>CloseNetDebugging.xaml</DependentUpon>
     </Compile>
@@ -321,6 +324,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\CstPanels\About.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Cstm\AdBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
