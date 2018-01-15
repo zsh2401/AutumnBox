@@ -11,7 +11,7 @@
 * Company: I am free man
 *
 \* =============================================================================*/
-#define USE_LOCAL_API
+//#define USE_LOCAL_API
 using AutumnBox.Support.CstmDebug;
 using System;
 using System.Net;

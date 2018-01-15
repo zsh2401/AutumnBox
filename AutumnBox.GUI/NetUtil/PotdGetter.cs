@@ -34,7 +34,7 @@ namespace AutumnBox.GUI.NetUtil
         }
         public override PotdGetterResult LocalMethod()
         {
-            var html = webClient.DownloadString("http://localhost:24010/api/ad/");
+            var html = webClient.DownloadString("http://localhost:24010/api/potd/");
             var remoteInfo = (RemoteAdInfo)JsonConvert.DeserializeObject(html, typeof(RemoteAdInfo));
             var imgData = webClient.DownloadData(remoteInfo.Link);
             Logger.T("get finished..");
