@@ -14,10 +14,10 @@ namespace AutumnBox.Basic.Device.PackageManage
 {
     public static class PackageManagerShared
     {
-        internal static readonly CommandExecuter executer;
+        internal static CommandExecuter Executer { get; private set; }
         static PackageManagerShared()
         {
-            executer = new CommandExecuter();
+            Executer = new CommandExecuter();
         }
     }
 }

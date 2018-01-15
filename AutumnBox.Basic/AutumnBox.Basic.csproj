@@ -42,14 +42,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Device\MobileVersionCommunicator.cs" />
     <Compile Include="Device\BuildPropKeys.cs" />
     <Compile Include="Device\DeviceBuildPropSetter.cs" />
     <Compile Include="Device\DeviceHaveNoRootException.cs" />
     <Compile Include="Device\DeviceInfoGetterInFastboot.cs" />
     <Compile Include="Device\DeviceRebooter.cs" />
     <Compile Include="Device\DeviceSoftwareInfoGetter.cs" />
-    <Compile Include="Device\PackageManage\Package.cs" />
-    <Compile Include="Device\PackageManage\PackageInfoGetter.cs" />
+    <Compile Include="Device\PackageManage\PackageHelper.cs" />
+    <Compile Include="Device\PackageManage\PackageInfo.cs" />
     <Compile Include="Device\PackageManage\PackageManagerShared.cs" />
     <Compile Include="Device\PackageManage\PackageNotFoundException.cs" />
     <Compile Include="Device\Serial.cs" />

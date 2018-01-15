@@ -1,14 +1,9 @@
 ﻿using AutumnBox.Basic.Device;
+using AutumnBox.Basic.Device.PackageManage;
 using AutumnBox.Basic.Executer;
 using System;
 namespace AutumnBox.ConsoleTester
 {
-    class Fuck
-    {
-        public string fucl;
-        public int fs;
-        public int sadasas;
-    }
     class Program
     {
         public readonly static DeviceBasicInfo mi6 = new DeviceBasicInfo()
@@ -26,27 +21,10 @@ namespace AutumnBox.ConsoleTester
             Serial = new Serial("9dd1b490"),
             State = DeviceState.Fastboot,
         };
-        class EqualsTest : IEquatable<EqualsTest>
-        {
-            public String Name { get; set; }
-            public override bool Equals(object obj)
-            {
-                Console.WriteLine("default equals");
-                return base.Equals(obj);
-            }
-
-            public bool Equals(EqualsTest other)
-            {
-                Console.WriteLine("iequals");
-                return this.Name == other.Name;
-            }
-        }
         unsafe static int Main(string[] cmdargs)
         {
-            var info = new DeviceSoftwareInfoGetter(mi4.Serial).IsRootEnable();
-            var a = new EqualsTest() { Name = "hehe" };
-            var b = new EqualsTest() { Name = "hehe" };
-            a.Equals((object)b);
+            var packages = PackageHelper.GetPackages(mi4.Serial);
+            Console.WriteLine(packages.Count);
             Console.ReadKey();
             return 0;
         }
