@@ -3,7 +3,8 @@
 #### 主要语言 : C#
 #### 支持平台 : Windows 7及以上,建议Windows10
 #### 运行所需环境: .Net framework 4.5
-![](http://autumnbox.zsh2401.top/pics/demo/0.23.0demo.png)
+![](http://atmb.top/pics/demo/0.23.0demo.png)
+## [AutumnBox官网](http://atmb.top/)    [说明书WIKI](https://github.com/zsh2401/AutumnBox/wiki)
 ## AutumnBox是什么?
 是一个简约的刷机工具箱,对Google Adb工具包进行GUI封装,方便了不懂命令行的玩机人.
 ## AutumnBox能干什么?
