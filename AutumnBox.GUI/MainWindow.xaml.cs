@@ -220,14 +220,15 @@ namespace AutumnBox.GUI
             new FastGrid(this.GridMain, new Donate());
         }
 
-        private void BtnLinkHelp_Click(object sender, RoutedEventArgs e)
-        {
-            new LinkHelpWindow().Show();
-        }
 
         private void TBOfficialWebsite_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             Process.Start(Urls.OFFICIAL_WEBSITE);
+        }
+
+        private void TBLinkHelp_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            Process.Start(Urls.LINK_HELP);
         }
     }
 }

@@ -29,10 +29,10 @@ namespace AutumnBox.GUI.UI.Cstm
     /// <summary>
     /// AdBox.xaml 的交互逻辑
     /// </summary>
-    public partial class AdBox : UserControl
+    public partial class PotdBox : UserControl
     {
         private string clickUrl;
-        public AdBox()
+        public PotdBox()
         {
             InitializeComponent();
         }

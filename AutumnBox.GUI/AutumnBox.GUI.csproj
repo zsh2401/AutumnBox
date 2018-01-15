@@ -161,8 +161,8 @@
     <Compile Include="UI\CstPanels\About.xaml.cs">
       <DependentUpon>About.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Cstm\AdBox.xaml.cs">
-      <DependentUpon>AdBox.xaml</DependentUpon>
+    <Compile Include="UI\Cstm\PotdBox.xaml.cs">
+      <DependentUpon>PotdBox.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\CstPanels\CloseNetDebugging.xaml.cs">
       <DependentUpon>CloseNetDebugging.xaml</DependentUpon>
@@ -328,7 +328,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Cstm\AdBox.xaml">
+    <Page Include="UI\Cstm\PotdBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
