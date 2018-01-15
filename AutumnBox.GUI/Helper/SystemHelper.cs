@@ -11,6 +11,7 @@
 * Company: I am free man
 *
 \* =============================================================================*/
+using AutumnBox.Basic.Adb;
 using AutumnBox.Basic.Executer;
 using AutumnBox.GUI.Util;
 using AutumnBox.Support.CstmDebug;
@@ -110,13 +111,6 @@ namespace AutumnBox.GUI.Helper
             {
                 return Process.GetProcessesByName("AutumnBox").Length != 1;
             }
-        }
-        public static void AppExit(int exitCode = 0)
-        {
-            Logger.T("Exiting.....");
-            App.StaticProperty.DevicesListener.Cancel();
-            new CommandExecuter().Execute(Command.MakeForAdb("kill-server"));
-            Environment.Exit(exitCode);
         }
         internal readonly static AutoGC AutoGC = new AutoGC();
     }

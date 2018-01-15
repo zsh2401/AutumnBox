@@ -244,6 +244,7 @@
       <DependentUpon>LoadingWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Windows\TBLoadingEffect.cs" />
     <Compile Include="Windows\UpdateNoticeWindow.xaml.cs">
       <DependentUpon>UpdateNoticeWindow.xaml</DependentUpon>
     </Compile>

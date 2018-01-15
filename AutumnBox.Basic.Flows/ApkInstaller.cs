@@ -28,16 +28,20 @@ namespace AutumnBox.Basic.Flows
     {
         public FileInfo ApkFileInfo { get; internal set; }
         public bool IsSuccess { get; internal set; } = true;
-        public bool NeedContinue { get; set; } = true;
         public OutputData Output { get; internal set; }
     }
-    public delegate void AApkInstallltionComplete(object sender, AApkInstalltionCompleteArgs e);
-    public sealed class ApkInstaller : FunctionFlow<ApkInstallerArgs, FlowResult>
+    public sealed class ApkInstallerResult : FlowResult
+    {
+        public int InstallFailedCount { get; internal set; }
+    }
+    public delegate bool AApkInstallltionComplete(object sender, AApkInstalltionCompleteArgs e);
+    public sealed class ApkInstaller : FunctionFlow<ApkInstallerArgs, ApkInstallerResult>
     {
         public event AApkInstallltionComplete AApkIstanlltionCompleted;
+        private int errorCount = 0;
         protected override OutputData MainMethod(ToolKit<ApkInstallerArgs> toolKit)
         {
-            Logger.D($"Start installing....have {toolKit.Args.Files.Count} Apks");
+            Logger.T($"Start installing....have {toolKit.Args.Files.Count} Apks");
             OutputData result = new OutputData()
             {
                 OutSender = toolKit.Executer
@@ -46,25 +50,33 @@ namespace AutumnBox.Basic.Flows
             {
                 Command command =
                     Command.MakeForCmd(
-                        $"{ConstData.FullAdbFileName} -s {toolKit.Args.DevBasicInfo.ToString()} install -r \"{apkFileInfo.FullName}\"");
-                var r = toolKit.Executer.Execute(command);
-                Logger.D(r.ToString());
+                        $"{ConstData.FullAdbFileName} {toolKit.Args.Serial.ToFullSerial()} install -r \"{apkFileInfo.FullName}\"");
+
+                var installResult = toolKit.Executer.Execute(command);
+                bool currentSuccessful = !installResult.Output.Contains("failure");
+                if (!currentSuccessful)
+                {
+                    errorCount++;
+                }
                 var args = new AApkInstalltionCompleteArgs()
                 {
                     ApkFileInfo = apkFileInfo,
-                    IsSuccess = r.Output.Contains("success"),
-                    Output = r.Output,
+                    IsSuccess = currentSuccessful,
+                    Output = installResult.Output,
                 };
-                AApkIstanlltionCompleted?.Invoke(this, args);
-                if (!args.NeedContinue) break;
+                if (AApkIstanlltionCompleted?.Invoke(this, args) != true)
+                {
+                    break;
+                }
             }
             Logger.D(result.ToString());
             return result;
         }
-        protected override void AnalyzeResult(FlowResult result)
+        protected override void AnalyzeResult(ApkInstallerResult result)
         {
             base.AnalyzeResult(result);
-            if (result.OutputData.Contains("failure")) { result.ResultType = ResultType.MaybeSuccessful; }
+            result.InstallFailedCount = errorCount;
+            if (errorCount > 0) { result.ResultType = ResultType.MaybeUnsuccessful; }
         }
     }
 }

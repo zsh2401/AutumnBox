@@ -11,6 +11,7 @@
 * Company: I am free man
 *
 \* =============================================================================*/
+using AutumnBox.Basic.Adb;
 using AutumnBox.Basic.MultipleDevices;
 using AutumnBox.GUI.Helper;
 using AutumnBox.Support.CstmDebug;
@@ -35,10 +36,6 @@ namespace AutumnBox.GUI
                 DevicesListener = new DevicesMonitor();//设备监听器
             }
         }
-        static App()
-        {
-
-        }
         protected override void OnStartup(StartupEventArgs e)
         {
 #if !DEBUG
@@ -48,12 +45,7 @@ namespace AutumnBox.GUI
             {
                 Logger.T("have other autumnbox show MMessageBox and exit(1)");
                 MessageBox.Show("不可以同时打开两个AutumnBox\nDo not run two AutumnBox at once", "警告/Warning");
-                SystemHelper.AppExit(1);
-            }
-            try { SystemHelper.AutoGC.Start(); }
-            catch (Exception e_)
-            {
-                Logger.T("Auto GC failed...... -> ", e_);
+                App.Current.Shutdown(1);
             }
             base.OnStartup(e);
         }
@@ -77,21 +69,21 @@ namespace AutumnBox.GUI
                 $"Message:{n}{e.Exception.Message}{n}{n}{n}" +
                 $"Source:{n}{e.Exception.Source}{n}{n}{n}" +
                 $"Inner:{n}{e.Exception.InnerException?.ToString() ?? "None"}{n}";
+
             if (!Directory.Exists("logs"))
             {
                 Directory.CreateDirectory("logs");
             }
             File.WriteAllText("logs\\exception.txt", exstr);
-
             e.Handled = true;
-            Environment.Exit(1);
+            App.Current.Shutdown(1);
         }
 
         protected override void OnExit(ExitEventArgs e)
         {
-            Logger.T("App Exiting->" + e.ApplicationExitCode);
             base.OnExit(e);
-            SystemHelper.AppExit(e.ApplicationExitCode);
+            Logger.T("Exit code : " + e.ApplicationExitCode);
+            AdbHelper.KillAllAdbProcess();
         }
     }
 }

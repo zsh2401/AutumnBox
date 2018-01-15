@@ -194,35 +194,7 @@ namespace AutumnBox.GUI.Windows
             _currentState = state;
         }
 
-        private sealed class TBLoadingEffect
-        {
-            private static readonly string[] marks = { "|", "/", "--", "\\" };
-            private static int _max { get { return marks.Length; } }
-            private int _current = 0;
-            public int Interval { get; set; } = 500;
-            public TBLoadingEffect(TextBlock tb)
-            {
-                Task.Run(() =>
-                {
-                    for (; _current < _max; _current++)
-                    {
-                        tb.Dispatcher.Invoke(() =>
-                        {
-                            tb.Text = marks[_current];
-                        });
-                        if (_current == _max - 1)
-                        {
-                            _current = 0;
-                        }
-                        Thread.Sleep(Interval);
-                    }
-                });
-            }
-            ~TBLoadingEffect()
-            {
-                Logger.D("Effect disposing...");
-            }
-        }
+
         private static class FontColors
         {
             public static readonly Color Flashing = Colors.Orange;
@@ -248,7 +220,7 @@ namespace AutumnBox.GUI.Windows
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            new TBLoadingEffect(TBLoading);
+            new TBLoadingEffect(TBLoading).Start();
             Task.Run(() =>
             {
                 try

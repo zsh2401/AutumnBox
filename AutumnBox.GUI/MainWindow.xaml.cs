@@ -93,7 +93,7 @@ namespace AutumnBox.GUI
                 });
                 if (!_continue)
                 {
-                    SystemHelper.AppExit(1);
+                    Close();
                 }
                 Task.Run(() =>
                 {

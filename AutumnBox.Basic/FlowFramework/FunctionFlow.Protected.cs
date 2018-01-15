@@ -13,6 +13,7 @@
 \* =============================================================================*/
 using AutumnBox.Basic.Executer;
 using AutumnBox.Support.CstmDebug;
+using AutumnBox.Support.Helper;
 using System;
 using System.Threading.Tasks;
 
@@ -66,9 +67,6 @@ namespace AutumnBox.Basic.FlowFramework
                 Logger.D("AnyFinished event trigger");
                 OnAnyFinished(this, new FinishedEventArgs<FlowResult>(e.Result));
             }
-        }
-        protected void Dispose(bool disposing)
-        {
         }
     }
 }

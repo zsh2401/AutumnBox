@@ -11,9 +11,6 @@
 * Company: I am free man
 *
 \* =============================================================================*/
-#define LOG_OUTPUT
-#define LOG_FULL_OUTPUT
-#define LOG_INPUT
 using AutumnBox.Basic.Adb;
 using AutumnBox.Basic.Device;
 using AutumnBox.Basic.Util;

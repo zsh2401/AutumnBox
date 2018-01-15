@@ -91,6 +91,8 @@ namespace AutumnBox.Basic.FlowFramework
         {
             return new Stoper(this);
         }
-        public void Dispose() => Dispose(true);
+        public void Dispose() {
+            ForceStop();
+        }
     }
 }

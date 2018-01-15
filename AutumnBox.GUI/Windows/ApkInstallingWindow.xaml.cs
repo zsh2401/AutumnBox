@@ -57,9 +57,10 @@ namespace AutumnBox.GUI.Windows
                     ProgressAdd();
                     if (!e.IsSuccess)//如果这次安装是失败的
                     {//询问用户是否在安装失败的情况下继续
-                        e.NeedContinue = ShowChoiceLabelForContinueOnError();
+                     //TODO   
                     }
                 });
+                return true;
             };
         }
         private void ProgressAdd()
@@ -82,6 +83,7 @@ namespace AutumnBox.GUI.Windows
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             installer.RunAsync();
+            new TBLoadingEffect(TBLoading).Start();
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
