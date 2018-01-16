@@ -47,14 +47,15 @@ namespace AutumnBox.GUI.NetUtil
     [LogProperty(TAG = "Update Check", Show = true)]
     internal class UpdateChecker : RemoteDataGetter<UpdateCheckResult>
     {
-        public override UpdateCheckResult LocalMethod()
+#if USE_LOCAL_API&& DEBUG
+        public override UpdateCheckResult Get()
         {
             JObject j = JObject.Parse(File.ReadAllText(@"..\docs\api\update\index.html"));
             var result = (UpdateCheckResult)JsonConvert.DeserializeObject(j.ToString(), typeof(UpdateCheckResult));
             return result;
         }
-
-        public override UpdateCheckResult NetMethod()
+#else
+        public override UpdateCheckResult Get()
         {
             Logger.D("Getting update info....");
             byte[] bytes = new WebClient().DownloadData(Urls.UPDATE_API);
@@ -65,5 +66,6 @@ namespace AutumnBox.GUI.NetUtil
             Logger.D("Geted " + data);
             return result;
         }
+#endif
     }
 }

@@ -33,15 +33,17 @@ namespace AutumnBox.GUI.NetUtil
     [LogProperty(TAG = "MOTD Getter", Show = false)]
     internal class MOTDGetter : RemoteDataGetter<MOTDResult>
     {
-        public override MOTDResult LocalMethod()
+#if USE_LOCAL_API && DEBUG
+        public override MOTDResult Get()
         {
             JObject o = JObject.Parse(File.ReadAllText(@"..\docs\api\motd\index.html"));
             var result = (MOTDResult)JsonConvert.DeserializeObject(o.ToString(), typeof(MOTDResult));
             Logger.D("MOTD Get from local were success!" + result.Header + " " + result.Message);
             return result;
         }
+#else
 
-        public override MOTDResult NetMethod()
+        public override MOTDResult Get()
         {
             byte[] bytes = webClient.DownloadData(Urls.MOTD_API);
             string data = Encoding.UTF8.GetString(bytes);
@@ -50,5 +52,6 @@ namespace AutumnBox.GUI.NetUtil
             Logger.D("MOTD Get from net success!" + result.Header + " " + result.Message);
             return result;
         }
+#endif
     }
 }

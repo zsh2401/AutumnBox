@@ -35,7 +35,8 @@ namespace AutumnBox.GUI.NetUtil
     }
     internal class PotdGetter : RemoteDataGetter<PotdGetterResult>
     {
-        public override PotdGetterResult LocalMethod()
+#if USE_LOCAL_API &&  DEBUG
+        public override PotdGetterResult Get()
         {
             var html = webClient.DownloadString("http://localhost:24010/api/potd/");
             var remoteInfo = (PotdRemoteInfo)JsonConvert.DeserializeObject(html, typeof(PotdRemoteInfo));
@@ -47,8 +48,9 @@ namespace AutumnBox.GUI.NetUtil
                 ImageMemoryStream = new MemoryStream(imgData)
             };
         }
+#else
 
-        public override PotdGetterResult NetMethod()
+        public override PotdGetterResult Get()
         {
             var html = webClient.DownloadString(Urls.POTD_API);
             var remoteInfo = (PotdRemoteInfo)JsonConvert.DeserializeObject(html, typeof(PotdRemoteInfo));
@@ -59,5 +61,6 @@ namespace AutumnBox.GUI.NetUtil
                 ImageMemoryStream = new MemoryStream(imgData)
             };
         }
+#endif
     }
 }

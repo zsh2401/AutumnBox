@@ -11,7 +11,6 @@
 * Company: I am free man
 *
 \* =============================================================================*/
-//#define USE_LOCAL_API
 using AutumnBox.Support.CstmDebug;
 using System;
 using System.Net;
@@ -42,11 +41,7 @@ namespace AutumnBox.GUI.NetUtil
         {
             try
             {
-#if DEBUG && USE_LOCAL_API
-                return LocalMethod();
-#else
-                return NetMethod();
-#endif
+                return Get();
             }
             catch (Exception e)
             {
@@ -54,7 +49,6 @@ namespace AutumnBox.GUI.NetUtil
                 return null;
             }
         }
-        public abstract TResult LocalMethod();
-        public abstract TResult NetMethod();
+        public abstract TResult Get();
     }
 }
