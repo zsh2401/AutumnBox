@@ -1,5 +1,6 @@
 ﻿using AutumnBox.GUI.Cfg;
 using AutumnBox.GUI.NetUtil;
+using AutumnBox.GUI.Resources.Images;
 using AutumnBox.Support.CstmDebug;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -41,26 +42,48 @@ namespace AutumnBox.GUI.UI.Cstm
             {
                 this.Dispatcher.Invoke(() =>
                 {
-                    BitmapImage bmp = new BitmapImage();
-                    bmp.BeginInit();
-                    bmp.StreamSource = result.ImageMemoryStream;
-                    bmp.EndInit();
-                    ImgMain.Source = bmp;
-                    clickUrl = result.ClickUrl;
+                    SetByResult(result);
                 });
             });
         }
 
-        private void UserControl_MouseDown(object sender, MouseButtonEventArgs e)
+        private void LBtnClose_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            try
+            Close();
+        }
+        private void SetByResult(PotdGetterResult result)
+        {
+            BitmapImage bmp = new BitmapImage();
+            bmp.BeginInit();
+            bmp.StreamSource = result.ImageMemoryStream;
+            bmp.EndInit();
+            ImgMain.Source = bmp;
+            clickUrl = result.ClickUrl;
+            LBtnClose.Visibility = result.CanbeClosed ? Visibility.Visible : Visibility.Hidden;
+        }
+
+        private void OpenUrl()
+        {
+            try { Process.Start(clickUrl); } catch (Exception ex) { Logger.T($"click potd failed {ex.ToString()}"); }
+        }
+        private async void Close()
+        {
+            LBtnClose.Visibility = Visibility.Hidden;
+            ImgMain.Source = ImageGetter.Get("ad_close.png");
+            TBCountDown.Visibility = Visibility.Visible;
+            while (int.Parse(TBCountDown.Text) > 0)
             {
-                if (clickUrl != null)
+                await Task.Run(() =>
                 {
-                    Process.Start(clickUrl);
-                }
+                    Thread.Sleep(1000);
+                });
+                TBCountDown.Text = (int.Parse(TBCountDown.Text) - 1).ToString();
             }
-            catch (Exception ex) { Logger.T($"click potd failed {e.ToString()}"); }
+            this.Visibility = Visibility.Hidden;
+        }
+        private void ImgMain_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            OpenUrl();
         }
     }
 }
