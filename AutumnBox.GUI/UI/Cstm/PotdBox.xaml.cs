@@ -64,14 +64,14 @@ namespace AutumnBox.GUI.UI.Cstm
 
         private void OpenUrl()
         {
-            try { Process.Start(clickUrl); } catch (Exception ex) { Logger.T($"click potd failed {ex.ToString()}"); }
+            try { if (clickUrl != null && clickUrl != "") Process.Start(clickUrl); } catch (Exception ex) { Logger.T($"click potd failed {ex.ToString()}"); }
         }
         private async void Close()
         {
             LBtnClose.Visibility = Visibility.Hidden;
             ImgMain.Source = ImageGetter.Get("ad_close.png");
             TBCountDown.Visibility = Visibility.Visible;
-            while (int.Parse(TBCountDown.Text) > 0)
+            while (int.Parse(TBCountDown.Text) >= 0)
             {
                 await Task.Run(() =>
                 {
