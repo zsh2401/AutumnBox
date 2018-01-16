@@ -138,9 +138,7 @@
     <Compile Include="Helper\TextHelper.cs" />
     <Compile Include="Helper\UIHelper.cs" />
     <Compile Include="I18N\Language.cs" />
-    <Compile Include="NetUtil\DataSender.cs" />
     <Compile Include="NetUtil\PotdGetter.cs" />
-    <Compile Include="NetUtil\Stantisticians.cs" />
     <Compile Include="NetUtil\Urls.cs" />
     <Compile Include="NetUtil\MOTDGetter.cs" />
     <Compile Include="NetUtil\RemoteDataGetter.cs" />
