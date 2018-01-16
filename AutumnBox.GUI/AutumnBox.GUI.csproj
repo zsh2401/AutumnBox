@@ -509,6 +509,9 @@
   <ItemGroup>
     <Resource Include="Resources\Images\ad_close.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\potd_close.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>del /S *.pdb

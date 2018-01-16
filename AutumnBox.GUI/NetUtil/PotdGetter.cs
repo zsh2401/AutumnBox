@@ -17,31 +17,33 @@ namespace AutumnBox.GUI.NetUtil
     public class PotdGetterResult
     {
         public MemoryStream ImageMemoryStream { get; internal set; }
-        public bool CanbeClosed { get; internal set; }
-        public string ClickUrl { get; internal set; }
+        public PotdRemoteInfo RemoteInfo { get; internal set; }
+    }
+    [JsonObject(MemberSerialization.OptOut)]
+    public class PotdRemoteInfo
+    {
+        [JsonProperty("canbeClosed")]
+        public bool? CanbeClosed { get; set; }
+        [JsonProperty("link")]
+        public string Link { get; set; }
+        [JsonProperty("click")]
+        public string ClickUrl { get; set; }
+        [JsonProperty("enable")]
+        public bool? Enable { get; set; }
+        [JsonProperty("isAd")]
+        public bool? IsAd { get; set; }
     }
     internal class PotdGetter : RemoteDataGetter<PotdGetterResult>
     {
-        [JsonObject(MemberSerialization.OptOut)]
-        private class RemoteAdInfo
-        {
-            [JsonProperty("canbeClosed")]
-            public bool CanbeClosed { get; set; }
-            [JsonProperty("link")]
-            public string Link { get; set; }
-            [JsonProperty("click")]
-            public string Click { get; set; }
-        }
         public override PotdGetterResult LocalMethod()
         {
             var html = webClient.DownloadString("http://localhost:24010/api/potd/");
-            var remoteInfo = (RemoteAdInfo)JsonConvert.DeserializeObject(html, typeof(RemoteAdInfo));
+            var remoteInfo = (PotdRemoteInfo)JsonConvert.DeserializeObject(html, typeof(PotdRemoteInfo));
             var imgData = webClient.DownloadData(remoteInfo.Link);
             Logger.T("get finished..");
             return new PotdGetterResult()
             {
-                ClickUrl = remoteInfo.Click,
-                CanbeClosed = remoteInfo.CanbeClosed,
+                RemoteInfo = remoteInfo,
                 ImageMemoryStream = new MemoryStream(imgData)
             };
         }
@@ -49,12 +51,11 @@ namespace AutumnBox.GUI.NetUtil
         public override PotdGetterResult NetMethod()
         {
             var html = webClient.DownloadString(Urls.POTD_API);
-            var remoteInfo = (RemoteAdInfo)JsonConvert.DeserializeObject(html, typeof(RemoteAdInfo));
+            var remoteInfo = (PotdRemoteInfo)JsonConvert.DeserializeObject(html, typeof(PotdRemoteInfo));
             var imgData = webClient.DownloadData(remoteInfo.Link);
             return new PotdGetterResult()
             {
-                ClickUrl = remoteInfo.Click,
-                CanbeClosed = remoteInfo.CanbeClosed,
+                RemoteInfo = remoteInfo,
                 ImageMemoryStream = new MemoryStream(imgData)
             };
         }

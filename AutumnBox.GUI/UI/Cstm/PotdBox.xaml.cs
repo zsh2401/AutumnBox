@@ -31,7 +31,7 @@ namespace AutumnBox.GUI.UI.Cstm
     /// </summary>
     public partial class PotdBox : UserControl
     {
-        private string clickUrl;
+        private PotdRemoteInfo remoteInfo;
         public PotdBox()
         {
             InitializeComponent();
@@ -46,30 +46,34 @@ namespace AutumnBox.GUI.UI.Cstm
                 });
             });
         }
-
         private void LBtnClose_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Close();
         }
+        private void ImgMain_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            OpenUrl();
+        }
+
         private void SetByResult(PotdGetterResult result)
         {
+            if (result.RemoteInfo.Enable == false) return;
             BitmapImage bmp = new BitmapImage();
             bmp.BeginInit();
             bmp.StreamSource = result.ImageMemoryStream;
             bmp.EndInit();
             ImgMain.Source = bmp;
-            clickUrl = result.ClickUrl;
-            LBtnClose.Visibility = result.CanbeClosed ? Visibility.Visible : Visibility.Hidden;
+            remoteInfo = result.RemoteInfo;
+            LBtnClose.Visibility = remoteInfo.CanbeClosed == true ? Visibility.Visible : Visibility.Hidden;
         }
-
         private void OpenUrl()
         {
-            try { if (clickUrl != null && clickUrl != "") Process.Start(clickUrl); } catch (Exception ex) { Logger.T($"click potd failed {ex.ToString()}"); }
+            try { if (remoteInfo.ClickUrl != null && remoteInfo.ClickUrl != "") Process.Start(remoteInfo.ClickUrl); } catch (Exception ex) { Logger.T($"click potd failed {ex.ToString()}"); }
         }
         private async void Close()
         {
             LBtnClose.Visibility = Visibility.Hidden;
-            ImgMain.Source = ImageGetter.Get("ad_close.png");
+            ImgMain.Source = remoteInfo.IsAd == true? ImageGetter.Get("ad_close.png"):ImageGetter.Get("potd_close.png");
             TBCountDown.Visibility = Visibility.Visible;
             while (int.Parse(TBCountDown.Text) >= 0)
             {
@@ -80,10 +84,6 @@ namespace AutumnBox.GUI.UI.Cstm
                 TBCountDown.Text = (int.Parse(TBCountDown.Text) - 1).ToString();
             }
             this.Visibility = Visibility.Hidden;
-        }
-        private void ImgMain_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            OpenUrl();
         }
     }
 }
