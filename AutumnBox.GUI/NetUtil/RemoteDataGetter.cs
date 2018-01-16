@@ -18,7 +18,7 @@ using System.Net;
 using System.Threading.Tasks;
 namespace AutumnBox.GUI.NetUtil
 {
-    [LogProperty(TAG = "Net Unit", Show = true)]
+    [LogProperty(TAG = "Net Unit", Show = false)]
     internal abstract class RemoteDataGetter<TResult>
         where TResult : class
     {
