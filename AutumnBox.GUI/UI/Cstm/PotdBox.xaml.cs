@@ -57,14 +57,22 @@ namespace AutumnBox.GUI.UI.Cstm
 
         private void SetByResult(PotdGetterResult result)
         {
-            if (result.RemoteInfo.Enable == false) return;
-            BitmapImage bmp = new BitmapImage();
-            bmp.BeginInit();
-            bmp.StreamSource = result.ImageMemoryStream;
-            bmp.EndInit();
-            ImgMain.Source = bmp;
-            remoteInfo = result.RemoteInfo;
-            LBtnClose.Visibility = remoteInfo.CanbeClosed == true ? Visibility.Visible : Visibility.Hidden;
+            try
+            {
+                if (result.RemoteInfo.Enable == false) return;
+                BitmapImage bmp = new BitmapImage();
+                bmp.BeginInit();
+                bmp.StreamSource = result.ImageMemoryStream;
+                bmp.EndInit();
+                ImgMain.Source = bmp;
+                remoteInfo = result.RemoteInfo;
+                LBtnClose.Visibility = remoteInfo.CanbeClosed == true ? Visibility.Visible : Visibility.Hidden;
+            }
+            catch (Exception e)
+            {
+                Logger.T("exception on setting PotdBox", e);
+            }
+
         }
         private void OpenUrl()
         {
@@ -72,18 +80,25 @@ namespace AutumnBox.GUI.UI.Cstm
         }
         private async void Close()
         {
-            LBtnClose.Visibility = Visibility.Hidden;
-            ImgMain.Source = remoteInfo.IsAd == true? ImageGetter.Get("ad_close.png"):ImageGetter.Get("potd_close.png");
-            TBCountDown.Visibility = Visibility.Visible;
-            while (int.Parse(TBCountDown.Text) >= 0)
+            try
             {
-                await Task.Run(() =>
+                LBtnClose.Visibility = Visibility.Hidden;
+                ImgMain.Source = remoteInfo.IsAd == true ? ImageGetter.Get("ad_close.png") : ImageGetter.Get("potd_close.png");
+                TBCountDown.Visibility = Visibility.Visible;
+                while (int.Parse(TBCountDown.Text) >= 0)
                 {
-                    Thread.Sleep(1000);
-                });
-                TBCountDown.Text = (int.Parse(TBCountDown.Text) - 1).ToString();
+                    await Task.Run(() =>
+                    {
+                        Thread.Sleep(1000);
+                    });
+                    TBCountDown.Text = (int.Parse(TBCountDown.Text) - 1).ToString();
+                }
+                this.Visibility = Visibility.Hidden;
             }
-            this.Visibility = Visibility.Hidden;
+            catch (Exception e)
+            {
+                Logger.T("exception on closing PotdBox", e);
+            }
         }
     }
 }

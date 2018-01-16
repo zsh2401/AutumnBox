@@ -70,4 +70,4 @@ using System.Windows;
 //确定当前程序的Log位置
 [assembly: LogFileProperty("atb.log")]
 //编译日期
-[assembly: CompiledDate(2018, 1, 16)]
+[assembly: CompiledDate(2018, 1, 17)]

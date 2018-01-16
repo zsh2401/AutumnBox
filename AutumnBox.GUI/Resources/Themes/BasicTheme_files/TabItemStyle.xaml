@@ -11,10 +11,6 @@
         </Setter>
     </Style>
     <SolidColorBrush x:Key="TabItem.Static.Border" Color="#FFABADB3"/>
-    <!--<LinearGradientBrush x:Key="TabItem.MouseOver.Background" EndPoint="0,1" StartPoint="0,0">
-        <GradientStop Color="#ECF4FC" Offset="0.0"/>
-        <GradientStop Color="#DCECFC" Offset="1.0"/>
-    </LinearGradientBrush>-->
     <SolidColorBrush x:Key="TabItem.MouseOver.Background" Color="Transparent"></SolidColorBrush>
     <SolidColorBrush x:Key="TabItem.Static.Background" Color="#50535353"/>
     <SolidColorBrush x:Key="TabItem.MouseOver.Border" Color="#FFABADB3"/>
