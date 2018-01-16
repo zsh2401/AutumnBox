@@ -21,12 +21,7 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.GUI.NetUtil
 {
-    public struct DataLayout {
-        [JsonProperty("mac")]
-        public string Mac { get; set; }
-        [JsonProperty("windowsVer")]
-        public string Version { get;  }
-    }
+
     public class Stantisticians : DataSender
     {
         MachineInfo MI = new MachineInfo();
