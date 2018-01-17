@@ -21,5 +21,6 @@ namespace AutumnBox.Basic.FlowFramework
         Error,
         ArgError,
         UnknowError,
+        DeviceStateError,
     }
 }

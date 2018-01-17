@@ -5,6 +5,7 @@
 *************************************************/
 using AutumnBox.Basic.Executer;
 using AutumnBox.Basic.FlowFramework;
+using AutumnBox.Support.CstmDebug;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +21,14 @@ namespace AutumnBox.Basic.Flows
     public class DcimBackuper : FunctionFlow<DcimBackuperArgs>
     {
         private CommandExecuterResult exeResult;
+        protected override CheckResult Check(DcimBackuperArgs args)
+        {
+            var result =
+                (args.DevBasicInfo.State == Device.DeviceState.Poweron ||
+                args.DevBasicInfo.State == Device.DeviceState.Recovery) ? CheckResult.OK : CheckResult.DeviceStateError;
+            Logger.D(result.ToString());
+            return result;
+        }
         protected override OutputData MainMethod(ToolKit<DcimBackuperArgs> toolKit)
         {
             if (toolKit.Args.DevBasicInfo.State == Device.DeviceState.Poweron)

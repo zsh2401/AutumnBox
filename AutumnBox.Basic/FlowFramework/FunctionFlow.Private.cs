@@ -27,6 +27,7 @@ namespace AutumnBox.Basic.FlowFramework
         private bool isForceStoped = false;
         private void MainFlow()
         {
+            IsClosed = true;
             try
             {
                 _MainFlow();
@@ -50,12 +51,14 @@ namespace AutumnBox.Basic.FlowFramework
             Logger.T(TAG, "Checking...");
             TResult result = new TResult
             {
-                CheckResult = Check()
+                CheckResult = Check(_args)
             };
             Logger.T(TAG, "Check Result ->" + result.CheckResult);
             if (result.CheckResult != CheckResult.OK)
             {
+                result.ResultType = ResultType.Unsuccessful;
                 OnFinished(new FinishedEventArgs<TResult>(result));
+                return;
             }
             Logger.T(TAG, "Startup...");
             OnStartup(new StartupEventArgs());

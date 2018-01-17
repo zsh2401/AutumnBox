@@ -29,6 +29,7 @@ namespace AutumnBox.Basic.FlowFramework
         public event OutputReceivedEventHandler OutputReceived;
         public event ProcessStartedEventHandler ProcessStarted;
         public event EventHandler NoArgFinished;
+        public bool IsClosed { get; private set; } = false;
         public bool MustTiggerAnyFinishedEvent { get; set; } = false;
         public FunctionFlow()
         {
@@ -73,6 +74,7 @@ namespace AutumnBox.Basic.FlowFramework
         }
         public TResult Run()
         {
+            
             _isSync = true;
             Logger.T("Run start sync....");
             if (_args == null) throw new Exception("have not init!!!! try Init()");

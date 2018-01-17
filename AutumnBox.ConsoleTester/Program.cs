@@ -22,7 +22,7 @@ namespace AutumnBox.ConsoleTester
         public readonly static DeviceBasicInfo mi4 = new DeviceBasicInfo()
         {
             Serial = new Serial("9dd1b490"),
-            State = DeviceState.Recovery,
+            State = DeviceState.Fastboot,
         };
         unsafe static int Main(string[] cmdargs)
         {

@@ -31,7 +31,7 @@ namespace AutumnBox.Basic.FlowFramework
             _isInited = true;
             _args = moduleArgs;
         }
-        protected virtual CheckResult Check() { return CheckResult.OK; }
+        protected virtual CheckResult Check(TArgs args) { return CheckResult.OK; }
         protected virtual void OnStartup(StartupEventArgs e)
         {
             Task.Run(() =>
