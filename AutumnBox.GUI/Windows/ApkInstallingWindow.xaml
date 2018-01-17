@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:AutumnBox.GUI.Windows"
          xmlns:gif="http://wpfanimatedgif.codeplex.com"
         mc:Ignorable="d"
-        Title="ApkInstallingWindow" Height="349.701" Width="394.5" ResizeMode="NoResize" WindowStyle="None" Background="{DynamicResource BorderBrush}" Loaded="Window_Loaded" WindowStartupLocation="CenterOwner" MouseDown="Window_MouseDown">
+        Title="ApkInstallingWindow" Height="349.701" ShowInTaskbar="False" Width="394.5" ResizeMode="NoResize" WindowStyle="None" Background="{DynamicResource BorderBrush}" Loaded="Window_Loaded" WindowStartupLocation="CenterOwner" MouseDown="Window_MouseDown">
     <Grid Background="{DynamicResource BackBrush}" Margin="3,3,3,3">
         <Button x:Name="BtnCancel" Content="{DynamicResource btnCancel}" HorizontalAlignment="Left" Margin="10,0,0,10" Width="368" Background="{x:Null}" Click="BtnCancel_Click" Height="33" VerticalAlignment="Bottom" Foreground="{DynamicResource ForgBrush}"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,107,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="201" Height="25" FontSize="18" FontFamily="Microsoft YaHei UI Light" Foreground="{DynamicResource ForgBrush}"><Run Text="正在进行操作,稍安勿躁"/></TextBlock>

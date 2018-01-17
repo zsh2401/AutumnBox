@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AutumnBox.GUI.Windows"
         mc:Ignorable="d"
-        Background="{DynamicResource BorderBrush}" Title="ModuleResultWindow" Height="403.333" Width="461" WindowStartupLocation="CenterOwner" WindowStyle="None" ResizeMode="NoResize" ShowInTaskbar="False" MouseDown="Window_MouseDown">
+        Background="{DynamicResource BorderBrush}"  Title="ModuleResultWindow" Height="403.333" Width="461" WindowStartupLocation="CenterOwner" WindowStyle="None" ResizeMode="NoResize" ShowInTaskbar="False" MouseDown="Window_MouseDown">
     <Grid Background="{DynamicResource BackBrush}" Margin="3,3,3,3">
         <TextBlock TextAlignment="Center" x:Name="TextBlockTitle" HorizontalAlignment="Left" TextWrapping="Wrap" Text="ErrorTitle" VerticalAlignment="Top" FontSize="45" FontFamily="Microsoft YaHei Light" Margin="10,10,0,0" Foreground="{DynamicResource ForgBrush}">
         </TextBlock>

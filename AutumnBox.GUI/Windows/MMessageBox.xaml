@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:AutumnBox.GUI.Windows"
         xmlns:cstm="clr-namespace:AutumnBox.GUI.UI.Cstm"
         mc:Ignorable="d"
-        Title="MMessageBox" Height="260" Width="500" WindowStyle="None" WindowStartupLocation="CenterOwner" Foreground="White" ResizeMode="NoResize" Background="{DynamicResource BorderBrush}" ShowInTaskbar="False">
+        Title="MMessageBox" Height="260" Width="500" WindowStyle="None"  WindowStartupLocation="CenterOwner" Foreground="White" ResizeMode="NoResize" Background="{DynamicResource BorderBrush}" ShowInTaskbar="False">
     <Window.Resources>
         <Storyboard x:Key="ShowAnimation">
             <DoubleAnimation 

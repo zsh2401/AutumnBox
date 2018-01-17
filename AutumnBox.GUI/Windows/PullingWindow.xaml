@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AutumnBox.GUI.Windows"
         mc:Ignorable="d"
+        ShowInTaskbar="False"
         Title="PullingWindow" WindowStartupLocation="CenterOwner" Loaded="Window_Loaded" Height="330" Width="406" WindowStyle="None" ResizeMode="NoResize" Background="{DynamicResource BorderBrush}" MouseDown="Window_MouseDown">
     <Grid Background="{DynamicResource BackBrush}" Margin="3,3,3,3">
         <TextBlock Text="{DynamicResource pulling}" Foreground="{DynamicResource ForgBrush}" Margin="10,16,10,253" FontSize="36"></TextBlock>

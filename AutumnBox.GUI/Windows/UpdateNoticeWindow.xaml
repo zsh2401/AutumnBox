@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AutumnBox.GUI.Windows"
         mc:Ignorable="d"
+        
         Title="UpdateNoticeWindow" Height="309" Width="300" ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterOwner" Topmost="True" Background="{DynamicResource BorderBrush}" ShowInTaskbar="False">
     <Grid Margin="3,3,3,3" Background="{DynamicResource BackBrush}">
         <TextBlock x:Name="buttonBaiduPanDownlod" HorizontalAlignment="Left" Margin="40,220,0,0" TextWrapping="Wrap" Text="{DynamicResource BaiduPan}" VerticalAlignment="Top" TextDecorations="Underline" Foreground="#FF3FADE0" Width="87" FontSize="18" Height="26" MouseDown="buttonBaiduPanDownlod_MouseDown"/>
