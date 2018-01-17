@@ -8,6 +8,7 @@ using AutumnBox.Basic.FlowFramework;
 using AutumnBox.Support.CstmDebug;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,6 +32,7 @@ namespace AutumnBox.Basic.Flows
         }
         protected override OutputData MainMethod(ToolKit<DcimBackuperArgs> toolKit)
         {
+            Logger.D(toolKit.Args.TargetPath);
             if (toolKit.Args.DevBasicInfo.State == Device.DeviceState.Poweron)
             {
                 exeResult = toolKit.Ae($"pull /sdcard/DCIM/. \"{toolKit.Args.TargetPath}\"");

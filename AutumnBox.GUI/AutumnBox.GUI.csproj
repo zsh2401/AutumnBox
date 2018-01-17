@@ -246,6 +246,9 @@
       <DependentUpon>LoadingWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Windows\PullingWindow.xaml.cs">
+      <DependentUpon>PullingWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\TBLoadingEffect.cs" />
     <Compile Include="Windows\UpdateNoticeWindow.xaml.cs">
       <DependentUpon>UpdateNoticeWindow.xaml</DependentUpon>
@@ -429,6 +432,10 @@
     <Page Include="Windows\LoadingWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="Windows\PullingWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\UpdateNoticeWindow.xaml">
       <SubType>Designer</SubType>

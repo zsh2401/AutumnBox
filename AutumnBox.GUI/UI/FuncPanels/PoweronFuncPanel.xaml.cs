@@ -149,10 +149,6 @@ namespace AutumnBox.GUI.UI.FuncPanels
                 fmp.AsyncRun();
                 BoxHelper.ShowLoadingDialog(fmp);
             }
-            else
-            {
-                return;
-            }
         }
 
         private void ButtonUnlockMiSystem_Click(object sender, RoutedEventArgs e)
@@ -423,6 +419,26 @@ namespace AutumnBox.GUI.UI.FuncPanels
             hider.Init(args);
             hider.RunAsync();
             BoxHelper.ShowLoadingDialog(hider);
+        }
+
+        private void BtnBackupDcim_Click(object sender, RoutedEventArgs e)
+        {
+            FolderBrowserDialog fbd = new FolderBrowserDialog
+            {
+                Description = App.Current.Resources["selectDcimBackupFloder"].ToString()
+            };
+            if (fbd.ShowDialog() == DialogResult.OK)
+            {
+                var args = new DcimBackuperArgs()
+                {
+                    DevBasicInfo = _currentDevInfo,
+                    TargetPath = fbd.SelectedPath + "\\backup"
+                };
+                var backuper = new DcimBackuper();
+                backuper.Init(args);
+                backuper.RunAsync();
+                BoxHelper.ShowLoadingDialog(backuper);
+            }
         }
     }
 }
