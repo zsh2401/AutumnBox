@@ -62,7 +62,7 @@ namespace AutumnBox.Basic.FlowFramework
             _resultTmp = e.Result;
             NoArgFinished?.Invoke(this, new EventArgs());
             Finished?.Invoke(this, e);
-            if (Finished == null && (!_isSync || MustTiggerAnyFinishedEvent))
+            if (Finished == null || (!_isSync && MustTiggerAnyFinishedEvent))
             {
                 Logger.D("AnyFinished event trigger");
                 OnAnyFinished(this, new FinishedEventArgs<FlowResult>(e.Result));

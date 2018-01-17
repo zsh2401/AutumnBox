@@ -6,7 +6,8 @@
              xmlns:local="clr-namespace:AutumnBox.GUI.UI.FuncPanels"
              mc:Ignorable="d" Height="336" Width="922">
     <Grid x:Name="MainGrid">
+        <Button x:Name="BtnBackupDcim" Content="{DynamicResource btnBackupDcim}" Margin="0,175,20,0" Background="#007C7272" BorderBrush="{DynamicResource BorderBrush}" FontSize="18" FontFamily="Microsoft YaHei UI Light" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="{DynamicResource ForgBrush}" RenderTransformOrigin="0.494,0.085" HorizontalAlignment="Right" Width="623" Height="151" VerticalAlignment="Top" Click="BtnBackupDcim_Click"/>
         <Button  x:Name="buttonPushFileToSdcard"   Content="{DynamicResource btnPushFileToSdcard}" Margin="10,10,20,0" Background="{x:Null}" BorderBrush="{DynamicResource BorderBrush}" FontSize="18" FontFamily="Microsoft YaHei UI Light" Click="ButtonPushFileToSdcard_Click" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="{StaticResource ForgBrush}" RenderTransformOrigin="0.494,0.085" Height="151" VerticalAlignment="Top"/>
-        <Button x:Name="ButtonSideload" Content="{DynamicResource btnSideloadFlash}" Margin="10,0,20,10" Background="#00E6E1E1" BorderBrush="{DynamicResource BorderBrush}" FontSize="18" FontFamily="Microsoft YaHei UI Light" Foreground="{StaticResource ForgBrush}" Click="ButtonSideload_Click" RenderTransformOrigin="0.697,1.991" Height="151" VerticalAlignment="Bottom"/>
+        <Button x:Name="ButtonSideload" Content="{DynamicResource btnSideloadFlash}" Margin="10,0,648,10" Background="#00E6E1E1" BorderBrush="{DynamicResource BorderBrush}" FontSize="18" FontFamily="Microsoft YaHei UI Light" Foreground="{StaticResource ForgBrush}" Click="ButtonSideload_Click" RenderTransformOrigin="0.697,1.991" Height="151" VerticalAlignment="Bottom"/>
     </Grid>
 </UserControl>

@@ -8,13 +8,14 @@ using AutumnBox.GUI.Helper;
 using AutumnBox.GUI.Windows;
 using AutumnBox.Basic.Device;
 using AutumnBox.Basic.Flows;
+using System.Windows.Forms;
 
 namespace AutumnBox.GUI.UI.FuncPanels
 {
     /// <summary>
     /// RecoveryFunctions.xaml 的交互逻辑
     /// </summary>
-    public partial class RecFuncPanel : UserControl, IRefreshable
+    public partial class RecFuncPanel : System.Windows.Controls.UserControl, IRefreshable
     {
         private DeviceBasicInfo _currentDevInfo;
         public RecFuncPanel()
@@ -37,7 +38,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
 
         private void ButtonPushFileToSdcard_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog fileDialog = new OpenFileDialog();
+            Microsoft.Win32.OpenFileDialog fileDialog = new Microsoft.Win32.OpenFileDialog();
             fileDialog.Reset();
             fileDialog.Title = App.Current.Resources["SelecteAFile"].ToString();
             fileDialog.Filter = "刷机包/压缩包文件(*.zip)|*.zip|镜像文件(*.img)|*.img|全部文件(*.*)|*.*";
@@ -62,6 +63,25 @@ namespace AutumnBox.GUI.UI.FuncPanels
         private void ButtonSideload_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void BtnBackupDcim_Click(object sender, RoutedEventArgs e)
+        {
+            FolderBrowserDialog fbd = new FolderBrowserDialog
+            {
+                Description = App.Current.Resources["selectDcimBackupFloder"].ToString()
+            };
+            if (fbd.ShowDialog() == DialogResult.OK)
+            {
+                var args = new DcimBackuperArgs()
+                {
+                    DevBasicInfo = _currentDevInfo,
+                    TargetPath = fbd.SelectedPath + "\\backup"
+                };
+                var backuper = new DcimBackuper();
+                backuper.Init(args);
+                new PullingWindow(backuper) { Owner = App.Current.MainWindow }.Show();
+            }
         }
     }
 }

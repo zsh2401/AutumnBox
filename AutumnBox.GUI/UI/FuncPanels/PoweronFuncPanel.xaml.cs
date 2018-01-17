@@ -436,8 +436,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
                 };
                 var backuper = new DcimBackuper();
                 backuper.Init(args);
-                backuper.RunAsync();
-                BoxHelper.ShowLoadingDialog(backuper);
+                new PullingWindow(backuper) { Owner = App.Current.MainWindow }.Show();
             }
         }
     }
