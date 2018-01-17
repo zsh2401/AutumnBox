@@ -1,6 +1,7 @@
 ﻿using AutumnBox.Basic.Device;
 using AutumnBox.Basic.Device.PackageManage;
 using AutumnBox.Basic.Executer;
+using AutumnBox.Basic.Flows;
 using System;
 using System.Diagnostics;
 
@@ -21,13 +22,26 @@ namespace AutumnBox.ConsoleTester
         public readonly static DeviceBasicInfo mi4 = new DeviceBasicInfo()
         {
             Serial = new Serial("9dd1b490"),
-            State = DeviceState.Fastboot,
+            State = DeviceState.Recovery,
         };
         unsafe static int Main(string[] cmdargs)
         {
-            Process.Start("");
-            var packages = PackageHelper.GetPackages(mi4.Serial);
-            Console.WriteLine(packages.Count);
+            DcimBackuper backuper = new DcimBackuper();
+            var args = new DcimBackuperArgs()
+            {
+                DevBasicInfo = mi4,
+                TargetPath = @"C:\Users\zsh24\Desktop\backup"
+            };
+            backuper.Init(args);
+            backuper.OutputReceived += (s, e) =>
+            {
+                Console.WriteLine(e.Text);
+            };
+            backuper.Finished += (s, e) =>
+            {
+                Console.WriteLine(e.Result.ResultType);
+            };
+            backuper.RunAsync();
             Console.ReadKey();
             return 0;
         }

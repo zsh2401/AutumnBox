@@ -22,7 +22,14 @@ namespace AutumnBox.Basic.Flows
         private CommandExecuterResult exeResult;
         protected override OutputData MainMethod(ToolKit<DcimBackuperArgs> toolKit)
         {
-            exeResult = toolKit.Executer.QuicklyShell(toolKit.Args.Serial, $"pull /data/media/0/DCIM/. \"{toolKit.Args.TargetPath}\"");
+            if (toolKit.Args.DevBasicInfo.State == Device.DeviceState.Poweron)
+            {
+                exeResult = toolKit.Ae($"pull /sdcard/DCIM/. \"{toolKit.Args.TargetPath}\"");
+            }
+            else
+            {
+                exeResult = toolKit.Ae($"pull /data/media/0/DCIM/. \"{toolKit.Args.TargetPath}\"");
+            }
             return exeResult.Output;
         }
         protected override void AnalyzeResult(FlowResult result)
