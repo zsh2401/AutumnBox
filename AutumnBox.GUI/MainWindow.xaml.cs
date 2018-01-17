@@ -188,18 +188,21 @@ namespace AutumnBox.GUI
             ProcessStartInfo info = new ProcessStartInfo
             {
                 WorkingDirectory = ConstData.toolsPath,
-                FileName = "cmd.exe"
+                FileName = "cmd.exe",
+                
             };
             if (SystemHelper.IsWin10)
             {
                 var result = BoxHelper.ShowChoiceDialog("Notice", "msgShellChoiceTip", "Powershell", "CMD");
-                if (result == ChoiceResult.BtnLeft)
+                switch (result)
                 {
-                    info.FileName = "powershell.exe";
-                }
-                else if (result == ChoiceResult.BtnCancel)
-                {
-                    return;
+                    case ChoiceResult.BtnRight:
+                        break;
+                    case ChoiceResult.BtnLeft:
+                        info.FileName = "powershell.exe";
+                        break;
+                    case ChoiceResult.BtnCancel:
+                        return;
                 }
             }
             Process.Start(info);
