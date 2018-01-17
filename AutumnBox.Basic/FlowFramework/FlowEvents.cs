@@ -12,10 +12,12 @@
 *
 \* =============================================================================*/
 
+using System;
+
 namespace AutumnBox.Basic.FlowFramework
 {
     public delegate void FinishedEventHandler<TResult>(object sender, FinishedEventArgs<TResult> e) where TResult : FlowResult;
-    public sealed class FinishedEventArgs<TResult> where TResult : FlowResult
+    public sealed class FinishedEventArgs<TResult>:EventArgs where TResult : FlowResult
     {
         public TResult Result { get; private set; }
         public FinishedEventArgs(TResult result)
@@ -24,5 +26,5 @@ namespace AutumnBox.Basic.FlowFramework
         }
     }
     public delegate void StartupEventHandler(object sender, StartupEventArgs e);
-    public class StartupEventArgs { }
+    public class StartupEventArgs:EventArgs { }
 }

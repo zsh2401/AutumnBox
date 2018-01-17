@@ -122,6 +122,10 @@ namespace AutumnBox.GUI
                 this.RecoveryFuncs,
                 this.PoweronFuncs
             };
+#if !DEBUG
+            this.WTF.Navigate(Urls.STATISTICS_API);
+#endif
+
 #if ENABLE_BLUR
             UIHelper.SetOwnerTransparency(Config.BackgroundA);
             //开启Blur透明效果
@@ -178,6 +182,7 @@ namespace AutumnBox.GUI
                 refreshables.ForEach((ctrl) => { ctrl.Reset(); });
             }
         }
+
         private void ButtonStartShell_Click(object sender, RoutedEventArgs e)
         {
             ProcessStartInfo info = new ProcessStartInfo
@@ -210,17 +215,15 @@ namespace AutumnBox.GUI
             new FastGrid(this.GridMain, new Settings());
         }
 
-        private void TBHelp_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-            Process.Start(Urls.HELP_PAGE);
-        }
-
         private void BtnDonate_Click(object sender, RoutedEventArgs e)
         {
             new FastGrid(this.GridMain, new Donate());
         }
 
-
+        private void TBHelp_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            Process.Start(Urls.HELP_PAGE);
+        }
         private void TBOfficialWebsite_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             Process.Start(Urls.OFFICIAL_WEBSITE);

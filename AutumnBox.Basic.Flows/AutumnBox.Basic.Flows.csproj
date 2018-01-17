@@ -48,6 +48,7 @@
     <Compile Include="AirForzenActivator.cs" />
     <Compile Include="ApkInstaller.cs" />
     <Compile Include="BreventServiceActivator.cs" />
+    <Compile Include="DcimBackuper.cs" />
     <Compile Include="DeviceImageExtractor.cs" />
     <Compile Include="DeviceImageFlasher.cs" />
     <Compile Include="DeviceOwnerSetter.cs" />
