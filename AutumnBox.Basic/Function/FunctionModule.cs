@@ -53,6 +53,7 @@ namespace AutumnBox.Basic.Function
     using AutumnBox.Support.Helper;
     using System;
     using System.Threading.Tasks;
+    [Obsolete]
     /// <summary>
     /// 各种功能模块的父类
     /// </summary>

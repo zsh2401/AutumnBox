@@ -98,7 +98,6 @@
     <Compile Include="Function\Event\FunctionModuleEvents.cs" />
     <Compile Include="Function\FunctionModuleProxy.cs" />
     <Compile Include="Function\IFunctionModule.cs" />
-    <Compile Include="DebugSettings.cs" />
     <Compile Include="MultipleDevices\IDevicesGetter.cs" />
     <Compile Include="Executer\OutputData.cs" />
     <Compile Include="MultipleDevices\DevicesList.cs" />
@@ -107,7 +106,6 @@
     <Compile Include="Function\FunctionModule.cs" />
     <Compile Include="MultipleDevices\DevicesMonitor.cs" />
     <Compile Include="Device\DeviceState.cs" />
-    <Compile Include="MultipleDevices\DevicesHelper.cs" />
     <Compile Include="Executer\IOutReceiver.cs" />
     <Compile Include="Function\ModuleStatus.cs" />
     <Compile Include="Function\Modules\CustomRecoveryFlasher.cs" />

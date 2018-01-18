@@ -53,7 +53,7 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>title_icon.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\Images\title_icon.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>AutumnBox.GUI.App</StartupObject>
@@ -429,9 +429,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="title_icon.ico" />
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
       <Visible>False</Visible>
       <ProductName>.NET Framework 3.5 SP1</ProductName>
@@ -504,6 +501,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\potd_close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\title_icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

@@ -21,19 +21,19 @@ namespace AutumnBox.Basic.Util
 {
     public static class ConstData
     {
-        public static readonly string AUTUMNBOX_TEMP_FLODER = "/sdcard/autumnbox_temp";
-        public static readonly string AdbFilename = "adb.exe";
-        public static readonly string FastbootFilename = "fastboot.exe";
+        public const string AUTUMNBOX_TEMP_FLODER = "/sdcard/autumnbox_temp";
+        public const string ADB_FILENAME = "adb.exe";
+        public const string FASTBOOT_FILENAME = "fastboot.exe";
         public static string FullAdbFileName {
             get {
-                return toolsPath + AdbFilename;
+                return toolsPath + ADB_FILENAME;
             }
         }
         public static string FullFastbootFileName
         {
             get
             {
-                return toolsPath + FastbootFilename;
+                return toolsPath + FASTBOOT_FILENAME;
             }
         }
         public static readonly string toolsPath = @"google\platform-tools\";

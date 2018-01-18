@@ -28,9 +28,11 @@ namespace AutumnBox.Basic.Util
                 default:
                     return LinuxReturnCode.Unknow;
             }
-
         }
     }
+    /// <summary>
+    /// Linux执行返回码
+    /// </summary>
     public enum LinuxReturnCode
     {
         None = 0,

@@ -13,14 +13,9 @@
 \* =============================================================================*/
 using AutumnBox.Basic.Executer;
 using AutumnBox.Basic.Util;
-using AutumnBox.Support.CstmDebug;
 using AutumnBox.Support.Helper;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Adb
 {
@@ -28,10 +23,17 @@ namespace AutumnBox.Basic.Adb
     {
         public static event EventHandler AdbServerStartsFailed;
         public static event EventHandler AdbServerStopsFailed;
+        /// <summary>
+        /// 判断是否已有别的ADB进程
+        /// </summary>
+        /// <returns></returns>
         public static bool AlreadyHaveAdbProcess()
         {
             return Process.GetProcessesByName("adb").Length != 0;
         }
+        /// <summary>
+        /// 杀死所有ADB进程
+        /// </summary>
         public static void KillAllAdbProcess()
         {
             Process[] processs = Process.GetProcessesByName("adb");
@@ -40,6 +42,10 @@ namespace AutumnBox.Basic.Adb
                 SystemHelper.KillProcessAndChildrens(p.Id);
             }
         }
+        /// <summary>
+        /// 检查ADB服务
+        /// </summary>
+        /// <returns></returns>
         public static bool Check()
         {
             if (!AlreadyHaveAdbProcess())
@@ -48,6 +54,10 @@ namespace AutumnBox.Basic.Adb
             }
             return true;
         }
+        /// <summary>
+        /// 启动ADB服务
+        /// </summary>
+        /// <returns></returns>
         public static bool StartServer()
         {
             var result = new CommandExecuter().Execute(ConstData.FullAdbFileName, "start-server");
@@ -55,12 +65,20 @@ namespace AutumnBox.Basic.Adb
             if (!successful) AdbServerStartsFailed?.Invoke(new object(), new EventArgs());
             return successful;
         }
+        /// <summary>
+        /// 关闭ADB服务
+        /// </summary>
+        /// <returns></returns>
         public static bool StopServer()
         {
             var result = new CommandExecuter().Execute(ConstData.FullAdbFileName, "start-server");
             if (!result.IsSuccessful) AdbServerStopsFailed?.Invoke(new object(), new EventArgs());
             return result.IsSuccessful;
         }
+        /// <summary>
+        /// 重启ADB服务
+        /// </summary>
+        /// <returns></returns>
         public static bool RestartServer()
         {
             StopServer();

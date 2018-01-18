@@ -31,6 +31,9 @@ namespace AutumnBox.Basic.MultipleDevices
     /// </summary>
     public class DevicesChangedEventArgs : EventArgs
     {
+        /// <summary>
+        /// 已连接设备列表
+        /// </summary>
         public DevicesList DevicesList { get; }
         public DevicesChangedEventArgs(DevicesList devList)
         {
@@ -51,6 +54,9 @@ namespace AutumnBox.Basic.MultipleDevices
         {
             this._interval = interval;
         }
+        /// <summary>
+        /// 开始监听
+        /// </summary>
         public void Begin()
         {
             _continue = true;
@@ -75,6 +81,9 @@ namespace AutumnBox.Basic.MultipleDevices
 
             }
         }
+        /// <summary>
+        /// 停止监听
+        /// </summary>
         public void Cancel()
         {
             _continue = false;

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2003
+VisualStudioVersion = 15.0.27130.2020
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutumnBox.GUI", "AutumnBox.GUI\AutumnBox.GUI.csproj", "{55081483-1689-4E52-A4F1-22AB75FF8900}"
 EndProject
@@ -24,6 +24,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutumnBox.ZipMaker", "AutumnBox.ZipMaker\AutumnBox.ZipMaker.csproj", "{20048B37-8A1D-4E1D-9D3F-741B5E66CB6E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutumnBox.UnableToStartHelper", "AutumnBox.UnableToStartHelper\AutumnBox.UnableToStartHelper.csproj", "{6676743F-1C88-4446-8D9C-8CB2D6DFE873}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
@@ -72,6 +74,12 @@ Global
 		{20048B37-8A1D-4E1D-9D3F-741B5E66CB6E}.PrivateTest|Any CPU.Build.0 = Release|Any CPU
 		{20048B37-8A1D-4E1D-9D3F-741B5E66CB6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{20048B37-8A1D-4E1D-9D3F-741B5E66CB6E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6676743F-1C88-4446-8D9C-8CB2D6DFE873}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6676743F-1C88-4446-8D9C-8CB2D6DFE873}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6676743F-1C88-4446-8D9C-8CB2D6DFE873}.PrivateTest|Any CPU.ActiveCfg = Release|Any CPU
+		{6676743F-1C88-4446-8D9C-8CB2D6DFE873}.PrivateTest|Any CPU.Build.0 = Release|Any CPU
+		{6676743F-1C88-4446-8D9C-8CB2D6DFE873}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6676743F-1C88-4446-8D9C-8CB2D6DFE873}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

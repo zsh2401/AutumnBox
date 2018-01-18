@@ -17,11 +17,18 @@ namespace AutumnBox.Basic.MultipleDevices
     using AutumnBox.Basic.Executer;
     using System.Text.RegularExpressions;
 
+    /// <summary>
+    /// 当前已连接设备获取器
+    /// </summary>
     public sealed class DevicesGetter : IDevicesGetter
     {
         private CommandExecuter executer = new CommandExecuter();
         private static readonly Command adbDevicesCmd = Command.MakeForAdb("devices");
         private static readonly Command fbDevicesCmd = Command.MakeForFastboot("devices");
+        /// <summary>
+        /// 获取已连接的设备
+        /// </summary>
+        /// <returns></returns>
         public DevicesList GetDevices()
         {
             lock (executer)

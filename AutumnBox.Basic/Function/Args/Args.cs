@@ -33,9 +33,4 @@ namespace AutumnBox.Basic.Function.Args
         public string PackageName;
         public string ActivityName;
     }
-    public class InstallApkArgs : ModuleArgs
-    {
-        public InstallApkArgs(DeviceBasicInfo device) : base(device) { }
-        public string ApkPath { get; set; }
-    }
 }
