@@ -17,7 +17,7 @@ namespace AutumnBox.Basic.Device
     public class DeviceBuildPropSetter:IDisposable
     {
         private readonly AndroidShell shellAsSu;
-        public DeviceBuildPropSetter(Serial serial)
+        public DeviceBuildPropSetter(DeviceSerial serial)
         {
             shellAsSu = new AndroidShell(serial);
             shellAsSu.Connect();

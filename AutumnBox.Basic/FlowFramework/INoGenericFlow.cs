@@ -12,6 +12,9 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.FlowFramework
 {
+    /// <summary>
+    /// 去除了所有泛型特征的FunctionFlow接口
+    /// </summary>
     public interface INoGenericFlow : ICompletable,IOutSender
     {
         bool IsClosed { get; }

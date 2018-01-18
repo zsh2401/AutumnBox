@@ -14,6 +14,9 @@
 
 namespace AutumnBox.Basic.FlowFramework
 {
+    /// <summary>
+    /// FunctionFlow执行完后的结果类型
+    /// </summary>
     public enum ResultType
     {
         Exception = -1,

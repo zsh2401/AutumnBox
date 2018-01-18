@@ -24,18 +24,42 @@ namespace AutumnBox.Basic.FlowFramework
         where TArgs : FlowArgs, new()
         where TResult : FlowResult, new()
     {
+        /// <summary>
+        /// 当主流程即将执行时触发
+        /// </summary>
         public event StartupEventHandler Startup;
+        /// <summary>
+        /// 当全部流程结束时触发
+        /// </summary>
         public event FinishedEventHandler<TResult> Finished;
+        /// <summary>
+        /// 当有标准输出产生时触发
+        /// </summary>
         public event OutputReceivedEventHandler OutputReceived;
+        /// <summary>
+        /// 当流程内部的主要外部进程开始时触发
+        /// </summary>
         public event ProcessStartedEventHandler ProcessStarted;
+        /// <summary>
+        /// 没有任何特殊参数的结束事件
+        /// </summary>
         public event EventHandler NoArgFinished;
+        /// <summary>
+        /// 这个FunctionFlow是否被关闭,只有流程正在进行或结束后为True
+        /// </summary>
         public bool IsClosed { get; private set; } = false;
+        /// <summary>
+        /// 是否必须触发AnyFinished,通常情况下,如果Finished被绑定了,就不会触发AnyFinished
+        /// </summary>
         public bool MustTiggerAnyFinishedEvent { get; set; } = false;
+        /// <summary>
+        /// 构建
+        /// </summary>
         public FunctionFlow()
         {
             _executer = new CommandExecuter();
             _resultTmp = new TResult();
-            TAG = new LogSender(this,this.GetType().Name, true);
+            TAG = new LogSender(this, this.GetType().Name, true);
             _executer.ProcessStarted += (s, e) =>
             {
                 OnProcessStarted(e);
@@ -45,11 +69,21 @@ namespace AutumnBox.Basic.FlowFramework
                 OnOutputReceived(e);
             };
         }
+        /// <summary>
+        /// 初始化参数,只可以调用一次
+        /// </summary>
+        /// <param name="args"></param>
         public void Init(TArgs args)
         {
             Initialization(args);
         }
+        /// <summary>
+        /// 当前Flow是否是同步执行的
+        /// </summary>
         private bool _isSync = false;
+        /// <summary>
+        /// 异步执行这个FunctionFlow
+        /// </summary>
         public async void RunAsync()
         {
             Logger.T("Run start async....");
@@ -59,6 +93,10 @@ namespace AutumnBox.Basic.FlowFramework
                 MainFlow();
             });
         }
+        /// <summary>
+        /// 设置参数并且异步执行这个FunctionFlow
+        /// </summary>
+        /// <param name="args"></param>
         public async void RunAsync(TArgs args)
         {
             Initialization(args);
@@ -67,20 +105,32 @@ namespace AutumnBox.Basic.FlowFramework
                 MainFlow();
             });
         }
+        /// <summary>
+        /// 设置参数同步执行
+        /// </summary>
+        /// <param name="args"></param>
+        /// <returns></returns>
         public TResult Run(TArgs args)
         {
             Initialization(args);
             return Run();
         }
+        /// <summary>
+        /// 同步执行
+        /// </summary>
+        /// <returns></returns>
         public TResult Run()
         {
-            
+
             _isSync = true;
             Logger.T("Run start sync....");
             if (_args == null) throw new Exception("have not init!!!! try Init()");
             MainFlow();
             return _resultTmp;
         }
+        /// <summary>
+        /// 强制停止这个FunctionFlow
+        /// </summary>
         public void ForceStop()
         {
             Logger.T("Try to force Stop");
@@ -89,11 +139,19 @@ namespace AutumnBox.Basic.FlowFramework
             isForceStoped = true;
             Logger.T("Force stoped...");
         }
+        /// <summary>
+        /// 获取这个FuntionFlow的停止器
+        /// </summary>
+        /// <returns></returns>
         public Stoper GetStoper()
         {
             return new Stoper(this);
         }
-        public void Dispose() {
+        /// <summary>
+        /// 析构将会调用ForceStop
+        /// </summary>
+        public void Dispose()
+        {
             ForceStop();
         }
     }

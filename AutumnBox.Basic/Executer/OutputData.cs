@@ -20,35 +20,40 @@ namespace AutumnBox.Basic.Executer
 
     public sealed class OutputData
     {
-        public IOutSender OutSender
-        {
-            set
-            {
-                if (_OutSender != null)
-                {
-                    throw new EventAddException("Only set one!");
-                }
-                else
-                {
-                    _OutSender = value;
-                    _OutSender.OutputReceived += (s, e) =>
-                    {
-                        if (!e.IsError)
-                            OutAdd(e.Text);
-                        else
-                            ErrorAdd(e.Text);
-                    };
-                }
-            }
-        }
-        private IOutSender _OutSender = null;
+        /// <summary>
+        /// 所有的输出
+        /// </summary>
         public List<string> LineAll { get; private set; } = new List<string>();
+        /// <summary>
+        /// 所有的标准输出
+        /// </summary>
         public List<string> LineOut { get; private set; } = new List<string>();
+        /// <summary>
+        /// 所有的标准错误
+        /// </summary>
         public List<string> LineError { get; private set; } = new List<string>();
+        /// <summary>
+        /// 所有的输出
+        /// </summary>
         public StringBuilder All { get; private set; } = new StringBuilder();
+        /// <summary>
+        /// 所有的标准输出
+        /// </summary>
         public StringBuilder Out { get; private set; } = new StringBuilder();
+        /// <summary>
+        /// 所有的标准错误
+        /// </summary>
         public StringBuilder Error { get; private set; } = new StringBuilder();
+        /// <summary>
+        /// 是否已被关闭
+        /// </summary>
         private bool _IsClosed = false;
+        /// <summary>
+        /// 判断输出中是否包含某段字符串
+        /// </summary>
+        /// <param name="str">字符串</param>
+        /// <param name="ignoreCase">是否忽略大小写</param>
+        /// <returns></returns>
         public bool Contains(string str, bool ignoreCase = true)
         {
             if (ignoreCase)
@@ -138,17 +143,30 @@ namespace AutumnBox.Basic.Executer
             _IsClosed = true;
         }
         /// <summary>
+        /// 添加需要被监听的输出产生者
+        /// </summary>
+        /// <param name="sender"></param>
+        public void AddOutSender(IOutSender sender)
+        {
+            sender.OutputReceived += (s, e) =>
+            {
+                if (!e.IsError)
+                {
+                    OutAdd(e.Text);
+                }
+                else
+                {
+                    ErrorAdd(e.Text);
+                }
+            };
+        }
+        /// <summary>
         /// 获取完整的输出数据
         /// </summary>
         /// <returns></returns>
         public override string ToString()
         {
             return All.ToString();
-        }
-        public OutputData() { }
-        public static explicit operator ShellOutput(OutputData output)
-        {
-            return new ShellOutput(output);
         }
     }
 }

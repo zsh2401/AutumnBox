@@ -61,7 +61,7 @@ namespace AutumnBox.Basic.Flows.MiFlash
         {
             public event OutputReceivedEventHandler OutputReceived;
             public event ProcessStartedEventHandler ProcessStarted;
-            public MiFlashBatExecuteProcess(string batFileName, Serial serial)
+            public MiFlashBatExecuteProcess(string batFileName, DeviceSerial serial)
             {
                 this.StartInfo = new ProcessStartInfo()
                 {

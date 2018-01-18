@@ -20,7 +20,7 @@ namespace AutumnBox.Basic.MultipleDevices
 {
     public class DevicesList : List<DeviceBasicInfo>, IEquatable<DevicesList>
     {
-        public bool Contains(Serial serial)
+        public bool Contains(DeviceSerial serial)
         {
             var haves = from _devInfo in this
                         where _devInfo.Serial == serial

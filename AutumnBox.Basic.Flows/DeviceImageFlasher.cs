@@ -44,7 +44,7 @@ namespace AutumnBox.Basic.Flows
                 shell.Connect();
                 shell.Switch2Su();
                 moveResult = shell.SafetyInput($"mv {_savePath} {path}");
-                output.Append(moveResult.OutputData);
+                output.Append((OutputData)moveResult);
             }
             return output;
         }

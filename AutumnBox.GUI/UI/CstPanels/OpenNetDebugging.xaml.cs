@@ -17,8 +17,8 @@ namespace AutumnBox.GUI.UI.CstPanels
     /// </summary>
     public partial class OpenNetDebugging : UserControl, ICommunicableWithFastGrid
     {
-        private readonly Serial _serial;
-        public OpenNetDebugging(Serial serial)
+        private readonly DeviceSerial _serial;
+        public OpenNetDebugging(DeviceSerial serial)
         {
             InitializeComponent();
             _serial = serial;

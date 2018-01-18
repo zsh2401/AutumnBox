@@ -12,9 +12,9 @@ namespace AutumnBox.GUI.UI.CstPanels
     /// </summary>
     public partial class CloseNetDebugging : UserControl, ICommunicableWithFastGrid
     {
-        private readonly Serial _serial;
+        private readonly DeviceSerial _serial;
 
-        public CloseNetDebugging(Serial serial)
+        public CloseNetDebugging(DeviceSerial serial)
         {
             InitializeComponent();
             _serial = serial;

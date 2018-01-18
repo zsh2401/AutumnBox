@@ -19,6 +19,9 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.FlowFramework
 {
+    /// <summary>
+    /// FunctionFlow终止器
+    /// </summary>
     public sealed class Stoper : IForceStoppable
     {
         IForceStoppable obj;

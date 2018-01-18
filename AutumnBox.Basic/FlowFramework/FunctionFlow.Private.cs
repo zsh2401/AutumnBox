@@ -34,7 +34,7 @@ namespace AutumnBox.Basic.FlowFramework
             }
             catch (Exception e)
             {
-                Logger.T(TAG, "A exception happend on MainFlow()... ->" + e);
+                Logger.T(TAG, "a exception happend ->" + e);
                 try
                 {
                     OnFinished(new FinishedEventArgs<TResult>(new TResult() { ResultType = ResultType.Exception, Exception = e }));
@@ -48,25 +48,25 @@ namespace AutumnBox.Basic.FlowFramework
         private void _MainFlow()
         {
             /*Checking*/
-            Logger.T(TAG, "Checking...");
+            Logger.T(TAG, "step 1: checking...");
             TResult result = new TResult
             {
                 CheckResult = Check(_args)
             };
-            Logger.T(TAG, "Check Result ->" + result.CheckResult);
+            Logger.T(TAG, "step 1 finished: check result ->" + result.CheckResult);
             if (result.CheckResult != CheckResult.OK)
             {
                 result.ResultType = ResultType.Unsuccessful;
                 OnFinished(new FinishedEventArgs<TResult>(result));
                 return;
             }
-            Logger.T(TAG, "Startup...");
+            Logger.T(TAG, "step 2: call OnStartup() Startup...");
             OnStartup(new StartupEventArgs());
-            Logger.T(TAG, "Running...");
+            Logger.T(TAG, "step 3: call MainMethod(),this FunctionFlow is Running...");
             result.OutputData = MainMethod(new ToolKit<TArgs>(_args, _executer));
-            Logger.T(TAG, "Analyzing Output...");
+            Logger.T(TAG, "step 4: MainMethod() finished,call AnalyzeResult()");
             AnalyzeResult(result);
-            Logger.T(TAG, "Finished...");
+            Logger.T(TAG, "step 5: all finished,this FunctionFlow is all finished,trigger Finished event");
             OnFinished(new FinishedEventArgs<TResult>(result));
         }
     }

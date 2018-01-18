@@ -16,8 +16,8 @@ namespace AutumnBox.Basic.Device
     public class DeviceBuildPropGetter
     {
         private readonly CommandExecuter executer;
-        public Serial Serial { get; private set; }
-        public DeviceBuildPropGetter(Serial serial)
+        public DeviceSerial Serial { get; private set; }
+        public DeviceBuildPropGetter(DeviceSerial serial)
         {
             executer = new CommandExecuter();
             Serial = serial;

@@ -19,6 +19,9 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.FlowFramework
 {
+    /// <summary>
+    /// 可被强制停止的
+    /// </summary>
     public interface IForceStoppable
     {
         void ForceStop();

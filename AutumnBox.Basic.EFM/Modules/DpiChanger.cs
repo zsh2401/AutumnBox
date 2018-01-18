@@ -29,10 +29,8 @@ namespace AutumnBox.Basic.Function.Modules
         }
         protected override OutputData MainMethod(BundleForTools bundle)
         {
-            OutputData o = new OutputData
-            {
-                OutSender = bundle.Executer
-            };
+            OutputData o = new OutputData();
+            o.AddOutSender(bundle.Executer);
             var result = bundle.Executer.QuicklyShell(bundle.Serial, $"wm density {dpi}");
             isSuccess = result.ExitCode == 0 ? true : false;
             if (isSuccess)

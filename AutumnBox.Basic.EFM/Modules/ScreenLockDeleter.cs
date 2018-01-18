@@ -22,10 +22,8 @@ namespace AutumnBox.Basic.Function.Modules
         protected override OutputData MainMethod(BundleForTools bundle)
         {
             AndroidShell _shell = new AndroidShell(bundle.Args.DeviceBasicInfo.Serial);
-            OutputData output = new OutputData
-            {
-                OutSender = _shell
-            };
+            OutputData output = new OutputData();
+            output.AddOutSender(_shell);
             _shell.Connect();
             _shell.Switch2Su();
             _shell.SafetyInput("rm /data/system/gesture.key");

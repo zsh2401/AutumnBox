@@ -18,7 +18,7 @@ namespace AutumnBox.Basic.Device
 {
     public struct DeviceHardwareInfo
     {
-        public Serial Serial { get; set; }
+        public DeviceSerial Serial { get; set; }
         public string ScreenInfo { get; set; }
         public int? BatteryLevel { get; set; }
         public double? SizeofRam { get; set; }

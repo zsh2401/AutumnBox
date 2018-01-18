@@ -16,7 +16,7 @@ namespace AutumnBox.Basic.Device
 
     public sealed class DeviceImageFinder : IDisposable,ISetableShell
     {
-        private readonly Serial serial;
+        private readonly DeviceSerial serial;
         public AndroidShell ShellAsSu
         {
             private get
@@ -36,11 +36,11 @@ namespace AutumnBox.Basic.Device
         }
         private AndroidShell _shell;
 
-        public DeviceImageFinder(Serial serial)
+        public DeviceImageFinder(DeviceSerial serial)
         {
             this.serial = serial;
         }
-        public static string PathOf(Serial serial, DeviceImage imageType)
+        public static string PathOf(DeviceSerial serial, DeviceImage imageType)
         {
             using (DeviceImageFinder _o = new DeviceImageFinder(serial))
             {
@@ -54,7 +54,7 @@ namespace AutumnBox.Basic.Device
         private string Find1(DeviceImage image)
         {
             var exeResult = ShellAsSu.SafetyInput($"find /dev/ -name {image.ToString().ToLower()}");
-            Logger.D(exeResult.OutputData.ToString());
+            Logger.D(((OutputData)exeResult).ToString());
             if (exeResult.ReturnCode == (int)LinuxReturnCode.KeyHasExpired)
             {
                 return null;//无法使用find命令,当场返回!

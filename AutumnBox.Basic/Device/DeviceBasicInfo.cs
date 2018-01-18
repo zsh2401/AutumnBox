@@ -22,17 +22,14 @@ namespace AutumnBox.Basic.Device
                               /// </summary>
     public struct DeviceBasicInfo : IEquatable<DeviceBasicInfo>
     {
-        public Serial Serial { get; set; }
+        public DeviceSerial Serial { get; set; }
         public DeviceState State { get; set; }
-        public static implicit operator DeviceState(DeviceBasicInfo info)
-        {
-            return info.State;
-        }
+
         public static DeviceBasicInfo Make(string serialStr, DeviceState state)
         {
             return new DeviceBasicInfo
             {
-                Serial = new Serial(serialStr),
+                Serial = new DeviceSerial(serialStr),
                 State = state,
             };
         }
@@ -48,17 +45,25 @@ namespace AutumnBox.Basic.Device
         {
             return !left.Equals(right);
         }
-
+        public static implicit operator string(DeviceBasicInfo info)
+        {
+            return info.ToString();
+        }
+        public static implicit operator DeviceState(DeviceBasicInfo info)
+        {
+            return info.State;
+        }
         public bool Equals(DeviceBasicInfo other)
         {
             return this.State == other.State && this.Serial == other.Serial;
         }
-
         public override bool Equals(object obj)
         {
+            if (obj is DeviceBasicInfo) {
+                return Equals((DeviceBasicInfo)obj);
+            }
             return base.Equals(obj);
         }
-
         public override int GetHashCode()
         {
             return base.GetHashCode();

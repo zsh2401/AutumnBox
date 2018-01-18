@@ -55,7 +55,7 @@ namespace AutumnBox.Basic.Executer
         /// 实例化
         /// </summary>
         /// <param name="id"></param>
-        public AndroidShell(Serial serial)
+        public AndroidShell(DeviceSerial serial)
         {
             _mainProcess = new Process
             {

@@ -37,7 +37,7 @@ namespace AutumnBox.Basic.Flows
                 //复制到程序根目录
                 string copyPath = $"/sdcard/{tempFileName}";
                 var copyResult = shell.SafetyInput($"cp {path} {copyPath}");
-                output.Append(copyResult.OutputData);
+                output.Append((OutputData)copyResult);
                 if (copyResult.IsSuccess)
                 {
                     _copySuccessful = copyResult.IsSuccess;

@@ -15,7 +15,7 @@ namespace AutumnBox.Basic.Device.PackageManage
     public static class PackageHelper
     {
         private static readonly string packagesPattern = @"package:(?<package>.+)";
-        public static List<PackageInfo> GetPackages(Serial devSerial)
+        public static List<PackageInfo> GetPackages(DeviceSerial devSerial)
         {
             var result = PackageManagerShared.Executer.QuicklyShell(devSerial, $"pm list packages");
             var matches = Regex.Matches(result.Output.ToString(), packagesPattern);
@@ -26,7 +26,7 @@ namespace AutumnBox.Basic.Device.PackageManage
             }
             return packages;
         }
-        public static bool? IsInstall(Serial devSerial, string packageName)
+        public static bool? IsInstall(DeviceSerial devSerial, string packageName)
         {
             var result = PackageManagerShared.Executer.QuicklyShell(devSerial, $"pm path {packageName}");
             return result.IsSuccessful;

@@ -25,10 +25,6 @@ namespace AutumnBox.Basic.Executer
     public class ShellOutput
     {
         /// <summary>
-        /// 输出数据,但只会在有参数构造时不为NULL
-        /// </summary>
-        public OutputData OutputData { get; private set; } = new OutputData();
-        /// <summary>
         /// 执行是否成功
         /// </summary>
         public bool IsSuccess { get { return ReturnCode == 0; } }
@@ -42,7 +38,6 @@ namespace AutumnBox.Basic.Executer
         /// <param name="text"></param>
         public void OutAdd(string text)
         {
-            OutputData.OutAdd(text);
             LineAll.Add(text);
             All.AppendLine(text);
         }
@@ -65,7 +60,18 @@ namespace AutumnBox.Basic.Executer
         {
             LineAll = o.LineAll;
             All = o.All;
-            OutputData = o;
+        }
+        /// <summary>
+        /// ShellOutput -> OutputData
+        /// </summary>
+        /// <param name="value"></param>
+        public static explicit operator OutputData(ShellOutput value)
+        {
+            var output = new OutputData();
+            output.LineAll.AddRange(value.LineAll);
+            output.All.Append(value.All);
+            output.StopAdding();
+            return output;
         }
     }
 }

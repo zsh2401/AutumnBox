@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Device
 {
-    public class Serial : IEquatable<Serial>
+    public class DeviceSerial : IEquatable<DeviceSerial>
     {
         public bool IsIpAdress
         {
@@ -29,7 +29,7 @@ namespace AutumnBox.Basic.Device
             return _serialNum ?? _ip.ToString();
         }
         public string ToFullSerial() => $"-s {_serialNum ?? _ip.ToString()}";
-        public Serial(string serialStr)
+        public DeviceSerial(string serialStr)
         {
             var strs = serialStr.Split(':');
             if (strs.Length > 1)
@@ -44,23 +44,23 @@ namespace AutumnBox.Basic.Device
             }
         }
 
-        public static bool operator ==(Serial left, Serial right)
+        public static bool operator ==(DeviceSerial left, DeviceSerial right)
         {
             return left?.ToString() == right?.ToString();
         }
-        public static bool operator !=(Serial left, Serial right)
+        public static bool operator !=(DeviceSerial left, DeviceSerial right)
         {
             return left?.ToString() != right?.ToString();
         }
-        public bool Equals(Serial other)
+        public bool Equals(DeviceSerial other)
         {
             return this.ToString() == other.ToString();
         }
         public override bool Equals(object obj)
         {
-            if (obj is Serial)
+            if (obj is DeviceSerial)
             {
-                return this.Equals((Serial)obj);
+                return this.Equals((DeviceSerial)obj);
             }
             else
             {

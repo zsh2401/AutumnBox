@@ -11,17 +11,17 @@ namespace AutumnBox.ConsoleTester
     {
         public readonly static DeviceBasicInfo mi6 = new DeviceBasicInfo()
         {
-            Serial = new Serial("af0fe186"),
+            Serial = new DeviceSerial("af0fe186"),
             State = DeviceState.Poweron,
         };
         public readonly static DeviceBasicInfo mi6net = new DeviceBasicInfo()
         {
-            Serial = new Serial("192.168.0.12:5555"),
+            Serial = new DeviceSerial("192.168.0.12:5555"),
             State = DeviceState.Poweron,
         };
         public readonly static DeviceBasicInfo mi4 = new DeviceBasicInfo()
         {
-            Serial = new Serial("9dd1b490"),
+            Serial = new DeviceSerial("9dd1b490"),
             State = DeviceState.Poweron,
         };
         unsafe static int Main(string[] cmdargs)

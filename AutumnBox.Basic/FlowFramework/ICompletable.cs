@@ -15,6 +15,9 @@ using System;
 
 namespace AutumnBox.Basic.FlowFramework
 {
+    /// <summary>
+    /// 实现这个结构的Flow是可以通知结束运行以及被结束运行的
+    /// </summary>
     public interface ICompletable:IForceStoppable
     {
         event EventHandler NoArgFinished;

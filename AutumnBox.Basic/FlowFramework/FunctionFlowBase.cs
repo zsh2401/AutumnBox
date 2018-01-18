@@ -19,6 +19,10 @@ namespace AutumnBox.Basic.FlowFramework
     /// </summary>
     public abstract class FunctionFlowBase : object
     {
+        /// <summary>
+        /// 任何的FunctionFlow执行完都会调用
+        /// 调用条件 flow.MustTriggerAnyFinished && (flow.Finished ==null || flow._isSync)
+        /// </summary>
         public static event FinishedEventHandler<FlowResult> AnyFinished;
         protected static void OnAnyFinished(object sender, FinishedEventArgs<FlowResult> e)
         {

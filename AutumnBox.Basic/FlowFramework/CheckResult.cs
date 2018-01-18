@@ -16,11 +16,12 @@ namespace AutumnBox.Basic.FlowFramework
 {
     public enum CheckResult
     {
-        Unfinish = -1,
-        OK,
-        Error,
+        OK = 0,
+        Error = 1,
+        Unfinish = 2,
         ArgError,
         UnknowError,
         DeviceStateError,
+        DeviceSerialError,
     }
 }

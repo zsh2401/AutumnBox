@@ -14,7 +14,7 @@ namespace AutumnBox.Basic.Device.PackageManage
 {
     public class PackageInfo
     {
-        public Serial Owner { get; private set; }
+        public DeviceSerial Owner { get; private set; }
         public string Name { get; private set; }
         public bool IsExist
         {
@@ -40,7 +40,7 @@ namespace AutumnBox.Basic.Device.PackageManage
                 }
             }
         }
-        public PackageInfo(Serial owner, string name)
+        public PackageInfo(DeviceSerial owner, string name)
         {
             this.Name = name;
             this.Owner = owner;

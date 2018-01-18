@@ -41,7 +41,7 @@ namespace AutumnBox.Basic.Executer
         /// <summary>
         /// 指定的设备
         /// </summary>
-        private Serial serial;
+        private DeviceSerial serial;
         /// <summary>
         /// 仅限使用方法进行构建
         /// </summary>
@@ -69,7 +69,7 @@ namespace AutumnBox.Basic.Executer
         /// </summary>
         /// <param name="command"></param>
         /// <returns>命令对象</returns>
-        public static Command MakeForAdb(Serial _serial, string command)
+        public static Command MakeForAdb(DeviceSerial _serial, string command)
         {
             return new Command() { FileName = ConstData.FullAdbFileName, serial = _serial, SpecificCommand = command };
         }
@@ -87,7 +87,7 @@ namespace AutumnBox.Basic.Executer
         /// </summary>
         /// <param name="command"></param>
         /// <returns>命令对象</returns>
-        public static Command MakeForFastboot(Serial _serial, string command)
+        public static Command MakeForFastboot(DeviceSerial _serial, string command)
         {
             return new Command() { FileName = ConstData.FullFastbootFileName, serial = _serial, SpecificCommand = command };
         }

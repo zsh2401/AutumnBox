@@ -15,7 +15,13 @@ namespace AutumnBox.Basic.Executer
 {
     public sealed class CommandExecuterResult
     {
+        /// <summary>
+        /// 返回码
+        /// </summary>
         public int ExitCode { get; private set; }
+        /// <summary>
+        /// 是否成功
+        /// </summary>
         public bool IsSuccessful
         {
             get
@@ -23,15 +29,35 @@ namespace AutumnBox.Basic.Executer
                 return ExitCode == 0;
             }
         }
+        /// <summary>
+        /// 执行期间所有的输出
+        /// </summary>
         public OutputData Output { get; private set; }
+        /// <summary>
+        /// 构建
+        /// </summary>
+        /// <param name="output"></param>
+        /// <param name="exitCode"></param>
         internal CommandExecuterResult(OutputData output, int exitCode)
         {
             Output = output;
             ExitCode = exitCode;
         }
+        /// <summary>
+        /// 转换成ShellOutput
+        /// </summary>
+        /// <returns></returns>
         public ShellOutput ToShellOutput()
         {
             return new ShellOutput(Output) { ReturnCode = ExitCode };
+        }
+        /// <summary>
+        /// CommandExecuterResult -> ShellOutput
+        /// </summary>
+        /// <param name="value"></param>
+        public static explicit operator ShellOutput(CommandExecuterResult value)
+        {
+            return value.ToShellOutput();
         }
     }
 }

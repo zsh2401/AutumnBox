@@ -42,10 +42,8 @@ namespace AutumnBox.Basic.Flows
         protected override OutputData MainMethod(ToolKit<ApkInstallerArgs> toolKit)
         {
             Logger.T($"Start installing....have {toolKit.Args.Files.Count} Apks");
-            OutputData result = new OutputData()
-            {
-                OutSender = toolKit.Executer
-            };
+            OutputData result = new OutputData();
+            result.AddOutSender(toolKit.Executer);
             foreach (FileInfo apkFileInfo in toolKit.Args.Files)
             {
                 Command command =

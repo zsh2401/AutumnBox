@@ -27,7 +27,7 @@ namespace AutumnBox.GUI.Windows
 {
     public struct MiFlashWindowShowInfo
     {
-        public Serial Serial { get; set; }
+        public DeviceSerial Serial { get; set; }
         public Window Owner { get; set; }
     }
     /// <summary>
@@ -225,7 +225,7 @@ namespace AutumnBox.GUI.Windows
             {
                 try
                 {
-                    Serial serial = null;
+                    DeviceSerial serial = null;
                     this.Dispatcher.Invoke(() =>
                     {
                         serial = ShowInfo.Serial;

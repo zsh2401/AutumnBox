@@ -22,8 +22,8 @@ namespace AutumnBox.Basic.Device
         {
             executer = new CommandExecuter();
         }
-        private readonly Serial serial;
-        public DeviceSoftwareInfoGetter(Serial serial)
+        private readonly DeviceSerial serial;
+        public DeviceSoftwareInfoGetter(DeviceSerial serial)
         {
             this.serial = serial;
         }

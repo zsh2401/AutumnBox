@@ -60,7 +60,7 @@ namespace AutumnBox.Basic.Executer
             return Execute(cmd.FileName, cmd.ToString());
         }
         private const string exitCodePattern = @"exitcode(?<code>\d+)";
-        public CommandExecuterResult QuicklyShell(Serial dev, string command)
+        public CommandExecuterResult QuicklyShell(DeviceSerial dev, string command)
         {
             var cmd = Command.MakeForAdb(dev, $"shell \"{command} ; echo exitcode$?\"");
             var result = Execute(cmd);
