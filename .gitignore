@@ -42,5 +42,6 @@ packages/
 !AutumnBox.GUI/Resources/lib/readme.txt
 !AutumnBox.Basic/Adb/*.exe
 !AutumnBox.Basic/Adb/*.dll
+!out/*.url
 !lib/*.dll
 !out/google/platform-tools/**/*.*
