@@ -73,5 +73,10 @@ namespace AutumnBox.GUI.Windows
             Clipboard.SetText(TxtBOutput.Text);
             ButtonCopy.Content = UIHelper.GetString("btnCopied");
         }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            TxtBOutput.ScrollToEnd();
+        }
     }
 }

@@ -37,6 +37,7 @@ namespace AutumnBox.GUI.Windows
                     break;
             }
             TextBoxOutput.Text = _Result.OutputData.All.ToString();
+            TextBoxOutput.ScrollToEnd();
             if (_Result.Advise == null)
             {
                 TextBlockAdvise.Visibility = Visibility.Hidden;

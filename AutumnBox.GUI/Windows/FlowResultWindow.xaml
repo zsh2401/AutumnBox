@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AutumnBox.GUI.Windows"
         mc:Ignorable="d"
-        Title="FlowResultWindow" Height="443" Width="460" ShowInTaskbar="False" WindowStyle="None" ResizeMode="NoResize" Background="{DynamicResource BorderBrush}" MouseDown="Window_MouseDown" WindowStartupLocation="CenterOwner">
+        Title="FlowResultWindow" Height="443" Width="460" ShowInTaskbar="False" WindowStyle="None" ResizeMode="NoResize" Background="{DynamicResource BorderBrush}" MouseDown="Window_MouseDown" WindowStartupLocation="CenterOwner" Loaded="Window_Loaded">
     <Grid Margin="3,3,3,3" Background="{DynamicResource BackBrush}">
         <Button  x:Name="BtnClose"   Content="{DynamicResource btnClose}" Margin="4,0,0,7" Background="#007C7272" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" FontFamily="Microsoft YaHei UI Light" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="{DynamicResource ForgBrush}" RenderTransformOrigin="0.494,0.085" HorizontalAlignment="Left" Width="446" Click="BtnClose_Click" Height="35" VerticalAlignment="Bottom"/>
         <TextBlock x:Name="TxtBTitle" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="TheFuck" VerticalAlignment="Top" Width="436" Height="67" FontSize="48" Foreground="{DynamicResource ForgBrush}"/>

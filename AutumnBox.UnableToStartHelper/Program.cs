@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace AutumnBox.UnableToStartHelper
@@ -13,7 +14,9 @@ namespace AutumnBox.UnableToStartHelper
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            Debug.WriteLine(Environment.Version);
             Application.Run(new Form1());
         }
+
     }
 }

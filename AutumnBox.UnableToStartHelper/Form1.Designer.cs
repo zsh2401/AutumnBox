@@ -47,6 +47,7 @@ namespace AutumnBox.UnableToStartHelper
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -214,11 +215,22 @@ namespace AutumnBox.UnableToStartHelper
             this.label13.TabIndex = 15;
             this.label13.Text = "01/08/2018";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(425, 279);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 27);
+            this.button1.TabIndex = 16;
+            this.button1.Text = "复制QQ号";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(747, 305);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
@@ -271,6 +283,7 @@ namespace AutumnBox.UnableToStartHelper
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Button button1;
     }
 }
 
