@@ -71,45 +71,5 @@ namespace AutumnBox.Basic.Device
                 }
             }
         }
-        public static void Reboot(DeviceBasicInfo dev)
-        {
-            if (dev.State == DeviceState.Fastboot)
-            {
-                executer.Execute(Command.MakeForFastboot(dev.Serial, "reboot"));
-            }
-            else
-            {
-                executer.Execute(Command.MakeForAdb(dev.Serial, "reboot"));
-            }
-        }
-        public static void Reboot2Fastboot(DeviceBasicInfo dev)
-        {
-            if (dev.State == DeviceState.Fastboot)
-            {
-                executer.Execute(Command.MakeForFastboot(dev.Serial, "reboot-bootloader"));
-            }
-            else
-            {
-                executer.Execute(Command.MakeForAdb(dev.Serial, "reboot-bootloader"));
-            }
-        }
-        public static void Reboot2Recovery(DeviceBasicInfo dev)
-        {
-            if (dev.State != DeviceState.Fastboot)
-            {
-                executer.Execute(Command.MakeForAdb(dev.Serial, "reboot recovery"));
-            }
-        }
-        public static void RebootTo9008(DeviceBasicInfo dev)
-        {
-            if (dev.State == DeviceState.Fastboot)
-            {
-                executer.Execute(Command.MakeForFastboot(dev.Serial, "reboot-edl"));
-            }
-            else
-            {
-                executer.Execute(Command.MakeForAdb(dev.Serial, "reboot edl"));
-            }
-        }
     }
 }

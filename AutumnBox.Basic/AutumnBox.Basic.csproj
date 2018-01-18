@@ -46,6 +46,7 @@
     <Compile Include="Device\DeviceBuildPropSetter.cs" />
     <Compile Include="Device\DeviceHaveNoRootException.cs" />
     <Compile Include="Device\DeviceInfoGetterInFastboot.cs" />
+    <Compile Include="Device\DeviceNotFoundException.cs" />
     <Compile Include="Device\DeviceRebooter.cs" />
     <Compile Include="Device\DeviceSoftwareInfoGetter.cs" />
     <Compile Include="Device\PackageManage\PackageHelper.cs" />

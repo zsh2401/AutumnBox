@@ -18,9 +18,5 @@ namespace AutumnBox.Basic.Device
         {
             this.DevInfo = new DeviceBasicInfo() { State = DeviceState.None };
         }
-        public AndroidShell GetShell()
-        {
-            return new AndroidShell(Serial);
-        }
     }
 }
