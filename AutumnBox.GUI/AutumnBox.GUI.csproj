@@ -150,9 +150,6 @@
     <Resource Include="Resources\Images\DevStatus\poweron.png" />
     <Resource Include="Resources\Images\refresh.png" />
     <Compile Include="Resources\Images\ImageGetter.cs" />
-    <Compile Include="UI\Cstm\BookMarksControl.xaml.cs">
-      <DependentUpon>BookMarksControl.xaml</DependentUpon>
-    </Compile>
     <Compile Include="UI\Cstm\CstmTitleBar.xaml.cs">
       <DependentUpon>CstmTitleBar.xaml</DependentUpon>
     </Compile>
@@ -225,9 +222,6 @@
     <Compile Include="UI\IRefreshable.cs" />
     <Compile Include="Windows\FlowResultWindow.xaml.cs">
       <DependentUpon>FlowResultWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\LinkHelpWindow.xaml.cs">
-      <DependentUpon>LinkHelpWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.FuncModuleEventHandler.cs" />
     <Compile Include="MainWindow.xaml.cs">
@@ -317,10 +311,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Cstm\BookMarksControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="UI\Cstm\CstmTitleBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -406,10 +396,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\FlowResultWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windows\LinkHelpWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

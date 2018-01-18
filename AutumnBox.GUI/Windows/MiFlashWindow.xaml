@@ -35,7 +35,7 @@
 
         <TextBlock Margin="10,237,229,0" TextWrapping="Wrap" Text="{DynamicResource OutputRealTime}" Foreground="{DynamicResource ForgBrush}" FontSize="14" FontFamily="Microsoft YaHei UI Light" Height="18" VerticalAlignment="Top"/>
         <TextBox x:Name="TBOutput" Margin="10,255,10,10" TextWrapping="Wrap" FontFamily="Microsoft YaHei UI Light" IsReadOnly="True"/>
-        <TextBlock x:Name="TBDownloadLink" HorizontalAlignment="Left" Margin="10,135,0,0" TextWrapping="Wrap" Text="{DynamicResource DownloadLineFlashPackage}" VerticalAlignment="Top" Foreground="{DynamicResource BasicBrush}" TextDecorations="Underline" Width="115" Height="18" MouseDown="TBDownloadLink_MouseDown" FontSize="14" />
+        <TextBlock x:Name="TBDownloadLink" HorizontalAlignment="Left" Margin="10,135,0,0" TextWrapping="Wrap" Text="{DynamicResource hyperLinkDownloadMiFlashPackage}" VerticalAlignment="Top" Foreground="{DynamicResource BasicBrush}" TextDecorations="Underline" Width="115" Height="18" MouseDown="TBDownloadLink_MouseDown" FontSize="14" />
         <TextBlock  TextAlignment="Center" x:Name="TBLoading" HorizontalAlignment="Left" Margin="402,77,0,0" TextWrapping="Wrap" Text="--" VerticalAlignment="Top" Width="61" Height="53" FontSize="36" Foreground="{DynamicResource ForgBrush}"/>
     </Grid>
 </Window>

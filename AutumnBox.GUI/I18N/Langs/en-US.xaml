@@ -84,11 +84,6 @@
     <s:String x:Key="ThankMessage2">这是一个开源免费的自由软件</s:String>
     <s:String x:Key="ThankMessage3">如果您觉得不错,欢迎捐赠或在Github进行Star,详情在界面左边点击"关于"选项卡</s:String>
     <s:String x:Key="Notice">提示</s:String>
-    <s:String x:Key="CompiledDate">编译日期</s:String>
-    <s:String x:Key="OnlyBootloader">仅Fastboot状态可用</s:String>
-    <s:String x:Key="OnlyROP">仅开机或恢复模式可用</s:String>
-    <s:String x:Key="OnlyRecovery">仅恢复模式可用</s:String>
-    <s:String x:Key="OnlyPoweron">仅开机可用</s:String>
     <s:String x:Key="Github">Github</s:String>
     <s:String x:Key="BaiduPan">百度网盘</s:String>
     <s:String x:Key="SkipThisVersion">此版本不再提示</s:String>

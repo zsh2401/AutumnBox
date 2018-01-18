@@ -54,10 +54,6 @@ namespace AutumnBox.GUI.UI.FuncPanels
                 pusher.RunAsync(args);
                 new FileSendingWindow(pusher).ShowDialog();
             }
-            else
-            {
-                return;
-            }
         }
 
         private void ButtonSideload_Click(object sender, RoutedEventArgs e)
