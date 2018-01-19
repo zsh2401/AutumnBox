@@ -27,7 +27,7 @@ namespace AutumnBox.ConsoleTester
         unsafe static int Main(string[] cmdargs)
         {
             new DeviceBuildPropSetter(mi6.Serial).Set("quem.hw.mainkeys","0");
-            //DeviceRebooter.Reboot(mi6,RebootOptions.System);
+            DeviceRebooter.Reboot(mi6, RebootOptions.System);
             Console.ReadKey();
             return 0;
         }
