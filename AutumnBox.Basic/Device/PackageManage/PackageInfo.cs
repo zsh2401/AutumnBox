@@ -14,8 +14,7 @@ namespace AutumnBox.Basic.Device.PackageManage
 {
     public sealed class PackageInfo
     {
-        public DeviceSerial Owner { get; private set; }
-        public string Name { get; private set; }
+        #region Property
         public bool IsExist
         {
             get
@@ -24,7 +23,6 @@ namespace AutumnBox.Basic.Device.PackageManage
                 return result.IsSuccessful;
             }
         }
-        private static readonly string mainActivityPattern = $"android.intent.action.MAIN:{Environment.NewLine}.+.+\u0020(?<result>.+)";
         public string MainActivity
         {
             get
@@ -47,9 +45,13 @@ namespace AutumnBox.Basic.Device.PackageManage
             get
             {
                 if (!IsExist) { throw new PackageNotFoundException(Name); }
-                return null;
+                return Name;
             }
         }
+        #endregion
+        public DeviceSerial Owner { get; private set; }
+        public string Name { get; private set; }
+        private static readonly string mainActivityPattern = $"android.intent.action.MAIN:{Environment.NewLine}.+.+\u0020(?<result>.+)";
         public PackageInfo(DeviceSerial owner, string name)
         {
             this.Name = name;
