@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Device.PackageManage
 {
-    public class PackageInfo
+    public sealed class PackageInfo
     {
         public DeviceSerial Owner { get; private set; }
         public string Name { get; private set; }
@@ -20,7 +20,8 @@ namespace AutumnBox.Basic.Device.PackageManage
         {
             get
             {
-                return false;
+                var result = PackageManagerShared.Executer.QuicklyShell(Owner, $"pm path {Name}");
+                return result.IsSuccessful;
             }
         }
         private static readonly string mainActivityPattern = $"android.intent.action.MAIN:{Environment.NewLine}.+.+\u0020(?<result>.+)";
@@ -28,6 +29,7 @@ namespace AutumnBox.Basic.Device.PackageManage
         {
             get
             {
+                if (!IsExist) { throw new PackageNotFoundException(Name); }
                 var exeResult = PackageManagerShared.Executer.QuicklyShell(Owner, $"dumpsys package {Name}");
                 var match = Regex.Match(exeResult.Output.ToString(), mainActivityPattern);
                 if (match.Success)
@@ -38,6 +40,14 @@ namespace AutumnBox.Basic.Device.PackageManage
                 {
                     return null;
                 }
+            }
+        }
+        public string ApplicationName
+        {
+            get
+            {
+                if (!IsExist) { throw new PackageNotFoundException(Name); }
+                return null;
             }
         }
         public PackageInfo(DeviceSerial owner, string name)

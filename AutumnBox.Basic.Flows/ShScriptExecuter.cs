@@ -6,6 +6,7 @@
 ** desc： ...
 *********************************************************************************/
 using AutumnBox.Basic.Device;
+using AutumnBox.Basic.Device.PackageManage;
 using AutumnBox.Basic.Executer;
 using AutumnBox.Basic.FlowFramework;
 using AutumnBox.Basic.Flows.Result;
@@ -27,12 +28,24 @@ namespace AutumnBox.Basic.Flows
     public abstract class ShScriptExecuter : FunctionFlow<ShScriptExecuterArgs, AdvanceResult>
     {
         public event EventHandler<Exception> FixFailed;
+        protected ShScriptExecuterArgs Args { get; private set; }
         protected virtual string AppPackageName { get; } = null;
-        protected virtual string AppActivity { get; } = null;
+        protected virtual string AppActivity
+        {
+            get
+            {
+                return new PackageInfo(Args.Serial, AppPackageName).MainActivity;
+            }
+        }
         protected abstract string ScriptPath { get; }
         protected virtual int Delay { get; } = 3000;
         protected CommandExecuterResult _result;
         protected ToolKit<ShScriptExecuterArgs> _tooKit;
+        protected override void Initialization(ShScriptExecuterArgs moduleArgs)
+        {
+            base.Initialization(moduleArgs);
+            Args = moduleArgs;
+        }
         protected override OutputData MainMethod(ToolKit<ShScriptExecuterArgs> toolKit)
         {
             _tooKit = toolKit;
