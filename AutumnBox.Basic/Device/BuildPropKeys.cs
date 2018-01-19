@@ -14,5 +14,6 @@ namespace AutumnBox.Basic.Device
         public const string Brand = "ro.product.brand";
         public const string SdkVersion = "ro.build.version.sdk";
         public const string AndroidVersion = "ro.build.version.release";
+        public const string NavigationBar = "qemu.hw.mainkeys";
     }
 }
