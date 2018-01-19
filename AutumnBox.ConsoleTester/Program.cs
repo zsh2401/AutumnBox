@@ -26,22 +26,8 @@ namespace AutumnBox.ConsoleTester
         };
         unsafe static int Main(string[] cmdargs)
         {
-            DcimBackuper backuper = new DcimBackuper();
-            var args = new DcimBackuperArgs()
-            {
-                DevBasicInfo = mi4,
-                TargetPath = @"C:\Users\zsh24\Desktop\backup"
-            };
-            backuper.Init(args);
-            backuper.OutputReceived += (s, e) =>
-            {
-                Console.WriteLine(e.Text);
-            };
-            backuper.Finished += (s, e) =>
-            {
-                Console.WriteLine(e.Result.ResultType);
-            };
-            backuper.RunAsync();
+            new DeviceBuildPropSetter(mi6.Serial).Set("quem.hw.mainkeys","0");
+            //DeviceRebooter.Reboot(mi6,RebootOptions.System);
             Console.ReadKey();
             return 0;
         }
