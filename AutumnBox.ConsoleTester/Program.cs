@@ -1,9 +1,11 @@
-﻿using AutumnBox.Basic.Device;
+﻿using AutumnBox.Basic.ACP;
+using AutumnBox.Basic.Device;
 using AutumnBox.Basic.Device.PackageManage;
 using AutumnBox.Basic.Executer;
 using AutumnBox.Basic.Flows;
 using System;
 using System.Diagnostics;
+using System.IO;
 
 namespace AutumnBox.ConsoleTester
 {
@@ -26,8 +28,12 @@ namespace AutumnBox.ConsoleTester
         };
         unsafe static int Main(string[] cmdargs)
         {
-            new DeviceBuildPropSetter(mi4.Serial).Set(BuildPropKeys.NavigationBar,"0");
-            DeviceRebooter.Reboot(mi4, RebootOptions.System);
+            var result = new ACPCommunicator("testxxxsadasd asdas asdas").Run();
+            //using (FileStream fs = new FileStream("x.txt", FileMode.OpenOrCreate,FileAccess.ReadWrite)) {
+            //    fs.Write(result.Data,0,result.Data.Length);
+            //    fs.Flush();
+            //}
+            Console.WriteLine("fCode->" + result.FirstCode);
             Console.ReadKey();
             return 0;
         }
