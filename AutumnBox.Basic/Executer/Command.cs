@@ -62,7 +62,7 @@ namespace AutumnBox.Basic.Executer
         /// <returns>命令对象</returns>
         public static Command MakeForAdb(string command)
         {
-            return new Command() { FileName = ConstData.FullAdbFileName, SpecificCommand = command };
+            return new Command() { FileName = AdbConstants.FullAdbFileName, SpecificCommand = command };
         }
         /// <summary>
         /// 构建一个使用adb.exe运行的命令,并且这个命令指定了设备
@@ -71,7 +71,7 @@ namespace AutumnBox.Basic.Executer
         /// <returns>命令对象</returns>
         public static Command MakeForAdb(DeviceSerial _serial, string command)
         {
-            return new Command() { FileName = ConstData.FullAdbFileName, serial = _serial, SpecificCommand = command };
+            return new Command() { FileName = AdbConstants.FullAdbFileName, serial = _serial, SpecificCommand = command };
         }
         /// <summary>
         /// 构建一个使用fastboot.exe运行的命令
@@ -80,7 +80,7 @@ namespace AutumnBox.Basic.Executer
         /// <returns>命令对象</returns>
         public static Command MakeForFastboot(string command)
         {
-            return new Command() { FileName = ConstData.FullFastbootFileName, SpecificCommand = command };
+            return new Command() { FileName = AdbConstants.FullFastbootFileName, SpecificCommand = command };
         }
         /// <summary>
         /// 构建一个使用fastboot.exe运行的命令,并且这个命令指定了设备
@@ -89,7 +89,7 @@ namespace AutumnBox.Basic.Executer
         /// <returns>命令对象</returns>
         public static Command MakeForFastboot(DeviceSerial _serial, string command)
         {
-            return new Command() { FileName = ConstData.FullFastbootFileName, serial = _serial, SpecificCommand = command };
+            return new Command() { FileName = AdbConstants.FullFastbootFileName, serial = _serial, SpecificCommand = command };
         }
         /// <summary>
         /// 构建一个完全自定义的命令对象

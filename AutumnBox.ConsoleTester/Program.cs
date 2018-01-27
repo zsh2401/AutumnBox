@@ -6,6 +6,7 @@ using AutumnBox.Basic.Flows;
 using System;
 using System.Diagnostics;
 using System.IO;
+using System.Text;
 
 namespace AutumnBox.ConsoleTester
 {
@@ -28,12 +29,10 @@ namespace AutumnBox.ConsoleTester
         };
         unsafe static int Main(string[] cmdargs)
         {
-            var result = new ACPCommunicator("testxxxsadasd asdas asdas").Run();
-            //using (FileStream fs = new FileStream("x.txt", FileMode.OpenOrCreate,FileAccess.ReadWrite)) {
-            //    fs.Write(result.Data,0,result.Data.Length);
-            //    fs.Flush();
-            //}
-            Console.WriteLine("fCode->" + result.FirstCode);
+            var pi = new PackageInfo(mi4.Serial, "com.miui.fm");
+            pi.LoadMoreInfo(()=> {
+                Console.WriteLine(pi.ApplicationName);
+            });
             Console.ReadKey();
             return 0;
         }

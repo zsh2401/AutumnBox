@@ -60,7 +60,7 @@ namespace AutumnBox.Basic.Adb
         /// <returns></returns>
         public static bool StartServer()
         {
-            var result = new CommandExecuter().Execute(ConstData.FullAdbFileName, "start-server");
+            var result = new CommandExecuter().Execute(AdbConstants.FullAdbFileName, "start-server");
             bool successful = result.IsSuccessful && !result.Output.All.ToString().Contains("cannot connect to daemon");
             if (!successful) AdbServerStartsFailed?.Invoke(new object(), new EventArgs());
             return successful;
@@ -71,7 +71,7 @@ namespace AutumnBox.Basic.Adb
         /// <returns></returns>
         public static bool StopServer()
         {
-            var result = new CommandExecuter().Execute(ConstData.FullAdbFileName, "start-server");
+            var result = new CommandExecuter().Execute(AdbConstants.FullAdbFileName, "start-server");
             if (!result.IsSuccessful) AdbServerStopsFailed?.Invoke(new object(), new EventArgs());
             return result.IsSuccessful;
         }

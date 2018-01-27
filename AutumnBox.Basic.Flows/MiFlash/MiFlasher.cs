@@ -69,7 +69,7 @@ namespace AutumnBox.Basic.Flows.MiFlash
                     CreateNoWindow = true,
                     Arguments = $"/q /c {batFileName} {serial.ToFullSerial()}",
                     FileName = "cmd.exe",
-                    WorkingDirectory = ConstData.toolsPath,
+                    WorkingDirectory = AdbConstants.toolsPath,
                     RedirectStandardError = true,
                     RedirectStandardOutput = true,
                 };

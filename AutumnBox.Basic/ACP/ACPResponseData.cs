@@ -8,6 +8,13 @@ namespace AutumnBox.Basic.ACP
 {
     public struct ACPResponseData
     {
+        public bool IsSuccessful
+        {
+            get
+            {
+                return FirstCode == ACP.FCODE_SUCCESS;
+            }
+        }
         public byte FirstCode { get; set; }
         public byte[] Data { get; set; }
     }

@@ -66,7 +66,7 @@ namespace AutumnBox.Basic.Executer
                     RedirectStandardOutput = true,
                     CreateNoWindow = true,
                     UseShellExecute = false,
-                    FileName = ConstData.FullAdbFileName,
+                    FileName = AdbConstants.FullAdbFileName,
                     Arguments = $" -s {serial.ToString()} shell"
                 }
             };

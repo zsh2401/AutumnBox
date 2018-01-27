@@ -15,7 +15,10 @@ namespace AutumnBox.Basic.ACP
     public static class ACP
     {
         public const ushort STD_PORT = 24020;
-        public const double VERSION = 0.8;
+        public const double VERSION = 0.9;
+        public const int TIMEOUT_VALUE = 5000;
+       
+        public const string ACP_ANDROID_PACKAGENAME = "top.atmb.autumnbox";
         //Commands
         public const String CMD_GETICON = "geticon";
         public const String CMD_GETPKGINFO = "getpkginfo";
@@ -26,7 +29,8 @@ namespace AutumnBox.Basic.ACP
         public const byte FCODE_ERR_WITH_EX = 2;
         public const byte FCODE_PKG_NOT_FOUND = 3;
         public const byte FCODE_UNKNOW_COMMAND = 4;
-
+        public const byte FCODE_NO_RESPONSE = 5;
+        public const byte FCODE_TIMEOUT = 6;
         public static void PrintLog(String TAG, String str)
         {
             Console.WriteLine(TAG + ":  " + str);

@@ -48,7 +48,7 @@ namespace AutumnBox.Basic.Flows
             {
                 Command command =
                     Command.MakeForCmd(
-                        $"{ConstData.FullAdbFileName} {toolKit.Args.Serial.ToFullSerial()} install -r \"{apkFileInfo.FullName}\"");
+                        $"{AdbConstants.FullAdbFileName} {toolKit.Args.Serial.ToFullSerial()} install -r \"{apkFileInfo.FullName}\"");
 
                 var installResult = toolKit.Executer.Execute(command);
                 bool currentSuccessful = !installResult.Output.Contains("failure");

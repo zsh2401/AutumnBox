@@ -19,7 +19,7 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Util
 {
-    public static class ConstData
+    public static class AdbConstants
     {
         public const string AUTUMNBOX_TEMP_FLODER = "/sdcard/autumnbox_temp";
         public const string ADB_FILENAME = "adb.exe";
