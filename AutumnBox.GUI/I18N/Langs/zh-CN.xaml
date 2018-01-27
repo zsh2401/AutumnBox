@@ -64,6 +64,20 @@
     <!--按钮-->
 
     
+    <!--PackgeManageWindow-->
+    <s:String x:Key="pmw_labelVersionName">版本号</s:String>
+    <s:String x:Key="pmw_labelPackageName">包名</s:String>
+    <s:String x:Key="pmw_labelAppName">应用名称</s:String>
+    <s:String x:Key="pmw_labelCodeSize">应用大小</s:String>
+    <s:String x:Key="pmw_labelCacheSize">缓存大小</s:String>
+    <s:String x:Key="pmw_labelDataSize">数据大小</s:String>
+    <s:String x:Key="pmw_btnClearData">清除数据</s:String>
+    <s:String x:Key="pmw_labelTotalSize">总大小</s:String>
+    <s:String x:Key="pmw_btnUninstall">卸载</s:String>
+    <s:String x:Key="pmw_btnBlock">冻结</s:String>
+    <s:String x:Key="pmw_btnUnblock">解冻</s:String>
+    <s:String x:Key="pmw_btnStop">停止</s:String>
+    <!--PackgeManageWindow-->
     
     <!--链接文字-->
 

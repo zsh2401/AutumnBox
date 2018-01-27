@@ -1,0 +1,27 @@
+﻿<Window x:Class="AutumnBox.GUI.Windows.PackageManageWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:cstm="clr-namespace:AutumnBox.GUI.UI.Cstm"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AutumnBox.GUI.Windows"
+        mc:Ignorable="d"
+        Title="PackageManageWindow" Height="357.85" Width="719.567" ResizeMode="NoResize" WindowStyle="None" Background="{DynamicResource BorderBrush}">
+    <Grid Margin="3,3,3,3" Background="{DynamicResource BackBrush}">
+        <cstm:CstmTitleBar Margin="0,0,0,312"></cstm:CstmTitleBar>
+        <ListBox HorizontalAlignment="Left" Margin="6,45,0,10" Width="182" Background="{x:Null}"/>
+        <Image HorizontalAlignment="Left" Height="111" Margin="193,45,0,0" VerticalAlignment="Top" Width="109" Source="/AutumnBox;component/Resources/Images/pm_default_icon.png"/>
+        <Button Content="{DynamicResource pmw_btnUninstall}" HorizontalAlignment="Right" Margin="0,0,10,10" Width="90" Background="{DynamicResource BtnBrush}" Foreground="{DynamicResource ForgBrush}" Height="25" VerticalAlignment="Bottom"/>
+        <Button Content="{DynamicResource pmw_btnBlock}" HorizontalAlignment="Left" Margin="206,0,0,10" Width="117" Background="{DynamicResource BtnBrush}" Foreground="{DynamicResource ForgBrush}" Height="25" VerticalAlignment="Bottom"/>
+        <Button Content="{DynamicResource pmw_btnStop}" HorizontalAlignment="Left" Margin="327,0,0,10" Width="117" Background="{DynamicResource BtnBrush}" Foreground="{DynamicResource ForgBrush}" Height="25" VerticalAlignment="Bottom"/>
+        <Button Content="{DynamicResource pmw_btnClearData}" HorizontalAlignment="Left" Margin="449,0,0,10" Width="117" Background="{DynamicResource BtnBrush}" Foreground="{DynamicResource ForgBrush}" Height="25" VerticalAlignment="Bottom"/>
+        <Label Content="{DynamicResource pmw_labelAppName}" HorizontalAlignment="Left" Margin="352,58,0,0" VerticalAlignment="Top" Foreground="{DynamicResource ForgBrush}" FontSize="14"/>
+        <Label Content="{DynamicResource pmw_labelCodeSize}" HorizontalAlignment="Left" Margin="206,171,0,0" VerticalAlignment="Top" Foreground="{DynamicResource ForgBrush}" FontSize="14"/>
+        <Label Content="{DynamicResource pmw_labelDataSize}" HorizontalAlignment="Left" Margin="206,202,0,0" VerticalAlignment="Top" Foreground="{DynamicResource ForgBrush}" FontSize="14"/>
+        <Label Content="{DynamicResource pmw_labelCacheSize}" HorizontalAlignment="Left" Margin="206,233,0,0" VerticalAlignment="Top" Foreground="{DynamicResource ForgBrush}" FontSize="14"/>
+        <Label Content="{DynamicResource pmw_labelTotalSize}" HorizontalAlignment="Left" Margin="206,264,0,0" VerticalAlignment="Top" Foreground="{DynamicResource ForgBrush}" FontSize="14"/>
+        <Label Content="{DynamicResource pmw_labelPackageName}" HorizontalAlignment="Left" Margin="352,92,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="{DynamicResource ForgBrush}" FontSize="14"/>
+        <Label Content="{DynamicResource pmw_labelVersionName}" HorizontalAlignment="Left" Margin="352,123,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="{DynamicResource ForgBrush}" FontSize="14"/>
+
+    </Grid>
+</Window>

@@ -240,6 +240,9 @@
       <DependentUpon>LoadingWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Windows\PackageManageWindow.xaml.cs">
+      <DependentUpon>PackageManageWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\PullingWindow.xaml.cs">
       <DependentUpon>PullingWindow.xaml</DependentUpon>
     </Compile>
@@ -419,6 +422,10 @@
       <SubType>Designer</SubType>
       <Generator>XamlIntelliSenseFileGenerator</Generator>
     </Page>
+    <Page Include="Windows\PackageManageWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\PullingWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -504,6 +511,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\title_icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\pm_default_icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

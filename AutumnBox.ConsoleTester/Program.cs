@@ -3,6 +3,7 @@ using AutumnBox.Basic.Device;
 using AutumnBox.Basic.Device.PackageManage;
 using AutumnBox.Basic.Executer;
 using AutumnBox.Basic.Flows;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -29,10 +30,8 @@ namespace AutumnBox.ConsoleTester
         };
         unsafe static int Main(string[] cmdargs)
         {
-            var pi = new PackageInfo(mi4.Serial, "com.miui.fm");
-            pi.LoadMoreInfo(()=> {
-                Console.WriteLine(pi.ApplicationName);
-            });
+           var pkgs =  PackageManager.GetPackages(mi4.Serial);
+            Console.WriteLine(pkgs.Count);
             Console.ReadKey();
             return 0;
         }

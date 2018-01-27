@@ -51,6 +51,8 @@
     <Compile Include="ACP\Acp.cs" />
     <Compile Include="ACP\ACPResponseData.cs" />
     <Compile Include="ACP\ACPTimeOutException.cs" />
+    <Compile Include="Device\PackageManage\PackageBasicInfo.cs" />
+    <Compile Include="Device\PackageManage\PackageManager.cs" />
     <Compile Include="Util\ForwardManager.cs" />
     <Compile Include="Device\BuildPropKeys.cs" />
     <Compile Include="Device\DeviceBuildPropSetter.cs" />

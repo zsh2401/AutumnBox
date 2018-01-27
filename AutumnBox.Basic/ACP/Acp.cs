@@ -20,6 +20,7 @@ namespace AutumnBox.Basic.ACP
        
         public const string ACP_ANDROID_PACKAGENAME = "top.atmb.autumnbox";
         //Commands
+        public const String CMD_PKGS = "getpkgs";
         public const String CMD_GETICON = "geticon";
         public const String CMD_GETPKGINFO = "getpkginfo";
         public const String CMD_TEST = "test";
