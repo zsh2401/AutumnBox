@@ -111,7 +111,9 @@ namespace AutumnBox.Basic.Flows
                 result.ErrorType = fixSuccess ? DeviceOwnerSetterErrType.None : result.ErrorType;
                 result.ResultType = fixSuccess ? ResultType.MaybeSuccessful : result.ResultType;
             }
-
+            if (result.ResultType == ResultType.Successful) {
+                result.ResultType = ResultType.Unsuccessful;
+            }
         }
         protected override void OnFinished(FinishedEventArgs<DeviceOwnerSetterResult> e)
         {
