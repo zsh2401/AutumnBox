@@ -29,8 +29,14 @@ namespace AutumnBox.GUI.Helper
         private static readonly Window _owner;
         static BoxHelper()
         {
-            _owner = Application.Current.MainWindow;
-            _owner_m = (MainWindow)_owner;
+            MainWindow mainWindow = null;
+            Window owner = null;
+            App.Current.Dispatcher.Invoke(()=> {
+                owner = Application.Current.MainWindow;
+                mainWindow = (MainWindow)owner;
+            });
+            _owner = owner;
+            _owner_m = mainWindow;
         }
         #region ChoiceWindow
         public static ChoiceResult ShowChoiceDialog(
