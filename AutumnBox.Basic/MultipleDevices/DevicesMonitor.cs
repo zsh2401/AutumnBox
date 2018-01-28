@@ -43,50 +43,58 @@ namespace AutumnBox.Basic.MultipleDevices
     /// <summary>
     /// 设备监听器
     /// </summary>
-    public sealed class DevicesMonitor
+    public static class DevicesMonitor
     {
-        private const int defaultInterval = 2000;
-        public event DevicesChangedHandler DevicesChanged;//当连接设备的情况变化时发生
-        private bool _continue = true;
-        private readonly int _interval;
-        private IDevicesGetter _devGetter = new DevicesGetter();
-        public DevicesMonitor(int interval = defaultInterval)
+        public static event DevicesChangedHandler DevicesChanged;//当连接设备的情况变化时发生
+        private sealed class DevicesMonitorCore
         {
-            this._interval = interval;
-        }
-        /// <summary>
-        /// 开始监听
-        /// </summary>
-        public void Begin()
-        {
-            _continue = true;
-            ListenAsync();
-        }
-        private async void ListenAsync()
-        {
-            var last = new DevicesList();
-            while (_continue)
-            {
-                var now = await Task.Run(() =>
-                {
-                    Thread.Sleep(_interval);
-                    return _devGetter.GetDevices();
-                });
-                if (now != last)
-                {
-                    Logger.T("Devices Changed");
-                    last = now;
-                    DevicesChanged?.Invoke(this, new DevicesChangedEventArgs(now));
-                }
+            private const int defaultInterval = 2000;
 
+            private bool _continue = true;
+            private readonly int _interval;
+            private IDevicesGetter _devGetter = new DevicesGetter();
+            public DevicesMonitorCore(int interval = defaultInterval)
+            {
+                this._interval = interval;
+            }
+            public void Begin()
+            {
+                _continue = true;
+                ListenAsync();
+            }
+            private async void ListenAsync()
+            {
+                var last = new DevicesList();
+                while (_continue)
+                {
+                    var now = await Task.Run(() =>
+                    {
+                        Thread.Sleep(_interval);
+                        return _devGetter.GetDevices();
+                    });
+                    if (now != last)
+                    {
+                        Logger.T("Devices Changed");
+                        last = now;
+                        DevicesChanged?.Invoke(this, new DevicesChangedEventArgs(now));
+                    }
+
+                }
+            }
+            public void Cancel()
+            {
+                _continue = false;
             }
         }
-        /// <summary>
-        /// 停止监听
-        /// </summary>
-        public void Cancel()
-        {
-            _continue = false;
+        private static DevicesMonitorCore core;
+        static DevicesMonitor() {
+            core = new DevicesMonitorCore();
+        }
+        public static void Begin() {
+            core.Begin();
+        }
+        public static void Stop() {
+            core.Cancel();
         }
     }
 }

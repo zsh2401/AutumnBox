@@ -175,6 +175,9 @@
     <Compile Include="UI\CstPanels\OpenNetDebugging.xaml.cs">
       <DependentUpon>OpenNetDebugging.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\FuncPanels\ApplicationPanel.xaml.cs">
+      <DependentUpon>ApplicationPanel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\FuncPanels\DeviceInfoPanel.xaml.cs">
       <DependentUpon>DeviceInfoPanel.xaml</DependentUpon>
     </Compile>
@@ -302,6 +305,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Resources\Themes\BasicTheme_files\CkbStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resources\Themes\BasicTheme_files\Colors.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -343,6 +350,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\CstPanels\OpenNetDebugging.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\FuncPanels\ApplicationPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

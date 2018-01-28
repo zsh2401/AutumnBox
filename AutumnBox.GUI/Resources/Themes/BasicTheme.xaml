@@ -8,6 +8,7 @@
         <ResourceDictionary Source="BasicTheme_files/Colors.xaml"/>
         <ResourceDictionary Source="BasicTheme_files/ButtonStyle.xaml"/>
         <ResourceDictionary Source="BasicTheme_files/TabItemStyle.xaml"/>
+        <ResourceDictionary Source="BasicTheme_files/CkbStyle.xaml"/>
         <ResourceDictionary Source="BasicTheme_files/TextBoxInputStyle.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

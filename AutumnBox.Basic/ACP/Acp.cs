@@ -16,7 +16,7 @@ namespace AutumnBox.Basic.ACP
     {
         public const ushort STD_PORT = 24020;
         public const double VERSION = 0.9;
-        public const int TIMEOUT_VALUE = 5000;
+        public const int TIMEOUT_VALUE = 10000;
        
         public const string ACP_ANDROID_PACKAGENAME = "top.atmb.autumnbox";
         //Commands

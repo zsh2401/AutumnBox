@@ -28,14 +28,6 @@ namespace AutumnBox.GUI
     /// </summary>
     public partial class App : Application
     {
-        internal class StaticProperty
-        {
-            internal static DevicesMonitor DevicesListener { get; private set; }
-            static StaticProperty()
-            {
-                DevicesListener = new DevicesMonitor();//设备监听器
-            }
-        }
         protected override void OnStartup(StartupEventArgs e)
         {
 #if !DEBUG

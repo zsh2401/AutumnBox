@@ -29,6 +29,7 @@ using AutumnBox.Basic.Adb;
 using AutumnBox.Basic.FlowFramework;
 using AutumnBox.Basic.Function;
 using AutumnBox.Basic.Util;
+using AutumnBox.Basic.MultipleDevices;
 
 namespace AutumnBox.GUI
 {
@@ -46,7 +47,6 @@ namespace AutumnBox.GUI
         {
             InitializeComponent();
             TitleBar.ImgMin.Visibility = Visibility.Visible;
-            DevicesPanel.Monitor = App.StaticProperty.DevicesListener;
             DevicesPanel.SelectionChanged += (s, e) =>
             {
                 if (this.DevicesPanel.CurrentSelect.DevInfo.State == DeviceState.None)//如果没选择
@@ -78,7 +78,7 @@ namespace AutumnBox.GUI
             };
             AdbHelper.AdbServerStartsFailed += (s, e) =>
             {
-                App.StaticProperty.DevicesListener.Cancel();
+                DevicesMonitor.Stop();
                 bool _continue = true;
                 Dispatcher.Invoke(() =>
                 {
@@ -98,7 +98,7 @@ namespace AutumnBox.GUI
                 Task.Run(() =>
                 {
                     Thread.Sleep(3000);
-                    App.Current.Dispatcher.Invoke(App.StaticProperty.DevicesListener.Begin);
+                    App.Current.Dispatcher.Invoke(DevicesMonitor.Begin);
                 });
             };
 #if DEBUG
@@ -143,7 +143,7 @@ namespace AutumnBox.GUI
                     {
                         new FastGrid(this.GridMain, new About(), () =>
                         {
-                            App.StaticProperty.DevicesListener.Begin();
+                            DevicesMonitor.Begin();
                             //更新检测
                             new UpdateChecker().RunAsync((r) =>
                             {
@@ -158,7 +158,7 @@ namespace AutumnBox.GUI
                     else
                     {
                         //开始设备监听
-                        App.StaticProperty.DevicesListener.Begin();
+                        DevicesMonitor.Begin();
                     }
                 });
             });

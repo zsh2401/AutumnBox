@@ -6,22 +6,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AutumnBox.GUI.Windows"
         mc:Ignorable="d"
-        Title="PackageManageWindow" Height="357.85" Width="719.567" ResizeMode="NoResize" WindowStyle="None" Background="{DynamicResource BorderBrush}">
+        Title="PackageManageWindow" Height="498.35" Width="1042.567" ResizeMode="NoResize" WindowStyle="None" Background="{DynamicResource BorderBrush}">
     <Grid Margin="3,3,3,3" Background="{DynamicResource BackBrush}">
-        <cstm:CstmTitleBar Margin="0,0,0,312"></cstm:CstmTitleBar>
-        <ListBox HorizontalAlignment="Left" Margin="6,45,0,10" Width="182" Background="{x:Null}"/>
-        <Image HorizontalAlignment="Left" Height="111" Margin="193,45,0,0" VerticalAlignment="Top" Width="109" Source="/AutumnBox;component/Resources/Images/pm_default_icon.png"/>
-        <Button Content="{DynamicResource pmw_btnUninstall}" HorizontalAlignment="Right" Margin="0,0,10,10" Width="90" Background="{DynamicResource BtnBrush}" Foreground="{DynamicResource ForgBrush}" Height="25" VerticalAlignment="Bottom"/>
-        <Button Content="{DynamicResource pmw_btnBlock}" HorizontalAlignment="Left" Margin="206,0,0,10" Width="117" Background="{DynamicResource BtnBrush}" Foreground="{DynamicResource ForgBrush}" Height="25" VerticalAlignment="Bottom"/>
-        <Button Content="{DynamicResource pmw_btnStop}" HorizontalAlignment="Left" Margin="327,0,0,10" Width="117" Background="{DynamicResource BtnBrush}" Foreground="{DynamicResource ForgBrush}" Height="25" VerticalAlignment="Bottom"/>
-        <Button Content="{DynamicResource pmw_btnClearData}" HorizontalAlignment="Left" Margin="449,0,0,10" Width="117" Background="{DynamicResource BtnBrush}" Foreground="{DynamicResource ForgBrush}" Height="25" VerticalAlignment="Bottom"/>
-        <Label Content="{DynamicResource pmw_labelAppName}" HorizontalAlignment="Left" Margin="352,58,0,0" VerticalAlignment="Top" Foreground="{DynamicResource ForgBrush}" FontSize="14"/>
-        <Label Content="{DynamicResource pmw_labelCodeSize}" HorizontalAlignment="Left" Margin="206,171,0,0" VerticalAlignment="Top" Foreground="{DynamicResource ForgBrush}" FontSize="14"/>
-        <Label Content="{DynamicResource pmw_labelDataSize}" HorizontalAlignment="Left" Margin="206,202,0,0" VerticalAlignment="Top" Foreground="{DynamicResource ForgBrush}" FontSize="14"/>
-        <Label Content="{DynamicResource pmw_labelCacheSize}" HorizontalAlignment="Left" Margin="206,233,0,0" VerticalAlignment="Top" Foreground="{DynamicResource ForgBrush}" FontSize="14"/>
-        <Label Content="{DynamicResource pmw_labelTotalSize}" HorizontalAlignment="Left" Margin="206,264,0,0" VerticalAlignment="Top" Foreground="{DynamicResource ForgBrush}" FontSize="14"/>
-        <Label Content="{DynamicResource pmw_labelPackageName}" HorizontalAlignment="Left" Margin="352,92,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="{DynamicResource ForgBrush}" FontSize="14"/>
-        <Label Content="{DynamicResource pmw_labelVersionName}" HorizontalAlignment="Left" Margin="352,123,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="{DynamicResource ForgBrush}" FontSize="14"/>
+        <cstm:CstmTitleBar VerticalAlignment="Top"/>
+        <Button Content="{DynamicResource pmw_btnRefreshAppList}" HorizontalAlignment="Left" Margin="6,40,0,0" Width="104" Background="{DynamicResource BtnBrush}" Foreground="{DynamicResource ForgBrush}" FontSize="10" Click="Button_Click" Height="21" VerticalAlignment="Top"/>
 
+        <ListBox x:Name="ListApps" DisplayMemberPath="Name"  HorizontalAlignment="Left" Margin="6,66,0,10" Width="222" Background="{x:Null}" Foreground="{DynamicResource ForgBrush}" SelectionChanged="ListApps_SelectionChanged"/>
+        <CheckBox x:Name="CkbShowSystemApp" Content="{DynamicResource pmw_ckbShowSystemApp}" HorizontalAlignment="Left" Margin="115,44,0,0" VerticalAlignment="Top" BorderBrush="{DynamicResource ForgBrush}" Foreground="{DynamicResource ForgBrush}" Background="{x:Null}" Width="113" Style="{DynamicResource CheckBoxStyle1}"/>
+        <TextBlock HorizontalAlignment="Left" Margin="394,201,0,0" TextWrapping="Wrap" Text="{DynamicResource pmw_msg}" VerticalAlignment="Top" FontSize="18" Foreground="{DynamicResource ForgBrush}"/>
+        <Grid x:Name="GridApplicationPanelContainer"  Margin="250,66,10,10"/>
     </Grid>
 </Window>

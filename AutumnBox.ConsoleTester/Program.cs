@@ -1,13 +1,9 @@
-﻿using AutumnBox.Basic.ACP;
-using AutumnBox.Basic.Device;
+﻿using AutumnBox.Basic.Device;
 using AutumnBox.Basic.Device.PackageManage;
-using AutumnBox.Basic.Executer;
-using AutumnBox.Basic.Flows;
-using Newtonsoft.Json.Linq;
+using AutumnBox.Basic.MultipleDevices;
 using System;
-using System.Diagnostics;
-using System.IO;
-using System.Text;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace AutumnBox.ConsoleTester
 {
@@ -30,8 +26,13 @@ namespace AutumnBox.ConsoleTester
         };
         unsafe static int Main(string[] cmdargs)
         {
-           var pkgs =  PackageManager.GetPackages(mi4.Serial);
-            Console.WriteLine(pkgs.Count);
+            DevicesMonitor.Begin();
+           List<PackageBasicInfo> pkgs =  PackageManager.GetPackages(mi6.Serial);
+            var userApps = from app in pkgs
+                           where !app.IsSystemApp
+                           select app;
+            Console.WriteLine(userApps.Count());
+            Console.WriteLine(userApps.First().Name);
             Console.ReadKey();
             return 0;
         }

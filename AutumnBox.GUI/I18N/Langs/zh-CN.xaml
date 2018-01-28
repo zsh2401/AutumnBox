@@ -7,6 +7,7 @@
     <s:String x:Key="LanguageName">简体中文</s:String>
 
     <!--按钮-->
+    <s:String x:Key="btnAppManager">应用管理</s:String>
     <s:String x:Key="btnDisconnect">仅断开网络调试</s:String>
     <s:String x:Key="btnCloseDebugging">彻底关闭该设备网络调试</s:String>
     <s:String x:Key="btnDisableNetdebugging">关闭当前设备网络调试</s:String>
@@ -65,6 +66,9 @@
 
     
     <!--PackgeManageWindow-->
+    <s:String x:Key="pmw_msg">I'd love to chang the world...but i dont know how to do</s:String>
+    <s:String x:Key="pmw_ckbShowSystemApp">显示系统应用</s:String>
+    <s:String x:Key="pmw_btnRefreshAppList">刷新</s:String>
     <s:String x:Key="pmw_labelVersionName">版本号</s:String>
     <s:String x:Key="pmw_labelPackageName">包名</s:String>
     <s:String x:Key="pmw_labelAppName">应用名称</s:String>

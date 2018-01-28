@@ -13,19 +13,6 @@ namespace AutumnBox.GUI.UI.FuncPanels
     /// </summary>
     public partial class DevicesPanel : UserControl
     {
-        public DevicesMonitor Monitor
-        {
-            set
-            {
-                if (_monitor != null)
-                {
-                    _monitor.DevicesChanged -= _monitor_DevicesChanged;
-                }
-                value.DevicesChanged += _monitor_DevicesChanged;
-                _monitor = value;
-            }
-        }
-        private DevicesMonitor _monitor;
         public DeviceConnection CurrentSelect
         {
             get
@@ -64,14 +51,17 @@ namespace AutumnBox.GUI.UI.FuncPanels
         {
             InitializeComponent();
             BtnEnableDisableNetDebugging.Visibility = Visibility.Hidden;
+            DevicesMonitor.DevicesChanged += _monitor_DevicesChanged;
         }
         private void _monitor_DevicesChanged(object sender, DevicesChangedEventArgs e)
         {
-            this.ListBoxMain.ItemsSource = e.DevicesList;
-            if (ListBoxMain.SelectedIndex == -1 && e.DevicesList.Count > 0)
-            {
-                ListBoxMain.SelectedIndex = 0;
-            }
+            this.Dispatcher.Invoke(()=> {
+                this.ListBoxMain.ItemsSource = e.DevicesList;
+                if (ListBoxMain.SelectedIndex == -1 && e.DevicesList.Count > 0)
+                {
+                    ListBoxMain.SelectedIndex = 0;
+                }
+            });
         }
         private bool CurrentSelectionIsNetDebugging
         {

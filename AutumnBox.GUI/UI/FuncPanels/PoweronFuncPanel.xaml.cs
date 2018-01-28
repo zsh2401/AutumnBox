@@ -439,5 +439,10 @@ namespace AutumnBox.GUI.UI.FuncPanels
                 new PullingWindow(backuper) { Owner = App.Current.MainWindow }.Show();
             }
         }
+
+        private void BtnAppManager_Click(object sender, RoutedEventArgs e)
+        {
+            new PackageManageWindow(_currentDevInfo.Serial).ShowDialog();
+        }
     }
 }

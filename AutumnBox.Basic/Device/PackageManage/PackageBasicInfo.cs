@@ -15,5 +15,6 @@ namespace AutumnBox.Basic.Device.PackageManage
     {
         public String Name { get; set; }
         public String PackageName { get; set; }
+        public bool IsSystemApp { get; set; }
     }
 }
