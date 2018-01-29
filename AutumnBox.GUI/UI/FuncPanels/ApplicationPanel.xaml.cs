@@ -27,7 +27,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
         private readonly PackageBasicInfo pkgInfo;
         //bool参数的作用是,是否删除当前项的App选项
         private readonly Action<bool> closeCallback;
-        public ApplicationPanel(DeviceSerial device,PackageBasicInfo info, Action<bool> closeCallback)
+        public ApplicationPanel(DeviceSerial device, PackageBasicInfo info, Action<bool> closeCallback)
         {
             InitializeComponent();
             this.closeCallback = closeCallback;
@@ -38,12 +38,14 @@ namespace AutumnBox.GUI.UI.FuncPanels
             SetIcon();
             SetUsedSpaceInfo();
         }
-        private async void SetIcon() {
+        private async void SetIcon()
+        {
             var datas = await Task.Run(() =>
             {
                 return PackageManager.GetIcon(serial, pkgInfo.PackageName);
             });
-            if (datas != null) {
+            if (datas != null)
+            {
                 BitmapImage bmp = new BitmapImage();
                 bmp.BeginInit();
                 bmp.StreamSource = new MemoryStream(datas);
@@ -51,9 +53,11 @@ namespace AutumnBox.GUI.UI.FuncPanels
                 ImgAppIcon.Source = bmp;
             }
         }
-        private async void SetUsedSpaceInfo() {
-            var info = await Task.Run(()=> {
-                return PackageManager.GetAppUsedSpace(serial,pkgInfo.PackageName);
+        private async void SetUsedSpaceInfo()
+        {
+            var info = await Task.Run(() =>
+            {
+                return PackageManager.GetAppUsedSpace(serial, pkgInfo.PackageName);
             });
             TBCacheSize.Text = info.CacheSize.ToString();
             TBCodeSize.Text = info.CodeSize.ToString();
@@ -63,18 +67,29 @@ namespace AutumnBox.GUI.UI.FuncPanels
 
         private void BtnUninstall_Click(object sender, RoutedEventArgs e)
         {
-            
-            var success  = PackageManager.UninstallApp(serial,pkgInfo.PackageName);
-            if (success) {
+
+            var success = PackageManager.UninstallApp(serial, pkgInfo.PackageName);
+            if (success)
+            {
                 closeCallback(true);
+            }
+            else
+            {
+                ShowBottomMessage(App.Current.Resources["pmw_msgUninstallFailed"].ToString());
             }
         }
 
         private async void BtnCleanData_Click(object sender, RoutedEventArgs e)
         {
-            await Task.Run(()=> {
-                PackageManager.CleanAppData(serial, pkgInfo.PackageName);
+            var success = await Task.Run(() =>
+            {
+                return PackageManager.CleanAppData(serial, pkgInfo.PackageName);
             });
+
+            if (!success)
+            {
+                ShowBottomMessage(success ? App.Current.Resources["pmw_msgClearSuccess"].ToString() : App.Current.Resources["pmw_msgClearFailed"].ToString());
+            }
             SetUsedSpaceInfo();
         }
         private void ShowBottomMessage(String msg) { }
