@@ -69,5 +69,14 @@ namespace AutumnBox.GUI.UI.FuncPanels
                 closeCallback(true);
             }
         }
+
+        private async void BtnCleanData_Click(object sender, RoutedEventArgs e)
+        {
+            await Task.Run(()=> {
+                PackageManager.CleanAppData(serial, pkgInfo.PackageName);
+            });
+            SetUsedSpaceInfo();
+        }
+        private void ShowBottomMessage(String msg) { }
     }
 }

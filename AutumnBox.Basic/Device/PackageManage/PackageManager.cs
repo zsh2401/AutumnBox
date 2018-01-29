@@ -76,7 +76,8 @@ namespace AutumnBox.Basic.Device.PackageManage
             return exeResult.IsSuccessful;
         }
         public static bool CleanAppData(DeviceSerial device, string packageName) {
-            var exeResult = PackageManagerShared.Executer.Execute(Command.MakeForAdb(device, "pm clear " + packageName));
+            var exeResult = PackageManagerShared.Executer.QuicklyShell(device, "pm clear " + packageName);
+            Logger.D($"clean {packageName} data success?{exeResult.IsSuccessful}");
             return exeResult.IsSuccessful;
         }
         public static AppUsedSpaceInfo GetAppUsedSpace(DeviceSerial serial, String packageName) {
