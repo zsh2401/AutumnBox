@@ -25,9 +25,12 @@ namespace AutumnBox.GUI.UI.FuncPanels
     {
         private readonly DeviceSerial serial;
         private readonly PackageBasicInfo pkgInfo;
-        public ApplicationPanel(DeviceSerial device,PackageBasicInfo info)
+        //bool参数的作用是,是否删除当前项的App选项
+        private readonly Action<bool> closeCallback;
+        public ApplicationPanel(DeviceSerial device,PackageBasicInfo info, Action<bool> closeCallback)
         {
             InitializeComponent();
+            this.closeCallback = closeCallback;
             this.pkgInfo = info;
             this.serial = device;
             TBAppName.Text = info.Name;
@@ -44,7 +47,6 @@ namespace AutumnBox.GUI.UI.FuncPanels
                 BitmapImage bmp = new BitmapImage();
                 bmp.BeginInit();
                 bmp.StreamSource = new MemoryStream(datas);
-                File.WriteAllBytes("x.png",datas);
                 bmp.EndInit();
                 ImgAppIcon.Source = bmp;
             }
@@ -57,6 +59,15 @@ namespace AutumnBox.GUI.UI.FuncPanels
             TBCodeSize.Text = info.CodeSize.ToString();
             TBDataSize.Text = info.DataSize.ToString();
             TBTotalSize.Text = info.TotalSize.ToString();
+        }
+
+        private void BtnUninstall_Click(object sender, RoutedEventArgs e)
+        {
+            
+            var success  = PackageManager.UninstallApp(serial,pkgInfo.PackageName);
+            if (success) {
+                closeCallback(true);
+            }
         }
     }
 }

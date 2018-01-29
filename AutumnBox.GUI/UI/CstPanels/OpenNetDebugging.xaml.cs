@@ -88,13 +88,13 @@ namespace AutumnBox.GUI.UI.CstPanels
                                              )
                                 );
                             });
+                            var connecter = new NetDeviceConnecter();
+                            connecter.Init(new NetDeviceConnecterArgs()
+                            {
+                                IPEndPoint = new IPEndPoint(IP, port)
+                            });
+                            connecter.Run();
                         }
-                        var connecter = new NetDeviceConnecter();
-                        connecter.Init(new NetDeviceConnecterArgs()
-                        {
-                            IPEndPoint = new IPEndPoint(IP, port)
-                        });
-                        return connecter.Run();
                     });
                 }
                 catch (Exception ex)

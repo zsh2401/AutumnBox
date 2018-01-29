@@ -12,11 +12,11 @@ using System.Threading.Tasks;
 namespace AutumnBox.Basic.ACP
 {
     /*ACP标准*/
-    public static class ACP
+    public static class ACPConstants
     {
         public const ushort STD_PORT = 24020;
-        public const double VERSION = 0.9;
-        public const int TIMEOUT_VALUE = 10000;
+        public const double VERSION = 2.0;
+        public const int TIMEOUT_VALUE = 5000;
        
         public const string ACP_ANDROID_PACKAGENAME = "top.atmb.autumnbox";
         //Commands
@@ -24,6 +24,7 @@ namespace AutumnBox.Basic.ACP
         public const String CMD_GETICON = "geticon";
         public const String CMD_GETPKGINFO = "getpkginfo";
         public const String CMD_TEST = "test";
+        public const String CMD_EXIT = "exit";
         //Error Codes
         public const byte FCODE_SUCCESS = 0;
         public const byte FCODE_UNKNOW_ERR = 1;
@@ -32,6 +33,7 @@ namespace AutumnBox.Basic.ACP
         public const byte FCODE_UNKNOW_COMMAND = 4;
         public const byte FCODE_NO_RESPONSE = 5;
         public const byte FCODE_TIMEOUT = 6;
+        public const byte FCODE_EXIT = 7;
         public static void PrintLog(String TAG, String str)
         {
             Console.WriteLine(TAG + ":  " + str);

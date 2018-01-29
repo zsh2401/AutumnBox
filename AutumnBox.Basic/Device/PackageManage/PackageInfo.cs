@@ -58,27 +58,6 @@ namespace AutumnBox.Basic.Device.PackageManage
             this.Name = name;
             this.Owner = owner;
         }
-        public void LoadMoreInfo(Action callback = null)
-        {
-            try
-            {
-                var response = new ACPRequestSender(Owner).SendRequest(ACP.ACP.CMD_GETPKGINFO + " " + Name);
-                if (response.IsSuccessful == false) {
-                    callback?.Invoke();
-                    return;
-                }
-                string text = Encoding.UTF8.GetString(response.Data);
-                var jObj = JObject.Parse(text);
-                ApplicationName = jObj["name"].ToString();
-                CodeSize = long.Parse(jObj["codeSize"].ToString());
-                CacheSize = long.Parse(jObj["cacheSize"].ToString());
-                DataSize = long.Parse(jObj["dataSize"].ToString());
-            }
-            catch (Exception ex)
-            {
-                Logger.T("getting package info failed", ex);
-            }
-            callback?.Invoke();
-        }
+        
     }
 }

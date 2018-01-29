@@ -4,6 +4,7 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.Basic.ACP;
+using AutumnBox.Basic.Executer;
 using AutumnBox.Support.CstmDebug;
 using Newtonsoft.Json.Linq;
 using System;
@@ -19,7 +20,12 @@ namespace AutumnBox.Basic.Device.PackageManage
     {
         public static byte[] GetIcon(DeviceSerial device, String packageName)
         {
-            var response = ACPRequestSender.SendRequest(device, ACP.ACP.CMD_GETICON + " " + packageName);
+            var builder = new ACPCommand.Builder
+            {
+                BaseCommand = ACPConstants.CMD_GETICON
+            };
+            builder.SetArgs(packageName);
+            var response = AcpCommunicator.GetAcpCommunicator(device).SendCommand(builder.ToCommand());
             if (response.IsSuccessful)
             {
                 return response.Data;
@@ -31,8 +37,11 @@ namespace AutumnBox.Basic.Device.PackageManage
         }
         public static List<PackageBasicInfo> GetPackages(DeviceSerial serial)
         {
-
-            var response = ACPRequestSender.SendRequest(serial, ACP.ACP.CMD_PKGS);
+            var builder = new ACPCommand.Builder
+            {
+                BaseCommand = ACPConstants.CMD_PKGS
+            };
+            var response = AcpCommunicator.GetAcpCommunicator(serial).SendCommand(builder.ToCommand());
             if (response.IsSuccessful)
             {
                 var text = Encoding.UTF8.GetString(response.Data);
@@ -62,10 +71,23 @@ namespace AutumnBox.Basic.Device.PackageManage
                     return DataSize + CodeSize + CodeSize;
                 } }
         }
+        public static bool UninstallApp(DeviceSerial device, string packageName) {
+            var exeResult = PackageManagerShared.Executer.Execute(Command.MakeForAdb(device, "uninstall " + packageName));
+            return exeResult.IsSuccessful;
+        }
+        public static bool CleanAppData(DeviceSerial device, string packageName) {
+            var exeResult = PackageManagerShared.Executer.Execute(Command.MakeForAdb(device, "pm clear " + packageName));
+            return exeResult.IsSuccessful;
+        }
         public static AppUsedSpaceInfo GetAppUsedSpace(DeviceSerial serial, String packageName) {
             var result = new AppUsedSpaceInfo() { DataSize = -1, CacheSize = -1, CodeSize = -1 };
             try {
-                var response = ACPRequestSender.SendRequest(serial, ACP.ACP.CMD_GETPKGINFO + " " + packageName);
+                var builder = new ACPCommand.Builder
+                {
+                    BaseCommand = ACPConstants.CMD_GETPKGINFO
+                };
+                builder.SetArgs(packageName);
+                var response = AcpCommunicator.GetAcpCommunicator(serial).SendCommand(builder.ToCommand());
                 if (response.IsSuccessful)
                 {
                     var json = JObject.Parse(Encoding.UTF8.GetString(response.Data));

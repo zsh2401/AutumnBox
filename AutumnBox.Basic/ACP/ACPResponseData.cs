@@ -12,7 +12,7 @@ namespace AutumnBox.Basic.ACP
         {
             get
             {
-                return FirstCode == ACP.FCODE_SUCCESS;
+                return FirstCode == ACPConstants.FCODE_SUCCESS;
             }
         }
         public byte FirstCode { get; set; }

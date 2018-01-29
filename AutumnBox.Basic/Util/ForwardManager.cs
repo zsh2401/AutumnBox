@@ -73,7 +73,6 @@ namespace AutumnBox.Basic.Util
                 var matches = regex.Matches(queryResult.Output.ToString());
                 foreach (Match match in matches)
                 {
-                    Logger.D("matching");
                     forwards.Add(new ForwardInfo(
                         new DeviceSerial(match.Result("${serial}")),
                         ushort.Parse(match.Result("${local}")),
@@ -135,7 +134,7 @@ namespace AutumnBox.Basic.Util
         /// <returns></returns>
         private static ushort GetIdlePort()
         {
-            ushort port = (ushort)ran.Next(ACP.ACP.STD_PORT, ushort.MaxValue);
+            ushort port = (ushort)ran.Next(ACPConstants.STD_PORT, ushort.MaxValue);
             if (port.IsIdlePort())
             {
                 return port;

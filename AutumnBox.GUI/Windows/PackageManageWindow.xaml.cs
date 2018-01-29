@@ -29,20 +29,18 @@ namespace AutumnBox.GUI.Windows
             this.device = device;
         }
 
-        private async void RefreshAppList(bool filterSystemApp) {
+        private List<PackageBasicInfo> CurrentPackages;
+        private async void RefreshAppList(bool filterSystemApp)
+        {
 
-            var pkgs = await Task.Run(() =>
+            CurrentPackages = await Task.Run(() =>
             {
-                return PackageManager.GetPackages(device);
+                return (from app in PackageManager.GetPackages(device)
+                        where !app.IsSystemApp || filterSystemApp
+                        orderby app.Name
+                        select app).ToList();
             });
-            if (filterSystemApp) {
-                ListApps.ItemsSource = pkgs;
-            } else {
-                ListApps.ItemsSource = from app in pkgs
-                                       where !app.IsSystemApp
-                                       orderby app.Name
-                                       select app;             
-            }
+            ListApps.ItemsSource = CurrentPackages;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -53,8 +51,17 @@ namespace AutumnBox.GUI.Windows
         private void ListApps_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             GridApplicationPanelContainer.Children.Clear();
-            if (ListApps.SelectedIndex >= 0) {
-                GridApplicationPanelContainer.Children.Add( new ApplicationPanel(device,(PackageBasicInfo)ListApps.SelectedItem));
+            if (ListApps.SelectedIndex >= 0)
+            {
+                var crtSelect = (PackageBasicInfo)ListApps.SelectedItem;
+                GridApplicationPanelContainer.Children.Add(new ApplicationPanel(device, (PackageBasicInfo)ListApps.SelectedItem, (deleteSelection) =>
+                {
+                    GridApplicationPanelContainer.Children.Clear();
+                    if (deleteSelection)
+                    {
+                        RefreshAppList(CkbShowSystemApp.IsChecked == true);
+                    }
+                }));
             }
         }
     }
