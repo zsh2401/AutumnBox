@@ -37,6 +37,7 @@ namespace AutumnBox.GUI.Windows
         {
             this.Owner = App.Current.MainWindow;
             this.filePusher = pusher;
+            this.filePusher.MustTiggerAnyFinishedEvent = true;
             filePusher.Finished += (s, e) =>
             {
                 this.Dispatcher.Invoke(() =>

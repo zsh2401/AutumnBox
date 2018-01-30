@@ -45,6 +45,9 @@ namespace AutumnBox.Basic.Device
         {
             return Get(BuildPropKeys.Brand);
         }
+        public string GetBoard() {
+            return Get(BuildPropKeys.Board);
+        }
         public int? GetSdkVersion()
         {
             try
