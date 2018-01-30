@@ -1,5 +1,6 @@
 ﻿using AutumnBox.Basic.Device;
 using AutumnBox.Basic.Device.PackageManage;
+using AutumnBox.GUI.Helper;
 using AutumnBox.GUI.UI.FuncPanels;
 using System;
 using System.Collections.Generic;
@@ -30,17 +31,27 @@ namespace AutumnBox.GUI.Windows
         }
 
         private List<PackageBasicInfo> CurrentPackages;
+        public void ShowMessage(String message)
+        {
+            BoxHelper.ShowMessageDialog("warning", message);
+        }
         private async void RefreshAppList(bool filterSystemApp)
         {
-
-            CurrentPackages = await Task.Run(() =>
+            var packages = await Task.Run(() =>
             {
-                return (from app in PackageManager.GetPackages(device)
-                        where !app.IsSystemApp || filterSystemApp
-                        orderby app.Name
-                        select app).ToList();
+                return PackageManager.GetPackages(device);
             });
+            if (packages == null)
+            {
+                ShowMessage(App.Current.Resources["pmw_msgRefreshFailed"].ToString());
+                return;
+            }
+            CurrentPackages =  (from app in packages
+                            where !app.IsSystemApp || filterSystemApp
+                            orderby app.Name
+                            select app).ToList();
             ListApps.ItemsSource = CurrentPackages;
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

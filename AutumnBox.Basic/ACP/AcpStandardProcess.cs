@@ -17,7 +17,7 @@ namespace AutumnBox.Basic.ACP
     public static class AcpStandardProcess
     {
         private const int tempBufferSize = 4096;
-        private const int receiveInterval = 100;
+        private const int receiveInterval = 200;
 
         public static void Send(Socket client, byte[] request) {
             client.Send(request);

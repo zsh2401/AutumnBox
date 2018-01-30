@@ -68,6 +68,7 @@
     <!--PackgeManageWindow-->
     <s:String x:Key="pmw_msg">I'd love to change the world...but i dont know how to do</s:String>
     <s:String x:Key="pmw_msgClearSuccess">清理成功</s:String>
+    <s:String x:Key="pmw_msgRefreshFailed">刷新失败</s:String>
     <s:String x:Key="pmw_msgClearFailed">清理失败</s:String>
     <s:String x:Key="pmw_msgUninstallFailed">卸载失败</s:String>
     <s:String x:Key="pmw_ckbShowSystemApp">显示系统应用</s:String>

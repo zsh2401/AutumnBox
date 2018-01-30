@@ -4,6 +4,8 @@
 ** desc： ...
 *************************************************/
 
+using System.Text;
+
 namespace AutumnBox.Basic.ACP
 {
     public struct ACPResponseData
@@ -17,5 +19,9 @@ namespace AutumnBox.Basic.ACP
         }
         public byte FirstCode { get; set; }
         public byte[] Data { get; set; }
+        public override string ToString()
+        {
+            return Encoding.UTF8.GetString(Data);
+        }
     }
 }

@@ -67,7 +67,7 @@ namespace AutumnBox.Basic.Util
                 Command.MakeForAdb("forward --list");
 
             var queryResult = executer.Execute(queryCommand);
-            Logger.D(queryResult.Output.ToString());
+            //Logger.D(queryResult.Output.ToString());
             if (queryResult.IsSuccessful)
             {
                 var matches = regex.Matches(queryResult.Output.ToString());

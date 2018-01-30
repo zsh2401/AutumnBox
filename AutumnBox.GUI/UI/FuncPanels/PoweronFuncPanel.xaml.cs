@@ -442,7 +442,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
 
         private void BtnAppManager_Click(object sender, RoutedEventArgs e)
         {
-            new PackageManageWindow(_currentDevInfo.Serial).ShowDialog();
+            new PackageManageWindow(_currentDevInfo.Serial) { Owner =App.Current.MainWindow}.Show();
         }
     }
 }

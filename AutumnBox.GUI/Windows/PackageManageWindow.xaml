@@ -6,7 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AutumnBox.GUI.Windows"
         mc:Ignorable="d"
-        Title="PackageManageWindow" Height="498.35" Width="1042.567" ResizeMode="NoResize" WindowStyle="None" Background="{DynamicResource BorderBrush}">
+        Title="PackageManageWindow" Height="498.35" Width="1042.567" ResizeMode="NoResize" WindowStyle="None" Background="{DynamicResource BorderBrush}" WindowStartupLocation="CenterOwner">
     <Grid Margin="3,3,3,3" Background="{DynamicResource BackBrush}">
         <cstm:CstmTitleBar VerticalAlignment="Top"/>
         <Button Content="{DynamicResource pmw_btnRefreshAppList}" HorizontalAlignment="Left" Margin="6,40,0,0" Width="104" Background="{DynamicResource BtnBrush}" Foreground="{DynamicResource ForgBrush}" FontSize="10" Click="Button_Click" Height="21" VerticalAlignment="Top"/>

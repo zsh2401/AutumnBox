@@ -37,30 +37,37 @@ namespace AutumnBox.Basic.Device.PackageManage
         }
         public static List<PackageBasicInfo> GetPackages(DeviceSerial serial)
         {
-            var builder = new ACPCommand.Builder
+            try
             {
-                BaseCommand = ACPConstants.CMD_PKGS
-            };
-            var response = AcpCommunicator.GetAcpCommunicator(serial).SendCommand(builder.ToCommand());
-            if (response.IsSuccessful)
-            {
-                var text = Encoding.UTF8.GetString(response.Data);
-                Logger.D(text);
-                var json = JObject.Parse(text);
-                JArray array = (JArray)json["pkgs"];
-                List<PackageBasicInfo> result = new List<PackageBasicInfo>();
-                foreach (JArray j in array)
+                var builder = new ACPCommand.Builder
                 {
-                    result.Add(new PackageBasicInfo()
+                    BaseCommand = ACPConstants.CMD_PKGS
+                };
+                var response = AcpCommunicator.GetAcpCommunicator(serial).SendCommand(builder.ToCommand());
+                if (response.IsSuccessful)
+                {
+                    var text = Encoding.UTF8.GetString(response.Data);
+                    Logger.D(text);
+                    var json = JObject.Parse(text);
+                    JArray array = (JArray)json["pkgs"];
+                    List<PackageBasicInfo> result = new List<PackageBasicInfo>();
+                    foreach (JArray j in array)
                     {
-                        PackageName = j[0].ToString(),
-                        Name = j[1].ToString(),
-                        IsSystemApp = j[2].ToString() == "0" ? true : false
-                    });
+                        result.Add(new PackageBasicInfo()
+                        {
+                            PackageName = j[0].ToString(),
+                            Name = j[1].ToString(),
+                            IsSystemApp = j[2].ToString() == "0" ? true : false
+                        });
+                    }
+                    return result;
                 }
-                return result;
+                return null;
             }
-            return null;
+            catch (Exception ex)
+            {
+                return null;
+            }
         }
         public struct AppUsedSpaceInfo {
             public long DataSize { get; set; }
@@ -73,7 +80,7 @@ namespace AutumnBox.Basic.Device.PackageManage
         }
         public static bool UninstallApp(DeviceSerial device, string packageName) {
             var exeResult = PackageManagerShared.Executer.Execute(Command.MakeForAdb(device, "uninstall " + packageName));
-            return exeResult.IsSuccessful;
+            return !exeResult.Output.Contains("Failure");
         }
         public static bool CleanAppData(DeviceSerial device, string packageName) {
             var exeResult = PackageManagerShared.Executer.QuicklyShell(device, "pm clear " + packageName);

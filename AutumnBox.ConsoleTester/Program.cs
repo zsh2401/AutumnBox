@@ -29,8 +29,16 @@ namespace AutumnBox.ConsoleTester
         };
         unsafe static int Main(string[] cmdargs)
         {
-            var info = new DeviceHardwareInfoGetter(mi4.Serial).GetSocInfo();
-            Console.WriteLine(info);
+            var communicator = AcpCommunicator.GetAcpCommunicator(mi4.Serial);
+            Console.ReadKey();
+            while (true)
+            {
+                var response = communicator.SendCommand(Console.ReadLine());
+                Console.WriteLine(response.FirstCode);
+            }
+            Console.ReadKey();
+            var exeResult = AndroidClientController.AwakeAcpService(mi4.Serial);
+            Console.WriteLine(exeResult.Output);
             Console.ReadKey();
             return 0;
         }
