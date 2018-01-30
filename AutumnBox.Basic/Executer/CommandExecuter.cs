@@ -43,7 +43,7 @@ namespace AutumnBox.Basic.Executer
                 using (var process = Process.Start(_startInfo))
                 {
                     process.OutputDataReceived += (s, e) => OnOutputReceived(new OutputReceivedEventArgs(e.Data, e, false));
-                    process.ErrorDataReceived += (s, e) => OnOutputReceived(new OutputReceivedEventArgs(e.Data, e, false));
+                    process.ErrorDataReceived += (s, e) => OnOutputReceived(new OutputReceivedEventArgs(e.Data, e, true));
                     process.BeginOutputReadLine();
                     process.BeginErrorReadLine();
                     ProcessStarted?.Invoke(this, new ProcessStartedEventArgs() { Pid = process.Id });
@@ -62,6 +62,7 @@ namespace AutumnBox.Basic.Executer
         private const string exitCodePattern = @"exitcode(?<code>\d+)";
         public CommandExecuterResult QuicklyShell(DeviceSerial dev, string command)
         {
+            leastShellExitCode = null;
             var cmd = Command.MakeForAdb(dev, $"shell \"{command} ; echo exitcode$?\"");
             var result = Execute(cmd);
             var match = Regex.Match(result.Output.ToString(), exitCodePattern);
@@ -70,12 +71,19 @@ namespace AutumnBox.Basic.Executer
             {
                 exitCode = int.Parse(match.Result("${code}"));
             }
-            return new CommandExecuterResult(result.Output, exitCode);
+            return new CommandExecuterResult(result.Output, leastShellExitCode ?? 1);
         }
+        private int? leastShellExitCode = 1;
         private void OnOutputReceived(OutputReceivedEventArgs e)
         {
             if (e.Text == null) return;
             if (e.Text == "") return;
+            var match = Regex.Match(e.Text, exitCodePattern);
+            if (match.Success)
+            {
+                leastShellExitCode = int.Parse(match.Result("${code}"));
+                return;
+            }
             if (!e.IsError)
             {
                 _buffer.OutAdd(e.Text);

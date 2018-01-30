@@ -1,6 +1,7 @@
 ﻿using AutumnBox.Basic.ACP;
 using AutumnBox.Basic.Device;
 using AutumnBox.Basic.Device.PackageManage;
+using AutumnBox.Basic.Executer;
 using AutumnBox.Basic.MultipleDevices;
 using System;
 using System.Collections.Generic;
@@ -28,9 +29,8 @@ namespace AutumnBox.ConsoleTester
         };
         unsafe static int Main(string[] cmdargs)
         {
-            var response = AcpCommunicator.GetAcpCommunicator(mi4.Serial).SendCommand(ACPConstants.CMD_GETICON, "top.atmb.autumnbox");
-            File.WriteAllBytes("x.png",response.Data);
-            //Console.WriteLine($"{hashCode} {hashCode2}");
+            var info = new DeviceHardwareInfoGetter(mi4.Serial).GetSocInfo();
+            Console.WriteLine(info);
             Console.ReadKey();
             return 0;
         }

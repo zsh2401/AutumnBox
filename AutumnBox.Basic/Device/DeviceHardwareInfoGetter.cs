@@ -117,7 +117,7 @@ namespace AutumnBox.Basic.Device
         {
             try
             {
-                string output = (executer.QuicklyShell(serial, "cat /proc/cpuinfo | grep Hardware").Output.LineOut[0]);
+                string output = (executer.QuicklyShell(serial, "getprop ro.product.board").Output.LineAll[0]);
                 var hehe = output.Split(' ');
                 return hehe[hehe.Length - 1];
             }
