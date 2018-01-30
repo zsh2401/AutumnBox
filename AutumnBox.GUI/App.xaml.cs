@@ -73,9 +73,9 @@ namespace AutumnBox.GUI
 
         protected override void OnExit(ExitEventArgs e)
         {
-            base.OnExit(e);
             Logger.T("Exit code : " + e.ApplicationExitCode);
             AdbHelper.KillAllAdbProcess();
+            base.OnExit(e);
         }
     }
 }

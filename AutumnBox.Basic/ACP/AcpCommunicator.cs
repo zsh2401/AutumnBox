@@ -120,7 +120,6 @@ namespace AutumnBox.Basic.ACP
         {
             try
             {
-                var client = ACPClient.GetClient(device);
                 AcpStandardProcess.Send(socket, Encoding.UTF8.GetBytes(ACPConstants.CMD_TEST));
                 AcpStandardProcess.Receive(socket, out byte fCode, out byte[] data, 2000);
                 return fCode == ACPConstants.FCODE_SUCCESS;
