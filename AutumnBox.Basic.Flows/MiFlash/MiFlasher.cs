@@ -75,11 +75,11 @@ namespace AutumnBox.Basic.Flows.MiFlash
                 };
                 OutputDataReceived += (s, e) =>
                 {
-                    OutputReceived?.Invoke(this, new OutputReceivedEventArgs(e.Data, e, false));
+                    OutputReceived?.Invoke(this, new OutputReceivedEventArgs(e, false));
                 };
                 ErrorDataReceived += (s, e) =>
                 {
-                    OutputReceived?.Invoke(this, new OutputReceivedEventArgs(e.Data, e, true));
+                    OutputReceived?.Invoke(this, new OutputReceivedEventArgs( e, true));
                 };
             }
             public int ExecuteToEnd()

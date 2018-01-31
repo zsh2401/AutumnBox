@@ -66,6 +66,7 @@ namespace AutumnBox.Basic.Device.PackageManage
             }
             catch (Exception ex)
             {
+                Logger.D("GetPackages() fail",ex);
                 return null;
             }
         }

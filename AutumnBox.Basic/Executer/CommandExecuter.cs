@@ -42,8 +42,8 @@ namespace AutumnBox.Basic.Executer
                 _startInfo.Arguments = command;
                 using (var process = Process.Start(_startInfo))
                 {
-                    process.OutputDataReceived += (s, e) => OnOutputReceived(new OutputReceivedEventArgs(e.Data, e, false));
-                    process.ErrorDataReceived += (s, e) => OnOutputReceived(new OutputReceivedEventArgs(e.Data, e, true));
+                    process.OutputDataReceived += (s, e) => OnOutputReceived(new OutputReceivedEventArgs( e, false));
+                    process.ErrorDataReceived += (s, e) => OnOutputReceived(new OutputReceivedEventArgs( e, true));
                     process.BeginOutputReadLine();
                     process.BeginErrorReadLine();
                     ProcessStarted?.Invoke(this, new ProcessStartedEventArgs() { Pid = process.Id });

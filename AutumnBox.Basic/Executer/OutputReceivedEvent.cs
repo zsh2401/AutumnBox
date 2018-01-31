@@ -18,11 +18,17 @@ namespace AutumnBox.Basic.Executer
         public bool IsError { get; private set; }
         public string Text { get; private set; }
         public DataReceivedEventArgs SourceArgs { get; private set; }
+        [Obsolete("plz use OutputReceivedEventArgs(DataReceivedEventArgs source,bool isError)")]
         public OutputReceivedEventArgs(string text, DataReceivedEventArgs source, bool isError = false)
         {
             Text = text;
             IsError = isError;
             SourceArgs = source;
+        }
+        public OutputReceivedEventArgs(DataReceivedEventArgs sourceEventArgs, bool isError = false) {
+            IsError = isError;
+            SourceArgs = sourceEventArgs;
+            Text = sourceEventArgs.Data;
         }
     }
     public class Dyc_I_Love_You { }

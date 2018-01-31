@@ -53,7 +53,7 @@ namespace AutumnBox.GUI.Windows
             TBContent.Text = UIHelper.GetString(Data.KeyText ?? "WTF?");
             BtnLeft.Content = UIHelper.GetString(Data.KeyBtnLeft ?? "btnCancel");
             BtnRight.Content = UIHelper.GetString(Data.KeyBtnRight ?? "btnContinue");
-            try { base.ShowDialog(); } catch (InvalidOperationException e) {  }
+            try { base.ShowDialog(); } catch { }
             return _result;
         }
 

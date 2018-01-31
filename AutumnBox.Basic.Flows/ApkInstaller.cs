@@ -37,7 +37,9 @@ namespace AutumnBox.Basic.Flows
     public delegate bool AApkInstallltionComplete(object sender, AApkInstalltionCompleteArgs e);
     public sealed class ApkInstaller : FunctionFlow<ApkInstallerArgs, ApkInstallerResult>
     {
+#pragma warning disable CA1009
         public event AApkInstallltionComplete AApkIstanlltionCompleted;
+#pragma warning disable CA1009
         private int errorCount = 0;
         protected override OutputData MainMethod(ToolKit<ApkInstallerArgs> toolKit)
         {
