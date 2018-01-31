@@ -41,7 +41,7 @@ namespace AutumnBox.Basic.ACP
         }
         public static bool AcpServiceIsRunning(DeviceSerial device) {
             CheckInstallApp(device);
-            var result =  AcpCommunicator.GetAcpCommunicator(device).SendCommand(ACPConstants.CMD_TEST);
+            var result =  AcpCommunicator.GetAcpCommunicator(device).SendCommand(Acp.CMD_TEST);
             return result.IsSuccessful;
         }
         private static void CheckInstallApp(DeviceSerial device) {

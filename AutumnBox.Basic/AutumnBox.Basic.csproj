@@ -48,13 +48,13 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ACP\ACPConnectionLostException.cs" />
-    <Compile Include="ACP\ACPConstants.cs" />
-    <Compile Include="ACP\ACPCommand.cs" />
+    <Compile Include="ACP\AcpConnectionLostException.cs" />
+    <Compile Include="ACP\Acp.cs" />
+    <Compile Include="ACP\AcpCommand.cs" />
     <Compile Include="ACP\AcpCommunicator.cs" />
-    <Compile Include="ACP\ACPResponseData.cs" />
+    <Compile Include="ACP\AcpResponse.cs" />
     <Compile Include="ACP\AcpStandardProcess.cs" />
-    <Compile Include="ACP\ACPTimeOutException.cs" />
+    <Compile Include="ACP\AcpTimeOutException.cs" />
     <Compile Include="ACP\AndroidAppIsNotInstallException.cs" />
     <Compile Include="ACP\AndroidClientController.cs" />
     <Compile Include="Device\ActivityManager\Activity.cs" />
@@ -63,6 +63,7 @@
     <Compile Include="Device\ActivityManager\Service.cs" />
     <Compile Include="Device\PackageManage\PackageBasicInfo.cs" />
     <Compile Include="Device\PackageManage\PackageManager.cs" />
+    <Compile Include="Util\DriverHelper.cs" />
     <Compile Include="Util\ForwardManager.cs" />
     <Compile Include="Device\BuildPropKeys.cs" />
     <Compile Include="Device\DeviceBuildPropSetter.cs" />
@@ -136,6 +137,7 @@
     <Compile Include="AdbHelper.cs" />
     <Compile Include="Util\AdbConstants.cs" />
     <Compile Include="Device\DeviceConnection.cs" />
+    <Compile Include="Util\IPrinter.cs" />
     <Compile Include="Util\LinuxReturnCode.cs" />
   </ItemGroup>
   <ItemGroup>

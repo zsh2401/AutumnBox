@@ -20,9 +20,9 @@ namespace AutumnBox.Basic.Device.PackageManage
     {
         public static byte[] GetIcon(DeviceSerial device, String packageName)
         {
-            var builder = new ACPCommand.Builder
+            var builder = new AcpCommand.Builder
             {
-                BaseCommand = ACPConstants.CMD_GETICON
+                BaseCommand = Acp.CMD_GETICON
             };
             builder.SetArgs(packageName);
             var response = AcpCommunicator.GetAcpCommunicator(device).SendCommand(builder.ToCommand());
@@ -39,9 +39,9 @@ namespace AutumnBox.Basic.Device.PackageManage
         {
             try
             {
-                var builder = new ACPCommand.Builder
+                var builder = new AcpCommand.Builder
                 {
-                    BaseCommand = ACPConstants.CMD_PKGS
+                    BaseCommand = Acp.CMD_PKGS
                 };
                 var response = AcpCommunicator.GetAcpCommunicator(serial).SendCommand(builder.ToCommand());
                 if (response.IsSuccessful)
@@ -71,7 +71,6 @@ namespace AutumnBox.Basic.Device.PackageManage
         }
         public struct AppUsedSpaceInfo {
             public long DataSize { get; set; }
-
             public long CodeSize { get; set; }
             public long CacheSize { get; set; }
             public long TotalSize { get {
@@ -90,9 +89,9 @@ namespace AutumnBox.Basic.Device.PackageManage
         public static AppUsedSpaceInfo GetAppUsedSpace(DeviceSerial serial, String packageName) {
             var result = new AppUsedSpaceInfo() { DataSize = -1, CacheSize = -1, CodeSize = -1 };
             try {
-                var builder = new ACPCommand.Builder
+                var builder = new AcpCommand.Builder
                 {
-                    BaseCommand = ACPConstants.CMD_GETPKGINFO
+                    BaseCommand = Acp.CMD_GETPKGINFO
                 };
                 builder.SetArgs(packageName);
                 var response = AcpCommunicator.GetAcpCommunicator(serial).SendCommand(builder.ToCommand());

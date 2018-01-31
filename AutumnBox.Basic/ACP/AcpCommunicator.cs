@@ -25,7 +25,7 @@ namespace AutumnBox.Basic.ACP
         {
             communicators = new List<AcpCommunicator>();
         }
-        public static void DisconnectAll()
+        public static void CloseAll()
         {
             communicators.ForEach((c) =>
             {
@@ -40,12 +40,11 @@ namespace AutumnBox.Basic.ACP
             });
             return communicator ?? new AcpCommunicator(device);
         }
-        public event EventHandler Connected;
-        public event EventHandler Disconnected;
+
+
         private readonly Object _locker = new object();
         private readonly DeviceSerial device;
         private Socket socket;
-        public bool IsInitiativeDisconnect { get; set; } = false;
         private AcpCommunicator(DeviceSerial device, bool connectAfterCreate = true)
         {
             this.device = device;
@@ -57,34 +56,22 @@ namespace AutumnBox.Basic.ACP
             AndroidClientController.AwakeAcpService(device);
             socket = new Socket(SocketType.Stream, ProtocolType.Tcp);
             socket.Connect(GetEndPoint(device));
-            Connected?.Invoke(this, new EventArgs());
-            AliveChecking();
             Logger.T($"{device} communicator connected");
         }
-        public void Disconnect()
+        public void Close()
         {
-            AndroidClientController.StopAcpService(device);
-            Disconnect(true);
-        }
-        private void Disconnect(bool isInitiative) {
-            IsInitiativeDisconnect = isInitiative;
-            try
-            {
-                SendCommand(ACPConstants.CMD_EXIT);
-                socket.Disconnect(false);
+            try {
+                socket.Close();
                 socket.Dispose();
-            }
-            catch
-            {
-            }
+            } catch { }
+            AndroidClientController.StopAcpService(device);
             Logger.T($"{device} communicator disconnected");
-            Disconnected?.Invoke(this, new EventArgs());
         }
-        public ACPResponseData SendCommand(String baseCommand, params string[] args)
+        public AcpResponse SendCommand(String baseCommand, params string[] args)
         {
             lock (_locker)
             {
-                var builder = new ACPCommand.Builder
+                var builder = new AcpCommand.Builder
                 {
                     BaseCommand = baseCommand,
                     Args = args
@@ -92,40 +79,40 @@ namespace AutumnBox.Basic.ACP
                 return AcpFlow(builder.ToCommand());
             }
         }
-        public ACPResponseData SendCommand(ACPCommand command)
+        public AcpResponse SendCommand(AcpCommand command)
         {
             lock (_locker)
             {
                 return AcpFlow(command);
             }
         }
-        private ACPResponseData AcpFlow(ACPCommand command)
+        private AcpResponse AcpFlow(AcpCommand command)
         {
             AliveCheck();
-            byte fCode = ACPConstants.FCODE_NO_RESPONSE;
+            byte fCode = Acp.FCODE_NO_RESPONSE;
             byte[] dataBuffer = new byte[0];
             try
             {
                 AcpStandardProcess.Send(socket, command.ToBytes());
                 AcpStandardProcess.Receive(socket, out fCode, out dataBuffer);
             }
-            catch (ACPTimeOutException)
+            catch (AcpTimeOutException)
             {
                 Logger.T("timeout..");
-                fCode = ACPConstants.FCODE_TIMEOUT;
+                fCode = Acp.FCODE_TIMEOUT;
             }
             catch (SocketException e)
             {
                 Logger.T("acp socket exception", e);
-                fCode = ACPConstants.FCODE_NO_RESPONSE;
+                fCode = Acp.FCODE_NO_RESPONSE;
             }
             catch (IOException e)
             {
                 Logger.T("acp exception(client reading)", e);
-                fCode = ACPConstants.FCODE_ERR_WITH_EX;
+                fCode = Acp.FCODE_ERR_WITH_EX;
                 dataBuffer = Encoding.UTF8.GetBytes(e.ToString() + " " + e.Message);
             }
-            return new ACPResponseData()
+            return new AcpResponse()
             {
                 FirstCode = fCode,
                 Data = dataBuffer,
@@ -146,34 +133,15 @@ namespace AutumnBox.Basic.ACP
                 return;
             }
             Logger.T($"{device} connection lost....");
-            throw new ACPConnectionLostException();
-        }
-        private async void AliveChecking()
-        {
-            while (true)
-            {
-                try
-                {
-                    await Task.Run(() =>
-                    {
-                        Thread.Sleep(5000);
-                    });
-                    AliveCheck(true);
-                }
-                catch (Exception ex)
-                {
-                    Disconnect(false);
-                    break;
-                }
-            }
+            throw new AcpConnectionLostException();
         }
         public bool IsAlive()
         {
             try
             {
-                AcpStandardProcess.Send(socket, Encoding.UTF8.GetBytes(ACPConstants.CMD_TEST));
+                AcpStandardProcess.Send(socket, Encoding.UTF8.GetBytes(Acp.CMD_TEST));
                 AcpStandardProcess.Receive(socket, out byte fCode, out byte[] data, 5000);
-                return fCode == ACPConstants.FCODE_SUCCESS;
+                return fCode == Acp.FCODE_SUCCESS;
             }
             catch (SocketException e)
             {
@@ -185,17 +153,21 @@ namespace AutumnBox.Basic.ACP
                 Logger.T("a exception happend on test ACPService on android is running", e);
                 return false;
             }
+            catch (ObjectDisposedException e) {
+                Logger.T("a exception happend on test ACPService on android is running", e);
+                return false;
+            }
         }
         private static IPEndPoint GetEndPoint(DeviceSerial serial)
         {
             return new IPEndPoint(IPAddress.Parse("127.0.0.1"),
-                ForwardManager.GetForwardByRemotePort(serial, ACPConstants.STD_PORT));
+                ForwardManager.GetForwardByRemotePort(serial, Acp.STD_PORT));
         }
         public void Dispose()
         {
             try
             {
-                Disconnect();
+                Close();
                 socket.Dispose();
                 communicators.Remove(this);
             }
@@ -204,8 +176,8 @@ namespace AutumnBox.Basic.ACP
         }
         ~AcpCommunicator()
         {
-            try { communicators.Remove(this); } catch { }
             Logger.D("~AcpCommunivator() executed......");
+            Dispose();
         }
     }
 }

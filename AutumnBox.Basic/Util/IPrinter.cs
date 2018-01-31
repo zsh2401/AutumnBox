@@ -1,6 +1,6 @@
 ﻿/*************************************************
 ** auth： zsh2401@163.com
-** date:  2018/1/30 18:22:58 (UTC +8:00)
+** date:  2018/1/31 11:09:52 (UTC +8:00)
 ** desc： ...
 *************************************************/
 using System;
@@ -9,9 +9,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AutumnBox.Basic.ACP
+namespace AutumnBox.Basic.Util
 {
-    public class AcpConnectionLostException:Exception
+    public interface IPrinter
     {
+        void PrintOnLog();
+        void PrintOnConsole();
     }
 }

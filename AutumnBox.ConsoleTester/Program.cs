@@ -3,6 +3,7 @@ using AutumnBox.Basic.Device;
 using AutumnBox.Basic.Device.PackageManage;
 using AutumnBox.Basic.Executer;
 using AutumnBox.Basic.MultipleDevices;
+using AutumnBox.Basic.Util;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -29,27 +30,23 @@ namespace AutumnBox.ConsoleTester
         };
         unsafe static int Main(string[] cmdargs)
         {
-            var communicator = AcpCommunicator.GetAcpCommunicator(mi4.Serial);
-            Console.ReadKey();
-            while (true)
-            {
-                var response = communicator.SendCommand(Console.ReadLine());
-                Console.WriteLine(response.FirstCode);
+           var c= AcpCommunicator.GetAcpCommunicator(mi4.Serial);
+            while (true) {
+                var response = c.SendCommand(Console.ReadLine());
+                response.PrintOnConsole();
             }
-            Console.ReadKey();
-            var exeResult = AndroidClientController.AwakeAcpService(mi4.Serial);
-            Console.WriteLine(exeResult.Output);
             Console.ReadKey();
             return 0;
         }
-        static void ParamsTest(params string[] args) {
-            Console.WriteLine(args.Length);
-        }
-        public static void WriteWithColor(Action a, ConsoleColor color = ConsoleColor.White)
+        private class Test : IDisposable
         {
-            Console.ForegroundColor = color;
-            a();
-            Console.ForegroundColor = ConsoleColor.White;
+            public void Dispose()
+            {
+                Console.WriteLine("dispose");
+            }
+            ~Test() {
+                Console.WriteLine("Finalize");
+            }
         }
     }
 }

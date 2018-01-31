@@ -24,7 +24,7 @@ namespace AutumnBox.Basic.ACP
         }
         public static void Receive(Socket client,
             out byte fCode,out byte[] datas,
-            uint timeoutValue = ACPConstants.TIMEOUT_VALUE) {
+            uint timeoutValue = Acp.TIMEOUT_VALUE) {
             byte[] buffer = new byte[tempBufferSize];
             List<byte> dynamicBuffer = new List<byte>();
             int totalSize = 0;
@@ -47,7 +47,7 @@ namespace AutumnBox.Basic.ACP
             } catch (Exception e) {
                 if (timeoutChecker.IsClosedByTimeoutMethod)
                 {
-                    throw new ACPTimeOutException();
+                    throw new AcpTimeOutException();
                 }
                 else {
                     throw e;

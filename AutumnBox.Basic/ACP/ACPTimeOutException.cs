@@ -7,5 +7,5 @@ using System;
 
 namespace AutumnBox.Basic.ACP
 {
-    public class ACPTimeOutException:TimeoutException{}
+    public class AcpTimeOutException:TimeoutException{}
 }
