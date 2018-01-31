@@ -13,8 +13,8 @@ namespace AutumnBox.Basic.Device.PackageManage
 {
     public struct PackageBasicInfo
     {
-        public String Name { get; set; }
-        public String PackageName { get; set; }
+        public string Name { get; set; }
+        public string PackageName { get; set; }
         public bool IsSystemApp { get; set; }
     }
 }

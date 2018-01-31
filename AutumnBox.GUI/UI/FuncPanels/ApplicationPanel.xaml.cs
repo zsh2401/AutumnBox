@@ -1,5 +1,6 @@
 ﻿using AutumnBox.Basic.Device;
 using AutumnBox.Basic.Device.PackageManage;
+using AutumnBox.GUI.Windows;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -23,16 +24,13 @@ namespace AutumnBox.GUI.UI.FuncPanels
     /// </summary>
     public partial class ApplicationPanel : UserControl
     {
-        private readonly DeviceSerial serial;
+        private readonly PackageManageWindowApi api;
         private readonly PackageBasicInfo pkgInfo;
         //bool参数的作用是,是否删除当前项的App选项
-        private readonly Action<bool> closeCallback;
-        public ApplicationPanel(DeviceSerial device, PackageBasicInfo info, Action<bool> closeCallback)
+        public ApplicationPanel(PackageManageWindowApi api, PackageBasicInfo info)
         {
             InitializeComponent();
-            this.closeCallback = closeCallback;
-            this.pkgInfo = info;
-            this.serial = device;
+            this.api = api;
             TBAppName.Text = info.Name;
             TBPkgName.Text = info.PackageName;
             SetIcon();
@@ -42,7 +40,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
         {
             var datas = await Task.Run(() =>
             {
-                return PackageManager.GetIcon(serial, pkgInfo.PackageName);
+                return PackageManager.GetIcon(api.Device, pkgInfo.PackageName);
             });
             if (datas != null)
             {
@@ -57,7 +55,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
         {
             var info = await Task.Run(() =>
             {
-                return PackageManager.GetAppUsedSpace(serial, pkgInfo.PackageName);
+                return PackageManager.GetAppUsedSpace(api.Device, pkgInfo.PackageName);
             });
             TBCacheSize.Text = info.CacheSize.ToString();
             TBCodeSize.Text = info.CodeSize.ToString();
@@ -68,14 +66,14 @@ namespace AutumnBox.GUI.UI.FuncPanels
         private void BtnUninstall_Click(object sender, RoutedEventArgs e)
         {
 
-            var success = PackageManager.UninstallApp(serial, pkgInfo.PackageName);
+            var success = PackageManager.UninstallApp(api.Device, pkgInfo.PackageName);
             if (success)
             {
-                closeCallback(true);
+                api.RemoveMe(true);
             }
             else
             {
-                ShowBottomMessage(App.Current.Resources["pmw_msgUninstallFailed"].ToString());
+                api.ShowMessage(App.Current.Resources["pmw_msgUninstallFailed"].ToString());
             }
         }
 
@@ -83,15 +81,14 @@ namespace AutumnBox.GUI.UI.FuncPanels
         {
             var success = await Task.Run(() =>
             {
-                return PackageManager.CleanAppData(serial, pkgInfo.PackageName);
+                return PackageManager.CleanAppData(api.Device, pkgInfo.PackageName);
             });
 
             if (!success)
             {
-                ShowBottomMessage(success ? App.Current.Resources["pmw_msgClearSuccess"].ToString() : App.Current.Resources["pmw_msgClearFailed"].ToString());
+                api.ShowMessage(success ? App.Current.Resources["pmw_msgClearSuccess"].ToString() : App.Current.Resources["pmw_msgClearFailed"].ToString());
             }
             SetUsedSpaceInfo();
         }
-        private void ShowBottomMessage(String msg) { }
     }
 }

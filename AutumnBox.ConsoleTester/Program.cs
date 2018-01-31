@@ -31,7 +31,12 @@ namespace AutumnBox.ConsoleTester
         };
         unsafe static int Main(string[] cmdargs)
         {
-            //Console.WriteLine(Logger.MakeString("Wow","Info","ok!"));
+            var communicator = AcpCommunicator.GetAcpCommunicator(mi4.Serial);
+            Console.WriteLine(communicator.GetHashCode());
+            communicator.Close();
+            communicator = AcpCommunicator.GetAcpCommunicator(mi4.Serial);
+            Console.WriteLine(communicator.GetHashCode());
+            communicator.SendCommand(Acp.CMD_TEST).PrintOnConsole();
             Console.ReadKey();
             return 0;
         }

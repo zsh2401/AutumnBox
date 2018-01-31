@@ -15,5 +15,26 @@
         <CheckBox x:Name="CkbShowSystemApp" Content="{DynamicResource pmw_ckbShowSystemApp}" HorizontalAlignment="Left" Margin="115,44,0,0" VerticalAlignment="Top" BorderBrush="{DynamicResource ForgBrush}" Foreground="{DynamicResource ForgBrush}" Background="{x:Null}" Width="113" Style="{DynamicResource CheckBoxStyle1}"/>
         <TextBlock HorizontalAlignment="Left" Margin="394,201,0,0" TextWrapping="Wrap" Text="{DynamicResource pmw_msg}" VerticalAlignment="Top" FontSize="18" Foreground="{DynamicResource ForgBrush}"/>
         <Grid x:Name="GridApplicationPanelContainer"  Margin="250,66,10,10"/>
+        <Grid x:Name="GridMessage" HorizontalAlignment="Left" Height="82" Margin="1042,250,-250,0" VerticalAlignment="Top" Width="250" Background="#33000000">
+            <TextBlock x:Name="TBMessage"  HorizontalAlignment="Left" TextWrapping="Wrap" Text=".." Foreground="{DynamicResource ForgBrush}" Width="250" FontSize="16"/>
+        </Grid>
     </Grid>
+    <Window.Resources>
+        <Storyboard x:Key="ShowMessageAnimation">
+            <ThicknessAnimation
+                Duration="0:0:0.5"
+                Storyboard.TargetName="GridMessage"
+                Storyboard.TargetProperty="Margin"
+                From="1042,250,-250,0" To="787,250,0,0"
+                ></ThicknessAnimation>
+        </Storyboard>
+        <Storyboard x:Key="HideMessageAnimation">
+            <ThicknessAnimation
+                Duration="0:0:0.5"
+                Storyboard.TargetName="GridMessage"
+                Storyboard.TargetProperty="Margin"
+                To="1042,250,-250,0"
+                ></ThicknessAnimation>
+        </Storyboard>
+    </Window.Resources>
 </Window>
