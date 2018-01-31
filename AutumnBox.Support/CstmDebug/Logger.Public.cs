@@ -22,20 +22,29 @@ namespace AutumnBox.Support.CstmDebug
 {
     partial class Logger
     {
+        private const bool IsTrace =
+#if DEBUG
+            false;
+#else
+            true;
+#endif
         public static void D(string message, bool isWarning = false)
         {
-#if DEBUG
+#pragma warning disable CS0162 // 检测到无法访问的代码
+            if (IsTrace) return;
+#pragma warning restore CS0162 // 检测到无法访问的代码
             var methodCaller = GetCaller();
             LogPropertyAttribute attrInfo = GetLogPropertyAttribute(methodCaller);
             if (!attrInfo.Show) return;
             string full = GetFullMessage(attrInfo.TAG, message, isWarning.ToErrorLevel());
             Debug.WriteLine(full);
             WriteToFile(LogFileNameOf(methodCaller), full);
-#endif
         }
         public static void D(string message, Exception e)
         {
-#if DEBUG
+#pragma warning disable CS0162 // 检测到无法访问的代码
+            if (IsTrace) return;
+#pragma warning restore CS0162 // 检测到无法访问的代码
             var methodCaller = GetCaller();
             LogPropertyAttribute attrInfo = GetLogPropertyAttribute(methodCaller);
             if (!attrInfo.Show) return;
@@ -43,7 +52,6 @@ namespace AutumnBox.Support.CstmDebug
             full.Append(Environment.NewLine + GetFullMessage(attrInfo.TAG, e.ToString() + e.Message, 2));
             Debug.WriteLine(full.ToString());
             WriteToFile(LogFileNameOf(methodCaller), full.ToString());
-#endif
         }
         public static void T(string message, bool isWarning = false)
         {
@@ -66,6 +74,9 @@ namespace AutumnBox.Support.CstmDebug
         }
         public static void D(ILogSender sender, string message, bool isWarning = false)
         {
+#pragma warning disable CS0162 // 检测到无法访问的代码
+            if (IsTrace) return;
+#pragma warning restore CS0162 // 检测到无法访问的代码
             if (!(sender.IsShowLog)) return;
             string full = GetFullMessage(sender.LogTag, message, isWarning.ToErrorLevel());
             Debug.WriteLine(full);
@@ -73,6 +84,9 @@ namespace AutumnBox.Support.CstmDebug
         }
         public static void D(ILogSender sender, string message, Exception e)
         {
+#pragma warning disable CS0162 // 检测到无法访问的代码
+            if (IsTrace) return;
+#pragma warning restore CS0162 // 检测到无法访问的代码
             if (!(sender.IsShowLog)) return;
             StringBuilder full = new StringBuilder(GetFullMessage(sender.LogTag, message, 2));
             full.Append(Environment.NewLine + GetFullMessage(sender.LogTag, e.ToString() + e.Message, 2));
