@@ -54,8 +54,8 @@ namespace AutumnBox.Basic.Device
         private string Find1(DeviceImage image)
         {
             var exeResult = ShellAsSu.SafetyInput($"find /dev/ -name {image.ToString().ToLower()}");
-            Logger.D(((OutputData)exeResult).ToString());
-            if (exeResult.ReturnCode == (int)LinuxReturnCode.KeyHasExpired)
+            Logger.D((exeResult.ToOutputData()).ToString());
+            if (exeResult.ExitCode == (int)LinuxReturnCode.KeyHasExpired)
             {
                 return null;//无法使用find命令,当场返回!
             }
@@ -73,12 +73,12 @@ namespace AutumnBox.Basic.Device
             string maybePath2 = $"/dev/block/platform/soc*/*/by-name/{image.ToString().ToLower()}";
 
             var exeResult = ShellAsSu.SafetyInput($"ls -l {maybePath1}");
-            if (exeResult.IsSuccess)
+            if (exeResult.IsSuccessful)
             {
                 return maybePath1;
             }
             exeResult = ShellAsSu.SafetyInput($"ls -l {maybePath2}");
-            if (exeResult.IsSuccess)
+            if (exeResult.IsSuccessful)
             {
                 return maybePath2;
             }
@@ -87,7 +87,7 @@ namespace AutumnBox.Basic.Device
 
         private bool PathIsRight(string path)
         {
-            return ShellAsSu.SafetyInput($"ls -l {path}").IsSuccess;
+            return ShellAsSu.SafetyInput($"ls -l {path}").IsSuccessful;
         }
         public void Dispose()
         {

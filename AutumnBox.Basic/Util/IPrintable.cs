@@ -11,9 +11,9 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Util
 {
-    public interface IPrinter
+    public interface IPrintable
     {
-        void PrintOnLog();
+        void PrintOnLog(bool printOnRelease=false);
         void PrintOnConsole();
     }
 }

@@ -14,36 +14,38 @@
 namespace AutumnBox.Basic.Executer
 {
     using AutumnBox.Basic.Function.Event;
+    using AutumnBox.Basic.Util;
+    using AutumnBox.Support.CstmDebug;
     using System;
     using System.Collections.Generic;
     using System.Text;
 
-    public sealed class OutputData
+    public sealed class OutputData : IPrintable
     {
         /// <summary>
         /// 所有的输出
         /// </summary>
-        public List<string> LineAll { get; private set; } = new List<string>();
+        public List<string> LineAll { get; internal set; } = new List<string>();
         /// <summary>
         /// 所有的标准输出
         /// </summary>
-        public List<string> LineOut { get; private set; } = new List<string>();
+        public List<string> LineOut { get; internal set; } = new List<string>();
         /// <summary>
         /// 所有的标准错误
         /// </summary>
-        public List<string> LineError { get; private set; } = new List<string>();
+        public List<string> LineError { get; internal set; } = new List<string>();
         /// <summary>
         /// 所有的输出
         /// </summary>
-        public StringBuilder All { get; private set; } = new StringBuilder();
+        public StringBuilder All { get; internal set; } = new StringBuilder();
         /// <summary>
         /// 所有的标准输出
         /// </summary>
-        public StringBuilder Out { get; private set; } = new StringBuilder();
+        public StringBuilder Out { get; internal set; } = new StringBuilder();
         /// <summary>
         /// 所有的标准错误
         /// </summary>
-        public StringBuilder Error { get; private set; } = new StringBuilder();
+        public StringBuilder Error { get; internal set; } = new StringBuilder();
         /// <summary>
         /// 是否已被关闭
         /// </summary>
@@ -167,6 +169,23 @@ namespace AutumnBox.Basic.Executer
         public override string ToString()
         {
             return All.ToString();
+        }
+
+        public void PrintOnLog(bool printOnRelease = false)
+        {
+            if (printOnRelease)
+            {
+                Logger.T($"PrintOnLog(): {ToString()}");
+            }
+            else
+            {
+                Logger.D($"PrintOnLog(): {ToString()}");
+            }
+        }
+
+        public void PrintOnConsole()
+        {
+            Console.WriteLine($"PrintOnConsole(): {ToString()}");
         }
     }
 }

@@ -36,7 +36,7 @@ namespace AutumnBox.Basic.Flows
             {
                 Result = (ShellOutput)toolKit.Executer.QuicklyShell(toolKit.Args.DevBasicInfo.Serial, _commandOfUnhide);
             }
-            return (OutputData)Result;
+            return Result.ToOutputData();
         }
         protected override void AnalyzeResult(AdvanceResult result)
         {

@@ -5,6 +5,7 @@
 ** compiler: Visual Studio 2017
 ** desc： ...
 *********************************************************************************/
+using AutumnBox.Support.CstmDebug;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Executer
 {
-    public sealed class CommandExecuterResult
+    public sealed class CommandExecuterResult:IShellOutput
     {
         /// <summary>
         /// 返回码
@@ -51,6 +52,28 @@ namespace AutumnBox.Basic.Executer
         {
             return new ShellOutput(Output) { ReturnCode = ExitCode };
         }
+
+        public OutputData ToOutputData()
+        {
+            var result = new OutputData();
+            result.Append(Output);
+            return result;
+        }
+
+        public void PrintOnLog(bool printOnRelease = false)
+        {
+            if (printOnRelease) {
+                Logger.T($"PrintOnLog(): ExitCode: {ExitCode} Output: {Output}");
+            } else {
+                Logger.D($"PrintOnLog(): ExitCode: {ExitCode} Output: {Output}");
+            }
+        }
+
+        public void PrintOnConsole()
+        {
+            Console.WriteLine($"PrintOnConsole(): ExitCode: {ExitCode} Output: {Output}");
+        }
+
         /// <summary>
         /// CommandExecuterResult -> ShellOutput
         /// </summary>

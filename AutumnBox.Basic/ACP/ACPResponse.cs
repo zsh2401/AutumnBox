@@ -11,7 +11,7 @@ using System.Text;
 
 namespace AutumnBox.Basic.ACP
 {
-    public struct AcpResponse:IPrinter
+    public struct AcpResponse:IPrintable
     {
         public bool IsSuccessful
         {
@@ -28,9 +28,13 @@ namespace AutumnBox.Basic.ACP
             Console.WriteLine($"PrintOnConsole(): {FirstCode} {ToString()}");
         }
 
-        public void PrintOnLog()
+        public void PrintOnLog(bool printOnRelease = false)
         {
-            Logger.T($"PrintOnLog(): {FirstCode} {ToString()}");
+            if (printOnRelease) {
+                Logger.T($"PrintOnLog(): {FirstCode} {ToString()}");
+            } else {
+                Logger.D($"PrintOnLog(): {FirstCode} {ToString()}");
+            } 
         }
 
         public override string ToString()

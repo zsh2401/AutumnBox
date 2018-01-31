@@ -80,7 +80,7 @@ namespace AutumnBox.Basic.Executer
         {
             get
             {
-                return SafetyInput("ls -l /system/bin/su").IsSuccess || SafetyInput("ls -l /system/xbin/su").IsSuccess;
+                return SafetyInput("ls -l /system/bin/su").IsSuccessful || SafetyInput("ls -l /system/xbin/su").IsSuccessful;
             }
         }
         /// <summary>

@@ -44,14 +44,14 @@ namespace AutumnBox.Basic.Flows
                 shell.Connect();
                 shell.Switch2Su();
                 moveResult = shell.SafetyInput($"mv {_savePath} {path}");
-                output.Append((OutputData)moveResult);
+                output.Append(moveResult.ToOutputData());
             }
             return output;
         }
         protected override void AnalyzeResult(FlowResult result)
         {
             base.AnalyzeResult(result);
-            result.ResultType = moveResult.IsSuccess ? ResultType.MaybeSuccessful : ResultType.MaybeUnsuccessful;
+            result.ResultType = moveResult.IsSuccessful ? ResultType.MaybeSuccessful : ResultType.MaybeUnsuccessful;
         }
     }
 }

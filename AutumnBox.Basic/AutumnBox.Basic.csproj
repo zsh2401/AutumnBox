@@ -63,6 +63,7 @@
     <Compile Include="Device\ActivityManager\Service.cs" />
     <Compile Include="Device\PackageManage\PackageBasicInfo.cs" />
     <Compile Include="Device\PackageManage\PackageManager.cs" />
+    <Compile Include="Executer\IShellOutput.cs" />
     <Compile Include="Util\DriverHelper.cs" />
     <Compile Include="Util\ForwardManager.cs" />
     <Compile Include="Device\BuildPropKeys.cs" />
@@ -137,7 +138,7 @@
     <Compile Include="AdbHelper.cs" />
     <Compile Include="Util\AdbConstants.cs" />
     <Compile Include="Device\DeviceConnection.cs" />
-    <Compile Include="Util\IPrinter.cs" />
+    <Compile Include="Util\IPrintable.cs" />
     <Compile Include="Util\LinuxReturnCode.cs" />
   </ItemGroup>
   <ItemGroup>
