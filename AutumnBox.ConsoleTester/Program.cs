@@ -4,6 +4,7 @@ using AutumnBox.Basic.Device.PackageManage;
 using AutumnBox.Basic.Executer;
 using AutumnBox.Basic.MultipleDevices;
 using AutumnBox.Basic.Util;
+using AutumnBox.Support.Log;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -30,11 +31,7 @@ namespace AutumnBox.ConsoleTester
         };
         unsafe static int Main(string[] cmdargs)
         {
-           var c= AcpCommunicator.GetAcpCommunicator(mi4.Serial);
-            while (true) {
-                var response = c.SendCommand(Console.ReadLine());
-                response.PrintOnConsole();
-            }
+            //Console.WriteLine(Logger.MakeString("Wow","Info","ok!"));
             Console.ReadKey();
             return 0;
         }
