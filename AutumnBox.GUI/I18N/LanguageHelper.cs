@@ -11,6 +11,7 @@
 * Company: I am free man
 *
 \* =============================================================================*/
+using AutumnBox.GUI.Cfg;
 using AutumnBox.Support.CstmDebug;
 using System;
 using System.Collections.Generic;
@@ -34,6 +35,22 @@ namespace AutumnBox.GUI.I18N
                 new Language("en-US.xaml")
             };
         }
+        private const string zh_cn = "zh-CN";
+        private const string en_us = "en-US";
+        public static void SetLanguageByEnvironment() {
+
+            var lang_name = System.Threading.Thread.CurrentThread.CurrentCulture.Name;
+            Logger.D($"this system language: {lang_name}");
+            switch (lang_name) {
+                case zh_cn:
+                    LoadLanguage("简体中文");
+                    break;
+                case en_us:
+                default:
+                    LoadLanguage("English");
+                    break;
+            }
+        }
         public static int GetLangIndex(string langName)
         {
             return Langs.FindIndex((lang) => { return lang.LanguageName == langName; });
@@ -41,7 +58,23 @@ namespace AutumnBox.GUI.I18N
         public static void LoadLanguage(Language lang)
         {
             App.Current.Resources.MergedDictionaries[0] = lang.Resources;
+            SaveLangSetting();
             LanguageChanged?.Invoke(new object(), new EventArgs());
+        }
+        public static void LoadLanguage(string langName) {
+            App.Current.Resources.MergedDictionaries[0] = Langs[GetLangIndex(langName)].Resources;
+            SaveLangSetting();
+            LanguageChanged?.Invoke(new object(), new EventArgs());
+        }
+        public static void LoadLanguageByFileName(string fileName) {
+            int index = Langs.FindIndex((lang) =>
+            {
+                return lang.FileName == fileName;
+            });
+            LoadLanguage(Langs[index]);
+        }
+        private static void SaveLangSetting() {
+            Config.Lang = Langs[GetLangIndex(App.Current.Resources["LanguageName"].ToString())].FileName;
         }
     }
 }

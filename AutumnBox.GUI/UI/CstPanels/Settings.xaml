@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
             Height="570" Width="940">
     <Grid>
-        <ComboBox DisplayMemberPath="LanguageName" x:Name="CbBoxLanguage" HorizontalAlignment="Left" Margin="75,40,0,0" VerticalAlignment="Top" Width="225" BorderBrush="#FFFDF5F5" FontSize="14" FontFamily="Microsoft YaHei UI Light" SelectionChanged="CbBoxLanguage_SelectionChanged" SelectedIndex="0" IsEnabled="False"/>
+        <ComboBox DisplayMemberPath="LanguageName" x:Name="CbBoxLanguage" HorizontalAlignment="Left" Margin="75,40,0,0" VerticalAlignment="Top" Width="225" BorderBrush="#FFFDF5F5" FontSize="14" FontFamily="Microsoft YaHei UI Light" SelectedIndex="0" />
         <Label Content="{DynamicResource Language}" HorizontalAlignment="Left" Margin="36,40,0,0" VerticalAlignment="Top" FontSize="14" FontFamily="Microsoft YaHei UI Light" Foreground="White"/>
         <Slider x:Name="TransparencySlider" HorizontalAlignment="Left" Margin="79,94,0,0" Maximum="255" ValueChanged="Slider_ValueChanged" Value="0" VerticalAlignment="Top" Width="276"/>
         <Label Content="{DynamicResource Transparency}" HorizontalAlignment="Left" Margin="22,84,0,0" VerticalAlignment="Top" FontSize="14" FontFamily="Microsoft YaHei UI Light" Foreground="White"/>

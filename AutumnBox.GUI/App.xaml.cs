@@ -13,7 +13,9 @@
 \* =============================================================================*/
 using AutumnBox.Basic.Adb;
 using AutumnBox.Basic.MultipleDevices;
+using AutumnBox.GUI.Cfg;
 using AutumnBox.GUI.Helper;
+using AutumnBox.GUI.I18N;
 using AutumnBox.Support.CstmDebug;
 using System;
 using System.IO;
@@ -38,6 +40,13 @@ namespace AutumnBox.GUI
                 Logger.T("have other autumnbox show MMessageBox and exit(1)");
                 MessageBox.Show("不可以同时打开两个AutumnBox\nDo not run two AutumnBox at once", "警告/Warning");
                 App.Current.Shutdown(1);
+            }
+            if (Config.IsFirstLaunch)
+            {
+                LanguageHelper.SetLanguageByEnvironment();
+            }
+            else {
+                LanguageHelper.LoadLanguageByFileName(Config.Lang);
             }
             base.OnStartup(e);
         }
@@ -73,9 +82,13 @@ namespace AutumnBox.GUI
 
         protected override void OnExit(ExitEventArgs e)
         {
+            base.OnExit(e);
             Logger.T("Exit code : " + e.ApplicationExitCode);
             AdbHelper.KillAllAdbProcess();
-            base.OnExit(e);
+            if (Config.IsFirstLaunch)
+            {
+                Config.IsFirstLaunch = false;
+            }
         }
     }
 }

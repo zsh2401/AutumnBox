@@ -153,7 +153,6 @@ namespace AutumnBox.GUI
                                 }
                             });
                         });
-                        Config.IsFirstLaunch = false;
                     }
                     else
                     {

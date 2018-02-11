@@ -20,9 +20,10 @@ namespace AutumnBox.GUI.UI.CstPanels
 #endif
             TransparencySlider.Value = Config.BackgroundA;
             CbBoxLanguage.ItemsSource = LanguageHelper.Langs;
-            //CbBoxLanguage.SelectedIndex = LanguageHelper.GetLangIndex(App.Current.Resources["LanguageName"].ToString());
+            CbBoxLanguage.SelectedIndex = LanguageHelper.GetLangIndex(App.Current.Resources["LanguageName"].ToString());
+            CbBoxLanguage.SelectionChanged += CbBoxLanguage_SelectionChanged;
         }
-       
+
         private void Slider_ValueChanged(object sender, System.Windows.RoutedPropertyChangedEventArgs<double> e)
         {
             UIHelper.SetOwnerTransparency((byte)TransparencySlider.Value);
@@ -31,9 +32,7 @@ namespace AutumnBox.GUI.UI.CstPanels
 
         private void CbBoxLanguage_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //LanguageHelper.LoadLanguage((Language)CbBoxLanguage.SelectedItem);
-            //Config.Lang = ((Language)CbBoxLanguage.SelectedItem).FileName;
-            //Logger.D(Config.Lang);
+            LanguageHelper.LoadLanguage((Language)CbBoxLanguage.SelectedItem);
         } 
 
         private void BtnCreateShortcut_Click(object sender, System.Windows.RoutedEventArgs e)
