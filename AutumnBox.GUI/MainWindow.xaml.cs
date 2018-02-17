@@ -166,18 +166,20 @@ namespace AutumnBox.GUI
             {
                 textBoxGG.Text = r.Header + r.Separator + r.Message;
             });
+            new UpdateChecker().RunAsync((r) =>
+            {
+                Logger.D("need update?: " +  r.NeedUpdate);
+                if (r.NeedUpdate) {
+                    new UpdateNoticeWindow(r) { Owner = this }.ShowDialog();
+                }
+            });
         }
         public void Refresh(DeviceBasicInfo devinfo)
         {
 
             lock (setUILock)
             {
-                //refreshables.ForEach((ctrl) => { ctrl.Refresh(devinfo); });
-                this.RebootGrid.Refresh(devinfo);
-                this.DevInfoPanel.Refresh(devinfo);
-                this.FastbootFuncs.Refresh(devinfo);
-                this.RecoveryFuncs.Refresh(devinfo);
-                this.PoweronFuncs.Refresh(devinfo);
+                refreshables.ForEach((ctrl) => { ctrl.Refresh(devinfo); });
             }
         }
         public void Reset()

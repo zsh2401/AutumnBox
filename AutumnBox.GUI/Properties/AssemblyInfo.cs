@@ -21,11 +21,11 @@ using System.Windows;
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
 [assembly: AssemblyTitle("AutumnBox")]
-[assembly: AssemblyDescription("A simple flash toolbox")]
+[assembly: AssemblyDescription("A simple toolbox")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("zsh2401")]
 [assembly: AssemblyProduct("AutumnBox")]
-[assembly: AssemblyCopyright("Copyright ©zsh2401  2018")]
+[assembly: AssemblyCopyright("Copyright ©zsh2401  2017-2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 // 将 ComVisible 设置为 false 会使此程序集中的类型
@@ -62,12 +62,12 @@ using System.Windows;
 // 可以指定所有值，也可以使用以下所示的 "*" 预置版本号和修订号
 // 方法是按如下所示使用“*”: :
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("0.80.0.*")]
-[assembly: AssemblyFileVersion("0.80.0")]
+[assembly: AssemblyVersion("0.40.0.*")]
+[assembly: AssemblyFileVersion("0.40.0")]
 [assembly: NeutralResourcesLanguage("zh-CN")]
 
 //自定义的程序集Attribute
 //确定当前程序的Log位置
 [assembly: LogFileProperty("atb.log")]
 //编译日期
-[assembly: CompiledDate(2018, 1, 28)]
+[assembly: CompiledDate(2018, 2, 17)]
