@@ -15,6 +15,7 @@ namespace AutumnBox.Basic.MultipleDevices
 {
     using AutumnBox.Basic.Device;
     using AutumnBox.Basic.Executer;
+    using System;
     using System.Text.RegularExpressions;
 
     /// <summary>
@@ -33,7 +34,6 @@ namespace AutumnBox.Basic.MultipleDevices
         {
             lock (executer)
             {
-                
                 DevicesList devList = new DevicesList();
                 var adbDevicesOutput = executer.Execute(adbDevicesCmd).Output;
                 var fastbootDevicesOutput = executer.Execute(fbDevicesCmd).Output;
@@ -42,7 +42,7 @@ namespace AutumnBox.Basic.MultipleDevices
                 return devList;
             }
         }
-        private static readonly string devicePattern = @"(?i)^(?<serial>[^\u0020|^\t]+)[^\w]+(?<status>\w+)[^?!.]$";
+        private const string devicePattern = @"(?i)^(?<serial>[^\u0020|^\t]+)[^\w]+(?<status>\w+)[^?!.]$";
         private static readonly Regex _deviceRegex = new Regex(devicePattern, RegexOptions.Multiline);
         private static void AdbParse(OutputData o, ref DevicesList devList)
         {

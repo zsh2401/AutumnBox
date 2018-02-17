@@ -31,11 +31,7 @@ namespace AutumnBox.ConsoleTester
         };
         unsafe static int Main(string[] cmdargs)
         {
-            string x = "2451";
-            string y = "2451";
-            Console.WriteLine(x.GetHashCode());
-            Console.WriteLine(y.GetHashCode());
-            Console.ReadKey();
+            Console.WriteLine(Directory.Exists("logs\\02_14_18"));
             return 0;
         }
         private class Test : IDisposable

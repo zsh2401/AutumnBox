@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using AutumnBox.Support.Log;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 

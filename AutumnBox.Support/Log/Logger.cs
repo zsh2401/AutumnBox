@@ -5,17 +5,41 @@
 *************************************************/
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace AutumnBox.Support.Log
 {
-    public static partial class Logger
+    public partial class Logger
     {
-        public static void D(object senderOrTag, object content) { }
-        public static void D(object senderOrTag, object content, Exception e) { }
-        public static void T(object senderOrTag, object content) { }
-        public static void T(object senderOrTag, object content,Exception e) { }
+        private readonly string Tag;
+        private readonly LogSettingsAttribute logSettings;
+        public Logger(object sender)
+        {
+            Tag = sender.GetType().Name;
+            logSettings = GetSettings(sender);
+        }
+        public Logger(string tag, object anyObjectOncallerAssembly)
+        {
+            Tag = tag;
+            logSettings = GetSettings(anyObjectOncallerAssembly);
+        }
+        public void D(object content)
+        {
+            if (!logSettings.IsInDebugMode) return;
+            var fullString = MakeString(Tag, "debug", content.ToString());
+            Debug.WriteLine(fullString);
+            WriteToFile(logSettings.FileName, fullString);
+        }
+        public void T(object content)
+        {
+            var fullString = MakeString(Tag, "trace", content.ToString());
+            Trace.WriteLine(fullString);
+            WriteToFile(logSettings.FileName, fullString);
+        }
     }
 }

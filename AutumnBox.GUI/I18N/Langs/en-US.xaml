@@ -9,8 +9,8 @@
     <s:String x:Key="btnAppManager">App manager</s:String>
     <s:String x:Key="btnDisconnect">Disconnect only</s:String>
     <s:String x:Key="btnCloseDebugging">Close device net debuggin</s:String>
-    <s:String x:Key="btnDisableNetdebugging">Disable device net debugging</s:String>
-    <s:String x:Key="btnEnableNetdebugging">Enable device net debugging</s:String>
+    <s:String x:Key="btnDisableNetdebugging">Disable net-debugging</s:String>
+    <s:String x:Key="btnEnableNetdebugging">Enable net-debugging</s:String>
     <s:String x:Key="btnAddNetdebuggingDevice">Add net debugging device</s:String>
     <s:String x:Key="btnConnect">Connect this device</s:String>
     <s:String x:Key="btnConnecting">Connectting</s:String>
