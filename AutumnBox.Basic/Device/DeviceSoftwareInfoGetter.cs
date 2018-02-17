@@ -31,11 +31,7 @@ namespace AutumnBox.Basic.Device
 
         public bool IsRootEnable()
         {
-            using (AndroidShell shell = new AndroidShell(serial))
-            {
-                shell.Connect();
-                return shell.Switch2Su();
-            }
+            return executer.QuicklyShell(serial,"su -c ls").ExitCode == 0;
         }
         public IPAddress GetLocationIP()
         {

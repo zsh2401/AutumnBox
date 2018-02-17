@@ -169,9 +169,15 @@ namespace AutumnBox.GUI
         }
         public void Refresh(DeviceBasicInfo devinfo)
         {
+
             lock (setUILock)
             {
-                refreshables.ForEach((ctrl) => { ctrl.Refresh(devinfo); });
+                //refreshables.ForEach((ctrl) => { ctrl.Refresh(devinfo); });
+                this.RebootGrid.Refresh(devinfo);
+                this.DevInfoPanel.Refresh(devinfo);
+                this.FastbootFuncs.Refresh(devinfo);
+                this.RecoveryFuncs.Refresh(devinfo);
+                this.PoweronFuncs.Refresh(devinfo);
             }
         }
         public void Reset()

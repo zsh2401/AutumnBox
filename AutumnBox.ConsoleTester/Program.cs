@@ -31,7 +31,15 @@ namespace AutumnBox.ConsoleTester
         };
         unsafe static int Main(string[] cmdargs)
         {
-            Console.WriteLine(Directory.Exists("logs\\02_14_18"));
+            DevicesMonitor.DevicesChanged += (s, e) =>
+            {
+                Console.WriteLine("--");
+                if (e.DevicesList.Count > 0) {
+                    var buildInfo = new DeviceBuildPropGetter(e.DevicesList.First().Serial).GetFull();
+                }
+            };
+            DevicesMonitor.Begin();
+            Console.ReadKey();
             return 0;
         }
         private class Test : IDisposable
@@ -40,7 +48,8 @@ namespace AutumnBox.ConsoleTester
             {
                 Console.WriteLine("dispose");
             }
-            ~Test() {
+            ~Test()
+            {
                 Console.WriteLine("Finalize");
             }
         }

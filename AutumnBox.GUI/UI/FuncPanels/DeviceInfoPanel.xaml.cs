@@ -51,35 +51,32 @@ namespace AutumnBox.GUI.UI.FuncPanels
         }
         public void Refresh(DeviceBasicInfo devSimpleInfo)
         {
+            Reset();
             this.DeviceInfo = devSimpleInfo;
-            if (devSimpleInfo.State == DeviceState.Poweron || devSimpleInfo.State == DeviceState.Recovery)
+            //return;
+            switch (devSimpleInfo.State)
             {
-                SetByDeviceSimpleInfoAsync(devSimpleInfo);
-                RefreshStart?.Invoke(this, new EventArgs());
-            }
-            else if (devSimpleInfo.State == DeviceState.Unauthorized)
-            {
-                Reset();
-                UIHelper.SetGridLabelsContent(GridBuildInfo, App.Current.Resources["PleaseAllowUSBDebug"]);
-                SetStatusShow(DevStatusBitmapGetter.Get(devSimpleInfo.State), "PleaseAllowUSBDebug");
-            }
-            else if (devSimpleInfo.State == DeviceState.Fastboot)
-            {
-                UIHelper.SetGridLabelsContent(GridBuildInfo, "...");
-                UIHelper.SetGridLabelsContent(GridHardwareInfo, "....");
-                UIHelper.SetGridLabelsContent(GridMemoryInfo, "....");
-                SetStatusShow(DevStatusBitmapGetter.Get(devSimpleInfo.State), "DeviceInFastboot");
-            }
-            else if (devSimpleInfo.State == DeviceState.Offline)
-            {
-                UIHelper.SetGridLabelsContent(GridBuildInfo, "...");
-                UIHelper.SetGridLabelsContent(GridHardwareInfo, "....");
-                UIHelper.SetGridLabelsContent(GridMemoryInfo, "....");
-                SetStatusShow(DevStatusBitmapGetter.Get(devSimpleInfo.State), "DeviceOffline");
-            }
-            else
-            {
-                Reset();
+                case DeviceState.Poweron:
+                case DeviceState.Recovery:
+                    SetByDeviceSimpleInfoAsync(devSimpleInfo);
+                    RefreshStart?.Invoke(this, new EventArgs());
+                    break;
+                case DeviceState.Unauthorized:
+                    UIHelper.SetGridLabelsContent(GridBuildInfo, App.Current.Resources["PleaseAllowUSBDebug"]);
+                    SetStatusShow(DevStatusBitmapGetter.Get(devSimpleInfo.State), "PleaseAllowUSBDebug");
+                    break;
+                case DeviceState.Fastboot:
+                    UIHelper.SetGridLabelsContent(GridBuildInfo, "...");
+                    UIHelper.SetGridLabelsContent(GridHardwareInfo, "....");
+                    UIHelper.SetGridLabelsContent(GridMemoryInfo, "....");
+                    SetStatusShow(DevStatusBitmapGetter.Get(devSimpleInfo.State), "DeviceInFastboot");
+                    break;
+                case DeviceState.Offline:
+                    UIHelper.SetGridLabelsContent(GridBuildInfo, "...");
+                    UIHelper.SetGridLabelsContent(GridHardwareInfo, "....");
+                    UIHelper.SetGridLabelsContent(GridMemoryInfo, "....");
+                    SetStatusShow(DevStatusBitmapGetter.Get(devSimpleInfo.State), "DeviceOffline");
+                    break;
             }
         }
         public void Reset()
@@ -142,6 +139,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
                     break;
             }
             RefreshFinished?.Invoke(this, new EventArgs());
+            
             var advInfo = await Task.Run(() =>
             {
                 return new DeviceHardwareInfoGetter(DeviceInfo.Serial).Get();
