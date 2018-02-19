@@ -148,25 +148,24 @@ namespace AutumnBox.GUI
             //检测更新
             new UpdateChecker().RunAsync((r) =>
             {
-                Logger.D("need update?: " + r.NeedUpdate);
                 if (r.NeedUpdate)
                 {
                     new UpdateNoticeWindow(r) { Owner = this }.ShowDialog();
                 }
             });
-            loadingWindow.SetProgrress(30);
+            loadingWindow.SetProgress(30);
             await Task.Run(() =>
             {
                 Loader.Load();
             });
             DevicesMonitor.Begin();
-            loadingWindow.SetProgrress(70);
+            loadingWindow.SetProgress(70);
             //哦,如果是第一次启动本软件,那么就显示一下提示吧!
             await Task.Run(() =>
             {
                 Thread.Sleep(1000);
             });
-            loadingWindow.SetProgrress(80);
+            loadingWindow.SetProgress(80);
             if (Config.IsFirstLaunch)
             {
                 var aboutPanel = new FastPanel(this.GridMain, new About());
@@ -183,7 +182,7 @@ namespace AutumnBox.GUI
                 };
                 aboutPanel.Display();
             }
-            loadingWindow.SetProgrress(100);
+            loadingWindow.SetProgress(100);
             CloseLoadingPanel();
         }
 
@@ -192,12 +191,14 @@ namespace AutumnBox.GUI
             Visibility = Visibility.Hidden;
             loadingWindow.Show();
         }
+
         public void CloseLoadingPanel()
         {
             Visibility = Visibility.Visible;
             ShowInTaskbar = true;
             loadingWindow.Close();
         }
+
         public void Refresh(DeviceBasicInfo devinfo)
         {
             lock (setUILock)
@@ -205,6 +206,7 @@ namespace AutumnBox.GUI
                 refreshables.ForEach((ctrl) => { ctrl.Refresh(devinfo); });
             }
         }
+
         public void Reset()
         {
             lock (setUILock)
@@ -257,6 +259,7 @@ namespace AutumnBox.GUI
         {
             Process.Start(Urls.HELP_PAGE);
         }
+
         private void TBOfficialWebsite_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             Process.Start(Urls.OFFICIAL_WEBSITE);
@@ -267,8 +270,5 @@ namespace AutumnBox.GUI
             Process.Start(Urls.LINK_HELP);
         }
 
-        private async void _MainWindow_Activated(object sender, EventArgs e)
-        {
-        }
     }
 }

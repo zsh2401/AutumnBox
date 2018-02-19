@@ -24,7 +24,7 @@ namespace AutumnBox.GUI.Windows
         {
             InitializeComponent();
         }
-        public void SetProgrress(double value) {
+        public void SetProgress(double value) {
             PrgBar.Value = value;
         }
         public void SetTip(string keyOrValue) {

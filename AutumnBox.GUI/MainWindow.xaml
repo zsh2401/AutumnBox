@@ -8,7 +8,7 @@
         xmlns:cpnel="clr-namespace:AutumnBox.GUI.UI.FuncPanels"
         x:Name="_MainWindow" x:Class="AutumnBox.GUI.MainWindow"
         mc:Ignorable="d"
-        Background="{DynamicResource BackBrush}" Title="AutumnBox" Height="682.667" Width="1155" Foreground="#FF1B1919" ResizeMode="NoResize" Loaded="MainWindow_Loaded" AllowsTransparency="True" WindowStyle="None" Activated="_MainWindow_Activated" WindowStartupLocation="CenterScreen" ShowInTaskbar="False">
+        Background="{DynamicResource BackBrush}" Title="AutumnBox" Height="682.667" Width="1155" Foreground="#FF1B1919" ResizeMode="NoResize" Loaded="MainWindow_Loaded" AllowsTransparency="True" WindowStyle="None"  WindowStartupLocation="CenterScreen" ShowInTaskbar="False">
     <Window.Resources>
         <Storyboard x:Key="ExpandAnimation">
             <DoubleAnimation Duration="0:0:0.2" 

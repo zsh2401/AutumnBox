@@ -171,9 +171,6 @@
     <Compile Include="UI\CstPanels\Donate.xaml.cs">
       <DependentUpon>Donate.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\CstPanels\LoadingPanel.xaml.cs">
-      <DependentUpon>LoadingPanel.xaml</DependentUpon>
-    </Compile>
     <Compile Include="UI\CstPanels\NetDebuggingAdder.xaml.cs">
       <DependentUpon>NetDebuggingAdder.xaml</DependentUpon>
     </Compile>
@@ -352,10 +349,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\CstPanels\Donate.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UI\CstPanels\LoadingPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
