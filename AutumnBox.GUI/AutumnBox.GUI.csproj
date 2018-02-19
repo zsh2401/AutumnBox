@@ -168,7 +168,6 @@
     <Compile Include="UI\CstPanels\Donate.xaml.cs">
       <DependentUpon>Donate.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\CstPanels\ICommunicableWithFastGrid.cs" />
     <Compile Include="UI\CstPanels\NetDebuggingAdder.xaml.cs">
       <DependentUpon>NetDebuggingAdder.xaml</DependentUpon>
     </Compile>
@@ -195,9 +194,6 @@
     <Compile Include="UI\FuncPanels\FastbootFuncPanel.xaml.cs">
       <DependentUpon>FastbootFuncPanel.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\CstPanels\FastGrid.xaml.cs">
-      <DependentUpon>FastGrid.xaml</DependentUpon>
-    </Compile>
     <Compile Include="UI\FuncPanels\PoweronFuncPanel.xaml.cs">
       <DependentUpon>PoweronFuncPanel.xaml</DependentUpon>
     </Compile>
@@ -217,9 +213,6 @@
     <Compile Include="Util\MachineInfo.cs" />
     <Compile Include="Windows\ApkInstallingWindow.xaml.cs">
       <DependentUpon>ApkInstallingWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\AppLoadingWindow.xaml.cs">
-      <DependentUpon>AppLoadingWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\ChoiceBox.xaml.cs">
       <DependentUpon>ChoiceBox.xaml</DependentUpon>
@@ -381,10 +374,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\CstPanels\FastGrid.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="UI\FuncPanels\PoweronFuncPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -402,10 +391,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\ApkInstallingWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windows\AppLoadingWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
