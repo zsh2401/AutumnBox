@@ -24,6 +24,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Collections.Generic;
 using AutumnBox.Support.CstmDebug;
+using AutumnBox.GUI.UI.Fp;
 using AutumnBox.Basic.Device;
 using AutumnBox.Basic.Adb;
 using AutumnBox.Basic.FlowFramework;
@@ -236,6 +237,7 @@ namespace AutumnBox.GUI
         }
         private void TBOfficialWebsite_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
+            new FastPanel(this.GridMain, new Test() as FastPanelChild);
             Process.Start(Urls.OFFICIAL_WEBSITE);
         }
 

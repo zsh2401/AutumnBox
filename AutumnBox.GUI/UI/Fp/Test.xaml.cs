@@ -13,16 +13,19 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AutumnBox.GUI.UI.CstPanels
+namespace AutumnBox.GUI.UI.Fp
 {
     /// <summary>
-    /// WelcomeGrid.xaml 的交互逻辑
+    /// Test.xaml 的交互逻辑
     /// </summary>
-    public partial class WelcomeGrid : UserControl
+    public partial class Test : FastPanelChild
     {
-        public WelcomeGrid()
+        public Test()
         {
             InitializeComponent();
+        }
+        public FastPanelChild Get() {
+            return this;
         }
     }
 }

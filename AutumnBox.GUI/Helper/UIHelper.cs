@@ -37,9 +37,11 @@ namespace AutumnBox.GUI.Helper
         }
         public static void SetOwnerTransparency(byte A)
         {
+#if ENABLE_BLUR
             Color currentColor = ((SolidColorBrush)App.Current.MainWindow.Background).Color;
             currentColor.A = A;
             App.Current.MainWindow.Background = new SolidColorBrush(currentColor);
+#endif
         }
         /// <summary>
         /// 设置一个grid下的所有button的开启与否

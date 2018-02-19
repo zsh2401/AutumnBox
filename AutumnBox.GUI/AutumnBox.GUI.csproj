@@ -46,7 +46,7 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>..\out\</OutputPath>
-    <DefineConstants>TRACE;ENABLE_BLUR</DefineConstants>
+    <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
@@ -175,6 +175,13 @@
     <Compile Include="UI\CstPanels\OpenNetDebugging.xaml.cs">
       <DependentUpon>OpenNetDebugging.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Fp\FastPanelChild.cs" />
+    <Compile Include="UI\Fp\FastPanel.xaml.cs">
+      <DependentUpon>FastPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Fp\Test.xaml.cs">
+      <DependentUpon>Test.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\FuncPanels\ApplicationPanel.xaml.cs">
       <DependentUpon>ApplicationPanel.xaml</DependentUpon>
     </Compile>
@@ -201,9 +208,6 @@
     </Compile>
     <Compile Include="UI\CstPanels\Settings.xaml.cs">
       <DependentUpon>Settings.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UI\CstPanels\WelcomeGrid.xaml.cs">
-      <DependentUpon>WelcomeGrid.xaml</DependentUpon>
     </Compile>
     <Compile Include="Cfg\IConfigOperator.cs" />
     <Compile Include="Cfg\ConfigDataLayout.cs" />
@@ -289,10 +293,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Resources\links.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Resources\Themes\BasicTheme.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -353,6 +353,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UI\Fp\FastPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Fp\Test.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UI\FuncPanels\ApplicationPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -388,10 +396,6 @@
     <Page Include="UI\CstPanels\Settings.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UI\CstPanels\WelcomeGrid.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="Windows\ApkInstallingWindow.xaml">
       <SubType>Designer</SubType>
@@ -526,6 +530,7 @@
   <ItemGroup>
     <Resource Include="Resources\Images\pm_default_icon.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>del /S *.pdb
