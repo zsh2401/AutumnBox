@@ -29,7 +29,7 @@ namespace AutumnBox.Basic.MultipleDevices
         }
         public static DevicesList operator +(DevicesList left, DevicesList right)
         {
-            right.ForEach((info) => { left.Add(info); });
+            left.AddRange(right);
             return left;
         }
         public static bool operator ==(DevicesList left, DevicesList right)
@@ -42,19 +42,11 @@ namespace AutumnBox.Basic.MultipleDevices
         }
         public bool Equals(DevicesList other)
         {
-            if (this.Count != other.Count) return false;
-            try
-            {
-                this.ForEach((deviceInfo) =>
-                {
-                    if (!other.Contains(deviceInfo)) throw new DeviceNotFoundOnEqualingException();
-                });
-                return true;
+            if (Count != other.Count) return false;
+            foreach (DeviceBasicInfo info in this) {
+                if (!other.Contains(info)) return false;
             }
-            catch (DeviceNotFoundOnEqualingException)
-            {
-                return false;
-            }
+            return true;
         }
         public override bool Equals(object obj)
         {
@@ -71,6 +63,5 @@ namespace AutumnBox.Basic.MultipleDevices
         {
             return base.GetHashCode();
         }
-        private class DeviceNotFoundOnEqualingException : Exception { }
     }
 }

@@ -24,8 +24,5 @@ namespace AutumnBox.GUI.UI.Fp
         {
             InitializeComponent();
         }
-        public FastPanelChild Get() {
-            return this;
-        }
     }
 }

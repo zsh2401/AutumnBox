@@ -1,23 +1,34 @@
-﻿/*************************************************
-** auth： zsh2401@163.com
-** date:  2018/2/19 8:20:46 (UTC +8:00)
-** desc： ...
-*************************************************/
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 
 namespace AutumnBox.GUI.UI.Fp
 {
-    public class FastPanelChild:UserControl
+    /// <summary>
+    /// FastPanelChild.xaml 的交互逻辑
+    /// </summary>
+    public partial class FastPanelChild : UserControl, IFastPanelChild
     {
         public event EventHandler Finished;
+        public virtual bool NeedShowBtnClose { get;} = true;
+        public UIElement UIElement => this;
+        public virtual void OnPanelInited(PanelArgs args) {}
         public virtual void OnPanelDisplayed() { }
+        public virtual void OnPanelBtnCloseClicked(ref bool prevent) {}
         public virtual void OnPanelClosed() { }
-        public void Finish() {
+        protected void Finish()
+        {
             Finished?.Invoke(this, new EventArgs());
         }
     }

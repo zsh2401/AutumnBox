@@ -51,13 +51,13 @@ namespace AutumnBox.GUI
             base.OnStartup(e);
         }
 
-        private string[] blockListFoExceptionSource = {
+        private string[] blockListForExceptionSource = {
             "PresentationCore"
         };
         private void Current_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
         {
             string src = e.Exception.Source;
-            if (blockListFoExceptionSource.Contains(src)) return;
+            if (blockListForExceptionSource.Contains(src)) return;
             MessageBox.Show(
                 $"一个未知的错误的发生了,将logs文件夹压缩并发送给开发者以解决问题{Environment.NewLine}Please compress the logs folder and send it to zsh2401@163.com",
                 "AutumnBox 错误/Unknow Exception",

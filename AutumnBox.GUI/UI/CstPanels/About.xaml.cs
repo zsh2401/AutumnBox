@@ -1,4 +1,5 @@
 ﻿using AutumnBox.GUI.Helper;
+using AutumnBox.GUI.UI.Fp;
 using AutumnBox.GUI.Windows;
 using System;
 using System.Diagnostics;
@@ -12,7 +13,7 @@ namespace AutumnBox.GUI.UI.CstPanels
     /// <summary>
     /// AboutControl.xaml 的交互逻辑
     /// </summary>
-    public partial class About : UserControl
+    public partial class About : FastPanelChild
     {
         public About()
         {

@@ -218,7 +218,7 @@ namespace AutumnBox.GUI
 
         private void BtnAbout_Click(object sender, RoutedEventArgs e)
         {
-            new FastGrid(this.GridMain, new About());
+            new FastPanel(this.GridMain, new About());
         }
 
         private void BtnSettings_Click(object sender, RoutedEventArgs e)
@@ -237,7 +237,7 @@ namespace AutumnBox.GUI
         }
         private void TBOfficialWebsite_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            new FastPanel(this.GridMain, new Test() as FastPanelChild);
+            //new FastPanel(this.GridMain, new Test());
             Process.Start(Urls.OFFICIAL_WEBSITE);
         }
 

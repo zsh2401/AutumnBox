@@ -66,7 +66,7 @@ namespace AutumnBox.Basic.Device
         }
         public override int GetHashCode()
         {
-            return base.GetHashCode();
+            return ToString().GetHashCode();
         }
     }
 }

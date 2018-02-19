@@ -23,10 +23,10 @@ namespace AutumnBox.GUI.UI.Fp
     {
         private ThicknessAnimation riseAnimation;
         private ThicknessAnimation hideAnimation;
-        private readonly FastPanelChild child;
+        private readonly IFastPanelChild child;
         private readonly Panel father;
         public event EventHandler Closed;
-        public FastPanel(Panel father, FastPanelChild child)
+        public FastPanel(Panel father, IFastPanelChild child)
         {
             InitializeComponent();
             this.father = father;
@@ -35,6 +35,10 @@ namespace AutumnBox.GUI.UI.Fp
             InitChild();
             InitAnimation();
             father.Children.Add(this);
+            if (!child.NeedShowBtnClose) {
+                BtnClose.Visibility = Visibility.Collapsed;
+            }
+            child.OnPanelInited(new PanelArgs() { FatherHeight = this.Height,FatherWidth = this.Width });
             Display();
         }
         private void InitAnimation() {
@@ -59,7 +63,7 @@ namespace AutumnBox.GUI.UI.Fp
         }
         private void InitChild() {
             child.Finished += (s, e) => { Close(); };
-            Container.Children.Add(child);
+            Container.Children.Add(child.UIElement);
         }
         public void Display() {
             BeginAnimation(MarginProperty, riseAnimation);
@@ -76,6 +80,14 @@ namespace AutumnBox.GUI.UI.Fp
             father.Children.Remove(this);
             child.OnPanelClosed();
             Closed?.Invoke(this, new EventArgs());
+        }
+        private void BtnClose_Click(object sender, RoutedEventArgs e)
+        {
+            bool prevent = false;
+            child.OnPanelBtnCloseClicked(ref prevent);
+            if (!prevent) {
+                Close();
+            }
         }
     }
 }
