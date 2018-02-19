@@ -444,5 +444,16 @@ namespace AutumnBox.GUI.UI.FuncPanels
         {
             new PackageManageWindow(_currentDevInfo.Serial) { Owner =App.Current.MainWindow}.Show();
         }
+
+        private void ButtonGMCAct_Click(object sender, RoutedEventArgs e)
+        {
+           var _continue =  BoxHelper.ShowChoiceDialog("warning", "msgActiveGMC","btnCancel","btnContinue").ToBool();
+            if (_continue) {
+                var activator = new GeekMemoryCleanerActivator();
+                activator.Init(new FlowArgs() { DevBasicInfo = this._currentDevInfo});
+                activator.RunAsync();
+                BoxHelper.ShowLoadingDialog(activator);
+            }
+        }
     }
 }

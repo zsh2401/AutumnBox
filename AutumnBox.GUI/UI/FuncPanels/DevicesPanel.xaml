@@ -16,6 +16,5 @@
         </TextBlock>
         <Button x:Name="BtnAddNetDebuggingDevice" Content="{DynamicResource btnAddNetdebuggingDevice}" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="174" Background="{x:Null}" Height="25" Foreground="{DynamicResource ForgBrush}" FontFamily="Microsoft YaHei UI Light" Margin="5,0,0,35" Click="BtnAddNetDebuggingDevice_Click"/>
         <Button x:Name="BtnEnableDisableNetDebugging" Content="{DynamicResource btnEnableNetdebugging}" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="174" Background="{x:Null}" Height="25" Foreground="{DynamicResource ForgBrush}" FontFamily="Microsoft YaHei UI Light" Margin="5,0,0,5" Click="BtnEnableDisableNetDebugging_Click"/>
-        <!--<Grid x:Name="GridAddNetDevice" HorizontalAlignment="Left" Height="233" Margin="5,0,0,0" VerticalAlignment="Top" Width="184"/>-->
     </Grid>
 </UserControl>

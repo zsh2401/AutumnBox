@@ -54,6 +54,7 @@
     <Compile Include="DeviceOwnerSetter.cs" />
     <Compile Include="FilePuller.cs" />
     <Compile Include="FilePusher.cs" />
+    <Compile Include="GeekMemoryCleanerActivator.cs" />
     <Compile Include="IceBoxActivator.cs" />
     <Compile Include="IslandActivator.cs" />
     <Compile Include="MiFlash\BatInfo.cs" />

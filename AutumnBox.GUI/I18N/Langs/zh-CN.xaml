@@ -7,6 +7,7 @@
     <s:String x:Key="LanguageName">简体中文</s:String>
 
     <!--按钮-->
+    <s:String x:Key="btnGeekMemoryCleanerActivator">激活极客内存清理</s:String>
     <s:String x:Key="btnAppManager">应用管理</s:String>
     <s:String x:Key="btnDisconnect">仅断开网络调试</s:String>
     <s:String x:Key="btnCloseDebugging">彻底关闭该设备网络调试</s:String>
@@ -109,6 +110,7 @@
     <!--标题-->
     
     <!--信息(主要用于MMesssageBox)-->
+    <s:String x:Key="msgActiveGMC">这将会开启手机的网络ADB调试并且带来巨大风险,您确定继续吗?</s:String>
     <s:String x:Key="msgGettedIP">成功获取您的手机在当前局域网的IP,这个IP将可以用于网络调试连接</s:String>
     <s:String x:Key="msgFixAndroidOLine0">检测到您是安卓8.0系统,为了防止ADB服务被异常终止,请问需要在激活后开启ADB网络调试以保证服务正常运行吗?这可能会带来不可测的风险!</s:String>
     <s:String x:Key="msgFixAndroidOLine1">如果您决定开启,请在执行过程中,保持设备解锁并亮屏,否则激活将是无效的</s:String>
