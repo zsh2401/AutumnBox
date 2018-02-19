@@ -1,16 +1,14 @@
 ﻿using AutumnBox.GUI.Cfg;
 using AutumnBox.GUI.Helper;
 using AutumnBox.GUI.I18N;
-using AutumnBox.Support.CstmDebug;
-using System.Drawing;
+using AutumnBox.GUI.UI.Fp;
 using System.Windows.Controls;
-using System.Windows.Media;
 namespace AutumnBox.GUI.UI.CstPanels
 {
     /// <summary>
     /// Settings.xaml 的交互逻辑
     /// </summary>
-    public partial class Settings : UserControl
+    public partial class Settings : FastPanelChild
     {
         public Settings()
         {

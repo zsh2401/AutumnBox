@@ -1,4 +1,5 @@
 ﻿using AutumnBox.Basic.ACP;
+using AutumnBox.Basic.Adb;
 using AutumnBox.Basic.Device;
 using AutumnBox.Basic.Device.PackageManage;
 using AutumnBox.Basic.Executer;
@@ -31,14 +32,10 @@ namespace AutumnBox.ConsoleTester
         };
         unsafe static int Main(string[] cmdargs)
         {
-            DevicesMonitor.DevicesChanged += (s, e) =>
-            {
-                Console.WriteLine("--");
-                if (e.DevicesList.Count > 0) {
-                    var buildInfo = new DeviceBuildPropGetter(e.DevicesList.First().Serial).GetFull();
-                }
-            };
-            DevicesMonitor.Begin();
+            var start = DateTime.Now;
+            Console.WriteLine("Execute Starts");
+            AdbHelper.StartServer();
+            Console.WriteLine($"Finished...used time: {(DateTime.Now - start).TotalMilliseconds}");
             Console.ReadKey();
             return 0;
         }

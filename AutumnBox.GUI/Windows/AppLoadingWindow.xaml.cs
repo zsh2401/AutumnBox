@@ -1,5 +1,4 @@
-﻿using AutumnBox.GUI.UI.Fp;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,17 +10,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AutumnBox.GUI.UI.CstPanels
+namespace AutumnBox.GUI.Windows
 {
     /// <summary>
-    /// Donate.xaml 的交互逻辑
+    /// AppLoadingWindow.xaml 的交互逻辑
     /// </summary>
-    public partial class Donate : FastPanelChild
+    public partial class AppLoadingWindow : Window
     {
-        public Donate()
+        public AppLoadingWindow()
         {
             InitializeComponent();
         }

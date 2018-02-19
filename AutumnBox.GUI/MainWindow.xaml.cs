@@ -113,7 +113,7 @@ namespace AutumnBox.GUI
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        private async void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
             refreshables = new List<IRefreshable>
             {
@@ -134,39 +134,12 @@ namespace AutumnBox.GUI
 #endif
             //刷新一下界面
             Reset();
-            //哦,如果是第一次启动本软件,那么就显示一下提示吧!
-            Task.Run(() =>
-            {
-                Thread.Sleep(1000);
-                this.Dispatcher.Invoke(() =>
-                {
-                    if (Config.IsFirstLaunch)
-                    {
-                        new FastGrid(this.GridMain, new About(), () =>
-                        {
-                            DevicesMonitor.Begin();
-                            //更新检测
-                            new UpdateChecker().RunAsync((r) =>
-                            {
-                                if (r.NeedUpdate)
-                                {
-                                    new UpdateNoticeWindow(r).ShowDialog();
-                                }
-                            });
-                        });
-                    }
-                    else
-                    {
-                        //开始设备监听
-                        DevicesMonitor.Begin();
-                    }
-                });
-            });
             //开始获取公告
             new MOTDGetter().RunAsync((r) =>
             {
                 textBoxGG.Text = r.Header + r.Separator + r.Message;
             });
+            //检测更新
             new UpdateChecker().RunAsync((r) =>
             {
                 Logger.D("need update?: " +  r.NeedUpdate);
@@ -174,10 +147,36 @@ namespace AutumnBox.GUI
                     new UpdateNoticeWindow(r) { Owner = this }.ShowDialog();
                 }
             });
+            //哦,如果是第一次启动本软件,那么就显示一下提示吧!
+            await Task.Run(() =>
+            {
+                Thread.Sleep(1000);
+            });
+            if (Config.IsFirstLaunch)
+            {
+                var aboutPanel = new FastPanel(this.GridMain, new About());
+                aboutPanel.Closed += (s, _e) =>
+                {
+                    DevicesMonitor.Begin();
+                    //更新检测
+                    new UpdateChecker().RunAsync((r) =>
+                    {
+                        if (r.NeedUpdate)
+                        {
+                            new UpdateNoticeWindow(r).ShowDialog();
+                        }
+                    });
+                };
+                aboutPanel.Display();
+            }
+            else
+            {
+                //开始设备监听
+                DevicesMonitor.Begin();
+            }
         }
         public void Refresh(DeviceBasicInfo devinfo)
         {
-
             lock (setUILock)
             {
                 refreshables.ForEach((ctrl) => { ctrl.Refresh(devinfo); });
@@ -218,17 +217,17 @@ namespace AutumnBox.GUI
 
         private void BtnAbout_Click(object sender, RoutedEventArgs e)
         {
-            new FastPanel(this.GridMain, new About());
+            new FastPanel(this.GridMain, new About()).Display();
         }
 
         private void BtnSettings_Click(object sender, RoutedEventArgs e)
         {
-            new FastGrid(this.GridMain, new Settings());
+            new FastPanel(this.GridMain, new Settings()).Display();
         }
 
         private void BtnDonate_Click(object sender, RoutedEventArgs e)
         {
-            new FastGrid(this.GridMain, new Donate());
+            new FastPanel(this.GridMain, new Donate()).Display();
         }
 
         private void TBHelp_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
@@ -237,7 +236,6 @@ namespace AutumnBox.GUI
         }
         private void TBOfficialWebsite_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            //new FastPanel(this.GridMain, new Test());
             Process.Start(Urls.OFFICIAL_WEBSITE);
         }
 

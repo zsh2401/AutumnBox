@@ -64,6 +64,7 @@
     <Compile Include="Device\PackageManage\PackageBasicInfo.cs" />
     <Compile Include="Device\PackageManage\PackageManager.cs" />
     <Compile Include="Executer\IShellOutput.cs" />
+    <Compile Include="Loader.cs" />
     <Compile Include="Util\DriverHelper.cs" />
     <Compile Include="Util\ForwardManager.cs" />
     <Compile Include="Device\BuildPropKeys.cs" />

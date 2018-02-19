@@ -1,5 +1,7 @@
 ﻿using AutumnBox.Basic.Device;
 using AutumnBox.Basic.Flows;
+using AutumnBox.GUI.UI.Fp;
+using AutumnBox.GUI.UI.FuncPanels;
 using System;
 using System.Threading.Tasks;
 using System.Windows;
@@ -10,22 +12,16 @@ namespace AutumnBox.GUI.UI.CstPanels
     /// <summary>
     /// CloseNetDebugging.xaml 的交互逻辑
     /// </summary>
-    public partial class CloseNetDebugging : UserControl, ICommunicableWithFastGrid
+    public partial class CloseNetDebugging : FastPanelChild
     {
         private readonly DeviceSerial _serial;
-
-        public CloseNetDebugging(DeviceSerial serial)
+        private readonly DevicesPanel root;
+        public CloseNetDebugging(DevicesPanel root,DeviceSerial serial)
         {
             InitializeComponent();
             _serial = serial;
             TBIP.Text = serial.ToString();
-        }
-
-        public event EventHandler CallFatherToClose;
-
-        public void OnFatherClosed()
-        {
-
+            this.root = root;
         }
 
         private async void BtnCloseNetDebugging_Click(object sender, RoutedEventArgs e)
@@ -43,7 +39,7 @@ namespace AutumnBox.GUI.UI.CstPanels
             {
                 return closer.Run();
             });
-            CallFatherToClose?.Invoke(this, new EventArgs());
+            Finish();
         }
 
         private async void BtnDisconnect_Click(object sender, RoutedEventArgs e)
@@ -61,7 +57,7 @@ namespace AutumnBox.GUI.UI.CstPanels
             {
                 return remover.Run();
             });
-            CallFatherToClose?.Invoke(this, new EventArgs());
+            Finish();
         }
     }
 }

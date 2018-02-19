@@ -1,5 +1,7 @@
 ﻿using AutumnBox.Basic.FlowFramework;
 using AutumnBox.Basic.Flows;
+using AutumnBox.GUI.UI.Fp;
+using AutumnBox.GUI.UI.FuncPanels;
 using AutumnBox.Support.CstmDebug;
 using System;
 using System.Collections.Generic;
@@ -23,12 +25,13 @@ namespace AutumnBox.GUI.UI.CstPanels
     /// <summary>
     /// NetDebuggingAdder.xaml 的交互逻辑
     /// </summary>
-    public partial class NetDebuggingAdder : UserControl, ICommunicableWithFastGrid
+    public partial class NetDebuggingAdder : FastPanelChild
     {
         private NetDeviceConnecter adder = null;
-        public event EventHandler CallFatherToClose;
-        public NetDebuggingAdder()
+        private DevicesPanel root;
+        public NetDebuggingAdder(DevicesPanel root)
         {
+            this.root = root;
             InitializeComponent();
         }
 
@@ -43,7 +46,9 @@ namespace AutumnBox.GUI.UI.CstPanels
             catch (Exception ex)
             {
                 Logger.D("parse textbox input error", ex);
-                new FastGrid(this.GridMain, new DevicesPanelMessageBox(App.Current.Resources["msgCheckInput"].ToString()));
+                new FastPanel(this.root.GridMain,
+                    new DevicesPanelMessageBox(App.Current.Resources["msgCheckInput"].ToString()))
+                    .Display();
                 return;
             }
             adder = new NetDeviceConnecter();
@@ -57,15 +62,16 @@ namespace AutumnBox.GUI.UI.CstPanels
             BtnAdd.Content = App.Current.Resources["btnConnect"];
             if (result.ResultType == ResultType.Successful)
             {
-                CallFatherToClose?.Invoke(this, new EventArgs());
+                Finish();
             }
             else
             {
-                new FastGrid(this.GridMain, new DevicesPanelMessageBox(App.Current.Resources["msgFailed"].ToString()));
+                new FastPanel(this.root.GridMain, new DevicesPanelMessageBox(App.Current.Resources["msgFailed"].ToString())).Display();
             }
         }
 
         private const string ipCharPattern = @"\d|\.";
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e) { }
         private void TBoxIP_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             e.Handled = !Regex.IsMatch(e.Text, ipCharPattern);
@@ -75,13 +81,10 @@ namespace AutumnBox.GUI.UI.CstPanels
         {
             e.Handled = !Regex.IsMatch(e.Text, @"\d");
         }
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            //TBStatus.Text = "...";
-        }
 
-        public void OnFatherClosed()
+        public override void OnPanelBtnCloseClicked(ref bool prevent)
         {
+            base.OnPanelBtnCloseClicked(ref prevent);
             adder?.ForceStop();
         }
     }

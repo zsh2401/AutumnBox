@@ -16,6 +16,7 @@ using AutumnBox.Basic.MultipleDevices;
 using AutumnBox.GUI.Cfg;
 using AutumnBox.GUI.Helper;
 using AutumnBox.GUI.I18N;
+using AutumnBox.GUI.Windows;
 using AutumnBox.Support.CstmDebug;
 using System;
 using System.IO;

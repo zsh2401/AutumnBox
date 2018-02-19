@@ -1,5 +1,7 @@
 ﻿using AutumnBox.Basic.Device;
 using AutumnBox.Basic.Flows;
+using AutumnBox.GUI.UI.Fp;
+using AutumnBox.GUI.UI.FuncPanels;
 using AutumnBox.Support.CstmDebug;
 using System;
 using System.Net;
@@ -15,21 +17,17 @@ namespace AutumnBox.GUI.UI.CstPanels
     /// <summary>
     /// OpenNetDebugging.xaml 的交互逻辑
     /// </summary>
-    public partial class OpenNetDebugging : UserControl, ICommunicableWithFastGrid
+    public partial class OpenNetDebugging : FastPanelChild
     {
         private readonly DeviceSerial _serial;
-        public OpenNetDebugging(DeviceSerial serial)
+        private DevicesPanel root;
+        public OpenNetDebugging(DevicesPanel root,DeviceSerial serial)
         {
             InitializeComponent();
+            this.root = root;
             _serial = serial;
         }
 
-        public event EventHandler CallFatherToClose;
-
-        public void OnFatherClosed()
-        {
-
-        }
         private const string portPattern = @"\d";
         private void TextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
@@ -41,11 +39,11 @@ namespace AutumnBox.GUI.UI.CstPanels
             int port = int.Parse(TBoxPort.Text);
             if (port > 65535)//如果端口号不对
             {//告诉用户不对
-                new FastGrid(this.GridMain,
+                new FastPanel(this.root.GridMain,
                     new DevicesPanelMessageBox(
                         App.Current.Resources["msgPleaseInputAPort"].ToString()
                         )
-                );
+                ).Display();
                 //并且将端口输入框重置
                 TBoxPort.Text = "5555";
                 //离开当前方法
@@ -81,12 +79,12 @@ namespace AutumnBox.GUI.UI.CstPanels
                         {
                             this.Dispatcher.Invoke(() =>
                             {
-                                new FastGrid(this.GridMain,
+                                new FastPanel(root.GridMain,
                                              new DevicesPanelMessageBox(
                                              App.Current.Resources["msgGettedIP"].ToString() + Environment.NewLine
                                              + IP.ToString() + ":" + port
                                              )
-                                );
+                                ).Display();
                             });
                             var connecter = new NetDeviceConnecter();
                             connecter.Init(new NetDeviceConnecterArgs()
@@ -104,7 +102,7 @@ namespace AutumnBox.GUI.UI.CstPanels
             }
             //无论如何,执行完后,都要关闭连接界面
             await Task.Run(() => Thread.Sleep(10000));
-            CallFatherToClose?.Invoke(this, e);
+            Finish();
         }
     }
 }

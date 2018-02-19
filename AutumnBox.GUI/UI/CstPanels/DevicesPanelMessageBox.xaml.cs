@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutumnBox.GUI.UI.Fp;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,7 +19,7 @@ namespace AutumnBox.GUI.UI.CstPanels
     /// <summary>
     /// DevicesPanelMessageBox.xaml 的交互逻辑
     /// </summary>
-    public partial class DevicesPanelMessageBox : UserControl
+    public partial class DevicesPanelMessageBox : FastPanelChild
     {
         public DevicesPanelMessageBox(string message)
         {

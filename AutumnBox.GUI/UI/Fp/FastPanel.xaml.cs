@@ -34,12 +34,10 @@ namespace AutumnBox.GUI.UI.Fp
             InitSize();
             InitChild();
             InitAnimation();
-            father.Children.Add(this);
             if (!child.NeedShowBtnClose) {
                 BtnClose.Visibility = Visibility.Collapsed;
             }
             child.OnPanelInited(new PanelArgs() { FatherHeight = this.Height,FatherWidth = this.Width });
-            Display();
         }
         private void InitAnimation() {
             riseAnimation = new ThicknessAnimation()
@@ -65,8 +63,12 @@ namespace AutumnBox.GUI.UI.Fp
             child.Finished += (s, e) => { Close(); };
             Container.Children.Add(child.UIElement);
         }
-        public void Display() {
-            BeginAnimation(MarginProperty, riseAnimation);
+        public void Display(bool animation=true) {
+            if (animation)
+            {
+                BeginAnimation(MarginProperty, riseAnimation);
+            }
+            father.Children.Add(this);
         }
         public void Close()
         {

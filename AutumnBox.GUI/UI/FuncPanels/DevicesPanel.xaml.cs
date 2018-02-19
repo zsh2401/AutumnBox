@@ -1,6 +1,7 @@
 ﻿using AutumnBox.Basic.Device;
 using AutumnBox.Basic.MultipleDevices;
 using AutumnBox.GUI.UI.CstPanels;
+using AutumnBox.GUI.UI.Fp;
 using System;
 using System.Linq;
 using System.Windows;
@@ -95,17 +96,17 @@ namespace AutumnBox.GUI.UI.FuncPanels
         {
             if (CurrentSelectionIsNetDebugging)
             {
-                new FastGrid(this.GridMain, new CloseNetDebugging(_currentSelectDeviceInfo.Serial));
+                new FastPanel(this.GridMain, new CloseNetDebugging(this,_currentSelectDeviceInfo.Serial)).Display();
             }
             else
             {
-                new FastGrid(this.GridMain, new OpenNetDebugging(_currentSelectDeviceInfo.Serial));
+                new FastPanel(this.GridMain, new OpenNetDebugging(this,_currentSelectDeviceInfo.Serial)).Display();
             }
         }
 
         private void BtnAddNetDebuggingDevice_Click(object sender, RoutedEventArgs e)
         {
-            new FastGrid(this.GridMain, new NetDebuggingAdder());
+            new FastPanel(this.GridMain, new NetDebuggingAdder(this)).Display();
         }
     }
 }
