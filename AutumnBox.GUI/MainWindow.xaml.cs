@@ -31,6 +31,8 @@ using AutumnBox.Basic.FlowFramework;
 using AutumnBox.Basic.Function;
 using AutumnBox.Basic.Util;
 using AutumnBox.Basic.MultipleDevices;
+using AutumnBox.Basic;
+using System.Windows.Media.Animation;
 
 namespace AutumnBox.GUI
 {
@@ -40,6 +42,7 @@ namespace AutumnBox.GUI
     /// </summary>
     public sealed partial class MainWindow : Window, ILogSender, IRefreshable
     {
+        private readonly AppLoadingWindow loadingWindow;
         private Object setUILock = new System.Object();
         private List<IRefreshable> refreshables;
         public string LogTag => "Main Window";
@@ -47,6 +50,7 @@ namespace AutumnBox.GUI
         public MainWindow()
         {
             InitializeComponent();
+            loadingWindow = new AppLoadingWindow();
             TitleBar.ImgMin.Visibility = Visibility.Visible;
             DevicesPanel.SelectionChanged += (s, e) =>
             {
@@ -115,6 +119,7 @@ namespace AutumnBox.GUI
         /// <param name="e"></param>
         private async void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
+            ShowLoadingPanel();
             refreshables = new List<IRefreshable>
             {
                 this.RebootGrid,
@@ -139,25 +144,34 @@ namespace AutumnBox.GUI
             {
                 textBoxGG.Text = r.Header + r.Separator + r.Message;
             });
+            
             //检测更新
             new UpdateChecker().RunAsync((r) =>
             {
-                Logger.D("need update?: " +  r.NeedUpdate);
-                if (r.NeedUpdate) {
+                Logger.D("need update?: " + r.NeedUpdate);
+                if (r.NeedUpdate)
+                {
                     new UpdateNoticeWindow(r) { Owner = this }.ShowDialog();
                 }
             });
+            loadingWindow.SetProgrress(30);
+            await Task.Run(() =>
+            {
+                Loader.Load();
+            });
+            DevicesMonitor.Begin();
+            loadingWindow.SetProgrress(70);
             //哦,如果是第一次启动本软件,那么就显示一下提示吧!
             await Task.Run(() =>
             {
                 Thread.Sleep(1000);
             });
+            loadingWindow.SetProgrress(80);
             if (Config.IsFirstLaunch)
             {
                 var aboutPanel = new FastPanel(this.GridMain, new About());
                 aboutPanel.Closed += (s, _e) =>
                 {
-                    DevicesMonitor.Begin();
                     //更新检测
                     new UpdateChecker().RunAsync((r) =>
                     {
@@ -169,11 +183,20 @@ namespace AutumnBox.GUI
                 };
                 aboutPanel.Display();
             }
-            else
-            {
-                //开始设备监听
-                DevicesMonitor.Begin();
-            }
+            loadingWindow.SetProgrress(100);
+            CloseLoadingPanel();
+        }
+
+        public void ShowLoadingPanel()
+        {
+            Visibility = Visibility.Hidden;
+            loadingWindow.Show();
+        }
+        public void CloseLoadingPanel()
+        {
+            Visibility = Visibility.Visible;
+            ShowInTaskbar = true;
+            loadingWindow.Close();
         }
         public void Refresh(DeviceBasicInfo devinfo)
         {
@@ -196,7 +219,7 @@ namespace AutumnBox.GUI
             {
                 WorkingDirectory = AdbConstants.toolsPath,
                 FileName = "cmd.exe",
-                
+
             };
             if (SystemHelper.IsWin10)
             {
@@ -242,6 +265,10 @@ namespace AutumnBox.GUI
         private void TBLinkHelp_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             Process.Start(Urls.LINK_HELP);
+        }
+
+        private async void _MainWindow_Activated(object sender, EventArgs e)
+        {
         }
     }
 }

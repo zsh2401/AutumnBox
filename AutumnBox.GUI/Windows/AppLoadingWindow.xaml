@@ -1,0 +1,16 @@
+﻿<Window x:Class="AutumnBox.GUI.Windows.AppLoadingWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AutumnBox.GUI.Windows"
+        mc:Ignorable="d"
+        Title="AppLoadingWindow" Height="300" Width="400" WindowStyle="None" ResizeMode="NoResize" Background="{DynamicResource BackBrush}" WindowStartupLocation="CenterScreen" MouseDown="Window_MouseDown">
+    <Grid>
+        <TextBlock  HorizontalAlignment="Left" Margin="82,10,0,0" TextWrapping="Wrap" Text="{DynamicResource AppName}" VerticalAlignment="Top" Foreground="{DynamicResource ForgBrush}" FontSize="48" Width="308" FontFamily="Microsoft YaHei UI Light"/>
+        <TextBlock  HorizontalAlignment="Left" Margin="82,87,0,0" TextWrapping="Wrap" Text="{DynamicResource AppDesc}" VerticalAlignment="Top" Foreground="{DynamicResource ForgBrush}" FontSize="22" Width="308" FontFamily="Microsoft YaHei UI Light"/>
+        <ProgressBar x:Name="PrgBar" HorizontalAlignment="Left" Height="4" Margin="0,226,0,0" VerticalAlignment="Top" Width="400" BorderBrush="{x:Null}"/>
+        <TextBlock x:Name="TBTip" TextAlignment="Right" HorizontalAlignment="Left" Margin="10,235,0,0" TextWrapping="Wrap" Text="{DynamicResource msgLoading}" VerticalAlignment="Top" Width="380" Foreground="{DynamicResource ForgBrush}" FontFamily="Microsoft YaHei UI Light" FontSize="18"/>
+        <Image HorizontalAlignment="Left" Height="64" Margin="10,10,0,0" VerticalAlignment="Top" Width="67" Source="/AutumnBox;component/Resources/Images/Icons/title_icon.png"/>
+    </Grid>
+</Window>

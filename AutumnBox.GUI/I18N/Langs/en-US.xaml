@@ -4,7 +4,8 @@
                     xmlns:s="clr-namespace:System;assembly=mscorlib">
     <s:String x:Key="AppName">AutumnBox</s:String>
     <s:String x:Key="LanguageName">English</s:String>
-
+    <s:String x:Key="AppDesc">Open source,free,simple</s:String>
+    
     <!--按钮-->
     <s:String x:Key="btnGeekMemoryCleanerActivator">Active GMC</s:String>
     <s:String x:Key="btnAppManager">App manager</s:String>
@@ -109,6 +110,7 @@
     <!--标题-->
 
     <!--信息(主要用于MMesssageBox)-->
+    <s:String x:Key="msgLoading">Loading...</s:String>
     <s:String x:Key="msgActiveGMC">Adb net-debugging is very dangerou! You are srue to continue?</s:String>
     <s:String x:Key="msgGettedIP">成功获取您的手机在当前局域网的IP,这个IP将可以用于网络调试连接</s:String>
     <s:String x:Key="msgFixAndroidOLine0">检测到您是安卓8.0系统,为了防止ADB服务被异常终止,请问需要在激活后开启ADB网络调试以保证服务正常运行吗?这可能会带来不可测的风险!</s:String>

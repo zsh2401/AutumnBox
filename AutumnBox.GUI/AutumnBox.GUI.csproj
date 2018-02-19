@@ -36,7 +36,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>..\out\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;ENABLE_BLUR USE_LOCAL_API</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;USE_LOCAL_API</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
@@ -153,6 +153,9 @@
     <Compile Include="UI\Cstm\CstmTitleBar.xaml.cs">
       <DependentUpon>CstmTitleBar.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Cstm\LoadingPanel.xaml.cs">
+      <DependentUpon>LoadingPanel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\CstPanels\About.xaml.cs">
       <DependentUpon>About.xaml</DependentUpon>
     </Compile>
@@ -167,6 +170,9 @@
     </Compile>
     <Compile Include="UI\CstPanels\Donate.xaml.cs">
       <DependentUpon>Donate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\CstPanels\LoadingPanel.xaml.cs">
+      <DependentUpon>LoadingPanel.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\CstPanels\NetDebuggingAdder.xaml.cs">
       <DependentUpon>NetDebuggingAdder.xaml</DependentUpon>
@@ -213,6 +219,9 @@
     <Compile Include="Util\MachineInfo.cs" />
     <Compile Include="Windows\ApkInstallingWindow.xaml.cs">
       <DependentUpon>ApkInstallingWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\AppLoadingWindow.xaml.cs">
+      <DependentUpon>AppLoadingWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\ChoiceBox.xaml.cs">
       <DependentUpon>ChoiceBox.xaml</DependentUpon>
@@ -322,6 +331,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UI\Cstm\LoadingPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UI\CstPanels\About.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -339,6 +352,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\CstPanels\Donate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\CstPanels\LoadingPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -391,6 +408,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\ApkInstallingWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\AppLoadingWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -523,7 +544,6 @@
   <ItemGroup>
     <Resource Include="Resources\Images\pm_default_icon.png" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>del /S *.pdb
