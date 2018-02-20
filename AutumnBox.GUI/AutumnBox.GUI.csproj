@@ -179,9 +179,6 @@
     </Compile>
     <Compile Include="UI\Fp\FastPanelChild.cs" />
     <Compile Include="UI\Fp\PanelArgs.cs" />
-    <Compile Include="UI\Fp\Test.xaml.cs">
-      <DependentUpon>Test.xaml</DependentUpon>
-    </Compile>
     <Compile Include="UI\FuncPanels\ApplicationPanel.xaml.cs">
       <DependentUpon>ApplicationPanel.xaml</DependentUpon>
     </Compile>
@@ -354,10 +351,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\Fp\FastPanel.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UI\Fp\Test.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

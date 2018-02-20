@@ -9,13 +9,14 @@ using AutumnBox.GUI.Windows;
 using AutumnBox.Basic.Device;
 using AutumnBox.Basic.Flows;
 using System.Windows.Forms;
+using AutumnBox.GUI.UI.Fp;
 
 namespace AutumnBox.GUI.UI.FuncPanels
 {
     /// <summary>
     /// RecoveryFunctions.xaml 的交互逻辑
     /// </summary>
-    public partial class RecFuncPanel : System.Windows.Controls.UserControl, IRefreshable
+    public partial class RecFuncPanel : FastPanelChild, IRefreshable
     {
         private DeviceBasicInfo _currentDevInfo;
         public RecFuncPanel()

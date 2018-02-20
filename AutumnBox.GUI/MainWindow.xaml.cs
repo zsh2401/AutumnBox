@@ -203,6 +203,21 @@ namespace AutumnBox.GUI
         {
             lock (setUILock)
             {
+                switch (devinfo.State) {
+                    case DeviceState.Poweron:
+                        TBCFuncs.SelectedIndex = 0;
+                        break;
+                    case DeviceState.Recovery:
+                    case DeviceState.Sideload:
+                        TBCFuncs.SelectedIndex = 1;
+                        break;
+                    case DeviceState.Fastboot:
+                        TBCFuncs.SelectedIndex = 2;
+                        break;
+                    default:
+                        TBCFuncs.SelectedIndex = -1;
+                        break;
+                }
                 refreshables.ForEach((ctrl) => { ctrl.Refresh(devinfo); });
             }
         }

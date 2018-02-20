@@ -9,20 +9,6 @@
         x:Name="_MainWindow" x:Class="AutumnBox.GUI.MainWindow"
         mc:Ignorable="d"
         Background="{DynamicResource BackBrush}" Title="AutumnBox" Height="682.667" Width="1155" Foreground="#FF1B1919" ResizeMode="NoResize" Loaded="MainWindow_Loaded" AllowsTransparency="True" WindowStyle="None"  WindowStartupLocation="CenterScreen" ShowInTaskbar="False">
-    <Window.Resources>
-        <Storyboard x:Key="ExpandAnimation">
-            <DoubleAnimation Duration="0:0:0.2" 
-                             From="300" To="682"
-                             BeginTime="0:0:0.2"
-                             Storyboard.TargetProperty="Height" 
-                             Storyboard.TargetName="_MainWindow"/>
-            <DoubleAnimation Duration="0:0:0.2"
-                             BeginTime="0:0:0"
-                             From="400" To="1155"
-                             Storyboard.TargetProperty="Width" 
-                             Storyboard.TargetName="_MainWindow"/>
-        </Storyboard>
-    </Window.Resources>
     <Grid>
         <Grid Name="GridBase" Margin="3,0,3,3">
             <WebBrowser x:Name="WTF" Width="1" Height="0" Margin="963,271,185,408"/>
@@ -43,7 +29,7 @@
                 <TextBlock x:Name="TBLinkHelp" HorizontalAlignment="Left" Margin="856,203,0,0" TextWrapping="Wrap" Text="{DynamicResource hyperLinkLinkHelp}" VerticalAlignment="Top" TextDecorations="Underline" Foreground="{DynamicResource ForgBrush}" FontSize="14" MouseDown="TBLinkHelp_MouseDown"  Height="23" Width="183"/>
 
                 <cstm:PotdBox Margin="940,355,10,146" Height="150" Width="200"/>
-                <TabControl HorizontalAlignment="Left" Height="392" Margin="10,233,0,0" VerticalAlignment="Top" Width="924" Background="#20000000" BorderBrush="{DynamicResource BorderBrush}">
+                <TabControl x:Name="TBCFuncs" HorizontalAlignment="Left" Height="392" Margin="10,233,0,0" VerticalAlignment="Top" Width="924" Background="#20000000" BorderBrush="{DynamicResource BorderBrush}">
                     <TabItem TabIndex="0" Header="{DynamicResource tbiOnPowerOn}" Margin="-2,-2,-2,0" Foreground="{DynamicResource ForgBrush}" FontSize="16">
                         <cpnel:PoweronFuncPanel x:Name="PoweronFuncs" Margin="0,0,0,0"></cpnel:PoweronFuncPanel>
                     </TabItem>

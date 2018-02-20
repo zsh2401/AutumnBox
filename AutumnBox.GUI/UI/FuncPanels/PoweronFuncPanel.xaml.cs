@@ -13,13 +13,14 @@ using System.IO;
 using System.Collections.Generic;
 using AutumnBox.Support.CstmDebug;
 using AutumnBox.Basic.Device;
+using AutumnBox.GUI.UI.Fp;
 
 namespace AutumnBox.GUI.UI.FuncPanels
 {
     /// <summary>
     /// PoweronFunctions.xaml 的交互逻辑
     /// </summary>
-    public partial class PoweronFuncPanel : System.Windows.Controls.UserControl, IRefreshable
+    public partial class PoweronFuncPanel : FastPanelChild, IRefreshable
     {
         public PoweronFuncPanel()
         {

@@ -7,13 +7,14 @@ using AutumnBox.Basic.Function;
 using AutumnBox.GUI.Helper;
 using AutumnBox.Basic.Device;
 using AutumnBox.GUI.Windows;
+using AutumnBox.GUI.UI.Fp;
 
 namespace AutumnBox.GUI.UI.FuncPanels
 {
     /// <summary>
     /// FastbootFunctions.xaml 的交互逻辑
     /// </summary>
-    public partial class FastbootFuncPanel : UserControl, IRefreshable
+    public partial class FastbootFuncPanel : FastPanelChild, IRefreshable
     {
         private DeviceBasicInfo _currentDeviceInfo;
         public FastbootFuncPanel()
