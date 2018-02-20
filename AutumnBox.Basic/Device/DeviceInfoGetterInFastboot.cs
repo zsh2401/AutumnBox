@@ -27,7 +27,7 @@ namespace AutumnBox.Basic.Device
         private const string resultPattern = @".+:\u0020(?<result>.+)";
         public string GetProduct()
         {
-            var text = executer.Execute(Command.MakeForFastboot(serial, "getvar product")).Output.All.ToString();
+            var text = executer.Execute(Command.MakeForFastboot(serial, "getvar product")).All.ToString();
             var match = Regex.Match(text, resultPattern);
             if (match.Success)
             {

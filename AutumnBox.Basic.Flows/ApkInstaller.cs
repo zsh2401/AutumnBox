@@ -53,7 +53,7 @@ namespace AutumnBox.Basic.Flows
                         $"{AdbConstants.FullAdbFileName} {toolKit.Args.Serial.ToFullSerial()} install -r \"{apkFileInfo.FullName}\"");
 
                 var installResult = toolKit.Executer.Execute(command);
-                bool currentSuccessful = !installResult.Output.Contains("failure");
+                bool currentSuccessful = !installResult.Contains("failure");
                 if (!currentSuccessful)
                 {
                     errorCount++;
@@ -62,7 +62,7 @@ namespace AutumnBox.Basic.Flows
                 {
                     ApkFileInfo = apkFileInfo,
                     IsSuccess = currentSuccessful,
-                    Output = installResult.Output,
+                    Output = installResult,
                 };
                 if (AApkIstanlltionCompleted?.Invoke(this, args) != true)
                 {

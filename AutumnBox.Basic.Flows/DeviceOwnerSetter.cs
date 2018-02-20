@@ -41,7 +41,7 @@ namespace AutumnBox.Basic.Flows
         /// 执行完毕是否需要重启
         /// </summary>
         protected virtual bool NeedReboot { get; } = true;
-        protected CommandExecuterResult _executeResult;
+        protected AdvanceOutput _executeResult;
         private ToolKit<FlowArgs> _toolKit;
         protected virtual bool TryFixDeviceAlreadyProvisioned()
         {
@@ -50,9 +50,9 @@ namespace AutumnBox.Basic.Flows
             var resultStep2 = _toolKit.Executer.QuicklyShell(_toolKit.Args.DevBasicInfo.Serial, Command);
             var resultStep3 = _toolKit.Executer.QuicklyShell(_toolKit.Args.DevBasicInfo.Serial, "settings put global device_provisioned 1");
             Logger.T("fix result ->" + (resultStep1.IsSuccessful && resultStep2.IsSuccessful && resultStep3.IsSuccessful));
-            Logger.T("fixing output ->\n" + resultStep1.Output.ToString());
-            Logger.T(resultStep2.Output.ToString());
-            Logger.T(resultStep3.Output.ToString());
+            Logger.T("fixing output ->\n" + resultStep1.ToString());
+            Logger.T(resultStep2.ToString());
+            Logger.T(resultStep3.ToString());
             return resultStep1.IsSuccessful && resultStep2.IsSuccessful && resultStep3.IsSuccessful;
         }
         protected override Output MainMethod(ToolKit<FlowArgs> toolKit)
@@ -60,13 +60,13 @@ namespace AutumnBox.Basic.Flows
             Logger.D("the command ->" + Command);
             _toolKit = toolKit;
             _executeResult = toolKit.Executer.QuicklyShell(toolKit.Args.DevBasicInfo.Serial, Command);
-            return _executeResult.Output;
+            return _executeResult;
         }
         protected override void AnalyzeResult(DeviceOwnerSetterResult result)
         {
             base.AnalyzeResult(result);
             result.ExitCode = _executeResult.ExitCode;
-            result.OutputData = _executeResult.Output;
+            result.OutputData = _executeResult;
             //如果结果输出中包含了success字样,则成功了,设置结果值并返回
             if (result.OutputData.Contains("success", true))
             {

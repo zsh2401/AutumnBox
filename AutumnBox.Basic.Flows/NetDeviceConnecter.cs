@@ -19,11 +19,11 @@ namespace AutumnBox.Basic.Flows
     }
     public sealed class NetDeviceConnecter : FunctionFlow<NetDeviceConnecterArgs, AdvanceResult>
     {
-        private CommandExecuterResult _result;
+        private AdvanceOutput _result;
         protected override Output MainMethod(ToolKit<NetDeviceConnecterArgs> toolKit)
         {
             _result = toolKit.Executer.Execute(Command.MakeForAdb($"connect {toolKit.Args.IPEndPoint.ToString()}"));
-            return _result.Output;
+            return _result;
         }
         protected override void AnalyzeResult(AdvanceResult result)
         {

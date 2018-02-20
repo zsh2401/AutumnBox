@@ -33,9 +33,8 @@ namespace AutumnBox.Basic.Executer
         }
         private const string exitCodePattern = @"__exitcode__(?<code>\d+)";
         public static bool RootCheck(DeviceSerial dev) {
-           var output= CommandExecuter.Static.Execute(
-                Command.MakeForAdb(dev, "shell \"su -c \"ls ; echo __exitcode__$?\"\""))
-                .Output;
+            var output = CommandExecuter.Static.Execute(
+                 Command.MakeForAdb(dev, "shell \"su -c \"ls ; echo __exitcode__$?\"\""));
             var match = Regex.Match(output.ToString(), exitCodePattern, RegexOptions.Multiline);
             return match.Success ? match.Result("${code}") == "0":false;
         }

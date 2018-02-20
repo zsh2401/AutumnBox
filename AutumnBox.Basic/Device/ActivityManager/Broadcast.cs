@@ -14,10 +14,10 @@ namespace AutumnBox.Basic.Device.ActivityManager
 {
     public static class Broadcast
     {
-        public static CommandExecuterResult Send(DeviceSerial device, string broadcast) {
+        public static AdvanceOutput Send(DeviceSerial device, string broadcast) {
            return ActivityManagerShared.Executer.QuicklyShell(device, $"am broadcast -a {broadcast}");
         }
-        public static CommandExecuterResult SendWithData(DeviceSerial device, string data) {
+        public static AdvanceOutput SendWithData(DeviceSerial device, string data) {
             return Send(device, data);
         }
     }

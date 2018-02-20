@@ -13,8 +13,8 @@ namespace AutumnBox.Basic.Executer
 {
     public class ExcutionException:Exception
     {
-        public CommandExecuterResult ExecuteResult { get; private set; }
-        public ExcutionException(CommandExecuterResult result)
+        public Output ExecuteResult { get; private set; }
+        public ExcutionException(Output result)
         {
             this.ExecuteResult = result;
         }

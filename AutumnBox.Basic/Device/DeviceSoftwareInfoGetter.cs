@@ -36,7 +36,7 @@ namespace AutumnBox.Basic.Device
         public IPAddress GetLocationIP()
         {
             var result = executer.QuicklyShell(serial, "ifconfig wlan0");
-            var match = Regex.Match(result.Output.ToString(), ipPattern);
+            var match = Regex.Match(result.ToString(), ipPattern);
             if (match.Success)
             {
                 return IPAddress.Parse(match.Result("${ip}"));
@@ -44,7 +44,7 @@ namespace AutumnBox.Basic.Device
             else
             {
                 result = executer.QuicklyShell(serial, "ifconfig netcfg");
-                match = Regex.Match(result.Output.ToString(), ipPattern);
+                match = Regex.Match(result.ToString(), ipPattern);
                 if (match.Success)
                 {
                     return IPAddress.Parse(match.Result("${ip}"));

@@ -38,7 +38,7 @@ namespace AutumnBox.Basic.Executer
                 CreateNoWindow = true,
             };
         }
-        public CommandExecuterResult Execute(string fileName, string command)
+        public AdvanceOutput Execute(string fileName, string command)
         {
             lock (_lock)
             {
@@ -58,26 +58,26 @@ namespace AutumnBox.Basic.Executer
                     process.CancelOutputRead();
                     exitCode = process.ExitCode;
                 };
-                return new CommandExecuterResult(_builder.ToOutputData(), exitCode);
+                return new AdvanceOutput(_builder.ToOutputData(), exitCode);
             }
         }
-        public CommandExecuterResult Execute(Command cmd)
+        public AdvanceOutput Execute(Command cmd)
         {
             return Execute(cmd.FileName, cmd.ToString());
         }
         private const string exitCodePattern = @"exitcode(?<code>\d+)";
-        public CommandExecuterResult QuicklyShell(DeviceSerial dev, string command)
+        public AdvanceOutput QuicklyShell(DeviceSerial dev, string command)
         {
             leastShellExitCode = null;
             var cmd = Command.MakeForAdb(dev, $"shell \"{command} ; echo exitcode$?\"");
             var result = Execute(cmd);
-            var match = Regex.Match(result.Output.ToString(), exitCodePattern);
+            var match = Regex.Match(result.ToString(), exitCodePattern);
             int exitCode = 1;
             if (match.Success)
             {
                 exitCode = int.Parse(match.Result("${code}"));
             }
-            return new CommandExecuterResult(result.Output, leastShellExitCode ?? 1);
+            return new AdvanceOutput(result, leastShellExitCode ?? 1);
         }
         private int? leastShellExitCode = 1;
         private void OnOutputReceived(OutputReceivedEventArgs e)

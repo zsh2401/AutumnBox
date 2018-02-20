@@ -70,7 +70,7 @@ namespace AutumnBox.Basic.Util
             //Logger.D(queryResult.Output.ToString());
             if (queryResult.IsSuccessful)
             {
-                var matches = regex.Matches(queryResult.Output.ToString());
+                var matches = regex.Matches(queryResult.ToString());
                 foreach (Match match in matches)
                 {
                     forwards.Add(new ForwardInfo(

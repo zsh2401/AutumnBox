@@ -25,11 +25,11 @@ namespace AutumnBox.Basic.FlowFramework
         /// <summary>
         /// 向绑定的设备执行Adb命令并且返回执行结果
         /// </summary>
-        public readonly Func<string, CommandExecuterResult> Ae;
+        public readonly Func<string, AdvanceOutput> Ae;
         /// <summary>
         /// 向绑定的设备执行Fastboot命令并且返回执行结果
         /// </summary>
-        public readonly Func<string, CommandExecuterResult> Fe;
+        public readonly Func<string, AdvanceOutput> Fe;
         /// <summary>
         /// 执行器
         /// </summary>

@@ -30,9 +30,9 @@ namespace AutumnBox.Basic.Function.Bundles
             Executer = executer;
             Args = args;
             Ae = (command) =>
-            { return Executer.Execute(Command.MakeForAdb(Serial, command)).Output; };
+            { return Executer.Execute(Command.MakeForAdb(Serial, command)); };
             Fe = (command) =>
-            { return Executer.Execute(Command.MakeForFastboot(Serial, command)).Output; };
+            { return Executer.Execute(Command.MakeForFastboot(Serial, command)); };
         }
     }
 }

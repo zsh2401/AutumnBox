@@ -18,7 +18,7 @@ namespace AutumnBox.Basic.Device.PackageManage
         public static List<PackageInfo> GetPackages(DeviceSerial devSerial)
         {
             var result = PackageManagerShared.Executer.QuicklyShell(devSerial, $"pm list packages");
-            var matches = Regex.Matches(result.Output.ToString(), packagesPattern);
+            var matches = Regex.Matches(result.ToString(), packagesPattern);
             List<PackageInfo> packages = new List<PackageInfo>();
             foreach (Match m in matches)
             {

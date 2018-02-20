@@ -35,8 +35,8 @@ namespace AutumnBox.Basic.MultipleDevices
             lock (executer)
             {
                 DevicesList devList = new DevicesList();
-                var adbDevicesOutput = executer.Execute(adbDevicesCmd).Output;
-                var fastbootDevicesOutput = executer.Execute(fbDevicesCmd).Output;
+                var adbDevicesOutput = executer.Execute(adbDevicesCmd);
+                var fastbootDevicesOutput = executer.Execute(fbDevicesCmd);
                 AdbParse(adbDevicesOutput ,ref devList);
                 FastbootParse(fastbootDevicesOutput, ref devList);
                 return devList;

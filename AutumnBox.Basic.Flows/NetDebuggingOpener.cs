@@ -23,11 +23,11 @@ namespace AutumnBox.Basic.Flows
     }
     public class NetDebuggingOpener : FunctionFlow<NetDebuggingOpenerArgs, AdvanceResult>
     {
-        private CommandExecuterResult _executeResult;
+        private AdvanceOutput _executeResult;
         protected override Output MainMethod(ToolKit<NetDebuggingOpenerArgs> toolKit)
         {
             _executeResult = toolKit.Ae($"tcpip {toolKit.Args.Port}");
-            return _executeResult.Output;
+            return _executeResult;
         }
         protected override void AnalyzeResult(AdvanceResult result)
         {

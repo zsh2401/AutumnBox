@@ -63,6 +63,7 @@
     <Compile Include="Device\ActivityManager\Service.cs" />
     <Compile Include="Device\PackageManage\PackageBasicInfo.cs" />
     <Compile Include="Device\PackageManage\PackageManager.cs" />
+    <Compile Include="Executer\AdvanceOutput.cs" />
     <Compile Include="Executer\IShellOutput.cs" />
     <Compile Include="Executer\OutputBuilder.cs" />
     <Compile Include="Executer\SuShell.cs" />

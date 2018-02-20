@@ -21,7 +21,7 @@ namespace AutumnBox.Basic.Flows
     }
     public class DcimBackuper : FunctionFlow<DcimBackuperArgs>
     {
-        private CommandExecuterResult exeResult;
+        private AdvanceOutput exeResult;
         protected override CheckResult Check(DcimBackuperArgs args)
         {
             var result =
@@ -41,7 +41,7 @@ namespace AutumnBox.Basic.Flows
             {
                 exeResult = toolKit.Ae($"pull /data/media/0/DCIM/. \"{toolKit.Args.TargetPath}\"");
             }
-            return exeResult.Output;
+            return exeResult;
         }
         protected override void AnalyzeResult(FlowResult result)
         {

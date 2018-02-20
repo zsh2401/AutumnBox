@@ -25,23 +25,23 @@ namespace AutumnBox.Basic.Flows
     {
         private static readonly string _commandOfToHide = "settings put global policy_control immersive.navigation=*";
         private static readonly string _commandOfUnhide = "settings put global policy_control null";
-        private ShellOutput Result;
+        private AdvanceOutput Result;
         protected override Output MainMethod(ToolKit<VirtualButtonHiderArgs> toolKit)
         {
             if (toolKit.Args.IsHide)
             {
-                Result = (ShellOutput)toolKit.Executer.QuicklyShell(toolKit.Args.DevBasicInfo.Serial, _commandOfToHide);
+                Result = toolKit.Executer.QuicklyShell(toolKit.Args.DevBasicInfo.Serial, _commandOfToHide);
             }
             else
             {
-                Result = (ShellOutput)toolKit.Executer.QuicklyShell(toolKit.Args.DevBasicInfo.Serial, _commandOfUnhide);
+                Result = toolKit.Executer.QuicklyShell(toolKit.Args.DevBasicInfo.Serial, _commandOfUnhide);
             }
-            return Result.ToOutputData();
+            return Result;
         }
         protected override void AnalyzeResult(AdvanceResult result)
         {
             base.AnalyzeResult(result);
-            result.ExitCode = Result.ReturnCode;
+            result.ExitCode = Result.ExitCode;
             result.ResultType = ResultType.MaybeSuccessful;
             if (result.ExitCode != 0)
             {

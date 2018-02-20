@@ -14,7 +14,7 @@ namespace AutumnBox.Basic.Device.ActivityManager
 {
     public static class Service
     {
-        public static CommandExecuterResult RunService(DeviceSerial device,
+        public static AdvanceOutput RunService(DeviceSerial device,
             string pkgName, 
             string className) {
             return ActivityManagerShared.Executer.QuicklyShell(device,$"am startservice {pkgName}/.{className}");

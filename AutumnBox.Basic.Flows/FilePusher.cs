@@ -33,7 +33,7 @@ namespace AutumnBox.Basic.Flows
     [LogProperty(TAG ="File pushing")]
     public sealed class FilePusher : FunctionFlow<FilePusherArgs,AdvanceResult>
     {
-        private CommandExecuterResult exeResult;
+        private AdvanceOutput exeResult;
         protected override Output MainMethod(ToolKit<FilePusherArgs> toolKit)
         {
             Logger.T("hehe");
@@ -41,7 +41,7 @@ namespace AutumnBox.Basic.Flows
                 $"push \"{toolKit.Args.SourceFileInfo.FullName}\" \"{toolKit.Args.SavePath + toolKit.Args.SourceFileInfo.Name}\""
                 );
             exeResult = toolKit.Executer.Execute(command);
-            return exeResult.Output;
+            return exeResult;
         }
         protected override void AnalyzeResult(AdvanceResult result)
         {

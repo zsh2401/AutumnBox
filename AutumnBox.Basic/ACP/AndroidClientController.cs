@@ -27,16 +27,16 @@ namespace AutumnBox.Basic.ACP
         public static bool IsInstallAutumnBoxApp(DeviceSerial serial) {
             return PackageHelper.IsInstall(serial, PACKAGE_NAME) == true;
         }
-        public static CommandExecuterResult StartMainActivity(DeviceSerial device)
+        public static AdvanceOutput StartMainActivity(DeviceSerial device)
         {
             return Activity.Start(device, PACKAGE_NAME, MAIN_ACTIVITY_NAME);
         }
-        public static CommandExecuterResult AwakeAcpService(DeviceSerial device) {
+        public static AdvanceOutput AwakeAcpService(DeviceSerial device) {
             CheckInstallApp(device);
             StartMainActivity(device);
             return Service.RunService(device, PACKAGE_NAME,SERVICE_NAME);
         }
-        public static CommandExecuterResult StopAcpService(DeviceSerial device) {
+        public static AdvanceOutput StopAcpService(DeviceSerial device) {
             return Broadcast.Send(device,BROADCAST_STOP_ACP_SERVICE);
         }
         public static bool AcpServiceIsRunning(DeviceSerial device) {

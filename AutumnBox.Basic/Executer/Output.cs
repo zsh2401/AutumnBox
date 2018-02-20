@@ -55,15 +55,15 @@ namespace AutumnBox.Basic.Executer
         /// <summary>
         /// 所有的输出
         /// </summary>
-        public string All { get; private set; }
+        public string All { get; protected set; }
         /// <summary>
         /// 所有的标准输出
         /// </summary>
-        public string Out { get; private set; }
+        public string Out { get; protected set; }
         /// <summary>
         /// 所有的标准错误
         /// </summary>
-        public string Error { get; private set; }
+        public string Error { get; protected set; }
 
         /// <summary>
         /// 判断输出中是否包含某段字符串

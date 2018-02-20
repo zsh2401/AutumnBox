@@ -33,7 +33,7 @@ namespace AutumnBox.Basic.Device.PackageManage
             {
                 if (!IsExist) { throw new PackageNotFoundException(Name); }
                 var exeResult = PackageManagerShared.Executer.QuicklyShell(Owner, $"dumpsys package {Name}");
-                var match = Regex.Match(exeResult.Output.ToString(), mainActivityPattern);
+                var match = Regex.Match(exeResult.ToString(), mainActivityPattern);
                 if (match.Success)
                 {
                     return match.Result("${result}");

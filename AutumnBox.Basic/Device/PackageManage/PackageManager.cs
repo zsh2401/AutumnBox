@@ -80,7 +80,7 @@ namespace AutumnBox.Basic.Device.PackageManage
         }
         public static bool UninstallApp(DeviceSerial device, string packageName) {
             var exeResult = PackageManagerShared.Executer.Execute(Command.MakeForAdb(device, "uninstall " + packageName));
-            return !exeResult.Output.Contains("Failure");
+            return !exeResult.Contains("Failure");
         }
         public static bool CleanAppData(DeviceSerial device, string packageName) {
             var exeResult = PackageManagerShared.Executer.QuicklyShell(device, "pm clear " + packageName);

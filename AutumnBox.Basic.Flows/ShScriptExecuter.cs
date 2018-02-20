@@ -39,7 +39,7 @@ namespace AutumnBox.Basic.Flows
         }
         protected abstract string ScriptPath { get; }
         protected virtual int Delay { get; } = 3000;
-        protected CommandExecuterResult _result;
+        protected AdvanceOutput _result;
         protected ToolKit<ShScriptExecuterArgs> _tooKit;
         protected override void Initialization(ShScriptExecuterArgs moduleArgs)
         {
@@ -56,7 +56,7 @@ namespace AutumnBox.Basic.Flows
                 Thread.Sleep(Delay);
             }
             _result = toolKit.Executer.QuicklyShell(_tooKit.Args.DevBasicInfo.Serial, $"sh {ScriptPath}");
-            return _result.Output;
+            return _result;
         }
         protected override void AnalyzeResult(AdvanceResult result)
         {

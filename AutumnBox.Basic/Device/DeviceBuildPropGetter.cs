@@ -62,7 +62,7 @@ namespace AutumnBox.Basic.Device
         public string Get(string key)
         {
             var exeResult = executer.QuicklyShell(Serial, $"getprop {key}");
-            return exeResult.IsSuccessful ? exeResult.Output.ToString() : null;
+            return exeResult.IsSuccessful ? exeResult.ToString() : null;
         }
 
         private const string propPattern = @"\[(?<pname>.+)\].+\[(?<pvalue>.+)\]";
@@ -72,7 +72,7 @@ namespace AutumnBox.Basic.Device
             {
                 Dictionary<string, string> dict = new Dictionary<string, string>();
                 var exeResult = executer.QuicklyShell(Serial, $"getprop");
-                var matches = Regex.Matches(exeResult.Output.ToString(), propPattern, RegexOptions.Multiline);
+                var matches = Regex.Matches(exeResult.ToString(), propPattern, RegexOptions.Multiline);
                 foreach (Match match in matches)
                 {
                     dict.Add(match.Result("${pname}"), match.Result("${pvalue}"));
