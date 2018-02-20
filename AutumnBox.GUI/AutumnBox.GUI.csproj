@@ -178,7 +178,7 @@
       <DependentUpon>FastPanel.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Fp\FastPanelChild.cs" />
-    <Compile Include="UI\Fp\IFastPanelChild.cs" />
+    <Compile Include="UI\Fp\PanelArgs.cs" />
     <Compile Include="UI\Fp\Test.xaml.cs">
       <DependentUpon>Test.xaml</DependentUpon>
     </Compile>

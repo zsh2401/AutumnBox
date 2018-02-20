@@ -18,18 +18,24 @@ namespace AutumnBox.GUI.UI.Fp
     /// <summary>
     /// FastPanelChild.xaml 的交互逻辑
     /// </summary>
-    public partial class FastPanelChild : UserControl, IFastPanelChild
+    public partial class FastPanelChild : UserControl
     {
-        public event EventHandler Finished;
         public virtual bool NeedShowBtnClose { get;} = true;
-        public UIElement UIElement => this;
         public virtual void OnPanelInited(PanelArgs args) {}
         public virtual void OnPanelDisplayed() { }
         public virtual void OnPanelBtnCloseClicked(ref bool prevent) {}
         public virtual void OnPanelClosed() { }
+        public virtual void OnPanelHide() { }
+        public FastPanel Father { private get; set; }
+        protected void Dispay() {
+            Father.Display();
+        }
+        protected void Hide() {
+            Father.Hide();
+        }
         protected void Finish()
         {
-            Finished?.Invoke(this, new EventArgs());
+            Father.Close();
         }
     }
 }
