@@ -100,6 +100,7 @@
     <!--链接文字-->
 
     <!--tabitem-->
+    <s:String x:Key="tbiStart">Start</s:String>
     <s:String x:Key="tbiOnPowerOn">Power on</s:String>
     <s:String x:Key="tbiOnRecovery">Recovery</s:String>
     <s:String x:Key="tbiOnFastboot">Fastboot</s:String>

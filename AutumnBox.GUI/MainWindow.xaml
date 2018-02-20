@@ -8,7 +8,7 @@
         xmlns:cpnel="clr-namespace:AutumnBox.GUI.UI.FuncPanels"
         x:Name="_MainWindow" x:Class="AutumnBox.GUI.MainWindow"
         mc:Ignorable="d"
-        Background="{DynamicResource BackBrush}" Title="AutumnBox" Height="682.667" Width="1155" Foreground="#FF1B1919" ResizeMode="NoResize" Loaded="MainWindow_Loaded" AllowsTransparency="True" WindowStyle="None"  WindowStartupLocation="CenterScreen" ShowInTaskbar="False">
+        Background="{DynamicResource BackBrush}" Title="AutumnBox" Height="682.667" Width="1155" Foreground="#FF1B1919" ResizeMode="NoResize" Loaded="MainWindow_Loaded"  WindowStyle="None"  WindowStartupLocation="CenterScreen" ShowInTaskbar="False">
     <Grid>
         <Grid Name="GridBase" Margin="3,0,3,3">
             <WebBrowser x:Name="WTF" Width="1" Height="0" Margin="963,271,185,408"/>
@@ -30,18 +30,21 @@
 
                 <cstm:PotdBox Margin="940,355,10,146" Height="150" Width="200"/>
                 <TabControl x:Name="TBCFuncs" HorizontalAlignment="Left" Height="392" Margin="10,233,0,0" VerticalAlignment="Top" Width="924" Background="#20000000" BorderBrush="{DynamicResource BorderBrush}">
-                    <TabItem TabIndex="0" Header="{DynamicResource tbiOnPowerOn}" Margin="-2,-2,-2,0" Foreground="{DynamicResource ForgBrush}" FontSize="16">
+                    <TabItem TabIndex="0" Header="{DynamicResource tbiStart}" Margin="-2,-2,-14,0" Foreground="{DynamicResource ForgBrush}" FontSize="16">
+                        <cpnel:StartPanel x:Name="StartPanel" Margin="0,0,0,0"></cpnel:StartPanel>
+                    </TabItem>
+                    <TabItem TabIndex="1" Header="{DynamicResource tbiOnPowerOn}" Margin="14,-2,-18,0" Foreground="{DynamicResource ForgBrush}" FontSize="16">
                         <cpnel:PoweronFuncPanel x:Name="PoweronFuncs" Margin="0,0,0,0"></cpnel:PoweronFuncPanel>
                     </TabItem>
-                    <TabItem TabIndex="1"  Header="{DynamicResource tbiOnRecovery}" Margin="1,-2,-5,0" Foreground="{DynamicResource ForgBrush}" FontSize="16">
+                    <TabItem TabIndex="2"  Header="{DynamicResource tbiOnRecovery}" Margin="18,-2,-23,0" Foreground="{DynamicResource ForgBrush}" FontSize="16">
                         <cpnel:RecFuncPanel x:Name="RecoveryFuncs"/>
                     </TabItem>
-                    <TabItem TabIndex="2"  Header="{DynamicResource tbiOnFastboot}" Margin="5,-2,-9,0" Foreground="{DynamicResource ForgBrush}" FontSize="16">
+                    <TabItem TabIndex="3"  Header="{DynamicResource tbiOnFastboot}" Margin="23,-2,-26,0" Foreground="{DynamicResource ForgBrush}" FontSize="16">
                         <cpnel:FastbootFuncPanel x:Name="FastbootFuncs"></cpnel:FastbootFuncPanel>
                     </TabItem>
                 </TabControl>
             </Grid>
         </Grid>
         <!--<cstm:LoadingPanel x:Name="LoadingPanel"></cstm:LoadingPanel>-->
-        </Grid>
+    </Grid>
 </Window>

@@ -136,6 +136,7 @@ namespace AutumnBox.GUI
             UIHelper.SetOwnerTransparency(Config.BackgroundA);
             //开启Blur透明效果
             BlurHelper.EnableBlur(this);
+            AllowsTransparency = true;
 #endif
             //刷新一下界面
             Reset();
@@ -205,17 +206,17 @@ namespace AutumnBox.GUI
             {
                 switch (devinfo.State) {
                     case DeviceState.Poweron:
-                        TBCFuncs.SelectedIndex = 0;
+                        TBCFuncs.SelectedIndex = 1;
                         break;
                     case DeviceState.Recovery:
                     case DeviceState.Sideload:
-                        TBCFuncs.SelectedIndex = 1;
-                        break;
-                    case DeviceState.Fastboot:
                         TBCFuncs.SelectedIndex = 2;
                         break;
+                    case DeviceState.Fastboot:
+                        TBCFuncs.SelectedIndex = 3;
+                        break;
                     default:
-                        TBCFuncs.SelectedIndex = -1;
+                        TBCFuncs.SelectedIndex = 0;
                         break;
                 }
                 refreshables.ForEach((ctrl) => { ctrl.Refresh(devinfo); });
@@ -227,6 +228,7 @@ namespace AutumnBox.GUI
             lock (setUILock)
             {
                 refreshables.ForEach((ctrl) => { ctrl.Reset(); });
+                TBCFuncs.SelectedIndex = 0;
             }
         }
 

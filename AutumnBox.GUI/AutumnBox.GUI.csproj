@@ -205,6 +205,9 @@
     </Compile>
     <Compile Include="Cfg\IConfigOperator.cs" />
     <Compile Include="Cfg\ConfigDataLayout.cs" />
+    <Compile Include="UI\FuncPanels\StartPanel.xaml.cs">
+      <DependentUpon>StartPanel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\IAsyncRefreshable.cs" />
     <Compile Include="Util\AutoGC.cs" />
     <Compile Include="Util\MachineInfo.cs" />
@@ -383,6 +386,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\CstPanels\Settings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\FuncPanels\StartPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
