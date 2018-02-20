@@ -28,6 +28,7 @@ namespace AutumnBox.Basic.Executer
             {
                 outSb.AppendLine(text);
                 allSb.AppendLine(text);
+                LeastLine = text;
             }
             catch (IndexOutOfRangeException)
             {
@@ -42,6 +43,7 @@ namespace AutumnBox.Basic.Executer
         {
             errSb.AppendLine(text);
             allSb.AppendLine(text);
+            LeastLine = text;
         }
         public void Clear()
         {
@@ -62,6 +64,7 @@ namespace AutumnBox.Basic.Executer
                 }
             };
         }
+        public string LeastLine { get; private set; }
         public Output ToOutputData()
         {
             return new Output(allSb.ToString(), outSb.ToString(), errSb.ToString());

@@ -27,6 +27,7 @@ namespace AutumnBox.Basic.Executer
     /// </summary>
     public sealed class AndroidShell : IOutSender, IDisposable
     {
+       
         /// <summary>
         /// 每条常规命令后都会有这个命令,用来获取返回值
         /// </summary>
@@ -125,15 +126,14 @@ namespace AutumnBox.Basic.Executer
         /// </summary>
         /// <param name="command"></param>
         /// <returns></returns>
-        public ShellOutput SafetyInput(string command)
+        public AdvanceOutput SafetyInput(string command)
         {
             _latestReturnCode = null;
             BeginRead();
             Input(command + $"; echo {_finishMark}");
             while (_latestReturnCode == null) ;
             StopRead();
-            _outTmp.ReturnCode = _latestReturnCode ?? 24010;
-            return _outTmp;
+            return new AdvanceOutput(builder.ToOutputData(), _latestReturnCode ?? 24010);
         }
         /// <summary>
         /// 连接到设备上
@@ -200,7 +200,7 @@ namespace AutumnBox.Basic.Executer
             }
             if (_isEnableRead)
             {
-                _outTmp.AppendOut(e.Text);
+                builder.AppendOut(e.Text);
             }
             OutputReceived?.Invoke(this, e);
         }
@@ -228,11 +228,11 @@ namespace AutumnBox.Basic.Executer
         /// <summary>
         /// 最近的一行输出
         /// </summary>
-        private string _latestOutput { get { return _outTmp.LineAll[_outTmp.LineAll.Length - 1]; } }
+        private string _latestOutput { get { return builder.LeastLine; } }
         /// <summary>
         /// 用来存储输出的缓冲类
         /// </summary>
-        private ShellOutput _outTmp = null;
+        private OutputBuilder builder = new OutputBuilder();
         /// <summary>
         /// 是否存储输出
         /// </summary>
@@ -242,7 +242,7 @@ namespace AutumnBox.Basic.Executer
         /// </summary>
         private void BeginRead()
         {
-            _outTmp = new ShellOutput();
+            builder.Clear();
             _isEnableRead = true;
         }
         /// <summary>

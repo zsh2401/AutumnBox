@@ -54,7 +54,7 @@ namespace AutumnBox.Basic.Device
         private string Find1(DeviceImage image)
         {
             var exeResult = ShellAsSu.SafetyInput($"find /dev/ -name {image.ToString().ToLower()}");
-            Logger.D((exeResult.ToOutputData()).ToString());
+            exeResult.PrintOnLog();
             if (exeResult.ExitCode == (int)LinuxReturnCode.KeyHasExpired)
             {
                 return null;//无法使用find命令,当场返回!

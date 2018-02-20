@@ -24,7 +24,7 @@ namespace AutumnBox.Basic.Flows
     public sealed class DeviceImageFlasher : FunctionFlow<DeviceImageFlasherArgs>
     {
         private const string _savePath = "/sdcard/autumnbox.img.tmp";
-        private ShellOutput moveResult;
+        private AdvanceOutput moveResult;
         protected override Output MainMethod(ToolKit<DeviceImageFlasherArgs> toolKit)
         {
             Output output = new Output();
@@ -44,7 +44,7 @@ namespace AutumnBox.Basic.Flows
                 shell.Connect();
                 shell.Switch2Su();
                 moveResult = shell.SafetyInput($"mv {_savePath} {path}");
-                output.Append(moveResult.ToOutputData());
+                output.Append(moveResult);
             }
             return output;
         }
