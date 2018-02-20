@@ -64,6 +64,8 @@
     <Compile Include="Device\PackageManage\PackageBasicInfo.cs" />
     <Compile Include="Device\PackageManage\PackageManager.cs" />
     <Compile Include="Executer\IShellOutput.cs" />
+    <Compile Include="Executer\OutputBuilder.cs" />
+    <Compile Include="Executer\SuShell.cs" />
     <Compile Include="Loader.cs" />
     <Compile Include="Util\DriverHelper.cs" />
     <Compile Include="Util\ForwardManager.cs" />
@@ -124,7 +126,7 @@
     <Compile Include="Function\FunctionModuleProxy.cs" />
     <Compile Include="Function\IFunctionModule.cs" />
     <Compile Include="MultipleDevices\IDevicesGetter.cs" />
-    <Compile Include="Executer\OutputData.cs" />
+    <Compile Include="Executer\Output.cs" />
     <Compile Include="MultipleDevices\DevicesList.cs" />
     <Compile Include="Function\ExecuteResult.cs" />
     <Compile Include="Executer\Command.cs" />

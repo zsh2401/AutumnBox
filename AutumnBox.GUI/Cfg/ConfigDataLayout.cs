@@ -73,7 +73,7 @@ namespace AutumnBox.GUI.Cfg
                 ValueChanged?.Invoke(this, new EventArgs());
             }
         }
-        private byte _backgroundA = 225;
+        private byte _backgroundA = 255;
 
         [JsonProperty("bgARGB")]
         public int[] BackgroundARGB

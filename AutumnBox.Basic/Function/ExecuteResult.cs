@@ -26,7 +26,7 @@ namespace AutumnBox.Basic.Function
         /// <summary>
         /// 具体输出
         /// </summary>
-        public OutputData OutputData { get; private set; }
+        public Output OutputData { get; private set; }
         /// <summary>
         /// 是否是强制停止的
         /// </summary>
@@ -48,7 +48,7 @@ namespace AutumnBox.Basic.Function
         /// 初始化
         /// </summary>
         /// <param name="o"></param>
-        public ExecuteResult(OutputData o)
+        public ExecuteResult(Output o)
         {
             this.OutputData = o;
         }

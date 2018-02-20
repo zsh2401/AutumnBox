@@ -18,10 +18,16 @@ namespace AutumnBox.Basic.Executer
         public event OutputReceivedEventHandler OutputReceived;
         public event ProcessStartedEventHandler ProcessStarted;
         private ProcessStartInfo _startInfo;
-        private OutputData _buffer;
+        private OutputBuilder _builder;
         private readonly Object _lock;
+        public static readonly CommandExecuter Static;
+        static CommandExecuter()
+        {
+            Static = new CommandExecuter();
+        }
         public CommandExecuter()
         {
+            _builder = new OutputBuilder();
             _lock = new object();
             _startInfo = new ProcessStartInfo()
             {
@@ -36,14 +42,14 @@ namespace AutumnBox.Basic.Executer
         {
             lock (_lock)
             {
-                _buffer = new OutputData();
+                _builder.Clear();
                 int exitCode = 404;
                 _startInfo.FileName = fileName;
                 _startInfo.Arguments = command;
                 using (var process = Process.Start(_startInfo))
                 {
-                    process.OutputDataReceived += (s, e) => OnOutputReceived(new OutputReceivedEventArgs( e, false));
-                    process.ErrorDataReceived += (s, e) => OnOutputReceived(new OutputReceivedEventArgs( e, true));
+                    process.OutputDataReceived += (s, e) => OnOutputReceived(new OutputReceivedEventArgs(e, false));
+                    process.ErrorDataReceived += (s, e) => OnOutputReceived(new OutputReceivedEventArgs(e, true));
                     process.BeginOutputReadLine();
                     process.BeginErrorReadLine();
                     ProcessStarted?.Invoke(this, new ProcessStartedEventArgs() { Pid = process.Id });
@@ -52,7 +58,7 @@ namespace AutumnBox.Basic.Executer
                     process.CancelOutputRead();
                     exitCode = process.ExitCode;
                 };
-                return new CommandExecuterResult(_buffer, exitCode);
+                return new CommandExecuterResult(_builder.ToOutputData(), exitCode);
             }
         }
         public CommandExecuterResult Execute(Command cmd)
@@ -86,11 +92,11 @@ namespace AutumnBox.Basic.Executer
             }
             if (!e.IsError)
             {
-                _buffer.OutAdd(e.Text);
+                _builder.AppendOut(e.Text);
             }
             else
             {
-                _buffer.ErrorAdd(e.Text);
+                _builder.AppendError(e.Text);
             }
             OutputReceived?.Invoke(this, e);
         }

@@ -27,18 +27,17 @@ namespace AutumnBox.Basic.Function.Modules
             base.Create(bundle);
             dpi = ((DpiChangerArgs)bundle.Args).Dpi;
         }
-        protected override OutputData MainMethod(BundleForTools bundle)
+        protected override Output MainMethod(BundleForTools bundle)
         {
-            OutputData o = new OutputData();
-            o.AddOutSender(bundle.Executer);
+            var builder = new OutputBuilder();
+            builder.Register(bundle.Executer);
             var result = bundle.Executer.QuicklyShell(bundle.Serial, $"wm density {dpi}");
             isSuccess = result.ExitCode == 0 ? true : false;
             if (isSuccess)
             {
                 bundle.Ae("reboot");
             }
-            Logger.D("maybe finished....the output ->" + o.ToString());
-            return o;
+            return builder.ToOutputData() ;
         }
         protected override void AnalyzeOutput(BundleForAnalyzingResult bundle)
         {

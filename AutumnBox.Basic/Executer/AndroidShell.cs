@@ -200,7 +200,7 @@ namespace AutumnBox.Basic.Executer
             }
             if (_isEnableRead)
             {
-                _outTmp.OutAdd(e.Text);
+                _outTmp.AppendOut(e.Text);
             }
             OutputReceived?.Invoke(this, e);
         }
@@ -228,7 +228,7 @@ namespace AutumnBox.Basic.Executer
         /// <summary>
         /// 最近的一行输出
         /// </summary>
-        private string _latestOutput { get { return _outTmp.LineAll[_outTmp.LineAll.Count - 1]; } }
+        private string _latestOutput { get { return _outTmp.LineAll[_outTmp.LineAll.Length - 1]; } }
         /// <summary>
         /// 用来存储输出的缓冲类
         /// </summary>

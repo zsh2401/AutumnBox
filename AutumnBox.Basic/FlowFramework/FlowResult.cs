@@ -19,7 +19,7 @@ namespace AutumnBox.Basic.FlowFramework
     public class FlowResult
     {
         public CheckResult CheckResult { get; set; } = CheckResult.Error;
-        public virtual OutputData OutputData { get; set; } = new OutputData();
+        public virtual Output OutputData { get; set; } = new Output();
         public virtual ResultType ResultType { get; set; } = ResultType.Successful;
         public virtual Exception Exception { get; set; }
     }

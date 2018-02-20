@@ -55,7 +55,7 @@ namespace AutumnBox.Basic.Flows
             Logger.T(resultStep3.Output.ToString());
             return resultStep1.IsSuccessful && resultStep2.IsSuccessful && resultStep3.IsSuccessful;
         }
-        protected override OutputData MainMethod(ToolKit<FlowArgs> toolKit)
+        protected override Output MainMethod(ToolKit<FlowArgs> toolKit)
         {
             Logger.D("the command ->" + Command);
             _toolKit = toolKit;

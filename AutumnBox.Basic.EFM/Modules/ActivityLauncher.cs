@@ -29,7 +29,7 @@ namespace AutumnBox.Basic.Function.Modules
             base.Create(bundle);
             _Args = (ActivityLaunchArgs)bundle.Args;
         }
-        protected override OutputData MainMethod(BundleForTools bundle)
+        protected override Output MainMethod(BundleForTools bundle)
         {
             Logger.D($"Try Launch {bundle.Serial} Activity : {_Args.ActivityName}");
             string command = $"shell am start -n {_Args.PackageName}/{ _Args.ActivityName}";

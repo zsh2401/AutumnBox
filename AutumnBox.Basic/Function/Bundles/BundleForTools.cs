@@ -21,8 +21,8 @@ namespace AutumnBox.Basic.Function.Bundles
     public class BundleForTools
     {
         public CommandExecuter Executer { get; private set; }
-        public Func<string, OutputData> Ae { get; private set; }
-        public Func<string, OutputData> Fe { get; private set; }
+        public Func<string, Output> Ae { get; private set; }
+        public Func<string, Output> Fe { get; private set; }
         public ModuleArgs Args { get; private set; }
         public DeviceSerial Serial { get { return Args.DeviceBasicInfo.Serial; } }
         public BundleForTools(CommandExecuter executer, ModuleArgs args)

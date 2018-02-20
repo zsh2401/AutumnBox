@@ -19,18 +19,18 @@ namespace AutumnBox.Basic.Function.Modules
 {
     public sealed class ScreenLockDeleter : FunctionModule
     {
-        protected override OutputData MainMethod(BundleForTools bundle)
+        protected override Output MainMethod(BundleForTools bundle)
         {
             AndroidShell _shell = new AndroidShell(bundle.Args.DeviceBasicInfo.Serial);
-            OutputData output = new OutputData();
-            output.AddOutSender(_shell);
+            var builder = new OutputBuilder();
+            builder.Register(_shell);
             _shell.Connect();
             _shell.Switch2Su();
             _shell.SafetyInput("rm /data/system/gesture.key");
             _shell.SafetyInput("adb shell rm /data/system/password.key");
             new Thread(_shell.Disconnect).Start();
             bundle.Ae("reboot");
-            return output;
+            return builder.ToOutputData();
         }
     }
 }

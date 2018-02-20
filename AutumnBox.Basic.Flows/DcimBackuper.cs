@@ -30,7 +30,7 @@ namespace AutumnBox.Basic.Flows
             Logger.D(result.ToString());
             return result;
         }
-        protected override OutputData MainMethod(ToolKit<DcimBackuperArgs> toolKit)
+        protected override Output MainMethod(ToolKit<DcimBackuperArgs> toolKit)
         {
             Logger.D(toolKit.Args.TargetPath);
             if (toolKit.Args.DevBasicInfo.State == Device.DeviceState.Poweron)

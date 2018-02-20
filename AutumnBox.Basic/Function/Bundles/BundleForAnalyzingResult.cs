@@ -24,6 +24,6 @@ namespace AutumnBox.Basic.Function.Bundles
     {
         public Object Other { get; set; }
         public ExecuteResult Result { get; set; }
-        public OutputData OutputData { get { return Result.OutputData; } }
+        public Output OutputData { get { return Result.OutputData; } }
     }
 }

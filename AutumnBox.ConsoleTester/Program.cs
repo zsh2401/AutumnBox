@@ -32,11 +32,7 @@ namespace AutumnBox.ConsoleTester
         };
         unsafe static int Main(string[] cmdargs)
         {
-            var start = DateTime.Now;
-            Console.WriteLine("Execute Starts");
-            AdbHelper.StartServer();
-            Console.WriteLine($"Finished...used time: {(DateTime.Now - start).TotalMilliseconds}");
-            Console.ReadKey();
+            //CommandExecut
             return 0;
         }
         private class Test : IDisposable

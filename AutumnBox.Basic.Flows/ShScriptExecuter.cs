@@ -46,7 +46,7 @@ namespace AutumnBox.Basic.Flows
             base.Initialization(moduleArgs);
             Args = moduleArgs;
         }
-        protected override OutputData MainMethod(ToolKit<ShScriptExecuterArgs> toolKit)
+        protected override Output MainMethod(ToolKit<ShScriptExecuterArgs> toolKit)
         {
             _tooKit = toolKit;
             if (AppPackageName != null && AppActivity != null)

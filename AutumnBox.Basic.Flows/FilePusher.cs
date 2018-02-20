@@ -34,7 +34,7 @@ namespace AutumnBox.Basic.Flows
     public sealed class FilePusher : FunctionFlow<FilePusherArgs,AdvanceResult>
     {
         private CommandExecuterResult exeResult;
-        protected override OutputData MainMethod(ToolKit<FilePusherArgs> toolKit)
+        protected override Output MainMethod(ToolKit<FilePusherArgs> toolKit)
         {
             Logger.T("hehe");
             var command = Command.MakeForAdb(

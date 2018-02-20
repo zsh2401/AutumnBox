@@ -33,13 +33,13 @@ namespace AutumnBox.Basic.Executer
         /// <summary>
         /// 执行期间所有的输出
         /// </summary>
-        public OutputData Output { get; private set; }
+        public Output Output { get; private set; }
         /// <summary>
         /// 构建
         /// </summary>
         /// <param name="output"></param>
         /// <param name="exitCode"></param>
-        internal CommandExecuterResult(OutputData output, int exitCode)
+        internal CommandExecuterResult(Output output, int exitCode)
         {
             Output = output;
             ExitCode = exitCode;
@@ -53,11 +53,9 @@ namespace AutumnBox.Basic.Executer
             return new ShellOutput(Output) { ReturnCode = ExitCode };
         }
 
-        public OutputData ToOutputData()
+        public Output ToOutputData()
         {
-            var result = new OutputData();
-            result.Append(Output);
-            return result;
+            return Output;
         }
 
         public void PrintOnLog(bool printOnRelease = false)

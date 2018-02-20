@@ -153,9 +153,6 @@
     <Compile Include="UI\Cstm\CstmTitleBar.xaml.cs">
       <DependentUpon>CstmTitleBar.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Cstm\LoadingPanel.xaml.cs">
-      <DependentUpon>LoadingPanel.xaml</DependentUpon>
-    </Compile>
     <Compile Include="UI\CstPanels\About.xaml.cs">
       <DependentUpon>About.xaml</DependentUpon>
     </Compile>
@@ -325,10 +322,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\Cstm\CstmTitleBar.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UI\Cstm\LoadingPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

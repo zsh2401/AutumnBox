@@ -25,9 +25,9 @@ namespace AutumnBox.Basic.Flows
     {
         private const string _savePath = "/sdcard/autumnbox.img.tmp";
         private ShellOutput moveResult;
-        protected override OutputData MainMethod(ToolKit<DeviceImageFlasherArgs> toolKit)
+        protected override Output MainMethod(ToolKit<DeviceImageFlasherArgs> toolKit)
         {
-            OutputData output = new OutputData();
+            Output output = new Output();
             /*push image file to sdcard*/
             var pushArgs = new FilePusherArgs()
             {

@@ -23,7 +23,7 @@ namespace AutumnBox.Basic.Executer
     /// <summary>
     /// 用于保存AndroidShell类的返回值
     /// </summary>
-    public class ShellOutput:IShellOutput
+    public class ShellOutput : IShellOutput
     {
         /// <summary>
         /// 执行是否成功
@@ -38,25 +38,24 @@ namespace AutumnBox.Basic.Executer
         /// 添加输出
         /// </summary>
         /// <param name="text"></param>
-        public void OutAdd(string text)
+        public void AppendOut(string text)
         {
-            LineAll.Add(text);
-            All.AppendLine(text);
+            allSb.Append(text);
         }
 
-        public OutputData ToOutputData()
+        public Output ToOutputData()
         {
-            var result = new OutputData();
-            result.All = All;
-            result.LineAll = LineAll;
-            return result;
+            return Output.From(this);
         }
 
         public void PrintOnLog(bool printOnRelease = false)
         {
-            if (printOnRelease) {
+            if (printOnRelease)
+            {
                 Logger.T($"PrintOnLog(): ExitCode: {ExitCode} Output: {All}");
-            } else {
+            }
+            else
+            {
                 Logger.D($"PrintOnLog(): ExitCode: {ExitCode} Output: {All}");
             }
         }
@@ -69,11 +68,24 @@ namespace AutumnBox.Basic.Executer
         /// <summary>
         /// 每一行输出
         /// </summary>
-        public List<string> LineAll { get; private set; } = new List<string>();
+        public string[] LineAll
+        {
+            get
+            {
+                return All.Split(Environment.NewLine.ToCharArray());
+            }
+        }
         /// <summary>
         /// 所有输出
         /// </summary>
-        public StringBuilder All { get; private set; } = new StringBuilder();
+        public string All
+        {
+            get
+            {
+                return allSb.ToString();
+            }
+        }
+        private StringBuilder allSb = new StringBuilder();
         /// <summary>
         /// 确保只有AutumnBox.Basic可以构造这个类
         /// </summary>
@@ -81,10 +93,9 @@ namespace AutumnBox.Basic.Executer
         /// <summary>
         /// 确保只有AutumnBox.Basic可以构造这个类
         /// </summary>
-        internal ShellOutput(OutputData o)
+        internal ShellOutput(Output o)
         {
-            LineAll = o.LineAll;
-            All = o.All;
+            allSb.Append(o.All);
         }
     }
 }

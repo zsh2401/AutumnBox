@@ -140,7 +140,7 @@ namespace AutumnBox.Basic.Function
                 }
                 else
                 {
-                    executeResult = new ExecuteResult(new OutputData())
+                    executeResult = new ExecuteResult(new Output())
                     {
                         Level = ResultLevel.Unsuccessful,
                         WasForcblyStop = false,
@@ -214,7 +214,7 @@ namespace AutumnBox.Basic.Function
         /// <summary>
         /// 模块的核心代码,强制要求子类进行实现
         /// </summary>
-        protected abstract OutputData MainMethod(BundleForTools toolsBundle);
+        protected abstract Output MainMethod(BundleForTools toolsBundle);
         /// <summary>
         /// 引发OutputReceived事件
         /// </summary>

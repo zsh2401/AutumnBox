@@ -12,6 +12,6 @@ namespace AutumnBox.Basic.Executer
         int ExitCode { get; }
         bool IsSuccessful { get; }
 
-        OutputData ToOutputData();
+        Output ToOutputData();
     }
 }

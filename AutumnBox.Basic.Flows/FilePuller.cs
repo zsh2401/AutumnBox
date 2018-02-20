@@ -19,7 +19,7 @@ namespace AutumnBox.Basic.Flows
     public sealed class FilePuller : FunctionFlow<FilePullerArgs, AdvanceResult>
     {
         private CommandExecuterResult result;
-        protected override OutputData MainMethod(ToolKit<FilePullerArgs> toolKit)
+        protected override Output MainMethod(ToolKit<FilePullerArgs> toolKit)
         {
             var command = Command.MakeForAdb($"pull \"{toolKit.Args.FilePathOnDevice}\" \"{toolKit.Args.SavePath}\"");
             result = toolKit.Executer.Execute(command);

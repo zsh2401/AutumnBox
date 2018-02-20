@@ -26,7 +26,7 @@ namespace AutumnBox.Basic.Flows
         private static readonly string _commandOfToHide = "settings put global policy_control immersive.navigation=*";
         private static readonly string _commandOfUnhide = "settings put global policy_control null";
         private ShellOutput Result;
-        protected override OutputData MainMethod(ToolKit<VirtualButtonHiderArgs> toolKit)
+        protected override Output MainMethod(ToolKit<VirtualButtonHiderArgs> toolKit)
         {
             if (toolKit.Args.IsHide)
             {

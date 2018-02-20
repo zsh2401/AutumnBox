@@ -15,7 +15,7 @@ namespace AutumnBox.Basic.Flows
 {
     public class GeekMemoryCleanerActivator : FunctionFlow
     {
-        protected override OutputData MainMethod(ToolKit<FlowArgs> toolKit)
+        protected override Output MainMethod(ToolKit<FlowArgs> toolKit)
         {
             var result =  new NetDebuggingOpener().Run(new NetDebuggingOpenerArgs() {
                 Port = 5555,

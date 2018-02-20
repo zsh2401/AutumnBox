@@ -23,9 +23,9 @@ namespace AutumnBox.Basic.Flows
         private bool _getPathSuccessful = false;
         private bool _copySuccessful = false;
         private bool _pullSuccessful = false;
-        protected override OutputData MainMethod(ToolKit<DeviceImageExtractorArgs> toolKit)
+        protected override Output MainMethod(ToolKit<DeviceImageExtractorArgs> toolKit)
         {
-            var output = new OutputData();
+            var output = new Output();
             string path = DeviceImageFinder.PathOf(toolKit.Args.DevBasicInfo.Serial, toolKit.Args.ImageType);
             if (path == null) { return null; }
             _getPathSuccessful = true;

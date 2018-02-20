@@ -44,7 +44,7 @@ namespace AutumnBox.Basic.MultipleDevices
         }
         private const string devicePattern = @"(?i)^(?<serial>[^\u0020|^\t]+)[^\w]+(?<status>\w+)[^?!.]$";
         private static readonly Regex _deviceRegex = new Regex(devicePattern, RegexOptions.Multiline);
-        private static void AdbParse(OutputData o, ref DevicesList devList)
+        private static void AdbParse(Output o, ref DevicesList devList)
         {
             var matches = _deviceRegex.Matches(o.ToString());
             foreach (Match match in matches)
@@ -54,7 +54,7 @@ namespace AutumnBox.Basic.MultipleDevices
                     match.Result("${status}").ToDeviceState()));
             }
         }
-        private static void FastbootParse(OutputData o, ref DevicesList devList)
+        private static void FastbootParse(Output o, ref DevicesList devList)
         {
             var matches = _deviceRegex.Matches(o.ToString());
             foreach (Match match in matches)

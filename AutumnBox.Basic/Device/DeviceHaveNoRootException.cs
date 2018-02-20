@@ -13,7 +13,13 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Device
 {
-    public class DeviceHaveNoRootException:Exception
+    public class DeviceHaveNoRootException : Exception
     {
+        public DeviceSerial Device { get; private set; }
+        public DeviceHaveNoRootException() { }
+        public DeviceHaveNoRootException(DeviceSerial dev)
+        {
+            this.Device = dev;
+        }
     }
 }

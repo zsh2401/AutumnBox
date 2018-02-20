@@ -29,30 +29,30 @@ namespace AutumnBox.Basic.Flows.MiFlash
     {
         int retCode;
         
-        protected override OutputData MainMethod(ToolKit<MiFlasherArgs> toolKit)
+        protected override Output MainMethod(ToolKit<MiFlasherArgs> toolKit)
         {
             MiFlashBatExecuteProcess process = new MiFlashBatExecuteProcess(toolKit.Args.BatFileName, toolKit.Args.Serial);
             process.OutputReceived += (s, e) => { OnOutputReceived(e); };
             process.ProcessStarted += (s, e) => { OnProcessStarted(e); };
             retCode = process.ExecuteToEnd();
-            return _outputBuffer;
+            return _outputBuilder.ToOutputData();
         }
         protected override void AnalyzeResult(AdvanceResult result)
         {
             base.AnalyzeResult(result);
             result.ExitCode = retCode;
         }
-        private OutputData _outputBuffer = new OutputData();
+        private OutputBuilder _outputBuilder = new OutputBuilder();
         protected override void OnOutputReceived(OutputReceivedEventArgs e)
         {
             base.OnOutputReceived(e);
             if (!e.IsError)
             {
-                _outputBuffer.OutAdd(e.Text);
+                _outputBuilder.AppendOut(e.Text);
             }
             else
             {
-                _outputBuffer.ErrorAdd(e.Text);
+                _outputBuilder.AppendError(e.Text);
             }
         }
 

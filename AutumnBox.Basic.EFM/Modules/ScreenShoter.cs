@@ -27,9 +27,9 @@ namespace AutumnBox.Basic.Function.Modules
             base.Create(bundle);
             _Args = (ScreenShoterArgs)bundle.Args;
         }
-        protected override OutputData MainMethod(BundleForTools bundle)
+        protected override Output MainMethod(BundleForTools bundle)
         {
-            OutputData o = new OutputData();
+            var o = new Output();
             string fileName = $"{DateTime.Now.ToString("yyyy_MM_dd_hh_MM_ss")}.png";
             o.Append(bundle.Ae($"shell /system/bin/screencap -p /sdcard/{fileName}"));
             o.Append(bundle.Ae($"pull /sdcard/{fileName} " + _Args.LocalPath + "\\" + fileName));

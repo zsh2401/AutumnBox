@@ -39,7 +39,7 @@ namespace AutumnBox.Basic.FlowFramework
                 Startup?.Invoke(this, e);
             });
         }
-        protected abstract OutputData MainMethod(ToolKit<TArgs> toolKit);
+        protected abstract Output MainMethod(ToolKit<TArgs> toolKit);
         protected virtual void OnOutputReceived(OutputReceivedEventArgs e)
         {
             Task.Run(() =>

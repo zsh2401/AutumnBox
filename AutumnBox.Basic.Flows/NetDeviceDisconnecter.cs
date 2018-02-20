@@ -20,7 +20,7 @@ namespace AutumnBox.Basic.Flows
     public class NetDeviceDisconnecter : FunctionFlow<FlowArgs, AdvanceResult>
     {
         private CommandExecuterResult _result;
-        protected override OutputData MainMethod(ToolKit<FlowArgs> toolKit)
+        protected override Output MainMethod(ToolKit<FlowArgs> toolKit)
         {
             if (!toolKit.Args.DevBasicInfo.Serial.IsIpAdress)
                 throw new Exception($"{toolKit.Args.DevBasicInfo.Serial} is not a net debugging device");

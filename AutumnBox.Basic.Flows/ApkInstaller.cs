@@ -28,7 +28,7 @@ namespace AutumnBox.Basic.Flows
     {
         public FileInfo ApkFileInfo { get; internal set; }
         public bool IsSuccess { get; internal set; } = true;
-        public OutputData Output { get; internal set; }
+        public Output Output { get; internal set; }
     }
     public sealed class ApkInstallerResult : FlowResult
     {
@@ -41,11 +41,11 @@ namespace AutumnBox.Basic.Flows
         public event AApkInstallltionComplete AApkIstanlltionCompleted;
 #pragma warning disable CA1009
         private int errorCount = 0;
-        protected override OutputData MainMethod(ToolKit<ApkInstallerArgs> toolKit)
+        protected override Output MainMethod(ToolKit<ApkInstallerArgs> toolKit)
         {
             Logger.T($"Start installing....have {toolKit.Args.Files.Count} Apks");
-            OutputData result = new OutputData();
-            result.AddOutSender(toolKit.Executer);
+            OutputBuilder result = new OutputBuilder();
+            result.Register(toolKit.Executer);
             foreach (FileInfo apkFileInfo in toolKit.Args.Files)
             {
                 Command command =
@@ -70,7 +70,7 @@ namespace AutumnBox.Basic.Flows
                 }
             }
             Logger.D(result.ToString());
-            return result;
+            return result.ToOutputData() ;
         }
         protected override void AnalyzeResult(ApkInstallerResult result)
         {
