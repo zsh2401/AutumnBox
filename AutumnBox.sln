@@ -27,6 +27,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutumnBox.ZipMaker", "Autum
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutumnBox.UnableToStartHelper", "AutumnBox.UnableToStartHelper\AutumnBox.UnableToStartHelper.csproj", "{6676743F-1C88-4446-8D9C-8CB2D6DFE873}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutumnBox.GUI.Launcher", "AutumnBox.GUI.Launcher\AutumnBox.GUI.Launcher.csproj", "{1F3778B8-BD3B-4288-A498-FD76D2E84F44}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Support", "Support", "{AD194958-76D4-4C60-BC3A-A6753B39D060}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		AutumnBox.Basic.EFM\AutumnBox.Basic.EFM.projitems*{84044fb2-bd38-4283-8065-b639270ece0f}*SharedItemsImports = 4
@@ -215,9 +219,38 @@ Global
 		{6676743F-1C88-4446-8D9C-8CB2D6DFE873}.Release|x64.Build.0 = Release|Any CPU
 		{6676743F-1C88-4446-8D9C-8CB2D6DFE873}.Release|x86.ActiveCfg = Release|Any CPU
 		{6676743F-1C88-4446-8D9C-8CB2D6DFE873}.Release|x86.Build.0 = Release|Any CPU
+		{1F3778B8-BD3B-4288-A498-FD76D2E84F44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F3778B8-BD3B-4288-A498-FD76D2E84F44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F3778B8-BD3B-4288-A498-FD76D2E84F44}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{1F3778B8-BD3B-4288-A498-FD76D2E84F44}.Debug|ARM.Build.0 = Debug|Any CPU
+		{1F3778B8-BD3B-4288-A498-FD76D2E84F44}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{1F3778B8-BD3B-4288-A498-FD76D2E84F44}.Debug|x64.Build.0 = Debug|Any CPU
+		{1F3778B8-BD3B-4288-A498-FD76D2E84F44}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{1F3778B8-BD3B-4288-A498-FD76D2E84F44}.Debug|x86.Build.0 = Debug|Any CPU
+		{1F3778B8-BD3B-4288-A498-FD76D2E84F44}.PrivateTest|Any CPU.ActiveCfg = Release|Any CPU
+		{1F3778B8-BD3B-4288-A498-FD76D2E84F44}.PrivateTest|Any CPU.Build.0 = Release|Any CPU
+		{1F3778B8-BD3B-4288-A498-FD76D2E84F44}.PrivateTest|ARM.ActiveCfg = Release|Any CPU
+		{1F3778B8-BD3B-4288-A498-FD76D2E84F44}.PrivateTest|ARM.Build.0 = Release|Any CPU
+		{1F3778B8-BD3B-4288-A498-FD76D2E84F44}.PrivateTest|x64.ActiveCfg = Release|Any CPU
+		{1F3778B8-BD3B-4288-A498-FD76D2E84F44}.PrivateTest|x64.Build.0 = Release|Any CPU
+		{1F3778B8-BD3B-4288-A498-FD76D2E84F44}.PrivateTest|x86.ActiveCfg = Release|Any CPU
+		{1F3778B8-BD3B-4288-A498-FD76D2E84F44}.PrivateTest|x86.Build.0 = Release|Any CPU
+		{1F3778B8-BD3B-4288-A498-FD76D2E84F44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F3778B8-BD3B-4288-A498-FD76D2E84F44}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F3778B8-BD3B-4288-A498-FD76D2E84F44}.Release|ARM.ActiveCfg = Release|Any CPU
+		{1F3778B8-BD3B-4288-A498-FD76D2E84F44}.Release|ARM.Build.0 = Release|Any CPU
+		{1F3778B8-BD3B-4288-A498-FD76D2E84F44}.Release|x64.ActiveCfg = Release|Any CPU
+		{1F3778B8-BD3B-4288-A498-FD76D2E84F44}.Release|x64.Build.0 = Release|Any CPU
+		{1F3778B8-BD3B-4288-A498-FD76D2E84F44}.Release|x86.ActiveCfg = Release|Any CPU
+		{1F3778B8-BD3B-4288-A498-FD76D2E84F44}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{20048B37-8A1D-4E1D-9D3F-741B5E66CB6E} = {AD194958-76D4-4C60-BC3A-A6753B39D060}
+		{6676743F-1C88-4446-8D9C-8CB2D6DFE873} = {AD194958-76D4-4C60-BC3A-A6753B39D060}
+		{1F3778B8-BD3B-4288-A498-FD76D2E84F44} = {AD194958-76D4-4C60-BC3A-A6753B39D060}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E8E55705-AE5C-4952-B4C7-9D7F81C38731}

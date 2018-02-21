@@ -35,7 +35,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\out\</OutputPath>
+    <OutputPath>..\out\AutumnBox\file\</OutputPath>
     <DefineConstants>TRACE;DEBUG;USE_LOCAL_API</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -45,7 +45,7 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\out\</OutputPath>
+    <OutputPath>..\out\AutumnBox\file\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -79,7 +79,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'PrivateTest|AnyCPU'">
     <DebugSymbols>false</DebugSymbols>
-    <OutputPath>..\out\</OutputPath>
+    <OutputPath>..\out\AutumnBox\file\</OutputPath>
     <DefineConstants>DEBUG;PRVT_T FUCK</DefineConstants>
     <DebugType>none</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -532,15 +532,10 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>del /S *.pdb
-del /S *.ab
-del /S *.exe.config
-del /S *.xml
-if $(ConfigurationName) == Release (
+    <PostBuildEvent>if $(ConfigurationName) == Release (
 del /S *.json
-)
-del /S AutumnBox.application
 del AutumnBox.ConsoleTester.exe
+)
 rd /S /Q app.publish
 rd /S /Q logs
 </PostBuildEvent>

@@ -4,36 +4,42 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{851B2EB0-0503-428D-BD87-063555B19451}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AutumnBox.Support</RootNamespace>
-    <AssemblyName>AutumnBox.Support</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <ProjectGuid>{1F3778B8-BD3B-4288-A498-FD76D2E84F44}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>AutumnBox.GUI.Launcher</RootNamespace>
+    <AssemblyName>AutumnBox-秋之盒</AssemblyName>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\out\AutumnBox\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>..\out\AutumnBox\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>title_icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Management" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -42,27 +48,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CstmDebug\CompiledDateAttribute.cs" />
-    <Compile Include="CstmDebug\ILogSender.cs" />
-    <Compile Include="CstmDebug\LogFilePropertyAttribute.cs" />
-    <Compile Include="CstmDebug\Logger.Private.cs" />
-    <Compile Include="CstmDebug\Logger.Public.cs" />
-    <Compile Include="CstmDebug\LogPropertyAttribute.cs" />
-    <Compile Include="CstmDebug\LogSender.cs" />
-    <Compile Include="Helper\NetHelper.cs" />
-    <Compile Include="Helper\SystemHelper.cs" />
-    <Compile Include="IdentifyEncoding.cs" />
-    <Compile Include="Log\Logger.cs" />
-    <Compile Include="Log\LogSettingsAttribute.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Helper\TemporaryFilesHelper.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Log\Logger.Static.cs" />
+    <None Include="App.config" />
+    <None Include="官网.url">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="开源地址.url">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="title_icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
+    <PostBuildEvent>del /S *.exe.config
+del /S *.pdb</PostBuildEvent>
   </PropertyGroup>
 </Project>
