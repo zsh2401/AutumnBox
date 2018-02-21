@@ -23,11 +23,10 @@ namespace AutumnBox.ZipMaker
             {
                 suffix = Input("Please Input suffix(default: Debug)") ?? "Debug";
             }
-            FileVersionInfo info = FileVersionInfo.GetVersionInfo(@"..\out\AutumnBox.exe");
+            FileVersionInfo info = FileVersionInfo.GetVersionInfo(@"..\out\AutumnBox\file\AutumnBox.exe");
             using (ZipFile zip = new ZipFile(Encoding.UTF8))
             {
-                zip.AddDirctories(GetDirs(@"..\out"), "AutumnBox");
-                zip.AddFiles(GetAllFiles(@"..\out"), "AutumnBox");
+                zip.AddDirectory(@"..\out");
                 zip.Save($"..\\HistoryRelease\\{info.ProductName}-{info.ProductVersion}-{suffix}.zip");
             }
         }
