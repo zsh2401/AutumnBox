@@ -51,7 +51,7 @@ namespace AutumnBox.GUI.NetUtil
 #if USE_LOCAL_API&& DEBUG
         public override UpdateCheckResult Get()
         {
-            JObject j = JObject.Parse(File.ReadAllText(@"..\docs\api\update\index.html"));
+            JObject j = JObject.Parse(File.ReadAllText(@"..\..\..\docs\api\update\index.html"));
             Logger.D("update checking..." + j.ToString());
             var result = (UpdateCheckResult)JsonConvert.DeserializeObject(j.ToString(), typeof(UpdateCheckResult));
             return result;

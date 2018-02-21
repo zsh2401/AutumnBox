@@ -170,17 +170,6 @@ namespace AutumnBox.GUI
             if (Config.IsFirstLaunch)
             {
                 var aboutPanel = new FastPanel(this.GridMain, new About());
-                aboutPanel.Closed += (s, _e) =>
-                {
-                    //更新检测
-                    new UpdateChecker().RunAsync((r) =>
-                    {
-                        if (r.NeedUpdate)
-                        {
-                            new UpdateNoticeWindow(r).ShowDialog();
-                        }
-                    });
-                };
                 aboutPanel.Display();
             }
             loadingWindow.SetProgress(100);
