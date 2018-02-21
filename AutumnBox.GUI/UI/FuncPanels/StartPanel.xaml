@@ -14,6 +14,6 @@
         <TextBlock HorizontalAlignment="Left" Margin="543,148,0,0" TextWrapping="Wrap" Text="{DynamicResource titHelp}" VerticalAlignment="Top" Foreground="{DynamicResource ForgBrush}" FontSize="36"/>
         <TextBlock HorizontalAlignment="Left" Margin="49,148,0,0" TextWrapping="Wrap" Text="{DynamicResource titContact}" VerticalAlignment="Top" Foreground="{DynamicResource ForgBrush}" FontSize="36"/>
         <TextBlock x:Name="TBJoinQQGroup" HorizontalAlignment="Left" Margin="49,281,0,0" TextWrapping="Wrap" Text="{DynamicResource hyperlinkJoinQQGroup}" VerticalAlignment="Top" TextDecorations="Underline" Foreground="{DynamicResource ForgBrush}" FontSize="22"   Height="34" Width="110" ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
-        <WebBrowser  x:Name="WB" Navigating="WB_Navigating" Source="http://atmb.top/api/start/" ></WebBrowser>
+        <WebBrowser  x:Name="WB" Navigating="WB_Navigating" Source="file://S:\AutumnBox\docs\api\start\index.html"/>
     </Grid>
 </UserControl>
