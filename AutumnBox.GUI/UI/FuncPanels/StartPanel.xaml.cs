@@ -23,50 +23,36 @@ namespace AutumnBox.GUI.UI.FuncPanels
     /// <summary>
     /// StartPanel.xaml 的交互逻辑
     /// </summary>
-    public partial class StartPanel : UserControl, ILogSender
+    public partial class StartPanel : UserControl
     {
-        private WebBrowser wb = new WebBrowser();
         public StartPanel()
         {
             InitializeComponent();
-            wb.Navigated += (s, e) =>
-            {
-                try {
-                    if ((e.WebResponse as HttpWebResponse).StatusCode == HttpStatusCode.OK)
-                    {
-                        GridContainer.Children.Add(wb);
-                    }
-                    else {
-                        wb.Dispose();
-                    }
-                } catch {
-                    wb.Dispose();
-                } 
-            };
-            wb.Navigating += (s, e) =>
-            {
-                if (!e.Uri.ToString().Contains("/api/start/"))
-                {
-                    Process.Start(e.Uri.ToString());
-                }
-            };
-            if (LanguageHelper.SystemLanguageIsChinese)
-            {
-                wb.Navigate("http://atmb.top/api/start/zh-CN");
-            }
-            else
-            {
-                wb.Navigate("http://atmb.top/api/start/en-US");
-            }
         }
 
-        public string LogTag => "WB";
+        private void TextBlock_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Process.Start(Urls.LINK_HELP);
+        }
 
-        public bool IsShowLog => true;
+        private void TextBlock_MouseDown_1(object sender, MouseButtonEventArgs e)
+        {
+            Process.Start(Urls.HELP_PAGE);
+        }
 
-        private void TBOfficialWebsite_MouseDown(object sender, MouseButtonEventArgs e)
+        private void TextBlock_MouseDown_2(object sender, MouseButtonEventArgs e)
         {
             Process.Start(Urls.OFFICIAL_WEBSITE);
+        }
+
+        private void TextBlock_MouseDown_3(object sender, MouseButtonEventArgs e)
+        {
+            Process.Start(Urls.OPEN_SOURCE);
+        }
+
+        private void TextBlock_MouseDown_4(object sender, MouseButtonEventArgs e)
+        {
+            Process.Start(Urls.JOIN_QQ_G);
         }
     }
 }

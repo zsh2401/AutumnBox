@@ -187,7 +187,13 @@
     <s:String x:Key="selectDcimBackupFloder">Plz  export floder</s:String>
     <!--用于文件,文件夹选择的文字-->
 
-
+    <!--开始面板-->
+    <s:String x:Key="titStart">Getting Started</s:String>
+    <s:String x:Key="titHelp">Help</s:String>
+    <s:String x:Key="titContact">Contact</s:String>
+    <s:String x:Key="hyperlinkJoinQQGroup">Join QQ Group</s:String>
+    <!--开始面板-->
+    
     <!--静态界面标记-->
     <s:String x:Key="ckbConnectOnOpened">Connect on opened</s:String>
     <s:String x:Key="RebootTo">Reboot to</s:String>
