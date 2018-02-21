@@ -8,6 +8,7 @@
     <s:String x:Key="AppDesc">开源免费的简约刷机工具箱</s:String>
 
     <!--按钮-->
+    <s:String x:Key="btnStopAppActivator">激活小黑屋</s:String>
     <s:String x:Key="btnGeekMemoryCleanerActivator">激活极客内存清理</s:String>
     <s:String x:Key="btnAppManager">应用管理</s:String>
     <s:String x:Key="btnDisconnect">仅断开网络调试</s:String>
@@ -146,6 +147,7 @@
     <s:String x:Key="msgPlsInstallBreventFirst">请先安装黑域!</s:String>
     <s:String x:Key="msgPlsInstallIslandFirst">请先安装Island!!</s:String>
     <s:String x:Key="msgPlsInstallIceBoxFirst">请先安装冰箱!!</s:String>
+    <s:String x:Key="msgPlsInstallStopAppFirst">请先安装小黑屋!!</s:String>
     <s:String x:Key="msgPlsInstallShizukuManagerFirst">请先安装ShizukuManager!酷市场和手机乐园都有!</s:String>
     <s:String x:Key="msgWarning">警告</s:String>
     <s:String x:Key="msgVirtualButtonHider">您是要隐藏虚拟键还是恢复虚拟键?</s:String>

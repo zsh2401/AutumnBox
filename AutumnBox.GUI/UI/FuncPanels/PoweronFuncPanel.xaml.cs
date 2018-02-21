@@ -456,5 +456,31 @@ namespace AutumnBox.GUI.UI.FuncPanels
                 BoxHelper.ShowLoadingDialog(activator);
             }
         }
+
+        private async void ButtonActivateStopapp_Click(object sender, RoutedEventArgs e)
+        {
+            /*检查是否安装了这个App*/
+            bool? isInstallThisApp = await Task.Run(() =>
+            {
+                return new DeviceSoftwareInfoGetter(_currentDevInfo.Serial).IsInstall(StopAppActivator.AppPackageName);
+            });
+
+            if (isInstallThisApp == false) { BoxHelper.ShowMessageDialog("Warning", "msgPlsInstallStopAppFirst"); return; }
+            /*提示用户删除账户*/
+            bool _continue = await Task.Run(() =>
+            {
+                return BoxHelper.ShowChoiceDialog(
+                    "msgNotice",
+                    $"{UIHelper.GetString("msgIceActLine1")}\n{UIHelper.GetString("msgIceActLine2")}\n{UIHelper.GetString("msgIceActLine3")}",
+                    "btnCancel",
+                    "btnContinue").ToBool();
+            });
+            if (!_continue) return;
+            /*开始操作*/
+            StopAppActivator activator = new StopAppActivator();
+            activator.Init(new FlowArgs() { DevBasicInfo = _currentDevInfo });
+            activator.RunAsync();
+            BoxHelper.ShowLoadingDialog(activator);
+        }
     }
 }

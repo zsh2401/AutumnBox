@@ -7,7 +7,8 @@
     <s:String x:Key="AppDesc">Open source,free,simple</s:String>
 
     <!--按钮-->
-    <s:String x:Key="btnGeekMemoryCleanerActivator">Active GMC</s:String>
+    <s:String x:Key="btnStopAppActivator">Activate Stop app</s:String>
+    <s:String x:Key="btnGeekMemoryCleanerActivator">Activate GMC</s:String>
     <s:String x:Key="btnAppManager">App manager</s:String>
     <s:String x:Key="btnDisconnect">Disconnect only</s:String>
     <s:String x:Key="btnCloseDebugging">Close device net debuggin</s:String>
@@ -145,6 +146,7 @@
     <s:String x:Key="msgPlsInstallBreventFirst">请先安装黑域!</s:String>
     <s:String x:Key="msgPlsInstallIslandFirst">请先安装Island!!</s:String>
     <s:String x:Key="msgPlsInstallIceBoxFirst">请先安装冰箱!!</s:String>
+    <s:String x:Key="msgPlsInstallStopAppFirst">请先安装小黑屋!!</s:String>
     <s:String x:Key="msgPlsInstallShizukuManagerFirst">请先安装ShizukuManager!酷市场和手机乐园都有!</s:String>
     <s:String x:Key="msgWarning">警告</s:String>
     <s:String x:Key="msgVirtualButtonHider">您是要隐藏虚拟键还是恢复虚拟键?</s:String>
