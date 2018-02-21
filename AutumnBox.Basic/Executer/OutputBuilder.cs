@@ -24,20 +24,9 @@ namespace AutumnBox.Basic.Executer
         }
         public void AppendOut(string text)
         {
-            try
-            {
-                outSb.AppendLine(text);
-                allSb.AppendLine(text);
-                LeastLine = text;
-            }
-            catch (IndexOutOfRangeException)
-            {
-                //2017 11 21 01:00的一次调试中
-                //我在显示关闭其它助手的提示后,关闭了360手机助手并点击了"我已关闭其它助手"
-                //然后出现了RateBox,半秒后便出现了这个奇怪的IndexOutOfRangeException??
-                //在StackOverFlow上搜寻后,有人说这是一个奇怪的BUG
-                //既然如此...下次就抓住这个BUG吧...
-            }
+            outSb.AppendLine(text);
+            allSb.AppendLine(text);
+            LeastLine = text;
         }
         public void AppendError(string text)
         {
@@ -53,7 +42,8 @@ namespace AutumnBox.Basic.Executer
         }
         public void Register(IOutSender sender)
         {
-            sender.OutputReceived += (s, e) => {
+            sender.OutputReceived += (s, e) =>
+            {
                 if (e.IsError)
                 {
                     AppendError(e.Text);
@@ -68,6 +58,13 @@ namespace AutumnBox.Basic.Executer
         public Output ToOutputData()
         {
             return new Output(allSb.ToString(), outSb.ToString(), errSb.ToString());
+        }
+        public Output Result
+        {
+            get
+            {
+                return ToOutputData();
+            }
         }
     }
 }

@@ -110,12 +110,6 @@ namespace AutumnBox.Basic.Executer
             this.Error = err;
             this.All = all;
         }
-        public static Output From(ShellOutput shellOutput) {
-            return new Output(shellOutput.All.ToString(), shellOutput.All.ToString());
-        }
-        public static Output From(CommandExecuterResult cmdOutput) {
-            return cmdOutput.Output;
-        }
         public void PrintOnLog(bool printOnRelease = false)
         {
             if (printOnRelease)

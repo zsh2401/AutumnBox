@@ -23,7 +23,7 @@ namespace AutumnBox.Basic.Executer
         private SuShell(DeviceSerial dev) {
 
         }
-        public ShellOutput Execute(string command) {
+        public AdvanceOutput Execute(string command) {
             StringBuilder sb = new StringBuilder();
             throw new NotImplementedException();
         }

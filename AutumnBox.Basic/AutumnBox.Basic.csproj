@@ -64,7 +64,7 @@
     <Compile Include="Device\PackageManage\PackageBasicInfo.cs" />
     <Compile Include="Device\PackageManage\PackageManager.cs" />
     <Compile Include="Executer\AdvanceOutput.cs" />
-    <Compile Include="Executer\IShellOutput.cs" />
+    <Compile Include="Executer\AdvanceOutputBuilder.cs" />
     <Compile Include="Executer\OutputBuilder.cs" />
     <Compile Include="Executer\SuShell.cs" />
     <Compile Include="Loader.cs" />
@@ -97,9 +97,7 @@
     <Compile Include="Executer\AndroidShell.cs" />
     <Compile Include="Executer\AndroidShellEvents.cs" />
     <Compile Include="Executer\CommandExecuter.cs" />
-    <Compile Include="Executer\CommandExecuterResult.cs" />
     <Compile Include="Executer\IOutSender.cs" />
-    <Compile Include="Executer\ShellOutput.cs" />
     <Compile Include="FlowFramework\FunctionFlow.cs" />
     <Compile Include="FlowFramework\FunctionFlowBase.cs" />
     <Compile Include="FlowFramework\FlowArgs.cs" />

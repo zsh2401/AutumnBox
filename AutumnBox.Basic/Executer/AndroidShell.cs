@@ -27,7 +27,7 @@ namespace AutumnBox.Basic.Executer
     /// </summary>
     public sealed class AndroidShell : IOutSender, IDisposable
     {
-       
+
         /// <summary>
         /// 每条常规命令后都会有这个命令,用来获取返回值
         /// </summary>
@@ -121,6 +121,7 @@ namespace AutumnBox.Basic.Executer
             _mainProcess.StandardInput.WriteLine(command);
             _mainProcess.StandardInput.Flush();
         }
+        private object _executionLock = new object();
         /// <summary>
         /// 输入一条指令,会进行线程等待并且可以获取返回值
         /// </summary>
@@ -128,12 +129,23 @@ namespace AutumnBox.Basic.Executer
         /// <returns></returns>
         public AdvanceOutput SafetyInput(string command)
         {
-            _latestReturnCode = null;
-            BeginRead();
-            Input(command + $"; echo {_finishMark}");
-            while (_latestReturnCode == null) ;
-            StopRead();
-            return new AdvanceOutput(builder.ToOutputData(), _latestReturnCode ?? 24010);
+            lock (_executionLock)
+            {
+                BeginRead();
+                Input(command + $"; echo {_finishMark}");
+                while (builder.ExitCode == null) ;
+                StopRead();
+                return builder.Result;
+            }
+        }
+        public enum LinuxUser
+        {
+            Normal,
+            Su,
+        }
+        public AdvanceOutput SafetyExecute(string command, LinuxUser user = LinuxUser.Normal)
+        {
+            throw new NotImplementedException();
         }
         /// <summary>
         /// 连接到设备上
@@ -195,7 +207,7 @@ namespace AutumnBox.Basic.Executer
             }
             if (m.Success)
             {
-                _latestReturnCode = Convert.ToInt32(m.Result("${code}"));
+                builder.ExitCode = Convert.ToInt32(m.Result("${code}"));
                 return;
             }
             if (_isEnableRead)
@@ -218,10 +230,6 @@ namespace AutumnBox.Basic.Executer
         /// </summary>
         private Process _mainProcess;
         /// <summary>
-        /// 最近一次命令执行返回值
-        /// </summary>
-        private int? _latestReturnCode = 0;
-        /// <summary>
         /// 最近一次的命令
         /// </summary>
         private string _latestCommand = "";
@@ -232,7 +240,7 @@ namespace AutumnBox.Basic.Executer
         /// <summary>
         /// 用来存储输出的缓冲类
         /// </summary>
-        private OutputBuilder builder = new OutputBuilder();
+        private AdvanceOutputBuilder builder = new AdvanceOutputBuilder();
         /// <summary>
         /// 是否存储输出
         /// </summary>
