@@ -65,6 +65,7 @@
     <Compile Include="Device\PackageManage\PackageManager.cs" />
     <Compile Include="Executer\AdvanceOutput.cs" />
     <Compile Include="Executer\AdvanceOutputBuilder.cs" />
+    <Compile Include="Executer\AndroidShellV2.cs" />
     <Compile Include="Executer\OutputBuilder.cs" />
     <Compile Include="Executer\SuShell.cs" />
     <Compile Include="Loader.cs" />

@@ -15,5 +15,10 @@ namespace AutumnBox.Basic.Executer
     public class ProcessStartedEventArgs : EventArgs
     {
         public int Pid { get; set; }
+        public ProcessStartedEventArgs() { }
+        public ProcessStartedEventArgs(int pid)
+        {
+            this.Pid = pid;
+        }
     }
 }
