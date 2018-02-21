@@ -63,6 +63,7 @@
     <Compile Include="Device\ActivityManager\Service.cs" />
     <Compile Include="Device\PackageManage\PackageBasicInfo.cs" />
     <Compile Include="Device\PackageManage\PackageManager.cs" />
+    <Compile Include="Device\PackageManage\UserManager.cs" />
     <Compile Include="Executer\AdvanceOutput.cs" />
     <Compile Include="Executer\AdvanceOutputBuilder.cs" />
     <Compile Include="Executer\AndroidShellV2.cs" />

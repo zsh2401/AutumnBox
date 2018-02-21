@@ -144,6 +144,9 @@
     <Compile Include="NetUtil\RemoteDataGetter.cs" />
     <Compile Include="NetUtil\UpdateChecker.cs" />
     <Compile Include="Resources\Images\DevStatus\DevStatusBitmapGetter.cs" />
+    <Compile Include="Windows\UserManagerWindow.xaml.cs">
+      <DependentUpon>UserManagerWindow.xaml</DependentUpon>
+    </Compile>
     <Resource Include="Resources\Images\DevStatus\rec.png" />
     <Resource Include="Resources\Images\DevStatus\no_dev.png" />
     <Resource Include="Resources\Images\DevStatus\fastboot.png" />
@@ -446,6 +449,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\UpdateNoticeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\UserManagerWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

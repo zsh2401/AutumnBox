@@ -17,6 +17,7 @@ using AutumnBox.Basic.Util;
 using AutumnBox.Support.Helper;
 using System;
 using System.Diagnostics;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 
@@ -62,6 +63,8 @@ namespace AutumnBox.Basic.Executer
             {
                 StartInfo = new ProcessStartInfo()
                 {
+                    StandardOutputEncoding = Encoding.UTF8,
+                    StandardErrorEncoding = Encoding.UTF8,
                     RedirectStandardError = true,
                     RedirectStandardInput = true,
                     RedirectStandardOutput = true,

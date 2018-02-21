@@ -32,6 +32,8 @@ namespace AutumnBox.Basic.Executer
             outputBuilder = new AdvanceOutputBuilder();
             pStartInfo = new ProcessStartInfo()
             {
+                StandardOutputEncoding = Encoding.UTF8,
+                StandardErrorEncoding = Encoding.UTF8,
                 CreateNoWindow = true,
                 UseShellExecute = false,
                 RedirectStandardError = true,

@@ -32,12 +32,12 @@ namespace AutumnBox.ConsoleTester
         };
         unsafe static int Main(string[] cmdargs)
         {
-            AndroidShellV2 shell = new AndroidShellV2(mi6.Serial);
-            shell.OutputReceived += (s, e) => { Console.WriteLine(e.Text); };
-            while (true) {
-                var result = shell.Execute(Console.ReadLine(),AndroidShellV2.LinuxUser.Su);
-                Console.WriteLine(result.ExitCode);
+            UserManager um = new UserManager(mi6.Serial);
+            foreach (User user in um.GetUsers())
+            {
+                Console.WriteLine($"{user.Id} {user.Name}");
             }
+            Console.ReadKey();
             return 0;
         }
         private class Test : IDisposable

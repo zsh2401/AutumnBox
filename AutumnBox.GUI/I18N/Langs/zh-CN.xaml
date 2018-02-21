@@ -8,6 +8,9 @@
     <s:String x:Key="AppDesc">开源免费的简约刷机工具箱</s:String>
 
     <!--按钮-->
+    <s:String x:Key="btnUserManager">用户管理</s:String>
+    <s:String x:Key="btnRefresh">刷新</s:String>
+    <s:String x:Key="btnRemoveUser">移除这个用户(危险)</s:String>
     <s:String x:Key="btnStopAppActivator">激活小黑屋</s:String>
     <s:String x:Key="btnGeekMemoryCleanerActivator">激活极客内存清理</s:String>
     <s:String x:Key="btnAppManager">应用管理</s:String>
@@ -168,7 +171,7 @@
     <s:String x:Key="advsDOSServalAccountsOnTheDevice">账户没删干净...谷歌账户或者定制ROM的账户都要删的!如果你是索尼/ZUK手机,要拔手机卡哦</s:String>
     
     <s:String x:Key="rmsgDOSServalUserOnTheDevice">有其它用户</s:String>
-    <s:String x:Key="advsDOSServalUserOnTheDevice">确保删除所有用户,关闭访客模式,关闭应用双开!</s:String>
+    <s:String x:Key="advsDOSServalUserOnTheDevice">请使用"用户管理"功能或手动确保删除所有用户,关闭访客模式,关闭应用双开!</s:String>
 
     <s:String x:Key="rmsgDOSDeviceOwnerIsAlreadySet">设备管理员已被设定</s:String>
     <s:String x:Key="advsDOSDeviceOwnerIsAlreadySet">请确保已退出所有账户,或前往App查看,可能已经激活?注意:应用冻结类App不能同时存在多个!</s:String>
@@ -234,6 +237,8 @@
     <s:String x:Key="TipForInputDpi">请输入您想要改动的DPI数值-></s:String>
     <s:String x:Key="Bridge">桥</s:String>
     <s:String x:Key="Port">端口</s:String>
+    <s:String x:Key="lbUserName">用户名</s:String>
+    <s:String x:Key="lbUserId">UID</s:String>
     <!--静态界面标记-->
 
     <!--设备信息标记-->

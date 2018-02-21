@@ -482,5 +482,10 @@ namespace AutumnBox.GUI.UI.FuncPanels
             activator.RunAsync();
             BoxHelper.ShowLoadingDialog(activator);
         }
+
+        private void ButtonUserManager_Click(object sender, RoutedEventArgs e)
+        {
+            new UserManagerWindow(_currentDevInfo.Serial) { Owner = App.Current.MainWindow }.ShowDialog();
+        }
     }
 }
