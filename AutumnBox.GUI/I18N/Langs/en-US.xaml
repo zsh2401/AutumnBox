@@ -5,7 +5,7 @@
     <s:String x:Key="AppName">AutumnBox</s:String>
     <s:String x:Key="LanguageName">English</s:String>
     <s:String x:Key="AppDesc">Open source,free,simple</s:String>
-    
+
     <!--按钮-->
     <s:String x:Key="btnGeekMemoryCleanerActivator">Active GMC</s:String>
     <s:String x:Key="btnAppManager">App manager</s:String>

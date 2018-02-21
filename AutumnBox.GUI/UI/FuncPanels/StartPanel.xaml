@@ -6,14 +6,7 @@
              xmlns:local="clr-namespace:AutumnBox.GUI.UI.FuncPanels"
              mc:Ignorable="d" 
              d:DesignHeight="359" d:DesignWidth="918" Background="{DynamicResource BackBrush}" ScrollViewer.VerticalScrollBarVisibility="Disabled">
-    <Grid>
-        <TextBlock Margin="49,47,10,0" TextWrapping="Wrap" Text="{DynamicResource titStart}" VerticalAlignment="Top" FontSize="48" Foreground="{DynamicResource ForgBrush}"/>
-        <TextBlock x:Name="TBHelp"  HorizontalAlignment="Left" Margin="543,281,0,0" TextWrapping="Wrap" Text="{DynamicResource hyperLinkMoreHelp}" VerticalAlignment="Top" TextDecorations="Underline" Foreground="{DynamicResource ForgBrush}" FontSize="22"  Height="35" Width="365"/>
-        <TextBlock x:Name="TBOfficialWebsite" HorizontalAlignment="Left" Margin="49,223,0,0" TextWrapping="Wrap" Text="{DynamicResource hyperLinkOfficialWebsite}" VerticalAlignment="Top" TextDecorations="Underline" Foreground="{DynamicResource ForgBrush}" FontSize="22"  Height="34" Width="110" MouseDown="TBOfficialWebsite_MouseDown"/>
-        <TextBlock x:Name="TBLinkHelp" HorizontalAlignment="Left" Margin="543,223,0,0" TextWrapping="Wrap" Text="{DynamicResource hyperLinkLinkHelp}" VerticalAlignment="Top" TextDecorations="Underline" Foreground="{DynamicResource ForgBrush}" FontSize="22"   Height="34" Width="365"/>
-        <TextBlock HorizontalAlignment="Left" Margin="543,148,0,0" TextWrapping="Wrap" Text="{DynamicResource titHelp}" VerticalAlignment="Top" Foreground="{DynamicResource ForgBrush}" FontSize="36"/>
-        <TextBlock HorizontalAlignment="Left" Margin="49,148,0,0" TextWrapping="Wrap" Text="{DynamicResource titContact}" VerticalAlignment="Top" Foreground="{DynamicResource ForgBrush}" FontSize="36"/>
-        <TextBlock x:Name="TBJoinQQGroup" HorizontalAlignment="Left" Margin="49,281,0,0" TextWrapping="Wrap" Text="{DynamicResource hyperlinkJoinQQGroup}" VerticalAlignment="Top" TextDecorations="Underline" Foreground="{DynamicResource ForgBrush}" FontSize="22"   Height="34" Width="110" ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
-        <WebBrowser  x:Name="WB" Navigating="WB_Navigating" Source="file://S:\AutumnBox\docs\api\start\index.html"/>
+    <Grid x:Name="GridContainer">
+      
     </Grid>
 </UserControl>

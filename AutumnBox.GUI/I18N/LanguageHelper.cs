@@ -37,6 +37,11 @@ namespace AutumnBox.GUI.I18N
         }
         private const string zh_cn = "zh-CN";
         private const string en_us = "en-US";
+        public static bool SystemLanguageIsChinese {
+            get {
+                return System.Threading.Thread.CurrentThread.CurrentCulture.Name == "zh-CN";
+            }
+        }
         public static void SetLanguageByEnvironment() {
 
             var lang_name = System.Threading.Thread.CurrentThread.CurrentCulture.Name;
@@ -76,5 +81,6 @@ namespace AutumnBox.GUI.I18N
         private static void SaveLangSetting() {
             Config.Lang = Langs[GetLangIndex(App.Current.Resources["LanguageName"].ToString())].FileName;
         }
+        
     }
 }

@@ -5,8 +5,8 @@
 
     <s:String x:Key="AppName">AutumnBox</s:String>
     <s:String x:Key="LanguageName">简体中文</s:String>
-
     <s:String x:Key="AppDesc">开源免费的简约刷机工具箱</s:String>
+
     <!--按钮-->
     <s:String x:Key="btnGeekMemoryCleanerActivator">激活极客内存清理</s:String>
     <s:String x:Key="btnAppManager">应用管理</s:String>
