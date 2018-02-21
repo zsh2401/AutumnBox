@@ -104,6 +104,10 @@ namespace AutumnBox.Basic.Flows
             {
                 result.ErrorType = DeviceOwnerSetterErrType.UnknowJavaException;
             }
+            else if (result.OutputData.Contains(" process has android.permission.MANAGE_DEVICE_ADMINS"))
+            {
+                result.ErrorType = DeviceOwnerSetterErrType.MIUIUsbSecError;
+            }
             //如果是这个错误,就尝试修复
             if (result.ErrorType == DeviceOwnerSetterErrType.DeviceAlreadyProvisioned)
             {
@@ -111,7 +115,8 @@ namespace AutumnBox.Basic.Flows
                 result.ErrorType = fixSuccess ? DeviceOwnerSetterErrType.None : result.ErrorType;
                 result.ResultType = fixSuccess ? ResultType.MaybeSuccessful : result.ResultType;
             }
-            if (result.ResultType == ResultType.Successful) {
+            if (result.ResultType == ResultType.Successful)
+            {
                 result.ResultType = ResultType.Unsuccessful;
             }
         }

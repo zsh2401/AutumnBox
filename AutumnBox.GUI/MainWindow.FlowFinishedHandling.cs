@@ -31,6 +31,7 @@ namespace AutumnBox.GUI
                 {
                     case nameof(IslandActivator):
                     case nameof(IceBoxActivator):
+                    case nameof(StopAppActivator):
                     case nameof(AirForzenActivator):
                         DevicesOwnerSetted((DeviceOwnerSetter)sender, (DeviceOwnerSetterResult)e.Result);
                         break;
@@ -59,31 +60,10 @@ namespace AutumnBox.GUI
         {
             string message = null;
             string advise = null;
-            switch (result.ErrorType)
-            {
-                case Basic.Flows.States.DeviceOwnerSetterErrType.None:
-                    break;
-                case Basic.Flows.States.DeviceOwnerSetterErrType.DeviceOwnerIsAlreadySet:
-                    message = UIHelper.GetString("rmsgDeviceOwnerIsAlreadySet");
-                    advise = UIHelper.GetString("advsDeviceOwnerIsAlreadySet");
-                    break;
-                case Basic.Flows.States.DeviceOwnerSetterErrType.ServalAccountsOnTheDevice:
-                    message = UIHelper.GetString("rmsgAlreadyServalAccountsOnTheDevice");
-                    advise = UIHelper.GetString("advsAlreadyServalAccountsOnTheDevice");
-                    break;
-                case Basic.Flows.States.DeviceOwnerSetterErrType.ServalUserOnTheDevice:
-                    message = UIHelper.GetString("rmsgAlreadyServalUsersOnTheDevice");
-                    advise = UIHelper.GetString("advsAlreadyServalUsersOnTheDevice");
-                    break;
-                case Basic.Flows.States.DeviceOwnerSetterErrType.UnknowAdmin:
-                    message = UIHelper.GetString("rmsgAppHaveNoInstalled");
-                    advise = UIHelper.GetString("advsAppHaveNoInstalled");
-                    break;
-                default:
-                    message = UIHelper.GetString("rmsgUnknowError");
-                    advise = UIHelper.GetString("advsUnknowError");
-                    break;
-            }
+            object rmsgObj = App.Current.Resources[$"rmsgDOS{result.ErrorType.ToString()}"];
+            object advsObj = App.Current.Resources[$"advsDOS{result.ErrorType.ToString()}"];
+            message = rmsgObj != null?rmsgObj.ToString(): App.Current.Resources["rmsgUnknowError"].ToString();
+            advise = advsObj != null ? advsObj.ToString() : App.Current.Resources["advsUnknowError"].ToString();
             new FlowResultWindow(result, message, advise).ShowDialog();
         }
     }

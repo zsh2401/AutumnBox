@@ -16,8 +16,6 @@ namespace AutumnBox.Basic.Flows
 {
     public sealed class IceBoxActivator : DeviceOwnerSetter
     {
-        //private static readonly
-        //    string _defaultCommand = "dpm set-device-owner com.catchingnow.icebox/.receiver.DPMReceiver";
         public static readonly string AppPackageName = "com.catchingnow.icebox";
         protected override string PackageName => AppPackageName;
 

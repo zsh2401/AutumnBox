@@ -71,6 +71,7 @@
     <Compile Include="ShizukuManagerActivator.cs" />
     <Compile Include="ShScriptExecuter.cs" />
     <Compile Include="States\DeviceOwnerSetterErrType.cs" />
+    <Compile Include="StopAppActivator.cs" />
     <Compile Include="VirtualButtonHider.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -158,17 +158,28 @@
     <!--信息-->
 
     <!--用于结果显示窗的文字-->
-    <s:String x:Key="rmsgDeviceOwnerIsAlreadySet">设备管理员已被设定</s:String>
-    <s:String x:Key="advsDeviceOwnerIsAlreadySet">请确保已退出所有账户,或前往App查看,可能已经激活</s:String>
 
-    <s:String x:Key="rmsgAlreadyServalAccountsOnTheDevice">有其它账户</s:String>
-    <s:String x:Key="advsAlreadyServalAccountsOnTheDevice">账户没删干净...谷歌账户或者定制ROM的账户都要删的!</s:String>
+    <s:String x:Key="rmsgDOSNone">没什么问题</s:String>
+    <s:String x:Key="advsDOSNone">好好享受!</s:String>
+    
+    <s:String x:Key="rmsgDOSServalAccountsOnTheDevice">有其它账户</s:String>
+    <s:String x:Key="advsDOSServalAccountsOnTheDevice">账户没删干净...谷歌账户或者定制ROM的账户都要删的!如果你是索尼/ZUK手机,要拔手机卡哦</s:String>
+    
+    <s:String x:Key="rmsgDOSServalUserOnTheDevice">有其它用户</s:String>
+    <s:String x:Key="advsDOSServalUserOnTheDevice">确保删除所有用户,关闭访客模式,关闭应用双开!</s:String>
 
-    <s:String x:Key="rmsgAlreadyServalUsersOnTheDevice">有其它用户</s:String>
-    <s:String x:Key="advsAlreadyServalUsersOnTheDevice">确保删除所有用户,关闭访客模式,关闭应用双开</s:String>
+    <s:String x:Key="rmsgDOSDeviceOwnerIsAlreadySet">设备管理员已被设定</s:String>
+    <s:String x:Key="advsDOSDeviceOwnerIsAlreadySet">请确保已退出所有账户,或前往App查看,可能已经激活?注意:应用冻结类App不能同时存在多个!</s:String>
 
-    <s:String x:Key="rmsgAppHaveNoInstalled">未安装App</s:String>
-    <s:String x:Key="advsAppHaveNoInstalled">请安装App</s:String>
+    <s:String x:Key="rmsgDOSMIUIUsbSecError">MIUI USB安全设置错误</s:String>
+    <s:String x:Key="advsDOSMIUIUsbSecError">MIUI 用户请手动在系统设置- 开发者设置里，开启 USB 调试(安全设置)</s:String>
+
+
+    <s:String x:Key="rmsgDOSUnknowAdmin">请先安装应用</s:String>
+    <s:String x:Key="advsDOSUnknowAdmin">...</s:String>
+
+    <s:String x:Key="rmsgAppHaveNoInstalled">应用未安装</s:String>
+    <s:String x:Key="advsAppHaveNoInstalled">请先安装应用</s:String>
 
     <s:String x:Key="rmsgUnknowError">未知错误</s:String>
     <s:String x:Key="advsUnknowError">检查下面的完整输出,或将完整输出复制给要问的人</s:String>
