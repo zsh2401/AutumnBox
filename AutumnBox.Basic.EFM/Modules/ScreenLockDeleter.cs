@@ -30,7 +30,7 @@ namespace AutumnBox.Basic.Function.Modules
             _shell.SafetyInput("adb shell rm /data/system/password.key");
             new Thread(_shell.Disconnect).Start();
             bundle.Ae("reboot");
-            return builder.ToOutputData();
+            return builder.ToOutput();
         }
     }
 }

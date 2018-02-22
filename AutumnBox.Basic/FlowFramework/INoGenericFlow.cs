@@ -15,7 +15,7 @@ namespace AutumnBox.Basic.FlowFramework
     /// <summary>
     /// 去除了所有泛型特征的FunctionFlow接口
     /// </summary>
-    public interface INoGenericFlow : ICompletable,IOutSender
+    public interface INoGenericFlow : ICompletable,IOutputable
     {
         bool IsClosed { get; }
         bool MustTiggerAnyFinishedEvent { set; }

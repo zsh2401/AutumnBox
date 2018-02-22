@@ -70,7 +70,7 @@ namespace AutumnBox.Basic.Flows
                 }
             }
             Logger.D(result.ToString());
-            return result.ToOutputData() ;
+            return result.ToOutput() ;
         }
         protected override void AnalyzeResult(ApkInstallerResult result)
         {

@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Executer
 {
-    public sealed class AndroidShellV2 : IOutSender
+    public sealed class AndroidShellV2 : IOutputable
     {
         public enum LinuxUser
         {

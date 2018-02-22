@@ -40,22 +40,27 @@ namespace AutumnBox.Basic.Executer
             errSb.Clear();
             allSb.Clear();
         }
-        public void Register(IOutSender sender)
+        public void Register(IOutputable sender)
         {
-            sender.OutputReceived += (s, e) =>
+            sender.OutputReceived += Sender_OutputReceived;
+        }
+        public void Unregister(IOutputable sender)
+        {
+            sender.OutputReceived -= Sender_OutputReceived;
+        }
+        private void Sender_OutputReceived(object sender, OutputReceivedEventArgs e)
+        {
+            if (e.IsError)
             {
-                if (e.IsError)
-                {
-                    AppendError(e.Text);
-                }
-                else
-                {
-                    AppendOut(e.Text);
-                }
-            };
+                AppendError(e.Text);
+            }
+            else
+            {
+                AppendOut(e.Text);
+            }
         }
         public string LeastLine { get; private set; }
-        public Output ToOutputData()
+        public Output ToOutput()
         {
             return new Output(allSb.ToString(), outSb.ToString(), errSb.ToString());
         }
@@ -63,7 +68,7 @@ namespace AutumnBox.Basic.Executer
         {
             get
             {
-                return ToOutputData();
+                return ToOutput();
             }
         }
     }

@@ -37,7 +37,7 @@ namespace AutumnBox.Basic.Function.Modules
             {
                 bundle.Ae("reboot");
             }
-            return builder.ToOutputData() ;
+            return builder.ToOutput() ;
         }
         protected override void AnalyzeOutput(BundleForAnalyzingResult bundle)
         {

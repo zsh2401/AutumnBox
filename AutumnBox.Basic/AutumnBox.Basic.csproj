@@ -99,7 +99,7 @@
     <Compile Include="Executer\AndroidShell.cs" />
     <Compile Include="Executer\AndroidShellEvents.cs" />
     <Compile Include="Executer\CommandExecuter.cs" />
-    <Compile Include="Executer\IOutSender.cs" />
+    <Compile Include="Executer\IOutputable.cs" />
     <Compile Include="FlowFramework\FunctionFlow.cs" />
     <Compile Include="FlowFramework\FunctionFlowBase.cs" />
     <Compile Include="FlowFramework\FlowArgs.cs" />
@@ -134,7 +134,6 @@
     <Compile Include="Function\FunctionModule.cs" />
     <Compile Include="MultipleDevices\DevicesMonitor.cs" />
     <Compile Include="Device\DeviceState.cs" />
-    <Compile Include="Executer\IOutReceiver.cs" />
     <Compile Include="Function\ModuleStatus.cs" />
     <Compile Include="Function\Modules\CustomRecoveryFlasher.cs" />
     <Compile Include="Function\Args\Args.cs" />

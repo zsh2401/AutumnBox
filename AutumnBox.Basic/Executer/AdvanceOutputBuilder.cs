@@ -18,7 +18,7 @@ namespace AutumnBox.Basic.Executer
         {
             get
             {
-                return new AdvanceOutput(this.ToOutputData(), ExitCode??24010);
+                return new AdvanceOutput(this.ToOutput(), ExitCode??24010);
             }
         }
         public new void Clear() {

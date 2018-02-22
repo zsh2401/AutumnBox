@@ -2,7 +2,7 @@
 
 namespace AutumnBox.Basic.Executer
 {
-    public interface IOutSender
+    public interface IOutputable
     {
         event OutputReceivedEventHandler OutputReceived;
     }

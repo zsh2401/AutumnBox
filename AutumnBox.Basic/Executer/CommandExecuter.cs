@@ -13,7 +13,7 @@ using System.Text.RegularExpressions;
 
 namespace AutumnBox.Basic.Executer
 {
-    public sealed class CommandExecuter : IOutSender
+    public sealed class CommandExecuter : IOutputable
     {
         public event OutputReceivedEventHandler OutputReceived;
         public event ProcessStartedEventHandler ProcessStarted;
@@ -58,7 +58,7 @@ namespace AutumnBox.Basic.Executer
                     process.CancelOutputRead();
                     exitCode = process.ExitCode;
                 };
-                return new AdvanceOutput(_builder.ToOutputData(), exitCode);
+                return new AdvanceOutput(_builder.ToOutput(), exitCode);
             }
         }
         public AdvanceOutput Execute(Command cmd)

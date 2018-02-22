@@ -35,7 +35,7 @@ namespace AutumnBox.Basic.Flows.MiFlash
             process.OutputReceived += (s, e) => { OnOutputReceived(e); };
             process.ProcessStarted += (s, e) => { OnProcessStarted(e); };
             retCode = process.ExecuteToEnd();
-            return _outputBuilder.ToOutputData();
+            return _outputBuilder.ToOutput();
         }
         protected override void AnalyzeResult(AdvanceResult result)
         {

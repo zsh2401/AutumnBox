@@ -28,7 +28,7 @@ namespace AutumnBox.GUI.Windows
     /// <summary>
     /// FileSendingWindow.xaml 的交互逻辑
     /// </summary>
-    public partial class FileSendingWindow : Window, IOutReceiver
+    public partial class FileSendingWindow : Window
     {
         private FilePusher filePusher;
         Regex rg12 = new Regex("\\ (.*?)\\%");

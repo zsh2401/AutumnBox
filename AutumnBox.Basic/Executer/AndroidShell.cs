@@ -26,7 +26,7 @@ namespace AutumnBox.Basic.Executer
     /// <summary>
     /// 简单封装的,用于执行基础命令的AndroidShell类
     /// </summary>
-    public sealed class AndroidShell : IOutSender, IDisposable
+    public sealed class AndroidShell : IOutputable, IDisposable
     {
 
         /// <summary>
