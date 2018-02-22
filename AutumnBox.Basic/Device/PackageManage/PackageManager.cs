@@ -18,6 +18,7 @@ namespace AutumnBox.Basic.Device.PackageManage
 
     public static class PackageManager
     {
+        [Obsolete("Project ACP is dead")]
         public static byte[] GetIcon(DeviceSerial device, String packageName)
         {
             var builder = new AcpCommand.Builder
@@ -35,6 +36,7 @@ namespace AutumnBox.Basic.Device.PackageManage
                 return null;
             }
         }
+        [Obsolete("Project ACP is dead")]
         public static List<PackageBasicInfo> GetPackages(DeviceSerial serial)
         {
             try
@@ -70,6 +72,7 @@ namespace AutumnBox.Basic.Device.PackageManage
                 return null;
             }
         }
+        [Obsolete("Project ACP is dead")]
         public struct AppUsedSpaceInfo {
             public long DataSize { get; set; }
             public long CodeSize { get; set; }
@@ -87,6 +90,7 @@ namespace AutumnBox.Basic.Device.PackageManage
             Logger.D($"clean {packageName} data success?{exeResult.IsSuccessful}");
             return exeResult.IsSuccessful;
         }
+        [Obsolete("Project ACP is dead")]
         public static AppUsedSpaceInfo GetAppUsedSpace(DeviceSerial serial, String packageName) {
             var result = new AppUsedSpaceInfo() { DataSize = -1, CacheSize = -1, CodeSize = -1 };
             try {
