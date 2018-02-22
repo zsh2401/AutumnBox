@@ -46,10 +46,23 @@ namespace AutumnBox.Basic.MultipleDevices
     public static class DevicesMonitor
     {
         public static event DevicesChangedHandler DevicesChanged;//当连接设备的情况变化时发生
+
+        private static DevicesMonitorCore core;
+        static DevicesMonitor()
+        {
+            core = new DevicesMonitorCore();
+        }
+        public static void Begin()
+        {
+            core.Begin();
+        }
+        public static void Stop()
+        {
+            core.Cancel();
+        }
         private sealed class DevicesMonitorCore
         {
             private const int defaultInterval = 2000;
-
             private bool _continue = true;
             private readonly int _interval;
             private IDevicesGetter _devGetter = new DevicesGetter();
@@ -78,23 +91,12 @@ namespace AutumnBox.Basic.MultipleDevices
                         last = now;
                         DevicesChanged?.Invoke(this, new DevicesChangedEventArgs(now));
                     }
-
                 }
             }
             public void Cancel()
             {
                 _continue = false;
             }
-        }
-        private static DevicesMonitorCore core;
-        static DevicesMonitor() {
-            core = new DevicesMonitorCore();
-        }
-        public static void Begin() {
-            core.Begin();
-        }
-        public static void Stop() {
-            core.Cancel();
         }
     }
 }

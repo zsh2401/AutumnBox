@@ -42,16 +42,32 @@ namespace AutumnBox.GUI
     /// </summary>
     public sealed partial class MainWindow : Window, ILogSender, IRefreshable
     {
-        private readonly AppLoadingWindow loadingWindow;
         private Object setUILock = new System.Object();
         private List<IRefreshable> refreshables;
+
         public string LogTag => "Main Window";
         public bool IsShowLog => true;
+
         public MainWindow()
         {
             InitializeComponent();
-            loadingWindow = new AppLoadingWindow();
-            TitleBar.ImgMin.Visibility = Visibility.Visible;
+            RegisterEvent();
+            refreshables = new List<IRefreshable>
+            {
+                this.RebootGrid,
+                this.DevInfoPanel,
+                this.FastbootFuncs,
+                this.RecoveryFuncs,
+                this.PoweronFuncs
+            };
+#if DEBUG
+            TitleBar.Title.Content += "  " + SystemHelper.CurrentVersion + "-Debug";
+#else
+            TitleBar.Title.Content += "  " + SystemHelper.CurrentVersion + "-Release";
+#endif
+        }
+
+        private void RegisterEvent() {
             DevicesPanel.SelectionChanged += (s, e) =>
             {
                 if (this.DevicesPanel.CurrentSelect.DevInfo.State == DeviceState.None)//如果没选择
@@ -63,24 +79,8 @@ namespace AutumnBox.GUI
                     Refresh(this.DevicesPanel.CurrentSelect.DevInfo);
                 }
             };
-            DevInfoPanel.RefreshStart += (s, e) =>
-            {
-                this.Dispatcher.Invoke(() =>
-                {
-                    Logger.D(this, "DevInfoPanel refreshing");
-                    //BoxHelper.ShowLoadingDialog();
-                });
-            };
             FunctionFlowBase.AnyFinished += FlowFinished;
             FunctionModule.AnyFinished += this.FuncFinish;
-            DevInfoPanel.RefreshFinished += (s, e) =>
-            {
-                this.Dispatcher.Invoke(() =>
-                {
-                    Logger.D(this, "DevInfoPanel refreshed...");
-                    //BoxHelper.CloseLoadingDialog();
-                });
-            };
             AdbHelper.AdbServerStartsFailed += (s, e) =>
             {
                 DevicesMonitor.Stop();
@@ -88,46 +88,26 @@ namespace AutumnBox.GUI
                 Dispatcher.Invoke(() =>
                 {
                     _continue = BoxHelper.ShowChoiceDialog("msgWarning",
-                        UIHelper.GetString("msgStartAdbServerFailLine1") + Environment.NewLine +
-                           UIHelper.GetString("msgStartAdbServerFailLine2") + Environment.NewLine +
-                           UIHelper.GetString("msgStartAdbServerFailLine3") + Environment.NewLine +
-                           UIHelper.GetString("msgStartAdbServerFailLine4"),
-                        "btnExit",
-                        "btnIHaveCloseOtherPhoneHelper"
-                        ).ToBool();
+                        "msgStartAdbServerFail",
+                        "btnExit", "btnIHaveCloseOtherPhoneHelper")
+                        .ToBool();
                 });
                 if (!_continue)
                 {
                     Close();
                 }
-                Task.Run(() =>
-                {
-                    Thread.Sleep(3000);
-                    App.Current.Dispatcher.Invoke(DevicesMonitor.Begin);
-                });
+                else {
+                    Task.Run(() =>
+                    {
+                        Thread.Sleep(3000);
+                        App.Current.Dispatcher.Invoke(DevicesMonitor.Begin);
+                    });
+                }
             };
-#if DEBUG
-            TitleBar.Title.Content += "  " + SystemHelper.CurrentVersion + "-Debug";
-#else
-            TitleBar.Title.Content += "  " + SystemHelper.CurrentVersion + "-Release";
-#endif
         }
-        /// <summary>
-        /// 各方面加载完毕,毫秒毫秒钟就要开始渲染了!
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private async void MainWindow_Loaded(object sender, RoutedEventArgs e)
+
+        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            ShowLoadingPanel();
-            refreshables = new List<IRefreshable>
-            {
-                this.RebootGrid,
-                this.DevInfoPanel,
-                this.FastbootFuncs,
-                this.RecoveryFuncs,
-                this.PoweronFuncs
-            };
 #if !DEBUG
             this.WTF.Navigate(Urls.STATISTICS_API);
 #endif
@@ -140,6 +120,7 @@ namespace AutumnBox.GUI
 #endif
             //刷新一下界面
             Reset();
+
             //开始获取公告
             new MOTDGetter().RunAsync((r) =>
             {
@@ -154,39 +135,19 @@ namespace AutumnBox.GUI
                     new UpdateNoticeWindow(r) { Owner = this }.ShowDialog();
                 }
             });
-            loadingWindow.SetProgress(30);
-            await Task.Run(() =>
-            {
-                Loader.Load();
-            });
-            DevicesMonitor.Begin();
-            loadingWindow.SetProgress(70);
+            
             //哦,如果是第一次启动本软件,那么就显示一下提示吧!
-            await Task.Run(() =>
+            Task.Run(() =>
             {
                 Thread.Sleep(1000);
+                Dispatcher.Invoke(()=> {
+                    if (Config.IsFirstLaunch)
+                    {
+                        var aboutPanel = new FastPanel(this.GridMain, new About());
+                        aboutPanel.Display();
+                    }
+                });
             });
-            loadingWindow.SetProgress(80);
-            if (Config.IsFirstLaunch)
-            {
-                var aboutPanel = new FastPanel(this.GridMain, new About());
-                aboutPanel.Display();
-            }
-            loadingWindow.SetProgress(100);
-            CloseLoadingPanel();
-        }
-
-        public void ShowLoadingPanel()
-        {
-            Visibility = Visibility.Hidden;
-            loadingWindow.Show();
-        }
-
-        public void CloseLoadingPanel()
-        {
-            Visibility = Visibility.Visible;
-            ShowInTaskbar = true;
-            loadingWindow.Close();
         }
 
         public void Refresh(DeviceBasicInfo devinfo)
@@ -259,21 +220,6 @@ namespace AutumnBox.GUI
         private void BtnDonate_Click(object sender, RoutedEventArgs e)
         {
             new FastPanel(this.GridMain, new Donate()).Display();
-        }
-
-        private void TBHelp_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-            Process.Start(Urls.HELP_PAGE);
-        }
-
-        private void TBOfficialWebsite_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-            Process.Start(Urls.OFFICIAL_WEBSITE);
-        }
-
-        private void TBLinkHelp_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-            Process.Start(Urls.LINK_HELP);
         }
 
     }

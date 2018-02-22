@@ -13,8 +13,10 @@
 \* =============================================================================*/
 namespace AutumnBox.Basic.MultipleDevices
 {
+    using AutumnBox.Basic.Adb;
     using AutumnBox.Basic.Device;
     using AutumnBox.Basic.Executer;
+    using AutumnBox.Support.CstmDebug;
     using System;
     using System.Text.RegularExpressions;
 
@@ -23,7 +25,7 @@ namespace AutumnBox.Basic.MultipleDevices
     /// </summary>
     public sealed class DevicesGetter : IDevicesGetter
     {
-        private CommandExecuter executer = new CommandExecuter();
+        private readonly CommandExecuter executer = new CommandExecuter();
         private static readonly Command adbDevicesCmd = Command.MakeForAdb("devices");
         private static readonly Command fbDevicesCmd = Command.MakeForFastboot("devices");
         /// <summary>
@@ -36,8 +38,13 @@ namespace AutumnBox.Basic.MultipleDevices
             {
                 DevicesList devList = new DevicesList();
                 var adbDevicesOutput = executer.Execute(adbDevicesCmd);
+                if (!adbDevicesOutput.IsSuccessful)
+                {
+                    AdbHelper.RisesAdbServerStartsFailedEvent();
+                    return devList;
+                }
                 var fastbootDevicesOutput = executer.Execute(fbDevicesCmd);
-                AdbParse(adbDevicesOutput ,ref devList);
+                AdbParse(adbDevicesOutput, ref devList);
                 FastbootParse(fastbootDevicesOutput, ref devList);
                 return devList;
             }
@@ -46,22 +53,37 @@ namespace AutumnBox.Basic.MultipleDevices
         private static readonly Regex _deviceRegex = new Regex(devicePattern, RegexOptions.Multiline);
         private static void AdbParse(Output o, ref DevicesList devList)
         {
-            var matches = _deviceRegex.Matches(o.ToString());
-            foreach (Match match in matches)
+            try
             {
-                devList.Add(DeviceBasicInfo.Make(
-                    match.Result("${serial}"),
-                    match.Result("${status}").ToDeviceState()));
+                var matches = _deviceRegex.Matches(o.ToString());
+                foreach (Match match in matches)
+                {
+                    devList.Add(DeviceBasicInfo.Make(
+                        match.Result("${serial}"),
+                        match.Result("${status}").ToDeviceState()));
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.T("adb devices parse failed", ex);
             }
         }
         private static void FastbootParse(Output o, ref DevicesList devList)
         {
-            var matches = _deviceRegex.Matches(o.ToString());
-            foreach (Match match in matches)
+            try
             {
-                devList.Add(DeviceBasicInfo.Make(
-                    match.Result("${serial}"),
-                    match.Result("${status}").ToDeviceState()));
+                var matches = _deviceRegex.Matches(o.ToString());
+                foreach (Match match in matches)
+                {
+                    devList.Add(DeviceBasicInfo.Make(
+                        match.Result("${serial}"),
+                        match.Result("${status}").ToDeviceState()));
+                }
+            }
+            catch (Exception ex)
+            {
+
+                Logger.T("fastboot devices parse failed", ex);
             }
         }
     }

@@ -15,6 +15,7 @@ using AutumnBox.Basic.Executer;
 using AutumnBox.Basic.Util;
 using AutumnBox.Support.Helper;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace AutumnBox.Basic.Adb
@@ -22,14 +23,8 @@ namespace AutumnBox.Basic.Adb
     public static class AdbHelper
     {
         public static event EventHandler AdbServerStartsFailed;
-        public static event EventHandler AdbServerStopsFailed;
-        /// <summary>
-        /// 判断是否已有别的ADB进程
-        /// </summary>
-        /// <returns></returns>
-        public static bool AlreadyHaveAdbProcess()
-        {
-            return Process.GetProcessesByName("adb").Length != 0;
+        public static void RisesAdbServerStartsFailedEvent() {
+            AdbServerStartsFailed?.Invoke(new object(), new EventArgs());
         }
         /// <summary>
         /// 杀死所有ADB进程
@@ -43,26 +38,15 @@ namespace AutumnBox.Basic.Adb
             }
         }
         /// <summary>
-        /// 检查ADB服务
-        /// </summary>
-        /// <returns></returns>
-        public static bool Check()
-        {
-            if (!AlreadyHaveAdbProcess())
-            {
-                return StartServer();
-            }
-            return true;
-        }
-        /// <summary>
         /// 启动ADB服务
         /// </summary>
         /// <returns></returns>
         public static bool StartServer()
         {
-            var result = new CommandExecuter().Execute(AdbConstants.FullAdbFileName, "start-server");
-            bool successful = result.IsSuccessful && !result.Contains("cannot connect to daemon");
-            if (!successful) AdbServerStartsFailed?.Invoke(new object(), new EventArgs());
+            var result = CommandExecuter.Static.Execute(AdbConstants.FullAdbFileName, "start-server");
+            bool successful = result.IsSuccessful && !result.Contains("error");
+            result.PrintOnLog(true);
+            if (!successful) RisesAdbServerStartsFailedEvent();
             return successful;
         }
         /// <summary>
@@ -71,8 +55,7 @@ namespace AutumnBox.Basic.Adb
         /// <returns></returns>
         public static bool StopServer()
         {
-            var result = new CommandExecuter().Execute(AdbConstants.FullAdbFileName, "start-server");
-            if (!result.IsSuccessful) AdbServerStopsFailed?.Invoke(new object(), new EventArgs());
+            var result = CommandExecuter.Static.Execute(AdbConstants.FullAdbFileName, "kill-server");
             return result.IsSuccessful;
         }
         /// <summary>

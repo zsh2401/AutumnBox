@@ -75,11 +75,11 @@ namespace AutumnBox.Basic.Executer
         {
             if (ignoreCase)
             {
-                return All.ToString().ToLower().Contains(str.ToLower());
+                return All.ToLower().Contains(str.ToLower());
             }
             else
             {
-                return All.ToString().Contains(str);
+                return All.Contains(str);
             }
         }
         /// <summary>

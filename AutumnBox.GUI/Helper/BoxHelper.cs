@@ -25,19 +25,31 @@ namespace AutumnBox.GUI.Helper
         {
             return result == ChoiceResult.BtnRight;
         }
-        private static readonly MainWindow _owner_m;
-        private static readonly Window _owner;
-        static BoxHelper()
+        private static MainWindow _owner_m
         {
-            MainWindow mainWindow = null;
-            Window owner = null;
-            App.Current.Dispatcher.Invoke(()=> {
-                owner = Application.Current.MainWindow;
-                mainWindow = (MainWindow)owner;
-            });
-            _owner = owner;
-            _owner_m = mainWindow;
+            get
+            {
+                MainWindow result = null;
+                App.Current.Dispatcher.Invoke(() =>
+                {
+                    result = App.Current.MainWindowAsMainWindow;
+                });
+                return result;
+            }
         }
+        private static Window _owner
+        {
+            get
+            {
+                Window result = null;
+                App.Current.Dispatcher.Invoke(() =>
+                {
+                    result = App.Current.MainWindow;
+                });
+                return result;
+            }
+        }
+
         #region ChoiceWindow
         public static ChoiceResult ShowChoiceDialog(
             string keyTitle, string keyText,
@@ -46,8 +58,9 @@ namespace AutumnBox.GUI.Helper
             ChoiceResult result = ChoiceResult.BtnCancel;
             App.Current.Dispatcher.Invoke(() =>
             {
-                result = new ChoiceBox(_owner)
+                result = new ChoiceBox()
                 {
+                    Owner = App.Current.MainWindow.IsActive ? App.Current.MainWindow : null,
                     Data = new ChoiceBoxData()
                     {
                         KeyTitle = keyTitle,
@@ -60,6 +73,7 @@ namespace AutumnBox.GUI.Helper
             return result;
         }
         #endregion
+
         public static void ShowMessageDialog(string keyTitle, string keyText)
         {
             var messageBox = new MMessageBox(_owner)
@@ -72,8 +86,10 @@ namespace AutumnBox.GUI.Helper
             };
             messageBox.ShowDialog();
         }
+
         #region LoadingWindow
-        public static bool _loadingWindowIsAlreadyHaveOne = false;
+        private static bool _loadingWindowIsAlreadyHaveOne = false;
+        private static LoadingWindow _loadingWindow;
         public static void ShowLoadingDialog(ICompletable completable)
         {
             if (_loadingWindowIsAlreadyHaveOne) return;
@@ -81,7 +97,6 @@ namespace AutumnBox.GUI.Helper
             new LoadingWindow(_owner).ShowDialog(completable);
             _loadingWindowIsAlreadyHaveOne = false;
         }
-        private static LoadingWindow _loadingWindow;
         public static void ShowLoadingDialog()
         {
             if (_loadingWindowIsAlreadyHaveOne) return;

@@ -39,10 +39,9 @@ namespace AutumnBox.GUI.Windows
         public ChoiceBoxData Data { get; set; } = new ChoiceBoxData();
 
         private ChoiceResult _result = ChoiceResult.BtnCancel;
-        internal ChoiceBox(Window owner)
+        internal ChoiceBox()
         {
             InitializeComponent();
-            Owner = owner;
             closeAnimationByBtnCancel.Storyboard.Completed += (s, e) => Close();
             closeAnimationByBtnOK.Storyboard.Completed += (s, e) => Close();
             closeAnimationByImgCancel.Storyboard.Completed += (s, e) => Close();

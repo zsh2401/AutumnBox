@@ -1,6 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:AutumnBox.GUI.I18N.Langs"
+                    xml:space="preserve"
                     xmlns:s="clr-namespace:System;assembly=mscorlib">
 
     <s:String x:Key="AppName">AutumnBox</s:String>
@@ -119,8 +120,11 @@
     <s:String x:Key="msgLoading">加载中</s:String>
     <s:String x:Key="msgActiveGMC">这将会开启手机的网络ADB调试并且带来巨大风险,您确定继续吗?</s:String>
     <s:String x:Key="msgGettedIP">成功获取您的手机在当前局域网的IP,这个IP将可以用于网络调试连接</s:String>
-    <s:String x:Key="msgFixAndroidOLine0">检测到您是安卓8.0系统,为了防止ADB服务被异常终止,请问需要在激活后开启ADB网络调试以保证服务正常运行吗?这可能会带来不可测的风险!</s:String>
-    <s:String x:Key="msgFixAndroidOLine1">如果您决定开启,请在执行过程中,保持设备解锁并亮屏,否则激活将是无效的</s:String>
+    <s:String x:Key="msgFixAndroidO">
+        检测到您是安卓8.0系统,为了防止ADB服务被异常终止,请问需要在激活后开启ADB网络调试以保证服务正常运行吗?
+         &#x0a; 这可能会带来不可测的风险!
+        &#x0a; 如果您决定开启,请在执行过程中,保持设备解锁并亮屏,否则激活将是无效的
+    </s:String>
     <s:String x:Key="msgUnknowError">未知的错误!</s:String>
     <s:String x:Key="msgCheckInput">请检查您输入的内容!</s:String>
     <s:String x:Key="msgIceBoxActUnknowError">未知的错误!</s:String>
@@ -138,14 +142,18 @@
     <s:String x:Key="msgUnlockSystemTip">注意,这不是解除Bootloader锁! 这个功能是帮助已经拥有root权限的设备使用的,该功能可让你获得完整的root权限!解锁系统分区并随意修改!</s:String>
     <s:String x:Key="msgStartBreventServiceFail">启动黑域服务时,似乎出现了一些问题,请将此处截图给黑域开发者或AutumnBox开发者</s:String>
     <s:String x:Key="msgStartBreventServiceSuc">现在,您的设备应该已经成功激活了黑域!但为了保险起见,将会展示脚本输出的信息</s:String>
-    <s:String x:Key="msgShellChoiceTip">检测到您是Windows10 系统,请问您想用哪种命令行界面?如果您不懂什么是Powershell,请用传统的CMD</s:String>
+    <s:String x:Key="msgShellChoiceTip">检测到您是Windows10 系统,请问您想用哪种命令行界面?&#x0a;如果您不懂什么是Powershell,请用传统的CMD</s:String>
     <s:String x:Key="msgSaveSuccessful">保存成功!</s:String>
-    <s:String x:Key="msgIceActLine1">请前往手机->账户设置,将所有账户删除!(包括谷歌账户/手机云服务账户等)</s:String>
-    <s:String x:Key="msgIceActLine2">并且关闭应用双开,关闭访客模式,删除其它用户</s:String>
-    <s:String x:Key="msgIceActLine3">完成后请点击继续</s:String>
-    <s:String x:Key="msgNoticeForRebootToEdlLine1">请确保您的设备是高通骁龙处理器并且支持进入9008模式</s:String>
-    <s:String x:Key="msgNoticeForRebootToEdlLine2">当进入9008模式后,设备会完全黑屏,但您可以使用相关工具进行刷机</s:String>
-    <s:String x:Key="msgNoticeForRebootToEdlLine3">如果想要退出9008模式,长按电源键即可!</s:String>
+    <s:String x:Key="msgIceAct">
+        请前往手机->账户设置,将所有账户删除!(包括谷歌账户/手机云服务账户等)
+        &#x0a;并且关闭应用双开,关闭访客模式,删除其它用户
+        &#x0a; 完成后请点击继续
+    </s:String>
+    <s:String x:Key="msgNoticeForRebootToEdl">
+        请确保您的设备是高通骁龙处理器并且支持进入9008模式
+        &#x0a; 当进入9008模式后,设备会完全黑屏,但您可以使用相关工具进行刷机
+        &#x0a;如果想要退出9008模式,长按电源键即可!
+    </s:String>
     <s:String x:Key="msgPlsInstallAirForzenFirst">请先安装空调狗!</s:String>
     <s:String x:Key="msgPlsInstallBreventFirst">请先安装黑域!</s:String>
     <s:String x:Key="msgPlsInstallIslandFirst">请先安装Island!!</s:String>
@@ -154,10 +162,12 @@
     <s:String x:Key="msgPlsInstallShizukuManagerFirst">请先安装ShizukuManager!酷市场和手机乐园都有!</s:String>
     <s:String x:Key="msgWarning">警告</s:String>
     <s:String x:Key="msgVirtualButtonHider">您是要隐藏虚拟键还是恢复虚拟键?</s:String>
-    <s:String x:Key="msgStartAdbServerFailLine1">错误:无法启动ADB服务</s:String>
-    <s:String x:Key="msgStartAdbServerFailLine2">解决方案:彻底关闭所有其它的手机助手(在电脑上)</s:String>
-    <s:String x:Key="msgStartAdbServerFailLine3">例如: 360手机助手 豌豆荚等</s:String>
-    <s:String x:Key="msgStartAdbServerFailLine4">如果仍然无效,请进入任务管理器,彻底结束那些手机助手的进程!什么?还是没用?重启电脑!</s:String>
+    <s:String x:Key="msgStartAdbServerFail">
+        错误:无法启动ADB服务
+        &#x0a;解决方案:彻底关闭所有其它的手机助手(在电脑上)
+        &#x0a;例如: 360手机助手 豌豆荚等
+        &#x0a;如果仍然无效,请进入任务管理器,彻底结束那些手机助手的进程!什么?还是没用?重启电脑!
+    </s:String>
     <s:String x:Key="msgPleaseInputAPort">请输入一个小于65535的端口号</s:String>
     <s:String x:Key="msgFailed">失败了</s:String>
     <!--信息-->
@@ -304,9 +314,11 @@
     <s:String x:Key="AboutMessage_OSList">Newtonsoft.Json &amp; Google Android Debug Bridge &amp; Google Android &amp; Linux</s:String>
     <!--关于信息-->
 
-    <s:String x:Key="warningOpenNetDebuggingLine0">开启网络调试将带来不可预见的风险</s:String>
-    <s:String x:Key="warningOpenNetDebuggingLine1">请确保您的设备与电脑处于同一局域网下</s:String>
-    <s:String x:Key="warningOpenNetDebuggingLine2">请确保您已在开发者设置中打开网络调试</s:String>
+    <s:String x:Key="warningOpenNetDebugging">
+        开启网络调试将带来不可预见的风险
+        &#x0a;请确保您的设备与电脑处于同一局域网下
+        &#x0a;请确保您已在开发者设置中打开网络调试
+    </s:String>
     <s:String x:Key="Menu">菜单</s:String>
     <s:String x:Key="Contact">联系开发者</s:String>
     <s:String x:Key="Donate">捐赠开发者</s:String>

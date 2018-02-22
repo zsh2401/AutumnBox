@@ -23,12 +23,12 @@ namespace AutumnBox.GUI.Helper
     /// </summary>
     public static class UIHelper
     {
-        public static readonly MainWindow MainWindow;
-        private static SolidColorBrush currentBackgound;
-        static UIHelper()
+        private static SolidColorBrush CurrentBackgound
         {
-            MainWindow = (MainWindow)Application.Current.MainWindow;
-            currentBackgound = (SolidColorBrush)App.Current.MainWindow.Background;
+            get
+            {
+                return (SolidColorBrush)App.Current.MainWindow.Background;
+            }
         }
         public static string GetString(string key)
         {

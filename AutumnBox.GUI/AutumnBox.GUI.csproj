@@ -144,6 +144,7 @@
     <Compile Include="NetUtil\RemoteDataGetter.cs" />
     <Compile Include="NetUtil\UpdateChecker.cs" />
     <Compile Include="Resources\Images\DevStatus\DevStatusBitmapGetter.cs" />
+    <Compile Include="Windows\IAppLoadingWindow.cs" />
     <Compile Include="Windows\UserManagerWindow.xaml.cs">
       <DependentUpon>UserManagerWindow.xaml</DependentUpon>
     </Compile>

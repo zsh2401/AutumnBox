@@ -62,8 +62,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
             if (isAndroidO)
             {
                 var result = BoxHelper.ShowChoiceDialog("msgNotice",
-                    "msgFixAndroidOLine0" + "\n" +
-                    "msgFixAndroidOLine1",
+                    "msgFixAndroidO",
                     "btnDoNotOpen", "btnOpen");
                 switch (result)
                 {
@@ -297,7 +296,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
             if (isInstallThisApp == false) { BoxHelper.ShowMessageDialog("Warning", "msgPlsInstallIceBoxFirst"); return; }
             /*提示用户删除账户*/
             bool _continue = BoxHelper.ShowChoiceDialog("msgNotice",
-                    $"{UIHelper.GetString("msgIceActLine1")}\n{UIHelper.GetString("msgIceActLine2")}\n{UIHelper.GetString("msgIceActLine3")}",
+                    "msgIceAct",
                     "btnCancel",
                     "btnContinue").ToBool();
             Logger.D(_continue.ToString());
@@ -323,9 +322,8 @@ namespace AutumnBox.GUI.UI.FuncPanels
             {
                 return BoxHelper.ShowChoiceDialog(
                     "msgNotice",
-                    $"{UIHelper.GetString("msgIceActLine1")}\n{UIHelper.GetString("msgIceActLine2")}\n{UIHelper.GetString("msgIceActLine3")}",
-                    "btnCancel",
-                    "btnContinue").ToBool();
+                   "msgIceAct",
+                    "btnCancel","btnContinue").ToBool();
             });
             if (!_continue) return;
             /*开始操作*/
@@ -342,7 +340,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
             {
                 return new DeviceSoftwareInfoGetter(_currentDevInfo.Serial).IsInstall(ShizukuManagerActivator._AppPackageName);
             });
-            if (isInstallThisApp == false) { BoxHelper.ShowMessageDialog("Warning", "msgPlsInstallBreventFirst"); return; }
+            if (isInstallThisApp == false) { BoxHelper.ShowMessageDialog("Warning", "msgPlsInstallShizukuManagerFirst"); return; }
 
             /*判断是否是安卓8.0操作系统*/
             bool isAndroidO = false;
@@ -358,8 +356,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
             if (isAndroidO)
             {
                 var result = BoxHelper.ShowChoiceDialog("msgNotice",
-                    "msgFixAndroidOLine0" + "\n" +
-                    "msgFixAndroidOLine1",
+                    "msgFixAndroidO",
                     "btnDoNotOpen", "btnOpen");
                 switch (result)
                 {
