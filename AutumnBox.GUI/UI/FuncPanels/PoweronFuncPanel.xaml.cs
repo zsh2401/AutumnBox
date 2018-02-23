@@ -144,10 +144,13 @@ namespace AutumnBox.GUI.UI.FuncPanels
             FolderBrowserDialog fbd = new FolderBrowserDialog();
             if (fbd.ShowDialog() == DialogResult.OK)
             {
-                var fmp = FunctionModuleProxy.Create<ScreenShoter>(new ScreenShoterArgs(_currentDevInfo) { LocalPath = fbd.SelectedPath });
-                fmp.Finished += ((MainWindow)App.Current.MainWindow).FuncFinish;
-                fmp.AsyncRun();
-                BoxHelper.ShowLoadingDialog(fmp);
+                var shoter = new Basic.Flows.ScreenShoter();
+                shoter.Init(new Basic.Flows.ScreenShoterArgs() {
+                    DevBasicInfo = _currentDevInfo,
+                    SavePath = fbd.SelectedPath
+                });
+                shoter.RunAsync();
+                BoxHelper.ShowLoadingDialog(shoter);
             }
         }
 
@@ -159,10 +162,12 @@ namespace AutumnBox.GUI.UI.FuncPanels
             }
             if (BoxHelper.ShowChoiceDialog("msgNotice", "msgUnlockSystemTip") == ChoiceResult.BtnRight)
             {
-                var fmp = FunctionModuleProxy.Create<SystemUnlocker>(new ModuleArgs(_currentDevInfo));
-                fmp.Finished += ((MainWindow)App.Current.MainWindow).FuncFinish;
-                fmp.AsyncRun();
-                BoxHelper.ShowLoadingDialog(fmp);
+                var unlocker = new SystemPartitionUnlocker();
+                unlocker.Init(new FlowArgs() {
+                    DevBasicInfo = _currentDevInfo
+                });
+                unlocker.RunAsync();
+                BoxHelper.ShowLoadingDialog(unlocker);
             }
         }
 
@@ -254,10 +259,12 @@ namespace AutumnBox.GUI.UI.FuncPanels
                 return BoxHelper.ShowChoiceDialog("Warning", "msgDelScreenLock").ToBool();
             });
             if (!_continue) return;
-            FunctionModuleProxy fmp = FunctionModuleProxy.Create<ScreenLockDeleter>(new ModuleArgs(_currentDevInfo));
-            fmp.Finished += ((MainWindow)App.Current.MainWindow).FuncFinish;
-            fmp.AsyncRun();
-            BoxHelper.ShowLoadingDialog(fmp);
+            var screenLockDeleter = new Basic.Flows.ScreenLockDeleter();
+            screenLockDeleter.Init(new FlowArgs() {
+                DevBasicInfo = _currentDevInfo,
+            });
+            screenLockDeleter.RunAsync();
+            BoxHelper.ShowLoadingDialog(screenLockDeleter);
         }
 
         private void ButtonFlashRecImg_Click(object sender, RoutedEventArgs e)

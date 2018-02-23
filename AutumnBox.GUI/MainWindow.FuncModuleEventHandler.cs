@@ -43,9 +43,6 @@ namespace AutumnBox.GUI
                     case nameof(CustomRecoveryFlasher):
                         FlashCustomRecFinish(e);
                         break;
-                    case nameof(SystemUnlocker):
-                        UnlockMiSystemFinish(e);
-                        break;
                     default:
                         ModuleResultWindow.FastShow(e.Result);
                         break;
