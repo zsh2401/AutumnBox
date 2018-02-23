@@ -17,7 +17,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Args\MiFlasherArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Args\ScreenShoterArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Events\MiFlashEvents.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Modules\ActivityLauncher.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Modules\ScreenLockDeleter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Modules\ScreenShoter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Modules\SideloadFlasher.cs" />

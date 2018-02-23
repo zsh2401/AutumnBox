@@ -40,9 +40,6 @@ namespace AutumnBox.GUI
                 BoxHelper.CloseLoadingDialog();
                 switch (sender.GetType().Name)
                 {
-                    case nameof(ActivityLauncher):
-                        ActivatedBrvent(e);
-                        break;
                     case nameof(CustomRecoveryFlasher):
                         FlashCustomRecFinish(e);
                         break;

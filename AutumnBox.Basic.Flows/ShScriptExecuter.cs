@@ -6,6 +6,7 @@
 ** desc： ...
 *********************************************************************************/
 using AutumnBox.Basic.Device;
+using AutumnBox.Basic.Device.ActivityManager;
 using AutumnBox.Basic.Device.PackageManage;
 using AutumnBox.Basic.Executer;
 using AutumnBox.Basic.FlowFramework;
@@ -51,8 +52,7 @@ namespace AutumnBox.Basic.Flows
             _tooKit = toolKit;
             if (AppPackageName != null && AppActivity != null)
             {
-                FunctionModuleProxy.Create<ActivityLauncher>(new ActivityLaunchArgs(toolKit.Args.DevBasicInfo)
-                { PackageName = AppPackageName, ActivityName = AppActivity }).SyncRun();
+                Activity.Start(toolKit.Args.Serial,AppPackageName,AppActivity);
                 Thread.Sleep(Delay);
             }
             _result = toolKit.Executer.QuicklyShell(_tooKit.Args.DevBasicInfo.Serial, $"sh {ScriptPath}");
