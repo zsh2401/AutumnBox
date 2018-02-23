@@ -55,7 +55,8 @@ namespace AutumnBox.GUI
                 this.DevInfoPanel,
                 this.FastbootFuncs,
                 this.RecoveryFuncs,
-                this.PoweronFuncs
+                this.PoweronFuncs,
+                this.ThridPartyFuncs
             };
 #if DEBUG
             TitleBar.Title.Content += "  " + SystemHelper.CurrentVersion + "-Debug";

@@ -17,6 +17,7 @@ using AutumnBox.Basic.MultipleDevices;
 using AutumnBox.GUI.Cfg;
 using AutumnBox.GUI.Helper;
 using AutumnBox.GUI.I18N;
+using AutumnBox.GUI.Mods;
 using AutumnBox.GUI.Windows;
 using AutumnBox.Support.CstmDebug;
 using System;
@@ -103,7 +104,8 @@ namespace AutumnBox.GUI
             });
             App.Current.MainWindow = new MainWindow();
             DevicesMonitor.Begin();
-            loadingWindowApi.SetProgress(90);
+            loadingWindowApi.SetProgress(80);
+            ModManager.InitAll();
             App.Current.MainWindow.Show();
             loadingWindowApi.SetProgress(100);
             loadingWindowApi.Finish();

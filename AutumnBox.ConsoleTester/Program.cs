@@ -36,15 +36,9 @@ namespace AutumnBox.ConsoleTester
         };
         unsafe static int Main(string[] cmdargs)
         {
-            foreach (var mod in ModManager.Mods)
-            {
-                Console.WriteLine($"{mod.Name}-{mod.Desc}");
-                mod.Run(new StartArgs()
-                {
-                    Device = mi6
-                });
-            }
-            Console.ReadKey();
+            var states = DeviceState.Recovery;
+            var statess = DeviceState.Recovery | DeviceState.Poweron;
+            Console.WriteLine(statess.HasFlag(states));
             return 0;
         }
     }

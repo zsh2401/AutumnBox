@@ -108,6 +108,7 @@
     <s:String x:Key="tbiOnPowerOn">Power on</s:String>
     <s:String x:Key="tbiOnRecovery">Recovery</s:String>
     <s:String x:Key="tbiOnFastboot">Fastboot</s:String>
+    <s:String x:Key="tbiThridPartyFunction">Thrid party functions</s:String>
     <!--tabitem-->
 
     <!--标题-->

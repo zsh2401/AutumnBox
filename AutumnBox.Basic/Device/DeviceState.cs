@@ -38,18 +38,7 @@ namespace AutumnBox.Basic.Device
     /// </summary>
     public enum DeviceState
     {
-        /// <summary>
-        /// 处于offline
-        /// </summary>
-        Offline = -3,
-        /// <summary>
-        /// 未知状态
-        /// </summary>
-        Unknow = -2,
-        /// <summary>
-        /// 未允许ADB调试
-        /// </summary>
-        Unauthorized = -1,
+
         /// <summary>
         /// 无设备
         /// </summary>
@@ -65,11 +54,22 @@ namespace AutumnBox.Basic.Device
         /// <summary>
         /// 处于Fastboot模式
         /// </summary>
-        Fastboot = 3,
+        Fastboot = 4,
         /// <summary>
         /// 处于sideload模式
         /// </summary>
-        Sideload = 4,
-
+        Sideload = 8,
+        /// <summary>
+        /// 处于offline
+        /// </summary>
+        Offline = 16,
+        /// <summary>
+        /// 未知状态
+        /// </summary>
+        Unknow = 32,
+        /// <summary>
+        /// 未允许ADB调试
+        /// </summary>
+        Unauthorized = 64,
     }
 }

@@ -145,6 +145,9 @@
     <Compile Include="NetUtil\RemoteDataGetter.cs" />
     <Compile Include="NetUtil\UpdateChecker.cs" />
     <Compile Include="Resources\Images\DevStatus\DevStatusBitmapGetter.cs" />
+    <Compile Include="UI\FuncPanels\ThridPartyFunctionPanel.xaml.cs">
+      <DependentUpon>ThridPartyFunctionPanel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\IAppLoadingWindow.cs" />
     <Compile Include="Windows\UserManagerWindow.xaml.cs">
       <DependentUpon>UserManagerWindow.xaml</DependentUpon>
@@ -391,6 +394,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\FuncPanels\StartPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\FuncPanels\ThridPartyFunctionPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
