@@ -138,6 +138,7 @@
     <Compile Include="Helper\TextHelper.cs" />
     <Compile Include="Helper\UIHelper.cs" />
     <Compile Include="I18N\Language.cs" />
+    <Compile Include="Mods\ModManager.cs" />
     <Compile Include="NetUtil\PotdGetter.cs" />
     <Compile Include="NetUtil\Urls.cs" />
     <Compile Include="NetUtil\MOTDGetter.cs" />
@@ -512,6 +513,10 @@
     <ProjectReference Include="..\AutumnBox.Basic\AutumnBox.Basic.csproj">
       <Project>{84044fb2-bd38-4283-8065-b639270ece0f}</Project>
       <Name>AutumnBox.Basic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AutumnBox.OpenFramework\AutumnBox.OpenFramework.csproj">
+      <Project>{6516890c-86b6-40a0-8fd0-14ffdd62e1fe}</Project>
+      <Name>AutumnBox.OpenFramework</Name>
     </ProjectReference>
     <ProjectReference Include="..\AutumnBox.Support\AutumnBox.Support.csproj">
       <Project>{851b2eb0-0503-428d-bd87-063555b19451}</Project>

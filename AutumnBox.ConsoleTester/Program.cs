@@ -5,11 +5,15 @@ using AutumnBox.Basic.Device.PackageManage;
 using AutumnBox.Basic.Executer;
 using AutumnBox.Basic.MultipleDevices;
 using AutumnBox.Basic.Util;
+using AutumnBox.GUI.Mods;
+using AutumnBox.OpenFramework;
 using AutumnBox.Support.Log;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
+using System.Threading;
 
 namespace AutumnBox.ConsoleTester
 {
@@ -32,24 +36,16 @@ namespace AutumnBox.ConsoleTester
         };
         unsafe static int Main(string[] cmdargs)
         {
-            UserManager um = new UserManager(mi6.Serial);
-            foreach (User user in um.GetUsers())
+            foreach (var mod in ModManager.Mods)
             {
-                Console.WriteLine($"{user.Id} {user.Name}");
+                Console.WriteLine($"{mod.Name}-{mod.Desc}");
+                mod.Run(new StartArgs()
+                {
+                    Device = mi6
+                });
             }
             Console.ReadKey();
             return 0;
-        }
-        private class Test : IDisposable
-        {
-            public void Dispose()
-            {
-                Console.WriteLine("dispose");
-            }
-            ~Test()
-            {
-                Console.WriteLine("Finalize");
-            }
         }
     }
 }
