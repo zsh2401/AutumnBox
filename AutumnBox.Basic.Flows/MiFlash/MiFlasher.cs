@@ -10,14 +10,7 @@ using AutumnBox.Basic.Executer;
 using AutumnBox.Basic.FlowFramework;
 using AutumnBox.Basic.Flows.Result;
 using AutumnBox.Basic.Util;
-using AutumnBox.Support.CstmDebug;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Media;
 
 namespace AutumnBox.Basic.Flows.MiFlash
 {
@@ -28,7 +21,6 @@ namespace AutumnBox.Basic.Flows.MiFlash
     public sealed class MiFlasher : FunctionFlow<MiFlasherArgs, AdvanceResult>
     {
         int retCode;
-        
         protected override Output MainMethod(ToolKit<MiFlasherArgs> toolKit)
         {
             MiFlashBatExecuteProcess process = new MiFlashBatExecuteProcess(toolKit.Args.BatFileName, toolKit.Args.Serial);
@@ -55,7 +47,6 @@ namespace AutumnBox.Basic.Flows.MiFlash
                 _outputBuilder.AppendError(e.Text);
             }
         }
-
 
         private sealed class MiFlashBatExecuteProcess : Process
         {

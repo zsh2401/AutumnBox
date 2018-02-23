@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.ACP
 {
-    public class AndroidAppIsNotInstallException:Exception
+    internal class AndroidAppIsNotInstallException:Exception
     {
     }
 }

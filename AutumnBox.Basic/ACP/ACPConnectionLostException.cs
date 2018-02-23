@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 namespace AutumnBox.Basic.ACP
 {
     [Serializable]
-    public class AcpConnectionLostException:Exception
+    internal class AcpConnectionLostException:Exception
     {
     }
 }

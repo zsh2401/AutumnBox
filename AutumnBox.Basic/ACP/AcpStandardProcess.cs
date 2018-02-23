@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.ACP
 {
-    public static class AcpStandardProcess
+    internal static class AcpStandardProcess
     {
         private const int tempBufferSize = 4096;
         private const int receiveInterval = 200;

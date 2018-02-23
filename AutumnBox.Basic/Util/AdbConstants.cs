@@ -24,8 +24,11 @@ namespace AutumnBox.Basic.Util
         public const string AUTUMNBOX_TEMP_FLODER = "/sdcard/autumnbox_temp";
         public const string ADB_FILENAME = "adb.exe";
         public const string FASTBOOT_FILENAME = "fastboot.exe";
-        public static string FullAdbFileName {
-            get {
+        public const string toolsPath = @"google\platform-tools\";
+        public static string FullAdbFileName
+        {
+            get
+            {
                 return toolsPath + ADB_FILENAME;
             }
         }
@@ -36,6 +39,6 @@ namespace AutumnBox.Basic.Util
                 return toolsPath + FASTBOOT_FILENAME;
             }
         }
-        public static readonly string toolsPath = @"google\platform-tools\";
+        
     }
 }

@@ -1,7 +1,5 @@
 ﻿using AutumnBox.Basic.Device;
-using AutumnBox.Basic.Function;
-using AutumnBox.Basic.Function.Args;
-using AutumnBox.Basic.Function.Modules;
+using AutumnBox.Basic.Flows;
 using AutumnBox.GUI.Helper;
 using AutumnBox.Support.CstmDebug;
 using System;
@@ -18,7 +16,7 @@ namespace AutumnBox.GUI.Windows
     public partial class DpiChangeWindow : Window
     {
         private readonly DeviceBasicInfo devinfo;
-        FunctionModuleProxy runningFmp;
+        private DpiChanger dpiChanger;
         private int _textboxInputDpi
         {
             get
@@ -45,11 +43,13 @@ namespace AutumnBox.GUI.Windows
 
         private void BtnOK_Click(object sender, RoutedEventArgs e)
         {
-            runningFmp =
-                FunctionModuleProxy.Create<DpiChanger>
-               (new DpiChangerArgs(devinfo) { Dpi = _textboxInputDpi });
+            dpiChanger = new DpiChanger();
+            dpiChanger.Init(new DpiChangerArgs() {
+                Dpi = _textboxInputDpi,
+                DevBasicInfo = devinfo
+            });
             Logger.D("Dpi for input : " + _textboxInputDpi);
-            runningFmp.Finished += (s, _e) =>
+            dpiChanger.Finished += (s, _e) =>
             {
                 this.Dispatcher.Invoke(() =>
                 {
@@ -59,7 +59,7 @@ namespace AutumnBox.GUI.Windows
             };
             BtnOK.IsEnabled = false;
             BtnOK.Content = App.Current.Resources["OnSetting"];
-            runningFmp.AsyncRun();
+            dpiChanger.RunAsync();
         }
 
         private void TextBoxInput_PreviewTextInput(object sender, TextCompositionEventArgs e)
@@ -70,7 +70,7 @@ namespace AutumnBox.GUI.Windows
 
         private void Window_Closed(object sender, EventArgs e)
         {
-            try { runningFmp.ForceStop(); } catch (Exception) { }
+            try { dpiChanger.ForceStop(); } catch (Exception) { }
         }
     }
 }

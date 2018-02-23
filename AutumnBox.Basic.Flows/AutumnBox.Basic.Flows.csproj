@@ -53,6 +53,7 @@
     <Compile Include="DeviceImageFlasher.cs" />
     <Compile Include="DeviceOwnerSetter.cs" />
     <Compile Include="DeviceUserDeleter.cs" />
+    <Compile Include="DpiChanger.cs" />
     <Compile Include="FilePuller.cs" />
     <Compile Include="FilePusher.cs" />
     <Compile Include="GeekMemoryCleanerActivator.cs" />

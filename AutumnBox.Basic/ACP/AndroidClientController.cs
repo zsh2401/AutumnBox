@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.ACP
 {
-    public static class AndroidClientController
+    internal static class AndroidClientController
     {
         private const string PACKAGE_NAME = "top.atmb.autumnbox";
         private const string MAIN_ACTIVITY_NAME = "activities.MainActivity";

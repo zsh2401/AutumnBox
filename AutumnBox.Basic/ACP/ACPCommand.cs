@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.ACP
 {
-    public sealed class AcpCommand
+    internal sealed class AcpCommand
     {
         private string baseCommand = null;
         private string[] args = new string[0];

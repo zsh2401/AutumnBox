@@ -11,7 +11,7 @@ using System.Text;
 
 namespace AutumnBox.Basic.ACP
 {
-    public struct AcpResponse:IPrintable
+    internal struct AcpResponse:IPrintable
     {
         public bool IsSuccessful
         {

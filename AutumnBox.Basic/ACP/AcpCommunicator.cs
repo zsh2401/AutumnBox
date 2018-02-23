@@ -18,7 +18,7 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.ACP
 {
-    public sealed class AcpCommunicator : IDisposable
+    internal sealed class AcpCommunicator : IDisposable
     {
         private static readonly List<AcpCommunicator> communicators;
         static AcpCommunicator()

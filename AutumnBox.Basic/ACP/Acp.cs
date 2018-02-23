@@ -8,7 +8,7 @@ using System;
 namespace AutumnBox.Basic.ACP
 {
     /*ACP标准*/
-    public static class Acp
+    internal static class Acp
     {
         public const ushort STD_PORT = 24020;
         public const double VERSION = 2.0;
