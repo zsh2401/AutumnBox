@@ -18,12 +18,8 @@ namespace AutumnBox.GUI.Windows
     using System.Windows;
     using System.Windows.Input;
     using System.Diagnostics;
-    using AutumnBox.Basic.Executer;
-    using AutumnBox.Basic.Function;
-    using AutumnBox.GUI.Helper;
     using AutumnBox.Support.CstmDebug;
     using AutumnBox.Basic.Flows;
-    using AutumnBox.GUI.UI.CstPanels;
 
     /// <summary>
     /// FileSendingWindow.xaml 的交互逻辑

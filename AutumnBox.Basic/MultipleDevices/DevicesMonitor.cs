@@ -11,11 +11,8 @@
 * Company: I am free man
 *
 \* =============================================================================*/
-using AutumnBox.Basic.Executer;
-using AutumnBox.Basic.Function.Event;
 using AutumnBox.Support.CstmDebug;
 using System;
-using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 namespace AutumnBox.Basic.MultipleDevices

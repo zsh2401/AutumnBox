@@ -13,12 +13,9 @@
 \* =============================================================================*/
 namespace AutumnBox.Basic.Executer
 {
-    using AutumnBox.Basic.Function.Event;
     using AutumnBox.Basic.Util;
     using AutumnBox.Support.CstmDebug;
     using System;
-    using System.Collections.Generic;
-    using System.Text;
 
     public class Output : IPrintable
     {

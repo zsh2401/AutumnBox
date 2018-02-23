@@ -28,11 +28,8 @@ using AutumnBox.GUI.UI.Fp;
 using AutumnBox.Basic.Device;
 using AutumnBox.Basic.Adb;
 using AutumnBox.Basic.FlowFramework;
-using AutumnBox.Basic.Function;
 using AutumnBox.Basic.Util;
 using AutumnBox.Basic.MultipleDevices;
-using AutumnBox.Basic;
-using System.Windows.Media.Animation;
 
 namespace AutumnBox.GUI
 {
@@ -80,7 +77,6 @@ namespace AutumnBox.GUI
                 }
             };
             FunctionFlowBase.AnyFinished += FlowFinished;
-            FunctionModule.AnyFinished += this.FuncFinish;
             AdbHelper.AdbServerStartsFailed += (s, e) =>
             {
                 DevicesMonitor.Stop();

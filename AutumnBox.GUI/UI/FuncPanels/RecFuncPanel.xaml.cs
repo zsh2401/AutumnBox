@@ -1,9 +1,4 @@
-﻿using AutumnBox.Basic.Function.Args;
-using AutumnBox.Basic.Function.Modules;
-using Microsoft.Win32;
-using System.Windows;
-using System.Windows.Controls;
-using AutumnBox.Basic.Function;
+﻿using System.Windows;
 using AutumnBox.GUI.Helper;
 using AutumnBox.GUI.Windows;
 using AutumnBox.Basic.Device;

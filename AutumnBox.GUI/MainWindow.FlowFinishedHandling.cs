@@ -35,6 +35,9 @@ namespace AutumnBox.GUI
                     case nameof(AirForzenActivator):
                         DevicesOwnerSetted((DeviceOwnerSetter)sender, (DeviceOwnerSetterResult)e.Result);
                         break;
+                    case nameof(RecoveryFlasher):
+                        BoxHelper.ShowMessageDialog("Notice", "msgFlashOK");
+                        break;
                     case nameof(FilePusher):
                         PushFinished((AdvanceResult)e.Result);
                         break;

@@ -234,7 +234,6 @@
     <Compile Include="Windows\FlowResultWindow.xaml.cs">
       <DependentUpon>FlowResultWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainWindow.FuncModuleEventHandler.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
@@ -243,9 +242,6 @@
     </Compile>
     <Compile Include="Windows\MMessageBox.xaml.cs">
       <DependentUpon>MMessageBox.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\ModuleResultWindow.xaml.cs">
-      <DependentUpon>ModuleResultWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\LoadingWindow.xaml.cs">
       <DependentUpon>LoadingWindow.xaml</DependentUpon>
@@ -430,10 +426,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\MMessageBox.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windows\ModuleResultWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
