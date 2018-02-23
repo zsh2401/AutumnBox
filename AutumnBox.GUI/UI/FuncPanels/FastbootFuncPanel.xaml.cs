@@ -43,10 +43,13 @@ namespace AutumnBox.GUI.UI.FuncPanels
             fileDialog.Multiselect = false;
             if (fileDialog.ShowDialog() == true)
             {
-                var fmp = FunctionModuleProxy.Create<CustomRecoveryFlasher>(new FileArgs(_currentDeviceInfo) { files = new string[] { fileDialog.FileName } });
-                fmp.Finished += ((MainWindow)App.Current.MainWindow).FuncFinish;
-                fmp.AsyncRun();
-                BoxHelper.ShowLoadingDialog(fmp);
+                var flasher = new RecoveryFlasher();
+                flasher.Init(new RecoveryFlasherArgs() {
+                    DevBasicInfo = _currentDeviceInfo,
+                    RecoveryFilePath = fileDialog.FileName,
+                });
+                flasher.RunAsync();
+                BoxHelper.ShowLoadingDialog(flasher);
             }
             else
             {

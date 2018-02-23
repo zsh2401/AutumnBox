@@ -8,17 +8,4 @@
   <PropertyGroup Label="Configuration">
     <Import_RootNamespace>AutumnBox.Basic.Function</Import_RootNamespace>
   </PropertyGroup>
-  <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)Args\DpiChangerArgs.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Args\FilePullArgs.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Args\ImgExtractArgs.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Args\ImgFlasherArgs.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Args\KeyCode.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Args\MiFlasherArgs.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Args\ScreenShoterArgs.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Events\MiFlashEvents.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)Modules\" />
-  </ItemGroup>
 </Project>

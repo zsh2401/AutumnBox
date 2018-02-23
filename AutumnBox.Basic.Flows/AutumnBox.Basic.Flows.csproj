@@ -68,6 +68,7 @@
     <Compile Include="NetDeviceConnecter.cs" />
     <Compile Include="NetDeviceDisconnecter.cs" />
     <Compile Include="OemRelocker.cs" />
+    <Compile Include="RecoveryFlasher.cs" />
     <Compile Include="Result\AdvanceResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Result\DeviceOwnerSetterResult.cs" />

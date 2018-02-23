@@ -40,9 +40,6 @@ namespace AutumnBox.GUI
                 BoxHelper.CloseLoadingDialog();
                 switch (sender.GetType().Name)
                 {
-                    case nameof(CustomRecoveryFlasher):
-                        FlashCustomRecFinish(e);
-                        break;
                     default:
                         ModuleResultWindow.FastShow(e.Result);
                         break;
