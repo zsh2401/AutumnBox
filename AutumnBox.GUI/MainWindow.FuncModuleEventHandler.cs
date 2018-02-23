@@ -46,9 +46,6 @@ namespace AutumnBox.GUI
                     case nameof(SystemUnlocker):
                         UnlockMiSystemFinish(e);
                         break;
-                    case nameof(XiaomiBootloaderRelocker):
-                        RelockMiFinish(e);
-                        break;
                     default:
                         ModuleResultWindow.FastShow(e.Result);
                         break;

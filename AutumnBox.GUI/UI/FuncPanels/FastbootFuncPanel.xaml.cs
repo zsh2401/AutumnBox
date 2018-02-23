@@ -8,6 +8,7 @@ using AutumnBox.GUI.Helper;
 using AutumnBox.Basic.Device;
 using AutumnBox.GUI.Windows;
 using AutumnBox.GUI.UI.Fp;
+using AutumnBox.Basic.Flows;
 
 namespace AutumnBox.GUI.UI.FuncPanels
 {
@@ -62,10 +63,12 @@ namespace AutumnBox.GUI.UI.FuncPanels
         {
             if (!BoxHelper.ShowChoiceDialog("Warning", "msgRelockWarning").ToBool()) return;
             if (!BoxHelper.ShowChoiceDialog("Warning", "msgRelockWarningAgain").ToBool()) return;
-            var fmp = FunctionModuleProxy.Create<XiaomiBootloaderRelocker>(new ModuleArgs(_currentDeviceInfo));
-            fmp.Finished += ((MainWindow)App.Current.MainWindow).FuncFinish;
-            fmp.AsyncRun();
-            BoxHelper.ShowLoadingDialog(fmp);
+            var oemRelocker = new OemRelocker();
+            oemRelocker.Init(new Basic.FlowFramework.FlowArgs() {
+                DevBasicInfo = _currentDeviceInfo
+            });
+            oemRelocker.RunAsync();
+            BoxHelper.ShowLoadingDialog(oemRelocker);
         }
 
         private void BtnMiFlash_Click(object sender, RoutedEventArgs e)

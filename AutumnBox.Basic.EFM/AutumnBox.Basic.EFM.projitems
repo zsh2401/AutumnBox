@@ -19,8 +19,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Events\MiFlashEvents.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Modules\ScreenLockDeleter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Modules\ScreenShoter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Modules\SideloadFlasher.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Modules\XiaomiBootloaderRelocker.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Modules\SystemUnlocker.cs" />
   </ItemGroup>
 </Project>
