@@ -7,6 +7,7 @@
     <s:String x:Key="AppDesc">Open source,free,simple</s:String>
 
     <!--按钮-->
+    <s:String x:Key="btnIHaveDeletedAllUser">I has removed</s:String>
     <s:String x:Key="btnUserManager">User manager</s:String>
     <s:String x:Key="btnRefresh">Refresh</s:String>
     <s:String x:Key="btnRemoveUser">Remove this user</s:String>
@@ -116,6 +117,9 @@
     <!--标题-->
 
     <!--信息(主要用于MMesssageBox)-->
+    <s:String x:Key="msgMaybeHaveOtherUser">
+        检测到你的设备上还有其它用户,请确保您已删除完所有用户
+        &#x0a; 注:AutumnBox有用户管理的功能</s:String>
     <s:String x:Key="msgLoading">Loading...</s:String>
     <s:String x:Key="msgActiveGMC">Adb net-debugging is very dangerou! You are srue to continue?</s:String>
     <s:String x:Key="msgGettedIP">成功获取您的手机在当前局域网的IP,这个IP将可以用于网络调试连接</s:String>

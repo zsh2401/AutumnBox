@@ -41,12 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AutumnBoxMod.cs" />
-    <Compile Include="AutumnGuiApi.cs" />
-    <Compile Include="BuildInfo.cs" />
+    <Compile Include="ExtendModule.cs" />
+    <Compile Include="OpenApi\AutumnGuiApi.cs" />
     <Compile Include="DestoryArgs.cs" />
     <Compile Include="InitArgs.cs" />
-    <Compile Include="Logger.cs" />
+    <Compile Include="OpenApi\Logger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StartArgs.cs" />
   </ItemGroup>

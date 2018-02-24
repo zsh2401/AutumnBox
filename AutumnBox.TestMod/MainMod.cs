@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.TestMod
 {
-    public class MainMod : AutumnBoxMod
+    public class MainMod : ExtendModule
     {
         public override string Name => "测试模块";
         public override string Desc => "用于测试";

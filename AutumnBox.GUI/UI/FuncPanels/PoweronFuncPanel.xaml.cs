@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using AutumnBox.Support.CstmDebug;
 using AutumnBox.Basic.Device;
 using AutumnBox.GUI.UI.Fp;
+using AutumnBox.Basic.Device.PackageManage;
 
 namespace AutumnBox.GUI.UI.FuncPanels
 {
@@ -142,7 +143,8 @@ namespace AutumnBox.GUI.UI.FuncPanels
             if (fbd.ShowDialog() == DialogResult.OK)
             {
                 var shoter = new Basic.Flows.ScreenShoter();
-                shoter.Init(new Basic.Flows.ScreenShoterArgs() {
+                shoter.Init(new Basic.Flows.ScreenShoterArgs()
+                {
                     DevBasicInfo = _currentDevInfo,
                     SavePath = fbd.SelectedPath
                 });
@@ -160,7 +162,8 @@ namespace AutumnBox.GUI.UI.FuncPanels
             if (BoxHelper.ShowChoiceDialog("msgNotice", "msgUnlockSystemTip") == ChoiceResult.BtnRight)
             {
                 var unlocker = new SystemPartitionUnlocker();
-                unlocker.Init(new FlowArgs() {
+                unlocker.Init(new FlowArgs()
+                {
                     DevBasicInfo = _currentDevInfo
                 });
                 unlocker.RunAsync();
@@ -257,7 +260,8 @@ namespace AutumnBox.GUI.UI.FuncPanels
             });
             if (!_continue) return;
             var screenLockDeleter = new Basic.Flows.ScreenLockDeleter();
-            screenLockDeleter.Init(new FlowArgs() {
+            screenLockDeleter.Init(new FlowArgs()
+            {
                 DevBasicInfo = _currentDevInfo,
             });
             screenLockDeleter.RunAsync();
@@ -297,6 +301,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
             {
                 return new DeviceSoftwareInfoGetter(_currentDevInfo.Serial).IsInstall(IceBoxActivator.AppPackageName);
             });
+
             if (isInstallThisApp == false) { BoxHelper.ShowMessageDialog("Warning", "msgPlsInstallIceBoxFirst"); return; }
             /*提示用户删除账户*/
             bool _continue = BoxHelper.ShowChoiceDialog("msgNotice",
@@ -305,6 +310,21 @@ namespace AutumnBox.GUI.UI.FuncPanels
                     "btnContinue").ToBool();
             Logger.D(_continue.ToString());
             if (!_continue) return;
+
+            /*检查用户删完没*/
+            bool userIsAllRemoved = await Task.Run(() =>
+            {
+                return new UserManager(_currentDevInfo.Serial).GetUsers(true).Length == 0;
+            });
+            if (!userIsAllRemoved)
+            {
+                var choiceResult =
+                     BoxHelper.ShowChoiceDialog("Warning",
+                     "msgMaybeHaveOtherUser",
+                     "btnCancel", "btnIHaveDeletedAllUser");
+                if (choiceResult != ChoiceResult.BtnRight) return;
+            }
+
             /*开始操作 */
             IceBoxActivator iceBoxActivator = new IceBoxActivator();
             iceBoxActivator.Init(new FlowArgs() { DevBasicInfo = _currentDevInfo });
@@ -320,6 +340,12 @@ namespace AutumnBox.GUI.UI.FuncPanels
                 return new DeviceSoftwareInfoGetter(_currentDevInfo.Serial).IsInstall(AirForzenActivator.AppPackageName);
             });
 
+            /*检查用户删完没*/
+            bool userIsAllRemoved = await Task.Run(() =>
+            {
+                return new UserManager(_currentDevInfo.Serial).GetUsers(true).Length == 0;
+            });
+
             if (isInstallThisApp == false) { BoxHelper.ShowMessageDialog("Warning", "msgPlsInstallAirForzenFirst"); return; }
             /*提示用户删除账户*/
             bool _continue = await Task.Run(() =>
@@ -327,9 +353,11 @@ namespace AutumnBox.GUI.UI.FuncPanels
                 return BoxHelper.ShowChoiceDialog(
                     "msgNotice",
                    "msgIceAct",
-                    "btnCancel","btnContinue").ToBool();
+                    "btnCancel", "btnContinue").ToBool();
             });
             if (!_continue) return;
+
+
             /*开始操作*/
             AirForzenActivator airForzenActivator = new AirForzenActivator();
             airForzenActivator.Init(new FlowArgs() { DevBasicInfo = _currentDevInfo });
@@ -389,16 +417,33 @@ namespace AutumnBox.GUI.UI.FuncPanels
                 return new DeviceSoftwareInfoGetter(_currentDevInfo.Serial).IsInstall(IslandActivator.AppPackageName);
             });
             if (isInstallThisApp == false) { BoxHelper.ShowMessageDialog("Warning", "msgPlsInstallIslandFirst"); return; }
+
+
             /*提示用户删除账户*/
             bool _continue = await Task.Run(() =>
             {
                 return BoxHelper.ShowChoiceDialog("msgNotice",
-                    $"{UIHelper.GetString("msgIceActLine1")}\n{UIHelper.GetString("msgIceActLine2")}\n{UIHelper.GetString("msgIceActLine3")}",
+                    "msgIceAct",
                     "btnCancel",
                     "btnContinue"
                     ).ToBool();
             });
             if (!_continue) return;
+
+            /*检查用户删完没*/
+            bool userIsAllRemoved = await Task.Run(() =>
+            {
+                return new UserManager(_currentDevInfo.Serial).GetUsers(true).Length == 0;
+            });
+            if (!userIsAllRemoved)
+            {
+                var choiceResult =
+                     BoxHelper.ShowChoiceDialog("Warning",
+                     "msgMaybeHaveOtherUser",
+                     "btnCancel", "btnIHaveDeletedAllUser");
+                if (choiceResult != ChoiceResult.BtnRight) return;
+            }
+
             /*开始操作*/
             IslandActivator islandActivator = new IslandActivator();
             islandActivator.Init(new FlowArgs() { DevBasicInfo = _currentDevInfo });
@@ -444,15 +489,16 @@ namespace AutumnBox.GUI.UI.FuncPanels
 
         private void BtnAppManager_Click(object sender, RoutedEventArgs e)
         {
-            new PackageManageWindow(_currentDevInfo.Serial) { Owner =App.Current.MainWindow}.Show();
+            new PackageManageWindow(_currentDevInfo.Serial) { Owner = App.Current.MainWindow }.Show();
         }
 
         private void ButtonGMCAct_Click(object sender, RoutedEventArgs e)
         {
-           var _continue =  BoxHelper.ShowChoiceDialog("warning", "msgActiveGMC","btnCancel","btnContinue").ToBool();
-            if (_continue) {
+            var _continue = BoxHelper.ShowChoiceDialog("warning", "msgActiveGMC", "btnCancel", "btnContinue").ToBool();
+            if (_continue)
+            {
                 var activator = new GeekMemoryCleanerActivator();
-                activator.Init(new FlowArgs() { DevBasicInfo = this._currentDevInfo});
+                activator.Init(new FlowArgs() { DevBasicInfo = this._currentDevInfo });
                 activator.RunAsync();
                 BoxHelper.ShowLoadingDialog(activator);
             }
@@ -472,11 +518,28 @@ namespace AutumnBox.GUI.UI.FuncPanels
             {
                 return BoxHelper.ShowChoiceDialog(
                     "msgNotice",
-                    $"{UIHelper.GetString("msgIceActLine1")}\n{UIHelper.GetString("msgIceActLine2")}\n{UIHelper.GetString("msgIceActLine3")}",
+                    "msgIceAct",
                     "btnCancel",
                     "btnContinue").ToBool();
             });
             if (!_continue) return;
+
+
+            /*检查用户删完没*/
+            bool userIsAllRemoved = await Task.Run(() =>
+            {
+                return new UserManager(_currentDevInfo.Serial).GetUsers(true).Length == 0;
+            });
+            if (!userIsAllRemoved)
+            {
+                var choiceResult =
+                     BoxHelper.ShowChoiceDialog("Warning",
+                     "msgMaybeHaveOtherUser",
+                     "btnCancel", "btnIHaveDeletedAllUser");
+                if (choiceResult != ChoiceResult.BtnRight) return;
+            }
+
+
             /*开始操作*/
             StopAppActivator activator = new StopAppActivator();
             activator.Init(new FlowArgs() { DevBasicInfo = _currentDevInfo });

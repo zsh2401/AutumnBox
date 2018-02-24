@@ -9,6 +9,7 @@
     <s:String x:Key="AppDesc">开源免费的简约刷机工具箱</s:String>
 
     <!--按钮-->
+    <s:String x:Key="btnIHaveDeletedAllUser">我已移除所有用户</s:String>
     <s:String x:Key="btnUserManager">用户管理</s:String>
     <s:String x:Key="btnRefresh">刷新</s:String>
     <s:String x:Key="btnRemoveUser">移除这个用户(危险)</s:String>
@@ -118,12 +119,15 @@
     <!--标题-->
     
     <!--信息(主要用于MMesssageBox)-->
+    <s:String x:Key="msgMaybeHaveOtherUser">
+        检测到你的设备上还有其它用户,请确保您已删除完所有用户
+        注:AutumnBox有用户管理的功能</s:String>
     <s:String x:Key="msgLoading">加载中</s:String>
     <s:String x:Key="msgActiveGMC">这将会开启手机的网络ADB调试并且带来巨大风险,您确定继续吗?</s:String>
     <s:String x:Key="msgGettedIP">成功获取您的手机在当前局域网的IP,这个IP将可以用于网络调试连接</s:String>
     <s:String x:Key="msgFixAndroidO">
         检测到您是安卓8.0系统,为了防止ADB服务被异常终止,请问需要在激活后开启ADB网络调试以保证服务正常运行吗?
-         &#x0a; 这可能会带来不可测的风险!
+         这可能会带来不可测的风险!
         &#x0a; 如果您决定开启,请在执行过程中,保持设备解锁并亮屏,否则激活将是无效的
     </s:String>
     <s:String x:Key="msgUnknowError">未知的错误!</s:String>
@@ -147,12 +151,12 @@
     <s:String x:Key="msgSaveSuccessful">保存成功!</s:String>
     <s:String x:Key="msgIceAct">
         请前往手机->账户设置,将所有账户删除!(包括谷歌账户/手机云服务账户等)
-        &#x0a;并且关闭应用双开,关闭访客模式,删除其它用户
+        并且关闭应用双开,关闭访客模式,删除其它用户
         &#x0a; 完成后请点击继续
     </s:String>
     <s:String x:Key="msgNoticeForRebootToEdl">
         请确保您的设备是高通骁龙处理器并且支持进入9008模式
-        &#x0a; 当进入9008模式后,设备会完全黑屏,但您可以使用相关工具进行刷机
+       当进入9008模式后,设备会完全黑屏,但您可以使用相关工具进行刷机
         &#x0a;如果想要退出9008模式,长按电源键即可!
     </s:String>
     <s:String x:Key="msgPlsInstallAirForzenFirst">请先安装空调狗!</s:String>

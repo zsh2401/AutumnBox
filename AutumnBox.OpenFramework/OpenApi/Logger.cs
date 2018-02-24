@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AutumnBox.OpenFramework
+namespace AutumnBox.OpenFramework.OpenApi
 {
     public static class Logger
     {

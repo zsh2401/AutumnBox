@@ -5,6 +5,7 @@
 *************************************************/
 using AutumnBox.Basic.Device;
 using AutumnBox.OpenFramework;
+using AutumnBox.OpenFramework.OpenApi;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.TestMod
 {
-    public class FuckMod : AutumnBoxMod
+    public class FuckMod : ExtendModule
     {
         public override string Name => "测试模块2";
 

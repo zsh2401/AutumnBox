@@ -39,7 +39,10 @@ namespace AutumnBox.GUI.Windows
             {
                 return userManager.GetUsers();
             });
-            ListUsers.ItemsSource = users;
+            ListUsers.ItemsSource = users.Where((user) =>
+            {
+                return user.Id != 0;
+            });
         }
 
         private void ListUsers_SelectionChanged(object sender, SelectionChangedEventArgs e)

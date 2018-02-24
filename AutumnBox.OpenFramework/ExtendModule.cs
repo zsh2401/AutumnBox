@@ -1,4 +1,5 @@
 ﻿using AutumnBox.Basic.Device;
+using AutumnBox.OpenFramework.OpenApi;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.OpenFramework
 {
-    public abstract class AutumnBoxMod
+    public abstract class ExtendModule
     {
         #region 模块信息
         /// <summary>
@@ -30,10 +31,6 @@ namespace AutumnBox.OpenFramework
         /// 模块发布日期
         /// </summary>
         public virtual DateTime DevelopmentDate { get; } = new DateTime();
-        /// <summary>
-        /// 目标SDK版本
-        /// </summary>
-        public virtual int TARGET_SDK => BuildInfo.SDK_VERSION;
         #endregion
 
         #region 供AutumnBox主程序调用的方法

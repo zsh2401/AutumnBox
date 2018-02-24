@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace AutumnBox.OpenFramework
+namespace AutumnBox.OpenFramework.OpenApi
 {
     public static class AutumnGuiApi
     {

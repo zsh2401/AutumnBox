@@ -31,7 +31,7 @@ namespace AutumnBox.Basic.Device.PackageManage
             this.shell = new AndroidShellV2(device);
         }
 
-        public User[] GetUsers()
+        public User[] GetUsers(bool ignoreZeroUser =true)
         {
             var output = shell.Execute("pm list users");
             output.PrintOnConsole();
@@ -39,11 +39,13 @@ namespace AutumnBox.Basic.Device.PackageManage
             List<User> users = new List<User>();
             foreach (Match match in matches)
             {
-                users.Add(new User()
+                var user = new User()
                 {
                     Id = int.Parse(match.Result("${id}")),
                     Name = match.Result("${name}")
-                });
+                };
+                if (ignoreZeroUser && user.Id == 0) continue;
+                else users.Add(user);
             }
             return users.ToArray();
         }

@@ -5,6 +5,7 @@
 *************************************************/
 using AutumnBox.GUI.Helper;
 using AutumnBox.OpenFramework;
+using AutumnBox.OpenFramework.OpenApi;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -17,7 +18,7 @@ namespace AutumnBox.GUI.Mods
 {
     public static class ModManager
     {
-        public static AutumnBoxMod[] Mods
+        public static ExtendModule[] Mods
         {
             get
             {
@@ -39,11 +40,11 @@ namespace AutumnBox.GUI.Mods
             });
         }
 
-        private static List<AutumnBoxMod> mods;
+        private static List<ExtendModule> mods;
         static ModManager()
         {
             AutumnGuiApi.Init(ShowChoiceWindow, BoxHelper.ShowMessageDialog, BoxHelper.ShowLoadingDialog);
-            mods = new List<AutumnBoxMod>();
+            mods = new List<ExtendModule>();
             Scan();
         }
         private static void Scan()
@@ -52,9 +53,9 @@ namespace AutumnBox.GUI.Mods
             var files = GetModDllFilePaths();
             var dlls = LoadDlls(files);
             mods.AddRange(LoadMods(dlls));
-            mods.RemoveAll((mod)=> {
-                return mod.TARGET_SDK != BuildInfo.SDK_VERSION;
-            });
+            //mods.RemoveAll((mod)=> {
+            //    return mod.TARGET_SDK != BuildInfo.SDK_VERSION;
+            //});
         }
         private static string[] GetModDllFilePaths()
         {
@@ -74,17 +75,17 @@ namespace AutumnBox.GUI.Mods
             }
             return dlls.ToArray();
         }
-        private static List<AutumnBoxMod> LoadMods(Assembly[] dlls)
+        private static List<ExtendModule> LoadMods(Assembly[] dlls)
         {
-            List<AutumnBoxMod> mods = new List<AutumnBoxMod>();
+            List<ExtendModule> mods = new List<ExtendModule>();
             foreach (var dll in dlls)
             {
                 try
                 {
                     mods.AddRange(
                         from type in dll.GetExportedTypes()
-                        where type.BaseType == typeof(AutumnBoxMod)
-                        select (AutumnBoxMod)Activator.CreateInstance(type));
+                        where type.BaseType == typeof(ExtendModule)
+                        select (ExtendModule)Activator.CreateInstance(type));
                 }
                 catch { }
             }

@@ -50,7 +50,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
         {
             try
             {
-                (LstBox.SelectedItem as AutumnBoxMod).Run(new StartArgs()
+                (LstBox.SelectedItem as ExtendModule).Run(new StartArgs()
                 {
                     Device = currentDevice
                 });
