@@ -1,6 +1,4 @@
-﻿using AutumnBox.Support.CstmDebug;
-using AutumnBox.Support.Log;
-using System.Reflection;
+﻿using System.Reflection;
 using System.Runtime.InteropServices;
 
 // 有关程序集的一般信息由以下
@@ -14,7 +12,6 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
-[assembly: LogFileProperty("consoletester.log")]
 //#if DEBUG
 //[assembly: LogSettings(FileName = "console.log", IsInDebugMode = true)]
 //#else

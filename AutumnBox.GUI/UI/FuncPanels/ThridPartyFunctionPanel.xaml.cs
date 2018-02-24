@@ -1,19 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using AutumnBox.Basic.Device;
-using AutumnBox.GUI.Mods;
+using AutumnBox.GUI.Util;
 using AutumnBox.OpenFramework;
 
 namespace AutumnBox.GUI.UI.FuncPanels
@@ -32,7 +21,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
         public void Refresh(DeviceBasicInfo deviceSimpleInfo)
         {
             currentDevice = deviceSimpleInfo;
-            LstBox.ItemsSource = from mod in ModManager.Mods
+            LstBox.ItemsSource = from mod in ExtendModuleManager.GetModules()
                                  where mod.RequiredDeviceState.HasFlag(deviceSimpleInfo.State)
                                  select mod;
         }
@@ -41,22 +30,19 @@ namespace AutumnBox.GUI.UI.FuncPanels
         {
             currentDevice = new DeviceBasicInfo()
             {
+                Serial = null,
                 State = DeviceState.None
             };
             LstBox.ItemsSource = null;
+            Refresh(currentDevice);
         }
 
         private void BtnRun_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                (LstBox.SelectedItem as ExtendModule).Run(new StartArgs()
+                (LstBox.SelectedItem as AutumnBoxExtendModule).Run(new RunArgs()
                 {
                     Device = currentDevice
                 });
-            }
-            catch { }
-
         }
     }
 }

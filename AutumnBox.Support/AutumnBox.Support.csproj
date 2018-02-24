@@ -53,12 +53,12 @@
     <Compile Include="Helper\SystemHelper.cs" />
     <Compile Include="IdentifyEncoding.cs" />
     <Compile Include="Log\Logger.cs" />
-    <Compile Include="Log\LogSettingsAttribute.cs" />
+    <Compile Include="Log\LogWriterTraceListener.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Helper\TemporaryFilesHelper.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Log\Logger.Static.cs" />
+    <Compile Include="Log\Logger.Private.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

@@ -100,6 +100,7 @@
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationFramework.Aero2" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -138,7 +139,6 @@
     <Compile Include="Helper\TextHelper.cs" />
     <Compile Include="Helper\UIHelper.cs" />
     <Compile Include="I18N\Language.cs" />
-    <Compile Include="Mods\ModManager.cs" />
     <Compile Include="NetUtil\PotdGetter.cs" />
     <Compile Include="NetUtil\Urls.cs" />
     <Compile Include="NetUtil\MOTDGetter.cs" />
@@ -148,6 +148,8 @@
     <Compile Include="UI\FuncPanels\ThridPartyFunctionPanel.xaml.cs">
       <DependentUpon>ThridPartyFunctionPanel.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Util\ExtendModuleManager.cs" />
+    <Compile Include="Util\LoggerTraceListener.cs" />
     <Compile Include="Windows\IAppLoadingWindow.cs" />
     <Compile Include="Windows\UserManagerWindow.xaml.cs">
       <DependentUpon>UserManagerWindow.xaml</DependentUpon>
@@ -316,6 +318,10 @@
     <Page Include="Resources\Themes\BasicTheme_files\Colors.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Themes\BasicTheme_files\ListViewStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\Themes\BasicTheme_files\TabItemStyle.xaml">
       <SubType>Designer</SubType>

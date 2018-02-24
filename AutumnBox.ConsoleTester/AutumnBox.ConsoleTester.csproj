@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LogWriterTraceListener.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -72,10 +73,6 @@
     <ProjectReference Include="..\AutumnBox.OpenFramework\AutumnBox.OpenFramework.csproj">
       <Project>{6516890C-86B6-40A0-8FD0-14FFDD62E1FE}</Project>
       <Name>AutumnBox.OpenFramework</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\AutumnBox.Support\AutumnBox.Support.csproj">
-      <Project>{851B2EB0-0503-428D-BD87-063555B19451}</Project>
-      <Name>AutumnBox.Support</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

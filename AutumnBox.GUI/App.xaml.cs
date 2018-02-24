@@ -11,22 +11,21 @@
 * Company: I am free man
 *
 \* =============================================================================*/
-using AutumnBox.Basic;
 using AutumnBox.Basic.Adb;
 using AutumnBox.Basic.MultipleDevices;
 using AutumnBox.GUI.Cfg;
 using AutumnBox.GUI.Helper;
 using AutumnBox.GUI.I18N;
-using AutumnBox.GUI.Mods;
+using AutumnBox.GUI.Util;
 using AutumnBox.GUI.Windows;
 using AutumnBox.Support.CstmDebug;
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Navigation;
 
 namespace AutumnBox.GUI
 {
@@ -37,6 +36,7 @@ namespace AutumnBox.GUI
     /// </summary>
     public partial class App : Application
     {
+        private const string TAG = "App";
         public const int HAVE_OTHER_PROCESS = 25364;
         public static new App Current { get; private set; }
         public MainWindow MainWindowAsMainWindow
@@ -68,10 +68,10 @@ namespace AutumnBox.GUI
                 LanguageHelper.LoadLanguageByFileName(Config.Lang);
             }
         }
-        private static readonly string msgAdbStartsFailed;
 
         internal async void Load(IAppLoadingWindow loadingWindowApi)
         {
+            Debug.WriteLine("Loading...",TAG);
             loadingWindowApi.SetProgress(10);
             loadingWindowApi.SetTip("启动ADB服务中....");
             await Task.Run(() =>
@@ -105,7 +105,7 @@ namespace AutumnBox.GUI
             App.Current.MainWindow = new MainWindow();
             DevicesMonitor.Begin();
             loadingWindowApi.SetProgress(80);
-            ModManager.InitAll();
+            ExtendModuleManager.Load();
             App.Current.MainWindow.Show();
             loadingWindowApi.SetProgress(100);
             loadingWindowApi.Finish();

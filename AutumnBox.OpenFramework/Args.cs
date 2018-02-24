@@ -1,6 +1,6 @@
 ﻿/*************************************************
 ** auth： zsh2401@163.com
-** date:  2018/2/23 18:58:26 (UTC +8:00)
+** date:  2018/2/25 2:30:08 (UTC +8:00)
 ** desc： ...
 *************************************************/
 using AutumnBox.Basic.Device;
@@ -12,7 +12,9 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.OpenFramework
 {
-    public class StartArgs
+    public class DestoryArgs { }
+    public class InitArgs { }
+    public class RunArgs
     {
         public DeviceBasicInfo Device { get; set; }
     }

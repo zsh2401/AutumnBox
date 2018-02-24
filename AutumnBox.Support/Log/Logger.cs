@@ -4,42 +4,31 @@
 ** desc： ...
 *************************************************/
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
 using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace AutumnBox.Support.Log
 {
-    public partial class Logger
+    public static partial class Logger
     {
-        private readonly string Tag;
-        private readonly LogSettingsAttribute logSettings;
-        public Logger(object sender)
-        {
-            Tag = sender.GetType().Name;
-            logSettings = GetSettings(sender);
+        public static void Debug(object senderOrTag,object message) {
+            var str = MakeText(senderOrTag, "Debug", message.ToString());
+            Debugger.Log(4,null,str);
         }
-        public Logger(string tag, object anyObjectOncallerAssembly)
+        public static void Info(object senderOrTag, object message)
         {
-            Tag = tag;
-            logSettings = GetSettings(anyObjectOncallerAssembly);
+            var str = MakeText(senderOrTag, "Info", message.ToString());
+            Debugger.Log(3, null, str);
         }
-        public void D(object content)
+        public static void Warn(object senderOrTag, object message)
         {
-            if (!logSettings.IsInDebugMode) return;
-            var fullString = MakeString(Tag, "debug", content.ToString());
-            Debug.WriteLine(fullString);
-            WriteToFile(logSettings.FileName, fullString);
+            var str = MakeText(senderOrTag, "Warn", message.ToString());
+            Debugger.Log(2, null, str);
         }
-        public void T(object content)
+        public static void Fatal(object senderOrTag, object message)
         {
-            var fullString = MakeString(Tag, "trace", content.ToString());
-            Trace.WriteLine(fullString);
-            WriteToFile(logSettings.FileName, fullString);
+            var str = MakeText(senderOrTag, "Fatal", message.ToString());
+            Debugger.Log(1, null, str);
         }
+        private static void WriteToFile() { }
     }
 }

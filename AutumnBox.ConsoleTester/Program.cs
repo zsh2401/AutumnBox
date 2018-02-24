@@ -1,19 +1,6 @@
-﻿using AutumnBox.Basic.ACP;
-using AutumnBox.Basic.Adb;
-using AutumnBox.Basic.Device;
-using AutumnBox.Basic.Device.PackageManage;
-using AutumnBox.Basic.Executer;
-using AutumnBox.Basic.MultipleDevices;
-using AutumnBox.Basic.Util;
-using AutumnBox.GUI.Mods;
-using AutumnBox.OpenFramework;
-using AutumnBox.Support.Log;
+﻿using AutumnBox.Basic.Device;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Threading;
+using System.Diagnostics;
 
 namespace AutumnBox.ConsoleTester
 {
@@ -36,9 +23,8 @@ namespace AutumnBox.ConsoleTester
         };
         unsafe static int Main(string[] cmdargs)
         {
-            var states = DeviceState.Recovery;
-            var statess = DeviceState.Recovery | DeviceState.Poweron;
-            Console.WriteLine(statess.HasFlag(states));
+            Trace.WriteLine("do you like this?");
+            Console.ReadKey();
             return 0;
         }
     }

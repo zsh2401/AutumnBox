@@ -5,24 +5,17 @@
 *************************************************/
 using AutumnBox.Basic.Device;
 using AutumnBox.OpenFramework;
-using AutumnBox.OpenFramework.OpenApi;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutumnBox.TestMod
 {
-    public class FuckMod : ExtendModule
+    public class FuckMod : AutumnBoxExtendModule
     {
-        public override string Name => "测试模块2";
-
-        public override string Desc => "用于测试";
-        public override DeviceState RequiredDeviceState => DeviceState.Poweron | DeviceState.Recovery;
-        protected override void OnStartCommand(StartArgs args)
+        public override string Name => "测试模块";
+        public override DeviceState RequiredDeviceState => DeviceState.Poweron | DeviceState.None;
+        public override void Run(RunArgs args)
         {
-            AutumnGuiApi.ShowMessageBox(Name,"Hello AutumnBox!");
+           var result =  OpenApi.Gui.ShowChoiceBox(Name,"Hello AutumnBox!");
+            OpenApi.Gui.ShowMessageBox(Name,$"choice result: {result}");
         }
     }
 }
