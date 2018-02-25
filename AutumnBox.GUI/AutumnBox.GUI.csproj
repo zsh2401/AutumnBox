@@ -134,7 +134,6 @@
     <Compile Include="Cfg\ConfigPropertyAttribute.cs" />
     <Compile Include="Helper\BlurHelper.cs" />
     <Compile Include="Helper\BoxHelper.cs" />
-    <Compile Include="Helper\DataHelper.cs" />
     <Compile Include="Helper\SystemHelper.cs" />
     <Compile Include="Helper\TextHelper.cs" />
     <Compile Include="Helper\UIHelper.cs" />
@@ -150,6 +149,9 @@
     </Compile>
     <Compile Include="Util\ExtendModuleManager.cs" />
     <Compile Include="Util\LoggerTraceListener.cs" />
+    <Compile Include="Windows\DebugWindow.xaml.cs">
+      <DependentUpon>DebugWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\IAppLoadingWindow.cs" />
     <Compile Include="Windows\UserManagerWindow.xaml.cs">
       <DependentUpon>UserManagerWindow.xaml</DependentUpon>
@@ -416,6 +418,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\ChoiceBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\DebugWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

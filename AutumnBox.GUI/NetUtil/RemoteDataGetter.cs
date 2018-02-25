@@ -11,13 +11,12 @@
 * Company: I am free man
 *
 \* =============================================================================*/
-using AutumnBox.Support.CstmDebug;
+using AutumnBox.Support.Log;
 using System;
 using System.Net;
 using System.Threading.Tasks;
 namespace AutumnBox.GUI.NetUtil
 {
-    [LogProperty(TAG = "Net Unit", Show = false)]
     internal abstract class RemoteDataGetter<TResult>
         where TResult : class
     {
@@ -45,7 +44,7 @@ namespace AutumnBox.GUI.NetUtil
             }
             catch (Exception e)
             {
-                Logger.T("failed...", e);
+                Logger.Warn(this,"获取失败", e);
                 return null;
             }
         }

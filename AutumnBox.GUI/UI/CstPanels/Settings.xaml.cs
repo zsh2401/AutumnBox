@@ -2,6 +2,7 @@
 using AutumnBox.GUI.Helper;
 using AutumnBox.GUI.I18N;
 using AutumnBox.GUI.UI.Fp;
+using AutumnBox.GUI.Windows;
 using System.Windows.Controls;
 namespace AutumnBox.GUI.UI.CstPanels
 {
@@ -36,6 +37,11 @@ namespace AutumnBox.GUI.UI.CstPanels
         private void BtnCreateShortcut_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             SystemHelper.CreateShortcutOnDesktop("AutumnBox", System.Environment.CurrentDirectory + "/AutumnBox.exe", "The AutumnBox-Dream of us");
+        }
+
+        private void Button_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            new DebugWindow() { Owner = App.Current.MainWindow}.Show();
         }
     }
 }

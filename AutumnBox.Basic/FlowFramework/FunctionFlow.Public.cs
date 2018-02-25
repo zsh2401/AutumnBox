@@ -12,7 +12,7 @@
 *
 \* =============================================================================*/
 using AutumnBox.Basic.Executer;
-using AutumnBox.Support.CstmDebug;
+using AutumnBox.Support.Log;
 using AutumnBox.Support.Helper;
 using System;
 using System.Threading.Tasks;
@@ -59,7 +59,6 @@ namespace AutumnBox.Basic.FlowFramework
         {
             _executer = new CommandExecuter();
             _resultTmp = new TResult();
-            TAG = new LogSender(this, this.GetType().Name, true);
             _executer.ProcessStarted += (s, e) =>
             {
                 OnProcessStarted(e);
@@ -86,7 +85,7 @@ namespace AutumnBox.Basic.FlowFramework
         /// </summary>
         public async void RunAsync()
         {
-            Logger.T("Run start async....");
+            Logger.Info(this,"Run async");
             if (_args == null) throw new Exception("have not init!!!! try Init()");
             await Task.Run(() =>
             {
@@ -123,7 +122,7 @@ namespace AutumnBox.Basic.FlowFramework
         {
 
             _isSync = true;
-            Logger.T("Run start sync....");
+            Logger.Info(this,"Run sync....");
             if (_args == null) throw new Exception("have not init!!!! try Init()");
             MainFlow();
             return _resultTmp;
@@ -133,11 +132,11 @@ namespace AutumnBox.Basic.FlowFramework
         /// </summary>
         public void ForceStop()
         {
-            Logger.T("Try to force Stop");
+            Logger.Warn(this,"Try to force Stop");
             if (_pid == null) return;
             SystemHelper.KillProcessAndChildrens((int)_pid);
             isForceStoped = true;
-            Logger.T("Force stoped...");
+            Logger.Info(this,"Force stoped...");
         }
         /// <summary>
         /// 获取这个FuntionFlow的停止器

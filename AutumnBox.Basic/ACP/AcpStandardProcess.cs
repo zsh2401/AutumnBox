@@ -43,7 +43,6 @@ namespace AutumnBox.Basic.ACP
                 datas = new byte[totalSize - 1];
                 fCode = dynamicBuffer[0];
                 dynamicBuffer.CopyTo(1, datas, 0, datas.Length);
-                Logger.D("received data size->" + totalSize);
             } catch (Exception e) {
                 if (timeoutChecker.IsClosedByTimeoutMethod)
                 {
@@ -64,7 +63,6 @@ namespace AutumnBox.Basic.ACP
                 Thread.Sleep(value);
             });
             if (!checker.IsFinished) {
-                Logger.T("TIMEOUT");
                 checker.IsClosedByTimeoutMethod = true;
                 client.Close();
             }

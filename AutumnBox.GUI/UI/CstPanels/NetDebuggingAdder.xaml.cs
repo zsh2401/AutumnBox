@@ -45,7 +45,6 @@ namespace AutumnBox.GUI.UI.CstPanels
             }
             catch (Exception ex)
             {
-                Logger.D("parse textbox input error", ex);
                 new FastPanel(this.root.GridMain,
                     new DevicesPanelMessageBox(App.Current.Resources["msgCheckInput"].ToString()))
                     .Display();

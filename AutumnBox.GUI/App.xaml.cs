@@ -18,7 +18,7 @@ using AutumnBox.GUI.Helper;
 using AutumnBox.GUI.I18N;
 using AutumnBox.GUI.Util;
 using AutumnBox.GUI.Windows;
-using AutumnBox.Support.CstmDebug;
+using AutumnBox.Support.Log;
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -30,7 +30,6 @@ using System.Windows;
 namespace AutumnBox.GUI
 {
 
-    [LogProperty(TAG = "AB_App")]
     /// <summary>
     /// App.xaml 的交互逻辑
     /// </summary>
@@ -56,7 +55,7 @@ namespace AutumnBox.GUI
 #endif
             if (SystemHelper.HaveOtherAutumnBoxProcess)
             {
-                Logger.T("have other autumnbox show MMessageBox and exit(1)");
+                Logger.Debug(this,"have other autumnbox show MMessageBox and exit(1)");
                 MessageBox.Show($"不可以同时打开两个AutumnBox{Environment.NewLine}Do not run two AutumnBox at once", "警告/Warning");
                 App.Current.Shutdown(HAVE_OTHER_PROCESS);
             }
@@ -143,7 +142,7 @@ namespace AutumnBox.GUI
         protected override void OnExit(ExitEventArgs e)
         {
             base.OnExit(e);
-            Logger.T("Exit code : " + e.ApplicationExitCode);
+            Logger.Info(this,"Exit code : " + e.ApplicationExitCode);
             if (e.ApplicationExitCode != HAVE_OTHER_PROCESS)
             {
                 AdbHelper.KillAllAdbProcess();

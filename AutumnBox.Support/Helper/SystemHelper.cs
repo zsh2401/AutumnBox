@@ -11,7 +11,7 @@
 * Company: I am free man
 *
 \* =============================================================================*/
-using AutumnBox.Support.CstmDebug;
+using AutumnBox.Support.Log;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -43,7 +43,7 @@ namespace AutumnBox.Support.Helper
             }
             catch (Win32Exception e)
             {
-                Logger.T("Unknow exception", e);
+                Logger.Warn("Unknow exception", e);
             }
 
             if (processCollection != null)

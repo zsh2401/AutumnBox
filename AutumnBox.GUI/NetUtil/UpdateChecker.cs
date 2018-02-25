@@ -52,7 +52,6 @@ namespace AutumnBox.GUI.NetUtil
         public override UpdateCheckResult Get()
         {
             JObject j = JObject.Parse(File.ReadAllText(@"..\..\..\docs\api\update\index.html"));
-            Logger.D("update checking..." + j.ToString());
             var result = (UpdateCheckResult)JsonConvert.DeserializeObject(j.ToString(), typeof(UpdateCheckResult));
             return result;
         }

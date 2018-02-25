@@ -38,7 +38,6 @@ namespace AutumnBox.GUI.NetUtil
         {
             JObject o = JObject.Parse(File.ReadAllText(@"..\..\..\docs\api\motd\index.html"));
             var result = (MOTDResult)JsonConvert.DeserializeObject(o.ToString(), typeof(MOTDResult));
-            Logger.D("MOTD Get from local were success!" + result.Header + " " + result.Message);
             return result;
         }
 #else

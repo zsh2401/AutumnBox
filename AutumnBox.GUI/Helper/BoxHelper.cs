@@ -13,7 +13,7 @@
 \* =============================================================================*/
 using AutumnBox.Basic.FlowFramework;
 using AutumnBox.GUI.Windows;
-using AutumnBox.Support.CstmDebug;
+using AutumnBox.Support.Log;
 using System;
 using System.Windows;
 
@@ -90,6 +90,8 @@ namespace AutumnBox.GUI.Helper
         #region LoadingWindow
         private static bool _loadingWindowIsAlreadyHaveOne = false;
         private static LoadingWindow _loadingWindow;
+        private const string TAG = "BoxHelper";
+
         public static void ShowLoadingDialog(ICompletable completable)
         {
             if (_loadingWindowIsAlreadyHaveOne) return;
@@ -111,7 +113,7 @@ namespace AutumnBox.GUI.Helper
                 _loadingWindow.Close();
                 _loadingWindowIsAlreadyHaveOne = false;
             }
-            catch (Exception e) { Logger.T("A exception on close loadingwindow...", e); }
+            catch (Exception e) { Logger.Warn(TAG,"A exception on close loadingwindow...", e); }
 
         }
         #endregion

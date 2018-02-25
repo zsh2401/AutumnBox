@@ -1,27 +1,14 @@
-﻿using AutumnBox.GUI.Cfg;
-using AutumnBox.GUI.NetUtil;
+﻿using AutumnBox.GUI.NetUtil;
 using AutumnBox.GUI.Resources.Images;
-using AutumnBox.Support.CstmDebug;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using AutumnBox.Support.Log;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Net;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace AutumnBox.GUI.UI.Cstm
 {
@@ -70,13 +57,21 @@ namespace AutumnBox.GUI.UI.Cstm
             }
             catch (Exception e)
             {
-                Logger.T("exception on setting PotdBox", e);
+                Logger.Warn(this, "exception on setting PotdBox", e);
             }
 
         }
         private void OpenUrl()
         {
-            try { if (remoteInfo.ClickUrl != null && remoteInfo.ClickUrl != "") Process.Start(remoteInfo.ClickUrl); } catch (Exception ex) { Logger.T($"click potd failed {ex.ToString()}"); }
+            try
+            {
+                if (remoteInfo.ClickUrl != null && remoteInfo.ClickUrl != "")
+                    Process.Start(remoteInfo.ClickUrl);
+            }
+            catch (Exception ex)
+            {
+                Logger.Warn(this,$"click potd failed {ex.ToString()}");
+            }
         }
         private async void Close()
         {
@@ -97,7 +92,7 @@ namespace AutumnBox.GUI.UI.Cstm
             }
             catch (Exception e)
             {
-                Logger.T("exception on closing PotdBox", e);
+                Logger.Warn(this, "exception on closing PotdBox", e);
             }
         }
     }

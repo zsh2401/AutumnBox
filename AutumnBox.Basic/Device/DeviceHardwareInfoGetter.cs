@@ -7,7 +7,7 @@
 *********************************************************************************/
 using AutumnBox.Basic.Executer;
 using AutumnBox.Basic.Util;
-using AutumnBox.Support.CstmDebug;
+using AutumnBox.Support.Log;
 using System;
 using System.Net;
 using System.Text.RegularExpressions;
@@ -49,7 +49,7 @@ namespace AutumnBox.Basic.Device
             }
             catch (Exception e)
             {
-                Logger.T("Get Battery info fail", e);
+                Logger.Warn(this,"Get Battery info fail", e);
                 return null;
             }
         }
@@ -84,7 +84,7 @@ namespace AutumnBox.Basic.Device
             }
             catch (Exception e)
             {
-                Logger.T("Get MemTotal fail", e);
+                Logger.Warn(this,"Get MemTotal fail", e);
                 return null;
             }
         }
@@ -111,7 +111,7 @@ namespace AutumnBox.Basic.Device
                     return null;
                 }
             }
-            catch (Exception e) { Logger.T("get storage fail ", e); return null; }
+            catch (Exception e) { Logger.Warn(this,"get storage fail ", e); return null; }
         }
         public string GetSocInfo()
         {
@@ -121,7 +121,7 @@ namespace AutumnBox.Basic.Device
                 var hehe = output.Split(' ');
                 return hehe[hehe.Length - 1];
             }
-            catch (Exception e) { Logger.T("Get cpuinfo fail", e); return null; }
+            catch (Exception e) { Logger.Warn(this,"Get cpuinfo fail", e); return null; }
         }
         public string GetScreenInfo()
         {
@@ -130,7 +130,7 @@ namespace AutumnBox.Basic.Device
                 string output = executer.QuicklyShell(serial, "cat /proc/hwinfo | grep LCD").LineOut[0];
                 return output.Split(':')[1].TrimStart();
             }
-            catch (Exception e) { Logger.T("Get LCD info fail", e); return null; }
+            catch (Exception e) { Logger.Warn(this,"Get LCD info fail", e); return null; }
         }
         public string GetFlashMemoryType()
         {
@@ -139,13 +139,13 @@ namespace AutumnBox.Basic.Device
                 string output = (executer.QuicklyShell(serial, "cat /proc/hwinfo | grep EMMC")).LineOut[0];
                 return output.Split(':')[1].TrimStart() + " EMMC";
             }
-            catch (Exception e) { Logger.T("Get EMMC info fail", e); }
+            catch (Exception e) { Logger.Warn(this,"Get EMMC info fail", e); }
             try
             {
                 string output = executer.QuicklyShell(serial, "cat /proc/hwinfo | grep UFS").LineOut[0];
                 return output.Split(':')[1].TrimStart() + " UFS";
             }
-            catch (Exception e) { Logger.T("Get UFS info fail", e); return null; }
+            catch (Exception e) { Logger.Warn(this,"Get UFS info fail", e); return null; }
         }
     }
 }

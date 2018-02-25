@@ -1,7 +1,7 @@
 ﻿using AutumnBox.Basic.Device;
 using AutumnBox.Basic.Flows;
 using AutumnBox.GUI.Helper;
-using AutumnBox.Support.CstmDebug;
+using AutumnBox.Support.Log;
 using System;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -48,7 +48,7 @@ namespace AutumnBox.GUI.Windows
                 Dpi = _textboxInputDpi,
                 DevBasicInfo = devinfo
             });
-            Logger.D("Dpi for input : " + _textboxInputDpi);
+            Logger.Debug(this,"Dpi of input : " + _textboxInputDpi);
             dpiChanger.Finished += (s, _e) =>
             {
                 this.Dispatcher.Invoke(() =>

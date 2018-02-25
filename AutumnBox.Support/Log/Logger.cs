@@ -9,11 +9,21 @@ using System.IO;
 using System.Linq;
 namespace AutumnBox.Support.Log
 {
+    public class LogEventArgs : EventArgs
+    {
+        public string FullMessage { get; private set; }
+        public LogEventArgs(string msg)
+        {
+            FullMessage = msg;
+        }
+    }
     public static partial class Logger
     {
-        public static void Debug(object senderOrTag,object message) {
+        public static event EventHandler<LogEventArgs> Logged;
+        public static void Debug(object senderOrTag, object message)
+        {
             var str = MakeText(senderOrTag, "Debug", message);
-            Debugger.Log(4,null,str);
+            Debugger.Log(4, null, str);
             WriteToFile(str);
         }
         public static void Info(object senderOrTag, object message)
@@ -25,6 +35,12 @@ namespace AutumnBox.Support.Log
         public static void Warn(object senderOrTag, object message)
         {
             var str = MakeText(senderOrTag, "Warn", message);
+            Debugger.Log(2, null, str);
+            WriteToFile(str);
+        }
+        public static void Warn(object senderOrTag, object message, Exception e)
+        {
+            var str = MakeText(senderOrTag, "Warn", message, e);
             Debugger.Log(2, null, str);
             WriteToFile(str);
         }

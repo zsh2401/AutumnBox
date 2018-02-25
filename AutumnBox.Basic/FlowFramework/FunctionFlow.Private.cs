@@ -12,7 +12,7 @@
 *
 \* =============================================================================*/
 using AutumnBox.Basic.Executer;
-using AutumnBox.Support.CstmDebug;
+using AutumnBox.Support.Log;
 using System;
 
 namespace AutumnBox.Basic.FlowFramework
@@ -34,39 +34,39 @@ namespace AutumnBox.Basic.FlowFramework
             }
             catch (Exception e)
             {
-                Logger.T(TAG, "a exception happend ->" + e);
+                Logger.Warn(this, "a exception happend ->" + e);
                 try
                 {
                     OnFinished(new FinishedEventArgs<TResult>(new TResult() { ResultType = ResultType.Exception, Exception = e }));
                 }
                 catch (Exception e_)
                 {
-                    Logger.T(TAG, "Exception happend on OnFinished() when already happend a expcetion and reporting.....fuck!", e_);
+                    Logger.Warn(this, "Exception happend on OnFinished() when already happend a expcetion and reporting.....fuck!", e_);
                 }
             }
         }
         private void _MainFlow()
         {
             /*Checking*/
-            Logger.T(TAG, "step 1: checking...");
+            Logger.Warn(this, "step 1: checking...");
             TResult result = new TResult
             {
                 CheckResult = Check(_args)
             };
-            Logger.T(TAG, "step 1 finished: check result ->" + result.CheckResult);
+            Logger.Warn(this, "step 1 finished: check result ->" + result.CheckResult);
             if (result.CheckResult != CheckResult.OK)
             {
                 result.ResultType = ResultType.Unsuccessful;
                 OnFinished(new FinishedEventArgs<TResult>(result));
                 return;
             }
-            Logger.T(TAG, "step 2: call OnStartup() Startup...");
+            Logger.Info(this, "step 2: call OnStartup() Startup...");
             OnStartup(new StartupEventArgs());
-            Logger.T(TAG, "step 3: call MainMethod(),this FunctionFlow is Running...");
+            Logger.Info(this, "step 3: call MainMethod(),this FunctionFlow is Running...");
             result.OutputData = MainMethod(new ToolKit<TArgs>(_args, _executer));
-            Logger.T(TAG, "step 4: MainMethod() finished,call AnalyzeResult()");
+            Logger.Info(this, "step 4: MainMethod() finished,call AnalyzeResult()");
             AnalyzeResult(result);
-            Logger.T(TAG, "step 5: all finished,this FunctionFlow is all finished,trigger Finished event");
+            Logger.Info(this, "step 5: all finished,this FunctionFlow is all finished,trigger Finished event");
             OnFinished(new FinishedEventArgs<TResult>(result));
         }
     }

@@ -16,7 +16,7 @@ using System.Collections.Generic;
 using System.IO;
 using AutumnBox.Basic.Executer;
 using AutumnBox.Basic.Util;
-using AutumnBox.Support.CstmDebug;
+using AutumnBox.Support.Log;
 
 namespace AutumnBox.Basic.Flows
 {
@@ -43,7 +43,7 @@ namespace AutumnBox.Basic.Flows
         private int errorCount = 0;
         protected override Output MainMethod(ToolKit<ApkInstallerArgs> toolKit)
         {
-            Logger.T($"Start installing....have {toolKit.Args.Files.Count} Apks");
+            Logger.Info(this,$"Install starts....have {toolKit.Args.Files.Count} Apks");
             OutputBuilder result = new OutputBuilder();
             result.Register(toolKit.Executer);
             foreach (FileInfo apkFileInfo in toolKit.Args.Files)
@@ -69,7 +69,6 @@ namespace AutumnBox.Basic.Flows
                     break;
                 }
             }
-            Logger.D(result.ToString());
             return result.ToOutput() ;
         }
         protected override void AnalyzeResult(ApkInstallerResult result)

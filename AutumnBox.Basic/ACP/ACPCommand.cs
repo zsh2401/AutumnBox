@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.ACP
 {
+    
     internal sealed class AcpCommand
     {
         private string baseCommand = null;
@@ -26,7 +27,6 @@ namespace AutumnBox.Basic.ACP
             return baseCommand + " " + args_str.ToString();
         }
         public byte[] ToBytes() {
-            Logger.D("ToBytes(): the command string: " + ToString());
             return Encoding.UTF8.GetBytes(ToString());
         }
         public class Builder {

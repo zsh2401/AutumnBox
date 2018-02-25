@@ -20,7 +20,7 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Support.CstmDebug
 {
-    [Obsolete("Plz use AutumnBox.Support.Log.Logger",false)]
+    [Obsolete("Plz use AutumnBox.Support.Log.Logger",true)]
     partial class Logger
     {
         private const bool IsTrace =

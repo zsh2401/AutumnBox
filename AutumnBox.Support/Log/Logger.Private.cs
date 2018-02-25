@@ -37,15 +37,16 @@ namespace AutumnBox.Support.Log
                 logFile.Delete();
             }
         }
-        public static string MakeText(object sender, object prefix, object message)
+        public static string MakeText(object sender, object prefix, object message, Exception ex = null)
         {
             string tag = sender is string ? sender.ToString() : sender.GetType().Name;
             return string.Format(logTemplate,
-                DateTime.Now.ToString("yy-MM-dd HH:mm:ss"), tag, prefix, message + Environment.NewLine);
+                DateTime.Now.ToString("yy-MM-dd HH:mm:ss"), tag, prefix, message + Environment.NewLine) + ex?.ToString();
         }
         private static void WriteToFile(string msg)
         {
             logFileWriter.Write(msg);
+            Logged?.Invoke(new object(), new LogEventArgs(msg));
         }
     }
 }

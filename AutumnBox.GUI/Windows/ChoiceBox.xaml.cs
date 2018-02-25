@@ -67,7 +67,7 @@ namespace AutumnBox.GUI.Windows
         {
             if (e.LeftButton == MouseButtonState.Pressed)
             {
-                try { this.DragMove(); } catch (InvalidOperationException) { }
+                try { this.DragMove(); } catch (Exception) { }
             }
         }
 

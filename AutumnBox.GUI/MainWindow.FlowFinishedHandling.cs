@@ -49,7 +49,6 @@ namespace AutumnBox.GUI
         }
         public void PushFinished(AdvanceResult result)
         {
-            Logger.D("Enter the Push Finish Handler in the GUI");
             if (result.ResultType == ResultType.Successful)
             {
                 BoxHelper.ShowMessageDialog("Notice", "msgPushOK");

@@ -12,14 +12,13 @@
 *
 \* =============================================================================*/
 using AutumnBox.GUI.Cfg;
-using AutumnBox.Support.CstmDebug;
+using AutumnBox.Support.Log;
 using System;
 using System.Collections.Generic;
 using System.Windows;
 
 namespace AutumnBox.GUI.I18N
 {
-    [LogProperty(TAG = "Language Manage")]
     /// <summary>
     /// 界面的语言切换帮助类
     /// </summary>
@@ -45,7 +44,7 @@ namespace AutumnBox.GUI.I18N
         public static void SetLanguageByEnvironment() {
 
             var lang_name = System.Threading.Thread.CurrentThread.CurrentCulture.Name;
-            Logger.D($"this system language: {lang_name}");
+            Logger.Warn("LanguageHelper",$"System language: {lang_name}");
             switch (lang_name) {
                 case zh_cn:
                     LoadLanguage("简体中文");

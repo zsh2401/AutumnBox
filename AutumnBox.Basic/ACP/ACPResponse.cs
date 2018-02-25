@@ -5,7 +5,7 @@
 *************************************************/
 
 using AutumnBox.Basic.Util;
-using AutumnBox.Support.CstmDebug;
+using AutumnBox.Support.Log;
 using System;
 using System.Text;
 
@@ -31,9 +31,9 @@ namespace AutumnBox.Basic.ACP
         public void PrintOnLog(bool printOnRelease = false)
         {
             if (printOnRelease) {
-                Logger.T($"PrintOnLog(): {FirstCode} {ToString()}");
+                Logger.Info(this,$"PrintOnLog(): {FirstCode} {ToString()}");
             } else {
-                Logger.D($"PrintOnLog(): {FirstCode} {ToString()}");
+                Logger.Debug(this,$"PrintOnLog(): {FirstCode} {ToString()}");
             } 
         }
 

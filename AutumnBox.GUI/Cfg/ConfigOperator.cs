@@ -20,7 +20,6 @@ using System.Reflection;
 
 namespace AutumnBox.GUI.Cfg
 {
-    [LogProperty(TAG = "CfgO", Show = false)]
     public sealed class ConfigOperator : IConfigOperator
     {
         public ConfigDataLayout Data { get; private set; } = new ConfigDataLayout();
@@ -28,13 +27,10 @@ namespace AutumnBox.GUI.Cfg
         public ConfigOperator()
         {
             ConfigFileName = ((ConfigPropertyAttribute)Data.GetType().GetCustomAttribute(typeof(ConfigPropertyAttribute))).ConfigFile;
-            Logger.D("Start Check");
             if (HaveError() || HaveLost())
             {
-                Logger.D("Some error checked, init file");
                 SaveToDisk();
             }
-            Logger.D("Finished Check");
             try
             {
                 ReloadFromDisk();
@@ -50,8 +46,7 @@ namespace AutumnBox.GUI.Cfg
         /// </summary>
         public void ReloadFromDisk()
         {
-            Logger.D("Reload config from disk");
-            if (HaveError()) { Logger.D("Have error"); ; SaveToDisk(); }
+            if (HaveError()) { SaveToDisk(); }
             using (StreamReader sr = new StreamReader(ConfigFileName))
             {
                 Data = (ConfigDataLayout)(JsonConvert.DeserializeObject(sr.ReadToEnd(), typeof(ConfigDataLayout)));
@@ -63,12 +58,10 @@ namespace AutumnBox.GUI.Cfg
         /// </summary>
         public void SaveToDisk()
         {
-            Logger.D("Save config to disk");
             new FileStream(ConfigFileName, FileMode.OpenOrCreate, FileAccess.ReadWrite).Dispose();
             using (StreamWriter sw = new StreamWriter(ConfigFileName, false))
             {
                 string text = JsonConvert.SerializeObject(Data);
-                Logger.D(text);
                 sw.Write(text);
                 sw.Flush();
             }
@@ -80,7 +73,6 @@ namespace AutumnBox.GUI.Cfg
         /// <returns>是否有问题</returns>
         private bool HaveError()
         {
-            Logger.D("enter error check");
             try
             {
                 JObject jObj = JObject.Parse(File.ReadAllText(ConfigFileName));
@@ -95,16 +87,13 @@ namespace AutumnBox.GUI.Cfg
         /// <returns>项是否有丢失</returns>
         private bool HaveLost()
         {
-            Logger.D("enter lost check");
             JObject j = JObject.Parse(File.ReadAllText(ConfigFileName));
-            Logger.D("read finish");
             foreach (var prop in Data.GetType().GetProperties())
             {
                 if (!(prop.IsDefined(typeof(JsonPropertyAttribute)))) continue;
                 var attr = (JsonPropertyAttribute)prop.GetCustomAttribute(typeof(JsonPropertyAttribute));
-                if (j[attr.PropertyName] == null) { Logger.D("have lost"); return true; };
+                if (j[attr.PropertyName] == null) { return true; };
             }
-            Logger.D("no lost");
             return false;
         }
     }

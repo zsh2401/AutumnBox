@@ -5,7 +5,7 @@
 *************************************************/
 using AutumnBox.Basic.ACP;
 using AutumnBox.Basic.Executer;
-using AutumnBox.Support.CstmDebug;
+using AutumnBox.Support.Log;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -18,6 +18,7 @@ namespace AutumnBox.Basic.Device.PackageManage
 
     public static class PackageManager
     {
+        private const string TAG = "PackageManager";
         [Obsolete("Project ACP is dead")]
         public static byte[] GetIcon(DeviceSerial device, String packageName)
         {
@@ -49,7 +50,6 @@ namespace AutumnBox.Basic.Device.PackageManage
                 if (response.IsSuccessful)
                 {
                     var text = Encoding.UTF8.GetString(response.Data);
-                    Logger.D(text);
                     var json = JObject.Parse(text);
                     JArray array = (JArray)json["pkgs"];
                     List<PackageBasicInfo> result = new List<PackageBasicInfo>();
@@ -68,7 +68,7 @@ namespace AutumnBox.Basic.Device.PackageManage
             }
             catch (Exception ex)
             {
-                Logger.D("GetPackages() fail",ex);
+                Logger.Warn(TAG,"GetPackages() fail",ex);
                 return null;
             }
         }
@@ -87,7 +87,7 @@ namespace AutumnBox.Basic.Device.PackageManage
         }
         public static bool CleanAppData(DeviceSerial device, string packageName) {
             var exeResult = PackageManagerShared.Executer.QuicklyShell(device, "pm clear " + packageName);
-            Logger.D($"clean {packageName} data success?{exeResult.IsSuccessful}");
+            Logger.Info(TAG,$"clean {packageName} data success?{exeResult.IsSuccessful}");
             return exeResult.IsSuccessful;
         }
         [Obsolete("Project ACP is dead")]
@@ -108,7 +108,7 @@ namespace AutumnBox.Basic.Device.PackageManage
                     result.DataSize = long.Parse(json["dataSize"].ToString());
                 }
             } catch (Exception ex) {
-                Logger.T("exception on getting app used space",ex);
+                Logger.Warn(TAG,"exception on getting app used space",ex);
             }
             return result;
         }

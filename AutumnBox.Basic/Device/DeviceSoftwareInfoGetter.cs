@@ -4,7 +4,7 @@
 ** desc： ...
 ************************/
 using AutumnBox.Basic.Executer;
-using AutumnBox.Support.CstmDebug;
+using AutumnBox.Support.Log;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -61,7 +61,7 @@ namespace AutumnBox.Basic.Device
             }
             catch (Exception e)
             {
-                Logger.T($"Check {packageName} install status failed", e);
+                Logger.Warn($"Check {packageName} install status failed", e);
                 return null;
             }
         }

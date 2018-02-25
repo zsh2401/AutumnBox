@@ -8,7 +8,6 @@ using AutumnBox.Basic.FlowFramework;
 using AutumnBox.Basic.Flows;
 using System.IO;
 using System.Collections.Generic;
-using AutumnBox.Support.CstmDebug;
 using AutumnBox.Basic.Device;
 using AutumnBox.GUI.UI.Fp;
 using AutumnBox.Basic.Device.PackageManage;
@@ -308,7 +307,6 @@ namespace AutumnBox.GUI.UI.FuncPanels
                     "msgIceAct",
                     "btnCancel",
                     "btnContinue").ToBool();
-            Logger.D(_continue.ToString());
             if (!_continue) return;
 
             /*检查用户删完没*/

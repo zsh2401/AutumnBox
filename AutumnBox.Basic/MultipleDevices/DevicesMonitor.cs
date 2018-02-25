@@ -11,7 +11,7 @@
 * Company: I am free man
 *
 \* =============================================================================*/
-using AutumnBox.Support.CstmDebug;
+using AutumnBox.Support.Log;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
@@ -84,7 +84,7 @@ namespace AutumnBox.Basic.MultipleDevices
                     });
                     if (now != last)
                     {
-                        Logger.T("Devices Changed");
+                        Logger.Warn("DevicesGetter", "Devices Changed");
                         last = now;
                         DevicesChanged?.Invoke(this, new DevicesChangedEventArgs(now));
                     }

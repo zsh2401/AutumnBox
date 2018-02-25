@@ -18,7 +18,7 @@ namespace AutumnBox.GUI.Windows
     using System.Windows;
     using System.Windows.Input;
     using System.Diagnostics;
-    using AutumnBox.Support.CstmDebug;
+    using AutumnBox.Support.Log;
     using AutumnBox.Basic.Flows;
 
     /// <summary>
@@ -77,7 +77,7 @@ namespace AutumnBox.GUI.Windows
             }
             catch (Exception se)
             {
-                Logger.D(se.Message);
+                Logger.Warn(this,"parse progress text failed" ,se);
             }
         }
 

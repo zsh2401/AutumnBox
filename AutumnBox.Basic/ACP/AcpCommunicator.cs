@@ -5,7 +5,7 @@
 *************************************************/
 using AutumnBox.Basic.Device;
 using AutumnBox.Basic.Util;
-using AutumnBox.Support.CstmDebug;
+using AutumnBox.Support.Log;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -56,7 +56,7 @@ namespace AutumnBox.Basic.ACP
             AndroidClientController.AwakeAcpService(device);
             socket = new Socket(SocketType.Stream, ProtocolType.Tcp);
             socket.Connect(GetEndPoint(device));
-            Logger.T($"{device} communicator connected");
+            Logger.Info(this,$"{device} communicator connected");
         }
         public void Close()
         {
@@ -65,7 +65,7 @@ namespace AutumnBox.Basic.ACP
                 socket.Dispose();
             } catch { }
             AndroidClientController.StopAcpService(device);
-            Logger.T($"{device} communicator disconnected");
+            Logger.Info(this,$"{device} communicator disconnected");
         }
         public AcpResponse SendCommand(String baseCommand, params string[] args)
         {
@@ -98,17 +98,17 @@ namespace AutumnBox.Basic.ACP
             }
             catch (AcpTimeOutException)
             {
-                Logger.T("timeout..");
+                Logger.Info(this,"timeout..");
                 fCode = Acp.FCODE_TIMEOUT;
             }
             catch (SocketException e)
             {
-                Logger.T("acp socket exception", e);
+                Logger.Warn(this,$"acp socket exception {e.ToString()}");
                 fCode = Acp.FCODE_NO_RESPONSE;
             }
             catch (IOException e)
             {
-                Logger.T("acp exception(client reading)", e);
+                Logger.Warn(this,$"acp exception(client reading) {e}");
                 fCode = Acp.FCODE_ERR_WITH_EX;
                 dataBuffer = Encoding.UTF8.GetBytes(e.ToString() + " " + e.Message);
             }
@@ -124,15 +124,15 @@ namespace AutumnBox.Basic.ACP
             if (IsAlive()) return;
             if (tryReconnnect)
             {
-                Logger.T($"{device} disconnected..reconnecting...");
+                Logger.Info(this,$"{device} disconnected..reconnecting...");
                 Connect();
             };
             if (IsAlive())
             {
-                Logger.T($"{device} reconnected...");
+                Logger.Info(this,$"{device} reconnected...");
                 return;
             }
-            Logger.T($"{device} connection lost....");
+            Logger.Warn(this,$"{device} connection lost....");
             throw new AcpConnectionLostException();
         }
         public bool IsAlive()
@@ -145,16 +145,16 @@ namespace AutumnBox.Basic.ACP
             }
             catch (SocketException e)
             {
-                Logger.T("a exception happend on test ACPService on android is running", e);
+                Logger.Warn(this,"a exception happend on test ACPService on android is running",e);
                 return false;
             }
             catch (IOException e)
             {
-                Logger.T("a exception happend on test ACPService on android is running", e);
+                Logger.Warn(this,"a exception happend on test ACPService on android is running", e);
                 return false;
             }
             catch (ObjectDisposedException e) {
-                Logger.T("a exception happend on test ACPService on android is running", e);
+                Logger.Warn("a exception happend on test ACPService on android is running", e);
                 return false;
             }
         }
@@ -172,11 +172,9 @@ namespace AutumnBox.Basic.ACP
                 communicators.Remove(this);
             }
             catch { }
-            Logger.D("disposed");
         }
         ~AcpCommunicator()
         {
-            Logger.D("~AcpCommunivator() executed......");
             Dispose();
         }
     }

@@ -14,6 +14,7 @@ namespace AutumnBox.Basic.Util
     public interface IPrintable
     {
         void PrintOnLog(bool printOnRelease=false);
+
         void PrintOnConsole();
     }
 }

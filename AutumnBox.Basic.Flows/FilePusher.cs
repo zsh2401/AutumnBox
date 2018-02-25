@@ -36,7 +36,6 @@ namespace AutumnBox.Basic.Flows
         private AdvanceOutput exeResult;
         protected override Output MainMethod(ToolKit<FilePusherArgs> toolKit)
         {
-            Logger.T("hehe");
             var command = Command.MakeForAdb(
                 $"push \"{toolKit.Args.SourceFileInfo.FullName}\" \"{toolKit.Args.SavePath + toolKit.Args.SourceFileInfo.Name}\""
                 );

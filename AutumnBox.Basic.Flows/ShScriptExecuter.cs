@@ -11,7 +11,7 @@ using AutumnBox.Basic.Device.PackageManage;
 using AutumnBox.Basic.Executer;
 using AutumnBox.Basic.FlowFramework;
 using AutumnBox.Basic.Flows.Result;
-using AutumnBox.Support.CstmDebug;
+using AutumnBox.Support.Log;
 using System;
 using System.Net;
 using System.Threading;
@@ -95,13 +95,13 @@ namespace AutumnBox.Basic.Flows
                         connecter.Run();
                     }
 
-                    Logger.T("Fix android o adb successful....");
+                    Logger.Info(this,"Fix android o adb successful....");
                 });
             }
             catch (Exception e)
             {
                 FixFailed(this, e);
-                Logger.T("Fix android o adb failed....");
+                Logger.Warn(this,"Fix android o adb failed....",e);
             }
         }
     }

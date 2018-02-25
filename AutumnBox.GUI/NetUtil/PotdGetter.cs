@@ -3,7 +3,7 @@
 ** date:  2018/1/15 23:35:50 (UTC +8:00)
 ** desc： ...
 *************************************************/
-using AutumnBox.Support.CstmDebug;
+using AutumnBox.Support.Log;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -41,7 +41,7 @@ namespace AutumnBox.GUI.NetUtil
             var html = webClient.DownloadString("http://localhost:24010/api/potd/");
             var remoteInfo = (PotdRemoteInfo)JsonConvert.DeserializeObject(html, typeof(PotdRemoteInfo));
             var imgData = webClient.DownloadData(remoteInfo.Link);
-            Logger.T("get finished..");
+            Logger.Info(this,"get finished..");
             return new PotdGetterResult()
             {
                 RemoteInfo = remoteInfo,

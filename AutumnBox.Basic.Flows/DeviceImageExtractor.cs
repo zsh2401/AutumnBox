@@ -33,7 +33,6 @@ namespace AutumnBox.Basic.Flows
             {
                 shell.Connect();
                 shell.Switch2Su();
-                Logger.D("?");
                 //复制到程序根目录
                 string copyPath = $"/sdcard/{tempFileName}";
                 var copyResult = shell.SafetyInput($"cp {path} {copyPath}");

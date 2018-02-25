@@ -66,12 +66,10 @@ namespace AutumnBox.GUI.Windows
         private void ProgressAdd()
         {
             _alreadyInstalledCount++;
-            Logger.D("Progress add one");
             TBCountOfInstalled.Text = $"{_alreadyInstalledCount}/{_apkFilesCount}";
         }
         private bool ShowChoiceLabelForContinueOnError()
         {
-            Logger.D("Show choice label continue on error");
             return true;
         }
         private void BtnCancel_Click(object sender, RoutedEventArgs e)

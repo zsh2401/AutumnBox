@@ -15,11 +15,10 @@ using AutumnBox.Basic.FlowFramework;
 using AutumnBox.Basic.Flows.Result;
 using AutumnBox.Basic.Executer;
 using AutumnBox.Basic.Flows.States;
-using AutumnBox.Support.CstmDebug;
+using AutumnBox.Support.Log;
 
 namespace AutumnBox.Basic.Flows
 {
-    [LogProperty(TAG = "DeviceOwnerSetter")]
     /// <summary>
     /// 设备管理员设置器
     /// </summary>
@@ -45,19 +44,19 @@ namespace AutumnBox.Basic.Flows
         private ToolKit<FlowArgs> _toolKit;
         protected virtual bool TryFixDeviceAlreadyProvisioned()
         {
-            Logger.T("<already provisioned error!> try to fix.....");
+            Logger.Warn(this,"<already provisioned error!> try to fix.....");
             var resultStep1 = _toolKit.Executer.QuicklyShell(_toolKit.Args.DevBasicInfo.Serial, "settings put global device_provisioned 0");
             var resultStep2 = _toolKit.Executer.QuicklyShell(_toolKit.Args.DevBasicInfo.Serial, Command);
             var resultStep3 = _toolKit.Executer.QuicklyShell(_toolKit.Args.DevBasicInfo.Serial, "settings put global device_provisioned 1");
-            Logger.T("fix result ->" + (resultStep1.IsSuccessful && resultStep2.IsSuccessful && resultStep3.IsSuccessful));
-            Logger.T("fixing output ->\n" + resultStep1.ToString());
-            Logger.T(resultStep2.ToString());
-            Logger.T(resultStep3.ToString());
+            Logger.Info(this,"fix result ->" + (resultStep1.IsSuccessful && resultStep2.IsSuccessful && resultStep3.IsSuccessful));
+            Logger.Info(this,"fixing output ->\n" + resultStep1.ToString());
+            Logger.Info(this, resultStep2.ToString());
+            Logger.Info(this, resultStep3.ToString());
             return resultStep1.IsSuccessful && resultStep2.IsSuccessful && resultStep3.IsSuccessful;
         }
         protected override Output MainMethod(ToolKit<FlowArgs> toolKit)
         {
-            Logger.D("the command ->" + Command);
+            Logger.Debug(this,"the full shell command ->" + Command);
             _toolKit = toolKit;
             _executeResult = toolKit.Executer.QuicklyShell(toolKit.Args.DevBasicInfo.Serial, Command);
             return _executeResult;
@@ -79,7 +78,6 @@ namespace AutumnBox.Basic.Flows
             //用一堆该死的if/else if 判断输出来确定是哪一种错误
             if (result.OutputData.Contains("unknown admin"))
             {
-                Logger.D("unknow admin");
                 result.ErrorType = DeviceOwnerSetterErrType.UnknowAdmin;
                 result.ResultType = ResultType.Unsuccessful;
             }
@@ -104,7 +102,7 @@ namespace AutumnBox.Basic.Flows
             {
                 result.ErrorType = DeviceOwnerSetterErrType.UnknowJavaException;
             }
-            else if (result.OutputData.Contains(" process has android.permission.MANAGE_DEVICE_ADMINS"))
+            else if (result.OutputData.Contains("android.permission.MANAGE_DEVICE_ADMINS"))
             {
                 result.ErrorType = DeviceOwnerSetterErrType.MIUIUsbSecError;
             }

@@ -16,7 +16,7 @@ namespace AutumnBox.Basic.MultipleDevices
     using AutumnBox.Basic.Adb;
     using AutumnBox.Basic.Device;
     using AutumnBox.Basic.Executer;
-    using AutumnBox.Support.CstmDebug;
+    using AutumnBox.Support.Log;
     using System;
     using System.Text.RegularExpressions;
 
@@ -65,7 +65,7 @@ namespace AutumnBox.Basic.MultipleDevices
             }
             catch (Exception ex)
             {
-                Logger.T("adb devices parse failed", ex);
+                Logger.Warn("DevicesGetter","adb devices parse failed", ex);
             }
         }
         private static void FastbootParse(Output o, ref DevicesList devList)
@@ -83,7 +83,7 @@ namespace AutumnBox.Basic.MultipleDevices
             catch (Exception ex)
             {
 
-                Logger.T("fastboot devices parse failed", ex);
+                Logger.Warn("DevicesGetter","fastboot devices parse failed", ex);
             }
         }
     }

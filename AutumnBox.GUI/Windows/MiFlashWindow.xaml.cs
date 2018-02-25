@@ -1,27 +1,15 @@
 ﻿using AutumnBox.Basic.Device;
-using AutumnBox.Basic.Flows;
 using AutumnBox.Basic.Flows.MiFlash;
-using AutumnBox.Basic.MultipleDevices;
 using AutumnBox.GUI.Helper;
-using AutumnBox.Support.CstmDebug;
+using AutumnBox.Support.Log;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace AutumnBox.GUI.Windows
 {
@@ -238,9 +226,8 @@ namespace AutumnBox.GUI.Windows
                 }
                 catch (Exception ex)
                 {
-                    Logger.T("A exception happend  when getting product info on fastboot", ex);
+                    Logger.Warn(this,"A exception happend  when getting product info on fastboot", ex);
                 }
-
             });
         }
     }

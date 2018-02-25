@@ -27,12 +27,10 @@ namespace AutumnBox.Basic.Flows
             var result =
                 (args.DevBasicInfo.State == Device.DeviceState.Poweron ||
                 args.DevBasicInfo.State == Device.DeviceState.Recovery) ? CheckResult.OK : CheckResult.DeviceStateError;
-            Logger.D(result.ToString());
             return result;
         }
         protected override Output MainMethod(ToolKit<DcimBackuperArgs> toolKit)
         {
-            Logger.D(toolKit.Args.TargetPath);
             if (toolKit.Args.DevBasicInfo.State == Device.DeviceState.Poweron)
             {
                 exeResult = toolKit.Ae($"pull /sdcard/DCIM/. \"{toolKit.Args.TargetPath}\"");

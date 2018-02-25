@@ -32,7 +32,6 @@ namespace AutumnBox.GUI.Cfg
             get { return _isFirstLaunch; }
             set
             {
-                Logger.D("Setting isFirstLaunch");
                 _isFirstLaunch = value;
                 ValueChanged?.Invoke(this, new EventArgs());
                 ValueSetedCallback?.Invoke();

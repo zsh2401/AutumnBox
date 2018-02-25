@@ -12,7 +12,7 @@
 *
 \* =============================================================================*/
 using AutumnBox.Basic.Executer;
-using AutumnBox.Support.CstmDebug;
+using AutumnBox.Support.Log;
 using AutumnBox.Support.Helper;
 using System;
 using System.Threading.Tasks;
@@ -21,7 +21,6 @@ namespace AutumnBox.Basic.FlowFramework
 {
     partial class FunctionFlow<TArgs, TResult>
     {
-        protected readonly LogSender TAG;
         protected virtual void Initialization(TArgs moduleArgs)
         {
             if (_isInited)
@@ -49,7 +48,7 @@ namespace AutumnBox.Basic.FlowFramework
         }
         protected virtual void OnProcessStarted(ProcessStartedEventArgs e)
         {
-            Logger.D(e.Pid.ToString());
+            Logger.Info(this,"Process Started,Pid is " + e.Pid.ToString());
             _pid = e.Pid;
             ProcessStarted?.Invoke(this, e);
         }
@@ -64,7 +63,7 @@ namespace AutumnBox.Basic.FlowFramework
             Finished?.Invoke(this, e);
             if ((Finished == null && !_isSync) || MustTiggerAnyFinishedEvent)
             {
-                Logger.D("AnyFinished event trigger");
+                Logger.Debug(this,"AnyFinished event trigger");
                 OnAnyFinished(this, new FinishedEventArgs<FlowResult>(e.Result));
             }
         }
