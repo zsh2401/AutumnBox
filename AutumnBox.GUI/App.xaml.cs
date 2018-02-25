@@ -49,6 +49,7 @@ namespace AutumnBox.GUI
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
+            Support.Log.Logger.Info(this,"Startup");
             Current = this;
 #if !DEBUG
             App.Current.DispatcherUnhandledException += Current_DispatcherUnhandledException;

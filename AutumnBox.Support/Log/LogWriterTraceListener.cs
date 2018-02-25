@@ -28,7 +28,7 @@ namespace AutumnBox.Support.Log
 
         public override void Write(object o, string category)
         {
-
+            //MakeText(category, o.ToString());
         }
 
         public override void WriteLine(object o, string category)

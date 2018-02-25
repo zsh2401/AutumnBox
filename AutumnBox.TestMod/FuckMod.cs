@@ -12,10 +12,10 @@ namespace AutumnBox.TestMod
     {
         public override string Name => "测试模块";
         public override DeviceState RequiredDeviceState => DeviceState.Poweron | DeviceState.None;
-        public override void Run(RunArgs args)
+        protected override void OnStartCommand(RunArgs args)
         {
-           var result =  OpenApi.Gui.ShowChoiceBox(Name,"Hello AutumnBox!");
-            OpenApi.Gui.ShowMessageBox(Name,$"choice result: {result}");
+            var result = OpenApi.Gui.ShowChoiceBox(Name, "Hello AutumnBox!");
+            OpenApi.Gui.ShowMessageBox(Name, $"choice result: {result}");
         }
     }
 }

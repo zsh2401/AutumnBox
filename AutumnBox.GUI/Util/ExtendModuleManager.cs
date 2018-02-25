@@ -32,7 +32,21 @@ namespace AutumnBox.GUI.Util
             OpenApi.Log = new LogApi();
             var dlls = GetDlls();
             LoadAllExtModule(dlls);
+            InitAll();
         }
+        private static void InitAll() {
+            var initArgs = new InitArgs();
+            modules.ForEach((module)=> {
+                module.Init(initArgs);
+            });
+        }
+        public static void DestoryAll() {
+            var destoryArgs = new DestoryArgs();
+            modules.ForEach((module) => {
+                module.Destory(destoryArgs);
+            });
+        }
+
         private static List<Assembly> GetDlls()
         {
             var modPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\AutumnBox_Mods_X";
@@ -57,21 +71,35 @@ namespace AutumnBox.GUI.Util
             modules = new List<AutumnBoxExtendModule>();
             dlls.ForEach((dll) =>
             {
+                //try
+                //{
                 var types = from type in dll.GetExportedTypes()
-                            where type.BaseType == typeof(AutumnBoxExtendModule)
+                            where IsRightType(type)
                             select type;
                 foreach (Type type in types)
                 {
                     try
                     {
                         var module = (AutumnBoxExtendModule)Activator.CreateInstance(type);
-                        modules.Add(module);
+                        if (module.Check())
+                        {
+                            modules.Add(module);
+                        }
                     }
                     catch { }
                 }
+                //}
+                //catch { }
             });
         }
-
+        private static bool IsRightType(Type type)
+        {
+            try
+            {
+                return type.BaseType == typeof(AutumnBoxExtendModule);
+            }
+            catch { return false; }
+        }
 
         private class GuiApi : IGuiApi
         {
@@ -96,7 +124,7 @@ namespace AutumnBox.GUI.Util
         {
             public void Log(string tag, string msg)
             {
-                Logger.T(msg);
+                Support.Log.Logger.Info(tag + "(ExtModule)",msg);
             }
         }
     }

@@ -21,7 +21,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
         public void Refresh(DeviceBasicInfo deviceSimpleInfo)
         {
             currentDevice = deviceSimpleInfo;
-            LstBox.ItemsSource = from mod in ExtendModuleManager.GetModules()
+            GridExtendModule.ItemsSource = from mod in ExtendModuleManager.GetModules()
                                  where mod.RequiredDeviceState.HasFlag(deviceSimpleInfo.State)
                                  select mod;
         }
@@ -33,16 +33,9 @@ namespace AutumnBox.GUI.UI.FuncPanels
                 Serial = null,
                 State = DeviceState.None
             };
-            LstBox.ItemsSource = null;
+            GridExtendModule.ItemsSource = null;
             Refresh(currentDevice);
         }
 
-        private void BtnRun_Click(object sender, RoutedEventArgs e)
-        {
-                (LstBox.SelectedItem as AutumnBoxExtendModule).Run(new RunArgs()
-                {
-                    Device = currentDevice
-                });
-        }
     }
 }

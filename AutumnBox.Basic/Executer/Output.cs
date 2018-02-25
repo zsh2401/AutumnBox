@@ -14,7 +14,7 @@
 namespace AutumnBox.Basic.Executer
 {
     using AutumnBox.Basic.Util;
-    using AutumnBox.Support.CstmDebug;
+    using AutumnBox.Support.Log;
     using System;
 
     public class Output : IPrintable
@@ -111,11 +111,11 @@ namespace AutumnBox.Basic.Executer
         {
             if (printOnRelease)
             {
-                Logger.T($"PrintOnLog(): {ToString()}");
+                Logger.Info(this, $"PrintOnLog(): {ToString()}");
             }
             else
             {
-                Logger.D($"PrintOnLog(): {ToString()}");
+                Logger.Debug(this, $"PrintOnLog(): {ToString()}");
             }
         }
         public void PrintOnConsole()
