@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Util
 {
-    public static class DriverHelper
+    internal static class DriverHelper
     {
         public static void InstallDriver(string path) {
             InstallHinfSection(IntPtr.Zero, IntPtr.Zero, path, 0);

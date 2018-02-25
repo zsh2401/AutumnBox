@@ -17,17 +17,17 @@ using System;
 namespace AutumnBox.Basic.FlowFramework
 {
     /// <summary>
-    /// FunctionFlow工具箱
+    /// FunctionFlow工具箱,主要在FuntionFlow.MainMethod使用
     /// </summary>
     /// <typeparam name="TArgs"></typeparam>
     public class ToolKit<TArgs> where TArgs : FlowArgs
     {
         /// <summary>
-        /// 向绑定的设备执行Adb命令并且返回执行结果
+        /// 调用工具箱内的Executer向绑定的设备执行Adb命令并且返回执行结果
         /// </summary>
         public readonly Func<string, AdvanceOutput> Ae;
         /// <summary>
-        /// 向绑定的设备执行Fastboot命令并且返回执行结果
+        /// 调用工具箱内的Executer向绑定的设备执行Fastboot命令并且返回执行结果
         /// </summary>
         public readonly Func<string, AdvanceOutput> Fe;
         /// <summary>
@@ -35,7 +35,7 @@ namespace AutumnBox.Basic.FlowFramework
         /// </summary>
         public readonly CommandExecuter Executer;
         /// <summary>
-        /// 参数
+        /// 具体的参数,参数类型由所属的FunctionFlow决定
         /// </summary>
         public TArgs Args;
         /// <summary>

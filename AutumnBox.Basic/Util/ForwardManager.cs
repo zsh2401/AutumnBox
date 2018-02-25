@@ -19,7 +19,7 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Util
 {
-    public struct ForwardInfo
+    internal struct ForwardInfo
     {
         public DeviceSerial DeviceSerial { get; private set; }
         public ushort Local { get; private set; }
@@ -31,7 +31,7 @@ namespace AutumnBox.Basic.Util
             this.Remote = remote;
         }
     }
-    public static class ForwardManager
+    internal static class ForwardManager
     {
         private static CommandExecuter executer = new CommandExecuter();
         private static readonly Regex regex = new Regex(

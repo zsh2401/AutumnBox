@@ -16,9 +16,18 @@ using AutumnBox.Basic.Device;
 
 namespace AutumnBox.Basic.FlowFramework
 {
+    /// <summary>
+    /// 功能流程的参数,任何功能流程的参数都要直接使用或继承自此类
+    /// </summary>
     public class FlowArgs
     {
+        /// <summary>
+        /// 目标设备序列号
+        /// </summary>
         public DeviceSerial Serial { get { return DevBasicInfo.Serial; } }
+        /// <summary>
+        /// 指定设备的信息
+        /// </summary>
         public DeviceBasicInfo DevBasicInfo { get; set; }
     }
 }

@@ -14,6 +14,9 @@
 
 namespace AutumnBox.Basic.MultipleDevices
 {
+    /// <summary>
+    /// 似乎没什么用处的接口,定义着玩的
+    /// </summary>
     public interface IDevicesGetter
     {
         DevicesList GetDevices();

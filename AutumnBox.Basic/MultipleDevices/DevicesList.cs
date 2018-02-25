@@ -20,6 +20,12 @@ namespace AutumnBox.Basic.MultipleDevices
 {
     public class DevicesList : List<DeviceBasicInfo>, IEquatable<DevicesList>
     {
+
+        /// <summary>
+        /// 检查设备列表是否包含某台设备
+        /// </summary>
+        /// <param name="serial"></param>
+        /// <returns></returns>
         public bool Contains(DeviceSerial serial)
         {
             var haves = from _devInfo in this

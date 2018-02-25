@@ -18,7 +18,7 @@ using System.Threading.Tasks;
 namespace AutumnBox.Basic.MultipleDevices
 {
     /// <summary>
-    /// 连接设备变化的事件
+    /// 当连接设备拔插时的触发的事件
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
@@ -38,7 +38,7 @@ namespace AutumnBox.Basic.MultipleDevices
         }
     }
     /// <summary>
-    /// 设备监听器
+    /// 设备拔插监视器
     /// </summary>
     public static class DevicesMonitor
     {
@@ -49,14 +49,24 @@ namespace AutumnBox.Basic.MultipleDevices
         {
             core = new DevicesMonitorCore();
         }
+        /// <summary>
+        /// 开始监视
+        /// </summary>
         public static void Begin()
         {
             core.Begin();
         }
+
+        /// <summary>
+        /// 停止/暂停监视
+        /// </summary>
         public static void Stop()
         {
             core.Cancel();
         }
+        /// <summary>
+        /// 完全静态类很不OOP,所以....
+        /// </summary>
         private sealed class DevicesMonitorCore
         {
             private const int defaultInterval = 2000;
