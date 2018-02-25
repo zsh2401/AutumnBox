@@ -7,6 +7,8 @@
     <s:String x:Key="AppDesc">Open source,free,simple</s:String>
 
     <!--按钮-->
+    <s:String x:Key="btnOpenModuleFloder">Open moudle floder</s:String>
+    <s:String x:Key="btnRunModule">Run this module</s:String>
     <s:String x:Key="btnLaunchDebugWindow">Launch Debug window</s:String>
     <s:String x:Key="btnIHaveDeletedAllUser">I has removed</s:String>
     <s:String x:Key="btnUserManager">User manager</s:String>
@@ -95,7 +97,7 @@
     <!--PackgeManageWindow-->
 
     <!--链接文字-->
-
+    <s:String x:Key="hyperLinkInstallModule">How to install?</s:String>
     <s:String x:Key="hyperLinkGithub">Github</s:String>
     <s:String x:Key="hyperLinkBaiduPan">Baidu netdisk</s:String>
     <s:String x:Key="hyperLinkDownloadMiFlashPackage">Download MIUI Line flash package</s:String>
@@ -118,6 +120,7 @@
     <!--标题-->
 
     <!--信息(主要用于MMesssageBox)-->
+    <s:String x:Key="msgModuleFailed">{0} Module was throw a excepton...you can view the log to get more info</s:String>
     <s:String x:Key="msgMaybeHaveOtherUser">
         检测到你的设备上还有其它用户,请确保您已删除完所有用户
         &#x0a; 注:AutumnBox有用户管理的功能</s:String>
@@ -303,7 +306,7 @@
 
 
     <s:String x:Key="SelecteAFile">Select a file</s:String>
-    <s:String x:Key="Warning">Failed</s:String>
+    <s:String x:Key="Warning">Warning</s:String>
     <s:String x:Key="Success">Success</s:String>
     <s:String x:Key="MaybeSuccess">Maybe Success</s:String>
     <s:String x:Key="MaybeUnsuccess">Maybe Failed</s:String>

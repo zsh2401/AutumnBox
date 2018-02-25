@@ -87,6 +87,7 @@ namespace AutumnBox.OpenFramework.V1
             catch (Exception e)
             {
                 Log($"OnStartCommand() Exception: " + e);
+                throw e;
             }
         }
         /// <summary>

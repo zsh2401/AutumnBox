@@ -21,6 +21,13 @@ namespace AutumnBox.GUI.Util
 {
     internal static class ExtendModuleManager
     {
+        public static string ModsPath
+        {
+            get
+            {
+                return Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\AutumnBox_Mods";
+            }
+        }
         private static List<AutumnBoxExtendModule> modules;
         public static AutumnBoxExtendModule[] GetModules()
         {
@@ -45,7 +52,7 @@ namespace AutumnBox.GUI.Util
 
         private static List<Assembly> GetDlls()
         {
-            var modPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\AutumnBox_Mods_X";
+            var modPath = ModsPath;
             if (Directory.Exists(modPath) == false)
             {
                 Directory.CreateDirectory(modPath);
@@ -67,27 +74,33 @@ namespace AutumnBox.GUI.Util
             modules = new List<AutumnBoxExtendModule>();
             dlls.ForEach((dll) =>
             {
-                //try
-                //{
-                var types = from type in dll.GetExportedTypes()
-                            where IsRightType(type)
-                            select type;
-                var initArgs = new InitArgs();
-                foreach (Type type in types)
+                try
                 {
-                    try
+                    var types = from type in dll.GetExportedTypes()
+                                where IsRightType(type)
+                                select type;
+                    var initArgs = new InitArgs();
+                    foreach (Type type in types)
                     {
-                        var module = (AutumnBoxExtendModule)Activator.CreateInstance(type);
-                        module.Init(initArgs);
-                        if (module.Check())
+                        try
                         {
-                            modules.Add(module);
+                            var module = (AutumnBoxExtendModule)Activator.CreateInstance(type);
+                            module.Init(initArgs);
+                            if (module.Check())
+                            {
+                                modules.Add(module);
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            Logger.Warn("ExtendModuleManager", "a module init failed...", ex);
                         }
                     }
-                    catch (Exception ex)
-                    {
-                        Logger.Warn("ExtendModuleManager", "a module init failed...", ex);
-                    }
+
+                }
+                catch (Exception e)
+                {
+                    Logger.Warn("ExtendModuleManager", "a module load failed", e);
                 }
             });
         }

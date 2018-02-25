@@ -9,6 +9,8 @@
     <s:String x:Key="AppDesc">开源免费的简约刷机工具箱</s:String>
 
     <!--按钮-->
+    <s:String x:Key="btnOpenModuleFloder">打开模块文件夹</s:String>
+    <s:String x:Key="btnRunModule">运行这个模块</s:String>
     <s:String x:Key="btnLaunchDebugWindow">启动日志窗口</s:String>
     <s:String x:Key="btnIHaveDeletedAllUser">我已移除所有用户</s:String>
     <s:String x:Key="btnUserManager">用户管理</s:String>
@@ -97,7 +99,7 @@
     <!--PackgeManageWindow-->
     
     <!--链接文字-->
-
+    <s:String x:Key="hyperLinkInstallModule">如何安装模块</s:String>
     <s:String x:Key="hyperLinkGithub">Github</s:String>
     <s:String x:Key="hyperLinkBaiduPan">百度网盘</s:String>
     <s:String x:Key="hyperLinkDownloadMiFlashPackage">下载MIUI线刷包</s:String>
@@ -120,6 +122,7 @@
     <!--标题-->
     
     <!--信息(主要用于MMesssageBox)-->
+    <s:String x:Key="msgModuleFailed">{0}模块运行时出现问题,详情请查看日志</s:String>
     <s:String x:Key="msgMaybeHaveOtherUser">
         检测到你的设备上还有其它用户,请确保您已删除完所有用户
         注:AutumnBox有用户管理的功能</s:String>

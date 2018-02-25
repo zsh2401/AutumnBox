@@ -1,21 +1,30 @@
-﻿<UserControl x:Class="AutumnBox.GUI.UI.FuncPanels.ThridPartyFunctionPanel"
+﻿<UserControl
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AutumnBox.GUI.UI.FuncPanels"
+             xmlns:CstPanels="clr-namespace:AutumnBox.GUI.UI.CstPanels" x:Class="AutumnBox.GUI.UI.FuncPanels.ThridPartyFunctionPanel"
              mc:Ignorable="d" 
+    Margin="0,0,0,0"
              d:DesignHeight="366" d:DesignWidth="922">
     <Grid>
-        <DataGrid x:Name="GridExtendModule" IsReadOnly="True" HorizontalAlignment="Left" Height="306" Margin="10,50,0,0" VerticalAlignment="Top" Width="902">
-            <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Name  }"  ClipboardContentBinding="{Binding Name}" Width="100" Header="模块名"/>
-                <DataGridTextColumn Binding="{Binding Version}"  Width="70" Header="版本"/>
-                <DataGridTextColumn Binding="{Binding Auth}"  Width="70" Header="开发者"/>
-                <DataGridTextColumn Binding="{Binding ContactMail}"  Width="100" Header="联系方式"/>
-                <DataGridTextColumn Binding="{Binding Desc}"  Width="500" Header="说明"/>
-            </DataGrid.Columns>
-        </DataGrid>
+        <ListBox x:Name="ListBoxModule" HorizontalAlignment="Left" DisplayMemberPath="Name" Margin="10,78,0,10" Width="259" SelectionChanged="ListBox_SelectionChanged"/>
+        <TextBlock Visibility="Collapsed" x:Name="TxtNothing" TextAlignment="Center" FontSize="16" Foreground="{DynamicResource ForgBrush}" Margin="291,161,10,0" TextWrapping="Wrap" Text="I'd love to change the world...but i dont know what to do" VerticalAlignment="Top"/>
+        <Button x:Name="BtnOpenModuleFloder" Content="{DynamicResource btnOpenModuleFloder}" HorizontalAlignment="Left" Margin="10,15,0,0" VerticalAlignment="Top" Width="259" BorderBrush="{x:Null}" Background="{DynamicResource BtnBrush}" Click="BtnOpenModuleFloder_Click">
+            <Button.Foreground>
+                <SolidColorBrush Color="{DynamicResource FontColor}"/>
+            </Button.Foreground>
+        </Button>
+        <Grid x:Name="GridInfo" HorizontalAlignment="Left" Height="341" Margin="274,15,0,0" VerticalAlignment="Top" Width="638">
+            <TextBlock x:Name="TBName" HorizontalAlignment="Left" Margin="25,0,0,0" TextWrapping="Wrap" Text="There is Module name" VerticalAlignment="Top" FontSize="36" Foreground="{DynamicResource ForgBrush}" Width="603" FontFamily="Microsoft YaHei UI Light"/>
+            <TextBlock x:Name="TBVersion" Margin="25,72,450,0" TextWrapping="Wrap" Text="There is Module version" VerticalAlignment="Top" Foreground="{DynamicResource ForgBrush}" FontFamily="Microsoft YaHei UI Light"/>
+            <TextBlock x:Name="TBDesc" Margin="25,101,10,0" TextWrapping="Wrap" Text="There is Module desc" VerticalAlignment="Top" Foreground="{DynamicResource ForgBrush}" Height="146" FontSize="16" FontFamily="Microsoft YaHei UI Light"/>
+            <Button x:Name="BtnRun" Content="{DynamicResource btnRunModule}" Margin="25,276,0,0" VerticalAlignment="Top" Click="BtnRun_Click" HorizontalAlignment="Left" Width="225" Background="{DynamicResource BtnBrush}" BorderBrush="{x:Null}" Foreground="{DynamicResource ForgBrush}"/>
+            <TextBlock x:Name="TBAuth" HorizontalAlignment="Left" Margin="193,72,0,0" TextWrapping="Wrap" Text="Auth" VerticalAlignment="Top" FontFamily="Microsoft YaHei UI Light" Foreground="{DynamicResource ForgBrush}" Width="102"/>
+            <TextBlock x:Name="TBEmail" HorizontalAlignment="Left" Margin="300,72,0,0" TextWrapping="Wrap" Text="example@fuckmail.com" VerticalAlignment="Top" FontFamily="Microsoft YaHei UI Light" Foreground="{DynamicResource ForgBrush}"/>
 
+        </Grid>
+        <TextBlock TextAlignment="Center" Foreground="{DynamicResource ForgBrush}" HorizontalAlignment="Left" Margin="10,45,0,0" TextWrapping="Wrap" Text="{DynamicResource hyperLinkInstallModule}" VerticalAlignment="Top" Width="259" Height="28" TextDecorations="Underline" MouseDown="TextBlock_MouseDown"/>
     </Grid>
 </UserControl>

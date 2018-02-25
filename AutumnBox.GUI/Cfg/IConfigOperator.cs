@@ -1,6 +1,6 @@
 ﻿/* =============================================================================*\
 *
-* Filename: Class1
+* Filename: IConfigOperator
 * Description: 
 *
 * Version: 1.0

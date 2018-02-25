@@ -47,7 +47,7 @@ namespace AutumnBox.GUI.UI.CstPanels
 
         private void Button_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            new DebugWindow() { Owner = App.Current.MainWindow}.Show();
+            new DebugWindow().Show();
         }
     }
 }

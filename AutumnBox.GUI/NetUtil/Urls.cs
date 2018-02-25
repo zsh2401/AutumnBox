@@ -15,6 +15,7 @@ namespace AutumnBox.GUI.NetUtil
 {
     internal static class Urls
     {
+        public const string INSTALL_MODULE_HELP = "https://github.com/zsh2401/AutumnBox/wiki/";
         internal const string HELP_PAGE = "https://github.com/zsh2401/AutumnBox/wiki/Chinese-Home";
         internal const string STATISTICS_API = "http://atmb.top/api/statistics/";
         internal const string MOTD_API = "http://atmb.top/api/motd/";

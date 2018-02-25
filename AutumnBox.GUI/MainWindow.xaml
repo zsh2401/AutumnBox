@@ -35,13 +35,13 @@
                         <cpnel:PoweronFuncPanel x:Name="PoweronFuncs" Margin="0,0,-4,0"></cpnel:PoweronFuncPanel>
                     </TabItem>
                     <TabItem TabIndex="2"  Header="{DynamicResource tbiOnRecovery}" Margin="18,-2,-23,0" Foreground="{DynamicResource ForgBrush}" FontSize="16">
-                        <cpnel:RecFuncPanel x:Name="RecoveryFuncs"/>
+                        <cpnel:RecFuncPanel Margin="0,0,0,0" x:Name="RecoveryFuncs"/>
                     </TabItem>
                     <TabItem TabIndex="3"  Header="{DynamicResource tbiOnFastboot}" Margin="23,-2,-26,0" Foreground="{DynamicResource ForgBrush}" FontSize="16">
                         <cpnel:FastbootFuncPanel x:Name="FastbootFuncs"></cpnel:FastbootFuncPanel>
                     </TabItem>
                     <TabItem TabIndex="4"  Header="{DynamicResource tbiThridPartyFunction}" Margin="26,-2,-29,0" Foreground="{DynamicResource ForgBrush}" FontSize="16">
-                        <cpnel:ThridPartyFunctionPanel x:Name="ThridPartyFuncs"></cpnel:ThridPartyFunctionPanel>
+                        <cpnel:ThridPartyFunctionPanel Margin="0,0,0,0" x:Name="ThridPartyFuncs"></cpnel:ThridPartyFunctionPanel>
                     </TabItem>
                 </TabControl>
             </Grid>
