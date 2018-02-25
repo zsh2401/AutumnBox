@@ -15,9 +15,9 @@ using AutumnBox.Support.CstmDebug;
 
 namespace AutumnBox.GUI.Cfg
 {
-    public static class Config
+    internal static class Config
     {
-        private static IConfigOperator Operator = new ConfigOperator();
+        public static IConfigOperator Operator = new ConfigOperator();
         public static bool IsFirstLaunch
         {
             get
@@ -61,6 +61,11 @@ namespace AutumnBox.GUI.Cfg
             {
                 Operator.Data.BackgroundA = value;
             }
+        }
+        public static bool ShowDebugWindowOnNextLaunch
+        {
+            get { return Operator.Data.ShowDebugWindowOnNextLaunch; }
+            set { Operator.Data.ShowDebugWindowOnNextLaunch = value; }
         }
     }
 }

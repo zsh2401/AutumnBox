@@ -12,7 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Threading;
 
-namespace AutumnBox.OpenFramework
+namespace AutumnBox.OpenFramework.V1
 {
     public abstract class AutumnBoxExtendModule
     {
@@ -56,14 +56,7 @@ namespace AutumnBox.OpenFramework
         public void Init(InitArgs args)
         {
 
-            try
-            {
-                OnInit(args);
-            }
-            catch (Exception e)
-            {
-                Log($"OnInit() Exception: " + e);
-            }
+            OnInit(args);
         }
         /// <summary>
         /// 检查这个模块是否可以运行

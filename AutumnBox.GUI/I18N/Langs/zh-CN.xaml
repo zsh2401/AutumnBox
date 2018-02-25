@@ -9,6 +9,7 @@
     <s:String x:Key="AppDesc">开源免费的简约刷机工具箱</s:String>
 
     <!--按钮-->
+    <s:String x:Key="btnLaunchDebugWindow">启动日志窗口</s:String>
     <s:String x:Key="btnIHaveDeletedAllUser">我已移除所有用户</s:String>
     <s:String x:Key="btnUserManager">用户管理</s:String>
     <s:String x:Key="btnRefresh">刷新</s:String>
@@ -227,6 +228,7 @@
     <!--开始面板-->
     
     <!--静态界面标记-->
+    <s:String x:Key="ckbShowDebugWindowOnNextLaunch">下次启动时显示Debug窗口</s:String>
     <s:String x:Key="ckbConnectOnOpened">添加后立刻连接</s:String>
     <s:String x:Key="RebootTo">重启到</s:String>
     <s:String x:Key="DonateDescription">您的捐赠是对我莫大的鼓励,共同营造更好的中国应用生态</s:String>

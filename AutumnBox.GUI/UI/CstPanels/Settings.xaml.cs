@@ -17,10 +17,16 @@ namespace AutumnBox.GUI.UI.CstPanels
 #if! ENABLE_BLUR
             TransparencySlider.IsEnabled = false;
 #endif
+            CKBShowDebugWindowOnNextLaunch.IsChecked = Config.ShowDebugWindowOnNextLaunch;
             TransparencySlider.Value = Config.BackgroundA;
             CbBoxLanguage.ItemsSource = LanguageHelper.Langs;
             CbBoxLanguage.SelectedIndex = LanguageHelper.GetLangIndex(App.Current.Resources["LanguageName"].ToString());
             CbBoxLanguage.SelectionChanged += CbBoxLanguage_SelectionChanged;
+        }
+        public override void OnPanelClosed()
+        {
+            base.OnPanelClosed();
+            Config.ShowDebugWindowOnNextLaunch = CKBShowDebugWindowOnNextLaunch.IsChecked == true;
         }
 
         private void Slider_ValueChanged(object sender, System.Windows.RoutedPropertyChangedEventArgs<double> e)

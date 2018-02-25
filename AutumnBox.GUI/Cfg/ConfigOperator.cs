@@ -20,7 +20,7 @@ using System.Reflection;
 
 namespace AutumnBox.GUI.Cfg
 {
-    public sealed class ConfigOperator : IConfigOperator
+    internal sealed class ConfigOperator : IConfigOperator
     {
         public ConfigDataLayout Data { get; private set; } = new ConfigDataLayout();
         private readonly string ConfigFileName;

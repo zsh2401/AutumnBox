@@ -65,7 +65,8 @@ namespace AutumnBox.GUI
 #endif
         }
 
-        private void RegisterEvent() {
+        private void RegisterEvent()
+        {
             DevicesPanel.SelectionChanged += (s, e) =>
             {
                 if (this.DevicesPanel.CurrentSelect.DevInfo.State == DeviceState.None)//如果没选择
@@ -93,7 +94,8 @@ namespace AutumnBox.GUI
                 {
                     Close();
                 }
-                else {
+                else
+                {
                     Task.Run(() =>
                     {
                         Thread.Sleep(3000);
@@ -123,7 +125,7 @@ namespace AutumnBox.GUI
             {
                 textBoxGG.Text = r.Header + r.Separator + r.Message;
             });
-            
+
             //检测更新
             new UpdateChecker().RunAsync((r) =>
             {
@@ -132,12 +134,13 @@ namespace AutumnBox.GUI
                     new UpdateNoticeWindow(r) { Owner = this }.ShowDialog();
                 }
             });
-            
+
             //哦,如果是第一次启动本软件,那么就显示一下提示吧!
             Task.Run(() =>
             {
                 Thread.Sleep(1000);
-                Dispatcher.Invoke(()=> {
+                Dispatcher.Invoke(() =>
+                {
                     if (Config.IsFirstLaunch)
                     {
                         var aboutPanel = new FastPanel(this.GridMain, new About());
@@ -151,7 +154,8 @@ namespace AutumnBox.GUI
         {
             lock (setUILock)
             {
-                switch (devinfo.State) {
+                switch (devinfo.State)
+                {
                     case DeviceState.Poweron:
                         TBCFuncs.SelectedIndex = 1;
                         break;
@@ -219,5 +223,12 @@ namespace AutumnBox.GUI
             new FastPanel(this.GridMain, new Donate()).Display();
         }
 
+        private void _MainWindow_Closed(object sender, EventArgs e)
+        {
+            foreach (Window window in App.Current.Windows)
+            {
+                window.Close();
+            }
+        }
     }
 }

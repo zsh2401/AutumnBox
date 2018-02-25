@@ -62,6 +62,7 @@ namespace AutumnBox.GUI.Cfg
             }
         }
         private string _lang = "zh-CN";
+
         [JsonProperty("backgroundA")]
         public byte BackgroundA
         {
@@ -86,6 +87,17 @@ namespace AutumnBox.GUI.Cfg
         }
         private int[] _backgroundARGB = { 255, 255, 255, 255 };
 
+        [JsonProperty("launchDebugWindowOnNext")]
+        public bool ShowDebugWindowOnNextLaunch
+        {
+            get { return _showDebugWindowOnNextLaunch; }
+            set
+            {
+                _showDebugWindowOnNextLaunch = value;
+                ValueChanged?.Invoke(this, new EventArgs());
+            }
+        }
+        public bool _showDebugWindowOnNextLaunch = false;
 
         public ConfigDataLayout()
         {

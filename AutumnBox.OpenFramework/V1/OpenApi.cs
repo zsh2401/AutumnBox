@@ -11,9 +11,9 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AutumnBox.OpenFramework
+namespace AutumnBox.OpenFramework.V1
 {
-    public static class OpenApi
+    public static partial class OpenApi
     {
         private static bool CallerCheck(Assembly callerAssembly) {
             return callerAssembly.GetName().Name == BuildInfo.AUTUMNBOX_GUI_ASSEMBLY_NAME;

@@ -14,7 +14,7 @@
 
 namespace AutumnBox.GUI.Cfg
 {
-    public interface IConfigOperator
+    internal interface IConfigOperator
     {
         ConfigDataLayout Data { get; }
         void SaveToDisk();

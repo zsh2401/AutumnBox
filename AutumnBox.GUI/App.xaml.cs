@@ -48,14 +48,14 @@ namespace AutumnBox.GUI
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-            Support.Log.Logger.Info(this,"Startup");
+            Support.Log.Logger.Info(this, "Startup");
             Current = this;
 #if !DEBUG
             App.Current.DispatcherUnhandledException += Current_DispatcherUnhandledException;
 #endif
             if (SystemHelper.HaveOtherAutumnBoxProcess)
             {
-                Logger.Debug(this,"have other autumnbox show MMessageBox and exit(1)");
+                Logger.Debug(this, "have other autumnbox show MMessageBox and exit(1)");
                 MessageBox.Show($"不可以同时打开两个AutumnBox{Environment.NewLine}Do not run two AutumnBox at once", "警告/Warning");
                 App.Current.Shutdown(HAVE_OTHER_PROCESS);
             }
@@ -71,7 +71,7 @@ namespace AutumnBox.GUI
 
         internal async void Load(IAppLoadingWindow loadingWindowApi)
         {
-            Debug.WriteLine("Loading...",TAG);
+            Debug.WriteLine("Loading...", TAG);
             loadingWindowApi.SetProgress(10);
             loadingWindowApi.SetTip("启动ADB服务中....");
             await Task.Run(() =>
@@ -81,18 +81,20 @@ namespace AutumnBox.GUI
                 while (!success)
                 {
                     success = AdbHelper.StartServer();
-                    if(!success)
-                    App.Current.Dispatcher.Invoke(()=> {
-                        tryAgain = BoxHelper.ShowChoiceDialog(
-                        "msgWarning",
-                        "msgStartAdbServerFail",
-                        "btnExit", "btnIHaveCloseOtherPhoneHelper").ToBool() ;
-                    });
+                    if (!success)
+                        App.Current.Dispatcher.Invoke(() =>
+                        {
+                            tryAgain = BoxHelper.ShowChoiceDialog(
+                            "msgWarning",
+                            "msgStartAdbServerFail",
+                            "btnExit", "btnIHaveCloseOtherPhoneHelper").ToBool();
+                        });
                     if (tryAgain)
                     {
                         Thread.Sleep(2000);
                     }
-                    else {
+                    else
+                    {
                         App.Current.Shutdown(HAVE_OTHER_PROCESS);
                     }
                 }
@@ -105,6 +107,10 @@ namespace AutumnBox.GUI
             App.Current.MainWindow = new MainWindow();
             DevicesMonitor.Begin();
             loadingWindowApi.SetProgress(80);
+            if (Config.ShowDebugWindowOnNextLaunch)
+            {
+                new DebugWindow().Show();
+            }
             ExtendModuleManager.Load();
             App.Current.MainWindow.Show();
             loadingWindowApi.SetProgress(100);
@@ -142,7 +148,7 @@ namespace AutumnBox.GUI
         protected override void OnExit(ExitEventArgs e)
         {
             base.OnExit(e);
-            Logger.Info(this,"Exit code : " + e.ApplicationExitCode);
+            Logger.Info(this, "Exit code : " + e.ApplicationExitCode);
             if (e.ApplicationExitCode != HAVE_OTHER_PROCESS)
             {
                 AdbHelper.KillAllAdbProcess();
