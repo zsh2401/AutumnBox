@@ -14,6 +14,9 @@ using System.Linq;
 namespace AutumnBox.Basic.Device
 {
 
+    /// <summary>
+    /// 设备镜像路径寻找器,由于安卓碎片化严重,不保证能完美运行,如果有特殊需求请另行实现
+    /// </summary>
     public sealed class DeviceImageFinder : IDisposable,ISetableShell
     {
         private readonly DeviceSerial serial;
@@ -51,6 +54,7 @@ namespace AutumnBox.Basic.Device
         {
             return Find1(imageType) ?? Find2(imageType);
         }
+
         private string Find1(DeviceImage image)
         {
             var exeResult = ShellAsSu.SafetyInput($"find /dev/ -name {image.ToString().ToLower()}");

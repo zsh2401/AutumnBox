@@ -18,6 +18,7 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Device
 {
+    [Obsolete("由于安卓碎片化原因,此类不保证可以正常运行,请自行实现相关功能")]
     public class DeviceBuildPropSetter : IDisposable, ISetableShell
     {
         private static readonly CommandExecuter executer = new CommandExecuter();

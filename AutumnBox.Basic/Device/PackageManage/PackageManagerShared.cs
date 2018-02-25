@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Device.PackageManage
 {
-    public static class PackageManagerShared
+    internal static class PackageManagerShared
     {
         internal static CommandExecuter Executer { get; private set; }
         static PackageManagerShared()

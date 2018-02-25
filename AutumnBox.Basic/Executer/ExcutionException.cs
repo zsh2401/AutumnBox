@@ -11,6 +11,9 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Executer
 {
+    /// <summary>
+    /// 命令执行错误
+    /// </summary>
     public class ExcutionException:Exception
     {
         public Output ExecuteResult { get; private set; }

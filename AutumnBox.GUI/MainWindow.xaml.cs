@@ -69,13 +69,13 @@ namespace AutumnBox.GUI
         {
             DevicesPanel.SelectionChanged += (s, e) =>
             {
-                if (this.DevicesPanel.CurrentSelect.DevInfo.State == DeviceState.None)//如果没选择
+                if (this.DevicesPanel.CurrentSelectDevice.State == DeviceState.None)//如果没选择
                 {
                     Reset();
                 }
                 else
                 {
-                    Refresh(this.DevicesPanel.CurrentSelect.DevInfo);
+                    Refresh(this.DevicesPanel.CurrentSelectDevice);
                 }
             };
             FunctionFlowBase.AnyFinished += FlowFinished;

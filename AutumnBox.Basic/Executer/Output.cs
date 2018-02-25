@@ -16,7 +16,9 @@ namespace AutumnBox.Basic.Executer
     using AutumnBox.Basic.Util;
     using AutumnBox.Support.Log;
     using System;
-
+    /// <summary>
+    /// Êä³ö·â×°Àà
+    /// </summary>
     public class Output : IPrintable
     {
         /// <summary>

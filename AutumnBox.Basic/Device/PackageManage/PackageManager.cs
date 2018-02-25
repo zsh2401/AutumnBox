@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Device.PackageManage
 {
-
+    [Obsolete("Project ACP is dead")]
     public static class PackageManager
     {
         private const string TAG = "PackageManager";

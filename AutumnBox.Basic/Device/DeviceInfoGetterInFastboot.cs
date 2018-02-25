@@ -15,6 +15,9 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Device
 {
+    /// <summary>
+    /// 获取处在Fastboot状态下的设备的信息
+    /// </summary>
     public class DeviceInfoGetterInFastboot
     {
         private readonly CommandExecuter executer;

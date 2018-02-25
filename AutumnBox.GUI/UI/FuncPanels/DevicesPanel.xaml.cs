@@ -14,26 +14,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
     /// </summary>
     public partial class DevicesPanel : UserControl
     {
-        public DeviceConnection CurrentSelect
-        {
-            get
-            {
-                var connection = new DeviceConnection();
-                if (ListBoxMain.SelectedIndex != -1)
-                {
-                    connection.Reset((DeviceBasicInfo)ListBoxMain.SelectedItem);
-                }
-                else
-                {
-                    connection.Reset(new DeviceBasicInfo()
-                    {
-                        State = DeviceState.None
-                    });
-                }
-                return connection;
-            }
-        }
-        private DeviceBasicInfo _currentSelectDeviceInfo
+        public DeviceBasicInfo CurrentSelectDevice
         {
             get
             {
@@ -73,7 +54,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
         }
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (ListBoxMain.SelectedIndex > -1 && _currentSelectDeviceInfo.State == DeviceState.Poweron)
+            if (ListBoxMain.SelectedIndex > -1 && CurrentSelectDevice.State == DeviceState.Poweron)
             {
                 this.BtnEnableDisableNetDebugging.Visibility = Visibility.Visible;
                 if (CurrentSelectionIsNetDebugging)
@@ -96,11 +77,11 @@ namespace AutumnBox.GUI.UI.FuncPanels
         {
             if (CurrentSelectionIsNetDebugging)
             {
-                new FastPanel(this.GridMain, new CloseNetDebugging(this,_currentSelectDeviceInfo.Serial)).Display();
+                new FastPanel(this.GridMain, new CloseNetDebugging(this, CurrentSelectDevice.Serial)).Display();
             }
             else
             {
-                new FastPanel(this.GridMain, new OpenNetDebugging(this,_currentSelectDeviceInfo.Serial)).Display();
+                new FastPanel(this.GridMain, new OpenNetDebugging(this, CurrentSelectDevice.Serial)).Display();
             }
         }
 

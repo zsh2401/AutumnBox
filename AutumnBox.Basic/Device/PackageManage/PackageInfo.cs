@@ -19,6 +19,9 @@ namespace AutumnBox.Basic.Device.PackageManage
     public sealed class PackageInfo
     {
         #region Property
+        /// <summary>
+        /// 这个包是否存在
+        /// </summary>
         public bool IsExist
         {
             get
@@ -27,6 +30,9 @@ namespace AutumnBox.Basic.Device.PackageManage
                 return result.IsSuccessful;
             }
         }
+        /// <summary>
+        /// 主界面类名
+        /// </summary>
         public string MainActivity
         {
             get
@@ -44,12 +50,14 @@ namespace AutumnBox.Basic.Device.PackageManage
                 }
             }
         }
-        public string ApplicationName { get; private set; }
+        /// <summary>
+        /// 包名
+        /// </summary>
         public string Name { get; private set; }
-        public long CacheSize { get; private set; } = -1;
-        public long CodeSize { get; private set; } = -1;
-        public long DataSize { get; private set; } = -1;
         #endregion
+        /// <summary>
+        /// 这个包所在的设备
+        /// </summary>
         public DeviceSerial Owner { get; private set; }
 
         private static readonly string mainActivityPattern = $"android.intent.action.MAIN:{Environment.NewLine}.+.+\u0020(?<result>.+)";

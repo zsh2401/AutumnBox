@@ -14,6 +14,9 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Executer
 {
+    /// <summary>
+    /// 轻量级的AndroidShell
+    /// </summary>
     public sealed class AndroidShellV2 : IOutputable
     {
         public enum LinuxUser
@@ -21,11 +24,23 @@ namespace AutumnBox.Basic.Executer
             Normal,
             Su
         }
+        /// <summary>
+        /// 接收到输出时发生
+        /// </summary>
         public event OutputReceivedEventHandler OutputReceived;
+        /// <summary>
+        /// 主进程开始时发生
+        /// </summary>
         public event ProcessStartedEventHandler ProcessStarted;
+       
         private readonly ProcessStartInfo pStartInfo;
         private readonly DeviceSerial device;
         private readonly object exeLock = new object();
+
+        /// <summary>
+        /// 构建
+        /// </summary>
+        /// <param name="device"></param>
         public AndroidShellV2(DeviceSerial device)
         {
             this.device = device;
@@ -42,10 +57,21 @@ namespace AutumnBox.Basic.Executer
             };
         }
         private AdvanceOutputBuilder outputBuilder;
+        /// <summary>
+        /// 检测是否有root权限
+        /// </summary>
+        /// <returns></returns>
         public bool HaveSu()
         {
             return Execute("ls", LinuxUser.Su,false).ExitCode == 0;
         }
+        /// <summary>
+        /// 执行一段命令
+        /// </summary>
+        /// <param name="command">命令</param>
+        /// <param name="user">用户类型</param>
+        /// <param name="suCheck">当root执行时,检测su是否存在并根据情况抛出异常</param>
+        /// <returns></returns>
         public AdvanceOutput Execute(string command, LinuxUser user = LinuxUser.Normal,bool suCheck=true)
         {
             lock (exeLock)

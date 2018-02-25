@@ -13,9 +13,18 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Device
 {
+    /// <summary>
+    /// 设备镜像
+    /// </summary>
     public enum DeviceImage
     {
+        /// <summary>
+        /// Boot镜像
+        /// </summary>
         Boot,
+        /// <summary>
+        /// Recovery镜像
+        /// </summary>
         Recovery,
     }
 }

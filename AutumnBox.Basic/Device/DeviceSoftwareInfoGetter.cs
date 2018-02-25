@@ -15,6 +15,9 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Device
 {
+    /// <summary>
+    /// 设备软件信息获取器
+    /// </summary>
     public class DeviceSoftwareInfoGetter
     {
         private readonly static CommandExecuter executer;
@@ -28,11 +31,18 @@ namespace AutumnBox.Basic.Device
             this.serial = serial;
         }
         private const string ipPattern = @"(?<ip>\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})";
-
+        /// <summary>
+        /// 检测ROOT是否可以使用
+        /// </summary>
+        /// <returns></returns>
         public bool IsRootEnable()
         {
             return executer.QuicklyShell(serial,"su -c ls").ExitCode == 0;
         }
+        /// <summary>
+        /// 获取设备的局域网IP
+        /// </summary>
+        /// <returns></returns>
         public IPAddress GetLocationIP()
         {
             var result = executer.QuicklyShell(serial, "ifconfig wlan0");
@@ -52,6 +62,11 @@ namespace AutumnBox.Basic.Device
             }
             return null;
         }
+        /// <summary>
+        /// 检测设备是否安装某个应用
+        /// </summary>
+        /// <param name="packageName"></param>
+        /// <returns></returns>
         public bool? IsInstall(string packageName)
         {
             try

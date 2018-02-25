@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Device.ActivityManager
 {
-    public static class ActivityManagerShared
+    internal static class ActivityManagerShared
     {
         public static readonly CommandExecuter Executer = new CommandExecuter();
     }

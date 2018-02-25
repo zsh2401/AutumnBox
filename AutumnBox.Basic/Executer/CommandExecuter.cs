@@ -13,9 +13,18 @@ using System.Text.RegularExpressions;
 
 namespace AutumnBox.Basic.Executer
 {
+    /// <summary>
+    /// 万物基于命令执行器(滑稽)
+    /// </summary>
     public sealed class CommandExecuter : IOutputable
     {
+        /// <summary>
+        /// 接收到输出时发生
+        /// </summary>
         public event OutputReceivedEventHandler OutputReceived;
+        /// <summary>
+        /// 进程开始时发生
+        /// </summary>
         public event ProcessStartedEventHandler ProcessStarted;
         private ProcessStartInfo _startInfo;
         private OutputBuilder _builder;
@@ -25,6 +34,9 @@ namespace AutumnBox.Basic.Executer
         {
             Static = new CommandExecuter();
         }
+        /// <summary>
+        /// 构建
+        /// </summary>
         public CommandExecuter()
         {
             _builder = new OutputBuilder();
@@ -38,6 +50,12 @@ namespace AutumnBox.Basic.Executer
                 CreateNoWindow = true,
             };
         }
+        /// <summary>
+        /// 执行一段命令或运行某个程序
+        /// </summary>
+        /// <param name="fileName">文件路径</param>
+        /// <param name="command">命令或参数</param>
+        /// <returns></returns>
         public AdvanceOutput Execute(string fileName, string command)
         {
             lock (_lock)
@@ -61,11 +79,23 @@ namespace AutumnBox.Basic.Executer
                 return new AdvanceOutput(_builder.ToOutput(), exitCode);
             }
         }
+        /// <summary>
+        /// 执行一个命令
+        /// </summary>
+        /// <param name="cmd"></param>
+        /// <returns></returns>
         public AdvanceOutput Execute(Command cmd)
         {
             return Execute(cmd.FileName, cmd.ToString());
         }
         private const string exitCodePattern = @"exitcode(?<code>\d+)";
+        
+        /// <summary>
+        /// 便捷的执行一段shell代码,但更建议使用AndroidShellV2来完成
+        /// </summary>
+        /// <param name="dev"></param>
+        /// <param name="command"></param>
+        /// <returns></returns>
         public AdvanceOutput QuicklyShell(DeviceSerial dev, string command)
         {
             leastShellExitCode = null;

@@ -12,13 +12,19 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Device.ActivityManager
 {
+    /// <summary>
+    /// 广播管理器
+    /// </summary>
     public static class Broadcast
     {
+        /// <summary>
+        /// 发送一个广播
+        /// </summary>
+        /// <param name="device">设备</param>
+        /// <param name="broadcast">广播内容</param>
+        /// <returns></returns>
         public static AdvanceOutput Send(DeviceSerial device, string broadcast) {
            return ActivityManagerShared.Executer.QuicklyShell(device, $"am broadcast -a {broadcast}");
-        }
-        public static AdvanceOutput SendWithData(DeviceSerial device, string data) {
-            return Send(device, data);
         }
     }
 }

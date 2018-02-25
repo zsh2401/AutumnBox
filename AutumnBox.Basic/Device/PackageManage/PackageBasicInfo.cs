@@ -11,6 +11,10 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Device.PackageManage
 {
+    [Obsolete("Project ACP is dead")]
+    /// <summary>
+    /// 包基本信息
+    /// </summary>
     public struct PackageBasicInfo
     {
         public string Name { get; set; }

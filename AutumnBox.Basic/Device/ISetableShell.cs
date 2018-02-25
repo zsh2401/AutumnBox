@@ -9,6 +9,9 @@ using AutumnBox.Basic.Executer;
 
 namespace AutumnBox.Basic.Device
 {
+    /// <summary>
+    /// 可设置AndroidShell
+    /// </summary>
     interface ISetableShell
     {
         AndroidShell ShellAsSu { set; }

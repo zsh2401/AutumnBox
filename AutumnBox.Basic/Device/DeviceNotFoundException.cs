@@ -11,6 +11,9 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Device
 {
+    /// <summary>
+    /// 找不到设备异常
+    /// </summary>
     public class DeviceNotFoundException:Exception
     {
     }

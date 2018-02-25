@@ -13,9 +13,18 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Device.PackageManage
 {
+    /// <summary>
+    /// 用户信息
+    /// </summary>
     public class User
     {
+        /// <summary>
+        /// UID
+        /// </summary>
         public int Id { get; set; }
+        /// <summary>
+        /// 用户名
+        /// </summary>
         public string Name { get; set; }
     }
     public class UserManager
@@ -30,7 +39,11 @@ namespace AutumnBox.Basic.Device.PackageManage
         {
             this.shell = new AndroidShellV2(device);
         }
-
+        /// <summary>
+        /// 获取设备上的所有用户
+        /// </summary>
+        /// <param name="ignoreZeroUser">是否忽略0号用户</param>
+        /// <returns>用户</returns>
         public User[] GetUsers(bool ignoreZeroUser =true)
         {
             var output = shell.Execute("pm list users");
@@ -49,6 +62,11 @@ namespace AutumnBox.Basic.Device.PackageManage
             }
             return users.ToArray();
         }
+        /// <summary>
+        /// 移除某个用户
+        /// </summary>
+        /// <param name="uid">UID</param>
+        /// <returns></returns>
         public AdvanceOutput RemoveUser(int uid)
         {
             return shell.Execute($"pm remove-user {uid}");

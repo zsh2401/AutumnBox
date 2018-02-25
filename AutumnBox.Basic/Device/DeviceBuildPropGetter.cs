@@ -13,19 +13,37 @@ using System.Text.RegularExpressions;
 
 namespace AutumnBox.Basic.Device
 {
+    /// <summary>
+    /// 设备Build.prop信息获取器
+    /// </summary>
     public class DeviceBuildPropGetter
     {
         private readonly CommandExecuter executer;
+        /// <summary>
+        /// 绑定的设备
+        /// </summary>
         public DeviceSerial Serial { get; private set; }
+        /// <summary>
+        /// 构建
+        /// </summary>
+        /// <param name="serial"></param>
         public DeviceBuildPropGetter(DeviceSerial serial)
         {
             executer = new CommandExecuter();
             Serial = serial;
         }
+        /// <summary>
+        /// 获取产品名 类似Mi 6
+        /// </summary>
+        /// <returns></returns>
         public string GetProductName()
         {
             return Get(BuildPropKeys.ProductName);
         }
+        /// <summary>
+        /// 获取安卓版本 类似 8.0.0
+        /// </summary>
+        /// <returns></returns>
         public Version GetAndroidVersion()
         {
             try
@@ -37,10 +55,18 @@ namespace AutumnBox.Basic.Device
                 return null;
             }
         }
+        /// <summary>
+        /// 获取Model 类似sagit
+        /// </summary>
+        /// <returns></returns>
         public string GetModel()
         {
             return Get(BuildPropKeys.Model);
         }
+        /// <summary>
+        /// 获取Brand 类似Xiaomi
+        /// </summary>
+        /// <returns></returns>
         public string GetBrand()
         {
             return Get(BuildPropKeys.Brand);
@@ -48,6 +74,10 @@ namespace AutumnBox.Basic.Device
         public string GetBoard() {
             return Get(BuildPropKeys.Board);
         }
+        /// <summary>
+        /// 获取设备SDK版本
+        /// </summary>
+        /// <returns></returns>
         public int? GetSdkVersion()
         {
             try
@@ -59,6 +89,11 @@ namespace AutumnBox.Basic.Device
                 return null;
             }
         }
+        /// <summary>
+        /// 自行指定KEY的值
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
         public string Get(string key)
         {
             var exeResult = executer.QuicklyShell(Serial, $"getprop {key}");
@@ -66,6 +101,10 @@ namespace AutumnBox.Basic.Device
         }
 
         private const string propPattern = @"\[(?<pname>.+)\].+\[(?<pvalue>.+)\]";
+        /// <summary>
+        /// 获取所有的key与value
+        /// </summary>
+        /// <returns></returns>
         public Dictionary<string, string> GetFull()
         {
             try

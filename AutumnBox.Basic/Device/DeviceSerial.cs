@@ -13,8 +13,14 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Device
 {
+    /// <summary>
+    /// 设备序列号
+    /// </summary>
     public class DeviceSerial : IEquatable<DeviceSerial>
     {
+        /// <summary>
+        /// 判断这个序列号是否是一个IP
+        /// </summary>
         public bool IsIpAdress
         {
             get
@@ -28,6 +34,10 @@ namespace AutumnBox.Basic.Device
         {
             return _serialNum ?? _ip.ToString();
         }
+        /// <summary>
+        /// 获取类似 -s deviceSerial的字符串
+        /// </summary>
+        /// <returns></returns>
         public string ToFullSerial() => $"-s {_serialNum ?? _ip.ToString()}";
         public DeviceSerial(string serialStr)
         {

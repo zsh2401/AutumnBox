@@ -14,6 +14,9 @@ using System.Text.RegularExpressions;
 
 namespace AutumnBox.Basic.Device
 {
+    /// <summary>
+    /// 设备硬件信息获取器
+    /// </summary>
     public class DeviceHardwareInfoGetter
     {
         private static readonly CommandExecuter executer;
@@ -40,6 +43,10 @@ namespace AutumnBox.Basic.Device
             };
             return result;
         }
+        /// <summary>
+        /// 获取剩余电量
+        /// </summary>
+        /// <returns></returns>
         public int? GetBatteryLevel()
         {
             try
@@ -53,6 +60,10 @@ namespace AutumnBox.Basic.Device
                 return null;
             }
         }
+        /// <summary>
+        /// 获取设备默认Dpi
+        /// </summary>
+        /// <returns></returns>
         public int? GetDpi()
         {
             var displayInfo = executer.QuicklyShell(serial, "dumpsys display | grep mBaseDisplayInfo").LineAll[0];
@@ -66,6 +77,10 @@ namespace AutumnBox.Basic.Device
                 return null;
             }
         }
+        /// <summary>
+        /// 获取设备RAM大小
+        /// </summary>
+        /// <returns></returns>
         public double? SizeofRam()
         {
             try
@@ -88,6 +103,10 @@ namespace AutumnBox.Basic.Device
                 return null;
             }
         }
+        /// <summary>
+        /// 获取设备ROM大小
+        /// </summary>
+        /// <returns></returns>
         public double? SizeofRom()
         {
             try
@@ -113,6 +132,10 @@ namespace AutumnBox.Basic.Device
             }
             catch (Exception e) { Logger.Warn(this,"get storage fail ", e); return null; }
         }
+        /// <summary>
+        /// 获取设备SOC信息
+        /// </summary>
+        /// <returns></returns>
         public string GetSocInfo()
         {
             try
@@ -123,6 +146,10 @@ namespace AutumnBox.Basic.Device
             }
             catch (Exception e) { Logger.Warn(this,"Get cpuinfo fail", e); return null; }
         }
+        /// <summary>
+        /// 获取设备屏幕信息
+        /// </summary>
+        /// <returns></returns>
         public string GetScreenInfo()
         {
             try
@@ -132,6 +159,10 @@ namespace AutumnBox.Basic.Device
             }
             catch (Exception e) { Logger.Warn(this,"Get LCD info fail", e); return null; }
         }
+        /// <summary>
+        /// 获取设备闪存信息
+        /// </summary>
+        /// <returns></returns>
         public string GetFlashMemoryType()
         {
             try

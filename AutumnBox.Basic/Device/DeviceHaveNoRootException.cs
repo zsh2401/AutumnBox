@@ -13,6 +13,9 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Device
 {
+    /// <summary>
+    /// 设备没有Root的异常
+    /// </summary>
     public class DeviceHaveNoRootException : Exception
     {
         public DeviceSerial Device { get; private set; }

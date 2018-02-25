@@ -12,11 +12,20 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Device.ActivityManager
 {
+    /// <summary>
+    /// 活动管理器
+    /// </summary>
     public static class Activity
     {
-        public static AdvanceOutput Start(DeviceSerial device, string pkgName, string className,bool createNewOnExist=false) {
-            string arg = createNewOnExist ?"-n":"";
-            return ActivityManagerShared.Executer.QuicklyShell(device,$"am start {arg} {pkgName}/.{className}");
+        /// <summary>
+        /// 启动一个Activty
+        /// </summary>
+        /// <param name="device">设备</param>
+        /// <param name="pkgName">包名</param>
+        /// <param name="className">Activity的类名</param>
+        /// <returns></returns>
+        public static AdvanceOutput Start(DeviceSerial device, string pkgName, string className) {
+            return ActivityManagerShared.Executer.QuicklyShell(device,$"am start {pkgName}/.{className}");
         }
     }
 }

@@ -11,6 +11,9 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Executer
 {
+    /// <summary>
+    /// 高级输出,相比父类多了个返回码
+    /// </summary>
     public class AdvanceOutput : Output
     {
         public int ExitCode { get; private set; }
