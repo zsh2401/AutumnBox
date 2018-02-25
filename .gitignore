@@ -36,6 +36,7 @@ makezip
 ##dirs
 .vs/
 out/
+sdk/
 obj/
 maker/
 HistoryRelease/
