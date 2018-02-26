@@ -144,6 +144,9 @@
     <Compile Include="NetUtil\RemoteDataGetter.cs" />
     <Compile Include="NetUtil\UpdateChecker.cs" />
     <Compile Include="Resources\Images\DevStatus\DevStatusBitmapGetter.cs" />
+    <Compile Include="UI\CstPanels\ExtensionRuningPanel.xaml.cs">
+      <DependentUpon>ExtensionRuningPanel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\FuncPanels\ThridPartyFunctionPanel.xaml.cs">
       <DependentUpon>ThridPartyFunctionPanel.xaml</DependentUpon>
     </Compile>
@@ -354,6 +357,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\CstPanels\Donate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\CstPanels\ExtensionRuningPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

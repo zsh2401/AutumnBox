@@ -11,7 +11,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AutumnBox.OpenFramework.V1
+namespace AutumnBox.OpenFramework.Open.V1
 {
     public static partial class OpenApi
     {

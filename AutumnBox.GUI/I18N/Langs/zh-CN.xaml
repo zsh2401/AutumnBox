@@ -9,8 +9,10 @@
     <s:String x:Key="AppDesc">开源免费的简约刷机工具箱</s:String>
 
     <!--按钮-->
+    
     <s:String x:Key="btnOpenModuleFloder">打开模块文件夹</s:String>
-    <s:String x:Key="btnRunModule">运行这个模块</s:String>
+    <s:String x:Key="btnCannotRunExtension">当前设备状态下,此模块不可运行</s:String>
+    <s:String x:Key="btnRunExtension">运行这个拓展</s:String>
     <s:String x:Key="btnLaunchDebugWindow">启动日志窗口</s:String>
     <s:String x:Key="btnIHaveDeletedAllUser">我已移除所有用户</s:String>
     <s:String x:Key="btnUserManager">用户管理</s:String>
