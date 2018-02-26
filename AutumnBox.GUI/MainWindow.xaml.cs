@@ -49,6 +49,7 @@ namespace AutumnBox.GUI
         {
             InitializeComponent();
             RegisterEvent();
+            TitleBar.ImgMin.Visibility = Visibility.Visible;
             refreshables = new List<IRefreshable>
             {
                 this.RebootGrid,
@@ -154,6 +155,8 @@ namespace AutumnBox.GUI
         {
             lock (setUILock)
             {
+                refreshables.ForEach((ctrl) => { ctrl.Refresh(devinfo); });
+                if (TBCFuncs.SelectedIndex == 4) return;
                 switch (devinfo.State)
                 {
                     case DeviceState.Poweron:
@@ -170,7 +173,6 @@ namespace AutumnBox.GUI
                         TBCFuncs.SelectedIndex = 0;
                         break;
                 }
-                refreshables.ForEach((ctrl) => { ctrl.Refresh(devinfo); });
             }
         }
 
@@ -179,6 +181,7 @@ namespace AutumnBox.GUI
             lock (setUILock)
             {
                 refreshables.ForEach((ctrl) => { ctrl.Reset(); });
+                if (TBCFuncs.SelectedIndex == 4) return;
                 TBCFuncs.SelectedIndex = 0;
             }
         }

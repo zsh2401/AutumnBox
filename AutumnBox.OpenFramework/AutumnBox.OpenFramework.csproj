@@ -55,15 +55,15 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="ExampleModule.cs">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <Compile Include="V1\AutumnBoxExtendModule.cs" />
+    <Compile Include="Internal\CallerChecker.cs" />
+    <Compile Include="Internal\ExtensionManager.cs" />
+    <Compile Include="Extension\AutumnBoxExtension.cs" />
     <Compile Include="BuildInfo.cs" />
-    <Compile Include="V1\IGuiApi.cs" />
-    <Compile Include="V1\ILogApi.cs" />
-    <Compile Include="V1\Args.cs" />
-    <Compile Include="V1\OpenApi.cs" />
+    <Compile Include="Internal\ExtensionRuntime.cs" />
+    <Compile Include="Open\V1\IGuiApi.cs" />
+    <Compile Include="Open\V1\ILogApi.cs" />
+    <Compile Include="Extension\Args.cs" />
+    <Compile Include="Open\V1\OpenApi.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

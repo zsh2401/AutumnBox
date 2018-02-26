@@ -13,9 +13,12 @@
 \* =============================================================================*/
 namespace AutumnBox.Basic.Device
 {
-    public static class DeviceStateExt {
-        public static DeviceState ToDeviceState(this string strStatus) {
-            switch (strStatus) {
+    public static class DeviceStateExt
+    {
+        public static DeviceState ToDeviceState(this string strStatus)
+        {
+            switch (strStatus)
+            {
                 case "device":
                     return DeviceState.Poweron;
                 case "recovery":
@@ -42,34 +45,34 @@ namespace AutumnBox.Basic.Device
         /// <summary>
         /// 无设备
         /// </summary>
-        None = 0,
+        None = 1 << 0,
         /// <summary>
         /// 开机状态
         /// </summary>
-        Poweron = 1,
+        Poweron = 1 << 1,
         /// <summary>
         /// 处于恢复模式
         /// </summary>
-        Recovery = 2,
+        Recovery = 1 << 2,
         /// <summary>
         /// 处于Fastboot模式
         /// </summary>
-        Fastboot = 4,
+        Fastboot = 1 << 3,
         /// <summary>
         /// 处于sideload模式
         /// </summary>
-        Sideload = 8,
+        Sideload = 1 << 4,
         /// <summary>
         /// 处于offline
         /// </summary>
-        Offline = 16,
+        Offline = 1 << 5,
         /// <summary>
         /// 未知状态
         /// </summary>
-        Unknow = 32,
+        Unknow = 1 << 6,
         /// <summary>
         /// 未允许ADB调试
         /// </summary>
-        Unauthorized = 64,
+        Unauthorized = 1 << 7,
     }
 }

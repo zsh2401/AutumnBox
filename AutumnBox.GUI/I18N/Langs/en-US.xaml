@@ -7,8 +7,9 @@
     <s:String x:Key="AppDesc">Open source,free,simple</s:String>
 
     <!--按钮-->
+    <s:String x:Key="btnCannotRunExtension">This extension not support current device state</s:String>
     <s:String x:Key="btnOpenModuleFloder">Open moudle floder</s:String>
-    <s:String x:Key="btnRunModule">Run this module</s:String>
+    <s:String x:Key="btnRunExtension">Run this extension</s:String>
     <s:String x:Key="btnLaunchDebugWindow">Launch Debug window</s:String>
     <s:String x:Key="btnIHaveDeletedAllUser">I has removed</s:String>
     <s:String x:Key="btnUserManager">User manager</s:String>

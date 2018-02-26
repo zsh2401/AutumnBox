@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace AutumnBox.OpenFramework.V1
+namespace AutumnBox.OpenFramework.Open.V1
 {
     public interface IGuiApi
     {
@@ -14,5 +14,7 @@ namespace AutumnBox.OpenFramework.V1
         void ShowMessageBox(string title,string msg);
         void ShowLoadingWindow(ICompletable completable);
         void ShowWindow(Window window);
+        void ShowExceptionBox(string title, Exception e);
+        string GetCurrentLanguageName();
     }
 }

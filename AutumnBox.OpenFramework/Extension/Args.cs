@@ -10,12 +10,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AutumnBox.OpenFramework.V1
+namespace AutumnBox.OpenFramework.Extension
 {
     public class DestoryArgs { }
     public class InitArgs { }
-    public class RunArgs
+    public class StartArgs
     {
         public DeviceBasicInfo Device { get; set; }
+        public string ExtensionPath
+        {
+            get
+            {
+                return Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\" + "AutumnBox_Mods";
+            }
+        }
     }
 }

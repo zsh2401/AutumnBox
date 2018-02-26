@@ -6,9 +6,11 @@ using System.Windows.Controls;
 using AutumnBox.Basic.Device;
 using AutumnBox.GUI.Helper;
 using AutumnBox.GUI.NetUtil;
+using AutumnBox.GUI.UI.CstPanels;
+using AutumnBox.GUI.UI.Fp;
 using AutumnBox.GUI.Util;
-using AutumnBox.OpenFramework;
-using AutumnBox.OpenFramework.V1;
+using AutumnBox.OpenFramework.Extension;
+using AutumnBox.OpenFramework.Internal;
 
 namespace AutumnBox.GUI.UI.FuncPanels
 {
@@ -24,14 +26,14 @@ namespace AutumnBox.GUI.UI.FuncPanels
             InitializeComponent();
             GridInfo.Visibility = Visibility.Collapsed;
             TxtNothing.Visibility = Visibility.Visible;
+            
         }
 
         public void Refresh(DeviceBasicInfo deviceSimpleInfo)
         {
+            ListBoxModule.ItemsSource = ExtensionManager.GetExtension();
             currentDevice = deviceSimpleInfo;
-            ListBoxModule.ItemsSource = from mod in ExtendModuleManager.GetModules()
-                                        where mod.RequiredDeviceState.HasFlag(deviceSimpleInfo.State)
-                                        select mod;
+            ListBoxModule.SelectedIndex = -1;
         }
 
         public void Reset()
@@ -41,7 +43,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
                 Serial = null,
                 State = DeviceState.None
             };
-            ListBoxModule.ItemsSource = null;
+            ListBoxModule.SelectedIndex = -1;
             Refresh(currentDevice);
         }
 
@@ -51,12 +53,23 @@ namespace AutumnBox.GUI.UI.FuncPanels
             {
                 GridInfo.Visibility = Visibility.Visible;
                 TxtNothing.Visibility = Visibility.Collapsed;
-                var module = ListBoxModule.SelectedItem as AutumnBoxExtendModule;
-                TBName.Text = module.Name;
-                TBDesc.Text = module.Desc;
-                TBVersion.Text = module.Version?.ToString();
-                TBEmail.Text = module.ContactMail?.ToString();
-                TBAuth.Text = module.Auth;
+                var rt = ListBoxModule.SelectedItem as ExtensionRuntime;
+                TBName.Text = rt.InnerExtension.Name;
+                TBDesc.Text = rt.InnerExtension.Description;
+                TBVersion.Text = rt.InnerExtension.Version?.ToString();
+                TBEmail.Text = rt.InnerExtension.ContactMail?.ToString();
+                TBAuth.Text = rt.InnerExtension.Auth;
+                if (rt.InnerExtension.RequiredDeviceState.HasFlag(currentDevice.State))
+                {
+                    BtnRun.IsEnabled = true;
+                    BtnRun.Content = App.Current.Resources["btnRunExtension"];
+                }
+                else
+                {
+                    BtnRun.IsEnabled = false;
+                    BtnRun.Content = App.Current.Resources["btnCannotRunExtension"];
+                }
+
             }
             else
             {
@@ -65,24 +78,52 @@ namespace AutumnBox.GUI.UI.FuncPanels
             }
         }
 
+        private FastPanel panel;
+        private void ShowRunningBox(ExtensionRuntime extRtm)
+        {
+            panel = new FastPanel(GridContainer, new ExtensionRuningPanel(extRtm));
+            panel.Display();
+        }
+
+        private void CloseRunningBox()
+        {
+            panel.Close();
+        }
+
         private void BtnRun_Click(object sender, RoutedEventArgs e)
         {
-            var module = (ListBoxModule.SelectedItem as AutumnBoxExtendModule);
+            var runtime = (ListBoxModule.SelectedItem as ExtensionRuntime);
+
             try
             {
-                module.Run(new RunArgs()
+                ShowRunningBox(runtime);
+                runtime.RunAsync(new StartArgs()
                 {
                     Device = currentDevice
-                });
+                }, () => { CloseRunningBox(); });
             }
-            catch (Exception) {
-                BoxHelper.ShowMessageDialog("Warning",string.Format(App.Current.Resources["msgModuleFailed"].ToString(), module.Name));
+            catch (Exception)
+            {
+                BoxHelper.ShowMessageDialog("Warning", string.Format(App.Current.Resources["msgModuleFailed"].ToString(), runtime.InnerExtension.Name));
             }
         }
 
         private void BtnOpenModuleFloder_Click(object sender, RoutedEventArgs e)
         {
             Process.Start(ExtendModuleManager.ModsPath);
+        }
+
+        private void SetBtnRunState(bool enable)
+        {
+            BtnRun.IsEnabled = enable;
+            if (enable)
+            {
+                BtnRun.Content = "运行此拓展";
+            }
+            else
+            {
+                BtnRun.Content = "当前设备状态下,此拓展无法运行";
+            }
         }
 
         private void TextBlock_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)

@@ -5,6 +5,7 @@ using AutumnBox.Basic.Device;
 using AutumnBox.GUI.Windows;
 using AutumnBox.GUI.UI.Fp;
 using AutumnBox.Basic.Flows;
+using AutumnBox.OpenFramework.Extension;
 
 namespace AutumnBox.GUI.UI.FuncPanels
 {

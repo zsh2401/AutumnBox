@@ -23,7 +23,7 @@ namespace AutumnBox.ConsoleTester
         };
         unsafe static int Main(string[] cmdargs)
         {
-            Trace.WriteLine("do you like this?");
+            Console.WriteLine((DeviceState.Poweron | DeviceState.Recovery | DeviceState.Fastboot).HasFlag(DeviceState.None));
             Console.ReadKey();
             return 0;
         }
