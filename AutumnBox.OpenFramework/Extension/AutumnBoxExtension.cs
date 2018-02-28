@@ -95,7 +95,7 @@ namespace AutumnBox.OpenFramework.Extension
         /// <summary>
         /// 当用户发出停止请求时调用
         /// </summary>
-        public virtual bool OnStopCommand() { return true; }
+        public virtual bool OnStopCommand(StopArgs args) { return true; }
         /// <summary>
         /// 当OnStartCommand()函数运行完成时调用
         /// </summary>

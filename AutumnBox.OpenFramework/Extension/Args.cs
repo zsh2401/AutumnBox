@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.OpenFramework.Extension
 {
-    public class DestoryArgs { }
+
     public class InitArgs { }
     public class StartArgs
     {
@@ -25,4 +25,6 @@ namespace AutumnBox.OpenFramework.Extension
             }
         }
     }
+    public class StopArgs{}
+    public class DestoryArgs { }
 }

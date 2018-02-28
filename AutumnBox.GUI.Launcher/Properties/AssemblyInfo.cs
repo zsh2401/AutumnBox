@@ -6,12 +6,12 @@ using System.Runtime.InteropServices;
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
 [assembly: AssemblyTitle("AutumnBox.GUI.Launcher")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Launch AutumnBox.exe")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("zsh2401")]
 [assembly: AssemblyProduct("AutumnBox.GUI.Launcher")]
-[assembly: AssemblyCopyright("Copyright ©  2018")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCopyright("Copyright © 2017-2018 zsh2401 All rights reserved")]
+[assembly: AssemblyTrademark("AutumnBox")]
 [assembly: AssemblyCulture("")]
 
 // 将 ComVisible 设置为 false 会使此程序集中的类型

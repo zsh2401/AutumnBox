@@ -1,4 +1,5 @@
 ﻿using AutumnBox.Basic.Device;
+using AutumnBox.OpenFramework.Internal;
 using System;
 using System.Diagnostics;
 
@@ -21,9 +22,14 @@ namespace AutumnBox.ConsoleTester
             Serial = new DeviceSerial("9dd1b490"),
             State = DeviceState.Poweron,
         };
+
+        class AopTest: ContextBoundObject
+        {
+            public string Tag { get; set; }
+        }
         unsafe static int Main(string[] cmdargs)
         {
-            Console.WriteLine((DeviceState.Poweron | DeviceState.Recovery | DeviceState.Fastboot).HasFlag(DeviceState.None));
+            new AopTest().Tag = "333";
             Console.ReadKey();
             return 0;
         }

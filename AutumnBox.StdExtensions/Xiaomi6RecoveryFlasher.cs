@@ -21,15 +21,19 @@ namespace AutumnBox.StdExtensions
         public override MailAddress ContactMail => new MailAddress("zsh2401@163.com");
         public override DeviceState RequiredDeviceState => DeviceState.Poweron | DeviceState.Recovery | DeviceState.Fastboot;
         private RecoveryFlasher flasher;
+        public override bool InitAndCheck(InitArgs args)
+        {
+            return base.InitAndCheck(args);
+        }
         public override void OnStartCommand(StartArgs args)
         {
+            //将rec文件从dll中提取出来
+            CopyFileToLocal();
             //如果设备不处于fastboot状态,将设备重启到Fastboot状态
             if (args.Device.State != DeviceState.Fastboot)
             {
                 DeviceRebooter.Reboot(args.Device, RebootOptions.Fastboot);
             }
-            //将rec文件从dll中提取出来
-            CopyFileToLocal();
             //稍等一会儿,防止手机还未重启完毕
             Thread.Sleep(1000);
             //使用REC刷入功能流程
@@ -40,22 +44,13 @@ namespace AutumnBox.StdExtensions
                 DevBasicInfo = args.Device,
                 RecoveryFilePath = "tmp.img"
             });
-            //当这个属性被设置为true时,AutumnBox窗口必将接收到功能模块完成的信息
-            //否则只要Finished事件有任何的注册,就不会触发AnyFinished事件,
-            //那么AutumnBox主程序就不会对这个功能流程的结束有任何处理
-            //flasher.MustTiggerAnyFinishedEvent = true;
-            //绑定事件
-            //flasher.Finished += (s, e) =>
-            //{
-            //    File.Delete("tmp.img");
-            //};
             //同步运行
             flasher.Run();
         }
-        public override bool OnStopCommand()
+        public override bool OnStopCommand(StopArgs args)
         {
             flasher?.ForceStop();
-            return base.OnStopCommand();
+            return base.OnStopCommand(args);
         }
         public override void OnFinished()
         {

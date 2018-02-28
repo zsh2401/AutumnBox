@@ -19,7 +19,7 @@ namespace AutumnBox.OpenFramework
         /// <summary>
         /// SDK版本
         /// </summary>
-        public static readonly int SDK_VERSION = 5;
+        public static readonly int SDK_VERSION = 1;
         internal const string AUTUMNBOX_GUI_ASSEMBLY_NAME = "AutumnBox";
         internal const string AUTUMNBOX_BASIC_ASSEMBLY_NAME = "AutumnBox.Basic";
     }
