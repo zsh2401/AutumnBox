@@ -53,36 +53,4 @@ body{
 a{
     color: aliceblue;
 }
-/* 
-#content{
-    position: relative;
-    width: 900px;
-    height: 500px;
-    margin-left: auto;
-    margin-right:  auto;
-    margin-top: 200px;
-    background-color: rgba(0,0,0,0.6);
-}
-#content #title{
-    font-size: 60px;
-}
-#content #desc{
-    font-size: 40px;
-}
-#content #download{
-    clear: both;
-    position: absolute;
-    bottom: 0px;
-    left: 30%;
-    width: 40%;
-    height: 150px;
-    font-size: 40px;
-    text-align: center;
-}
 
-#content #download .d{
-    height: 60%;
-    width: 50%;
-    font-size: 20px;
-}
- */
