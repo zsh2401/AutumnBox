@@ -11,7 +11,7 @@
 * Company: I am free man
 *
 \* =============================================================================*/
-using AutumnBox.Support.CstmDebug;
+using AutumnBox.Support.Log;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.IO;
@@ -30,7 +30,6 @@ namespace AutumnBox.GUI.NetUtil
         public string Message { get; set; }
         internal MOTDResult() { }
     }
-    [LogProperty(TAG = "MOTD Getter", Show = false)]
     internal class MOTDGetter : RemoteDataGetter<MOTDResult>
     {
 #if USE_LOCAL_API && DEBUG
@@ -48,7 +47,7 @@ namespace AutumnBox.GUI.NetUtil
             string data = Encoding.UTF8.GetString(bytes);
             JObject o = JObject.Parse(data);
             var result = (MOTDResult)JsonConvert.DeserializeObject(o.ToString(), typeof(MOTDResult));
-            Logger.D("MOTD Get from net success!" + result.Header + " " + result.Message);
+            Logger.Info(this,"MOTD Get from net success!" + result.Header + " " + result.Message);
             return result;
         }
 #endif

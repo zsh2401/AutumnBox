@@ -72,13 +72,18 @@
       <Name>AutumnBox.Basic</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="开发文档.url">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>if $(ConfigurationName) == SDK (
 rd /S /Q  google
 del /S AutumnBox.Support.*
 del /S Newtonsoft.Json.*
+del /S *.pdb
 )</PostBuildEvent>
   </PropertyGroup>
 </Project>

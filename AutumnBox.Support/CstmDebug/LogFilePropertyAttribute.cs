@@ -17,6 +17,7 @@ using System.Text;
 
 namespace AutumnBox.Support.CstmDebug
 {
+    [Obsolete]
     [AttributeUsage(AttributeTargets.Assembly)]
     public class LogFilePropertyAttribute : Attribute
     {

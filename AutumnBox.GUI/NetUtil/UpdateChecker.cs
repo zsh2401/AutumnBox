@@ -12,7 +12,7 @@
 *
 \* =============================================================================*/
 using AutumnBox.GUI.Cfg;
-using AutumnBox.Support.CstmDebug;
+using AutumnBox.Support.Log;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
@@ -45,7 +45,6 @@ namespace AutumnBox.GUI.NetUtil
        
         public DateTime Time => new DateTime(TimeArray[0], TimeArray[1], TimeArray[0]);
     }
-    [LogProperty(TAG = "Update Check", Show = true)]
     internal class UpdateChecker : RemoteDataGetter<UpdateCheckResult>
     {
 #if USE_LOCAL_API&& DEBUG
@@ -58,13 +57,12 @@ namespace AutumnBox.GUI.NetUtil
 #else
         public override UpdateCheckResult Get()
         {
-            Logger.D("Getting update info....");
+            Logger.Info(this,"Getting update info....");
             byte[] bytes = new WebClient().DownloadData(Urls.UPDATE_API);
             string data = Encoding.UTF8.GetString(bytes);
-            Logger.D(data);
             JObject j = JObject.Parse(data);
             var result = (UpdateCheckResult)JsonConvert.DeserializeObject(j.ToString(), typeof(UpdateCheckResult));
-            Logger.D("Geted " + data);
+            Logger.Info(this,"update check finished " + data);
             return result;
         }
 #endif

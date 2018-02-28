@@ -33,7 +33,6 @@ using AutumnBox.Basic.MultipleDevices;
 
 namespace AutumnBox.GUI
 {
-    [LogProperty(TAG = "Main Window")]
     /// <summary>
     /// Window1.xaml 的交互逻辑
     /// </summary>

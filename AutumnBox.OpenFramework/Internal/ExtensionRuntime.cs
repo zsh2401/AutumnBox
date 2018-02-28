@@ -40,7 +40,7 @@ namespace AutumnBox.OpenFramework.Internal
         public bool Stop()
         {
             if (!IsRuning) return true;
-            return InnerExtension.OnStopCommand();
+            return InnerExtension.OnStopCommand(new StopArgs());
         }
         public void Destory()
         {
