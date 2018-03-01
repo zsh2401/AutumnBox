@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.ACP
 {
+    [Obsolete("Project-ACP is dead")]
     internal static class AcpStandardProcess
     {
         private const int tempBufferSize = 4096;

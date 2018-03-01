@@ -18,6 +18,7 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.ACP
 {
+    [Obsolete("Project-ACP is dead")]
     internal sealed class AcpCommunicator : IDisposable
     {
         private static readonly List<AcpCommunicator> communicators;

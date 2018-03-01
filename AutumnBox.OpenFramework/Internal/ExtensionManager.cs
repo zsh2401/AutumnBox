@@ -14,10 +14,15 @@ using System.Reflection;
 
 namespace AutumnBox.OpenFramework.Internal
 {
+#pragma warning disable CS1591 // 缺少对公共可见类型或成员的 XML 注释
     public static class ExtensionManager
+#pragma warning restore CS1591 // 缺少对公共可见类型或成员的 XML 注释
     {
         private const string TAG = "ExtensionManager";
         private static ExtensionManagerInner inner;
+        /// <summary>
+        /// 拓展文件夹绝对路径
+        /// </summary>
         public static string ExtensionsPath
         {
             get
@@ -29,11 +34,17 @@ namespace AutumnBox.OpenFramework.Internal
         {
             inner = new ExtensionManagerInner();
         }
+        /// <summary>
+        /// 加载所有模块
+        /// </summary>
         public static void LoadAllExtension()
         {
             if (!CallerChecker.CallerCheck(Assembly.GetCallingAssembly())) return;
             inner.Load();
         }
+        /// <summary>
+        /// 摧毁所有模块
+        /// </summary>
         public static void DestoryAllExtension()
         {
             inner.Extensions.ForEach((extRuntime) =>
@@ -41,7 +52,12 @@ namespace AutumnBox.OpenFramework.Internal
                 extRuntime.Destory();
             });
         }
-        public static ExtensionRuntime[] GetExtension(DeviceState? targetDeviceState = null)
+        /// <summary>
+        /// 获取所有模块
+        /// </summary>
+        /// <param name="targetDeviceState"></param>
+        /// <returns></returns>
+        public static ExtensionRuntime[] GetExtensions(DeviceState? targetDeviceState = null)
         {
             if (targetDeviceState != null)
             {

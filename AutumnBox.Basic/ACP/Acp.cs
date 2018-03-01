@@ -7,6 +7,7 @@ using System;
 
 namespace AutumnBox.Basic.ACP
 {
+    [Obsolete("Project-ACP is dead")]
     /*ACP标准*/
     internal static class Acp
     {

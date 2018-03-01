@@ -12,6 +12,10 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.OpenFramework.Internal
 {
+
+    /// <summary>
+    /// 拓展的运行管理器
+    /// </summary>
     public class ExtensionRuntime
     {
         public string Name { get { return InnerExtension.Name; } }

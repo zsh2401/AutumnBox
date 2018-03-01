@@ -11,6 +11,7 @@ using System.Text;
 
 namespace AutumnBox.Basic.ACP
 {
+    [Obsolete("Project-ACP is dead")]
     internal struct AcpResponse:IPrintable
     {
         public bool IsSuccessful

@@ -12,19 +12,26 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.OpenFramework.Extension
 {
-
+    /// <summary>
+    /// 初始化时的参数
+    /// </summary>
     public class InitArgs { }
+    /// <summary>
+    /// OnStartCommand()参数
+    /// </summary>
     public class StartArgs
     {
+        /// <summary>
+        /// 目标设备
+        /// </summary>
         public DeviceBasicInfo Device { get; set; }
-        public string ExtensionPath
-        {
-            get
-            {
-                return Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\" + "AutumnBox_Mods";
-            }
-        }
     }
+    /// <summary>
+    /// OnStopCommand()参数
+    /// </summary>
     public class StopArgs{}
+    /// <summary>
+    /// OnDestory()参数
+    /// </summary>
     public class DestoryArgs { }
 }

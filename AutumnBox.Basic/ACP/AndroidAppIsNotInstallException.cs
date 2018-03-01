@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.ACP
 {
+    [Obsolete("Project-ACP is dead")]
     internal class AndroidAppIsNotInstallException:Exception
     {
     }

@@ -15,6 +15,7 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.ACP
 {
+    [Obsolete("Project-ACP is dead")]
     internal static class AndroidClientController
     {
         private const string PACKAGE_NAME = "top.atmb.autumnbox";
