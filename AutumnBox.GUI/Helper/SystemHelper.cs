@@ -25,7 +25,7 @@ namespace AutumnBox.GUI.Helper
     /// <summary>
     /// SystemHelper static class, static methods about System
     /// </summary>
-    public static class SystemHelper
+    internal static class SystemHelper
     {
         /// <summary>
         /// Create Shortcut

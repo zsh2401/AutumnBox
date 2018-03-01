@@ -4,16 +4,9 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.Basic.Device;
-using AutumnBox.OpenFramework.Internal;
 using AutumnBox.OpenFramework.Open.V1;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Mail;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Threading;
 
 namespace AutumnBox.OpenFramework.Extension
 {

@@ -29,7 +29,6 @@ namespace AutumnBox.OpenFramework.Open.V1
             get { return _gui; }
             set
             {
-                Trace.WriteLine(Assembly.GetCallingAssembly().GetName().Name);
                 if (!CallerCheck(Assembly.GetCallingAssembly())) return;
                 else _gui = value;
             }
@@ -47,6 +46,5 @@ namespace AutumnBox.OpenFramework.Open.V1
             }
         }
         private static ILogApi _log;
-
     }
 }
