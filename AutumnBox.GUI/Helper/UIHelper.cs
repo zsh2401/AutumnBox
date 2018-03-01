@@ -21,7 +21,7 @@ namespace AutumnBox.GUI.Helper
     /// <summary>
     /// UI帮助类,与UI相关的静态函数
     /// </summary>
-    public static class UIHelper
+    internal static class UIHelper
     {
         private static SolidColorBrush CurrentBackgound
         {

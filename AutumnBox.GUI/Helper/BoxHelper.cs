@@ -19,7 +19,7 @@ using System.Windows;
 
 namespace AutumnBox.GUI.Helper
 {
-    public static class BoxHelper
+    internal static class BoxHelper
     {
         public static bool ToBool(this ChoiceResult result)
         {

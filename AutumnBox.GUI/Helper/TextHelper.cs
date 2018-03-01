@@ -14,7 +14,7 @@
 
 namespace AutumnBox.GUI.Helper
 {
-    static class TextHelper
+    internal static class TextHelper
     {
         private static string En(string Key, string content)
         {
