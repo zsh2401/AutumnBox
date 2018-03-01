@@ -17,8 +17,17 @@ namespace AutumnBox.Basic.FlowFramework
     /// </summary>
     public interface INoGenericFlow : ICompletable,IOutputable
     {
+        /// <summary>
+        ///是否已关闭
+        /// </summary>
         bool IsClosed { get; }
+        /// <summary>
+        /// 是否必须触发AnyFinished事件
+        /// </summary>
         bool MustTiggerAnyFinishedEvent { set; }
+        /// <summary>
+        /// 异步运行
+        /// </summary>
         void RunAsync();
     }
 }

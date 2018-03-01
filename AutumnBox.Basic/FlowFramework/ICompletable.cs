@@ -20,6 +20,9 @@ namespace AutumnBox.Basic.FlowFramework
     /// </summary>
     public interface ICompletable:IForceStoppable
     {
+        /// <summary>
+        /// 仅仅只有通知功能流程已结束一个功能的事件
+        /// </summary>
         event EventHandler NoArgFinished;
     }
 }

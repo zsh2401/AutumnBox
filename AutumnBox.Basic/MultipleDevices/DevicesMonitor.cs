@@ -32,7 +32,7 @@ namespace AutumnBox.Basic.MultipleDevices
         /// 已连接设备列表
         /// </summary>
         public DevicesList DevicesList { get; }
-        public DevicesChangedEventArgs(DevicesList devList)
+        internal DevicesChangedEventArgs(DevicesList devList)
         {
             DevicesList = devList;
         }
@@ -42,7 +42,10 @@ namespace AutumnBox.Basic.MultipleDevices
     /// </summary>
     public static class DevicesMonitor
     {
-        public static event DevicesChangedHandler DevicesChanged;//当连接设备的情况变化时发生
+        /// <summary>
+        /// 设备拔插时发生
+        /// </summary>
+        public static event DevicesChangedHandler DevicesChanged;
 
         private static DevicesMonitorCore core;
         static DevicesMonitor()

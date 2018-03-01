@@ -19,19 +19,40 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Util
 {
-    internal struct ForwardInfo
+    /// <summary>
+    /// 转发信息结构体
+    /// </summary>
+    public struct ForwardInfo
     {
+        /// <summary>
+        /// 设备
+        /// </summary>
         public DeviceSerial DeviceSerial { get; private set; }
+        /// <summary>
+        /// 本地端口
+        /// </summary>
         public ushort Local { get; private set; }
+        /// <summary>
+        ///  本地端口所转发的设备端口
+        /// </summary>
         public ushort Remote { get; private set; }
-        public ForwardInfo(DeviceSerial device, ushort local, ushort remote)
+        /// <summary>
+        /// 构造
+        /// </summary>
+        /// <param name="device"></param>
+        /// <param name="local"></param>
+        /// <param name="remote"></param>
+        internal ForwardInfo(DeviceSerial device, ushort local, ushort remote)
         {
             this.DeviceSerial = device;
             this.Local = local;
             this.Remote = remote;
         }
     }
-    internal static class ForwardManager
+    /// <summary>
+    /// 端口转发管理器
+    /// </summary>
+    public static class ForwardManager
     {
         private static CommandExecuter executer = new CommandExecuter();
         private static readonly Regex regex = new Regex(

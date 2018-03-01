@@ -12,8 +12,14 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic
 {
+    /// <summary>
+    /// 加载器
+    /// </summary>
     public static class Loader
     {
+        /// <summary>
+        /// 加载AuutmnBox.Basic
+        /// </summary>
         public static void Load() {
             AdbHelper.StartServer();
         }

@@ -25,10 +25,17 @@ namespace AutumnBox.Basic.FlowFramework
     public sealed class Stoper : IForceStoppable
     {
         IForceStoppable obj;
+        /// <summary>
+        /// 构建
+        /// </summary>
+        /// <param name="obj"></param>
         public Stoper(IForceStoppable obj)
         {
             this.obj = obj;
         }
+        /// <summary>
+        /// 停止
+        /// </summary>
         public void ForceStop()
         {
             obj.ForceStop();

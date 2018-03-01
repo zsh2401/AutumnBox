@@ -19,6 +19,10 @@ namespace AutumnBox.Basic.MultipleDevices
     /// </summary>
     public interface IDevicesGetter
     {
+        /// <summary>
+        /// 获取设备
+        /// </summary>
+        /// <returns></returns>
         DevicesList GetDevices();
     }
 }
