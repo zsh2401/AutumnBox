@@ -48,14 +48,13 @@ namespace AutumnBox.GUI
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-            Support.Log.Logger.Info(this, "Startup");
             Current = this;
 #if !DEBUG
             App.Current.DispatcherUnhandledException += Current_DispatcherUnhandledException;
 #endif
             if (SystemHelper.HaveOtherAutumnBoxProcess)
             {
-                Logger.Debug(this, "have other autumnbox show MMessageBox and exit(1)");
+                Logger.Fatal(this, "Have other autumnbox!!");
                 MessageBox.Show($"不可以同时打开两个AutumnBox{Environment.NewLine}Do not run two AutumnBox at once", "警告/Warning");
                 App.Current.Shutdown(HAVE_OTHER_PROCESS);
             }
@@ -141,6 +140,8 @@ namespace AutumnBox.GUI
                 Directory.CreateDirectory("logs");
             }
             File.WriteAllText("logs\\exception.log", exstr);
+            try { Logger.Fatal(this, exstr); } catch { }
+
             e.Handled = true;
             App.Current.Shutdown(1);
         }

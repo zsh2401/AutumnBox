@@ -36,13 +36,10 @@ namespace AutumnBox.GUI
     /// <summary>
     /// Window1.xaml 的交互逻辑
     /// </summary>
-    public sealed partial class MainWindow : Window, ILogSender, IRefreshable
+    public sealed partial class MainWindow : Window, IRefreshable
     {
         private Object setUILock = new System.Object();
         private List<IRefreshable> refreshables;
-
-        public string LogTag => "Main Window";
-        public bool IsShowLog => true;
 
         public MainWindow()
         {
