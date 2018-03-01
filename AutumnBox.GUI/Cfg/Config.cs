@@ -12,9 +12,11 @@
 *
 \* =============================================================================*/
 using AutumnBox.Support.CstmDebug;
+using System;
 
 namespace AutumnBox.GUI.Cfg
 {
+    [Obsolete("已使用Settings代替AutumnBox.GUI.Cfg,此处代码现在仅供参考")]
     internal static class Config
     {
         public static IConfigOperator Operator = new ConfigOperator();

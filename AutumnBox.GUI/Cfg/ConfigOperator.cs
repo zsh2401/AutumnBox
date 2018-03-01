@@ -20,6 +20,7 @@ using System.Reflection;
 
 namespace AutumnBox.GUI.Cfg
 {
+    [Obsolete("已使用Settings代替AutumnBox.GUI.Cfg,此处代码现在仅供参考")]
     internal sealed class ConfigOperator : IConfigOperator
     {
         public ConfigDataLayout Data { get; private set; } = new ConfigDataLayout();
