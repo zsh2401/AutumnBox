@@ -6,8 +6,9 @@
 
     <s:String x:Key="AppName">AutumnBox</s:String>
     <s:String x:Key="LanguageName">简体中文</s:String>
+    <s:String x:Key="LanguageCode">zh-CN</s:String>
+    
     <s:String x:Key="AppDesc">开源免费的简约刷机工具箱</s:String>
-
     <!--按钮-->
     
     <s:String x:Key="btnOpenModuleFloder">打开模块文件夹</s:String>

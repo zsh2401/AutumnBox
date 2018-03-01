@@ -4,8 +4,9 @@
                     xmlns:s="clr-namespace:System;assembly=mscorlib">
     <s:String x:Key="AppName">AutumnBox</s:String>
     <s:String x:Key="LanguageName">English</s:String>
-    <s:String x:Key="AppDesc">Open source,free,simple</s:String>
+    <s:String x:Key="LanguageCode">en-US</s:String>
 
+    <s:String x:Key="AppDesc">Open source,free,simple</s:String>
     <!--按钮-->
     <s:String x:Key="btnCannotRunExtension">This extension not support current device state</s:String>
     <s:String x:Key="btnOpenModuleFloder">Open moudle floder</s:String>

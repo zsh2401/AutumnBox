@@ -6,7 +6,7 @@
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="Language" Type="System.String" Scope="User">
-      <Value Profile="(Default)">zh-CN.xaml</Value>
+      <Value Profile="(Default)">zh-CN</Value>
     </Setting>
     <Setting Name="ShowDebuggingWindowNextLaunch" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>

@@ -70,7 +70,7 @@ namespace AutumnBox.GUI
             }
             else
             {
-                LanguageHelper.LoadLanguageByFileName(Settings.Default.Language);
+                LanguageHelper.SetLanguage(Settings.Default.Language);
             }
         }
 

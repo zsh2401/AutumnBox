@@ -16,6 +16,7 @@ using AutumnBox.GUI.Properties;
 using AutumnBox.Support.Log;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 
 namespace AutumnBox.GUI.I18N
@@ -23,64 +24,64 @@ namespace AutumnBox.GUI.I18N
     /// <summary>
     /// 界面的语言切换帮助类
     /// </summary>
-    public static class LanguageHelper
+    internal static class LanguageHelper
     {
         public static event EventHandler LanguageChanged;
         public static readonly List<Language> Langs;
-        public static readonly string Prefix = "pack://application:,,,/AutumnBox;component/I18N/Langs/";
+        public const string Path = "pack://application:,,,/AutumnBox;component/I18N/Langs/";
         static LanguageHelper()
         {
             Langs = new List<Language>(){
-                new Language("zh-CN.xaml"),
-                new Language("en-US.xaml")
+                new Language("zh-CN"),
+                new Language("en-US")
             };
         }
-        private const string zh_cn = "zh-CN";
-        private const string en_us = "en-US";
-        public static bool SystemLanguageIsChinese {
-            get {
+        public static bool SystemLanguageIsChinese
+        {
+            get
+            {
                 return System.Threading.Thread.CurrentThread.CurrentCulture.Name == "zh-CN";
             }
         }
-        public static void SetLanguageByEnvironment() {
-
-            var lang_name = System.Threading.Thread.CurrentThread.CurrentCulture.Name;
-            Logger.Warn("LanguageHelper",$"System language: {lang_name}");
-            switch (lang_name) {
-                case zh_cn:
-                    LoadLanguage("简体中文");
+        public static void SetLanguageByEnvironment()
+        {
+            switch (System.Threading.Thread.CurrentThread.CurrentCulture.Name)
+            {
+                case "zh-TW":
+                case "zh-CN":
+                case "zh-SG":
+                case "zh-HK":
+                    SetLanguage("zh-CN");
                     break;
-                case en_us:
                 default:
-                    LoadLanguage("English");
+                    SetLanguage("en-US");
                     break;
             }
         }
-        public static int GetLangIndex(string langName)
+        public static int FindIndex(string langCode)
         {
-            return Langs.FindIndex((lang) => { return lang.LanguageName == langName; });
+            return Langs.FindIndex((lang) => { return lang.LanguageCode == langCode; });
         }
-        public static void LoadLanguage(Language lang)
+        private static void SaveLangSetting()
         {
-            App.Current.Resources.MergedDictionaries[0] = lang.Resources;
-            SaveLangSetting();
-            LanguageChanged?.Invoke(new object(), new EventArgs());
+            Settings.Default.Language = App.Current.Resources["LanguageCode"].ToString();
         }
-        public static void LoadLanguage(string langName) {
-            App.Current.Resources.MergedDictionaries[0] = Langs[GetLangIndex(langName)].Resources;
-            SaveLangSetting();
-            LanguageChanged?.Invoke(new object(), new EventArgs());
-        }
-        public static void LoadLanguageByFileName(string fileName) {
-            int index = Langs.FindIndex((lang) =>
+        public static void SetLanguage(string languageCode)
+        {
+            try
             {
-                return lang.FileName == fileName;
-            });
-            LoadLanguage(Langs[index]);
+                var lang = Langs.Find((language) => language.LanguageCode == languageCode);
+                App.Current.Resources.MergedDictionaries[0] = lang.Resources;
+                SaveLangSetting();
+            }
+            catch
+            {
+                SetLanguage("zh-CN");
+            }
         }
-        private static void SaveLangSetting() {
-            Settings.Default.Language = Langs[GetLangIndex(App.Current.Resources["LanguageName"].ToString())].FileName;
+        public static void SetLanguage(Language language)
+        {
+            SetLanguage(language.LanguageCode);
         }
-        
     }
 }

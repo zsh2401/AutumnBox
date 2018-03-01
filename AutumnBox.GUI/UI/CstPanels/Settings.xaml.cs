@@ -16,7 +16,7 @@ namespace AutumnBox.GUI.UI.CstPanels
             InitializeComponent();
             CKBShowDebugWindowOnNextLaunch.IsChecked = Properties.Settings.Default.ShowDebuggingWindowNextLaunch;
             CbBoxLanguage.ItemsSource = LanguageHelper.Langs;
-            CbBoxLanguage.SelectedIndex = LanguageHelper.GetLangIndex(App.Current.Resources["LanguageName"].ToString());
+            CbBoxLanguage.SelectedIndex = LanguageHelper.FindIndex(App.Current.Resources["LanguageCode"].ToString());
             CbBoxLanguage.SelectionChanged += CbBoxLanguage_SelectionChanged;
         }
         public override void OnPanelClosed()
@@ -28,7 +28,7 @@ namespace AutumnBox.GUI.UI.CstPanels
 
         private void CbBoxLanguage_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            LanguageHelper.LoadLanguage((Language)CbBoxLanguage.SelectedItem);
+            LanguageHelper.SetLanguage((Language)CbBoxLanguage.SelectedItem);
         } 
 
         private void BtnCreateShortcut_Click(object sender, System.Windows.RoutedEventArgs e)

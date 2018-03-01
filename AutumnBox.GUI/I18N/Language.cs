@@ -12,29 +12,29 @@
 *
 \* =============================================================================*/
 using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Xml;
 
 namespace AutumnBox.GUI.I18N
 {
-#pragma warning disable CS0659 // 类型重写 Object.Equals(object o)，但不重写 Object.GetHashCode()
-    public sealed class Language
-#pragma warning restore CS0659 // 类型重写 Object.Equals(object o)，但不重写 Object.GetHashCode()
+    public sealed class Language : IEquatable<Language>
     {
-
-        private const string pathPrefix = "pack://application:,,,/AutumnBox;component/I18N/Langs/";
         public ResourceDictionary Resources
         {
             get
             {
-                if (_resources == null)
-                {
-                    Reload();
-                }
                 return _resources;
             }
         }
         private ResourceDictionary _resources;
+        public string LanguageCode
+        {
+            get
+            {
+                return Resources["LanguageCode"].ToString();
+            }
+        }
         public string LanguageName
         {
             get
@@ -42,22 +42,41 @@ namespace AutumnBox.GUI.I18N
                 return Resources["LanguageName"].ToString();
             }
         }
-        public string FileName { get; private set; }
-        public Language(string fileName)
+        public string FileName
         {
-            this.FileName = fileName;
+            get
+            {
+                return string.Format("{0}/{1}.xaml", LanguageHelper.Path, LanguageCode);
+            }
         }
-        public void Reload()
+        public Language(string languageCode)
         {
-            _resources = new ResourceDictionary { Source = new Uri(pathPrefix + FileName) };
+            _resources = new ResourceDictionary { Source = new Uri(LanguageHelper.Path + languageCode + ".xaml") };
         }
         public override bool Equals(object obj)
         {
             if (obj is Language)
             {
-                return this.FileName == ((Language)obj).FileName;
+                return Equals((Language)obj);
             }
-            return base.Equals(obj);
+            else
+            {
+                return base.Equals(obj);
+            }
+        }
+        public bool Equals(Language other)
+        {
+            return LanguageCode == other.LanguageCode;
+        }
+        public override int GetHashCode()
+        {
+            var hashCode = -1597780829;
+            hashCode = hashCode * -1521134295 + EqualityComparer<ResourceDictionary>.Default.GetHashCode(Resources);
+            hashCode = hashCode * -1521134295 + EqualityComparer<ResourceDictionary>.Default.GetHashCode(_resources);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(LanguageCode);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(LanguageName);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(FileName);
+            return hashCode;
         }
     }
 }
