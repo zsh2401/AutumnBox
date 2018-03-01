@@ -13,6 +13,7 @@
 \* =============================================================================*/
 using AutumnBox.GUI.Cfg;
 using AutumnBox.GUI.NetUtil;
+using AutumnBox.GUI.Properties;
 using AutumnBox.GUI.Util;
 using System.Diagnostics;
 using System.Windows;
@@ -55,7 +56,7 @@ namespace AutumnBox.GUI.Windows
         {
             if (CheckBoxSkip.IsChecked == true)
             {
-                Config.SkipVersion = version;
+                Settings.Default.SkipVersion = version;
             }
             this.Close();
         }

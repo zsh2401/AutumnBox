@@ -2,8 +2,17 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="AutumnBox.GUI.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="WTF" Type="System.String" Scope="User">
-      <Value Profile="(Default)">ok</Value>
+    <Setting Name="IsFirstLaunch" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Language" Type="System.String" Scope="User">
+      <Value Profile="(Default)">zh-CN.xaml</Value>
+    </Setting>
+    <Setting Name="ShowDebuggingWindowNextLaunch" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="SkipVersion" Type="System.String" Scope="User">
+      <Value Profile="(Default)">0.0.1</Value>
     </Setting>
   </Settings>
 </SettingsFile>

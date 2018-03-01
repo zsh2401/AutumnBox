@@ -25,13 +25,49 @@ namespace AutumnBox.GUI.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("ok")]
-        public string WTF {
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool IsFirstLaunch {
             get {
-                return ((string)(this["WTF"]));
+                return ((bool)(this["IsFirstLaunch"]));
             }
             set {
-                this["WTF"] = value;
+                this["IsFirstLaunch"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("zh-CN.xaml")]
+        public string Language {
+            get {
+                return ((string)(this["Language"]));
+            }
+            set {
+                this["Language"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ShowDebuggingWindowNextLaunch {
+            get {
+                return ((bool)(this["ShowDebuggingWindowNextLaunch"]));
+            }
+            set {
+                this["ShowDebuggingWindowNextLaunch"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.0.1")]
+        public string SkipVersion {
+            get {
+                return ((string)(this["SkipVersion"]));
+            }
+            set {
+                this["SkipVersion"] = value;
             }
         }
     }

@@ -12,6 +12,7 @@
 *
 \* =============================================================================*/
 using AutumnBox.GUI.Cfg;
+using AutumnBox.GUI.Properties;
 using AutumnBox.Support.Log;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -41,7 +42,7 @@ namespace AutumnBox.GUI.NetUtil
         public Version Version => new Version(VersionString);
         public bool NeedUpdate =>
             Version > Helper.SystemHelper.CurrentVersion //检测到的版本大于当前版本
-            && new Version(Config.SkipVersion) < Version;//并且没有被设置跳过
+            && new Version(Settings.Default.SkipVersion) < Version;//并且没有被设置跳过
        
         public DateTime Time => new DateTime(TimeArray[0], TimeArray[1], TimeArray[0]);
     }

@@ -14,11 +14,7 @@ namespace AutumnBox.GUI.UI.CstPanels
         public Settings()
         {
             InitializeComponent();
-#if! ENABLE_BLUR
-            TransparencySlider.IsEnabled = false;
-#endif
-            CKBShowDebugWindowOnNextLaunch.IsChecked = Config.ShowDebugWindowOnNextLaunch;
-            TransparencySlider.Value = Config.BackgroundA;
+            CKBShowDebugWindowOnNextLaunch.IsChecked = Properties.Settings.Default.ShowDebuggingWindowNextLaunch;
             CbBoxLanguage.ItemsSource = LanguageHelper.Langs;
             CbBoxLanguage.SelectedIndex = LanguageHelper.GetLangIndex(App.Current.Resources["LanguageName"].ToString());
             CbBoxLanguage.SelectionChanged += CbBoxLanguage_SelectionChanged;
@@ -26,14 +22,9 @@ namespace AutumnBox.GUI.UI.CstPanels
         public override void OnPanelClosed()
         {
             base.OnPanelClosed();
-            Config.ShowDebugWindowOnNextLaunch = CKBShowDebugWindowOnNextLaunch.IsChecked == true;
+            Properties.Settings.Default.ShowDebuggingWindowNextLaunch = CKBShowDebugWindowOnNextLaunch.IsChecked == true;
         }
 
-        private void Slider_ValueChanged(object sender, System.Windows.RoutedPropertyChangedEventArgs<double> e)
-        {
-            UIHelper.SetOwnerTransparency((byte)TransparencySlider.Value);
-            Config.BackgroundA = (byte)TransparencySlider.Value;
-        }
 
         private void CbBoxLanguage_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -48,6 +39,11 @@ namespace AutumnBox.GUI.UI.CstPanels
         private void Button_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             new DebugWindow().Show();
+        }
+        public override void OnPanelHide()
+        {
+            base.OnPanelHide();
+            Properties.Settings.Default.Save();
         }
     }
 }

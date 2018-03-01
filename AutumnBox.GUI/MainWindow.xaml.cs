@@ -138,7 +138,7 @@ namespace AutumnBox.GUI
                 Thread.Sleep(1000);
                 Dispatcher.Invoke(() =>
                 {
-                    if (Config.IsFirstLaunch)
+                if (Properties.Settings.Default.IsFirstLaunch)
                     {
                         var aboutPanel = new FastPanel(this.GridMain, new About());
                         aboutPanel.Display();

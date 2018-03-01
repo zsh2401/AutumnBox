@@ -27,7 +27,6 @@ namespace AutumnBox.GUI.Util
         public AutoGC() { }
         public void Start()
         {
-           
             continueAutoGC = true;
             new Thread(_AutoGC) { Name = "Auto GC" }.Start();
         }

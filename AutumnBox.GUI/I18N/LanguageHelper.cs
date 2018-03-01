@@ -12,6 +12,7 @@
 *
 \* =============================================================================*/
 using AutumnBox.GUI.Cfg;
+using AutumnBox.GUI.Properties;
 using AutumnBox.Support.Log;
 using System;
 using System.Collections.Generic;
@@ -78,7 +79,7 @@ namespace AutumnBox.GUI.I18N
             LoadLanguage(Langs[index]);
         }
         private static void SaveLangSetting() {
-            Config.Lang = Langs[GetLangIndex(App.Current.Resources["LanguageName"].ToString())].FileName;
+            Settings.Default.Language = Langs[GetLangIndex(App.Current.Resources["LanguageName"].ToString())].FileName;
         }
         
     }
