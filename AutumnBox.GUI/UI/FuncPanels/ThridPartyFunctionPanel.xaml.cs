@@ -110,7 +110,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
 
         private void BtnOpenModuleFloder_Click(object sender, RoutedEventArgs e)
         {
-            Process.Start(ExtendModuleManager.ModsPath);
+            Process.Start(ExtensionManager.ExtensionsPath);
         }
 
         private void SetBtnRunState(bool enable)

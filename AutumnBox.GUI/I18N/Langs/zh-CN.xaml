@@ -335,4 +335,8 @@
     <s:String x:Key="Menu">菜单</s:String>
     <s:String x:Key="Contact">联系开发者</s:String>
     <s:String x:Key="Donate">捐赠开发者</s:String>
+    
+    <!--加载提示-->
+    <s:String x:Key="ldmsgStartAdb">正在启动ADB服务</s:String>
+    <s:String x:Key="ldmsgStartDeviceMonitor">正在启动设备拔插监听</s:String>
 </ResourceDictionary>

@@ -73,6 +73,7 @@ namespace AutumnBox.GUI.I18N
                 var lang = Langs.Find((language) => language.LanguageCode == languageCode);
                 App.Current.Resources.MergedDictionaries[0] = lang.Resources;
                 SaveLangSetting();
+                LanguageChanged?.Invoke(new object(), new EventArgs());
             }
             catch
             {

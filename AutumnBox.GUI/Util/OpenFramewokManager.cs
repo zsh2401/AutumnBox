@@ -5,40 +5,23 @@
 *************************************************/
 using AutumnBox.Basic.FlowFramework;
 using AutumnBox.GUI.Helper;
-using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.Internal;
 using AutumnBox.OpenFramework.Open.V1;
-using AutumnBox.Support.Log;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Reflection;
 using System.Windows;
 
 namespace AutumnBox.GUI.Util
 {
-    internal static class ExtendModuleManager
+    internal static class OpenFramewokManager
     {
-        public static string ModsPath
-        {
-            get
-            {
-                return ExtensionManager.ExtensionsPath;
-            }
-        }
 
-        public static void Load()
+        public static void LoadApi()
         {
             OpenApi.Gui = new GuiApi();
             OpenApi.Log = new LogApi();
             ExtensionManager.LoadAllExtension();
         }
-        public static void DestoryAll()
-        {
-            ExtensionManager.DestoryAllExtension();
-        }
-
+        
         private class GuiApi : IGuiApi
         {
             public string GetCurrentLanguageName()

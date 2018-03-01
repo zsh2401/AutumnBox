@@ -78,7 +78,7 @@ namespace AutumnBox.GUI
         {
             Debug.WriteLine("Loading...", TAG);
             loadingWindowApi.SetProgress(10);
-            loadingWindowApi.SetTip("启动ADB服务中....");
+            loadingWindowApi.SetTip(Resources["ldmsgStartAdb"].ToString());
             await Task.Run(() =>
             {
                 bool success = false;
@@ -104,11 +104,8 @@ namespace AutumnBox.GUI
                     }
                 }
             });
-            loadingWindowApi.SetProgress(50);
-            await Task.Run(() =>
-            {
-                Thread.Sleep(2000);
-            });
+            loadingWindowApi.SetProgress(60);
+            loadingWindowApi.SetTip(Resources["ldmsgStartDeviceMonitor"].ToString());
             App.Current.MainWindow = new MainWindow();
             DevicesMonitor.Begin();
             loadingWindowApi.SetProgress(80);
@@ -116,7 +113,7 @@ namespace AutumnBox.GUI
             {
                 new DebugWindow().Show();
             }
-            ExtendModuleManager.Load();
+            OpenFramewokManager.LoadApi();
             App.Current.MainWindow.Show();
             loadingWindowApi.SetProgress(100);
             loadingWindowApi.Finish();
