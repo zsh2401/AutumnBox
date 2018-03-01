@@ -16,7 +16,7 @@ namespace AutumnBox.Basic.Flows
 {
     public class ShizukuManagerActivator : ShScriptExecuter
     {
-        public static readonly string _AppPackageName = "moe.shizuku.privileged.api";
+        public const string _AppPackageName = "moe.shizuku.privileged.api";
         protected override string AppActivity => "moe.shizuku.manager.MainActivity";
         protected override string AppPackageName => _AppPackageName;
         protected override string ScriptPath => "/sdcard/Android/data/moe.shizuku.privileged.api/files/start.sh";
