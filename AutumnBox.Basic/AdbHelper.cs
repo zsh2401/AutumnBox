@@ -20,10 +20,19 @@ using System.Diagnostics;
 
 namespace AutumnBox.Basic.Adb
 {
+    /// <summary>
+    /// ADB帮助(管理)
+    /// </summary>
     public static class AdbHelper
     {
+        /// <summary>
+        /// 当ADB服务器失败时触发
+        /// </summary>
         public static event EventHandler AdbServerStartsFailed;
-        public static void RisesAdbServerStartsFailedEvent() {
+        /// <summary>
+        /// 触发adb服务失败事件
+        /// </summary>
+        internal static void RisesAdbServerStartsFailedEvent() {
             AdbServerStartsFailed?.Invoke(new object(), new EventArgs());
         }
         /// <summary>

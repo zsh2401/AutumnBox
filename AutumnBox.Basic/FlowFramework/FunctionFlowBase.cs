@@ -15,7 +15,7 @@
 namespace AutumnBox.Basic.FlowFramework
 {
     /// <summary>
-    /// all flow is this, this is all flow
+    /// 所有FunctionFlow的基类
     /// </summary>
     public abstract class FunctionFlowBase : object
     {
@@ -24,10 +24,13 @@ namespace AutumnBox.Basic.FlowFramework
         /// 调用条件 flow.MustTriggerAnyFinished && (flow.Finished ==null || flow._isSync)
         /// </summary>
         public static event FinishedEventHandler<FlowResult> AnyFinished;
-        protected static void OnAnyFinished(object sender, FinishedEventArgs<FlowResult> e)
-        {
+        /// <summary>
+        /// 触发"任何一个功能流程完成"的事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected static void RisesAnyFinishedEvent(object sender, FinishedEventArgs<FlowResult> e) {
             AnyFinished?.Invoke(sender, e);
         }
-        protected internal static bool AnyFinishedRegistered => (AnyFinished != null);
     }
 }

@@ -33,27 +33,56 @@ namespace AutumnBox.Basic.MultipleDevices
                         select _devInfo;
             return haves.Count() > 0;
         }
+        /// <summary>
+        /// 将设备列表进行合并
+        /// </summary>
+        /// <param name="left"></param>
+        /// <param name="right"></param>
+        /// <returns></returns>
         public static DevicesList operator +(DevicesList left, DevicesList right)
         {
             left.AddRange(right);
             return left;
         }
+        /// <summary>
+        /// 判断两个设备列表的内容是否一致
+        /// </summary>
+        /// <param name="left"></param>
+        /// <param name="right"></param>
+        /// <returns></returns>
         public static bool operator ==(DevicesList left, DevicesList right)
         {
             return left.Equals(right);
         }
+        /// <summary>
+        /// 判断两个设备列表的内容是否不一致
+        /// </summary>
+        /// <param name="left"></param>
+        /// <param name="right"></param>
+        /// <returns></returns>
         public static bool operator !=(DevicesList left, DevicesList right)
         {
             return !left.Equals(right);
         }
+        /// <summary>
+        /// 判断列表内容是否一致
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
         public bool Equals(DevicesList other)
         {
             if (Count != other.Count) return false;
-            foreach (DeviceBasicInfo info in this) {
+            foreach (DeviceBasicInfo info in this)
+            {
                 if (!other.Contains(info)) return false;
             }
             return true;
         }
+        /// <summary>
+        /// 判断内容是否一致
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         public override bool Equals(object obj)
         {
             if (obj is DevicesList)
@@ -65,9 +94,18 @@ namespace AutumnBox.Basic.MultipleDevices
                 return base.Equals(obj);
             }
         }
+        /// <summary>
+        /// 获取hashcode
+        /// </summary>
+        /// <returns></returns>
         public override int GetHashCode()
         {
-            return base.GetHashCode();
+            long hashCode = 0;
+            this.ForEach((info) =>
+            {
+                hashCode += info.ToString().GetHashCode();
+            });
+            return (int)(hashCode / this.Count);
         }
     }
 }

@@ -21,10 +21,21 @@ namespace AutumnBox.Basic.Util
 {
     public static class AdbConstants
     {
-        public const string AUTUMNBOX_TEMP_FLODER = "/sdcard/autumnbox_temp";
+     /// <summary>
+     /// adb应用程序名
+     /// </summary>
         public const string ADB_FILENAME = "adb.exe";
+        /// <summary>
+        /// fastboot应用程序名
+        /// </summary>
         public const string FASTBOOT_FILENAME = "fastboot.exe";
+        /// <summary>
+        /// adb工具路径
+        /// </summary>
         public const string toolsPath = @"google\platform-tools\";
+        /// <summary>
+        /// 完整的adb工具相对路径
+        /// </summary>
         public static string FullAdbFileName
         {
             get
@@ -32,6 +43,9 @@ namespace AutumnBox.Basic.Util
                 return toolsPath + ADB_FILENAME;
             }
         }
+        /// <summary>
+        /// 完整的fastboot工具相对路径
+        /// </summary>
         public static string FullFastbootFileName
         {
             get

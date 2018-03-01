@@ -35,9 +35,21 @@ namespace AutumnBox.Basic.Util
     /// </summary>
     public enum LinuxReturnCode
     {
+        /// <summary>
+        /// 没事
+        /// </summary>
         None = 0,
+        /// <summary>
+        /// 错误
+        /// </summary>
         Error = 1,
+        /// <summary>
+        /// KeyHasExpired
+        /// </summary>
         KeyHasExpired = 127,
+        /// <summary>
+        /// 未知
+        /// </summary>
         Unknow = -1,
     }
 }

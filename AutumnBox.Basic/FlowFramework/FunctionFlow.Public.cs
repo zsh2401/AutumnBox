@@ -19,6 +19,11 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.FlowFramework
 {
+    /// <summary>
+    /// 功能流程基类
+    /// </summary>
+    /// <typeparam name="TArgs"></typeparam>
+    /// <typeparam name="TResult"></typeparam>
     public abstract partial class FunctionFlow<TArgs, TResult>
         : FunctionFlowBase, IOutputable, IForceStoppable, IDisposable, ICompletable, INoGenericFlow
         where TArgs : FlowArgs, new()
@@ -130,13 +135,14 @@ namespace AutumnBox.Basic.FlowFramework
         /// <summary>
         /// 强制停止这个FunctionFlow
         /// </summary>
-        public void ForceStop()
+        public virtual void ForceStop()
         {
             Logger.Warn(this,"Try to force Stop");
             if (_pid == null) return;
             SystemHelper.KillProcessAndChildrens((int)_pid);
             isForceStoped = true;
             Logger.Info(this,"Force stoped...");
+            return;
         }
         /// <summary>
         /// 获取这个FuntionFlow的停止器

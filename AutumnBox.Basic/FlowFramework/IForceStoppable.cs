@@ -11,11 +11,6 @@
 * Company: I am free man
 *
 \* =============================================================================*/
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.FlowFramework
 {
@@ -24,6 +19,9 @@ namespace AutumnBox.Basic.FlowFramework
     /// </summary>
     public interface IForceStoppable
     {
+        /// <summary>
+        /// 强制停止
+        /// </summary>
         void ForceStop();
     }
 }

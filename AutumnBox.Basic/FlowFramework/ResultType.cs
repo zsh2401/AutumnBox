@@ -19,10 +19,25 @@ namespace AutumnBox.Basic.FlowFramework
     /// </summary>
     public enum ResultType
     {
+        /// <summary>
+        /// 异常
+        /// </summary>
         Exception = -1,
+        /// <summary>
+        /// 成功
+        /// </summary>
         Successful = 0,
+        /// <summary>
+        /// 可能成功
+        /// </summary>
         MaybeSuccessful = 1,
+        /// <summary>
+        /// 可能不成功
+        /// </summary>
         MaybeUnsuccessful = 2,
+        /// <summary>
+        /// 不成功
+        /// </summary>
         Unsuccessful = 3,
     }
 }

@@ -14,7 +14,14 @@
 
 namespace AutumnBox.Basic.FlowFramework
 {
+    /// <summary>
+    /// 默认参数和默认结果类型的功能流程类
+    /// </summary>
     public abstract class FunctionFlow : FunctionFlow<FlowArgs, FlowResult> { }
+    /// <summary>
+    /// 自定义参数和默认结果类型的功能流程类
+    /// </summary>
+    /// <typeparam name="TArgs">泛型参数</typeparam>
     public abstract class FunctionFlow<TArgs> : FunctionFlow<TArgs, FlowResult>
         where TArgs : FlowArgs, new()
     { }

@@ -11,10 +11,20 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Util
 {
+    /// <summary>
+    /// 实现此接口,可调用方法来打印信息
+    /// </summary>
     public interface IPrintable
     {
+        /// <summary>
+        /// 打印到log
+        /// </summary>
+        /// <param name="printOnRelease"></param>
         void PrintOnLog(bool printOnRelease=false);
 
+        /// <summary>
+        /// 打印到控制台
+        /// </summary>
         void PrintOnConsole();
     }
 }
