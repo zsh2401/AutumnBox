@@ -36,48 +36,62 @@ namespace AutumnBox.GUI.UI.FuncPanels
             UIHelper.SetGridButtonStatus(MainGrid, status);
         }
 
-        private async void ButtonStartBrventService_Click(object sender, RoutedEventArgs e)
+        private bool BreventPrecheck(DeviceSerial seria, string pkgName, string msgOnNotInstall, ref bool fixAndroidO)
         {
-            /*检查是否安装了这个App*/
-            bool? isInstallThisApp = await Task.Run(() =>
-            {
-                return new DeviceSoftwareInfoGetter(_currentDevInfo.Serial).IsInstall(BreventServiceActivator._AppPackageName);
-            });
-            if (isInstallThisApp == false) { BoxHelper.ShowMessageDialog("Warning", "msgPlsInstallBreventFirst"); return; }
-
-            /*判断是否是安卓8.0操作系统*/
+            bool? isInstall = false;
             bool isAndroidO = false;
-            try
+            Task.Run(() =>
             {
-                Version currentDevAndroidVersion = new DeviceBuildPropGetter(_currentDevInfo.Serial).GetAndroidVersion();
-                isAndroidO = currentDevAndroidVersion >= new Version("8.0");
-            }
-            catch (NullReferenceException) { }
-
-            /*如果是安卓O,询问用户是否要在启动脚本后开启网络ADB*/
-            var args = new ShScriptExecuterArgs() { DevBasicInfo = _currentDevInfo };
+                isInstall = new DeviceSoftwareInfoGetter(_currentDevInfo.Serial).IsInstall(pkgName);
+                try
+                {
+                    Version currentDevAndroidVersion = new DeviceBuildPropGetter(_currentDevInfo.Serial).GetAndroidVersion();
+                    isAndroidO = currentDevAndroidVersion >= new Version("8.0");
+                }
+                catch (NullReferenceException) { }
+                this.Dispatcher.Invoke(() =>
+                {
+                    BoxHelper.CloseLoadingDialog();
+                });
+            });
+            BoxHelper.ShowLoadingDialog();
+            if (isInstall == false) { BoxHelper.ShowMessageDialog("Warning", msgOnNotInstall); return false; }
             if (isAndroidO)
             {
-                var result = BoxHelper.ShowChoiceDialog("msgNotice",
-                    "msgFixAndroidO",
-                    "btnDoNotOpen", "btnOpen");
+                var result = BoxHelper.ShowChoiceDialog("msgNotice", "msgFixAndroidO", "btnDoNotOpen", "btnOpen");
                 switch (result)
                 {
                     case ChoiceResult.BtnCancel:
-                        return;
+                        return false;
                     case ChoiceResult.BtnLeft:
-                        args.FixAndroidOAdb = false;
+                        fixAndroidO = false;
                         break;
                     case ChoiceResult.BtnRight:
-                        args.FixAndroidOAdb = true;
+                        fixAndroidO = true;
                         break;
                 }
             }
-            /*开始操作*/
-            BreventServiceActivator activator = new BreventServiceActivator();
-            activator.Init(args);
-            activator.RunAsync();
-            BoxHelper.ShowLoadingDialog(activator);
+            return true;
+        }
+
+        private void ButtonStartBrventService_Click(object sender, RoutedEventArgs e)
+        {
+
+            bool fixAndroidO = false;
+            var _continue = BreventPrecheck(_currentDevInfo.Serial,
+                BreventServiceActivator._AppPackageName,
+                "msgPlsInstallBreventFirst",
+                ref fixAndroidO);
+
+            if (_continue)
+            {
+                var args = new ShScriptExecuterArgs() { DevBasicInfo = _currentDevInfo, FixAndroidOAdb = fixAndroidO };
+                /*开始操作*/
+                BreventServiceActivator activator = new BreventServiceActivator();
+                activator.Init(args);
+                activator.RunAsync();
+                BoxHelper.ShowLoadingDialog(activator);
+            }
         }
 
         private void ButtonPushFileToSdcard_Click(object sender, RoutedEventArgs e)
@@ -293,35 +307,34 @@ namespace AutumnBox.GUI.UI.FuncPanels
             }
         }
 
-        private async void ButtonIceBoxAct_Click(object sender, RoutedEventArgs e)
+        private bool DeviceOwnerSetterCheck(string pkgName, string notInstallMsg)
         {
-            /*检查是否安装了这个App*/
-            bool? isInstallThisApp = await Task.Run(() =>
+            bool? isInstall = false;
+            bool wasRemovedAllUser = false;
+            Task.Run(() =>
             {
-                return new DeviceSoftwareInfoGetter(_currentDevInfo.Serial).IsInstall(IceBoxActivator.AppPackageName);
+                isInstall = new DeviceSoftwareInfoGetter(_currentDevInfo.Serial).IsInstall(pkgName);
+                wasRemovedAllUser = new UserManager(_currentDevInfo.Serial).GetUsers(true).Length == 0;
+                App.Current.Dispatcher.Invoke(() =>
+                {
+                    BoxHelper.CloseLoadingDialog();
+                });
             });
-
-            if (isInstallThisApp == false) { BoxHelper.ShowMessageDialog("Warning", "msgPlsInstallIceBoxFirst"); return; }
-            /*提示用户删除账户*/
-            bool _continue = BoxHelper.ShowChoiceDialog("msgNotice",
-                    "msgIceAct",
-                    "btnCancel",
-                    "btnContinue").ToBool();
-            if (!_continue) return;
-
-            /*检查用户删完没*/
-            bool userIsAllRemoved = await Task.Run(() =>
+            BoxHelper.ShowLoadingDialog();
+            if (isInstall != true) { BoxHelper.ShowMessageDialog("Warning", notInstallMsg); return false; }
+            if (!wasRemovedAllUser)
             {
-                return new UserManager(_currentDevInfo.Serial).GetUsers(true).Length == 0;
-            });
-            if (!userIsAllRemoved)
-            {
-                var choiceResult =
-                     BoxHelper.ShowChoiceDialog("Warning",
-                     "msgMaybeHaveOtherUser",
-                     "btnCancel", "btnIHaveDeletedAllUser");
-                if (choiceResult != ChoiceResult.BtnRight) return;
+                return
+                      BoxHelper.ShowChoiceDialog("Warning",
+                      "msgMaybeHaveOtherUser",
+                      "btnCancel", "btnIHaveDeletedAllUser").ToBool();
             }
+            return true;
+        }
+
+        private void ButtonIceBoxAct_Click(object sender, RoutedEventArgs e)
+        {
+            if (!DeviceOwnerSetterCheck(IceBoxActivator.AppPackageName, "msgPlsInstallIceBoxFirst")) return;
 
             /*开始操作 */
             IceBoxActivator iceBoxActivator = new IceBoxActivator();
@@ -330,31 +343,9 @@ namespace AutumnBox.GUI.UI.FuncPanels
             BoxHelper.ShowLoadingDialog(iceBoxActivator);
         }
 
-        private async void ButtonAirForzenAct_Click(object sender, RoutedEventArgs e)
+        private  void ButtonAirForzenAct_Click(object sender, RoutedEventArgs e)
         {
-            /*检查是否安装了这个App*/
-            bool? isInstallThisApp = await Task.Run(() =>
-            {
-                return new DeviceSoftwareInfoGetter(_currentDevInfo.Serial).IsInstall(AirForzenActivator.AppPackageName);
-            });
-
-            /*检查用户删完没*/
-            bool userIsAllRemoved = await Task.Run(() =>
-            {
-                return new UserManager(_currentDevInfo.Serial).GetUsers(true).Length == 0;
-            });
-
-            if (isInstallThisApp == false) { BoxHelper.ShowMessageDialog("Warning", "msgPlsInstallAirForzenFirst"); return; }
-            /*提示用户删除账户*/
-            bool _continue = await Task.Run(() =>
-            {
-                return BoxHelper.ShowChoiceDialog(
-                    "msgNotice",
-                   "msgIceAct",
-                    "btnCancel", "btnContinue").ToBool();
-            });
-            if (!_continue) return;
-
+            if (!DeviceOwnerSetterCheck(AirForzenActivator.AppPackageName, "msgPlsInstallAirForzenFirst")) return;
 
             /*开始操作*/
             AirForzenActivator airForzenActivator = new AirForzenActivator();
@@ -363,91 +354,75 @@ namespace AutumnBox.GUI.UI.FuncPanels
             BoxHelper.ShowLoadingDialog(airForzenActivator);
         }
 
-        private async void ButtonShizukuManager_Click(object sender, RoutedEventArgs e)
+        private void ButtonShizukuManager_Click(object sender, RoutedEventArgs e)
         {
-            /*检查是否安装了这个App*/
-            bool? isInstallThisApp = await Task.Run(() =>
-            {
-                return new DeviceSoftwareInfoGetter(_currentDevInfo.Serial).IsInstall(ShizukuManagerActivator._AppPackageName);
-            });
-            if (isInstallThisApp == false) { BoxHelper.ShowMessageDialog("Warning", "msgPlsInstallShizukuManagerFirst"); return; }
+            bool fixAndroidO = false;
+            var _continue = BreventPrecheck(_currentDevInfo.Serial,
+                ShizukuManagerActivator._AppPackageName,
+                "msgPlsInstallShizukuManagerFirst",
+                ref fixAndroidO);
 
-            /*判断是否是安卓8.0操作系统*/
-            bool isAndroidO = false;
-            try
+            if (_continue)
             {
-                Version currentDevAndroidVersion = new DeviceBuildPropGetter(_currentDevInfo.Serial).GetAndroidVersion();
-                isAndroidO = currentDevAndroidVersion >= new Version("8.0");
+                var args = new ShScriptExecuterArgs() { DevBasicInfo = _currentDevInfo, FixAndroidOAdb = fixAndroidO };
+                /*开始操作*/
+                ShizukuManagerActivator activator = new ShizukuManagerActivator();
+                activator.Init(args);
+                activator.RunAsync();
+                BoxHelper.ShowLoadingDialog(activator);
             }
-            catch (NullReferenceException) { }
+            ///*检查是否安装了这个App*/
+            //bool? isInstallThisApp = await Task.Run(() =>
+            //{
+            //    return new DeviceSoftwareInfoGetter(_currentDevInfo.Serial).IsInstall(ShizukuManagerActivator._AppPackageName);
+            //});
+            //if (isInstallThisApp == false) { BoxHelper.ShowMessageDialog("Warning", "msgPlsInstallShizukuManagerFirst"); return; }
 
-            /*如果是安卓O,询问用户是否要在启动脚本后开启网络ADB*/
-            var args = new ShScriptExecuterArgs() { DevBasicInfo = _currentDevInfo };
-            if (isAndroidO)
-            {
-                var result = BoxHelper.ShowChoiceDialog("msgNotice",
-                    "msgFixAndroidO",
-                    "btnDoNotOpen", "btnOpen");
-                switch (result)
-                {
-                    case ChoiceResult.BtnCancel:
-                        return;
-                    case ChoiceResult.BtnLeft:
-                        args.FixAndroidOAdb = false;
-                        break;
-                    case ChoiceResult.BtnRight:
-                        args.FixAndroidOAdb = true;
-                        break;
-                }
-            }
-            /*开始操作*/
-            ShizukuManagerActivator activator = new ShizukuManagerActivator();
-            activator.Init(args);
-            activator.RunAsync();
-            BoxHelper.ShowLoadingDialog(activator);
+            ///*判断是否是安卓8.0操作系统*/
+            //bool isAndroidO = false;
+            //try
+            //{
+            //    Version currentDevAndroidVersion = new DeviceBuildPropGetter(_currentDevInfo.Serial).GetAndroidVersion();
+            //    isAndroidO = currentDevAndroidVersion >= new Version("8.0");
+            //}
+            //catch (NullReferenceException) { }
+
+            ///*如果是安卓O,询问用户是否要在启动脚本后开启网络ADB*/
+            //var args = new ShScriptExecuterArgs() { DevBasicInfo = _currentDevInfo };
+            //if (isAndroidO)
+            //{
+            //    var result = BoxHelper.ShowChoiceDialog("msgNotice",
+            //        "msgFixAndroidO",
+            //        "btnDoNotOpen", "btnOpen");
+            //    switch (result)
+            //    {
+            //        case ChoiceResult.BtnCancel:
+            //            return;
+            //        case ChoiceResult.BtnLeft:
+            //            args.FixAndroidOAdb = false;
+            //            break;
+            //        case ChoiceResult.BtnRight:
+            //            args.FixAndroidOAdb = true;
+            //            break;
+            //    }
+            //}
+            ///*开始操作*/
+            //ShizukuManagerActivator activator = new ShizukuManagerActivator();
+            //activator.Init(args);
+            //activator.RunAsync();
+            //BoxHelper.ShowLoadingDialog(activator);
         }
 
-        private async void ButtonIslandAct_Click(object sender, RoutedEventArgs e)
+        private  void ButtonIslandAct_Click(object sender, RoutedEventArgs e)
         {
-            /*检查是否安装了这个App*/
-            bool? isInstallThisApp = await Task.Run(() =>
-            {
-                return new DeviceSoftwareInfoGetter(_currentDevInfo.Serial).IsInstall(IslandActivator.AppPackageName);
-            });
-            if (isInstallThisApp == false) { BoxHelper.ShowMessageDialog("Warning", "msgPlsInstallIslandFirst"); return; }
-
-
-            /*提示用户删除账户*/
-            bool _continue = await Task.Run(() =>
-            {
-                return BoxHelper.ShowChoiceDialog("msgNotice",
-                    "msgIceAct",
-                    "btnCancel",
-                    "btnContinue"
-                    ).ToBool();
-            });
-            if (!_continue) return;
-
-            /*检查用户删完没*/
-            bool userIsAllRemoved = await Task.Run(() =>
-            {
-                return new UserManager(_currentDevInfo.Serial).GetUsers(true).Length == 0;
-            });
-            if (!userIsAllRemoved)
-            {
-                var choiceResult =
-                     BoxHelper.ShowChoiceDialog("Warning",
-                     "msgMaybeHaveOtherUser",
-                     "btnCancel", "btnIHaveDeletedAllUser");
-                if (choiceResult != ChoiceResult.BtnRight) return;
-            }
-
+            if (!DeviceOwnerSetterCheck(IslandActivator.AppPackageName, "msgPlsInstallIslandFirst")) return;
             /*开始操作*/
             IslandActivator islandActivator = new IslandActivator();
             islandActivator.Init(new FlowArgs() { DevBasicInfo = _currentDevInfo });
             islandActivator.RunAsync();
             BoxHelper.ShowLoadingDialog(islandActivator);
         }
+
         private void ButtonVirtualBtnHide_Click(object sender, RoutedEventArgs e)
         {
             var choiceResult = BoxHelper.ShowChoiceDialog("PleaseSelected",
@@ -485,11 +460,6 @@ namespace AutumnBox.GUI.UI.FuncPanels
             }
         }
 
-        private void BtnAppManager_Click(object sender, RoutedEventArgs e)
-        {
-            new PackageManageWindow(_currentDevInfo.Serial) { Owner = App.Current.MainWindow }.Show();
-        }
-
         private void ButtonGMCAct_Click(object sender, RoutedEventArgs e)
         {
             var _continue = BoxHelper.ShowChoiceDialog("warning", "msgActiveGMC", "btnCancel", "btnContinue").ToBool();
@@ -502,42 +472,9 @@ namespace AutumnBox.GUI.UI.FuncPanels
             }
         }
 
-        private async void ButtonActivateStopapp_Click(object sender, RoutedEventArgs e)
+        private  void ButtonActivateStopapp_Click(object sender, RoutedEventArgs e)
         {
-            /*检查是否安装了这个App*/
-            bool? isInstallThisApp = await Task.Run(() =>
-            {
-                return new DeviceSoftwareInfoGetter(_currentDevInfo.Serial).IsInstall(StopAppActivator.AppPackageName);
-            });
-
-            if (isInstallThisApp == false) { BoxHelper.ShowMessageDialog("Warning", "msgPlsInstallStopAppFirst"); return; }
-            /*提示用户删除账户*/
-            bool _continue = await Task.Run(() =>
-            {
-                return BoxHelper.ShowChoiceDialog(
-                    "msgNotice",
-                    "msgIceAct",
-                    "btnCancel",
-                    "btnContinue").ToBool();
-            });
-            if (!_continue) return;
-
-
-            /*检查用户删完没*/
-            bool userIsAllRemoved = await Task.Run(() =>
-            {
-                return new UserManager(_currentDevInfo.Serial).GetUsers(true).Length == 0;
-            });
-            if (!userIsAllRemoved)
-            {
-                var choiceResult =
-                     BoxHelper.ShowChoiceDialog("Warning",
-                     "msgMaybeHaveOtherUser",
-                     "btnCancel", "btnIHaveDeletedAllUser");
-                if (choiceResult != ChoiceResult.BtnRight) return;
-            }
-
-
+            if (!DeviceOwnerSetterCheck(StopAppActivator.AppPackageName, "msgPlsInstallStopAppFirst")) return;
             /*开始操作*/
             StopAppActivator activator = new StopAppActivator();
             activator.Init(new FlowArgs() { DevBasicInfo = _currentDevInfo });

@@ -140,7 +140,7 @@ namespace AutumnBox.GUI
             {
                 Directory.CreateDirectory("logs");
             }
-            File.WriteAllText("logs\\exception.txt", exstr);
+            File.WriteAllText("logs\\exception.log", exstr);
             e.Handled = true;
             App.Current.Shutdown(1);
         }
