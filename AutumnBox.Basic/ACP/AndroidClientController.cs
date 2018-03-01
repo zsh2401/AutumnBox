@@ -25,7 +25,7 @@ namespace AutumnBox.Basic.ACP
         private const string BROADCAST_STOP_ACP_SERVICE =
             "top.atmb.autumnbox.COMMAND_STOP_ACP_SERVICE";
         public static bool IsInstallAutumnBoxApp(DeviceSerial serial) {
-            return PackageHelper.IsInstall(serial, PACKAGE_NAME) == true;
+            return PackageManager.IsInstall(serial, PACKAGE_NAME) == true;
         }
         public static AdvanceOutput StartMainActivity(DeviceSerial device)
         {
@@ -34,7 +34,7 @@ namespace AutumnBox.Basic.ACP
         public static AdvanceOutput AwakeAcpService(DeviceSerial device) {
             CheckInstallApp(device);
             StartMainActivity(device);
-            return Service.RunService(device, PACKAGE_NAME,SERVICE_NAME);
+            return Service.StartService(device, PACKAGE_NAME,SERVICE_NAME);
         }
         public static AdvanceOutput StopAcpService(DeviceSerial device) {
             return Broadcast.Send(device,BROADCAST_STOP_ACP_SERVICE);

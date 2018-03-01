@@ -15,6 +15,11 @@ namespace AutumnBox.Basic.Device
 {
     public static class DeviceStateExt
     {
+        /// <summary>
+        /// 将字符串解析为DeviceState
+        /// </summary>
+        /// <param name="strStatus"></param>
+        /// <returns></returns>
         public static DeviceState ToDeviceState(this string strStatus)
         {
             switch (strStatus)

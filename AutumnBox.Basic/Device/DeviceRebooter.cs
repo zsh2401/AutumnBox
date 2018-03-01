@@ -17,9 +17,21 @@ namespace AutumnBox.Basic.Device
     /// </summary>
     public enum RebootOptions
     {
+        /// <summary>
+        /// 重启到系统
+        /// </summary>
         System,
+        /// <summary>
+        /// 重启到恢复模式
+        /// </summary>
         Recovery,
+        /// <summary>
+        /// 重启到bootloader模式
+        /// </summary>
         Fastboot,
+        /// <summary>
+        /// 高通9008模式
+        /// </summary>
         Snapdragon9008,
     }
     /// <summary>
@@ -27,7 +39,6 @@ namespace AutumnBox.Basic.Device
     /// </summary>
     public static class DeviceRebooter
     {
-        public delegate void FinishedCallback();
         private static CommandExecuter executer;
         static DeviceRebooter()
         {
@@ -39,7 +50,7 @@ namespace AutumnBox.Basic.Device
         /// <param name="dev"></param>
         /// <param name="option"></param>
         /// <param name="callback"></param>
-        public async static void RebootAsync(DeviceBasicInfo dev, RebootOptions option = RebootOptions.System, FinishedCallback callback = null)
+        public async static void RebootAsync(DeviceBasicInfo dev, RebootOptions option = RebootOptions.System, Action callback = null)
         {
             await Task.Run(() =>
             {

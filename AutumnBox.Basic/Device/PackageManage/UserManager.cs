@@ -27,6 +27,9 @@ namespace AutumnBox.Basic.Device.PackageManage
         /// </summary>
         public string Name { get; set; }
     }
+    /// <summary>
+    /// 用户管理器
+    /// </summary>
     public class UserManager
     {
         private static readonly Regex userInfoRegex;
@@ -35,6 +38,10 @@ namespace AutumnBox.Basic.Device.PackageManage
         {
             userInfoRegex = new Regex(@"UserInfo{(?<id>\d+):(?<name>.+):", RegexOptions.Multiline);
         }
+        /// <summary>
+        /// 构造一个用户管理器
+        /// </summary>
+        /// <param name="device"></param>
         public UserManager(DeviceSerial device)
         {
             this.shell = new AndroidShellV2(device);

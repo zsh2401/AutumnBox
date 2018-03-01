@@ -22,12 +22,20 @@ namespace AutumnBox.Basic.Device
     {
         private readonly CommandExecuter executer;
         private readonly DeviceSerial serial;
+        /// <summary>
+        /// 创建DeviceInfoGetterInFastboot的新实例
+        /// </summary>
+        /// <param name="serial">具体的设备</param>
         public DeviceInfoGetterInFastboot(DeviceSerial serial)
         {
             executer = new CommandExecuter();
             this.serial = serial;
         }
         private const string resultPattern = @".+:\u0020(?<result>.+)";
+        /// <summary>
+        /// 获取Product信息
+        /// </summary>
+        /// <returns></returns>
         public string GetProduct()
         {
             var text = executer.Execute(Command.MakeForFastboot(serial, "getvar product")).All.ToString();

@@ -7,6 +7,9 @@
 *********************************************************************************/
 namespace AutumnBox.Basic.Device
 {
+    /// <summary>
+    /// build.prop中常用的key
+    /// </summary>
     public static class BuildPropKeys
     {
         public const string Board = "ro.product.board";

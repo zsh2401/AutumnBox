@@ -20,6 +20,9 @@ namespace AutumnBox.Basic.Device
     public sealed class DeviceImageFinder : IDisposable,ISetableShell
     {
         private readonly DeviceSerial serial;
+        /// <summary>
+        /// 使用的android shell类
+        /// </summary>
         public AndroidShell ShellAsSu
         {
             private get

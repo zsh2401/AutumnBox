@@ -18,8 +18,18 @@ namespace AutumnBox.Basic.Device
     /// </summary>
     public class DeviceHaveNoRootException : Exception
     {
+        /// <summary>
+        /// 具体的设备
+        /// </summary>
         public DeviceSerial Device { get; private set; }
-        public DeviceHaveNoRootException() { }
+        /// <summary>
+        /// 创建DeviceHaveNoRootException的新实例
+        /// </summary>
+        public DeviceHaveNoRootException() {
+        }
+        /// <summary>
+        /// 创建DeviceHaveNoRootException的新实例并说明设备
+        /// </summary>
         public DeviceHaveNoRootException(DeviceSerial dev)
         {
             this.Device = dev;

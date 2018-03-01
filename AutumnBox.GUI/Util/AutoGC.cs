@@ -11,6 +11,7 @@
 * Company: I am free man
 *
 \* =============================================================================*/
+using AutumnBox.GUI.Properties;
 using System;
 using System.Diagnostics;
 using System.Threading;
@@ -26,6 +27,7 @@ namespace AutumnBox.GUI.Util
         public AutoGC() { }
         public void Start()
         {
+           
             continueAutoGC = true;
             new Thread(_AutoGC) { Name = "Auto GC" }.Start();
         }

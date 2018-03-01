@@ -17,9 +17,9 @@ using System;
 namespace AutumnBox.Basic.Device
 {
 
-   /// <summary>
-                              /// 简单的仅包含设备id和设备状态的结构体,主要用于设备列表 DevicesList
-                              /// </summary>
+    /// <summary>
+    /// 简单的仅包含设备id和设备状态的结构体,主要用于设备列表 DevicesList
+    /// </summary>
     public struct DeviceBasicInfo : IEquatable<DeviceBasicInfo>
     {
         /// <summary>
@@ -52,16 +52,30 @@ namespace AutumnBox.Basic.Device
         {
             return $"{Serial.ToString()} {State}";
         }
-        
+        /// <summary>
+        /// 比较是否相等
+        /// </summary>
+        /// <param name="left"></param>
+        /// <param name="right"></param>
+        /// <returns></returns>
         public static bool operator ==(DeviceBasicInfo left, DeviceBasicInfo right)
         {
             return left.Equals(right);
         }
+        /// <summary>
+        /// 比较是否不等
+        /// </summary>
+        /// <param name="left"></param>
+        /// <param name="right"></param>
+        /// <returns></returns>
         public static bool operator !=(DeviceBasicInfo left, DeviceBasicInfo right)
         {
             return !left.Equals(right);
         }
-
+        /// <summary>
+        /// 隐式转换为string
+        /// </summary>
+        /// <param name="info"></param>
         public static implicit operator string(DeviceBasicInfo info)
         {
             return info.ToString();
@@ -97,7 +111,8 @@ namespace AutumnBox.Basic.Device
         /// <returns></returns>
         public override bool Equals(object obj)
         {
-            if (obj is DeviceBasicInfo) {
+            if (obj is DeviceBasicInfo)
+            {
                 return Equals((DeviceBasicInfo)obj);
             }
             return base.Equals(obj);

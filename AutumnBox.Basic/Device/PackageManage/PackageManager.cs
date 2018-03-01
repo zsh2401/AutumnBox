@@ -11,106 +11,65 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Device.PackageManage
 {
-    [Obsolete("Project ACP is dead")]
+    /// <summary>
+    /// 包管理器
+    /// </summary>
     public static class PackageManager
     {
         private const string TAG = "PackageManager";
-        [Obsolete("Project ACP is dead")]
-        public static byte[] GetIcon(DeviceSerial device, String packageName)
-        {
-            var builder = new AcpCommand.Builder
-            {
-                BaseCommand = Acp.CMD_GETICON
-            };
-            builder.SetArgs(packageName);
-            var response = AcpCommunicator.GetAcpCommunicator(device).SendCommand(builder.ToCommand());
-            if (response.IsSuccessful)
-            {
-                return response.Data;
-            }
-            else
-            {
-                return null;
-            }
-        }
-        [Obsolete("Project ACP is dead")]
-        public static List<PackageBasicInfo> GetPackages(DeviceSerial serial)
-        {
-            try
-            {
-                var builder = new AcpCommand.Builder
-                {
-                    BaseCommand = Acp.CMD_PKGS
-                };
-                var response = AcpCommunicator.GetAcpCommunicator(serial).SendCommand(builder.ToCommand());
-                if (response.IsSuccessful)
-                {
-                    var text = Encoding.UTF8.GetString(response.Data);
-                    var json = JObject.Parse(text);
-                    JArray array = (JArray)json["pkgs"];
-                    List<PackageBasicInfo> result = new List<PackageBasicInfo>();
-                    foreach (JArray j in array)
-                    {
-                        result.Add(new PackageBasicInfo()
-                        {
-                            PackageName = j[0].ToString(),
-                            Name = j[1].ToString(),
-                            IsSystemApp = j[2].ToString() == "0" ? true : false
-                        });
-                    }
-                    return result;
-                }
-                return null;
-            }
-            catch (Exception ex)
-            {
-                Logger.Warn(TAG,"GetPackages() fail",ex);
-                return null;
-            }
-        }
-        [Obsolete("Project ACP is dead")]
-        public struct AppUsedSpaceInfo {
-            public long DataSize { get; set; }
-            public long CodeSize { get; set; }
-            public long CacheSize { get; set; }
-            public long TotalSize { get {
-                    return DataSize + CodeSize + CodeSize;
-                } }
-        }
+        /// <summary>
+        /// 卸载App
+        /// </summary>
+        /// <param name="device"></param>
+        /// <param name="packageName"></param>
+        /// <returns></returns>
         public static bool UninstallApp(DeviceSerial device, string packageName) {
             var exeResult = PackageManagerShared.Executer.Execute(Command.MakeForAdb(device, "uninstall " + packageName));
             return !exeResult.Contains("Failure");
         }
+        /// <summary>
+        /// 清空app数据
+        /// </summary>
+        /// <param name="device"></param>
+        /// <param name="packageName"></param>
+        /// <returns></returns>
         public static bool CleanAppData(DeviceSerial device, string packageName) {
             var exeResult = PackageManagerShared.Executer.QuicklyShell(device, "pm clear " + packageName);
             Logger.Info(TAG,$"clean {packageName} data success?{exeResult.IsSuccessful}");
             return exeResult.IsSuccessful;
         }
-        [Obsolete("Project ACP is dead")]
-        public static AppUsedSpaceInfo GetAppUsedSpace(DeviceSerial serial, String packageName) {
-            var result = new AppUsedSpaceInfo() { DataSize = -1, CacheSize = -1, CodeSize = -1 };
-            try {
-                var builder = new AcpCommand.Builder
-                {
-                    BaseCommand = Acp.CMD_GETPKGINFO
-                };
-                builder.SetArgs(packageName);
-                var response = AcpCommunicator.GetAcpCommunicator(serial).SendCommand(builder.ToCommand());
-                if (response.IsSuccessful)
-                {
-                    var json = JObject.Parse(Encoding.UTF8.GetString(response.Data));
-                    result.CodeSize = long.Parse(json["codeSize"].ToString());
-                    result.CacheSize = long.Parse(json["cacheSize"].ToString());
-                    result.DataSize = long.Parse(json["dataSize"].ToString());
-                }
-            } catch (Exception ex) {
-                Logger.Warn(TAG,"exception on getting app used space",ex);
+        private static readonly string packagesPattern = @"package:(?<package>.+)";
+        /// <summary>
+        /// 获取设备上的所有包
+        /// </summary>
+        /// <param name="devSerial"></param>
+        /// <returns></returns>
+        public static List<PackageInfo> GetPackages(DeviceSerial devSerial)
+        {
+            var result = PackageManagerShared.Executer.QuicklyShell(devSerial, $"pm list packages");
+            var matches = Regex.Matches(result.ToString(), packagesPattern);
+            List<PackageInfo> packages = new List<PackageInfo>();
+            foreach (Match m in matches)
+            {
+                packages.Add(new PackageInfo(devSerial, m.Result("${package}")));
             }
-            return result;
+            return packages;
+        }
+        /// <summary>
+        /// 检查是否安装了某个APP
+        /// </summary>
+        /// <param name="devSerial">设备</param>
+        /// <param name="packageName">应用名</param>
+        /// <returns></returns>
+        public static bool? IsInstall(DeviceSerial devSerial, string packageName)
+        {
+            var result = PackageManagerShared.Executer.QuicklyShell(devSerial, $"pm path {packageName}");
+            return result.IsSuccessful;
         }
     }
 }

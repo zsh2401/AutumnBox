@@ -30,6 +30,10 @@ namespace AutumnBox.Basic.Device
         }
         private IPEndPoint _ip = null;
         private string _serialNum = null;
+        /// <summary>
+        /// 变回string
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return _serialNum ?? _ip.ToString();
@@ -39,6 +43,10 @@ namespace AutumnBox.Basic.Device
         /// </summary>
         /// <returns></returns>
         public string ToFullSerial() => $"-s {_serialNum ?? _ip.ToString()}";
+        /// <summary>
+        /// 创建DeviceSerial的新实例
+        /// </summary>
+        /// <param name="serialStr"></param>
         public DeviceSerial(string serialStr)
         {
             var strs = serialStr.Split(':');
@@ -54,18 +62,40 @@ namespace AutumnBox.Basic.Device
             }
         }
 
+        /// <summary>
+        /// 判断两个serial是否相等
+        /// </summary>
+        /// <param name="left"></param>
+        /// <param name="right"></param>
+        /// <returns></returns>
         public static bool operator ==(DeviceSerial left, DeviceSerial right)
         {
             return left?.ToString() == right?.ToString();
         }
+        /// <summary>
+        /// 判断两个serial是否不相等
+        /// </summary>
+        /// <param name="left"></param>
+        /// <param name="right"></param>
+        /// <returns></returns>
         public static bool operator !=(DeviceSerial left, DeviceSerial right)
         {
             return left?.ToString() != right?.ToString();
         }
+        /// <summary>
+        /// 进行比较
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
         public bool Equals(DeviceSerial other)
         {
             return this.ToString() == other.ToString();
         }
+        /// <summary>
+        /// 比较
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         public override bool Equals(object obj)
         {
             if (obj is DeviceSerial)
@@ -77,6 +107,10 @@ namespace AutumnBox.Basic.Device
                 return base.Equals(obj);
             }
         }
+        /// <summary>
+        /// 获取哈希码
+        /// </summary>
+        /// <returns></returns>
         public override int GetHashCode()
         {
             return base.GetHashCode();
