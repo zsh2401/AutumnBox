@@ -19,6 +19,7 @@ using AutumnBox.GUI.I18N;
 using AutumnBox.GUI.Properties;
 using AutumnBox.GUI.Util;
 using AutumnBox.GUI.Windows;
+using AutumnBox.OpenFramework.Internal;
 using AutumnBox.Support.Log;
 using System;
 using System.Diagnostics;
@@ -79,6 +80,10 @@ namespace AutumnBox.GUI
             Debug.WriteLine("Loading...", TAG);
             loadingWindowApi.SetProgress(10);
             loadingWindowApi.SetTip(Resources["ldmsgStartAdb"].ToString());
+            if (Settings.Default.ShowDebuggingWindowNextLaunch)
+            {
+                new DebugWindow().Show();
+            }
             await Task.Run(() =>
             {
                 bool success = false;
@@ -109,11 +114,9 @@ namespace AutumnBox.GUI
             App.Current.MainWindow = new MainWindow();
             DevicesMonitor.Begin();
             loadingWindowApi.SetProgress(80);
-            if (Settings.Default.ShowDebuggingWindowNextLaunch)
-            {
-                new DebugWindow().Show();
-            }
+            loadingWindowApi.SetTip(Resources["ldmsgLoadingExtensions"].ToString());
             OpenFramewokManager.LoadApi();
+            ExtensionManager.LoadAllExtension();
             App.Current.MainWindow.Show();
             loadingWindowApi.SetProgress(100);
             loadingWindowApi.Finish();

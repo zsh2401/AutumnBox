@@ -20,7 +20,6 @@ namespace AutumnBox.GUI.Util
         {
             OpenApi.Gui = new GuiApi();
             OpenApi.Log = new LogApi();
-            ExtensionManager.LoadAllExtension();
         }
         
         private class GuiApi : IGuiApi

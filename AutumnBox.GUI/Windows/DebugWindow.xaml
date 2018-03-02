@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="DebugWindow" Height="300" Width="300" Icon="/AutumnBox;component/Resources/Images/title_icon.ico" Closed="Window_Closed">
     <Grid>
-        <TextBox x:Name="TxtBoxLog" Margin="10" TextWrapping="Wrap" Text=""/>
+        <TextBox x:Name="TxtBoxLog" IsReadOnly="True" Margin="10" TextWrapping="Wrap" Text=""/>
 
     </Grid>
 </Window>

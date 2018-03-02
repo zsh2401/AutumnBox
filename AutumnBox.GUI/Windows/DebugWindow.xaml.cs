@@ -31,6 +31,7 @@ namespace AutumnBox.GUI.Windows
             this.Dispatcher.Invoke(() =>
             {
                 TxtBoxLog.AppendText(e.FullMessage);
+                TxtBoxLog.ScrollToEnd();
             });
         }
 

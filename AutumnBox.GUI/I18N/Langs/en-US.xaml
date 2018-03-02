@@ -6,7 +6,7 @@
     <s:String x:Key="LanguageName">English</s:String>
     <s:String x:Key="LanguageCode">en-US</s:String>
 
-    <s:String x:Key="AppDesc">Open source,free,simple</s:String>
+    <s:String x:Key="AppDesc">Open source,free,simple,GUI adb toolbox</s:String>
     <!--按钮-->
     <s:String x:Key="btnCannotRunExtension">This extension not support current device state</s:String>
     <s:String x:Key="btnOpenModuleFloder">Open moudle floder</s:String>
@@ -337,5 +337,6 @@
 
     <!--加载提示-->
     <s:String x:Key="ldmsgStartAdb">Adb server starting</s:String>
+    <s:String x:Key="ldmsgLoadingExtensions">Loading extensions</s:String>
     <s:String x:Key="ldmsgStartDeviceMonitor">Device listener stating</s:String>
 </ResourceDictionary>

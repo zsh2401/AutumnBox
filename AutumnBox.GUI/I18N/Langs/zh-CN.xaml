@@ -8,7 +8,7 @@
     <s:String x:Key="LanguageName">简体中文</s:String>
     <s:String x:Key="LanguageCode">zh-CN</s:String>
     
-    <s:String x:Key="AppDesc">开源免费的简约刷机工具箱</s:String>
+    <s:String x:Key="AppDesc">开源免费简约的图形化ADB工具箱</s:String>
     <!--按钮-->
     
     <s:String x:Key="btnOpenModuleFloder">打开模块文件夹</s:String>
@@ -342,5 +342,6 @@
     
     <!--加载提示-->
     <s:String x:Key="ldmsgStartAdb">正在启动ADB服务</s:String>
+    <s:String x:Key="ldmsgLoadingExtensions">正在加载拓展</s:String>
     <s:String x:Key="ldmsgStartDeviceMonitor">正在启动设备拔插监听</s:String>
 </ResourceDictionary>
