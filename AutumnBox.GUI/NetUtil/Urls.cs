@@ -23,7 +23,7 @@ namespace AutumnBox.GUI.NetUtil
         internal const string UPDATE_API = "http://atmb.top/api/update/";
         internal const string OFFICIAL_WEBSITE = "http://atmb.top/";
         internal const string OPEN_SOURCE = "http://atmb.top/open_source/";
-        internal const string JOIN_QQ_G = "http://shang.qq.com/wpa/qunwpa?idkey=6210b7c1027584a9fc497d1dc59649dbc7d2da9739145cdbba71b5b6d4616e8f";
+        internal const string JOIN_QQ_G = "http://atmb.top/help/join_qq_group/";
         internal const string LINK_HELP = "http://atmb.top/help/link_device/";
     }
 }
