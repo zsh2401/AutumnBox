@@ -15,15 +15,15 @@ namespace AutumnBox.GUI.NetUtil
 {
     internal static class Urls
     {
-        public const string INSTALL_MODULE_HELP = "https://github.com/zsh2401/AutumnBox/wiki/zh_CN_%E5%85%B3%E4%BA%8E%E6%8B%93%E5%B1%95%E6%A8%A1%E5%9D%97";
-        internal const string HELP_PAGE = "https://github.com/zsh2401/AutumnBox/wiki/Chinese-Home";
+        public const string INSTALL_MODULE_HELP = "http://atmb.top/help/install_module/";
+        internal const string HELP_PAGE = "http://atmb.top/help/more/";
         internal const string STATISTICS_API = "http://atmb.top/api/statistics/";
         internal const string MOTD_API = "http://atmb.top/api/motd/";
         internal const string POTD_API = "http://atmb.top/api/potd/";
         internal const string UPDATE_API = "http://atmb.top/api/update/";
-        internal const string OFFICIAL_WEBSITE = "http://atmb.top";
-        internal const string OPEN_SOURCE = "http://github.com/zsh2401/AutumnBox";
+        internal const string OFFICIAL_WEBSITE = "http://atmb.top/";
+        internal const string OPEN_SOURCE = "http://atmb.top/help/open_source/";
         internal const string JOIN_QQ_G = "http://shang.qq.com/wpa/qunwpa?idkey=6210b7c1027584a9fc497d1dc59649dbc7d2da9739145cdbba71b5b6d4616e8f";
-        internal const string LINK_HELP = "https://github.com/zsh2401/AutumnBox/wiki/zh_CN_%E5%A6%82%E4%BD%95%E8%BF%9E%E6%8E%A5%E6%82%A8%E7%9A%84%E8%AE%BE%E5%A4%87";
+        internal const string LINK_HELP = "http://atmb.top/help/link_device/";
     }
 }
