@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Threading;
 
 namespace AutumnBox.OpenFramework.Open.V1
 {
@@ -34,20 +35,13 @@ namespace AutumnBox.OpenFramework.Open.V1
         /// <param name="completable">可被主动停止或可得知停止的类</param>
         void ShowLoadingWindow(ICompletable completable);
         /// <summary>
-        /// 显示任意的窗口
+        /// 主程序的Dispatcher
         /// </summary>
-        /// <param name="window"></param>
-        void ShowWindow(Window window);
-        /// <summary>
-        /// 显示异常窗口
-        /// </summary>
-        /// <param name="title">标题</param>
-        /// <param name="e">异常</param>
-        void ShowExceptionBox(string title, Exception e);
+        Dispatcher Dispatcher { get; }
         /// <summary>
         /// 获取界面语言代码 类似zh-CN
         /// </summary>
         /// <returns>语言代码</returns>
-        string GetCurrentLanguageName();
+        string CurrentLanguageCode { get; }
     }
 }

@@ -9,6 +9,7 @@ using AutumnBox.OpenFramework.Internal;
 using AutumnBox.OpenFramework.Open.V1;
 using System;
 using System.Windows;
+using System.Windows.Threading;
 
 namespace AutumnBox.GUI.Util
 {
@@ -24,17 +25,8 @@ namespace AutumnBox.GUI.Util
         
         private class GuiApi : IGuiApi
         {
-            public string GetCurrentLanguageName()
-            {
-                switch (App.Current.Resources["LanguageName"]) {
-                    case "简体中文":
-                        return "zh-CN";
-                    case "English":
-                    default:
-                        return "en-US";
-                }
-            }
-
+            public Dispatcher Dispatcher => App.Current.Dispatcher;
+            public string CurrentLanguageCode => App.Current.Resources["LanguageCode"].ToString();
             public bool? ShowChoiceBox(string title, string msg, string btnLeft = null, string btnRight = null)
             {
                 bool? result = null;
@@ -43,12 +35,6 @@ namespace AutumnBox.GUI.Util
                 });
                 return result;
             }
-
-            public void ShowExceptionBox(string title, Exception e)
-            {
-                ShowMessageBox(title,"a exception happend\n" + e);
-            }
-
             public void ShowLoadingWindow(ICompletable completable)
             {
                 App.Current.Dispatcher.Invoke(() => {
@@ -62,12 +48,6 @@ namespace AutumnBox.GUI.Util
                     BoxHelper.ShowMessageDialog(title, msg);
                 });
                 
-            }
-            public void ShowWindow(Window window)
-            {
-                App.Current.Dispatcher.Invoke(()=> {
-                    window.Show();
-                });
             }
         }
         private class LogApi : ILogApi

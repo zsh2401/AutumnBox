@@ -3,6 +3,7 @@
 ** date:  2018/2/25 2:17:33 (UTC +8:00)
 ** desc： ...
 *************************************************/
+using AutumnBox.OpenFramework.Internal;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -18,9 +19,6 @@ namespace AutumnBox.OpenFramework.Open.V1
     /// </summary>
     public static partial class OpenApi
     {
-        private static bool CallerCheck(Assembly callerAssembly) {
-            return callerAssembly.GetName().Name == BuildInfo.AUTUMNBOX_GUI_ASSEMBLY_NAME;
-        }
         /// <summary>
         /// GUI相关的API
         /// </summary>
@@ -29,7 +27,7 @@ namespace AutumnBox.OpenFramework.Open.V1
             get { return _gui; }
             set
             {
-                if (!CallerCheck(Assembly.GetCallingAssembly())) return;
+                if (!CallerChecker.CallerCheck(Assembly.GetCallingAssembly())) return;
                 else _gui = value;
             }
         }
@@ -41,7 +39,7 @@ namespace AutumnBox.OpenFramework.Open.V1
             get { return _log; }
             set
             {
-                if (!CallerCheck(Assembly.GetCallingAssembly())) return;
+                if (!CallerChecker.CallerCheck(Assembly.GetCallingAssembly())) return;
                 else _log = value;
             }
         }

@@ -27,7 +27,7 @@ namespace AutumnBox.OpenFramework.Extension
         {
             get
             {
-                switch (OpenApi.Gui.GetCurrentLanguageName())
+                switch (OpenApi.Gui.CurrentLanguageCode)
                 {
                     case "zh-CN":
                         return "佚名";
@@ -48,7 +48,7 @@ namespace AutumnBox.OpenFramework.Extension
         {
             get
             {
-                switch (OpenApi.Gui.GetCurrentLanguageName())
+                switch (OpenApi.Gui.CurrentLanguageCode)
                 {
                     case "zh-CN":
                         return "这是一个拓展模块";

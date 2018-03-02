@@ -47,6 +47,7 @@ namespace AutumnBox.OpenFramework.Internal
         /// </summary>
         public static void DestoryAllExtension()
         {
+            if (!CallerChecker.CallerCheck(Assembly.GetCallingAssembly())) return;
             inner.Extensions.ForEach((extRuntime) =>
             {
                 extRuntime.Destory();
@@ -59,6 +60,7 @@ namespace AutumnBox.OpenFramework.Internal
         /// <returns></returns>
         public static ExtensionRuntime[] GetExtensions(DeviceState? targetDeviceState = null)
         {
+            if (!CallerChecker.CallerCheck(Assembly.GetCallingAssembly())) return new ExtensionRuntime[0];
             if (targetDeviceState != null)
             {
                 return inner.Extensions.Where((extRuntime) =>
