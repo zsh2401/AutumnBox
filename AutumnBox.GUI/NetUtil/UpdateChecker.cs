@@ -59,7 +59,7 @@ namespace AutumnBox.GUI.NetUtil
         public override UpdateCheckResult Get()
         {
             Logger.Info(this,"Getting update info....");
-            byte[] bytes = new WebClient().DownloadData(Urls.UPDATE_API);
+            byte[] bytes = new WebClient().DownloadData(App.Current.Resources["urlApiUpdate"].ToString());
             string data = Encoding.UTF8.GetString(bytes);
             JObject j = JObject.Parse(data);
             var result = (UpdateCheckResult)JsonConvert.DeserializeObject(j.ToString(), typeof(UpdateCheckResult));

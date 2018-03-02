@@ -105,7 +105,7 @@ namespace AutumnBox.GUI
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
 #if !DEBUG
-            this.WTF.Navigate(Urls.STATISTICS_API);
+            this.WTF.Navigate(App.Current.Resources["urlApiStatistics"].ToString());
 #endif
 
 #if ENABLE_BLUR

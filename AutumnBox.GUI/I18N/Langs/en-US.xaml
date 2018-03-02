@@ -103,10 +103,13 @@
     <s:String x:Key="hyperLinkGithub">Github</s:String>
     <s:String x:Key="hyperLinkBaiduPan">Baidu netdisk</s:String>
     <s:String x:Key="hyperLinkDownloadMiFlashPackage">Download MIUI Line flash package</s:String>
-    <s:String x:Key="hyperLinkLinkHelp">Help of link devicec</s:String>
+    <s:String x:Key="hyperLinkLinkHelp">Help of link device</s:String>
     <s:String x:Key="hyperLinkOfficialWebsite">Official website</s:String>
     <s:String x:Key="hyperLinkOpenSource">Open source</s:String>
     <s:String x:Key="hyperLinkMoreHelp">More help</s:String>
+    <s:String x:Key="hyperlinkJoinQQGroup">Join QQ Group</s:String>
+    <s:String x:Key="hyperlinkDonate">Donate</s:String>
+    <s:String x:Key="hyperlinkDonateList">Donation list</s:String>
     <!--链接文字-->
 
     <!--tabitem-->
@@ -226,7 +229,7 @@
     <s:String x:Key="titStart">Getting Started</s:String>
     <s:String x:Key="titHelp">Help</s:String>
     <s:String x:Key="titContact">Contact</s:String>
-    <s:String x:Key="hyperlinkJoinQQGroup">Join QQ Group</s:String>
+    <s:String x:Key="titSupport">Support</s:String>
     <!--开始面板-->
     
     <!--静态界面标记-->

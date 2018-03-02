@@ -52,7 +52,7 @@ namespace AutumnBox.GUI.NetUtil
 
         public override PotdGetterResult Get()
         {
-            var html = webClient.DownloadString(Urls.POTD_API);
+            var html = webClient.DownloadString(App.Current.Resources["urlApiPotd"].ToString());
             var remoteInfo = (PotdRemoteInfo)JsonConvert.DeserializeObject(html, typeof(PotdRemoteInfo));
             var imgData = webClient.DownloadData(remoteInfo.Link);
             return new PotdGetterResult()

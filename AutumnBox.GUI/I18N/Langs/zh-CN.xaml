@@ -110,6 +110,9 @@
     <s:String x:Key="hyperLinkOfficialWebsite">官网</s:String>
     <s:String x:Key="hyperLinkOpenSource">开源地址</s:String>
     <s:String x:Key="hyperLinkMoreHelp">更多帮助</s:String>
+     <s:String x:Key="hyperlinkJoinQQGroup">加入QQ群</s:String>
+    <s:String x:Key="hyperlinkDonate">捐赠</s:String>
+    <s:String x:Key="hyperlinkDonateList">捐赠者名单</s:String>
     <!--链接文字-->
     
     <!--tabitem-->
@@ -230,7 +233,8 @@
     <s:String x:Key="titStart">开始使用AutumnBox</s:String>
     <s:String x:Key="titHelp">帮助</s:String>
     <s:String x:Key="titContact">联系</s:String>
-    <s:String x:Key="hyperlinkJoinQQGroup">加入QQ群</s:String>
+    <s:String x:Key="titSupport">支持</s:String>
+
     <!--开始面板-->
     
     <!--静态界面标记-->

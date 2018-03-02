@@ -43,7 +43,7 @@ namespace AutumnBox.GUI.NetUtil
 
         public override MOTDResult Get()
         {
-            byte[] bytes = webClient.DownloadData(Urls.MOTD_API);
+            byte[] bytes = webClient.DownloadData(App.Current.Resources["urlApiMotd"].ToString());
             string data = Encoding.UTF8.GetString(bytes);
             JObject o = JObject.Parse(data);
             var result = (MOTDResult)JsonConvert.DeserializeObject(o.ToString(), typeof(MOTDResult));

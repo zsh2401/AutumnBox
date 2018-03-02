@@ -128,7 +128,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
 
         private void TextBlock_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            Process.Start(Urls.INSTALL_MODULE_HELP);
+            Process.Start(App.Current.Resources["urlHelpOfInstallExtension"].ToString());
         }
     }
 }
