@@ -55,6 +55,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Context.cs" />
     <Compile Include="Internal\CallerChecker.cs" />
     <Compile Include="Internal\ExtensionManager.cs" />
     <Compile Include="Extension\AutumnBoxExtension.cs" />

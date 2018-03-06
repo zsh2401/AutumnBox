@@ -10,7 +10,7 @@
              d:DesignHeight="366" d:DesignWidth="922" Width="922" Height="366">
     <Grid>
         <TextBlock TextAlignment="Center" x:Name="TBMsg" FontSize="50" Margin="0,93,10,0" TextWrapping="Wrap" Text="XX模块运行中" VerticalAlignment="Top" Foreground="{DynamicResource ForgBrush}" FontFamily="Microsoft YaHei UI Light"/>
-        <Button FontSize="25" Foreground="{DynamicResource ForgBrush}" x:Name="BtnStop" Content="停止" HorizontalAlignment="Left" Margin="260,242,0,0" VerticalAlignment="Top" Width="380" BorderBrush="{x:Null}" Background="{DynamicResource BtnBrush}" FontFamily="Microsoft YaHei UI Light"/>
+        <Button FontSize="25" Foreground="{DynamicResource ForgBrush}" x:Name="BtnStop" Content="{DynamicResource btnStopExtension}" HorizontalAlignment="Left" Margin="260,242,0,0" VerticalAlignment="Top" Width="380" BorderBrush="{x:Null}" Background="{DynamicResource BtnBrush}" FontFamily="Microsoft YaHei UI Light"/>
 
     </Grid>
 </fp:FastPanelChild>

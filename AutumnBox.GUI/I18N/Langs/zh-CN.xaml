@@ -10,7 +10,7 @@
     
     <s:String x:Key="AppDesc">开源免费简约的图形化ADB工具箱</s:String>
     <!--按钮-->
-    
+    <s:String x:Key="btnStopExtension">停止运行</s:String>
     <s:String x:Key="btnOpenModuleFloder">打开模块文件夹</s:String>
     <s:String x:Key="btnCannotRunExtension">当前设备状态下,此模块不可运行</s:String>
     <s:String x:Key="btnRunExtension">运行这个拓展</s:String>
@@ -128,6 +128,8 @@
     <!--标题-->
     
     <!--信息(主要用于MMesssageBox)-->
+    <s:String x:Key="msgIsRunning">正在运行中</s:String>
+    <s:String x:Key="msgCannotStop">无法停止</s:String>
     <s:String x:Key="msgModuleFailed">{0}模块运行时出现问题,详情请查看日志</s:String>
     <s:String x:Key="msgMaybeHaveOtherUser">
         检测到你的设备上还有其它用户,请确保您已删除完所有用户

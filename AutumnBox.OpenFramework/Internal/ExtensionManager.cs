@@ -74,7 +74,7 @@ namespace AutumnBox.OpenFramework.Internal
             }
 
         }
-        private class ExtensionManagerInner
+        private class ExtensionManagerInner : Context
         {
             public List<ExtensionRuntime> Extensions { get; private set; }
             public ExtensionManagerInner()
@@ -90,7 +90,7 @@ namespace AutumnBox.OpenFramework.Internal
                 List<Type> extensionTypes = new List<Type>();
                 List<Assembly> dllAssemblies = new List<Assembly>();
                 string[] dllFiles = Directory.GetFiles(ExtensionsPath, "*.dll");
-                OpenApi.Log.Log(TAG, $"已获取{dllFiles.Length}个文件");
+                OpenApi.Log.Info(this, $"已获取{dllFiles.Length}个文件");
                 foreach (string file in dllFiles)
                 {
                     try
@@ -99,19 +99,24 @@ namespace AutumnBox.OpenFramework.Internal
                     }
                     catch (Exception ex)
                     {
-                        OpenApi.Log.Log(TAG, "加载一个程序集时发生异常\n" + ex);
+                        OpenApi.Log.Info(this, "加载一个程序集时发生异常\n" + ex);
                     }
                 }
                 foreach (Assembly dll in dllAssemblies)
                 {
                     try
                     {
-                        extensionTypes.AddRange(dll.GetExportedTypes()
-                      .Where((extType) => { return extType.BaseType == typeof(AutumnBoxExtension); }));
+                        var types = dll.GetExportedTypes()
+                        .Where((extType) => { return extType.BaseType == typeof(AutumnBoxExtension); });
+                        if (types.Count() == 0)
+                        {
+                            throw new Exception("No AutumnBox Extension");
+                        }
+                        extensionTypes.AddRange(types);
                     }
                     catch (Exception ex)
                     {
-                        OpenApi.Log.Log("ExtensionManager", $"获取程序集{dll.FullName}的类型时发生错误\n" + ex);
+                        OpenApi.Log.Warn(this, $"获取程序集{dll.FullName}的拓展类型时发生错误\n" + ex);
                     }
                 }
                 var initArgs = new InitArgs();
@@ -119,17 +124,22 @@ namespace AutumnBox.OpenFramework.Internal
                 {
                     try
                     {
-                        var extension = (AutumnBoxExtension)Activator.CreateInstance(extensionType);
-                        if (extension.InitAndCheck(initArgs))
-                        {
-                            Extensions.Add(new ExtensionRuntime(extension));
-                        }
+                        Extensions.Add(ExtensionRuntime.Create(extensionType, initArgs));
                     }
                     catch (Exception ex)
                     {
-                        OpenApi.Log.Log("ExtensionManager", $"加载{extensionType.Name}时发生错误\n" + ex);
+                        OpenApi.Log.Warn(this, $"加载{extensionType.Name}时发生错误\n" + ex);
                     }
                 }
+            }
+            ~ExtensionManagerInner()
+            {
+                DestoryArgs args = new DestoryArgs();
+                Extensions.ForEach((ext) =>
+                {
+                    try { ext.Destory(args); }
+                    catch { }
+                });
             }
         }
     }

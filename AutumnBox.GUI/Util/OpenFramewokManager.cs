@@ -5,6 +5,8 @@
 *************************************************/
 using AutumnBox.Basic.FlowFramework;
 using AutumnBox.GUI.Helper;
+using AutumnBox.OpenFramework;
+using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.Internal;
 using AutumnBox.OpenFramework.Open.V1;
 using System;
@@ -21,7 +23,7 @@ namespace AutumnBox.GUI.Util
             OpenApi.Gui = new GuiApi();
             OpenApi.Log = new LogApi();
         }
-        
+
         private class GuiApi : IGuiApi
         {
             public Dispatcher Dispatcher => App.Current.Dispatcher;
@@ -29,31 +31,49 @@ namespace AutumnBox.GUI.Util
             public bool? ShowChoiceBox(string title, string msg, string btnLeft = null, string btnRight = null)
             {
                 bool? result = null;
-                App.Current.Dispatcher.Invoke(()=> {
+                App.Current.Dispatcher.Invoke(() =>
+                {
                     result = BoxHelper.ShowChoiceDialog(title, msg, btnLeft, btnRight).ToBool();
                 });
                 return result;
             }
             public void ShowLoadingWindow(ICompletable completable)
             {
-                App.Current.Dispatcher.Invoke(() => {
+                App.Current.Dispatcher.Invoke(() =>
+                {
                     BoxHelper.ShowLoadingDialog(completable);
                 });
-                
+
             }
             public void ShowMessageBox(string title, string msg)
             {
-                App.Current.Dispatcher.Invoke(() => {
+                App.Current.Dispatcher.Invoke(() =>
+                {
                     BoxHelper.ShowMessageDialog(title, msg);
                 });
-                
+
             }
         }
         private class LogApi : ILogApi
         {
-            public void Log(string tag, string msg)
+            public void Debug(Context sender, string msg)
             {
-                Support.Log.Logger.Info(tag + "(ExtModule)", msg);
+                Support.Log.Logger.Debug(sender.Tag, msg);
+            }
+
+            public void Info(Context sender, string msg)
+            {
+                Support.Log.Logger.Info(sender.Tag, msg);
+            }
+
+            public void Warn(Context sender, string msg)
+            {
+                Support.Log.Logger.Warn(sender.Tag, msg);
+            }
+
+            public void Warn(Context sender, string msg, Exception e)
+            {
+                Support.Log.Logger.Warn(sender.Tag, msg, e);
             }
         }
     }

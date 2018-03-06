@@ -18,7 +18,7 @@ using System.Xml;
 
 namespace AutumnBox.GUI.I18N
 {
-    public sealed class Language : IEquatable<Language>
+    internal sealed class Language : IEquatable<Language>
     {
         public ResourceDictionary Resources
         {

@@ -21,11 +21,16 @@ namespace AutumnBox.OpenFramework.Internal
         public string Name { get { return InnerExtension.Name; } }
         public readonly AutumnBoxExtension InnerExtension;
         public bool IsRuning { get; private set; }
-        public ExtensionRuntime(AutumnBoxExtension ext)
+        private ExtensionRuntime(AutumnBoxExtension ext)
         {
             this.InnerExtension = ext;
         }
-
+        public static ExtensionRuntime Create(Type type, InitArgs args = null)
+        {
+            var ext = (AutumnBoxExtension)Activator.CreateInstance(type);
+            if (!ext.InitAndCheck(args ?? new InitArgs())) throw new Exception("Cannot init");
+            return new ExtensionRuntime(ext);
+        }
         public async void RunAsync(StartArgs args, Action finishedCallback)
         {
             await Task.Run(() =>
@@ -41,14 +46,14 @@ namespace AutumnBox.OpenFramework.Internal
             IsRuning = false;
             InnerExtension.OnFinished();
         }
-        public bool Stop()
+        public bool Stop(StopArgs args = null)
         {
             if (!IsRuning) return true;
-            return InnerExtension.OnStopCommand(new StopArgs());
+            return InnerExtension.OnStopCommand(args ?? new StopArgs());
         }
-        public void Destory()
+        public void Destory(DestoryArgs args = null)
         {
-            InnerExtension.OnDestory(new DestoryArgs());
+            InnerExtension.OnDestory(args ?? new DestoryArgs());
         }
         public void WaitForFinish()
         {

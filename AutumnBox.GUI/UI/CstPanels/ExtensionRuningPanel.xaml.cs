@@ -27,7 +27,7 @@ namespace AutumnBox.GUI.UI.CstPanels
         public ExtensionRuningPanel(ExtensionRuntime extensionRuntime)
         {
             InitializeComponent();
-            TBMsg.Text = $"{extensionRuntime.InnerExtension.Name} 正在运行....";
+            TBMsg.Text = $"{extensionRuntime.InnerExtension.Name} {App.Current.Resources["msgIsRunning"]}";
             BtnStop.Click += (s, e) =>
             {
                 var stopResult = extensionRuntime.Stop();
@@ -37,7 +37,7 @@ namespace AutumnBox.GUI.UI.CstPanels
                 }
                 else
                 {
-                    TBMsg.Text = $"{extensionRuntime.InnerExtension.Name} 无法被停止";
+                    TBMsg.Text = $"{extensionRuntime.InnerExtension.Name} {App.Current.Resources["msgCannotStop"]}";
                 }
             };
         }

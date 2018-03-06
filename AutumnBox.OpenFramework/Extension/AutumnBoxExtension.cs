@@ -14,7 +14,7 @@ namespace AutumnBox.OpenFramework.Extension
     /// <summary>
     /// AutumnBox 拓展模块抽象类
     /// </summary>
-    public abstract class AutumnBoxExtension : Object
+    public abstract class AutumnBoxExtension : Context
     {
         /// <summary>
         /// 拓展名,强制要求覆写此属性
@@ -30,6 +30,9 @@ namespace AutumnBox.OpenFramework.Extension
                 switch (OpenApi.Gui.CurrentLanguageCode)
                 {
                     case "zh-CN":
+                    case "zh-SG":
+                    case "zh-HK":
+                    case "zh-TW":
                         return "佚名";
                     case "en-US":
                     default:
@@ -51,6 +54,9 @@ namespace AutumnBox.OpenFramework.Extension
                 switch (OpenApi.Gui.CurrentLanguageCode)
                 {
                     case "zh-CN":
+                    case "zh-SG":
+                    case "zh-HK":
+                    case "zh-TW":
                         return "这是一个拓展模块";
                     case "en-US":
                     default:
@@ -72,7 +78,7 @@ namespace AutumnBox.OpenFramework.Extension
         /// <param name="message"></param>
         protected void Log(string message)
         {
-            OpenApi.Log.Log(Name, message);
+            OpenApi.Log.Info(this, message);
         }
 
         /// <summary>

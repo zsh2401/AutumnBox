@@ -18,7 +18,7 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Device
 {
-    [Obsolete("由于安卓碎片化原因,此类不保证可以正常运行,请自行实现相关功能")]
+    [Obsolete("由于安卓碎片化原因,此类不保证可以正常运行,请自行实现相关功能",true)]
     public class DeviceBuildPropSetter : IDisposable, ISetableShell
     {
         private static readonly CommandExecuter executer = new CommandExecuter();
@@ -71,19 +71,19 @@ namespace AutumnBox.Basic.Device
         /// </summary>
         public void SaveToDevice()
         {
-            using (FileStream fs = TemporaryFilesHelper.GetTempFileStream(buildPropFileNameOnTempFloder))
-            {
-                using (TextWriter writer = new StreamWriter(fs))
-                {
-                    writer.Write(CurrentString);
-                }
-            }
-            //push local temp file to device sdcard
-            var result= executer.Execute(Command.MakeForAdb(DeviceSerial, $"push {TemporaryFilesHelper.TemporaryFloderName}/{buildPropFileNameOnTempFloder} {buildPropFileNameOnDeviceTemp}"));
-            //remount device /system rw
-            shellAsSu.SafetyInput($"mount -o rw,remount /system");
-            //move temp file on device to build.prop
-            ShellAsSu.SafetyInput($"mv {buildPropFileNameOnDeviceTemp} {buildPropPath}");
+            //using (FileStream fs = TemporaryFilesHelper.GetTempFileStream(buildPropFileNameOnTempFloder))
+            //{
+            //    using (TextWriter writer = new StreamWriter(fs))
+            //    {
+            //        writer.Write(CurrentString);
+            //    }
+            //}
+            ////push local temp file to device sdcard
+            //var result= executer.Execute(Command.MakeForAdb(DeviceSerial, $"push {TemporaryFilesHelper.TemporaryFloderName}/{buildPropFileNameOnTempFloder} {buildPropFileNameOnDeviceTemp}"));
+            ////remount device /system rw
+            //shellAsSu.SafetyInput($"mount -o rw,remount /system");
+            ////move temp file on device to build.prop
+            //ShellAsSu.SafetyInput($"mv {buildPropFileNameOnDeviceTemp} {buildPropPath}");
         }
         public void Dispose()
         {

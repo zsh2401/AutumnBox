@@ -20,6 +20,7 @@ namespace AutumnBox.Support.Log
     public static partial class Logger
     {
         public static event EventHandler<LogEventArgs> Logged;
+
         public static void Debug(object senderOrTag, object message)
         {
             var str = MakeText(senderOrTag, "Debug", message);

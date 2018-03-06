@@ -12,10 +12,29 @@ namespace AutumnBox.OpenFramework.Open.V1
     public interface ILogApi
     {
         /// <summary>
-        /// 打印一个日志
+        /// 打印一个前缀为DEBUG的日志
         /// </summary>
-        /// <param name="tag">标签</param>
-        /// <param name="msg">内容</param>
-        void Log(string tag, string msg);
+        /// <param name="sender"></param>
+        /// <param name="msg"></param>
+        void Debug(Context sender, string msg);
+        /// <summary>
+        /// 打印一个前缀为INFO的日志
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="msg"></param>
+        void Info(Context sender, string msg);
+        /// <summary>
+        /// 打印一个警告日志
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="msg"></param>
+        void Warn(Context sender, string msg);
+        /// <summary>
+        /// 打印一个错误日志
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="msg"></param>
+        /// <param name="e"></param>
+        void Warn(Context sender, string msg,Exception e);
     }
 }

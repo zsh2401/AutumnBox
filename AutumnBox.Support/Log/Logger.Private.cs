@@ -15,7 +15,7 @@ namespace AutumnBox.Support.Log
     partial class Logger
     {
         private const string logTemplate = "[{0}][{1}/{2}]: {3}";
-        private const string LOG_FLODER = "logs";
+        private const string LOG_FLODER = "..\\logs";
         private const string LOG_FILENAME_FORMAT = "yy_MM_dd__HH_mm_ss";
         private static readonly StreamWriter logFileWriter;
         static Logger()

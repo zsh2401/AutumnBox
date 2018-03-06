@@ -8,6 +8,7 @@
 
     <s:String x:Key="AppDesc">Open source,free,simple,GUI adb toolbox</s:String>
     <!--按钮-->
+    <s:String x:Key="btnStopExtension">Stop this extension</s:String>
     <s:String x:Key="btnCannotRunExtension">This extension not support current device state</s:String>
     <s:String x:Key="btnOpenModuleFloder">Open moudle floder</s:String>
     <s:String x:Key="btnRunExtension">Run this extension</s:String>
@@ -125,6 +126,8 @@
     <!--标题-->
 
     <!--信息(主要用于MMesssageBox)-->
+    <s:String x:Key="msgIsRunning">is running...</s:String>
+    <s:String x:Key="msgCannotStop">can't stop</s:String>
     <s:String x:Key="msgModuleFailed">{0} Module was throw a excepton...you can view the log to get more info</s:String>
     <s:String x:Key="msgMaybeHaveOtherUser">
         检测到你的设备上还有其它用户,请确保您已删除完所有用户

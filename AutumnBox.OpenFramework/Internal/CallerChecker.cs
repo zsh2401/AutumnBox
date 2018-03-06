@@ -13,13 +13,9 @@ using System.Windows.Threading;
 
 namespace AutumnBox.OpenFramework.Internal
 {
-#pragma warning disable CS1591 // 缺少对公共可见类型或成员的 XML 注释
-    public class CallerChecker
-#pragma warning restore CS1591 // 缺少对公共可见类型或成员的 XML 注释
+    internal class CallerChecker
     {
-#pragma warning disable CS1591 // 缺少对公共可见类型或成员的 XML 注释
         public static bool CallerCheck(Assembly callingAssembly)
-#pragma warning restore CS1591 // 缺少对公共可见类型或成员的 XML 注释
         {
             return callingAssembly.GetName().Name == BuildInfo.AUTUMNBOX_GUI_ASSEMBLY_NAME;
         }
