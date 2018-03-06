@@ -1,0 +1,345 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:AutumnBox.GUI.I18N.Langs"
+                    xmlns:s="clr-namespace:System;assembly=mscorlib">
+    <s:String x:Key="AppName">AutumnBox</s:String>
+    <s:String x:Key="LanguageName">English</s:String>
+    <s:String x:Key="LanguageCode">en-US</s:String>
+
+    <s:String x:Key="AppDesc">Open source,free,simple,GUI adb toolbox</s:String>
+    <!--按钮-->
+    <s:String x:Key="btnStopExtension">Stop this extension</s:String>
+    <s:String x:Key="btnCannotRunExtension">This extension not support current device state</s:String>
+    <s:String x:Key="btnOpenModuleFloder">Open moudle floder</s:String>
+    <s:String x:Key="btnRunExtension">Run this extension</s:String>
+    <s:String x:Key="btnLaunchDebugWindow">Launch Debug window</s:String>
+    <s:String x:Key="btnIHaveDeletedAllUser">I has removed</s:String>
+    <s:String x:Key="btnUserManager">User manager</s:String>
+    <s:String x:Key="btnRefresh">Refresh</s:String>
+    <s:String x:Key="btnRemoveUser">Remove this user</s:String>
+    <s:String x:Key="btnStopAppActivator">Activate Stop app</s:String>
+    <s:String x:Key="btnGeekMemoryCleanerActivator">Activate GMC</s:String>
+    <s:String x:Key="btnAppManager">App manager</s:String>
+    <s:String x:Key="btnDisconnect">Disconnect only</s:String>
+    <s:String x:Key="btnCloseDebugging">Close device net debuggin</s:String>
+    <s:String x:Key="btnDisableNetdebugging">Disable net-debugging</s:String>
+    <s:String x:Key="btnEnableNetdebugging">Enable net-debugging</s:String>
+    <s:String x:Key="btnAddNetdebuggingDevice">Add net debugging device</s:String>
+    <s:String x:Key="btnConnect">Connect this device</s:String>
+    <s:String x:Key="btnConnecting">Connectting</s:String>
+    <s:String x:Key="btnAbout">About</s:String>
+    <s:String x:Key="btnSetting">Setting</s:String>
+    <s:String x:Key="rbtnFlashAll">Flash all </s:String>
+    <s:String x:Key="rbtnFlashAllExceptStorage">Except storage</s:String>
+    <s:String x:Key="rbtnFlashAllExceptStorageAndData">Except storage and data</s:String>
+    <s:String x:Key="btnCreateShortcut">Create shortcut to desktop</s:String>
+    <s:String x:Key="btnVBHide">Hide virtual button</s:String>
+    <s:String x:Key="btnCopy">Copy</s:String>
+    <s:String x:Key="btnCopied">Copied</s:String>
+    <s:String x:Key="btnOpen">Open</s:String>
+    <s:String x:Key="btnDoNotOpen">Do not open</s:String>
+    <s:String x:Key="btnDeleteScreenLock">Delete screen lock</s:String>
+    <s:String x:Key="btnBackupDcim">Backup pictrues</s:String>
+    <s:String x:Key="btnExtractRecImg">Extract Recovery</s:String>
+    <s:String x:Key="btnExtractBootImg">Extract Boot.img</s:String>
+    <s:String x:Key="btnFlashRecImg">Flash Recovery</s:String>
+    <s:String x:Key="btnFlashBootImg">Flash Boot.img</s:String>
+    <s:String x:Key="btnIceBoxAct">Activate Ice box</s:String>
+    <s:String x:Key="btnIslandAct">Activate Island</s:String>
+    <s:String x:Key="btnAirForzenAct">Activate AirForzen</s:String>
+    <s:String x:Key="btnShizukuManagerAct">Activate AppOps/ShizukuManager</s:String>
+    <s:String x:Key="btnContinue">Continue</s:String>
+    <s:String x:Key="btnSaveAndReboot">Save and reboot </s:String>
+    <s:String x:Key="btnDpiChange">Modfiy DPI</s:String>
+    <s:String x:Key="btnInstallApk">Install APK</s:String>
+    <s:String x:Key="btnScreenShot">Screenshot and save to PC</s:String>
+    <s:String x:Key="btnAndroidFullBackup">All Backup</s:String>
+    <s:String x:Key="btnMiFlash">MiFlash</s:String>
+    <s:String x:Key="btnADBCMD">ADB CMD</s:String>
+    <s:String x:Key="btnSystem">System</s:String>
+    <s:String x:Key="btnRecovery">Recovery</s:String>
+    <s:String x:Key="btnSnapdragon9008">Snapdragon 9008</s:String>
+    <s:String x:Key="btnBootloader">Fastboot</s:String>
+    <s:String x:Key="btnPushFileToSdcard">Push file to sdcard</s:String>
+    <s:String x:Key="btnUnlockSystem">Unlock system partition</s:String>
+    <s:String x:Key="btnSideloadFlash">SideLoad(Deving)</s:String>
+    <s:String x:Key="btnRelockMi">Relock bootloader</s:String>
+    <s:String x:Key="btnFlashCustomRecoveryImg">Flash custom recovery.img</s:String>
+    <s:String x:Key="btnOK">OK</s:String>
+    <s:String x:Key="btnHide">Hide</s:String>
+    <s:String x:Key="btnUnhide">Show</s:String>
+    <s:String x:Key="btnIHaveCloseOtherPhoneHelper">I did it</s:String>
+    <s:String x:Key="btnExit">Exit</s:String>
+    <s:String x:Key="btnStartBrventService">Start Brvent service</s:String>
+    <s:String x:Key="btnClose">Close</s:String>
+    <s:String x:Key="btnAgree">Agree</s:String>
+    <s:String x:Key="btnCancel">Cancel</s:String>
+    <!--按钮-->
+
+
+    <!--PackgeManageWindow-->
+    <s:String x:Key="pmw_msg">I'd love to change the world...but i dont know how to do</s:String>
+    <s:String x:Key="pmw_msgClearSuccess">Cleamup successful</s:String>
+    <s:String x:Key="pmw_msgRefreshFailed">Refresh failed</s:String>
+    <s:String x:Key="pmw_msgClearFailed">Cleanup failed</s:String>
+    <s:String x:Key="pmw_msgUninstallFailed">Uninstall failed</s:String>
+    <s:String x:Key="pmw_ckbShowSystemApp">Show system app</s:String>
+    <s:String x:Key="pmw_btnRefreshAppList">Refresh</s:String>
+    <s:String x:Key="pmw_labelVersionName">Version name</s:String>
+    <s:String x:Key="pmw_labelPackageName">Package name</s:String>
+    <s:String x:Key="pmw_labelAppName">App name</s:String>
+    <s:String x:Key="pmw_labelCodeSize">App size</s:String>
+    <s:String x:Key="pmw_labelCacheSize">Cache size</s:String>
+    <s:String x:Key="pmw_labelDataSize">Data size</s:String>
+    <s:String x:Key="pmw_btnClearData">Clear data</s:String>
+    <s:String x:Key="pmw_labelTotalSize">Total size</s:String>
+    <s:String x:Key="pmw_btnUninstall">Uninstall</s:String>
+    <s:String x:Key="pmw_btnBlock">Block</s:String>
+    <s:String x:Key="pmw_btnUnblock">Unblock</s:String>
+    <s:String x:Key="pmw_btnStop">Stop</s:String>
+    <!--PackgeManageWindow-->
+
+    <!--链接文字-->
+    <s:String x:Key="hyperLinkInstallModule">How to install?</s:String>
+    <s:String x:Key="hyperLinkGithub">Github</s:String>
+    <s:String x:Key="hyperLinkBaiduPan">Baidu netdisk</s:String>
+    <s:String x:Key="hyperLinkDownloadMiFlashPackage">Download MIUI Line flash package</s:String>
+    <s:String x:Key="hyperLinkLinkHelp">Help of link device</s:String>
+    <s:String x:Key="hyperLinkOfficialWebsite">Official website</s:String>
+    <s:String x:Key="hyperLinkOpenSource">Open source</s:String>
+    <s:String x:Key="hyperLinkMoreHelp">More help</s:String>
+    <s:String x:Key="hyperlinkJoinQQGroup">Join QQ Group</s:String>
+    <s:String x:Key="hyperlinkDonate">Donate</s:String>
+    <s:String x:Key="hyperlinkDonateList">Donation list</s:String>
+    <!--链接文字-->
+
+    <!--tabitem-->
+    <s:String x:Key="tbiStart">Start</s:String>
+    <s:String x:Key="tbiOnPowerOn">Power on</s:String>
+    <s:String x:Key="tbiOnRecovery">Recovery</s:String>
+    <s:String x:Key="tbiOnFastboot">Fastboot</s:String>
+    <s:String x:Key="tbiThridPartyFunction">Thrid party functions</s:String>
+    <!--tabitem-->
+
+    <!--标题-->
+    <s:String x:Key="titleHaveAUpdate">Have a update!</s:String>
+    <!--标题-->
+
+    <!--信息(主要用于MMesssageBox)-->
+    <s:String x:Key="msgIsRunning">is running...</s:String>
+    <s:String x:Key="msgCannotStop">can't stop</s:String>
+    <s:String x:Key="msgModuleFailed">{0} Module was throw a excepton...you can view the log to get more info</s:String>
+    <s:String x:Key="msgMaybeHaveOtherUser">
+        检测到你的设备上还有其它用户,请确保您已删除完所有用户
+        &#x0a; 注:AutumnBox有用户管理的功能</s:String>
+    <s:String x:Key="msgLoading">Loading...</s:String>
+    <s:String x:Key="msgActiveGMC">Adb net-debugging is very dangerou! You are srue to continue?</s:String>
+    <s:String x:Key="msgGettedIP">成功获取您的手机在当前局域网的IP,这个IP将可以用于网络调试连接</s:String>
+    <s:String x:Key="msgFixAndroidO">
+        检测到您是安卓8.0系统,为了防止ADB服务被异常终止,请问需要在激活后开启ADB网络调试以保证服务正常运行吗?
+         &#x0a; 这可能会带来不可测的风险!
+        &#x0a; 如果您决定开启,请在执行过程中,保持设备解锁并亮屏,否则激活将是无效的
+    </s:String>
+    <s:String x:Key="msgUnknowError">未知的错误!</s:String>
+    <s:String x:Key="msgCheckInput">请检查您输入的内容!</s:String>
+    <s:String x:Key="msgIceBoxActUnknowError">未知的错误!</s:String>
+    <s:String x:Key="msgRelockWarning">注意,本功能将会把您的设备重新上Bootloader锁,这样您的设备将会变得比较安全但是您将失去root权限,最重要的是将会彻底清除您的设备上的数据!请做好数据备份谨慎而行!并且在操作时不要拔掉设备,否则后果自负</s:String>
+    <s:String x:Key="msgRelockWarningAgain">请再次注意,本功能将会清除设备的所有数据,并且不要在操作时拔掉设备!你确定要这么做了吗?按下按钮立即开始重新上锁!</s:String>
+    <s:String x:Key="msgPushOK">如果一切正常,您将会在手机存储目录(/sdcard)下看到您刚才推送的文件</s:String>
+    <s:String x:Key="msgFlashOK">如果一切正常,您的手机将会重启到刚才刷入的Recovery中!</s:String>
+    <s:String x:Key="msgFristLaunchNotice">本软件还处于测试阶段,可能出现的bug希望您能立即反馈!这个软件的某些操作可能会被杀软误报,请关闭杀软或者允许操作,我保证本软件没有恶意代码!</s:String>
+    <s:String x:Key="msgIfAllOK">如果一切正常,您的手机将会重启</s:String>
+    <s:String x:Key="msgNotice">注意</s:String>
+    <s:String x:Key="msgDelScreenLock">注意,此功能在当今大部分设备上已经失去效用,因此不要对该功能抱有太大希望</s:String>
+    <s:String x:Key="msgFunctionIsInTheDeveloping">此功能还在开发中...请关注更新.......</s:String>
+    <s:String x:Key="warrningNeedRootAccess">此功能需要root权限!但根据本软件的检测,您似乎没有root权限,当然,也有可能是我判断错了,确定要继续吗?</s:String>
+    <s:String x:Key="msgDoing">正在进行操作,稍安勿躁</s:String>
+    <s:String x:Key="msgUnlockSystemTip">注意,这不是解除Bootloader锁! 这个功能是帮助已经拥有root权限的设备使用的,该功能可让你获得完整的root权限!解锁系统分区并随意修改!</s:String>
+    <s:String x:Key="msgStartBreventServiceFail">启动黑域服务时,似乎出现了一些问题,请将此处截图给黑域开发者或AutumnBox开发者</s:String>
+    <s:String x:Key="msgStartBreventServiceSuc">现在,您的设备应该已经成功激活了黑域!但为了保险起见,将会展示脚本输出的信息</s:String>
+    <s:String x:Key="msgShellChoiceTip">检测到您是Windows10 系统,请问您想用哪种命令行界面?如果您不懂什么是Powershell,请用传统的CMD</s:String>
+    <s:String x:Key="msgSaveSuccessful">保存成功!</s:String>
+    <s:String x:Key="msgIceAct">
+        请前往手机->账户设置,将所有账户删除!(包括谷歌账户/手机云服务账户等)
+        &#x0a;并且关闭应用双开,关闭访客模式,删除其它用户
+        &#x0a; 完成后请点击继续
+    </s:String>
+    <s:String x:Key="msgNoticeForRebootToEdl">
+        请确保您的设备是高通骁龙处理器并且支持进入9008模式
+        &#x0a; 当进入9008模式后,设备会完全黑屏,但您可以使用相关工具进行刷机
+        &#x0a;如果想要退出9008模式,长按电源键即可!
+    </s:String>
+    <s:String x:Key="msgPlsInstallAirForzenFirst">请先安装空调狗!</s:String>
+    <s:String x:Key="msgPlsInstallBreventFirst">请先安装黑域!</s:String>
+    <s:String x:Key="msgPlsInstallIslandFirst">请先安装Island!!</s:String>
+    <s:String x:Key="msgPlsInstallIceBoxFirst">请先安装冰箱!!</s:String>
+    <s:String x:Key="msgPlsInstallStopAppFirst">请先安装小黑屋!!</s:String>
+    <s:String x:Key="msgPlsInstallShizukuManagerFirst">请先安装ShizukuManager!酷市场和手机乐园都有!</s:String>
+    <s:String x:Key="msgWarning">警告</s:String>
+    <s:String x:Key="msgVirtualButtonHider">您是要隐藏虚拟键还是恢复虚拟键?</s:String>
+    <s:String x:Key="msgStartAdbServerFail">
+        错误:无法启动ADB服务
+        &#x0a;解决方案:彻底关闭所有其它的手机助手(在电脑上)
+        &#x0a;例如: 360手机助手 豌豆荚等
+        &#x0a;如果仍然无效,请进入任务管理器,彻底结束那些手机助手的进程!什么?还是没用?重启电脑!
+    </s:String>
+    <s:String x:Key="msgPleaseInputAPort">Error port</s:String>
+    <s:String x:Key="msgFailed">Failed</s:String>
+    <!--信息-->
+
+    <!--用于结果显示窗的文字-->
+    <s:String x:Key="rmsgDOSNone">没什么问题</s:String>
+    <s:String x:Key="advsDOSNone">好好享受!</s:String>
+
+    <s:String x:Key="rmsgDOSServalAccountsOnTheDevice">有其它账户</s:String>
+    <s:String x:Key="advsDOSServalAccountsOnTheDevice">账户没删干净...谷歌账户或者定制ROM的账户都要删的!如果你是索尼/ZUK手机,要拔手机卡哦</s:String>
+
+    <s:String x:Key="rmsgDOSServalUserOnTheDevice">有其它用户</s:String>
+    <s:String x:Key="advsDOSServalUserOnTheDevice">确保删除所有用户,关闭访客模式,关闭应用双开!</s:String>
+
+    <s:String x:Key="rmsgDOSDeviceOwnerIsAlreadySet">设备管理员已被设定</s:String>
+    <s:String x:Key="advsDOSDeviceOwnerIsAlreadySet">请确保已退出所有账户,或前往App查看,可能已经激活?注意:应用冻结类App不能同时存在多个!</s:String>
+
+    <s:String x:Key="rmsgDOSMIUIUsbSecError">MIUI USB安全设置错误</s:String>
+    <s:String x:Key="advsDOSMIUIUsbSecError">MIUI 用户请手动在系统设置- 开发者设置里，开启 USB 调试(安全设置)</s:String>
+
+
+    <s:String x:Key="rmsgDOSUnknowAdmin">请先安装应用</s:String>
+    <s:String x:Key="advsDOSUnknowAdmin">...</s:String>
+
+    <s:String x:Key="rmsgAppHaveNoInstalled">App is not install</s:String>
+    <s:String x:Key="advsAppHaveNoInstalled">Plz install App first</s:String>
+
+    <s:String x:Key="rmsgUnknowError">Unknow error</s:String>
+    <s:String x:Key="advsUnknowError">检查下面的完整输出,或将完整输出复制给要问的人</s:String>
+
+    <s:String x:Key="advIceActAppHaveNoInstalled">Plz install app</s:String>
+    <s:String x:Key="advIceActHaveOtherUser">Plz delete other user)</s:String>
+    <s:String x:Key="advIceActUnknowError">请将下方的完整输出复制,并在该App的酷安评论区提问或联系AutumnBox开发者</s:String>
+    <s:String x:Key="advIceBoxActUnknowError">请将下方的完整输出复制,并在冰箱评论区提问或联系AutumnBox开发者</s:String>
+    <s:String x:Key="errormsgBrventActivtedUnsuccess">Maybe:You are not install brevent;Start brevent main activity failed;Command expired</s:String>
+    <s:String x:Key="advsBrventActivtedUnsuccess">Plz install leatest version of brevent</s:String>
+    <s:String x:Key="advsFileSendUnsuccess">You can screenshot,and send screenshot to zsh2401@gmail.com</s:String>
+    <s:String x:Key="advsIceBoxHaveNoInstall">Plz install ice box app</s:String>
+    <!--用于结果显示窗的文字-->
+
+
+    <!--用于文件,文件夹选择的文字-->
+    <s:String x:Key="selectDcimBackupFloder">Plz  export floder</s:String>
+    <!--用于文件,文件夹选择的文字-->
+
+    <!--开始面板-->
+    <s:String x:Key="titStart">Getting Started</s:String>
+    <s:String x:Key="titHelp">Help</s:String>
+    <s:String x:Key="titContact">Contact</s:String>
+    <s:String x:Key="titSupport">Support</s:String>
+    <!--开始面板-->
+    
+    <!--静态界面标记-->
+    <s:String x:Key="ckbShowDebugWindowOnNextLaunch">Show debug window on next launch</s:String>
+    <s:String x:Key="ckbConnectOnOpened">Connect on opened</s:String>
+    <s:String x:Key="RebootTo">Reboot to</s:String>
+    <s:String x:Key="DonateDescription">You donate is great encouragement to me</s:String>
+    <s:String x:Key="PleaseSelected">Plz select</s:String>
+    <s:String x:Key="PleaseSelectFloderPackageWireFlash">Plz select a pkg floder</s:String>
+    <s:String x:Key="OutputRealTime">Real time Outptut</s:String>
+    <s:String x:Key="TimeUsed">Time used</s:String>
+    <s:String x:Key="Transparency">Transparency</s:String>
+    <s:String x:Key="Language">Language</s:String>
+    <s:String x:Key="Notice">Notice</s:String>
+    <s:String x:Key="ckbSkipThisVersion">Skip this version</s:String>
+    <s:String x:Key="GetFail">Failed</s:String>
+    <s:String x:Key="OnSetting">Setting...</s:String>
+    <s:String x:Key="Getting">Getting</s:String>
+    <s:String x:Key="Devices">Connected devices</s:String>
+    <s:String x:Key="RootEnable">Enable</s:String>
+    <s:String x:Key="RootDisable">Disable</s:String>
+    <s:String x:Key="Message">Message</s:String>
+    <s:String x:Key="Advise">Advise</s:String>
+    <s:String x:Key="DefaultDpi">Device default dpi</s:String>
+    <s:String x:Key="TipForChangeDpi">Plz consider the value to modify,too larage or small can cause your device to become unusale</s:String>
+    <s:String x:Key="OutputTip">Full output</s:String>
+    <s:String x:Key="TipForInputDpi">Plz type DPI-></s:String>
+    <s:String x:Key="Bridge">Bridge</s:String>
+    <s:String x:Key="Port">Port</s:String>
+    <s:String x:Key="lbUserName">Name</s:String>
+    <s:String x:Key="lbUserId">UID</s:String>
+    <!--静态界面标记-->
+
+    <!--设备信息标记-->
+    <s:String x:Key="diSWRoot">Root</s:String>
+    <s:String x:Key="diHWBattery">Battery</s:String>
+    <s:String x:Key="diHWSOC">SOC</s:String>
+    <s:String x:Key="diHWStorage">Flash</s:String>
+    <s:String x:Key="diHWRom">Rom</s:String>
+    <s:String x:Key="diHWRam">Ram</s:String>
+    <s:String x:Key="diHWScreen">Screen</s:String>
+    <s:String x:Key="diModel">Model</s:String>
+    <s:String x:Key="diCode">Code</s:String>
+    <s:String x:Key="diAndroidVersion">Android Version</s:String>
+    <!--设备信息标记-->
+
+    <!--PullingWindow使用的-->
+    <s:String x:Key="btnStopPulling">Stop pulling</s:String>
+    <s:String x:Key="pulling">Puling...</s:String>
+    <!--PullingWindow使用的-->
+
+    <!--MiFlashWindow使用的-->
+    <s:String x:Key="CurrentDevice">Current device</s:String>
+    <s:String x:Key="selectingLineFlashPackageDesc">Plz select line flash package floder</s:String>
+    <s:String x:Key="btnSelectLineFlashPackage">Select</s:String>
+    <s:String x:Key="btnStartMiFlash">Start flashing</s:String>
+    <s:String x:Key="btnStopMiFlash">Stop flashing</s:String>
+    <s:String x:Key="mfPlzSelectLineFlashFloder">Plz select line flash package floder</s:String>
+    <s:String x:Key="mfReady">All ready</s:String>
+    <s:String x:Key="mfFlashing">Flashing....</s:String>
+    <s:String x:Key="mfSuccess">Success</s:String>
+    <s:String x:Key="mfFail">Failed</s:String>
+    <s:String x:Key="msgPlzSelectARightFloder">Plz select a right floder</s:String>
+    <s:String x:Key="mfbflash_all.bat">All clear-flash_all.bat</s:String>
+    <s:String x:Key="mfbflash_all_lock.bat">All clear and lock-flash_all_lock.bat</s:String>
+    <s:String x:Key="mfbflash_all_except_storage.bat">Except storage-flash_all_except_storage.bat</s:String>
+    <!--MiFlashWindow使用的-->
+
+    <!--设备状态提示-->
+    <s:String x:Key="HaveNoDevices">Have no device</s:String>
+    <s:String x:Key="PleaseAllowUSBDebug">Plz allow usb debugging</s:String>
+    <s:String x:Key="PleaseSelectedADevice">Plz select a device</s:String>
+    <s:String x:Key="DeviceInRunning">Device is  power on</s:String>
+    <s:String x:Key="DeviceInRecovery">Device is in recovery mode</s:String>
+    <s:String x:Key="DeviceInFastboot">Device is in fastboot mode</s:String>
+    <s:String x:Key="DeviceInSideload">Device is in sideload mode</s:String>
+    <s:String x:Key="DeviceOffline">Device offline</s:String>
+    <!--设备状态提示-->
+
+
+    <s:String x:Key="SelecteAFile">Select a file</s:String>
+    <s:String x:Key="Warning">Warning</s:String>
+    <s:String x:Key="Success">Success</s:String>
+    <s:String x:Key="MaybeSuccess">Maybe Success</s:String>
+    <s:String x:Key="MaybeUnsuccess">Maybe Failed</s:String>
+    <s:String x:Key="Unsuccess">Failed</s:String>
+    <s:String x:Key="Fail">Fail</s:String>
+
+
+    <!--关于信息-->
+    <s:String x:Key="AboutMessage1">这是一个遵守GPL3.0协议的开源软件,请在必要的时候遵守开源协议</s:String>
+    <s:String x:Key="AboutMessage2">Developer E-mail zsh2401@163.com</s:String>
+    <s:String x:Key="AboutMessage_Thanks">Thanks list:</s:String>
+    <s:String x:Key="AboutMessage_OSList">Newtonsoft.Json &amp; Google Android Debug Bridge &amp; Google Android &amp; Linux</s:String>
+    <!--关于信息-->
+
+    <s:String x:Key="warningOpenNetDebugging">
+        开启网络调试将带来不可预见的风险
+        &#x0a;请确保您的设备与电脑处于同一局域网下
+        &#x0a;请确保您已在开发者设置中打开网络调试
+    </s:String>
+    <s:String x:Key="Menu">Menu</s:String>
+    <s:String x:Key="Contact">Contact Developer</s:String>
+    <s:String x:Key="Donate">Donate Developer</s:String>
+
+    <!--加载提示-->
+    <s:String x:Key="ldmsgStartAdb">Adb server starting</s:String>
+    <s:String x:Key="ldmsgLoadingExtensions">Loading extensions</s:String>
+    <s:String x:Key="ldmsgStartDeviceMonitor">Device listener stating</s:String>
+</ResourceDictionary>

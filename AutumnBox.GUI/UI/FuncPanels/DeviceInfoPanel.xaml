@@ -1,0 +1,40 @@
+﻿<UserControl x:Class="AutumnBox.GUI.UI.FuncPanels.DeviceInfoPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AutumnBox.GUI.UI.FuncPanels"
+             mc:Ignorable="d" 
+             d:DesignHeight="220" Width="600">
+    <Grid>
+        <Image x:Name="DeviceStatusImage" RenderOptions.BitmapScalingMode="Fant" HorizontalAlignment="Left" Height="100" Margin="36,54,0,0" VerticalAlignment="Top" Width="100" Source="/AutumnBox;component/Resources/Images/DevStatus/no_dev.png"/>
+        <Image x:Name="ImgRefreshDevInfo" RenderOptions.BitmapScalingMode="Fant" HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="25" Source="/AutumnBox;component/Resources/Images/refresh.png" MouseDown="ImgRefreshDevInfo_MouseDown" RenderTransformOrigin="-0.286,0.529" Margin="10,10,0,0"/>
+        <Label x:Name="DeviceStatusLabel" Content="{DynamicResource PleaseSelectedADevice}" HorizontalAlignment="Left" Margin="6,159,0,0" VerticalAlignment="Top" Height="43" Width="150" Foreground="{DynamicResource ForgBrush}" FontSize="14" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Microsoft YaHei UI Light"/>
+        <Grid x:Name="GridBuildInfo" HorizontalAlignment="Left" Height="92" Margin="254,11,0,0" VerticalAlignment="Top" Width="260">
+            <Label x:Name="LabelAndroidVersion" Content="{DynamicResource ResourceKey=PleaseSelectedADevice}" Margin="10,-1,0,64" VerticalAlignment="Bottom" Height="29" Foreground="{DynamicResource ForgBrush}" FontFamily="Microsoft YaHei Light" FontSize="14" Background="{x:Null}" Loaded="LabelAndroidVersion_Loaded" HorizontalAlignment="Left" Width="240"/>
+            <Label x:Name="LabelModel" Content="{DynamicResource ResourceKey=PleaseSelectedADevice}" HorizontalAlignment="Left" Margin="10,0,0,33" VerticalAlignment="Bottom" Height="31" Width="240" Foreground="{DynamicResource ForgBrush}" FontFamily="Microsoft YaHei Light" FontSize="14" Background="{x:Null}"/>
+            <Label x:Name="LabelCode" Content="{DynamicResource ResourceKey=PleaseSelectedADevice}" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Bottom" Height="33" Width="240" Foreground="{DynamicResource ForgBrush}" FontFamily="Microsoft YaHei Light" FontSize="14" Background="{x:Null}"/>
+        </Grid>
+        <Grid x:Name="GridHardwareInfo" HorizontalAlignment="Left" Height="108" Margin="209,106,0,0" VerticalAlignment="Top" Width="230">
+            <Label x:Name="LabelScreen" Content="....." HorizontalAlignment="Left" VerticalAlignment="Top" Margin="4,60,0,0" Width="216" FontSize="10" Foreground="{DynamicResource ForgBrush}"/>
+            <Label x:Name="LabelFlashMemInfo" Content="....." HorizontalAlignment="Left" VerticalAlignment="Top" Margin="4,35,0,0" Width="216" FontSize="10" Foreground="{DynamicResource ForgBrush}"/>
+            <Label x:Name="LabelBattery" Content="....." HorizontalAlignment="Left" VerticalAlignment="Top" Margin="4,83,0,0" Width="216" FontSize="10" Foreground="{DynamicResource ForgBrush}"/>
+            <Label x:Name="LabelSOC" Content="....." HorizontalAlignment="Left" VerticalAlignment="Top" Margin="4,10,0,0" Width="216" FontSize="10" Foreground="{DynamicResource ForgBrush}"/>
+        </Grid>
+        <Label Content="{DynamicResource diHWScreen}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="156,163,0,0" Width="52" Foreground="{DynamicResource ForgBrush}" HorizontalContentAlignment="Right"/>
+        <Label Content="{DynamicResource diHWStorage}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="156,137,0,0" Width="52" Foreground="{DynamicResource ForgBrush}" HorizontalContentAlignment="Right"/>
+        <Label Content="{DynamicResource diHWSOC}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="156,110,0,0" Width="52" Foreground="{DynamicResource ForgBrush}" HorizontalContentAlignment="Right"/>
+        <Label Content="{DynamicResource diHWRam}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="37" Margin="439,117,0,0" Foreground="{DynamicResource ForgBrush}"/>
+        <Label Content="{DynamicResource diHWRom}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="439,149,0,0" Width="37" Foreground="{DynamicResource ForgBrush}"/>
+        <Grid x:Name="GridMemoryInfo" HorizontalAlignment="Left" Height="90" Margin="478,114,0,0" VerticalAlignment="Top" Width="88">
+            <Label x:Name="LabelRam" Content="....." HorizontalAlignment="Left" VerticalAlignment="Top" Margin="2,3,0,0" Width="81" Foreground="{DynamicResource ForgBrush}"/>
+            <Label x:Name="LabelRom" Content="....." HorizontalAlignment="Left" VerticalAlignment="Top" Margin="2,33,0,0" Width="81" Foreground="{DynamicResource ForgBrush}"/>
+            <Label x:Name="LabelRootStatus" Content="....." HorizontalAlignment="Left" VerticalAlignment="Top" Margin="2,63,0,0" Width="81" Foreground="{DynamicResource ForgBrush}"/>
+        </Grid>
+        <Label  Content="{DynamicResource diHWBattery}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="156,188,0,0" Width="52" Foreground="{DynamicResource ForgBrush}" HorizontalContentAlignment="Right"/>
+        <Label Content="{DynamicResource diSWRoot}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="439,179,0,0" Width="37" RenderTransformOrigin="0.486,0.52" Foreground="{DynamicResource ForgBrush}"/>
+        <Label HorizontalContentAlignment="Right" Content="{DynamicResource ResourceKey=diAndroidVersion}" HorizontalAlignment="Left" Margin="129,10,0,0" VerticalAlignment="Top" Height="29" Width="113" Foreground="{DynamicResource ForgBrush}" FontFamily="Microsoft YaHei UI Light" FontSize="14" Background="{x:Null}"/>
+        <Label HorizontalContentAlignment="Right"  Content="{DynamicResource ResourceKey=diModel}" HorizontalAlignment="Left" Margin="141,39,0,0" VerticalAlignment="Top" Height="31" Width="101" Foreground="{DynamicResource ForgBrush}" FontFamily="Microsoft YaHei UI Light" FontSize="14" Background="{x:Null}" RenderTransformOrigin="0.506,1.433"/>
+        <Label HorizontalContentAlignment="Right" Content="{DynamicResource ResourceKey=diCode}" Margin="141,71,0,0" VerticalAlignment="Top" Height="32" Foreground="{DynamicResource ForgBrush}" FontFamily="Microsoft YaHei UI Light" FontSize="14" Background="{x:Null}" HorizontalAlignment="Left" Width="101"/>
+    </Grid>
+</UserControl>

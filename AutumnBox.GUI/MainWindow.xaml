@@ -1,0 +1,51 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AutumnBox.GUI"
+        xmlns:cstm="clr-namespace:AutumnBox.GUI.UI.Cstm"
+        xmlns:cpnel="clr-namespace:AutumnBox.GUI.UI.FuncPanels"
+        x:Name="_MainWindow" x:Class="AutumnBox.GUI.MainWindow"
+        mc:Ignorable="d"
+    Closed="_MainWindow_Closed"
+        Background="{DynamicResource BackBrush}" Title="AutumnBox" Height="682.667" Width="1155" Foreground="#FF1B1919" ResizeMode="NoResize" Loaded="MainWindow_Loaded"  WindowStyle="None"  WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid Name="GridBase" Margin="3,0,3,3">
+            <WebBrowser x:Name="WTF" Width="1" Height="0" Margin="963,271,185,408"/>
+            <cstm:CstmTitleBar x:Name="TitleBar" Height="35" VerticalAlignment="Top"/>
+            <Label Content="Label" HorizontalAlignment="Left" Margin="-1,41,0,0" VerticalAlignment="Top" Height="1" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" Foreground="{x:Null}" Width="1149"/>
+            <Grid Name="GridMain" Background="#00E5E5E5" Margin="0,42,0,-13" Height="651" VerticalAlignment="Top">
+                <cpnel:RebootBtnPanel x:Name="RebootGrid" Margin="0,10,23,0" HorizontalAlignment="Right" Width="265" VerticalAlignment="Top" Height="126" BorderBrush="{DynamicResource BorderBrush}"/>
+                <cpnel:DeviceInfoPanel x:Name="DevInfoPanel" Margin="10,0,0,0" Height="222" VerticalAlignment="Top" HorizontalAlignment="Left" Width="650"/>
+                <Button Foreground="{DynamicResource {x:Static SystemColors.ScrollBarBrushKey}}" x:Name="buttonStartShell"  Content="{DynamicResource btnADBCMD}" Margin="861,141,23,0" VerticalAlignment="Top" Height="54" Background="{x:Null}" BorderBrush="{DynamicResource BorderBrush}" FontSize="14" FontFamily="Microsoft YaHei UI Light" Click="ButtonStartShell_Click" />
+                <Button Foreground="{DynamicResource ForgBrush}" x:Name="BtnSettings"  Content="{DynamicResource btnSetting}" Margin="940,590,9,0" VerticalAlignment="Top" Height="35" Background="{x:Null}" BorderBrush="{DynamicResource BorderBrush}" FontSize="14" FontFamily="Microsoft YaHei UI Light" Click="BtnSettings_Click" />
+                <Button Foreground="{DynamicResource ForgBrush}" x:Name="BtnAbout"  Content="{DynamicResource btnAbout}" Margin="939,550,9,0" VerticalAlignment="Top" Height="35" Background="{x:Null}" BorderBrush="{DynamicResource BorderBrush}" FontSize="14" FontFamily="Microsoft YaHei UI Light" Click="BtnAbout_Click" />
+                <Button Foreground="{DynamicResource ForgBrush}" x:Name="BtnDonate"  Content="{DynamicResource Donate}" Margin="940,510,9,0" VerticalAlignment="Top" Height="35" Background="{x:Null}" BorderBrush="{DynamicResource BorderBrush}" FontSize="14" FontFamily="Microsoft YaHei UI Light" Click="BtnDonate_Click" />
+                <Image Source="Resources/Images/Icons/donate.png" HorizontalAlignment="Left" Height="27" Margin="943,514,0,0" VerticalAlignment="Top" Width="27"/>
+                <TextBox Foreground="{DynamicResource ForgBrush}" x:Name="textBoxGG" Height="93" Margin="940,260,9,0" TextWrapping="Wrap" Text="..." VerticalAlignment="Top" IsReadOnly="True" Background="{x:Null}" FontSize="14"/>
+                <cpnel:DevicesPanel  x:Name="DevicesPanel" Margin="667,0,293,418"></cpnel:DevicesPanel>
+
+                <cstm:PotdBox Margin="940,355,10,146" Height="150" Width="200"/>
+                <TabControl x:Name="TBCFuncs" HorizontalAlignment="Left" Height="392" Margin="10,233,0,0" VerticalAlignment="Top" Width="924" Background="#20000000" BorderBrush="{DynamicResource BorderBrush}">
+                    <TabItem TabIndex="0" Header="{DynamicResource tbiStart}" Margin="-2,-2,-14,0" Foreground="{DynamicResource ForgBrush}" FontSize="16">
+                        <cpnel:StartPanel x:Name="StartPanel" Margin="0,0,0,0"></cpnel:StartPanel>
+                    </TabItem>
+                    <TabItem TabIndex="1" Header="{DynamicResource tbiOnPowerOn}" Margin="14,-2,-18,0" Foreground="{DynamicResource ForgBrush}" FontSize="16">
+                        <cpnel:PoweronFuncPanel x:Name="PoweronFuncs" Margin="0,0,-4,0"></cpnel:PoweronFuncPanel>
+                    </TabItem>
+                    <TabItem TabIndex="2"  Header="{DynamicResource tbiOnRecovery}" Margin="18,-2,-23,0" Foreground="{DynamicResource ForgBrush}" FontSize="16">
+                        <cpnel:RecFuncPanel Margin="0,0,0,0" x:Name="RecoveryFuncs"/>
+                    </TabItem>
+                    <TabItem TabIndex="3"  Header="{DynamicResource tbiOnFastboot}" Margin="23,-2,-26,0" Foreground="{DynamicResource ForgBrush}" FontSize="16">
+                        <cpnel:FastbootFuncPanel x:Name="FastbootFuncs"></cpnel:FastbootFuncPanel>
+                    </TabItem>
+                    <TabItem TabIndex="4"  Header="{DynamicResource tbiThridPartyFunction}" Margin="26,-2,-29,0" Foreground="{DynamicResource ForgBrush}" FontSize="16">
+                        <cpnel:ThridPartyFunctionPanel Margin="0,0,0,0" x:Name="ThridPartyFuncs"></cpnel:ThridPartyFunctionPanel>
+                    </TabItem>
+                </TabControl>
+            </Grid>
+        </Grid>
+        <!--<cstm:LoadingPanel x:Name="LoadingPanel"></cstm:LoadingPanel>-->
+    </Grid>
+</Window>
