@@ -23,7 +23,7 @@ namespace AutumnBox.Basic.Device.ActivityManager
         /// <param name="device">设备</param>
         /// <param name="broadcast">广播内容</param>
         /// <returns></returns>
-        public static AdvanceOutput Send(DeviceSerial device, string broadcast) {
+        public static AdvanceOutput Send(DeviceSerialNumber device, string broadcast) {
            return ActivityManagerShared.Executer.QuicklyShell(device, $"am broadcast -a {broadcast}");
         }
     }

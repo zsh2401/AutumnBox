@@ -58,10 +58,10 @@ namespace AutumnBox.Basic.Device.PackageManage
         /// <summary>
         /// 这个包所在的设备
         /// </summary>
-        public DeviceSerial Owner { get; private set; }
+        public DeviceSerialNumber Owner { get; private set; }
 
         private static readonly string mainActivityPattern = $"android.intent.action.MAIN:{Environment.NewLine}.+.+\u0020(?<result>.+)";
-        public PackageInfo(DeviceSerial owner, string name)
+        public PackageInfo(DeviceSerialNumber owner, string name)
         {
             this.Name = name;
             this.Owner = owner;

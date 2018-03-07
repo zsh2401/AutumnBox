@@ -24,7 +24,7 @@ namespace AutumnBox.Basic.Device
         /// <summary>
         /// 设备序列号
         /// </summary>
-        public DeviceSerial Serial { get; set; }
+        public DeviceSerialNumber Serial { get; set; }
         /// <summary>
         /// 屏幕信息
         /// </summary>

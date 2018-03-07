@@ -24,7 +24,7 @@ namespace AutumnBox.Basic.FlowFramework
         /// <summary>
         /// 目标设备序列号
         /// </summary>
-        public DeviceSerial Serial { get { return DevBasicInfo.Serial; } }
+        public DeviceSerialNumber Serial { get { return DevBasicInfo.Serial; } }
         /// <summary>
         /// 指定设备的信息
         /// </summary>

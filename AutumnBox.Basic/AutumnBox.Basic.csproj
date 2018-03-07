@@ -98,7 +98,7 @@
     <Compile Include="Device\PackageManage\PackageInfo.cs" />
     <Compile Include="Device\PackageManage\PackageManagerShared.cs" />
     <Compile Include="Device\PackageManage\PackageNotFoundException.cs" />
-    <Compile Include="Device\DeviceSerial.cs" />
+    <Compile Include="Device\DeviceSerialNumber.cs" />
     <Compile Include="Device\DeviceBuildPropGetter.cs" />
     <Compile Include="Device\DeviceHardwareInfo.cs" />
     <Compile Include="Device\DeviceHardwareInfoGetter.cs" />

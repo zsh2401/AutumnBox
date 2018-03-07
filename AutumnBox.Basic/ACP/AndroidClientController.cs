@@ -21,27 +21,27 @@ namespace AutumnBox.Basic.ACP
             "top.atmb.autumnbox.COMMAND_START_ACP_SERVICE";
         private const string BROADCAST_STOP_ACP_SERVICE =
             "top.atmb.autumnbox.COMMAND_STOP_ACP_SERVICE";
-        public static bool IsInstallAutumnBoxApp(DeviceSerial serial) {
+        public static bool IsInstallAutumnBoxApp(DeviceSerialNumber serial) {
             return PackageManager.IsInstall(serial, PACKAGE_NAME) == true;
         }
-        public static AdvanceOutput StartMainActivity(DeviceSerial device)
+        public static AdvanceOutput StartMainActivity(DeviceSerialNumber device)
         {
             return Activity.Start(device, PACKAGE_NAME, MAIN_ACTIVITY_NAME);
         }
-        public static AdvanceOutput AwakeAcpService(DeviceSerial device) {
+        public static AdvanceOutput AwakeAcpService(DeviceSerialNumber device) {
             CheckInstallApp(device);
             StartMainActivity(device);
             return Service.StartService(device, PACKAGE_NAME,SERVICE_NAME);
         }
-        public static AdvanceOutput StopAcpService(DeviceSerial device) {
+        public static AdvanceOutput StopAcpService(DeviceSerialNumber device) {
             return Broadcast.Send(device,BROADCAST_STOP_ACP_SERVICE);
         }
-        public static bool AcpServiceIsRunning(DeviceSerial device) {
+        public static bool AcpServiceIsRunning(DeviceSerialNumber device) {
             CheckInstallApp(device);
             var result =  AcpCommunicator.GetAcpCommunicator(device).SendCommand(Acp.CMD_TEST);
             return result.IsSuccessful;
         }
-        private static void CheckInstallApp(DeviceSerial device) {
+        private static void CheckInstallApp(DeviceSerialNumber device) {
             if (!IsInstallAutumnBoxApp(device)) { throw new AndroidAppIsNotInstallException(); }
         }
     }

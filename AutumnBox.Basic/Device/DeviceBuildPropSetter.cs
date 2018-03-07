@@ -23,7 +23,7 @@ namespace AutumnBox.Basic.Device
     {
         private static readonly CommandExecuter executer = new CommandExecuter();
         private AndroidShell shellAsSu;
-        public DeviceSerial DeviceSerial { get; private set; }
+        public DeviceSerialNumber DeviceSerial { get; private set; }
         public bool AutoSave { get; set; } = true;
         public string CurrentString { get; private set; }
         public AndroidShell ShellAsSu
@@ -48,7 +48,7 @@ namespace AutumnBox.Basic.Device
         private const string buildPropPath = "/system/build.prop";
         private const string buildPropFileNameOnTempFloder = "now_build.prop.tmp";
         private const string buildPropFileNameOnDeviceTemp = "/sdcard/atmb_buildprop_temp";
-        public DeviceBuildPropSetter(DeviceSerial serial)
+        public DeviceBuildPropSetter(DeviceSerialNumber serial)
         {
             this.DeviceSerial = serial;
             shellAsSu = new AndroidShell(serial);

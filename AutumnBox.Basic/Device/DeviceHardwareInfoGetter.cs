@@ -24,12 +24,12 @@ namespace AutumnBox.Basic.Device
         {
             executer = new CommandExecuter();
         }
-        private readonly DeviceSerial serial;
+        private readonly DeviceSerialNumber serial;
         /// <summary>
         /// 构造
         /// </summary>
         /// <param name="deviceSerial"></param>
-        public DeviceHardwareInfoGetter(DeviceSerial deviceSerial)
+        public DeviceHardwareInfoGetter(DeviceSerialNumber deviceSerial)
         {
             this.serial = deviceSerial;
         }

@@ -36,7 +36,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
             UIHelper.SetGridButtonStatus(MainGrid, status);
         }
 
-        private bool BreventPrecheck(DeviceSerial seria, string pkgName, string msgOnNotInstall, ref bool fixAndroidO)
+        private bool BreventPrecheck(DeviceSerialNumber seria, string pkgName, string msgOnNotInstall, ref bool fixAndroidO)
         {
             bool? isInstall = false;
             bool isAndroidO = false;

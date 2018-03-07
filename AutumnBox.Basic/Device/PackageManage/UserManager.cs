@@ -42,7 +42,7 @@ namespace AutumnBox.Basic.Device.PackageManage
         /// 构造一个用户管理器
         /// </summary>
         /// <param name="device"></param>
-        public UserManager(DeviceSerial device)
+        public UserManager(DeviceSerialNumber device)
         {
             this.shell = new AndroidShellV2(device);
         }

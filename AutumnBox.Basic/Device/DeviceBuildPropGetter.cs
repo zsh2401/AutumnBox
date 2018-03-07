@@ -22,12 +22,12 @@ namespace AutumnBox.Basic.Device
         /// <summary>
         /// 绑定的设备
         /// </summary>
-        public DeviceSerial Serial { get; private set; }
+        public DeviceSerialNumber Serial { get; private set; }
         /// <summary>
         /// 构建
         /// </summary>
         /// <param name="serial"></param>
-        public DeviceBuildPropGetter(DeviceSerial serial)
+        public DeviceBuildPropGetter(DeviceSerialNumber serial)
         {
             executer = new CommandExecuter();
             Serial = serial;

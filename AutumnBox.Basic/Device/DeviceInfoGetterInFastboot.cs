@@ -21,12 +21,12 @@ namespace AutumnBox.Basic.Device
     public class DeviceInfoGetterInFastboot
     {
         private readonly CommandExecuter executer;
-        private readonly DeviceSerial serial;
+        private readonly DeviceSerialNumber serial;
         /// <summary>
         /// 创建DeviceInfoGetterInFastboot的新实例
         /// </summary>
         /// <param name="serial">具体的设备</param>
-        public DeviceInfoGetterInFastboot(DeviceSerial serial)
+        public DeviceInfoGetterInFastboot(DeviceSerialNumber serial)
         {
             executer = new CommandExecuter();
             this.serial = serial;

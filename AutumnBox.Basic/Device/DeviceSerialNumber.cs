@@ -16,7 +16,7 @@ namespace AutumnBox.Basic.Device
     /// <summary>
     /// 设备序列号
     /// </summary>
-    public class DeviceSerial : IEquatable<DeviceSerial>
+    public class DeviceSerialNumber : IEquatable<DeviceSerialNumber>
     {
         /// <summary>
         /// 判断这个序列号是否是一个IP
@@ -47,7 +47,7 @@ namespace AutumnBox.Basic.Device
         /// 创建DeviceSerial的新实例
         /// </summary>
         /// <param name="serialStr"></param>
-        public DeviceSerial(string serialStr)
+        public DeviceSerialNumber(string serialStr)
         {
             var strs = serialStr.Split(':');
             if (strs.Length > 1)
@@ -68,7 +68,7 @@ namespace AutumnBox.Basic.Device
         /// <param name="left"></param>
         /// <param name="right"></param>
         /// <returns></returns>
-        public static bool operator ==(DeviceSerial left, DeviceSerial right)
+        public static bool operator ==(DeviceSerialNumber left, DeviceSerialNumber right)
         {
             return left?.ToString() == right?.ToString();
         }
@@ -78,7 +78,7 @@ namespace AutumnBox.Basic.Device
         /// <param name="left"></param>
         /// <param name="right"></param>
         /// <returns></returns>
-        public static bool operator !=(DeviceSerial left, DeviceSerial right)
+        public static bool operator !=(DeviceSerialNumber left, DeviceSerialNumber right)
         {
             return left?.ToString() != right?.ToString();
         }
@@ -87,7 +87,7 @@ namespace AutumnBox.Basic.Device
         /// </summary>
         /// <param name="other"></param>
         /// <returns></returns>
-        public bool Equals(DeviceSerial other)
+        public bool Equals(DeviceSerialNumber other)
         {
             return this.ToString() == other.ToString();
         }
@@ -98,9 +98,9 @@ namespace AutumnBox.Basic.Device
         /// <returns></returns>
         public override bool Equals(object obj)
         {
-            if (obj is DeviceSerial)
+            if (obj is DeviceSerialNumber)
             {
-                return this.Equals((DeviceSerial)obj);
+                return this.Equals((DeviceSerialNumber)obj);
             }
             else
             {

@@ -33,7 +33,7 @@ namespace AutumnBox.Basic.ACP
                 c.Dispose();
             });
         }
-        public static AcpCommunicator GetAcpCommunicator(DeviceSerial device)
+        public static AcpCommunicator GetAcpCommunicator(DeviceSerialNumber device)
         {
             var communicator = communicators.Find((c) =>
             {
@@ -44,9 +44,9 @@ namespace AutumnBox.Basic.ACP
 
 
         private readonly Object _locker = new object();
-        private readonly DeviceSerial device;
+        private readonly DeviceSerialNumber device;
         private Socket socket;
-        private AcpCommunicator(DeviceSerial device, bool connectAfterCreate = true)
+        private AcpCommunicator(DeviceSerialNumber device, bool connectAfterCreate = true)
         {
             this.device = device;
             if (connectAfterCreate) { Connect(); }
@@ -159,7 +159,7 @@ namespace AutumnBox.Basic.ACP
                 return false;
             }
         }
-        private static IPEndPoint GetEndPoint(DeviceSerial serial)
+        private static IPEndPoint GetEndPoint(DeviceSerialNumber serial)
         {
             return new IPEndPoint(IPAddress.Parse("127.0.0.1"),
                 ForwardManager.GetForwardByRemotePort(serial, Acp.STD_PORT));

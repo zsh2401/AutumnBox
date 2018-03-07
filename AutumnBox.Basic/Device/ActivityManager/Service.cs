@@ -24,7 +24,7 @@ namespace AutumnBox.Basic.Device.ActivityManager
         /// <param name="pkgName">包名</param>
         /// <param name="className">服务类名</param>
         /// <returns></returns>
-        public static AdvanceOutput StartService(DeviceSerial device,
+        public static AdvanceOutput StartService(DeviceSerialNumber device,
             string pkgName, 
             string className) {
             return ActivityManagerShared.Executer.QuicklyShell(device,$"am startservice {pkgName}/.{className}");

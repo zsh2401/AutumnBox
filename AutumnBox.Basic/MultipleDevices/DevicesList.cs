@@ -26,7 +26,7 @@ namespace AutumnBox.Basic.MultipleDevices
         /// </summary>
         /// <param name="serial"></param>
         /// <returns></returns>
-        public bool Contains(DeviceSerial serial)
+        public bool Contains(DeviceSerialNumber serial)
         {
             var haves = from _devInfo in this
                         where _devInfo.Serial == serial

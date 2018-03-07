@@ -22,7 +22,7 @@ namespace AutumnBox.GUI.Windows
     public partial class UserManagerWindow : Window
     {
         private readonly UserManager userManager;
-        public UserManagerWindow(DeviceSerial device)
+        public UserManagerWindow(DeviceSerialNumber device)
         {
             InitializeComponent();
             userManager = new UserManager(device);

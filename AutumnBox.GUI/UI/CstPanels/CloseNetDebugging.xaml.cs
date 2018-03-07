@@ -14,9 +14,9 @@ namespace AutumnBox.GUI.UI.CstPanels
     /// </summary>
     public partial class CloseNetDebugging : FastPanelChild
     {
-        private readonly DeviceSerial _serial;
+        private readonly DeviceSerialNumber _serial;
         private readonly DevicesPanel root;
-        public CloseNetDebugging(DevicesPanel root,DeviceSerial serial)
+        public CloseNetDebugging(DevicesPanel root,DeviceSerialNumber serial)
         {
             InitializeComponent();
             _serial = serial;

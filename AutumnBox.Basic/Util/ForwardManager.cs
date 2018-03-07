@@ -27,7 +27,7 @@ namespace AutumnBox.Basic.Util
         /// <summary>
         /// 设备
         /// </summary>
-        public DeviceSerial DeviceSerial { get; private set; }
+        public DeviceSerialNumber DeviceSerial { get; private set; }
         /// <summary>
         /// 本地端口
         /// </summary>
@@ -42,7 +42,7 @@ namespace AutumnBox.Basic.Util
         /// <param name="device"></param>
         /// <param name="local"></param>
         /// <param name="remote"></param>
-        internal ForwardInfo(DeviceSerial device, ushort local, ushort remote)
+        internal ForwardInfo(DeviceSerialNumber device, ushort local, ushort remote)
         {
             this.DeviceSerial = device;
             this.Local = local;
@@ -80,7 +80,7 @@ namespace AutumnBox.Basic.Util
         /// </summary>
         /// <param name="device"></param>
         /// <returns></returns>
-        public static List<ForwardInfo> GetAllForward(DeviceSerial device = null)
+        public static List<ForwardInfo> GetAllForward(DeviceSerialNumber device = null)
         {
             List<ForwardInfo> forwards = new List<ForwardInfo>();
             Command queryCommand = device == null ?
@@ -95,7 +95,7 @@ namespace AutumnBox.Basic.Util
                 foreach (Match match in matches)
                 {
                     forwards.Add(new ForwardInfo(
-                        new DeviceSerial(match.Result("${serial}")),
+                        new DeviceSerialNumber(match.Result("${serial}")),
                         ushort.Parse(match.Result("${local}")),
                         ushort.Parse(match.Result("${remote}"))
                         ));
@@ -109,7 +109,7 @@ namespace AutumnBox.Basic.Util
         /// <param name="device">设备</param>
         /// <param name="localPort">本地端口</param>
         /// <param name="remotePort">远程端口</param>
-        public static void Forward(DeviceSerial device, ushort localPort, ushort remotePort)
+        public static void Forward(DeviceSerialNumber device, ushort localPort, ushort remotePort)
         {
             var exeReuslt = executer.Execute(Command.MakeForAdb(device, $"forward tcp:{localPort} tcp:{remotePort}"));
             if (!exeReuslt.IsSuccessful)
@@ -123,7 +123,7 @@ namespace AutumnBox.Basic.Util
         /// <param name="device">设备</param>
         /// <param name="remotePort">需要被转发的远程`端口</param>
         /// <returns></returns>
-        public static ushort GetForwardByRemotePort(DeviceSerial device, ushort remotePort)
+        public static ushort GetForwardByRemotePort(DeviceSerialNumber device, ushort remotePort)
         {
             //先获取所有的转发信息
             var forwards = GetAllForward();

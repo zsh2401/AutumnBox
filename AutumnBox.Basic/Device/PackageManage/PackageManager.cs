@@ -28,7 +28,7 @@ namespace AutumnBox.Basic.Device.PackageManage
         /// <param name="device"></param>
         /// <param name="packageName"></param>
         /// <returns></returns>
-        public static bool UninstallApp(DeviceSerial device, string packageName) {
+        public static bool UninstallApp(DeviceSerialNumber device, string packageName) {
             var exeResult = PackageManagerShared.Executer.Execute(Command.MakeForAdb(device, "uninstall " + packageName));
             return !exeResult.Contains("Failure");
         }
@@ -38,7 +38,7 @@ namespace AutumnBox.Basic.Device.PackageManage
         /// <param name="device"></param>
         /// <param name="packageName"></param>
         /// <returns></returns>
-        public static bool CleanAppData(DeviceSerial device, string packageName) {
+        public static bool CleanAppData(DeviceSerialNumber device, string packageName) {
             var exeResult = PackageManagerShared.Executer.QuicklyShell(device, "pm clear " + packageName);
             Logger.Info(TAG,$"clean {packageName} data success?{exeResult.IsSuccessful}");
             return exeResult.IsSuccessful;
@@ -49,7 +49,7 @@ namespace AutumnBox.Basic.Device.PackageManage
         /// </summary>
         /// <param name="devSerial"></param>
         /// <returns></returns>
-        public static List<PackageInfo> GetPackages(DeviceSerial devSerial)
+        public static List<PackageInfo> GetPackages(DeviceSerialNumber devSerial)
         {
             var result = PackageManagerShared.Executer.QuicklyShell(devSerial, $"pm list packages");
             var matches = Regex.Matches(result.ToString(), packagesPattern);
@@ -66,7 +66,7 @@ namespace AutumnBox.Basic.Device.PackageManage
         /// <param name="devSerial">设备</param>
         /// <param name="packageName">应用名</param>
         /// <returns></returns>
-        public static bool? IsInstall(DeviceSerial devSerial, string packageName)
+        public static bool? IsInstall(DeviceSerialNumber devSerial, string packageName)
         {
             var result = PackageManagerShared.Executer.QuicklyShell(devSerial, $"pm path {packageName}");
             return result.IsSuccessful;

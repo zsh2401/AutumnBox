@@ -19,7 +19,7 @@ namespace AutumnBox.Basic.Device
     /// </summary>
     public sealed class DeviceImageFinder : IDisposable,ISetableShell
     {
-        private readonly DeviceSerial serial;
+        private readonly DeviceSerialNumber serial;
         /// <summary>
         /// 使用的android shell类
         /// </summary>
@@ -42,11 +42,11 @@ namespace AutumnBox.Basic.Device
         }
         private AndroidShell _shell;
 
-        public DeviceImageFinder(DeviceSerial serial)
+        public DeviceImageFinder(DeviceSerialNumber serial)
         {
             this.serial = serial;
         }
-        public static string PathOf(DeviceSerial serial, DeviceImage imageType)
+        public static string PathOf(DeviceSerialNumber serial, DeviceImage imageType)
         {
             using (DeviceImageFinder _o = new DeviceImageFinder(serial))
             {

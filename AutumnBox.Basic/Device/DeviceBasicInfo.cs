@@ -25,7 +25,7 @@ namespace AutumnBox.Basic.Device
         /// <summary>
         /// 设备序列号
         /// </summary>
-        public DeviceSerial Serial { get; set; }
+        public DeviceSerialNumber Serial { get; set; }
         /// <summary>
         /// 设备的状态
         /// </summary>
@@ -40,7 +40,7 @@ namespace AutumnBox.Basic.Device
         {
             return new DeviceBasicInfo
             {
-                Serial = new DeviceSerial(serialStr),
+                Serial = new DeviceSerialNumber(serialStr),
                 State = state,
             };
         }
@@ -84,7 +84,7 @@ namespace AutumnBox.Basic.Device
         /// 隐式转换DeviceBasicInfo为Serial
         /// </summary>
         /// <param name="info"></param>
-        public static implicit operator DeviceSerial(DeviceBasicInfo info)
+        public static implicit operator DeviceSerialNumber(DeviceBasicInfo info)
         {
             return info.Serial;
         }

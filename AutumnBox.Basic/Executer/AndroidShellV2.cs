@@ -34,14 +34,14 @@ namespace AutumnBox.Basic.Executer
         public event ProcessStartedEventHandler ProcessStarted;
        
         private readonly ProcessStartInfo pStartInfo;
-        private readonly DeviceSerial device;
+        private readonly DeviceSerialNumber device;
         private readonly object exeLock = new object();
 
         /// <summary>
         /// 构建
         /// </summary>
         /// <param name="device"></param>
-        public AndroidShellV2(DeviceSerial device)
+        public AndroidShellV2(DeviceSerialNumber device)
         {
             this.device = device;
             outputBuilder = new AdvanceOutputBuilder();

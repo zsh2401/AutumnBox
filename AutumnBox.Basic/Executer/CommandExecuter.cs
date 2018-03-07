@@ -96,7 +96,7 @@ namespace AutumnBox.Basic.Executer
         /// <param name="dev"></param>
         /// <param name="command"></param>
         /// <returns></returns>
-        public AdvanceOutput QuicklyShell(DeviceSerial dev, string command)
+        public AdvanceOutput QuicklyShell(DeviceSerialNumber dev, string command)
         {
             leastShellExitCode = null;
             var cmd = Command.MakeForAdb(dev, $"shell \"{command} ; echo exitcode$?\"");

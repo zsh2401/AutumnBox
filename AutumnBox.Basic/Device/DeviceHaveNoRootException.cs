@@ -21,7 +21,7 @@ namespace AutumnBox.Basic.Device
         /// <summary>
         /// 具体的设备
         /// </summary>
-        public DeviceSerial Device { get; private set; }
+        public DeviceSerialNumber Device { get; private set; }
         /// <summary>
         /// 创建DeviceHaveNoRootException的新实例
         /// </summary>
@@ -30,7 +30,7 @@ namespace AutumnBox.Basic.Device
         /// <summary>
         /// 创建DeviceHaveNoRootException的新实例并说明设备
         /// </summary>
-        public DeviceHaveNoRootException(DeviceSerial dev)
+        public DeviceHaveNoRootException(DeviceSerialNumber dev)
         {
             this.Device = dev;
         }
