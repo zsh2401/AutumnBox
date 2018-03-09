@@ -28,7 +28,7 @@ namespace AutumnBox.GUI.I18N
     {
         public static event EventHandler LanguageChanged;
         public static readonly List<Language> Langs;
-        public const string Path = "pack://application:,,,/AutumnBox;component/I18N/Langs/";
+        public const string Path = "pack://application:,,,/AutumnBox.GUI;component/I18N/Langs/";
         static LanguageHelper()
         {
             Langs = new List<Language>(){

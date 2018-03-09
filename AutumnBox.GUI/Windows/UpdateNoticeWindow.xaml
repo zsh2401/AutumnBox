@@ -15,7 +15,7 @@
         <TextBlock x:Name ="TextBoxContent" Margin="10,98,10,119" TextWrapping="Wrap" Text="Content" Foreground="{DynamicResource ForgBrush}"/>
         <CheckBox x:Name="CheckBoxSkip" Content="{DynamicResource ckbSkipThisVersion}" HorizontalAlignment="Left" Margin="10,0,0,53" Foreground="{DynamicResource ForgBrush}" Height="15" VerticalAlignment="Bottom"/>
         <Label x:Name="LH" Content="Header" Margin="0,54,0,0" VerticalAlignment="Top" Height="39" FontFamily="Microsoft YaHei UI Light" FontSize="20" HorizontalContentAlignment="Center" Foreground="{DynamicResource ForgBrush}"/>
-        <Image HorizontalAlignment="Left" Height="26" Margin="11,0,0,88" VerticalAlignment="Bottom" Width="25" Source="/AutumnBox;component/Resources/Images/baidupan.png"/>
-        <Image HorizontalAlignment="Left" Height="26" Margin="171,0,0,88" VerticalAlignment="Bottom" Width="25" Source="/AutumnBox;component/Resources/Images/github.png"/>
+        <Image HorizontalAlignment="Left" Height="26" Margin="11,0,0,88" VerticalAlignment="Bottom" Width="25" Source="/Resources/Images/baidupan.png"/>
+        <Image HorizontalAlignment="Left" Height="26" Margin="171,0,0,88" VerticalAlignment="Bottom" Width="25" Source="/Resources/Images/github.png"/>
     </Grid>
 </Window>

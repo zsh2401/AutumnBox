@@ -12,7 +12,7 @@ namespace AutumnBox.GUI.Resources.Images
 {
     public static class ImageGetter
     {
-        private const string prefix = "/AutumnBox;component/Resources/Images/";
+        private const string prefix = "/Resources/Images/";
         public static BitmapImage Get(string relativePath)
         {
             BitmapImage bmp = new BitmapImage(new Uri($"{prefix}{relativePath}", UriKind.RelativeOrAbsolute));

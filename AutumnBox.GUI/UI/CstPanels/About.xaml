@@ -6,7 +6,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" Width="940" Height="537.5">
     <Grid>
-        <Image HorizontalAlignment="Left" Height="232" Margin="10,10,0,0" VerticalAlignment="Top" Width="225" Source="/AutumnBox;component/Resources/images/title_icon.ico" RenderTransformOrigin="0.519,-0.013"/>
+        <Image HorizontalAlignment="Left" Height="232" Margin="10,10,0,0" VerticalAlignment="Top" Width="225" Source="/Resources/images/title_icon.ico" RenderTransformOrigin="0.519,-0.013"/>
         <Label Foreground="{DynamicResource {x:Static SystemColors.MenuBrushKey}}" Content="AutumnBox" HorizontalAlignment="Left" Margin="235,82,0,0" VerticalAlignment="Top" Height="126" Width="546" FontSize="100" FontFamily="Microsoft YaHei UI Light" Background="{x:Null}"/>
         <Label Foreground="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" Content="{DynamicResource AboutMessage1}" HorizontalAlignment="Left" Margin="191,303,0,0" VerticalAlignment="Top" FontFamily="Microsoft YaHei UI Light" FontSize="14" Background="{x:Null}"/>
         <Label Foreground="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" Content="{DynamicResource AboutMessage2}" HorizontalAlignment="Left" Margin="191,337,0,0" VerticalAlignment="Top" FontFamily="Microsoft YaHei UI Light" FontSize="14" Width="228" Background="{x:Null}"/>
@@ -32,8 +32,8 @@
                 </TransformGroup>
             </TextBlock.RenderTransform>
         </TextBlock>
-        <Image RenderOptions.BitmapScalingMode="Fant" Source="/AutumnBox;component/Resources/Images/Icons/donate.png" HorizontalAlignment="Left" Height="28" Margin="426,337,0,0" VerticalAlignment="Top" Width="31"/>
-        <Image RenderOptions.BitmapScalingMode="Fant" Source="/AutumnBox;component/Resources/Images/github.png" HorizontalAlignment="Left" Height="28" Margin="617,303,0,0" VerticalAlignment="Top" Width="31"/>
+        <Image RenderOptions.BitmapScalingMode="Fant" Source="/Resources/Images/Icons/donate.png" HorizontalAlignment="Left" Height="28" Margin="426,337,0,0" VerticalAlignment="Top" Width="31"/>
+        <Image RenderOptions.BitmapScalingMode="Fant" Source="/Resources/Images/github.png" HorizontalAlignment="Left" Height="28" Margin="617,303,0,0" VerticalAlignment="Top" Width="31"/>
         <Label Foreground="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" x:Name="LabelVersion" Content="*.*.*.*-*" HorizontalAlignment="Left" Margin="240,208,0,0" VerticalAlignment="Top" Width="181" FontFamily="Microsoft YaHei UI Light"/>
         <Label Foreground="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" x:Name="LabelCompiledDate" Content="00-00-0000" HorizontalAlignment="Left" Margin="426,208,0,0" VerticalAlignment="Top" Width="150" FontFamily="Microsoft YaHei UI Light"/>
     </Grid>

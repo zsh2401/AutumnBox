@@ -9,7 +9,7 @@
     <Grid>
         <Image x:Name="ImgMain" RenderOptions.BitmapScalingMode="Fant" MouseDown="ImgMain_MouseDown"/>
         <Grid Visibility="Hidden" x:Name="LBtnClose" Background="#66000000" Height="16" VerticalAlignment="Top" HorizontalAlignment="Right" Width="16" Margin="0,1,1,0" MouseDown="LBtnClose_MouseDown" >
-            <Image  RenderOptions.BitmapScalingMode="Fant" Source="/AutumnBox;component/Resources/Images/Btn/close_normal.png" />
+            <Image  RenderOptions.BitmapScalingMode="Fant" Source="/Resources/Images/Btn/close_normal.png" />
         </Grid>
         <TextBlock Visibility="Hidden"  TextAlignment="Center" x:Name="TBCountDown" Text="5" Margin="162,0,1,102" FontSize="36" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}"/>
     </Grid>
