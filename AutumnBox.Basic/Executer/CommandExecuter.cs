@@ -29,6 +29,9 @@ namespace AutumnBox.Basic.Executer
         private ProcessStartInfo _startInfo;
         private OutputBuilder _builder;
         private readonly Object _lock;
+        /// <summary>
+        /// 静态的公用命令执行器
+        /// </summary>
         public static readonly CommandExecuter Static;
         static CommandExecuter()
         {
@@ -54,16 +57,16 @@ namespace AutumnBox.Basic.Executer
         /// 执行一段命令或运行某个程序
         /// </summary>
         /// <param name="fileName">文件路径</param>
-        /// <param name="command">命令或参数</param>
+        /// <param name="args">命令或参数</param>
         /// <returns></returns>
-        public AdvanceOutput Execute(string fileName, string command)
+        public AdvanceOutput Execute(string fileName, string args)
         {
             lock (_lock)
             {
                 _builder.Clear();
                 int exitCode = 404;
                 _startInfo.FileName = fileName;
-                _startInfo.Arguments = command;
+                _startInfo.Arguments = args;
                 using (var process = Process.Start(_startInfo))
                 {
                     process.OutputDataReceived += (s, e) => OnOutputReceived(new OutputReceivedEventArgs(e, false));
@@ -86,7 +89,7 @@ namespace AutumnBox.Basic.Executer
         /// <returns></returns>
         public AdvanceOutput Execute(Command cmd)
         {
-            return Execute(cmd.FileName, cmd.ToString());
+            return Execute(cmd.FileName, cmd.Args);
         }
         private const string exitCodePattern = @"exitcode(?<code>\d+)";
         

@@ -29,7 +29,7 @@ namespace AutumnBox.Basic.Flows
         protected override void AnalyzeResult(AdvanceResult result)
         {
             base.AnalyzeResult(result);
-            result.ExitCode = _result.ExitCode;
+            result.ExitCode = _result.GetExitCode();
             result.ResultType = _result.IsSuccessful ? ResultType.Successful : ResultType.Unsuccessful;
         }
     }

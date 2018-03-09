@@ -11,16 +11,32 @@ namespace AutumnBox.Basic.Executer
     /// </summary>
     public class AdvanceOutput : Output
     {
-        public int ExitCode { get; private set; }
+        private int exitCode;
+        /// <summary>
+        /// 获取返回码
+        /// </summary>
+        /// <returns></returns>
+        public int GetExitCode()
+        {
+            return exitCode;
+        }
+        /// <summary>
+        /// 根据返回码判断是否成功
+        /// </summary>
         public bool IsSuccessful
         {
             get
             {
-                return ExitCode == 0;
+                return GetExitCode() == 0;
             }
         }
+        /// <summary>
+        /// 构建
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="exitCode"></param>
         public AdvanceOutput(Output source, int exitCode):base(source.All,source.Out,source.Error) {
-            this.ExitCode = exitCode;
+            this.exitCode = exitCode;
         }
     }
 }

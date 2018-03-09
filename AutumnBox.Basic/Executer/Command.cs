@@ -15,7 +15,8 @@ namespace AutumnBox.Basic.Executer
 {
     using AutumnBox.Basic.Device;
     using AutumnBox.Basic.Util;
-    using AutumnBox.Support.CstmDebug;
+    using System;
+    using System.Text;
 
     /// <summary>
     /// 封装命令的对象
@@ -27,21 +28,14 @@ namespace AutumnBox.Basic.Executer
         /// </summary>
         public string FileName { get; private set; }
         /// <summary>
-        /// 完全的命令
+        /// 参数
         /// </summary>
-        public override string ToString()
-        {
-            return (serial != null) ?
-                $" {serial.ToFullSerial()} {SpecificCommand}" : SpecificCommand;
-        }
+        public string Args { get; private set; }
         /// <summary>
-        /// 除去指定设备参数外的命令
+        /// 参数数组
         /// </summary>
-        private string SpecificCommand;
-        /// <summary>
-        /// 指定的设备
-        /// </summary>
-        private DeviceSerialNumber serial;
+        public string[] ArgArray { get { return Args.Split(' '); } }
+
         /// <summary>
         /// 仅限使用方法进行构建
         /// </summary>
@@ -53,7 +47,11 @@ namespace AutumnBox.Basic.Executer
         /// <returns>命令对象</returns>
         public static Command MakeForCmd(string command)
         {
-            return new Command() { FileName = "cmd.exe", SpecificCommand = " /c " + command };
+            return new Command()
+            {
+                FileName = "cmd.exe",
+                Args = $"/c {command}",
+            };
         }
         /// <summary>
         /// 构建一个使用adb.exe运行的命令
@@ -62,43 +60,80 @@ namespace AutumnBox.Basic.Executer
         /// <returns>命令对象</returns>
         public static Command MakeForAdb(string command)
         {
-            return new Command() { FileName = AdbConstants.FullAdbFileName, SpecificCommand = command };
+            return new Command()
+            {
+                FileName = AdbConstants.FullAdbFileName,
+                Args = command
+            };
         }
         /// <summary>
         /// 构建一个使用adb.exe运行的命令,并且这个命令指定了设备
         /// </summary>
-        /// <param name="command"></param>
+        /// <param name="_serial">设备序列号</param>
+        /// <param name="command">命令</param>
         /// <returns>命令对象</returns>
         public static Command MakeForAdb(DeviceSerialNumber _serial, string command)
         {
-            return new Command() { FileName = AdbConstants.FullAdbFileName, serial = _serial, SpecificCommand = command };
+            return new Command()
+            {
+                FileName = AdbConstants.FullAdbFileName,
+                Args = $"-s {_serial} {command}",
+            };
         }
         /// <summary>
         /// 构建一个使用fastboot.exe运行的命令
         /// </summary>
-        /// <param name="command"></param>
+        /// <param name="command">命令</param>
         /// <returns>命令对象</returns>
         public static Command MakeForFastboot(string command)
         {
-            return new Command() { FileName = AdbConstants.FullFastbootFileName, SpecificCommand = command };
+            return new Command()
+            {
+                FileName = AdbConstants.FullFastbootFileName,
+                Args = command
+            };
         }
         /// <summary>
         /// 构建一个使用fastboot.exe运行的命令,并且这个命令指定了设备
         /// </summary>
+        /// <param name="_serial">设备序列号</param>
         /// <param name="command"></param>
         /// <returns>命令对象</returns>
         public static Command MakeForFastboot(DeviceSerialNumber _serial, string command)
         {
-            return new Command() { FileName = AdbConstants.FullFastbootFileName, serial = _serial, SpecificCommand = command };
+            return new Command()
+            {
+                FileName = AdbConstants.FullFastbootFileName,
+                Args = $"-s {_serial} {command}"
+            };
         }
         /// <summary>
         /// 构建一个完全自定义的命令对象
         /// </summary>
-        /// <param name="command"></param>
+        /// <param name="fileName">程序文件名</param>
+        /// <param name="args">参数</param>
         /// <returns>命令对象</returns>
-        public static Command MakeForCustom(string fileName, string commanad)
+        public static Command MakeForCustom(string fileName, string args)
         {
-            return new Command() { FileName = fileName, SpecificCommand = commanad };
+            return new Command()
+            {
+                FileName = fileName,
+                Args = args
+            };
+        }
+        /// <summary>
+        /// 构建一个完全自定义的命令对象
+        /// </summary>
+        /// <param name="fileName">程序文件名</param>
+        /// <param name="args">参数</param>
+        /// <returns>命令对象</returns>
+        public static Command MakeForCustom(string fileName, params string[] args)
+        {
+            return new Command()
+            {
+                FileName = fileName,
+                Args = string.Join(" ", args)
+            };
         }
     }
 }

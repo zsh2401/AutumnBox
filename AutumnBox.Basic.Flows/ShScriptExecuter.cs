@@ -58,13 +58,13 @@ namespace AutumnBox.Basic.Flows
         protected override void AnalyzeResult(AdvanceResult result)
         {
             base.AnalyzeResult(result);
-            result.ExitCode = _result.ExitCode;
+            result.ExitCode = _result.GetExitCode();
             result.ResultType = result.ExitCode == 0 ? ResultType.Successful : ResultType.Unsuccessful;
             if (_tooKit.Args.FixAndroidOAdb &&//如果需要在激活后开启ADB
                 (new DeviceBuildPropGetter(_tooKit.Args.DevBasicInfo.Serial).
                 GetAndroidVersion() >= new Version("8.0.0")//并且安卓版本是8.0
                 ) &&
-                _result.ExitCode == 0
+                _result.GetExitCode() == 0
                 )
             {
                 TryFixAndroidAdb();

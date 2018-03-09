@@ -41,7 +41,7 @@ namespace AutumnBox.Basic.Device
         /// <returns></returns>
         public bool IsRootEnable()
         {
-            return executer.QuicklyShell(serial,"su -c ls").ExitCode == 0;
+            return executer.QuicklyShell(serial,"su -c ls").GetExitCode() == 0;
         }
         /// <summary>
         /// 获取设备的局域网IP

@@ -63,7 +63,7 @@ namespace AutumnBox.Basic.Executer
         /// <returns></returns>
         public bool HaveSu()
         {
-            return Execute("ls", LinuxUser.Su,false).ExitCode == 0;
+            return Execute("ls", LinuxUser.Su,false).GetExitCode() == 0;
         }
         /// <summary>
         /// 执行一段命令

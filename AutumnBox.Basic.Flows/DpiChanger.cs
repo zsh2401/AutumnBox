@@ -24,7 +24,7 @@ namespace AutumnBox.Basic.Flows
         {
             var outputBuilder = new OutputBuilder();
             outputBuilder.Register(toolKit.Executer);
-            exitCode =  toolKit.Executer.QuicklyShell(toolKit.Args.DevBasicInfo.Serial, $"wm density {toolKit.Args.Dpi}").ExitCode;
+            exitCode =  toolKit.Executer.QuicklyShell(toolKit.Args.DevBasicInfo.Serial, $"wm density {toolKit.Args.Dpi}").GetExitCode();
             if (exitCode == 0) {
                 toolKit.Ae("reboot");
             }
