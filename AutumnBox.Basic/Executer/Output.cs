@@ -82,16 +82,6 @@ namespace AutumnBox.Basic.Executer
             }
         }
         /// <summary>
-        /// 添加另一个OutputData对象的内容
-        /// </summary>
-        /// <param name="output"></param>
-        public void Append(Output output)
-        {
-            this.All += output.All;
-            this.Out += output.Out;
-            this.Error += output.Error;
-        }
-        /// <summary>
         /// 获取完整的输出数据
         /// </summary>
         /// <returns></returns>
@@ -99,16 +89,29 @@ namespace AutumnBox.Basic.Executer
         {
             return All.ToString();
         }
+        /// <summary>
+        /// 构建一个空的Output对象
+        /// </summary>
         public Output() {
             this.Out = "";
             this.Error = "";
             this.All = "";
         }
-        public Output(string all, string _out, string err ="") {
-            this.Out = _out;
-            this.Error = err;
+        /// <summary>
+        /// 构建
+        /// </summary>
+        /// <param name="all">所有内容</param>
+        /// <param name="stdOutput">标准输出</param>
+        /// <param name="stdError">标准错误</param>
+        public Output(string all, string stdOutput, string stdError ="") {
+            this.Out = stdOutput;
+            this.Error = stdError;
             this.All = all;
         }
+        /// <summary>
+        /// 打印在Log里
+        /// </summary>
+        /// <param name="printOnRelease"></param>
         public void PrintOnLog(bool printOnRelease = false)
         {
             if (printOnRelease)
@@ -120,6 +123,9 @@ namespace AutumnBox.Basic.Executer
                 Logger.Debug(this, $"PrintOnLog(): {ToString()}");
             }
         }
+        /// <summary>
+        /// 打印在控制台
+        /// </summary>
         public void PrintOnConsole()
         {
             Console.WriteLine($"PrintOnConsole(): {ToString()}");

@@ -71,6 +71,10 @@ namespace AutumnBox.Basic.Device
         {
             return Get(BuildPropKeys.Brand);
         }
+        /// <summary>
+        /// 获取主板信息,但因为厂商原因,可能会是别的信息
+        /// </summary>
+        /// <returns></returns>
         public string GetBoard() {
             return Get(BuildPropKeys.Board);
         }

@@ -141,15 +141,6 @@ namespace AutumnBox.Basic.Executer
                 return builder.Result;
             }
         }
-        public enum LinuxUser
-        {
-            Normal,
-            Su,
-        }
-        public AdvanceOutput SafetyExecute(string command, LinuxUser user = LinuxUser.Normal)
-        {
-            throw new NotImplementedException();
-        }
         /// <summary>
         /// 连接到设备上
         /// </summary>

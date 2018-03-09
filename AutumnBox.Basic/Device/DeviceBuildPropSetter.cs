@@ -6,20 +6,15 @@
 ** desc： ...
 *********************************************************************************/
 using AutumnBox.Basic.Executer;
-using AutumnBox.Support.CstmDebug;
-using AutumnBox.Support.Helper;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Device
 {
     [Obsolete("由于安卓碎片化原因,此类不保证可以正常运行,请自行实现相关功能",true)]
+#pragma warning disable CS1591 // 缺少对公共可见类型或成员的 XML 注释
     public class DeviceBuildPropSetter : IDisposable, ISetableShell
+
     {
         private static readonly CommandExecuter executer = new CommandExecuter();
         private AndroidShell shellAsSu;
@@ -112,4 +107,5 @@ namespace AutumnBox.Basic.Device
             return Regex.IsMatch(CurrentString,$"^{key}=.+$",RegexOptions.Multiline);
         }
     }
+#pragma warning restore CS1591 // 缺少对公共可见类型或成员的 XML 注释
 }

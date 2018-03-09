@@ -33,7 +33,7 @@ namespace AutumnBox.Basic.Util
         /// </summary>
         public const string FASTBOOT_FILENAME = "fastboot.exe";
         /// <summary>
-        /// adb工具路径
+        /// 工具的相对路径
         /// </summary>
         public const string toolsPath = @"google\platform-tools\";
         /// <summary>

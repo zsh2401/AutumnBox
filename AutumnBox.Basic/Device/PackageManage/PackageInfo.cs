@@ -16,6 +16,9 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Device.PackageManage
 {
+    /// <summary>
+    /// 包信息
+    /// </summary>
     public sealed class PackageInfo
     {
         #region Property
@@ -61,6 +64,11 @@ namespace AutumnBox.Basic.Device.PackageManage
         public DeviceSerialNumber Owner { get; private set; }
 
         private static readonly string mainActivityPattern = $"android.intent.action.MAIN:{Environment.NewLine}.+.+\u0020(?<result>.+)";
+        /// <summary>
+        /// 构建
+        /// </summary>
+        /// <param name="owner"></param>
+        /// <param name="name"></param>
         public PackageInfo(DeviceSerialNumber owner, string name)
         {
             this.Name = name;

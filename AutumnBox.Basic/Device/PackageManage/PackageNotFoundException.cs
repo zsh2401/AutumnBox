@@ -11,9 +11,19 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Device.PackageManage
 {
+    /// <summary>
+    /// 找不到包的异常
+    /// </summary>
     public class PackageNotFoundException : Exception
     {
+        /// <summary>
+        /// 包名
+        /// </summary>
         public string PackageName { get; private set; }
+        /// <summary>
+        /// 构建
+        /// </summary>
+        /// <param name="packageName"></param>
         public PackageNotFoundException(string packageName = null)
         {
             this.PackageName = packageName;

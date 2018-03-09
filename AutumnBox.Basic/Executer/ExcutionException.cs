@@ -7,9 +7,11 @@ using System;
 
 namespace AutumnBox.Basic.Executer
 {
+
     /// <summary>
     /// 命令执行错误
     /// </summary>
+    [Serializable]
     public class ExcutionException:Exception
     {
         /// <summary>

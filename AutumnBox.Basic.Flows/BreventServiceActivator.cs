@@ -14,7 +14,7 @@
 
 namespace AutumnBox.Basic.Flows
 {
-    public class BreventServiceActivator : ShScriptExecuter
+    public sealed class BreventServiceActivator : ShScriptExecuter
     {
         public static readonly string _AppPackageName = "me.piebridge.brevent";
         protected override string ScriptPath => "/data/data/me.piebridge.brevent/brevent.sh";

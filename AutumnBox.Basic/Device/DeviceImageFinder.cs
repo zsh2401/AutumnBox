@@ -41,11 +41,20 @@ namespace AutumnBox.Basic.Device
             }
         }
         private AndroidShell _shell;
-
+        /// <summary>
+        /// 构建实例
+        /// </summary>
+        /// <param name="serial"></param>
         public DeviceImageFinder(DeviceSerialNumber serial)
         {
             this.serial = serial;
         }
+        /// <summary>
+        /// 获取目标设备的指定image路径
+        /// </summary>
+        /// <param name="serial"></param>
+        /// <param name="imageType"></param>
+        /// <returns></returns>
         public static string PathOf(DeviceSerialNumber serial, DeviceImage imageType)
         {
             using (DeviceImageFinder _o = new DeviceImageFinder(serial))
@@ -53,6 +62,11 @@ namespace AutumnBox.Basic.Device
                 return _o.PathOf(imageType);
             }
         }
+       /// <summary>
+       /// 获取image的路径
+       /// </summary>
+       /// <param name="imageType"></param>
+       /// <returns></returns>
         public string PathOf(DeviceImage imageType)
         {
             return Find1(imageType) ?? Find2(imageType);
@@ -96,6 +110,9 @@ namespace AutumnBox.Basic.Device
         {
             return ShellAsSu.SafetyInput($"ls -l {path}").IsSuccessful;
         }
+        /// <summary>
+        /// 析构
+        /// </summary>
         public void Dispose()
         {
             this.ShellAsSu?.Dispose();

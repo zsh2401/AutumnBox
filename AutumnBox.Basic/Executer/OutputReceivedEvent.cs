@@ -46,6 +46,5 @@ namespace AutumnBox.Basic.Executer
             Text = sourceEventArgs.Data;
         }
     }
-    public class CaoNa_I_Miss_You { }
-    public class But_What_can_i_do { }
+    internal class CaoNa_I_Miss_You { }
 }

@@ -13,7 +13,7 @@
 \* =============================================================================*/
 namespace AutumnBox.Basic.Device
 {
-    public static class DeviceStateExt
+    public static class DeviceStateExtension
     {
         /// <summary>
         /// 将字符串解析为DeviceState

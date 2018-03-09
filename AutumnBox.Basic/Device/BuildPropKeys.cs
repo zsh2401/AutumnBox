@@ -12,6 +12,7 @@ namespace AutumnBox.Basic.Device
     /// </summary>
     public static class BuildPropKeys
     {
+#pragma warning disable CS1591 // 缺少对公共可见类型或成员的 XML 注释
         public const string Board = "ro.product.board";
         public const string ProductName = "ro.product.name";
         public const string Model = "ro.product.model";
@@ -19,5 +20,6 @@ namespace AutumnBox.Basic.Device
         public const string SdkVersion = "ro.build.version.sdk";
         public const string AndroidVersion = "ro.build.version.release";
         public const string NavigationBar = "qemu.hw.mainkeys";
+#pragma warning restore CS1591 // 缺少对公共可见类型或成员的 XML 注释
     }
 }

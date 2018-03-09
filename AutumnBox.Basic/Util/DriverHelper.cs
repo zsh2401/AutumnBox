@@ -15,14 +15,7 @@ namespace AutumnBox.Basic.Util
     internal static class DriverHelper
     {
         public static void InstallDriver(string path) {
-            InstallHinfSection(IntPtr.Zero, IntPtr.Zero, path, 0);
+            NativeMethods.InstallHinfSection(IntPtr.Zero, IntPtr.Zero, path, 0);
         }
-        //code from https://stackoverflow.com/questions/2032493/install-uninstall-an-inf-driver-programmatically-using-c-sharp-net
-        [DllImport("Setupapi.dll", EntryPoint = "InstallHinfSection", CallingConvention = CallingConvention.StdCall)]
-        public static extern void InstallHinfSection(
-            [In] IntPtr hwnd,
-            [In] IntPtr ModuleHandle,
-            [In, MarshalAs(UnmanagedType.LPWStr)] string CmdLineBuffer,
-            int nCmdShow);
     }
 }
