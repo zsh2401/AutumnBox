@@ -76,7 +76,7 @@ namespace AutumnBox.Basic.Flows.MiFlash
             public int ExecuteToEnd()
             {
                 Start();
-                ProcessStarted?.Invoke(this, new ProcessStartedEventArgs() { Pid = Id });
+                ProcessStarted?.Invoke(this, new ProcessStartedEventArgs(Id));
                 BeginOutputReadLine();
                 BeginErrorReadLine();
                 WaitForExit();

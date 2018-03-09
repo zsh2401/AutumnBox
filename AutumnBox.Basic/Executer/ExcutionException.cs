@@ -4,10 +4,6 @@
 ** desc： ...
 *************************************************/
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Executer
 {
@@ -16,7 +12,14 @@ namespace AutumnBox.Basic.Executer
     /// </summary>
     public class ExcutionException:Exception
     {
+        /// <summary>
+        /// 具体的执行结果
+        /// </summary>
         public Output ExecuteResult { get; private set; }
+        /// <summary>
+        /// 构建
+        /// </summary>
+        /// <param name="result"></param>
         public ExcutionException(Output result)
         {
             this.ExecuteResult = result;

@@ -97,7 +97,7 @@ namespace AutumnBox.Basic.MultipleDevices
                     });
                     if (now != last)
                     {
-                        Logger.Warn("DevicesGetter", "Devices Changed");
+                        Logger.Info("DevicesGetter", "Devices Changed");
                         last = now;
                         DevicesChanged?.Invoke(this, new DevicesChangedEventArgs(now));
                     }

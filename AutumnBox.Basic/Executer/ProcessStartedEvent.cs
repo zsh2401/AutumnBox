@@ -11,11 +11,25 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Executer
 {
+    /// <summary>
+    /// 当进程开始时的事件处理器
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     public delegate void ProcessStartedEventHandler(object sender, ProcessStartedEventArgs e);
+    /// <summary>
+    /// 当进程开始时的事件处理器参数
+    /// </summary>
     public class ProcessStartedEventArgs : EventArgs
     {
+        /// <summary>
+        /// 进程ID
+        /// </summary>
         public int Pid { get; set; }
-        public ProcessStartedEventArgs() { }
+        /// <summary>
+        /// 构建
+        /// </summary>
+        /// <param name="pid"></param>
         public ProcessStartedEventArgs(int pid)
         {
             this.Pid = pid;

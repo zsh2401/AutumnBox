@@ -74,8 +74,8 @@ namespace AutumnBox.Basic.Executer
                     Arguments = $" -s {serial.ToString()} shell"
                 }
             };
-            _mainProcess.OutputDataReceived += (s, e) => { OnOutputReceived(new OutputReceivedEventArgs(e.Data, e, false)); };
-            _mainProcess.ErrorDataReceived += (s, e) => { OnOutputReceived(new OutputReceivedEventArgs(e.Data, e, true)); };
+            _mainProcess.OutputDataReceived += (s, e) => { OnOutputReceived(new OutputReceivedEventArgs( e, false)); };
+            _mainProcess.ErrorDataReceived += (s, e) => { OnOutputReceived(new OutputReceivedEventArgs(e, true)); };
         }
         /// <summary>
         /// 是否运行在超级用户(root)下
@@ -157,7 +157,7 @@ namespace AutumnBox.Basic.Executer
         public void Connect(bool asSuperuser = false)
         {
             _mainProcess.Start();
-            ProcessStarted?.Invoke(this, new ProcessStartedEventArgs() { Pid = _mainProcess.Id });
+            ProcessStarted?.Invoke(this, new ProcessStartedEventArgs(_mainProcess.Id));
             _mainProcess.BeginOutputReadLine();
             _mainProcess.BeginErrorReadLine();
             IsConnect = true;

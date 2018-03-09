@@ -73,7 +73,7 @@ namespace AutumnBox.Basic.Executer
                     process.ErrorDataReceived += (s, e) => OnOutputReceived(new OutputReceivedEventArgs(e, true));
                     process.BeginOutputReadLine();
                     process.BeginErrorReadLine();
-                    ProcessStarted?.Invoke(this, new ProcessStartedEventArgs() { Pid = process.Id });
+                    ProcessStarted?.Invoke(this, new ProcessStartedEventArgs(process.Id));
                     process.WaitForExit();
                     process.CancelErrorRead();
                     process.CancelOutputRead();

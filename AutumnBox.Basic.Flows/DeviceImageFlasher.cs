@@ -27,7 +27,7 @@ namespace AutumnBox.Basic.Flows
         private AdvanceOutput moveResult;
         protected override Output MainMethod(ToolKit<DeviceImageFlasherArgs> toolKit)
         {
-            Output output = new Output();
+            var outputBuilder = new AdvanceOutputBuilder();
             /*push image file to sdcard*/
             var pushArgs = new FilePusherArgs()
             {
@@ -36,7 +36,7 @@ namespace AutumnBox.Basic.Flows
                 SourceFile = toolKit.Args.SourceFile,
             };
             var pushResult = new FilePusher().Run(pushArgs);
-            output.Append(pushResult.OutputData);
+            outputBuilder.Append(pushResult.OutputData);
             /*move file to img path*/
             string path = DeviceImageFinder.PathOf(toolKit.Args.DevBasicInfo.Serial, toolKit.Args.ImageType);
             using (AndroidShell shell = new AndroidShell(toolKit.Args.DevBasicInfo.Serial))
@@ -44,9 +44,9 @@ namespace AutumnBox.Basic.Flows
                 shell.Connect();
                 shell.Switch2Su();
                 moveResult = shell.SafetyInput($"mv {_savePath} {path}");
-                output.Append(moveResult);
+                outputBuilder.Append(moveResult);
             }
-            return output;
+            return outputBuilder.Result;
         }
         protected override void AnalyzeResult(FlowResult result)
         {

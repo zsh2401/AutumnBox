@@ -18,6 +18,9 @@ using System.Linq;
 
 namespace AutumnBox.Basic.MultipleDevices
 {
+    /// <summary>
+    /// 设备列表
+    /// </summary>
     public class DevicesList : List<DeviceBasicInfo>, IEquatable<DevicesList>
     {
 
@@ -41,8 +44,10 @@ namespace AutumnBox.Basic.MultipleDevices
         /// <returns></returns>
         public static DevicesList operator +(DevicesList left, DevicesList right)
         {
-            left.AddRange(right);
-            return left;
+            var tmp = new DevicesList();
+            tmp.AddRange(left);
+            tmp.AddRange(right);
+            return tmp;
         }
         /// <summary>
         /// 判断两个设备列表的内容是否一致

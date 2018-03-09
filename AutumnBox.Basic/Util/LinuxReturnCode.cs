@@ -5,31 +5,9 @@
 ** compiler: Visual Studio 2017
 ** desc： ...
 *********************************************************************************/
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Util
 {
-    public static class IntToShellReturnCodeExt
-    {
-        public static LinuxReturnCode ToLinuxReturnCode(this int code)
-        {
-            switch (code)
-            {
-                case 0:
-                    return LinuxReturnCode.None;
-                case 1:
-                    return LinuxReturnCode.Error;
-                case 127:
-                    return LinuxReturnCode.KeyHasExpired;
-                default:
-                    return LinuxReturnCode.Unknow;
-            }
-        }
-    }
     /// <summary>
     /// Linux执行返回码
     /// </summary>

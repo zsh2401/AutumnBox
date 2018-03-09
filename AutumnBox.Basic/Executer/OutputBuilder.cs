@@ -48,8 +48,24 @@ namespace AutumnBox.Basic.Executer
             allSb.AppendLine(text);
             LeastLine = text;
         }
-        //public void Append(OutputBuilder builder) { }
-        //public void Append(Output output) { }
+        /// <summary>
+        /// 增加
+        /// </summary>
+        /// <param name="builder"></param>
+        public void Append(OutputBuilder builder) {
+            outSb.Append(builder.outSb);
+            errSb.Append(builder.errSb);
+            allSb.Append(builder.allSb);
+        }
+        /// <summary>
+        /// 增加
+        /// </summary>
+        /// <param name="output"></param>
+        public void Append(Output output) {
+            outSb.Append(output.Out);
+            errSb.Append(output.Error);
+            allSb.Append(output.All);
+        }
         /// <summary>
         /// 清空
         /// </summary>

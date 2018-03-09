@@ -6,11 +6,8 @@
 using AutumnBox.Basic.Device;
 using AutumnBox.Basic.Util;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Executer
 {
@@ -19,9 +16,18 @@ namespace AutumnBox.Basic.Executer
     /// </summary>
     public sealed class AndroidShellV2 : IOutputable
     {
+        /// <summary>
+        /// Linux用户
+        /// </summary>
         public enum LinuxUser
         {
+            /// <summary>
+            /// 普通用户
+            /// </summary>
             Normal,
+            /// <summary>
+            /// 超级用户(su/root)
+            /// </summary>
             Su
         }
         /// <summary>
@@ -36,7 +42,7 @@ namespace AutumnBox.Basic.Executer
         private readonly ProcessStartInfo pStartInfo;
         private readonly DeviceSerialNumber device;
         private readonly object exeLock = new object();
-
+        private AdvanceOutputBuilder outputBuilder;
         /// <summary>
         /// 构建
         /// </summary>
@@ -56,7 +62,7 @@ namespace AutumnBox.Basic.Executer
                 FileName = AdbConstants.FullAdbFileName,
             };
         }
-        private AdvanceOutputBuilder outputBuilder;
+
         /// <summary>
         /// 检测是否有root权限
         /// </summary>

@@ -4,17 +4,14 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.Basic.Device;
-using AutumnBox.Basic.ACP;
+//using AutumnBox.Basic.ACP;
 using AutumnBox.Basic.Executer;
-using AutumnBox.Support.CstmDebug;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.NetworkInformation;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 
 namespace AutumnBox.Basic.Util
@@ -155,7 +152,7 @@ namespace AutumnBox.Basic.Util
         /// <returns></returns>
         private static ushort GetIdlePort()
         {
-            ushort port = (ushort)ran.Next(Acp.STD_PORT, ushort.MaxValue);
+            ushort port = (ushort)ran.Next(1024, ushort.MaxValue);
             if (port.IsIdlePort())
             {
                 return port;

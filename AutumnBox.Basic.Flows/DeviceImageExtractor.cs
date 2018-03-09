@@ -25,7 +25,7 @@ namespace AutumnBox.Basic.Flows
         private bool _pullSuccessful = false;
         protected override Output MainMethod(ToolKit<DeviceImageExtractorArgs> toolKit)
         {
-            var output = new Output();
+            var outBuilder = new AdvanceOutputBuilder();
             string path = DeviceImageFinder.PathOf(toolKit.Args.DevBasicInfo.Serial, toolKit.Args.ImageType);
             if (path == null) { return null; }
             _getPathSuccessful = true;
@@ -36,7 +36,7 @@ namespace AutumnBox.Basic.Flows
                 //复制到程序根目录
                 string copyPath = $"/sdcard/{tempFileName}";
                 var copyResult = shell.SafetyInput($"cp {path} {copyPath}");
-                output.Append(copyResult);
+                outBuilder.Append(copyResult);
                 if (copyResult.IsSuccessful)
                 {
                     _copySuccessful = copyResult.IsSuccessful;
@@ -49,11 +49,15 @@ namespace AutumnBox.Basic.Flows
                     var pullResult = new FilePuller().Run(filePullerArgs);
                     _pullSuccessful = (pullResult.ExitCode == 0);
                     toolKit.Ae("rm -rf " + copyPath);
-                    output.Append(pullResult.OutputData);
+                    outBuilder.Append(pullResult.OutputData);
                 }
             }
-            return output;
+            return outBuilder.Result;
         }
+        /// <summary>
+        /// 处理结果
+        /// </summary>
+        /// <param name="result"></param>
         protected override void AnalyzeResult(FlowResult result)
         {
             base.AnalyzeResult(result);

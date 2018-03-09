@@ -19,6 +19,9 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Util
 {
+    /// <summary>
+    /// 与ADB相关的一些硬编码值
+    /// </summary>
     public static class AdbConstants
     {
      /// <summary>
