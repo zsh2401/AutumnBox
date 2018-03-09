@@ -19,6 +19,9 @@ namespace AutumnBox.Basic.Executer
         private StringBuilder outSb;
         private StringBuilder errSb;
         private StringBuilder allSb;
+        /// <summary>
+        /// 构建一个新的OutputBuilder实例
+        /// </summary>
         public OutputBuilder()
         {
             outSb = new StringBuilder();
@@ -45,6 +48,8 @@ namespace AutumnBox.Basic.Executer
             allSb.AppendLine(text);
             LeastLine = text;
         }
+        //public void Append(OutputBuilder builder) { }
+        //public void Append(Output output) { }
         /// <summary>
         /// 清空
         /// </summary>
