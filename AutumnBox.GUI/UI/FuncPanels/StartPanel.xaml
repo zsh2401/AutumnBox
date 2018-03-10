@@ -12,7 +12,7 @@
         <Label Content="Label" Margin="0,88,0,0" Height="1" VerticalAlignment="Top" Background="{DynamicResource BorderBrush}"/>
 
         <TextBlock Foreground="{DynamicResource ForgBrush}" HorizontalAlignment="Left" Margin="10,108,0,0" TextWrapping="Wrap" Text="{DynamicResource titHelp}" VerticalAlignment="Top" FontSize="36" FontFamily="Microsoft YaHei UI Light"/>
-        <TextBlock  Foreground="{DynamicResource ForgBrush}" HorizontalAlignment="Left" Margin="10,189,0,0" TextWrapping="Wrap" Text="{DynamicResource hyperLinkLinkHelp}" VerticalAlignment="Top" FontSize="20" TextDecorations="Underline" MouseDown="TextBlock_MouseDown" Width="219"/>
+        <TextBlock  Foreground="{DynamicResource ForgBrush}" HorizontalAlignment="Left" Margin="10,189,0,0" TextWrapping="Wrap" Text="{DynamicResource hyperLinkLinkHelp}" VerticalAlignment="Top" FontSize="20" TextDecorations="Underline" MouseDown="TextBlock_MouseDown" Width="219" FontFamily="Microsoft YaHei UI Light"/>
         <TextBlock  Foreground="{DynamicResource ForgBrush}" HorizontalAlignment="Left" Margin="10,232,0,0" TextWrapping="Wrap" Text="{DynamicResource hyperLinkMoreHelp}" VerticalAlignment="Top" FontSize="20" TextDecorations="Underline" FontFamily="Microsoft YaHei UI Light" MouseDown="TextBlock_MouseDown_1" Width="219"/>
 
         <TextBlock  Foreground="{DynamicResource ForgBrush}" HorizontalAlignment="Left" Margin="234,108,0,0" TextWrapping="Wrap" Text="{DynamicResource titContact}" VerticalAlignment="Top" FontSize="36" FontFamily="Microsoft YaHei UI Light"/>

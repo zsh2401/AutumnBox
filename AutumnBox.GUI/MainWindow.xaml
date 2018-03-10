@@ -40,7 +40,7 @@
                     <TabItem TabIndex="3"  Header="{DynamicResource tbiOnFastboot}" Margin="23,-2,-26,0" Foreground="{DynamicResource ForgBrush}" FontSize="16">
                         <cpnel:FastbootFuncPanel x:Name="FastbootFuncs"></cpnel:FastbootFuncPanel>
                     </TabItem>
-                    <TabItem TabIndex="4"  Header="{DynamicResource tbiThridPartyFunction}" Margin="26,-2,-29,0" Foreground="{DynamicResource ForgBrush}" FontSize="16">
+                    <TabItem TabIndex="4"  Header="{DynamicResource tbiExtension}" Margin="26,-2,-29,0" Foreground="{DynamicResource ForgBrush}" FontSize="16">
                         <cpnel:ThridPartyFunctionPanel Margin="0,0,0,0" x:Name="ThridPartyFuncs"></cpnel:ThridPartyFunctionPanel>
                     </TabItem>
                 </TabControl>
