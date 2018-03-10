@@ -7,10 +7,9 @@
         mc:Ignorable="d"
         Title="AppLoadingWindow" Height="288" Width="419.5" WindowStyle="None" ResizeMode="NoResize" Background="{DynamicResource BackBrush}" WindowStartupLocation="CenterScreen" MouseDown="Window_MouseDown">
     <Grid>
-        <TextBlock Margin="73,9,10,0" TextWrapping="Wrap" Text="{DynamicResource AppName}" VerticalAlignment="Top" Foreground="{DynamicResource ForgBrush}" FontSize="65" FontFamily="Microsoft YaHei UI Light"/>
-        <TextBlock Margin="83,101,10,0" TextWrapping="Wrap" Text="{DynamicResource AppDesc}" VerticalAlignment="Top" Foreground="{DynamicResource ForgBrush}" FontFamily="Microsoft YaHei UI Light" Height="108" FontSize="16"/>
-        <ProgressBar x:Name="PrgBar" Margin="0,0,0,70" BorderBrush="{x:Null}" Height="4" VerticalAlignment="Bottom"/>
-        <TextBlock x:Name="TBTip" TextAlignment="Right" Margin="10,0,10,41" TextWrapping="Wrap" Text="{DynamicResource msgLoading}" Foreground="{DynamicResource ForgBrush}" FontFamily="Microsoft YaHei UI Light" FontSize="18" Height="24" VerticalAlignment="Bottom"/>
-        <Image RenderOptions.BitmapScalingMode="Fant" HorizontalAlignment="Left" Height="64" Margin="10,31,0,0" VerticalAlignment="Top" Width="58" Source="/Resources/Images/Icons/title_icon.png"/>
+        <Image HorizontalAlignment="Left" Height="288" VerticalAlignment="Top" Width="420" Source="/AutumnBox.GUI;component/Resources/Images/autumn.jpg" Stretch="Fill"/>
+        <TextBlock TextAlignment="Center" TextWrapping="Wrap" Text="{DynamicResource AppName}" VerticalAlignment="Top" Foreground="White" FontSize="72" FontFamily="Microsoft YaHei UI Light" Margin="0,58,0,0"/>
+        <ProgressBar x:Name="PrgBar" Margin="0,0,0,89" BorderBrush="{x:Null}" Height="4" VerticalAlignment="Bottom"/>
+        <TextBlock x:Name="TBTip" TextAlignment="Right" Margin="10,0,10,61" TextWrapping="Wrap" Text="{DynamicResource msgLoading}" FontFamily="Microsoft YaHei UI Light" FontSize="18" Height="24" VerticalAlignment="Bottom" Foreground="White"/>
     </Grid>
 </Window>

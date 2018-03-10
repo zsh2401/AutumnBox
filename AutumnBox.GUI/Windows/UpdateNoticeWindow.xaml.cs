@@ -29,7 +29,7 @@ namespace AutumnBox.GUI.Windows
         string baiduUrl;
         string githubUrl;
         string version;
-        public UpdateNoticeWindow(UpdateCheckResult e)
+        internal UpdateNoticeWindow(UpdateCheckResult e)
         {
             InitializeComponent();
             LH.Content = e.Header;
@@ -39,7 +39,7 @@ namespace AutumnBox.GUI.Windows
             githubUrl = e.GithubReleaseUrl;
             Owner = App.Current.MainWindow;
         }
-        public static void FastShow(UpdateCheckResult e)
+        internal static void FastShow(UpdateCheckResult e)
         {
             new UpdateNoticeWindow(e).ShowDialog();
         }

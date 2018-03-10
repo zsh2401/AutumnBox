@@ -44,7 +44,7 @@ namespace AutumnBox.GUI.NetUtil
             }
             catch (Exception e)
             {
-                Logger.Warn(this,"获取失败", e);
+                Logger.Warn(this, "获取失败", e);
                 return null;
             }
         }

@@ -536,6 +536,9 @@
   <ItemGroup>
     <Resource Include="Resources\Images\pm_default_icon.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\autumn.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>if $(ConfigurationName) == Release (

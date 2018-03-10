@@ -24,7 +24,7 @@ using System.Text;
 namespace AutumnBox.GUI.NetUtil
 {
     [JsonObject(MemberSerialization.OptOut)]
-    public class UpdateCheckResult
+    internal class UpdateCheckResult
     {
         [JsonProperty("header")]
         public string Header { get; set; } = "Ok!";
