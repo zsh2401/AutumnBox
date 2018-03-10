@@ -14,12 +14,22 @@
 
 namespace AutumnBox.Basic.Flows
 {
+    /// <summary>
+    /// 空调狗激活器
+    /// </summary>
     public sealed class AirForzenActivator : DeviceOwnerSetter
     {
-        public static readonly string AppPackageName = "me.yourbay.airfrozen";
-
+        /// <summary>
+        /// 空调狗包名
+        /// </summary>
+        public const string AppPackageName = "me.yourbay.airfrozen";
+        /// <summary>
+        /// 包名
+        /// </summary>
         protected override string PackageName => AppPackageName;
-
+        /// <summary>
+        /// 空调狗接收器类名
+        /// </summary>
         protected override string ClassName => ".main.core.mgmt.MDeviceAdminReceiver";
     }
 }

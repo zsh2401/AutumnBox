@@ -17,11 +17,12 @@ namespace AutumnBox.Basic.Flows
     {
         protected override Output MainMethod(ToolKit<FlowArgs> toolKit)
         {
-            var result =  new NetDebuggingOpener().Run(new NetDebuggingOpenerArgs() {
+            var result = new NetDebuggingOpener().Run(new NetDebuggingOpenerArgs()
+            {
                 Port = 5555,
                 DevBasicInfo = toolKit.Args.DevBasicInfo
             });
-            return result.OutputData; 
+            return result.OutputData;
         }
     }
 }

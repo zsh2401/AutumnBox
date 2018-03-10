@@ -110,12 +110,9 @@ namespace AutumnBox.Basic.Flows
             if (result.ErrorType == DeviceOwnerSetterErrType.DeviceAlreadyProvisioned)
             {
                 bool fixSuccess = TryFixDeviceAlreadyProvisioned();
-                result.ErrorType = fixSuccess ? DeviceOwnerSetterErrType.None : result.ErrorType;
                 result.ResultType = fixSuccess ? ResultType.MaybeSuccessful : result.ResultType;
-            }
-            if (result.ResultType == ResultType.Successful)
-            {
-                result.ResultType = ResultType.Unsuccessful;
+                result.ErrorType = fixSuccess ? DeviceOwnerSetterErrType.None : result.ErrorType;
+                result.ExitCode = fixSuccess ? 0 : -1;
             }
         }
         protected override void OnFinished(FinishedEventArgs<DeviceOwnerSetterResult> e)

@@ -19,6 +19,9 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Flows.States
 {
+    /// <summary>
+    /// 设备管理员设置器执行结果的错误类型
+    /// </summary>
     public enum DeviceOwnerSetterErrType
     {
         /// <summary>
