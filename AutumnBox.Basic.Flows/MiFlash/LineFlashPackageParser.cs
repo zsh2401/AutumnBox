@@ -12,6 +12,9 @@ using System.Text.RegularExpressions;
 
 namespace AutumnBox.Basic.Flows.MiFlash
 {
+    /// <summary>
+    /// 线刷包文件夹解析器
+    /// </summary>
     public class LineFlashPackageParser
     {
         public Func<string, string> DescSetter { private get; set; }
