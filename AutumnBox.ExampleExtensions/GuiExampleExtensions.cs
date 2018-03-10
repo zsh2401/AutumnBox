@@ -6,6 +6,7 @@
 using AutumnBox.Basic.Device;
 using AutumnBox.ExampleExtensions.Windows;
 using AutumnBox.OpenFramework.Extension;
+using AutumnBox.OpenFramework.Internal;
 using AutumnBox.OpenFramework.Open.V1;
 using System;
 using System.Collections.Generic;

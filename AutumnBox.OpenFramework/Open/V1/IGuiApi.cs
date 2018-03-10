@@ -39,6 +39,19 @@ namespace AutumnBox.OpenFramework.Open.V1
         /// </summary>
         Dispatcher Dispatcher { get; }
         /// <summary>
+        /// 获取公共资源
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        object GetPublicResouce(string key);
+        /// <summary>
+        /// 获取公共资源
+        /// </summary>
+        /// <typeparam name="TReturn"></typeparam>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        TReturn GetPublicResouce<TReturn>(string key) where TReturn:class;
+        /// <summary>
         /// 获取界面语言代码 类似zh-CN
         /// </summary>
         /// <returns>语言代码</returns>

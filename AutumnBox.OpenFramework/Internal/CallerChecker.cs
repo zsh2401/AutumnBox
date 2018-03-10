@@ -13,11 +13,37 @@ using System.Windows.Threading;
 
 namespace AutumnBox.OpenFramework.Internal
 {
-    internal class CallerChecker
+    /// <summary>
+    /// 禁止访问!
+    /// </summary>
+    public class AccessDeniedException : Exception { }
+    internal static class CallerChecker
     {
         public static bool CallerCheck(Assembly callingAssembly)
         {
             return callingAssembly.GetName().Name == BuildInfo.AUTUMNBOX_GUI_ASSEMBLY_NAME;
+        }
+        public static void CallingAssemblyCheck(Assembly callingAssembly)
+        {
+            if (!CallerCheck(callingAssembly))
+            {
+                throw new AccessDeniedException();
+            }
+        }
+        public static void AccessCheck(this Assembly assembly, params string[] _t)
+        {
+            var callerName = assembly.GetName().Name;
+            if (_t.Length == 0)
+            {
+                if (callerName != BuildInfo.AUTUMNBOX_GUI_ASSEMBLY_NAME)
+                {
+                    throw new AccessDeniedException();
+                }
+            }
+            else if (!_t.Contains(callerName))
+            {
+                throw new AccessDeniedException();
+            }
         }
     }
 }

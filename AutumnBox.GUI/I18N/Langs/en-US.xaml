@@ -265,6 +265,10 @@
     <s:String x:Key="Port">Port</s:String>
     <s:String x:Key="lbUserName">Name</s:String>
     <s:String x:Key="lbUserId">UID</s:String>
+    <s:String x:Key="lbAuth">Auth</s:String>
+    <s:String x:Key="lbVersion">Version</s:String>
+    <s:String x:Key="lbContactEmail">Contact E-mail</s:String>
+    <s:String x:Key="lbDescription">Description</s:String>
     <!--静态界面标记-->
 
     <!--设备信息标记-->

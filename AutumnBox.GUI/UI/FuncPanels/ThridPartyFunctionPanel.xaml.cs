@@ -26,7 +26,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
             InitializeComponent();
             GridInfo.Visibility = Visibility.Collapsed;
             TxtNothing.Visibility = Visibility.Visible;
-            
+
         }
 
         public void Refresh(DeviceBasicInfo deviceSimpleInfo)
@@ -56,20 +56,18 @@ namespace AutumnBox.GUI.UI.FuncPanels
                 var rt = ListBoxModule.SelectedItem as ExtensionRuntime;
                 TBName.Text = rt.InnerExtension.Name;
                 TBDesc.Text = rt.InnerExtension.Description;
-                TBVersion.Text = rt.InnerExtension.Version?.ToString();
-                TBEmail.Text = rt.InnerExtension.ContactMail?.ToString();
-                TBAuth.Text = rt.InnerExtension.Auth;
-                if (rt.InnerExtension.RequiredDeviceState.HasFlag(currentDevice.State))
+                TBVersion.Text = rt.InnerExtension.Version.ToString();
+                if (rt.InnerExtension.ContactMail == null)
                 {
-                    BtnRun.IsEnabled = true;
-                    BtnRun.Content = App.Current.Resources["btnRunExtension"];
+                    TBEmail.Visibility = Visibility.Hidden;
                 }
                 else
                 {
-                    BtnRun.IsEnabled = false;
-                    BtnRun.Content = App.Current.Resources["btnCannotRunExtension"];
+                    TBEmail.Visibility = Visibility.Visible;
+                    TBEmail.Text = rt.InnerExtension.ContactMail.ToString();
                 }
-
+                TBAuth.Text = rt.InnerExtension.Auth;
+                SetBtnRunState(rt.InnerExtension.RequiredDeviceState.HasFlag(currentDevice.State));
             }
             else
             {
@@ -118,11 +116,11 @@ namespace AutumnBox.GUI.UI.FuncPanels
             BtnRun.IsEnabled = enable;
             if (enable)
             {
-                BtnRun.Content = "运行此拓展";
+                BtnRun.Content = App.Current.Resources["btnRunExtension"];
             }
             else
             {
-                BtnRun.Content = "当前设备状态下,此拓展无法运行";
+                BtnRun.Content = App.Current.Resources["btnCannotRunExtension"];
             }
         }
 

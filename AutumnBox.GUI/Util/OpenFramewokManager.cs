@@ -28,6 +28,16 @@ namespace AutumnBox.GUI.Util
         {
             public Dispatcher Dispatcher => App.Current.Dispatcher;
             public string CurrentLanguageCode => App.Current.Resources["LanguageCode"].ToString();
+
+            public object GetResouce(string key)
+            {
+                return App.Current.Resources[key];
+            }
+            public TReturn GetResouce<TReturn>(string key) where TReturn : class
+            {
+                return App.Current.Resources[key] as TReturn;
+            }
+
             public bool? ShowChoiceBox(string title, string msg, string btnLeft = null, string btnRight = null)
             {
                 bool? result = null;

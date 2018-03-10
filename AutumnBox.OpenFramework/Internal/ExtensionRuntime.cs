@@ -4,9 +4,11 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.OpenFramework.Extension;
+using AutumnBox.OpenFramework.Open.V1;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -25,8 +27,11 @@ namespace AutumnBox.OpenFramework.Internal
         {
             this.InnerExtension = ext;
         }
-        public static ExtensionRuntime Create(Type type, InitArgs args = null)
+        internal static ExtensionRuntime Create(Type type, InitArgs args = null)
         {
+            Assembly
+                .GetCallingAssembly()
+                .AccessCheck(BuildInfo.AUTUMNBOX_GUI_ASSEMBLY_NAME, BuildInfo.AUTUMNBOX_OPENFRAMEWORK_ASSEMBLY_NAME);
             var ext = (AutumnBoxExtension)Activator.CreateInstance(type);
             if (!ext.InitAndCheck(args ?? new InitArgs())) throw new Exception("Cannot init");
             return new ExtensionRuntime(ext);
@@ -42,9 +47,19 @@ namespace AutumnBox.OpenFramework.Internal
         public void Run(StartArgs args)
         {
             IsRuning = true;
-            InnerExtension.OnStartCommand(args);
-            IsRuning = false;
-            InnerExtension.OnFinished();
+            try
+            {
+                InnerExtension.OnStartCommand(args);
+                InnerExtension.OnFinished();
+            }
+            catch (Exception ex)
+            {
+                OpenApi.Gui.ShowMessageBox("Warning", $"{InnerExtension.Name} was failed... \n{ex}");
+            }
+            finally
+            {
+                IsRuning = false;
+            }
         }
         public bool Stop(StopArgs args = null)
         {

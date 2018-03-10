@@ -270,6 +270,10 @@
     <s:String x:Key="Port">端口</s:String>
     <s:String x:Key="lbUserName">用户名</s:String>
     <s:String x:Key="lbUserId">UID</s:String>
+       <s:String x:Key="lbAuth">所有者</s:String>
+    <s:String x:Key="lbVersion">版本</s:String>
+    <s:String x:Key="lbContactEmail">联系邮箱</s:String>
+     <s:String x:Key="lbDescription">说明</s:String>
     <!--静态界面标记-->
 
     <!--设备信息标记-->

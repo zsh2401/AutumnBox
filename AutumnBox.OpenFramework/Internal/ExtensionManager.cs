@@ -39,7 +39,7 @@ namespace AutumnBox.OpenFramework.Internal
         /// </summary>
         public static void LoadAllExtension()
         {
-            if (!CallerChecker.CallerCheck(Assembly.GetCallingAssembly())) return;
+            Assembly.GetCallingAssembly().AccessCheck();
             inner.Load();
         }
         /// <summary>
@@ -47,7 +47,7 @@ namespace AutumnBox.OpenFramework.Internal
         /// </summary>
         public static void DestoryAllExtension()
         {
-            if (!CallerChecker.CallerCheck(Assembly.GetCallingAssembly())) return;
+            Assembly.GetCallingAssembly().AccessCheck();
             inner.Extensions.ForEach((extRuntime) =>
             {
                 extRuntime.Destory();
@@ -60,7 +60,7 @@ namespace AutumnBox.OpenFramework.Internal
         /// <returns></returns>
         public static ExtensionRuntime[] GetExtensions(DeviceState? targetDeviceState = null)
         {
-            if (!CallerChecker.CallerCheck(Assembly.GetCallingAssembly())) return new ExtensionRuntime[0];
+            Assembly.GetCallingAssembly().AccessCheck();
             if (targetDeviceState != null)
             {
                 return inner.Extensions.Where((extRuntime) =>
