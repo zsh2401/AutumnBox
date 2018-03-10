@@ -71,9 +71,13 @@ namespace AutumnBox.GUI.Windows
                     CBFlashType.ItemsSource = floderInfo.Bats;
                     CBFlashType.SelectedIndex = 0;
                 }
+                else if (!floderInfo.PathIsRight)
+                {
+                    BoxHelper.ShowMessageDialog("Warning", "msgPathError");
+                }
                 else
                 {
-                    BoxHelper.ShowMessageDialog("warrning", "msgPlzSelectARightFloder");
+                    BoxHelper.ShowMessageDialog("Warning", "msgPlzSelectARightFloder");
                 }
             }
         }
@@ -203,7 +207,7 @@ namespace AutumnBox.GUI.Windows
 
         private void TBDownloadLink_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            Process.Start("http://www.miui.com/shuaji-393.html");
+            Process.Start(App.Current.Resources["urlDownloadMiFlashPackage"].ToString());
         }
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
@@ -226,7 +230,7 @@ namespace AutumnBox.GUI.Windows
                 }
                 catch (Exception ex)
                 {
-                    Logger.Warn(this,"A exception happend  when getting product info on fastboot", ex);
+                    Logger.Warn(this, "A exception happend  when getting product info on fastboot", ex);
                 }
             });
         }

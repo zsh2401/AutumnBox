@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Flows.MiFlash
@@ -37,8 +38,16 @@ namespace AutumnBox.Basic.Flows.MiFlash
             {
                 return dir.Name == "images";
             }).Count() > 0;
-            result.IsRight = result.Bats.Count() > 0 && haveImageDir;
+            result.PathIsRight = (!dirInfo.FullName.Contains(" ")) && (!dirInfo.FullName.HasChinese());
+            result.IsRight = result.PathIsRight && result.Bats.Count() > 0 && haveImageDir;
             return result;
+        }
+    }
+    static class StrExtension
+    {
+        public static bool HasChinese(this string str)
+        {
+            return Regex.IsMatch(str, @"[\u4e00-\u9fa5]");
         }
     }
 }

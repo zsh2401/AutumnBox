@@ -15,6 +15,7 @@ namespace AutumnBox.Basic.Flows.MiFlash
 {
     public struct LineFlashPackageInfo
     {
+        public bool PathIsRight { get; internal set; }
         public bool IsRight { get; internal set; }
         public IEnumerable<BatInfo> Bats { get; internal set; }
     }

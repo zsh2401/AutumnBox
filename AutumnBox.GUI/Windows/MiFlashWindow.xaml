@@ -25,7 +25,7 @@
         <TextBlock Text="{DynamicResource CurrentDevice}" HorizontalAlignment="Left" Margin="10,45,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" FontSize="22" Width="98" Height="32" Foreground="{DynamicResource ForgBrush}" FontFamily="Microsoft YaHei UI Light"/>
         <TextBlock x:Name="TBSerial" Margin="113,45,10,0" TextWrapping="Wrap" Text="There is device serial" VerticalAlignment="Top" Foreground="{DynamicResource ForgBrush}" Height="32" FontSize="22" FontFamily="Microsoft YaHei UI Light"/>
 
-        <TextBlock x:Name="TBState" Margin="10,82,130,0" TextWrapping="Wrap" Text="{DynamicResource mfPlzSelectLineFlashFloder}" VerticalAlignment="Top" Foreground="{DynamicResource ForgBrush}" FontSize="36" FontFamily="Microsoft YaHei UI Light" Height="48"/>
+        <TextBlock x:Name="TBState" Margin="10,82,71,0" TextWrapping="Wrap" Text="{DynamicResource mfPlzSelectLineFlashFloder}" VerticalAlignment="Top" Foreground="{DynamicResource ForgBrush}" FontSize="36" FontFamily="Microsoft YaHei UI Light" Height="48"/>
 
         <TextBox x:Name="TBFilePath" Height="30" Margin="10,158,115,0" TextWrapping="NoWrap" VerticalAlignment="Top" FontSize="16" Foreground="{DynamicResource {x:Static SystemColors.DesktopBrushKey}}" BorderBrush="{x:Null}" FontFamily="Microsoft YaHei UI Light" IsReadOnly="True"/>
         <Button x:Name="BtnSelect" Content="{DynamicResource btnSelectLineFlashPackage}" Margin="0,158,10,0" VerticalAlignment="Top" Background="{DynamicResource BtnBrush}" Foreground="{DynamicResource ForgBrush}" Click="BtnSelect_Click" BorderBrush="{x:Null}" HorizontalAlignment="Right" Width="100" Height="30" FontSize="14" FontFamily="Microsoft YaHei UI Light"/>
@@ -35,7 +35,7 @@
 
         <TextBlock Margin="10,237,229,0" TextWrapping="Wrap" Text="{DynamicResource OutputRealTime}" Foreground="{DynamicResource ForgBrush}" FontSize="14" FontFamily="Microsoft YaHei UI Light" Height="18" VerticalAlignment="Top"/>
         <TextBox x:Name="TBOutput" Margin="10,255,10,10" TextWrapping="Wrap" FontFamily="Microsoft YaHei UI Light" IsReadOnly="True"/>
-        <TextBlock x:Name="TBDownloadLink" HorizontalAlignment="Left" Margin="10,135,0,0" TextWrapping="Wrap" Text="{DynamicResource hyperLinkDownloadMiFlashPackage}" VerticalAlignment="Top" Foreground="{DynamicResource BasicBrush}" TextDecorations="Underline" Width="115" Height="18" MouseDown="TBDownloadLink_MouseDown" FontSize="14" />
-        <TextBlock  TextAlignment="Center" x:Name="TBLoading" HorizontalAlignment="Left" Margin="402,77,0,0" TextWrapping="Wrap" Text="--" VerticalAlignment="Top" Width="61" Height="53" FontSize="36" Foreground="{DynamicResource ForgBrush}"/>
+        <TextBlock x:Name="TBDownloadLink" HorizontalAlignment="Left" Margin="10,135,0,0" TextWrapping="Wrap" Text="{DynamicResource hyperLinkDownloadMiFlashPackage}" VerticalAlignment="Top" Foreground="{DynamicResource BasicBrush}" TextDecorations="Underline" Width="392" Height="18" MouseDown="TBDownloadLink_MouseDown" FontSize="14" />
+        <TextBlock  TextAlignment="Center" x:Name="TBLoading" HorizontalAlignment="Left" Margin="407,77,0,0" TextWrapping="Wrap" Text="--" VerticalAlignment="Top" Width="56" Height="53" FontSize="36" Foreground="{DynamicResource ForgBrush}"/>
     </Grid>
 </Window>
