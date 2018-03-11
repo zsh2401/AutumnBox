@@ -5,13 +5,13 @@
     <Color x:Key="ColorPrimary">#FFc8c8c8</Color>
     <SolidColorBrush x:Key="PrimaryBurshKey" Color="{DynamicResource ColorPrimary}"/>
     
-    <Color x:Key="ColorForeground">#FF00204A</Color>
+    <Color x:Key="ColorForeground">#FEFEFE</Color>
     <SolidColorBrush x:Key="ForegroundBurshKey" Color="{DynamicResource ColorForeground}"/>
     
-    <Color x:Key="ColorBackground">#FF00bbf0</Color>
+    <Color x:Key="ColorBackground">#51ADCF</Color>
     <SolidColorBrush x:Key="BackgroundBurshKey" Color="{DynamicResource ColorBackground}"/>
 
-    <Color x:Key="ColorTitleBarBackground">#FF00bbf0</Color>
+    <Color x:Key="ColorTitleBarBackground">#0278AE</Color>
     <SolidColorBrush x:Key="TitleBarBackgroundBurshKey" Color="{DynamicResource ColorTitleBarBackground}"/>
 
     <Color x:Key="ColorTitleBarForeground">#FFc8c8c8</Color>
@@ -25,14 +25,14 @@
 
     <Color x:Key="ColorBtnSelectedBackground">#FF009AD6</Color>
     <SolidColorBrush x:Key="BtnSelectedBackgroundBrushKey" Color="{DynamicResource ColorBtnSelectedBackground}"/>
-    
-    <Color x:Key="ColorBtnBackground">#50535353</Color>
+
+    <Color x:Key="ColorBtnBackground">#70FFFFFF</Color>
     <SolidColorBrush x:Key="BtnBackgroundBrushKey" Color="{DynamicResource ColorBtnBackground}"/>
     
-    <Color x:Key="ColorBtnDisable">#05000000</Color>
+    <Color x:Key="ColorBtnDisable">#30194769</Color>
     <SolidColorBrush x:Key="BtnDisableBrushKey" Color="{DynamicResource ColorBtnDisable}"/>
 
-    <Color x:Key="ColorBroder">#05000000</Color>
+    <Color x:Key="ColorBroder">#0278AE</Color>
     <SolidColorBrush x:Key="BroderBrushKey" Color="{DynamicResource ColorBroder}"/>
 
     <Color x:Key="ColorTbiHBg">#05000000</Color>
