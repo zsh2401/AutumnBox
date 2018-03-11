@@ -9,7 +9,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300" Width="189" Height="233">
     <Grid>
-        <TextBlock x:Name="TextBlockMain" HorizontalAlignment="Left" Margin="10,47,0,0" TextWrapping="Wrap" Text="Some message" VerticalAlignment="Top" Foreground="{DynamicResource ForgBrush}" FontSize="20" Width="169" Height="176"/>
+        <TextBlock Style="{DynamicResource AtmbxTextBlockStyle}" x:Name="TextBlockMain" HorizontalAlignment="Left" Margin="10,47,0,0" TextWrapping="Wrap" Text="Some message" VerticalAlignment="Top"  FontSize="20" Width="169" Height="176"/>
 
     </Grid>
 </fp:FastPanelChild>

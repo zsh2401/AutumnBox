@@ -6,22 +6,22 @@
              xmlns:local="clr-namespace:AutumnBox.GUI.UI.FuncPanels"
              xmlns:Fp="clr-namespace:AutumnBox.GUI.UI.Fp" x:Class="AutumnBox.GUI.UI.FuncPanels.StartPanel"
              mc:Ignorable="d" 
-             d:DesignHeight="359" d:DesignWidth="918" Background="{DynamicResource BackBrush}" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+             d:DesignHeight="359" d:DesignWidth="918" Background="{DynamicResource BackgroundBurshKey}" ScrollViewer.VerticalScrollBarVisibility="Disabled">
     <Grid x:Name="GridContainer">
-        <TextBlock Foreground="{DynamicResource ForgBrush}" HorizontalAlignment="Left" Margin="10,19,0,0" TextWrapping="Wrap" Text="{DynamicResource titStart}" VerticalAlignment="Top" FontSize="48" FontFamily="Microsoft YaHei UI Light"/>
-        <Label Content="Label" Margin="0,88,0,0" Height="1" VerticalAlignment="Top" Background="{DynamicResource BorderBrush}"/>
+        <TextBlock Style="{DynamicResource AtmbxTextBlockStyle}"  HorizontalAlignment="Left" Margin="10,19,0,0" TextWrapping="Wrap" Text="{DynamicResource titStart}" VerticalAlignment="Top" FontSize="48" />
+        <Label Style="{DynamicResource AtmbxLabelStyle}" Content="Label" Margin="0,88,0,0" Height="1" VerticalAlignment="Top" />
 
-        <TextBlock Foreground="{DynamicResource ForgBrush}" HorizontalAlignment="Left" Margin="10,108,0,0" TextWrapping="Wrap" Text="{DynamicResource titHelp}" VerticalAlignment="Top" FontSize="36" FontFamily="Microsoft YaHei UI Light"/>
-        <TextBlock  Foreground="{DynamicResource ForgBrush}" HorizontalAlignment="Left" Margin="10,189,0,0" TextWrapping="Wrap" Text="{DynamicResource hyperLinkLinkHelp}" VerticalAlignment="Top" FontSize="20" TextDecorations="Underline" MouseDown="TextBlock_MouseDown" Width="219" FontFamily="Microsoft YaHei UI Light"/>
-        <TextBlock  Foreground="{DynamicResource ForgBrush}" HorizontalAlignment="Left" Margin="10,232,0,0" TextWrapping="Wrap" Text="{DynamicResource hyperLinkMoreHelp}" VerticalAlignment="Top" FontSize="20" TextDecorations="Underline" FontFamily="Microsoft YaHei UI Light" MouseDown="TextBlock_MouseDown_1" Width="219"/>
+        <TextBlock  Style="{DynamicResource AtmbxTextBlockStyle}" HorizontalAlignment="Left" Margin="10,108,0,0" TextWrapping="Wrap" Text="{DynamicResource titHelp}" VerticalAlignment="Top" FontSize="36" />
+        <TextBlock  Style="{DynamicResource AtmbxTextBlockStyle}" HorizontalAlignment="Left" Margin="10,189,0,0" TextWrapping="Wrap" Text="{DynamicResource hyperLinkLinkHelp}" VerticalAlignment="Top" FontSize="20" TextDecorations="Underline" MouseDown="TextBlock_MouseDown" Width="219" />
+        <TextBlock  Style="{DynamicResource AtmbxTextBlockStyle}" HorizontalAlignment="Left" Margin="10,232,0,0" TextWrapping="Wrap" Text="{DynamicResource hyperLinkMoreHelp}" VerticalAlignment="Top" FontSize="20" TextDecorations="Underline"  MouseDown="TextBlock_MouseDown_1" Width="219"/>
 
-        <TextBlock  Foreground="{DynamicResource ForgBrush}" HorizontalAlignment="Left" Margin="234,108,0,0" TextWrapping="Wrap" Text="{DynamicResource titContact}" VerticalAlignment="Top" FontSize="36" FontFamily="Microsoft YaHei UI Light"/>
-        <TextBlock  Foreground="{DynamicResource ForgBrush}" HorizontalAlignment="Left" Margin="234,189,0,0" TextWrapping="Wrap" Text="{DynamicResource hyperLinkOfficialWebsite}" VerticalAlignment="Top" FontSize="20" TextDecorations="Underline" FontFamily="Microsoft YaHei UI Light" MouseDown="TextBlock_MouseDown_2" Width="267"/>
-        <TextBlock  Foreground="{DynamicResource ForgBrush}" HorizontalAlignment="Left" Margin="234,232,0,0" TextWrapping="Wrap" Text="{DynamicResource hyperlinkJoinQQGroup}" VerticalAlignment="Top" FontSize="20" TextDecorations="Underline" FontFamily="Microsoft YaHei UI Light" MouseDown="TextBlock_MouseDown_4" Width="267"/>
-        <TextBlock  Foreground="{DynamicResource ForgBrush}" HorizontalAlignment="Left" Margin="234,274,0,0" TextWrapping="Wrap" Text="{DynamicResource hyperLinkOpenSource}" VerticalAlignment="Top" FontSize="20" TextDecorations="Underline" FontFamily="Microsoft YaHei UI Light" MouseDown="TextBlock_MouseDown_3"/>
-        <TextBlock HorizontalAlignment="Left" Margin="651,111,0,0" TextWrapping="Wrap" Text="{DynamicResource titSupport}" VerticalAlignment="Top" FontFamily="Microsoft YaHei UI Light" FontSize="36" Foreground="{DynamicResource ForgBrush}"/>
-        <TextBlock x:Name="TBDonate"  Foreground="{DynamicResource ForgBrush}" HorizontalAlignment="Left" Margin="651,189,0,0" TextWrapping="Wrap" Text="{DynamicResource hyperlinkDonate}" VerticalAlignment="Top" FontSize="20" TextDecorations="Underline" FontFamily="Microsoft YaHei UI Light" MouseDown="TBDonate_MouseDown" Width="257"/>
-        <TextBlock x:Name="TBDonateList"  Foreground="{DynamicResource ForgBrush}" HorizontalAlignment="Left" Margin="651,232,0,0" TextWrapping="Wrap" Text="{DynamicResource hyperlinkDonateList}" VerticalAlignment="Top" FontSize="20" TextDecorations="Underline" FontFamily="Microsoft YaHei UI Light" MouseDown="TBDonateList_MouseDown" Width="257"/>
+        <TextBlock  Style="{DynamicResource AtmbxTextBlockStyle}" HorizontalAlignment="Left" Margin="234,108,0,0" TextWrapping="Wrap" Text="{DynamicResource titContact}" VerticalAlignment="Top" FontSize="36" />
+        <TextBlock  Style="{DynamicResource AtmbxTextBlockStyle}" HorizontalAlignment="Left" Margin="234,189,0,0" TextWrapping="Wrap" Text="{DynamicResource hyperLinkOfficialWebsite}" VerticalAlignment="Top" FontSize="20" TextDecorations="Underline"  MouseDown="TextBlock_MouseDown_2" Width="267"/>
+        <TextBlock  Style="{DynamicResource AtmbxTextBlockStyle}" HorizontalAlignment="Left" Margin="234,232,0,0" TextWrapping="Wrap" Text="{DynamicResource hyperlinkJoinQQGroup}" VerticalAlignment="Top" FontSize="20" TextDecorations="Underline"  MouseDown="TextBlock_MouseDown_4" Width="267"/>
+        <TextBlock  Style="{DynamicResource AtmbxTextBlockStyle}" HorizontalAlignment="Left" Margin="234,274,0,0" TextWrapping="Wrap" Text="{DynamicResource hyperLinkOpenSource}" VerticalAlignment="Top" FontSize="20" TextDecorations="Underline"  MouseDown="TextBlock_MouseDown_3"/>
+        <TextBlock  Style="{DynamicResource AtmbxTextBlockStyle}" HorizontalAlignment="Left" Margin="651,111,0,0" TextWrapping="Wrap" Text="{DynamicResource titSupport}" VerticalAlignment="Top"  FontSize="36" />
+        <TextBlock Style="{DynamicResource AtmbxTextBlockStyle}" x:Name="TBDonate"   HorizontalAlignment="Left" Margin="651,189,0,0" TextWrapping="Wrap" Text="{DynamicResource hyperlinkDonate}" VerticalAlignment="Top" FontSize="20" TextDecorations="Underline"  MouseDown="TBDonate_MouseDown" Width="257"/>
+        <TextBlock Style="{DynamicResource AtmbxTextBlockStyle}" x:Name="TBDonateList"   HorizontalAlignment="Left" Margin="651,232,0,0" TextWrapping="Wrap" Text="{DynamicResource hyperlinkDonateList}" VerticalAlignment="Top" FontSize="20" TextDecorations="Underline"  MouseDown="TBDonateList_MouseDown" Width="257"/>
 
     </Grid>
 </UserControl>

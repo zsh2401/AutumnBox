@@ -1,8 +1,19 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:vsm="clr-namespace:System.Windows;assembly=System.Windows"
-                    xmlns:local="clr-namespace:AutumnBox.GUI.Resources.Themes.BasicTheme_files">
-    <Style TargetType="Button">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <SolidColorBrush x:Key="Button.Static.Background" Color="{DynamicResource ColorBtnBackground}"/>
+    <SolidColorBrush x:Key="Button.Static.Border" Color="Transparent"/>
+    <SolidColorBrush x:Key="Button.MouseOver.Background" Color="{DynamicResource ColorBtnSelectedBackground}"/>
+    <SolidColorBrush x:Key="Button.MouseOver.Border" Color="Transparent"/>
+    <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFC4E5F6"/>
+    <SolidColorBrush x:Key="Button.Pressed.Border" Color="Transparent"/>
+    <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
+    <SolidColorBrush x:Key="Button.Disabled.Border" Color="Transparent"/>
+    <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
+    <Style x:Key="AtmbxButtonStyle" TargetType="Button">
+        <Setter Property="Background" Value="{DynamicResource BtnBackgroundBrushKey}"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="Foreground" Value="{DynamicResource ForegroundBurshKey}"/>
+        <Setter Property="FontFamily" Value="Microsoft YaHei UI Light"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
@@ -28,14 +39,14 @@
                                 <VisualState x:Name="MouseOver">
                                     <Storyboard>
                                         <ColorAnimation Storyboard.TargetName="BorderBrush" 
-                              Storyboard.TargetProperty="Color" To="#FF009AD6" />
+                              Storyboard.TargetProperty="Color" To="{DynamicResource ColorBtnSelectedBackground}" />
 
                                     </Storyboard>
                                 </VisualState>
                                 <VisualState x:Name="Disabled">
                                     <Storyboard>
                                         <ColorAnimation Storyboard.TargetName="BorderBrush" 
-                              Storyboard.TargetProperty="Color" To="#05000000" />
+                              Storyboard.TargetProperty="Color" To="{DynamicResource ColorBtnDisable}" />
 
                                     </Storyboard>
 
@@ -57,7 +68,6 @@
                       it can be referred to elsewhere in the control template.-->
                         <Border.Background>
                             <SolidColorBrush x:Name="BorderBrush" Color="Transparent"/>
-            
                         </Border.Background>
                         
                         

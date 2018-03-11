@@ -7,4 +7,5 @@
     <Color x:Key="BackColor">#FF535353</Color>
     <Color x:Key="MouseOnBtnColor">#50009AD6</Color>
     <Color x:Key="MouseLevelBtnColor">#00000000</Color>
+    
 </ResourceDictionary>

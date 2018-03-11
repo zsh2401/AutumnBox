@@ -4,12 +4,11 @@
                     xmlns:s="clr-namespace:System;assembly=mscorlib">
     <s:String x:Key="ThemeName">Basic</s:String>
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="BasicTheme_files/Brushes.xaml"/>
+        <!--<ResourceDictionary Source="BasicTheme_files/Brushes.xaml"/>
         <ResourceDictionary Source="BasicTheme_files/Colors.xaml"/>
         <ResourceDictionary Source="BasicTheme_files/ButtonStyle.xaml"/>
-        <ResourceDictionary Source="BasicTheme_files/ListViewStyle.xaml"/>
         <ResourceDictionary Source="BasicTheme_files/TabItemStyle.xaml"/>
         <ResourceDictionary Source="BasicTheme_files/CkbStyle.xaml"/>
-        <ResourceDictionary Source="BasicTheme_files/TextBoxInputStyle.xaml"/>
+        <ResourceDictionary Source="BasicTheme_files/TextBoxInputStyle.xaml"/>-->
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

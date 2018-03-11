@@ -2,6 +2,10 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:s="clr-namespace:System;assembly=mscorlib">
 
+    <SolidColorBrush x:Key="BtnBackgroundBrushKey" Color="{DynamicResource ColorBtnBackground}"/>
+    <SolidColorBrush x:Key="BtnSelectedBackgroundBrushKey" Color="{DynamicResource ColorBtnSelectedBackground}"/>
+    
+    
     <SolidColorBrush x:Key="BtnBrush" Color="#50535353"></SolidColorBrush>
     <SolidColorBrush x:Key="ForgBrushOnBasic" Color="#FF000000"/>
     <SolidColorBrush x:Key="ForgBrush" Color="{DynamicResource FontColor}"/>

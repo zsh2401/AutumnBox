@@ -8,6 +8,7 @@
         Title="ExampleWindow" Height="300" Width="300">
     <Grid>
         <TextBlock HorizontalAlignment="Left" Margin="27,57,0,0" TextWrapping="Wrap" Text="AutumnBox拓展允许使用自定义界面" VerticalAlignment="Top" Width="255"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="101,145,0,0" VerticalAlignment="Top" Width="75"/>
 
     </Grid>
 </Window>

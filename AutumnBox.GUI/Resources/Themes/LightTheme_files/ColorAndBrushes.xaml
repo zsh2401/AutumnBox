@@ -1,0 +1,43 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:AutumnBox.GUI.Resources"
+                    xmlns:s="clr-namespace:System;assembly=mscorlib">
+    <Color x:Key="ColorPrimary">#FFc8c8c8</Color>
+    <SolidColorBrush x:Key="PrimaryBurshKey" Color="{DynamicResource ColorPrimary}"/>
+    
+    <Color x:Key="ColorForeground">#FFc8c8c8</Color>
+    <SolidColorBrush x:Key="ForegroundBurshKey" Color="{DynamicResource ColorForeground}"/>
+    
+    <Color x:Key="ColorBackground">#FF009AD6</Color>
+    <SolidColorBrush x:Key="BackgroundBurshKey" Color="{DynamicResource ColorBackground}"/>
+
+    <Color x:Key="ColorTitleBarBackground">#FF009AD6</Color>
+    <SolidColorBrush x:Key="TitleBarBackgroundBurshKey" Color="{DynamicResource ColorTitleBarBackground}"/>
+
+    <Color x:Key="ColorTitleBarForeground">#FFc8c8c8</Color>
+    <SolidColorBrush x:Key="TitleBarForegroundBrushKey" Color="{DynamicResource ColorTitleBarForeground}"/>
+
+    <Color x:Key="ColorTitleLine">#FF000000</Color>
+    <SolidColorBrush x:Key="TitleBarLineBrushKey" Color="{DynamicResource ColorTitleLine}"/>
+    
+    <Color x:Key="ColorFuncPanelBackground">#FF009AD6</Color>
+    <SolidColorBrush x:Key="FuncPanelBackgroundBrushKey" Color="{DynamicResource ColorFuncPanelBackground}"/>
+
+    <Color x:Key="ColorBtnSelectedBackground">#FF009AD6</Color>
+    <SolidColorBrush x:Key="BtnSelectedBackgroundBrushKey" Color="{DynamicResource ColorBtnSelectedBackground}"/>
+    
+    <Color x:Key="ColorBtnBackground">#50535353</Color>
+    <SolidColorBrush x:Key="BtnBackgroundBrushKey" Color="{DynamicResource ColorBtnBackground}"/>
+    
+    <Color x:Key="ColorBtnDisable">#05000000</Color>
+    <SolidColorBrush x:Key="BtnDisableBrushKey" Color="{DynamicResource ColorBtnDisable}"/>
+
+    <Color x:Key="ColorBroder">#05000000</Color>
+    <SolidColorBrush x:Key="BroderBrushKey" Color="{DynamicResource ColorBroder}"/>
+
+    <Color x:Key="ColorTbiHBg">#05000000</Color>
+    <SolidColorBrush x:Key="TbiHBgBrushKey" Color="{DynamicResource ColorTbiHBg}"/>
+
+    <Color x:Key="ColorTbiHSlctBg">#05000000</Color>
+    <SolidColorBrush x:Key="TbiHSlctBgBrushKey" Color="{DynamicResource ColorTbiHSlctBg}"/>
+</ResourceDictionary>

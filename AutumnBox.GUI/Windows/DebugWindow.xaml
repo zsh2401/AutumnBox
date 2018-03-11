@@ -8,6 +8,5 @@
         Title="DebugWindow" Height="300" Width="300" Icon="/Resources/Images/title_icon.ico" Closed="Window_Closed">
     <Grid>
         <TextBox x:Name="TxtBoxLog" IsReadOnly="True" Margin="10" TextWrapping="Wrap" Text=""/>
-
     </Grid>
 </Window>

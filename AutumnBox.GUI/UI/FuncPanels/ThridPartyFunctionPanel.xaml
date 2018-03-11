@@ -10,27 +10,23 @@
              d:DesignHeight="366" d:DesignWidth="922">
     <Grid x:Name="GridContainer">
         <ListBox x:Name="ListBoxModule" HorizontalAlignment="Left" DisplayMemberPath="Name" Margin="10,101,0,10" Width="259" SelectionChanged="ListBox_SelectionChanged"/>
-        <TextBlock Visibility="Collapsed" x:Name="TxtNothing" TextAlignment="Center" FontSize="16" Foreground="{DynamicResource ForgBrush}" Margin="291,161,10,0" TextWrapping="Wrap" Text="I'd love to change the world...but i dont know what to do" VerticalAlignment="Top"/>
-        <Button x:Name="BtnOpenModuleFloder" Content="{DynamicResource btnOpenModuleFloder}" HorizontalAlignment="Left" Margin="10,15,0,0" VerticalAlignment="Top" Width="259" BorderBrush="{x:Null}" Background="{DynamicResource BtnBrush}" Click="BtnOpenModuleFloder_Click">
-            <Button.Foreground>
-                <SolidColorBrush Color="{DynamicResource FontColor}"/>
-            </Button.Foreground>
-        </Button>
+        <TextBlock Visibility="Collapsed" x:Name="TxtNothing" TextAlignment="Center" FontSize="16"  Margin="291,161,10,0" TextWrapping="Wrap" Text="I'd love to change the world...but i dont know what to do" VerticalAlignment="Top"/>
+        <Button Style="{DynamicResource AtmbxButtonStyle}" x:Name="BtnOpenModuleFloder" Content="{DynamicResource btnOpenModuleFloder}" HorizontalAlignment="Left" Margin="10,15,0,0" VerticalAlignment="Top" Width="259"   Click="BtnOpenModuleFloder_Click"/>
         <Grid x:Name="GridInfo" HorizontalAlignment="Left" Height="341" Margin="274,15,0,0" VerticalAlignment="Top" Width="638">
-            <TextBlock  x:Name="TBName" Margin="172,16,0,0" TextWrapping="Wrap" Text="There is Module name" VerticalAlignment="Top" FontSize="36" Foreground="{DynamicResource ForgBrush}" FontFamily="Microsoft YaHei UI Light"/>
-            <TextBlock x:Name="TBVersion" Margin="172,64,10,0" TextWrapping="Wrap" Text="There is Module version" VerticalAlignment="Top" Foreground="{DynamicResource ForgBrush}" FontFamily="Microsoft YaHei UI Light" FontSize="16"/>
-            <TextBlock x:Name="TBDesc" Margin="172,147,10,0" TextWrapping="Wrap" Text="There is Module desc" VerticalAlignment="Top" Foreground="{DynamicResource ForgBrush}" Height="123" FontFamily="Microsoft YaHei UI Light" FontSize="16"/>
-            <Button x:Name="BtnRun" Content="{DynamicResource btnRunExtension}" Margin="10,294,0,0" VerticalAlignment="Top" Click="BtnRun_Click" HorizontalAlignment="Left" Width="618" Background="{DynamicResource BtnBrush}" BorderBrush="{x:Null}" Foreground="{DynamicResource ForgBrush}" Height="37"/>
-            <TextBlock x:Name="TBAuth" Margin="172,87,10,0" TextWrapping="Wrap" Text="Auth" VerticalAlignment="Top" FontFamily="Microsoft YaHei UI Light" Foreground="{DynamicResource ForgBrush}" FontSize="16"/>
-            <TextBlock x:Name="TBEmail" Margin="172,110,10,0" TextWrapping="Wrap" Text="example@fuckmail.com" VerticalAlignment="Top" FontFamily="Microsoft YaHei UI Light" Foreground="{DynamicResource ForgBrush}" RenderTransformOrigin="0.5,0.5" FontSize="16"/>
-            <TextBlock  TextAlignment="Right" HorizontalAlignment="Left" Margin="10,64,0,0" TextWrapping="Wrap" Text="{DynamicResource lbVersion}" VerticalAlignment="Top" FontFamily="Microsoft YaHei UI Light" Foreground="{DynamicResource ForgBrush}" Width="157" FontSize="16"/>
-            <TextBlock  TextAlignment="Right" HorizontalAlignment="Left" Margin="10,87,0,0" TextWrapping="Wrap" Text="{DynamicResource lbAuth}" VerticalAlignment="Top" FontFamily="Microsoft YaHei UI Light" Foreground="{DynamicResource ForgBrush}" Width="157" FontSize="16"/>
-            <TextBlock  TextAlignment="Right" HorizontalAlignment="Left" Margin="10,110,0,0" TextWrapping="Wrap" Text="{DynamicResource lbContactEmail}" VerticalAlignment="Top" FontFamily="Microsoft YaHei UI Light" Foreground="{DynamicResource ForgBrush}" Width="157" FontSize="16"/>
-            <TextBlock x:Name="LbEmail"  TextAlignment="Right" HorizontalAlignment="Left" Margin="10,147,0,0" TextWrapping="Wrap" Text="{DynamicResource lbDescription}" VerticalAlignment="Top" FontFamily="Microsoft YaHei UI Light" Foreground="{DynamicResource ForgBrush}" Width="157" FontSize="16"/>
-            <TextBlock  TextAlignment="Right" HorizontalAlignment="Left" Margin="10,38,0,0" TextWrapping="Wrap" Text="{DynamicResource lbName}" VerticalAlignment="Top" FontFamily="Microsoft YaHei UI Light" Foreground="{DynamicResource ForgBrush}" Width="157" FontSize="16"/>
+            <TextBlock  x:Name="TBName" Margin="172,16,0,0" TextWrapping="Wrap" Text="There is Module name" VerticalAlignment="Top" FontSize="36"   Style="{DynamicResource AtmbxTextBlockStyle}"/>
+            <TextBlock x:Name="TBVersion" Margin="172,64,10,0" TextWrapping="Wrap" Text="There is Module version" VerticalAlignment="Top"   FontSize="16" Style="{DynamicResource AtmbxTextBlockStyle}"/>
+            <TextBlock x:Name="TBDesc" Margin="172,147,10,0" TextWrapping="Wrap" Text="There is Module desc" VerticalAlignment="Top"  Height="123"  FontSize="16" Style="{DynamicResource AtmbxTextBlockStyle}"/>
+            <Button Style="{DynamicResource AtmbxButtonStyle}" x:Name="BtnRun" Content="{DynamicResource btnRunExtension}" Margin="10,294,0,0" VerticalAlignment="Top" Click="BtnRun_Click" HorizontalAlignment="Left" Width="618"   Height="37"/>
+            <TextBlock x:Name="TBAuth" Margin="172,87,10,0" TextWrapping="Wrap" Text="Auth" VerticalAlignment="Top"   FontSize="16" Style="{DynamicResource AtmbxTextBlockStyle}"/>
+            <TextBlock x:Name="TBEmail" Margin="172,110,10,0" TextWrapping="Wrap" Text="example@fuckmail.com" VerticalAlignment="Top"   RenderTransformOrigin="0.5,0.5" FontSize="16" Style="{DynamicResource AtmbxTextBlockStyle}"/>
+            <TextBlock  TextAlignment="Right" HorizontalAlignment="Left" Margin="10,64,0,0" TextWrapping="Wrap" Text="{DynamicResource lbVersion}" VerticalAlignment="Top"   Width="157" FontSize="16" Style="{DynamicResource AtmbxTextBlockStyle}"/>
+            <TextBlock  TextAlignment="Right" HorizontalAlignment="Left" Margin="10,87,0,0" TextWrapping="Wrap" Text="{DynamicResource lbAuth}" VerticalAlignment="Top"   Width="157" FontSize="16" Style="{DynamicResource AtmbxTextBlockStyle}"/>
+            <TextBlock  TextAlignment="Right" HorizontalAlignment="Left" Margin="10,110,0,0" TextWrapping="Wrap" Text="{DynamicResource lbContactEmail}" VerticalAlignment="Top"   Width="157" FontSize="16" Style="{DynamicResource AtmbxTextBlockStyle}"/>
+            <TextBlock x:Name="LbEmail"  TextAlignment="Right" HorizontalAlignment="Left" Margin="10,147,0,0" TextWrapping="Wrap" Text="{DynamicResource lbDescription}" VerticalAlignment="Top"   Width="157" FontSize="16" Style="{DynamicResource AtmbxTextBlockStyle}"/>
+            <TextBlock  TextAlignment="Right" HorizontalAlignment="Left" Margin="10,38,0,0" TextWrapping="Wrap" Text="{DynamicResource lbName}" VerticalAlignment="Top"   Width="157" FontSize="16" Style="{DynamicResource AtmbxTextBlockStyle}"/>
 
         </Grid>
-        <TextBlock TextAlignment="Center" Foreground="{DynamicResource ForgBrush}" HorizontalAlignment="Left" Margin="10,45,0,0" TextWrapping="Wrap" Text="{DynamicResource hyperLinkInstallModule}" VerticalAlignment="Top" Width="259" Height="23" TextDecorations="Underline" MouseDown="TextBlock_MouseDown"/>
-        <TextBlock x:Name="TBDownloadExt" TextAlignment="Center" Foreground="{DynamicResource ForgBrush}" HorizontalAlignment="Left" Margin="10,73,0,0" TextWrapping="Wrap" Text="{DynamicResource hyperlinkExtensionsCenter}" VerticalAlignment="Top" Width="259" Height="23" TextDecorations="Underline" MouseDown="TBDownloadExt_MouseDown"/>
+        <TextBlock TextAlignment="Center"  HorizontalAlignment="Left" Margin="10,45,0,0" TextWrapping="Wrap" Text="{DynamicResource hyperLinkInstallModule}" VerticalAlignment="Top" Width="259" Height="23" TextDecorations="Underline" MouseDown="TextBlock_MouseDown" Style="{DynamicResource AtmbxTextBlockStyle}"/>
+        <TextBlock x:Name="TBDownloadExt" TextAlignment="Center"  HorizontalAlignment="Left" Margin="10,73,0,0" TextWrapping="Wrap" Text="{DynamicResource hyperlinkExtensionsCenter}" VerticalAlignment="Top" Width="259" Height="23" TextDecorations="Underline" MouseDown="TBDownloadExt_MouseDown" Style="{DynamicResource AtmbxTextBlockStyle}"/>
     </Grid>
 </UserControl>

@@ -5,9 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AutumnBox.GUI.UI.Fp"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300" Background="{DynamicResource BackBrush}">
+             d:DesignHeight="300" d:DesignWidth="300" Background="{DynamicResource BackgroundBurshKey}">
     <Grid>
         <Grid x:Name="Container"/>
-        <Button x:Name="BtnClose"  Content="{DynamicResource btnClose}" VerticalAlignment="Top" Background="{DynamicResource BtnBrush}" Foreground="{DynamicResource ForgBrush}" Click="BtnClose_Click" HorizontalAlignment="Right" Width="75"/>
+        <Button Style="{DynamicResource AtmbxButtonStyle}" x:Name="BtnClose"  Content="{DynamicResource btnClose}" VerticalAlignment="Top" Click="BtnClose_Click" HorizontalAlignment="Right" Width="75"/>
     </Grid>
 </UserControl>
