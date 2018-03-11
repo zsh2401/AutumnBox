@@ -152,8 +152,8 @@
     <Compile Include="UI\Cstm\CstmTitleBar.xaml.cs">
       <DependentUpon>CstmTitleBar.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\CstPanels\About.xaml.cs">
-      <DependentUpon>About.xaml</DependentUpon>
+    <Compile Include="UI\CstPanels\AboutPanel.xaml.cs">
+      <DependentUpon>AboutPanel.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Cstm\PotdBox.xaml.cs">
       <DependentUpon>PotdBox.xaml</DependentUpon>
@@ -164,8 +164,8 @@
     <Compile Include="UI\CstPanels\DevicesPanelMessageBox.xaml.cs">
       <DependentUpon>DevicesPanelMessageBox.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\CstPanels\Donate.xaml.cs">
-      <DependentUpon>Donate.xaml</DependentUpon>
+    <Compile Include="UI\CstPanels\DonatePanel.xaml.cs">
+      <DependentUpon>DonatePanel.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\CstPanels\NetDebuggingAdder.xaml.cs">
       <DependentUpon>NetDebuggingAdder.xaml</DependentUpon>
@@ -322,7 +322,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\CstPanels\About.xaml">
+    <Page Include="UI\CstPanels\AboutPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -338,7 +338,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\CstPanels\Donate.xaml">
+    <Page Include="UI\CstPanels\DonatePanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

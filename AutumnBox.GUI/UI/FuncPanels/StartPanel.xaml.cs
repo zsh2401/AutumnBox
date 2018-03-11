@@ -64,7 +64,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
 
         private void TBDonate_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            new FastPanel(App.Current.MainWindowAsMainWindow.GridMain, new Donate()).Display() ;
+            new FastPanel(App.Current.MainWindowAsMainWindow.GridMain, new DonatePanel()).Display() ;
         }
     }
 }

@@ -140,7 +140,7 @@ namespace AutumnBox.GUI
                 {
                 if (Properties.Settings.Default.IsFirstLaunch)
                     {
-                        var aboutPanel = new FastPanel(this.GridMain, new About());
+                        var aboutPanel = new FastPanel(this.GridMain, new AboutPanel());
                         aboutPanel.Display();
                     }
                 });
@@ -209,7 +209,7 @@ namespace AutumnBox.GUI
 
         private void BtnAbout_Click(object sender, RoutedEventArgs e)
         {
-            new FastPanel(this.GridMain, new About()).Display();
+            new FastPanel(this.GridMain, new AboutPanel()).Display();
         }
 
         private void BtnSettings_Click(object sender, RoutedEventArgs e)
@@ -219,7 +219,7 @@ namespace AutumnBox.GUI
 
         private void BtnDonate_Click(object sender, RoutedEventArgs e)
         {
-            new FastPanel(this.GridMain, new Donate()).Display();
+            new FastPanel(this.GridMain, new DonatePanel()).Display();
         }
 
         private void _MainWindow_Closed(object sender, EventArgs e)

@@ -19,9 +19,9 @@ namespace AutumnBox.GUI.UI.CstPanels
     /// <summary>
     /// Donate.xaml 的交互逻辑
     /// </summary>
-    public partial class Donate : FastPanelChild
+    public partial class DonatePanel : FastPanelChild
     {
-        public Donate()
+        public DonatePanel()
         {
             InitializeComponent();
         }

@@ -13,9 +13,9 @@ namespace AutumnBox.GUI.UI.CstPanels
     /// <summary>
     /// AboutControl.xaml 的交互逻辑
     /// </summary>
-    public partial class About : FastPanelChild
+    public partial class AboutPanel : FastPanelChild
     {
-        public About()
+        public AboutPanel()
         {
             InitializeComponent();
             LabelVersion.Content = SystemHelper.CurrentVersion.ToString();
@@ -30,6 +30,6 @@ namespace AutumnBox.GUI.UI.CstPanels
             Process.Start(App.Current.Resources["linkAutumnBoxOS"].ToString());
 
         private void TextBlockDonate_MouseDown(object sender, MouseButtonEventArgs e) =>
-             new FastPanel(((MainWindow)App.Current.MainWindow).GridMain, new Donate()).Display();
+             new FastPanel(((MainWindow)App.Current.MainWindow).GridMain, new DonatePanel()).Display();
     }
 }
