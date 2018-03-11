@@ -51,6 +51,7 @@ namespace AutumnBox.OpenFramework.Open.V1
         /// <param name="key"></param>
         /// <returns></returns>
         TReturn GetPublicResouce<TReturn>(string key) where TReturn:class;
+        Window MainWindow { get; }
         /// <summary>
         /// 获取界面语言代码 类似zh-CN
         /// </summary>

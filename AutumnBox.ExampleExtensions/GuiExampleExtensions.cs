@@ -11,6 +11,7 @@ using AutumnBox.OpenFramework.Open.V1;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -21,12 +22,22 @@ namespace AutumnBox.ExampleExtensions
         public override string Name => "带界面的拓展示例";
         public override string Auth => "zsh2401";
         public override string Description => "AutumnBox拓展允许使用自定义窗口";
+        public override MailAddress ContactMail => new MailAddress("zsh2401@163.com");
         public override DeviceState RequiredDeviceState => DeviceState.None;
+        public override bool InitAndCheck(InitArgs args)
+        {
+            Log("Init!");
+            return base.InitAndCheck(args);
+        }
         public override void OnStartCommand(StartArgs args)
         {
             OpenApi.Gui.Dispatcher.Invoke(() =>
             {
-                new ExampleWindow().ShowDialog();
+                new ExampleWindow()
+                {
+                    Owner = OpenApi.Gui.MainWindow,
+                    WindowStartupLocation = System.Windows.WindowStartupLocation.CenterOwner
+                }.ShowDialog();
             });
         }
     }

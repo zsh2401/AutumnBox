@@ -57,15 +57,8 @@ namespace AutumnBox.GUI.UI.FuncPanels
                 TBName.Text = rt.InnerExtension.Name;
                 TBDesc.Text = rt.InnerExtension.Description;
                 TBVersion.Text = rt.InnerExtension.Version.ToString();
-                if (rt.InnerExtension.ContactMail == null)
-                {
-                    TBEmail.Visibility = Visibility.Hidden;
-                }
-                else
-                {
-                    TBEmail.Visibility = Visibility.Visible;
-                    TBEmail.Text = rt.InnerExtension.ContactMail.ToString();
-                }
+                LbEmail.Visibility = rt.InnerExtension.ContactMail == null ? Visibility.Hidden : Visibility.Visible;
+                TBEmail.Text = rt.InnerExtension.ContactMail?.ToString();
                 TBAuth.Text = rt.InnerExtension.Auth;
                 SetBtnRunState(rt.InnerExtension.RequiredDeviceState.HasFlag(currentDevice.State));
             }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AutumnBox.GUI.Windows"
         mc:Ignorable="d"
-        Title="DebugWindow" Height="300" Width="300" Icon="/AutumnBox;component/Resources/Images/title_icon.ico" Closed="Window_Closed">
+        Title="DebugWindow" Height="300" Width="300" Icon="/Resources/Images/title_icon.ico" Closed="Window_Closed">
     <Grid>
         <TextBox x:Name="TxtBoxLog" IsReadOnly="True" Margin="10" TextWrapping="Wrap" Text=""/>
 

@@ -3,7 +3,7 @@
                     xmlns:local="clr-namespace:AutumnBox.GUI.Resources"
                     xmlns:s="clr-namespace:System;assembly=mscorlib">
     <s:String x:Key="urlOfficialWebsite">http://atmb.top/</s:String>
-    <s:String x:Key="urlDonateList">http://atmb.top/donate/list/</s:String>
+    <s:String x:Key="urlDonateList">http://atmb.top/donate/</s:String>
     <s:String x:Key="urlOpensource">http://atmb.top/open_source/</s:String>
     <s:String x:Key="urlJoinQQGroup">http://atmb.top/help/join_qq_group/</s:String>
     <s:String x:Key="urlDownloadMiFlashPackage">http://www.miui.com/shuaji-393.html</s:String>
