@@ -30,22 +30,26 @@ using AutumnBox.Basic.Adb;
 using AutumnBox.Basic.FlowFramework;
 using AutumnBox.Basic.Util;
 using AutumnBox.Basic.MultipleDevices;
+using AutumnBox.GUI.UI.Cstm;
 
 namespace AutumnBox.GUI
 {
     /// <summary>
     /// Window1.xaml 的交互逻辑
     /// </summary>
-    public sealed partial class MainWindow : Window, IRefreshable
+    public sealed partial class MainWindow : Window, IRefreshable, ITitleBarWindow
     {
         private Object setUILock = new System.Object();
         private List<IRefreshable> refreshables;
+
+        public bool BtnMinEnable => true;
+
+        Window ITitleBarWindow.MainWindow => this;
 
         public MainWindow()
         {
             InitializeComponent();
             RegisterEvent();
-            TitleBar.ImgMin.Visibility = Visibility.Visible;
             refreshables = new List<IRefreshable>
             {
                 this.RebootGrid,
@@ -56,9 +60,9 @@ namespace AutumnBox.GUI
                 this.ThridPartyFuncs
             };
 #if DEBUG
-            TitleBar.Title.Content += "  " + SystemHelper.CurrentVersion + "-Debug";
+            TitleBar.Title += "  " + SystemHelper.CurrentVersion + "-Debug";
 #else
-            TitleBar.Title.Content += "  " + SystemHelper.CurrentVersion + "-Release";
+            TitleBar.Title += "  " + SystemHelper.CurrentVersion + "-Release";
 #endif
         }
 
@@ -138,7 +142,7 @@ namespace AutumnBox.GUI
                 Thread.Sleep(1000);
                 Dispatcher.Invoke(() =>
                 {
-                if (Properties.Settings.Default.IsFirstLaunch)
+                    if (Properties.Settings.Default.IsFirstLaunch)
                     {
                         var aboutPanel = new FastPanel(this.GridMain, new AboutPanel());
                         aboutPanel.Display();
@@ -228,6 +232,20 @@ namespace AutumnBox.GUI
             {
                 window.Close();
             }
+        }
+
+        public void OnBtnCloseClicked()
+        {
+            this.Close();
+        }
+
+        public void OnBtnMinClicked()
+        {
+            this.WindowState = WindowState.Minimized;
+        }
+
+        public void OnDragMove() {
+            this.DragMove();
         }
     }
 }

@@ -64,6 +64,6 @@
         <Button x:Name="BtnLeft" Content="{DynamicResource btnCancel}" HorizontalAlignment="Left" Margin="86,282,0,0" VerticalAlignment="Top" Width="165" Background="{x:Null}" Height="28" Click="BtnLeft_Click" Foreground="{DynamicResource ForgBrush}"/>
         <Button x:Name="BtnRight" Content="{DynamicResource btnOK}" HorizontalAlignment="Left" Margin="256,282,0,0" VerticalAlignment="Top" Width="165" Background="{x:Null}" Height="28" Click="BtnRight_Click" Foreground="{DynamicResource ForgBrush}"/>
         <TextBlock x:Name="TBContent" TextAlignment="Center" Margin="10,66,10,0" TextWrapping="Wrap" Text="Content" VerticalAlignment="Top" Height="211" FontFamily="Microsoft YaHei UI Light" FontSize="18" Foreground="{DynamicResource ForgBrush}"/>
-        <Image x:Name="ImgCancel" Height="24" Margin="0,10,10,0" VerticalAlignment="Top" Source="/AutumnBox;component/Resources/Images/Btn/close_normal.png" MouseDown="ImgCancel_MouseDown" HorizontalAlignment="Right" Width="22"/>
+        <Image x:Name="ImgCancel" Height="24" Margin="0,10,10,0" VerticalAlignment="Top" Source="/Resources/Images/Btn/close_normal.png" MouseDown="ImgCancel_MouseDown" HorizontalAlignment="Right" Width="22"/>
     </Grid>
 </Window>

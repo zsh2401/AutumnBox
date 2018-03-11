@@ -129,6 +129,7 @@
     <Compile Include="NetUtil\RemoteDataGetter.cs" />
     <Compile Include="NetUtil\UpdateChecker.cs" />
     <Compile Include="Resources\Images\DevStatus\DevStatusBitmapGetter.cs" />
+    <Compile Include="UI\Cstm\ITitleBarWindow.cs" />
     <Compile Include="UI\CstPanels\ExtensionRuningPanel.xaml.cs">
       <DependentUpon>ExtensionRuningPanel.xaml</DependentUpon>
     </Compile>

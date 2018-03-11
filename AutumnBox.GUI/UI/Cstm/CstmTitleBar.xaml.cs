@@ -13,31 +13,47 @@ namespace AutumnBox.GUI.UI.Cstm
     /// </summary>
     public partial class CstmTitleBar : UserControl
     {
-        public Window OwnerWindow
+        public string Title
         {
+            get
+            {
+                return LbTitle.Content as string;
+            }
             set
             {
-                _ownerWindow = value;
+                LbTitle.Content = value;
             }
         }
         private Window _ownerWindow;
+        private ITitleBarWindow _ownerWindow_t;
         public CstmTitleBar()
         {
             InitializeComponent();
         }
-        private static Window FindParentWindow(DependencyObject control)
+
+        private void LoadParentWindow(DependencyObject control)
         {
             var parent = VisualTreeHelper.GetParent(control);
             if (parent == null)
             {
-                return null;
+                return;
+            }
+            else if (parent is ITitleBarWindow)
+            {
+                this._ownerWindow_t = (ITitleBarWindow)parent;
+                return;
             }
             else if (parent is Window)
             {
-                return (Window)parent;
+                this._ownerWindow = (Window)parent;
+                return;
+            }
+            else
+            {
+                LoadParentWindow(parent);
             };
-            return FindParentWindow(parent);
         }
+
         private void ImgClose_MouseEnter(object sender, MouseEventArgs e) =>
             ImgClose.Source = ImageGetter.Get("Btn/close_selected.png");
 
@@ -50,22 +66,37 @@ namespace AutumnBox.GUI.UI.Cstm
         private void ImgMin_MouseLeave(object sender, MouseEventArgs e) =>
             ImgMin.Source = ImageGetter.Get("Btn/min_normal.png");
 
-        private void ImgClose_MouseDown(object sender, MouseButtonEventArgs e) =>
-            _ownerWindow.Close();
-        private void ImgMin_MouseDown(object sender, MouseButtonEventArgs e) =>
-            _ownerWindow.WindowState = WindowState.Minimized;
+        private void ImgClose_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            _ownerWindow_t?.OnBtnCloseClicked();
+            _ownerWindow?.Close();
+        }
 
+        private void ImgMin_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            _ownerWindow_t?.OnBtnMinClicked();
+            if (_ownerWindow != null)
+            {
+                _ownerWindow.WindowState = WindowState.Minimized;
+            }
+        }
         private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
             {
-                try { _ownerWindow.DragMove(); } catch (InvalidOperationException) { }
+                try
+                {
+                    _ownerWindow_t?.OnDragMove();
+                    _ownerWindow?.DragMove();
+                }
+                catch (InvalidOperationException) { }
             }
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            this._ownerWindow = FindParentWindow(this);
+            LoadParentWindow(this);
+            ImgMin.Visibility = _ownerWindow_t?.BtnMinEnable == true ? Visibility.Visible : ImgMin.Visibility;
         }
     }
 }
