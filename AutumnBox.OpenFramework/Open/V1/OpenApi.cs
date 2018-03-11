@@ -17,7 +17,7 @@ namespace AutumnBox.OpenFramework.Open.V1
     /// <summary>
     /// 可供拓展模块调用的开放API
     /// </summary>
-    public static partial class OpenApi
+    public static class OpenApi
     {
         /// <summary>
         /// GUI相关的API

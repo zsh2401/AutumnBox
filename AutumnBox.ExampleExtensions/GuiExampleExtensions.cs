@@ -26,16 +26,15 @@ namespace AutumnBox.ExampleExtensions
         public override DeviceState RequiredDeviceState => DeviceState.None;
         public override bool InitAndCheck(InitArgs args)
         {
-            Log("Init!");
             return base.InitAndCheck(args);
         }
         public override void OnStartCommand(StartArgs args)
         {
-            OpenApi.Gui.Dispatcher.Invoke(() =>
+            OpenApi.Gui.RunOnUIThread(this, () =>
             {
                 new ExampleWindow()
                 {
-                    Owner = OpenApi.Gui.MainWindow,
+                    Owner = OpenApi.Gui.GetMainWindow(this),
                     WindowStartupLocation = System.Windows.WindowStartupLocation.CenterOwner
                 }.ShowDialog();
             });

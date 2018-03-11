@@ -26,21 +26,29 @@ namespace AutumnBox.GUI.Util
 
         private class GuiApi : IGuiApi
         {
-            public Dispatcher Dispatcher => App.Current.Dispatcher;
+
             public string CurrentLanguageCode => App.Current.Resources["LanguageCode"].ToString();
 
-            public Window MainWindow => App.Current.MainWindow;
+            public Window GetMainWindow(Context context)
+            {
+                return App.Current.MainWindow;
+            }
 
-            public object GetPublicResouce(string key)
+            public object GetPublicResouce(Context context, string key)
             {
                 return App.Current.Resources[key];
             }
-            public TReturn GetPublicResouce<TReturn>(string key) where TReturn : class
+            public TReturn GetPublicResouce<TReturn>(Context context, string key) where TReturn : class
             {
                 return App.Current.Resources[key] as TReturn;
             }
 
-            public bool? ShowChoiceBox(string title, string msg, string btnLeft = null, string btnRight = null)
+            public void RunOnUIThread(Context context, Action act)
+            {
+                App.Current.Dispatcher.Invoke(act);
+            }
+
+            public bool? ShowChoiceBox(Context context, string title, string msg, string btnLeft = null, string btnRight = null)
             {
                 bool? result = null;
                 App.Current.Dispatcher.Invoke(() =>
@@ -49,7 +57,7 @@ namespace AutumnBox.GUI.Util
                 });
                 return result;
             }
-            public void ShowLoadingWindow(ICompletable completable)
+            public void ShowLoadingWindow(Context context, ICompletable completable)
             {
                 App.Current.Dispatcher.Invoke(() =>
                 {
@@ -57,15 +65,15 @@ namespace AutumnBox.GUI.Util
                 });
 
             }
-            public void ShowMessageBox(string title, string msg)
+            public void ShowMessageBox(Context context, string title, string msg)
             {
                 App.Current.Dispatcher.Invoke(() =>
                 {
                     BoxHelper.ShowMessageDialog(title, msg);
                 });
-
             }
         }
+
         private class LogApi : ILogApi
         {
             public void Debug(Context sender, string msg)

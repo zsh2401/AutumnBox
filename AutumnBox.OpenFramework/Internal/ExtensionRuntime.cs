@@ -18,7 +18,7 @@ namespace AutumnBox.OpenFramework.Internal
     /// <summary>
     /// 拓展的运行管理器
     /// </summary>
-    public class ExtensionRuntime
+    public class ExtensionRuntime:Context
     {
         public string Name { get { return InnerExtension.Name; } }
         public readonly AutumnBoxExtension InnerExtension;
@@ -54,7 +54,7 @@ namespace AutumnBox.OpenFramework.Internal
             }
             catch (Exception ex)
             {
-                OpenApi.Gui.ShowMessageBox("Warning", $"{InnerExtension.Name} was failed... \n{ex}");
+                OpenApi.Gui.ShowMessageBox(this,"Warning", $"{InnerExtension.Name} was failed... \n{ex}");
             }
             finally
             {

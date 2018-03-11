@@ -11,7 +11,6 @@
 * Company: I am free man
 *
 \* =============================================================================*/
-using AutumnBox.GUI.Properties;
 using System;
 using System.Diagnostics;
 using System.Threading;

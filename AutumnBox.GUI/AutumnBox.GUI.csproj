@@ -136,7 +136,6 @@
       <DependentUpon>ThridPartyFunctionPanel.xaml</DependentUpon>
     </Compile>
     <Compile Include="Util\OpenFramewokManager.cs" />
-    <Compile Include="Util\LoggerTraceListener.cs" />
     <Compile Include="Windows\DebugWindow.xaml.cs">
       <DependentUpon>DebugWindow.xaml</DependentUpon>
     </Compile>
