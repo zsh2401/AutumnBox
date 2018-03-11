@@ -121,5 +121,10 @@ namespace AutumnBox.GUI.UI.FuncPanels
         {
             Process.Start(App.Current.Resources["urlHelpOfInstallExtension"].ToString());
         }
+
+        private void TBDownloadExt_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            Process.Start(App.Current.Resources["urlDownloadExtensions"].ToString());
+        }
     }
 }

@@ -110,6 +110,7 @@
     <s:String x:Key="hyperlinkJoinQQGroup">Join QQ Group</s:String>
     <s:String x:Key="hyperlinkDonate">Donate</s:String>
     <s:String x:Key="hyperlinkDonateList">Donation list</s:String>
+    <s:String x:Key="hyperlinkExtensionsCenter">Extensions download center</s:String>
     <!--链接文字-->
 
     <!--tabitem-->

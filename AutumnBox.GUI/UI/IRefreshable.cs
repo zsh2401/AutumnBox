@@ -2,7 +2,7 @@
 
 namespace AutumnBox.GUI.UI
 {
-    public interface IRefreshable
+    internal interface IRefreshable
     {
         void Reset();
         void Refresh(DeviceBasicInfo deviceSimpleInfo);

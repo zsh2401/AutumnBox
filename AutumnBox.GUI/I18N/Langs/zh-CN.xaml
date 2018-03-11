@@ -113,6 +113,7 @@
      <s:String x:Key="hyperlinkJoinQQGroup">加入QQ群</s:String>
     <s:String x:Key="hyperlinkDonate">捐赠</s:String>
     <s:String x:Key="hyperlinkDonateList">捐赠者名单</s:String>
+    <s:String x:Key="hyperlinkExtensionsCenter">拓展下载中心</s:String>
     <!--链接文字-->
     
     <!--tabitem-->

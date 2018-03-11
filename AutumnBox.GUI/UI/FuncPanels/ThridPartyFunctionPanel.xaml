@@ -9,7 +9,7 @@
     Margin="0,0,0,0"
              d:DesignHeight="366" d:DesignWidth="922">
     <Grid x:Name="GridContainer">
-        <ListBox x:Name="ListBoxModule" HorizontalAlignment="Left" DisplayMemberPath="Name" Margin="10,78,0,10" Width="259" SelectionChanged="ListBox_SelectionChanged"/>
+        <ListBox x:Name="ListBoxModule" HorizontalAlignment="Left" DisplayMemberPath="Name" Margin="10,101,0,10" Width="259" SelectionChanged="ListBox_SelectionChanged"/>
         <TextBlock Visibility="Collapsed" x:Name="TxtNothing" TextAlignment="Center" FontSize="16" Foreground="{DynamicResource ForgBrush}" Margin="291,161,10,0" TextWrapping="Wrap" Text="I'd love to change the world...but i dont know what to do" VerticalAlignment="Top"/>
         <Button x:Name="BtnOpenModuleFloder" Content="{DynamicResource btnOpenModuleFloder}" HorizontalAlignment="Left" Margin="10,15,0,0" VerticalAlignment="Top" Width="259" BorderBrush="{x:Null}" Background="{DynamicResource BtnBrush}" Click="BtnOpenModuleFloder_Click">
             <Button.Foreground>
@@ -30,6 +30,7 @@
             <TextBlock  TextAlignment="Right" HorizontalAlignment="Left" Margin="10,38,0,0" TextWrapping="Wrap" Text="{DynamicResource lbName}" VerticalAlignment="Top" FontFamily="Microsoft YaHei UI Light" Foreground="{DynamicResource ForgBrush}" Width="157" FontSize="16"/>
 
         </Grid>
-        <TextBlock TextAlignment="Center" Foreground="{DynamicResource ForgBrush}" HorizontalAlignment="Left" Margin="10,45,0,0" TextWrapping="Wrap" Text="{DynamicResource hyperLinkInstallModule}" VerticalAlignment="Top" Width="259" Height="28" TextDecorations="Underline" MouseDown="TextBlock_MouseDown"/>
+        <TextBlock TextAlignment="Center" Foreground="{DynamicResource ForgBrush}" HorizontalAlignment="Left" Margin="10,45,0,0" TextWrapping="Wrap" Text="{DynamicResource hyperLinkInstallModule}" VerticalAlignment="Top" Width="259" Height="23" TextDecorations="Underline" MouseDown="TextBlock_MouseDown"/>
+        <TextBlock x:Name="TBDownloadExt" TextAlignment="Center" Foreground="{DynamicResource ForgBrush}" HorizontalAlignment="Left" Margin="10,73,0,0" TextWrapping="Wrap" Text="{DynamicResource hyperlinkExtensionsCenter}" VerticalAlignment="Top" Width="259" Height="23" TextDecorations="Underline" MouseDown="TBDownloadExt_MouseDown"/>
     </Grid>
 </UserControl>
