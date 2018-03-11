@@ -12,7 +12,7 @@ using System.Windows.Media.Imaging;
 
 namespace AutumnBox.GUI.Resources
 {
-    public static class DevStatusBitmapGetter
+    internal static class DevStatusBitmapGetter
     {
         private static readonly Assembly currentAssembly;
         private const string rec = "DevStatus/rec.png";

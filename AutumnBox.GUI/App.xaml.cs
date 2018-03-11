@@ -13,7 +13,6 @@
 \* =============================================================================*/
 using AutumnBox.Basic.Adb;
 using AutumnBox.Basic.MultipleDevices;
-using AutumnBox.GUI.Cfg;
 using AutumnBox.GUI.Helper;
 using AutumnBox.GUI.I18N;
 using AutumnBox.GUI.Properties;
@@ -62,7 +61,9 @@ namespace AutumnBox.GUI
             if (SystemHelper.HaveOtherAutumnBoxProcess)
             {
                 Logger.Fatal(this, "Have other autumnbox!!");
-                MessageBox.Show($"不可以同时打开两个AutumnBox{Environment.NewLine}Do not run two AutumnBox at once", "警告/Warning");
+                MessageBox.Show(
+                    $"不可以同时打开两个AutumnBox{Environment.NewLine}Do not run two AutumnBox at once", 
+                    "警告/Warning",MessageBoxButton.OK,MessageBoxImage.Warning);
                 App.Current.Shutdown(HAVE_OTHER_PROCESS);
             }
             if (Settings.Default.IsFirstLaunch)
@@ -132,7 +133,7 @@ namespace AutumnBox.GUI
                 $"一个未知的错误的发生了,将logs文件夹压缩并发送给开发者以解决问题{Environment.NewLine}Please compress the logs folder and send it to zsh2401@163.com",
                 "AutumnBox 错误/Unknow Exception",
             MessageBoxButton.OK,
-            MessageBoxImage.Warning);
+            MessageBoxImage.Error);
             string n = Environment.NewLine;
             string exstr =
                 $"AutumnBox Exception {DateTime.Now.ToString("MM/dd/yyyy    HH:mm:ss")}{n}{n}" +

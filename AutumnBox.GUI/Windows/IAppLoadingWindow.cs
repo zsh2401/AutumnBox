@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.GUI.Windows
 {
-    interface IAppLoadingWindow
+    internal interface IAppLoadingWindow
     {
         void SetProgress(double value);
         void SetTip(string value);

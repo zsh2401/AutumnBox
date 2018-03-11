@@ -10,7 +10,7 @@ using System.Windows.Media.Imaging;
 
 namespace AutumnBox.GUI.Resources.Images
 {
-    public static class ImageGetter
+    internal static class ImageGetter
     {
         private const string prefix = "/Resources/Images/";
         public static BitmapImage Get(string relativePath)

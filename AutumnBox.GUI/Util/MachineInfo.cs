@@ -26,7 +26,7 @@ namespace AutumnBox.GUI.Util
     /// <summary>
     /// 此类用于获取当前主机的相关信息
     /// </summary>
-    public class MachineInfo
+    internal class MachineInfo
     {
         /*
          * 提供对大量管理信息和管理事件集合的访问，这些信息和事件是与根据 Windows 管理规范 (WMI) 结构对系统、设备和应用程序设置检测点有关的。
