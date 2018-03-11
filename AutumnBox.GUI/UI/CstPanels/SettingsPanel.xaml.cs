@@ -9,9 +9,9 @@ namespace AutumnBox.GUI.UI.CstPanels
     /// <summary>
     /// Settings.xaml 的交互逻辑
     /// </summary>
-    public partial class Settings : FastPanelChild
+    public partial class SettingsPanel : FastPanelChild
     {
-        public Settings()
+        public SettingsPanel()
         {
             InitializeComponent();
             CKBShowDebugWindowOnNextLaunch.IsChecked = Properties.Settings.Default.ShowDebuggingWindowNextLaunch;

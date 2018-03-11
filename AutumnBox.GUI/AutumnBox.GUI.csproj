@@ -197,8 +197,8 @@
     <Compile Include="UI\FuncPanels\RecFuncPanel.xaml.cs">
       <DependentUpon>RecFuncPanel.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\CstPanels\Settings.xaml.cs">
-      <DependentUpon>Settings.xaml</DependentUpon>
+    <Compile Include="UI\CstPanels\SettingsPanel.xaml.cs">
+      <DependentUpon>SettingsPanel.xaml</DependentUpon>
     </Compile>
     <Compile Include="Cfg\IConfigOperator.cs" />
     <Compile Include="Cfg\ConfigDataLayout.cs" />
@@ -383,7 +383,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\CstPanels\Settings.xaml">
+    <Page Include="UI\CstPanels\SettingsPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

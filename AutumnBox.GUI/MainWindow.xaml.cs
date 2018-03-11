@@ -214,7 +214,7 @@ namespace AutumnBox.GUI
 
         private void BtnSettings_Click(object sender, RoutedEventArgs e)
         {
-            new FastPanel(this.GridMain, new Settings()).Display();
+            new FastPanel(this.GridMain, new SettingsPanel()).Display();
         }
 
         private void BtnDonate_Click(object sender, RoutedEventArgs e)
