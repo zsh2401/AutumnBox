@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:AutumnBox.GUI.UI.FuncPanels"
              xmlns:Fp="clr-namespace:AutumnBox.GUI.UI.Fp" x:Class="AutumnBox.GUI.UI.FuncPanels.StartPanel"
              mc:Ignorable="d" 
-             d:DesignHeight="359" d:DesignWidth="918" Background="{DynamicResource BackgroundBurshKey}" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+             d:DesignHeight="359" d:DesignWidth="918"  ScrollViewer.VerticalScrollBarVisibility="Disabled">
     <Grid x:Name="GridContainer">
         <TextBlock Style="{DynamicResource AtmbxTextBlockStyle}"  HorizontalAlignment="Left" Margin="10,19,0,0" TextWrapping="Wrap" Text="{DynamicResource titStart}" VerticalAlignment="Top" FontSize="48" />
         <Label Style="{DynamicResource AtmbxLabelStyle}" Content="Label" Margin="0,88,0,0" Height="1" VerticalAlignment="Top" />

@@ -2,12 +2,13 @@
 using AutumnBox.GUI.Helper;
 using AutumnBox.GUI.I18N;
 using AutumnBox.GUI.Resources;
-using AutumnBox.Support.CstmDebug;
+using AutumnBox.Support.Log;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace AutumnBox.GUI.UI.FuncPanels
@@ -27,24 +28,21 @@ namespace AutumnBox.GUI.UI.FuncPanels
         }
     }
 
-    [LogProperty(TAG = "DevInfoPanel")]
     /// <summary>
     /// DeviceInfoPanel.xaml 的交互逻辑
     /// </summary>
-    public partial class DeviceInfoPanel : UserControl, IAsyncRefreshable, ILogSender
+    public partial class DeviceInfoPanel : UserControl, IAsyncRefreshable
     {
         public DeviceBasicInfo DeviceInfo { get; private set; }
         public Version CurrentDeviceAndroidVersion { get; private set; }
         public bool CurrentDeviceIsRoot { get; private set; }
-        public string LogTag => "DevInfoPanel";
-        public bool IsShowLog => true;
         public DeviceInfoPanel()
         {
             InitializeComponent();
         }
         public event EventHandler RefreshStart;
         public event EventHandler RefreshFinished;
-        private void SetStatusShow(BitmapSource source, string key)
+        private void SetStatusShow(ImageSource source, string key)
         {
             this.DeviceStatusImage.Source = source;
             this.DeviceStatusLabel.Content = App.Current.Resources[key] ?? key;
@@ -81,6 +79,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
         }
         public void Reset()
         {
+            Logger.Info(this,"Reseting");
             this.Dispatcher.Invoke(() =>
             {
                 UIHelper.SetGridLabelsContent(GridBuildInfo, App.Current.Resources["PleaseSelectedADevice"]);

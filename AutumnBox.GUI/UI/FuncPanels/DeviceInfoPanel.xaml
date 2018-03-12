@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="220" Width="600">
     <Grid>
-        <Image x:Name="DeviceStatusImage" RenderOptions.BitmapScalingMode="Fant" HorizontalAlignment="Left" Height="100" Margin="36,54,0,0" VerticalAlignment="Top" Width="100" Source="/Resources/Images/DevStatus/no_dev.png"/>
+        <Image x:Name="DeviceStatusImage" RenderOptions.BitmapScalingMode="Fant" HorizontalAlignment="Left" Height="100" Margin="36,54,0,0" VerticalAlignment="Top" Width="100" Source="{DynamicResource ImgNoDevice}"/>
         <Image x:Name="ImgRefreshDevInfo" RenderOptions.BitmapScalingMode="Fant" HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="25" Source="/Resources/Images/refresh.png" MouseDown="ImgRefreshDevInfo_MouseDown" RenderTransformOrigin="-0.286,0.529" Margin="10,10,0,0"/>
         <Label Style="{DynamicResource AtmbxLabelStyle}" x:Name="DeviceStatusLabel" Content="{DynamicResource PleaseSelectedADevice}" HorizontalAlignment="Left" Margin="6,159,0,0" VerticalAlignment="Top" Height="43" Width="150"  FontSize="14" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
         <Grid x:Name="GridBuildInfo" HorizontalAlignment="Left" Height="92" Margin="254,11,0,0" VerticalAlignment="Top" Width="260">

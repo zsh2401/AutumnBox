@@ -6,11 +6,11 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="BasicTheme_files/ColorAndBrushes.xaml"/>
 
-        <ResourceDictionary Source="PublicStyle/LabelStyle.xaml"/>
-        <ResourceDictionary Source="PublicStyle/TextBlockStyle.xaml"/>
-        <ResourceDictionary Source="PublicStyle/ButtonStyle.xaml"/>
-        <ResourceDictionary Source="PublicStyle/TabItemStyle.xaml"/>
-        <ResourceDictionary Source="PublicStyle/CkbStyle.xaml"/>
-        <ResourceDictionary Source="PublicStyle/TextBoxInputStyle.xaml"/>
+        <ResourceDictionary Source="Public/LabelStyle.xaml"/>
+        <ResourceDictionary Source="Public/TextBlockStyle.xaml"/>
+        <ResourceDictionary Source="Public/ButtonStyle.xaml"/>
+        <ResourceDictionary Source="Public/TabItemStyle.xaml"/>
+        <ResourceDictionary Source="Public/CkbStyle.xaml"/>
+        <ResourceDictionary Source="Public/TextBoxInputStyle.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

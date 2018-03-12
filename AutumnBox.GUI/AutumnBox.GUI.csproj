@@ -287,11 +287,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Resources\Themes\PublicStyle\LabelStyle.xaml">
+    <Page Include="Resources\Themes\Public\LabelStyle.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Resources\Themes\PublicStyle\TextBlockStyle.xaml">
+    <Page Include="Resources\Themes\Public\Images.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Themes\Public\TextBlockStyle.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -315,11 +319,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Resources\Themes\PublicStyle\ButtonStyle.xaml">
+    <Page Include="Resources\Themes\Public\ButtonStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Resources\Themes\PublicStyle\CkbStyle.xaml">
+    <Page Include="Resources\Themes\Public\CkbStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -327,11 +331,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Resources\Themes\PublicStyle\TabItemStyle.xaml">
+    <Page Include="Resources\Themes\Public\TabItemStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Resources\Themes\PublicStyle\TextBoxInputStyle.xaml">
+    <Page Include="Resources\Themes\Public\TextBoxInputStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

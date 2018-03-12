@@ -9,19 +9,19 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <SolidColorBrush x:Key="TabItem.Static.Border" Color="{DynamicResource ColorBroder}"/>
-    <SolidColorBrush x:Key="TabItem.MouseOver.Background" Color="Transparent"></SolidColorBrush>
-    <SolidColorBrush x:Key="TabItem.Static.Background" Color="{DynamicResource ColorBackground}"/>
-    <SolidColorBrush x:Key="TabItem.MouseOver.Border" Color="{DynamicResource ColorBroder}"/>
+    <SolidColorBrush x:Key="TabItem.Static.Border" Color="{DynamicResource ColorTbiBroder}"/>
+    <SolidColorBrush x:Key="TabItem.MouseOver.Background" Color="Transparent"/>
+    <SolidColorBrush x:Key="TabItem.Static.Background" Color="{DynamicResource ColorTbiBg}"/>
+    <SolidColorBrush x:Key="TabItem.MouseOver.Border" Color="{DynamicResource ColorTbiBroder}"/>
     <SolidColorBrush x:Key="TabItem.Disabled.Background" Color="Transparent"/>
-    <SolidColorBrush x:Key="TabItem.Disabled.Border" Color="{DynamicResource ColorBroder}"/>
-    <SolidColorBrush x:Key="TabItem.Selected.Border" Color="{DynamicResource ColorBroder}"/>
-    <SolidColorBrush x:Key="TabItem.Selected.Background" Color="#30000000"/>
+    <SolidColorBrush x:Key="TabItem.Disabled.Border" Color="{DynamicResource ColorTbiBroder}"/>
+    <SolidColorBrush x:Key="TabItem.Selected.Border" Color="{DynamicResource ColorTbiBroder}"/>
+    <SolidColorBrush x:Key="TabItem.Selected.Background" Color="{DynamicResource ColorTbiHSlctBg}"/>
     <Style x:Key="AtmbxTabItem" TargetType="{x:Type TabItem}">
         <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
         <Setter Property="Foreground" Value="{DynamicResource ForegroundBurshKey}"/>
-        <Setter Property="Background" Value="{StaticResource TabItem.Static.Background}"/>
-        <Setter Property="BorderBrush" Value="{StaticResource TabItem.Static.Border}"/>
+        <Setter Property="Background" Value="{DynamicResource TabItem.Static.Background}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource TabItem.Static.Border}"/>
         <Setter Property="Margin" Value="0"/>
         <Setter Property="Padding" Value="6,2,6,2"/>
         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
