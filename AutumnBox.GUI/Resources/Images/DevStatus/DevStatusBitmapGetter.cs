@@ -9,10 +9,15 @@ using AutumnBox.Basic.Device;
 using AutumnBox.GUI.Resources.Images;
 using AutumnBox.Support.Log;
 using System;
+using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Reflection;
+using System.Runtime.InteropServices;
+using System.Windows;
+using System.Windows.Interop;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace AutumnBox.GUI.Resources
@@ -30,42 +35,49 @@ namespace AutumnBox.GUI.Resources
         }
         public static BitmapSource Get(DeviceState status)
         {
+            BitmapSource bmp = null;
             switch (status)
             {
                 case DeviceState.Poweron:
-                    return ((BitmapFrame)App.Current.Resources["ImgPoweron"]).Clone();
+                    bmp = ((BitmapFrame)App.Current.Resources["ImgPoweron"]).Clone();
+                    break;
                 case DeviceState.Sideload:
                 case DeviceState.Recovery:
-                    return ((BitmapFrame)App.Current.Resources["ImgRecovery"]).Clone();
+                    bmp = ((BitmapFrame)App.Current.Resources["ImgRecovery"]).Clone();
+                    break;
                 case DeviceState.Fastboot:
-                    return ((BitmapFrame)App.Current.Resources["ImgFastboot"]).Clone();
+                    bmp = ((BitmapFrame)App.Current.Resources["ImgFastboot"]).Clone();
+                    break;
                 default:
-                    return ((BitmapFrame)App.Current.Resources["ImgNoDevice"]).Clone() ;
+                    bmp = ((BitmapFrame)App.Current.Resources["ImgNoDevice"]).Clone();
+                    break;
             }
+            return Paint(bmp);
         }
-        private static BitmapImage Paint(BitmapImage src)
+        private static BitmapSource Paint(BitmapImage src)
         {
-            Bitmap bmp = new Bitmap(src.Clone().StreamSource);
-            Color crtPixel;
-            for (int crtX = 0; crtX < bmp.Width; crtX++)
-            {
-                for (int crtY = 0; crtY < bmp.Height; crtY++)
-                {
-                    crtPixel = bmp.GetPixel(crtX, crtY);
-                    if (crtPixel == Color.White)
-                    {
-                        bmp.SetPixel(crtX, crtY, (Color)App.Current.Resources["ColorPrimary"]);
-                    }
-                }
-            }
-            var result = new BitmapImage();
-            using (MemoryStream ms = new MemoryStream())
-            {
-                result.BeginInit();
-                bmp.Save(result.StreamSource, ImageFormat.Png);
-                result.EndInit();
-            }
-            return result;
+
+
         }
+
+        private static Bitmap ToBitmap(this BitmapSource src)
+        {
+            src.
+        }
+        private static BitmapSource ToBitmapSource(this Bitmap bmp)
+        {
+            try
+            {
+                return Imaging.CreateBitmapSourceFromHBitmap(
+                bmp.GetHbitmap(), IntPtr.Zero, Int32Rect.Empty,
+                BitmapSizeOptions.FromEmptyOptions());
+            }
+            catch
+            {
+                return null;
+            }
+        }
+        [DllImport("gdi32.dll", SetLastError = true)]
+        private static extern bool DeleteObject(IntPtr hObject);
     }
 }

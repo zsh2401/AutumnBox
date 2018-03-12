@@ -47,6 +47,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
             this.DeviceStatusImage.Source = source;
             this.DeviceStatusLabel.Content = App.Current.Resources[key] ?? key;
         }
+
         public void Refresh(DeviceBasicInfo devSimpleInfo)
         {
             Reset();
@@ -77,6 +78,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
                     break;
             }
         }
+
         public void Reset()
         {
             Logger.Info(this,"Reseting");
@@ -88,6 +90,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
                 SetStatusShow(DevStatusBitmapGetter.Get(DeviceState.None), "PleaseSelectedADevice");
             });
         }
+
         private async void SetByDeviceSimpleInfoAsync(DeviceBasicInfo devSimpleInfo)
         {
             var propGetter = new DeviceBuildPropGetter(devSimpleInfo.Serial);
