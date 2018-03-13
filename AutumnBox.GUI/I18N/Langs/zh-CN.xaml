@@ -279,6 +279,7 @@
     <!--静态界面标记-->
 
     <!--设备信息标记-->
+    <s:String x:Key="diDeviceState">设备状态</s:String>
     <s:String x:Key="diSWRoot">Root</s:String>
     <s:String x:Key="diHWBattery">电量</s:String>
     <s:String x:Key="diHWSOC">SOC</s:String>
@@ -314,17 +315,19 @@
     <!--MiFlashWindow使用的-->
 
     <!--设备状态提示-->
-    <s:String x:Key="HaveNoDevices">没有找到设备</s:String>
-    <s:String x:Key="PleaseAllowUSBDebug">请允许USB调试</s:String>
-    <s:String x:Key="PleaseSelectedADevice">请选择一个设备</s:String>
-    <s:String x:Key="DeviceInRunning">设备处于开机状态</s:String>
-    <s:String x:Key="DeviceInRecovery">设备处于恢复模式</s:String>
-    <s:String x:Key="DeviceInFastboot">设备处于Fastboot状态</s:String>
-    <s:String x:Key="DeviceInSideload">设备在sideload模式</s:String>
-    <s:String x:Key="DeviceOffline">设备异常离线</s:String>
+    <s:String x:Key="deviceStateUnknown">未知</s:String>
+    <s:String x:Key="deviceStateNone">未找到设备</s:String>
+    <s:String x:Key="deviceStatePoweron">处于开机状态</s:String>
+    <s:String x:Key="deviceStateRecovery">设备处于恢复模式</s:String>
+    <s:String x:Key="deviceStateFastboot">设备处于Fastboot状态</s:String>
+    <s:String x:Key="deviceStateSideload">设备在sideload模式</s:String>
+    <s:String x:Key="deviceStateOffline">设备异常离线</s:String>
+    <s:String x:Key="deviceStateUnauthorized">未允许USB调试!</s:String>
     <!--设备状态提示-->
 
-
+    <s:String x:Key="lbDisconnect">未连接任何设备</s:String>
+    <s:String x:Key="lbConnectedDevice">已连接到</s:String>
+    
     <s:String x:Key="SelecteAFile">选择一个文件</s:String>
     <s:String x:Key="Warning">警告</s:String>
     <s:String x:Key="Success">成功</s:String>

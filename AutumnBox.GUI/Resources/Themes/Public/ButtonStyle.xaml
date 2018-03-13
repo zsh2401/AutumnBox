@@ -2,22 +2,28 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <SolidColorBrush x:Key="Button.Static.Background" Color="{DynamicResource ColorBtnBackground}"/>
     <SolidColorBrush x:Key="Button.Static.Border" Color="Transparent"/>
-    <SolidColorBrush x:Key="Button.MouseOver.Background" Color="{DynamicResource ColorBtnSelectedBackground}"/>
+    <SolidColorBrush x:Key="Button.MouseOver.Background" Color="{DynamicResource ColorBtnMouseOver}"/>
     <SolidColorBrush x:Key="Button.MouseOver.Border" Color="Transparent"/>
-    <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFC4E5F6"/>
+    <SolidColorBrush x:Key="Button.Pressed.Background" Color="{DynamicResource ColorBtnBackground}"/>
     <SolidColorBrush x:Key="Button.Pressed.Border" Color="Transparent"/>
-    <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
+    <SolidColorBrush x:Key="Button.Disabled.Background" Color="{DynamicResource ColorBtnDisable}"/>
     <SolidColorBrush x:Key="Button.Disabled.Border" Color="Transparent"/>
-    <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
+    <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="{DynamicResource ColorBtnDisableForegound}"/>
     <Style x:Key="AtmbxButtonStyle" TargetType="Button">
+        <Style.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Foreground" Value="{DynamicResource Button.Disabled.Foreground}" />
+            </Trigger>
+        </Style.Triggers>
         <Setter Property="Background" Value="{DynamicResource BtnBackgroundBrushKey}"/>
         <Setter Property="BorderBrush" Value="Transparent"/>
-        <Setter Property="Foreground" Value="{DynamicResource ForegroundBurshKey}"/>
+        <Setter Property="Foreground" Value="{DynamicResource BtnForegroundBrushKey}"/>
         <Setter Property="FontFamily" Value="Microsoft YaHei UI Light"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
                     <Border x:Name="RootElement">
+                        
                         <VisualStateManager.VisualStateGroups>
 
                             <!--Define the states for the common states.
@@ -30,7 +36,7 @@
                                 <VisualState x:Name="Normal">
                                     <Storyboard>
                                         <ColorAnimation Storyboard.TargetName="BorderBrush" 
-                              Storyboard.TargetProperty="Color" To="#10FFFFFF" />
+                              Storyboard.TargetProperty="Color" To="{DynamicResource ColorBtnBackground}" />
                                     </Storyboard>
                                 </VisualState>
 
@@ -39,15 +45,16 @@
                                 <VisualState x:Name="MouseOver">
                                     <Storyboard>
                                         <ColorAnimation Storyboard.TargetName="BorderBrush" 
-                              Storyboard.TargetProperty="Color" To="{DynamicResource ColorBtnSelectedBackground}" />
+                              Storyboard.TargetProperty="Color" To="{DynamicResource ColorBtnMouseOver}" />
 
                                     </Storyboard>
                                 </VisualState>
+
                                 <VisualState x:Name="Disabled">
                                     <Storyboard>
-                                        <ColorAnimation Storyboard.TargetName="BorderBrush" 
+                                        <ColorAnimation 
+                                            Storyboard.TargetName="BorderBrush"
                               Storyboard.TargetProperty="Color" To="{DynamicResource ColorBtnDisable}" />
-
                                     </Storyboard>
 
                                 </VisualState>

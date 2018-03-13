@@ -6,6 +6,7 @@ using AutumnBox.Support.Log;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -13,156 +14,181 @@ using System.Windows.Media.Imaging;
 
 namespace AutumnBox.GUI.UI.FuncPanels
 {
-    internal static class DictExt
+    public static class SomeExtension
     {
-        public static string Get(this Dictionary<string, string> dict, string key)
+        public static string AsGbString(this double num)
         {
-            try
-            {
-                return dict[key];
-            }
-            catch (KeyNotFoundException)
-            {
-                return null;
-            }
+            return num.ToString() + "GB";
         }
     }
-
     /// <summary>
     /// DeviceInfoPanel.xaml 的交互逻辑
     /// </summary>
-    public partial class DeviceInfoPanel : UserControl, IAsyncRefreshable
+    public partial class DeviceInfoPanel : UserControl, IRefreshable
     {
+        private const string defaultStr = "...";
+
+        public static readonly DependencyProperty DeviceRootStatusTextProperty
+            = DependencyProperty.Register("DeviceRootStatusText", typeof(string), typeof(DeviceInfoPanel),
+                new UIPropertyMetadata(defaultStr));
+        public string DeviceRootStatusText
+        {
+            get { return (string)GetValue(DeviceRootStatusTextProperty); }
+            set { SetValue(DeviceRootStatusTextProperty, value); }
+        }
+
+        public static readonly DependencyProperty DeviceScreenInfoProperty
+    = DependencyProperty.Register("DeviceScreenInfo", typeof(string), typeof(DeviceInfoPanel),
+        new UIPropertyMetadata(defaultStr));
+        public string DeviceScreenInfo
+        {
+            get { return (string)GetValue(DeviceScreenInfoProperty); }
+            set { SetValue(DeviceScreenInfoProperty, value); }
+        }
+
+        public static readonly DependencyProperty DeviceRomSizeInfoProperty
+    = DependencyProperty.Register("DeviceRomSizeInfo", typeof(string), typeof(DeviceInfoPanel),
+        new UIPropertyMetadata(defaultStr));
+        public string DeviceRomSizeInfo
+        {
+            get { return (string)GetValue(DeviceRomSizeInfoProperty); }
+            set { SetValue(DeviceRomSizeInfoProperty, value); }
+        }
+
+        public static readonly DependencyProperty DeviceRamSizeInfoProperty
+    = DependencyProperty.Register("DeviceRamSizeInfo", typeof(string), typeof(DeviceInfoPanel),
+        new UIPropertyMetadata(defaultStr));
+        public string DeviceRamSizeInfo
+        {
+            get { return (string)GetValue(DeviceRamSizeInfoProperty); }
+            set { SetValue(DeviceRamSizeInfoProperty, value); }
+        }
+
+        public static readonly DependencyProperty DeviceAndroidVersionProperty
+    = DependencyProperty.Register("DeviceAndroidVersion", typeof(string), typeof(DeviceInfoPanel),
+        new UIPropertyMetadata(defaultStr));
+        public string DeviceAndroidVersion
+        {
+            get { return (string)GetValue(DeviceAndroidVersionProperty); }
+            set { SetValue(DeviceAndroidVersionProperty, value); }
+        }
+
+        public static readonly DependencyProperty DeviceCodeProperty
+               = DependencyProperty.Register("DeviceCode", typeof(string), typeof(DeviceInfoPanel),
+        new UIPropertyMetadata(defaultStr));
+        public string DeviceCode
+        {
+            get { return (string)GetValue(DeviceCodeProperty); }
+            set { SetValue(DeviceCodeProperty, value); }
+        }
+
+
+        public static readonly DependencyProperty DeviceNameProperty
+            = DependencyProperty.Register("DeviceName", typeof(string), typeof(DeviceInfoPanel));
+        public string DeviceName
+        {
+            get { return (string)GetValue(DeviceNameProperty); }
+            set { SetValue(DeviceNameProperty, value); }
+        }
+
+        public static readonly DependencyProperty ConnectStatusTextProperty
+            = DependencyProperty.Register("ConnectStatusText", typeof(string), typeof(DeviceInfoPanel));
+        public string ConnectStatusText
+        {
+            get { return (string)GetValue(ConnectStatusTextProperty); }
+            set { SetValue(ConnectStatusTextProperty, value); }
+        }
+
+        public static readonly DependencyProperty DeviceStateTextProperty
+            = DependencyProperty.Register("DeviceStateText", typeof(string), typeof(DeviceInfoPanel));
+        public string DeviceStateText
+        {
+            get { return (string)GetValue(DeviceStateTextProperty); }
+            set { SetValue(DeviceStateTextProperty, value); }
+        }
+
+
         public DeviceBasicInfo DeviceInfo { get; private set; }
-        public Version CurrentDeviceAndroidVersion { get; private set; }
         public bool CurrentDeviceIsRoot { get; private set; }
         public DeviceInfoPanel()
         {
             InitializeComponent();
-        }
-        public event EventHandler RefreshStart;
-        public event EventHandler RefreshFinished;
-        private void SetStatusShow(ImageSource source, string key)
-        {
-            this.DeviceStatusImage.Source = source;
-            this.DeviceStatusLabel.Content = App.Current.Resources[key] ?? key;
+            LanguageHelper.LanguageChanged += (s, e) =>
+            {
+                Refresh(DeviceInfo);
+            };
         }
 
         public void Refresh(DeviceBasicInfo devSimpleInfo)
         {
             Reset();
-            this.DeviceInfo = devSimpleInfo;
-            //return;
+            DeviceInfo = devSimpleInfo;
+            if (DeviceState.None != DeviceInfo.State) {
+                ConnectStatusText = App.Current.Resources["lbConnectedDevice"].ToString();
+            }
+            DeviceStateText = App.Current.Resources[$"deviceState{devSimpleInfo.State}"].ToString();
             switch (devSimpleInfo.State)
             {
                 case DeviceState.Poweron:
                 case DeviceState.Recovery:
-                    SetByDeviceSimpleInfoAsync(devSimpleInfo);
-                    RefreshStart?.Invoke(this, new EventArgs());
+                    PoweronRefresh(devSimpleInfo);
                     break;
                 case DeviceState.Unauthorized:
-                    UIHelper.SetGridLabelsContent(GridBuildInfo, App.Current.Resources["PleaseAllowUSBDebug"]);
-                    SetStatusShow(DevStatusBitmapGetter.Get(devSimpleInfo.State), "PleaseAllowUSBDebug");
                     break;
                 case DeviceState.Fastboot:
-                    UIHelper.SetGridLabelsContent(GridBuildInfo, "...");
-                    UIHelper.SetGridLabelsContent(GridHardwareInfo, "....");
-                    UIHelper.SetGridLabelsContent(GridMemoryInfo, "....");
-                    SetStatusShow(DevStatusBitmapGetter.Get(devSimpleInfo.State), "DeviceInFastboot");
+                    Task.Run(() =>
+                    {
+                        var product = new DeviceInfoGetterInFastboot(devSimpleInfo.Serial).GetProduct();
+                        this.Dispatcher.Invoke(() =>
+                        {
+                            DeviceName = product;
+                        });
+                    });
+                    ConnectStatusText = App.Current.Resources["lbConnectedDevice"].ToString();
                     break;
                 case DeviceState.Offline:
-                    UIHelper.SetGridLabelsContent(GridBuildInfo, "...");
-                    UIHelper.SetGridLabelsContent(GridHardwareInfo, "....");
-                    UIHelper.SetGridLabelsContent(GridMemoryInfo, "....");
-                    SetStatusShow(DevStatusBitmapGetter.Get(devSimpleInfo.State), "DeviceOffline");
+                    ConnectStatusText = App.Current.Resources["lbDeviceOffline"].ToString();
                     break;
             }
         }
+
+
 
         public void Reset()
         {
-            Logger.Info(this,"Reseting");
-            this.Dispatcher.Invoke(() =>
+
+            Dispatcher.Invoke(() =>
             {
-                UIHelper.SetGridLabelsContent(GridBuildInfo, App.Current.Resources["PleaseSelectedADevice"]);
-                UIHelper.SetGridLabelsContent(GridHardwareInfo, "....");
-                UIHelper.SetGridLabelsContent(GridMemoryInfo, "....");
-                SetStatusShow(DevStatusBitmapGetter.Get(DeviceState.None), "PleaseSelectedADevice");
+                DeviceStateText = App.Current.Resources[$"deviceStateNone"].ToString();
+                ConnectStatusText = App.Current.Resources["lbDisconnect"].ToString();
+                ClearValue(DeviceNameProperty);
+                ClearValue(DeviceCodeProperty);
+                ClearValue(DeviceRootStatusTextProperty);
+                ClearValue(DeviceAndroidVersionProperty);
+                ClearValue(DeviceScreenInfoProperty);
+                ClearValue(DeviceRomSizeInfoProperty);
+                ClearValue(DeviceRamSizeInfoProperty);
             });
         }
 
-        private async void SetByDeviceSimpleInfoAsync(DeviceBasicInfo devSimpleInfo)
+        private async void PoweronRefresh(DeviceBasicInfo devSimpleInfo)
         {
-            var propGetter = new DeviceBuildPropGetter(devSimpleInfo.Serial);
-            Dictionary<string, string> buildInfo = await Task.Run(() =>
-                 {
-                     return propGetter.GetFull();
-                 });
-
-            LabelAndroidVersion.Content = buildInfo.Get(BuildPropKeys.AndroidVersion) ?? App.Current.Resources["GetFail"].ToString();
-            string brandAndModel = null;
-            string brand = buildInfo.Get(BuildPropKeys.Brand);
-            string model = buildInfo.Get(BuildPropKeys.Model);
-            if (brand != null && model != null)
+            var buildProp = await Task.Run(() => { return new DeviceBuildPropGetter(devSimpleInfo.Serial).GetFull(); });
+            DeviceName = buildProp[BuildPropKeys.Brand] + buildProp[BuildPropKeys.Model];
+            CurrentDeviceIsRoot = await Task.Run(() => { return new DeviceSoftwareInfoGetter(devSimpleInfo.Serial).IsRootEnable(); });
+            DeviceRootStatusText = CurrentDeviceIsRoot ? "√" : "×";
+            DeviceAndroidVersion = buildProp[BuildPropKeys.AndroidVersion]?.ToString() ?? App.Current.Resources["GetFail"].ToString();
+            DeviceCode = buildProp[BuildPropKeys.ProductName];
+            var hwInfo = await Task.Run(() =>
             {
-                brandAndModel = brand + " " + model;
-            }
-            LabelModel.Content = brandAndModel ?? App.Current.Resources["GetFail"].ToString();
-            LabelCode.Content = buildInfo.Get(BuildPropKeys.ProductName) ?? App.Current.Resources["GetFail"].ToString();
-
-            LabelRom.Content = App.Current.Resources["Getting"].ToString();
-            LabelRam.Content = App.Current.Resources["Getting"].ToString();
-            LabelBattery.Content = App.Current.Resources["Getting"].ToString();
-            LabelSOC.Content = App.Current.Resources["Getting"].ToString();
-            LabelScreen.Content = App.Current.Resources["Getting"].ToString();
-            LabelFlashMemInfo.Content = App.Current.Resources["Getting"].ToString();
-            LabelRootStatus.Content = App.Current.Resources["Getting"].ToString();
-            try
-            {
-                CurrentDeviceAndroidVersion = new Version(LabelAndroidVersion.Content.ToString());
-            }
-            catch
-            {
-                CurrentDeviceAndroidVersion = null;
-            }
-            switch (devSimpleInfo.State)
-            {
-                case DeviceState.Fastboot:
-                    SetStatusShow(DevStatusBitmapGetter.Get(devSimpleInfo.State), "DeviceInFastboot");
-                    break;
-                case DeviceState.Recovery:
-                    SetStatusShow(DevStatusBitmapGetter.Get(devSimpleInfo.State), "DeviceInRecovery");
-                    break;
-                case DeviceState.Poweron:
-                    SetStatusShow(DevStatusBitmapGetter.Get(devSimpleInfo.State), "DeviceInRunning");
-                    break;
-                case DeviceState.Sideload:
-                    SetStatusShow(DevStatusBitmapGetter.Get(devSimpleInfo.State), "DeviceInSideload");
-                    break;
-            }
-            RefreshFinished?.Invoke(this, new EventArgs());
-            
-            var advInfo = await Task.Run(() =>
-            {
-                return new DeviceHardwareInfoGetter(DeviceInfo.Serial).Get();
+                return new DeviceHardwareInfoGetter(devSimpleInfo.Serial).Get();
             });
-            LabelRom.Content = (advInfo.SizeofRom != null) ? advInfo.SizeofRom + "GB" : App.Current.Resources["GetFail"].ToString();
-            LabelRam.Content = (advInfo.SizeofRam != null) ? advInfo.SizeofRam + "GB" : App.Current.Resources["GetFail"].ToString();
-            LabelBattery.Content = (advInfo.BatteryLevel != null) ? advInfo.BatteryLevel + "%" : App.Current.Resources["GetFail"].ToString();
-            LabelSOC.Content = advInfo.SOCInfo ?? App.Current.Resources["GetFail"].ToString();
-            LabelScreen.Content = advInfo.ScreenInfo ?? App.Current.Resources["GetFail"].ToString();
-            LabelFlashMemInfo.Content = advInfo.FlashMemoryType ?? App.Current.Resources["GetFail"].ToString();
-            bool IsRoot = await Task.Run(() => { return new DeviceSoftwareInfoGetter(devSimpleInfo.Serial).IsRootEnable(); });
-            LabelRootStatus.Content = IsRoot ? App.Current.Resources["RootEnable"].ToString() : App.Current.Resources["RootDisable"].ToString();
-            CurrentDeviceIsRoot = IsRoot;
+            DeviceRomSizeInfo = hwInfo.SizeofRom?.AsGbString() ?? App.Current.Resources["GetFail"].ToString();
+            DeviceRamSizeInfo = hwInfo.SizeofRam?.AsGbString() ?? App.Current.Resources["GetFail"].ToString();
+            DeviceScreenInfo = hwInfo.ScreenInfo ?? App.Current.Resources["GetFail"].ToString();
         }
 
-        private void LabelAndroidVersion_Loaded(object sender, System.Windows.RoutedEventArgs e)
-        {
-            LanguageHelper.LanguageChanged += (s, ex) => { Refresh(DeviceInfo); };
-        }
-
-        private void ImgRefreshDevInfo_MouseDown(object sender, MouseButtonEventArgs e)
+        private void BtnRefresh_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             Refresh(DeviceInfo);
         }

@@ -128,7 +128,6 @@
     <Compile Include="NetUtil\MOTDGetter.cs" />
     <Compile Include="NetUtil\RemoteDataGetter.cs" />
     <Compile Include="NetUtil\UpdateChecker.cs" />
-    <Compile Include="Resources\Images\DevStatus\DevStatusBitmapGetter.cs" />
     <Compile Include="UI\Cstm\ITitleBarWindow.cs" />
     <Compile Include="UI\CstPanels\ExtensionRuningPanel.xaml.cs">
       <DependentUpon>ExtensionRuningPanel.xaml</DependentUpon>
@@ -144,10 +143,6 @@
     <Compile Include="Windows\UserManagerWindow.xaml.cs">
       <DependentUpon>UserManagerWindow.xaml</DependentUpon>
     </Compile>
-    <Resource Include="Resources\Images\DevStatus\rec.png" />
-    <Resource Include="Resources\Images\DevStatus\no_dev.png" />
-    <Resource Include="Resources\Images\DevStatus\fastboot.png" />
-    <Resource Include="Resources\Images\DevStatus\poweron.png" />
     <Resource Include="Resources\Images\refresh.png" />
     <Compile Include="Resources\Images\ImageGetter.cs" />
     <Compile Include="UI\Cstm\CstmTitleBar.xaml.cs">
@@ -336,6 +331,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\Themes\Public\TextBoxInputStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Themes\Public\WindowStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

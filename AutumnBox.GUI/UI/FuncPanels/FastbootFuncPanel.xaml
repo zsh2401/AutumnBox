@@ -9,8 +9,8 @@
              mc:Ignorable="d" 
              d:DesignHeight="336" d:DesignWidth="922">
     <Grid x:Name="MainGrid">
-        <Button Style="{DynamicResource AtmbxButtonStyle}" x:Name="buttonFlashCustomRecovery" Content="{DynamicResource btnFlashCustomRecoveryImg}" Margin="10,10,10,167" FontSize="18"  Click="ButtonFlashCustomRecovery_Click" />
-        <Button Style="{DynamicResource AtmbxButtonStyle}" x:Name="buttonRelockMi" Content="{DynamicResource btnRelockMi}" Margin="10,0,0,10"   FontSize="18"   Click="ButtonRelockMi_Click" Height="152" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="364"/>
-        <Button Style="{DynamicResource AtmbxButtonStyle}" x:Name="BtnMiFlash" Content="{DynamicResource btnMiFlash}" Margin="379,0,10,10"  FontSize="18"  Height="152" VerticalAlignment="Bottom" Click="BtnMiFlash_Click"/>
+        <Button Style="{DynamicResource AtmbxButtonStyle}" x:Name="buttonFlashCustomRecovery" Content="{DynamicResource btnFlashCustomRecoveryImg}" Margin="10,10,602,275" FontSize="18"  Click="ButtonFlashCustomRecovery_Click" />
+        <Button Style="{DynamicResource AtmbxButtonStyle}" x:Name="buttonRelockMi" Content="{DynamicResource btnRelockMi}" Margin="10,0,0,220"   FontSize="18"   Click="ButtonRelockMi_Click" Height="29" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="310"/>
+        <Button Style="{DynamicResource AtmbxButtonStyle}" IsEnabled="False" x:Name="BtnMiFlash" Content="{DynamicResource btnMiFlash}" Margin="391,0,248,275"  FontSize="18"  Height="51" VerticalAlignment="Bottom" Click="BtnMiFlash_Click"/>
     </Grid>
 </fp:FastPanelChild>

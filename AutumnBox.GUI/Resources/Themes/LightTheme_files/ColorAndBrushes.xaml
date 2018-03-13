@@ -4,19 +4,23 @@
                     xmlns:s="clr-namespace:System;assembly=mscorlib">
 
     <!--______________________________主要色__________________________________ -->
-    <Color x:Key="ColorPrimary">#FF00bbf0</Color>
+    <Color x:Key="ColorPrimary">#FF009AD6</Color>
     <SolidColorBrush x:Key="PrimaryBurshKey" Color="{DynamicResource ColorPrimary}"/>
+
+    <Color x:Key="ColorForegroundOnPrimary">#F4F4F4</Color>
+    <SolidColorBrush x:Key="ForegroundOnPrimaryBurshKey" Color="{DynamicResource ColorForegroundOnPrimary}"/>
     
-    <Color x:Key="ColorForeground">#282D4F</Color>
+    
+    <Color x:Key="ColorForeground">#5c6361</Color>
     <SolidColorBrush x:Key="ForegroundBurshKey" Color="{DynamicResource ColorForeground}"/>
 
-    <Color x:Key="ColorMainBackground">#ECFEFF</Color>
+    <Color x:Key="ColorMainBackground">#F4F4F4</Color>
     <SolidColorBrush x:Key="MainBackgroundBurshKey" Color="{DynamicResource ColorMainBackground}"/>
-    
-    <Color x:Key="ColorBackground">#FF00bbf0</Color>
+
+    <Color x:Key="ColorBackground">#F4F4F4</Color>
     <SolidColorBrush x:Key="BackgroundBurshKey" Color="{DynamicResource ColorBackground}"/>
-    
-    <Color x:Key="ColorBroder">#FF00bbf0</Color>
+
+    <Color x:Key="ColorBroder">#FF009AD6</Color>
     <SolidColorBrush x:Key="BroderBrushKey" Color="{DynamicResource ColorBroder}"/>
 
     
@@ -25,11 +29,8 @@
     <Color x:Key="ColorTitleBarBackground">#FF00bbf0</Color>
     <SolidColorBrush x:Key="TitleBarBackgroundBurshKey" Color="{DynamicResource ColorTitleBarBackground}"/>
 
-    <Color x:Key="ColorTitleBarForeground">#282D4F</Color>
+    <Color x:Key="ColorTitleBarForeground">White</Color>
     <SolidColorBrush x:Key="TitleBarForegroundBrushKey" Color="{DynamicResource ColorTitleBarForeground}"/>
-
-    <Color x:Key="ColorTitleLine">#FF000000</Color>
-    <SolidColorBrush x:Key="TitleBarLineBrushKey" Color="{DynamicResource ColorTitleLine}"/>
 
     <Color x:Key="ColorFuncPanelBackground">#FF009AD6</Color>
     <SolidColorBrush x:Key="FuncPanelBackgroundBrushKey" Color="{DynamicResource ColorFuncPanelBackground}"/>
@@ -37,23 +38,19 @@
     
     
     <!--______________________________按钮______________________________-->
-    <Color x:Key="ColorBtnSelectedBackground">#FF009AD6</Color>
-    <SolidColorBrush x:Key="BtnSelectedBackgroundBrushKey" Color="{DynamicResource ColorBtnSelectedBackground}"/>
-    
-    <Color x:Key="ColorBtnBackground">#50535353</Color>
+    <Color x:Key="ColorBtnMouseOver">#FF009AD6</Color>
+    <SolidColorBrush x:Key="BtnMouseOverBrushKey" Color="{DynamicResource ColorBtnMouseOver}"/>
+
+    <Color x:Key="ColorBtnBackground">#00f4f4f4</Color>
     <SolidColorBrush x:Key="BtnBackgroundBrushKey" Color="{DynamicResource ColorBtnBackground}"/>
-    
-    <Color x:Key="ColorBtnDisable">#05000000</Color>
+
+    <Color x:Key="ColorBtnDisable">#00f4f4f4</Color>
     <SolidColorBrush x:Key="BtnDisableBrushKey" Color="{DynamicResource ColorBtnDisable}"/>
 
+    <Color x:Key="ColorBtnDisableForegound">#7f7f7f</Color>
+    <SolidColorBrush x:Key="BtnDisableForegoundBrushKey" Color="{DynamicResource ColorBtnDisableForegound}"/>
 
-    <!--______________________________TabItem配色______________________________-->
-    <Color x:Key="ColorTbiBg">#05000000</Color>
-    <SolidColorBrush x:Key="TbiBgBrushKey" Color="{DynamicResource ColorTbiHBg}"/>
-
-    <Color x:Key="ColorTbiSlctBg">#05000000</Color>
-    <SolidColorBrush x:Key="TbiSlctBgBrushKey" Color="{DynamicResource ColorTbiSlctBg}"/>
-
-    <Color x:Key="ColorTbiBroder">#FF00bbf0</Color>
-    <SolidColorBrush x:Key="TbiBroderBrushKey" Color="{DynamicResource ColorTbiBroder}"/>
+    <Color x:Key="ColorBtnForeground">#282D4F</Color>
+    <SolidColorBrush x:Key="BtnForegroundBrushKey" Color="{DynamicResource ColorBtnForeground}"/>
+    
 </ResourceDictionary>
