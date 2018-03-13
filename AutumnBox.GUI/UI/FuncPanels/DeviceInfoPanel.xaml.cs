@@ -123,7 +123,8 @@ namespace AutumnBox.GUI.UI.FuncPanels
         {
             Reset();
             DeviceInfo = devSimpleInfo;
-            if (DeviceState.None != DeviceInfo.State) {
+            if (DeviceState.None != DeviceInfo.State)
+            {
                 ConnectStatusText = App.Current.Resources["lbConnectedDevice"].ToString();
             }
             DeviceStateText = App.Current.Resources[$"deviceState{devSimpleInfo.State}"].ToString();
@@ -156,7 +157,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
 
         public void Reset()
         {
-
+            DeviceInfo = new DeviceBasicInfo() { State = DeviceState.None };
             Dispatcher.Invoke(() =>
             {
                 DeviceStateText = App.Current.Resources[$"deviceStateNone"].ToString();

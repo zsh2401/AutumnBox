@@ -75,7 +75,7 @@ namespace AutumnBox.GUI.I18N
                 SaveLangSetting();
                 LanguageChanged?.Invoke(new object(), new EventArgs());
             }
-            catch
+            catch (Exception)
             {
                 SetLanguage("zh-CN");
             }

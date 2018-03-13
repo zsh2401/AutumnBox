@@ -10,6 +10,6 @@
     <Grid>
         <Image RenderOptions.BitmapScalingMode="Fant" HorizontalAlignment="Left" Height="317" VerticalAlignment="Top" Width="226" Source="/AutumnBox.GUI;component/Resources/Images/alipay.jpg" Margin="0,208,0,0"/>
         <Image RenderOptions.BitmapScalingMode="Fant" HorizontalAlignment="Left" Height="317" Margin="207,208,0,0" VerticalAlignment="Top" Width="242" Source="/AutumnBox.GUI;component/Resources/Images/wechatpay.png"/>
-        <TextBlock Style="{DynamicResource AtmbxTextBlockStyle}" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="{DynamicResource DonateDescription}" VerticalAlignment="Top" FontSize="24" Width="435" />
+        <TextBlock Foreground="{DynamicResource ForegroundOnPrimaryBrushKey}" Style="{DynamicResource AtmbxTextBlockStyle}" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="{DynamicResource DonateDescription}" VerticalAlignment="Top" FontSize="24" Width="435" />
     </Grid>
 </fp:FastPanelChild>

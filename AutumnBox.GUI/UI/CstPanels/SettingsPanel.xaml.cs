@@ -15,6 +15,7 @@ namespace AutumnBox.GUI.UI.CstPanels
         {
             InitializeComponent();
             CKBShowDebugWindowOnNextLaunch.IsChecked = Properties.Settings.Default.ShowDebuggingWindowNextLaunch;
+
             CbBoxLanguage.ItemsSource = LanguageHelper.Langs;
             CbBoxLanguage.SelectedIndex = LanguageHelper.FindIndex(App.Current.Resources["LanguageCode"].ToString());
             CbBoxLanguage.SelectionChanged += CbBoxLanguage_SelectionChanged;
