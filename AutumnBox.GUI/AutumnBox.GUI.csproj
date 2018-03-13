@@ -122,6 +122,7 @@
     <Compile Include="Helper\BoxHelper.cs" />
     <Compile Include="Helper\SystemHelper.cs" />
     <Compile Include="Helper\TextHelper.cs" />
+    <Compile Include="Helper\ThemeHelper.cs" />
     <Compile Include="Helper\UIHelper.cs" />
     <Compile Include="I18N\Language.cs" />
     <Compile Include="NetUtil\PotdGetter.cs" />
@@ -278,7 +279,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Resources\Themes\BasicTheme_files\ColorAndBrushes.xaml">
+    <Page Include="Resources\Themes\NightTheme_files\ColorAndBrushes.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -302,17 +303,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Resources\Themes\BasicTheme.xaml">
+    <Page Include="Resources\Themes\NightTheme.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Resources\Themes\BasicTheme_files\Brushes.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Resources\Themes\BasicTheme_files\ButtonStyle_obsolete.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="Resources\Themes\Public\ButtonStyle.xaml">
       <SubType>Designer</SubType>
@@ -321,10 +314,6 @@
     <Page Include="Resources\Themes\Public\CkbStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Resources\Themes\BasicTheme_files\Colors.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="Resources\Themes\Public\TabItemStyle.xaml">
       <SubType>Designer</SubType>

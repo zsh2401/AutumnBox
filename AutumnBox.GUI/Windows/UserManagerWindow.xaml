@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:AutumnBox.GUI.Windows"
         xmlns:cstm="clr-namespace:AutumnBox.GUI.UI.Cstm"
         mc:Ignorable="d"
-        Title="UserManagerWindow" Height="300" Width="389" WindowStyle="None" ResizeMode="NoResize" Background="{DynamicResource BackgroundBurshKey}" WindowStartupLocation="CenterOwner">
+        Title="UserManagerWindow" Height="300" Width="389" WindowStyle="None" ResizeMode="NoResize" Background="{DynamicResource BackgroundBrushKey}" WindowStartupLocation="CenterOwner">
     <Grid Margin="3,0,3,3">
         <cstm:CstmTitleBar Margin="-3,0,-3,257"></cstm:CstmTitleBar>
         <ListBox x:Name="ListUsers" DisplayMemberPath="Name" HorizontalAlignment="Left" Height="213" Margin="0,74,0,0" VerticalAlignment="Top" Width="199" SelectionChanged="ListUsers_SelectionChanged"/>

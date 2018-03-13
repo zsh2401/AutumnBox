@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         ShowInTaskbar="False"
         Title="PullingWindow" WindowStartupLocation="CenterOwner" Loaded="Window_Loaded" Height="330" Width="406" WindowStyle="None" ResizeMode="NoResize" Background="{DynamicResource BroderBrushKey}" MouseDown="Window_MouseDown">
-    <Grid Background="{DynamicResource BackgroundBurshKey}" Margin="3,3,3,3">
+    <Grid Background="{DynamicResource BackgroundBrushKey}" Margin="3,3,3,3">
         <TextBlock Style="{DynamicResource AtmbxTextBlockStyle}" Text="{DynamicResource pulling}"  Margin="10,16,10,253" FontSize="36"></TextBlock>
         <TextBlock Style="{DynamicResource AtmbxTextBlockStyle}" Text="{DynamicResource OutputRealTime}"  Margin="10,103,236,201" FontSize="16"></TextBlock>
         <TextBlock Style="{DynamicResource AtmbxTextBlockStyle}" Text="--" TextAlignment="Center"  x:Name="TBLoading" Margin="344,82,0,204" HorizontalAlignment="Left" Width="45" RenderTransformOrigin="0.5,0.5" FontSize="24"/>

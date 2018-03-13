@@ -37,7 +37,8 @@ namespace AutumnBox.GUI.UI.FuncPanels
         }
         private void _monitor_DevicesChanged(object sender, DevicesChangedEventArgs e)
         {
-            this.Dispatcher.Invoke(()=> {
+            this.Dispatcher.Invoke(() =>
+            {
                 this.ListBoxMain.ItemsSource = e.DevicesList;
                 if (ListBoxMain.SelectedIndex == -1 && e.DevicesList.Count > 0)
                 {

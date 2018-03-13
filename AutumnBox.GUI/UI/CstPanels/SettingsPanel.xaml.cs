@@ -29,7 +29,7 @@ namespace AutumnBox.GUI.UI.CstPanels
         private void CbBoxLanguage_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             LanguageHelper.SetLanguage((Language)CbBoxLanguage.SelectedItem);
-        } 
+        }
 
         private void BtnCreateShortcut_Click(object sender, System.Windows.RoutedEventArgs e)
         {
@@ -44,6 +44,19 @@ namespace AutumnBox.GUI.UI.CstPanels
         {
             base.OnPanelHide();
             Properties.Settings.Default.Save();
+        }
+        bool fuck = true;
+        private void Button_Click_1(object sender, System.Windows.RoutedEventArgs e)
+        {
+            if (fuck)
+            {
+                ThemeHelper.ChangeTheme(ThemeHelper.Themes[1]);
+            }
+            else
+            {
+                ThemeHelper.ChangeTheme(ThemeHelper.Themes[0]);
+            }
+            fuck = !fuck;
         }
     }
 }

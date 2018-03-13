@@ -27,6 +27,8 @@ namespace AutumnBox.GUI.UI.CstPanels
     /// </summary>
     public partial class NetDebuggingAdder : FastPanelChild
     {
+        public override Brush PanelBackground => App.Current.Resources["BackgroundBrushKey"] as Brush;
+        public override Brush BtnCloseForeground => App.Current.Resources["ForegroundBrushKey"] as Brush;
         private NetDeviceConnecter adder = null;
         private DevicesPanel root;
         public NetDebuggingAdder(DevicesPanel root)

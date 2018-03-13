@@ -4,7 +4,7 @@
     <Style x:Key="AtmbxTextBlockStyle" TargetType="{x:Type TextBlock}">
         <Setter Property="TextWrapping" Value="NoWrap"/>
         <Setter Property="TextTrimming" Value="None"/>
-        <Setter Property="Foreground" Value="{DynamicResource ForegroundBurshKey}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ForegroundBrushKey}"/>
         <Setter Property="FontFamily" Value="Microsoft YaHei UI Light"/>
     </Style>
 

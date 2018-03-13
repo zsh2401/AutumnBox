@@ -6,6 +6,7 @@ using System;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace AutumnBox.GUI.UI.CstPanels
 {
@@ -14,6 +15,8 @@ namespace AutumnBox.GUI.UI.CstPanels
     /// </summary>
     public partial class CloseNetDebugging : FastPanelChild
     {
+        public override Brush PanelBackground => App.Current.Resources["BackgroundBrushKey"] as Brush;
+        public override Brush BtnCloseForeground => App.Current.Resources["ForegroundBrushKey"] as Brush;
         private readonly DeviceSerialNumber _serial;
         private readonly DevicesPanel root;
         public CloseNetDebugging(DevicesPanel root,DeviceSerialNumber serial)

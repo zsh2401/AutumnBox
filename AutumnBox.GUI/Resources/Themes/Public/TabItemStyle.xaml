@@ -20,7 +20,7 @@
     <Style x:Key="AtmbxTabItem" TargetType="{x:Type TabItem}">
         <Style.Triggers>
             <Trigger Property="IsSelected" Value="True">
-                <Setter Property="Foreground" Value="{DynamicResource ForegroundBurshKey}" />
+                <Setter Property="Foreground" Value="{DynamicResource ForegroundBrushKey}" />
                 <Setter Property="Background" >
                     <Setter.Value>
                         <SolidColorBrush Color="Transparent"/>
@@ -30,7 +30,7 @@
         </Style.Triggers>
         <Setter Property="FontFamily" Value="Microsoft YaHei UI Light"/>
         <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
-        <Setter Property="Foreground" Value="{DynamicResource ForegroundOnPrimaryBurshKey}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ForegroundOnPrimaryBrushKey}"/>
         <Setter Property="Background" Value="{DynamicResource TabItem.Static.Background}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource TabItem.Static.Border}"/>
         <Setter Property="Margin" Value="0"/>

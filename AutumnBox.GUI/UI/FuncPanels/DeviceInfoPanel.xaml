@@ -10,9 +10,9 @@
              d:DesignHeight="220" Width="600">
     <Grid>
         <Button x:Name="BtnRefresh" Style="{DynamicResource AtmbxButtonStyle}" Content="{DynamicResource btnRefresh}" HorizontalAlignment="Left" Margin="0,111,0,0" VerticalAlignment="Top" Width="75" Click="BtnRefresh_Click" Height="24"/>
-        <Label Background="{DynamicResource ForegroundBurshKey}" Content="Label" Margin="0,101,0,0" VerticalAlignment="Top" Height="1"/>
+        <Label Background="{DynamicResource ForegroundBrushKey}" Content="Label" Margin="0,101,0,0" VerticalAlignment="Top" Height="1"/>
 
-        <Label Style="{DynamicResource AtmbxLabelStyle}" Content="{Binding DeviceRootStatusText, ElementName=mDeviceInfoPanel}" HorizontalAlignment="Left" Margin="142,111,0,0" VerticalAlignment="Top" Height="26" Width="99" FontSize="16"/>
+        <Label Style="{DynamicResource AtmbxLabelStyle}" Content="{Binding DeviceRootStatusText, ElementName=mDeviceInfoPanel}" HorizontalAlignment="Left" Margin="142,111,0,0" VerticalAlignment="Top" Height="26" Width="107" FontSize="16"/>
         <Label HorizontalContentAlignment="Right" Style="{DynamicResource AtmbxLabelStyle}" Content="{DynamicResource diSWRoot}" HorizontalAlignment="Left" Margin="83,111,0,0" VerticalAlignment="Top" Width="54"/>
 
         <Label Style="{DynamicResource AtmbxLabelStyle}" Content="{Binding DeviceScreenInfo, ElementName=mDeviceInfoPanel}" HorizontalAlignment="Left" Margin="374,111,0,0" VerticalAlignment="Top" Height="26" Width="140"/>
@@ -24,10 +24,10 @@
         <Label Style="{DynamicResource AtmbxLabelStyle}" Content="{Binding DeviceRamSizeInfo, ElementName=mDeviceInfoPanel}" HorizontalAlignment="Left" Margin="374,170,0,0" VerticalAlignment="Top" Height="26" Width="140"/>
         <Label HorizontalContentAlignment="Right" Style="{DynamicResource AtmbxLabelStyle}" Content="{DynamicResource diHWRam}" HorizontalAlignment="Left" Margin="254,170,0,0" VerticalAlignment="Top" Width="104"/>
 
-        <Label Style="{DynamicResource AtmbxLabelStyle}" Content="{Binding DeviceAndroidVersion, ElementName=mDeviceInfoPanel}" HorizontalAlignment="Left" Margin="142,142,0,0" VerticalAlignment="Top" Height="26" Width="99"/>
+        <Label Style="{DynamicResource AtmbxLabelStyle}" Content="{Binding DeviceAndroidVersion, ElementName=mDeviceInfoPanel}" HorizontalAlignment="Left" Margin="142,142,0,0" VerticalAlignment="Top" Height="26" Width="107"/>
         <Label HorizontalContentAlignment="Right" Style="{DynamicResource AtmbxLabelStyle}" Content="{DynamicResource diAndroidVersion}" HorizontalAlignment="Left" Margin="12,142,0,0" VerticalAlignment="Top" Width="125"/>
 
-        <Label Style="{DynamicResource AtmbxLabelStyle}" Content="{Binding DeviceCode, ElementName=mDeviceInfoPanel}" HorizontalAlignment="Left" Margin="143,173,0,0" VerticalAlignment="Top" Height="26" Width="99"/>
+        <Label Style="{DynamicResource AtmbxLabelStyle}" Content="{Binding DeviceCode, ElementName=mDeviceInfoPanel}" HorizontalAlignment="Left" Margin="143,173,0,0" VerticalAlignment="Top" Height="26" Width="106"/>
         <Label HorizontalContentAlignment="Right" Style="{DynamicResource AtmbxLabelStyle}" Content="{DynamicResource diCode}" HorizontalAlignment="Left" Margin="13,173,0,0" VerticalAlignment="Top" Width="125"/>
 
         <TextBlock TextAlignment="Right" Style="{DynamicResource AtmbxTextBlockStyle}" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="{Binding ElementName=mDeviceInfoPanel,Path=ConnectStatusText}" VerticalAlignment="Top" Width="269" Height="49" FontSize="36"/>

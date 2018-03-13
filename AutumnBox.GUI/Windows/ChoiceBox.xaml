@@ -59,8 +59,8 @@
             </BeginStoryboard>
         </EventTrigger>
     </Window.Triggers>
-    <Grid Margin="3,3,3,3" Background="{DynamicResource BackgroundBurshKey}">
-        <Label Style="{DynamicResource AtmbxLabelStyle}" x:Name="LabelTitle" Content="Something...." VerticalAlignment="Top" Height="52" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"  />
+    <Grid Margin="1,1,1,1" Background="{DynamicResource BackgroundBrushKey}">
+        <Label Background="{DynamicResource PrimaryBrushKey}" Foreground="{DynamicResource ForegroundOnPrimaryBrushKey}" Style="{DynamicResource AtmbxLabelStyle}" x:Name="LabelTitle" Content="Something...." VerticalAlignment="Top" Height="52" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"  />
         <Button Style="{DynamicResource AtmbxButtonStyle}" x:Name="BtnLeft" Content="{DynamicResource btnCancel}" HorizontalAlignment="Left" Margin="86,282,0,0" VerticalAlignment="Top" Width="165"  Height="28" Click="BtnLeft_Click" />
         <Button Style="{DynamicResource AtmbxButtonStyle}" x:Name="BtnRight" Content="{DynamicResource btnOK}" HorizontalAlignment="Left" Margin="256,282,0,0" VerticalAlignment="Top" Width="165"  Height="28" Click="BtnRight_Click" />
         <TextBlock Style="{DynamicResource AtmbxTextBlockStyle}" x:Name="TBContent" TextAlignment="Center" Margin="10,66,10,0" TextWrapping="Wrap" Text="Content" VerticalAlignment="Top" Height="211"  FontSize="18" />

@@ -21,6 +21,8 @@ namespace AutumnBox.GUI.UI.CstPanels
     /// </summary>
     public partial class DevicesPanelMessageBox : FastPanelChild
     {
+        public override Brush PanelBackground => App.Current.Resources["BackgroundBrushKey"] as Brush;
+        public override Brush BtnCloseForeground => App.Current.Resources["ForegroundBrushKey"] as Brush;
         public DevicesPanelMessageBox(string message)
         {
             InitializeComponent();

@@ -7,7 +7,6 @@
         <ResourceDictionary Source="LightTheme_files/ColorAndBrushes.xaml"/>
 
         <ResourceDictionary Source="Public/Images.xaml"/>
-        <!--<ResourceDictionary Source="Public/WindowStyle.xaml"/>-->
         <ResourceDictionary Source="Public/LabelStyle.xaml"/>
         <ResourceDictionary Source="Public/TextBlockStyle.xaml"/>
         <ResourceDictionary Source="Public/ButtonStyle.xaml"/>

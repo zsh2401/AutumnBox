@@ -1,11 +1,11 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:AutumnBox.GUI.Resources.Themes"
                     xmlns:s="clr-namespace:System;assembly=mscorlib">
     <s:String x:Key="ThemeName">Basic</s:String>
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="BasicTheme_files/ColorAndBrushes.xaml"/>
+        <ResourceDictionary Source="NightTheme_files/ColorAndBrushes.xaml"/>
 
+        <ResourceDictionary Source="Public/Images.xaml"/>
         <ResourceDictionary Source="Public/LabelStyle.xaml"/>
         <ResourceDictionary Source="Public/TextBlockStyle.xaml"/>
         <ResourceDictionary Source="Public/ButtonStyle.xaml"/>

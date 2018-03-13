@@ -39,6 +39,8 @@ namespace AutumnBox.GUI.UI.Fp
             {
                 BtnClose.Visibility = Visibility.Collapsed;
             }
+            this.Background = child.PanelBackground;
+            this.BtnClose.Foreground = child.BtnCloseForeground;
             child.OnPanelInited(new PanelArgs() { Height = this.Height, Width = this.Width });
         }
         private void InitAnimation()

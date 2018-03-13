@@ -12,7 +12,7 @@
         Background="{DynamicResource BroderBrushKey}" Title="AutumnBox" Height="682.667" Width="1155" Foreground="#FF1B1919" Loaded="MainWindow_Loaded"  WindowStyle="None"  WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     
     <Grid>
-        <Grid  Background="{DynamicResource MainBackgroundBurshKey}" Name="GridBase" Margin="1,0,1,1">
+        <Grid  Background="{DynamicResource BackgroundBrushKey}" Name="GridBase" Margin="1,0,1,1">
             <WebBrowser x:Name="WTF" Width="1" Height="0" Margin="963,271,185,408"/>
             <cstm:CstmTitleBar x:Name="TitleBar" Height="40" VerticalAlignment="Top"/>
 
@@ -27,7 +27,7 @@
                 <Button  Style="{DynamicResource AtmbxButtonStyle}" x:Name="BtnAbout"  Content="{DynamicResource btnAbout}" Margin="939,550,9,0" VerticalAlignment="Top" Height="35"  FontSize="14"  Click="BtnAbout_Click" />
                 <Button  Style="{DynamicResource AtmbxButtonStyle}" x:Name="BtnDonate"  Content="{DynamicResource Donate}" Margin="940,510,9,0" VerticalAlignment="Top" Height="35"   FontSize="14"  Click="BtnDonate_Click" />
                 <Image Source="Resources/Images/Icons/donate.png" HorizontalAlignment="Left" Height="27" Margin="943,514,0,0" VerticalAlignment="Top" Width="27"/>
-                <TextBox Foreground="{DynamicResource ForegroundBurshKey}" x:Name="textBoxGG" Height="93" Margin="940,260,9,0" TextWrapping="Wrap" Text="..." VerticalAlignment="Top" IsReadOnly="True" Background="{x:Null}" FontSize="14"/>
+                <TextBox BorderBrush="{DynamicResource BroderBrushKey}" Foreground="{DynamicResource ForegroundBrushKey}" x:Name="textBoxGG" Height="93" Margin="940,260,9,0" TextWrapping="Wrap" Text="..." VerticalAlignment="Top" IsReadOnly="True" Background="{x:Null}" FontSize="14"/>
 
 
                 <cstm:PotdBox Margin="940,355,10,146" Height="150" Width="200"/>
