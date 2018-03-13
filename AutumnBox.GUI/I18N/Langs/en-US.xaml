@@ -248,6 +248,7 @@
     <s:String x:Key="TimeUsed">Time used</s:String>
     <s:String x:Key="Transparency">Transparency</s:String>
     <s:String x:Key="Language">Language</s:String>
+    <s:String x:Key="Theme">Theme</s:String>
     <s:String x:Key="Notice">Notice</s:String>
     <s:String x:Key="ckbSkipThisVersion">Skip this version</s:String>
     <s:String x:Key="GetFail">Failed</s:String>

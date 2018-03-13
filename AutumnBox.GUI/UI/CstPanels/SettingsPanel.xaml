@@ -15,6 +15,8 @@
         <TextBlock Foreground="{DynamicResource ForegroundOnPrimaryBrushKey}" Style="{DynamicResource AtmbxTextBlockStyle}" TextAlignment="Right" Text="{DynamicResource Language}" Margin="10,38,792,507" RenderTransformOrigin="0.5,0.5"  FontSize="16" />
         <Button Foreground="{DynamicResource ForegroundOnPrimaryBrushKey}" Style="{DynamicResource AtmbxButtonStyle}" Content="{DynamicResource btnLaunchDebugWindow}" HorizontalAlignment="Left" Margin="153,364,0,0" VerticalAlignment="Top" Width="176" BorderBrush="{x:Null}" Background="{DynamicResource BtnBrush}"  FontFamily="Microsoft YaHei UI Light" Click="Button_Click"/>
         <CheckBox Foreground="{DynamicResource ForegroundOnPrimaryBrushKey}" x:Name="CKBShowDebugWindowOnNextLaunch" Content="{DynamicResource ckbShowDebugWindowOnNextLaunch}" HorizontalAlignment="Left" Margin="153,394,0,0" VerticalAlignment="Top" Width="291" />
-        <Button Click="Button_Click_1" Content="Button" HorizontalAlignment="Left" Margin="432,183,0,0" VerticalAlignment="Top" Width="75"/>
+        
+        <ComboBox x:Name="CbBoxTheme" DisplayMemberPath="Name" HorizontalAlignment="Left" Margin="153,80,0,0" VerticalAlignment="Top" Width="225" Height="27"/>
+        <TextBlock Foreground="{DynamicResource ForegroundOnPrimaryBrushKey}" Style="{DynamicResource AtmbxTextBlockStyle}" TextAlignment="Right" Text="{DynamicResource Theme}" Margin="10,80,792,465" RenderTransformOrigin="0.5,0.5"  FontSize="16" />
     </Grid>
 </fp:FastPanelChild>

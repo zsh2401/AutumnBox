@@ -39,8 +39,10 @@ namespace AutumnBox.GUI.UI.Fp
             {
                 BtnClose.Visibility = Visibility.Collapsed;
             }
-            this.Background = child.PanelBackground;
-            this.BtnClose.Foreground = child.BtnCloseForeground;
+            if (child.PanelBackground != null)
+                this.Background = child.PanelBackground;
+            if (child.BtnCloseForeground != null)
+                this.BtnClose.Foreground = child.BtnCloseForeground;
             child.OnPanelInited(new PanelArgs() { Height = this.Height, Width = this.Width });
         }
         private void InitAnimation()
@@ -91,7 +93,8 @@ namespace AutumnBox.GUI.UI.Fp
         }
         public void Hide()
         {
-            if (Displayed) {
+            if (Displayed)
+            {
                 Displayed = false;
                 BeginAnimation(MarginProperty, HideAnimation);
             }
@@ -103,7 +106,8 @@ namespace AutumnBox.GUI.UI.Fp
                 Displayed = false;
                 BeginAnimation(MarginProperty, CloseAnimation);
             }
-            else {
+            else
+            {
                 _Close();
             }
         }

@@ -252,6 +252,7 @@
     <s:String x:Key="TimeUsed">已用时间</s:String>
     <s:String x:Key="Transparency">透明度</s:String>
     <s:String x:Key="Language">语言</s:String>
+    <s:String x:Key="Theme">主题</s:String>
     <s:String x:Key="Notice">提示</s:String>
     <s:String x:Key="ckbSkipThisVersion">此版本不再提示</s:String>
     <s:String x:Key="GetFail">获取失败</s:String>

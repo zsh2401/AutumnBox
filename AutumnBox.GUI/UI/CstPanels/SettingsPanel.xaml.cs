@@ -18,7 +18,17 @@ namespace AutumnBox.GUI.UI.CstPanels
             CbBoxLanguage.ItemsSource = LanguageHelper.Langs;
             CbBoxLanguage.SelectedIndex = LanguageHelper.FindIndex(App.Current.Resources["LanguageCode"].ToString());
             CbBoxLanguage.SelectionChanged += CbBoxLanguage_SelectionChanged;
+
+            CbBoxTheme.ItemsSource = ThemeHelper.Themes;
+            CbBoxTheme.SelectedIndex = ThemeHelper.GetCrtIndex();
+            CbBoxTheme.SelectionChanged += CbBoxTheme_SelectionChanged;
         }
+
+        private void CbBoxTheme_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ThemeHelper.ChangeTheme((Theme)CbBoxTheme.SelectedItem);
+        }
+
         public override void OnPanelClosed()
         {
             base.OnPanelClosed();
