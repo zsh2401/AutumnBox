@@ -20,14 +20,14 @@ namespace AutumnBox.GUI.UI.CstPanels
             CbBoxLanguage.SelectedIndex = LanguageHelper.FindIndex(App.Current.Resources["LanguageCode"].ToString());
             CbBoxLanguage.SelectionChanged += CbBoxLanguage_SelectionChanged;
 
-            CbBoxTheme.ItemsSource = ThemeHelper.Themes;
-            CbBoxTheme.SelectedIndex = ThemeHelper.GetCrtIndex();
+            CbBoxTheme.ItemsSource = ThemeManager.Themes;
+            CbBoxTheme.SelectedIndex = ThemeManager.GetCrtIndex();
             CbBoxTheme.SelectionChanged += CbBoxTheme_SelectionChanged;
         }
 
         private void CbBoxTheme_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ThemeHelper.ChangeTheme((Theme)CbBoxTheme.SelectedItem);
+            ThemeManager.ChangeTheme((Theme)CbBoxTheme.SelectedItem);
         }
 
         public override void OnPanelClosed()
@@ -61,11 +61,11 @@ namespace AutumnBox.GUI.UI.CstPanels
         {
             if (fuck)
             {
-                ThemeHelper.ChangeTheme(ThemeHelper.Themes[1]);
+                ThemeManager.ChangeTheme(ThemeManager.Themes[1]);
             }
             else
             {
-                ThemeHelper.ChangeTheme(ThemeHelper.Themes[0]);
+                ThemeManager.ChangeTheme(ThemeManager.Themes[0]);
             }
             fuck = !fuck;
         }

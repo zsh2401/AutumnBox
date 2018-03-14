@@ -28,7 +28,7 @@ namespace AutumnBox.GUI.Helper
         private ResourceDictionary resouce;
         public void Next()
         {
-            var themes = ThemeHelper.Themes;
+            var themes = ThemeManager.Themes;
             int ranIndex = ran.Next(1, themes.Length);
             Logger.Debug(this, ranIndex);
             resouce = themes[ranIndex].Resource;
@@ -41,22 +41,23 @@ namespace AutumnBox.GUI.Helper
         private readonly ResourceDictionary resouce;
         public FileTheme(string fileName)
         {
-            resouce = new ResourceDictionary() { Source = new Uri(ThemeHelper.Path + fileName) };
+            resouce = new ResourceDictionary() { Source = new Uri(ThemeManager.Path + fileName) };
         }
     }
-    internal static class ThemeHelper
+    internal static class ThemeManager
     {
         public static event EventHandler ThemeChanged;
         public static Theme[] Themes => themes.ToArray();
         private static readonly List<Theme> themes;
         public const string Path = "pack://application:,,,/AutumnBox.GUI;component/Resources/Themes/";
-        static ThemeHelper()
+        static ThemeManager()
         {
             themes = new List<Theme>() {
                 new RandomTheme(),
                 new FileTheme("LightTheme.xaml"),
                 new FileTheme("NightTheme.xaml"),
-                new FileTheme("AutumnTheme.xaml")
+                new FileTheme("AutumnTheme.xaml"),
+                new FileTheme("SpringTheme.xaml")
             };
             (themes[0] as RandomTheme).Next();
         }
