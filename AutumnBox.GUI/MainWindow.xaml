@@ -12,11 +12,11 @@
         Background="{DynamicResource BroderBrushKey}" Title="AutumnBox" Height="682.667" Width="1155" Foreground="#FF1B1919" Loaded="MainWindow_Loaded"  WindowStyle="None"  WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     
     <Grid>
-        <Grid  Background="{DynamicResource BackgroundBrushKey}" Name="GridBase" Margin="1,0,1,1">
+        <Grid  Background="{DynamicResource MainBackgroundBrushKey}" Name="GridBase" Margin="1,0,1,1">
             <WebBrowser x:Name="WTF" Width="1" Height="0" Margin="963,271,185,408"/>
-            <cstm:CstmTitleBar x:Name="TitleBar" Height="40" VerticalAlignment="Top"/>
+            <cstm:CstmTitleBar  Background="{DynamicResource MainTitleBarBackgroundBrushKey}" x:Name="TitleBar" Height="40" VerticalAlignment="Top"/>
 
-            <Grid Name="GridMain" Background="#00E5E5E5" Margin="0,40,0,-13" Height="653" VerticalAlignment="Top">
+            <Grid Name="GridMain"  Margin="0,40,0,-13" Height="653" VerticalAlignment="Top">
 
                 <cpnel:RebootBtnPanel x:Name="RebootGrid" Margin="0,10,23,0" HorizontalAlignment="Right" Width="265" VerticalAlignment="Top" Height="126" />
                 <cpnel:DeviceInfoPanel x:Name="DevInfoPanel" Margin="10,10,0,0" Height="212" VerticalAlignment="Top" HorizontalAlignment="Left" Width="650"/>

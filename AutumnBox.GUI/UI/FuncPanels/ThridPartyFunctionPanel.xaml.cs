@@ -20,7 +20,6 @@ namespace AutumnBox.GUI.UI.FuncPanels
     public partial class ThridPartyFunctionPanel : UserControl, IRefreshable
     {
         private DeviceBasicInfo currentDevice;
-
         public ThridPartyFunctionPanel()
         {
             InitializeComponent();

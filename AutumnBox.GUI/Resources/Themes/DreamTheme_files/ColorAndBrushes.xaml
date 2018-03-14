@@ -2,29 +2,29 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <!--______________________________主要色__________________________________ -->
-    <Color x:Key="ColorPrimary">#7CBD1E</Color>
+    <Color x:Key="ColorPrimary">#30000000</Color>
     <SolidColorBrush x:Key="PrimaryBrushKey" Color="{DynamicResource ColorPrimary}"/>
 
-    <Color x:Key="ColorForegroundOnPrimary">#FCF9F9</Color>
+    <Color x:Key="ColorForegroundOnPrimary">#DBEDF3</Color>
     <SolidColorBrush x:Key="ForegroundOnPrimaryBrushKey" Color="{DynamicResource ColorForegroundOnPrimary}"/>
 
-    <Color x:Key="ColorForeground">#7F7F7F</Color>
+    <Color x:Key="ColorForeground">#DBEDF3</Color>
     <SolidColorBrush x:Key="ForegroundBrushKey" Color="{DynamicResource ColorForeground}"/>
 
-    <Color x:Key="ColorBackground">#FCF9F9</Color>
-    <SolidColorBrush x:Key="BackgroundBrushKey" Color="{DynamicResource ColorBackground}"/>
+    <Color x:Key="ColorBackground">#AAAAAA</Color>
+    <ImageBrush x:Key="BackgroundBrushKey"  ImageSource="bg.jpg"/>
 
-    <SolidColorBrush x:Key="MainBackgroundBrushKey" Color="{DynamicResource ColorBackground}"/>
+    <ImageBrush x:Key="MainBackgroundBrushKey" ImageSource="bg.jpg"/>
     <SolidColorBrush x:Key="MainTitleBarBackgroundBrushKey" Color="{DynamicResource ColorPrimary}"/>
-    <SolidColorBrush x:Key="FastPanelBackgroundBrushKey" Color="{DynamicResource ColorPrimary}"/>
-    <SolidColorBrush x:Key="ExtRunningPanelBrushKey" Color="{DynamicResource ColorPrimary}"/>
+    <ImageBrush x:Key="FastPanelBackgroundBrushKey" ImageSource="bg.jpg"/>
+    <SolidColorBrush x:Key="ExtRunningPanelBrushKey" Color="#70000000"/>
     
-    <Color x:Key="ColorBroder">#7CBD1E</Color>
+    <Color x:Key="ColorBroder">#30000000</Color>
     <SolidColorBrush x:Key="BroderBrushKey" Color="{DynamicResource ColorBroder}"/>
 
     
     <!--______________________________按钮______________________________-->
-    <Color x:Key="ColorBtnMouseOver">#7CBD1E</Color>
+    <Color x:Key="ColorBtnMouseOver">#30000000</Color>
     <SolidColorBrush x:Key="BtnMouseOverBrushKey" Color="{DynamicResource ColorBtnMouseOver}"/>
 
     <Color x:Key="ColorBtnBackground">#00f4f4f4</Color>
@@ -36,7 +36,8 @@
     <Color x:Key="ColorBtnDisableForegound">#7f7f7f</Color>
     <SolidColorBrush x:Key="BtnDisableForegoundBrushKey" Color="{DynamicResource ColorBtnDisableForegound}"/>
 
-    <Color x:Key="ColorBtnForeground">#282D4F</Color>
+    <Color x:Key="ColorBtnForeground">#DBEDF3</Color>
     <SolidColorBrush x:Key="BtnForegroundBrushKey" Color="{DynamicResource ColorBtnForeground}"/>
-    
+
+
 </ResourceDictionary>

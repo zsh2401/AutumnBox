@@ -6,7 +6,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/I18N/Langs/zh-CN.xaml"/>
-                <ResourceDictionary Source="/Resources/Themes/NightTheme.xaml"/>
+                <ResourceDictionary Source="/Resources/Themes/DreamTheme.xaml"/>
                 <ResourceDictionary Source="/Resources/Urls.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

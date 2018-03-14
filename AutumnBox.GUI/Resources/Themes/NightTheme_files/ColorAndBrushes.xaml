@@ -12,8 +12,13 @@
     <SolidColorBrush x:Key="ForegroundBrushKey" Color="{DynamicResource ColorForeground}"/>
 
     <Color x:Key="ColorBackground">#6F6F6F</Color>
-    <SolidColorBrush x:Key="BackgroundBrushKey" Color="{DynamicResource ColorBackground}"/>
+    <SolidColorBrush x:Key="BackgroundBrushKey"  Color="{DynamicResource ColorBackground}"/>
 
+    <SolidColorBrush x:Key="MainBackgroundBrushKey" Color="{DynamicResource ColorBackground}"/>
+    <SolidColorBrush x:Key="MainTitleBarBackgroundBrushKey" Color="{DynamicResource ColorPrimary}"/>
+    <SolidColorBrush x:Key="FastPanelBackgroundBrushKey" Color="{DynamicResource ColorPrimary}"/>
+    <SolidColorBrush x:Key="ExtRunningPanelBrushKey" Color="{DynamicResource ColorPrimary}"/>
+    
     <Color x:Key="ColorBroder">#4A4A4A</Color>
     <SolidColorBrush x:Key="BroderBrushKey" Color="{DynamicResource ColorBroder}"/>
 

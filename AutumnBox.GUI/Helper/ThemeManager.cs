@@ -57,7 +57,8 @@ namespace AutumnBox.GUI.Helper
                 new FileTheme("LightTheme.xaml"),
                 new FileTheme("NightTheme.xaml"),
                 new FileTheme("AutumnTheme.xaml"),
-                new FileTheme("SpringTheme.xaml")
+                new FileTheme("SpringTheme.xaml"),
+                new FileTheme("DreamTheme.xaml")
             };
             (themes[0] as RandomTheme).Next();
         }
