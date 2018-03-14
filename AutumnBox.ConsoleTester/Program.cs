@@ -2,6 +2,7 @@
 using AutumnBox.OpenFramework.Internal;
 using System;
 using System.Diagnostics;
+using System.Linq;
 
 namespace AutumnBox.ConsoleTester
 {
@@ -24,9 +25,10 @@ namespace AutumnBox.ConsoleTester
         };
         unsafe static int Main(string[] cmdargs)
         {
-            Test test = new Test();
-            test.TestX();
-            
+            Console.WriteLine(new string[] {
+                "a",
+                "b"
+            }.Contains("b"));
             Console.ReadKey();
             return 0;
         }

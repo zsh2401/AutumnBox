@@ -128,6 +128,7 @@
     <!--信息(主要用于MMesssageBox)-->
     <s:String x:Key="msgPathError">路径错误!
     请确保路径没有中文或空格等特殊字符!</s:String>
+    <s:String x:Key="msgExtensionWasFailed">was failed...please view the log</s:String>
     <s:String x:Key="msgIsRunning">is running...</s:String>
     <s:String x:Key="msgCannotStop">can't stop</s:String>
     <s:String x:Key="msgModuleFailed">{0} Module was throw a excepton...you can view the log to get more info</s:String>

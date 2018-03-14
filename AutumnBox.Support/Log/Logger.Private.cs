@@ -41,7 +41,7 @@ namespace AutumnBox.Support.Log
         {
             string tag = sender is string ? sender.ToString() : sender.GetType().Name;
             return string.Format(logTemplate,
-                DateTime.Now.ToString("yy-MM-dd HH:mm:ss"), tag, prefix, message + Environment.NewLine) + ex?.ToString();
+                DateTime.Now.ToString("yy-MM-dd HH:mm:ss"), tag, prefix, message + ex?.ToString() + Environment.NewLine);
         }
         private static void WriteToFile(string msg)
         {

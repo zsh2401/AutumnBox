@@ -17,5 +17,24 @@ namespace AutumnBox.OpenFramework
     public abstract class Context
     {
         public virtual string Tag => this.GetType().Name;
+        public virtual ContextPermissionLevel GetPermissionLevel()
+        {
+            var assName = this.GetType().Assembly.GetName().Name;
+            switch (assName)
+            {
+                case BuildInfo.AUTUMNBOX_GUI_ASSEMBLY_NAME:
+                    return ContextPermissionLevel.Mid;
+                case BuildInfo.AUTUMNBOX_OPENFRAMEWORK_ASSEMBLY_NAME:
+                    return ContextPermissionLevel.High;
+                default:
+                    return ContextPermissionLevel.Low;
+            }
+        }
+    }
+    public enum ContextPermissionLevel
+    {
+        Low = 0,
+        Mid = 1,
+        High = 2,
     }
 }

@@ -3,6 +3,7 @@
 ** date:  2018/2/26 19:36:23 (UTC +8:00)
 ** desc： ...
 *************************************************/
+using AutumnBox.OpenFramework.Internal.AccessCheck;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,22 +14,12 @@ using System.Windows.Threading;
 
 namespace AutumnBox.OpenFramework.Internal
 {
-    /// <summary>
-    /// 禁止访问!
-    /// </summary>
-    public class AccessDeniedException : Exception { }
+
     internal static class CallerChecker
     {
         public static bool CallerCheck(Assembly callingAssembly)
         {
             return callingAssembly.GetName().Name == BuildInfo.AUTUMNBOX_GUI_ASSEMBLY_NAME;
-        }
-        public static void CallingAssemblyCheck(Assembly callingAssembly)
-        {
-            if (!CallerCheck(callingAssembly))
-            {
-                throw new AccessDeniedException();
-            }
         }
         public static void AccessCheck(this Assembly assembly, params string[] _t)
         {

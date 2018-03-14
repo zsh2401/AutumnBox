@@ -4,6 +4,7 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.OpenFramework.Internal;
+using AutumnBox.OpenFramework.Internal.AccessCheck;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -22,27 +23,25 @@ namespace AutumnBox.OpenFramework.Open.V1
         /// <summary>
         /// GUI相关的API
         /// </summary>
-        public static IGuiApi Gui
+        public static IGuiApi Gui { get; private set; }
+
+        /// <summary>
+        /// 调试相关的API
+        /// </summary>
+        public static ILogApi Log { get; private set; }
+        public static class ApiFactory
         {
-            get { return _gui; }
-            set
+            [ContextAccessCheck]
+            public static void SetGuiApi(Context context, IGuiApi api)
             {
-                if (!CallerChecker.CallerCheck(Assembly.GetCallingAssembly())) return;
-                else _gui = value;
+                Gui = api;
+            }
+            [ContextAccessCheck]
+            public static void SetLogApi(Context context, ILogApi api)
+            {
+                Log = api;
             }
         }
-        private static IGuiApi _gui;
-       /// <summary>
-       /// 调试相关的API
-       /// </summary>
-        public static ILogApi Log {
-            get { return _log; }
-            set
-            {
-                if (!CallerChecker.CallerCheck(Assembly.GetCallingAssembly())) return;
-                else _log = value;
-            }
-        }
-        private static ILogApi _log;
+
     }
 }

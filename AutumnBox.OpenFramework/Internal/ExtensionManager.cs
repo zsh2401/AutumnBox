@@ -5,6 +5,7 @@
 *************************************************/
 using AutumnBox.Basic.Device;
 using AutumnBox.OpenFramework.Extension;
+using AutumnBox.OpenFramework.Internal.AccessCheck;
 using AutumnBox.OpenFramework.Open.V1;
 using System;
 using System.Collections.Generic;
@@ -37,17 +38,17 @@ namespace AutumnBox.OpenFramework.Internal
         /// <summary>
         /// 加载所有模块
         /// </summary>
+        [Hide]
         public static void LoadAllExtension()
         {
-            Assembly.GetCallingAssembly().AccessCheck();
             inner.Load();
         }
         /// <summary>
         /// 摧毁所有模块
         /// </summary>
+        [Hide]
         public static void DestoryAllExtension()
         {
-            Assembly.GetCallingAssembly().AccessCheck();
             inner.Extensions.ForEach((extRuntime) =>
             {
                 extRuntime.Destory();
@@ -58,9 +59,9 @@ namespace AutumnBox.OpenFramework.Internal
         /// </summary>
         /// <param name="targetDeviceState"></param>
         /// <returns></returns>
+        [Hide]
         public static ExtensionRuntime[] GetExtensions(DeviceState? targetDeviceState = null)
         {
-            Assembly.GetCallingAssembly().AccessCheck();
             if (targetDeviceState != null)
             {
                 return inner.Extensions.Where((extRuntime) =>

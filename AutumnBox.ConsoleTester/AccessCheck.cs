@@ -4,7 +4,6 @@
 ** desc： ...
 *************************************************/
 using System;
-using AutumnBox.Support.Aop;
 
 namespace System
 {
@@ -22,7 +21,6 @@ namespace AutumnBox.ConsoleTester
     class Test
     {
 
-        [AccessCheck("AutumnBox.ConsoleTester")]
         public void TestX()
         {
             Console.WriteLine("TestX");

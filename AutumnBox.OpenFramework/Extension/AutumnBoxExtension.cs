@@ -16,6 +16,7 @@ namespace AutumnBox.OpenFramework.Extension
     /// </summary>
     public abstract class AutumnBoxExtension : Context
     {
+        public override string Tag => Name;
         /// <summary>
         /// 拓展名,强制要求覆写此属性
         /// </summary>

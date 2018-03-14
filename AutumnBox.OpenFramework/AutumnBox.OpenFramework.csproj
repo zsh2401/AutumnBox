@@ -46,6 +46,7 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PostSharp, Version=5.0.48.0, Culture=neutral, PublicKeyToken=b13fd38b8f9c99d7, processorArchitecture=MSIL" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -59,7 +60,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context.cs" />
+    <Compile Include="Internal\AccessCheck\AccessCheckAttribute.cs" />
+    <Compile Include="Internal\AccessCheck\AccessDeniedException.cs" />
+    <Compile Include="Internal\AccessCheck\HideAttribute.cs" />
+    <Compile Include="Internal\AccessCheck\ContextAccessCheckAttribute.cs" />
     <Compile Include="Internal\CallerChecker.cs" />
+    <Compile Include="Internal\ContextFactory.cs" />
     <Compile Include="Internal\ExtensionManager.cs" />
     <Compile Include="Extension\AutumnBoxExtension.cs" />
     <Compile Include="BuildInfo.cs" />

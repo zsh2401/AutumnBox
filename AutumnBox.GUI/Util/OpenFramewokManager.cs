@@ -6,22 +6,21 @@
 using AutumnBox.Basic.FlowFramework;
 using AutumnBox.GUI.Helper;
 using AutumnBox.OpenFramework;
-using AutumnBox.OpenFramework.Extension;
-using AutumnBox.OpenFramework.Internal;
 using AutumnBox.OpenFramework.Open.V1;
 using System;
 using System.Windows;
-using System.Windows.Threading;
 
 namespace AutumnBox.GUI.Util
 {
     internal static class OpenFramewokManager
     {
 
+        private class OpenFramewokManagerContext:Context{}
         public static void LoadApi()
         {
-            OpenApi.Gui = new GuiApi();
-            OpenApi.Log = new LogApi();
+            var context = new OpenFramewokManagerContext();
+            OpenApi.ApiFactory.SetGuiApi(context,new GuiApi());
+            OpenApi.ApiFactory.SetLogApi(context,new LogApi());
         }
 
         private class GuiApi : IGuiApi
