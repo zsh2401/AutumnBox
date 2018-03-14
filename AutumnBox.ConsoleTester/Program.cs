@@ -22,14 +22,11 @@ namespace AutumnBox.ConsoleTester
             Serial = new DeviceSerialNumber("9dd1b490"),
             State = DeviceState.Poweron,
         };
-
-        class AopTest: ContextBoundObject
-        {
-            public string Tag { get; set; }
-        }
         unsafe static int Main(string[] cmdargs)
         {
-            new AopTest().Tag = "333";
+            Test test = new Test();
+            test.TestX();
+            
             Console.ReadKey();
             return 0;
         }
