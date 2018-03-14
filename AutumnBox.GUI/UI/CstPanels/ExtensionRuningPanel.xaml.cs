@@ -23,6 +23,8 @@ namespace AutumnBox.GUI.UI.CstPanels
     /// </summary>
     public partial class ExtensionRuningPanel : FastPanelChild
     {
+        public override Brush PanelBackground =>(Brush)App.Current.Resources["BackgroundBrushKey"];
+        public override Brush BtnCloseForeground => (Brush)App.Current.Resources["ForegroundBrushKey"];
         public override bool NeedShowBtnClose => false;
         public ExtensionRuningPanel(ExtensionRuntime extensionRuntime)
         {

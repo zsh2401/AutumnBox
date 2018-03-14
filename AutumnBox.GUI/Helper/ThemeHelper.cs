@@ -30,7 +30,7 @@ namespace AutumnBox.GUI.Helper
         {
             var themes = ThemeHelper.Themes;
             int ranIndex = ran.Next(1, themes.Length);
-            Logger.Debug(this,ranIndex);
+            Logger.Debug(this, ranIndex);
             resouce = themes[ranIndex].Resource;
         }
     }
@@ -46,6 +46,7 @@ namespace AutumnBox.GUI.Helper
     }
     internal static class ThemeHelper
     {
+        public static event EventHandler ThemeChanged;
         public static Theme[] Themes => themes.ToArray();
         private static readonly List<Theme> themes;
         public const string Path = "pack://application:,,,/AutumnBox.GUI;component/Resources/Themes/";
@@ -54,7 +55,8 @@ namespace AutumnBox.GUI.Helper
             themes = new List<Theme>() {
                 new RandomTheme(),
                 new FileTheme("LightTheme.xaml"),
-                new FileTheme("NightTheme.xaml")
+                new FileTheme("NightTheme.xaml"),
+                new FileTheme("AutumnTheme.xaml")
             };
             (themes[0] as RandomTheme).Next();
         }
@@ -68,14 +70,15 @@ namespace AutumnBox.GUI.Helper
             usingRandomTheme = theme is RandomTheme;
             (theme as RandomTheme)?.Next();
             App.Current.Resources.MergedDictionaries[1] = theme.Resource;
+            ThemeChanged?.Invoke(new object(), new EventArgs());
             Settings.Default.Theme = theme.Name;
-            Logger.Info("ThemeHelper",$"Theme setting saved,value {theme.Name}");
+            Logger.Info("ThemeHelper", $"Theme setting saved,value {theme.Name}");
         }
         public static void ChangeTheme(string themeName)
         {
-            
+
             var theme = themes.Find((_theme) => { return _theme.Name == themeName; });
-            Logger.Debug("ThemeHelper",$"Theme finded {theme.Name}");
+            Logger.Debug("ThemeHelper", $"Theme finded {theme.Name}");
             ChangeTheme(theme);
         }
         public static int GetCrtIndex()

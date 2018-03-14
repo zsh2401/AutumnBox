@@ -1,18 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AutumnBox.GUI.Helper;
+using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace AutumnBox.GUI.UI.Fp
 {
@@ -30,6 +20,7 @@ namespace AutumnBox.GUI.UI.Fp
         public FastPanel(Panel father, FastPanelChild child)
         {
             InitializeComponent();
+            ThemeHelper.ThemeChanged += ThemeHelper_ThemeChanged;
             this.father = father;
             this.child = child;
             InitSize();
@@ -39,12 +30,17 @@ namespace AutumnBox.GUI.UI.Fp
             {
                 BtnClose.Visibility = Visibility.Collapsed;
             }
-            if (child.PanelBackground != null)
-                this.Background = child.PanelBackground;
-            if (child.BtnCloseForeground != null)
-                this.BtnClose.Foreground = child.BtnCloseForeground;
+            this.Background = child.PanelBackground;
+            this.BtnClose.Foreground = child.BtnCloseForeground;
             child.OnPanelInited(new PanelArgs() { Height = this.Height, Width = this.Width });
         }
+
+        private void ThemeHelper_ThemeChanged(object sender, EventArgs e)
+        {
+            this.BtnClose.Foreground = child.BtnCloseForeground;
+            this.Background = child.PanelBackground;
+        }
+
         private void InitAnimation()
         {
             RiseAnimation = new ThicknessAnimation()
@@ -120,6 +116,7 @@ namespace AutumnBox.GUI.UI.Fp
             father.Children.Remove(this);
             child.OnPanelClosed();
             Closed?.Invoke(this, new EventArgs());
+            ThemeHelper.ThemeChanged -= ThemeHelper_ThemeChanged;
         }
         private void BtnClose_Click(object sender, RoutedEventArgs e)
         {

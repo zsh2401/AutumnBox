@@ -20,19 +20,21 @@ namespace AutumnBox.GUI.UI.Fp
     /// </summary>
     public partial class FastPanelChild : UserControl
     {
-        public virtual bool NeedShowBtnClose { get;} = true;
-        public virtual void OnPanelInited(PanelArgs args) {}
+        public virtual bool NeedShowBtnClose { get; } = true;
+        public virtual void OnPanelInited(PanelArgs args) { }
         public virtual void OnPanelDisplayed() { }
-        public virtual void OnPanelBtnCloseClicked(ref bool prevent) {}
+        public virtual void OnPanelBtnCloseClicked(ref bool prevent) { }
         public virtual void OnPanelClosed() { }
         public virtual void OnPanelHide() { }
-        public virtual Brush PanelBackground => null;
-        public virtual Brush BtnCloseForeground => null;
+        public virtual Brush PanelBackground => (Brush)App.Current.Resources["PrimaryBrushKey"];
+        public virtual Brush BtnCloseForeground => (Brush)App.Current.Resources["ForegroundOnPrimaryBrushKey"];
         public FastPanel Father { private get; set; }
-        protected void Dispay() {
+        protected void Dispay()
+        {
             Father.Display();
         }
-        protected void Hide() {
+        protected void Hide()
+        {
             Father.Hide();
         }
         protected void Finish()
