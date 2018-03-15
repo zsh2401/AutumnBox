@@ -36,7 +36,9 @@
                         <cpnel:StartPanel x:Name="StartPanel" Margin="0,0,0,0"></cpnel:StartPanel>
                     </TabItem>
                     <TabItem  Style="{DynamicResource AtmbxTabItem}" TabIndex="1" Header="{DynamicResource tbiOnPowerOn}" Margin="14,-2,-18,0"  FontSize="16">
-                        <cpnel:PoweronFuncPanel x:Name="PoweronFuncs" Margin="0,0,-4,0"/>
+                        <ScrollViewer   Grid.Column="1"  HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Visible" Template="{DynamicResource AtmbxScrollViewer}">
+                            <cpnel:PoweronFuncPanel x:Name="PoweronFuncs" Margin="0,0,0,0"/>
+                        </ScrollViewer>
                     </TabItem>
                     <TabItem Style="{DynamicResource AtmbxTabItem}" TabIndex="2"  Header="{DynamicResource tbiOnRecovery}" Margin="18,-2,-23,0"  FontSize="16">
                         <cpnel:RecFuncPanel Margin="0,0,0,0" x:Name="RecoveryFuncs"/>
@@ -48,6 +50,7 @@
                         <cpnel:ThridPartyFunctionPanel Margin="0,0,0,0" x:Name="ThridPartyFuncs"/>
                     </TabItem>
                 </TabControl>
+                
             </Grid>
         </Grid>
         <!--<cstm:LoadingPanel x:Name="LoadingPanel"></cstm:LoadingPanel>-->

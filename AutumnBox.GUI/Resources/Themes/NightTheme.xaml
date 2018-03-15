@@ -5,6 +5,7 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="NightTheme_files/ColorAndBrushes.xaml"/>
 
+        <ResourceDictionary Source="Public/ScrollViewerStyle.xaml"/>
         <ResourceDictionary Source="Public/Images.xaml"/>
         <ResourceDictionary Source="Public/LabelStyle.xaml"/>
         <ResourceDictionary Source="Public/TextBlockStyle.xaml"/>

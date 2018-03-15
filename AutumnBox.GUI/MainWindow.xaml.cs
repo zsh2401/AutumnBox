@@ -247,5 +247,6 @@ namespace AutumnBox.GUI
         public void OnDragMove() {
             this.DragMove();
         }
+
     }
 }
