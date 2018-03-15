@@ -31,12 +31,12 @@
 
 
                 <cstm:PotdBox Margin="940,355,10,146" Height="150" Width="200"/>
-                <TabControl x:Name="TBCFuncs" HorizontalAlignment="Left" Height="392" Margin="10,233,0,0" VerticalAlignment="Top" Width="924" Background="{x:Null}" BorderBrush="{DynamicResource BroderBrushKey}">
+                <TabControl SelectionChanged="TBCFuncs_SelectionChanged" x:Name="TBCFuncs" HorizontalAlignment="Left" Height="392" Margin="10,233,0,0" VerticalAlignment="Top" Width="924" Background="{x:Null}" BorderBrush="{DynamicResource BroderBrushKey}">
                     <TabItem  Style="{DynamicResource AtmbxTabItem}" TabIndex="0" Header="{DynamicResource tbiStart}" Margin="-2,-2,-14,0"  FontSize="16">
                         <cpnel:StartPanel x:Name="StartPanel" Margin="0,0,0,0"></cpnel:StartPanel>
                     </TabItem>
                     <TabItem  Style="{DynamicResource AtmbxTabItem}" TabIndex="1" Header="{DynamicResource tbiOnPowerOn}" Margin="14,-2,-18,0"  FontSize="16">
-                        <ScrollViewer   Grid.Column="1"  HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Visible" Template="{DynamicResource AtmbxScrollViewer}">
+                        <ScrollViewer  x:Name="PoweronFuncsViewer" Grid.Column="1"  HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Visible" Template="{DynamicResource AtmbxScrollViewer}">
                             <cpnel:PoweronFuncPanel x:Name="PoweronFuncs" Margin="0,0,0,0"/>
                         </ScrollViewer>
                     </TabItem>

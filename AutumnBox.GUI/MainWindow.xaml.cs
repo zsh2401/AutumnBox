@@ -31,6 +31,8 @@ using AutumnBox.Basic.FlowFramework;
 using AutumnBox.Basic.Util;
 using AutumnBox.Basic.MultipleDevices;
 using AutumnBox.GUI.UI.Cstm;
+using System.Windows.Media.Animation;
+using System.Windows.Threading;
 
 namespace AutumnBox.GUI
 {
@@ -248,5 +250,8 @@ namespace AutumnBox.GUI
             this.DragMove();
         }
 
+        private void TBCFuncs_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+        }
     }
 }

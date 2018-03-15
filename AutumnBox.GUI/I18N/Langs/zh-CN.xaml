@@ -272,7 +272,7 @@
     <s:String x:Key="TipForChangeDpi">请自行斟酌您要调整的DPI,如果调的太大或太小,会让你的手机无法使用,不过您仍然可以通过本工具恢复默认DPI</s:String>
     <s:String x:Key="OutputTip">完整的输出文本,包含了最确切的信息,如果遇到错误,请将这里的输出文本复制给您要问的人</s:String>
     <s:String x:Key="TipForInputDpi">请输入您想要改动的DPI数值-></s:String>
-    <s:String x:Key="Bridge">免ROOT激活软件核心功能</s:String>
+    <s:String x:Key="Bridge">免ROOT激活软件核心功能(向下滑~)</s:String>
     <s:String x:Key="Port">端口</s:String>
     <s:String x:Key="lbUserName">用户名</s:String>
     <s:String x:Key="lbUserId">UID</s:String>
