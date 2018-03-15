@@ -58,7 +58,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AirForzenActivator.cs" />
+    <Compile Include="AnzenbokusuActivator.cs" />
     <Compile Include="ApkInstaller.cs" />
+    <Compile Include="BlackHoleActivator.cs" />
     <Compile Include="BreventServiceActivator.cs" />
     <Compile Include="DcimBackuper.cs" />
     <Compile Include="DeviceImageExtractor.cs" />

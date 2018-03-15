@@ -6,7 +6,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" Width="940" Height="537.5">
     <Grid>
-        <Image HorizontalAlignment="Left" Height="232" Margin="10,10,0,0" VerticalAlignment="Top" Width="225" Source="/Resources/images/title_icon.ico" RenderTransformOrigin="0.519,-0.013"/>
+        <Image HorizontalAlignment="Left" Height="232" Margin="10,10,0,0" VerticalAlignment="Top" Width="225" Source="/Resources/images/title_icon.ico"/>
         <Label Foreground="{DynamicResource ForegroundOnPrimaryBrushKey}" Style="{DynamicResource AtmbxLabelStyle}" Content="AutumnBox" HorizontalAlignment="Left" Margin="235,82,0,0" VerticalAlignment="Top" Height="126" Width="695" FontSize="100" />
         <Label Foreground="{DynamicResource ForegroundOnPrimaryBrushKey}" Style="{DynamicResource AtmbxLabelStyle}" Content="{DynamicResource AboutMessage1}" HorizontalAlignment="Left" Margin="191,303,0,0" VerticalAlignment="Top"  FontSize="14" />
         <Label Foreground="{DynamicResource ForegroundOnPrimaryBrushKey}" Style="{DynamicResource AtmbxLabelStyle}" Content="{DynamicResource AboutMessage2}" HorizontalAlignment="Left" Margin="191,337,0,0" VerticalAlignment="Top" FontSize="14" Width="228"  />

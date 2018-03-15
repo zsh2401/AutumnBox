@@ -11,6 +11,11 @@ using System.Collections.Generic;
 using AutumnBox.Basic.Device;
 using AutumnBox.GUI.UI.Fp;
 using AutumnBox.Basic.Device.PackageManage;
+using KingAOP.Aspects;
+using System.Dynamic;
+using System.Linq.Expressions;
+using KingAOP;
+using AutumnBox.Support.Log;
 
 namespace AutumnBox.GUI.UI.FuncPanels
 {
@@ -19,6 +24,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
     /// </summary>
     public partial class PoweronFuncPanel : FastPanelChild, IRefreshable
     {
+
         public PoweronFuncPanel()
         {
             InitializeComponent();
@@ -343,7 +349,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
             BoxHelper.ShowLoadingDialog(iceBoxActivator);
         }
 
-        private  void ButtonAirForzenAct_Click(object sender, RoutedEventArgs e)
+        private void ButtonAirForzenAct_Click(object sender, RoutedEventArgs e)
         {
             if (!DeviceOwnerSetterCheck(AirForzenActivator.AppPackageName, "msgPlsInstallAirForzenFirst")) return;
 
@@ -413,7 +419,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
             //BoxHelper.ShowLoadingDialog(activator);
         }
 
-        private  void ButtonIslandAct_Click(object sender, RoutedEventArgs e)
+        private void ButtonIslandAct_Click(object sender, RoutedEventArgs e)
         {
             if (!DeviceOwnerSetterCheck(IslandActivator.AppPackageName, "msgPlsInstallIslandFirst")) return;
             /*开始操作*/
@@ -472,7 +478,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
             }
         }
 
-        private  void ButtonActivateStopapp_Click(object sender, RoutedEventArgs e)
+        private void ButtonActivateStopapp_Click(object sender, RoutedEventArgs e)
         {
             if (!DeviceOwnerSetterCheck(StopAppActivator.AppPackageName, "msgPlsInstallStopAppFirst")) return;
             /*开始操作*/
@@ -485,6 +491,24 @@ namespace AutumnBox.GUI.UI.FuncPanels
         private void ButtonUserManager_Click(object sender, RoutedEventArgs e)
         {
             new UserManagerWindow(_currentDevInfo.Serial) { Owner = App.Current.MainWindow }.ShowDialog();
+        }
+
+        private void ButtonBlackHole_Click(object sender, RoutedEventArgs e)
+        {
+            if (!DeviceOwnerSetterCheck(BlackHoleActivator.AppPackageName, "msgPlsInstallBlackholeFirst")) return;
+            BlackHoleActivator activator = new BlackHoleActivator();
+            activator.Init(new FlowArgs() { DevBasicInfo = _currentDevInfo });
+            activator.RunAsync();
+            BoxHelper.ShowLoadingDialog(activator);
+        }
+
+        private void ButtonAnzenbokusuActivator_Click(object sender, RoutedEventArgs e)
+        {
+            if (!DeviceOwnerSetterCheck(AnzenbokusuActivator.AppPackageName, "msgPlsInstallAnzenbokusuFirst")) return;
+            AnzenbokusuActivator activator = new AnzenbokusuActivator();
+            activator.Init(new FlowArgs() { DevBasicInfo = _currentDevInfo });
+            activator.RunAsync();
+            BoxHelper.ShowLoadingDialog(activator);
         }
     }
 }

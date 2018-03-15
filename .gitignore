@@ -37,6 +37,7 @@ makezip
 .vs/
 out/
 sdk/
+bin/
 obj/
 maker/
 HistoryRelease/

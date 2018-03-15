@@ -1,59 +1,59 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Symbols LinesOfCode="264" PostSharpLinesOfCode="0" EnhancedTypesCount="4" SchemaVersion="1" PostSharpVersion="5.0.48.0" xmlns="http://schemas.postsharp.org/2.0/symbols">
   <Class Class="#1=T:[AutumnBox.OpenFramework]AutumnBox.OpenFramework.Internal.AccessCheck.HideAttribute">
-    <Instance Declaration="#2=M:[AutumnBox.OpenFramework]AutumnBox.OpenFramework.Internal.ExtensionManager::LoadAllExtension()" Id="695b06acee01ee55">
+    <Instance Declaration="#2=M:[AutumnBox.OpenFramework]AutumnBox.OpenFramework.Internal.ExtensionManager::LoadAllExtension()" Id="695b06acdd07b3f0">
       <Target>
         <JoinPoint Description="#3=Intercepted by OnInvoke" Ordinal="0" />
       </Target>
     </Instance>
-    <Instance Declaration="#4=M:[AutumnBox.OpenFramework]AutumnBox.OpenFramework.Internal.ExtensionManager::DestoryAllExtension()" Id="695b06ace0834053">
+    <Instance Declaration="#4=M:[AutumnBox.OpenFramework]AutumnBox.OpenFramework.Internal.ExtensionManager::DestoryAllExtension()" Id="695b06acc465204b">
       <Target>
         <JoinPoint Description="#3" />
       </Target>
     </Instance>
-    <Instance Declaration="#5=M:[AutumnBox.OpenFramework]AutumnBox.OpenFramework.Internal.ExtensionManager::GetExtensions(System.Nullable{[AutumnBox.Basic]AutumnBox.Basic.Device.DeviceState})" Id="695b06ac855918ad">
+    <Instance Declaration="#5=M:[AutumnBox.OpenFramework]AutumnBox.OpenFramework.Internal.ExtensionManager::GetExtensions(System.Nullable{[AutumnBox.Basic]AutumnBox.Basic.Device.DeviceState})" Id="695b06acd5cd0221">
       <Target>
         <JoinPoint Description="#3" Ordinal="2" />
       </Target>
     </Instance>
-    <Instance Declaration="#6=M:[AutumnBox.OpenFramework]AutumnBox.OpenFramework.Internal.ExtensionRuntime::Create(System.Type, [AutumnBox.OpenFramework]AutumnBox.OpenFramework.Extension.InitArgs)" Id="695b06ac09f50e6a">
+    <Instance Declaration="#6=M:[AutumnBox.OpenFramework]AutumnBox.OpenFramework.Internal.ExtensionRuntime::Create(System.Type, [AutumnBox.OpenFramework]AutumnBox.OpenFramework.Extension.InitArgs)" Id="695b06acefe6ba61">
       <Target>
         <JoinPoint Description="#3" Ordinal="3" />
       </Target>
     </Instance>
-    <Instance Declaration="#7=M:[AutumnBox.OpenFramework]AutumnBox.OpenFramework.Internal.ExtensionRuntime::Run([AutumnBox.OpenFramework]AutumnBox.OpenFramework.Extension.StartArgs)" Id="695b06acc2983529">
+    <Instance Declaration="#7=M:[AutumnBox.OpenFramework]AutumnBox.OpenFramework.Internal.ExtensionRuntime::Run([AutumnBox.OpenFramework]AutumnBox.OpenFramework.Extension.StartArgs)" Id="695b06ac3be55037">
       <Target>
         <JoinPoint Description="#3" Ordinal="4" />
       </Target>
     </Instance>
-    <Instance Declaration="#8=M:[AutumnBox.OpenFramework]AutumnBox.OpenFramework.Internal.ExtensionRuntime::Stop([AutumnBox.OpenFramework]AutumnBox.OpenFramework.Extension.StopArgs)" Id="695b06acafd0b925">
+    <Instance Declaration="#8=M:[AutumnBox.OpenFramework]AutumnBox.OpenFramework.Internal.ExtensionRuntime::Stop([AutumnBox.OpenFramework]AutumnBox.OpenFramework.Extension.StopArgs)" Id="695b06ac04947c02">
       <Target>
         <JoinPoint Description="#3" Ordinal="5" />
       </Target>
     </Instance>
-    <Instance Declaration="#9=M:[AutumnBox.OpenFramework]AutumnBox.OpenFramework.Internal.ExtensionRuntime::Destory([AutumnBox.OpenFramework]AutumnBox.OpenFramework.Extension.DestoryArgs)" Id="695b06acd2ae2fe1">
+    <Instance Declaration="#9=M:[AutumnBox.OpenFramework]AutumnBox.OpenFramework.Internal.ExtensionRuntime::Destory([AutumnBox.OpenFramework]AutumnBox.OpenFramework.Extension.DestoryArgs)" Id="695b06acba30a1eb">
       <Target>
         <JoinPoint Description="#3" Ordinal="6" />
       </Target>
     </Instance>
-    <Instance Declaration="#10=M:[AutumnBox.OpenFramework]AutumnBox.OpenFramework.Internal.ExtensionRuntime::WaitForFinish()" Id="695b06ac703cbf08">
+    <Instance Declaration="#10=M:[AutumnBox.OpenFramework]AutumnBox.OpenFramework.Internal.ExtensionRuntime::WaitForFinish()" Id="695b06ac832501b2">
       <Target>
         <JoinPoint Description="#3" Ordinal="7" />
       </Target>
     </Instance>
   </Class>
   <Class Class="#11=T:[AutumnBox.OpenFramework]AutumnBox.OpenFramework.Internal.AccessCheck.ContextAccessCheckAttribute">
-    <Instance Declaration="#12=M:[AutumnBox.OpenFramework]AutumnBox.OpenFramework.Internal.ContextFactory::GetHighPermissionContext([AutumnBox.OpenFramework]AutumnBox.OpenFramework.Context)" Id="695b06ac5bc2a10d">
+    <Instance Declaration="#12=M:[AutumnBox.OpenFramework]AutumnBox.OpenFramework.Internal.ContextFactory::GetHighPermissionContext([AutumnBox.OpenFramework]AutumnBox.OpenFramework.Context)" Id="695b06acaa9ad909">
       <Target>
         <JoinPoint Description="#3" Ordinal="8" />
       </Target>
     </Instance>
-    <Instance Declaration="#13=M:[AutumnBox.OpenFramework]AutumnBox.OpenFramework.Open.V1.OpenApi+ApiFactory::SetGuiApi([AutumnBox.OpenFramework]AutumnBox.OpenFramework.Context, [AutumnBox.OpenFramework]AutumnBox.OpenFramework.Open.V1.IGuiApi)" Id="695b06ac99fcb4e0">
+    <Instance Declaration="#13=M:[AutumnBox.OpenFramework]AutumnBox.OpenFramework.Open.V1.OpenApi+ApiFactory::SetGuiApi([AutumnBox.OpenFramework]AutumnBox.OpenFramework.Context, [AutumnBox.OpenFramework]AutumnBox.OpenFramework.Open.V1.IGuiApi)" Id="695b06ac17060644">
       <Target>
         <JoinPoint Description="#3" Ordinal="9" />
       </Target>
     </Instance>
-    <Instance Declaration="#14=M:[AutumnBox.OpenFramework]AutumnBox.OpenFramework.Open.V1.OpenApi+ApiFactory::SetLogApi([AutumnBox.OpenFramework]AutumnBox.OpenFramework.Context, [AutumnBox.OpenFramework]AutumnBox.OpenFramework.Open.V1.ILogApi)" Id="695b06ac53f5c94a">
+    <Instance Declaration="#14=M:[AutumnBox.OpenFramework]AutumnBox.OpenFramework.Open.V1.OpenApi+ApiFactory::SetLogApi([AutumnBox.OpenFramework]AutumnBox.OpenFramework.Context, [AutumnBox.OpenFramework]AutumnBox.OpenFramework.Open.V1.ILogApi)" Id="695b06acdc4f37d8">
       <Target>
         <JoinPoint Description="#3" Ordinal="10" />
       </Target>

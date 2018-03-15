@@ -9,6 +9,8 @@
     
     <s:String x:Key="AppDesc">开源免费简约的图形化ADB工具箱</s:String>
     <!--按钮-->
+    <s:String x:Key="btnAnzenbokusuActivator">激活第二空间</s:String>
+    <s:String x:Key="btnBlackholeActivator">激活黑洞</s:String>
     <s:String x:Key="btnStopExtension">停止运行</s:String>
     <s:String x:Key="btnOpenModuleFloder">打开模块文件夹</s:String>
     <s:String x:Key="btnCannotRunExtension">当前设备状态下,此模块不可运行</s:String>
@@ -179,6 +181,8 @@
     <s:String x:Key="msgPlsInstallIslandFirst">请先安装Island!!</s:String>
     <s:String x:Key="msgPlsInstallIceBoxFirst">请先安装冰箱!!</s:String>
     <s:String x:Key="msgPlsInstallStopAppFirst">请先安装小黑屋!!</s:String>
+    <s:String x:Key="msgPlsInstallBlackholeFirst">请先安装黑洞!!</s:String>
+     <s:String x:Key="msgPlsInstallAnzenbokusuFirst">请先安装第二空间!!</s:String>
     <s:String x:Key="msgPlsInstallShizukuManagerFirst">请先安装ShizukuManager!酷市场和手机乐园都有!</s:String>
     <s:String x:Key="msgWarning">警告</s:String>
     <s:String x:Key="msgVirtualButtonHider">您是要隐藏虚拟键还是恢复虚拟键?</s:String>
@@ -268,7 +272,7 @@
     <s:String x:Key="TipForChangeDpi">请自行斟酌您要调整的DPI,如果调的太大或太小,会让你的手机无法使用,不过您仍然可以通过本工具恢复默认DPI</s:String>
     <s:String x:Key="OutputTip">完整的输出文本,包含了最确切的信息,如果遇到错误,请将这里的输出文本复制给您要问的人</s:String>
     <s:String x:Key="TipForInputDpi">请输入您想要改动的DPI数值-></s:String>
-    <s:String x:Key="Bridge">桥</s:String>
+    <s:String x:Key="Bridge">免ROOT激活软件核心功能</s:String>
     <s:String x:Key="Port">端口</s:String>
     <s:String x:Key="lbUserName">用户名</s:String>
     <s:String x:Key="lbUserId">UID</s:String>
@@ -277,6 +281,9 @@
     <s:String x:Key="lbVersion">版本</s:String>
     <s:String x:Key="lbContactEmail">联系邮箱</s:String>
      <s:String x:Key="lbDescription">说明</s:String>
+    <s:String x:Key="lbSetDeviceOwner">通过设置设备管理员进行激活</s:String>
+    <s:String x:Key="lbRunScript">通过运行脚本进行激活</s:String>
+    <s:String x:Key="lbOpenNetDebugging">通过打开网络调试激活(极度危险)</s:String>
     <!--静态界面标记-->
 
     <!--设备信息标记-->

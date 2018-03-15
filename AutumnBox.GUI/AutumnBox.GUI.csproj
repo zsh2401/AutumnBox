@@ -83,6 +83,9 @@
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="KingAOP, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\KingAOP.1.0.0\lib\KingAOP.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -584,6 +587,33 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Themes\DreamTheme_files\bg.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\AppIcons\ShizukuManager.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\AppIcons\brevent.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\AppIcons\AirForzen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\AppIcons\Island.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\AppIcons\web1n.stopapp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\AppIcons\icebox.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\AppIcons\gmc.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\AppIcons\blackhole.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\AppIcons\Anzenbokusu.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
