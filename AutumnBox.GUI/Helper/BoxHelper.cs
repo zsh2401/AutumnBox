@@ -101,19 +101,29 @@ namespace AutumnBox.GUI.Helper
         }
         public static void ShowLoadingDialog()
         {
-            if (_loadingWindowIsAlreadyHaveOne) return;
-            _loadingWindowIsAlreadyHaveOne = true;
-            _loadingWindow = new LoadingWindow(_owner);
-            _loadingWindow.ShowDialog();
+            App.Current.Dispatcher.Invoke(() =>
+            {
+                if (_loadingWindowIsAlreadyHaveOne) return;
+                _loadingWindowIsAlreadyHaveOne = true;
+                _loadingWindow = new LoadingWindow(_owner);
+                _loadingWindow.ShowDialog();
+            });
+
         }
         public static void CloseLoadingDialog()
         {
-            try
+            App.Current.Dispatcher.Invoke(() =>
             {
-                _loadingWindow.Close();
-                _loadingWindowIsAlreadyHaveOne = false;
-            }
-            catch (Exception e) { Logger.Warn(TAG,"A exception on close loadingwindow...", e); }
+                try
+                {
+                    _loadingWindow.Close();
+                    _loadingWindowIsAlreadyHaveOne = false;
+                }
+                catch (Exception e)
+                {
+                    Logger.Warn(TAG, "A exception on close loadingwindow...", e);
+                }
+            });
 
         }
         #endregion

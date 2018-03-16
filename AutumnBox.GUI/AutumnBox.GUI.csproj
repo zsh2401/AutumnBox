@@ -279,7 +279,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <Compile Include="MainWindow.FlowFinishedHandling.cs" />
-    <Compile Include="UI\FuncPanels\PoweronFuncsCore.cs" />
+    <Compile Include="UI\FuncPanels\AdbActivatorsUI.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">

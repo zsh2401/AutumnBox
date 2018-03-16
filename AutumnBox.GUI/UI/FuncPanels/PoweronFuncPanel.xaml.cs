@@ -24,14 +24,14 @@ namespace AutumnBox.GUI.UI.FuncPanels
     /// </summary>
     public partial class PoweronFuncPanel : FastPanelChild, IRefreshable
     {
-
+        private DeviceBasicInfo _currentDevInfo;
+        private IAdbActivatorsUI core;
         public PoweronFuncPanel()
         {
             InitializeComponent();
-            core = App.MainAopContext.GetObject<IPoweronFuncsCore>("poweronFuncsCore");
+            core = App.MainAopContext.GetObject<IAdbActivatorsUI>("adbActivatorsUI");
         }
-        private DeviceBasicInfo _currentDevInfo;
-        private IPoweronFuncsCore core;
+
         public void Reset()
         {
             UIHelper.SetGridButtonStatus(MainGrid, false);
@@ -332,82 +332,18 @@ namespace AutumnBox.GUI.UI.FuncPanels
 
         private void ButtonAirForzenAct_Click(object sender, RoutedEventArgs e)
         {
-            if (!DeviceOwnerSetterCheck(AirForzenActivator.AppPackageName, "msgPlsInstallAirForzenFirst")) return;
-
-            /*开始操作*/
-            AirForzenActivator airForzenActivator = new AirForzenActivator();
-            airForzenActivator.Init(new FlowArgs() { DevBasicInfo = _currentDevInfo });
-            airForzenActivator.RunAsync();
-            BoxHelper.ShowLoadingDialog(airForzenActivator);
+            core.ActivateAirForzen(_currentDevInfo);
         }
 
         private void ButtonShizukuManager_Click(object sender, RoutedEventArgs e)
         {
-            bool fixAndroidO = false;
-            var _continue = BreventPrecheck(_currentDevInfo.Serial,
-                ShizukuManagerActivator._AppPackageName,
-                "msgPlsInstallShizukuManagerFirst",
-                ref fixAndroidO);
 
-            if (_continue)
-            {
-                var args = new ShScriptExecuterArgs() { DevBasicInfo = _currentDevInfo, FixAndroidOAdb = fixAndroidO };
-                /*开始操作*/
-                ShizukuManagerActivator activator = new ShizukuManagerActivator();
-                activator.Init(args);
-                activator.RunAsync();
-                BoxHelper.ShowLoadingDialog(activator);
-            }
-            ///*检查是否安装了这个App*/
-            //bool? isInstallThisApp = await Task.Run(() =>
-            //{
-            //    return new DeviceSoftwareInfoGetter(_currentDevInfo.Serial).IsInstall(ShizukuManagerActivator._AppPackageName);
-            //});
-            //if (isInstallThisApp == false) { BoxHelper.ShowMessageDialog("Warning", "msgPlsInstallShizukuManagerFirst"); return; }
-
-            ///*判断是否是安卓8.0操作系统*/
-            //bool isAndroidO = false;
-            //try
-            //{
-            //    Version currentDevAndroidVersion = new DeviceBuildPropGetter(_currentDevInfo.Serial).GetAndroidVersion();
-            //    isAndroidO = currentDevAndroidVersion >= new Version("8.0");
-            //}
-            //catch (NullReferenceException) { }
-
-            ///*如果是安卓O,询问用户是否要在启动脚本后开启网络ADB*/
-            //var args = new ShScriptExecuterArgs() { DevBasicInfo = _currentDevInfo };
-            //if (isAndroidO)
-            //{
-            //    var result = BoxHelper.ShowChoiceDialog("msgNotice",
-            //        "msgFixAndroidO",
-            //        "btnDoNotOpen", "btnOpen");
-            //    switch (result)
-            //    {
-            //        case ChoiceResult.BtnCancel:
-            //            return;
-            //        case ChoiceResult.BtnLeft:
-            //            args.FixAndroidOAdb = false;
-            //            break;
-            //        case ChoiceResult.BtnRight:
-            //            args.FixAndroidOAdb = true;
-            //            break;
-            //    }
-            //}
-            ///*开始操作*/
-            //ShizukuManagerActivator activator = new ShizukuManagerActivator();
-            //activator.Init(args);
-            //activator.RunAsync();
-            //BoxHelper.ShowLoadingDialog(activator);
+            core.ActivateShizukuManager(_currentDevInfo);
         }
 
         private void ButtonIslandAct_Click(object sender, RoutedEventArgs e)
         {
-            if (!DeviceOwnerSetterCheck(IslandActivator.AppPackageName, "msgPlsInstallIslandFirst")) return;
-            /*开始操作*/
-            IslandActivator islandActivator = new IslandActivator();
-            islandActivator.Init(new FlowArgs() { DevBasicInfo = _currentDevInfo });
-            islandActivator.RunAsync();
-            BoxHelper.ShowLoadingDialog(islandActivator);
+            core.ActivateIsland(_currentDevInfo);
         }
 
         private void ButtonVirtualBtnHide_Click(object sender, RoutedEventArgs e)
@@ -449,24 +385,12 @@ namespace AutumnBox.GUI.UI.FuncPanels
 
         private void ButtonGMCAct_Click(object sender, RoutedEventArgs e)
         {
-            var _continue = BoxHelper.ShowChoiceDialog("warning", "msgActiveGMC", "btnCancel", "btnContinue").ToBool();
-            if (_continue)
-            {
-                var activator = new GeekMemoryCleanerActivator();
-                activator.Init(new FlowArgs() { DevBasicInfo = this._currentDevInfo });
-                activator.RunAsync();
-                BoxHelper.ShowLoadingDialog(activator);
-            }
+            core.ActivateGeekMemoryCleaner(_currentDevInfo);
         }
 
         private void ButtonActivateStopapp_Click(object sender, RoutedEventArgs e)
         {
-            if (!DeviceOwnerSetterCheck(StopAppActivator.AppPackageName, "msgPlsInstallStopAppFirst")) return;
-            /*开始操作*/
-            StopAppActivator activator = new StopAppActivator();
-            activator.Init(new FlowArgs() { DevBasicInfo = _currentDevInfo });
-            activator.RunAsync();
-            BoxHelper.ShowLoadingDialog(activator);
+            core.ActivateStopapp(_currentDevInfo);
         }
 
         private void ButtonUserManager_Click(object sender, RoutedEventArgs e)
@@ -476,21 +400,12 @@ namespace AutumnBox.GUI.UI.FuncPanels
 
         private void ButtonBlackHole_Click(object sender, RoutedEventArgs e)
         {
-            if (!DeviceOwnerSetterCheck(BlackHoleActivator.AppPackageName, "msgPlsInstallBlackholeFirst")) return;
-            BlackHoleActivator activator = new BlackHoleActivator();
-            activator.Init(new FlowArgs() { DevBasicInfo = _currentDevInfo });
-            activator.RunAsync();
-            BoxHelper.ShowLoadingDialog(activator);
+            core.ActivateBlackHole(_currentDevInfo);
         }
 
         private void ButtonAnzenbokusuActivator_Click(object sender, RoutedEventArgs e)
         {
-
-            if (!DeviceOwnerSetterCheck(AnzenbokusuActivator.AppPackageName, "msgPlsInstallAnzenbokusuFirst")) return;
-            AnzenbokusuActivator activator = new AnzenbokusuActivator();
-            activator.Init(new FlowArgs() { DevBasicInfo = _currentDevInfo });
-            activator.RunAsync();
-            BoxHelper.ShowLoadingDialog(activator);
+            core.ActivateAnzenbokusu(_currentDevInfo);
         }
     }
 }

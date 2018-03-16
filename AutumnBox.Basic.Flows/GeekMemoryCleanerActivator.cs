@@ -15,6 +15,7 @@ namespace AutumnBox.Basic.Flows
 {
     public class GeekMemoryCleanerActivator : FunctionFlow
     {
+        public const string AppPackageName = "com.ifreedomer.fuckmemory";
         protected override Output MainMethod(ToolKit<FlowArgs> toolKit)
         {
             var result = new NetDebuggingOpener().Run(new NetDebuggingOpenerArgs()
