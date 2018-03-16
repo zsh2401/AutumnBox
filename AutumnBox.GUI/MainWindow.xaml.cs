@@ -33,6 +33,7 @@ using AutumnBox.Basic.MultipleDevices;
 using AutumnBox.GUI.UI.Cstm;
 using System.Windows.Media.Animation;
 using System.Windows.Threading;
+using AutumnBox.GUI.UI.FuncPanels;
 
 namespace AutumnBox.GUI
 {
@@ -43,7 +44,7 @@ namespace AutumnBox.GUI
     {
         private Object setUILock = new System.Object();
         private List<IRefreshable> refreshables;
-
+        private DeviceBasicInfo currentDevice;
         public bool BtnMinEnable => true;
 
         Window ITitleBarWindow.MainWindow => this;
@@ -157,6 +158,7 @@ namespace AutumnBox.GUI
         {
             lock (setUILock)
             {
+                currentDevice = devinfo;
                 refreshables.ForEach((ctrl) => { ctrl.Refresh(devinfo); });
                 if (TBCFuncs.SelectedIndex == 4) return;
                 switch (devinfo.State)

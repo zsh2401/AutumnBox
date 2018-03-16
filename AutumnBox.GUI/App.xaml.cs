@@ -16,10 +16,13 @@ using AutumnBox.Basic.MultipleDevices;
 using AutumnBox.GUI.Helper;
 using AutumnBox.GUI.I18N;
 using AutumnBox.GUI.Properties;
+using AutumnBox.GUI.UI.FuncPanels;
 using AutumnBox.GUI.Util;
 using AutumnBox.GUI.Windows;
 using AutumnBox.OpenFramework.Internal;
 using AutumnBox.Support.Log;
+using Spring.Context;
+using Spring.Context.Support;
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -27,6 +30,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
+using static AutumnBox.GUI.UI.FuncPanels.PoweronFuncPanel;
 
 namespace AutumnBox.GUI
 {
@@ -38,6 +42,11 @@ namespace AutumnBox.GUI
     {
         private const string TAG = "App";
         public const int HAVE_OTHER_PROCESS = 25364;
+        public static IApplicationContext MainAopContext { get; private set; }
+        static App()
+        {
+            MainAopContext = new XmlApplicationContext("AutumnBoxAop.xml");
+        }
         public static new App Current { get; private set; }
         public MainWindow MainWindowAsMainWindow
         {
@@ -62,8 +71,8 @@ namespace AutumnBox.GUI
             {
                 Logger.Fatal(this, "Have other autumnbox!!");
                 MessageBox.Show(
-                    $"不可以同时打开两个AutumnBox{Environment.NewLine}Do not run two AutumnBox at once", 
-                    "警告/Warning",MessageBoxButton.OK,MessageBoxImage.Warning);
+                    $"不可以同时打开两个AutumnBox{Environment.NewLine}Do not run two AutumnBox at once",
+                    "警告/Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
                 App.Current.Shutdown(HAVE_OTHER_PROCESS);
             }
             if (Settings.Default.IsFirstLaunch)

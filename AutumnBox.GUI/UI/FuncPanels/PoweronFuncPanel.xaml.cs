@@ -28,8 +28,10 @@ namespace AutumnBox.GUI.UI.FuncPanels
         public PoweronFuncPanel()
         {
             InitializeComponent();
+            core = App.MainAopContext.GetObject<IPoweronFuncsCore>("poweronFuncsCore");
         }
         private DeviceBasicInfo _currentDevInfo;
+        private IPoweronFuncsCore core;
         public void Reset()
         {
             UIHelper.SetGridButtonStatus(MainGrid, false);
@@ -82,22 +84,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
 
         private void ButtonStartBrventService_Click(object sender, RoutedEventArgs e)
         {
-
-            bool fixAndroidO = false;
-            var _continue = BreventPrecheck(_currentDevInfo.Serial,
-                BreventServiceActivator._AppPackageName,
-                "msgPlsInstallBreventFirst",
-                ref fixAndroidO);
-
-            if (_continue)
-            {
-                var args = new ShScriptExecuterArgs() { DevBasicInfo = _currentDevInfo, FixAndroidOAdb = fixAndroidO };
-                /*开始操作*/
-                BreventServiceActivator activator = new BreventServiceActivator();
-                activator.Init(args);
-                activator.RunAsync();
-                BoxHelper.ShowLoadingDialog(activator);
-            }
+            core.ActivateBrevent(_currentDevInfo);
         }
 
         private void ButtonPushFileToSdcard_Click(object sender, RoutedEventArgs e)
@@ -340,13 +327,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
 
         private void ButtonIceBoxAct_Click(object sender, RoutedEventArgs e)
         {
-            if (!DeviceOwnerSetterCheck(IceBoxActivator.AppPackageName, "msgPlsInstallIceBoxFirst")) return;
-
-            /*开始操作 */
-            IceBoxActivator iceBoxActivator = new IceBoxActivator();
-            iceBoxActivator.Init(new FlowArgs() { DevBasicInfo = _currentDevInfo });
-            iceBoxActivator.RunAsync();
-            BoxHelper.ShowLoadingDialog(iceBoxActivator);
+            core.ActivateIceBox(_currentDevInfo);
         }
 
         private void ButtonAirForzenAct_Click(object sender, RoutedEventArgs e)
@@ -504,6 +485,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
 
         private void ButtonAnzenbokusuActivator_Click(object sender, RoutedEventArgs e)
         {
+
             if (!DeviceOwnerSetterCheck(AnzenbokusuActivator.AppPackageName, "msgPlsInstallAnzenbokusuFirst")) return;
             AnzenbokusuActivator activator = new AnzenbokusuActivator();
             activator.Init(new FlowArgs() { DevBasicInfo = _currentDevInfo });
