@@ -181,7 +181,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
             BoxHelper.ShowLoadingDialog(islandActivator);
         }
 
-        [InstallCheck(GeekMemoryCleanerActivator.AppPackageName, ErrorMsgKey = "msgPlsInstallAirForzenFirst")]
+        [InstallCheck(GeekMemoryCleanerActivator.AppPackageName, ErrorMsgKey = "msgPlsInstallGMCFirst")]
         public void ActivateGeekMemoryCleaner(DeviceBasicInfo targetDevice)
         {
             var _continue = BoxHelper.ShowChoiceDialog("warning", "msgActiveGMC", "btnCancel", "btnContinue").ToBool();
