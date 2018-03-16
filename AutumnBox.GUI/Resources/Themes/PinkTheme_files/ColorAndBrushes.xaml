@@ -2,7 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <!--______________________________主要色__________________________________ -->
-    <Color x:Key="ColorPrimary">#FD94B4</Color>
+    <Color x:Key="ColorPrimary">#fb7299</Color>
     <SolidColorBrush x:Key="PrimaryBrushKey" Color="{DynamicResource ColorPrimary}"/>
 
     <Color x:Key="ColorForegroundOnPrimary">#FCF9F9</Color>
@@ -19,12 +19,12 @@
     <SolidColorBrush x:Key="FastPanelBackgroundBrushKey" Color="{DynamicResource ColorPrimary}"/>
     <SolidColorBrush x:Key="ExtRunningPanelBrushKey" Color="{DynamicResource ColorPrimary}"/>
 
-    <Color x:Key="ColorBroder">#FD94B4</Color>
+    <Color x:Key="ColorBroder">#fb7299</Color>
     <SolidColorBrush x:Key="BroderBrushKey" Color="{DynamicResource ColorBroder}"/>
 
     
     <!--______________________________按钮______________________________-->
-    <Color x:Key="ColorBtnMouseOver">#FD94B4</Color>
+    <Color x:Key="ColorBtnMouseOver">#fb7299</Color>
     <SolidColorBrush x:Key="BtnMouseOverBrushKey" Color="{DynamicResource ColorBtnMouseOver}"/>
 
     <Color x:Key="ColorBtnBackground">#00f4f4f4</Color>
