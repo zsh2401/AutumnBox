@@ -5,7 +5,6 @@
 *************************************************/
 using AutumnBox.Basic.Device;
 using AutumnBox.OpenFramework.Extension;
-using AutumnBox.OpenFramework.Internal.AccessCheck;
 using AutumnBox.OpenFramework.Open.V1;
 using System;
 using System.Collections.Generic;
@@ -38,30 +37,31 @@ namespace AutumnBox.OpenFramework.Internal
         /// <summary>
         /// 加载所有模块
         /// </summary>
-        [Hide]
-        public static void LoadAllExtension()
+        public static void LoadAllExtension(Context context)
         {
+            context.PermissionCheck(ContextPermissionLevel.Mid);
             inner.Load();
         }
         /// <summary>
         /// 摧毁所有模块
         /// </summary>
-        [Hide]
-        public static void DestoryAllExtension()
+        public static void DestoryAllExtension(Context context)
         {
+            context.PermissionCheck(ContextPermissionLevel.Mid);
             inner.Extensions.ForEach((extRuntime) =>
             {
-                extRuntime.Destory();
+                extRuntime.Destory(inner);
             });
         }
         /// <summary>
         /// 获取所有模块
         /// </summary>
+        /// <param name="context"></param>
         /// <param name="targetDeviceState"></param>
         /// <returns></returns>
-        [Hide]
-        public static ExtensionRuntime[] GetExtensions(DeviceState? targetDeviceState = null)
+        public static ExtensionRuntime[] GetExtensions(Context context, DeviceState? targetDeviceState = null)
         {
+            context.PermissionCheck(ContextPermissionLevel.Mid);
             if (targetDeviceState != null)
             {
                 return inner.Extensions.Where((extRuntime) =>
@@ -75,7 +75,9 @@ namespace AutumnBox.OpenFramework.Internal
             }
 
         }
-        private class ExtensionManagerInner : Context
+
+
+        private sealed class ExtensionManagerInner : Context
         {
             public List<ExtensionRuntime> Extensions { get; private set; }
             public ExtensionManagerInner()
@@ -133,12 +135,16 @@ namespace AutumnBox.OpenFramework.Internal
                     }
                 }
             }
+            internal override ContextPermissionLevel GetPermissionLevel()
+            {
+                return ContextPermissionLevel.High;
+            }
             ~ExtensionManagerInner()
             {
                 DestoryArgs args = new DestoryArgs();
                 Extensions.ForEach((ext) =>
                 {
-                    try { ext.Destory(args); }
+                    try { ext.Destory(this, args); }
                     catch { }
                 });
             }

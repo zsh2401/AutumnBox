@@ -32,7 +32,7 @@ namespace AutumnBox.GUI.UI.CstPanels
             TBMsg.Text = $"{extensionRuntime.InnerExtension.Name} {App.Current.Resources["msgIsRunning"]}";
             BtnStop.Click += (s, e) =>
             {
-                var stopResult = extensionRuntime.Stop();
+                var stopResult = extensionRuntime.Stop(App.OpenFrameworkContext);
                 if (stopResult == true)
                 {
                     Finish();

@@ -11,11 +11,6 @@ using System.Collections.Generic;
 using AutumnBox.Basic.Device;
 using AutumnBox.GUI.UI.Fp;
 using AutumnBox.Basic.Device.PackageManage;
-using KingAOP.Aspects;
-using System.Dynamic;
-using System.Linq.Expressions;
-using KingAOP;
-using AutumnBox.Support.Log;
 
 namespace AutumnBox.GUI.UI.FuncPanels
 {

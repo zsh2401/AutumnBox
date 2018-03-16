@@ -1,11 +1,4 @@
-﻿using AutumnBox.OpenFramework.Internal.AccessCheck;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AutumnBox.OpenFramework.Internal
+﻿namespace AutumnBox.OpenFramework.Internal
 {
     public static class ContextFactory
     {
@@ -17,14 +10,14 @@ namespace AutumnBox.OpenFramework.Internal
             {
                 SourceContext = lowPermissionContext;
             }
-            public override ContextPermissionLevel GetPermissionLevel()
+            internal override ContextPermissionLevel GetPermissionLevel()
             {
                 return ContextPermissionLevel.High;
             }
         }
-        [ContextAccessCheck(ContextPermissionLevel.Mid)]
         public static Context GetHighPermissionContext(Context context)
         {
+            context.PermissionCheck(ContextPermissionLevel.Mid);
             return new HighPermissionContext(context);
         }
     }

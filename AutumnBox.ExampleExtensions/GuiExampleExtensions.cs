@@ -30,8 +30,8 @@ namespace AutumnBox.ExampleExtensions
         }
         public override void OnStartCommand(StartArgs args)
         {
-            var highContext = ContextFactory.GetHighPermissionContext(this);
-            OpenApi.ApiFactory.SetGuiApi(highContext, null);
+            //var highContext = ContextFactory.GetHighPermissionContext(this);
+            OpenApi.ApiFactory.SetGuiApi(this, null);
             OpenApi.Gui.RunOnUIThread(this, () =>
             {
                 new ExampleWindow()

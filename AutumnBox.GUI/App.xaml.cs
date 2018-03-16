@@ -19,6 +19,7 @@ using AutumnBox.GUI.Properties;
 using AutumnBox.GUI.UI.FuncPanels;
 using AutumnBox.GUI.Util;
 using AutumnBox.GUI.Windows;
+using AutumnBox.OpenFramework;
 using AutumnBox.OpenFramework.Internal;
 using AutumnBox.Support.Log;
 using Spring.Context;
@@ -41,11 +42,14 @@ namespace AutumnBox.GUI
     public partial class App : Application
     {
         private const string TAG = "App";
-        public const int HAVE_OTHER_PROCESS = 25364;
-        public static IApplicationContext MainAopContext { get; private set; }
+        internal const int HAVE_OTHER_PROCESS = 25364;
+        internal static IApplicationContext MainAopContext { get; private set; }
+        internal static Context OpenFrameworkContext { get; private set; }
+        private class AppContext : Context { }
         static App()
         {
             MainAopContext = new XmlApplicationContext("AutumnBoxAop.atmbxml");
+            OpenFrameworkContext = new AppContext();
         }
         public static new App Current { get; private set; }
         public MainWindow MainWindowAsMainWindow
@@ -127,7 +131,7 @@ namespace AutumnBox.GUI
             loadingWindowApi.SetProgress(80);
             loadingWindowApi.SetTip(Resources["ldmsgLoadingExtensions"].ToString());
             OpenFramewokManager.LoadApi();
-            ExtensionManager.LoadAllExtension();
+            ExtensionManager.LoadAllExtension(OpenFrameworkContext);
             App.Current.MainWindow.Show();
             loadingWindowApi.SetProgress(100);
             loadingWindowApi.Finish();

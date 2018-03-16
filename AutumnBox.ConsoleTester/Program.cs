@@ -25,10 +25,6 @@ namespace AutumnBox.ConsoleTester
         };
         unsafe static int Main(string[] cmdargs)
         {
-            Console.WriteLine(new string[] {
-                "a",
-                "b"
-            }.Contains("b"));
             Console.ReadKey();
             return 0;
         }

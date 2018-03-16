@@ -30,7 +30,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
 
         public void Refresh(DeviceBasicInfo deviceSimpleInfo)
         {
-            ListBoxModule.ItemsSource = ExtensionManager.GetExtensions();
+            ListBoxModule.ItemsSource = ExtensionManager.GetExtensions(App.OpenFrameworkContext);
             currentDevice = deviceSimpleInfo;
             ListBoxModule.SelectedIndex = -1;
         }
@@ -87,7 +87,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
             try
             {
                 ShowRunningBox(runtime);
-                runtime.RunAsync(new StartArgs()
+                runtime.RunAsync(App.OpenFrameworkContext,new StartArgs()
                 {
                     Device = currentDevice
                 }, () => { CloseRunningBox(); });

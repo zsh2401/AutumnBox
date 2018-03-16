@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\PostSharp.5.0.48\build\PostSharp.props" Condition="Exists('..\packages\PostSharp.5.0.48\build\PostSharp.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -46,7 +45,6 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="PostSharp, Version=5.0.48.0, Culture=neutral, PublicKeyToken=b13fd38b8f9c99d7, processorArchitecture=MSIL" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -60,11 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context.cs" />
-    <Compile Include="Internal\AccessCheck\AccessCheckAttribute.cs" />
-    <Compile Include="Internal\AccessCheck\AccessDeniedException.cs" />
-    <Compile Include="Internal\AccessCheck\HideAttribute.cs" />
-    <Compile Include="Internal\AccessCheck\ContextAccessCheckAttribute.cs" />
-    <Compile Include="Internal\CallerChecker.cs" />
+    <Compile Include="Internal\AccessDeniedException.cs" />
     <Compile Include="Internal\ContextFactory.cs" />
     <Compile Include="Internal\ExtensionManager.cs" />
     <Compile Include="Extension\AutumnBoxExtension.cs" />
@@ -83,7 +77,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
     <None Include="开发文档.url">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -97,12 +90,4 @@ del /S Newtonsoft.Json.*
 del /S *.pdb
 )</PostBuildEvent>
   </PropertyGroup>
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\packages\PostSharp.5.0.48\build\PostSharp.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\PostSharp.5.0.48\build\PostSharp.props'))" />
-    <Error Condition="!Exists('..\packages\PostSharp.5.0.48\build\PostSharp.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\PostSharp.5.0.48\build\PostSharp.targets'))" />
-  </Target>
-  <Import Project="..\packages\PostSharp.5.0.48\build\PostSharp.targets" Condition="Exists('..\packages\PostSharp.5.0.48\build\PostSharp.targets')" />
 </Project>

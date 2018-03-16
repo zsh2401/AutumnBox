@@ -1,12 +1,10 @@
 ﻿using Ionic.Zip;
-//using ICSharpCode.SharpZipLib.Zip;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace AutumnBox.ZipMaker
 {
@@ -23,7 +21,7 @@ namespace AutumnBox.ZipMaker
             {
                 suffix = Input("Please Input suffix(default: Debug)") ?? "Debug";
             }
-            FileVersionInfo info = FileVersionInfo.GetVersionInfo(@"..\out\AutumnBox\file\AutumnBox.exe");
+            FileVersionInfo info = FileVersionInfo.GetVersionInfo(@"..\out\AutumnBox\file\AutumnBox.GUI.exe");
             using (ZipFile zip = new ZipFile(Encoding.UTF8))
             {
                 zip.AddDirectory(@"..\out");

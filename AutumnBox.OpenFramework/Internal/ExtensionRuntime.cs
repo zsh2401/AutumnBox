@@ -4,10 +4,8 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.OpenFramework.Extension;
-using AutumnBox.OpenFramework.Internal.AccessCheck;
 using AutumnBox.OpenFramework.Open.V1;
 using System;
-using System.Reflection;
 using System.Threading.Tasks;
 
 namespace AutumnBox.OpenFramework.Internal
@@ -16,7 +14,7 @@ namespace AutumnBox.OpenFramework.Internal
     /// <summary>
     /// 拓展的运行管理器
     /// </summary>
-    public class ExtensionRuntime:Context
+    public class ExtensionRuntime : Context
     {
         public override string Tag => $"{InnerExtension.Name}'s RT";
         public string Name { get { return InnerExtension.Name; } }
@@ -26,24 +24,23 @@ namespace AutumnBox.OpenFramework.Internal
         {
             this.InnerExtension = ext;
         }
-        [Hide]
         internal static ExtensionRuntime Create(Type type, InitArgs args = null)
         {
             var ext = (AutumnBoxExtension)Activator.CreateInstance(type);
             if (!ext.InitAndCheck(args ?? new InitArgs())) throw new Exception("Cannot init");
             return new ExtensionRuntime(ext);
         }
-        public async void RunAsync(StartArgs args, Action finishedCallback)
+        public async void RunAsync(Context ctx,StartArgs args, Action finishedCallback)
         {
             await Task.Run(() =>
             {
-                Run(args);
+                Run(ctx,args);
             });
             finishedCallback();
         }
-        [Hide]
-        public void Run(StartArgs args)
+        public void Run(Context ctx,StartArgs args)
         {
+            ctx.PermissionCheck(ContextPermissionLevel.Mid);
             IsRuning = true;
             try
             {
@@ -54,25 +51,24 @@ namespace AutumnBox.OpenFramework.Internal
             {
                 OpenApi.Log.Warn(this, "failed.....", ex);
                 var wasFailedMsg = $"{Name} {OpenApi.Gui.GetPublicResouce<String>(this, "msgExtensionWasFailed")}";
-                OpenApi.Gui.ShowMessageBox(this,"Warning", wasFailedMsg);
+                OpenApi.Gui.ShowMessageBox(this, "Warning", wasFailedMsg);
             }
             finally
             {
                 IsRuning = false;
             }
         }
-        [Hide]
-        public bool Stop(StopArgs args = null)
+        public bool Stop(Context ctx, StopArgs args = null)
         {
+            ctx.PermissionCheck(ContextPermissionLevel.Mid);
             if (!IsRuning) return true;
             return InnerExtension.OnStopCommand(args ?? new StopArgs());
         }
-        [Hide]
-        public void Destory(DestoryArgs args = null)
+        public void Destory(Context ctx,DestoryArgs args = null)
         {
+            ctx.PermissionCheck(ContextPermissionLevel.Mid);
             InnerExtension.OnDestory(args ?? new DestoryArgs());
         }
-        [Hide]
         public void WaitForFinish()
         {
             while (IsRuning) ;
