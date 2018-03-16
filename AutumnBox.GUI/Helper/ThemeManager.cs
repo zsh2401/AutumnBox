@@ -58,7 +58,9 @@ namespace AutumnBox.GUI.Helper
                 new FileTheme("NightTheme.xaml"),
                 new FileTheme("AutumnTheme.xaml"),
                 new FileTheme("SpringTheme.xaml"),
-                new FileTheme("DreamTheme.xaml")
+                new FileTheme("DreamTheme.xaml"),
+                new FileTheme("PinkTheme.xaml"),
+                new FileTheme("PurpleTheme.xaml")
             };
             (themes[0] as RandomTheme).Next();
         }
@@ -74,7 +76,6 @@ namespace AutumnBox.GUI.Helper
             App.Current.Resources.MergedDictionaries[1] = theme.Resource;
             ThemeChanged?.Invoke(new object(), new EventArgs());
             Settings.Default.Theme = theme.Name;
-            Logger.Info("ThemeHelper", $"Theme setting saved,value {theme.Name}");
         }
         public static void ChangeTheme(string themeName)
         {
