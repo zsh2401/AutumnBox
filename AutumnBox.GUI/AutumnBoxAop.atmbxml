@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<objects xmlns="http://www.springframework.net" xmlns:aop="http://www.springframework.net/aop">
+  <description>一个简单的控制反转例子</description>
+
+  <!-- 任务 -->
+  <object id="adbActivatorsUI" type="AutumnBox.GUI.UI.FuncPanels.AdbActivatorsUI"></object>
+
+  <object id="adbActivatorsUIAdvisor" type="AutumnBox.GUI.UI.FuncPanels.AdbActivatorsUIAdvisor"/>
+
+  <!--定义切入点-->
+  <object id="adbActivatorsUIAdvisorrPointcut" type="Spring.Aop.Support.SdkRegularExpressionMethodPointcut, Spring.Aop">
+    <property name="pattern" value="AutumnBox.GUI.UI.FuncPanels.AdbActivatorsUI.Activate*"/>
+  </object>
+
+  <!--切面-->
+  <aop:config>
+    <aop:advisor pointcut-ref="adbActivatorsUIAdvisorrPointcut" advice-ref="adbActivatorsUIAdvisor"/>
+  </aop:config>
+</objects>

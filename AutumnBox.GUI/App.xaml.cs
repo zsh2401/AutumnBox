@@ -45,7 +45,7 @@ namespace AutumnBox.GUI
         public static IApplicationContext MainAopContext { get; private set; }
         static App()
         {
-            MainAopContext = new XmlApplicationContext("AutumnBoxAop.xml");
+            MainAopContext = new XmlApplicationContext("AutumnBoxAop.atmbxml");
         }
         public static new App Current { get; private set; }
         public MainWindow MainWindowAsMainWindow

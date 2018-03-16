@@ -645,7 +645,7 @@
     <Resource Include="Resources\Images\AppIcons\Anzenbokusu.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="AutumnBoxAop.xml">
+    <None Include="AutumnBoxAop.atmbxml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
@@ -653,9 +653,14 @@
   <PropertyGroup>
     <PostBuildEvent>if $(ConfigurationName) == Release (
 del /S *.json
+del /S *.pdb
+del /S *.xml
+del /S
 del AutumnBox.ConsoleTester.exe
-)
 rd /S /Q logs
+rd /S /Q app.publish
+)
+
 </PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
