@@ -31,14 +31,14 @@
 
 
         <!--激活-->
-        <Label Style="{DynamicResource AtmbxLabelStyle}" Content="{DynamicResource Bridge}" HorizontalAlignment="Left" Margin="22,251,0,0" VerticalAlignment="Top" FontSize="28" Width="421"/>
+        <Label Style="{DynamicResource AtmbxLabelStyle}" Content="{DynamicResource Bridge}" HorizontalAlignment="Left" Margin="13,251,0,0" VerticalAlignment="Top" FontSize="28" Width="520"/>
 
         <!--运行脚本-->
         <Image RenderOptions.BitmapScalingMode="Fant" Width="62" Source="../../Resources/Images/AppIcons/brevent.png" Margin="22,345,838,0" Height="45" VerticalAlignment="Top"/>
-        <Button Style="{DynamicResource AtmbxButtonStyle}" x:Name="buttonStartBrventService" Content="{DynamicResource btnStartBrventService}" Margin="89,345,0,0"   FontSize="18"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"   Click="ButtonStartBrventService_Click" Height="45" VerticalAlignment="Top" HorizontalAlignment="Left" Width="257"/>
+        <Button Style="{DynamicResource AtmbxButtonStyle}" x:Name="buttonStartBrventService" Content="{DynamicResource btnStartBrventService}" Margin="89,345,0,0"   FontSize="18"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"   Click="ButtonStartBrventService_Click" Height="45" VerticalAlignment="Top" HorizontalAlignment="Left" Width="279"/>
 
         <Image RenderOptions.BitmapScalingMode="Fant" Width="62" Source="../../Resources/Images/AppIcons/ShizukuManager.png" Margin="22,400,838,0" Height="42" VerticalAlignment="Top"/>
-        <Button Style="{DynamicResource AtmbxButtonStyle}" x:Name="ButtonShizukuManager"   Content="{DynamicResource btnShizukuManagerAct}" Margin="94,397,0,0"   FontSize="18"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"   HorizontalAlignment="Left" Width="252" Click="ButtonShizukuManager_Click" Height="45" VerticalAlignment="Top"/>
+        <Button Style="{DynamicResource AtmbxButtonStyle}" x:Name="ButtonShizukuManager"   Content="{DynamicResource btnShizukuManagerAct}" Margin="94,397,0,0"   FontSize="18"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"   HorizontalAlignment="Left" Width="278" Click="ButtonShizukuManager_Click" Height="45" VerticalAlignment="Top"/>
 
         <!--设置设备管理员的-->
         <Image RenderOptions.BitmapScalingMode="Fant" Width="62" Source="../../Resources/Images/AppIcons/icebox.png" Margin="377,502,483,0" Height="42" VerticalAlignment="Top"/>
@@ -57,7 +57,7 @@
         <Image RenderOptions.BitmapScalingMode="Fant" Width="62" Source="../../Resources/Images/AppIcons/AirForzen.png" Margin="17,502,843,0" Height="42" VerticalAlignment="Top"/>
         <Button Style="{DynamicResource AtmbxButtonStyle}" x:Name="ButtonAirForzenAct"   Content="{DynamicResource btnAirForzenAct}" Margin="89,502,0,0"   FontSize="18"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"   HorizontalAlignment="Left" Width="257" Click="ButtonAirForzenAct_Click" Height="45" VerticalAlignment="Top"/>
 
-      
+
         <Image RenderOptions.BitmapScalingMode="Fant" Width="62" Source="../../Resources/Images/AppIcons/web1n.stopapp.png" Margin="377,553,483,0" Height="42" VerticalAlignment="Top"/>
         <Button Style="{DynamicResource AtmbxButtonStyle}" x:Name="ButtonActivateStopapp"   Content="{DynamicResource btnStopAppActivator}" Margin="444,553,0,0"   FontSize="18"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"   HorizontalAlignment="Left" Width="282" Click="ButtonActivateStopapp_Click" Height="45" VerticalAlignment="Top"/>
 
