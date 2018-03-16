@@ -81,7 +81,14 @@ namespace AutumnBox.OpenFramework.Extension
         {
             OpenApi.Log.Info(this, message);
         }
-
+        /// <summary>
+        /// 在UI线程运行代码
+        /// </summary>
+        /// <param name="act"></param>
+        protected void RunOnUIThread(Action act)
+        {
+            OpenApi.Gui.RunOnUIThread(this, act);
+        }
         /// <summary>
         /// 模块初始化时调用
         /// </summary>

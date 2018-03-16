@@ -14,6 +14,7 @@ using System.Linq;
 using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace AutumnBox.ExampleExtensions
 {
@@ -30,16 +31,19 @@ namespace AutumnBox.ExampleExtensions
         }
         public override void OnStartCommand(StartArgs args)
         {
-            //var highContext = ContextFactory.GetHighPermissionContext(this);
-            OpenApi.ApiFactory.SetGuiApi(this, null);
-            OpenApi.Gui.RunOnUIThread(this, () =>
+            Window expWin = null;
+            RunOnUIThread(() =>
             {
-                new ExampleWindow()
+                expWin = new ExampleWindow()
                 {
                     Owner = OpenApi.Gui.GetMainWindow(this),
-                    WindowStartupLocation = System.Windows.WindowStartupLocation.CenterOwner
-                }.ShowDialog();
+                    WindowStartupLocation = WindowStartupLocation.CenterOwner
+                };
+                expWin.Show();
             });
+            bool isClosed = false;
+            expWin.Closed += (s, e) => isClosed = true;
+            while (!isClosed) ;
         }
     }
 }
