@@ -649,12 +649,8 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>if $(ConfigurationName) == Release (
-del /S *.json
-del /S *.pdb
-del /S *.xml
-del /S
-del AutumnBox.ConsoleTester.exe
-rd /S /Q logs
+del /S AutumnBox.ConsoleTester.*
+rd /S /Q ..\logs
 rd /S /Q app.publish
 )
 

@@ -329,6 +329,7 @@
     <s:String x:Key="deviceStateOffline">Device offline</s:String>
     <s:String x:Key="deviceStateUnauthorized">Plz allow USB debugging!</s:String>
     <!--设备状态提示-->
+    
     <s:String x:Key="lbDisconnect">Device not found</s:String>
     <s:String x:Key="lbConnectedDevice">Connected to</s:String>
     

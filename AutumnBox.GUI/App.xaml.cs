@@ -156,11 +156,6 @@ namespace AutumnBox.GUI
                 $"Source:{n}{e.Exception.Source}{n}{n}{n}" +
                 $"Inner:{n}{e.Exception.InnerException?.ToString() ?? "None"}{n}";
 
-            if (!Directory.Exists("logs"))
-            {
-                Directory.CreateDirectory("logs");
-            }
-            File.WriteAllText("logs\\exception.log", exstr);
             try { Logger.Fatal(this, exstr); } catch { }
 
             e.Handled = true;

@@ -37,7 +37,7 @@ namespace AutumnBox.Basic.Device
                 case "offline":
                     return DeviceState.Offline;
                 default:
-                    return DeviceState.Unknow;
+                    return DeviceState.Unknown;
             }
         }
     }
@@ -74,7 +74,7 @@ namespace AutumnBox.Basic.Device
         /// <summary>
         /// 未知状态
         /// </summary>
-        Unknow = 1 << 6,
+        Unknown = 1 << 6,
         /// <summary>
         /// 未允许ADB调试
         /// </summary>

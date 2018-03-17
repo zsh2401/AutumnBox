@@ -109,7 +109,9 @@ namespace AutumnBox.GUI.UI.FuncPanels
 
 
         public DeviceBasicInfo DeviceInfo { get; private set; }
+
         public bool CurrentDeviceIsRoot { get; private set; }
+
         public DeviceInfoPanel()
         {
             InitializeComponent();
@@ -140,7 +142,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
                     Task.Run(() =>
                     {
                         var product = new DeviceInfoGetterInFastboot(devSimpleInfo.Serial).GetProduct();
-                        this.Dispatcher.Invoke(() =>
+                        Dispatcher.Invoke(() =>
                         {
                             DeviceName = product;
                         });
@@ -153,13 +155,12 @@ namespace AutumnBox.GUI.UI.FuncPanels
             }
         }
 
-
-
         public void Reset()
         {
             DeviceInfo = new DeviceBasicInfo() { State = DeviceState.None };
             Dispatcher.Invoke(() =>
             {
+                CurrentDeviceIsRoot = false;
                 DeviceStateText = App.Current.Resources[$"deviceStateNone"].ToString();
                 ConnectStatusText = App.Current.Resources["lbDisconnect"].ToString();
                 ClearValue(DeviceNameProperty);
@@ -189,7 +190,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
             DeviceScreenInfo = hwInfo.ScreenInfo ?? App.Current.Resources["GetFail"].ToString();
         }
 
-        private void BtnRefresh_Click(object sender, System.Windows.RoutedEventArgs e)
+        private void BtnRefresh_Click(object sender, RoutedEventArgs e)
         {
             Refresh(DeviceInfo);
         }
