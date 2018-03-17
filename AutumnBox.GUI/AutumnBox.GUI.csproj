@@ -129,6 +129,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="AppLoader.cs" />
     <Compile Include="Cfg\ConfigPropertyAttribute.cs" />
     <Compile Include="Helper\BlurHelper.cs" />
     <Compile Include="Helper\BoxHelper.cs" />

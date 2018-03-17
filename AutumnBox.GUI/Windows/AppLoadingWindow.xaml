@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AutumnBox.GUI.Windows"
         mc:Ignorable="d"
+        Loaded="Window_Loaded"
         Title="AppLoadingWindow" Height="288" Width="419.5" WindowStyle="None" ResizeMode="NoResize" Background="{DynamicResource BackBrush}" WindowStartupLocation="CenterScreen" MouseDown="Window_MouseDown">
     <Grid>
         <Image HorizontalAlignment="Left" Height="288" VerticalAlignment="Top" Width="420" Source="/AutumnBox.GUI;component/Resources/Images/loading.jpg" Stretch="Fill"/>

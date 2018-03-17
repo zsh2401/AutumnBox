@@ -65,6 +65,7 @@ namespace AutumnBox.GUI.I18N
         private static void SaveLangSetting()
         {
             Settings.Default.Language = App.Current.Resources["LanguageCode"].ToString();
+            Settings.Default.Save();
         }
         public static void SetLanguage(string languageCode)
         {

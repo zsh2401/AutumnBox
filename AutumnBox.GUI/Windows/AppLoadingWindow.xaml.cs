@@ -24,7 +24,7 @@ namespace AutumnBox.GUI.Windows
         public AppLoadingWindow()
         {
             InitializeComponent();
-            App.Current.Load(this);
+            ThemeManager.LoadFromSetting();
         }
         public void SetProgress(double value)
         {
@@ -38,10 +38,13 @@ namespace AutumnBox.GUI.Windows
         {
             this.DragMove();
         }
-
         public void Finish()
         {
             this.Close();
+        }
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            new AppLoader(this).LoadAsync();
         }
     }
 }

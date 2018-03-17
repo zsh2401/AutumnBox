@@ -42,16 +42,23 @@ namespace AutumnBox.GUI
     public partial class App : Application
     {
         private const string TAG = "App";
+
         internal const int HAVE_OTHER_PROCESS = 25364;
+
         internal static IApplicationContext MainAopContext { get; private set; }
+
         internal static Context OpenFrameworkContext { get; private set; }
+
         private class AppContext : Context { }
+
         static App()
         {
             MainAopContext = new XmlApplicationContext("AutumnBoxAop.atmbxml");
             OpenFrameworkContext = new AppContext();
         }
+
         public static new App Current { get; private set; }
+
         public MainWindow MainWindowAsMainWindow
         {
             get
@@ -59,6 +66,7 @@ namespace AutumnBox.GUI
                 return (Current.MainWindow as MainWindow);
             }
         }
+
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
@@ -89,53 +97,6 @@ namespace AutumnBox.GUI
             }
         }
 
-        internal async void Load(IAppLoadingWindow loadingWindowApi)
-        {
-            Debug.WriteLine("Loading...", TAG);
-            loadingWindowApi.SetProgress(10);
-            loadingWindowApi.SetTip(Resources["ldmsgStartAdb"].ToString());
-            if (Settings.Default.ShowDebuggingWindowNextLaunch)
-            {
-                new DebugWindow().Show();
-            }
-            await Task.Run(() =>
-            {
-                bool success = false;
-                bool tryAgain = true;
-                while (!success)
-                {
-                    success = AdbHelper.StartServer();
-                    if (!success)
-                        App.Current.Dispatcher.Invoke(() =>
-                        {
-                            tryAgain = BoxHelper.ShowChoiceDialog(
-                            "msgWarning",
-                            "msgStartAdbServerFail",
-                            "btnExit", "btnIHaveCloseOtherPhoneHelper").ToBool();
-                        });
-                    if (tryAgain)
-                    {
-                        Thread.Sleep(2000);
-                    }
-                    else
-                    {
-                        App.Current.Shutdown(HAVE_OTHER_PROCESS);
-                    }
-                }
-            });
-            loadingWindowApi.SetProgress(60);
-            loadingWindowApi.SetTip(Resources["ldmsgStartDeviceMonitor"].ToString());
-            ThemeManager.LoadFromSetting();
-            App.Current.MainWindow = new MainWindow();
-            DevicesMonitor.Begin();
-            loadingWindowApi.SetProgress(80);
-            loadingWindowApi.SetTip(Resources["ldmsgLoadingExtensions"].ToString());
-            OpenFramewokManager.LoadApi();
-            ExtensionManager.LoadAllExtension(OpenFrameworkContext);
-            App.Current.MainWindow.Show();
-            loadingWindowApi.SetProgress(100);
-            loadingWindowApi.Finish();
-        }
         private string[] blockListForExceptionSource = {
             "PresentationCore"
         };
