@@ -610,9 +610,6 @@
     <Resource Include="Resources\Images\autumn.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\loading.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\Themes\DreamTheme_files\bg.jpg" />
   </ItemGroup>
   <ItemGroup>

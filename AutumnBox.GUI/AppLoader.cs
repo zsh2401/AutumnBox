@@ -62,7 +62,6 @@ namespace AutumnBox.GUI
             });
             loadingWindowApi.SetProgress(60);
             loadingWindowApi.SetTip(App.Current.Resources["ldmsgStartDeviceMonitor"].ToString());
-            ThemeManager.LoadFromSetting();
             App.Current.MainWindow = new MainWindow();
             DevicesMonitor.Begin();
             loadingWindowApi.SetProgress(80);
