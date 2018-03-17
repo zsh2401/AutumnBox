@@ -23,7 +23,7 @@
                 <Setter Property="Foreground" Value="{DynamicResource ForegroundBrushKey}" />
             </Trigger>
         </Style.Triggers>
-        <Setter Property="FontFamily" Value="Microsoft YaHei UI Light"/>
+        <Setter Property="FontFamily" Value="{DynamicResource AutumnBox.Font}"/>
         <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
         <Setter Property="Foreground" Value="{DynamicResource ForegroundOnPrimaryBrushKey}"/>
         <Setter Property="Background" Value="{DynamicResource TabItem.Static.Background}"/>

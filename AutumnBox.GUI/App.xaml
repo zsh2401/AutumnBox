@@ -4,6 +4,7 @@
              StartupUri="Windows/AppLoadingWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
+            <FontFamily x:Key="AutumnBox.Font">Microsoft YaHei UI Light</FontFamily>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/I18N/Langs/en-US.xaml"/>
                 <ResourceDictionary Source="/Resources/Themes/SpringTheme.xaml"/>

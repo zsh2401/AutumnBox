@@ -5,7 +5,7 @@
         <Setter Property="TextWrapping" Value="NoWrap"/>
         <Setter Property="TextTrimming" Value="None"/>
         <Setter Property="Foreground" Value="{DynamicResource ForegroundBrushKey}"/>
-        <Setter Property="FontFamily" Value="Microsoft YaHei UI Light"/>
+        <Setter Property="FontFamily" Value="{DynamicResource AutumnBox.Font}"/>
     </Style>
 
 

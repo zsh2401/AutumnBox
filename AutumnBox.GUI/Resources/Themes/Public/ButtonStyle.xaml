@@ -18,7 +18,7 @@
         <Setter Property="Background" Value="{DynamicResource BtnBackgroundBrushKey}"/>
         <Setter Property="BorderBrush" Value="Transparent"/>
         <Setter Property="Foreground" Value="{DynamicResource BtnForegroundBrushKey}"/>
-        <Setter Property="FontFamily" Value="Microsoft YaHei UI Light"/>
+        <Setter Property="FontFamily" Value="{DynamicResource AutumnBox.Font}"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">

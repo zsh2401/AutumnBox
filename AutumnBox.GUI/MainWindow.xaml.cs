@@ -11,7 +11,6 @@
 * Company: I am free man
 *
 \* =============================================================================*/
-using AutumnBox.GUI.Cfg;
 using AutumnBox.GUI.Helper;
 using AutumnBox.GUI.NetUtil;
 using AutumnBox.GUI.UI;
@@ -23,7 +22,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Collections.Generic;
-using AutumnBox.Support.CstmDebug;
 using AutumnBox.GUI.UI.Fp;
 using AutumnBox.Basic.Device;
 using AutumnBox.Basic.Adb;
@@ -31,7 +29,6 @@ using AutumnBox.Basic.FlowFramework;
 using AutumnBox.Basic.Util;
 using AutumnBox.Basic.MultipleDevices;
 using AutumnBox.GUI.UI.Cstm;
-using System.Windows.Media.Animation;
 using System.Windows.Threading;
 using AutumnBox.GUI.UI.FuncPanels;
 
@@ -45,6 +42,7 @@ namespace AutumnBox.GUI
         private Object setUILock = new System.Object();
         private List<IRefreshable> refreshables;
         private DeviceBasicInfo currentDevice;
+
         public bool BtnMinEnable => true;
 
         Window ITitleBarWindow.MainWindow => this;

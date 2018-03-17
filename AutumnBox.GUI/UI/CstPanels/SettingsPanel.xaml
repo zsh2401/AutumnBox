@@ -9,11 +9,11 @@
              mc:Ignorable="d" 
             Height="570" Width="940">
     <Grid>
-        <ComboBox DisplayMemberPath="LanguageName" x:Name="CbBoxLanguage" HorizontalAlignment="Left" Margin="153,38,0,0" VerticalAlignment="Top" Width="225" BorderBrush="#FFFDF5F5" FontSize="14" FontFamily="Microsoft YaHei UI Light" SelectedIndex="0" />
+        <ComboBox DisplayMemberPath="LanguageName" x:Name="CbBoxLanguage" HorizontalAlignment="Left" Margin="153,38,0,0" VerticalAlignment="Top" Width="225" BorderBrush="#FFFDF5F5" FontSize="14" FontFamily="{DynamicResource AutumnBox.Font}" SelectedIndex="0" />
         <Button Foreground="{DynamicResource ForegroundOnPrimaryBrushKey}" Style="{DynamicResource AtmbxButtonStyle}" x:Name="BtnCreateShortcut" Content="{DynamicResource btnCreateShortcut}" Margin="153,174,0,0" VerticalAlignment="Top" Height="26"  HorizontalAlignment="Left" Width="176" Click="BtnCreateShortcut_Click"/>
         <Image Source="/Resources/Images/misakasister.png" HorizontalAlignment="Left" Height="60" Margin="84,140,0,0" VerticalAlignment="Top" Width="64"/>
         <TextBlock Foreground="{DynamicResource ForegroundOnPrimaryBrushKey}" Style="{DynamicResource AtmbxTextBlockStyle}" TextAlignment="Right" Text="{DynamicResource Language}" Margin="10,38,792,507" RenderTransformOrigin="0.5,0.5"  FontSize="16" />
-        <Button Foreground="{DynamicResource ForegroundOnPrimaryBrushKey}" Style="{DynamicResource AtmbxButtonStyle}" Content="{DynamicResource btnLaunchDebugWindow}" HorizontalAlignment="Left" Margin="153,364,0,0" VerticalAlignment="Top" Width="176" BorderBrush="{x:Null}" Background="{DynamicResource BtnBrush}"  FontFamily="Microsoft YaHei UI Light" Click="Button_Click"/>
+        <Button  Foreground="{DynamicResource ForegroundOnPrimaryBrushKey}" Style="{DynamicResource AtmbxButtonStyle}" Content="{DynamicResource btnLaunchDebugWindow}" HorizontalAlignment="Left" Margin="153,364,0,0" VerticalAlignment="Top" Width="176" BorderBrush="{x:Null}"  Click="Button_Click"/>
         <CheckBox Foreground="{DynamicResource ForegroundOnPrimaryBrushKey}" x:Name="CKBShowDebugWindowOnNextLaunch" Content="{DynamicResource ckbShowDebugWindowOnNextLaunch}" HorizontalAlignment="Left" Margin="153,394,0,0" VerticalAlignment="Top" Width="291" />
         
         <ComboBox x:Name="CbBoxTheme" DisplayMemberPath="Name" HorizontalAlignment="Left" Margin="153,80,0,0" VerticalAlignment="Top" Width="225" Height="27"/>

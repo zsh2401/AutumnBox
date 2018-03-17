@@ -22,7 +22,7 @@
                 <cpnel:DeviceInfoPanel x:Name="DevInfoPanel" Margin="10,10,0,0" Height="212" VerticalAlignment="Top" HorizontalAlignment="Left" Width="650"/>
                 <cpnel:DevicesPanel  x:Name="DevicesPanel" Margin="667,0,293,418"/>
 
-                <Button Style="{DynamicResource AtmbxButtonStyle}"  x:Name="buttonStartShell"  Content="{DynamicResource btnADBCMD}" Margin="861,141,23,0" VerticalAlignment="Top" Height="54"  FontSize="14" FontFamily="Microsoft YaHei UI Light" Click="ButtonStartShell_Click" />
+                <Button Style="{DynamicResource AtmbxButtonStyle}"  x:Name="buttonStartShell"  Content="{DynamicResource btnADBCMD}" Margin="861,141,23,0" VerticalAlignment="Top" Height="54"  FontSize="14"  Click="ButtonStartShell_Click" />
                 <Button  Style="{DynamicResource AtmbxButtonStyle}" x:Name="BtnSettings"  Content="{DynamicResource btnSetting}" Margin="940,590,9,0" VerticalAlignment="Top" Height="35"   FontSize="14"  Click="BtnSettings_Click" />
                 <Button  Style="{DynamicResource AtmbxButtonStyle}" x:Name="BtnAbout"  Content="{DynamicResource btnAbout}" Margin="939,550,9,0" VerticalAlignment="Top" Height="35"  FontSize="14"  Click="BtnAbout_Click" />
                 <Button  Style="{DynamicResource AtmbxButtonStyle}" x:Name="BtnDonate"  Content="{DynamicResource Donate}" Margin="940,510,9,0" VerticalAlignment="Top" Height="35"   FontSize="14"  Click="BtnDonate_Click" />

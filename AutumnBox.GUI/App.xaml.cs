@@ -12,26 +12,16 @@
 *
 \* =============================================================================*/
 using AutumnBox.Basic.Adb;
-using AutumnBox.Basic.MultipleDevices;
 using AutumnBox.GUI.Helper;
 using AutumnBox.GUI.I18N;
 using AutumnBox.GUI.Properties;
-using AutumnBox.GUI.UI.FuncPanels;
-using AutumnBox.GUI.Util;
-using AutumnBox.GUI.Windows;
 using AutumnBox.OpenFramework;
-using AutumnBox.OpenFramework.Internal;
 using AutumnBox.Support.Log;
 using Spring.Context;
 using Spring.Context.Support;
 using System;
-using System.Diagnostics;
-using System.IO;
 using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
-using static AutumnBox.GUI.UI.FuncPanels.PoweronFuncPanel;
 
 namespace AutumnBox.GUI
 {
