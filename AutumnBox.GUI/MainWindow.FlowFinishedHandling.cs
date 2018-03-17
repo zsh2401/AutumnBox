@@ -33,6 +33,9 @@ namespace AutumnBox.GUI
                     case nameof(IceBoxActivator):
                     case nameof(StopAppActivator):
                     case nameof(AirForzenActivator):
+                    case nameof(BlackHoleActivator):
+                    case nameof(AnzenbokusuActivator):
+                    case nameof(FreezeYouActivator):
                         DevicesOwnerSetted((DeviceOwnerSetter)sender, (DeviceOwnerSetterResult)e.Result);
                         break;
                     case nameof(RecoveryFlasher):

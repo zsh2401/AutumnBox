@@ -90,7 +90,7 @@ namespace AutumnBox.Basic.Flows
             {
                 result.ErrorType = DeviceOwnerSetterErrType.DeviceAlreadyProvisioned;
             }
-            else if (result.OutputData.Contains("several accounts on the device"))
+            else if (result.OutputData.Contains("several accounts on the device") || result.OutputData.Contains("already some accounts"))
             {
                 result.ErrorType = DeviceOwnerSetterErrType.ServalAccountsOnTheDevice;
             }

@@ -24,7 +24,6 @@ namespace AutumnBox.GUI.Windows
             {
                 TxtBAdvise.Visibility = Visibility.Hidden;
                 TxtBAdviseTip.Visibility = Visibility.Hidden;
-                Height = 330;
             }
             else {
                 TxtBAdvise.Text = advise;

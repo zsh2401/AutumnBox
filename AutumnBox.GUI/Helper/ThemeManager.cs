@@ -24,13 +24,12 @@ namespace AutumnBox.GUI.Helper
     {
         public override string Name => "随机-Random";
         private static readonly Random ran = new Random();
-        public override ResourceDictionary Resource => resouce;
-        private ResourceDictionary resouce;
-        public void Next()
+        public override ResourceDictionary Resource => Next();
+        private ResourceDictionary Next()
         {
             var themes = ThemeManager.Themes;
             int ranIndex = ran.Next(1, themes.Length);
-            resouce = themes[ranIndex].Resource;
+            return themes[ranIndex].Resource;
         }
     }
     internal class FileTheme : Theme
@@ -61,7 +60,6 @@ namespace AutumnBox.GUI.Helper
                 new FileTheme("PinkTheme.xaml"),
                 new FileTheme("PurpleTheme.xaml")
             };
-            (themes[0] as RandomTheme).Next();
         }
         public static void LoadFromSetting()
         {
@@ -71,7 +69,6 @@ namespace AutumnBox.GUI.Helper
         public static void ChangeTheme(Theme theme)
         {
             usingRandomTheme = theme is RandomTheme;
-            (theme as RandomTheme)?.Next();
             App.Current.Resources.MergedDictionaries[1] = theme.Resource;
             ThemeChanged?.Invoke(new object(), new EventArgs());
             Settings.Default.Theme = theme.Name;

@@ -91,10 +91,11 @@ namespace AutumnBox.GUI.UI.FuncPanels
         void ActivateStopapp(DeviceBasicInfo targetDevice);
         void ActivateBlackHole(DeviceBasicInfo targetDevice);
         void ActivateAnzenbokusu(DeviceBasicInfo targetDevice);
+        void ActivateFreezeYou(DeviceBasicInfo targetDevice);
     }
     public class AdbActivatorsUI : IAdbActivatorsUI
     {
-        [InstallCheck("me.piebridge.brevent", ErrorMsgKey = "msgPlzInstallBreventFirst")]
+        [InstallCheck(BreventServiceActivator._AppPackageName, ErrorMsgKey = "msgPlzInstallBreventFirst")]
         public void ActivateBrevent(DeviceBasicInfo targetDevice)
         {
             bool fixAndroidO = false;
@@ -205,7 +206,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
             BoxHelper.ShowLoadingDialog(activator);
         }
 
-        [InstallCheck(StopAppActivator.AppPackageName, ErrorMsgKey = "msgPlsInstallBlackholeFirst")]
+        [InstallCheck(BlackHoleActivator.AppPackageName, ErrorMsgKey = "msgPlsInstallBlackholeFirst")]
         [Tip("msgIceAct")]
         [DeviceUserCheck]
         public void ActivateBlackHole(DeviceBasicInfo targetDevice)
@@ -222,6 +223,16 @@ namespace AutumnBox.GUI.UI.FuncPanels
         public void ActivateAnzenbokusu(DeviceBasicInfo targetDevice)
         {
             AnzenbokusuActivator activator = new AnzenbokusuActivator();
+            activator.Init(new FlowArgs() { DevBasicInfo = targetDevice });
+            activator.RunAsync();
+            BoxHelper.ShowLoadingDialog(activator);
+        }
+        [InstallCheck(FreezeYouActivator.AppPackageName, ErrorMsgKey = "msgPlsInstallFreezeYouFirst")]
+        [Tip("msgIceAct")]
+        [DeviceUserCheck]
+        public void ActivateFreezeYou(DeviceBasicInfo targetDevice)
+        {
+            FreezeYouActivator activator = new FreezeYouActivator();
             activator.Init(new FlowArgs() { DevBasicInfo = targetDevice });
             activator.RunAsync();
             BoxHelper.ShowLoadingDialog(activator);

@@ -6,7 +6,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AutumnBox.GUI.UI.FuncPanels"
-             mc:Ignorable="d" d:DesignWidth="922" Width="922" Height="788.5">
+             mc:Ignorable="d" d:DesignWidth="922" Width="922" Height="830.5">
     <Grid x:Name="MainGrid">
         <!--NO ROOT-->
 
@@ -61,13 +61,16 @@
         <Image RenderOptions.BitmapScalingMode="Fant" Width="62" Source="../../Resources/Images/AppIcons/web1n.stopapp.png" Margin="377,553,483,0" Height="42" VerticalAlignment="Top"/>
         <Button Style="{DynamicResource AtmbxButtonStyle}" x:Name="ButtonActivateStopapp"   Content="{DynamicResource btnStopAppActivator}" Margin="444,553,0,0"   FontSize="18"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"   HorizontalAlignment="Left" Width="282" Click="ButtonActivateStopapp_Click" Height="45" VerticalAlignment="Top"/>
 
+        <Image RenderOptions.BitmapScalingMode="Fant" Width="62" Source="../../Resources/Images/AppIcons/freezeYou.png" Margin="17,653,843,0" Height="42" VerticalAlignment="Top"/>
+        <Button Style="{DynamicResource AtmbxButtonStyle}" x:Name="ButtonActivateFreezeYou"   Content="{DynamicResource btnFreezeYouActivator}" Margin="84,653,0,0"   FontSize="18"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"   HorizontalAlignment="Left" Width="282" Click="ButtonActivateFreezeYou_Click"  Height="45" VerticalAlignment="Top"/>
+
         <!--开启网络调试的-->
-        <Image RenderOptions.BitmapScalingMode="Fant" Width="62" Source="../../Resources/Images/AppIcons/gmc.png" Margin="10,727,850,0" Height="42" VerticalAlignment="Top"/>
-        <Button Style="{DynamicResource AtmbxButtonStyle}" x:Name="ButtonGMCAct"   Content="{DynamicResource btnGeekMemoryCleanerActivator}" Margin="80,727,0,0"   FontSize="18"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"   HorizontalAlignment="Left" Width="262" Click="ButtonGMCAct_Click" Height="44" VerticalAlignment="Top"/>
+        <Image RenderOptions.BitmapScalingMode="Fant" Width="62" Source="../../Resources/Images/AppIcons/gmc.png" Margin="10,770,850,0" Height="42" VerticalAlignment="Top"/>
+        <Button Style="{DynamicResource AtmbxButtonStyle}" x:Name="ButtonGMCAct"   Content="{DynamicResource btnGeekMemoryCleanerActivator}" Margin="80,770,0,0"   FontSize="18"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"   HorizontalAlignment="Left" Width="262" Click="ButtonGMCAct_Click" Height="44" VerticalAlignment="Top"/>
 
         <Label Style="{DynamicResource AtmbxLabelStyle}" FontSize="18" Content="{DynamicResource lbSetDeviceOwner}" HorizontalAlignment="Left" Margin="13,434,0,0" VerticalAlignment="Top" Width="355"/>
         <Label Style="{DynamicResource AtmbxLabelStyle}" FontSize="18" Content="{DynamicResource lbRunScript}" HorizontalAlignment="Left" Margin="17,306,0,0" VerticalAlignment="Top" Width="355"/>
-        <Label Style="{DynamicResource AtmbxLabelStyle}" FontSize="18" Content="{DynamicResource lbOpenNetDebugging}" HorizontalAlignment="Left" Margin="0,683,0,0" VerticalAlignment="Top" Width="355"/>
+        <Label Style="{DynamicResource AtmbxLabelStyle}" FontSize="18" Content="{DynamicResource lbOpenNetDebugging}" HorizontalAlignment="Left" Margin="0,726,0,0" VerticalAlignment="Top" Width="355"/>
 
     </Grid>
 </fp:FastPanelChild>

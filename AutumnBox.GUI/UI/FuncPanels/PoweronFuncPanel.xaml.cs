@@ -402,5 +402,10 @@ namespace AutumnBox.GUI.UI.FuncPanels
         {
             core.ActivateAnzenbokusu(_currentDevInfo);
         }
+
+        private void ButtonActivateFreezeYou_Click(object sender, RoutedEventArgs e)
+        {
+            core.ActivateFreezeYou(_currentDevInfo);
+        }
     }
 }

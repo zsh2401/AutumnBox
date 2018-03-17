@@ -69,6 +69,7 @@
     <Compile Include="DpiChanger.cs" />
     <Compile Include="FilePuller.cs" />
     <Compile Include="FilePusher.cs" />
+    <Compile Include="FreezeYouActivator.cs" />
     <Compile Include="GeekMemoryCleanerActivator.cs" />
     <Compile Include="IceBoxActivator.cs" />
     <Compile Include="IslandActivator.cs" />

@@ -7,6 +7,7 @@
 
     <s:String x:Key="AppDesc">Open source,free,simple,GUI adb toolbox</s:String>
     <!--按钮-->
+    <s:String x:Key="btnFreezeYouActivator">Active FreezeYou!</s:String>
     <s:String x:Key="btnAnzenbokusuActivator">Active Anzenbokusu</s:String>
     <s:String x:Key="btnBlackholeActivator">Active Blackhole</s:String>
     <s:String x:Key="btnStopExtension">Stop this extension</s:String>
@@ -174,6 +175,7 @@
         &#x0a; 当进入9008模式后,设备会完全黑屏,但您可以使用相关工具进行刷机
         &#x0a;如果想要退出9008模式,长按电源键即可!
     </s:String>
+    <s:String x:Key="msgPlsInstallFreezeYouFirst">请先安装FreezeYou!</s:String>
     <s:String x:Key="msgPlsInstallAirForzenFirst">请先安装空调狗!</s:String>
     <s:String x:Key="msgPlsInstallBreventFirst">请先安装黑域!</s:String>
     <s:String x:Key="msgPlsInstallIslandFirst">请先安装Island!!</s:String>
