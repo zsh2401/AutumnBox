@@ -22,7 +22,7 @@ namespace AutumnBox.GUI.Helper
     }
     internal class RandomTheme : Theme
     {
-        public override string Name => $"随机-Random";
+        public override string Name => "随机-Random";
         private static readonly Random ran = new Random();
         public override ResourceDictionary Resource => resouce;
         private ResourceDictionary resouce;
@@ -30,7 +30,6 @@ namespace AutumnBox.GUI.Helper
         {
             var themes = ThemeManager.Themes;
             int ranIndex = ran.Next(1, themes.Length);
-            Logger.Debug(this, ranIndex);
             resouce = themes[ranIndex].Resource;
         }
     }
@@ -76,12 +75,11 @@ namespace AutumnBox.GUI.Helper
             App.Current.Resources.MergedDictionaries[1] = theme.Resource;
             ThemeChanged?.Invoke(new object(), new EventArgs());
             Settings.Default.Theme = theme.Name;
+            Settings.Default.Save();
         }
         public static void ChangeTheme(string themeName)
         {
-
             var theme = themes.Find((_theme) => { return _theme.Name == themeName; });
-            Logger.Debug("ThemeHelper", $"Theme finded {theme.Name}");
             ChangeTheme(theme);
         }
         public static int GetCrtIndex()
