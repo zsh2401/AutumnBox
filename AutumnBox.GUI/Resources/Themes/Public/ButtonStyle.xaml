@@ -14,6 +14,9 @@
             <Trigger Property="IsEnabled" Value="False">
                 <Setter Property="Foreground" Value="{DynamicResource Button.Disabled.Foreground}" />
             </Trigger>
+            <!--<Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Foreground" Value="{DynamicResource ForegroundOnPrimaryBrushKey}" />
+            </Trigger>-->
         </Style.Triggers>
         <Setter Property="Background" Value="{DynamicResource BtnBackgroundBrushKey}"/>
         <Setter Property="BorderBrush" Value="Transparent"/>
@@ -46,7 +49,6 @@
                                     <Storyboard>
                                         <ColorAnimation Storyboard.TargetName="BorderBrush" 
                               Storyboard.TargetProperty="Color" To="{DynamicResource ColorBtnMouseOver}" />
-
                                     </Storyboard>
                                 </VisualState>
 

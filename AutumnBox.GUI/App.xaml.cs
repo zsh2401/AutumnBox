@@ -31,7 +31,6 @@ namespace AutumnBox.GUI
     /// </summary>
     public partial class App : Application
     {
-        private const string TAG = "App";
 
         internal const int HAVE_OTHER_PROCESS = 25364;
 
@@ -61,8 +60,9 @@ namespace AutumnBox.GUI
         {
             base.OnStartup(e);
             Current = this;
+
 #if !DEBUG
-            App.Current.DispatcherUnhandledException += Current_DispatcherUnhandledException;
+            this.DispatcherUnhandledException += Current_DispatcherUnhandledException;
 #endif
             if (Settings.Default.SkipVersion == "0.0.1")
             {
@@ -94,11 +94,6 @@ namespace AutumnBox.GUI
         {
             string src = e.Exception.Source;
             if (blockListForExceptionSource.Contains(src)) return;
-            MessageBox.Show(
-                $"一个未知的错误的发生了,将logs文件夹压缩并发送给开发者以解决问题{Environment.NewLine}Please compress the logs folder and send it to zsh2401@163.com",
-                "AutumnBox 错误/Unknow Exception",
-            MessageBoxButton.OK,
-            MessageBoxImage.Error);
             string n = Environment.NewLine;
             string exstr =
                 $"AutumnBox Exception {DateTime.Now.ToString("MM/dd/yyyy    HH:mm:ss")}{n}{n}" +
@@ -108,7 +103,12 @@ namespace AutumnBox.GUI
                 $"Inner:{n}{e.Exception.InnerException?.ToString() ?? "None"}{n}";
 
             try { Logger.Fatal(this, exstr); } catch { }
-
+            MessageBox.Show(
+                $"一个未知的错误的发生了,将logs文件夹压缩并发送给开发者以解决问题{Environment.NewLine}" +
+                $"Please compress the logs folder and send it to zsh2401@163.com",
+                "AutumnBox 错误/Unknow Exception",
+            MessageBoxButton.OK,
+            MessageBoxImage.Error);
             e.Handled = true;
             App.Current.Shutdown(1);
         }

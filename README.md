@@ -7,7 +7,6 @@
 #### [说明书WIKI](https://github.com/zsh2401/AutumnBox/wiki)
 ***
 ![](http://atmb.top/images/demo/demo.png)
-
 ***
 ## AutumnBox是什么?
 是一个简约的刷机工具箱,对Google Adb工具包进行GUI封装,方便了不懂命令行的玩机人.
@@ -23,8 +22,8 @@
 * ...
 ***
 ## 进行AutumnBox拓展模块开发
-在AutumnBox 0.52.0之后的版本,开始支持第三方拓展模块的使用
-如果您也是一位开发者,欢迎前来开发
+在AutumnBox 0.52.0之后的版本,开始支持第三方拓展模块的使用    
+如果您也是一位开发者,欢迎前来开发   
 [**AutumnBox开发文档**](https://github.com/zsh2401/AutumnBox/wiki/zh_CN_AutumnBox%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3)
 
 ## 联系开发者

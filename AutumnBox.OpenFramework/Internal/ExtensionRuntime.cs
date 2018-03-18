@@ -30,15 +30,15 @@ namespace AutumnBox.OpenFramework.Internal
             if (!ext.InitAndCheck(args ?? new InitArgs())) throw new Exception("Cannot init");
             return new ExtensionRuntime(ext);
         }
-        public async void RunAsync(Context ctx,StartArgs args, Action finishedCallback)
+        public async void RunAsync(Context ctx, StartArgs args, Action finishedCallback)
         {
             await Task.Run(() =>
             {
-                Run(ctx,args);
+                Run(ctx, args);
             });
             finishedCallback();
         }
-        public void Run(Context ctx,StartArgs args)
+        public void Run(Context ctx, StartArgs args)
         {
             ctx.PermissionCheck(ContextPermissionLevel.Mid);
             IsRuning = true;
@@ -60,14 +60,31 @@ namespace AutumnBox.OpenFramework.Internal
         }
         public bool Stop(Context ctx, StopArgs args = null)
         {
-            ctx.PermissionCheck(ContextPermissionLevel.Mid);
-            if (!IsRuning) return true;
-            return InnerExtension.OnStopCommand(args ?? new StopArgs());
+            try
+            {
+                ctx.PermissionCheck(ContextPermissionLevel.Mid);
+                if (!IsRuning) return true;
+                return InnerExtension.OnStopCommand(args ?? new StopArgs());
+            }
+            catch (Exception ex)
+            {
+                OpenApi.Log.Warn(this, "failed.....", ex);
+                var wasFailedMsg = $"{Name} {OpenApi.Gui.GetPublicResouce<String>(this, "msgExtensionWasFailed")}";
+                OpenApi.Gui.ShowMessageBox(this, "Warning", wasFailedMsg);
+                return true;
+            }
         }
-        public void Destory(Context ctx,DestoryArgs args = null)
+        public void Destory(Context ctx, DestoryArgs args = null)
         {
-            ctx.PermissionCheck(ContextPermissionLevel.Mid);
-            InnerExtension.OnDestory(args ?? new DestoryArgs());
+            try
+            {
+                ctx.PermissionCheck(ContextPermissionLevel.Mid);
+                InnerExtension.OnDestory(args ?? new DestoryArgs());
+            }
+            catch (Exception ex)
+            {
+                OpenApi.Log.Warn(this, "failed.....", ex);
+            }
         }
         public void WaitForFinish()
         {

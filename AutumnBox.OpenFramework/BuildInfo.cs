@@ -3,18 +3,13 @@
 ** date:  2018/2/25 0:53:59 (UTC +8:00)
 ** desc： ...
 *************************************************/
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutumnBox.OpenFramework
 {
     /// <summary>
     /// 关于SDK的信息
     /// </summary>
-   public static class BuildInfo
+    public static class BuildInfo
     {
         /// <summary>
         /// SDK版本

@@ -60,9 +60,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\AutumnBox.Basic.Flows\AutumnBox.Basic.Flows.csproj">
       <Project>{3091ecae-7ff2-421d-b970-1c76d7cab0c0}</Project>
       <Name>AutumnBox.Basic.Flows</Name>
