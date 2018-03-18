@@ -136,8 +136,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
                 case DeviceState.Recovery:
                     PoweronRefresh(devSimpleInfo);
                     break;
-                case DeviceState.Unauthorized:
-                    break;
+
                 case DeviceState.Fastboot:
                     Task.Run(() =>
                     {
@@ -147,10 +146,9 @@ namespace AutumnBox.GUI.UI.FuncPanels
                             DeviceName = product;
                         });
                     });
-                    ConnectStatusText = App.Current.Resources["lbConnectedDevice"].ToString();
                     break;
+                case DeviceState.Unauthorized:
                 case DeviceState.Offline:
-                    ConnectStatusText = App.Current.Resources["lbDeviceOffline"].ToString();
                     break;
             }
         }

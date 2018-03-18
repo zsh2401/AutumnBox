@@ -32,7 +32,8 @@ namespace AutumnBox.GUI.UI.FuncPanels
         public DevicesPanel()
         {
             InitializeComponent();
-            BtnEnableDisableNetDebugging.Visibility = Visibility.Hidden;
+            BtnDisableNetDebugging.Visibility = Visibility.Hidden;
+            BtnEnableNetDebugging.Visibility = Visibility.Hidden;
             DevicesMonitor.DevicesChanged += _monitor_DevicesChanged;
         }
         private void _monitor_DevicesChanged(object sender, DevicesChangedEventArgs e)
@@ -57,38 +58,30 @@ namespace AutumnBox.GUI.UI.FuncPanels
         {
             if (ListBoxMain.SelectedIndex > -1 && CurrentSelectDevice.State == DeviceState.Poweron)
             {
-                this.BtnEnableDisableNetDebugging.Visibility = Visibility.Visible;
-                if (CurrentSelectionIsNetDebugging)
-                {
-                    this.BtnEnableDisableNetDebugging.Content = App.Current.Resources["btnDisableNetdebugging"];
-                }
-                else
-                {
-                    this.BtnEnableDisableNetDebugging.Content = App.Current.Resources["btnEnableNetdebugging"];
-                }
+                BtnEnableNetDebugging.Visibility = CurrentSelectionIsNetDebugging ? Visibility.Hidden : Visibility.Visible;
+                BtnDisableNetDebugging.Visibility = CurrentSelectionIsNetDebugging ? Visibility.Visible : Visibility.Hidden;
             }
             else
             {
-                this.BtnEnableDisableNetDebugging.Visibility = Visibility.Hidden;
+                BtnDisableNetDebugging.Visibility = Visibility.Hidden;
+                BtnEnableNetDebugging.Visibility = Visibility.Hidden;
             }
             this.SelectionChanged(this, new EventArgs());
-        }
-
-        private void BtnEnableDisableNetDebugging_Click(object sender, RoutedEventArgs e)
-        {
-            if (CurrentSelectionIsNetDebugging)
-            {
-                new FastPanel(this.GridMain, new CloseNetDebugging(this, CurrentSelectDevice.Serial)).Display();
-            }
-            else
-            {
-                new FastPanel(this.GridMain, new OpenNetDebugging(this, CurrentSelectDevice.Serial)).Display();
-            }
         }
 
         private void BtnAddNetDebuggingDevice_Click(object sender, RoutedEventArgs e)
         {
             new FastPanel(this.GridMain, new NetDebuggingAdder(this)).Display();
+        }
+
+        private void BtnDisableNetDebugging_Click(object sender, RoutedEventArgs e)
+        {
+            new FastPanel(this.GridMain, new CloseNetDebugging(this, CurrentSelectDevice.Serial)).Display();
+        }
+
+        private void BtnEnableNetDebugging_Click(object sender, RoutedEventArgs e)
+        {
+            new FastPanel(this.GridMain, new OpenNetDebugging(this, CurrentSelectDevice.Serial)).Display();
         }
     }
 }

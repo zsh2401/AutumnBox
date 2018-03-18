@@ -23,7 +23,6 @@ namespace AutumnBox.GUI.Util
     internal sealed class AutoGC
     {
         private bool continueAutoGC = true;
-        public AutoGC() { }
         public void Start()
         {
             continueAutoGC = true;

@@ -14,7 +14,6 @@
 using AutumnBox.Support.Log;
 using System;
 using System.Threading;
-using System.Threading.Tasks;
 namespace AutumnBox.Basic.MultipleDevices
 {
     /// <summary>
@@ -42,16 +41,17 @@ namespace AutumnBox.Basic.MultipleDevices
     /// </summary>
     public static class DevicesMonitor
     {
+        private static DevicesMonitorCore core = new DevicesMonitorCore();
+
         /// <summary>
         /// 设备拔插时发生
         /// </summary>
-        public static event DevicesChangedHandler DevicesChanged;
-
-        private static DevicesMonitorCore core;
-        static DevicesMonitor()
+        public static event DevicesChangedHandler DevicesChanged
         {
-            core = new DevicesMonitorCore();
+            add { core.DevicesChanged += value; }
+            remove { core.DevicesChanged -= value; }
         }
+
         /// <summary>
         /// 开始监视
         /// </summary>
@@ -67,45 +67,47 @@ namespace AutumnBox.Basic.MultipleDevices
         {
             core.Cancel();
         }
+
         /// <summary>
         /// 完全静态类很不OOP,所以....
         /// </summary>
         private sealed class DevicesMonitorCore
         {
             private const int defaultInterval = 2000;
-            private bool _continue = true;
             private readonly int _interval;
-            private IDevicesGetter _devGetter = new DevicesGetter();
+            private Thread coreThread;
+            private IDevicesGetter _devGetter;
+            public DevicesChangedHandler DevicesChanged;
             public DevicesMonitorCore(int interval = defaultInterval)
             {
                 this._interval = interval;
+                _devGetter = new DevicesGetter();
             }
             public void Begin()
             {
-                _continue = true;
-                ListenAsync();
+                if (coreThread?.IsAlive == true) return;
+                coreThread = new Thread(Listen);
+                coreThread.Start();
+                coreThread.IsBackground = true;
             }
-            private async void ListenAsync()
+            private void Listen()
             {
                 var last = new DevicesList();
-                while (_continue)
+                while (true)
                 {
-                    var now = await Task.Run(() =>
-                    {
-                        Thread.Sleep(_interval);
-                        return _devGetter.GetDevices();
-                    });
+                    Thread.Sleep(_interval);
+                    var now = _devGetter.GetDevices();
                     if (now != last)
                     {
-                        Logger.Info("DevicesGetter", "Devices Changed");
+                        Logger.Info(this, "Devices Changed");
                         last = now;
-                        DevicesChanged?.Invoke(this, new DevicesChangedEventArgs(now));
+                        this.DevicesChanged?.Invoke(this, new DevicesChangedEventArgs(now));
                     }
                 }
             }
             public void Cancel()
             {
-                _continue = false;
+                coreThread.Abort();
             }
         }
     }
