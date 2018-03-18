@@ -1,5 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xml:space="preserve"
                     xmlns:s="clr-namespace:System;assembly=mscorlib">
     <s:String x:Key="AppName">AutumnBox</s:String>
     <s:String x:Key="LanguageName">English</s:String>
@@ -345,10 +346,19 @@
 
 
     <!--关于信息-->
-    <s:String x:Key="AboutMessage1">这是一个遵守GPL3.0协议的开源软件,请在必要的时候遵守开源协议</s:String>
-    <s:String x:Key="AboutMessage2">Developer E-mail zsh2401@163.com</s:String>
-    <s:String x:Key="AboutMessage_Thanks">Thanks list:</s:String>
-    <s:String x:Key="AboutMessage_OSList">Newtonsoft.Json &amp; Google Android Debug Bridge &amp; Google Android &amp; Linux</s:String>
+    <s:String x:Key="AboutMessage">
+这是一个遵守GPL3.0协议的开源软件,请在必要的时候遵守开源协议
+开发者电子邮件 zsh2401@163.com
+        
+        
+        
+        
+鸣谢以下开源项目做出的卓越贡献
+Spring.AOP
+Newtonsoft.Json
+Google Android Debug Bridge 
+Google Android 
+Linux</s:String>
     <!--关于信息-->
 
     <s:String x:Key="warningOpenNetDebugging">

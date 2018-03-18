@@ -27,7 +27,7 @@ namespace AutumnBox.GUI.UI.CstPanels
             LabelCompiledDate.Content = SystemHelper.CompiledDate.ToString("MM-dd-yyyy");
         }
         private void TextBlockGoToOS_MouseDown(object sender, MouseButtonEventArgs e) =>
-            Process.Start(App.Current.Resources["linkAutumnBoxOS"].ToString());
+            Process.Start(App.Current.Resources["urlOpensource"].ToString());
 
         private void TextBlockDonate_MouseDown(object sender, MouseButtonEventArgs e) =>
              new FastPanel(((MainWindow)App.Current.MainWindow).GridMain, new DonatePanel()).Display();
