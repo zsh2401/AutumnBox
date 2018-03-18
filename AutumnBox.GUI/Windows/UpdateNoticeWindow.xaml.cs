@@ -57,6 +57,7 @@ namespace AutumnBox.GUI.Windows
             if (CheckBoxSkip.IsChecked == true)
             {
                 Settings.Default.SkipVersion = version;
+                Settings.Default.Save();
             }
             this.Close();
         }
