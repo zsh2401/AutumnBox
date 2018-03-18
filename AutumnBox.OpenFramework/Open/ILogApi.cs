@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AutumnBox.OpenFramework.Open.V1
+namespace AutumnBox.OpenFramework.Open
 {
     /// <summary>
     /// 日志API

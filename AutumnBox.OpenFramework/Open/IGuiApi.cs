@@ -3,7 +3,7 @@ using System;
 using System.Windows;
 using System.Windows.Threading;
 
-namespace AutumnBox.OpenFramework.Open.V1
+namespace AutumnBox.OpenFramework.Open
 {
     /// <summary>
     /// GUI接口

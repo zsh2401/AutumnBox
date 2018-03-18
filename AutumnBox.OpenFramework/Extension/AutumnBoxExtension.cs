@@ -4,7 +4,7 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.Basic.Device;
-using AutumnBox.OpenFramework.Open.V1;
+using AutumnBox.OpenFramework.Open;
 using System;
 using System.Net.Mail;
 
@@ -16,6 +16,9 @@ namespace AutumnBox.OpenFramework.Extension
     /// </summary>
     public abstract class AutumnBoxExtension : Context
     {
+        /// <summary>
+        /// 标签,用于打LOG
+        /// </summary>
         public override string Tag => Name;
         /// <summary>
         /// 拓展名,强制要求覆写此属性

@@ -14,7 +14,6 @@
 using System;
 using System.Collections.Generic;
 using System.Windows;
-using System.Xml;
 
 namespace AutumnBox.GUI.I18N
 {

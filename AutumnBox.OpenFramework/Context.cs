@@ -20,7 +20,11 @@ namespace AutumnBox.OpenFramework
         /// <summary>
         /// 标签,主要用于打log
         /// </summary>
-        public virtual string Tag => this.GetType().Name;
+        public virtual string Tag => GetType().Name;
+        /// <summary>
+        /// 获取权限级别
+        /// </summary>
+        /// <returns></returns>
         internal virtual ContextPermissionLevel GetPermissionLevel()
         {
             var assName = this.GetType().Assembly.GetName().Name;
@@ -34,6 +38,11 @@ namespace AutumnBox.OpenFramework
                     return ContextPermissionLevel.Low;
             }
         }
+        /// <summary>
+        /// 权限自检
+        /// </summary>
+        /// <exception cref="AccessDeniedException">如果权限不足,将抛出异常</exception>
+        /// <param name="minLevel"></param>
         internal void PermissionCheck(ContextPermissionLevel minLevel = ContextPermissionLevel.Mid)
         {
             if ((int)GetPermissionLevel() < (int)minLevel)
@@ -41,23 +50,5 @@ namespace AutumnBox.OpenFramework
                 throw new AccessDeniedException();
             }
         }
-    }
-    /// <summary>
-    /// Context权限等级
-    /// </summary>
-    public enum ContextPermissionLevel
-    {
-        /// <summary>
-        /// 最低权限
-        /// </summary>
-        Low = 0,
-        /// <summary>
-        /// 中等权限
-        /// </summary>
-        Mid = 1,
-        /// <summary>
-        /// 最高权限
-        /// </summary>
-        High = 2,
     }
 }

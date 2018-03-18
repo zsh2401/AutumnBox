@@ -6,7 +6,8 @@
 using AutumnBox.Basic.FlowFramework;
 using AutumnBox.GUI.Helper;
 using AutumnBox.OpenFramework;
-using AutumnBox.OpenFramework.Open.V1;
+using AutumnBox.OpenFramework.Internal;
+using AutumnBox.OpenFramework.Open;
 using System;
 using System.Windows;
 
@@ -15,17 +16,16 @@ namespace AutumnBox.GUI.Util
     internal static class OpenFramewokManager
     {
 
-        private class OpenFramewokManagerContext:Context{}
+        private class OpenFramewokManagerContext : Context { }
         public static void LoadApi()
         {
             var context = new OpenFramewokManagerContext();
-            OpenApi.ApiFactory.SetGuiApi(context,new GuiApi());
-            OpenApi.ApiFactory.SetLogApi(context,new LogApi());
+            FrameworkLoader.SetGuiApi(context, new GuiApi());
+            FrameworkLoader.SetLogApi(context, new LogApi());
         }
 
         private class GuiApi : IGuiApi
         {
-
             public string CurrentLanguageCode => App.Current.Resources["LanguageCode"].ToString();
 
             public Window GetMainWindow(Context context)

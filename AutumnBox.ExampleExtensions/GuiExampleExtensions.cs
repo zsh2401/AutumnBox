@@ -6,14 +6,9 @@
 using AutumnBox.Basic.Device;
 using AutumnBox.ExampleExtensions.Windows;
 using AutumnBox.OpenFramework.Extension;
-using AutumnBox.OpenFramework.Internal;
-using AutumnBox.OpenFramework.Open.V1;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using AutumnBox.OpenFramework.Open;
+using System.IO;
 using System.Net.Mail;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace AutumnBox.ExampleExtensions
@@ -44,6 +39,10 @@ namespace AutumnBox.ExampleExtensions
             bool isClosed = false;
             expWin.Closed += (s, e) => isClosed = true;
             while (!isClosed) ;
+        }
+        public override void OnDestory(DestoryArgs args)
+        {
+            base.OnDestory(args);
         }
     }
 }
