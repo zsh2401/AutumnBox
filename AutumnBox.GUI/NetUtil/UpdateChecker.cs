@@ -37,14 +37,14 @@ namespace AutumnBox.GUI.NetUtil
         [JsonProperty("githubReleaseUrl")]
         public string GithubReleaseUrl { get; set; } = "https://github.com/zsh2401/AutumnBox";
         [JsonProperty("date")]
-        public int[] TimeArray { get; set; }
+        public int[] TimeArray { get; set; } = new int[] { 1970, 1, 1 };
 
         public Version Version => new Version(VersionString);
         public bool NeedUpdate =>
             Version > Helper.SystemHelper.CurrentVersion //检测到的版本大于当前版本
             && new Version(Settings.Default.SkipVersion) < Version;//并且没有被设置跳过
        
-        public DateTime Time => new DateTime(TimeArray[0], TimeArray[1], TimeArray[0]);
+        public DateTime Time => new DateTime(TimeArray[0], TimeArray[1], TimeArray[2]);
     }
     internal class UpdateChecker : RemoteDataGetter<UpdateCheckResult>
     {
