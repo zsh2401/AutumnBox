@@ -33,9 +33,9 @@ namespace AutumnBox.GUI.NetUtil
         [JsonProperty("message")]
         public string Message { get; set; } = "No update";
         [JsonProperty("baiduPanUrl")]
-        public string BaiduPanUrl { get; set; } = "http://www.baidu.com";
+        public string BaiduPanUrl { get; set; } = "http://atmb.top";
         [JsonProperty("githubReleaseUrl")]
-        public string GithubReleaseUrl { get; set; } = "https://github.com/zsh2401/";
+        public string GithubReleaseUrl { get; set; } = "https://github.com/zsh2401/AutumnBox";
         [JsonProperty("time")]
         public int[] TimeArray { get; set; }
 
