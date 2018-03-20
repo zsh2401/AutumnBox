@@ -15,6 +15,7 @@ using AutumnBox.GUI.Cfg;
 using AutumnBox.GUI.NetUtil;
 using AutumnBox.GUI.Properties;
 using AutumnBox.GUI.Util;
+using AutumnBox.Support.Log;
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Input;
@@ -70,6 +71,7 @@ namespace AutumnBox.GUI.Windows
 
         private void buttonBaiduPanDownlod_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            Logger.Info(this,"go to " + baiduUrl);
             Process.Start(baiduUrl);
             Close();
         }
