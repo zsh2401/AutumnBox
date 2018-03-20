@@ -52,13 +52,13 @@ namespace AutumnBox.GUI.UI.Fp
             RiseAnimation.Completed += (s, e) => { _Display(); };
             HideAnimation = new ThicknessAnimation()
             {
-                From = new Thickness(0, 0, 0, 0),
+                //From = new Thickness(0, 0, 0, 0),
                 To = new Thickness(0, father.ActualHeight, 0, 0),
                 Duration = TimeSpan.FromMilliseconds(500),
             };
             CloseAnimation = new ThicknessAnimation()
             {
-                From = new Thickness(0, 0, 0, 0),
+                //From = new Thickness(0, 0, 0, 0),
                 To = new Thickness(0, father.ActualHeight, 0, 0),
                 Duration = TimeSpan.FromMilliseconds(500),
             };

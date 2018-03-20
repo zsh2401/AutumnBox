@@ -23,5 +23,13 @@ namespace AutumnBox.GUI.Util
         internal static extern int SetWindowCompositionAttribute(IntPtr hwnd, ref WindowCompositionAttributeData data);
         [DllImport("kernel32.dll", EntryPoint = "SetProcessWorkingSetSize")]
         internal static extern int SetProcessWorkingSetSize(IntPtr process, int minSize, int maxSize);
+        [DllImport("newdev.dll", SetLastError = true)]
+        public static extern bool DiInstallDriver
+(
+[In] IntPtr hwndParent,
+[In] string FullInfPath,
+[In] uint Flags,
+[Out] bool NeedReboot
+);
     }
 }

@@ -12,6 +12,7 @@ using AutumnBox.GUI.Windows;
 using AutumnBox.OpenFramework;
 using AutumnBox.OpenFramework.Internal;
 using AutumnBox.Support.Log;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -24,7 +25,6 @@ namespace AutumnBox.GUI
         {
             this.loadingWindowApi = loadingWindowApi;
             System.Security.Principal.WindowsIdentity identity = System.Security.Principal.WindowsIdentity.GetCurrent();
-
             System.Security.Principal.WindowsPrincipal principal = new System.Security.Principal.WindowsPrincipal(identity);
             Logger.Info(this, $"is admin?{principal.IsInRole(System.Security.Principal.WindowsBuiltInRole.Administrator)}");
         }

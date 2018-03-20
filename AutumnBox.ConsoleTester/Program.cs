@@ -1,8 +1,11 @@
 ﻿using AutumnBox.Basic.Device;
+using AutumnBox.Basic.Executer;
 using AutumnBox.OpenFramework.Internal;
 using System;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime.InteropServices;
+using XiaoMiFlash.code.Utility;
 
 namespace AutumnBox.ConsoleTester
 {
@@ -25,6 +28,11 @@ namespace AutumnBox.ConsoleTester
         };
         unsafe static int Main(string[] cmdargs)
         {
+            //var infPath = @"C:\Users\zsh24\Documents\AutumnBox\Extensions\XiaomiDriverInstaller\Driver\android_winusb.inf";
+            //var cmd = Command.MakeForCmd(@"rundll32 syssetup,SetupInfObjectInstallAction DefaultInstall 128 " + infPath);
+            //CommandExecuter.Static.Execute(cmd).PrintOnConsole();
+            //NativeMethod.InstallHinfSection(IntPtr.Zero, IntPtr.Zero, infPath, 0);
+
             Console.ReadKey();
             return 0;
         }
