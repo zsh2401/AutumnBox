@@ -17,18 +17,24 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.GUI
 {
-    internal class AppLoader:Context
+    internal class AppLoader : Context
     {
         private IAppLoadingWindow loadingWindowApi;
-        public AppLoader(IAppLoadingWindow loadingWindowApi) {
+        public AppLoader(IAppLoadingWindow loadingWindowApi)
+        {
             this.loadingWindowApi = loadingWindowApi;
+            System.Security.Principal.WindowsIdentity identity = System.Security.Principal.WindowsIdentity.GetCurrent();
+
+            System.Security.Principal.WindowsPrincipal principal = new System.Security.Principal.WindowsPrincipal(identity);
+            Logger.Info(this, $"is admin?{principal.IsInRole(System.Security.Principal.WindowsBuiltInRole.Administrator)}");
         }
-        public async void LoadAsync() {
+        public async void LoadAsync()
+        {
             if (Settings.Default.ShowDebuggingWindowNextLaunch)
             {
                 new DebugWindow().Show();
             }
-            Logger.Info(this,"Loading...");
+            Logger.Info(this, "Loading...");
             loadingWindowApi.SetProgress(10);
             loadingWindowApi.SetTip(App.Current.Resources["ldmsgStartAdb"].ToString());
             await Task.Run(() =>

@@ -193,8 +193,9 @@ namespace AutumnBox.GUI
             ProcessStartInfo info = new ProcessStartInfo
             {
                 WorkingDirectory = AdbConstants.toolsPath,
-                FileName = "cmd.exe",
-
+                FileName = "cmd",
+                UseShellExecute = false,
+                Verb = "runas",
             };
             if (SystemHelper.IsWin10)
             {
@@ -246,7 +247,8 @@ namespace AutumnBox.GUI
             this.WindowState = WindowState.Minimized;
         }
 
-        public void OnDragMove() {
+        public void OnDragMove()
+        {
             this.DragMove();
         }
 

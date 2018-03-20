@@ -19,6 +19,7 @@ using IWshRuntimeLibrary;
 using System;
 using System.Diagnostics;
 using System.IO;
+using System.Security.Principal;
 
 namespace AutumnBox.GUI.Helper
 {
@@ -83,7 +84,7 @@ namespace AutumnBox.GUI.Helper
         {
             get
             {
-                return System.Reflection.Assembly.GetExecutingAssembly().GetName().Version ;
+                return System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
             }
         }
         public static void KillProcess(string processName)
@@ -99,6 +100,15 @@ namespace AutumnBox.GUI.Helper
             get
             {
                 return Environment.OSVersion.Version.Major == 10;
+            }
+        }
+        public static bool HaveAdminPermission
+        {
+            get
+            {
+                WindowsIdentity identity = WindowsIdentity.GetCurrent();
+                WindowsPrincipal principal = new WindowsPrincipal(identity);
+                return principal.IsInRole(WindowsBuiltInRole.Administrator);
             }
         }
         public static void ChangeAdbProt(uint port = 24010)
