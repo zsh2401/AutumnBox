@@ -36,7 +36,7 @@ namespace AutumnBox.GUI.NetUtil
         public string BaiduPanUrl { get; set; } = "http://atmb.top";
         [JsonProperty("githubReleaseUrl")]
         public string GithubReleaseUrl { get; set; } = "https://github.com/zsh2401/AutumnBox";
-        [JsonProperty("time")]
+        [JsonProperty("date")]
         public int[] TimeArray { get; set; }
 
         public Version Version => new Version(VersionString);
