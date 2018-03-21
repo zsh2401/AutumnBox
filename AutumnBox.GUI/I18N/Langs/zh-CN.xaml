@@ -191,9 +191,9 @@
     <s:String x:Key="msgVirtualButtonHider">您是要隐藏虚拟键还是恢复虚拟键?</s:String>
     <s:String x:Key="msgStartAdbServerFail">
         错误:无法启动ADB服务
-        &#x0a;解决方案:彻底关闭所有其它的手机助手(在电脑上)
-        &#x0a;例如: 360手机助手 豌豆荚等
-        &#x0a;如果仍然无效,请进入任务管理器,彻底结束那些手机助手的进程!什么?还是没用?重启电脑!
+        解决方案:彻底关闭所有其它的手机助手(在电脑上)
+        例如: 360手机助手 豌豆荚等
+        如果仍然无效,请进入任务管理器,彻底结束那些手机助手的进程!什么?还是没用?重启电脑!
     </s:String>
     <s:String x:Key="msgPleaseInputAPort">请输入一个小于65535的端口号</s:String>
     <s:String x:Key="msgFailed">失败了</s:String>
@@ -365,8 +365,8 @@ Linux</s:String>
 
     <s:String x:Key="warningOpenNetDebugging">
         开启网络调试将带来不可预见的风险
-        &#x0a;请确保您的设备与电脑处于同一局域网下
-        &#x0a;请确保您已在开发者设置中打开网络调试
+        请确保您的设备与电脑处于同一局域网下
+        请确保您已在开发者设置中打开网络调试
     </s:String>
     <s:String x:Key="Menu">菜单</s:String>
     <s:String x:Key="Contact">联系开发者</s:String>

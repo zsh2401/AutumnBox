@@ -138,13 +138,13 @@
     <s:String x:Key="msgModuleFailed">{0} Module was throw a excepton...you can view the log to get more info</s:String>
     <s:String x:Key="msgMaybeHaveOtherUser">
         检测到你的设备上还有其它用户,请确保您已删除完所有用户
-        &#x0a; 注:AutumnBox有用户管理的功能</s:String>
+        注:AutumnBox有用户管理的功能</s:String>
     <s:String x:Key="msgLoading">Loading...</s:String>
     <s:String x:Key="msgActiveGMC">Adb net-debugging is very dangerou! You are srue to continue?</s:String>
     <s:String x:Key="msgGettedIP">成功获取您的手机在当前局域网的IP,这个IP将可以用于网络调试连接</s:String>
     <s:String x:Key="msgFixAndroidO">
         检测到您是安卓8.0系统,为了防止ADB服务被异常终止,请问需要在激活后开启ADB网络调试以保证服务正常运行吗?
-         &#x0a; 这可能会带来不可测的风险!
+         这可能会带来不可测的风险!
         &#x0a; 如果您决定开启,请在执行过程中,保持设备解锁并亮屏,否则激活将是无效的
     </s:String>
     <s:String x:Key="msgUnknowError">未知的错误!</s:String>
@@ -168,12 +168,12 @@
     <s:String x:Key="msgSaveSuccessful">保存成功!</s:String>
     <s:String x:Key="msgIceAct">
         请前往手机->账户设置,将所有账户删除!(包括谷歌账户/手机云服务账户等)
-        &#x0a;并且关闭应用双开,关闭访客模式,删除其它用户
+        并且关闭应用双开,关闭访客模式,删除其它用户
         &#x0a; 完成后请点击继续
     </s:String>
     <s:String x:Key="msgNoticeForRebootToEdl">
         请确保您的设备是高通骁龙处理器并且支持进入9008模式
-        &#x0a; 当进入9008模式后,设备会完全黑屏,但您可以使用相关工具进行刷机
+        当进入9008模式后,设备会完全黑屏,但您可以使用相关工具进行刷机
         &#x0a;如果想要退出9008模式,长按电源键即可!
     </s:String>
     <s:String x:Key="msgPlsInstallFreezeYouFirst">请先安装FreezeYou!</s:String>
@@ -190,9 +190,9 @@
     <s:String x:Key="msgVirtualButtonHider">您是要隐藏虚拟键还是恢复虚拟键?</s:String>
     <s:String x:Key="msgStartAdbServerFail">
         错误:无法启动ADB服务
-        &#x0a;解决方案:彻底关闭所有其它的手机助手(在电脑上)
-        &#x0a;例如: 360手机助手 豌豆荚等
-        &#x0a;如果仍然无效,请进入任务管理器,彻底结束那些手机助手的进程!什么?还是没用?重启电脑!
+        解决方案:彻底关闭所有其它的手机助手(在电脑上)
+        例如: 360手机助手 豌豆荚 360安全卫士等
+        如果仍然无效,请进入任务管理器,彻底结束那些手机助手的进程!什么?还是没用?重启电脑!
     </s:String>
     <s:String x:Key="msgPleaseInputAPort">Error port</s:String>
     <s:String x:Key="msgFailed">Failed</s:String>
@@ -363,8 +363,8 @@ Linux</s:String>
 
     <s:String x:Key="warningOpenNetDebugging">
         开启网络调试将带来不可预见的风险
-        &#x0a;请确保您的设备与电脑处于同一局域网下
-        &#x0a;请确保您已在开发者设置中打开网络调试
+        请确保您的设备与电脑处于同一局域网下
+        请确保您已在开发者设置中打开网络调试
     </s:String>
     <s:String x:Key="Menu">Menu</s:String>
     <s:String x:Key="Contact">Contact Developer</s:String>

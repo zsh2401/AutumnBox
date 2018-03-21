@@ -35,41 +35,41 @@
 
         <!--运行脚本-->
         <Image RenderOptions.BitmapScalingMode="Fant" Width="62" Source="../../Resources/Images/AppIcons/brevent.png" Margin="22,345,838,0" Height="45" VerticalAlignment="Top"/>
-        <Button Style="{DynamicResource AtmbxButtonStyle}" x:Name="buttonStartBrventService" Content="{DynamicResource btnStartBrventService}" Margin="89,345,0,0"   FontSize="18"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"   Click="ButtonStartBrventService_Click" Height="45" VerticalAlignment="Top" HorizontalAlignment="Left" Width="279"/>
+        <Button Style="{DynamicResource AtmbxButtonStyle}" x:Name="buttonStartBrventService" Content="{DynamicResource btnStartBrventService}" Margin="94,345,0,0"   FontSize="18"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"   Click="ButtonStartBrventService_Click" Height="45" VerticalAlignment="Top" HorizontalAlignment="Left" Width="274"/>
 
         <Image RenderOptions.BitmapScalingMode="Fant" Width="62" Source="../../Resources/Images/AppIcons/ShizukuManager.png" Margin="22,400,838,0" Height="42" VerticalAlignment="Top"/>
-        <Button Style="{DynamicResource AtmbxButtonStyle}" x:Name="ButtonShizukuManager"   Content="{DynamicResource btnShizukuManagerAct}" Margin="94,397,0,0"   FontSize="18"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"   HorizontalAlignment="Left" Width="278" Click="ButtonShizukuManager_Click" Height="45" VerticalAlignment="Top"/>
+        <Button Style="{DynamicResource AtmbxButtonStyle}" x:Name="ButtonShizukuManager"   Content="{DynamicResource btnShizukuManagerAct}" Margin="94,397,0,0"   FontSize="18"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"   HorizontalAlignment="Left" Width="271" Click="ButtonShizukuManager_Click" Height="45" VerticalAlignment="Top"/>
 
         <!--设置设备管理员的-->
         <Image RenderOptions.BitmapScalingMode="Fant" Width="62" Source="../../Resources/Images/AppIcons/icebox.png" Margin="377,502,483,0" Height="42" VerticalAlignment="Top"/>
         <Button Style="{DynamicResource AtmbxButtonStyle}" x:Name="ButtonIceBoxAct"   Content="{DynamicResource btnIceBoxAct}" Margin="444,502,0,0"   FontSize="18"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"   HorizontalAlignment="Left" Width="282" Click="ButtonIceBoxAct_Click" Height="45" VerticalAlignment="Top"/>
 
-        <Image RenderOptions.BitmapScalingMode="Fant" Width="62" Source="../../Resources/Images/AppIcons/Island.png" Margin="14,553,846,0" Height="42" VerticalAlignment="Top"/>
-        <Button Style="{DynamicResource AtmbxButtonStyle}" x:Name="ButtonIslandAct"   Content="{DynamicResource btnIslandAct}" Margin="84,553,0,0"   FontSize="18"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"   HorizontalAlignment="Left" Width="262" Click="ButtonIslandAct_Click" Height="45" VerticalAlignment="Top"/>
+        <Image RenderOptions.BitmapScalingMode="Fant" Width="62" Source="../../Resources/Images/AppIcons/Island.png" Margin="17,553,843,0" Height="42" VerticalAlignment="Top"/>
+        <Button Style="{DynamicResource AtmbxButtonStyle}" x:Name="ButtonIslandAct"   Content="{DynamicResource btnIslandAct}" Margin="94,553,0,0"   FontSize="18"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"   HorizontalAlignment="Left" Width="271" Click="ButtonIslandAct_Click" Height="45" VerticalAlignment="Top"/>
 
-        <Image RenderOptions.BitmapScalingMode="Fant" Width="62" Source="../../Resources/Images/AppIcons/blackhole.png" Margin="14,606,846,0" Height="42" VerticalAlignment="Top"/>
-        <Button Style="{DynamicResource AtmbxButtonStyle}" x:Name="ButtonBlackHole"   Content="{DynamicResource btnBlackholeActivator}" Margin="81,603,0,0"   FontSize="18"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"   HorizontalAlignment="Left" Width="262" Click="ButtonBlackHole_Click" Height="45" VerticalAlignment="Top"/>
+        <Image RenderOptions.BitmapScalingMode="Fant" Width="62" Source="../../Resources/Images/AppIcons/blackhole.png" Margin="17,606,843,0" Height="42" VerticalAlignment="Top"/>
+        <Button Style="{DynamicResource AtmbxButtonStyle}" x:Name="ButtonBlackHole"   Content="{DynamicResource btnBlackholeActivator}" Margin="94,603,0,0"   FontSize="18"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"   HorizontalAlignment="Left" Width="271" Click="ButtonBlackHole_Click" Height="45" VerticalAlignment="Top"/>
 
         <Image RenderOptions.BitmapScalingMode="Fant" Width="62" Source="../../Resources/Images/AppIcons/Anzenbokusu.png" Margin="377,606,483,0" Height="42" VerticalAlignment="Top"/>
         <Button Style="{DynamicResource AtmbxButtonStyle}" x:Name="ButtonAnzenbokusuActivator"   Content="{DynamicResource btnAnzenbokusuActivator}" Margin="444,606,0,0"   FontSize="18"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"   HorizontalAlignment="Left" Width="282" Click="ButtonAnzenbokusuActivator_Click"  Height="45" VerticalAlignment="Top"/>
 
 
         <Image RenderOptions.BitmapScalingMode="Fant" Width="62" Source="../../Resources/Images/AppIcons/AirForzen.png" Margin="17,502,843,0" Height="42" VerticalAlignment="Top"/>
-        <Button Style="{DynamicResource AtmbxButtonStyle}" x:Name="ButtonAirForzenAct"   Content="{DynamicResource btnAirForzenAct}" Margin="89,502,0,0"   FontSize="18"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"   HorizontalAlignment="Left" Width="257" Click="ButtonAirForzenAct_Click" Height="45" VerticalAlignment="Top"/>
+        <Button Style="{DynamicResource AtmbxButtonStyle}" x:Name="ButtonAirForzenAct"   Content="{DynamicResource btnAirForzenAct}" Margin="94,502,0,0"   FontSize="18"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"   HorizontalAlignment="Left" Width="271" Click="ButtonAirForzenAct_Click" Height="45" VerticalAlignment="Top"/>
 
 
         <Image RenderOptions.BitmapScalingMode="Fant" Width="62" Source="../../Resources/Images/AppIcons/web1n.stopapp.png" Margin="377,553,483,0" Height="42" VerticalAlignment="Top"/>
         <Button Style="{DynamicResource AtmbxButtonStyle}" x:Name="ButtonActivateStopapp"   Content="{DynamicResource btnStopAppActivator}" Margin="444,553,0,0"   FontSize="18"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"   HorizontalAlignment="Left" Width="282" Click="ButtonActivateStopapp_Click" Height="45" VerticalAlignment="Top"/>
 
         <Image RenderOptions.BitmapScalingMode="Fant" Width="62" Source="../../Resources/Images/AppIcons/freezeYou.png" Margin="17,653,843,0" Height="42" VerticalAlignment="Top"/>
-        <Button Style="{DynamicResource AtmbxButtonStyle}" x:Name="ButtonActivateFreezeYou"   Content="{DynamicResource btnFreezeYouActivator}" Margin="84,653,0,0"   FontSize="18"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"   HorizontalAlignment="Left" Width="282" Click="ButtonActivateFreezeYou_Click"  Height="45" VerticalAlignment="Top"/>
+        <Button Style="{DynamicResource AtmbxButtonStyle}" x:Name="ButtonActivateFreezeYou"   Content="{DynamicResource btnFreezeYouActivator}" Margin="94,653,0,0"   FontSize="18"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"   HorizontalAlignment="Left" Width="272" Click="ButtonActivateFreezeYou_Click"  Height="45" VerticalAlignment="Top"/>
 
         <!--开启网络调试的-->
         <Image RenderOptions.BitmapScalingMode="Fant" Width="62" Source="../../Resources/Images/AppIcons/gmc.png" Margin="10,770,850,0" Height="42" VerticalAlignment="Top"/>
-        <Button Style="{DynamicResource AtmbxButtonStyle}" x:Name="ButtonGMCAct"   Content="{DynamicResource btnGeekMemoryCleanerActivator}" Margin="80,770,0,0"   FontSize="18"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"   HorizontalAlignment="Left" Width="262" Click="ButtonGMCAct_Click" Height="44" VerticalAlignment="Top"/>
+        <Button Style="{DynamicResource AtmbxButtonStyle}" x:Name="ButtonGMCAct"   Content="{DynamicResource btnGeekMemoryCleanerActivator}" Margin="94,770,0,0"   FontSize="18"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"   HorizontalAlignment="Left" Width="272" Click="ButtonGMCAct_Click" Height="44" VerticalAlignment="Top"/>
 
-        <Label Style="{DynamicResource AtmbxLabelStyle}" FontSize="18" Content="{DynamicResource lbSetDeviceOwner}" HorizontalAlignment="Left" Margin="13,434,0,0" VerticalAlignment="Top" Width="355"/>
-        <Label Style="{DynamicResource AtmbxLabelStyle}" FontSize="18" Content="{DynamicResource lbRunScript}" HorizontalAlignment="Left" Margin="17,306,0,0" VerticalAlignment="Top" Width="355"/>
+        <Label Style="{DynamicResource AtmbxLabelStyle}" FontSize="18" Content="{DynamicResource lbSetDeviceOwner}" HorizontalAlignment="Left" Margin="13,447,0,0" VerticalAlignment="Top" Width="355"/>
+        <Label Style="{DynamicResource AtmbxLabelStyle}" FontSize="18" Content="{DynamicResource lbRunScript}" HorizontalAlignment="Left" Margin="10,306,0,0" VerticalAlignment="Top" Width="355"/>
         <Label Style="{DynamicResource AtmbxLabelStyle}" FontSize="18" Content="{DynamicResource lbOpenNetDebugging}" HorizontalAlignment="Left" Margin="0,726,0,0" VerticalAlignment="Top" Width="355"/>
 
     </Grid>

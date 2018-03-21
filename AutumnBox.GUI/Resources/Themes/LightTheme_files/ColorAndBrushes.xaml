@@ -7,8 +7,8 @@
 
     <Color x:Key="ColorForegroundOnPrimary">#F4F4F4</Color>
     <SolidColorBrush x:Key="ForegroundOnPrimaryBrushKey" Color="{DynamicResource ColorForegroundOnPrimary}"/>
-    
-    <Color x:Key="ColorForeground">#5c6361</Color>
+
+    <Color x:Key="ColorForeground">#282D4F</Color>
     <SolidColorBrush x:Key="ForegroundBrushKey" Color="{DynamicResource ColorForeground}"/>
 
     <Color x:Key="ColorBackground">#F4F4F4</Color>
