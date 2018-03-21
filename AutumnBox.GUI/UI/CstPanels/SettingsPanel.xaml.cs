@@ -44,7 +44,7 @@ namespace AutumnBox.GUI.UI.CstPanels
 
         private void BtnCreateShortcut_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            SystemHelper.CreateShortcutOnDesktop("AutumnBox", System.Environment.CurrentDirectory + "/AutumnBox.exe", "The AutumnBox-Dream of us");
+            SystemHelper.CreateShortcutOnDesktop("AutumnBox", System.Environment.CurrentDirectory + "/AutumnBox.GUI.exe", "The AutumnBox-Dream of us");
         }
 
         private void Button_Click(object sender, System.Windows.RoutedEventArgs e)
@@ -55,19 +55,6 @@ namespace AutumnBox.GUI.UI.CstPanels
         {
             base.OnPanelHide();
             Properties.Settings.Default.Save();
-        }
-        bool fuck = true;
-        private void Button_Click_1(object sender, System.Windows.RoutedEventArgs e)
-        {
-            if (fuck)
-            {
-                ThemeManager.ChangeTheme(ThemeManager.Themes[1]);
-            }
-            else
-            {
-                ThemeManager.ChangeTheme(ThemeManager.Themes[0]);
-            }
-            fuck = !fuck;
         }
     }
 }
