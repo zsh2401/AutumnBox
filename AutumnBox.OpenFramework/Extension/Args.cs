@@ -11,6 +11,14 @@ namespace AutumnBox.OpenFramework.Extension
     /// 初始化时的参数
     /// </summary>
     public class InitArgs { }
+    public class RunCheckArgs
+    {
+        public DeviceBasicInfo DeviceInfo { get; private set; }
+        public RunCheckArgs(DeviceBasicInfo devInfo)
+        {
+            this.DeviceInfo = devInfo;
+        }
+    }
     /// <summary>
     /// OnStartCommand()参数
     /// </summary>
@@ -24,7 +32,7 @@ namespace AutumnBox.OpenFramework.Extension
     /// <summary>
     /// OnStopCommand()参数
     /// </summary>
-    public class StopArgs{}
+    public class StopArgs { }
     /// <summary>
     /// OnDestory()参数
     /// </summary>

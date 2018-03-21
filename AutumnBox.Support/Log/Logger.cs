@@ -27,30 +27,33 @@ namespace AutumnBox.Support.Log
             Debugger.Log(4, null, str);
             WriteToFile(str);
         }
+
         public static void Info(object senderOrTag, object message)
         {
             var str = MakeText(senderOrTag, "Info", message);
             Debugger.Log(3, null, str);
             WriteToFile(str);
         }
+
         public static void Warn(object senderOrTag, object message)
         {
             var str = MakeText(senderOrTag, "Warn", message);
             Debugger.Log(2, null, str);
             WriteToFile(str);
         }
+
         public static void Warn(object senderOrTag, object message, Exception e)
         {
             var str = MakeText(senderOrTag, "Warn", message, e);
             Debugger.Log(2, null, str);
             WriteToFile(str);
         }
+
         public static void Fatal(object senderOrTag, object message)
         {
             var str = MakeText(senderOrTag, "Fatal", message);
             Debugger.Log(1, null, str);
             WriteToFile(str);
         }
-
     }
 }

@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using AutumnBox.Basic.Device;
 using AutumnBox.GUI.Helper;
+using AutumnBox.GUI.I18N;
 using AutumnBox.GUI.NetUtil;
 using AutumnBox.GUI.UI.CstPanels;
 using AutumnBox.GUI.UI.Fp;
@@ -20,12 +22,21 @@ namespace AutumnBox.GUI.UI.FuncPanels
     public partial class ThridPartyFunctionPanel : UserControl, IRefreshable
     {
         private DeviceBasicInfo currentDevice;
+
         public ThridPartyFunctionPanel()
         {
             InitializeComponent();
             GridInfo.Visibility = Visibility.Collapsed;
             TxtNothing.Visibility = Visibility.Visible;
+            this.Loaded += ThridPartyFunctionPanel_Loaded;
+        }
 
+        private void ThridPartyFunctionPanel_Loaded(object sender, RoutedEventArgs e)
+        {
+            LanguageHelper.LanguageChanged += (s, e_) =>
+            {
+                SetGuiByExtInfomation();
+            };
         }
 
         public void Refresh(DeviceBasicInfo deviceSimpleInfo)
@@ -46,20 +57,16 @@ namespace AutumnBox.GUI.UI.FuncPanels
             Refresh(currentDevice);
         }
 
-        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void SetGuiByExtInfomation()
         {
             if (ListBoxModule.SelectedIndex != -1)
             {
                 GridInfo.Visibility = Visibility.Visible;
                 TxtNothing.Visibility = Visibility.Collapsed;
-                var rt = ListBoxModule.SelectedItem as ExtensionRuntime;
-                TBName.Text = rt.InnerExtension.Name;
-                TBDesc.Text = rt.InnerExtension.Description;
-                TBVersion.Text = rt.InnerExtension.Version.ToString();
-                LbEmail.Visibility = rt.InnerExtension.ContactMail == null ? Visibility.Hidden : Visibility.Visible;
-                TBEmail.Text = rt.InnerExtension.ContactMail?.ToString();
-                TBAuth.Text = rt.InnerExtension.Auth;
-                SetBtnRunState(rt.InnerExtension.RequiredDeviceState.HasFlag(currentDevice.State));
+                var ext = ListBoxModule.SelectedItem as IAutumnBoxExtension;
+                TBName.Text = ext.Name;
+                TBDesc.Text = ext.Infomation;
+                SetBtnRunState(ext.RunCheck(new RunCheckArgs(currentDevice)));
             }
             else
             {
@@ -67,11 +74,15 @@ namespace AutumnBox.GUI.UI.FuncPanels
                 TxtNothing.Visibility = Visibility.Visible;
             }
         }
+        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            SetGuiByExtInfomation();
+        }
 
         private FastPanel panel;
-        private void ShowRunningBox(ExtensionRuntime extRtm)
+        private void ShowRunningBox(IAutumnBoxExtension ext)
         {
-            panel = new FastPanel(GridContainer, new ExtensionRuningPanel(extRtm));
+            panel = new FastPanel(GridContainer, new ExtensionRuningPanel(ext));
             panel.Display();
         }
 
@@ -80,22 +91,18 @@ namespace AutumnBox.GUI.UI.FuncPanels
             panel.Close();
         }
 
-        private void BtnRun_Click(object sender, RoutedEventArgs e)
+        private async void BtnRun_Click(object sender, RoutedEventArgs e)
         {
-            var runtime = (ListBoxModule.SelectedItem as ExtensionRuntime);
-
-            try
+            var ext = (ListBoxModule.SelectedItem as IAutumnBoxExtension);
+            ShowRunningBox(ext);
+            await Task.Run(() =>
             {
-                ShowRunningBox(runtime);
-                runtime.RunAsync(App.OpenFrameworkContext,new StartArgs()
+                ext.Run(new StartArgs()
                 {
                     Device = currentDevice
-                }, () => { CloseRunningBox(); });
-            }
-            catch (Exception)
-            {
-                BoxHelper.ShowMessageDialog("Warning", string.Format(App.Current.Resources["msgModuleFailed"].ToString(), runtime.InnerExtension.Name));
-            }
+                });
+            });
+            CloseRunningBox();
         }
 
         private void BtnOpenModuleFloder_Click(object sender, RoutedEventArgs e)

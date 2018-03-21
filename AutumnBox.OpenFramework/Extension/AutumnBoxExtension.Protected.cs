@@ -14,7 +14,7 @@ namespace AutumnBox.OpenFramework.Extension
     /// <summary>
     /// AutumnBox 拓展模块抽象类
     /// </summary>
-    public abstract class AutumnBoxExtension : Context
+    public abstract partial class AutumnBoxExtension : Context, IAutumnBoxExtension
     {
         /// <summary>
         /// 标签,用于打LOG
@@ -76,6 +76,7 @@ namespace AutumnBox.OpenFramework.Extension
         /// 版本号,覆写此属性以自定义版本号
         /// </summary>
         public virtual Version Version { get; } = new Version("1.0.0.0");
+
         /// <summary>
         /// 打LOG
         /// </summary>
@@ -115,5 +116,7 @@ namespace AutumnBox.OpenFramework.Extension
         /// </summary>
         /// <param name="args"></param>
         public virtual void OnDestory(DestoryArgs args) { }
+
+
     }
 }

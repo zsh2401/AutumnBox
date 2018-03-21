@@ -8,6 +8,9 @@ using System.IO;
 
 namespace AutumnBox.OpenFramework.Open
 {
+    /// <summary>
+    /// 空间管理器
+    /// </summary>
     public static class Space
     {
         /// <summary>

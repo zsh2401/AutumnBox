@@ -23,23 +23,23 @@ namespace AutumnBox.GUI.UI.CstPanels
     /// </summary>
     public partial class ExtensionRuningPanel : FastPanelChild
     {
-        public override Brush PanelBackground =>(Brush)App.Current.Resources["ExtRunningPanelBrushKey"];
+        public override Brush PanelBackground => (Brush)App.Current.Resources["ExtRunningPanelBrushKey"];
         public override Brush BtnCloseForeground => (Brush)App.Current.Resources["ForegroundBrushKey"];
         public override bool NeedShowBtnClose => false;
-        public ExtensionRuningPanel(ExtensionRuntime extensionRuntime)
+        public ExtensionRuningPanel(IAutumnBoxExtension ext)
         {
             InitializeComponent();
-            TBMsg.Text = $"{extensionRuntime.InnerExtension.Name} {App.Current.Resources["msgIsRunning"]}";
+            TBMsg.Text = $"{ext.Name} {App.Current.Resources["msgIsRunning"]}";
             BtnStop.Click += (s, e) =>
             {
-                var stopResult = extensionRuntime.Stop(App.OpenFrameworkContext);
+                var stopResult = ext.Stop(new StopArgs());
                 if (stopResult == true)
                 {
                     Finish();
                 }
                 else
                 {
-                    TBMsg.Text = $"{extensionRuntime.InnerExtension.Name} {App.Current.Resources["msgCannotStop"]}";
+                    TBMsg.Text = $"{ext.Name} {App.Current.Resources["msgCannotStop"]}";
                 }
             };
         }

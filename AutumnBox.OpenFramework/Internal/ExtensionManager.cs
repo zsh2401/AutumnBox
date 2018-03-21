@@ -50,7 +50,7 @@ namespace AutumnBox.OpenFramework.Internal
             context.PermissionCheck(ContextPermissionLevel.Mid);
             inner.Extensions.ForEach((extRuntime) =>
             {
-                extRuntime.Destory(inner);
+                extRuntime.Destory(new DestoryArgs());
             });
         }
         /// <summary>
@@ -59,30 +59,19 @@ namespace AutumnBox.OpenFramework.Internal
         /// <param name="context"></param>
         /// <param name="targetDeviceState"></param>
         /// <returns></returns>
-        public static ExtensionRuntime[] GetExtensions(Context context, DeviceState? targetDeviceState = null)
+        public static IAutumnBoxExtension[] GetExtensions(Context context)
         {
             context.PermissionCheck(ContextPermissionLevel.Mid);
-            if (targetDeviceState != null)
-            {
-                return inner.Extensions.Where((extRuntime) =>
-                {
-                    return extRuntime.InnerExtension.RequiredDeviceState.HasFlag(targetDeviceState);
-                }).ToArray();
-            }
-            else
-            {
-                return inner.Extensions.ToArray();
-            }
-
+            return inner.Extensions.ToArray();
         }
 
 
         private sealed class ExtensionManagerInner : Context
         {
-            public List<ExtensionRuntime> Extensions { get; private set; }
+            public List<IAutumnBoxExtension> Extensions { get; private set; }
             public ExtensionManagerInner()
             {
-                Extensions = new List<ExtensionRuntime>();
+                Extensions = new List<IAutumnBoxExtension>();
                 if (Directory.Exists(ExtensionsPath) == false)
                 {
                     Directory.CreateDirectory(ExtensionsPath);
@@ -110,7 +99,7 @@ namespace AutumnBox.OpenFramework.Internal
                     try
                     {
                         var types = dll.GetExportedTypes()
-                        .Where((extType) => { return extType.BaseType == typeof(AutumnBoxExtension); });
+                        .Where((extType) => { return typeof(IAutumnBoxExtension).IsAssignableFrom(extType); });
                         if (types.Count() == 0)
                         {
                             throw new Exception("No AutumnBox Extension");
@@ -127,7 +116,9 @@ namespace AutumnBox.OpenFramework.Internal
                 {
                     try
                     {
-                        Extensions.Add(ExtensionRuntime.Create(extensionType, initArgs));
+                        var extInstance = (IAutumnBoxExtension)Activator.CreateInstance(extensionType);
+                        if (extInstance.Init(initArgs) != true) continue;
+                        Extensions.Add(extInstance);
                     }
                     catch (Exception ex)
                     {
@@ -144,7 +135,7 @@ namespace AutumnBox.OpenFramework.Internal
                 DestoryArgs args = new DestoryArgs();
                 Extensions.ForEach((ext) =>
                 {
-                    try { ext.Destory(this, args); }
+                    try { ext.Destory(args); }
                     catch { }
                 });
             }

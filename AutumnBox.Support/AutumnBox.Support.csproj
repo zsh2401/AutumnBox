@@ -51,7 +51,6 @@
     <Compile Include="CstmDebug\Logger.Public.cs" />
     <Compile Include="CstmDebug\LogPropertyAttribute.cs" />
     <Compile Include="CstmDebug\LogSender.cs" />
-    <Compile Include="Helper\NetHelper.cs" />
     <Compile Include="Helper\SystemHelper.cs" />
     <Compile Include="IdentifyEncoding.cs" />
     <Compile Include="Log\Logger.cs" />
