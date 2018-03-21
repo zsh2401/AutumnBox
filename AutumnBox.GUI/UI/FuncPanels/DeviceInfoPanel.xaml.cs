@@ -174,7 +174,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
         private async void PoweronRefresh(DeviceBasicInfo devSimpleInfo)
         {
             var buildProp = await Task.Run(() => { return new DeviceBuildPropGetter(devSimpleInfo.Serial).GetFull(); });
-            DeviceName = buildProp[BuildPropKeys.Brand] + buildProp[BuildPropKeys.Model];
+            DeviceName = buildProp[BuildPropKeys.Brand] + " " + buildProp[BuildPropKeys.Model];
             CurrentDeviceIsRoot = await Task.Run(() => { return new DeviceSoftwareInfoGetter(devSimpleInfo.Serial).IsRootEnable(); });
             DeviceRootStatusText = CurrentDeviceIsRoot ? "√" : "×";
             DeviceAndroidVersion = buildProp[BuildPropKeys.AndroidVersion]?.ToString() ?? App.Current.Resources["GetFail"].ToString();

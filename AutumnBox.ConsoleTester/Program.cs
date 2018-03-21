@@ -28,11 +28,8 @@ namespace AutumnBox.ConsoleTester
         };
         unsafe static int Main(string[] cmdargs)
         {
-            //var infPath = @"C:\Users\zsh24\Documents\AutumnBox\Extensions\XiaomiDriverInstaller\Driver\android_winusb.inf";
-            //var cmd = Command.MakeForCmd(@"rundll32 syssetup,SetupInfObjectInstallAction DefaultInstall 128 " + infPath);
-            //CommandExecuter.Static.Execute(cmd).PrintOnConsole();
-            //NativeMethod.InstallHinfSection(IntPtr.Zero, IntPtr.Zero, infPath, 0);
-
+            var winDir = Environment.GetFolderPath(Environment.SpecialFolder.Windows);
+            Process.Start($"{winDir}\\sysnative\\pnputil");
             Console.ReadKey();
             return 0;
         }
