@@ -11,7 +11,6 @@
 * Company: I am free man
 *
 \* =============================================================================*/
-using AutumnBox.Basic.Adb;
 using AutumnBox.Basic.Device;
 using AutumnBox.Basic.Util;
 using AutumnBox.Support.Helper;

@@ -6,10 +6,8 @@
 ** desc： ...
 *********************************************************************************/
 using AutumnBox.Basic.Executer;
-using AutumnBox.Basic.Util;
 using AutumnBox.Support.Log;
 using System;
-using System.Net;
 using System.Text.RegularExpressions;
 
 namespace AutumnBox.Basic.Device

@@ -43,7 +43,7 @@ namespace AutumnBox.GUI.NetUtil
         public bool NeedUpdate =>
             Version > Helper.SystemHelper.CurrentVersion //检测到的版本大于当前版本
             && new Version(Settings.Default.SkipVersion) < Version;//并且没有被设置跳过
-       
+
         public DateTime Time => new DateTime(TimeArray[0], TimeArray[1], TimeArray[2]);
     }
     internal class UpdateChecker : RemoteDataGetter<UpdateCheckResult>
@@ -51,7 +51,8 @@ namespace AutumnBox.GUI.NetUtil
 #if USE_LOCAL_API&& DEBUG
         public override UpdateCheckResult Get()
         {
-            JObject j = JObject.Parse(File.ReadAllText(@"..\..\..\docs\api\update\index.html"));
+            var json = webClient.DownloadString("http://localhost:24010/api/update/");
+            JObject j = JObject.Parse(json);
             var result = (UpdateCheckResult)JsonConvert.DeserializeObject(j.ToString(), typeof(UpdateCheckResult));
             return result;
         }

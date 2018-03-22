@@ -35,7 +35,8 @@ namespace AutumnBox.GUI.NetUtil
 #if USE_LOCAL_API && DEBUG
         public override MOTDResult Get()
         {
-            JObject o = JObject.Parse(File.ReadAllText(@"..\..\..\docs\api\motd\index.html"));
+            var json = webClient.DownloadString("http://localhost:24010/api/motd/");
+            JObject o = JObject.Parse(json);
             var result = (MOTDResult)JsonConvert.DeserializeObject(o.ToString(), typeof(MOTDResult));
             return result;
         }
