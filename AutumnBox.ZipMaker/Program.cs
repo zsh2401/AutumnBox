@@ -24,7 +24,7 @@ namespace AutumnBox.ZipMaker
             FileVersionInfo info = FileVersionInfo.GetVersionInfo(@"..\AutumnBox_Output\AutumnBox\file\AutumnBox.GUI.exe");
             using (ZipFile zip = new ZipFile(Encoding.UTF8))
             {
-                zip.AddDirectory(@"..\out");
+                zip.AddDirectory(@"..\AutumnBox_Output\");
                 zip.Save($"..\\HistoryRelease\\{info.ProductName}-{info.ProductVersion}-{suffix}.zip");
             }
         }
