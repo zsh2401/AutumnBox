@@ -407,5 +407,10 @@ namespace AutumnBox.GUI.UI.FuncPanels
         {
             core.ActivateFreezeYou(_currentDevInfo);
         }
+
+        private void ButtonAnzenbokusuFakeActivator_Click(object sender, RoutedEventArgs e)
+        {
+            core.ActivateAnzenbokusuFake(_currentDevInfo);
+        }
     }
 }

@@ -15,7 +15,7 @@
             如果你的应用程序需要此虚拟化来实现向后兼容性，则删除此
             元素。
         -->
-        <requestedExecutionLevel level="requireAdministrator" uiAccess="false" />
+        <requestedExecutionLevel level="requireAdministrator" uiAccess="true"/>
       </requestedPrivileges>
       <applicationRequestMinimum>
         <defaultAssemblyRequest permissionSetReference="Custom" />
@@ -30,8 +30,8 @@
            自动选择最兼容的环境。 -->
       <!-- Windows Vista -->
       <!--<supportedOS Id="{e2011457-1546-43c5-a5fe-008deee3d3f0}" />-->
-      <!-- Windows 7 -->
-      <!--<supportedOS Id="{35138b9a-5d96-4fbd-8e2d-a2440225f93a}" />-->
+       <!--Windows 7 
+      <supportedOS Id="{35138b9a-5d96-4fbd-8e2d-a2440225f93a}" />-->
       <!-- Windows 8 -->
       <!--<supportedOS Id="{4a2f28e3-53b9-4441-ba9c-d69d4a4a6e38}" />-->
       <!-- Windows 8.1 -->

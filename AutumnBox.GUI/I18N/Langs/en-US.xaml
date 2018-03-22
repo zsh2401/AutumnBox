@@ -9,6 +9,7 @@
     <s:String x:Key="AppDesc">Open source,free,simple,GUI adb toolbox</s:String>
     <!--按钮-->
     <s:String x:Key="btnFreezeYouActivator">Active FreezeYou!</s:String>
+    <s:String x:Key="btnAnzenbokusuFakeActivator">Active Anzenbokusu Fake</s:String>
     <s:String x:Key="btnAnzenbokusuActivator">Active Anzenbokusu</s:String>
     <s:String x:Key="btnBlackholeActivator">Active Blackhole</s:String>
     <s:String x:Key="btnStopExtension">Stop this extension</s:String>
@@ -184,6 +185,7 @@
     <s:String x:Key="msgPlsInstallStopAppFirst">请先安装小黑屋!!</s:String>
     <s:String x:Key="msgPlsInstallBlackholeFirst">请先安装黑洞!!</s:String>
     <s:String x:Key="msgPlsInstallAnzenbokusuFirst">请先安装第二空间!!</s:String>
+    <s:String x:Key="msgPlsInstallAnzenbokusuFakeFirst">请先安装第二空间伪装版!!</s:String>
     <s:String x:Key="msgPlsInstallGMCFirst">请先安装极客内存清理!!</s:String>
     <s:String x:Key="msgPlsInstallShizukuManagerFirst">请先安装ShizukuManager!酷市场和手机乐园都有!</s:String>
     <s:String x:Key="msgWarning">Warning</s:String>

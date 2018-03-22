@@ -119,7 +119,7 @@ namespace AutumnBox.GUI.Helper
         {
             get
             {
-                return Process.GetProcessesByName("AutumnBox").Length > 1;
+                return Process.GetProcessesByName("AutumnBox.GUI").Length > 1;
             }
         }
         internal readonly static AutoGC AutoGC = new AutoGC();

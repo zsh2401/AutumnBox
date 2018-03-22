@@ -25,7 +25,7 @@
                 <Button Style="{DynamicResource AtmbxButtonStyle}"  x:Name="buttonStartShell"  Content="{DynamicResource btnADBCMD}" Margin="861,141,23,0" VerticalAlignment="Top" Height="54"  FontSize="14"  Click="ButtonStartShell_Click" />
                 <Button  Style="{DynamicResource AtmbxButtonStyle}" x:Name="BtnSettings"  Content="{DynamicResource btnSetting}" Margin="940,590,9,0" VerticalAlignment="Top" Height="35"   FontSize="14"  Click="BtnSettings_Click" />
                 <Button  Style="{DynamicResource AtmbxButtonStyle}" x:Name="BtnAbout"  Content="{DynamicResource btnAbout}" Margin="939,550,9,0" VerticalAlignment="Top" Height="35"  FontSize="14"  Click="BtnAbout_Click" />
-                <Button  Style="{DynamicResource AtmbxButtonStyle}" x:Name="BtnDonate"  Content="{DynamicResource Donate}" Margin="940,510,9,0" VerticalAlignment="Top" Height="35"   FontSize="14"  Click="BtnDonate_Click" />
+                <Button  Style="{DynamicResource AtmbxButtonStyle}" x:Name="BtnDonate"  Content="{DynamicResource Donate}" Margin="940,510,9,0" VerticalAlignment="Top" Height="35"   FontSize="14"  Click="BtnDonate_Click" FontFamily="Microsoft JhengHei" />
                 <Image Source="Resources/Images/Icons/donate.png" HorizontalAlignment="Left" Height="27" Margin="943,514,0,0" VerticalAlignment="Top" Width="27"/>
                 <TextBox BorderBrush="{DynamicResource BroderBrushKey}" Foreground="{DynamicResource ForegroundBrushKey}" x:Name="textBoxGG" Height="93" Margin="940,260,9,0" TextWrapping="Wrap" Text="..." VerticalAlignment="Top" IsReadOnly="True" Background="{x:Null}" FontSize="14"/>
 

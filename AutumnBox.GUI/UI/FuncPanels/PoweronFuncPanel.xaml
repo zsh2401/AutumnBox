@@ -62,7 +62,10 @@
         <Button Style="{DynamicResource AtmbxButtonStyle}" x:Name="ButtonActivateStopapp"   Content="{DynamicResource btnStopAppActivator}" Margin="444,553,0,0"   FontSize="18"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"   HorizontalAlignment="Left" Width="282" Click="ButtonActivateStopapp_Click" Height="45" VerticalAlignment="Top"/>
 
         <Image RenderOptions.BitmapScalingMode="Fant" Width="62" Source="../../Resources/Images/AppIcons/freezeYou.png" Margin="17,653,843,0" Height="42" VerticalAlignment="Top"/>
-        <Button Style="{DynamicResource AtmbxButtonStyle}" x:Name="ButtonActivateFreezeYou"   Content="{DynamicResource btnFreezeYouActivator}" Margin="94,653,0,0"   FontSize="18"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"   HorizontalAlignment="Left" Width="272" Click="ButtonActivateFreezeYou_Click"  Height="45" VerticalAlignment="Top"/>
+        <Button Style="{DynamicResource AtmbxButtonStyle}" x:Name="ButtonActivateFreezeYou"   Content="{DynamicResource btnFreezeYouActivator}" Margin="94,653,0,0"   FontSize="18"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"   HorizontalAlignment="Left" Width="272" Click="ButtonActivateFreezeYou_Click"  Height="48" VerticalAlignment="Top"/>
+
+        <Image RenderOptions.BitmapScalingMode="Fant" Width="62" Source="../../Resources/Images/AppIcons/AnzenbokusuFake.png" Margin="377,656,483,0" Height="42" VerticalAlignment="Top"/>
+        <Button Style="{DynamicResource AtmbxButtonStyle}" x:Name="ButtonAnzenbokusuFakeActivator"   Content="{DynamicResource btnAnzenbokusuFakeActivator}" Margin="444,656,0,0"   FontSize="18"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"   HorizontalAlignment="Left" Width="282" Click="ButtonAnzenbokusuFakeActivator_Click"  Height="45" VerticalAlignment="Top"/>
 
         <!--开启网络调试的-->
         <Image RenderOptions.BitmapScalingMode="Fant" Width="62" Source="../../Resources/Images/AppIcons/gmc.png" Margin="10,770,850,0" Height="42" VerticalAlignment="Top"/>

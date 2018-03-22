@@ -12,14 +12,11 @@
 *
 \* =============================================================================*/
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Management;
 using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 /*Code from http://blog.csdn.net/qq_23833037/article/details/78304738*/
 namespace AutumnBox.GUI.Util
 {

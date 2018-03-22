@@ -91,6 +91,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
         void ActivateStopapp(DeviceBasicInfo targetDevice);
         void ActivateBlackHole(DeviceBasicInfo targetDevice);
         void ActivateAnzenbokusu(DeviceBasicInfo targetDevice);
+        void ActivateAnzenbokusuFake(DeviceBasicInfo targetDevice);
         void ActivateFreezeYou(DeviceBasicInfo targetDevice);
     }
     public class AdbActivatorsUI : IAdbActivatorsUI
@@ -171,7 +172,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
             BoxHelper.ShowLoadingDialog(activator);
         }
 
-        [InstallCheck(AirForzenActivator.AppPackageName, ErrorMsgKey = "msgPlsInstallAirForzenFirst")]
+        [InstallCheck(IslandActivator.AppPackageName, ErrorMsgKey = "msgPlsInstallAirForzenFirst")]
         [Tip("msgIceAct")]
         [DeviceUserCheck]
         public void ActivateIsland(DeviceBasicInfo targetDevice)
@@ -183,16 +184,15 @@ namespace AutumnBox.GUI.UI.FuncPanels
         }
 
         [InstallCheck(GeekMemoryCleanerActivator.AppPackageName, ErrorMsgKey = "msgPlsInstallGMCFirst")]
+        [Tip("msgActiveGMC")]
         public void ActivateGeekMemoryCleaner(DeviceBasicInfo targetDevice)
         {
-            var _continue = BoxHelper.ShowChoiceDialog("warning", "msgActiveGMC", "btnCancel", "btnContinue").ToBool();
-            if (_continue)
-            {
-                var activator = new GeekMemoryCleanerActivator();
-                activator.Init(new FlowArgs() { DevBasicInfo = targetDevice });
-                activator.RunAsync();
-                BoxHelper.ShowLoadingDialog(activator);
-            }
+
+            var activator = new GeekMemoryCleanerActivator();
+            activator.Init(new FlowArgs() { DevBasicInfo = targetDevice });
+            activator.RunAsync();
+            BoxHelper.ShowLoadingDialog(activator);
+
         }
 
         [InstallCheck(StopAppActivator.AppPackageName, ErrorMsgKey = "msgPlsInstallStopAppFirst")]
@@ -217,7 +217,8 @@ namespace AutumnBox.GUI.UI.FuncPanels
             BoxHelper.ShowLoadingDialog(activator);
         }
 
-        [InstallCheck(StopAppActivator.AppPackageName, ErrorMsgKey = "msgPlsInstallAnzenbokusuFirst")]
+
+        [InstallCheck(AnzenbokusuActivator.AppPackageName, ErrorMsgKey = "msgPlsInstallAnzenbokusuFirst")]
         [Tip("msgIceAct")]
         [DeviceUserCheck]
         public void ActivateAnzenbokusu(DeviceBasicInfo targetDevice)
@@ -227,6 +228,18 @@ namespace AutumnBox.GUI.UI.FuncPanels
             activator.RunAsync();
             BoxHelper.ShowLoadingDialog(activator);
         }
+
+        [InstallCheck(AnzenbokusuFakeActivator.AppPackageName, ErrorMsgKey = "msgPlsInstallAnzenbokusuFakeFirst")]
+        [Tip("msgIceAct")]
+        [DeviceUserCheck]
+        public void ActivateAnzenbokusuFake(DeviceBasicInfo targetDevice)
+        {
+            AnzenbokusuFakeActivator activator = new AnzenbokusuFakeActivator();
+            activator.Init(new FlowArgs() { DevBasicInfo = targetDevice });
+            activator.RunAsync();
+            BoxHelper.ShowLoadingDialog(activator);
+        }
+
         [InstallCheck(FreezeYouActivator.AppPackageName, ErrorMsgKey = "msgPlsInstallFreezeYouFirst")]
         [Tip("msgIceAct")]
         [DeviceUserCheck]

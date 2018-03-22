@@ -126,6 +126,7 @@ namespace AutumnBox.GUI
                 Settings.Default.IsFirstLaunch = false;
                 Settings.Default.Save();
             }
+            Settings.Default.Save();
         }
     }
 }

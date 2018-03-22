@@ -1,11 +1,6 @@
 ﻿using AutumnBox.Basic.Device;
-using AutumnBox.Basic.Executer;
-using AutumnBox.OpenFramework.Internal;
 using System;
 using System.Diagnostics;
-using System.Linq;
-using System.Runtime.InteropServices;
-using XiaoMiFlash.code.Utility;
 
 namespace AutumnBox.ConsoleTester
 {

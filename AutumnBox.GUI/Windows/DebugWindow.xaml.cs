@@ -23,6 +23,8 @@ namespace AutumnBox.GUI.Windows
         public DebugWindow()
         {
             InitializeComponent();
+            TxtBoxLog.AppendText(Logger.logBuffer.ToString());
+            TxtBoxLog.ScrollToEnd();
             Logger.Logged += Logger_Logged;
         }
 

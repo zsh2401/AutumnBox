@@ -280,6 +280,7 @@
     </None>
     <Compile Include="MainWindow.FlowFinishedHandling.cs" />
     <Compile Include="UI\FuncPanels\AdbActivatorsUI.cs" />
+    <Resource Include="Resources\HKHTW3.TTF" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -648,6 +649,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\AppIcons\freezeYou.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\AppIcons\anzenbokusufake.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

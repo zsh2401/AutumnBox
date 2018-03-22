@@ -26,6 +26,7 @@ namespace AutumnBox.Support.Log
             {
                 AutoFlush = true
             };
+            DeleteObsoleteLog();
         }
         private static void DeleteObsoleteLog()
         {

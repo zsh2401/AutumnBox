@@ -4,9 +4,12 @@
 ** desc： ...
 *************************************************/
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Text;
+
 namespace AutumnBox.Support.Log
 {
     public class LogEventArgs : EventArgs
@@ -21,10 +24,13 @@ namespace AutumnBox.Support.Log
     {
         public static event EventHandler<LogEventArgs> Logged;
 
+        public readonly static StringBuilder logBuffer = new StringBuilder();
+
         public static void Debug(object senderOrTag, object message)
         {
             var str = MakeText(senderOrTag, "Debug", message);
             Debugger.Log(4, null, str);
+            logBuffer.Append(str);
             WriteToFile(str);
         }
 
@@ -32,6 +38,7 @@ namespace AutumnBox.Support.Log
         {
             var str = MakeText(senderOrTag, "Info", message);
             Debugger.Log(3, null, str);
+            logBuffer.Append(str);
             WriteToFile(str);
         }
 
@@ -39,6 +46,7 @@ namespace AutumnBox.Support.Log
         {
             var str = MakeText(senderOrTag, "Warn", message);
             Debugger.Log(2, null, str);
+            logBuffer.Append(str);
             WriteToFile(str);
         }
 
@@ -46,6 +54,7 @@ namespace AutumnBox.Support.Log
         {
             var str = MakeText(senderOrTag, "Warn", message, e);
             Debugger.Log(2, null, str);
+            logBuffer.Append(str);
             WriteToFile(str);
         }
 
@@ -53,6 +62,7 @@ namespace AutumnBox.Support.Log
         {
             var str = MakeText(senderOrTag, "Fatal", message);
             Debugger.Log(1, null, str);
+            logBuffer.Append(str);
             WriteToFile(str);
         }
     }

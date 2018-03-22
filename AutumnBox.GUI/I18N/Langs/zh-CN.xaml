@@ -10,6 +10,7 @@
     <s:String x:Key="AppDesc">开源免费简约的图形化ADB工具箱</s:String>
     <!--按钮-->
     <s:String x:Key="btnFreezeYouActivator">激活FreezeYou!</s:String>
+     <s:String x:Key="btnAnzenbokusuFakeActivator">激活第二空间伪装版</s:String>
     <s:String x:Key="btnAnzenbokusuActivator">激活第二空间</s:String>
     <s:String x:Key="btnBlackholeActivator">激活黑洞</s:String>
     <s:String x:Key="btnStopExtension">停止运行</s:String>
@@ -185,6 +186,7 @@
     <s:String x:Key="msgPlsInstallStopAppFirst">请先安装小黑屋!!</s:String>
     <s:String x:Key="msgPlsInstallBlackholeFirst">请先安装黑洞!!</s:String>
      <s:String x:Key="msgPlsInstallAnzenbokusuFirst">请先安装第二空间!!</s:String>
+    <s:String x:Key="msgPlsInstallAnzenbokusuFakeFirst">请先安装第二空间伪装版!!</s:String>
      <s:String x:Key="msgPlsInstallGMCFirst">请先安装极客内存清理!!</s:String>
     <s:String x:Key="msgPlsInstallShizukuManagerFirst">请先安装ShizukuManager!酷市场和手机乐园都有!</s:String>
     <s:String x:Key="msgWarning">警告</s:String>
