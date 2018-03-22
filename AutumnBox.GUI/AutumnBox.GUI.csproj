@@ -35,7 +35,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\out\AutumnBox\file\</OutputPath>
+    <OutputPath>..\..\AutumnBox_Output\AutumnBox\file\</OutputPath>
     <DefineConstants>TRACE;DEBUG;USE_LOCAL_API</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -45,7 +45,7 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\out\AutumnBox\file\</OutputPath>
+    <OutputPath>..\..\AutumnBox_Output\AutumnBox\file\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -280,7 +280,6 @@
     </None>
     <Compile Include="MainWindow.FlowFinishedHandling.cs" />
     <Compile Include="UI\FuncPanels\AdbActivatorsUI.cs" />
-    <Resource Include="Resources\HKHTW3.TTF" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">

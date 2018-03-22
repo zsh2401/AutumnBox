@@ -21,7 +21,7 @@ namespace AutumnBox.ZipMaker
             {
                 suffix = Input("Please Input suffix(default: Debug)") ?? "Debug";
             }
-            FileVersionInfo info = FileVersionInfo.GetVersionInfo(@"..\out\AutumnBox\file\AutumnBox.GUI.exe");
+            FileVersionInfo info = FileVersionInfo.GetVersionInfo(@"..\AutumnBox_Output\AutumnBox\file\AutumnBox.GUI.exe");
             using (ZipFile zip = new ZipFile(Encoding.UTF8))
             {
                 zip.AddDirectory(@"..\out");
