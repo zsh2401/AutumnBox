@@ -16,6 +16,7 @@ using AutumnBox.GUI.NetUtil;
 using AutumnBox.GUI.Properties;
 using AutumnBox.GUI.Util;
 using AutumnBox.Support.Log;
+using System;
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Input;
@@ -27,22 +28,15 @@ namespace AutumnBox.GUI.Windows
     /// </summary>
     public partial class UpdateNoticeWindow : Window
     {
-        string baiduUrl;
-        string githubUrl;
-        string version;
+        readonly UpdateCheckResult result;
         internal UpdateNoticeWindow(UpdateCheckResult e)
         {
             InitializeComponent();
-            LH.Content = e.Header;
-            TextBoxContent.Text = e.Message;
-            baiduUrl = e.BaiduPanUrl;
-            version = e.Version.ToString();
-            githubUrl = e.GithubReleaseUrl;
             Owner = App.Current.MainWindow;
-        }
-        internal static void FastShow(UpdateCheckResult e)
-        {
-            new UpdateNoticeWindow(e).ShowDialog();
+            this.result = e;
+            LH.Content = result.Header;
+            LbPublishTime.Content = result.Time.ToString("MM/dd/yyyy");
+            TextBoxContent.Text = result.Message;
         }
 
         private void labelTitle_MouseMove(object sender, MouseEventArgs e)
@@ -57,23 +51,23 @@ namespace AutumnBox.GUI.Windows
         {
             if (CheckBoxSkip.IsChecked == true)
             {
-                Settings.Default.SkipVersion = version;
+                Settings.Default.SkipVersion = result.VersionString;
                 Settings.Default.Save();
             }
             this.Close();
         }
 
-        private void buttonGithubReleaseDownload_MouseDown(object sender, MouseButtonEventArgs e)
+        private void ButtonUpdateNow_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            Process.Start(githubUrl);
-            Close();
-        }
-
-        private void buttonBaiduPanDownlod_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            Logger.Info(this,"go to " + baiduUrl);
-            Process.Start(baiduUrl);
-            Close();
+            try
+            {
+                Process.Start(result.UpdateUrl);
+            }
+            catch (Exception ex)
+            {
+                Logger.Warn(this, "Go to update url failed..", ex);
+            }
+            this.Close();
         }
     }
 }

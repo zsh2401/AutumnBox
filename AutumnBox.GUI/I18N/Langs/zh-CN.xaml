@@ -106,6 +106,7 @@
     
     <!--链接文字-->
     <s:String x:Key="hyperLinkInstallModule">如何安装模块</s:String>
+    <s:String x:Key="hyperLinkUpdateNow">现在更新!</s:String>
     <s:String x:Key="hyperLinkGithub">Github</s:String>
     <s:String x:Key="hyperLinkBaiduPan">百度网盘</s:String>
     <s:String x:Key="hyperLinkDownloadMiFlashPackage">下载MIUI线刷包</s:String>

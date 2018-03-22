@@ -32,10 +32,8 @@ namespace AutumnBox.GUI.NetUtil
         public string VersionString { get; set; } = "0.0.0";
         [JsonProperty("message")]
         public string Message { get; set; } = "No update";
-        [JsonProperty("baiduPanUrl")]
-        public string BaiduPanUrl { get; set; } = "http://atmb.top";
-        [JsonProperty("githubReleaseUrl")]
-        public string GithubReleaseUrl { get; set; } = "https://github.com/zsh2401/AutumnBox";
+        [JsonProperty("updateUrl")]
+        public string UpdateUrl { get; set; } = "http://atmb.top/";
         [JsonProperty("date")]
         public int[] TimeArray { get; set; } = new int[] { 1970, 1, 1 };
 
@@ -51,20 +49,20 @@ namespace AutumnBox.GUI.NetUtil
 #if USE_LOCAL_API&& DEBUG
         public override UpdateCheckResult Get()
         {
-            var json = webClient.DownloadString("http://localhost:24010/api/update/");
-            JObject j = JObject.Parse(json);
-            var result = (UpdateCheckResult)JsonConvert.DeserializeObject(j.ToString(), typeof(UpdateCheckResult));
+            var jsonBytes = webClient.DownloadData("http://localhost:24010/api/update/");
+            var json = Encoding.UTF8.GetString(jsonBytes);
+            var result = (UpdateCheckResult)JsonConvert.DeserializeObject(json, typeof(UpdateCheckResult));
             return result;
         }
 #else
         public override UpdateCheckResult Get()
         {
-            Logger.Info(this,"Getting update info....");
+            Logger.Info(this, "Getting update info....");
             byte[] bytes = new WebClient().DownloadData(App.Current.Resources["urlApiUpdate"].ToString());
             string data = Encoding.UTF8.GetString(bytes);
             JObject j = JObject.Parse(data);
             var result = (UpdateCheckResult)JsonConvert.DeserializeObject(j.ToString(), typeof(UpdateCheckResult));
-            Logger.Info(this,"update check finished " + data);
+            Logger.Info(this, "update check finished " + data);
             return result;
         }
 #endif

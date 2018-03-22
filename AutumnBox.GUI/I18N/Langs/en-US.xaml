@@ -105,6 +105,7 @@
 
     <!--链接文字-->
     <s:String x:Key="hyperLinkInstallModule">How to install?</s:String>
+    <s:String x:Key="hyperLinkUpdateNow">Update now!</s:String>
     <s:String x:Key="hyperLinkGithub">Github</s:String>
     <s:String x:Key="hyperLinkBaiduPan">Baidu netdisk</s:String>
     <s:String x:Key="hyperLinkDownloadMiFlashPackage">Download MIUI Line flash package</s:String>
