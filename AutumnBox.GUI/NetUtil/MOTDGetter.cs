@@ -36,7 +36,7 @@ namespace AutumnBox.GUI.NetUtil
         public override MOTDResult Get()
         {
             var jsonByte = webClient.DownloadData("http://localhost:24010/api/motd/");
-            var json = Encoding.Default.GetString(jsonByte);
+            var json = Encoding.UTF8.GetString(jsonByte);
             var result = (MOTDResult)JsonConvert.DeserializeObject(json, typeof(MOTDResult));
             return result;
         }
@@ -44,7 +44,7 @@ namespace AutumnBox.GUI.NetUtil
         public override MOTDResult Get()
         {
             byte[] bytes = webClient.DownloadData(App.Current.Resources["urlApiMotd"].ToString());
-            string data = Encoding.Default.GetString(bytes);
+            string data = Encoding.UTF8.GetString(bytes);
             JObject o = JObject.Parse(data);
             var result = (MOTDResult)JsonConvert.DeserializeObject(o.ToString(), typeof(MOTDResult));
             Logger.Info(this,"MOTD Get from net success!" + result.Header + " " + result.Message);
