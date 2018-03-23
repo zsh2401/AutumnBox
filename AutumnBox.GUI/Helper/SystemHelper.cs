@@ -122,6 +122,5 @@ namespace AutumnBox.GUI.Helper
                 return Process.GetProcessesByName("AutumnBox.GUI").Length > 1;
             }
         }
-        internal readonly static AutoGC AutoGC = new AutoGC();
     }
 }

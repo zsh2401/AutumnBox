@@ -217,7 +217,6 @@ namespace AutumnBox.GUI.UI.FuncPanels
             BoxHelper.ShowLoadingDialog(activator);
         }
 
-
         [InstallCheck(AnzenbokusuActivator.AppPackageName, ErrorMsgKey = "msgPlsInstallAnzenbokusuFirst")]
         [Tip("msgIceAct")]
         [DeviceUserCheck]
