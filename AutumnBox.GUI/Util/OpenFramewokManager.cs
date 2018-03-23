@@ -5,6 +5,7 @@
 *************************************************/
 using AutumnBox.Basic.FlowFramework;
 using AutumnBox.GUI.Helper;
+using AutumnBox.GUI.Windows;
 using AutumnBox.OpenFramework;
 using AutumnBox.OpenFramework.Internal;
 using AutumnBox.OpenFramework.Open;
@@ -37,6 +38,7 @@ namespace AutumnBox.GUI.Util
             {
                 return App.Current.Resources[key];
             }
+
             public TReturn GetPublicResouce<TReturn>(Context context, string key) where TReturn : class
             {
                 return App.Current.Resources[key] as TReturn;
@@ -56,6 +58,15 @@ namespace AutumnBox.GUI.Util
                 });
                 return result;
             }
+
+            public void ShowDebugWindow(Context ctx)
+            {
+                App.Current.Dispatcher.Invoke(() =>
+                {
+                    new DebugWindow().Show();
+                });
+            }
+
             public void ShowLoadingWindow(Context context, ICompletable completable)
             {
                 App.Current.Dispatcher.Invoke(() =>
@@ -64,6 +75,7 @@ namespace AutumnBox.GUI.Util
                 });
 
             }
+
             public void ShowMessageBox(Context context, string title, string msg)
             {
                 App.Current.Dispatcher.Invoke(() =>
