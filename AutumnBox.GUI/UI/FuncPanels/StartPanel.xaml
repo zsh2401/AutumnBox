@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AutumnBox.GUI.UI.FuncPanels"
+            xmlns:cstm="clr-namespace:AutumnBox.GUI.UI.Cstm"
              xmlns:Fp="clr-namespace:AutumnBox.GUI.UI.Fp" x:Class="AutumnBox.GUI.UI.FuncPanels.StartPanel"
              mc:Ignorable="d" 
              d:DesignHeight="359" d:DesignWidth="918"  ScrollViewer.VerticalScrollBarVisibility="Disabled">
