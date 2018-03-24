@@ -26,11 +26,6 @@ namespace AutumnBox.GUI.Windows
         {
             InitializeComponent();
             ThemeManager.LoadFromSetting();
-            //if (!SystemHelper.IsWin10)
-            //{
-            //    Logger.Info(this, "is not windows 10,use 华康黑体W3 font");
-            //    App.Current.Resources["AutumnBox.Font"] = new FontFamily(new Uri("pack://application:,,,/"), "./Resources/#华康黑体W3(P)");
-            //}
         }
         public void SetProgress(double value)
         {
