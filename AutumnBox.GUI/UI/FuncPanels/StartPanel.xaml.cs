@@ -32,39 +32,9 @@ namespace AutumnBox.GUI.UI.FuncPanels
             InitializeComponent();
         }
 
-        private void TextBlock_MouseDown(object sender, MouseButtonEventArgs e)
+        private void HyperLink_MouseClick(object sender, RoutedEventArgs e)
         {
-            Process.Start(App.Current.Resources["urlHelpOfLinkDevice"].ToString());
-        }
-
-        private void TextBlock_MouseDown_1(object sender, MouseButtonEventArgs e)
-        {
-            Process.Start(App.Current.Resources["urlHelp"].ToString());
-        }
-
-        private void TextBlock_MouseDown_2(object sender, MouseButtonEventArgs e)
-        {
-            Process.Start(App.Current.Resources["urlOfficialWebsite"].ToString());
-        }
-
-        private void TextBlock_MouseDown_3(object sender, MouseButtonEventArgs e)
-        {
-           Process.Start(App.Current.Resources["urlOpensource"].ToString());
-        }
-
-        private void TextBlock_MouseDown_4(object sender, MouseButtonEventArgs e)
-        {
-            Process.Start(App.Current.Resources["urlJoinQQGroup"].ToString());
-        }
-
-        private void TBDonateList_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            Process.Start(App.Current.Resources["urlDonateList"].ToString());
-        }
-
-        private void TBDonate_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            new FastPanel(App.Current.MainWindowAsMainWindow.GridMain, new DonatePanel()).Display() ;
+            new FastPanel(App.Current.MainWindowAsMainWindow.GridMain, new DonatePanel()).Display();
         }
     }
 }

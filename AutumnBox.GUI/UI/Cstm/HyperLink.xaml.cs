@@ -23,7 +23,7 @@ namespace AutumnBox.GUI.UI.Cstm
     {
         public static readonly DependencyProperty HyperlinkProperty =
             DependencyProperty.Register("Hyperlink", typeof(string), typeof(HyperLink),
-                new PropertyMetadata("http://atmb.top"));
+                new PropertyMetadata(null));
         public string Hyperlink
         {
             get
@@ -51,6 +51,21 @@ namespace AutumnBox.GUI.UI.Cstm
             }
         }
 
+        public static readonly RoutedEvent MouseClickEvent =
+            EventManager.RegisterRoutedEvent("MouseClick", RoutingStrategy.Direct,
+                typeof(RoutedEventHandler), typeof(HyperLink));
+        public event RoutedEventHandler MouseClick
+        {
+            add
+            {
+                AddHandler(MouseClickEvent, value);
+            }
+            remove
+            {
+                RemoveHandler(MouseClickEvent, value);
+            }
+        }
+
         public HyperLink()
         {
             InitializeComponent();
@@ -68,7 +83,13 @@ namespace AutumnBox.GUI.UI.Cstm
 
         private void TBMain_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            Process.Start(Hyperlink);
+            if (Hyperlink != null)
+                Process.Start(Hyperlink);
+            else
+                RaiseEvent(new RoutedEventArgs()
+                {
+                    RoutedEvent = MouseClickEvent
+                });
         }
     }
 }
