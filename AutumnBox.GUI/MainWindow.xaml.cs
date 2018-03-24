@@ -63,9 +63,9 @@ namespace AutumnBox.GUI
             };
             RegisterEvent();
 #if DEBUG
-            TitleBar.Title += "  " + SystemHelper.CurrentVersion + "-Debug";
+            TitleBar.Title += "  " + SystemHelper.CurrentVersion.ToString(3) + "-Debug";
 #else
-            TitleBar.Title += "  " + SystemHelper.CurrentVersion + "-Release";
+            TitleBar.Title += "  " + SystemHelper.CurrentVersion.ToString(3) + "-Release";
 #endif
         }
 

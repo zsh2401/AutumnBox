@@ -6,6 +6,7 @@
     <s:String x:Key="LanguageName">English</s:String>
     <s:String x:Key="LanguageCode">en-US</s:String>
 
+   
     <s:String x:Key="AppDesc">Open source,free,simple,GUI adb toolbox</s:String>
     <!--按钮-->
     <s:String x:Key="btnFreezeYouActivator">Active FreezeYou!</s:String>
@@ -80,28 +81,6 @@
     <s:String x:Key="btnCancel">Cancel</s:String>
     <!--按钮-->
 
-
-    <!--PackgeManageWindow-->
-    <s:String x:Key="pmw_msg">I'd love to change the world...but i dont know how to do</s:String>
-    <s:String x:Key="pmw_msgClearSuccess">Cleamup successful</s:String>
-    <s:String x:Key="pmw_msgRefreshFailed">Refresh failed</s:String>
-    <s:String x:Key="pmw_msgClearFailed">Cleanup failed</s:String>
-    <s:String x:Key="pmw_msgUninstallFailed">Uninstall failed</s:String>
-    <s:String x:Key="pmw_ckbShowSystemApp">Show system app</s:String>
-    <s:String x:Key="pmw_btnRefreshAppList">Refresh</s:String>
-    <s:String x:Key="pmw_labelVersionName">Version name</s:String>
-    <s:String x:Key="pmw_labelPackageName">Package name</s:String>
-    <s:String x:Key="pmw_labelAppName">App name</s:String>
-    <s:String x:Key="pmw_labelCodeSize">App size</s:String>
-    <s:String x:Key="pmw_labelCacheSize">Cache size</s:String>
-    <s:String x:Key="pmw_labelDataSize">Data size</s:String>
-    <s:String x:Key="pmw_btnClearData">Clear data</s:String>
-    <s:String x:Key="pmw_labelTotalSize">Total size</s:String>
-    <s:String x:Key="pmw_btnUninstall">Uninstall</s:String>
-    <s:String x:Key="pmw_btnBlock">Block</s:String>
-    <s:String x:Key="pmw_btnUnblock">Unblock</s:String>
-    <s:String x:Key="pmw_btnStop">Stop</s:String>
-    <!--PackgeManageWindow-->
 
     <!--链接文字-->
     <s:String x:Key="hyperLinkInstallModule">How to install?</s:String>
@@ -287,6 +266,7 @@
     <s:String x:Key="lbSetDeviceOwner">Set device owner to active</s:String>
     <s:String x:Key="lbRunScript">Run scrpt to active</s:String>
     <s:String x:Key="lbOpenNetDebugging">Open Net debugging to active (dragerous!)</s:String>
+     <s:String x:Key="AdviseAboutExtensions">Use the latest autumnbox as much as possible,you will feel better...</s:String>
     <!--静态界面标记-->
 
     <!--设备信息标记-->
@@ -357,10 +337,9 @@
 Spring.AOP | Newtonsoft.Json  | Google Android Debug Bridge | Google Android | Linux
         
 感谢以下人员在AutumnBox初期给予的支持(排名不分先后)
-蚂蚁,饼干怪兽,hxy,yh0422,yume,滥情空心,web1n,咖枯,八百标兵
+蚂蚁,饼干怪兽,hxy,yh0422,yume,滥情空心,web1n,咖枯,八百标兵,EggGrenade
         
 如果你也做出了卓越贡献但未被记录,请联系我!</s:String>
-    <s:String x:Key="AdviseAboutExtensions">Use the latest autumnbox as much as possible,you will feel better...</s:String>
     <!--关于信息-->
 
     <s:String x:Key="warningOpenNetDebugging">
@@ -368,7 +347,6 @@ Spring.AOP | Newtonsoft.Json  | Google Android Debug Bridge | Google Android | L
         请确保您的设备与电脑处于同一局域网下
         请确保您已在开发者设置中打开网络调试
     </s:String>
-    <s:String x:Key="Menu">Menu</s:String>
     <s:String x:Key="Contact">Contact Developer</s:String>
     <s:String x:Key="Donate">Donate Developer</s:String>
 

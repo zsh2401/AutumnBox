@@ -81,29 +81,6 @@
     <s:String x:Key="btnCancel">取消</s:String>
     <!--按钮-->
 
-    
-    <!--PackgeManageWindow-->
-    <s:String x:Key="pmw_msg">I'd love to change the world...but i dont know how to do</s:String>
-    <s:String x:Key="pmw_msgClearSuccess">清理成功</s:String>
-    <s:String x:Key="pmw_msgRefreshFailed">刷新失败</s:String>
-    <s:String x:Key="pmw_msgClearFailed">清理失败</s:String>
-    <s:String x:Key="pmw_msgUninstallFailed">卸载失败</s:String>
-    <s:String x:Key="pmw_ckbShowSystemApp">显示系统应用</s:String>
-    <s:String x:Key="pmw_btnRefreshAppList">刷新</s:String>
-    <s:String x:Key="pmw_labelVersionName">版本号</s:String>
-    <s:String x:Key="pmw_labelPackageName">包名</s:String>
-    <s:String x:Key="pmw_labelAppName">应用名称</s:String>
-    <s:String x:Key="pmw_labelCodeSize">应用大小</s:String>
-    <s:String x:Key="pmw_labelCacheSize">缓存大小</s:String>
-    <s:String x:Key="pmw_labelDataSize">数据大小</s:String>
-    <s:String x:Key="pmw_btnClearData">清除数据</s:String>
-    <s:String x:Key="pmw_labelTotalSize">总大小</s:String>
-    <s:String x:Key="pmw_btnUninstall">卸载</s:String>
-    <s:String x:Key="pmw_btnBlock">冻结</s:String>
-    <s:String x:Key="pmw_btnUnblock">解冻</s:String>
-    <s:String x:Key="pmw_btnStop">停止</s:String>
-    <!--PackgeManageWindow-->
-    
     <!--链接文字-->
     <s:String x:Key="hyperLinkInstallModule">如何安装模块</s:String>
     <s:String x:Key="hyperLinkUpdateNow">现在更新!</s:String>
@@ -290,6 +267,7 @@
     <s:String x:Key="lbSetDeviceOwner">通过设置设备管理员进行激活</s:String>
     <s:String x:Key="lbRunScript">通过运行脚本进行激活</s:String>
     <s:String x:Key="lbOpenNetDebugging">通过打开网络调试激活(极度危险)</s:String>
+    <s:String x:Key="AdviseAboutExtensions">为确保您的体验,请尽量使用最新版AutumnBox</s:String>
     <!--静态界面标记-->
 
     <!--设备信息标记-->
@@ -360,11 +338,10 @@
 Spring.AOP | Newtonsoft.Json  | Google Android Debug Bridge | Google Android | Linux
         
 感谢以下人员在AutumnBox初期给予的支持(排名不分先后)
-蚂蚁,饼干怪兽,hxy,yh0422,yume,滥情空心,web1n,咖枯,八百标兵
+蚂蚁,饼干怪兽,hxy,yh0422,yume,滥情空心,web1n,咖枯,八百标兵,EggGrenade
         
 如果你也做出了卓越贡献但未被记录,请联系我!
 </s:String>
-        <s:String x:Key="AdviseAboutExtensions">为确保您的体验,请尽量使用最新版AutumnBox</s:String>
     <!--关于信息-->
 
     <s:String x:Key="warningOpenNetDebugging">
@@ -372,7 +349,6 @@ Spring.AOP | Newtonsoft.Json  | Google Android Debug Bridge | Google Android | L
         请确保您的设备与电脑处于同一局域网下
         请确保您已在开发者设置中打开网络调试
     </s:String>
-    <s:String x:Key="Menu">菜单</s:String>
     <s:String x:Key="Contact">联系开发者</s:String>
     <s:String x:Key="Donate">捐赠开发者</s:String>
     
