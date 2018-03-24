@@ -31,6 +31,8 @@ using AutumnBox.Basic.MultipleDevices;
 using AutumnBox.GUI.UI.Cstm;
 using System.Windows.Threading;
 using AutumnBox.GUI.UI.FuncPanels;
+using System.Windows.Controls;
+using AutumnBox.Support.Log;
 
 namespace AutumnBox.GUI
 {
@@ -53,12 +55,12 @@ namespace AutumnBox.GUI
             RegisterEvent();
             refreshables = new List<IRefreshable>
             {
-                this.RebootGrid,
-                this.DevInfoPanel,
-                this.FastbootFuncs,
-                this.RecoveryFuncs,
-                this.PoweronFuncs,
-                this.ThridPartyFuncs
+                RebootGrid,
+                DevInfoPanel,
+                FastbootFuncs,
+                RecoveryFuncs,
+                PoweronFuncs,
+                ThridPartyFuncs
             };
 #if DEBUG
             TitleBar.Title += "  " + SystemHelper.CurrentVersion + "-Debug";
