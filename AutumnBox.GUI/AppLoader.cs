@@ -31,7 +31,6 @@ namespace AutumnBox.GUI
             System.Security.Principal.WindowsIdentity identity = System.Security.Principal.WindowsIdentity.GetCurrent();
             System.Security.Principal.WindowsPrincipal principal = new System.Security.Principal.WindowsPrincipal(identity);
             Logger.Info(this, $"Run as admin?{principal.IsInRole(System.Security.Principal.WindowsBuiltInRole.Administrator)}");
-
             Logger.Info(this,$"Windows version {Environment.OSVersion.Version}");
         }
         public async void LoadAsync()
