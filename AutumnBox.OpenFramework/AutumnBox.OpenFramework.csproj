@@ -35,9 +35,9 @@
     <DocumentationFile>bin\Release\AutumnBox.OpenFramework.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'SDK|AnyCPU'">
-    <OutputPath>..\sdk\</OutputPath>
+    <OutputPath>..\..\sdk\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
-    <DocumentationFile>..\sdk\AutumnBox.OpenFramework.xml</DocumentationFile>
+    <DocumentationFile>..\..\sdk\AutumnBox.OpenFramework.xml</DocumentationFile>
     <Optimize>true</Optimize>
     <DebugType>pdbonly</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>

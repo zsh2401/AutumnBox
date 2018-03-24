@@ -362,6 +362,7 @@ Newtonsoft.Json
 Google Android Debug Bridge 
 Google Android 
 Linux</s:String>
+    <s:String x:Key="AdviseAboutExtensions">Use the latest autumnbox as much as possible,you will feel better...</s:String>
     <!--关于信息-->
 
     <s:String x:Key="warningOpenNetDebugging">

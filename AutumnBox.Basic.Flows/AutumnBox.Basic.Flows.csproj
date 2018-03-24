@@ -33,9 +33,9 @@
     <DocumentationFile>bin\Release\AutumnBox.Basic.Flows.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'SDK|AnyCPU'">
-    <OutputPath>..\sdk\</OutputPath>
+    <OutputPath>..\..\sdk\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
-    <DocumentationFile>bin\Release\AutumnBox.Basic.Flows.xml</DocumentationFile>
+    <DocumentationFile>..\..\sdk\AutumnBox.Basic.Flows.xml</DocumentationFile>
     <Optimize>true</Optimize>
     <DebugType>pdbonly</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>

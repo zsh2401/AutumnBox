@@ -52,7 +52,6 @@ namespace AutumnBox.GUI
         public MainWindow()
         {
             InitializeComponent();
-            RegisterEvent();
             refreshables = new List<IRefreshable>
             {
                 RebootGrid,
@@ -62,6 +61,7 @@ namespace AutumnBox.GUI
                 PoweronFuncs,
                 ThridPartyFuncs
             };
+            RegisterEvent();
 #if DEBUG
             TitleBar.Title += "  " + SystemHelper.CurrentVersion + "-Debug";
 #else
