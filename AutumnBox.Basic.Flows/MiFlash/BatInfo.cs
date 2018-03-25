@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Flows.MiFlash
 {
-    public struct BatInfo
+    public class BatInfo
     {
         public string FullPath { get; private set; }
         public string Desc { get; private set; }

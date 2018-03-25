@@ -22,11 +22,12 @@ namespace AutumnBox.GUI
     {
         private IAppLoadingWindow loadingWindowApi;
         public AppLoader(IAppLoadingWindow loadingWindowApi)
+
         {
             this.loadingWindowApi = loadingWindowApi;
             PrintInfo();
         }
-        public void PrintInfo()
+        private void PrintInfo()
         {
             System.Security.Principal.WindowsIdentity identity = System.Security.Principal.WindowsIdentity.GetCurrent();
             System.Security.Principal.WindowsPrincipal principal = new System.Security.Principal.WindowsPrincipal(identity);
