@@ -2,14 +2,13 @@ body{
     width: 100%;
     height: 100%;
     margin: 0px;
-    background-color: gray;
+    background-color: #009AD6;
     color: aliceblue;
     position: absolute;
 }
 #mainDiv{
     position: relative;
     margin: 0px;
-    background: gray;
     width: 1366px;
     margin-left: auto;
     margin-right: auto;
