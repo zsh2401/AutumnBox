@@ -3,14 +3,9 @@
 ** date:  2018/3/13 17:56:01 (UTC +8:00)
 ** desc： ...
 *************************************************/
-using AutumnBox.GUI.Helper;
 using AutumnBox.GUI.Properties;
-using AutumnBox.Support.Log;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace AutumnBox.GUI.Helper

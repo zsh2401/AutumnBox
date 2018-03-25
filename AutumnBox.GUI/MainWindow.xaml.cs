@@ -254,7 +254,7 @@ namespace AutumnBox.GUI
             this.DragMove();
         }
 
-        private void TBCFuncs_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        private void TBCFuncs_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
         }
     }

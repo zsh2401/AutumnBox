@@ -36,6 +36,7 @@ namespace AutumnBox.GUI
                     case nameof(BlackHoleActivator):
                     case nameof(AnzenbokusuActivator):
                     case nameof(FreezeYouActivator):
+                    case nameof(AnzenbokusuFakeActivator):
                         DevicesOwnerSetted((DeviceOwnerSetter)sender, (DeviceOwnerSetterResult)e.Result);
                         break;
                     case nameof(RecoveryFlasher):
