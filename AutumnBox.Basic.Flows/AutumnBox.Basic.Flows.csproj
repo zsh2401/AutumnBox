@@ -72,6 +72,7 @@
     <Compile Include="FilePusher.cs" />
     <Compile Include="FreezeYouActivator.cs" />
     <Compile Include="GeekMemoryCleanerActivator.cs" />
+    <Compile Include="GreenifyAggressiveDozeActivator.cs" />
     <Compile Include="IceBoxActivator.cs" />
     <Compile Include="IslandActivator.cs" />
     <Compile Include="MiFlash\BatInfo.cs" />

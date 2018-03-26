@@ -90,7 +90,6 @@ namespace AutumnBox.Basic.Executer
                 string shellCommand = user == LinuxUser.Normal ? command : $"su -c \'{command}\'";
                 string fullCommand = $"{device.ToFullSerial()} shell \"{shellCommand} ; exit $?\"";
                 pStartInfo.Arguments = fullCommand;
-                Console.WriteLine(fullCommand);
                 using (var process = new Process())
                 {
                     process.StartInfo = pStartInfo;

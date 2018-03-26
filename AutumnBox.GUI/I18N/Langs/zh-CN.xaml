@@ -9,6 +9,7 @@
     
     <s:String x:Key="AppDesc">开源免费简约的图形化ADB工具箱</s:String>
     <!--按钮-->
+    <s:String x:Key="btnGreenifyDozeActivator">激活绿色守护嗜睡模式等</s:String>
     <s:String x:Key="btnFreezeYouActivator">激活FreezeYou!</s:String>
      <s:String x:Key="btnAnzenbokusuFakeActivator">激活第二空间伪装版</s:String>
     <s:String x:Key="btnAnzenbokusuActivator">激活第二空间</s:String>
@@ -156,6 +157,7 @@
        当进入9008模式后,设备会完全黑屏,但您可以使用相关工具进行刷机
         &#x0a;如果想要退出9008模式,长按电源键即可!
     </s:String>
+    <s:String x:Key="msgPlsInstallGreenifyFirst">请先安装绿色守护!</s:String>
     <s:String x:Key="msgPlsInstallFreezeYouFirst">请先安装FreezeYou!</s:String>
     <s:String x:Key="msgPlsInstallAirForzenFirst">请先安装空调狗!</s:String>
     <s:String x:Key="msgPlsInstallBreventFirst">请先安装黑域!</s:String>
@@ -266,6 +268,7 @@
      <s:String x:Key="lbDescription">说明</s:String>
     <s:String x:Key="lbSetDeviceOwner">通过设置设备管理员进行激活</s:String>
     <s:String x:Key="lbRunScript">通过运行脚本进行激活</s:String>
+    <s:String x:Key="lbSpecial">特殊方式</s:String>
     <s:String x:Key="lbOpenNetDebugging">通过打开网络调试激活(极度危险)</s:String>
     <s:String x:Key="AdviseAboutExtensions">为确保您的体验,请尽量使用最新版AutumnBox</s:String>
     <!--静态界面标记-->

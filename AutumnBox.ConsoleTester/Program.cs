@@ -1,4 +1,5 @@
 ﻿using AutumnBox.Basic.Device;
+using AutumnBox.Basic.Flows;
 using System;
 using System.Diagnostics;
 
@@ -23,8 +24,11 @@ namespace AutumnBox.ConsoleTester
         };
         unsafe static int Main(string[] cmdargs)
         {
-            var winDir = Environment.GetFolderPath(Environment.SpecialFolder.Windows);
-            Process.Start($"{winDir}\\sysnative\\pnputil");
+            GreenifyAggressiveDozeActivator activator = new GreenifyAggressiveDozeActivator();
+            activator.Init(new Basic.FlowFramework.FlowArgs()
+            {
+                DevBasicInfo = mi6
+            });
             Console.ReadKey();
             return 0;
         }

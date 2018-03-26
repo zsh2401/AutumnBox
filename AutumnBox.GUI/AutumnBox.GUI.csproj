@@ -659,6 +659,9 @@
   <ItemGroup>
     <Resource Include="Resources\Images\AppIcons\anzenbokusufake.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\AppIcons\Greenify.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>if $(ConfigurationName) == Release (

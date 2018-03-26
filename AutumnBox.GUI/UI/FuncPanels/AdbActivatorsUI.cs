@@ -93,6 +93,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
         void ActivateAnzenbokusu(DeviceBasicInfo targetDevice);
         void ActivateAnzenbokusuFake(DeviceBasicInfo targetDevice);
         void ActivateFreezeYou(DeviceBasicInfo targetDevice);
+        void ActivateGreenifyAggressiveDoze(DeviceBasicInfo targetDevice);
     }
     public class AdbActivatorsUI : IAdbActivatorsUI
     {
@@ -246,6 +247,18 @@ namespace AutumnBox.GUI.UI.FuncPanels
         {
             FreezeYouActivator activator = new FreezeYouActivator();
             activator.Init(new FlowArgs() { DevBasicInfo = targetDevice });
+            activator.RunAsync();
+            BoxHelper.ShowLoadingDialog(activator);
+        }
+
+        [InstallCheck(GreenifyAggressiveDozeActivator.AppPackageName, ErrorMsgKey = "msgPlsInstallGreenifyFirst")]
+        public void ActivateGreenifyAggressiveDoze(DeviceBasicInfo targetDevice)
+        {
+            var activator = new GreenifyAggressiveDozeActivator();
+            activator.Init(new FlowArgs()
+            {
+                DevBasicInfo = targetDevice
+            });
             activator.RunAsync();
             BoxHelper.ShowLoadingDialog(activator);
         }
