@@ -53,7 +53,7 @@ namespace AutumnBox.Basic.Util
         {
             var result = CommandExecuter.Static.Execute(AdbConstants.FullAdbFileName, "start-server");
             bool successful = result.IsSuccessful && !result.Contains("error");
-            result.PrintOnLog(true);
+            result.PrintOnLog(null,true);
             if (!successful) RisesAdbServerStartsFailedEvent();
             return successful;
         }

@@ -16,15 +16,18 @@ namespace AutumnBox.Basic.Util
     /// </summary>
     public interface IPrintable
     {
-        /// <summary>
-        /// 打印到log
-        /// </summary>
-        /// <param name="printOnRelease"></param>
-        void PrintOnLog(bool printOnRelease=false);
 
         /// <summary>
-        /// 打印到控制台
+        /// 打印到控制台,并且自定义tag
         /// </summary>
-        void PrintOnConsole();
+        /// <param name="tagOrSender">tag字符串或发送者</param>
+        /// <param name="printOnRelease"></param>
+        void PrintOnLog(object tagOrSender, bool printOnRelease = false);
+
+        /// <summary>
+        /// 打印到控制台,并且自定义TAG
+        /// </summary>
+        /// <param name="tagOrSender">tag字符串或发送者</param>
+        void PrintOnConsole(object tagOrSender);
     }
 }

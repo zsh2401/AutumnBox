@@ -31,6 +31,7 @@ namespace AutumnBox.Basic.Executer
                 return All.Split(Environment.NewLine.ToCharArray());
             }
         }
+
         /// <summary>
         /// 所有的标准输出
         /// </summary>
@@ -41,6 +42,7 @@ namespace AutumnBox.Basic.Executer
                 return Out.Split(Environment.NewLine.ToCharArray());
             }
         }
+
         /// <summary>
         /// 所有的标准错误
         /// </summary>
@@ -51,10 +53,12 @@ namespace AutumnBox.Basic.Executer
                 return Error.Split(Environment.NewLine.ToCharArray());
             }
         }
+
         /// <summary>
         /// 所有的输出
         /// </summary>
         public string All { get; protected set; }
+
         /// <summary>
         /// 所有的标准输出
         /// </summary>
@@ -81,6 +85,7 @@ namespace AutumnBox.Basic.Executer
                 return All.Contains(str);
             }
         }
+
         /// <summary>
         /// 获取完整的输出数据
         /// </summary>
@@ -89,46 +94,54 @@ namespace AutumnBox.Basic.Executer
         {
             return All.ToString();
         }
+
         /// <summary>
         /// 构建一个空的Output对象
         /// </summary>
-        public Output() {
+        public Output()
+        {
             this.Out = "";
             this.Error = "";
             this.All = "";
         }
+
         /// <summary>
         /// 构建
         /// </summary>
         /// <param name="all">所有内容</param>
         /// <param name="stdOutput">标准输出</param>
         /// <param name="stdError">标准错误</param>
-        public Output(string all, string stdOutput, string stdError ="") {
+        public Output(string all, string stdOutput, string stdError = "")
+        {
             this.Out = stdOutput;
             this.Error = stdError;
             this.All = all;
         }
+
         /// <summary>
-        /// 打印在Log里
+        /// 以可定义的tag或发送者,发送log
         /// </summary>
+        /// <param name="tagOrSender"></param>
         /// <param name="printOnRelease"></param>
-        public void PrintOnLog(bool printOnRelease = false)
+        public void PrintOnLog(object tagOrSender, bool printOnRelease = false)
         {
             if (printOnRelease)
             {
-                Logger.Info(this, $"PrintOnLog(): {ToString()}");
+                Logger.Info(tagOrSender, $"{this.GetType().Name}.PrintOnLog(): {ToString()}");
             }
             else
             {
-                Logger.Debug(this, $"PrintOnLog(): {ToString()}");
+                Logger.Debug(tagOrSender, $"{this.GetType().Name}.PrintOnLog(): {ToString()}");
             }
         }
+
         /// <summary>
-        /// 打印在控制台
+        /// 以可定义的tag或发送者,打印在控制台
         /// </summary>
-        public void PrintOnConsole()
+        /// <param name="tagOrSender"></param>
+        public void PrintOnConsole(object tagOrSender)
         {
-            Console.WriteLine($"PrintOnConsole(): {ToString()}");
+            Console.WriteLine($"{tagOrSender} {this.GetType().Name}.PrintOnConsole(): {ToString()}");
         }
     }
 }
