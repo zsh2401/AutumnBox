@@ -15,10 +15,5 @@ namespace AutumnBox.UnableToStartHelper
             Process.Start("http://atmb.top/download/dotnet/");
         }
 
-        private void button1_Click(object sender, System.EventArgs e)
-        {
-            Clipboard.SetText("zsh2401@163.com");
-            button1.Text = "已复制";
-        }
     }
 }
