@@ -150,7 +150,7 @@ namespace AutumnBox.UnableToStartHelper
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("宋体", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label8.Location = new System.Drawing.Point(12, 324);
+            this.label8.Location = new System.Drawing.Point(12, 316);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(407, 15);
             this.label8.TabIndex = 9;
@@ -180,7 +180,7 @@ namespace AutumnBox.UnableToStartHelper
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(516, 63);
+            this.pictureBox1.Location = new System.Drawing.Point(516, 53);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(219, 225);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -201,17 +201,17 @@ namespace AutumnBox.UnableToStartHelper
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("宋体", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label12.Location = new System.Drawing.Point(513, 23);
+            this.label12.Location = new System.Drawing.Point(468, 21);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(113, 15);
             this.label12.TabIndex = 14;
-            this.label12.Text = "开源,免费,简约";
+            this.label12.Text = "开源,简约,免费";
             // 
             // label13
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("宋体", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label13.Location = new System.Drawing.Point(648, 324);
+            this.label13.Location = new System.Drawing.Point(648, 321);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(87, 15);
             this.label13.TabIndex = 15;
@@ -219,12 +219,13 @@ namespace AutumnBox.UnableToStartHelper
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(425, 320);
+            this.button1.Location = new System.Drawing.Point(425, 312);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 27);
             this.button1.TabIndex = 16;
             this.button1.Text = "复制QQ号";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label14
             // 
@@ -251,7 +252,7 @@ namespace AutumnBox.UnableToStartHelper
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(747, 349);
+            this.ClientSize = new System.Drawing.Size(747, 340);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.button1);
