@@ -24,35 +24,17 @@ namespace AutumnBox.Basic.Executer
         /// <summary>
         /// 所有的输出
         /// </summary>
-        public string[] LineAll
-        {
-            get
-            {
-                return All.Split(Environment.NewLine.ToCharArray());
-            }
-        }
+        public string[] LineAll { get; private set; }
 
         /// <summary>
         /// 所有的标准输出
         /// </summary>
-        public string[] LineOut
-        {
-            get
-            {
-                return Out.Split(Environment.NewLine.ToCharArray());
-            }
-        }
+        public string[] LineOut { get; private set; }
 
         /// <summary>
         /// 所有的标准错误
         /// </summary>
-        public string[] LineError
-        {
-            get
-            {
-                return Error.Split(Environment.NewLine.ToCharArray());
-            }
-        }
+        public string[] LineError { get; private set; }
 
         /// <summary>
         /// 所有的输出
@@ -113,9 +95,12 @@ namespace AutumnBox.Basic.Executer
         /// <param name="stdError">标准错误</param>
         public Output(string all, string stdOutput, string stdError = "")
         {
-            this.Out = stdOutput;
-            this.Error = stdError;
-            this.All = all;
+            All = all;
+            Out = stdOutput;
+            Error = stdError;
+            LineAll = all.Split(Environment.NewLine.ToCharArray());
+            LineOut = stdOutput.Split(Environment.NewLine.ToCharArray());
+            LineError = stdError.Split(Environment.NewLine.ToCharArray());
         }
 
         /// <summary>
