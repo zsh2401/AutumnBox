@@ -31,7 +31,8 @@ namespace AutumnBox.Basic.Util
         /// <summary>
         /// 触发adb服务失败事件
         /// </summary>
-        internal static void RisesAdbServerStartsFailedEvent() {
+        internal static void RisesAdbServerStartsFailedEvent()
+        {
             AdbServerStartsFailed?.Invoke(new object(), new EventArgs());
         }
         /// <summary>
@@ -53,7 +54,7 @@ namespace AutumnBox.Basic.Util
         {
             var result = CommandExecuter.Static.Execute(AdbConstants.FullAdbFileName, "start-server");
             bool successful = result.IsSuccessful && !result.Contains("error");
-            result.PrintOnLog(null,true);
+            result.PrintOnLog(nameof(AdbHelper), true);
             if (!successful) RisesAdbServerStartsFailedEvent();
             return successful;
         }

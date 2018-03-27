@@ -127,11 +127,11 @@ namespace AutumnBox.Basic.Executer
         {
             if (printOnRelease)
             {
-                Logger.Info(tagOrSender, $"{this.GetType().Name}.PrintOnLog(): {ToString()}");
+                Logger.Info(tagOrSender, $"{this.GetType().Name}.PrintOnLog():{Environment.NewLine}{ToString()}");
             }
             else
             {
-                Logger.Debug(tagOrSender, $"{this.GetType().Name}.PrintOnLog(): {ToString()}");
+                Logger.Debug(tagOrSender, $"{this.GetType().Name}.PrintOnLog():{Environment.NewLine}{ToString()}");
             }
         }
 
@@ -141,7 +141,7 @@ namespace AutumnBox.Basic.Executer
         /// <param name="tagOrSender"></param>
         public void PrintOnConsole(object tagOrSender)
         {
-            Console.WriteLine($"{tagOrSender} {this.GetType().Name}.PrintOnConsole(): {ToString()}");
+            Console.WriteLine($"{tagOrSender} {this.GetType().Name}.PrintOnConsole():{Environment.NewLine}{ToString()}");
         }
     }
 }
