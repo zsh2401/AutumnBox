@@ -108,7 +108,7 @@ namespace AutumnBox.Basic.Executer
         /// </summary>
         /// <param name="tagOrSender"></param>
         /// <param name="printOnRelease"></param>
-        public void PrintOnLog(object tagOrSender, bool printOnRelease = false)
+        public virtual void PrintOnLog(object tagOrSender, bool printOnRelease = false)
         {
             if (printOnRelease)
             {
@@ -124,9 +124,35 @@ namespace AutumnBox.Basic.Executer
         /// 以可定义的tag或发送者,打印在控制台
         /// </summary>
         /// <param name="tagOrSender"></param>
-        public void PrintOnConsole(object tagOrSender)
+        public virtual void PrintOnConsole(object tagOrSender)
         {
             Console.WriteLine($"{tagOrSender} {this.GetType().Name}.PrintOnConsole():{Environment.NewLine}{ToString()}");
+        }
+
+        /// <summary>
+        /// 打印到控制台
+        /// </summary>
+        [Obsolete("Plz use PrintOnConsole(bool printOnRelease=false) to instead", true)]
+        public void PrintOnConsole()
+        {
+            Console.WriteLine($"{this.GetType().Name}.PrintOnConsole(): {this.ToString()}");
+        }
+
+        /// <summary>
+        /// 打印到log
+        /// </summary>
+        /// <param name="printOnRelease"></param>
+        [Obsolete("Plz use PrintOnLog(object tagOrSender,bool printOnRelease=false) to instead", true)]
+        public void PrintOnLog(bool printOnRelease = false)
+        {
+            if (printOnRelease)
+            {
+                Logger.Info(this, $"PrintOnLog():{Environment.NewLine}{ToString()}");
+            }
+            else
+            {
+                Logger.Debug(this, $"PrintOnLog():{Environment.NewLine}{ToString()}");
+            }
         }
     }
 }

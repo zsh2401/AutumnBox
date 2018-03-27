@@ -4,6 +4,8 @@
 ** desc： ...
 *************************************************/
 
+using System;
+
 namespace AutumnBox.Basic.Util
 {
     /// <summary>
@@ -11,6 +13,19 @@ namespace AutumnBox.Basic.Util
     /// </summary>
     public interface IPrintable
     {
+        /// <summary>
+        /// 打印到控制台,并且自定义tag
+        /// </summary>
+        /// <param name="printOnRelease"></param>
+        [Obsolete("Plz use PrintOnConsole(bool printOnRelease=false) to instead", true)]
+        void PrintOnConsole();
+
+        /// <summary>
+        /// 打印到控制台,并且自定义tag
+        /// </summary>
+        /// <param name="printOnRelease"></param>
+        [Obsolete("Plz use PrintOnConsole(bool printOnRelease=false) to instead", true)]
+        void PrintOnLog(bool printOnRelease = false);
 
         /// <summary>
         /// 打印到控制台,并且自定义tag
