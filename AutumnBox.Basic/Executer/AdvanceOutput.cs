@@ -53,13 +53,13 @@ namespace AutumnBox.Basic.Executer
             if (printOnRelease)
             {
                 Logger.Info(tagOrSender, $"{this.GetType().Name}.PrintOnLog():{Environment.NewLine}" +
-                    $"Exit Code: {exitCode}" +
+                    $"Exit Code: {exitCode}{Environment.NewLine}" +
                     $"{ToString()}");
             }
             else
             {
                 Logger.Debug(tagOrSender, $"{this.GetType().Name}.PrintOnLog():{Environment.NewLine}" +
-                    $"Exit Code: {exitCode}" +
+                    $"Exit Code: {exitCode}{Environment.NewLine}" +
                     $"{ToString()}");
             }
         }
