@@ -16,16 +16,15 @@ namespace AutumnBox.GUI.Util
 {
     internal static class OpenFramewokManager
     {
-
         private class OpenFramewokManagerContext : Context { }
         public static void LoadApi()
         {
             var context = new OpenFramewokManagerContext();
-            FrameworkLoader.SetGuiApi(context, new GuiApi());
-            FrameworkLoader.SetLogApi(context, new LogApi());
+            FrameworkLoader.SetGuiApi(context, new GuiApiImpl());
+            FrameworkLoader.SetLogApi(context, new LogApiImpl());
         }
 
-        private class GuiApi : IGuiApi
+        private class GuiApiImpl : IGuiApi
         {
             public string CurrentLanguageCode => App.Current.Resources["LanguageCode"].ToString();
 
@@ -85,7 +84,7 @@ namespace AutumnBox.GUI.Util
             }
         }
 
-        private class LogApi : ILogApi
+        private class LogApiImpl : ILogApi
         {
             public void Debug(Context sender, string msg)
             {
