@@ -3,8 +3,8 @@
 ** date:  2018/3/17 23:47:47 (UTC +8:00)
 ** desc： ...
 *************************************************/
-using AutumnBox.Basic.Adb;
 using AutumnBox.Basic.MultipleDevices;
+using AutumnBox.Basic.Util;
 using AutumnBox.GUI.Helper;
 using AutumnBox.GUI.Properties;
 using AutumnBox.GUI.Util;

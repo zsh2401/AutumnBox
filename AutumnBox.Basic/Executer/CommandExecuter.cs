@@ -6,7 +6,6 @@
 ** desc： ...
 *********************************************************************************/
 using AutumnBox.Basic.Device;
-using AutumnBox.Support.CstmDebug;
 using System;
 using System.Diagnostics;
 using System.Text.RegularExpressions;

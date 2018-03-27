@@ -13,9 +13,9 @@
 \* =============================================================================*/
 namespace AutumnBox.Basic.MultipleDevices
 {
-    using AutumnBox.Basic.Adb;
     using AutumnBox.Basic.Device;
     using AutumnBox.Basic.Executer;
+    using AutumnBox.Basic.Util;
     using AutumnBox.Support.Log;
     using System;
     using System.Text.RegularExpressions;

@@ -24,7 +24,6 @@ using System.Windows;
 using System.Collections.Generic;
 using AutumnBox.GUI.UI.Fp;
 using AutumnBox.Basic.Device;
-using AutumnBox.Basic.Adb;
 using AutumnBox.Basic.FlowFramework;
 using AutumnBox.Basic.Util;
 using AutumnBox.Basic.MultipleDevices;
@@ -32,7 +31,6 @@ using AutumnBox.GUI.UI.Cstm;
 using System.Windows.Threading;
 using AutumnBox.GUI.UI.FuncPanels;
 using System.Windows.Controls;
-using AutumnBox.Support.Log;
 
 namespace AutumnBox.GUI
 {

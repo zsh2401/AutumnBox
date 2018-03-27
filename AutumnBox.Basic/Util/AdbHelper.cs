@@ -15,10 +15,9 @@ using AutumnBox.Basic.Executer;
 using AutumnBox.Basic.Util;
 using AutumnBox.Support.Helper;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 
-namespace AutumnBox.Basic.Adb
+namespace AutumnBox.Basic.Util
 {
     /// <summary>
     /// ADB帮助(管理)

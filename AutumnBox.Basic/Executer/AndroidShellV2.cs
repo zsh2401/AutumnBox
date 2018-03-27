@@ -5,7 +5,6 @@
 *************************************************/
 using AutumnBox.Basic.Device;
 using AutumnBox.Basic.Util;
-using System;
 using System.Diagnostics;
 using System.Text;
 
