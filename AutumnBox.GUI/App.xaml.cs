@@ -105,6 +105,8 @@ namespace AutumnBox.GUI
             try { Logger.Fatal(this, exstr); } catch { }
             MessageBox.Show(
                 $"一个未知的错误的发生了,将logs文件夹压缩并发送给开发者以解决问题{Environment.NewLine}" +
+                $"出问题不发logs,开发者永远不可能解决你遇到的问题{Environment.NewLine}" +
+                 $"邮件/QQ: zsh2401@163.com{Environment.NewLine}" +
                 $"Please compress the logs folder and send it to zsh2401@163.com",
                 "AutumnBox 错误/Unknow Exception",
             MessageBoxButton.OK,
