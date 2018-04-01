@@ -14,13 +14,23 @@ using System.Diagnostics;
 
 namespace AutumnBox.Basic.Flows.MiFlash
 {
+    /// <summary>
+    /// MiFlash 参数
+    /// </summary>
     public class MiFlasherArgs : FlowArgs
     {
+        /// <summary>
+        /// 目标BAT路径
+        /// </summary>
         public string BatFileName { get; set; } = "flash_all.bat";
     }
+    /// <summary>
+    /// AutumnBox miflash参数
+    /// </summary>
     public sealed class MiFlasher : FunctionFlow<MiFlasherArgs, AdvanceResult>
     {
         int retCode;
+#pragma warning disable CS1591 // 缺少对公共可见类型或成员的 XML 注释
         protected override Output MainMethod(ToolKit<MiFlasherArgs> toolKit)
         {
             MiFlashBatExecuteProcess process = new MiFlashBatExecuteProcess(toolKit.Args.BatFileName, toolKit.Args.Serial);
@@ -87,4 +97,5 @@ namespace AutumnBox.Basic.Flows.MiFlash
             }
         }
     }
+#pragma warning restore CS1591 // 缺少对公共可见类型或成员的 XML 注释
 }

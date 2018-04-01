@@ -17,12 +17,23 @@ namespace AutumnBox.Basic.Flows.MiFlash
     /// </summary>
     public class LineFlashPackageParser
     {
+        /// <summary>
+        /// 解释解析器
+        /// </summary>
         public Func<string, string> DescSetter { private get; set; }
         private readonly DirectoryInfo dirInfo;
+        /// <summary>
+        /// 构建
+        /// </summary>
+        /// <param name="path"></param>
         public LineFlashPackageParser(string path)
         {
             dirInfo = new DirectoryInfo(path);
         }
+        /// <summary>
+        /// 解析
+        /// </summary>
+        /// <returns></returns>
         public LineFlashPackageInfo Parse()
         {
             LineFlashPackageInfo result = new LineFlashPackageInfo

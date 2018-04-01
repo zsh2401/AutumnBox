@@ -12,17 +12,34 @@ using AutumnBox.Support.CstmDebug;
 
 namespace AutumnBox.Basic.Flows
 {
+    /// <summary>
+    /// 设备镜像提取器参数
+    /// </summary>
     public sealed class DeviceImageExtractorArgs : FlowArgs
     {
+        /// <summary>
+        /// 要提取的镜像类型
+        /// </summary>
         public DeviceImage ImageType { get; set; } = DeviceImage.Recovery;
+        /// <summary>
+        /// 保存到的路径
+        /// </summary>
         public string SavePath { get; set; } = ".";
     }
+    /// <summary>
+    /// 设备镜像提取器
+    /// </summary>
     public sealed class DeviceImageExtractor : FunctionFlow<DeviceImageExtractorArgs>
     {
         private const string tempFileName = "iamwaitingforyou_caona.img";
         private bool _getPathSuccessful = false;
         private bool _copySuccessful = false;
         private bool _pullSuccessful = false;
+        /// <summary>
+        /// 主函数
+        /// </summary>
+        /// <param name="toolKit"></param>
+        /// <returns></returns>
         protected override Output MainMethod(ToolKit<DeviceImageExtractorArgs> toolKit)
         {
             var outBuilder = new AdvanceOutputBuilder();

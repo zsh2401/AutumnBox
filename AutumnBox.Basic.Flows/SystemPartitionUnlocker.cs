@@ -5,17 +5,20 @@
 *************************************************/
 using AutumnBox.Basic.Executer;
 using AutumnBox.Basic.FlowFramework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Flows
 {
+    /// <summary>
+    /// 系统分区解锁期
+    /// </summary>
     public class SystemPartitionUnlocker : FunctionFlow
     {
+        /// <summary>
+        /// 主方法
+        /// </summary>
+        /// <param name="toolKit"></param>
+        /// <returns></returns>
         protected override Output MainMethod(ToolKit<FlowArgs> toolKit)
         {
             toolKit.Ae("root");

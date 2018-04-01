@@ -7,17 +7,24 @@ using AutumnBox.Basic.Device;
 using AutumnBox.Basic.Executer;
 using AutumnBox.Basic.FlowFramework;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Flows
 {
+    /// <summary>
+    /// 绿色守护嗜睡模式设置器
+    /// </summary>
     public class GreenifyAggressiveDozeActivator : FunctionFlow
     {
+        /// <summary>
+        /// 应用包名
+        /// </summary>
         public const string AppPackageName = "com.oasisfeng.greenify";
         bool allSuccessful = true;
+        /// <summary>
+        /// 主方法
+        /// </summary>
+        /// <param name="toolKit"></param>
+        /// <returns></returns>
         protected override Output MainMethod(ToolKit<FlowArgs> toolKit)
         {
             AndroidShellV2 shell =
@@ -41,6 +48,10 @@ namespace AutumnBox.Basic.Flows
             allSuccessful = shell.Execute("am force-stop com.oasisfeng.greenify").IsSuccessful;
             return builder.Result;
         }
+        /// <summary>
+        /// 处理结果
+        /// </summary>
+        /// <param name="result"></param>
         protected override void AnalyzeResult(FlowResult result)
         {
             base.AnalyzeResult(result);

@@ -5,18 +5,26 @@
 ** compiler: Visual Studio 2017
 ** desc： ...
 *********************************************************************************/
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Flows.MiFlash
 {
+    /// <summary>
+    /// 线刷包信息
+    /// </summary>
     public struct LineFlashPackageInfo
     {
+        /// <summary>
+        /// 路径是正确的
+        /// </summary>
         public bool PathIsRight { get; internal set; }
+        /// <summary>
+        /// 是正确的
+        /// </summary>
         public bool IsRight { get; internal set; }
+        /// <summary>
+        /// 线刷包下的Bat
+        /// </summary>
         public IEnumerable<BatInfo> Bats { get; internal set; }
     }
 }

@@ -15,8 +15,14 @@ using AutumnBox.Basic.Flows.States;
 
 namespace AutumnBox.Basic.Flows.Result
 {
+    /// <summary>
+    /// 设备管理员设置器完成结果
+    /// </summary>
     public class DeviceOwnerSetterResult:AdvanceResult
     {
+        /// <summary>
+        /// 设置设备管理员时遇到的错误类型
+        /// </summary>
         public DeviceOwnerSetterErrType ErrorType { get; set; } = DeviceOwnerSetterErrType.None;
     }
 }

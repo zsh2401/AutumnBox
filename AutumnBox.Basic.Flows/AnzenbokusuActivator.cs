@@ -11,11 +11,22 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Flows
 {
+    /// <summary>
+    /// 第二空间激活器
+    /// </summary>
     public class AnzenbokusuActivator : DeviceOwnerSetter
     {
+        /// <summary>
+        /// 第二空间包名
+        /// </summary>
         public const string AppPackageName = "com.hld.anzenbokusu";
+        /// <summary>
+        /// 包名
+        /// </summary>
         protected override string PackageName => AppPackageName;
-
+        /// <summary>
+        /// 接收器类名
+        /// </summary>
         protected override string ClassName => ".receiver.DPMReceiver";
     }
 }
