@@ -13,6 +13,9 @@ namespace AutumnBox.Basic.Flows
     /// 截图器参数
     /// </summary>
     public class ScreenShoterArgs:FlowArgs{
+        /// <summary>
+        /// 截图保存路径
+        /// </summary>
         public string SavePath { get; set; } = "";
     }
     /// <summary>

@@ -2,23 +2,15 @@
 using AutumnBox.Basic.Flows;
 using AutumnBox.GUI.UI.Fp;
 using AutumnBox.GUI.UI.FuncPanels;
-using AutumnBox.Support.CstmDebug;
+using AutumnBox.Support.Log;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace AutumnBox.GUI.UI.CstPanels
 {
@@ -47,6 +39,7 @@ namespace AutumnBox.GUI.UI.CstPanels
             }
             catch (Exception ex)
             {
+                Logger.Warn(this,"Parse user input was failed",ex);
                 new FastPanel(this.root.GridMain,
                     new DevicesPanelMessageBox(App.Current.Resources["msgCheckInput"].ToString()))
                     .Display();

@@ -10,6 +10,7 @@ namespace AutumnBox.Basic.Device
     /// <summary>
     /// 找不到设备异常
     /// </summary>
+    [Serializable]
     public class DeviceNotFoundException:Exception
     {
     }

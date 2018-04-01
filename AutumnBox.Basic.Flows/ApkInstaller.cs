@@ -25,6 +25,9 @@ namespace AutumnBox.Basic.Flows
     /// </summary>
     public sealed class ApkInstallerArgs : FlowArgs
     {
+        /// <summary>
+        /// 要安装的所有APK路径
+        /// </summary>
         public List<FileInfo> Files { get; set; }
     }
     /// <summary>

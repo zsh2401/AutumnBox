@@ -13,6 +13,9 @@
 \* =============================================================================*/
 namespace AutumnBox.Basic.Device
 {
+    /// <summary>
+    /// 设备状态拓展
+    /// </summary>
     public static class DeviceStateExtension
     {
         /// <summary>

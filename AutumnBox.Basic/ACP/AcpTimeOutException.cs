@@ -8,5 +8,6 @@ using System;
 namespace AutumnBox.Basic.ACP
 {
     [Obsolete("Project-ACP is dead")]
+    [Serializable]
     internal class AcpTimeOutException:TimeoutException{}
 }

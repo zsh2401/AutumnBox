@@ -12,6 +12,7 @@ namespace AutumnBox.Basic.Device
     /// <summary>
     /// 设备没有Root的异常
     /// </summary>
+    [Serializable]
     public class DeviceHaveNoRootException : Exception
     {
         /// <summary>

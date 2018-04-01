@@ -118,6 +118,8 @@ namespace AutumnBox.Basic.Executer
         /// <summary>
         /// 处理并触发OutputReceived事件时发生
         /// </summary>
+        /// <param name="src"></param>
+        /// <param name="isError"></param>
         /// <param name="e"></param>
         private void RaiseOutputReceived(DataReceivedEventArgs src ,bool isError = false)
         {

@@ -14,6 +14,7 @@ namespace AutumnBox.Basic.Device.PackageManage
     /// <summary>
     /// 找不到包的异常
     /// </summary>
+    [Serializable]
     public class PackageNotFoundException : Exception
     {
         /// <summary>
