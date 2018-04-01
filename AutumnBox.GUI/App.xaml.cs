@@ -105,6 +105,13 @@ namespace AutumnBox.GUI
                 $"Inner:{n}{e.Exception.InnerException?.ToString() ?? "None"}{n}";
 
             try { Logger.Fatal(this, exstr); } catch { }
+            ShowErrorToUser(exstr);
+            e.Handled = true;
+            App.Current.Shutdown(1);
+        }
+
+        private void ShowErrorToUser(string exstr)
+        {
             switch (System.Threading.Thread.CurrentThread.CurrentCulture.Name)
             {
                 case "zh-CN":
@@ -135,8 +142,6 @@ namespace AutumnBox.GUI
                     MessageBoxImage.Error);
                     break;
             }
-            e.Handled = true;
-            App.Current.Shutdown(1);
         }
 
         protected override void OnExit(ExitEventArgs e)
