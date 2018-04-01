@@ -71,16 +71,6 @@ namespace AutumnBox.GUI.UI.Cstm
             InitializeComponent();
         }
 
-        private void UserControl_MouseEnter(object sender, MouseEventArgs e)
-        {
-            TBMain.TextDecorations = TextDecorations.Underline;
-        }
-
-        private void UserControl_MouseLeave(object sender, MouseEventArgs e)
-        {
-            TBMain.TextDecorations = null;
-        }
-
         private void TBMain_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (Hyperlink != null)
@@ -90,6 +80,16 @@ namespace AutumnBox.GUI.UI.Cstm
                 {
                     RoutedEvent = MouseClickEvent
                 });
+        }
+
+        private void TBMain_MouseEnter(object sender, MouseEventArgs e)
+        {
+            TBMain.TextDecorations = TextDecorations.Underline;
+        }
+
+        private void TBMain_MouseLeave(object sender, MouseEventArgs e)
+        {
+            TBMain.TextDecorations = null;
         }
     }
 }
