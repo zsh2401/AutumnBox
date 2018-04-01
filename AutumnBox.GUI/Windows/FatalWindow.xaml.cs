@@ -19,9 +19,16 @@ namespace AutumnBox.GUI.Windows
     /// </summary>
     public partial class FatalWindow : Window
     {
-        public FatalWindow()
+        public FatalWindow(string expMsg)
         {
             InitializeComponent();
+            TxtBxStackTrace.Text = expMsg;
+        }
+
+        private void BtnCopyErrMsg_Click(object sender, RoutedEventArgs e)
+        {
+            Clipboard.SetText(TxtBxStackTrace.Text);
+            BtnCopyErrMsg.Content = "已复制";
         }
     }
 }
