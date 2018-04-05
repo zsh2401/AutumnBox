@@ -27,16 +27,26 @@ namespace AutumnBox.OpenFramework.Open
             }
         }
         /// <summary>
-        /// 运行可能因为SDK版本不存在的函数的Action包裹
+        /// 当canRun为true时,运行一个Action,这个Action中可以包含一个可能不存在的函数
+        /// 并且这个可能不存在的函数将不会影响局部的其它语句执行
         /// </summary>
         /// <param name="act">包含可能不存在的函数的Action包裹</param>
         /// <param name="canRun">是否运行,您可以在此处写一个表达式如 SdkVersion>4</param>
-        public static void RunMaybeMissingMethod(bool canRun,Action act )
+        public static void RunMaybeMissingMethod(bool canRun, Action act)
         {
             if (canRun)
             {
                 act?.Invoke();
             }
+        }
+        /// <summary>
+        /// 运行一个Action,这个Action中可以包含一个可能不存在的函数
+        /// 并且这个可能不存在的函数将不会影响局部的其它语句执行
+        /// </summary>
+        /// <param name="act"></param>
+        public static void RunMaybeMissingMethod(Action act)
+        {
+            act?.Invoke();
         }
     }
 }
