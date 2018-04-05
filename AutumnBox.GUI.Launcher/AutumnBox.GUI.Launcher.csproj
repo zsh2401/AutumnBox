@@ -70,7 +70,7 @@
     <None Include="本软件绝无恶意代码,如有误报请放行">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <Content Include="title_icon.ico" />
+    <Resource Include="title_icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
