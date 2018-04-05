@@ -2,7 +2,7 @@
 using AutumnBox.Basic.Flows;
 using System;
 using System.Diagnostics;
-
+using System.Xml;
 namespace AutumnBox.ConsoleTester
 {
     class Program
@@ -22,14 +22,17 @@ namespace AutumnBox.ConsoleTester
             Serial = new DeviceSerialNumber("9dd1b490"),
             State = DeviceState.Poweron,
         };
+        class ExtensionInfo
+        {
+
+        }
         unsafe static int Main(string[] cmdargs)
         {
-            GreenifyAggressiveDozeActivator activator = new GreenifyAggressiveDozeActivator();
-            activator.Init(new Basic.FlowFramework.FlowArgs()
-            {
-                DevBasicInfo = mi6
-            });
-            Console.ReadKey();
+            XmlDocument doc = new XmlDocument();
+            doc.Load(@"C:\Users\zsh24\Desktop\TEST.xml");
+            var root = doc.SelectSingleNode("ExtensionInfo");
+            var minSdk = ((XmlElement)root.SelectSingleNode("MinSdk")).GetAttribute("Value");
+            Console.WriteLine(minSdk);
             return 0;
         }
     }

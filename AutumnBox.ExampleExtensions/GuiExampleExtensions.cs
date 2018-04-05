@@ -22,6 +22,8 @@ namespace AutumnBox.ExampleExtensions
         public override string Description => "AutumnBox拓展允许使用自定义窗口";
         public override MailAddress ContactMail => new MailAddress("zsh2401@163.com");
         public override DeviceState RequiredDeviceState => DeviceState.None;
+        public override int? MinSdk => 5;
+        public override int? TargetSdk => 5;
         public override bool InitAndCheck(InitArgs args)
         {
             OpenApi.Gui.ShowDebugWindow(this);
