@@ -4,21 +4,22 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AutumnBox.GUI.UI.FuncPanels"
+                xmlns:cstm="clr-namespace:AutumnBox.GUI.UI.Cstm"
              xmlns:CstPanels="clr-namespace:AutumnBox.GUI.UI.CstPanels" x:Class="AutumnBox.GUI.UI.FuncPanels.ThridPartyFunctionPanel"
              mc:Ignorable="d" 
-    Margin="0,0,0,0"
-             d:DesignHeight="366" d:DesignWidth="922">
+    Margin="0,0,0,0" Width="897.5" Height="355.5">
     <Grid x:Name="GridContainer">
-        <ListBox x:Name="ListBoxModule" HorizontalAlignment="Left" DisplayMemberPath="Name" Margin="10,101,0,10" Width="259" SelectionChanged="ListBox_SelectionChanged"/>
+        <ListBox Foreground="{DynamicResource ForegroundBrushKey}" Background="Transparent" BorderBrush="{DynamicResource BroderBrushKey}" x:Name="ListBoxModule" HorizontalAlignment="Left" DisplayMemberPath="Name" Margin="10,92,0,63" Width="265" SelectionChanged="ListBox_SelectionChanged"/>
         <TextBlock Visibility="Collapsed" x:Name="TxtNothing" TextAlignment="Center" FontSize="16"  Margin="291,161,10,0" TextWrapping="Wrap" Text="I'd love to change the world...but i dont know what to do" VerticalAlignment="Top"/>
-        <Button Style="{DynamicResource AtmbxButtonStyle}" x:Name="BtnOpenModuleFloder" Content="{DynamicResource btnOpenModuleFloder}" HorizontalAlignment="Left" Margin="10,15,0,0" VerticalAlignment="Top" Width="259"   Click="BtnOpenModuleFloder_Click"/>
-        <Grid x:Name="GridInfo" HorizontalAlignment="Left" Height="341" Margin="274,15,0,0" VerticalAlignment="Top" Width="638">
+        <Button Style="{DynamicResource AtmbxButtonStyle}" x:Name="BtnOpenModuleFloder" Content="{DynamicResource btnOpenModuleFloder}" HorizontalAlignment="Left" Margin="10,5,0,0" VerticalAlignment="Top" Width="265"   Click="BtnOpenModuleFloder_Click"/>
+        <Grid x:Name="GridInfo" Margin="291,15,10,10">
             <TextBlock x:Name="TBName" Margin="10,10,10,0" TextWrapping="Wrap" Text="There is Module name" VerticalAlignment="Top" FontSize="24"   Style="{DynamicResource AtmbxTextBlockStyle}"/>
-            <TextBlock x:Name="TBDesc" Margin="10,66,10,0" TextWrapping="Wrap" Text="There is Module desc" VerticalAlignment="Top"  Height="223"  FontSize="16" Style="{DynamicResource AtmbxTextBlockStyle}"/>
-            <Button Style="{DynamicResource AtmbxButtonStyle}" x:Name="BtnRun" Content="{DynamicResource btnRunExtension}" Margin="10,294,0,0" VerticalAlignment="Top" Click="BtnRun_Click" HorizontalAlignment="Left" Width="618"   Height="37"/>
-
+            <TextBlock x:Name="TBDesc" Margin="10,66,10,52" TextWrapping="Wrap" Text="There is Module desc"  FontSize="16" Style="{DynamicResource AtmbxTextBlockStyle}"/>
+            <Button Style="{DynamicResource AtmbxButtonStyle}" x:Name="BtnRun" Content="{DynamicResource btnRunExtension}" Margin="10,0,10,10" Click="BtnRun_Click" Height="37" VerticalAlignment="Bottom"/>
         </Grid>
-        <TextBlock TextAlignment="Center"  HorizontalAlignment="Left" Margin="10,45,0,0" TextWrapping="Wrap" Text="{DynamicResource hyperLinkInstallModule}" VerticalAlignment="Top" Width="259" Height="23" TextDecorations="Underline" MouseDown="TextBlock_MouseDown" Style="{DynamicResource AtmbxTextBlockStyle}"/>
-        <TextBlock x:Name="TBDownloadExt" TextAlignment="Center"  HorizontalAlignment="Left" Margin="10,73,0,0" TextWrapping="Wrap" Text="{DynamicResource hyperlinkExtensionsCenter}" VerticalAlignment="Top" Width="259" Height="23" TextDecorations="Underline" MouseDown="TBDownloadExt_MouseDown" Style="{DynamicResource AtmbxTextBlockStyle}"/>
+        <cstm:HyperLink HorizontalContentAlignment="Center" Text="{DynamicResource hyperLinkInstallModule}" Hyperlink="{DynamicResource urlHelpOfInstallExtension}" FontSize="12" Margin="10,38,623,298"/>
+        <cstm:HyperLink HorizontalContentAlignment="Center" Text="{DynamicResource hyperlinkExtensionsCenter}" Hyperlink="{DynamicResource urlDownloadExtensions}" FontSize="12" Margin="10,67,623,269"/>
+        <TextBlock FontSize="12" Style="{DynamicResource AtmbxTextBlockStyle}" x:Name="TBSdk" HorizontalAlignment="Left" Margin="10,0,0,45" TextWrapping="Wrap" Text="SDK Version: *" VerticalAlignment="Bottom" Width="265"/>
+        <TextBlock FontSize="12" Style="{DynamicResource AtmbxTextBlockStyle}"  HorizontalAlignment="Left" Margin="10,0,0,10" TextWrapping="Wrap" Text="{DynamicResource AdviseAboutExtensions}" Width="265" Height="31" VerticalAlignment="Bottom"/>
     </Grid>
 </UserControl>

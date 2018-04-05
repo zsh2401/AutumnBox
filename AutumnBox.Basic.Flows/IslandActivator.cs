@@ -14,12 +14,22 @@
 
 namespace AutumnBox.Basic.Flows
 {
+    /// <summary>
+    /// Island的DPM 设备管理员设置器
+    /// </summary>
     public sealed class IslandActivator : DeviceOwnerSetter
     {
-        //like this : "shell dpm set-device-owner com.oasisfeng.island/.IslandDeviceAdminReceiver";
+        /// <summary>
+        /// 包名
+        /// </summary>
         public const string AppPackageName = "com.oasisfeng.island";
+        /// <summary>
+        /// 包名
+        /// </summary>
         protected override string PackageName => AppPackageName;
-
+        /// <summary>
+        /// 类名
+        /// </summary>
         protected override string ClassName => ".IslandDeviceAdminReceiver";
     }
 }

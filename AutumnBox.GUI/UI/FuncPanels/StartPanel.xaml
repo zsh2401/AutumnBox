@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AutumnBox.GUI.UI.FuncPanels"
+            xmlns:cstm="clr-namespace:AutumnBox.GUI.UI.Cstm"
              xmlns:Fp="clr-namespace:AutumnBox.GUI.UI.Fp" x:Class="AutumnBox.GUI.UI.FuncPanels.StartPanel"
              mc:Ignorable="d" 
              d:DesignHeight="359" d:DesignWidth="918"  ScrollViewer.VerticalScrollBarVisibility="Disabled">
@@ -11,17 +12,21 @@
         <TextBlock Style="{DynamicResource AtmbxTextBlockStyle}"  HorizontalAlignment="Left" Margin="10,19,0,0" TextWrapping="Wrap" Text="{DynamicResource titStart}" VerticalAlignment="Top" FontSize="48" />
         <Label Style="{DynamicResource AtmbxLabelStyle}" Background="{DynamicResource BroderBrushKey}" Content="Label" Margin="0,98,0,0" Height="1" VerticalAlignment="Top" />
 
+        <!--帮助-->
         <TextBlock  Style="{DynamicResource AtmbxTextBlockStyle}" HorizontalAlignment="Left" Margin="10,108,0,0" TextWrapping="Wrap" Text="{DynamicResource titHelp}" VerticalAlignment="Top" FontSize="36" />
-        <TextBlock  Style="{DynamicResource AtmbxTextBlockStyle}" HorizontalAlignment="Left" Margin="10,189,0,0" TextWrapping="Wrap" Text="{DynamicResource hyperLinkLinkHelp}" VerticalAlignment="Top" FontSize="20" TextDecorations="{x:Null}" MouseDown="TextBlock_MouseDown" Width="219" />
-        <TextBlock  Style="{DynamicResource AtmbxTextBlockStyle}" HorizontalAlignment="Left" Margin="10,232,0,0" TextWrapping="Wrap" Text="{DynamicResource hyperLinkMoreHelp}" VerticalAlignment="Top" FontSize="20" TextDecorations="{x:Null}"  MouseDown="TextBlock_MouseDown_1" Width="219"/>
+        <cstm:HyperLink Text="{DynamicResource hyperLinkMoreHelp}" Hyperlink="{DynamicResource urlHelp}" Margin="10,231,709,100"/>
+        <cstm:HyperLink Text="{DynamicResource hyperLinkLinkHelp}" Hyperlink="{DynamicResource urlHelpOfLinkDevice}" Margin="10,188,709,143"/>
 
+        <!--联系-->
         <TextBlock  Style="{DynamicResource AtmbxTextBlockStyle}" HorizontalAlignment="Left" Margin="234,108,0,0" TextWrapping="Wrap" Text="{DynamicResource titContact}" VerticalAlignment="Top" FontSize="36" />
-        <TextBlock  Style="{DynamicResource AtmbxTextBlockStyle}" HorizontalAlignment="Left" Margin="234,189,0,0" TextWrapping="Wrap" Text="{DynamicResource hyperLinkOfficialWebsite}" VerticalAlignment="Top" FontSize="20" TextDecorations="{x:Null}"  MouseDown="TextBlock_MouseDown_2" Width="267"/>
-        <TextBlock  Style="{DynamicResource AtmbxTextBlockStyle}" HorizontalAlignment="Left" Margin="234,232,0,0" TextWrapping="Wrap" Text="{DynamicResource hyperlinkJoinQQGroup}" VerticalAlignment="Top" FontSize="20" TextDecorations="{x:Null}"  MouseDown="TextBlock_MouseDown_4" Width="267"/>
-        <TextBlock  Style="{DynamicResource AtmbxTextBlockStyle}" HorizontalAlignment="Left" Margin="234,274,0,0" TextWrapping="Wrap" Text="{DynamicResource hyperLinkOpenSource}" VerticalAlignment="Top" FontSize="20" TextDecorations="{x:Null}"  MouseDown="TextBlock_MouseDown_3"/>
+        <cstm:HyperLink Text="{DynamicResource hyperLinkOfficialWebsite}" Hyperlink="{DynamicResource urlOfficialWebsite}" Margin="234,188,332,143"/>
+        <cstm:HyperLink Text="{DynamicResource hyperlinkJoinQQGroup}" Hyperlink="{DynamicResource urlJoinQQGroup}" Margin="234,231,332,100"/>
+        <cstm:HyperLink Text="{DynamicResource hyperLinkOpenSource}" Hyperlink="{DynamicResource urlOpensource}" Margin="234,274,332,57"/>
+
+        <!--支持-->
         <TextBlock  Style="{DynamicResource AtmbxTextBlockStyle}" HorizontalAlignment="Left" Margin="651,111,0,0" TextWrapping="Wrap" Text="{DynamicResource titSupport}" VerticalAlignment="Top"  FontSize="36" />
-        <TextBlock Style="{DynamicResource AtmbxTextBlockStyle}" x:Name="TBDonate"   HorizontalAlignment="Left" Margin="651,189,0,0" TextWrapping="Wrap" Text="{DynamicResource hyperlinkDonate}" VerticalAlignment="Top" FontSize="20" TextDecorations="{x:Null}"  MouseDown="TBDonate_MouseDown" Width="257"/>
-        <TextBlock Style="{DynamicResource AtmbxTextBlockStyle}" x:Name="TBDonateList"   HorizontalAlignment="Left" Margin="651,232,0,0" TextWrapping="Wrap" Text="{DynamicResource hyperlinkDonateList}" VerticalAlignment="Top" FontSize="20" TextDecorations="{x:Null}"  MouseDown="TBDonateList_MouseDown" Width="257"/>
+        <cstm:HyperLink  Text="{DynamicResource hyperlinkDonateList}" Hyperlink="{DynamicResource urlDonateList}" Margin="651,231,161,100"/>
+        <cstm:HyperLink  Text="{DynamicResource hyperlinkDonate}" MouseClick="HyperLink_MouseClick" Margin="651,188,161,143"/>
 
     </Grid>
 </UserControl>

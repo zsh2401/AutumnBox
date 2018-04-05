@@ -14,11 +14,22 @@
 
 namespace AutumnBox.Basic.Flows
 {
+    /// <summary>
+    /// 冰箱DPM管理员设置器
+    /// </summary>
     public sealed class IceBoxActivator : DeviceOwnerSetter
     {
+        /// <summary>
+        /// 包名
+        /// </summary>
         public const string AppPackageName = "com.catchingnow.icebox";
+        /// <summary>
+        /// 包名
+        /// </summary>
         protected override string PackageName => AppPackageName;
-
+        /// <summary>
+        /// 接收器名
+        /// </summary>
         protected override string ClassName => ".receiver.DPMReceiver";
     }
 }

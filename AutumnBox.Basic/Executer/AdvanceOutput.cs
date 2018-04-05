@@ -4,6 +4,9 @@
 ** desc： ...
 *************************************************/
 
+using AutumnBox.Support.Log;
+using System;
+
 namespace AutumnBox.Basic.Executer
 {
     /// <summary>
@@ -35,8 +38,40 @@ namespace AutumnBox.Basic.Executer
         /// </summary>
         /// <param name="source"></param>
         /// <param name="exitCode"></param>
-        public AdvanceOutput(Output source, int exitCode):base(source.All,source.Out,source.Error) {
+        public AdvanceOutput(Output source, int exitCode) : base(source.All, source.Out, source.Error)
+        {
             this.exitCode = exitCode;
+        }
+
+        /// <summary>
+        /// 自定义tag,并打印AdvanceOutput在Log
+        /// </summary>
+        /// <param name="tagOrSender"></param>
+        /// <param name="printOnRelease">log级别</param>
+        public override void PrintOnLog(object tagOrSender, bool printOnRelease=false)
+        {
+            if (printOnRelease)
+            {
+                Logger.Info(tagOrSender, $"{this.GetType().Name}.PrintOnLog():{Environment.NewLine}" +
+                    $"Exit Code: {exitCode}{Environment.NewLine}" +
+                    $"{ToString()}");
+            }
+            else
+            {
+                Logger.Debug(tagOrSender, $"{this.GetType().Name}.PrintOnLog():{Environment.NewLine}" +
+                    $"Exit Code: {exitCode}{Environment.NewLine}" +
+                    $"{ToString()}");
+            }
+        }
+        /// <summary>
+        /// 自定义tag,并打印AdvanceOutput在控制台
+        /// </summary>
+        /// <param name="tagOrSender"></param>
+        public override void PrintOnConsole(object tagOrSender)
+        {
+            Console.WriteLine($"{tagOrSender}.{this.GetType().Name}.PrintOnLog():{Environment.NewLine}" +
+                $"Exit Code: {exitCode}" +
+                $"{ToString()}");
         }
     }
 }

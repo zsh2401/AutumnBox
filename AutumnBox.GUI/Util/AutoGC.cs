@@ -17,6 +17,7 @@ using System.Threading;
 
 namespace AutumnBox.GUI.Util
 {
+    [Obsolete("没什么卵用",true)]
     /// <summary>
     /// AutoGC http://www.cnblogs.com/xcsn/p/4678322.html
     /// </summary>

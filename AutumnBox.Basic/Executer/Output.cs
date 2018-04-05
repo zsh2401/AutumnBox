@@ -24,37 +24,23 @@ namespace AutumnBox.Basic.Executer
         /// <summary>
         /// 所有的输出
         /// </summary>
-        public string[] LineAll
-        {
-            get
-            {
-                return All.Split(Environment.NewLine.ToCharArray());
-            }
-        }
+        public string[] LineAll { get; private set; }
+
         /// <summary>
         /// 所有的标准输出
         /// </summary>
-        public string[] LineOut
-        {
-            get
-            {
-                return Out.Split(Environment.NewLine.ToCharArray());
-            }
-        }
+        public string[] LineOut { get; private set; }
+
         /// <summary>
         /// 所有的标准错误
         /// </summary>
-        public string[] LineError
-        {
-            get
-            {
-                return Error.Split(Environment.NewLine.ToCharArray());
-            }
-        }
+        public string[] LineError { get; private set; }
+
         /// <summary>
         /// 所有的输出
         /// </summary>
         public string All { get; protected set; }
+
         /// <summary>
         /// 所有的标准输出
         /// </summary>
@@ -81,6 +67,7 @@ namespace AutumnBox.Basic.Executer
                 return All.Contains(str);
             }
         }
+
         /// <summary>
         /// 获取完整的输出数据
         /// </summary>
@@ -89,46 +76,83 @@ namespace AutumnBox.Basic.Executer
         {
             return All.ToString();
         }
+
         /// <summary>
         /// 构建一个空的Output对象
         /// </summary>
-        public Output() {
+        public Output()
+        {
             this.Out = "";
             this.Error = "";
             this.All = "";
         }
+
         /// <summary>
         /// 构建
         /// </summary>
         /// <param name="all">所有内容</param>
         /// <param name="stdOutput">标准输出</param>
         /// <param name="stdError">标准错误</param>
-        public Output(string all, string stdOutput, string stdError ="") {
-            this.Out = stdOutput;
-            this.Error = stdError;
-            this.All = all;
+        public Output(string all, string stdOutput, string stdError = "")
+        {
+            All = all;
+            Out = stdOutput;
+            Error = stdError;
+            LineAll = all.Split(Environment.NewLine.ToCharArray());
+            LineOut = stdOutput.Split(Environment.NewLine.ToCharArray());
+            LineError = stdError.Split(Environment.NewLine.ToCharArray());
         }
+
         /// <summary>
-        /// 打印在Log里
+        /// 以可定义的tag或发送者,发送log
+        /// </summary>
+        /// <param name="tagOrSender"></param>
+        /// <param name="printOnRelease"></param>
+        public virtual void PrintOnLog(object tagOrSender, bool printOnRelease = false)
+        {
+            if (printOnRelease)
+            {
+                Logger.Info(tagOrSender, $"{this.GetType().Name}.PrintOnLog():{Environment.NewLine}{ToString()}");
+            }
+            else
+            {
+                Logger.Debug(tagOrSender, $"{this.GetType().Name}.PrintOnLog():{Environment.NewLine}{ToString()}");
+            }
+        }
+
+        /// <summary>
+        /// 以可定义的tag或发送者,打印在控制台
+        /// </summary>
+        /// <param name="tagOrSender"></param>
+        public virtual void PrintOnConsole(object tagOrSender)
+        {
+            Console.WriteLine($"{tagOrSender} {this.GetType().Name}.PrintOnConsole():{Environment.NewLine}{ToString()}");
+        }
+
+        /// <summary>
+        /// 打印到控制台
+        /// </summary>
+        [Obsolete("Plz use PrintOnConsole(bool printOnRelease=false) to instead", true)]
+        public void PrintOnConsole()
+        {
+            Console.WriteLine($"{this.GetType().Name}.PrintOnConsole(): {this.ToString()}");
+        }
+
+        /// <summary>
+        /// 打印到log
         /// </summary>
         /// <param name="printOnRelease"></param>
+        [Obsolete("Plz use PrintOnLog(object tagOrSender,bool printOnRelease=false) to instead", true)]
         public void PrintOnLog(bool printOnRelease = false)
         {
             if (printOnRelease)
             {
-                Logger.Info(this, $"PrintOnLog(): {ToString()}");
+                Logger.Info(this, $"PrintOnLog():{Environment.NewLine}{ToString()}");
             }
             else
             {
-                Logger.Debug(this, $"PrintOnLog(): {ToString()}");
+                Logger.Debug(this, $"PrintOnLog():{Environment.NewLine}{ToString()}");
             }
-        }
-        /// <summary>
-        /// 打印在控制台
-        /// </summary>
-        public void PrintOnConsole()
-        {
-            Console.WriteLine($"PrintOnConsole(): {ToString()}");
         }
     }
 }

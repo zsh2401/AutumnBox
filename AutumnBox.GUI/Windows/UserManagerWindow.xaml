@@ -6,16 +6,16 @@
         xmlns:local="clr-namespace:AutumnBox.GUI.Windows"
         xmlns:cstm="clr-namespace:AutumnBox.GUI.UI.Cstm"
         mc:Ignorable="d"
-        Title="UserManagerWindow" Height="300" Width="389" WindowStyle="None" ResizeMode="NoResize" Background="{DynamicResource BackgroundBrushKey}" WindowStartupLocation="CenterOwner">
-    <Grid Margin="3,0,3,3">
-        <cstm:CstmTitleBar Margin="-3,0,-3,257"></cstm:CstmTitleBar>
-        <ListBox x:Name="ListUsers" DisplayMemberPath="Name" HorizontalAlignment="Left" Height="213" Margin="0,74,0,0" VerticalAlignment="Top" Width="199" SelectionChanged="ListUsers_SelectionChanged"/>
-        <Label Style="{DynamicResource AtmbxLabelStyle}" Content="{DynamicResource lbUserName}" HorizontalAlignment="Left" Margin="204,45,0,0" VerticalAlignment="Top" FontSize="20" Width="169"/>
-        <Label Style="{DynamicResource AtmbxLabelStyle}" Content="{DynamicResource lbUserId}" HorizontalAlignment="Left" Margin="204,136,0,0" VerticalAlignment="Top" FontSize="20" Width="169"/>
-        <Button Style="{DynamicResource AtmbxButtonStyle}" x:Name="ButtonRemove" Content="{DynamicResource btnRemoveUser}" HorizontalAlignment="Left" Margin="204,262,0,0" VerticalAlignment="Top" Width="169" Click="Button_Click_1"/>
-        <TextBlock Style="{DynamicResource AtmbxTextBlockStyle}" x:Name="TBUserName" HorizontalAlignment="Left" Margin="204,87,0,0" TextWrapping="Wrap" Text="..." VerticalAlignment="Top" FontSize="22" Width="169"/>
-        <TextBlock  Style="{DynamicResource AtmbxTextBlockStyle}" x:Name="TBUid" HorizontalAlignment="Left" Margin="204,178,0,0" TextWrapping="Wrap" Text="..." VerticalAlignment="Top" FontSize="22" Width="169"/>
-        <Button Style="{DynamicResource AtmbxButtonStyle}" Content="{DynamicResource btnRefresh}" HorizontalAlignment="Left" Margin="0,44,0,0" VerticalAlignment="Top" Width="199" Click="Button_Click"/>
+        Title="UserManagerWindow" MinHeight="300" MinWidth="400" WindowStyle="None" ResizeMode="NoResize" Background="{DynamicResource BroderBrushKey}" WindowStartupLocation="CenterOwner" Height="229" Width="82">
+    <Grid Margin="3,0,3,3" Background="{DynamicResource BackgroundBrushKey}">
+        <cstm:CstmTitleBar VerticalAlignment="Top"/>
+        <ListBox x:Name="ListUsers" DisplayMemberPath="Name" Margin="10,74,184,10" SelectionChanged="ListUsers_SelectionChanged"/>
+        <Label Style="{DynamicResource AtmbxLabelStyle}" Content="{DynamicResource lbUserName}" HorizontalAlignment="Right" Margin="0,45,10,0" VerticalAlignment="Top" FontSize="20" Width="169"/>
+        <Label Style="{DynamicResource AtmbxLabelStyle}" Content="{DynamicResource lbUserId}" HorizontalAlignment="Right" Margin="0,136,10,0" VerticalAlignment="Top" FontSize="20" Width="169"/>
+        <Button Style="{DynamicResource AtmbxButtonStyle}" x:Name="ButtonRemove" Content="{DynamicResource btnRemoveUser}" Margin="0,0,10,10" Click="Button_Click_1" Height="25" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="169"/>
+        <TextBlock Style="{DynamicResource AtmbxTextBlockStyle}" x:Name="TBUserName" HorizontalAlignment="Right" Margin="0,87,10,0" TextWrapping="Wrap" Text="..." VerticalAlignment="Top" FontSize="22" Width="169"/>
+        <TextBlock  Style="{DynamicResource AtmbxTextBlockStyle}" x:Name="TBUid" HorizontalAlignment="Right" Margin="0,178,10,0" TextWrapping="Wrap" Text="..." VerticalAlignment="Top" FontSize="22" Width="169"/>
+        <Button Style="{DynamicResource AtmbxButtonStyle}" Content="{DynamicResource btnRefresh}" Margin="10,44,184,0" VerticalAlignment="Top" Click="Button_Click"/>
 
     </Grid>
 </Window>

@@ -40,8 +40,15 @@ namespace AutumnBox.Basic.Flows
         /// 执行完毕是否需要重启
         /// </summary>
         protected virtual bool NeedReboot { get; } = true;
+        /// <summary>
+        /// 执行结果,在MainMethod执行后产生
+        /// </summary>
         protected AdvanceOutput _executeResult;
         private ToolKit<FlowArgs> _toolKit;
+        /// <summary>
+        /// 尝试修复AlreadyProvisioned问题
+        /// </summary>
+        /// <returns></returns>
         protected virtual bool TryFixDeviceAlreadyProvisioned()
         {
             Logger.Warn(this,"<already provisioned error!> try to fix.....");
@@ -54,6 +61,11 @@ namespace AutumnBox.Basic.Flows
             Logger.Info(this, resultStep3.ToString());
             return resultStep1.IsSuccessful && resultStep2.IsSuccessful && resultStep3.IsSuccessful;
         }
+        /// <summary>
+        /// 主函数
+        /// </summary>
+        /// <param name="toolKit"></param>
+        /// <returns></returns>
         protected override Output MainMethod(ToolKit<FlowArgs> toolKit)
         {
             Logger.Debug(this,"the full shell command ->" + Command);
@@ -61,6 +73,10 @@ namespace AutumnBox.Basic.Flows
             _executeResult = toolKit.Executer.QuicklyShell(toolKit.Args.DevBasicInfo.Serial, Command);
             return _executeResult;
         }
+        /// <summary>
+        /// 处理结果
+        /// </summary>
+        /// <param name="result"></param>
         protected override void AnalyzeResult(DeviceOwnerSetterResult result)
         {
             base.AnalyzeResult(result);
@@ -115,6 +131,10 @@ namespace AutumnBox.Basic.Flows
                 result.ExitCode = fixSuccess ? 0 : -1;
             }
         }
+        /// <summary>
+        /// 如果成功了并且需要重启,就重启
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnFinished(FinishedEventArgs<DeviceOwnerSetterResult> e)
         {
             base.OnFinished(e);

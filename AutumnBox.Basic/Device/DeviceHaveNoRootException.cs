@@ -6,16 +6,13 @@
 ** desc： ...
 *********************************************************************************/
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Device
 {
     /// <summary>
     /// 设备没有Root的异常
     /// </summary>
+    [Serializable]
     public class DeviceHaveNoRootException : Exception
     {
         /// <summary>

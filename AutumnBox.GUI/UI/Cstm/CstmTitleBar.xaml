@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       mc:Ignorable="d" MinWidth="300" Height="0" MaxHeight="70" MinHeight="40" Background="{DynamicResource PrimaryBrushKey}" MouseDown="Grid_MouseDown" Loaded="UserControl_Loaded" >
     <Grid>
-        <Image HorizontalAlignment="Left" Margin="4,1,0,5" Width="32" RenderOptions.BitmapScalingMode="Fant" Source="/Resources/Images/title_icon.ico" RenderTransformOrigin="0.579,-1.368"/>
+        <Image HorizontalAlignment="Left" Margin="3" RenderOptions.BitmapScalingMode="Fant" Source="/Resources/Images/title_icon.ico" RenderTransformOrigin="0.579,-1.368"/>
         <Label Style="{DynamicResource AtmbxLabelStyle}" Name="LbTitle" Content="{DynamicResource AppName}" Foreground="{DynamicResource ForegroundOnPrimaryBrushKey}" Margin="41,0,94,0" FontSize="15" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Background="{x:Null}"/>
         <Image Name="ImgClose" Margin="0,1,9,1" Source="/Resources/Images/Btn/close_normal.png" MouseEnter="ImgClose_MouseEnter" MouseLeave="ImgClose_MouseLeave" MouseDown="ImgClose_MouseDown" HorizontalAlignment="Right" Width="25"/>
         <Image Name="ImgMin" Margin="0,1,45,2" Source="/Resources/Images/Btn/min_normal.png" MouseEnter="ImgMin_MouseEnter" MouseLeave="ImgMin_MouseLeave" MouseDown="ImgMin_MouseDown" HorizontalAlignment="Right" Width="24" Stretch="Fill" Visibility="Hidden"/>

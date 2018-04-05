@@ -5,6 +5,7 @@
 *************************************************/
 using AutumnBox.Basic.FlowFramework;
 using AutumnBox.GUI.Helper;
+using AutumnBox.GUI.Windows;
 using AutumnBox.OpenFramework;
 using AutumnBox.OpenFramework.Internal;
 using AutumnBox.OpenFramework.Open;
@@ -15,16 +16,15 @@ namespace AutumnBox.GUI.Util
 {
     internal static class OpenFramewokManager
     {
-
         private class OpenFramewokManagerContext : Context { }
         public static void LoadApi()
         {
             var context = new OpenFramewokManagerContext();
-            FrameworkLoader.SetGuiApi(context, new GuiApi());
-            FrameworkLoader.SetLogApi(context, new LogApi());
+            FrameworkLoader.SetGuiApi(context, new GuiApiImpl());
+            FrameworkLoader.SetLogApi(context, new LogApiImpl());
         }
 
-        private class GuiApi : IGuiApi
+        private class GuiApiImpl : IGuiApi
         {
             public string CurrentLanguageCode => App.Current.Resources["LanguageCode"].ToString();
 
@@ -37,6 +37,7 @@ namespace AutumnBox.GUI.Util
             {
                 return App.Current.Resources[key];
             }
+
             public TReturn GetPublicResouce<TReturn>(Context context, string key) where TReturn : class
             {
                 return App.Current.Resources[key] as TReturn;
@@ -56,6 +57,15 @@ namespace AutumnBox.GUI.Util
                 });
                 return result;
             }
+
+            public void ShowDebugWindow(Context ctx)
+            {
+                App.Current.Dispatcher.Invoke(() =>
+                {
+                    new DebugWindow().Show();
+                });
+            }
+
             public void ShowLoadingWindow(Context context, ICompletable completable)
             {
                 App.Current.Dispatcher.Invoke(() =>
@@ -64,6 +74,7 @@ namespace AutumnBox.GUI.Util
                 });
 
             }
+
             public void ShowMessageBox(Context context, string title, string msg)
             {
                 App.Current.Dispatcher.Invoke(() =>
@@ -73,7 +84,7 @@ namespace AutumnBox.GUI.Util
             }
         }
 
-        private class LogApi : ILogApi
+        private class LogApiImpl : ILogApi
         {
             public void Debug(Context sender, string msg)
             {

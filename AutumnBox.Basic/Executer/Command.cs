@@ -15,8 +15,6 @@ namespace AutumnBox.Basic.Executer
 {
     using AutumnBox.Basic.Device;
     using AutumnBox.Basic.Util;
-    using System;
-    using System.Text;
 
     /// <summary>
     /// 封装命令的对象

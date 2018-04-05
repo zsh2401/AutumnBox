@@ -13,7 +13,6 @@
 \* =============================================================================*/
 using AutumnBox.Basic.Executer;
 using AutumnBox.Support.Log;
-using AutumnBox.Support.Helper;
 using System;
 using System.Threading.Tasks;
 

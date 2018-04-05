@@ -20,6 +20,17 @@ namespace AutumnBox.GUI.UI.FuncPanels
         {
             return num.ToString() + "GB";
         }
+        public static string SafeGet(this Dictionary<string, string> dict, String key)
+        {
+            try
+            {
+                return dict[key];
+            }
+            catch (KeyNotFoundException)
+            {
+                return null;
+            }
+        }
     }
     /// <summary>
     /// DeviceInfoPanel.xaml 的交互逻辑
@@ -174,11 +185,12 @@ namespace AutumnBox.GUI.UI.FuncPanels
         private async void PoweronRefresh(DeviceBasicInfo devSimpleInfo)
         {
             var buildProp = await Task.Run(() => { return new DeviceBuildPropGetter(devSimpleInfo.Serial).GetFull(); });
-            DeviceName = buildProp[BuildPropKeys.Brand] + " " + buildProp[BuildPropKeys.Model];
+            DeviceName = buildProp.SafeGet(BuildPropKeys.Brand) + " " + buildProp.SafeGet(BuildPropKeys.Model);
+
             CurrentDeviceIsRoot = await Task.Run(() => { return new DeviceSoftwareInfoGetter(devSimpleInfo.Serial).IsRootEnable(); });
             DeviceRootStatusText = CurrentDeviceIsRoot ? "√" : "×";
-            DeviceAndroidVersion = buildProp[BuildPropKeys.AndroidVersion]?.ToString() ?? App.Current.Resources["GetFail"].ToString();
-            DeviceCode = buildProp[BuildPropKeys.ProductName];
+            DeviceAndroidVersion = buildProp.SafeGet(BuildPropKeys.AndroidVersion)?.ToString() ?? App.Current.Resources["GetFail"].ToString();
+            DeviceCode = buildProp.SafeGet(BuildPropKeys.ProductName) ?? App.Current.Resources["GetFail"].ToString();
             var hwInfo = await Task.Run(() =>
             {
                 return new DeviceHardwareInfoGetter(devSimpleInfo.Serial).Get();

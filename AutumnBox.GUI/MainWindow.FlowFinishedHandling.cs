@@ -16,8 +16,6 @@ using AutumnBox.GUI.Helper;
 using AutumnBox.GUI.Windows;
 using AutumnBox.Basic.Flows.Result;
 using AutumnBox.Basic.FlowFramework;
-using System.Threading.Tasks;
-using AutumnBox.Support.CstmDebug;
 
 namespace AutumnBox.GUI
 {
@@ -36,6 +34,7 @@ namespace AutumnBox.GUI
                     case nameof(BlackHoleActivator):
                     case nameof(AnzenbokusuActivator):
                     case nameof(FreezeYouActivator):
+                    case nameof(AnzenbokusuFakeActivator):
                         DevicesOwnerSetted((DeviceOwnerSetter)sender, (DeviceOwnerSetterResult)e.Result);
                         break;
                     case nameof(RecoveryFlasher):

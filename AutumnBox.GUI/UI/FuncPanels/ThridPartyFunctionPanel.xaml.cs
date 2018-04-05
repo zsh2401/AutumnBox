@@ -28,6 +28,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
             InitializeComponent();
             GridInfo.Visibility = Visibility.Collapsed;
             TxtNothing.Visibility = Visibility.Visible;
+            TBSdk.Text = "SDK Version: " + OpenFramework.BuildInfo.SDK_VERSION.ToString();
             this.Loaded += ThridPartyFunctionPanel_Loaded;
         }
 

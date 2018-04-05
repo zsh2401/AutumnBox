@@ -33,9 +33,9 @@
     <DocumentationFile>bin\Release\AutumnBox.Basic.Flows.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'SDK|AnyCPU'">
-    <OutputPath>..\sdk\</OutputPath>
+    <OutputPath>..\..\sdk\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
-    <DocumentationFile>bin\Release\AutumnBox.Basic.Flows.xml</DocumentationFile>
+    <DocumentationFile>..\..\sdk\AutumnBox.Basic.Flows.xml</DocumentationFile>
     <Optimize>true</Optimize>
     <DebugType>pdbonly</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -72,6 +72,7 @@
     <Compile Include="FilePusher.cs" />
     <Compile Include="FreezeYouActivator.cs" />
     <Compile Include="GeekMemoryCleanerActivator.cs" />
+    <Compile Include="GreenifyAggressiveDozeActivator.cs" />
     <Compile Include="IceBoxActivator.cs" />
     <Compile Include="IslandActivator.cs" />
     <Compile Include="MiFlash\BatInfo.cs" />

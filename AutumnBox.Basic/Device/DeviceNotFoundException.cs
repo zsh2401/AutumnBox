@@ -4,16 +4,13 @@
 ** desc： ...
 *************************************************/
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Device
 {
     /// <summary>
     /// 找不到设备异常
     /// </summary>
+    [Serializable]
     public class DeviceNotFoundException:Exception
     {
     }

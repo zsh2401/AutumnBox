@@ -34,9 +34,9 @@
     <DocumentationFile>bin\Release\AutumnBox.Basic.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'SDK|AnyCPU'">
-    <OutputPath>..\sdk\</OutputPath>
+    <OutputPath>..\..\sdk\</OutputPath>
     <DefineConstants>TRACE;SDK</DefineConstants>
-    <DocumentationFile>..\sdk\AutumnBox.Basic.xml</DocumentationFile>
+    <DocumentationFile>..\..\sdk\AutumnBox.Basic.xml</DocumentationFile>
     <Optimize>true</Optimize>
     <DebugType>pdbonly</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -84,8 +84,6 @@
     <Compile Include="Executer\AdvanceOutputBuilder.cs" />
     <Compile Include="Executer\AndroidShellV2.cs" />
     <Compile Include="Executer\OutputBuilder.cs" />
-    <Compile Include="Loader.cs" />
-    <Compile Include="Util\DriverHelper.cs" />
     <Compile Include="Util\ForwardManager.cs" />
     <Compile Include="Device\BuildPropKeys.cs" />
     <Compile Include="Device\DeviceBuildPropSetter.cs" />
@@ -135,7 +133,7 @@
     <Compile Include="MultipleDevices\DevicesMonitor.cs" />
     <Compile Include="Device\DeviceState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="AdbHelper.cs" />
+    <Compile Include="Util\AdbHelper.cs" />
     <Compile Include="Util\AdbConstants.cs" />
     <Compile Include="Util\IPrintable.cs" />
     <Compile Include="Util\LinuxReturnCode.cs" />

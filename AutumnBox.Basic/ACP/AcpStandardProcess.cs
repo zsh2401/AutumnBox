@@ -20,19 +20,22 @@ namespace AutumnBox.Basic.ACP
         private const int tempBufferSize = 4096;
         private const int receiveInterval = 200;
 
-        public static void Send(Socket client, byte[] request) {
+        public static void Send(Socket client, byte[] request)
+        {
             client.Send(request);
         }
         public static void Receive(Socket client,
-            out byte fCode,out byte[] datas,
-            uint timeoutValue = Acp.TIMEOUT_VALUE) {
+            out byte fCode, out byte[] datas,
+            uint timeoutValue = Acp.TIMEOUT_VALUE)
+        {
             byte[] buffer = new byte[tempBufferSize];
             List<byte> dynamicBuffer = new List<byte>();
             int totalSize = 0;
             var stream = new NetworkStream(client);
             var timeoutChecker = new TimeoutChecker();
-            Timeout(timeoutChecker,client, (int)timeoutValue);
-            try {
+            Timeout(timeoutChecker, client, (int)timeoutValue);
+            try
+            {
                 do
                 {
                     totalSize += stream.Read(buffer, 0, buffer.Length);
@@ -44,26 +47,33 @@ namespace AutumnBox.Basic.ACP
                 datas = new byte[totalSize - 1];
                 fCode = dynamicBuffer[0];
                 dynamicBuffer.CopyTo(1, datas, 0, datas.Length);
-            } catch (Exception e) {
+            }
+            catch (Exception e)
+            {
                 if (timeoutChecker.IsClosedByTimeoutMethod)
                 {
                     throw new AcpTimeOutException();
                 }
-                else {
+                else
+                {
                     throw e;
                 }
             }
         }
 
-        private class TimeoutChecker {
+        private class TimeoutChecker
+        {
             public bool IsFinished { get; set; } = false;
             public bool IsClosedByTimeoutMethod { get; set; } = false;
         }
-        private static async void Timeout(TimeoutChecker checker, Socket client,int value) {
-            await Task.Run(()=> {
+        private static async void Timeout(TimeoutChecker checker, Socket client, int value)
+        {
+            await Task.Run(() =>
+            {
                 Thread.Sleep(value);
             });
-            if (!checker.IsFinished) {
+            if (!checker.IsFinished)
+            {
                 checker.IsClosedByTimeoutMethod = true;
                 client.Close();
             }

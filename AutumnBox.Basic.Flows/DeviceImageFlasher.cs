@@ -8,23 +8,35 @@
 using AutumnBox.Basic.Device;
 using AutumnBox.Basic.Executer;
 using AutumnBox.Basic.FlowFramework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Flows
 {
+    /// <summary>
+    /// 设备镜像刷入器参数
+    /// </summary>
     public sealed class DeviceImageFlasherArgs : FlowArgs
     {
+        /// <summary>
+        /// 刷入的镜像类型
+        /// </summary>
         public DeviceImage ImageType { get; set; } = DeviceImage.Recovery;
+        /// <summary>
+        /// 源镜像路径
+        /// </summary>
         public string SourceFile { get; set; }
     }
+    /// <summary>
+    /// 设备镜像刷入器
+    /// </summary>
     public sealed class DeviceImageFlasher : FunctionFlow<DeviceImageFlasherArgs>
     {
         private const string _savePath = "/sdcard/autumnbox.img.tmp";
         private AdvanceOutput moveResult;
+        /// <summary>
+        /// 主函数
+        /// </summary>
+        /// <param name="toolKit"></param>
+        /// <returns></returns>
         protected override Output MainMethod(ToolKit<DeviceImageFlasherArgs> toolKit)
         {
             var outputBuilder = new AdvanceOutputBuilder();
@@ -48,6 +60,10 @@ namespace AutumnBox.Basic.Flows
             }
             return outputBuilder.Result;
         }
+        /// <summary>
+        /// 处理结果
+        /// </summary>
+        /// <param name="result"></param>
         protected override void AnalyzeResult(FlowResult result)
         {
             base.AnalyzeResult(result);

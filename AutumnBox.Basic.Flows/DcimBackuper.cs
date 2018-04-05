@@ -5,23 +5,29 @@
 *************************************************/
 using AutumnBox.Basic.Executer;
 using AutumnBox.Basic.FlowFramework;
-using AutumnBox.Support.CstmDebug;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace AutumnBox.Basic.Flows
 {
+    /// <summary>
+    /// 相册备份器参数
+    /// </summary>
     public class DcimBackuperArgs : FlowArgs
     {
+        /// <summary>
+        /// 备份到的路径
+        /// </summary>
         public string TargetPath { get; set; }
     }
+    /// <summary>
+    /// 相册备份器
+    /// </summary>
     public class DcimBackuper : FunctionFlow<DcimBackuperArgs>
     {
         private AdvanceOutput exeResult;
+        /// <summary>
+        /// 检查
+        /// </summary>
+        /// <param name="args"></param>
+        /// <returns></returns>
         protected override CheckResult Check(DcimBackuperArgs args)
         {
             var result =
@@ -29,6 +35,11 @@ namespace AutumnBox.Basic.Flows
                 args.DevBasicInfo.State == Device.DeviceState.Recovery) ? CheckResult.OK : CheckResult.DeviceStateError;
             return result;
         }
+        /// <summary>
+        /// 主函数
+        /// </summary>
+        /// <param name="toolKit"></param>
+        /// <returns></returns>
         protected override Output MainMethod(ToolKit<DcimBackuperArgs> toolKit)
         {
             if (toolKit.Args.DevBasicInfo.State == Device.DeviceState.Poweron)
@@ -41,6 +52,10 @@ namespace AutumnBox.Basic.Flows
             }
             return exeResult;
         }
+        /// <summary>
+        /// 处理结果
+        /// </summary>
+        /// <param name="result"></param>
         protected override void AnalyzeResult(FlowResult result)
         {
             base.AnalyzeResult(result);

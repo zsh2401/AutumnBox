@@ -8,18 +8,21 @@
 using AutumnBox.Basic.Executer;
 using AutumnBox.Basic.FlowFramework;
 using AutumnBox.Basic.Flows.Result;
-using AutumnBox.Basic.Util;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Flows
 {
+    /// <summary>
+    /// 网络调试设备连接断开器
+    /// </summary>
     public class NetDeviceDisconnecter : FunctionFlow<FlowArgs, AdvanceResult>
     {
         private AdvanceOutput _result;
+        /// <summary>
+        /// 主方法
+        /// </summary>
+        /// <param name="toolKit"></param>
+        /// <returns></returns>
         protected override Output MainMethod(ToolKit<FlowArgs> toolKit)
         {
             if (!toolKit.Args.DevBasicInfo.Serial.IsIpAdress)
@@ -27,6 +30,10 @@ namespace AutumnBox.Basic.Flows
             _result = toolKit.Executer.Execute(Command.MakeForAdb($"disconnect {toolKit.Args.DevBasicInfo.Serial.ToString()}"));
             return _result;
         }
+        /// <summary>
+        /// 处理结果
+        /// </summary>
+        /// <param name="result"></param>
         protected override void AnalyzeResult(AdvanceResult result)
         {
             base.AnalyzeResult(result);

@@ -9,11 +9,25 @@ using System;
 
 namespace AutumnBox.Basic.Flows
 {
+    /// <summary>
+    /// 截图器参数
+    /// </summary>
     public class ScreenShoterArgs:FlowArgs{
+        /// <summary>
+        /// 截图保存路径
+        /// </summary>
         public string SavePath { get; set; } = "";
     }
+    /// <summary>
+    /// 截图器
+    /// </summary>
     public class ScreenShoter : FunctionFlow<ScreenShoterArgs>
     {
+        /// <summary>
+        /// 主方法
+        /// </summary>
+        /// <param name="toolKit"></param>
+        /// <returns></returns>
         protected override Output MainMethod(ToolKit<ScreenShoterArgs> toolKit)
         {
             string tempFileName = $"{DateTime.Now.ToString("yyyy_MM_dd_hh_MM_ss")}.png";

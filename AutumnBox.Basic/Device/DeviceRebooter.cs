@@ -5,9 +5,6 @@
 ************************/
 using AutumnBox.Basic.Executer;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Device
@@ -33,6 +30,10 @@ namespace AutumnBox.Basic.Device
         /// 高通9008模式
         /// </summary>
         Snapdragon9008,
+        /// <summary>
+        /// Sideload模式
+        /// </summary>
+        Sideload
     }
     /// <summary>
     /// 设备重启器
@@ -80,6 +81,9 @@ namespace AutumnBox.Basic.Device
                         break;
                     case RebootOptions.Snapdragon9008:
                         executer.Execute(Command.MakeForAdb(dev.Serial, "reboot edl"));
+                        break;
+                    case RebootOptions.Sideload:
+                        executer.Execute(Command.MakeForAdb(dev.Serial, "reboot sideload"));
                         break;
                 }
             }

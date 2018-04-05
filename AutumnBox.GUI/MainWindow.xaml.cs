@@ -24,13 +24,13 @@ using System.Windows;
 using System.Collections.Generic;
 using AutumnBox.GUI.UI.Fp;
 using AutumnBox.Basic.Device;
-using AutumnBox.Basic.Adb;
 using AutumnBox.Basic.FlowFramework;
 using AutumnBox.Basic.Util;
 using AutumnBox.Basic.MultipleDevices;
 using AutumnBox.GUI.UI.Cstm;
 using System.Windows.Threading;
 using AutumnBox.GUI.UI.FuncPanels;
+using System.Windows.Controls;
 
 namespace AutumnBox.GUI
 {
@@ -50,20 +50,20 @@ namespace AutumnBox.GUI
         public MainWindow()
         {
             InitializeComponent();
-            RegisterEvent();
             refreshables = new List<IRefreshable>
             {
-                this.RebootGrid,
-                this.DevInfoPanel,
-                this.FastbootFuncs,
-                this.RecoveryFuncs,
-                this.PoweronFuncs,
-                this.ThridPartyFuncs
+                RebootGrid,
+                DevInfoPanel,
+                FastbootFuncs,
+                RecoveryFuncs,
+                PoweronFuncs,
+                ThridPartyFuncs
             };
+            RegisterEvent();
 #if DEBUG
-            TitleBar.Title += "  " + SystemHelper.CurrentVersion + "-Debug";
+            TitleBar.Title += "  " + SystemHelper.CurrentVersion.ToString(3) + "-Debug";
 #else
-            TitleBar.Title += "  " + SystemHelper.CurrentVersion + "-Release";
+            TitleBar.Title += "  " + SystemHelper.CurrentVersion.ToString(3) + "-Release";
 #endif
         }
 
@@ -252,7 +252,7 @@ namespace AutumnBox.GUI
             this.DragMove();
         }
 
-        private void TBCFuncs_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        private void TBCFuncs_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
         }
     }
