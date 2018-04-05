@@ -28,28 +28,19 @@ namespace AutumnBox.GUI.NetUtil
         public string Separator { get; set; }
         [JsonProperty("message")]
         public string Message { get; set; }
-        internal MOTDResult() { }
     }
     internal class MOTDGetter : RemoteDataGetter<MOTDResult>
     {
-#if USE_LOCAL_API && DEBUG
         public override MOTDResult Get()
         {
-            var jsonByte = webClient.DownloadData("http://localhost:24010/api/motd/");
-            var json = Encoding.Default.GetString(jsonByte);
+#if USE_LOCAL_API && DEBUG
+            byte[] jsonByte = webClient.DownloadData("http://localhost:24010/api/motd/");
+#else
+            byte[] jsonByte = webClient.DownloadData(App.Current.Resources["urlApiMotd"].ToString());
+#endif
+            var json = Encoding.UTF8.GetString(jsonByte);
             var result = (MOTDResult)JsonConvert.DeserializeObject(json, typeof(MOTDResult));
             return result;
         }
-#else
-        public override MOTDResult Get()
-        {
-            byte[] bytes = webClient.DownloadData(App.Current.Resources["urlApiMotd"].ToString());
-            string data = Encoding.Default.GetString(bytes);
-            JObject o = JObject.Parse(data);
-            var result = (MOTDResult)JsonConvert.DeserializeObject(o.ToString(), typeof(MOTDResult));
-            Logger.Info(this,"MOTD Get from net success!" + result.Header + " " + result.Message);
-            return result;
-        }
-#endif
     }
 }

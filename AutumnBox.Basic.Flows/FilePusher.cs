@@ -8,13 +8,18 @@
 using AutumnBox.Basic.Executer;
 using AutumnBox.Basic.FlowFramework;
 using AutumnBox.Basic.Flows.Result;
-using AutumnBox.Support.CstmDebug;
 using System.IO;
 
 namespace AutumnBox.Basic.Flows
 {
+    /// <summary>
+    /// 文件推送器参数
+    /// </summary>
     public class FilePusherArgs : FlowArgs
     {
+        /// <summary>
+        /// 源文件信息
+        /// </summary>
         public FileInfo SourceFileInfo
         {
             get
@@ -22,13 +27,26 @@ namespace AutumnBox.Basic.Flows
                 return new FileInfo(SourceFile);
             }
         }
+        /// <summary>
+        /// 源文件
+        /// </summary>
         public string SourceFile { private get; set; }
+        /// <summary>
+        /// 推送到的设备路径
+        /// </summary>
         public string SavePath { get; set; } = "/sdcard/";
     }
-    [LogProperty(TAG ="File pushing")]
+    /// <summary>
+    /// 文件推送器
+    /// </summary>
     public sealed class FilePusher : FunctionFlow<FilePusherArgs,AdvanceResult>
     {
         private AdvanceOutput exeResult;
+        /// <summary>
+        /// 主方法
+        /// </summary>
+        /// <param name="toolKit"></param>
+        /// <returns></returns>
         protected override Output MainMethod(ToolKit<FilePusherArgs> toolKit)
         {
             var command = Command.MakeForAdb(
@@ -37,6 +55,10 @@ namespace AutumnBox.Basic.Flows
             exeResult = toolKit.Executer.Execute(command);
             return exeResult;
         }
+        /// <summary>
+        /// 处理结果
+        /// </summary>
+        /// <param name="result"></param>
         protected override void AnalyzeResult(AdvanceResult result)
         {
             base.AnalyzeResult(result);

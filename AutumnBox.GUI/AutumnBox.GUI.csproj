@@ -142,6 +142,9 @@
     <Compile Include="NetUtil\MOTDGetter.cs" />
     <Compile Include="NetUtil\RemoteDataGetter.cs" />
     <Compile Include="NetUtil\UpdateChecker.cs" />
+    <Compile Include="UI\Cstm\HyperLink.xaml.cs">
+      <DependentUpon>HyperLink.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Cstm\ITitleBarWindow.cs" />
     <Compile Include="UI\CstPanels\ExtensionRuningPanel.xaml.cs">
       <DependentUpon>ExtensionRuningPanel.xaml</DependentUpon>
@@ -152,6 +155,9 @@
     <Compile Include="Util\OpenFramewokManager.cs" />
     <Compile Include="Windows\DebugWindow.xaml.cs">
       <DependentUpon>DebugWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\FatalWindow.xaml.cs">
+      <DependentUpon>FatalWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\IAppLoadingWindow.cs" />
     <Compile Include="Windows\UserManagerWindow.xaml.cs">
@@ -395,6 +401,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UI\Cstm\HyperLink.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UI\CstPanels\AboutPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -484,6 +494,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\DpiChangeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\FatalWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -651,6 +665,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\AppIcons\anzenbokusufake.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\AppIcons\Greenify.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

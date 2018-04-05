@@ -54,7 +54,7 @@ namespace AutumnBox.Basic.Device.PackageManage
         public User[] GetUsers(bool ignoreZeroUser =true)
         {
             var output = shell.Execute("pm list users");
-            output.PrintOnConsole();
+            output.PrintOnConsole(this);
             var matches = userInfoRegex.Matches(output.ToString());
             List<User> users = new List<User>();
             foreach (Match match in matches)

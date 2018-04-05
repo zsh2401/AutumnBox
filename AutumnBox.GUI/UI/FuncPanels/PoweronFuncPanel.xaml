@@ -33,6 +33,12 @@
         <!--激活-->
         <Label Style="{DynamicResource AtmbxLabelStyle}" Content="{DynamicResource Bridge}" HorizontalAlignment="Left" Margin="13,251,0,0" VerticalAlignment="Top" FontSize="28" Width="520"/>
 
+
+        <!--特殊-->
+
+        <Image RenderOptions.BitmapScalingMode="Fant" Width="62" Source="../../Resources/Images/AppIcons/Greenify.png" Margin="377,390,483,0" Height="45" VerticalAlignment="Top"/>
+        <Button Style="{DynamicResource AtmbxButtonStyle}" x:Name="ButtonActivateGreenifyDoze" Content="{DynamicResource btnGreenifyDozeActivator}" Margin="449,390,0,0"   FontSize="18"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"   Click="ButtonActivateGreenifyDoze_Click" Height="45" VerticalAlignment="Top" HorizontalAlignment="Left" Width="274"/>
+
         <!--运行脚本-->
         <Image RenderOptions.BitmapScalingMode="Fant" Width="62" Source="../../Resources/Images/AppIcons/brevent.png" Margin="22,345,838,0" Height="45" VerticalAlignment="Top"/>
         <Button Style="{DynamicResource AtmbxButtonStyle}" x:Name="buttonStartBrventService" Content="{DynamicResource btnStartBrventService}" Margin="94,345,0,0"   FontSize="18"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"   Click="ButtonStartBrventService_Click" Height="45" VerticalAlignment="Top" HorizontalAlignment="Left" Width="274"/>
@@ -71,9 +77,22 @@
         <Image RenderOptions.BitmapScalingMode="Fant" Width="62" Source="../../Resources/Images/AppIcons/gmc.png" Margin="10,770,850,0" Height="42" VerticalAlignment="Top"/>
         <Button Style="{DynamicResource AtmbxButtonStyle}" x:Name="ButtonGMCAct"   Content="{DynamicResource btnGeekMemoryCleanerActivator}" Margin="94,770,0,0"   FontSize="18"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"   HorizontalAlignment="Left" Width="272" Click="ButtonGMCAct_Click" Height="44" VerticalAlignment="Top"/>
 
+        <Label Style="{DynamicResource AtmbxLabelStyle}" FontSize="18" Content="{DynamicResource lbSpecial}" HorizontalAlignment="Left" Margin="373,356,0,0" VerticalAlignment="Top" Width="359"/>
         <Label Style="{DynamicResource AtmbxLabelStyle}" FontSize="18" Content="{DynamicResource lbSetDeviceOwner}" HorizontalAlignment="Left" Margin="13,447,0,0" VerticalAlignment="Top" Width="355"/>
         <Label Style="{DynamicResource AtmbxLabelStyle}" FontSize="18" Content="{DynamicResource lbRunScript}" HorizontalAlignment="Left" Margin="10,306,0,0" VerticalAlignment="Top" Width="355"/>
         <Label Style="{DynamicResource AtmbxLabelStyle}" FontSize="18" Content="{DynamicResource lbOpenNetDebugging}" HorizontalAlignment="Left" Margin="0,726,0,0" VerticalAlignment="Top" Width="355"/>
+        <Label Background="{DynamicResource BroderBrushKey}" Height="1"  HorizontalAlignment="Left" Margin="0,236,0,0" VerticalAlignment="Top" Width="497"/>
+        <Label Background="{DynamicResource BroderBrushKey}" Height="1" HorizontalAlignment="Left" Margin="469,288,0,0" VerticalAlignment="Top" Width="124" RenderTransformOrigin="0.5,0.5">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="55.502"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <Label Background="{DynamicResource BroderBrushKey}" Height="1"  HorizontalAlignment="Left" Margin="565,339,0,0" VerticalAlignment="Top" Width="357"/>
 
     </Grid>
 </fp:FastPanelChild>

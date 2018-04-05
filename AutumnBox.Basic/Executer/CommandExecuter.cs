@@ -6,7 +6,6 @@
 ** desc： ...
 *********************************************************************************/
 using AutumnBox.Basic.Device;
-using AutumnBox.Support.CstmDebug;
 using System;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
@@ -69,8 +68,8 @@ namespace AutumnBox.Basic.Executer
                 _startInfo.Arguments = args;
                 using (var process = Process.Start(_startInfo))
                 {
-                    process.OutputDataReceived += (s, e) => OnOutputReceived(new OutputReceivedEventArgs(e, false));
-                    process.ErrorDataReceived += (s, e) => OnOutputReceived(new OutputReceivedEventArgs(e, true));
+                    process.OutputDataReceived += (s, e) => RaiseOutputReceived(e, false);
+                    process.ErrorDataReceived += (s, e) => RaiseOutputReceived(e, true);
                     process.BeginOutputReadLine();
                     process.BeginErrorReadLine();
                     ProcessStarted?.Invoke(this, new ProcessStartedEventArgs(process.Id));
@@ -91,6 +90,9 @@ namespace AutumnBox.Basic.Executer
         {
             return Execute(cmd.FileName, cmd.Args);
         }
+        /// <summary>
+        /// 返回码的正则配对
+        /// </summary>
         private const string exitCodePattern = @"exitcode(?<code>\d+)";
         
         /// <summary>
@@ -113,25 +115,31 @@ namespace AutumnBox.Basic.Executer
             return new AdvanceOutput(result, leastShellExitCode ?? 1);
         }
         private int? leastShellExitCode = 1;
-        private void OnOutputReceived(OutputReceivedEventArgs e)
+        /// <summary>
+        /// 处理并触发OutputReceived事件时发生
+        /// </summary>
+        /// <param name="src"></param>
+        /// <param name="isError"></param>
+        /// <param name="e"></param>
+        private void RaiseOutputReceived(DataReceivedEventArgs src ,bool isError = false)
         {
-            if (e.Text == null) return;
-            if (e.Text == "") return;
-            var match = Regex.Match(e.Text, exitCodePattern);
+            if (src.Data == null) return;
+            if (src.Data == "") return;
+            var match = Regex.Match(src.Data, exitCodePattern);
             if (match.Success)
             {
                 leastShellExitCode = int.Parse(match.Result("${code}"));
                 return;
             }
-            if (!e.IsError)
+            if (!isError)
             {
-                _builder.AppendOut(e.Text);
+                _builder.AppendOut(src.Data);
             }
             else
             {
-                _builder.AppendError(e.Text);
+                _builder.AppendError(src.Data);
             }
-            OutputReceived?.Invoke(this, e);
+            OutputReceived?.Invoke(this, new OutputReceivedEventArgs(src,isError));
         }
     }
 }

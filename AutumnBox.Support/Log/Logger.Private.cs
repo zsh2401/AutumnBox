@@ -37,7 +37,13 @@ namespace AutumnBox.Support.Log
         }
         public static string MakeText(object sender, object prefix, object message, Exception ex = null)
         {
-            string tag = sender is string ? sender.ToString() : sender.GetType().Name;
+            string tag;
+            if (sender == null)
+                tag = "Anonymous";
+            else if (sender is string tagString)
+                tag = tagString;
+            else
+                tag = sender.GetType().Name;
             return string.Format(logTemplate,
                 DateTime.Now.ToString("yy-MM-dd HH:mm:ss"), tag, prefix, message + ex?.ToString() + Environment.NewLine);
         }

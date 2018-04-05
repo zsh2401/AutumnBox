@@ -8,8 +8,16 @@ using AutumnBox.Basic.FlowFramework;
 
 namespace AutumnBox.Basic.Flows
 {
+    /// <summary>
+    /// 屏幕锁清除器
+    /// </summary>
     public class ScreenLockDeleter : FunctionFlow
     {
+        /// <summary>
+        /// 主方法
+        /// </summary>
+        /// <param name="toolKit"></param>
+        /// <returns></returns>
         protected override Output MainMethod(ToolKit<FlowArgs> toolKit)
         {
             var builder = new OutputBuilder();

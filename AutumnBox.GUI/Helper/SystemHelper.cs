@@ -11,9 +11,6 @@
 * Company: I am free man
 *
 \* =============================================================================*/
-using AutumnBox.Basic.Adb;
-using AutumnBox.Basic.Executer;
-using AutumnBox.GUI.Util;
 using AutumnBox.Support.CstmDebug;
 using IWshRuntimeLibrary;
 using System;
@@ -122,6 +119,5 @@ namespace AutumnBox.GUI.Helper
                 return Process.GetProcessesByName("AutumnBox.GUI").Length > 1;
             }
         }
-        internal readonly static AutoGC AutoGC = new AutoGC();
     }
 }

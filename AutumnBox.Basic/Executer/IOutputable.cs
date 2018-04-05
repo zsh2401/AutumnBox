@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-
-namespace AutumnBox.Basic.Executer
+﻿namespace AutumnBox.Basic.Executer
 {
     /// <summary>
     /// 可输出的

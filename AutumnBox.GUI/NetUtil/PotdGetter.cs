@@ -6,6 +6,7 @@
 using AutumnBox.Support.Log;
 using Newtonsoft.Json;
 using System.IO;
+using System.Text;
 
 namespace AutumnBox.GUI.NetUtil
 {
@@ -30,32 +31,23 @@ namespace AutumnBox.GUI.NetUtil
     }
     internal class PotdGetter : RemoteDataGetter<PotdGetterResult>
     {
-#if USE_LOCAL_API &&  DEBUG
-        public override PotdGetterResult Get()
-        {
-            var html = webClient.DownloadString("http://localhost:24010/api/potd/");
-            var remoteInfo = (PotdRemoteInfo)JsonConvert.DeserializeObject(html, typeof(PotdRemoteInfo));
-            var imgData = webClient.DownloadData(remoteInfo.Link);
-            Logger.Info(this,"get finished..");
-            return new PotdGetterResult()
-            {
-                RemoteInfo = remoteInfo,
-                ImageMemoryStream = new MemoryStream(imgData)
-            };
-        }
-#else
 
         public override PotdGetterResult Get()
         {
-            var html = webClient.DownloadString(App.Current.Resources["urlApiPotd"].ToString());
-            var remoteInfo = (PotdRemoteInfo)JsonConvert.DeserializeObject(html, typeof(PotdRemoteInfo));
-            var imgData = webClient.DownloadData(remoteInfo.Link);
+#if USE_LOCAL_API && DEBUG
+            byte[] bytes = webClient.DownloadData("http://localhost:24010/api/potd/");
+#else
+             byte[] bytes = webClient.DownloadData(App.Current.Resources["urlApiPotd"].ToString());
+#endif
+            string html = Encoding.UTF8.GetString(bytes);
+            PotdRemoteInfo remoteInfo = (PotdRemoteInfo)JsonConvert.DeserializeObject(html, typeof(PotdRemoteInfo));
+            byte[] imgData = webClient.DownloadData(remoteInfo.Link);
+            Logger.Info(this, "get finished..");
             return new PotdGetterResult()
             {
                 RemoteInfo = remoteInfo,
                 ImageMemoryStream = new MemoryStream(imgData)
             };
         }
-#endif
     }
 }

@@ -53,7 +53,13 @@ namespace AutumnBox.Basic.Flows.States
         /// </summary>
         UnknowAdmin,
         /*Unknow Error*/
+        /// <summary>
+        /// 未知问题
+        /// </summary>
         Unknow,
+        /// <summary>
+        /// 未知的java异常
+        /// </summary>
         UnknowJavaException,
     }
 }

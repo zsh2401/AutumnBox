@@ -16,6 +16,7 @@ using System.Text;
 
 namespace AutumnBox.Support
 {
+#if FUCK
     public class IdentifyEncoding
     {
         internal static int[][] GBFreq = new int[94][];
@@ -762,7 +763,7 @@ namespace AutumnBox.Support
                     GBFreq[i] = new int[94];
                 }
 
-                #region GBFreq[20][35] = 599;  
+#region GBFreq[20][35] = 599;  
 
                 GBFreq[49][26] = 598;
                 GBFreq[41][38] = 597;
@@ -1165,7 +1166,7 @@ namespace AutumnBox.Support
                 GBFreq[45][19] = 201;
                 GBFreq[18][53] = 200;
 
-                #endregion
+#endregion
             }
 
             if (GBKFreq[0] == null)
@@ -1175,7 +1176,7 @@ namespace AutumnBox.Support
                     GBKFreq[i] = new int[191];
                 }
 
-                #region GBKFreq[52][132] = 600;  
+#region GBKFreq[52][132] = 600;  
 
                 GBKFreq[73][135] = 599;
                 GBKFreq[49][123] = 598;
@@ -1480,7 +1481,7 @@ namespace AutumnBox.Support
                 GBKFreq[80][144] = 300;
                 GBKFreq[85][113] = 299;
 
-                #endregion
+#endregion
             }
 
             if (Big5Freq[0] == null)
@@ -1490,7 +1491,7 @@ namespace AutumnBox.Support
                     Big5Freq[i] = new int[158];
                 }
 
-                #region Big5Freq[9][89] = 600;  
+#region Big5Freq[9][89] = 600;  
 
                 Big5Freq[11][15] = 599;
                 Big5Freq[3][66] = 598;
@@ -1892,7 +1893,7 @@ namespace AutumnBox.Support
                 Big5Freq[4][19] = 202;
                 Big5Freq[9][152] = 201;
 
-                #endregion
+#endregion
             }
 
             if (EUC_TWFreq[0] == null)
@@ -1902,7 +1903,7 @@ namespace AutumnBox.Support
                     EUC_TWFreq[i] = new int[94];
                 }
 
-                #region EUC_TWFreq[48][49] = 599;  
+#region EUC_TWFreq[48][49] = 599;  
 
                 EUC_TWFreq[35][65] = 598;
                 EUC_TWFreq[41][27] = 597;
@@ -2303,7 +2304,7 @@ namespace AutumnBox.Support
                 EUC_TWFreq[36][82] = 202;
                 EUC_TWFreq[46][59] = 201;
 
-                #endregion
+#endregion
             }
         }
 
@@ -2475,4 +2476,5 @@ namespace AutumnBox.Support
             return literal;
         }
     }
+#endif
 }

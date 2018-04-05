@@ -29,6 +29,11 @@ namespace AutumnBox.Basic.ACP
             Console.WriteLine($"PrintOnConsole(): {FirstCode} {ToString()}");
         }
 
+        public void PrintOnConsole(object tagOrSender)
+        {
+            throw new NotImplementedException();
+        }
+
         public void PrintOnLog(bool printOnRelease = false)
         {
             if (printOnRelease) {
@@ -36,6 +41,11 @@ namespace AutumnBox.Basic.ACP
             } else {
                 Logger.Debug(this,$"PrintOnLog(): {FirstCode} {ToString()}");
             } 
+        }
+
+        public void PrintOnLog(object tagOrSender, bool printOnRelease = false)
+        {
+            throw new NotImplementedException();
         }
 
         public override string ToString()

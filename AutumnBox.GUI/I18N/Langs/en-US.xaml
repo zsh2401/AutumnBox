@@ -6,8 +6,10 @@
     <s:String x:Key="LanguageName">English</s:String>
     <s:String x:Key="LanguageCode">en-US</s:String>
 
+   
     <s:String x:Key="AppDesc">Open source,free,simple,GUI adb toolbox</s:String>
     <!--按钮-->
+    <s:String x:Key="btnGreenifyDozeActivator">Activate Greenify Aggressive Doze</s:String>
     <s:String x:Key="btnFreezeYouActivator">Active FreezeYou!</s:String>
     <s:String x:Key="btnAnzenbokusuFakeActivator">Active Anzenbokusu Fake</s:String>
     <s:String x:Key="btnAnzenbokusuActivator">Active Anzenbokusu</s:String>
@@ -80,28 +82,6 @@
     <s:String x:Key="btnCancel">Cancel</s:String>
     <!--按钮-->
 
-
-    <!--PackgeManageWindow-->
-    <s:String x:Key="pmw_msg">I'd love to change the world...but i dont know how to do</s:String>
-    <s:String x:Key="pmw_msgClearSuccess">Cleamup successful</s:String>
-    <s:String x:Key="pmw_msgRefreshFailed">Refresh failed</s:String>
-    <s:String x:Key="pmw_msgClearFailed">Cleanup failed</s:String>
-    <s:String x:Key="pmw_msgUninstallFailed">Uninstall failed</s:String>
-    <s:String x:Key="pmw_ckbShowSystemApp">Show system app</s:String>
-    <s:String x:Key="pmw_btnRefreshAppList">Refresh</s:String>
-    <s:String x:Key="pmw_labelVersionName">Version name</s:String>
-    <s:String x:Key="pmw_labelPackageName">Package name</s:String>
-    <s:String x:Key="pmw_labelAppName">App name</s:String>
-    <s:String x:Key="pmw_labelCodeSize">App size</s:String>
-    <s:String x:Key="pmw_labelCacheSize">Cache size</s:String>
-    <s:String x:Key="pmw_labelDataSize">Data size</s:String>
-    <s:String x:Key="pmw_btnClearData">Clear data</s:String>
-    <s:String x:Key="pmw_labelTotalSize">Total size</s:String>
-    <s:String x:Key="pmw_btnUninstall">Uninstall</s:String>
-    <s:String x:Key="pmw_btnBlock">Block</s:String>
-    <s:String x:Key="pmw_btnUnblock">Unblock</s:String>
-    <s:String x:Key="pmw_btnStop">Stop</s:String>
-    <!--PackgeManageWindow-->
 
     <!--链接文字-->
     <s:String x:Key="hyperLinkInstallModule">How to install?</s:String>
@@ -178,6 +158,8 @@
         当进入9008模式后,设备会完全黑屏,但您可以使用相关工具进行刷机
         &#x0a;如果想要退出9008模式,长按电源键即可!
     </s:String>
+    
+    <s:String x:Key="msgPlsInstallGreenifyFirst">请先安装绿色守护!</s:String>
     <s:String x:Key="msgPlsInstallFreezeYouFirst">请先安装FreezeYou!</s:String>
     <s:String x:Key="msgPlsInstallAirForzenFirst">请先安装空调狗!</s:String>
     <s:String x:Key="msgPlsInstallBreventFirst">请先安装黑域!</s:String>
@@ -191,11 +173,12 @@
     <s:String x:Key="msgPlsInstallShizukuManagerFirst">请先安装ShizukuManager!酷市场和手机乐园都有!</s:String>
     <s:String x:Key="msgWarning">Warning</s:String>
     <s:String x:Key="msgVirtualButtonHider">您是要隐藏虚拟键还是恢复虚拟键?</s:String>
-    <s:String x:Key="msgStartAdbServerFail">
-        错误:无法启动ADB服务
-        解决方案:彻底关闭所有其它的手机助手(在电脑上)
-        例如: 360手机助手 豌豆荚 360安全卫士等
-        如果仍然无效,请进入任务管理器,彻底结束那些手机助手的进程!什么?还是没用?重启电脑!
+    <s:String x:Key="msgStartAdbServerFail">错误:无法启动ADB服务
+        解决方案:
+        1-彻底关闭所有刷机助手/手机助手.例如: 360手机助手,刷砖精灵,奇兔刷机等
+        2-进入任务管理器结束所有ADB进程
+        3-重启电脑
+        4-去网吧
     </s:String>
     <s:String x:Key="msgPleaseInputAPort">Error port</s:String>
     <s:String x:Key="msgFailed">Failed</s:String>
@@ -286,7 +269,9 @@
     <s:String x:Key="lbDescription">Description</s:String>
     <s:String x:Key="lbSetDeviceOwner">Set device owner to active</s:String>
     <s:String x:Key="lbRunScript">Run scrpt to active</s:String>
+    <s:String x:Key="lbSpecial">Special</s:String>
     <s:String x:Key="lbOpenNetDebugging">Open Net debugging to active (dragerous!)</s:String>
+     <s:String x:Key="AdviseAboutExtensions">Use the latest autumnbox as much as possible,you will feel better...</s:String>
     <!--静态界面标记-->
 
     <!--设备信息标记-->
@@ -353,15 +338,13 @@
 这是一个遵守GPL3.0协议的开源软件,请在必要的时候遵守开源协议
 开发者电子邮件 zsh2401@163.com
         
+鸣谢以下开源项目做出的卓越贡献(排名不分先后)
+Spring.AOP | Newtonsoft.Json  | Google Android Debug Bridge | Google Android | Linux
         
+感谢以下人员在AutumnBox初期给予的支持(排名不分先后)
+蚂蚁,饼干怪兽,hxy,yume,滥情空心,web1n,咖枯,八百标兵,EggGrenade
         
-        
-鸣谢以下开源项目做出的卓越贡献
-Spring.AOP
-Newtonsoft.Json
-Google Android Debug Bridge 
-Google Android 
-Linux</s:String>
+如果你也做出了卓越贡献但未被记录,请联系我!</s:String>
     <!--关于信息-->
 
     <s:String x:Key="warningOpenNetDebugging">
@@ -369,7 +352,6 @@ Linux</s:String>
         请确保您的设备与电脑处于同一局域网下
         请确保您已在开发者设置中打开网络调试
     </s:String>
-    <s:String x:Key="Menu">Menu</s:String>
     <s:String x:Key="Contact">Contact Developer</s:String>
     <s:String x:Key="Donate">Donate Developer</s:String>
 

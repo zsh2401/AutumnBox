@@ -11,10 +11,11 @@
 * Company: I am free man
 *
 \* =============================================================================*/
-using AutumnBox.Basic.Adb;
+using AutumnBox.Basic.Util;
 using AutumnBox.GUI.Helper;
 using AutumnBox.GUI.I18N;
 using AutumnBox.GUI.Properties;
+using AutumnBox.GUI.Windows;
 using AutumnBox.OpenFramework;
 using AutumnBox.Support.Log;
 using Spring.Context;
@@ -22,6 +23,7 @@ using Spring.Context.Support;
 using System;
 using System.Linq;
 using System.Windows;
+using System.Windows.Threading;
 
 namespace AutumnBox.GUI
 {
@@ -90,27 +92,56 @@ namespace AutumnBox.GUI
         private string[] blockListForExceptionSource = {
             "PresentationCore"
         };
-        private void Current_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
+        private void Current_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
         {
             string src = e.Exception.Source;
             if (blockListForExceptionSource.Contains(src)) return;
             string n = Environment.NewLine;
             string exstr =
                 $"AutumnBox Exception {DateTime.Now.ToString("MM/dd/yyyy    HH:mm:ss")}{n}{n}" +
-                $"Exception:{n}{e.Exception.ToString()}{n}{n}{n}" +
-                $"Message:{n}{e.Exception.Message}{n}{n}{n}" +
-                $"Source:{n}{e.Exception.Source}{n}{n}{n}" +
+                $"Exception:{n}{e.Exception.ToString()}{n}{n}" +
+                $"Message:{n}{e.Exception.Message}{n}{n}" +
+                $"Source:{n}{e.Exception.Source}{n}{n}" +
                 $"Inner:{n}{e.Exception.InnerException?.ToString() ?? "None"}{n}";
 
             try { Logger.Fatal(this, exstr); } catch { }
-            MessageBox.Show(
-                $"一个未知的错误的发生了,将logs文件夹压缩并发送给开发者以解决问题{Environment.NewLine}" +
-                $"Please compress the logs folder and send it to zsh2401@163.com",
-                "AutumnBox 错误/Unknow Exception",
-            MessageBoxButton.OK,
-            MessageBoxImage.Error);
+            ShowErrorToUser(exstr);
             e.Handled = true;
             App.Current.Shutdown(1);
+        }
+
+        private void ShowErrorToUser(string exstr)
+        {
+            switch (System.Threading.Thread.CurrentThread.CurrentCulture.Name)
+            {
+                case "zh-CN":
+                case "zh-TW":
+                case "zh-SG":
+                case "zh-HK":
+                    try
+                    {
+                        new FatalWindow(exstr).ShowDialog();
+                    }
+                    catch
+                    {
+                        MessageBox.Show(
+                                $"一个未知的错误的发生了,将logs文件夹压缩并发送给开发者以解决问题{Environment.NewLine}" +
+                                $"出问题不发logs,开发者永远不可能解决你遇到的问题{Environment.NewLine}" +
+                                 $"邮件/QQ: zsh2401@163.com{Environment.NewLine}",
+                                "AutumnBox 错误",
+                            MessageBoxButton.OK,
+                            MessageBoxImage.Error);
+                    }
+                    break;
+                default:
+                    MessageBox.Show(
+                         $"AutumnBox was failed on running{Environment.NewLine}" +
+                        $"Please compress the logs folder and send it to zsh2401@163.com",
+                        "Unknow Exception",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
+                    break;
+            }
         }
 
         protected override void OnExit(ExitEventArgs e)

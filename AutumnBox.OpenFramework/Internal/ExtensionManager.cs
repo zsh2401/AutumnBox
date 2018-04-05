@@ -87,7 +87,7 @@ namespace AutumnBox.OpenFramework.Internal
                 {
                     try
                     {
-                        dllAssemblies.Add(Assembly.LoadFile(file));
+                        dllAssemblies.Add(Assembly.LoadFrom(file));
                     }
                     catch (Exception ex)
                     {

@@ -13,18 +13,36 @@ using System.Net;
 
 namespace AutumnBox.Basic.Flows
 {
+    /// <summary>
+    /// 网络调试设备连接器参数
+    /// </summary>
     public sealed class NetDeviceConnecterArgs : FlowArgs
     {
+        /// <summary>
+        /// 目标IP地址以及端口
+        /// </summary>
         public IPEndPoint IPEndPoint { get; set; }
     }
+    /// <summary>
+    /// 网络调试设备连接器
+    /// </summary>
     public sealed class NetDeviceConnecter : FunctionFlow<NetDeviceConnecterArgs, AdvanceResult>
     {
         private AdvanceOutput _result;
+        /// <summary>
+        /// 主方法
+        /// </summary>
+        /// <param name="toolKit"></param>
+        /// <returns></returns>
         protected override Output MainMethod(ToolKit<NetDeviceConnecterArgs> toolKit)
         {
             _result = toolKit.Executer.Execute(Command.MakeForAdb($"connect {toolKit.Args.IPEndPoint.ToString()}"));
             return _result;
         }
+        /// <summary>
+        /// 处理结果
+        /// </summary>
+        /// <param name="result"></param>
         protected override void AnalyzeResult(AdvanceResult result)
         {
             base.AnalyzeResult(result);

@@ -15,9 +15,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutumnBox.Basic.Flows", "Au
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9C12A545-FC99-4185-86D1-22D029637239}"
 	ProjectSection(SolutionItems) = preProject
-		docs\api\update\index.html = docs\api\update\index.html
-		docs\api\motd\index.html = docs\api\motd\index.html
-		docs\api\potd\index.html = docs\api\potd\index.html
 		README.md = README.md
 	EndProjectSection
 EndProject

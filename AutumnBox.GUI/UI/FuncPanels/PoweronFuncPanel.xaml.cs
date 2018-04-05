@@ -412,5 +412,10 @@ namespace AutumnBox.GUI.UI.FuncPanels
         {
             core.ActivateAnzenbokusuFake(_currentDevInfo);
         }
+
+        private void ButtonActivateGreenifyDoze_Click(object sender, RoutedEventArgs e)
+        {
+            core.ActivateGreenifyAggressiveDoze(_currentDevInfo);
+        }
     }
 }

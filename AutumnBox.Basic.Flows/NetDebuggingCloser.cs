@@ -9,16 +9,23 @@ using AutumnBox.Basic.Executer;
 using AutumnBox.Basic.FlowFramework;
 using AutumnBox.Basic.Flows.Result;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Flows
 {
+    /// <summary>
+    /// 设备网络调试关闭器
+    /// </summary>
     public class NetDebuggingCloser : FunctionFlow<FlowArgs, AdvanceResult>
     {
+        /// <summary>
+        /// 结果
+        /// </summary>
         public AdvanceOutput _result;
+        /// <summary>
+        /// 主函数
+        /// </summary>
+        /// <param name="toolKit"></param>
+        /// <returns></returns>
         protected override Output MainMethod(ToolKit<FlowArgs> toolKit)
         {
             if (!toolKit.Args.DevBasicInfo.Serial.IsIpAdress)
@@ -26,6 +33,10 @@ namespace AutumnBox.Basic.Flows
             _result = toolKit.Ae("usb");
             return _result;
         }
+        /// <summary>
+        /// 处理结果
+        /// </summary>
+        /// <param name="result"></param>
         protected override void AnalyzeResult(AdvanceResult result)
         {
             base.AnalyzeResult(result);

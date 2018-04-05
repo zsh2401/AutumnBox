@@ -5,7 +5,6 @@
 *************************************************/
 using AutumnBox.Basic.Device;
 using AutumnBox.Basic.Util;
-using System;
 using System.Diagnostics;
 using System.Text;
 
@@ -90,7 +89,6 @@ namespace AutumnBox.Basic.Executer
                 string shellCommand = user == LinuxUser.Normal ? command : $"su -c \'{command}\'";
                 string fullCommand = $"{device.ToFullSerial()} shell \"{shellCommand} ; exit $?\"";
                 pStartInfo.Arguments = fullCommand;
-                Console.WriteLine(fullCommand);
                 using (var process = new Process())
                 {
                     process.StartInfo = pStartInfo;

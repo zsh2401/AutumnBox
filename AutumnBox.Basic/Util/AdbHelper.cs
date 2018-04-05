@@ -15,10 +15,9 @@ using AutumnBox.Basic.Executer;
 using AutumnBox.Basic.Util;
 using AutumnBox.Support.Helper;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 
-namespace AutumnBox.Basic.Adb
+namespace AutumnBox.Basic.Util
 {
     /// <summary>
     /// ADB帮助(管理)
@@ -32,7 +31,8 @@ namespace AutumnBox.Basic.Adb
         /// <summary>
         /// 触发adb服务失败事件
         /// </summary>
-        internal static void RisesAdbServerStartsFailedEvent() {
+        internal static void RisesAdbServerStartsFailedEvent()
+        {
             AdbServerStartsFailed?.Invoke(new object(), new EventArgs());
         }
         /// <summary>
@@ -54,7 +54,7 @@ namespace AutumnBox.Basic.Adb
         {
             var result = CommandExecuter.Static.Execute(AdbConstants.FullAdbFileName, "start-server");
             bool successful = result.IsSuccessful && !result.Contains("error");
-            result.PrintOnLog(true);
+            result.PrintOnLog(nameof(AdbHelper), true);
             if (!successful) RisesAdbServerStartsFailedEvent();
             return successful;
         }

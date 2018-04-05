@@ -9,6 +9,7 @@
     
     <s:String x:Key="AppDesc">开源免费简约的图形化ADB工具箱</s:String>
     <!--按钮-->
+    <s:String x:Key="btnGreenifyDozeActivator">激活绿色守护嗜睡模式等</s:String>
     <s:String x:Key="btnFreezeYouActivator">激活FreezeYou!</s:String>
      <s:String x:Key="btnAnzenbokusuFakeActivator">激活第二空间伪装版</s:String>
     <s:String x:Key="btnAnzenbokusuActivator">激活第二空间</s:String>
@@ -81,29 +82,6 @@
     <s:String x:Key="btnCancel">取消</s:String>
     <!--按钮-->
 
-    
-    <!--PackgeManageWindow-->
-    <s:String x:Key="pmw_msg">I'd love to change the world...but i dont know how to do</s:String>
-    <s:String x:Key="pmw_msgClearSuccess">清理成功</s:String>
-    <s:String x:Key="pmw_msgRefreshFailed">刷新失败</s:String>
-    <s:String x:Key="pmw_msgClearFailed">清理失败</s:String>
-    <s:String x:Key="pmw_msgUninstallFailed">卸载失败</s:String>
-    <s:String x:Key="pmw_ckbShowSystemApp">显示系统应用</s:String>
-    <s:String x:Key="pmw_btnRefreshAppList">刷新</s:String>
-    <s:String x:Key="pmw_labelVersionName">版本号</s:String>
-    <s:String x:Key="pmw_labelPackageName">包名</s:String>
-    <s:String x:Key="pmw_labelAppName">应用名称</s:String>
-    <s:String x:Key="pmw_labelCodeSize">应用大小</s:String>
-    <s:String x:Key="pmw_labelCacheSize">缓存大小</s:String>
-    <s:String x:Key="pmw_labelDataSize">数据大小</s:String>
-    <s:String x:Key="pmw_btnClearData">清除数据</s:String>
-    <s:String x:Key="pmw_labelTotalSize">总大小</s:String>
-    <s:String x:Key="pmw_btnUninstall">卸载</s:String>
-    <s:String x:Key="pmw_btnBlock">冻结</s:String>
-    <s:String x:Key="pmw_btnUnblock">解冻</s:String>
-    <s:String x:Key="pmw_btnStop">停止</s:String>
-    <!--PackgeManageWindow-->
-    
     <!--链接文字-->
     <s:String x:Key="hyperLinkInstallModule">如何安装模块</s:String>
     <s:String x:Key="hyperLinkUpdateNow">现在更新!</s:String>
@@ -179,6 +157,7 @@
        当进入9008模式后,设备会完全黑屏,但您可以使用相关工具进行刷机
         &#x0a;如果想要退出9008模式,长按电源键即可!
     </s:String>
+    <s:String x:Key="msgPlsInstallGreenifyFirst">请先安装绿色守护!</s:String>
     <s:String x:Key="msgPlsInstallFreezeYouFirst">请先安装FreezeYou!</s:String>
     <s:String x:Key="msgPlsInstallAirForzenFirst">请先安装空调狗!</s:String>
     <s:String x:Key="msgPlsInstallBreventFirst">请先安装黑域!</s:String>
@@ -192,11 +171,12 @@
     <s:String x:Key="msgPlsInstallShizukuManagerFirst">请先安装ShizukuManager!酷市场和手机乐园都有!</s:String>
     <s:String x:Key="msgWarning">警告</s:String>
     <s:String x:Key="msgVirtualButtonHider">您是要隐藏虚拟键还是恢复虚拟键?</s:String>
-    <s:String x:Key="msgStartAdbServerFail">
-        错误:无法启动ADB服务
-        解决方案:彻底关闭所有其它的手机助手(在电脑上)
-        例如: 360手机助手 豌豆荚等
-        如果仍然无效,请进入任务管理器,彻底结束那些手机助手的进程!什么?还是没用?重启电脑!
+    <s:String x:Key="msgStartAdbServerFail">错误:无法启动ADB服务
+        解决方案:
+        1-彻底关闭所有刷机助手/手机助手.例如: 360手机助手,刷砖精灵,奇兔刷机等
+        2-进入任务管理器结束所有ADB进程
+        3-重启电脑
+        4-去网吧
     </s:String>
     <s:String x:Key="msgPleaseInputAPort">请输入一个小于65535的端口号</s:String>
     <s:String x:Key="msgFailed">失败了</s:String>
@@ -289,7 +269,9 @@
      <s:String x:Key="lbDescription">说明</s:String>
     <s:String x:Key="lbSetDeviceOwner">通过设置设备管理员进行激活</s:String>
     <s:String x:Key="lbRunScript">通过运行脚本进行激活</s:String>
+    <s:String x:Key="lbSpecial">特殊方式</s:String>
     <s:String x:Key="lbOpenNetDebugging">通过打开网络调试激活(极度危险)</s:String>
+    <s:String x:Key="AdviseAboutExtensions">为确保您的体验,请尽量使用最新版AutumnBox</s:String>
     <!--静态界面标记-->
 
     <!--设备信息标记-->
@@ -356,14 +338,14 @@
 这是一个遵守GPL3.0协议的开源软件,请在必要的时候遵守开源协议
 开发者电子邮件 zsh2401@163.com
         
+鸣谢以下开源项目做出的卓越贡献(排名不分先后)
+Spring.AOP | Newtonsoft.Json  | Google Android Debug Bridge | Google Android | Linux
         
+感谢以下人员在AutumnBox初期给予的支持(排名不分先后)
+蚂蚁,饼干怪兽,hxy,yume,滥情空心,web1n,咖枯,八百标兵,EggGrenade
         
-鸣谢以下开源项目做出的卓越贡献
-Spring.AOP
-Newtonsoft.Json
-Google Android Debug Bridge 
-Google Android 
-Linux</s:String>
+如果你也做出了卓越贡献但未被记录,请联系我!
+</s:String>
     <!--关于信息-->
 
     <s:String x:Key="warningOpenNetDebugging">
@@ -371,7 +353,6 @@ Linux</s:String>
         请确保您的设备与电脑处于同一局域网下
         请确保您已在开发者设置中打开网络调试
     </s:String>
-    <s:String x:Key="Menu">菜单</s:String>
     <s:String x:Key="Contact">联系开发者</s:String>
     <s:String x:Key="Donate">捐赠开发者</s:String>
     

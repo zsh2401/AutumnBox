@@ -7,6 +7,7 @@ using AutumnBox.Basic.Device;
 using AutumnBox.ExampleExtensions.Windows;
 using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.Open;
+using System;
 using System.IO;
 using System.Net.Mail;
 using System.Windows;
@@ -17,11 +18,13 @@ namespace AutumnBox.ExampleExtensions
     {
         public override string Name => "带界面的拓展示例";
         public override string Auth => "zsh2401";
+        public override Version Version => new Version("0.0.2");
         public override string Description => "AutumnBox拓展允许使用自定义窗口";
         public override MailAddress ContactMail => new MailAddress("zsh2401@163.com");
         public override DeviceState RequiredDeviceState => DeviceState.None;
         public override bool InitAndCheck(InitArgs args)
         {
+            OpenApi.Gui.ShowDebugWindow(this);
             return base.InitAndCheck(args);
         }
         public override void OnStartCommand(StartArgs args)
