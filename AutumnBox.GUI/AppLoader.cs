@@ -64,7 +64,10 @@ namespace AutumnBox.GUI
                     }
                     else
                     {
-                        App.Current.Shutdown(App.HAVE_OTHER_PROCESS);
+                        App.Current.Dispatcher.Invoke(() =>
+                        {
+                            App.Current.Shutdown(App.HAVE_OTHER_PROCESS);
+                        });
                     }
                 }
             });

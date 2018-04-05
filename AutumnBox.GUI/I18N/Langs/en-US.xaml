@@ -173,11 +173,12 @@
     <s:String x:Key="msgPlsInstallShizukuManagerFirst">请先安装ShizukuManager!酷市场和手机乐园都有!</s:String>
     <s:String x:Key="msgWarning">Warning</s:String>
     <s:String x:Key="msgVirtualButtonHider">您是要隐藏虚拟键还是恢复虚拟键?</s:String>
-    <s:String x:Key="msgStartAdbServerFail">
-        错误:无法启动ADB服务
-        解决方案:彻底关闭所有其它的手机助手(在电脑上)
-        例如: 360手机助手 豌豆荚 360安全卫士等
-        如果仍然无效,请进入任务管理器,彻底结束那些手机助手的进程!什么?还是没用?重启电脑!
+    <s:String x:Key="msgStartAdbServerFail">错误:无法启动ADB服务
+        解决方案:
+        1-彻底关闭所有刷机助手/手机助手.例如: 360手机助手,刷砖精灵,奇兔刷机等
+        2-进入任务管理器结束所有ADB进程
+        3-重启电脑
+        4-去网吧
     </s:String>
     <s:String x:Key="msgPleaseInputAPort">Error port</s:String>
     <s:String x:Key="msgFailed">Failed</s:String>
