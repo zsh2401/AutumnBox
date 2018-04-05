@@ -39,6 +39,7 @@ namespace AutumnBox.GUI.Windows
         public ChoiceBoxData Data { get; set; } = new ChoiceBoxData();
 
         private ChoiceResult _result = ChoiceResult.BtnCancel;
+
         internal ChoiceBox()
         {
             InitializeComponent();
@@ -46,6 +47,7 @@ namespace AutumnBox.GUI.Windows
             closeAnimationByBtnOK.Storyboard.Completed += (s, e) => Close();
             closeAnimationByImgCancel.Storyboard.Completed += (s, e) => Close();
         }
+
         public new ChoiceResult ShowDialog()
         {
             LabelTitle.Content = UIHelper.GetString(Data.KeyTitle ?? "msgNotice");
@@ -55,7 +57,6 @@ namespace AutumnBox.GUI.Windows
             try { base.ShowDialog(); } catch { }
             return _result;
         }
-
 
         private void ImgCancel_MouseDown(object sender, MouseButtonEventArgs e)
         {
