@@ -31,6 +31,7 @@ using AutumnBox.GUI.UI.Cstm;
 using System.Windows.Threading;
 using AutumnBox.GUI.UI.FuncPanels;
 using System.Windows.Controls;
+using AutumnBox.GUI.I18N;
 
 namespace AutumnBox.GUI
 {
@@ -60,10 +61,18 @@ namespace AutumnBox.GUI
                 ThridPartyFuncs
             };
             RegisterEvent();
+            SetTitile();
+            LanguageHelper.LanguageChanged += (s, e) =>
+            {
+                SetTitile();
+            };
+        }
+        private void SetTitile()
+        {
 #if DEBUG
-            TitleBar.Title += "  " + SystemHelper.CurrentVersion.ToString(3) + "-Debug";
+            TitleBar.Title = App.Current.Resources["AppName"] + "  " + SystemHelper.CurrentVersion.ToString(3) + "-Debug";
 #else
-            TitleBar.Title += "  " + SystemHelper.CurrentVersion.ToString(3) + "-Release";
+            TitleBar.Title = App.Current.Resources["AppName"] + "  " + SystemHelper.CurrentVersion.ToString(3) + "-Release";
 #endif
         }
 
