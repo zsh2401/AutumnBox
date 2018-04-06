@@ -11,6 +11,7 @@ using AutumnBox.GUI.NetUtil;
 using AutumnBox.GUI.UI.CstPanels;
 using AutumnBox.GUI.UI.Fp;
 using AutumnBox.GUI.Util;
+using AutumnBox.GUI.Windows;
 using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.Internal;
 
@@ -132,6 +133,11 @@ namespace AutumnBox.GUI.UI.FuncPanels
         private void TBDownloadExt_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             Process.Start(App.Current.Resources["urlDownloadExtensions"].ToString());
+        }
+
+        private void ButtonDownLoad_Click(object sender, RoutedEventArgs e)
+        {
+            new DownTagsWindow() { Owner = App.Current.MainWindow }.ShowDialog();
         }
     }
 }
