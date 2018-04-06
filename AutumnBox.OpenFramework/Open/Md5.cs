@@ -39,14 +39,14 @@ namespace AutumnBox.OpenFramework.Open
             return strResult;
         }
 
-        
+
         /// <summary>
         /// 之间校验Md5值是否一致
         /// </summary>
         /// <param name="_path">需要校验的文件路径</param>
         /// <param name="_md5">需要校验的文件md5值</param>
         /// <returns></returns>
-        public bool CheckMd5(string _path ,string _md5)
+        public bool CheckMd5(string _path, string _md5)
         {
             var _fmd5 = GetMd5(_path);
             if (_fmd5 == _md5 || _fmd5.ToLower() == _md5) return true;
