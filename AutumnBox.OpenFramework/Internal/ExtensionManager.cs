@@ -27,7 +27,7 @@ namespace AutumnBox.OpenFramework.Internal
         {
             get
             {
-                return Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/AutumnBox/Extensions";
+                return Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\AutumnBox\Extensions";
             }
         }
         static ExtensionManager()
