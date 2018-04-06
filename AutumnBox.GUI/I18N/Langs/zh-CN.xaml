@@ -3,7 +3,7 @@
                     xml:space="preserve"
                     xmlns:s="clr-namespace:System;assembly=mscorlib">
 
-    <s:String x:Key="AppName">AutumnBox</s:String>
+    <s:String x:Key="AppName">秋之盒</s:String>
     <s:String x:Key="LanguageName">简体中文</s:String>
     <s:String x:Key="LanguageCode">zh-CN</s:String>
     
@@ -267,6 +267,8 @@
      <s:String x:Key="lbAuth">所有者</s:String>
     <s:String x:Key="lbVersion">版本</s:String>
     <s:String x:Key="lbContactEmail">联系邮箱</s:String>
+        <s:String x:Key="lbMinSdk">最低SDK</s:String>
+    <s:String x:Key="lbTargetSdk">目标SDK</s:String>
      <s:String x:Key="lbDescription">说明</s:String>
     <s:String x:Key="lbSetDeviceOwner">通过设置设备管理员进行激活</s:String>
     <s:String x:Key="lbRunScript">通过运行脚本进行激活</s:String>

@@ -8,7 +8,7 @@
              mc:Ignorable="d" Width="940" Height="537.5">
     <Grid>
         <Image HorizontalAlignment="Left" Height="232" Margin="10,10,0,0" VerticalAlignment="Top" Width="225" Source="/Resources/images/title_icon.ico"/>
-        <Label Foreground="{DynamicResource ForegroundOnPrimaryBrushKey}"  Style="{DynamicResource AtmbxLabelStyle}" Content="AutumnBox" HorizontalAlignment="Left" Margin="235,55,0,0" VerticalAlignment="Top" Height="153" Width="695" FontSize="100" />
+        <Label Foreground="{DynamicResource ForegroundOnPrimaryBrushKey}"  Style="{DynamicResource AtmbxLabelStyle}" Content="{DynamicResource AppName}" HorizontalAlignment="Left" Margin="235,55,0,0" VerticalAlignment="Top" Height="153" Width="695" FontSize="100" />
         <cstm:HyperLink Foreground="{DynamicResource ForegroundOnPrimaryBrushKey}" Text="{DynamicResource hyperLinkOpenSource}" Hyperlink="{DynamicResource urlOpensource}" Margin="268,254,472,263" FontSize="16"/>
         <cstm:HyperLink Foreground="{DynamicResource ForegroundOnPrimaryBrushKey}" Text="{DynamicResource Donate}" MouseClick="HyperLink_MouseClick" Margin="508,255,232,259" FontSize="16"/>
         <Image RenderOptions.BitmapScalingMode="Fant" Source="/Resources/Images/Icons/donate.png" HorizontalAlignment="Left" Height="28" Margin="468,251,0,0" VerticalAlignment="Top" Width="28"/>

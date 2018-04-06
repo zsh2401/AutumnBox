@@ -648,13 +648,10 @@
     <Resource Include="Resources\Images\potd_close.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\title_icon.ico" />
+    <Resource Include="Resources\Images\title_icon_old.ico" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\pm_default_icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Images\autumn.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Themes\DreamTheme_files\bg.jpg" />
@@ -699,6 +696,15 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\AppIcons\Greenify.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\title_icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\leaves.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\title_icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

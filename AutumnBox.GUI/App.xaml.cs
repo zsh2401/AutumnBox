@@ -95,7 +95,11 @@ namespace AutumnBox.GUI
         private void Current_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
         {
             string src = e.Exception.Source;
-            if (blockListForExceptionSource.Contains(src)) return;
+            if (blockListForExceptionSource.Contains(src))
+            {
+                Logger.Warn(this, "PresentationCore Error", e.Exception);
+                return;
+            }
             string n = Environment.NewLine;
             string exstr =
                 $"AutumnBox Exception {DateTime.Now.ToString("MM/dd/yyyy    HH:mm:ss")}{n}{n}" +

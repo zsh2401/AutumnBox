@@ -1,5 +1,8 @@
 ﻿namespace AutumnBox.OpenFramework.Internal
 {
+    /// <summary>
+    /// 上下文工厂,请勿调用
+    /// </summary>
     public static class ContextFactory
     {
         private class HighPermissionContext : Context
@@ -15,6 +18,11 @@
                 return ContextPermissionLevel.High;
             }
         }
+        /// <summary>
+        /// 获取最高权限Context
+        /// </summary>
+        /// <param name="context"></param>
+        /// <returns></returns>
         public static Context GetHighPermissionContext(Context context)
         {
             context.PermissionCheck(ContextPermissionLevel.Mid);
