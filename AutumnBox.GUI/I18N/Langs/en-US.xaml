@@ -267,6 +267,8 @@
     <s:String x:Key="lbAuth">Auth</s:String>
     <s:String x:Key="lbVersion">Version</s:String>
     <s:String x:Key="lbContactEmail">Contact E-mail</s:String>
+    <s:String x:Key="lbMinSdk">Min SDK</s:String>
+    <s:String x:Key="lbTargetSdk">Target SDK</s:String>
     <s:String x:Key="lbDescription">Description</s:String>
     <s:String x:Key="lbSetDeviceOwner">Set device owner to active</s:String>
     <s:String x:Key="lbRunScript">Run scrpt to active</s:String>

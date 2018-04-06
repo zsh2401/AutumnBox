@@ -5,17 +5,18 @@
 *************************************************/
 using AutumnBox.OpenFramework.Open;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-
 namespace AutumnBox.OpenFramework.Extension
 {
-    public partial class AutumnBoxExtension
+    public partial class AutumnBoxExtension : Context, IAutumnBoxExtension
     {
+        /// <summary>
+        /// 图标,暂未实现
+        /// </summary>
         public object Icon => null;
-
+        /// <summary>
+        /// 信息
+        /// </summary>
         public string Infomation
         {
             get
@@ -29,7 +30,9 @@ namespace AutumnBox.OpenFramework.Extension
                     {
                         sb.AppendLine($"{OpenApi.Gui.GetPublicResouce(this, "lbContactEmail")}:\t{ContactMail}");
                     }
-                    sb.AppendLine();
+                    sb.Append($"{OpenApi.Gui.GetPublicResouce(this, "lbMinSdk")}:\t{MinSdk?.ToString() ?? "Null"}");
+                    sb.Append($"\t{OpenApi.Gui.GetPublicResouce(this, "lbTargetSdk")}:\t{TargetSdk?.ToString() ?? "Null"}");
+                    sb.AppendLine(); sb.AppendLine();
                     sb.AppendLine($"{OpenApi.Gui.GetPublicResouce(this, "lbDescription")}:");
                     sb.AppendLine($"{Description}");
                 }
@@ -40,11 +43,19 @@ namespace AutumnBox.OpenFramework.Extension
                 return sb.ToString();
             }
         }
-
+        /// <summary>
+        /// 初始化
+        /// </summary>
+        /// <param name="args"></param>
+        /// <returns></returns>
         public bool Init(InitArgs args)
         {
             try
             {
+                if (BuildInfo.SDK_VERSION < MinSdk)
+                {
+                    return false;
+                }
                 return InitAndCheck(args);
             }
             catch (Exception ex)
@@ -53,12 +64,19 @@ namespace AutumnBox.OpenFramework.Extension
                 return false;
             }
         }
-
+        /// <summary>
+        /// 运行检测
+        /// </summary>
+        /// <param name="args"></param>
+        /// <returns></returns>
         public bool RunCheck(RunCheckArgs args)
         {
             return RequiredDeviceState.HasFlag(args.DeviceInfo.State);
         }
-
+        /// <summary>
+        /// 运行
+        /// </summary>
+        /// <param name="args"></param>
         public void Run(StartArgs args)
         {
             try
@@ -73,7 +91,11 @@ namespace AutumnBox.OpenFramework.Extension
                 OpenApi.Gui.ShowMessageBox(this, Name, wasFailedMsg);
             }
         }
-
+        /// <summary>
+        /// 停止
+        /// </summary>
+        /// <param name="args"></param>
+        /// <returns></returns>
         public bool Stop(StopArgs args)
         {
             try
@@ -86,7 +108,10 @@ namespace AutumnBox.OpenFramework.Extension
                 return false;
             }
         }
-
+        /// <summary>
+        /// 摧毁
+        /// </summary>
+        /// <param name="args"></param>
         public void Destory(DestoryArgs args)
         {
             try
@@ -98,7 +123,9 @@ namespace AutumnBox.OpenFramework.Extension
                 OpenApi.Log.Warn(this, "摧毁时发生异常", ex);
             }
         }
-
+        /// <summary>
+        /// 析构
+        /// </summary>
         public void Dispose()
         {
             Destory(new DestoryArgs());
