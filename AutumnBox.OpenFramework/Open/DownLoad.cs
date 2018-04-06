@@ -1,6 +1,5 @@
 ﻿using System.Net;
 
-
 namespace AutumnBox.OpenFramework.Open
 {
     /// <summary>
