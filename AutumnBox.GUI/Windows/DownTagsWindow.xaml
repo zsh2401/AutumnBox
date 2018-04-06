@@ -1,0 +1,31 @@
+﻿<Window x:Class="AutumnBox.GUI.Windows.DownTagsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AutumnBox.GUI.Windows"
+         xmlns:cstm="clr-namespace:AutumnBox.GUI.UI.Cstm"
+        mc:Ignorable="d"
+        Title="TagsDownLoadWindow" ShowInTaskbar="False" ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterOwner" Background="{DynamicResource BroderBrushKey}" Width="800" Height="600">
+    <Grid Margin="3,3,3,3" Background="{DynamicResource BackgroundBrushKey}" MinHeight="600" MinWidth="800" MaxWidth="800" MaxHeight="600">
+        <cstm:CstmTitleBar HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="800" Title="DownLoad"/>
+        <ListBox x:Name="ListBox1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,80,0,0" Width="780" Height="500" Background="{x:Null}" Foreground="Black" BorderBrush="#7FABADB3">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <TextBlock Text="{Binding Path=tagName}" Margin="0,0,0,0"></TextBlock>
+                        <TextBlock Text="{Binding Path=author}" Margin="100,0,0,0"></TextBlock>
+                        <TextBlock Text="{Binding Path=lastVersion}" Margin="230,0,0,0"></TextBlock>
+                        <TextBlock Text="{Binding Path=introduce}" Margin="330,0,0,0"></TextBlock>
+                        <Button Content="下载" Margin="690,0,0,0" Width="75" Tag="{Binding Path=url}" Background="#00DDDDDD" BorderBrush="#00707070" Foreground="Blue" Click="ButtonDownLoad_Click"/>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <TextBlock HorizontalAlignment="Left" Margin="20,65,0,0" TextWrapping="Wrap" Text="模块名称" VerticalAlignment="Top" FontSize="16"/>
+        <TextBlock HorizontalAlignment="Left" Margin="120,65,0,0" TextWrapping="Wrap" Text="作者" VerticalAlignment="Top" FontSize="16"/>
+        <TextBlock HorizontalAlignment="Left" Margin="245,65,0,0" TextWrapping="Wrap" Text="最终版本" VerticalAlignment="Top" FontSize="16"/>
+        <TextBlock HorizontalAlignment="Left" Margin="350,65,0,0" TextWrapping="Wrap" Text="介绍" VerticalAlignment="Top" FontSize="16"/>
+        <Button Content="重启" HorizontalAlignment="Left" Margin="695,65,0,0" VerticalAlignment="Top" Width="75" Click="ButtonRe_Click" Background="#00DDDDDD"/>
+    </Grid>
+</Window>
