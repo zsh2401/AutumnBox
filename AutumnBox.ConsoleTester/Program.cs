@@ -22,10 +22,6 @@ namespace AutumnBox.ConsoleTester
             Serial = new DeviceSerialNumber("9dd1b490"),
             State = DeviceState.Poweron,
         };
-        class ExtensionInfo
-        {
-
-        }
         unsafe static int Main(string[] cmdargs)
         {
             XmlDocument doc = new XmlDocument();
