@@ -9,6 +9,8 @@
    
     <s:String x:Key="AppDesc">Open source,free,simple,GUI adb toolbox</s:String>
     <!--按钮-->
+    <s:String x:Key="btnAccept">Accpet</s:String>
+    <s:String x:Key="btnDeny">Deny</s:String>
     <s:String x:Key="btnGreenifyDozeActivator">Activate Greenify Aggressive Doze</s:String>
     <s:String x:Key="btnFreezeYouActivator">Active FreezeYou!</s:String>
     <s:String x:Key="btnAnzenbokusuFakeActivator">Active Anzenbokusu Fake</s:String>
@@ -113,6 +115,8 @@
     <!--标题-->
 
     <!--信息(主要用于MMesssageBox)-->
+     <s:String x:Key="msgRequestRestartAppFormat">{0} wanna restart AutumnBox</s:String>
+     <s:String x:Key="msgRequestShutdownAppFormat">{0} wanna close AutumnBox</s:String>
     <s:String x:Key="msgPathError">路径错误!
     请确保路径没有中文或空格等特殊字符!</s:String>
     <s:String x:Key="msgExtensionWasFailed">was failed...please view the log</s:String>

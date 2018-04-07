@@ -7,6 +7,7 @@ using AutumnBox.OpenFramework.Open;
 using System.Windows.Controls;
 using AutumnBox.OpenFramework.Internal;
 using LeanCloud;
+using System.Net;
 
 namespace AutumnBox.GUI.Windows
 {
@@ -73,10 +74,9 @@ namespace AutumnBox.GUI.Windows
             var a = ((Button)sender).Tag.ToString();
 
             var b = a.Split('\'');
-            var d = new DownLoad();
             var p = ExtensionManager.ExtensionsPath;
 
-            Task.Run(() => d.DownloadFile(b[0], p + @"\" + b[1]));
+            Task.Run(() => new WebClient().DownloadFile(b[0], p + @"\" + b[1]));
         }
 
         private void ButtonRe_Click(object sender, RoutedEventArgs e)

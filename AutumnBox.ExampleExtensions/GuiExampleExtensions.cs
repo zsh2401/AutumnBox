@@ -27,16 +27,10 @@ namespace AutumnBox.ExampleExtensions
         public override int? TargetSdk => 5;
         public override bool InitAndCheck(InitArgs args)
         {
-            OpenApi.Gui.ShowDebugWindow(this);
             return base.InitAndCheck(args);
         }
         public override void OnStartCommand(StartArgs args)
         {
-            Comp.RunMaybeMissingMethod(BuildInfo.SdkVersion  > 5,
-                () =>
-            {
-                
-            });
             Window expWin = null;
             RunOnUIThread(() =>
             {

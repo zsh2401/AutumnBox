@@ -70,5 +70,15 @@ namespace AutumnBox.OpenFramework.Open
         /// </summary>
         /// <param name="ctx"></param>
         void ShowDebugWindow(Context ctx);
+        /// <summary>
+        /// 重启AutumnBox
+        /// </summary>
+        /// <param name="ctx"></param>
+        void RestartApp(Context ctx);
+        /// <summary>
+        /// 关闭AutumnBox
+        /// </summary>
+        /// <param name="ctx"></param>
+        void ShutdownApp(Context ctx);
     }
 }
