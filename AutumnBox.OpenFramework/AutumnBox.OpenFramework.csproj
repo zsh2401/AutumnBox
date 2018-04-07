@@ -73,6 +73,7 @@
     <Compile Include="Open\ILogApi.cs" />
     <Compile Include="Extension\Args.cs" />
     <Compile Include="Open\OpenApi.cs" />
+    <Compile Include="Open\UserDeniedException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

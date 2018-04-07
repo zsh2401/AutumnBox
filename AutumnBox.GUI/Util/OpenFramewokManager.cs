@@ -10,6 +10,7 @@ using AutumnBox.OpenFramework;
 using AutumnBox.OpenFramework.Internal;
 using AutumnBox.OpenFramework.Open;
 using System;
+using System.Diagnostics;
 using System.Windows;
 
 namespace AutumnBox.GUI.Util
@@ -23,7 +24,9 @@ namespace AutumnBox.GUI.Util
             FrameworkLoader.SetGuiApi(context, new GuiApiImpl());
             FrameworkLoader.SetLogApi(context, new LogApiImpl());
         }
-
+        /// <summary>
+        /// GUIApi实现
+        /// </summary>
         private class GuiApiImpl : IGuiApi
         {
             public string CurrentLanguageCode => App.Current.Resources["LanguageCode"].ToString();
@@ -41,6 +44,25 @@ namespace AutumnBox.GUI.Util
             public TReturn GetPublicResouce<TReturn>(Context context, string key) where TReturn : class
             {
                 return App.Current.Resources[key] as TReturn;
+            }
+
+            public void RestartApp(Context ctx)
+            {
+                App.Current.Dispatcher.Invoke(() =>
+                {
+                    var fmt = App.Current.Resources["msgRequestRestartAppFormat"].ToString();
+                    string msg = String.Format(fmt, ctx.GetType().Name);
+                    bool userIsAccept = BoxHelper.ShowChoiceDialog("Notice", msg, "btnDeny", "btnAccept").ToBool();
+                    if (userIsAccept)
+                    {
+                        Application.Current.Shutdown();
+                        Process.Start(System.Reflection.Assembly.GetExecutingAssembly().Location);
+                    }
+                    else
+                    {
+                        throw new UserDeniedException();
+                    }
+                });
             }
 
             public void RunOnUIThread(Context context, Action act)
@@ -82,8 +104,28 @@ namespace AutumnBox.GUI.Util
                     BoxHelper.ShowMessageDialog(title, msg);
                 });
             }
-        }
 
+            public void ShutdownApp(Context ctx)
+            {
+                App.Current.Dispatcher.Invoke(() =>
+                {
+                    var fmt = App.Current.Resources["msgRequestShutdownAppFormat"].ToString();
+                    string msg = String.Format(fmt, ctx.GetType().Name);
+                    bool userIsAccept = BoxHelper.ShowChoiceDialog("Notice", msg, "btnDeny", "btnAccept").ToBool();
+                    if (userIsAccept)
+                    {
+                        Application.Current.Shutdown();
+                    }
+                    else
+                    {
+                        throw new UserDeniedException();
+                    }
+                });
+            }
+        }
+        /// <summary>
+        /// 调试API实现
+        /// </summary>
         private class LogApiImpl : ILogApi
         {
             public void Debug(Context sender, string msg)
