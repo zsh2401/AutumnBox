@@ -17,20 +17,20 @@ namespace AutumnBox.OpenFramework.Internal
         /// </summary>
         /// <param name="ctx"></param>
         /// <param name="api"></param>
-        public static void SetLogApi(Context ctx, ILogApi api)
+        public static void SetLogApi(Context ctx, ILogApi apiImpl)
         {
-            ctx.PermissionCheck();
-            OpenApi.Log = api;
+            ctx.PermissionCheck(ContextPermissionLevel.Mid);
+            OpenApi.Log = apiImpl;
         }
         /// <summary>
         /// 设置GuiApi
         /// </summary>
         /// <param name="ctx"></param>
         /// <param name="api"></param>
-        public static void SetGuiApi(Context ctx, IGuiApi api)
+        public static void SetGuiApi(Context ctx, IGuiApi apiImpl)
         {
-            ctx.PermissionCheck();
-            OpenApi.Gui = api;
+            ctx.PermissionCheck(ContextPermissionLevel.Mid);
+            OpenApi.Gui = apiImpl;
         }
     }
 }
