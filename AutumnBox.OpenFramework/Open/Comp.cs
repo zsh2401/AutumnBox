@@ -17,7 +17,7 @@ namespace AutumnBox.OpenFramework.Open
     public static class Comp
     {
         /// <summary>
-        /// 获取SDK版本
+        /// SDK版本
         /// </summary>
         public static int SdkVersion
         {

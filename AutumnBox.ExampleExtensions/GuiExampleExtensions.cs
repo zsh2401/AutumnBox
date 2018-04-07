@@ -5,6 +5,7 @@
 *************************************************/
 using AutumnBox.Basic.Device;
 using AutumnBox.ExampleExtensions.Windows;
+using AutumnBox.OpenFramework;
 using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.Open;
 using System;
@@ -31,6 +32,11 @@ namespace AutumnBox.ExampleExtensions
         }
         public override void OnStartCommand(StartArgs args)
         {
+            Comp.RunMaybeMissingMethod(BuildInfo.SdkVersion  > 5,
+                () =>
+            {
+                
+            });
             Window expWin = null;
             RunOnUIThread(() =>
             {
