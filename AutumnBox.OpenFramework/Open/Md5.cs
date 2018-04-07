@@ -41,7 +41,7 @@ namespace AutumnBox.OpenFramework.Open
 
 
         /// <summary>
-        /// 之间校验Md5值是否一致
+        /// 校验Md5值是否一致
         /// </summary>
         /// <param name="_path">需要校验的文件路径</param>
         /// <param name="_md5">需要校验的文件md5值</param>

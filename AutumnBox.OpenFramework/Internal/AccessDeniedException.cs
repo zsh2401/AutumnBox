@@ -8,5 +8,8 @@ using System;
 
 namespace AutumnBox.OpenFramework.Internal
 {
+    /// <summary>
+    /// 拒绝访问异常
+    /// </summary>
     public class AccessDeniedException : Exception { }
 }

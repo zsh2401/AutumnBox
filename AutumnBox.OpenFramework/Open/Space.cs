@@ -14,6 +14,16 @@ namespace AutumnBox.OpenFramework.Open
     public static class Space
     {
         /// <summary>
+        /// 获取拓展模块所在位置路径
+        /// </summary>
+        public static string ExtensionsPath
+        {
+            get
+            {
+                return ExtensionManager.ExtensionsPath;
+            }
+        }
+        /// <summary>
         /// 根据Context获取临时文件夹
         /// </summary>
         /// <param name="ctx"></param>
