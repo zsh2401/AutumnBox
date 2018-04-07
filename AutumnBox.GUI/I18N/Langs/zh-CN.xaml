@@ -18,7 +18,7 @@
     <s:String x:Key="btnBlackholeActivator">激活黑洞</s:String>
     <s:String x:Key="btnStopExtension">停止运行</s:String>
     <s:String x:Key="btnOpenModuleFloder">打开模块文件夹</s:String>
-    <s:String x:Key="ButtonDownLoad">下载模块</s:String>
+    <s:String x:Key="btnDownloadExtensions">下载拓展模块</s:String>
     <s:String x:Key="btnCannotRunExtension">当前设备状态下,此模块不可运行</s:String>
     <s:String x:Key="btnRunExtension">运行这个拓展</s:String>
     <s:String x:Key="btnLaunchDebugWindow">启动日志窗口</s:String>
