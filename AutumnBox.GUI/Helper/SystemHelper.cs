@@ -69,6 +69,9 @@ namespace AutumnBox.GUI.Helper
             string desktop = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);//获取桌面文件夹路径
             CreateShortcut(desktop, shortcutName, targetPath, description, iconLocation);
         }
+        /// <summary>
+        /// 获取当前AutumnBox编译日期
+        /// </summary>
         public static DateTime CompiledDate
         {
             get
@@ -77,6 +80,9 @@ namespace AutumnBox.GUI.Helper
                 return o.DateTime;
             }
         }
+        /// <summary>
+        /// 获取当前AutumnBox版本
+        /// </summary>
         public static Version CurrentVersion
         {
             get
@@ -84,14 +90,9 @@ namespace AutumnBox.GUI.Helper
                 return System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
             }
         }
-        public static void KillProcess(string processName)
-        {
-            var list = Process.GetProcessesByName(processName);
-            foreach (Process p in list)
-            {
-                p.Kill();
-            }
-        }
+        /// <summary>
+        /// 判断当前操作系统是否是win10
+        /// </summary>
         public static bool IsWin10
         {
             get
@@ -99,6 +100,9 @@ namespace AutumnBox.GUI.Helper
                 return Environment.OSVersion.Version.Major == 10;
             }
         }
+        /// <summary>
+        /// 判断是否拥有管理员权限
+        /// </summary>
         public static bool HaveAdminPermission
         {
             get
@@ -108,10 +112,9 @@ namespace AutumnBox.GUI.Helper
                 return principal.IsInRole(WindowsBuiltInRole.Administrator);
             }
         }
-        public static void ChangeAdbProt(uint port = 24010)
-        {
-            Environment.SetEnvironmentVariable("ADB_PORT", port.ToString(), EnvironmentVariableTarget.User);
-        }
+        /// <summary>
+        /// 判断是否有其它秋之盒进程
+        /// </summary>
         public static bool HaveOtherAutumnBoxProcess
         {
             get

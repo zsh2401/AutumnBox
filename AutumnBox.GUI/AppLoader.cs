@@ -25,6 +25,13 @@ namespace AutumnBox.GUI
         {
             this.loadingWindowApi = loadingWindowApi;
         }
+        public void PrintInfo()
+        {
+            Logger.Info(this, $"Run as " + (SystemHelper.HaveAdminPermission ? "Admin" : "Normal user"));
+            Logger.Info(this, $"AutumnBox version: {SystemHelper.CurrentVersion}");
+            Logger.Info(this, $"SDK version: {BuildInfo.SDK_VERSION}");
+            Logger.Info(this, $"Windows version {Environment.OSVersion.Version}");
+        }
         public async void LoadAsync()
         {
             //如果设置在启动时打开调试窗口
@@ -33,11 +40,7 @@ namespace AutumnBox.GUI
                 //打开调试窗口
                 new DebugWindow().Show();
             }
-            System.Security.Principal.WindowsIdentity identity = System.Security.Principal.WindowsIdentity.GetCurrent();
-            System.Security.Principal.WindowsPrincipal principal = new System.Security.Principal.WindowsPrincipal(identity);
-            bool asAdmin = principal.IsInRole(System.Security.Principal.WindowsBuiltInRole.Administrator);
-            Logger.Info(this, $"Run as " + (asAdmin ? "Admin" : "Normal user"));
-            Logger.Info(this, $"Windows version {Environment.OSVersion.Version}");
+            PrintInfo();
             //启动ADB服务
             loadingWindowApi.SetProgress(10);
             loadingWindowApi.SetTip(App.Current.Resources["ldmsgStartAdb"].ToString());
