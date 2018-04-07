@@ -6,6 +6,6 @@
              x:Name="mUserControl"
              xmlns:local="clr-namespace:AutumnBox.GUI.UI.Cstm"
              FontSize="20" Foreground="{DynamicResource ForegroundBrushKey}"
-             mc:Ignorable="d" MinHeight="20" MinWidth="200" >
+             mc:Ignorable="d" MinHeight="20" MinWidth="50" >
     <TextBlock  MouseEnter="TBMain_MouseEnter" MouseLeave="TBMain_MouseLeave" Foreground="{Binding Path=Foreground,ElementName=mUserControl}" x:Name="TBMain"  TextAlignment="Left" Style="{DynamicResource AtmbxTextBlockStyle}"  MouseDown="TBMain_MouseDown" Text="{Binding Path=Text,ElementName=mUserControl}"/>
 </UserControl>

@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="TagsDownLoadWindow" ShowInTaskbar="False" ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterOwner" Background="{DynamicResource BroderBrushKey}" Width="800" Height="600">
     <Grid Margin="3,3,3,3" Background="{DynamicResource BackgroundBrushKey}" MinHeight="600" MinWidth="800" MaxWidth="800" MaxHeight="600">
-        <cstm:CstmTitleBar HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="800" Title="DownLoad"/>
+        <cstm:CstmTitleBar HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="800" Title="Download"/>
         <ListBox x:Name="ListBox1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,80,0,0" Width="780" Height="500" Background="{x:Null}" Foreground="Black" BorderBrush="#7FABADB3">
             <ListBox.ItemTemplate>
                 <DataTemplate>
@@ -26,6 +26,6 @@
         <TextBlock HorizontalAlignment="Left" Margin="120,65,0,0" TextWrapping="Wrap" Text="作者" VerticalAlignment="Top" FontSize="16"/>
         <TextBlock HorizontalAlignment="Left" Margin="245,65,0,0" TextWrapping="Wrap" Text="最终版本" VerticalAlignment="Top" FontSize="16"/>
         <TextBlock HorizontalAlignment="Left" Margin="350,65,0,0" TextWrapping="Wrap" Text="介绍" VerticalAlignment="Top" FontSize="16"/>
-        <Button Content="重启" HorizontalAlignment="Left" Margin="695,65,0,0" VerticalAlignment="Top" Width="75" Click="ButtonRe_Click" Background="#00DDDDDD"/>
+        <Button Style="{DynamicResource AtmbxButtonStyle}" Content="重启" HorizontalAlignment="Left" Margin="695,60,0,0" VerticalAlignment="Top" Width="75" Click="ButtonRe_Click" Background="#00DDDDDD"/>
     </Grid>
 </Window>
