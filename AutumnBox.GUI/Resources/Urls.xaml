@@ -6,9 +6,11 @@
     <s:String x:Key="urlOpensource">http://atmb.top/open_source/</s:String>
     <s:String x:Key="urlJoinQQGroup">http://atmb.top/help/join_qq_group/</s:String>
     <s:String x:Key="urlDownloadMiFlashPackage">http://www.miui.com/shuaji-393.html</s:String>
+    <s:String x:Key="urlDownloadExtensions">http://atmb.top/download/extensions/</s:String>
+    
+    
     <s:String x:Key="urlApiMotd">http://atmb.top/api/motd/</s:String>
     <s:String x:Key="urlApiPotd">http://atmb.top/api/potd/</s:String>
-    <s:String x:Key="urlDownloadExtensions">http://atmb.top/download/extensions/</s:String>
     <s:String x:Key="urlApiUpdate">http://atmb.top/api/update/</s:String>
     <s:String x:Key="urlApiStatistics">http://atmb.top/api/statistics/</s:String>
     
