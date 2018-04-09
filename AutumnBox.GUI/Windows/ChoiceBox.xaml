@@ -5,8 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AutumnBox.GUI.UI"
         mc:Ignorable="d"
-        Title="ChoiceBox" Height="371" Width="583.667" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterOwner" Background="{DynamicResource BroderBrushKey}" ShowInTaskbar="False" MouseDown="Window_MouseDown">
+        xmlns:s="clr-namespace:System;assembly=mscorlib"
+        MinHeight="340"
+        MinWidth="550"
+        Title="ChoiceBox" Height="305.5" Width="368.5" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterOwner" Background="{DynamicResource BroderBrushKey}" ShowInTaskbar="False" MouseDown="Window_MouseDown">
     <Window.Resources>
+        <s:Double x:Key="Width">550</s:Double>
+        <s:Double x:Key="Height">340</s:Double>
         <Storyboard x:Key="ShowAnimation">
             <DoubleAnimation 
                 From="0" To="0" Duration="0:0:0.0"
@@ -14,12 +19,12 @@
                 Storyboard.TargetProperty="Height" BeginTime="0:0:0.0">
             </DoubleAnimation>
             <DoubleAnimation 
-                From="0" To="500" Duration="0:0:0.3"
+                From="0" To="{DynamicResource Width}" Duration="0:0:0.3"
                 Storyboard.TargetName="MainWindow"
                 Storyboard.TargetProperty="Width" BeginTime="0:0:0.0">
             </DoubleAnimation>
             <DoubleAnimation 
-                From="0" To="320" Duration="0:0:0.3"
+                From="0" To="{DynamicResource Height}" Duration="0:0:0.3"
                 Storyboard.TargetName="MainWindow"
                 Storyboard.TargetProperty="Height" BeginTime="0:0:0.3">
             </DoubleAnimation>
@@ -61,9 +66,10 @@
     </Window.Triggers>
     <Grid Margin="1,0,1,1" Background="{DynamicResource BackgroundBrushKey}">
         <Label Background="{DynamicResource PrimaryBrushKey}" Foreground="{DynamicResource ForegroundOnPrimaryBrushKey}" Style="{DynamicResource AtmbxLabelStyle}" x:Name="LabelTitle" Content="Something...." VerticalAlignment="Top" Height="52" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"  />
-        <Button Style="{DynamicResource AtmbxButtonStyle}" x:Name="BtnLeft" Content="{DynamicResource btnCancel}" Margin="86,0,0,9" Click="BtnLeft_Click" Height="28" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="200" />
-        <Button Style="{DynamicResource AtmbxButtonStyle}" x:Name="BtnRight" Content="{DynamicResource btnOK}" Margin="0,0,77,9" Click="BtnRight_Click" Height="28" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="200" />
         <TextBlock Style="{DynamicResource AtmbxTextBlockStyle}" x:Name="TBContent" TextAlignment="Center" Margin="10,66,10,42" TextWrapping="Wrap" Text="Content"  FontSize="18" />
         <Image x:Name="ImgCancel" Height="24" Margin="0,10,10,0" VerticalAlignment="Top" Source="/Resources/Images/Btn/close_normal.png" MouseDown="ImgCancel_MouseDown" HorizontalAlignment="Right" Width="22"/>
+
+        <Button Style="{DynamicResource AtmbxButtonStyle}" x:Name="BtnLeft" Margin="15,5,5,5" Content="{DynamicResource btnCancel}"  Click="BtnLeft_Click" Height="28" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="206" />
+        <Button Style="{DynamicResource AtmbxButtonStyle}" x:Name="BtnRight" Margin="5,5,15,5" Content="{DynamicResource btnOK}"  Click="BtnRight_Click" Height="28" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="206" />
     </Grid>
 </Window>
