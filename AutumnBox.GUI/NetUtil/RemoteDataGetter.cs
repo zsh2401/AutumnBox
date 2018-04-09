@@ -24,7 +24,9 @@ namespace AutumnBox.GUI.NetUtil
         protected readonly WebClient webClient;
         public RemoteDataGetter()
         {
-            //ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
+            ServicePointManager.Expect100Continue = true;
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+            ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
             webClient = new WebClient
             {
                 Encoding = Encoding.UTF8
