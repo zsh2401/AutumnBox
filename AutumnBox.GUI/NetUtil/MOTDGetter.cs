@@ -34,11 +34,10 @@ namespace AutumnBox.GUI.NetUtil
         public override MOTDResult Get()
         {
 #if USE_LOCAL_API && DEBUG
-            byte[] jsonByte = webClient.DownloadData("http://localhost:24010/api/motd/");
+            var json = webClient.DownloadString("http://localhost:24010/api/motd/");
 #else
-            byte[] jsonByte = webClient.DownloadData(App.Current.Resources["urlApiMotd"].ToString());
+            var json = webClient.DownloadString(App.Current.Resources["urlApiMotd"].ToString());
 #endif
-            var json = Encoding.UTF8.GetString(jsonByte);
             var result = (MOTDResult)JsonConvert.DeserializeObject(json, typeof(MOTDResult));
             return result;
         }

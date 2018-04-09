@@ -14,6 +14,7 @@
 using AutumnBox.Support.Log;
 using System;
 using System.Net;
+using System.Text;
 using System.Threading.Tasks;
 namespace AutumnBox.GUI.NetUtil
 {
@@ -23,7 +24,11 @@ namespace AutumnBox.GUI.NetUtil
         protected readonly WebClient webClient;
         public RemoteDataGetter()
         {
-            webClient = new WebClient();
+            //ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
+            webClient = new WebClient
+            {
+                Encoding = Encoding.UTF8
+            };
         }
         public async void RunAsync(Action<TResult> finishedHandler)
         {
@@ -35,6 +40,10 @@ namespace AutumnBox.GUI.NetUtil
             {
                 finishedHandler(result);
             }
+        }
+        protected string DownloadString(string url)
+        {
+            return webClient.DownloadString(url);
         }
         public TResult Run()
         {
