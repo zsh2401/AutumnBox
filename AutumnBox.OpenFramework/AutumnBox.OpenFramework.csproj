@@ -68,6 +68,7 @@
     <Compile Include="Internal\FrameworkLoader.cs" />
     <Compile Include="Open\Md5.cs" />
     <Compile Include="Open\Comp.cs" />
+    <Compile Include="Open\OS.cs" />
     <Compile Include="Open\Space.cs" />
     <Compile Include="Open\IGuiApi.cs" />
     <Compile Include="Open\ILogApi.cs" />
