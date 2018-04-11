@@ -37,4 +37,8 @@ namespace AutumnBox.OpenFramework.Extension
     /// OnDestory()参数
     /// </summary>
     public class DestoryArgs { }
+    /// <summary>
+    /// OnClean()参数
+    /// </summary>
+    public class CleanArgs { }
 }

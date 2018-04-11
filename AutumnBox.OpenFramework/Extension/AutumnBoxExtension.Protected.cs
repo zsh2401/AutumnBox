@@ -123,5 +123,10 @@ namespace AutumnBox.OpenFramework.Extension
         /// </summary>
         /// <param name="args"></param>
         public virtual void OnDestory(DestoryArgs args) { }
+        /// <summary>
+        /// 当用户请求清理时调用
+        /// </summary>
+        /// <param name="args"></param>
+        public virtual void OnClean(CleanArgs args) { }
     }
 }
