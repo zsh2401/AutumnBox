@@ -30,8 +30,9 @@ namespace AutumnBox.OpenFramework.Extension
                     {
                         sb.AppendLine($"{OpenApi.Gui.GetPublicResouce(this, "lbContactEmail")}:\t{ContactMail}");
                     }
-                    sb.Append($"{OpenApi.Gui.GetPublicResouce(this, "lbMinSdk")}:\t{MinSdk?.ToString() ?? "Null"}");
-                    sb.Append($"\t{OpenApi.Gui.GetPublicResouce(this, "lbTargetSdk")}:\t{TargetSdk?.ToString() ?? "Null"}");
+                    var lbUnspecified = OpenApi.Gui.GetPublicResouce<string>(this,"lbUnspecified");
+                    sb.Append($"{OpenApi.Gui.GetPublicResouce(this, "lbMinSdk")}:\t{MinSdk?.ToString() ?? lbUnspecified}");
+                    sb.Append($"\t{OpenApi.Gui.GetPublicResouce(this, "lbTargetSdk")}:\t{TargetSdk?.ToString() ?? lbUnspecified}");
                     sb.AppendLine(); sb.AppendLine();
                     sb.AppendLine($"{OpenApi.Gui.GetPublicResouce(this, "lbDescription")}:");
                     sb.AppendLine($"{Description}");
