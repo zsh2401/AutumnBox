@@ -66,6 +66,7 @@
     <Compile Include="Extension\AutumnBoxExtension.Protected.cs" />
     <Compile Include="BuildInfo.cs" />
     <Compile Include="Internal\FrameworkLoader.cs" />
+    <Compile Include="Open\Extractor.cs" />
     <Compile Include="Open\Md5.cs" />
     <Compile Include="Open\Comp.cs" />
     <Compile Include="Open\OS.cs" />
