@@ -37,5 +37,9 @@ namespace AutumnBox.ExampleExtensions
         {
             base.OnDestory(args);
         }
+        public override void OnClean(CleanArgs args)
+        {
+            base.OnClean(args);
+        }
     }
 }
