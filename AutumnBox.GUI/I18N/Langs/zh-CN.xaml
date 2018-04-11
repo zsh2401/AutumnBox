@@ -265,6 +265,7 @@
     <s:String x:Key="TipForInputDpi">请输入您想要改动的DPI数值-></s:String>
     <s:String x:Key="Bridge">免ROOT激活软件核心功能(向下滑~)</s:String>
     <s:String x:Key="Port">端口</s:String>
+    <s:String x:Key="lbUnspecified">未指定</s:String>
     <s:String x:Key="lbUserName">用户名</s:String>
     <s:String x:Key="lbUserId">UID</s:String>
     <s:String x:Key="lbName">名称</s:String>
