@@ -1,20 +1,20 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:s="clr-namespace:System;assembly=mscorlib">
-    <s:String x:Key="urlOfficialWebsite">http://atmb.top/</s:String>
-    <s:String x:Key="urlDonateList">http://atmb.top/donate/</s:String>
-    <s:String x:Key="urlOpensource">http://atmb.top/open_source/</s:String>
-    <s:String x:Key="urlJoinQQGroup">http://atmb.top/help/join_qq_group/</s:String>
+    <s:String x:Key="urlOfficialWebsite">http://www.atmb.top/</s:String>
+    <s:String x:Key="urlDonateList">http://www.atmb.top/donate/</s:String>
+    <s:String x:Key="urlOpensource">http://www.atmb.top/open_source/</s:String>
+    <s:String x:Key="urlJoinQQGroup">http://www.atmb.top/help/join_qq_group/</s:String>
     <s:String x:Key="urlDownloadMiFlashPackage">http://www.miui.com/shuaji-393.html</s:String>
-    <s:String x:Key="urlDownloadExtensions">http://atmb.top/extension/</s:String>
+    <s:String x:Key="urlDownloadExtensions">http://www.atmb.top/extension/</s:String>
+
+
+    <s:String x:Key="urlApiMotd">http://www.atmb.top/api/motd/</s:String>
+    <s:String x:Key="urlApiPotd">http://www.atmb.top/api/potd/</s:String>
+    <s:String x:Key="urlApiUpdate">http://www.atmb.top/api/update/</s:String>
+    <s:String x:Key="urlApiStatistics">http://www.atmb.top/api/statistics/</s:String>
     
-    
-    <s:String x:Key="urlApiMotd">http://atmb.top/api/motd/</s:String>
-    <s:String x:Key="urlApiPotd">http://atmb.top/api/potd/</s:String>
-    <s:String x:Key="urlApiUpdate">http://atmb.top/api/update/</s:String>
-    <s:String x:Key="urlApiStatistics">http://atmb.top/api/statistics/</s:String>
-    
-    <s:String x:Key="urlHelp">http://atmb.top/help/more/</s:String>
-    <s:String x:Key="urlHelpOfLinkDevice">http://atmb.top/help/link_device/</s:String>
-    <s:String x:Key="urlHelpOfInstallExtension">http://atmb.top/help/install_extension/</s:String>
+    <s:String x:Key="urlHelp">http://www.atmb.top/help/more/</s:String>
+    <s:String x:Key="urlHelpOfLinkDevice">http://www.atmb.top/help/link_device/</s:String>
+    <s:String x:Key="urlHelpOfInstallExtension">http://www.atmb.top/help/install_extension/</s:String>
 </ResourceDictionary>
