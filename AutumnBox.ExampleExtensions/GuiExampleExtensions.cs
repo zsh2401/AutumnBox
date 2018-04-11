@@ -31,19 +31,7 @@ namespace AutumnBox.ExampleExtensions
         }
         public override void OnStartCommand(StartArgs args)
         {
-            Window expWin = null;
-            RunOnUIThread(() =>
-            {
-                expWin = new ExampleWindow()
-                {
-                    Owner = OpenApi.Gui.GetMainWindow(this),
-                    WindowStartupLocation = WindowStartupLocation.CenterOwner
-                };
-                expWin.Show();
-            });
-            bool isClosed = false;
-            expWin.Closed += (s, e) => isClosed = true;
-            while (!isClosed) ;
+            new Extractor(this).ExtractToTmp("Windows.x.txt", "Test/x.txt");
         }
         public override void OnDestory(DestoryArgs args)
         {
