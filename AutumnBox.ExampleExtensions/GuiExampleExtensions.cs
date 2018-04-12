@@ -24,14 +24,21 @@ namespace AutumnBox.ExampleExtensions
         public override MailAddress ContactMail => new MailAddress("zsh2401@163.com");
         public override DeviceState RequiredDeviceState => DeviceState.None;
         public override int? MinSdk => 5;
-        public override int? TargetSdk => 5;
+        public override int? TargetSdk => 6;
         public override bool InitAndCheck(InitArgs args)
         {
             return base.InitAndCheck(args);
         }
         public override void OnStartCommand(StartArgs args)
         {
-            new Extractor(this).ExtractToTmp("Windows.x.txt", "Test/x.txt");
+            Comp.IsolatedInvoke(BuildInfo.SDK_VERSION >= 5, () =>
+             {
+                 new Extractor(this).ExtractToTmp("Windows.x.txt", "Test/x.txt");
+             });
+            RunOnUIThread(() =>
+            {
+                new ExampleWindow().ShowDialog();
+            });
         }
         public override void OnDestory(DestoryArgs args)
         {
