@@ -30,7 +30,7 @@ namespace AutumnBox.OpenFramework.Extension
                     {
                         sb.AppendLine($"{OpenApi.Gui.GetPublicResouce(this, "lbContactEmail")}:\t{ContactMail}");
                     }
-                    var lbUnspecified = OpenApi.Gui.GetPublicResouce<string>(this,"lbUnspecified");
+                    var lbUnspecified = OpenApi.Gui.GetPublicResouce<string>(this, "lbUnspecified");
                     sb.Append($"{OpenApi.Gui.GetPublicResouce(this, "lbMinSdk")}:\t{MinSdk?.ToString() ?? lbUnspecified}");
                     sb.Append($"\t{OpenApi.Gui.GetPublicResouce(this, "lbTargetSdk")}:\t{TargetSdk?.ToString() ?? lbUnspecified}");
                     sb.AppendLine(); sb.AppendLine();
@@ -128,7 +128,8 @@ namespace AutumnBox.OpenFramework.Extension
         /// 清理数据
         /// </summary>
         /// <param name="args"></param>
-        public void Clean(CleanArgs args) {
+        public void Clean(CleanArgs args)
+        {
             OnClean(args);
         }
         /// <summary>
