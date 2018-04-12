@@ -54,5 +54,10 @@ namespace AutumnBox.OpenFramework.Extension
         /// </summary>
         /// <param name="args"></param>
         void Destory(DestoryArgs args);
+        /// <summary>
+        /// 清理缓存与数据
+        /// </summary>
+        /// <param name="args"></param>
+        void Clean(CleanArgs args);
     }
 }

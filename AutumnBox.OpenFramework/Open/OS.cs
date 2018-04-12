@@ -28,6 +28,7 @@ namespace AutumnBox.OpenFramework.Open
         {
             return InstallUsePnPUtil(infFilePath) | InstallUsePnPUtil_SysNative(infFilePath);
         }
+
         #region PRIVATE
         private class OSLogSender : Context { }
         private static readonly OSLogSender ctx = new OSLogSender();
