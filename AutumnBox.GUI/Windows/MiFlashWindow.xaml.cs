@@ -191,9 +191,9 @@ namespace AutumnBox.GUI.Windows
         {
             public static readonly Color Flashing = Colors.Orange;
             public static readonly Color Fail = Colors.Red;
-            public static readonly Color Ready = Colors.GreenYellow;
+            public static readonly Color Ready = Colors.YellowGreen;
             public static readonly Color Success = Colors.Green;
-            public static readonly Color Plz = Colors.AliceBlue;
+            public static readonly Color Plz = Colors.MediumPurple;
         }
         private enum State
         {
