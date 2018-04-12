@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows;
-using AutumnBox.OpenFramework.Open;
 using System.Windows.Controls;
 using AutumnBox.OpenFramework.Internal;
-using LeanCloud;
+//using LeanCloud;
 using System.Net;
 
 namespace AutumnBox.GUI.Windows
@@ -19,7 +16,7 @@ namespace AutumnBox.GUI.Windows
         public DownTagsWindow()
         {
             //LeanCloud配置
-            AVClient.Initialize("mXkNor8O49P9WEbfHe5BV4xL-gzGzoHsz", "Rl8bw4b1NyaqninEhiO7kp2L");
+            //AVClient.Initialize("mXkNor8O49P9WEbfHe5BV4xL-gzGzoHsz", "Rl8bw4b1NyaqninEhiO7kp2L");
             InitializeComponent();
             GetAllDataAsync();
         }
@@ -32,40 +29,40 @@ namespace AutumnBox.GUI.Windows
         //这里先暂时这样写吧，紧耦合，等有时间再来解耦改变量什么的
         public async Task GetAllDataAsync()
         {
-            var query = new AVQuery<AVObject>("AutumnBoxTags");
-            var data = new List<AVObject>();
-            await query.FindAsync().ContinueWith(t =>
-            {
-                data = t.Result.ToList();
-            });
+            //var query = new AVQuery<AVObject>("AutumnBoxTags");
+            //var data = new List<AVObject>();
+            //await query.FindAsync().ContinueWith(t =>
+            //{
+            //    data = t.Result.ToList();
+            //});
 
-            var a = data;
-            var b = new List<TagsData>();
+            //var a = data;
+            //var b = new List<TagsData>();
 
-            foreach (var d in a)
-            {
-                var c = new TagsData
-                {
-                    tagName = d.Get<string>("tagName"),
-                    author = d.Get<string>("author"),
-                    introduce = d.Get<string>("introduce"),
-                    lastVersion = d.Get<string>("lastVersion"),
-                    url = d.Get<string>("url") + "\'" + d.Get<string>("dllName")
-                };
+            //foreach (var d in a)
+            //{
+            //    var c = new TagsData
+            //    {
+            //        tagName = d.Get<string>("tagName"),
+            //        author = d.Get<string>("author"),
+            //        introduce = d.Get<string>("introduce"),
+            //        lastVersion = d.Get<string>("lastVersion"),
+            //        url = d.Get<string>("url") + "\'" + d.Get<string>("dllName")
+            //    };
 
-                try
-                {
-                    c.md5 = d.Get<string>("md5");
-                }
-                catch (Exception)
-                {
-                    c.md5 = "";
-                }
+            //    try
+            //    {
+            //        c.md5 = d.Get<string>("md5");
+            //    }
+            //    catch (Exception)
+            //    {
+            //        c.md5 = "";
+            //    }
                 
-                b.Add(c);
-            }
+            //    b.Add(c);
+            //}
 
-            ListBox(b);
+            //ListBox(b);
         }
 
 

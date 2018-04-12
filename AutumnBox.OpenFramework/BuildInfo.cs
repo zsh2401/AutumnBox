@@ -3,6 +3,9 @@
 ** date:  2018/2/25 0:53:59 (UTC +8:00)
 ** desc： ...
 *************************************************/
+using System.Diagnostics;
+using System.Reflection;
+
 namespace AutumnBox.OpenFramework
 {
     /// <summary>
@@ -13,7 +16,15 @@ namespace AutumnBox.OpenFramework
         /// <summary>
         /// SDK版本,不设计为Const是为了防止编译器优化
         /// </summary>
-        public static readonly int SDK_VERSION = 5;
+        public static int SDK_VERSION
+        {
+            get
+            {
+                Assembly asm = Assembly.GetExecutingAssembly();
+                FileVersionInfo info = FileVersionInfo.GetVersionInfo(asm.Location);
+                return info.FileMajorPart;
+            }
+        }
         /// <summary>
         /// AutumnBox.GUI的程序集名称
         /// </summary>
