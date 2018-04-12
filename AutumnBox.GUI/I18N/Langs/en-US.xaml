@@ -267,6 +267,7 @@
     <s:String x:Key="Port">Port</s:String>
     <s:String x:Key="lbUnspecified">Unspecified</s:String>
     <s:String x:Key="lbUserName">Name</s:String>
+    <s:String x:Key="lbApiLevel">API Level: {0}</s:String>
     <s:String x:Key="lbUserId">UID</s:String>
     <s:String x:Key="lbName">Extension Name</s:String>
     <s:String x:Key="lbAuth">Auth</s:String>

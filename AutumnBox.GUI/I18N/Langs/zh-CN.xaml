@@ -267,6 +267,7 @@
     <s:String x:Key="Port">端口</s:String>
     <s:String x:Key="lbUnspecified">未指定</s:String>
     <s:String x:Key="lbUserName">用户名</s:String>
+     <s:String x:Key="lbApiLevel">API级别: {0}</s:String>
     <s:String x:Key="lbUserId">UID</s:String>
     <s:String x:Key="lbName">名称</s:String>
      <s:String x:Key="lbAuth">所有者</s:String>

@@ -29,8 +29,12 @@ namespace AutumnBox.GUI.UI.FuncPanels
             InitializeComponent();
             GridInfo.Visibility = Visibility.Collapsed;
             TxtNothing.Visibility = Visibility.Visible;
-            TBSdk.Text = "SDK Version: " + OpenFramework.BuildInfo.SDK_VERSION.ToString();
+            TBSdk.Text = string.Format(TBSdk.Text, OpenFramework.BuildInfo.SDK_VERSION);
             this.Loaded += ThridPartyFunctionPanel_Loaded;
+            LanguageHelper.LanguageChanged += (s, e) =>
+            {
+                TBSdk.Text = string.Format(App.Current.Resources["lbApiLevel"].ToString(), OpenFramework.BuildInfo.SDK_VERSION);
+            };
         }
 
         private void ThridPartyFunctionPanel_Loaded(object sender, RoutedEventArgs e)
