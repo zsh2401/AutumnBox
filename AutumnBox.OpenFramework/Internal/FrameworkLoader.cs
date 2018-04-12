@@ -13,20 +13,20 @@ namespace AutumnBox.OpenFramework.Internal
     public static class FrameworkLoader
     {
         /// <summary>
-        /// 设置Log api
+        /// 初始化调试API(权限要求:中)
         /// </summary>
-        /// <param name="ctx"></param>
-        /// <param name="api"></param>
+        /// <param name="ctx">设置者</param>
+        /// <param name="apiImpl">API实现</param>
         public static void SetLogApi(Context ctx, ILogApi apiImpl)
         {
             ctx.PermissionCheck(ContextPermissionLevel.Mid);
             OpenApi.Log = apiImpl;
         }
         /// <summary>
-        /// 设置GuiApi
+        /// 初始化图形API(权限要求:中)
         /// </summary>
-        /// <param name="ctx"></param>
-        /// <param name="api"></param>
+        /// <param name="ctx">设置者</param>
+        /// <param name="apiImpl">API实现</param>
         public static void SetGuiApi(Context ctx, IGuiApi apiImpl)
         {
             ctx.PermissionCheck(ContextPermissionLevel.Mid);

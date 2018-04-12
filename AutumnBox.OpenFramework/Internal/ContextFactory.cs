@@ -5,9 +5,12 @@
     /// </summary>
     public static class ContextFactory
     {
+        /// <summary>
+        /// 最高权限上下文
+        /// </summary>
         private class HighPermissionContext : Context
         {
-            public override string Tag => base.Tag;
+            public override string Tag => SourceContext.Tag;
             public Context SourceContext { get; private set; }
             public HighPermissionContext(Context lowPermissionContext)
             {
