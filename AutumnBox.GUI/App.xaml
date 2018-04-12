@@ -7,7 +7,7 @@
             <FontFamily x:Key="AutumnBox.Font">Microsoft YaHei Light</FontFamily>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/I18N/Langs/zh-CN.xaml"/>
-                <ResourceDictionary Source="/Resources/Themes/SpringTheme.xaml"/>
+                <ResourceDictionary Source="/Resources/Themes/PurpleTheme.xaml"/>
                 <ResourceDictionary Source="/Resources/Urls.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
