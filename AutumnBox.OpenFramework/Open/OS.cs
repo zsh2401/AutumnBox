@@ -21,9 +21,10 @@ namespace AutumnBox.OpenFramework.Open
         /// <summary>
         /// 安装驱动
         /// </summary>
-        /// <param name="infFilePath"></param>
+        /// <param name="ctx">调用者</param>
+        /// <param name="infFilePath">驱动inf路径</param>
         /// <returns></returns>
-        public static bool InstallDriver(string infFilePath)
+        public static bool InstallDriver(Context ctx, string infFilePath)
         {
             return InstallUsePnPUtil(infFilePath) | InstallUsePnPUtil_SysNative(infFilePath);
         }

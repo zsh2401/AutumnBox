@@ -19,7 +19,7 @@
         </Grid>
         <cstm:HyperLink HorizontalContentAlignment="Center" Text="{DynamicResource hyperLinkInstallModule}" Hyperlink="{DynamicResource urlHelpOfInstallExtension}" FontSize="12" Margin="10,36,623,300"/>
         <cstm:HyperLink HorizontalContentAlignment="Center" Text="{DynamicResource hyperlinkExtensionsCenter}" Hyperlink="{DynamicResource urlDownloadExtensions}" FontSize="12" Margin="10,61,623,275"/>
-        <TextBlock FontSize="12" Style="{DynamicResource AtmbxTextBlockStyle}" x:Name="TBSdk" HorizontalAlignment="Left" Margin="10,0,0,50" TextWrapping="Wrap" Text="SDK Version: *" VerticalAlignment="Bottom" Width="265"/>
+        <TextBlock FontSize="12" Style="{DynamicResource AtmbxTextBlockStyle}" x:Name="TBSdk" HorizontalAlignment="Left" Margin="10,0,0,50" TextWrapping="Wrap" Text="{DynamicResource lbApiLevel}" VerticalAlignment="Bottom" Width="265"/>
         <TextBlock FontSize="12" Style="{DynamicResource AtmbxTextBlockStyle}"  HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" Text="{DynamicResource AdviseAboutExtensions}" Width="265" Height="45" VerticalAlignment="Bottom"/>
     </Grid>
 </UserControl>
