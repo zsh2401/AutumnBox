@@ -11,9 +11,19 @@ namespace AutumnBox.OpenFramework.Extension
     /// 初始化时的参数
     /// </summary>
     public class InitArgs { }
+    /// <summary>
+    /// 运行检测参数
+    /// </summary>
     public class RunCheckArgs
     {
+        /// <summary>
+        /// 设备信息
+        /// </summary>
         public DeviceBasicInfo DeviceInfo { get; private set; }
+        /// <summary>
+        /// 构造
+        /// </summary>
+        /// <param name="devInfo"></param>
         public RunCheckArgs(DeviceBasicInfo devInfo)
         {
             this.DeviceInfo = devInfo;

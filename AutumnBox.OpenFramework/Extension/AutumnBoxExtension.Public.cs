@@ -125,6 +125,13 @@ namespace AutumnBox.OpenFramework.Extension
             }
         }
         /// <summary>
+        /// 清理数据
+        /// </summary>
+        /// <param name="args"></param>
+        public void Clean(CleanArgs args) {
+            OnClean(args);
+        }
+        /// <summary>
         /// 析构
         /// </summary>
         public void Dispose()
