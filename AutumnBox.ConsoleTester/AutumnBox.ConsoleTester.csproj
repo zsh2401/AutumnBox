@@ -49,6 +49,9 @@
     <Reference Include="BaseTools">
       <HintPath>D:\MiFlash\BaseTools.dll</HintPath>
     </Reference>
+    <Reference Include="CSScriptLibrary, Version=3.28.2.0, Culture=neutral, PublicKeyToken=70fcc3d18c749033, processorArchitecture=MSIL">
+      <HintPath>..\packages\CS-Script.lib.3.28.2.0\lib\CSScriptLibrary.dll</HintPath>
+    </Reference>
     <Reference Include="FISTools">
       <HintPath>D:\MiFlash\FISTools.dll</HintPath>
     </Reference>
@@ -83,6 +86,9 @@
     <Compile Include="NativeMethod.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="Test.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

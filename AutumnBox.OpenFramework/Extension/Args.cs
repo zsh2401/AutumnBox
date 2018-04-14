@@ -46,7 +46,9 @@ namespace AutumnBox.OpenFramework.Extension
     /// <summary>
     /// OnDestory()参数
     /// </summary>
-    public class DestoryArgs { }
+    public class DestoryArgs {
+        public bool IsReload { get; internal set; } = false;
+    }
     /// <summary>
     /// OnClean()参数
     /// </summary>
