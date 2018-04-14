@@ -63,7 +63,6 @@
     <Compile Include="Context.cs" />
     <Compile Include="ContextPermissionLevel.cs" />
     <Compile Include="Internal\ExtensionManagerInner.cs" />
-    <Compile Include="Script\ABEScript.cs" />
     <Compile Include="Extension\IAutumnBoxExtension.cs" />
     <Compile Include="Internal\AccessDeniedException.cs" />
     <Compile Include="Internal\ContextFactory.cs" />
@@ -71,7 +70,6 @@
     <Compile Include="Extension\AutumnBoxExtension.Protected.cs" />
     <Compile Include="BuildInfo.cs" />
     <Compile Include="Internal\FrameworkLoader.cs" />
-    <Compile Include="Internal\ScriptLoader.cs" />
     <Compile Include="Open\Extractor.cs" />
     <Compile Include="Open\Md5.cs" />
     <Compile Include="Open\Comp.cs" />
@@ -83,11 +81,8 @@
     <Compile Include="Open\OpenApi.cs" />
     <Compile Include="Open\UserDeniedException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Script\ABEScriptAttributes.cs" />
-    <Compile Include="Script\IExtensionScript.cs" />
+    <Compile Include="Script\ABEScript.cs" />
     <Compile Include="Script\ScriptInfo.cs" />
-    <Compile Include="Script\ScriptManager.cs" />
-    <Compile Include="Script\ScriptReloadArgs.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AutumnBox.Basic\AutumnBox.Basic.csproj">
