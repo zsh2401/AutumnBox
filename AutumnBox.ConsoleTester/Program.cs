@@ -1,7 +1,12 @@
 ﻿using AutumnBox.Basic.Device;
 using AutumnBox.Basic.Flows;
+using AutumnBox.OpenFramework.Extension;
+using AutumnBox.OpenFramework.Internal;
+using CSScriptLibrary;
 using System;
 using System.Diagnostics;
+using System.IO;
+using System.Reflection;
 using System.Xml;
 namespace AutumnBox.ConsoleTester
 {
@@ -24,12 +29,13 @@ namespace AutumnBox.ConsoleTester
         };
         unsafe static int Main(string[] cmdargs)
         {
-            XmlDocument doc = new XmlDocument();
-            doc.Load(@"C:\Users\zsh24\Desktop\TEST.xml");
-            var root = doc.SelectSingleNode("ExtensionInfo");
-            var minSdk = ((XmlElement)root.SelectSingleNode("MinSdk")).GetAttribute("Value");
-            Console.WriteLine(minSdk);
+            ScriptLoader.Test();
+            Console.ReadKey();
             return 0;
         }
+    }
+    public interface IT
+    {
+        void Test();
     }
 }
