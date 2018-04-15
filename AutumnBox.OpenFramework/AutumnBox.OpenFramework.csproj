@@ -87,6 +87,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Script\ABEScript.cs" />
     <Compile Include="Internal\ScriptsManager.cs" />
+    <Compile Include="Script\ScriptDestoryArgs.cs" />
+    <Compile Include="Script\ScriptInitArgs.cs" />
+    <Compile Include="Script\ScriptLoader.cs" />
     <Compile Include="Script\ScriptStopArgs.cs" />
   </ItemGroup>
   <ItemGroup>

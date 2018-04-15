@@ -6,13 +6,15 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.OpenFramework.Script
 {
-    public interface IExtensionScript:IExtension
+    /// <summary>
+    /// 标准拓展脚本接口
+    /// </summary>
+    public interface IExtensionScript:IExtension,IDisposable
     {
         string Name { get; }
         string Desc { get; }
         string Auth { get; }
         Version Version { get; }
-        int UpdateId { get; }
         string ContactInfo { get; }
     }
 }

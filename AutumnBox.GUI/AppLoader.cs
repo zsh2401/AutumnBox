@@ -80,7 +80,7 @@ namespace AutumnBox.GUI
             loadingWindowApi.SetProgress(60);
             loadingWindowApi.SetTip(App.Current.Resources["ldmsgLoadingExtensions"].ToString());
             OpenFramewokManager.LoadApi();
-            ScriptsManager.Reload(this);
+            ScriptsManager.ReloadAll(this);
             ExtensionManager.LoadAllExtension(this);
             //启动设备拔插监听器
             loadingWindowApi.SetProgress(80);

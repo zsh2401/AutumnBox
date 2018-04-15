@@ -22,7 +22,7 @@ namespace AutumnBox.OpenFramework.Script
     /// <summary>
     /// Script管理器
     /// </summary>
-    public sealed class ABEScript : Context, IExtensionScript
+    public sealed class ABEScript : Context, IExtensionScript, IDisposable
     {
         static ABEScript()
         {
@@ -45,7 +45,7 @@ namespace AutumnBox.OpenFramework.Script
                 }
                 catch (Exception ex)
                 {
-                    OpenApi.Log.Warn(this,"Get name failed",ex);
+                    OpenApi.Log.Warn(this, "Get name failed", ex);
                     return _fileName;
                 }
             }
@@ -65,24 +65,6 @@ namespace AutumnBox.OpenFramework.Script
                 {
                     OpenApi.Log.Warn(this, "Get desc failed", ex);
                     return "";
-                }
-            }
-        }
-        /// <summary>
-        /// 用于更新检测的ID号
-        /// </summary>
-        public int UpdateId
-        {
-            get
-            {
-                try
-                {
-                    return (int)_script.GetStaticMethodWithArgs("*.__UpdateId")();
-                }
-                catch (Exception ex)
-                {
-                    OpenApi.Log.Warn(this, "Get Update id failed", ex);
-                    return -1;
                 }
             }
         }
@@ -193,8 +175,18 @@ namespace AutumnBox.OpenFramework.Script
             context.PermissionCheck();
 #endif
             var src = File.ReadAllText(path);
+            OpenApi.Log.Debug(this,src);
             _script = CSScript.LoadMethod(src);
             var mainMethod = InnerScript.GetStaticMethodWithArgs("*.Main", typeof(ScriptArgs));
+            try
+            {
+                var initMethod = InnerScript.GetStaticMethodWithArgs("*.InitAndCheck", typeof(ScriptInitArgs));
+                if ((bool)initMethod(new ScriptInitArgs()) == false)
+                {
+                    throw new Exception("Script cannot init");
+                }
+            }
+            catch { }
             _path = path;
             MainMethod = mainMethod;
             _fileName = Path.GetFileName(_path);
@@ -251,11 +243,26 @@ namespace AutumnBox.OpenFramework.Script
                 return ((DeviceState)_script.GetStaticMethodWithArgs("*.__ReqState")())
                     .HasFlag(args.DeviceInfo.State);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 OpenApi.Log.Warn(this, "Get required device state Failed!", ex);
                 return true;
             }
+        }
+        /// <summary>
+        /// 析构
+        /// </summary>
+        public void Dispose()
+        {
+            try
+            {
+                _script.GetStaticMethodWithArgs("*.SDestory", typeof(ScriptDestoryArgs))(new ScriptDestoryArgs());
+            }
+            catch (Exception ex)
+            {
+                OpenApi.Log.Warn(this, "Script dispose failed", ex);
+            }
+
         }
     }
 }
