@@ -20,20 +20,6 @@ using System.Threading.Tasks;
 namespace AutumnBox.OpenFramework.Script
 {
     /// <summary>
-    /// 脚本运行参数
-    /// </summary>
-    public class ScriptArgs
-    {
-        /// <summary>
-        /// 目标设备
-        /// </summary>
-        public DeviceBasicInfo DeviceInfo { get; set; }
-        /// <summary>
-        /// 上下文
-        /// </summary>
-        public Context Context { get; internal set; }
-    }
-    /// <summary>
     /// Script管理器
     /// </summary>
     public sealed class ABEScript : Context, IExtensionScript
@@ -55,10 +41,11 @@ namespace AutumnBox.OpenFramework.Script
             {
                 try
                 {
-                    return (string)_script.GetStaticMethod("__Name")();
+                    return (string)_script.GetStaticMethod("*.__Name")();
                 }
                 catch (Exception ex)
                 {
+                    OpenApi.Log.Warn(this,"Get name failed",ex);
                     return _fileName;
                 }
             }
@@ -76,6 +63,7 @@ namespace AutumnBox.OpenFramework.Script
                 }
                 catch (Exception ex)
                 {
+                    OpenApi.Log.Warn(this, "Get desc failed", ex);
                     return "";
                 }
             }
@@ -195,10 +183,6 @@ namespace AutumnBox.OpenFramework.Script
         /// </summary>
         private Assembly _script;
         /// <summary>
-        /// 结束源
-        /// </summary>
-        private readonly CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
-        /// <summary>
         /// 构建
         /// </summary>
         /// <param name="context">上下文,要求中等权限</param>
@@ -216,45 +200,28 @@ namespace AutumnBox.OpenFramework.Script
             _fileName = Path.GetFileName(_path);
         }
         /// <summary>
-        /// 运行
-        /// </summary>
-        /// <param name="args"></param>
-        /// <param name="finishedCallback">执行完毕后的回调函数</param>
-        public void RunAsync(ExtensionStartArgs args, Action<bool> finishedCallback = null)
-        {
-            Task.Run(() => {
-                Run(args);
-                finishedCallback?.Invoke(lastResult);
-            });
-        }
-        private bool lastResult = true;
-        /// <summary>
         /// 同步运行
         /// </summary>
         /// <param name="args"></param>
-        public void Run(ExtensionStartArgs args)
+        public bool Run(ExtensionStartArgs args)
         {
-            var task = new Task(() =>
+            try
             {
-                try
+                ScriptArgs sargs = new ScriptArgs()
                 {
-                    ScriptArgs sargs = new ScriptArgs()
-                    {
-                        Context = this,
-                        DeviceInfo = args.DeviceInfo
-                    };
-                    MainMethod(sargs);
-                    lastResult = true;
-                }
-                catch (Exception ex)
-                {
-                    OpenApi.Log.Warn(this, "发生严重错误", ex);
-                    var wasFailedMsg = $"{Name} {OpenApi.Gui.GetPublicResouce<String>(this, "msgExtensionWasFailed")}";
-                    OpenApi.Gui.ShowMessageBox(this, Name, wasFailedMsg);
-                    lastResult = false;
-                }
-            }, cancellationTokenSource.Token);
-            task.RunSynchronously();
+                    Context = this,
+                    DeviceInfo = args.DeviceInfo
+                };
+                MainMethod(sargs);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                OpenApi.Log.Warn(this, "发生严重错误", ex);
+                var wasFailedMsg = $"{Name} {OpenApi.Gui.GetPublicResouce<String>(this, "msgExtensionWasFailed")}";
+                OpenApi.Gui.ShowMessageBox(this, Name, wasFailedMsg);
+                return false;
+            }
         }
         /// <summary>
         /// 停止
@@ -264,13 +231,13 @@ namespace AutumnBox.OpenFramework.Script
         {
             try
             {
-                cancellationTokenSource.Cancel();
+                return (bool)_script.GetStaticMethodWithArgs("*.OnStop", typeof(ScriptStopArgs))(new ScriptStopArgs());
             }
             catch (Exception ex)
             {
-                OpenApi.Log.Warn(this, "Script Cancel Failed!", ex);
+                OpenApi.Log.Warn(this, "Script stop Failed!", ex);
+                return false;
             }
-            return true;
         }
         /// <summary>
         /// 运行前检测
@@ -279,7 +246,16 @@ namespace AutumnBox.OpenFramework.Script
         /// <returns></returns>
         public bool RunCheck(ExtensionRunCheckArgs args)
         {
-            return true;
+            try
+            {
+                return ((DeviceState)_script.GetStaticMethodWithArgs("*.__ReqState")())
+                    .HasFlag(args.DeviceInfo.State);
+            }
+            catch(Exception ex)
+            {
+                OpenApi.Log.Warn(this, "Get required device state Failed!", ex);
+                return true;
+            }
         }
     }
 }

@@ -14,6 +14,5 @@ namespace AutumnBox.OpenFramework.Script
         Version Version { get; }
         int UpdateId { get; }
         string ContactInfo { get; }
-        void RunAsync(ExtensionStartArgs args, Action<bool> finishedCallback=null);
     }
 }

@@ -57,7 +57,7 @@ namespace AutumnBox.OpenFramework
         /// 运行
         /// </summary>
         /// <param name="args"></param>
-        void Run(ExtensionStartArgs args);
+        bool Run(ExtensionStartArgs args);
         /// <summary>
         /// 停止
         /// </summary>
