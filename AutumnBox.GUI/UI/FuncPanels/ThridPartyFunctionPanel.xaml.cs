@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ using AutumnBox.GUI.UI.CstPanels;
 using AutumnBox.GUI.UI.Fp;
 using AutumnBox.GUI.Util;
 using AutumnBox.GUI.Windows;
+using AutumnBox.OpenFramework;
 using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.Internal;
 
@@ -47,7 +49,12 @@ namespace AutumnBox.GUI.UI.FuncPanels
 
         public void Refresh(DeviceBasicInfo deviceSimpleInfo)
         {
-            ListBoxModule.ItemsSource = ExtensionManager.GetExtensions(App.OpenFrameworkContext);
+            var stdExt = ExtensionManager.GetExtensions(App.OpenFrameworkContext);
+            var scripts = ScriptsManager.GetScripts(App.OpenFrameworkContext);
+            var extensions = new List<IExtension>();
+            extensions.AddRange(stdExt);
+            extensions.AddRange(scripts);
+            ListBoxModule.ItemsSource = extensions;
             currentDevice = deviceSimpleInfo;
             ListBoxModule.SelectedIndex = -1;
         }
@@ -69,10 +76,10 @@ namespace AutumnBox.GUI.UI.FuncPanels
             {
                 GridInfo.Visibility = Visibility.Visible;
                 TxtNothing.Visibility = Visibility.Collapsed;
-                var ext = ListBoxModule.SelectedItem as IAutumnBoxExtension;
+                var ext = ListBoxModule.SelectedItem as IExtension;
                 TBName.Text = ext.Name;
                 TBDesc.Text = ext.Infomation;
-                SetBtnRunState(ext.RunCheck(new RunCheckArgs(currentDevice)));
+                SetBtnRunState(ext.RunCheck(new ExtensionRunCheckArgs(currentDevice)));
             }
             else
             {
@@ -86,7 +93,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
         }
 
         private FastPanel panel;
-        private void ShowRunningBox(IAutumnBoxExtension ext)
+        private void ShowRunningBox(IExtension ext)
         {
             panel = new FastPanel(GridContainer, new ExtensionRuningPanel(ext));
             panel.Display();
@@ -99,13 +106,13 @@ namespace AutumnBox.GUI.UI.FuncPanels
 
         private async void BtnRun_Click(object sender, RoutedEventArgs e)
         {
-            var ext = (ListBoxModule.SelectedItem as IAutumnBoxExtension);
+            var ext = (ListBoxModule.SelectedItem as IExtension);
             ShowRunningBox(ext);
             await Task.Run(() =>
             {
-                ext.Run(new StartArgs()
+                ext.Run(new ExtensionStartArgs()
                 {
-                    Device = currentDevice
+                    DeviceInfo = currentDevice
                 });
             });
             CloseRunningBox();

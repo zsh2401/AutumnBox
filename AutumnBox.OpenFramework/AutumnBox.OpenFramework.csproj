@@ -62,6 +62,7 @@
   <ItemGroup>
     <Compile Include="Context.cs" />
     <Compile Include="ContextPermissionLevel.cs" />
+    <Compile Include="IExtension.cs" />
     <Compile Include="Internal\ExtensionManagerInner.cs" />
     <Compile Include="Extension\IAutumnBoxExtension.cs" />
     <Compile Include="Internal\AccessDeniedException.cs" />
@@ -86,7 +87,7 @@
     <Compile Include="Script\ABEScript.cs" />
     <Compile Include="Script\ScriptInfo.cs" />
     <Compile Include="Script\ScriptName.cs" />
-    <Compile Include="Script\ScriptsManager.cs" />
+    <Compile Include="Internal\ScriptsManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AutumnBox.Basic\AutumnBox.Basic.csproj">

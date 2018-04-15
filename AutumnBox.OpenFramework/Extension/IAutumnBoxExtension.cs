@@ -4,7 +4,7 @@ namespace AutumnBox.OpenFramework.Extension
     /// <summary>
     /// 设计中
     /// </summary>
-    public interface IAutumnBoxExtension : IDisposable
+    public interface IAutumnBoxExtension : IDisposable,IExtension
     {
         /// <summary>
         /// 目标SDK
@@ -23,32 +23,11 @@ namespace AutumnBox.OpenFramework.Extension
         /// </summary>
         string Infomation { get; }
         /// <summary>
-        /// Bitmap或BitmapImage图标
-        /// </summary>
-        object Icon { get; }
-        /// <summary>
-        /// 运行监测
-        /// </summary>
-        /// <param name="args"></param>
-        /// <returns></returns>
-        bool RunCheck(RunCheckArgs args);
-        /// <summary>
         /// 初始化
         /// </summary>
         /// <param name="args"></param>
         /// <returns></returns>
         bool Init(InitArgs args);
-        /// <summary>
-        /// 运行
-        /// </summary>
-        /// <param name="args"></param>
-        void Run(StartArgs args);
-        /// <summary>
-        /// 停止
-        /// </summary>
-        /// <param name="args"></param>
-        /// <returns></returns>
-        bool Stop(StopArgs args);
         /// <summary>
         /// 摧毁
         /// </summary>

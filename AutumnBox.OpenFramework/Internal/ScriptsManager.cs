@@ -5,6 +5,7 @@
 *************************************************/
 using AutumnBox.OpenFramework.Internal;
 using AutumnBox.OpenFramework.Open;
+using AutumnBox.OpenFramework.Script;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -12,7 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AutumnBox.OpenFramework.Script
+namespace AutumnBox.OpenFramework.Internal
 {
     /// <summary>
     /// 脚本管理器
