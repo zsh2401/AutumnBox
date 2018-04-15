@@ -81,9 +81,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AccessCheck.cs" />
-    <Compile Include="LogWriterTraceListener.cs" />
-    <Compile Include="NativeMethod.cs" />
+    <Compile Include="Constant.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <None Include="Test.cs">

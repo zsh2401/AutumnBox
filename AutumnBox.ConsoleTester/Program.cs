@@ -1,41 +1,26 @@
 ﻿using AutumnBox.Basic.Device;
-using AutumnBox.Basic.Flows;
-using AutumnBox.OpenFramework.Extension;
-using AutumnBox.OpenFramework.Internal;
+using AutumnBox.OpenFramework;
+using AutumnBox.OpenFramework.Script;
 using CSScriptLibrary;
 using System;
-using System.Diagnostics;
 using System.IO;
 using System.Reflection;
-using System.Xml;
+
 namespace AutumnBox.ConsoleTester
 {
-    class Program
+    class Program : Context
     {
-        public readonly static DeviceBasicInfo mi6 = new DeviceBasicInfo()
+        private void Run()
         {
-            Serial = new DeviceSerialNumber("af0fe186"),
-            State = DeviceState.Poweron,
-        };
-        public readonly static DeviceBasicInfo mi6net = new DeviceBasicInfo()
-        {
-            Serial = new DeviceSerialNumber("192.168.0.12:5555"),
-            State = DeviceState.Poweron,
-        };
-        public readonly static DeviceBasicInfo mi4 = new DeviceBasicInfo()
-        {
-            Serial = new DeviceSerialNumber("9dd1b490"),
-            State = DeviceState.Poweron,
-        };
+            ScriptsManager.Reload(this);
+            var scripts = ScriptsManager.GetScripts(this);
+            Console.WriteLine(scripts.Length);
+        }
         unsafe static int Main(string[] cmdargs)
         {
-            ScriptLoader.Test();
+            new Program().Run();
             Console.ReadKey();
             return 0;
         }
-    }
-    public interface IT
-    {
-        void Test();
     }
 }
