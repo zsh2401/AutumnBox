@@ -1,6 +1,6 @@
 ﻿/*************************************************
 ** auth： zsh2401@163.com
-** date:  2018/4/15 0:22:01 (UTC +8:00)
+** date:  2018/4/15 17:50:19 (UTC +8:00)
 ** desc： ...
 *************************************************/
 using System;
@@ -11,11 +11,12 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.OpenFramework.Script
 {
-    public class ScriptInfo
+    [AttributeUsage(AttributeTargets.Method)]
+    public class ScriptName:Attribute
     {
-        public virtual string Name { get; set; }
-        public virtual string Auth { get; set; }
-        public virtual int UpdateId { get; set; }
-        public virtual bool Updatable { get; set; }
+        public string Name { get;private set; }
+        public ScriptName(string name) {
+            this.Name = name;
+        }
     }
 }
