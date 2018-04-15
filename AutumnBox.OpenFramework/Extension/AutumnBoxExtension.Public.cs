@@ -74,7 +74,7 @@ namespace AutumnBox.OpenFramework.Extension
         /// 运行
         /// </summary>
         /// <param name="args"></param>
-        public void Run(ExtensionStartArgs args)
+        public bool Run(ExtensionStartArgs args)
         {
             try
             {
@@ -83,12 +83,14 @@ namespace AutumnBox.OpenFramework.Extension
                     Device = args.DeviceInfo
                 });
                 OnFinished();
+                return true;
             }
             catch (Exception ex)
             {
                 OpenApi.Log.Warn(this, "发生严重错误", ex);
                 var wasFailedMsg = $"{Name} {OpenApi.Gui.GetPublicResouce<String>(this, "msgExtensionWasFailed")}";
                 OpenApi.Gui.ShowMessageBox(this, Name, wasFailedMsg);
+                return false;
             }
         }
         /// <summary>
