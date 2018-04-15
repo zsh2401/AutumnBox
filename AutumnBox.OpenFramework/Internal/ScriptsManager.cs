@@ -25,20 +25,42 @@ namespace AutumnBox.OpenFramework.Internal
         /// </summary>
         private static ScriptsManagerCore core = new ScriptsManagerCore();
         /// <summary>
-        /// 重载
+        /// 重载所有脚本
         /// </summary>
         /// <param name="ctx"></param>
-        public static void Reload(Context ctx) {
+        public static void ReloadAll(Context ctx)
+        {
+            ctx.PermissionCheck(ContextPermissionLevel.Mid);
+            core.ReloadAll();
+        }
+        /// <summary>
+        /// 卸载脚本
+        /// </summary>
+        /// <param name="ctx"></param>
+        /// <param name="script"></param>
+        public static void Unload(Context ctx, IExtensionScript script)
+        {
             ctx.PermissionCheck(ContextPermissionLevel.Low);
-            core.Reload();
+            core.Unload(script);
+        }
+        /// <summary>
+        /// 加载脚本
+        /// </summary>
+        /// <param name="ctx"></param>
+        /// <param name="path"></param>
+        public static void Load(Context ctx, string path)
+        {
+            ctx.PermissionCheck(ContextPermissionLevel.Low);
+            core.Load(path);
         }
         /// <summary>
         /// 获取所有脚本
         /// </summary>
         /// <param name="ctx"></param>
         /// <returns></returns>
-        public static IExtensionScript[] GetScripts(Context ctx) {
-            ctx.PermissionCheck(ContextPermissionLevel.Low);
+        public static IExtensionScript[] GetScripts(Context ctx)
+        {
+            ctx.PermissionCheck(ContextPermissionLevel.Mid);
             return core.Scripts.ToArray();
         }
         /// <summary>
@@ -60,8 +82,12 @@ namespace AutumnBox.OpenFramework.Internal
             /// <summary>
             /// 重载
             /// </summary>
-            public void Reload()
+            public void ReloadAll()
             {
+                Scripts.ForEach((script) =>
+                {
+                    script.Dispose();
+                });
                 Scripts.Clear();
                 string[] files = Directory.GetFiles(ExtensionManager.ExtensionsPath, "*.cs");
                 foreach (var file in files)
@@ -72,10 +98,27 @@ namespace AutumnBox.OpenFramework.Internal
                     }
                     catch (Exception ex)
                     {
-                        OpenApi.Log.Warn(this, $"加载{file}失败", ex);
+                        OpenApi.Log.Warn(this, $"加载{file}失败\n", ex);
                     }
                 }
 
+            }
+            /// <summary>
+            /// 卸载脚本
+            /// </summary>
+            /// <param name="script"></param>
+            public void Unload(IExtensionScript script)
+            {
+                script.Dispose();
+                core.Scripts.Remove(script);
+            }
+            /// <summary>
+            /// 加载脚本
+            /// </summary>
+            /// <param name="file"></param>
+            public void Load(string file)
+            {
+                core.Scripts.Add(new ABEScript(this, file));
             }
         }
     }
