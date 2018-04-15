@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.OpenFramework.Script
 {
-    public interface IExtensionScript
+    public interface IExtensionScript:IExtension
     {
         string Name { get; }
         string Desc { get; }
+        string Auth { get; }
         Version Version { get; }
         int UpdateId { get; }
         string ContactInfo { get; }
-        bool Run(ScriptArgs args);
-        void RunAsync(ScriptArgs args, Action<bool> finishedCallback=null);
+        void RunAsync(ExtensionStartArgs args, Action<bool> finishedCallback=null);
     }
 }

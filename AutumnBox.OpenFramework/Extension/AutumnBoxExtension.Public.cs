@@ -11,12 +11,8 @@ namespace AutumnBox.OpenFramework.Extension
     public partial class AutumnBoxExtension : Context, IAutumnBoxExtension
     {
         /// <summary>
-        /// 图标,暂未实现
-        /// </summary>
-        public object Icon => null;
-        /// <summary>
         /// 信息
-        /// </summary>
+        /// </summary> 
         public string Infomation
         {
             get
@@ -70,7 +66,7 @@ namespace AutumnBox.OpenFramework.Extension
         /// </summary>
         /// <param name="args"></param>
         /// <returns></returns>
-        public bool RunCheck(RunCheckArgs args)
+        public bool RunCheck(ExtensionRunCheckArgs args)
         {
             return RequiredDeviceState.HasFlag(args.DeviceInfo.State);
         }
@@ -78,11 +74,14 @@ namespace AutumnBox.OpenFramework.Extension
         /// 运行
         /// </summary>
         /// <param name="args"></param>
-        public void Run(StartArgs args)
+        public void Run(ExtensionStartArgs args)
         {
             try
             {
-                OnStartCommand(args);
+                OnStartCommand(new StartArgs()
+                {
+                    Device = args.DeviceInfo
+                });
                 OnFinished();
             }
             catch (Exception ex)
@@ -97,11 +96,11 @@ namespace AutumnBox.OpenFramework.Extension
         /// </summary>
         /// <param name="args"></param>
         /// <returns></returns>
-        public bool Stop(StopArgs args)
+        public bool Stop(ExtensionStopArgs args)
         {
             try
             {
-                return OnStopCommand(args);
+                return OnStopCommand(new StopArgs());
             }
             catch (Exception ex)
             {

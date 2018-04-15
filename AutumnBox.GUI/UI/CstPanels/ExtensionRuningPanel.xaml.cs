@@ -1,4 +1,5 @@
 ﻿using AutumnBox.GUI.UI.Fp;
+using AutumnBox.OpenFramework;
 using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.Internal;
 using System;
@@ -26,13 +27,13 @@ namespace AutumnBox.GUI.UI.CstPanels
         public override Brush PanelBackground => (Brush)App.Current.Resources["ExtRunningPanelBrushKey"];
         public override Brush BtnCloseForeground => (Brush)App.Current.Resources["ForegroundBrushKey"];
         public override bool NeedShowBtnClose => false;
-        public ExtensionRuningPanel(IAutumnBoxExtension ext)
+        public ExtensionRuningPanel(IExtension ext)
         {
             InitializeComponent();
             TBMsg.Text = $"{ext.Name} {App.Current.Resources["msgIsRunning"]}";
             BtnStop.Click += (s, e) =>
             {
-                var stopResult = ext.Stop(new StopArgs());
+                var stopResult = ext.Stop(new ExtensionStopArgs());
                 if (stopResult == true)
                 {
                     Finish();

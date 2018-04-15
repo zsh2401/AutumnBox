@@ -36,13 +36,12 @@ namespace AutumnBox.OpenFramework.Script
     /// <summary>
     /// Script管理器
     /// </summary>
-    public sealed class ABEScript : Context,IExtensionScript
+    public sealed class ABEScript : Context, IExtensionScript
     {
         static ABEScript()
         {
             CSScript.EvaluatorConfig.Engine = EvaluatorEngine.CodeDom;
         }
-
         /// <summary>
         /// 标签
         /// </summary>
@@ -135,6 +134,51 @@ namespace AutumnBox.OpenFramework.Script
                 }
             }
         }
+        /// <summary>
+        /// 获取格式化的信息
+        /// </summary>
+        public string Infomation
+        {
+            get
+            {
+                StringBuilder sb = new StringBuilder();
+                try
+                {
+                    sb.AppendLine($"{OpenApi.Gui.GetPublicResouce(this, "lbVersion")}:\t{Version}");
+                    sb.AppendLine($"{OpenApi.Gui.GetPublicResouce(this, "lbAuth")}:\t{Auth}");
+                    if (ContactInfo != null)
+                    {
+                        sb.AppendLine($"{OpenApi.Gui.GetPublicResouce(this, "lbContactEmail")}:\t{ContactInfo}");
+                    }
+                    sb.AppendLine(); sb.AppendLine();
+                    sb.AppendLine($"{OpenApi.Gui.GetPublicResouce(this, "lbDescription")}:");
+                    sb.AppendLine($"{Desc}");
+                }
+                catch (Exception ex)
+                {
+                    OpenApi.Log.Warn(this, "exception on building infomation text..", ex);
+                }
+                return sb.ToString();
+            }
+        }
+        /// <summary>
+        /// 获取脚本所有者
+        /// </summary>
+        public string Auth
+        {
+            get
+            {
+                try
+                {
+                    return (string)_script.GetStaticMethodWithArgs("*.__Auth")();
+                }
+                catch (Exception ex)
+                {
+                    OpenApi.Log.Warn(this, "Get auth failed", ex);
+                    return "佚名";
+                }
+            }
+        }
         private string _path;
         private string _fileName;
         /// <summary>
@@ -145,6 +189,7 @@ namespace AutumnBox.OpenFramework.Script
         /// 获取内部脚本程序集
         /// </summary>
         public Assembly InnerScript => _script;
+
         /// <summary>
         /// 内部脚本程序集
         /// </summary>
@@ -175,41 +220,47 @@ namespace AutumnBox.OpenFramework.Script
         /// </summary>
         /// <param name="args"></param>
         /// <param name="finishedCallback">执行完毕后的回调函数</param>
-        public void RunAsync(ScriptArgs args, Action<bool> finishedCallback = null)
+        public void RunAsync(ExtensionStartArgs args, Action<bool> finishedCallback = null)
         {
-            Task.Run(() => { Run(args); });
+            Task.Run(() => {
+                Run(args);
+                finishedCallback?.Invoke(lastResult);
+            });
         }
+        private bool lastResult = true;
         /// <summary>
         /// 同步运行
         /// </summary>
         /// <param name="args"></param>
-        public bool Run(ScriptArgs args)
+        public void Run(ExtensionStartArgs args)
         {
-            bool result = true;
             var task = new Task(() =>
             {
                 try
                 {
-                    args.Context = this;
-                    MainMethod(args);
-                    result = true;
+                    ScriptArgs sargs = new ScriptArgs()
+                    {
+                        Context = this,
+                        DeviceInfo = args.DeviceInfo
+                    };
+                    MainMethod(sargs);
+                    lastResult = true;
                 }
                 catch (Exception ex)
                 {
                     OpenApi.Log.Warn(this, "发生严重错误", ex);
                     var wasFailedMsg = $"{Name} {OpenApi.Gui.GetPublicResouce<String>(this, "msgExtensionWasFailed")}";
                     OpenApi.Gui.ShowMessageBox(this, Name, wasFailedMsg);
-                    result = false;
+                    lastResult = false;
                 }
             }, cancellationTokenSource.Token);
             task.RunSynchronously();
-            return result;
         }
         /// <summary>
         /// 停止
         /// </summary>
         /// <returns></returns>
-        public bool Stop()
+        public bool Stop(ExtensionStopArgs args)
         {
             try
             {
@@ -219,6 +270,15 @@ namespace AutumnBox.OpenFramework.Script
             {
                 OpenApi.Log.Warn(this, "Script Cancel Failed!", ex);
             }
+            return true;
+        }
+        /// <summary>
+        /// 运行前检测
+        /// </summary>
+        /// <param name="args"></param>
+        /// <returns></returns>
+        public bool RunCheck(ExtensionRunCheckArgs args)
+        {
             return true;
         }
     }
