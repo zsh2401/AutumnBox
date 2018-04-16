@@ -107,5 +107,14 @@ namespace AutumnBox.OpenFramework.Script
         {
             ScriptsManager.Unload(ctx, script);
         }
+        /// <summary>
+        /// 获取所有脚本
+        /// </summary>
+        /// <param name="ctx"></param>
+        /// <returns></returns>
+        public static IExtensionScript[] GetScripts(Context ctx)
+        {
+            return ScriptsManager.GetScripts(ctx);
+        }
     }
 }
