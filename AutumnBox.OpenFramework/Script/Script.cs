@@ -15,8 +15,21 @@ namespace AutumnBox.OpenFramework.Script
     /// <summary>
     /// 脚本加载器
     /// </summary>
-    public class ScriptLoader
+    public abstract class Script: Context,IExtensionScript
     {
+        public abstract string Name { get; }
+
+        public abstract string Desc { get; }
+
+        public abstract string Auth { get; }
+
+        public abstract Version Version { get; }
+
+        public abstract string ContactInfo { get; }
+
+        public abstract string Infomation { get; }
+
+
         /// <summary>
         /// 加载一个脚本
         /// </summary>
@@ -31,9 +44,17 @@ namespace AutumnBox.OpenFramework.Script
         /// </summary>
         /// <param name="ctx"></param>
         /// <param name="script"></param>
-        public static void Unload(Context ctx,IExtensionScript script)
+        public static void Unload(Context ctx, IExtensionScript script)
         {
-            ScriptsManager.Unload(ctx,script);
+            ScriptsManager.Unload(ctx, script);
         }
+
+        public abstract void Dispose();
+
+        public abstract bool Run(ExtensionStartArgs args);
+
+        public abstract bool RunCheck(ExtensionRunCheckArgs args);
+
+        public abstract bool Stop(ExtensionStopArgs args);
     }
 }

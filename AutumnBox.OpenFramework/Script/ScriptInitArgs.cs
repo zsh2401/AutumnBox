@@ -6,7 +6,14 @@
 
 namespace AutumnBox.OpenFramework.Script
 {
-    public class ScriptInitArgs
+    public class ScriptInitArgs:IScriptArgs
     {
+        public Script Self { get; internal set; }
+        public Context Context { get; private set; }
+        public ScriptInitArgs(ABEScript self)
+        {
+            this.Self = self;
+            this.Context = self;
+        }
     }
 }
