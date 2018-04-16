@@ -80,5 +80,10 @@ namespace AutumnBox.OpenFramework.Open
         /// </summary>
         /// <param name="ctx"></param>
         void ShutdownApp(Context ctx);
+        /// <summary>
+        /// 刷新拓展列表
+        /// </summary>
+        /// <param name="ctx"></param>
+        void RefreshExtensionList(Context ctx);
     }
 }

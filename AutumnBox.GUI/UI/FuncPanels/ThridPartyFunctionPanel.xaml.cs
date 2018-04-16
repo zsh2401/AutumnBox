@@ -24,11 +24,13 @@ namespace AutumnBox.GUI.UI.FuncPanels
     /// </summary>
     public partial class ThridPartyFunctionPanel : UserControl, IRefreshable
     {
+        internal static ThridPartyFunctionPanel Single { get; private set; }
         private DeviceBasicInfo currentDevice;
 
         public ThridPartyFunctionPanel()
         {
             InitializeComponent();
+            Single = this;
             GridInfo.Visibility = Visibility.Collapsed;
             TxtNothing.Visibility = Visibility.Visible;
             TBSdk.Text = string.Format(TBSdk.Text, OpenFramework.BuildInfo.SDK_VERSION);
@@ -46,7 +48,9 @@ namespace AutumnBox.GUI.UI.FuncPanels
                 SetGuiByExtInfomation();
             };
         }
-
+        public void Refresh() {
+            this.Refresh(currentDevice);
+        }
         public void Refresh(DeviceBasicInfo deviceSimpleInfo)
         {
             var stdExt = ExtensionManager.GetExtensions(App.OpenFrameworkContext);

@@ -26,7 +26,7 @@ namespace AutumnBox.OpenFramework.Internal
         /// <param name="ctx"></param>
         public static void ReloadAll(Context ctx)
         {
-            ctx.PermissionCheck(ContextPermissionLevel.Mid);
+            ctx.PermissionCheck(ContextPermissionLevel.Low);
             core.ReloadAll();
         }
         /// <summary>
