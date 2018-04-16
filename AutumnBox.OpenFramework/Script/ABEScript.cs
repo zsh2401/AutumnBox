@@ -10,6 +10,7 @@ using AutumnBox.OpenFramework.Open;
 using CSScriptLibrary;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -22,11 +23,16 @@ namespace AutumnBox.OpenFramework.Script
     /// <summary>
     /// Script管理器
     /// </summary>
-    public sealed class ABEScript : Context, IExtensionScript, IDisposable
+    public sealed class ABEScript : Context, IExtensionScript
     {
+        /// <summary>
+        /// 静态初始化
+        /// </summary>
         static ABEScript()
         {
+            Debug.WriteLine("Setting CSScript engine");
             CSScript.EvaluatorConfig.Engine = EvaluatorEngine.CodeDom;
+            Debug.WriteLine("Setted CSScript engine");
         }
         /// <summary>
         /// 标签
@@ -41,11 +47,10 @@ namespace AutumnBox.OpenFramework.Script
             {
                 try
                 {
-                    return (string)_script.GetStaticMethod("*.__Name")();
+                    return (string)_script.GetStaticMethodWithArgs("*.__Name")();
                 }
-                catch (Exception ex)
+                catch
                 {
-                    OpenApi.Log.Warn(this, "Get name failed", ex);
                     return _fileName;
                 }
             }
@@ -171,13 +176,16 @@ namespace AutumnBox.OpenFramework.Script
         /// <param name="path">脚本完整路径</param>
         public ABEScript(Context context, string path)
         {
+            Debug.WriteLine("Loading method");
 #if !DEBUG
             context.PermissionCheck();
 #endif
             var src = File.ReadAllText(path);
-            OpenApi.Log.Debug(this,src);
+            Debug.WriteLine("Loading method");
             _script = CSScript.LoadMethod(src);
-            var mainMethod = InnerScript.GetStaticMethodWithArgs("*.Main", typeof(ScriptArgs));
+            Debug.WriteLine("Fuck");
+            var mainMethod = _script.GetStaticMethodWithArgs("*.Main", typeof(ScriptArgs));
+            Debug.WriteLine("Fuck1");
             try
             {
                 var initMethod = InnerScript.GetStaticMethodWithArgs("*.InitAndCheck", typeof(ScriptInitArgs));
