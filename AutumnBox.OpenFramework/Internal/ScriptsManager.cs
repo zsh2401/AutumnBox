@@ -56,7 +56,7 @@ namespace AutumnBox.OpenFramework.Internal
         /// <returns></returns>
         public static IExtensionScript[] GetScripts(Context ctx)
         {
-            ctx.PermissionCheck(ContextPermissionLevel.Mid);
+            ctx.PermissionCheck(ContextPermissionLevel.Low);
             return core.Scripts.ToArray();
         }
         /// <summary>
