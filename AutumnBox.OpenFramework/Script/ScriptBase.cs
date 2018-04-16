@@ -90,6 +90,14 @@ namespace AutumnBox.OpenFramework.Script
         public abstract void Dispose();
 
         /// <summary>
+        /// 重载所有脚本
+        /// </summary>
+        /// <param name="ctx"></param>
+        public static void ReloadAll(Context ctx)
+        {
+            ScriptsManager.ReloadAll(ctx);
+        }
+        /// <summary>
         /// 加载一个脚本
         /// </summary>
         /// <param name="ctx"></param>

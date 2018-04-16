@@ -5,6 +5,7 @@
 *************************************************/
 using AutumnBox.Basic.FlowFramework;
 using AutumnBox.GUI.Helper;
+using AutumnBox.GUI.UI.FuncPanels;
 using AutumnBox.GUI.Windows;
 using AutumnBox.OpenFramework;
 using AutumnBox.OpenFramework.Internal;
@@ -120,6 +121,13 @@ namespace AutumnBox.GUI.Util
                     {
                         throw new UserDeniedException();
                     }
+                });
+            }
+            public void RefreshExtensionList(Context ctx)
+            {
+                App.Current.Dispatcher.Invoke(() =>
+                {
+                    ThridPartyFunctionPanel.Single.Refresh();
                 });
             }
         }
