@@ -3,15 +3,11 @@
 ** date:  2018/4/15 19:00:57 (UTC +8:00)
 ** desc： ...
 *************************************************/
-using AutumnBox.OpenFramework.Internal;
 using AutumnBox.OpenFramework.Open;
 using AutumnBox.OpenFramework.Script;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutumnBox.OpenFramework.Internal
 {
@@ -90,6 +86,7 @@ namespace AutumnBox.OpenFramework.Internal
                 });
                 Scripts.Clear();
                 string[] files = Directory.GetFiles(ExtensionManager.ExtensionsPath, "*.cs");
+                OpenApi.Log.Debug(this,$"Found {files.Length} .cs file");
                 foreach (var file in files)
                 {
                     try
