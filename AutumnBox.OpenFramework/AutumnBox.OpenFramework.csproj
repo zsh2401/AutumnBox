@@ -72,8 +72,8 @@
     <Compile Include="BuildInfo.cs" />
     <Compile Include="Internal\FrameworkLoader.cs" />
     <Compile Include="Script\IExtensionScript.cs" />
+    <Compile Include="Script\IScriptArgs.cs" />
     <Compile Include="Script\ScriptArgs.cs" />
-    <Compile Include="Script\ScriptContext.cs" />
     <Compile Include="Open\Extractor.cs" />
     <Compile Include="Open\Md5.cs" />
     <Compile Include="Open\Comp.cs" />
@@ -89,7 +89,7 @@
     <Compile Include="Internal\ScriptsManager.cs" />
     <Compile Include="Script\ScriptDestoryArgs.cs" />
     <Compile Include="Script\ScriptInitArgs.cs" />
-    <Compile Include="Script\ScriptLoader.cs" />
+    <Compile Include="Script\Script.cs" />
     <Compile Include="Script\ScriptStopArgs.cs" />
   </ItemGroup>
   <ItemGroup>
