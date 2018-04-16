@@ -86,7 +86,7 @@ namespace AutumnBox.OpenFramework.Internal
                 });
                 Scripts.Clear();
                 string[] files = Directory.GetFiles(ExtensionManager.ExtensionsPath, "*.cs");
-                OpenApi.Log.Debug(this,$"Found {files.Length} .cs file");
+                OpenApi.Log.Debug(this, $"Found {files.Length} .cs file");
                 foreach (var file in files)
                 {
                     try
@@ -115,6 +115,8 @@ namespace AutumnBox.OpenFramework.Internal
             /// <param name="file"></param>
             public void Load(string file)
             {
+                var existExt = core.Scripts.Find((s) => { return s.FilePath == file; });
+                if (existExt != null) { throw new Exception("Extension already exist"); }
                 core.Scripts.Add(new ABEScript(this, file));
             }
         }

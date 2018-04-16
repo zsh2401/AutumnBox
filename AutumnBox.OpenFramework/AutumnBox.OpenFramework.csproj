@@ -89,7 +89,7 @@
     <Compile Include="Internal\ScriptsManager.cs" />
     <Compile Include="Script\ScriptDestoryArgs.cs" />
     <Compile Include="Script\ScriptInitArgs.cs" />
-    <Compile Include="Script\Script.cs" />
+    <Compile Include="Script\ScriptBase.cs" />
     <Compile Include="Script\ScriptStopArgs.cs" />
   </ItemGroup>
   <ItemGroup>
