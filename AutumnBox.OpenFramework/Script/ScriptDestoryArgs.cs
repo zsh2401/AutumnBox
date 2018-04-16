@@ -3,12 +3,6 @@
 ** date:  2018/4/15 21:30:23 (UTC +8:00)
 ** desc： ...
 *************************************************/
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace AutumnBox.OpenFramework.Script
 {
     /// <summary>
@@ -16,9 +10,15 @@ namespace AutumnBox.OpenFramework.Script
     /// </summary>
     public class ScriptDestoryArgs:IScriptArgs
     {
-        public Script Self { get; internal set; }
+        /// <summary>
+        /// 获取脚本本身，类似this
+        /// </summary>
+        public ScriptBase Self { get; internal set; }
+        /// <summary>
+        /// 获取该脚本的对应上下文
+        /// </summary>
         public Context Context { get; private set; }
-        public ScriptDestoryArgs(Script self)
+        internal ScriptDestoryArgs(ScriptBase self)
         {
             this.Self = self;
             this.Context = self;

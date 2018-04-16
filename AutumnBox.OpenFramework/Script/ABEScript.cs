@@ -4,26 +4,19 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.Basic.Device;
-using AutumnBox.OpenFramework.Extension;
-using AutumnBox.OpenFramework.Internal;
 using AutumnBox.OpenFramework.Open;
 using CSScriptLibrary;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace AutumnBox.OpenFramework.Script
 {
     /// <summary>
     /// Script管理器
     /// </summary>
-    public sealed class ABEScript : Script, IExtensionScript
+    public sealed class ABEScript : ScriptBase, IExtensionScript
     {
         /// <summary>
         /// 静态初始化
@@ -111,30 +104,13 @@ namespace AutumnBox.OpenFramework.Script
             }
         }
         /// <summary>
-        /// 获取格式化的信息
+        /// 路径
         /// </summary>
-        public override string Infomation
+        public override string FilePath
         {
             get
             {
-                StringBuilder sb = new StringBuilder();
-                try
-                {
-                    sb.AppendLine($"{OpenApi.Gui.GetPublicResouce(this, "lbVersion")}:\t{Version}");
-                    sb.AppendLine($"{OpenApi.Gui.GetPublicResouce(this, "lbAuth")}:\t{Auth}");
-                    if (ContactInfo != null)
-                    {
-                        sb.AppendLine($"{OpenApi.Gui.GetPublicResouce(this, "lbContactEmail")}:\t{ContactInfo}");
-                    }
-                    sb.AppendLine(); sb.AppendLine();
-                    sb.AppendLine($"{OpenApi.Gui.GetPublicResouce(this, "lbDescription")}:");
-                    sb.AppendLine($"{Desc}");
-                }
-                catch (Exception ex)
-                {
-                    OpenApi.Log.Warn(this, "exception on building infomation text..", ex);
-                }
-                return sb.ToString();
+                return _path;
             }
         }
         /// <summary>
@@ -194,7 +170,7 @@ namespace AutumnBox.OpenFramework.Script
             catch { }
             _path = path;
             MainMethod = mainMethod;
-            _fileName = Path.GetFileName(_path);
+            _fileName = System.IO.Path.GetFileName(_path);
         }
         /// <summary>
         /// 同步运行
