@@ -11,7 +11,17 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.OpenFramework.Script
 {
-    public class ScriptDestoryArgs
+    /// <summary>
+    /// 脚本Desotry方法参数
+    /// </summary>
+    public class ScriptDestoryArgs:IScriptArgs
     {
+        public Script Self { get; internal set; }
+        public Context Context { get; private set; }
+        public ScriptDestoryArgs(Script self)
+        {
+            this.Self = self;
+            this.Context = self;
+        }
     }
 }

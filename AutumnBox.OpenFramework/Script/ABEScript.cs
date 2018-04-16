@@ -23,7 +23,7 @@ namespace AutumnBox.OpenFramework.Script
     /// <summary>
     /// Script管理器
     /// </summary>
-    public sealed class ABEScript : Context, IExtensionScript
+    public sealed class ABEScript : Script, IExtensionScript
     {
         /// <summary>
         /// 静态初始化
@@ -31,6 +31,7 @@ namespace AutumnBox.OpenFramework.Script
         static ABEScript()
         {
             Debug.WriteLine("Setting CSScript engine");
+            CSScript.CleanupDynamicSources();
             CSScript.EvaluatorConfig.Engine = EvaluatorEngine.CodeDom;
             Debug.WriteLine("Setted CSScript engine");
         }
@@ -41,7 +42,7 @@ namespace AutumnBox.OpenFramework.Script
         /// <summary>
         /// 获取脚本名称
         /// </summary>
-        public string Name
+        public override string Name
         {
             get
             {
@@ -58,7 +59,7 @@ namespace AutumnBox.OpenFramework.Script
         /// <summary>
         /// 获取脚本说明
         /// </summary>
-        public string Desc
+        public override string Desc
         {
             get
             {
@@ -76,7 +77,7 @@ namespace AutumnBox.OpenFramework.Script
         /// <summary>
         /// 获取脚本版本号
         /// </summary>
-        public Version Version
+        public override Version Version
         {
             get
             {
@@ -94,7 +95,7 @@ namespace AutumnBox.OpenFramework.Script
         /// <summary>
         /// 获取脚本联系信息
         /// </summary>
-        public string ContactInfo
+        public override string ContactInfo
         {
             get
             {
@@ -112,7 +113,7 @@ namespace AutumnBox.OpenFramework.Script
         /// <summary>
         /// 获取格式化的信息
         /// </summary>
-        public string Infomation
+        public override string Infomation
         {
             get
             {
@@ -139,7 +140,7 @@ namespace AutumnBox.OpenFramework.Script
         /// <summary>
         /// 获取脚本所有者
         /// </summary>
-        public string Auth
+        public override string Auth
         {
             get
             {
@@ -176,20 +177,16 @@ namespace AutumnBox.OpenFramework.Script
         /// <param name="path">脚本完整路径</param>
         public ABEScript(Context context, string path)
         {
-            Debug.WriteLine("Loading method");
 #if !DEBUG
             context.PermissionCheck();
 #endif
             var src = File.ReadAllText(path);
-            Debug.WriteLine("Loading method");
             _script = CSScript.LoadMethod(src);
-            Debug.WriteLine("Fuck");
             var mainMethod = _script.GetStaticMethodWithArgs("*.Main", typeof(ScriptArgs));
-            Debug.WriteLine("Fuck1");
             try
             {
                 var initMethod = InnerScript.GetStaticMethodWithArgs("*.InitAndCheck", typeof(ScriptInitArgs));
-                if ((bool)initMethod(new ScriptInitArgs()) == false)
+                if ((bool)initMethod(new ScriptInitArgs(this)) == false)
                 {
                     throw new Exception("Script cannot init");
                 }
@@ -203,15 +200,11 @@ namespace AutumnBox.OpenFramework.Script
         /// 同步运行
         /// </summary>
         /// <param name="args"></param>
-        public bool Run(ExtensionStartArgs args)
+        public override bool Run(ExtensionStartArgs args)
         {
             try
             {
-                ScriptArgs sargs = new ScriptArgs()
-                {
-                    Context = this,
-                    DeviceInfo = args.DeviceInfo
-                };
+                ScriptArgs sargs = new ScriptArgs(this, args.DeviceInfo);
                 MainMethod(sargs);
                 return true;
             }
@@ -227,11 +220,11 @@ namespace AutumnBox.OpenFramework.Script
         /// 停止
         /// </summary>
         /// <returns></returns>
-        public bool Stop(ExtensionStopArgs args)
+        public override bool Stop(ExtensionStopArgs args)
         {
             try
             {
-                return (bool)_script.GetStaticMethodWithArgs("*.OnStop", typeof(ScriptStopArgs))(new ScriptStopArgs());
+                return (bool)_script.GetStaticMethodWithArgs("*.OnStop", typeof(ScriptStopArgs))(new ScriptStopArgs(this));
             }
             catch (Exception ex)
             {
@@ -244,7 +237,7 @@ namespace AutumnBox.OpenFramework.Script
         /// </summary>
         /// <param name="args"></param>
         /// <returns></returns>
-        public bool RunCheck(ExtensionRunCheckArgs args)
+        public override bool RunCheck(ExtensionRunCheckArgs args)
         {
             try
             {
@@ -260,11 +253,11 @@ namespace AutumnBox.OpenFramework.Script
         /// <summary>
         /// 析构
         /// </summary>
-        public void Dispose()
+        public override void Dispose()
         {
             try
             {
-                _script.GetStaticMethodWithArgs("*.SDestory", typeof(ScriptDestoryArgs))(new ScriptDestoryArgs());
+                _script.GetStaticMethodWithArgs("*.SDestory", typeof(ScriptDestoryArgs))(new ScriptDestoryArgs(this));
             }
             catch (Exception ex)
             {

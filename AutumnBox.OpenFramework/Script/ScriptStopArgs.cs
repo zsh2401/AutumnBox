@@ -11,7 +11,14 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.OpenFramework.Script
 {
-    public class ScriptStopArgs
+    public class ScriptStopArgs:IScriptArgs
     {
+        public Script Self { get; internal set; }
+        public Context Context { get; internal set; }
+        public ScriptStopArgs(Script self)
+        {
+            this.Context = self;
+            this.Self = self;
+        }
     }
 }
