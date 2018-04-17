@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using AutumnBox.Basic.Device;
 using AutumnBox.GUI.UI.Fp;
 using AutumnBox.Basic.Device.PackageManage;
+using AutumnBox.GUI.UI.FuncPanels.PoweronFuncsUx;
 
 namespace AutumnBox.GUI.UI.FuncPanels
 {
@@ -20,11 +21,11 @@ namespace AutumnBox.GUI.UI.FuncPanels
     public partial class PoweronFuncPanel : FastPanelChild, IRefreshable
     {
         private DeviceBasicInfo _currentDevInfo;
-        private IAdbActivatorsUI core;
+        private IPoweronFuncsUX ux;
         public PoweronFuncPanel()
         {
             InitializeComponent();
-            core = App.MainAopContext.GetObject<IAdbActivatorsUI>("adbActivatorsUI");
+            ux = App.MainAopContext.GetObject<IPoweronFuncsUX>("poweronFuncsUXImp");
         }
 
         public void Reset()
@@ -79,7 +80,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
 
         private void ButtonStartBrventService_Click(object sender, RoutedEventArgs e)
         {
-            core.ActivateBrevent(_currentDevInfo);
+            ux.ActivateBrevent(_currentDevInfo);
         }
 
         private void ButtonPushFileToSdcard_Click(object sender, RoutedEventArgs e)
@@ -143,8 +144,8 @@ namespace AutumnBox.GUI.UI.FuncPanels
             FolderBrowserDialog fbd = new FolderBrowserDialog();
             if (fbd.ShowDialog() == DialogResult.OK)
             {
-                var shoter = new Basic.Flows.ScreenShoter();
-                shoter.Init(new Basic.Flows.ScreenShoterArgs()
+                var shoter = new ScreenShoter();
+                shoter.Init(new ScreenShoterArgs()
                 {
                     DevBasicInfo = _currentDevInfo,
                     SavePath = fbd.SelectedPath
@@ -322,23 +323,23 @@ namespace AutumnBox.GUI.UI.FuncPanels
 
         private void ButtonIceBoxAct_Click(object sender, RoutedEventArgs e)
         {
-            core.ActivateIceBox(_currentDevInfo);
+            ux.ActivateIceBox(_currentDevInfo);
         }
 
         private void ButtonAirForzenAct_Click(object sender, RoutedEventArgs e)
         {
-            core.ActivateAirForzen(_currentDevInfo);
+            ux.ActivateAirForzen(_currentDevInfo);
         }
 
         private void ButtonShizukuManager_Click(object sender, RoutedEventArgs e)
         {
 
-            core.ActivateShizukuManager(_currentDevInfo);
+            ux.ActivateShizukuManager(_currentDevInfo);
         }
 
         private void ButtonIslandAct_Click(object sender, RoutedEventArgs e)
         {
-            core.ActivateIsland(_currentDevInfo);
+            ux.ActivateIsland(_currentDevInfo);
         }
 
         private void ButtonVirtualBtnHide_Click(object sender, RoutedEventArgs e)
@@ -380,12 +381,12 @@ namespace AutumnBox.GUI.UI.FuncPanels
 
         private void ButtonGMCAct_Click(object sender, RoutedEventArgs e)
         {
-            core.ActivateGeekMemoryCleaner(_currentDevInfo);
+            ux.ActivateGeekMemoryCleaner(_currentDevInfo);
         }
 
         private void ButtonActivateStopapp_Click(object sender, RoutedEventArgs e)
         {
-            core.ActivateStopapp(_currentDevInfo);
+            ux.ActivateStopapp(_currentDevInfo);
         }
 
         private void ButtonUserManager_Click(object sender, RoutedEventArgs e)
@@ -395,27 +396,27 @@ namespace AutumnBox.GUI.UI.FuncPanels
 
         private void ButtonBlackHole_Click(object sender, RoutedEventArgs e)
         {
-            core.ActivateBlackHole(_currentDevInfo);
+            ux.ActivateBlackHole(_currentDevInfo);
         }
 
         private void ButtonAnzenbokusuActivator_Click(object sender, RoutedEventArgs e)
         {
-            core.ActivateAnzenbokusu(_currentDevInfo);
+            ux.ActivateAnzenbokusu(_currentDevInfo);
         }
 
         private void ButtonActivateFreezeYou_Click(object sender, RoutedEventArgs e)
         {
-            core.ActivateFreezeYou(_currentDevInfo);
+            ux.ActivateFreezeYou(_currentDevInfo);
         }
 
         private void ButtonAnzenbokusuFakeActivator_Click(object sender, RoutedEventArgs e)
         {
-            core.ActivateAnzenbokusuFake(_currentDevInfo);
+            ux.ActivateAnzenbokusuFake(_currentDevInfo);
         }
 
         private void ButtonActivateGreenifyDoze_Click(object sender, RoutedEventArgs e)
         {
-            core.ActivateGreenifyAggressiveDoze(_currentDevInfo);
+            ux.ActivateGreenifyAggressiveDoze(_currentDevInfo);
         }
     }
 }

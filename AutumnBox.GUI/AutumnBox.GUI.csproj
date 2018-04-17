@@ -151,6 +151,13 @@
     <Compile Include="UI\CstPanels\ExtensionRuningPanel.xaml.cs">
       <DependentUpon>ExtensionRuningPanel.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\FuncPanels\PoweronFuncsUx\PoweronFuncsUXAdvisor.cs" />
+    <Compile Include="UI\FuncPanels\PoweronFuncsUx\DeviceUserCheckAttribute.cs" />
+    <Compile Include="UI\FuncPanels\PoweronFuncsUx\FuncsPrecheckAttribute.cs" />
+    <Compile Include="UI\FuncPanels\PoweronFuncsUx\InstallCheckAttribute.cs" />
+    <Compile Include="UI\FuncPanels\PoweronFuncsUx\IPoweronFuncsUX.cs" />
+    <Compile Include="UI\FuncPanels\PoweronFuncsUx\MinAndroidVersionAttribute.cs" />
+    <Compile Include="UI\FuncPanels\PoweronFuncsUx\TipAttribute.cs" />
     <Compile Include="UI\FuncPanels\ThridPartyFunctionPanel.xaml.cs">
       <DependentUpon>ThridPartyFunctionPanel.xaml</DependentUpon>
     </Compile>
@@ -292,7 +299,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <Compile Include="MainWindow.FlowFinishedHandling.cs" />
-    <Compile Include="UI\FuncPanels\AdbActivatorsUI.cs" />
+    <Compile Include="UI\FuncPanels\PoweronFuncsUx\PoweronFuncsUXImp.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">

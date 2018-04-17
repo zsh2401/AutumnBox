@@ -20,82 +20,10 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace AutumnBox.GUI.UI.FuncPanels
+namespace AutumnBox.GUI.UI.FuncPanels.PoweronFuncsUx
 {
-    public abstract class FuncsPrecheckAttribute : Attribute
-    {
-        public abstract bool Check(DeviceBasicInfo tragetDevice);
-    }
-    public class InstallCheckAttribute : FuncsPrecheckAttribute
-    {
-        public string ErrorMsgKey { get; set; } = "PlzInstallAppFirst";
-        public string PkgName { get; private set; }
-        public InstallCheckAttribute(string pkgName)
-        {
-            this.PkgName = pkgName;
-        }
-        public override bool Check(DeviceBasicInfo tragetDevice)
-        {
-            Logger.Info(this, "install checking");
-            bool isInstall = false;
-            Task.Run(() =>
-            {
-                Thread.Sleep(500);
-                isInstall = PackageManager.IsInstall(tragetDevice, PkgName) == true;
-                BoxHelper.CloseLoadingDialog();
-            });
-            BoxHelper.ShowLoadingDialog();
-            if (!isInstall)
-            {
-                BoxHelper.ShowMessageDialog("Warning", ErrorMsgKey);
-            }
-            return isInstall;
-        }
-    }
-    public class TipAttribute : FuncsPrecheckAttribute
-    {
-        public readonly string MsgKey;
-        public TipAttribute(string msg)
-        {
-            this.MsgKey = msg;
-        }
 
-        public override bool Check(DeviceBasicInfo tragetDevice)
-        {
-            return BoxHelper.ShowChoiceDialog("titleMustRead", MsgKey).ToBool();
-        }
-    }
-    public class DeviceUserCheckAttribute : FuncsPrecheckAttribute
-    {
-        public override bool Check(DeviceBasicInfo targetDevice)
-        {
-            var users = new UserManager(targetDevice).GetUsers();
-            Logger.Info(this, users.Length);
-            if (users.Length > 0)
-            {
-                return BoxHelper.ShowChoiceDialog("Warning",
-                  "msgMaybeHaveOtherUser",
-                  "btnCancel", "btnIHaveDeletedAllUser").ToBool();
-            }
-            return true;
-        }
-    }
-    public interface IAdbActivatorsUI
-    {
-        void ActivateBrevent(DeviceBasicInfo targetDevice);
-        void ActivateIceBox(DeviceBasicInfo targetDevice);
-        void ActivateAirForzen(DeviceBasicInfo targetDevice);
-        void ActivateShizukuManager(DeviceBasicInfo targetDevice);
-        void ActivateIsland(DeviceBasicInfo targetDevice);
-        void ActivateGeekMemoryCleaner(DeviceBasicInfo targetDevice);
-        void ActivateStopapp(DeviceBasicInfo targetDevice);
-        void ActivateBlackHole(DeviceBasicInfo targetDevice);
-        void ActivateAnzenbokusu(DeviceBasicInfo targetDevice);
-        void ActivateAnzenbokusuFake(DeviceBasicInfo targetDevice);
-        void ActivateFreezeYou(DeviceBasicInfo targetDevice);
-        void ActivateGreenifyAggressiveDoze(DeviceBasicInfo targetDevice);
-    }
-    public class AdbActivatorsUI : IAdbActivatorsUI
+    public class PoweronFuncsUXImp : IPoweronFuncsUX
     {
         [InstallCheck(BreventServiceActivator._AppPackageName, ErrorMsgKey = "msgPlzInstallBreventFirst")]
         public void ActivateBrevent(DeviceBasicInfo targetDevice)
@@ -135,6 +63,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
             BoxHelper.ShowLoadingDialog(iceBoxActivator);
         }
 
+ 
         [InstallCheck(AirForzenActivator.AppPackageName, ErrorMsgKey = "msgPlsInstallAirForzenFirst")]
         [Tip("msgIceAct")]
         [DeviceUserCheck]
@@ -261,35 +190,6 @@ namespace AutumnBox.GUI.UI.FuncPanels
             });
             activator.RunAsync();
             BoxHelper.ShowLoadingDialog(activator);
-        }
-    }
-    public class AdbActivatorsUIAdvisor : IMethodInterceptor
-    {
-        public object Invoke(IMethodInvocation invocation)
-        {
-            var devInfo = (DeviceBasicInfo)invocation.Arguments[0];
-            foreach (var prechecker in GetPrechecker(invocation.Method))
-            {
-                if (!prechecker.Check(devInfo))
-                {
-                    return null;
-                }
-            }
-            return invocation.Proceed();
-        }
-
-        private static FuncsPrecheckAttribute[] GetPrechecker(MethodInfo method)
-        {
-            var attrs = method.GetCustomAttributes(true);
-            List<FuncsPrecheckAttribute> precheckers = new List<FuncsPrecheckAttribute>();
-            foreach (object attr in attrs)
-            {
-                if (attr is FuncsPrecheckAttribute result)
-                {
-                    precheckers.Add(result);
-                }
-            }
-            return precheckers.ToArray();
         }
     }
 }

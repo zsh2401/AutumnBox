@@ -113,9 +113,12 @@
     <!--标题-->
     <s:String x:Key="titleHaveAUpdate">Have a update!</s:String>
     <s:String x:Key="titleMustRead">Must read!</s:String>
+    
     <!--标题-->
 
     <!--信息(主要用于MMesssageBox)-->
+         <s:String x:Key="msgAndroidVersionTooLowFmt">Your device android version too low
+         this function required: {0}</s:String>
      <s:String x:Key="msgRequestRestartAppFormat">{0} wanna restart AutumnBox</s:String>
      <s:String x:Key="msgRequestShutdownAppFormat">{0} wanna close AutumnBox</s:String>
     <s:String x:Key="msgPathError">路径错误!
