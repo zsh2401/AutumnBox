@@ -15,14 +15,6 @@ namespace AutumnBox.OpenFramework.Extension
         /// </summary>
         int? MinSdk { get; }
         /// <summary>
-        /// 模块名
-        /// </summary>
-        string Name { get; }
-        /// <summary>
-        /// 模块信息
-        /// </summary>
-        string Infomation { get; }
-        /// <summary>
         /// 初始化
         /// </summary>
         /// <param name="args"></param>
