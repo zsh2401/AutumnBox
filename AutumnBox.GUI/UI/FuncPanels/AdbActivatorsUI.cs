@@ -62,7 +62,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
 
         public override bool Check(DeviceBasicInfo tragetDevice)
         {
-            return BoxHelper.ShowChoiceDialog("Notice", MsgKey).ToBool();
+            return BoxHelper.ShowChoiceDialog("titleMustRead", MsgKey).ToBool();
         }
     }
     public class DeviceUserCheckAttribute : FuncsPrecheckAttribute

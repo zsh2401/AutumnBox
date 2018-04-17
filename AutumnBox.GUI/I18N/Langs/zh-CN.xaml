@@ -111,6 +111,7 @@
 
     <!--标题-->
     <s:String x:Key="titleHaveAUpdate">检测到一个更新!</s:String>
+     <s:String x:Key="titleMustRead">必须阅读!</s:String>
     <!--标题-->
     
     <!--信息(主要用于MMesssageBox)-->
@@ -124,6 +125,7 @@
     <s:String x:Key="msgModuleFailed">{0}模块运行时出现问题,详情请查看日志</s:String>
     <s:String x:Key="msgMaybeHaveOtherUser">
         检测到你的设备上还有其它用户,请确保您已删除完所有用户
+        用户/账户不是一个概念!
         注:AutumnBox有用户管理的功能</s:String>
     <s:String x:Key="msgLoading">加载中</s:String>
     <s:String x:Key="msgActiveGMC">这将会开启手机的网络ADB调试并且带来巨大风险,您确定继续吗?</s:String>
@@ -152,10 +154,12 @@
     <s:String x:Key="msgStartBreventServiceSuc">现在,您的设备应该已经成功激活了黑域!但为了保险起见,将会展示脚本输出的信息</s:String>
     <s:String x:Key="msgShellChoiceTip">检测到您是Windows10 系统,请问您想用哪种命令行界面?&#x0a;如果您不懂什么是Powershell,请用传统的CMD</s:String>
     <s:String x:Key="msgSaveSuccessful">保存成功!</s:String>
-    <s:String x:Key="msgIceAct">
-        请前往手机->账户设置,将所有账户删除!(包括谷歌账户/手机云服务账户等)
-        并且关闭应用双开,关闭访客模式,删除其它用户
-        &#x0a; 完成后请点击继续
+    <s:String x:Key="msgIceAct">1.请前往手机->账户设置,将所有账户删除!(包括谷歌账户/手机云服务账户等)
+        2.在秋之盒->用户管理删除所有用户
+        3.索尼/ZUK手机等要退卡
+        4.三星有可能锁机
+        注意:用户/账户是不同概念,勿混淆!
+        &#x0a; 如果你已完成上述操作,请继续
     </s:String>
     <s:String x:Key="msgNoticeForRebootToEdl">
         请确保您的设备是高通骁龙处理器并且支持进入9008模式
