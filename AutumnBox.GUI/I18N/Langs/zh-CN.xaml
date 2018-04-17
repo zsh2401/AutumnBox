@@ -9,7 +9,7 @@
     
     <s:String x:Key="AppDesc">开源免费简约的图形化ADB工具箱</s:String>
     <!--按钮-->
-        <s:String x:Key="btnAccept">同意</s:String>
+    <s:String x:Key="btnAccept">同意</s:String>
     <s:String x:Key="btnDeny">拒绝</s:String>
     <s:String x:Key="btnGreenifyDozeActivator">激活绿色守护嗜睡模式等</s:String>
     <s:String x:Key="btnFreezeYouActivator">激活FreezeYou!</s:String>
@@ -267,6 +267,7 @@
     <s:String x:Key="Port">端口</s:String>
     <s:String x:Key="lbUnspecified">未指定</s:String>
     <s:String x:Key="lbUserName">用户名</s:String>
+    <s:String x:Key="lbAnonymous">佚名</s:String>
      <s:String x:Key="lbApiLevel">API级别: {0}</s:String>
     <s:String x:Key="lbUserId">UID</s:String>
     <s:String x:Key="lbName">名称</s:String>
