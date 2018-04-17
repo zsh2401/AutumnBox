@@ -60,9 +60,8 @@ namespace AutumnBox.OpenFramework.Script
                 {
                     return (string)_script.GetStaticMethodWithArgs("*.__Desc")();
                 }
-                catch (Exception ex)
+                catch
                 {
-                    OpenApi.Log.Warn(this, "Get desc failed", ex);
                     return "";
                 }
             }
@@ -78,9 +77,8 @@ namespace AutumnBox.OpenFramework.Script
                 {
                     return (Version)_script.GetStaticMethodWithArgs("*.__Version")();
                 }
-                catch (Exception ex)
+                catch
                 {
-                    OpenApi.Log.Warn(this, "Get version failed", ex);
                     return new Version(1, 0, 0, 0);
                 }
             }
@@ -96,9 +94,8 @@ namespace AutumnBox.OpenFramework.Script
                 {
                     return (string)_script.GetStaticMethodWithArgs("*.__ContactInfo")();
                 }
-                catch (Exception ex)
+                catch
                 {
-                    OpenApi.Log.Warn(this, "Get contact info failed", ex);
                     return null;
                 }
             }
@@ -124,10 +121,9 @@ namespace AutumnBox.OpenFramework.Script
                 {
                     return (string)_script.GetStaticMethodWithArgs("*.__Auth")();
                 }
-                catch (Exception ex)
+                catch
                 {
-                    OpenApi.Log.Warn(this, "Get auth failed", ex);
-                    return "佚名";
+                    return OpenApi.Gui.GetPublicResouce<string>(this,"lbAnonymous");
                 }
             }
         }
