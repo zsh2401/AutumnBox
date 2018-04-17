@@ -1,19 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <objects xmlns="http://www.springframework.net" xmlns:aop="http://www.springframework.net/aop">
-  <description>一个简单的控制反转例子</description>
+  <description>秋之盒AOP</description>
 
   <!-- 任务 -->
-  <object id="adbActivatorsUI" type="AutumnBox.GUI.UI.FuncPanels.AdbActivatorsUI"></object>
+  <object id="poweronFuncsUXImp" type="AutumnBox.GUI.UI.FuncPanels.PoweronFuncsUx.PoweronFuncsUXImp"></object>
 
-  <object id="adbActivatorsUIAdvisor" type="AutumnBox.GUI.UI.FuncPanels.AdbActivatorsUIAdvisor"/>
+  <object id="poweronFuncsUXAdvisor" type="AutumnBox.GUI.UI.FuncPanels.PoweronFuncsUx.PoweronFuncsUXAdvisor"/>
 
   <!--定义切入点-->
-  <object id="adbActivatorsUIAdvisorrPointcut" type="Spring.Aop.Support.SdkRegularExpressionMethodPointcut, Spring.Aop">
-    <property name="pattern" value="AutumnBox.GUI.UI.FuncPanels.AdbActivatorsUI.Activate*"/>
+  <object id="poweronFuncsUXAdvisorPointcut" type="Spring.Aop.Support.SdkRegularExpressionMethodPointcut, Spring.Aop">
+    <property name="pattern" value="AutumnBox.GUI.UI.FuncPanels.PoweronFuncsUx.PoweronFuncsUXImp.Activate*"/>
   </object>
 
   <!--切面-->
   <aop:config>
-    <aop:advisor pointcut-ref="adbActivatorsUIAdvisorrPointcut" advice-ref="adbActivatorsUIAdvisor"/>
+    <aop:advisor pointcut-ref="poweronFuncsUXAdvisorPointcut" advice-ref="poweronFuncsUXAdvisor"/>
   </aop:config>
 </objects>
