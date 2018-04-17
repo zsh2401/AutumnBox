@@ -191,5 +191,20 @@ namespace AutumnBox.GUI.UI.FuncPanels.PoweronFuncsUx
             activator.RunAsync();
             BoxHelper.ShowLoadingDialog(activator);
         }
+
+        [MinAndroidVersion(8)]
+        [InstallCheck(UsersirActivator.AppPackageName, ErrorMsgKey = "msgPlsInstallUsersirFirst")]
+        [Tip("msgIceAct")]
+        [DeviceUserCheck]
+        public void ActivateUsersir(DeviceBasicInfo targetDevice)
+        {
+            var activator = new UsersirActivator();
+            activator.Init(new FlowArgs()
+            {
+                DevBasicInfo = targetDevice
+            });
+            activator.RunAsync();
+            BoxHelper.ShowLoadingDialog(activator);
+        }
     }
 }

@@ -9,6 +9,7 @@
     
     <s:String x:Key="AppDesc">开源免费简约的图形化ADB工具箱</s:String>
     <!--按钮-->
+    <s:String x:Key="btnUsersirAct">激活USER SIR</s:String>
     <s:String x:Key="btnAccept">同意</s:String>
     <s:String x:Key="btnDeny">拒绝</s:String>
     <s:String x:Key="btnGreenifyDozeActivator">激活绿色守护嗜睡模式等</s:String>
@@ -168,6 +169,7 @@
        当进入9008模式后,设备会完全黑屏,但您可以使用相关工具进行刷机
         &#x0a;如果想要退出9008模式,长按电源键即可!
     </s:String>
+    <s:String x:Key="msgPlsInstallUsersirFirst">请先安装USER SIR!</s:String>
     <s:String x:Key="msgPlsInstallGreenifyFirst">请先安装绿色守护!</s:String>
     <s:String x:Key="msgPlsInstallFreezeYouFirst">请先安装FreezeYou!</s:String>
     <s:String x:Key="msgPlsInstallAirForzenFirst">请先安装空调狗!</s:String>

@@ -21,5 +21,6 @@ namespace AutumnBox.GUI.UI.FuncPanels.PoweronFuncsUx
         void ActivateAnzenbokusuFake(DeviceBasicInfo targetDevice);
         void ActivateFreezeYou(DeviceBasicInfo targetDevice);
         void ActivateGreenifyAggressiveDoze(DeviceBasicInfo targetDevice);
+        void ActivateUsersir(DeviceBasicInfo targetDevice);
     }
 }
