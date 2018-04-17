@@ -9,6 +9,7 @@
    
     <s:String x:Key="AppDesc">Open source,free,simple,GUI adb toolbox</s:String>
     <!--按钮-->
+    <s:String x:Key="btnUsersirAct">Activate USER SIR</s:String>
     <s:String x:Key="btnAccept">Accpet</s:String>
     <s:String x:Key="btnDeny">Deny</s:String>
     <s:String x:Key="btnGreenifyDozeActivator">Activate Greenify Aggressive Doze</s:String>
@@ -171,18 +172,19 @@
         &#x0a;如果想要退出9008模式,长按电源键即可!
     </s:String>
     
-    <s:String x:Key="msgPlsInstallGreenifyFirst">请先安装绿色守护!</s:String>
-    <s:String x:Key="msgPlsInstallFreezeYouFirst">请先安装FreezeYou!</s:String>
-    <s:String x:Key="msgPlsInstallAirForzenFirst">请先安装空调狗!</s:String>
-    <s:String x:Key="msgPlsInstallBreventFirst">请先安装黑域!</s:String>
-    <s:String x:Key="msgPlsInstallIslandFirst">请先安装Island!!</s:String>
-    <s:String x:Key="msgPlsInstallIceBoxFirst">请先安装冰箱!!</s:String>
-    <s:String x:Key="msgPlsInstallStopAppFirst">请先安装小黑屋!!</s:String>
-    <s:String x:Key="msgPlsInstallBlackholeFirst">请先安装黑洞!!</s:String>
-    <s:String x:Key="msgPlsInstallAnzenbokusuFirst">请先安装第二空间!!</s:String>
-    <s:String x:Key="msgPlsInstallAnzenbokusuFakeFirst">请先安装第二空间伪装版!!</s:String>
-    <s:String x:Key="msgPlsInstallGMCFirst">请先安装极客内存清理!!</s:String>
-    <s:String x:Key="msgPlsInstallShizukuManagerFirst">请先安装ShizukuManager!酷市场和手机乐园都有!</s:String>
+    <s:String x:Key="msgPlsInstallUsersirFirst">Please install USER SIR first!</s:String>
+    <s:String x:Key="msgPlsInstallGreenifyFirst">Please install Greenify first!</s:String>
+    <s:String x:Key="msgPlsInstallFreezeYouFirst">Please install FreezeYou first!</s:String>
+    <s:String x:Key="msgPlsInstallAirForzenFirst">Please AirForzen first!</s:String>
+    <s:String x:Key="msgPlsInstallBreventFirst">Please install brevent first!</s:String>
+    <s:String x:Key="msgPlsInstallIslandFirst">Please install island first</s:String>
+    <s:String x:Key="msgPlsInstallIceBoxFirst">Please install ice-box first!!</s:String>
+    <s:String x:Key="msgPlsInstallStopAppFirst">Please install Stop-App first!!</s:String>
+    <s:String x:Key="msgPlsInstallBlackholeFirst">Please install Black hole app first!!</s:String>
+    <s:String x:Key="msgPlsInstallAnzenbokusuFirst">Please install anzenbouksu first!!</s:String>
+    <s:String x:Key="msgPlsInstallAnzenbokusuFakeFirst">Please install AnzenbokusuFake first!!</s:String>
+    <s:String x:Key="msgPlsInstallGMCFirst">Please install Geek memory cleaner!!</s:String>
+    <s:String x:Key="msgPlsInstallShizukuManagerFirst">Please install ShizukuManager first!</s:String>
     <s:String x:Key="msgWarning">Warning</s:String>
     <s:String x:Key="msgVirtualButtonHider">您是要隐藏虚拟键还是恢复虚拟键?</s:String>
     <s:String x:Key="msgStartAdbServerFail">错误:无法启动ADB服务

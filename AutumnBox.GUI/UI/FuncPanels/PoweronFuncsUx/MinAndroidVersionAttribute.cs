@@ -15,9 +15,9 @@ namespace AutumnBox.GUI.UI.FuncPanels.PoweronFuncsUx
     public class MinAndroidVersion : FuncsPrecheckAttribute
     {
         private Version version;
-        public MinAndroidVersion(int major, int minor = 0, int build = 0, int revision = 0)
+        public MinAndroidVersion(int major, int minor = 0, int build = 0)
         {
-            version = new Version(major, minor, build, revision);
+            version = new Version(major, minor, build);
         }
         public override bool Check(DeviceBasicInfo targetDevice)
         {
@@ -29,6 +29,7 @@ namespace AutumnBox.GUI.UI.FuncPanels.PoweronFuncsUx
                 BoxHelper.CloseLoadingDialog();
             });
             BoxHelper.ShowLoadingDialog();
+            Logger.Debug(this,$"Min{version} Device{result}");
             if (result < version)
             {
                 string tooLowFmt = App.Current.Resources["msgAndroidVersionTooLowFmt"].ToString();

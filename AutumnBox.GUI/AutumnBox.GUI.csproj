@@ -693,6 +693,10 @@
   <ItemGroup>
     <Resource Include="Resources\Images\title_icon.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Images\AppIcons\Usersir.png" />
+    <Content Include="Resources\Images\AppIcons\Usersirx.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>if $(ConfigurationName) == Release (

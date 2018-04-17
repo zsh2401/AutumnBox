@@ -418,5 +418,10 @@ namespace AutumnBox.GUI.UI.FuncPanels
         {
             ux.ActivateGreenifyAggressiveDoze(_currentDevInfo);
         }
+
+        private void ButtonUsersirAct_Click(object sender, RoutedEventArgs e)
+        {
+            ux.ActivateUsersir(_currentDevInfo);
+        }
     }
 }

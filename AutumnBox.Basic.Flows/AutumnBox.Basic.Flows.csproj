@@ -95,6 +95,7 @@
     <Compile Include="States\DeviceOwnerSetterErrType.cs" />
     <Compile Include="StopAppActivator.cs" />
     <Compile Include="SystemPartitionUnlocker.cs" />
+    <Compile Include="UsersirActivator.cs" />
     <Compile Include="VirtualButtonHider.cs" />
   </ItemGroup>
   <ItemGroup>
