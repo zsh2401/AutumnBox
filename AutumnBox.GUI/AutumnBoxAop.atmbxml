@@ -9,7 +9,7 @@
 
   <!--定义切入点-->
   <object id="poweronFuncsUXAdvisorPointcut" type="Spring.Aop.Support.SdkRegularExpressionMethodPointcut, Spring.Aop">
-    <property name="pattern" value="AutumnBox.GUI.UI.FuncPanels.PoweronFuncsUx.PoweronFuncsUXImp.Activate*"/>
+    <property name="pattern" value="AutumnBox.GUI.UI.FuncPanels.PoweronFuncsUx.PoweronFuncsUXImp.*"/>
   </object>
 
   <!--切面-->

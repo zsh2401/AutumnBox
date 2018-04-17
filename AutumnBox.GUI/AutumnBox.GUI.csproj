@@ -151,6 +151,7 @@
     <Compile Include="UI\CstPanels\ExtensionRuningPanel.xaml.cs">
       <DependentUpon>ExtensionRuningPanel.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\FuncPanels\PoweronFuncsUx\NeedRootAttribute.cs" />
     <Compile Include="UI\FuncPanels\PoweronFuncsUx\PoweronFuncsUXAdvisor.cs" />
     <Compile Include="UI\FuncPanels\PoweronFuncsUx\DeviceUserCheckAttribute.cs" />
     <Compile Include="UI\FuncPanels\PoweronFuncsUx\FuncsPrecheckAttribute.cs" />

@@ -22,5 +22,15 @@ namespace AutumnBox.GUI.UI.FuncPanels.PoweronFuncsUx
         void ActivateFreezeYou(DeviceBasicInfo targetDevice);
         void ActivateGreenifyAggressiveDoze(DeviceBasicInfo targetDevice);
         void ActivateUsersir(DeviceBasicInfo targetDevice);
+        void DeleteScreenLock(DeviceBasicInfo targetDevice);
+        void FlashRecovery(DeviceBasicInfo targetDevice);
+        void FlashBoot(DeviceBasicInfo targetDevice);
+        void ExtractRecovery(DeviceBasicInfo targetDevice);
+        void ExtractBoot(DeviceBasicInfo targetDevice);
+        void ChangeDpi(DeviceBasicInfo targetDevice);
+        void UnlockSystemParation(DeviceBasicInfo targetDevice);
+        void ScreenShot(DeviceBasicInfo targetDevice);
+        void InstallApk(DeviceBasicInfo targetDevice);
+        void PushFile(DeviceBasicInfo targetDevice);
     }
 }
