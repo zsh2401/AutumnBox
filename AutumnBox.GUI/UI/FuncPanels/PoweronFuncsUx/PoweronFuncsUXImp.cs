@@ -13,12 +13,14 @@ using AutumnBox.GUI.Windows;
 using AutumnBox.Support.Log;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Forms;
 
 namespace AutumnBox.GUI.UI.FuncPanels.PoweronFuncsUx
 {
@@ -63,7 +65,7 @@ namespace AutumnBox.GUI.UI.FuncPanels.PoweronFuncsUx
             BoxHelper.ShowLoadingDialog(iceBoxActivator);
         }
 
- 
+
         [InstallCheck(AirForzenActivator.AppPackageName, ErrorMsgKey = "msgPlsInstallAirForzenFirst")]
         [Tip("msgIceAct")]
         [DeviceUserCheck]
@@ -205,6 +207,192 @@ namespace AutumnBox.GUI.UI.FuncPanels.PoweronFuncsUx
             });
             activator.RunAsync();
             BoxHelper.ShowLoadingDialog(activator);
+        }
+
+        [NeedRoot]
+        [Tip("msgDelScreenLock")]
+        public void DeleteScreenLock(DeviceBasicInfo targetDevice)
+        {
+            var screenLockDeleter = new ScreenLockDeleter();
+            screenLockDeleter.Init(new FlowArgs()
+            {
+                DevBasicInfo = targetDevice,
+            });
+            screenLockDeleter.RunAsync();
+            BoxHelper.ShowLoadingDialog(screenLockDeleter);
+        }
+
+        [NeedRoot]
+        public void FlashRecovery(DeviceBasicInfo targetDevice)
+        {
+            Microsoft.Win32.OpenFileDialog fileDialog = new Microsoft.Win32.OpenFileDialog();
+            fileDialog.Reset();
+            fileDialog.Title = App.Current.Resources["SelecteAFile"].ToString();
+            fileDialog.Filter = "镜像文件(*.img)|*.img";
+            fileDialog.Multiselect = false;
+            if (fileDialog.ShowDialog() == true)
+            {
+                var flasherArgs = new DeviceImageFlasherArgs()
+                {
+                    DevBasicInfo = targetDevice,
+                    ImageType = DeviceImage.Recovery,
+                    SourceFile = fileDialog.FileName,
+                };
+                DeviceImageFlasher flasher = new DeviceImageFlasher();
+                flasher.Init(flasherArgs);
+                flasher.RunAsync();
+                BoxHelper.ShowLoadingDialog(flasher);
+            }
+        }
+
+        [NeedRoot]
+        public void FlashBoot(DeviceBasicInfo targetDevice)
+        {
+            Microsoft.Win32.OpenFileDialog fileDialog = new Microsoft.Win32.OpenFileDialog();
+            fileDialog.Reset();
+            fileDialog.Title = App.Current.Resources["SelecteAFile"].ToString();
+            fileDialog.Filter = "镜像文件(*.img)|*.img";
+            fileDialog.Multiselect = false;
+            if (fileDialog.ShowDialog() == true)
+            {
+                var flasherArgs = new DeviceImageFlasherArgs()
+                {
+                    DevBasicInfo = targetDevice,
+                    ImageType = DeviceImage.Boot,
+                    SourceFile = fileDialog.FileName,
+                };
+                DeviceImageFlasher flasher = new DeviceImageFlasher();
+                flasher.Init(flasherArgs);
+                flasher.RunAsync();
+                BoxHelper.ShowLoadingDialog(flasher);
+            }
+        }
+
+        [NeedRoot]
+        public void ExtractRecovery(DeviceBasicInfo targetDevice)
+        {
+            FolderBrowserDialog fbd = new FolderBrowserDialog
+            {
+                Description = "请选择保存路径"
+            };
+            if (fbd.ShowDialog() != DialogResult.OK) return;
+            var args = new DeviceImageExtractorArgs()
+            {
+                DevBasicInfo = targetDevice,
+                SavePath = fbd.SelectedPath,
+                ImageType = DeviceImage.Recovery,
+            };
+            var extrator = new DeviceImageExtractor();
+            extrator.Init(args);
+            extrator.RunAsync();
+            BoxHelper.ShowLoadingDialog(extrator);
+        }
+        [NeedRoot]
+        public void ExtractBoot(DeviceBasicInfo targetDevice)
+        {
+            FolderBrowserDialog fbd = new FolderBrowserDialog
+            {
+                Description = "请选择保存路径"
+            };
+            if (fbd.ShowDialog() != DialogResult.OK) return;
+            var args = new DeviceImageExtractorArgs()
+            {
+                DevBasicInfo = targetDevice,
+                SavePath = fbd.SelectedPath,
+                ImageType = DeviceImage.Boot,
+            };
+            var extrator = new DeviceImageExtractor();
+            extrator.Init(args);
+            extrator.RunAsync();
+            BoxHelper.ShowLoadingDialog(extrator);
+        }
+
+        public void ChangeDpi(DeviceBasicInfo targetDevice)
+        {
+            new DpiChangeWindow(targetDevice) { Owner = App.Current.MainWindow }.ShowDialog();
+        }
+
+        [NeedRoot]
+        [Tip("msgUnlockSystemTip")]
+        public void UnlockSystemParation(DeviceBasicInfo targetDevice)
+        {
+            var unlocker = new SystemPartitionUnlocker();
+            unlocker.Init(new FlowArgs()
+            {
+                DevBasicInfo = targetDevice
+            });
+            unlocker.RunAsync();
+            BoxHelper.ShowLoadingDialog(unlocker);
+        }
+
+        public void ScreenShot(DeviceBasicInfo targetDevice)
+        {
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+            if (fbd.ShowDialog() == DialogResult.OK)
+            {
+                var shoter = new ScreenShoter();
+                shoter.Init(new ScreenShoterArgs()
+                {
+                    DevBasicInfo = targetDevice,
+                    SavePath = fbd.SelectedPath
+                });
+                shoter.RunAsync();
+                BoxHelper.ShowLoadingDialog(shoter);
+            }
+        }
+
+        public void InstallApk(DeviceBasicInfo targetDevice)
+        {
+            Microsoft.Win32.OpenFileDialog fileDialog = new Microsoft.Win32.OpenFileDialog();
+            fileDialog.Reset();
+            fileDialog.Title = App.Current.Resources["SelecteAFile"].ToString();
+            fileDialog.Filter = "安卓安装包ApkFile(*.apk)|*.apk";
+            fileDialog.Multiselect = true;
+
+            if (fileDialog.ShowDialog() == true)
+            {
+                ApkInstaller installer = new ApkInstaller();
+                List<FileInfo> files = new List<FileInfo>();
+                foreach (string fileName in fileDialog.FileNames)
+                {
+                    files.Add(new FileInfo(fileName));
+                }
+                var args = new ApkInstallerArgs()
+                {
+                    DevBasicInfo = targetDevice,
+                    Files = files,
+                };
+                installer.Init(args);
+                new ApkInstallingWindow(installer, files).ShowDialog();
+            }
+            else
+            {
+                return;
+            }
+        }
+        public void PushFile(DeviceBasicInfo targetDeivce) {
+            Microsoft.Win32.OpenFileDialog fileDialog = new Microsoft.Win32.OpenFileDialog();
+            fileDialog.Reset();
+            fileDialog.Title = App.Current.Resources["SelecteAFile"].ToString();
+            fileDialog.Filter = "刷机包/压缩包文件(*.zip)|*.zip|镜像文件(*.img)|*.img|全部文件(*.*)|*.*";
+            fileDialog.Multiselect = false;
+            if (fileDialog.ShowDialog() == true)
+            {
+                var args = new FilePusherArgs()
+                {
+                    DevBasicInfo = targetDeivce,
+                    SourceFile = fileDialog.FileName,
+                };
+                var pusher = new FilePusher();
+                pusher.Init(args);
+                pusher.MustTiggerAnyFinishedEvent = true;
+                pusher.RunAsync();
+                new FileSendingWindow(pusher).ShowDialog();
+            }
+            else
+            {
+                return;
+            }
         }
     }
 }
