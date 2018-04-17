@@ -101,16 +101,6 @@ namespace AutumnBox.OpenFramework.Script
             }
         }
         /// <summary>
-        /// 路径
-        /// </summary>
-        public override string FilePath
-        {
-            get
-            {
-                return _path;
-            }
-        }
-        /// <summary>
         /// 获取脚本所有者
         /// </summary>
         public override string Auth
@@ -123,8 +113,18 @@ namespace AutumnBox.OpenFramework.Script
                 }
                 catch
                 {
-                    return OpenApi.Gui.GetPublicResouce<string>(this,"lbAnonymous");
+                    return OpenApi.Gui.GetPublicResouce<string>(this, "lbAnonymous");
                 }
+            }
+        }
+        /// <summary>
+        /// 路径
+        /// </summary>
+        public override string FilePath
+        {
+            get
+            {
+                return _path;
             }
         }
         private string _path;
