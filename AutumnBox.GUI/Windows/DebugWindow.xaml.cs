@@ -30,5 +30,10 @@ namespace AutumnBox.GUI.Windows
         {
             Logger.Logged -= Logger_Logged;
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            TxtBoxLog.ScrollToEnd();
+        }
     }
 }

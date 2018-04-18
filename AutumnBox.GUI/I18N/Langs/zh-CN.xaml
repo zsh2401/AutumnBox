@@ -9,6 +9,7 @@
     
     <s:String x:Key="AppDesc">开源免费简约的图形化ADB工具箱</s:String>
     <!--按钮-->
+    <s:String x:Key="btnGoToEnd">前往底部</s:String>
     <s:String x:Key="btnUsersirAct">激活USER SIR</s:String>
     <s:String x:Key="btnAccept">同意</s:String>
     <s:String x:Key="btnDeny">拒绝</s:String>
