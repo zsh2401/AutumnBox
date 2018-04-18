@@ -32,6 +32,7 @@ using System.Windows.Threading;
 using AutumnBox.GUI.UI.FuncPanels;
 using System.Windows.Controls;
 using AutumnBox.GUI.I18N;
+using AutumnBox.GUI.Util;
 
 namespace AutumnBox.GUI
 {
@@ -116,10 +117,11 @@ namespace AutumnBox.GUI
             };
         }
 
-        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        private void MainWindow_Loaded(object sender, RoutedEventArgs _e)
         {
 #if !DEBUG
-            this.WTF.Navigate(App.Current.Resources["urlApiStatistics"].ToString());
+            WTF.SuppressScriptErrors(true);
+            WTF.Navigate(App.Current.Resources["urlApiStatistics"].ToString());
 #endif
 
 #if ENABLE_BLUR

@@ -162,6 +162,7 @@
     <Compile Include="UI\FuncPanels\ThridPartyFunctionPanel.xaml.cs">
       <DependentUpon>ThridPartyFunctionPanel.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Util\Extensions.cs" />
     <Compile Include="Util\OpenFramewokManager.cs" />
     <Compile Include="Windows\DebugWindow.xaml.cs">
       <DependentUpon>DebugWindow.xaml</DependentUpon>
@@ -695,8 +696,7 @@
     <Resource Include="Resources\Images\title_icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\Images\AppIcons\Usersir.png" />
-    <Content Include="Resources\Images\AppIcons\Usersirx.png" />
+    <Resource Include="Resources\Images\AppIcons\Usersir.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
