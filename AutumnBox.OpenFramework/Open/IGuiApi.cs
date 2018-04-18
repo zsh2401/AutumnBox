@@ -85,5 +85,9 @@ namespace AutumnBox.OpenFramework.Open
         /// </summary>
         /// <param name="ctx"></param>
         void RefreshExtensionList(Context ctx);
+        /// <summary>
+        /// 当前是否以管理员权限运行
+        /// </summary>
+        bool IsRunAsAdmin { get; }
     }
 }
