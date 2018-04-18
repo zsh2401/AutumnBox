@@ -77,7 +77,7 @@ namespace AutumnBox.GUI
                 MessageBox.Show(
                     $"不可以同时打开两个AutumnBox{Environment.NewLine}Do not run two AutumnBox at once",
                     "警告/Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
-                App.Current.Shutdown(HAVE_OTHER_PROCESS);
+                Shutdown(HAVE_OTHER_PROCESS);
             }
             if (Settings.Default.IsFirstLaunch)
             {
@@ -111,7 +111,7 @@ namespace AutumnBox.GUI
             try { Logger.Fatal(this, exstr); } catch { }
             ShowErrorToUser(exstr);
             e.Handled = true;
-            App.Current.Shutdown(1);
+            Shutdown(1);
         }
 
         private void ShowErrorToUser(string exstr)
