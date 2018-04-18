@@ -52,7 +52,7 @@ namespace AutumnBox.GUI
                 {
                     Logger.Info(this, "Try to start adb server ");
                     success = AdbHelper.StartServer();
-                    Logger.Info(this, success ? "adb server failed..." : "adb server success");
+                    Logger.Info(this, success ?  "adb server starts success": "adb server starts failed...");
                     if (!success)
                         App.Current.Dispatcher.Invoke(() =>
                         {
