@@ -21,7 +21,7 @@ namespace AutumnBox.GUI
 {
     partial class MainWindow
     {
-        public void FlowFinished(object sender, FinishedEventArgs<FlowResult> e)
+        private void FlowFinished(object sender, FinishedEventArgs<FlowResult> e)
         {
             this.Dispatcher.Invoke(() =>
             {
@@ -35,6 +35,7 @@ namespace AutumnBox.GUI
                     case nameof(AnzenbokusuActivator):
                     case nameof(FreezeYouActivator):
                     case nameof(AnzenbokusuFakeActivator):
+                    case nameof(UsersirActivator):
                         DevicesOwnerSetted((DeviceOwnerSetter)sender, (DeviceOwnerSetterResult)e.Result);
                         break;
                     case nameof(RecoveryFlasher):
@@ -49,7 +50,7 @@ namespace AutumnBox.GUI
                 }
             });
         }
-        public void PushFinished(AdvanceResult result)
+        private void PushFinished(AdvanceResult result)
         {
             if (result.ResultType == ResultType.Successful)
             {
