@@ -3,6 +3,7 @@
 ** date:  2018/4/15 0:36:55 (UTC +8:00)
 ** desc： ...
 *************************************************/
+//#define SHOW_METHOD_ERR
 using AutumnBox.Basic.Device;
 using AutumnBox.OpenFramework.Open;
 using CSScriptLibrary;
@@ -43,10 +44,18 @@ namespace AutumnBox.OpenFramework.Script
                 {
                     return (string)_script.GetStaticMethodWithArgs("*.__Name")();
                 }
+#if SHOW_METHOD_ERR
+                catch (Exception ex)
+                {
+                    OpenApi.Log.Warn(this, "__Name() Not found", ex);
+                    return _fileName;
+                }
+#else
                 catch
                 {
                     return _fileName;
                 }
+#endif
             }
         }
         /// <summary>
@@ -60,10 +69,18 @@ namespace AutumnBox.OpenFramework.Script
                 {
                     return (string)_script.GetStaticMethodWithArgs("*.__Desc")();
                 }
+#if SHOW_METHOD_ERR
+                catch (Exception ex)
+                {
+                    OpenApi.Log.Warn(this, "__Desc() Not found", ex);
+                    return "";
+                }
+#else
                 catch
                 {
                     return "";
                 }
+#endif
             }
         }
         /// <summary>
@@ -77,10 +94,18 @@ namespace AutumnBox.OpenFramework.Script
                 {
                     return (Version)_script.GetStaticMethodWithArgs("*.__Version")();
                 }
+#if SHOW_METHOD_ERR
+                catch (Exception ex)
+                {
+                    OpenApi.Log.Warn(this, "__Version() Not found", ex);
+                    return new Version(1, 0, 0, 0);
+                }
+#else
                 catch
                 {
                     return new Version(1, 0, 0, 0);
                 }
+#endif
             }
         }
         /// <summary>
@@ -94,10 +119,15 @@ namespace AutumnBox.OpenFramework.Script
                 {
                     return (string)_script.GetStaticMethodWithArgs("*.__ContactInfo")();
                 }
-                catch
+#if SHOW_METHOD_ERR
+                catch (Exception ex)
                 {
+                    OpenApi.Log.Warn(this, "__ContactInfo() Not found", ex);
                     return null;
                 }
+#else
+                catch { return null; }
+#endif
             }
         }
         /// <summary>
@@ -111,10 +141,18 @@ namespace AutumnBox.OpenFramework.Script
                 {
                     return (string)_script.GetStaticMethodWithArgs("*.__Auth")();
                 }
+#if SHOW_METHOD_ERR
+                catch (Exception ex)
+                {
+                    OpenApi.Log.Warn(this, "__Auth() Not found", ex);
+                    return OpenApi.Gui.GetPublicResouce<string>(this, "lbAnonymous");
+                }
+#else
                 catch
                 {
                     return OpenApi.Gui.GetPublicResouce<string>(this, "lbAnonymous");
                 }
+#endif
             }
         }
         /// <summary>
@@ -198,11 +236,16 @@ namespace AutumnBox.OpenFramework.Script
             {
                 return (bool)_script.GetStaticMethodWithArgs("*.OnStop", typeof(ScriptStopArgs))(new ScriptStopArgs(this));
             }
+#if SHOW_METHOD_ERR
             catch (Exception ex)
             {
                 OpenApi.Log.Warn(this, "Script stop Failed!", ex);
                 return false;
             }
+#else
+            catch { return false; }
+#endif
+
         }
         /// <summary>
         /// 运行前检测
@@ -216,11 +259,16 @@ namespace AutumnBox.OpenFramework.Script
                 return ((DeviceState)_script.GetStaticMethodWithArgs("*.__ReqState")())
                     .HasFlag(args.DeviceInfo.State);
             }
+#if SHOW_METHOD_ERR
             catch (Exception ex)
             {
-                OpenApi.Log.Warn(this, "Get required device state Failed!", ex);
+
+                OpenApi.Log.Warn(this, "__ReqState() Not found", ex);
                 return true;
-            }
+             }
+#else
+            catch { return true; }
+#endif
         }
         /// <summary>
         /// 析构
@@ -231,11 +279,14 @@ namespace AutumnBox.OpenFramework.Script
             {
                 _script.GetStaticMethodWithArgs("*.SDestory", typeof(ScriptDestoryArgs))(new ScriptDestoryArgs(this));
             }
+#if SHOW_METHOD_ERR
             catch (Exception ex)
             {
-                OpenApi.Log.Warn(this, "Script dispose failed", ex);
+                OpenApi.Log.Warn(this, "SDestory() Not found", ex);
             }
-
+#else
+            catch { }
+#endif
         }
     }
 }

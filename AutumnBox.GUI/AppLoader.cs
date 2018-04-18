@@ -27,6 +27,7 @@ namespace AutumnBox.GUI
         }
         public void PrintInfo()
         {
+            Logger.Debug(this,"XXX");
             Logger.Info(this, $"Run as " + (SystemHelper.HaveAdminPermission ? "Admin" : "Normal user"));
             Logger.Info(this, $"AutumnBox version: {SystemHelper.CurrentVersion}");
             Logger.Info(this, $"SDK version: {BuildInfo.SDK_VERSION}");
@@ -34,62 +35,78 @@ namespace AutumnBox.GUI
         }
         public async void LoadAsync()
         {
+            await Task.Run(() => { Load(); });
+        }
+        public void Load()
+        {
             //如果设置在启动时打开调试窗口
             if (Settings.Default.ShowDebuggingWindowNextLaunch)
             {
                 //打开调试窗口
-                new DebugWindow().Show();
+                App.Current.Dispatcher.Invoke(new DebugWindow().Show);
             }
             PrintInfo();
             //启动ADB服务
-            loadingWindowApi.SetProgress(10);
-            loadingWindowApi.SetTip(App.Current.Resources["ldmsgStartAdb"].ToString());
-            await Task.Run(() =>
+            App.Current.Dispatcher.Invoke(() =>
             {
-                bool success = false;
-                bool tryAgain = true;
-                while (!success)
-                {
-                    Logger.Info(this, "Try to start adb server ");
-                    success = AdbHelper.StartServer();
-                    Logger.Info(this, success ?  "adb server starts success": "adb server starts failed...");
-                    if (!success)
-                        App.Current.Dispatcher.Invoke(() =>
-                        {
-                            tryAgain = BoxHelper.ShowChoiceDialog(
-                            "msgWarning",
-                            "msgStartAdbServerFail",
-                            "btnExit", "btnIHaveCloseOtherPhoneHelper").ToBool();
-                        });
-                    if (tryAgain)
-                    {
-                        Thread.Sleep(2000);
-                    }
-                    else
-                    {
-                        App.Current.Dispatcher.Invoke(() =>
-                        {
-                            App.Current.Shutdown(App.HAVE_OTHER_PROCESS);
-                        });
-                    }
-                }
+                loadingWindowApi.SetProgress(10);
+                loadingWindowApi.SetTip(App.Current.Resources["ldmsgStartAdb"].ToString());
             });
-            //初始化主窗口
-            App.Current.MainWindow = new MainWindow();
-            //初始化拓展模块及其API框架
-            loadingWindowApi.SetProgress(60);
-            loadingWindowApi.SetTip(App.Current.Resources["ldmsgLoadingExtensions"].ToString());
+
+            bool success = false;
+            bool tryAgain = true;
+            while (!success)
+            {
+                Logger.Info(this, "Try to start adb server ");
+                success = AdbHelper.StartServer();
+                Logger.Info(this, success ? "adb server starts success" : "adb server starts failed...");
+                if (!success)
+                    App.Current.Dispatcher.Invoke(() =>
+                    {
+                        tryAgain = BoxHelper.ShowChoiceDialog(
+                        "msgWarning",
+                        "msgStartAdbServerFail",
+                        "btnExit", "btnIHaveCloseOtherPhoneHelper").ToBool();
+                    });
+                if (tryAgain)
+                {
+                    Thread.Sleep(2000);
+                }
+                else
+                {
+                    App.Current.Dispatcher.Invoke(() =>
+                    {
+                        App.Current.Shutdown(App.HAVE_OTHER_PROCESS);
+                    });
+                }
+            }
+            App.Current.Dispatcher.Invoke(() =>
+            {
+                //初始化主窗口
+                App.Current.MainWindow = new MainWindow();
+                //初始化拓展模块及其API框架
+                loadingWindowApi.SetProgress(60);
+                loadingWindowApi.SetTip(App.Current.Resources["ldmsgLoadingExtensions"].ToString());
+            });
             OpenFramewokManager.LoadApi();
             ScriptsManager.ReloadAll(this);
             ExtensionManager.LoadAllExtension(this);
+
             //启动设备拔插监听器
-            loadingWindowApi.SetProgress(80);
-            loadingWindowApi.SetTip(App.Current.Resources["ldmsgStartDeviceMonitor"].ToString());
+            App.Current.Dispatcher.Invoke(() =>
+            {
+                loadingWindowApi.SetProgress(80);
+                loadingWindowApi.SetTip(App.Current.Resources["ldmsgStartDeviceMonitor"].ToString());
+            });
             DevicesMonitor.Begin();
+
             //加载完成,启动主界面
-            loadingWindowApi.SetProgress(100);
-            loadingWindowApi.Finish();
-            App.Current.MainWindow.Show();
+            App.Current.Dispatcher.Invoke(() =>
+            {
+                loadingWindowApi.SetProgress(100);
+                loadingWindowApi.Finish();
+                App.Current.MainWindow.Show();
+            });
         }
     }
 }
