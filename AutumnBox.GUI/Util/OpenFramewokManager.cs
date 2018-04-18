@@ -32,6 +32,8 @@ namespace AutumnBox.GUI.Util
         {
             public string CurrentLanguageCode => App.Current.Resources["LanguageCode"].ToString();
 
+            public bool IsRunAsAdmin => SystemHelper.HaveAdminPermission;
+
             public Window GetMainWindow(Context context)
             {
                 return App.Current.MainWindow;
