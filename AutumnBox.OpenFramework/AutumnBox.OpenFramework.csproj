@@ -111,7 +111,7 @@
 rd /S /Q  google
 del /S AutumnBox.Support.*
 del /S Newtonsoft.Json.*
-del /S *.pdb
+del /S CSScriptLibrary.*
 )</PostBuildEvent>
   </PropertyGroup>
 </Project>
