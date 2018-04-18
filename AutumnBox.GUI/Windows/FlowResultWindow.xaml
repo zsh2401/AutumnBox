@@ -5,16 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AutumnBox.GUI.Windows"
         mc:Ignorable="d"
-        Title="FlowResultWindow" Height="495.5" Width="588" ShowInTaskbar="False" WindowStyle="None" ResizeMode="NoResize" Background="{DynamicResource BroderBrushKey}" MouseDown="Window_MouseDown" WindowStartupLocation="CenterOwner" Loaded="Window_Loaded">
+        Title="FlowResultWindow" Height="495.5" Width="452" ShowInTaskbar="False" WindowStyle="None" ResizeMode="NoResize" Background="{DynamicResource BroderBrushKey}" MouseDown="Window_MouseDown" WindowStartupLocation="CenterOwner" Loaded="Window_Loaded">
     <Grid Margin="3,3,3,3" Background="{DynamicResource BackgroundBrushKey}">
         <Button Style="{DynamicResource AtmbxButtonStyle}"  x:Name="BtnClose"   Content="{DynamicResource btnClose}" Margin="4,0,10,7" Background="#007C7272" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  RenderTransformOrigin="0.494,0.085" Click="BtnClose_Click" Height="35" VerticalAlignment="Bottom"/>
         <TextBlock Style="{DynamicResource AtmbxTextBlockStyle}" x:Name="TxtBTitle" Margin="10,10,10,0" TextWrapping="Wrap" Text="TheFuck" VerticalAlignment="Top" Height="88" FontSize="48" />
         <TextBlock Style="{DynamicResource AtmbxTextBlockStyle}" HorizontalAlignment="Left" Margin="10,103,0,0" TextWrapping="Wrap" Text="{DynamicResource Message}" VerticalAlignment="Top" FontSize="20" Width="109" />
         <TextBlock Style="{DynamicResource AtmbxTextBlockStyle}" x:Name="TxtBAdviseTip" HorizontalAlignment="Left" Margin="10,179,0,0" TextWrapping="Wrap" Text="{DynamicResource Advise}" VerticalAlignment="Top" FontSize="20" Width="109" />
         <TextBlock Style="{DynamicResource AtmbxTextBlockStyle}" x:Name="TxtBMessage" Margin="124,105,0,0" TextWrapping="Wrap" Text="..." VerticalAlignment="Top" Height="74" FontSize="20" />
-        <TextBlock Style="{DynamicResource AtmbxTextBlockStyle}" x:Name="TxtBAdvise" Margin="124,179,10,0" TextWrapping="Wrap" Text="..." VerticalAlignment="Top" Height="108" FontSize="18" />
+        <TextBlock Style="{DynamicResource AtmbxTextBlockStyle}" x:Name="TxtBAdvise" Margin="124,179,10,0" TextWrapping="Wrap" Text="..." VerticalAlignment="Top" Height="99" FontSize="18" />
         <TextBox BorderBrush="{DynamicResource BroderBrushKey}" Foreground="{DynamicResource ForegroundBrushKey}" x:Name="TxtBOutput" Margin="4,0,10,47" TextWrapping="Wrap" Text="Output" IsReadOnly="True" Height="117" VerticalAlignment="Bottom"  Background="{x:Null}" />
-        <Button  Style="{DynamicResource AtmbxButtonStyle}" x:Name="ButtonCopy"   Content="{DynamicResource btnCopy}" Margin="478,0,10,163" Background="#007C7272"   HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  RenderTransformOrigin="0.494,0.085" FontSize="10" Click="ButtonCopy_Click" Height="24" VerticalAlignment="Bottom"/>
-        <TextBlock Style="{DynamicResource AtmbxTextBlockStyle}" HorizontalAlignment="Left" Margin="4,0,0,170" TextWrapping="Wrap" Text="{DynamicResource OutputTip}" Width="474" Height="28" VerticalAlignment="Bottom" RenderTransformOrigin="0.5,0.5" />
+        <Button  Style="{DynamicResource AtmbxButtonStyle}" x:Name="ButtonCopy"   Content="{DynamicResource btnCopy}" Margin="0,0,10,163" Background="#007C7272"   HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  RenderTransformOrigin="0.494,0.085" FontSize="10" Click="ButtonCopy_Click" Height="24" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="94"/>
+        <TextBlock Style="{DynamicResource AtmbxTextBlockStyle}" Margin="4,0,109,170" TextWrapping="Wrap" Text="{DynamicResource OutputTip}" Height="37" VerticalAlignment="Bottom" RenderTransformOrigin="0.5,0.5" />
     </Grid>
 </Window>

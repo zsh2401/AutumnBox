@@ -23,9 +23,17 @@ namespace AutumnBox.Support.Log
 
         public readonly static StringBuilder logBuffer = new StringBuilder();
 
+        [Conditional("DEBUG")]
         public static void Debug(object senderOrTag, object message)
         {
             var str = MakeText(senderOrTag, "Debug", message);
+            Debugger.Log(4, null, str);
+            logBuffer.Append(str);
+            WriteToFile(str);
+        }
+        [Conditional("DEBUG")]
+        public static void DebugWarn(object senderOrTag, object message,Exception ex=null) {
+            var str = MakeText(senderOrTag, "Debug-Warn", message,ex);
             Debugger.Log(4, null, str);
             logBuffer.Append(str);
             WriteToFile(str);
