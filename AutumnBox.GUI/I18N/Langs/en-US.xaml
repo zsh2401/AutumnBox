@@ -9,6 +9,7 @@
    
     <s:String x:Key="AppDesc">Open source,free,simple,GUI adb toolbox</s:String>
     <!--按钮-->
+    <s:String x:Key="btnGoToEnd">Go to end</s:String>
     <s:String x:Key="btnUsersirAct">Activate USER SIR</s:String>
     <s:String x:Key="btnAccept">Accpet</s:String>
     <s:String x:Key="btnDeny">Deny</s:String>
