@@ -155,8 +155,8 @@
     <s:String x:Key="warrningNeedRootAccess">此功能需要root权限!但根据本软件的检测,您似乎没有root权限,当然,也有可能是我判断错了,确定要继续吗?</s:String>
     <s:String x:Key="msgDoing">正在进行操作,稍安勿躁</s:String>
     <s:String x:Key="msgUnlockSystemTip">注意,这不是解除Bootloader锁! 这个功能是帮助已经拥有root权限的设备使用的,该功能可让你获得完整的root权限!解锁系统分区并随意修改!</s:String>
-    <s:String x:Key="msgStartBreventServiceFail">启动黑域服务时,似乎出现了一些问题,请将此处截图给黑域开发者或AutumnBox开发者</s:String>
-    <s:String x:Key="msgStartBreventServiceSuc">现在,您的设备应该已经成功激活了黑域!但为了保险起见,将会展示脚本输出的信息</s:String>
+    <s:String x:Key="msgStartBreventServiceFail">启动黑阈服务时,似乎出现了一些问题,请将此处截图给黑阈开发者或AutumnBox开发者</s:String>
+    <s:String x:Key="msgStartBreventServiceSuc">现在,您的设备应该已经成功激活了黑阈!但为了保险起见,将会展示脚本输出的信息</s:String>
     <s:String x:Key="msgShellChoiceTip">检测到您是Windows10 系统,请问您想用哪种命令行界面?如果您不懂什么是Powershell,请用传统的CMD</s:String>
     <s:String x:Key="msgSaveSuccessful">保存成功!</s:String>
     <s:String x:Key="msgIceAct">1.请前往手机->账户设置,将所有账户删除!(包括谷歌账户/手机云服务账户等)
