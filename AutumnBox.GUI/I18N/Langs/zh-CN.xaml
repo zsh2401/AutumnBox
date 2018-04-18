@@ -80,7 +80,7 @@
     <s:String x:Key="btnUnhide">显示</s:String>
     <s:String x:Key="btnIHaveCloseOtherPhoneHelper">我已关闭其它助手</s:String>
     <s:String x:Key="btnExit">退出</s:String>
-    <s:String x:Key="btnStartBrventService">启动黑域服务</s:String>
+    <s:String x:Key="btnStartBrventService">启动黑阈服务</s:String>
     <s:String x:Key="btnClose">关闭</s:String>
     <s:String x:Key="btnAgree">同意</s:String>
     <s:String x:Key="btnCancel">取消</s:String>
@@ -153,8 +153,8 @@
     <s:String x:Key="warrningNeedRootAccess">此功能需要root权限!但根据本软件的检测,您似乎没有root权限,当然,也有可能是我判断错了,确定要继续吗?</s:String>
     <s:String x:Key="msgDoing">正在进行操作,稍安勿躁</s:String>
     <s:String x:Key="msgUnlockSystemTip">注意,这不是解除Bootloader锁! 这个功能是帮助已经拥有root权限的设备使用的,该功能可让你获得完整的root权限!解锁系统分区并随意修改!</s:String>
-    <s:String x:Key="msgStartBreventServiceFail">启动黑域服务时,似乎出现了一些问题,请将此处截图给黑域开发者或AutumnBox开发者</s:String>
-    <s:String x:Key="msgStartBreventServiceSuc">现在,您的设备应该已经成功激活了黑域!但为了保险起见,将会展示脚本输出的信息</s:String>
+    <s:String x:Key="msgStartBreventServiceFail">启动黑阈服务时,似乎出现了一些问题,请将此处截图给黑阈开发者或AutumnBox开发者</s:String>
+    <s:String x:Key="msgStartBreventServiceSuc">现在,您的设备应该已经成功激活了黑阈!但为了保险起见,将会展示脚本输出的信息</s:String>
     <s:String x:Key="msgShellChoiceTip">检测到您是Windows10 系统,请问您想用哪种命令行界面?&#x0a;如果您不懂什么是Powershell,请用传统的CMD</s:String>
     <s:String x:Key="msgSaveSuccessful">保存成功!</s:String>
     <s:String x:Key="msgIceAct">1.请前往手机->账户设置,将所有账户删除!(包括谷歌账户/手机云服务账户等)
@@ -173,7 +173,7 @@
     <s:String x:Key="msgPlsInstallGreenifyFirst">请先安装绿色守护!</s:String>
     <s:String x:Key="msgPlsInstallFreezeYouFirst">请先安装FreezeYou!</s:String>
     <s:String x:Key="msgPlsInstallAirForzenFirst">请先安装空调狗!</s:String>
-    <s:String x:Key="msgPlsInstallBreventFirst">请先安装黑域!</s:String>
+    <s:String x:Key="msgPlsInstallBreventFirst">请先安装黑阈!</s:String>
     <s:String x:Key="msgPlsInstallIslandFirst">请先安装Island!!</s:String>
     <s:String x:Key="msgPlsInstallIceBoxFirst">请先安装冰箱!!</s:String>
     <s:String x:Key="msgPlsInstallStopAppFirst">请先安装小黑屋!!</s:String>
@@ -226,8 +226,8 @@
     <s:String x:Key="advIceActHaveOtherUser">请关闭应用双开或删除别的用户(注意,是用户)</s:String>
     <s:String x:Key="advIceActUnknowError">请将下方的完整输出复制,并在该App的酷安评论区提问或联系AutumnBox开发者</s:String>
     <s:String x:Key="advIceBoxActUnknowError">请将下方的完整输出复制,并在冰箱评论区提问或联系AutumnBox开发者</s:String>
-    <s:String x:Key="errormsgBrventActivtedUnsuccess">可能导致失败的原因:您未安装黑域;打开黑域界面失败;指令过期</s:String>
-    <s:String x:Key="advsBrventActivtedUnsuccess">请确保您安装了最新的黑域并至少打开了黑域界面,或您可尝试更新本工具箱</s:String>
+    <s:String x:Key="errormsgBrventActivtedUnsuccess">可能导致失败的原因:您未安装黑阈;打开黑阈界面失败;指令过期</s:String>
+    <s:String x:Key="advsBrventActivtedUnsuccess">请确保您安装了最新的黑阈并至少打开了黑阈界面,或您可尝试更新本工具箱</s:String>
     <s:String x:Key="advsFileSendUnsuccess">您可以截图后,给zsh2401@gmail.com发送邮件</s:String>
     <s:String x:Key="advsIceBoxHaveNoInstall">请安装冰箱App</s:String>
     <!--用于结果显示窗的文字-->

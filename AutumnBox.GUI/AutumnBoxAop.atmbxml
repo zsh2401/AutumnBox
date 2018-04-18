@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <objects xmlns="http://www.springframework.net" xmlns:aop="http://www.springframework.net/aop">
-  <description>秋之盒AOP</description>
+  <description>AutumnBox-AOP</description>
 
   <!-- 任务 -->
   <object id="poweronFuncsUXImp" type="AutumnBox.GUI.UI.FuncPanels.PoweronFuncsUx.PoweronFuncsUXImp"></object>
