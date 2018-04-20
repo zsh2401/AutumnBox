@@ -17,11 +17,17 @@ namespace AutumnBox.Basic.Device
     public class DeviceSoftwareInfoGetter
     {
         private readonly static CommandExecuter executer;
+
+        /// <summary>
+        /// 静态初始化
+        /// </summary>
         static DeviceSoftwareInfoGetter()
         {
             executer = new CommandExecuter();
         }
+
         private readonly DeviceSerialNumber serial;
+
         /// <summary>
         /// 创建DeviceSoftwareInfoGetter的新实例
         /// </summary>
@@ -30,7 +36,7 @@ namespace AutumnBox.Basic.Device
         {
             this.serial = serial;
         }
-        private const string ipPattern = @"(?<ip>\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})";
+        
         /// <summary>
         /// 检测ROOT是否可以使用
         /// </summary>
@@ -39,6 +45,8 @@ namespace AutumnBox.Basic.Device
         {
             return executer.QuicklyShell(serial,"su -c ls").GetExitCode() == 0;
         }
+
+        private const string ipPattern = @"(?<ip>\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})";
         /// <summary>
         /// 获取设备的局域网IP
         /// </summary>
@@ -62,6 +70,7 @@ namespace AutumnBox.Basic.Device
             }
             return null;
         }
+
         /// <summary>
         /// 检测设备是否安装某个应用
         /// </summary>

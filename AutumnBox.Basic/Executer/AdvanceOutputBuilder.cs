@@ -15,6 +15,7 @@ namespace AutumnBox.Basic.Executer
         /// 返回码
         /// </summary>
         public int? ExitCode { get; set; } = null;
+
         /// <summary>
         /// 获取结果
         /// </summary>
@@ -25,12 +26,23 @@ namespace AutumnBox.Basic.Executer
                 return new AdvanceOutput(this.ToOutput(), ExitCode??24010);
             }
         }
+
         /// <summary>
         /// 清空构造器
         /// </summary>
-        public new void Clear() {
+        public override void Clear() {
             base.Clear();
             ExitCode = null;
         }
+
+        /// <summary>
+        /// 字符化
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return Result.ToString();
+        }
+
     }
 }

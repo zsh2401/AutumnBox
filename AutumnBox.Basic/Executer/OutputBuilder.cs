@@ -24,6 +24,7 @@ namespace AutumnBox.Basic.Executer
             errSb = new StringBuilder();
             allSb = new StringBuilder();
         }
+
         /// <summary>
         /// 添加一段标准输出
         /// </summary>
@@ -34,6 +35,7 @@ namespace AutumnBox.Basic.Executer
             allSb.AppendLine(text);
             LeastLine = text;
         }
+
         /// <summary>
         /// 添加一段标准错误
         /// </summary>
@@ -44,6 +46,7 @@ namespace AutumnBox.Basic.Executer
             allSb.AppendLine(text);
             LeastLine = text;
         }
+
         /// <summary>
         /// 增加
         /// </summary>
@@ -53,6 +56,7 @@ namespace AutumnBox.Basic.Executer
             errSb.Append(builder.errSb);
             allSb.Append(builder.allSb);
         }
+
         /// <summary>
         /// 增加
         /// </summary>
@@ -62,15 +66,17 @@ namespace AutumnBox.Basic.Executer
             errSb.Append(output.Error);
             allSb.Append(output.All);
         }
+
         /// <summary>
         /// 清空
         /// </summary>
-        public void Clear()
+        public virtual void Clear()
         {
             outSb.Clear();
             errSb.Clear();
             allSb.Clear();
         }
+
         /// <summary>
         /// 监听一个IOutputable的输出并记录
         /// </summary>
@@ -79,6 +85,7 @@ namespace AutumnBox.Basic.Executer
         {
             sender.OutputReceived += Sender_OutputReceived;
         }
+
         /// <summary>
         /// 取消监听一个IOutputable
         /// </summary>
@@ -87,6 +94,7 @@ namespace AutumnBox.Basic.Executer
         {
             sender.OutputReceived -= Sender_OutputReceived;
         }
+
         private void Sender_OutputReceived(object sender, OutputReceivedEventArgs e)
         {
             if (e.IsError)
@@ -98,10 +106,12 @@ namespace AutumnBox.Basic.Executer
                 AppendOut(e.Text);
             }
         }
+
         /// <summary>
         /// 最新的一行输出
         /// </summary>
         public string LeastLine { get; private set; }
+
         /// <summary>
         /// 获取结果,建议使用Result属性
         /// </summary>
@@ -110,6 +120,7 @@ namespace AutumnBox.Basic.Executer
         {
             return new Output(allSb.ToString(), outSb.ToString(), errSb.ToString());
         }
+
         /// <summary>
         /// 获取结果
         /// </summary>
@@ -119,6 +130,15 @@ namespace AutumnBox.Basic.Executer
             {
                 return ToOutput();
             }
+        }
+
+        /// <summary>
+        /// 字符化
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return Result.ToString();
         }
     }
 }
