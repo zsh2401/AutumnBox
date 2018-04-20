@@ -16,11 +16,17 @@ namespace AutumnBox.Basic.Executer
     using AutumnBox.Basic.Util;
     using AutumnBox.Support.Log;
     using System;
+    using System.Collections.Generic;
+
     /// <summary>
     /// 输出封装类
     /// </summary>
-    public class Output : IPrintable
+    public class Output : IPrintable, IEquatable<Output>
     {
+        /// <summary>
+        /// 空输出，此字段为只读
+        /// </summary>
+        public static readonly Output Empty = new Output(String.Empty, String.Empty, String.Empty);
         /// <summary>
         /// 所有的输出
         /// </summary>
@@ -80,11 +86,12 @@ namespace AutumnBox.Basic.Executer
         /// <summary>
         /// 构建一个空的Output对象
         /// </summary>
+        [Obsolete("如果需要空输出，请使用Output.Empty",true)]
         public Output()
         {
-            this.Out = "";
-            this.Error = "";
-            this.All = "";
+            Out = "";
+            Error = "";
+            All = "";
         }
 
         /// <summary>
@@ -153,6 +160,70 @@ namespace AutumnBox.Basic.Executer
             {
                 Logger.Debug(this, $"PrintOnLog():{Environment.NewLine}{ToString()}");
             }
+        }
+
+        /// <summary>
+        /// 比较
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as Output);
+        }
+
+        /// <summary>
+        /// 比较
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
+        public bool Equals(Output other)
+        {
+            return other != null &&
+                   EqualityComparer<string[]>.Default.Equals(LineAll, other.LineAll) &&
+                   EqualityComparer<string[]>.Default.Equals(LineOut, other.LineOut) &&
+                   EqualityComparer<string[]>.Default.Equals(LineError, other.LineError) &&
+                   All == other.All &&
+                   Out == other.Out &&
+                   Error == other.Error;
+        }
+
+        /// <summary>
+        /// 获取HashCode
+        /// </summary>
+        /// <returns></returns>
+        public override int GetHashCode()
+        {
+            var hashCode = -1661239530;
+            hashCode = hashCode * -1521134295 + EqualityComparer<string[]>.Default.GetHashCode(LineAll);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string[]>.Default.GetHashCode(LineOut);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string[]>.Default.GetHashCode(LineError);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(All);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Out);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Error);
+            return hashCode;
+        }
+
+        /// <summary>
+        /// 比较
+        /// </summary>
+        /// <param name="output1"></param>
+        /// <param name="output2"></param>
+        /// <returns></returns>
+        public static bool operator ==(Output output1, Output output2)
+        {
+            return EqualityComparer<Output>.Default.Equals(output1, output2);
+        }
+
+        /// <summary>
+        /// 不等
+        /// </summary>
+        /// <param name="output1"></param>
+        /// <param name="output2"></param>
+        /// <returns></returns>
+        public static bool operator !=(Output output1, Output output2)
+        {
+            return !(output1 == output2);
         }
     }
 }

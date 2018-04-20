@@ -24,10 +24,12 @@ namespace AutumnBox.Basic.Device
         /// 设备序列号
         /// </summary>
         public DeviceSerialNumber Serial { get; set; }
+
         /// <summary>
         /// 设备的状态
         /// </summary>
         public DeviceState State { get; set; }
+
         /// <summary>
         /// 构建一个设备基础信息类
         /// </summary>
@@ -42,6 +44,7 @@ namespace AutumnBox.Basic.Device
                 State = state,
             };
         }
+
         /// <summary>
         /// 获取如 serial state 的字符串
         /// </summary>
@@ -50,6 +53,7 @@ namespace AutumnBox.Basic.Device
         {
             return $"{Serial.ToString()} {State}";
         }
+
         /// <summary>
         /// 比较是否相等
         /// </summary>
@@ -60,6 +64,7 @@ namespace AutumnBox.Basic.Device
         {
             return left.Equals(right);
         }
+
         /// <summary>
         /// 比较是否不等
         /// </summary>
@@ -70,6 +75,7 @@ namespace AutumnBox.Basic.Device
         {
             return !left.Equals(right);
         }
+
         /// <summary>
         /// 隐式转换为string
         /// </summary>
@@ -78,6 +84,7 @@ namespace AutumnBox.Basic.Device
         {
             return info.ToString();
         }
+
         /// <summary>
         /// 隐式转换DeviceBasicInfo为Serial
         /// </summary>
@@ -86,6 +93,7 @@ namespace AutumnBox.Basic.Device
         {
             return info.Serial;
         }
+
         /// <summary>
         /// 隐式转换DeviceBasicInfo为DeviceState
         /// </summary>
@@ -94,6 +102,7 @@ namespace AutumnBox.Basic.Device
         {
             return info.State;
         }
+
         /// <summary>
         /// 比较两个DeviceBasicInfo是否相等
         /// </summary>
@@ -103,6 +112,7 @@ namespace AutumnBox.Basic.Device
         {
             return this.State == other.State && this.Serial == other.Serial;
         }
+
         /// <summary>
         /// 比较两个DeviceBasicInfo是否相等
         /// </summary>
@@ -115,6 +125,7 @@ namespace AutumnBox.Basic.Device
             }
             return base.Equals(obj);
         }
+
         /// <summary>
         /// 获取HashCode()
         /// </summary>

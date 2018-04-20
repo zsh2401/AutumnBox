@@ -31,6 +31,8 @@ namespace AutumnBox.OpenFramework
             switch (assName)
             {
                 case BuildInfo.AUTUMNBOX_GUI_ASSEMBLY_NAME:
+                case BuildInfo.AUTUMNBOX_CONSOLE_TESTER_ASSEMBLY_NAME:
+                case BuildInfo.AUTUMNBOX_BASIC_ASSEMBLY_NAME:
                     return ContextPermissionLevel.Mid;
                 case BuildInfo.AUTUMNBOX_OPENFRAMEWORK_ASSEMBLY_NAME:
                     return ContextPermissionLevel.High;

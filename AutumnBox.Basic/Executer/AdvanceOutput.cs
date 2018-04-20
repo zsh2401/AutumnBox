@@ -6,15 +6,25 @@
 
 using AutumnBox.Support.Log;
 using System;
+using System.Collections.Generic;
 
 namespace AutumnBox.Basic.Executer
 {
     /// <summary>
     /// 高级输出,相比父类多了个返回码
     /// </summary>
-    public class AdvanceOutput : Output
+    public class AdvanceOutput : Output, IEquatable<AdvanceOutput>
     {
+        /// <summary>
+        /// 返回码
+        /// </summary>
         private int exitCode;
+
+        /// <summary>
+        /// 空输出，此字段为只读
+        /// </summary>
+        public static new readonly AdvanceOutput Empty = new AdvanceOutput(Output.Empty, 0);
+
         /// <summary>
         /// 获取返回码
         /// </summary>
@@ -23,6 +33,7 @@ namespace AutumnBox.Basic.Executer
         {
             return exitCode;
         }
+
         /// <summary>
         /// 根据返回码判断是否成功
         /// </summary>
@@ -33,6 +44,7 @@ namespace AutumnBox.Basic.Executer
                 return GetExitCode() == 0;
             }
         }
+
         /// <summary>
         /// 构建
         /// </summary>
@@ -48,7 +60,7 @@ namespace AutumnBox.Basic.Executer
         /// </summary>
         /// <param name="tagOrSender"></param>
         /// <param name="printOnRelease">log级别</param>
-        public override void PrintOnLog(object tagOrSender, bool printOnRelease=false)
+        public override void PrintOnLog(object tagOrSender, bool printOnRelease = false)
         {
             if (printOnRelease)
             {
@@ -63,6 +75,7 @@ namespace AutumnBox.Basic.Executer
                     $"{ToString()}");
             }
         }
+
         /// <summary>
         /// 自定义tag,并打印AdvanceOutput在控制台
         /// </summary>
@@ -72,6 +85,73 @@ namespace AutumnBox.Basic.Executer
             Console.WriteLine($"{tagOrSender}.{this.GetType().Name}.PrintOnLog():{Environment.NewLine}" +
                 $"Exit Code: {exitCode}" +
                 $"{ToString()}");
+        }
+
+        /// <summary>
+        /// 与other比较是否相等
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as AdvanceOutput);
+        }
+
+        /// <summary>
+        /// 与other比较是否相等
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
+        public bool Equals(AdvanceOutput other)
+        {
+            return other != null &&
+                   base.Equals(other) &&
+                   exitCode == other.exitCode &&
+                   IsSuccessful == other.IsSuccessful;
+        }
+
+        /// <summary>
+        /// 哈希值
+        /// </summary>
+        /// <returns></returns>
+        public override int GetHashCode()
+        {
+            var hashCode = -1910581217;
+            hashCode = hashCode * -1521134295 + base.GetHashCode();
+            hashCode = hashCode * -1521134295 + exitCode.GetHashCode();
+            hashCode = hashCode * -1521134295 + IsSuccessful.GetHashCode();
+            return hashCode;
+        }
+
+        /// <summary>
+        /// 字符化
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return $"ExitCode: {exitCode}{Environment.NewLine}{base.ToString()}";
+        }
+
+        /// <summary>
+        /// 比较
+        /// </summary>
+        /// <param name="output1"></param>
+        /// <param name="output2"></param>
+        /// <returns></returns>
+        public static bool operator ==(AdvanceOutput output1, AdvanceOutput output2)
+        {
+            return EqualityComparer<AdvanceOutput>.Default.Equals(output1, output2);
+        }
+
+        /// <summary>
+        /// 不等
+        /// </summary>
+        /// <param name="output1"></param>
+        /// <param name="output2"></param>
+        /// <returns></returns>
+        public static bool operator !=(AdvanceOutput output1, AdvanceOutput output2)
+        {
+            return !(output1 == output2);
         }
     }
 }

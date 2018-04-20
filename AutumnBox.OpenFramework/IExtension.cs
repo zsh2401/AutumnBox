@@ -29,6 +29,9 @@ namespace AutumnBox.OpenFramework
     /// 拓展运行检测参数
     /// </summary>
     public class ExtensionRunCheckArgs {
+        /// <summary>
+        /// 设备信息
+        /// </summary>
         public DeviceBasicInfo DeviceInfo { get; set; }
         public ExtensionRunCheckArgs(DeviceBasicInfo device) {
             this.DeviceInfo = device;
