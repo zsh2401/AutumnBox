@@ -17,6 +17,7 @@ using AutumnBox.GUI.I18N;
 using AutumnBox.GUI.Properties;
 using AutumnBox.GUI.Windows;
 using AutumnBox.OpenFramework;
+using AutumnBox.OpenFramework.Internal;
 using AutumnBox.Support.Log;
 using Spring.Context;
 using Spring.Context.Support;
@@ -35,7 +36,7 @@ namespace AutumnBox.GUI
     {
 
         internal const int HAVE_OTHER_PROCESS = 25364;
-
+        internal static FrameworkManager OpenFrameworkManager { get; private set; }
         internal static IApplicationContext MainAopContext { get; private set; }
 
         internal static Context OpenFrameworkContext { get; private set; }
@@ -46,6 +47,7 @@ namespace AutumnBox.GUI
         {
             MainAopContext = new XmlApplicationContext("AutumnBoxAop.atmbxml");
             OpenFrameworkContext = new AppContext();
+            OpenFrameworkManager = new FrameworkManager(OpenFrameworkContext);
         }
 
         public static new App Current { get; private set; }

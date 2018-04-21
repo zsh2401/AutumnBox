@@ -55,7 +55,7 @@ namespace AutumnBox.Basic.MultipleDevices
         {
             try
             {
-                var matches = _deviceRegex.Matches(o.ToString());
+                var matches = _deviceRegex.Matches(o.All);
                 foreach (Match match in matches)
                 {
                     devList.Add(DeviceBasicInfo.Make(
@@ -72,7 +72,7 @@ namespace AutumnBox.Basic.MultipleDevices
         {
             try
             {
-                var matches = _deviceRegex.Matches(o.ToString());
+                var matches = _deviceRegex.Matches(o.All);
                 foreach (Match match in matches)
                 {
                     devList.Add(DeviceBasicInfo.Make(
@@ -82,7 +82,6 @@ namespace AutumnBox.Basic.MultipleDevices
             }
             catch (Exception ex)
             {
-
                 Logger.Warn("DevicesGetter","fastboot devices parse failed", ex);
             }
         }

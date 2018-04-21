@@ -5,6 +5,9 @@
 *************************************************/
 namespace AutumnBox.OpenFramework.Script
 {
+    /// <summary>
+    /// 脚本初始化参数
+    /// </summary>
     public class ScriptInitArgs:IScriptArgs
     {
         /// <summary>

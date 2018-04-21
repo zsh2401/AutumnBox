@@ -77,11 +77,25 @@ namespace AutumnBox.Basic.MultipleDevices
             private readonly int _interval;
             private Thread coreThread;
             private IDevicesGetter _devGetter;
-            public DevicesChangedHandler DevicesChanged;
+            public event DevicesChangedHandler DevicesChanged
+            {
+                add
+                {
+                    DevicesChangedInner += value;
+                    value?.Invoke(this, new DevicesChangedEventArgs(crtDevices));
+                }
+                remove
+                {
+                    DevicesChangedInner -= value;
+                }
+            }
+            private event DevicesChangedHandler DevicesChangedInner;
+            private DevicesList crtDevices;
             public DevicesMonitorCore(int interval = defaultInterval)
             {
                 this._interval = interval;
                 _devGetter = new DevicesGetter();
+                crtDevices = new DevicesList();
             }
             public void Begin()
             {
@@ -92,16 +106,15 @@ namespace AutumnBox.Basic.MultipleDevices
             }
             private void Listen()
             {
-                var last = new DevicesList();
                 while (true)
                 {
                     Thread.Sleep(_interval);
-                    var now = _devGetter.GetDevices();
-                    if (now != last)
+                    var new_ = _devGetter.GetDevices();
+                    if (new_ != crtDevices)
                     {
                         Logger.Info(this, "Devices Changed");
-                        last = now;
-                        this.DevicesChanged?.Invoke(this, new DevicesChangedEventArgs(now));
+                        crtDevices = new_;
+                        this.DevicesChangedInner?.Invoke(this, new DevicesChangedEventArgs(crtDevices));
                     }
                 }
             }

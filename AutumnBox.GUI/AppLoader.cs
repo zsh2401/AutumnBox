@@ -89,8 +89,8 @@ namespace AutumnBox.GUI
                 loadingWindowApi.SetTip(App.Current.Resources["ldmsgLoadingExtensions"].ToString());
             });
             OpenFrameworkManager.LoadApi();
-            ScriptsManager.ReloadAll(this);
-            ExtensionManager.LoadAllExtension(this);
+            App.OpenFrameworkManager.ReloadAllScript();
+            App.OpenFrameworkManager.LoadAllExtension();
 
             //启动设备拔插监听器
             App.Current.Dispatcher.Invoke(() =>

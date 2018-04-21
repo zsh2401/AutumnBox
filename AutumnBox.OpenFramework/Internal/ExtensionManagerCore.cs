@@ -15,11 +15,11 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.OpenFramework.Internal
 {
-    internal sealed class ExtensionManagerInner : Context
+    internal sealed class ExtensionManagerCore : Context
     {
         public List<IAutumnBoxExtension> Extensions { get; private set; }
 
-        public ExtensionManagerInner()
+        public ExtensionManagerCore()
         {
             Extensions = new List<IAutumnBoxExtension>();
             if (Directory.Exists(ExtensionManager.ExtensionsPath) == false)
@@ -88,7 +88,7 @@ namespace AutumnBox.OpenFramework.Internal
             return ContextPermissionLevel.High;
         }
 
-        ~ExtensionManagerInner()
+        ~ExtensionManagerCore()
         {
             DestoryArgs args = new DestoryArgs();
             Extensions.ForEach((ext) =>

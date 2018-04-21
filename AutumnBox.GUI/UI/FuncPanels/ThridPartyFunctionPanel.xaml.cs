@@ -53,12 +53,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
         }
         public void Refresh(DeviceBasicInfo deviceSimpleInfo)
         {
-            var stdExt = ExtensionManager.GetExtensions(App.OpenFrameworkContext);
-            var scripts = ScriptsManager.GetScripts(App.OpenFrameworkContext);
-            var extensions = new List<IExtension>();
-            extensions.AddRange(stdExt);
-            extensions.AddRange(scripts);
-            ListBoxModule.ItemsSource = extensions;
+            ListBoxModule.ItemsSource = App.OpenFrameworkManager.GetExtensions();
             currentDevice = deviceSimpleInfo;
             ListBoxModule.SelectedIndex = -1;
         }
