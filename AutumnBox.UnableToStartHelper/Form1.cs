@@ -12,7 +12,7 @@ namespace AutumnBox.UnableToStartHelper
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start("http://atmb.top/download/dotnet/");
+            Process.Start("http://www.atmb.top/download/dotnet/");
         }
 
         private void button1_Click(object sender, System.EventArgs e)
