@@ -81,7 +81,7 @@
         <Label Style="{DynamicResource AtmbxLabelStyle}" FontSize="18" Content="{DynamicResource lbSetDeviceOwner}" HorizontalAlignment="Left" Margin="13,447,0,0" VerticalAlignment="Top" Width="355"/>
         <Label Style="{DynamicResource AtmbxLabelStyle}" FontSize="18" Content="{DynamicResource lbRunScript}" HorizontalAlignment="Left" Margin="10,306,0,0" VerticalAlignment="Top" Width="355"/>
         <Label Style="{DynamicResource AtmbxLabelStyle}" FontSize="18" Content="{DynamicResource lbOpenNetDebugging}" HorizontalAlignment="Left" Margin="0,750,0,0" VerticalAlignment="Top" Width="355"/>
-        <Label Background="{DynamicResource BroderBrushKey}" Height="1"  HorizontalAlignment="Left" Margin="0,236,0,0" VerticalAlignment="Top" Width="497"/>
+        <Label Background="{DynamicResource BroderBrushKey}" Height="1" Margin="0,236,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="497"/>
         <Label Background="{DynamicResource BroderBrushKey}" Height="1" HorizontalAlignment="Left" Margin="469,288,0,0" VerticalAlignment="Top" Width="124" RenderTransformOrigin="0.5,0.5">
             <Label.RenderTransform>
                 <TransformGroup>
