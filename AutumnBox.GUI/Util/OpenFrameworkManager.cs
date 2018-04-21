@@ -125,6 +125,7 @@ namespace AutumnBox.GUI.Util
                     }
                 });
             }
+
             public void RefreshExtensionList(Context ctx)
             {
                 App.Current.Dispatcher.Invoke(() =>
