@@ -22,10 +22,14 @@ using System.Windows;
 // 与程序集关联的信息。
 [assembly: AssemblyTitle("AutumnBox")]
 [assembly: AssemblyDescription("Open source,free,simple")]
-[assembly: AssemblyConfiguration("")]
+#if DEBUG
+[assembly: AssemblyConfiguration("Debug")]
+#else
+[assembly: AssemblyConfiguration("Release")]
+#endif
 [assembly: AssemblyCompany("zsh2401")]
 [assembly: AssemblyProduct("AutumnBox")]
-[assembly: AssemblyCopyright("Copyright ©2017-2018")]
+[assembly: AssemblyCopyright("Copyright © 2017 - 2018 zsh2401,All Rights Reserved")]
 [assembly: AssemblyTrademark("AutumnBox")]
 [assembly: AssemblyCulture("")]
 // 将 ComVisible 设置为 false 会使此程序集中的类型

@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("zsh2401")]
 [assembly: AssemblyProduct("AutumnBox.UnableToStartHelper")]
-[assembly: AssemblyCopyright("Copyright ©  2018 zsh2401 All rights reserved")]
+[assembly: AssemblyCopyright("Copyright © 2017 - 2018 zsh2401,All Rights Reserved")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

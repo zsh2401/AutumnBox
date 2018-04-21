@@ -9,8 +9,8 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyDescription("Launch AutumnBox.exe")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("zsh2401")]
-[assembly: AssemblyProduct("AutumnBox.GUI.Launcher")]
-[assembly: AssemblyCopyright("Copyright © 2017-2018 zsh2401 All rights reserved")]
+[assembly: AssemblyProduct("AutumnBox launcher")]
+[assembly: AssemblyCopyright("Copyright © 2017 - 2018 zsh2401,All Rights Reserved")]
 [assembly: AssemblyTrademark("AutumnBox")]
 [assembly: AssemblyCulture("")]
 
