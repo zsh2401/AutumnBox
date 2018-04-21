@@ -42,6 +42,7 @@ namespace AutumnBox.Basic.Executer
         private readonly DeviceSerialNumber device;
         private readonly object exeLock = new object();
         private AdvanceOutputBuilder outputBuilder;
+
         /// <summary>
         /// 构建
         /// </summary>
@@ -70,6 +71,7 @@ namespace AutumnBox.Basic.Executer
         {
             return Execute("ls", LinuxUser.Su,false).GetExitCode() == 0;
         }
+
         /// <summary>
         /// 执行一段命令
         /// </summary>
@@ -106,6 +108,7 @@ namespace AutumnBox.Basic.Executer
                 return outputBuilder.Result;
             }
         }
+
         private void OnOutputReceived(DataReceivedEventArgs srcArgs, bool isErr = false)
         {
             if (isErr)

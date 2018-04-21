@@ -19,6 +19,16 @@ namespace AutumnBox.OpenFramework.Open
     public static class OS
     {
         /// <summary>
+        /// 判断是否是WIN10系统
+        /// </summary>
+        public static bool IsWindows10
+        {
+            get
+            {
+                return Environment.OSVersion.Version.Major == 10;
+            }
+        }
+        /// <summary>
         /// 安装驱动
         /// </summary>
         /// <param name="ctx">调用者</param>
@@ -28,6 +38,7 @@ namespace AutumnBox.OpenFramework.Open
         {
             return InstallUsePnPUtil(infFilePath) | InstallUsePnPUtil_SysNative(infFilePath);
         }
+
 
         #region PRIVATE
         private class OSLogSender : Context { }
