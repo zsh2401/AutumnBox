@@ -163,7 +163,7 @@
       <DependentUpon>ThridPartyFunctionPanel.xaml</DependentUpon>
     </Compile>
     <Compile Include="Util\Extensions.cs" />
-    <Compile Include="Util\OpenFramewokManager.cs" />
+    <Compile Include="Util\OpenFrameworkManager.cs" />
     <Compile Include="Windows\DebugWindow.xaml.cs">
       <DependentUpon>DebugWindow.xaml</DependentUpon>
     </Compile>

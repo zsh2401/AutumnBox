@@ -38,6 +38,7 @@ namespace AutumnBox.Basic.Executer
         /// 仅限使用方法进行构建
         /// </summary>
         private Command() { }
+
         /// <summary>
         /// 构建一个使用cmd.exe运行的命令
         /// </summary>
@@ -51,6 +52,7 @@ namespace AutumnBox.Basic.Executer
                 Args = $"/c {command}",
             };
         }
+
         /// <summary>
         /// 构建一个使用adb.exe运行的命令
         /// </summary>
@@ -64,6 +66,7 @@ namespace AutumnBox.Basic.Executer
                 Args = command
             };
         }
+
         /// <summary>
         /// 构建一个使用adb.exe运行的命令,并且这个命令指定了设备
         /// </summary>
@@ -78,6 +81,7 @@ namespace AutumnBox.Basic.Executer
                 Args = $"-s {_serial} {command}",
             };
         }
+
         /// <summary>
         /// 构建一个使用fastboot.exe运行的命令
         /// </summary>
@@ -91,6 +95,7 @@ namespace AutumnBox.Basic.Executer
                 Args = command
             };
         }
+
         /// <summary>
         /// 构建一个使用fastboot.exe运行的命令,并且这个命令指定了设备
         /// </summary>
@@ -105,6 +110,7 @@ namespace AutumnBox.Basic.Executer
                 Args = $"-s {_serial} {command}"
             };
         }
+
         /// <summary>
         /// 构建一个完全自定义的命令对象
         /// </summary>
@@ -119,6 +125,7 @@ namespace AutumnBox.Basic.Executer
                 Args = args
             };
         }
+
         /// <summary>
         /// 构建一个完全自定义的命令对象
         /// </summary>

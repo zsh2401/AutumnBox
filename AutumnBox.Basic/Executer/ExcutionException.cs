@@ -12,7 +12,7 @@ namespace AutumnBox.Basic.Executer
     /// 命令执行错误
     /// </summary>
     [Serializable]
-    public class ExcutionException:Exception
+    public class ExcutionException : Exception
     {
         /// <summary>
         /// 具体的执行结果

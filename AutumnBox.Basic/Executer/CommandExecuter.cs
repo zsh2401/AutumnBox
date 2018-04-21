@@ -17,25 +17,33 @@ namespace AutumnBox.Basic.Executer
     /// </summary>
     public sealed class CommandExecuter : IOutputable
     {
+        private ProcessStartInfo _startInfo;
+        private OutputBuilder _builder;
+        private readonly Object _lock;
+
         /// <summary>
         /// 接收到输出时发生
         /// </summary>
         public event OutputReceivedEventHandler OutputReceived;
+
         /// <summary>
         /// 进程开始时发生
         /// </summary>
         public event ProcessStartedEventHandler ProcessStarted;
-        private ProcessStartInfo _startInfo;
-        private OutputBuilder _builder;
-        private readonly Object _lock;
+
         /// <summary>
         /// 静态的公用命令执行器
         /// </summary>
         public static readonly CommandExecuter Static;
+
+        /// <summary>
+        /// 静态初始化
+        /// </summary>
         static CommandExecuter()
         {
             Static = new CommandExecuter();
         }
+
         /// <summary>
         /// 构建
         /// </summary>
@@ -52,6 +60,7 @@ namespace AutumnBox.Basic.Executer
                 CreateNoWindow = true,
             };
         }
+
         /// <summary>
         /// 执行一段命令或运行某个程序
         /// </summary>
@@ -81,15 +90,17 @@ namespace AutumnBox.Basic.Executer
                 return new AdvanceOutput(_builder.ToOutput(), exitCode);
             }
         }
+
         /// <summary>
         /// 执行一个命令
         /// </summary>
-        /// <param name="cmd"></param>
+        /// <param name="cmd">命令</param>
         /// <returns></returns>
         public AdvanceOutput Execute(Command cmd)
         {
             return Execute(cmd.FileName, cmd.Args);
         }
+
         /// <summary>
         /// 返回码的正则配对
         /// </summary>
@@ -115,12 +126,12 @@ namespace AutumnBox.Basic.Executer
             return new AdvanceOutput(result, leastShellExitCode ?? 1);
         }
         private int? leastShellExitCode = 1;
+
         /// <summary>
         /// 处理并触发OutputReceived事件时发生
         /// </summary>
         /// <param name="src"></param>
         /// <param name="isError"></param>
-        /// <param name="e"></param>
         private void RaiseOutputReceived(DataReceivedEventArgs src ,bool isError = false)
         {
             if (src.Data == null) return;

@@ -88,7 +88,7 @@ namespace AutumnBox.GUI
                 loadingWindowApi.SetProgress(60);
                 loadingWindowApi.SetTip(App.Current.Resources["ldmsgLoadingExtensions"].ToString());
             });
-            OpenFramewokManager.LoadApi();
+            OpenFrameworkManager.LoadApi();
             ScriptsManager.ReloadAll(this);
             ExtensionManager.LoadAllExtension(this);
 

@@ -16,7 +16,7 @@ using System.Windows;
 
 namespace AutumnBox.GUI.Util
 {
-    internal static class OpenFramewokManager
+    internal static class OpenFrameworkManager
     {
         private class OpenFramewokManagerContext : Context { }
         public static void LoadApi()
