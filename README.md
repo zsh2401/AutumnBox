@@ -1,4 +1,4 @@
-[![](http://www.atmb.top/images/readmeheader.png "前往官网")][http://www.atmb.top]
+<img src="http://www.atmb.top/images/readmeheader.png" alt="官网" onclick="window.location = 'http://www.atmb.top'"/>
 #### 代码行数 : 3000+
 #### 主要语言 : C#
 #### 支持平台 : Windows 7及以上,建议Windows10
