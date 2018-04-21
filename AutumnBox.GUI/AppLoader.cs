@@ -27,7 +27,6 @@ namespace AutumnBox.GUI
         }
         public void PrintInfo()
         {
-            Logger.Debug(this,"XXX");
             Logger.Info(this, $"Run as " + (SystemHelper.HaveAdminPermission ? "Admin" : "Normal user"));
             Logger.Info(this, $"AutumnBox version: {SystemHelper.CurrentVersion}");
             Logger.Info(this, $"SDK version: {BuildInfo.SDK_VERSION}");

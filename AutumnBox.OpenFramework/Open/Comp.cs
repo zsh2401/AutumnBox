@@ -30,7 +30,7 @@ namespace AutumnBox.OpenFramework.Open
         /// 并且这个代码段将不会影响局部的其它语句执行
         /// </summary>
         /// <param name="act">包含可能不存在的函数的Action包裹</param>
-        /// <param name="canRun">是否运行,您可以在此处写一个表达式如 SdkVersion>4</param>
+        /// <param name="canRun">是否运行,您可以在此处写一个表达式如 SdkVersion>5</param>
         /// <example>
         /// Comp.IsolatedInvoke(BuildInfo.SDK_VERSION > 5,()=>{
         ///     //SDKV5以上才有的API
