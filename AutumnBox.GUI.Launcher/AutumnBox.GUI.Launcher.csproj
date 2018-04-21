@@ -40,6 +40,7 @@
   <PropertyGroup>
     <StartupObject>AutumnBox.GUI.Launcher.Program</StartupObject>
   </PropertyGroup>
+  <PropertyGroup />
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />

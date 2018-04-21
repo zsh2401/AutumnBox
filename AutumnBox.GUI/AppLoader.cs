@@ -42,7 +42,9 @@ namespace AutumnBox.GUI
             if (Settings.Default.ShowDebuggingWindowNextLaunch)
             {
                 //打开调试窗口
-                App.Current.Dispatcher.Invoke(new DebugWindow().Show);
+                App.Current.Dispatcher.Invoke(()=> {
+                    new DebugWindow().Show();
+                });
             }
             PrintInfo();
             //启动ADB服务

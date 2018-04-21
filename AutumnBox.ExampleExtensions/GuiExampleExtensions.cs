@@ -31,10 +31,14 @@ namespace AutumnBox.ExampleExtensions
         }
         public override void OnStartCommand(StartArgs args)
         {
-            Comp.IsolatedInvoke(BuildInfo.SDK_VERSION >= 5, () =>
-             {
-                 new Extractor(this).ExtractToTmp("Windows.x.txt", "Test/x.txt");
-             });
+            if (OpenApi.Gui.IsRunAsAdmin)
+            {
+                OpenApi.Gui.RestartApp(this);
+            }
+            else
+            {
+                OpenApi.Gui.RestartAppAsAdmin(this);
+            }
             RunOnUIThread(() =>
             {
                 new ExampleWindow().ShowDialog();

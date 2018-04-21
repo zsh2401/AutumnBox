@@ -10,8 +10,10 @@ using AutumnBox.GUI.Windows;
 using AutumnBox.OpenFramework;
 using AutumnBox.OpenFramework.Internal;
 using AutumnBox.OpenFramework.Open;
+using AutumnBox.Support.Log;
 using System;
 using System.Diagnostics;
+using System.IO;
 using System.Windows;
 
 namespace AutumnBox.GUI.Util
@@ -128,6 +130,28 @@ namespace AutumnBox.GUI.Util
                 App.Current.Dispatcher.Invoke(() =>
                 {
                     ThridPartyFunctionPanel.Single.Refresh();
+                });
+            }
+
+            public void RestartAppAsAdmin(Context ctx)
+            {
+                App.Current.Dispatcher.Invoke(() =>
+                {
+                    var fmt = App.Current.Resources["msgRequestRestartAppAsAdminFormat"].ToString();
+                    string msg = String.Format(fmt, ctx.GetType().Name);
+                    bool userIsAccept = BoxHelper.ShowChoiceDialog("Notice", msg, "btnDeny", "btnAccept").ToBool();
+                    if (userIsAccept)
+                    {
+                        ProcessStartInfo startInfo = new ProcessStartInfo( "..\\AutumnBox-秋之盒.exe");
+                        startInfo.Arguments = $"-tryadmin -waitatmb";
+                        Logger.Debug(this,startInfo.FileName + "  " +startInfo.Arguments);
+                        Process.Start(startInfo);
+                        Application.Current.Shutdown();
+                    }
+                    else
+                    {
+                        throw new UserDeniedException();
+                    }
                 });
             }
         }
