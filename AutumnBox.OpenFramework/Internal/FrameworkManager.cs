@@ -18,7 +18,7 @@ namespace AutumnBox.OpenFramework.Internal
         /// <summary>
         /// 拓展路径
         /// </summary>
-        public string ExtensionPath => ExtensionManager.ExtensionsPath;
+        public string ExtensionsPath => ExtensionManager.ExtensionsPath_Internal;
         private readonly Context srcContext;
         /// <summary>
         /// 构建

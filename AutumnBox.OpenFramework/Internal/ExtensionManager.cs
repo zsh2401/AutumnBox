@@ -21,14 +21,15 @@ namespace AutumnBox.OpenFramework.Internal
         /// <summary>
         /// 拓展文件夹绝对路径
         /// </summary>s
-        public static string ExtensionsPath
+        [Obsolete("This property will be removed in the future,please use    ExtsManager.ExtensionsPath    to instead",true)]
+        public static string ExtensionsPath => ExtensionsPath_Internal;
+        internal static string ExtensionsPath_Internal
         {
             get
             {
                 return Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\AutumnBox\Extensions";
             }
         }
-
         static ExtensionManager()
         {
             inner = new ExtensionManagerCore();

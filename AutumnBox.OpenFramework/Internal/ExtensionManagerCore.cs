@@ -22,9 +22,9 @@ namespace AutumnBox.OpenFramework.Internal
         public ExtensionManagerCore()
         {
             Extensions = new List<IAutumnBoxExtension>();
-            if (Directory.Exists(ExtensionManager.ExtensionsPath) == false)
+            if (Directory.Exists(ExtensionManager.ExtensionsPath_Internal) == false)
             {
-                Directory.CreateDirectory(ExtensionManager.ExtensionsPath);
+                Directory.CreateDirectory(ExtensionManager.ExtensionsPath_Internal);
             }
         }
 
@@ -32,7 +32,7 @@ namespace AutumnBox.OpenFramework.Internal
         {
             List<Type> extensionTypes = new List<Type>();
             List<Assembly> dllAssemblies = new List<Assembly>();
-            string[] dllFiles = Directory.GetFiles(ExtensionManager.ExtensionsPath, "*.dll");
+            string[] dllFiles = Directory.GetFiles(ExtensionManager.ExtensionsPath_Internal, "*.dll");
             OpenApi.Log.Info(this, $"已获取{dllFiles.Length}个文件");
             foreach (string file in dllFiles)
             {
