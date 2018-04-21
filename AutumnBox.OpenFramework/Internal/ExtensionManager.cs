@@ -17,10 +17,10 @@ namespace AutumnBox.OpenFramework.Internal
 #pragma warning restore CS1591 // 缺少对公共可见类型或成员的 XML 注释
     {
         private const string TAG = "ExtensionManager";
-        private static ExtensionManagerInner inner;
+        private static ExtensionManagerCore inner;
         /// <summary>
         /// 拓展文件夹绝对路径
-        /// </summary>
+        /// </summary>s
         public static string ExtensionsPath
         {
             get
@@ -31,13 +31,13 @@ namespace AutumnBox.OpenFramework.Internal
 
         static ExtensionManager()
         {
-            inner = new ExtensionManagerInner();
+            inner = new ExtensionManagerCore();
         }
 
         /// <summary>
         /// 加载所有模块
         /// </summary>
-        public static void LoadAllExtension(Context context)
+        internal static void LoadAllExtension(Context context)
         {
             context.PermissionCheck(ContextPermissionLevel.Mid);
             inner.Load();
@@ -46,7 +46,7 @@ namespace AutumnBox.OpenFramework.Internal
         /// <summary>
         /// 摧毁所有模块
         /// </summary>
-        public static void DestoryAllExtension(Context context)
+        internal static void DestoryAllExtension(Context context)
         {
             context.PermissionCheck(ContextPermissionLevel.Mid);
             inner.Extensions.ForEach((extRuntime) =>
@@ -60,7 +60,7 @@ namespace AutumnBox.OpenFramework.Internal
         /// </summary>
         /// <param name="context"></param>
         /// <returns>所有拓展模块</returns>
-        public static IAutumnBoxExtension[] GetExtensions(Context context)
+        internal static IAutumnBoxExtension[] GetExtensions(Context context)
         {
             context.PermissionCheck(ContextPermissionLevel.Mid);
             return inner.Extensions.ToArray();

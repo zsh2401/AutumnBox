@@ -28,7 +28,7 @@ namespace AutumnBox.Basic.FlowFramework
         /// <summary>
         /// 运行时产生的标准输出,标准错误
         /// </summary>
-        public virtual Output OutputData { get; set; } = new Output();
+        public virtual Output OutputData { get; set; } = Output.Empty;
         /// <summary>
         /// 执行的结果
         /// </summary>

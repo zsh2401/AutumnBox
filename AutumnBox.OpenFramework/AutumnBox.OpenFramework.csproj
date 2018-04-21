@@ -63,7 +63,7 @@
     <Compile Include="Context.cs" />
     <Compile Include="ContextPermissionLevel.cs" />
     <Compile Include="IExtension.cs" />
-    <Compile Include="Internal\ExtensionManagerInner.cs" />
+    <Compile Include="Internal\ExtensionManagerCore.cs" />
     <Compile Include="Extension\IAutumnBoxExtension.cs" />
     <Compile Include="Internal\AccessDeniedException.cs" />
     <Compile Include="Internal\ContextFactory.cs" />
@@ -71,6 +71,8 @@
     <Compile Include="Extension\AutumnBoxExtension.Protected.cs" />
     <Compile Include="BuildInfo.cs" />
     <Compile Include="Internal\FrameworkLoader.cs" />
+    <Compile Include="Internal\FrameworkManager.cs" />
+    <Compile Include="Open\ExtsManager.cs" />
     <Compile Include="Script\IExtensionScript.cs" />
     <Compile Include="Script\IScriptArgs.cs" />
     <Compile Include="Script\ScriptArgs.cs" />

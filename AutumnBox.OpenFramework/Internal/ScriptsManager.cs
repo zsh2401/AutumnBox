@@ -14,7 +14,7 @@ namespace AutumnBox.OpenFramework.Internal
     /// <summary>
     /// 脚本管理器
     /// </summary>
-    public static class ScriptsManager
+    internal static class ScriptsManager
     {
         /// <summary>
         /// 核心
@@ -50,6 +50,15 @@ namespace AutumnBox.OpenFramework.Internal
             core.Load(path);
         }
         /// <summary>
+        /// 卸载全部
+        /// </summary>
+        /// <param name="ctx"></param>
+        public static void UnloadAll(Context ctx)
+        {
+            ctx.PermissionCheck(ContextPermissionLevel.Low);
+            core.UnloadAll();
+        }
+        /// <summary>
         /// 获取所有脚本
         /// </summary>
         /// <param name="ctx"></param>
@@ -80,11 +89,7 @@ namespace AutumnBox.OpenFramework.Internal
             /// </summary>
             public void ReloadAll()
             {
-                Scripts.ForEach((script) =>
-                {
-                    script.Dispose();
-                });
-                Scripts.Clear();
+                UnloadAll();
                 string[] files = Directory.GetFiles(ExtensionManager.ExtensionsPath, "*.cs");
                 OpenApi.Log.Debug(this, $"Found {files.Length} .cs file");
                 foreach (var file in files)
@@ -107,7 +112,7 @@ namespace AutumnBox.OpenFramework.Internal
             public void Unload(IExtensionScript script)
             {
                 script.Dispose();
-                core.Scripts.Remove(script);
+                Scripts.Remove(script);
             }
             /// <summary>
             /// 加载脚本
@@ -118,6 +123,16 @@ namespace AutumnBox.OpenFramework.Internal
                 var existExt = core.Scripts.Find((s) => { return s.FilePath == file; });
                 if (existExt != null) { throw new Exception("Extension already exist"); }
                 core.Scripts.Add(new ABEScript(this, file));
+            }
+            /// <summary>
+            /// 卸载全部
+            /// </summary>
+            public void UnloadAll()
+            {
+                Scripts.ForEach((s) =>
+                {
+                    Unload(s);
+                });
             }
         }
     }

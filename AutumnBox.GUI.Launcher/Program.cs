@@ -9,25 +9,30 @@ namespace AutumnBox.GUI.Launcher
 {
     class Program
     {
-        
+
         static void Main(string[] args)
         {
             new Program().Run();
         }
         private ConsoleColor defaultConsoleForeColor;
-        private void Run() {
+        private void Run()
+        {
+            Print("Init...");
             defaultConsoleForeColor = Console.ForegroundColor;
-            Print("AutumnBox.GUI starts at now!");
             var startInfo = new ProcessStartInfo()
             {
                 FileName = "AutumnBox.GUI.exe",
-                WorkingDirectory = "file"
+                WorkingDirectory = "file",
+                UseShellExecute = true,
+                Verb = "runas"
             };
+            Print("AutumnBox.GUI starts at now!");
             Process.Start(startInfo);
         }
 
-        private void Print(object content, ConsoleColor? fore=null) {
-            Console.ForegroundColor = fore?? defaultConsoleForeColor;
+        private void Print(object content, ConsoleColor? fore = null)
+        {
+            Console.ForegroundColor = fore ?? defaultConsoleForeColor;
             Console.WriteLine(content);
             Console.ForegroundColor = defaultConsoleForeColor;
         }

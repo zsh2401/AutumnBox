@@ -129,7 +129,7 @@ namespace AutumnBox.Basic.Executer
         /// <returns></returns>
         public override string ToString()
         {
-            return $"ExitCode: {exitCode}{Environment.NewLine}{base.ToString()}";
+            return $"exit code : {exitCode}{Environment.NewLine}{base.ToString()}";
         }
 
         /// <summary>

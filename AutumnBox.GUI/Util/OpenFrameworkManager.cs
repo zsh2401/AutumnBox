@@ -18,12 +18,10 @@ namespace AutumnBox.GUI.Util
 {
     internal static class OpenFrameworkManager
     {
-        private class OpenFramewokManagerContext : Context { }
         public static void LoadApi()
         {
-            var context = new OpenFramewokManagerContext();
-            FrameworkLoader.SetGuiApi(context, new GuiApiImpl());
-            FrameworkLoader.SetLogApi(context, new LogApiImpl());
+            App.OpenFrameworkManager.SetGuiApi(new GuiApiImpl());
+            App.OpenFrameworkManager.SetLogApi(new LogApiImpl());
         }
         /// <summary>
         /// GUIApi实现
