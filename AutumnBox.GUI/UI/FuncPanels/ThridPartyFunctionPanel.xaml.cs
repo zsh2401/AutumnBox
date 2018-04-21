@@ -1,21 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
+﻿using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using AutumnBox.Basic.Device;
-using AutumnBox.GUI.Helper;
 using AutumnBox.GUI.I18N;
-using AutumnBox.GUI.NetUtil;
 using AutumnBox.GUI.UI.CstPanels;
 using AutumnBox.GUI.UI.Fp;
-using AutumnBox.GUI.Util;
 using AutumnBox.GUI.Windows;
 using AutumnBox.OpenFramework;
-using AutumnBox.OpenFramework.Extension;
-using AutumnBox.OpenFramework.Internal;
 
 namespace AutumnBox.GUI.UI.FuncPanels
 {
@@ -119,7 +111,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
 
         private void BtnOpenModuleFloder_Click(object sender, RoutedEventArgs e)
         {
-            Process.Start(ExtensionManager.ExtensionsPath);
+            Process.Start(App.OpenFrameworkManager.ExtensionsPath);
         }
 
         private void SetBtnRunState(bool enable)

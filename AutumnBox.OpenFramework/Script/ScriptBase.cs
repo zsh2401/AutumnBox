@@ -88,41 +88,5 @@ namespace AutumnBox.OpenFramework.Script
         /// 析构
         /// </summary>
         public abstract void Dispose();
-
-        /// <summary>
-        /// 重载所有脚本
-        /// </summary>
-        /// <param name="ctx"></param>
-        public static void ReloadAll(Context ctx)
-        {
-            ScriptsManager.ReloadAll(ctx);
-        }
-        /// <summary>
-        /// 加载一个脚本
-        /// </summary>
-        /// <param name="ctx"></param>
-        /// <param name="path"></param>
-        public static void Load(Context ctx, string path)
-        {
-            ScriptsManager.Load(ctx, path);
-        }
-        /// <summary>
-        /// 卸载一个脚本
-        /// </summary>
-        /// <param name="ctx"></param>
-        /// <param name="script"></param>
-        public static void Unload(Context ctx, IExtensionScript script)
-        {
-            ScriptsManager.Unload(ctx, script);
-        }
-        /// <summary>
-        /// 获取所有脚本
-        /// </summary>
-        /// <param name="ctx"></param>
-        /// <returns></returns>
-        public static IExtensionScript[] GetScripts(Context ctx)
-        {
-            return ScriptsManager.GetScripts(ctx);
-        }
     }
 }

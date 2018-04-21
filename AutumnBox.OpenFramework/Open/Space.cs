@@ -20,7 +20,7 @@ namespace AutumnBox.OpenFramework.Open
         {
             get
             {
-                return ExtensionManager.ExtensionsPath;
+                return ExtensionManager.ExtensionsPath_Internal;
             }
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace AutumnBox.OpenFramework.Open
         /// <returns></returns>
         public static string GetTempDir(Context ctx)
         {
-            var path = Path.Combine(ExtensionManager.ExtensionsPath, ctx.GetType().Name);
+            var path = Path.Combine(ExtensionManager.ExtensionsPath_Internal, ctx.GetType().Name);
             if (Directory.Exists(path) == false)
             {
                 Directory.CreateDirectory(path);

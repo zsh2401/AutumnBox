@@ -90,7 +90,7 @@ namespace AutumnBox.OpenFramework.Internal
             public void ReloadAll()
             {
                 UnloadAll();
-                string[] files = Directory.GetFiles(ExtensionManager.ExtensionsPath, "*.cs");
+                string[] files = Directory.GetFiles(ExtensionManager.ExtensionsPath_Internal, "*.cs");
                 OpenApi.Log.Debug(this, $"Found {files.Length} .cs file");
                 foreach (var file in files)
                 {
@@ -131,8 +131,9 @@ namespace AutumnBox.OpenFramework.Internal
             {
                 Scripts.ForEach((s) =>
                 {
-                    Unload(s);
+                    s.Dispose();
                 });
+                Scripts.Clear();
             }
         }
     }

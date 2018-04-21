@@ -21,7 +21,7 @@ namespace AutumnBox.OpenFramework.Open
         /// <summary>
         ///  拓展路径
         /// </summary>
-        public static string ExtensionsPath => ExtensionManager.ExtensionsPath;
+        public static string ExtensionsPath => ExtensionManager.ExtensionsPath_Internal;
         /// <summary>
         /// 加载脚本
         /// </summary>
@@ -36,7 +36,7 @@ namespace AutumnBox.OpenFramework.Open
         /// </summary>
         /// <param name="ctx"></param>
         /// <param name="script"></param>
-        public static void UnloadScript(Context ctx, IExtensionScript script)
+        public static void UnloadScripts(Context ctx, IExtensionScript script)
         {
             ScriptsManager.Unload(ctx, script);
         }
@@ -44,7 +44,7 @@ namespace AutumnBox.OpenFramework.Open
         /// 重载所有脚本
         /// </summary>
         /// <param name="ctx"></param>
-        public static void ReloadAllScript(Context ctx)
+        public static void ReloadAllScripts(Context ctx)
         {
             ScriptsManager.ReloadAll(ctx);
         }
