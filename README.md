@@ -1,5 +1,4 @@
-![](http://www.atmb.top/images/readmeheader.png)
-[访问官网](https://www.atmb.top)
+[![](http://www.atmb.top/images/readmeheader.png "前往官网")][http://www.atmb.top]
 #### 代码行数 : 3000+
 #### 主要语言 : C#
 #### 支持平台 : Windows 7及以上,建议Windows10
