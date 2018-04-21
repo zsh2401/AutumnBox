@@ -33,24 +33,32 @@ namespace AutumnBox.OpenFramework.Open
         /// 将内嵌的资源提取到临时文件夹下的目标路径
         /// </summary>
         /// <param name="resPath"></param>
-        /// <param name="targetPath"></param>
-        public void ExtractToTmp(string resPath, string targetPath)
+        /// <param name="targetFilePath"></param>
+        /// <example>
+        /// //fuck.test.x.txt 将会提取到: $拓展文件夹目录/fuck/test/x.txt
+        /// extractor.ExtractToTmp("fuck.test.x.txt","fuck/test/x.txt");
+        /// </example>
+        public void ExtractToTmp(string resPath, string targetFilePath)
         {
-            Extract(resPath, Path.Combine(Space.GetTempDir(ctx), targetPath));
+            Extract(resPath, Path.Combine(Space.GetTempDir(ctx), targetFilePath));
         }
         /// <summary>
         /// 提取到指定目录
         /// </summary>
-        /// <param name="resPath"></param>
-        /// <param name="targetPath"></param>
-        public void Extract(string resPath, string targetPath)
+        /// <param name="resPath">内嵌资源路径</param>
+        /// <param name="targetFilePath">目标文件完整路径</param>
+        /// <example>
+        /// //fuck.test.x.txt 将会提取到: D:\x.txt
+        /// extractor.ExtractToTmp("fuck.test.x.txt","D:\x.txt");
+        /// </example>
+        public void Extract(string resPath, string targetFilePath)
         {
-            Check(targetPath);
+            Check(targetFilePath);
             string fullResPath = ctxType.Namespace + "." + resPath;
             using (var resStream = ctxType.Assembly.GetManifestResourceStream(fullResPath))
             {
                 using (FileStream fs =
-                    new FileStream(targetPath, FileMode.OpenOrCreate, FileAccess.Write))
+                    new FileStream(targetFilePath, FileMode.OpenOrCreate, FileAccess.Write))
                 {
                     long totalSize = 0;
                     int crt = 0;

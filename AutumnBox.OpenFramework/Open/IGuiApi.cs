@@ -34,7 +34,7 @@ namespace AutumnBox.OpenFramework.Open
         /// <param name="completable">可被主动停止或可得知停止的类</param>
         void ShowLoadingWindow(Context context, ICompletable completable);
         /// <summary>
-        /// 在UI线程运行一些方法
+        /// 在UI线程运行方法
         /// </summary>
         /// <param name="context"></param>
         /// <param name="act"></param>
@@ -75,6 +75,11 @@ namespace AutumnBox.OpenFramework.Open
         /// </summary>
         /// <param name="ctx"></param>
         void RestartApp(Context ctx);
+        /// <summary>
+        /// 以管理员重启秋之盒
+        /// </summary>
+        /// <param name="ctx"></param>
+        void RestartAppAsAdmin(Context ctx);
         /// <summary>
         /// 关闭AutumnBox
         /// </summary>

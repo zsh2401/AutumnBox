@@ -119,7 +119,8 @@
     <!--信息(主要用于MMesssageBox)-->
      <s:String x:Key="msgAndroidVersionTooLowFmt">您的设备安卓版本过低
          此功能要求版本: {0}</s:String>
-      <s:String x:Key="msgRequestRestartAppFormat">{0}想要重启AutumnBox</s:String>
+     <s:String x:Key="msgRequestRestartAppAsAdminFormat">{0}想要将秋之盒以管理员权限重启</s:String>
+      <s:String x:Key="msgRequestRestartAppFormat">{0}想要重启秋之盒</s:String>
      <s:String x:Key="msgRequestShutdownAppFormat">{0}想要关闭AutumnBox</s:String>
     <s:String x:Key="msgPathError">路径错误!
     请确保路径没有中文或空格等特殊字符!</s:String>
