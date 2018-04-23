@@ -27,7 +27,7 @@ namespace AutumnBox.GUI.UI.CstPanels
 
         private void CbBoxTheme_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ThemeManager.ChangeTheme((Theme)CbBoxTheme.SelectedItem);
+            ThemeManager.ChangeTheme((ITheme)CbBoxTheme.SelectedItem);
         }
 
         public override void OnPanelClosed()

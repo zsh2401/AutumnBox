@@ -10,16 +10,16 @@ using System.Windows;
 
 namespace AutumnBox.GUI.Helper
 {
-    internal abstract class Theme
+    internal interface ITheme
     {
-        public abstract string Name { get; }
-        public abstract ResourceDictionary Resource { get; }
+        string Name { get; }
+        ResourceDictionary Resource { get; }
     }
-    internal class RandomTheme : Theme
+    internal class RandomTheme : ITheme
     {
-        public override string Name => "随机-Random";
+        public string Name => "随机-Random";
         private static readonly Random ran = new Random();
-        public override ResourceDictionary Resource => Next();
+        public ResourceDictionary Resource => Next();
         private ResourceDictionary Next()
         {
             var themes = ThemeManager.Themes;
@@ -27,10 +27,10 @@ namespace AutumnBox.GUI.Helper
             return themes[ranIndex].Resource;
         }
     }
-    internal class FileTheme : Theme
+    internal class FileTheme : ITheme
     {
-        public override string Name { get { return Resource["ThemeName"].ToString(); } }
-        public override ResourceDictionary Resource => resouce;
+        public string Name { get { return Resource["ThemeName"].ToString(); } }
+        public ResourceDictionary Resource => resouce;
         private readonly ResourceDictionary resouce;
         public FileTheme(string fileName)
         {
@@ -40,12 +40,12 @@ namespace AutumnBox.GUI.Helper
     internal static class ThemeManager
     {
         public static event EventHandler ThemeChanged;
-        public static Theme[] Themes => themes.ToArray();
-        private static readonly List<Theme> themes;
+        public static ITheme[] Themes => themes.ToArray();
+        private static readonly List<ITheme> themes;
         public const string Path = "pack://application:,,,/AutumnBox.GUI;component/Resources/Themes/";
         static ThemeManager()
         {
-            themes = new List<Theme>() {
+            themes = new List<ITheme>() {
                 new RandomTheme(),
                 new FileTheme("LightTheme.xaml"),
                 new FileTheme("NightTheme.xaml"),
@@ -61,7 +61,7 @@ namespace AutumnBox.GUI.Helper
             ChangeTheme(Settings.Default.Theme);
         }
         static bool usingRandomTheme = false;
-        public static void ChangeTheme(Theme theme)
+        public static void ChangeTheme(ITheme theme)
         {
             usingRandomTheme = theme is RandomTheme;
             App.Current.Resources.MergedDictionaries[1] = theme.Resource;
