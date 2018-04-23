@@ -9,6 +9,7 @@
    
     <s:String x:Key="AppDesc">Open source,free,simple,GUI adb toolbox</s:String>
     <!--按钮-->
+    
     <s:String x:Key="btnGoToEnd">Go to end</s:String>
     <s:String x:Key="btnUsersirAct">Activate USER SIR</s:String>
     <s:String x:Key="btnAccept">Accpet</s:String>
@@ -119,6 +120,7 @@
     <!--标题-->
 
     <!--信息(主要用于MMesssageBox)-->
+    <s:String x:Key="msgExtensionTryGetHighPermssionFormat">{0} Try to get highest permission</s:String>
          <s:String x:Key="msgAndroidVersionTooLowFmt">Your device android version too low
          this function required: {0}</s:String>
     <s:String x:Key="msgRequestRestartAppAsAdminFormat">{0} wanna restart AutumnBox as Admin</s:String>

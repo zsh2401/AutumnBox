@@ -31,14 +31,7 @@ namespace AutumnBox.ExampleExtensions
         }
         public override void OnStartCommand(StartArgs args)
         {
-            if (OpenApi.Gui.IsRunAsAdmin)
-            {
-                OpenApi.Gui.RestartApp(this);
-            }
-            else
-            {
-                OpenApi.Gui.RestartAppAsAdmin(this);
-            }
+            var high =  ExtsManager.TryGetHighPermissionContext(this);
             RunOnUIThread(() =>
             {
                 new ExampleWindow().ShowDialog();
