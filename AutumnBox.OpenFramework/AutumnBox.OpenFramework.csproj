@@ -70,6 +70,7 @@
     <Compile Include="Extension\AutumnBoxExtension.Protected.cs" />
     <Compile Include="BuildInfo.cs" />
     <Compile Include="Internal\FrameworkManager.cs" />
+    <Compile Include="Internal\HighPermissionContext.cs" />
     <Compile Include="Open\ExtsManager.cs" />
     <Compile Include="Script\IExtensionScript.cs" />
     <Compile Include="Script\IScriptArgs.cs" />

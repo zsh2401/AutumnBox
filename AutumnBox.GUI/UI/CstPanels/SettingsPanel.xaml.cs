@@ -38,7 +38,6 @@ namespace AutumnBox.GUI.UI.CstPanels
             Settings.Default.Save();
         }
 
-
         private void CbBoxLanguage_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             LanguageHelper.SetLanguage((Language)CbBoxLanguage.SelectedItem);
@@ -53,6 +52,7 @@ namespace AutumnBox.GUI.UI.CstPanels
         {
             new DebugWindow().Show();
         }
+
         public override void OnPanelHide()
         {
             base.OnPanelHide();

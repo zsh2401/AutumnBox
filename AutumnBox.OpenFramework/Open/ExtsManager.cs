@@ -57,5 +57,32 @@ namespace AutumnBox.OpenFramework.Open
         {
             return ScriptsManager.GetScripts(ctx);
         }
+        /// <summary>
+        /// 试图获取最高权限上下文
+        /// </summary>
+        /// <param name="ctx">拓展模块上下文</param>
+        /// <exception cref="UserDeniedException">用户拒绝时抛出</exception>
+        /// <exception cref="ArgumentException">上下文非拓展时抛出</exception>
+        /// <returns></returns>
+        public static Context TryGetHighPermissionContext(Context ctx)
+        {
+            if (ctx is IExtension)
+            {
+                string fmt = OpenApi.Gui.GetPublicResouce<string>(ctx, "msgExtensionTryGetHighPermssionFormat");
+                if (OpenApi.Gui.ShowChoiceBox(ctx, "Notice", String.Format(fmt, ctx.Tag), "btnDeny", "btnAccept") == true)
+                {
+                    return new HighPermissionContext(ctx);
+                }
+                else
+                {
+                    throw new UserDeniedException();
+                }
+            }
+            else
+            {
+                throw new ArgumentException("The arg ctx must is a IExtension object", "ctx");
+            }
+
+        }
     }
 }
