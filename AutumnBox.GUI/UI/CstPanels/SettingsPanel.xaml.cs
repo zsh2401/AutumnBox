@@ -1,6 +1,7 @@
 ﻿using AutumnBox.GUI.Cfg;
 using AutumnBox.GUI.Helper;
 using AutumnBox.GUI.I18N;
+using AutumnBox.GUI.Properties;
 using AutumnBox.GUI.UI.Fp;
 using AutumnBox.GUI.Windows;
 using System.Windows.Controls;
@@ -33,7 +34,8 @@ namespace AutumnBox.GUI.UI.CstPanels
         public override void OnPanelClosed()
         {
             base.OnPanelClosed();
-            Properties.Settings.Default.ShowDebuggingWindowNextLaunch = CKBShowDebugWindowOnNextLaunch.IsChecked == true;
+            Settings.Default.ShowDebuggingWindowNextLaunch = CKBShowDebugWindowOnNextLaunch.IsChecked == true;
+            Settings.Default.Save();
         }
 
 
@@ -54,7 +56,7 @@ namespace AutumnBox.GUI.UI.CstPanels
         public override void OnPanelHide()
         {
             base.OnPanelHide();
-            Properties.Settings.Default.Save();
+            Settings.Default.Save();
         }
     }
 }
