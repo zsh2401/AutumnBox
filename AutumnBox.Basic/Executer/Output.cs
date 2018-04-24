@@ -180,9 +180,9 @@ namespace AutumnBox.Basic.Executer
         public bool Equals(Output other)
         {
             return other != null &&
-                   EqualityComparer<string[]>.Default.Equals(LineAll, other.LineAll) &&
-                   EqualityComparer<string[]>.Default.Equals(LineOut, other.LineOut) &&
-                   EqualityComparer<string[]>.Default.Equals(LineError, other.LineError) &&
+                   //EqualityComparer<string[]>.Default.Equals(LineAll, other.LineAll) &&
+                   //EqualityComparer<string[]>.Default.Equals(LineOut, other.LineOut) &&
+                   //EqualityComparer<string[]>.Default.Equals(LineError, other.LineError) &&
                    All == other.All &&
                    Out == other.Out &&
                    Error == other.Error;
@@ -195,9 +195,9 @@ namespace AutumnBox.Basic.Executer
         public override int GetHashCode()
         {
             var hashCode = -1661239530;
-            hashCode = hashCode * -1521134295 + EqualityComparer<string[]>.Default.GetHashCode(LineAll);
-            hashCode = hashCode * -1521134295 + EqualityComparer<string[]>.Default.GetHashCode(LineOut);
-            hashCode = hashCode * -1521134295 + EqualityComparer<string[]>.Default.GetHashCode(LineError);
+            //hashCode = hashCode * -1521134295 + EqualityComparer<string[]>.Default.GetHashCode(LineAll);
+            //hashCode = hashCode * -1521134295 + EqualityComparer<string[]>.Default.GetHashCode(LineOut);
+            //hashCode = hashCode * -1521134295 + EqualityComparer<string[]>.Default.GetHashCode(LineError);
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(All);
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Out);
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Error);

@@ -106,8 +106,7 @@ namespace AutumnBox.Basic.Executer
         {
             return other != null &&
                    base.Equals(other) &&
-                   exitCode == other.exitCode &&
-                   IsSuccessful == other.IsSuccessful;
+                   exitCode == other.exitCode;
         }
 
         /// <summary>
@@ -127,9 +126,9 @@ namespace AutumnBox.Basic.Executer
         /// 字符化
         /// </summary>
         /// <returns></returns>
-        public override string ToString()
+        public string ToStringWithExitCode()
         {
-            return $"exit code : {exitCode}{Environment.NewLine}{base.ToString()}";
+            return $"{exitCode}{Environment.NewLine}{base.ToString()}";
         }
 
         /// <summary>

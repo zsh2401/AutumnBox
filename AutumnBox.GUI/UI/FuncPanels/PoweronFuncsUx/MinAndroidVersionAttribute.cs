@@ -23,13 +23,21 @@ namespace AutumnBox.GUI.UI.FuncPanels.PoweronFuncsUx
         {
             Logger.Debug(this, "android version checking");
             Version result = new Version(1, 0);
-            Task.Run(() => {
+            Task.Run(() =>
+            {
                 Thread.Sleep(1000);
                 result = new DeviceBuildPropGetter(targetDevice.Serial).GetAndroidVersion();
                 BoxHelper.CloseLoadingDialog();
             });
             BoxHelper.ShowLoadingDialog();
-            Logger.Debug(this,$"Min{version} Device{result}");
+            Logger.Debug(this, $"Min{version} Device{result}");
+            if (result == null)
+            {
+                var fmt = App.Current.Resources["msgAndroidVersionCheckFailedFormat"].ToString();
+                return BoxHelper.ShowChoiceDialog(
+                    "Warning", String.Format(fmt,version.ToString(3)), 
+                    "btnCancel", "btnContinue").ToBool();
+            }
             if (result < version)
             {
                 string tooLowFmt = App.Current.Resources["msgAndroidVersionTooLowFmt"].ToString();

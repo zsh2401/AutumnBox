@@ -35,13 +35,14 @@ namespace AutumnBox.GUI.UI.FuncPanels
             BtnDisableNetDebugging.Visibility = Visibility.Hidden;
             BtnEnableNetDebugging.Visibility = Visibility.Hidden;
             DevicesMonitor.DevicesChanged += _monitor_DevicesChanged;
+            ListBoxMain.ItemsSource = DevicesMonitor.CurrentDevices;
         }
         private void _monitor_DevicesChanged(object sender, DevicesChangedEventArgs e)
         {
             this.Dispatcher.Invoke(() =>
             {
                 this.ListBoxMain.ItemsSource = e.DevicesList;
-                if (ListBoxMain.SelectedIndex == -1 && e.DevicesList.Count > 0)
+                if (ListBoxMain.SelectedIndex == -1 && e.DevicesList.Count() > 0)
                 {
                     ListBoxMain.SelectedIndex = 0;
                 }
