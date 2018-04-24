@@ -11,8 +11,10 @@
 * Company: I am free man
 *
 \* =============================================================================*/
+using AutumnBox.Basic.Device;
 using AutumnBox.Support.Log;
 using System;
+using System.Collections.Generic;
 using System.Threading;
 namespace AutumnBox.Basic.MultipleDevices
 {
@@ -30,8 +32,8 @@ namespace AutumnBox.Basic.MultipleDevices
         /// <summary>
         /// 已连接设备列表
         /// </summary>
-        public DevicesList DevicesList { get; }
-        internal DevicesChangedEventArgs(DevicesList devList)
+        public IEnumerable<DeviceBasicInfo> DevicesList { get; }
+        internal DevicesChangedEventArgs(IEnumerable<DeviceBasicInfo> devList)
         {
             DevicesList = devList;
         }
@@ -42,7 +44,10 @@ namespace AutumnBox.Basic.MultipleDevices
     public static class DevicesMonitor
     {
         private static DevicesMonitorCore core = new DevicesMonitorCore();
-
+        /// <summary>
+        /// 获取当前已连接设备列表
+        /// </summary>
+        public static DeviceBasicInfo[] CurrentDevices => core.CurrentDevices;
         /// <summary>
         /// 设备拔插时发生
         /// </summary>
@@ -82,7 +87,6 @@ namespace AutumnBox.Basic.MultipleDevices
                 add
                 {
                     DevicesChangedInner += value;
-                    value?.Invoke(this, new DevicesChangedEventArgs(crtDevices));
                 }
                 remove
                 {
@@ -91,6 +95,13 @@ namespace AutumnBox.Basic.MultipleDevices
             }
             private event DevicesChangedHandler DevicesChangedInner;
             private DevicesList crtDevices;
+            public DeviceBasicInfo[] CurrentDevices
+            {
+                get
+                {
+                    return crtDevices.ToArray();
+                }
+            }
             public DevicesMonitorCore(int interval = defaultInterval)
             {
                 this._interval = interval;
@@ -106,16 +117,17 @@ namespace AutumnBox.Basic.MultipleDevices
             }
             private void Listen()
             {
+                DevicesList _new;
                 while (true)
                 {
-                    Thread.Sleep(_interval);
-                    var new_ = _devGetter.GetDevices();
-                    if (new_ != crtDevices)
+                    _new = _devGetter.GetDevices();
+                    if (_new != crtDevices)
                     {
                         Logger.Info(this, "Devices Changed");
-                        crtDevices = new_;
+                        crtDevices = _new;
                         this.DevicesChangedInner?.Invoke(this, new DevicesChangedEventArgs(crtDevices));
                     }
+                    Thread.Sleep(_interval);
                 }
             }
             public void Cancel()

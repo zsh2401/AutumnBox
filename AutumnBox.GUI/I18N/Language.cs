@@ -54,18 +54,11 @@ namespace AutumnBox.GUI.I18N
         }
         public override bool Equals(object obj)
         {
-            if (obj is Language)
-            {
-                return Equals((Language)obj);
-            }
-            else
-            {
-                return base.Equals(obj);
-            }
+            return Equals(obj as Language);
         }
         public bool Equals(Language other)
         {
-            return LanguageCode == other.LanguageCode;
+            return other != null && LanguageCode == other.LanguageCode;
         }
         public override int GetHashCode()
         {

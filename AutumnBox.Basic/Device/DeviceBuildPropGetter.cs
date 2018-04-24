@@ -6,6 +6,7 @@
 ** desc： ...
 *********************************************************************************/
 using AutumnBox.Basic.Executer;
+using AutumnBox.Support.Log;
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
@@ -47,10 +48,13 @@ namespace AutumnBox.Basic.Device
         {
             try
             {
-                return new Version(Get(BuildPropKeys.AndroidVersion));
+                var verStr = Get(BuildPropKeys.AndroidVersion);
+                Logger.Debug(this,verStr);
+                return new Version(verStr);
             }
-            catch
+            catch(Exception ex)
             {
+                Logger.DebugWarn(this,"Get android version failed",ex);
                 return null;
             }
         }

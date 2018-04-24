@@ -117,6 +117,7 @@
     <!--标题-->
     
     <!--信息(主要用于MMesssageBox)-->
+    <s:String x:Key="msgAndroidVersionCheckFailedFormat">检查安卓版本失败,此功能需 {0} 安卓版本,是否强行继续?</s:String>
     <s:String x:Key="msgExtensionTryGetHighPermssionFormat">{0} 尝试获取秋之盒最高权限（非操作系统最高权限），通常这可能导致秋之盒变得不稳定，你确定吗？</s:String>
      <s:String x:Key="msgAndroidVersionTooLowFmt">您的设备安卓版本过低
          此功能要求版本: {0}</s:String>
