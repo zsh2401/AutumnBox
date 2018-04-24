@@ -59,7 +59,10 @@ namespace AutumnBox.GUI
                 return (Current.MainWindow as MainWindow);
             }
         }
-
+        public string FormatResourceString(string key, params object[] args)
+        {
+            return String.Format(Resources[key].ToString(), args);
+        }
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
