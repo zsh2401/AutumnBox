@@ -27,12 +27,12 @@ namespace AutumnBox.Basic.MultipleDevices
         /// <summary>
         /// 检查设备列表是否包含某台设备
         /// </summary>
-        /// <param name="serial"></param>
+        /// <param name="devInfo">设备信息</param>
         /// <returns></returns>
-        public bool Contains(DeviceSerialNumber serial)
+        public new bool Contains(DeviceBasicInfo devInfo)
         {
             var haves = from _devInfo in this
-                        where _devInfo.Serial == serial
+                        where _devInfo == devInfo
                         select _devInfo;
             return haves.Count() > 0;
         }
