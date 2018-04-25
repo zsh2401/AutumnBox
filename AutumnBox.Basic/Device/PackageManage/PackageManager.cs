@@ -3,16 +3,10 @@
 ** date:  2018/1/27 10:45:06 (UTC +8:00)
 ** desc： ...
 *************************************************/
-using AutumnBox.Basic.ACP;
 using AutumnBox.Basic.Executer;
 using AutumnBox.Support.Log;
-using Newtonsoft.Json.Linq;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Device.PackageManage
 {

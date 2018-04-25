@@ -361,13 +361,12 @@
 开发者电子邮件 zsh2401@163.com
         
 鸣谢以下开源项目做出的卓越贡献(排名不分先后)
-Spring.AOP | Newtonsoft.Json  | Google Android Debug Bridge | Google Android | Linux
+Spring.AOP | Newtonsoft.Json  | Google Android Debug Bridge | Google Android | Linux | CS-Script | C#
         
 感谢以下人员在AutumnBox初期给予的支持(排名不分先后)
-蚂蚁,饼干怪兽,hxy,yume,滥情空心,web1n,咖枯,八百标兵,EggGrenade,MonoLogueChi
+蚂蚁,饼干怪兽,hxy,yume,滥情空心,web1n,咖枯,八百标兵,EggGrenade,MonoLogueChi,毛线没有团团
         
-如果你也做出了卓越贡献但未被记录,请联系我!
-</s:String>
+如果你也做出了卓越贡献但未被记录,请联系我!</s:String>
     <!--关于信息-->
 
     <s:String x:Key="warningOpenNetDebugging">
