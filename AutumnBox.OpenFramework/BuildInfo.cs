@@ -16,15 +16,7 @@ namespace AutumnBox.OpenFramework
         /// <summary>
         /// SDK版本,不设计为Const是为了防止编译器优化
         /// </summary>
-        public static int SDK_VERSION
-        {
-            get
-            {
-                Assembly asm = Assembly.GetExecutingAssembly();
-                FileVersionInfo info = FileVersionInfo.GetVersionInfo(asm.Location);
-                return info.FileMajorPart;
-            }
-        }
+        public static readonly int SDK_VERSION;
         /// <summary>
         /// AutumnBox.GUI的程序集名称
         /// </summary>
@@ -41,5 +33,11 @@ namespace AutumnBox.OpenFramework
         /// AutumnBox.ConsoleTester的程序集名称
         /// </summary>
         internal const string AUTUMNBOX_CONSOLE_TESTER_ASSEMBLY_NAME = "AutumnBox.ConsoleTester";
+        static BuildInfo()
+        {
+            Assembly asm = Assembly.GetExecutingAssembly();
+            FileVersionInfo info = FileVersionInfo.GetVersionInfo(asm.Location);
+            SDK_VERSION = info.FileMajorPart;
+        }
     }
 }

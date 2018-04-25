@@ -10,6 +10,7 @@ using AutumnBox.Basic.Executer;
 using AutumnBox.Basic.FlowFramework;
 using AutumnBox.Basic.Flows.Result;
 using AutumnBox.Basic.Util;
+using AutumnBox.Support.Log;
 using System.Diagnostics;
 
 namespace AutumnBox.Basic.Flows.MiFlash
@@ -68,12 +69,13 @@ namespace AutumnBox.Basic.Flows.MiFlash
                 {
                     UseShellExecute = false,
                     CreateNoWindow = true,
-                    Arguments = $"/q /c \'{batFileName}\' \"{serial.ToFullSerial()}\"",
+                    Arguments = $"/q /c \"{batFileName}\" \"{serial.ToFullSerial()}\"",
                     FileName = "cmd.exe",
                     WorkingDirectory = AdbConstants.toolsPath,
                     RedirectStandardError = true,
                     RedirectStandardOutput = true,
                 };
+                Logger.Warn(this,$"file path:{StartInfo.Arguments}");
                 OutputDataReceived += (s, e) =>
                 {
                     OutputReceived?.Invoke(this, new OutputReceivedEventArgs(e, false));
