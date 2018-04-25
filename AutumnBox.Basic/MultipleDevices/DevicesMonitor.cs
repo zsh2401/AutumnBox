@@ -121,10 +121,10 @@ namespace AutumnBox.Basic.MultipleDevices
                 while (true)
                 {
                     _new = _devGetter.GetDevices();
-                    _new.ForEach((d)=> { Logger.Debug(this,d); });
+                    //_new.ForEach((d)=> { Logger.Debug(this,d); });
                     if (_new != crtDevices)
                     {
-                        //Logger.Info(this, "Devices Changed");
+                        Logger.Info(this, "Devices Changed");
                         crtDevices = _new;
                         this.DevicesChangedInner?.Invoke(this, new DevicesChangedEventArgs(crtDevices));
                     }
