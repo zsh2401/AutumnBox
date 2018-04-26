@@ -49,7 +49,8 @@ namespace AutumnBox.Basic.Flows.MiFlash
             {
                 return dir.Name == "images";
             }).Count() > 0;
-            result.PathIsRight = (!dirInfo.FullName.Contains(" ")) && (!dirInfo.FullName.HasChinese());
+            result.PathIsRight =  (!dirInfo.FullName.HasChinese() 
+                && !dirInfo.FullName.HasSpace());
             result.IsRight = result.PathIsRight && result.Bats.Count() > 0 && haveImageDir;
             return result;
         }
@@ -59,6 +60,9 @@ namespace AutumnBox.Basic.Flows.MiFlash
         public static bool HasChinese(this string str)
         {
             return Regex.IsMatch(str, @"[\u4e00-\u9fa5]");
+        }
+        public static bool HasSpace(this string str) {
+            return str.Contains(" ");
         }
     }
 }
