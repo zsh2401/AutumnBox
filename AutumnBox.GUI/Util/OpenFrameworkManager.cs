@@ -22,8 +22,8 @@ namespace AutumnBox.GUI.Util
     {
         public static void LoadApi()
         {
-            App.OpenFrameworkManager.SetGuiApi(new GuiApiImpl());
-            App.OpenFrameworkManager.SetLogApi(new LogApiImpl());
+            App.Current.OpenFrameworkManager.SetGuiApi(new GuiApiImpl());
+            App.Current.OpenFrameworkManager.SetLogApi(new LogApiImpl());
         }
         /// <summary>
         /// GUIApi实现

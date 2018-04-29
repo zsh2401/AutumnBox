@@ -8,7 +8,9 @@ using AutumnBox.Basic.Util;
 using AutumnBox.GUI.Helper;
 using AutumnBox.GUI.Properties;
 using AutumnBox.GUI.Util;
+using AutumnBox.GUI.Util.PaidVersion;
 using AutumnBox.GUI.Windows;
+using AutumnBox.GUI.Windows.PaidVersion;
 using AutumnBox.OpenFramework;
 using AutumnBox.OpenFramework.Internal;
 using AutumnBox.Support.Log;
@@ -25,24 +27,51 @@ namespace AutumnBox.GUI
         {
             this.loadingWindowApi = loadingWindowApi;
         }
-        public void PrintInfo()
+        private void PrintInfo()
         {
             Logger.Info(this, $"Run as " + (SystemHelper.HaveAdminPermission ? "Admin" : "Normal user"));
             Logger.Info(this, $"AutumnBox version: {SystemHelper.CurrentVersion}");
             Logger.Info(this, $"SDK version: {BuildInfo.SDK_VERSION}");
             Logger.Info(this, $"Windows version {Environment.OSVersion.Version}");
         }
+#if PAID_VERSION
+        private bool Login()
+        {
+            var am = App.Current.AccountManager;
+            try
+            {
+                am.AutoLogin();
+                return true;
+            }
+            catch (Exception ex) { Logger.Warn(this, "Auto login failed", ex); }
+            new LoginWindow(am).ShowDialog();
+            if (am.Current != null && !am.Current.IsActivate == false)
+            {
+                new AccountWindow(am).ShowDialog();
+                if (am.Current.IsActivate) return true;
+                return false;
+            }
+            return false;
+        }
+#endif
         public async void LoadAsync()
         {
             await Task.Run(() => { Load(); });
         }
         public void Load()
         {
+#if PAID_VERSION
+            if (Login() == false)
+            {
+                App.Current.Shutdown(1);
+            }
+#endif
             //如果设置在启动时打开调试窗口
             if (Settings.Default.ShowDebuggingWindowNextLaunch)
             {
                 //打开调试窗口
-                App.Current.Dispatcher.Invoke(()=> {
+                App.Current.Dispatcher.Invoke(() =>
+                {
                     new DebugWindow().Show();
                 });
             }
@@ -90,8 +119,8 @@ namespace AutumnBox.GUI
                 loadingWindowApi.SetTip(App.Current.Resources["ldmsgLoadingExtensions"].ToString());
             });
             OpenFrameworkManager.LoadApi();
-            App.OpenFrameworkManager.ReloadAllScript();
-            App.OpenFrameworkManager.LoadAllExtension();
+            App.Current.OpenFrameworkManager.ReloadAllScript();
+            App.Current.OpenFrameworkManager.LoadAllExtension();
 
             //启动设备拔插监听器
             App.Current.Dispatcher.Invoke(() =>

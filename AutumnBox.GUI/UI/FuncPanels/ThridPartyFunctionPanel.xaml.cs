@@ -45,7 +45,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
         }
         public void Refresh(DeviceBasicInfo deviceSimpleInfo)
         {
-            ListBoxModule.ItemsSource = App.OpenFrameworkManager.GetExtensions();
+            ListBoxModule.ItemsSource = App.Current.OpenFrameworkManager.GetExtensions();
             currentDevice = deviceSimpleInfo;
             ListBoxModule.SelectedIndex = -1;
         }
@@ -111,7 +111,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
 
         private void BtnOpenModuleFloder_Click(object sender, RoutedEventArgs e)
         {
-            Process.Start(App.OpenFrameworkManager.ExtensionsPath);
+            Process.Start(App.Current.OpenFrameworkManager.ExtensionsPath);
         }
 
         private void SetBtnRunState(bool enable)
