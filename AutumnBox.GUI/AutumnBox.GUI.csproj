@@ -36,7 +36,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>..\..\AutumnBox_Output\AutumnBox\file\</OutputPath>
-    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;PAID_VERSION</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
@@ -164,6 +164,11 @@
     </Compile>
     <Compile Include="Util\Extensions.cs" />
     <Compile Include="Util\OpenFrameworkManager.cs" />
+    <Compile Include="Util\PaidVersion\AccountManager.cs" />
+    <Compile Include="Util\PaidVersion\IAccount.cs" />
+    <Compile Include="Util\PaidVersion\IAccountManager.cs" />
+    <Compile Include="Util\PaidVersion\Md5.cs" />
+    <Compile Include="Util\PaidVersion\ZshAccount.cs" />
     <Compile Include="Windows\DebugWindow.xaml.cs">
       <DependentUpon>DebugWindow.xaml</DependentUpon>
     </Compile>
@@ -174,6 +179,12 @@
       <DependentUpon>FatalWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\IAppLoadingWindow.cs" />
+    <Compile Include="Windows\PaidVersion\AccountWindow.xaml.cs">
+      <DependentUpon>AccountWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\PaidVersion\LoginWindow.xaml.cs">
+      <DependentUpon>LoginWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\UserManagerWindow.xaml.cs">
       <DependentUpon>UserManagerWindow.xaml</DependentUpon>
     </Compile>
@@ -545,6 +556,14 @@
       <SubType>Designer</SubType>
       <Generator>XamlIntelliSenseFileGenerator</Generator>
     </Page>
+    <Page Include="Windows\PaidVersion\AccountWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\PaidVersion\LoginWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\PullingWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -698,6 +717,7 @@
   <ItemGroup>
     <Resource Include="Resources\Images\AppIcons\Usersir.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>if $(ConfigurationName) == Release (

@@ -15,6 +15,7 @@ using AutumnBox.Basic.Util;
 using AutumnBox.GUI.Helper;
 using AutumnBox.GUI.I18N;
 using AutumnBox.GUI.Properties;
+using AutumnBox.GUI.Util.PaidVersion;
 using AutumnBox.GUI.Windows;
 using AutumnBox.OpenFramework;
 using AutumnBox.OpenFramework.Internal;
@@ -36,18 +37,23 @@ namespace AutumnBox.GUI
     {
 
         internal const int HAVE_OTHER_PROCESS = 25364;
-        internal static FrameworkManager OpenFrameworkManager { get; private set; }
-        internal static IApplicationContext MainAopContext { get; private set; }
 
-        internal static Context OpenFrameworkContext { get; private set; }
+        internal FrameworkManager OpenFrameworkManager { get; private set; }
+
+        internal IApplicationContext SpringContext { get; private set; }
+
+        internal Context OpenFrameworkContext { get; private set; }
 
         private class AppContext : Context { }
-
-        static App()
-        {
-            MainAopContext = new XmlApplicationContext("AutumnBoxAop.atmbxml");
+#if PAID_VERSION
+        internal readonly IAccountManager AccountManager;
+        internal IAccount Account => AccountManager.Current;
+#endif
+        public App() :base(){
             OpenFrameworkContext = new AppContext();
+            SpringContext = new XmlApplicationContext("AutumnBoxAop.atmbxml");
             OpenFrameworkManager = new FrameworkManager(OpenFrameworkContext);
+            AccountManager = SpringContext.GetObject<IAccountManager>("accountManager");
         }
 
         public static new App Current { get; private set; }

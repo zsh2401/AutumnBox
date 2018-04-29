@@ -26,7 +26,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
         public PoweronFuncPanel()
         {
             InitializeComponent();
-            ux = App.MainAopContext.GetObject<IPoweronFuncsUX>("poweronFuncsUXImp");
+            ux = App.Current.SpringContext.GetObject<IPoweronFuncsUX>("poweronFuncsUXImp");
         }
 
         public void Reset()

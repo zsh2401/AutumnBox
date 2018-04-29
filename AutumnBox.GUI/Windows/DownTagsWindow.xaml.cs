@@ -71,7 +71,7 @@ namespace AutumnBox.GUI.Windows
             var a = ((Button)sender).Tag.ToString();
 
             var b = a.Split('\'');
-            var p = App.OpenFrameworkManager.ExtensionsPath;
+            var p = App.Current.OpenFrameworkManager.ExtensionsPath;
 
             Task.Run(() => new WebClient().DownloadFile(b[0], p + @"\" + b[1]));
         }
