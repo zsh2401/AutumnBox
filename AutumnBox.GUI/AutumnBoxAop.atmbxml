@@ -3,7 +3,7 @@
   <description>AutumnBox-AOP</description>
 
   <!-- 任务 -->
-   <object id="accountManager" singleton="true" type="AutumnBox.GUI.Util.PaidVersion.AccountManager"></object>
+   <object id="accountManager" singleton="true" type="AutumnBox.GUI.PaidVersion.LocalAccountManager"></object>
   
   <object id="poweronFuncsUXImp" type="AutumnBox.GUI.UI.FuncPanels.PoweronFuncsUx.PoweronFuncsUXImp"></object>
 

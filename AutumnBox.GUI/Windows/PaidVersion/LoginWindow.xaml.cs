@@ -1,4 +1,6 @@
-﻿using AutumnBox.GUI.Util.PaidVersion;
+﻿using AutumnBox.GUI.PaidVersion;
+using AutumnBox.GUI.UI.Fp;
+using AutumnBox.Support.Log;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,6 +27,40 @@ namespace AutumnBox.GUI.Windows.PaidVersion
         {
             InitializeComponent();
             this.am = am;
+        }
+
+        private async void BtnLogin_Click(object sender, RoutedEventArgs e)
+        {
+            TbInfo.Text = "登录中...";
+            var inputUname = InputBoxUserName.Text;
+            var inputPwd = InputBoxPwd.Password;
+            await Task.Run(() =>
+            {
+                App.Current.Dispatcher.Invoke(() =>
+                {
+                    try
+                    {
+                        Logger.Debug(this, "Logining");
+                        am.Login(inputUname, inputPwd);
+                        Logger.Debug(this, "Logined");
+                    }
+                    catch(Exception ex)
+                    {
+                        Logger.DebugWarn(this,"Login failed",ex);
+                        TbInfo.Text = "登录失败,请重试";
+                    }
+                });
+            });
+            if (am.Current != null)
+            {
+                DialogResult = true;
+                Close();
+            }
+        }
+
+        private void BtnRegister_Click(object sender, RoutedEventArgs e)
+        {
+            //new FastPanel(GridBase).Display();
         }
     }
 }

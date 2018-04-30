@@ -4,14 +4,10 @@
 ** date:  2018/4/29 17:20:07 (UTC +8:00)
 ** desc： ...
 *************************************************/
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace AutumnBox.GUI.Util.PaidVersion
+namespace AutumnBox.GUI.PaidVersion
 {
     internal static class Md5
     {

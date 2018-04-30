@@ -4,13 +4,17 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AutumnBox.GUI.Windows.PaidVersion"
+        xmlns:cstm="clr-namespace:AutumnBox.GUI.UI.Cstm"
         mc:Ignorable="d"
-        Title="LoginWindow" Height="300" Width="300">
+        Title="LoginWindow" Height="214" Width="327" WindowStyle="None" ResizeMode="NoResize">
     <Grid>
-        <TextBox Height="30" Margin="10,41,10,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top"/>
-        <PasswordBox HorizontalAlignment="Left" Margin="10,76,0,0" VerticalAlignment="Top" Width="272" Height="30"/>
-        <Button Content="Login" HorizontalAlignment="Left" Margin="10,214,0,0" VerticalAlignment="Top" Width="272"/>
-        <Button Content="Register" HorizontalAlignment="Left" Margin="10,239,0,0" VerticalAlignment="Top" Width="272"/>
-
+        <cstm:CstmTitleBar VerticalAlignment="Top"/>
+        <Grid x:Name="GridBase" Background="{DynamicResource BackgroundBrushKey}" Margin="0,40,0,0">
+            <TextBox x:Name="InputBoxUserName" Height="20" Margin="10,21,10,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
+            <PasswordBox x:Name="InputBoxPwd" Margin="10,59,10,0" VerticalAlignment="Top" Height="21"/>
+            <Button x:Name="BtnLogin" Style="{DynamicResource AtmbxButtonStyle}" Content="{DynamicResource btnLogin}" Margin="10,0,10,35" Click="BtnLogin_Click" Height="32" VerticalAlignment="Bottom" FontSize="14"/>
+            <cstm:HyperLink Margin="10,0,10,10" Text="{DynamicResource btnManager}" Hyperlink="{DynamicResource urlDv}"  FontSize="14" Height="20" VerticalAlignment="Bottom"></cstm:HyperLink>
+            <TextBlock x:Name="TbInfo" Margin="10,91,10,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
+        </Grid>
     </Grid>
 </Window>

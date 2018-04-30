@@ -8,7 +8,7 @@ using AutumnBox.Basic.Util;
 using AutumnBox.GUI.Helper;
 using AutumnBox.GUI.Properties;
 using AutumnBox.GUI.Util;
-using AutumnBox.GUI.Util.PaidVersion;
+using AutumnBox.GUI.PaidVersion;
 using AutumnBox.GUI.Windows;
 using AutumnBox.GUI.Windows.PaidVersion;
 using AutumnBox.OpenFramework;
@@ -17,6 +17,7 @@ using AutumnBox.Support.Log;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace AutumnBox.GUI
 {
@@ -44,14 +45,19 @@ namespace AutumnBox.GUI
                 return true;
             }
             catch (Exception ex) { Logger.Warn(this, "Auto login failed", ex); }
-            new LoginWindow(am).ShowDialog();
-            if (am.Current != null && !am.Current.IsActivate == false)
+            App.Current.Dispatcher.Invoke(() =>
             {
-                new AccountWindow(am).ShowDialog();
-                if (am.Current.IsActivate) return true;
-                return false;
+                new LoginWindow(am).ShowDialog();
+            });
+            if (am.Current?.IsActivate != true)
+            {
+                var result = BoxHelper.ShowChoiceDialog("Warrning", "msgNotActivated", "btnExitSoftware", "btnGotoPay");
+                if (result == ChoiceResult.BtnRight)
+                {
+                    Process.Start("http://www.atmb.top/dv/");
+                }
             }
-            return false;
+            return am.Current?.IsActivate == true;
         }
 #endif
         public async void LoadAsync()
@@ -61,9 +67,14 @@ namespace AutumnBox.GUI
         public void Load()
         {
 #if PAID_VERSION
+            App.Current.Dispatcher.Invoke(() =>
+            {
+                loadingWindowApi.SetProgress(10);
+                loadingWindowApi.SetTip(App.Current.Resources["ldmsgLoginAccount"].ToString());
+            });
             if (Login() == false)
             {
-                App.Current.Shutdown(1);
+                App.Current.Dispatcher.Invoke(() => App.Current.Shutdown(1));
             }
 #endif
             //如果设置在启动时打开调试窗口
@@ -79,7 +90,7 @@ namespace AutumnBox.GUI
             //启动ADB服务
             App.Current.Dispatcher.Invoke(() =>
             {
-                loadingWindowApi.SetProgress(10);
+                loadingWindowApi.SetProgress(30);
                 loadingWindowApi.SetTip(App.Current.Resources["ldmsgStartAdb"].ToString());
             });
 

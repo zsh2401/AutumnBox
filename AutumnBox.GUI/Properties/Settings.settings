@@ -17,5 +17,8 @@
     <Setting Name="Theme" Type="System.String" Scope="User">
       <Value Profile="(Default)">随机-Random</Value>
     </Setting>
+    <Setting Name="LoginKey" Type="System.String" Scope="User">
+      <Value Profile="(Default)">DEFAULT</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
