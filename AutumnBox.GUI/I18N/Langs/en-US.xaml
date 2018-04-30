@@ -6,10 +6,12 @@
     <s:String x:Key="LanguageName">English</s:String>
     <s:String x:Key="LanguageCode">en-US</s:String>
 
-   
     <s:String x:Key="AppDesc">Open source,free,simple,GUI adb toolbox</s:String>
     <!--按钮-->
-    
+     <s:String x:Key="btnLogin">Login</s:String>
+    <s:String x:Key="btnManager">Register or manager</s:String>
+    <s:String x:Key="btnExitSoftware">Exit software</s:String>
+    <s:String x:Key="btnGotoPay">Go to pay</s:String>
     <s:String x:Key="btnGoToEnd">Go to end</s:String>
     <s:String x:Key="btnUsersirAct">Activate USER SIR</s:String>
     <s:String x:Key="btnAccept">Accpet</s:String>
@@ -120,6 +122,7 @@
     <!--标题-->
 
     <!--信息(主要用于MMesssageBox)-->
+     <s:String x:Key="msgNotActivated">This account is not activated,please goto pay,thanks!</s:String>
      <s:String x:Key="msgAndroidVersionCheckFailedFormat">Android version check was failed..this function need {0} android version,continue?</s:String>
     <s:String x:Key="msgExtensionTryGetHighPermssionFormat">{0} Try to get highest permission</s:String>
          <s:String x:Key="msgAndroidVersionTooLowFmt">Your device android version too low
@@ -380,6 +383,7 @@ Spring.AOP | Newtonsoft.Json  | Google Android Debug Bridge | Google Android | L
     <s:String x:Key="Donate">Donate Developer</s:String>
 
     <!--加载提示-->
+    <s:String x:Key="ldmsgLoginAccount">Login account</s:String>
     <s:String x:Key="ldmsgStartAdb">Adb server starting</s:String>
     <s:String x:Key="ldmsgLoadingExtensions">Loading extensions</s:String>
     <s:String x:Key="ldmsgStartDeviceMonitor">Device listener stating</s:String>

@@ -239,9 +239,10 @@ namespace AutumnBox.GUI
         private void BtnDonate_Click(object sender, RoutedEventArgs e)
         {
 #if PAID_VERSION
-            if (App.Current.AccountManager.Current != null) {
-                new AccountWindow(App.Current.AccountManager).ShowDialog();
-            }
+            //if (App.Current.AccountManager.Current != null) {
+            //    new AccountWindow(App.Current.AccountManager).ShowDialog();
+            //}
+            BoxHelper.ShowMessageDialog("Notice","感谢您!");
 #else
             new FastPanel(this.GridMain, new DonatePanel()).Display();
 #endif

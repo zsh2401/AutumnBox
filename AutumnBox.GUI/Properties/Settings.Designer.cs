@@ -82,5 +82,17 @@ namespace AutumnBox.GUI.Properties {
                 this["Theme"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("DEFAULT")]
+        public string LoginKey {
+            get {
+                return ((string)(this["LoginKey"]));
+            }
+            set {
+                this["LoginKey"] = value;
+            }
+        }
     }
 }

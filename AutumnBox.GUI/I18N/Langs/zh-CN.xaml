@@ -9,6 +9,10 @@
     
     <s:String x:Key="AppDesc">开源免费简约的图形化ADB工具箱</s:String>
     <!--按钮-->
+    <s:String x:Key="btnLogin">登陆</s:String>
+    <s:String x:Key="btnManager">注册或管理</s:String>
+    <s:String x:Key="btnExitSoftware">退出软件</s:String>
+    <s:String x:Key="btnGotoPay">前往激活</s:String>
     <s:String x:Key="btnGoToEnd">前往底部</s:String>
     <s:String x:Key="btnUsersirAct">激活USER SIR</s:String>
     <s:String x:Key="btnAccept">同意</s:String>
@@ -117,6 +121,8 @@
     <!--标题-->
     
     <!--信息(主要用于MMesssageBox)-->
+
+    <s:String x:Key="msgNotActivated">账号未激活</s:String>
     <s:String x:Key="msgAndroidVersionCheckFailedFormat">检查安卓版本失败,此功能需 {0} 安卓版本,是否强行继续?</s:String>
     <s:String x:Key="msgExtensionTryGetHighPermssionFormat">{0} 尝试获取秋之盒最高权限（非操作系统最高权限），通常这可能导致秋之盒变得不稳定，你确定吗？</s:String>
      <s:String x:Key="msgAndroidVersionTooLowFmt">您的设备安卓版本过低
@@ -378,6 +384,7 @@ Spring.AOP | Newtonsoft.Json  | Google Android Debug Bridge | Google Android | L
     <s:String x:Key="Donate">捐赠开发者</s:String>
     
     <!--加载提示-->
+    <s:String x:Key="ldmsgLoginAccount">正在登陆账户</s:String>
     <s:String x:Key="ldmsgStartAdb">正在启动ADB服务</s:String>
     <s:String x:Key="ldmsgLoadingExtensions">正在加载拓展</s:String>
     <s:String x:Key="ldmsgStartDeviceMonitor">正在启动设备拔插监听</s:String>
