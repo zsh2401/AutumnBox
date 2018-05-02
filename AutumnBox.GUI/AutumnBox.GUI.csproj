@@ -164,7 +164,7 @@
     </Compile>
     <Compile Include="Util\Extensions.cs" />
     <Compile Include="Util\OpenFrameworkManager.cs" />
-    <Compile Include="PaidVersion\LocalAccountManager.cs" />
+    <Compile Include="PaidVersion\AccountManager.cs" />
     <Compile Include="PaidVersion\IAccount.cs" />
     <Compile Include="PaidVersion\IAccountManager.cs" />
     <Compile Include="PaidVersion\Md5.cs" />
@@ -179,6 +179,9 @@
       <DependentUpon>FatalWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\IAppLoadingWindow.cs" />
+    <Compile Include="Windows\PaidVersion\LoginPanel.xaml.cs">
+      <DependentUpon>LoginPanel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\PaidVersion\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
@@ -552,6 +555,10 @@
     <Page Include="Windows\LoadingWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="Windows\PaidVersion\LoginPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\PaidVersion\LoginWindow.xaml">
       <SubType>Designer</SubType>
