@@ -41,23 +41,24 @@ namespace AutumnBox.GUI
             var am = App.Current.AccountManager;
             try
             {
+                am.Init();
                 am.AutoLogin();
                 return true;
             }
             catch (Exception ex) { Logger.Warn(this, "Auto login failed", ex); }
             App.Current.Dispatcher.Invoke(() =>
             {
-                new LoginWindow(am).ShowDialog();
+                new LoginWindow(am) { Owner = App.Current.MainWindow }.ShowDialog();
             });
-            if (am.Current?.IsActivate != true)
+            if (am.Current?.IsActivated != true)
             {
                 var result = BoxHelper.ShowChoiceDialog("Warrning", "msgNotActivated", "btnExitSoftware", "btnGotoPay");
                 if (result == ChoiceResult.BtnRight)
                 {
-                    Process.Start("http://www.atmb.top/dv/");
+                    Process.Start(App.Current.Resources["urlDvWebsite"].ToString());
                 }
             }
-            return am.Current?.IsActivate == true;
+            return am.Current?.IsActivated == true;
         }
 #endif
         public async void LoadAsync()

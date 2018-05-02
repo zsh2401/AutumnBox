@@ -16,14 +16,19 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.GUI.PaidVersion
 {
-    class LocalAccountManager : IAccountManager
+    class AccountManager : IAccountManager
     {
+        private string loginFmt;
+        private string queryUserFmt;
+        public void Init()
+        {
+            loginFmt = App.Current.Resources["urlApiLoginFmt"].ToString();
+            queryUserFmt = App.Current.Resources["urlApiQueryuserFmt"].ToString();
+        }
         private readonly WebClient webClient = new WebClient() { Encoding = Encoding.UTF8 };
+        private readonly WebClient noCookieClient = new WebClient() { Encoding = Encoding.UTF8 };
 
         public IAccount Current { get; private set; }
-
-        private const string loginFmt = "http://localhost:4418/api/login?uname={0}&pwd={1}";
-        private const string queryUserFmt = "http://localhost:4418/api/queryuser?key={0}";
 
         public void AutoLogin()
         {
@@ -32,15 +37,17 @@ namespace AutumnBox.GUI.PaidVersion
 
         private void LoginUseSavedLoginKey()
         {
-            var url = string.Format(queryUserFmt, Settings.Default.LoginKey);
-            var json = webClient.DownloadString(url);
-            if (int.Parse(JObject.Parse(json)["status_code"].ToString()) != 0)
+            webClient.Headers["Cookie"] = $"loginKey={Settings.Default.LoginKey};";
+            var url = string.Format(queryUserFmt);
+            Logger.Debug(this, url);
+            var responseText = webClient.DownloadString(url);
+            if (int.Parse(JObject.Parse(responseText)["status_code"].ToString()) != 0)
             {
                 throw new Exception("query user failed!");
             }
             else
             {
-                Current = JsonConvert.DeserializeObject<Account>(json);
+                Current = JsonConvert.DeserializeObject<Account>(responseText);
                 Logger.Debug(this, Current.ExpiredDate);
             }
         }
@@ -48,9 +55,8 @@ namespace AutumnBox.GUI.PaidVersion
         public void Login(string userName, string pwd)
         {
             var url = string.Format(loginFmt, userName, pwd.ToMd5());
-            var str = webClient.DownloadString(url);
+            var str = noCookieClient.DownloadString(url);
             var jObj = JObject.Parse(str);
-            Logger.Debug(this,jObj);
             if (int.Parse(jObj["status_code"].ToString()) == 0)
             {
                 Settings.Default.LoginKey = jObj["key"].ToString();
@@ -59,6 +65,7 @@ namespace AutumnBox.GUI.PaidVersion
             }
             else
             {
+                Logger.Debug(this, jObj);
                 throw new Exception(jObj["message"]?.ToString());
             }
         }

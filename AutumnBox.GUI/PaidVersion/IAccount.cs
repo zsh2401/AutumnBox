@@ -6,7 +6,7 @@ namespace AutumnBox.GUI.PaidVersion
     {
         int Id { get; }
         string UserName { get; }
-        bool IsActivate { get; }
+        bool IsActivated { get; }
         DateTime ExpiredDate { get; }
         DateTime RegisterDate { get; }
     }

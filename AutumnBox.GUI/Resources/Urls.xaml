@@ -7,14 +7,14 @@
     <s:String x:Key="urlJoinQQGroup">http://www.atmb.top/help/join_qq_group/</s:String>
     <s:String x:Key="urlDownloadMiFlashPackage">http://www.atmb.top/download/miflash_pkg</s:String>
     <s:String x:Key="urlDownloadExtensions">http://www.atmb.top/extension/</s:String>
-    <s:String x:Key="urlDv">http://www.atmb.top/dv</s:String>
+    <s:String x:Key="urlDvWebsite">http://dv.atmb.top</s:String>
 
     <s:String x:Key="urlApiMotd">http://www.atmb.top/api/motd</s:String>
     <s:String x:Key="urlApiPotd">http://www.atmb.top/api/potd</s:String>
     <s:String x:Key="urlApiUpdate">http://www.atmb.top/api/update</s:String>
     <s:String x:Key="urlApiStatistics">http://www.atmb.top/api/statistics</s:String>
-    <s:String x:Key="urlApiQueryuserFmt">http://dv.atmb.top/queryuser?key={0}</s:String>
-    <s:String x:Key="urlApiLoginFmt">http://dv.atmb.top/api/login?uname={0}&amp;pwd={1}"</s:String>
+    <s:String x:Key="urlApiQueryuserFmt">http://dv.atmb.top/api/Queryuser</s:String>
+    <s:String x:Key="urlApiLoginFmt">http://dv.atmb.top/api/Login?uname={0}&amp;pwd={1}</s:String>
    
     
     <s:String x:Key="urlHelp">http://www.atmb.top/help/</s:String>

@@ -23,6 +23,7 @@ namespace AutumnBox.GUI.Windows.PaidVersion
     public partial class LoginWindow : Window
     {
         private readonly IAccountManager am;
+
         internal LoginWindow(IAccountManager am)
         {
             InitializeComponent();
@@ -34,23 +35,26 @@ namespace AutumnBox.GUI.Windows.PaidVersion
             TbInfo.Text = "登录中...";
             var inputUname = InputBoxUserName.Text;
             var inputPwd = InputBoxPwd.Password;
+            var fp = new FastPanel(GridBase, new LoginPanel());
+            fp.Display();
             await Task.Run(() =>
             {
-                App.Current.Dispatcher.Invoke(() =>
+                try
                 {
-                    try
+                    Logger.Debug(this, "Logining");
+                    am.Login(inputUname, inputPwd);
+                    Logger.Debug(this, "Logined");
+                }
+                catch (Exception ex)
+                {
+                    App.Current.Dispatcher.Invoke(() =>
                     {
-                        Logger.Debug(this, "Logining");
-                        am.Login(inputUname, inputPwd);
-                        Logger.Debug(this, "Logined");
-                    }
-                    catch(Exception ex)
-                    {
-                        Logger.DebugWarn(this,"Login failed",ex);
+                        Logger.DebugWarn(this, "Login failed", ex);
                         TbInfo.Text = "登录失败,请重试";
-                    }
-                });
+                    });
+                }
             });
+            fp.Close();
             if (am.Current != null)
             {
                 DialogResult = true;

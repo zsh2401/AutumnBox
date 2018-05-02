@@ -6,15 +6,15 @@
         xmlns:local="clr-namespace:AutumnBox.GUI.Windows.PaidVersion"
         xmlns:cstm="clr-namespace:AutumnBox.GUI.UI.Cstm"
         mc:Ignorable="d"
-        Title="LoginWindow" Height="214" Width="327" WindowStyle="None" ResizeMode="NoResize">
-    <Grid>
+        Title="LoginWindow" Height="214" Width="327" WindowStyle="None" WindowStartupLocation="CenterOwner" ResizeMode="NoResize">
+    <Grid Background="{DynamicResource BackgroundBrushKey}">
         <cstm:CstmTitleBar VerticalAlignment="Top"/>
-        <Grid x:Name="GridBase" Background="{DynamicResource BackgroundBrushKey}" Margin="0,40,0,0">
-            <TextBox x:Name="InputBoxUserName" Height="20" Margin="10,21,10,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
-            <PasswordBox x:Name="InputBoxPwd" Margin="10,59,10,0" VerticalAlignment="Top" Height="21"/>
-            <Button x:Name="BtnLogin" Style="{DynamicResource AtmbxButtonStyle}" Content="{DynamicResource btnLogin}" Margin="10,0,10,35" Click="BtnLogin_Click" Height="32" VerticalAlignment="Bottom" FontSize="14"/>
-            <cstm:HyperLink Margin="10,0,10,10" Text="{DynamicResource btnManager}" Hyperlink="{DynamicResource urlDv}"  FontSize="14" Height="20" VerticalAlignment="Bottom"></cstm:HyperLink>
-            <TextBlock x:Name="TbInfo" Margin="10,91,10,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
+        <Grid x:Name="GridBase" Margin="0,40,0,0">
+            <TextBox Background="Transparent" Foreground="{DynamicResource ForegroundBrushKey}" x:Name="InputBoxUserName" Height="22" Margin="10,10,10,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
+            <PasswordBox Background="Transparent" Foreground="{DynamicResource ForegroundBrushKey}" x:Name="InputBoxPwd" Margin="10,46,10,0" VerticalAlignment="Top" Height="21"/>
+            <Button x:Name="BtnLogin" Style="{DynamicResource AtmbxButtonStyle}" Content="{DynamicResource btnLogin}" Margin="10,0,10,35" Click="BtnLogin_Click" Height="27" VerticalAlignment="Bottom" FontSize="14"/>
+            <cstm:HyperLink Margin="10,0,10,10" Text="{DynamicResource btnManager}" Hyperlink="{DynamicResource urlDvWebsite}"  FontSize="14" Height="20" VerticalAlignment="Bottom"></cstm:HyperLink>
+            <TextBlock Style="{DynamicResource AtmbxTextBlockStyle}" x:Name="TbInfo" Margin="10,85,10,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="22"/>
         </Grid>
     </Grid>
 </Window>
