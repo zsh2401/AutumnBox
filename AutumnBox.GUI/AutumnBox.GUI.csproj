@@ -179,6 +179,9 @@
       <DependentUpon>FatalWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\IAppLoadingWindow.cs" />
+    <Compile Include="Windows\PaidVersion\AccountPanel.xaml.cs">
+      <DependentUpon>AccountPanel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\PaidVersion\LoginPanel.xaml.cs">
       <DependentUpon>LoginPanel.xaml</DependentUpon>
     </Compile>
@@ -555,6 +558,10 @@
     <Page Include="Windows\LoadingWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="Windows\PaidVersion\AccountPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\PaidVersion\LoginPanel.xaml">
       <SubType>Designer</SubType>
