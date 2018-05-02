@@ -8,6 +8,7 @@
 
     <s:String x:Key="AppDesc">Open source,free,simple,GUI adb toolbox</s:String>
     <!--按钮-->
+     <s:String x:Key="btnAccountInfo">Account info</s:String>
      <s:String x:Key="btnLogin">Login</s:String>
     <s:String x:Key="btnManager">Register or manager</s:String>
     <s:String x:Key="btnExitSoftware">Exit software</s:String>

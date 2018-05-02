@@ -69,6 +69,7 @@ namespace AutumnBox.GUI
                 SetTitile();
             };
         }
+
         private void SetTitile()
         {
 #if DEBUG
@@ -162,6 +163,13 @@ namespace AutumnBox.GUI
                     }
                 });
             });
+#if PAID_VERSION
+            BtnDonate.Content = App.Current.Resources["btnAccountInfo"];
+            LanguageHelper.LanguageChanged += (s, e) =>
+            {
+                BtnDonate.Content = App.Current.Resources["btnAccountInfo"];
+            };
+#endif
         }
 
         public void Refresh(DeviceBasicInfo devinfo)
@@ -239,10 +247,7 @@ namespace AutumnBox.GUI
         private void BtnDonate_Click(object sender, RoutedEventArgs e)
         {
 #if PAID_VERSION
-            //if (App.Current.AccountManager.Current != null) {
-            //    new AccountWindow(App.Current.AccountManager).ShowDialog();
-            //}
-            BoxHelper.ShowMessageDialog("Notice","感谢您!");
+            new FastPanel(this.GridMain, new AccountPanel()).Display();
 #else
             new FastPanel(this.GridMain, new DonatePanel()).Display();
 #endif

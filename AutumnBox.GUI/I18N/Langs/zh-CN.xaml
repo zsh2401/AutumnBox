@@ -9,6 +9,7 @@
     
     <s:String x:Key="AppDesc">开源免费简约的图形化ADB工具箱</s:String>
     <!--按钮-->
+    <s:String x:Key="btnAccountInfo">账号信息</s:String>
     <s:String x:Key="btnLogin">登陆</s:String>
     <s:String x:Key="btnManager">注册或管理</s:String>
     <s:String x:Key="btnExitSoftware">退出软件</s:String>
@@ -19,7 +20,7 @@
     <s:String x:Key="btnDeny">拒绝</s:String>
     <s:String x:Key="btnGreenifyDozeActivator">激活绿色守护嗜睡模式等</s:String>
     <s:String x:Key="btnFreezeYouActivator">激活FreezeYou!</s:String>
-     <s:String x:Key="btnAnzenbokusuFakeActivator">激活第二空间伪装版</s:String>
+    <s:String x:Key="btnAnzenbokusuFakeActivator">激活第二空间伪装版</s:String>
     <s:String x:Key="btnAnzenbokusuActivator">激活第二空间</s:String>
     <s:String x:Key="btnBlackholeActivator">激活黑洞</s:String>
     <s:String x:Key="btnStopExtension">停止运行</s:String>
