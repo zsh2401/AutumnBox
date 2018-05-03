@@ -52,7 +52,9 @@ namespace AutumnBox.GUI
             OpenFrameworkContext = new AppContext();
             SpringContext = new XmlApplicationContext("AutumnBoxAop.atmbxml");
             OpenFrameworkManager = new FrameworkManager(OpenFrameworkContext);
+#if PAID_VERSION
             AccountManager = SpringContext.GetObject<IAccountManager>("accountManager");
+#endif
         }
 
         public static new App Current { get; private set; }
