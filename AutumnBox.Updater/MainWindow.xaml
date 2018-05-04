@@ -9,9 +9,9 @@
         Title="MainWindow" Height="277.333" Width="415.667">
     <Grid>
 
-        <ProgressBar x:Name="ProgressBar" Margin="0,0,0,36" BorderBrush="{x:Null}" Background="{x:Null}" Height="10" VerticalAlignment="Bottom"/>
-        <TextBlock x:Name="TBTip" FontSize="15" Margin="5,0,5,5" TextWrapping="Wrap" Text="TextBlock" Height="26" VerticalAlignment="Bottom"/>
-        <TextBlock x:Name="TBUpdateContent" Margin="10,10,10,51" TextWrapping="Wrap" Text="TextBlock"/>
+        <ProgressBar x:Name="ProgressBar" Margin="0,0,0,257" BorderBrush="{x:Null}" Background="{x:Null}" Height="10" VerticalAlignment="Bottom"/>
+        <TextBlock x:Name="TBTip" FontSize="15" Margin="259,0,10,10" TextWrapping="Wrap" Text="" Height="235" VerticalAlignment="Bottom"/>
+        <TextBlock x:Name="TBUpdateContent" Margin="10,32,162,10" TextWrapping="Wrap" Text=""/>
 
     </Grid>
 </Window>

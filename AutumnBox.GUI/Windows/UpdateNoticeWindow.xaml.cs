@@ -59,6 +59,9 @@ namespace AutumnBox.GUI.Windows
 
         private void ButtonUpdateNow_MouseDown(object sender, MouseButtonEventArgs e)
         {
+#if PAID_VERSION
+            Process.Start("AutumnBox.Updater.exe");
+#else
             try
             {
                 Process.Start(result.UpdateUrl);
@@ -68,6 +71,7 @@ namespace AutumnBox.GUI.Windows
                 Logger.Warn(this, "Go to update url failed..", ex);
             }
             this.Close();
+#endif
         }
     }
 }

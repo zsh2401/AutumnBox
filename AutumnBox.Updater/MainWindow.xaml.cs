@@ -48,7 +48,6 @@ namespace AutumnBox.Updater
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             App.Current.UpdaterCore.Start(this);
-            Manager.ParseUpdateInfo();
         }
     }
 }
