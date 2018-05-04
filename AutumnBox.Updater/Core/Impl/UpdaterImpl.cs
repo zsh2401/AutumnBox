@@ -7,6 +7,7 @@ using System.Net;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace AutumnBox.Updater.Core.Impl
 {
@@ -22,11 +23,17 @@ namespace AutumnBox.Updater.Core.Impl
 #endif
         public async void Start(IProgressWindow prgWin)
         {
-            UpdateInfo uInfo = null;
+            try
+            {
+                UpdateInfo uInfo = null;
             prgWin.SetTip("正在获取更新信息", 10);
             await Task.Run(() => uInfo = UpdateInfo.Parse(webClient.DownloadString(api)));
+            prgWin.SetTip("获取完成", 15);
             prgWin.SetUpdateContent($"{uInfo.Title}{Environment.NewLine}{uInfo.UpdateContent}");
-            if (Directory.Exists(updateTmpDir)) { Directory.Delete(updateTmpDir,true); }
+            if (Directory.Exists(updateTmpDir)) {
+               
+                    Directory.Delete(updateTmpDir, true);
+            }
             if (!Directory.Exists(updateTmpDir)) Directory.CreateDirectory(updateTmpDir);
             prgWin.SetTip("正在下载更新", 30);
             await Task.Run(() => webClient.DownloadFile(uInfo.DownloadUrl, Path.Combine(updateTmpDir, tmpFilePath)));
@@ -44,6 +51,12 @@ namespace AutumnBox.Updater.Core.Impl
                 WorkingDirectory = "..\\",
             }).Start();
             prgWin.Finish();
+            }
+            catch (Exception ex)
+            {
+                Trace.Fail(ex.ToString());
+                
+            }
         }
     }
 }
