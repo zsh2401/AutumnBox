@@ -17,7 +17,8 @@ namespace AutumnBox.Updater
     {
         public static new App Current => (App)Application.Current;
         internal readonly IUpdater UpdaterCore;
-        public App() {
+        public App()
+        {
             UpdaterCore = new UpdaterImpl();
         }
     }
