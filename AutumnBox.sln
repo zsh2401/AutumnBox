@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2027
+VisualStudioVersion = 15.0.27130.2003
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutumnBox.GUI", "AutumnBox.GUI\AutumnBox.GUI.csproj", "{55081483-1689-4E52-A4F1-22AB75FF8900}"
 EndProject
@@ -31,6 +31,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{ED6D96D8-56EF-4E5B-B43F-100D1DB9EA30}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutumnBox.ExampleExtensions", "AutumnBox.ExampleExtensions\AutumnBox.ExampleExtensions.csproj", "{D81ACCBD-9D6A-4A5B-A0A5-4362F897074B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutumnBox.Updater", "AutumnBox.Updater\AutumnBox.Updater.csproj", "{64CAD910-44C2-42B2-AA62-5A8497A5E99A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -366,6 +368,38 @@ Global
 		{D81ACCBD-9D6A-4A5B-A0A5-4362F897074B}.SDK|x64.Build.0 = Release|Any CPU
 		{D81ACCBD-9D6A-4A5B-A0A5-4362F897074B}.SDK|x86.ActiveCfg = Release|Any CPU
 		{D81ACCBD-9D6A-4A5B-A0A5-4362F897074B}.SDK|x86.Build.0 = Release|Any CPU
+		{64CAD910-44C2-42B2-AA62-5A8497A5E99A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64CAD910-44C2-42B2-AA62-5A8497A5E99A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64CAD910-44C2-42B2-AA62-5A8497A5E99A}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{64CAD910-44C2-42B2-AA62-5A8497A5E99A}.Debug|ARM.Build.0 = Debug|Any CPU
+		{64CAD910-44C2-42B2-AA62-5A8497A5E99A}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{64CAD910-44C2-42B2-AA62-5A8497A5E99A}.Debug|x64.Build.0 = Debug|Any CPU
+		{64CAD910-44C2-42B2-AA62-5A8497A5E99A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{64CAD910-44C2-42B2-AA62-5A8497A5E99A}.Debug|x86.Build.0 = Debug|Any CPU
+		{64CAD910-44C2-42B2-AA62-5A8497A5E99A}.DefaultBuild|Any CPU.ActiveCfg = Debug|Any CPU
+		{64CAD910-44C2-42B2-AA62-5A8497A5E99A}.DefaultBuild|Any CPU.Build.0 = Debug|Any CPU
+		{64CAD910-44C2-42B2-AA62-5A8497A5E99A}.DefaultBuild|ARM.ActiveCfg = Debug|Any CPU
+		{64CAD910-44C2-42B2-AA62-5A8497A5E99A}.DefaultBuild|ARM.Build.0 = Debug|Any CPU
+		{64CAD910-44C2-42B2-AA62-5A8497A5E99A}.DefaultBuild|x64.ActiveCfg = Debug|Any CPU
+		{64CAD910-44C2-42B2-AA62-5A8497A5E99A}.DefaultBuild|x64.Build.0 = Debug|Any CPU
+		{64CAD910-44C2-42B2-AA62-5A8497A5E99A}.DefaultBuild|x86.ActiveCfg = Debug|Any CPU
+		{64CAD910-44C2-42B2-AA62-5A8497A5E99A}.DefaultBuild|x86.Build.0 = Debug|Any CPU
+		{64CAD910-44C2-42B2-AA62-5A8497A5E99A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64CAD910-44C2-42B2-AA62-5A8497A5E99A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64CAD910-44C2-42B2-AA62-5A8497A5E99A}.Release|ARM.ActiveCfg = Release|Any CPU
+		{64CAD910-44C2-42B2-AA62-5A8497A5E99A}.Release|ARM.Build.0 = Release|Any CPU
+		{64CAD910-44C2-42B2-AA62-5A8497A5E99A}.Release|x64.ActiveCfg = Release|Any CPU
+		{64CAD910-44C2-42B2-AA62-5A8497A5E99A}.Release|x64.Build.0 = Release|Any CPU
+		{64CAD910-44C2-42B2-AA62-5A8497A5E99A}.Release|x86.ActiveCfg = Release|Any CPU
+		{64CAD910-44C2-42B2-AA62-5A8497A5E99A}.Release|x86.Build.0 = Release|Any CPU
+		{64CAD910-44C2-42B2-AA62-5A8497A5E99A}.SDK|Any CPU.ActiveCfg = Release|Any CPU
+		{64CAD910-44C2-42B2-AA62-5A8497A5E99A}.SDK|Any CPU.Build.0 = Release|Any CPU
+		{64CAD910-44C2-42B2-AA62-5A8497A5E99A}.SDK|ARM.ActiveCfg = Release|Any CPU
+		{64CAD910-44C2-42B2-AA62-5A8497A5E99A}.SDK|ARM.Build.0 = Release|Any CPU
+		{64CAD910-44C2-42B2-AA62-5A8497A5E99A}.SDK|x64.ActiveCfg = Release|Any CPU
+		{64CAD910-44C2-42B2-AA62-5A8497A5E99A}.SDK|x64.Build.0 = Release|Any CPU
+		{64CAD910-44C2-42B2-AA62-5A8497A5E99A}.SDK|x86.ActiveCfg = Release|Any CPU
+		{64CAD910-44C2-42B2-AA62-5A8497A5E99A}.SDK|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -376,9 +410,10 @@ Global
 		{6676743F-1C88-4446-8D9C-8CB2D6DFE873} = {AD194958-76D4-4C60-BC3A-A6753B39D060}
 		{1F3778B8-BD3B-4288-A498-FD76D2E84F44} = {AD194958-76D4-4C60-BC3A-A6753B39D060}
 		{D81ACCBD-9D6A-4A5B-A0A5-4362F897074B} = {ED6D96D8-56EF-4E5B-B43F-100D1DB9EA30}
+		{64CAD910-44C2-42B2-AA62-5A8497A5E99A} = {AD194958-76D4-4C60-BC3A-A6753B39D060}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {E8E55705-AE5C-4952-B4C7-9D7F81C38731}
 		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.PolicyInjection.6.0.1304.0\lib\NET45
+		SolutionGuid = {E8E55705-AE5C-4952-B4C7-9D7F81C38731}
 	EndGlobalSection
 EndGlobal
