@@ -15,8 +15,9 @@
     <s:String x:Key="urlApiStatistics">http://www.atmb.top/api/statistics</s:String>
     <s:String x:Key="urlApiQueryuserFmt">http://dv.atmb.top/api/Queryuser</s:String>
     <s:String x:Key="urlApiLoginFmt">http://dv.atmb.top/api/Login?uname={0}&amp;pwd={1}</s:String>
-   
+    <s:String x:Key="urlApiUpdateDv">http://dv.atmb.top/api/update_dv</s:String>
     
+
     <s:String x:Key="urlHelp">http://www.atmb.top/help/</s:String>
     <s:String x:Key="urlHelpOfLinkDevice">http://www.atmb.top/help/link_device/</s:String>
     <s:String x:Key="urlHelpOfInstallExtension">http://www.atmb.top/help/install_extension/</s:String>

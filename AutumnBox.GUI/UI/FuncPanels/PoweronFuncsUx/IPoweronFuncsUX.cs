@@ -32,5 +32,6 @@ namespace AutumnBox.GUI.UI.FuncPanels.PoweronFuncsUx
         void ScreenShot(DeviceBasicInfo targetDevice);
         void InstallApk(DeviceBasicInfo targetDevice);
         void PushFile(DeviceBasicInfo targetDevice);
+        void ActivateAppOpsX(DeviceBasicInfo targetDevice);
     }
 }

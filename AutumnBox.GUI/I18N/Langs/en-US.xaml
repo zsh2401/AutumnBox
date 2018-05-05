@@ -8,6 +8,7 @@
 
     <s:String x:Key="AppDesc">Open source,free,simple,GUI adb toolbox</s:String>
     <!--按钮-->
+     <s:String x:Key="btnAppOpsXAct">Activate AppOpsX</s:String>
      <s:String x:Key="btnAccountInfo">Account info</s:String>
      <s:String x:Key="btnLogin">Login</s:String>
     <s:String x:Key="btnManager">Register or manager</s:String>
@@ -180,7 +181,7 @@
         当进入9008模式后,设备会完全黑屏,但您可以使用相关工具进行刷机
         &#x0a;如果想要退出9008模式,长按电源键即可!
     </s:String>
-    
+    <s:String x:Key="msgPlsInstallAppOpsXFirst">Please install AppOpsX first!</s:String>
     <s:String x:Key="msgPlsInstallUsersirFirst">Please install USER SIR first!</s:String>
     <s:String x:Key="msgPlsInstallGreenifyFirst">Please install Greenify first!</s:String>
     <s:String x:Key="msgPlsInstallFreezeYouFirst">Please install FreezeYou first!</s:String>

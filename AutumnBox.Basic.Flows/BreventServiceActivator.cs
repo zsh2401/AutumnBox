@@ -30,7 +30,7 @@ namespace AutumnBox.Basic.Flows
         /// <summary>
         /// 主Activity的路径
         /// </summary>
-        protected override string AppActivity => ".ui.BreventActivity";
+        protected override string AppActivity => "ui.BreventActivity";
         /// <summary>
         /// 包名
         /// </summary>
