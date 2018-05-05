@@ -3,23 +3,14 @@
 ** date:  2018/3/16 11:14:02 (UTC +8:00)
 ** desc： ...
 *************************************************/
-using AopAlliance.Intercept;
 using AutumnBox.Basic.Device;
-using AutumnBox.Basic.Device.PackageManage;
 using AutumnBox.Basic.FlowFramework;
 using AutumnBox.Basic.Flows;
 using AutumnBox.GUI.Helper;
 using AutumnBox.GUI.Windows;
-using AutumnBox.Support.Log;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Forms;
 
 namespace AutumnBox.GUI.UI.FuncPanels.PoweronFuncsUx
@@ -27,7 +18,7 @@ namespace AutumnBox.GUI.UI.FuncPanels.PoweronFuncsUx
 
     public class PoweronFuncsUXImp : IPoweronFuncsUX
     {
-        [InstallCheck(BreventServiceActivator._AppPackageName, ErrorMsgKey = "msgPlzInstallBreventFirst")]
+        [InstallCheck(BreventServiceActivator._AppPackageName, ErrorMsgKey = "msgPlsInstallBreventFirst")]
         public void ActivateBrevent(DeviceBasicInfo targetDevice)
         {
             bool fixAndroidO = false;
@@ -370,7 +361,9 @@ namespace AutumnBox.GUI.UI.FuncPanels.PoweronFuncsUx
                 return;
             }
         }
-        public void PushFile(DeviceBasicInfo targetDeivce) {
+
+        public void PushFile(DeviceBasicInfo targetDeivce)
+        {
             Microsoft.Win32.OpenFileDialog fileDialog = new Microsoft.Win32.OpenFileDialog();
             fileDialog.Reset();
             fileDialog.Title = App.Current.Resources["SelecteAFile"].ToString();
@@ -393,6 +386,33 @@ namespace AutumnBox.GUI.UI.FuncPanels.PoweronFuncsUx
             {
                 return;
             }
+        }
+
+        [InstallCheck(AppOpsXActivator.ApplicationPackageName, ErrorMsgKey = "msgPlsInstallAppOpsxFirst")]
+        public void ActivateAppOpsX(DeviceBasicInfo targetDevice)
+        {
+            bool fixAndroidO = false;
+            if (new DeviceBuildPropGetter(targetDevice.Serial).GetAndroidVersion() >= new Version("8.0.0"))
+            {
+                var result = BoxHelper.ShowChoiceDialog("msgNotice", "msgFixAndroidO", "btnDoNotOpen", "btnOpen");
+                switch (result)
+                {
+                    case ChoiceResult.BtnCancel:
+                        return;
+                    case ChoiceResult.BtnLeft:
+                        fixAndroidO = false;
+                        break;
+                    case ChoiceResult.BtnRight:
+                        fixAndroidO = true;
+                        break;
+                }
+            }
+            var args = new ShScriptExecuterArgs() { DevBasicInfo = targetDevice, FixAndroidOAdb = fixAndroidO };
+            /*开始操作*/
+            AppOpsXActivator activator = new AppOpsXActivator();
+            activator.Init(args);
+            activator.RunAsync();
+            BoxHelper.ShowLoadingDialog(activator);
         }
     }
 }

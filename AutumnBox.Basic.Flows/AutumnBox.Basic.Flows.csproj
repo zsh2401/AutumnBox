@@ -61,6 +61,7 @@
     <Compile Include="AnzenbokusuActivator.cs" />
     <Compile Include="AnzenbokusuFakeActivator.cs" />
     <Compile Include="ApkInstaller.cs" />
+    <Compile Include="AppOpsXActivator.cs" />
     <Compile Include="BlackHoleActivator.cs" />
     <Compile Include="BreventServiceActivator.cs" />
     <Compile Include="DcimBackuper.cs" />

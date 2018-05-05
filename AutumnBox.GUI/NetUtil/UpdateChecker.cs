@@ -93,9 +93,17 @@ namespace AutumnBox.GUI.NetUtil
         {
             Logger.Info(this, "Getting update info....");
 #if USE_LOCAL_API && DEBUG
+#if PAID_VERSION
+            byte[] bytes = webClient.DownloadData("http://localhost:24010/api/update_dv/");
+#else
             byte[] bytes = webClient.DownloadData("http://localhost:24010/api/update/");
+#endif
+#else
+#if PAID_VERSION
+            byte[] bytes = new WebClient().DownloadData(App.Current.Resources["urlApiUpdateDv"].ToString());
 #else
             byte[] bytes = new WebClient().DownloadData(App.Current.Resources["urlApiUpdate"].ToString());
+#endif
 #endif
             string data = Encoding.UTF8.GetString(bytes);
             var result = (UpdateCheckResult)JsonConvert.DeserializeObject(data, typeof(UpdateCheckResult));

@@ -89,12 +89,21 @@ namespace AutumnBox.Basic.Flows
         protected override Output MainMethod(ToolKit<ShScriptExecuterArgs> toolKit)
         {
             _tooKit = toolKit;
+            var ob = new AdvanceOutputBuilder();
             if (AppPackageName != null && AppActivity != null)
             {
-                Activity.Start(toolKit.Args.Serial,AppPackageName,AppActivity);
+                Logger.Info(this, Activity.Start(toolKit.Args.Serial, AppPackageName, AppActivity));
                 Thread.Sleep(Delay);
             }
-            _result = toolKit.Executer.QuicklyShell(_tooKit.Args.DevBasicInfo.Serial, $"sh {ScriptPath}");
+            int retCode = 0;
+            using (AndroidShell shell = new AndroidShell(toolKit.Args.DevBasicInfo.Serial))
+            {
+                shell.Connect();
+                ob.Register(shell);
+                retCode = shell.SafetyInput($"sh {ScriptPath}").GetExitCode();
+            }
+            ob.ExitCode = retCode;
+            _result = ob.Result;
             return _result;
         }
         /// <summary>
@@ -135,7 +144,7 @@ namespace AutumnBox.Basic.Flows
 
                     if (openerResult.ExitCode == 0)//如果开启成功
                     {
-                        Thread.Sleep(2000);//稍等一会儿
+                        Thread.Sleep(3000);//稍等一会儿
                         IPAddress ip = new DeviceSoftwareInfoGetter(_tooKit.Args.Serial).GetLocationIP();//获取设备IP
 
                         //连接到该设备
@@ -144,13 +153,13 @@ namespace AutumnBox.Basic.Flows
                         connecter.Run();
                     }
 
-                    Logger.Info(this,"Fix android o adb successful....");
+                    Logger.Info(this, "Fix android o adb successful....");
                 });
             }
             catch (Exception e)
             {
                 FixFailed(this, e);
-                Logger.Warn(this,"Fix android o adb failed....",e);
+                Logger.Warn(this, "Fix android o adb failed....", e);
             }
         }
     }

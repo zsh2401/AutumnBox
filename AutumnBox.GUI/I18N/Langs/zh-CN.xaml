@@ -9,6 +9,7 @@
     
     <s:String x:Key="AppDesc">开源免费简约的图形化ADB工具箱</s:String>
     <!--按钮-->
+    <s:String x:Key="btnAppOpsXAct">激活AppOpsX</s:String>
     <s:String x:Key="btnAccountInfo">账号信息</s:String>
     <s:String x:Key="btnLogin">登陆</s:String>
     <s:String x:Key="btnManager">注册或管理</s:String>
@@ -180,6 +181,7 @@
        当进入9008模式后,设备会完全黑屏,但您可以使用相关工具进行刷机
         &#x0a;如果想要退出9008模式,长按电源键即可!
     </s:String>
+    <s:String x:Key="msgPlsInstallAppOpsXFirst">请先安装AppOpsX!</s:String>
     <s:String x:Key="msgPlsInstallUsersirFirst">请先安装USER SIR!</s:String>
     <s:String x:Key="msgPlsInstallGreenifyFirst">请先安装绿色守护!</s:String>
     <s:String x:Key="msgPlsInstallFreezeYouFirst">请先安装FreezeYou!</s:String>

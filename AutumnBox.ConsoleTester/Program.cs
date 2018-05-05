@@ -19,13 +19,7 @@ namespace AutumnBox.ConsoleTester
         }
         unsafe static int Main(string[] cmdargs)
         {
-            var builder = new AdvanceOutputBuilder();
-            var builder2 = new AdvanceOutputBuilder();
-            builder.ExitCode = 0;
-            builder2.ExitCode = 0;
-            builder.AppendOut("xx");
-            builder2.AppendOut("xx");
-            Console.WriteLine(builder.Result.GetHashCode() == builder2.Result.GetHashCode());
+            Console.WriteLine(new DeviceSoftwareInfoGetter(Constant.mi6).GetLocationIP());
             Console.ReadKey();
             return 0;
         }

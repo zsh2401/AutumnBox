@@ -26,7 +26,7 @@ namespace AutumnBox.Basic.Flows
         /// <summary>
         /// 主Acitivty路径
         /// </summary>
-        protected override string AppActivity => "moe.shizuku.manager.MainActivity";
+        protected override string AppActivity => "MainActivity";
         /// <summary>
         /// 包名
         /// </summary>
