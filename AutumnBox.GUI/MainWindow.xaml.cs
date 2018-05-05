@@ -32,8 +32,9 @@ using System.Windows.Threading;
 using AutumnBox.GUI.UI.FuncPanels;
 using System.Windows.Controls;
 using AutumnBox.GUI.I18N;
-using AutumnBox.GUI.Util;
 using AutumnBox.GUI.Windows.PaidVersion;
+using System.Windows.Media;
+using System.Media;
 
 namespace AutumnBox.GUI
 {
@@ -45,7 +46,7 @@ namespace AutumnBox.GUI
         private Object setUILock = new System.Object();
         private List<IRefreshable> refreshables;
         private DeviceBasicInfo currentDevice;
-
+        private SoundPlayer audioPlayer;
         public bool BtnMinEnable => true;
 
         Window ITitleBarWindow.MainWindow => this;
@@ -53,6 +54,7 @@ namespace AutumnBox.GUI
         public MainWindow()
         {
             InitializeComponent();
+            audioPlayer = new SoundPlayer("Resources/Sound/ok.wav");
             refreshables = new List<IRefreshable>
             {
                 RebootGrid,

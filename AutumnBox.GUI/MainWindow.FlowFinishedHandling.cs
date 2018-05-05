@@ -16,15 +16,24 @@ using AutumnBox.GUI.Helper;
 using AutumnBox.GUI.Windows;
 using AutumnBox.Basic.Flows.Result;
 using AutumnBox.Basic.FlowFramework;
+using System.Media;
+using AutumnBox.GUI.Properties;
+using System.Reflection;
+using System.Windows.Media;
 
 namespace AutumnBox.GUI
 {
     partial class MainWindow
     {
+
         private void FlowFinished(object sender, FinishedEventArgs<FlowResult> e)
         {
             this.Dispatcher.Invoke(() =>
             {
+                if (Settings.Default.NotifyOnFinish)
+                {
+                    audioPlayer.Play();
+                }
                 switch (sender.GetType().Name)
                 {
                     case nameof(IslandActivator):
@@ -67,7 +76,7 @@ namespace AutumnBox.GUI
             string advise = null;
             object rmsgObj = App.Current.Resources[$"rmsgDOS{result.ErrorType.ToString()}"];
             object advsObj = App.Current.Resources[$"advsDOS{result.ErrorType.ToString()}"];
-            message = rmsgObj != null?rmsgObj.ToString(): App.Current.Resources["rmsgUnknowError"].ToString();
+            message = rmsgObj != null ? rmsgObj.ToString() : App.Current.Resources["rmsgUnknowError"].ToString();
             advise = advsObj != null ? advsObj.ToString() : App.Current.Resources["advsUnknowError"].ToString();
             new FlowResultWindow(result, message, advise).ShowDialog();
         }

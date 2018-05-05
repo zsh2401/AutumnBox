@@ -15,12 +15,13 @@ namespace AutumnBox.GUI.UI.CstPanels
         public SettingsPanel()
         {
             InitializeComponent();
-            CKBShowDebugWindowOnNextLaunch.IsChecked = Properties.Settings.Default.ShowDebuggingWindowNextLaunch;
+            CKBShowDebugWindowOnNextLaunch.IsChecked =Settings.Default.ShowDebuggingWindowNextLaunch;
+            CKBNotifyOnFinished.IsChecked = Settings.Default.NotifyOnFinish;
 
             CbBoxLanguage.ItemsSource = LanguageHelper.Langs;
             CbBoxLanguage.SelectedIndex = LanguageHelper.FindIndex(App.Current.Resources["LanguageCode"].ToString());
             CbBoxLanguage.SelectionChanged += CbBoxLanguage_SelectionChanged;
-
+            
             CbBoxTheme.ItemsSource = ThemeManager.Themes;
             CbBoxTheme.SelectedIndex = ThemeManager.GetCrtIndex();
             CbBoxTheme.SelectionChanged += CbBoxTheme_SelectionChanged;
@@ -34,6 +35,7 @@ namespace AutumnBox.GUI.UI.CstPanels
         public override void OnPanelClosed()
         {
             base.OnPanelClosed();
+            Settings.Default.NotifyOnFinish = CKBNotifyOnFinished.IsChecked == true;
             Settings.Default.ShowDebuggingWindowNextLaunch = CKBShowDebugWindowOnNextLaunch.IsChecked == true;
             Settings.Default.Save();
         }

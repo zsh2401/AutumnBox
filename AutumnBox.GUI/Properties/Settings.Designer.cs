@@ -94,5 +94,17 @@ namespace AutumnBox.GUI.Properties {
                 this["LoginKey"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool NotifyOnFinish {
+            get {
+                return ((bool)(this["NotifyOnFinish"]));
+            }
+            set {
+                this["NotifyOnFinish"] = value;
+            }
+        }
     }
 }
