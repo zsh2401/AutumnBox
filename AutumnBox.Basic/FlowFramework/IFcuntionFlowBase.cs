@@ -10,7 +10,7 @@ namespace AutumnBox.Basic.FlowFramework
     /// <summary>
     /// 去除了所有泛型特征的FunctionFlow接口
     /// </summary>
-    public interface INoGenericFlow : ICompletable,IOutputable
+    public interface IFcuntionFlowBase : ICompletable,IOutputable
     {
         /// <summary>
         ///是否已关闭

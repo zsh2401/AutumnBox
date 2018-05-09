@@ -33,5 +33,6 @@ namespace AutumnBox.GUI.UI.FuncPanels.PoweronFuncsUx
         void InstallApk(DeviceBasicInfo targetDevice);
         void PushFile(DeviceBasicInfo targetDevice);
         void ActivateAppOpsX(DeviceBasicInfo targetDevice);
+        void BackupDcim(DeviceBasicInfo targetDevice);
     }
 }

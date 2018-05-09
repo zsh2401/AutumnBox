@@ -137,21 +137,22 @@ namespace AutumnBox.GUI.UI.FuncPanels
 
         private void BtnBackupDcim_Click(object sender, RoutedEventArgs e)
         {
-            FolderBrowserDialog fbd = new FolderBrowserDialog
-            {
-                Description = App.Current.Resources["selectDcimBackupFloder"].ToString()
-            };
-            if (fbd.ShowDialog() == DialogResult.OK)
-            {
-                var args = new DcimBackuperArgs()
-                {
-                    DevBasicInfo = _currentDevInfo,
-                    TargetPath = fbd.SelectedPath + "\\backup"
-                };
-                var backuper = new DcimBackuper();
-                backuper.Init(args);
-                new PullingWindow(backuper) { Owner = App.Current.MainWindow }.Show();
-            }
+            ux.BackupDcim(_currentDevInfo);
+            //FolderBrowserDialog fbd = new FolderBrowserDialog
+            //{
+            //    Description = App.Current.Resources["selectDcimBackupFloder"].ToString()
+            //};
+            //if (fbd.ShowDialog() == DialogResult.OK)
+            //{
+            //    var args = new DcimBackuperArgs()
+            //    {
+            //        DevBasicInfo = _currentDevInfo,
+            //        TargetPath = Path.Combine(fbd.SelectedPath)
+            //    };
+            //    var backuper = new DcimBackuper();
+            //    backuper.Init(args);
+            //    new PullingWindow(backuper) { Owner = App.Current.MainWindow }.Show();
+            //}
         }
 
         private void ButtonGMCAct_Click(object sender, RoutedEventArgs e)

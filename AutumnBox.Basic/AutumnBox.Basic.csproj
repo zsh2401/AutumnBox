@@ -104,7 +104,7 @@
     <Compile Include="Executer\ExcutionException.cs" />
     <Compile Include="Executer\OutputReceivedEvent.cs" />
     <Compile Include="Executer\ProcessStartedEvent.cs" />
-    <Compile Include="FlowFramework\INoGenericFlow.cs" />
+    <Compile Include="FlowFramework\IFcuntionFlowBase.cs" />
     <Compile Include="MultipleDevices\DevicesGetter.cs" />
     <Compile Include="Device\DeviceBasicInfo.cs" />
     <Compile Include="Device\ISetableShell.cs" />

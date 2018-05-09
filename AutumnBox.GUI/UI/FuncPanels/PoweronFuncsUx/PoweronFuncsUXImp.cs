@@ -414,5 +414,24 @@ namespace AutumnBox.GUI.UI.FuncPanels.PoweronFuncsUx
             activator.RunAsync();
             BoxHelper.ShowLoadingDialog(activator);
         }
+
+        public void BackupDcim(DeviceBasicInfo targetDevice)
+        {
+            FolderBrowserDialog fbd = new FolderBrowserDialog
+            {
+                Description = App.Current.Resources["selectDcimBackupFloder"].ToString()
+            };
+            if (fbd.ShowDialog() == DialogResult.OK)
+            {
+                var args = new DcimBackuperArgs()
+                {
+                    DevBasicInfo = targetDevice,
+                    TargetPath = fbd.SelectedPath
+                };
+                var backuper = new DcimBackuper();
+                backuper.Init(args);
+                new PullingWindow(backuper) { Owner = App.Current.MainWindow }.Show();
+            }
+        }
     }
 }
