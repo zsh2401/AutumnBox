@@ -29,6 +29,7 @@ namespace AutumnBox.GUI.PaidVersion
 
         public void AutoLogin()
         {
+            Logger.Debug(this,"try auto logining");
             LoginUseSavedLoginKey();
         }
 
@@ -38,6 +39,7 @@ namespace AutumnBox.GUI.PaidVersion
             var url = string.Format(queryUserFmt);
             Logger.Debug(this, url);
             var responseText = webClient.DownloadString(url);
+            Logger.Debug(this,responseText);
             if (int.Parse(JObject.Parse(responseText)["status_code"].ToString()) != 0)
             {
                 throw new Exception("query user failed!");
@@ -53,6 +55,7 @@ namespace AutumnBox.GUI.PaidVersion
         {
             var url = string.Format(loginFmt, userName, pwd.ToMd5());
             var str = noCookieClient.DownloadString(url);
+            
             var jObj = JObject.Parse(str);
             if (int.Parse(jObj["status_code"].ToString()) == 0)
             {
