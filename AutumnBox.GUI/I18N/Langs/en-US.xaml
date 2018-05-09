@@ -86,7 +86,7 @@
     <s:String x:Key="btnUnhide">Show</s:String>
     <s:String x:Key="btnIHaveCloseOtherPhoneHelper">I did it</s:String>
     <s:String x:Key="btnExit">Exit</s:String>
-    <s:String x:Key="btnStartBrventService">Start Brvent service</s:String>
+    <s:String x:Key="btnStartBrventService">Start brevent service</s:String>
     <s:String x:Key="btnClose">Close</s:String>
     <s:String x:Key="btnAgree">Agree</s:String>
     <s:String x:Key="btnCancel">Cancel</s:String>
