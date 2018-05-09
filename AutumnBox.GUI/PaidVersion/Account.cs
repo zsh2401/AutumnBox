@@ -16,6 +16,10 @@ namespace AutumnBox.GUI.PaidVersion
         public int Id { get; set; }
         [JsonProperty("name")]
         public string UserName { get; set; }
+        [JsonProperty("email")]
+        public string EMail { get; set; }
+        [JsonProperty("Nickname")]
+        public string Nickname { get; set; }
         [JsonProperty("edate")]
         public DateTime ExpiredDate { get; set; }
         [JsonProperty("rdate")]
