@@ -8,12 +8,9 @@ using AutumnBox.Support.Log;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
-using System.Collections.Generic;
-using System.Linq;
+using AutumnBox.GUI.Util;
 using System.Net;
 using System.Text;
-using System.Threading.Tasks;
-
 namespace AutumnBox.GUI.PaidVersion
 {
     class AccountManager : IAccountManager
