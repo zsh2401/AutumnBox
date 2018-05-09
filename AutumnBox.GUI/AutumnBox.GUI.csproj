@@ -167,7 +167,7 @@
     <Compile Include="PaidVersion\AccountManager.cs" />
     <Compile Include="PaidVersion\IAccount.cs" />
     <Compile Include="PaidVersion\IAccountManager.cs" />
-    <Compile Include="PaidVersion\Md5.cs" />
+    <Compile Include="Util\Md5.cs" />
     <Compile Include="PaidVersion\Account.cs" />
     <Compile Include="Windows\DebugWindow.xaml.cs">
       <DependentUpon>DebugWindow.xaml</DependentUpon>

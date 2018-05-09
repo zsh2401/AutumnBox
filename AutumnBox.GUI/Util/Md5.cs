@@ -7,7 +7,7 @@
 using System.Security.Cryptography;
 using System.Text;
 
-namespace AutumnBox.GUI.PaidVersion
+namespace AutumnBox.GUI.Util
 {
     internal static class Md5
     {

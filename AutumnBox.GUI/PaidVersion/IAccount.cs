@@ -1,5 +1,4 @@
 ﻿using System;
-
 namespace AutumnBox.GUI.PaidVersion
 {
     interface IAccount
