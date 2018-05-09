@@ -68,7 +68,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
                 var args = new DcimBackuperArgs()
                 {
                     DevBasicInfo = _currentDevInfo,
-                    TargetPath = fbd.SelectedPath + "\\backup"
+                    TargetPath = fbd.SelectedPath
                 };
                 var backuper = new DcimBackuper();
                 backuper.Init(args);

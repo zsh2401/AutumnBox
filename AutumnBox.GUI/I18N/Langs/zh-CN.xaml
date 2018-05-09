@@ -247,7 +247,7 @@
 
     
     <!--用于文件,文件夹选择的文字-->
-    <s:String x:Key="selectDcimBackupFloder">请选择导出图片的保存文件夹</s:String>
+    <s:String x:Key="selectDcimBackupFloder">请选择导出图片的保存文件夹,尽量不要有中文</s:String>
     <!--用于文件,文件夹选择的文字-->
     
     <!--开始面板-->

@@ -36,7 +36,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>..\..\AutumnBox_Output\AutumnBox\file\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;PAID_VERSION USE_LOCAL_API</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;PAID_VERSION_ USE_LOCAL_API</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
