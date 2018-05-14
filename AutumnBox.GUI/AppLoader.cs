@@ -50,7 +50,8 @@ namespace AutumnBox.GUI
             {
                 new LoginWindow(am) { Owner = App.Current.MainWindow }.ShowDialog();
             });
-            if (am.Current?.IsActivated != true)
+            bool accountOk = (am.Current?.IsActivated == true && am.Current?.IsPaid == true);
+            if (!accountOk)
             {
                 var result = BoxHelper.ShowChoiceDialog("Warrning", "msgNotActivated", "btnExitSoftware", "btnGotoPay");
                 if (result == ChoiceResult.BtnRight)
@@ -58,7 +59,7 @@ namespace AutumnBox.GUI
                     Process.Start(App.Current.Resources["urlDvWebsite"].ToString());
                 }
             }
-            return am.Current?.IsActivated == true;
+            return accountOk;
         }
 #endif
         public async void LoadAsync()

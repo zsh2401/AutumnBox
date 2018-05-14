@@ -10,6 +10,8 @@ namespace AutumnBox.GUI.PaidVersion
     [JsonObject(MemberSerialization.OptOut)]
     internal class Account : IAccount
     {
+        [JsonProperty("paid")]
+        public bool IsPaid { get; set; }
         [JsonProperty("isActivated")]
         public bool IsActivated { get; set; }
         [JsonProperty("id")]
@@ -18,7 +20,7 @@ namespace AutumnBox.GUI.PaidVersion
         public string UserName { get; set; }
         [JsonProperty("email")]
         public string EMail { get; set; }
-        [JsonProperty("Nickname")]
+        [JsonProperty("nickname")]
         public string Nickname { get; set; }
         [JsonProperty("edate")]
         public DateTime ExpiredDate { get; set; }
