@@ -8,5 +8,6 @@ namespace AutumnBox.GUI.PaidVersion
         bool IsActivated { get; }
         DateTime ExpiredDate { get; }
         DateTime RegisterDate { get; }
+        bool IsPaid { get;}
     }
 }
