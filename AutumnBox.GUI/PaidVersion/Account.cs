@@ -5,21 +5,23 @@
 *************************************************/
 using Newtonsoft.Json;
 using System;
+using System.Net.Mail;
+
 namespace AutumnBox.GUI.PaidVersion
 {
     [JsonObject(MemberSerialization.OptOut)]
     internal class Account : IAccount
     {
-        [JsonProperty("isActivated")]
-        public bool IsActivated { get; set; }
+        [JsonProperty("verified")]
+        public bool IsVerified { get; set; }
         [JsonProperty("id")]
         public int Id { get; set; }
         [JsonProperty("name")]
         public string UserName { get; set; }
         [JsonProperty("email")]
-        public string EMail { get; set; }
+        public MailAddress EMail { get; set; }
         [JsonProperty("Nickname")]
-        public string Nickname { get; set; }
+        public string NickName { get; set; }
         [JsonProperty("edate")]
         public DateTime ExpiredDate { get; set; }
         [JsonProperty("rdate")]
