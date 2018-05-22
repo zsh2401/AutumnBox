@@ -50,7 +50,7 @@ namespace AutumnBox.GUI
             {
                 new LoginWindow(am) { Owner = App.Current.MainWindow }.ShowDialog();
             });
-            bool accountOk = (am.Current?.IsActivated == true && am.Current?.IsPaid == true);
+            bool accountOk = (am.Current?.IsVerified == true && am.Current?.IsPaid == true);
             if (!accountOk)
             {
                 var result = BoxHelper.ShowChoiceDialog("Warrning", "msgNotActivated", "btnExitSoftware", "btnGotoPay");

@@ -19,6 +19,13 @@ namespace AutumnBox.GUI.PaidVersion
         [JsonProperty("name")]
         public string UserName { get; set; }
         [JsonProperty("email")]
+        private string SrcMail
+        {
+            set
+            {
+                EMail = new MailAddress(value);
+            }
+        }
         public MailAddress EMail { get; set; }
         [JsonProperty("Nickname")]
         public string NickName { get; set; }
@@ -26,5 +33,7 @@ namespace AutumnBox.GUI.PaidVersion
         public DateTime ExpiredDate { get; set; }
         [JsonProperty("rdate")]
         public DateTime RegisterDate { get; set; }
+        [JsonProperty("paid")]
+        public bool IsPaid { get; set; }
     }
 }

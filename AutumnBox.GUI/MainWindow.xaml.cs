@@ -249,7 +249,7 @@ namespace AutumnBox.GUI
         private void BtnDonate_Click(object sender, RoutedEventArgs e)
         {
 #if PAID_VERSION
-            new FastPanel(this.GridMain, new AccountPanel()).Display();
+            new FastPanel(this.GridMain, new UI.CstPanels.AccountPanel()).Display();
 #else
             new FastPanel(this.GridMain, new DonatePanel()).Display();
 #endif
