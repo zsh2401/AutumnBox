@@ -35,7 +35,7 @@ namespace AutumnBox.GUI.PaidVersion
 
         private void LoginUseSavedLoginKey()
         {
-            webClient.Headers["Cookie"] = $"loginKey={Settings.Default.LoginKey};";
+            webClient.Headers["Cookie"] = $"token={Settings.Default.LoginKey};";
             var url = string.Format(queryUserFmt);
             Logger.Debug(this, url);
             var responseText = webClient.DownloadString(url);
@@ -59,7 +59,7 @@ namespace AutumnBox.GUI.PaidVersion
             var jObj = JObject.Parse(str);
             if (int.Parse(jObj["status_code"].ToString()) == 0)
             {
-                Settings.Default.LoginKey = jObj["key"].ToString();
+                Settings.Default.LoginKey = jObj["token"].ToString();
                 Settings.Default.Save();
                 LoginUseSavedLoginKey();
             }
