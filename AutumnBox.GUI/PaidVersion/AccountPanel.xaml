@@ -9,9 +9,9 @@
     mc:Ignorable="d" 
     d:DesignHeight="537" d:DesignWidth="940">
     <Grid Background="{DynamicResource FastPanelBackgroundBrushKey}">
-        <TextBlock x:Name="TBNickName" HorizontalAlignment="Left" Margin="301,170,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
-        <TextBlock x:Name="TBEDate" HorizontalAlignment="Left" Margin="301,191,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
-        <TextBlock x:Name="TBUID" HorizontalAlignment="Left" Margin="301,212,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+        <TextBlock Foreground="{DynamicResource ForegroundOnPrimaryBrushKey}" Margin="10,68,10,0" TextAlignment="Center" TextWrapping="Wrap" Text="{DynamicResource msgDonatedVersionThanks}" Style="{DynamicResource AtmbxTextBlockStyle}" FontSize="30" VerticalAlignment="Top"/>
+        <TextBlock TextAlignment="Center" x:Name="TBAccountInfo" Style="{DynamicResource AtmbxTextBlockStyle}" Foreground="{DynamicResource ForegroundOnPrimaryBrushKey}" FontSize="20" Margin="10,159,10,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="204"/>
+        <Button FontSize="20" Click="Button_Click" Foreground="{DynamicResource ForegroundOnPrimaryBrushKey}" Style="{DynamicResource AtmbxButtonStyle}" Content="{DynamicResource btnManageAccount}" Margin="278,368,277,0" VerticalAlignment="Top"/>
 
     </Grid>
 </fp:FastPanelChild>

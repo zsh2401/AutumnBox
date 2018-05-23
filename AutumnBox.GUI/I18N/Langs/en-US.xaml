@@ -124,6 +124,7 @@
     <!--标题-->
 
     <!--信息(主要用于MMesssageBox)-->
+    <s:String x:Key="msgDonatedVersionThanks">You are my close user!</s:String>
      <s:String x:Key="msgNotActivated">This account is not activated,please goto pay,thanks!</s:String>
      <s:String x:Key="msgAndroidVersionCheckFailedFormat">Android version check was failed..this function need {0} android version,continue?</s:String>
     <s:String x:Key="msgExtensionTryGetHighPermssionFormat">{0} Try to get highest permission</s:String>
@@ -343,7 +344,8 @@
      <!--登陆用的-->
      <s:String x:Key="lbPassword">Password</s:String>
     <s:String x:Key="lbAccount">Account</s:String>
-    <s:String x:Key="btnManageAccount">Register or manage account</s:String>
+    <s:String x:Key="btnManageAccount">Manage account</s:String>
+    <s:String x:Key="btnRorMAccount">Register or manage account</s:String>
      <s:String x:Key="btnLogining">Logining</s:String>
     <s:String x:Key="noticeAccountNotVerified">Account was not verified,click manage account to verifi</s:String>
     <s:String x:Key="noticeAccountNotPaid">Account was not paid,click manage account to recharge</s:String>
@@ -370,6 +372,12 @@
     <s:String x:Key="Unsuccess">Failed</s:String>
     <s:String x:Key="Fail">Fail</s:String>
 
+        <!--账户信息挂载-->
+    <s:String x:Key="AccountInfoFmt">
+        Hello,{1}
+        you are registered on {2},you are no.{0} user
+        expired Date: {3}
+    </s:String>
 
     <!--关于信息-->
     <s:String x:Key="AboutMessage">

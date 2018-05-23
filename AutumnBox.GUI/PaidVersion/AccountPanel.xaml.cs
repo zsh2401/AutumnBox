@@ -1,6 +1,7 @@
 ﻿using AutumnBox.GUI.UI.Fp;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,9 +25,14 @@ namespace AutumnBox.GUI.PaidVersion
         public AccountPanel()
         {
             InitializeComponent();
-            TBNickName.Text = App.Current.AccountManager.Current.NickName;
-            TBUID.Text = App.Current.AccountManager.Current.Id.ToString();
-            TBEDate.Text = App.Current.AccountManager.Current.ExpiredDate.ToString() ;
+            var fmt = App.Current.Resources["AccountInfoFmt"].ToString();
+            IAccount acc = App.Current.AccountManager.Current;
+            TBAccountInfo.Text = String.Format(fmt,acc.Id, acc.NickName, acc.RegisterDate,acc.ExpiredDate);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Process.Start(App.Current.Resources["urlDvWebsite"].ToString());
         }
     }
 }
