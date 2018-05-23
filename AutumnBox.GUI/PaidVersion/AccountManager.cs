@@ -25,43 +25,37 @@ namespace AutumnBox.GUI.PaidVersion
         private readonly WebClient webClient = new WebClient() { Encoding = Encoding.UTF8 };
         private readonly WebClient noCookieClient = new WebClient() { Encoding = Encoding.UTF8 };
 
+        private string SavedToken
+        {
+            get
+            {
+                return Settings.Default.LoginKey;
+            }
+            set
+            {
+                Settings.Default.LoginKey = value;
+                Settings.Default.Save();
+            }
+        }
+
         public IAccount Current { get; private set; }
+
+        public ILoginUX UX { get; set; }
 
         public void AutoLogin()
         {
-            Logger.Debug(this,"try auto logining");
-            LoginUseSavedLoginKey();
+            Logger.Debug(this, "try auto logining");
+            LoginUseSavedToken();
         }
 
-        private void LoginUseSavedLoginKey()
+        private string GetTokenFor(string uName, string uPwd)
         {
-            webClient.Headers["Cookie"] = $"token={Settings.Default.LoginKey};";
-            var url = string.Format(queryUserFmt);
-            Logger.Debug(this, url);
-            var responseText = webClient.DownloadString(url);
-            Logger.Debug(this,responseText);
-            if (int.Parse(JObject.Parse(responseText)["status_code"].ToString()) != 0)
-            {
-                throw new Exception("query user failed!");
-            }
-            else
-            {
-                Current = JsonConvert.DeserializeObject<Account>(responseText);
-                Logger.Debug(this, Current.ExpiredDate);
-            }
-        }
-
-        public void Login(string userName, string pwd)
-        {
-            var url = string.Format(loginFmt, userName, pwd.ToMd5());
+            var url = string.Format(loginFmt, uName, uPwd.ToMd5());
             var str = noCookieClient.DownloadString(url);
-            
             var jObj = JObject.Parse(str);
             if (int.Parse(jObj["status_code"].ToString()) == 0)
             {
-                Settings.Default.LoginKey = jObj["token"].ToString();
-                Settings.Default.Save();
-                LoginUseSavedLoginKey();
+                return jObj["token"].ToString();
             }
             else
             {
@@ -70,11 +64,92 @@ namespace AutumnBox.GUI.PaidVersion
             }
         }
 
+        private Account GetAccountByToken(string token) {
+            webClient.Headers["Cookie"] = $"token={token};";
+            var url = string.Format(queryUserFmt);
+            Logger.Debug(this, url);
+            var responseText = webClient.DownloadString(url);
+            Logger.Debug(this, responseText);
+            if (int.Parse(JObject.Parse(responseText)["status_code"].ToString()) != 0)
+            {
+                throw new Exception("query user failed!");
+            }
+            else
+            {
+                return  JsonConvert.DeserializeObject<Account>(responseText);
+            }
+        }
+
         public void Logout()
         {
             Settings.Default.LoginKey = "";
             Settings.Default.Save();
             App.Current.Shutdown(1);
+        }
+
+        public void Login()
+        {
+            try
+            {
+                LoginUseSavedToken();
+                CheckAccount(Current);
+                App.Current.Dispatcher.Invoke(() =>
+                    UX.OnLoginSuccessed());
+                return;
+            }
+            catch (Exception ex)
+            {
+                Logger.Warn(this, "Login use saved token failed", ex);
+            }
+            Tuple<string, string> inputContent = null;
+            string token = null;
+            IAccount account = null;
+            while (Current == null)
+            {
+                inputContent = UX.WaitForInputFinished();
+                try
+                {
+                    App.Current.Dispatcher.Invoke(() =>
+                    {
+                        UX.OnLogining();
+                    });
+                    token = GetTokenFor(inputContent.Item1, inputContent.Item2);
+                    account = GetAccountByToken(token);
+                    CheckAccount(account);
+                    SavedToken = token;
+                    Current = account;
+                    App.Current.Dispatcher.Invoke(() =>
+                    {
+                        UX.OnLoginSuccessed();
+                    });
+                }
+                catch (Exception ex)
+                {
+                    ex.LogWarn(this, "Login failed");
+                    App.Current.Dispatcher.Invoke(() =>
+                    {
+                        UX.OnLoginFailed(ex);
+                    });
+                }
+            }
+        }
+
+        private IAccount LoginUseSavedToken() {
+            var acc = GetAccountByToken(SavedToken);
+            CheckAccount(acc);
+            return acc;
+        }
+
+        private void CheckAccount(IAccount account)
+        {
+            if (!Current.IsPaid)
+            {
+                throw new AccountNotPaidException();
+            }
+            if (!Current.IsVerified)
+            {
+                throw new AccountNotVerifiedException();
+            }
         }
     }
 }

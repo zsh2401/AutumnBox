@@ -2,10 +2,10 @@
 {
     interface IAccountManager
     {
-        void Init();
-        void Login(string userName, string pwd);
-        void AutoLogin();
+        ILoginUX UX { get; set; }
         IAccount Current { get; }
+        void Init();
+        void Login();
         void Logout();
     }
 }
