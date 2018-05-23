@@ -53,6 +53,7 @@
     <Compile Include="CstmDebug\LogSender.cs" />
     <Compile Include="Helper\SystemHelper.cs" />
     <Compile Include="IdentifyEncoding.cs" />
+    <Compile Include="Log\Extensions.cs" />
     <Compile Include="Log\Logger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

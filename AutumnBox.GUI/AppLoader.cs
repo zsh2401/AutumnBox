@@ -24,10 +24,20 @@ namespace AutumnBox.GUI
     internal class AppLoader : Context
     {
         private readonly IAppLoadingWindow loadingWindowApi;
+
+#if PAID_VERSION
+        private readonly ILoginUX loginUX;
+        public AppLoader(IAppLoadingWindow loadingWindow, ILoginUX loginUX)
+        {
+            this.loginUX = loginUX;
+            this.loadingWindowApi = loadingWindow;
+        }
+#else
         public AppLoader(IAppLoadingWindow loadingWindowApi)
         {
             this.loadingWindowApi = loadingWindowApi;
         }
+#endif
         private void PrintInfo()
         {
             Logger.Info(this, $"Run as " + (SystemHelper.HaveAdminPermission ? "Admin" : "Normal user"));
@@ -36,36 +46,21 @@ namespace AutumnBox.GUI
             Logger.Info(this, $"Windows version {Environment.OSVersion.Version}");
         }
 #if PAID_VERSION
-        private bool Login()
+        private void Login()
         {
             var am = App.Current.AccountManager;
-            try
-            {
-                am.Init();
-                am.AutoLogin();
-                return true;
-            }
-            catch (Exception ex) { Logger.Warn(this, "Auto login failed", ex); }
             App.Current.Dispatcher.Invoke(() =>
             {
-                new LoginWindow(am) { Owner = App.Current.MainWindow }.ShowDialog();
+                am.UX = loginUX;
             });
-            bool accountOk = (am.Current?.IsVerified == true && am.Current?.IsPaid == true);
-            if (!accountOk)
-            {
-                var result = BoxHelper.ShowChoiceDialog("Warrning", "msgNotActivated", "btnExitSoftware", "btnGotoPay");
-                if (result == ChoiceResult.BtnRight)
-                {
-                    Process.Start(App.Current.Resources["urlDvWebsite"].ToString());
-                }
-            }
-            return accountOk;
+            am.Login();
         }
 #endif
         public async void LoadAsync()
         {
             await Task.Run(() => { Load(); });
         }
+
         public void Load()
         {
 #if PAID_VERSION
@@ -74,10 +69,7 @@ namespace AutumnBox.GUI
                 loadingWindowApi.SetProgress(10);
                 loadingWindowApi.SetTip(App.Current.Resources["ldmsgLoginAccount"].ToString());
             });
-            if (Login() == false)
-            {
-                App.Current.Dispatcher.Invoke(() => App.Current.Shutdown(1));
-            }
+            Login();
 #endif
             //如果设置在启动时打开调试窗口
             if (Settings.Default.ShowDebuggingWindowNextLaunch)

@@ -144,6 +144,9 @@
     <Compile Include="NetUtil\MOTDGetter.cs" />
     <Compile Include="NetUtil\RemoteDataGetter.cs" />
     <Compile Include="NetUtil\UpdateChecker.cs" />
+    <Compile Include="PaidVersion\AccountNotPaidException.cs" />
+    <Compile Include="PaidVersion\AccountNotVerifiedException.cs" />
+    <Compile Include="PaidVersion\ILoginUX.cs" />
     <Compile Include="UI\Cstm\HyperLink.xaml.cs">
       <DependentUpon>HyperLink.xaml</DependentUpon>
     </Compile>
@@ -188,8 +191,8 @@
     <Compile Include="Windows\PaidVersion\LoginPanel.xaml.cs">
       <DependentUpon>LoginPanel.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\PaidVersion\LoginWindow.xaml.cs">
-      <DependentUpon>LoginWindow.xaml</DependentUpon>
+    <Compile Include="Windows\PaidVersion\LoginingPanel.xaml.cs">
+      <DependentUpon>LoginingPanel.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\UserManagerWindow.xaml.cs">
       <DependentUpon>UserManagerWindow.xaml</DependentUpon>
@@ -574,7 +577,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\PaidVersion\LoginWindow.xaml">
+    <Page Include="Windows\PaidVersion\LoginingPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
