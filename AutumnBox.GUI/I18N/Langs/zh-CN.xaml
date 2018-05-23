@@ -123,7 +123,7 @@
     <!--标题-->
     
     <!--信息(主要用于MMesssageBox)-->
-
+<s:String x:Key="msgDonatedVersionThanks">感谢您捐赠本软件.秋之盒捐赠版正是对您的回报</s:String>
     <s:String x:Key="msgNotActivated">账号未激活</s:String>
     <s:String x:Key="msgAndroidVersionCheckFailedFormat">检查安卓版本失败,此功能需 {0} 安卓版本,是否强行继续?</s:String>
     <s:String x:Key="msgExtensionTryGetHighPermssionFormat">{0} 尝试获取秋之盒最高权限（非操作系统最高权限），通常这可能导致秋之盒变得不稳定，你确定吗？</s:String>
@@ -345,7 +345,8 @@
     <!--登陆用的-->
     <s:String x:Key="lbPassword">密码</s:String>
     <s:String x:Key="lbAccount">账号</s:String>
-    <s:String x:Key="btnManageAccount">注册或管理账户</s:String>
+    <s:String x:Key="btnManageAccount">管理账户</s:String>
+    <s:String x:Key="btnRorMAccount">注册或管理账户</s:String>
     <s:String x:Key="btnLogining">登录中</s:String>
     <s:String x:Key="noticeAccountNotVerified">账户未验证,请前往官网登录并验证</s:String>
     <s:String x:Key="noticeAccountNotPaid">账户未进行充值或已到期,请前往官网登陆并充值</s:String>
@@ -374,6 +375,13 @@
     <s:String x:Key="Fail">失败</s:String>
 
 
+    <!--账户信息挂载-->
+    <s:String x:Key="AccountInfoFmt">
+        您好,{1}
+        您在{2}成为第{0}个注册者
+        到期时间: {3}
+    </s:String>
+    
     <!--关于信息-->
     <s:String x:Key="AboutMessage">
 这是一个遵守GPL3.0协议的开源软件,请在必要的时候遵守开源协议

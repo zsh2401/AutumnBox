@@ -13,7 +13,7 @@
         <TextBox x:Name="InputAccount" Height="18" Margin="123,148,123,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
         <PasswordBox x:Name="InputPassword" Margin="123,177,123,0" VerticalAlignment="Top" Height="18"/>
         <Button x:Name="BtnLogin" Content="{DynamicResource btnLogin}" Style="{DynamicResource AtmbxButtonStyle}" Foreground="{DynamicResource ForegroundOnPrimaryBrushKey}" Click="BtnLogin_Click" Margin="123,0,123,58" Height="25" VerticalAlignment="Bottom"/>
-        <Button x:Name="BtnManageAccount" Content="{DynamicResource btnManageAccount}" Style="{DynamicResource AtmbxButtonStyle}" Foreground="{DynamicResource ForegroundOnPrimaryBrushKey}" Click="BtnManageAccount_Click" Margin="123,0,123,28" Height="25" VerticalAlignment="Bottom"/>
+        <Button x:Name="BtnManageAccount" Content="{DynamicResource btnRorMAccount}" Style="{DynamicResource AtmbxButtonStyle}" Foreground="{DynamicResource ForegroundOnPrimaryBrushKey}" Click="BtnManageAccount_Click" Margin="123,0,123,28" Height="25" VerticalAlignment="Bottom"/>
 
         <TextBlock HorizontalAlignment="Left" Margin="10,110,0,0" TextWrapping="Wrap" TextAlignment="Center" Style="{DynamicResource AtmbxTextBlockStyle}" FontSize="25" Text="{DynamicResource AppName}"  Foreground="{DynamicResource ForegroundOnPrimaryBrushKey}" VerticalAlignment="Top" Width="400"/>
         <TextBlock Foreground="{DynamicResource ForegroundOnPrimaryBrushKey}" TextAlignment="Right" HorizontalAlignment="Left" Margin="10,148,0,0" TextWrapping="Wrap" Text="{DynamicResource lbAccount}" VerticalAlignment="Top" Width="94" Height="24"/>
