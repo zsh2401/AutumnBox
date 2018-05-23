@@ -24,6 +24,9 @@ namespace AutumnBox.GUI.PaidVersion
         public AccountPanel()
         {
             InitializeComponent();
+            TBNickName.Text = App.Current.AccountManager.Current.NickName;
+            TBUID.Text = App.Current.AccountManager.Current.Id.ToString();
+            TBEDate.Text = App.Current.AccountManager.Current.ExpiredDate.ToString() ;
         }
     }
 }

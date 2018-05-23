@@ -33,6 +33,7 @@ using AutumnBox.GUI.UI.FuncPanels;
 using System.Windows.Controls;
 using AutumnBox.GUI.I18N;
 using System.Media;
+using AutumnBox.GUI.PaidVersion;
 
 namespace AutumnBox.GUI
 {
@@ -247,7 +248,7 @@ namespace AutumnBox.GUI
         private void BtnDonate_Click(object sender, RoutedEventArgs e)
         {
 #if PAID_VERSION
-            new FastPanel(this.GridMain, new UI.CstPanels.AccountPanel()).Display();
+            new FastPanel(this.GridMain, new AccountPanel()).Display();
 #else
             new FastPanel(this.GridMain, new DonatePanel()).Display();
 #endif

@@ -343,6 +343,7 @@
      <!--登陆用的-->
      <s:String x:Key="lbPassword">Password</s:String>
     <s:String x:Key="lbAccount">Account</s:String>
+    <s:String x:Key="btnManageAccount">Register or manage account</s:String>
      <s:String x:Key="btnLogining">Logining</s:String>
     <s:String x:Key="noticeAccountNotVerified">Account was not verified,click manage account to verifi</s:String>
     <s:String x:Key="noticeAccountNotPaid">Account was not paid,click manage account to recharge</s:String>

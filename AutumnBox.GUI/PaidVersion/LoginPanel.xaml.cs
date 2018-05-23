@@ -1,6 +1,7 @@
 ﻿using AutumnBox.GUI.UI.Fp;
 using AutumnBox.Support.Log;
 using System;
+using System.Diagnostics;
 using System.Windows;
 
 namespace AutumnBox.GUI.PaidVersion
@@ -73,6 +74,11 @@ namespace AutumnBox.GUI.PaidVersion
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
             inputed = true;
+        }
+
+        private void BtnManageAccount_Click(object sender, RoutedEventArgs e)
+        {
+            Process.Start(App.Current.Resources["urlDvWebsite"].ToString());
         }
     }
 }
