@@ -44,15 +44,9 @@ namespace AutumnBox.GUI.PaidVersion
 
         public ILoginUX UX { get; set; }
 
-        public void AutoLogin()
-        {
-            Logger.Debug(this, "try auto logining");
-            LoginUseSavedToken();
-        }
-
         private string GetTokenFor(string uName, string uPwd)
         {
-            Logger.Debug(this,loginFmt + uName + uPwd);
+            Logger.Debug(this, loginFmt + uName + uPwd);
             var url = string.Format(loginFmt, uName, uPwd.ToMd5());
             var str = noCookieClient.DownloadString(url);
             var jObj = JObject.Parse(str);
@@ -67,10 +61,11 @@ namespace AutumnBox.GUI.PaidVersion
             }
         }
 
-        private Account GetAccountByToken(string token) {
+        private Account GetAccountByToken(string token)
+        {
             webClient.Headers["Cookie"] = $"token={token};";
+            Logger.Debug(this, token);
             var url = string.Format(queryUserFmt);
-            Logger.Debug(this, url);
             var responseText = webClient.DownloadString(url);
             Logger.Debug(this, responseText);
             if (int.Parse(JObject.Parse(responseText)["status_code"].ToString()) != 0)
@@ -79,7 +74,7 @@ namespace AutumnBox.GUI.PaidVersion
             }
             else
             {
-                return  JsonConvert.DeserializeObject<Account>(responseText);
+                return JsonConvert.DeserializeObject<Account>(responseText);
             }
         }
 
@@ -94,10 +89,12 @@ namespace AutumnBox.GUI.PaidVersion
         {
             try
             {
-                LoginUseSavedToken();
-                CheckAccount(Current);
+                var acc = LoginUseSavedToken();
+                CheckAccount(acc);
+                Current = acc;
                 App.Current.Dispatcher.Invoke(() =>
                     UX.OnLoginSuccessed());
+                Logger.Debug(this, "Auto login successful");
                 return;
             }
             catch (Exception ex)
@@ -137,9 +134,9 @@ namespace AutumnBox.GUI.PaidVersion
             }
         }
 
-        private IAccount LoginUseSavedToken() {
+        private IAccount LoginUseSavedToken()
+        {
             var acc = GetAccountByToken(SavedToken);
-            CheckAccount(acc);
             return acc;
         }
 

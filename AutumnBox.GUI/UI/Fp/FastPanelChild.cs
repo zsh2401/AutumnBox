@@ -28,7 +28,7 @@ namespace AutumnBox.GUI.UI.Fp
         public virtual void OnPanelHide() { }
         public virtual Brush PanelBackground => (Brush)App.Current.Resources["FastPanelBackgroundBrushKey"];
         public virtual Brush BtnCloseForeground => (Brush)App.Current.Resources["ForegroundOnPrimaryBrushKey"];
-        public FastPanel Father { private get; set; }
+        public FastPanel Father { get;  set; }
         protected void Dispay()
         {
             Father.Display();
