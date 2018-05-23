@@ -151,9 +151,6 @@
       <DependentUpon>HyperLink.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Cstm\ITitleBarWindow.cs" />
-    <Compile Include="UI\CstPanels\AccountPanel.xaml.cs">
-      <DependentUpon>AccountPanel.xaml</DependentUpon>
-    </Compile>
     <Compile Include="UI\CstPanels\ExtensionRuningPanel.xaml.cs">
       <DependentUpon>ExtensionRuningPanel.xaml</DependentUpon>
     </Compile>
@@ -443,10 +440,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\Cstm\PotdBox.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UI\CstPanels\AccountPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
