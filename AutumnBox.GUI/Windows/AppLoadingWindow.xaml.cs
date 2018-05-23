@@ -14,6 +14,7 @@ namespace AutumnBox.GUI.Windows
     public partial class AppLoadingWindow : Window, IAppLoadingWindow
     {
         private readonly LoginPanel loginPanel;
+
         public AppLoadingWindow()
         {
             InitializeComponent();
@@ -46,8 +47,8 @@ namespace AutumnBox.GUI.Windows
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
 #if PAID_VERSION
-            new FastPanel(this.GridBase, loginPanel).Display();
-            Logger.Debug(this,"Fast panel");
+            var fastPanel = new FastPanel(this.GridBase, loginPanel);
+            Logger.Debug(this, "Fast panel");
             new AppLoader(this, loginPanel).LoadAsync();
 #else
               new AppLoader(this).LoadAsync();

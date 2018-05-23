@@ -54,6 +54,12 @@ namespace AutumnBox.GUI.PaidVersion
         bool inputed = false;
         public Tuple<string, string> WaitForInputFinished()
         {
+            App.Current.Dispatcher.Invoke(() =>
+            {
+                if (!Father.Displayed) {
+                    Dispay();
+                }
+            });
             while (!inputed) ;
             Tuple<string, string> result = null;
             App.Current.Dispatcher.Invoke(() =>
