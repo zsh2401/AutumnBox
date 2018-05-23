@@ -1,5 +1,6 @@
 ﻿using AutumnBox.GUI.PaidVersion;
 using AutumnBox.GUI.UI.Fp;
+using AutumnBox.Support.Log;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,37 +16,54 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AutumnBox.GUI.Windows.PaidVersion
+namespace AutumnBox.GUI.PaidVersion
 {
     /// <summary>
     /// InputAccountPanel.xaml 的交互逻辑
     /// </summary>
     public partial class LoginPanel : FastPanelChild, ILoginUX
     {
-        public override bool NeedShowBtnClose => false;
-        private FastPanel ingPanel;
+
         public LoginPanel()
         {
             InitializeComponent();
-            ingPanel = new FastPanel(GridBase, new LoginingPanel());
         }
 
+        public override void OnPanelBtnCloseClicked(ref bool prevent)
+        {
+            base.OnPanelBtnCloseClicked(ref prevent);
+            App.Current.Shutdown(1);
+        }
         public void OnLoginFailed(Exception ex)
         {
-            ingPanel.Hide();
+            BtnLogin.Content = App.Current.Resources["btnLogin"];
+            BtnLogin.IsEnabled = true;
+            if (ex is AccountNotPaidException)
+            {
+                TBNotice.Text = App.Current.Resources["noticeAccountNotPaid"].ToString();
+            }
+            else if (ex is AccountNotVerifiedException)
+            {
+                TBNotice.Text = App.Current.Resources["noticeAccountNotVerified"].ToString();
+            }
+            else
+            {
+                TBNotice.Text = ex.Message;
+            }
         }
 
         public void OnLogining()
         {
             inputed = false;
-            ingPanel.Display();
+            BtnLogin.Content = App.Current.Resources["btnLogining"];
+            BtnLogin.IsEnabled = false;
         }
 
         public void OnLoginSuccessed()
         {
-            ingPanel.Hide();
             Finish();
         }
+
         bool inputed = false;
         public Tuple<string, string> WaitForInputFinished()
         {
@@ -55,6 +73,7 @@ namespace AutumnBox.GUI.Windows.PaidVersion
             {
                 result = Tuple.Create(InputAccount.Text, InputPassword.Password);
             });
+            Logger.Debug(this, result.ToString());
             return result;
         }
 

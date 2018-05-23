@@ -32,8 +32,6 @@ using System.Windows.Threading;
 using AutumnBox.GUI.UI.FuncPanels;
 using System.Windows.Controls;
 using AutumnBox.GUI.I18N;
-using AutumnBox.GUI.Windows.PaidVersion;
-using System.Windows.Media;
 using System.Media;
 
 namespace AutumnBox.GUI

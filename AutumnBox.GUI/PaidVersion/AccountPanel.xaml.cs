@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AutumnBox.GUI.Windows.PaidVersion
+namespace AutumnBox.GUI.PaidVersion
 {
     /// <summary>
     /// AccountPanel.xaml 的交互逻辑
