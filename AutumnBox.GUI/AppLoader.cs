@@ -10,14 +10,11 @@ using AutumnBox.GUI.Properties;
 using AutumnBox.GUI.Util;
 using AutumnBox.GUI.PaidVersion;
 using AutumnBox.GUI.Windows;
-using AutumnBox.GUI.Windows.PaidVersion;
 using AutumnBox.OpenFramework;
-using AutumnBox.OpenFramework.Internal;
 using AutumnBox.Support.Log;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Diagnostics;
 
 namespace AutumnBox.GUI
 {
@@ -51,6 +48,7 @@ namespace AutumnBox.GUI
             var am = App.Current.AccountManager;
             App.Current.Dispatcher.Invoke(() =>
             {
+                am.Init();
                 am.UX = loginUX;
             });
             am.Login();

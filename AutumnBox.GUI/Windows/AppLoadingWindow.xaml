@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AutumnBox.GUI.Windows"
         mc:Ignorable="d"
-        ShowInTaskbar="False"
+        ShowInTaskbar="True"
         Loaded="Window_Loaded"
         Title="AppLoadingWindow" Height="288" Width="419.5" WindowStyle="None" ResizeMode="NoResize" Background="{DynamicResource BackgroundBrushKey}" WindowStartupLocation="CenterScreen" MouseDown="Window_MouseDown">
     <Grid x:Name="GridBase" Background="{DynamicResource PrimaryBrushKey}">

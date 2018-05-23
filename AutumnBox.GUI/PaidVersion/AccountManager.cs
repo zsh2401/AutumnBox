@@ -17,11 +17,13 @@ namespace AutumnBox.GUI.PaidVersion
     {
         private string loginFmt;
         private string queryUserFmt;
+
         public void Init()
         {
             loginFmt = App.Current.Resources["urlApiLoginFmt"].ToString();
             queryUserFmt = App.Current.Resources["urlApiQueryuserFmt"].ToString();
         }
+
         private readonly WebClient webClient = new WebClient() { Encoding = Encoding.UTF8 };
         private readonly WebClient noCookieClient = new WebClient() { Encoding = Encoding.UTF8 };
 
@@ -50,6 +52,7 @@ namespace AutumnBox.GUI.PaidVersion
 
         private string GetTokenFor(string uName, string uPwd)
         {
+            Logger.Debug(this,loginFmt + uName + uPwd);
             var url = string.Format(loginFmt, uName, uPwd.ToMd5());
             var str = noCookieClient.DownloadString(url);
             var jObj = JObject.Parse(str);
@@ -142,13 +145,13 @@ namespace AutumnBox.GUI.PaidVersion
 
         private void CheckAccount(IAccount account)
         {
-            if (!Current.IsPaid)
-            {
-                throw new AccountNotPaidException();
-            }
-            if (!Current.IsVerified)
+            if (!account.IsVerified)
             {
                 throw new AccountNotVerifiedException();
+            }
+            if (!account.IsPaid)
+            {
+                throw new AccountNotPaidException();
             }
         }
     }

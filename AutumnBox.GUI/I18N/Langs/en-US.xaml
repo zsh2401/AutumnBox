@@ -340,6 +340,13 @@
     <s:String x:Key="mfbflash_all_except_storage.bat">Except storage-flash_all_except_storage.bat</s:String>
     <!--MiFlashWindow使用的-->
 
+     <!--登陆用的-->
+     <s:String x:Key="lbPassword">Password</s:String>
+    <s:String x:Key="lbAccount">Account</s:String>
+     <s:String x:Key="btnLogining">Logining</s:String>
+    <s:String x:Key="noticeAccountNotVerified">Account was not verified,click manage account to verifi</s:String>
+    <s:String x:Key="noticeAccountNotPaid">Account was not paid,click manage account to recharge</s:String>
+    
     <!--设备状态提示-->
     <s:String x:Key="deviceStateUnknown">Unknown</s:String>
     <s:String x:Key="deviceStateNone">Device not found</s:String>

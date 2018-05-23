@@ -342,6 +342,14 @@
     <s:String x:Key="mfbflash_all_except_storage.bat">保留所有数据-flash_all_except_storage.bat</s:String>
     <!--MiFlashWindow使用的-->
 
+    <!--登陆用的-->
+    <s:String x:Key="lbPassword">密码</s:String>
+    <s:String x:Key="lbAccount">账号</s:String>
+    <s:String x:Key="btnLogining">登录中</s:String>
+    <s:String x:Key="noticeAccountNotVerified">账户未验证,请前往官网登录并验证</s:String>
+    <s:String x:Key="noticeAccountNotPaid">账户未进行充值或已到期,请前往官网登陆并充值</s:String>
+    
+    
     <!--设备状态提示-->
     <s:String x:Key="deviceStateUnknown">未知</s:String>
     <s:String x:Key="deviceStateNone">未找到设备</s:String>

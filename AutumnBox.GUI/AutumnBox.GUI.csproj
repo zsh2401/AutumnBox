@@ -185,14 +185,11 @@
       <DependentUpon>FatalWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\IAppLoadingWindow.cs" />
-    <Compile Include="Windows\PaidVersion\AccountPanel.xaml.cs">
+    <Compile Include="PaidVersion\AccountPanel.xaml.cs">
       <DependentUpon>AccountPanel.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\PaidVersion\LoginPanel.xaml.cs">
+    <Compile Include="PaidVersion\LoginPanel.xaml.cs">
       <DependentUpon>LoginPanel.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\PaidVersion\LoginingPanel.xaml.cs">
-      <DependentUpon>LoginingPanel.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\UserManagerWindow.xaml.cs">
       <DependentUpon>UserManagerWindow.xaml</DependentUpon>
@@ -569,15 +566,11 @@
       <SubType>Designer</SubType>
       <Generator>XamlIntelliSenseFileGenerator</Generator>
     </Page>
-    <Page Include="Windows\PaidVersion\AccountPanel.xaml">
+    <Page Include="PaidVersion\AccountPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\PaidVersion\LoginPanel.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windows\PaidVersion\LoginingPanel.xaml">
+    <Page Include="PaidVersion\LoginPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
