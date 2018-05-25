@@ -25,8 +25,8 @@
 
         <!--支持-->
         <TextBlock  Style="{DynamicResource AtmbxTextBlockStyle}" HorizontalAlignment="Left" Margin="651,111,0,0" TextWrapping="Wrap" Text="{DynamicResource titSupport}" VerticalAlignment="Top"  FontSize="36" />
-        <cstm:HyperLink  Text="{DynamicResource hyperlinkDonateList}" Hyperlink="{DynamicResource urlDonateList}" Margin="651,231,161,100"/>
-        <cstm:HyperLink  Text="{DynamicResource hyperlinkDonate}" MouseClick="HyperLink_MouseClick" Margin="651,188,161,143"/>
+        <cstm:HyperLink  Text="{DynamicResource hyperlinkDonateList}" Hyperlink="{DynamicResource urlDonateList}" Margin="651,231,39,100"/>
+        <cstm:HyperLink  Text="{DynamicResource hyperlinkDonate}" MouseClick="HyperLink_MouseClick" Margin="651,188,39,143"/>
 
     </Grid>
 </UserControl>

@@ -13,8 +13,9 @@ namespace AutumnBox.GUI.Windows
     /// </summary>
     public partial class AppLoadingWindow : Window, IAppLoadingWindow
     {
+#if PAID_VERSION
         private readonly LoginPanel loginPanel;
-
+#endif
         public AppLoadingWindow()
         {
             InitializeComponent();
