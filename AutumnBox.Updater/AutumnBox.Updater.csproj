@@ -73,11 +73,18 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Core\SystemHelper.cs" />
+    <Compile Include="Core\IDiffer.cs" />
+    <Compile Include="Core\IDownloader.cs" />
+    <Compile Include="Core\IFile.cs" />
+    <Compile Include="Core\Impl\NDiffer.cs" />
+    <Compile Include="Core\Impl\Npdater.cs" />
+    <Compile Include="Core\IUpdateInfo.cs" />
+    <Compile Include="Core\IUpdateInfoGetter.cs" />
     <Compile Include="Core\UpdateInfo.cs" />
     <Compile Include="Core\Impl\UpdaterImpl.cs" />
     <Compile Include="Core\IProgressWindow.cs" />
     <Compile Include="Core\IUpdater.cs" />
+    <Compile Include="Core\UpdaterCore.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
