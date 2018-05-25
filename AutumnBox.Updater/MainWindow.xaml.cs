@@ -1,5 +1,6 @@
 ﻿using AutumnBox.Updater.Core;
 using System;
+using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -19,6 +20,7 @@ namespace AutumnBox.Updater
         public void Finish()
         {
             Dispatcher.Invoke(Close);
+            Process.Start("AutumnBox-秋之盒.exe");
         }
 
         public void SetProgress(double value)

@@ -5,6 +5,7 @@
 *************************************************/
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -21,6 +22,10 @@ namespace AutumnBox.Updater.Core.Impl
         public void Download(IEnumerable<IFile> files)
         {
             foreach (var f in files) {
+                if (!Directory.Exists(Path.GetDirectoryName(f.LocalPath)))
+                {
+                    Directory.CreateDirectory(Path.GetDirectoryName(f.LocalPath));
+                }
                 client.DownloadFile(f.DownloadUrl,f.LocalPath);
                 DownloadedAFile?.Invoke(this,new FileDownloadedEventArgs(f));
             }
