@@ -1,5 +1,7 @@
 ﻿using AutumnBox.Updater.Core;
 using System;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
 namespace AutumnBox.Updater
@@ -21,33 +23,53 @@ namespace AutumnBox.Updater
 
         public void SetProgress(double value)
         {
-            ProgressBar.Value = value;
+            Dispatcher.Invoke(() =>
+            {
+                ProgressBar.Value = value;
+            });
         }
 
         public void SetTip(string text)
         {
-            TBTip.Text = text;
+            Dispatcher.Invoke(() =>
+            {
+                TBTip.Text = text;
+            });
         }
 
         public void SetTip(string text, double value)
         {
-            SetTip(text);
-            SetProgress(value);
+            Dispatcher.Invoke(() =>
+            {
+                SetTip(text);
+                SetProgress(value);
+            });
+
         }
 
         public void SetTipColor(Color color)
         {
-            TBTip.Foreground = new SolidColorBrush(color);
+            Dispatcher.Invoke(() =>
+            {
+                TBTip.Foreground = new SolidColorBrush(color);
+            });
+
         }
 
         public void SetUpdateContent(string text)
         {
-            TBUpdateContent.Text = text;
+            Dispatcher.Invoke(() =>
+            {
+                TBUpdateContent.Text = text;
+            });
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            App.Current.UpdaterCore.Start(this);
+            Task.Run(() =>
+            {
+                UpdaterCore.Updater.Start(this);
+            });
         }
     }
 }

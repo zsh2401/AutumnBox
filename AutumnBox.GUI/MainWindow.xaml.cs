@@ -34,6 +34,7 @@ using System.Windows.Controls;
 using AutumnBox.GUI.I18N;
 using System.Media;
 using AutumnBox.GUI.PaidVersion;
+using AutumnBox.GUI.Util;
 
 namespace AutumnBox.GUI
 {

@@ -1,25 +1,27 @@
-﻿/* =============================================================================*\
-*
-* Filename: SystemHelper
-* Description: 
-*
-* Version: 1.0
-* Created: 2017/10/14 1:22:46(UTC+8:00)
-* Compiler: Visual Studio 2017
-* 
-* Author: zsh2401
-* Company: I am free man
-*
-\* =============================================================================*/
+﻿/*************************************************
+** auth： zsh2401@163.com
+** date:  2018/5/25 17:45:45 (UTC +8:00)
+** desc： ...
+*************************************************/
+using AutumnBox.Updater.Core.Impl;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Linq;
 using System.Management;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace AutumnBox.Updater.Core
 {
-    public static class SystemHelper
+    static class UpdaterCore
     {
+        public const string UPDATE_API = "http://atmb.top/api/update_dv";
+        public static readonly IUpdater Updater;
+        static UpdaterCore() {
+            Updater = new Npdater();
+        }
         /// <summary>
         /// 杀死进程和他的子进程
         /// Code from https://stackoverflow.com/questions/30249873/process-kill-doesnt-seem-to-kill-the-process
