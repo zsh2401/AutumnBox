@@ -15,7 +15,7 @@
     <s:String x:Key="urlApiStatistics">http://www.atmb.top/api/statistics</s:String>
     <s:String x:Key="urlApiQueryuserFmt">http://dv.atmb.top/api/Queryuser</s:String>
     <s:String x:Key="urlApiLoginFmt">http://dv.atmb.top/api/Login?type=cli&amp;account={0}&amp;pwd={1}</s:String>
-    <s:String x:Key="urlApiUpdateDv">http://dv.atmb.top/api/update_dv</s:String>
+    <s:String x:Key="urlApiUpdateDv">http://dv.atmb.top/api/update_dv/simple</s:String>
     
 
     <s:String x:Key="urlHelp">http://www.atmb.top/help/</s:String>

@@ -51,7 +51,7 @@ namespace AutumnBox.Updater.Core.Impl
             Downloader.DownloadedAFile += (s, e) =>
             {
                 downloadingFile++;
-                prgWin.AppendLog($"正在下载并更新{downloadingFile}/{needUpdateFile}");
+                prgWin.AppendLog($"正在下载并更新{downloadingFile}/{needUpdateFile.Count()}");
             };
             Downloader.Download(needUpdateFile);
             prgWin.AppendLog("结束", 100);
@@ -69,7 +69,7 @@ namespace AutumnBox.Updater.Core.Impl
             data.AddRange(files);
             foreach (var dir in startPath.GetDirectories())
             {
-                GetFiles(data, startPath);
+                GetFiles(data, dir);
             }
         }
     }

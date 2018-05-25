@@ -142,7 +142,13 @@ namespace AutumnBox.GUI
             {
                 textBoxGG.Text = r.Header + r.Separator + r.Message;
             });
+            new DVUpdateChecker().RunAsync((r) =>
+            {
+                if (r.NeedUpdate) {
 
+                };
+            });
+#if !PAID_VERSION
             //检测更新
             new UpdateChecker().RunAsync((r) =>
             {
@@ -151,6 +157,7 @@ namespace AutumnBox.GUI
                     new UpdateNoticeWindow(r) { Owner = this }.ShowDialog();
                 }
             });
+#endif
 
             //哦,如果是第一次启动本软件,那么就显示一下提示吧!
             Task.Run(() =>

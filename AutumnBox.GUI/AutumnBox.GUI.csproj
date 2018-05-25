@@ -36,7 +36,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>..\..\AutumnBox_Output\AutumnBox\file\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;PAID_VERSIONX USE_LOCAL_API</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;PAID_VERSION USE_LOCAL_API</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
@@ -146,7 +146,9 @@
     <Compile Include="NetUtil\UpdateChecker.cs" />
     <Compile Include="PaidVersion\AccountNotPaidException.cs" />
     <Compile Include="PaidVersion\AccountNotVerifiedException.cs" />
+    <Compile Include="PaidVersion\DVUpdateChecker.cs" />
     <Compile Include="PaidVersion\ILoginUX.cs" />
+    <Compile Include="PaidVersion\Updater.cs" />
     <Compile Include="UI\Cstm\HyperLink.xaml.cs">
       <DependentUpon>HyperLink.xaml</DependentUpon>
     </Compile>

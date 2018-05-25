@@ -15,6 +15,7 @@ using AutumnBox.Support.Log;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace AutumnBox.GUI
 {
@@ -68,6 +69,27 @@ namespace AutumnBox.GUI
                 loadingWindowApi.SetTip(App.Current.Resources["ldmsgLoginAccount"].ToString());
             });
             Login();
+            Updater.DeleteUpdaterTemp();
+            var r = Updater.Check();
+            if (r.NeedUpdate)
+            {
+                bool exit = false;
+                App.Current.Dispatcher.Invoke(() =>
+                {
+                    var gotoU = MessageBox.Show("检测到更新,是否更新?", "更新检测", MessageBoxButtons.OKCancel);
+                    if (gotoU == DialogResult.OK)
+                    {
+                        exit = gotoU == DialogResult.OK;
+                        Updater.RunUpdater();
+                    }
+                });
+                if (exit) {
+                    App.Current.Dispatcher.Invoke(()=> {
+                        App.Current.Shutdown();
+                    });
+                    return;
+                }
+            }
 #endif
             //如果设置在启动时打开调试窗口
             if (Settings.Default.ShowDebuggingWindowNextLaunch)
