@@ -25,9 +25,11 @@ namespace AutumnBox.GUI.PaidVersion
         public AccountPanel()
         {
             InitializeComponent();
+#if PAID_VERSION
             var fmt = App.Current.Resources["AccountInfoFmt"].ToString();
             IAccount acc = App.Current.AccountManager.Current;
             TBAccountInfo.Text = String.Format(fmt,acc.Id, acc.NickName, acc.RegisterDate,acc.ExpiredDate);
+#endif
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
