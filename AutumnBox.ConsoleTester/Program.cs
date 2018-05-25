@@ -19,7 +19,6 @@ namespace AutumnBox.ConsoleTester
         }
         unsafe static int Main(string[] cmdargs)
         {
-            Console.WriteLine(new DeviceSoftwareInfoGetter(Constant.mi6).GetLocationIP());
             Console.ReadKey();
             return 0;
         }

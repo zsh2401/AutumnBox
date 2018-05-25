@@ -13,19 +13,33 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Updater.Core.Impl
 {
-    class NDiffer : IDiffer
+    class NpdaterDiffer : IDiffer
     {
         public IEnumerable<IFile> Diff(IEnumerable<IFile> remoteFiles, IEnumerable<FileInfo> localFiles)
         {
             List<IFile> data = new List<IFile>();
-            var listTmp = localFiles.ToList();
-            foreach (var f in remoteFiles) {
-                if (!File.Exists(f.LocalPath)) {
+            foreach (var f in remoteFiles)
+            {
+                if (!File.Exists(f.LocalPath))
+                {
                     data.Add(f);
                     continue;
                 }
-                listTmp.FindAll();
+                try
+                {
+                    FileInfo fInfo = new FileInfo(f.LocalPath);
+                    var localFileMd5 = fInfo.GetMd5();
+                    if (localFileMd5 != f.Md5)
+                    {
+                        data.Add(f);
+                    }
+                }
+                catch (Exception)
+                {
+                    data.Add(f);
+                }
             }
+            return data;
         }
     }
     static class Extension
@@ -38,7 +52,8 @@ namespace AutumnBox.Updater.Core.Impl
             MD5CryptoServiceProvider oMD5Hasher = new MD5CryptoServiceProvider();
             try
             {
-                using (var fs = file.OpenRead()) {
+                using (var fs = file.OpenRead())
+                {
                     arrbytHashValue = oMD5Hasher.ComputeHash(fs); //计算指定Stream 对象的哈希值
                 }
                 //由以连字符分隔的十六进制对构成的String，其中每一对表示value 中对应的元素；例如“F-2C-4A”

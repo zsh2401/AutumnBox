@@ -5,9 +5,11 @@
 *************************************************/
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Media;
 
@@ -15,9 +17,9 @@ namespace AutumnBox.Updater.Core.Impl
 {
     sealed class Npdater : IUpdater
     {
-        private readonly IDiffer Differ  = new NDiffer();
-        private readonly IUpdateInfoGetter InfoGetter { get; set; }
-        private readonly IDownloader Downloader { get; set; }
+        private readonly IDiffer Differ = new NpdaterDiffer();
+        private readonly IUpdateInfoGetter InfoGetter = new NpdateInfoGetter();
+        private readonly IDownloader Downloader = new NpdaterDownloader();
         public void Start(IProgressWindow prgWin)
         {
             try
@@ -26,19 +28,33 @@ namespace AutumnBox.Updater.Core.Impl
             }
             catch (Exception ex)
             {
-                prgWin.SetTipColor(Colors.Red);
-                prgWin.SetTip("下载失败" + ex.ToString());
+                prgWin.AppendLog("下载失败" + ex.ToString());
+                Debug.WriteLine(ex);
             }
         }
         private void Flow(IProgressWindow prgWin)
         {
-            prgWin.SetTip("获取信息中", 10);
+            prgWin.AppendLog("获取信息中", 10);
             IUpdateInfo info = InfoGetter.Get();
-            prgWin.SetTip("获取信息完毕,正在解析", 20);
+            prgWin.AppendLog("获取信息完毕,正在解析", 20);
+            prgWin.SetUpdateContent(info.UpdateContent);
+
             IEnumerable<IFile> needUpdateFile = Differ.Diff(info.Files, GetLocalFiles());
-            prgWin.SetTip("正在下载", 30);
+            if (needUpdateFile.Count() == 0)
+            {
+                prgWin.AppendLog("无需更新!",100);
+                Thread.Sleep(4000);
+                prgWin.Finish();
+                return;
+            }
+            int downloadingFile = 0;
+            Downloader.DownloadedAFile += (s, e) =>
+            {
+                downloadingFile++;
+                prgWin.AppendLog($"正在下载并更新{downloadingFile}/{needUpdateFile}");
+            };
             Downloader.Download(needUpdateFile);
-            prgWin.SetTip("下载完毕", 100);
+            prgWin.AppendLog("结束", 100);
             prgWin.Finish();
         }
         private static IEnumerable<FileInfo> GetLocalFiles()

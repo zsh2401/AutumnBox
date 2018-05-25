@@ -18,7 +18,7 @@ namespace AutumnBox.Updater
 
         public void Finish()
         {
-            this.Close();
+            Dispatcher.Invoke(Close);
         }
 
         public void SetProgress(double value)
@@ -29,29 +29,21 @@ namespace AutumnBox.Updater
             });
         }
 
-        public void SetTip(string text)
+        public void AppendLog(string text)
         {
             Dispatcher.Invoke(() =>
             {
-                TBTip.Text = text;
+                TBLog.AppendText(text + Environment.NewLine);
+                TBLog.ScrollToEnd();
             });
         }
 
-        public void SetTip(string text, double value)
+        public void AppendLog(string text, double value)
         {
             Dispatcher.Invoke(() =>
             {
-                SetTip(text);
+                AppendLog(text);
                 SetProgress(value);
-            });
-
-        }
-
-        public void SetTipColor(Color color)
-        {
-            Dispatcher.Invoke(() =>
-            {
-                TBTip.Foreground = new SolidColorBrush(color);
             });
 
         }
