@@ -15,9 +15,13 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Updater.Core
 {
-    static class UpdaterCore
+    public static class UpdaterCore
     {
+#if DEBUG
+        public const string UPDATE_API = "http://localhost:24010/api/update_dv";
+#else
         public const string UPDATE_API = "http://atmb.top/api/update_dv";
+#endif
         public static readonly IUpdater Updater;
         static UpdaterCore() {
             Updater = new Npdater();

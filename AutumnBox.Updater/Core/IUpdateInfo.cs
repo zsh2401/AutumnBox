@@ -8,8 +8,8 @@ namespace AutumnBox.Updater.Core
 {
     interface IUpdateInfo
     {
-        Version Verision { get; set; }
-        string UpdateContent { get; set; }
-        IEnumerable<IFile> Files { get; set; }
+        Version Verision { get;  }
+        string UpdateContent { get;  }
+        IEnumerable<IFile> Files { get;  }
     }
 }

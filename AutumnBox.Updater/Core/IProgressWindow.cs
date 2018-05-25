@@ -7,12 +7,11 @@ using System.Windows.Media;
 
 namespace AutumnBox.Updater.Core
 {
-    interface IProgressWindow
+    public  interface IProgressWindow
     {
         void SetUpdateContent(string text);
-        void SetTip(string text);
-        void SetTip(string text, double value);
-        void SetTipColor(Color color);
+        void AppendLog(string text);
+        void AppendLog(string text, double value);
         void SetProgress(double value);
         void Finish();
     }

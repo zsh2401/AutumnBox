@@ -1,6 +1,6 @@
 ﻿namespace AutumnBox.Updater.Core
 {
-    interface IUpdater
+    public interface IUpdater
     {
         void Start(IProgressWindow prgWin);
     }
