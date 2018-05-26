@@ -13,7 +13,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Media;
 
-namespace AutumnBox.Updater.Core.Impl
+namespace AutumnBox.Updater.Core.Impl.NpdaterImpl
 {
     sealed class Npdater : IUpdater
     {
@@ -42,7 +42,7 @@ namespace AutumnBox.Updater.Core.Impl
             IEnumerable<IFile> needUpdateFile = Differ.Diff(info.Files, GetLocalFiles());
             if (needUpdateFile.Count() == 0)
             {
-                prgWin.AppendLog("无需更新!",100);
+                prgWin.AppendLog("无需更新!", 100);
                 Thread.Sleep(4000);
                 prgWin.Finish();
                 return;
@@ -51,10 +51,13 @@ namespace AutumnBox.Updater.Core.Impl
             Downloader.DownloadedAFile += (s, e) =>
             {
                 downloadingFile++;
+                prgWin.SetProgress(20 + (100 / needUpdateFile.Count() * downloadingFile * 80));
                 prgWin.AppendLog($"正在下载并更新{downloadingFile}/{needUpdateFile.Count()}");
             };
+
             Downloader.Download(needUpdateFile);
-            prgWin.AppendLog("结束", 100);
+            prgWin.AppendLog("结束,三秒后退出", 100);
+            Thread.Sleep(3000);
             prgWin.Finish();
         }
         private static IEnumerable<FileInfo> GetLocalFiles()

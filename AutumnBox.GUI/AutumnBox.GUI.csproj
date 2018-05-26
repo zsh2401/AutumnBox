@@ -653,6 +653,10 @@
       <Project>{851b2eb0-0503-428d-bd87-063555b19451}</Project>
       <Name>AutumnBox.Support</Name>
     </ProjectReference>
+    <ProjectReference Include="..\AutumnBox.Updater\AutumnBox.Updater.csproj">
+      <Project>{64cad910-44c2-42b2-aa62-5a8497a5e99a}</Project>
+      <Name>AutumnBox.Updater</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\ad_close.png" />

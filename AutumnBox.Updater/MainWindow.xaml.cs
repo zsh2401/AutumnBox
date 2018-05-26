@@ -17,8 +17,10 @@ namespace AutumnBox.Updater
             InitializeComponent();
         }
 
+        private bool closeByProgram = false;
         public void Finish()
         {
+            closeByProgram = true;
             Dispatcher.Invoke(Close);
             Process.Start("AutumnBox-秋之盒.exe");
         }
@@ -64,6 +66,17 @@ namespace AutumnBox.Updater
             {
                 UpdaterCore.Updater.Start(this);
             });
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (!closeByProgram)
+            {
+                MessageBoxResult result =
+                    MessageBox.Show("真的要关闭?如果更新未完成就关闭,将会导致程序损坏!",
+                    "警告", MessageBoxButton.YesNo);
+                e.Cancel = !(result == MessageBoxResult.Yes);
+            }
         }
     }
 }

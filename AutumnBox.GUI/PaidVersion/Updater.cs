@@ -26,12 +26,10 @@ namespace AutumnBox.GUI.PaidVersion
         public static void DeleteUpdaterTemp()
         {
             try { File.Delete("../AutumnBox.Updater.exe"); } catch { }
-            try { File.Delete("../Newtonsoft.Json.dll"); } catch { }
         }
         public static void RunUpdater()
         {
             File.Copy("AutumnBox.Updater.exe", "../AutumnBox.Updater.exe", true);
-            File.Copy("Newtonsoft.Json.dll", "../Newtonsoft.Json.dll", true);
             Process.Start(new ProcessStartInfo()
             {
                 WorkingDirectory = "..",
