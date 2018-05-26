@@ -74,6 +74,7 @@ namespace AutumnBox.GUI.PaidVersion
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
             inputed = true;
+            Logger.Info(this,"Input finish!");
         }
 
         private void BtnManageAccount_Click(object sender, RoutedEventArgs e)
