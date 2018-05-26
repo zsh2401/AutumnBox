@@ -76,7 +76,9 @@ namespace AutumnBox.GUI
                 bool exit = false;
                 App.Current.Dispatcher.Invoke(() =>
                 {
-                    var gotoU = MessageBox.Show("检测到更新,是否更新?", "更新检测", MessageBoxButtons.OKCancel);
+                    var gotoU = MessageBox.Show("检测到更新,是否更新?" + 
+                        Environment.NewLine + 
+                        r.Content, "更新检测", MessageBoxButtons.OKCancel);
                     if (gotoU == DialogResult.OK)
                     {
                         exit = gotoU == DialogResult.OK;

@@ -11,7 +11,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AutumnBox.Updater.Core.Impl
+namespace AutumnBox.Updater.Core.Impl.NpdaterImpl
 {
     class NpdaterDiffer : IDiffer
     {

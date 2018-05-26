@@ -20,7 +20,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\AutumnBox_Output\AutumnBox\file\</OutputPath>
+    <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -43,6 +43,8 @@
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -76,16 +78,15 @@
     <Compile Include="Core\IDiffer.cs" />
     <Compile Include="Core\IDownloader.cs" />
     <Compile Include="Core\IFile.cs" />
-    <Compile Include="Core\Impl\NpdaterDiffer.cs" />
-    <Compile Include="Core\Impl\NpdateInfo.cs" />
-    <Compile Include="Core\Impl\NpdateInfoGetter.cs" />
-    <Compile Include="Core\Impl\Npdater.cs" />
-    <Compile Include="Core\Impl\NpdateFile.cs" />
-    <Compile Include="Core\Impl\NpdaterDownloader.cs" />
+    <Compile Include="Core\Impl\NpdaterImpl\NpdaterDiffer.cs" />
+    <Compile Include="Core\Impl\NpdaterImpl\NpdateInfo.cs" />
+    <Compile Include="Core\Impl\NpdaterImpl\NpdateInfoGetter.cs" />
+    <Compile Include="Core\Impl\NpdaterImpl\Npdater.cs" />
+    <Compile Include="Core\Impl\NpdaterImpl\NpdateFile.cs" />
+    <Compile Include="Core\Impl\NpdaterImpl\NpdaterDownloader.cs" />
     <Compile Include="Core\IUpdateInfo.cs" />
     <Compile Include="Core\IUpdateInfoGetter.cs" />
     <Compile Include="Core\UpdateInfo.cs" />
-    <Compile Include="Core\Impl\UpdaterImpl.cs" />
     <Compile Include="Core\IProgressWindow.cs" />
     <Compile Include="Core\IUpdater.cs" />
     <Compile Include="Core\UpdaterCore.cs" />
@@ -123,6 +124,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="title_icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="InnerLib\Newtonsoft.Json.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

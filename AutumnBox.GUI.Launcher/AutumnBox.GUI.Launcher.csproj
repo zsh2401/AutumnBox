@@ -15,8 +15,8 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+    <DebugType>none</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>..\..\AutumnBox_Output\AutumnBox\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
@@ -75,7 +75,6 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>del /S *.exe.config
-del /S *.pdb</PostBuildEvent>
+    <PostBuildEvent>del /S AutumnBox-秋之盒.exe.config</PostBuildEvent>
   </PropertyGroup>
 </Project>

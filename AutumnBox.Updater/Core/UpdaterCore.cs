@@ -4,6 +4,7 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.Updater.Core.Impl;
+using AutumnBox.Updater.Core.Impl.NpdaterImpl;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
