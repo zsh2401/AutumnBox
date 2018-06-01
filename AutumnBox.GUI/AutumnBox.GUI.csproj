@@ -45,7 +45,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
-    <Optimize>false</Optimize>
+    <Optimize>true</Optimize>
     <OutputPath>..\..\AutumnBox_Output\AutumnBox\file\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
@@ -652,10 +652,6 @@
     <ProjectReference Include="..\AutumnBox.Support\AutumnBox.Support.csproj">
       <Project>{851b2eb0-0503-428d-bd87-063555b19451}</Project>
       <Name>AutumnBox.Support</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\AutumnBox.Updater\AutumnBox.Updater.csproj">
-      <Project>{64cad910-44c2-42b2-aa62-5a8497a5e99a}</Project>
-      <Name>AutumnBox.Updater</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
