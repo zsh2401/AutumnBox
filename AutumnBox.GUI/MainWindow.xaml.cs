@@ -122,7 +122,7 @@ namespace AutumnBox.GUI
         private void MainWindow_Loaded(object sender, RoutedEventArgs _e)
         {
 #if !DEBUG
-            WTF.SuppressScriptErrors(true);
+            Util.Extensions.SuppressScriptErrors(WTF, true);
             WTF.Navigate(App.Current.Resources["urlApiStatistics"].ToString());
 #endif
 
