@@ -21,8 +21,8 @@ namespace AutumnBox.GUI.Windows
     /// </summary>
     public partial class PullingWindow : Window
     {
-        private readonly IFcuntionFlowBase flow;
-        public PullingWindow(IFcuntionFlowBase _flow)
+        private readonly IFunctionFlowBase flow;
+        public PullingWindow(IFunctionFlowBase _flow)
         {
             InitializeComponent();
 

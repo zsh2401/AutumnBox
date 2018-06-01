@@ -25,7 +25,7 @@ namespace AutumnBox.Basic.FlowFramework
     /// <typeparam name="TArgs"></typeparam>
     /// <typeparam name="TResult"></typeparam>
     public abstract partial class FunctionFlow<TArgs, TResult>
-        : FunctionFlowBase, IOutputable, IForceStoppable, IDisposable, ICompletable, IFcuntionFlowBase
+        : FunctionFlowBase, IOutputable, IForceStoppable, IDisposable, ICompletable, IFunctionFlowBase
         where TArgs : FlowArgs, new()
         where TResult : FlowResult, new()
     {
