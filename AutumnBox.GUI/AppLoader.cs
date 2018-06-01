@@ -8,7 +8,6 @@ using AutumnBox.Basic.Util;
 using AutumnBox.GUI.Helper;
 using AutumnBox.GUI.Properties;
 using AutumnBox.GUI.Util;
-using AutumnBox.GUI.PaidVersion;
 using AutumnBox.GUI.Windows;
 using AutumnBox.OpenFramework;
 using AutumnBox.Support.Log;
@@ -23,19 +22,10 @@ namespace AutumnBox.GUI
     {
         private readonly IAppLoadingWindow loadingWindowApi;
 
-#if PAID_VERSION
-        private readonly ILoginUX loginUX;
-        public AppLoader(IAppLoadingWindow loadingWindow, ILoginUX loginUX)
-        {
-            this.loginUX = loginUX;
-            this.loadingWindowApi = loadingWindow;
-        }
-#else
         public AppLoader(IAppLoadingWindow loadingWindowApi)
         {
             this.loadingWindowApi = loadingWindowApi;
         }
-#endif
         private void PrintInfo()
         {
             Logger.Info(this, $"Run as " + (SystemHelper.HaveAdminPermission ? "Admin" : "Normal user"));
@@ -43,18 +33,6 @@ namespace AutumnBox.GUI
             Logger.Info(this, $"SDK version: {BuildInfo.SDK_VERSION}");
             Logger.Info(this, $"Windows version {Environment.OSVersion.Version}");
         }
-#if PAID_VERSION
-        private void Login()
-        {
-            var am = App.Current.AccountManager;
-            App.Current.Dispatcher.Invoke(() =>
-            {
-                am.Init();
-                am.UX = loginUX;
-            });
-            am.Login();
-        }
-#endif
         public async void LoadAsync()
         {
             await Task.Run(() => { Load(); });
@@ -62,40 +40,6 @@ namespace AutumnBox.GUI
 
         public void Load()
         {
-#if PAID_VERSION
-            App.Current.Dispatcher.Invoke(() =>
-            {
-                loadingWindowApi.SetProgress(10);
-                loadingWindowApi.SetTip(App.Current.Resources["ldmsgLoginAccount"].ToString());
-            });
-            Login();
-
-            PaidVersion.Updater.DeleteUpdaterTemp();
-            var r = PaidVersion.Updater.Check();
-            if (r != null && r.NeedUpdate)
-            {
-                bool exit = false;
-                App.Current.Dispatcher.Invoke(() =>
-                {
-                    var gotoU = MessageBox.Show("检测到更新,是否更新?" +
-                        Environment.NewLine +
-                        r.Content, "更新检测", MessageBoxButtons.OKCancel);
-                    if (gotoU == DialogResult.OK)
-                    {
-                        exit = gotoU == DialogResult.OK;
-                        PaidVersion.Updater.RunUpdater();
-                    }
-                });
-                if (exit)
-                {
-                    App.Current.Dispatcher.Invoke(() =>
-                    {
-                        App.Current.Shutdown();
-                    });
-                    return;
-                }
-            }
-#endif
             //如果设置在启动时打开调试窗口
             if (Settings.Default.ShowDebuggingWindowNextLaunch)
             {

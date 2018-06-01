@@ -33,8 +33,6 @@ using AutumnBox.GUI.UI.FuncPanels;
 using System.Windows.Controls;
 using AutumnBox.GUI.I18N;
 using System.Media;
-using AutumnBox.GUI.PaidVersion;
-using AutumnBox.GUI.Util;
 
 namespace AutumnBox.GUI
 {
@@ -142,13 +140,6 @@ namespace AutumnBox.GUI
             {
                 textBoxGG.Text = r.Header + r.Separator + r.Message;
             });
-            new DVUpdateChecker().RunAsync((r) =>
-            {
-                if (r.NeedUpdate) {
-
-                };
-            });
-#if !PAID_VERSION
             //检测更新
             new UpdateChecker().RunAsync((r) =>
             {
@@ -157,7 +148,6 @@ namespace AutumnBox.GUI
                     new UpdateNoticeWindow(r) { Owner = this }.ShowDialog();
                 }
             });
-#endif
 
             //哦,如果是第一次启动本软件,那么就显示一下提示吧!
             Task.Run(() =>
@@ -172,13 +162,6 @@ namespace AutumnBox.GUI
                     }
                 });
             });
-#if PAID_VERSION
-            BtnDonate.Content = App.Current.Resources["btnAccountInfo"];
-            LanguageHelper.LanguageChanged += (s, e) =>
-            {
-                BtnDonate.Content = App.Current.Resources["btnAccountInfo"];
-            };
-#endif
         }
 
         public void Refresh(DeviceBasicInfo devinfo)
@@ -255,11 +238,7 @@ namespace AutumnBox.GUI
 
         private void BtnDonate_Click(object sender, RoutedEventArgs e)
         {
-#if PAID_VERSION
-            new FastPanel(this.GridMain, new AccountPanel()).Display();
-#else
             new FastPanel(this.GridMain, new DonatePanel()).Display();
-#endif
         }
 
         private void _MainWindow_Closed(object sender, EventArgs e)

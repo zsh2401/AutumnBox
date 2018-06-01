@@ -3,9 +3,6 @@ using AutumnBox.Support.Log;
 using System.Windows;
 using System.Windows.Input;
 using AutumnBox.GUI.UI.Fp;
-#if PAID_VERSION
-using AutumnBox.GUI.PaidVersion;
-#endif
 namespace AutumnBox.GUI.Windows
 {
     /// <summary>
@@ -13,16 +10,10 @@ namespace AutumnBox.GUI.Windows
     /// </summary>
     public partial class AppLoadingWindow : Window, IAppLoadingWindow
     {
-#if PAID_VERSION
-        private readonly LoginPanel loginPanel;
-#endif
         public AppLoadingWindow()
         {
             InitializeComponent();
             ThemeManager.LoadFromSetting();
-#if PAID_VERSION
-            loginPanel = new LoginPanel();
-#endif
         }
 
         public void SetProgress(double value)
@@ -47,13 +38,7 @@ namespace AutumnBox.GUI.Windows
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-#if PAID_VERSION
-            var fastPanel = new FastPanel(this.GridBase, loginPanel);
-            Logger.Debug(this, "Fast panel");
-            new AppLoader(this, loginPanel).LoadAsync();
-#else
               new AppLoader(this).LoadAsync();
-#endif
         }
     }
 }
