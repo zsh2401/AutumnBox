@@ -65,15 +65,6 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ACP\AcpConnectionLostException.cs" />
-    <Compile Include="ACP\Acp.cs" />
-    <Compile Include="ACP\AcpCommand.cs" />
-    <Compile Include="ACP\AcpCommunicator.cs" />
-    <Compile Include="ACP\AcpResponse.cs" />
-    <Compile Include="ACP\AcpStandardProcess.cs" />
-    <Compile Include="ACP\AcpTimeOutException.cs" />
-    <Compile Include="ACP\AndroidAppIsNotInstallException.cs" />
-    <Compile Include="ACP\AndroidClientController.cs" />
     <Compile Include="Device\ActivityManager\Activity.cs" />
     <Compile Include="Device\ActivityManager\ActivityManagerShared.cs" />
     <Compile Include="Device\ActivityManager\Broadcast.cs" />
