@@ -310,6 +310,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="I18N\Langs\ru-RU.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="I18N\Langs\en-US.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

@@ -1,0 +1,404 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xml:space="preserve"
+                    xmlns:s="clr-namespace:System;assembly=mscorlib">
+    <s:String x:Key="AppName">AutumnBox</s:String>
+    <s:String x:Key="LanguageName">Русский язык</s:String>
+    <s:String x:Key="LanguageCode">ru-RU</s:String>
+
+    <s:String x:Key="AppDesc">Открытый исходный код, бесплатный, простой графический интерфейс пользователя</s:String>
+    <!--按钮-->
+     <s:String x:Key="btnAppOpsXAct">Активировать AppOpsX</s:String>
+    <s:String x:Key="btnGoToEnd">Перейти к концу</s:String>
+    <s:String x:Key="btnUsersirAct">Активировать USER SIR</s:String>
+    <s:String x:Key="btnAccept">принимать</s:String>
+    <s:String x:Key="btnDeny">Отрицать</s:String>
+    <s:String x:Key="btnGreenifyDozeActivator">Активировать Greenify Aggressive Doze</s:String>
+    <s:String x:Key="btnFreezeYouActivator">Активировать FreezeYou!</s:String>
+    <s:String x:Key="btnAnzenbokusuFakeActivator">Активировать Anzenbokusu Fake</s:String>
+    <s:String x:Key="btnAnzenbokusuActivator">Активировать Anzenbokusu</s:String>
+    <s:String x:Key="btnBlackholeActivator">Активировать Blackhole</s:String>
+    <s:String x:Key="btnStopExtension">Остановить это расширение</s:String>
+    <s:String x:Key="btnCannotRunExtension">Это расширение не поддерживает текущее состояние устройства</s:String>
+    <s:String x:Key="btnOpenModuleFloder">Открыть папку модуля</s:String>
+    <s:String x:Key="btnDownloadExtensions">Загрузить расширения</s:String>
+    <s:String x:Key="btnRunExtension">Запустить это расширение</s:String>
+    <s:String x:Key="btnLaunchDebugWindow">Запустить окно отладки</s:String>
+    <s:String x:Key="btnIHaveDeletedAllUser">Я удалил</s:String>
+    <s:String x:Key="btnUserManager">Менеджер пользователя</s:String>
+    <s:String x:Key="btnRefresh">обновление</s:String>
+    <s:String x:Key="btnRemoveUser">Удалить этого пользователя</s:String>
+    <s:String x:Key="btnStopAppActivator">Активировать Stop app</s:String>
+    <s:String x:Key="btnGeekMemoryCleanerActivator">Активировать GMC</s:String>
+    <s:String x:Key="btnAppManager">Менеджер приложений</s:String>
+    <s:String x:Key="btnDisconnect">Отключить только</s:String>
+    <s:String x:Key="btnCloseDebugging">Закрытие устройства отладки</s:String>
+    <s:String x:Key="btnDisableNetdebugging">Закрытие устройства отладки</s:String>
+    <s:String x:Key="btnEnableNetdebugging">Включить сетевую отладку</s:String>
+    <s:String x:Key="btnAddNetdebuggingDevice">Добавить сетевое отладочное устройство</s:String>
+    <s:String x:Key="btnConnect">Подключите это устройство</s:String>
+    <s:String x:Key="btnConnecting">соединительный</s:String>
+    <s:String x:Key="btnAbout">Около</s:String>
+    <s:String x:Key="btnSetting">настройка</s:String>
+    <s:String x:Key="rbtnFlashAll">Вспышка все </s:String>
+    <s:String x:Key="rbtnFlashAllExceptStorage">Кроме хранения</s:String>
+    <s:String x:Key="rbtnFlashAllExceptStorageAndData">Кроме хранения и данных</s:String>
+    <s:String x:Key="btnCreateShortcut">Создать ярлык для рабочего столаСоздать ярлык для рабочего стола</s:String>
+    <s:String x:Key="btnVBHide">Создать ярлык для рабочего стола...</s:String>
+    <s:String x:Key="btnCopy">копия</s:String>
+    <s:String x:Key="btnCopied">скопированный</s:String>
+    <s:String x:Key="btnOpen">открыто</s:String>
+    <s:String x:Key="btnDoNotOpen">Не открывать</s:String>
+    <s:String x:Key="btnDeleteScreenLock">Удалить блокировку экрана</s:String>
+    <s:String x:Key="btnBackupDcim">Резервные картинки</s:String>
+    <s:String x:Key="btnExtractRecImg">Восстановление извлечения</s:String>
+    <s:String x:Key="btnExtractBootImg">Извлечь Boot.img</s:String>
+    <s:String x:Key="btnFlashRecImg">Восстановление Flash</s:String>
+    <s:String x:Key="btnFlashBootImg">Flash Boot.img</s:String>
+    <s:String x:Key="btnIceBoxAct">Активировать Ice box</s:String>
+    <s:String x:Key="btnIslandAct">Активировать Island</s:String>
+    <s:String x:Key="btnAirForzenAct">Активировать AirForzen</s:String>
+    <s:String x:Key="btnShizukuManagerAct">Активировать AppOps/ShizukuManager</s:String>
+    <s:String x:Key="btnContinue">Продолжать</s:String>
+    <s:String x:Key="btnSaveAndReboot">Сохранить и перезагрузить </s:String>
+    <s:String x:Key="btnDpiChange">Изменить DPI</s:String>
+    <s:String x:Key="btnInstallApk">Установить APK</s:String>
+    <s:String x:Key="btnScreenShot">Снимок экрана и сохранение на ПК</s:String>
+    <s:String x:Key="btnAndroidFullBackup">Все резервные копии</s:String>
+    <s:String x:Key="btnMiFlash">MiFlash</s:String>
+    <s:String x:Key="btnADBCMD">ADB CMD</s:String>
+    <s:String x:Key="btnSystem">система</s:String>
+    <s:String x:Key="btnRecovery">восстановление</s:String>
+    <s:String x:Key="btnSnapdragon9008">Snapdragon 9008</s:String>
+    <s:String x:Key="btnBootloader">Fastboot</s:String>
+    <s:String x:Key="btnPushFileToSdcard">Push-файл на SD-карту</s:String>
+    <s:String x:Key="btnUnlockSystem">Разблокировать системный раздел</s:String>
+    <s:String x:Key="btnSideloadFlash">SideLoad(Deving)</s:String>
+    <s:String x:Key="btnRelockMi">Перезагрузка загрузчика</s:String>
+    <s:String x:Key="btnFlashCustomRecoveryImg">Flash custom recovery.img</s:String>
+    <s:String x:Key="btnOK">OK</s:String>
+    <s:String x:Key="btnHide">Спрятать</s:String>
+    <s:String x:Key="btnUnhide">Показать</s:String>
+    <s:String x:Key="btnIHaveCloseOtherPhoneHelper">я сделал это</s:String>
+    <s:String x:Key="btnExit">Выход</s:String>
+    <s:String x:Key="btnStartBrventService">Запустить службу обновления</s:String>
+    <s:String x:Key="btnClose">Закрыть</s:String>
+    <s:String x:Key="btnAgree">Согласен</s:String>
+    <s:String x:Key="btnCancel">Отмена</s:String>
+    <!--按钮-->
+
+
+    <!--链接文字-->
+    <s:String x:Key="hyperLinkInstallModule">Как установить?</s:String>
+    <s:String x:Key="hyperLinkUpdateNow">Обновить сейчас!</s:String>
+    <s:String x:Key="hyperLinkGithub">Github</s:String>
+    <s:String x:Key="hyperLinkBaiduPan">Baidu netdisk</s:String>
+    <s:String x:Key="hyperLinkDownloadMiFlashPackage">Загрузите Flash-пакет MIUI Line</s:String>
+    <s:String x:Key="hyperLinkLinkHelp">Справка устройства связи</s:String>
+    <s:String x:Key="hyperLinkOfficialWebsite">Официальный веб-сайт</s:String>
+    <s:String x:Key="hyperLinkOpenSource">Открытый исходный код</s:String>
+    <s:String x:Key="hyperLinkMoreHelp">Дополнительная помощь</s:String>
+    <s:String x:Key="hyperlinkJoinQQGroup">Присоединиться к QQ Group</s:String>
+    <s:String x:Key="hyperlinkDonate">жертвовать</s:String>
+    <s:String x:Key="hyperlinkDonateList">Список пожертвований</s:String>
+    <s:String x:Key="hyperlinkExtensionsCenter">Центр загрузки расширений</s:String>
+    <!--链接文字-->
+
+    <!--tabitem-->
+    <s:String x:Key="tbiStart">Начало</s:String>
+    <s:String x:Key="tbiOnPowerOn">Начало</s:String>
+    <s:String x:Key="tbiOnRecovery">Recovery</s:String>
+    <s:String x:Key="tbiOnFastboot">Fastboot</s:String>
+    <s:String x:Key="tbiExtension">расширения</s:String>
+    <!--tabitem-->
+
+    <!--标题-->
+    <s:String x:Key="titleHaveAUpdate">У вас есть обновление!</s:String>
+    <s:String x:Key="titleMustRead">Должен прочитать!</s:String>
+    
+    <!--标题-->
+
+    <!--信息(主要用于MMesssageBox)-->
+    <s:String x:Key="msgDonatedVersionThanks">Должен прочитать!...</s:String>
+     <s:String x:Key="msgNotActivated">Ты мой близкий пользователь!...</s:String>
+     <s:String x:Key="msgAndroidVersionCheckFailedFormat">Проверка версии Android была неудачной .. эта функция нуждается в {0} версии Android, продолжить?</s:String>
+    <s:String x:Key="msgExtensionTryGetHighPermssionFormat">{0} Попробуйте получить максимальное разрешение</s:String>
+         <s:String x:Key="msgAndroidVersionTooLowFmt">Слишком низкая версия вашего устройства для Android
+          требуется эта функция: {0}</s:String>
+    <s:String x:Key="msgRequestRestartAppAsAdminFormat">Слишком низкая версия вашего устройства для Android
+          требуется эта функция: {0}...</s:String>
+     <s:String x:Key="msgRequestRestartAppFormat">{0} хочу перезапустить AutumnBox</s:String>
+     <s:String x:Key="msgRequestShutdownAppFormat">{0} хочу закрыть AutumnBox</s:String>
+    <s:String x:Key="msgPathError">Ошибка пути! сделать путь пробелом или специальным символом</s:String>
+    <s:String x:Key="msgExtensionWasFailed">не удалось ... просмотрите журнал</s:String>
+    <s:String x:Key="msgIsRunning">бежит...</s:String>
+    <s:String x:Key="msgCannotStop">не может остановиться</s:String>
+    <s:String x:Key="msgModuleFailed">{0} Модуль выбрал исключение ... вы можете просмотреть журнал, чтобы получить дополнительную информацию</s:String>
+    <s:String x:Key="msgMaybeHaveOtherUser">
+        У вашего устройства есть другой ПОЛЬЗОВАТЕЛЬ, пожалуйста, убедитесь, что вы удалили всех пользователей!
+         пользователь не является учетной записью!
+         PS: AutumnBox имеет функцию пользовательского менеджера</s:String>
+    <s:String x:Key="msgLoading">загрузка...</s:String>
+    <s:String x:Key="msgActiveGMC">Ad-net-отладка очень опасна! Вы обязательно продолжите?</s:String>
+    <s:String x:Key="msgGettedIP">Получите ваш ip телефон на текущем wlan, этот ip можно использовать для отладки сети</s:String>
+    <s:String x:Key="msgFixAndroidO">
+        Ваше устройство - система Android 8.0, вы хотите, чтобы открытая сетевая отладка была активирована для обеспечения нормальной работы службы?
+          эта операция может быть очень опасной!
+         &#x0a; Если вы решили включить его, пожалуйста, держите устройство разблокированным во время выполнения, иначе активация недействительна!
+    </s:String>
+    <s:String x:Key="msgUnknowError">Неизвестная ошибка!</s:String>
+    <s:String x:Key="msgCheckInput">Пожалуйста, проверьте свои данные.</s:String>
+    <s:String x:Key="msgIceBoxActUnknowError">Неизвестная ошибка!</s:String>
+    <s:String x:Key="msgRelockWarning">Обратите внимание, что эта функция вернет ваше устройство обратно в блокировку загрузчика, чтобы ваше устройство стало безопаснее, но вы потеряете права root. Самое главное, что данные на вашем устройстве будут полностью стерты! Резервное копирование данных разумно! Не отключайте устройство во время работы.</s:String>
+    <s:String x:Key="msgRelockWarningAgain">Обратите внимание, что эта функция будет удалять все данные с устройства и не отключать устройство во время работы! Вы уверены, что хотите это сделать? Нажмите кнопку, чтобы немедленно начать блокировку!</s:String>
+    <s:String x:Key="msgPushOK">Если все в порядке, вы увидите файл, который вы только что нажали в каталоге для хранения телефона (/ sdcard)</s:String>
+    <s:String x:Key="msgFlashOK">Если все пойдет хорошо, ваш телефон перезагрузится в Recovery, который вы только что почистили!</s:String>
+    <s:String x:Key="msgFristLaunchNotice">Это программное обеспечение все еще находится на стадии тестирования. Возможные ошибки надеются, что вы можете дать немедленную обратную связь! Некоторые операции этого программного обеспечения могут сообщаться как ложные срабатывания. Пожалуйста, отключите убийство или разрешите операцию. Я гарантирую, что у этого программного обеспечения нет вредоносного кода!</s:String>
+    <s:String x:Key="msgIfAllOK">Если все в порядке, ваш телефон перезапустится</s:String>
+    <s:String x:Key="msgNotice">Заметка</s:String>
+    <s:String x:Key="msgDelScreenLock">Эта функция больше не работает на большинстве устройств сегодня, поэтому не ожидайте большой части этой функциональности</s:String>
+    <s:String x:Key="msgFunctionIsInTheDeveloping">Эта функция все еще находится в разработке ... Пожалуйста, обратите внимание на обновление ...</s:String>
+    <s:String x:Key="warrningNeedRootAccess">Эта функция требует привилегий root! Однако, согласно обнаружению этого программного обеспечения, у вас, похоже, нет привилегий root. Конечно, возможно, я ошибаюсь. Вы уверены что хотите продолжить?</s:String>
+    <s:String x:Key="msgDoing">Делать ... пожалуйста, подождите</s:String>
+    <s:String x:Key="msgUnlockSystemTip">Обратите внимание, что это не освобождение блокировки загрузчика! Эта функция используется, чтобы помочь устройствам, у которых уже есть привилегии root. Эта функция позволяет вам получить полные привилегии! Разблокируйте системный раздел и измените его, как вам нравится!</s:String>
+    <s:String x:Key="msgStartBreventServiceFail">При запуске службы черного порога, похоже, есть некоторые проблемы. Пожалуйста, дайте этот снимок экрана разработчику черного порога или разработчику AutumnBox.</s:String>
+    <s:String x:Key="msgStartBreventServiceSuc">Now your device should have successfully activated the black threshold! But to be on the safe side, the script output will be shown</s:String>
+    <s:String x:Key="msgShellChoiceTip">Я обнаружил, что вы система Windows 10. Какой интерфейс командной строки вы хотите использовать? Если вы не знаете, что такое Powershell, используйте традиционный CMD.</s:String>
+    <s:String x:Key="msgSaveSuccessful">Сохраненный</s:String>
+    <s:String x:Key="msgIceAct">1. Перейдите в «Мобильный -> Настройки учетной записи» и удалите все учетные записи! (включая учетную запись Google / Mobile Cloud Service и т. д.)
+2. В Autumn Box -> User Management удалите всех пользователей
+3. Мобильные телефоны Sony / ZUK и т. Д., Чтобы вернуть карту
+4. Samsung может заблокировать машину
+Примечание. Пользователи / учетные записи - это разные понятия, не путайте!
+&#x0a; Если вы уже это сделали, пожалуйста, продолжайте
+    </s:String>
+    <s:String x:Key="msgNoticeForRebootToEdl">
+        Убедитесь, что ваше устройство - процессор Qualcomm Snapdragon и поддерживает режим 9008
+При входе в режим 9008 устройство будет полностью черным, но вы можете использовать соответствующие инструменты для чистки
+&#x0a; Если вы хотите выйти из режима 9008, долго нажмите кнопку питания!
+    </s:String>
+    <s:String x:Key="msgPlsInstallAppOpsXFirst">Пожалуйста, сначала установите AppOpsX!</s:String>
+    <s:String x:Key="msgPlsInstallUsersirFirst">Сначала установите USER SIR!</s:String>
+    <s:String x:Key="msgPlsInstallGreenifyFirst">Пожалуйста, сначала установите Greenify!</s:String>
+    <s:String x:Key="msgPlsInstallFreezeYouFirst">Пожалуйста, сначала установите FreezeYou!</s:String>
+    <s:String x:Key="msgPlsInstallAirForzenFirst">Пожалуйста, сначала AirForzen!</s:String>
+    <s:String x:Key="msgPlsInstallBreventFirst">Пожалуйста, сначала установите brevent!</s:String>
+    <s:String x:Key="msgPlsInstallIslandFirst">Пожалуйста, сначала установите island</s:String>
+    <s:String x:Key="msgPlsInstallIceBoxFirst">Пожалуйста, сначала установите ice-box</s:String>
+    <s:String x:Key="msgPlsInstallStopAppFirst">Пожалуйста, сначала установите Stop-App</s:String>
+    <s:String x:Key="msgPlsInstallBlackholeFirst">Пожалуйста, сначала установите Black hole</s:String>
+    <s:String x:Key="msgPlsInstallAnzenbokusuFirst">Пожалуйста, сначала установите anzenbouksu</s:String>
+    <s:String x:Key="msgPlsInstallAnzenbokusuFakeFirst">Пожалуйста, сначала установите AnzenbokusuFake !!</s:String>
+    <s:String x:Key="msgPlsInstallGMCFirst">Пожалуйста, сначала установите Geek memory cleaner</s:String>
+    <s:String x:Key="msgPlsInstallShizukuManagerFirst">Пожалуйста, сначала установите ShizukuManager</s:String>
+    <s:String x:Key="msgWarning">Предупреждение</s:String>
+    <s:String x:Key="msgVirtualButtonHider">Вы хотите скрыть виртуальные ключи или восстановить виртуальную кнопку?</s:String>
+    <s:String x:Key="msgStartAdbServerFail">Ошибка: запуск сервера adb
+        решение:
+1- Полностью откройте все помощники Brush Assistant / Mobile Assistants. Например: 360 Mobile Assistant, Brick Wizard, Rabbit Brush и т. Д.
+2- Введите диспетчер задач для завершения всех процессов ADB
+3- Перезагрузите компьютер
+4- Перейти в интернет-кафе
+    </s:String>
+    <s:String x:Key="msgPleaseInputAPort">Порт ошибки</s:String>
+    <s:String x:Key="msgFailed">Не смогли</s:String>
+    <!--信息-->
+
+    <!--用于结果显示窗的文字-->
+    <s:String x:Key="rmsgDOSNone">нет проблем</s:String>
+    <s:String x:Key="advsDOSNone">Наслаждайся этим!</s:String>
+
+    <s:String x:Key="rmsgDOSServalAccountsOnTheDevice">Иметь другие счета!</s:String>
+    <s:String x:Key="advsDOSServalAccountsOnTheDevice">Учетная запись не удалена ... Учетная запись Google или пользовательская учетная запись ROM должны быть удалены! Если вы являетесь телефоном Sony / ZUK, вам необходимо удалить телефонную карточку.</s:String>
+
+    <s:String x:Key="rmsgDOSServalUserOnTheDevice">Иметь другого пользователя!</s:String>
+    <s:String x:Key="advsDOSServalUserOnTheDevice">Обязательно удалите всех пользователей, отключите гостевой режим и закройте двойное приложение.</s:String>
+
+    <s:String x:Key="rmsgDOSDeviceOwnerIsAlreadySet">Владелец устройства настроен</s:String>
+    <s:String x:Key="advsDOSDeviceOwnerIsAlreadySet">Убедитесь, что вы вышли из всех учетных записей или заходите в приложение, чтобы узнать, активировано ли оно. Примечание. Одновременно может быть доступно несколько приложений, замороженных приложением!</s:String>
+
+    <s:String x:Key="rmsgDOSMIUIUsbSecError">Ошибка настройки безопасности USB MIUI</s:String>
+    <s:String x:Key="advsDOSMIUIUsbSecError">Пользователи MIUI вручную включают отладку USB (параметры безопасности) в системных настройках - настройки разработчика</s:String>
+
+
+    <s:String x:Key="rmsgDOSUnknowAdmin">Please install app first</s:String>
+    <s:String x:Key="advsDOSUnknowAdmin">...</s:String>
+
+    <s:String x:Key="rmsgAppHaveNoInstalled">Приложение не установлено</s:String>
+    <s:String x:Key="advsAppHaveNoInstalled">Сначала установить приложение Plz</s:String>
+
+    <s:String x:Key="rmsgUnknowError">Неизвестная ошибка</s:String>
+    <s:String x:Key="advsUnknowError">Скопируйте полный результат ниже и свяжитесь с разработчиком AutumnBox.</s:String>
+
+    <s:String x:Key="advIceActAppHaveNoInstalled">Приложение для установки Plz</s:String>
+    <s:String x:Key="advIceActHaveOtherUser">Plz delete other user)</s:String>
+    <s:String x:Key="advIceActUnknowError">Скопируйте полный результат ниже и свяжитесь с разработчиком AutumnBox.</s:String>
+    <s:String x:Key="advIceBoxActUnknowError">Скопируйте полный результат ниже и свяжитесь с разработчиком AutumnBox.</s:String>
+    <s:String x:Key="errormsgBrventActivtedUnsuccess">Возможно: вы не устанавливаете brevent;</s:String>
+    <s:String x:Key="advsBrventActivtedUnsuccess">Пожалуйста, установите последнюю версию brevent</s:String>
+    <s:String x:Key="advsFileSendUnsuccess">Вы можете скриншот и отправить снимок экрана на zsh2401@gmail.com.</s:String>
+    <s:String x:Key="advsIceBoxHaveNoInstall">Приложение для установки льда Plz</s:String>
+    <!--用于结果显示窗的文字-->
+
+
+    <!--用于文件,文件夹选择的文字-->
+    <s:String x:Key="selectDcimBackupFloder">Папка экспорта Plz</s:String>
+    <!--用于文件,文件夹选择的文字-->
+
+    <!--开始面板-->
+    <s:String x:Key="titStart">Начиная</s:String>
+    <s:String x:Key="titHelp">Помогите</s:String>
+    <s:String x:Key="titContact">контакт</s:String>
+    <s:String x:Key="titSupport">Поддержка</s:String>
+    <!--开始面板-->
+    
+    <!--静态界面标记-->
+    <s:String x:Key="ckbShowDebugWindowOnNextLaunch">Показать окно отладки при следующем запуске</s:String>
+    <s:String x:Key="ckbConnectOnOpened">Подключение к открытому</s:String>
+     <s:String x:Key="ckbNotifyOnFinished">Воспроизведение звука по функции завершено</s:String>
+    <s:String x:Key="RebootTo">Перезагрузите</s:String>
+    <s:String x:Key="DonateDescription">Вы жертвуете мне большое ободрение</s:String>
+    <s:String x:Key="PleaseSelected">Выбор Plz</s:String>
+    <s:String x:Key="PleaseSelectFloderPackageWireFlash">Выберите папку pkg</s:String>
+    <s:String x:Key="OutputRealTime">Выход в реальном времени</s:String>
+    <s:String x:Key="TimeUsed">Используемое время</s:String>
+    <s:String x:Key="Transparency">прозрачность</s:String>
+    <s:String x:Key="Language">язык</s:String>
+    <s:String x:Key="Theme">тема</s:String>
+    <s:String x:Key="Notice">уведомление</s:String>
+    <s:String x:Key="ckbSkipThisVersion">Пропустить эту версию</s:String>
+    <s:String x:Key="GetFail">Не смогли</s:String>
+    <s:String x:Key="OnSetting">настройка...</s:String>
+    <s:String x:Key="Getting">Получение</s:String>
+    <s:String x:Key="Devices">Подключенные устройства</s:String>
+    <s:String x:Key="RootEnable">включить</s:String>
+    <s:String x:Key="RootDisable">запрещать</s:String>
+    <s:String x:Key="Message">Сообщение</s:String>
+    <s:String x:Key="Advise">Консультировать</s:String>
+    <s:String x:Key="DefaultDpi">IP-адрес устройства</s:String>
+    <s:String x:Key="TipForChangeDpi">Plz считает, что значение для изменения, слишком большое или маленькое может привести к тому, что ваше устройство станет непригодным</s:String>
+    <s:String x:Key="OutputTip">Полная мощность</s:String>
+    <s:String x:Key="TipForInputDpi">тип DPI-></s:String>
+    <s:String x:Key="Bridge">Мост</s:String>
+    <s:String x:Key="Port">порт</s:String>
+    <s:String x:Key="lbUnspecified">Неопределенные</s:String>
+    <s:String x:Key="lbUserName">имя</s:String>
+    <s:String x:Key="lbAnonymous">анонимное</s:String>
+    <s:String x:Key="lbApiLevel">API Level: {0}</s:String>
+    <s:String x:Key="lbUserId">UID</s:String>
+    <s:String x:Key="lbName">Имя расширения</s:String>
+    <s:String x:Key="lbAuth">хозяин</s:String>
+    <s:String x:Key="lbVersion">Версия</s:String>
+    <s:String x:Key="lbContactEmail">Почта для связи</s:String>
+    <s:String x:Key="lbMinSdk">Min SDK</s:String>
+    <s:String x:Key="lbTargetSdk">Target SDK</s:String>
+    <s:String x:Key="lbDescription">Описание</s:String>
+    <s:String x:Key="lbSetDeviceOwner">Установить владельца устройства на активное</s:String>
+    <s:String x:Key="lbRunScript">Запустить скрипт на активный</s:String>
+    <s:String x:Key="lbSpecial">Особый</s:String>
+    <s:String x:Key="lbOpenNetDebugging">Отладка Open Net для активных (опасных)!</s:String>
+     <s:String x:Key="AdviseAboutExtensions">Используйте новейшую AutumnBox как можно больше, вы будете чувствовать себя лучше.</s:String>
+    <!--静态界面标记-->
+
+    <!--设备信息标记-->
+    <s:String x:Key="diDeviceState">Состояние устройства</s:String>
+    <s:String x:Key="diSWRoot">Root</s:String>
+    <s:String x:Key="diHWBattery">Battery</s:String>
+    <s:String x:Key="diHWSOC">SOC</s:String>
+    <s:String x:Key="diHWStorage">Flash</s:String>
+    <s:String x:Key="diHWRom">Rom</s:String>
+    <s:String x:Key="diHWRam">Ram</s:String>
+    <s:String x:Key="diHWScreen">Screen</s:String>
+    <s:String x:Key="diModel">Model</s:String>
+    <s:String x:Key="diCode">Code</s:String>
+    <s:String x:Key="diAndroidVersion">Android Version</s:String>
+    <!--设备信息标记-->
+
+    <!--PullingWindow使用的-->
+    <s:String x:Key="btnStopPulling">Остановить вытягивание</s:String>
+    <s:String x:Key="pulling">тянущий...</s:String>
+    <!--PullingWindow使用的-->
+
+    <!--MiFlashWindow使用的-->
+    <s:String x:Key="CurrentDevice">Текущее устройство</s:String>
+    <s:String x:Key="selectingLineFlashPackageDesc">Выберите папку с флэш-папкой</s:String>
+    <s:String x:Key="btnSelectLineFlashPackage">Выбрать</s:String>
+    <s:String x:Key="btnStartMiFlash">Начать мигать</s:String>
+    <s:String x:Key="btnStopMiFlash">Остановить мигание</s:String>
+    <s:String x:Key="mfPlzSelectLineFlashFloder">Plz select line fls pkg fld</s:String>
+    <s:String x:Key="mfReady">Все готово</s:String>
+    <s:String x:Key="mfFlashing">мигающий....</s:String>
+    <s:String x:Key="mfSuccess">успех</s:String>
+    <s:String x:Key="mfFail">Не смогли</s:String>
+    <s:String x:Key="msgPlzSelectARightFloder">Выберите нужную папку</s:String>
+    <s:String x:Key="mfbflash_all.bat">Все clear-flash_all.bat</s:String>
+    <s:String x:Key="mfbflash_all_lock.bat">Все clear и lock-flash_all_lock.bat</s:String>
+    <s:String x:Key="mfbflash_all_except_storage.bat">Кроме хранения-flash_all_except_storage.bat</s:String>
+    <!--MiFlashWindow使用的-->
+
+     <!--登陆用的-->
+     <s:String x:Key="lbPassword">Password</s:String>
+    <s:String x:Key="lbAccount">Account</s:String>
+    <s:String x:Key="btnManageAccount">Manage account</s:String>
+    <s:String x:Key="btnRorMAccount">Register or manage account</s:String>
+     <s:String x:Key="btnLogining">Logining</s:String>
+    <s:String x:Key="noticeAccountNotVerified">Account was not verified,click manage account to verifi</s:String>
+    <s:String x:Key="noticeAccountNotPaid">Account was not paid,click manage account to recharge</s:String>
+    
+    <!--设备状态提示-->
+    <s:String x:Key="deviceStateUnknown">неизвестный</s:String>
+    <s:String x:Key="deviceStateNone">Устройство не найдено</s:String>
+    <s:String x:Key="deviceStatePoweron">Poweron</s:String>
+    <s:String x:Key="deviceStateRecovery">Recovery</s:String>
+    <s:String x:Key="deviceStateFastboot">Fastboot</s:String>
+    <s:String x:Key="deviceStateSideload">Sideload</s:String>
+    <s:String x:Key="deviceStateOffline">Устройство офлайн</s:String>
+    <s:String x:Key="deviceStateUnauthorized">Устройство не найдено...</s:String>
+    <!--设备状态提示-->
+    
+    <s:String x:Key="lbDisconnect">Устройство не найдено</s:String>
+    <s:String x:Key="lbConnectedDevice">Подключен к</s:String>
+    
+    <s:String x:Key="SelecteAFile">Выберите файл</s:String>
+    <s:String x:Key="Warning">Предупреждение</s:String>
+    <s:String x:Key="Success">успех</s:String>
+    <s:String x:Key="MaybeSuccess">Возможно, успех</s:String>
+    <s:String x:Key="MaybeUnsuccess">Может быть, не удалось</s:String>
+    <s:String x:Key="Unsuccess">Не смогли</s:String>
+    <s:String x:Key="Fail">Потерпеть неудачу</s:String>
+
+        <!--账户信息挂载-->
+    <s:String x:Key="AccountInfoFmt">
+        Здравствуйте, {1}
+         вы зарегистрированы на {2}, вы нет. {0} пользователь
+         Истек срок: {3}
+    </s:String>
+
+    <!--关于信息-->
+    <s:String x:Key="AboutMessage">
+This is an open source software that complies with the GPL 3.0 protocol. Please comply with the open source protocol when necessary.
+Developer email zsh2401@163.com
+        
+Acknowledgement of the outstanding contributions made by the following open source projects (in no particular order)
+Spring.AOP | Newtonsoft.Json  | Google Android Debug Bridge | Google Android | Linux | CS-Script | C#
+        
+Thanks to the following people for their support at the initial stage of AutumnBox (in no particular order)
+蚂蚁,饼干怪兽,hxy,yume,滥情空心,web1n,咖枯,八百标兵,EggGrenade,MonoLogueChi,毛线没有团团
+        
+If you have also made outstanding contributions but have not been recorded, please contact me!</s:String>
+    <!--关于信息-->
+
+    <s:String x:Key="warningOpenNetDebugging">
+Включение сетевой отладки приведет к непредвиденным рискам
+Убедитесь, что ваше устройство находится в той же локальной сети, что и ваш компьютер.
+Убедитесь, что вы включили сетевую отладку в настройках разработчика
+    </s:String>
+    <s:String x:Key="Contact">Связаться с разработчиком</s:String>
+    <s:String x:Key="Donate">Пожертвовать разработчику</s:String>
+
+    <!--加载提示-->
+    <s:String x:Key="ldmsgLoginAccount">Вход в аккаунт</s:String>
+    <s:String x:Key="ldmsgStartAdb">Запуск сервера Adb</s:String>
+    <s:String x:Key="ldmsgLoadingExtensions">Загрузка расширений</s:String>
+    <s:String x:Key="ldmsgStartDeviceMonitor">Устройство прослушивателя</s:String>
+</ResourceDictionary>

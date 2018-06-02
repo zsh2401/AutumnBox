@@ -34,7 +34,7 @@
         <TextBlock Style="{DynamicResource AtmbxTextBlockStyle}" HorizontalAlignment="Left" Margin="284,10,0,0" TextWrapping="Wrap" Text="{Binding DeviceName, ElementName=mDeviceInfoPanel}" VerticalAlignment="Top" Width="306" Height="49" FontSize="24"/>
 
         <Label Style="{DynamicResource AtmbxLabelStyle}" Content="{Binding DeviceStateText, ElementName=mDeviceInfoPanel}" HorizontalAlignment="Left" Margin="284,64,0,0" VerticalAlignment="Top" Height="32" Width="306" FontSize="18"/>
-        <Label HorizontalContentAlignment="Right" Style="{DynamicResource AtmbxLabelStyle}" Content="{DynamicResource diDeviceState}" HorizontalAlignment="Left" Margin="121,64,0,0" VerticalAlignment="Top" Width="158" Height="32" FontSize="18"/>
+        <Label HorizontalContentAlignment="Right" Style="{DynamicResource AtmbxLabelStyle}" Content="{DynamicResource diDeviceState}" HorizontalAlignment="Left" Margin="10,64,0,0" VerticalAlignment="Top" Width="269" Height="32" FontSize="18"/>
 
     </Grid>
 </UserControl>
