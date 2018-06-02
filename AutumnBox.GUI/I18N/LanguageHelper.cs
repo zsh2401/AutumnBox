@@ -33,7 +33,8 @@ namespace AutumnBox.GUI.I18N
         {
             Langs = new List<Language>(){
                 new Language("zh-CN"),
-                new Language("en-US")
+                new Language("en-US"),
+                new Language("ru-RU")
             };
         }
         public static bool SystemLanguageIsChinese
@@ -53,6 +54,14 @@ namespace AutumnBox.GUI.I18N
                 case "zh-HK":
                     SetLanguage("zh-CN");
                     break;
+                //case "ru":
+                //case "ru-RU":
+                //    SetLanguage("ru-RU");
+                //    break;
+                //case "uk":
+                //case "uk-UA":
+                //    SetLanguage("uk-UA");
+                //    break;
                 default:
                     SetLanguage("en-US");
                     break;

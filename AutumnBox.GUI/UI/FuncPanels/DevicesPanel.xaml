@@ -8,10 +8,10 @@
              xmlns:CstPanels="clr-namespace:AutumnBox.GUI.UI.CstPanels"
              mc:Ignorable="d" Width="188.666" Height="232.667" MinWidth="170" MinHeight="150">
     <Grid x:Name="GridMain">
-        <ListBox DisplayMemberPath="Serial" x:Name="ListBoxMain" Background="{x:Null}" Foreground="{DynamicResource ForegroundBrushKey}" BorderBrush="{DynamicResource BroderBrushKey}" Margin="5,30,10,65" SelectionChanged="ListBox_SelectionChanged"/>
-        <TextBlock Style="{DynamicResource AtmbxTextBlockStyle}" HorizontalAlignment="Center" Margin="0,4,0,0" TextWrapping="Wrap" Text="{DynamicResource Devices}" VerticalAlignment="Top" FontSize="16" />
-        <Button Style="{DynamicResource AtmbxButtonStyle}" x:Name="BtnAddNetDebuggingDevice" Content="{DynamicResource btnAddNetdebuggingDevice}" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="174"  Height="25"  Margin="5,0,0,35" Click="BtnAddNetDebuggingDevice_Click"/>
+        <ListBox DisplayMemberPath="Serial" x:Name="ListBoxMain" Background="{x:Null}" Foreground="{DynamicResource ForegroundBrushKey}" BorderBrush="{DynamicResource BroderBrushKey}" Margin="5,30,5,65" SelectionChanged="ListBox_SelectionChanged"/>
+        <TextBlock Style="{DynamicResource AtmbxTextBlockStyle}" Margin="5,4,5,0" TextWrapping="Wrap" Text="{DynamicResource Devices}" VerticalAlignment="Top" FontSize="13" />
+        <Button Style="{DynamicResource AtmbxButtonStyle}" x:Name="BtnAddNetDebuggingDevice" Content="{DynamicResource btnAddNetdebuggingDevice}" VerticalAlignment="Bottom"  Height="25"  Margin="5,0,5,35" Click="BtnAddNetDebuggingDevice_Click"/>
         <Button Style="{DynamicResource AtmbxButtonStyle}" x:Name="BtnEnableNetDebugging" Content="{DynamicResource btnEnableNetdebugging}" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="174"  Height="25"  Margin="5,0,0,5" Click="BtnEnableNetDebugging_Click"/>
-        <Button Style="{DynamicResource AtmbxButtonStyle}" x:Name="BtnDisableNetDebugging" Content="{DynamicResource btnDisableNetdebugging}" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="174"  Height="25"  Margin="5,0,0,5" Click="BtnDisableNetDebugging_Click"/>
+        <Button Style="{DynamicResource AtmbxButtonStyle}" x:Name="BtnDisableNetDebugging" Content="{DynamicResource btnDisableNetdebugging}" VerticalAlignment="Bottom"  Height="25"  Margin="5,0,5,5" Click="BtnDisableNetDebugging_Click"/>
     </Grid>
 </UserControl>
