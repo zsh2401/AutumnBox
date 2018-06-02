@@ -133,54 +133,54 @@
     <s:String x:Key="msgRequestRestartAppAsAdminFormat">{0} wanna restart AutumnBox as Admin</s:String>
      <s:String x:Key="msgRequestRestartAppFormat">{0} wanna restart AutumnBox</s:String>
      <s:String x:Key="msgRequestShutdownAppFormat">{0} wanna close AutumnBox</s:String>
-    <s:String x:Key="msgPathError">路径错误!
-    请确保路径没有中文或空格等特殊字符!</s:String>
+    <s:String x:Key="msgPathError">Path error!
+    make the path no space or speical char</s:String>
     <s:String x:Key="msgExtensionWasFailed">was failed...please view the log</s:String>
     <s:String x:Key="msgIsRunning">is running...</s:String>
     <s:String x:Key="msgCannotStop">can't stop</s:String>
     <s:String x:Key="msgModuleFailed">{0} Module was throw a excepton...you can view the log to get more info</s:String>
     <s:String x:Key="msgMaybeHaveOtherUser">
-        检测到你的设备上还有其它用户,请确保您已删除完所有用户
-        用户/账户不是一个概念!
-        注:AutumnBox有用户管理的功能</s:String>
+        Your device have other USER,please make sure you are removed all user!
+        user is not account!
+        PS:AutumnBox have user manager function</s:String>
     <s:String x:Key="msgLoading">Loading...</s:String>
     <s:String x:Key="msgActiveGMC">Adb net-debugging is very dangerou! You are srue to continue?</s:String>
-    <s:String x:Key="msgGettedIP">成功获取您的手机在当前局域网的IP,这个IP将可以用于网络调试连接</s:String>
+    <s:String x:Key="msgGettedIP">Get your phone ip on current wlan,this ip can be used for network debugging</s:String>
     <s:String x:Key="msgFixAndroidO">
-        检测到您是安卓8.0系统,为了防止ADB服务被异常终止,请问需要在激活后开启ADB网络调试以保证服务正常运行吗?
-         这可能会带来不可测的风险!
-        &#x0a; 如果您决定开启,请在执行过程中,保持设备解锁并亮屏,否则激活将是无效的
+        Your device is android 8.0 system,do you want open net-debugging after activated to ensure service normal running?
+         this operation maybe very dangerous!
+        &#x0a; iff you decide to turn it on,please keep the device unlocked during execution,otherwise activation is invalid!
     </s:String>
-    <s:String x:Key="msgUnknowError">未知的错误!</s:String>
-    <s:String x:Key="msgCheckInput">请检查您输入的内容!</s:String>
-    <s:String x:Key="msgIceBoxActUnknowError">未知的错误!</s:String>
-    <s:String x:Key="msgRelockWarning">注意,本功能将会把您的设备重新上Bootloader锁,这样您的设备将会变得比较安全但是您将失去root权限,最重要的是将会彻底清除您的设备上的数据!请做好数据备份谨慎而行!并且在操作时不要拔掉设备,否则后果自负</s:String>
-    <s:String x:Key="msgRelockWarningAgain">请再次注意,本功能将会清除设备的所有数据,并且不要在操作时拔掉设备!你确定要这么做了吗?按下按钮立即开始重新上锁!</s:String>
-    <s:String x:Key="msgPushOK">如果一切正常,您将会在手机存储目录(/sdcard)下看到您刚才推送的文件</s:String>
-    <s:String x:Key="msgFlashOK">如果一切正常,您的手机将会重启到刚才刷入的Recovery中!</s:String>
-    <s:String x:Key="msgFristLaunchNotice">本软件还处于测试阶段,可能出现的bug希望您能立即反馈!这个软件的某些操作可能会被杀软误报,请关闭杀软或者允许操作,我保证本软件没有恶意代码!</s:String>
-    <s:String x:Key="msgIfAllOK">如果一切正常,您的手机将会重启</s:String>
-    <s:String x:Key="msgNotice">注意</s:String>
-    <s:String x:Key="msgDelScreenLock">注意,此功能在当今大部分设备上已经失去效用,因此不要对该功能抱有太大希望</s:String>
-    <s:String x:Key="msgFunctionIsInTheDeveloping">此功能还在开发中...请关注更新.......</s:String>
-    <s:String x:Key="warrningNeedRootAccess">此功能需要root权限!但根据本软件的检测,您似乎没有root权限,当然,也有可能是我判断错了,确定要继续吗?</s:String>
-    <s:String x:Key="msgDoing">正在进行操作,稍安勿躁</s:String>
-    <s:String x:Key="msgUnlockSystemTip">注意,这不是解除Bootloader锁! 这个功能是帮助已经拥有root权限的设备使用的,该功能可让你获得完整的root权限!解锁系统分区并随意修改!</s:String>
-    <s:String x:Key="msgStartBreventServiceFail">启动黑阈服务时,似乎出现了一些问题,请将此处截图给黑阈开发者或AutumnBox开发者</s:String>
-    <s:String x:Key="msgStartBreventServiceSuc">现在,您的设备应该已经成功激活了黑阈!但为了保险起见,将会展示脚本输出的信息</s:String>
-    <s:String x:Key="msgShellChoiceTip">检测到您是Windows10 系统,请问您想用哪种命令行界面?如果您不懂什么是Powershell,请用传统的CMD</s:String>
-    <s:String x:Key="msgSaveSuccessful">保存成功!</s:String>
-    <s:String x:Key="msgIceAct">1.请前往手机->账户设置,将所有账户删除!(包括谷歌账户/手机云服务账户等)
-        2.在秋之盒->用户管理删除所有用户
-        3.索尼/ZUK手机等要退卡
-        4.三星有可能锁机
-        注意:用户/账户是不同概念,勿混淆!
-        &#x0a; 如果你已完成上述操作,请继续
+    <s:String x:Key="msgUnknowError">Unknow Error!</s:String>
+    <s:String x:Key="msgCheckInput">Please check your input</s:String>
+    <s:String x:Key="msgIceBoxActUnknowError">Unknow Error!</s:String>
+    <s:String x:Key="msgRelockWarning">Note that this feature will put your device back on the Bootloader lock so that your device will become safer but you will lose root privileges. The most important thing is that the data on your device will be completely erased! Data backup is prudent! Do not unplug the device during operation.</s:String>
+    <s:String x:Key="msgRelockWarningAgain">Please note again that this function will erase all data from the device, and do not unplug the device during operation! Are you sure you want to do this? Press the button to start locking again immediately!</s:String>
+    <s:String x:Key="msgPushOK">If everything is ok, you will see the file you just pushed in the phone storage directory (/sdcard)</s:String>
+    <s:String x:Key="msgFlashOK">If all goes well, your phone will reboot into the Recovery you just brushed!</s:String>
+    <s:String x:Key="msgFristLaunchNotice">This software is still in the testing stage. The possible bugs hope you can give immediate feedback! Some operations of this software may be reported as false positives. Please turn off killing or allow the operation. I guarantee that this software has no malicious code!</s:String>
+    <s:String x:Key="msgIfAllOK">If everything is ok, your phone will restart</s:String>
+    <s:String x:Key="msgNotice">Note</s:String>
+    <s:String x:Key="msgDelScreenLock">This feature is no longer functional on most devices today, so don’t expect much of this functionality</s:String>
+    <s:String x:Key="msgFunctionIsInTheDeveloping">This feature is still under development... Please pay attention to update...</s:String>
+    <s:String x:Key="warrningNeedRootAccess">This feature requires root privileges! However, according to the detection of this software, you do not seem to have root privileges. Of course, it may be that I am wrong. Are you sure you want to continue?</s:String>
+    <s:String x:Key="msgDoing">Doing...please wait</s:String>
+    <s:String x:Key="msgUnlockSystemTip">Note that this is not to release the bootloader lock! This function is used to help devices that already have root privileges. This feature allows you to gain full root privileges! Unlock the system partition and modify it as you like!</s:String>
+    <s:String x:Key="msgStartBreventServiceFail">When launching the black threshold service, there seems to be some problems. Please give this screenshot to the black threshold developer or the AutumnBox developer.</s:String>
+    <s:String x:Key="msgStartBreventServiceSuc">Now your device should have successfully activated the black threshold! But to be on the safe side, the script output will be shown</s:String>
+    <s:String x:Key="msgShellChoiceTip">I have detected that you are a Windows 10 system. Which command-line interface do you want to use? If you do not know what Powershell is, please use the traditional CMD.</s:String>
+    <s:String x:Key="msgSaveSuccessful">Saved</s:String>
+    <s:String x:Key="msgIceAct">1. Go to Mobile -> Account Settings and delete all accounts! (including Google Account/Mobile Cloud Service Account, etc.)
+         2. In the Autumn Box -> User Management delete all users
+         3. Sony / ZUK mobile phones, etc. to return the card
+         4. Samsung may lock the machine
+         Note: Users/accounts are different concepts, do not confuse!
+         &#x0a; If you have already done this, please continue
     </s:String>
     <s:String x:Key="msgNoticeForRebootToEdl">
-        请确保您的设备是高通骁龙处理器并且支持进入9008模式
-        当进入9008模式后,设备会完全黑屏,但您可以使用相关工具进行刷机
-        &#x0a;如果想要退出9008模式,长按电源键即可!
+        Make sure your device is Qualcomm Snapdragon processor and support 9008 mode
+         When entering the 9008 mode, the device will be completely black, but you can use the relevant tools to brush
+         &#x0a; If you want to exit the 9008 mode, long press the power button!
     </s:String>
     <s:String x:Key="msgPlsInstallAppOpsXFirst">Please install AppOpsX first!</s:String>
     <s:String x:Key="msgPlsInstallUsersirFirst">Please install USER SIR first!</s:String>
@@ -197,48 +197,48 @@
     <s:String x:Key="msgPlsInstallGMCFirst">Please install Geek memory cleaner!!</s:String>
     <s:String x:Key="msgPlsInstallShizukuManagerFirst">Please install ShizukuManager first!</s:String>
     <s:String x:Key="msgWarning">Warning</s:String>
-    <s:String x:Key="msgVirtualButtonHider">您是要隐藏虚拟键还是恢复虚拟键?</s:String>
-    <s:String x:Key="msgStartAdbServerFail">错误:无法启动ADB服务
-        解决方案:
-        1-彻底关闭所有刷机助手/手机助手.例如: 360手机助手,刷砖精灵,奇兔刷机等
-        2-进入任务管理器结束所有ADB进程
-        3-重启电脑
-        4-去网吧
+    <s:String x:Key="msgVirtualButtonHider">Do you want to hide virtual keys or recover virtual button??</s:String>
+    <s:String x:Key="msgStartAdbServerFail">Error: adb server starts failed
+       solution:
+         1- Close all Brush Assistants/Mobile Assistants completely. For example: 360 Mobile Assistant, Brick Wizard, Rabbit Brush, etc.
+         2- Enter task manager to end all ADB processes
+         3- Restart the computer
+         4- Go to internet cafe
     </s:String>
     <s:String x:Key="msgPleaseInputAPort">Error port</s:String>
     <s:String x:Key="msgFailed">Failed</s:String>
     <!--信息-->
 
     <!--用于结果显示窗的文字-->
-    <s:String x:Key="rmsgDOSNone">没什么问题</s:String>
-    <s:String x:Key="advsDOSNone">好好享受!</s:String>
+    <s:String x:Key="rmsgDOSNone">No problem</s:String>
+    <s:String x:Key="advsDOSNone">Enjoy it!</s:String>
 
-    <s:String x:Key="rmsgDOSServalAccountsOnTheDevice">有其它账户</s:String>
-    <s:String x:Key="advsDOSServalAccountsOnTheDevice">账户没删干净...谷歌账户或者定制ROM的账户都要删的!如果你是索尼/ZUK手机,要拔手机卡哦</s:String>
+    <s:String x:Key="rmsgDOSServalAccountsOnTheDevice">Have other accounts!</s:String>
+    <s:String x:Key="advsDOSServalAccountsOnTheDevice">The account has not been deleted... Google account or custom ROM account must be deleted! If you are a Sony/ZUK phone, you need to remove the phone card.</s:String>
 
-    <s:String x:Key="rmsgDOSServalUserOnTheDevice">有其它用户</s:String>
-    <s:String x:Key="advsDOSServalUserOnTheDevice">确保删除所有用户,关闭访客模式,关闭应用双开!</s:String>
+    <s:String x:Key="rmsgDOSServalUserOnTheDevice">Have other user!</s:String>
+    <s:String x:Key="advsDOSServalUserOnTheDevice">Make sure to delete all users, turn off guest mode, and close the dual-app</s:String>
 
-    <s:String x:Key="rmsgDOSDeviceOwnerIsAlreadySet">设备管理员已被设定</s:String>
-    <s:String x:Key="advsDOSDeviceOwnerIsAlreadySet">请确保已退出所有账户,或前往App查看,可能已经激活?注意:应用冻结类App不能同时存在多个!</s:String>
+    <s:String x:Key="rmsgDOSDeviceOwnerIsAlreadySet">Device owner has been set</s:String>
+    <s:String x:Key="advsDOSDeviceOwnerIsAlreadySet">Please make sure you have logged out of all your accounts, or go to the App to see if it has already been activated. Note: There can be more than one app frozen app at the same time!</s:String>
 
-    <s:String x:Key="rmsgDOSMIUIUsbSecError">MIUI USB安全设置错误</s:String>
-    <s:String x:Key="advsDOSMIUIUsbSecError">MIUI 用户请手动在系统设置- 开发者设置里，开启 USB 调试(安全设置)</s:String>
+    <s:String x:Key="rmsgDOSMIUIUsbSecError">MIUI USB security settings error</s:String>
+    <s:String x:Key="advsDOSMIUIUsbSecError">MIUI users manually enable USB debugging (Security Settings) in System Settings - Developer Settings</s:String>
 
 
-    <s:String x:Key="rmsgDOSUnknowAdmin">请先安装应用</s:String>
+    <s:String x:Key="rmsgDOSUnknowAdmin">Please install app first</s:String>
     <s:String x:Key="advsDOSUnknowAdmin">...</s:String>
 
     <s:String x:Key="rmsgAppHaveNoInstalled">App is not install</s:String>
     <s:String x:Key="advsAppHaveNoInstalled">Plz install App first</s:String>
 
     <s:String x:Key="rmsgUnknowError">Unknow error</s:String>
-    <s:String x:Key="advsUnknowError">检查下面的完整输出,或将完整输出复制给要问的人</s:String>
+    <s:String x:Key="advsUnknowError">Please copy the full output below and contact the AutumnBox developer</s:String>
 
     <s:String x:Key="advIceActAppHaveNoInstalled">Plz install app</s:String>
     <s:String x:Key="advIceActHaveOtherUser">Plz delete other user)</s:String>
-    <s:String x:Key="advIceActUnknowError">请将下方的完整输出复制,并在该App的酷安评论区提问或联系AutumnBox开发者</s:String>
-    <s:String x:Key="advIceBoxActUnknowError">请将下方的完整输出复制,并在冰箱评论区提问或联系AutumnBox开发者</s:String>
+    <s:String x:Key="advIceActUnknowError">Please copy the full output below and contact the AutumnBox developer</s:String>
+    <s:String x:Key="advIceBoxActUnknowError">Please copy the full output below and contact the AutumnBox developer</s:String>
     <s:String x:Key="errormsgBrventActivtedUnsuccess">Maybe:You are not install brevent;Start brevent main activity failed;Command expired</s:String>
     <s:String x:Key="advsBrventActivtedUnsuccess">Plz install leatest version of brevent</s:String>
     <s:String x:Key="advsFileSendUnsuccess">You can screenshot,and send screenshot to zsh2401@gmail.com</s:String>
@@ -381,22 +381,22 @@
 
     <!--关于信息-->
     <s:String x:Key="AboutMessage">
-这是一个遵守GPL3.0协议的开源软件,请在必要的时候遵守开源协议
-开发者电子邮件 zsh2401@163.com
+This is an open source software that complies with the GPL 3.0 protocol. Please comply with the open source protocol when necessary.
+Developer email zsh2401@163.com
         
-鸣谢以下开源项目做出的卓越贡献(排名不分先后)
+Acknowledgement of the outstanding contributions made by the following open source projects (in no particular order)
 Spring.AOP | Newtonsoft.Json  | Google Android Debug Bridge | Google Android | Linux | CS-Script | C#
         
-感谢以下人员在AutumnBox初期给予的支持(排名不分先后)
+Thanks to the following people for their support at the initial stage of AutumnBox (in no particular order)
 蚂蚁,饼干怪兽,hxy,yume,滥情空心,web1n,咖枯,八百标兵,EggGrenade,MonoLogueChi,毛线没有团团
         
-如果你也做出了卓越贡献但未被记录,请联系我!</s:String>
+If you have also made outstanding contributions but have not been recorded, please contact me!</s:String>
     <!--关于信息-->
 
     <s:String x:Key="warningOpenNetDebugging">
-        开启网络调试将带来不可预见的风险
-        请确保您的设备与电脑处于同一局域网下
-        请确保您已在开发者设置中打开网络调试
+        Turn on network debugging will bring unforeseen risks
+         Please make sure your device is in the same LAN as your computer
+         Make sure you have turned on network debugging in the developer settings
     </s:String>
     <s:String x:Key="Contact">Contact Developer</s:String>
     <s:String x:Key="Donate">Donate Developer</s:String>
