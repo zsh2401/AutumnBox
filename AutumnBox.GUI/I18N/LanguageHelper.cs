@@ -54,6 +54,12 @@ namespace AutumnBox.GUI.I18N
                 case "zh-HK":
                     SetLanguage("zh-CN");
                     break;
+                case "ru-RU":
+                case "ru":
+                case "uk":
+                case "uk-UA":
+                    SetLanguage("ru-RU");
+                    break;
                 default:
                     SetLanguage("en-US");
                     break;
