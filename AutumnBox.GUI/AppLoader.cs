@@ -18,7 +18,7 @@ using System.Windows.Forms;
 
 namespace AutumnBox.GUI
 {
-    internal class AppLoader : Context
+    internal class AppLoader 
     {
         private readonly IAppLoadingWindow loadingWindowApi;
 
@@ -92,10 +92,7 @@ namespace AutumnBox.GUI
                 loadingWindowApi.SetProgress(60);
                 loadingWindowApi.SetTip(App.Current.Resources["ldmsgLoadingExtensions"].ToString());
             });
-            OpenFrameworkManager.LoadApi();
-            App.Current.OpenFrameworkManager.ReloadAllScript();
-            App.Current.OpenFrameworkManager.LoadAllExtension();
-
+            OpenFrameworkManager.Init();
             //启动设备拔插监听器
             App.Current.Dispatcher.Invoke(() =>
             {

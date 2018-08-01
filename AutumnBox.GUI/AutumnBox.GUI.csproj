@@ -162,6 +162,7 @@
     <Compile Include="UI\FuncPanels\ThridPartyFunctionPanel.xaml.cs">
       <DependentUpon>ThridPartyFunctionPanel.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Util\OpenApiImpl\AppManagerImpl.cs" />
     <Compile Include="Util\Extensions.cs" />
     <Compile Include="Util\OpenFrameworkManager.cs" />
     <Compile Include="Util\Md5.cs" />

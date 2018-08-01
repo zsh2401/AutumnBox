@@ -43,7 +43,7 @@ namespace AutumnBox.OpenFramework.Internal
         /// </summary>
         /// <param name="ctx">设置者</param>
         /// <param name="apiImpl">API实现</param>
-        public void SetGuiApi(IGuiApi apiImpl)
+        public void SetGuiApi(IAppGuiManager apiImpl)
         {
             OpenApi.Gui = apiImpl;
         }

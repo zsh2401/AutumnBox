@@ -8,7 +8,7 @@ using System;
 using System.Text;
 namespace AutumnBox.OpenFramework.Extension
 {
-    public partial class AutumnBoxExtension : Context, IAutumnBoxExtension
+    public partial class AutuxmnBoxExtension : Context, IAutumnBoxExtension
     {
         /// <summary>
         /// 信息

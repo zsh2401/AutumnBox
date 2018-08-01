@@ -4,6 +4,7 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.Basic.Device;
+using AutumnBox.OpenFramework.Content;
 using AutumnBox.OpenFramework.Open;
 using System;
 using System.Net.Mail;
@@ -14,7 +15,7 @@ namespace AutumnBox.OpenFramework.Extension
     /// <summary>
     /// AutumnBox 拓展模块抽象类
     /// </summary>
-    public abstract partial class AutumnBoxExtension : Context, IAutumnBoxExtension
+    public abstract partial class AutumnxBoxExtension : Context, IAutumnBoxExtension
     {
         /// <summary>
         /// 标签,用于打LOG

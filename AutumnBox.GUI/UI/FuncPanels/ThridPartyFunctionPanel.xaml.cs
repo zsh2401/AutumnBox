@@ -8,6 +8,7 @@ using AutumnBox.GUI.UI.CstPanels;
 using AutumnBox.GUI.UI.Fp;
 using AutumnBox.GUI.Windows;
 using AutumnBox.OpenFramework;
+using AutumnBox.OpenFramework.Extension;
 
 namespace AutumnBox.GUI.UI.FuncPanels
 {
@@ -18,29 +19,60 @@ namespace AutumnBox.GUI.UI.FuncPanels
     {
         internal static ThridPartyFunctionPanel Single { get; private set; }
         private DeviceBasicInfo currentDevice;
-
+        private readonly FastPanel runningPanel;
+        private readonly ExtensionRuningPanel innerRunningPanel;
         public ThridPartyFunctionPanel()
         {
             InitializeComponent();
+            innerRunningPanel = new ExtensionRuningPanel();
+            runningPanel = new FastPanel(GridContainer, innerRunningPanel);
             Single = this;
             GridInfo.Visibility = Visibility.Collapsed;
             TxtNothing.Visibility = Visibility.Visible;
-            TBSdk.Text = string.Format(TBSdk.Text, OpenFramework.BuildInfo.SDK_VERSION);
-            this.Loaded += ThridPartyFunctionPanel_Loaded;
+            TBSdk.Text = string.Format(TBSdk.Text, BuildInfo.SDK_VERSION);
             LanguageHelper.LanguageChanged += (s, e) =>
             {
-                TBSdk.Text = string.Format(App.Current.Resources["lbApiLevel"].ToString(), OpenFramework.BuildInfo.SDK_VERSION);
+                SetPanelByExtension(null);
+                TBSdk.Text = string.Format(App.Current.Resources["lbApiLevel"].ToString(), BuildInfo.SDK_VERSION);
             };
+            ListBoxModule.ItemsSource = ExtensionManager.Instance.Warppers;
         }
 
-        private void ThridPartyFunctionPanel_Loaded(object sender, RoutedEventArgs e)
+        private void SetPanelByExtension(IExtensionWarpper wapper)
         {
-            LanguageHelper.LanguageChanged += (s, e_) =>
+            if (wapper == null)//如果传入空,则视为未选中任何拓展模块
             {
-                SetGuiByExtInfomation();
-            };
+                //隐藏拓展模块显示布局
+                GridInfo.Visibility = Visibility.Collapsed;
+                TxtNothing.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                //显示拓展模块显示布局
+                GridInfo.Visibility = Visibility.Visible;
+                TxtNothing.Visibility = Visibility.Collapsed;
+                //设置信息
+                TBDesc.Text = wapper.Desc;
+                TBName.Text = wapper.Name;
+                //检查模块是否已经准备好了,并且设置按钮状态
+                SetBtnByForerunCheckResult(wapper.ForerunCheck());
+            }
         }
-        public void Refresh() {
+        private void SetBtnByForerunCheckResult(ForerunCheckResult result)
+        {
+            BtnRun.IsEnabled = result == ForerunCheckResult.Ok;
+            switch (result)
+            {
+                case ForerunCheckResult.Ok:
+                    BtnRun.Content = App.Current.Resources["btnRunExtension"];
+                    break;
+                default:
+                    BtnRun.Content = App.Current.Resources["btnCannotRunExtension"];
+                    break;
+            }
+        }
+        public void Refresh()
+        {
             this.Refresh(currentDevice);
         }
         public void Refresh(DeviceBasicInfo deviceSimpleInfo)
@@ -49,97 +81,44 @@ namespace AutumnBox.GUI.UI.FuncPanels
             currentDevice = deviceSimpleInfo;
             ListBoxModule.SelectedIndex = -1;
         }
-
         public void Reset()
         {
-            currentDevice = new DeviceBasicInfo()
+            Refresh(new DeviceBasicInfo()
             {
                 Serial = null,
                 State = DeviceState.None
-            };
+            });
             ListBoxModule.SelectedIndex = -1;
-            Refresh(currentDevice);
-        }
-
-        private void SetGuiByExtInfomation()
-        {
-            if (ListBoxModule.SelectedIndex != -1)
-            {
-                GridInfo.Visibility = Visibility.Visible;
-                TxtNothing.Visibility = Visibility.Collapsed;
-                var ext = ListBoxModule.SelectedItem as IExtension;
-                TBName.Text = ext.Name;
-                TBDesc.Text = ext.Infomation;
-                SetBtnRunState(ext.RunCheck(new ExtensionRunCheckArgs(currentDevice)));
-            }
-            else
-            {
-                GridInfo.Visibility = Visibility.Collapsed;
-                TxtNothing.Visibility = Visibility.Visible;
-            }
         }
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            SetGuiByExtInfomation();
+            SetPanelByExtension(ListBoxModule.SelectedItem as IExtensionWarpper);
         }
-
-        private FastPanel panel;
-        private void ShowRunningBox(IExtension ext)
+        private void ShowRunningBox(IExtensionWarpper wapper)
         {
-            panel = new FastPanel(GridContainer, new ExtensionRuningPanel(ext));
-            panel.Display();
+            innerRunningPanel.CurrentRunningName = wapper.Name;
+            runningPanel.Display();
         }
-
         private void CloseRunningBox()
         {
-            panel.Close();
+            runningPanel.Hide();
         }
-
         private async void BtnRun_Click(object sender, RoutedEventArgs e)
         {
-            var ext = (ListBoxModule.SelectedItem as IExtension);
-            ShowRunningBox(ext);
+            var warpper = (ListBoxModule.SelectedItem as IExtensionWarpper);
+            ShowRunningBox(warpper);
+            innerRunningPanel.OnClickStop = (s, _e) =>
+            {
+                _e.Successful = warpper.Stop();
+            };
             await Task.Run(() =>
             {
-                ext.Run(new ExtensionStartArgs()
-                {
-                    DeviceInfo = currentDevice
-                });
+                warpper.Run(currentDevice);
             });
             CloseRunningBox();
         }
 
-        private void BtnOpenModuleFloder_Click(object sender, RoutedEventArgs e)
-        {
+        private void BtnOpenModuleFloder_Click(object sender, RoutedEventArgs e) =>
             Process.Start(App.Current.OpenFrameworkManager.ExtensionsPath);
-        }
-
-        private void SetBtnRunState(bool enable)
-        {
-            BtnRun.IsEnabled = enable;
-            if (enable)
-            {
-                BtnRun.Content = App.Current.Resources["btnRunExtension"];
-            }
-            else
-            {
-                BtnRun.Content = App.Current.Resources["btnCannotRunExtension"];
-            }
-        }
-
-        private void TextBlock_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-            Process.Start(App.Current.Resources["urlHelpOfInstallExtension"].ToString());
-        }
-
-        private void TBDownloadExt_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-            Process.Start(App.Current.Resources["urlDownloadExtensions"].ToString());
-        }
-
-        private void ButtonDownLoad_Click(object sender, RoutedEventArgs e)
-        {
-            new DownTagsWindow() { Owner = App.Current.MainWindow }.ShowDialog();
-        }
     }
 }

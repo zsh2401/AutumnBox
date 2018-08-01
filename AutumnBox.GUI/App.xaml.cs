@@ -37,17 +37,11 @@ namespace AutumnBox.GUI
 
         internal const int HAVE_OTHER_PROCESS = 25364;
 
-        internal FrameworkManager OpenFrameworkManager { get; private set; }
 
         internal IApplicationContext SpringContext { get; private set; }
 
-        internal Context OpenFrameworkContext { get; private set; }
-
-        private class AppContext : Context { }
         public App() :base(){
-            OpenFrameworkContext = new AppContext();
             SpringContext = new XmlApplicationContext("AutumnBoxAop.atmbxml");
-            OpenFrameworkManager = new FrameworkManager(OpenFrameworkContext);
         }
 
         public static new App Current { get; private set; }

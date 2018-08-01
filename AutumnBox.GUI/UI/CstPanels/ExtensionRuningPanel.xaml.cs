@@ -19,6 +19,10 @@ using System.Windows.Shapes;
 
 namespace AutumnBox.GUI.UI.CstPanels
 {
+    public class StopExtensionEventArgs : EventArgs
+    {
+        public bool Successful { get; set; } = true;
+    }
     /// <summary>
     /// ExtensionRuningPanel.xaml 的交互逻辑
     /// </summary>
@@ -27,20 +31,22 @@ namespace AutumnBox.GUI.UI.CstPanels
         public override Brush PanelBackground => (Brush)App.Current.Resources["ExtRunningPanelBrushKey"];
         public override Brush BtnCloseForeground => (Brush)App.Current.Resources["ForegroundBrushKey"];
         public override bool NeedShowBtnClose => false;
-        public ExtensionRuningPanel(IExtension ext)
+        /// <summary>
+        /// 不加Event修饰符是有原因的
+        /// </summary>
+        public EventHandler<StopExtensionEventArgs> OnClickStop;
+        public string CurrentRunningName { get; set; }
+        public ExtensionRuningPanel()
         {
             InitializeComponent();
-            TBMsg.Text = $"{ext.Name} {App.Current.Resources["msgIsRunning"]}";
+            TBMsg.Text = $"{CurrentRunningName} {App.Current.Resources["msgIsRunning"]}";
             BtnStop.Click += (s, e) =>
             {
-                var stopResult = ext.Stop(new ExtensionStopArgs());
-                if (stopResult == true)
+                var args = new StopExtensionEventArgs();
+                OnClickStop?.Invoke(this, args);
+                if (!args.Successful)
                 {
-                    Finish();
-                }
-                else
-                {
-                    TBMsg.Text = $"{ext.Name} {App.Current.Resources["msgCannotStop"]}";
+                    TBMsg.Text = $"{CurrentRunningName} {App.Current.Resources["msgCannotStop"]}";
                 }
             };
         }
