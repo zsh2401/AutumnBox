@@ -77,7 +77,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
         }
         public void Refresh(DeviceBasicInfo deviceSimpleInfo)
         {
-            ListBoxModule.ItemsSource = App.Current.OpenFrameworkManager.GetExtensions();
+            ListBoxModule.ItemsSource = ExtensionManager.Instance.Warppers;
             currentDevice = deviceSimpleInfo;
             ListBoxModule.SelectedIndex = -1;
         }
@@ -119,6 +119,6 @@ namespace AutumnBox.GUI.UI.FuncPanels
         }
 
         private void BtnOpenModuleFloder_Click(object sender, RoutedEventArgs e) =>
-            Process.Start(App.Current.OpenFrameworkManager.ExtensionsPath);
+            Process.Start(ExtensionManager.ExtensionPath);
     }
 }

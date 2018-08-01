@@ -66,12 +66,16 @@ namespace AutumnBox.OpenFramework.Entrance
             }
             warppers.Clear();
             var types = from type in ManagedAssembly.GetExportedTypes()
-                        where typeof(IAutumnBoxExtension).IsAssignableFrom(type)
+                        where IsExt(type)
                         select type;
             foreach (var type in types)
             {
                 warppers.Add(new ExtensionWrapper(type));
             }
+        }
+        private bool IsExt(Type t)
+        {
+            return t.IsSubclassOf(typeof(AutumnBoxExtension));
         }
         /// <summary>
         /// 获取该入口类管理的所有封装器
@@ -101,7 +105,8 @@ namespace AutumnBox.OpenFramework.Entrance
         /// <summary>
         /// 当拓展模块程序集被卸载时调用
         /// </summary>
-        public virtual void Destory() {
+        public virtual void Destory()
+        {
             DestoryWarppers();
         }
     }

@@ -94,38 +94,12 @@
     <Compile Include="Extension\Warpper\IExtensionWarpper.cs" />
     <Compile Include="Entrance\IEntrance.cs" />
     <Compile Include="IReloadable.cs" />
-    <Compile Include="Rubbish\IExtension.cs" />
     <Compile Include="Open\IAppManager.cs" />
     <Compile Include="Open\ILogger.cs" />
-    <Compile Include="Rubbish\ExtensionManagerCore.cs" />
-    <Compile Include="Rubbish\IAutumnBoxExtension.cs" />
     <Compile Include="Exceptions\AccessDeniedException.cs" />
-    <Compile Include="Rubbish\ExtensionManager.cs" />
-    <Compile Include="Rubbish\AutumnBoxExtension.Protected.cs" />
     <Compile Include="BuildInfo.cs" />
-    <Compile Include="Rubbish\FrameworkManager.cs" />
-    <Compile Include="Rubbish\HighPermissionContext.cs" />
-    <Compile Include="Rubbish\Open\ExtsManager.cs" />
-    <Compile Include="Rubbish\Script\IExtensionScript.cs" />
-    <Compile Include="Rubbish\Script\IScriptArgs.cs" />
-    <Compile Include="Rubbish\Script\ScriptArgs.cs" />
-    <Compile Include="Rubbish\Open\Extractor.cs" />
-    <Compile Include="Rubbish\Open\Md5.cs" />
-    <Compile Include="Rubbish\Open\Comp.cs" />
-    <Compile Include="Rubbish\Open\OS.cs" />
-    <Compile Include="Rubbish\Open\Space.cs" />
-    <Compile Include="Rubbish\Open\IAppApi.cs" />
-    <Compile Include="Rubbish\Open\ILogApi.cs" />
-    <Compile Include="Rubbish\Args.cs" />
-    <Compile Include="Rubbish\Open\OpenApi.cs" />
     <Compile Include="Exceptions\UserDeniedException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Rubbish\Script\ABEScript.cs" />
-    <Compile Include="Rubbish\ScriptsManager.cs" />
-    <Compile Include="Rubbish\Script\ScriptDestoryArgs.cs" />
-    <Compile Include="Rubbish\Script\ScriptInitArgs.cs" />
-    <Compile Include="Rubbish\Script\ScriptBase.cs" />
-    <Compile Include="Rubbish\Script\ScriptStopArgs.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AutumnBox.Basic\AutumnBox.Basic.csproj">
@@ -138,7 +112,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Rubbish\AutumnBoxExtension.Public.cs" />
     <None Include="packages.config" />
     <None Include="开发文档.url">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

@@ -17,33 +17,6 @@ namespace AutumnBox.ExampleExtensions
 {
     public class GuiExampleExtensions : AutumnBoxExtension
     {
-        public override string Name => "带界面的拓展示例";
-        public override string Auth => "zsh2401";
-        public override Version Version => new Version("0.0.2");
-        public override string Description => "AutumnBox拓展允许使用自定义窗口";
-        public override MailAddress ContactMail => new MailAddress("zsh2401@163.com");
-        public override DeviceState RequiredDeviceState => DeviceState.None;
-        public override int? MinSdk => 5;
-        public override int? TargetSdk => 6;
-        public override bool InitAndCheck(InitArgs args)
-        {
-            return base.InitAndCheck(args);
-        }
-        public override void OnStartCommand(StartArgs args)
-        {
-            var high =  ExtsManager.TryGetHighPermissionContext(this);
-            RunOnUIThread(() =>
-            {
-                new ExampleWindow().ShowDialog();
-            });
-        }
-        public override void OnDestory(DestoryArgs args)
-        {
-            base.OnDestory(args);
-        }
-        public override void OnClean(CleanArgs args)
-        {
-            base.OnClean(args);
-        }
+        
     }
 }
