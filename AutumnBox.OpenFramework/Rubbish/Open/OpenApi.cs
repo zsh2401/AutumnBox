@@ -14,7 +14,7 @@ namespace AutumnBox.OpenFramework.Open
         /// <summary>
         /// GUI相关的API
         /// </summary>
-        public static IGuiApi Gui { get;internal set; }
+        public static IAppGuiManager Gui { get;internal set; }
 
         /// <summary>
         /// 调试相关的API

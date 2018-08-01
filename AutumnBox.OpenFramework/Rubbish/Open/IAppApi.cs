@@ -69,27 +69,27 @@ namespace AutumnBox.OpenFramework.Open
         /// 显示调试窗口
         /// </summary>
         /// <param name="ctx"></param>
-        void ShowDebugWindow(Context ctx);
+        void ShowDebugWindow();
         /// <summary>
         /// 重启AutumnBox
         /// </summary>
         /// <param name="ctx"></param>
-        void RestartApp(Context ctx);
+        void RestartApp();
         /// <summary>
         /// 以管理员重启秋之盒
         /// </summary>
         /// <param name="ctx"></param>
-        void RestartAppAsAdmin(Context ctx);
+        void RestartAppAsAdmin();
         /// <summary>
         /// 关闭AutumnBox
         /// </summary>
         /// <param name="ctx"></param>
-        void ShutdownApp(Context ctx);
+        void ShutdownApp();
         /// <summary>
         /// 刷新拓展列表
         /// </summary>
         /// <param name="ctx"></param>
-        void RefreshExtensionList(Context ctx);
+        void RefreshExtensionList();
         /// <summary>
         /// 当前是否以管理员权限运行
         /// </summary>
