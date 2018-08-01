@@ -18,10 +18,14 @@ namespace AutumnBox.OpenFramework.Open.Impl
         public Context ctx;
         public TemporaryFloderImpl(Context ctx)
         {
+#if !SDK
             var floderName = ctx.GetType().Assembly.GetName().Name;
             var path = System.IO.Path.Combine(ExtensionManager.ExtensionPath, floderName);
             DirInfo = new DirectoryInfo(path);
             Create();
+#else
+            throw new NotImplementedException();
+#endif
         }
         public DirectoryInfo DirInfo { get; private set; }
         public string Path => DirInfo.FullName;

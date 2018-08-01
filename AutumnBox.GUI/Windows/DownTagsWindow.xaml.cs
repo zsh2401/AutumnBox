@@ -68,12 +68,12 @@ namespace AutumnBox.GUI.Windows
 
         private void ButtonDownLoad_Click(object sender, RoutedEventArgs e)
         {
-            var a = ((Button)sender).Tag.ToString();
+            //var a = ((Button)sender).Tag.ToString();
 
-            var b = a.Split('\'');
-            var p = App.Current.OpenFrameworkManager.ExtensionsPath;
+            //var b = a.Split('\'');
+            //var p = App.Current.OpenFrameworkManager.ExtensionsPath;
 
-            Task.Run(() => new WebClient().DownloadFile(b[0], p + @"\" + b[1]));
+            //Task.Run(() => new WebClient().DownloadFile(b[0], p + @"\" + b[1]));
         }
 
         private void ButtonRe_Click(object sender, RoutedEventArgs e)
