@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extension\Attributes\ExtAttribute.cs" />
+    <Compile Include="Management\RunningManager.cs" />
     <Compile Include="Open\ChoiceBoxResult.cs" />
     <Compile Include="Open\Factory.cs" />
     <Compile Include="Open\ICompApi.cs" />
@@ -81,7 +82,7 @@
     <Compile Include="Content\ContextApiProvider.cs" />
     <Compile Include="Entrance\DefaultEntrance.cs" />
     <Compile Include="Entrance\AtmbEntrance.cs" />
-    <Compile Include="ExtensionManager.cs" />
+    <Compile Include="Management\ExtensionManager.cs" />
     <Compile Include="Extension\Attributes\ExtRequiredDeviceStates.cs" />
     <Compile Include="Extension\Attributes\ExtVersion.cs" />
     <Compile Include="Extension\AutumnBoxExtension.cs" />
@@ -94,7 +95,7 @@
     <Compile Include="Extension\Warpper\ExtensionWrapper.cs" />
     <Compile Include="Extension\Warpper\IExtensionWarpper.cs" />
     <Compile Include="Entrance\IEntrance.cs" />
-    <Compile Include="IReloadable.cs" />
+    <Compile Include="Content\IReloadable.cs" />
     <Compile Include="Open\IAppManager.cs" />
     <Compile Include="Open\ILogger.cs" />
     <Compile Include="Exceptions\AccessDeniedException.cs" />

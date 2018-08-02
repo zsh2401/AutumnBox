@@ -16,8 +16,6 @@ using AutumnBox.GUI.Helper;
 using AutumnBox.GUI.I18N;
 using AutumnBox.GUI.Properties;
 using AutumnBox.GUI.Windows;
-using AutumnBox.OpenFramework;
-using AutumnBox.OpenFramework.Internal;
 using AutumnBox.Support.Log;
 using Spring.Context;
 using Spring.Context.Support;

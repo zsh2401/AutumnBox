@@ -5,13 +5,16 @@
 *************************************************/
 using AutumnBox.Basic.Device;
 using AutumnBox.OpenFramework.Content;
-using AutumnBox.OpenFramework.Extension.Attributes;
+using AutumnBox.OpenFramework.Management;
 using System;
 using System.Linq;
 
 namespace AutumnBox.OpenFramework.Extension
 {
-    internal class ExtensionWrapper : Context, IExtensionWarpper
+    /// <summary>
+    /// 标准的拓展模块包装器
+    /// </summary>
+    public class ExtensionWrapper : Context, IExtensionWarpper
     {
         private class ExtensionInfo
         {
@@ -83,6 +86,11 @@ namespace AutumnBox.OpenFramework.Extension
             info = new ExtensionInfo(this, t);
             info.Load();
         }
+        /// <summary>
+        /// 运行前检查
+        /// </summary>
+        /// <param name="device"></param>
+        /// <returns></returns>
         public virtual ForerunCheckResult ForerunCheck(DeviceBasicInfo device)
         {
             Logger.Info("asdasdas" + device.State);
@@ -99,13 +107,31 @@ namespace AutumnBox.OpenFramework.Extension
             Logger.Info("fuckxxxx" + result.ToString());
             return result;
         }
+        /// <summary>
+        /// 运行
+        /// </summary>
+        /// <param name="device"></param>
         public virtual void Run(DeviceBasicInfo device)
         {
+            if (instance != null)
+            {
+                App.RunOnUIThread(() =>
+                {
+                    App.ShowMessageBox("警告","该拓展模块已在运行,你不能开多个该模块!");
+                });
+            }
             instance = (AutumnBoxExtension)Activator.CreateInstance(extType);
             instance.TargetDevice = device;
             instance.ExtName = Name;
+            RunningManager.AddRuningWarpper(this);
             instance.Main();
+            instance = null;
+            RunningManager.RemoveRunningWarpper(this);
         }
+        /// <summary>
+        /// 停止
+        /// </summary>
+        /// <returns></returns>
         public virtual bool Stop()
         {
             bool stopped = false;
@@ -117,8 +143,16 @@ namespace AutumnBox.OpenFramework.Extension
             {
                 Logger.Warn("停止时发生异常", ex);
             }
+            if (stopped == true)
+            {
+                instance = null;
+                RunningManager.RemoveRunningWarpper(this);
+            }
             return stopped;
         }
+        /// <summary>
+        /// 当摧毁时被调用
+        /// </summary>
         public virtual void Destory()
         {
 

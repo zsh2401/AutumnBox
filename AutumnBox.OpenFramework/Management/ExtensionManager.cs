@@ -12,7 +12,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 
-namespace AutumnBox.OpenFramework
+namespace AutumnBox.OpenFramework.Management
 {
 #if ! SDK
     /// <summary>
@@ -37,7 +37,13 @@ namespace AutumnBox.OpenFramework
         /// <summary>
         /// 已加载的所有包装器
         /// </summary>
-        public IEnumerable<IExtensionWarpper> Warppers { get; private set; }
+        public IEnumerable<IExtensionWarpper> Warppers
+        {
+            get
+            {
+               return GetWarppersFrom(Entrances);
+            }
+        }
         /// <summary>
         /// 拓展模块管理器实例
         /// </summary>
@@ -74,10 +80,6 @@ namespace AutumnBox.OpenFramework
         /// </summary>
         public void Reload()
         {
-            //App.RunOnUIThread(() =>
-            //{
-            //    App.CreateDebuggingWindow().ShowDialog();
-            //});
             Logger.Info("checking ext floder");
             DirectoryInfo dir = new DirectoryInfo(ExtensionPath);
             if (!dir.Exists)
@@ -89,8 +91,7 @@ namespace AutumnBox.OpenFramework
             Logger.Info($"finded {dlls.Count()} dll files");
             IEnumerable<Assembly> assemblies = LoadAssemblies(dlls);
             Entrances = GetEntrancesFrom(assemblies);
-            Warppers = GetWarppersFrom(Entrances);
-            Logger.Info($"Loaded {Entrances.Count()} entrances and {Warppers.Count()} warppers");
+            Logger.Info($"loaded {Entrances.Count()} entrances and {Warppers.Count()} warppers");
         }
         /// <summary>
         /// 加载所有程序集
@@ -124,11 +125,15 @@ namespace AutumnBox.OpenFramework
             {
                 try
                 {
-                    result.Add(GetExtranceFrom(ass));
+                    IEntrance entrance = GetExtranceFrom(ass);
+                    if (entrance.Check())
+                    {
+                        result.Add(entrance);
+                    }
                 }
                 catch (Exception ex)
                 {
-                    Logger.Warn($"获取{ass.GetName().Name}的入口类时失败,该程序集无法被加载为秋之盒拓展", ex);
+                    Logger.Warn($"加载与检查{ass.GetName().Name}的入口类时失败,该程序集无法被加载为秋之盒拓展", ex);
                 }
             }
             return result;
@@ -140,10 +145,9 @@ namespace AutumnBox.OpenFramework
         /// <returns></returns>
         private IEntrance GetExtranceFrom(Assembly assembly)
         {
-            Logger.Info("Getting entrance from" + assembly.GetName().Name);
             IEntrance entrance = null;
             var types = from type in assembly.GetExportedTypes()
-                        where typeof(IEntrance).IsAssignableFrom(type)
+                        where IsEntrance(type)
                         select type;
             if (types.Count() != 0)
             {
@@ -152,6 +156,16 @@ namespace AutumnBox.OpenFramework
             }
             entrance = new DefaultEntrance(assembly);
             return entrance;
+        }
+        /// <summary>
+        /// 判断某个类是否是Entrance
+        /// </summary>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        private bool IsEntrance(Type type)
+        {
+            bool result = typeof(IEntrance).IsAssignableFrom(type);
+            return result;
         }
         /// <summary>
         /// 从所有入口类中获取所有拓展模块包装器

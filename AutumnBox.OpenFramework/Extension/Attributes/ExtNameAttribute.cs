@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AutumnBox.OpenFramework.Extension.Attributes
+namespace AutumnBox.OpenFramework.Extension
 {
     /// <summary>
     /// 拓展模块名

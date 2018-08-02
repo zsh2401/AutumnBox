@@ -5,7 +5,7 @@
 *************************************************/
 using System;
 
-namespace AutumnBox.OpenFramework.Open
+namespace AutumnBox.OpenFramework.Exceptions
 {
     /// <summary>
     /// 此操作被用户拒绝异常

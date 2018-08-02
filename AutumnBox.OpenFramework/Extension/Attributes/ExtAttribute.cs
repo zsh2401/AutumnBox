@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AutumnBox.OpenFramework.Extension.Attributes
+namespace AutumnBox.OpenFramework.Extension
 {
     [AttributeUsage(AttributeTargets.Class, Inherited = false)]
     public class ExtAttribute : Attribute

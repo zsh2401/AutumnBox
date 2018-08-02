@@ -5,7 +5,6 @@
 *************************************************/
 using AutumnBox.Basic.Device;
 using AutumnBox.OpenFramework.Content;
-using AutumnBox.OpenFramework.Extension.Attributes;
 using System;
 
 namespace AutumnBox.OpenFramework.Extension
@@ -21,10 +20,6 @@ namespace AutumnBox.OpenFramework.Extension
     [ExtRequiredDeviceStates(DeviceState.Poweron)]
     public abstract class AutumnBoxExtension : Context
     {
-        public enum ReturnCode : int{
-            Ok,
-            Error
-        }
         /// <summary>
         /// 日志标签
         /// </summary>
