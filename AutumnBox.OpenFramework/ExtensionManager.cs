@@ -74,6 +74,11 @@ namespace AutumnBox.OpenFramework
         /// </summary>
         public void Reload()
         {
+            //App.RunOnUIThread(() =>
+            //{
+            //    App.CreateDebuggingWindow().ShowDialog();
+            //});
+            Logger.Info("checking ext floder");
             DirectoryInfo dir = new DirectoryInfo(ExtensionPath);
             if (!dir.Exists)
             {
@@ -81,9 +86,11 @@ namespace AutumnBox.OpenFramework
                 return;
             }
             FileInfo[] dlls = dir.GetFiles("*.dll");
+            Logger.Info($"finded {dlls.Count()} dll files");
             IEnumerable<Assembly> assemblies = LoadAssemblies(dlls);
             Entrances = GetEntrancesFrom(assemblies);
             Warppers = GetWarppersFrom(Entrances);
+            Logger.Info($"Loaded {Entrances.Count()} entrances and {Warppers.Count()} warppers");
         }
         /// <summary>
         /// 加载所有程序集
@@ -133,6 +140,7 @@ namespace AutumnBox.OpenFramework
         /// <returns></returns>
         private IEntrance GetExtranceFrom(Assembly assembly)
         {
+            Logger.Info("Getting entrance from" + assembly.GetName().Name);
             IEntrance entrance = null;
             var types = from type in assembly.GetExportedTypes()
                         where typeof(IEntrance).IsAssignableFrom(type)

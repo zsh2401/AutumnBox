@@ -7,7 +7,7 @@ using System;
 
 namespace AutumnBox.OpenFramework.Extension.Attributes
 {
-    public class ExtAuthAttribute : Attribute
+    public class ExtAuthAttribute : ExtAttribute
     {
         public readonly string Auth;
         public ExtAuthAttribute(string auth)

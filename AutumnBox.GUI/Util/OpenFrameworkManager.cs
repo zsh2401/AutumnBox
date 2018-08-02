@@ -6,6 +6,7 @@
 using AutumnBox.GUI.Util.OpenApiImpl;
 using AutumnBox.OpenFramework;
 using AutumnBox.OpenFramework.Open.Impl.AutumnBoxApi;
+using AutumnBox.Support.Log;
 
 namespace AutumnBox.GUI.Util
 {
@@ -13,8 +14,12 @@ namespace AutumnBox.GUI.Util
     {
         public static void Init()
         {
+            Logger.Debug("OFM", "Injecting Open framework api");
             AutumnBoxGuiApiProvider.Inject(new AppManagerImpl());
+            Logger.Debug("OFM", "Injected Open framework api");
+            Logger.Debug("OFM", "Init ExtensionManager");
             var instace = ExtensionManager.Instance;
+            Logger.Debug("OFM", "Inited ExtensionManager");
         }
     }
 }

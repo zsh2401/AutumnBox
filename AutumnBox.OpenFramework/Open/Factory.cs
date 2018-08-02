@@ -5,6 +5,7 @@
 *************************************************/
 using AutumnBox.OpenFramework.Content;
 using AutumnBox.OpenFramework.Open.Impl;
+using AutumnBox.OpenFramework.Open.Impl.AutumnBoxApi;
 using System;
 
 namespace AutumnBox.OpenFramework.Open
@@ -20,7 +21,7 @@ namespace AutumnBox.OpenFramework.Open
         }
         public IAppManager GetAppManager(Context ctx)
         {
-            return new AppManagerImpl(ctx);
+            return new AppManagerImpl(ctx,AutumnBoxGuiApiProvider.Get());
         }
         public IOSApi GetOsApi(Context ctx)
         {

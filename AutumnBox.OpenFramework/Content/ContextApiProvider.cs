@@ -9,7 +9,7 @@ namespace AutumnBox.OpenFramework.Content
 {
     internal class ContextApiProvider
     {
-        private static readonly Factory factory;
+        private static readonly Factory factory = new Factory();
         private readonly Context ctx;
         public ILogger Logger
         {
@@ -17,7 +17,7 @@ namespace AutumnBox.OpenFramework.Content
             {
                 if (logger == null)
                 {
-                    factory.GetLogger(ctx);
+                    logger = factory.GetLogger(ctx);
                 }
                 return logger;
             }
@@ -68,7 +68,7 @@ namespace AutumnBox.OpenFramework.Content
         {
             get
             {
-                if (App == null)
+                if (app == null)
                 {
                     app = factory.GetAppManager(ctx);
                 }
@@ -81,7 +81,7 @@ namespace AutumnBox.OpenFramework.Content
         {
             get
             {
-                if (Comp == null)
+                if (comp == null)
                 {
                     comp = factory.GetCompApi(ctx);
                 }

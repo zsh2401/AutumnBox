@@ -84,6 +84,7 @@ namespace AutumnBox.GUI
                     });
                 }
             }
+            OpenFrameworkManager.Init();
             App.Current.Dispatcher.Invoke(() =>
             {
                 //初始化主窗口
@@ -92,7 +93,7 @@ namespace AutumnBox.GUI
                 loadingWindowApi.SetProgress(60);
                 loadingWindowApi.SetTip(App.Current.Resources["ldmsgLoadingExtensions"].ToString());
             });
-            OpenFrameworkManager.Init();
+            
             //启动设备拔插监听器
             App.Current.Dispatcher.Invoke(() =>
             {

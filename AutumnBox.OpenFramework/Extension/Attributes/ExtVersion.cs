@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.OpenFramework.Extension.Attributes
 {
-    public class ExtVersion : Attribute
+    public class ExtVersion : ExtAttribute
     {
         public Version Version { get; private set; }
         public ExtVersion(int major, int minor, int build)

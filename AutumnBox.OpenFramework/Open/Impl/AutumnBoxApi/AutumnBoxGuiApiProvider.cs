@@ -16,14 +16,14 @@ namespace AutumnBox.OpenFramework.Open.Impl.AutumnBoxApi
     /// </summary>
     public static class AutumnBoxGuiApiProvider
     {
-        private static IAutumnBoxGuiApi api;
+        private static IAutumnBoxGuiApi api = null;
         /// <summary>
         /// 注入
         /// </summary>
         /// <param name="_api"></param>
         public static void Inject(IAutumnBoxGuiApi _api)
         {
-            if (_api != null) {
+            if (api != null) {
                 return;
             }
             api = _api;
