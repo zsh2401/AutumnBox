@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.OpenFramework.Extension.Attributes
 {
-   public class ExtDescAttribute : Attribute
+   public class ExtDescAttribute : ExtAttribute
     {
         public readonly string Desc;
         public ExtDescAttribute(string desc) {

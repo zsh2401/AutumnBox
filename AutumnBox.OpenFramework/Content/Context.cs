@@ -21,23 +21,23 @@ namespace AutumnBox.OpenFramework.Content
         /// <summary>
         /// 日志API
         /// </summary>
-        protected ILogger Logger => apiWarpper.Logger;
+        public ILogger Logger => apiWarpper.Logger;
         /// <summary>
         /// 秋之盒整体程序相关API
         /// </summary>
-        protected IAppManager GlobalManager => apiWarpper.App;
+        public IAppManager App => apiWarpper.App;
         /// <summary>
         /// 操作系统API
         /// </summary>
-        protected IOSApi OperatingSystem => apiWarpper.OS;
+        public IOSApi OperatingSystem => apiWarpper.OS;
         /// <summary>
         /// 临时文件管理器
         /// </summary>
-        protected ITemporaryFloder Tmp => apiWarpper.Tmp;
+        public ITemporaryFloder Tmp => apiWarpper.Tmp;
         /// <summary>
         /// 兼容性相关API
         /// </summary>
-        protected ICompApi Comp => apiWarpper.Comp;
+        public ICompApi Comp => apiWarpper.Comp;
         /// <summary>
         /// 构建
         /// </summary>

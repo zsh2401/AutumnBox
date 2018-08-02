@@ -19,10 +19,10 @@ namespace AutumnBox.OpenFramework.Open.Impl
     {
         private readonly IAutumnBoxGuiApi sourceApi;
         private readonly Context ctx;
-        public AppManagerImpl(Context ctx)
+        public AppManagerImpl(Context ctx,IAutumnBoxGuiApi sourceApi)
         {
             this.ctx = ctx;
-            this.sourceApi = AutumnBoxGuiApiProvider.Get();
+            this.sourceApi = sourceApi;
         }
 
         public bool IsRunAsAdmin

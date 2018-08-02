@@ -20,7 +20,7 @@ namespace AutumnBox.OpenFramework.Extension
         /// 运行前检查
         /// </summary>
         /// <returns></returns>
-        ForerunCheckResult ForerunCheck();
+        ForerunCheckResult ForerunCheck(DeviceBasicInfo device);
         /// <summary>
         /// 开始运行
         /// </summary>

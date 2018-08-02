@@ -1,9 +1,8 @@
 ﻿/*************************************************
 ** auth： zsh2401@163.com
-** date:  2018/8/1 20:45:49 (UTC +8:00)
+** date:  2018/8/2 16:00:55 (UTC +8:00)
 ** desc： ...
 *************************************************/
-using AutumnBox.Basic.Device;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,12 +11,9 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.OpenFramework.Extension.Attributes
 {
-    public class ExtRequiredDeviceStatesAttribute : ExtAttribute
+    [AttributeUsage(AttributeTargets.Class, Inherited = false)]
+    public class ExtAttribute : Attribute
     {
-        public DeviceState Value { get; set; }
-        public ExtRequiredDeviceStatesAttribute(DeviceState state)
-        {
-            this.Value = state;
-        }
+
     }
 }

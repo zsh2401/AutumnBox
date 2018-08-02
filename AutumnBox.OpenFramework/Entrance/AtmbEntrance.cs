@@ -25,14 +25,5 @@ namespace AutumnBox.OpenFramework.Entrance
         {
             Init(GetType().Assembly);
         }
-        /// <summary>
-        /// 根据程序集进行初始化
-        /// </summary>
-        /// <param name="assembly"></param>
-        protected void Init(Assembly assembly)
-        {
-            ManagedAssembly = GetType().Assembly;
-            Reload();
-        }
     }
 }

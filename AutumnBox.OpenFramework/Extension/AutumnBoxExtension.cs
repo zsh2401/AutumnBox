@@ -15,32 +15,30 @@ namespace AutumnBox.OpenFramework.Extension
     /// 标准的秋之盒拓展基类
     /// </summary>
     [ExtName("标准秋之盒拓展")]
-    [ExtAuth("zsh2401")]
+    [ExtAuth("佚名")]
     [ExtDesc("这是一个测试模块")]
     [ExtVersion(1,0,0)]
     [ExtRequiredDeviceStates(DeviceState.Poweron)]
     public abstract class AutumnBoxExtension : Context
     {
+        public enum ReturnCode : int{
+            Ok,
+            Error
+        }
         /// <summary>
         /// 日志标签
         /// </summary>
-        public sealed override string LoggingTag => loggingTag;
-        private readonly string loggingTag;
+        public sealed override string LoggingTag => ExtName;
+        /// <summary>
+        /// 拓展名
+        /// </summary>
+        public string ExtName { get; set; }
         /// <summary>
         /// 目标设备
         /// </summary>
-        protected readonly DeviceBasicInfo TargetDevice;
+        public DeviceBasicInfo TargetDevice { get; set; }
         /// <summary>
-        /// 构造函数
-        /// </summary>
-        /// <param name="args"></param>
-        public AutumnBoxExtension(CreatingArgs args)
-        {
-            loggingTag = args.LoggingTag;
-            TargetDevice = args.Deivce;
-        }
-        /// <summary>
-        /// 主进程
+        /// 主函数
         /// </summary>
         public abstract int Main();
         /// <summary>

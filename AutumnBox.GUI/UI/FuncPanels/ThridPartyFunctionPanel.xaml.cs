@@ -55,12 +55,12 @@ namespace AutumnBox.GUI.UI.FuncPanels
                 TBDesc.Text = wapper.Desc;
                 TBName.Text = wapper.Name;
                 //检查模块是否已经准备好了,并且设置按钮状态
-                SetBtnByForerunCheckResult(wapper.ForerunCheck());
+                SetBtnByForerunCheckResult(wapper.ForerunCheck(currentDevice));
             }
         }
         private void SetBtnByForerunCheckResult(ForerunCheckResult result)
         {
-            BtnRun.IsEnabled = result == ForerunCheckResult.Ok;
+            BtnRun.IsEnabled = (result == ForerunCheckResult.Ok);
             switch (result)
             {
                 case ForerunCheckResult.Ok:

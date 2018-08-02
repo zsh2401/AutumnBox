@@ -14,7 +14,7 @@ namespace AutumnBox.OpenFramework.Extension.Attributes
     /// <summary>
     /// 拓展模块名
     /// </summary>
-    public class ExtNameAttribute : Attribute
+    public class ExtNameAttribute : ExtAttribute
     {
         public readonly string Name;
         public ExtNameAttribute(string name)

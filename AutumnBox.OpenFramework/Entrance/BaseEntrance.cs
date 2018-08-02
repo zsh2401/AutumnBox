@@ -24,9 +24,19 @@ namespace AutumnBox.OpenFramework.Entrance
         /// </summary>
         public Assembly ManagedAssembly { get; protected set; }
         /// <summary>
+        /// 根据程序集进行初始化
+        /// </summary>
+        /// <param name="assembly"></param>
+        protected void Init(Assembly assembly)
+        {
+            ManagedAssembly = assembly;
+            Logger.Debug($"Managed assembly {GetType().Assembly.GetName().Name}");
+            Reload();
+        }
+        /// <summary>
         /// 日志标签
         /// </summary>
-        public override string LoggingTag => "";
+        public override string LoggingTag => ManagedAssembly.GetName().Name + "Entrance";
         /// <summary>
         /// 名字
         /// </summary>
@@ -75,7 +85,9 @@ namespace AutumnBox.OpenFramework.Entrance
         }
         private bool IsExt(Type t)
         {
-            return t.IsSubclassOf(typeof(AutumnBoxExtension));
+            var result = t.IsSubclassOf(typeof(AutumnBoxExtension));
+            Logger.Info($"{t.Name} is AutumnBox extension?{result}");
+            return result;
         }
         /// <summary>
         /// 获取该入口类管理的所有封装器
