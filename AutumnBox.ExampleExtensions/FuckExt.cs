@@ -1,22 +1,21 @@
 ﻿/*************************************************
 ** auth： zsh2401@163.com
-** date:  2018/3/6 17:52:46 (UTC +8:00)
+** date:  2018/8/2 20:04:55 (UTC +8:00)
 ** desc： ...
 *************************************************/
-using AutumnBox.Basic.Device;
 using AutumnBox.OpenFramework.Extension;
 
 namespace AutumnBox.ExampleExtensions
 {
-    [ExtRequiredDeviceStates(DeviceState.None)]
-    [ExtName("ClearLove")]
-    public class GuiExampleExtensions : AutumnBoxExtension
+    [ExtRequiredDeviceStates(Basic.Device.DeviceState.None)]
+    class FuckExt : AutumnBoxExtension
     {
         public override int Main()
         {
+            Entrance.Instance.RemoveOne();
             App.RunOnUIThread(() =>
             {
-                App.CreateDebuggingWindow().Show();
+                App.RefreshExtensionList();
             });
             return 0;
         }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AutumnBox.OpenFramework
+namespace AutumnBox.OpenFramework.Content
 {
     /// <summary>
     /// 可重新加载的

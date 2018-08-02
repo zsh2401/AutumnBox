@@ -4,6 +4,7 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.OpenFramework.Content;
+using AutumnBox.OpenFramework.Management;
 using System;
 using System.Collections.Generic;
 using System.IO;

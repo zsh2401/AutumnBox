@@ -16,7 +16,6 @@ namespace AutumnBox.OpenFramework.Entrance
         public sealed override int TargetSdk => BuildInfo.SDK_VERSION;
 
         public DefaultEntrance(Assembly assembly) {
-            //Logger.Info("Creating default entrance for " + assembly.GetName().Name);
             Init(assembly);
         }
     }

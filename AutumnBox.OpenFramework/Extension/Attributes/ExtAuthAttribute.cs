@@ -5,7 +5,7 @@
 *************************************************/
 using System;
 
-namespace AutumnBox.OpenFramework.Extension.Attributes
+namespace AutumnBox.OpenFramework.Extension
 {
     public class ExtAuthAttribute : ExtAttribute
     {

@@ -19,6 +19,7 @@ namespace AutumnBox.OpenFramework.Entrance
     /// </summary>
     public abstract class BaseEntrance : Context, IEntrance, IReloadable
     {
+        internal BaseEntrance() { }
         /// <summary>
         /// 管理的程序集
         /// </summary>
@@ -52,11 +53,7 @@ namespace AutumnBox.OpenFramework.Entrance
         /// <summary>
         /// 用来存储所有已加载的包装类
         /// </summary>
-        protected List<IExtensionWarpper> warppers = new List<IExtensionWarpper>();
-        /// <summary>
-        /// 仅用于继承的构造器
-        /// </summary>
-        internal BaseEntrance() { }
+        protected List<IExtensionWarpper> loadedWarpper = new List<IExtensionWarpper>();
         /// <summary>
         /// 运行检查
         /// </summary>
@@ -74,19 +71,30 @@ namespace AutumnBox.OpenFramework.Entrance
             {
                 throw new NullReferenceException("ManagedAssembly must be setted");
             }
+            DoReload(loadedWarpper);
+        }
+        /// <summary>
+        /// 重新加载的实现
+        /// </summary>
+        /// <param name="warppers"></param>
+        protected virtual void DoReload(List<IExtensionWarpper> warppers) {
             warppers.Clear();
             var types = from type in ManagedAssembly.GetExportedTypes()
                         where IsExt(type)
                         select type;
             foreach (var type in types)
             {
-                warppers.Add(new ExtensionWrapper(type));
+                warppers.Add(GetWarpperFor(type));
             }
         }
-        private bool IsExt(Type t)
+        /// <summary>
+        /// 判断某个Type是否是秋之盒拓展
+        /// </summary>
+        /// <param name="t"></param>
+        /// <returns></returns>
+        protected virtual bool IsExt(Type t)
         {
             var result = t.IsSubclassOf(typeof(AutumnBoxExtension));
-            Logger.Info($"{t.Name} is AutumnBox extension?{result}");
             return result;
         }
         /// <summary>
@@ -95,14 +103,23 @@ namespace AutumnBox.OpenFramework.Entrance
         /// <returns></returns>
         public virtual IEnumerable<IExtensionWarpper> GetWarppers()
         {
-            return warppers;
+            return loadedWarpper;
+        }
+        /// <summary>
+        /// 为某个拓展获取包装类
+        /// </summary>
+        /// <param name="extType"></param>
+        /// <returns></returns>
+        protected virtual IExtensionWarpper GetWarpperFor(Type extType)
+        {
+            return new ExtensionWrapper(extType);
         }
         /// <summary>
         /// 析构所有包装类
         /// </summary>
         protected virtual void DestoryWarppers()
         {
-            foreach (var w in warppers)
+            foreach (var w in loadedWarpper)
             {
                 try
                 {

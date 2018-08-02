@@ -6,7 +6,7 @@
 
 using System;
 
-namespace AutumnBox.OpenFramework.Internal
+namespace AutumnBox.OpenFramework.Exceptions
 {
     /// <summary>
     /// 拒绝访问异常

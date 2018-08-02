@@ -5,6 +5,7 @@
 *************************************************/
 using AutumnBox.GUI.Util.OpenApiImpl;
 using AutumnBox.OpenFramework;
+using AutumnBox.OpenFramework.Management;
 using AutumnBox.OpenFramework.Open.Impl.AutumnBoxApi;
 using AutumnBox.Support.Log;
 

@@ -9,6 +9,7 @@ using AutumnBox.GUI.UI.Fp;
 using AutumnBox.GUI.Windows;
 using AutumnBox.OpenFramework;
 using AutumnBox.OpenFramework.Extension;
+using AutumnBox.OpenFramework.Management;
 
 namespace AutumnBox.GUI.UI.FuncPanels
 {
