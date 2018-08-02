@@ -42,7 +42,7 @@ namespace AutumnBox.OpenFramework.Extension
         /// <returns></returns>
         public virtual bool OnStopCommand()
         {
-            throw new NotImplementedException();
+            return true;
         }
     }
 }

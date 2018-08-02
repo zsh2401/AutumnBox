@@ -93,8 +93,6 @@ namespace AutumnBox.OpenFramework.Extension
         /// <returns></returns>
         public virtual ForerunCheckResult ForerunCheck(DeviceBasicInfo device)
         {
-            Logger.Info("asdasdas" + device.State);
-            Logger.Info("asdasdas" + info.RequiredStates);
             ForerunCheckResult result;
             if (info.RequiredStates.HasFlag(device.State))
             {
@@ -104,7 +102,6 @@ namespace AutumnBox.OpenFramework.Extension
             {
                 result = ForerunCheckResult.DeviceStateNotRight;
             }
-            Logger.Info("fuckxxxx" + result.ToString());
             return result;
         }
         /// <summary>
@@ -121,8 +118,14 @@ namespace AutumnBox.OpenFramework.Extension
                 });
             }
             instance = (AutumnBoxExtension)Activator.CreateInstance(extType);
+            InjetctProperty(device);
+            MainFlow();
+        }
+        private void InjetctProperty(DeviceBasicInfo device) {
             instance.TargetDevice = device;
             instance.ExtName = Name;
+        }
+        private void MainFlow() {
             RunningManager.AddRuningWarpper(this);
             instance.Main();
             instance = null;

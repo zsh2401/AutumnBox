@@ -77,7 +77,8 @@ namespace AutumnBox.OpenFramework.Entrance
         /// 重新加载的实现
         /// </summary>
         /// <param name="warppers"></param>
-        protected virtual void DoReload(List<IExtensionWarpper> warppers) {
+        protected virtual void DoReload(List<IExtensionWarpper> warppers)
+        {
             warppers.Clear();
             var types = from type in ManagedAssembly.GetExportedTypes()
                         where IsExt(type)
