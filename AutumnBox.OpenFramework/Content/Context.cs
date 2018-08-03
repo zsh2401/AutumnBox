@@ -17,7 +17,13 @@ namespace AutumnBox.OpenFramework.Content
         /// <summary>
         /// 日志标签
         /// </summary>
-        public abstract string LoggingTag { get; }
+        public virtual string LoggingTag
+        {
+            get
+            {
+                return GetType().Name;
+            }
+        }
         /// <summary>
         /// 日志API
         /// </summary>

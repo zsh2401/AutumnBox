@@ -4,21 +4,19 @@
 ** desc： ...
 *************************************************/
 using System.Collections.Generic;
-using AutumnBox.OpenFramework.Entrance;
 using AutumnBox.OpenFramework.Extension;
+using AutumnBox.OpenFramework.ExtLibrary;
 
 namespace AutumnBox.ExampleExtensions
 {
-    public class Entrance : AtmbEntrance
+    public class Lib : ExtensionLibrarin
     {
-        public static Entrance Instance { get; private set; }
+        public static Lib Instance { get; private set; }
         public override string Name => "Example Entrance";
-
         public override int MinSdk => 8;
-
         public override int TargetSdk => 8;
         private List<IExtensionWarpper> exts;
-        public Entrance()
+        public Lib()
         {
             Instance = this;
             exts = new List<IExtensionWarpper>(){
@@ -26,7 +24,6 @@ namespace AutumnBox.ExampleExtensions
                 GetWarpperFor(typeof(FuckExt)),
             };
         }
-
         public void RemoveOne() {
             exts.RemoveAt(1);
         }

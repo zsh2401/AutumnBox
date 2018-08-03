@@ -16,7 +16,14 @@ namespace AutumnBox.OpenFramework.Extension
     /// </summary>
     public class ExtNameAttribute : ExtAttribute
     {
+        /// <summary>
+        /// 值
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// 构造
+        /// </summary>
+        /// <param name="name"></param>
         public ExtNameAttribute(string name)
         {
             this.Name = name; 

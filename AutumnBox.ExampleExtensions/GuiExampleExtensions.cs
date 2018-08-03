@@ -10,12 +10,14 @@ namespace AutumnBox.ExampleExtensions
 {
     [ExtRequiredDeviceStates(DeviceState.None)]
     [ExtName("ClearLove")]
+    [ExtDesc("这个模块将显示一个调试窗口")]
     public class GuiExampleExtensions : AutumnBoxExtension
     {
         public override int Main()
         {
             App.RunOnUIThread(() =>
             {
+                App.ShowMessageBox("Fuck","Lover");
                 App.CreateDebuggingWindow().Show();
             });
             return 0;

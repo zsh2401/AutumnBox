@@ -8,82 +8,55 @@ using AutumnBox.OpenFramework.Content;
 using AutumnBox.OpenFramework.Management;
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace AutumnBox.OpenFramework.Extension
 {
     /// <summary>
     /// 标准的拓展模块包装器
     /// </summary>
-    public class ExtensionWrapper : Context, IExtensionWarpper
+    internal class ExtensionWrapper : Context, IExtensionWarpper
     {
-        private class ExtensionInfo
-        {
-            private readonly Context ctx;
-            private readonly Type type;
-            private static readonly string DescFMT =
-           "{0}: {1}" + Environment.NewLine +
-           "{2}:" + Environment.NewLine +
-           "{3}:";
-            public string Name;
-            public string Desc;
-            public string FullDesc
-            {
-                get
-                {
-
-                    return string.Format(DescFMT,
-                        ctx.App.GetPublicResouce("lbAuth"), Auth,
-                        ctx.App.GetPublicResouce("lbDescription"), Desc);
-                }
-            }
-            public string Auth;
-            public Version Version;
-            public DeviceState RequiredStates;
-            public ExtensionInfo(Context ctx, Type type)
-            {
-                this.ctx = ctx;
-                this.type = type;
-            }
-            public void Load()
-            {
-                var attrs = type.GetCustomAttributes(true);
-                ctx.Logger.Info($"getted {attrs.Count()} attr from {type.Name}");
-                foreach (var attr in attrs)
-                {
-                    if (attr is ExtNameAttribute nameAttr)
-                    {
-                        Name = nameAttr.Name;
-                    }
-                    else if (attr is ExtAuthAttribute authAttr)
-                    {
-                        Auth = authAttr.Auth;
-                    }
-                    else if (attr is ExtDescAttribute descAttr)
-                    {
-                        Desc = descAttr.Desc;
-                    }
-                    else if (attr is ExtVersion versionAttr)
-                    {
-                        Version = versionAttr.Version;
-                    }
-                    else if (attr is ExtRequiredDeviceStatesAttribute reqStatesAttr)
-                    {
-                        RequiredStates = reqStatesAttr.Value;
-                    }
-                }
-            }
-        }
-        private ExtensionInfo info;
+        /// <summary>
+        /// 上次运行的返回值
+        /// </summary>
+        public int LastReturnCode { get; private set; } = -1;
+        /// <summary>
+        /// 托管的拓展模块信息
+        /// </summary>
+        private ExtensionInfoGetter info;
+        /// <summary>
+        /// 托管的拓展模块实例
+        /// </summary>
         private AutumnBoxExtension instance;
+        /// <summary>
+        /// 托管的拓展模块Type
+        /// </summary>
         private readonly Type extType;
+        /// <summary>
+        /// 拓展模块名
+        /// </summary>
         public string Name => info.Name;
+        /// <summary>
+        /// 拓展模块说明
+        /// </summary>
         public string Desc => info.FullDesc;
+        /// <summary>
+        /// 拓展模块所有者
+        /// </summary>
         public string Auth => info.Auth;
-        public override string LoggingTag => Name;
+        /// <summary>
+        /// 日志标签
+        /// </summary>
+        public override string LoggingTag => Name + "'s warpper";
+        /// <summary>
+        /// 构造
+        /// </summary>
+        /// <param name="t"></param>
         internal ExtensionWrapper(Type t)
         {
             extType = t;
-            info = new ExtensionInfo(this, t);
+            info = new ExtensionInfoGetter(this, t);
             info.Load();
         }
         /// <summary>
@@ -114,22 +87,49 @@ namespace AutumnBox.OpenFramework.Extension
             {
                 App.RunOnUIThread(() =>
                 {
-                    App.ShowMessageBox("警告","该拓展模块已在运行,你不能开多个该模块!");
+                    App.ShowMessageBox("警告", "该拓展模块已在运行,你不能开多个该模块!");
                 });
             }
-            instance = (AutumnBoxExtension)Activator.CreateInstance(extType);
+            CreateInstance();
             InjetctProperty(device);
             MainFlow();
         }
-        private void InjetctProperty(DeviceBasicInfo device) {
+        /// <summary>
+        /// 创建实例
+        /// </summary>
+        private void CreateInstance()
+        {
+            instance = (AutumnBoxExtension)Activator.CreateInstance(extType);
+        }
+        /// <summary>
+        /// 注入属性
+        /// </summary>
+        /// <param name="device"></param>
+        private void InjetctProperty(DeviceBasicInfo device)
+        {
             instance.TargetDevice = device;
             instance.ExtName = Name;
         }
-        private void MainFlow() {
-            RunningManager.AddRuningWarpper(this);
-            instance.Main();
-            instance = null;
-            RunningManager.RemoveRunningWarpper(this);
+        /// <summary>
+        /// 主流程
+        /// </summary>
+        private void MainFlow()
+        {
+            Manager.RunningManager.Add(this);
+            try
+            {
+                LastReturnCode = instance.Main();
+            }
+            catch (Exception ex)
+            {
+                Logger.Warn($"[Extension] {Name} was threw a exception", ex);
+                LastReturnCode = 1;
+            }
+            finally
+            {
+                instance = null;
+            }
+            Manager.RunningManager.Remove(this);
         }
         /// <summary>
         /// 停止
@@ -149,7 +149,7 @@ namespace AutumnBox.OpenFramework.Extension
             if (stopped == true)
             {
                 instance = null;
-                RunningManager.RemoveRunningWarpper(this);
+                Manager.RunningManager.Remove(this);
             }
             return stopped;
         }
@@ -159,6 +159,14 @@ namespace AutumnBox.OpenFramework.Extension
         public virtual void Destory()
         {
 
+        }
+        public void RunAsync(DeviceBasicInfo device, Action<IExtensionWarpper> callback = null)
+        {
+            Task.Run(() =>
+            {
+                Run(device);
+                callback?.Invoke(this);
+            });
         }
     }
 }

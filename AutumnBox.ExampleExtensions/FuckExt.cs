@@ -12,7 +12,7 @@ namespace AutumnBox.ExampleExtensions
     {
         public override int Main()
         {
-            Entrance.Instance.RemoveOne();
+            //Lib.Instance.RemoveOne();
             App.RunOnUIThread(() =>
             {
                 App.RefreshExtensionList();

@@ -36,7 +36,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
                 SetPanelByExtension(null);
                 TBSdk.Text = string.Format(App.Current.Resources["lbApiLevel"].ToString(), BuildInfo.SDK_VERSION);
             };
-            ListBoxModule.ItemsSource = ExtensionManager.Instance.Warppers;
+            ListBoxModule.ItemsSource = Manager.InternalManager.Warppers;
         }
 
         private void SetPanelByExtension(IExtensionWarpper wapper)
@@ -78,7 +78,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
         }
         public void Refresh(DeviceBasicInfo deviceSimpleInfo)
         {
-            ListBoxModule.ItemsSource = ExtensionManager.Instance.Warppers;
+            ListBoxModule.ItemsSource = Manager.InternalManager.Warppers;
             currentDevice = deviceSimpleInfo;
             ListBoxModule.SelectedIndex = -1;
         }
@@ -107,19 +107,20 @@ namespace AutumnBox.GUI.UI.FuncPanels
         private async void BtnRun_Click(object sender, RoutedEventArgs e)
         {
             var warpper = (ListBoxModule.SelectedItem as IExtensionWarpper);
-            ShowRunningBox(warpper);
-            innerRunningPanel.OnClickStop = (s, _e) =>
-            {
-                _e.Successful = warpper.Stop();
-            };
-            await Task.Run(() =>
-            {
-                warpper.Run(currentDevice);
-            });
-            CloseRunningBox();
+            //ShowRunningBox(warpper);
+            //innerRunningPanel.OnClickStop = (s, _e) =>
+            //{
+            //    _e.Successful = warpper.Stop();
+            //};
+            warpper.RunAsync(currentDevice);
+            //await Task.Run(() =>
+            //{
+            //    warpper.Run(currentDevice);
+            //});
+            //CloseRunningBox();
         }
 
         private void BtnOpenModuleFloder_Click(object sender, RoutedEventArgs e) =>
-            Process.Start(ExtensionManager.ExtensionPath);
+            Process.Start(Manager.InternalManager.ExtensionPath);
     }
 }

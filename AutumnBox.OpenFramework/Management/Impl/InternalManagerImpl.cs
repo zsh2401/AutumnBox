@@ -4,26 +4,26 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.OpenFramework.Content;
-using AutumnBox.OpenFramework.Entrance;
 using AutumnBox.OpenFramework.Extension;
+using AutumnBox.OpenFramework.ExtLibrary;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 
-namespace AutumnBox.OpenFramework.Management
+namespace AutumnBox.OpenFramework.Management.Impl
 {
-#if ! SDK
+
     /// <summary>
     /// 拓展模块管理器
     /// </summary>
-    public sealed class ExtensionManager : Context, IReloadable
+    internal sealed class InternalManagerImpl : Context, IInternalManager
     {
         /// <summary>
         /// 拓展模块路径
         /// </summary>
-        public static string ExtensionPath
+        public string ExtensionPath
         {
             get
             {
@@ -33,7 +33,7 @@ namespace AutumnBox.OpenFramework.Management
         /// <summary>
         /// 已加载的所有入口类
         /// </summary>
-        public IEnumerable<IEntrance> Entrances { get; private set; }
+        public IEnumerable<ILibrarian> Librarians { get; private set; }
         /// <summary>
         /// 已加载的所有包装器
         /// </summary>
@@ -41,40 +41,13 @@ namespace AutumnBox.OpenFramework.Management
         {
             get
             {
-               return GetWarppersFrom(Entrances);
+                return GetWarppersFrom(Librarians);
             }
         }
-        /// <summary>
-        /// 拓展模块管理器实例
-        /// </summary>
-        public static ExtensionManager Instance
-        {
-            get
-            {
-                var callingAssembly = Assembly.GetCallingAssembly();
-                if (callingAssembly.GetName().Name == BuildInfo.AUTUMNBOX_GUI_ASSEMBLY_NAME)
-                {
-                    if (__instance == null)
-                    {
-                        __instance = new ExtensionManager();
-                    }
-                    return __instance;
-                }
-                else
-                {
-                    return null;
-                }
-            }
-        }
-        private static ExtensionManager __instance;
         /// <summary>
         /// 日志标签
         /// </summary>
         public override string LoggingTag => "ExntesionManager";
-        private ExtensionManager()
-        {
-            Reload();
-        }
         /// <summary>
         /// 重新加载所有拓展模块
         /// </summary>
@@ -90,8 +63,8 @@ namespace AutumnBox.OpenFramework.Management
             FileInfo[] dlls = dir.GetFiles("*.dll");
             Logger.Info($"finded {dlls.Count()} dll files");
             IEnumerable<Assembly> assemblies = LoadAssemblies(dlls);
-            Entrances = GetEntrancesFrom(assemblies);
-            Logger.Info($"loaded {Entrances.Count()} entrances and {Warppers.Count()} warppers");
+            Librarians = GetLibrarianFrom(assemblies);
+            Logger.Info($"loaded {Librarians.Count()} entrances and {Warppers.Count()} warppers");
         }
         /// <summary>
         /// 加载所有程序集
@@ -118,17 +91,17 @@ namespace AutumnBox.OpenFramework.Management
         /// 获取传入的所有程序集的入口实现
         /// </summary>
         /// <returns>所有入口类</returns>
-        private IEnumerable<IEntrance> GetEntrancesFrom(IEnumerable<Assembly> assemblies)
+        private IEnumerable<ILibrarian> GetLibrarianFrom(IEnumerable<Assembly> assemblies)
         {
-            List<IEntrance> result = new List<IEntrance>();
+            List<ILibrarian> result = new List<ILibrarian>();
             foreach (var ass in assemblies)
             {
                 try
                 {
-                    IEntrance entrance = GetExtranceFrom(ass);
-                    if (entrance.Check())
+                    ILibrarian lib = GetExtranceFrom(ass);
+                    if (lib.Check())
                     {
-                        result.Add(entrance);
+                        result.Add(lib);
                     }
                 }
                 catch (Exception ex)
@@ -143,28 +116,28 @@ namespace AutumnBox.OpenFramework.Management
         /// </summary>
         /// <param name="assembly"></param>
         /// <returns></returns>
-        private IEntrance GetExtranceFrom(Assembly assembly)
+        private ILibrarian GetExtranceFrom(Assembly assembly)
         {
-            IEntrance entrance = null;
+            ILibrarian librarian = null;
             var types = from type in assembly.GetExportedTypes()
-                        where IsEntrance(type)
+                        where IsLibrarian(type)
                         select type;
             if (types.Count() != 0)
             {
-                entrance = (IEntrance)Activator.CreateInstance(types.First());
-                return entrance;
+                librarian = (ILibrarian)Activator.CreateInstance(types.First());
+                return librarian;
             }
-            entrance = new DefaultEntrance(assembly);
-            return entrance;
+            librarian = new DefaultLibrarian(assembly);
+            return librarian;
         }
         /// <summary>
         /// 判断某个类是否是Entrance
         /// </summary>
         /// <param name="type"></param>
         /// <returns></returns>
-        private bool IsEntrance(Type type)
+        private bool IsLibrarian(Type type)
         {
-            bool result = typeof(IEntrance).IsAssignableFrom(type);
+            bool result = typeof(ILibrarian).IsAssignableFrom(type);
             return result;
         }
         /// <summary>
@@ -172,18 +145,18 @@ namespace AutumnBox.OpenFramework.Management
         /// </summary>
         /// <param name="entrances"></param>
         /// <returns></returns>
-        private IEnumerable<IExtensionWarpper> GetWarppersFrom(IEnumerable<IEntrance> entrances)
+        private IEnumerable<IExtensionWarpper> GetWarppersFrom(IEnumerable<ILibrarian> libs)
         {
             List<IExtensionWarpper> result = new List<IExtensionWarpper>();
-            foreach (var en in entrances)
+            foreach (var lib in libs)
             {
                 try
                 {
-                    result.AddRange(en.GetWarppers());
+                    result.AddRange(lib.GetWarppers());
                 }
                 catch (Exception ex)
                 {
-                    Logger.Warn($"获取拓展模块封装类失败({en.Name})", ex);
+                    Logger.Warn($"获取拓展模块封装类失败({lib.Name})", ex);
                 }
             }
             return result;
@@ -191,13 +164,13 @@ namespace AutumnBox.OpenFramework.Management
         /// <summary>
         ///析构
         /// </summary>
-        ~ExtensionManager()
+        ~InternalManagerImpl()
         {
-            foreach (var en in Entrances)
+            foreach (var lib in Librarians)
             {
                 try
                 {
-                    en.Destory();
+                    lib.Destory();
                 }
                 catch (Exception ex)
                 {
@@ -206,5 +179,4 @@ namespace AutumnBox.OpenFramework.Management
             }
         }
     }
-#endif
 }

@@ -14,7 +14,7 @@ namespace AutumnBox.OpenFramework.Open.Impl.AutumnBoxApi
     /// <summary>
     /// AutumnBox API原始API提供器
     /// </summary>
-    public static class AutumnBoxGuiApiProvider
+    internal static class AutumnBoxGuiApiProvider
     {
         private static IAutumnBoxGuiApi api = null;
 #if !SDK
@@ -22,7 +22,7 @@ namespace AutumnBox.OpenFramework.Open.Impl.AutumnBoxApi
         /// 注入
         /// </summary>
         /// <param name="_api"></param>
-        public static void Inject(IAutumnBoxGuiApi _api)
+        internal static void Inject(IAutumnBoxGuiApi _api)
         {
             if (api != null) {
                 return;

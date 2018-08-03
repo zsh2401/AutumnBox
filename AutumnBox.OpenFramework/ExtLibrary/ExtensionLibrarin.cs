@@ -3,25 +3,18 @@
 ** date:  2018/8/1 3:34:12 (UTC +8:00)
 ** desc： ...
 *************************************************/
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using AutumnBox.OpenFramework.Extension;
 
-namespace AutumnBox.OpenFramework.Entrance
+namespace AutumnBox.OpenFramework.ExtLibrary
 {
     /// <summary>
     /// 当程序集没有入口类时,将使用的默认入口类
     /// </summary>
-    public abstract class AtmbEntrance : BaseEntrance
+    public abstract class ExtensionLibrarin : BaseLibrarian
     {
         /// <summary>
         /// 初始化构造器
         /// </summary>
-        public AtmbEntrance()
+        public ExtensionLibrarin()
         {
             Init(GetType().Assembly);
         }

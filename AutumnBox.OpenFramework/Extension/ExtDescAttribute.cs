@@ -3,17 +3,22 @@
 ** date:  2018/8/1 4:08:35 (UTC +8:00)
 ** desc： ...
 *************************************************/
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutumnBox.OpenFramework.Extension
 {
-   public class ExtDescAttribute : ExtAttribute
+    /// <summary>
+    /// 拓展模块说明特性
+    /// </summary>
+    public class ExtDescAttribute : ExtAttribute
     {
+        /// <summary>
+        /// 值
+        /// </summary>
         public readonly string Desc;
+        /// <summary>
+        /// 构造
+        /// </summary>
+        /// <param name="desc"></param>
         public ExtDescAttribute(string desc) {
             this.Desc = desc;
         }

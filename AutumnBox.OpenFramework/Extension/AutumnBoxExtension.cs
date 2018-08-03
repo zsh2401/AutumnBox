@@ -17,9 +17,17 @@ namespace AutumnBox.OpenFramework.Extension
     [ExtAuth("佚名")]
     [ExtDesc("这是一个测试模块")]
     [ExtVersion(1,0,0)]
-    [ExtRequiredDeviceStates(DeviceState.Poweron)]
+    [ExtRequiredDeviceStates(DeviceState.None)]
     public abstract class AutumnBoxExtension : Context
     {
+        /// <summary>
+        /// 完全成功
+        /// </summary>
+        public const int OK = 0;
+        /// <summary>
+        /// 发生错误
+        /// </summary>
+        public const int ERR = 1;
         /// <summary>
         /// 日志标签
         /// </summary>

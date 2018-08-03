@@ -6,7 +6,7 @@ namespace AutumnBox.OpenFramework.Extension
     /// <summary>
     /// 拓展模块包装器
     /// </summary>
-    public interface IExtensionWarpper 
+    public interface IExtensionWarpper
     {
         /// <summary>
         /// 模块名
@@ -26,6 +26,12 @@ namespace AutumnBox.OpenFramework.Extension
         /// </summary>
         /// <param name="device"></param>
         void Run(DeviceBasicInfo device);
+        /// <summary>
+        /// 异步运行
+        /// </summary>
+        /// <param name="device"></param>
+        /// <param name="callback"></param>
+        void RunAsync(DeviceBasicInfo device, Action<IExtensionWarpper> callback=null);
         /// <summary>
         /// 停止运行
         /// </summary>

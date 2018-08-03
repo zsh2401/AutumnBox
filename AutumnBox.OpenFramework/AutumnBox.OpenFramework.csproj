@@ -61,8 +61,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Extension\Attributes\ExtAttribute.cs" />
-    <Compile Include="Management\RunningManager.cs" />
+    <Compile Include="Extension\ExtAttribute.cs" />
+    <Compile Include="Extension\Warpper\ExtensionInfoGetter.cs" />
+    <Compile Include="Management\IInternalManager.cs" />
+    <Compile Include="Management\IRunningManager.cs" />
+    <Compile Include="Management\Manager.cs" />
+    <Compile Include="Management\Impl\RunningManagerImpl.cs" />
     <Compile Include="Open\ChoiceBoxResult.cs" />
     <Compile Include="Open\Factory.cs" />
     <Compile Include="Open\ICompApi.cs" />
@@ -80,22 +84,21 @@
     <Compile Include="Open\IEmbeddedFileManager.cs" />
     <Compile Include="Open\ITemporaryFloder.cs" />
     <Compile Include="Content\ContextApiProvider.cs" />
-    <Compile Include="Entrance\DefaultEntrance.cs" />
-    <Compile Include="Entrance\AtmbEntrance.cs" />
-    <Compile Include="Management\ExtensionManager.cs" />
-    <Compile Include="Extension\Attributes\ExtRequiredDeviceStates.cs" />
-    <Compile Include="Extension\Attributes\ExtVersion.cs" />
+    <Compile Include="ExtLibrary\DefaultLibrarian.cs" />
+    <Compile Include="ExtLibrary\ExtensionLibrarin.cs" />
+    <Compile Include="Management\Impl\InternalManagerImpl.cs" />
+    <Compile Include="Extension\ExtRequiredDeviceStates.cs" />
+    <Compile Include="Extension\ExtVersion.cs" />
     <Compile Include="Extension\AutumnBoxExtension.cs" />
     <Compile Include="Content\Context.cs" />
-    <Compile Include="Entrance\BaseEntrance.cs" />
-    <Compile Include="Extension\Attributes\ExtAuthAttribute.cs" />
-    <Compile Include="Extension\Attributes\ExtDescAttribute.cs" />
-    <Compile Include="Extension\Attributes\ExtNameAttribute.cs" />
+    <Compile Include="ExtLibrary\BaseLibrarian.cs" />
+    <Compile Include="Extension\ExtAuthAttribute.cs" />
+    <Compile Include="Extension\ExtDescAttribute.cs" />
+    <Compile Include="Extension\ExtNameAttribute.cs" />
     <Compile Include="Extension\ForerunCheckResult.cs" />
     <Compile Include="Extension\Warpper\ExtensionWrapper.cs" />
     <Compile Include="Extension\Warpper\IExtensionWarpper.cs" />
-    <Compile Include="Entrance\IEntrance.cs" />
-    <Compile Include="Content\IReloadable.cs" />
+    <Compile Include="ExtLibrary\ILibrarian.cs" />
     <Compile Include="Open\IAppManager.cs" />
     <Compile Include="Open\ILogger.cs" />
     <Compile Include="Exceptions\AccessDeniedException.cs" />
