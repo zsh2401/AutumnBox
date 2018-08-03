@@ -4,19 +4,13 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.GUI.Helper;
-using AutumnBox.GUI.I18N;
 using AutumnBox.GUI.UI.FuncPanels;
 using AutumnBox.GUI.Windows;
-using AutumnBox.OpenFramework.Content;
 using AutumnBox.OpenFramework.Open;
 using AutumnBox.OpenFramework.Open.Impl.AutumnBoxApi;
 using AutumnBox.Support.Log;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace AutumnBox.GUI.Util.OpenApiImpl
@@ -72,8 +66,6 @@ namespace AutumnBox.GUI.Util.OpenApiImpl
         {
             App.Current.Dispatcher.Invoke(act);
         }
-
-
         public ChoiceBoxResult ShowChoiceBox(string title, string msg, string btnLeft = null, string btnRight = null)
         {
             var result = BoxHelper.ShowChoiceDialog(title, msg, btnLeft, btnRight);

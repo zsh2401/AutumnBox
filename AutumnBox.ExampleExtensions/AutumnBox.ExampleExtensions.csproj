@@ -47,7 +47,7 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entrance.cs" />
+    <Compile Include="Lib.cs" />
     <Compile Include="FuckExt.cs" />
     <Compile Include="GuiExampleExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">

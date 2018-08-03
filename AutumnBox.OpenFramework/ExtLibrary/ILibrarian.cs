@@ -5,12 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AutumnBox.OpenFramework.Entrance
+namespace AutumnBox.OpenFramework.ExtLibrary
 {
     /// <summary>
-    /// 代表拓展模块程序的核心入口基类
+    /// 代表拓展模块程序的核心接口
     /// </summary>
-    public interface IEntrance 
+    public interface ILibrarian
     {
         /// <summary>
         /// 代表该程序集的入口类的名称

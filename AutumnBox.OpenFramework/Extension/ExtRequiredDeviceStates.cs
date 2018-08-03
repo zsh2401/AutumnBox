@@ -12,9 +12,20 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.OpenFramework.Extension
 {
+    /// <summary>
+    /// 拓展模块运行所需的设备状态
+    /// 秋之盒将确保只有设备符合该状态时才可以调用该模块
+    /// </summary>
     public class ExtRequiredDeviceStatesAttribute : ExtAttribute
     {
+        /// <summary>
+        /// 值
+        /// </summary>
         public DeviceState Value { get; set; }
+        /// <summary>
+        /// 构造
+        /// </summary>
+        /// <param name="state"></param>
         public ExtRequiredDeviceStatesAttribute(DeviceState state)
         {
             this.Value = state;

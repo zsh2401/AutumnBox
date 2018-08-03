@@ -5,9 +5,9 @@
 *************************************************/
 using System.Reflection;
 
-namespace AutumnBox.OpenFramework.Entrance
+namespace AutumnBox.OpenFramework.ExtLibrary
 {
-    sealed class DefaultEntrance : BaseEntrance
+    sealed class DefaultLibrarian : BaseLibrarian
     {
         public sealed override string Name => ManagedAssembly.GetName().Name;
 
@@ -15,7 +15,7 @@ namespace AutumnBox.OpenFramework.Entrance
 
         public sealed override int TargetSdk => BuildInfo.SDK_VERSION;
 
-        public DefaultEntrance(Assembly assembly) {
+        public DefaultLibrarian(Assembly assembly) {
             Init(assembly);
         }
     }

@@ -21,7 +21,7 @@ namespace AutumnBox.OpenFramework.Open.Impl
         {
 #if !SDK
             var floderName = ctx.GetType().Assembly.GetName().Name;
-            var path = System.IO.Path.Combine(ExtensionManager.ExtensionPath, floderName);
+            var path = System.IO.Path.Combine(Manager.InternalManager.ExtensionPath, floderName);
             DirInfo = new DirectoryInfo(path);
             Create();
 #else

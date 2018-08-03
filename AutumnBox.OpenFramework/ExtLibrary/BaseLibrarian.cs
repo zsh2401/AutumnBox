@@ -12,14 +12,15 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AutumnBox.OpenFramework.Entrance
+namespace AutumnBox.OpenFramework.ExtLibrary
 {
     /// <summary>
     /// 入口类基类
     /// </summary>
-    public abstract class BaseEntrance : Context, IEntrance, IReloadable
+    public abstract class BaseLibrarian : Context, ILibrarian
     {
-        internal BaseEntrance() { }
+        internal BaseLibrarian() {
+        }
         /// <summary>
         /// 管理的程序集
         /// </summary>
