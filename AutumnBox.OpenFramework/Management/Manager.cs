@@ -61,8 +61,8 @@ namespace AutumnBox.OpenFramework.Management
         public static void InitFramework(IAutumnBoxGuiApi guiApi)
         {
             if (!inited) {
-                InternalManager.Reload();
                 AutumnBoxGuiApiProvider.Inject(guiApi);
+                InternalManager.Reload();
                 inited = true;
             }
         }

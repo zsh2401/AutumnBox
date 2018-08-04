@@ -5,12 +5,14 @@
 *************************************************/
 using AutumnBox.Basic.Device;
 using AutumnBox.OpenFramework.Content;
+using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.Management;
 using System;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AutumnBox.OpenFramework.Extension
+namespace AutumnBox.OpenFramework.Warpper
 {
     /// <summary>
     /// 标准的拓展模块包装器
@@ -45,6 +47,7 @@ namespace AutumnBox.OpenFramework.Extension
         /// 拓展模块所有者
         /// </summary>
         public string Auth => info.Auth;
+        public Stream Icon => info.Icon;
         /// <summary>
         /// 日志标签
         /// </summary>
@@ -124,6 +127,11 @@ namespace AutumnBox.OpenFramework.Extension
             {
                 Logger.Warn($"[Extension] {Name} was threw a exception", ex);
                 LastReturnCode = 1;
+                App.RunOnUIThread(() =>
+                {
+                    string stoppedMsg = $"{Name} {App.GetPublicResouce<String>("msgExtensionWasFailed")}";
+                    App.ShowMessageBox("Notice", stoppedMsg);
+                });
             }
             finally
             {

@@ -23,8 +23,9 @@ namespace AutumnBox.OpenFramework.Open.Impl
 
         public Stream GetStream(string innerResPath)
         {
+            string fullPath = ctx.GetType().Namespace + "." + innerResPath;
             return ctx.GetType().Assembly
-                .GetManifestResourceStream(innerResPath);
+                .GetManifestResourceStream(fullPath);
         }
     }
 }

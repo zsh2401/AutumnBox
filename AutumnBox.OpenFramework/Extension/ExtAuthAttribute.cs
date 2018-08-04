@@ -10,19 +10,12 @@ namespace AutumnBox.OpenFramework.Extension
     /// <summary>
     /// 拓展模块所有者特性
     /// </summary>
-    public class ExtAuthAttribute : ExtAttribute
+    public class ExtAuthAttribute : ExtInfoI18NAttribute
     {
-        /// <summary>
-        /// 值
-        /// </summary>
-        public readonly string Auth;
         /// <summary>
         /// 构建
         /// </summary>
         /// <param name="auth"></param>
-        public ExtAuthAttribute(string auth)
-        {
-            this.Auth = auth;
-        }
+        public ExtAuthAttribute(string auth) : base(auth) { }
     }
 }

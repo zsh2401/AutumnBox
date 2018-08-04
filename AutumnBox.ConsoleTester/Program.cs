@@ -1,17 +1,23 @@
 ﻿using System;
+using System.Collections;
 
 namespace AutumnBox.ConsoleTester
 {
-    class Program : Context
+    class Program 
     {
         private void Run()
         {
-            //ScriptsManager.Reload(this);
-            //var scripts = ScriptsManager.GetScripts(this);
-            //Console.WriteLine(scripts.Length);
+          object value =   new Hashtable() {
+                { "a","b"}
+            }["b"];
+            Console.WriteLine(value == null);
         }
         unsafe static int Main(string[] cmdargs)
         {
+            object value = new Hashtable() {
+                { "a","b"}
+            }["b"];
+            Console.WriteLine(value == null);
             Console.ReadKey();
             return 0;
         }

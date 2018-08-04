@@ -47,7 +47,6 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Lib.cs" />
     <Compile Include="FuckExt.cs" />
     <Compile Include="GuiExampleExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -94,6 +93,9 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="meh.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

@@ -4,6 +4,7 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.OpenFramework.Extension;
+using AutumnBox.OpenFramework.Warpper;
 using System.Collections.Generic;
 
 namespace AutumnBox.OpenFramework.Management.Impl

@@ -14,9 +14,12 @@ namespace AutumnBox.OpenFramework.Extension
     /// 标准的秋之盒拓展基类
     /// </summary>
     [ExtName("标准秋之盒拓展")]
+    [ExtName("Standrad AutumnBox extension", Lang = "en-us")]
     [ExtAuth("佚名")]
+    [ExtAuth("zsh2401", Lang = "en-us")]
+    [ExtDesc("This is a test extesion", Lang = "en-us")]
     [ExtDesc("这是一个测试模块")]
-    [ExtVersion(1,0,0)]
+    [ExtVersionAttribute(1, 0, 0)]
     [ExtRequiredDeviceStates(DeviceState.None)]
     public abstract class AutumnBoxExtension : Context
     {
