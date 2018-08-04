@@ -10,7 +10,9 @@ namespace AutumnBox.ExampleExtensions
 {
     [ExtRequiredDeviceStates(DeviceState.None)]
     [ExtName("ClearLove")]
+    [ExtDesc("This is a fucker extension",Lang = "en-us")]
     [ExtDesc("这个模块将显示一个调试窗口")]
+    [ExtIcon("meh.png")]
     public class GuiExampleExtensions : AutumnBoxExtension
     {
         public override int Main()

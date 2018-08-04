@@ -1,7 +1,10 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using AutumnBox.Basic.Device;
 using AutumnBox.GUI.I18N;
 using AutumnBox.GUI.UI.CstPanels;
@@ -10,6 +13,8 @@ using AutumnBox.GUI.Windows;
 using AutumnBox.OpenFramework;
 using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.Management;
+using AutumnBox.OpenFramework.Warpper;
+using AutumnBox.Support.Log;
 
 namespace AutumnBox.GUI.UI.FuncPanels
 {
@@ -55,6 +60,19 @@ namespace AutumnBox.GUI.UI.FuncPanels
                 //设置信息
                 TBDesc.Text = wapper.Desc;
                 TBName.Text = wapper.Name;
+                IMGIcon.Source = null;
+                try
+                {
+                    BitmapImage o1 = new BitmapImage();
+                    o1.BeginInit();
+                    o1.StreamSource = wapper.Icon;
+                    o1.EndInit();
+                    IMGIcon.Source = o1;
+                }
+                catch (Exception ex)
+                {
+                    Logger.Debug("Set icon fail", ex);
+                }
                 //检查模块是否已经准备好了,并且设置按钮状态
                 SetBtnByForerunCheckResult(wapper.ForerunCheck(currentDevice));
             }

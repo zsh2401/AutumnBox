@@ -4,6 +4,7 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.OpenFramework.Content;
+using AutumnBox.OpenFramework.Exceptions;
 using AutumnBox.OpenFramework.Open.Impl.AutumnBoxApi;
 using System;
 using System.Collections.Generic;
@@ -19,7 +20,7 @@ namespace AutumnBox.OpenFramework.Open.Impl
     {
         private readonly IAutumnBoxGuiApi sourceApi;
         private readonly Context ctx;
-        public AppManagerImpl(Context ctx,IAutumnBoxGuiApi sourceApi)
+        public AppManagerImpl(Context ctx, IAutumnBoxGuiApi sourceApi)
         {
             this.ctx = ctx;
             this.sourceApi = sourceApi;
@@ -37,9 +38,14 @@ namespace AutumnBox.OpenFramework.Open.Impl
 
         public string CurrentLanguageCode => sourceApi.GetCurrentLanguageCode();
 
+        public Version Version => sourceApi.Version;
+
         public void CloseLoadingWindow()
         {
-            sourceApi.CloseLoadingWindow();
+            RunOnUIThread(() =>
+            {
+                sourceApi.CloseLoadingWindow();
+            });
         }
 
         public Window CreateDebuggingWindow()
@@ -69,12 +75,32 @@ namespace AutumnBox.OpenFramework.Open.Impl
 
         public void RestartApp()
         {
-            sourceApi.Restart();
+            var fmtMsg = GetPublicResouce<string>("msgRequestRestartAppFormat");
+            string title = GetPublicResouce<string>("Notice");
+            string msg = string.Format(fmtMsg, ctx.GetType().Name);
+            if (ShowChoiceBox(title, msg, "btnDeny", "btnAccept") == ChoiceBoxResult.Right)
+            {
+                sourceApi.Restart();
+            }
+            else
+            {
+                throw new UserDeniedException();
+            }
         }
 
         public void RestartAppAsAdmin()
         {
-            sourceApi.RestartAsAdmin();
+            var fmtMsg = GetPublicResouce<string>("msgRequestRestartAppAsAdminFormat");
+            string title = GetPublicResouce<string>("Notice");
+            string msg = string.Format(fmtMsg, ctx.GetType().Name);
+            if (ShowChoiceBox(title, msg, "btnDeny", "btnAccept") == ChoiceBoxResult.Right)
+            {
+                sourceApi.RestartAsAdmin();
+            }
+            else
+            {
+                throw new UserDeniedException();
+            }
         }
 
         public void RunOnUIThread(Action act)
@@ -84,12 +110,16 @@ namespace AutumnBox.OpenFramework.Open.Impl
 
         public ChoiceBoxResult ShowChoiceBox(string title, string msg, string btnLeft = null, string btnRight = null)
         {
-            return sourceApi.ShowChoiceBox(title,msg,btnLeft,btnRight);
+            return sourceApi.ShowChoiceBox(title, msg, btnLeft, btnRight);
         }
 
         public void ShowLoadingWindow()
         {
-            sourceApi.ShowLoadingWindow();
+            Task.Run(()=> {
+                RunOnUIThread(()=> {
+                    sourceApi.ShowLoadingWindow();
+                });
+            });
         }
 
         public void ShowMessageBox(string title, string msg)
@@ -99,7 +129,17 @@ namespace AutumnBox.OpenFramework.Open.Impl
 
         public void ShutdownApp()
         {
-            sourceApi.Shutdown();
+            var fmtMsg = GetPublicResouce<string>("msgRequestShutdownAppFormat");
+            string title = GetPublicResouce<string>("Notice");
+            string msg = string.Format(fmtMsg, ctx.GetType().Name);
+            if (ShowChoiceBox(title, msg, "btnDeny", "btnAccept") == ChoiceBoxResult.Right)
+            {
+                sourceApi.Shutdown();
+            }
+            else
+            {
+                throw new UserDeniedException();
+            }
         }
     }
 }

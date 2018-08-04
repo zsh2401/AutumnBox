@@ -1,7 +1,9 @@
 ﻿using AutumnBox.Basic.Device;
+using AutumnBox.OpenFramework.Extension;
 using System;
+using System.IO;
 
-namespace AutumnBox.OpenFramework.Extension
+namespace AutumnBox.OpenFramework.Warpper
 {
     /// <summary>
     /// 拓展模块包装器
@@ -17,6 +19,10 @@ namespace AutumnBox.OpenFramework.Extension
         /// </summary>
         string Desc { get; }
         /// <summary>
+        /// 图标
+        /// </summary>
+        Stream Icon { get; }
+        /// <summary>
         /// 运行前检查
         /// </summary>
         /// <returns></returns>
@@ -31,7 +37,7 @@ namespace AutumnBox.OpenFramework.Extension
         /// </summary>
         /// <param name="device"></param>
         /// <param name="callback"></param>
-        void RunAsync(DeviceBasicInfo device, Action<IExtensionWarpper> callback=null);
+        void RunAsync(DeviceBasicInfo device, Action<IExtensionWarpper> callback = null);
         /// <summary>
         /// 停止运行
         /// </summary>

@@ -13,6 +13,10 @@ namespace AutumnBox.OpenFramework.Open
     public interface IAppManager
     {
         /// <summary>
+        /// 获取秋之盒版本号
+        /// </summary>
+        Version Version { get; }
+        /// <summary>
         /// 显示一个选择窗口.并等待用户返回结果
         /// </summary>
         /// <param name="title">标题</param>

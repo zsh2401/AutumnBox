@@ -4,19 +4,19 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.OpenFramework.Extension;
+using System.Threading;
 
 namespace AutumnBox.ExampleExtensions
 {
     [ExtRequiredDeviceStates(Basic.Device.DeviceState.None)]
-    class FuckExt : AutumnBoxExtension
+    [ExtName("重启测试器")]
+    public class FuckExt : AutumnBoxExtension
     {
         public override int Main()
         {
-            //Lib.Instance.RemoveOne();
-            App.RunOnUIThread(() =>
-            {
-                App.RefreshExtensionList();
-            });
+            App.ShowLoadingWindow();
+            Thread.Sleep(5000);
+            App.CloseLoadingWindow();
             return 0;
         }
     }

@@ -9,18 +9,14 @@ namespace AutumnBox.OpenFramework.Extension
     /// <summary>
     /// 拓展模块说明特性
     /// </summary>
-    public class ExtDescAttribute : ExtAttribute
+    public class ExtDescAttribute : ExtInfoI18NAttribute
     {
-        /// <summary>
-        /// 值
-        /// </summary>
-        public readonly string Desc;
         /// <summary>
         /// 构造
         /// </summary>
         /// <param name="desc"></param>
-        public ExtDescAttribute(string desc) {
-            this.Desc = desc;
+        public ExtDescAttribute(string desc):base(desc) {
+       
         }
     }
 }

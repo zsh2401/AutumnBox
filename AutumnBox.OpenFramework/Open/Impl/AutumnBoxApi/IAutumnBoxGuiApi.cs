@@ -13,6 +13,10 @@ namespace AutumnBox.OpenFramework.Open.Impl.AutumnBoxApi
     public interface IAutumnBoxGuiApi
     {
         /// <summary>
+        /// 秋之盒版本号
+        /// </summary>
+        Version Version { get; }
+        /// <summary>
         /// 获取主窗口
         /// </summary>
         /// <returns></returns>

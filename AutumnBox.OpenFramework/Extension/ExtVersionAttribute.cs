@@ -14,21 +14,17 @@ namespace AutumnBox.OpenFramework.Extension
     /// <summary>
     /// 拓展模块版本号
     /// </summary>
-    public class ExtVersion : ExtAttribute
+    public class ExtVersionAttribute : ExtInfoAttribute
     {
         /// <summary>
-        /// 值
+        /// 构建
         /// </summary>
-        public Version Version { get; private set; }
-        /// <summary>
-        /// 构造器
-        /// </summary>
-        /// <param name="major"></param>
-        /// <param name="minor"></param>
-        /// <param name="build"></param>
-        public ExtVersion(int major, int minor, int build)
+        /// <param name="major">主版本号</param>
+        /// <param name="minor">辅版本号</param>
+        /// <param name="build">构建号</param>
+        public ExtVersionAttribute(int major, int minor, int build)
+            : base(new Version(major, minor, build))
         {
-            this.Version = new Version(major, minor, build);
         }
     }
 }

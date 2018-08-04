@@ -11,12 +11,21 @@ using AutumnBox.OpenFramework.Open.Impl.AutumnBoxApi;
 using AutumnBox.Support.Log;
 using System;
 using System.Diagnostics;
+using System.Threading.Tasks;
 using System.Windows;
 
 namespace AutumnBox.GUI.Util.OpenApiImpl
 {
     internal partial class AppManagerImpl : IAutumnBoxGuiApi
     {
+        public Version Version
+        {
+            get
+            {
+                return SystemHelper.CurrentVersion;
+            }
+        }
+
         public void CloseLoadingWindow()
         {
             BoxHelper.CloseLoadingDialog();
@@ -69,7 +78,8 @@ namespace AutumnBox.GUI.Util.OpenApiImpl
         public ChoiceBoxResult ShowChoiceBox(string title, string msg, string btnLeft = null, string btnRight = null)
         {
             var result = BoxHelper.ShowChoiceDialog(title, msg, btnLeft, btnRight);
-            switch (result) {
+            switch (result)
+            {
                 case ChoiceResult.BtnLeft:
                     return ChoiceBoxResult.Left;
                 case ChoiceResult.BtnRight:
@@ -86,7 +96,7 @@ namespace AutumnBox.GUI.Util.OpenApiImpl
 
         public void ShowMessageBox(string title, string msg)
         {
-            BoxHelper.ShowMessageDialog(title,msg);
+            BoxHelper.ShowMessageDialog(title, msg);
         }
 
         public void Shutdown()

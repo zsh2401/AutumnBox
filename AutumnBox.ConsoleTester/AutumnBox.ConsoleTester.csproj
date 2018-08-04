@@ -93,27 +93,5 @@
     <None Include="packages.config" />
     <None Include="Properties\app.manifest" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\AutumnBox.Basic.Flows\AutumnBox.Basic.Flows.csproj">
-      <Project>{3091ecae-7ff2-421d-b970-1c76d7cab0c0}</Project>
-      <Name>AutumnBox.Basic.Flows</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\AutumnBox.Basic\AutumnBox.Basic.csproj">
-      <Project>{84044FB2-BD38-4283-8065-B639270ECE0F}</Project>
-      <Name>AutumnBox.Basic</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\AutumnBox.GUI\AutumnBox.GUI.csproj">
-      <Project>{55081483-1689-4E52-A4F1-22AB75FF8900}</Project>
-      <Name>AutumnBox.GUI</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\AutumnBox.OpenFramework\AutumnBox.OpenFramework.csproj">
-      <Project>{6516890C-86B6-40A0-8FD0-14FFDD62E1FE}</Project>
-      <Name>AutumnBox.OpenFramework</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\AutumnBox.Support\AutumnBox.Support.csproj">
-      <Project>{851B2EB0-0503-428D-BD87-063555B19451}</Project>
-      <Name>AutumnBox.Support</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
