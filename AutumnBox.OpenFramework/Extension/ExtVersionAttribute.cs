@@ -23,8 +23,19 @@ namespace AutumnBox.OpenFramework.Extension
         /// <param name="minor">辅版本号</param>
         /// <param name="build">构建号</param>
         public ExtVersionAttribute(int major, int minor, int build)
-            : base(new Version(major, minor, build))
-        {
-        }
+            : base(new Version(major, minor, build)){}
+        /// <summary>
+        /// 构建
+        /// </summary>
+        /// <param name="major"></param>
+        /// <param name="minor"></param>
+        public ExtVersionAttribute(int major, int minor)
+            : base(new Version(major, minor)) { }
+        /// <summary>
+        /// 构建
+        /// </summary>
+        /// <param name="major"></param>
+        public ExtVersionAttribute(int major)
+            : this(major,0) { }
     }
 }

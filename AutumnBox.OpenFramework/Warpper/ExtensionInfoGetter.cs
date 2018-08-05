@@ -23,8 +23,36 @@ namespace AutumnBox.OpenFramework.Warpper
        "{0}: {1}" + Environment.NewLine +
        "{2}:" + Environment.NewLine +
        "{3}:";
+        public Dictionary<string, ExtInfoAttribute> Attributes
+        {
+            get
+            {
+                return infoTable;
+            }
+        }
         private readonly Dictionary<string, ExtInfoAttribute> infoTable
             = new Dictionary<string, ExtInfoAttribute>();
+        public int MinApi
+        {
+            get
+            {
+                return (int)infoTable["ExtMinApi"].Value;
+            }
+        }
+        public int TargetApi
+        {
+            get
+            {
+                return (int)infoTable["ExtTargetApi"].Value;
+            }
+        }
+        public bool RunAsAdmin
+        {
+            get
+            {
+                return (bool)infoTable["ExtRunAsAdmin"].Value;
+            }
+        }
         public string Name
         {
             get

@@ -20,7 +20,8 @@ namespace AutumnBox.OpenFramework.ExtLibrary
     /// </summary>
     public abstract class BaseLibrarian : Context, ILibrarian
     {
-        internal BaseLibrarian() {
+        internal BaseLibrarian()
+        {
         }
         /// <summary>
         /// 管理的程序集
@@ -87,7 +88,18 @@ namespace AutumnBox.OpenFramework.ExtLibrary
                         select type;
             foreach (var type in types)
             {
-                warppers.Add(GetWarpperFor(type));
+                try
+                {
+                    var tmp = GetWarpperFor(type);
+                    if (tmp.Usable)
+                    {
+                        warppers.Add(tmp);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Logger.Warn($"an exception threw on create wappers for {type.Name}", ex);
+                }
             }
         }
         /// <summary>

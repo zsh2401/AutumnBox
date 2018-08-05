@@ -11,6 +11,10 @@ namespace AutumnBox.OpenFramework.Warpper
     public interface IExtensionWarpper
     {
         /// <summary>
+        /// 可用的
+        /// </summary>
+        bool Usable { get; }
+        /// <summary>
         /// 模块名
         /// </summary>
         string Name { get; }

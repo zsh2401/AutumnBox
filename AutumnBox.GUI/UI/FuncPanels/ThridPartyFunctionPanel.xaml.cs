@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Drawing;
+using System.IO;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -44,9 +46,9 @@ namespace AutumnBox.GUI.UI.FuncPanels
             ListBoxModule.ItemsSource = Manager.InternalManager.Warppers;
         }
 
-        private void SetPanelByExtension(IExtensionWarpper wapper)
+        private void SetPanelByExtension(IExtensionWarpper warpper)
         {
-            if (wapper == null)//如果传入空,则视为未选中任何拓展模块
+            if (warpper == null)//如果传入空,则视为未选中任何拓展模块
             {
                 //隐藏拓展模块显示布局
                 GridInfo.Visibility = Visibility.Collapsed;
@@ -58,23 +60,28 @@ namespace AutumnBox.GUI.UI.FuncPanels
                 GridInfo.Visibility = Visibility.Visible;
                 TxtNothing.Visibility = Visibility.Collapsed;
                 //设置信息
-                TBDesc.Text = wapper.Desc;
-                TBName.Text = wapper.Name;
-                IMGIcon.Source = null;
-                try
-                {
-                    BitmapImage o1 = new BitmapImage();
-                    o1.BeginInit();
-                    o1.StreamSource = wapper.Icon;
-                    o1.EndInit();
-                    IMGIcon.Source = o1;
-                }
-                catch (Exception ex)
-                {
-                    Logger.Debug("Set icon fail", ex);
-                }
+                TBDesc.Text = warpper.Desc;
+                TBName.Text = warpper.Name;
                 //检查模块是否已经准备好了,并且设置按钮状态
-                SetBtnByForerunCheckResult(wapper.ForerunCheck(currentDevice));
+                SetBtnByForerunCheckResult(warpper.ForerunCheck(currentDevice));
+                SetIconBy(warpper);
+            }
+        }
+        private void SetIconBy(IExtensionWarpper warpper)
+        {
+            IMGIcon.Source = null;
+            try
+            {
+                BitmapImage bmp = new BitmapImage();
+                bmp.BeginInit();
+                bmp.StreamSource = warpper.Icon;
+                bmp.EndInit();
+                bmp.Freeze();
+                IMGIcon.Source = bmp;
+            }
+            catch (Exception ex)
+            {
+                Logger.Info(this, ex);
             }
         }
         private void SetBtnByForerunCheckResult(ForerunCheckResult result)

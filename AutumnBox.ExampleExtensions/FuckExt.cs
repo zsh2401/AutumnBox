@@ -4,12 +4,14 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.OpenFramework.Extension;
+using System.Reflection;
 using System.Threading;
 
 namespace AutumnBox.ExampleExtensions
 {
     [ExtRequiredDeviceStates(Basic.Device.DeviceState.None)]
     [ExtName("重启测试器")]
+    [ExtRunAsAdmin(true)]
     public class FuckExt : AutumnBoxExtension
     {
         public override int Main()

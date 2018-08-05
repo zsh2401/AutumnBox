@@ -15,17 +15,48 @@ namespace AutumnBox.OpenFramework.Open.Impl
 {
     class EmbeddedFileManagerImpl : IEmbeddedFileManager
     {
+        private class EmbeddedFileImpl : IEmbeddedFile
+        {
+            public readonly Context ctx;
+            public readonly string path;
+            public EmbeddedFileImpl(Context ctx, string path)
+            {
+                this.ctx = ctx;
+                this.path = path;
+            }
+            public void CopyTo(Stream targetStream)
+            {
+                using (var stream = GetStream())
+                {
+                    stream.CopyTo(targetStream);
+                }
+            }
+            public void ExtractTo(FileInfo targetFile)
+            {
+                using (FileStream fs = new FileStream(targetFile.FullName, FileMode.OpenOrCreate, FileAccess.ReadWrite))
+                {
+                    WriteTo(fs);
+                }
+            }
+            public Stream GetStream()
+            {
+                string fullPath = ctx.GetType().Namespace + "." + path;
+                return ctx.GetType().Assembly
+                    .GetManifestResourceStream(fullPath);
+            }
+            public void WriteTo(FileStream fs)
+            {
+                CopyTo(fs);
+            }
+        }
         private readonly Context ctx;
         public EmbeddedFileManagerImpl(Context ctx)
         {
             this.ctx = ctx;
         }
-
-        public Stream GetStream(string innerResPath)
+        public IEmbeddedFile Get(string innerResPath)
         {
-            string fullPath = ctx.GetType().Namespace + "." + innerResPath;
-            return ctx.GetType().Assembly
-                .GetManifestResourceStream(fullPath);
+            return new EmbeddedFileImpl(ctx, innerResPath);
         }
     }
 }

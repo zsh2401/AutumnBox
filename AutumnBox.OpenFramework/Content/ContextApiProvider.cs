@@ -89,7 +89,18 @@ namespace AutumnBox.OpenFramework.Content
             }
         }
         private ICompApi comp;
-
+        public IEmbeddedFileManager Emb
+        {
+            get
+            {
+                if (emb == null)
+                {
+                    emb = factory.GetEmbeddedFileManager(ctx);
+                }
+                return emb;
+            }
+        }
+        private IEmbeddedFileManager emb;
         public ContextApiProvider(Context ctx)
         {
             this.ctx = ctx;
