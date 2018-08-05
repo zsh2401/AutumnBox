@@ -45,6 +45,10 @@ namespace AutumnBox.OpenFramework.Content
         /// </summary>
         public ICompApi Comp => apiWarpper.Comp;
         /// <summary>
+        /// 嵌入资源提取器
+        /// </summary>
+        public IEmbeddedFileManager EmbFileManager => apiWarpper.Emb;
+        /// <summary>
         /// 构建
         /// </summary>
         public Context()

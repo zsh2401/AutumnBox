@@ -7,6 +7,7 @@ using AutumnBox.Basic.Device;
 using AutumnBox.OpenFramework.Content;
 using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.Management;
+using AutumnBox.OpenFramework.Open.Impl.AutumnBoxApi;
 using System;
 using System.IO;
 using System.Linq;
@@ -47,11 +48,24 @@ namespace AutumnBox.OpenFramework.Warpper
         /// 拓展模块所有者
         /// </summary>
         public string Auth => info.Auth;
+        /// <summary>
+        /// 是否需要以管理员模式运行
+        /// </summary>
+        public bool RunAsAdmin => info.RunAsAdmin;
         public Stream Icon => info.Icon;
         /// <summary>
         /// 日志标签
         /// </summary>
         public override string LoggingTag => Name + "'s warpper";
+
+        public bool Usable
+        {
+            get
+            {
+                return BuildInfo.SDK_VERSION >= info.MinApi;
+            }
+        }
+
         /// <summary>
         /// 构造
         /// </summary>
@@ -86,6 +100,16 @@ namespace AutumnBox.OpenFramework.Warpper
         /// <param name="device"></param>
         public virtual void Run(DeviceBasicInfo device)
         {
+            if (!OperatingSystem.IsRunAsAdmin && RunAsAdmin)
+            {
+                App.RunOnUIThread(() =>
+                {
+                    var result = App.ShowChoiceBox("Warning",
+                        "该模块需要秋之盒以管理模式运行,但目前并不是,是否重启秋之盒为管理员模式?");
+                    if (result != Open.ChoiceBoxResult.Right) return;
+                    AutumnBoxGuiApiProvider.Get().RestartAsAdmin();
+                });
+            }
             if (instance != null)
             {
                 App.RunOnUIThread(() =>
