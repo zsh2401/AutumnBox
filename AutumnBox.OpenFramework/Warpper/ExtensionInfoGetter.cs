@@ -32,27 +32,13 @@ namespace AutumnBox.OpenFramework.Warpper
         }
         private readonly Dictionary<string, ExtInfoAttribute> infoTable
             = new Dictionary<string, ExtInfoAttribute>();
-        public int MinApi
-        {
-            get
-            {
-                return (int)infoTable["ExtMinApi"].Value;
-            }
-        }
-        public int TargetApi
-        {
-            get
-            {
-                return (int)infoTable["ExtTargetApi"].Value;
-            }
-        }
-        public bool RunAsAdmin
-        {
-            get
-            {
-                return (bool)infoTable["ExtRunAsAdmin"].Value;
-            }
-        }
+        public int MinApi { get; private set; }
+        public int TargetApi { get; private set; }
+        public bool RunAsAdmin { get; private set; }
+        public byte[] Icon { get; private set; }
+        public Version Version { get; private set; }
+        public DeviceState RequiredStates { get; private set; }
+
         public string Name
         {
             get
@@ -60,14 +46,6 @@ namespace AutumnBox.OpenFramework.Warpper
                 return GetInfoByCurrentLanguage("ExtName");
             }
         }
-        public Stream Icon
-        {
-            get
-            {
-                return iconStream;
-            }
-        }
-        private Stream iconStream;
         public string Desc
         {
             get
@@ -90,20 +68,6 @@ namespace AutumnBox.OpenFramework.Warpper
             get
             {
                 return GetInfoByCurrentLanguage("ExtAuth");
-            }
-        }
-        public Version Version
-        {
-            get
-            {
-                return infoTable["ExtVersion"].Value as Version;
-            }
-        }
-        public DeviceState RequiredStates
-        {
-            get
-            {
-                return (DeviceState)infoTable["ExtRequiredDeviceStates"].Value;
             }
         }
         public ExtensionInfoGetter(Context ctx, Type type)
@@ -136,14 +100,27 @@ namespace AutumnBox.OpenFramework.Warpper
                 current = (ExtInfoAttribute)extInfoAttr[i];
                 infoTable.Add(current.Key, current);
             }
+            RequiredStates = (DeviceState)infoTable["ExtRequiredDeviceStates"].Value;
+            Icon = ReadIcon(infoTable["ExtIcon"].Value.ToString());
+            Version = infoTable["ExtVersion"].Value as Version;
+            RunAsAdmin = (bool)infoTable["ExtRunAsAdmin"].Value;
+            MinApi = (int)infoTable["ExtMinApi"].Value;
+            TargetApi = (int)infoTable["ExtTargetApi"].Value;
+        }
+        private byte[] ReadIcon(string iconPath)
+        {
             try
             {
-                string path = type.Namespace + "." + infoTable["ExtIcon"].Value.ToString();
-                iconStream = type.Assembly.GetManifestResourceStream(path);
+                string path = type.Namespace + "." + iconPath;
+                Stream stream = type.Assembly.GetManifestResourceStream(path);
+                byte[] buffer = new byte[stream.Length];
+                stream.Read(buffer, 0, buffer.Length);
+                return buffer;
             }
             catch (Exception ex)
             {
                 Debug.WriteLine(ex);
+                return new byte[0];
             }
         }
     }

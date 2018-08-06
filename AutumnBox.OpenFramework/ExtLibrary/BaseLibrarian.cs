@@ -26,7 +26,7 @@ namespace AutumnBox.OpenFramework.ExtLibrary
         /// <summary>
         /// 管理的程序集
         /// </summary>
-        public Assembly ManagedAssembly { get; protected set; }
+        public Assembly ManagedAssembly { get; private set; }
         /// <summary>
         /// 根据程序集进行初始化
         /// </summary>
@@ -64,6 +64,12 @@ namespace AutumnBox.OpenFramework.ExtLibrary
         public virtual bool Check()
         {
             return BuildInfo.SDK_VERSION >= MinSdk;
+        }
+        /// <summary>
+        /// 当库管理器准备时调用
+        /// </summary>
+        public virtual void Ready()
+        {
         }
         /// <summary>
         /// 重载内部信息

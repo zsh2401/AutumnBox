@@ -18,6 +18,10 @@ namespace AutumnBox.OpenFramework.ExtLibrary
         /// <returns></returns>
         bool Check();
         /// <summary>
+        /// 准备
+        /// </summary>
+        void Ready();
+        /// <summary>
         /// 重载
         /// </summary>
         void Reload();

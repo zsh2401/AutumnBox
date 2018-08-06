@@ -263,7 +263,8 @@
     <s:String x:Key="ckbConnectOnOpened">添加后立刻连接</s:String>
      <s:String x:Key="ckbNotifyOnFinished">当功能结束时发出音效</s:String>
     <s:String x:Key="RebootTo">重启到</s:String>
-    <s:String x:Key="DonateDescription">您的捐赠是对我莫大的鼓励,共同营造更好的中国应用生态</s:String>
+    <s:String x:Key="DonateDescription">您的捐赠是对我莫大的鼓励,
+        共同营造更好的中国应用生态</s:String>
     <s:String x:Key="PleaseSelected">请选择</s:String>
     <s:String x:Key="PleaseSelectFloderPackageWireFlash">请选择线刷包文件夹</s:String>
     <s:String x:Key="OutputRealTime">实时输出</s:String>

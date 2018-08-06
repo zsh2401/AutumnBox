@@ -59,9 +59,13 @@ namespace AutumnBox.GUI.UI.FuncPanels
                 //显示拓展模块显示布局
                 GridInfo.Visibility = Visibility.Visible;
                 TxtNothing.Visibility = Visibility.Collapsed;
+                Stopwatch watch = new Stopwatch();
+                watch.Start();
                 //设置信息
                 TBDesc.Text = warpper.Desc;
                 TBName.Text = warpper.Name;
+                watch.Stop();
+                Logger.Info(this,$"used {watch.Elapsed.Seconds} to fuck");
                 //检查模块是否已经准备好了,并且设置按钮状态
                 SetBtnByForerunCheckResult(warpper.ForerunCheck(currentDevice));
                 SetIconBy(warpper);
@@ -74,7 +78,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
             {
                 BitmapImage bmp = new BitmapImage();
                 bmp.BeginInit();
-                bmp.StreamSource = warpper.Icon;
+                bmp.StreamSource = new MemoryStream(warpper.Icon);
                 bmp.EndInit();
                 bmp.Freeze();
                 IMGIcon.Source = bmp;
