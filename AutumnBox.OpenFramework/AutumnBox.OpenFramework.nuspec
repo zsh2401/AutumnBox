@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>AutumnBox.SDK</id>
+    <version>$version$-beta</version>
+    <title>AutumnBox.SDK</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <licenseUrl>https://github.com/zsh2401/AutumnBox/blob/master/LICENSE</licenseUrl>
+    <projectUrl>http://github.com/zsh2401/AutumnBox</projectUrl>
+    <iconUrl>http://atmb.top/images/leaves.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <releaseNotes>Let's develop autumnbox extensions!</releaseNotes>
+    <copyright>$copyright$</copyright>
+    <tags>ADB AutumnBox</tags>
+    <language>zh-CN</language>
+  </metadata>
+  <files>
+    <file src="..\..\sdk\AutumnBox.Basic.dll" target="lib\net45" />
+    <file src="..\..\sdk\AutumnBox.Basic.Flows.dll" target="lib\net45" />
+  </files>
+</package>

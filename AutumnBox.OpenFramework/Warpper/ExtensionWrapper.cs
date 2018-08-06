@@ -52,7 +52,7 @@ namespace AutumnBox.OpenFramework.Warpper
         /// 是否需要以管理员模式运行
         /// </summary>
         public bool RunAsAdmin => info.RunAsAdmin;
-        public Stream Icon => info.Icon;
+        public byte[] Icon => info.Icon;
         /// <summary>
         /// 日志标签
         /// </summary>
@@ -102,13 +102,16 @@ namespace AutumnBox.OpenFramework.Warpper
         {
             if (!OperatingSystem.IsRunAsAdmin && RunAsAdmin)
             {
+                bool runnable = false;
                 App.RunOnUIThread(() =>
                 {
                     var result = App.ShowChoiceBox("Warning",
                         "该模块需要秋之盒以管理模式运行,但目前并不是,是否重启秋之盒为管理员模式?");
-                    if (result != Open.ChoiceBoxResult.Right) return;
+                    runnable = result == Open.ChoiceBoxResult.Right;
+                    if (!runnable) return;
                     AutumnBoxGuiApiProvider.Get().RestartAsAdmin();
                 });
+                if (!runnable) return;
             }
             if (instance != null)
             {

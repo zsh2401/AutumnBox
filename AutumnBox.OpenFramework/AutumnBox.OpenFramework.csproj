@@ -35,9 +35,9 @@
     <DocumentationFile>bin\Release\AutumnBox.OpenFramework.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'SDK|AnyCPU'">
-    <OutputPath>..\..\sdk\</OutputPath>
+    <OutputPath>bin\Sdk\</OutputPath>
     <DefineConstants>TRACE;SDK</DefineConstants>
-    <DocumentationFile>..\..\sdk\AutumnBox.OpenFramework.xml</DocumentationFile>
+    <DocumentationFile>bin\Sdk\AutumnBox.OpenFramework.xml</DocumentationFile>
     <Optimize>true</Optimize>
     <DebugType>pdbonly</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -109,6 +109,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AutumnBox.Basic.Flows\AutumnBox.Basic.Flows.csproj">
+      <Project>{3091ecae-7ff2-421d-b970-1c76d7cab0c0}</Project>
+      <Name>AutumnBox.Basic.Flows</Name>
+    </ProjectReference>
     <ProjectReference Include="..\AutumnBox.Basic\AutumnBox.Basic.csproj">
       <Project>{84044FB2-BD38-4283-8065-B639270ECE0F}</Project>
       <Name>AutumnBox.Basic</Name>
@@ -119,7 +123,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <None Include="AutumnBox.OpenFramework.nuspec" />
     <None Include="开发文档.url">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

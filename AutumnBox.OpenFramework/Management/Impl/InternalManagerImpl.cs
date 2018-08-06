@@ -102,6 +102,7 @@ namespace AutumnBox.OpenFramework.Management.Impl
                     ILibrarian lib = GetExtranceFrom(ass);
                     if (lib.Check())
                     {
+                        lib.Ready();
                         result.Add(lib);
                     }
                 }

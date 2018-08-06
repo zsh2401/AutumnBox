@@ -25,7 +25,7 @@ namespace AutumnBox.OpenFramework.Warpper
         /// <summary>
         /// 图标
         /// </summary>
-        Stream Icon { get; }
+        byte[] Icon { get; }
         /// <summary>
         /// 运行前检查
         /// </summary>
