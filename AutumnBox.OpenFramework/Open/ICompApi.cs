@@ -12,6 +12,14 @@ namespace AutumnBox.OpenFramework.Open
     public interface ICompApi
     {
         /// <summary>
+        /// 获取SDK版本
+        /// </summary>
+       Version SdkVersion { get; }
+        /// <summary>
+        /// 获取API级别
+        /// </summary>
+        int ApiLevel { get; }
+        /// <summary>
         /// 隔离执行某个函数
         /// </summary>
         /// <param name="act"></param>

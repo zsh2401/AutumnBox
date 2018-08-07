@@ -28,7 +28,7 @@ namespace AutumnBox.OpenFramework.Management.Impl
         {
             get
             {
-                return "exts";
+                return "..\\exts";
             }
         }
         /// <summary>

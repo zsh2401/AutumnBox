@@ -5,7 +5,9 @@
 *************************************************/
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,6 +15,16 @@ namespace AutumnBox.OpenFramework.Open.Impl
 {
     class CompImpl : ICompApi
     {
+        public Version SdkVersion { get; set; }
+
+        public int ApiLevel
+        {
+            get
+            {
+                return SdkVersion.Major;
+            }
+        }
+
         public void IsolatedInvoke(Action act)
         {
             act?.Invoke();
@@ -20,7 +32,7 @@ namespace AutumnBox.OpenFramework.Open.Impl
 
         public void IsolatedInvoke(int minSdk, Action act)
         {
-            IsolatedInvoke(BuildInfo.SDK_VERSION >= minSdk, act);
+            IsolatedInvoke(BuildInfo.API_LEVEL >= minSdk, act);
         }
 
         public void IsolatedInvoke(bool canRun, Action act)
@@ -29,6 +41,13 @@ namespace AutumnBox.OpenFramework.Open.Impl
             {
                 IsolatedInvoke(act);
             }
+        }
+
+        public CompImpl()
+        {
+            Assembly asm = Assembly.GetExecutingAssembly();
+            FileVersionInfo info = FileVersionInfo.GetVersionInfo(asm.Location);
+            SdkVersion = new Version(info.FileMajorPart, info.FileMinorPart, info.FileBuildPart);
         }
     }
 }

@@ -62,7 +62,7 @@ namespace AutumnBox.OpenFramework.Warpper
         {
             get
             {
-                return BuildInfo.SDK_VERSION >= info.MinApi;
+                return BuildInfo.API_LEVEL >= info.MinApi;
             }
         }
 

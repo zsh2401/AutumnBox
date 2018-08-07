@@ -46,13 +46,13 @@ namespace AutumnBox.OpenFramework.ExtLibrary
         /// </summary>
         public abstract string Name { get; }
         /// <summary>
-        /// 最低的秋之盒SDK
+        /// 最低的秋之盒API
         /// </summary>
-        public abstract int MinSdk { get; }
+        public abstract int MinApiLevel { get; }
         /// <summary>
-        /// 目标的秋之盒SDK
+        /// 目标的秋之盒API
         /// </summary>
-        public abstract int TargetSdk { get; }
+        public abstract int TargetApiLevel { get; }
         /// <summary>
         /// 用来存储所有已加载的包装类
         /// </summary>
@@ -63,7 +63,7 @@ namespace AutumnBox.OpenFramework.ExtLibrary
         /// <returns></returns>
         public virtual bool Check()
         {
-            return BuildInfo.SDK_VERSION >= MinSdk;
+            return BuildInfo.API_LEVEL >= MinApiLevel;
         }
         /// <summary>
         /// 当库管理器准备时调用
