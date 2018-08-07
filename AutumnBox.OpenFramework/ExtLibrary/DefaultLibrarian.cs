@@ -11,11 +11,12 @@ namespace AutumnBox.OpenFramework.ExtLibrary
     {
         public sealed override string Name => ManagedAssembly.GetName().Name;
 
-        public sealed override int MinSdk => BuildInfo.SDK_VERSION;
+        public sealed override int MinApiLevel => BuildInfo.API_LEVEL;
 
-        public sealed override int TargetSdk => BuildInfo.SDK_VERSION;
+        public sealed override int TargetApiLevel => BuildInfo.API_LEVEL;
 
-        public DefaultLibrarian(Assembly assembly) {
+        public DefaultLibrarian(Assembly assembly)
+        {
             Init(assembly);
         }
     }

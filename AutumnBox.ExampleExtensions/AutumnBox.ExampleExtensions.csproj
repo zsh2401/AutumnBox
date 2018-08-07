@@ -31,6 +31,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutumnBox.Basic, Version=2018.6.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutumnBox.SDK.8.0.2-beta\lib\net45\AutumnBox.Basic.dll</HintPath>
+    </Reference>
+    <Reference Include="AutumnBox.Basic.Flows, Version=2018.4.18.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutumnBox.SDK.8.0.2-beta\lib\net45\AutumnBox.Basic.Flows.dll</HintPath>
+    </Reference>
+    <Reference Include="AutumnBox.OpenFramework, Version=8.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutumnBox.SDK.8.0.2-beta\lib\net45\AutumnBox.OpenFramework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -49,6 +58,7 @@
   <ItemGroup>
     <Compile Include="FuckExt.cs" />
     <Compile Include="GuiExampleExtensions.cs" />
+    <Compile Include="Lib.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -69,24 +79,11 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\AutumnBox.Basic.Flows\AutumnBox.Basic.Flows.csproj">
-      <Project>{3091ecae-7ff2-421d-b970-1c76d7cab0c0}</Project>
-      <Name>AutumnBox.Basic.Flows</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\AutumnBox.Basic\AutumnBox.Basic.csproj">
-      <Project>{84044fb2-bd38-4283-8065-b639270ece0f}</Project>
-      <Name>AutumnBox.Basic</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\AutumnBox.OpenFramework\AutumnBox.OpenFramework.csproj">
-      <Project>{6516890c-86b6-40a0-8fd0-14ffdd62e1fe}</Project>
-      <Name>AutumnBox.OpenFramework</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Page Include="Windows\ExampleWindow.xaml">
