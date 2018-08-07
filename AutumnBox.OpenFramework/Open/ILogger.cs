@@ -19,6 +19,9 @@ namespace AutumnBox.OpenFramework.Open
         /// <summary>
         /// Info级别
         /// </summary>
+        /// <example>
+        /// Logger.Info("Hello!");
+        /// </example>
         /// <param name="msg"></param>
         void Info(string msg);
         /// <summary>

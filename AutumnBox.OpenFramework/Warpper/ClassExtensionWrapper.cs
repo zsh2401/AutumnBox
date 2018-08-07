@@ -9,6 +9,7 @@ using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.Management;
 using AutumnBox.OpenFramework.Open.Impl.AutumnBoxApi;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -18,8 +19,10 @@ namespace AutumnBox.OpenFramework.Warpper
     /// <summary>
     /// 标准的拓展模块包装器
     /// </summary>
-    internal class ExtensionWrapper : Context, IExtensionWarpper
+    internal class ClassExtensionWrapper : Context, IExtensionWarpper
     {
+        internal class ClassExtensionAlreadyCreatedException: Exception { }
+        private static List<Type> warppedType = new List<Type>();
         /// <summary>
         /// 上次运行的返回值
         /// </summary>
@@ -27,7 +30,7 @@ namespace AutumnBox.OpenFramework.Warpper
         /// <summary>
         /// 托管的拓展模块信息
         /// </summary>
-        private ExtensionInfoGetter info;
+        private ClassExtensionInfoGetter info;
         /// <summary>
         /// 托管的拓展模块实例
         /// </summary>
@@ -66,15 +69,23 @@ namespace AutumnBox.OpenFramework.Warpper
             }
         }
 
+        private static void CreatedCheck(Type t) {
+            int index = warppedType.IndexOf(t);
+            if (index != -1) {
+                throw new ClassExtensionAlreadyCreatedException();
+            }
+        }
         /// <summary>
         /// 构造
         /// </summary>
         /// <param name="t"></param>
-        internal ExtensionWrapper(Type t)
+        internal ClassExtensionWrapper(Type t)
         {
+            CreatedCheck(t);
             extType = t;
-            info = new ExtensionInfoGetter(this, t);
+            info = new ClassExtensionInfoGetter(this, t);
             info.Load();
+            warppedType.Add(t);
         }
         /// <summary>
         /// 运行前检查
@@ -193,7 +204,7 @@ namespace AutumnBox.OpenFramework.Warpper
         /// </summary>
         public virtual void Destory()
         {
-
+            warppedType.Remove(extType);
         }
         public void RunAsync(DeviceBasicInfo device, Action<IExtensionWarpper> callback = null)
         {
@@ -202,6 +213,21 @@ namespace AutumnBox.OpenFramework.Warpper
                 Run(device);
                 callback?.Invoke(this);
             });
+        }
+
+
+        public override int GetHashCode()
+        {
+            return extType.GetHashCode();
+        }
+
+        public bool Equals(IExtensionWarpper other)
+        {
+            return other != null && other.GetHashCode() == GetHashCode();
+        }
+        public override bool Equals(object obj)
+        {
+            return base.Equals(obj as IExtensionWarpper);
         }
     }
 }

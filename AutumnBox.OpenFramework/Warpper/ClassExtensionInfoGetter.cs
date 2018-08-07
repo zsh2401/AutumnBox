@@ -15,7 +15,7 @@ using System.Linq;
 
 namespace AutumnBox.OpenFramework.Warpper
 {
-    internal class ExtensionInfoGetter
+    internal class ClassExtensionInfoGetter
     {
         private readonly Context ctx;
         private readonly Type type;
@@ -70,7 +70,7 @@ namespace AutumnBox.OpenFramework.Warpper
                 return GetInfoByCurrentLanguage("ExtAuth");
             }
         }
-        public ExtensionInfoGetter(Context ctx, Type type)
+        public ClassExtensionInfoGetter(Context ctx, Type type)
         {
             this.ctx = ctx;
             this.type = type;
@@ -101,11 +101,17 @@ namespace AutumnBox.OpenFramework.Warpper
                 infoTable.Add(current.Key, current);
             }
             RequiredStates = (DeviceState)infoTable["ExtRequiredDeviceStates"].Value;
-            Icon = ReadIcon(infoTable["ExtIcon"].Value.ToString());
             Version = infoTable["ExtVersion"].Value as Version;
             RunAsAdmin = (bool)infoTable["ExtRunAsAdmin"].Value;
             MinApi = (int)infoTable["ExtMinApi"].Value;
             TargetApi = (int)infoTable["ExtTargetApi"].Value;
+            try
+            {
+                Icon = ReadIcon(infoTable["ExtIcon"].Value.ToString());
+            }
+            catch (KeyNotFoundException)
+            {
+            }
         }
         private byte[] ReadIcon(string iconPath)
         {

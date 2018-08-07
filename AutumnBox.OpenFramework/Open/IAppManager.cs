@@ -32,7 +32,7 @@ namespace AutumnBox.OpenFramework.Open
         /// <param name="msg">信息</param>
         void ShowMessageBox(string title, string msg);
         /// <summary>
-        /// 显示加载窗口
+        /// 显示加载窗口,这个函数不会阻塞
         /// </summary>
         void ShowLoadingWindow();
         /// <summary>
@@ -42,13 +42,17 @@ namespace AutumnBox.OpenFramework.Open
         /// <summary>
         /// 在UI线程运行方法
         /// </summary>
+        /// <example>
+        /// App.RunOnUIThread(()=>{
+        ///     App.ShowMessageBox("Title","Message");
+        /// });
+        /// </example>
         /// <param name="act"></param>
         void RunOnUIThread(Action act);
         /// <summary>
-        /// 获取主窗口
+        /// 获取秋之盒的主要主窗口
         /// </summary>
-        /// <param name="context"></param>
-        /// <returns></returns>
+        /// <returns>秋之盒主窗口</returns>
         Window GetMainWindow();
         /// <summary>
         /// 获取界面语言代码 类似zh-CN
@@ -56,8 +60,12 @@ namespace AutumnBox.OpenFramework.Open
         /// <returns>语言代码</returns>
         string CurrentLanguageCode { get; }
         /// <summary>
-        /// 显示调试窗口
+        /// 获取一个新创建的调试窗口对象
         /// </summary>
+        /// <example>
+        /// var dbWind = App.CreateDebuggingWindow();
+        /// dbWind.ShowDialog();
+        /// </example>
         Window CreateDebuggingWindow();
         /// <summary>
         /// 刷新拓展列表
@@ -66,15 +74,17 @@ namespace AutumnBox.OpenFramework.Open
         /// <summary>
         /// 重启AutumnBox
         /// </summary>
-        /// <param name="ctx"></param>
+       /// <exception cref="Exceptions.UserDeniedException">用户拒绝了该操作</exception>
         void RestartApp();
         /// <summary>
-        /// 以管理员重启秋之盒
+        /// 请求管理员重启秋之盒
         /// </summary>
+        /// <exception cref="Exceptions.UserDeniedException">用户拒绝了该操作</exception>
         void RestartAppAsAdmin();
         /// <summary>
         /// 关闭AutumnBox
         /// </summary>
+       /// <exception cref="Exceptions.UserDeniedException">用户拒绝了该操作</exception>
         void ShutdownApp();
         /// <summary>
         /// 当前是否以管理员权限运行
@@ -83,14 +93,14 @@ namespace AutumnBox.OpenFramework.Open
         /// <summary>
         /// 获取公共资源
         /// </summary>
-        /// <param name="key"></param>
+        /// <param name="key">键</param>
         /// <returns></returns>
         object GetPublicResouce(string key);
         /// <summary>
         /// 获取公共资源
         /// </summary>
-        /// <typeparam name="TReturn"></typeparam>
-        /// <param name="key"></param>
+        /// <typeparam name="TReturn">返回类型</typeparam>
+        /// <param name="key">键</param>
         /// <returns></returns>
         TReturn GetPublicResouce<TReturn>(string key) where TReturn : class;
     }

@@ -4,13 +4,12 @@
 ** desc： ...
 *************************************************/
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutumnBox.OpenFramework.Extension
 {
+    /// <summary>
+    /// 所有拓展模块特性的基类
+    /// </summary>
     [AttributeUsage(AttributeTargets.Class)]
     public abstract class ExtInfoAttribute : Attribute
     {

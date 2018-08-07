@@ -16,9 +16,13 @@ namespace AutumnBox.OpenFramework.Extension
     /// </summary>
     public class ExtMinApiAttribute : ExtInfoAttribute
     {
+        /// <summary>
+        /// 默认构造
+        /// </summary>
+        /// <param name="value"></param>
         public ExtMinApiAttribute(int value) : base(value)
         {
         }
-        internal ExtMinApiAttribute() : base(BuildInfo.SDK_VERSION) { }
+        internal ExtMinApiAttribute() : base(BuildInfo.API_LEVEL) { }
     }
 }

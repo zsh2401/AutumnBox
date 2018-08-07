@@ -14,9 +14,9 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.OpenFramework.Open.Impl
 {
-    class TemporaryFloderImpl : ITemporaryFloder
+    internal class TemporaryFloderImpl : ITemporaryFloder
     {
-        public Context ctx;
+        private readonly Context ctx;
         public TemporaryFloderImpl(Context ctx)
         {
 #if !SDK
