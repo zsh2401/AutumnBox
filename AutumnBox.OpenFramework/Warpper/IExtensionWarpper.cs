@@ -1,14 +1,13 @@
 ﻿using AutumnBox.Basic.Device;
 using AutumnBox.OpenFramework.Extension;
 using System;
-using System.IO;
 
 namespace AutumnBox.OpenFramework.Warpper
 {
     /// <summary>
     /// 拓展模块包装器
     /// </summary>
-    public interface IExtensionWarpper
+    public interface IExtensionWarpper : IEquatable<IExtensionWarpper>
     {
         /// <summary>
         /// 可用的

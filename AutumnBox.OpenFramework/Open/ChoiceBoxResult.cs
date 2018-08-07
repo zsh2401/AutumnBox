@@ -11,10 +11,22 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.OpenFramework.Open
 {
+    /// <summary>
+    /// App.ShowChoiceBox()的返回值
+    /// </summary>
     public enum ChoiceBoxResult
     {
+        /// <summary>
+        /// 左按钮,通常代表同意
+        /// </summary>
+        Left = 0,
+        /// <summary>
+        /// 右按钮
+        /// </summary>
         Right,
-        Left,
+        /// <summary>
+        /// 取消
+        /// </summary>
         Cancel,
     }
 }

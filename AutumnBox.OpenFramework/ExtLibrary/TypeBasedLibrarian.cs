@@ -4,23 +4,22 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.OpenFramework.Content;
+using AutumnBox.OpenFramework.Exceptions;
 using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.Warpper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutumnBox.OpenFramework.ExtLibrary
 {
     /// <summary>
     /// 入口类基类
     /// </summary>
-    public abstract class BaseLibrarian : Context, ILibrarian
+    public abstract class TypeBasedLibrarian : Context, ILibrarian
     {
-        internal BaseLibrarian()
+        internal TypeBasedLibrarian()
         {
         }
         /// <summary>
@@ -35,12 +34,11 @@ namespace AutumnBox.OpenFramework.ExtLibrary
         {
             ManagedAssembly = assembly;
             Logger.Debug($"Managed assembly {GetType().Assembly.GetName().Name}");
-            Reload();
         }
         /// <summary>
         /// 日志标签
         /// </summary>
-        public override string LoggingTag => ManagedAssembly.GetName().Name + "Entrance";
+        public override string LoggingTag => ManagedAssembly.GetName().Name + " Librarian";
         /// <summary>
         /// 名字
         /// </summary>
@@ -88,10 +86,17 @@ namespace AutumnBox.OpenFramework.ExtLibrary
         /// <param name="warppers"></param>
         protected virtual void DoReload(List<IExtensionWarpper> warppers)
         {
-            warppers.Clear();
-            var types = from type in ManagedAssembly.GetExportedTypes()
-                        where IsExt(type)
-                        select type;
+            var types = GetExtTypes();
+            warppers.AddRange(GetNewWarppersFrom(types));
+        }
+        /// <summary>
+        /// 获取未被加载过的包装类
+        /// </summary>
+        /// <param name="types"></param>
+        /// <returns></returns>
+        protected virtual IEnumerable<IExtensionWarpper> GetNewWarppersFrom(IEnumerable<Type> types)
+        {
+            List<IExtensionWarpper> newWarppers = new List<IExtensionWarpper>();
             foreach (var type in types)
             {
                 try
@@ -99,14 +104,29 @@ namespace AutumnBox.OpenFramework.ExtLibrary
                     var tmp = GetWarpperFor(type);
                     if (tmp.Usable)
                     {
-                        warppers.Add(tmp);
+                        newWarppers.Add(tmp);
                     }
+                }
+                catch (WarpperAlreadyCreatedOnceException)
+                {
+                    Logger.Debug($"{type.Name}'s warppers is created once,skip it");
                 }
                 catch (Exception ex)
                 {
                     Logger.Warn($"an exception threw on create wappers for {type.Name}", ex);
                 }
             }
+            return newWarppers;
+        }
+        /// <summary>
+        /// 获取符合条件的拓展模块类型
+        /// </summary>
+        /// <returns></returns>
+        protected virtual IEnumerable<Type> GetExtTypes()
+        {
+            return from type in ManagedAssembly.GetExportedTypes()
+                   where IsExt(type)
+                   select type;
         }
         /// <summary>
         /// 判断某个Type是否是秋之盒拓展
@@ -133,7 +153,7 @@ namespace AutumnBox.OpenFramework.ExtLibrary
         /// <returns></returns>
         protected virtual IExtensionWarpper GetWarpperFor(Type extType)
         {
-            return new ExtensionWrapper(extType);
+            return new ClassExtensionWrapper(extType);
         }
         /// <summary>
         /// 析构所有包装类

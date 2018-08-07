@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AutumnBox.OpenFramework.Open
+﻿namespace AutumnBox.OpenFramework.Open
 {
     /// <summary>
     /// 接近操作系统的API

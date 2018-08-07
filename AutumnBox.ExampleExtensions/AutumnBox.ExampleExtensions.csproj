@@ -17,7 +17,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\AutumnBox_Output\AutumnBox\file\exts\</OutputPath>
+    <OutputPath>..\..\AutumnBox_Output\AutumnBox\exts\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -25,20 +25,23 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\AutumnBox_Output\AutumnBox\file\exts\</OutputPath>
+    <OutputPath>..\..\AutumnBox_Output\AutumnBox\exts\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AutumnBox.Basic, Version=2018.6.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\AutumnBox.SDK.8.0.2-beta\lib\net45\AutumnBox.Basic.dll</HintPath>
+      <HintPath>..\packages\AutumnBox.SDK.8.0.3-beta\lib\net45\AutumnBox.Basic.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="AutumnBox.Basic.Flows, Version=2018.4.18.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\AutumnBox.SDK.8.0.2-beta\lib\net45\AutumnBox.Basic.Flows.dll</HintPath>
+      <HintPath>..\packages\AutumnBox.SDK.8.0.3-beta\lib\net45\AutumnBox.Basic.Flows.dll</HintPath>
+      <Private>False</Private>
     </Reference>
-    <Reference Include="AutumnBox.OpenFramework, Version=8.0.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\AutumnBox.SDK.8.0.2-beta\lib\net45\AutumnBox.OpenFramework.dll</HintPath>
+    <Reference Include="AutumnBox.OpenFramework, Version=8.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutumnBox.SDK.8.0.3-beta\lib\net45\AutumnBox.OpenFramework.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />

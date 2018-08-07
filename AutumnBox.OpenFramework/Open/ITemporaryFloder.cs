@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.IO;
 
 namespace AutumnBox.OpenFramework.Open
 {
     /// <summary>
     /// 临时文件夹管理器
     /// </summary>
-   public interface ITemporaryFloder
+    public interface ITemporaryFloder
     {
         /// <summary>
         /// 文件夹信息

@@ -4,6 +4,7 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.OpenFramework.Extension;
+using AutumnBox.OpenFramework.Management;
 using System.Reflection;
 using System.Threading;
 
@@ -16,6 +17,9 @@ namespace AutumnBox.ExampleExtensions
     {
         public override int Main()
         {
+            App.RunOnUIThread(()=> {
+                App.RefreshExtensionList();
+            });
             App.ShowLoadingWindow();
             Thread.Sleep(5000);
             App.CloseLoadingWindow();

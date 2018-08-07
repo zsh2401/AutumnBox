@@ -10,38 +10,96 @@ using System;
 
 namespace AutumnBox.OpenFramework.Open
 {
-    internal class Factory : Object
+    /// <summary>
+    /// 秋之盒API工厂类
+    /// </summary>
+    public class Factory : Object
     {
-        private IMd5 _md5 = new Md5Impl();
-        private IOSApi _os = new OSApiImpl();
-        private ICompApi _comp = new CompImpl();
+        private static IFrameworkManager fx = new FxImpl();
+        // 一些与Context无关的,以单例存在
+        /// <summary>
+        /// MD5
+        /// </summary>
+        private static IMd5 _md5 = new Md5Impl();
+        /// <summary>
+        /// 操作系统API
+        /// </summary>
+        private static IOSApi _os = new OSApiImpl();
+        /// <summary>
+        /// 兼容性API
+        /// </summary>
+        private static ICompApi _comp = new CompImpl();
+        /// <summary>
+        /// 获取日志器
+        /// </summary>
+        /// <param name="ctx">context</param>
+        /// <returns>日志器</returns>
         public ILogger GetLogger(Context ctx)
         {
             return new LoggerImpl(ctx);
         }
+        /// <summary>
+        /// 获取App管理器
+        /// </summary>
+        /// <param name="ctx"></param>
+        /// <returns></returns>
         public IAppManager GetAppManager(Context ctx)
         {
-            return new AppManagerImpl(ctx,AutumnBoxGuiApiProvider.Get());
+            return new AppManagerImpl(ctx, AutumnBoxGuiApiProvider.Get());
         }
+        /// <summary>
+        /// 获取操作系统API
+        /// </summary>
+        /// <param name="ctx"></param>
+        /// <returns></returns>
         public IOSApi GetOsApi(Context ctx)
         {
             return _os;
         }
+        /// <summary>
+        /// 获取内嵌资源管理器
+        /// </summary>
+        /// <param name="ctx"></param>
+        /// <returns></returns>
         public IEmbeddedFileManager GetEmbeddedFileManager(Context ctx)
         {
             return new EmbeddedFileManagerImpl(ctx);
         }
+        /// <summary>
+        /// 获取MD5 API
+        /// </summary>
+        /// <param name="ctx"></param>
+        /// <returns></returns>
         public IMd5 GetMd5(Context ctx)
         {
             return _md5;
         }
+        /// <summary>
+        /// 获取临时文件管理器
+        /// </summary>
+        /// <param name="ctx"></param>
+        /// <returns></returns>
         public ITemporaryFloder GetTmpManager(Context ctx)
         {
             return new TemporaryFloderImpl(ctx);
         }
+        /// <summary>
+        /// 获取兼容性API实现
+        /// </summary>
+        /// <param name="ctx"></param>
+        /// <returns></returns>
         public ICompApi GetCompApi(Context ctx)
         {
             return _comp;
+        }
+        /// <summary>
+        /// 获取扩展框架管理器
+        /// </summary>
+        /// <param name="ctx"></param>
+        /// <returns></returns>
+        public IFrameworkManager GetFx(Context ctx)
+        {
+            return fx;
         }
     }
 }

@@ -5,7 +5,6 @@
 *************************************************/
 using AutumnBox.Basic.Device;
 using AutumnBox.OpenFramework.Content;
-using System;
 
 namespace AutumnBox.OpenFramework.Extension
 {

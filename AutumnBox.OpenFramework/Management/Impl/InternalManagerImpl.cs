@@ -34,17 +34,11 @@ namespace AutumnBox.OpenFramework.Management.Impl
         /// <summary>
         /// 已加载的所有入口类
         /// </summary>
-        public IEnumerable<ILibrarian> Librarians { get; private set; }
+        public IEnumerable<ILibrarian> Librarians { get; private set; } = null;
         /// <summary>
         /// 已加载的所有包装器
         /// </summary>
-        public IEnumerable<IExtensionWarpper> Warppers
-        {
-            get
-            {
-                return GetWarppersFrom(Librarians);
-            }
-        }
+        public IEnumerable<IExtensionWarpper> Warppers => GetWarppersFrom(Librarians);
         /// <summary>
         /// 日志标签
         /// </summary>
@@ -54,18 +48,58 @@ namespace AutumnBox.OpenFramework.Management.Impl
         /// </summary>
         public void Reload()
         {
+            DirCheck();
+            if (Librarians == null)
+            {
+                GetLibs();
+            }
+            if (Librarians.Count() > 0)
+            {
+                ReloadLibs();
+            }
+            Logger.Info($"loaded {Librarians.Count()} librarian and {Warppers.Count()} warppers");
+        }
+        /// <summary>
+        /// 拓展文件夹检查
+        /// </summary>
+        private void DirCheck()
+        {
             Logger.Info("checking ext floder");
             DirectoryInfo dir = new DirectoryInfo(ExtensionPath);
             if (!dir.Exists)
             {
                 dir.Create();
-                return;
             }
+        }
+        /// <summary>
+        /// 获取文件夹下程序集的管理器
+        /// </summary>
+        private void GetLibs()
+        {
+
+            DirectoryInfo dir = new DirectoryInfo(ExtensionPath);
             FileInfo[] dlls = dir.GetFiles("*.dll");
             Logger.Info($"finded {dlls.Count()} dll files");
             IEnumerable<Assembly> assemblies = LoadAssemblies(dlls);
             Librarians = GetLibrarianFrom(assemblies);
-            Logger.Info($"loaded {Librarians.Count()} entrances and {Warppers.Count()} warppers");
+        }
+        /// <summary>
+        /// 执行已加载的管理器的Reload()
+        /// </summary>
+        private void ReloadLibs()
+        {
+            if (Librarians == null) return;
+            foreach (var lib in Librarians)
+            {
+                try
+                {
+                    lib.Reload();
+                }
+                catch (Exception ex)
+                {
+                    Logger.Warn($"{lib.Name}.Reload() was failure", ex);
+                }
+            }
         }
         /// <summary>
         /// 加载所有程序集
@@ -145,7 +179,7 @@ namespace AutumnBox.OpenFramework.Management.Impl
         /// <summary>
         /// 从所有入口类中获取所有拓展模块包装器
         /// </summary>
-        /// <param name="entrances"></param>
+        /// <param name="libs"></param>
         /// <returns></returns>
         private IEnumerable<IExtensionWarpper> GetWarppersFrom(IEnumerable<ILibrarian> libs)
         {
@@ -161,6 +195,11 @@ namespace AutumnBox.OpenFramework.Management.Impl
                     Logger.Warn($"获取拓展模块封装类失败({lib.Name})", ex);
                 }
             }
+            ////筛选出未被创建过的Warppers
+            //var filtedResult = from wp in result
+            //                   where cacheWarppers.IndexOf(wp) == -1
+            //                   select wp;
+
             return result;
         }
         /// <summary>
