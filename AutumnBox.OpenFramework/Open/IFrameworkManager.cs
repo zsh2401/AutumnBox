@@ -11,8 +11,14 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.OpenFramework.Open
 {
+    /// <summary>
+    /// 框架管理器
+    /// </summary>
     public interface IFrameworkManager
     {
+        /// <summary>
+        /// 重载库
+        /// </summary>
         void ReloadLibs();
     }
 }

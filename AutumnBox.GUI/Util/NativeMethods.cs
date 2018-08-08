@@ -24,7 +24,7 @@ namespace AutumnBox.GUI.Util
         [DllImport("kernel32.dll", EntryPoint = "SetProcessWorkingSetSize")]
         internal static extern int SetProcessWorkingSetSize(IntPtr process, int minSize, int maxSize);
         [DllImport("newdev.dll", SetLastError = true)]
-        public static extern bool DiInstallDriver
+        internal static extern bool DiInstallDriver
 (
 [In] IntPtr hwndParent,
 [In] string FullInfPath,

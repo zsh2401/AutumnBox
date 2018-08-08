@@ -15,6 +15,9 @@ using System.Linq;
 
 namespace AutumnBox.OpenFramework.Warpper
 {
+    /// <summary>
+    /// ClassExtension包装器的信息获取器
+    /// </summary>
     internal class ClassExtensionInfoGetter
     {
         private readonly Context ctx;

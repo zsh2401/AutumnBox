@@ -109,7 +109,7 @@ namespace AutumnBox.OpenFramework.ExtLibrary
                 }
                 catch (WarpperAlreadyCreatedOnceException)
                 {
-                    Logger.Debug($"{type.Name}'s warppers is created once,skip it");
+                    Logger.Debug($"{type.Name}'s warppers was created once,skip it");
                 }
                 catch (Exception ex)
                 {

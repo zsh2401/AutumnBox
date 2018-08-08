@@ -13,7 +13,7 @@ namespace AutumnBox.OpenFramework.Extension
     /// 标准的秋之盒拓展基类
     /// </summary>
     [ExtName("标准秋之盒拓展")]
-    [ExtName("Standrad AutumnBox extension", Lang = "en-us")]
+    [ExtName("Standard AutumnBox extension", Lang = "en-us")]
     [ExtAuth("佚名")]
     [ExtAuth("Anyone", Lang = "en-us")]
     [ExtDesc("这是一个测试模块")]
