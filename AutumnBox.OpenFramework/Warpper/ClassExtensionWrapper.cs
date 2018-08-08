@@ -5,6 +5,7 @@
 *************************************************/
 using AutumnBox.Basic.Device;
 using AutumnBox.OpenFramework.Content;
+using AutumnBox.OpenFramework.Exceptions;
 using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.Management;
 using AutumnBox.OpenFramework.Open.Impl.AutumnBoxApi;
@@ -21,7 +22,6 @@ namespace AutumnBox.OpenFramework.Warpper
     /// </summary>
     internal class ClassExtensionWrapper : Context, IExtensionWarpper
     {
-        internal class ClassExtensionAlreadyCreatedException: Exception { }
         private static List<Type> warppedType = new List<Type>();
         /// <summary>
         /// 上次运行的返回值
@@ -55,12 +55,17 @@ namespace AutumnBox.OpenFramework.Warpper
         /// 是否需要以管理员模式运行
         /// </summary>
         public bool RunAsAdmin => info.RunAsAdmin;
+        /// <summary>
+        /// 图标
+        /// </summary>
         public byte[] Icon => info.Icon;
         /// <summary>
         /// 日志标签
         /// </summary>
         public override string LoggingTag => Name + "'s warpper";
-
+        /// <summary>
+        /// 经过检查后,确实可用
+        /// </summary>
         public bool Usable
         {
             get
@@ -68,11 +73,16 @@ namespace AutumnBox.OpenFramework.Warpper
                 return BuildInfo.API_LEVEL >= info.MinApi;
             }
         }
-
-        private static void CreatedCheck(Type t) {
+        /// <summary>
+        /// 创建检查,如果有问题就抛出异常
+        /// </summary>
+        /// <param name="t"></param>
+        protected virtual void CreatedCheck(Type t)
+        {
             int index = warppedType.IndexOf(t);
-            if (index != -1) {
-                throw new ClassExtensionAlreadyCreatedException();
+            if (index != -1)
+            {
+                throw new WarpperAlreadyCreatedOnceException();
             }
         }
         /// <summary>

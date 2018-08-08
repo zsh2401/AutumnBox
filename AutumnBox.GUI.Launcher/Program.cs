@@ -2,6 +2,8 @@
 using System.Diagnostics;
 using System.Security.Principal;
 using System.Linq;
+using System.ComponentModel;
+using System.IO;
 
 namespace AutumnBox.GUI.Launcher
 {
@@ -43,8 +45,17 @@ namespace AutumnBox.GUI.Launcher
                 }
             }
             catch { }
-            Print("AutumnBox.GUI starts at now!");
-            Process.Start(startInfo);
+            
+            try {
+                Print("AutumnBox.GUI starts at now!");
+                Process.Start(startInfo);
+            }
+            catch (FileNotFoundException)
+            {
+                Print("找不到文件!请将整个秋之盒解压后再使用!");
+                Print("File not found!Please uncompresse all files!");
+            }
+
         }
         private void Print(object content, ConsoleColor? fore = null)
         {

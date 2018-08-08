@@ -65,7 +65,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
                 TBDesc.Text = warpper.Desc;
                 TBName.Text = warpper.Name;
                 watch.Stop();
-                Logger.Info(this,$"used {watch.Elapsed.Seconds} to fuck");
+                Logger.Info(this, $"used {watch.Elapsed.Seconds} to fuck");
                 //检查模块是否已经准备好了,并且设置按钮状态
                 SetBtnByForerunCheckResult(warpper.ForerunCheck(currentDevice));
                 SetIconBy(warpper);
@@ -74,6 +74,8 @@ namespace AutumnBox.GUI.UI.FuncPanels
         private void SetIconBy(IExtensionWarpper warpper)
         {
             IMGIcon.Source = null;
+            byte[] iconBytes = warpper.Icon;
+            if (iconBytes.Length == 0) return;
             try
             {
                 BitmapImage bmp = new BitmapImage();
