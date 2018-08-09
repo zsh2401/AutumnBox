@@ -74,6 +74,10 @@ namespace AutumnBox.GUI.UI.FuncPanels
         private void SetIconBy(IExtensionWarpper warpper)
         {
             IMGIcon.Source = null;
+            if (warpper == null
+                || warpper.Icon == null
+                || warpper.Icon.Length == 0
+                ) return;
             byte[] iconBytes = warpper.Icon;
             if (iconBytes.Length == 0) return;
             try
