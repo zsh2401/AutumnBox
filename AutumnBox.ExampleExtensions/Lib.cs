@@ -17,10 +17,6 @@ namespace AutumnBox.ExampleExtensions
         public override void Ready()
         {
             base.Ready();
-            App.RunOnUIThread(() =>
-            {
-                App.CreateDebuggingWindow().Show();
-            });
         }
     }
 }
