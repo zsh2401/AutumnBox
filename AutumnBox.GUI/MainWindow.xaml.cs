@@ -174,14 +174,14 @@ namespace AutumnBox.GUI
                 switch (devinfo.State)
                 {
                     case DeviceState.Poweron:
-                        TBCFuncs.SelectedIndex = 1;
+                        TBCFuncs.SelectedIndex = 2;
                         break;
                     case DeviceState.Recovery:
                     case DeviceState.Sideload:
-                        TBCFuncs.SelectedIndex = 2;
+                        TBCFuncs.SelectedIndex = 3;
                         break;
                     case DeviceState.Fastboot:
-                        TBCFuncs.SelectedIndex = 3;
+                        TBCFuncs.SelectedIndex = 4;
                         break;
                     default:
                         TBCFuncs.SelectedIndex = 0;
