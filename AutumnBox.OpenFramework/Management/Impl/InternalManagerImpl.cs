@@ -24,7 +24,7 @@ namespace AutumnBox.OpenFramework.Management.Impl
         public const string PATTERN_DFT_EXT = "*.dll";
         public const string PATTERN_DFT_ATMBEXT = "*.atmb";
         public const string PATTERN_DFT_HEXT = "*.adll";
-
+          
         public const string PATTERN_ONCE_EXT = "*.odll";
         private Assembly[] onceAssemblies;
         public bool IsOnceAssembly(Assembly assembly)
