@@ -60,13 +60,18 @@
   <ItemGroup>
     <Compile Include="Exceptions\LibrarianAlreadyCreatedOnceException.cs" />
     <Compile Include="Exceptions\WarpperAlreadyCreatedOnceException.cs" />
+    <Compile Include="Extension\ExtAppPropertyAttribute.cs" />
+    <Compile Include="Extension\ExtBeforeCreateAspectAttribute.cs" />
     <Compile Include="Extension\ExtHighPermissionAttribute.cs" />
     <Compile Include="Extension\ExtInfoAttribute.cs" />
     <Compile Include="Extension\ExtIconAttribute.cs" />
     <Compile Include="Extension\ExtInfoI18NAttribute.cs" />
     <Compile Include="Extension\ExtMinApiAttribute.cs" />
+    <Compile Include="Extension\ExtRequireRootAttribute.cs" />
     <Compile Include="Extension\ExtRunAsAdminAttribute.cs" />
     <Compile Include="Extension\ExtTargetApiAttribute.cs" />
+    <Compile Include="Extension\ExtMainAsceptAttribute.cs" />
+    <Compile Include="Extension\MinAndroidVersionAttribute.cs" />
     <Compile Include="Open\IFrameworkManager.cs" />
     <Compile Include="Open\Impl\FxImpl.cs" />
     <Compile Include="Warpper\ClassExtensionInfoGetter.cs" />
@@ -104,6 +109,7 @@
     <Compile Include="Extension\ExtNameAttribute.cs" />
     <Compile Include="Extension\ForerunCheckResult.cs" />
     <Compile Include="Warpper\ClassExtensionWrapper.cs" />
+    <Compile Include="Warpper\IExtInfoGetter.cs" />
     <Compile Include="Warpper\IExtensionWarpper.cs" />
     <Compile Include="ExtLibrary\ILibrarian.cs" />
     <Compile Include="Open\IAppManager.cs" />

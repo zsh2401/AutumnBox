@@ -30,7 +30,7 @@ namespace AutumnBox.OpenFramework.ExtLibrary
             {
                 if (ManagedAssembly == null)
                 {
-                    throw new NotImplementedException("Managed assembly was not loaded");
+                    throw new NullReferenceException("Managed assembly was not loaded");
                 }
                 return (Manager.InternalManager as InternalManagerImpl)
                     .IsOnceAssembly(ManagedAssembly);
