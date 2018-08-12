@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
@@ -25,6 +27,49 @@ namespace AutumnBox.GUI.UI.FuncPanels
     /// </summary>
     public partial class ThridPartyFunctionPanel : UserControl, IRefreshable
     {
+        private class WarpperWarpper
+        {
+            public IExtensionWarpper Warpper { get; private set; }
+            public string Name => Warpper.Name;
+            public ImageSource Icon
+            {
+                get
+                {
+                    if (icon == null) LoadIcon();
+                    return icon;
+                }
+            }
+            private ImageSource icon;
+            public WarpperWarpper(IExtensionWarpper warpper)
+            {
+                this.Warpper = warpper;
+            }
+            private void LoadIcon()
+            {
+                if (Warpper.Icon == null)
+                {
+                    icon = App.Current.Resources["DefaultExtensionIcon"] as ImageSource;
+                }
+                else
+                {
+                    BitmapImage bmp = new BitmapImage();
+                    bmp.BeginInit();
+                    bmp.StreamSource = new MemoryStream(Warpper.Icon);
+                    bmp.EndInit();
+                    bmp.Freeze();
+                    icon = bmp;
+                }
+            }
+            public static IEnumerable<WarpperWarpper> From(IEnumerable<IExtensionWarpper> warppers)
+            {
+                List<WarpperWarpper> result = new List<WarpperWarpper>();
+                foreach (var warpper in warppers)
+                {
+                    result.Add(new WarpperWarpper(warpper));
+                }
+                return result;
+            }
+        }
         internal static ThridPartyFunctionPanel Single { get; private set; }
         private DeviceBasicInfo currentDevice;
         private readonly FastPanel runningPanel;
@@ -59,41 +104,36 @@ namespace AutumnBox.GUI.UI.FuncPanels
                 //显示拓展模块显示布局
                 GridInfo.Visibility = Visibility.Visible;
                 TxtNothing.Visibility = Visibility.Collapsed;
-                Stopwatch watch = new Stopwatch();
-                watch.Start();
                 //设置信息
                 TBDesc.Text = warpper.Desc;
                 TBName.Text = warpper.Name;
-                watch.Stop();
-                Logger.Info(this, $"used {watch.Elapsed.Seconds} to fuck");
                 //检查模块是否已经准备好了,并且设置按钮状态
                 SetBtnByForerunCheckResult(warpper.ForerunCheck(currentDevice));
-                SetIconBy(warpper);
             }
         }
-        private void SetIconBy(IExtensionWarpper warpper)
-        {
-            IMGIcon.Source = null;
-            if (warpper == null
-                || warpper.Icon == null
-                || warpper.Icon.Length == 0
-                ) return;
-            byte[] iconBytes = warpper.Icon;
-            if (iconBytes.Length == 0) return;
-            try
-            {
-                BitmapImage bmp = new BitmapImage();
-                bmp.BeginInit();
-                bmp.StreamSource = new MemoryStream(warpper.Icon);
-                bmp.EndInit();
-                bmp.Freeze();
-                IMGIcon.Source = bmp;
-            }
-            catch (Exception ex)
-            {
-                Logger.Info(this, ex);
-            }
-        }
+        //private void SetIconBy(IExtensionWarpper warpper)
+        //{
+        //    IMGIcon.Source = null;
+        //    if (warpper == null
+        //        || warpper.Icon == null
+        //        || warpper.Icon.Length == 0
+        //        ) return;
+        //    byte[] iconBytes = warpper.Icon;
+        //    if (iconBytes.Length == 0) return;
+        //    try
+        //    {
+        //        BitmapImage bmp = new BitmapImage();
+        //        bmp.BeginInit();
+        //        bmp.StreamSource = new MemoryStream(warpper.Icon);
+        //        bmp.EndInit();
+        //        bmp.Freeze();
+        //        IMGIcon.Source = bmp;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Logger.Info(this, ex);
+        //    }
+        //}
         private void SetBtnByForerunCheckResult(ForerunCheckResult result)
         {
             BtnRun.IsEnabled = (result == ForerunCheckResult.Ok);
@@ -113,7 +153,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
         }
         public void Refresh(DeviceBasicInfo deviceSimpleInfo)
         {
-            ListBoxModule.ItemsSource = Manager.InternalManager.Warppers;
+            ListBoxModule.ItemsSource = WarpperWarpper.From(Manager.InternalManager.Warppers);
             currentDevice = deviceSimpleInfo;
             ListBoxModule.SelectedIndex = -1;
         }
@@ -128,7 +168,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
         }
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            SetPanelByExtension(ListBoxModule.SelectedItem as IExtensionWarpper);
+            SetPanelByExtension((ListBoxModule.SelectedItem as WarpperWarpper)?.Warpper);
         }
         private void ShowRunningBox(IExtensionWarpper wapper)
         {
@@ -141,18 +181,8 @@ namespace AutumnBox.GUI.UI.FuncPanels
         }
         private async void BtnRun_Click(object sender, RoutedEventArgs e)
         {
-            var warpper = (ListBoxModule.SelectedItem as IExtensionWarpper);
-            //ShowRunningBox(warpper);
-            //innerRunningPanel.OnClickStop = (s, _e) =>
-            //{
-            //    _e.Successful = warpper.Stop();
-            //};
+            IExtensionWarpper warpper = (ListBoxModule.SelectedItem as WarpperWarpper).Warpper;
             warpper.RunAsync(currentDevice);
-            //await Task.Run(() =>
-            //{
-            //    warpper.Run(currentDevice);
-            //});
-            //CloseRunningBox();
         }
 
         private void BtnOpenModuleFloder_Click(object sender, RoutedEventArgs e) =>

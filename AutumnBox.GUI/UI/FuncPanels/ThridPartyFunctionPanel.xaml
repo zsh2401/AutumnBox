@@ -9,14 +9,22 @@
              mc:Ignorable="d" 
     Margin="0,0,0,0" Width="897.5" Height="355.5">
     <Grid x:Name="GridContainer">
-        <ListBox Foreground="{DynamicResource ForegroundBrushKey}" Background="Transparent" BorderBrush="{DynamicResource BroderBrushKey}" x:Name="ListBoxModule" HorizontalAlignment="Left" DisplayMemberPath="Name" Margin="10,86,0,71" Width="265" SelectionChanged="ListBox_SelectionChanged"/>
+        <ListBox Foreground="{DynamicResource ForegroundBrushKey}" Background="Transparent" BorderBrush="{DynamicResource BroderBrushKey}" x:Name="ListBoxModule" HorizontalAlignment="Left"  Margin="10,86,0,71" Width="265" SelectionChanged="ListBox_SelectionChanged">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Image RenderOptions.BitmapScalingMode="Fant" Height="20px" Width="20px" Source="{Binding Icon}"></Image>
+                        <Label Content="{Binding Name}"></Label>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
         <TextBlock Visibility="Collapsed" x:Name="TxtNothing" TextAlignment="Center" FontSize="16"  Margin="291,161,10,0" TextWrapping="Wrap" Text="I'd love to change the world...but i dont know what to do" VerticalAlignment="Top"/>
         <Button Style="{DynamicResource AtmbxButtonStyle}" x:Name="BtnOpenModuleFloder" Content="{DynamicResource btnOpenModuleFloder}" HorizontalAlignment="Left" Margin="10,5,0,0" VerticalAlignment="Top" Width="265"   Click="BtnOpenModuleFloder_Click"/>
         <Grid x:Name="GridInfo" Margin="291,0,0,0">
             <TextBlock x:Name="TBName" Margin="10,10,142,0" TextWrapping="Wrap" Text="There is Module name" VerticalAlignment="Top" FontSize="24"   Style="{DynamicResource AtmbxTextBlockStyle}"/>
             <TextBlock x:Name="TBDesc" Margin="10,66,10,52" TextWrapping="Wrap" Text="There is Module desc"  FontSize="16" Style="{DynamicResource AtmbxTextBlockStyle}"/>
             <Button Style="{DynamicResource AtmbxButtonStyle}" x:Name="BtnRun" Content="{DynamicResource btnRunExtension}" Margin="10,0,10,10" Click="BtnRun_Click" Height="37" VerticalAlignment="Bottom"/>
-            <Image x:Name="IMGIcon" HorizontalAlignment="Left" Height="56" Margin="530,5,0,0" VerticalAlignment="Top" Width="67"/>
         </Grid>
         <cstm:HyperLink HorizontalContentAlignment="Center" Text="{DynamicResource hyperLinkInstallModule}" Hyperlink="{DynamicResource urlHelpOfInstallExtension}" FontSize="12" Margin="10,36,623,300"/>
         <cstm:HyperLink HorizontalContentAlignment="Center" Text="{DynamicResource hyperlinkExtensionsCenter}" Hyperlink="{DynamicResource urlDownloadExtensions}" FontSize="12" Margin="10,61,623,275"/>

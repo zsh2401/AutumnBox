@@ -2,9 +2,9 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:s="clr-namespace:System;assembly=mscorlib">
 
-    <BitmapImage x:Key="ImgFastboot" >../../Images/DevStatus/fastboot.png</BitmapImage>
+    <!--<BitmapImage x:Key="ImgFastboot" >../../Images/DevStatus/fastboot.png</BitmapImage>
     <BitmapImage x:Key="ImgRecovery" >../../Images/DevStatus/rec.png</BitmapImage>
     <BitmapImage x:Key="ImgNoDevice">../../Images/DevStatus/no_dev.png</BitmapImage>
-    <BitmapImage x:Key="ImgPoweron">../../Images/DevStatus/poweron.png</BitmapImage>
-
+    <BitmapImage x:Key="ImgPoweron">../../Images/DevStatus/poweron.png</BitmapImage>-->
+    <BitmapImage x:Key="DefaultExtensionIcon">../../Images/defaultExtIcon.png</BitmapImage>
 </ResourceDictionary>
