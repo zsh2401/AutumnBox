@@ -62,7 +62,7 @@ namespace AutumnBox.OpenFramework.Open.Impl
 
         public TReturn GetPublicResouce<TReturn>(string key) where TReturn : class
         {
-            return (TReturn)sourceApi.GetResouce(key);
+            return sourceApi.GetResouce(key) as TReturn;
         }
 
         public void RefreshExtensionList()
@@ -112,8 +112,10 @@ namespace AutumnBox.OpenFramework.Open.Impl
 
         public void ShowLoadingWindow()
         {
-            Task.Run(()=> {
-                RunOnUIThread(()=> {
+            Task.Run(() =>
+            {
+                RunOnUIThread(() =>
+                {
                     sourceApi.ShowLoadingWindow();
                 });
             });

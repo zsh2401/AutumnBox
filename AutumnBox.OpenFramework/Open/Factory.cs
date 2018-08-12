@@ -15,8 +15,12 @@ namespace AutumnBox.OpenFramework.Open
     /// </summary>
     public class Factory : Object
     {
-        private static IFrameworkManager fx = new FxImpl();
         // 一些与Context无关的,以单例存在
+        #region Context无关
+        /// <summary>
+        /// 框架管理器
+        /// </summary>
+        private static IFrameworkManager fx = new FxImpl();
         /// <summary>
         /// MD5
         /// </summary>
@@ -29,6 +33,9 @@ namespace AutumnBox.OpenFramework.Open
         /// 兼容性API
         /// </summary>
         private static ICompApi _comp = new CompImpl();
+        #endregion
+
+        #region Context有关
         /// <summary>
         /// 获取日志器
         /// </summary>
@@ -101,5 +108,6 @@ namespace AutumnBox.OpenFramework.Open
         {
             return fx;
         }
+        #endregion
     }
 }

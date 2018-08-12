@@ -21,6 +21,16 @@ namespace AutumnBox.OpenFramework.Management.Impl
     /// </summary>
     internal sealed class InternalManagerImpl : Context, IInternalManager
     {
+        public const string PATTERN_DFT_EXT = "*.dll";
+        public const string PATTERN_ONCE_EXT = "*.odll";
+        private Assembly[] onceAssemblies;
+        public bool IsOnceAssembly(Assembly assembly)
+        {
+            return onceAssemblies.Where((ass) =>
+            {
+                return ass == assembly;
+            }).Count() != 0;
+        }
         /// <summary>
         /// 拓展模块路径
         /// </summary>
@@ -78,9 +88,10 @@ namespace AutumnBox.OpenFramework.Management.Impl
         {
 
             DirectoryInfo dir = new DirectoryInfo(ExtensionPath);
-            FileInfo[] dlls = dir.GetFiles("*.dll");
+            FileInfo[] dlls = dir.GetFiles(PATTERN_DFT_EXT);
+            FileInfo[] odlls = dir.GetFiles(PATTERN_ONCE_EXT);
             Logger.Info($"finded {dlls.Count()} dll files");
-            IEnumerable<Assembly> assemblies = LoadAssemblies(dlls);
+            IEnumerable<Assembly> assemblies = LoadAssemblies(dlls, odlls);
             Librarians = GetLibrarianFrom(assemblies);
         }
         /// <summary>
@@ -104,23 +115,56 @@ namespace AutumnBox.OpenFramework.Management.Impl
         /// <summary>
         /// 加载所有程序集
         /// </summary>
-        /// <param name="files">程序集文件名</param>
         /// <returns>加载完毕的程序集</returns>
-        private IEnumerable<Assembly> LoadAssemblies(FileInfo[] files)
+        private IEnumerable<Assembly> LoadAssemblies(FileInfo[] normalFiles, FileInfo[] onceFiles)
         {
             List<Assembly> result = new List<Assembly>();
-            foreach (var file in files)
+            NormalLoad(result, normalFiles);
+            ODllLoad(result, onceFiles);
+            return result;
+        }
+        /// <summary>
+        /// 加载普通模块
+        /// </summary>
+        /// <param name="buffer"></param>
+        /// <param name="dllFiles"></param>
+        private void NormalLoad(List<Assembly> buffer, FileInfo[] dllFiles)
+        {
+            foreach (var file in dllFiles)
             {
                 try
                 {
-                    result.Add(Assembly.LoadFrom(file.FullName));
+                    buffer.Add(Assembly.LoadFrom(file.FullName));
                 }
                 catch (Exception ex)
                 {
                     Logger.Warn($"加载拓展模块失败({file.Name})", ex);
                 }
             }
-            return result;
+        }
+        /// <summary>
+        /// 加载全载型模块
+        /// </summary>
+        /// <param name="buffer"></param>
+        /// <param name="odllFiles"></param>
+        private void ODllLoad(List<Assembly> buffer, FileInfo[] odllFiles)
+        {
+            List<Assembly> onceAssemblies = new List<Assembly>();
+            foreach (var file in odllFiles)
+            {
+                try
+                {
+                    byte[] data = File.ReadAllBytes(file.FullName);
+                    Assembly assembly = Assembly.Load(data);
+                    buffer.Add(assembly);
+                    onceAssemblies.Add(assembly);
+                }
+                catch (Exception ex)
+                {
+                    Logger.Warn($"无占用加载拓展模块失败({file.Name})", ex);
+                }
+            }
+            this.onceAssemblies = onceAssemblies.ToArray();
         }
         /// <summary>
         /// 获取传入的所有程序集的入口实现

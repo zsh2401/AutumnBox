@@ -36,6 +36,7 @@ namespace AutumnBox.OpenFramework.Open.Impl
         {
             return InstallUsePnPUtil(infFilePath) | InstallUsePnPUtil_SysNative(infFilePath);
         }
+
         private bool InstallUsePnPUtil_SysNative(string fileName)
         {
             try
@@ -50,6 +51,7 @@ namespace AutumnBox.OpenFramework.Open.Impl
                 return false;
             }
         }
+
         private bool InstallUsePnPUtil(string fileName)
         {
             try

@@ -15,12 +15,16 @@ namespace AutumnBox.OpenFramework.Management
     /// </summary>
     public static class Manager
     {
-#if !SDK
         private static IInternalManager _internalManager;
         /// <summary>
         /// 内部管理器
         /// </summary>
-        public static IInternalManager InternalManager
+#if !SDK
+        public
+#else
+         internal
+#endif
+        static IInternalManager InternalManager
         {
             get
             {
@@ -32,7 +36,6 @@ namespace AutumnBox.OpenFramework.Management
                 return _internalManager;
             }
         }
-#endif
         private static IRunningManager _runningManager;
         /// <summary>
         /// 运行管理器
@@ -48,14 +51,19 @@ namespace AutumnBox.OpenFramework.Management
                 return _runningManager;
             }
         }
-#if !SDK
         private static bool inited = false;
         /// <summary>
         /// 初始化框架
         /// </summary>
-        public static void InitFramework(IAutumnBoxGuiApi guiApi)
+#if !SDK
+        public
+#else
+        internal
+#endif
+        static void InitFramework(IAutumnBoxGuiApi guiApi)
         {
-            if (!inited) {
+            if (!inited)
+            {
                 AutumnBoxGuiApiProvider.Inject(guiApi);
                 InternalManager.Reload();
                 inited = true;
@@ -71,6 +79,5 @@ namespace AutumnBox.OpenFramework.Management
                 throw new AccessDeniedException();
             }
         }
-#endif
     }
 }

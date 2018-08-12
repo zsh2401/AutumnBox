@@ -6,6 +6,8 @@
 using AutumnBox.OpenFramework.Content;
 using AutumnBox.OpenFramework.Exceptions;
 using AutumnBox.OpenFramework.Extension;
+using AutumnBox.OpenFramework.Management;
+using AutumnBox.OpenFramework.Management.Impl;
 using AutumnBox.OpenFramework.Warpper;
 using System;
 using System.Collections.Generic;
@@ -17,10 +19,22 @@ namespace AutumnBox.OpenFramework.ExtLibrary
     /// <summary>
     /// 入口类基类
     /// </summary>
-    public abstract class TypeBasedLibrarian : Context, ILibrarian
+    public abstract class AssemblyBasedLibrarian : Context, ILibrarian
     {
-        internal TypeBasedLibrarian()
+        /// <summary>
+        /// 是否是无占用型加载
+        /// </summary>
+        public bool IsUnoccupiedLoading
         {
+            get
+            {
+                if (ManagedAssembly == null)
+                {
+                    throw new NotImplementedException("Managed assembly was not loaded");
+                }
+                return (Manager.InternalManager as InternalManagerImpl)
+                    .IsOnceAssembly(ManagedAssembly);
+            }
         }
         /// <summary>
         /// 管理的程序集
@@ -30,8 +44,12 @@ namespace AutumnBox.OpenFramework.ExtLibrary
         /// 根据程序集进行初始化
         /// </summary>
         /// <param name="assembly"></param>
-        protected void Init(Assembly assembly)
+        protected void LoadFrom(Assembly assembly)
         {
+            if (ManagedAssembly != null)
+            {
+                throw new Exception("Assembly was inited once!");
+            }
             ManagedAssembly = assembly;
             Logger.Debug($"Managed assembly {GetType().Assembly.GetName().Name}");
         }

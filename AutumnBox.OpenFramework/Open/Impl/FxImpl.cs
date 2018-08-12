@@ -4,21 +4,22 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.OpenFramework.Management;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutumnBox.OpenFramework.Open.Impl
 {
     class FxImpl : IFrameworkManager
     {
+        public string ExtensionDir
+        {
+            get
+            {
+                return Manager.InternalManager.ExtensionPath;
+            }
+        }
+
         public void ReloadLibs()
         {
-#if !SDK
             Manager.InternalManager.Reload();
-#endif
         }
     }
 }

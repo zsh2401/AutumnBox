@@ -17,6 +17,10 @@ namespace AutumnBox.OpenFramework.Open
     public interface IFrameworkManager
     {
         /// <summary>
+        /// 拓展模块文件夹路径
+        /// </summary>
+        string ExtensionDir { get; }
+        /// <summary>
         /// 重载库
         /// </summary>
         void ReloadLibs();
