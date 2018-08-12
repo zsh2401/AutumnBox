@@ -7,7 +7,7 @@ using System.Reflection;
 
 namespace AutumnBox.OpenFramework.ExtLibrary
 {
-    sealed class DefaultLibrarian : TypeBasedLibrarian
+    sealed class DefaultLibrarian : AssemblyBasedLibrarian
     {
         public sealed override string Name => ManagedAssembly.GetName().Name;
 
@@ -17,7 +17,7 @@ namespace AutumnBox.OpenFramework.ExtLibrary
 
         public DefaultLibrarian(Assembly assembly)
         {
-            Init(assembly);
+            LoadFrom(assembly);
         }
     }
 }

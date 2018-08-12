@@ -23,6 +23,7 @@ namespace AutumnBox.OpenFramework.Extension
     [ExtMinApi(8)]
     [ExtTargetApi]
     [ExtRunAsAdmin(false)]
+    [ExtHighPermission(false)]
     public abstract class AutumnBoxExtension : Context
     {
         /// <summary>

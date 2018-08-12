@@ -9,14 +9,14 @@ namespace AutumnBox.OpenFramework.ExtLibrary
     /// <summary>
     /// 当程序集没有入口类时,将使用的默认入口类
     /// </summary>
-    public abstract class ExtensionLibrarin : TypeBasedLibrarian
+    public abstract class ExtensionLibrarin : AssemblyBasedLibrarian
     {
         /// <summary>
         /// 初始化构造器
         /// </summary>
         public ExtensionLibrarin()
         {
-            Init(GetType().Assembly);
+            LoadFrom(GetType().Assembly);
         }
     }
 }

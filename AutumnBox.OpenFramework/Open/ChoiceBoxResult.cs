@@ -17,16 +17,24 @@ namespace AutumnBox.OpenFramework.Open
     public enum ChoiceBoxResult
     {
         /// <summary>
-        /// 左按钮,通常代表同意
+        /// 取消
+        /// </summary>
+        Cancel = -1,
+        /// <summary>
+        /// 左按,通常代表拒绝
         /// </summary>
         Left = 0,
         /// <summary>
-        /// 右按钮
+        /// 右按钮,默认代表同意
         /// </summary>
-        Right,
+        Right = 1,
         /// <summary>
-        /// 取消
+        /// 默认情况的拒绝数值,等于Left
         /// </summary>
-        Cancel,
+        Deny = 0,
+        /// <summary>
+        /// 默认情况的同意数值,等于Right
+        /// </summary>
+        Accept = 1,
     }
 }

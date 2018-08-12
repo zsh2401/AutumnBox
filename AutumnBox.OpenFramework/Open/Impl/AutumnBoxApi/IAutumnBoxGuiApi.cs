@@ -49,11 +49,37 @@ namespace AutumnBox.OpenFramework.Open.Impl.AutumnBoxApi
         /// </summary>
         /// <param name="act"></param>
         void RunOnUIThread(Action act);
+        /// <summary>
+        /// 关闭程序
+        /// </summary>
         void Shutdown();
+        /// <summary>
+        /// 显示消息窗口
+        /// </summary>
+        /// <param name="title"></param>
+        /// <param name="msg"></param>
         void ShowMessageBox(string title, string msg);
+        /// <summary>
+        /// 显示选择窗口
+        /// </summary>
+        /// <param name="title"></param>
+        /// <param name="msg"></param>
+        /// <param name="btnLeft"></param>
+        /// <param name="btnRight"></param>
+        /// <returns></returns>
         ChoiceBoxResult ShowChoiceBox(string title, string msg, string btnLeft = null, string btnRight = null);
+        /// <summary>
+        /// 获取当前语言代码
+        /// </summary>
+        /// <returns></returns>
         string GetCurrentLanguageCode();
+        /// <summary>
+        /// 显示加载窗口
+        /// </summary>
         void ShowLoadingWindow();
+        /// <summary>
+        /// 关闭加载窗口
+        /// </summary>
         void CloseLoadingWindow();
     }
 }
