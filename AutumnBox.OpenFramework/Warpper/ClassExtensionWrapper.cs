@@ -23,14 +23,23 @@ namespace AutumnBox.OpenFramework.Warpper
     internal class ClassExtensionWrapper : Context, IExtensionWarpper
     {
         private static List<Type> warppedType = new List<Type>();
+        public static bool IsWarpped(Type t)
+        {
+            if (warppedType.IndexOf(t) != -1)
+            {
+                return false;
+            }
+            return true;
+        }
+
         /// <summary>
         /// 上次运行的返回值
         /// </summary>
         public int LastReturnCode { get; private set; } = -1;
-        /// <summary>
-        /// 托管的拓展模块信息
-        /// </summary>
-        private ClassExtensionInfoGetter info;
+        ///// <summary>
+        ///// 托管的拓展模块信息
+        ///// </summary>
+        //private ClassExtensionInfoGetter info;
         /// <summary>
         /// 托管的拓展模块实例
         /// </summary>
@@ -39,30 +48,30 @@ namespace AutumnBox.OpenFramework.Warpper
         /// 托管的拓展模块Type
         /// </summary>
         private readonly Type extType;
-        /// <summary>
-        /// 拓展模块名
-        /// </summary>
-        public string Name => info.Name;
-        /// <summary>
-        /// 拓展模块说明
-        /// </summary>
-        public string Desc => info.FullDesc;
-        /// <summary>
-        /// 拓展模块所有者
-        /// </summary>
-        public string Auth => info.Auth;
-        /// <summary>
-        /// 是否需要以管理员模式运行
-        /// </summary>
-        public bool RunAsAdmin => info.RunAsAdmin;
-        /// <summary>
-        /// 图标
-        /// </summary>
-        public byte[] Icon => info.Icon;
-        /// <summary>
-        /// 日志标签
-        /// </summary>
-        public override string LoggingTag => Name + "'s warpper";
+        ///// <summary>
+        ///// 拓展模块名
+        ///// </summary>
+        //public string Name => info.Name;
+        ///// <summary>
+        ///// 拓展模块说明
+        ///// </summary>
+        //public string Desc => info.FullDesc;
+        ///// <summary>
+        ///// 拓展模块所有者
+        ///// </summary>
+        //public string Auth => info.Auth;
+        ///// <summary>
+        ///// 是否需要以管理员模式运行
+        ///// </summary>
+        //public bool RunAsAdmin => info.RunAsAdmin;
+        ///// <summary>
+        ///// 图标
+        ///// </summary>
+        //public byte[] Icon => info.Icon;
+        ///// <summary>
+        ///// 日志标签
+        ///// </summary>
+        //public override string LoggingTag => Name + "'s warpper";
         /// <summary>
         /// 经过检查后,确实可用
         /// </summary>
@@ -70,9 +79,37 @@ namespace AutumnBox.OpenFramework.Warpper
         {
             get
             {
-                return BuildInfo.API_LEVEL >= info.MinApi;
+                return BuildInfo.API_LEVEL >= Info.MinApi;
             }
         }
+        private ExtBeforeCreateAspectAttribute[] BeforeCreateAspects
+        {
+            get
+            {
+                if (bca == null)
+                {
+                    var attrs = Attribute.GetCustomAttributes(extType, typeof(ExtBeforeCreateAspectAttribute), true);
+                    bca = (ExtBeforeCreateAspectAttribute[])attrs;
+                }
+                return bca;
+            }
+        }
+        private ExtBeforeCreateAspectAttribute[] bca;
+        private ExtMainAsceptAttribute[] MainAsceptAttributes
+        {
+            get
+            {
+                if (ma == null)
+                {
+                    var attrs = Attribute.GetCustomAttributes(extType, typeof(ExtMainAsceptAttribute), true);
+                    ma = (ExtMainAsceptAttribute[])attrs;
+                }
+                return ma;
+            }
+        }
+        private ExtMainAsceptAttribute[] ma;
+        public IExtInfoGetter Info { get; private set; }
+
         /// <summary>
         /// 创建检查,如果有问题就抛出异常
         /// </summary>
@@ -93,8 +130,8 @@ namespace AutumnBox.OpenFramework.Warpper
         {
             CreatedCheck(t);
             extType = t;
-            info = new ClassExtensionInfoGetter(this, t);
-            info.Load();
+            Info = new ClassExtensionInfoGetter(this, t);
+            Info.Reload();
             warppedType.Add(t);
         }
         /// <summary>
@@ -105,7 +142,7 @@ namespace AutumnBox.OpenFramework.Warpper
         public virtual ForerunCheckResult ForerunCheck(DeviceBasicInfo device)
         {
             ForerunCheckResult result;
-            if (info.RequiredStates.HasFlag(device.State))
+            if (Info.RequiredDeviceStates.HasFlag(device.State))
             {
                 result = ForerunCheckResult.Ok;
             }
@@ -121,29 +158,80 @@ namespace AutumnBox.OpenFramework.Warpper
         /// <param name="device"></param>
         public virtual void Run(DeviceBasicInfo device)
         {
-            if (!OperatingSystem.IsRunAsAdmin && RunAsAdmin)
-            {
-                bool runnable = false;
-                App.RunOnUIThread(() =>
-                {
-                    var result = App.ShowChoiceBox("Warning",
-                        "该模块需要秋之盒以管理模式运行,但目前并不是,是否重启秋之盒为管理员模式?");
-                    runnable = result == Open.ChoiceBoxResult.Right;
-                    if (!runnable) return;
-                    AutumnBoxGuiApiProvider.Get().RestartAsAdmin();
-                });
-                if (!runnable) return;
-            }
+            if (!RunningCheck()) return;
+            if (BeforeCreateInstance(device) == false) return;
+            //if (!OperatingSystem.IsRunAsAdmin && RunAsAdmin)
+            //{
+            //    bool runnable = false;
+            //    App.RunOnUIThread(() =>
+            //    {
+            //        var result = App.ShowChoiceBox("Warning",
+            //            "该模块需要秋之盒以管理模式运行,但目前并不是,是否重启秋之盒为管理员模式?");
+            //        runnable = result == Open.ChoiceBoxResult.Right;
+            //        if (!runnable) return;
+            //        AutumnBoxGuiApiProvider.Get().RestartAsAdmin();
+            //    });
+            //    if (!runnable) return;
+            //}
+            CreateInstance();
+            InjetctProperty(device);
+            if (BeforeMain(device)) return;
+            MainFlow();
+            AfterMain();
+        }
+        private bool RunningCheck()
+        {
             if (instance != null)
             {
                 App.RunOnUIThread(() =>
                 {
                     App.ShowMessageBox("警告", "该拓展模块已在运行,你不能开多个该模块!");
                 });
+                return false;
             }
-            CreateInstance();
-            InjetctProperty(device);
-            MainFlow();
+            return true;
+        }
+        private bool BeforeCreateInstance(DeviceBasicInfo targetDevice)
+        {
+            ExtBeforeCreateArgs args = new ExtBeforeCreateArgs()
+            {
+                TargetDevice = targetDevice,
+                ExtType = this.extType,
+                Prevent = false,
+                Context =this,
+            };
+            foreach (var aspect in BeforeCreateAspects)
+            {
+                aspect.Before(args);
+                if (args.Prevent) return false;
+            }
+            return true;
+        }
+        private bool BeforeMain(DeviceBasicInfo targetDevice)
+        {
+            BeforeArgs args = new BeforeArgs()
+            {
+                TargetDevice = targetDevice,
+                Prevent = false,
+                Context = this,
+            };
+            foreach (var aspect in MainAsceptAttributes)
+            {
+                aspect.Before(args);
+                if (args.Prevent) return false;
+            }
+            return true;
+        }
+        private void AfterMain()
+        {
+            AfterArgs args = new AfterArgs()
+            {
+                Context = this,
+            };
+            foreach (var aspect in MainAsceptAttributes)
+            {
+                aspect.After(args);
+            }
         }
         /// <summary>
         /// 创建实例
@@ -159,7 +247,7 @@ namespace AutumnBox.OpenFramework.Warpper
         private void InjetctProperty(DeviceBasicInfo device)
         {
             instance.TargetDevice = device;
-            instance.ExtName = Name;
+            instance.ExtName = Info.Name;
         }
         /// <summary>
         /// 主流程
@@ -173,11 +261,11 @@ namespace AutumnBox.OpenFramework.Warpper
             }
             catch (Exception ex)
             {
-                Logger.Warn($"[Extension] {Name} was threw a exception", ex);
+                Logger.Warn($"[Extension] {Info.Name} was threw a exception", ex);
                 LastReturnCode = 1;
                 App.RunOnUIThread(() =>
                 {
-                    string stoppedMsg = $"{Name} {App.GetPublicResouce<String>("msgExtensionWasFailed")}";
+                    string stoppedMsg = $"{Info.Name} {App.GetPublicResouce<String>("msgExtensionWasFailed")}";
                     App.ShowMessageBox("Notice", stoppedMsg);
                 });
             }

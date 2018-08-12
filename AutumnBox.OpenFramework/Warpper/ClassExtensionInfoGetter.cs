@@ -18,10 +18,10 @@ namespace AutumnBox.OpenFramework.Warpper
     /// <summary>
     /// ClassExtension包装器的信息获取器
     /// </summary>
-    internal class ClassExtensionInfoGetter
+    internal class ClassExtensionInfoGetter : IExtInfoGetter
     {
         private readonly Context ctx;
-        private readonly Type type;
+        public Type ExtType { get; private set; }
         private static readonly string DescFMT =
        "{0}: {1}" + Environment.NewLine +
        "{2}:" + Environment.NewLine +
@@ -40,7 +40,7 @@ namespace AutumnBox.OpenFramework.Warpper
         public bool RunAsAdmin { get; private set; }
         public byte[] Icon { get; private set; }
         public Version Version { get; private set; }
-        public DeviceState RequiredStates { get; private set; }
+        public DeviceState RequiredDeviceStates { get; private set; }
 
         public string Name
         {
@@ -56,7 +56,7 @@ namespace AutumnBox.OpenFramework.Warpper
                 return GetInfoByCurrentLanguage("ExtDesc");
             }
         }
-        public string FullDesc
+        public string FormatedDesc
         {
             get
             {
@@ -76,7 +76,7 @@ namespace AutumnBox.OpenFramework.Warpper
         public ClassExtensionInfoGetter(Context ctx, Type type)
         {
             this.ctx = ctx;
-            this.type = type;
+            this.ExtType = type;
         }
         private string GetInfoByCurrentLanguage(string key)
         {
@@ -94,16 +94,16 @@ namespace AutumnBox.OpenFramework.Warpper
             catch { }
             throw new KeyNotFoundException("cannot found target or default language");
         }
-        public void Load()
+        public void Reload()
         {
-            var extInfoAttr = type.GetCustomAttributes(typeof(ExtInfoAttribute), true);
+            var extInfoAttr = ExtType.GetCustomAttributes(typeof(ExtInfoAttribute), true);
             ExtInfoAttribute current = null;
             for (int i = 0; i < extInfoAttr.Length; i++)
             {
                 current = (ExtInfoAttribute)extInfoAttr[i];
                 infoTable.Add(current.Key, current);
             }
-            RequiredStates = (DeviceState)infoTable["ExtRequiredDeviceStates"].Value;
+            RequiredDeviceStates = (DeviceState)infoTable["ExtRequiredDeviceStates"].Value;
             Version = infoTable["ExtVersion"].Value as Version;
             RunAsAdmin = (bool)infoTable["ExtRunAsAdmin"].Value;
             MinApi = (int)infoTable["ExtMinApi"].Value;
@@ -120,8 +120,8 @@ namespace AutumnBox.OpenFramework.Warpper
         {
             try
             {
-                string path = type.Namespace + "." + iconPath;
-                Stream stream = type.Assembly.GetManifestResourceStream(path);
+                string path = ExtType.Namespace + "." + iconPath;
+                Stream stream = ExtType.Assembly.GetManifestResourceStream(path);
                 byte[] buffer = new byte[stream.Length];
                 stream.Read(buffer, 0, buffer.Length);
                 return buffer;
