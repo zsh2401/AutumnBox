@@ -18,7 +18,7 @@ namespace AutumnBox.CoreModules.Extensions
     [ExtDesc("Just like that")]
     [ExtIcon("Icons.android.png")]
     [ExtRequiredDeviceStates(DeviceState.Poweron)]
-    public class ApkInstaller : AutumnBoxExtension
+    public class EApkInstaller : AutumnBoxExtension
     {
         public override int Main()
         {
