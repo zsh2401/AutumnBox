@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="AutumnBox.GUI.UI.Cstm.ExtensionPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AutumnBox.GUI.UI.Cstm"
+             mc:Ignorable="d" d:DesignWidth="897" d:DesignHeight="355">
+    <Grid>
+        <ListBox Foreground="{DynamicResource ForegroundBrushKey}" Background="Transparent" BorderBrush="{DynamicResource BroderBrushKey}" x:Name="LBMain" HorizontalAlignment="Left" Width="301">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Image RenderOptions.BitmapScalingMode="Fant" Height="20px" Width="20px" Source="{Binding Icon}"></Image>
+                        <Label Content="{Binding Name}"></Label>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Grid x:Name="GridInfo" Margin="306,0,0,0">
+            <TextBlock x:Name="TBName" Margin="10,10,10,0" TextWrapping="Wrap" Text="There is Module name" VerticalAlignment="Top" FontSize="24"   Style="{DynamicResource AtmbxTextBlockStyle}"/>
+            <TextBlock x:Name="TBDesc" Margin="10,47,10,52" TextWrapping="Wrap" Text="There is Module desc"  FontSize="16" Style="{DynamicResource AtmbxTextBlockStyle}"/>
+            <Button Style="{DynamicResource AtmbxButtonStyle}" x:Name="BtnRun" Content="{DynamicResource btnRunExtension}" Margin="10,0,10,10" Height="37" VerticalAlignment="Bottom"/>
+        </Grid>
+    </Grid>
+</UserControl>

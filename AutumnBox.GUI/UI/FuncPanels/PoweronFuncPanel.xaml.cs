@@ -12,21 +12,34 @@ using AutumnBox.Basic.Device;
 using AutumnBox.GUI.UI.Fp;
 using AutumnBox.Basic.Device.PackageManage;
 using AutumnBox.GUI.UI.FuncPanels.PoweronFuncsUx;
+using AutumnBox.OpenFramework.Warpper;
+using AutumnBox.Support.Log;
+using System.Linq;
 
 namespace AutumnBox.GUI.UI.FuncPanels
 {
     /// <summary>
     /// PoweronFunctions.xaml 的交互逻辑
     /// </summary>
-    public partial class PoweronFuncPanel : FastPanelChild, IRefreshable
+    public partial class PoweronFuncPanel : FastPanelChild, IExtPanel
     {
+        public void Set(IExtensionWarpper[] warppers, DeviceBasicInfo currentDevice)
+        {
+            var filted = from warpper in warppers
+                         where warpper.Info.RequiredDeviceStates.HasFlag(DeviceState.Poweron)
+                         select warpper;
+            ExtPanel.Set(filted.ToArray(), currentDevice);
+        }
         private DeviceBasicInfo _currentDevInfo;
         private IPoweronFuncsUX ux;
 
         public PoweronFuncPanel()
         {
             InitializeComponent();
-            ux = App.Current.SpringContext.GetObject<IPoweronFuncsUX>("poweronFuncsUXImp");
+            ExtPanel.TargetDeviceState = new DeviceState[] {
+                DeviceState.Poweron
+            };
+            //ux = App.Current.SpringContext.GetObject<IPoweronFuncsUX>("poweronFuncsUXImp");
         }
 
         public void Reset()
@@ -203,6 +216,14 @@ namespace AutumnBox.GUI.UI.FuncPanels
         private void ButtonActAppOpsX_Click(object sender, RoutedEventArgs e)
         {
             ux.ActivateAppOpsX(_currentDevInfo);
+        }
+
+        public void Set(IExtensionWarpper[] warppers)
+        {
+            var filted = from warpper in warppers
+                         where warpper.Info.RequiredDeviceStates.HasFlag(DeviceState.Poweron)
+                         select warpper;
+            ExtPanel.Set(filted.ToArray());
         }
     }
 }

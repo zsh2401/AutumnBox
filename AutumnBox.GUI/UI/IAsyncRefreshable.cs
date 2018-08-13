@@ -2,7 +2,7 @@
 
 namespace AutumnBox.GUI.UI
 {
-    internal interface IAsyncRefreshable:IRefreshable
+    internal interface IAsyncRefreshable:IExtPanel
     {
         event EventHandler RefreshStart;
         event EventHandler RefreshFinished;

@@ -25,12 +25,12 @@ namespace AutumnBox.GUI.UI.FuncPanels
     /// <summary>
     /// ThridPartyFunctionPanel.xaml 的交互逻辑
     /// </summary>
-    public partial class ThridPartyFunctionPanel : UserControl, IRefreshable
+    public partial class ThridPartyFunctionPanel : UserControl
     {
         private class WarpperWarpper
         {
             public IExtensionWarpper Warpper { get; private set; }
-            public string Name => Warpper.Name;
+            public string Name => Warpper.Info.Name;
             public ImageSource Icon
             {
                 get
@@ -46,7 +46,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
             }
             private void LoadIcon()
             {
-                if (Warpper.Icon == null)
+                if (Warpper.Info.Icon == null)
                 {
                     icon = App.Current.Resources["DefaultExtensionIcon"] as ImageSource;
                 }
@@ -54,7 +54,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
                 {
                     BitmapImage bmp = new BitmapImage();
                     bmp.BeginInit();
-                    bmp.StreamSource = new MemoryStream(Warpper.Icon);
+                    bmp.StreamSource = new MemoryStream(Warpper.Info.Icon);
                     bmp.EndInit();
                     bmp.Freeze();
                     icon = bmp;
@@ -105,8 +105,8 @@ namespace AutumnBox.GUI.UI.FuncPanels
                 GridInfo.Visibility = Visibility.Visible;
                 TxtNothing.Visibility = Visibility.Collapsed;
                 //设置信息
-                TBDesc.Text = warpper.Desc;
-                TBName.Text = warpper.Name;
+                TBDesc.Text = warpper.Info.Desc;
+                TBName.Text = warpper.Info.Name;
                 //检查模块是否已经准备好了,并且设置按钮状态
                 SetBtnByForerunCheckResult(warpper.ForerunCheck(currentDevice));
             }
@@ -172,7 +172,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
         }
         private void ShowRunningBox(IExtensionWarpper wapper)
         {
-            innerRunningPanel.CurrentRunningName = wapper.Name;
+            innerRunningPanel.CurrentRunningName = wapper.Info.Name;
             runningPanel.Display();
         }
         private void CloseRunningBox()
@@ -187,5 +187,16 @@ namespace AutumnBox.GUI.UI.FuncPanels
 
         private void BtnOpenModuleFloder_Click(object sender, RoutedEventArgs e) =>
             Process.Start(Manager.InternalManager.ExtensionPath);
+
+        public void Refresh(IExtensionWarpper[] warppers, DeviceBasicInfo currentDevice)
+        {
+            ListBoxModule.ItemsSource = WarpperWarpper.From(Manager.InternalManager.Warppers);
+            ListBoxModule.SelectedIndex = -1;
+        }
+
+        public void Reset(IExtensionWarpper[] warppers)
+        {
+            
+        }
     }
 }

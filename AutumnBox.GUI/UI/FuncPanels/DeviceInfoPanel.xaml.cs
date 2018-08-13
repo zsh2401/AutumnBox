@@ -35,7 +35,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
     /// <summary>
     /// DeviceInfoPanel.xaml 的交互逻辑
     /// </summary>
-    public partial class DeviceInfoPanel : UserControl, IRefreshable
+    public partial class DeviceInfoPanel : UserControl, IDeviceRefreshable
     {
         private const string defaultStr = "...";
 

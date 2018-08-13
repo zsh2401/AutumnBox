@@ -5,18 +5,28 @@ using AutumnBox.Basic.Device;
 using AutumnBox.Basic.Flows;
 using System.Windows.Forms;
 using AutumnBox.GUI.UI.Fp;
+using AutumnBox.OpenFramework.Warpper;
+using System.Linq;
 
 namespace AutumnBox.GUI.UI.FuncPanels
 {
     /// <summary>
     /// RecoveryFunctions.xaml 的交互逻辑
     /// </summary>
-    public partial class RecFuncPanel : FastPanelChild, IRefreshable
+    public partial class RecFuncPanel : FastPanelChild, IExtPanel
     {
+        public void Set(IExtensionWarpper[] warppers, DeviceBasicInfo currentDevice)
+        {
+            ExtPanel.Set(warppers, currentDevice);
+        }
         private DeviceBasicInfo _currentDevInfo;
         public RecFuncPanel()
         {
             InitializeComponent();
+            ExtPanel.TargetDeviceState = new DeviceState[] {
+                DeviceState.Sideload,
+                DeviceState.Recovery
+            };
         }
 
         public void Refresh(DeviceBasicInfo devInfo)
@@ -74,6 +84,11 @@ namespace AutumnBox.GUI.UI.FuncPanels
                 backuper.Init(args);
                 new PullingWindow(backuper) { Owner = App.Current.MainWindow }.Show();
             }
+        }
+
+        public void Set(IExtensionWarpper[] warppers)
+        {
+            ExtPanel.Set(warppers);
         }
     }
 }
