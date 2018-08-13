@@ -18,8 +18,8 @@
         </ListBox>
         <Grid x:Name="GridInfo" Margin="306,0,0,0">
             <TextBlock x:Name="TBName" Margin="10,10,10,0" TextWrapping="Wrap" Text="There is Module name" VerticalAlignment="Top" FontSize="30"   Style="{DynamicResource AtmbxTextBlockStyle}"/>
-            <TextBlock x:Name="TBDesc" Margin="10,68,10,41" TextWrapping="Wrap" Text="There is Module desc"  FontSize="16" Style="{DynamicResource AtmbxTextBlockStyle}"/>
-            <Button Style="{DynamicResource AtmbxButtonStyle}" x:Name="BtnRun" Content="{DynamicResource btnRunExtension}" Margin="10,0,10,10" Height="26" VerticalAlignment="Bottom"/>
+            <TextBlock x:Name="TBDesc" Margin="10,68,10,56" TextWrapping="Wrap" Text="There is Module desc"  FontSize="16" Style="{DynamicResource AtmbxTextBlockStyle}"/>
+            <Button Style="{DynamicResource AtmbxButtonStyle}" x:Name="BtnRun" Content="{DynamicResource btnRunExtension}" Margin="10,0,10,10" Height="41" VerticalAlignment="Bottom"/>
         </Grid>
     </Grid>
 </UserControl>

@@ -14,14 +14,27 @@ namespace AutumnBox.OpenFramework.Extension
     /// </summary>
     public class BeforeArgs
     {
+        /// <summary>
+        /// 上下文
+        /// </summary>
         public Context Context { get; internal set; }
+        /// <summary>
+        /// 截断
+        /// 默认为false
+        /// </summary>
         public bool Prevent { get; set; } = false;
+        /// <summary>
+        /// 目标设备
+        /// </summary>
         public DeviceBasicInfo TargetDevice { get; set; }
     }
     /// <summary>
     /// 运行后函数的参数
     /// </summary>
     public class AfterArgs {
+        /// <summary>
+        /// 上下文
+        /// </summary>
         public Context Context { get; internal set; }
     }
     /// <summary>

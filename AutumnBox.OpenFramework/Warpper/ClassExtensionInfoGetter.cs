@@ -18,7 +18,7 @@ namespace AutumnBox.OpenFramework.Warpper
     /// <summary>
     /// ClassExtension包装器的信息获取器
     /// </summary>
-    internal class ClassExtensionInfoGetter : IExtInfoGetter
+    internal class ClassExtensionInfoGetter : Context, IExtInfoGetter
     {
         private readonly Context ctx;
         public Type ExtType { get; private set; }
@@ -120,7 +120,8 @@ namespace AutumnBox.OpenFramework.Warpper
         {
             try
             {
-                string path = ExtType.Namespace + "." + iconPath;
+                string path = ExtType.Assembly.GetName().Name + "." + iconPath;
+                Logger.Info($"getting " + path );
                 Stream stream = ExtType.Assembly.GetManifestResourceStream(path);
                 byte[] buffer = new byte[stream.Length];
                 stream.Read(buffer, 0, buffer.Length);
