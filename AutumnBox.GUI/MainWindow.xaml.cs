@@ -72,6 +72,7 @@ namespace AutumnBox.GUI
             LanguageHelper.LanguageChanged += (s, e) =>
             {
                 SetTitile();
+                Reset();
             };
         }
 
