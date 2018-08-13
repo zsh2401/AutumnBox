@@ -48,7 +48,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CoreEntry.cs" />
-    <Compile Include="Extensions\ApkInstaller.cs" />
+    <Compile Include="Extensions\EApkInstaller.cs" />
+    <Compile Include="Extensions\EBreventActivator.cs" />
+    <Compile Include="Extensions\EBreventActivator8.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -96,6 +98,8 @@
   <ItemGroup>
     <EmbeddedResource Include="Icons\android.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\brevent.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
