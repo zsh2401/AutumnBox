@@ -11,9 +11,28 @@ namespace AutumnBox.OpenFramework.Content
     /// <summary>
     /// AutumnBox开放框架上下文
     /// </summary>
+    [ContextPermission(CtxPer.Normal)]
     public abstract class Context : Object
     {
         private ContextApiProvider apiWarpper;
+        /// <summary>
+        /// 权限
+        /// </summary>
+        internal CtxPer Permission
+        {
+            get
+            {
+                if (permission == CtxPer.None)
+                {
+                    var attr = Attribute
+                    .GetCustomAttribute(GetType(),
+                    typeof(ContextPermissionAttribute), true);
+                    permission = (attr as ContextPermissionAttribute)?.Value ?? CtxPer.Normal;
+                }
+                return permission;
+            }
+        }
+        private CtxPer permission = CtxPer.None;
         /// <summary>
         /// 日志标签
         /// </summary>
