@@ -33,16 +33,20 @@ using AutumnBox.GUI.UI.FuncPanels;
 using System.Windows.Controls;
 using AutumnBox.GUI.I18N;
 using System.Media;
+using AutumnBox.OpenFramework.Management;
+using System.Linq;
+using AutumnBox.Support.Log;
 
 namespace AutumnBox.GUI
 {
     /// <summary>
     /// Window1.xaml 的交互逻辑
     /// </summary>
-    public sealed partial class MainWindow : Window, IRefreshable, ITitleBarWindow
+    public sealed partial class MainWindow : Window, IDeviceRefreshable, ITitleBarWindow
     {
         private Object setUILock = new System.Object();
-        private List<IRefreshable> refreshables;
+        private List<IExtPanel> extPanels;
+        private List<IDeviceRefreshable> deviceRefreshables;
         private DeviceBasicInfo currentDevice;
         private SoundPlayer audioPlayer;
         public bool BtnMinEnable => true;
@@ -53,14 +57,15 @@ namespace AutumnBox.GUI
         {
             InitializeComponent();
             audioPlayer = new SoundPlayer("Resources/Sound/ok.wav");
-            refreshables = new List<IRefreshable>
-            {
+            deviceRefreshables = new List<IDeviceRefreshable>() {
                 RebootGrid,
                 DevInfoPanel,
+            };
+            extPanels = new List<IExtPanel>
+            {
                 FastbootFuncs,
                 RecoveryFuncs,
                 PoweronFuncs,
-                ThridPartyFuncs
             };
             RegisterEvent();
             SetTitile();
@@ -169,32 +174,35 @@ namespace AutumnBox.GUI
             lock (setUILock)
             {
                 currentDevice = devinfo;
-                refreshables.ForEach((ctrl) => { ctrl.Refresh(devinfo); });
+                extPanels.ForEach((ctrl) => { ctrl.Set(Manager.InternalManager.Warppers.ToArray(), devinfo); });
+                deviceRefreshables.ForEach((ctrl) => { ctrl.Refresh(devinfo); });
                 if (TBCFuncs.SelectedIndex == 4) return;
                 switch (devinfo.State)
                 {
                     case DeviceState.Poweron:
-                        TBCFuncs.SelectedIndex = 2;
+                        TBCFuncs.SelectedIndex = 1;
                         break;
                     case DeviceState.Recovery:
                     case DeviceState.Sideload:
-                        TBCFuncs.SelectedIndex = 3;
+                        TBCFuncs.SelectedIndex = 2;
                         break;
                     case DeviceState.Fastboot:
-                        TBCFuncs.SelectedIndex = 4;
+                        TBCFuncs.SelectedIndex = 3;
                         break;
                     default:
-                        TBCFuncs.SelectedIndex = 0;
+                        TBCFuncs.SelectedIndex = 4;
                         break;
                 }
-            }
+            };
         }
 
         public void Reset()
         {
             lock (setUILock)
             {
-                refreshables.ForEach((ctrl) => { ctrl.Reset(); });
+                Logger.Info(this,"reseting");
+                extPanels.ForEach((ctrl) => { ctrl.Set(Manager.InternalManager.Warppers.ToArray()); });
+                deviceRefreshables.ForEach((ctrl) => { ctrl.Reset(); });
                 if (TBCFuncs.SelectedIndex == 4) return;
                 TBCFuncs.SelectedIndex = 0;
             }

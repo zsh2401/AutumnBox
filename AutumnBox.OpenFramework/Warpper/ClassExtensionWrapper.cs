@@ -150,6 +150,7 @@ namespace AutumnBox.OpenFramework.Warpper
             {
                 result = ForerunCheckResult.DeviceStateNotRight;
             }
+            Logger.Info(result.ToString());
             return result;
         }
         /// <summary>
@@ -159,26 +160,26 @@ namespace AutumnBox.OpenFramework.Warpper
         public virtual void Run(DeviceBasicInfo device)
         {
             if (!RunningCheck()) return;
-            if (BeforeCreateInstance(device) == false) return;
-            //if (!OperatingSystem.IsRunAsAdmin && RunAsAdmin)
-            //{
-            //    bool runnable = false;
-            //    App.RunOnUIThread(() =>
-            //    {
-            //        var result = App.ShowChoiceBox("Warning",
-            //            "该模块需要秋之盒以管理模式运行,但目前并不是,是否重启秋之盒为管理员模式?");
-            //        runnable = result == Open.ChoiceBoxResult.Right;
-            //        if (!runnable) return;
-            //        AutumnBoxGuiApiProvider.Get().RestartAsAdmin();
-            //    });
-            //    if (!runnable) return;
-            //}
+            if (!BeforeCreateInstance(device)) return;
+            Logger.Debug("Creating instance");
             CreateInstance();
+            Logger.Debug("Created instance");
+            Logger.Debug("Injecting property");
             InjetctProperty(device);
-            if (BeforeMain(device)) return;
+            Logger.Debug("Injected property");
+            if (!BeforeMain(device))
+            {
+                instance = null;
+                return;
+            }
+            Logger.Debug("Run main flow");
             MainFlow();
             AfterMain();
         }
+        /// <summary>
+        /// 多开检查
+        /// </summary>
+        /// <returns></returns>
         private bool RunningCheck()
         {
             if (instance != null)
@@ -191,24 +192,37 @@ namespace AutumnBox.OpenFramework.Warpper
             }
             return true;
         }
+        /// <summary>
+        /// 运行实例创建前的切面函数
+        /// </summary>
+        /// <param name="targetDevice"></param>
+        /// <returns></returns>
         private bool BeforeCreateInstance(DeviceBasicInfo targetDevice)
         {
+            Logger.Debug("BeforeCreateInstance() executing");
             ExtBeforeCreateArgs args = new ExtBeforeCreateArgs()
             {
                 TargetDevice = targetDevice,
-                ExtType = this.extType,
+                ExtType = extType,
                 Prevent = false,
-                Context =this,
+                Context = this,
             };
             foreach (var aspect in BeforeCreateAspects)
             {
                 aspect.Before(args);
                 if (args.Prevent) return false;
             }
+            Logger.Debug("BeforeCreateInstance() executed");
             return true;
         }
+        /// <summary>
+        /// 运行Main的运行前切面函数
+        /// </summary>
+        /// <param name="targetDevice"></param>
+        /// <returns></returns>
         private bool BeforeMain(DeviceBasicInfo targetDevice)
         {
+            Logger.Debug("BeforeMain() executing");
             BeforeArgs args = new BeforeArgs()
             {
                 TargetDevice = targetDevice,
@@ -220,10 +234,15 @@ namespace AutumnBox.OpenFramework.Warpper
                 aspect.Before(args);
                 if (args.Prevent) return false;
             }
+            Logger.Debug("BeforeMain() executed");
             return true;
         }
+        /// <summary>
+        /// 运行Main的运行后切面函数
+        /// </summary>
         private void AfterMain()
         {
+            Logger.Debug("AfterMain() executing");
             AfterArgs args = new AfterArgs()
             {
                 Context = this,
@@ -232,6 +251,7 @@ namespace AutumnBox.OpenFramework.Warpper
             {
                 aspect.After(args);
             }
+            Logger.Debug("AfterMain() executed");
         }
         /// <summary>
         /// 创建实例

@@ -11,19 +11,19 @@ using System.Threading;
 
 namespace AutumnBox.ExampleExtensions
 {
-    [ExtRequiredDeviceStates(Basic.Device.DeviceState.None)]
-    [ExtName("重启测试器")]
+    [ExtRequiredDeviceStates(Basic.Device.DeviceState.Poweron | Basic.Device.DeviceState.Fastboot)]
+    [ExtName("加载窗口测试器")]
     [ExtRunAsAdmin]
     public class FuckExt : AutumnBoxExtension
     {
         public override int Main()
         {
-            var fx = new Factory().GetFx(this);
-            App.RunOnUIThread(() =>
-            {
-                fx.ReloadLibs();
-                App.RestartAppAsAdmin();
-            });
+            //var fx = new Factory().GetFx(this);
+            //App.RunOnUIThread(() =>
+            //{
+            //    fx.ReloadLibs();
+            //    App.RestartAppAsAdmin();
+            //});
             App.ShowLoadingWindow();
             Thread.Sleep(5000);
             App.CloseLoadingWindow();

@@ -35,21 +35,22 @@
                     <TabItem  Style="{DynamicResource AtmbxTabItem}" TabIndex="0" Header="{DynamicResource tbiStart}" Margin="-2,-2,-14,0"  FontSize="16">
                         <cpnel:StartPanel x:Name="StartPanel" Margin="0,0,0,0"></cpnel:StartPanel>
                     </TabItem>
-                    <TabItem Style="{DynamicResource AtmbxTabItem}" TabIndex="4"  Header="{DynamicResource tbiExtension}" Margin="14,-2,-16,0"  FontSize="16">
-                        <cpnel:ThridPartyFunctionPanel Margin="10,0,10,3" x:Name="ThridPartyFuncs"/>
+
+                    <TabItem  Style="{DynamicResource AtmbxTabItem}" TabIndex="1" Header="{DynamicResource tbiOnPowerOn}" Margin="14,-2,-18,0"  FontSize="16">
+                        <!--<ScrollViewer  x:Name="PoweronFuncsViewer" Grid.Column="1"  HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Visible" Template="{DynamicResource AtmbxScrollViewer}">-->
+                        <cpnel:PoweronFuncPanel x:Name="PoweronFuncs" Margin="0,0,0,0"/>
+                        <!--</ScrollViewer>-->
                     </TabItem>
-                    <TabItem  Style="{DynamicResource AtmbxTabItem}" TabIndex="1" Header="{DynamicResource tbiOnPowerOn}" Margin="16,-2,-20,0"  FontSize="16">
-                        <ScrollViewer  x:Name="PoweronFuncsViewer" Grid.Column="1"  HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Visible" Template="{DynamicResource AtmbxScrollViewer}">
-                            <cpnel:PoweronFuncPanel x:Name="PoweronFuncs" Margin="0,0,0,0"/>
-                        </ScrollViewer>
-                    </TabItem>
-                    <TabItem Style="{DynamicResource AtmbxTabItem}" TabIndex="2"  Header="{DynamicResource tbiOnRecovery}" Margin="20,-2,-24,0"  FontSize="16">
-                        <cpnel:RecFuncPanel Margin="0,0,0,0" x:Name="RecoveryFuncs"/>
+                    <TabItem Style="{DynamicResource AtmbxTabItem}" TabIndex="2"  Header="{DynamicResource tbiOnRecovery}" Margin="18,-2,-24,0"  FontSize="16">
+                        <cpnel:RecFuncPanel Margin="0,0,-4,0" x:Name="RecoveryFuncs"/>
+                        <!--<cstm:ExtensionPanel></cstm:ExtensionPanel>-->
                     </TabItem>
                     <TabItem Style="{DynamicResource AtmbxTabItem}" TabIndex="3"  Header="{DynamicResource tbiOnFastboot}" Margin="24,-2,-27,0"  FontSize="16">
-                        <cpnel:FastbootFuncPanel x:Name="FastbootFuncs"/>
+                        <cpnel:FastbootFuncPanel x:Name="FastbootFuncs" Margin="0,0,0,0"/>
                     </TabItem>
-
+                    <TabItem Style="{DynamicResource AtmbxTabItem}" TabIndex="4"  Header="{DynamicResource tbiExtension}" Margin="27,-2,-29,0"  FontSize="16">
+                        <cpnel:ThridPartyFunctionPanel Margin="10,0,10,3" x:Name="ThridPartyFuncs"/>
+                    </TabItem>
                 </TabControl>
 
             </Grid>

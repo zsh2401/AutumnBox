@@ -144,6 +144,9 @@
     <Compile Include="NetUtil\MOTDGetter.cs" />
     <Compile Include="NetUtil\RemoteDataGetter.cs" />
     <Compile Include="NetUtil\UpdateChecker.cs" />
+    <Compile Include="UI\Cstm\ExtensionPanel.xaml.cs">
+      <DependentUpon>ExtensionPanel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Cstm\HyperLink.xaml.cs">
       <DependentUpon>HyperLink.xaml</DependentUpon>
     </Compile>
@@ -162,6 +165,7 @@
     <Compile Include="UI\FuncPanels\ThridPartyFunctionPanel.xaml.cs">
       <DependentUpon>ThridPartyFunctionPanel.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\IExtPanel.cs" />
     <Compile Include="Util\OpenApiImpl\AppManagerImpl.cs" />
     <Compile Include="Util\Extensions.cs" />
     <Compile Include="Util\OpenFrameworkManager.cs" />
@@ -254,7 +258,7 @@
     <Compile Include="Windows\FileSendingWindow.xaml.cs">
       <DependentUpon>FileSendingWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\IRefreshable.cs" />
+    <Compile Include="UI\IDeviceRefreshable.cs" />
     <Compile Include="Windows\FlowResultWindow.xaml.cs">
       <DependentUpon>FlowResultWindow.xaml</DependentUpon>
     </Compile>
@@ -420,6 +424,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\Cstm\CstmTitleBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Cstm\ExtensionPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

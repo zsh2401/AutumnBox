@@ -8,7 +8,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
     /// <summary>
     /// RebootButtonsGrid.xaml 的交互逻辑
     /// </summary>
-    public partial class RebootBtnPanel : UserControl, IRefreshable
+    public partial class RebootBtnPanel : UserControl, IDeviceRefreshable
     {
         private DeviceBasicInfo _currentDevInfo;
         public RebootBtnPanel()

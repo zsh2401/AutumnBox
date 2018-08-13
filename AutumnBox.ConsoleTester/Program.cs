@@ -12,12 +12,16 @@ namespace AutumnBox.ConsoleTester
             }["b"];
             Console.WriteLine(value == null);
         }
+        enum A {
+            a = 1 << 0,
+            b = 1 << 1,
+            c = 1 << 2,
+            d = 1 << 3
+        }
+            
         unsafe static int Main(string[] cmdargs)
         {
-            object value = new Hashtable() {
-                { "a","b"}
-            }["b"];
-            Console.WriteLine(value == null);
+            Console.WriteLine((A.a | A.b).HasFlag(A.b | A.c));
             Console.ReadKey();
             return 0;
         }
