@@ -10,7 +10,7 @@ using AutumnBox.OpenFramework.Extension;
 
 namespace AutumnBox.CoreModules.Extensions
 {
-    [ExtName("解锁系统分区")]
+    [ExtName("[ROOT]解锁系统分区")]
     [ExtRequiredDeviceStates(DeviceState.Poweron)]
     [ExtRequireRoot]
     public class EUnlockSystemParation : AutumnBoxExtension
