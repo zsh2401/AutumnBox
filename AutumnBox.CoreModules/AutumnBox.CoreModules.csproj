@@ -33,6 +33,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -51,6 +52,9 @@
     <Compile Include="Extensions\EApkInstaller.cs" />
     <Compile Include="Extensions\EBreventActivator.cs" />
     <Compile Include="Extensions\EBreventActivator8.cs" />
+    <Compile Include="Extensions\EDpiChanger.cs" />
+    <Compile Include="Extensions\EScreenShoter.cs" />
+    <Compile Include="Extensions\EUnlockSystemParation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
