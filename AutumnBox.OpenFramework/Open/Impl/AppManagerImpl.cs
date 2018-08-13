@@ -72,6 +72,10 @@ namespace AutumnBox.OpenFramework.Open.Impl
 
         public void RestartApp()
         {
+            if (ctx.Permission == CtxPer.High) {
+                sourceApi.Restart();
+                return;
+            }
             var fmtMsg = GetPublicResouce<string>("msgRequestRestartAppFormat");
             string title = GetPublicResouce<string>("Notice");
             string msg = string.Format(fmtMsg, ctx.GetType().Name);
@@ -87,6 +91,11 @@ namespace AutumnBox.OpenFramework.Open.Impl
 
         public void RestartAppAsAdmin()
         {
+            if (ctx.Permission == CtxPer.High)
+            {
+                sourceApi.RestartAsAdmin();
+                return;
+            }
             var fmtMsg = GetPublicResouce<string>("msgRequestRestartAppAsAdminFormat");
             string title = GetPublicResouce<string>("Notice");
             string msg = string.Format(fmtMsg, ctx.GetType().Name);
@@ -128,6 +137,11 @@ namespace AutumnBox.OpenFramework.Open.Impl
 
         public void ShutdownApp()
         {
+            if (ctx.Permission == CtxPer.High)
+            {
+                sourceApi.Shutdown();
+                return;
+            }
             var fmtMsg = GetPublicResouce<string>("msgRequestShutdownAppFormat");
             string title = GetPublicResouce<string>("Notice");
             string msg = string.Format(fmtMsg, ctx.GetType().Name);

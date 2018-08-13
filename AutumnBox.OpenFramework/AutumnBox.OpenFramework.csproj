@@ -58,6 +58,8 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Content\ContextPermissionAttribute.cs" />
+    <Compile Include="Content\CtxPer.cs" />
     <Compile Include="Exceptions\LibrarianAlreadyCreatedOnceException.cs" />
     <Compile Include="Exceptions\WarpperAlreadyCreatedOnceException.cs" />
     <Compile Include="Extension\ExtAppPropertyAttribute.cs" />
