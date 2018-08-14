@@ -8,7 +8,7 @@ using AutumnBox.OpenFramework.Extension;
 
 namespace AutumnBox.ExampleExtensions
 {
-    [ExtRequiredDeviceStates(DeviceState.None)]
+    [ExtRequiredDeviceStates((DeviceState)255)]
     [ExtName("ClearLove")]
     [ExtDesc("This is a fucker extension",Lang = "en-us")]
     [ExtDesc("这个模块将显示一个调试窗口")]
@@ -19,6 +19,7 @@ namespace AutumnBox.ExampleExtensions
         {
             App.RunOnUIThread(() =>
             {
+
                 App.ShowMessageBox("Fuck","Lover");
                 App.CreateDebuggingWindow().Show();
             });

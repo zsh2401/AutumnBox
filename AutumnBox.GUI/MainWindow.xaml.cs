@@ -42,7 +42,7 @@ namespace AutumnBox.GUI
     /// <summary>
     /// Window1.xaml 的交互逻辑
     /// </summary>
-    public sealed partial class MainWindow : Window, IDeviceRefreshable, ITitleBarWindow
+    public sealed partial class MainWindow : AutumnWindow, IDeviceRefreshable
     {
         private Object setUILock = new System.Object();
         private List<IExtPanel> extPanels;
@@ -50,8 +50,6 @@ namespace AutumnBox.GUI
         private DeviceBasicInfo currentDevice;
         private SoundPlayer audioPlayer;
         public bool BtnMinEnable => true;
-
-        Window ITitleBarWindow.MainWindow => this;
 
         public MainWindow()
         {
@@ -68,21 +66,11 @@ namespace AutumnBox.GUI
                 PoweronPanel,
             };
             RegisterEvent();
-            SetTitile();
+            //SetTitile();
             LanguageHelper.LanguageChanged += (s, e) =>
             {
-                SetTitile();
                 Reset();
             };
-        }
-
-        private void SetTitile()
-        {
-#if DEBUG
-            TitleBar.Title = App.Current.Resources["AppName"] + "  " + SystemHelper.CurrentVersion.ToString(3) + "-Debug";
-#else
-            TitleBar.Title = App.Current.Resources["AppName"] + "  " + SystemHelper.CurrentVersion.ToString(3) + "-Release";
-#endif
         }
 
         private void RegisterEvent()
@@ -201,7 +189,7 @@ namespace AutumnBox.GUI
         {
             lock (setUILock)
             {
-                Logger.Info(this,"reseting");
+                Logger.Info(this, "reseting");
                 extPanels.ForEach((ctrl) => { ctrl.Set(Manager.InternalManager.Warppers.ToArray()); });
                 deviceRefreshables.ForEach((ctrl) => { ctrl.Reset(); });
                 if (TBCFuncs.SelectedIndex == 4) return;
@@ -256,21 +244,6 @@ namespace AutumnBox.GUI
             {
                 window.Close();
             }
-        }
-
-        public void OnBtnCloseClicked()
-        {
-            this.Close();
-        }
-
-        public void OnBtnMinClicked()
-        {
-            this.WindowState = WindowState.Minimized;
-        }
-
-        public void OnDragMove()
-        {
-            this.DragMove();
         }
 
         private void TBCFuncs_SelectionChanged(object sender, SelectionChangedEventArgs e)
