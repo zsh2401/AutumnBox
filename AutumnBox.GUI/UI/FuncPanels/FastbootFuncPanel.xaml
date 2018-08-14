@@ -10,9 +10,6 @@
     mc:Ignorable="d" 
              d:DesignHeight="336" d:DesignWidth="922">
     <Grid x:Name="MainGrid">
-        <cstm:ExtensionPanel x:Name="ExtPanel" Margin="10,10,10,10"></cstm:ExtensionPanel>
-        <!--<Button Style="{DynamicResource AtmbxButtonStyle}" x:Name="buttonFlashCustomRecovery" Content="{DynamicResource btnFlashCustomRecoveryImg}" Margin="343,147,269,0" FontSize="18"  Click="ButtonFlashCustomRecovery_Click" Height="51" VerticalAlignment="Top" />
-        <Button Style="{DynamicResource AtmbxButtonStyle}" x:Name="buttonRelockMi" Content="{DynamicResource btnRelockMi}" Margin="343,203,0,0"   FontSize="18"   Click="ButtonRelockMi_Click" Height="48" VerticalAlignment="Top" HorizontalAlignment="Left" Width="310"/>
-        <Button Style="{DynamicResource AtmbxButtonStyle}" x:Name="BtnMiFlash" Content="{DynamicResource btnMiFlash}" Margin="343,99,0,0"  FontSize="18" Click="BtnMiFlash_Click" Height="48" VerticalAlignment="Top" HorizontalAlignment="Left" Width="310"/>-->
+        <cstm:ExtensionPanel x:Name="ExtPanel" TargetDeviceState="Fastboot"  Margin="10,10,10,10"></cstm:ExtensionPanel>
     </Grid>
 </fp:FastPanelChild>

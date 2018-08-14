@@ -9,7 +9,7 @@
     xmlns:cstm="clr-namespace:AutumnBox.GUI.UI.Cstm"
     mc:Ignorable="d" d:DesignHeight="336" d:DesignWidth="922">
     <Grid x:Name="MainGrid">
-        <cstm:ExtensionPanel x:Name="ExtPanel" Margin="10,10,10,10"></cstm:ExtensionPanel>
+        <cstm:ExtensionPanel x:Name="ExtPanel" TargetDeviceState="Sideload,Poweron"  Margin="10,10,10,10"></cstm:ExtensionPanel>
         <!--NO ROOT--><!--
 
         <Label Style="{DynamicResource AtmbxLabelStyle}" Content="NO ROOT" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="36" Width="190"/>

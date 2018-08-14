@@ -9,8 +9,6 @@
     xmlns:cstm="clr-namespace:AutumnBox.GUI.UI.Cstm"
     mc:Ignorable="d"  d:DesignHeight="336" d:DesignWidth="922">
     <Grid x:Name="MainGrid">
-        <cstm:ExtensionPanel x:Name="ExtPanel" Margin="10,10"></cstm:ExtensionPanel>
-        <!--<Button Style="{DynamicResource AtmbxButtonStyle}" x:Name="BtnBackupDcim" Content="{DynamicResource btnBackupDcim}" Margin="0,120,120,0"  FontSize="18"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"   HorizontalAlignment="Right" Width="294" Height="50" VerticalAlignment="Top" Click="BtnBackupDcim_Click"/>
-        <Button Style="{DynamicResource AtmbxButtonStyle}"  x:Name="buttonPushFileToSdcard"   Content="{DynamicResource btnPushFileToSdcard}" Margin="110,120,562,0" FontSize="18"  Click="ButtonPushFileToSdcard_Click" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  Height="50" VerticalAlignment="Top"/>-->
+        <cstm:ExtensionPanel x:Name="ExtPanel"   Margin="10,10" TargetDeviceState="Recovery"/>
     </Grid>
 </fp:FastPanelChild>
