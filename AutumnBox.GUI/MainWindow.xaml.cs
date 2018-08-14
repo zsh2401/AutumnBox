@@ -224,7 +224,9 @@ namespace AutumnBox.GUI
 
         private void BtnDonate_Click(object sender, RoutedEventArgs e)
         {
+            //ShowContentAsDialog(new ContentLoading());
             ShowContentAsDialog(new ContentDonate());
+            ShowContentAsDialog(new ContentSettings());
         }
 
         public void ShowContentAsDialog(object content)
