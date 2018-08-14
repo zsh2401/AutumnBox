@@ -67,7 +67,7 @@ namespace AutumnBox.GUI.UI.Cstm
                 return result;
             }
         }
-        public DeviceState[] TargetDeviceState { get; set; }
+        public DeviceState TargetDeviceState { get; set; }
         private DeviceBasicInfo CurrentDevice { get; set; }
         public ExtensionPanel()
         {
@@ -133,14 +133,7 @@ namespace AutumnBox.GUI.UI.Cstm
         }
         private bool TargetHas(DeviceState state)
         {
-            foreach (var target in TargetDeviceState)
-            {
-                if (state.HasFlag(target))
-                {
-                    return true;
-                }
-            }
-            return false;
+            return (TargetDeviceState & state) != 0;
         }
     }
 }

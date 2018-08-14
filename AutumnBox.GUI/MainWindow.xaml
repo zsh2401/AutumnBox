@@ -9,7 +9,12 @@
         x:Name="_MainWindow" x:Class="AutumnBox.GUI.MainWindow"
         mc:Ignorable="d"
     Closed="_MainWindow_Closed"
-        Background="{DynamicResource BroderBrushKey}" Title="AutumnBox" MinHeight="682.667" MinWidth="1155" Height="682.667" Width="1155" Foreground="#FF1B1919" Loaded="MainWindow_Loaded"  WindowStyle="None"  WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Background="{DynamicResource BroderBrushKey}" Title="AutumnBox" MinHeight="682.667" MinWidth="1155" Height="542.667" Width="834" Foreground="#FF1B1919" Loaded="MainWindow_Loaded"  
+    WindowStartupLocation="CenterScreen" 
+    WindowStyle="None"  
+    AllowsTransparency="True"
+    ResizeMode="CanResizeWithGrip"
+    >
 
     <Grid>
         <Grid  Background="{DynamicResource MainBackgroundBrushKey}" Name="GridBase" Margin="1,0,1,1">
@@ -17,42 +22,47 @@
             <cstm:CstmTitleBar  Background="{DynamicResource MainTitleBarBackgroundBrushKey}" x:Name="TitleBar" Height="40" VerticalAlignment="Top"/>
 
             <Grid Name="GridMain"  Margin="0,40,0,-11">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="169*"/>
+                    <RowDefinition Height="484*"/>
+                </Grid.RowDefinitions>
 
                 <cpnel:RebootBtnPanel x:Name="RebootGrid" Margin="0,10,23,0" HorizontalAlignment="Right" Width="265" VerticalAlignment="Top" Height="126" />
-                <cpnel:DeviceInfoPanel x:Name="DevInfoPanel" Margin="10,10,0,0" Height="212" VerticalAlignment="Top" HorizontalAlignment="Left" Width="650"/>
-                <cpnel:DevicesPanel  x:Name="DevicesPanel" Margin="0,1,295,0" HorizontalAlignment="Right" VerticalAlignment="Top" Width="189"/>
+                <cpnel:DeviceInfoPanel x:Name="DevInfoPanel" Margin="10,10,489,0" Height="212" VerticalAlignment="Top" Grid.RowSpan="2"/>
+                <cpnel:DevicesPanel  x:Name="DevicesPanel" Margin="0,1,295,0" HorizontalAlignment="Right" VerticalAlignment="Top" Width="189" Height="233" Grid.RowSpan="2"/>
 
-                <Button Style="{DynamicResource AtmbxButtonStyle}"  x:Name="buttonStartShell"  Content="{DynamicResource btnADBCMD}" Margin="0,141,23,0" VerticalAlignment="Top" Height="54"  FontSize="14"  Click="ButtonStartShell_Click" HorizontalAlignment="Right" Width="269" />
-                <Button  Style="{DynamicResource AtmbxButtonStyle}" x:Name="BtnSettings"  Content="{DynamicResource btnSetting}" Margin="0,0,9,28" VerticalAlignment="Bottom" Height="35"   FontSize="14"  Click="BtnSettings_Click" HorizontalAlignment="Right" Width="204" />
-                <Button  Style="{DynamicResource AtmbxButtonStyle}" x:Name="BtnAbout"  Content="{DynamicResource btnAbout}" Margin="0,0,9,68" VerticalAlignment="Bottom" Height="35"  FontSize="14"  Click="BtnAbout_Click" HorizontalAlignment="Right" Width="205" />
-                <Button  Style="{DynamicResource AtmbxButtonStyle}" x:Name="BtnDonate"  Content="{DynamicResource Donate}" Margin="0,0,9,108"   FontSize="14"  Click="BtnDonate_Click" HorizontalAlignment="Right" Width="204" Height="35" VerticalAlignment="Bottom" />
-                <Image Source="Resources/Images/Icons/donate.png" HorizontalAlignment="Right" Height="27" Margin="0,0,183,112" VerticalAlignment="Bottom" Width="27"/>
-                <TextBox BorderBrush="{DynamicResource BroderBrushKey}" Foreground="{DynamicResource ForegroundBrushKey}" x:Name="textBoxGG" Margin="0,260,9,300" TextWrapping="Wrap" Text="..." IsReadOnly="True" Background="{x:Null}" FontSize="14" HorizontalAlignment="Right" Width="204"/>
+                <Button Style="{DynamicResource AtmbxButtonStyle}"  x:Name="buttonStartShell"  Content="{DynamicResource btnADBCMD}" Margin="0,141,23,0" VerticalAlignment="Top" Height="54"  FontSize="14"  Click="ButtonStartShell_Click" HorizontalAlignment="Right" Width="269" Grid.RowSpan="2" />
+                <Button  Style="{DynamicResource AtmbxButtonStyle}" x:Name="BtnSettings"  Content="{DynamicResource btnSetting}" Margin="0,0,9,28" VerticalAlignment="Bottom" Height="35"   FontSize="14"  Click="BtnSettings_Click" HorizontalAlignment="Right" Width="204" Grid.Row="1" />
+                <Button  Style="{DynamicResource AtmbxButtonStyle}" x:Name="BtnAbout"  Content="{DynamicResource btnAbout}" Margin="0,0,9,68" VerticalAlignment="Bottom" Height="35"  FontSize="14"  Click="BtnAbout_Click" HorizontalAlignment="Right" Width="205" Grid.Row="1" />
+                <Button  Style="{DynamicResource AtmbxButtonStyle}" x:Name="BtnDonate"  Content="{DynamicResource Donate}" Margin="0,0,9,108"   FontSize="14"  Click="BtnDonate_Click" HorizontalAlignment="Right" Width="204" Height="35" VerticalAlignment="Bottom" Grid.Row="1" />
+                <Image Source="Resources/Images/Icons/donate.png" HorizontalAlignment="Right" Height="27" Margin="0,0,183,112" VerticalAlignment="Bottom" Width="27" Grid.Row="1"/>
+                <TextBox BorderBrush="{DynamicResource BroderBrushKey}" Foreground="{DynamicResource ForegroundBrushKey}" x:Name="textBoxGG" Margin="0,91,9,0" TextWrapping="Wrap" Text="..." IsReadOnly="True" Background="{x:Null}" FontSize="14" HorizontalAlignment="Right" Width="204" Height="93" VerticalAlignment="Top" Grid.Row="1"/>
 
 
-                <cstm:PotdBox Margin="0,0,11,147" Height="150" Width="200" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
-                <TabControl SelectionChanged="TBCFuncs_SelectionChanged" x:Name="TBCFuncs" Margin="10,233,219,28" Background="{x:Null}" BorderBrush="{DynamicResource BroderBrushKey}">
+                <cstm:PotdBox Margin="0,187,11,0" Width="200" HorizontalAlignment="Right" Height="150" VerticalAlignment="Top" Grid.Row="1"/>
+                <TabControl SelectionChanged="TBCFuncs_SelectionChanged" x:Name="TBCFuncs" Margin="10,64,219,28" Background="{x:Null}" BorderBrush="{DynamicResource BroderBrushKey}" Grid.Row="1">
                     <TabItem  Style="{DynamicResource AtmbxTabItem}" TabIndex="0" Header="{DynamicResource tbiStart}" Margin="-2,-2,-14,0"  FontSize="16">
                         <cpnel:StartPanel x:Name="StartPanel" Margin="0,0,0,0"></cpnel:StartPanel>
                     </TabItem>
 
                     <TabItem  Style="{DynamicResource AtmbxTabItem}" TabIndex="1" Header="{DynamicResource tbiOnPowerOn}" Margin="14,-2,-18,0"  FontSize="16">
                         <!--<ScrollViewer  x:Name="PoweronFuncsViewer" Grid.Column="1"  HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Visible" Template="{DynamicResource AtmbxScrollViewer}">-->
-                        <cpnel:PoweronFuncPanel x:Name="PoweronFuncs" Margin="0,0,0,0"/>
+                        <!--<cpnel:PoweronFuncPanel x:Name="PoweronFuncs" Margin="0,0,0,0"/>-->
+                        <cstm:ExtensionPanel x:Name="PoweronPanel" TargetDeviceState="Poweron"></cstm:ExtensionPanel>
                         <!--</ScrollViewer>-->
                     </TabItem>
                     <TabItem Style="{DynamicResource AtmbxTabItem}" TabIndex="2"  Header="{DynamicResource tbiOnRecovery}" Margin="18,-2,-24,0"  FontSize="16">
-                        <cpnel:RecFuncPanel Margin="0,0,-4,0" x:Name="RecoveryFuncs"/>
-                        <!--<cstm:ExtensionPanel></cstm:ExtensionPanel>-->
+                        <!--<cpnel:RecFuncPanel Margin="0,0,-4,0" x:Name="RecoveryFuncs"/>-->
+                        <cstm:ExtensionPanel x:Name="RecoveryPanel" TargetDeviceState="Recovery,Sideload"></cstm:ExtensionPanel>
                     </TabItem>
                     <TabItem Style="{DynamicResource AtmbxTabItem}" TabIndex="3"  Header="{DynamicResource tbiOnFastboot}" Margin="24,-2,-27,0"  FontSize="16">
-                        <cpnel:FastbootFuncPanel x:Name="FastbootFuncs" Margin="0,0,0,0"/>
+                        <!--<cpnel:FastbootFuncPanel x:Name="FastbootFuncs" Margin="0,0,0,0"/>-->
+                        <cstm:ExtensionPanel  x:Name="FastbootPanel" TargetDeviceState="Fastboot"></cstm:ExtensionPanel>
                     </TabItem>
                     <TabItem Style="{DynamicResource AtmbxTabItem}" TabIndex="4"  Header="{DynamicResource tbiExtension}" Margin="27,-2,-29,0"  FontSize="16">
-                        <cpnel:ThridPartyFunctionPanel Margin="10,0,10,3" x:Name="ThridPartyFuncs"/>
+                        <cpnel:ThridPartyFunctionPanel  Margin="10,0,10,3" x:Name="ThridPartyFuncs"/>
                     </TabItem>
                 </TabControl>
-
             </Grid>
         </Grid>
     </Grid>

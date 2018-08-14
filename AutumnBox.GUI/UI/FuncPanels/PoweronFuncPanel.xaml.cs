@@ -36,9 +36,9 @@ namespace AutumnBox.GUI.UI.FuncPanels
         public PoweronFuncPanel()
         {
             InitializeComponent();
-            ExtPanel.TargetDeviceState = new DeviceState[] {
-                DeviceState.Poweron
-            };
+            //ExtPanel.TargetDeviceState = new DeviceState[] {
+            //    DeviceState.Poweron
+            //};
             //ux = App.Current.SpringContext.GetObject<IPoweronFuncsUX>("poweronFuncsUXImp");
         }
 

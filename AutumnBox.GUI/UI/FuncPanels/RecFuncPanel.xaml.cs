@@ -23,10 +23,10 @@ namespace AutumnBox.GUI.UI.FuncPanels
         public RecFuncPanel()
         {
             InitializeComponent();
-            ExtPanel.TargetDeviceState = new DeviceState[] {
-                DeviceState.Sideload,
-                DeviceState.Recovery
-            };
+            //ExtPanel.TargetDeviceState = new DeviceState[] {
+            //    DeviceState.Sideload,
+            //    DeviceState.Recovery
+            //};
         }
 
         public void Refresh(DeviceBasicInfo devInfo)

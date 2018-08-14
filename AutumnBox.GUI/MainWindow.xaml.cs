@@ -63,9 +63,9 @@ namespace AutumnBox.GUI
             };
             extPanels = new List<IExtPanel>
             {
-                FastbootFuncs,
-                RecoveryFuncs,
-                PoweronFuncs,
+                FastbootPanel,
+                RecoveryPanel,
+                PoweronPanel,
             };
             RegisterEvent();
             SetTitile();

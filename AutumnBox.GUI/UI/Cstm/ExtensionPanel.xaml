@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:AutumnBox.GUI.UI.Cstm"
              mc:Ignorable="d" d:DesignWidth="897" d:DesignHeight="355">
     <Grid>
-        <ListBox Foreground="{DynamicResource ForegroundBrushKey}" Background="Transparent" BorderBrush="{DynamicResource BroderBrushKey}" x:Name="LBMain" HorizontalAlignment="Left" Width="301">
+        <ListBox Foreground="{DynamicResource ForegroundBrushKey}" Background="Transparent" BorderBrush="{DynamicResource BroderBrushKey}" x:Name="LBMain" Margin="10,10,0,10" HorizontalAlignment="Left" Width="291">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">

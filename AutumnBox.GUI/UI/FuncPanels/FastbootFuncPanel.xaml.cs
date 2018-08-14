@@ -14,9 +14,9 @@ namespace AutumnBox.GUI.UI.FuncPanels
         public FastbootFuncPanel()
         {
             InitializeComponent();
-            ExtPanel.TargetDeviceState = new DeviceState[] {
-                DeviceState.Fastboot
-            };
+            //ExtPanel.TargetDeviceState = new DeviceState[] {
+            //    DeviceState.Fastboot
+            //};
         }
 
         //public void Refresh(DeviceBasicInfo devInfo)
