@@ -1,0 +1,16 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:AutumnBox.GUI.Resources.Colors">
+    <!--主颜色-->
+    <SolidColorBrush x:Key="PrimaryHueLightBrush" Color="#FBA746"/>
+    <SolidColorBrush x:Key="PrimaryHueLightForegroundBrush" Color="#FEFEFE"/>
+    
+    <SolidColorBrush x:Key="PrimaryHueMidBrush" Color="#FBA746"/>
+    <SolidColorBrush x:Key="PrimaryHueMidForegroundBrush" Color="#FEFEFE"/>
+    
+    <SolidColorBrush x:Key="PrimaryHueDarkBrush" Color="#FBA746"/>
+    <SolidColorBrush x:Key="PrimaryHueDarkForegroundBrush" Color="#FBA746"/>
+    <!--辅助颜色-->
+    <SolidColorBrush x:Key="SecondaryAccentBrush" Color="#FBA746"/>
+    <SolidColorBrush x:Key="SecondaryAccentForegroundBrush" Color="#FEFEFE"/>
+</ResourceDictionary>

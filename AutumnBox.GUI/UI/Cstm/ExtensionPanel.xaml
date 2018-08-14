@@ -4,22 +4,26 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AutumnBox.GUI.UI.Cstm"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" d:DesignWidth="897" d:DesignHeight="355">
     <Grid>
-        <ListBox Foreground="{DynamicResource ForegroundBrushKey}" Background="Transparent" BorderBrush="{DynamicResource BroderBrushKey}" x:Name="LBMain" Margin="10,10,0,10" HorizontalAlignment="Left" Width="291">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <Image RenderOptions.BitmapScalingMode="Fant" Height="20px" Width="20px" Source="{Binding Icon}"></Image>
-                        <Label Content="{Binding Name}"></Label>
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
-        <Grid x:Name="GridInfo" Margin="306,0,0,0">
-            <TextBlock x:Name="TBName" Margin="10,10,10,0" TextWrapping="Wrap" Text="There is Module name" VerticalAlignment="Top" FontSize="30"   Style="{DynamicResource AtmbxTextBlockStyle}"/>
-            <TextBlock x:Name="TBDesc" Margin="10,68,10,56" TextWrapping="Wrap" Text="There is Module desc"  FontSize="16" Style="{DynamicResource AtmbxTextBlockStyle}"/>
-            <Button Style="{DynamicResource AtmbxButtonStyle}" x:Name="BtnRun" Content="{DynamicResource btnRunExtension}" Margin="10,0,10,10" Height="41" VerticalAlignment="Bottom"/>
-        </Grid>
+        <materialDesign:Card Margin="10,10,0,10" HorizontalAlignment="Left" Width="285" VerticalAlignment="Stretch">
+            <ListBox Foreground="{DynamicResource ForegroundBrushKey}" Background="Transparent" BorderBrush="{DynamicResource BroderBrushKey}" x:Name="LBMain">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Image RenderOptions.BitmapScalingMode="Fant" Height="20px" Width="20px" Source="{Binding Icon}"></Image>
+                            <Label Content="{Binding Name}"></Label>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </materialDesign:Card>
+        <GroupBox x:Name="GBExtInfo" Header="..." FontSize="15"  Margin="313,10,10,16" >
+            <Grid Margin="0,0,0,0">
+                <TextBlock x:Name="TBDesc" Margin="10,10,10,71" TextWrapping="Wrap" Text="There is Module desc"  FontSize="16" Style="{DynamicResource AtmbxTextBlockStyle}"/>
+                <Button Style="{DynamicResource MaterialDesignToolButton}" FontFamily="{DynamicResource AutumnBox.Font}" x:Name="BtnRun" Content="{DynamicResource btnRunExtension}" Margin="0,0,0,10" Height="41" VerticalAlignment="Bottom"/>
+            </Grid>
+        </GroupBox>
     </Grid>
 </UserControl>

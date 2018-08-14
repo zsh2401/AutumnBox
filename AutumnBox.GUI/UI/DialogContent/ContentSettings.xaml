@@ -1,0 +1,29 @@
+﻿<UserControl x:Class="AutumnBox.GUI.UI.DialogContent.ContentSettings"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AutumnBox.GUI.UI.DialogContent"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" Height="333.047" Width="487.131">
+    <Grid>
+        <GroupBox Header="{DynamicResource Language}" Margin="10,10,99,0" Height="86" VerticalAlignment="Top">
+            <ComboBox x:Name="Language" Margin="0,0,0,9" VerticalAlignment="Stretch"/>
+        </GroupBox>
+
+        <GroupBox Header="Debug" Margin="49,108,60,0" Height="96" VerticalAlignment="Top">
+            <Grid>
+                <Button Content="{DynamicResource btnLaunchDebugWindow}" Margin="10,-1,200,10" />
+                <CheckBox x:Name="LancDebugNext" Content="{DynamicResource ckbShowDebugWindowOnNextLaunch}" Margin="0,0,0,10" HorizontalAlignment="Right" Width="179" />
+            </Grid>
+        </GroupBox>
+
+        <GroupBox Header="Other" Margin="99,212,10,0" Height="111" VerticalAlignment="Top">
+            <Grid>
+                <Button Content="{DynamicResource btnCreateShortcut}"></Button>
+            </Grid>
+        </GroupBox>
+
+        <Button x:Name="BtnClose" Style="{DynamicResource MaterialDesignRaisedButton}" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Height="32" VerticalAlignment="Top"  Content="{DynamicResource btnClose}" Margin="393,11,10,0"></Button>
+    </Grid>
+</UserControl>

@@ -4,12 +4,13 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AutumnBox.GUI.UI.FuncPanels"
-             mc:Ignorable="d" Height="124.833" Width="265.146">
-    <Grid>
-        <Button Style="{DynamicResource AtmbxButtonStyle}" x:Name="ButtonRebootToSystem" Content="{DynamicResource btnSystem}" Margin="0,40,0,0" VerticalAlignment="Top" Height="36"   FontSize="14"  Click="ButtonRebootToSystem_Click"  HorizontalAlignment="Left" Width="130"/>
-        <Button Style="{DynamicResource AtmbxButtonStyle}" x:Name="ButtonRebootToRecovery" Content="{DynamicResource btnRecovery}" VerticalAlignment="Top" Height="36"   FontSize="14"  Click="ButtonRebootToRecovery_Click"  HorizontalAlignment="Left" Width="130" Margin="135,40,0,0"/>
-        <Button Style="{DynamicResource AtmbxButtonStyle}" x:Name="ButtonRebootToBootloader" Content="{DynamicResource btnBootloader}" Margin="135,85,0,0" VerticalAlignment="Top" Height="36"   FontSize="14"  Click="ButtonRebootToBootloader_Click"  HorizontalAlignment="Left" Width="130"/>
-        <Button Style="{DynamicResource AtmbxButtonStyle}" x:Name="ButtonRebootToSnapdragon9008" Content="{DynamicResource btnSnapdragon9008}" Margin="0,85,0,0" VerticalAlignment="Top" Height="36"  FontSize="14"   Click="ButtonRebootToSnapdragon9008_Click" HorizontalAlignment="Left" Width="130"/>
-        <TextBlock Style="{DynamicResource AtmbxTextBlockStyle}" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{DynamicResource RebootTo}" VerticalAlignment="Top" Width="116" Height="36" FontSize="24" />
-    </Grid>
+             mc:Ignorable="d" Height="217.358" Width="208.146">
+    <GroupBox Header="{DynamicResource RebootTo}">
+        <Grid>
+            <Button Style="{DynamicResource MaterialDesignFlatButton}" FontFamily="{DynamicResource AutumnBox.Font}" x:Name="ButtonRebootToSystem" Content="{DynamicResource btnSystem}" VerticalAlignment="Top" Height="36"   FontSize="14"  Click="ButtonRebootToSystem_Click" Margin="10,87,10,0"/>
+            <Button Style="{DynamicResource MaterialDesignFlatButton}" FontFamily="{DynamicResource AutumnBox.Font}" x:Name="ButtonRebootToRecovery" Content="{DynamicResource btnRecovery}" VerticalAlignment="Top" Height="36"   FontSize="14"  Click="ButtonRebootToRecovery_Click" Margin="10,5,10,0"/>
+            <Button Style="{DynamicResource MaterialDesignFlatButton}" FontFamily="{DynamicResource AutumnBox.Font}" x:Name="ButtonRebootToBootloader" Content="{DynamicResource btnBootloader}" Margin="10,46,10,0" VerticalAlignment="Top" Height="36"   FontSize="14"  Click="ButtonRebootToBootloader_Click"/>
+            <Button Style="{DynamicResource MaterialDesignFlatButton}" FontFamily="{DynamicResource AutumnBox.Font}" x:Name="ButtonRebootToSnapdragon9008" Content="{DynamicResource btnSnapdragon9008}" Margin="10,128,10,0" VerticalAlignment="Top" Height="36"  FontSize="14"   Click="ButtonRebootToSnapdragon9008_Click"/>
+        </Grid>
+    </GroupBox>
 </UserControl>
