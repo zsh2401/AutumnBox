@@ -15,9 +15,9 @@ namespace AutumnBox.GUI.UI.Fp
         public ThicknessAnimation HideAnimation { get; set; }
         public ThicknessAnimation CloseAnimation { get; set; }
         private readonly FastPanelChild child;
-        private readonly Panel father;
+        private readonly System.Windows.Controls.Panel father;
         public event EventHandler Closed;
-        public FastPanel(Panel father, FastPanelChild child)
+        public FastPanel(System.Windows.Controls.Panel father, FastPanelChild child)
         {
             InitializeComponent();
             ThemeManager.ThemeChanged += ThemeHelper_ThemeChanged;

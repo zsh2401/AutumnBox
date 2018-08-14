@@ -90,6 +90,12 @@
     <Reference Include="Common.Logging.Core, Version=3.0.0.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
       <HintPath>..\packages\Common.Logging.Core.3.0.0\lib\net40\Common.Logging.Core.dll</HintPath>
     </Reference>
+    <Reference Include="MaterialDesignColors, Version=1.1.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignColors.1.1.2\lib\net45\MaterialDesignColors.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialDesignThemes.Wpf, Version=2.4.1.1101, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignThemes.2.4.1.1101\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -133,6 +139,10 @@
     </Compile>
     <Compile Include="AppLoader.cs" />
     <Compile Include="Cfg\ConfigPropertyAttribute.cs" />
+    <Compile Include="Dialogs\DialogManager.cs" />
+    <Compile Include="Dialogs\MessageDialog.xaml.cs">
+      <DependentUpon>MessageDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Helper\BlurHelper.cs" />
     <Compile Include="Helper\BoxHelper.cs" />
     <Compile Include="Helper\SystemHelper.cs" />
@@ -156,6 +166,18 @@
     <Compile Include="UI\CstPanels\ExtensionRuningPanel.xaml.cs">
       <DependentUpon>ExtensionRuningPanel.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\DialogContent\ContentAbout.xaml.cs">
+      <DependentUpon>ContentAbout.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\DialogContent\ContentBase.xaml.cs">
+      <DependentUpon>ContentBase.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\DialogContent\ContentDonate.xaml.cs">
+      <DependentUpon>ContentDonate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\DialogContent\ContentSettings.xaml.cs">
+      <DependentUpon>ContentSettings.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\FuncPanels\PoweronFuncsUx\NeedRootAttribute.cs" />
     <Compile Include="UI\FuncPanels\PoweronFuncsUx\PoweronFuncsUXAdvisor.cs" />
     <Compile Include="UI\FuncPanels\PoweronFuncsUx\DeviceUserCheckAttribute.cs" />
@@ -168,6 +190,15 @@
       <DependentUpon>ThridPartyFunctionPanel.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\IExtPanel.cs" />
+    <Compile Include="UI\Panel\PanelAbout.xaml.cs">
+      <DependentUpon>PanelAbout.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Panel\PanelCurrentDevice.xaml.cs">
+      <DependentUpon>PanelCurrentDevice.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Panel\PanelMore.xaml.cs">
+      <DependentUpon>PanelMore.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Util\OpenApiImpl\AppManagerImpl.cs" />
     <Compile Include="Util\Extensions.cs" />
     <Compile Include="Util\OpenFrameworkManager.cs" />
@@ -182,6 +213,9 @@
       <DependentUpon>FatalWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\IAppLoadingWindow.cs" />
+    <Compile Include="Windows\MDLearningWindow.xaml.cs">
+      <DependentUpon>MDLearningWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\UserManagerWindow.xaml.cs">
       <DependentUpon>UserManagerWindow.xaml</DependentUpon>
     </Compile>
@@ -317,6 +351,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Dialogs\MessageDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="I18N\Langs\ru-RU.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -328,6 +366,10 @@
     <Page Include="I18N\Langs\zh-CN.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Colors\Autumn.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\Themes\PurpleTheme.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -473,6 +515,22 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UI\DialogContent\ContentAbout.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\DialogContent\ContentBase.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\DialogContent\ContentDonate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\DialogContent\ContentSettings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UI\Fp\FastPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -513,6 +571,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UI\Panel\PanelAbout.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Panel\PanelCurrentDevice.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Panel\PanelMore.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\ApkInstallingWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -550,6 +620,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\MDLearningWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

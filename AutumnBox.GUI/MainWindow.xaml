@@ -5,12 +5,16 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AutumnBox.GUI"
+    xmlns:system="clr-namespace:System;assembly=mscorlib"
         xmlns:cstm="clr-namespace:AutumnBox.GUI.UI.Cstm"
         xmlns:cpnel="clr-namespace:AutumnBox.GUI.UI.FuncPanels"
-        x:Name="_MainWindow" x:Class="AutumnBox.GUI.MainWindow"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:panel="clr-namespace:AutumnBox.GUI.UI.Panel"
+    xmlns:dialogcontent="clr-namespace:AutumnBox.GUI.UI.DialogContent"
+    x:Name="_MainWindow" x:Class="AutumnBox.GUI.MainWindow"
         mc:Ignorable="d"
     Title="{DynamicResource AppName}"
-     MinHeight="720" MinWidth="1280" Height="720" Width="1280" 
+     MinHeight="650" MinWidth="1000" Height="784" Width="1445" 
     WindowStartupLocation="CenterScreen"
      Loaded="MainWindow_Loaded"  
      Closed="_MainWindow_Closed">
@@ -18,36 +22,27 @@
         <Grid  Background="{DynamicResource MainBackgroundBrushKey}" Name="GridBase" Margin="0,0,0,0">
             <WebBrowser x:Name="WTF" Width="1" Height="0" Margin="963,271,185,408"/>
             <Grid Name="GridMain">
-                <cpnel:DeviceInfoPanel x:Name="DevInfoPanel" Margin="10,10,489,0"  VerticalAlignment="Top"/>
-                <cpnel:DevicesPanel  x:Name="DevicesPanel" Margin="0,1,295,0" HorizontalAlignment="Right" VerticalAlignment="Top" Width="189" Height="233" Grid.RowSpan="2"/>
-                <cpnel:RebootBtnPanel x:Name="RebootGrid" Margin="0,10,23,0" HorizontalAlignment="Right" Width="265" VerticalAlignment="Top" Height="126" />
-                <Button Style="{DynamicResource AtmbxButtonStyle}"  x:Name="buttonStartShell"  Content="{DynamicResource btnADBCMD}" Margin="0,141,23,0" VerticalAlignment="Top" Height="54"  FontSize="14"  Click="ButtonStartShell_Click" HorizontalAlignment="Right" Width="269" Grid.RowSpan="2" />
+                <cpnel:DevicesPanel  x:Name="DevicesPanel" Margin="0,38,10,0" HorizontalAlignment="Right" Width="190" VerticalAlignment="Top" Height="202"/>
 
-                <Button  Style="{DynamicResource AtmbxButtonStyle}" x:Name="BtnSettings"  Content="{DynamicResource btnSetting}" Margin="0,0,9,28" VerticalAlignment="Bottom" Height="35"   FontSize="14"  Click="BtnSettings_Click" HorizontalAlignment="Right" Width="204" Grid.Row="1" />
-                <Button  Style="{DynamicResource AtmbxButtonStyle}" x:Name="BtnAbout"  Content="{DynamicResource btnAbout}" Margin="0,0,9,68" VerticalAlignment="Bottom" Height="35"  FontSize="14"  Click="BtnAbout_Click" HorizontalAlignment="Right" Width="205" Grid.Row="1" />
-                <Button  Style="{DynamicResource AtmbxButtonStyle}" x:Name="BtnDonate"  Content="{DynamicResource Donate}" Margin="0,0,9,108"   FontSize="14"  Click="BtnDonate_Click" HorizontalAlignment="Right" Width="204" Height="35" VerticalAlignment="Bottom" Grid.Row="1" />
-                <Image Source="Resources/Images/Icons/donate.png" HorizontalAlignment="Right" Height="27" Margin="0,0,183,112" VerticalAlignment="Bottom" Width="27" Grid.Row="1"/>
-
-                <TextBox BorderBrush="{DynamicResource BroderBrushKey}" Foreground="{DynamicResource ForegroundBrushKey}" x:Name="textBoxGG" Margin="0,266,6,0" TextWrapping="Wrap" Text="..." IsReadOnly="True" Background="{x:Null}" FontSize="14" HorizontalAlignment="Right" Width="204" Height="118" VerticalAlignment="Top"/>
-                <cstm:PotdBox Margin="0,389,10,0" Width="200" HorizontalAlignment="Right" Height="150" VerticalAlignment="Top"/>
-
-                <TabControl SelectionChanged="TBCFuncs_SelectionChanged" x:Name="TBCFuncs" Margin="10,239,219,10" Background="{x:Null}" BorderBrush="{DynamicResource BroderBrushKey}">
+                <TabControl SelectionChanged="TBCFuncs_SelectionChanged" x:Name="TBCFuncs" Margin="10,10,205,10" Background="{x:Null}" BorderBrush="{DynamicResource BroderBrushKey}">
                     <TabItem  Style="{DynamicResource AtmbxTabItem}" TabIndex="0" Header="{DynamicResource tbiStart}" Margin="-2,-2,-14,0"  FontSize="16">
                         <cpnel:StartPanel x:Name="StartPanel" Margin="0,0,0,0"></cpnel:StartPanel>
                     </TabItem>
-                    <TabItem  Style="{DynamicResource AtmbxTabItem}" TabIndex="1" Header="{DynamicResource tbiOnPowerOn}" Margin="14,-2,-18,0"  FontSize="16">
-                        <cstm:ExtensionPanel x:Name="PoweronPanel" TargetDeviceState="Poweron"></cstm:ExtensionPanel>
-                    </TabItem>
-                    <TabItem Style="{DynamicResource AtmbxTabItem}" TabIndex="2"  Header="{DynamicResource tbiOnRecovery}" Margin="18,-2,-24,0"  FontSize="16">
-                        <cstm:ExtensionPanel x:Name="RecoveryPanel" TargetDeviceState="Recovery"></cstm:ExtensionPanel>
-                    </TabItem>
-                    <TabItem Style="{DynamicResource AtmbxTabItem}" TabIndex="3"  Header="{DynamicResource tbiOnFastboot}" Margin="24,-2,-27,0"  FontSize="16">
-                        <cstm:ExtensionPanel  x:Name="FastbootPanel" TargetDeviceState="Fastboot"></cstm:ExtensionPanel>
-                    </TabItem>
-                    <TabItem Style="{DynamicResource AtmbxTabItem}" TabIndex="4"  Header="{DynamicResource tbiExtension}" Margin="27,-2,-29,0"  FontSize="16">
-                        <cpnel:ThridPartyFunctionPanel  Margin="10,0,10,3" x:Name="ThridPartyFuncs"/>
+                    <TabItem  Style="{DynamicResource AtmbxTabItem}" TabIndex="1" Header="{DynamicResource CurrentDevice}" Margin="14,-2,-18,0"  FontSize="16">
+                        <panel:PanelCurrentDevice x:Name="PanelCurrentDevice" Margin="0,0,0,0"></panel:PanelCurrentDevice>
                     </TabItem>
                 </TabControl>
+
+                <Button Style="{DynamicResource MaterialDesignRaisedButton}"  x:Name="buttonStartShell"  Content="{DynamicResource btnADBCMD}" Margin="0,0,10,148" Height="45"  FontSize="14"  Click="ButtonStartShell_Click" HorizontalAlignment="Right" Width="190" VerticalAlignment="Bottom" />
+                <Button  Style="{DynamicResource MaterialDesignRaisedButton}" x:Name="BtnSettings"  Content="{DynamicResource btnSetting}" Margin="0,0,9,28" VerticalAlignment="Bottom" Height="35"   FontSize="14"  Click="BtnSettings_Click" HorizontalAlignment="Right" Width="191" />
+                <Button  Style="{DynamicResource MaterialDesignRaisedButton}" x:Name="BtnAbout"  Content="{DynamicResource btnAbout}" Margin="0,0,9,68" VerticalAlignment="Bottom" Height="35"  FontSize="14"  Click="BtnAbout_Click" HorizontalAlignment="Right" Width="191" />
+                <Button  Style="{DynamicResource MaterialDesignRaisedButton}" x:Name="BtnDonate"  Content="{DynamicResource Donate}" Margin="0,0,9,108"   FontSize="14"  Click="BtnDonate_Click" HorizontalAlignment="Right" Width="191" Height="35" VerticalAlignment="Bottom" />
+
+                <materialDesign:DialogHost>
+                    <materialDesign:DialogHost.DialogContent>
+                        <dialogcontent:ContentBase x:Name="ContentBase"></dialogcontent:ContentBase>
+                    </materialDesign:DialogHost.DialogContent>
+                </materialDesign:DialogHost>
             </Grid>
         </Grid>
     </Grid>

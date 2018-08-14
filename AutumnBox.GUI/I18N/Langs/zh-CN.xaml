@@ -75,7 +75,7 @@
     <s:String x:Key="btnADBCMD">ADB命令行</s:String>
     <s:String x:Key="btnSystem">系统</s:String>
     <s:String x:Key="btnRecovery">恢复模式</s:String>
-    <s:String x:Key="btnSnapdragon9008">高通9008救砖模式</s:String>
+    <s:String x:Key="btnSnapdragon9008">高通9008</s:String>
     <s:String x:Key="btnBootloader">Fastboot模式</s:String>
     <s:String x:Key="btnPushFileToSdcard">推送文件到存储目录</s:String>
     <s:String x:Key="btnUnlockSystem">解锁系统,获取完整ROOT</s:String>

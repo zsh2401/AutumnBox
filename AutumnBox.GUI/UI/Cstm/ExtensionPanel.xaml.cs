@@ -90,13 +90,12 @@ namespace AutumnBox.GUI.UI.Cstm
         {
             if (warpper == null)
             {
-                GridInfo.Visibility = Visibility.Collapsed;
+                GBExtInfo.Visibility = Visibility.Collapsed;
                 return;
             }
-            GridInfo.Visibility = Visibility.Visible;
+            GBExtInfo.Visibility = Visibility.Visible;
             TBDesc.Text = warpper.Info.FormatedDesc;
-            TBName.Text = warpper.Info.Name;
-            //SetBtnByForeruncheck(warpper.ForerunCheck(CurrentDevice));
+            GBExtInfo.Header = warpper.Info.Name;
             if (TargetHas(CurrentDevice.State))
             {
                 BtnRun.IsEnabled = true;

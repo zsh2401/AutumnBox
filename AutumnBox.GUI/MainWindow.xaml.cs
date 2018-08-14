@@ -36,6 +36,9 @@ using System.Media;
 using AutumnBox.OpenFramework.Management;
 using System.Linq;
 using AutumnBox.Support.Log;
+using MaterialDesignThemes.Wpf;
+using AutumnBox.GUI.Dialogs;
+using AutumnBox.GUI.UI.DialogContent;
 
 namespace AutumnBox.GUI
 {
@@ -45,9 +48,7 @@ namespace AutumnBox.GUI
     public sealed partial class MainWindow : Window, IDeviceRefreshable
     {
         private Object setUILock = new System.Object();
-        private List<IExtPanel> extPanels;
         private List<IDeviceRefreshable> deviceRefreshables;
-        private DeviceBasicInfo currentDevice;
         private SoundPlayer audioPlayer;
         public bool BtnMinEnable => true;
 
@@ -56,14 +57,7 @@ namespace AutumnBox.GUI
             InitializeComponent();
             audioPlayer = new SoundPlayer("Resources/Sound/ok.wav");
             deviceRefreshables = new List<IDeviceRefreshable>() {
-                RebootGrid,
-                DevInfoPanel,
-            };
-            extPanels = new List<IExtPanel>
-            {
-                FastbootPanel,
-                RecoveryPanel,
-                PoweronPanel,
+                PanelCurrentDevice
             };
             RegisterEvent();
             LanguageHelper.LanguageChanged += (s, e) =>
@@ -85,6 +79,7 @@ namespace AutumnBox.GUI
                     Refresh(this.DevicesPanel.CurrentSelectDevice);
                 }
             };
+
             FunctionFlowBase.AnyFinished += FlowFinished;
             AdbHelper.AdbServerStartsFailed += (s, e) =>
             {
@@ -128,11 +123,11 @@ namespace AutumnBox.GUI
             //刷新一下界面
             Reset();
 
-            //开始获取公告
-            new MOTDGetter().RunAsync((r) =>
-            {
-                textBoxGG.Text = r.Header + r.Separator + r.Message;
-            });
+            ////开始获取公告
+            //new MOTDGetter().RunAsync((r) =>
+            //{
+            //    textBoxGG.Text = r.Header + r.Separator + r.Message;
+            //});
             //检测更新
             new UpdateChecker().RunAsync((r) =>
             {
@@ -142,45 +137,43 @@ namespace AutumnBox.GUI
                 }
             });
 
-            //哦,如果是第一次启动本软件,那么就显示一下提示吧!
-            Task.Run(() =>
-            {
-                Thread.Sleep(1000);
-                Dispatcher.Invoke(() =>
-                {
-                    if (Properties.Settings.Default.IsFirstLaunch)
-                    {
-                        var aboutPanel = new FastPanel(this.GridMain, new AboutPanel());
-                        aboutPanel.Display();
-                    }
-                });
-            });
+            ////哦,如果是第一次启动本软件,那么就显示一下提示吧!
+            //Task.Run(() =>
+            //{
+            //    Thread.Sleep(1000);
+            //    Dispatcher.Invoke(() =>
+            //    {
+            //        if (Properties.Settings.Default.IsFirstLaunch)
+            //        {
+            //            var aboutPanel = new FastPanel(this.GridMain, new AboutPanel());
+            //            aboutPanel.Display();
+            //        }
+            //    });
+            //});
         }
 
         public void Refresh(DeviceBasicInfo devinfo)
         {
             lock (setUILock)
             {
-                currentDevice = devinfo;
-                extPanels.ForEach((ctrl) => { ctrl.Set(Manager.InternalManager.Warppers.ToArray(), devinfo); });
-                deviceRefreshables.ForEach((ctrl) => { ctrl.Refresh(devinfo); });
-                if (TBCFuncs.SelectedIndex == 4) return;
-                switch (devinfo.State)
-                {
-                    case DeviceState.Poweron:
-                        TBCFuncs.SelectedIndex = 1;
-                        break;
-                    case DeviceState.Recovery:
-                    case DeviceState.Sideload:
-                        TBCFuncs.SelectedIndex = 2;
-                        break;
-                    case DeviceState.Fastboot:
-                        TBCFuncs.SelectedIndex = 3;
-                        break;
-                    default:
-                        TBCFuncs.SelectedIndex = 4;
-                        break;
-                }
+                deviceRefreshables?.ForEach((ctrl) => { ctrl.Refresh(devinfo); });
+                //if (TBCFuncs.SelectedIndex == 4) return;
+                //switch (devinfo.State)
+                //{
+                //    case DeviceState.Poweron:
+                //        TBCFuncs.SelectedIndex = 1;
+                //        break;
+                //    case DeviceState.Recovery:
+                //    case DeviceState.Sideload:
+                //        TBCFuncs.SelectedIndex = 2;
+                //        break;
+                //    case DeviceState.Fastboot:
+                //        TBCFuncs.SelectedIndex = 3;
+                //        break;
+                //    default:
+                //        TBCFuncs.SelectedIndex = 4;
+                //        break;
+                //}
             };
         }
 
@@ -188,10 +181,7 @@ namespace AutumnBox.GUI
         {
             lock (setUILock)
             {
-                Logger.Info(this, "reseting");
-                extPanels.ForEach((ctrl) => { ctrl.Set(Manager.InternalManager.Warppers.ToArray()); });
-                deviceRefreshables.ForEach((ctrl) => { ctrl.Reset(); });
-                if (TBCFuncs.SelectedIndex == 4) return;
+                deviceRefreshables?.ForEach((ctrl) => { ctrl.Reset(); });
                 TBCFuncs.SelectedIndex = 0;
             }
         }
@@ -224,17 +214,23 @@ namespace AutumnBox.GUI
 
         private void BtnAbout_Click(object sender, RoutedEventArgs e)
         {
-            new FastPanel(this.GridMain, new AboutPanel()).Display();
+            ShowContentAsDialog(new ContentAbout());
         }
 
         private void BtnSettings_Click(object sender, RoutedEventArgs e)
         {
-            new FastPanel(this.GridMain, new SettingsPanel()).Display();
+            ShowContentAsDialog(new ContentSettings());
         }
 
         private void BtnDonate_Click(object sender, RoutedEventArgs e)
         {
-            new FastPanel(this.GridMain, new DonatePanel()).Display();
+            ShowContentAsDialog(new ContentDonate());
+        }
+
+        public void ShowContentAsDialog(object content)
+        {
+            ContentBase.Content = content;
+            DialogHost.Show(ContentBase);
         }
 
         private void _MainWindow_Closed(object sender, EventArgs e)

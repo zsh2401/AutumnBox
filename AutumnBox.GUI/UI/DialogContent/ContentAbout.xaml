@@ -1,0 +1,21 @@
+﻿<UserControl x:Class="AutumnBox.GUI.UI.DialogContent.ContentAbout"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AutumnBox.GUI.UI.DialogContent"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:cstm="clr-namespace:AutumnBox.GUI.UI.Cstm"
+             mc:Ignorable="d" Height="542" Width="933">
+    <Grid>
+        <Image HorizontalAlignment="Left" Height="232" Margin="10,10,0,0" VerticalAlignment="Top" Width="225" Source="/Resources/images/title_icon.ico"/>
+        <Label  Style="{DynamicResource AtmbxLabelStyle}" Content="{DynamicResource AppName}" HorizontalAlignment="Left" Margin="235,55,0,0" VerticalAlignment="Top" Height="153" Width="695" FontSize="100" />
+        <cstm:HyperLink  Text="{DynamicResource hyperLinkOpenSource}" Hyperlink="{DynamicResource urlOpensource}" Margin="268,254,472,263" FontSize="16"/>
+
+        <Image RenderOptions.BitmapScalingMode="Fant" Source="/Resources/Images/github.png" HorizontalAlignment="Left" Height="28" Margin="234,251,0,0" VerticalAlignment="Top" Width="27"/>
+        <Label  Style="{DynamicResource AtmbxLabelStyle}" x:Name="LabelVersion" Content="*.*.*.*-*" HorizontalAlignment="Left" Margin="268,208,0,0" VerticalAlignment="Top" Width="181" />
+        <Label  Style="{DynamicResource AtmbxLabelStyle}" x:Name="LabelCompiledDate" Content="00-00-0000" HorizontalAlignment="Left" Margin="508,208,0,0" VerticalAlignment="Top" Width="150" />
+        <TextBlock Style="{DynamicResource AtmbxTextBlockStyle}" FontSize="14" HorizontalAlignment="Left" Margin="235,286,0,0" TextWrapping="Wrap"  Text="{DynamicResource AboutMessage}"  VerticalAlignment="Top" Width="695" Height="242"/>
+        <Button x:Name="BtnClose" Style="{DynamicResource MaterialDesignRaisedButton}" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Margin="810,0,0,510" Content="{DynamicResource btnClose}"/>
+    </Grid>
+</UserControl>

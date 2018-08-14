@@ -13,10 +13,10 @@ namespace AutumnBox.GUI.UI.FuncPanels.PoweronFuncsUx
     {
         public override bool Check(DeviceBasicInfo tragetDevice)
         {
-            if (!((MainWindow)App.Current.MainWindow).DevInfoPanel.CurrentDeviceIsRoot)
-            {
-                return BoxHelper.ShowChoiceDialog("Warning", "warrningNeedRootAccess").ToBool();
-            }
+            //if (!((MainWindow)App.Current.MainWindow).DevInfoPanel.CurrentDeviceIsRoot)
+            //{
+            //    return BoxHelper.ShowChoiceDialog("Warning", "warrningNeedRootAccess").ToBool();
+            //}
             return true;
         }
     }

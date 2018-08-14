@@ -1,7 +1,8 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <!--______________________________主要色__________________________________ -->
+    
+    <!--______________________________主要色__________________________________--> 
     <Color x:Key="ColorPrimary">#FBA746</Color>
     <SolidColorBrush x:Key="PrimaryBrushKey" Color="{DynamicResource ColorPrimary}"/>
 
