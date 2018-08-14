@@ -64,6 +64,6 @@
         <Button Style="{DynamicResource AtmbxButtonStyle}" x:Name="BtnLeft" Content="{DynamicResource btnCancel}" Margin="10,0,0,9" Click="BtnLeft_Click" Height="28" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="256" />
         <Button Style="{DynamicResource AtmbxButtonStyle}" x:Name="BtnRight" Content="{DynamicResource btnOK}" Margin="0,0,10,9" Click="BtnRight_Click" Height="28" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="231" />
         <TextBlock Style="{DynamicResource AtmbxTextBlockStyle}" x:Name="TBContent" TextAlignment="Center" Margin="10,66,10,42" TextWrapping="Wrap" Text="Content"  FontSize="18" />
-        <Image x:Name="ImgCancel" Height="24" Margin="0,10,10,0" VerticalAlignment="Top" Source="/Resources/Images/Btn/close_normal.png" MouseDown="ImgCancel_MouseDown" HorizontalAlignment="Right" Width="22"/>
+        <Image x:Name="ImgCancel" Height="32" Margin="0,10,6,0" VerticalAlignment="Top" Source="/Resources/Images/Btn/close.png" MouseDown="ImgCancel_MouseDown" HorizontalAlignment="Right" Width="29"/>
     </Grid>
 </Window>

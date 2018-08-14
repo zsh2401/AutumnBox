@@ -1,16 +1,10 @@
 ﻿using AutumnBox.Basic.Device;
-using AutumnBox.GUI.Helper;
 using AutumnBox.GUI.I18N;
-using AutumnBox.GUI.Resources;
-using AutumnBox.Support.Log;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 
 namespace AutumnBox.GUI.UI.FuncPanels
 {

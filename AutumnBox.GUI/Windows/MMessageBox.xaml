@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:AutumnBox.GUI.Windows"
         xmlns:cstm="clr-namespace:AutumnBox.GUI.UI.Cstm"
         mc:Ignorable="d"
-        Title="MMessageBox" Height="260" Width="500" WindowStyle="None"  WindowStartupLocation="CenterOwner" Foreground="White" ResizeMode="NoResize" Background="{DynamicResource BroderBrushKey}" ShowInTaskbar="False">
+        Title="MMessageBox" Height="320" Width="549" WindowStyle="None"  WindowStartupLocation="CenterOwner" Foreground="White" ResizeMode="NoResize" Background="{DynamicResource BroderBrushKey}" ShowInTaskbar="False">
     <Window.Resources>
         <Storyboard x:Key="ShowAnimation">
             <DoubleAnimation 
@@ -46,8 +46,10 @@
         </EventTrigger>
     </Window.Triggers>
     <Grid  Margin="3,3,3,3" Background="{DynamicResource BackgroundBrushKey}">
-        <cstm:CstmTitleBar x:Name="TitleBar" Height="40" VerticalAlignment="Top" HorizontalAlignment="Right" Width="494"/>
-        <Label Style="{DynamicResource AtmbxLabelStyle}" Foreground="{DynamicResource ForegroundBrushKey}"  x:Name="LabelTitle" Content="Title" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" Background="{x:Null}" Height="53" VerticalAlignment="Top" Margin="0,40,0,0"/>
-        <TextBlock Style="{DynamicResource AtmbxTextBlockStyle}" x:Name="TBText" TextAlignment="Center" Margin="10,98,10,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="152"  FontSize="18" Foreground="{DynamicResource ForegroundBrushKey}"/>
+        <cstm:CstmTitleBar MinBtnVisibility="Hidden" Title="{DynamicResource Message}" MaxBtnVisibility="Hidden" VerticalAlignment="Top" Height="35"/>
+        <Label Style="{DynamicResource AtmbxLabelStyle}" Foreground="{DynamicResource ForegroundBrushKey}"  x:Name="LabelTitle" Content="Title" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" Background="{x:Null}" Height="36" VerticalAlignment="Top" Margin="0,40,0,0"/>
+        <TextBlock Style="{DynamicResource AtmbxTextBlockStyle}" x:Name="TBText" TextAlignment="Center" Margin="10,81,10,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="223"  FontSize="18" Foreground="{DynamicResource ForegroundBrushKey}"/>
+        <Image HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100"/>
+
     </Grid>
 </Window>

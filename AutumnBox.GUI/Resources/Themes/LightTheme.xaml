@@ -14,5 +14,6 @@
         <ResourceDictionary Source="Public/TabItemStyle.xaml"/>
         <ResourceDictionary Source="Public/CkbStyle.xaml"/>
         <ResourceDictionary Source="Public/TextBoxInputStyle.xaml"/>
+        <ResourceDictionary Source="Public/WindowStyle.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

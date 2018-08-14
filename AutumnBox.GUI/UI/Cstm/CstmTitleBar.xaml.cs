@@ -13,19 +13,43 @@ namespace AutumnBox.GUI.UI.Cstm
     /// </summary>
     public partial class CstmTitleBar : UserControl
     {
+        public static readonly DependencyProperty CloseBtnVisibilityProperty
+   = DependencyProperty.Register("CloseBtnVisibility", typeof(Visibility), typeof(CstmTitleBar),
+       new UIPropertyMetadata(Visibility.Visible));
+        public Visibility CloseBtnVisibility
+        {
+            get { return (Visibility)GetValue(CloseBtnVisibilityProperty); }
+            set { SetValue(CloseBtnVisibilityProperty, value); }
+        }
+
+        public static readonly DependencyProperty MinBtnVisibilityProperty
+   = DependencyProperty.Register("MinBtnVisibility", typeof(Visibility), typeof(CstmTitleBar),
+       new UIPropertyMetadata(Visibility.Hidden));
+        public Visibility MinBtnVisibility
+        {
+            get { return (Visibility)GetValue(MinBtnVisibilityProperty); }
+            set { SetValue(MinBtnVisibilityProperty, value); }
+        }
+
+        public static readonly DependencyProperty MaxBtnVisibilityProperty
+   = DependencyProperty.Register("MaxBtnVisibility", typeof(Visibility), typeof(CstmTitleBar),
+       new UIPropertyMetadata(Visibility.Hidden));
+        public Visibility MaxBtnVisibility
+        {
+            get { return (Visibility)GetValue(MaxBtnVisibilityProperty); }
+            set { SetValue(MaxBtnVisibilityProperty, value); }
+        }
+
+        public static readonly DependencyProperty TitleProperty
+   = DependencyProperty.Register("Title", typeof(string), typeof(CstmTitleBar),
+       new UIPropertyMetadata("AutumnBox"));
         public string Title
         {
-            get
-            {
-                return LbTitle.Content as string;
-            }
-            set
-            {
-                LbTitle.Content = value;
-            }
+            get { return (string)GetValue(TitleProperty); }
+            set { SetValue(TitleProperty, value); }
         }
+
         private Window _ownerWindow;
-        private ITitleBarWindow _ownerWindow_t;
         public CstmTitleBar()
         {
             InitializeComponent();
@@ -38,14 +62,9 @@ namespace AutumnBox.GUI.UI.Cstm
             {
                 return;
             }
-            else if (parent is ITitleBarWindow)
-            {
-                this._ownerWindow_t = (ITitleBarWindow)parent;
-                return;
-            }
             else if (parent is Window)
             {
-                this._ownerWindow = (Window)parent;
+                _ownerWindow = (Window)parent;
                 return;
             }
             else
@@ -54,39 +73,37 @@ namespace AutumnBox.GUI.UI.Cstm
             };
         }
 
-        private void ImgClose_MouseEnter(object sender, MouseEventArgs e) =>
-            ImgClose.Source = ImageGetter.Get("Btn/close_selected.png");
+        //private void ImgClose_MouseEnter(object sender, MouseEventArgs e) =>
+        //    ImgClose.Source = ImageGetter.Get("Btn/close_selected.png");
 
-        private void ImgClose_MouseLeave(object sender, MouseEventArgs e) =>
-            ImgClose.Source = ImageGetter.Get("Btn/close_normal.png");
+        //private void ImgClose_MouseLeave(object sender, MouseEventArgs e) =>
+        //    ImgClose.Source = ImageGetter.Get("Btn/close_normal.png");
 
-        private void ImgMin_MouseEnter(object sender, MouseEventArgs e) =>
-            ImgMin.Source = ImageGetter.Get("Btn/min_selected.png");
+        //private void ImgMin_MouseEnter(object sender, MouseEventArgs e) =>
+        //    ImgMin.Source = ImageGetter.Get("Btn/min_selected.png");
 
-        private void ImgMin_MouseLeave(object sender, MouseEventArgs e) =>
-            ImgMin.Source = ImageGetter.Get("Btn/min_normal.png");
+        //private void ImgMin_MouseLeave(object sender, MouseEventArgs e) =>
+        //    ImgMin.Source = ImageGetter.Get("Btn/min_normal.png");
 
-        private void ImgClose_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            _ownerWindow_t?.OnBtnCloseClicked();
-            _ownerWindow?.Close();
-        }
+        //private void ImgClose_MouseDown(object sender, MouseButtonEventArgs e)
+        //{
+        //    _ownerWindow?.Close();
+        //}
 
         private void ImgMin_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            _ownerWindow_t?.OnBtnMinClicked();
             if (_ownerWindow != null)
             {
                 _ownerWindow.WindowState = WindowState.Minimized;
             }
         }
+
         private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
             {
                 try
                 {
-                    _ownerWindow_t?.OnDragMove();
                     _ownerWindow?.DragMove();
                 }
                 catch (InvalidOperationException) { }
@@ -96,7 +113,45 @@ namespace AutumnBox.GUI.UI.Cstm
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             LoadParentWindow(this);
-            ImgMin.Visibility = _ownerWindow_t?.BtnMinEnable == true ? Visibility.Visible : ImgMin.Visibility;
+        }
+
+        private void ImgMax_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (_ownerWindow != null)
+            {
+                _ownerWindow.WindowState = WindowState.Maximized;
+            }
+        }
+
+        private void ImgMax_MouseLeave(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void ImgMax_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void ImageBtn_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            _ownerWindow?.Close();
+        }
+
+        private void ImageBtn_MouseDown_1(object sender, MouseButtonEventArgs e)
+        {
+            if (_ownerWindow != null)
+            {
+                _ownerWindow.WindowState = WindowState.Maximized;
+            }
+        }
+
+        private void ImageBtn_MouseDown_2(object sender, MouseButtonEventArgs e)
+        {
+            if (_ownerWindow != null)
+            {
+                _ownerWindow.WindowState = WindowState.Minimized;
+            }
         }
     }
 }

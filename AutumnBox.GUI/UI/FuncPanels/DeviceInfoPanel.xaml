@@ -6,8 +6,7 @@
              xmlns:local="clr-namespace:AutumnBox.GUI.UI.FuncPanels"
              xmlns:Cstm="clr-namespace:AutumnBox.GUI.UI.Cstm" x:Class="AutumnBox.GUI.UI.FuncPanels.DeviceInfoPanel"
              x:Name="mDeviceInfoPanel"
-             mc:Ignorable="d"  BorderBrush="{DynamicResource BroderBrushKey}"
-             d:DesignHeight="220" Width="600">
+             mc:Ignorable="d"  BorderBrush="{DynamicResource BroderBrushKey}" d:DesignHeight="218" d:DesignWidth="591">
     <Grid>
         <Button x:Name="BtnRefresh" Style="{DynamicResource AtmbxButtonStyle}" Content="{DynamicResource btnRefresh}" HorizontalAlignment="Left" Margin="0,111,0,0" VerticalAlignment="Top" Width="75" Click="BtnRefresh_Click" Height="24"/>
         <Label Background="{DynamicResource ForegroundBrushKey}" Content="Label" Margin="0,101,0,0" VerticalAlignment="Top" Height="1"/>
@@ -31,9 +30,9 @@
         <Label HorizontalContentAlignment="Right" Style="{DynamicResource AtmbxLabelStyle}" Content="{DynamicResource diCode}" HorizontalAlignment="Left" Margin="13,173,0,0" VerticalAlignment="Top" Width="125"/>
 
         <TextBlock TextAlignment="Right" Style="{DynamicResource AtmbxTextBlockStyle}" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="{Binding ElementName=mDeviceInfoPanel,Path=ConnectStatusText}" VerticalAlignment="Top" Width="269" Height="49" FontSize="24"/>
-        <TextBlock Style="{DynamicResource AtmbxTextBlockStyle}" HorizontalAlignment="Left" Margin="284,10,0,0" TextWrapping="Wrap" Text="{Binding DeviceName, ElementName=mDeviceInfoPanel}" VerticalAlignment="Top" Width="306" Height="49" FontSize="24"/>
+        <TextBlock Style="{DynamicResource AtmbxTextBlockStyle}" Margin="284,10,10,0" TextWrapping="Wrap" Text="{Binding DeviceName, ElementName=mDeviceInfoPanel}" VerticalAlignment="Top" Height="49" FontSize="24"/>
 
-        <Label Style="{DynamicResource AtmbxLabelStyle}" Content="{Binding DeviceStateText, ElementName=mDeviceInfoPanel}" HorizontalAlignment="Left" Margin="284,64,0,0" VerticalAlignment="Top" Height="32" Width="306" FontSize="18"/>
+        <Label Style="{DynamicResource AtmbxLabelStyle}" Content="{Binding DeviceStateText, ElementName=mDeviceInfoPanel}" Margin="284,64,10,0" VerticalAlignment="Top" Height="32" FontSize="18"/>
         <Label HorizontalContentAlignment="Right" Style="{DynamicResource AtmbxLabelStyle}" Content="{DynamicResource diDeviceState}" HorizontalAlignment="Left" Margin="10,64,0,0" VerticalAlignment="Top" Width="269" Height="32" FontSize="18"/>
 
     </Grid>

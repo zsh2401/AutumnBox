@@ -150,7 +150,9 @@
     <Compile Include="UI\Cstm\HyperLink.xaml.cs">
       <DependentUpon>HyperLink.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Cstm\ITitleBarWindow.cs" />
+    <Compile Include="UI\Cstm\ImageBtn.xaml.cs">
+      <DependentUpon>ImageBtn.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\CstPanels\ExtensionRuningPanel.xaml.cs">
       <DependentUpon>ExtensionRuningPanel.xaml</DependentUpon>
     </Compile>
@@ -170,6 +172,9 @@
     <Compile Include="Util\Extensions.cs" />
     <Compile Include="Util\OpenFrameworkManager.cs" />
     <Compile Include="Util\Md5.cs" />
+    <Compile Include="Windows\AutumnWindow.xaml.cs">
+      <DependentUpon>AutumnWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\DebugWindow.xaml.cs">
       <DependentUpon>DebugWindow.xaml</DependentUpon>
     </Compile>
@@ -435,6 +440,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UI\Cstm\ImageBtn.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UI\CstPanels\AboutPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -512,6 +521,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\AppLoadingWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\AutumnWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -615,16 +628,16 @@
     <Resource Include="Resources\Images\Icons\title_icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\Btn\close_normal.png" />
+    <Resource Include="Resources\Images\Btn\_close_normal.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\Btn\close_selected.png" />
+    <Resource Include="Resources\Images\Btn\_close_selected.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\Btn\min_normal.png" />
+    <Resource Include="Resources\Images\Btn\_min_normal.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\Btn\min_selected.png" />
+    <Resource Include="Resources\Images\Btn\_min_selected.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AutumnBox.Basic.Flows\AutumnBox.Basic.Flows.csproj">
@@ -722,6 +735,14 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\defaultExtIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Btn\close.png" />
+    <Resource Include="Resources\Images\Btn\close_selected.png" />
+    <Resource Include="Resources\Images\Btn\max_selected.png" />
+    <Resource Include="Resources\Images\Btn\max.png" />
+    <Resource Include="Resources\Images\Btn\min.png" />
+    <Resource Include="Resources\Images\Btn\min_selected.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
