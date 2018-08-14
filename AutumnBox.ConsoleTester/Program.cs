@@ -21,7 +21,9 @@ namespace AutumnBox.ConsoleTester
             
         unsafe static int Main(string[] cmdargs)
         {
-            Console.WriteLine((A.a | A.b).HasFlag(A.b | A.c));
+            var a = A.a | A.b;
+            var b = A.d | A.c;
+            Console.WriteLine((a & b) == 0);
             Console.ReadKey();
             return 0;
         }
