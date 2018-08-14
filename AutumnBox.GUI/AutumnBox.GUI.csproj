@@ -172,9 +172,6 @@
     <Compile Include="Util\Extensions.cs" />
     <Compile Include="Util\OpenFrameworkManager.cs" />
     <Compile Include="Util\Md5.cs" />
-    <Compile Include="Windows\AutumnWindow.xaml.cs">
-      <DependentUpon>AutumnWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Windows\DebugWindow.xaml.cs">
       <DependentUpon>DebugWindow.xaml</DependentUpon>
     </Compile>
@@ -521,10 +518,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\AppLoadingWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windows\AutumnWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

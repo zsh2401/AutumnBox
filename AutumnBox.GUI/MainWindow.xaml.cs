@@ -42,7 +42,7 @@ namespace AutumnBox.GUI
     /// <summary>
     /// Window1.xaml 的交互逻辑
     /// </summary>
-    public sealed partial class MainWindow : AutumnWindow, IDeviceRefreshable
+    public sealed partial class MainWindow : Window, IDeviceRefreshable
     {
         private Object setUILock = new System.Object();
         private List<IExtPanel> extPanels;
@@ -66,7 +66,6 @@ namespace AutumnBox.GUI
                 PoweronPanel,
             };
             RegisterEvent();
-            //SetTitile();
             LanguageHelper.LanguageChanged += (s, e) =>
             {
                 Reset();

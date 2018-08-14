@@ -1,4 +1,4 @@
-﻿<windows:AutumnWindow
+﻿<Window
     xmlns:windows="clr-namespace:AutumnBox.GUI.Windows"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -12,8 +12,7 @@
     
     Closed="_MainWindow_Closed"
         Background="{DynamicResource BroderBrushKey}" Title="{DynamicResource AppName}" MinHeight="682.667" MinWidth="1155" Height="787.667" Width="1473" Foreground="#FF1B1919" Loaded="MainWindow_Loaded"  
-    WindowStartupLocation="CenterScreen"  
-    >
+    WindowStartupLocation="CenterScreen" >
     <Grid>
         <Grid  Background="{DynamicResource MainBackgroundBrushKey}" Name="GridBase" Margin="1,0,1,1">
             <WebBrowser x:Name="WTF" Width="1" Height="0" Margin="963,271,185,408"/>
@@ -39,7 +38,7 @@
                         <cstm:ExtensionPanel x:Name="PoweronPanel" TargetDeviceState="Poweron"></cstm:ExtensionPanel>
                     </TabItem>
                     <TabItem Style="{DynamicResource AtmbxTabItem}" TabIndex="2"  Header="{DynamicResource tbiOnRecovery}" Margin="18,-2,-24,0"  FontSize="16">
-                        <cstm:ExtensionPanel x:Name="RecoveryPanel" TargetDeviceState="Recovery,Sideload"></cstm:ExtensionPanel>
+                        <cstm:ExtensionPanel x:Name="RecoveryPanel" TargetDeviceState="Recovery"></cstm:ExtensionPanel>
                     </TabItem>
                     <TabItem Style="{DynamicResource AtmbxTabItem}" TabIndex="3"  Header="{DynamicResource tbiOnFastboot}" Margin="24,-2,-27,0"  FontSize="16">
                         <cstm:ExtensionPanel  x:Name="FastbootPanel" TargetDeviceState="Fastboot"></cstm:ExtensionPanel>
@@ -51,4 +50,4 @@
             </Grid>
         </Grid>
     </Grid>
-</windows:AutumnWindow>
+</Window>
