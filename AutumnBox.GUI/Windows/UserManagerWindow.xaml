@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="UserManagerWindow" MinHeight="300" MinWidth="400" WindowStyle="None" ResizeMode="NoResize" Background="{DynamicResource BroderBrushKey}" WindowStartupLocation="CenterOwner" Height="229" Width="82">
     <Grid Margin="3,0,3,3" Background="{DynamicResource BackgroundBrushKey}">
-        <cstm:CstmTitleBar VerticalAlignment="Top"/>
+        <cstm:CstmTitleBar MaxBtnVisibility="Hidden" MinBtnVisibility="Hidden" VerticalAlignment="Top"/>
         <ListBox x:Name="ListUsers" DisplayMemberPath="Name" Margin="10,74,184,10" SelectionChanged="ListUsers_SelectionChanged"/>
         <Label Style="{DynamicResource AtmbxLabelStyle}" Content="{DynamicResource lbUserName}" HorizontalAlignment="Right" Margin="0,45,10,0" VerticalAlignment="Top" FontSize="20" Width="169"/>
         <Label Style="{DynamicResource AtmbxLabelStyle}" Content="{DynamicResource lbUserId}" HorizontalAlignment="Right" Margin="0,136,10,0" VerticalAlignment="Top" FontSize="20" Width="169"/>

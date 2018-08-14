@@ -9,14 +9,15 @@
         xmlns:cpnel="clr-namespace:AutumnBox.GUI.UI.FuncPanels"
         x:Name="_MainWindow" x:Class="AutumnBox.GUI.MainWindow"
         mc:Ignorable="d"
-    
-    Closed="_MainWindow_Closed"
-        Background="{DynamicResource BroderBrushKey}" Title="{DynamicResource AppName}" MinHeight="682.667" MinWidth="1155" Height="787.667" Width="1473" Foreground="#FF1B1919" Loaded="MainWindow_Loaded"  
-    WindowStartupLocation="CenterScreen" >
+    Title="{DynamicResource AppName}"
+     MinHeight="720" MinWidth="1280" Height="720" Width="1280" 
+    WindowStartupLocation="CenterScreen"
+     Loaded="MainWindow_Loaded"  
+     Closed="_MainWindow_Closed">
     <Grid>
-        <Grid  Background="{DynamicResource MainBackgroundBrushKey}" Name="GridBase" Margin="1,0,1,1">
+        <Grid  Background="{DynamicResource MainBackgroundBrushKey}" Name="GridBase" Margin="0,0,0,0">
             <WebBrowser x:Name="WTF" Width="1" Height="0" Margin="963,271,185,408"/>
-            <Grid Name="GridMain"  Margin="0,40,0,0">
+            <Grid Name="GridMain">
                 <cpnel:DeviceInfoPanel x:Name="DevInfoPanel" Margin="10,10,489,0"  VerticalAlignment="Top"/>
                 <cpnel:DevicesPanel  x:Name="DevicesPanel" Margin="0,1,295,0" HorizontalAlignment="Right" VerticalAlignment="Top" Width="189" Height="233" Grid.RowSpan="2"/>
                 <cpnel:RebootBtnPanel x:Name="RebootGrid" Margin="0,10,23,0" HorizontalAlignment="Right" Width="265" VerticalAlignment="Top" Height="126" />
@@ -27,8 +28,8 @@
                 <Button  Style="{DynamicResource AtmbxButtonStyle}" x:Name="BtnDonate"  Content="{DynamicResource Donate}" Margin="0,0,9,108"   FontSize="14"  Click="BtnDonate_Click" HorizontalAlignment="Right" Width="204" Height="35" VerticalAlignment="Bottom" Grid.Row="1" />
                 <Image Source="Resources/Images/Icons/donate.png" HorizontalAlignment="Right" Height="27" Margin="0,0,183,112" VerticalAlignment="Bottom" Width="27" Grid.Row="1"/>
 
-                <TextBox BorderBrush="{DynamicResource BroderBrushKey}" Foreground="{DynamicResource ForegroundBrushKey}" x:Name="textBoxGG" Margin="0,266,6,0" TextWrapping="Wrap" Text="..." IsReadOnly="True" Background="{x:Null}" FontSize="14" HorizontalAlignment="Right" Width="204" Height="88" VerticalAlignment="Top"/>
-                <cstm:PotdBox Margin="0,359,9,0" Width="200" HorizontalAlignment="Right" Height="150" VerticalAlignment="Top"/>
+                <TextBox BorderBrush="{DynamicResource BroderBrushKey}" Foreground="{DynamicResource ForegroundBrushKey}" x:Name="textBoxGG" Margin="0,266,6,0" TextWrapping="Wrap" Text="..." IsReadOnly="True" Background="{x:Null}" FontSize="14" HorizontalAlignment="Right" Width="204" Height="118" VerticalAlignment="Top"/>
+                <cstm:PotdBox Margin="0,389,10,0" Width="200" HorizontalAlignment="Right" Height="150" VerticalAlignment="Top"/>
 
                 <TabControl SelectionChanged="TBCFuncs_SelectionChanged" x:Name="TBCFuncs" Margin="10,239,219,10" Background="{x:Null}" BorderBrush="{DynamicResource BroderBrushKey}">
                     <TabItem  Style="{DynamicResource AtmbxTabItem}" TabIndex="0" Header="{DynamicResource tbiStart}" Margin="-2,-2,-14,0"  FontSize="16">
