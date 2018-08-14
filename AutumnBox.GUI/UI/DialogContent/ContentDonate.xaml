@@ -10,6 +10,6 @@
         <Image RenderOptions.BitmapScalingMode="Fant" HorizontalAlignment="Left" Height="317" VerticalAlignment="Top" Width="210" Source="/AutumnBox.GUI;component/Resources/Images/alipay.jpg" Margin="10,10,0,0"/>
         <Image RenderOptions.BitmapScalingMode="Fant" HorizontalAlignment="Left" Height="317" Margin="225,10,0,0" VerticalAlignment="Top" Width="242" Source="/AutumnBox.GUI;component/Resources/Images/wechatpay.png"/>
         <TextBlock  Style="{DynamicResource AtmbxTextBlockStyle}" Margin="482,47,10,0" TextWrapping="Wrap" Text="{DynamicResource DonateDescription}" VerticalAlignment="Top" FontSize="24" Height="280" />
-        <Button x:Name="BtnClose" Style="{DynamicResource MaterialDesignRaisedButton}" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Height="42" VerticalAlignment="Top"  Content="{DynamicResource btnClose}" HorizontalAlignment="Right" Width="122"/>
+        <Button x:Name="BtnClose" Style="{DynamicResource MaterialDesignRaisedButton}" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Height="30" VerticalAlignment="Top"  Content="{DynamicResource btnClose}" HorizontalAlignment="Right" Width="91"/>
     </Grid>
 </UserControl>

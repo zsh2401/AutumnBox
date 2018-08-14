@@ -24,6 +24,6 @@
             </Grid>
         </GroupBox>
 
-        <Button x:Name="BtnClose" Style="{DynamicResource MaterialDesignRaisedButton}" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Height="32" VerticalAlignment="Top"  Content="{DynamicResource btnClose}" Margin="393,11,10,0"></Button>
+        <Button x:Name="BtnClose" Style="{DynamicResource MaterialDesignRaisedButton}" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Height="29" VerticalAlignment="Top"  Content="{DynamicResource btnClose}" Margin="418,0,0,0"></Button>
     </Grid>
 </UserControl>
