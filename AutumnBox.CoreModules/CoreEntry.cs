@@ -9,7 +9,7 @@ using AutumnBox.OpenFramework.ExtLibrary;
 namespace AutumnBox.CoreModules
 {
     [ContextPermission(CtxPer.High)]
-    public class CoreEntry : ExtensionLibrarin
+    public sealed class CoreEntry : ExtensionLibrarin
     {
         public static Context Context { get; private set; }
 

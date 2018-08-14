@@ -54,7 +54,10 @@
     <Compile Include="Extensions\EBreventActivator8.cs" />
     <Compile Include="Extensions\EDpiChanger.cs" />
     <Compile Include="Extensions\EExtractBootImg.cs" />
+    <Compile Include="Extensions\EFlashRecovery.cs" />
+    <Compile Include="Extensions\EExtractRecoveryImg.cs" />
     <Compile Include="Extensions\EFilePusher.cs" />
+    <Compile Include="Extensions\EFlashBoot.cs" />
     <Compile Include="Extensions\EScreenShoter.cs" />
     <Compile Include="Extensions\EUnlockSystemParation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
