@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="DpiChangeWindow" ShowInTaskbar="False" Height="249.5" Width="353.167" ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterOwner" Background="{DynamicResource BroderBrushKey}" Closed="Window_Closed">
     <Grid Margin="3,3,3,3" Background="{DynamicResource BackgroundBrushKey}">
-        <cstm:CstmTitleBar x:Name="TitleBar" Margin="0,0,0,204"></cstm:CstmTitleBar>
+        <cstm:CstmTitleBar MaxBtnVisibility="Hidden" MinBtnVisibility="Hidden" x:Name="TitleBar" Margin="0,0,0,204"></cstm:CstmTitleBar>
         <TextBox  x:Name="TextBoxInput" HorizontalAlignment="Left" Height="22" Margin="202,182,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="135" PreviewTextInput="TextBoxInput_PreviewTextInput" FontSize="16" Background="{x:Null}" />
         <Button Style="{DynamicResource AtmbxButtonStyle}" x:Name="BtnOK" Content="{DynamicResource btnSaveAndReboot}" Margin="6,209,10,0" VerticalAlignment="Top" Background="{x:Null}" Height="28" Click="BtnOK_Click" />
 

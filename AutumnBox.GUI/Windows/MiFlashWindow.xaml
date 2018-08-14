@@ -21,7 +21,7 @@
         </Storyboard>
     </Window.Resources>
     <Grid Background="{DynamicResource BackgroundBrushKey}" Margin="3,3,3,3">
-        <cstm:CstmTitleBar VerticalAlignment="Top"/>
+        <cstm:CstmTitleBar MaxBtnVisibility="Hidden" MinBtnVisibility="Hidden" VerticalAlignment="Top"/>
         <TextBlock Style="{DynamicResource AtmbxTextBlockStyle}" FontFamily="{DynamicResource AutumnBox.Font}" Text="{DynamicResource CurrentDevice}" HorizontalAlignment="Left" Margin="10,45,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" FontSize="22" Width="98" Height="32"  />
         <TextBlock Style="{DynamicResource AtmbxTextBlockStyle}" FontFamily="{DynamicResource AutumnBox.Font}" x:Name="TBSerial" Margin="113,45,10,0" TextWrapping="Wrap" Text="There is device serial" VerticalAlignment="Top"  Height="32" FontSize="22" />
 

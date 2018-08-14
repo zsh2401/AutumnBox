@@ -621,18 +621,6 @@
     <Resource Include="Resources\Images\Icons\title_icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\Btn\_close_normal.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Images\Btn\_close_selected.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Images\Btn\_min_normal.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Images\Btn\_min_selected.png" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\AutumnBox.Basic.Flows\AutumnBox.Basic.Flows.csproj">
       <Project>{3091ecae-7ff2-421d-b970-1c76d7cab0c0}</Project>
       <Name>AutumnBox.Basic.Flows</Name>
@@ -732,8 +720,8 @@
   <ItemGroup>
     <Resource Include="Resources\Images\Btn\close.png" />
     <Resource Include="Resources\Images\Btn\close_selected.png" />
-    <Resource Include="Resources\Images\Btn\max_selected.png" />
     <Resource Include="Resources\Images\Btn\max.png" />
+    <Resource Include="Resources\Images\Btn\max_selected.png" />
     <Resource Include="Resources\Images\Btn\min.png" />
     <Resource Include="Resources\Images\Btn\min_selected.png" />
   </ItemGroup>
