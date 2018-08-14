@@ -3,7 +3,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
                 
 
-        <Style x:Key="CustomWindowStyle" TargetType="{x:Type Window}">
+        <!--<Style x:Key="AutumnWindowStyle" TargetType="{x:Type Window}">
             <Setter Property="WindowChrome.WindowChrome">
                 <Setter.Value>
                     <WindowChrome CaptionHeight="30"
@@ -61,7 +61,7 @@
                                     <Button x:Name="btnClose"
                                     Width="15"
                                     Margin="5"
-                              
+                                   Click="CloseClicked"
                                     Content="X"
                                     WindowChrome.IsHitTestVisibleInChrome="True" />
 
@@ -69,7 +69,7 @@
                                     <Button x:Name="btnRestore"
                                     Width="15"
                                     Margin="5"
-                                    
+                                     Click="RestoreClicked"
                                     Content="#"
                                     WindowChrome.IsHitTestVisibleInChrome="True" />
 
@@ -88,5 +88,5 @@
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
-        </Style>
+        </Style>-->
     </ResourceDictionary>
