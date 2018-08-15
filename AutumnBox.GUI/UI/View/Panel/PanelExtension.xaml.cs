@@ -1,4 +1,6 @@
 ﻿using AutumnBox.Basic.Device;
+using AutumnBox.GUI.UI.ViewModel.Panel;
+using AutumnBox.Support.Log;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +23,13 @@ namespace AutumnBox.GUI.UI.View.Panel
     /// </summary>
     public partial class PanelExtension : UserControl
     {
-        public DeviceState TargetDeviceState { get; set; }
+        public DeviceState TargetDeviceState
+        {
+            set
+            {
+                DataContext = new VMExtensions(value);
+            }
+        }
         public PanelExtension()
         {
             InitializeComponent();

@@ -165,7 +165,9 @@
     <Compile Include="UI\IDependOnDeviceChanges.cs" />
     <Compile Include="UI\InjectByInterfaceObject.cs" />
     <Compile Include="UI\INotifyDeviceChanged.cs" />
+    <Compile Include="UI\Model\Panel\ModelExtensions.cs" />
     <Compile Include="UI\Model\Panel\ModelReboot.cs" />
+    <Compile Include="UI\ViewModel\Panel\VMExtensions.cs" />
     <Compile Include="UI\ViewModel\Panel\VMReboot.cs" />
     <Compile Include="UI\ViewModel\Windows\VMMainWindow.cs" />
     <Compile Include="UI\View\DialogContent\ContentAbout.xaml.cs">

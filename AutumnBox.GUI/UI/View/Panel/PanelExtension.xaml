@@ -5,24 +5,25 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AutumnBox.GUI.UI.View.Panel"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:panel="clr-namespace:AutumnBox.GUI.UI.ViewModel.Panel"
              mc:Ignorable="d" d:DesignWidth="622.427" d:DesignHeight="281.547">
     <Grid>
-        <materialDesign:Card Margin="10,10,0,10" VerticalAlignment="Stretch" HorizontalAlignment="Left" Width="165">
-            <ListBox ItemsSource="{Binding Model.Extensions}" Margin="0,0,0,0">
+        <materialDesign:Card Margin="10,10,0,10" VerticalAlignment="Stretch" HorizontalAlignment="Left" Width="262">
+            <ListBox ItemsSource="{Binding Model.Warppers}" SelectedIndex="{Binding Model.SelectedIndex}" Margin="0,0,0,0">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
-                            <Image RenderOptions.BitmapScalingMode="Fant" Height="20px" Width="20px" Source="{Binding Icon}"></Image>
-                            <Label Content="{Binding Name}"></Label>
+                            <Image RenderOptions.BitmapScalingMode="Fant" Height="20px" Width="20px" Source="{Binding Path=Icon}"></Image>
+                            <Label Content="{Binding Path=Name}"></Label>
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
         </materialDesign:Card>
-        <GroupBox Header="{Binding Model.Selected.Name}" Visibility="{Binding Model.DetailsVisibily}" FontSize="12" Margin="180,10,10,10">
+        <GroupBox Header="{Binding Model.Selected.Info.Name}" Visibility="{Binding Model.DetailsVisibily}" FontSize="17" Margin="277,10,10,10">
             <Grid>
-                <TextBlock Text="{Binding Model.Selected.Desc}" Margin="0,0,0,23"/>
-                <Button Style="{DynamicResource MaterialDesignFlatButton}" IsEnabled="{Binding Model.BtnEnable}" Content="{Binding Model.BtnText}" Height="18" VerticalAlignment="Bottom"/>
+                <TextBlock Text="{Binding Model.Selected.Info.FormatedDesc}" Margin="0,0,0,33"/>
+                <Button Style="{DynamicResource MaterialDesignRaisedButton}" Command="{Binding RunExtension}" IsEnabled="{Binding Model.BtnRunEnabled}" Content="{Binding Model.BtnRunText}" Height="28" VerticalAlignment="Bottom"/>
             </Grid>
         </GroupBox>
     </Grid>

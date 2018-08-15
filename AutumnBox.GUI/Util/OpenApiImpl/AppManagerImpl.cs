@@ -9,10 +9,11 @@ using AutumnBox.GUI.Windows;
 using AutumnBox.OpenFramework.Open;
 using AutumnBox.OpenFramework.Open.Impl.AutumnBoxApi;
 using AutumnBox.Support.Log;
-using System;
 using System.Diagnostics;
+using System;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Media.Imaging;
 
 namespace AutumnBox.GUI.Util.OpenApiImpl
 {
@@ -25,6 +26,7 @@ namespace AutumnBox.GUI.Util.OpenApiImpl
                 return SystemHelper.CurrentVersion;
             }
         }
+
 
         public void CloseLoadingWindow()
         {

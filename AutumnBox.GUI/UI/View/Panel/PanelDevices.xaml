@@ -8,7 +8,7 @@
              mc:Ignorable="d" Width="177.009" Height="303.769">
     <GroupBox Header="{DynamicResource Devices}">
         <Grid>
-            <ListBox x:Name="MainList" Margin="10,0,10,121"  DisplayMemberPath="Serial" ItemsSource="{Binding Model.Devices}" SourceUpdated="MainList_SourceUpdated" SelectionChanged="ListBox_SelectionChanged"/>
+            <ListBox x:Name="MainList" Margin="10,0,10,121"  DisplayMemberPath="Serial" ItemsSource="{Binding Model.Devices}" SelectedIndex="{Binding Model.SelectedIndex}" SelectionChanged="ListBox_SelectionChanged"/>
             <Button Content="{DynamicResource btnAddNetdebuggingDevice}" IsEnabled="{Binding Model.BtnConnectEnable}" Command="{Binding ConnectDevice}" Margin="10,0,10,84" Height="32" VerticalAlignment="Bottom" FontSize="12"/>
             <Button Content="{DynamicResource btnEnableNetdebugging}" Command="{Binding OpenDeviceNetDebugging}" Margin="10,0,10,47" Height="32" VerticalAlignment="Bottom" FontSize="12"/>
             <Button Content="{DynamicResource btnDisableNetdebugging}" Command="{Binding DisconnectDevice}" Margin="10,0,10,10" VerticalAlignment="Bottom" FontSize="12"/>

@@ -21,6 +21,10 @@ namespace AutumnBox.Basic.Device
     public struct DeviceBasicInfo : IEquatable<DeviceBasicInfo>
     {
         /// <summary>
+        /// 默认
+        /// </summary>
+        public readonly static DeviceBasicInfo None = new DeviceBasicInfo() { State = DeviceState.None };
+        /// <summary>
         /// 设备序列号
         /// </summary>
         public DeviceSerialNumber Serial { get; set; }
@@ -110,7 +114,7 @@ namespace AutumnBox.Basic.Device
         /// <returns></returns>
         public bool Equals(DeviceBasicInfo other)
         {
-            return  this.State == other.State && this.Serial == other.Serial;
+            return this.State == other.State && this.Serial == other.Serial;
         }
 
         /// <summary>

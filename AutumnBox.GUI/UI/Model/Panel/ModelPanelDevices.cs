@@ -13,6 +13,19 @@ namespace AutumnBox.GUI.UI.Model.Panel
 {
     class ModelPanelDevices : ModelBase
     {
+        public int SelectedIndex
+        {
+            get
+            {
+                return _selectedIndex;
+            }
+            set
+            {
+                _selectedIndex = value;
+                RaisePropertyChanged(nameof(SelectedIndex));
+            }
+        }
+        private int _selectedIndex;
         private DevicesMonitor.DevicesMonitorCore core = new DevicesMonitor.DevicesMonitorCore();
         public List<DeviceBasicInfo> Devices
         {
@@ -45,6 +58,10 @@ namespace AutumnBox.GUI.UI.Model.Panel
             core.DevicesChanged += (s, e) =>
             {
                 Devices = e.DevicesList.ToList();
+                if (Devices.Count > 0)
+                {
+                    SelectedIndex = 0;
+                }
             };
             core.Begin();
         }
