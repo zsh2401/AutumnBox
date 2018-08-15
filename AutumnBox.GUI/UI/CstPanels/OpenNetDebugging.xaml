@@ -7,11 +7,11 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AutumnBox.GUI.UI.CstPanels"
              mc:Ignorable="d" 
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
              d:DesignHeight="300" d:DesignWidth="300" Width="189" Height="233">
     <Grid x:Name="GridMain">
         <TextBlock Foreground="#FFF13434" HorizontalAlignment="Left" Margin="10,31,0,0" TextWrapping="Wrap" Text="{DynamicResource warningOpenNetDebugging}" VerticalAlignment="Top" Width="169" Height="133"/>
-        <Button  Style="{DynamicResource AtmbxButtonStyle}" x:Name="BtnOk" Content="{DynamicResource btnOpen}" HorizontalAlignment="Left" Margin="10,198,0,0" VerticalAlignment="Top" Width="169"   Click="BtnOk_Click"/>
-        <TextBox x:Name="TBoxPort" Style="{DynamicResource TB_Input}" HorizontalAlignment="Left" Height="24" Margin="97,169,0,0" TextWrapping="Wrap" Text="5555" VerticalAlignment="Top" Width="82" MaxLength="5" MaxLines="1" PreviewTextInput="TextBox_PreviewTextInput"/>
-        <TextBlock  Style="{DynamicResource AtmbxTextBlockStyle}" HorizontalAlignment="Left" Margin="10,169,0,0" TextWrapping="Wrap" Text="{DynamicResource Port}" VerticalAlignment="Top"  Height="24" Width="82" FontSize="16"/>
+        <Button  Style="{DynamicResource MaterialDesignFlatButton}" x:Name="BtnOk" Content="{DynamicResource btnOpen}" HorizontalAlignment="Left" Margin="10,198,0,0" VerticalAlignment="Top" Width="169"   Click="BtnOk_Click" FontSize="12"/>
+        <TextBox x:Name="TBoxPort" Style="{DynamicResource MaterialDesignFloatingHintTextBox}" materialDesign:HintAssist.Hint="{DynamicResource Port}"  HorizontalAlignment="Left" Height="40" Margin="10,153,0,0" TextWrapping="Wrap" Text="5555" VerticalAlignment="Top" Width="169" MaxLength="5" MaxLines="1" PreviewTextInput="TextBox_PreviewTextInput"/>
     </Grid>
 </fp:FastPanelChild>
