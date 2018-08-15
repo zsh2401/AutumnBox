@@ -24,7 +24,6 @@ namespace AutumnBox.GUI.UI
         }
         public InjectByInterfaceObject()
         {
-            Logger.Debug(this, this is IDependOnDeviceChanges);
             if (this is IDependOnDeviceChanges dep)
             {
                 Manager.deviceChangeDependers.Add(dep);
