@@ -22,7 +22,7 @@
         </materialDesign:Card>
         <GroupBox Header="{Binding Model.Selected.Info.Name}" Visibility="{Binding Model.DetailsVisibily}" FontSize="17" Margin="277,10,10,10">
             <Grid>
-                <TextBlock Text="{Binding Model.Selected.Info.FormatedDesc}" Margin="0,0,0,33"/>
+                <TextBlock TextWrapping = "Wrap" Text="{Binding Model.Selected.Info.FormatedDesc}" Margin="0,0,10,35"/>
                 <Button Style="{DynamicResource MaterialDesignRaisedButton}" Command="{Binding RunExtension}" IsEnabled="{Binding Model.BtnRunEnabled}" Content="{Binding Model.BtnRunText}" Height="28" VerticalAlignment="Bottom"/>
             </Grid>
         </GroupBox>
