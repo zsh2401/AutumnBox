@@ -34,7 +34,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
 
         private void HyperLink_MouseClick(object sender, RoutedEventArgs e)
         {
-            new FastPanel(App.Current.MainWindowAsMainWindow.GridMain, new DonatePanel()).Display();
+            //new FastPanel(App.Current.MainWindowAsMainWindow.GridMain, new DonatePanel()).Display();
         }
     }
 }

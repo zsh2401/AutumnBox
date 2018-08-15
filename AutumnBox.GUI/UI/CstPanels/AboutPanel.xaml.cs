@@ -29,7 +29,7 @@ namespace AutumnBox.GUI.UI.CstPanels
 
         private void HyperLink_MouseClick(object sender, RoutedEventArgs e)
         {
-            new FastPanel(((MainWindow)App.Current.MainWindow).GridMain, new DonatePanel()).Display();
+            //new FastPanel(((MainWindow)App.Current.MainWindow).GridMain, new DonatePanel()).Display();
         }
     }
 }

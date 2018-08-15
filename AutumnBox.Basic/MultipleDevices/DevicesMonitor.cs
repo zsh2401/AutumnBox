@@ -76,7 +76,7 @@ namespace AutumnBox.Basic.MultipleDevices
         /// <summary>
         /// 完全静态类很不OOP,所以....
         /// </summary>
-        private sealed class DevicesMonitorCore
+        public sealed class DevicesMonitorCore
         {
             private const int defaultInterval = 2000;
             private readonly int _interval;

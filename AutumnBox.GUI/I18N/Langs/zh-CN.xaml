@@ -42,7 +42,7 @@
     <s:String x:Key="btnDisableNetdebugging">关闭当前设备网络调试</s:String>
     <s:String x:Key="btnEnableNetdebugging">开启当前设备网络调试</s:String>
     <s:String x:Key="btnAddNetdebuggingDevice">添加网络设备</s:String>
-    <s:String x:Key="btnConnect">连接该设备</s:String>
+    <s:String x:Key="btnConnect">连接</s:String>
     <s:String x:Key="btnConnecting">连接中</s:String>
     <s:String x:Key="btnAbout">关于</s:String>
     <s:String x:Key="btnSetting">设置</s:String>

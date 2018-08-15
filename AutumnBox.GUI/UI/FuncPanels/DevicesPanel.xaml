@@ -9,7 +9,7 @@
              mc:Ignorable="d" Width="188.666" Height="232.667" MinWidth="170" MinHeight="150">
     <GroupBox Header="{DynamicResource Devices}">
         <Grid x:Name="GridMain">
-            <ListBox DisplayMemberPath="Serial" x:Name="ListBoxMain" Background="{x:Null}" Foreground="{DynamicResource ForegroundBrushKey}" BorderBrush="{DynamicResource BroderBrushKey}" Margin="0,0,0,65" SelectionChanged="ListBox_SelectionChanged"/>
+            <ListBox DisplayMemberPath="Serial" x:Name="ListBoxMain" IsSynchronizedWithCurrentItem="True" Background="{x:Null}" Foreground="{DynamicResource ForegroundBrushKey}" BorderBrush="{DynamicResource BroderBrushKey}" Margin="0,0,0,65" SelectionChanged="ListBox_SelectionChanged"/>
             <Button Style="{DynamicResource MaterialDesignFlatButton}" x:Name="BtnAddNetDebuggingDevice" Content="{DynamicResource btnAddNetdebuggingDevice}" VerticalAlignment="Bottom"  Height="25"  Margin="5,0,5,35" Click="BtnAddNetDebuggingDevice_Click"/>
             <Button Style="{DynamicResource MaterialDesignFlatButton}" x:Name="BtnEnableNetDebugging" Content="{DynamicResource btnEnableNetdebugging}" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="174"  Height="25"  Margin="5,0,0,5" Click="BtnEnableNetDebugging_Click"/>
             <Button Style="{DynamicResource MaterialDesignFlatButton}" x:Name="BtnDisableNetDebugging" Content="{DynamicResource btnDisableNetdebugging}" VerticalAlignment="Bottom"  Height="25"  Margin="5,0,5,5" Click="BtnDisableNetDebugging_Click"/>

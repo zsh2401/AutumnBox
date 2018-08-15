@@ -14,6 +14,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
     /// </summary>
     public partial class DevicesPanel : UserControl
     {
+        internal IDialogFather DialogFather { get; set; }
         public DeviceBasicInfo CurrentSelectDevice
         {
             get
@@ -36,6 +37,14 @@ namespace AutumnBox.GUI.UI.FuncPanels
             BtnEnableNetDebugging.Visibility = Visibility.Hidden;
             DevicesMonitor.DevicesChanged += _monitor_DevicesChanged;
             ListBoxMain.ItemsSource = DevicesMonitor.CurrentDevices;
+        }
+
+        private void ShowContentAsDialog(object content)
+        {
+            DialogFather.ShowDialogContent(content);
+            //ContentBase.Content = content;
+            //Logger.Debug(this,"WTF");
+            //DialogHost.Show(ContentBase);
         }
         private void _monitor_DevicesChanged(object sender, DevicesChangedEventArgs e)
         {
@@ -72,6 +81,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
 
         private void BtnAddNetDebuggingDevice_Click(object sender, RoutedEventArgs e)
         {
+            //ShowContentAsDialog(new ContentConnectNetDevice());
             new FastPanel(this.GridMain, new NetDebuggingAdder(this)).Display();
         }
 
