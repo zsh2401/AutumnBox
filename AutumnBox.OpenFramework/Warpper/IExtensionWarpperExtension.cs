@@ -17,7 +17,6 @@ namespace AutumnBox.OpenFramework.Warpper
     {
         public static bool HasState(this IExtensionWarpper warpper, DeviceState state)
         {
-            Logger.Info(warpper,warpper.Info.RequiredDeviceStates);
             return warpper.Info.RequiredDeviceStates.HasFlag(state);
         }
     }
