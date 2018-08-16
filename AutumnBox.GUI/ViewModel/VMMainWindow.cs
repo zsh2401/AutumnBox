@@ -7,6 +7,7 @@ using AutumnBox.Basic.Util;
 using AutumnBox.GUI.Helper;
 using AutumnBox.GUI.Model;
 using AutumnBox.GUI.MVVM;
+using AutumnBox.GUI.View;
 using AutumnBox.GUI.View.DialogContent;
 using AutumnBox.GUI.Windows;
 using MaterialDesignThemes.Wpf;
@@ -47,8 +48,7 @@ namespace AutumnBox.GUI.ViewModel
                         break;
                 }
             };
-            ChoiceDialog.Show(args);
-            var content = new ContentChoice(args);
+            MaterialDialog.ShowChoiceDialog(args);
         });
         public ICommand ShowSettingsDialog => new MVVMCommand((args) =>
         {

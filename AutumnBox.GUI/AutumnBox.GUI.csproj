@@ -138,22 +138,21 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="AppLoader.cs" />
-    <Compile Include="Cfg\ConfigPropertyAttribute.cs" />
     <Compile Include="Depending\ISelectDeviceChangedListener.cs" />
     <Compile Include="Depending\ListenerManager.cs" />
     <Compile Include="Helper\BlurHelper.cs" />
     <Compile Include="Helper\BoxHelper.cs" />
-    <Compile Include="Helper\ChoiceDialog.cs" />
     <Compile Include="Helper\SystemHelper.cs" />
-    <Compile Include="Helper\TextHelper.cs" />
     <Compile Include="Helper\ThemeManager.cs" />
     <Compile Include="Helper\UIHelper.cs" />
     <Compile Include="I18N\Language.cs" />
     <Compile Include="Model\ChoicerContentStartArgs.cs" />
-    <Compile Include="NetUtil\PotdGetter.cs" />
-    <Compile Include="NetUtil\MOTDGetter.cs" />
-    <Compile Include="NetUtil\RemoteDataGetter.cs" />
-    <Compile Include="NetUtil\UpdateChecker.cs" />
+    <Compile Include="Util\Converter.cs" />
+    <Compile Include="Util\Custom\ThemeManager.cs" />
+    <Compile Include="Util\Net\PotdGetter.cs" />
+    <Compile Include="Util\Net\MOTDGetter.cs" />
+    <Compile Include="Util\Net\RemoteDataGetter.cs" />
+    <Compile Include="Util\Net\UpdateChecker.cs" />
     <Compile Include="UI\Cstm\ExtensionPanel.xaml.cs">
       <DependentUpon>ExtensionPanel.xaml</DependentUpon>
     </Compile>
@@ -170,6 +169,7 @@
     <Compile Include="UI\IDependOnDeviceChanges.cs" />
     <Compile Include="Depending\ILanguageChangedListener.cs" />
     <Compile Include="Depending\DependingObject.cs" />
+    <Compile Include="Util\SystemHelper.cs" />
     <Compile Include="ViewModel\VMContentChoice.cs" />
     <Compile Include="ViewModel\VMExtensions.cs" />
     <Compile Include="ViewModel\VMPOTD.cs" />
@@ -211,6 +211,7 @@
     <Compile Include="MVVM\ModelBase.cs" />
     <Compile Include="ViewModel\VMDeviceDetails.cs" />
     <Compile Include="ViewModel\VMHome.cs" />
+    <Compile Include="View\MaterialDialog.cs" />
     <Compile Include="View\OfTheDay\POTD.xaml.cs">
       <DependentUpon>POTD.xaml</DependentUpon>
     </Compile>
@@ -240,6 +241,7 @@
     <Compile Include="Util\Extensions.cs" />
     <Compile Include="Util\OpenFrameworkManager.cs" />
     <Compile Include="Util\Md5.cs" />
+    <Compile Include="View\WindowManager.cs" />
     <Compile Include="Windows\DebugWindow.xaml.cs">
       <DependentUpon>DebugWindow.xaml</DependentUpon>
     </Compile>
@@ -308,8 +310,6 @@
     <Compile Include="UI\CstPanels\SettingsPanel.xaml.cs">
       <DependentUpon>SettingsPanel.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Cfg\IConfigOperator.cs" />
-    <Compile Include="Cfg\ConfigDataLayout.cs" />
     <Compile Include="UI\FuncPanels\StartPanel.xaml.cs">
       <DependentUpon>StartPanel.xaml</DependentUpon>
     </Compile>
@@ -354,9 +354,7 @@
     <Compile Include="Windows\UpdateNoticeWindow.xaml.cs">
       <DependentUpon>UpdateNoticeWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Cfg\Config.cs" />
     <Compile Include="I18N\LanguageHelper.cs" />
-    <Compile Include="Cfg\ConfigOperator.cs" />
     <Compile Include="Util\NativeMethods.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -860,6 +858,9 @@
     <Resource Include="Resources\Images\Btn\min_selected.png" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Resources\I18N\" />
+    <Folder Include="Util\I18N\" />
+    <Folder Include="View\Controls\" />
     <Folder Include="View\Windows\" />
   </ItemGroup>
   <ItemGroup>

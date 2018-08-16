@@ -4,11 +4,8 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.GUI.MVVM;
-using AutumnBox.GUI.NetUtil;
+using AutumnBox.GUI.Util.Net;
 using System.Diagnostics;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;

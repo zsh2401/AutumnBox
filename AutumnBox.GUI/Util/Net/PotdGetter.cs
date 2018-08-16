@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 using System.IO;
 using System.Text;
 
-namespace AutumnBox.GUI.NetUtil
+namespace AutumnBox.GUI.Util.Net
 {
     public class PotdGetterResult
     {
