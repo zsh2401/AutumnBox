@@ -1,5 +1,5 @@
-﻿using AutumnBox.GUI.NetUtil;
-using AutumnBox.GUI.Resources.Images;
+﻿using AutumnBox.GUI.Resources.Images;
+using AutumnBox.GUI.Util.Net;
 using AutumnBox.Support.Log;
 using System;
 using System.Diagnostics;

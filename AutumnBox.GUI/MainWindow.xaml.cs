@@ -12,7 +12,6 @@
 *
 \* =============================================================================*/
 using AutumnBox.GUI.Helper;
-using AutumnBox.GUI.NetUtil;
 using AutumnBox.GUI.Windows;
 using System;
 using System.Threading;
@@ -26,6 +25,7 @@ using MaterialDesignThemes.Wpf;
 using AutumnBox.GUI.Depending;
 using AutumnBox.GUI.ViewModel;
 using AutumnBox.GUI.View.DialogContent;
+using AutumnBox.GUI.Util.Net;
 
 namespace AutumnBox.GUI
 {

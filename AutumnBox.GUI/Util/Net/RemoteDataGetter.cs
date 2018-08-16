@@ -16,7 +16,7 @@ using System;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
-namespace AutumnBox.GUI.NetUtil
+namespace AutumnBox.GUI.Util.Net
 {
     internal abstract class RemoteDataGetter<TResult>
         where TResult : class

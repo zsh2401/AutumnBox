@@ -11,13 +11,9 @@
 * Company: I am free man
 *
 \* =============================================================================*/
-using AutumnBox.GUI.Cfg;
 using AutumnBox.GUI.Properties;
-using AutumnBox.Support.Log;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Windows;
 
 namespace AutumnBox.GUI.I18N
 {

@@ -11,17 +11,14 @@
 * Company: I am free man
 *
 \* =============================================================================*/
-using AutumnBox.GUI.Cfg;
+using AutumnBox.GUI.Helper;
 using AutumnBox.GUI.Properties;
 using AutumnBox.Support.Log;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System;
-using System.IO;
-using System.Net;
 using System.Text;
 
-namespace AutumnBox.GUI.NetUtil
+namespace AutumnBox.GUI.Util.Net
 {
     [JsonObject(MemberSerialization.OptOut)]
     internal class UpdateCheckResult
@@ -59,7 +56,7 @@ namespace AutumnBox.GUI.NetUtil
             {
                 try
                 {
-                    return Version > Helper.SystemHelper.CurrentVersion //检测到的版本大于当前版本
+                    return Version > SystemHelper.CurrentVersion //检测到的版本大于当前版本
     && new Version(Settings.Default.SkipVersion) < Version;//并且没有被设置跳过
                 }
                 catch (Exception ex)
