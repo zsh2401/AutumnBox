@@ -5,6 +5,7 @@
 *************************************************/
 using AutumnBox.Basic.Util;
 using AutumnBox.GUI.Helper;
+using AutumnBox.GUI.Model;
 using AutumnBox.GUI.MVVM;
 using AutumnBox.GUI.View.DialogContent;
 using AutumnBox.GUI.Windows;
@@ -16,7 +17,8 @@ namespace AutumnBox.GUI.ViewModel
 {
     class VMMainWindow : ViewModelBase
     {
-        public ICommand StartShell => new MVVMCommand((args)=> {
+        public ICommand StartShell => new MVVMCommand((p)=> {
+
             ProcessStartInfo info = new ProcessStartInfo
             {
                 WorkingDirectory = AdbConstants.toolsPath,
@@ -24,29 +26,33 @@ namespace AutumnBox.GUI.ViewModel
                 UseShellExecute = false,
                 Verb = "runas",
             };
-            if (SystemHelper.IsWin10)
+            var args = new ChoicerContentStartArgs
             {
-                var result = BoxHelper.ShowChoiceDialog("Notice", "msgShellChoiceTip", "Powershell", "CMD");
-                switch (result)
+                Content = "msgShellChoiceTip",
+                ContentCenterButton = "CMD",
+                ContentRightButton = "PowerShell"
+            };
+            args.Choiced += (s, e) =>
+            {
+                switch (e.Result)
                 {
-                    case ChoiceResult.BtnRight:
+                    case ChoicerResult.Center:
+                        Process.Start(info);
                         break;
-                    case ChoiceResult.BtnLeft:
+                    case ChoicerResult.Right:
                         info.FileName = "powershell.exe";
+                        Process.Start(info);
                         break;
-                    case ChoiceResult.BtnCancel:
-                        return;
+                    default:
+                        break;
                 }
-            }
-            Process.Start(info);
+            };
+            ChoiceDialog.Show(args);
+            var content = new ContentChoice(args);
         });
         public ICommand ShowSettingsDialog => new MVVMCommand((args) =>
         {
             DialogHost.Show(new ContentSettings());
-        });
-        public ICommand ShowAboutDialog => new MVVMCommand((args) =>
-        {
-            DialogHost.Show(new ContentAbout());
         });
         public ICommand ShowDonateDialog => new MVVMCommand((args) =>
         {

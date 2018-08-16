@@ -9,7 +9,7 @@ using System.Runtime.CompilerServices;
 
 namespace AutumnBox.GUI.MVVM
 {
-    class NotificationObject : DependingObject,INotifyPropertyChanged
+    public class NotificationObject : DependingObject,INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
         public void RaisePropertyChanged([CallerMemberName]string propertyName=null)

@@ -10,7 +10,7 @@
         Title="AppLoadingWindow" Height="288" Width="419.5" WindowStyle="None" ResizeMode="NoResize" Background="{DynamicResource BackgroundBrushKey}" WindowStartupLocation="CenterScreen" MouseDown="Window_MouseDown">
     <Grid x:Name="GridBase" Background="{DynamicResource PrimaryBrushKey}">
         <TextBlock Style="{DynamicResource AtmbxTextBlockStyle}" Foreground="{DynamicResource ForegroundOnPrimaryBrushKey}" TextAlignment="Center" TextWrapping="Wrap" Text="{DynamicResource AppName}" VerticalAlignment="Top"  FontSize="72"  Margin="0,51,0,0"/>
-        <ProgressBar x:Name="PrgBar" Margin="0,0,0,89" BorderBrush="{x:Null}" Height="4" VerticalAlignment="Bottom"/>
+        <ProgressBar BorderBrush="White" x:Name="PrgBar" Margin="0,0,0,89" Height="4" VerticalAlignment="Bottom"/>
         <TextBlock Style="{DynamicResource AtmbxTextBlockStyle}" Foreground="{DynamicResource ForegroundOnPrimaryBrushKey}" x:Name="TBTip" TextAlignment="Right" Margin="10,0,10,61" TextWrapping="Wrap" Text="{DynamicResource msgLoading}" FontSize="18" Height="24" VerticalAlignment="Bottom"/>
     </Grid>
 </Window>

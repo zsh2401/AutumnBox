@@ -23,15 +23,23 @@ namespace AutumnBox.GUI.MVVM
             }
         }
         private bool _canExecute = true;
-        private readonly Action<object> act;
+        public Action<object> Action { get; set; }
+        public Action NoParmarAction
+        {
+            set
+            {
+                Action = arg => value();
+            }
+        }
         public FlexiableCommand(Action act)
         {
-            this.act = (arg) => act();
+            NoParmarAction = act;
         }
         public FlexiableCommand(Action<object> act)
         {
-            this.act = act;
+            Action = act;
         }
+        public FlexiableCommand() { }
 
         public event EventHandler CanExecuteChanged;
 
@@ -42,7 +50,7 @@ namespace AutumnBox.GUI.MVVM
 
         public void Execute(object parameter)
         {
-            act(parameter);
+            Action?.Invoke(parameter);
         }
     }
 }
