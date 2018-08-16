@@ -6,8 +6,8 @@
 
 namespace AutumnBox.GUI.UI
 {
-    interface IDependOnDeviceChanges
-    {
-        INotifyDeviceChanged NotifyDeviceChanged { set; }
-    }
+    //interface IDependOnDeviceChanges
+    //{
+    //    INotifyDeviceChanged NotifyDeviceChanged { set; }
+    //}
 }

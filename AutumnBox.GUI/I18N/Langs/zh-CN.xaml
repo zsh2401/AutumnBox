@@ -6,8 +6,28 @@
     <s:String x:Key="AppName">秋之盒</s:String>
     <s:String x:Key="LanguageName">简体中文</s:String>
     <s:String x:Key="LanguageCode">zh-CN</s:String>
-    
     <s:String x:Key="AppDesc">开源免费简约的图形化ADB工具箱</s:String>
+    
+    <!--PanelHome-->
+    <s:String x:Key="PanelHomeOpenSource">开源</s:String>
+    <s:String x:Key="PanelHomeOpenSourceTip">为了共同的进步与对用户的透明性,秋之盒一直以GPL3.0协议开源</s:String>
+    <s:String x:Key="PanelHomeOpenSourceButton">浏览源代码</s:String>
+    
+    <s:String x:Key="PanelHomeSupport">支持</s:String>
+    <s:String x:Key="PanelHomeSupportTip">为秋之盒做出贡献,我需要你的支持!</s:String>
+    <s:String x:Key="PanelDonate">捐赠</s:String>
+    <s:String x:Key="PanelDonaters">捐赠者名单</s:String>
+    
+    <s:String x:Key="PanelHomeHelp">帮助</s:String>
+     <s:String x:Key="PanelHomeHelpTip">而有些人则需要一点小小的帮助</s:String>
+     <s:String x:Key="PanelHomeLinkHelp">设备连接帮助</s:String>
+     <s:String x:Key="PanelHomeMoreHelp">更多帮助</s:String>
+    
+    <s:String x:Key="PanelHomeContact">联系</s:String>
+  
+    <s:String x:Key="PanelHomeOfficialWebsite">官网</s:String>
+    <s:String x:Key="PanelHomeJoinQQGroup">加入QQ群</s:String>
+    <s:String x:Key="PanelHomeSendMail">发送邮件</s:String>
     <!--按钮-->
     <s:String x:Key="btnAppOpsXAct">激活AppOpsX</s:String>
     <s:String x:Key="btnAccountInfo">账号信息</s:String>
@@ -384,8 +404,7 @@
     </s:String>
     
     <!--关于信息-->
-    <s:String x:Key="AboutMessage">
-这是一个遵守GPL3.0协议的开源软件,请在必要的时候遵守开源协议
+    <s:String x:Key="AboutMessage">这是一个遵守GPL3.0协议的开源软件,请在必要的时候遵守开源协议
 开发者电子邮件 zsh2401@163.com
         
 鸣谢以下开源项目做出的卓越贡献(排名不分先后)

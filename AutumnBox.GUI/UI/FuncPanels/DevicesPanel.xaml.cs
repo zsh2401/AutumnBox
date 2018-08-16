@@ -14,7 +14,6 @@ namespace AutumnBox.GUI.UI.FuncPanels
     /// </summary>
     public partial class DevicesPanel : UserControl
     {
-        internal IDialogFather DialogFather { get; set; }
         public DeviceBasicInfo CurrentSelectDevice
         {
             get
@@ -41,7 +40,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
 
         private void ShowContentAsDialog(object content)
         {
-            DialogFather.ShowDialogContent(content);
+            //DialogFather.ShowDialogContent(content);
             //ContentBase.Content = content;
             //Logger.Debug(this,"WTF");
             //DialogHost.Show(ContentBase);

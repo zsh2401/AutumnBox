@@ -9,8 +9,8 @@
         xmlns:cstm="clr-namespace:AutumnBox.GUI.UI.Cstm"
         xmlns:cpnel="clr-namespace:AutumnBox.GUI.UI.FuncPanels"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-    xmlns:panel="clr-namespace:AutumnBox.GUI.UI.View.Panel"
-    xmlns:dialogcontent="clr-namespace:AutumnBox.GUI.UI.View.DialogContent"
+    xmlns:panel="clr-namespace:AutumnBox.GUI.View.Panel"
+    xmlns:dialogcontent="clr-namespace:AutumnBox.GUI.View.DialogContent"
     x:Name="_MainWindow" x:Class="AutumnBox.GUI.MainWindow"
         mc:Ignorable="d"
     Title="{DynamicResource AppName}"
@@ -22,7 +22,7 @@
         <Grid   Background="{DynamicResource MainBackgroundBrushKey}" Name="GridBase" Margin="0,0,0,0">
             <WebBrowser x:Name="WTF" Width="1" Height="0" Margin="963,271,185,408"/>
             <Grid>
-                <panel:PanelDevices x:Name="PanelDevices" Margin="0,51,16,0" HorizontalAlignment="Right" VerticalAlignment="Top" Width="177"></panel:PanelDevices>
+                <panel:PanelDevices x:Name="PanelDevices" Margin="0,51,10,0" HorizontalAlignment="Right" VerticalAlignment="Top" Width="183" Height="304"></panel:PanelDevices>
                 <TabControl  Margin="10,10,205,10" Background="{x:Null}" BorderBrush="{DynamicResource BroderBrushKey}">
                     <TabItem  Style="{DynamicResource AtmbxTabItem}" TabIndex="0" Header="{DynamicResource tbiStart}" Margin="-2,-2,-14,0"  FontSize="16">
                         <panel:PanelHome Margin="0,0,0,0"></panel:PanelHome>
@@ -31,12 +31,10 @@
                         <panel:PanelCurrentDevice x:Name="PanelCurrentDevice" Margin="0,0,0,0"></panel:PanelCurrentDevice>
                     </TabItem>
                 </TabControl>
+                <cstm:PotdBox Margin="0,0,8,111" Width="185" Height="139" HorizontalAlignment="Right" VerticalAlignment="Bottom"></cstm:PotdBox>
+                <Button Style="{DynamicResource MaterialDesignRaisedButton}" Command="{Binding StartShell}"  Content="{DynamicResource btnADBCMD}" Margin="0,0,10,50" Height="36"  FontSize="14"  HorizontalAlignment="Right" Width="183" VerticalAlignment="Bottom" />
+                <Button  Style="{DynamicResource MaterialDesignRaisedButton}" Command="{Binding ShowSettingsDialog}"  Content="{DynamicResource btnSetting}" Margin="0,0,10,10" VerticalAlignment="Bottom" Height="35"   FontSize="14"   HorizontalAlignment="Right" Width="183" />
 
-                <Button Style="{DynamicResource MaterialDesignRaisedButton}" Command="{Binding StartShell}"  Content="{DynamicResource btnADBCMD}" Margin="0,0,10,148" Height="45"  FontSize="14"  HorizontalAlignment="Right" Width="190" VerticalAlignment="Bottom" />
-                <Button  Style="{DynamicResource MaterialDesignRaisedButton}" Command="{Binding ShowSettingsDialog}"  Content="{DynamicResource btnSetting}" Margin="0,0,9,28" VerticalAlignment="Bottom" Height="35"   FontSize="14"   HorizontalAlignment="Right" Width="191" />
-                <Button  Style="{DynamicResource MaterialDesignRaisedButton}" Command="{Binding ShowAboutDialog}"  Content="{DynamicResource btnAbout}" Margin="0,0,9,68" VerticalAlignment="Bottom" Height="35"  FontSize="14"   HorizontalAlignment="Right" Width="191" />
-                <Button  Style="{DynamicResource MaterialDesignRaisedButton}" Command="{Binding ShowDonateDialog}"  Content="{DynamicResource Donate}" Margin="0,0,9,108"   FontSize="14"   HorizontalAlignment="Right" Width="191" Height="35" VerticalAlignment="Bottom" />
-                
                 <materialDesign:DialogHost>
                     <materialDesign:DialogHost.DialogContent>
                         <dialogcontent:ContentBase x:Name="ContentBase"></dialogcontent:ContentBase>
