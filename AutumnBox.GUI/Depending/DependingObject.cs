@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.GUI.Depending
 {
-    class DependingObject : Object,IDisposable
+    public class DependingObject : Object, IDisposable
     {
         public DependingObject()
         {

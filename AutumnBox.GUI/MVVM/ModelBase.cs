@@ -6,7 +6,7 @@
 
 namespace AutumnBox.GUI.MVVM
 {
-    class ModelBase : NotificationObject
+    public  class ModelBase : NotificationObject
     {
     }
 }

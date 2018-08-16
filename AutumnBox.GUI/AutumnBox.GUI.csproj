@@ -143,11 +143,13 @@
     <Compile Include="Depending\ListenerManager.cs" />
     <Compile Include="Helper\BlurHelper.cs" />
     <Compile Include="Helper\BoxHelper.cs" />
+    <Compile Include="Helper\ChoiceDialog.cs" />
     <Compile Include="Helper\SystemHelper.cs" />
     <Compile Include="Helper\TextHelper.cs" />
     <Compile Include="Helper\ThemeManager.cs" />
     <Compile Include="Helper\UIHelper.cs" />
     <Compile Include="I18N\Language.cs" />
+    <Compile Include="Model\ChoicerContentStartArgs.cs" />
     <Compile Include="NetUtil\PotdGetter.cs" />
     <Compile Include="NetUtil\MOTDGetter.cs" />
     <Compile Include="NetUtil\RemoteDataGetter.cs" />
@@ -168,6 +170,7 @@
     <Compile Include="UI\IDependOnDeviceChanges.cs" />
     <Compile Include="Depending\ILanguageChangedListener.cs" />
     <Compile Include="Depending\DependingObject.cs" />
+    <Compile Include="ViewModel\VMContentChoice.cs" />
     <Compile Include="ViewModel\VMExtensions.cs" />
     <Compile Include="ViewModel\VMPOTD.cs" />
     <Compile Include="ViewModel\VMReboot.cs" />
@@ -177,6 +180,9 @@
     </Compile>
     <Compile Include="View\DialogContent\ContentBase.xaml.cs">
       <DependentUpon>ContentBase.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DialogContent\ContentChoice.xaml.cs">
+      <DependentUpon>ContentChoice.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\DialogContent\ContentConnectNetDevice.xaml.cs">
       <DependentUpon>ContentConnectNetDevice.xaml</DependentUpon>
@@ -549,6 +555,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\DialogContent\ContentChoice.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\DialogContent\ContentConnectNetDevice.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -850,7 +860,7 @@
     <Resource Include="Resources\Images\Btn\min_selected.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Model\" />
+    <Folder Include="View\Windows\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\contact.png" />
