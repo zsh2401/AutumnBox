@@ -139,6 +139,8 @@
     </Compile>
     <Compile Include="AppLoader.cs" />
     <Compile Include="Cfg\ConfigPropertyAttribute.cs" />
+    <Compile Include="Depending\ISelectDeviceChangedListener.cs" />
+    <Compile Include="Depending\ListenerManager.cs" />
     <Compile Include="Helper\BlurHelper.cs" />
     <Compile Include="Helper\BoxHelper.cs" />
     <Compile Include="Helper\SystemHelper.cs" />
@@ -162,33 +164,32 @@
     <Compile Include="UI\CstPanels\ExtensionRuningPanel.xaml.cs">
       <DependentUpon>ExtensionRuningPanel.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MVVM\FlexiableCommand.cs" />
     <Compile Include="UI\IDependOnDeviceChanges.cs" />
-    <Compile Include="UI\InjectByInterfaceObject.cs" />
-    <Compile Include="UI\INotifyDeviceChanged.cs" />
-    <Compile Include="UI\Model\Panel\ModelExtensions.cs" />
-    <Compile Include="UI\Model\Panel\ModelReboot.cs" />
-    <Compile Include="UI\ViewModel\Panel\VMExtensions.cs" />
-    <Compile Include="UI\ViewModel\Panel\VMReboot.cs" />
-    <Compile Include="UI\ViewModel\Windows\VMMainWindow.cs" />
-    <Compile Include="UI\View\DialogContent\ContentAbout.xaml.cs">
+    <Compile Include="Depending\ILanguageChangedListener.cs" />
+    <Compile Include="Depending\DependingObject.cs" />
+    <Compile Include="ViewModel\VMExtensions.cs" />
+    <Compile Include="ViewModel\VMPOTD.cs" />
+    <Compile Include="ViewModel\VMReboot.cs" />
+    <Compile Include="ViewModel\VMMainWindow.cs" />
+    <Compile Include="View\DialogContent\ContentAbout.xaml.cs">
       <DependentUpon>ContentAbout.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\View\DialogContent\ContentBase.xaml.cs">
+    <Compile Include="View\DialogContent\ContentBase.xaml.cs">
       <DependentUpon>ContentBase.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\View\DialogContent\ContentConnectNetDevice.xaml.cs">
+    <Compile Include="View\DialogContent\ContentConnectNetDevice.xaml.cs">
       <DependentUpon>ContentConnectNetDevice.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\View\DialogContent\ContentDonate.xaml.cs">
+    <Compile Include="View\DialogContent\ContentDonate.xaml.cs">
       <DependentUpon>ContentDonate.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\View\DialogContent\ContentLoading.xaml.cs">
+    <Compile Include="View\DialogContent\ContentLoading.xaml.cs">
       <DependentUpon>ContentLoading.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\View\DialogContent\ContentSettings.xaml.cs">
+    <Compile Include="View\DialogContent\ContentSettings.xaml.cs">
       <DependentUpon>ContentSettings.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\IDialogFather.cs" />
     <Compile Include="UI\FuncPanels\PoweronFuncsUx\NeedRootAttribute.cs" />
     <Compile Include="UI\FuncPanels\PoweronFuncsUx\PoweronFuncsUXAdvisor.cs" />
     <Compile Include="UI\FuncPanels\PoweronFuncsUx\DeviceUserCheckAttribute.cs" />
@@ -201,31 +202,32 @@
       <DependentUpon>ThridPartyFunctionPanel.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\IExtPanel.cs" />
-    <Compile Include="UI\ModelBase.cs" />
-    <Compile Include="UI\Model\Panel\ModelDeviceDetails.cs" />
-    <Compile Include="UI\Model\Panel\ModelPanelDevices.cs" />
-    <Compile Include="UI\ViewModel\Panel\VMDeviceDetails.cs" />
-    <Compile Include="UI\ViewModel\Panel\VMHome.cs" />
-    <Compile Include="UI\View\Panel\PanelCurrentDevice.xaml.cs">
+    <Compile Include="MVVM\ModelBase.cs" />
+    <Compile Include="ViewModel\VMDeviceDetails.cs" />
+    <Compile Include="ViewModel\VMHome.cs" />
+    <Compile Include="View\OfTheDay\POTD.xaml.cs">
+      <DependentUpon>POTD.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Panel\PanelCurrentDevice.xaml.cs">
       <DependentUpon>PanelCurrentDevice.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\View\Panel\PanelDeviceDetails.xaml.cs">
+    <Compile Include="View\Panel\PanelDeviceDetails.xaml.cs">
       <DependentUpon>PanelDeviceDetails.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\View\Panel\PanelDevices.xaml.cs">
+    <Compile Include="View\Panel\PanelDevices.xaml.cs">
       <DependentUpon>PanelDevices.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\View\Panel\PanelExtension.xaml.cs">
+    <Compile Include="View\Panel\PanelExtension.xaml.cs">
       <DependentUpon>PanelExtension.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\View\Panel\PanelHome.xaml.cs">
+    <Compile Include="View\Panel\PanelHome.xaml.cs">
       <DependentUpon>PanelHome.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\MVVMCommand.cs" />
-    <Compile Include="UI\NotificationObject.cs" />
-    <Compile Include="UI\ViewModelBase.cs" />
-    <Compile Include="UI\ViewModel\Panel\VMConnectDevices.cs" />
-    <Compile Include="UI\View\Panel\PanelReboot.xaml.cs">
+    <Compile Include="MVVM\MVVMCommand.cs" />
+    <Compile Include="MVVM\NotificationObject.cs" />
+    <Compile Include="MVVM\ViewModelBase.cs" />
+    <Compile Include="ViewModel\VMConnectDevices.cs" />
+    <Compile Include="View\Panel\PanelReboot.xaml.cs">
       <DependentUpon>PanelReboot.xaml</DependentUpon>
     </Compile>
     <Compile Include="Util\OpenApiImpl\AppManagerImpl.cs" />
@@ -539,27 +541,27 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\View\DialogContent\ContentAbout.xaml">
+    <Page Include="View\DialogContent\ContentAbout.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\View\DialogContent\ContentBase.xaml">
+    <Page Include="View\DialogContent\ContentBase.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\View\DialogContent\ContentConnectNetDevice.xaml">
+    <Page Include="View\DialogContent\ContentConnectNetDevice.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\View\DialogContent\ContentDonate.xaml">
+    <Page Include="View\DialogContent\ContentDonate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\View\DialogContent\ContentLoading.xaml">
+    <Page Include="View\DialogContent\ContentLoading.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\View\DialogContent\ContentSettings.xaml">
+    <Page Include="View\DialogContent\ContentSettings.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -603,27 +605,31 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\View\Panel\PanelCurrentDevice.xaml">
+    <Page Include="View\OfTheDay\POTD.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\View\Panel\PanelDeviceDetails.xaml">
+    <Page Include="View\Panel\PanelCurrentDevice.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\View\Panel\PanelDevices.xaml">
+    <Page Include="View\Panel\PanelDeviceDetails.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\View\Panel\PanelExtension.xaml">
+    <Page Include="View\Panel\PanelDevices.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\View\Panel\PanelHome.xaml">
+    <Page Include="View\Panel\PanelExtension.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\View\Panel\PanelReboot.xaml">
+    <Page Include="View\Panel\PanelHome.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Panel\PanelReboot.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -843,7 +849,12 @@
     <Resource Include="Resources\Images\Btn\min.png" />
     <Resource Include="Resources\Images\Btn\min_selected.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Model\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\contact.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>if $(ConfigurationName) == Release (

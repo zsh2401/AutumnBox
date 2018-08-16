@@ -5,8 +5,27 @@
     <s:String x:Key="AppName">AutumnBox</s:String>
     <s:String x:Key="LanguageName">English</s:String>
     <s:String x:Key="LanguageCode">en-US</s:String>
-
     <s:String x:Key="AppDesc">Open source,free,simple,GUI adb toolbox</s:String>
+    
+    <!--PanelHome-->
+    <s:String x:Key="PanelHomeOpenSource">Open source</s:String>
+    <s:String x:Key="PanelHomeOpenSourceTip">For dream</s:String>
+    <s:String x:Key="PanelHomeOpenSourceButton">View source</s:String>
+    
+    <s:String x:Key="PanelHomeSupport">Support</s:String>
+    <s:String x:Key="PanelHomeSupportTip">Make a contribution for autumn</s:String>
+    <s:String x:Key="PanelDonate">Donate</s:String>
+    <s:String x:Key="PanelDonaters">Donater list</s:String>
+    
+    <s:String x:Key="PanelHomeHelp">Help</s:String>
+     <s:String x:Key="PanelHomeHelpTip">Do you need some help?</s:String>
+     <s:String x:Key="PanelHomeLinkHelp">Link device via usb</s:String>
+     <s:String x:Key="PanelHomeMoreHelp">More</s:String>
+    
+    <s:String x:Key="PanelHomeContact">Contact</s:String>
+    <s:String x:Key="PanelHomeOfficialWebsite">Official website</s:String>
+    <s:String x:Key="PanelHomeJoinQQGroup">QQ group</s:String>
+    <s:String x:Key="PanelHomeSendMail">E-Mail</s:String>
     <!--按钮-->
      <s:String x:Key="btnAppOpsXAct">Activate AppOpsX</s:String>
      <s:String x:Key="btnAccountInfo">Account info</s:String>

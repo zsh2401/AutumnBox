@@ -1,6 +1,8 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:AutumnBox.GUI.Resources.Colors">
+    
+    <FontFamily x:Key="MaterialDesignFont">Microsoft YaHei Light</FontFamily>
     <!--主颜色-->
     <SolidColorBrush x:Key="PrimaryHueLightBrush" Color="#FBA746"/>
     <SolidColorBrush x:Key="PrimaryHueLightForegroundBrush" Color="#FEFEFE"/>

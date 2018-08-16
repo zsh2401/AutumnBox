@@ -13,25 +13,19 @@
 \* =============================================================================*/
 using AutumnBox.GUI.Helper;
 using AutumnBox.GUI.NetUtil;
-using AutumnBox.GUI.UI;
 using AutumnBox.GUI.Windows;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Collections.Generic;
-using AutumnBox.Basic.Device;
-using AutumnBox.Basic.FlowFramework;
 using AutumnBox.Basic.Util;
 using AutumnBox.Basic.MultipleDevices;
 using System.Windows.Threading;
-using AutumnBox.GUI.I18N;
 using System.Media;
 using MaterialDesignThemes.Wpf;
-using AutumnBox.GUI.UI.View.DialogContent;
-using AutumnBox.GUI.UI.ViewModel.Windows;
-using System.Windows.Controls;
-using AutumnBox.Support.Log;
+using AutumnBox.GUI.Depending;
+using AutumnBox.GUI.ViewModel;
+using AutumnBox.GUI.View.DialogContent;
 
 namespace AutumnBox.GUI
 {
@@ -53,11 +47,7 @@ namespace AutumnBox.GUI
 
         private void InjectChildProperty()
         {
-            Logger.Debug(this,"Injecting have " + InjectByInterfaceObject.Manager.deviceChangeDependers.Count);
-            InjectByInterfaceObject.Manager.deviceChangeDependers.ForEach((dep) =>
-            {
-                dep.NotifyDeviceChanged = PanelDevices;
-            });
+            ListenerManager.RegisterEventSource(PanelDevices);
         }
 
         private void RegisterEvent()

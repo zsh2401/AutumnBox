@@ -1,0 +1,15 @@
+﻿<UserControl x:Class="AutumnBox.GUI.View.Panel.PanelReboot"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d" d:DesignHeight="218.803" d:DesignWidth="190.598">
+    <GroupBox Header="{DynamicResource RebootTo}">
+        <Grid>
+            <Button Command="{Binding ToSystem}"  Content="{DynamicResource btnSystem}"  Margin="10,10,10,0" VerticalAlignment="Top" FontSize="12"/>
+            <Button Command="{Binding ToRecovery}" Content="{DynamicResource btnRecovery}" Margin="10,47,10,0" VerticalAlignment="Top" FontSize="12"/>
+            <Button Command="{Binding ToFastboot}" Content="{DynamicResource btnBootloader}" Margin="10,84,10,0" VerticalAlignment="Top" FontSize="12"/>
+            <Button Command="{Binding To9008}" Content="{DynamicResource btnSnapdragon9008}" Margin="10,121,10,0" VerticalAlignment="Top" FontSize="12"/>
+        </Grid>
+    </GroupBox>
+</UserControl>
