@@ -5,11 +5,6 @@
 *************************************************/
 using AutumnBox.Basic.Device;
 using AutumnBox.Basic.Device.PackageManage;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutumnBox.OpenFramework.Extension
 {
@@ -34,7 +29,10 @@ namespace AutumnBox.OpenFramework.Extension
         public ExtAppPropertyAttribute(string value) : base(value)
         {
         }
-
+        /// <summary>
+        /// 在那之前...
+        /// </summary>
+        /// <param name="args"></param>
         public override void Before(ExtBeforeCreateArgs args)
         {
             if (!InstallApplication(args.TargetDevice, Value as string))
