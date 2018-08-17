@@ -141,9 +141,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="AutumnBox.OpenFramework.nuspec" />
-    <None Include="开发文档.url">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
