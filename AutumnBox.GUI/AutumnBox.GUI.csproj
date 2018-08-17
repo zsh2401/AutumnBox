@@ -183,6 +183,7 @@
     <Compile Include="ViewModel\VMPOTD.cs" />
     <Compile Include="ViewModel\VMReboot.cs" />
     <Compile Include="ViewModel\VMMainWindow.cs" />
+    <Compile Include="ViewModel\VMRunningWindow.cs" />
     <Compile Include="View\DialogContent\ContentAbout.xaml.cs">
       <DependentUpon>ContentAbout.xaml</DependentUpon>
     </Compile>
@@ -250,6 +251,9 @@
     <Compile Include="Util\OpenFxManagement\OpenFrameworkManager.cs" />
     <Compile Include="Util\Data\Md5.cs" />
     <Compile Include="View\WindowManager.cs" />
+    <Compile Include="View\Windows\RunningWindow.xaml.cs">
+      <DependentUpon>RunningWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\DebugWindow.xaml.cs">
       <DependentUpon>DebugWindow.xaml</DependentUpon>
     </Compile>
@@ -665,6 +669,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Windows\RunningWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\ApkInstallingWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -883,7 +891,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="View\Controls\" />
-    <Folder Include="View\Windows\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\contact.png" />

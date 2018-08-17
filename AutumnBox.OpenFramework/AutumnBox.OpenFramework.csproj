@@ -70,9 +70,11 @@
     <Compile Include="Extension\ExtMinApiAttribute.cs" />
     <Compile Include="Extension\ExtRequireRootAttribute.cs" />
     <Compile Include="Extension\ExtRunAsAdminAttribute.cs" />
+    <Compile Include="Extension\ExtWindowEnableAttribute.cs" />
     <Compile Include="Extension\ExtTargetApiAttribute.cs" />
     <Compile Include="Extension\ExtMainAsceptAttribute.cs" />
     <Compile Include="Extension\ExtMinAndroidVersionAttribute.cs" />
+    <Compile Include="Open\IExtensionUIController.cs" />
     <Compile Include="Open\IFrameworkManager.cs" />
     <Compile Include="Open\Impl\FxImpl.cs" />
     <Compile Include="Warpper\ClassExtensionInfoGetter.cs" />

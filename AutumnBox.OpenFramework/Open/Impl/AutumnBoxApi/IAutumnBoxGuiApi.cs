@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AutumnBox.OpenFramework.Warpper;
+using System;
 using System.Windows;
 
 namespace AutumnBox.OpenFramework.Open.Impl.AutumnBoxApi
@@ -12,6 +9,12 @@ namespace AutumnBox.OpenFramework.Open.Impl.AutumnBoxApi
     /// </summary>
     public interface IAutumnBoxGuiApi
     {
+        /// <summary>
+        /// 获取控制器
+        /// </summary>
+        /// <param name="warpper"></param>
+        /// <returns></returns>
+        IExtensionUIController GetUIControllerOf(IExtensionWarpper warpper);
         /// <summary>
         /// 秋之盒版本号
         /// </summary>

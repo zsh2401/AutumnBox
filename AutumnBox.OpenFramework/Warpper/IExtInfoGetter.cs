@@ -13,16 +13,53 @@ namespace AutumnBox.OpenFramework.Warpper
     /// </summary>
     public interface IExtInfoGetter
     {
+        /// <summary>
+        /// 是否需要在运行时启动一个窗口作为输出等信息的展示
+        /// </summary>
+        bool Visual { get; }
+        /// <summary>
+        /// 拓展模块名
+        /// </summary>
         string Name { get; }
+        /// <summary>
+        /// 拓展模块说明
+        /// </summary>
         string Desc { get; }
+        /// <summary>
+        /// 拓展模块挂载说明
+        /// </summary>
         string FormatedDesc { get; }
+        /// <summary>
+        /// 图标数组
+        /// </summary>
         byte[] Icon { get; }
+        /// <summary>
+        /// 拓展模块运行所需的设备状态
+        /// </summary>
         DeviceState RequiredDeviceStates { get; }
+        /// <summary>
+        /// 拓展模块支持的最低API
+        /// </summary>
         int MinApi { get; }
+        /// <summary>
+        /// 拓展模块支持的目标API
+        /// </summary>
         int TargetApi { get; }
+        /// <summary>
+        /// 拓展模块的Type对象
+        /// </summary>
         Type ExtType { get; }
+        /// <summary>
+        /// 拓展模块是否需要操作系统级别的管理员权限
+        /// </summary>
         bool RunAsAdmin { get; }
+        /// <summary>
+        /// 拓展模块的版本
+        /// </summary>
         Version Version { get; }
+        /// <summary>
+        /// 重新加载信息
+        /// </summary>
         void Reload();
     }
 }

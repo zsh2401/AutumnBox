@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AutumnBox.OpenFramework.Warpper;
+using System;
 using System.Windows;
 
 namespace AutumnBox.OpenFramework.Open
@@ -12,6 +9,12 @@ namespace AutumnBox.OpenFramework.Open
     /// </summary>
     public interface IAppManager
     {
+        /// <summary>
+        /// 获取拓展模块的UI控制器
+        /// </summary>
+        /// <param name="warpper"></param>
+        /// <returns></returns>
+        IExtensionUIController GetUIControllerOf(IExtensionWarpper warpper);
         /// <summary>
         /// 获取秋之盒版本号
         /// </summary>
@@ -74,7 +77,7 @@ namespace AutumnBox.OpenFramework.Open
         /// <summary>
         /// 重启AutumnBox
         /// </summary>
-       /// <exception cref="Exceptions.UserDeniedException">用户拒绝了该操作</exception>
+        /// <exception cref="Exceptions.UserDeniedException">用户拒绝了该操作</exception>
         void RestartApp();
         /// <summary>
         /// 请求管理员重启秋之盒
@@ -84,7 +87,7 @@ namespace AutumnBox.OpenFramework.Open
         /// <summary>
         /// 关闭AutumnBox
         /// </summary>
-       /// <exception cref="Exceptions.UserDeniedException">用户拒绝了该操作</exception>
+        /// <exception cref="Exceptions.UserDeniedException">用户拒绝了该操作</exception>
         void ShutdownApp();
         /// <summary>
         /// 当前是否以管理员权限运行
