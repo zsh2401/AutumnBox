@@ -181,11 +181,11 @@ namespace AutumnBox.OpenFramework.Warpper
             });
             MainFlow();
             Logger.Debug("executing aspect on after main");
-            AfterMain();
-            App.RunOnUIThread(() =>
+            if (forceStopped)
             {
-                controller?.OnFinish();
-            });
+                Logger.Debug("was force stopped");
+            }
+            AfterMain();
             Logger.Debug("destory instantces");
             DestoryInstance();
         }
@@ -271,7 +271,10 @@ namespace AutumnBox.OpenFramework.Warpper
         /// </summary>
         private void DestoryInstance()
         {
-            controller?.OnFinish();
+            if (!forceStopped)
+            {
+                controller?.OnFinish();
+            }
             instance = null;
             controller = null;
         }
@@ -321,27 +324,27 @@ namespace AutumnBox.OpenFramework.Warpper
             }
             Manager.RunningManager.Remove(this);
         }
+        bool forceStopped = false;
         /// <summary>
         /// 停止
         /// </summary>
         /// <returns></returns>
         public virtual bool Stop()
         {
-            bool stopped = false;
             try
             {
-                stopped = instance.OnStopCommand();
+                forceStopped = instance.OnStopCommand();
             }
             catch (Exception ex)
             {
                 Logger.Warn("停止时发生异常", ex);
             }
-            if (stopped == true)
+            if (forceStopped)
             {
                 instance = null;
                 Manager.RunningManager.Remove(this);
             }
-            return stopped;
+            return forceStopped;
         }
         /// <summary>
         /// 当摧毁时被调用

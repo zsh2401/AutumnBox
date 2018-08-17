@@ -110,6 +110,7 @@ namespace AutumnBox.GUI.ViewModel
             {
                 AppendLine("已停止...");
                 Tip = "被强制终止";
+                ProgressValue = 100;
                 warpperIsRunning = false;
             }
             else
