@@ -76,14 +76,14 @@ namespace AutumnBox.GUI
                     "警告/Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
                 Shutdown(HAVE_OTHER_PROCESS);
             }
-            if (Settings.Default.IsFirstLaunch)
-            {
-                LanguageHelper.SetLanguageByEnvironment();
-            }
-            else
-            {
-                LanguageHelper.SetLanguage(Settings.Default.Language);
-            }
+            //if (Settings.Default.IsFirstLaunch)
+            //{
+            //    LanguageHelper.SetLanguageByEnvironment();
+            //}
+            //else
+            //{
+            //    LanguageHelper.SetLanguage(Settings.Default.Language);
+            //}
         }
 
         private string[] blockListForExceptionSource = {

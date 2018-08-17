@@ -13,17 +13,17 @@
     xmlns:dialogcontent="clr-namespace:AutumnBox.GUI.View.DialogContent"
     x:Name="_MainWindow" x:Class="AutumnBox.GUI.MainWindow"
         mc:Ignorable="d"
-    Title="{DynamicResource AppName}"
+    Title="{Binding Title}"
      MinHeight="650" MinWidth="1050" Height="551" Width="428" 
     WindowStartupLocation="CenterScreen"
      Loaded="MainWindow_Loaded"  
      Closed="_MainWindow_Closed">
     <Grid>
-        <Grid   Background="{DynamicResource MainBackgroundBrushKey}" Name="GridBase" Margin="0,0,0,0">
+        <Grid   Background="{DynamicResource MainBackgroundBrush}" Name="GridBase" Margin="0,0,0,0">
             <WebBrowser x:Name="WTF" Width="1" Height="0" Margin="963,271,185,408"/>
             <Grid>
-                <panel:PanelDevices x:Name="PanelDevices" Margin="0,51,10,0" HorizontalAlignment="Right" VerticalAlignment="Top" Width="183" Height="304"></panel:PanelDevices>
-                <TabControl  Margin="10,10,205,10" Background="{x:Null}" BorderBrush="{DynamicResource BroderBrushKey}">
+                <panel:PanelDevices x:Name="PanelDevices" Margin="0,37,10,0" HorizontalAlignment="Right" VerticalAlignment="Top" Width="183" Height="304"></panel:PanelDevices>
+                <TabControl  Margin="10,10,205,10" Background="{x:Null}" BorderBrush="{DynamicResource PrimaryLightBrush}">
                     <TabItem  Style="{DynamicResource AtmbxTabItem}" TabIndex="0" Header="{DynamicResource tbiStart}" Margin="-2,-2,-14,0"  FontSize="16">
                         <panel:PanelHome Margin="0,0,0,0"></panel:PanelHome>
                     </TabItem>

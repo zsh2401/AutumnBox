@@ -46,17 +46,17 @@ namespace AutumnBox.GUI.Depending
         }
         public static void RegisterEventSource(INotifyDeviceChanged notify)
         {
-            LanguageHelper.LanguageChanged += (s, e) =>
-            {
-                var args = new LangChangedEventArgs()
-                {
-                    NewLanguageCode = App.Current.Resources["LangCode"].ToString()
-                };
-                LanguageChangedListener.ForEach((listener) =>
-                {
-                    listener.OnLanguageChanged(args);
-                });
-            };
+            //LanguageHelper.LanguageChanged += (s, e) =>
+            //{
+            //    var args = new LangChangedEventArgs()
+            //    {
+            //        NewLanguageCode = App.Current.Resources["LangCode"].ToString()
+            //    };
+            //    LanguageChangedListener.ForEach((listener) =>
+            //    {
+            //        listener.OnLanguageChanged(args);
+            //    });
+            //};
             notify.DeviceChanged += (s, e) =>
             {
                 var args = new SelectDeviceEventArgs()

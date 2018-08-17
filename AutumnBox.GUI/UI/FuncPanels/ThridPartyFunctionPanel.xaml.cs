@@ -83,11 +83,11 @@ namespace AutumnBox.GUI.UI.FuncPanels
             GridInfo.Visibility = Visibility.Collapsed;
             TxtNothing.Visibility = Visibility.Visible;
             TBSdk.Text = string.Format(TBSdk.Text, BuildInfo.SDK_VERSION);
-            LanguageHelper.LanguageChanged += (s, e) =>
-            {
-                SetPanelByExtension(null);
-                TBSdk.Text = string.Format(App.Current.Resources["lbApiLevel"].ToString(), BuildInfo.SDK_VERSION);
-            };
+            //LanguageHelper.LanguageChanged += (s, e) =>
+            //{
+            //    SetPanelByExtension(null);
+            //    TBSdk.Text = string.Format(App.Current.Resources["lbApiLevel"].ToString(), BuildInfo.SDK_VERSION);
+            //};
             ListBoxModule.ItemsSource = Manager.InternalManager.Warppers;
         }
 

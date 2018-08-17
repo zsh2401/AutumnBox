@@ -13,7 +13,7 @@ namespace AutumnBox.GUI.Windows
         public AppLoadingWindow()
         {
             InitializeComponent();
-            ThemeManager.LoadFromSetting();
+            //ThemeManager.LoadFromSetting();
         }
 
         public void SetProgress(double value)

@@ -1,0 +1,8 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:AutumnBox.GUI.Resources.Themes.Ctrls">
+    <Style  TargetType="{x:Type Image}">
+        <Setter Property="RenderOptions.BitmapScalingMode" Value="Fant"></Setter>
+        <Setter Property="FlowDirection" Value="LeftToRight"/>
+    </Style>
+</ResourceDictionary>

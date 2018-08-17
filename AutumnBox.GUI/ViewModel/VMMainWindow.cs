@@ -4,6 +4,7 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.Basic.Util;
+using AutumnBox.GUI.Depending;
 using AutumnBox.GUI.Helper;
 using AutumnBox.GUI.Model;
 using AutumnBox.GUI.MVVM;
@@ -16,9 +17,23 @@ using System.Windows.Input;
 
 namespace AutumnBox.GUI.ViewModel
 {
-    class VMMainWindow : ViewModelBase
+    class VMMainWindow : ViewModelBase, ILanguageChangedListener
     {
-        public ICommand StartShell => new MVVMCommand((p)=> {
+        public string Title
+        {
+            get
+            {
+                return _title;
+            }
+            set
+            {
+                _title = value;
+                RaisePropertyChanged();
+            }
+        }
+        private string _title;
+        public ICommand StartShell => new MVVMCommand((p) =>
+        {
 
             ProcessStartInfo info = new ProcessStartInfo
             {
@@ -58,5 +73,23 @@ namespace AutumnBox.GUI.ViewModel
         {
             DialogHost.Show(new ContentDonate());
         });
+        public VMMainWindow()
+        {
+            InitTitle();
+        }
+        private void InitTitle()
+        {
+#if DEBUG
+            string comp = "Debug";
+#else
+            string comp = "Release";
+#endif
+            Title = $"{App.Current.Resources["AppName"]}-{Util.SystemHelper.CurrentVersion}-{comp}";
+        }
+
+        public void OnLanguageChanged(LangChangedEventArgs args)
+        {
+            InitTitle();
+        }
     }
 }
