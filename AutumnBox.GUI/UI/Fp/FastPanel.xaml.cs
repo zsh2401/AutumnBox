@@ -20,7 +20,7 @@ namespace AutumnBox.GUI.UI.Fp
         public FastPanel(System.Windows.Controls.Panel father, FastPanelChild child)
         {
             InitializeComponent();
-            ThemeManager.ThemeChanged += ThemeHelper_ThemeChanged;
+            //ThemeManager.ThemeChanged += ThemeHelper_ThemeChanged;
             this.father = father;
             this.child = child;
             InitSize();
@@ -116,7 +116,7 @@ namespace AutumnBox.GUI.UI.Fp
             father.Children.Remove(this);
             child.OnPanelClosed();
             Closed?.Invoke(this, new EventArgs());
-            ThemeManager.ThemeChanged -= ThemeHelper_ThemeChanged;
+            //ThemeManager.ThemeChanged -= ThemeHelper_ThemeChanged;
         }
         private void BtnClose_Click(object sender, RoutedEventArgs e)
         {

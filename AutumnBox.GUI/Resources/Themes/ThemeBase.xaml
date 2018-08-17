@@ -1,0 +1,65 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+    
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepPurple.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
+        <ResourceDictionary Source="Ctrls/FantImage.xaml"/>
+        <ResourceDictionary Source="Ctrls/TabItemStyle.xaml"/>
+        <ResourceDictionary Source="Ctrls/TextBlockStyle.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+    <!--Font-->
+    <system:String x:Key="ThemeName">Basic</system:String>
+    <FontFamily x:Key="AutumnBox.Font">Microsoft YaHei Light</FontFamily>
+    <FontFamily x:Key="MaterialDesignFont">Microsoft YaHei Light</FontFamily>
+    <!--Font-->
+    
+    <!--AutumnBox Design-->
+    <Color x:Key="PrimaryLightColor">#FBA746</Color>
+    <SolidColorBrush x:Key="PrimaryLightBrush" Color="{DynamicResource PrimaryLightColor}"/>
+
+    <Color x:Key="PrimaryLightForegroundColor">#FEFEFE</Color>
+    <SolidColorBrush x:Key="PrimaryLightForegroundBrush" Color="{DynamicResource PrimaryLightForegroundColor}"/>
+
+    <Color x:Key="PrimaryMidColor">#FBA746</Color>
+    <SolidColorBrush x:Key="PrimaryMidBrush" Color="{DynamicResource PrimaryMidColor}"/>
+
+    <Color x:Key="PrimaryMidForegroundColor">#FEFEFE</Color>
+    <SolidColorBrush x:Key="PrimaryMidForegroundBrush" Color="{DynamicResource PrimaryLightForegroundColor}"/>
+    
+    <Color x:Key="PrimaryDarkColor">#FBA746</Color>
+    <SolidColorBrush x:Key="PrimaryDarkBrush" Color="{DynamicResource PrimaryDarkColor}"/>
+    
+    <Color x:Key="PrimaryDarkForegroundColor">#FEFEFE</Color>
+    <SolidColorBrush x:Key="PrimaryDarkForegroundBrush" Color="{DynamicResource PrimaryDarkForegroundColor}"/>
+
+    <Color x:Key="SecondaryColor">#FBA746</Color>
+    <SolidColorBrush x:Key="SecondaryBrush" Color="{DynamicResource SecondaryColor}"/>
+    
+    <Color x:Key="SecondaryForegroundColor">#FEFEFE</Color>
+    <SolidColorBrush x:Key="SecondaryForegroundBrush" Color="{DynamicResource SecondaryForegroundColor}"/>
+
+    <Color x:Key="MainBackgroundColor">#FEFEFE</Color>
+    <SolidColorBrush x:Key="MainBackgroundBrush" Color="{DynamicResource MainBackgroundColor}"/>
+
+    <Color x:Key="MainBackgroundForegroundColor">#000</Color>
+    <SolidColorBrush x:Key="MainBackgroundForegroundBrush" Color="{DynamicResource MainBackgroundForegroundColor}"/>
+    <!--AutumnBox Design-->
+    
+    <!--Material Design-->
+    <SolidColorBrush x:Key="PrimaryHueLightBrush" Color="{DynamicResource PrimaryLightColor}"/>
+    <SolidColorBrush x:Key="PrimaryHueLightForegroundBrush" Color="{DynamicResource PrimaryLightForegroundColor}"/>
+    
+    <SolidColorBrush x:Key="PrimaryHueMidBrush" Color="{DynamicResource PrimaryMidColor}"/>
+    <SolidColorBrush x:Key="PrimaryHueMidForegroundBrush" Color="{DynamicResource PrimaryMidForegroundColor}"/>
+    
+    <SolidColorBrush x:Key="PrimaryHueDarkBrush" Color="{DynamicResource PrimaryDarkColor}"/>
+    <SolidColorBrush x:Key="PrimaryHueDarkForegroundBrush" Color="{DynamicResource PrimaryDarkForegroundColor}"/>
+    
+    <SolidColorBrush x:Key="SecondaryAccentBrush" Color="{DynamicResource SecondaryColor}"/>
+    <SolidColorBrush x:Key="SecondaryAccentForegroundBrush" Color="{DynamicResource SecondaryForegroundColor}"/>
+    <!--Material Design-->
+</ResourceDictionary>

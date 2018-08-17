@@ -17,18 +17,18 @@ namespace AutumnBox.GUI.UI.CstPanels
             CKBShowDebugWindowOnNextLaunch.IsChecked =Settings.Default.ShowDebuggingWindowNextLaunch;
             CKBNotifyOnFinished.IsChecked = Settings.Default.NotifyOnFinish;
 
-            CbBoxLanguage.ItemsSource = LanguageHelper.Langs;
-            CbBoxLanguage.SelectedIndex = LanguageHelper.FindIndex(App.Current.Resources["LanguageCode"].ToString());
+            //CbBoxLanguage.ItemsSource = LanguageHelper.Langs;
+            //CbBoxLanguage.SelectedIndex = LanguageHelper.FindIndex(App.Current.Resources["LanguageCode"].ToString());
             CbBoxLanguage.SelectionChanged += CbBoxLanguage_SelectionChanged;
             
-            CbBoxTheme.ItemsSource = ThemeManager.Themes;
-            CbBoxTheme.SelectedIndex = ThemeManager.GetCrtIndex();
+            //CbBoxTheme.ItemsSource = ThemeManager.Themes;
+            //CbBoxTheme.SelectedIndex = ThemeManager.GetCrtIndex();
             CbBoxTheme.SelectionChanged += CbBoxTheme_SelectionChanged;
         }
 
         private void CbBoxTheme_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ThemeManager.ChangeTheme((ITheme)CbBoxTheme.SelectedItem);
+            //ThemeManager.ChangeTheme((ITheme)CbBoxTheme.SelectedItem);
         }
 
         public override void OnPanelClosed()
@@ -41,7 +41,7 @@ namespace AutumnBox.GUI.UI.CstPanels
 
         private void CbBoxLanguage_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            LanguageHelper.SetLanguage((Language)CbBoxLanguage.SelectedItem);
+            //LanguageHelper.SetLanguage((Language)CbBoxLanguage.SelectedItem);
         }
 
         private void BtnCreateShortcut_Click(object sender, System.Windows.RoutedEventArgs e)

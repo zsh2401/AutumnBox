@@ -120,10 +120,10 @@ namespace AutumnBox.GUI.UI.FuncPanels
         public DeviceInfoPanel()
         {
             InitializeComponent();
-            LanguageHelper.LanguageChanged += (s, e) =>
-            {
-                Refresh(DeviceInfo);
-            };
+            //LanguageHelper.LanguageChanged += (s, e) =>
+            //{
+            //    Refresh(DeviceInfo);
+            //};
         }
 
         public void Refresh(DeviceBasicInfo devSimpleInfo)

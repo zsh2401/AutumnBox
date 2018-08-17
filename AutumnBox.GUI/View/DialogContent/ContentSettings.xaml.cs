@@ -18,14 +18,14 @@ namespace AutumnBox.GUI.View.DialogContent
             InitializeComponent();
             TGLaunchDebugNext.IsChecked = Settings.Default.ShowDebuggingWindowNextLaunch;
 
-            CBLanguage.ItemsSource = LanguageHelper.Langs;
-            CBLanguage.SelectedIndex = LanguageHelper.FindIndex(App.Current.Resources["LanguageCode"].ToString());
+            //CBLanguage.ItemsSource = LanguageHelper.Langs;
+            //CBLanguage.SelectedIndex = LanguageHelper.FindIndex(App.Current.Resources["LanguageCode"].ToString());
             CBLanguage.SelectionChanged += CBLanguage_SelectionChanged;
         }
 
         private void CBLanguage_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            LanguageHelper.SetLanguage((Language)CBLanguage.SelectedItem);
+            //LanguageHelper.SetLanguage((Language)CBLanguage.SelectedItem);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

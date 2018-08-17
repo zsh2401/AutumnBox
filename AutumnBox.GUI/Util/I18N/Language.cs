@@ -23,10 +23,10 @@ namespace AutumnBox.GUI.I18N
         {
             get
             {
-                if (_resources == null)
-                {
-                    _resources = new ResourceDictionary { Source = new Uri(LanguageHelper.Path + _lanCode + ".xaml") };
-                }
+                //if (_resources == null)
+                //{
+                //    _resources = new ResourceDictionary { Source = new Uri(LanguageHelper.Path + _lanCode + ".xaml") };
+                //}
                 return _resources;
             }
         }
@@ -49,7 +49,8 @@ namespace AutumnBox.GUI.I18N
         {
             get
             {
-                return string.Format("{0}/{1}.xaml", LanguageHelper.Path, LanguageCode);
+                //return string.Format("{0}/{1}.xaml", LanguageHelper.Path, LanguageCode);
+                throw new NotImplementedException();
             }
         }
         private string _lanCode;
