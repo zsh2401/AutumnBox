@@ -145,10 +145,17 @@
     <Compile Include="Helper\SystemHelper.cs" />
     <Compile Include="Helper\ThemeManager.cs" />
     <Compile Include="Helper\UIHelper.cs" />
-    <Compile Include="Util\I18N\Language.cs" />
+    <Compile Include="Rubbish\Language.cs" />
     <Compile Include="Model\ChoicerContentStartArgs.cs" />
     <Compile Include="Util\Converter.cs" />
+    <Compile Include="Util\Custom\ITheme.cs" />
+    <Compile Include="Util\Custom\IThemeManager.cs" />
     <Compile Include="Util\Custom\ThemeManager.cs" />
+    <Compile Include="Util\Custom\ThemeManagerOld.cs" />
+    <Compile Include="Util\I18N\ILanguage.cs" />
+    <Compile Include="Util\I18N\ILanguageManager.cs" />
+    <Compile Include="Util\I18N\LanguageManager.cs" />
+    <Compile Include="Util\IResourceManager.cs" />
     <Compile Include="Util\Net\PotdGetter.cs" />
     <Compile Include="Util\Net\MOTDGetter.cs" />
     <Compile Include="Util\Net\RemoteDataGetter.cs" />
@@ -354,7 +361,7 @@
     <Compile Include="Windows\UpdateNoticeWindow.xaml.cs">
       <DependentUpon>UpdateNoticeWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Util\I18N\LanguageHelper.cs" />
+    <Compile Include="Rubbish\LanguageHelper.cs" />
     <Compile Include="Util\NativeMethods.cs" />
   </ItemGroup>
   <ItemGroup>

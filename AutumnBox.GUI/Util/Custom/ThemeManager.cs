@@ -1,8 +1,9 @@
 ﻿/*************************************************
 ** auth： zsh2401@163.com
-** date:  2018/3/13 17:56:01 (UTC +8:00)
+** date:  2018/8/17 15:41:22 (UTC +8:00)
 ** desc： ...
 *************************************************/
+
 using AutumnBox.GUI.Properties;
 using System;
 using System.Collections.Generic;
@@ -10,82 +11,81 @@ using System.Windows;
 
 namespace AutumnBox.GUI.Util.Custom
 {
-    internal interface ITheme
+    class ThemeManager : IThemeManager
     {
-        string Name { get; }
-        ResourceDictionary Resource { get; }
-    }
-    internal class RandomTheme : ITheme
-    {
-        public string Name => "随机-Random";
-        private static readonly Random ran = new Random();
-        public ResourceDictionary Resource => Next();
-        private ResourceDictionary Next()
-        {
-            var themes = ThemeManager.Themes;
-            int ranIndex = ran.Next(1, themes.Length);
-            return themes[ranIndex].Resource;
-        }
-    }
-    internal class FileTheme : ITheme
-    {
-        public string Name { get { return Resource["ThemeName"].ToString(); } }
-        public ResourceDictionary Resource => resouce;
-        private readonly ResourceDictionary resouce;
-        public FileTheme(string fileName)
-        {
-            resouce = new ResourceDictionary() { Source = new Uri(ThemeManager.Path + fileName) };
-        }
-    }
-    internal static class ThemeManager
-    {
-        public static event EventHandler ThemeChanged;
-        public static ITheme[] Themes => themes.ToArray();
-        private static readonly List<ITheme> themes;
-        public const string Path = "pack://application:,,,/AutumnBox.GUI;component/Resources/Themes/";
+        private const int INDEX_OF_THEME = 2;
+        private const string FILE_PATH = "pack://application:,,,/AutumnBox.GUI;component/Resources/Themes/";
+        private const string THEME_NAME_KEY = "ThemeName";
+        public static ThemeManager Instance { get; private set; }
         static ThemeManager()
         {
+            Instance = new ThemeManager();
+        }
+
+        public IEnumerable<ITheme> Themes => themes;
+
+        public ITheme Current
+        {
+            get => current;
+            set
+            {
+                current = value ?? throw new ArgumentNullException();
+                Apply(current);
+            }
+        }
+        private ITheme current;
+
+        private List<ITheme> themes;
+        private ThemeManager()
+        {
+            Load();
+        }
+        private void Load()
+        {
             themes = new List<ITheme>() {
-                new RandomTheme(),
-                new FileTheme("LightTheme.xaml"),
-                new FileTheme("NightTheme.xaml"),
-                new FileTheme("AutumnTheme.xaml"),
-                new FileTheme("SpringTheme.xaml"),
-                new FileTheme("DreamTheme.xaml"),
-                new FileTheme("PinkTheme.xaml"),
-                new FileTheme("PurpleTheme.xaml")
+                ThemeImpl.LoadFrom("Autumn.xaml"),
             };
         }
-        public static void LoadFromSetting()
+
+        public void ApplyBySetting()
         {
-            ChangeTheme(Settings.Default.Theme);
+            var settingTheme = Settings.Default.Theme;
+            var findingResult = themes.Find(_the => _the.ThemeName == settingTheme);
+            Current = findingResult;
         }
-        static bool usingRandomTheme = false;
-        public static void ChangeTheme(ITheme theme)
+
+        private void Apply(ITheme theme)
         {
-            usingRandomTheme = theme is RandomTheme;
-            App.Current.Resources.MergedDictionaries[1] = theme.Resource;
-            ThemeChanged?.Invoke(new object(), new EventArgs());
-            Settings.Default.Theme = theme.Name;
-            Settings.Default.Save();
-        }
-        public static void ChangeTheme(string themeName)
-        {
-            var theme = themes.Find((_theme) => { return _theme.Name == themeName; });
-            ChangeTheme(theme);
-        }
-        public static int GetCrtIndex()
-        {
-            if (usingRandomTheme) return 0;
-            else
+            if (theme == null)
             {
-                int index;
-                index = themes.FindIndex((theme) =>
-                {
-                    return theme.Name == App.Current.Resources["ThemeName"].ToString();
-                });
-                return index;
+                return;
             }
+            App.Current.Resources.MergedDictionaries[INDEX_OF_THEME] = theme.Resource;
+            current = theme;
+        }
+
+        private class ThemeImpl : ITheme
+        {
+            public string ThemeName => Resource[THEME_NAME_KEY].ToString();
+
+            public ResourceDictionary Resource { get; private set; }
+
+            public static ThemeImpl LoadFrom(string filename)
+            {
+                var resouceDict = new ResourceDictionary { Source = new Uri(FILE_PATH + filename) };
+                return new ThemeImpl()
+                {
+                    Resource = resouceDict,
+                };
+            }
+        }
+        private class RandomTheme : ITheme
+        {
+            public string ThemeName => "Random-随机";
+
+            public ResourceDictionary Resource => throw new NotImplementedException();
+            private ResourceDictionary current;
+            public void Random() { }
         }
     }
 }

@@ -3,6 +3,8 @@ using AutumnBox.Support.Log;
 using System.Windows;
 using System.Windows.Input;
 using AutumnBox.GUI.UI.Fp;
+using AutumnBox.GUI.Util.I18N;
+
 namespace AutumnBox.GUI.Windows
 {
     /// <summary>
@@ -13,6 +15,7 @@ namespace AutumnBox.GUI.Windows
         public AppLoadingWindow()
         {
             InitializeComponent();
+            //LanguageManager.Instance.ApplyByEnvoriment();
             //ThemeManager.LoadFromSetting();
         }
 
