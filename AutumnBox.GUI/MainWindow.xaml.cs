@@ -26,6 +26,7 @@ using AutumnBox.GUI.Depending;
 using AutumnBox.GUI.ViewModel;
 using AutumnBox.GUI.View.DialogContent;
 using AutumnBox.GUI.Util.Net;
+using AutumnBox.GUI.Util.UI;
 
 namespace AutumnBox.GUI
 {

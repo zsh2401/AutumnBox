@@ -56,7 +56,7 @@ namespace AutumnBox.GUI.Util.Net
             {
                 try
                 {
-                    return Version > SystemHelper.CurrentVersion //检测到的版本大于当前版本
+                    return Version > Self.Version //检测到的版本大于当前版本
     && new Version(Settings.Default.SkipVersion) < Version;//并且没有被设置跳过
                 }
                 catch (Exception ex)

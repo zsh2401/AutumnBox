@@ -3,14 +3,9 @@
 ** date:  2018/8/16 18:58:43 (UTC +8:00)
 ** desc： ...
 *************************************************/
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
 
-namespace AutumnBox.GUI.Util
+namespace AutumnBox.GUI.Util.Data
 {
     public static class Converter
     {

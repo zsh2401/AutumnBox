@@ -8,6 +8,9 @@ using AutumnBox.Basic.Util;
 using AutumnBox.GUI.Helper;
 using AutumnBox.GUI.Properties;
 using AutumnBox.GUI.Util;
+using AutumnBox.GUI.Util.OpenFxManagement;
+using AutumnBox.GUI.Util.OS;
+using AutumnBox.GUI.Util.UI;
 using AutumnBox.GUI.Windows;
 using AutumnBox.OpenFramework;
 using AutumnBox.Support.Log;
@@ -28,8 +31,8 @@ namespace AutumnBox.GUI
         }
         private void PrintInfo()
         {
-            Logger.Info(this, $"Run as " + (Util.SystemHelper.HaveAdminPermission ? "Admin" : "Normal user"));
-            Logger.Info(this, $"AutumnBox version: {Util.SystemHelper.CurrentVersion}");
+            Logger.Info(this, $"Run as " + (Self.HaveAdminPermission ? "Admin" : "Normal user"));
+            Logger.Info(this, $"AutumnBox version: {Self.Version}");
             Logger.Info(this, $"SDK version: {BuildInfo.SDK_VERSION}");
             Logger.Info(this, $"Windows version {Environment.OSVersion.Version}");
         }

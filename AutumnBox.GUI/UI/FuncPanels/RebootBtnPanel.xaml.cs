@@ -2,6 +2,7 @@
 using System.Windows.Controls;
 using AutumnBox.GUI.Helper;
 using AutumnBox.Basic.Device;
+using AutumnBox.GUI.Util.UI;
 
 namespace AutumnBox.GUI.UI.FuncPanels
 {

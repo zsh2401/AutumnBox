@@ -140,14 +140,14 @@
     <Compile Include="AppLoader.cs" />
     <Compile Include="Depending\ISelectDeviceChangedListener.cs" />
     <Compile Include="Depending\ListenerManager.cs" />
-    <Compile Include="Helper\BlurHelper.cs" />
-    <Compile Include="Helper\BoxHelper.cs" />
-    <Compile Include="Helper\SystemHelper.cs" />
-    <Compile Include="Helper\ThemeManager.cs" />
-    <Compile Include="Helper\UIHelper.cs" />
+    <Compile Include="Util\UI\BlurHelper.cs" />
+    <Compile Include="Util\UI\BoxHelper.cs" />
+    <Compile Include="Rubbish\SystemHelper.cs" />
+    <Compile Include="Rubbish\ThemeManager.cs" />
+    <Compile Include="Util\UI\UIHelper.cs" />
     <Compile Include="Rubbish\Language.cs" />
     <Compile Include="Model\ChoicerContentStartArgs.cs" />
-    <Compile Include="Util\Converter.cs" />
+    <Compile Include="Util\Data\Converter.cs" />
     <Compile Include="Util\Custom\ITheme.cs" />
     <Compile Include="Util\Custom\IThemeManager.cs" />
     <Compile Include="Util\Custom\ThemeManager.cs" />
@@ -155,7 +155,7 @@
     <Compile Include="Util\I18N\ILanguage.cs" />
     <Compile Include="Util\I18N\ILanguageManager.cs" />
     <Compile Include="Util\I18N\LanguageManager.cs" />
-    <Compile Include="Util\IResourceManager.cs" />
+    <Compile Include="Util\Data\IResourceManager.cs" />
     <Compile Include="Util\Net\PotdGetter.cs" />
     <Compile Include="Util\Net\MOTDGetter.cs" />
     <Compile Include="Util\Net\RemoteDataGetter.cs" />
@@ -176,7 +176,8 @@
     <Compile Include="UI\IDependOnDeviceChanges.cs" />
     <Compile Include="Depending\ILanguageChangedListener.cs" />
     <Compile Include="Depending\DependingObject.cs" />
-    <Compile Include="Util\SystemHelper.cs" />
+    <Compile Include="Util\OS\SystemHelper.cs" />
+    <Compile Include="Util\Self.cs" />
     <Compile Include="ViewModel\VMContentChoice.cs" />
     <Compile Include="ViewModel\VMExtensions.cs" />
     <Compile Include="ViewModel\VMPOTD.cs" />
@@ -244,10 +245,10 @@
     <Compile Include="View\Panel\PanelReboot.xaml.cs">
       <DependentUpon>PanelReboot.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Util\OpenApiImpl\AppManagerImpl.cs" />
+    <Compile Include="Util\OpenFxManagement\AppManagerImpl.cs" />
     <Compile Include="Util\Extensions.cs" />
-    <Compile Include="Util\OpenFrameworkManager.cs" />
-    <Compile Include="Util\Md5.cs" />
+    <Compile Include="Util\OpenFxManagement\OpenFrameworkManager.cs" />
+    <Compile Include="Util\Data\Md5.cs" />
     <Compile Include="View\WindowManager.cs" />
     <Compile Include="Windows\DebugWindow.xaml.cs">
       <DependentUpon>DebugWindow.xaml</DependentUpon>
@@ -320,8 +321,8 @@
     <Compile Include="UI\FuncPanels\StartPanel.xaml.cs">
       <DependentUpon>StartPanel.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Util\AutoGC.cs" />
-    <Compile Include="Util\MachineInfo.cs" />
+    <Compile Include="Util\OS\AutoGC.cs" />
+    <Compile Include="Util\OS\MachineInfo.cs" />
     <Compile Include="Windows\ApkInstallingWindow.xaml.cs">
       <DependentUpon>ApkInstallingWindow.xaml</DependentUpon>
     </Compile>
@@ -362,7 +363,7 @@
       <DependentUpon>UpdateNoticeWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Rubbish\LanguageHelper.cs" />
-    <Compile Include="Util\NativeMethods.cs" />
+    <Compile Include="Util\OS\NativeMethods.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

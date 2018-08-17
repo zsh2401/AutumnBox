@@ -18,7 +18,7 @@ using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
 /*Code from http://blog.csdn.net/qq_23833037/article/details/78304738*/
-namespace AutumnBox.GUI.Util
+namespace AutumnBox.GUI.Util.OS
 {
     /// <summary>
     /// 此类用于获取当前主机的相关信息

@@ -15,6 +15,7 @@ using AutumnBox.Basic.Util;
 using AutumnBox.GUI.Helper;
 using AutumnBox.GUI.I18N;
 using AutumnBox.GUI.Properties;
+using AutumnBox.GUI.Util;
 using AutumnBox.GUI.Windows;
 using AutumnBox.Support.Log;
 using Spring.Context;
@@ -65,10 +66,10 @@ namespace AutumnBox.GUI
 #endif
             if (Settings.Default.SkipVersion == "0.0.1")
             {
-                Settings.Default.SkipVersion = SystemHelper.CurrentVersion.ToString();
+                Settings.Default.SkipVersion = Self.Version.ToString();
                 Settings.Default.Save();
             }
-            if (SystemHelper.HaveOtherAutumnBoxProcess)
+            if (Self.HaveOtherAutumnBoxProcess)
             {
                 Logger.Fatal(this, "Have other autumnbox!!");
                 MessageBox.Show(

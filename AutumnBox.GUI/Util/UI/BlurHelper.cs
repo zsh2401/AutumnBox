@@ -12,12 +12,13 @@
 *
 \* =============================================================================*/
 using AutumnBox.GUI.Util;
+using AutumnBox.GUI.Util.OS;
 using System;
 using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Interop;
 
-namespace AutumnBox.GUI.Helper
+namespace AutumnBox.GUI.Util.UI
 {
     /// <summary>
     /// 窗体透明帮助类,来自开源代码

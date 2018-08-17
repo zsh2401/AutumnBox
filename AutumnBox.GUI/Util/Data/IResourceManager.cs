@@ -7,7 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows;
 
-namespace AutumnBox.GUI.Util
+namespace AutumnBox.GUI.Util.Data
 {
     public interface IResource
     {

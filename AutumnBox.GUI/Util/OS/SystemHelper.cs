@@ -18,7 +18,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Security.Principal;
 
-namespace AutumnBox.GUI.Util
+namespace AutumnBox.GUI.Util.OS
 {
     /// <summary>
     /// SystemHelper static class, static methods about System
@@ -69,27 +69,7 @@ namespace AutumnBox.GUI.Util
             string desktop = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);//获取桌面文件夹路径
             CreateShortcut(desktop, shortcutName, targetPath, description, iconLocation);
         }
-        /// <summary>
-        /// 获取当前AutumnBox编译日期
-        /// </summary>
-        public static DateTime CompiledDate
-        {
-            get
-            {
-                var o = (CompiledDateAttribute)Attribute.GetCustomAttribute(System.Reflection.Assembly.GetExecutingAssembly(), typeof(CompiledDateAttribute));
-                return o.DateTime;
-            }
-        }
-        /// <summary>
-        /// 获取当前AutumnBox版本
-        /// </summary>
-        public static Version CurrentVersion
-        {
-            get
-            {
-                return System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
-            }
-        }
+
         /// <summary>
         /// 判断当前操作系统是否是win10
         /// </summary>
@@ -98,28 +78,6 @@ namespace AutumnBox.GUI.Util
             get
             {
                 return Environment.OSVersion.Version.Major == 10;
-            }
-        }
-        /// <summary>
-        /// 判断是否拥有管理员权限
-        /// </summary>
-        public static bool HaveAdminPermission
-        {
-            get
-            {
-                WindowsIdentity identity = WindowsIdentity.GetCurrent();
-                WindowsPrincipal principal = new WindowsPrincipal(identity);
-                return principal.IsInRole(WindowsBuiltInRole.Administrator);
-            }
-        }
-        /// <summary>
-        /// 判断是否有其它秋之盒进程
-        /// </summary>
-        public static bool HaveOtherAutumnBoxProcess
-        {
-            get
-            {
-                return Process.GetProcessesByName("AutumnBox.GUI").Length > 1;
             }
         }
     }

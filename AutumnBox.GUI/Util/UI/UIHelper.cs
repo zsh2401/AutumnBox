@@ -11,16 +11,18 @@
 * Company: I am free man
 *
 \* =============================================================================*/
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
-namespace AutumnBox.GUI.Helper
+namespace AutumnBox.GUI.Util.UI
 {
     /// <summary>
     /// UI帮助类,与UI相关的静态函数
     /// </summary>
+    [Obsolete("遗留代码")]
     internal static class UIHelper
     {
         private static SolidColorBrush CurrentBackgound

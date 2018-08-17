@@ -6,6 +6,7 @@
 using AutumnBox.Basic.Device;
 using AutumnBox.Basic.Device.PackageManage;
 using AutumnBox.GUI.Helper;
+using AutumnBox.GUI.Util.UI;
 using AutumnBox.Support.Log;
 
 namespace AutumnBox.GUI.UI.FuncPanels.PoweronFuncsUx
