@@ -23,6 +23,7 @@ namespace AutumnBox.CoreModules.Extensions
             Thread.Sleep(4000);
             stoppable = true;
             ExtensionUIController.AppendLine("in other words, please be true!");
+            Thread.Sleep(4000);
             return 0;
         }
         public override bool OnStopCommand()
