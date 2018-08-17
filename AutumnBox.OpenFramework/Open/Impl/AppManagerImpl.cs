@@ -6,6 +6,7 @@
 using AutumnBox.OpenFramework.Content;
 using AutumnBox.OpenFramework.Exceptions;
 using AutumnBox.OpenFramework.Open.Impl.AutumnBoxApi;
+using AutumnBox.OpenFramework.Warpper;
 using System;
 using System.Security.Principal;
 using System.Threading.Tasks;
@@ -23,6 +24,10 @@ namespace AutumnBox.OpenFramework.Open.Impl
             this.sourceApi = sourceApi;
         }
 
+        public IExtensionUIController GetUIControllerOf(IExtensionWarpper warpper)
+        {
+            return sourceApi.GetUIControllerOf(warpper);
+        }
         public bool IsRunAsAdmin
         {
             get
@@ -72,7 +77,8 @@ namespace AutumnBox.OpenFramework.Open.Impl
 
         public void RestartApp()
         {
-            if (ctx.Permission == CtxPer.High) {
+            if (ctx.Permission == CtxPer.High)
+            {
                 sourceApi.Restart();
                 return;
             }

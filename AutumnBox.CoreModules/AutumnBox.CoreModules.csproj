@@ -58,6 +58,7 @@
     <Compile Include="Extensions\EExtractRecoveryImg.cs" />
     <Compile Include="Extensions\EFilePusher.cs" />
     <Compile Include="Extensions\EFlashBoot.cs" />
+    <Compile Include="Extensions\EHoldMyHand.cs" />
     <Compile Include="Extensions\EScreenShoter.cs" />
     <Compile Include="Extensions\EUnlockSystemParation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">

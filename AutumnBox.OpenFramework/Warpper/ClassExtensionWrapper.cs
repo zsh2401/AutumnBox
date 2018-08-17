@@ -8,12 +8,14 @@ using AutumnBox.OpenFramework.Content;
 using AutumnBox.OpenFramework.Exceptions;
 using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.Management;
+using AutumnBox.OpenFramework.Open;
 using AutumnBox.OpenFramework.Open.Impl.AutumnBoxApi;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace AutumnBox.OpenFramework.Warpper
 {
@@ -109,7 +111,7 @@ namespace AutumnBox.OpenFramework.Warpper
         }
         private ExtMainAsceptAttribute[] ma;
         public IExtInfoGetter Info { get; private set; }
-
+        private IExtensionUIController controller;
         /// <summary>
         /// 创建检查,如果有问题就抛出异常
         /// </summary>
@@ -161,20 +163,31 @@ namespace AutumnBox.OpenFramework.Warpper
         {
             if (!RunningCheck()) return;
             if (!BeforeCreateInstance(device)) return;
-            Logger.Debug("Creating instance");
+            Logger.Debug("creating instance");
             CreateInstance();
-            Logger.Debug("Created instance");
-            Logger.Debug("Injecting property");
+            Logger.Debug("injecting property");
             InjetctProperty(device);
-            Logger.Debug("Injected property");
+            Logger.Debug("executing Main Aspect");
             if (!BeforeMain(device))
             {
-                instance = null;
+                Logger.Debug("Flow was prevented by aspect,destory instantces");
+                DestoryInstance();
                 return;
             }
-            Logger.Debug("Run main flow");
+            Logger.Debug("extension.Main() executing");
+            App.RunOnUIThread(() =>
+            {
+                controller.OnStart();
+            });
             MainFlow();
+            Logger.Debug("executing aspect on after main");
             AfterMain();
+            App.RunOnUIThread(() =>
+            {
+                controller?.OnFinish();
+            });
+            Logger.Debug("destory instantces");
+            DestoryInstance();
         }
         /// <summary>
         /// 多开检查
@@ -254,11 +267,27 @@ namespace AutumnBox.OpenFramework.Warpper
             Logger.Debug("AfterMain() executed");
         }
         /// <summary>
+        /// 摧毁相关实例
+        /// </summary>
+        private void DestoryInstance()
+        {
+            controller?.OnFinish();
+            instance = null;
+            controller = null;
+        }
+        /// <summary>
         /// 创建实例
         /// </summary>
         private void CreateInstance()
         {
             instance = (AutumnBoxExtension)Activator.CreateInstance(extType);
+            if (Info.Visual)
+            {
+                App.RunOnUIThread(() =>
+                {
+                    controller = App.GetUIControllerOf(this);
+                });
+            }
         }
         /// <summary>
         /// 注入属性
@@ -268,6 +297,7 @@ namespace AutumnBox.OpenFramework.Warpper
         {
             instance.TargetDevice = device;
             instance.ExtName = Info.Name;
+            instance.ExtensionUIController = controller;
         }
         /// <summary>
         /// 主流程
@@ -288,10 +318,6 @@ namespace AutumnBox.OpenFramework.Warpper
                     string stoppedMsg = $"{Info.Name} {App.GetPublicResouce<String>("msgExtensionWasFailed")}";
                     App.ShowMessageBox("Notice", stoppedMsg);
                 });
-            }
-            finally
-            {
-                instance = null;
             }
             Manager.RunningManager.Remove(this);
         }
@@ -324,6 +350,11 @@ namespace AutumnBox.OpenFramework.Warpper
         {
             warppedType.Remove(extType);
         }
+        /// <summary>
+        /// 异步运行
+        /// </summary>
+        /// <param name="device"></param>
+        /// <param name="callback"></param>
         public void RunAsync(DeviceBasicInfo device, Action<IExtensionWarpper> callback = null)
         {
             Task.Run(() =>
@@ -332,17 +363,28 @@ namespace AutumnBox.OpenFramework.Warpper
                 callback?.Invoke(this);
             });
         }
-
-
+        /// <summary>
+        /// 获取HashCode,实际上是拓展模块类的HashCode
+        /// </summary>
+        /// <returns></returns>
         public override int GetHashCode()
         {
             return extType.GetHashCode();
         }
-
+        /// <summary>
+        /// 对比
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
         public bool Equals(IExtensionWarpper other)
         {
             return other != null && other.GetHashCode() == GetHashCode();
         }
+        /// <summary>
+        /// 对比
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         public override bool Equals(object obj)
         {
             return base.Equals(obj as IExtensionWarpper);

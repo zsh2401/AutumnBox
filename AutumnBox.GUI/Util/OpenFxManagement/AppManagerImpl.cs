@@ -12,6 +12,8 @@ using System.Diagnostics;
 using System;
 using System.Windows;
 using AutumnBox.GUI.Util.UI;
+using AutumnBox.OpenFramework.Warpper;
+using AutumnBox.GUI.View.Windows;
 
 namespace AutumnBox.GUI.Util.OpenFxManagement
 {
@@ -49,6 +51,12 @@ namespace AutumnBox.GUI.Util.OpenFxManagement
         public object GetResouce(string key)
         {
             return App.Current.Resources[key];
+        }
+
+        public IExtensionUIController GetUIControllerOf(IExtensionWarpper warpper)
+        {
+            var window = new RunningWindow(warpper);
+            return window.ViewModel;
         }
 
         public void RefreshExtensionList()

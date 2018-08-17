@@ -1,5 +1,6 @@
 ﻿using AutumnBox.Basic.Device;
 using AutumnBox.OpenFramework.Extension;
+using AutumnBox.OpenFramework.Open;
 using System;
 
 namespace AutumnBox.OpenFramework.Warpper
@@ -13,24 +14,12 @@ namespace AutumnBox.OpenFramework.Warpper
         /// 拓展模块信息获取器
         /// </summary>
         IExtInfoGetter Info { get; }
-        ///// <summary>
-        ///// 可用的
-        ///// </summary>
-        //bool Usable { get; }
-        ///// <summary>
-        ///// 模块名
-        ///// </summary>
-        //string Name { get; }
-        ///// <summary>
-        ///// 模块说明
-        ///// </summary>
-        //string Desc { get; }
-        ///// <summary>
-        ///// 图标
-        ///// </summary>
-        //byte[] Icon { get; }
         /// <summary>
-        /// 可使用
+        /// 上次执行完成的返回码
+        /// </summary>
+        int LastReturnCode { get; }
+        /// <summary>
+        /// 最初的是否可用检测
         /// </summary>
         bool Usable { get; }
         /// <summary>

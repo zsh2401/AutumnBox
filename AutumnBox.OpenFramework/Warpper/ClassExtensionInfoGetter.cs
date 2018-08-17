@@ -73,6 +73,9 @@ namespace AutumnBox.OpenFramework.Warpper
                 return GetInfoByCurrentLanguage("ExtAuth");
             }
         }
+
+        public bool Visual { get; private set; }
+
         public ClassExtensionInfoGetter(Context ctx, Type type)
         {
             this.ctx = ctx;
@@ -108,6 +111,7 @@ namespace AutumnBox.OpenFramework.Warpper
             RunAsAdmin = (bool)infoTable["ExtRunAsAdmin"].Value;
             MinApi = (int)infoTable["ExtMinApi"].Value;
             TargetApi = (int)infoTable["ExtTargetApi"].Value;
+            Visual = (bool)infoTable["ExtWindowEnable"].Value;
             try
             {
                 Icon = ReadIcon(infoTable["ExtIcon"].Value.ToString());

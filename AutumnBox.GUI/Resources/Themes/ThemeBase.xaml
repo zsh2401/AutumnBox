@@ -11,6 +11,7 @@
         <ResourceDictionary Source="Ctrls/TabItemStyle.xaml"/>
         <ResourceDictionary Source="Ctrls/TextBlockStyle.xaml"/>
     </ResourceDictionary.MergedDictionaries>
+    <BitmapImage x:Key="DefaultExtensionIcon">../Images/defaultExtIcon.png</BitmapImage>
     <!--Font-->
     <system:String x:Key="ThemeName">Basic</system:String>
     <FontFamily x:Key="AutumnBox.Font">Microsoft YaHei Light</FontFamily>

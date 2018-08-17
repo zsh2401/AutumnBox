@@ -5,6 +5,7 @@
 *************************************************/
 using AutumnBox.Basic.Device;
 using AutumnBox.OpenFramework.Content;
+using AutumnBox.OpenFramework.Open;
 
 namespace AutumnBox.OpenFramework.Extension
 {
@@ -24,6 +25,7 @@ namespace AutumnBox.OpenFramework.Extension
     [ExtTargetApi]
     [ExtRunAsAdmin(false)]
     [ExtRequireRoot(false)]
+    [ExtWindowEnable(true)]
     //[ExtAppProperty("com.fuck.a","Fuck")]
     public abstract class AutumnBoxExtension : Context
     {
@@ -47,6 +49,10 @@ namespace AutumnBox.OpenFramework.Extension
         /// 目标设备
         /// </summary>
         public DeviceBasicInfo TargetDevice { get; set; }
+        /// <summary>
+        /// UI控制器
+        /// </summary>
+        public IExtensionUIController ExtensionUIController { get;  set; }
         /// <summary>
         /// 主函数
         /// </summary>
