@@ -62,6 +62,8 @@
     <Compile Include="Content\CtxPer.cs" />
     <Compile Include="Exceptions\LibrarianAlreadyCreatedOnceException.cs" />
     <Compile Include="Exceptions\WarpperAlreadyCreatedOnceException.cs" />
+    <Compile Include="Extension\AutumnBoxExtension.Def.cs" />
+    <Compile Include="Extension\AutumnBoxExtension.Other.cs" />
     <Compile Include="Extension\ExtAppPropertyAttribute.cs" />
     <Compile Include="Extension\ExtBeforeCreateAspectAttribute.cs" />
     <Compile Include="Extension\ExtInfoAttribute.cs" />
