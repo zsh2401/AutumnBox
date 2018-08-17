@@ -5,6 +5,7 @@
 *************************************************/
 using AutumnBox.Basic.Device;
 using AutumnBox.GUI.Helper;
+using AutumnBox.GUI.Util.UI;
 using AutumnBox.Support.Log;
 using System;
 using System.Threading;

@@ -17,8 +17,9 @@ using AutumnBox.Support.Log;
 using System;
 using System.Windows;
 
-namespace AutumnBox.GUI.Helper
+namespace AutumnBox.GUI.Util.UI
 {
+    [Obsolete("在新的MD设计中,将逐渐抛弃此类")]
     internal static class BoxHelper
     {
         public static bool ToBool(this ChoiceResult result)

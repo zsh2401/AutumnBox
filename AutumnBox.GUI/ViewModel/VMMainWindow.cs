@@ -8,6 +8,7 @@ using AutumnBox.GUI.Depending;
 using AutumnBox.GUI.Helper;
 using AutumnBox.GUI.Model;
 using AutumnBox.GUI.MVVM;
+using AutumnBox.GUI.Util;
 using AutumnBox.GUI.View;
 using AutumnBox.GUI.View.DialogContent;
 using AutumnBox.GUI.Windows;
@@ -84,7 +85,7 @@ namespace AutumnBox.GUI.ViewModel
 #else
             string comp = "Release";
 #endif
-            Title = $"{App.Current.Resources["AppName"]}-{Util.SystemHelper.CurrentVersion}-{comp}";
+            Title = $"{App.Current.Resources["AppName"]}-{Self.Version}-{comp}";
         }
 
         public void OnLanguageChanged(LangChangedEventArgs args)

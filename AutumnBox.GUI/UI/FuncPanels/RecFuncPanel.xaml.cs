@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using AutumnBox.GUI.UI.Fp;
 using AutumnBox.OpenFramework.Warpper;
 using System.Linq;
+using AutumnBox.GUI.Util.UI;
 
 namespace AutumnBox.GUI.UI.FuncPanels
 {

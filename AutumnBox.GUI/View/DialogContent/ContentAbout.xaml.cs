@@ -1,4 +1,5 @@
 ﻿using AutumnBox.GUI.Helper;
+using AutumnBox.GUI.Util;
 using System.Windows.Controls;
 
 namespace AutumnBox.GUI.View.DialogContent
@@ -11,13 +12,13 @@ namespace AutumnBox.GUI.View.DialogContent
         public ContentAbout()
         {
             InitializeComponent();
-            LabelVersion.Content = SystemHelper.CurrentVersion.ToString();
+            LabelVersion.Content = Self.Version.ToString();
 #if !DEBUG
             LabelVersion.Content += "-release";
 #else
             LabelVersion.Content += "-debug";
 #endif
-            LabelCompiledDate.Content = SystemHelper.CompiledDate.ToString("MM-dd-yyyy");
+            LabelCompiledDate.Content = Self.CompiledDate.ToString("MM-dd-yyyy");
         }
     }
 }

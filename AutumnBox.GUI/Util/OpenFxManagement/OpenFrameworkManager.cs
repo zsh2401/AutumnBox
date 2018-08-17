@@ -3,13 +3,10 @@
 ** date:  2018/2/25 2:36:04 (UTC +8:00)
 ** desc： ...
 *************************************************/
-using AutumnBox.GUI.Util.OpenApiImpl;
-using AutumnBox.OpenFramework;
 using AutumnBox.OpenFramework.Management;
-using AutumnBox.OpenFramework.Open.Impl.AutumnBoxApi;
 using AutumnBox.Support.Log;
 
-namespace AutumnBox.GUI.Util
+namespace AutumnBox.GUI.Util.OpenFxManagement
 {
     internal static class OpenFrameworkManager
     {

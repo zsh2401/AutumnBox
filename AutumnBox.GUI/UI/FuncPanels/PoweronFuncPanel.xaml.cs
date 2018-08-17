@@ -15,6 +15,7 @@ using AutumnBox.GUI.UI.FuncPanels.PoweronFuncsUx;
 using AutumnBox.OpenFramework.Warpper;
 using AutumnBox.Support.Log;
 using System.Linq;
+using AutumnBox.GUI.Util.UI;
 
 namespace AutumnBox.GUI.UI.FuncPanels
 {

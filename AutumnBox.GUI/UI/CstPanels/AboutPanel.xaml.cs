@@ -1,5 +1,6 @@
 ﻿using AutumnBox.GUI.Helper;
 using AutumnBox.GUI.UI.Fp;
+using AutumnBox.GUI.Util;
 using AutumnBox.GUI.Windows;
 using System;
 using System.Diagnostics;
@@ -18,13 +19,13 @@ namespace AutumnBox.GUI.UI.CstPanels
         public AboutPanel()
         {
             InitializeComponent();
-            LabelVersion.Content = SystemHelper.CurrentVersion.ToString();
+            LabelVersion.Content = Self.Version.ToString();
 #if! DEBUG
              LabelVersion.Content += "-release";
 #else
             LabelVersion.Content += "-debug";
 #endif
-            LabelCompiledDate.Content = SystemHelper.CompiledDate.ToString("MM-dd-yyyy");
+            LabelCompiledDate.Content = Self.CompiledDate.ToString("MM-dd-yyyy");
         }
 
         private void HyperLink_MouseClick(object sender, RoutedEventArgs e)

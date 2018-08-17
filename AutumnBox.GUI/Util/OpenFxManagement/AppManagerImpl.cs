@@ -3,7 +3,6 @@
 ** date:  2018/8/2 2:46:15 (UTC +8:00)
 ** desc： ...
 *************************************************/
-using AutumnBox.GUI.Helper;
 using AutumnBox.GUI.UI.FuncPanels;
 using AutumnBox.GUI.Windows;
 using AutumnBox.OpenFramework.Open;
@@ -11,11 +10,10 @@ using AutumnBox.OpenFramework.Open.Impl.AutumnBoxApi;
 using AutumnBox.Support.Log;
 using System.Diagnostics;
 using System;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Media.Imaging;
+using AutumnBox.GUI.Util.UI;
 
-namespace AutumnBox.GUI.Util.OpenApiImpl
+namespace AutumnBox.GUI.Util.OpenFxManagement
 {
     internal partial class AppManagerImpl : IAutumnBoxGuiApi
     {
@@ -23,7 +21,7 @@ namespace AutumnBox.GUI.Util.OpenApiImpl
         {
             get
             {
-                return SystemHelper.CurrentVersion;
+                return Self.Version;
             }
         }
 

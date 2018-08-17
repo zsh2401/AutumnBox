@@ -13,11 +13,9 @@
 \* =============================================================================*/
 using System;
 using System.Diagnostics;
-using System.Drawing;
 using System.Threading;
-using System.Windows.Media.Imaging;
 
-namespace AutumnBox.GUI.Util
+namespace AutumnBox.GUI.Util.OS
 {
     [Obsolete("没什么卵用",true)]
     /// <summary>
