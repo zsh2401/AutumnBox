@@ -27,20 +27,8 @@ namespace AutumnBox.OpenFramework.Extension
     [ExtRequireRoot(false)]
     [ExtWindowEnable(true)]
     //[ExtAppProperty("com.fuck.a","Fuck")]
-    public abstract class AutumnBoxExtension : Context
+    public abstract partial class AutumnBoxExtension : Context
     {
-        /// <summary>
-        /// 完全成功
-        /// </summary>
-        public const int OK = 0;
-        /// <summary>
-        /// 发生错误
-        /// </summary>
-        public const int ERR = 1;
-        /// <summary>
-        /// 日志标签
-        /// </summary>
-        public sealed override string LoggingTag => ExtName;
         /// <summary>
         /// 拓展名
         /// </summary>
@@ -50,9 +38,9 @@ namespace AutumnBox.OpenFramework.Extension
         /// </summary>
         public DeviceBasicInfo TargetDevice { get; set; }
         /// <summary>
-        /// UI控制器
+        /// Ux交互器
         /// </summary>
-        public IExtensionUIController ExtensionUIController { get;  set; }
+        protected UxController Ux { get; private set; }
         /// <summary>
         /// 主函数
         /// </summary>
