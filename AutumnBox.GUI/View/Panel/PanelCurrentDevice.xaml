@@ -11,13 +11,13 @@
         <local:PanelReboot Margin="0,10,10,0" Height="219" VerticalAlignment="Top" HorizontalAlignment="Right" Width="192"></local:PanelReboot>
 
         <TabControl Margin="10,245,28,10" Background="{x:Null}" BorderBrush="{DynamicResource PrimaryLightBrush}">
-            <TabItem  Style="{DynamicResource AtmbxTabItem}" TabIndex="0" Header="{DynamicResource tbiOnPowerOn}" Margin="-2,-2,-14,0"  FontSize="16">
+            <TabItem  Style="{DynamicResource AtmbxTabItem}" TabIndex="0" Header="{DynamicResource PanelCurrentDevicePoweron}" Margin="-2,-2,-14,0"  FontSize="16">
                 <local:PanelExtension x:Name="PoweronPanel" TargetDeviceState="Poweron" Margin="0,0,0,0"/>
             </TabItem>
-            <TabItem Style="{DynamicResource AtmbxTabItem}" TabIndex="2"  Header="{DynamicResource tbiOnRecovery}" Margin="14,-2,-24,0"  FontSize="16">
+            <TabItem Style="{DynamicResource AtmbxTabItem}" TabIndex="2"  Header="{DynamicResource PanelCurrentDeviceRecoveryAndSideload}" Margin="14,-2,-24,0"  FontSize="16">
                 <local:PanelExtension x:Name="RecoveryPanel" TargetDeviceState="Recovery" Margin="0,0,0,0"/>
             </TabItem>
-            <TabItem Style="{DynamicResource AtmbxTabItem}" TabIndex="3"  Header="{DynamicResource tbiOnFastboot}" Margin="24,-2,-27,0"  FontSize="16">
+            <TabItem Style="{DynamicResource AtmbxTabItem}" TabIndex="3"  Header="{DynamicResource PanelCurrentDeviceFastboot}" Margin="24,-2,-27,0"  FontSize="16">
                 <local:PanelExtension  x:Name="FastbootPanel" TargetDeviceState="Fastboot" Margin="0,0,0,0"/>
             </TabItem>
         </TabControl>
