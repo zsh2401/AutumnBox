@@ -35,6 +35,11 @@ Description:
     <s:String x:Key="PanelExtensionsButtonEnabled">Run this extension</s:String>
     <s:String x:Key="PanelExtensionsButtonDisabled">Sorry,this extension can't run now</s:String>
     
+         <!--PanelCurrentDevice-->
+    <s:String x:Key="PanelCurrentDeviceRecoveryAndSideload">Recovery/Sideload</s:String>
+    <s:String x:Key="PanelCurrentDeviceFastboot">Fastboot</s:String>
+    <s:String x:Key="PanelCurrentDevicePoweron">System running</s:String>
+    
     <!--按钮-->
      <s:String x:Key="btnAppOpsXAct">Activate AppOpsX</s:String>
      <s:String x:Key="btnAccountInfo">Account info</s:String>
