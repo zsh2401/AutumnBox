@@ -180,6 +180,7 @@
     <Compile Include="Util\Self.cs" />
     <Compile Include="ViewModel\VMContentChoice.cs" />
     <Compile Include="ViewModel\VMExtensions.cs" />
+    <Compile Include="ViewModel\VMPanelMain.cs" />
     <Compile Include="ViewModel\VMPOTD.cs" />
     <Compile Include="ViewModel\VMReboot.cs" />
     <Compile Include="ViewModel\VMMainWindow.cs" />
@@ -240,6 +241,9 @@
     <Compile Include="MVVM\NotificationObject.cs" />
     <Compile Include="MVVM\ViewModelBase.cs" />
     <Compile Include="ViewModel\VMConnectDevices.cs" />
+    <Compile Include="View\Panel\PanelMain.xaml.cs">
+      <DependentUpon>PanelMain.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Panel\PanelReboot.xaml.cs">
       <DependentUpon>PanelReboot.xaml</DependentUpon>
     </Compile>
@@ -266,7 +270,6 @@
     <Compile Include="Windows\UserManagerWindow.xaml.cs">
       <DependentUpon>UserManagerWindow.xaml</DependentUpon>
     </Compile>
-    <Resource Include="Resources\Images\refresh.png" />
     <Compile Include="Resources\Images\ImageGetter.cs" />
     <Compile Include="UI\Cstm\CstmTitleBar.xaml.cs">
       <DependentUpon>CstmTitleBar.xaml</DependentUpon>
@@ -661,6 +664,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Panel\PanelMain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Panel\PanelReboot.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -760,16 +767,7 @@
     <Resource Include="Resources\Drawable\Donate\alipay.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\baidupan.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Images\github.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\Images\loading.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Images\misakasister.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Drawable\Donate\wechatpay.png" />
@@ -803,12 +801,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\potd_close.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Images\title_icon_old.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Images\pm_default_icon.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Themes_Old\DreamTheme_files\bg.jpg" />
@@ -855,15 +847,6 @@
     <Resource Include="Resources\Images\AppIcons\Greenify.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\title_icon.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Images\title_icon.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\Images\AppIcons\Usersir.png" />
   </ItemGroup>
   <ItemGroup>
@@ -887,9 +870,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="View\Controls\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Images\contact.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Drawable\icon.png" />

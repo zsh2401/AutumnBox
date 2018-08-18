@@ -22,35 +22,27 @@
      Closed="_MainWindow_Closed">
     <Grid>
         <WebBrowser x:Name="WTF" Width="1" Height="1" VerticalAlignment="Top"/>
-        <materialDesign:Transitioner SelectedIndex="0">
+        <materialDesign:Transitioner SelectedIndex="{Binding TranSelectIndex}">
             <Grid>
                 <StackPanel Orientation="Vertical" VerticalAlignment="Top">
-                    <Image Source="/Resources/Drawable/icon.ico" Height="200"></Image>
+                    <Image Source="/Resources/Drawable/icon.ico" Height="200"/>
                     <TextBlock HorizontalAlignment="Center" Margin="10" FontSize="50" Text="{DynamicResource AppName}"/>
                     <TextBlock HorizontalAlignment="Center"  Margin="10" FontSize="30" Text="{DynamicResource AppDesc}"/>
                 </StackPanel>
                 <StackPanel VerticalAlignment="Bottom" Orientation="Vertical" Margin="10">
-                    <ProgressBar Value="{Binding Progress}" Background="{x:Null}" BorderBrush="{x:Null}" Margin="0,0,0,30"></ProgressBar>
+                    <ProgressBar Value="{Binding Progress}"  Background="{x:Null}" BorderBrush="{x:Null}" Margin="0,0,0,30"></ProgressBar>
                     <TextBlock  TextAlignment="Right" Text="{Binding LoadingTip}" FontSize="20"></TextBlock>
                 </StackPanel>
             </Grid>
-            
-            <materialDesign:TransitionerSlide OpeningEffect="{materialDesign:TransitionEffect FadeIn}">
-                <Grid>
-                    <panel:PanelDevices x:Name="PanelDevices" Margin="0,37,10,0" HorizontalAlignment="Right" VerticalAlignment="Top" Width="183" Height="304"></panel:PanelDevices>
-                    <TabControl  Margin="10,10,205,10" Background="{x:Null}" BorderBrush="{DynamicResource PrimaryLightBrush}">
-                        <TabItem  Style="{DynamicResource AtmbxTabItem}" TabIndex="0" Header="{DynamicResource tbiStart}" Margin="-2,-2,-14,0"  FontSize="16">
-                            <panel:PanelHome Margin="0,0,0,0"></panel:PanelHome>
-                        </TabItem>
-                        <TabItem  Style="{DynamicResource AtmbxTabItem}" TabIndex="1" Header="{DynamicResource CurrentDevice}" Margin="14,-2,-18,0"  FontSize="16">
-                            <panel:PanelCurrentDevice x:Name="PanelCurrentDevice" Margin="0,0,0,0"></panel:PanelCurrentDevice>
-                        </TabItem>
-                    </TabControl>
-                    <cstm:PotdBox Margin="0,0,8,111" Width="185" Height="139" HorizontalAlignment="Right" VerticalAlignment="Bottom"></cstm:PotdBox>
-                    <Button Style="{DynamicResource MaterialDesignRaisedButton}" Command="{Binding StartShell}"  Content="{DynamicResource btnADBCMD}" Margin="0,0,10,50" Height="36"  FontSize="14"  HorizontalAlignment="Right" Width="183" VerticalAlignment="Bottom" />
-                    <Button  Style="{DynamicResource MaterialDesignRaisedButton}" Command="{Binding ShowSettingsDialog}"  Content="{DynamicResource btnSetting}" Margin="0,0,10,10" VerticalAlignment="Bottom" Height="35"   FontSize="14"   HorizontalAlignment="Right" Width="183" />
-                </Grid>
+
+            <materialDesign:TransitionerSlide>
+                <materialDesign:TransitionerSlide.OpeningEffects>
+                    <materialDesign:TransitionEffect Kind="FadeIn" Duration="0:0:1" />
+                </materialDesign:TransitionerSlide.OpeningEffects>
+                <panel:PanelMain x:Name="PanelMain"></panel:PanelMain>
             </materialDesign:TransitionerSlide>
         </materialDesign:Transitioner>
+        
+        <materialDesign:DialogHost/>
     </Grid>
 </Window>

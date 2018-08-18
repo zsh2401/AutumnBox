@@ -21,7 +21,7 @@
         <GroupBox Header="{Binding Selected.Name}" Visibility="{Binding DetailsVisibily}" FontSize="17" Margin="289,10,10,10">
             <Grid>
                 <TextBlock TextWrapping = "Wrap" Text="{Binding Selected.Warpper.Info.FormatedDesc}" Margin="0,0,10,35"/>
-                <Button Style="{DynamicResource MaterialDesignRaisedButton}" Command="{Binding RunExtension}" Content="{Binding BtnRunExtensionContent}" Height="28" VerticalAlignment="Bottom"/>
+                <Button Style="{DynamicResource MaterialDesignToolButton}" Command="{Binding RunExtension}" Content="{Binding BtnRunExtensionContent}" Height="28" VerticalAlignment="Bottom"/>
             </Grid>
         </GroupBox>
     </Grid>

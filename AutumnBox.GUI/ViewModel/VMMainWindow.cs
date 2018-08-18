@@ -40,47 +40,6 @@ namespace AutumnBox.GUI.ViewModel
         }
         private string _title;
 
-        public ICommand StartShell => new MVVMCommand((p) =>
-        {
-
-            ProcessStartInfo info = new ProcessStartInfo
-            {
-                WorkingDirectory = AdbConstants.toolsPath,
-                FileName = "cmd",
-                UseShellExecute = false,
-                Verb = "runas",
-            };
-            var args = new ChoicerContentStartArgs
-            {
-                Content = "msgShellChoiceTip",
-                ContentCenterButton = "CMD",
-                ContentRightButton = "PowerShell"
-            };
-            args.Choiced += (s, e) =>
-            {
-                switch (e.Result)
-                {
-                    case ChoicerResult.Center:
-                        Process.Start(info);
-                        break;
-                    case ChoicerResult.Right:
-                        info.FileName = "powershell.exe";
-                        Process.Start(info);
-                        break;
-                    default:
-                        break;
-                }
-            };
-            View.MaterialDialog.ShowChoiceDialog(args);
-        });
-        public ICommand ShowSettingsDialog => new MVVMCommand((args) =>
-        {
-            DialogHost.Show(new ContentSettings());
-        });
-        public ICommand ShowDonateDialog => new MVVMCommand((args) =>
-        {
-            DialogHost.Show(new ContentDonate());
-        });
         public VMMainWindow()
         {
             InitTitle();
