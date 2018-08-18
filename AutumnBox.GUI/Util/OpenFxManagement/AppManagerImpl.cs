@@ -55,7 +55,10 @@ namespace AutumnBox.GUI.Util.OpenFxManagement
 
         public IExtensionUIController GetUIControllerOf(IExtensionWarpper warpper)
         {
-            var window = new RunningWindow(warpper);
+            var window = new RunningWindow(warpper)
+            {
+                Owner = App.Current.MainWindow
+            };
             return window.ViewModel;
         }
 

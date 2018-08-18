@@ -24,10 +24,11 @@ namespace AutumnBox.GUI.ViewModel
                 Devices = e.DevicesList;
                 if (Devices.Count() > 0)
                 {
-                    _selected = _devices[0];
+                    Selected = _devices[0];
                 }
-                else {
-                    _selected = DeviceBasicInfo.None;
+                else
+                {
+                    Selected = DeviceBasicInfo.None;
                 }
             };
             core.Begin();

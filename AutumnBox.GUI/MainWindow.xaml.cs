@@ -39,7 +39,7 @@ namespace AutumnBox.GUI
         {
             InitializeComponent();
             DataContext = ViewModel;
-            ListenerManager.Instance.RegisterEventSource(PanelDevices, ViewModel);
+            ListenerManager.Instance.RegisterEventSource(PanelMain.PanelDevices, ViewModel);
         }
 
         private void RegisterEvent()
@@ -75,7 +75,7 @@ namespace AutumnBox.GUI
             ViewModel.LoadAsync(() =>
             {
                 RegisterEvent();
-                PanelDevices.Work();
+                PanelMain.PanelDevices.Work();
             });
 #if !DEBUG
             Util.Extensions.SuppressScriptErrors(WTF, true);

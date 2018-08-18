@@ -9,6 +9,7 @@
         Title="{Binding Title}"
         MinHeight="350"
         MinWidth="450"
+        WindowStartupLocation="CenterOwner"
         FontFamily="{DynamicResource AutumnBox.Font}"
         ResizeMode="CanResize" Height="194" Width="162" Closing="Window_Closing">
     <Grid Margin="1" Background="{DynamicResource MainBackgroundBrush}">

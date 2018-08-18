@@ -307,7 +307,7 @@ namespace AutumnBox.OpenFramework.Warpper
         {
             instatcePkg.Extension.TargetDevice = device;
             instatcePkg.Extension.ExtName = Info.Name;
-            instatcePkg.Extension.ExtensionUIController = App.GetUIControllerOf(this);
+            instatcePkg.Extension.ExtensionUIController = instatcePkg.UIController;
         }
 
         /// <summary>

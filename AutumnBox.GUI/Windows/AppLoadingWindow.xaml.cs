@@ -11,7 +11,7 @@ namespace AutumnBox.GUI.Windows
     /// <summary>
     /// AppLoadingWindow.xaml 的交互逻辑
     /// </summary>
-    public partial class AppLoadingWindow : Window, IAppLoadingWindow
+    public partial class AppLoadingWindow : Window/*, IAppLoadingWindow*/
     {
         public AppLoadingWindow()
         {
@@ -42,7 +42,7 @@ namespace AutumnBox.GUI.Windows
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-              new AppLoader(this).LoadAsync();
+              //new AppLoader(this).LoadAsync();
         }
     }
 }
