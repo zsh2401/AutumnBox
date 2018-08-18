@@ -43,7 +43,7 @@ namespace AutumnBox.GUI.View.Panel
 
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (MainList.SelectedIndex == -1)
+            if ((e.Source as ListBox).SelectedIndex == -1)
             {
                 NoDevice?.Invoke(this, new EventArgs());
             }
@@ -51,7 +51,7 @@ namespace AutumnBox.GUI.View.Panel
             {
                 var args = new DeviceChangedEventArgs()
                 {
-                    CurrentDevice = (DeviceBasicInfo)MainList.SelectedItem
+                    CurrentDevice = (DeviceBasicInfo)(e.Source as ListBox).SelectedItem
                 };
                 DeviceChanged?.Invoke(this, args);
             }

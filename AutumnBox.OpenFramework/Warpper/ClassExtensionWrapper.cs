@@ -156,7 +156,7 @@ namespace AutumnBox.OpenFramework.Warpper
             Logger.Debug("extension.Main() executing");
             App.RunOnUIThread(() =>
             {
-                controller.OnStart();
+                controller?.OnStart();
             });
             MainFlow();
             Logger.Debug("executing aspect on after main");
@@ -166,6 +166,13 @@ namespace AutumnBox.OpenFramework.Warpper
             }
             AfterMain();
             Logger.Debug("destory instantces");
+            if (!forceStopped)
+            {
+                App.RunOnUIThread(() =>
+                {
+                    controller?.OnFinish();
+                });
+            }
             DestoryInstance();
         }
         /// <summary>
@@ -250,10 +257,6 @@ namespace AutumnBox.OpenFramework.Warpper
         /// </summary>
         private void DestoryInstance()
         {
-            if (!forceStopped)
-            {
-                controller?.OnFinish();
-            }
             instance = null;
             controller = null;
         }

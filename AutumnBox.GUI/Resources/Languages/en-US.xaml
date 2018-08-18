@@ -40,12 +40,18 @@ Description:
     <s:String x:Key="PanelCurrentDeviceFastboot">Fastboot</s:String>
     <s:String x:Key="PanelCurrentDevicePoweron">System running</s:String>
     
-        <!--PanelReboot-->
+     <!--PanelReboot-->
     <s:String x:Key="PanelRebootTitle">Reboot to</s:String>
     <s:String x:Key="PanelRebootToSystem">System</s:String>
     <s:String x:Key="PanelRebootToRecovery">Recovery</s:String>
     <s:String x:Key="PanelRebootToFastboot">Fastboot</s:String>
     <s:String x:Key="PanelRebootTo9008">9008</s:String>
+    
+     <!--PanelDevices-->
+    <s:String x:Key="PanelDevicesTitle">Connected devices</s:String>
+    <s:String x:Key="PanelDevicesConnectTo">Connect to new device</s:String>
+    <s:String x:Key="PanelDevicesDisconnect">Disconnect crt net device</s:String>
+    <s:String x:Key="PanelDevicesEnableCurrent">Enable crt net-debugging</s:String>
     
     <!--按钮-->
      <s:String x:Key="btnAppOpsXAct">Activate AppOpsX</s:String>
