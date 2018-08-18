@@ -4,23 +4,34 @@
 ** desc： ...
 *************************************************/
 
-using AutumnBox.GUI.I18N;
+using AutumnBox.Basic.Device;
+using AutumnBox.GUI.Util.I18N;
 using System.Collections.Generic;
 using static AutumnBox.GUI.View.Panel.PanelDevices;
 
 namespace AutumnBox.GUI.Depending
 {
-    static class ListenerManager
+    internal class ListenerManager
     {
-        public readonly static List<ILanguageChangedListener> LanguageChangedListener;
-        public readonly static List<ISelectDeviceChangedListener> SelectDeviceChangedListener;
+        public static readonly ListenerManager Instance;
         static ListenerManager()
+        {
+            Instance = new ListenerManager();
+        }
+        private class SavedState
+        {
+            public DeviceBasicInfo CurrentDevice { get; set; } = DeviceBasicInfo.None;
+        }
+        private readonly List<ILanguageChangedListener> LanguageChangedListener;
+        private readonly List<ISelectDeviceChangedListener> SelectDeviceChangedListener;
+        private readonly SavedState saved;
+        private ListenerManager()
         {
             LanguageChangedListener = new List<ILanguageChangedListener>();
             SelectDeviceChangedListener = new List<ISelectDeviceChangedListener>();
-
+            saved = new SavedState();
         }
-        public static void Register(object listener)
+        public void Register(object listener)
         {
             if (listener == null) return;
             if (listener is ILanguageChangedListener langL)
@@ -30,9 +41,10 @@ namespace AutumnBox.GUI.Depending
             if (listener is ISelectDeviceChangedListener dL)
             {
                 SelectDeviceChangedListener.Add(dL);
+                dL.CurrentDevice = saved.CurrentDevice;
             }
         }
-        public static void Unregister(object listener)
+        public void Unregister(object listener)
         {
             if (listener == null) return;
             if (listener is ILanguageChangedListener langL)
@@ -44,31 +56,45 @@ namespace AutumnBox.GUI.Depending
                 SelectDeviceChangedListener.Remove(dL);
             }
         }
-        public static void RegisterEventSource(INotifyDeviceChanged notify)
+        public void RegisterEventSource(INotifyDeviceChanged notify)
         {
-            //LanguageHelper.LanguageChanged += (s, e) =>
-            //{
-            //    var args = new LangChangedEventArgs()
-            //    {
-            //        NewLanguageCode = App.Current.Resources["LangCode"].ToString()
-            //    };
-            //    LanguageChangedListener.ForEach((listener) =>
-            //    {
-            //        listener.OnLanguageChanged(args);
-            //    });
-            //};
+            LanguageManager.Instance.LanguageChanged += (s, e) =>
+             {
+                 var args = new LangChangedEventArgs()
+                 {
+                     NewLanguageCode = LanguageManager.Instance.Current.LanCode
+                 };
+                 LanguageChangedListener.ForEach((listener) =>
+                 {
+                     listener.OnLanguageChanged(args);
+                 });
+             };
             notify.DeviceChanged += (s, e) =>
             {
-                var args = new SelectDeviceEventArgs()
-                {
-                    DeviceInfo = e.CurrentDevice
-                };
-                SelectDeviceChangedListener.ForEach(l => l.OnSelectDevice(args));
+                saved.CurrentDevice = e.CurrentDevice;
+                CallDeviceChangedListeners();
             };
             notify.NoDevice += (s, e) =>
             {
-                SelectDeviceChangedListener.ForEach(l => l.OnSelectNoDevice());
+                saved.CurrentDevice = DeviceBasicInfo.None;
+                CallDeviceChangedListeners();
             };
+        }
+        private void CallDeviceChangedListeners()
+        {
+            SelectDeviceChangedListener.ForEach((l => CallDeviceChangedListener(l)));
+        }
+        private void CallDeviceChangedListener(ISelectDeviceChangedListener listener)
+        {
+            listener.CurrentDevice = saved.CurrentDevice;
+            if (saved.CurrentDevice.State == DeviceState.None)
+            {
+                listener.OnSelectNoDevice();
+            }
+            else
+            {
+                listener.OnSelectDevice();
+            }
         }
     }
 }

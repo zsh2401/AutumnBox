@@ -48,7 +48,7 @@ namespace AutumnBox.GUI
 
         private void InjectChildProperty()
         {
-            ListenerManager.RegisterEventSource(PanelDevices);
+            ListenerManager.Instance.RegisterEventSource(PanelDevices);
         }
 
         private void RegisterEvent()

@@ -16,9 +16,8 @@ namespace AutumnBox.GUI.Depending
     {
         public DependingObject()
         {
-            ListenerManager.Register(this);
+            ListenerManager.Instance.Register(this);
         }
-
         #region IDisposable Support
         private bool disposedValue = false; // 要检测冗余调用
         protected virtual void Dispose(bool disposing)
@@ -27,7 +26,7 @@ namespace AutumnBox.GUI.Depending
             {
                 if (disposing)
                 {
-                    ListenerManager.Unregister(this);
+                    ListenerManager.Instance.Unregister(this);
                 }
                 // TODO: 释放未托管的资源(未托管的对象)并在以下内容中替代终结器。
                 // TODO: 将大型字段设置为 null。

@@ -13,7 +13,7 @@ namespace AutumnBox.GUI.ViewModel
 {
     class VMReboot : ViewModelBase, ISelectDeviceChangedListener
     {
-        private DeviceBasicInfo currentDevice;
+        public DeviceBasicInfo CurrentDevice { get; set; }
 
         public ICommand ToSystem => _toSystem;
         private readonly FlexiableCommand _toSystem;
@@ -31,42 +31,40 @@ namespace AutumnBox.GUI.ViewModel
         {
             _toSystem = new FlexiableCommand(() =>
             {
-                DeviceRebooter.Reboot(currentDevice, RebootOptions.System);
+                DeviceRebooter.Reboot(CurrentDevice, RebootOptions.System);
             })
             { CanExecuteProp = false };
             _toRecovery = new FlexiableCommand(() =>
             {
-                DeviceRebooter.Reboot(currentDevice, RebootOptions.Recovery);
+                DeviceRebooter.Reboot(CurrentDevice, RebootOptions.Recovery);
             })
             { CanExecuteProp = false }; ;
             _toFastboot = new FlexiableCommand(() =>
             {
-                DeviceRebooter.Reboot(currentDevice, RebootOptions.Fastboot);
+                DeviceRebooter.Reboot(CurrentDevice, RebootOptions.Fastboot);
             })
             { CanExecuteProp = false }; ;
             _to9008 = new FlexiableCommand(() =>
             {
-                DeviceRebooter.Reboot(currentDevice, RebootOptions.Snapdragon9008);
+                DeviceRebooter.Reboot(CurrentDevice, RebootOptions.Snapdragon9008);
             })
             { CanExecuteProp = false }; ;
         }
 
         public void OnSelectNoDevice()
         {
-            currentDevice = DeviceBasicInfo.None;
             _to9008.CanExecuteProp = false;
             _toSystem.CanExecuteProp = false;
             _toFastboot.CanExecuteProp = false;
             _toRecovery.CanExecuteProp = false;
         }
 
-        public void OnSelectDevice(SelectDeviceEventArgs args)
+        public void OnSelectDevice()
         {
-            currentDevice = args.DeviceInfo;
             _to9008.CanExecuteProp = true;
             _toSystem.CanExecuteProp = true;
             _toFastboot.CanExecuteProp = true;
-            _toRecovery.CanExecuteProp = currentDevice.State != DeviceState.Fastboot;
+            _toRecovery.CanExecuteProp = CurrentDevice.State != DeviceState.Fastboot;
         }
     }
 }
