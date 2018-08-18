@@ -43,10 +43,11 @@ namespace AutumnBox.OpenFramework.Warpper
             return true;
         }
         #endregion
+
         /// <summary>
         /// 实例包裹
         /// </summary>
-        protected class RealInstance
+        protected class InstancePackage
         {
             /// <summary>
             /// 拓展模块
@@ -59,13 +60,13 @@ namespace AutumnBox.OpenFramework.Warpper
         }
 
         /// <summary>
+        /// 停止处理函数
+        /// </summary>
+        protected Func<bool> StopHandler { get; set; }
+        /// <summary>
         /// 上次运行的返回值
         /// </summary>
         public int LastReturnCode { get; private set; } = -1;
-        /// <summary>
-        /// 托管的拓展模块实例
-        /// </summary>
-        private AutumnBoxExtension instance;
         /// <summary>
         /// 托管的拓展模块Type
         /// </summary>
@@ -118,19 +119,9 @@ namespace AutumnBox.OpenFramework.Warpper
         public IExtInfoGetter Info { get; protected set; }
 
         /// <summary>
-        /// 是否是被强制停止的
-        /// </summary>
-        bool forceStopped = false;
-
-        /// <summary>
         /// 状态
         /// </summary>
         public ExtensionWarpperState State { get; protected set; }
-
-        /// <summary>
-        /// UI控制器
-        /// </summary>
-        private IExtensionUIController controller;
 
         /// <summary>
         /// 创建检查,如果有问题就抛出异常
@@ -185,36 +176,46 @@ namespace AutumnBox.OpenFramework.Warpper
         /// <param name="device"></param>
         public virtual void Run(DeviceBasicInfo device)
         {
-            forceStopped = false;
+            if (!PreCheck()) return;//多开检测
+            /*初始化局部属性*/
             State = ExtensionWarpperState.Running;
-            if (!RunningCheck()) return;
+            bool forceStopped = false;
+            InstancePackage instance = new InstancePackage();
+            //初始化停止器
+            StopHandler = () =>
+            {
+                ForceStop(instance, ref forceStopped);
+                return forceStopped;
+            };
+            //创建前检测
             if (!BeforeCreateInstance(device)) return;
-            Logger.Debug("creating instance");
-            CreateInstance();
-            Logger.Debug("injecting property");
-            InjetctProperty(device);
-            Logger.Debug("executing Main Aspect");
-            if (!BeforeMain(device))
+            //创建实例
+            CreateInstance(instance);
+            //依赖注入
+            InjetctProperty(instance, device);
+
+            //Main方法前检测
+            if (BeforeMain(device))
             {
-                Logger.Debug("Flow was prevented by aspect,destory instantces");
-                DestoryInstance();
-                return;
+                //UI控制器开始
+                App.RunOnUIThread(() =>
+                {
+                    instance.UIController?.OnStart();
+                });
+                //执行主流程
+                MainFlow(instance);
+                //运行结束切面
+                AfterMain();
+                //UI控制器结束
+                App.RunOnUIThread(() =>
+                {
+                    instance.UIController?.OnFinish(LastReturnCode, forceStopped);
+                });
             }
-            Logger.Debug("extension.Main() executing");
-            App.RunOnUIThread(() =>
-            {
-                controller?.OnStart();
-            });
-            MainFlow();
-            Logger.Debug("executing aspect on after main");
-            if (forceStopped)
-            {
-                Logger.Debug("was force stopped");
-            }
-            AfterMain();
-            Logger.Debug("destory instantces");
-            DestoryInstance();
+            //摧毁实例
+            DestoryInstance(instance);
         }
+
         /// <summary>
         /// 异步运行
         /// </summary>
@@ -242,9 +243,13 @@ namespace AutumnBox.OpenFramework.Warpper
         /// 多开检查
         /// </summary>
         /// <returns></returns>
-        private bool RunningCheck()
+        private bool PreCheck()
         {
-            if (instance != null)
+            if (State == ExtensionWarpperState.Ready)
+            {
+                return true;
+            }
+            else
             {
                 App.RunOnUIThread(() =>
                 {
@@ -252,7 +257,6 @@ namespace AutumnBox.OpenFramework.Warpper
                 });
                 return false;
             }
-            return true;
         }
 
         /// <summary>
@@ -278,17 +282,18 @@ namespace AutumnBox.OpenFramework.Warpper
             Logger.Debug("BeforeCreateInstance() executed");
             return true;
         }
+
         /// <summary>
         /// 创建实例
         /// </summary>
-        private void CreateInstance()
+        private void CreateInstance(InstancePackage instatcePkg)
         {
-            instance = (AutumnBoxExtension)Activator.CreateInstance(extType);
+            instatcePkg.Extension = (AutumnBoxExtension)Activator.CreateInstance(extType);
             if (Info.Visual)
             {
                 App.RunOnUIThread(() =>
                 {
-                    controller = App.GetUIControllerOf(this);
+                    instatcePkg.UIController = App.GetUIControllerOf(this);
                 });
             }
         }
@@ -296,12 +301,13 @@ namespace AutumnBox.OpenFramework.Warpper
         /// <summary>
         /// 注入属性
         /// </summary>
+        /// <param name="instatcePkg"></param>
         /// <param name="device"></param>
-        private void InjetctProperty(DeviceBasicInfo device)
+        private void InjetctProperty(InstancePackage instatcePkg, DeviceBasicInfo device)
         {
-            instance.TargetDevice = device;
-            instance.ExtName = Info.Name;
-            instance.ExtensionUIController = controller;
+            instatcePkg.Extension.TargetDevice = device;
+            instatcePkg.Extension.ExtName = Info.Name;
+            instatcePkg.Extension.ExtensionUIController = App.GetUIControllerOf(this);
         }
 
         /// <summary>
@@ -330,17 +336,18 @@ namespace AutumnBox.OpenFramework.Warpper
         /// <summary>
         /// 主流程
         /// </summary>
-        private void MainFlow()
+        private void MainFlow(InstancePackage instatcePkg)
         {
+            Logger.Debug("MainFlow()");
             Manager.RunningManager.Add(this);
             try
             {
-                LastReturnCode = instance.Main();
+                LastReturnCode = instatcePkg.Extension.Main();
             }
             catch (Exception ex)
             {
                 Logger.Warn($"[Extension] {Info.Name} was threw a exception", ex);
-                LastReturnCode = 1;
+                LastReturnCode = AutumnBoxExtension.ERR;
                 App.RunOnUIThread(() =>
                 {
                     string stoppedMsg = $"{Info.Name} {App.GetPublicResouce<String>("msgExtensionWasFailed")}";
@@ -348,6 +355,7 @@ namespace AutumnBox.OpenFramework.Warpper
                 });
             }
             Manager.RunningManager.Remove(this);
+            Logger.Debug("MainFlow() executed");
         }
 
         /// <summary>
@@ -356,15 +364,7 @@ namespace AutumnBox.OpenFramework.Warpper
         /// <returns></returns>
         public virtual bool Stop()
         {
-            try
-            {
-                forceStopped = instance.OnStopCommand();
-            }
-            catch (Exception ex)
-            {
-                Logger.Warn("停止时发生异常", ex);
-            }
-            return forceStopped;
+            return StopHandler();
         }
 
         /// <summary>
@@ -387,21 +387,28 @@ namespace AutumnBox.OpenFramework.Warpper
         /// <summary>
         /// 摧毁相关实例
         /// </summary>
-        private void DestoryInstance()
+        private void DestoryInstance(InstancePackage instancePkg)
         {
-            if (!forceStopped)
-            {
-                App.RunOnUIThread(() =>
-                {
-                    controller?.OnFinish();
-                });
-            }
-            instance = null;
-            controller = null;
+            Logger.Debug("destoring instantces");
+            instancePkg.Extension = null;
+            instancePkg.UIController = null;
+            StopHandler = null;
             State = ExtensionWarpperState.Ready;
-            forceStopped = false;
         }
         #endregion
+        private void ForceStop(InstancePackage instatcePkg, ref bool stopped)
+        {
+            try
+            {
+                stopped = instatcePkg.Extension.OnStopCommand();
+                instatcePkg.UIController.Tip = "被终止";
+            }
+            catch (Exception ex)
+            {
+                Logger.Warn("", ex);
+                stopped = false;
+            }
+        }
 
         #region Equals
         /// <summary>

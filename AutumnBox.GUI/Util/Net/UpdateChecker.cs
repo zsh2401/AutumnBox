@@ -92,7 +92,7 @@ namespace AutumnBox.GUI.Util.Net
 #if USE_LOCAL_API && DEBUG
             byte[] bytes = webClient.DownloadData("http://localhost:24010/api/update/");
 #else
-            byte[] bytes = new WebClient().DownloadData(App.Current.Resources["urlApiUpdate"].ToString());
+            byte[] bytes = webClient.DownloadData(App.Current.Resources["urlApiUpdate"].ToString());
 #endif
             string data = Encoding.UTF8.GetString(bytes);
             var result = (UpdateCheckResult)JsonConvert.DeserializeObject(data, typeof(UpdateCheckResult));

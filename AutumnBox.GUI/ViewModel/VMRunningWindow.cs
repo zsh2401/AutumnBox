@@ -128,7 +128,7 @@ namespace AutumnBox.GUI.ViewModel
             });
         }
 
-        public void OnFinish()
+        public void OnFinish(int exitCode,bool isForceStopped)
         {
             view.Dispatcher.Invoke(() =>
             {

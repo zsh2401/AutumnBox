@@ -5,7 +5,9 @@
 *************************************************/
 using AutumnBox.GUI.Model;
 using AutumnBox.GUI.View.DialogContent;
+using AutumnBox.Support.Log;
 using MaterialDesignThemes.Wpf;
+using System;
 
 namespace AutumnBox.GUI.View
 {
@@ -16,7 +18,17 @@ namespace AutumnBox.GUI.View
             var content = new ContentChoice(args);
             DialogHost.Show(content, new DialogOpenedEventHandler((s, e) =>
             {
-                args.CloseDialog = () => e.Session.Close();
+                args.CloseDialog = () =>
+                {
+                    try
+                    {
+                        e.Session.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        Logger.Warn("ChoiceDialog","an error happend on closing choice dialog",ex);
+                    }
+                }; 
             }));
         }
     }

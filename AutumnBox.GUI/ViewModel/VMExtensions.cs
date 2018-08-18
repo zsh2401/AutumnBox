@@ -17,7 +17,7 @@ using System.Windows.Media.Imaging;
 
 namespace AutumnBox.GUI.ViewModel
 {
-    class VMExtensions : ViewModelBase,ISelectDeviceChangedListener
+    class VMExtensions : ViewModelBase,ISelectDeviceChangedListener,IOnExtensionFxLoadedListener
     {
         #region WW
         public class WarpperWarpper
@@ -148,6 +148,7 @@ namespace AutumnBox.GUI.ViewModel
             Selected = null;
             BtnStatus = (targetState & CurrentDevice.State) != 0;
         }
+
         #endregion
         private bool BtnStatus
         {
@@ -161,16 +162,19 @@ namespace AutumnBox.GUI.ViewModel
         public VMExtensions(DeviceState targetState)
         {
             this.targetState = targetState;
-            var filted = from warpper in OpenFramework.Management.Manager.InternalManager.Warppers
-                         where (warpper.Info.RequiredDeviceStates & targetState) != 0
-                         select warpper;
-            Warppers = WarpperWarpper.From(filted);
             _runExtension = new FlexiableCommand((args) =>
             {
                 Selected.Warpper.RunAsync(CurrentDevice);
             });
             Selected = null;
             BtnStatus = false;
+        }
+        public void OnExtensionFxLoaded()
+        {
+            var filted = from warpper in OpenFramework.Management.Manager.InternalManager.Warppers
+                         where (warpper.Info.RequiredDeviceStates & targetState) != 0
+                         select warpper;
+            Warppers = WarpperWarpper.From(filted);
         }
     }
 }

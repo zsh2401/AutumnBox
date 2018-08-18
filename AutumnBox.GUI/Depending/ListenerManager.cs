@@ -6,6 +6,7 @@
 
 using AutumnBox.Basic.Device;
 using AutumnBox.GUI.Util.I18N;
+using System;
 using System.Collections.Generic;
 using static AutumnBox.GUI.View.Panel.PanelDevices;
 
@@ -13,6 +14,10 @@ namespace AutumnBox.GUI.Depending
 {
     internal class ListenerManager
     {
+        public interface INotifyFxLoaded
+        {
+            event EventHandler FxLoaded;
+        }
         public static readonly ListenerManager Instance;
         static ListenerManager()
         {
@@ -22,13 +27,16 @@ namespace AutumnBox.GUI.Depending
         {
             public DeviceBasicInfo CurrentDevice { get; set; } = DeviceBasicInfo.None;
         }
-        private readonly List<ILanguageChangedListener> LanguageChangedListener;
-        private readonly List<ISelectDeviceChangedListener> SelectDeviceChangedListener;
+        private readonly List<ILanguageChangedListener> LanguageChangedListeners;
+        private readonly List<ISelectDeviceChangedListener> SelectDeviceChangedListeners;
+        private readonly List<IOnExtensionFxLoadedListener> FxLoadedListeners;
         private readonly SavedState saved;
+        private bool openFxLoaded = false;
         private ListenerManager()
         {
-            LanguageChangedListener = new List<ILanguageChangedListener>();
-            SelectDeviceChangedListener = new List<ISelectDeviceChangedListener>();
+            LanguageChangedListeners = new List<ILanguageChangedListener>();
+            SelectDeviceChangedListeners = new List<ISelectDeviceChangedListener>();
+            FxLoadedListeners = new List<IOnExtensionFxLoadedListener>();
             saved = new SavedState();
         }
         public void Register(object listener)
@@ -36,12 +44,20 @@ namespace AutumnBox.GUI.Depending
             if (listener == null) return;
             if (listener is ILanguageChangedListener langL)
             {
-                LanguageChangedListener.Add(langL);
+                LanguageChangedListeners.Add(langL);
             }
             if (listener is ISelectDeviceChangedListener dL)
             {
-                SelectDeviceChangedListener.Add(dL);
+                SelectDeviceChangedListeners.Add(dL);
                 dL.CurrentDevice = saved.CurrentDevice;
+            }
+            if (listener is IOnExtensionFxLoadedListener fL)
+            {
+                FxLoadedListeners.Add(fL);
+                if (openFxLoaded)
+                {
+                    fL.OnExtensionFxLoaded();
+                }
             }
         }
         public void Unregister(object listener)
@@ -49,14 +65,18 @@ namespace AutumnBox.GUI.Depending
             if (listener == null) return;
             if (listener is ILanguageChangedListener langL)
             {
-                LanguageChangedListener.Remove(langL);
+                LanguageChangedListeners.Remove(langL);
             }
             if (listener is ISelectDeviceChangedListener dL)
             {
-                SelectDeviceChangedListener.Remove(dL);
+                SelectDeviceChangedListeners.Remove(dL);
+            }
+            if (listener is IOnExtensionFxLoadedListener fL)
+            {
+                FxLoadedListeners.Remove(fL);
             }
         }
-        public void RegisterEventSource(INotifyDeviceChanged notify)
+        public void RegisterEventSource(INotifyDeviceChanged notify, INotifyFxLoaded notifyFx)
         {
             LanguageManager.Instance.LanguageChanged += (s, e) =>
              {
@@ -64,7 +84,7 @@ namespace AutumnBox.GUI.Depending
                  {
                      NewLanguageCode = LanguageManager.Instance.Current.LanCode
                  };
-                 LanguageChangedListener.ForEach((listener) =>
+                 LanguageChangedListeners.ForEach((listener) =>
                  {
                      listener.OnLanguageChanged(args);
                  });
@@ -79,10 +99,18 @@ namespace AutumnBox.GUI.Depending
                 saved.CurrentDevice = DeviceBasicInfo.None;
                 CallDeviceChangedListeners();
             };
+            notifyFx.FxLoaded += (s, e) =>
+            {
+                openFxLoaded = true;
+                FxLoadedListeners.ForEach((listener) =>
+                {
+                    listener.OnExtensionFxLoaded();
+                });
+            };
         }
         private void CallDeviceChangedListeners()
         {
-            SelectDeviceChangedListener.ForEach((l => CallDeviceChangedListener(l)));
+            SelectDeviceChangedListeners.ForEach((l => CallDeviceChangedListener(l)));
         }
         private void CallDeviceChangedListener(ISelectDeviceChangedListener listener)
         {

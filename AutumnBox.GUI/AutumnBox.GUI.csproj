@@ -124,8 +124,8 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="WpfAnimatedGif, Version=1.4.15.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\WpfAnimatedGif.1.4.15\lib\net\WpfAnimatedGif.dll</HintPath>
+    <Reference Include="WpfAnimatedGif, Version=1.4.17.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WpfAnimatedGif.1.4.17\lib\net\WpfAnimatedGif.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -137,7 +137,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="AppLoader.cs" />
+    <Compile Include="Depending\IOnExtensionFxLoadedListener.cs" />
     <Compile Include="Depending\ISelectDeviceChangedListener.cs" />
     <Compile Include="Depending\ListenerManager.cs" />
     <Compile Include="Util\UI\BlurHelper.cs" />
@@ -260,7 +260,6 @@
     <Compile Include="Windows\FatalWindow.xaml.cs">
       <DependentUpon>FatalWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\IAppLoadingWindow.cs" />
     <Compile Include="Windows\MDLearningWindow.xaml.cs">
       <DependentUpon>MDLearningWindow.xaml</DependentUpon>
     </Compile>
