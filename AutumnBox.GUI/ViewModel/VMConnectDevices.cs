@@ -24,26 +24,30 @@ namespace AutumnBox.GUI.ViewModel
                 Devices = e.DevicesList;
                 if (Devices.Count() > 0)
                 {
-                    SelectedIndex = 0;
+                    _selected = _devices[0];
+                }
+                else {
+                    _selected = DeviceBasicInfo.None;
                 }
             };
             core.Begin();
 
         }
+        public string DisplayMemeberPath { get; set; } = "Serial";
 
-        public int SelectedIndex
+        public DeviceBasicInfo Selected
         {
             get
             {
-                return _selectedIndex;
+                return _selected;
             }
             set
             {
-                _selectedIndex = value;
+                _selected = value;
                 RaisePropertyChanged();
             }
         }
-        private int _selectedIndex;
+        private DeviceBasicInfo _selected;
 
         public IEnumerable<DeviceBasicInfo> Devices
         {
@@ -53,11 +57,11 @@ namespace AutumnBox.GUI.ViewModel
             }
             set
             {
-                _devices = value;
+                _devices = value.ToArray();
                 RaisePropertyChanged();
             }
         }
-        private IEnumerable<DeviceBasicInfo> _devices;
+        private DeviceBasicInfo[] _devices;
 
         public ICommand ConnectDevice { get; set; }
         public ICommand DisconnectDevice { get; set; }
