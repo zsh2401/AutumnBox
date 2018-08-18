@@ -153,7 +153,7 @@ namespace AutumnBox.GUI.ViewModel
         {
             set
             {
-                BtnRunExtensionContent = value ? App.Current.Resources["btnRunExtension"].ToString() : App.Current.Resources["btnCannotRunExtension"].ToString();
+                BtnRunExtensionContent = value ? App.Current.Resources["PanelExtensionsButtonEnabled"].ToString() : App.Current.Resources["PanelExtensionsButtonDisabled"].ToString();
                 _runExtension.CanExecuteProp = value;
             }
         }

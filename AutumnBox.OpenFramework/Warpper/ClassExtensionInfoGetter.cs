@@ -59,10 +59,8 @@ namespace AutumnBox.OpenFramework.Warpper
         {
             get
             {
-
-                return string.Format(DescFMT,
-                    ctx.App.GetPublicResouce("lbAuth"), Auth,
-                    ctx.App.GetPublicResouce("lbDescription"), Desc);
+                return string.Format(ctx.App.GetPublicResouce<string>("PanelExtensionsDetailsFormat"),
+                    Auth,Version, Desc);
             }
         }
         public string Auth
