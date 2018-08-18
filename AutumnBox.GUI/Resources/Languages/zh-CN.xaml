@@ -41,6 +41,14 @@
     <s:String x:Key="PanelCurrentDeviceRecoveryAndSideload">恢复模式/Sideload</s:String>
     <s:String x:Key="PanelCurrentDeviceFastboot">Fastboot</s:String>
     <s:String x:Key="PanelCurrentDevicePoweron">开机</s:String>
+    
+    <!--PanelReboot-->
+    <s:String x:Key="PanelRebootTitle">重启到</s:String>
+    <s:String x:Key="PanelRebootToSystem">系统</s:String>
+    <s:String x:Key="PanelRebootToRecovery">恢复模式</s:String>
+    <s:String x:Key="PanelRebootToFastboot">Fastboot</s:String>
+    <s:String x:Key="PanelRebootTo9008">9008</s:String>
+    
     <!--按钮-->
     <s:String x:Key="btnAppOpsXAct">激活AppOpsX</s:String>
     <s:String x:Key="btnAccountInfo">账号信息</s:String>
