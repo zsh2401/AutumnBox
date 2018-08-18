@@ -9,19 +9,19 @@ namespace AutumnBox.OpenFramework.Extension
     /// <summary>
     /// 是否需要在运行时显示ExtensionRunningWindow
     /// </summary>
-    public class ExtWindowEnableAttribute : ExtInfoAttribute
+    public class ExtUxEnableAttribute : ExtInfoAttribute
     {
         /// <summary>
         /// 构造
         /// </summary>
         /// <param name="value"></param>
-        public ExtWindowEnableAttribute(bool value) : base(value)
+        public ExtUxEnableAttribute(bool value) : base(value)
         {
         }
         /// <summary>
         /// 默认构造,值为true
         /// </summary>
-        public ExtWindowEnableAttribute() : base(true)
+        public ExtUxEnableAttribute() : base(true)
         {
         }
     }
