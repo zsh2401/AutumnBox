@@ -40,6 +40,13 @@ Description:
     <s:String x:Key="PanelCurrentDeviceFastboot">Fastboot</s:String>
     <s:String x:Key="PanelCurrentDevicePoweron">System running</s:String>
     
+        <!--PanelReboot-->
+    <s:String x:Key="PanelRebootTitle">Reboot to</s:String>
+    <s:String x:Key="PanelRebootToSystem">System</s:String>
+    <s:String x:Key="PanelRebootToRecovery">Recovery</s:String>
+    <s:String x:Key="PanelRebootToFastboot">Fastboot</s:String>
+    <s:String x:Key="PanelRebootTo9008">9008</s:String>
+    
     <!--按钮-->
      <s:String x:Key="btnAppOpsXAct">Activate AppOpsX</s:String>
      <s:String x:Key="btnAccountInfo">Account info</s:String>
