@@ -20,8 +20,7 @@ namespace AutumnBox.OpenFramework.Extension
         {
             get
             {
-                string typeName = GetType().Name;
-                return typeName.Substring(0, typeName.IndexOf("Attribute"));
+               return GetType().Name;
             }
         }
         /// <summary>

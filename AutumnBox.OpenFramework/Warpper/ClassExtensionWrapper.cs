@@ -22,9 +22,14 @@ namespace AutumnBox.OpenFramework.Warpper
     /// <summary>
     /// 标准的拓展模块包装器
     /// </summary>
-    internal class ClassExtensionWrapper : Context, IExtensionWarpper
+    public class ClassExtensionWrapper : Context, IExtensionWarpper
     {
         private static List<Type> warppedType = new List<Type>();
+        /// <summary>
+        /// 检查是否进行过包装
+        /// </summary>
+        /// <param name="t"></param>
+        /// <returns></returns>
         public static bool IsWarpped(Type t)
         {
             if (warppedType.IndexOf(t) != -1)
@@ -33,15 +38,10 @@ namespace AutumnBox.OpenFramework.Warpper
             }
             return true;
         }
-
         /// <summary>
         /// 上次运行的返回值
         /// </summary>
         public int LastReturnCode { get; private set; } = -1;
-        ///// <summary>
-        ///// 托管的拓展模块信息
-        ///// </summary>
-        //private ClassExtensionInfoGetter info;
         /// <summary>
         /// 托管的拓展模块实例
         /// </summary>
@@ -50,30 +50,6 @@ namespace AutumnBox.OpenFramework.Warpper
         /// 托管的拓展模块Type
         /// </summary>
         private readonly Type extType;
-        ///// <summary>
-        ///// 拓展模块名
-        ///// </summary>
-        //public string Name => info.Name;
-        ///// <summary>
-        ///// 拓展模块说明
-        ///// </summary>
-        //public string Desc => info.FullDesc;
-        ///// <summary>
-        ///// 拓展模块所有者
-        ///// </summary>
-        //public string Auth => info.Auth;
-        ///// <summary>
-        ///// 是否需要以管理员模式运行
-        ///// </summary>
-        //public bool RunAsAdmin => info.RunAsAdmin;
-        ///// <summary>
-        ///// 图标
-        ///// </summary>
-        //public byte[] Icon => info.Icon;
-        ///// <summary>
-        ///// 日志标签
-        ///// </summary>
-        //public override string LoggingTag => Name + "'s warpper";
         /// <summary>
         /// 经过检查后,确实可用
         /// </summary>
@@ -110,6 +86,9 @@ namespace AutumnBox.OpenFramework.Warpper
             }
         }
         private ExtMainAsceptAttribute[] ma;
+        /// <summary>
+        /// 拓展模块的信息获取器
+        /// </summary>
         public IExtInfoGetter Info { get; private set; }
         private IExtensionUIController controller;
         /// <summary>

@@ -16,7 +16,7 @@ namespace AutumnBox.OpenFramework.Extension
         /// <summary>
         /// 语言代码
         /// </summary>
-        public string Lang { get; set; }
+        public string Lang { get; set; } = null;
         /// <summary>
         /// 键
         /// </summary>

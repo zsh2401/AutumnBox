@@ -25,7 +25,8 @@ namespace AutumnBox.OpenFramework.Extension
     [ExtTargetApi]
     [ExtRunAsAdmin(false)]
     [ExtRequireRoot(false)]
-    [ExtWindowEnable(true)]
+    [ExtUxEnable(false)]
+    [ExtOfficial(false)]
     //[ExtAppProperty("com.fuck.a","Fuck")]
     public abstract partial class AutumnBoxExtension : Context
     {

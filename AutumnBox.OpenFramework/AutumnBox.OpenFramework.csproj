@@ -72,10 +72,11 @@
     <Compile Include="Extension\ExtMinApiAttribute.cs" />
     <Compile Include="Extension\ExtRequireRootAttribute.cs" />
     <Compile Include="Extension\ExtRunAsAdminAttribute.cs" />
-    <Compile Include="Extension\ExtWindowEnableAttribute.cs" />
+    <Compile Include="Extension\ExtUxEnableAttribute.cs" />
     <Compile Include="Extension\ExtTargetApiAttribute.cs" />
     <Compile Include="Extension\ExtMainAsceptAttribute.cs" />
     <Compile Include="Extension\ExtMinAndroidVersionAttribute.cs" />
+    <Compile Include="Extension\ExtOfficialAttribute.cs" />
     <Compile Include="Open\IExtensionUIController.cs" />
     <Compile Include="Open\IFrameworkManager.cs" />
     <Compile Include="Open\Impl\FxImpl.cs" />
@@ -114,7 +115,6 @@
     <Compile Include="Extension\ExtNameAttribute.cs" />
     <Compile Include="Extension\ForerunCheckResult.cs" />
     <Compile Include="Warpper\ClassExtensionWrapper.cs" />
-    <Compile Include="Warpper\IExtensionWarpperExtension.cs" />
     <Compile Include="Warpper\IExtInfoGetter.cs" />
     <Compile Include="Warpper\IExtensionWarpper.cs" />
     <Compile Include="ExtLibrary\ILibrarian.cs" />

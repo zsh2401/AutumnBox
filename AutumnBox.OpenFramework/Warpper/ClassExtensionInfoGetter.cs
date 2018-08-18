@@ -25,7 +25,7 @@ namespace AutumnBox.OpenFramework.Warpper
         private static readonly string DescFMT =
        "{0}: {1}" + Environment.NewLine +
        "{2}:" + Environment.NewLine +
-       "{3}:";
+       "{3}";
         public Dictionary<string, ExtInfoAttribute> Attributes
         {
             get
@@ -41,19 +41,18 @@ namespace AutumnBox.OpenFramework.Warpper
         public byte[] Icon { get; private set; }
         public Version Version { get; private set; }
         public DeviceState RequiredDeviceStates { get; private set; }
-
         public string Name
         {
             get
             {
-                return GetInfoByCurrentLanguage("ExtName");
+                return GetInfoByCurrentLanguage(nameof(ExtNameAttribute));
             }
         }
         public string Desc
         {
             get
             {
-                return GetInfoByCurrentLanguage("ExtDesc");
+                return GetInfoByCurrentLanguage(nameof(ExtDescAttribute));
             }
         }
         public string FormatedDesc
@@ -70,12 +69,10 @@ namespace AutumnBox.OpenFramework.Warpper
         {
             get
             {
-                return GetInfoByCurrentLanguage("ExtAuth");
+                return GetInfoByCurrentLanguage(nameof(ExtAuthAttribute));
             }
         }
-
         public bool Visual { get; private set; }
-
         public ClassExtensionInfoGetter(Context ctx, Type type)
         {
             this.ctx = ctx;
@@ -106,15 +103,15 @@ namespace AutumnBox.OpenFramework.Warpper
                 current = (ExtInfoAttribute)extInfoAttr[i];
                 infoTable.Add(current.Key, current);
             }
-            RequiredDeviceStates = (DeviceState)infoTable["ExtRequiredDeviceStates"].Value;
-            Version = infoTable["ExtVersion"].Value as Version;
-            RunAsAdmin = (bool)infoTable["ExtRunAsAdmin"].Value;
-            MinApi = (int)infoTable["ExtMinApi"].Value;
-            TargetApi = (int)infoTable["ExtTargetApi"].Value;
-            Visual = (bool)infoTable["ExtWindowEnable"].Value;
+            RequiredDeviceStates = (DeviceState)infoTable[nameof(ExtRequiredDeviceStatesAttribute)].Value;
+            Version = infoTable[nameof(ExtVersionAttribute)].Value as Version;
+            RunAsAdmin = (bool)infoTable[nameof(ExtRunAsAdminAttribute)].Value;
+            MinApi = (int)infoTable[nameof(ExtMinApiAttribute)].Value;
+            TargetApi = (int)infoTable[nameof(ExtTargetApiAttribute)].Value;
+            Visual = (bool)infoTable[nameof(ExtUxEnableAttribute)].Value;
             try
             {
-                Icon = ReadIcon(infoTable["ExtIcon"].Value.ToString());
+                Icon = ReadIcon(infoTable[nameof(ExtIconAttribute)].Value.ToString());
             }
             catch (KeyNotFoundException)
             {
@@ -125,7 +122,7 @@ namespace AutumnBox.OpenFramework.Warpper
             try
             {
                 string path = ExtType.Assembly.GetName().Name + "." + iconPath;
-                Logger.Info($"getting " + path );
+                Logger.Info($"getting " + path);
                 Stream stream = ExtType.Assembly.GetManifestResourceStream(path);
                 byte[] buffer = new byte[stream.Length];
                 stream.Read(buffer, 0, buffer.Length);
