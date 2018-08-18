@@ -31,6 +31,6 @@ namespace AutumnBox.OpenFramework.Open
         /// <summary>
         /// warpper结束运行了
         /// </summary>
-        void OnFinish();
+        void OnFinish(int returnCode,bool isForceStopped);
     }
 }

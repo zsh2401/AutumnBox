@@ -12,8 +12,6 @@
 *
 \* =============================================================================*/
 using AutumnBox.Basic.Util;
-using AutumnBox.GUI.Helper;
-using AutumnBox.GUI.I18N;
 using AutumnBox.GUI.Properties;
 using AutumnBox.GUI.Util;
 using AutumnBox.GUI.Windows;
@@ -60,7 +58,7 @@ namespace AutumnBox.GUI
         {
             base.OnStartup(e);
             Current = this;
-
+            
 #if !DEBUG
             this.DispatcherUnhandledException += Current_DispatcherUnhandledException;
 #endif
