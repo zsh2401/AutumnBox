@@ -28,6 +28,15 @@
     <s:String x:Key="PanelHomeOfficialWebsite">官网</s:String>
     <s:String x:Key="PanelHomeJoinQQGroup">加入QQ群</s:String>
     <s:String x:Key="PanelHomeSendMail">发送邮件</s:String>
+    
+    <!--PanelExtensions-->
+     <s:String x:Key="PanelExtensionsDetailsFormat">开发者:{0}
+版本:{1}
+说明:
+     {2}</s:String>
+    <s:String x:Key="PanelExtensionsButtonEnabled">运行此拓展</s:String>
+    <s:String x:Key="PanelExtensionsButtonDisabled">此拓展不可在当前情况下运行</s:String>
+    
     <!--按钮-->
     <s:String x:Key="btnAppOpsXAct">激活AppOpsX</s:String>
     <s:String x:Key="btnAccountInfo">账号信息</s:String>

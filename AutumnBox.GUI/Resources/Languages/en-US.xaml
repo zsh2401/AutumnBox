@@ -26,6 +26,15 @@
     <s:String x:Key="PanelHomeOfficialWebsite">Official website</s:String>
     <s:String x:Key="PanelHomeJoinQQGroup">QQ group</s:String>
     <s:String x:Key="PanelHomeSendMail">E-Mail</s:String>
+    
+ <!--PanelExtensions-->
+     <s:String x:Key="PanelExtensionsDetailsFormat">Auth:{0}
+Version:{1}
+Description:
+     {2}</s:String>
+    <s:String x:Key="PanelExtensionsButtonEnabled">Run this extension</s:String>
+    <s:String x:Key="PanelExtensionsButtonDisabled">Sorry,this extension can't run now</s:String>
+    
     <!--按钮-->
      <s:String x:Key="btnAppOpsXAct">Activate AppOpsX</s:String>
      <s:String x:Key="btnAccountInfo">Account info</s:String>
