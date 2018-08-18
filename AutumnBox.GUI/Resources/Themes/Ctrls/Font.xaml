@@ -1,0 +1,11 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:AutumnBox.GUI.Resources.Themes.Ctrls">
+    <FontFamily x:Key="AutumnBox.Font">Microsoft YaHei Light</FontFamily>
+    <Style TargetType="{x:Type UserControl}">
+        <Setter Property="FontFamily" Value="{DynamicResource AutumnBox.Font}" />
+    </Style>
+    <Style TargetType="{x:Type Button}">
+        <Setter Property="FontFamily" Value="{DynamicResource AutumnBox.Font}" />
+    </Style>
+</ResourceDictionary>

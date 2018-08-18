@@ -11,6 +11,10 @@ namespace AutumnBox.OpenFramework.Warpper
     public interface IExtensionWarpper : IEquatable<IExtensionWarpper>
     {
         /// <summary>
+        /// 状态
+        /// </summary>
+        ExtensionWarpperState State { get; }
+        /// <summary>
         /// 拓展模块信息获取器
         /// </summary>
         IExtInfoGetter Info { get; }

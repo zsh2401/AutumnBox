@@ -39,10 +39,6 @@ namespace AutumnBox.OpenFramework.Extension
         /// </summary>
         public DeviceBasicInfo TargetDevice { get; set; }
         /// <summary>
-        /// Ux交互器
-        /// </summary>
-        protected UxController Ux { get; private set; }
-        /// <summary>
         /// 主函数
         /// </summary>
         public abstract int Main();

@@ -16,11 +16,11 @@ namespace AutumnBox.CoreModules.Extensions
         bool stoppable = false;
         public override int Main()
         {
-            Ux.WriteLine("hey!");
-            Ux.WriteLine("in other words, please be true!");
+            WriteLine("hey!");
+            WriteLine("in other words, please be true!");
             Thread.Sleep(4000);
             stoppable = true;
-            Ux.WriteLine("in other words, i love you!");
+            WriteLine("in other words, i love you!");
             Thread.Sleep(4000);
             return 0;
         }
