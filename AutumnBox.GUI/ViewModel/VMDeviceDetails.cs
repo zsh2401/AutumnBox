@@ -4,6 +4,7 @@
 ** desc： ...
 *************************************************/
 
+using AutumnBox.Basic.Device;
 using AutumnBox.GUI.Depending;
 using AutumnBox.GUI.MVVM;
 using AutumnBox.Support.Log;
@@ -12,14 +13,16 @@ namespace AutumnBox.GUI.ViewModel
 {
     class VMDeviceDetails : ViewModelBase, ISelectDeviceChangedListener
     {
-        public void OnSelectDevice(SelectDeviceEventArgs args)
+        public DeviceBasicInfo CurrentDevice { private get; set; }
+
+        public void OnSelectDevice()
         {
             Logger.Debug(this,"good");
         }
 
         public void OnSelectNoDevice()
         {
-            Logger.Debug(this,"no");
+            
         }
     }
 }

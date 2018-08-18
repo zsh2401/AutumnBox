@@ -4,17 +4,13 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.Basic.Device;
-using System;
 
 namespace AutumnBox.GUI.Depending
 {
-    public class SelectDeviceEventArgs : EventArgs
-    {
-        public DeviceBasicInfo DeviceInfo;
-    }
     interface ISelectDeviceChangedListener
     {
+        DeviceBasicInfo CurrentDevice { set; }
         void OnSelectNoDevice();
-        void OnSelectDevice(SelectDeviceEventArgs args);
+        void OnSelectDevice();
     }
 }

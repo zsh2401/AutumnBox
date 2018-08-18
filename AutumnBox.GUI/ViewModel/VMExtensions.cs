@@ -135,21 +135,18 @@ namespace AutumnBox.GUI.ViewModel
         #endregion
 
         #region Device
-        private DeviceBasicInfo currentDevice;
+        public DeviceBasicInfo CurrentDevice { get; set; }
 
         public void OnSelectNoDevice()
         {
-            currentDevice = DeviceBasicInfo.None;
             Selected = null;
             BtnStatus = false;
-           
         }
 
-        public void OnSelectDevice(SelectDeviceEventArgs args)
+        public void OnSelectDevice()
         {
-            currentDevice = args.DeviceInfo;
             Selected = null;
-            BtnStatus = (targetState & currentDevice.State) != 0;
+            BtnStatus = (targetState & CurrentDevice.State) != 0;
         }
         #endregion
         private bool BtnStatus
@@ -170,8 +167,9 @@ namespace AutumnBox.GUI.ViewModel
             Warppers = WarpperWarpper.From(filted);
             _runExtension = new FlexiableCommand((args) =>
             {
-                Selected.Warpper.RunAsync(currentDevice);
+                Selected.Warpper.RunAsync(CurrentDevice);
             });
+            Selected = null;
             BtnStatus = false;
         }
     }
