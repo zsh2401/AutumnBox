@@ -62,8 +62,8 @@
     <Compile Include="Content\CtxPer.cs" />
     <Compile Include="Exceptions\LibrarianAlreadyCreatedOnceException.cs" />
     <Compile Include="Exceptions\WarpperAlreadyCreatedOnceException.cs" />
-    <Compile Include="Extension\AutumnBoxExtension.Def.cs" />
-    <Compile Include="Extension\AutumnBoxExtension.Other.cs" />
+    <Compile Include="Extension\AutumnBoxExtension.Constants.cs" />
+    <Compile Include="Extension\AutumnBoxExtension.Internal.cs" />
     <Compile Include="Extension\ExtAppPropertyAttribute.cs" />
     <Compile Include="Extension\ExtBeforeCreateAspectAttribute.cs" />
     <Compile Include="Extension\ExtInfoAttribute.cs" />
@@ -107,7 +107,7 @@
     <Compile Include="Management\Impl\InternalManagerImpl.cs" />
     <Compile Include="Extension\ExtRequiredDeviceStatesAttribute.cs" />
     <Compile Include="Extension\ExtVersionAttribute.cs" />
-    <Compile Include="Extension\AutumnBoxExtension.cs" />
+    <Compile Include="Extension\AutumnBoxExtension.Public.cs" />
     <Compile Include="Content\Context.cs" />
     <Compile Include="ExtLibrary\AssemblyBasedLibrarian.cs" />
     <Compile Include="Extension\ExtAuthAttribute.cs" />
@@ -115,6 +115,7 @@
     <Compile Include="Extension\ExtNameAttribute.cs" />
     <Compile Include="Extension\ForerunCheckResult.cs" />
     <Compile Include="Warpper\ClassExtensionWrapper.cs" />
+    <Compile Include="Warpper\ExtensionWarpperState.cs" />
     <Compile Include="Warpper\IExtInfoGetter.cs" />
     <Compile Include="Warpper\IExtensionWarpper.cs" />
     <Compile Include="ExtLibrary\ILibrarian.cs" />
@@ -141,6 +142,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="AutumnBox.OpenFramework.nuspec" />
+    <Compile Include="Extension\AutumnBoxExtension.Protected.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

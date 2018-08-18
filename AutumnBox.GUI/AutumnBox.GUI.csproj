@@ -54,7 +54,7 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Resources\Images\title_icon.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\Drawable\icon.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>AutumnBox.GUI.App</StartupObject>
@@ -184,9 +184,6 @@
     <Compile Include="ViewModel\VMReboot.cs" />
     <Compile Include="ViewModel\VMMainWindow.cs" />
     <Compile Include="ViewModel\VMRunningWindow.cs" />
-    <Compile Include="View\DialogContent\ContentAbout.xaml.cs">
-      <DependentUpon>ContentAbout.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\DialogContent\ContentBase.xaml.cs">
       <DependentUpon>ContentBase.xaml</DependentUpon>
     </Compile>
@@ -409,6 +406,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Resources\Themes\Ctrls\Font.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resources\Themes\ThemeBase.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -570,10 +571,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\CstPanels\OpenNetDebugging.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\DialogContent\ContentAbout.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -761,7 +758,7 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\alipay.jpg" />
+    <Resource Include="Resources\Drawable\Donate\alipay.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\baidupan.png" />
@@ -776,10 +773,10 @@
     <Resource Include="Resources\Images\misakasister.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\wechatpay.png" />
+    <Resource Include="Resources\Drawable\Donate\wechatpay.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\Icons\donate.png" />
+    <Resource Include="Resources\Drawable\Home\donate.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\Icons\title_icon.png" />
@@ -862,7 +859,7 @@
     <Resource Include="Resources\Images\title_icon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\leaves.png" />
+    <Resource Include="Resources\icon.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\title_icon.png" />
@@ -879,7 +876,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\defaultExtIcon.png" />
+    <Resource Include="Resources\Drawable\Extension\defaultExtIcon.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\Btn\close.png" />
@@ -894,6 +891,24 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\contact.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Drawable\icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Drawable\icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Drawable\old_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Drawable\Home\contact.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Drawable\Home\github.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Drawable\Home\misakasister.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

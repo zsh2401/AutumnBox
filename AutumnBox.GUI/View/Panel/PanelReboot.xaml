@@ -3,13 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             FontFamily="{DynamicResource AutumnBox.Font}"
              mc:Ignorable="d" d:DesignHeight="218.803" d:DesignWidth="190.598">
     <GroupBox Header="{DynamicResource PanelRebootTitle}">
         <Grid>
-            <Button Command="{Binding ToSystem}"  Content="{DynamicResource PanelRebootToSystem}"  Margin="10,10,10,0" VerticalAlignment="Top" FontSize="12"/>
-            <Button Command="{Binding ToRecovery}" Content="{DynamicResource PanelRebootToRecovery}" Margin="10,47,10,0" VerticalAlignment="Top" FontSize="12"/>
-            <Button Command="{Binding ToFastboot}" Content="{DynamicResource PanelRebootToFastboot}" Margin="10,84,10,0" VerticalAlignment="Top" FontSize="12"/>
-            <Button Command="{Binding To9008}" Content="{DynamicResource PanelRebootTo9008}" Margin="10,121,10,0" VerticalAlignment="Top" FontSize="12"/>
+            <Button Style="{DynamicResource MaterialDesignFlatButton}" Command="{Binding ToSystem}"  Content="{DynamicResource PanelRebootToSystem}"  Margin="10,10,10,0" VerticalAlignment="Top" FontSize="12"/>
+            <Button Style="{DynamicResource MaterialDesignFlatButton}" Command="{Binding ToRecovery}" Content="{DynamicResource PanelRebootToRecovery}" Margin="10,47,10,0" VerticalAlignment="Top" FontSize="12"/>
+            <Button Style="{DynamicResource MaterialDesignFlatButton}" Command="{Binding ToFastboot}" Content="{DynamicResource PanelRebootToFastboot}" Margin="10,84,10,0" VerticalAlignment="Top" FontSize="12"/>
+            <Button Style="{DynamicResource MaterialDesignFlatButton}" Command="{Binding To9008}" Content="{DynamicResource PanelRebootTo9008}" Margin="10,121,10,0" VerticalAlignment="Top" FontSize="12"/>
         </Grid>
     </GroupBox>
 </UserControl>

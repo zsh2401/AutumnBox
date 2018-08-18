@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             FontFamily="{DynamicResource AutumnBox.Font}"
              mc:Ignorable="d" Height="255.547" Width="487.131">
     <Grid>
         <GroupBox Header="{DynamicResource Language}" Margin="10,153,10,0" Height="86" VerticalAlignment="Top">
@@ -25,6 +26,6 @@
             </Grid>
         </GroupBox>
 
-        <Button x:Name="BtnClose" Click="BtnClose_Click" Style="{DynamicResource MaterialDesignRaisedButton}" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Height="29" VerticalAlignment="Top"  Content="{DynamicResource btnClose}" Margin="418,0,0,0"></Button>
+        <Button x:Name="BtnClose" Click="BtnClose_Click" Style="{DynamicResource MaterialDesignFlatButton}" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Height="29" VerticalAlignment="Top"  Content="{DynamicResource btnClose}" Margin="408,10,10,0"></Button>
     </Grid>
 </UserControl>

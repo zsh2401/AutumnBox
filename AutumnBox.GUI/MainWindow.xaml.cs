@@ -102,18 +102,6 @@ namespace AutumnBox.GUI
                 }
             });
 
-            //哦,如果是第一次启动本软件,那么就显示一下提示吧!
-            Task.Run(() =>
-            {
-                Thread.Sleep(1000);
-                Dispatcher.Invoke(() =>
-                {
-                    if (Properties.Settings.Default.IsFirstLaunch)
-                    {
-                        DialogHost.Show(new ContentAbout());
-                    }
-                });
-            });
         }
 
         private void _MainWindow_Closed(object sender, EventArgs e)

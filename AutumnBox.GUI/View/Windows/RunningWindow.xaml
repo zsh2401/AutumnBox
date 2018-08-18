@@ -9,9 +9,10 @@
         Title="{Binding Title}"
         MinHeight="350"
         MinWidth="450"
+        FontFamily="{DynamicResource AutumnBox.Font}"
         ResizeMode="CanResize" Height="194" Width="162" Closing="Window_Closing">
     <Grid Margin="1" Background="{DynamicResource MainBackgroundBrush}">
-        <TextBox  Style="{x:Null}" BorderBrush="{DynamicResource PrimaryLightBrush}" Text="{Binding Output}" Margin="10,10,10,61" TextWrapping="Wrap" />
+        <TextBox IsReadOnly="True"  Style="{x:Null}" BorderBrush="{DynamicResource PrimaryLightBrush}" Text="{Binding Output}" Margin="10,10,10,61" TextWrapping="Wrap" />
         <StackPanel VerticalAlignment="Bottom" Margin="10,0,10,10" Orientation="Horizontal">
             <ProgressBar Style="{DynamicResource MaterialDesignCircularProgressBar}" IsIndeterminate="True" Value="{Binding ProgressValue}" Height="35"  Width="35" Margin="0,0,20,0"  HorizontalAlignment="Left" />
             <TextBlock Text="{Binding Tip}"  Margin="0,0,20,0" Height="16" />
