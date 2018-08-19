@@ -80,6 +80,13 @@
      <s:String x:Key="PanelMainCurrent">针对当前设备</s:String>
     <s:String x:Key="PanelMainMore">更多</s:String>
     
+    <!--PanelMore-->
+      <s:String x:Key="PanelMoreEvenNoDevice">什么?没连接设备或设备状态异常?这些模块无需设备正常连接!</s:String>
+     <s:String x:Key="PanelMoreBtnOpenExtensionFloder">打开拓展模块文件夹</s:String>
+    <s:String x:Key="PanelMoreBtnHowToInstallExtension">如何安装拓展模块?</s:String>
+     <s:String x:Key="PanelMoreExtensionsDownloadCenter">下载拓展模块</s:String>
+     <s:String x:Key="PanelMoreExtensionSlogan">使用各种模块,做你想做的事</s:String>
+    <s:String x:Key="PanelMoreExtensionApi">拓展模块API</s:String>
     <!--按钮-->
     <s:String x:Key="btnAppOpsXAct">激活AppOpsX</s:String>
     <s:String x:Key="btnAccountInfo">账号信息</s:String>

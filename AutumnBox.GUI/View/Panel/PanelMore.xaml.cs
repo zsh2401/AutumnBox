@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutumnBox.GUI.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,7 @@ namespace AutumnBox.GUI.View.Panel
         public PanelMore()
         {
             InitializeComponent();
+            DataContext = new VMMore();
         }
     }
 }

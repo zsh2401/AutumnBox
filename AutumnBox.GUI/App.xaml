@@ -8,7 +8,6 @@
                 <ResourceDictionary Source="/Resources/Languages/zh-CN.xaml"/>
                 <ResourceDictionary Source="/Resources/Urls.xaml"/>
                 <ResourceDictionary Source="/Resources/Themes/Autumn.xaml"/>
-                <ResourceDictionary Source="/Resources/Themes/Autumn.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
