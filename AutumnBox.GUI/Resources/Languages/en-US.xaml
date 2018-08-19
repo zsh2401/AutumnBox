@@ -77,6 +77,13 @@ Description:
     <s:String x:Key="PanelMainStart">Start</s:String>
      <s:String x:Key="PanelMainCurrent">Current device</s:String>
     <s:String x:Key="PanelMainMore">More</s:String>
+    <!--PanelMore-->
+      <s:String x:Key="PanelMoreEvenNoDevice">Device not found?look there!</s:String>
+     <s:String x:Key="PanelMoreBtnOpenExtensionFloder">Open extensions floder</s:String>
+    <s:String x:Key="PanelMoreBtnHowToInstallExtension">How to install extesions?</s:String>
+     <s:String x:Key="PanelMoreExtensionsDownloadCenter">Download extensions</s:String>
+     <s:String x:Key="PanelMoreExtensionSlogan">Download extension,do you want to do</s:String>
+    <s:String x:Key="PanelMoreExtensionApi">Extension Fx API</s:String>
     
     <!--按钮-->
      <s:String x:Key="btnAppOpsXAct">Activate AppOpsX</s:String>

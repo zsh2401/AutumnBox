@@ -3,10 +3,35 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             FontFamily="{DynamicResource AutumnBox.Font}"
              xmlns:local="clr-namespace:AutumnBox.GUI.View.Panel"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-            
+             d:DesignHeight="566" d:DesignWidth="821">
+    <Grid Width="600">
+        <StackPanel  Orientation="Vertical">
+            <materialDesign:Card Margin="10" Height="100">
+                <StackPanel>
+                    <TextBlock FontSize="15" Margin="15,5,0,0"  Text="{DynamicResource PanelMoreExtensionSlogan}"/>
+                    <StackPanel  Margin="15,5,0,0" Orientation="Horizontal">
+                        <Image Height="20" Source="{DynamicResource DefaultExtensionIcon}"/>
+                        <TextBlock Margin="5,0,0,0" VerticalAlignment="Center" FontSize="11" Text="{DynamicResource PanelMoreExtensionApi}"/>
+                        <TextBlock Margin="15,0,0,0" VerticalAlignment="Center" FontSize="11" Text="{Binding ApiVersion}"/>
+                    </StackPanel>
+                    <StackPanel Margin="10,0,10,0" Orientation="Horizontal">
+                        <Button FontSize="12" Command="{Binding OpenExtFloder}" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource PanelMoreBtnOpenExtensionFloder}"/>
+                        <Button FontSize="12" Command="{Binding OpenUrl}" CommandParameter="{DynamicResource urlHelpOfInstallExtension}" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource PanelMoreBtnHowToInstallExtension}"></Button>
+                        <Button FontSize="12" Command="{Binding OpenUrl}" CommandParameter="{DynamicResource urlDownloadExtensions}" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource PanelMoreExtensionsDownloadCenter}"></Button>
+                    </StackPanel>
+                </StackPanel>
+            </materialDesign:Card>
+            <materialDesign:Card Margin="10" Height="305">
+                <StackPanel Margin="0,0,0,0">
+                    <TextBlock Margin="15" FontSize="15"  Text="{DynamicResource PanelMoreEvenNoDevice}"/>
+                    <local:PanelExtension TargetDeviceState="NoMatter" Height="252"/>
+                </StackPanel>
+            </materialDesign:Card>
+        </StackPanel>
+      
     </Grid>
 </UserControl>

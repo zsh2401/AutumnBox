@@ -176,6 +176,7 @@
     <Compile Include="ViewModel\VMContentChoice.cs" />
     <Compile Include="ViewModel\VMCurrentDevice.cs" />
     <Compile Include="ViewModel\VMExtensions.cs" />
+    <Compile Include="ViewModel\VMMore.cs" />
     <Compile Include="ViewModel\VMPanelMain.cs" />
     <Compile Include="ViewModel\VMPOTD.cs" />
     <Compile Include="ViewModel\VMReboot.cs" />

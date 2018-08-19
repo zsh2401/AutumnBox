@@ -118,7 +118,7 @@ namespace AutumnBox.GUI.ViewModel
                 RaisePropertyChanged();
             }
         }
-        private Visibility _detailsVisi;
+        private Visibility _detailsVisi = Visibility.Collapsed;
 
         public string BtnRunExtensionContent
         {
@@ -165,16 +165,25 @@ namespace AutumnBox.GUI.ViewModel
             {
                 Selected.Warpper.RunAsync(DeviceSelectionObserver.Instance.CurrentDevice);
             });
+            Selected = null;
             ComObserver();
         }
         private void ComObserver()
         {
-            DeviceSelectionObserver.Instance.SelectedDevice += OnSelectDevice;
-            DeviceSelectionObserver.Instance.SelectedNoDevice += OnSelectNoDevice;
             OpenFxObserver.Instance.Loaded += (_, __) =>
             {
                 LoadExtensions();
             };
+            if (targetState == DeviceState.NoMatter)
+            {
+                BtnStatus = true;
+                return;
+            }
+            else
+            {
+                DeviceSelectionObserver.Instance.SelectedDevice += OnSelectDevice;
+                DeviceSelectionObserver.Instance.SelectedNoDevice += OnSelectNoDevice;
+            }
         }
         public void LoadExtensions()
         {

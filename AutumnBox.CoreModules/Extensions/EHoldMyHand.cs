@@ -9,7 +9,7 @@ using System.Threading;
 namespace AutumnBox.CoreModules.Extensions
 {
     [ExtName("Running Window Test")]
-    [ExtRequiredDeviceStates(AllState)]
+    [ExtRequiredDeviceStates(Basic.Device.DeviceState.NoMatter)]
     [ExtUxEnable(true)]
     public class EHoldMyHand : AutumnBoxExtension
     {
