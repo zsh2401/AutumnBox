@@ -12,10 +12,13 @@
             <local:PanelDevices x:Name="PanelDevices" Margin="0,37,10,0" HorizontalAlignment="Right" VerticalAlignment="Top" Width="183" Height="304"></local:PanelDevices>
             <TabControl  Margin="10,10,205,10" SelectedIndex="{Binding TabSelectedIndex,Mode=TwoWay}" Background="{x:Null}" BorderBrush="{DynamicResource PrimaryLightBrush}">
                 <TabItem  Style="{DynamicResource AtmbxTabItem}" TabIndex="0" Header="{DynamicResource PanelMainStart}" Margin="-2,-2,-14,0"  FontSize="16">
-                    <local:PanelHome Margin="0,0,0,0"></local:PanelHome>
+                    <local:PanelHome/>
                 </TabItem>
                 <TabItem  Style="{DynamicResource AtmbxTabItem}" TabIndex="1" Header="{DynamicResource PanelMainCurrent}" Margin="14,-2,-18,0"  FontSize="16">
-                    <local:PanelCurrentDevice x:Name="PanelCurrentDevice" Margin="0,0,0,0"></local:PanelCurrentDevice>
+                    <local:PanelCurrentDevice/>
+                </TabItem>
+                <TabItem  Style="{DynamicResource AtmbxTabItem}" TabIndex="1" Header="{DynamicResource PanelMainMore}" Margin="18,-2,-22,0"  FontSize="16">
+                    <local:PanelMore/>
                 </TabItem>
             </TabControl>
             <cstm:PotdBox Margin="0,0,8,111" Width="185" Height="139" HorizontalAlignment="Right" VerticalAlignment="Bottom"></cstm:PotdBox>

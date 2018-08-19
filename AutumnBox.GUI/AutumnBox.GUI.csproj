@@ -231,9 +231,6 @@
     <Compile Include="View\Panel\PanelExtension.xaml.cs">
       <DependentUpon>PanelExtension.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Panel\PanelExtensionManagement.xaml.cs">
-      <DependentUpon>PanelExtensionManagement.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\Panel\PanelHome.xaml.cs">
       <DependentUpon>PanelHome.xaml</DependentUpon>
     </Compile>
@@ -243,6 +240,9 @@
     <Compile Include="ViewModel\VMConnectDevices.cs" />
     <Compile Include="View\Panel\PanelMain.xaml.cs">
       <DependentUpon>PanelMain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Panel\PanelMore.xaml.cs">
+      <DependentUpon>PanelMore.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Panel\PanelReboot.xaml.cs">
       <DependentUpon>PanelReboot.xaml</DependentUpon>
@@ -655,15 +655,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Panel\PanelExtensionManagement.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="View\Panel\PanelHome.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Panel\PanelMain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Panel\PanelMore.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

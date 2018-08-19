@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace AutumnBox.GUI.View.Panel
 {
     /// <summary>
-    /// PanelExtensionManagement.xaml 的交互逻辑
+    /// PanelMore.xaml 的交互逻辑
     /// </summary>
-    public partial class PanelExtensionManagement : UserControl
+    public partial class PanelMore : UserControl
     {
-        public PanelExtensionManagement()
+        public PanelMore()
         {
             InitializeComponent();
         }
