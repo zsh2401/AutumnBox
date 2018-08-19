@@ -174,6 +174,7 @@
     <Compile Include="Util\OS\SystemHelper.cs" />
     <Compile Include="Util\Self.cs" />
     <Compile Include="ViewModel\VMContentChoice.cs" />
+    <Compile Include="ViewModel\VMCurrentDevice.cs" />
     <Compile Include="ViewModel\VMExtensions.cs" />
     <Compile Include="ViewModel\VMPanelMain.cs" />
     <Compile Include="ViewModel\VMPOTD.cs" />
@@ -229,6 +230,9 @@
     </Compile>
     <Compile Include="View\Panel\PanelExtension.xaml.cs">
       <DependentUpon>PanelExtension.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Panel\PanelExtensionManagement.xaml.cs">
+      <DependentUpon>PanelExtensionManagement.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Panel\PanelHome.xaml.cs">
       <DependentUpon>PanelHome.xaml</DependentUpon>
@@ -648,6 +652,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Panel\PanelExtension.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Panel\PanelExtensionManagement.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
