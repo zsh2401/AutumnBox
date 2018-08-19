@@ -18,14 +18,16 @@ namespace AutumnBox.OpenFramework.Warpper
     /// <summary>
     /// ClassExtension包装器的信息获取器
     /// </summary>
-    internal class ClassExtensionInfoGetter : Context, IExtInfoGetter
+    public class ClassExtensionInfoGetter : Context, IExtInfoGetter
     {
         private readonly Context ctx;
+        /// <summary>
+        /// 获取的木白哦
+        /// </summary>
         public Type ExtType { get; private set; }
-        private static readonly string DescFMT =
-       "{0}: {1}" + Environment.NewLine +
-       "{2}:" + Environment.NewLine +
-       "{3}";
+        /// <summary>
+        /// 已获取的特性
+        /// </summary>
         public Dictionary<string, ExtInfoAttribute> Attributes
         {
             get
@@ -33,29 +35,59 @@ namespace AutumnBox.OpenFramework.Warpper
                 return infoTable;
             }
         }
+        /// <summary>
+        /// 表
+        /// </summary>
         private readonly Dictionary<string, ExtInfoAttribute> infoTable
             = new Dictionary<string, ExtInfoAttribute>();
-        public int MinApi { get; private set; }
-        public int TargetApi { get; private set; }
-        public bool RunAsAdmin { get; private set; }
-        public byte[] Icon { get; private set; }
-        public Version Version { get; private set; }
-        public DeviceState RequiredDeviceStates { get; private set; }
-        public string Name
+        /// <summary>
+        /// 最低API
+        /// </summary>
+        public virtual int MinApi { get;  set; }
+        /// <summary>
+        /// 目标API
+        /// </summary>
+        public virtual int TargetApi { get; set; }
+        /// <summary>
+        /// 是否需要以系统级别管理员权限运行
+        /// </summary>
+        public virtual bool RunAsAdmin { get; set; }
+        /// <summary>
+        /// 图标
+        /// </summary>
+        public virtual byte[] Icon { get; set; }
+        /// <summary>
+        /// 拓展模块版本号
+        /// </summary>
+        public virtual Version Version { get; set; }
+        /// <summary>
+        /// 运行所需设备状态
+        /// </summary>
+        public virtual DeviceState RequiredDeviceStates { get; set; }
+        /// <summary>
+        /// 拓展模块名
+        /// </summary>
+        public virtual string Name
         {
             get
             {
                 return GetInfoByCurrentLanguage(nameof(ExtNameAttribute));
             }
         }
-        public string Desc
+        /// <summary>
+        /// 基础的说明信息
+        /// </summary>
+        public virtual string Desc
         {
             get
             {
                 return GetInfoByCurrentLanguage(nameof(ExtDescAttribute));
             }
         }
-        public string FormatedDesc
+        /// <summary>
+        /// 进行了挂载的说明信息
+        /// </summary>
+        public virtual string FormatedDesc
         {
             get
             {
@@ -63,20 +95,36 @@ namespace AutumnBox.OpenFramework.Warpper
                     Auth,Version, Desc);
             }
         }
-        public string Auth
+        /// <summary>
+        /// 所有者
+        /// </summary>
+        public virtual string Auth
         {
             get
             {
                 return GetInfoByCurrentLanguage(nameof(ExtAuthAttribute));
             }
         }
-        public bool Visual { get; private set; }
+        /// <summary>
+        /// 秋之盒标准可视化
+        /// </summary>
+        public virtual bool Visual { get; set; }
+        /// <summary>
+        /// 构造
+        /// </summary>
+        /// <param name="ctx"></param>
+        /// <param name="type"></param>
         public ClassExtensionInfoGetter(Context ctx, Type type)
         {
             this.ctx = ctx;
             this.ExtType = type;
         }
-        private string GetInfoByCurrentLanguage(string key)
+        /// <summary>
+        /// 根据当前语言获取I18N特性
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        protected virtual string GetInfoByCurrentLanguage(string key)
         {
             string lanCode = ctx.App.CurrentLanguageCode.ToLower();
             try
@@ -92,7 +140,10 @@ namespace AutumnBox.OpenFramework.Warpper
             catch { }
             throw new KeyNotFoundException("cannot found target or default language");
         }
-        public void Reload()
+        /// <summary>
+        /// 重载
+        /// </summary>
+        public virtual void Reload()
         {
             var extInfoAttr = ExtType.GetCustomAttributes(typeof(ExtInfoAttribute), true);
             ExtInfoAttribute current = null;
@@ -115,7 +166,12 @@ namespace AutumnBox.OpenFramework.Warpper
             {
             }
         }
-        private byte[] ReadIcon(string iconPath)
+        /// <summary>
+        /// 加载图标
+        /// </summary>
+        /// <param name="iconPath"></param>
+        /// <returns></returns>
+        protected virtual byte[] ReadIcon(string iconPath)
         {
             try
             {
