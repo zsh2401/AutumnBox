@@ -53,6 +53,31 @@ Description:
     <s:String x:Key="PanelDevicesDisconnect">Disconnect crt net device</s:String>
     <s:String x:Key="PanelDevicesEnableCurrent">Enable crt net-debugging</s:String>
     
+    <!--PanelDeviceDetails-->
+     <s:String x:Key="PanelDeviceDetailsDeviceState">Device state</s:String>
+    <s:String x:Key="PanelDeviceDetailsStateNone">Device not found</s:String>
+    <s:String x:Key="PanelDeviceDetailsStatePoweron">System runinng</s:String>
+    <s:String x:Key="PanelDeviceDetailsStateRecovery">Recovery</s:String>
+    <s:String x:Key="PanelDeviceDetailsStateSideload">Sideload</s:String>
+    <s:String x:Key="PanelDeviceDetailsStateFastboot">Fastboot</s:String>
+    <s:String x:Key="PanelDeviceDetailsStateUnauthorized">Unauthorized</s:String>
+    <s:String x:Key="PanelDeviceDetailsStateOffline">Offline</s:String>
+    <s:String x:Key="PanelDeviceDetailsStateUnknown">Unknown!</s:String>
+    <s:String x:Key="PanelDeviceDetailsHw">Hardware infomations</s:String>
+     <s:String x:Key="PanelDeviceDetailsBrand">Brand</s:String>
+    <s:String x:Key="PanelDeviceDetailsModel">Model</s:String>
+    <s:String x:Key="PanelDeviceDetailsProductName">Product</s:String>
+    <s:String x:Key="PanelDeviceDetailsScreen">Screen</s:String>
+    <s:String x:Key="PanelDeviceDetailsStorage">Storage</s:String>
+    <s:String x:Key="PanelDeviceDetailsRam">Ram</s:String>
+    <s:String x:Key="PanelDeviceDetailsSw">Software infomations</s:String>
+    <s:String x:Key="PanelDeviceDetailsRoot">Root</s:String>
+    <s:String x:Key="PanelDeviceDetailsAndroidVersion">Android</s:String>
+    <!--PanelMain-->
+    <s:String x:Key="PanelMainStart">Start</s:String>
+     <s:String x:Key="PanelMainCurrent">Current device</s:String>
+    <s:String x:Key="PanelMainMore">More</s:String>
+    
     <!--按钮-->
      <s:String x:Key="btnAppOpsXAct">Activate AppOpsX</s:String>
      <s:String x:Key="btnAccountInfo">Account info</s:String>

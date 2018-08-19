@@ -75,6 +75,10 @@
     <s:String x:Key="PanelDeviceDetailsSw">软件信息</s:String>
     <s:String x:Key="PanelDeviceDetailsRoot">Root</s:String>
     <s:String x:Key="PanelDeviceDetailsAndroidVersion">Android</s:String>
+    <!--PanelMain-->
+    <s:String x:Key="PanelMainStart">开始</s:String>
+     <s:String x:Key="PanelMainCurrent">针对当前设备</s:String>
+    <s:String x:Key="PanelMainMore">更多</s:String>
     
     <!--按钮-->
     <s:String x:Key="btnAppOpsXAct">激活AppOpsX</s:String>

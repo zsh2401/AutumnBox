@@ -61,5 +61,31 @@ namespace AutumnBox.GUI.ViewModel
         {
             DialogHost.Show(new ContentDonate());
         });
+
+        public int TabSelectedIndex
+        {
+            get => tabSelectedIndex;
+            set
+            {
+                tabSelectedIndex = value;
+                RaisePropertyChanged();
+            }
+        }
+        private int tabSelectedIndex;
+        public VMPanelMain()
+        {
+            Util.Bus.DeviceSelectionObserver.Instance.SelectedNoDevice += NoDevice;
+            Util.Bus.DeviceSelectionObserver.Instance.SelectedDevice += Instance_SelectedDevice;
+        }
+
+        private void Instance_SelectedDevice(object sender, EventArgs e)
+        {
+            TabSelectedIndex = 1;
+        }
+
+        private void NoDevice(object sender, EventArgs e)
+        {
+            TabSelectedIndex = 0;
+        }
     }
 }
