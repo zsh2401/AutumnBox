@@ -12,6 +12,7 @@
 *
 \* =============================================================================*/
 using AutumnBox.Basic.FlowFramework;
+using AutumnBox.GUI.View.Windows;
 using AutumnBox.GUI.Windows;
 using AutumnBox.Support.Log;
 using System;

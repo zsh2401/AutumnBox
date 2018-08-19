@@ -55,6 +55,27 @@
     <s:String x:Key="PanelDevicesDisconnect">断开当前设备网络连接</s:String>
     <s:String x:Key="PanelDevicesEnableCurrent">开启当前设备网络调试</s:String>
     
+    <!--PanelDeviceDetails-->
+     <s:String x:Key="PanelDeviceDetailsDeviceState">设备状态</s:String>
+    <s:String x:Key="PanelDeviceDetailsStateNone">未连接设备</s:String>
+    <s:String x:Key="PanelDeviceDetailsStatePoweron">开机</s:String>
+    <s:String x:Key="PanelDeviceDetailsStateRecovery">恢复模式</s:String>
+    <s:String x:Key="PanelDeviceDetailsStateSideload">Sideload模式</s:String>
+    <s:String x:Key="PanelDeviceDetailsStateFastboot">Fastboot模式</s:String>
+    <s:String x:Key="PanelDeviceDetailsStateUnauthorized">未获取USB调试权限,请前往手机授予</s:String>
+    <s:String x:Key="PanelDeviceDetailsStateOffline">异常离线,请尝试拔插手机</s:String>
+    <s:String x:Key="PanelDeviceDetailsStateUnknown">神奇的未知状态!</s:String>
+    <s:String x:Key="PanelDeviceDetailsHw">硬件信息</s:String>
+     <s:String x:Key="PanelDeviceDetailsBrand">厂商</s:String>
+    <s:String x:Key="PanelDeviceDetailsModel">代号</s:String>
+    <s:String x:Key="PanelDeviceDetailsProductName">型号</s:String>
+    <s:String x:Key="PanelDeviceDetailsScreen">屏幕</s:String>
+    <s:String x:Key="PanelDeviceDetailsStorage">存储分区</s:String>
+    <s:String x:Key="PanelDeviceDetailsRam">运行内存</s:String>
+    <s:String x:Key="PanelDeviceDetailsSw">软件信息</s:String>
+    <s:String x:Key="PanelDeviceDetailsRoot">Root</s:String>
+    <s:String x:Key="PanelDeviceDetailsAndroidVersion">Android</s:String>
+    
     <!--按钮-->
     <s:String x:Key="btnAppOpsXAct">激活AppOpsX</s:String>
     <s:String x:Key="btnAccountInfo">账号信息</s:String>
