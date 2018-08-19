@@ -1,5 +1,4 @@
 ﻿using AutumnBox.Basic.Device;
-using AutumnBox.GUI.I18N;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;

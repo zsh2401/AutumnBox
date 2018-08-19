@@ -3,9 +3,7 @@
 ** date:  2018/4/17 19:15:59 (UTC +8:00)
 ** desc： ...
 *************************************************/
-using System;
 using AutumnBox.Basic.Device;
-using AutumnBox.GUI.Helper;
 
 namespace AutumnBox.GUI.UI.FuncPanels.PoweronFuncsUx
 {

@@ -33,7 +33,7 @@ namespace AutumnBox.Basic.MultipleDevices
         /// 已连接设备列表
         /// </summary>
         public IEnumerable<DeviceBasicInfo> DevicesList { get; }
-        internal DevicesChangedEventArgs(IEnumerable<DeviceBasicInfo> devList)
+        public DevicesChangedEventArgs(IEnumerable<DeviceBasicInfo> devList)
         {
             DevicesList = devList;
         }

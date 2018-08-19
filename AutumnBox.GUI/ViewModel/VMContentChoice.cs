@@ -6,7 +6,6 @@
 using AutumnBox.GUI.Model;
 using AutumnBox.GUI.MVVM;
 using System;
-using static AutumnBox.GUI.View.DialogContent.ContentChoice;
 
 namespace AutumnBox.GUI.ViewModel
 {

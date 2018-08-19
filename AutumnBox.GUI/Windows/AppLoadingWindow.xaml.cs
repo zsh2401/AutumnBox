@@ -1,9 +1,5 @@
-﻿using AutumnBox.GUI.Helper;
-using AutumnBox.Support.Log;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Input;
-using AutumnBox.GUI.UI.Fp;
-using AutumnBox.GUI.Util.I18N;
 using AutumnBox.GUI.Util.UI;
 
 namespace AutumnBox.GUI.Windows

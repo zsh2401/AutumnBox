@@ -1,19 +1,10 @@
-﻿using System;
-using System.Windows;
-using System.Windows.Forms;
-using AutumnBox.GUI.Helper;
+﻿using System.Windows;
 using AutumnBox.GUI.Windows;
-using System.Threading.Tasks;
-using AutumnBox.Basic.FlowFramework;
 using AutumnBox.Basic.Flows;
-using System.IO;
-using System.Collections.Generic;
 using AutumnBox.Basic.Device;
 using AutumnBox.GUI.UI.Fp;
-using AutumnBox.Basic.Device.PackageManage;
 using AutumnBox.GUI.UI.FuncPanels.PoweronFuncsUx;
 using AutumnBox.OpenFramework.Warpper;
-using AutumnBox.Support.Log;
 using System.Linq;
 using AutumnBox.GUI.Util.UI;
 

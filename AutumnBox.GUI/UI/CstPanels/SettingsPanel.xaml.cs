@@ -1,6 +1,4 @@
-﻿using AutumnBox.GUI.Helper;
-using AutumnBox.GUI.I18N;
-using AutumnBox.GUI.Properties;
+﻿using AutumnBox.GUI.Properties;
 using AutumnBox.GUI.UI.Fp;
 using AutumnBox.GUI.Util.OS;
 using AutumnBox.GUI.Windows;

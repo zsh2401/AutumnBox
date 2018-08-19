@@ -137,15 +137,11 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Depending\IOnExtensionFxLoadedListener.cs" />
-    <Compile Include="Depending\ISelectDeviceChangedListener.cs" />
-    <Compile Include="Depending\ListenerManager.cs" />
+    <Compile Include="Util\Bus\ConnectedDevicesListener.cs" />
+    <Compile Include="Util\Bus\OpenFxObserver.cs" />
     <Compile Include="Util\UI\BlurHelper.cs" />
     <Compile Include="Util\UI\BoxHelper.cs" />
-    <Compile Include="Rubbish\SystemHelper.cs" />
-    <Compile Include="Rubbish\ThemeManager.cs" />
     <Compile Include="Util\UI\UIHelper.cs" />
-    <Compile Include="Rubbish\Language.cs" />
     <Compile Include="Model\ChoicerContentStartArgs.cs" />
     <Compile Include="Util\Data\Converter.cs" />
     <Compile Include="Util\Custom\ITheme.cs" />
@@ -174,8 +170,6 @@
     </Compile>
     <Compile Include="MVVM\FlexiableCommand.cs" />
     <Compile Include="UI\IDependOnDeviceChanges.cs" />
-    <Compile Include="Depending\ILanguageChangedListener.cs" />
-    <Compile Include="Depending\DependingObject.cs" />
     <Compile Include="Util\OS\SystemHelper.cs" />
     <Compile Include="Util\Self.cs" />
     <Compile Include="ViewModel\VMContentChoice.cs" />
@@ -185,6 +179,7 @@
     <Compile Include="ViewModel\VMReboot.cs" />
     <Compile Include="ViewModel\VMMainWindow.cs" />
     <Compile Include="ViewModel\VMRunningWindow.cs" />
+    <Compile Include="Util\Bus\DeviceSelectionObserver.cs" />
     <Compile Include="View\DialogContent\ContentBase.xaml.cs">
       <DependentUpon>ContentBase.xaml</DependentUpon>
     </Compile>
@@ -365,7 +360,6 @@
     <Compile Include="Windows\UpdateNoticeWindow.xaml.cs">
       <DependentUpon>UpdateNoticeWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Rubbish\LanguageHelper.cs" />
     <Compile Include="Util\OS\NativeMethods.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -413,10 +407,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\Themes\ThemeBase.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Rubbish\Langs\ru-RU.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

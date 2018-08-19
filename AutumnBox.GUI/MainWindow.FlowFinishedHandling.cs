@@ -12,14 +12,10 @@
 *
 \* =============================================================================*/
 using AutumnBox.Basic.Flows;
-using AutumnBox.GUI.Helper;
 using AutumnBox.GUI.Windows;
 using AutumnBox.Basic.Flows.Result;
 using AutumnBox.Basic.FlowFramework;
-using System.Media;
 using AutumnBox.GUI.Properties;
-using System.Reflection;
-using System.Windows.Media;
 using AutumnBox.GUI.Util.UI;
 
 namespace AutumnBox.GUI

@@ -4,9 +4,10 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.Basic.Device;
-using AutumnBox.GUI.Depending;
 using AutumnBox.GUI.MVVM;
+using AutumnBox.GUI.Util.Bus;
 using AutumnBox.OpenFramework.Warpper;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -17,7 +18,7 @@ using System.Windows.Media.Imaging;
 
 namespace AutumnBox.GUI.ViewModel
 {
-    class VMExtensions : ViewModelBase,ISelectDeviceChangedListener,IOnExtensionFxLoadedListener
+    class VMExtensions : ViewModelBase
     {
         #region WW
         public class WarpperWarpper
@@ -135,18 +136,16 @@ namespace AutumnBox.GUI.ViewModel
         #endregion
 
         #region Device
-        public DeviceBasicInfo CurrentDevice { get; set; }
-
-        public void OnSelectNoDevice()
+        public void OnSelectNoDevice(object sender, EventArgs e)
         {
             Selected = null;
             BtnStatus = false;
         }
 
-        public void OnSelectDevice()
+        public void OnSelectDevice(object sender, EventArgs e)
         {
             Selected = null;
-            BtnStatus = (targetState & CurrentDevice.State) != 0;
+            BtnStatus = (targetState & DeviceSelectionObserver.Instance.CurrentDevice.State) != 0;
         }
 
         #endregion
@@ -164,12 +163,20 @@ namespace AutumnBox.GUI.ViewModel
             this.targetState = targetState;
             _runExtension = new FlexiableCommand((args) =>
             {
-                Selected.Warpper.RunAsync(CurrentDevice);
+                Selected.Warpper.RunAsync(DeviceSelectionObserver.Instance.CurrentDevice);
             });
-            Selected = null;
-            BtnStatus = false;
+            ComObserver();
         }
-        public void OnExtensionFxLoaded()
+        private void ComObserver()
+        {
+            DeviceSelectionObserver.Instance.SelectedDevice += OnSelectDevice;
+            DeviceSelectionObserver.Instance.SelectedNoDevice += OnSelectNoDevice;
+            OpenFxObserver.Instance.Loaded += (_, __) =>
+            {
+                LoadExtensions();
+            };
+        }
+        public void LoadExtensions()
         {
             var filted = from warpper in OpenFramework.Management.Manager.InternalManager.Warppers
                          where (warpper.Info.RequiredDeviceStates & targetState) != 0

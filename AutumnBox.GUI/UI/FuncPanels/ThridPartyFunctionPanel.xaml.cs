@@ -1,24 +1,17 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
-using System.Drawing;
 using System.IO;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using AutumnBox.Basic.Device;
-using AutumnBox.GUI.I18N;
 using AutumnBox.GUI.UI.CstPanels;
 using AutumnBox.GUI.UI.Fp;
-using AutumnBox.GUI.Windows;
 using AutumnBox.OpenFramework;
 using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.Management;
 using AutumnBox.OpenFramework.Warpper;
-using AutumnBox.Support.Log;
 
 namespace AutumnBox.GUI.UI.FuncPanels
 {

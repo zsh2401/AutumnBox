@@ -11,7 +11,6 @@
 * Company: I am free man
 *
 \* =============================================================================*/
-using AutumnBox.GUI.Windows;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
@@ -20,11 +19,8 @@ using AutumnBox.Basic.Util;
 using AutumnBox.Basic.MultipleDevices;
 using System.Windows.Threading;
 using System.Media;
-using AutumnBox.GUI.Depending;
 using AutumnBox.GUI.ViewModel;
-using AutumnBox.GUI.Util.Net;
 using AutumnBox.GUI.Util.UI;
-using AutumnBox.GUI.Util.OpenFxManagement;
 
 namespace AutumnBox.GUI
 {
@@ -39,7 +35,6 @@ namespace AutumnBox.GUI
         {
             InitializeComponent();
             DataContext = ViewModel;
-            ListenerManager.Instance.RegisterEventSource(PanelMain.PanelDevices, ViewModel);
         }
 
         private void RegisterEvent()
@@ -75,7 +70,6 @@ namespace AutumnBox.GUI
             ViewModel.LoadAsync(() =>
             {
                 RegisterEvent();
-                PanelMain.PanelDevices.Work();
             });
 #if !DEBUG
             Util.Extensions.SuppressScriptErrors(WTF, true);

@@ -5,24 +5,39 @@
 *************************************************/
 
 using AutumnBox.Basic.Device;
-using AutumnBox.GUI.Depending;
 using AutumnBox.GUI.MVVM;
-using AutumnBox.Support.Log;
+using AutumnBox.GUI.Util.Bus;
 
 namespace AutumnBox.GUI.ViewModel
 {
-    class VMDeviceDetails : ViewModelBase, ISelectDeviceChangedListener
+    class VMDeviceDetails : ViewModelBase
     {
-        public DeviceBasicInfo CurrentDevice { private get; set; }
-
-        public void OnSelectDevice()
+        #region MVVM
+        #endregion
+        public VMDeviceDetails()
         {
-            Logger.Debug(this,"good");
+            DeviceSelectionObserver.Instance.SelectedDevice += SelectedDevice;
+            DeviceSelectionObserver.Instance.SelectedNoDevice += SelectedNoDevice;
         }
 
-        public void OnSelectNoDevice()
+        private void SelectedNoDevice(object sender, System.EventArgs e)
         {
-            
+            Reset();
+        }
+
+        private void SelectedDevice(object sender, System.EventArgs e)
+        {
+            By(DeviceSelectionObserver.Instance.CurrentDevice);
+        }
+
+        private void Reset() { }
+
+        private void By(DeviceBasicInfo device) { }
+
+        ~VMDeviceDetails()
+        {
+            DeviceSelectionObserver.Instance.SelectedDevice -= SelectedDevice;
+            DeviceSelectionObserver.Instance.SelectedNoDevice -= SelectedNoDevice;
         }
     }
 }

@@ -7,7 +7,9 @@
 using AutumnBox.Basic.Device;
 using AutumnBox.Basic.MultipleDevices;
 using AutumnBox.GUI.MVVM;
+using AutumnBox.GUI.Util.Bus;
 using AutumnBox.GUI.Windows;
+using AutumnBox.Support.Log;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Input;
@@ -16,24 +18,6 @@ namespace AutumnBox.GUI.ViewModel
 {
     class VMConnectDevices : ViewModelBase
     {
-        private DevicesMonitor.DevicesMonitorCore core = new DevicesMonitor.DevicesMonitorCore();
-        public void Work()
-        {
-            core.DevicesChanged += (s, e) =>
-            {
-                Devices = e.DevicesList;
-                if (Devices.Count() > 0)
-                {
-                    Selected = _devices[0];
-                }
-                else
-                {
-                    Selected = DeviceBasicInfo.None;
-                }
-            };
-            core.Begin();
-
-        }
         public string DisplayMemeberPath { get; set; } = "Serial";
 
         public DeviceBasicInfo Selected
@@ -46,6 +30,7 @@ namespace AutumnBox.GUI.ViewModel
             {
                 _selected = value;
                 RaisePropertyChanged();
+                RaiseBusEvent();
             }
         }
         private DeviceBasicInfo _selected;
@@ -60,6 +45,14 @@ namespace AutumnBox.GUI.ViewModel
             {
                 _devices = value.ToArray();
                 RaisePropertyChanged();
+                if (value.Count() > 0)
+                {
+                    Selected = _devices[0];
+                }
+                else
+                {
+                    Selected = DeviceBasicInfo.None;
+                }
             }
         }
         private DeviceBasicInfo[] _devices;
@@ -82,6 +75,25 @@ namespace AutumnBox.GUI.ViewModel
             {
                 new DebugWindow().Show();
             });
+            ConnectedDevicesListener.Instance.DevicesChanged += ConnectedDevicesChanged;
+        }
+
+        private void RaiseBusEvent()
+        {
+            Logger.Debug(this,"Raise event");
+            if (Selected == DeviceBasicInfo.None)
+            {
+                DeviceSelectionObserver.Instance.RaiseSelectNoDevice();
+            }
+            else
+            {
+                DeviceSelectionObserver.Instance.RaiseSelectDevice(Selected);
+            }
+        }
+
+        private void ConnectedDevicesChanged(object sender, DevicesChangedEventArgs e)
+        {
+            Devices = e.DevicesList;
         }
     }
 }

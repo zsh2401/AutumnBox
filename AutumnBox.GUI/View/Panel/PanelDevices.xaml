@@ -6,7 +6,7 @@
              mc:Ignorable="d" d:DesignWidth="177.009" d:DesignHeight="303.769">
     <GroupBox Header="{DynamicResource PanelDevicesTitle}">
         <Grid>
-            <ListBox VerticalAlignment="Top"  DisplayMemberPath="{Binding DisplayMemeberPath}" ItemsSource="{Binding Devices}" SelectedItem="{Binding Selected,Mode=TwoWay}" SelectionChanged="ListBox_SelectionChanged" Height="151"/>
+            <ListBox VerticalAlignment="Top"  DisplayMemberPath="{Binding DisplayMemeberPath}" ItemsSource="{Binding Devices}" SelectedItem="{Binding Selected,Mode=TwoWay}" Height="151"/>
             <StackPanel Orientation="Vertical" VerticalAlignment="Bottom">
                 <Button Style="{DynamicResource MaterialDesignFlatButton}" FontFamily="{DynamicResource AutumnBox.Font}" Content="{DynamicResource PanelDevicesConnectTo}"  Command="{Binding ConnectDevice}"  FontSize="12"/>
                 <Button Style="{DynamicResource MaterialDesignFlatButton}" FontFamily="{DynamicResource AutumnBox.Font}" Content="{DynamicResource PanelDevicesEnableCurrent}" Command="{Binding OpenDeviceNetDebugging}"  FontSize="12"/>

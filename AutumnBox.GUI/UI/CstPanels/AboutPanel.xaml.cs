@@ -1,13 +1,6 @@
-﻿using AutumnBox.GUI.Helper;
-using AutumnBox.GUI.UI.Fp;
+﻿using AutumnBox.GUI.UI.Fp;
 using AutumnBox.GUI.Util;
-using AutumnBox.GUI.Windows;
-using System;
-using System.Diagnostics;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
-using System.Windows.Media.Animation;
 
 namespace AutumnBox.GUI.UI.CstPanels
 {
