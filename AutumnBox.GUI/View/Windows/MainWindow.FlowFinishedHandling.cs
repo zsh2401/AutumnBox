@@ -18,7 +18,7 @@ using AutumnBox.Basic.FlowFramework;
 using AutumnBox.GUI.Properties;
 using AutumnBox.GUI.Util.UI;
 
-namespace AutumnBox.GUI
+namespace AutumnBox.GUI.View.Windows
 {
     partial class MainWindow
     {

@@ -12,7 +12,27 @@ namespace AutumnBox.GUI.ViewModel
 {
     class VMDeviceDetails : ViewModelBase
     {
+        private const string DEFAULT_VALUE = "-";
         #region MVVM
+        public string Status
+        {
+            get => status; set
+            {
+                status = value;
+                RaisePropertyChanged();
+            }
+        }
+        private string status;
+
+        public string Brand
+        {
+            get => status; set
+            {
+                brand = value;
+                RaisePropertyChanged();
+            }
+        }
+        private string brand;
         #endregion
         public VMDeviceDetails()
         {
@@ -30,7 +50,11 @@ namespace AutumnBox.GUI.ViewModel
             By(DeviceSelectionObserver.Instance.CurrentDevice);
         }
 
-        private void Reset() { }
+        private void Reset()
+        {
+            DeviceHardwareInfo result;
+
+        }
 
         private void By(DeviceBasicInfo device) { }
 

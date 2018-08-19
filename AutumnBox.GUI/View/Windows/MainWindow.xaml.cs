@@ -23,7 +23,7 @@ using AutumnBox.GUI.ViewModel;
 using AutumnBox.GUI.Util.UI;
 using AutumnBox.GUI.Util;
 
-namespace AutumnBox.GUI
+namespace AutumnBox.GUI.View.Windows
 {
     /// <summary>
     /// Window1.xaml 的交互逻辑

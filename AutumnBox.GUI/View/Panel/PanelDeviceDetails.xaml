@@ -3,11 +3,51 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             mc:Ignorable="d" d:DesignWidth="300" Height="168.376">
-    <Grid>
-
-        <TextBlock Margin="0,0,0,123">sadassad</TextBlock>
-        <TextBlock Margin="10,50,10,10" TextWrapping="Wrap" Text="{Binding Model.Brand}"/>
-
+             FontFamily="{DynamicResource AutumnBox.Font}"
+             FontSize="12"
+             mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="220">
+    <Grid HorizontalAlignment="Center" Width="600" MaxWidth="670" MaxHeight="220">
+        <StackPanel Orientation="Vertical">
+            <StackPanel  Height="60" Margin="10,10,10,0" Orientation="Horizontal">
+                <TextBlock Text="{DynamicResource PanelDeviceDetailsDeviceState}" FontSize="20"/>
+                <TextBlock Margin="20,0,0,0" Text="{Binding StateString}" FontSize="40"/>
+            </StackPanel>
+            <StackPanel Height="150" Width="550" Margin="0,0,0,0" Orientation="Horizontal">
+                <StackPanel  Width="275">
+                    <TextBlock TextAlignment="Center" Text="{DynamicResource PanelDeviceDetailsHw}"/>
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                        <TextBlock Width="50" Text="{DynamicResource PanelDeviceDetailsBrand}"/>
+                        <TextBlock Text="{Binding Brand}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                        <TextBlock Width="50" Text="{DynamicResource PanelDeviceDetailsModel}"/>
+                        <TextBlock Text="{Binding Model}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                        <TextBlock Width="50" Text="{DynamicResource PanelDeviceDetailsProductName}"/>
+                        <TextBlock Text="{Binding Product}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                        <TextBlock Width="50" Text="{DynamicResource PanelDeviceDetailsStorage}"/>
+                        <TextBlock Text="{Binding Storage}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                        <TextBlock Width="50" Text="{DynamicResource PanelDeviceDetailsRam}"/>
+                        <TextBlock Text="{Binding Ram}"/>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Width="275" >
+                    <TextBlock TextAlignment="Center" Text="{DynamicResource PanelDeviceDetailsSw}"/>
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                        <TextBlock Width="50" Text="{DynamicResource PanelDeviceDetailsRoot}"/>
+                        <TextBlock Text="{Binding Root}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                        <TextBlock Width="50" Text="{DynamicResource PanelDeviceDetailsAndroidVersion}"/>
+                        <TextBlock Text="{Binding AndroidVersion}"/>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </UserControl>

@@ -13,6 +13,5 @@ namespace AutumnBox.GUI.View.Panel
             InitializeComponent();
             DataContext = new VMDeviceDetails();
         }
-
     }
 }

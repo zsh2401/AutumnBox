@@ -341,7 +341,7 @@
     <Compile Include="Windows\FlowResultWindow.xaml.cs">
       <DependentUpon>FlowResultWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="View\Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\MiFlashWindow.xaml.cs">
@@ -382,7 +382,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <Compile Include="MainWindow.FlowFinishedHandling.cs" />
+    <Compile Include="View\Windows\MainWindow.FlowFinishedHandling.cs" />
     <Compile Include="UI\FuncPanels\PoweronFuncsUx\PoweronFuncsUXImp.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -703,7 +703,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainWindow.xaml">
+    <Page Include="View\Windows\MainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -14,6 +14,7 @@
 using AutumnBox.Basic.Util;
 using AutumnBox.GUI.Properties;
 using AutumnBox.GUI.Util;
+using AutumnBox.GUI.View.Windows;
 using AutumnBox.GUI.Windows;
 using AutumnBox.Support.Log;
 using Spring.Context;

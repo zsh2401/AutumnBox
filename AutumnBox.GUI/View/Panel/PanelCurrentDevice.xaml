@@ -5,12 +5,12 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AutumnBox.GUI.View.Panel"
              xmlns:panel="clr-namespace:AutumnBox.GUI.View.Panel"
-             mc:Ignorable="d" d:DesignHeight="601.752" d:DesignWidth="908.802">
+             mc:Ignorable="d" d:DesignHeight="566" d:DesignWidth="821">
     <Grid>
         <panel:PanelDeviceDetails Margin="10,10,207,0" VerticalAlignment="Top" Height="219"></panel:PanelDeviceDetails>
         <local:PanelReboot Margin="0,10,10,0" Height="219" VerticalAlignment="Top" HorizontalAlignment="Right" Width="192"></local:PanelReboot>
 
-        <TabControl Margin="10,245,28,10" Background="{x:Null}" BorderBrush="{DynamicResource PrimaryLightBrush}">
+        <TabControl Margin="10,245,10,10" Background="{x:Null}" BorderBrush="{DynamicResource PrimaryLightBrush}">
             <TabItem  Style="{DynamicResource AtmbxTabItem}" TabIndex="0" Header="{DynamicResource PanelCurrentDevicePoweron}" Margin="-2,-2,-14,0"  FontSize="16">
                 <local:PanelExtension x:Name="PoweronPanel" TargetDeviceState="Poweron" Margin="0,0,0,0"/>
             </TabItem>
