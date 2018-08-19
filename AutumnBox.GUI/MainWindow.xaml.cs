@@ -21,6 +21,7 @@ using System.Windows.Threading;
 using System.Media;
 using AutumnBox.GUI.ViewModel;
 using AutumnBox.GUI.Util.UI;
+using AutumnBox.GUI.Util;
 
 namespace AutumnBox.GUI
 {
