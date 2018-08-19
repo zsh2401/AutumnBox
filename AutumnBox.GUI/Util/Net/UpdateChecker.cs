@@ -11,7 +11,6 @@
 * Company: I am free man
 *
 \* =============================================================================*/
-using AutumnBox.GUI.Helper;
 using AutumnBox.GUI.Properties;
 using AutumnBox.Support.Log;
 using Newtonsoft.Json;

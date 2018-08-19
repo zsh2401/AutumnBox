@@ -5,29 +5,34 @@
 *************************************************/
 
 using AutumnBox.Basic.Device;
-using AutumnBox.GUI.Depending;
 using AutumnBox.GUI.MVVM;
 using System.Windows.Input;
 
 namespace AutumnBox.GUI.ViewModel
 {
-    class VMReboot : ViewModelBase, ISelectDeviceChangedListener
+    class VMReboot : ViewModelBase
     {
         public DeviceBasicInfo CurrentDevice { get; set; }
 
         public ICommand ToSystem => _toSystem;
-        private readonly FlexiableCommand _toSystem;
+        private FlexiableCommand _toSystem;
 
         public ICommand ToRecovery => _toRecovery;
-        private readonly FlexiableCommand _toRecovery;
+        private FlexiableCommand _toRecovery;
 
         public ICommand ToFastboot => _toFastboot;
-        private readonly FlexiableCommand _toFastboot;
+        private FlexiableCommand _toFastboot;
 
         public ICommand To9008 => _to9008;
-        private readonly FlexiableCommand _to9008;
+        private FlexiableCommand _to9008;
 
         public VMReboot()
+        {
+            InitCommands();
+            InitEvents();
+        }
+
+        private void InitCommands()
         {
             _toSystem = new FlexiableCommand(() =>
             {
@@ -48,10 +53,16 @@ namespace AutumnBox.GUI.ViewModel
             {
                 DeviceRebooter.Reboot(CurrentDevice, RebootOptions.Snapdragon9008);
             })
-            { CanExecuteProp = false }; ;
+            { CanExecuteProp = false };
         }
 
-        public void OnSelectNoDevice()
+        private void InitEvents()
+        {
+            Util.Bus.DeviceSelectionObserver.Instance.SelectedDevice += DeviceSelectionChanged;
+            Util.Bus.DeviceSelectionObserver.Instance.SelectedNoDevice += SelectedNone;
+        }
+
+        private void SelectedNone(object sender, System.EventArgs e)
         {
             _to9008.CanExecuteProp = false;
             _toSystem.CanExecuteProp = false;
@@ -59,7 +70,7 @@ namespace AutumnBox.GUI.ViewModel
             _toRecovery.CanExecuteProp = false;
         }
 
-        public void OnSelectDevice()
+        private void DeviceSelectionChanged(object sender, System.EventArgs e)
         {
             _to9008.CanExecuteProp = true;
             _toSystem.CanExecuteProp = true;

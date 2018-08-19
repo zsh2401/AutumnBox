@@ -5,7 +5,6 @@
 *************************************************/
 
 using AutumnBox.Basic.Device;
-using AutumnBox.GUI.Helper;
 using AutumnBox.GUI.Util.UI;
 
 namespace AutumnBox.GUI.UI.FuncPanels.PoweronFuncsUx

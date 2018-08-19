@@ -4,27 +4,22 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.Basic.Util;
-using AutumnBox.GUI.Depending;
-using AutumnBox.GUI.Model;
 using AutumnBox.GUI.MVVM;
 using AutumnBox.GUI.Properties;
 using AutumnBox.GUI.Util;
+using AutumnBox.GUI.Util.Bus;
+using AutumnBox.GUI.Util.I18N;
 using AutumnBox.GUI.Util.OpenFxManagement;
 using AutumnBox.GUI.Util.UI;
-using AutumnBox.GUI.View.DialogContent;
 using AutumnBox.OpenFramework;
 using AutumnBox.Support.Log;
-using MaterialDesignThemes.Wpf;
 using System;
-using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Windows.Input;
-using static AutumnBox.GUI.Depending.ListenerManager;
 
 namespace AutumnBox.GUI.ViewModel
 {
-    class VMMainWindow : ViewModelBase, ILanguageChangedListener, INotifyFxLoaded
+    class VMMainWindow : ViewModelBase
     {
         public string Title
         {
@@ -42,8 +37,18 @@ namespace AutumnBox.GUI.ViewModel
 
         public VMMainWindow()
         {
+            LanguageManager.Instance.LanguageChanged += (s, e) =>
+            {
+                InitTitle();
+            };
             InitTitle();
         }
+
+        private void Instance_LanguageChanged(object sender, EventArgs e)
+        {
+            InitTitle();
+        }
+
         private void InitTitle()
         {
 #if DEBUG
@@ -52,11 +57,6 @@ namespace AutumnBox.GUI.ViewModel
             string comp = "Release";
 #endif
             Title = $"{App.Current.Resources["AppName"]}-{Self.Version}-{comp}";
-        }
-
-        public void OnLanguageChanged(LangChangedEventArgs args)
-        {
-            InitTitle();
         }
 
         public double Progress
@@ -99,8 +99,6 @@ namespace AutumnBox.GUI.ViewModel
         }
         private int tranIndex;
 
-        public event EventHandler FxLoaded;
-
         public void LoadAsync(Action callback = null)
         {
             Task.Run(() =>
@@ -112,9 +110,10 @@ namespace AutumnBox.GUI.ViewModel
                 });
             });
         }
+
         private void Load()
         {
-            Progress = 0; 
+            Progress = 0;
             //如果设置在启动时打开调试窗口
             if (Settings.Default.ShowDebuggingWindowNextLaunch)
             {
@@ -160,9 +159,10 @@ namespace AutumnBox.GUI.ViewModel
             Progress = 60;
             LoadingTip = App.Current.Resources["ldmsgLoadingExtensions"].ToString();
             OpenFrameworkManager.Init();
-            FxLoaded?.Invoke(this, new EventArgs());
+            OpenFxObserver.Instance.OnLoaded();
             Progress = 100;
             LoadingTip = "Enjoy!";
+            ConnectedDevicesListener.Instance.Work();
             Thread.Sleep(1 * 1000);
             TranSelectIndex = 1;
         }
