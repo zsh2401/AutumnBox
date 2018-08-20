@@ -7,8 +7,8 @@
              xmlns:local="clr-namespace:AutumnBox.GUI.View.Panel"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-             d:DesignHeight="566" d:DesignWidth="821">
-    <Grid Width="600">
+             d:DesignHeight="566" d:DesignWidth="820">
+    <Grid Width="720">
         <StackPanel  Orientation="Vertical">
             <materialDesign:Card Margin="10" Height="100">
                 <StackPanel>

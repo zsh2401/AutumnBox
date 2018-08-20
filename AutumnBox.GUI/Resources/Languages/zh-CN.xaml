@@ -38,9 +38,13 @@
     <s:String x:Key="PanelExtensionsButtonDisabled">此拓展不可在当前情况下运行</s:String>
     
      <!--PanelCurrentDevice-->
-    <s:String x:Key="PanelCurrentDeviceRecoveryAndSideload">恢复模式/Sideload</s:String>
-    <s:String x:Key="PanelCurrentDeviceFastboot">Fastboot</s:String>
     <s:String x:Key="PanelCurrentDevicePoweron">开机</s:String>
+    <s:String x:Key="PanelCurrentDeviceRecovery">恢复模式</s:String>
+    <s:String x:Key="PanelCurrentDeviceSideload">Sideload</s:String>
+    <s:String x:Key="PanelCurrentDeviceFastboot">Fastboot</s:String>
+    <s:String x:Key="PanelCurrentDeviceUnknown">未知状态</s:String>
+    <s:String x:Key="PanelCurrentDeviceUnauthorized">未授权USB调试</s:String>
+     <s:String x:Key="PanelCurrentDeviceOffline">异常离线状态</s:String>
     
     <!--PanelReboot-->
     <s:String x:Key="PanelRebootTitle">重启到</s:String>
