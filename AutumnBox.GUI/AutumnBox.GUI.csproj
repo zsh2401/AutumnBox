@@ -140,6 +140,7 @@
     <Compile Include="Util\AppLoader.cs" />
     <Compile Include="Util\Bus\ConnectedDevicesListener.cs" />
     <Compile Include="Util\Bus\OpenFxObserver.cs" />
+    <Compile Include="Util\Bus\Sounds.cs" />
     <Compile Include="Util\UI\BlurHelper.cs" />
     <Compile Include="Util\UI\BoxHelper.cs" />
     <Compile Include="Util\UI\UIHelper.cs" />
@@ -401,6 +402,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\Themes\Ctrls\ExtTabItemStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Themes\Ctrls\ScrollViewerStyle.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

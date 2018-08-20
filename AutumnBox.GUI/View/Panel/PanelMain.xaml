@@ -17,8 +17,11 @@
                 <TabItem  Style="{DynamicResource AtmbxTabItem}" TabIndex="1" Header="{DynamicResource PanelMainCurrent}" Margin="14,-2,-18,0"  FontSize="16">
                     <local:PanelCurrentDevice/>
                 </TabItem>
+
                 <TabItem  Style="{DynamicResource AtmbxTabItem}" TabIndex="1" Header="{DynamicResource PanelMainMore}" Margin="18,-2,-22,0"  FontSize="16">
-                    <local:PanelMore/>
+                    <ScrollViewer HorizontalScrollBarVisibility="Disabled"  Template="{DynamicResource AtmbxScrollViewer}" VerticalScrollBarVisibility="Visible">
+                        <local:PanelMore/>
+                    </ScrollViewer>
                 </TabItem>
             </TabControl>
             <cstm:PotdBox Margin="0,0,8,111" Width="185" Height="139" HorizontalAlignment="Right" VerticalAlignment="Bottom"></cstm:PotdBox>
