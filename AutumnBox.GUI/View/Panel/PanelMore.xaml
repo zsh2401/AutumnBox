@@ -30,6 +30,23 @@
                     <local:PanelExtension TargetDeviceState="NoMatter" Height="252"/>
                 </StackPanel>
             </materialDesign:Card>
+            <materialDesign:Card Margin="10">
+                <StackPanel Orientation="Vertical">
+                    <TextBlock FontSize="15" Margin="15" Text="{DynamicResource PanelMoreCommonlyUsed}"/>
+                    <WrapPanel Margin="10,0,10,10">
+                        <Button Content="{DynamicResource PanelMoreLinkGapps}" CommandParameter="https://opengapps.org/" Style="{DynamicResource MaterialDesignFlatButton}"  Command="{Binding OpenUrl}" />
+                        <Button Content="{DynamicResource PanelMoreLinkAICP}" CommandParameter="http://www.aicp-rom.com/" Style="{DynamicResource MaterialDesignFlatButton}"  Command="{Binding OpenUrl}" />
+                        <Button Content="{DynamicResource PanelMoreLinkMiuiLineFlash}" CommandParameter="http://www.miui.com/shuaji-393.html" Style="{DynamicResource MaterialDesignFlatButton}"  Command="{Binding OpenUrl}" />
+                        <Button Content="{DynamicResource PanelMoreLinkDownloadMiFlash}" CommandParameter="http://www.miui.com/shuaji-393.html" Style="{DynamicResource MaterialDesignFlatButton}"  Command="{Binding OpenUrl}" />
+                        <Button Content="{DynamicResource PanelMoreLinkMIUI}" CommandParameter="https://miui.com/" Style="{DynamicResource MaterialDesignFlatButton}"  Command="{Binding OpenUrl}" />
+                        <Button Content="{DynamicResource PanelMoreLinkMiuiBBS}" CommandParameter="https://bbs.miui.com/" Style="{DynamicResource MaterialDesignFlatButton}"  Command="{Binding OpenUrl}" />
+                        <Button Content="{DynamicResource PanelMoreLinkMokee}" CommandParameter="https://mokeedev.com/" Style="{DynamicResource MaterialDesignFlatButton}"  Command="{Binding OpenUrl}" />
+                        <Button Content="{DynamicResource PanelMoreLinkMokeeBBS}" CommandParameter="https://bbs.mokeedev.com/" Style="{DynamicResource MaterialDesignFlatButton}"  Command="{Binding OpenUrl}" />
+                        <Button Content="{DynamicResource PanelMoreLinkCoolapk}" CommandParameter="https://coolapk.com/" Style="{DynamicResource MaterialDesignFlatButton}"  Command="{Binding OpenUrl}" />
+                        <Button Content="{DynamicResource PanelMoreLinkMtBBS}" CommandParameter="https://bbs.binmt.cc/" Style="{DynamicResource MaterialDesignFlatButton}"  Command="{Binding OpenUrl}" />
+                    </WrapPanel>
+                </StackPanel>
+            </materialDesign:Card>
         </StackPanel>
 
     </Grid>

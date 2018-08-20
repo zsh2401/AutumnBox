@@ -88,6 +88,19 @@ Description:
      <s:String x:Key="PanelMoreExtensionsDownloadCenter">Download extensions</s:String>
      <s:String x:Key="PanelMoreExtensionSlogan">Download extension,do you want to do</s:String>
     <s:String x:Key="PanelMoreExtensionApi">Extension Fx API</s:String>
+    <s:String x:Key=" PanelMoreCommonlyUsed">Commonly used</s:String>
+    <s:String x:Key="PanelMoreLinkAICP">AICP-ROM</s:String>
+    <s:String x:Key="PanelMoreLinkRR">RR-ROM</s:String>
+    <s:String x:Key="PanelMoreLinkGapps">Open-Gapps</s:String>
+    <s:String x:Key="PanelMoreLinkMiuiLineFlash">MIUI Line-flash package</s:String>
+    <s:String x:Key="PanelMoreLinkDownloadMiFlash">Download mi flash tools</s:String>
+    <s:String x:Key="PanelMoreLinkMiuiBBS">MIUI BBS</s:String>
+    <s:String x:Key="PanelMoreLinkMIUI">MIUI official website</s:String>
+    <s:String x:Key="PanelMoreLinkMokee">Download mokee</s:String>
+    <s:String x:Key="PanelMoreLinkMokeeBBS">Mokee bbs</s:String>
+    <s:String x:Key="PanelMoreLinkMtBBS">MT BBS</s:String>
+    <s:String x:Key="PanelMoreLinkLineageOS">LineageOS</s:String>
+    <s:String x:Key="PanelMoreLinkCoolapk">Coolapk</s:String>
     
     <!--按钮-->
      <s:String x:Key="btnAppOpsXAct">Activate AppOpsX</s:String>
