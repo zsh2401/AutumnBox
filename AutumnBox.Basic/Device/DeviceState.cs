@@ -47,12 +47,12 @@ namespace AutumnBox.Basic.Device
     /// <summary>
     /// 设备状态枚举
     /// </summary>
-    public enum DeviceState
+    public enum DeviceState : int
     {
         /// <summary>
         /// 所有状态,这个状态不可能发生在实机上,仅用于某些无关设备的模块
         /// </summary>
-        NoMatter = 2401,
+        NoMatter = 1 << 24,
 
         /// <summary>
         /// 无设备

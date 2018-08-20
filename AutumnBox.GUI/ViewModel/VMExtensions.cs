@@ -188,7 +188,7 @@ namespace AutumnBox.GUI.ViewModel
         public void LoadExtensions()
         {
             var filted = from warpper in OpenFramework.Management.Manager.InternalManager.Warppers
-                         where (warpper.Info.RequiredDeviceStates & targetState) != 0
+                         where warpper.Info.RequiredDeviceStates.HasFlag(targetState)
                          select warpper;
             Warppers = WarpperWarpper.From(filted);
         }

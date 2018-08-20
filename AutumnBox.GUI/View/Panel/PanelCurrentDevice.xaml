@@ -12,13 +12,25 @@
 
         <TabControl Margin="10,245,10,10" SelectedIndex="{Binding TabSelectedIndex,Mode=TwoWay}" Background="{x:Null}" BorderBrush="{DynamicResource PrimaryLightBrush}">
             <TabItem  Style="{DynamicResource AtmbxTabItem}" TabIndex="0" Header="{DynamicResource PanelCurrentDevicePoweron}" Margin="-2,-2,-14,0"  FontSize="16">
-                <local:PanelExtension x:Name="PoweronPanel" TargetDeviceState="Poweron" Margin="0,0,0,0"/>
+                <local:PanelExtension  TargetDeviceState="Poweron" Margin="0,0,0,0"/>
             </TabItem>
-            <TabItem Style="{DynamicResource AtmbxTabItem}" TabIndex="2"  Header="{DynamicResource PanelCurrentDeviceRecoveryAndSideload}" Margin="14,-2,-24,0"  FontSize="16">
-                <local:PanelExtension x:Name="RecoveryPanel" TargetDeviceState="Recovery" Margin="0,0,0,0"/>
+            <TabItem Style="{DynamicResource AtmbxTabItem}" TabIndex="1"  Header="{DynamicResource PanelCurrentDeviceRecovery}" Margin="14,-2,-24,0"  FontSize="16">
+                <local:PanelExtension  TargetDeviceState="Recovery" Margin="0,0,0,0"/>
+            </TabItem>
+            <TabItem Style="{DynamicResource AtmbxTabItem}" TabIndex="2"  Header="{DynamicResource PanelCurrentDeviceSideload}" Margin="14,-2,-24,0"  FontSize="16">
+                <local:PanelExtension TargetDeviceState="Sideload" Margin="0,0,0,0"/>
             </TabItem>
             <TabItem Style="{DynamicResource AtmbxTabItem}" TabIndex="3"  Header="{DynamicResource PanelCurrentDeviceFastboot}" Margin="24,-2,-27,0"  FontSize="16">
-                <local:PanelExtension  x:Name="FastbootPanel" TargetDeviceState="Fastboot" Margin="0,0,0,0"/>
+                <local:PanelExtension   TargetDeviceState="Fastboot" Margin="0,0,0,0"/>
+            </TabItem>
+            <TabItem Style="{DynamicResource AtmbxTabItem}" TabIndex="4"  Header="{DynamicResource PanelCurrentDeviceUnauthorized}" Margin="27,-2,-36,0"  FontSize="16">
+                <local:PanelExtension TargetDeviceState="Unauthorized" Margin="0,0,0,0"/>
+            </TabItem>
+            <TabItem Style="{DynamicResource AtmbxTabItem}" TabIndex="5"  Header="{DynamicResource PanelCurrentDeviceOffline}" Margin="36,-2,-46,0"  FontSize="16">
+                <local:PanelExtension TargetDeviceState="Offline" Margin="0,0,0,0"/>
+            </TabItem>
+            <TabItem Style="{DynamicResource AtmbxTabItem}" TabIndex="6"  Header="{DynamicResource PanelCurrentDeviceUnknown}" Margin="46,-2,-56,0"  FontSize="16">
+                <local:PanelExtension TargetDeviceState="Unknown" Margin="0,0,0,0"/>
             </TabItem>
         </TabControl>
     </Grid>

@@ -40,17 +40,25 @@ namespace AutumnBox.GUI.ViewModel
                 case Basic.Device.DeviceState.Poweron:
                     TabSelectedIndex = 0;
                     break;
-                case Basic.Device.DeviceState.Sideload:
                 case Basic.Device.DeviceState.Recovery:
                     TabSelectedIndex = 1;
                     break;
-                case Basic.Device.DeviceState.Fastboot:
+                  case Basic.Device.DeviceState.Sideload:
                     TabSelectedIndex = 2;
                     break;
-                case Basic.Device.DeviceState.None:
-                case Basic.Device.DeviceState.Offline:
-                case Basic.Device.DeviceState.Unknown:
+                case Basic.Device.DeviceState.Fastboot:
+                    TabSelectedIndex = 3;
+                    break;
                 case Basic.Device.DeviceState.Unauthorized:
+                    TabSelectedIndex = 4;
+                    break;
+                case Basic.Device.DeviceState.Offline:
+                    TabSelectedIndex = 5;
+                    break;
+                case Basic.Device.DeviceState.Unknown:
+                    TabSelectedIndex = 6;
+                    break;
+                case Basic.Device.DeviceState.None:
                 default:
                     break;
             }
