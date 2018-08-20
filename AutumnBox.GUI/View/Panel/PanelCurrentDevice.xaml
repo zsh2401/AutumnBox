@@ -5,12 +5,16 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AutumnBox.GUI.View.Panel"
              xmlns:panel="clr-namespace:AutumnBox.GUI.View.Panel"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" d:DesignHeight="566" d:DesignWidth="821">
     <Grid>
-        <panel:PanelDeviceDetails Margin="10,10,207,0" VerticalAlignment="Top" Height="219"></panel:PanelDeviceDetails>
-        <local:PanelReboot Margin="0,10,10,0" Height="219" VerticalAlignment="Top" HorizontalAlignment="Right" Width="192"></local:PanelReboot>
-
-        <TabControl Margin="10,245,10,10" SelectedIndex="{Binding TabSelectedIndex,Mode=TwoWay}" Background="{x:Null}" BorderBrush="{DynamicResource PrimaryLightBrush}">
+        <Grid VerticalAlignment="Top" Margin="0,10,0,0" MaxWidth="800" Height="220">
+            <materialDesign:Card HorizontalAlignment="Left" Width="610">
+                <panel:PanelDeviceDetails  VerticalAlignment="Top" Height="219"/>
+            </materialDesign:Card>
+            <local:PanelReboot  HorizontalAlignment="Right"  VerticalAlignment="Top"  Width="170" Height="219"/>
+        </Grid>
+        <TabControl Margin="10,245,10,10" MaxWidth="800" SelectedIndex="{Binding TabSelectedIndex,Mode=TwoWay}" Background="{x:Null}" BorderBrush="{DynamicResource PrimaryLightBrush}">
             <TabItem  Style="{DynamicResource AtmbxTabItem}" TabIndex="0" Header="{DynamicResource PanelCurrentDevicePoweron}" Margin="-2,-2,-14,0"  FontSize="16">
                 <local:PanelExtension  TargetDeviceState="Poweron" Margin="0,0,0,0"/>
             </TabItem>
