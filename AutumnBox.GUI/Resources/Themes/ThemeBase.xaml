@@ -12,6 +12,7 @@
         <ResourceDictionary Source="Ctrls/TabItemStyle.xaml"/>
         <ResourceDictionary Source="Ctrls/ExtTabItemStyle.xaml"/>
         <ResourceDictionary Source="Ctrls/TextBlockStyle.xaml"/>
+        <ResourceDictionary Source="Ctrls/ScrollViewerStyle.xaml"/>
     </ResourceDictionary.MergedDictionaries>
     
     <system:String x:Key="ThemeName">Basic</system:String>

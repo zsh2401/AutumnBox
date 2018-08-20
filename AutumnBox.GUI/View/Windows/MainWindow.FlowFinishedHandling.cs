@@ -17,6 +17,7 @@ using AutumnBox.Basic.Flows.Result;
 using AutumnBox.Basic.FlowFramework;
 using AutumnBox.GUI.Properties;
 using AutumnBox.GUI.Util.UI;
+using AutumnBox.GUI.Util.Bus;
 
 namespace AutumnBox.GUI.View.Windows
 {
@@ -29,7 +30,7 @@ namespace AutumnBox.GUI.View.Windows
             {
                 if (Settings.Default.NotifyOnFinish)
                 {
-                    audioPlayer.Play();
+                    Sounds.OK.Play();
                 }
                 switch (sender.GetType().Name)
                 {

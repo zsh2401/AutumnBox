@@ -30,7 +30,6 @@ namespace AutumnBox.GUI.View.Windows
     /// </summary>
     public sealed partial class MainWindow : Window
     {
-        private readonly SoundPlayer audioPlayer = new SoundPlayer("Resources/Sound/ok.wav");
         private readonly VMMainWindow ViewModel = new VMMainWindow();
         public MainWindow()
         {
