@@ -6,7 +6,7 @@
              FontFamily="{DynamicResource AutumnBox.Font}"
              xmlns:local="clr-namespace:AutumnBox.GUI.View.Panel"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             mc:Ignorable="d" d:DesignWidth="820" Height="814">
+             mc:Ignorable="d" d:DesignWidth="820" Height="890">
     <Grid Width="720">
         <StackPanel  Orientation="Vertical">
             <materialDesign:Card Margin="10" Height="100">
@@ -46,6 +46,9 @@
                         <Button Content="{DynamicResource PanelMoreLinkMtBBS}" CommandParameter="https://bbs.binmt.cc/" Style="{DynamicResource MaterialDesignFlatButton}"  Command="{Binding OpenUrl}" />
                     </WrapPanel>
                 </StackPanel>
+            </materialDesign:Card>
+            <materialDesign:Card Margin="10" >
+                <Image Source="/Resources/Drawable/More/halo.png"/>
             </materialDesign:Card>
         </StackPanel>
 

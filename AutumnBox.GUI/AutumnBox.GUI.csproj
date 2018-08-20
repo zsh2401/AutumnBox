@@ -898,6 +898,9 @@
   <ItemGroup>
     <Resource Include="Resources\Drawable\Home\misakasister.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Drawable\More\halo.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>if $(ConfigurationName) == Release (
