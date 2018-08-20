@@ -91,6 +91,21 @@
      <s:String x:Key="PanelMoreExtensionsDownloadCenter">下载拓展模块</s:String>
      <s:String x:Key="PanelMoreExtensionSlogan">使用各种模块,做你想做的事</s:String>
     <s:String x:Key="PanelMoreExtensionApi">拓展模块API</s:String>
+    <s:String x:Key="PanelMoreCommonlyUsed">玩机常用链接</s:String>
+    <s:String x:Key="PanelMoreLinkAICP">AICP-ROM</s:String>
+    <s:String x:Key="PanelMoreLinkRR">RR-ROM</s:String>
+    <s:String x:Key="PanelMoreLinkGapps">Open-Gapps</s:String>
+    <s:String x:Key="PanelMoreLinkMiuiLineFlash">MIUI线刷包</s:String>
+    <s:String x:Key="PanelMoreLinkDownloadMiFlash">下载MiFlash工具</s:String>
+    <s:String x:Key="PanelMoreLinkMiuiBBS">MIUI论坛</s:String>
+    <s:String x:Key="PanelMoreLinkMIUI">MIUI官网</s:String>
+    <s:String x:Key="PanelMoreLinkMokee">下载魔趣ROM</s:String>
+    <s:String x:Key="PanelMoreLinkMokeeBBS">魔趣论坛</s:String>
+    <s:String x:Key="PanelMoreLinkMtBBS">MT论坛</s:String>
+    <s:String x:Key="PanelMoreLinkLineageOS">LineageOS</s:String>
+    <s:String x:Key="PanelMoreLinkCoolapk">酷安网</s:String>
+  
+    
     <!--按钮-->
     <s:String x:Key="btnAppOpsXAct">激活AppOpsX</s:String>
     <s:String x:Key="btnAccountInfo">账号信息</s:String>
