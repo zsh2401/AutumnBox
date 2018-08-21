@@ -475,17 +475,16 @@ Description:
     </s:String>
 
     <!--关于信息-->
-    <s:String x:Key="AboutMessage">
-This is an open source software that complies with the GPL 3.0 protocol. Please comply with the open source protocol when necessary.
-Developer email zsh2401@163.com
-        
-Acknowledgement of the outstanding contributions made by the following open source projects (in no particular order)
-Spring.AOP | Newtonsoft.Json  | Google Android Debug Bridge | Google Android | Linux | CS-Script | C#
-        
-Thanks to the following people for their support at the initial stage of AutumnBox (in no particular order)
-蚂蚁,饼干怪兽,hxy,yume,滥情空心,web1n,咖枯,八百标兵,EggGrenade,MonoLogueChi,毛线没有团团
-        
-If you have also made outstanding contributions but have not been recorded, please contact me!</s:String>
+    <s:String x:Key="AboutMessage">This is an open source software that complies with the GPL 3.0. Please follow the open source agreement when necessary.
+Developer Email zsh2401@163.com
+        
+Acknowledgements for the outstanding contributions of the following companies and projects (in no particular order)
+  Newtonsoft.Json | Google | Android | Linux | C# | Microsoft | MaterialDesignInXaml
+        
+Thanks to the following people for their support in the early days of AutumnBox (in no particular order)
+MonoLogueChi,饼干怪兽,hxy,yume,滥情空心,web1n,咖枯,毛线没有团团,my0402
+        
+If you have made a great contribution but have not been recorded, please contact me!</s:String>
     <!--关于信息-->
 
     <s:String x:Key="warningOpenNetDebugging">

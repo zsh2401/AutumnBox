@@ -7,6 +7,7 @@
 using AutumnBox.Basic.Device;
 using AutumnBox.GUI.MVVM;
 using AutumnBox.GUI.Util.Bus;
+using AutumnBox.GUI.Util.I18N;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -28,6 +29,7 @@ namespace AutumnBox.GUI.ViewModel
             }
         }
         private Visibility infoPanelVisibility;
+
         public string StateString
         {
             get => stateString; set
@@ -130,8 +132,17 @@ namespace AutumnBox.GUI.ViewModel
         #endregion
         public VMDeviceDetails()
         {
+            LanguageManager.Instance.LanguageChanged += AppLanguageChanged;
             DeviceSelectionObserver.Instance.SelectedDevice += SelectedDevice;
             DeviceSelectionObserver.Instance.SelectedNoDevice += SelectedNoDevice;
+        }
+
+        private void AppLanguageChanged(object sender, EventArgs e)
+        {
+            ResetStateStringByCurrentDevice();
+        }
+        private void ResetStateStringByCurrentDevice() {
+            StateString = App.Current.Resources["PanelDeviceDetailsState" + DeviceSelectionObserver.Instance.CurrentDevice.State].ToString();
         }
 
         private void SelectedNoDevice(object sender, System.EventArgs e)
@@ -154,7 +165,7 @@ namespace AutumnBox.GUI.ViewModel
 
         private void Reset()
         {
-            StateString = App.Current.Resources["PanelDeviceDetailsStateNone"].ToString(); ;
+            ResetStateStringByCurrentDevice();
             Brand = DEFAULT_VALUE;
             AndroidVersion = DEFAULT_VALUE;
             Product = DEFAULT_VALUE;
@@ -171,7 +182,7 @@ namespace AutumnBox.GUI.ViewModel
         {
             int currentCode = ran.Next();
             taskCode = currentCode;
-            StateString = App.Current.Resources["PanelDeviceDetailsState" + device.State].ToString();
+            ResetStateStringByCurrentDevice();
             Dictionary<string, string> buildProp = null;
             await Task.Run(() =>
             {
