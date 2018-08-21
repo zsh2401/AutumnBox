@@ -78,6 +78,7 @@
     <s:String x:Key="PanelDeviceDetailsSw">软件信息</s:String>
     <s:String x:Key="PanelDeviceDetailsRoot">Root</s:String>
     <s:String x:Key="PanelDeviceDetailsAndroidVersion">Android</s:String>
+    
     <!--PanelMain-->
     <s:String x:Key="PanelMainStart">开始</s:String>
      <s:String x:Key="PanelMainCurrent">针对当前设备</s:String>
@@ -105,6 +106,13 @@
     <s:String x:Key="PanelMoreLinkLineageOS">LineageOS</s:String>
     <s:String x:Key="PanelMoreLinkCoolapk">酷安网</s:String>
   
+    <!--ContentConnectNetDevice-->
+    <s:String x:Key="ContentConnectNetDeviceIP">设备IP地址</s:String>
+    <s:String x:Key="ContentConnectNetDevicePort">该设备的网络调试端口</s:String>
+    <s:String x:Key="ContentConnectNetDeviceStateStringIPWrong">IP格式错误,请检查</s:String>
+    <s:String x:Key="ContentConnectNetDeviceStateStringPortWrong">端口格式错误,请检查</s:String>
+    <s:String x:Key="ContentConnectNetDeviceStateStringConnecting">连接中</s:String>
+    <s:String x:Key="ContentConnectNetDeviceStateStringFailed">连接失败</s:String>
     
     <!--按钮-->
     <s:String x:Key="btnAppOpsXAct">激活AppOpsX</s:String>

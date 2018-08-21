@@ -1,0 +1,140 @@
+﻿/*************************************************
+** auth： zsh2401@163.com
+** date:  2018/8/21 21:50:07 (UTC +8:00)
+** desc： ...
+*************************************************/
+
+using AutumnBox.Basic.Flows;
+using AutumnBox.GUI.MVVM;
+using AutumnBox.Support.Log;
+using System;
+using System.Net;
+using System.Threading.Tasks;
+using System.Windows.Media;
+
+namespace AutumnBox.GUI.ViewModel
+{
+    class VMContentConnectNetDevice : ViewModelBase
+    {
+        public const int ADB_NET_DEBUGGING_DEFAULT_PORT = 5555;
+        #region MVVM
+        public string PortString
+        {
+            get => _portString; set
+            {
+                _portString = value;
+                RaisePropertyChanged();
+            }
+        }
+        private string _portString = ADB_NET_DEBUGGING_DEFAULT_PORT.ToString();
+
+        public string StateString
+        {
+            get => _stateString; set
+            {
+                _stateString = value;
+                RaisePropertyChanged();
+            }
+        }
+        private string _stateString = "?";
+
+        public Color StateStringColor
+        {
+            get => _stateStringColor; set
+            {
+                _stateStringColor = value;
+                RaisePropertyChanged();
+            }
+        }
+        private Color _stateStringColor = Colors.Black;
+
+        public string IPString
+        {
+            get => _ipString; set
+            {
+                _ipString = value;
+                RaisePropertyChanged();
+            }
+        }
+        private string _ipString;
+
+        public FlexiableCommand DoConnect
+        {
+            get
+            {
+                return _doConnect;
+            }
+            set
+            {
+                _doConnect = value;
+                RaisePropertyChanged();
+            }
+        }
+        private FlexiableCommand _doConnect;
+        #endregion
+        public Action OnCloseCallback { get; set; }
+        public bool IsRunning { get; set; }
+
+        public VMContentConnectNetDevice()
+        {
+            DoConnect = new FlexiableCommand(DoConnectImp);
+        }
+        private void DoConnectImp(object para)
+        {
+            Logger.Info(this, "hehe");
+            var input = ParseInput();
+            if (!input.Item1) return;
+            ConnectTo(input.Item2);
+        }
+        private async void ConnectTo(IPEndPoint ip)
+        {
+            StateString = App.Current.Resources["ContentConnectNetDeviceStateStringConnecting"].ToString();
+            DoConnect.CanExecuteProp = false;
+            IsRunning = true;
+            var flowArgs = new NetDeviceConnecterArgs()
+            {
+                IPEndPoint = ip
+            };
+            var flow = new NetDeviceConnecter();
+            flow.Init(flowArgs);
+            var executedResult = await Task.Run(() =>
+            {
+                return flow.Run();
+            });
+            IsRunning = false;
+            if (executedResult.ExitCode == 0)
+            {
+                OnCloseCallback();
+            }
+            else
+            {
+                StateString = App.Current.Resources["ContentConnectNetDeviceStateStringFailed"].ToString();
+                DoConnect.CanExecuteProp = true;
+            }
+        }
+        private Tuple<bool, IPEndPoint> ParseInput()
+        {
+            ushort port = 0;
+            IPAddress ipAddress = null;
+            try
+            {
+                ipAddress = IPAddress.Parse(IPString);
+            }
+            catch
+            {
+                StateString = App.Current.Resources["ContentConnectNetDeviceStateStringIPWrong"].ToString();
+                return new Tuple<bool, IPEndPoint>(false, null);
+            }
+            try
+            {
+                port = ushort.Parse(PortString);
+            }
+            catch
+            {
+                StateString = App.Current.Resources["ContentConnectNetDeviceStateStringPortWrong"].ToString();
+                return new Tuple<bool, IPEndPoint>(false, null);
+            }
+            return new Tuple<bool, IPEndPoint>(true, new IPEndPoint(ipAddress, port));
+        }
+    }
+}

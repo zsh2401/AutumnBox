@@ -102,6 +102,14 @@ Description:
     <s:String x:Key="PanelMoreLinkLineageOS">LineageOS</s:String>
     <s:String x:Key="PanelMoreLinkCoolapk">Coolapk</s:String>
     
+    <!--ContentConnectNetDevice-->
+    <s:String x:Key="ContentConnectNetDeviceIP">Device ip address</s:String>
+    <s:String x:Key="ContentConnectNetDevicePort">Device port</s:String>
+    <s:String x:Key="ContentConnectNetDeviceStateStringIPWrong">IP Wrong</s:String>
+    <s:String x:Key="ContentConnectNetDeviceStateStringPortWrong">Port Wrong</s:String>
+    <s:String x:Key="ContentConnectNetDeviceStateStringConnecting">Connecting</s:String>
+    <s:String x:Key="ContentConnectNetDeviceStateStringFailed">Connecting failed</s:String>
+    
     <!--按钮-->
      <s:String x:Key="btnAppOpsXAct">Activate AppOpsX</s:String>
      <s:String x:Key="btnAccountInfo">Account info</s:String>

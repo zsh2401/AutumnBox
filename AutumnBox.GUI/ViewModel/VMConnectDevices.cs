@@ -8,6 +8,7 @@ using AutumnBox.Basic.Device;
 using AutumnBox.Basic.MultipleDevices;
 using AutumnBox.GUI.MVVM;
 using AutumnBox.GUI.Util.Bus;
+using AutumnBox.GUI.View.DialogContent;
 using AutumnBox.GUI.View.Windows;
 using AutumnBox.GUI.Windows;
 using AutumnBox.Support.Log;
@@ -66,22 +67,22 @@ namespace AutumnBox.GUI.ViewModel
         {
             ConnectDevice = new MVVMCommand((p) =>
             {
-                new LogWindow().Show();
+                new ContentConnectNetDevice().Show();
             });
             DisconnectDevice = new MVVMCommand((p) =>
             {
-                new LogWindow().Show();
+                new ContentDisconnectDevice().Show();
             });
-            DisconnectDevice = new MVVMCommand((p) =>
+            OpenDeviceNetDebugging = new MVVMCommand((p) =>
             {
-                new LogWindow().Show();
+                new ContentEnableDeviceNetDebugging().Show();
             });
             ConnectedDevicesListener.Instance.DevicesChanged += ConnectedDevicesChanged;
         }
 
         private void RaiseBusEvent()
         {
-            Logger.Debug(this,"Raise event");
+            Logger.Debug(this, "Raise event");
             if (Selected == DeviceBasicInfo.None)
             {
                 DeviceSelectionObserver.Instance.RaiseSelectNoDevice();

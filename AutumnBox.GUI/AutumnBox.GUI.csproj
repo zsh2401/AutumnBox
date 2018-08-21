@@ -176,6 +176,7 @@
     <Compile Include="Util\OS\SystemHelper.cs" />
     <Compile Include="Util\Self.cs" />
     <Compile Include="ViewModel\VMContentChoice.cs" />
+    <Compile Include="ViewModel\VMContentConnectNetDevice.cs" />
     <Compile Include="ViewModel\VMCurrentDevice.cs" />
     <Compile Include="ViewModel\VMExtensions.cs" />
     <Compile Include="ViewModel\VMMore.cs" />
@@ -186,20 +187,21 @@
     <Compile Include="ViewModel\VMRunningWindow.cs" />
     <Compile Include="Util\Bus\DeviceSelectionObserver.cs" />
     <Compile Include="ViewModel\VMSettingsDialog.cs" />
-    <Compile Include="View\DialogContent\ContentBase.xaml.cs">
-      <DependentUpon>ContentBase.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="View\Controls\AtmbDialogContent.cs" />
     <Compile Include="View\DialogContent\ContentChoice.xaml.cs">
       <DependentUpon>ContentChoice.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\DialogContent\ContentConnectNetDevice.xaml.cs">
       <DependentUpon>ContentConnectNetDevice.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\DialogContent\ContentDisconnectDevice.xaml.cs">
+      <DependentUpon>ContentDisconnectDevice.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\DialogContent\ContentDonate.xaml.cs">
       <DependentUpon>ContentDonate.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\DialogContent\ContentLoading.xaml.cs">
-      <DependentUpon>ContentLoading.xaml</DependentUpon>
+    <Compile Include="View\DialogContent\ContentEnableDeviceNetDebugging.xaml.cs">
+      <DependentUpon>ContentEnableDeviceNetDebugging.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\DialogContent\ContentSettings.xaml.cs">
       <DependentUpon>ContentSettings.xaml</DependentUpon>
@@ -585,10 +587,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\DialogContent\ContentBase.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="View\DialogContent\ContentChoice.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -597,11 +595,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\DialogContent\ContentDisconnectDevice.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\DialogContent\ContentDonate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\DialogContent\ContentLoading.xaml">
+    <Page Include="View\DialogContent\ContentEnableDeviceNetDebugging.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -840,9 +842,7 @@
     <Resource Include="Resources\Images\Btn\min.png" />
     <Resource Include="Resources\Images\Btn\min_selected.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="View\Controls\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Resources\Drawable\icon.png" />
   </ItemGroup>
