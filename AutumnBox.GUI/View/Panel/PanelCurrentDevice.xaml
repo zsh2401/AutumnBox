@@ -19,26 +19,26 @@
         <materialDesign:Card  Margin="10,245,10,10" MaxWidth="800" VerticalAlignment="Stretch">
             <TabControl   SelectedIndex="{Binding TabSelectedIndex,Mode=TwoWay}" Background="{x:Null}" BorderBrush="{x:Null}">
                 <TabItem  Style="{DynamicResource AtmbxExtTabItem}" TabIndex="0" Header="{DynamicResource PanelCurrentDevicePoweron}" Margin="-4,-3,-14,0"  FontSize="16">
-                    <local:PanelExtension  TargetDeviceState="Poweron" Margin="0,0,0,0"/>
+                    <local:PanelExtension  TargetDeviceState="Poweron" Margin="0"/>
                 </TabItem>
 
                 <TabItem Style="{DynamicResource AtmbxExtTabItem}" TabIndex="1"  Header="{DynamicResource PanelCurrentDeviceRecovery}" Margin="14,-3,-24,0"  FontSize="16">
-                    <local:PanelExtension  TargetDeviceState="Recovery" Margin="0,0,0,0"/>
+                    <local:PanelExtension  TargetDeviceState="Recovery" Margin="0"/>
                 </TabItem>
                 <TabItem Style="{DynamicResource AtmbxExtTabItem}" TabIndex="3"  Header="{DynamicResource PanelCurrentDeviceFastboot}" Margin="24,-3,-27,0"  FontSize="16">
-                    <local:PanelExtension   TargetDeviceState="Fastboot" Margin="0,0,0,0"/>
+                    <local:PanelExtension   TargetDeviceState="Fastboot" Margin="0"/>
                 </TabItem>
                 <TabItem Style="{DynamicResource AtmbxExtTabItem}" TabIndex="2"  Header="{DynamicResource PanelCurrentDeviceSideload}" Margin="27,-3,-37,0"  FontSize="16">
-                    <local:PanelExtension TargetDeviceState="Sideload" Margin="0,0,0,0"/>
+                    <local:PanelExtension TargetDeviceState="Sideload" Margin="0"/>
                 </TabItem>
                 <TabItem Style="{DynamicResource AtmbxExtTabItem}" TabIndex="4"  Header="{DynamicResource PanelCurrentDeviceUnauthorized}" Margin="37,-3,-46,0"  FontSize="16">
-                    <local:PanelExtension TargetDeviceState="Unauthorized" Margin="0,0,0,0"/>
+                    <local:PanelExtension TargetDeviceState="Unauthorized" Margin="0"/>
                 </TabItem>
                 <TabItem Style="{DynamicResource AtmbxExtTabItem}" TabIndex="5"  Header="{DynamicResource PanelCurrentDeviceOffline}" Margin="46,-3,-56,0"  FontSize="16">
-                    <local:PanelExtension TargetDeviceState="Offline" Margin="0,0,0,0"/>
+                    <local:PanelExtension TargetDeviceState="Offline" Margin="0"/>
                 </TabItem>
                 <TabItem Style="{DynamicResource AtmbxExtTabItem}" TabIndex="6"  Header="{DynamicResource PanelCurrentDeviceUnknown}" Margin="56,-3,-66,0"  FontSize="16">
-                    <local:PanelExtension TargetDeviceState="Unknown" Margin="0,0,0,0"/>
+                    <local:PanelExtension TargetDeviceState="Unknown" Margin="0"/>
                 </TabItem>
             </TabControl>
         </materialDesign:Card>

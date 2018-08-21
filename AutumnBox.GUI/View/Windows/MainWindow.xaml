@@ -17,6 +17,7 @@
      MinHeight="650" MinWidth="1050" Height="551" Width="428" 
     WindowStartupLocation="CenterScreen"
      Loaded="MainWindow_Loaded"  
+    MouseDown="_MainWindow_MouseDown"
     Background="{DynamicResource MainBackgroundBrush}"
     FontFamily="{DynamicResource AutumnBox.Font}"
      Closed="_MainWindow_Closed">

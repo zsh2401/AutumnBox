@@ -43,7 +43,7 @@ namespace AutumnBox.OpenFramework.Warpper
         /// <summary>
         /// 最低API
         /// </summary>
-        public virtual int MinApi { get;  set; }
+        public virtual int MinApi { get; set; }
         /// <summary>
         /// 目标API
         /// </summary>
@@ -91,8 +91,16 @@ namespace AutumnBox.OpenFramework.Warpper
         {
             get
             {
-                return string.Format(ctx.App.GetPublicResouce<string>("PanelExtensionsDetailsFormat"),
-                    Auth,Version, Desc);
+                try
+                {
+                    return string.Format(ctx.App.GetPublicResouce<string>("PanelExtensionsDetailsFormat"),
+                    Auth, Version, Desc);
+                }
+                catch (Exception ex)
+                {
+                    Logger.Warn("", ex);
+                    return "ERROR";
+                }
             }
         }
         /// <summary>
