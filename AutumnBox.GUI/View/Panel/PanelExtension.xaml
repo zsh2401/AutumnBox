@@ -11,8 +11,8 @@
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
-                            <Image RenderOptions.BitmapScalingMode="Fant" Height="20px" Width="20px" Source="{Binding Path=Icon}"></Image>
-                            <Label Content="{Binding Name}"></Label>
+                            <Image RenderOptions.BitmapScalingMode="Fant" Height="20px" Width="20px" Source="{Binding Path=Icon}"/>
+                            <Label Content="{Binding Name}"/>
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
@@ -20,7 +20,7 @@
         </materialDesign:Card>
         <GroupBox Header="{Binding Selected.Name}" Visibility="{Binding DetailsVisibily}" FontSize="17" Margin="289,10,10,10">
             <Grid>
-                <TextBlock TextWrapping = "Wrap" Text="{Binding Selected.Warpper.Info.FormatedDesc}" Margin="0,0,10,35"/>
+                <TextBlock TextWrapping = "Wrap" Text="{Binding Selected.Warpper.Info.FormatedDesc}" Foreground="{DynamicResource MainBackgroundForegroundBrush}" Margin="0,0,10,35"/>
                 <Button Style="{DynamicResource MaterialDesignToolButton}" Command="{Binding RunExtension}" Content="{Binding BtnRunExtensionContent}" Height="28" VerticalAlignment="Bottom"/>
             </Grid>
         </GroupBox>

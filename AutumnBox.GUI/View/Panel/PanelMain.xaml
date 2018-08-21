@@ -9,7 +9,7 @@
              d:DesignHeight="619" d:DesignWidth="1042">
     <Grid>
         <Grid>
-            <local:PanelDevices x:Name="PanelDevices" Margin="0,37,10,0" HorizontalAlignment="Right" VerticalAlignment="Top" Width="183" Height="304"></local:PanelDevices>
+            <local:PanelDevices x:Name="PanelDevices" Margin="0,37,10,0" HorizontalAlignment="Right" VerticalAlignment="Top" Width="183" Height="304"/>
             <TabControl  Margin="10,10,205,10" SelectedIndex="{Binding TabSelectedIndex,Mode=TwoWay}" Background="{x:Null}" BorderBrush="{DynamicResource PrimaryLightBrush}">
                 <TabItem  Style="{DynamicResource AtmbxTabItem}" TabIndex="0" Header="{DynamicResource PanelMainStart}" Margin="-2,-2,-14,0"  FontSize="16">
                     <local:PanelHome/>
