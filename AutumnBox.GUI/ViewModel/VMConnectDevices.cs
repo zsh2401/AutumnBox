@@ -63,11 +63,13 @@ namespace AutumnBox.GUI.ViewModel
         public FlexiableCommand ConnectDevice { get; set; }
         public FlexiableCommand DisconnectDevice { get; set; }
         public FlexiableCommand OpenDeviceNetDebugging { get; set; }
+
         private void SwitchCommandState()
         {
             DisconnectDevice.CanExecuteProp = Selected.Serial?.IsIPAddress ?? false;
             OpenDeviceNetDebugging.CanExecuteProp = (!Selected.Serial?.IsIPAddress) ?? false;
         }
+
         public VMConnectDevices()
         {
             ConnectDevice = new FlexiableCommand((p) =>

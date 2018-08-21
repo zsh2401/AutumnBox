@@ -178,6 +178,8 @@
     <Compile Include="ViewModel\VMContentChoice.cs" />
     <Compile Include="ViewModel\VMContentConnectNetDevice.cs" />
     <Compile Include="ViewModel\VMCurrentDevice.cs" />
+    <Compile Include="ViewModel\VMDisconnectDevice.cs" />
+    <Compile Include="ViewModel\VMEnableDeviceNetDebugging.cs" />
     <Compile Include="ViewModel\VMExtensions.cs" />
     <Compile Include="ViewModel\VMMore.cs" />
     <Compile Include="ViewModel\VMPanelMain.cs" />

@@ -109,6 +109,20 @@ Description:
     <s:String x:Key="ContentConnectNetDeviceStateStringPortWrong">Port Wrong</s:String>
     <s:String x:Key="ContentConnectNetDeviceStateStringConnecting">Connecting</s:String>
     <s:String x:Key="ContentConnectNetDeviceStateStringFailed">Connecting failed</s:String>
+     <s:String x:Key="ContentConnectNetDeviceBtnConnect">Connect</s:String>
+    <s:String x:Key="ContentConnectNetDeviceBtnCancel">Cancel</s:String>
+    
+    <!--ContentDisconnectNetDevice-->
+     <s:String x:Key="ContentDisconnectNetDeviceBtnOnlyDisconnect">Only disconnect</s:String>
+     <s:String x:Key="ContentDisconnectNetDeviceBtnDisableAndDisconnect">Disable ndebug and disconnect</s:String>
+    <s:String x:Key="ContentDisconnectNetDeviceBtnCancel">Cancel</s:String>
+    
+    <!--ContentEnableDeviceNetDebugging-->
+    <s:String x:Key="ContentEnableDeviceNetDebuggingBtnCancel">Cancel</s:String>
+    <s:String x:Key="ContentEnableDeviceNetDebuggingBtnOpen">Open</s:String>
+    <s:String x:Key="ContentEnableDeviceNetDebuggingWarning">Warning</s:String>
+    <s:String x:Key="ContentEnableDeviceNetDebuggingPortHint">Port</s:String>
+        <s:String x:Key="ContentEnableDeviceNetDebuggingPortErrorHint">Please check your input!</s:String>
     
     <!--按钮-->
      <s:String x:Key="btnAppOpsXAct">Activate AppOpsX</s:String>
