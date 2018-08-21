@@ -59,6 +59,10 @@ namespace AutumnBox.GUI.Util.I18N
                 Language.From("zh-CN.xaml"),
                 Language.From("en-US.xaml"),
             };
+            Current = languages.Find((_l) =>
+            {
+                return _l.LanCode == App.Current.Resources["LanguageCode"].ToString();
+            });
         }
         private void Apply(ILanguage lang)
         {
@@ -112,6 +116,35 @@ namespace AutumnBox.GUI.Util.I18N
                 {
                     Resource = resouceDict,
                 };
+            }
+
+            public bool Equals(ILanguage other)
+            {
+                return other != null && other.LanCode == this.LanCode;
+            }
+
+            public override bool Equals(object obj)
+            {
+                return Equals(obj as ILanguage);
+            }
+
+            public override int GetHashCode()
+            {
+                var hashCode = -775359848;
+                hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(LangName);
+                hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(LanCode);
+                hashCode = hashCode * -1521134295 + EqualityComparer<ResourceDictionary>.Default.GetHashCode(Resource);
+                return hashCode;
+            }
+
+            public static bool operator ==(Language language1, Language language2)
+            {
+                return language1.Equals(language2);
+            }
+
+            public static bool operator !=(Language language1, Language language2)
+            {
+                return !(language1 == language2);
             }
         }
     }

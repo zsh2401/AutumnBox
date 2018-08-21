@@ -7,7 +7,7 @@ using System.Windows;
 
 namespace AutumnBox.GUI.Util.I18N
 {
-    interface ILanguage
+    interface ILanguage : System.IEquatable<ILanguage>
     {
         string LanCode { get; }
         string LangName { get; }
