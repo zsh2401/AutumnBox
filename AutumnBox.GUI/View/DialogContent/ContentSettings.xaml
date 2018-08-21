@@ -5,27 +5,18 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              FontFamily="{DynamicResource AutumnBox.Font}"
-             mc:Ignorable="d" Height="255.547" Width="487.131">
-    <Grid>
-        <GroupBox Header="{DynamicResource Language}" Margin="10,153,10,0" Height="86" VerticalAlignment="Top">
-            <ComboBox x:Name="CBLanguage" DisplayMemberPath="Name" Margin="0,0,0,9" VerticalAlignment="Stretch"/>
-        </GroupBox>
+             mc:Ignorable="d" Height="255.547" Width="422.631">
+    <StackPanel>
+        <Grid>
+            <TextBlock Margin="5" Text="In other words,please be true"  FontSize="25"/>
+            <Button Style="{DynamicResource MaterialDesignFlatButton}" Margin="5" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" VerticalAlignment="Top"  HorizontalAlignment="Right" Content="{DynamicResource btnClose}"/>
+        </Grid>
+        <StackPanel Margin="15" Orientation="Vertical">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Margin="0,0,15,0" VerticalAlignment="Center" Text="Language"/>
+                <ComboBox ItemsSource="{Binding Languages}" DisplayMemberPath="{Binding DisplayMemberPath}" SelectedItem="{Binding SelectedItem}" Width="170"/>
+            </StackPanel>
+        </StackPanel>
 
-        <GroupBox Header="Debug" Margin="10,10,214,0" Height="138" VerticalAlignment="Top">
-            <Grid>
-                <Button Click="Button_Click" Content="{DynamicResource btnLaunchDebugWindow}" Margin="10,10,0,0" HorizontalAlignment="Left" Width="225" VerticalAlignment="Top" />
-                <ToggleButton x:Name="TGLaunchDebugNext"
-  Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="192,51,10,0" Height="33" VerticalAlignment="Top" />
-                <TextBlock FontSize="13" Text="{DynamicResource ckbShowDebugWindowOnNextLaunch}" HorizontalAlignment="Left" Margin="10,61,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="161" Height="23"/>
-            </Grid>
-        </GroupBox>
-
-        <GroupBox Header="Other" Margin="278,49,10,0" Height="99" VerticalAlignment="Top">
-            <Grid>
-                <Button Click="Button_Click_1" Content="{DynamicResource btnCreateShortcut}" Margin="0,10,0,0" VerticalAlignment="Top"></Button>
-            </Grid>
-        </GroupBox>
-
-        <Button x:Name="BtnClose" Click="BtnClose_Click" Style="{DynamicResource MaterialDesignFlatButton}" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Height="29" VerticalAlignment="Top"  Content="{DynamicResource btnClose}" Margin="408,10,10,0"></Button>
-    </Grid>
+    </StackPanel>
 </UserControl>

@@ -185,6 +185,7 @@
     <Compile Include="ViewModel\VMMainWindow.cs" />
     <Compile Include="ViewModel\VMRunningWindow.cs" />
     <Compile Include="Util\Bus\DeviceSelectionObserver.cs" />
+    <Compile Include="ViewModel\VMSettingsDialog.cs" />
     <Compile Include="View\DialogContent\ContentBase.xaml.cs">
       <DependentUpon>ContentBase.xaml</DependentUpon>
     </Compile>
