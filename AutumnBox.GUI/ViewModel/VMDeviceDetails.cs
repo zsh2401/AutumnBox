@@ -7,6 +7,11 @@
 using AutumnBox.Basic.Device;
 using AutumnBox.GUI.MVVM;
 using AutumnBox.GUI.Util.Bus;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Media;
 
 namespace AutumnBox.GUI.ViewModel
 {
@@ -14,25 +19,114 @@ namespace AutumnBox.GUI.ViewModel
     {
         private const string DEFAULT_VALUE = "-";
         #region MVVM
-        public string Status
+        public Visibility InfoPanelVisibility
         {
-            get => status; set
+            get => infoPanelVisibility; set
             {
-                status = value;
+                infoPanelVisibility = value;
                 RaisePropertyChanged();
             }
         }
-        private string status;
+        private Visibility infoPanelVisibility;
+        public string StateString
+        {
+            get => stateString; set
+            {
+                stateString = value;
+                RaisePropertyChanged();
+            }
+        }
+        private string stateString;
 
         public string Brand
         {
-            get => status; set
+            get => brand; set
             {
                 brand = value;
                 RaisePropertyChanged();
             }
         }
         private string brand;
+
+        public string Model
+        {
+            get => model; set
+            {
+                model = value;
+                RaisePropertyChanged();
+            }
+        }
+        private string model;
+
+        public string Product
+        {
+            get => product; set
+            {
+                product = value;
+                RaisePropertyChanged();
+            }
+        }
+        private string product;
+
+        public string Storage
+        {
+            get => storage; set
+            {
+                storage = value;
+                RaisePropertyChanged();
+            }
+        }
+        private string storage;
+
+        public string Screen
+        {
+            get => screen; set
+            {
+                screen = value;
+                RaisePropertyChanged();
+            }
+        }
+        private string screen;
+
+        public string Ram
+        {
+            get => ram; set
+            {
+                ram = value;
+                RaisePropertyChanged();
+            }
+        }
+        private string ram;
+
+        public string Root
+        {
+            get => root; set
+            {
+                root = value;
+                RaisePropertyChanged();
+            }
+        }
+        private string root;
+
+        public string AndroidVersion
+        {
+            get => androidVersion; set
+            {
+                androidVersion = value;
+                RaisePropertyChanged();
+            }
+        }
+        private string androidVersion;
+
+        public int TranSelectIndex
+        {
+            get => selectIndex; set
+            {
+                selectIndex = value;
+                RaisePropertyChanged();
+            }
+        }
+        private int selectIndex = 0;
         #endregion
         public VMDeviceDetails()
         {
@@ -42,21 +136,66 @@ namespace AutumnBox.GUI.ViewModel
 
         private void SelectedNoDevice(object sender, System.EventArgs e)
         {
+            InfoPanelVisibility = Visibility.Collapsed;
+            TranSelectIndex = 0;
             Reset();
         }
 
         private void SelectedDevice(object sender, System.EventArgs e)
         {
-            By(DeviceSelectionObserver.Instance.CurrentDevice);
+            InfoPanelVisibility = Visibility.Visible;
+            TranSelectIndex = 1;
+            try
+            {
+                By(DeviceSelectionObserver.Instance.CurrentDevice);
+            }
+            catch { }
         }
 
         private void Reset()
         {
-            DeviceHardwareInfo result;
-
+            StateString = App.Current.Resources["PanelDeviceDetailsStateNone"].ToString(); ;
+            Brand = DEFAULT_VALUE;
+            AndroidVersion = DEFAULT_VALUE;
+            Product = DEFAULT_VALUE;
+            Model = DEFAULT_VALUE;
+            Root = DEFAULT_VALUE;
+            Ram = DEFAULT_VALUE;
+            Root = DEFAULT_VALUE;
         }
 
-        private void By(DeviceBasicInfo device) { }
+        private Random ran = new Random();
+        private int taskCode = 0;
+
+        private async void By(DeviceBasicInfo device)
+        {
+            int currentCode = ran.Next();
+            taskCode = currentCode;
+            StateString = App.Current.Resources["PanelDeviceDetailsState" + device.State].ToString();
+            Dictionary<string, string> buildProp = null;
+            await Task.Run(() =>
+            {
+                var getter = new DeviceBuildPropGetter(device);
+                buildProp = getter.GetFull();
+            });
+            if (currentCode != taskCode) return;
+            Brand = buildProp[BuildPropKeys.Brand];
+            Model = buildProp[BuildPropKeys.Model];
+            AndroidVersion = buildProp[BuildPropKeys.AndroidVersion];
+            Product = buildProp[BuildPropKeys.ProductName];
+            var swInfoGetter = new DeviceSoftwareInfoGetter(device);
+            Root = swInfoGetter.IsRootEnable() ? "√" : "X";
+
+            var hwInfo = await Task.Run(() =>
+            {
+                var getter = new DeviceHardwareInfoGetter(device);
+                return getter.Get();
+            });
+            if (currentCode != taskCode) return;
+            Screen = hwInfo.ScreenInfo;
+            Ram = hwInfo.SizeofRam + "G";
+            Storage = hwInfo.SizeofRom + "G";
+        }
 
         ~VMDeviceDetails()
         {

@@ -35,7 +35,7 @@ namespace AutumnBox.GUI.Util.OpenFxManagement
 
         public Window CreateDebugWindow()
         {
-            return new DebugWindow();
+            return new LogWindow();
         }
 
         public string GetCurrentLanguageCode()

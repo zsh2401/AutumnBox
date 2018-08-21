@@ -60,9 +60,8 @@
     <s:String x:Key="PanelDevicesEnableCurrent">开启当前设备网络调试</s:String>
     
     <!--PanelDeviceDetails-->
-     <s:String x:Key="PanelDeviceDetailsDeviceState">设备状态</s:String>
     <s:String x:Key="PanelDeviceDetailsStateNone">未连接设备</s:String>
-    <s:String x:Key="PanelDeviceDetailsStatePoweron">开机</s:String>
+    <s:String x:Key="PanelDeviceDetailsStatePoweron">设备处于开机状态</s:String>
     <s:String x:Key="PanelDeviceDetailsStateRecovery">恢复模式</s:String>
     <s:String x:Key="PanelDeviceDetailsStateSideload">Sideload模式</s:String>
     <s:String x:Key="PanelDeviceDetailsStateFastboot">Fastboot模式</s:String>
@@ -71,8 +70,8 @@
     <s:String x:Key="PanelDeviceDetailsStateUnknown">神奇的未知状态!</s:String>
     <s:String x:Key="PanelDeviceDetailsHw">硬件信息</s:String>
      <s:String x:Key="PanelDeviceDetailsBrand">厂商</s:String>
-    <s:String x:Key="PanelDeviceDetailsModel">代号</s:String>
-    <s:String x:Key="PanelDeviceDetailsProductName">型号</s:String>
+    <s:String x:Key="PanelDeviceDetailsModel">型号</s:String>
+    <s:String x:Key="PanelDeviceDetailsProductName">代号</s:String>
     <s:String x:Key="PanelDeviceDetailsScreen">屏幕</s:String>
     <s:String x:Key="PanelDeviceDetailsStorage">存储分区</s:String>
     <s:String x:Key="PanelDeviceDetailsRam">运行内存</s:String>
@@ -90,7 +89,8 @@
     <s:String x:Key="PanelMoreBtnHowToInstallExtension">如何安装拓展模块?</s:String>
      <s:String x:Key="PanelMoreExtensionsDownloadCenter">下载拓展模块</s:String>
      <s:String x:Key="PanelMoreExtensionSlogan">使用各种模块,做你想做的事</s:String>
-    <s:String x:Key="PanelMoreExtensionApi">拓展模块API</s:String>
+    <s:String x:Key="PanelMoreExtensionApi">模块API版本</s:String>
+     <s:String x:Key="PanelMoreExtensionsDoc">模块开发文档</s:String>
     <s:String x:Key="PanelMoreCommonlyUsed">玩机常用链接</s:String>
     <s:String x:Key="PanelMoreLinkAICP">AICP-ROM</s:String>
     <s:String x:Key="PanelMoreLinkRR">RR-ROM</s:String>

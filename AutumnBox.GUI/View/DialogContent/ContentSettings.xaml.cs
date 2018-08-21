@@ -1,5 +1,6 @@
 ﻿using AutumnBox.GUI.Properties;
 using AutumnBox.GUI.Util.OS;
+using AutumnBox.GUI.View.Windows;
 using AutumnBox.GUI.Windows;
 using System;
 using System.Windows;
@@ -29,7 +30,7 @@ namespace AutumnBox.GUI.View.DialogContent
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            new DebugWindow().Show();
+            new LogWindow().Show();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

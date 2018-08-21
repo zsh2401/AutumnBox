@@ -58,7 +58,6 @@ Description:
     <s:String x:Key="PanelDevicesEnableCurrent">Enable crt net-debugging</s:String>
     
     <!--PanelDeviceDetails-->
-     <s:String x:Key="PanelDeviceDetailsDeviceState">Device state</s:String>
     <s:String x:Key="PanelDeviceDetailsStateNone">Device not found</s:String>
     <s:String x:Key="PanelDeviceDetailsStatePoweron">System runinng</s:String>
     <s:String x:Key="PanelDeviceDetailsStateRecovery">Recovery</s:String>

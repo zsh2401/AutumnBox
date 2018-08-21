@@ -22,4 +22,6 @@
     <s:String x:Key="urlHelp">http://www.atmb.top/help/</s:String>
     <s:String x:Key="urlHelpOfLinkDevice">http://www.atmb.top/help/link_device/</s:String>
     <s:String x:Key="urlHelpOfInstallExtension">http://www.atmb.top/help/install_extension/</s:String>
+
+    <s:String x:Key="urlExtensionDevelopDoc">https://github.com/zsh2401/AutumnBox/wiki/zh_CN_AutumnBox%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3</s:String>
 </ResourceDictionary>
