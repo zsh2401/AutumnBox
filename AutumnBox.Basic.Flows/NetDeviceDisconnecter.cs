@@ -25,7 +25,7 @@ namespace AutumnBox.Basic.Flows
         /// <returns></returns>
         protected override Output MainMethod(ToolKit<FlowArgs> toolKit)
         {
-            if (!toolKit.Args.DevBasicInfo.Serial.IsIpAdress)
+            if (!toolKit.Args.DevBasicInfo.Serial.IsIPAddress)
                 throw new Exception($"{toolKit.Args.DevBasicInfo.Serial} is not a net debugging device");
             _result = toolKit.Executer.Execute(Command.MakeForAdb($"disconnect {toolKit.Args.DevBasicInfo.Serial.ToString()}"));
             return _result;

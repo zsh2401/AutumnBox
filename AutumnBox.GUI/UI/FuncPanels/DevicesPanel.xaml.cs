@@ -60,7 +60,7 @@ namespace AutumnBox.GUI.UI.FuncPanels
         {
             get
             {
-                return (ListBoxMain.SelectedIndex > -1 && ((DeviceBasicInfo)ListBoxMain.SelectedItem).Serial.IsIpAdress);
+                return (ListBoxMain.SelectedIndex > -1 && ((DeviceBasicInfo)ListBoxMain.SelectedItem).Serial.IsIPAddress);
             }
         }
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
