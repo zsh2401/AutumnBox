@@ -11,7 +11,13 @@ namespace AutumnBox.GUI.View.DialogContent
         public ContentDisconnectDevice()
         {
             InitializeComponent();
-            
+            DataContext = new VMDisconnectDevice()
+            {
+                ViewCloser = () =>
+                {
+                    Finish();
+                }
+            };
         }
     }
 }

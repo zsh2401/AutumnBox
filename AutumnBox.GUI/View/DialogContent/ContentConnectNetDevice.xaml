@@ -16,7 +16,7 @@
         </StackPanel>
         
         
-        <Button Command="materialDesign:DialogHost.CloseDialogCommand" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource btnCancel}" HorizontalAlignment="Left" Margin="5" VerticalAlignment="Bottom"/>
-        <Button Command="{Binding DoConnect}" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource btnConnect}" HorizontalAlignment="Right" Margin="5" VerticalAlignment="Bottom" />
+        <Button Command="materialDesign:DialogHost.CloseDialogCommand" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource ContentConnectNetDeviceBtnCancel}" HorizontalAlignment="Left" Margin="5" VerticalAlignment="Bottom"/>
+        <Button Command="{Binding DoConnect}" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource ContentConnectNetDeviceBtnConnect}" HorizontalAlignment="Right" Margin="5" VerticalAlignment="Bottom" />
     </Grid>
 </controls:AtmbDialogContent>

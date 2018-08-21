@@ -113,7 +113,20 @@
     <s:String x:Key="ContentConnectNetDeviceStateStringPortWrong">端口格式错误,请检查</s:String>
     <s:String x:Key="ContentConnectNetDeviceStateStringConnecting">连接中</s:String>
     <s:String x:Key="ContentConnectNetDeviceStateStringFailed">连接失败</s:String>
+     <s:String x:Key="ContentConnectNetDeviceBtnConnect">连接</s:String>
+    <s:String x:Key="ContentConnectNetDeviceBtnCancel">取消</s:String>
     
+    <!--ContentDisconnectNetDevice-->
+     <s:String x:Key="ContentDisconnectNetDeviceBtnOnlyDisconnect">仅断开连接</s:String>
+     <s:String x:Key="ContentDisconnectNetDeviceBtnDisableAndDisconnect">关闭网络调试并断开</s:String>
+    <s:String x:Key="ContentDisconnectNetDeviceBtnCancel">取消</s:String>
+    
+    <!--ContentEnableDeviceNetDebugging-->
+    <s:String x:Key="ContentEnableDeviceNetDebuggingBtnCancel">取消</s:String>
+    <s:String x:Key="ContentEnableDeviceNetDebuggingBtnOpen">开启</s:String>
+    <s:String x:Key="ContentEnableDeviceNetDebuggingWarning">警告</s:String>
+    <s:String x:Key="ContentEnableDeviceNetDebuggingPortHint">端口号</s:String>
+    <s:String x:Key="ContentEnableDeviceNetDebuggingPortErrorHint">端口格式错误,请检查!</s:String>
     <!--按钮-->
     <s:String x:Key="btnAppOpsXAct">激活AppOpsX</s:String>
     <s:String x:Key="btnAccountInfo">账号信息</s:String>

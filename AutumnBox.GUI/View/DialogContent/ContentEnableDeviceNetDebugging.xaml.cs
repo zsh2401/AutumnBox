@@ -1,4 +1,5 @@
 ﻿using AutumnBox.GUI.View.Controls;
+using AutumnBox.GUI.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,13 @@ namespace AutumnBox.GUI.View.DialogContent
         public ContentEnableDeviceNetDebugging()
         {
             InitializeComponent();
+            DataContext = new VMEnableDeviceNetDebugging()
+            {
+                ViewCloser = () =>
+                {
+                    Finish();
+                }
+            };
         }
     }
 }
