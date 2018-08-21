@@ -1,19 +1,22 @@
-﻿<UserControl x:Class="AutumnBox.GUI.View.DialogContent.ContentConnectNetDevice"
+﻿<controls:AtmbDialogContent
+    xmlns:controls="clr-namespace:AutumnBox.GUI.View.Controls"
+    x:Class="AutumnBox.GUI.View.DialogContent.ContentConnectNetDevice"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              FontFamily="{DynamicResource AutumnBox.Font}"
               xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             mc:Ignorable="d" Height="158.12" Width="181.197">
+             mc:Ignorable="d" Height="175.953" Width="172.53">
     <Grid>
-        <TextBox
-  materialDesign:HintAssist.Hint="IP"
-  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,10,10,0" Height="35" VerticalAlignment="Top" />
-        <TextBox
-  materialDesign:HintAssist.Hint="{DynamicResource Port}"
-  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,60,10,0" Height="35" VerticalAlignment="Top" />
-        <Button Command="materialDesign:DialogHost.CloseDialogCommand" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource btnCancel}" HorizontalAlignment="Left" Margin="10,116,0,0" VerticalAlignment="Top" Width="62"/>
-        <Button Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource btnConnect}" HorizontalAlignment="Left" Margin="106,116,0,0" VerticalAlignment="Top" Width="65"/>
+        <StackPanel Margin="5" Orientation="Vertical" VerticalAlignment="Top">
+            <TextBlock Text="{Binding StateString}" FontSize="15"/>
+            <TextBox MaxLength="16" materialDesign:HintAssist.Hint="{DynamicResource ContentConnectNetDeviceIP}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding IPString}"  />
+            <TextBox MaxLength="5" materialDesign:HintAssist.Hint="{DynamicResource ContentConnectNetDevicePort}" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  Text="{Binding PortString}" VerticalAlignment="Top" />
+        </StackPanel>
+        
+        
+        <Button Command="materialDesign:DialogHost.CloseDialogCommand" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource btnCancel}" HorizontalAlignment="Left" Margin="5" VerticalAlignment="Bottom"/>
+        <Button Command="{Binding DoConnect}" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource btnConnect}" HorizontalAlignment="Right" Margin="5" VerticalAlignment="Bottom" />
     </Grid>
-</UserControl>
+</controls:AtmbDialogContent>

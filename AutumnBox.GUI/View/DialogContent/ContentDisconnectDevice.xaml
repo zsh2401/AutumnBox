@@ -1,12 +1,14 @@
-﻿<UserControl x:Class="AutumnBox.GUI.View.DialogContent.ContentBase"
+﻿<controls:AtmbDialogContent
+    xmlns:controls="clr-namespace:AutumnBox.GUI.View.Controls"
+    x:Class="AutumnBox.GUI.View.DialogContent.ContentDisconnectDevice"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AutumnBox.GUI.View.DialogContent"
              mc:Ignorable="d" 
-             FontFamily="{DynamicResource AutumnBox.Font}"
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
             
     </Grid>
-</UserControl>
+</controls:AtmbDialogContent>

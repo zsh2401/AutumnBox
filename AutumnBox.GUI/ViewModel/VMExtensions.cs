@@ -158,6 +158,7 @@ namespace AutumnBox.GUI.ViewModel
             }
         }
         private DeviceState targetState;
+
         public VMExtensions(DeviceState targetState)
         {
             this.targetState = targetState;
