@@ -143,6 +143,7 @@
     <Compile Include="Util\Bus\Sounds.cs" />
     <Compile Include="Util\UI\BlurHelper.cs" />
     <Compile Include="Util\UI\BoxHelper.cs" />
+    <Compile Include="Util\UI\DialogManager.cs" />
     <Compile Include="Util\UI\UIHelper.cs" />
     <Compile Include="Model\ChoicerContentStartArgs.cs" />
     <Compile Include="Util\Data\Converter.cs" />
@@ -254,6 +255,9 @@
     <Compile Include="Util\OpenFxManagement\OpenFrameworkManager.cs" />
     <Compile Include="Util\Data\Md5.cs" />
     <Compile Include="View\WindowManager.cs" />
+    <Compile Include="View\Windows\LogWindow.xaml.cs">
+      <DependentUpon>LogWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Windows\RunningWindow.xaml.cs">
       <DependentUpon>RunningWindow.xaml</DependentUpon>
     </Compile>
@@ -388,7 +392,6 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <Compile Include="View\Windows\MainWindow.FlowFinishedHandling.cs" />
     <Compile Include="UI\FuncPanels\PoweronFuncsUx\PoweronFuncsUXImp.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -681,6 +684,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Windows\LogWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Windows\RunningWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -785,9 +792,6 @@
     <Resource Include="Resources\Drawable\Home\donate.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\Icons\title_icon.png" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\AutumnBox.Basic.Flows\AutumnBox.Basic.Flows.csproj">
       <Project>{3091ecae-7ff2-421d-b970-1c76d7cab0c0}</Project>
       <Name>AutumnBox.Basic.Flows</Name>
@@ -815,51 +819,9 @@
     <Resource Include="Resources\Themes_Old\DreamTheme_files\bg.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\AppIcons\ShizukuManager.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Images\AppIcons\brevent.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Images\AppIcons\AirForzen.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Images\AppIcons\Island.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Images\AppIcons\web1n.stopapp.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Images\AppIcons\icebox.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Images\AppIcons\gmc.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Images\AppIcons\blackhole.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Images\AppIcons\Anzenbokusu.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="AutumnBoxAop.atmbxml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Images\AppIcons\freezeYou.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Images\AppIcons\anzenbokusufake.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Images\AppIcons\Greenify.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Images\AppIcons\Usersir.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Images\AppIcons\appopsx.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Sound\ok.wav">

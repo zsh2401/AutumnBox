@@ -1,6 +1,7 @@
 ﻿using AutumnBox.GUI.Properties;
 using AutumnBox.GUI.UI.Fp;
 using AutumnBox.GUI.Util.OS;
+using AutumnBox.GUI.View.Windows;
 using AutumnBox.GUI.Windows;
 using System.Windows.Controls;
 namespace AutumnBox.GUI.UI.CstPanels
@@ -50,7 +51,7 @@ namespace AutumnBox.GUI.UI.CstPanels
 
         private void Button_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            new DebugWindow().Show();
+            new LogWindow().Show();
         }
 
         public override void OnPanelHide()

@@ -7,6 +7,7 @@ namespace AutumnBox.GUI.Windows
     /// <summary>
     /// DebugWindow.xaml 的交互逻辑
     /// </summary>
+    [Obsolete("Use the LogWindow to instead!",true)]
     public partial class DebugWindow : Window
     {
         public DebugWindow()

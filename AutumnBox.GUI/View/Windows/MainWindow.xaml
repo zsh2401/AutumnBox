@@ -42,7 +42,7 @@
                 <panel:PanelMain x:Name="PanelMain"></panel:PanelMain>
             </materialDesign:TransitionerSlide>
         </materialDesign:Transitioner>
-        
+
         <materialDesign:DialogHost/>
     </Grid>
 </Window>

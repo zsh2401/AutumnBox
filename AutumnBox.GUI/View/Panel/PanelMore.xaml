@@ -9,18 +9,19 @@
              mc:Ignorable="d" d:DesignWidth="820" Height="890">
     <Grid Width="720">
         <StackPanel  Orientation="Vertical">
-            <materialDesign:Card Margin="10" Height="100">
+            <materialDesign:Card Margin="10" Height="120">
                 <StackPanel>
-                    <TextBlock FontSize="15" Margin="15,5,0,0"  Text="{DynamicResource PanelMoreExtensionSlogan}"/>
-                    <StackPanel  Margin="15,5,0,0" Orientation="Horizontal">
+                    <TextBlock FontSize="15"  Margin="15" Text="{DynamicResource PanelMoreExtensionSlogan}"/>
+                    <StackPanel  Margin="15,0,0,10" Orientation="Horizontal">
                         <Image Height="20" Source="{DynamicResource DefaultExtensionIcon}"/>
-                        <TextBlock Margin="5,0,0,0" VerticalAlignment="Center" FontSize="11" Text="{DynamicResource PanelMoreExtensionApi}"/>
-                        <TextBlock Margin="15,0,0,0" VerticalAlignment="Center" FontSize="11" Text="{Binding ApiVersion}"/>
+                        <TextBlock Margin="5,0,0,0" VerticalAlignment="Center" FontSize="12" Text="{DynamicResource PanelMoreExtensionApi}"/>
+                        <TextBlock Margin="15,0,0,0" VerticalAlignment="Center" FontSize="12" Text="{Binding ApiVersion}"/>
                     </StackPanel>
                     <StackPanel Margin="10,0,10,0" Orientation="Horizontal">
                         <Button FontSize="12" Command="{Binding OpenExtFloder}" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource PanelMoreBtnOpenExtensionFloder}"/>
-                        <Button FontSize="12" Command="{Binding OpenUrl}" CommandParameter="{DynamicResource urlHelpOfInstallExtension}" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource PanelMoreBtnHowToInstallExtension}"></Button>
-                        <Button FontSize="12" Command="{Binding OpenUrl}" CommandParameter="{DynamicResource urlDownloadExtensions}" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource PanelMoreExtensionsDownloadCenter}"></Button>
+                        <Button FontSize="12" Command="{Binding OpenUrl}" CommandParameter="{DynamicResource urlHelpOfInstallExtension}" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource PanelMoreBtnHowToInstallExtension}"/>
+                        <Button FontSize="12" Command="{Binding OpenUrl}" CommandParameter="{DynamicResource urlDownloadExtensions}" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource PanelMoreExtensionsDownloadCenter}"/>
+                        <Button FontSize="12" Command="{Binding OpenUrl}" CommandParameter="{DynamicResource urlDownloadExtensions}" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource PanelMoreExtensionsDoc}"></Button>
                     </StackPanel>
                 </StackPanel>
             </materialDesign:Card>

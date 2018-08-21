@@ -3,51 +3,56 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              FontFamily="{DynamicResource AutumnBox.Font}"
              FontSize="12"
              mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="220">
     <Grid HorizontalAlignment="Center" Width="600" MaxWidth="670" MaxHeight="220">
+        <!--<materialDesign:Transitioner SelectedIndex="{Binding TranSelectIndex}">-->
         <StackPanel Orientation="Vertical">
-            <StackPanel  Height="60" Margin="10,10,10,0" Orientation="Horizontal">
-                <TextBlock Text="{DynamicResource PanelDeviceDetailsDeviceState}" FontSize="20"/>
-                <TextBlock Margin="20,0,0,0" Text="{Binding StateString}" FontSize="40"/>
+            <StackPanel  Height="60" Margin="10,10,10,10" Orientation="Horizontal">
+                <TextBlock Margin="0,0,0,0" Text="{Binding StateString}" FontSize="40"/>
             </StackPanel>
-            <StackPanel Height="150" Width="550" Margin="0,0,0,0" Orientation="Horizontal">
-                <StackPanel  Width="275">
-                    <TextBlock TextAlignment="Center" Text="{DynamicResource PanelDeviceDetailsHw}"/>
+            <StackPanel Visibility="{Binding InfoPanelVisibility}" Width="550" Margin="0,0,0,0" Orientation="Horizontal">
+                <StackPanel   Width="275">
                     <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
-                        <TextBlock Width="50" Text="{DynamicResource PanelDeviceDetailsBrand}"/>
-                        <TextBlock Text="{Binding Brand}"/>
+                        <TextBlock Text="{DynamicResource PanelDeviceDetailsBrand}"/>
+                        <TextBlock Margin="10,0,0,0" Text="{Binding Brand}"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
-                        <TextBlock Width="50" Text="{DynamicResource PanelDeviceDetailsModel}"/>
-                        <TextBlock Text="{Binding Model}"/>
+                        <TextBlock Text="{DynamicResource PanelDeviceDetailsModel}"/>
+                        <TextBlock Margin="10,0,0,0" Text="{Binding Model}"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
-                        <TextBlock Width="50" Text="{DynamicResource PanelDeviceDetailsProductName}"/>
-                        <TextBlock Text="{Binding Product}"/>
+                        <TextBlock  Text="{DynamicResource PanelDeviceDetailsProductName}"/>
+                        <TextBlock Margin="10,0,0,0" Text="{Binding Product}"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
-                        <TextBlock Width="50" Text="{DynamicResource PanelDeviceDetailsStorage}"/>
-                        <TextBlock Text="{Binding Storage}"/>
+                        <TextBlock  Text="{DynamicResource PanelDeviceDetailsStorage}"/>
+                        <TextBlock Margin="10,0,0,0" Text="{Binding Storage}"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
-                        <TextBlock Width="50" Text="{DynamicResource PanelDeviceDetailsRam}"/>
-                        <TextBlock Text="{Binding Ram}"/>
+                        <TextBlock  Text="{DynamicResource PanelDeviceDetailsRam}"/>
+                        <TextBlock Margin="10,0,0,0" Text="{Binding Ram}"/>
                     </StackPanel>
                 </StackPanel>
                 <StackPanel Width="275" >
-                    <TextBlock TextAlignment="Center" Text="{DynamicResource PanelDeviceDetailsSw}"/>
                     <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
-                        <TextBlock Width="50" Text="{DynamicResource PanelDeviceDetailsRoot}"/>
-                        <TextBlock Text="{Binding Root}"/>
+                        <TextBlock  Text="{DynamicResource PanelDeviceDetailsRoot}"/>
+                        <TextBlock Margin="10,0,0,0" Text="{Binding Root}"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
-                        <TextBlock Width="50" Text="{DynamicResource PanelDeviceDetailsAndroidVersion}"/>
-                        <TextBlock Text="{Binding AndroidVersion}"/>
+                        <TextBlock  Text="{DynamicResource PanelDeviceDetailsAndroidVersion}"/>
+                        <TextBlock Margin="10,0,0,0" Text="{Binding AndroidVersion}"/>
                     </StackPanel>
                 </StackPanel>
             </StackPanel>
         </StackPanel>
+        <!--<materialDesign:TransitionerSlide OpeningEffect="{materialDesign:TransitionEffect FadeIn}">
+                <Grid>
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="请确保链接设备!"/>
+                </Grid>
+            </materialDesign:TransitionerSlide>-->
+        <!--</materialDesign:Transitioner>-->
     </Grid>
 </UserControl>

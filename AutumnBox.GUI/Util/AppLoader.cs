@@ -8,6 +8,7 @@ using AutumnBox.GUI.Properties;
 using AutumnBox.GUI.Util.Bus;
 using AutumnBox.GUI.Util.OpenFxManagement;
 using AutumnBox.GUI.Util.UI;
+using AutumnBox.GUI.View.Windows;
 using AutumnBox.OpenFramework;
 using AutumnBox.Support.Log;
 using System;
@@ -49,7 +50,7 @@ namespace AutumnBox.GUI.Util
                 //打开调试窗口
                 App.Current.Dispatcher.Invoke(() =>
                 {
-                    new Windows.DebugWindow().Show();
+                    new LogWindow().Show();
                 });
             }
             Logger.Info(this, $"Run as " + (Self.HaveAdminPermission ? "Admin" : "Normal user"));
