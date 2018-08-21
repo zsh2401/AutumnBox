@@ -16,7 +16,7 @@ namespace AutumnBox.Basic.Device
         /// <summary>
         /// 判断这个序列号是否是一个IP
         /// </summary>
-        public bool IsIpAdress
+        public bool IsIPAddress
         {
             get
             {

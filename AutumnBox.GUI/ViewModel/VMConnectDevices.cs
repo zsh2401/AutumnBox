@@ -33,6 +33,7 @@ namespace AutumnBox.GUI.ViewModel
                 _selected = value;
                 RaisePropertyChanged();
                 RaiseBusEvent();
+                SwitchCommandState();
             }
         }
         private DeviceBasicInfo _selected;
@@ -59,21 +60,25 @@ namespace AutumnBox.GUI.ViewModel
         }
         private DeviceBasicInfo[] _devices;
 
-        public ICommand ConnectDevice { get; set; }
-        public ICommand DisconnectDevice { get; set; }
-        public ICommand OpenDeviceNetDebugging { get; set; }
-
+        public FlexiableCommand ConnectDevice { get; set; }
+        public FlexiableCommand DisconnectDevice { get; set; }
+        public FlexiableCommand OpenDeviceNetDebugging { get; set; }
+        private void SwitchCommandState()
+        {
+            DisconnectDevice.CanExecuteProp = Selected.Serial?.IsIPAddress ?? false;
+            OpenDeviceNetDebugging.CanExecuteProp = (!Selected.Serial?.IsIPAddress) ?? false;
+        }
         public VMConnectDevices()
         {
-            ConnectDevice = new MVVMCommand((p) =>
+            ConnectDevice = new FlexiableCommand((p) =>
             {
                 new ContentConnectNetDevice().Show();
             });
-            DisconnectDevice = new MVVMCommand((p) =>
+            DisconnectDevice = new FlexiableCommand((p) =>
             {
                 new ContentDisconnectDevice().Show();
             });
-            OpenDeviceNetDebugging = new MVVMCommand((p) =>
+            OpenDeviceNetDebugging = new FlexiableCommand((p) =>
             {
                 new ContentEnableDeviceNetDebugging().Show();
             });
