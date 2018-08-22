@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>AutumnBox.GUI</RootNamespace>
     <AssemblyName>AutumnBox.GUI</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
@@ -804,6 +804,10 @@
     <ProjectReference Include="..\AutumnBox.Basic\AutumnBox.Basic.csproj">
       <Project>{84044fb2-bd38-4283-8065-b639270ece0f}</Project>
       <Name>AutumnBox.Basic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AutumnBox.MapleLeaf\AutumnBox.MapleLeaf.csproj">
+      <Project>{48dd382b-2e1d-459e-9a10-0a83f1b23f69}</Project>
+      <Name>AutumnBox.MapleLeaf</Name>
     </ProjectReference>
     <ProjectReference Include="..\AutumnBox.OpenFramework\AutumnBox.OpenFramework.csproj">
       <Project>{6516890c-86b6-40a0-8fd0-14ffdd62e1fe}</Project>
