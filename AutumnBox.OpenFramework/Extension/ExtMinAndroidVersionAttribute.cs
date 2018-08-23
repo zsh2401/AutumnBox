@@ -46,7 +46,7 @@ namespace AutumnBox.OpenFramework.Extension
             {
                 args.Context.App.RunOnUIThread(() =>
                 {
-                    args.Context.App.ShowMessageBox("Warning", "您的安卓设备版本过低....");
+                    args.Context.Ux.ShowMessageDialog("Warning", "您的安卓设备版本过低....");
                 });
                 args.Prevent = true;
             }

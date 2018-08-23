@@ -91,14 +91,14 @@ namespace AutumnBox.GUI.Util.UI
 
         #region LoadingWindow
         private static bool _loadingWindowIsAlreadyHaveOne = false;
-        private static LoadingWindow _loadingWindow;
+        private static Windows.LoadingWindow _loadingWindow;
         private const string TAG = "BoxHelper";
 
         public static void ShowLoadingDialog(ICompletable completable)
         {
             if (_loadingWindowIsAlreadyHaveOne) return;
             _loadingWindowIsAlreadyHaveOne = true;
-            new LoadingWindow(_owner).ShowDialog(completable);
+            new Windows.LoadingWindow(_owner).ShowDialog(completable);
             _loadingWindowIsAlreadyHaveOne = false;
         }
         public static void ShowLoadingDialog()
@@ -107,7 +107,7 @@ namespace AutumnBox.GUI.Util.UI
             {
                 if (_loadingWindowIsAlreadyHaveOne) return;
                 _loadingWindowIsAlreadyHaveOne = true;
-                _loadingWindow = new LoadingWindow(_owner);
+                _loadingWindow = new Windows.LoadingWindow(_owner);
                 _loadingWindow.ShowDialog();
             });
 

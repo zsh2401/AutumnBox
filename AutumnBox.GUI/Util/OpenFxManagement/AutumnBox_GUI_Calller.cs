@@ -6,7 +6,6 @@
 using AutumnBox.GUI.UI.FuncPanels;
 using AutumnBox.GUI.Windows;
 using AutumnBox.OpenFramework.Open;
-using AutumnBox.OpenFramework.Open.Impl.AutumnBoxApi;
 using AutumnBox.Support.Log;
 using System.Diagnostics;
 using System;
@@ -14,10 +13,11 @@ using System.Windows;
 using AutumnBox.GUI.Util.UI;
 using AutumnBox.OpenFramework.Warpper;
 using AutumnBox.GUI.View.Windows;
+using AutumnBox.OpenFramework.Management;
 
 namespace AutumnBox.GUI.Util.OpenFxManagement
 {
-    internal partial class AppManagerImpl : IAutumnBoxGuiApi
+    internal partial class AutumnBox_GUI_Calller : IAutumnBox_GUI
     {
         public Version Version
         {
@@ -27,15 +27,19 @@ namespace AutumnBox.GUI.Util.OpenFxManagement
             }
         }
 
-
-        public void CloseLoadingWindow()
-        {
-            BoxHelper.CloseLoadingDialog();
-        }
-
         public Window CreateDebugWindow()
         {
             return new LogWindow();
+        }
+
+        public Window CreateMessageWindow(string title, string msg)
+        {
+            return new MessageWindow()
+            {
+                Owner = App.Current.MainWindow,
+                MsgTitle = title,
+                Message = msg,
+            };
         }
 
         public string GetCurrentLanguageCode()
@@ -62,11 +66,6 @@ namespace AutumnBox.GUI.Util.OpenFxManagement
             return window.ViewModel;
         }
 
-        public void RefreshExtensionList()
-        {
-            ThridPartyFunctionPanel.Single.Refresh();
-        }
-
         public void Restart()
         {
             Application.Current.Shutdown();
@@ -75,8 +74,10 @@ namespace AutumnBox.GUI.Util.OpenFxManagement
 
         public void RestartAsAdmin()
         {
-            ProcessStartInfo startInfo = new ProcessStartInfo("..\\AutumnBox-秋之盒.exe");
-            startInfo.Arguments = $"-tryadmin -waitatmb";
+            ProcessStartInfo startInfo = new ProcessStartInfo("..\\AutumnBox-秋之盒.exe")
+            {
+                Arguments = $"-tryadmin -waitatmb"
+            };
             Logger.Debug(this, startInfo.FileName + "  " + startInfo.Arguments);
             Process.Start(startInfo);
             Application.Current.Shutdown();
@@ -86,33 +87,31 @@ namespace AutumnBox.GUI.Util.OpenFxManagement
         {
             App.Current.Dispatcher.Invoke(act);
         }
-        public ChoiceBoxResult ShowChoiceBox(string title, string msg, string btnLeft = null, string btnRight = null)
+
+        public Window CreateChoiceWindow(string msg, string btnLeft = null, string btnRight = null, string btnCancel = null)
         {
-            var result = BoxHelper.ShowChoiceDialog(title, msg, btnLeft, btnRight);
-            switch (result)
+            var window = new ChoiceWindow()
             {
-                case ChoiceResult.BtnLeft:
-                    return ChoiceBoxResult.Left;
-                case ChoiceResult.BtnRight:
-                    return ChoiceBoxResult.Right;
-                default:
-                    return ChoiceBoxResult.Cancel;
-            }
-        }
-
-        public void ShowLoadingWindow()
-        {
-            BoxHelper.ShowLoadingDialog();
-        }
-
-        public void ShowMessageBox(string title, string msg)
-        {
-            BoxHelper.ShowMessageDialog(title, msg);
+                Owner = App.Current.MainWindow,
+                Message = msg
+            };
+            window.BtnLeft = btnLeft ?? window.BtnLeft;
+            window.BtnCancel = btnCancel ?? window.BtnCancel;
+            window.BtnRight = btnRight ?? window.BtnRight;
+            return window;
         }
 
         public void Shutdown()
         {
             App.Current.Shutdown();
+        }
+
+        public Window CreateLoadingWindow()
+        {
+            return new View.Windows.LoadingWindow()
+            {
+                Owner = App.Current.MainWindow
+            };
         }
     }
 }

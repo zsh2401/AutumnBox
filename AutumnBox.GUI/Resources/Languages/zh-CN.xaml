@@ -127,6 +127,18 @@
     <s:String x:Key="ContentEnableDeviceNetDebuggingWarning">警告</s:String>
     <s:String x:Key="ContentEnableDeviceNetDebuggingPortHint">端口号</s:String>
     <s:String x:Key="ContentEnableDeviceNetDebuggingPortErrorHint">端口格式错误,请检查!</s:String>
+    
+    <!--MessageWindow-->
+        <s:String x:Key="MessageWindowDoubleClickToClose">双击任意处关闭该窗口</s:String>
+    
+    <!--ChoiceWindow-->
+    <s:String x:Key="ChoiceWindowBtnCancel">取消</s:String>
+    <s:String x:Key="ChoiceWindowBtnYes">好</s:String>
+    <s:String x:Key="ChoiceWindowBtnNo">不</s:String>
+    
+    <!--LoadingWindow-->
+     <s:String x:Key="LoadingWindowMessage">请耐心等待 :)</s:String>
+    
     <!--按钮-->
     <s:String x:Key="btnAppOpsXAct">激活AppOpsX</s:String>
     <s:String x:Key="btnAccountInfo">账号信息</s:String>

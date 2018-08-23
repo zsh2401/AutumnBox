@@ -5,20 +5,19 @@
 *************************************************/
 using AutumnBox.OpenFramework.Content;
 using AutumnBox.OpenFramework.Exceptions;
-using AutumnBox.OpenFramework.Open.Impl.AutumnBoxApi;
+using AutumnBox.OpenFramework.Management;
 using AutumnBox.OpenFramework.Warpper;
 using System;
 using System.Security.Principal;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace AutumnBox.OpenFramework.Open.Impl
 {
     internal partial class AppManagerImpl : IAppManager
     {
-        private readonly IAutumnBoxGuiApi sourceApi;
+        private readonly IAutumnBox_GUI sourceApi;
         private readonly Context ctx;
-        public AppManagerImpl(Context ctx, IAutumnBoxGuiApi sourceApi)
+        public AppManagerImpl(Context ctx, IAutumnBox_GUI sourceApi)
         {
             this.ctx = ctx;
             this.sourceApi = sourceApi;
@@ -42,13 +41,6 @@ namespace AutumnBox.OpenFramework.Open.Impl
 
         public Version Version => sourceApi.Version;
 
-        public void CloseLoadingWindow()
-        {
-            RunOnUIThread(() =>
-            {
-                sourceApi.CloseLoadingWindow();
-            });
-        }
 
         public Window CreateDebuggingWindow()
         {
@@ -70,10 +62,6 @@ namespace AutumnBox.OpenFramework.Open.Impl
             return sourceApi.GetResouce(key) as TReturn;
         }
 
-        public void RefreshExtensionList()
-        {
-            sourceApi.RefreshExtensionList();
-        }
 
         public void RestartApp()
         {
@@ -85,7 +73,7 @@ namespace AutumnBox.OpenFramework.Open.Impl
             var fmtMsg = GetPublicResouce<string>("msgRequestRestartAppFormat");
             string title = GetPublicResouce<string>("Notice");
             string msg = string.Format(fmtMsg, ctx.GetType().Name);
-            if (ShowChoiceBox(title, msg, "btnDeny", "btnAccept") == ChoiceBoxResult.Right)
+            if (ctx.Ux.DoChoice(msg, "btnDeny", "btnAccept") == ChoiceResult.Right)
             {
                 sourceApi.Restart();
             }
@@ -105,7 +93,7 @@ namespace AutumnBox.OpenFramework.Open.Impl
             var fmtMsg = GetPublicResouce<string>("msgRequestRestartAppAsAdminFormat");
             string title = GetPublicResouce<string>("Notice");
             string msg = string.Format(fmtMsg, ctx.GetType().Name);
-            if (ShowChoiceBox(title, msg, "btnDeny", "btnAccept") == ChoiceBoxResult.Right)
+            if (ctx.Ux.DoChoice(msg, "btnDeny", "btnAccept") == ChoiceResult.Right)
             {
                 sourceApi.RestartAsAdmin();
             }
@@ -120,27 +108,6 @@ namespace AutumnBox.OpenFramework.Open.Impl
             sourceApi.RunOnUIThread(act);
         }
 
-        public ChoiceBoxResult ShowChoiceBox(string title, string msg, string btnLeft = null, string btnRight = null)
-        {
-            return sourceApi.ShowChoiceBox(title, msg, btnLeft, btnRight);
-        }
-
-        public void ShowLoadingWindow()
-        {
-            Task.Run(() =>
-            {
-                RunOnUIThread(() =>
-                {
-                    sourceApi.ShowLoadingWindow();
-                });
-            });
-        }
-
-        public void ShowMessageBox(string title, string msg)
-        {
-            sourceApi.ShowMessageBox(title, msg);
-        }
-
         public void ShutdownApp()
         {
             if (ctx.Permission == CtxPer.High)
@@ -149,9 +116,8 @@ namespace AutumnBox.OpenFramework.Open.Impl
                 return;
             }
             var fmtMsg = GetPublicResouce<string>("msgRequestShutdownAppFormat");
-            string title = GetPublicResouce<string>("Notice");
             string msg = string.Format(fmtMsg, ctx.GetType().Name);
-            if (ShowChoiceBox(title, msg, "btnDeny", "btnAccept") == ChoiceBoxResult.Right)
+            if (ctx.Ux.DoChoice(msg, "btnDeny", "btnAccept") == ChoiceResult.Right)
             {
                 sourceApi.Shutdown();
             }

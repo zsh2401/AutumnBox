@@ -4,11 +4,12 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.OpenFramework.Extension;
+using AutumnBox.OpenFramework.Open;
 using System.Threading;
 
 namespace AutumnBox.CoreModules.Extensions
 {
-    [ExtName("Running Window Test")]
+    [ExtName("All testing")]
     [ExtRequiredDeviceStates(Basic.Device.DeviceState.NoMatter)]
     [ExtUxEnable(true)]
     public class EHoldMyHand : AutumnBoxExtension
@@ -16,12 +17,14 @@ namespace AutumnBox.CoreModules.Extensions
         bool stoppable = false;
         public override int Main()
         {
-            WriteLine("hey!");
-            WriteLine("in other words, please be true!");
-            Thread.Sleep(4000);
-            stoppable = true;
-            WriteLine("in other words, i love you!");
-            Thread.Sleep(4000);
+            Ux.ShowLoadingWindow();
+            //App.RunOnUIThread(() =>
+            //{
+            //    ChoiceResult choice = Ux.DoChoice("Do you like this?");
+            //    Ux.ShowMessageDialog("OK",choice.ToString());
+            //});
+            Thread.Sleep(5000);
+            Ux.CloseLoadingWindow();
             return 0;
         }
         public override bool OnStopCommand()

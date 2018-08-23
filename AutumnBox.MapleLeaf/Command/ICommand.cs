@@ -1,6 +1,7 @@
-﻿using System;
+﻿using AutumnBox.MapleLeaf.DeviceManagement;
+using System;
 
-namespace AutumnBox.MapleLeaf.Basis
+namespace AutumnBox.MapleLeaf.Command
 {
     public interface ICommand
     {

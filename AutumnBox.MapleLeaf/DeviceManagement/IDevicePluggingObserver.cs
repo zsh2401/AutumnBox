@@ -21,7 +21,7 @@ namespace AutumnBox.MapleLeaf.Multidevice
     public interface IDevicePluggingObserver : IDisposable
     {
         event EventHandler<DevicesChangedEventArgs> DevicesChanged;
-        void Work();
+        void Work(System.Threading.CancellationToken token);
         void Stop();
     }
 }

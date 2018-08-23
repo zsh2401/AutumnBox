@@ -9,13 +9,9 @@ using AutumnBox.OpenFramework.Exceptions;
 using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.Management;
 using AutumnBox.OpenFramework.Open;
-using AutumnBox.OpenFramework.Open.Impl.AutumnBoxApi;
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
-using System.Windows;
 
 namespace AutumnBox.OpenFramework.Warpper
 {
@@ -253,7 +249,7 @@ namespace AutumnBox.OpenFramework.Warpper
             {
                 App.RunOnUIThread(() =>
                 {
-                    App.ShowMessageBox("警告", "该拓展模块已在运行,你不能开多个该模块!");
+                    Ux.ShowMessageDialog("警告", "该拓展模块已在运行,你不能开多个该模块!");
                 });
                 return false;
             }
@@ -293,7 +289,7 @@ namespace AutumnBox.OpenFramework.Warpper
             {
                 App.RunOnUIThread(() =>
                 {
-                    instatcePkg.UIController = App.GetUIControllerOf(this);
+                    instatcePkg.UIController = Ux.GetUIControllerOf(this);
                 });
             }
         }
@@ -351,7 +347,7 @@ namespace AutumnBox.OpenFramework.Warpper
                 App.RunOnUIThread(() =>
                 {
                     string stoppedMsg = $"{Info.Name} {App.GetPublicResouce<String>("msgExtensionWasFailed")}";
-                    App.ShowMessageBox("Notice", stoppedMsg);
+                    Ux.ShowMessageDialog("Notice", stoppedMsg);
                 });
             }
             Manager.RunningManager.Remove(this);

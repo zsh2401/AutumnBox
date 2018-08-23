@@ -44,6 +44,10 @@ namespace AutumnBox.OpenFramework.Content
             }
         }
         /// <summary>
+        /// Ux api
+        /// </summary>
+        public IUx Ux => apiWarpper.Ux;
+        /// <summary>
         /// 日志API
         /// </summary>
         public ILogger Logger => apiWarpper.Logger;

@@ -10,38 +10,9 @@ namespace AutumnBox.OpenFramework.Open
     public interface IAppManager
     {
         /// <summary>
-        /// 获取拓展模块的UI控制器
-        /// </summary>
-        /// <param name="warpper"></param>
-        /// <returns></returns>
-        IExtensionUIController GetUIControllerOf(IExtensionWarpper warpper);
-        /// <summary>
         /// 获取秋之盒版本号
         /// </summary>
         Version Version { get; }
-        /// <summary>
-        /// 显示一个选择窗口.并等待用户返回结果
-        /// </summary>
-        /// <param name="title">标题</param>
-        /// <param name="msg">内容</param>
-        /// <param name="btnLeft">左按钮文本,默认取消</param>
-        /// <param name="btnRight">右按钮文本,默认确定</param>
-        /// <returns></returns>
-        ChoiceBoxResult ShowChoiceBox(string title, string msg, string btnLeft = null, string btnRight = null);
-        /// <summary>
-        /// 显示消息窗口
-        /// </summary>
-        /// <param name="title">标题,建议使用模块名称</param>
-        /// <param name="msg">信息</param>
-        void ShowMessageBox(string title, string msg);
-        /// <summary>
-        /// 显示加载窗口,这个函数不会阻塞
-        /// </summary>
-        void ShowLoadingWindow();
-        /// <summary>
-        /// 关闭加载窗口
-        /// </summary>
-        void CloseLoadingWindow();
         /// <summary>
         /// 在UI线程运行方法
         /// </summary>
@@ -62,18 +33,6 @@ namespace AutumnBox.OpenFramework.Open
         /// </summary>
         /// <returns>语言代码</returns>
         string CurrentLanguageCode { get; }
-        /// <summary>
-        /// 获取一个新创建的调试窗口对象
-        /// </summary>
-        /// <example>
-        /// var dbWind = App.CreateDebuggingWindow();
-        /// dbWind.ShowDialog();
-        /// </example>
-        Window CreateDebuggingWindow();
-        /// <summary>
-        /// 刷新拓展列表
-        /// </summary>
-        void RefreshExtensionList();
         /// <summary>
         /// 重启AutumnBox
         /// </summary>
