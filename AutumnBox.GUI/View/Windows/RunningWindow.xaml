@@ -7,16 +7,18 @@
         xmlns:local="clr-namespace:AutumnBox.GUI.View.Windows"
         mc:Ignorable="d"
         Title="{Binding Title}"
-        MinHeight="350"
+        Icon="{Binding Icon}"
+        MinHeight="300"
         MinWidth="450"
-        WindowStartupLocation="CenterOwner"
+        Height="300" Width="450"
+        WindowStartupLocation="CenterScreen"
         FontFamily="{DynamicResource AutumnBox.Font}"
-        ResizeMode="CanResize" Height="474" Width="343.5" Closing="Window_Closing">
-    <Grid Margin="1" Background="{DynamicResource MainBackgroundBrush}">
-        <TextBox IsReadOnly="True"  Style="{x:Null}" BorderBrush="{DynamicResource PrimaryLightBrush}" Text="{Binding Output}" Margin="10,10,10,61" TextWrapping="Wrap" />
-        <StackPanel VerticalAlignment="Bottom" Margin="10,0,10,10" Orientation="Horizontal">
-            <ProgressBar Style="{DynamicResource MaterialDesignCircularProgressBar}" IsIndeterminate="True" Value="{Binding ProgressValue}" Height="35"  Width="35" Margin="0,0,20,0"  HorizontalAlignment="Left" />
-            <TextBlock Text="{Binding Tip}"  Margin="0,0,20,0" Height="16" />
+        ResizeMode="CanResize"  Closing="Window_Closing">
+    <Grid Margin="1">
+        <StackPanel Margin="10" VerticalAlignment="Top">
+            <ProgressBar BorderBrush="Transparent" Background="Transparent"  IsIndeterminate="{Binding IsIndeterminate}"  Value="{Binding ProgressValue}"/>
+            <TextBlock Margin="10" Text="{Binding Tip}" FontSize="25" />
         </StackPanel>
+        <TextBox  IsReadOnly="True"  Style="{x:Null}" BorderBrush="{DynamicResource PrimaryLightBrush}" Text="{Binding Output}" Margin="10,93,10,10" TextWrapping="Wrap"/>
     </Grid>
 </Window>

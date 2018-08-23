@@ -11,7 +11,6 @@ namespace AutumnBox.GUI.View.Windows
     /// </summary>
     public partial class RunningWindow : Window
     {
-        public IExtensionUIController UIController => ViewModel;
         internal readonly VMRunningWindow ViewModel;
         public RunningWindow(IExtensionWarpper warpper)
         {

@@ -5,6 +5,7 @@
 *************************************************/
 
 using AutumnBox.GUI.MVVM;
+using AutumnBox.GUI.Util;
 using AutumnBox.OpenFramework.Open;
 using AutumnBox.OpenFramework.Warpper;
 using MaterialDesignThemes.Wpf;
@@ -14,31 +15,55 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace AutumnBox.GUI.ViewModel
 {
     class VMRunningWindow : ViewModelBase, IExtensionUIController
     {
         #region MVVM
-        public int ProgressValue
+        public double ProgressValue
         {
             get => progressValue; set
             {
-                if (value > 100)
+                if (value == -1)
                 {
+                    IsIndeterminate = true;
+                    progressValue = 0;
                     return;
                 }
+                IsIndeterminate = false;
                 progressValue = value;
                 RaisePropertyChanged();
             }
         }
-        private int progressValue;
+        private double progressValue;
+
+        public ImageSource Icon
+        {
+            get => _icon; set
+            {
+                _icon = value;
+                RaisePropertyChanged();
+            }
+        }
+        private ImageSource _icon;
+
+        public bool IsIndeterminate
+        {
+            get => _isIndeterminate; set
+            {
+                _isIndeterminate = value;
+                RaisePropertyChanged();
+            }
+        }
+        private bool _isIndeterminate;
 
         public string Tip
         {
             get => tip; set
             {
-                tip = value;
+                tip = App.Current.Resources[value]?.ToString() ?? value;
                 RaisePropertyChanged();
             }
         }
@@ -75,6 +100,7 @@ namespace AutumnBox.GUI.ViewModel
             this.view = view;
             this.warpper = warpper;
             Title = warpper.Info.Name;
+            Icon = warpper.Info.Icon.ToExtensionIcon();
             output = "";
         }
 
@@ -123,18 +149,20 @@ namespace AutumnBox.GUI.ViewModel
         {
             view.Dispatcher.Invoke(() =>
             {
+                ProgressValue = -1;
+                Tip = "RunningWindowStateRunning";
                 warpperIsRunning = true;
                 view.Show();
             });
         }
 
-        public void OnFinish(int exitCode,bool isForceStopped)
+        public void OnFinish(int exitCode, bool isForceStopped)
         {
             view.Dispatcher.Invoke(() =>
             {
                 warpperIsRunning = false;
                 ProgressValue = 100;
-                Tip = "执行完毕";
+                Tip = exitCode == 0 ? "RunningWindowStateFinished" : "RunningWindowStateError";
             });
         }
     }

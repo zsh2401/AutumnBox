@@ -14,7 +14,7 @@ namespace AutumnBox.OpenFramework.Open
         /// <summary>
         /// 进度条
         /// </summary>
-        int ProgressValue { set; }
+        double ProgressValue { set; }
         /// <summary>
         /// 简要状态
         /// </summary>
