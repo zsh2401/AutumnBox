@@ -27,6 +27,13 @@
     <s:String x:Key="PanelHomeJoinQQGroup">QQ group</s:String>
     <s:String x:Key="PanelHomeSendMail">E-Mail</s:String>
     
+    <!--PanelSettings-->
+    <s:String x:Key="PanelSettingsLanguage">Language</s:String>
+      <s:String x:Key="PanelSettingsDebug">Debug</s:String>
+    <s:String x:Key="PanelSettingsSendToDesktop">Create shortcut</s:String>
+    <s:String x:Key="PanelSettingsCreateDebugWindow">Show debug window</s:String>
+    <s:String x:Key="PanelSettingsLaunchDebugWindowOnNextLaunch">Show debug window on next launch</s:String>
+    
  <!--PanelExtensions-->
      <s:String x:Key="PanelExtensionsDetailsFormat">Auth:{0}
 Version:{1}

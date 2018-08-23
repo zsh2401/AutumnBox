@@ -31,8 +31,11 @@ namespace AutumnBox.GUI.View.Windows
 
         private void Logger_Logged(object sender, LogEventArgs e)
         {
-            TextBox.AppendText(e.FullMessage);
-            TextBox.ScrollToEnd();
+            App.Current.Dispatcher.Invoke(() =>
+            {
+                TextBox.AppendText(e.FullMessage);
+                TextBox.ScrollToEnd();
+            });
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

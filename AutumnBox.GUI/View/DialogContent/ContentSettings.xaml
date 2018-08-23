@@ -8,13 +8,24 @@
              mc:Ignorable="d" Height="255.547" Width="422.631">
     <StackPanel>
         <Grid>
-            <TextBlock Margin="5" Text="In other words,please be true"  FontSize="25"/>
+            <TextBlock  HorizontalAlignment="Left" Margin="5" Text="In other words,please be true"  FontSize="15"/>
             <Button Style="{DynamicResource MaterialDesignFlatButton}" Margin="5" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" VerticalAlignment="Top"  HorizontalAlignment="Right" Content="{DynamicResource btnClose}"/>
         </Grid>
         <StackPanel Margin="15" Orientation="Vertical">
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Margin="0,0,15,0" VerticalAlignment="Center" Text="Language"/>
+            <StackPanel Margin="5" Orientation="Horizontal">
+                <TextBlock Margin="0,0,15,0" VerticalAlignment="Center" Text="{DynamicResource PanelSettingsLanguage}"/>
                 <ComboBox ItemsSource="{Binding Languages}" DisplayMemberPath="{Binding DisplayMemberPath}" SelectedItem="{Binding SelectedItem}" Width="170"/>
+            </StackPanel>
+            <StackPanel Margin="5" Orientation="Horizontal">
+                <TextBlock Margin="0,0,15,0" VerticalAlignment="Center" Text="{DynamicResource PanelSettingsDebug}"/>
+                <StackPanel>
+                    <Button Command="{Binding ShowDebugWindow}" FontSize="12" Margin="0,5" Style="{DynamicResource MaterialDesignRaisedButton}" Content="{DynamicResource PanelSettingsCreateDebugWindow}"/>
+                    <CheckBox IsChecked="{Binding DebugOnNext}" Content="{DynamicResource PanelSettingsLaunchDebugWindowOnNextLaunch}"/>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Margin="5" Orientation="Horizontal">
+                <TextBlock Text="Other"/>
+                <Button Command="{Binding SendToDesktop}" FontSize="12" Margin="5" Style="{DynamicResource MaterialDesignRaisedButton}" Content="{DynamicResource PanelSettingsSendToDesktop}"/>
             </StackPanel>
         </StackPanel>
 

@@ -29,6 +29,13 @@
     <s:String x:Key="PanelHomeJoinQQGroup">加入QQ群</s:String>
     <s:String x:Key="PanelHomeSendMail">发送邮件</s:String>
     
+        <!--PanelSettings-->
+    <s:String x:Key="PanelSettingsLanguage">语言</s:String>
+      <s:String x:Key="PanelSettingsDebug">调试</s:String>
+    <s:String x:Key="PanelSettingsSendToDesktop">创建快捷方式</s:String>
+    <s:String x:Key="PanelSettingsCreateDebugWindow">显示调试窗口</s:String>
+    <s:String x:Key="PanelSettingsLaunchDebugWindowOnNextLaunch">在下次启动时显示调试窗口</s:String>
+    
     <!--PanelExtensions-->
      <s:String x:Key="PanelExtensionsDetailsFormat">开发者:{0}
 版本:{1}
