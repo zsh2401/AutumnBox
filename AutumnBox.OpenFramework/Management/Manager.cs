@@ -5,7 +5,6 @@
 *************************************************/
 using AutumnBox.OpenFramework.Exceptions;
 using AutumnBox.OpenFramework.Management.Impl;
-using AutumnBox.OpenFramework.Open.Impl.AutumnBoxApi;
 using System.Reflection;
 
 namespace AutumnBox.OpenFramework.Management
@@ -15,6 +14,16 @@ namespace AutumnBox.OpenFramework.Management
     /// </summary>
     public static class Manager
     {
+        /// <summary>
+        /// 秋之盒GUIAPI
+        /// </summary>
+#if SDK
+        internal
+#else
+        public
+#endif
+            static IAutumnBox_GUI AutumnBox_Gui{ get; set; }
+
         private static IInternalManager _internalManager;
         /// <summary>
         /// 内部管理器
@@ -60,11 +69,11 @@ namespace AutumnBox.OpenFramework.Management
 #else
         internal
 #endif
-        static void InitFramework(IAutumnBoxGuiApi guiApi)
+        static void InitFramework(IAutumnBox_GUI autumnbox)
         {
             if (!inited)
             {
-                AutumnBoxGuiApiProvider.Inject(guiApi);
+                AutumnBox_Gui = autumnbox;
                 InternalManager.Reload();
                 inited = true;
             }

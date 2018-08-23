@@ -17,14 +17,14 @@ namespace AutumnBox.CoreModules.Extensions
     {
         public override int Main()
         {
-            App.ShowLoadingWindow();
+            //App.ShowLoadingWindow();
             var unlocker = new SystemPartitionUnlocker();
             unlocker.Init(new FlowArgs()
             {
                 DevBasicInfo = TargetDevice
             });
             unlocker.Run();
-            App.CloseLoadingWindow();
+            //App.CloseLoadingWindow();
             return OK;
         }
     }

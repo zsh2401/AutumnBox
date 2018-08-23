@@ -2,15 +2,14 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-
-namespace AutumnBox.MapleLeaf.Basis
+using System.Threading.Tasks;
+using System.Threading;
+namespace AutumnBox.MapleLeaf.Command
 {
-    public interface IAsyncCommandProcess : IDisposable
+    public interface IAsyncCommandProcess : ICommand, IDisposable
     {
         event OutputReceivedEventHandler OutputReceived;
-        event AsyncCommandProcessFinishedEventHandler Finished;
         bool IsExecuting { get; }
-        void BeginExecute();
-        void Stop();
+        Task<IProcessResult> ExecuteAsync(CancellationToken cancellationToken);
     }
 }

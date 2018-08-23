@@ -32,9 +32,9 @@ namespace AutumnBox.CoreModules.Extensions
                     DevBasicInfo = TargetDevice,
                     SavePath = path
                 });
-                App.ShowLoadingWindow();
+                //App.ShowLoadingWindow();
                 var output = shoter.Run();
-                App.CloseLoadingWindow();
+                //App.CloseLoadingWindow();
                 Logger.Info(output.OutputData.ToString());
                 return OK;
             }

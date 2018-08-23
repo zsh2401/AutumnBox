@@ -29,15 +29,15 @@ namespace AutumnBox.CoreModules.Extensions
             bool fixAndroidO = false;
             if (new DeviceBuildPropGetter(TargetDevice.Serial).GetAndroidVersion() >= new Version("8.0.0"))
             {
-                var result = App.ShowChoiceBox("msgNotice", "msgFixAndroidO", "btnDoNotOpen", "btnOpen");
+                var result = Ux.DoChoice("msgNotice", "msgFixAndroidO", "btnDoNotOpen", "btnOpen");
                 switch (result)
                 {
-                    case ChoiceBoxResult.Cancel:
+                    case ChoiceResult.Cancel:
                         return ERR;
-                    case ChoiceBoxResult.Deny:
+                    case ChoiceResult.Deny:
                         fixAndroidO = false;
                         break;
-                    case ChoiceBoxResult.Accept:
+                    case ChoiceResult.Accept:
                         fixAndroidO = true;
                         break;
                 }
@@ -46,9 +46,9 @@ namespace AutumnBox.CoreModules.Extensions
             /*开始操作*/
             BreventServiceActivator activator = new BreventServiceActivator();
             activator.Init(args);
-            App.ShowLoadingWindow();
+            WriteLine("正在运行");
             var output = activator.Run();
-            App.CloseLoadingWindow();
+            WriteLine("OK");
             Logger.Info(output.OutputData.ToString());
             return OK;
         }

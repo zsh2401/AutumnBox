@@ -15,6 +15,7 @@ namespace AutumnBox.CoreModules.Extensions
     [ExtAppProperty("me.piebridge.brevent", AppLabel = "黑阀", AppLabel_en = "Brevent")]
     [ExtRequiredDeviceStates(DeviceState.Poweron)]
     [ExtIcon("Icons.brevent.png")]
+    [ExtUxEnable(true)]
     public class EBreventActivator : AutumnBoxExtension
     {
         public override int Main()
@@ -23,9 +24,9 @@ namespace AutumnBox.CoreModules.Extensions
             /*开始操作*/
             BreventServiceActivator activator = new BreventServiceActivator();
             activator.Init(args);
-            App.ShowLoadingWindow();
+            WriteLine("正在操作...");
             activator.Run();
-            App.CloseLoadingWindow();
+            WriteLine("OK");
             return OK;
         }
     }

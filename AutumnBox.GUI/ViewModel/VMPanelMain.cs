@@ -7,6 +7,7 @@ using AutumnBox.Basic.Util;
 using AutumnBox.GUI.Model;
 using AutumnBox.GUI.MVVM;
 using AutumnBox.GUI.View.DialogContent;
+using AutumnBox.GUI.View.Windows;
 using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
@@ -20,9 +21,33 @@ namespace AutumnBox.GUI.ViewModel
 {
     class VMPanelMain : ViewModelBase
     {
-        public ICommand StartShell => new MVVMCommand((p) =>
-        {
+        public ICommand StartShell { get; private set; }
+        public ICommand ShowSettingsDialog { get; private set; }
 
+        public int TabSelectedIndex
+        {
+            get => tabSelectedIndex;
+            set
+            {
+                tabSelectedIndex = value;
+                RaisePropertyChanged();
+            }
+        }
+        private int tabSelectedIndex;
+        public VMPanelMain()
+        {
+            StartShell = new FlexiableCommand(_StartShell);
+            ShowSettingsDialog = new FlexiableCommand(_ShowSettingsDialog);
+            Util.Bus.DeviceSelectionObserver.Instance.SelectedNoDevice += NoDevice;
+            Util.Bus.DeviceSelectionObserver.Instance.SelectedDevice += Instance_SelectedDevice;
+        }
+        private void _ShowSettingsDialog()
+        {
+            //new MessageWindow().ShowDialog();
+            DialogHost.Show(new ContentSettings());
+        }
+        private void _StartShell()
+        {
             ProcessStartInfo info = new ProcessStartInfo
             {
                 WorkingDirectory = AdbConstants.toolsPath,
@@ -52,32 +77,7 @@ namespace AutumnBox.GUI.ViewModel
                 }
             };
             View.MaterialDialog.ShowChoiceDialog(args);
-        });
-        public ICommand ShowSettingsDialog => new MVVMCommand((args) =>
-        {
-            DialogHost.Show(new ContentSettings());
-        });
-        public ICommand ShowDonateDialog => new MVVMCommand((args) =>
-        {
-            DialogHost.Show(new ContentDonate());
-        });
-
-        public int TabSelectedIndex
-        {
-            get => tabSelectedIndex;
-            set
-            {
-                tabSelectedIndex = value;
-                RaisePropertyChanged();
-            }
         }
-        private int tabSelectedIndex;
-        public VMPanelMain()
-        {
-            Util.Bus.DeviceSelectionObserver.Instance.SelectedNoDevice += NoDevice;
-            Util.Bus.DeviceSelectionObserver.Instance.SelectedDevice += Instance_SelectedDevice;
-        }
-
         private void Instance_SelectedDevice(object sender, EventArgs e)
         {
             TabSelectedIndex = 1;

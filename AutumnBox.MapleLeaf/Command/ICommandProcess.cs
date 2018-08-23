@@ -7,11 +7,10 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace AutumnBox.MapleLeaf.Basis
+namespace AutumnBox.MapleLeaf.Command
 {
     public interface ICommandProcess : IDisposable
     {
         IProcessResult Execute();
-        void Stop();
     }
 }

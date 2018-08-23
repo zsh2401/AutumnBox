@@ -77,6 +77,9 @@
     <Compile Include="Extension\ExtMainAsceptAttribute.cs" />
     <Compile Include="Extension\ExtMinAndroidVersionAttribute.cs" />
     <Compile Include="Extension\ExtOfficialAttribute.cs" />
+    <Compile Include="Management\IAutumnBox_GUI.cs" />
+    <Compile Include="Open\Impl\UxImpl.cs" />
+    <Compile Include="Open\IUx.cs" />
     <Compile Include="Open\IExtensionUIController.cs" />
     <Compile Include="Open\IFrameworkManager.cs" />
     <Compile Include="Open\Impl\FxImpl.cs" />
@@ -85,14 +88,12 @@
     <Compile Include="Management\IRunningManager.cs" />
     <Compile Include="Management\Manager.cs" />
     <Compile Include="Management\Impl\RunningManagerImpl.cs" />
-    <Compile Include="Open\ChoiceBoxResult.cs" />
+    <Compile Include="Open\ChoiceResult.cs" />
     <Compile Include="Open\Factory.cs" />
     <Compile Include="Open\ICompApi.cs" />
     <Compile Include="Open\IMd5.cs" />
     <Compile Include="Open\Impl\AppManagerImpl.cs" />
-    <Compile Include="Open\Impl\AutumnBoxApi\AutumnBoxGuiApiProvider.cs" />
     <Compile Include="Open\Impl\CompImpl.cs" />
-    <Compile Include="Open\Impl\AutumnBoxApi\IAutumnBoxGuiApi.cs" />
     <Compile Include="Open\Impl\LoggerImpl.cs" />
     <Compile Include="Open\Impl\Md5Impl.cs" />
     <Compile Include="Open\Impl\OSApiImpl.cs" />

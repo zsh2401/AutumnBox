@@ -39,7 +39,7 @@ namespace AutumnBox.OpenFramework.Extension
             {
                 args.Context.App.RunOnUIThread(() =>
                 {
-                    args.Context.App.ShowMessageBox("警告", "请先安装相关应用!");
+                    args.Context.Ux.ShowMessageDialog("警告", "请先安装相关应用!");
                 });
                 args.Prevent = true;
             }

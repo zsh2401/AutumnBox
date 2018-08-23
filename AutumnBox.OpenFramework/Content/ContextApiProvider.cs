@@ -24,6 +24,19 @@ namespace AutumnBox.OpenFramework.Content
         }
         private ILogger logger;
 
+        public IUx Ux
+        {
+            get
+            {
+                if (_ux == null)
+                {
+                    _ux = factory.GetUx(ctx);
+                }
+                return _ux;
+            }
+        }
+        private IUx _ux;
+
         public IOSApi OS
         {
             get

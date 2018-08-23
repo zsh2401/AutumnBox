@@ -255,13 +255,22 @@
     <Compile Include="View\Panel\PanelReboot.xaml.cs">
       <DependentUpon>PanelReboot.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Util\OpenFxManagement\AppManagerImpl.cs" />
+    <Compile Include="Util\OpenFxManagement\AutumnBox_GUI_Calller.cs" />
     <Compile Include="Util\Extensions.cs" />
     <Compile Include="Util\OpenFxManagement\OpenFrameworkManager.cs" />
     <Compile Include="Util\Data\Md5.cs" />
     <Compile Include="View\WindowManager.cs" />
+    <Compile Include="View\Windows\ChoiceWindow.xaml.cs">
+      <DependentUpon>ChoiceWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\LoadingWindow.xaml.cs">
+      <DependentUpon>LoadingWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Windows\LogWindow.xaml.cs">
       <DependentUpon>LogWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\MessageWindow.xaml.cs">
+      <DependentUpon>MessageWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Windows\RunningWindow.xaml.cs">
       <DependentUpon>RunningWindow.xaml</DependentUpon>
@@ -689,7 +698,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Windows\ChoiceWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\LoadingWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Windows\LogWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\MessageWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

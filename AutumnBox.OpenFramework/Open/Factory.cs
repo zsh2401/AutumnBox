@@ -4,8 +4,8 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.OpenFramework.Content;
+using AutumnBox.OpenFramework.Management;
 using AutumnBox.OpenFramework.Open.Impl;
-using AutumnBox.OpenFramework.Open.Impl.AutumnBoxApi;
 using System;
 
 namespace AutumnBox.OpenFramework.Open
@@ -52,7 +52,7 @@ namespace AutumnBox.OpenFramework.Open
         /// <returns></returns>
         public IAppManager GetAppManager(Context ctx)
         {
-            return new AppManagerImpl(ctx, AutumnBoxGuiApiProvider.Get());
+            return new AppManagerImpl(ctx, Manager.AutumnBox_Gui);
         }
         /// <summary>
         /// 获取操作系统API
@@ -107,6 +107,15 @@ namespace AutumnBox.OpenFramework.Open
         public IFrameworkManager GetFx(Context ctx)
         {
             return fx;
+        }
+        /// <summary>
+        /// 获取Ux相关API
+        /// </summary>
+        /// <param name="ctx"></param>
+        /// <returns></returns>
+        public IUx GetUx(Context ctx)
+        {
+            return new UxImpl(ctx, Manager.AutumnBox_Gui);
         }
         #endregion
     }

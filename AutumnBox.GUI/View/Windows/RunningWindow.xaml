@@ -11,7 +11,7 @@
         MinWidth="450"
         WindowStartupLocation="CenterOwner"
         FontFamily="{DynamicResource AutumnBox.Font}"
-        ResizeMode="CanResize" Height="194" Width="162" Closing="Window_Closing">
+        ResizeMode="CanResize" Height="474" Width="343.5" Closing="Window_Closing">
     <Grid Margin="1" Background="{DynamicResource MainBackgroundBrush}">
         <TextBox IsReadOnly="True"  Style="{x:Null}" BorderBrush="{DynamicResource PrimaryLightBrush}" Text="{Binding Output}" Margin="10,10,10,61" TextWrapping="Wrap" />
         <StackPanel VerticalAlignment="Bottom" Margin="10,0,10,10" Orientation="Horizontal">

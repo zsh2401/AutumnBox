@@ -35,7 +35,7 @@ namespace AutumnBox.OpenFramework.Extension
             {
                 args.Context.App.RunOnUIThread(() =>
                 {
-                    args.Context.App.ShowMessageBox("Warning", "目前已连接设备没有ROOT!");
+                    args.Context.Ux.ShowMessageDialog("Warning", "目前已连接设备没有ROOT!");
                 });
                 args.Prevent = true;
             }

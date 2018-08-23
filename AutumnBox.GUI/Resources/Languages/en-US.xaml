@@ -123,6 +123,16 @@ Description:
     <s:String x:Key="ContentEnableDeviceNetDebuggingWarning">Warning</s:String>
     <s:String x:Key="ContentEnableDeviceNetDebuggingPortHint">Port</s:String>
         <s:String x:Key="ContentEnableDeviceNetDebuggingPortErrorHint">Please check your input!</s:String>
+    <!--MessageWindow-->
+     <s:String x:Key="MessageWindowDoubleClickToClose">Click anywhere on this window to close</s:String>
+    
+    <!--ChoiceWindow-->
+    <s:String x:Key="ChoiceWindowBtnCancel">Cancel</s:String>
+    <s:String x:Key="ChoiceWindowBtnYes">Yes</s:String>
+    <s:String x:Key="ChoiceWindowBtnNo">No</s:String>
+    
+     <!--LoadingWindow-->
+     <s:String x:Key="LoadingWindowMessage">Please wait...</s:String>
     
     <!--按钮-->
      <s:String x:Key="btnAppOpsXAct">Activate AppOpsX</s:String>
