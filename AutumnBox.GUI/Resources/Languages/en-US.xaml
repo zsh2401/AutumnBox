@@ -138,7 +138,14 @@ Description:
     <s:String x:Key="RunningWindowStateRunning">Extension running~</s:String>
     <s:String x:Key="RunningWindowStateFinished">Finished</s:String>
      <s:String x:Key="RunningWindowStateError">Error</s:String>
+    
+        <!--拓展模块池-->
+    <s:String x:Key="ExtensionIniting">Init...</s:String>
+    <s:String x:Key="ExtensionWaitingForUser">Waitting for user</s:String>
+    <s:String x:Key="ExtensionRunning">Running</s:String>
+    <s:String x:Key="AppInstallingFmt">Installing {0},Total {1}</s:String>
     <s:String x:Key="AppInstallingFinishedFmt">Finished,Success {0},Fail {1},Total {2}</s:String>
+    
     
     <!--按钮-->
      <s:String x:Key="btnAppOpsXAct">Activate AppOpsX</s:String>
