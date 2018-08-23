@@ -30,7 +30,7 @@ namespace AutumnBox.OpenFramework.Extension
                 }
                 else
                 {
-                    return base.Key + "_" + Lang;
+                    return base.Key + "_" + Lang.ToLower();
                 }
             }
         }

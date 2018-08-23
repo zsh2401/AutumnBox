@@ -20,7 +20,7 @@ namespace AutumnBox.OpenFramework.Extension
         /// <summary>
         /// 设置UI进度条
         /// </summary>
-        protected virtual int ProgressValue
+        protected virtual double ProgressValue
         {
             set
             {

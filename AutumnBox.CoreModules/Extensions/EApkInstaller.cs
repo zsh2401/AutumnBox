@@ -14,10 +14,13 @@ using System.IO;
 namespace AutumnBox.CoreModules.Extensions
 {
     [ExtName("安装APK")]
+    [ExtName("Install APK", Lang = "en-US")]
     [ExtAuth("zsh2401")]
-    [ExtDesc("Just like that")]
+    [ExtDesc("可直接向手机安装APK,不过要注意允许USB安装哦!")]
+    [ExtDesc("Install apk to device", Lang = "en-US")]
     [ExtIcon("Icons.android.png")]
     [ExtRequiredDeviceStates(DeviceState.Poweron)]
+    [ExtUxEnable(true)]
     public class EApkInstaller : AutumnBoxExtension
     {
         public override int Main()
@@ -29,28 +32,75 @@ namespace AutumnBox.CoreModules.Extensions
             fileDialog.Multiselect = true;
             if (fileDialog.ShowDialog() == true)
             {
-                Basic.Flows.ApkInstaller installer = new Basic.Flows.ApkInstaller();
                 List<FileInfo> files = new List<FileInfo>();
                 foreach (string fileName in fileDialog.FileNames)
                 {
                     files.Add(new FileInfo(fileName));
                 }
-                var args = new ApkInstallerArgs()
-                {
-                    DevBasicInfo = TargetDevice,
-                    Files = files,
-                };
-                installer.Init(args);
-                App.RunOnUIThread(() =>
-                {
-                    new ApkInstallingWindow(installer, files).ShowDialog();
-                });
+                Install(files);
             }
             else
             {
                 return ERR;
             }
             return OK;
+        }
+        ApkInstaller installer;
+        private void Install(List<FileInfo> files)
+        {
+            int successed = 0;
+            int error = 0;
+            int currentInstalling = 1;
+            int totalCount = files.Count;
+
+            installer = new ApkInstaller();
+            var args = new ApkInstallerArgs()
+            {
+                DevBasicInfo = TargetDevice,
+                Files = files,
+            };
+            installer.AApkIstanlltionCompleted += (s, e) =>
+            {
+                if (e.IsSuccess)
+                {
+                    successed++;
+                }
+                else
+                {
+                    error++;
+                    Logger.Warn(e.Output.ToString());
+                }
+                if (currentInstalling < totalCount)
+                {
+                    currentInstalling++;
+                    SetTip(currentInstalling, totalCount);
+                }
+                return true;
+            };
+            WriteLine(App.GetPublicResouce<string>("ExtensionIniting"));
+            installer.Init(args);
+            SetTip(currentInstalling, totalCount);
+            installer.Run();
+            string fmtString = App.GetPublicResouce<string>("AppInstallingFinishedFmt");
+            WriteLine(string.Format(fmtString, successed, error, totalCount));
+        }
+        private void SetTip(double crt, double total)
+        {
+            Tip = string.Format(App.GetPublicResouce<string>("AppInstallingFmt"), crt, total);
+            ProgressValue = crt / total * 100.0;
+        }
+
+        public override bool OnStopCommand()
+        {
+            try
+            {
+                installer?.ForceStop();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }
