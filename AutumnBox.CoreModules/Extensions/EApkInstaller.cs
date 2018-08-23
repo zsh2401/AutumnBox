@@ -15,13 +15,11 @@ namespace AutumnBox.CoreModules.Extensions
 {
     [ExtName("安装APK")]
     [ExtName("Install APK", Lang = "en-US")]
-    [ExtAuth("zsh2401")]
     [ExtDesc("可直接向手机安装APK,不过要注意允许USB安装哦!")]
     [ExtDesc("Install apk to device", Lang = "en-US")]
     [ExtIcon("Icons.android.png")]
     [ExtRequiredDeviceStates(DeviceState.Poweron)]
-    [ExtUxEnable(true)]
-    public class EApkInstaller : AutumnBoxExtension
+    public class EApkInstaller : OfficialExtension
     {
         public override int Main()
         {

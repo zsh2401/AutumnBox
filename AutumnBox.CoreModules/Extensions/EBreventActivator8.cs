@@ -16,13 +16,12 @@ using System.Threading.Tasks;
 namespace AutumnBox.CoreModules.Extensions
 {
     [ExtName("黑阀一键激活-安卓8")]
-    [ExtAuth("zsh2401")]
     [ExtDesc("一键激活黑阀,但值得注意的是,这样的激活方式,在重启后将失效")]
     [ExtAppProperty("me.piebridge.brevent")]
     [ExtMinAndroidVersion(8, 0, 0)]
     [ExtRequiredDeviceStates(DeviceState.Poweron)]
     [ExtIcon("Icons.brevent.png")]
-    public class EBreventActivator8 : AutumnBoxExtension
+    public class EBreventActivator8 : OfficialExtension
     {
         public override int Main()
         {
@@ -46,11 +45,17 @@ namespace AutumnBox.CoreModules.Extensions
             /*开始操作*/
             BreventServiceActivator activator = new BreventServiceActivator();
             activator.Init(args);
-            WriteLine("正在运行");
-            var output = activator.Run();
-            WriteLine("OK");
-            Logger.Info(output.OutputData.ToString());
-            return OK;
+            WriteLine(App.GetPublicResouce<string>("ExtensionRunning"));
+            var exeResult = activator.Run();
+            WriteLine(exeResult.OutputData.ToString());
+            if (exeResult.ResultType == Basic.FlowFramework.ResultType.Successful)
+            {
+                return OK;
+            }
+            else
+            {
+                return ERR;
+            }
         }
     }
 }
