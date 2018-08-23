@@ -869,12 +869,8 @@
     <Resource Include="Resources\Images\Btn\min.png" />
     <Resource Include="Resources\Images\Btn\min_selected.png" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Resource Include="Resources\Drawable\icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Drawable\icon.ico" />
+    <Resource Include="Resources\Drawable\old_icon2.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Drawable\old_icon.png" />
@@ -890,6 +886,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Drawable\More\halo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Drawable\icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Drawable\icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
