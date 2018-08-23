@@ -6,6 +6,7 @@
 using AutumnBox.OpenFramework.Content;
 using AutumnBox.OpenFramework.Management;
 using AutumnBox.OpenFramework.Warpper;
+using System;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -87,6 +88,11 @@ namespace AutumnBox.OpenFramework.Open.Impl
         public void ShowWarnDialog(string message)
         {
             sourceApi.CreateMessageWindow(ctx.App.GetPublicResouce<string>("Warning"), message).ShowDialog();
+        }
+
+        public void RunOnUIThread(Action action)
+        {
+            ctx.App.RunOnUIThread(action);
         }
     }
 }
