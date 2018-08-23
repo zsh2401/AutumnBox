@@ -64,5 +64,9 @@ namespace AutumnBox.OpenFramework.Open
         /// </summary>
         [Obsolete]
         void CloseLoadingWindow();
+        /// <summary>
+        /// 在UI线程中运行代码
+        /// </summary>
+        void RunOnUIThread(Action action);
     }
 }
