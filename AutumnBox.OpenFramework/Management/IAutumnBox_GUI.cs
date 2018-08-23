@@ -17,12 +17,7 @@ namespace AutumnBox.OpenFramework.Management
     /// <summary>
     /// 基础秋之盒主程序的API
     /// </summary>
-#if SDK
-    internal
-#else
-    public
-#endif
-        interface IAutumnBox_GUI
+    public interface IAutumnBox_GUI
     {
         #region UI
         /// <summary>

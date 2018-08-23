@@ -34,7 +34,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutumnBox.ExampleExtensions
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutumnBox.CoreModules", "AutumnBox.CoreModules\AutumnBox.CoreModules.csproj", "{8D9EB8B7-0271-4368-AA27-3DD6B62EEBDE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutumnBox.MapleLeaf", "AutumnBox.MapleLeaf\AutumnBox.MapleLeaf.csproj", "{48DD382B-2E1D-459E-9A10-0A83F1B23F69}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutumnBox.MapleLeaf", "AutumnBox.MapleLeaf\AutumnBox.MapleLeaf.csproj", "{48DD382B-2E1D-459E-9A10-0A83F1B23F69}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -394,7 +394,6 @@ Global
 		{8D9EB8B7-0271-4368-AA27-3DD6B62EEBDE}.Release|x86.ActiveCfg = Release|Any CPU
 		{8D9EB8B7-0271-4368-AA27-3DD6B62EEBDE}.Release|x86.Build.0 = Release|Any CPU
 		{8D9EB8B7-0271-4368-AA27-3DD6B62EEBDE}.SDK|Any CPU.ActiveCfg = Release|Any CPU
-		{8D9EB8B7-0271-4368-AA27-3DD6B62EEBDE}.SDK|Any CPU.Build.0 = Release|Any CPU
 		{8D9EB8B7-0271-4368-AA27-3DD6B62EEBDE}.SDK|ARM.ActiveCfg = Release|Any CPU
 		{8D9EB8B7-0271-4368-AA27-3DD6B62EEBDE}.SDK|ARM.Build.0 = Release|Any CPU
 		{8D9EB8B7-0271-4368-AA27-3DD6B62EEBDE}.SDK|x64.ActiveCfg = Release|Any CPU
@@ -426,7 +425,6 @@ Global
 		{48DD382B-2E1D-459E-9A10-0A83F1B23F69}.Release|x86.ActiveCfg = Release|Any CPU
 		{48DD382B-2E1D-459E-9A10-0A83F1B23F69}.Release|x86.Build.0 = Release|Any CPU
 		{48DD382B-2E1D-459E-9A10-0A83F1B23F69}.SDK|Any CPU.ActiveCfg = Debug|Any CPU
-		{48DD382B-2E1D-459E-9A10-0A83F1B23F69}.SDK|Any CPU.Build.0 = Debug|Any CPU
 		{48DD382B-2E1D-459E-9A10-0A83F1B23F69}.SDK|ARM.ActiveCfg = Debug|Any CPU
 		{48DD382B-2E1D-459E-9A10-0A83F1B23F69}.SDK|ARM.Build.0 = Debug|Any CPU
 		{48DD382B-2E1D-459E-9A10-0A83F1B23F69}.SDK|x64.ActiveCfg = Debug|Any CPU
@@ -445,7 +443,7 @@ Global
 		{D81ACCBD-9D6A-4A5B-A0A5-4362F897074B} = {ED6D96D8-56EF-4E5B-B43F-100D1DB9EA30}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {E8E55705-AE5C-4952-B4C7-9D7F81C38731}
 		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.PolicyInjection.6.0.1304.0\lib\NET45
+		SolutionGuid = {E8E55705-AE5C-4952-B4C7-9D7F81C38731}
 	EndGlobalSection
 EndGlobal

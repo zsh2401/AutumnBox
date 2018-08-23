@@ -17,15 +17,13 @@ namespace AutumnBox.CoreModules.Extensions
         bool stoppable = false;
         public override int Main()
         {
-            Ux.ShowLoadingWindow();
-            //App.RunOnUIThread(() =>
-            //{
-            //    ChoiceResult choice = Ux.DoChoice("Do you like this?");
-            //    Ux.ShowMessageDialog("OK",choice.ToString());
-            //});
-            Thread.Sleep(5000);
-            Ux.CloseLoadingWindow();
-            return 0;
+            WriteLine("呵呵哒");
+            Thread.Sleep(2500);
+            ProgressValue = 25;
+            stoppable = true;
+            WriteLine("呵呵哒");
+            Thread.Sleep(2500);
+            return 0;                                                              
         }
         public override bool OnStopCommand()
         {
