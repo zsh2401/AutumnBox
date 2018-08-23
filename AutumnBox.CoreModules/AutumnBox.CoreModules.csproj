@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CoreEntry.cs" />
+    <Compile Include="OfficialExtension.cs" />
     <Compile Include="Extensions\EApkInstaller.cs" />
     <Compile Include="Extensions\EBreventActivator.cs" />
     <Compile Include="Extensions\EBreventActivator8.cs" />

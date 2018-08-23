@@ -10,13 +10,12 @@ using AutumnBox.OpenFramework.Extension;
 namespace AutumnBox.CoreModules.Extensions
 {
     [ExtName("黑阀一键激活")]
-    [ExtAuth("zsh2401")]
+    [ExtName("Activate brevent by one key", Lang = "en-us")]
     [ExtDesc("一键激活黑阀,但值得注意的是,这样的激活方式,在重启后将失效")]
     [ExtAppProperty("me.piebridge.brevent", AppLabel = "黑阀", AppLabel_en = "Brevent")]
     [ExtRequiredDeviceStates(DeviceState.Poweron)]
     [ExtIcon("Icons.brevent.png")]
-    [ExtUxEnable(true)]
-    public class EBreventActivator : AutumnBoxExtension
+    public class EBreventActivator : OfficialExtension
     {
         public override int Main()
         {
@@ -24,10 +23,17 @@ namespace AutumnBox.CoreModules.Extensions
             /*开始操作*/
             BreventServiceActivator activator = new BreventServiceActivator();
             activator.Init(args);
-            WriteLine("正在操作...");
-            activator.Run();
-            WriteLine("OK");
-            return OK;
+            WriteLine(App.GetPublicResouce<string>("ExtensionRunning"));
+            var result = activator.Run();
+            WriteLine(result.OutputData.ToString());
+            if (result.ResultType == Basic.FlowFramework.ResultType.Successful)
+            {
+                return OK;
+            }
+            else
+            {
+                return ERR;
+            }
         }
     }
 }
