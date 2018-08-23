@@ -6,6 +6,7 @@
 using AutumnBox.Basic.Device;
 using AutumnBox.GUI.MVVM;
 using AutumnBox.GUI.Util.Bus;
+using AutumnBox.GUI.Util.I18N;
 using AutumnBox.OpenFramework.Warpper;
 using System;
 using System.Collections.Generic;
@@ -185,13 +186,21 @@ namespace AutumnBox.GUI.ViewModel
                 DeviceSelectionObserver.Instance.SelectedDevice += OnSelectDevice;
                 DeviceSelectionObserver.Instance.SelectedNoDevice += OnSelectNoDevice;
             }
+            LanguageManager.Instance.LanguageChanged += (s, e) =>
+            {
+                LoadExtensions();
+            };
         }
         public void LoadExtensions()
         {
             var filted = from warpper in OpenFramework.Management.Manager.InternalManager.Warppers
                          where warpper.Info.RequiredDeviceStates.HasFlag(targetState)
                          select warpper;
-            Warppers = WarpperWarpper.From(filted);
+            Selected = null;
+            App.Current.Dispatcher.Invoke(() =>
+            {
+                Warppers = WarpperWarpper.From(filted);
+            });
         }
     }
 }

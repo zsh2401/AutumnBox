@@ -144,6 +144,12 @@
     <s:String x:Key="RunningWindowStateFinished">执行完毕</s:String>
      <s:String x:Key="RunningWindowStateError">执行时遇到了错误</s:String>
     
+    <!--拓展模块池-->
+    <s:String x:Key="ExtensionIniting">正在初始化</s:String>
+    <s:String x:Key="ExtensionWaitingForUser">等待用户</s:String>
+    <s:String x:Key="AppInstallingFmt">正在安装第{0}个,共{1}个APK</s:String>
+    <s:String x:Key="AppInstallingFinishedFmt">执行完毕,成功{0}个,失败{1}个,总共{2}个</s:String>
+    
     <!--按钮-->
     <s:String x:Key="btnAppOpsXAct">激活AppOpsX</s:String>
     <s:String x:Key="btnAccountInfo">账号信息</s:String>
