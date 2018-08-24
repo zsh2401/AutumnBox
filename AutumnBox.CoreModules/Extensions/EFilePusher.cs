@@ -15,6 +15,7 @@ using System.Threading.Tasks;
 namespace AutumnBox.CoreModules.Extensions
 {
     [ExtName("推送文件到手机主目录")]
+    [ExtName("[ROOT]Push files", Lang = "en-US")]
     [ExtRequiredDeviceStates(Basic.Device.DeviceState.Poweron | Basic.Device.DeviceState.Recovery)]
     public class EFilePusher : AutumnBoxExtension
     {

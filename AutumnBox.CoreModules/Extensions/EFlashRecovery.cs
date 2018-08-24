@@ -10,6 +10,7 @@ using AutumnBox.OpenFramework.Extension;
 namespace AutumnBox.CoreModules.Extensions
 {
     [ExtName("[ROOT]刷入REC")]
+    [ExtName("[ROOT]Flast recovery.img", Lang = "en-US")]
     [ExtRequireRoot]
     [ExtRequiredDeviceStates(DeviceState.Poweron)]
     public class EFlashRecovery : AutumnBoxExtension

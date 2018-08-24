@@ -15,9 +15,7 @@ using System.Threading.Tasks;
 namespace AutumnBox.CoreModules.Extensions
 {
     [ExtName("[ROOT]刷入BOOT")]
-    [ExtAuth("zsh2401")]
-    [ExtDesc("呵呵呵哒")]
-    [ExtDesc("Fuck",Lang = "en-us")]
+    [ExtName("[ROOT]Flast boot.img", Lang = "en-US")]
     [ExtRequireRoot]
     [ExtRequiredDeviceStates(DeviceState.Poweron)]
     public class EFlashBoot : AutumnBoxExtension
