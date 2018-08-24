@@ -13,12 +13,11 @@ namespace AutumnBox.OpenFramework.Extension
     /// <summary>
     /// 标准的秋之盒拓展基类
     /// </summary>
-    [ExtName("未知拓展")]
+    [ExtName("无名拓展")]
     [ExtName("Unknown extension", Lang = "en-us")]
     [ExtAuth("佚名")]
-    [ExtAuth("Anonym", Lang = "en-us")]
-    [ExtDesc("这是一个测试模块")]
-    [ExtDesc("This is a test extesion", Lang = "en-us")]
+    [ExtAuth("Anonymous", Lang = "en-us")]
+    [ExtDesc("...")]
     [ExtVersion(1, 0, 0)]
     [ExtRequiredDeviceStates(DeviceState.None)]
     [ExtMinApi(8)]
@@ -26,7 +25,7 @@ namespace AutumnBox.OpenFramework.Extension
     [ExtRunAsAdmin(false)]
     [ExtRequireRoot(false)]
     [ExtOfficial(false)]
-    //[ExtAppProperty("com.fuck.a","Fuck")]
+    //[ExtAppProperty("com.miui.fm","Fuck")]
     public abstract partial class AutumnBoxExtension : Context
     {
         /// <summary>

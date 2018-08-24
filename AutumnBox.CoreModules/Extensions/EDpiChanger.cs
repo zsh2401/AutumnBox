@@ -8,7 +8,8 @@ using AutumnBox.OpenFramework.Extension;
 
 namespace AutumnBox.CoreModules.Extensions
 {
-    [ExtName("无ROOT修改DPI")]
+    [ExtName("Modify dpi without root",Lang = "en-US")]
+    [ExtName("免ROOT修改DPI")]
     [ExtRequiredDeviceStates(Basic.Device.DeviceState.Poweron)]
     public class EDpiChanger : AutumnBoxExtension
     {

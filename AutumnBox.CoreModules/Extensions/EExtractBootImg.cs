@@ -11,6 +11,7 @@ using System.Windows.Forms;
 namespace AutumnBox.CoreModules.Extensions
 {
     [ExtName("[ROOT]提取BOOT.IMG")]
+    [ExtName("[ROOT]Extract boot.img", Lang = "en-US")]
     [ExtRequireRoot]
     [ExtRequiredDeviceStates(DeviceState.Poweron)]
     public class EExtractBootImg : AutumnBoxExtension

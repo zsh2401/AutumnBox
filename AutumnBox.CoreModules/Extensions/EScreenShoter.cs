@@ -10,6 +10,7 @@ using System.Windows.Forms;
 namespace AutumnBox.CoreModules.Extensions
 {
     [ExtName("截图并保存到电脑")]
+    [ExtName("Screenshot and save to pc",Lang ="en-US")]
     [ExtRequiredDeviceStates(Basic.Device.DeviceState.Poweron)]
     public class EScreenShoter : AutumnBoxExtension
     {

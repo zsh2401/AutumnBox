@@ -16,7 +16,7 @@ using System.Windows.Forms;
 namespace AutumnBox.CoreModules.Extensions
 {
     [ExtName("[ROOT]提取Recovery")]
-    [ExtAuth("zsh2401")]
+    [ExtName("[ROOT]Extract recovery.img", Lang = "en-US")]
     [ExtVersion(0, 0, 5)]
     [ExtRequireRoot]
     [ExtRequiredDeviceStates(DeviceState.Poweron)]
