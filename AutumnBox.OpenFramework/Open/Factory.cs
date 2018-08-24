@@ -52,7 +52,7 @@ namespace AutumnBox.OpenFramework.Open
         /// <returns></returns>
         public IAppManager GetAppManager(Context ctx)
         {
-            return new AppManagerImpl(ctx, Manager.AutumnBox_Gui);
+            return new AppManagerImpl(ctx, AutumnBoxGuiApi.Main);
         }
         /// <summary>
         /// 获取操作系统API
@@ -115,7 +115,7 @@ namespace AutumnBox.OpenFramework.Open
         /// <returns></returns>
         public IUx GetUx(Context ctx)
         {
-            return new UxImpl(ctx, Manager.AutumnBox_Gui);
+            return new UxImpl(ctx, AutumnBoxGuiApi.Main);
         }
         #endregion
     }

@@ -14,10 +14,6 @@ namespace AutumnBox.OpenFramework.Warpper
     public interface IExtInfoGetter
     {
         /// <summary>
-        /// 是否需要在运行时启动一个窗口作为输出等信息的展示
-        /// </summary>
-        bool Visual { get; }
-        /// <summary>
         /// 拓展模块名
         /// </summary>
         string Name { get; }

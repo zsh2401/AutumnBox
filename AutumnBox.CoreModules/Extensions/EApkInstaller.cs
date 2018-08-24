@@ -21,7 +21,7 @@ namespace AutumnBox.CoreModules.Extensions
     [ExtRequiredDeviceStates(DeviceState.Poweron)]
     public class EApkInstaller : OfficialExtension
     {
-        public override int Main()
+        protected override int VisualMain()
         {
             Microsoft.Win32.OpenFileDialog fileDialog = new Microsoft.Win32.OpenFileDialog();
             fileDialog.Reset();
@@ -43,7 +43,9 @@ namespace AutumnBox.CoreModules.Extensions
             }
             return OK;
         }
+
         ApkInstaller installer;
+
         private void Install(List<FileInfo> files)
         {
             int successed = 0;
@@ -82,13 +84,14 @@ namespace AutumnBox.CoreModules.Extensions
             string fmtString = App.GetPublicResouce<string>("AppInstallingFinishedFmt");
             WriteLine(string.Format(fmtString, successed, error, totalCount));
         }
+
         private void SetTip(double crt, double total)
         {
             Tip = string.Format(App.GetPublicResouce<string>("AppInstallingFmt"), crt, total);
-            ProgressValue = crt / total * 100.0;
+            Progress = crt / total * 100.0;
         }
 
-        public override bool OnStopCommand()
+        protected override bool VisualStop()
         {
             try
             {

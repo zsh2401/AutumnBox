@@ -5,6 +5,7 @@
 *************************************************/
 using AutumnBox.Basic.Device;
 using AutumnBox.OpenFramework.Content;
+using AutumnBox.OpenFramework.Warpper;
 using System;
 
 namespace AutumnBox.OpenFramework.Extension
@@ -15,10 +16,6 @@ namespace AutumnBox.OpenFramework.Extension
     public class BeforeArgs
     {
         /// <summary>
-        /// 上下文
-        /// </summary>
-        public Context Context { get; internal set; }
-        /// <summary>
         /// 截断
         /// 默认为false
         /// </summary>
@@ -27,15 +24,52 @@ namespace AutumnBox.OpenFramework.Extension
         /// 目标设备
         /// </summary>
         public DeviceBasicInfo TargetDevice { get; set; }
+        /// <summary>
+        /// 拓展模块
+        /// </summary>
+        public AutumnBoxExtension Extension { get; private set; }
+        /// <summary>
+        /// 拓展包装器
+        /// </summary>
+        public IExtensionWarpper ExtWarpper { get; set; }
+        /// <summary>
+        /// 构造
+        /// </summary>
+        /// <param name="extension"></param>
+        public BeforeArgs(AutumnBoxExtension extension)
+        {
+            this.Extension = extension;
+        }
     }
     /// <summary>
     /// 运行后函数的参数
     /// </summary>
-    public class AfterArgs {
+    public class AfterArgs
+    {
         /// <summary>
-        /// 上下文
+        /// 是否是被强制停止的
         /// </summary>
-        public Context Context { get; internal set; }
+        public bool IsForceStopped { get; set; } = false;
+        /// <summary>
+        /// 返回码
+        /// </summary>
+        public int ReturnCode { get; set; }
+        /// <summary>
+        /// 拓展模块
+        /// </summary>
+        public AutumnBoxExtension Extension { get; set; }
+        /// <summary>
+        /// 拓展包装器
+        /// </summary>
+        public IExtensionWarpper ExtWarpper { get; set; }
+        /// <summary>
+        /// 构造
+        /// </summary>
+        /// <param name="extension"></param>
+        public AfterArgs(AutumnBoxExtension extension)
+        {
+            this.Extension = extension;
+        }
     }
     /// <summary>
     /// 拓展模块主函数切面

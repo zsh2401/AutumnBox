@@ -19,12 +19,6 @@ namespace AutumnBox.OpenFramework.Open
     public interface IUx
     {
         /// <summary>
-        /// 获取拓展模块的UI控制器
-        /// </summary>
-        /// <param name="warpper"></param>
-        /// <returns></returns>
-        IExtensionUIController GetUIControllerOf(IExtensionWarpper warpper);
-        /// <summary>
         /// 让用户做选择
         /// </summary>
         /// <param name="title"></param>

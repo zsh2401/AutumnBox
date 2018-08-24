@@ -11,21 +11,23 @@ namespace AutumnBox.CoreModules.Extensions
 {
     [ExtName("All testing")]
     [ExtRequiredDeviceStates(Basic.Device.DeviceState.NoMatter)]
-    [ExtUxEnable(true)]
-    public class EHoldMyHand : AutumnBoxExtension
+    public class EHoldMyHand : AtmbVisualExtension
     {
         bool stoppable = false;
-        public override int Main()
+        protected override int VisualMain()
         {
-            WriteLine("呵呵哒");
-            Thread.Sleep(2500);
-            ProgressValue = 25;
+            WriteLine("开始执行");
+            Thread.Sleep(3000);
+            WriteLine("进度25");
+            Progress = 25;
+            Thread.Sleep(3000);
+            WriteLine("现在可以被停止了");
+            Progress = 50;
             stoppable = true;
-            WriteLine("呵呵哒");
             Thread.Sleep(2500);
-            return 0;                                                              
+            return 0;                                                
         }
-        public override bool OnStopCommand()
+        protected override bool VisualStop()
         {
             return stoppable;
         }

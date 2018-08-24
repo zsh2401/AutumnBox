@@ -14,15 +14,6 @@ namespace AutumnBox.OpenFramework.Management
     /// </summary>
     public static class Manager
     {
-        /// <summary>
-        /// 秋之盒GUIAPI
-        /// </summary>
-#if SDK
-        internal
-#else
-        public
-#endif
-            static IAutumnBox_GUI AutumnBox_Gui{ get; set; }
 
         private static IInternalManager _internalManager;
         /// <summary>
@@ -73,7 +64,7 @@ namespace AutumnBox.OpenFramework.Management
         {
             if (!inited)
             {
-                AutumnBox_Gui = autumnbox;
+                AutumnBoxGuiApi.Main = autumnbox;
                 InternalManager.Reload();
                 inited = true;
             }

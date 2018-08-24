@@ -150,6 +150,9 @@
     <s:String x:Key="RunningWindowStateRunning">模块正在运行中~</s:String>
     <s:String x:Key="RunningWindowStateFinished">执行完毕</s:String>
      <s:String x:Key="RunningWindowStateError">执行时遇到了错误</s:String>
+    <s:String x:Key="RunningWindowCantStop">此模块无法被终止</s:String>
+    <s:String x:Key="RunningWindowStateForceStopped">被强制终止</s:String>
+    <s:String x:Key="RunningWindowStopped">已被强制终止</s:String>
     
     <!--拓展模块池-->
     <s:String x:Key="ExtensionIniting">正在初始化</s:String>

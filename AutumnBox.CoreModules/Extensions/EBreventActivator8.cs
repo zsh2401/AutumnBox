@@ -16,14 +16,16 @@ using System.Threading.Tasks;
 namespace AutumnBox.CoreModules.Extensions
 {
     [ExtName("黑阀一键激活-安卓8")]
+    [ExtName("Activate brevent by one key-Android O", Lang = "en-us")]
     [ExtDesc("一键激活黑阀,但值得注意的是,这样的激活方式,在重启后将失效")]
-    [ExtAppProperty("me.piebridge.brevent")]
+    [ExtAppProperty("me.piebridge.brevent", AppLabel = "黑阀", AppLabel_en = "Brevent")]
     [ExtMinAndroidVersion(8, 0, 0)]
     [ExtRequiredDeviceStates(DeviceState.Poweron)]
     [ExtIcon("Icons.brevent.png")]
     public class EBreventActivator8 : OfficialExtension
     {
-        public override int Main()
+        BreventServiceActivator activator;
+        protected override int VisualMain()
         {
             bool fixAndroidO = false;
             if (new DeviceBuildPropGetter(TargetDevice.Serial).GetAndroidVersion() >= new Version("8.0.0"))
@@ -43,7 +45,7 @@ namespace AutumnBox.CoreModules.Extensions
             }
             var args = new ShScriptExecuterArgs() { DevBasicInfo = TargetDevice, FixAndroidOAdb = fixAndroidO };
             /*开始操作*/
-            BreventServiceActivator activator = new BreventServiceActivator();
+            activator = new BreventServiceActivator();
             activator.Init(args);
             WriteLine(App.GetPublicResouce<string>("ExtensionRunning"));
             var exeResult = activator.Run();
@@ -55,6 +57,18 @@ namespace AutumnBox.CoreModules.Extensions
             else
             {
                 return ERR;
+            }
+        }
+        protected override bool VisualStop()
+        {
+            try
+            {
+                activator?.ForceStop();
+                return true;
+            }
+            catch
+            {
+                return false;
             }
         }
     }
