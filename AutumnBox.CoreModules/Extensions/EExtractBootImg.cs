@@ -37,9 +37,9 @@ namespace AutumnBox.CoreModules.Extensions
             };
             var extrator = new DeviceImageExtractor();
             extrator.Init(args);
-            //App.ShowLoadingWindow();
+            Ux.ShowLoadingWindow();
             extrator.Run();
-            //App.CloseLoadingWindow();
+            Ux.CloseLoadingWindow();
             return OK;
         }
     }

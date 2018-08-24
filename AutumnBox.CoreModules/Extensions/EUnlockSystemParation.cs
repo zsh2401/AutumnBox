@@ -11,21 +11,21 @@ using AutumnBox.OpenFramework.Extension;
 namespace AutumnBox.CoreModules.Extensions
 {
     [ExtName("[ROOT]解锁系统分区")]
-    [ExtName("[ROOT]Unlock system paration",Lang = "en-US")]
+    [ExtName("[ROOT]Unlock system paration", Lang = "en-US")]
     [ExtRequiredDeviceStates(DeviceState.Poweron)]
     [ExtRequireRoot]
     public class EUnlockSystemParation : AutumnBoxExtension
     {
         public override int Main()
         {
-            //App.ShowLoadingWindow();
+            Ux.ShowLoadingWindow();
             var unlocker = new SystemPartitionUnlocker();
             unlocker.Init(new FlowArgs()
             {
                 DevBasicInfo = TargetDevice
             });
             unlocker.Run();
-            //App.CloseLoadingWindow();
+            Ux.CloseLoadingWindow();
             return OK;
         }
     }

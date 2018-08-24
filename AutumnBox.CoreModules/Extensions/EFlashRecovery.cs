@@ -38,9 +38,9 @@ namespace AutumnBox.CoreModules.Extensions
             };
             DeviceImageFlasher flasher = new DeviceImageFlasher();
             flasher.Init(flasherArgs);
-            //App.ShowLoadingWindow();
+            Ux.ShowLoadingWindow();
             flasher.Run();
-            //App.CloseLoadingWindow();
+            Ux.CloseLoadingWindow();
             return OK;
         }
     }
