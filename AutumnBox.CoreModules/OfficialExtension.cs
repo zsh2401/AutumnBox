@@ -17,8 +17,7 @@ namespace AutumnBox.CoreModules
     [ExtAuth("AutumnBox official", Lang = "en-us")]
     [ExtOfficial(true)]
     [ContextPermission(CtxPer.High)]
-    [ExtUxEnable(true)]
-    public abstract class OfficialExtension : AutumnBoxExtension
+    public abstract class OfficialExtension : AtmbVisualExtension
     {
         protected string Res(string key)
         {

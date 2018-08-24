@@ -13,10 +13,10 @@ namespace AutumnBox.OpenFramework.Extension
     /// <summary>
     /// 标准的秋之盒拓展基类
     /// </summary>
-    [ExtName("标准秋之盒拓展")]
-    [ExtName("Standard AutumnBox extension", Lang = "en-us")]
+    [ExtName("未知拓展")]
+    [ExtName("Unknown extension", Lang = "en-us")]
     [ExtAuth("佚名")]
-    [ExtAuth("Anyone", Lang = "en-us")]
+    [ExtAuth("Anonym", Lang = "en-us")]
     [ExtDesc("这是一个测试模块")]
     [ExtDesc("This is a test extesion", Lang = "en-us")]
     [ExtVersion(1, 0, 0)]
@@ -25,19 +25,14 @@ namespace AutumnBox.OpenFramework.Extension
     [ExtTargetApi]
     [ExtRunAsAdmin(false)]
     [ExtRequireRoot(false)]
-    [ExtUxEnable(true)]
     [ExtOfficial(false)]
     //[ExtAppProperty("com.fuck.a","Fuck")]
     public abstract partial class AutumnBoxExtension : Context
     {
         /// <summary>
-        /// 拓展名
+        /// 日志标签
         /// </summary>
-        public string ExtName { get; set; }
-        /// <summary>
-        /// 目标设备
-        /// </summary>
-        public DeviceBasicInfo TargetDevice { get; set; }
+        public override string LoggingTag => ExtName;
         /// <summary>
         /// 主函数
         /// </summary>

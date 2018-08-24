@@ -6,15 +6,11 @@
 
 using AutumnBox.GUI.MVVM;
 using AutumnBox.GUI.Util;
-using AutumnBox.OpenFramework.Open;
+using AutumnBox.OpenFramework.Management;
 using AutumnBox.OpenFramework.Warpper;
-using MaterialDesignThemes.Wpf;
 using System;
-using System.Collections.ObjectModel;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Input;
 using System.Windows.Media;
 
 namespace AutumnBox.GUI.ViewModel
@@ -90,10 +86,10 @@ namespace AutumnBox.GUI.ViewModel
         private string output;
 
         #endregion
-
-        private bool warpperIsRunning = false;
         private readonly IExtensionWarpper warpper;
         private readonly Window view;
+
+        public event EventHandler<UIControllerClosingEventArgs> Closing;
 
         public VMRunningWindow(Window view, IExtensionWarpper warpper)
         {
@@ -115,55 +111,46 @@ namespace AutumnBox.GUI.ViewModel
 
         public bool OnWindowClosing()
         {
-            if (warpperIsRunning)
-            {
-                Task.Run(() =>
-                {
-                    Stop();
-                });
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            var args = new UIControllerClosingEventArgs();
+            Closing?.Invoke(this, args);
+            return args.Cancel;
         }
 
-        public void Stop()
-        {
-            bool stopped = warpper.Stop();
-            if (stopped)
-            {
-                AppendLine("已停止...");
-                Tip = "被强制终止";
-                ProgressValue = 100;
-                warpperIsRunning = false;
-            }
-            else
-            {
-                AppendLine("无法被停止");
-            }
-        }
+        //public void Stop()
+        //{
+        //    bool stopped = warpper.Stop();
+        //    if (stopped)
+        //    {
+        //        AppendLine(App.Current.Resources["RunningWindowStopped"].ToString());
+        //        Tip = "被强制终止";
+        //        ProgressValue = 100;
+        //        warpperIsRunning = false;
+        //    }
+        //    else
+        //    {
+        //        AppendLine(App.Current.Resources["RunningWindowCantStop"].ToString());
+        //    }
+        //}
 
         public void OnStart()
         {
             view.Dispatcher.Invoke(() =>
             {
                 ProgressValue = -1;
-                Tip = "RunningWindowStateRunning";
-                warpperIsRunning = true;
+                //Tip = "RunningWindowStateRunning";
                 view.Show();
             });
         }
 
-        public void OnFinish(int exitCode, bool isForceStopped)
+        public void OnFinish()
         {
-            view.Dispatcher.Invoke(() =>
-            {
-                warpperIsRunning = false;
-                ProgressValue = 100;
-                Tip = exitCode == 0 ? "RunningWindowStateFinished" : "RunningWindowStateError";
-            });
+            ProgressValue = 100;
+            //warpperIsRunning = false;
+            //view.Dispatcher.Invoke(() =>
+            //{
+
+            //    Tip = args.ReturnCode == 0 ? "RunningWindowStateFinished" : "RunningWindowStateError";
+            //});
         }
     }
 }

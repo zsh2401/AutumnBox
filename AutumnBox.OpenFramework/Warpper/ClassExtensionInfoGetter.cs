@@ -114,10 +114,6 @@ namespace AutumnBox.OpenFramework.Warpper
             }
         }
         /// <summary>
-        /// 秋之盒标准可视化
-        /// </summary>
-        public virtual bool Visual { get; set; }
-        /// <summary>
         /// 构造
         /// </summary>
         /// <param name="ctx"></param>
@@ -165,7 +161,6 @@ namespace AutumnBox.OpenFramework.Warpper
             RunAsAdmin = (bool)infoTable[nameof(ExtRunAsAdminAttribute)].Value;
             MinApi = (int)infoTable[nameof(ExtMinApiAttribute)].Value;
             TargetApi = (int)infoTable[nameof(ExtTargetApiAttribute)].Value;
-            Visual = (bool)infoTable[nameof(ExtUxEnableAttribute)].Value;
             try
             {
                 Icon = ReadIcon(infoTable[nameof(ExtIconAttribute)].Value.ToString());

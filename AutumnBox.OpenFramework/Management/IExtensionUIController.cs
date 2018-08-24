@@ -4,13 +4,29 @@
 ** desc： ...
 *************************************************/
 
-namespace AutumnBox.OpenFramework.Open
+using System;
+
+namespace AutumnBox.OpenFramework.Management
 {
+    /// <summary>
+    /// UI控制器关闭事件参数
+    /// </summary>
+    public class UIControllerClosingEventArgs : EventArgs
+    {
+        /// <summary>
+        /// 取消
+        /// </summary>
+        public bool Cancel { get; set; } = false;
+    }
     /// <summary>
     /// 拓展模块运行中界面控制器
     /// </summary>
     public interface IExtensionUIController
     {
+        /// <summary>
+        /// 当UI试图被用户关闭中时发生
+        /// </summary>
+        event EventHandler<UIControllerClosingEventArgs> Closing;
         /// <summary>
         /// 进度条
         /// </summary>
@@ -31,6 +47,6 @@ namespace AutumnBox.OpenFramework.Open
         /// <summary>
         /// warpper结束运行了
         /// </summary>
-        void OnFinish(int returnCode,bool isForceStopped);
+        void OnFinish();
     }
 }

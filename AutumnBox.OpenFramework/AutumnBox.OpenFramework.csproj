@@ -62,8 +62,8 @@
     <Compile Include="Content\CtxPer.cs" />
     <Compile Include="Exceptions\LibrarianAlreadyCreatedOnceException.cs" />
     <Compile Include="Exceptions\WarpperAlreadyCreatedOnceException.cs" />
+    <Compile Include="Extension\AtmbVisualExtension.cs" />
     <Compile Include="Extension\AutumnBoxExtension.Constants.cs" />
-    <Compile Include="Extension\AutumnBoxExtension.Internal.cs" />
     <Compile Include="Extension\ExtAppPropertyAttribute.cs" />
     <Compile Include="Extension\ExtBeforeCreateAspectAttribute.cs" />
     <Compile Include="Extension\ExtInfoAttribute.cs" />
@@ -72,15 +72,16 @@
     <Compile Include="Extension\ExtMinApiAttribute.cs" />
     <Compile Include="Extension\ExtRequireRootAttribute.cs" />
     <Compile Include="Extension\ExtRunAsAdminAttribute.cs" />
-    <Compile Include="Extension\ExtUxEnableAttribute.cs" />
     <Compile Include="Extension\ExtTargetApiAttribute.cs" />
     <Compile Include="Extension\ExtMainAsceptAttribute.cs" />
     <Compile Include="Extension\ExtMinAndroidVersionAttribute.cs" />
     <Compile Include="Extension\ExtOfficialAttribute.cs" />
+    <Compile Include="Extension\VisualUxManager.cs" />
+    <Compile Include="Management\AutumnBoxGuiApi.cs" />
     <Compile Include="Management\IAutumnBox_GUI.cs" />
     <Compile Include="Open\Impl\UxImpl.cs" />
     <Compile Include="Open\IUx.cs" />
-    <Compile Include="Open\IExtensionUIController.cs" />
+    <Compile Include="Management\IExtensionUIController.cs" />
     <Compile Include="Open\IFrameworkManager.cs" />
     <Compile Include="Open\Impl\FxImpl.cs" />
     <Compile Include="Warpper\ClassExtensionInfoGetter.cs" />
@@ -108,7 +109,7 @@
     <Compile Include="Management\Impl\InternalManagerImpl.cs" />
     <Compile Include="Extension\ExtRequiredDeviceStatesAttribute.cs" />
     <Compile Include="Extension\ExtVersionAttribute.cs" />
-    <Compile Include="Extension\AutumnBoxExtension.Public.cs" />
+    <Compile Include="Extension\AutumnBoxExtension.LifeCycle.cs" />
     <Compile Include="Content\Context.cs" />
     <Compile Include="ExtLibrary\AssemblyBasedLibrarian.cs" />
     <Compile Include="Extension\ExtAuthAttribute.cs" />
@@ -143,7 +144,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="AutumnBox.OpenFramework.nuspec" />
-    <Compile Include="Extension\AutumnBoxExtension.Protected.cs" />
+    <Compile Include="Extension\AutumnBoxExtension.Useful.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -25,7 +25,6 @@ namespace AutumnBox.OpenFramework.Extension
         /// 构造
         /// </summary>
         /// <param name="value"></param>
-        /// <param name="label"></param>
         public ExtAppPropertyAttribute(string value) : base(value)
         {
         }

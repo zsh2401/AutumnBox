@@ -17,11 +17,12 @@ namespace AutumnBox.CoreModules.Extensions
     [ExtIcon("Icons.brevent.png")]
     public class EBreventActivator : OfficialExtension
     {
-        public override int Main()
+        BreventServiceActivator activator;
+        protected override int VisualMain()
         {
             var args = new ShScriptExecuterArgs() { DevBasicInfo = TargetDevice, FixAndroidOAdb = false };
             /*开始操作*/
-            BreventServiceActivator activator = new BreventServiceActivator();
+            activator = new BreventServiceActivator();
             activator.Init(args);
             WriteLine(App.GetPublicResouce<string>("ExtensionRunning"));
             var result = activator.Run();
@@ -34,6 +35,11 @@ namespace AutumnBox.CoreModules.Extensions
             {
                 return ERR;
             }
+        }
+       protected override bool VisualStop()
+        {
+            activator.ForceStop();
+            return true;
         }
     }
 }
