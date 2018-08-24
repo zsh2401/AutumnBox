@@ -15,13 +15,18 @@ namespace AutumnBox.GUI.View.Windows
         public RunningWindow(IExtensionWarpper warpper)
         {
             InitializeComponent();
-            ViewModel = new VMRunningWindow(this,warpper);
+            ViewModel = new VMRunningWindow(this, warpper);
             DataContext = ViewModel;
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            e.Cancel =  ViewModel.OnWindowClosing();
+            e.Cancel = ViewModel.OnWindowClosing();
+        }
+
+        private void Window_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            DragMove();
         }
     }
 }

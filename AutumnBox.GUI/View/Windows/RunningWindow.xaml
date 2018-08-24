@@ -6,6 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AutumnBox.GUI.View.Windows"
         mc:Ignorable="d"
+        MouseDown="Window_MouseDown"
         Title="{Binding Title}"
         Icon="{Binding Icon}"
         MinHeight="300"
