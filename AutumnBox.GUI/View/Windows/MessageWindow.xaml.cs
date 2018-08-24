@@ -82,7 +82,10 @@ namespace AutumnBox.GUI.View.Windows
             {
                 ShowSnackBar();
             }
-            DragMove();
+            if (e.LeftButton == System.Windows.Input.MouseButtonState.Pressed)
+            {
+                DragMove();
+            }
         }
         private void ShowSnackBar()
         {
