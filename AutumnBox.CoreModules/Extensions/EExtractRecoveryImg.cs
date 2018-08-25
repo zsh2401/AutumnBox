@@ -46,7 +46,7 @@ namespace AutumnBox.CoreModules.Extensions
             extrator.Init(args);
             Ux.ShowLoadingWindow();
             extrator.Run();
-            App.CloseLoadingWindow();
+            Ux.CloseLoadingWindow();
             return OK;
         }
     }
