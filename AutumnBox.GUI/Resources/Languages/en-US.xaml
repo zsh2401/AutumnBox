@@ -142,9 +142,14 @@ Description:
      <s:String x:Key="LoadingWindowMessage">Please wait...</s:String>
     
     <!--RunningWindow-->
-    <s:String x:Key="RunningWindowStateRunning">Extension running~</s:String>
+     <s:String x:Key="RunningWindowStateRunning">Extension running~</s:String>
     <s:String x:Key="RunningWindowStateFinished">Finished</s:String>
      <s:String x:Key="RunningWindowStateError">Error</s:String>
+    <s:String x:Key="RunningWindowCantStop">This extension can't be stopped</s:String>
+    <s:String x:Key="RunningWindowStateForceStopped">Force stopped</s:String>
+    <s:String x:Key="RunningWindowStopped">Extension has been force stpped</s:String>
+     <s:String x:Key="RunningWindowExceptionOnRunning">[Warn]An exception has threw on running,you can view the logs</s:String>
+     <s:String x:Key="RunningWindowExceptionOnStopping">[Warn]An exception has threw on try stopping,you can view the logs</s:String>
     
         <!--拓展模块池-->
     <s:String x:Key="ExtensionIniting">Init...</s:String>

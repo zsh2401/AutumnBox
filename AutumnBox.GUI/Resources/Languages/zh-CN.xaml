@@ -153,6 +153,8 @@
     <s:String x:Key="RunningWindowCantStop">此模块无法被终止</s:String>
     <s:String x:Key="RunningWindowStateForceStopped">被强制终止</s:String>
     <s:String x:Key="RunningWindowStopped">已被强制终止</s:String>
+     <s:String x:Key="RunningWindowExceptionOnRunning">[警告]运行时发生严重异常,详情请看日志</s:String>
+     <s:String x:Key="RunningWindowExceptionOnStopping">[警告]终止模块时发生严重异常,详情请看日志</s:String>
     
     <!--拓展模块池-->
     <s:String x:Key="ExtensionIniting">正在初始化</s:String>

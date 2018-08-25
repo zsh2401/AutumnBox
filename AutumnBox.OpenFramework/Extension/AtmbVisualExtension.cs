@@ -61,7 +61,17 @@ namespace AutumnBox.OpenFramework.Extension
         public sealed override int Main()
         {
             isRunning = true;
-            int retCode = VisualMain();
+            int retCode = ERR;
+            try
+            {
+                retCode = VisualMain();
+            }
+            catch (Exception ex)
+            {
+                retCode = ERR;
+                Logger.Warn("Fatal exception on VisualMain()", ex);
+                WriteLine(App.GetPublicResouce<string>("RunningWindowExceptionOnRunning"));
+            }
             if (!isForceStopped)
             {
                 App.RunOnUIThread(() =>
@@ -80,7 +90,16 @@ namespace AutumnBox.OpenFramework.Extension
         /// <returns></returns>
         public override sealed bool OnStopCommand()
         {
-            isForceStopped = VisualStop();
+            try
+            {
+                isForceStopped = VisualStop();
+            }
+            catch (Exception ex)
+            {
+                Logger.Warn("Fatal error on VisualStop()", ex);
+                WriteLine(App.GetPublicResouce<string>("RunningWindowExceptionOnStopping"));
+                isForceStopped = false;
+            }
             if (isForceStopped)
             {
                 Tip = "RunningWindowStateForceStopped";
