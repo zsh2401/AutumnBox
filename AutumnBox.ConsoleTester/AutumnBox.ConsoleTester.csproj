@@ -93,5 +93,15 @@
     <None Include="packages.config" />
     <None Include="Properties\app.manifest" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AutumnBox.Basic\AutumnBox.Basic.csproj">
+      <Project>{84044fb2-bd38-4283-8065-b639270ece0f}</Project>
+      <Name>AutumnBox.Basic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AutumnBox.MapleLeaf\AutumnBox.MapleLeaf.csproj">
+      <Project>{48DD382B-2E1D-459E-9A10-0A83F1B23F69}</Project>
+      <Name>AutumnBox.MapleLeaf</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
