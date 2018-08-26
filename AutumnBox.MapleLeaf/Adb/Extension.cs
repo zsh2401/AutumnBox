@@ -22,5 +22,25 @@ namespace AutumnBox.MapleLeaf.Adb
                 return null;
             }
         }
+        public static string ToProtocolString(this AdbResponseState state)
+        {
+            return state.ToString().ToUpper();
+        }
+        public static AdbResponseState ToAdbResponseState(this string str)
+        {
+            switch (str)
+            {
+                case "OKAY":
+                    return AdbResponseState.Okay;
+                case "FAIL":
+                    return AdbResponseState.Fail;
+                default:
+                    return AdbResponseState.Unknown;
+            }
+        }
+        public static AdbResponseState ToAdbResponseState(this byte[] buffer)
+        {
+            return Encoding.UTF8.GetString(buffer).ToAdbResponseState();
+        }
     }
 }
