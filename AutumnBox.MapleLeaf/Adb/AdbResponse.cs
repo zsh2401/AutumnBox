@@ -11,7 +11,9 @@ namespace AutumnBox.MapleLeaf.Adb
 {
     public class AdbResponse
     {
-        public bool IsOkay { get; set; }
+        public bool IsOkay => State == AdbResponseState.Okay;
+        public AdbResponseState State { get; set; }
+        public byte[] StateBytes { get; set; }
         public byte[] Data { get; set; }
     }
 }

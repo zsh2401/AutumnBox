@@ -13,7 +13,7 @@ namespace AutumnBox.ConsoleTester
     {
         public static AdbResponse Print(this AdbResponse response)
         {
-            Console.Write((response.IsOkay ? "OKAY" : "FAIL") + ":");
+            Console.Write(response.State + ":");
             try
             {
                 Console.Write(response.DataAsString());

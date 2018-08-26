@@ -16,7 +16,7 @@ namespace AutumnBox.MapleLeaf.Adb
         bool IsConnected { get; }
         void Connect();
         void SendRequest(string request);
-        string ReceiveState();
+        byte[] ReceiveState();
         byte[] ReceiveData();
     }
 }

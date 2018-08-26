@@ -48,11 +48,12 @@ namespace AutumnBox.MapleLeaf.Adb
             return dataBuffer;
         }
 
-        public string ReceiveState()
+        public byte[] ReceiveState()
         {
             byte[] buffer = new byte[4];
             InnerSocket.Receive(buffer);
-            return Encoding.UTF8.GetString(buffer);
+            return buffer;
+            //return Encoding.UTF8.GetString(buffer);
         }
 
         public void SendRequest(string request)
