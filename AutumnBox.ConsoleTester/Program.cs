@@ -1,8 +1,31 @@
-﻿using System;
+﻿using AutumnBox.MapleLeaf.Adb;
+using System;
 using System.Collections;
+using System.IO;
+using System.Net;
+using System.Net.Sockets;
+using System.Text;
+using System.Threading;
 
 namespace AutumnBox.ConsoleTester
 {
+    public static class Extension
+    {
+        public static AdbResponse Print(this AdbResponse response)
+        {
+            Console.Write((response.IsOkay ? "OKAY" : "FAIL") + ":");
+            try
+            {
+                Console.Write(response.DataAsString());
+            }
+            catch (Exception ex)
+            {
+                //Console.WriteLine(ex);
+            }
+            Console.Write("\n");
+            return response;
+        }
+    }
     class Program
     {
         private void Run()
@@ -32,17 +55,52 @@ namespace AutumnBox.ConsoleTester
             Console.WriteLine("WOW!");
             return 1;
         }
-        unsafe static int Main(string[] cmdargs)
+        unsafe static void Main(string[] cmdargs)
         {
-            var source = new System.Threading.CancellationTokenSource();
-            Console.WriteLine("Run async");
-            FuckAsync(source.Token);
-            Console.WriteLine("?");
+            using (IAdbService adbService = AdbService.Instance)
+            {
+                adbService.Start(5099);
+                var client = new AdbClientWarpper(adbService.CreateClient());
+                client.SetDevice("9dd1b490").Print();
+                Console.ReadKey();
+            }
             Console.ReadKey();
-            source.Cancel();
-            Console.WriteLine("Canceled");
-            Console.ReadKey();
-            return 0;
+            //byte[] headBuffer = new byte[sizeof(byte) + sizeof(Int32)];
+            //byte[] buffer = new byte[1];
+            //using (AdvanceAdbClient client = new AdvanceAdbClient())
+            //{
+            //    client.Connect();
+            //    client.SetDevice("9dd1b490");
+            //    client.SendRequestNoData("shell:");
+            //    client.Socket.Receive(headBuffer);
+            //    //Console.WriteLine("header buffer");
+            //    //foreach (byte b in headBuffer)
+            //    //{
+            //    //    Console.Write(headBuffer[1]);
+            //    //}
+            //    //Console.WriteLine("header buffer");
+            //    using (Stream stream = client.GetStream())
+            //    {
+            //        while (stream.CanRead)
+            //        {
+            //            stream.Read(buffer, 0, buffer.Length);
+            //            //Console.Write(Convert.ToString(buffer[0], 16) + " ");
+            //            //if (buffer[0] == 0xa && stream.Length) break;
+            //            Console.Write(Encoding.UTF8.GetString(buffer));
+            //        }
+            //    }
+            //    Console.Write("\n");
+            //}
+            //foreach (byte b in buffer)
+            //{
+            //    Console.Write(Convert.ToString(b, 16) + " ");
+            //}
+        }
+        private static byte[] BuildCommand(string command)
+        {
+            string resultStr = string.Format("{0}{1}\n", command.Length.ToString("X4"), command);
+            byte[] result = Encoding.UTF8.GetBytes(resultStr);
+            return result;
         }
     }
 }
