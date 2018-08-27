@@ -12,10 +12,15 @@ namespace AutumnBox.MapleLeaf.Adb
 {
     public class AdbClientWarpper : IDisposable
     {
+        public IAdbClient AdbClient => core;
         private readonly IAdbClient core;
         public AdbClientWarpper(IAdbClient core)
         {
             this.core = core;
+            if (!core.IsConnected)
+            {
+                core.Connect();
+            }
         }
         public AdbResponse SetDevice(string serialNumber)
         {
