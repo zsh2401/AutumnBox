@@ -1,4 +1,6 @@
 ﻿using AutumnBox.MapleLeaf.Adb;
+using AutumnBox.MapleLeaf.Android;
+using AutumnBox.MapleLeaf.Android.Shell;
 using System;
 using System.Collections;
 using System.IO;
@@ -6,6 +8,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace AutumnBox.ConsoleTester
 {
@@ -60,9 +63,12 @@ namespace AutumnBox.ConsoleTester
             using (IAdbService adbService = AdbService.Instance)
             {
                 adbService.Start(5099);
-                var client = new AdbClientWarpper(adbService.CreateClient());
-                client.SetDevice("9dd1b490").Print();
-                Console.ReadKey();
+                AndroidShell shell = new AndroidShell("9dd1b490");
+                shell.OutputReceived += (s, e) =>
+                {
+                    Console.Write(e.Content);
+                };
+                InputLoop(shell);
             }
             Console.ReadKey();
             //byte[] headBuffer = new byte[sizeof(byte) + sizeof(Int32)];
@@ -95,6 +101,13 @@ namespace AutumnBox.ConsoleTester
             //{
             //    Console.Write(Convert.ToString(b, 16) + " ");
             //}
+        }
+        private static void InputLoop(IAndroidShell shell)
+        {
+            while (true)
+            {
+                shell.InputLine(Console.ReadLine());
+            }
         }
         private static byte[] BuildCommand(string command)
         {
