@@ -12,20 +12,28 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Exceptions
 {
+    /// <summary>
+    /// ADB命令执行失败异常
+    /// </summary>
     public class AdbCommandFailedException : Exception
     {
+        /// <summary>
+        /// 构造
+        /// </summary>
         public AdbCommandFailedException() : base() { }
+        /// <summary>
+        /// 构造
+        /// </summary>
+        /// <param name="output"></param>
         public AdbCommandFailedException(AdvanceOutput output) : base(output.ToString())
-        {
-
-        }
+        {}
+        /// <summary>
+        /// 构造
+        /// </summary>
+        /// <param name="output"></param>
         public AdbCommandFailedException(Output output) : base(output.ToString())
         {
 
-        }
-        public override string ToString()
-        {
-            return base.ToString();
         }
     }
 }

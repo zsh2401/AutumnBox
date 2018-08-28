@@ -65,8 +65,20 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Adb\AdbProtocol.cs" />
-    <Compile Include="Adb\IAdbService.cs" />
+    <Compile Include="Device\OS\IBuildPropGetter.cs" />
+    <Compile Include="Device\OS\IFileSystem.cs" />
+    <Compile Include="Device\Android\IPackageManager.cs" />
+    <Compile Include="DPCommand\CommandBuilder.cs" />
+    <Compile Include="DPCommand\ProcessBasedCommand.cs" />
+    <Compile Include="DPCommand\AdbCommandBuilder.cs" />
+    <Compile Include="DPCommand\IAsyncCommand.cs" />
+    <Compile Include="DPCommand\ICommand.cs" />
+    <Compile Include="DPCommand\ICommandResult.cs" />
+    <Compile Include="Device\DeviceFileSystem.cs" />
+    <Compile Include="Device\IDevice.cs" />
+    <Compile Include="ManagedAdb\AdbProtocol.cs" />
+    <Compile Include="ManagedAdb\AdbServer.cs" />
+    <Compile Include="ManagedAdb\IAdbServer.cs" />
     <Compile Include="Device\ActivityManager\Activity.cs" />
     <Compile Include="Device\ActivityManager\ActivityManagerShared.cs" />
     <Compile Include="Device\ActivityManager\Broadcast.cs" />

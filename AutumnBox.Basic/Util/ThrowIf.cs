@@ -13,6 +13,19 @@ namespace AutumnBox.Basic.Util
 {
     public static class ThrowIf
     {
+        public static void ThrowIfNull(this object any) {
+            if (any == null)
+            {
+                throw new NullReferenceException();
+            }
+        }
+        public static void ThrowIfNullArg(this object any)
+        {
+            if (any == null)
+            {
+                throw new ArgumentNullException();
+            }
+        }
         public static void IsNullArg(object any)
         {
             if (any == null)
