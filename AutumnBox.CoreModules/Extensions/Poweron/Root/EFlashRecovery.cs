@@ -7,7 +7,7 @@ using AutumnBox.Basic.Device;
 using AutumnBox.Basic.Flows;
 using AutumnBox.OpenFramework.Extension;
 
-namespace AutumnBox.CoreModules.Extensions
+namespace AutumnBox.CoreModules.Extensions.Poweron.Root
 {
     [ExtName("[ROOT]刷入REC")]
     [ExtName("[ROOT]Flast recovery.img", Lang = "en-US")]

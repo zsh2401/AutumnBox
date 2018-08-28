@@ -7,7 +7,7 @@ using AutumnBox.Basic.Device;
 using AutumnBox.Basic.Flows;
 using AutumnBox.OpenFramework.Extension;
 
-namespace AutumnBox.CoreModules.Extensions
+namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot
 {
     [ExtName("黑阀一键激活")]
     [ExtName("Activate brevent by one key", Lang = "en-us")]

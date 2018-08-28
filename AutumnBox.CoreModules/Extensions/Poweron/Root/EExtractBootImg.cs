@@ -1,33 +1,26 @@
 ﻿/*************************************************
 ** auth： zsh2401@163.com
-** date:  2018/8/14 8:39:31 (UTC +8:00)
+** date:  2018/8/13 10:00:36 (UTC +8:00)
 ** desc： ...
 *************************************************/
 using AutumnBox.Basic.Device;
 using AutumnBox.Basic.Flows;
 using AutumnBox.OpenFramework.Extension;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace AutumnBox.CoreModules.Extensions
+namespace AutumnBox.CoreModules.Extensions.Poweron.Root
 {
-    [ExtName("[ROOT]提取Recovery")]
-    [ExtName("[ROOT]Extract recovery.img", Lang = "en-US")]
-    [ExtVersion(0, 0, 5)]
+    [ExtName("[ROOT]提取BOOT.IMG")]
+    [ExtName("[ROOT]Extract boot.img", Lang = "en-US")]
     [ExtRequireRoot]
     [ExtRequiredDeviceStates(DeviceState.Poweron)]
-    public class EExtractRecoveryImg : AutumnBoxExtension
+    public class EExtractBootImg : AutumnBoxExtension
     {
         public override int Main()
         {
             string savePath = null;
             DialogResult dialogResult = DialogResult.No;
-            App.RunOnUIThread(() =>
-            {
+            App.RunOnUIThread(()=> {
                 FolderBrowserDialog fbd = new FolderBrowserDialog
                 {
                     Description = "请选择保存路径"

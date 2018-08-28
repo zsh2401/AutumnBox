@@ -12,7 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AutumnBox.CoreModules.Extensions
+namespace AutumnBox.CoreModules.Extensions.Poweron.Root
 {
     [ExtName("[ROOT]刷入BOOT")]
     [ExtName("[ROOT]Flast boot.img", Lang = "en-US")]

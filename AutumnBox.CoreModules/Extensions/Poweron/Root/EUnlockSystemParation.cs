@@ -8,7 +8,7 @@ using AutumnBox.Basic.FlowFramework;
 using AutumnBox.Basic.Flows;
 using AutumnBox.OpenFramework.Extension;
 
-namespace AutumnBox.CoreModules.Extensions
+namespace AutumnBox.CoreModules.Extensions.Poweron.Root
 {
     [ExtName("[ROOT]解锁系统分区")]
     [ExtName("[ROOT]Unlock system paration", Lang = "en-US")]

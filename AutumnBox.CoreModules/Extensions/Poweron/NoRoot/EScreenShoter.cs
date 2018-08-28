@@ -7,7 +7,7 @@ using AutumnBox.Basic.Flows;
 using AutumnBox.OpenFramework.Extension;
 using System.Windows.Forms;
 
-namespace AutumnBox.CoreModules.Extensions
+namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot
 {
     [ExtName("截图并保存到电脑")]
     [ExtName("Screenshot and save to pc",Lang ="en-US")]

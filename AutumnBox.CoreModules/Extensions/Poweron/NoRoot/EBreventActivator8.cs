@@ -13,7 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AutumnBox.CoreModules.Extensions
+namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot
 {
     [ExtName("黑阀一键激活-安卓8")]
     [ExtName("Activate brevent by one key-Android O", Lang = "en-us")]
