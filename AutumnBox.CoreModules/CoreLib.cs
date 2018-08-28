@@ -5,11 +5,12 @@
 *************************************************/
 using AutumnBox.OpenFramework.Content;
 using AutumnBox.OpenFramework.ExtLibrary;
+using System.IO;
 
 namespace AutumnBox.CoreModules
 {
     [ContextPermission(CtxPer.High)]
-    public sealed class CoreEntry : ExtensionLibrarin
+    public sealed class CoreLib : ExtensionLibrarin
     {
         public static Context Context { get; private set; }
 
@@ -19,9 +20,13 @@ namespace AutumnBox.CoreModules
 
         public override int TargetApiLevel => 8;
 
-        public CoreEntry()
+        public CoreLib()
         {
             Context = this;
+        }
+        public override void Ready()
+        {
+            base.Ready();
         }
     }
 }

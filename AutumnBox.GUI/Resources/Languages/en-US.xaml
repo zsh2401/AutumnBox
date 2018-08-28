@@ -157,6 +157,9 @@ Description:
     <s:String x:Key="ExtensionRunning">Running</s:String>
     <s:String x:Key="AppInstallingFmt">Installing {0},Total {1}</s:String>
     <s:String x:Key="AppInstallingFinishedFmt">Finished,Success {0},Fail {1},Total {2}</s:String>
+    <s:String x:Key="DPMWarningFmt">This module will violently delete your account and users, and set {0} as the device owner(dpm). Are you sure you want to do this?</s:String>
+     <s:String x:Key="AppNameIceBox">Ice box</s:String>
+    <s:String x:Key="AppNameStopApp">Stop app</s:String>
     
     
     <!--按钮-->

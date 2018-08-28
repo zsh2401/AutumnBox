@@ -19,7 +19,7 @@ namespace AutumnBox.OpenFramework.Extension
     [ExtAuth("Anonymous", Lang = "en-us")]
     [ExtDesc("...")]
     [ExtVersion(1, 0, 0)]
-    [ExtRequiredDeviceStates(DeviceState.None)]
+    [ExtRequiredDeviceStates(DeviceState.NoMatter)]
     [ExtMinApi(8)]
     [ExtTargetApi]
     [ExtRunAsAdmin(false)]
