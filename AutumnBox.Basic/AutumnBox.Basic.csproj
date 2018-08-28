@@ -65,6 +65,8 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Adb\AdbProtocol.cs" />
+    <Compile Include="Adb\IAdbService.cs" />
     <Compile Include="Device\ActivityManager\Activity.cs" />
     <Compile Include="Device\ActivityManager\ActivityManagerShared.cs" />
     <Compile Include="Device\ActivityManager\Broadcast.cs" />

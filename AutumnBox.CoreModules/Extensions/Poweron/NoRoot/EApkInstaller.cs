@@ -11,7 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 
-namespace AutumnBox.CoreModules.Extensions
+namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot
 {
     [ExtName("安装APK")]
     [ExtName("Install APK", Lang = "en-US")]

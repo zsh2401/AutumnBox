@@ -12,7 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AutumnBox.CoreModules.Extensions
+namespace AutumnBox.CoreModules.Extensions.Mix
 {
     [ExtName("推送文件到手机主目录")]
     [ExtName("[ROOT]Push files", Lang = "en-US")]

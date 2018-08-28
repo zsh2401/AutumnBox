@@ -50,18 +50,18 @@
   <ItemGroup>
     <Compile Include="CoreEntry.cs" />
     <Compile Include="OfficialExtension.cs" />
-    <Compile Include="Extensions\EApkInstaller.cs" />
-    <Compile Include="Extensions\EBreventActivator.cs" />
-    <Compile Include="Extensions\EBreventActivator8.cs" />
-    <Compile Include="Extensions\EDpiChanger.cs" />
-    <Compile Include="Extensions\EExtractBootImg.cs" />
-    <Compile Include="Extensions\EFlashRecovery.cs" />
-    <Compile Include="Extensions\EExtractRecoveryImg.cs" />
-    <Compile Include="Extensions\EFilePusher.cs" />
-    <Compile Include="Extensions\EFlashBoot.cs" />
+    <Compile Include="Extensions\Poweron\NoRoot\EApkInstaller.cs" />
+    <Compile Include="Extensions\Poweron\NoRoot\EBreventActivator.cs" />
+    <Compile Include="Extensions\Poweron\NoRoot\EBreventActivator8.cs" />
+    <Compile Include="Extensions\Poweron\NoRoot\EDpiChanger.cs" />
+    <Compile Include="Extensions\Poweron\Root\EExtractBootImg.cs" />
+    <Compile Include="Extensions\Poweron\Root\EFlashRecovery.cs" />
+    <Compile Include="Extensions\Poweron\Root\EExtractRecoveryImg.cs" />
+    <Compile Include="Extensions\Mix\EFilePusher.cs" />
+    <Compile Include="Extensions\Poweron\Root\EFlashBoot.cs" />
     <Compile Include="Extensions\EHoldMyHand.cs" />
-    <Compile Include="Extensions\EScreenShoter.cs" />
-    <Compile Include="Extensions\EUnlockSystemParation.cs" />
+    <Compile Include="Extensions\Poweron\NoRoot\EScreenShoter.cs" />
+    <Compile Include="Extensions\Poweron\Root\EUnlockSystemParation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -150,6 +150,10 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Icons\Usersir.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Extensions\Fastboot\" />
+    <Folder Include="Extensions\Recovery\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -6,7 +6,7 @@
 using AutumnBox.GUI.Windows;
 using AutumnBox.OpenFramework.Extension;
 
-namespace AutumnBox.CoreModules.Extensions
+namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot
 {
     [ExtName("Modify dpi without root",Lang = "en-US")]
     [ExtName("免ROOT修改DPI")]
