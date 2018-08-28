@@ -142,7 +142,8 @@
     <s:String x:Key="ChoiceWindowBtnCancel">取消</s:String>
     <s:String x:Key="ChoiceWindowBtnYes">好</s:String>
     <s:String x:Key="ChoiceWindowBtnNo">不</s:String>
-    
+      <s:String x:Key="ChoiceWindowBtnAgree">同意</s:String>
+    <s:String x:Key="ChoiceWindowBtnDisagree">不同意</s:String>
     <!--LoadingWindow-->
      <s:String x:Key="LoadingWindowMessage">请耐心等待 :)</s:String>
     
@@ -162,7 +163,9 @@
     <s:String x:Key="ExtensionRunning">正在进行</s:String>
     <s:String x:Key="AppInstallingFmt">正在安装第{0}个,共{1}个APK</s:String>
     <s:String x:Key="AppInstallingFinishedFmt">执行完毕,成功{0}个,失败{1}个,总共{2}个</s:String>
-     
+    <s:String x:Key="DPMWarningFmt">本模块将会暴力删除你的账户与用户,并设置{0}为设备管理员,你确定这么做吗?</s:String>
+     <s:String x:Key="AppNameIceBox">冰箱</s:String>
+    <s:String x:Key="AppNameStopApp">小黑屋</s:String>
     <!--按钮-->
     <s:String x:Key="btnAppOpsXAct">激活AppOpsX</s:String>
     <s:String x:Key="btnAccountInfo">账号信息</s:String>

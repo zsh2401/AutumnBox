@@ -73,10 +73,12 @@
     <Compile Include="Device\ActivityManager\Service.cs" />
     <Compile Include="Device\PackageManage\PackageManager.cs" />
     <Compile Include="Device\PackageManage\UserManager.cs" />
+    <Compile Include="Exceptions\AdbCommandFailedException.cs" />
     <Compile Include="Executer\AdvanceOutput.cs" />
     <Compile Include="Executer\AdvanceOutputBuilder.cs" />
     <Compile Include="Executer\AndroidShellV2.cs" />
     <Compile Include="Executer\OutputBuilder.cs" />
+    <Compile Include="Extension\FileInfoExtension.cs" />
     <Compile Include="Util\ForwardManager.cs" />
     <Compile Include="Device\BuildPropKeys.cs" />
     <Compile Include="Device\DeviceBuildPropSetter.cs" />
@@ -131,6 +133,7 @@
     <Compile Include="Util\IPrintable.cs" />
     <Compile Include="Util\LinuxReturnCode.cs" />
     <Compile Include="Util\NativeMethods.cs" />
+    <Compile Include="Util\ThrowIf.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AutumnBox.Support\AutumnBox.Support.csproj">

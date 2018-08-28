@@ -25,27 +25,43 @@ namespace AutumnBox.OpenFramework.Open.Impl
 
         public ChoiceResult DoChoice(string message, string btnLeft = null, string btnRight = null, string btnCancel = null)
         {
-            var window = sourceApi.CreateChoiceWindow(message, btnLeft, btnRight, btnCancel);
-            window.ShowDialog();
-            switch (window.DialogResult)
+            ChoiceResult result = ChoiceResult.Cancel;
+            RunOnUIThread(() =>
             {
-                case true:
-                    return ChoiceResult.Left;
-                case false:
-                    return ChoiceResult.Right;
-                default:
-                    return ChoiceResult.Cancel;
-            }
+                var window = sourceApi.CreateChoiceWindow(message, btnLeft, btnRight, btnCancel);
+                window.ShowDialog();
+                switch (window.DialogResult)
+                {
+                    case true:
+                        result = ChoiceResult.Right;
+                        break;
+                    case false:
+                        result = ChoiceResult.Left;
+                        break;
+                    default:
+                        result = ChoiceResult.Cancel;
+                        break;
+                }
+            });
+            return result;
         }
 
         public IExtensionUIController GetUIControllerOf(IExtensionWarpper warpper)
         {
-            return sourceApi.GetUIControllerOf(warpper);
+            IExtensionUIController result = null;
+            RunOnUIThread(() =>
+            {
+                result = sourceApi.GetUIControllerOf(warpper);
+            });
+            return result;
         }
 
         public void ShowDebuggingWindow()
         {
-            sourceApi.CreateDebugWindow().Show();
+            RunOnUIThread(() =>
+            {
+                sourceApi.CreateDebugWindow().Show();
+            });
         }
 
         private Window currentLoadingWindow;
@@ -77,22 +93,41 @@ namespace AutumnBox.OpenFramework.Open.Impl
 
         public void ShowMessageDialog(string title, string message)
         {
-            sourceApi.CreateMessageWindow(title, message).ShowDialog();
+            RunOnUIThread(() =>
+            {
+                sourceApi.CreateMessageWindow(title, message).ShowDialog();
+            });
         }
 
         public void ShowMessageDialog(string message)
         {
-            sourceApi.CreateMessageWindow(ctx.App.GetPublicResouce<string>("Notice"), message).ShowDialog();
+            RunOnUIThread(() =>
+            {
+                sourceApi.CreateMessageWindow(ctx.App.GetPublicResouce<string>("Notice"), message).ShowDialog();
+            });
         }
 
         public void ShowWarnDialog(string message)
         {
-            sourceApi.CreateMessageWindow(ctx.App.GetPublicResouce<string>("Warning"), message).ShowDialog();
+            RunOnUIThread(() =>
+            {
+                sourceApi.CreateMessageWindow(ctx.App.GetPublicResouce<string>("Warning"), message).ShowDialog();
+            });
         }
 
         public void RunOnUIThread(Action action)
         {
             ctx.App.RunOnUIThread(action);
+        }
+
+        public bool Agree(string message)
+        {
+            bool result = true;
+            RunOnUIThread(() =>
+            {
+                result = DoChoice(message, "ChoiceWindowBtnDisagree", "ChoiceWindowBtnAgree", "ChoiceWindowBtnCancel") == ChoiceResult.Right;
+            });
+            return result;
         }
     }
 }

@@ -17,11 +17,15 @@ namespace AutumnBox.CoreModules
     [ExtAuth("AutumnBox official", Lang = "en-us")]
     [ExtOfficial(true)]
     [ContextPermission(CtxPer.High)]
-    public abstract class OfficialExtension : AtmbVisualExtension
+    public abstract class OfficialVisualExtension : AtmbVisualExtension
     {
         protected string Res(string key)
         {
-            return App.GetPublicResouce(key)?.ToString() ?? key;
+            string result = key;
+            App.RunOnUIThread(()=> {
+                result = App.GetPublicResouce(key)?.ToString() ?? key;
+            });
+            return result;
         }
     }
 }

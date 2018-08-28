@@ -19,6 +19,12 @@ namespace AutumnBox.OpenFramework.Open
     public interface IUx
     {
         /// <summary>
+        /// 询问用户是否同意字符串内容
+        /// </summary>
+        /// <param name="message"></param>
+        /// <returns></returns>
+        bool Agree(string message);
+        /// <summary>
         /// 让用户做选择
         /// </summary>
         /// <param name="title"></param>

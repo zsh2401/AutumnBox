@@ -19,7 +19,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot
     [ExtDesc("Install apk to device", Lang = "en-US")]
     [ExtIcon("Icons.android.png")]
     [ExtRequiredDeviceStates(DeviceState.Poweron)]
-    public class EApkInstaller : OfficialExtension
+    public class EApkInstaller : OfficialVisualExtension
     {
         protected override int VisualMain()
         {

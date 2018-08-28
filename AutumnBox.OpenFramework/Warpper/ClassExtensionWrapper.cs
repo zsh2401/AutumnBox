@@ -163,7 +163,10 @@ namespace AutumnBox.OpenFramework.Warpper
             IsForceStopped = false;
             LastReturnCode = -1;
             //创建前检测
-            if (!BeforeCreateInstance(device)) return;
+            if (!BeforeCreateInstance(device)) {
+                State = ExtensionWarpperState.Ready;
+                return;
+            }
             //创建实例
             CreateInstance();
             //依赖注入
