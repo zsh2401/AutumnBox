@@ -65,16 +65,21 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Device\OS\IBuildPropGetter.cs" />
-    <Compile Include="Device\OS\IFileSystem.cs" />
-    <Compile Include="Device\Android\IPackageManager.cs" />
+    <Compile Include="Device\Android\DeviceExtension.cs" />
+    <Compile Include="Device\Application\IActivityManager.cs" />
+    <Compile Include="Device\Application\IServiceManager.cs" />
+    <Compile Include="Device\DependOnDeviceObject.cs" />
+    <Compile Include="Device\Android\BuildPropGetter.cs" />
+    <Compile Include="Device\Android\FileSystem.cs" />
+    <Compile Include="Device\Application\IPackageManager.cs" />
+    <Compile Include="Device\Android\IImageOperator.cs" />
+    <Compile Include="Device\Android\Rebooter.cs" />
     <Compile Include="DPCommand\CommandBuilder.cs" />
     <Compile Include="DPCommand\ProcessBasedCommand.cs" />
     <Compile Include="DPCommand\AdbCommandBuilder.cs" />
     <Compile Include="DPCommand\IAsyncCommand.cs" />
     <Compile Include="DPCommand\ICommand.cs" />
     <Compile Include="DPCommand\ICommandResult.cs" />
-    <Compile Include="Device\DeviceFileSystem.cs" />
     <Compile Include="Device\IDevice.cs" />
     <Compile Include="ManagedAdb\AdbProtocol.cs" />
     <Compile Include="ManagedAdb\AdbServer.cs" />
@@ -173,7 +178,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Data\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>
