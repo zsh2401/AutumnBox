@@ -1,14 +1,9 @@
-﻿using AutumnBox.MapleLeaf.Adb;
-using AutumnBox.MapleLeaf.Android;
+﻿using AutumnBox.Basic.DPCommand;
+using AutumnBox.MapleLeaf.Adb;
 using AutumnBox.MapleLeaf.Android.Shell;
 using System;
 using System.Collections;
-using System.IO;
-using System.Net;
-using System.Net.Sockets;
 using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace AutumnBox.ConsoleTester
 {
@@ -60,16 +55,25 @@ namespace AutumnBox.ConsoleTester
         }
         unsafe static void Main(string[] cmdargs)
         {
-            using (IAdbService adbService = AdbService.Instance)
-            {
-                adbService.Start(5099);
-                AndroidShell shell = new AndroidShell("9dd1b490");
-                shell.OutputReceived += (s, e) =>
-                {
-                    Console.Write(e.Content);
-                };
-                InputLoop(shell);
-            }
+            AdbCommandBuilder acb = new AdbCommandBuilder();
+            acb.Device("afcd03").Arg("reboot").Arg("fastboot");
+            //var cmd = acb.ToCommand();
+            //cmd.OutputReceived += (s, e) =>
+            //{
+            //    Console.WriteLine(e.Text);
+            //};
+            //cmd.Execute();
+            Console.WriteLine(acb);
+            //using (IAdbService adbService = AdbService.Instance)
+            //{
+            //    adbService.Start(5099);
+            //    AndroidShell shell = new AndroidShell("9dd1b490");
+            //    shell.OutputReceived += (s, e) =>
+            //    {
+            //        Console.Write(e.Content);
+            //    };
+            //    InputLoop(shell);
+            //}
             Console.ReadKey();
             //byte[] headBuffer = new byte[sizeof(byte) + sizeof(Int32)];
             //byte[] buffer = new byte[1];

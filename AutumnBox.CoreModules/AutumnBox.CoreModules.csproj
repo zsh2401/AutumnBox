@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CoreLib.cs" />
+    <Compile Include="Extensions\Fastboot\EFlashRecovery.cs" />
     <Compile Include="Extensions\Poweron\NoRoot\EGodPower_IceBox.cs" />
     <Compile Include="Extensions\Poweron\NoRoot\EGodPower_StopApp.cs" />
     <Compile Include="OfficialVisualExtension.cs" />
@@ -155,7 +156,6 @@
     <EmbeddedResource Include="Icons\Usersir.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Extensions\Fastboot\" />
     <Folder Include="Extensions\Recovery\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
