@@ -5,7 +5,7 @@
 ** compiler: Visual Studio 2017
 ** desc： ...
 *********************************************************************************/
-namespace AutumnBox.Basic.Device
+namespace AutumnBox.Basic.Device.Management.OS
 {
     /// <summary>
     /// build.prop中常用的key

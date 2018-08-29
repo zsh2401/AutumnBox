@@ -3,6 +3,7 @@
 ** date:  2018/8/29 2:28:36 (UTC +8:00)
 ** desc： ...
 *************************************************/
+using AutumnBox.Basic.Data;
 using AutumnBox.Basic.Executer;
 using System;
 using System.Collections.Generic;
@@ -16,7 +17,7 @@ namespace AutumnBox.Basic.DPCommand
     /// <summary>
     /// 标准命令接口
     /// </summary>
-    public interface ICommand : IDisposable, IOutputable
+    public interface ICommand : IDisposable, INotifyOutput
     {
         /// <summary>
         /// 执行命令

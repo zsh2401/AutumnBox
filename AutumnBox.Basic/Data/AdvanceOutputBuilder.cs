@@ -4,7 +4,7 @@
 ** desc： ...
 *************************************************/
 
-namespace AutumnBox.Basic.Executer
+namespace AutumnBox.Basic.Data
 {
     /// <summary>
     /// 高级输出构建器

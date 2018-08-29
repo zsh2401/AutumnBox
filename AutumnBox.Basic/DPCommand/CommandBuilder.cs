@@ -44,6 +44,7 @@ namespace AutumnBox.Basic.DPCommand
         public virtual CommandBuilder ArgWithDoubleQuotation(string arg)
         {
             Arg("\"" + arg + "\"");
+            return this;
         }
         public virtual CommandBuilder Arg(string arg)
         {

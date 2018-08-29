@@ -5,7 +5,7 @@
 *************************************************/
 using System.Text;
 
-namespace AutumnBox.Basic.Executer
+namespace AutumnBox.Basic.Data
 {
     /// <summary>
     /// 输出构造器
@@ -81,7 +81,7 @@ namespace AutumnBox.Basic.Executer
         /// 监听一个IOutputable的输出并记录
         /// </summary>
         /// <param name="sender"></param>
-        public void Register(IOutputable sender)
+        public void Register(INotifyOutput sender)
         {
             sender.OutputReceived += Sender_OutputReceived;
         }
@@ -90,7 +90,7 @@ namespace AutumnBox.Basic.Executer
         /// 取消监听一个IOutputable
         /// </summary>
         /// <param name="sender"></param>
-        public void Unregister(IOutputable sender)
+        public void Unregister(INotifyOutput sender)
         {
             sender.OutputReceived -= Sender_OutputReceived;
         }

@@ -9,12 +9,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AutumnBox.Basic.Device.OS
+namespace AutumnBox.Basic.Device.Management.OS
 {
     /// <summary>
     /// 重启器
     /// </summary>
-    public class Rebooter
+    public interface IRebooter
     {
         /// <summary>
         /// 异步重启(如果ADB或手机卡到爆,那么这个函数就有作用了)
@@ -22,18 +22,12 @@ namespace AutumnBox.Basic.Device.OS
         /// <param name="dev"></param>
         /// <param name="option"></param>
         /// <param name="callback"></param>
-        public void RebootAsync(DeviceBasicInfo dev, RebootOptions option = RebootOptions.System, Action callback = null)
-        {
-            throw new NotImplementedException();
-        }
+        void RebootAsync(DeviceBasicInfo dev, RebootOptions option = RebootOptions.System, Action callback = null);
         /// <summary>
         /// 重启手机
         /// </summary>
         /// <param name="dev"></param>
         /// <param name="option"></param>
-        public void Reboot(DeviceBasicInfo dev, RebootOptions option)
-        {
-            throw new NotImplementedException();
-        }
+        void Reboot(DeviceBasicInfo dev, RebootOptions option);
     }
 }

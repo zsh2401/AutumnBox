@@ -10,10 +10,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AutumnBox.Basic.Device.Android
+namespace AutumnBox.Basic.Device.Management.AppFx
 {
     public interface IPackageManager
     {
+        bool IsExist(string packageName);
         void Install(FileInfo file);
         bool IsInstall(string pkgName);
         void Uninstall(string pkgName);
