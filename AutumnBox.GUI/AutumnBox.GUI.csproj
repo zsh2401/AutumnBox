@@ -284,9 +284,6 @@
     <Compile Include="Windows\FatalWindow.xaml.cs">
       <DependentUpon>FatalWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\MDLearningWindow.xaml.cs">
-      <DependentUpon>MDLearningWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Windows\UserManagerWindow.xaml.cs">
       <DependentUpon>UserManagerWindow.xaml</DependentUpon>
     </Compile>
@@ -362,9 +359,6 @@
       <DependentUpon>FileSendingWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\IDeviceRefreshable.cs" />
-    <Compile Include="Windows\FlowResultWindow.xaml.cs">
-      <DependentUpon>FlowResultWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
@@ -750,15 +744,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\FlowResultWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="View\Windows\MainWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windows\MDLearningWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -67,6 +67,7 @@
   <ItemGroup>
     <Compile Include="Data\INotifyOutput.cs" />
     <Compile Include="Device\DeviceBasedCommandFactory.cs" />
+    <Compile Include="Device\Management\AppFx\Impl\ActivityManager.cs" />
     <Compile Include="Device\Management\Hardware\IHardwareInfoGetter.cs" />
     <Compile Include="Device\Management\AppFx\IActivityManager.cs" />
     <Compile Include="Device\Management\AppFx\IBroadcastSender.cs" />
@@ -197,7 +198,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Device\Management\AppFx\Impl\" />
     <Folder Include="Device\Management\Hardware\Impl\" />
     <Folder Include="Device\Management\OS\Impl\" />
     <Folder Include="Old\Application\" />
