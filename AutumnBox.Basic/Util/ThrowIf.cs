@@ -3,6 +3,8 @@
 ** date:  2018/8/29 0:39:14 (UTC +8:00)
 ** desc： ...
 *************************************************/
+using AutumnBox.Basic.Device;
+using AutumnBox.Basic.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +15,15 @@ namespace AutumnBox.Basic.Util
 {
     public static class ThrowIf
     {
-        public static void ThrowIfNull(this object any) {
+        public static void ThrowIfNotAlive(this IDevice device)
+        {
+            if (device.IsAlive == false)
+            {
+                throw new DeviceNotAliveException();
+            }
+        }
+        public static void ThrowIfNull(this object any)
+        {
             if (any == null)
             {
                 throw new NullReferenceException();

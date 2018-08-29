@@ -1,18 +1,18 @@
 ﻿/*************************************************
 ** auth： zsh2401@163.com
-** date:  2018/8/29 4:40:55 (UTC +8:00)
+** date:  2018/8/27 2:35:25 (UTC +8:00)
 ** desc： ...
 *************************************************/
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace AutumnBox.Basic.Device.OS
+namespace AutumnBox.Basic.ManagedAdb
 {
-    public interface IImageOperator
+    public enum AdbResponseState
     {
-
+        Okay,
+        Fail,
+        Unknown,
     }
 }

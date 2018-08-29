@@ -6,7 +6,7 @@
 using System;
 using System.Diagnostics;
 
-namespace AutumnBox.Basic.Executer
+namespace AutumnBox.Basic.Data
 {
     /// <summary>
     /// 接收到输出时的事件处理器

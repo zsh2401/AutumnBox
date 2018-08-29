@@ -14,7 +14,8 @@ namespace AutumnBox.Basic.ManagedAdb
     public static class AdbProtocol
     {
         public const ushort PORT = 5037;
-        public const string ADB_EXECUTABLE_FILE_PATH = "google/platform-tools/adb.exe";
-        public const string FASTBOOT_EXECUTABLE_FILE_PATH = "google/platform-tools/fastboot.exe";
+        public const string ADB_TOOLS_PATH = "ManagedAdb/win32adb/";
+        public const string ADB_EXECUTABLE_FILE_PATH = "ManagedAdb/win32adb/adb.exe";
+        public const string FASTBOOT_EXECUTABLE_FILE_PATH = "ManagedAdb/win32adb/fastboot.exe";
     }
 }

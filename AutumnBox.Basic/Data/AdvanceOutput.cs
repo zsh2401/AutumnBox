@@ -8,7 +8,7 @@ using AutumnBox.Support.Log;
 using System;
 using System.Collections.Generic;
 
-namespace AutumnBox.Basic.Executer
+namespace AutumnBox.Basic.Data
 {
     /// <summary>
     /// 高级输出,相比父类多了个返回码

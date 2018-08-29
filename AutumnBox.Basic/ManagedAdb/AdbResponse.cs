@@ -1,0 +1,19 @@
+﻿/*************************************************
+** auth： zsh2401@163.com
+** date:  2018/8/25 23:59:47 (UTC +8:00)
+** desc： ...
+*************************************************/
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace AutumnBox.Basic.ManagedAdb
+{
+    public class AdbResponse
+    {
+        public bool IsOkay => State == AdbResponseState.Okay;
+        public AdbResponseState State { get; set; }
+        public byte[] StateBytes { get; set; }
+        public byte[] Data { get; set; }
+    }
+}

@@ -65,15 +65,24 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Device\Android\DeviceExtension.cs" />
-    <Compile Include="Device\Application\IActivityManager.cs" />
-    <Compile Include="Device\Application\IServiceManager.cs" />
+    <Compile Include="Data\INotifyOutput.cs" />
+    <Compile Include="Device\DeviceBasedCommandFactory.cs" />
+    <Compile Include="Device\Management\Hardware\IHardwareInfoGetter.cs" />
+    <Compile Include="Device\Management\AppFx\IActivityManager.cs" />
+    <Compile Include="Device\Management\AppFx\IBroadcastSender.cs" />
+    <Compile Include="Device\Management\AppFx\IServiceManager.cs" />
     <Compile Include="Device\DependOnDeviceObject.cs" />
-    <Compile Include="Device\Android\BuildPropGetter.cs" />
-    <Compile Include="Device\Android\FileSystem.cs" />
-    <Compile Include="Device\Application\IPackageManager.cs" />
-    <Compile Include="Device\Android\IImageOperator.cs" />
-    <Compile Include="Device\Android\Rebooter.cs" />
+    <Compile Include="Device\Management\OS\IAndroidShell.cs" />
+    <Compile Include="Device\Management\OS\IBuildPropGetter.cs" />
+    <Compile Include="Device\Management\OS\IDpiModifier.cs" />
+    <Compile Include="Device\Management\OS\IFileSystem.cs" />
+    <Compile Include="Device\Management\AppFx\IPackageManager.cs" />
+    <Compile Include="Device\Management\OS\IImageOperator.cs" />
+    <Compile Include="Device\Management\OS\IRebooter.cs" />
+    <Compile Include="Device\DeviceBase.cs" />
+    <Compile Include="Device\Emulator.cs" />
+    <Compile Include="Device\NetDevice.cs" />
+    <Compile Include="Device\UsbDevice.cs" />
     <Compile Include="DPCommand\CommandBuilder.cs" />
     <Compile Include="DPCommand\ProcessBasedCommand.cs" />
     <Compile Include="DPCommand\AdbCommandBuilder.cs" />
@@ -81,49 +90,58 @@
     <Compile Include="DPCommand\ICommand.cs" />
     <Compile Include="DPCommand\ICommandResult.cs" />
     <Compile Include="Device\IDevice.cs" />
+    <Compile Include="DPCommand\SocketBasedCommand.cs" />
+    <Compile Include="Exceptions\DeviceNotAliveException.cs" />
+    <Compile Include="Device\DeviceExtension.cs" />
+    <Compile Include="ManagedAdb\AdbClient.cs" />
+    <Compile Include="ManagedAdb\AdbClientWarpper.cs" />
     <Compile Include="ManagedAdb\AdbProtocol.cs" />
+    <Compile Include="ManagedAdb\AdbResponse.cs" />
+    <Compile Include="ManagedAdb\AdbResponseState.cs" />
     <Compile Include="ManagedAdb\AdbServer.cs" />
+    <Compile Include="ManagedAdb\Extension.cs" />
+    <Compile Include="ManagedAdb\IAdbClient.cs" />
     <Compile Include="ManagedAdb\IAdbServer.cs" />
-    <Compile Include="Device\ActivityManager\Activity.cs" />
-    <Compile Include="Device\ActivityManager\ActivityManagerShared.cs" />
-    <Compile Include="Device\ActivityManager\Broadcast.cs" />
-    <Compile Include="Device\ActivityManager\Service.cs" />
-    <Compile Include="Device\PackageManage\PackageManager.cs" />
-    <Compile Include="Device\PackageManage\UserManager.cs" />
+    <Compile Include="Old\ActivityManager\Activity.cs" />
+    <Compile Include="Old\ActivityManager\ActivityManagerShared.cs" />
+    <Compile Include="Old\ActivityManager\Broadcast.cs" />
+    <Compile Include="Old\ActivityManager\Service.cs" />
+    <Compile Include="Old\PackageManage\PackageManager.cs" />
+    <Compile Include="Old\PackageManage\UserManager.cs" />
     <Compile Include="Exceptions\AdbCommandFailedException.cs" />
-    <Compile Include="Executer\AdvanceOutput.cs" />
-    <Compile Include="Executer\AdvanceOutputBuilder.cs" />
-    <Compile Include="Executer\AndroidShellV2.cs" />
-    <Compile Include="Executer\OutputBuilder.cs" />
+    <Compile Include="Data\AdvanceOutput.cs" />
+    <Compile Include="Data\AdvanceOutputBuilder.cs" />
+    <Compile Include="Old\Executer\AndroidShellV2.cs" />
+    <Compile Include="Data\OutputBuilder.cs" />
     <Compile Include="Extension\FileInfoExtension.cs" />
     <Compile Include="Util\ForwardManager.cs" />
-    <Compile Include="Device\BuildPropKeys.cs" />
-    <Compile Include="Device\DeviceBuildPropSetter.cs" />
-    <Compile Include="Device\DeviceHaveNoRootException.cs" />
-    <Compile Include="Device\DeviceInfoGetterInFastboot.cs" />
-    <Compile Include="Device\DeviceNotFoundException.cs" />
-    <Compile Include="Device\DeviceRebooter.cs" />
-    <Compile Include="Device\DeviceSoftwareInfoGetter.cs" />
-    <Compile Include="Device\PackageManage\PackageInfo.cs" />
-    <Compile Include="Device\PackageManage\PackageManagerShared.cs" />
-    <Compile Include="Device\PackageManage\PackageNotFoundException.cs" />
-    <Compile Include="Device\DeviceSerialNumber.cs" />
-    <Compile Include="Device\DeviceBuildPropGetter.cs" />
-    <Compile Include="Device\DeviceHardwareInfo.cs" />
-    <Compile Include="Device\DeviceHardwareInfoGetter.cs" />
-    <Compile Include="Device\DeviceImage.cs" />
-    <Compile Include="Device\DeviceImageFinder.cs" />
-    <Compile Include="Executer\ExcutionException.cs" />
-    <Compile Include="Executer\OutputReceivedEvent.cs" />
-    <Compile Include="Executer\ProcessStartedEvent.cs" />
+    <Compile Include="Device\Management\OS\BuildPropKeys.cs" />
+    <Compile Include="Old\DeviceBuildPropSetter.cs" />
+    <Compile Include="Old\DeviceHaveNoRootException.cs" />
+    <Compile Include="Old\DeviceInfoGetterInFastboot.cs" />
+    <Compile Include="Old\DeviceNotFoundException.cs" />
+    <Compile Include="Old\DeviceRebooter.cs" />
+    <Compile Include="Old\DeviceSoftwareInfoGetter.cs" />
+    <Compile Include="Old\PackageManage\PackageInfo.cs" />
+    <Compile Include="Old\PackageManage\PackageManagerShared.cs" />
+    <Compile Include="Old\PackageManage\PackageNotFoundException.cs" />
+    <Compile Include="Old\DeviceSerialNumber.cs" />
+    <Compile Include="Old\DeviceBuildPropGetter.cs" />
+    <Compile Include="Old\DeviceHardwareInfo.cs" />
+    <Compile Include="Old\DeviceHardwareInfoGetter.cs" />
+    <Compile Include="Old\DeviceImage.cs" />
+    <Compile Include="Old\DeviceImageFinder.cs" />
+    <Compile Include="Old\Executer\ExcutionException.cs" />
+    <Compile Include="Data\OutputReceivedEvent.cs" />
+    <Compile Include="Old\Executer\ProcessStartedEvent.cs" />
     <Compile Include="FlowFramework\IFunctionFlowBase.cs" />
     <Compile Include="MultipleDevices\DevicesGetter.cs" />
-    <Compile Include="Device\DeviceBasicInfo.cs" />
-    <Compile Include="Device\ISetableShell.cs" />
-    <Compile Include="Executer\AndroidShell.cs" />
-    <Compile Include="Executer\AndroidShellEvents.cs" />
-    <Compile Include="Executer\CommandExecuter.cs" />
-    <Compile Include="Executer\IOutputable.cs" />
+    <Compile Include="Old\DeviceBasicInfo.cs" />
+    <Compile Include="Old\ISetableShell.cs" />
+    <Compile Include="Old\Executer\AndroidShell.cs" />
+    <Compile Include="Old\Executer\AndroidShellEvents.cs" />
+    <Compile Include="Old\Executer\CommandExecuter.cs" />
+    <Compile Include="Old\Executer\IOutputable.cs" />
     <Compile Include="FlowFramework\FunctionFlow.cs" />
     <Compile Include="FlowFramework\FunctionFlowBase.cs" />
     <Compile Include="FlowFramework\FlowArgs.cs" />
@@ -139,9 +157,9 @@
     <Compile Include="FlowFramework\IForceStoppable.cs" />
     <Compile Include="FlowFramework\Stoper.cs" />
     <Compile Include="MultipleDevices\IDevicesGetter.cs" />
-    <Compile Include="Executer\Output.cs" />
+    <Compile Include="Data\Output.cs" />
     <Compile Include="MultipleDevices\DevicesList.cs" />
-    <Compile Include="Executer\Command.cs" />
+    <Compile Include="Old\Executer\Command.cs" />
     <Compile Include="MultipleDevices\DevicesMonitor.cs" />
     <Compile Include="Device\DeviceState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -162,24 +180,27 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="google\platform-tools\adb.exe">
+    <Content Include="ManagedAdb\win32adb\adb.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="google\platform-tools\AdbWinApi.dll">
+    <Content Include="ManagedAdb\win32adb\AdbWinApi.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="google\platform-tools\AdbWinUsbApi.dll">
+    <Content Include="ManagedAdb\win32adb\AdbWinUsbApi.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="google\platform-tools\fastboot.exe">
+    <Content Include="ManagedAdb\win32adb\fastboot.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="google\platform-tools\libwinpthread-1.dll">
+    <Content Include="ManagedAdb\win32adb\libwinpthread-1.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Data\" />
+    <Folder Include="Device\Management\AppFx\Impl\" />
+    <Folder Include="Device\Management\Hardware\Impl\" />
+    <Folder Include="Device\Management\OS\Impl\" />
+    <Folder Include="Old\Application\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
