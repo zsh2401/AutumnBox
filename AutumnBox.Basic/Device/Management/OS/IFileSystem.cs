@@ -3,6 +3,7 @@
 ** date:  2018/8/29 4:29:37 (UTC +8:00)
 ** desc： ...
 *************************************************/
+using AutumnBox.Basic.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,11 +14,11 @@ namespace AutumnBox.Basic.Device.Management.OS
 {
     public interface IFileSystem
     {
-        void Move(string src, string target);
-        void Copy(string src, string target);
+        void Move(string src, string target, bool isDir = false);
+        void Copy(string src, string target, bool isDir = false);
         void Delete(string file);
         void Mkdir(string file);
         string Cat(string file);
-        string Find(string name);
+        Output Find(string name);
     }
 }

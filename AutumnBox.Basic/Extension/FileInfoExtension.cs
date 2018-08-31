@@ -3,17 +3,12 @@
 ** date:  2018/8/29 0:15:54 (UTC +8:00)
 ** desc： ...
 *************************************************/
+using AutumnBox.Basic.Calling.Adb;
 using AutumnBox.Basic.Device;
-using AutumnBox.Basic.DPCommand;
 using AutumnBox.Basic.Exceptions;
-using AutumnBox.Basic.Executer;
 using AutumnBox.Basic.Util;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 namespace AutumnBox.Basic.Extension
 {
     /// <summary>

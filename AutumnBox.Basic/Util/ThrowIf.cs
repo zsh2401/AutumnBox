@@ -3,7 +3,9 @@
 ** date:  2018/8/29 0:39:14 (UTC +8:00)
 ** desc： ...
 *************************************************/
+using AutumnBox.Basic.Calling;
 using AutumnBox.Basic.Device;
+using AutumnBox.Basic.DPCommand;
 using AutumnBox.Basic.Exceptions;
 using System;
 using System.Collections.Generic;
@@ -15,6 +17,20 @@ namespace AutumnBox.Basic.Util
 {
     public static class ThrowIf
     {
+        public static void ThrowIfShellExitCodeNotEqualsZero(this IProcessBasedCommandResult result)
+        {
+            if (result.ExitCode != 0)
+            {
+                throw new AdbShellCommandFailedException(result.ExitCode, result.Output.ToString());
+            }
+        }
+        public static void ThrowIfExitCodeNotEqualsZero(this IProcessBasedCommandResult result)
+        {
+            if (result.ExitCode != 0)
+            {
+                throw new AdbCommandFailedException(result.Output);
+            }
+        }
         public static void ThrowIfNotAlive(this IDevice device)
         {
             if (device.IsAlive == false)
