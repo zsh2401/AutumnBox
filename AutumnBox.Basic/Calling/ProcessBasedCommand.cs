@@ -9,16 +9,17 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutumnBox.Basic.Data;
 using AutumnBox.Basic.Executer;
 
-namespace AutumnBox.Basic.DPCommand
+namespace AutumnBox.Basic.Calling
 {
     /// <summary>
     /// 基于进程的命令
     /// </summary>
-    public class ProcessBasedCommand : IAsyncCommand
+    public class ProcessBasedCommand : IProcessBasedCommand
     {
-        private class Result : ICommandResult
+        private class Result : IProcessBasedCommandResult
         {
             public Output Output { get; set; }
 
@@ -69,7 +70,7 @@ namespace AutumnBox.Basic.DPCommand
         /// 执行
         /// </summary>
         /// <returns></returns>
-        public ICommandResult Execute()
+        public IProcessBasedCommandResult Execute()
         {
             lock (executeLock)
             {
@@ -106,7 +107,7 @@ namespace AutumnBox.Basic.DPCommand
         /// 异步执行
         /// </summary>
         /// <returns></returns>
-        public Task<ICommandResult> ExecuteAsync()
+        public Task<IProcessBasedCommandResult> ExecuteAsync()
         {
             return Task.Run(() =>
             {
@@ -124,7 +125,7 @@ namespace AutumnBox.Basic.DPCommand
         /// <summary>
         /// 停止正在执行的命令
         /// </summary>
-        public void Cancel()
+        public void Kill()
         {
             process?.Kill();
         }

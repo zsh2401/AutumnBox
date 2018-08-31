@@ -6,12 +6,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AutumnBox.Basic.DPCommand
+namespace AutumnBox.Basic.Calling
 {
     /// <summary>
     /// 命令执行结果
     /// </summary>
-    public interface ICommandResult
+    public interface IProcessBasedCommandResult
     {
         /// <summary>
         /// 输出

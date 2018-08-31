@@ -1,28 +1,28 @@
 ﻿/*************************************************
 ** auth： zsh2401@163.com
-** date:  2018/8/29 2:28:36 (UTC +8:00)
+** date:  2018/8/31 9:08:24 (UTC +8:00)
 ** desc： ...
 *************************************************/
-using AutumnBox.Basic.Data;
-using AutumnBox.Basic.Executer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 
-namespace AutumnBox.Basic.DPCommand
+namespace AutumnBox.Basic.Calling.Schema
 {
     /// <summary>
-    /// 标准命令接口
+    /// 参数构造器接口
     /// </summary>
-    public interface ICommand : IDisposable, INotifyOutput
+    public interface IArgBuilder
     {
         /// <summary>
-        /// 执行命令
+        /// 参数
         /// </summary>
+        /// <param name="arg"></param>
         /// <returns></returns>
-        ICommandResult Execute();
+        IArgBuilder Arg(string arg);
+        IArgBuilder ArgWithDoubleQuotation(string arg);
+        IProcessBasedCommand ToCommand();
     }
 }

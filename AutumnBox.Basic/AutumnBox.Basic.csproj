@@ -65,9 +65,19 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Calling\Adb\AdbCommand.cs" />
+    <Compile Include="Calling\Adb\AdbCommandBuilder.cs" />
+    <Compile Include="Calling\ProcessBasedCommand.cs" />
+    <Compile Include="Calling\IProcessBasedCommand.cs" />
+    <Compile Include="Calling\Schema\IArgBuilder.cs" />
+    <Compile Include="Calling\Schema\IDeviceSettableBuilder.cs" />
+    <Compile Include="Calling\Schema\IShellBuilder.cs" />
     <Compile Include="Data\INotifyOutput.cs" />
     <Compile Include="Device\DeviceBasedCommandFactory.cs" />
     <Compile Include="Device\Management\AppFx\Impl\ActivityManager.cs" />
+    <Compile Include="Device\Management\AppFx\Impl\BroadcastSender.cs" />
+    <Compile Include="Device\Management\AppFx\Impl\PackageManager.cs" />
+    <Compile Include="Device\Management\AppFx\Impl\ServiceManager.cs" />
     <Compile Include="Device\Management\Hardware\IHardwareInfoGetter.cs" />
     <Compile Include="Device\Management\AppFx\IActivityManager.cs" />
     <Compile Include="Device\Management\AppFx\IBroadcastSender.cs" />
@@ -79,19 +89,15 @@
     <Compile Include="Device\Management\OS\IFileSystem.cs" />
     <Compile Include="Device\Management\AppFx\IPackageManager.cs" />
     <Compile Include="Device\Management\OS\IImageOperator.cs" />
+    <Compile Include="Device\Management\OS\Impl\FileSystem.cs" />
     <Compile Include="Device\Management\OS\IRebooter.cs" />
     <Compile Include="Device\DeviceBase.cs" />
     <Compile Include="Device\Emulator.cs" />
     <Compile Include="Device\NetDevice.cs" />
     <Compile Include="Device\UsbDevice.cs" />
-    <Compile Include="DPCommand\CommandBuilder.cs" />
-    <Compile Include="DPCommand\ProcessBasedCommand.cs" />
-    <Compile Include="DPCommand\AdbCommandBuilder.cs" />
-    <Compile Include="DPCommand\IAsyncCommand.cs" />
-    <Compile Include="DPCommand\ICommand.cs" />
-    <Compile Include="DPCommand\ICommandResult.cs" />
+    <Compile Include="Calling\IProcessBasedCommandResult.cs" />
     <Compile Include="Device\IDevice.cs" />
-    <Compile Include="DPCommand\SocketBasedCommand.cs" />
+    <Compile Include="Exceptions\AdbShellCommandFailedException.cs" />
     <Compile Include="Exceptions\DeviceNotAliveException.cs" />
     <Compile Include="Device\DeviceExtension.cs" />
     <Compile Include="ManagedAdb\AdbClient.cs" />
@@ -198,8 +204,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Calling\Adb\Schema\" />
+    <Folder Include="Calling\Cmd\" />
+    <Folder Include="Calling\Fastboot\" />
     <Folder Include="Device\Management\Hardware\Impl\" />
-    <Folder Include="Device\Management\OS\Impl\" />
     <Folder Include="Old\Application\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

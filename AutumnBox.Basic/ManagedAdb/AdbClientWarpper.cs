@@ -3,6 +3,7 @@
 ** date:  2018/8/27 2:16:08 (UTC +8:00)
 ** desc： ...
 *************************************************/
+using AutumnBox.Basic.Device;
 using System;
 
 namespace AutumnBox.Basic.ManagedAdb
