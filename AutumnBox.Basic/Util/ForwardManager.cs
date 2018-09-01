@@ -4,6 +4,7 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.Basic.Device;
+using AutumnBox.Basic.Exceptions;
 using AutumnBox.Basic.Executer;
 using System;
 using System.Collections.Generic;

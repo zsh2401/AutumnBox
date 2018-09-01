@@ -5,6 +5,7 @@
 *************************************************/
 using AutumnBox.Basic.Calling;
 using AutumnBox.Basic.Calling.Adb;
+using AutumnBox.Basic.Data;
 using AutumnBox.Basic.Device.Management.AppFx;
 using AutumnBox.Basic.Device.Management.AppFx.Impl;
 using AutumnBox.Basic.Device.Management.OS;
@@ -19,14 +20,42 @@ namespace AutumnBox.Basic.Device
     /// </summary>
     public static class DeviceExtension
     {
+        public static Tuple<Output, int> Shell(this IDevice device,string sh)
+        {
+            throw new NotImplementedException();
+        }
+        public static Tuple<Output, int> Adb(this IDevice device,string command)
+        {
+            throw new NotImplementedException();
+        }
+        public static Tuple<Output, int> Fastboot(this IDevice device,string command)
+        {
+            throw new NotImplementedException();
+        }
+        public static void Reboot2Recovery(this IDevice device)
+        {
+            throw new NotImplementedException();
+        }
+        public static void Reboot2System(this IDevice device)
+        {
+            throw new NotImplementedException();
+        }
+        public static void Reboot2Fastboot(this IDevice device)
+        {
+            throw new NotImplementedException();
+        }
+        public static void Reboot29008(this IDevice device)
+        {
+            throw new NotImplementedException();
+        }
         /// <summary>
         /// 检查是否有SU权限
         /// </summary>
         /// <param name="device"></param>
         /// <returns></returns>
-        public static bool HaveSU(IDevice device)
+        public static bool HaveSU(this IDevice device)
         {
-            var command = new SuCommand(device,"ls");
+            var command = new SuCommand(device, "ls");
             return command.Execute().ExitCode == 0;
         }
         /// <summary>

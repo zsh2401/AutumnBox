@@ -13,6 +13,7 @@ namespace AutumnBox.Basic.Data
     /// <summary>
     /// 高级输出,相比父类多了个返回码
     /// </summary>
+    [Obsolete]
     public class AdvanceOutput : Output, IEquatable<AdvanceOutput>
     {
         /// <summary>

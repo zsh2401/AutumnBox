@@ -3,9 +3,10 @@
 ** date:  2018/1/27 5:56:42 (UTC +8:00)
 ** desc： ...
 *************************************************/
+using AutumnBox.Basic.Data;
 using System;
 
-namespace AutumnBox.Basic.Executer
+namespace AutumnBox.Basic.Exceptions
 {
 
     /// <summary>

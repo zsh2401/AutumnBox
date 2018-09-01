@@ -12,12 +12,15 @@
 *
 \* =============================================================================*/
 using System;
+using System.Net;
+
 namespace AutumnBox.Basic.Device
 {
 
     /// <summary>
     /// 简单的仅包含设备id和设备状态的结构体,主要用于设备列表 DevicesList
     /// </summary>
+    [Obsolete]
     public struct DeviceBasicInfo : IEquatable<DeviceBasicInfo>
     {
         /// <summary>
@@ -105,6 +108,34 @@ namespace AutumnBox.Basic.Device
         public static implicit operator DeviceState(DeviceBasicInfo info)
         {
             return info.State;
+        }
+
+        /// <summary>
+        /// 转Device对象
+        /// </summary>
+        /// <returns></returns>
+        public IDevice ToDevice()
+        {
+            if (Serial.IsIPAddress)
+            {
+                var splited = this.Serial.ToString().Split(':');
+                var ip = IPAddress.Parse(splited[0]);
+                var port = ushort.Parse(splited[1]);
+                return new NetDevice()
+                {
+                    SerialNumber = Serial.ToString(),
+                    IPEndPoint = new IPEndPoint(ip, port),
+                    State = State,
+                };
+            }
+            else
+            {
+                return new UsbDevice()
+                {
+                    SerialNumber = Serial.ToString(),
+                    State = State,
+                };
+            }
         }
 
         /// <summary>

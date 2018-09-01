@@ -5,7 +5,7 @@
 *************************************************/
 using System;
 
-namespace AutumnBox.Basic.Device
+namespace AutumnBox.Basic.Exceptions
 {
     /// <summary>
     /// 找不到设备异常

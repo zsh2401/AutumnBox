@@ -3,6 +3,7 @@
 ** date:  2018/2/21 22:05:01 (UTC +8:00)
 ** desc： ...
 *************************************************/
+using AutumnBox.Basic.Data;
 using AutumnBox.Basic.Device;
 using AutumnBox.Basic.Util;
 using System.Diagnostics;
