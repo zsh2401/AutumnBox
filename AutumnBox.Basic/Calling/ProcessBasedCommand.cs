@@ -70,7 +70,7 @@ namespace AutumnBox.Basic.Calling
         /// 执行
         /// </summary>
         /// <returns></returns>
-        public IProcessBasedCommandResult Execute()
+        public virtual IProcessBasedCommandResult Execute()
         {
             lock (executeLock)
             {
@@ -107,7 +107,7 @@ namespace AutumnBox.Basic.Calling
         /// 异步执行
         /// </summary>
         /// <returns></returns>
-        public Task<IProcessBasedCommandResult> ExecuteAsync()
+        public virtual Task<IProcessBasedCommandResult> ExecuteAsync()
         {
             return Task.Run(() =>
             {

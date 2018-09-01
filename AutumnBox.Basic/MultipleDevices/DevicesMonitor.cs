@@ -16,125 +16,58 @@ using AutumnBox.Support.Log;
 using System;
 using System.Collections.Generic;
 using System.Threading;
+using System.Threading.Tasks;
+
 namespace AutumnBox.Basic.MultipleDevices
 {
-    /// <summary>
-    /// 当连接设备拔插时的触发的事件
-    /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
-    public delegate void DevicesChangedHandler(object sender, DevicesChangedEventArgs e);
-    /// <summary>
-    /// 连接设备变化的事件的参数
-    /// </summary>
-    public class DevicesChangedEventArgs : EventArgs
+
+    public class DevicesMonitor
     {
-        /// <summary>
-        /// 已连接设备列表
-        /// </summary>
-        public IEnumerable<DeviceBasicInfo> DevicesList { get; }
-        public DevicesChangedEventArgs(IEnumerable<DeviceBasicInfo> devList)
+        public event DevicesChangedHandler DevicesChanged;
+        private CancellationTokenSource tokenSource;
+        private bool isStarted = false;
+        public int Interval { get; set; } = 2000;
+        public void Start()
         {
-            DevicesList = devList;
-        }
-    }
-    /// <summary>
-    /// 设备拔插监视器
-    /// </summary>
-    public static class DevicesMonitor
-    {
-        private static DevicesMonitorCore core = new DevicesMonitorCore();
-        /// <summary>
-        /// 获取当前已连接设备列表
-        /// </summary>
-        public static DeviceBasicInfo[] CurrentDevices => core.CurrentDevices;
-        /// <summary>
-        /// 设备拔插时发生
-        /// </summary>
-        public static event DevicesChangedHandler DevicesChanged
-        {
-            add { core.DevicesChanged += value; }
-            remove { core.DevicesChanged -= value; }
-        }
-
-        /// <summary>
-        /// 开始监视
-        /// </summary>
-        public static void Begin()
-        {
-            core.Begin();
-        }
-
-        /// <summary>
-        /// 停止/暂停监视
-        /// </summary>
-        public static void Stop()
-        {
-            core.Cancel();
-        }
-
-        /// <summary>
-        /// 完全静态类很不OOP,所以....
-        /// </summary>
-        public sealed class DevicesMonitorCore
-        {
-            private const int defaultInterval = 2000;
-            private readonly int _interval;
-            private Thread coreThread;
-            private IDevicesGetter _devGetter;
-            public event DevicesChangedHandler DevicesChanged
+            if (isStarted)
             {
-                add
+                return;
+            }
+            Task.Run(() =>
+            {
+                tokenSource = new CancellationTokenSource();
+                isStarted = true;
+                try
                 {
-                    DevicesChangedInner += value;
+                    Loop();
                 }
-                remove
+                catch (Exception ex)
                 {
-                    DevicesChangedInner -= value;
+                    Logger.Warn(this, "Devices monitor error", ex);
                 }
-            }
-            private event DevicesChangedHandler DevicesChangedInner;
-            private DevicesList crtDevices;
-            public DeviceBasicInfo[] CurrentDevices
+                isStarted = false; ;
+            });
+        }
+        private void Loop()
+        {
+            IDevicesGetter getter = new DevicesGetter();
+            IEnumerable<IDevice> last = getter.GetDevices();
+            DevicesChanged?.Invoke(this, new DevicesChangedEventArgs(last));
+            IEnumerable<IDevice> _new = null;
+            while (!tokenSource.Token.IsCancellationRequested)
             {
-                get
+                _new = getter.GetDevices();
+                if (!_new.DevicesEquals(_new))
                 {
-                    return crtDevices.ToArray();
+                    last = _new;
+                    DevicesChanged?.Invoke(this, new DevicesChangedEventArgs(last));
                 }
+                Thread.Sleep(Interval);
             }
-            public DevicesMonitorCore(int interval = defaultInterval)
-            {
-                this._interval = interval;
-                _devGetter = new DevicesGetter();
-                crtDevices = new DevicesList();
-            }
-            public void Begin()
-            {
-                if (coreThread?.IsAlive == true) return;
-                coreThread = new Thread(Listen);
-                coreThread.Start();
-                coreThread.IsBackground = true;
-            }
-            private void Listen()
-            {
-                DevicesList _new;
-                while (true)
-                {
-                    _new = _devGetter.GetDevices();
-                    //_new.ForEach((d)=> { Logger.Debug(this,d); });
-                    if (_new != crtDevices)
-                    {
-                        Logger.Info(this, "Devices Changed");
-                        crtDevices = _new;
-                        this.DevicesChangedInner?.Invoke(this, new DevicesChangedEventArgs(crtDevices));
-                    }
-                    Thread.Sleep(_interval);
-                }
-            }
-            public void Cancel()
-            {
-                coreThread.Abort();
-            }
+        }
+        public void Cancel()
+        {
+            tokenSource.Cancel();
         }
     }
 }

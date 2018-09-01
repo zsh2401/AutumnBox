@@ -3,23 +3,47 @@
 ** date:  2018/8/30 4:34:37 (UTC +8:00)
 ** desc： ...
 *************************************************/
+using AutumnBox.Basic.Calling;
+using AutumnBox.Basic.Calling.Adb;
 using AutumnBox.Basic.Device.Management.AppFx;
+using AutumnBox.Basic.Device.Management.AppFx.Impl;
 using AutumnBox.Basic.Device.Management.OS;
-using AutumnBox.Basic.DPCommand;
 using AutumnBox.Basic.Util;
 using System;
+using System.Windows.Input;
 
 namespace AutumnBox.Basic.Device
 {
+    /// <summary>
+    /// 设备对象拓展
+    /// </summary>
     public static class DeviceExtension
     {
-        public static ICommand GetShellCommand(this IDevice device, string sh)
+        /// <summary>
+        /// 检查是否有SU权限
+        /// </summary>
+        /// <param name="device"></param>
+        /// <returns></returns>
+        public static bool HaveSU(IDevice device)
         {
-            throw new NotImplementedException();
+            var command = new SuCommand(device,"ls");
+            return command.Execute().ExitCode == 0;
+        }
+        /// <summary>
+        /// 获取Shell命令对象
+        /// </summary>
+        /// <param name="device"></param>
+        /// <param name="sh"></param>
+        /// <returns></returns>
+        public static IProcessBasedCommand GetShellCommand(this IDevice device, string sh)
+        {
+            device.ThrowIfNotAlive();
+            return new ShellCommand(device, sh);
         }
         public static IBroadcastSender GetBroadcastSender(this IDevice device)
         {
-            throw new NotImplementedException();
+            device.ThrowIfNotAlive();
+            return new BroadcastSender(device);
         }
         public static IBuildPropGetter GetBuildPropGetter(this IDevice device)
         {
@@ -28,15 +52,18 @@ namespace AutumnBox.Basic.Device
         }
         public static IActivityManager GetActivityManager(this IDevice device)
         {
-            throw new NotImplementedException();
+            device.ThrowIfNotAlive();
+            return new Management.AppFx.Impl.ActivityManager(device);
         }
         public static IPackageManager GetPackageManager(this IDevice device)
         {
-            throw new NotImplementedException();
+            device.ThrowIfNotAlive();
+            return new Management.AppFx.Impl.PackageManager(device);
         }
         public static IServiceManager GetServiceManager(this IDevice device)
         {
-            throw new NotImplementedException();
+            device.ThrowIfNotAlive();
+            return new Management.AppFx.Impl.ServiceManager(device);
         }
 
     }

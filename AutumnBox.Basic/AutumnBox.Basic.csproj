@@ -67,13 +67,16 @@
   <ItemGroup>
     <Compile Include="Calling\Adb\AdbCommand.cs" />
     <Compile Include="Calling\Adb\AdbCommandBuilder.cs" />
+    <Compile Include="Calling\Adb\ShellCommand.cs" />
+    <Compile Include="Calling\Adb\SuCommand.cs" />
+    <Compile Include="Calling\Cmd\WindowsCmdCommand.cs" />
+    <Compile Include="Calling\Fastboot\FastbootCommand.cs" />
     <Compile Include="Calling\ProcessBasedCommand.cs" />
     <Compile Include="Calling\IProcessBasedCommand.cs" />
     <Compile Include="Calling\Schema\IArgBuilder.cs" />
     <Compile Include="Calling\Schema\IDeviceSettableBuilder.cs" />
     <Compile Include="Calling\Schema\IShellBuilder.cs" />
     <Compile Include="Data\INotifyOutput.cs" />
-    <Compile Include="Device\DeviceBasedCommandFactory.cs" />
     <Compile Include="Device\Management\AppFx\Impl\ActivityManager.cs" />
     <Compile Include="Device\Management\AppFx\Impl\BroadcastSender.cs" />
     <Compile Include="Device\Management\AppFx\Impl\PackageManager.cs" />
@@ -109,6 +112,10 @@
     <Compile Include="ManagedAdb\Extension.cs" />
     <Compile Include="ManagedAdb\IAdbClient.cs" />
     <Compile Include="ManagedAdb\IAdbServer.cs" />
+    <Compile Include="MultipleDevices\DeviceObjectFacotry.cs" />
+    <Compile Include="MultipleDevices\DevicesArrayExtension.cs" />
+    <Compile Include="MultipleDevices\DevicesChangedEvent.cs" />
+    <Compile Include="MultipleDevices\DevicesGetter.cs" />
     <Compile Include="Old\ActivityManager\Activity.cs" />
     <Compile Include="Old\ActivityManager\ActivityManagerShared.cs" />
     <Compile Include="Old\ActivityManager\Broadcast.cs" />
@@ -142,7 +149,7 @@
     <Compile Include="Data\OutputReceivedEvent.cs" />
     <Compile Include="Old\Executer\ProcessStartedEvent.cs" />
     <Compile Include="FlowFramework\IFunctionFlowBase.cs" />
-    <Compile Include="MultipleDevices\DevicesGetter.cs" />
+    <Compile Include="MultipleDevices\OldDevicesGetter.cs" />
     <Compile Include="Old\DeviceBasicInfo.cs" />
     <Compile Include="Old\ISetableShell.cs" />
     <Compile Include="Old\Executer\AndroidShell.cs" />
@@ -205,8 +212,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Calling\Adb\Schema\" />
-    <Folder Include="Calling\Cmd\" />
-    <Folder Include="Calling\Fastboot\" />
     <Folder Include="Device\Management\Hardware\Impl\" />
     <Folder Include="Old\Application\" />
   </ItemGroup>

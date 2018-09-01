@@ -1,88 +1,51 @@
-/* =============================================================================*\
-*
-* Filename: DevicesGetter.cs
-* Description: 
-*
-* Version: 1.0
-* Created: 9/27/2017 02:12:37(UTC+8:00)
-* Compiler: Visual Studio 2017
-* 
-* Author: zsh2401
-* Company: I am free man
-*
-\* =============================================================================*/
+ï»¿/*************************************************
+** authï¼š zsh2401@163.com
+** date:  2018/9/1 16:56:38 (UTC +8:00)
+** descï¼š ...
+*************************************************/
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+using AutumnBox.Basic.Calling.Adb;
+using AutumnBox.Basic.Calling.Fastboot;
+using AutumnBox.Basic.Device;
+
 namespace AutumnBox.Basic.MultipleDevices
 {
-    using AutumnBox.Basic.Device;
-    using AutumnBox.Basic.Executer;
-    using AutumnBox.Basic.Util;
-    using AutumnBox.Support.Log;
-    using System;
-    using System.Text.RegularExpressions;
-
-    /// <summary>
-    /// µ±Ç°ÒÑÁ¬½ÓÉè±¸»ñÈ¡Æ÷
-    /// </summary>
-    public sealed class DevicesGetter : IDevicesGetter
+    public class DevicesGetter : IDevicesGetter
     {
-        private readonly CommandExecuter executer = new CommandExecuter();
-        private static readonly Command adbDevicesCmd = Command.MakeForAdb("devices");
-        private static readonly Command fbDevicesCmd = Command.MakeForFastboot("devices");
-        /// <summary>
-        /// »ñÈ¡ÒÑÁ¬½ÓµÄÉè±¸
-        /// </summary>
-        /// <returns></returns>
-        public DevicesList GetDevices()
+        private readonly AdbCommand adbDevices = new AdbCommand("devices -l");
+        private readonly FastbootCommand fastbootDevices = new FastbootCommand("devices");
+        public IEnumerable<IDevice> GetDevices()
         {
-            lock (executer)
+            List<IDevice> result = new List<IDevice>();
+            Adb(result);
+            Fastboot(result);
+            return result;
+        }
+        private void Adb(List<IDevice> devices)
+        {
+            var lineOutput = adbDevices.Execute().Output.LineOut;
+            for (int i = 1; i < lineOutput.Count(); i++)
             {
-                DevicesList devList = new DevicesList();
-                var adbDevicesOutput = executer.Execute(adbDevicesCmd);
-                if (!adbDevicesOutput.IsSuccessful)
+                if (DeviceObjectFacotry.AdbTryParse(lineOutput[i], out IDevice device))
                 {
-                    AdbHelper.RisesAdbServerStartsFailedEvent();
-                    return devList;
+                    devices.Add(device);
                 }
-                var fastbootDevicesOutput = executer.Execute(fbDevicesCmd);
-                AdbParse(adbDevicesOutput, ref devList);
-                FastbootParse(fastbootDevicesOutput, ref devList);
-                return devList;
             }
         }
-        private const string devicePattern = @"(?i)^(?<serial>[^\u0020|^\t]+)[^\w]+(?<status>\w+)[^?!.]$";
-        private static readonly Regex _deviceRegex = new Regex(devicePattern, RegexOptions.Multiline);
-        private static void AdbParse(Output o, ref DevicesList devList)
+        private void Fastboot(List<IDevice> devices)
         {
-            try
+            var lineOutput = fastbootDevices.Execute().Output.LineOut;
+            for (int i = 1; i < lineOutput.Count(); i++)
             {
-                var matches = _deviceRegex.Matches(o.All);
-                foreach (Match match in matches)
+                if (DeviceObjectFacotry.FastbootTryParse(lineOutput[i], out IDevice device))
                 {
-                    devList.Add(DeviceBasicInfo.Make(
-                        match.Result("${serial}"),
-                        match.Result("${status}").ToDeviceState()));
+                    devices.Add(device);
                 }
-            }
-            catch (Exception ex)
-            {
-                Logger.Warn("DevicesGetter","adb devices parse failed", ex);
-            }
-        }
-        private static void FastbootParse(Output o, ref DevicesList devList)
-        {
-            try
-            {
-                var matches = _deviceRegex.Matches(o.All);
-                foreach (Match match in matches)
-                {
-                    devList.Add(DeviceBasicInfo.Make(
-                        match.Result("${serial}"),
-                        match.Result("${status}").ToDeviceState()));
-                }
-            }
-            catch (Exception ex)
-            {
-                Logger.Warn("DevicesGetter","fastboot devices parse failed", ex);
             }
         }
     }

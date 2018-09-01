@@ -67,7 +67,7 @@ namespace AutumnBox.Basic.MultipleDevices
         /// <returns></returns>
         public static bool operator !=(DevicesList left, DevicesList right)
         {
-            return !left.Equals(right);
+            return !(left == right);
         }
         /// <summary>
         /// 判断列表内容是否一致
