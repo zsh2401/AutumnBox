@@ -11,6 +11,7 @@
 * Company: I am free man
 *
 \* =============================================================================*/
+using AutumnBox.Basic.Data;
 using AutumnBox.Basic.Device;
 using AutumnBox.Basic.Util;
 using AutumnBox.Support.Helper;
@@ -25,7 +26,7 @@ namespace AutumnBox.Basic.Executer
     /// <summary>
     /// 简单封装的,用于执行基础命令的AndroidShell类
     /// </summary>
-    public sealed class AndroidShell : IOutputable, IDisposable
+    public sealed class AndroidShell : INotifyOutput, IDisposable
     {
 
         /// <summary>

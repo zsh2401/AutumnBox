@@ -26,13 +26,14 @@ namespace AutumnBox.Basic.Device.Management.AppFx.Impl
         public PackageManager(IDevice device) : base(device)
         {
         }
+
         /// <summary>
         /// 从PC端安装APK
         /// </summary>
         /// <param name="file"></param>
         public void Install(FileInfo file)
         {
-            new AdbCommand($"install \"{file.FullName}\"").Execute()
+            Device.Adb($"install \"{file.FullName}\"")
                 .ThrowIfExitCodeNotEqualsZero();
         }
 
@@ -43,8 +44,8 @@ namespace AutumnBox.Basic.Device.Management.AppFx.Impl
         /// <returns></returns>
         public bool IsInstall(string pkgName)
         {
-            var result = new AdbCommand($"pm path {pkgName}").Execute();
-            return result.ExitCode == 0;
+            var result = Device.Shell($"pm path {pkgName}");
+            return result.Item2 == 0;
         }
 
         /// <summary>
@@ -53,7 +54,7 @@ namespace AutumnBox.Basic.Device.Management.AppFx.Impl
         /// <param name="pkgName"></param>
         public void Uninstall(string pkgName)
         {
-            new AdbCommand($"uninstall {pkgName}").Execute()
+            Device.Adb($"uninstall {pkgName}")
                  .ThrowIfExitCodeNotEqualsZero();
         }
     }

@@ -15,10 +15,12 @@ namespace AutumnBox.Basic.Executer
 {
     using AutumnBox.Basic.Device;
     using AutumnBox.Basic.Util;
+    using System;
 
     /// <summary>
     /// 封装命令的对象
     /// </summary>
+    [Obsolete("这是过期的设计,请使用AutumnBox.Basic.Calling中的命令对象来进行命令操作")]
     public sealed class Command
     {
         /// <summary>

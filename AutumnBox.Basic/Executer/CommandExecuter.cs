@@ -5,6 +5,7 @@
 ** compiler: Visual Studio 2017
 ** desc： ...
 *********************************************************************************/
+using AutumnBox.Basic.Data;
 using AutumnBox.Basic.Device;
 using System;
 using System.Diagnostics;
@@ -15,7 +16,8 @@ namespace AutumnBox.Basic.Executer
     /// <summary>
     /// 万物基于命令执行器(滑稽)
     /// </summary>
-    public sealed class CommandExecuter : IOutputable
+    [Obsolete]
+    public sealed class CommandExecuter : INotifyOutput
     {
         private ProcessStartInfo _startInfo;
         private OutputBuilder _builder;

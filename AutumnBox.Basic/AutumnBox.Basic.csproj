@@ -116,16 +116,12 @@
     <Compile Include="MultipleDevices\DevicesArrayExtension.cs" />
     <Compile Include="MultipleDevices\DevicesChangedEvent.cs" />
     <Compile Include="MultipleDevices\DevicesGetter.cs" />
-    <Compile Include="Old\ActivityManager\Activity.cs" />
-    <Compile Include="Old\ActivityManager\ActivityManagerShared.cs" />
-    <Compile Include="Old\ActivityManager\Broadcast.cs" />
-    <Compile Include="Old\ActivityManager\Service.cs" />
     <Compile Include="Old\PackageManage\PackageManager.cs" />
     <Compile Include="Old\PackageManage\UserManager.cs" />
     <Compile Include="Exceptions\AdbCommandFailedException.cs" />
     <Compile Include="Data\AdvanceOutput.cs" />
     <Compile Include="Data\AdvanceOutputBuilder.cs" />
-    <Compile Include="Old\Executer\AndroidShellV2.cs" />
+    <Compile Include="Executer\AndroidShellV2.cs" />
     <Compile Include="Data\OutputBuilder.cs" />
     <Compile Include="Extension\FileInfoExtension.cs" />
     <Compile Include="Util\ForwardManager.cs" />
@@ -133,7 +129,7 @@
     <Compile Include="Old\DeviceBuildPropSetter.cs" />
     <Compile Include="Old\DeviceHaveNoRootException.cs" />
     <Compile Include="Old\DeviceInfoGetterInFastboot.cs" />
-    <Compile Include="Old\DeviceNotFoundException.cs" />
+    <Compile Include="Exceptions\DeviceNotFoundException.cs" />
     <Compile Include="Old\DeviceRebooter.cs" />
     <Compile Include="Old\DeviceSoftwareInfoGetter.cs" />
     <Compile Include="Old\PackageManage\PackageInfo.cs" />
@@ -145,17 +141,17 @@
     <Compile Include="Old\DeviceHardwareInfoGetter.cs" />
     <Compile Include="Old\DeviceImage.cs" />
     <Compile Include="Old\DeviceImageFinder.cs" />
-    <Compile Include="Old\Executer\ExcutionException.cs" />
+    <Compile Include="Exceptions\ExcutionException.cs" />
     <Compile Include="Data\OutputReceivedEvent.cs" />
-    <Compile Include="Old\Executer\ProcessStartedEvent.cs" />
+    <Compile Include="Executer\ProcessStartedEvent.cs" />
     <Compile Include="FlowFramework\IFunctionFlowBase.cs" />
     <Compile Include="MultipleDevices\OldDevicesGetter.cs" />
-    <Compile Include="Old\DeviceBasicInfo.cs" />
+    <Compile Include="Device\DeviceBasicInfo.cs" />
     <Compile Include="Old\ISetableShell.cs" />
-    <Compile Include="Old\Executer\AndroidShell.cs" />
-    <Compile Include="Old\Executer\AndroidShellEvents.cs" />
-    <Compile Include="Old\Executer\CommandExecuter.cs" />
-    <Compile Include="Old\Executer\IOutputable.cs" />
+    <Compile Include="Executer\AndroidShell.cs" />
+    <Compile Include="Executer\AndroidShellEvents.cs" />
+    <Compile Include="Executer\CommandExecuter.cs" />
+    <Compile Include="Executer\IOutputable.cs" />
     <Compile Include="FlowFramework\FunctionFlow.cs" />
     <Compile Include="FlowFramework\FunctionFlowBase.cs" />
     <Compile Include="FlowFramework\FlowArgs.cs" />
@@ -173,7 +169,7 @@
     <Compile Include="MultipleDevices\IDevicesGetter.cs" />
     <Compile Include="Data\Output.cs" />
     <Compile Include="MultipleDevices\DevicesList.cs" />
-    <Compile Include="Old\Executer\Command.cs" />
+    <Compile Include="Executer\Command.cs" />
     <Compile Include="MultipleDevices\DevicesMonitor.cs" />
     <Compile Include="Device\DeviceState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -213,7 +209,6 @@
   <ItemGroup>
     <Folder Include="Calling\Adb\Schema\" />
     <Folder Include="Device\Management\Hardware\Impl\" />
-    <Folder Include="Old\Application\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

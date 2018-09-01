@@ -4,19 +4,22 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.Basic.Calling;
+using AutumnBox.Basic.Data;
 using AutumnBox.Basic.Device;
-using AutumnBox.Basic.DPCommand;
 using AutumnBox.Basic.Exceptions;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Util
 {
     public static class ThrowIf
     {
+        public static void ThrowIfExitCodeNotEqualsZero(this Tuple<Output,int> result)
+        {
+            if (result.Item2 != 0)
+            {
+                throw new AdbShellCommandFailedException(result.Item2, result.Item1.ToString());
+            }
+        }
         public static void ThrowIfShellExitCodeNotEqualsZero(this IProcessBasedCommandResult result)
         {
             if (result.ExitCode != 0)
