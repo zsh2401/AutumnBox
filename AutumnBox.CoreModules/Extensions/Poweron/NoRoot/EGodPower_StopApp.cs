@@ -3,6 +3,7 @@
 ** date:  2018/8/29 1:30:57 (UTC +8:00)
 ** desc： ...
 *************************************************/
+using AutumnBox.Basic.Calling.Adb;
 using AutumnBox.Basic.Executer;
 using AutumnBox.Basic.Extension;
 using AutumnBox.OpenFramework.Extension;
@@ -46,6 +47,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot
             godpowerApkFile.PushTo(TargetDevice, GODPOWER_APK_ON_DEVICE);
             WriteLine("推送文件完成");
 
+            //new ShellCommand(TargetDevice).Execute();
             AndroidShellV2 shell = new AndroidShellV2(TargetDevice);
             shell.OutputReceived += (s, e) =>
             {

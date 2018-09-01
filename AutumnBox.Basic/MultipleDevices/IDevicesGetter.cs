@@ -12,6 +12,9 @@
 *
 \* =============================================================================*/
 
+using AutumnBox.Basic.Device;
+using System.Collections.Generic;
+
 namespace AutumnBox.Basic.MultipleDevices
 {
     /// <summary>
@@ -23,6 +26,6 @@ namespace AutumnBox.Basic.MultipleDevices
         /// 获取设备
         /// </summary>
         /// <returns></returns>
-        DevicesList GetDevices();
+        IEnumerable<IDevice> GetDevices();
     }
 }

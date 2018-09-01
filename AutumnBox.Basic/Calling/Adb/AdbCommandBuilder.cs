@@ -23,16 +23,19 @@ namespace AutumnBox.Basic.Calling.Adb
         {
             Reset();
         }
+
         public void Reset()
         {
             args.Clear();
             Arg("-P");
             Arg(AdbServer.Instance.Port.ToString());
         }
+
         public void Clear()
         {
             Reset();
         }
+
         public IArgBuilder Arg(string arg)
         {
             args.Add(arg);
@@ -67,7 +70,7 @@ namespace AutumnBox.Basic.Calling.Adb
 
         public IProcessBasedCommand ToCommand()
         {
-            return new ProcessBasedCommand(ADB_FILE, ArgsToString());
+            return new AdbCommand(ArgsToString());
         }
 
         public string ArgsToString()
@@ -83,6 +86,11 @@ namespace AutumnBox.Basic.Calling.Adb
         public IArgBuilder ArgWithDoubleQuotation(string arg)
         {
             return Arg("\"" + arg + "\"");
+        }
+
+        public static IProcessBasedCommand For(string args)
+        {
+            return new AdbCommand(args);
         }
     }
 }
