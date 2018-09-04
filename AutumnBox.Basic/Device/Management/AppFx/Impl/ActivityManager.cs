@@ -6,7 +6,7 @@
 using AutumnBox.Basic.Calling.Adb;
 using AutumnBox.Basic.Util;
 
-namespace AutumnBox.Basic.Device.Management.AppFx.Impl
+namespace AutumnBox.Basic.Device.Management.AppFx
 {
     public class ActivityManager : DependOnDeviceObject, IActivityManager
     {

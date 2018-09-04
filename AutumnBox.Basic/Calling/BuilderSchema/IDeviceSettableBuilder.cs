@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AutumnBox.Basic.Calling.Schema
+namespace AutumnBox.Basic.Calling.BuilderSchema
 {
     public interface IDeviceSettableBuilder<TDeviceSettedReturn> : IArgBuilder
     {

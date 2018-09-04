@@ -11,7 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AutumnBox.Basic.Device.Management.AppFx.Impl
+namespace AutumnBox.Basic.Device.Management.AppFx
 {
     class ServiceManager : DependOnDeviceObject, IServiceManager
     {

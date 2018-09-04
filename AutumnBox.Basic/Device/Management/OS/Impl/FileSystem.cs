@@ -12,7 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AutumnBox.Basic.Device.Management.OS.Impl
+namespace AutumnBox.Basic.Device.Management.OS
 {
     /// <summary>
     /// 简单的文件系统管理实现

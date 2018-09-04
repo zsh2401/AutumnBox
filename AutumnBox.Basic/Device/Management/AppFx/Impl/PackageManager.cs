@@ -12,7 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AutumnBox.Basic.Device.Management.AppFx.Impl
+namespace AutumnBox.Basic.Device.Management.AppFx
 {
     /// <summary>
     /// 包管理器实现
