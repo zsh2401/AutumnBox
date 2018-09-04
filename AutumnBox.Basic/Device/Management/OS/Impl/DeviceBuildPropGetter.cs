@@ -5,24 +5,39 @@
 ** compiler: Visual Studio 2017
 ** desc： ...
 *********************************************************************************/
+using AutumnBox.Basic.Device.Management.OS;
 using AutumnBox.Basic.Executer;
 using AutumnBox.Support.Log;
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
-namespace AutumnBox.Basic.Device
+namespace AutumnBox.Basic.Device.Management.OS
 {
     /// <summary>
     /// 设备Build.prop信息获取器
     /// </summary>
-    public class DeviceBuildPropGetter
+    public class DeviceBuildPropGetter : IBuildPropGetter
     {
         private readonly CommandExecuter executer;
         /// <summary>
         /// 绑定的设备
         /// </summary>
         public DeviceSerialNumber Serial { get; private set; }
+
+        /// <summary>
+        /// 索引器
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public string this[string key]
+        {
+            get
+            {
+                return loaded[key];
+            }
+        }
+
         /// <summary>
         /// 构建
         /// </summary>
@@ -49,12 +64,12 @@ namespace AutumnBox.Basic.Device
             try
             {
                 var verStr = Get(BuildPropKeys.AndroidVersion);
-                Logger.Debug(this,verStr);
+                Logger.Debug(this, verStr);
                 return new Version(verStr);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                Logger.DebugWarn(this,"Get android version failed",ex);
+                Logger.DebugWarn(this, "Get android version failed", ex);
                 return null;
             }
         }
@@ -78,7 +93,8 @@ namespace AutumnBox.Basic.Device
         /// 获取主板信息,但因为厂商原因,可能会是别的信息
         /// </summary>
         /// <returns></returns>
-        public string GetBoard() {
+        public string GetBoard()
+        {
             return Get(BuildPropKeys.Board);
         }
         /// <summary>
@@ -129,6 +145,12 @@ namespace AutumnBox.Basic.Device
             {
                 return null;
             }
+        }
+
+        private Dictionary<string, string> loaded;
+        public void Reload()
+        {
+            loaded = GetFull();
         }
     }
 }

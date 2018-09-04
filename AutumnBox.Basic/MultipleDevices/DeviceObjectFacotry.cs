@@ -22,6 +22,25 @@ namespace AutumnBox.Basic.MultipleDevices
         private const string DEVICES_L_PATTERN = @"^(?<sn>[^\u0020|^\t]+)[^\w]+(?<status>\w+).+:(?<product>\w+).+:(?<model>\w+).+:(?<device>\w+).+:(?<transport_id>\w+)$";
         private static readonly Regex _deviceLRegex = new Regex(DEVICES_L_PATTERN);
 
+        public static bool TryParse(string serialNumber, string state, out IDevice device)
+        {
+            DeviceBase dev = null;
+            if (TryParseSerialAsIPEnd(serialNumber, out IPEndPoint end))
+            {
+                device = new NetDevice()
+                {
+                    IPEndPoint = end,
+                };
+            }
+            else
+            {
+                device = new UsbDevice();
+            }
+            dev.SerialNumber = serialNumber;
+            dev.State = state.ToDeviceState();
+            return device != null;
+        }
+
         public static bool AdbTryParse(string input, out IDevice device)
         {
             if (AdbLParse(input, out device))
@@ -34,6 +53,7 @@ namespace AutumnBox.Basic.MultipleDevices
             }
             return false;
         }
+
         private static bool TryParseSerialAsIPEnd(string serialNumber, out IPEndPoint iPEndPoint)
         {
             try

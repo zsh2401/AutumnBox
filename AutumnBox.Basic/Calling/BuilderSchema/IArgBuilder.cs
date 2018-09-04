@@ -3,13 +3,8 @@
 ** date:  2018/8/31 9:08:24 (UTC +8:00)
 ** desc： ...
 *************************************************/
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace AutumnBox.Basic.Calling.Schema
+namespace AutumnBox.Basic.Calling.BuilderSchema
 {
     /// <summary>
     /// 参数构造器接口

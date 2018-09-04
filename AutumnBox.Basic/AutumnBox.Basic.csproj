@@ -73,10 +73,11 @@
     <Compile Include="Calling\Fastboot\FastbootCommand.cs" />
     <Compile Include="Calling\ProcessBasedCommand.cs" />
     <Compile Include="Calling\IProcessBasedCommand.cs" />
-    <Compile Include="Calling\Schema\IArgBuilder.cs" />
-    <Compile Include="Calling\Schema\IDeviceSettableBuilder.cs" />
-    <Compile Include="Calling\Schema\IShellBuilder.cs" />
+    <Compile Include="Calling\BuilderSchema\IArgBuilder.cs" />
+    <Compile Include="Calling\BuilderSchema\IDeviceSettableBuilder.cs" />
+    <Compile Include="Calling\BuilderSchema\IShellBuilder.cs" />
     <Compile Include="Data\INotifyOutput.cs" />
+    <Compile Include="Device\DeviceExtension.Reboot.cs" />
     <Compile Include="Device\Management\AppFx\Impl\ActivityManager.cs" />
     <Compile Include="Device\Management\AppFx\Impl\BroadcastSender.cs" />
     <Compile Include="Device\Management\AppFx\Impl\PackageManager.cs" />
@@ -86,14 +87,16 @@
     <Compile Include="Device\Management\AppFx\IBroadcastSender.cs" />
     <Compile Include="Device\Management\AppFx\IServiceManager.cs" />
     <Compile Include="Device\DependOnDeviceObject.cs" />
+    <Compile Include="Device\Management\Hardware\Impl\DeviceHardwareInfo.cs" />
+    <Compile Include="Device\Management\Hardware\Impl\DeviceHardwareInfoGetter.cs" />
     <Compile Include="Device\Management\OS\IAndroidShell.cs" />
     <Compile Include="Device\Management\OS\IBuildPropGetter.cs" />
     <Compile Include="Device\Management\OS\IDpiModifier.cs" />
     <Compile Include="Device\Management\OS\IFileSystem.cs" />
     <Compile Include="Device\Management\AppFx\IPackageManager.cs" />
     <Compile Include="Device\Management\OS\IImageOperator.cs" />
+    <Compile Include="Device\Management\OS\Impl\DpiModifier.cs" />
     <Compile Include="Device\Management\OS\Impl\FileSystem.cs" />
-    <Compile Include="Device\Management\OS\IRebooter.cs" />
     <Compile Include="Device\DeviceBase.cs" />
     <Compile Include="Device\Emulator.cs" />
     <Compile Include="Device\NetDevice.cs" />
@@ -101,8 +104,9 @@
     <Compile Include="Calling\IProcessBasedCommandResult.cs" />
     <Compile Include="Device\IDevice.cs" />
     <Compile Include="Exceptions\AdbShellCommandFailedException.cs" />
+    <Compile Include="Exceptions\DeviceHasNoSuException.cs" />
     <Compile Include="Exceptions\DeviceNotAliveException.cs" />
-    <Compile Include="Device\DeviceExtension.cs" />
+    <Compile Include="Device\DeviceExtension.Execute.cs" />
     <Compile Include="ManagedAdb\AdbClient.cs" />
     <Compile Include="ManagedAdb\AdbClientWarpper.cs" />
     <Compile Include="ManagedAdb\AdbProtocol.cs" />
@@ -136,7 +140,7 @@
     <Compile Include="Old\PackageManage\PackageManagerShared.cs" />
     <Compile Include="Old\PackageManage\PackageNotFoundException.cs" />
     <Compile Include="Old\DeviceSerialNumber.cs" />
-    <Compile Include="Old\DeviceBuildPropGetter.cs" />
+    <Compile Include="Device\Management\OS\Impl\DeviceBuildPropGetter.cs" />
     <Compile Include="Old\DeviceHardwareInfo.cs" />
     <Compile Include="Old\DeviceHardwareInfoGetter.cs" />
     <Compile Include="Old\DeviceImage.cs" />
@@ -187,6 +191,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Device\DeviceExtension.Management.cs" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -206,10 +211,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Calling\Adb\Schema\" />
-    <Folder Include="Device\Management\Hardware\Impl\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>
