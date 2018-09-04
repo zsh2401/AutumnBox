@@ -1,7 +1,6 @@
 ﻿using AutumnBox.Basic.Calling.Adb;
-using AutumnBox.Basic.DPCommand;
-using AutumnBox.MapleLeaf.Adb;
-using AutumnBox.MapleLeaf.Android.Shell;
+using AutumnBox.Basic.Device.Management.OS;
+using AutumnBox.Basic.ManagedAdb;
 using System;
 using System.Collections;
 using System.Text;
@@ -56,15 +55,15 @@ namespace AutumnBox.ConsoleTester
         }
         unsafe static void Main(string[] cmdargs)
         {
-            AdbCommandBuilder acb = new AdbCommandBuilder();
-            acb.Device("afcd03").Arg("reboot").Arg("fastboot");
+            AdbServer.Instance.Start();
+            var cmd = new AdbCommand("devices");
             //var cmd = acb.ToCommand();
             //cmd.OutputReceived += (s, e) =>
             //{
             //    Console.WriteLine(e.Text);
             //};
             //cmd.Execute();
-            Console.WriteLine(acb);
+            Console.WriteLine(cmd.Execute().Output);
             //using (IAdbService adbService = AdbService.Instance)
             //{
             //    adbService.Start(5099);
