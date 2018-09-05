@@ -11,6 +11,9 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Device
 {
+    /// <summary>
+    /// 模拟器设备
+    /// </summary>
     public sealed class Emulator : DeviceBase
     {
     }

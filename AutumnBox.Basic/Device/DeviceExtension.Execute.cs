@@ -55,16 +55,6 @@ namespace AutumnBox.Basic.Device
             var result = cmd.Execute();
             return new Tuple<Output, int>(result.Output, result.ExitCode);
         }
-    
-        /// <summary>
-        /// 检查是否有SU权限
-        /// </summary>
-        /// <param name="device"></param>
-        /// <returns></returns>
-        public static bool HaveSU(this IDevice device)
-        {
-            var command = new SuCommand(device, "ls");
-            return command.Execute().ExitCode == 0;
-        }
+   
     }
 }

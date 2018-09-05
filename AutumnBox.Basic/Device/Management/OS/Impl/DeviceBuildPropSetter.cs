@@ -5,11 +5,12 @@
 ** compiler: Visual Studio 2017
 ** desc： ...
 *********************************************************************************/
+using AutumnBox.Basic.Exceptions;
 using AutumnBox.Basic.Executer;
 using System;
 using System.Text.RegularExpressions;
 
-namespace AutumnBox.Basic.Device
+namespace AutumnBox.Basic.Device.Management.OS
 {
     [Obsolete("由于安卓碎片化原因,此类不保证可以正常运行,请自行实现相关功能",true)]
 #pragma warning disable CS1591 // 缺少对公共可见类型或成员的 XML 注释
@@ -50,7 +51,7 @@ namespace AutumnBox.Basic.Device
             shellAsSu.Connect();
             if (!shellAsSu.Switch2Su())
             {
-                throw new DeviceHaveNoRootException();
+                throw new DeviceHasNoSuException();
             }
             ReloadFromDevice();
         }

@@ -86,6 +86,7 @@ namespace AutumnBox.Basic.Calling
                     process.CancelErrorRead();
                     process.CancelOutputRead();
                     retCode = process.ExitCode;
+                    process = null;
                 }
                 return new Result()
                 {

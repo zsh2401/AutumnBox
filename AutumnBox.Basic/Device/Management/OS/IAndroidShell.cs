@@ -12,9 +12,8 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Device.Management.OS
 {
-    public interface IAndroidShell : INotifyOutput
+    public interface IAndroidShell : INotifyOutput,IDisposable
     {
-        int LastExitCode();
         void Input(string str);
         void InputLine(string str);
     }

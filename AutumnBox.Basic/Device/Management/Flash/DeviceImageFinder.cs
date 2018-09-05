@@ -10,7 +10,7 @@ using AutumnBox.Basic.Util;
 using System;
 using System.Linq;
 
-namespace AutumnBox.Basic.Device
+namespace AutumnBox.Basic.Device.Management.Flash
 {
 
     /// <summary>
