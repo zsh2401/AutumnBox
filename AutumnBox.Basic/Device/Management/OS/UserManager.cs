@@ -8,7 +8,7 @@ using AutumnBox.Basic.Executer;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
-namespace AutumnBox.Basic.Device.PackageManage
+namespace AutumnBox.Basic.Device.Management.OS
 {
     /// <summary>
     /// 用户信息
