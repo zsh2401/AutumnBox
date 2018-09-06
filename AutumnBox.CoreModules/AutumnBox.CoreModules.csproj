@@ -52,6 +52,7 @@
     <Compile Include="Extensions\Fastboot\EFlashRecovery.cs" />
     <Compile Include="Extensions\Poweron\NoRoot\EGodPower_IceBox.cs" />
     <Compile Include="Extensions\Poweron\NoRoot\EGodPower_StopApp.cs" />
+    <Compile Include="Lib\GodPower.cs" />
     <Compile Include="OfficialVisualExtension.cs" />
     <Compile Include="Extensions\Poweron\NoRoot\EApkInstaller.cs" />
     <Compile Include="Extensions\Poweron\NoRoot\EBreventActivator.cs" />

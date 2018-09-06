@@ -17,7 +17,7 @@ namespace AutumnBox.Basic.Calling
     /// <summary>
     /// 基于进程的命令
     /// </summary>
-    public class ProcessBasedCommand : IProcessBasedCommand
+    public class ProcessBasedCommand : IProcessBasedCommand, IReceiveOutputByTo<ProcessBasedCommand>
     {
         private class Result : IProcessBasedCommandResult
         {
@@ -41,6 +41,17 @@ namespace AutumnBox.Basic.Calling
         /// 输出事件
         /// </summary>
         public event OutputReceivedEventHandler OutputReceived;
+        private Action<OutputReceivedEventArgs> callback;
+        /// <summary>
+        /// 添加Callback
+        /// </summary>
+        /// <param name="callback"></param>
+        /// <returns></returns>
+        public ProcessBasedCommand To(Action<OutputReceivedEventArgs> callback)
+        {
+            this.callback = callback;
+            return this;
+        }
         /// <summary>
         /// 构造
         /// </summary>
@@ -102,6 +113,7 @@ namespace AutumnBox.Basic.Calling
         /// <param name="isErr"></param>
         private void RaiseOutputReceived(DataReceivedEventArgs e, bool isErr)
         {
+            callback?.Invoke(new OutputReceivedEventArgs(e, isErr));
             OutputReceived?.Invoke(this, new OutputReceivedEventArgs(e, isErr));
         }
         /// <summary>

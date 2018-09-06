@@ -4,7 +4,7 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.Basic.Device;
-using AutumnBox.Basic.Device.PackageManage;
+using AutumnBox.Basic.Device.Management.AppFx;
 
 namespace AutumnBox.OpenFramework.Extension
 {
@@ -43,9 +43,9 @@ namespace AutumnBox.OpenFramework.Extension
                 args.Prevent = true;
             }
         }
-        private static bool InstallApplication(DeviceBasicInfo targetDevice, string pkgName)
+        private static bool InstallApplication(IDevice device, string pkgName)
         {
-            return PackageManager.IsInstall(targetDevice, pkgName) == true;
+            return new PackageManager(device).IsInstall(pkgName) == true;
         }
     }
 }

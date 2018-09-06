@@ -22,12 +22,8 @@ namespace AutumnBox.Basic.FlowFramework
     public class FlowArgs
     {
         /// <summary>
-        /// 目标设备序列号
-        /// </summary>
-        public DeviceSerialNumber Serial { get { return DevBasicInfo.Serial; } }
-        /// <summary>
         /// 指定设备的信息
         /// </summary>
-        public DeviceBasicInfo DevBasicInfo { get; set; }
+        public IDevice DevBasicInfo { get; set; }
     }
 }
