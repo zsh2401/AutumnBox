@@ -16,7 +16,7 @@ namespace AutumnBox.GUI.Util.Bus
             Instance = new DeviceSelectionObserver();
         }
         private DeviceSelectionObserver() { }
-        public void RaiseSelectDevice(DeviceBasicInfo device)
+        public void RaiseSelectDevice(IDevice device)
         {
             CurrentDevice = device;
             App.Current.Dispatcher.Invoke(() =>
@@ -26,7 +26,7 @@ namespace AutumnBox.GUI.Util.Bus
         }
         public void RaiseSelectNoDevice()
         {
-            CurrentDevice = DeviceBasicInfo.None;
+            CurrentDevice = null;
             App.Current.Dispatcher.Invoke(() =>
             {
                 SelectedNoDeviceSource?.Invoke(this, new EventArgs());
@@ -37,7 +37,7 @@ namespace AutumnBox.GUI.Util.Bus
         {
             get
             {
-                return CurrentDevice != DeviceBasicInfo.None;
+                return CurrentDevice != null;
             }
         }
 
@@ -74,6 +74,6 @@ namespace AutumnBox.GUI.Util.Bus
             }
         }
         private event EventHandler SelectedDeviceSource;
-        public DeviceBasicInfo CurrentDevice { get; private set; } = DeviceBasicInfo.None;
+        public IDevice CurrentDevice { get; private set; } = null;
     }
 }

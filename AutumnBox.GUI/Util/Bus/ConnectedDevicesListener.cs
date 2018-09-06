@@ -20,8 +20,8 @@ namespace AutumnBox.GUI.Util.Bus
         {
             Instance = new ConnectedDevicesListener();
         }
-        public IEnumerable<DeviceBasicInfo> Now { get; private set; } = new DeviceBasicInfo[0];
-        private readonly DevicesMonitor.DevicesMonitorCore core;
+        public IEnumerable<IDevice> Now { get; private set; } = new IDevice[0];
+        private readonly DevicesMonitor monitor;
         public event DevicesChangedHandler DevicesChanged
         {
             add
@@ -38,13 +38,13 @@ namespace AutumnBox.GUI.Util.Bus
 
         private ConnectedDevicesListener()
         {
-            core = new DevicesMonitor.DevicesMonitorCore();
-            core.DevicesChanged += ConnectedDevicesListener_DevicesChanged;
+            monitor = new DevicesMonitor();
+            monitor.DevicesChanged += ConnectedDevicesListener_DevicesChanged;
         }
 
         private void ConnectedDevicesListener_DevicesChanged(object sender, DevicesChangedEventArgs e)
         {
-            Now = e.DevicesList;
+            Now = e.Devices;
             App.Current.Dispatcher.Invoke(() =>
             {
                 DeviceChangedSource?.Invoke(sender, e);
@@ -53,7 +53,7 @@ namespace AutumnBox.GUI.Util.Bus
 
         public void Work()
         {
-            core.Begin();
+            monitor.Start();
         }
     }
 }

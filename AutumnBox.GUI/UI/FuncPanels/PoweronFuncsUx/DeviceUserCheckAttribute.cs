@@ -4,7 +4,7 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.Basic.Device;
-using AutumnBox.Basic.Device.PackageManage;
+using AutumnBox.Basic.Device.Management.OS;
 using AutumnBox.GUI.Util.UI;
 using AutumnBox.Support.Log;
 
@@ -12,7 +12,7 @@ namespace AutumnBox.GUI.UI.FuncPanels.PoweronFuncsUx
 {
     public class DeviceUserCheckAttribute : FuncsPrecheckAttribute
     {
-        public override bool Check(DeviceBasicInfo targetDevice)
+        public override bool Check(IDevice targetDevice)
         {
             var users = new UserManager(targetDevice).GetUsers();
             Logger.Info(this, users.Length);

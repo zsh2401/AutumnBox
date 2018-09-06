@@ -3,14 +3,9 @@
 ** date:  2018/8/22 1:00:13 (UTC +8:00)
 ** desc： ...
 *************************************************/
-using AutumnBox.Basic.Flows;
 using AutumnBox.GUI.MVVM;
 using AutumnBox.GUI.Util.Bus;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutumnBox.GUI.ViewModel
 {

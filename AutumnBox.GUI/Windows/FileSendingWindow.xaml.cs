@@ -19,7 +19,6 @@ namespace AutumnBox.GUI.Windows
     using System.Windows.Input;
     using System.Diagnostics;
     using AutumnBox.Support.Log;
-    using AutumnBox.Basic.Flows;
 
     /// <summary>
     /// FileSendingWindow.xaml 的交互逻辑

@@ -159,17 +159,11 @@
     <Compile Include="Util\Net\MOTDGetter.cs" />
     <Compile Include="Util\Net\RemoteDataGetter.cs" />
     <Compile Include="Util\Net\UpdateChecker.cs" />
-    <Compile Include="UI\Cstm\ExtensionPanel.xaml.cs">
-      <DependentUpon>ExtensionPanel.xaml</DependentUpon>
-    </Compile>
     <Compile Include="UI\Cstm\HyperLink.xaml.cs">
       <DependentUpon>HyperLink.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Cstm\ImageBtn.xaml.cs">
       <DependentUpon>ImageBtn.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UI\CstPanels\ExtensionRuningPanel.xaml.cs">
-      <DependentUpon>ExtensionRuningPanel.xaml</DependentUpon>
     </Compile>
     <Compile Include="MVVM\FlexiableCommand.cs" />
     <Compile Include="UI\IDependOnDeviceChanges.cs" />
@@ -216,9 +210,6 @@
     <Compile Include="UI\FuncPanels\PoweronFuncsUx\IPoweronFuncsUX.cs" />
     <Compile Include="UI\FuncPanels\PoweronFuncsUx\MinAndroidVersionAttribute.cs" />
     <Compile Include="UI\FuncPanels\PoweronFuncsUx\TipAttribute.cs" />
-    <Compile Include="UI\FuncPanels\ThridPartyFunctionPanel.xaml.cs">
-      <DependentUpon>ThridPartyFunctionPanel.xaml</DependentUpon>
-    </Compile>
     <Compile Include="UI\IExtPanel.cs" />
     <Compile Include="MVVM\ModelBase.cs" />
     <Compile Include="ViewModel\VMDeviceDetails.cs" />
@@ -291,56 +282,14 @@
     <Compile Include="UI\Cstm\CstmTitleBar.xaml.cs">
       <DependentUpon>CstmTitleBar.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\CstPanels\AboutPanel.xaml.cs">
-      <DependentUpon>AboutPanel.xaml</DependentUpon>
-    </Compile>
     <Compile Include="UI\Cstm\PotdBox.xaml.cs">
       <DependentUpon>PotdBox.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UI\CstPanels\CloseNetDebugging.xaml.cs">
-      <DependentUpon>CloseNetDebugging.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UI\CstPanels\DevicesPanelMessageBox.xaml.cs">
-      <DependentUpon>DevicesPanelMessageBox.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UI\CstPanels\DonatePanel.xaml.cs">
-      <DependentUpon>DonatePanel.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UI\CstPanels\NetDebuggingAdder.xaml.cs">
-      <DependentUpon>NetDebuggingAdder.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UI\CstPanels\OpenNetDebugging.xaml.cs">
-      <DependentUpon>OpenNetDebugging.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Fp\FastPanel.xaml.cs">
       <DependentUpon>FastPanel.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Fp\FastPanelChild.cs" />
     <Compile Include="UI\Fp\PanelArgs.cs" />
-    <Compile Include="UI\FuncPanels\DeviceInfoPanel.xaml.cs">
-      <DependentUpon>DeviceInfoPanel.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UI\FuncPanels\DevicesPanel.xaml.cs">
-      <DependentUpon>DevicesPanel.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UI\FuncPanels\FastbootFuncPanel.xaml.cs">
-      <DependentUpon>FastbootFuncPanel.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UI\FuncPanels\PoweronFuncPanel.xaml.cs">
-      <DependentUpon>PoweronFuncPanel.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UI\FuncPanels\RebootBtnPanel.xaml.cs">
-      <DependentUpon>RebootBtnPanel.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UI\FuncPanels\RecFuncPanel.xaml.cs">
-      <DependentUpon>RecFuncPanel.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UI\CstPanels\SettingsPanel.xaml.cs">
-      <DependentUpon>SettingsPanel.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UI\FuncPanels\StartPanel.xaml.cs">
-      <DependentUpon>StartPanel.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Util\OS\AutoGC.cs" />
     <Compile Include="Util\OS\MachineInfo.cs" />
     <Compile Include="Windows\ApkInstallingWindow.xaml.cs">
@@ -358,7 +307,6 @@
     <Compile Include="Windows\FileSendingWindow.xaml.cs">
       <DependentUpon>FileSendingWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\IDeviceRefreshable.cs" />
     <Compile Include="View\Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
@@ -548,10 +496,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Cstm\ExtensionPanel.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="UI\Cstm\HyperLink.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -560,35 +504,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\CstPanels\AboutPanel.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="UI\Cstm\PotdBox.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UI\CstPanels\CloseNetDebugging.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UI\CstPanels\DevicesPanelMessageBox.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UI\CstPanels\DonatePanel.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UI\CstPanels\ExtensionRuningPanel.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UI\CstPanels\NetDebuggingAdder.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UI\CstPanels\OpenNetDebugging.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -617,42 +533,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\Fp\FastPanel.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UI\FuncPanels\DeviceInfoPanel.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UI\FuncPanels\DevicesPanel.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UI\FuncPanels\FastbootFuncPanel.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UI\FuncPanels\PoweronFuncPanel.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UI\FuncPanels\RebootBtnPanel.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UI\FuncPanels\RecFuncPanel.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UI\CstPanels\SettingsPanel.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UI\FuncPanels\StartPanel.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UI\FuncPanels\ThridPartyFunctionPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -807,10 +687,6 @@
     <ProjectReference Include="..\AutumnBox.Basic\AutumnBox.Basic.csproj">
       <Project>{84044fb2-bd38-4283-8065-b639270ece0f}</Project>
       <Name>AutumnBox.Basic</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\AutumnBox.MapleLeaf\AutumnBox.MapleLeaf.csproj">
-      <Project>{48dd382b-2e1d-459e-9a10-0a83f1b23f69}</Project>
-      <Name>AutumnBox.MapleLeaf</Name>
     </ProjectReference>
     <ProjectReference Include="..\AutumnBox.OpenFramework\AutumnBox.OpenFramework.csproj">
       <Project>{6516890c-86b6-40a0-8fd0-14ffdd62e1fe}</Project>
