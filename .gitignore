@@ -43,5 +43,5 @@ maker/
 HistoryRelease/
 DemoPic/
 packages/
-##donot
-!AutumnBox.Basic/google/platform-tools/*.*
+##do_not
+!AutumnBox.Basic/ManagedAdb/win32adb/*.*
