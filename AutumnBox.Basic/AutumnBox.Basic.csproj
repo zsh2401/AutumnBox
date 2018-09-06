@@ -164,7 +164,6 @@
     <Compile Include="FlowFramework\Stoper.cs" />
     <Compile Include="MultipleDevices\IDevicesGetter.cs" />
     <Compile Include="Data\Output.cs" />
-    <Compile Include="MultipleDevices\DevicesList.cs" />
     <Compile Include="Executer\Command.cs" />
     <Compile Include="MultipleDevices\DevicesMonitor.cs" />
     <Compile Include="Device\DeviceState.cs" />
