@@ -1,12 +1,8 @@
-﻿/*************************************************
-** auth： zsh2401@163.com
-** date:  2018/1/15 3:16:25 (UTC +8:00)
-** desc： ...
-*************************************************/
+﻿using AutumnBox.Basic.Exceptions;
 using System;
 using System.Text.RegularExpressions;
 
-namespace AutumnBox.Basic.Device.PackageManage
+namespace AutumnBox.Basic.Device.Management.AppFx
 {
     /// <summary>
     /// 包信息
@@ -21,8 +17,8 @@ namespace AutumnBox.Basic.Device.PackageManage
         {
             get
             {
-                var result = PackageManagerShared.Executer.QuicklyShell(Owner, $"pm path {Name}");
-                return result.IsSuccessful;
+                var result = Owner.Shell($"pm path {Name}");
+                return result.Item2 == 0;
             }
         }
         /// <summary>
@@ -33,7 +29,7 @@ namespace AutumnBox.Basic.Device.PackageManage
             get
             {
                 if (!IsExist) { throw new PackageNotFoundException(Name); }
-                var exeResult = PackageManagerShared.Executer.QuicklyShell(Owner, $"dumpsys package {Name}");
+                var exeResult = Owner.Shell($"dumpsys package {Name}").Item1;
                 var match = Regex.Match(exeResult.ToString(), mainActivityPattern);
                 if (match.Success)
                 {
@@ -53,19 +49,37 @@ namespace AutumnBox.Basic.Device.PackageManage
         /// <summary>
         /// 这个包所在的设备
         /// </summary>
-        public DeviceSerialNumber Owner { get; private set; }
+        public IDevice Owner { get; private set; }
 
         private static readonly string mainActivityPattern = $"android.intent.action.MAIN:{Environment.NewLine}.+.+\u0020(?<result>.+)";
         /// <summary>
         /// 构建
         /// </summary>
         /// <param name="owner"></param>
-        /// <param name="name"></param>
-        public PackageInfo(DeviceSerialNumber owner, string name)
+        /// <param name="pkgName"></param>
+        public PackageInfo(IDevice owner, string pkgName) : this(owner, pkgName, true)
         {
-            this.Name = name;
-            this.Owner = owner;
         }
-        
+        internal PackageInfo(IDevice owner, string pkgName, bool precheck = false)
+        {
+            this.Name = pkgName;
+            this.Owner = owner;
+            if (precheck)
+            {
+                Precheck();
+            }
+        }
+        private void Precheck()
+        {
+            
+        }
+        public void Uninstall()
+        {
+            throw new NotImplementedException();
+        }
+        public void Stop()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

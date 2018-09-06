@@ -17,13 +17,8 @@ namespace AutumnBox.Basic.Device.Management.OS
     /// <summary>
     /// 设备Build.prop信息获取器
     /// </summary>
-    public class DeviceBuildPropGetter : IBuildPropGetter
+    public class DeviceBuildPropGetter : DependOnDeviceObject, IBuildPropGetter
     {
-        private readonly CommandExecuter executer;
-        /// <summary>
-        /// 绑定的设备
-        /// </summary>
-        public DeviceSerialNumber Serial { get; private set; }
 
         /// <summary>
         /// 索引器
@@ -37,16 +32,14 @@ namespace AutumnBox.Basic.Device.Management.OS
                 return loaded[key];
             }
         }
-
         /// <summary>
-        /// 构建
+        /// 构造
         /// </summary>
-        /// <param name="serial"></param>
-        public DeviceBuildPropGetter(DeviceSerialNumber serial)
+        /// <param name="device"></param>
+        public DeviceBuildPropGetter(IDevice device) : base(device)
         {
-            executer = new CommandExecuter();
-            Serial = serial;
         }
+
         /// <summary>
         /// 获取产品名 类似Mi 6
         /// </summary>
@@ -55,6 +48,7 @@ namespace AutumnBox.Basic.Device.Management.OS
         {
             return Get(BuildPropKeys.ProductName);
         }
+
         /// <summary>
         /// 获取安卓版本 类似 8.0.0
         /// </summary>
@@ -73,6 +67,7 @@ namespace AutumnBox.Basic.Device.Management.OS
                 return null;
             }
         }
+
         /// <summary>
         /// 获取Model 类似sagit
         /// </summary>
@@ -81,6 +76,7 @@ namespace AutumnBox.Basic.Device.Management.OS
         {
             return Get(BuildPropKeys.Model);
         }
+
         /// <summary>
         /// 获取Brand 类似Xiaomi
         /// </summary>
@@ -89,6 +85,7 @@ namespace AutumnBox.Basic.Device.Management.OS
         {
             return Get(BuildPropKeys.Brand);
         }
+
         /// <summary>
         /// 获取主板信息,但因为厂商原因,可能会是别的信息
         /// </summary>
@@ -97,6 +94,7 @@ namespace AutumnBox.Basic.Device.Management.OS
         {
             return Get(BuildPropKeys.Board);
         }
+
         /// <summary>
         /// 获取设备SDK版本
         /// </summary>
@@ -112,6 +110,7 @@ namespace AutumnBox.Basic.Device.Management.OS
                 return null;
             }
         }
+
         /// <summary>
         /// 自行指定KEY的值
         /// </summary>
@@ -119,8 +118,8 @@ namespace AutumnBox.Basic.Device.Management.OS
         /// <returns></returns>
         public string Get(string key)
         {
-            var exeResult = executer.QuicklyShell(Serial, $"getprop {key}");
-            return exeResult.IsSuccessful ? exeResult.ToString() : null;
+            var exeResult = Device.Shell($"getprop {key}");
+            return exeResult.Item2 == 0 ? exeResult.ToString() : null;
         }
 
         private const string propPattern = @"\[(?<pname>.+)\].+\[(?<pvalue>.+)\]";
@@ -133,7 +132,7 @@ namespace AutumnBox.Basic.Device.Management.OS
             try
             {
                 Dictionary<string, string> dict = new Dictionary<string, string>();
-                var exeResult = executer.QuicklyShell(Serial, $"getprop");
+                var exeResult = Device.Shell($"getprop");
                 var matches = Regex.Matches(exeResult.ToString(), propPattern, RegexOptions.Multiline);
                 foreach (Match match in matches)
                 {
@@ -146,8 +145,11 @@ namespace AutumnBox.Basic.Device.Management.OS
                 return null;
             }
         }
-
+       
         private Dictionary<string, string> loaded;
+        /// <summary>
+        /// 重载
+        /// </summary>
         public void Reload()
         {
             loaded = GetFull();

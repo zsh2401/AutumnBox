@@ -136,7 +136,7 @@ namespace AutumnBox.OpenFramework.Warpper
         /// </summary>
         /// <param name="device"></param>
         /// <returns></returns>
-        public virtual ForerunCheckResult ForerunCheck(DeviceBasicInfo device)
+        public virtual ForerunCheckResult ForerunCheck(IDevice device)
         {
             ForerunCheckResult result;
             if (Info.RequiredDeviceStates.HasFlag(device.State))
@@ -155,7 +155,7 @@ namespace AutumnBox.OpenFramework.Warpper
         /// 运行
         /// </summary>
         /// <param name="device"></param>
-        public virtual void Run(DeviceBasicInfo device)
+        public virtual void Run(IDevice device)
         {
             if (!PreCheck()) return;//多开检测
             /*初始化局部属性*/
@@ -188,7 +188,7 @@ namespace AutumnBox.OpenFramework.Warpper
         /// </summary>
         /// <param name="device"></param>
         /// <param name="callback"></param>
-        public void RunAsync(DeviceBasicInfo device, Action<IExtensionWarpper> callback = null)
+        public void RunAsync(IDevice device, Action<IExtensionWarpper> callback = null)
         {
             Task.Run(() =>
             {
@@ -231,7 +231,7 @@ namespace AutumnBox.OpenFramework.Warpper
         /// </summary>
         /// <param name="targetDevice"></param>
         /// <returns></returns>
-        private bool BeforeCreateInstance(DeviceBasicInfo targetDevice)
+        private bool BeforeCreateInstance(IDevice targetDevice)
         {
             Logger.Debug("BeforeCreateInstance() executing");
             ExtBeforeCreateArgs args = new ExtBeforeCreateArgs()
@@ -263,7 +263,7 @@ namespace AutumnBox.OpenFramework.Warpper
         /// </summary>
         /// <param name="instatcePkg"></param>
         /// <param name="device"></param>
-        private void InjetctProperty(DeviceBasicInfo device)
+        private void InjetctProperty(IDevice device)
         {
             Instance.TargetDevice = device;
             Instance.ExtName = Info.Name;
@@ -274,7 +274,7 @@ namespace AutumnBox.OpenFramework.Warpper
         /// </summary>
         /// <param name="targetDevice"></param>
         /// <returns></returns>
-        private bool BeforeMain(DeviceBasicInfo targetDevice)
+        private bool BeforeMain(IDevice targetDevice)
         {
             Logger.Debug("BeforeMain() executing");
             BeforeArgs args = new BeforeArgs(Instance)

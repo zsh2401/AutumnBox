@@ -20,6 +20,23 @@ namespace AutumnBox.Basic.Device
     public static partial class DeviceExtension
     {
         /// <summary>
+        /// 以SU权限执行Shell命令
+        /// </summary>
+        /// <param name="device"></param>
+        /// <param name="sh"></param>
+        /// <param name="suCheck"></param>
+        /// <returns></returns>
+        public static Tuple<Output, int> Su(this IDevice device, string sh, bool suCheck = true)
+        {
+            if (suCheck)
+            {
+                device.SuCheck();
+            }
+            var cmd = new SuCommand(device, sh);
+            var result = cmd.Execute();
+            return new Tuple<Output, int>(result.Output, result.ExitCode);
+        }
+        /// <summary>
         /// 执行shell命令
         /// </summary>
         /// <param name="device"></param>
@@ -55,6 +72,23 @@ namespace AutumnBox.Basic.Device
             var result = cmd.Execute();
             return new Tuple<Output, int>(result.Output, result.ExitCode);
         }
-   
+        /// <summary>
+        /// 根据设备状态，判断使用adb还是fastboot执行命令
+        /// 当设备处于Fastboot状态时，使用fastboot执行，否则用adb执行
+        /// </summary>
+        /// <param name="device"></param>
+        /// <param name="command"></param>
+        /// <returns></returns>
+        public static Tuple<Output, int> Auto(this IDevice device, string command)
+        {
+            if (device.State == DeviceState.Fastboot)
+            {
+                return device.Fastboot(command);
+            }
+            else
+            {
+                return device.Adb(command);
+            }
+        }
     }
 }

@@ -3,6 +3,7 @@
 ** date:  2018/9/4 12:47:58 (UTC +8:00)
 ** desc： ...
 *************************************************/
+using AutumnBox.Basic.Device.Management.Hardware;
 using AutumnBox.Basic.Util;
 using System;
 using System.Collections.Generic;
@@ -20,7 +21,7 @@ namespace AutumnBox.Basic.Device.Management.OS
 
         public int GetSourceDpi()
         {
-            int? result = new DeviceHardwareInfoGetter(new DeviceSerialNumber(Device.SerialNumber)).GetDpi();
+            int? result = new DeviceHardwareInfoGetter(Device).GetDpi();
             if (result == null)
             {
                 throw new Exception("get dpi failed");

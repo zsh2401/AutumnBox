@@ -13,27 +13,24 @@ namespace AutumnBox.Basic.Device.Management.Flash
     /// <summary>
     /// 获取处在Fastboot状态下的设备的信息
     /// </summary>
-    public class DeviceInfoGetterInFastboot
+    public class FastbootDeviceInfoGetter : DependOnDeviceObject
     {
-        private readonly CommandExecuter executer;
-        private readonly DeviceSerialNumber serial;
-        /// <summary>
-        /// 创建DeviceInfoGetterInFastboot的新实例
-        /// </summary>
-        /// <param name="serial">具体的设备</param>
-        public DeviceInfoGetterInFastboot(DeviceSerialNumber serial)
-        {
-            executer = new CommandExecuter();
-            this.serial = serial;
-        }
         private const string resultPattern = @".+:\u0020(?<result>.+)";
+        /// <summary>
+        /// 构造
+        /// </summary>
+        /// <param name="device"></param>
+        public FastbootDeviceInfoGetter(IDevice device) : base(device)
+        {
+        }
+
         /// <summary>
         /// 获取Product信息
         /// </summary>
         /// <returns></returns>
         public string GetProduct()
         {
-            var text = executer.Execute(Command.MakeForFastboot(serial, "getvar product")).All.ToString();
+            var text = Device.Fastboot("getvar product").Item1.ToString();
             var match = Regex.Match(text, resultPattern);
             if (match.Success)
             {

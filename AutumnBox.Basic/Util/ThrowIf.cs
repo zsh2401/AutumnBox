@@ -13,7 +13,14 @@ namespace AutumnBox.Basic.Util
 {
     public static class ThrowIf
     {
-        public static void ThrowIfExitCodeNotEqualsZero(this Tuple<Output,int> result)
+        public static void SuCheck(this IDevice device)
+        {
+            if (!device.HaveSU())
+            {
+                throw new DeviceHasNoSuException();
+            }
+        }
+        public static void ThrowIfExitCodeNotEqualsZero(this Tuple<Output, int> result)
         {
             if (result.Item2 != 0)
             {

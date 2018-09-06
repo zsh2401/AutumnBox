@@ -19,7 +19,7 @@ namespace AutumnBox.Basic.Util
     /// </summary>
     public static class AdbConstants
     {
-     /// <summary>
+     /// <sumryma>
      /// adb应用程序名
      /// </summary>
         public const string ADB_FILENAME = "adb.exe";

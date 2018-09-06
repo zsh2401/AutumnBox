@@ -21,7 +21,7 @@ namespace AutumnBox.OpenFramework.Extension
         /// <summary>
         /// 拓展模块创建后的目标设备
         /// </summary>
-        public DeviceBasicInfo TargetDevice { get; set; }
+        public IDevice TargetDevice { get; set; }
         /// <summary>
         /// 截断,这将导致实例不再被创建
         /// </summary>

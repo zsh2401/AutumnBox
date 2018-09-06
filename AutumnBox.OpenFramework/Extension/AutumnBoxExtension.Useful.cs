@@ -22,6 +22,6 @@ namespace AutumnBox.OpenFramework.Extension
         /// <summary>
         /// 目标设备
         /// </summary>
-        public DeviceBasicInfo TargetDevice { get; set; }
+        public IDevice TargetDevice { get; set; }
     }
 }

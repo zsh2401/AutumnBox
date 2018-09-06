@@ -21,7 +21,7 @@ namespace AutumnBox.Basic.Device.Management.Hardware
         /// <summary>
         /// 设备序列号
         /// </summary>
-        public DeviceSerialNumber Serial { get; set; }
+        public string Serial { get; set; }
         /// <summary>
         /// 屏幕信息
         /// </summary>

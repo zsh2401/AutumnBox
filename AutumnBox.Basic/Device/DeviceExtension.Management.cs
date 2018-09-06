@@ -80,7 +80,7 @@ namespace AutumnBox.Basic.Device
         public static IBuildPropGetter GetBuildPropGetter(this IDevice device)
         {
             device.ThrowIfNotAlive();
-            return new DeviceBuildPropGetter(new DeviceSerialNumber(device.SerialNumber));
+            return new DeviceBuildPropGetter(device);
         }
         /// <summary>
         /// 获取Activity管理器

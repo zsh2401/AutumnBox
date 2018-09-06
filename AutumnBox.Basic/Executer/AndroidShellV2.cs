@@ -5,6 +5,7 @@
 *************************************************/
 using AutumnBox.Basic.Data;
 using AutumnBox.Basic.Device;
+using AutumnBox.Basic.Exceptions;
 using AutumnBox.Basic.Util;
 using System.Diagnostics;
 using System.Text;
@@ -87,7 +88,7 @@ namespace AutumnBox.Basic.Executer
                 outputBuilder.Clear();
                 if (user == LinuxUser.Su && suCheck && !HaveSu())
                 {
-                    throw new DeviceHaveNoRootException(device);
+                    throw new DeviceHasNoSuException();
                 }
                 string shellCommand = user == LinuxUser.Normal ? command : $"su -c \'{command}\'";
                 string fullCommand = $"{device.ToFullSerial()} shell \"{shellCommand} ; exit $?\"";
