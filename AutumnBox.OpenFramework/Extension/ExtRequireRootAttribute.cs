@@ -40,9 +40,9 @@ namespace AutumnBox.OpenFramework.Extension
                 args.Prevent = true;
             }
         }
-        private static bool DeviceHaveRoot(DeviceBasicInfo device)
+        private static bool DeviceHaveRoot(IDevice device)
         {
-            return new DeviceSoftwareInfoGetter(device).IsRootEnable();
+            return device.HaveSU();
         }
     }
 }

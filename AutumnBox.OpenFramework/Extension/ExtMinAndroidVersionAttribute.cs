@@ -5,6 +5,7 @@
 *************************************************/
 
 using AutumnBox.Basic.Device;
+using AutumnBox.Basic.Device.Management.OS;
 using System;
 
 namespace AutumnBox.OpenFramework.Extension
@@ -31,7 +32,7 @@ namespace AutumnBox.OpenFramework.Extension
         /// <param name="device"></param>
         /// <param name="minVersion"></param>
         /// <returns></returns>
-        private static bool VersionCheck(DeviceBasicInfo device, Version minVersion)
+        private static bool VersionCheck(IDevice device, Version minVersion)
         {
             var propGetter = new DeviceBuildPropGetter(device);
             return (propGetter.GetAndroidVersion() >= minVersion);
