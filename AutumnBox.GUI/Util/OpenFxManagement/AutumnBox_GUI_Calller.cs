@@ -3,14 +3,10 @@
 ** date:  2018/8/2 2:46:15 (UTC +8:00)
 ** desc： ...
 *************************************************/
-using AutumnBox.GUI.UI.FuncPanels;
-using AutumnBox.GUI.Windows;
-using AutumnBox.OpenFramework.Open;
 using AutumnBox.Support.Log;
 using System.Diagnostics;
 using System;
 using System.Windows;
-using AutumnBox.GUI.Util.UI;
 using AutumnBox.OpenFramework.Warpper;
 using AutumnBox.GUI.View.Windows;
 using AutumnBox.OpenFramework.Management;

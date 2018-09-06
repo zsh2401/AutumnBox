@@ -1,18 +1,9 @@
 ﻿using AutumnBox.Basic.Device;
-using AutumnBox.Basic.Device.PackageManage;
-using System;
-using System.Collections.Generic;
+using AutumnBox.Basic.Device.Management.OS;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace AutumnBox.GUI.Windows
 {
@@ -22,10 +13,10 @@ namespace AutumnBox.GUI.Windows
     public partial class UserManagerWindow : Window
     {
         private readonly UserManager userManager;
-        public UserManagerWindow(DeviceSerialNumber device)
+        public UserManagerWindow(IDevice device)
         {
             InitializeComponent();
-            userManager = new UserManager(device);
+            //userManager = new UserManager(device);
             ButtonRemove.Visibility = Visibility.Hidden;
         }
 

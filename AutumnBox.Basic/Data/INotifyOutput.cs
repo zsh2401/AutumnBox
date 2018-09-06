@@ -11,8 +11,14 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Data
 {
+    /// <summary>
+    /// 可通知输出的
+    /// </summary>
     public interface INotifyOutput
     {
+        /// <summary>
+        /// 当输出发生时触发
+        /// </summary>
         event OutputReceivedEventHandler OutputReceived;
     }
 }

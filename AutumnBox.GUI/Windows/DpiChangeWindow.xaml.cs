@@ -1,9 +1,12 @@
 ﻿using AutumnBox.Basic.Device;
+using AutumnBox.Basic.Device.Management.Hardware;
+using AutumnBox.Basic.Device.Management.OS;
 using AutumnBox.GUI.Util.UI;
 using AutumnBox.Support.Log;
 using System;
 using System.Text.RegularExpressions;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
@@ -14,8 +17,8 @@ namespace AutumnBox.GUI.Windows
     /// </summary>
     public partial class DpiChangeWindow : Window
     {
-        private readonly DeviceBasicInfo devinfo;
-        private DpiChanger dpiChanger;
+        private readonly IDevice device;
+        private DpiModifier dpiModifier;
         private int _textboxInputDpi
         {
             get
@@ -23,14 +26,15 @@ namespace AutumnBox.GUI.Windows
                 return Convert.ToInt32(TextBoxInput.Text);
             }
         }
-        public DpiChangeWindow(DeviceBasicInfo devinfo)
+        public DpiChangeWindow(IDevice device)
         {
             InitializeComponent();
-            this.devinfo = devinfo;
+            this.device = device;
+            dpiModifier = new DpiModifier(device);
             BtnOK.IsEnabled = true;
             new Thread(() =>
             {
-                int? _deviceDefaultDpi = new DeviceHardwareInfoGetter(devinfo.Serial).GetDpi();
+                int _deviceDefaultDpi = dpiModifier.GetSourceDpi();
                 this.Dispatcher.Invoke(() =>
                 {
                     TextBlockCurrentDpi.Text = (_deviceDefaultDpi == null) ? UIHelper.GetString("GetFail") : _deviceDefaultDpi.ToString();
@@ -42,23 +46,27 @@ namespace AutumnBox.GUI.Windows
 
         private void BtnOK_Click(object sender, RoutedEventArgs e)
         {
-            dpiChanger = new DpiChanger();
-            dpiChanger.Init(new DpiChangerArgs() {
-                Dpi = _textboxInputDpi,
-                DevBasicInfo = devinfo
-            });
-            Logger.Debug(this,"Dpi of input : " + _textboxInputDpi);
-            dpiChanger.Finished += (s, _e) =>
+            //dpiChanger = new DpiChanger();
+            //dpiChanger.Init(new DpiChangerArgs() {
+            //    Dpi = _textboxInputDpi,
+            //    DevBasicInfo = devinfo
+            //});
+            //Logger.Debug(this,"Dpi of input : " + _textboxInputDpi);
+            //dpiChanger.Finished += (s, _e) =>
+            //{
+            //    this.Dispatcher.Invoke(() =>
+            //    {
+            //        BtnOK.IsEnabled = true;
+            //        BtnOK.Content = App.Current.Resources["btnSaveAndReboot"];
+            //    });
+            //};
+            //BtnOK.IsEnabled = false;
+            //BtnOK.Content = App.Current.Resources["OnSetting"];
+            //dpiChanger.RunAsync();
+            Task.Run(() =>
             {
-                this.Dispatcher.Invoke(() =>
-                {
-                    BtnOK.IsEnabled = true;
-                    BtnOK.Content = App.Current.Resources["btnSaveAndReboot"];
-                });
-            };
-            BtnOK.IsEnabled = false;
-            BtnOK.Content = App.Current.Resources["OnSetting"];
-            dpiChanger.RunAsync();
+                dpiModifier.SetDpi(_textboxInputDpi);
+            });
         }
 
         private void TextBoxInput_PreviewTextInput(object sender, TextCompositionEventArgs e)
@@ -69,7 +77,7 @@ namespace AutumnBox.GUI.Windows
 
         private void Window_Closed(object sender, EventArgs e)
         {
-            try { dpiChanger.ForceStop(); } catch (Exception) { }
+            //TODO
         }
     }
 }
