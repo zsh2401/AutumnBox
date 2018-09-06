@@ -4,6 +4,7 @@ using AutumnBox.Basic.Device.Management.OS;
 using AutumnBox.Basic.ManagedAdb;
 using System;
 using System.Collections;
+using System.Reflection;
 using System.Text;
 
 namespace AutumnBox.ConsoleTester
@@ -56,7 +57,7 @@ namespace AutumnBox.ConsoleTester
         }
         unsafe static void Main(string[] cmdargs)
         {
-            new Logger<Extension>();
+            new Logger<object>().Debug(nameof(Main),"");
             AdbServer.Instance.Start();
             var cmd = new AdbCommand("devices");
             //var cmd = acb.ToCommand();

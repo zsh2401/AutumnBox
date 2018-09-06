@@ -5,7 +5,7 @@
 *************************************************/
 using System;
 
-namespace AutumnBox.Basic.Device.PackageManage
+namespace AutumnBox.Basic.Exceptions
 {
     /// <summary>
     /// 找不到包的异常

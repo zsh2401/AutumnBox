@@ -30,18 +30,18 @@ namespace AutumnBox.OpenFramework.Warpper
         /// 运行前检查
         /// </summary>
         /// <returns></returns>
-        ForerunCheckResult ForerunCheck(DeviceBasicInfo device);
+        ForerunCheckResult ForerunCheck(IDevice device);
         /// <summary>
         /// 开始运行
         /// </summary>
         /// <param name="device"></param>
-        void Run(DeviceBasicInfo device);
+        void Run(IDevice device);
         /// <summary>
         /// 异步运行
         /// </summary>
         /// <param name="device"></param>
         /// <param name="callback"></param>
-        void RunAsync(DeviceBasicInfo device, Action<IExtensionWarpper> callback = null);
+        void RunAsync(IDevice device, Action<IExtensionWarpper> callback = null);
         /// <summary>
         /// 停止运行
         /// </summary>

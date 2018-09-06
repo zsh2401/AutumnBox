@@ -14,12 +14,12 @@ namespace AutumnBox.Basic.MultipleDevices
 {
     public static class DevicesArrayExtension
     {
-        public static bool DevicesEquals(this IEnumerable<IDevice> _this, IEnumerable<IDevice> other)
+        public static bool DevicesEquals(this IEnumerable<IDevice> left, IEnumerable<IDevice> right)
         {
-            if (_this.Count() != other.Count()) return false;
-            foreach (IDevice info in _this)
+            if (left.Count() != right.Count()) return false;
+            foreach (IDevice info in left)
             {
-                if (!other.Contains(info)) return false;
+                if (!right.Contains(info)) return false;
             }
             return true;
         }

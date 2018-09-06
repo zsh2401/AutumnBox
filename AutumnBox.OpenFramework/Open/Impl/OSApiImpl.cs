@@ -3,6 +3,9 @@
 ** date:  2018/8/1 21:19:39 (UTC +8:00)
 ** desc： ...
 *************************************************/
+using AutumnBox.Basic.Calling;
+using AutumnBox.Basic.Calling.Cmd;
+using AutumnBox.Basic.Data;
 using AutumnBox.Basic.Executer;
 using AutumnBox.OpenFramework.Content;
 using System;
@@ -42,8 +45,8 @@ namespace AutumnBox.OpenFramework.Open.Impl
             try
             {
                 var winDir = Environment.GetFolderPath(Environment.SpecialFolder.Windows);
-                var o = CommandExecuter.Static.Execute($"{winDir}\\sysnative\\pnputil", $"-i -a {fileName}");
-                return o.GetExitCode() == 0;
+                var result = new ProcessBasedCommand($"{winDir}\\sysnative\\pnputil", $"-i -a {fileName}").Execute();
+                return result.ExitCode == 0;
             }
             catch (Exception ex)
             {
@@ -64,7 +67,8 @@ namespace AutumnBox.OpenFramework.Open.Impl
                     RedirectStandardOutput = true,
                     RedirectStandardError = true,
                 };
-                var outputBuilder = new AdvanceOutputBuilder();
+                var outputBuilder = new OutputBuilder();
+                int exitCode = 0;
                 using (var proc = Process.Start(startInfo))
                 {
                     proc.OutputDataReceived += (s, e) => { outputBuilder.AppendOut(e.Data); };
@@ -74,7 +78,9 @@ namespace AutumnBox.OpenFramework.Open.Impl
                     proc.BeginErrorReadLine();
                     proc.WaitForExit();
                     outputBuilder.Result.PrintOnLog(LoggingTag);
-                    return proc.ExitCode == 0;
+                    exitCode = proc.ExitCode;
+                    proc.Dispose();
+                    return exitCode == 0;
                 }
             }
             catch (Exception ex)

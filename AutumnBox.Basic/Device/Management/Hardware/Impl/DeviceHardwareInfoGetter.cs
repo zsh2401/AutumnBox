@@ -15,22 +15,12 @@ namespace AutumnBox.Basic.Device.Management.Hardware
     /// <summary>
     /// 设备硬件信息获取器
     /// </summary>
-    public class DeviceHardwareInfoGetter: IHardwareInfoGetter
+    public class DeviceHardwareInfoGetter : DependOnDeviceObject, IHardwareInfoGetter
     {
-        private static readonly CommandExecuter executer;
-        static DeviceHardwareInfoGetter()
+        public DeviceHardwareInfoGetter(IDevice device) : base(device)
         {
-            executer = new CommandExecuter();
         }
-        private readonly DeviceSerialNumber serial;
-        /// <summary>
-        /// 构造
-        /// </summary>
-        /// <param name="deviceSerial"></param>
-        public DeviceHardwareInfoGetter(DeviceSerialNumber deviceSerial)
-        {
-            this.serial = deviceSerial;
-        }
+
         /// <summary>
         /// 获取信息
         /// </summary>
@@ -39,7 +29,7 @@ namespace AutumnBox.Basic.Device.Management.Hardware
         {
             DeviceHardwareInfo result = new DeviceHardwareInfo
             {
-                Serial = this.serial,
+                Serial = Device.SerialNumber,
                 BatteryLevel = GetBatteryLevel(),
                 SizeofRam = SizeofRam(),
                 SizeofRom = SizeofRom(),
@@ -57,12 +47,12 @@ namespace AutumnBox.Basic.Device.Management.Hardware
         {
             try
             {
-                string output = (executer.QuicklyShell(serial, "dumpsys battery | grep level").LineOut[0]);
+                string output = Device.Shell("dumpsys battery | grep level").Item1.LineAll[0];
                 return Convert.ToInt32(output.Split(':')[1].TrimStart());
             }
             catch (Exception e)
             {
-                Logger.Warn(this,"Get Battery info fail", e);
+                Logger.Warn(this, "Get Battery info fail", e);
                 return null;
             }
         }
@@ -72,7 +62,7 @@ namespace AutumnBox.Basic.Device.Management.Hardware
         /// <returns></returns>
         public int? GetDpi()
         {
-            var displayInfo = executer.QuicklyShell(serial, "dumpsys display | grep mBaseDisplayInfo").LineAll[0];
+            var displayInfo = Device.Shell("dumpsys display | grep mBaseDisplayInfo").Item1.LineAll[0];
             var match = Regex.Match(displayInfo, @"^.+\bdensity\b.(?<dpi>[\d]{3}).\(.+$");
             try
             {
@@ -91,7 +81,7 @@ namespace AutumnBox.Basic.Device.Management.Hardware
         {
             try
             {
-                string output = (executer.QuicklyShell(serial, "cat /proc/meminfo | grep MemTotal").LineOut[0]);
+                string output = Device.Shell("cat /proc/meminfo | grep MemTotal").Item1.LineOut[0];
                 var m = Regex.Match(output, @"(?i)^\w+:[\t|\u0020]+(?<size>[\d]+).+$");
                 if (m.Success)
                 {
@@ -105,7 +95,7 @@ namespace AutumnBox.Basic.Device.Management.Hardware
             }
             catch (Exception e)
             {
-                Logger.Warn(this,"Get MemTotal fail", e);
+                Logger.Warn(this, "Get MemTotal fail", e);
                 return null;
             }
         }
@@ -117,7 +107,7 @@ namespace AutumnBox.Basic.Device.Management.Hardware
         {
             try
             {
-                var o = executer.QuicklyShell(serial, "df /sdcard/");
+                var o = Device.Shell("df /sdcard/").Item1;
                 var match = Regex.Match(o.All.ToString(), @"^.[\w|/]+[\t|\u0020]+(?<size>\d+\.?\d+G?) .+$", RegexOptions.Multiline);
                 string result = match.Result("${size}");
                 if (match.Success)
@@ -136,7 +126,7 @@ namespace AutumnBox.Basic.Device.Management.Hardware
                     return null;
                 }
             }
-            catch (Exception e) { Logger.Warn(this,"get storage fail ", e); return null; }
+            catch (Exception e) { Logger.Warn(this, "get storage fail ", e); return null; }
         }
         /// <summary>
         /// 获取设备SOC信息
@@ -146,11 +136,11 @@ namespace AutumnBox.Basic.Device.Management.Hardware
         {
             try
             {
-                string output = (executer.QuicklyShell(serial, "getprop ro.product.board").LineAll[0]);
+                string output = Device.Shell("getprop ro.product.board").Item1.LineAll[0];
                 var hehe = output.Split(' ');
                 return hehe[hehe.Length - 1];
             }
-            catch (Exception e) { Logger.Warn(this,"Get cpuinfo fail", e); return null; }
+            catch (Exception e) { Logger.Warn(this, "Get cpuinfo fail", e); return null; }
         }
         /// <summary>
         /// 获取设备屏幕信息
@@ -160,10 +150,10 @@ namespace AutumnBox.Basic.Device.Management.Hardware
         {
             try
             {
-                string output = executer.QuicklyShell(serial, "cat /proc/hwinfo | grep LCD").LineOut[0];
+                string output = Device.Shell("cat /proc/hwinfo | grep LCD").Item1.LineOut[0];
                 return output.Split(':')[1].TrimStart();
             }
-            catch (Exception e) { Logger.Warn(this,"Get LCD info fail", e); return null; }
+            catch (Exception e) { Logger.Warn(this, "Get LCD info fail", e); return null; }
         }
         /// <summary>
         /// 获取设备闪存信息
@@ -173,16 +163,16 @@ namespace AutumnBox.Basic.Device.Management.Hardware
         {
             try
             {
-                string output = (executer.QuicklyShell(serial, "cat /proc/hwinfo | grep EMMC")).LineOut[0];
+                string output = Device.Shell("cat /proc/hwinfo | grep EMMC").Item1.LineOut[0];
                 return output.Split(':')[1].TrimStart() + " EMMC";
             }
-            catch (Exception e) { Logger.Warn(this,"Get EMMC info fail", e); }
+            catch (Exception e) { Logger.Warn(this, "Get EMMC info fail", e); }
             try
             {
-                string output = executer.QuicklyShell(serial, "cat /proc/hwinfo | grep UFS").LineOut[0];
+                string output = Device.Shell("cat /proc/hwinfo | grep UFS").Item1.LineOut[0];
                 return output.Split(':')[1].TrimStart() + " UFS";
             }
-            catch (Exception e) { Logger.Warn(this,"Get UFS info fail", e); return null; }
+            catch (Exception e) { Logger.Warn(this, "Get UFS info fail", e); return null; }
         }
     }
 }
