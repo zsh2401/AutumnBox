@@ -48,10 +48,10 @@ namespace AutumnBox.Basic.FlowFramework
         {
             Args = args;
             Executer = executer ?? new CommandExecuter();
-            Ae = (command) =>
-            { return Executer.Execute(Command.MakeForAdb(Args.DevBasicInfo.Serial, command)); };
-            Fe = (command) =>
-            { return Executer.Execute(Command.MakeForFastboot(Args.DevBasicInfo.Serial, command)); };
+            //Ae = (command) =>
+            //{ return Executer.Execute(Command.MakeForAdb(Args.DevBasicInfo.Serial, command)); };
+            //Fe = (command) =>
+            //{ return Executer.Execute(Command.MakeForFastboot(Args.DevBasicInfo.Serial, command)); };
         }
     }
 }

@@ -4,6 +4,7 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.Basic.Device;
+using AutumnBox.Basic.Extension;
 using AutumnBox.Basic.Flows;
 using AutumnBox.GUI.Windows;
 using AutumnBox.OpenFramework.Extension;
@@ -48,39 +49,30 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot
 
         private void Install(List<FileInfo> files)
         {
+            WriteLine(App.GetPublicResouce<string>("ExtensionIniting"));
             int successed = 0;
             int error = 0;
             int currentInstalling = 1;
             int totalCount = files.Count;
-
-            installer = new ApkInstaller();
-            var args = new ApkInstallerArgs()
+            SetTip(currentInstalling, totalCount);
+            foreach (var file in files)
             {
-                DevBasicInfo = TargetDevice,
-                Files = files,
-            };
-            installer.AApkIstanlltionCompleted += (s, e) =>
-            {
-                if (e.IsSuccess)
+                try
                 {
+                    file.InstallTo(TargetDevice);
                     successed++;
                 }
-                else
+                catch (Exception ex)
                 {
+                    Logger.Warn("install apk failed", ex);
                     error++;
-                    Logger.Warn(e.Output.ToString());
                 }
                 if (currentInstalling < totalCount)
                 {
                     currentInstalling++;
                     SetTip(currentInstalling, totalCount);
                 }
-                return true;
             };
-            WriteLine(App.GetPublicResouce<string>("ExtensionIniting"));
-            installer.Init(args);
-            SetTip(currentInstalling, totalCount);
-            installer.Run();
             string fmtString = App.GetPublicResouce<string>("AppInstallingFinishedFmt");
             WriteLine(string.Format(fmtString, successed, error, totalCount));
         }
