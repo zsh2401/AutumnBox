@@ -3,11 +3,13 @@
 ** date:  2018/8/13 9:53:12 (UTC +8:00)
 ** desc： ...
 *************************************************/
+using AutumnBox.Basic.Extension;
 using AutumnBox.Basic.Flows;
 using AutumnBox.GUI.Windows;
 using AutumnBox.OpenFramework.Extension;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -36,25 +38,18 @@ namespace AutumnBox.CoreModules.Extensions.Mix
 
             if (dialogResult == true)
             {
-                var args = new FilePusherArgs()
+                try
                 {
-                    DevBasicInfo = TargetDevice,
-                    SourceFile = seleFile,
-                };
-                var pusher = new FilePusher();
-                pusher.Init(args);
-                pusher.MustTiggerAnyFinishedEvent = true;
-                pusher.RunAsync();
-                App.RunOnUIThread(() =>
+                    new FileInfo(seleFile).PushTo(TargetDevice, "/sdcard/");
+                    return OK;
+                }
+                catch (Exception ex)
                 {
-                    new FileSendingWindow(pusher).ShowDialog();
-                });
-                return OK;
+                    Logger.Warn("file pushing failed", ex);
+                    Ux.ShowWarnDialog("推送失败，请查看Log");
+                }
             }
-            else
-            {
-                return ERR;
-            }
+            return ERR;
         }
     }
 }

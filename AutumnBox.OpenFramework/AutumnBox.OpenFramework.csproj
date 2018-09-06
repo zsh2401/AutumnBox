@@ -129,10 +129,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AutumnBox.Basic.Flows\AutumnBox.Basic.Flows.csproj">
-      <Project>{3091ecae-7ff2-421d-b970-1c76d7cab0c0}</Project>
-      <Name>AutumnBox.Basic.Flows</Name>
-    </ProjectReference>
     <ProjectReference Include="..\AutumnBox.Basic\AutumnBox.Basic.csproj">
       <Project>{84044FB2-BD38-4283-8065-B639270ECE0F}</Project>
       <Name>AutumnBox.Basic</Name>

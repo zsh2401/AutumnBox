@@ -13,6 +13,8 @@ using System.Threading.Tasks;
 using AutumnBox.Basic.Extension;
 using AutumnBox.Basic.Executer;
 using AutumnBox.OpenFramework.Extension;
+using AutumnBox.Basic.Calling;
+using AutumnBox.Basic.Calling.Adb;
 
 namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot
 {
@@ -47,31 +49,40 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot
             godpowerApkFile.PushTo(TargetDevice, GODPOWER_APK_ON_DEVICE);
             WriteLine("推送文件完成");
 
-            AndroidShellV2 shell = new AndroidShellV2(TargetDevice);
-            shell.OutputReceived += (s, e) =>
+            string strCmd = null;
+            ShellCommand command = null;
+
+            WriteLine("正在移除账号");
+            strCmd = string.Format(FMT_CMD, ARG_RM_ALL_ACC);
+            command = new ShellCommand(TargetDevice, strCmd);
+            Logger.Info("executing shell command:" + command);
+            command.To((e) =>
             {
                 WriteLine(e.Text);
-            };
-            string command = null;
-            WriteLine("正在移除账号");
-            command = string.Format(FMT_CMD, ARG_RM_ALL_ACC);
-            Logger.Info("executing shell command:" + command);
-            shell.Execute(command);
+            }).Execute();
 
             WriteLine("正在移除用户");
-            command = string.Format(FMT_CMD, ARG_RM_ALL_USR);
+            strCmd = string.Format(FMT_CMD, ARG_RM_ALL_USR);
+            command = new ShellCommand(TargetDevice, strCmd);
             Logger.Info("executing shell command:" + command);
-            shell.Execute(command);
+            command.To((e) =>
+            {
+                WriteLine(e.Text);
+            }).Execute();
 
             WriteLine("正在设置设备管理员");
-            command = string.Format(FMT_CMD, ARG_SET_ICE_BOX);
+            strCmd = string.Format(FMT_CMD, ARG_SET_ICE_BOX);
+            command = new ShellCommand(TargetDevice, strCmd);
             Logger.Info("executing shell command:" + command);
-
-            int exitCode = shell.Execute(command).GetExitCode();
+            int exitCode = command.To((e) =>
+            {
+                WriteLine(e.Text);
+            }).Execute().ExitCode;
             if (exitCode != 0)
             {
                 WriteLine("设置设备管理员时出错,可能你已经设置了别的APP为设备管理员?");
             }
+
             return exitCode;
         }
     }
