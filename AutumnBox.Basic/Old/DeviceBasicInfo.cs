@@ -20,7 +20,7 @@ namespace AutumnBox.Basic.Device
     /// <summary>
     /// 简单的仅包含设备id和设备状态的结构体,主要用于设备列表 DevicesList
     /// </summary>
-    [Obsolete]
+    [Obsolete("",true)]
     public struct DeviceBasicInfo : IEquatable<DeviceBasicInfo>
     {
         /// <summary>

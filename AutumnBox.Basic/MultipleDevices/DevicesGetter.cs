@@ -3,12 +3,8 @@
 ** date:  2018/9/1 16:56:38 (UTC +8:00)
 ** desc： ...
 *************************************************/
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using AutumnBox.Basic.Calling.Adb;
 using AutumnBox.Basic.Calling.Fastboot;
 using AutumnBox.Basic.Device;

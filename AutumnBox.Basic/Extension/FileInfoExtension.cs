@@ -22,12 +22,12 @@ namespace AutumnBox.Basic.Extension
         /// <param name="fileInfo"></param>
         /// <param name="device"></param>
         /// <param name="path"></param>
-        public static void PushTo(this FileInfo fileInfo, DeviceBasicInfo device, string path)
+        public static void PushTo(this FileInfo fileInfo, IDevice device, string path)
         {
             ThrowIf.IsNullArg(fileInfo);
             ThrowIf.IsNullArg(path);
             var builder = new AdbCommandBuilder();
-            builder.Device(device.Serial.ToString())
+            builder.Device(device)
                 .Arg("push")
                 .ArgWithDoubleQuotation(fileInfo.FullName)
                 .ArgWithDoubleQuotation(path);
@@ -45,14 +45,14 @@ namespace AutumnBox.Basic.Extension
         /// </summary>
         /// <param name="apkFileInfo"></param>
         /// <param name="device"></param>
-        public static void InstallTo(this FileInfo apkFileInfo, DeviceBasicInfo device)
+        public static void InstallTo(this FileInfo apkFileInfo, IDevice device)
         {
             if (apkFileInfo.Extension != ".apk")
             {
                 throw new ArgumentException("Is not apk file!", nameof(apkFileInfo));
             }
             var builder = new AdbCommandBuilder();
-            builder.Device(device.Serial.ToString())
+            builder.Device(device)
                 .Arg("install")
                 .ArgWithDoubleQuotation(apkFileInfo.FullName);
             using (var command = builder.ToCommand())
