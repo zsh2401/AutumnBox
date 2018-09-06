@@ -18,111 +18,111 @@ namespace AutumnBox.GUI.View
 {
     static class WindowManager
     {
-        public static bool ToBool(this ChoiceResult result)
-        {
-            return result == ChoiceResult.BtnRight;
-        }
-        private static MainWindow _owner_m
-        {
-            get
-            {
-                MainWindow result = null;
-                App.Current.Dispatcher.Invoke(() =>
-                {
-                    result = App.Current.MainWindowAsMainWindow;
-                });
-                return result;
-            }
-        }
-        private static Window _owner
-        {
-            get
-            {
-                Window result = null;
-                App.Current.Dispatcher.Invoke(() =>
-                {
-                    result = App.Current.MainWindow;
-                });
-                return result;
-            }
-        }
+        //    public static bool ToBool(this ChoiceResult result)
+        //    {
+        //        return result == ChoiceResult.BtnRight;
+        //    }
+        //    private static MainWindow _owner_m
+        //    {
+        //        get
+        //        {
+        //            MainWindow result = null;
+        //            App.Current.Dispatcher.Invoke(() =>
+        //            {
+        //                result = App.Current.MainWindowAsMainWindow;
+        //            });
+        //            return result;
+        //        }
+        //    }
+        //    private static Window _owner
+        //    {
+        //        get
+        //        {
+        //            Window result = null;
+        //            App.Current.Dispatcher.Invoke(() =>
+        //            {
+        //                result = App.Current.MainWindow;
+        //            });
+        //            return result;
+        //        }
+        //    }
 
-        #region ChoiceWindow
-        public static ChoiceResult ShowChoiceDialog(
-            string keyTitle, string keyText,
-            string keyTextBtnLeft = null, string keyTextBtnRight = null)
-        {
-            ChoiceResult result = ChoiceResult.BtnCancel;
-            App.Current.Dispatcher.Invoke(() =>
-            {
-                result = new ChoiceBox()
-                {
-                    Owner = App.Current.MainWindow.IsActive ? App.Current.MainWindow : null,
-                    Data = new ChoiceBoxData()
-                    {
-                        KeyTitle = keyTitle,
-                        KeyText = keyText,
-                        KeyBtnLeft = keyTextBtnLeft,
-                        KeyBtnRight = keyTextBtnRight,
-                    }
-                }.ShowDialog();
-            });
-            return result;
-        }
-        #endregion
+        //    #region ChoiceWindow
+        //    public static ChoiceResult ShowChoiceDialog(
+        //        string keyTitle, string keyText,
+        //        string keyTextBtnLeft = null, string keyTextBtnRight = null)
+        //    {
+        //        ChoiceResult result = ChoiceResult.BtnCancel;
+        //        App.Current.Dispatcher.Invoke(() =>
+        //        {
+        //            result = new ChoiceBox()
+        //            {
+        //                Owner = App.Current.MainWindow.IsActive ? App.Current.MainWindow : null,
+        //                Data = new ChoiceBoxData()
+        //                {
+        //                    KeyTitle = keyTitle,
+        //                    KeyText = keyText,
+        //                    KeyBtnLeft = keyTextBtnLeft,
+        //                    KeyBtnRight = keyTextBtnRight,
+        //                }
+        //            }.ShowDialog();
+        //        });
+        //        return result;
+        //    }
+        //    #endregion
 
-        public static void ShowMessageDialog(string keyTitle, string keyText)
-        {
-            var messageBox = new MMessageBox(_owner)
-            {
-                Data = new MMessageBoxData()
-                {
-                    KeyText = keyText,
-                    KeyTitle = keyTitle
-                }
-            };
-            messageBox.ShowDialog();
-        }
+        //    public static void ShowMessageDialog(string keyTitle, string keyText)
+        //    {
+        //        var messageBox = new MMessageBox(_owner)
+        //        {
+        //            Data = new MMessageBoxData()
+        //            {
+        //                KeyText = keyText,
+        //                KeyTitle = keyTitle
+        //            }
+        //        };
+        //        messageBox.ShowDialog();
+        //    }
 
-        #region LoadingWindow
-        private static bool _loadingWindowIsAlreadyHaveOne = false;
-        private static GUI.Windows.LoadingWindow _loadingWindow;
-        private const string TAG = "BoxHelper";
+        //    #region LoadingWindow
+        //    private static bool _loadingWindowIsAlreadyHaveOne = false;
+        //    private static GUI.Windows.LoadingWindow _loadingWindow;
+        //    private const string TAG = "BoxHelper";
 
-        public static void ShowLoadingDialog(ICompletable completable)
-        {
-            if (_loadingWindowIsAlreadyHaveOne) return;
-            _loadingWindowIsAlreadyHaveOne = true;
-            new GUI.Windows.LoadingWindow(_owner).ShowDialog(completable);
-            _loadingWindowIsAlreadyHaveOne = false;
-        }
-        public static void ShowLoadingDialog()
-        {
-            App.Current.Dispatcher.Invoke(() =>
-            {
-                if (_loadingWindowIsAlreadyHaveOne) return;
-                _loadingWindowIsAlreadyHaveOne = true;
-                _loadingWindow = new GUI.Windows.LoadingWindow(_owner);
-                _loadingWindow.ShowDialog();
-            });
+        //    public static void ShowLoadingDialog(ICompletable completable)
+        //    {
+        //        if (_loadingWindowIsAlreadyHaveOne) return;
+        //        _loadingWindowIsAlreadyHaveOne = true;
+        //        new GUI.Windows.LoadingWindow(_owner).ShowDialog(completable);
+        //        _loadingWindowIsAlreadyHaveOne = false;
+        //    }
+        //    public static void ShowLoadingDialog()
+        //    {
+        //        App.Current.Dispatcher.Invoke(() =>
+        //        {
+        //            if (_loadingWindowIsAlreadyHaveOne) return;
+        //            _loadingWindowIsAlreadyHaveOne = true;
+        //            _loadingWindow = new GUI.Windows.LoadingWindow(_owner);
+        //            _loadingWindow.ShowDialog();
+        //        });
 
-        }
-        public static void CloseLoadingDialog()
-        {
-            App.Current.Dispatcher.Invoke(() =>
-            {
-                try
-                {
-                    _loadingWindow.Close();
-                    _loadingWindowIsAlreadyHaveOne = false;
-                }
-                catch (Exception e)
-                {
-                    Logger.Warn(TAG, "A exception on close loadingwindow...", e);
-                }
-            });
+        //    }
+        //    public static void CloseLoadingDialog()
+        //    {
+        //        App.Current.Dispatcher.Invoke(() =>
+        //        {
+        //            try
+        //            {
+        //                _loadingWindow.Close();
+        //                _loadingWindowIsAlreadyHaveOne = false;
+        //            }
+        //            catch (Exception e)
+        //            {
+        //                Logger.Warn(TAG, "A exception on close loadingwindow...", e);
+        //            }
+        //        });
 
-        }
-        #endregion
+        //    }
+        //    #endregion
     }
 }

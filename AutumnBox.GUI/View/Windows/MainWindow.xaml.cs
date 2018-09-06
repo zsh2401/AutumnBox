@@ -39,30 +39,30 @@ namespace AutumnBox.GUI.View.Windows
 
         private void RegisterEvent()
         {
-            AdbHelper.AdbServerStartsFailed += (s, e) =>
-            {
-                DevicesMonitor.Stop();
-                bool _continue = true;
-                Dispatcher.Invoke(() =>
-                {
-                    _continue = BoxHelper.ShowChoiceDialog("msgWarning",
-                        "msgStartAdbServerFail",
-                        "btnExit", "btnIHaveCloseOtherPhoneHelper")
-                        .ToBool();
-                });
-                if (!_continue)
-                {
-                    Close();
-                }
-                else
-                {
-                    Task.Run(() =>
-                    {
-                        Thread.Sleep(3000);
-                        App.Current.Dispatcher.Invoke(DevicesMonitor.Begin);
-                    });
-                }
-            };
+            //AdbHelper.AdbServerStartsFailed += (s, e) =>
+            //{
+            //    DevicesMonitor.Stop();
+            //    bool _continue = true;
+            //    Dispatcher.Invoke(() =>
+            //    {
+            //        _continue = BoxHelper.ShowChoiceDialog("msgWarning",
+            //            "msgStartAdbServerFail",
+            //            "btnExit", "btnIHaveCloseOtherPhoneHelper")
+            //            .ToBool();
+            //    });
+            //    if (!_continue)
+            //    {
+            //        Close();
+            //    }
+            //    else
+            //    {
+            //        Task.Run(() =>
+            //        {
+            //            Thread.Sleep(3000);
+            //            App.Current.Dispatcher.Invoke(DevicesMonitor.Begin);
+            //        });
+            //    }
+            //};
         }
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs _e)
