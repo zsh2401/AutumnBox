@@ -3,6 +3,7 @@
 ** date:  2018/8/22 1:00:13 (UTC +8:00)
 ** desc： ...
 *************************************************/
+using AutumnBox.Basic.Device;
 using AutumnBox.GUI.MVVM;
 using AutumnBox.GUI.Util.Bus;
 using System;
@@ -21,26 +22,13 @@ namespace AutumnBox.GUI.ViewModel
         }
         private void DisconnectImpl()
         {
-            var disconnecter = new NetDeviceDisconnecter();
-            disconnecter.Init(new Basic.FlowFramework.FlowArgs()
-            {
-                DevBasicInfo = DeviceSelectionObserver.Instance.CurrentDevice
-            });
-            disconnecter.RunAsync();
+            (DeviceSelectionObserver.Instance.CurrentDevice as NetDevice).Disconnect(false);
             ViewCloser?.Invoke();
         }
         private void DisconnectAndDisableImpl()
         {
-            var fuckYou = new NetDebuggingCloser();
-            fuckYou.Init(new Basic.FlowFramework.FlowArgs()
-            {
-                DevBasicInfo = DeviceSelectionObserver.Instance.CurrentDevice
-            });
-            fuckYou.Finished += (s, e) =>
-            {
-                DisconnectImpl();
-            };
-            fuckYou.RunAsync();
+            (DeviceSelectionObserver.Instance.CurrentDevice as NetDevice).Disconnect(true);
+            ViewCloser?.Invoke();
         }
     }
 }

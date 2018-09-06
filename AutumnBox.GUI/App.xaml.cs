@@ -11,14 +11,11 @@
 * Company: I am free man
 *
 \* =============================================================================*/
-using AutumnBox.Basic.Util;
 using AutumnBox.GUI.Properties;
 using AutumnBox.GUI.Util;
 using AutumnBox.GUI.View.Windows;
 using AutumnBox.GUI.Windows;
 using AutumnBox.Support.Log;
-using Spring.Context;
-using Spring.Context.Support;
 using System;
 using System.Linq;
 using System.Windows;
@@ -35,11 +32,7 @@ namespace AutumnBox.GUI
 
         internal const int HAVE_OTHER_PROCESS = 25364;
 
-
-        internal IApplicationContext SpringContext { get; private set; }
-
         public App() :base(){
-            SpringContext = new XmlApplicationContext("AutumnBoxAop.atmbxml");
         }
 
         public static new App Current { get; private set; }
@@ -149,10 +142,6 @@ namespace AutumnBox.GUI
         {
             base.OnExit(e);
             Logger.Info(this, "Exit code : " + e.ApplicationExitCode);
-            if (e.ApplicationExitCode != HAVE_OTHER_PROCESS)
-            {
-                AdbHelper.KillAllAdbProcess();
-            }
             if (Settings.Default.IsFirstLaunch)
             {
                 Settings.Default.IsFirstLaunch = false;

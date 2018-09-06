@@ -7,7 +7,6 @@
         xmlns:local="clr-namespace:AutumnBox.GUI.View.Windows"
     xmlns:system="clr-namespace:System;assembly=mscorlib"
         xmlns:cstm="clr-namespace:AutumnBox.GUI.UI.Cstm"
-        xmlns:cpnel="clr-namespace:AutumnBox.GUI.UI.FuncPanels"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:panel="clr-namespace:AutumnBox.GUI.View.Panel"
     xmlns:dialogcontent="clr-namespace:AutumnBox.GUI.View.DialogContent"

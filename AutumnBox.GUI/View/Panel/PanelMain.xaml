@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AutumnBox.GUI.View.Panel"
-             xmlns:cstm="clr-namespace:AutumnBox.GUI.UI.Cstm"
+             xmlns:oftheday="clr-namespace:AutumnBox.GUI.View.OfTheDay"
              mc:Ignorable="d" 
              d:DesignHeight="619" d:DesignWidth="1042">
     <Grid>
@@ -24,7 +24,7 @@
                     </ScrollViewer>
                 </TabItem>
             </TabControl>
-            <cstm:PotdBox Margin="0,0,8,111" Width="185" Height="139" HorizontalAlignment="Right" VerticalAlignment="Bottom"></cstm:PotdBox>
+            <oftheday:POTD Margin="0,0,8,111" Width="185" Height="139" HorizontalAlignment="Right" VerticalAlignment="Bottom"></oftheday:POTD>
             <Button Style="{DynamicResource MaterialDesignRaisedButton}" Command="{Binding StartShell}"  Content="{DynamicResource btnADBCMD}" Margin="0,0,10,50" Height="36"  FontSize="14"  HorizontalAlignment="Right" Width="183" VerticalAlignment="Bottom" />
             <Button  Style="{DynamicResource MaterialDesignRaisedButton}" Command="{Binding ShowSettingsDialog}"  Content="{DynamicResource btnSetting}" Margin="0,0,10,10" VerticalAlignment="Bottom" Height="35"   FontSize="14"   HorizontalAlignment="Right" Width="183" />
         </Grid>

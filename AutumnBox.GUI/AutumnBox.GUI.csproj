@@ -256,17 +256,11 @@
     <Compile Include="Windows\DpiChangeWindow.xaml.cs">
       <DependentUpon>DpiChangeWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\FileSendingWindow.xaml.cs">
-      <DependentUpon>FileSendingWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\MMessageBox.xaml.cs">
       <DependentUpon>MMessageBox.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\PullingWindow.xaml.cs">
-      <DependentUpon>PullingWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\TBLoadingEffect.cs" />
     <Compile Include="Windows\UpdateNoticeWindow.xaml.cs">
@@ -536,19 +530,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\FileSendingWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="View\Windows\MainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\MMessageBox.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windows\PullingWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
