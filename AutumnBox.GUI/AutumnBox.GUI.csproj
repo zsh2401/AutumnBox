@@ -84,12 +84,6 @@
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Common.Logging, Version=3.0.0.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
-      <HintPath>..\packages\Common.Logging.3.0.0\lib\net40\Common.Logging.dll</HintPath>
-    </Reference>
-    <Reference Include="Common.Logging.Core, Version=3.0.0.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
-      <HintPath>..\packages\Common.Logging.Core.3.0.0\lib\net40\Common.Logging.Core.dll</HintPath>
-    </Reference>
     <Reference Include="MaterialDesignColors, Version=1.1.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialDesignColors.1.1.2\lib\net45\MaterialDesignColors.dll</HintPath>
     </Reference>
@@ -100,12 +94,6 @@
       <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="PresentationFramework.Aero2" />
-    <Reference Include="Spring.Aop, Version=2.0.1.45000, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
-      <HintPath>..\packages\Spring.Aop.2.0.1\lib\net45\Spring.Aop.dll</HintPath>
-    </Reference>
-    <Reference Include="Spring.Core, Version=2.0.1.45000, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
-      <HintPath>..\packages\Spring.Core.2.0.1\lib\net45\Spring.Core.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -124,9 +112,6 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="WpfAnimatedGif, Version=1.4.17.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\WpfAnimatedGif.1.4.17\lib\net\WpfAnimatedGif.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -159,14 +144,10 @@
     <Compile Include="Util\Net\MOTDGetter.cs" />
     <Compile Include="Util\Net\RemoteDataGetter.cs" />
     <Compile Include="Util\Net\UpdateChecker.cs" />
-    <Compile Include="UI\Cstm\HyperLink.xaml.cs">
-      <DependentUpon>HyperLink.xaml</DependentUpon>
-    </Compile>
     <Compile Include="UI\Cstm\ImageBtn.xaml.cs">
       <DependentUpon>ImageBtn.xaml</DependentUpon>
     </Compile>
     <Compile Include="MVVM\FlexiableCommand.cs" />
-    <Compile Include="UI\IDependOnDeviceChanges.cs" />
     <Compile Include="Util\OS\SystemHelper.cs" />
     <Compile Include="Util\Self.cs" />
     <Compile Include="ViewModel\VMContentChoice.cs" />
@@ -202,15 +183,6 @@
     <Compile Include="View\DialogContent\ContentSettings.xaml.cs">
       <DependentUpon>ContentSettings.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\FuncPanels\PoweronFuncsUx\NeedRootAttribute.cs" />
-    <Compile Include="UI\FuncPanels\PoweronFuncsUx\PoweronFuncsUXAdvisor.cs" />
-    <Compile Include="UI\FuncPanels\PoweronFuncsUx\DeviceUserCheckAttribute.cs" />
-    <Compile Include="UI\FuncPanels\PoweronFuncsUx\FuncsPrecheckAttribute.cs" />
-    <Compile Include="UI\FuncPanels\PoweronFuncsUx\InstallCheckAttribute.cs" />
-    <Compile Include="UI\FuncPanels\PoweronFuncsUx\IPoweronFuncsUX.cs" />
-    <Compile Include="UI\FuncPanels\PoweronFuncsUx\MinAndroidVersionAttribute.cs" />
-    <Compile Include="UI\FuncPanels\PoweronFuncsUx\TipAttribute.cs" />
-    <Compile Include="UI\IExtPanel.cs" />
     <Compile Include="MVVM\ModelBase.cs" />
     <Compile Include="ViewModel\VMDeviceDetails.cs" />
     <Compile Include="ViewModel\VMHome.cs" />
@@ -266,12 +238,6 @@
     <Compile Include="View\Windows\RunningWindow.xaml.cs">
       <DependentUpon>RunningWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\DebugWindow.xaml.cs">
-      <DependentUpon>DebugWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\DownTagsWindow.xaml.cs">
-      <DependentUpon>DownTagsWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Windows\FatalWindow.xaml.cs">
       <DependentUpon>FatalWindow.xaml</DependentUpon>
     </Compile>
@@ -282,22 +248,8 @@
     <Compile Include="UI\Cstm\CstmTitleBar.xaml.cs">
       <DependentUpon>CstmTitleBar.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Cstm\PotdBox.xaml.cs">
-      <DependentUpon>PotdBox.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UI\Fp\FastPanel.xaml.cs">
-      <DependentUpon>FastPanel.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UI\Fp\FastPanelChild.cs" />
-    <Compile Include="UI\Fp\PanelArgs.cs" />
     <Compile Include="Util\OS\AutoGC.cs" />
     <Compile Include="Util\OS\MachineInfo.cs" />
-    <Compile Include="Windows\ApkInstallingWindow.xaml.cs">
-      <DependentUpon>ApkInstallingWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\AppLoadingWindow.xaml.cs">
-      <DependentUpon>AppLoadingWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Windows\ChoiceBox.xaml.cs">
       <DependentUpon>ChoiceBox.xaml</DependentUpon>
     </Compile>
@@ -310,15 +262,8 @@
     <Compile Include="View\Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\MiFlashWindow.xaml.cs">
-      <DependentUpon>MiFlashWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Windows\MMessageBox.xaml.cs">
       <DependentUpon>MMessageBox.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\LoadingWindow.xaml.cs">
-      <DependentUpon>LoadingWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
     </Compile>
     <Compile Include="Windows\PullingWindow.xaml.cs">
       <DependentUpon>PullingWindow.xaml</DependentUpon>
@@ -348,7 +293,6 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <Compile Include="UI\FuncPanels\PoweronFuncsUx\PoweronFuncsUXImp.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -496,15 +440,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Cstm\HyperLink.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="UI\Cstm\ImageBtn.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UI\Cstm\PotdBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -529,10 +465,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\DialogContent\ContentSettings.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UI\Fp\FastPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -592,23 +524,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\ApkInstallingWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windows\AppLoadingWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Windows\ChoiceBox.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windows\DebugWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windows\DownTagsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -628,17 +544,9 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\MiFlashWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Windows\MMessageBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windows\LoadingWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>XamlIntelliSenseFileGenerator</Generator>
     </Page>
     <Page Include="Windows\PullingWindow.xaml">
       <SubType>Designer</SubType>

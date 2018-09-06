@@ -12,7 +12,7 @@ namespace AutumnBox.GUI.ViewModel
 {
     class VMReboot : ViewModelBase
     {
-        public DeviceBasicInfo CurrentDevice { get; set; }
+        public IDevice CurrentDevice { get; set; }
 
         public ICommand ToSystem => _toSystem;
         private FlexiableCommand _toSystem;
@@ -36,22 +36,22 @@ namespace AutumnBox.GUI.ViewModel
         {
             _toSystem = new FlexiableCommand(() =>
             {
-                DeviceRebooter.Reboot(CurrentDevice, RebootOptions.System);
+                CurrentDevice.Reboot2System();
             })
             { CanExecuteProp = false };
             _toRecovery = new FlexiableCommand(() =>
             {
-                DeviceRebooter.Reboot(CurrentDevice, RebootOptions.Recovery);
+                CurrentDevice.Reboot2Recovery();
             })
             { CanExecuteProp = false }; ;
             _toFastboot = new FlexiableCommand(() =>
             {
-                DeviceRebooter.Reboot(CurrentDevice, RebootOptions.Fastboot);
+                CurrentDevice.Reboot2Fastboot();
             })
             { CanExecuteProp = false }; ;
             _to9008 = new FlexiableCommand(() =>
             {
-                DeviceRebooter.Reboot(CurrentDevice, RebootOptions.Snapdragon9008);
+                CurrentDevice.Reboot29008();
             })
             { CanExecuteProp = false };
         }

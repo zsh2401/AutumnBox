@@ -20,9 +20,9 @@ namespace AutumnBox.GUI.ViewModel
 {
     class VMConnectDevices : ViewModelBase
     {
-        public string DisplayMemeberPath { get; set; } = "Serial";
+        public string DisplayMemeberPath { get; set; } = "SerialNumber";
 
-        public DeviceBasicInfo Selected
+        public IDevice Selected
         {
             get
             {
@@ -36,9 +36,9 @@ namespace AutumnBox.GUI.ViewModel
                 SwitchCommandState();
             }
         }
-        private DeviceBasicInfo _selected;
+        private IDevice _selected;
 
-        public IEnumerable<DeviceBasicInfo> Devices
+        public IEnumerable<IDevice> Devices
         {
             get
             {
@@ -54,11 +54,11 @@ namespace AutumnBox.GUI.ViewModel
                 }
                 else
                 {
-                    Selected = DeviceBasicInfo.None;
+                    Selected = null;
                 }
             }
         }
-        private DeviceBasicInfo[] _devices;
+        private IDevice[] _devices;
 
         public FlexiableCommand ConnectDevice { get; set; }
         public FlexiableCommand DisconnectDevice { get; set; }
@@ -66,8 +66,8 @@ namespace AutumnBox.GUI.ViewModel
 
         private void SwitchCommandState()
         {
-            DisconnectDevice.CanExecuteProp = Selected.Serial?.IsIPAddress ?? false;
-            OpenDeviceNetDebugging.CanExecuteProp = (!Selected.Serial?.IsIPAddress) ?? false;
+            DisconnectDevice.CanExecuteProp = Selected is NetDevice;
+            OpenDeviceNetDebugging.CanExecuteProp = Selected is UsbDevice;
         }
 
         public VMConnectDevices()
@@ -90,7 +90,7 @@ namespace AutumnBox.GUI.ViewModel
         private void RaiseBusEvent()
         {
             Logger.Debug(this, "Raise event");
-            if (Selected == DeviceBasicInfo.None)
+            if (Selected == null)
             {
                 DeviceSelectionObserver.Instance.RaiseSelectNoDevice();
             }
@@ -102,7 +102,7 @@ namespace AutumnBox.GUI.ViewModel
 
         private void ConnectedDevicesChanged(object sender, DevicesChangedEventArgs e)
         {
-            Devices = e.DevicesList;
+            Devices = e.Devices;
         }
     }
 }

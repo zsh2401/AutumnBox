@@ -5,6 +5,8 @@
 *************************************************/
 
 using AutumnBox.Basic.Device;
+using AutumnBox.Basic.Device.Management.Hardware;
+using AutumnBox.Basic.Device.Management.OS;
 using AutumnBox.GUI.MVVM;
 using AutumnBox.GUI.Util.Bus;
 using AutumnBox.GUI.Util.I18N;
@@ -178,7 +180,7 @@ namespace AutumnBox.GUI.ViewModel
         private Random ran = new Random();
         private int taskCode = 0;
 
-        private async void By(DeviceBasicInfo device)
+        private async void By(IDevice device)
         {
             int currentCode = ran.Next();
             taskCode = currentCode;
@@ -194,8 +196,7 @@ namespace AutumnBox.GUI.ViewModel
             Model = buildProp[BuildPropKeys.Model];
             AndroidVersion = buildProp[BuildPropKeys.AndroidVersion];
             Product = buildProp[BuildPropKeys.ProductName];
-            var swInfoGetter = new DeviceSoftwareInfoGetter(device);
-            Root = swInfoGetter.IsRootEnable() ? "√" : "X";
+            Root = device.HaveSU() ? "√" : "X";
 
             var hwInfo = await Task.Run(() =>
             {
