@@ -144,7 +144,14 @@ namespace AutumnBox.GUI.ViewModel
             ResetStateStringByCurrentDevice();
         }
         private void ResetStateStringByCurrentDevice() {
-            StateString = App.Current.Resources["PanelDeviceDetailsState" + DeviceSelectionObserver.Instance.CurrentDevice.State].ToString();
+            if (DeviceSelectionObserver.Instance.CurrentDevice == null)
+            {
+                StateString = App.Current.Resources["PanelDeviceDetailsStateNotFound"].ToString();
+            }
+            else {
+                StateString = App.Current.Resources["PanelDeviceDetailsState" + DeviceSelectionObserver.Instance.CurrentDevice.State].ToString();
+            }
+           
         }
 
         private void SelectedNoDevice(object sender, System.EventArgs e)

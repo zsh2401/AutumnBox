@@ -23,11 +23,16 @@ namespace AutumnBox.Basic.Calling.Fastboot
         /// </summary>
         /// <param name="args"></param>
         public FastbootCommand(string args) 
-            : base(AdbProtocol.FASTBOOT_EXECUTABLE_FILE_PATH, args)
+            : base(ManagedAdb.Adb.FastbootFilePath, args)
         {
         }
+        /// <summary>
+        /// 构造
+        /// </summary>
+        /// <param name="device"></param>
+        /// <param name="args"></param>
         public FastbootCommand(IDevice device, string args) :
-            base(AdbProtocol.ADB_EXECUTABLE_FILE_PATH, $"-s {device.SerialNumber} {args}")
+            base(ManagedAdb.Adb.FastbootFilePath, $"-s {device.SerialNumber} {args}")
         {
 
         }

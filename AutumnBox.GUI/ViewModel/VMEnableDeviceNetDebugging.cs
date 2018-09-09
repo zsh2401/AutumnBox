@@ -8,6 +8,7 @@ using AutumnBox.Basic.Device;
 using AutumnBox.Basic.Util;
 using AutumnBox.GUI.MVVM;
 using AutumnBox.GUI.Util.Bus;
+using AutumnBox.GUI.View.Windows;
 using AutumnBox.Support.Log;
 using System;
 using System.Net;
@@ -63,12 +64,26 @@ namespace AutumnBox.GUI.ViewModel
                         Hint = App.Current.Resources[PORT_ERR_HINT_KEY].ToString();
                         return;
                     }
-                    target.OpenNetDebugging(port);
                     var ip = target.GetLanIP();
-                    new AdbCommand($"connect {ip}:{port}").To((e) =>
+                    target.OpenNetDebugging(port);
+                    if (ip == null)
                     {
-                        Logger.Info(this, e.Text);
-                    }).Execute();
+                        App.Current.Dispatcher.Invoke(() =>
+                        {
+                            new MessageWindow()
+                            {
+                                MsgTitle = "Warning",
+                                Message = "ContentEnableDeviceNetDebuggingGetIPFailed",
+                            }.Show();
+                        });
+                    }
+                    else
+                    {
+                        new AdbCommand($"connect {ip}:{port}").To((e) =>
+                        {
+                            Logger.Info(this, e.Text);
+                        }).Execute();
+                    }
                 }
                 catch (Exception ex)
                 {

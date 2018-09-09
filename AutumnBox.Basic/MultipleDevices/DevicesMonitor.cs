@@ -20,13 +20,24 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.MultipleDevices
 {
-
+    /// <summary>
+    /// 设备拔插监视器
+    /// </summary>
     public class DevicesMonitor
     {
+        /// <summary>
+        /// 设备拔插时间
+        /// </summary>
         public event DevicesChangedHandler DevicesChanged;
         private CancellationTokenSource tokenSource;
         private bool isStarted = false;
+        /// <summary>
+        /// 检测间隔
+        /// </summary>
         public int Interval { get; set; } = 2000;
+        /// <summary>
+        /// 开始
+        /// </summary>
         public void Start()
         {
             if (isStarted)
@@ -56,8 +67,9 @@ namespace AutumnBox.Basic.MultipleDevices
             IEnumerable<IDevice> _new = null;
             while (!tokenSource.Token.IsCancellationRequested)
             {
+                Logger.Debug(this,"loop");
                 _new = getter.GetDevices();
-                if (!_new.DevicesEquals(_new))
+                if (!_new.DevicesEquals(last))
                 {
                     last = _new;
                     DevicesChanged?.Invoke(this, new DevicesChangedEventArgs(last));
@@ -65,6 +77,9 @@ namespace AutumnBox.Basic.MultipleDevices
                 Thread.Sleep(Interval);
             }
         }
+        /// <summary>
+        /// 取消
+        /// </summary>
         public void Cancel()
         {
             tokenSource.Cancel();

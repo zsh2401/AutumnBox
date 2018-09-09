@@ -8,6 +8,7 @@
     <s:String x:Key="LanguageCode">zh-CN</s:String>
     <s:String x:Key="AppDesc">开源,简约,免费的图形化ADB工具箱</s:String>
     
+    
     <!--PanelHome-->
     <s:String x:Key="PanelHomeOpenSource">开源</s:String>
     <s:String x:Key="PanelHomeOpenSourceTip">为了共同的进步与对用户的透明性,秋之盒一直以GPL3.0协议开源</s:String>
@@ -67,7 +68,7 @@
     <s:String x:Key="PanelDevicesEnableCurrent">开启当前设备网络调试</s:String>
     
     <!--PanelDeviceDetails-->
-    <s:String x:Key="PanelDeviceDetailsStateNone">未连接设备</s:String>
+    <s:String x:Key="PanelDeviceDetailsStateNotFound">未连接设备</s:String>
     <s:String x:Key="PanelDeviceDetailsStatePoweron">设备处于开机状态</s:String>
     <s:String x:Key="PanelDeviceDetailsStateRecovery">恢复模式</s:String>
     <s:String x:Key="PanelDeviceDetailsStateSideload">Sideload模式</s:String>
@@ -132,6 +133,8 @@
     <s:String x:Key="ContentEnableDeviceNetDebuggingBtnCancel">取消</s:String>
     <s:String x:Key="ContentEnableDeviceNetDebuggingBtnOpen">开启</s:String>
     <s:String x:Key="ContentEnableDeviceNetDebuggingWarning">警告</s:String>
+    <s:String x:Key="ContentEnableDeviceNetDebuggingWarningContent">开启网络调试有很大风险,这可能导致你的设备被同网络下的人控制,你确定要开启吗?</s:String>
+    <s:String x:Key="ContentEnableDeviceNetDebuggingGetIPFailed">成功开启网络调试,但获取IP失败了,请手动查看手机IP并连接</s:String>
     <s:String x:Key="ContentEnableDeviceNetDebuggingPortHint">端口号</s:String>
     <s:String x:Key="ContentEnableDeviceNetDebuggingPortErrorHint">端口格式错误,请检查!</s:String>
     
@@ -147,6 +150,7 @@
     <!--LoadingWindow-->
      <s:String x:Key="LoadingWindowMessage">请耐心等待 :)</s:String>
     
+
     <!--RunningWindow-->
     <s:String x:Key="RunningWindowStateRunning">模块正在运行中~</s:String>
     <s:String x:Key="RunningWindowStateFinished">执行完毕</s:String>

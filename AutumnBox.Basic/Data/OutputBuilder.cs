@@ -3,6 +3,7 @@
 ** date:  2018/2/20 17:44:42 (UTC +8:00)
 ** desc： ...
 *************************************************/
+using System;
 using System.Text;
 
 namespace AutumnBox.Basic.Data
@@ -51,7 +52,8 @@ namespace AutumnBox.Basic.Data
         /// 增加
         /// </summary>
         /// <param name="builder"></param>
-        public void Append(OutputBuilder builder) {
+        public void Append(OutputBuilder builder)
+        {
             outSb.Append(builder.outSb);
             errSb.Append(builder.errSb);
             allSb.Append(builder.allSb);
@@ -61,7 +63,8 @@ namespace AutumnBox.Basic.Data
         /// 增加
         /// </summary>
         /// <param name="output"></param>
-        public void Append(Output output) {
+        public void Append(Output output)
+        {
             outSb.Append(output.Out);
             errSb.Append(output.Error);
             allSb.Append(output.All);
@@ -75,6 +78,24 @@ namespace AutumnBox.Basic.Data
             outSb.Clear();
             errSb.Clear();
             allSb.Clear();
+        }
+
+        /// <summary>
+        /// 接收器Action
+        /// </summary>
+        public Action<OutputReceivedEventArgs> Receiver
+        {
+            get => (e) =>
+            {
+                if (e.IsError)
+                {
+                    AppendError(e.Text);
+                }
+                else
+                {
+                    AppendOut(e.Text);
+                }
+            };
         }
 
         /// <summary>

@@ -24,6 +24,10 @@ namespace AutumnBox.Basic.MultipleDevices
         /// 已连接设备列表
         /// </summary>
         public IEnumerable<IDevice> Devices { get; }
+        /// <summary>
+        /// 构造
+        /// </summary>
+        /// <param name="devList"></param>
         public DevicesChangedEventArgs(IEnumerable<IDevice> devList)
         {
             Devices = devList;

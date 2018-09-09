@@ -5,6 +5,7 @@
 *************************************************/
 using AutumnBox.Basic.Data;
 using AutumnBox.Basic.Executer;
+using AutumnBox.Basic.Util;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
@@ -30,7 +31,7 @@ namespace AutumnBox.Basic.Device.Management.OS
     public class UserManager
     {
         private static readonly Regex userInfoRegex;
-        private readonly AndroidShellV2 shell;
+        private readonly IDevice device;
         static UserManager()
         {
             userInfoRegex = new Regex(@"UserInfo{(?<id>\d+):(?<name>.+):", RegexOptions.Multiline);
@@ -39,9 +40,9 @@ namespace AutumnBox.Basic.Device.Management.OS
         /// 构造一个用户管理器
         /// </summary>
         /// <param name="device"></param>
-        public UserManager(DeviceSerialNumber device)
+        public UserManager(IDevice device)
         {
-            this.shell = new AndroidShellV2(device);
+            this.device = device;
         }
         /// <summary>
         /// 获取设备上的所有用户
@@ -50,8 +51,7 @@ namespace AutumnBox.Basic.Device.Management.OS
         /// <returns>用户</returns>
         public User[] GetUsers(bool ignoreZeroUser =true)
         {
-            var output = shell.Execute("pm list users");
-            output.PrintOnConsole(this);
+            var output = device.Shell("pm list users");
             var matches = userInfoRegex.Matches(output.ToString());
             List<User> users = new List<User>();
             foreach (Match match in matches)
@@ -71,9 +71,9 @@ namespace AutumnBox.Basic.Device.Management.OS
         /// </summary>
         /// <param name="uid">UID</param>
         /// <returns></returns>
-        public AdvanceOutput RemoveUser(int uid)
+        public void RemoveUser(int uid)
         {
-            return shell.Execute($"pm remove-user {uid}");
+            device.Shell($"pm remove-user {uid}").ThrowIfExitCodeNotEqualsZero();
         }
     }
 }

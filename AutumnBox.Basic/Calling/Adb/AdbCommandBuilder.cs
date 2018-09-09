@@ -17,7 +17,6 @@ namespace AutumnBox.Basic.Calling.Adb
 {
     public class AdbCommandBuilder : IArgBuilder, IDeviceSettableBuilder<IShellBuilder>, IShellBuilder
     {
-        private const string ADB_FILE = AdbProtocol.ADB_EXECUTABLE_FILE_PATH;
         private List<string> args = new List<string>();
         public AdbCommandBuilder()
         {
@@ -28,7 +27,7 @@ namespace AutumnBox.Basic.Calling.Adb
         {
             args.Clear();
             Arg("-P");
-            Arg(AdbServer.Instance.Port.ToString());
+            Arg(ManagedAdb.Adb.Server.Port.ToString());
         }
 
         public void Clear()
@@ -80,7 +79,7 @@ namespace AutumnBox.Basic.Calling.Adb
 
         public override string ToString()
         {
-            return ADB_FILE + " " + args;
+            return ManagedAdb.Adb.AdbFilePath + " " + args;
         }
 
         public IArgBuilder ArgWithDoubleQuotation(string arg)

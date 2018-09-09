@@ -7,12 +7,16 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AutumnBox.GUI.View.DialogContent"
              mc:Ignorable="d" 
-     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" Width="187" Height="238">
+    FontFamily="{DynamicResource AutumnBox.Font}"
+     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" Width="221" Height="238">
     <Grid>
-        <TextBlock VerticalAlignment="Top" Text="{DynamicResource ContentEnableDeviceNetDebuggingWarning}" FontSize="25" />
 
+        <StackPanel Orientation="Vertical"  Margin="15" VerticalAlignment="Top">
+            <TextBlock Text="{DynamicResource ContentEnableDeviceNetDebuggingWarning}" FontSize="25" />
+            <TextBlock Margin="0,15,0,0" Text="{DynamicResource ContentEnableDeviceNetDebuggingWarningContent}" FontSize="15" TextWrapping="Wrap"/>
+        </StackPanel>
         <StackPanel VerticalAlignment="Bottom">
-            <TextBox Text="{Binding PortString}" materialDesign:HintAssist.Hint="{Binding Hint}"  Margin="10"/>
+            <TextBox Text="{Binding PortString}" materialDesign:HintAssist.Hint="{DynamicResource ContentEnableDeviceNetDebuggingPortHint}"  Margin="10"/>
             <Grid  Margin="5">
                 <Button Command="materialDesign:DialogHost.CloseDialogCommand" HorizontalAlignment="Left" Style="{DynamicResource MaterialDesignRaisedButton}" Content="{DynamicResource ContentEnableDeviceNetDebuggingBtnCancel}"/>
                 <Button Command="{Binding Open}" HorizontalAlignment="Right" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource ContentEnableDeviceNetDebuggingBtnOpen}"/>

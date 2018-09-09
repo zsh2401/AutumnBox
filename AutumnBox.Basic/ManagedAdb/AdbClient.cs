@@ -15,9 +15,9 @@ namespace AutumnBox.Basic.ManagedAdb
     {
         public Socket InnerSocket { get; private set; }
 
-        public IPAddress IP { get; set; } = IPAddress.Parse("127.0.0.1");
+        public IPAddress IP { get; set; } = Adb.Server.IP;
 
-        public ushort Port { get; set; } = 5037;
+        public ushort Port { get; set; } = Adb.Server.Port;
 
         public bool IsConnected { get; private set; }
 

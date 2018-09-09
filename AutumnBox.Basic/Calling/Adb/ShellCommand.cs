@@ -16,7 +16,7 @@ namespace AutumnBox.Basic.Calling.Adb
     /// <summary>
     /// 设备Shell命令
     /// </summary>
-    public class ShellCommand : ProcessBasedCommand
+    public class ShellCommand : AdbCommand
     {
         /// <summary>
         /// 构造
@@ -28,8 +28,7 @@ namespace AutumnBox.Basic.Calling.Adb
         /// <param name="device"></param>
         /// <param name="shellCommand"></param>
         public ShellCommand(IDevice device, string shellCommand) :
-            base(AdbProtocol.ADB_EXECUTABLE_FILE_PATH,
-                $"-s {device.SerialNumber} shell \"{shellCommand}\"")
+            base(device,$"shell \"{shellCommand}\"")
         {
         }
     }
