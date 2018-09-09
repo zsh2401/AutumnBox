@@ -43,7 +43,10 @@ namespace AutumnBox.Basic.Extension
                 var result = command.Execute();
                 if (result.ExitCode != 0)
                 {
-                    throw new AdbCommandFailedException(result.Output);
+                    throw new AdbCommandFailedException(result.Output)
+                    {
+                        ExitCode = result.ExitCode
+                    };
                 }
             }
         }
@@ -73,7 +76,10 @@ namespace AutumnBox.Basic.Extension
                 var result = command.Execute();
                 if (result.ExitCode != 0)
                 {
-                    throw new AdbCommandFailedException(result.Output);
+                    throw new AdbCommandFailedException(result.Output)
+                    {
+                        ExitCode = result.ExitCode
+                    };
                 }
             }
         }

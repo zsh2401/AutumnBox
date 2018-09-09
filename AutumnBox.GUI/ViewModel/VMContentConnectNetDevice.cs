@@ -4,6 +4,7 @@
 ** desc： ...
 *************************************************/
 
+using AutumnBox.Basic.Calling.Adb;
 using AutumnBox.GUI.MVVM;
 using AutumnBox.Support.Log;
 using System;
@@ -85,23 +86,23 @@ namespace AutumnBox.GUI.ViewModel
             if (!input.Item1) return;
             ConnectTo(input.Item2);
         }
+        /// <summary>
+        /// 连接到....
+        /// </summary>
+        /// <param name="ip"></param>
         private async void ConnectTo(IPEndPoint ip)
         {
             StateString = App.Current.Resources["ContentConnectNetDeviceStateStringConnecting"].ToString();
             DoConnect.CanExecuteProp = false;
             IsRunning = true;
-            var flowArgs = new NetDeviceConnecterArgs()
-            {
-                IPEndPoint = ip
-            };
-            var flow = new NetDeviceConnecter();
-            flow.Init(flowArgs);
-            var executedResult = await Task.Run(() =>
-            {
-                return flow.Run();
-            });
+            var result = new AdbCommand($"{ip.Address}:{ip.Port}").To(
+                 (e) =>
+                 {
+                     Logger.Info(this, "connecting:" + e.Text);
+                 }
+                 ).Execute();
             IsRunning = false;
-            if (executedResult.ExitCode == 0)
+            if (result.ExitCode == 0)
             {
                 OnCloseCallback();
             }

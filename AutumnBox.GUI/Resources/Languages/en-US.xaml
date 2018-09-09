@@ -556,8 +556,10 @@ If you have made a great contribution but have not been recorded, please contact
     <s:String x:Key="Donate">Donate Developer</s:String>
 
     <!--加载提示-->
+   
     <s:String x:Key="ldmsgLoginAccount">Login account</s:String>
     <s:String x:Key="ldmsgStartAdb">Adb server starting</s:String>
+     <s:String x:Key=" ldmsgAdbServerFailed">Adb server starts failed,please try again later</s:String>
     <s:String x:Key="ldmsgLoadingExtensions">Loading extensions</s:String>
     <s:String x:Key="ldmsgStartDeviceMonitor">Device listener stating</s:String>
 </ResourceDictionary>

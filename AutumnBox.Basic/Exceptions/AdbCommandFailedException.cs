@@ -19,22 +19,29 @@ namespace AutumnBox.Basic.Exceptions
     public class AdbCommandFailedException : Exception
     {
         /// <summary>
+        /// 返回码
+        /// </summary>
+        public int ExitCode { get; set; }
+        /// <summary>
         /// 构造
         /// </summary>
-        public AdbCommandFailedException() : base() { }
+        public AdbCommandFailedException()
+            : base() { }
         /// <summary>
         /// 构造
         /// </summary>
         /// <param name="output"></param>
-        public AdbCommandFailedException(AdvanceOutput output) : base(output.ToString())
-        {}
-        /// <summary>
-        /// 构造
-        /// </summary>
-        /// <param name="output"></param>
-        public AdbCommandFailedException(Output output) : base(output.ToString())
+        public AdbCommandFailedException(Output output)
+            : base(output.ToString())
         {
-
+        }
+        /// <summary>
+        /// 构造
+        /// </summary>
+        /// <param name="message"></param>
+        public AdbCommandFailedException(string message)
+            : base(message)
+        {
         }
     }
 }

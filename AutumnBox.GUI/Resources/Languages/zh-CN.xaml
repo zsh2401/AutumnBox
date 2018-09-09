@@ -565,6 +565,7 @@ MonoLogueChi,饼干怪兽,hxy,yume,滥情空心,web1n,咖枯,毛线没有团团,
     <!--加载提示-->
     <s:String x:Key="ldmsgLoginAccount">正在登陆账户</s:String>
     <s:String x:Key="ldmsgStartAdb">正在启动ADB服务</s:String>
+    <s:String x:Key=" ldmsgAdbServerFailed">ADB服务启动失败，软件即将退出，请稍后再试</s:String>
     <s:String x:Key="ldmsgLoadingExtensions">正在加载拓展</s:String>
     <s:String x:Key="ldmsgStartDeviceMonitor">正在启动设备拔插监听</s:String>
 </ResourceDictionary>
