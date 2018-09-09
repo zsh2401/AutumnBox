@@ -36,7 +36,7 @@ namespace AutumnBox.Basic.MultipleDevices
         private void Fastboot(List<IDevice> devices)
         {
             var lineOutput = fastbootDevices.Execute().Output.LineOut;
-            for (int i = 1; i < lineOutput.Count(); i++)
+            for (int i = 0; i < lineOutput.Count(); i++)
             {
                 if (DeviceObjectFacotry.FastbootTryParse(lineOutput[i], out IDevice device))
                 {

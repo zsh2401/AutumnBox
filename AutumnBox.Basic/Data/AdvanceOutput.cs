@@ -56,37 +56,6 @@ namespace AutumnBox.Basic.Data
             this.exitCode = exitCode;
         }
 
-        /// <summary>
-        /// 自定义tag,并打印AdvanceOutput在Log
-        /// </summary>
-        /// <param name="tagOrSender"></param>
-        /// <param name="printOnRelease">log级别</param>
-        public override void PrintOnLog(object tagOrSender, bool printOnRelease = false)
-        {
-            if (printOnRelease)
-            {
-                Logger.Info(tagOrSender, $"{this.GetType().Name}.PrintOnLog():{Environment.NewLine}" +
-                    $"Exit Code: {exitCode}{Environment.NewLine}" +
-                    $"{ToString()}");
-            }
-            else
-            {
-                Logger.Debug(tagOrSender, $"{this.GetType().Name}.PrintOnLog():{Environment.NewLine}" +
-                    $"Exit Code: {exitCode}{Environment.NewLine}" +
-                    $"{ToString()}");
-            }
-        }
-
-        /// <summary>
-        /// 自定义tag,并打印AdvanceOutput在控制台
-        /// </summary>
-        /// <param name="tagOrSender"></param>
-        public override void PrintOnConsole(object tagOrSender)
-        {
-            Console.WriteLine($"{tagOrSender}.{this.GetType().Name}.PrintOnLog():{Environment.NewLine}" +
-                $"Exit Code: {exitCode}" +
-                $"{ToString()}");
-        }
 
         /// <summary>
         /// 与other比较是否相等

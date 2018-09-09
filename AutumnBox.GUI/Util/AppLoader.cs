@@ -63,7 +63,7 @@ namespace AutumnBox.GUI.Util
             ui.LoadingTip = App.Current.Resources["ldmsgStartAdb"].ToString();
             Logger.Info(this, "Try to start adb server ");
             try {
-                AdbServer.Instance.Start();
+                Adb.DefaultLoad();
                 Logger.Info(this,"adb server starts successed");
             } catch(AdbCommandFailedException e) {
                 Logger.Info(this, "adb server starts failed");

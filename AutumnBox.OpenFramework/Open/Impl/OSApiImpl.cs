@@ -77,7 +77,7 @@ namespace AutumnBox.OpenFramework.Open.Impl
                     proc.BeginOutputReadLine();
                     proc.BeginErrorReadLine();
                     proc.WaitForExit();
-                    outputBuilder.Result.PrintOnLog(LoggingTag);
+                    Logger.Info(outputBuilder.Result.ToString());
                     exitCode = proc.ExitCode;
                     proc.Dispose();
                     return exitCode == 0;

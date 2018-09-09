@@ -65,14 +65,14 @@ namespace AutumnBox.Basic.FlowFramework
         {
             _executer = new CommandExecuter();
             _resultTmp = new TResult();
-            _executer.ProcessStarted += (s, e) =>
-            {
-                OnProcessStarted(e);
-            };
-            _executer.OutputReceived += (s, e) =>
-            {
-                OnOutputReceived(e);
-            };
+            //_executer.ProcessStarted += (s, e) =>
+            //{
+            //    OnProcessStarted(e);
+            //};
+            //_executer.OutputReceived += (s, e) =>
+            //{
+            //    OnOutputReceived(e);
+            //};
         }
         /// <summary>
         /// 初始化参数,只可以调用一次

@@ -4,6 +4,7 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.Basic.Device;
+using AutumnBox.Support.Log;
 using System.Net;
 using System.Text.RegularExpressions;
 
@@ -11,10 +12,10 @@ namespace AutumnBox.Basic.MultipleDevices
 {
     internal static class DeviceObjectFacotry
     {
-        private const string DEVICES_PATTERN = @"(?i)^(?<sn>[^\u0020|^\t]+)[^\w]+(?<status>\w+)\u0020?.+?$";
+        private const string DEVICES_PATTERN = @"(?i)^(?<sn>[^\u0020|^\t]+)[^\w]+(?<state>\w+)\u0020?.+?$";
         private static readonly Regex _deviceRegex = new Regex(DEVICES_PATTERN);
 
-        private const string DEVICES_L_PATTERN = @"^(?<sn>[^\u0020|^\t]+)[^\w]+(?<status>\w+).+:(?<product>\w+).+:(?<model>\w+).+:(?<device>\w+).+:(?<transport_id>\w+)$";
+        private const string DEVICES_L_PATTERN = @"^(?<sn>[^\u0020|^\t]+)[^\w]+(?<state>\w+).+:(?<product>\w+).+:(?<model>\w+).+:(?<device>\w+).+:(?<transport_id>\w+)$";
         private static readonly Regex _deviceLRegex = new Regex(DEVICES_L_PATTERN);
 
         public static bool TryParse(string serialNumber, string state, out IDevice device)

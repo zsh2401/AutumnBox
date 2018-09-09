@@ -13,7 +13,6 @@
 \* =============================================================================*/
 namespace AutumnBox.Basic.Data
 {
-    using AutumnBox.Basic.Util;
     using AutumnBox.Support.Log;
     using System;
     using System.Collections.Generic;
@@ -21,7 +20,7 @@ namespace AutumnBox.Basic.Data
     /// <summary>
     /// 输出封装类
     /// </summary>
-    public class Output : IPrintable, IEquatable<Output>
+    public class Output : IEquatable<Output>
     {
         /// <summary>
         /// 空输出，此字段为只读
@@ -86,7 +85,6 @@ namespace AutumnBox.Basic.Data
         /// <summary>
         /// 构建一个空的Output对象
         /// </summary>
-        [Obsolete("如果需要空输出，请使用Output.Empty",true)]
         public Output()
         {
             Out = "";
@@ -108,58 +106,6 @@ namespace AutumnBox.Basic.Data
             LineAll = all.Split(Environment.NewLine.ToCharArray());
             LineOut = stdOutput.Split(Environment.NewLine.ToCharArray());
             LineError = stdError.Split(Environment.NewLine.ToCharArray());
-        }
-
-        /// <summary>
-        /// 以可定义的tag或发送者,发送log
-        /// </summary>
-        /// <param name="tagOrSender"></param>
-        /// <param name="printOnRelease"></param>
-        public virtual void PrintOnLog(object tagOrSender, bool printOnRelease = false)
-        {
-            if (printOnRelease)
-            {
-                Logger.Info(tagOrSender, $"{this.GetType().Name}.PrintOnLog():{Environment.NewLine}{ToString()}");
-            }
-            else
-            {
-                Logger.Debug(tagOrSender, $"{this.GetType().Name}.PrintOnLog():{Environment.NewLine}{ToString()}");
-            }
-        }
-
-        /// <summary>
-        /// 以可定义的tag或发送者,打印在控制台
-        /// </summary>
-        /// <param name="tagOrSender"></param>
-        public virtual void PrintOnConsole(object tagOrSender)
-        {
-            Console.WriteLine($"{tagOrSender} {this.GetType().Name}.PrintOnConsole():{Environment.NewLine}{ToString()}");
-        }
-
-        /// <summary>
-        /// 打印到控制台
-        /// </summary>
-        [Obsolete("Plz use PrintOnConsole(bool printOnRelease=false) to instead", true)]
-        public void PrintOnConsole()
-        {
-            Console.WriteLine($"{this.GetType().Name}.PrintOnConsole(): {this.ToString()}");
-        }
-
-        /// <summary>
-        /// 打印到log
-        /// </summary>
-        /// <param name="printOnRelease"></param>
-        [Obsolete("Plz use PrintOnLog(object tagOrSender,bool printOnRelease=false) to instead", true)]
-        public void PrintOnLog(bool printOnRelease = false)
-        {
-            if (printOnRelease)
-            {
-                Logger.Info(this, $"PrintOnLog():{Environment.NewLine}{ToString()}");
-            }
-            else
-            {
-                Logger.Debug(this, $"PrintOnLog():{Environment.NewLine}{ToString()}");
-            }
         }
 
         /// <summary>

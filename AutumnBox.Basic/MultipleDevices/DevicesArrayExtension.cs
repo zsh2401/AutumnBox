@@ -12,8 +12,17 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.MultipleDevices
 {
+    /// <summary>
+    /// 设备数组拖着赞
+    /// </summary>
     public static class DevicesArrayExtension
     {
+        /// <summary>
+        /// 设备数组对比
+        /// </summary>
+        /// <param name="left"></param>
+        /// <param name="right"></param>
+        /// <returns></returns>
         public static bool DevicesEquals(this IEnumerable<IDevice> left, IEnumerable<IDevice> right)
         {
             if (left.Count() != right.Count()) return false;

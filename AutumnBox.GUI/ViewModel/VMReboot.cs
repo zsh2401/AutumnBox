@@ -75,7 +75,7 @@ namespace AutumnBox.GUI.ViewModel
             _to9008.CanExecuteProp = true;
             _toSystem.CanExecuteProp = true;
             _toFastboot.CanExecuteProp = true;
-            _toRecovery.CanExecuteProp = CurrentDevice.State != DeviceState.Fastboot;
+            _toRecovery.CanExecuteProp = CurrentDevice?.State != DeviceState.Fastboot;
         }
     }
 }

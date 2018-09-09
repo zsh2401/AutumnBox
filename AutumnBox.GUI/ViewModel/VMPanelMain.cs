@@ -50,7 +50,7 @@ namespace AutumnBox.GUI.ViewModel
         {
             ProcessStartInfo info = new ProcessStartInfo
             {
-                WorkingDirectory = AdbConstants.toolsPath,
+                WorkingDirectory =  Basic.ManagedAdb.Adb.AdbToolsDir.FullName,
                 FileName = "cmd",
                 UseShellExecute = false,
                 Verb = "runas",

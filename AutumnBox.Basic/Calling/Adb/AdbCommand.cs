@@ -13,13 +13,25 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Calling.Adb
 {
+    /// <summary>
+    /// ADB命令
+    /// </summary>
     public class AdbCommand : ProcessBasedCommand
     {
-        public AdbCommand(string args) : base(AdbProtocol.ADB_EXECUTABLE_FILE_PATH, args)
+        /// <summary>
+        /// 构造一条设备无关的ADB命令
+        /// </summary>
+        /// <param name="args"></param>
+        public AdbCommand(string args) : base(ManagedAdb.Adb.AdbFilePath,$"-P{ManagedAdb.Adb.Server.Port} " + args)
         {
         }
+        /// <summary>
+        /// 构造一条设备有关的ADB命令
+        /// </summary>
+        /// <param name="device"></param>
+        /// <param name="args"></param>
         public AdbCommand(IDevice device, string args) :
-            base(AdbProtocol.ADB_EXECUTABLE_FILE_PATH, $"-s {device.SerialNumber} {args}")
+            this($"-s {device.SerialNumber} {args}")
         {
 
         }

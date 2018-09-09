@@ -6,6 +6,7 @@
     <s:String x:Key="LanguageName">English</s:String>
     <s:String x:Key="LanguageCode">en-US</s:String>
     <s:String x:Key="AppDesc">Open source,free,simple,GUI adb toolbox</s:String>
+        
     
     <!--PanelHome-->
     <s:String x:Key="PanelHomeOpenSource">Open source</s:String>
@@ -65,7 +66,7 @@ Description:
     <s:String x:Key="PanelDevicesEnableCurrent">Enable crt net-debugging</s:String>
     
     <!--PanelDeviceDetails-->
-    <s:String x:Key="PanelDeviceDetailsStateNone">Device not found</s:String>
+    <s:String x:Key="PanelDeviceDetailsStateNotFound">Device not found</s:String>
     <s:String x:Key="PanelDeviceDetailsStatePoweron">System runinng</s:String>
     <s:String x:Key="PanelDeviceDetailsStateRecovery">Recovery</s:String>
     <s:String x:Key="PanelDeviceDetailsStateSideload">Sideload</s:String>
@@ -128,6 +129,8 @@ Description:
     <s:String x:Key="ContentEnableDeviceNetDebuggingBtnCancel">Cancel</s:String>
     <s:String x:Key="ContentEnableDeviceNetDebuggingBtnOpen">Open</s:String>
     <s:String x:Key="ContentEnableDeviceNetDebuggingWarning">Warning</s:String>
+    <s:String x:Key="ContentEnableDeviceNetDebuggingWarningContent">Net debugging is very dangerous!Are you sure to open that?</s:String>
+    <s:String x:Key="ContentEnableDeviceNetDebuggingGetIPFailed">Open net-debugging was successful,but we cant get the ip of device,you should view your device ip on the options and connnect to it</s:String>
     <s:String x:Key="ContentEnableDeviceNetDebuggingPortHint">Port</s:String>
         <s:String x:Key="ContentEnableDeviceNetDebuggingPortErrorHint">Please check your input!</s:String>
     <!--MessageWindow-->
