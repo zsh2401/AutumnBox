@@ -38,7 +38,10 @@ namespace AutumnBox.Basic.Util
         {
             if (result.ExitCode != 0)
             {
-                throw new AdbCommandFailedException(result.Output);
+                throw new AdbCommandFailedException(result.Output)
+                {
+                    ExitCode = result.ExitCode
+                };
             }
         }
         public static void ThrowIfNotAlive(this IDevice device)

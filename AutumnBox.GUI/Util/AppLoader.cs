@@ -3,6 +3,8 @@
 ** date:  2018/8/19 20:39:02 (UTC +8:00)
 ** desc： ...
 *************************************************/
+using AutumnBox.Basic.Exceptions;
+using AutumnBox.Basic.ManagedAdb;
 using AutumnBox.Basic.Util;
 using AutumnBox.GUI.Properties;
 using AutumnBox.GUI.Util.Bus;
@@ -59,32 +61,16 @@ namespace AutumnBox.GUI.Util
             Logger.Info(this, $"Windows version {Environment.OSVersion.Version}");
             ui.Progress = 30;
             ui.LoadingTip = App.Current.Resources["ldmsgStartAdb"].ToString();
-            bool success = false;
-            bool tryAgain = true;
-            while (!success)
-            {
-                Logger.Info(this, "Try to start adb server ");
-                success = AdbHelper.StartServer();
-                Logger.Info(this, success ? "adb server starts success" : "adb server starts failed...");
-                if (!success)
-                    App.Current.Dispatcher.Invoke(() =>
-                    {
-                        tryAgain = BoxHelper.ShowChoiceDialog(
-                        "msgWarning",
-                        "msgStartAdbServerFail",
-                        "btnExit", "btnIHaveCloseOtherPhoneHelper").ToBool();
-                    });
-                if (tryAgain)
-                {
-                    Thread.Sleep(2000);
-                }
-                else
-                {
-                    App.Current.Dispatcher.Invoke(() =>
-                    {
-                        App.Current.Shutdown(App.HAVE_OTHER_PROCESS);
-                    });
-                }
+            Logger.Info(this, "Try to start adb server ");
+            try {
+                AdbServer.Instance.Start();
+                Logger.Info(this,"adb server starts successed");
+            } catch(AdbCommandFailedException e) {
+                Logger.Info(this, "adb server starts failed");
+                Logger.Warn(this,e);
+                ui.Progress = 60;
+                ui.LoadingTip = App.Current.Resources["ldmsgAdbServerFailed"].ToString();
+                App.Current.Shutdown(e.ExitCode);
             }
             ui.Progress = 60;
             ui.LoadingTip = App.Current.Resources["ldmsgLoadingExtensions"].ToString();
