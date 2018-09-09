@@ -18,6 +18,10 @@ namespace AutumnBox.Basic.ManagedAdb
     public static class Adb
     {
         /// <summary>
+        /// ADB临时文件路径
+        /// </summary>
+        public static string AdbTmpPathOnDevice { get; } = "/data/local/tmp";
+        /// <summary>
         /// 服务器
         /// </summary>
         public static IAdbServer Server { get; private set; }
