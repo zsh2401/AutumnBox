@@ -61,6 +61,25 @@ namespace AutumnBox.Basic.Device
             return new Tuple<Output, int>(result.Output, result.ExitCode);
         }
         /// <summary>
+        /// 获取Adb命令对象
+        /// </summary>
+        /// <param name="device"></param>
+        /// <param name="command"></param>
+        /// <returns></returns>
+        public static AdbCommand GetAdb(this IDevice device, string command) {
+            return new AdbCommand(device, command);
+        }
+        /// <summary>
+        /// 获取Fastboot命令对象
+        /// </summary>
+        /// <param name="device"></param>
+        /// <param name="command"></param>
+        /// <returns></returns>
+        public static FastbootCommand GetFastboot(this IDevice device, string command)
+        {
+            return new FastbootCommand(device, command);
+        }
+        /// <summary>
         /// 执行Fastboot命令
         /// </summary>
         /// <param name="device"></param>

@@ -17,7 +17,18 @@ namespace AutumnBox.Basic.Device
     partial class DeviceExtension
     {
         private const string ipPattern = @"(?<ip>\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})";
-		/// <summary>
+        /// <summary>
+        /// Pull文件
+        /// </summary>
+        /// <param name="device"></param>
+        /// <param name="fileOnDevice"></param>
+        /// <param name="savePath"></param>
+        public static void Pull(this IDevice device, string fileOnDevice, string savePath)
+        {
+            device.Adb($"pull {fileOnDevice} {savePath}")
+                .ThrowIfExitCodeNotEqualsZero();
+        }
+        /// <summary>
         /// 获取该设备在局域网中的IP
         /// </summary>
         /// <param name="device"></param>

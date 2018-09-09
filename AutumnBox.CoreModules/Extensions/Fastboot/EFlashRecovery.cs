@@ -3,14 +3,14 @@
 ** date:  2018/8/29 1:45:39 (UTC +8:00)
 ** desc： ...
 *************************************************/
-using AutumnBox.Basic.Flows;
+using AutumnBox.Basic.Device;
 using AutumnBox.OpenFramework.Extension;
 using Microsoft.Win32;
 
 namespace AutumnBox.CoreModules.Extensions.Fastboot
 {
     [ExtName("刷入REC", Lang = "en-US")]
-    [ExtName("Flash recovery.img",Lang ="en-US")]
+    [ExtName("Flash recovery.img", Lang = "en-US")]
     [ExtRequiredDeviceStates(Basic.Device.DeviceState.Fastboot)]
     public class EFlashRecovery : OfficialVisualExtension
     {
@@ -23,18 +23,12 @@ namespace AutumnBox.CoreModules.Extensions.Fastboot
             fileDialog.Multiselect = false;
             if (fileDialog.ShowDialog() == true)
             {
-                var flasher = new RecoveryFlasher();
-                flasher.Init(new RecoveryFlasherArgs()
-                {
-                    DevBasicInfo = TargetDevice,
-                    RecoveryFilePath = fileDialog.FileName,
-                });
-                flasher.OutputReceived += (s, e) =>
-                {
-                    WriteLine(e.Text);
-                };
-                var result = flasher.Run();
-                if (result.ResultType == Basic.FlowFramework.ResultType.Successful)
+                var result = TargetDevice.GetFastboot($"flash recovery \"{fileDialog.FileName}\"")
+                    .To(OutputPrinter).Execute();
+                TargetDevice.GetFastboot($"boot \"{fileDialog.FileName}\"")
+                    .To(OutputPrinter).Execute();
+
+                if (result.ExitCode == 0)
                 {
                     return OK;
                 }
