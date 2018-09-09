@@ -90,11 +90,6 @@
     <EmbeddedResource Include="Res\godpower.apk" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AutumnBox.Basic.Flows\AutumnBox.Basic.Flows.csproj">
-      <Project>{3091ecae-7ff2-421d-b970-1c76d7cab0c0}</Project>
-      <Name>AutumnBox.Basic.Flows</Name>
-      <Private>False</Private>
-    </ProjectReference>
     <ProjectReference Include="..\AutumnBox.Basic\AutumnBox.Basic.csproj">
       <Project>{84044fb2-bd38-4283-8065-b639270ece0f}</Project>
       <Name>AutumnBox.Basic</Name>

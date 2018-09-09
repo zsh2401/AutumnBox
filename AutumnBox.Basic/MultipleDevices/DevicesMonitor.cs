@@ -67,7 +67,6 @@ namespace AutumnBox.Basic.MultipleDevices
             IEnumerable<IDevice> _new = null;
             while (!tokenSource.Token.IsCancellationRequested)
             {
-                Logger.Debug(this,"loop");
                 _new = getter.GetDevices();
                 if (!_new.DevicesEquals(last))
                 {
