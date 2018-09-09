@@ -3,10 +3,9 @@
 ** date:  2018/8/13 8:32:48 (UTC +8:00)
 ** desc： ...
 *************************************************/
+using AutumnBox.Basic.Calling;
 using AutumnBox.Basic.Device;
 using AutumnBox.Basic.Extension;
-using AutumnBox.Basic.Flows;
-using AutumnBox.GUI.Windows;
 using AutumnBox.OpenFramework.Extension;
 using System;
 using System.Collections.Generic;
@@ -45,8 +44,6 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot
             return OK;
         }
 
-        ApkInstaller installer;
-
         private void Install(List<FileInfo> files)
         {
             WriteLine(App.GetPublicResouce<string>("ExtensionIniting"));
@@ -82,18 +79,14 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot
             Tip = string.Format(App.GetPublicResouce<string>("AppInstallingFmt"), crt, total);
             Progress = crt / total * 100.0;
         }
-
+        //private bool callStopped = false;
+        //private ProcessBasedCommand executingCommand;
         protected override bool VisualStop()
         {
-            try
-            {
-                installer?.ForceStop();
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
+            //callStopped = true;
+            //executingCommand?.Kill();
+            //return true;
+            return false;
         }
     }
 }

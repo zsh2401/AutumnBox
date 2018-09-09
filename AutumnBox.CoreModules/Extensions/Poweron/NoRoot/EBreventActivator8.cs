@@ -4,14 +4,9 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.Basic.Device;
-using AutumnBox.Basic.Flows;
 using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.Open;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot
 {
@@ -24,7 +19,6 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot
     [ExtIcon("Icons.brevent.png")]
     public class EBreventActivator8 : OfficialVisualExtension
     {
-        BreventServiceActivator activator;
         protected override int VisualMain()
         {
             bool fixAndroidO = false;

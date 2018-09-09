@@ -38,5 +38,9 @@ namespace AutumnBox.CoreModules
             });
             return result;
         }
+        protected override bool VisualStop()
+        {
+            return false;
+        }
     }
 }
