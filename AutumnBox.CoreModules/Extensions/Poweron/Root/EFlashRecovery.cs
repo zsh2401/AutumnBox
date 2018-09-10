@@ -12,7 +12,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.Root
     [ExtName("[ROOT]Flast recovery.img", Lang = "en-US")]
     [ExtRequireRoot]
     [ExtRequiredDeviceStates(DeviceState.Poweron)]
-    public class EFlashRecovery : AutumnBoxExtension
+    class EFlashRecovery : AutumnBoxExtension
     {
         public override int Main()
         {
