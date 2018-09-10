@@ -12,7 +12,6 @@
 *
 \* =============================================================================*/
 using AutumnBox.Basic.Data;
-using AutumnBox.Basic.Executer;
 using System;
 
 namespace AutumnBox.Basic.FlowFramework
@@ -34,7 +33,7 @@ namespace AutumnBox.Basic.FlowFramework
         /// <summary>
         /// 执行器
         /// </summary>
-        public readonly CommandExecuter Executer;
+        public readonly object Executer;
         /// <summary>
         /// 具体的参数,参数类型由所属的FunctionFlow决定
         /// </summary>
@@ -44,10 +43,10 @@ namespace AutumnBox.Basic.FlowFramework
         /// </summary>
         /// <param name="args"></param>
         /// <param name="executer"></param>
-        public ToolKit(TArgs args, CommandExecuter executer = null)
+        public ToolKit(TArgs args, object executer = null)
         {
             Args = args;
-            Executer = executer ?? new CommandExecuter();
+            Executer = executer ?? new object();
             //Ae = (command) =>
             //{ return Executer.Execute(Command.MakeForAdb(Args.DevBasicInfo.Serial, command)); };
             //Fe = (command) =>

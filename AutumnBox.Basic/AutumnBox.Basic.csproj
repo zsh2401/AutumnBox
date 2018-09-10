@@ -106,6 +106,7 @@
     <Compile Include="Exceptions\DeviceHasNoSuException.cs" />
     <Compile Include="Exceptions\DeviceNotAliveException.cs" />
     <Compile Include="Device\DeviceExtension.Execute.cs" />
+    <Compile Include="FlowFramework\IOutputable.cs" />
     <Compile Include="ManagedAdb\Adb.cs" />
     <Compile Include="ManagedAdb\AdbClient.cs" />
     <Compile Include="ManagedAdb\AdbClientWarpper.cs" />
@@ -135,10 +136,7 @@
     <Compile Include="Device\Management\Flash\DeviceImageFinder.cs" />
     <Compile Include="Exceptions\ExcutionException.cs" />
     <Compile Include="Data\OutputReceivedEvent.cs" />
-    <Compile Include="Executer\ProcessStartedEvent.cs" />
     <Compile Include="FlowFramework\IFunctionFlowBase.cs" />
-    <Compile Include="Executer\CommandExecuter.cs" />
-    <Compile Include="Executer\IOutputable.cs" />
     <Compile Include="FlowFramework\FunctionFlow.cs" />
     <Compile Include="FlowFramework\FunctionFlowBase.cs" />
     <Compile Include="FlowFramework\FlowArgs.cs" />
@@ -155,7 +153,6 @@
     <Compile Include="FlowFramework\Stoper.cs" />
     <Compile Include="MultipleDevices\IDevicesGetter.cs" />
     <Compile Include="Data\Output.cs" />
-    <Compile Include="Executer\Command.cs" />
     <Compile Include="MultipleDevices\DevicesMonitor.cs" />
     <Compile Include="Device\DeviceState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

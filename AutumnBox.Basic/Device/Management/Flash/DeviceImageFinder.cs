@@ -5,9 +5,7 @@
 ** compiler: Visual Studio 2017
 ** desc： ...
 *********************************************************************************/
-using AutumnBox.Basic.Executer;
 using AutumnBox.Basic.Util;
-using System;
 using System.Linq;
 
 namespace AutumnBox.Basic.Device.Management.Flash

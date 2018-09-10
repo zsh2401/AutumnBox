@@ -5,8 +5,6 @@
 ** compiler: Visual Studio 2017
 ** desc： ...
 *********************************************************************************/
-using AutumnBox.Basic.Device.Management.OS;
-using AutumnBox.Basic.Executer;
 using AutumnBox.Support.Log;
 using System;
 using System.Collections.Generic;

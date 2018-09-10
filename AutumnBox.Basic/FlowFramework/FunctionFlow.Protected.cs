@@ -12,7 +12,6 @@
 *
 \* =============================================================================*/
 using AutumnBox.Basic.Data;
-using AutumnBox.Basic.Executer;
 using AutumnBox.Support.Log;
 using System;
 using System.Threading.Tasks;
@@ -72,11 +71,11 @@ namespace AutumnBox.Basic.FlowFramework
         /// 当toolKit.Executer中的核心进程启动时调用
         /// </summary>
         /// <param name="e"></param>
-        protected virtual void OnProcessStarted(ProcessStartedEventArgs e)
+        protected virtual void OnProcessStarted(EventArgs e)
         {
-            Logger.Info(this,"Process Started,Pid is " + e.Pid.ToString());
-            _pid = e.Pid;
-            ProcessStarted?.Invoke(this, e);
+            //Logger.Info(this,"Process Started,Pid is " + e.Pid.ToString());
+            //_pid = e.Pid;
+            //ProcessStarted?.Invoke(this, e);
         }
         /// <summary>
         /// 处理执行结果,在MainMethod执行完成后调用,如有需要,请重写这个函数

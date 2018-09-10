@@ -11,7 +11,7 @@ using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.Open;
 using System;
 
-namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot
+namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot.Sh
 {
     [ExtName("黑阀一键激活-安卓8")]
     [ExtName("Activate brevent by one key-Android O", Lang = "en-us")]

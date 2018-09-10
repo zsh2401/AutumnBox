@@ -11,7 +11,6 @@
 * Company: I am free man
 *
 \* =============================================================================*/
-using AutumnBox.Basic.Executer;
 using AutumnBox.Support.Log;
 using AutumnBox.Support.Helper;
 using System;
@@ -26,7 +25,7 @@ namespace AutumnBox.Basic.FlowFramework
     /// <typeparam name="TArgs"></typeparam>
     /// <typeparam name="TResult"></typeparam>
     public abstract partial class FunctionFlow<TArgs, TResult>
-        : FunctionFlowBase, IOutputable, IForceStoppable, IDisposable, ICompletable, IFunctionFlowBase
+        : FunctionFlowBase, INotifyOutput, IForceStoppable, IDisposable, ICompletable, IFunctionFlowBase
         where TArgs : FlowArgs, new()
         where TResult : FlowResult, new()
     {
@@ -45,7 +44,7 @@ namespace AutumnBox.Basic.FlowFramework
         /// <summary>
         /// 当流程内部的主要外部进程开始时触发
         /// </summary>
-        public event ProcessStartedEventHandler ProcessStarted;
+        public event EventHandler ProcessStarted;
         /// <summary>
         /// 没有任何特殊参数的结束事件
         /// </summary>
@@ -63,7 +62,7 @@ namespace AutumnBox.Basic.FlowFramework
         /// </summary>
         public FunctionFlow()
         {
-            _executer = new CommandExecuter();
+            //_executer = new CommandExecuter();
             _resultTmp = new TResult();
             //_executer.ProcessStarted += (s, e) =>
             //{

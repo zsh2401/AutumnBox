@@ -6,7 +6,7 @@
 using AutumnBox.OpenFramework.Extension;
 using AutumnBox.CoreModules.Lib;
 
-namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot
+namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot.DpmSetter
 {
     [ExtName("免ROOT激活冰箱")]
     [ExtAppProperty("com.catchingnow.icebox")]

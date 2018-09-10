@@ -3,20 +3,11 @@
 ** date:  2018/8/29 1:30:57 (UTC +8:00)
 ** desc： ...
 *************************************************/
-using AutumnBox.Basic.Calling;
-using AutumnBox.Basic.Calling.Adb;
-using AutumnBox.Basic.Executer;
-using AutumnBox.Basic.Extension;
 using AutumnBox.CoreModules.Lib;
 using AutumnBox.OpenFramework.Extension;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot
+namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot.DpmSetter
 {
     [ExtName("免ROOT激活小黑屋")]
     [ExtAppProperty("com.web1n.stopapp")]
