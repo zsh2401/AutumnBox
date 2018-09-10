@@ -143,9 +143,6 @@
     <Compile Include="Util\Net\MOTDGetter.cs" />
     <Compile Include="Util\Net\RemoteDataGetter.cs" />
     <Compile Include="Util\Net\UpdateChecker.cs" />
-    <Compile Include="UI\Cstm\ImageBtn.xaml.cs">
-      <DependentUpon>ImageBtn.xaml</DependentUpon>
-    </Compile>
     <Compile Include="MVVM\FlexiableCommand.cs" />
     <Compile Include="Util\OS\SystemHelper.cs" />
     <Compile Include="Util\Self.cs" />
@@ -244,18 +241,9 @@
     <Compile Include="View\Windows\FatalWindow.xaml.cs">
       <DependentUpon>FatalWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\UserManagerWindow.xaml.cs">
-      <DependentUpon>UserManagerWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Resources\Images\ImageGetter.cs" />
-    <Compile Include="UI\Cstm\CstmTitleBar.xaml.cs">
-      <DependentUpon>CstmTitleBar.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Util\OS\AutoGC.cs" />
     <Compile Include="Util\OS\MachineInfo.cs" />
-    <Compile Include="Windows\DpiChangeWindow.xaml.cs">
-      <DependentUpon>DpiChangeWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
@@ -423,14 +411,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Cstm\CstmTitleBar.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UI\Cstm\ImageBtn.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="View\DialogContent\ContentChoice.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -515,19 +495,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\DpiChangeWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="View\Windows\FatalWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Windows\MainWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windows\UserManagerWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

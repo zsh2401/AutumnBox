@@ -15,12 +15,9 @@ using AutumnBox.GUI.Properties;
 using AutumnBox.GUI.Util;
 using AutumnBox.GUI.Util.I18N;
 using AutumnBox.GUI.View.Windows;
-using AutumnBox.GUI.Windows;
 using AutumnBox.Support.Log;
 using System;
-using System.Linq;
 using System.Windows;
-using System.Windows.Threading;
 
 namespace AutumnBox.GUI
 {
