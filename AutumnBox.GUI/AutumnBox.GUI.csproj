@@ -601,11 +601,6 @@
     <Resource Include="Resources\Themes_Old\DreamTheme_files\bg.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="AutumnBoxAop.atmbxml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\Sound\ok.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

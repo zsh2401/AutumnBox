@@ -31,6 +31,10 @@ namespace AutumnBox.OpenFramework.Extension
 
         public override void Before(ExtBeforeCreateArgs args)
         {
+            if ((!(bool)Value) ||  args.TargetDevice == null)
+            {
+                return;
+            }
             if (!DeviceHaveRoot(args.TargetDevice) && (bool)Value)
             {
                 args.Context.App.RunOnUIThread(() =>

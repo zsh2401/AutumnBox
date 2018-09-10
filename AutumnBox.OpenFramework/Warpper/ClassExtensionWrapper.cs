@@ -162,6 +162,7 @@ namespace AutumnBox.OpenFramework.Warpper
             State = ExtensionWarpperState.Running;
             IsForceStopped = false;
             LastReturnCode = -1;
+            Logger.Debug("inited");
             //创建前检测
             if (!BeforeCreateInstance(device)) {
                 State = ExtensionWarpperState.Ready;
@@ -181,6 +182,7 @@ namespace AutumnBox.OpenFramework.Warpper
             }
             //摧毁实例
             DestoryInstance();
+            State = ExtensionWarpperState.Ready;
         }
 
         /// <summary>
