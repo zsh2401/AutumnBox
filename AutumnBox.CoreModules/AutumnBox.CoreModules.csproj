@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="CoreLib.cs" />
     <Compile Include="Extensions\Fastboot\EFlashRecovery.cs" />
+    <Compile Include="Lib\BasedOnGodPowerExtension.cs" />
     <Compile Include="Extensions\Poweron\NoRoot\EGodPower_IceBox.cs" />
     <Compile Include="Extensions\Poweron\NoRoot\EGodPower_StopApp.cs" />
     <Compile Include="Lib\GodPower.cs" />

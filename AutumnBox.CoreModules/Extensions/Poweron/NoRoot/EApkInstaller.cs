@@ -79,14 +79,5 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot
             Tip = string.Format(App.GetPublicResouce<string>("AppInstallingFmt"), crt, total);
             Progress = crt / total * 100.0;
         }
-        //private bool callStopped = false;
-        //private ProcessBasedCommand executingCommand;
-        protected override bool VisualStop()
-        {
-            //callStopped = true;
-            //executingCommand?.Kill();
-            //return true;
-            return false;
-        }
     }
 }

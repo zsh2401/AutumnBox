@@ -3,19 +3,18 @@
 ** date:  2018/8/13 9:53:12 (UTC +8:00)
 ** desc： ...
 *************************************************/
-using AutumnBox.Basic.Extension;
+using AutumnBox.Basic.Calling.Adb;
 using AutumnBox.OpenFramework.Extension;
 using System;
-using System.IO;
 
 namespace AutumnBox.CoreModules.Extensions.Mix
 {
     [ExtName("推送文件到手机主目录")]
-    [ExtName("[ROOT]Push files", Lang = "en-US")]
+    [ExtName("Push file to device", Lang = "en-US")]
     [ExtRequiredDeviceStates(Basic.Device.DeviceState.Poweron | Basic.Device.DeviceState.Recovery)]
-    public class EFilePusher : AutumnBoxExtension
+    public class EFilePusher : OfficialVisualExtension
     {
-        public override int Main()
+        protected override int VisualMain()
         {
             bool? dialogResult = null;
             string seleFile = null;
@@ -34,13 +33,16 @@ namespace AutumnBox.CoreModules.Extensions.Mix
             {
                 try
                 {
-                    new FileInfo(seleFile).PushTo(TargetDevice, "/sdcard/");
-                    return OK;
+                    return new AdbCommand(TargetDevice, $"push \"{seleFile}\" /sdcard/")
+                        .To(OutputPrinter)
+                        .Execute().ExitCode;
                 }
                 catch (Exception ex)
                 {
                     Logger.Warn("file pushing failed", ex);
-                    Ux.ShowWarnDialog("推送失败，请查看Log");
+                    WriteLine("推送失败");
+                    Tip = "推送失败";
+                    return ERR;
                 }
             }
             return ERR;

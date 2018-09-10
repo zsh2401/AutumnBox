@@ -3,10 +3,10 @@
 ** date:  2018/8/13 9:33:21 (UTC +8:00)
 ** desc： ...
 *************************************************/
+using AutumnBox.Basic.Calling.Adb;
 using AutumnBox.Basic.Device;
-using AutumnBox.Basic.FlowFramework;
-using AutumnBox.Basic.Flows;
 using AutumnBox.OpenFramework.Extension;
+using System.Threading;
 
 namespace AutumnBox.CoreModules.Extensions.Poweron.Root
 {
@@ -14,19 +14,18 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.Root
     [ExtName("[ROOT]Unlock system paration", Lang = "en-US")]
     [ExtRequiredDeviceStates(DeviceState.Poweron)]
     [ExtRequireRoot]
-    public class EUnlockSystemParation : AutumnBoxExtension
+    public class EUnlockSystemParation : OfficialVisualExtension
     {
-        public override int Main()
+        protected override int VisualMain()
         {
-            Ux.ShowLoadingWindow();
-            var unlocker = new SystemPartitionUnlocker();
-            unlocker.Init(new FlowArgs()
-            {
-                DevBasicInfo = TargetDevice
-            });
-            unlocker.Run();
-            Ux.CloseLoadingWindow();
-            return OK;
+            new AdbCommand(TargetDevice, $"root")
+                .To(OutputPrinter)
+                .Execute();
+            Thread.Sleep(300);
+            var result = new AdbCommand(TargetDevice, $"disable-verity")
+                .To(OutputPrinter)
+                .Execute();
+            return result.ExitCode;
         }
     }
 }

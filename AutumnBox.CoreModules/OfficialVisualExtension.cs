@@ -20,6 +20,11 @@ namespace AutumnBox.CoreModules
     [ContextPermission(CtxPer.High)]
     public abstract class OfficialVisualExtension : AtmbVisualExtension
     {
+        protected void WriteLineAndSetTip(string msg)
+        {
+            WriteLine(msg);
+            Tip = msg;
+        }
         protected virtual void OutputPrinter(OutputReceivedEventArgs e)
         {
             WriteLine(e.Text);
