@@ -4,6 +4,9 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.Basic.Device;
+using AutumnBox.Basic.Device.Management.AppFx;
+using AutumnBox.Basic.Device.Management.OS;
+using AutumnBox.Basic.Util;
 using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.Open;
 using System;
@@ -22,10 +25,10 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot
         protected override int VisualMain()
         {
             bool fixAndroidO = false;
-            if (new DeviceBuildPropGetter(TargetDevice.Serial).GetAndroidVersion() >= new Version("8.0.0"))
+            if (new DeviceBuildPropGetter(TargetDevice).GetAndroidVersion() >= new Version("8.0.0"))
             {
-                var result = Ux.DoChoice("msgNotice", "msgFixAndroidO", "btnDoNotOpen", "btnOpen");
-                switch (result)
+                var choice = Ux.DoChoice("msgNotice", "msgFixAndroidO", "btnDoNotOpen", "btnOpen");
+                switch (choice)
                 {
                     case ChoiceResult.Cancel:
                         return ERR;
@@ -37,14 +40,16 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot
                         break;
                 }
             }
-            var args = new ShScriptExecuterArgs() { DevBasicInfo = TargetDevice, FixAndroidOAdb = fixAndroidO };
-            /*开始操作*/
-            activator = new BreventServiceActivator();
-            activator.Init(args);
+            new ActivityManager(TargetDevice).StartActivity("me.piebridge.brevent", "ui.BreventActivity");
             WriteLine(App.GetPublicResouce<string>("ExtensionRunning"));
-            var exeResult = activator.Run();
-            WriteLine(exeResult.OutputData.ToString());
-            if (exeResult.ResultType == Basic.FlowFramework.ResultType.Successful)
+            var result = TargetDevice.GetShellCommand($"sh /data/data/me.piebridge.brevent/brevent.sh")
+                .To(OutputPrinter)
+                .Execute();
+            if (fixAndroidO && TargetDevice is UsbDevice usbDevice)
+            {
+                usbDevice.OpenNetDebugging(5555);
+            }
+            if (result.ExitCode == (int)LinuxReturnCode.None)
             {
                 return OK;
             }
@@ -55,15 +60,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot
         }
         protected override bool VisualStop()
         {
-            try
-            {
-                activator?.ForceStop();
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
+            return false;
         }
     }
 }

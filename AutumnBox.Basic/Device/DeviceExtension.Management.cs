@@ -68,7 +68,7 @@ namespace AutumnBox.Basic.Device
         /// <param name="device"></param>
         /// <param name="sh"></param>
         /// <returns></returns>
-        public static IProcessBasedCommand GetShellCommand(this IDevice device, string sh)
+        public static ProcessBasedCommand GetShellCommand(this IDevice device, string sh)
         {
             device.ThrowIfNotAlive();
             return new ShellCommand(device, sh);
