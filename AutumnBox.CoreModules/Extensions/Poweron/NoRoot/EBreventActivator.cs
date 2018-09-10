@@ -4,6 +4,8 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.Basic.Device;
+using AutumnBox.Basic.Device.Management.AppFx;
+using AutumnBox.Basic.Util;
 using AutumnBox.OpenFramework.Extension;
 
 namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot
@@ -18,14 +20,12 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot
     {
         protected override int VisualMain()
         {
-            var args = new ShScriptExecuterArgs() { DevBasicInfo = TargetDevice, FixAndroidOAdb = false };
-            /*开始操作*/
-            activator = new BreventServiceActivator();
-            activator.Init(args);
+            new ActivityManager(TargetDevice).StartActivity("me.piebridge.brevent", "ui.BreventActivity");
             WriteLine(App.GetPublicResouce<string>("ExtensionRunning"));
-            var result = activator.Run();
-            WriteLine(result.OutputData.ToString());
-            if (result.ResultType == Basic.FlowFramework.ResultType.Successful)
+            var result = TargetDevice.GetShellCommand($"sh /data/data/me.piebridge.brevent/brevent.sh")
+                .To(OutputPrinter)
+                .Execute();
+            if (result.ExitCode == (int)LinuxReturnCode.None)
             {
                 return OK;
             }
@@ -34,10 +34,9 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot
                 return ERR;
             }
         }
-       protected override bool VisualStop()
+        protected override bool VisualStop()
         {
-            activator.ForceStop();
-            return true;
+            return false;
         }
     }
 }
