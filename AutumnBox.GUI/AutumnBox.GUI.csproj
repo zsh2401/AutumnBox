@@ -126,6 +126,7 @@
     <Compile Include="Util\Bus\ConnectedDevicesListener.cs" />
     <Compile Include="Util\Bus\OpenFxObserver.cs" />
     <Compile Include="Util\Bus\Sounds.cs" />
+    <Compile Include="Util\FatalHandler.cs" />
     <Compile Include="Util\UI\BlurHelper.cs" />
     <Compile Include="Util\UI\BoxHelper.cs" />
     <Compile Include="Util\UI\DialogManager.cs" />
@@ -242,7 +243,7 @@
     <Compile Include="View\Windows\UpdateNoticeWindow.xaml.cs">
       <DependentUpon>UpdateNoticeWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\FatalWindow.xaml.cs">
+    <Compile Include="View\Windows\FatalWindow.xaml.cs">
       <DependentUpon>FatalWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\UserManagerWindow.xaml.cs">
@@ -520,7 +521,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\FatalWindow.xaml">
+    <Page Include="View\Windows\FatalWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
