@@ -1,10 +1,4 @@
-﻿using AutumnBox.GUI.Properties;
-using AutumnBox.GUI.Util.OS;
-using AutumnBox.GUI.View.Windows;
-using AutumnBox.GUI.ViewModel;
-using AutumnBox.GUI.Windows;
-using System;
-using System.Windows;
+﻿using AutumnBox.GUI.ViewModel;
 using System.Windows.Controls;
 
 namespace AutumnBox.GUI.View.DialogContent
