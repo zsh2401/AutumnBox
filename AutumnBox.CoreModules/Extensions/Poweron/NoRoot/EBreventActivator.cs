@@ -34,9 +34,5 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot
                 return ERR;
             }
         }
-        protected override bool VisualStop()
-        {
-            return false;
-        }
     }
 }
