@@ -18,6 +18,5 @@
   </metadata>
   <files>
     <file src="bin\Sdk\AutumnBox.Basic.dll" target="lib\net45" />
-    <file src="bin\Sdk\AutumnBox.Basic.Flows.dll" target="lib\net45" />
   </files>
 </package>
