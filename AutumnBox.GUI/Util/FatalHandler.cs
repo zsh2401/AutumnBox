@@ -4,13 +4,9 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.GUI.View.Windows;
-using AutumnBox.GUI.Windows;
 using AutumnBox.Support.Log;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Threading;
 
@@ -21,7 +17,7 @@ namespace AutumnBox.GUI.Util
         private static string[] blockListForExceptionSource = {
             "PresentationCore"
         };
-        public static  void Current_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
+        public static void Current_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
         {
             string src = e.Exception.Source;
             if (blockListForExceptionSource.Contains(src))
@@ -52,7 +48,10 @@ namespace AutumnBox.GUI.Util
                 case "zh-HK":
                     try
                     {
-                        new FatalWindow(exstr).ShowDialog();
+                        App.Current.Dispatcher.Invoke(() =>
+                        {
+                            new FatalWindow(exstr).ShowDialog();
+                        });
                     }
                     catch
                     {
