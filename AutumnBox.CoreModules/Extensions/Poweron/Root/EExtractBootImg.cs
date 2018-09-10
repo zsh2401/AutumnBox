@@ -3,9 +3,12 @@
 ** date:  2018/8/13 10:00:36 (UTC +8:00)
 ** desc： ...
 *************************************************/
+using AutumnBox.Basic.Calling.Adb;
 using AutumnBox.Basic.Device;
-using AutumnBox.Basic.Flows;
+using AutumnBox.Basic.Device.Management.Flash;
+using AutumnBox.Basic.ManagedAdb;
 using AutumnBox.OpenFramework.Extension;
+using System.IO;
 using System.Windows.Forms;
 
 namespace AutumnBox.CoreModules.Extensions.Poweron.Root
@@ -14,13 +17,14 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.Root
     [ExtName("[ROOT]Extract boot.img", Lang = "en-US")]
     [ExtRequireRoot]
     [ExtRequiredDeviceStates(DeviceState.Poweron)]
-    public class EExtractBootImg : AutumnBoxExtension
+    public class EExtractBootImg : OfficialVisualExtension
     {
-        public override int Main()
+        protected override int VisualMain()
         {
             string savePath = null;
             DialogResult dialogResult = DialogResult.No;
-            App.RunOnUIThread(()=> {
+            App.RunOnUIThread(() =>
+            {
                 FolderBrowserDialog fbd = new FolderBrowserDialog
                 {
                     Description = "请选择保存路径"
@@ -29,17 +33,26 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.Root
                 savePath = fbd.SelectedPath;
             });
 
-            var args = new DeviceImageExtractorArgs()
+            var finder = new DeviceImageFinder(TargetDevice);
+            WriteLineAndSetTip("寻找Boot文件中");
+            var path = finder.PathOf(DeviceImage.Boot);
+            if (path == null)
             {
-                DevBasicInfo = TargetDevice,
-                SavePath = savePath,
-                ImageType = DeviceImage.Boot,
-            };
-            var extrator = new DeviceImageExtractor();
-            extrator.Init(args);
-            Ux.ShowLoadingWindow();
-            extrator.Run();
-            Ux.CloseLoadingWindow();
+                WriteLineAndSetTip("寻找路径失败");
+                return ERR;
+            }
+            else
+            {
+                WriteLine("寻找成功:" + path);
+            }
+            WriteLineAndSetTip("正在复制到临时目录");
+            var tmpPath = $"{Adb.AdbTmpPathOnDevice}/tmp.img"; 
+            var cpResult = new SuCommand(TargetDevice, $"cp {path} {tmpPath}")
+                 .To(OutputPrinter)
+                 .Execute();
+            var pullResult = new AdbCommand(TargetDevice, $"pull {tmpPath} \"{Path.Combine(savePath,"boot.img")}\"")
+                 .To(OutputPrinter)
+                 .Execute();
             return OK;
         }
     }

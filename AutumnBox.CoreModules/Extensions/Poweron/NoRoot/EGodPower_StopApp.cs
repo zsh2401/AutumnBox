@@ -3,9 +3,11 @@
 ** date:  2018/8/29 1:30:57 (UTC +8:00)
 ** desc： ...
 *************************************************/
+using AutumnBox.Basic.Calling;
 using AutumnBox.Basic.Calling.Adb;
 using AutumnBox.Basic.Executer;
 using AutumnBox.Basic.Extension;
+using AutumnBox.CoreModules.Lib;
 using AutumnBox.OpenFramework.Extension;
 using System;
 using System.Collections.Generic;
@@ -20,68 +22,23 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot
     [ExtAppProperty("com.web1n.stopapp")]
     [ExtIcon("Icons.stopapp.png")]
     [ExtRequiredDeviceStates(Basic.Device.DeviceState.Poweron)]
-    public class EGodPower_StopApp : OfficialVisualExtension
+    public class EGodPower_StopApp : BasedOnGodPowerExtension
     {
-        private const string FMT_CMD =
-            "CLASSPATH=" + GODPOWER_APK_ON_DEVICE +
-            " app_process /system/bin " + INNER_CLASS + " {0}";
-        private const string INNER_CLASS = "com.web1n.myapplication.test";
-        private const string GODPOWER_APK_ON_DEVICE = "/data/local/tmp/godpower.apk";
-        private const string ARG_RM_ALL_ACC = "-removeAllAccounts";
-        private const string ARG_RM_ALL_USR = "-removeAllUsers";
-        private const string ARG_SET_ICE_BOX = "-setUpIcebox";
-        private const string ARG_SET_STP_APP = "-setUpStopapp";
-        protected override int VisualMain()
+        public override string ReceiverClassName => throw new NotImplementedException();
+
+        public override string DpmAppPackageName => throw new NotImplementedException();
+
+        protected override bool OnWarnUser()
         {
             var warnMsg = string.Format(Res("DPMWarningFmt"), Res("AppNameStopApp"));
-            if (!Ux.Agree(warnMsg))
-            {
-                return ERR;
-            }
-            WriteLine("正在提取apk文件");
-            FileInfo godpowerApkFile = new FileInfo(Path.Combine(Tmp.Path, "godpower.apk"));
-            EmbFileManager.Get("Res.godpower.apk").ExtractTo(godpowerApkFile);
-            WriteLine("已提取到" + godpowerApkFile.FullName);
-
-            WriteLine("正在推送冲锋兵");
-            godpowerApkFile.PushTo(TargetDevice, GODPOWER_APK_ON_DEVICE);
-            WriteLine("推送文件完成");
-
-            string strCmd = null;
-            ShellCommand command = null;
-
-            WriteLine("正在移除账号");
-            strCmd = string.Format(FMT_CMD, ARG_RM_ALL_ACC);
-            command = new ShellCommand(TargetDevice, strCmd);
-            Logger.Info("executing shell command:" + command);
-            command.To((e) =>
-            {
-                WriteLine(e.Text);
-            }).Execute();
-
-            WriteLine("正在移除用户");
-            strCmd = string.Format(FMT_CMD, ARG_RM_ALL_USR);
-            command = new ShellCommand(TargetDevice, strCmd);
-            Logger.Info("executing shell command:" + command);
-            command.To((e) =>
-            {
-                WriteLine(e.Text);
-            }).Execute();
-
-            WriteLine("正在设置设备管理员");
-            strCmd = string.Format(FMT_CMD, ARG_SET_ICE_BOX);
-            command = new ShellCommand(TargetDevice, strCmd);
-            Logger.Info("executing shell command:" + command);
-            int exitCode = command.To((e) =>
-            {
-                WriteLine(e.Text);
-            }).Execute().ExitCode;
-            if (exitCode != 0)
-            {
-                WriteLine("设置设备管理员时出错,可能你已经设置了别的APP为设备管理员?");
-            }
-
-            return exitCode;
+            return Ux.Agree(warnMsg);
+        }
+        protected override int SetReciverAsDpm()
+        {
+            return GodPower
+                .GetSetStopAppCommand()
+                .To(OutputPrinter)
+                .Execute().ExitCode;
         }
     }
 }
