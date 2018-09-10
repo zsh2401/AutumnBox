@@ -28,6 +28,12 @@
     <s:String x:Key="PanelHomeJoinQQGroup">QQ group</s:String>
     <s:String x:Key="PanelHomeSendMail">E-Mail</s:String>
     
+    <!--UpdateWindow-->
+    <s:String x:Key="UpdateWindowBtnClose">E-Mail</s:String>
+     <s:String x:Key="UpdateWindowBtnUpdate">E-Mail</s:String>
+     <s:String x:Key="UpdateWindowTitle">Have a new version</s:String>
+     <s:String x:Key="UpdateWindowCkbSkipVersion">Skip this version</s:String>
+    
     <!--PanelSettings-->
     <s:String x:Key="PanelSettingsLanguage">Language</s:String>
       <s:String x:Key="PanelSettingsDebug">Debug</s:String>

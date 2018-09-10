@@ -1,0 +1,19 @@
+﻿<Window x:Class="AutumnBox.GUI.View.Windows.UpdateNoticeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AutumnBox.GUI.View.Windows"
+        mc:Ignorable="d"
+        FontFamily="{DynamicResource AutumnBox.Font}"
+        Title="{DynamicResource UpdateWindowTitle}" MinHeight="350" MinWidth="330" Height="350" Width="446"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="CanResize">
+    <Grid Margin="1" Background="WhiteSmoke">
+        <StackPanel Margin="10" VerticalAlignment="Top">
+            <TextBlock Text="{Binding Model.Header}" TextWrapping="Wrap" FontSize="25"/>
+            <TextBlock Text="{Binding Model.Message}" TextWrapping="Wrap" FontSize="15"/>
+        </StackPanel>
+        <Button Margin="10" HorizontalAlignment="Center" VerticalAlignment="Bottom" Style="{DynamicResource MaterialDesignRaisedButton}" Command="{Binding GotoUpdate}" Content="{DynamicResource UpdateWindowBtnUpdate}"/>
+    </Grid>
+</Window>

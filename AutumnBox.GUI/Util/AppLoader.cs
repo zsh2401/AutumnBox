@@ -45,6 +45,7 @@ namespace AutumnBox.GUI.Util
         }
         private void Load()
         {
+            Updater.CheckAndNotice();
             ui.Progress = 0;
             //如果设置在启动时打开调试窗口
             if (Settings.Default.ShowDebuggingWindowNextLaunch)
