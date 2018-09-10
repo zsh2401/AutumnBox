@@ -4,9 +4,7 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.Basic.Calling;
-using AutumnBox.Basic.Calling.Cmd;
 using AutumnBox.Basic.Data;
-using AutumnBox.Basic.Executer;
 using AutumnBox.OpenFramework.Content;
 using System;
 using System.Diagnostics;

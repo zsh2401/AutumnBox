@@ -6,7 +6,7 @@
              FontFamily="{DynamicResource AutumnBox.Font}"
              xmlns:local="clr-namespace:AutumnBox.GUI.View.Panel"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             mc:Ignorable="d" d:DesignWidth="820" Height="890">
+             mc:Ignorable="d" d:DesignWidth="820" Height="933.5">
     <Grid Width="720">
         <StackPanel  Orientation="Vertical">
             <materialDesign:Card Margin="10" Height="120">
@@ -51,6 +51,7 @@
             <materialDesign:Card Margin="10" >
                 <Image Source="/Resources/Drawable/More/halo.png"/>
             </materialDesign:Card>
+            <TextBlock Margin="10" TextAlignment="Center" Text="不经历风雨,怎能有传奇?我会在这里等着你"/>
         </StackPanel>
 
     </Grid>
