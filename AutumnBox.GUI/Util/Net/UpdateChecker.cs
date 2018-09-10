@@ -49,24 +49,6 @@ namespace AutumnBox.GUI.Util.Net
             }
         }
 
-        public bool NeedUpdate
-        {
-            get
-            {
-                try
-                {
-                    return Version > Self.Version //检测到的版本大于当前版本
-    && new Version(Settings.Default.SkipVersion) < Version;//并且没有被设置跳过
-                }
-                catch (Exception ex)
-                {
-                    Logger.Warn(this, "A exception throwed on getting NeedUpdate Property", ex);
-                    return false;
-                }
-
-            }
-        }
-
         public DateTime Time
         {
             get

@@ -150,6 +150,7 @@
     <Compile Include="MVVM\FlexiableCommand.cs" />
     <Compile Include="Util\OS\SystemHelper.cs" />
     <Compile Include="Util\Self.cs" />
+    <Compile Include="Util\Updater.cs" />
     <Compile Include="ViewModel\VMContentChoice.cs" />
     <Compile Include="ViewModel\VMContentConnectNetDevice.cs" />
     <Compile Include="ViewModel\VMCurrentDevice.cs" />
@@ -164,6 +165,7 @@
     <Compile Include="ViewModel\VMRunningWindow.cs" />
     <Compile Include="Util\Bus\DeviceSelectionObserver.cs" />
     <Compile Include="ViewModel\VMSettingsDialog.cs" />
+    <Compile Include="ViewModel\VMUpdateWindow.cs" />
     <Compile Include="View\Controls\AtmbDialogContent.cs" />
     <Compile Include="View\DialogContent\ContentChoice.xaml.cs">
       <DependentUpon>ContentChoice.xaml</DependentUpon>
@@ -222,7 +224,6 @@
     <Compile Include="Util\Extensions.cs" />
     <Compile Include="Util\OpenFxManagement\OpenFrameworkManager.cs" />
     <Compile Include="Util\Data\Md5.cs" />
-    <Compile Include="View\WindowManager.cs" />
     <Compile Include="View\Windows\ChoiceWindow.xaml.cs">
       <DependentUpon>ChoiceWindow.xaml</DependentUpon>
     </Compile>
@@ -238,6 +239,9 @@
     <Compile Include="View\Windows\RunningWindow.xaml.cs">
       <DependentUpon>RunningWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Windows\UpdateNoticeWindow.xaml.cs">
+      <DependentUpon>UpdateNoticeWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\FatalWindow.xaml.cs">
       <DependentUpon>FatalWindow.xaml</DependentUpon>
     </Compile>
@@ -250,21 +254,11 @@
     </Compile>
     <Compile Include="Util\OS\AutoGC.cs" />
     <Compile Include="Util\OS\MachineInfo.cs" />
-    <Compile Include="Windows\ChoiceBox.xaml.cs">
-      <DependentUpon>ChoiceBox.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Windows\DpiChangeWindow.xaml.cs">
       <DependentUpon>DpiChangeWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\MMessageBox.xaml.cs">
-      <DependentUpon>MMessageBox.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\TBLoadingEffect.cs" />
-    <Compile Include="Windows\UpdateNoticeWindow.xaml.cs">
-      <DependentUpon>UpdateNoticeWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Util\OS\NativeMethods.cs" />
   </ItemGroup>
@@ -518,7 +512,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\ChoiceBox.xaml">
+    <Page Include="View\Windows\UpdateNoticeWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -531,14 +525,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Windows\MainWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windows\MMessageBox.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windows\UpdateNoticeWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
