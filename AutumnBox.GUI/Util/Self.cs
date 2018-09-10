@@ -57,8 +57,7 @@ namespace AutumnBox.GUI.Util
         {
             get
             {
-                return false;
-                //return Process.GetProcessesByName("AutumnBox.GUI").Length > 1;
+                return Process.GetProcessesByName("AutumnBox.GUI").Length > 1;
             }
         }
     }

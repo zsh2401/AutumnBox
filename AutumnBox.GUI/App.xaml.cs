@@ -13,6 +13,7 @@
 \* =============================================================================*/
 using AutumnBox.GUI.Properties;
 using AutumnBox.GUI.Util;
+using AutumnBox.GUI.Util.I18N;
 using AutumnBox.GUI.View.Windows;
 using AutumnBox.GUI.Windows;
 using AutumnBox.Support.Log;
@@ -32,7 +33,8 @@ namespace AutumnBox.GUI
 
         internal const int HAVE_OTHER_PROCESS = 25364;
 
-        public App() :base(){
+        public App() : base()
+        {
         }
 
         public static new App Current { get; private set; }
@@ -52,9 +54,8 @@ namespace AutumnBox.GUI
         {
             base.OnStartup(e);
             Current = this;
-            
 #if !DEBUG
-            this.DispatcherUnhandledException += Current_DispatcherUnhandledException;
+            this.DispatcherUnhandledException += FatalHandler.Current_DispatcherUnhandledException;
 #endif
             if (Settings.Default.SkipVersion == "0.0.1")
             {
@@ -69,74 +70,16 @@ namespace AutumnBox.GUI
                     "警告/Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
                 Shutdown(HAVE_OTHER_PROCESS);
             }
-            //if (Settings.Default.IsFirstLaunch)
-            //{
-            //    LanguageHelper.SetLanguageByEnvironment();
-            //}
-            //else
-            //{
-            //    LanguageHelper.SetLanguage(Settings.Default.Language);
-            //}
-        }
-
-        private string[] blockListForExceptionSource = {
-            "PresentationCore"
-        };
-        private void Current_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
-        {
-            string src = e.Exception.Source;
-            if (blockListForExceptionSource.Contains(src))
+            if (Settings.Default.IsFirstLaunch)
             {
-                Logger.Warn(this, "PresentationCore Error", e.Exception);
-                return;
+                LanguageManager.Instance.ApplyByEnvoriment();
             }
-            string n = Environment.NewLine;
-            string exstr =
-                $"AutumnBox Exception {DateTime.Now.ToString("MM/dd/yyyy    HH:mm:ss")}{n}{n}" +
-                $"Exception:{n}{e.Exception.ToString()}{n}{n}" +
-                $"Message:{n}{e.Exception.Message}{n}{n}" +
-                $"Source:{n}{e.Exception.Source}{n}{n}" +
-                $"Inner:{n}{e.Exception.InnerException?.ToString() ?? "None"}{n}";
-
-            try { Logger.Fatal(this, exstr); } catch { }
-            ShowErrorToUser(exstr);
-            e.Handled = true;
-            Shutdown(1);
-        }
-
-        private void ShowErrorToUser(string exstr)
-        {
-            switch (System.Threading.Thread.CurrentThread.CurrentCulture.Name)
+            else
             {
-                case "zh-CN":
-                case "zh-TW":
-                case "zh-SG":
-                case "zh-HK":
-                    try
-                    {
-                        new FatalWindow(exstr).ShowDialog();
-                    }
-                    catch
-                    {
-                        MessageBox.Show(
-                                $"一个未知的错误的发生了,将logs文件夹压缩并发送给开发者以解决问题{Environment.NewLine}" +
-                                $"出问题不发logs,开发者永远不可能解决你遇到的问题{Environment.NewLine}" +
-                                 $"邮件/QQ: zsh2401@163.com{Environment.NewLine}",
-                                "AutumnBox 错误",
-                            MessageBoxButton.OK,
-                            MessageBoxImage.Error);
-                    }
-                    break;
-                default:
-                    MessageBox.Show(
-                         $"AutumnBox was failed on running{Environment.NewLine}" +
-                        $"Please compress the logs folder and send it to zsh2401@163.com",
-                        "Unknow Exception",
-                    MessageBoxButton.OK,
-                    MessageBoxImage.Error);
-                    break;
+                LanguageManager.Instance.ApplyByLanguageCode(Settings.Default.Language);
             }
         }
+
 
         protected override void OnExit(ExitEventArgs e)
         {

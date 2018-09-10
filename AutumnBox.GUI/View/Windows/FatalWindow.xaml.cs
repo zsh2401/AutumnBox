@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace AutumnBox.GUI.Windows
+namespace AutumnBox.GUI.View.Windows
 {
     /// <summary>
     /// FatalWindow.xaml 的交互逻辑
