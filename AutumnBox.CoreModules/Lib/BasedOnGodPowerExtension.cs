@@ -14,7 +14,7 @@ namespace AutumnBox.CoreModules.Lib
         protected GodPower GodPower { get; set; }
         protected virtual bool OnWarnUser()
         {
-            string warnMsg = string.Format(Res("DPMWarningFmt"), Res("AppNameIceBox"));
+            string warnMsg = string.Format(Res("DPMWarningFmt"), Res("AppNameThis"));
             return Ux.Agree(warnMsg);
         }
 

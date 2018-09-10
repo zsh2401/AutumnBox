@@ -5,10 +5,7 @@
 ** compiler: Visual Studio 2017
 ** desc： ...
 *********************************************************************************/
-using AutumnBox.Basic.Exceptions;
-using AutumnBox.Basic.Executer;
 using System;
-using System.Text.RegularExpressions;
 
 namespace AutumnBox.Basic.Device.Management.OS
 {

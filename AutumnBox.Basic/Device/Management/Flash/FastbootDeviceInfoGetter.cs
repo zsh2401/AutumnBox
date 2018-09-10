@@ -5,7 +5,6 @@
 ** compiler: Visual Studio 2017
 ** desc： ...
 *********************************************************************************/
-using AutumnBox.Basic.Executer;
 using System.Text.RegularExpressions;
 
 namespace AutumnBox.Basic.Device.Management.Flash

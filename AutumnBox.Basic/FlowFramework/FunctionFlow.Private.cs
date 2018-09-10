@@ -11,7 +11,6 @@
 * Company: I am free man
 *
 \* =============================================================================*/
-using AutumnBox.Basic.Executer;
 using AutumnBox.Support.Log;
 using System;
 
@@ -19,7 +18,7 @@ namespace AutumnBox.Basic.FlowFramework
 {
     partial class FunctionFlow<TArgs, TResult>
     {
-        private CommandExecuter _executer;
+        private object _executer;
         private int? _pid;
         private TArgs _args;
         private bool _isInited = false;

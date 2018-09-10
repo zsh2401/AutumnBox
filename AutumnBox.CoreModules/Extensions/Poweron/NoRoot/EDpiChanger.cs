@@ -3,7 +3,6 @@
 ** date:  2018/8/13 9:26:11 (UTC +8:00)
 ** desc： ...
 *************************************************/
-using AutumnBox.GUI.Windows;
 using AutumnBox.OpenFramework.Extension;
 
 namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot
@@ -15,10 +14,8 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot
     {
         public override int Main()
         {
-            App.RunOnUIThread(() =>
-            {
-                new DpiChangeWindow(TargetDevice) { Owner = App.GetMainWindow() }.ShowDialog();
-            });
+            Ux.ShowMessageDialog("此模块尚未完成,请等待");
+            //TODO
             return OK;
         }
     }
