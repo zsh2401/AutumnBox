@@ -128,8 +128,6 @@
     <Compile Include="Util\Bus\Sounds.cs" />
     <Compile Include="Util\FatalHandler.cs" />
     <Compile Include="Util\UI\BlurHelper.cs" />
-    <Compile Include="Util\UI\BoxHelper.cs" />
-    <Compile Include="Util\UI\DialogManager.cs" />
     <Compile Include="Util\UI\UIHelper.cs" />
     <Compile Include="Model\ChoicerContentStartArgs.cs" />
     <Compile Include="Util\Data\Converter.cs" />
