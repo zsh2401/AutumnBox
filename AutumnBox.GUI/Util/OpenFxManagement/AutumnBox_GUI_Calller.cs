@@ -10,6 +10,8 @@ using System.Windows;
 using AutumnBox.OpenFramework.Warpper;
 using AutumnBox.GUI.View.Windows;
 using AutumnBox.OpenFramework.Management;
+using AutumnBox.GUI.Util.Effect;
+using AutumnBox.GUI.Properties;
 
 namespace AutumnBox.GUI.Util.OpenFxManagement
 {
@@ -101,10 +103,25 @@ namespace AutumnBox.GUI.Util.OpenFxManagement
 
         public Window CreateLoadingWindow()
         {
-            return new View.Windows.LoadingWindow()
+            return new LoadingWindow()
             {
                 Owner = App.Current.MainWindow
             };
+        }
+
+        public void PlayOk()
+        {
+            Sounds.OK.Play();
+        }
+
+        public void PlayErr()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool PlaySoundWhenFinished()
+        {
+            return Settings.Default.NotifyOnFinish;
         }
     }
 }

@@ -11,6 +11,8 @@ namespace AutumnBox.OpenFramework.Content
     {
         private static readonly Factory factory = new Factory();
         private readonly Context ctx;
+
+        public Factory Factory => factory;
         public ILogger Logger
         {
             get
