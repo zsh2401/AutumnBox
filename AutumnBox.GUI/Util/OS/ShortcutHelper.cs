@@ -11,12 +11,9 @@
 * Company: I am free man
 *
 \* =============================================================================*/
-using AutumnBox.Support.CstmDebug;
 using IWshRuntimeLibrary;
 using System;
-using System.Diagnostics;
 using System.IO;
-using System.Security.Principal;
 
 namespace AutumnBox.GUI.Util.OS
 {

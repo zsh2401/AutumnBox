@@ -11,7 +11,6 @@
 * Company: I am free man
 *
 \* =============================================================================*/
-using AutumnBox.Support.CstmDebug;
 using System.Reflection;
 using System.Resources;
 using System.Runtime.InteropServices;
@@ -69,7 +68,3 @@ using System.Windows;
 [assembly: AssemblyVersion("1.1.0.0")]
 [assembly: AssemblyFileVersion("1.1.0.0")]
 [assembly: NeutralResourcesLanguage("zh-CN")]
-
-//自定义的程序集Attribute
-//编译日期
-[assembly: CompiledDate(2018, 9, 11)]

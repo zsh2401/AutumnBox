@@ -3,30 +3,14 @@
 ** date:  2018/8/17 16:17:24 (UTC +8:00)
 ** desc： ...
 *************************************************/
-using AutumnBox.Support.CstmDebug;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Security.Principal;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutumnBox.GUI.Util
 {
     static class Self
     {
-        /// <summary>
-        /// 获取当前AutumnBox编译日期
-        /// </summary>
-        public static DateTime CompiledDate
-        {
-            get
-            {
-                var o = (CompiledDateAttribute)Attribute.GetCustomAttribute(System.Reflection.Assembly.GetExecutingAssembly(), typeof(CompiledDateAttribute));
-                return o.DateTime;
-            }
-        }
         /// <summary>
         /// 获取当前AutumnBox版本
         /// </summary>

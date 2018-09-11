@@ -244,7 +244,6 @@
     <Compile Include="View\Windows\FatalWindow.xaml.cs">
       <DependentUpon>FatalWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Util\OS\AutoGC.cs" />
     <Compile Include="Util\OS\MachineInfo.cs" />
     <Compile Include="View\Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

@@ -19,18 +19,6 @@ namespace AutumnBox.GUI.Util.OS
 {
     internal static class NativeMethods
     {
-        [DllImport("user32.dll")]
-        internal static extern int SetWindowCompositionAttribute(IntPtr hwnd, ref WindowCompositionAttributeData data);
-        [DllImport("kernel32.dll", EntryPoint = "SetProcessWorkingSetSize")]
-        internal static extern int SetProcessWorkingSetSize(IntPtr process, int minSize, int maxSize);
-        [DllImport("newdev.dll", SetLastError = true)]
-        internal static extern bool DiInstallDriver
-        (
-        [In] IntPtr hwndParent,
-        [In] string FullInfPath,
-        [In] uint Flags,
-        [Out] bool NeedReboot
-        );
         /// 该函数设置由不同线程产生的窗口的显示状态
         /// </summary>
         /// <param name="hWnd">窗口句柄</param>
