@@ -14,9 +14,7 @@
 using AutumnBox.GUI.Properties;
 using AutumnBox.GUI.Util;
 using AutumnBox.GUI.Util.I18N;
-using AutumnBox.GUI.View.Windows;
 using AutumnBox.Support.Log;
-using System;
 using System.Windows;
 
 namespace AutumnBox.GUI
@@ -27,26 +25,14 @@ namespace AutumnBox.GUI
     /// </summary>
     public partial class App : Application
     {
-
-        internal const int HAVE_OTHER_PROCESS = 25364;
-
         public App() : base()
         {
+            Current = this;
+            AlreadyHaveAutumnBoxChecker.Do();
         }
 
         public static new App Current { get; private set; }
 
-        public MainWindow MainWindowAsMainWindow
-        {
-            get
-            {
-                return (Current.MainWindow as MainWindow);
-            }
-        }
-        public string FormatResourceString(string key, params object[] args)
-        {
-            return String.Format(Resources[key].ToString(), args);
-        }
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
@@ -54,21 +40,9 @@ namespace AutumnBox.GUI
 #if !DEBUG
             this.DispatcherUnhandledException += FatalHandler.Current_DispatcherUnhandledException;
 #endif
-            if (Settings.Default.SkipVersion == "0.0.1")
-            {
-                Settings.Default.SkipVersion = Self.Version.ToString();
-                Settings.Default.Save();
-            }
-            if (Self.HaveOtherAutumnBoxProcess)
-            {
-                Logger.Fatal(this, "Have other autumnbox!!");
-                MessageBox.Show(
-                    $"不可以同时打开两个AutumnBox{Environment.NewLine}Do not run two AutumnBox at once",
-                    "警告/Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
-                Shutdown(HAVE_OTHER_PROCESS);
-            }
             if (Settings.Default.IsFirstLaunch)
             {
+                Logger.Info(this, "is first launch");
                 LanguageManager.Instance.ApplyByEnvoriment();
             }
             else
@@ -77,7 +51,6 @@ namespace AutumnBox.GUI
             }
         }
 
-
         protected override void OnExit(ExitEventArgs e)
         {
             base.OnExit(e);
@@ -85,7 +58,6 @@ namespace AutumnBox.GUI
             if (Settings.Default.IsFirstLaunch)
             {
                 Settings.Default.IsFirstLaunch = false;
-                Settings.Default.Save();
             }
             Settings.Default.Save();
         }

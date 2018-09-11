@@ -21,6 +21,7 @@ namespace AutumnBox.OpenFramework.Open.Impl
                 return Environment.OSVersion.Version.Major == 10;
             }
         }
+
         public override string LoggingTag => "AutumnBox OperatingSystemAPI";
 
         public bool IsRunAsAdmin

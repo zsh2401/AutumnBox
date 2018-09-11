@@ -24,6 +24,7 @@ namespace AutumnBox.GUI.Util
 {
     class AppLoader
     {
+        #region OTHER
         public interface ILoadingUI
         {
             string LoadingTip { set; }
@@ -43,9 +44,15 @@ namespace AutumnBox.GUI.Util
                 callback?.Invoke();
             });
         }
+        #endregion
+
+        #region LOADING_FLOW
         private void Load()
         {
             Updater.CheckAndNotice();
+#if !DEBUG
+            Statistics.Do();
+#endif
             ui.Progress = 0;
             //如果设置在启动时打开调试窗口
             if (Settings.Default.ShowDebuggingWindowNextLaunch)
@@ -63,12 +70,15 @@ namespace AutumnBox.GUI.Util
             ui.Progress = 30;
             ui.LoadingTip = App.Current.Resources["ldmsgStartAdb"].ToString();
             Logger.Info(this, "Try to start adb server ");
-            try {
+            try
+            {
                 Adb.DefaultLoad();
-                Logger.Info(this,"adb server starts successed");
-            } catch(AdbCommandFailedException e) {
+                Logger.Info(this, "adb server starts successed");
+            }
+            catch (AdbCommandFailedException e)
+            {
                 Logger.Info(this, "adb server starts failed");
-                Logger.Warn(this,e);
+                Logger.Warn(this, e);
                 ui.Progress = 60;
                 ui.LoadingTip = App.Current.Resources["ldmsgAdbServerFailed"].ToString();
                 App.Current.Shutdown(e.ExitCode);
@@ -77,11 +87,12 @@ namespace AutumnBox.GUI.Util
             ui.LoadingTip = App.Current.Resources["ldmsgLoadingExtensions"].ToString();
             OpenFrameworkManager.Init();
             OpenFxObserver.Instance.OnLoaded();
+            ConnectedDevicesListener.Instance.Work();
             ui.Progress = 100;
             ui.LoadingTip = "Enjoy!";
-            ConnectedDevicesListener.Instance.Work();
             Thread.Sleep(1 * 1000);
             ui.Finish();
         }
+#endregion
     }
 }

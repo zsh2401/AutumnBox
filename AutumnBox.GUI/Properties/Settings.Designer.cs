@@ -61,7 +61,7 @@ namespace AutumnBox.GUI.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0.0.1")]
+        [global::System.Configuration.DefaultSettingValueAttribute("NULL")]
         public string SkipVersion {
             get {
                 return ((string)(this["SkipVersion"]));
@@ -73,25 +73,13 @@ namespace AutumnBox.GUI.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("随机-Random")]
+        [global::System.Configuration.DefaultSettingValueAttribute("秋-AutumnBox")]
         public string Theme {
             get {
                 return ((string)(this["Theme"]));
             }
             set {
                 this["Theme"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("DEFAULT")]
-        public string LoginKey {
-            get {
-                return ((string)(this["LoginKey"]));
-            }
-            set {
-                this["LoginKey"] = value;
             }
         }
         

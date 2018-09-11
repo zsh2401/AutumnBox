@@ -1,6 +1,4 @@
-﻿using AutumnBox.Basic.Device;
-using AutumnBox.GUI.ViewModel;
-using AutumnBox.OpenFramework.Open;
+﻿using AutumnBox.GUI.ViewModel;
 using AutumnBox.OpenFramework.Warpper;
 using System.Windows;
 

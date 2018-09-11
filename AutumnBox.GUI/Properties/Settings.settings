@@ -12,13 +12,10 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="SkipVersion" Type="System.String" Scope="User">
-      <Value Profile="(Default)">0.0.1</Value>
+      <Value Profile="(Default)">NULL</Value>
     </Setting>
     <Setting Name="Theme" Type="System.String" Scope="User">
-      <Value Profile="(Default)">随机-Random</Value>
-    </Setting>
-    <Setting Name="LoginKey" Type="System.String" Scope="User">
-      <Value Profile="(Default)">DEFAULT</Value>
+      <Value Profile="(Default)">秋-AutumnBox</Value>
     </Setting>
     <Setting Name="NotifyOnFinish" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>

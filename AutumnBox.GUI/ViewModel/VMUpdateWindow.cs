@@ -32,24 +32,18 @@ namespace AutumnBox.GUI.ViewModel
         {
             get; private set;
         }
-
-        public bool SkipThisVersion
-        {
-            get => skipThisVersion; set
-            {
-                skipThisVersion = value;
-                Settings.Default.SkipVersion = value ? Model.VersionString : "0.0.0";
-                Settings.Default.Save();
-                RaisePropertyChanged();
-            }
-        }
-        private bool skipThisVersion;
+        public ICommand SkipThisVersion { get; private set; }
         public VMUpdateWindow(UpdateCheckResult result)
         {
             this.Model = result;
             GotoUpdate = new MVVMCommand((para) =>
             {
                 Process.Start(result.UpdateUrl);
+            });
+            SkipThisVersion = new MVVMCommand((p) =>
+            {
+                Settings.Default.SkipVersion = model.VersionString;
+                Settings.Default.Save();
             });
         }
     }
