@@ -23,7 +23,6 @@ namespace AutumnBox.GUI.ViewModel
     {
         public ICommand StartShell { get; private set; }
         public ICommand ShowSettingsDialog { get; private set; }
-
         public int TabSelectedIndex
         {
             get => tabSelectedIndex;
@@ -50,7 +49,7 @@ namespace AutumnBox.GUI.ViewModel
         {
             ProcessStartInfo info = new ProcessStartInfo
             {
-                WorkingDirectory =  Basic.ManagedAdb.Adb.AdbToolsDir.FullName,
+                WorkingDirectory = Basic.ManagedAdb.Adb.AdbToolsDir.FullName,
                 FileName = "cmd",
                 UseShellExecute = false,
                 Verb = "runas",

@@ -51,7 +51,7 @@
             <materialDesign:Card Margin="10" >
                 <Image Source="/Resources/Drawable/More/halo.png"/>
             </materialDesign:Card>
-            <TextBlock Margin="10" TextAlignment="Center" Text="不经历风雨,怎能有传奇?我会在这里等着你"/>
+            <TextBlock Foreground="{DynamicResource PrimaryLightBrush}" Margin="10" TextAlignment="Center" Text="In other words,please be ture"/>
         </StackPanel>
 
     </Grid>

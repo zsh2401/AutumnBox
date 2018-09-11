@@ -47,6 +47,7 @@
 版本:{1}
 说明:
      {2}</s:String>
+    <s:String x:Key="PanelExtensionsNotFound">没有找到可用的拓展模块/功能</s:String>
     <s:String x:Key="PanelExtensionsButtonEnabled">运行此拓展</s:String>
     <s:String x:Key="PanelExtensionsButtonDisabled">此拓展不可在当前情况下运行</s:String>
     

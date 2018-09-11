@@ -122,6 +122,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="MVVM\OpenParameterUrlCommand.cs" />
     <Compile Include="Util\AlreadyHaveAutumnBoxChecker.cs" />
     <Compile Include="Util\AppLoader.cs" />
     <Compile Include="Util\Bus\ConnectedDevicesListener.cs" />
