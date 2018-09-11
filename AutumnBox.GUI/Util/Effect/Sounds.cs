@@ -10,7 +10,7 @@ using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AutumnBox.GUI.Util.Bus
+namespace AutumnBox.GUI.Util.Effect
 {
     static class Sounds
     {

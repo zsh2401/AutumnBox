@@ -44,6 +44,10 @@ namespace AutumnBox.OpenFramework.Content
             }
         }
         /// <summary>
+        /// 声音播放器
+        /// </summary>
+        public ISoundPlayer SoundPlayer => apiWarpper.Factory.GetSoundPlayer(this);
+        /// <summary>
         /// Ux api
         /// </summary>
         public IUx Ux => apiWarpper.Ux;

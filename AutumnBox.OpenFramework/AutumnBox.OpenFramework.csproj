@@ -79,7 +79,9 @@
     <Compile Include="Extension\VisualUxManager.cs" />
     <Compile Include="Management\AutumnBoxGuiApi.cs" />
     <Compile Include="Management\IAutumnBox_GUI.cs" />
+    <Compile Include="Open\Impl\SoundImpl.cs" />
     <Compile Include="Open\Impl\UxImpl.cs" />
+    <Compile Include="Open\ISoundPlayer.cs" />
     <Compile Include="Open\IUx.cs" />
     <Compile Include="Management\IExtensionUIController.cs" />
     <Compile Include="Open\IFrameworkManager.cs" />

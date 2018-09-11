@@ -33,9 +33,20 @@ namespace AutumnBox.OpenFramework.Open
         /// 兼容性API
         /// </summary>
         private static ICompApi _comp = new CompImpl();
+        /// <summary>
+        /// 声音API
+        /// </summary>
+        private static ISoundPlayer _sound = new SoundImpl(AutumnBoxGuiApi.Main);
         #endregion
-
-        #region Context有关
+        /// <summary>
+        /// 获取音效播放器
+        /// </summary>
+        /// <param name="ctx"></param>
+        /// <returns></returns>
+        public ISoundPlayer GetSoundPlayer(Context ctx)
+        {
+            return _sound;
+        }
         /// <summary>
         /// 获取日志器
         /// </summary>
@@ -117,6 +128,5 @@ namespace AutumnBox.OpenFramework.Open
         {
             return new UxImpl(ctx, AutumnBoxGuiApi.Main);
         }
-        #endregion
     }
 }
