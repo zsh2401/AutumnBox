@@ -59,7 +59,7 @@ namespace AutumnBox.OpenFramework.Extension
         /// </summary>
         /// <returns></returns>
         [VisualUxManager]
-        public sealed override int Main()
+        public override int Main()
         {
             isRunning = true;
             int retCode = ERR;

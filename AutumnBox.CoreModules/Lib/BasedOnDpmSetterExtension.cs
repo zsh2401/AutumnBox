@@ -7,7 +7,7 @@ using AutumnBox.Basic.Device;
 
 namespace AutumnBox.CoreModules.Lib
 {
-    public abstract class BasedOnGodPowerExtension : OfficialVisualExtension
+    public abstract class BasedOnDpmSetterExtension : OfficialVisualExtension
     {
         public abstract string ReceiverClassName { get; }
         public abstract string DpmAppPackageName { get; }

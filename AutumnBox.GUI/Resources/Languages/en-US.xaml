@@ -34,6 +34,8 @@
      <s:String x:Key="UpdateWindowBtnSkipVersion">Skip this version</s:String>
     
     <!--PanelSettings-->
+    <s:String x:Key="PanelSettingsUx">UX</s:String>
+     <s:String x:Key="PanelSettingsSounds">Sound effect</s:String>
      <s:String x:Key="PanelSettingsInterface">Interface</s:String>
         <s:String x:Key="PanelSettingsOther">Other</s:String>
     <s:String x:Key="PanelSettingsLanguage">Language</s:String>

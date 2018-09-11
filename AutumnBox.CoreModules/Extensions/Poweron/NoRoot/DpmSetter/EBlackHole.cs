@@ -9,11 +9,12 @@ using System;
 
 namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot.DpmSetter
 {
-    [ExtName("一键激活黑洞")]
-    [ExtName("Set blackhole as dpm by one key", Lang = "en-us")]
+    [ExtName("免ROOT一键激活黑洞")]
+    [ExtName("Set Blackhole as DPM without root", Lang = "en-us")]
     [ExtIcon("Icons.blackhole.png")]
     [ExtAppProperty(PKG_NAME)]
-    public class EBlackHole : BasedOnGodPowerExtension
+    [ExtRequiredDeviceStates(Basic.Device.DeviceState.Poweron)]
+    public class EBlackHole : BasedOnDpmSetterExtension
     {
         public const string PKG_NAME = "com.hld.apurikakusu";
         public override string ReceiverClassName => throw new NotImplementedException();
