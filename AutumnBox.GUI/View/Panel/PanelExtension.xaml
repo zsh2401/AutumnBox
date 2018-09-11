@@ -4,12 +4,14 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-         
+         FontFamily="{DynamicResource AutumnBox.Font}"
              mc:Ignorable="d" d:DesignWidth="622.427" d:DesignHeight="281.547">
     <Grid>
-        <Grid Visibility="{Binding BaseVisibily}">
-            <TextBlock Foreground="{DynamicResource MainBackgroundForegroundBrush}" HorizontalAlignment="Center" VerticalAlignment="Center" Text="I'd love to change the world,but i dont know what to do"/>
-        </Grid>
+        <StackPanel Visibility="{Binding BaseVisibily}" VerticalAlignment="Center" Orientation="Vertical" HorizontalAlignment="Center">
+            <TextBlock FontSize="25" Foreground="{DynamicResource MainBackgroundForegroundBrush}" HorizontalAlignment="Center" Text="{DynamicResource PanelExtensionsNotFound}"/>
+            <Button Command="{Binding GotoDownloadExtension}" CommandParameter="{DynamicResource urlDownloadExtensions}" FontSize="13" HorizontalAlignment="Center" Content="下载拓展模块" Style="{DynamicResource MaterialDesignFlatButton}"/>
+            <TextBlock Margin="10" FontSize="13" Foreground="{DynamicResource MainBackgroundForegroundBrush}" HorizontalAlignment="Center" VerticalAlignment="Center" Text="I'd love to change the world,but i dont know what to do"/>
+        </StackPanel>
         <Grid Visibility="{Binding ExtensionsVisibily}">
             <materialDesign:Card Margin="10,10,0,10" VerticalAlignment="Stretch" HorizontalAlignment="Left" Width="262">
                 <ListBox ItemsSource="{Binding Warppers}" SelectedItem="{Binding Selected,Mode=TwoWay}" Margin="0,0,0,0">

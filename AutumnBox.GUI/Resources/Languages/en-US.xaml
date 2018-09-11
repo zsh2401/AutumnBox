@@ -45,6 +45,7 @@
 Version:{1}
 Description:
      {2}</s:String>
+     <s:String x:Key="PanelExtensionsNotFound">Extensions not found on there...</s:String>
     <s:String x:Key="PanelExtensionsButtonEnabled">Run this extension</s:String>
     <s:String x:Key="PanelExtensionsButtonDisabled">Sorry,this extension can't run now</s:String>
     
@@ -101,7 +102,7 @@ Description:
      <s:String x:Key="PanelMoreExtensionSlogan">Download extension,do you want to do</s:String>
     <s:String x:Key="PanelMoreExtensionApi">Extension Fx API Version</s:String>
     <s:String x:Key="PanelMoreExtensionsDoc">Development documentation</s:String>
-    <s:String x:Key=" PanelMoreCommonlyUsed">Commonly used</s:String>
+    <s:String x:Key="PanelMoreCommonlyUsed">Commonly used</s:String>
     <s:String x:Key="PanelMoreLinkAICP">AICP-ROM</s:String>
     <s:String x:Key="PanelMoreLinkRR">RR-ROM</s:String>
     <s:String x:Key="PanelMoreLinkGapps">Open-Gapps</s:String>

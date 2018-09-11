@@ -10,6 +10,7 @@ using AutumnBox.GUI.Util.I18N;
 using AutumnBox.OpenFramework.Warpper;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Windows;
@@ -162,6 +163,8 @@ namespace AutumnBox.GUI.ViewModel
             }
         }
         private string _btnContent;
+
+        public ICommand GotoDownloadExtension { get; private set; }
         #endregion
 
         #region Device
@@ -195,6 +198,7 @@ namespace AutumnBox.GUI.ViewModel
             {
                 Selected.Warpper.RunAsync(DeviceSelectionObserver.Instance.CurrentDevice);
             });
+            GotoDownloadExtension = new OpenParameterUrlCommand();
             Selected = null;
             ComObserver();
         }

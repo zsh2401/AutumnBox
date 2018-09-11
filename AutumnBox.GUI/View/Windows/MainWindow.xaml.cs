@@ -35,21 +35,7 @@ namespace AutumnBox.GUI.View.Windows
             ViewModel.LoadAsync(() =>
             {
                 Logger.Info(this, "Loaded");
-                //RegisterEvent();
             });
-            //#if ENABLE_BLUR
-            //            UIHelper.SetOwnerTransparency(Config.BackgroundA);
-            //            //开启Blur透明效果
-            //            BlurHelper.EnableBlur(this);
-            //            AllowsTransparency = true;
-            //#endif
-            //            new UpdateChecker().RunAsync((r) =>
-            //            {
-            //                if (r.NeedUpdate)
-            //                {
-            //                    new UpdateNoticeWindow(r) { Owner = this }.ShowDialog();
-            //                }
-            //            });
         }
 
         private void _MainWindow_Closed(object sender, EventArgs e)
