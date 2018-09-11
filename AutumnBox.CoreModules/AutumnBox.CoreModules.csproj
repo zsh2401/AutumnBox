@@ -58,10 +58,11 @@
   <ItemGroup>
     <Compile Include="CoreLib.cs" />
     <Compile Include="Extensions\Fastboot\EFlashRecovery.cs" />
+    <Compile Include="Extensions\Poweron\NoRoot\DpmSetter\EAirForzenActivator.cs" />
     <Compile Include="Extensions\Poweron\NoRoot\DpmSetter\EBlackHole.cs" />
-    <Compile Include="Lib\BasedOnGodPowerExtension.cs" />
-    <Compile Include="Extensions\Poweron\NoRoot\DpmSetter\EGodPower_IceBox.cs" />
-    <Compile Include="Extensions\Poweron\NoRoot\DpmSetter\EGodPower_StopApp.cs" />
+    <Compile Include="Lib\BasedOnDpmSetterExtension.cs" />
+    <Compile Include="Extensions\Poweron\NoRoot\DpmSetter\EIceBox.cs" />
+    <Compile Include="Extensions\Poweron\NoRoot\DpmSetter\EStopApp.cs" />
     <Compile Include="Lib\GodPower.cs" />
     <Compile Include="OfficialVisualExtension.cs" />
     <Compile Include="Extensions\Poweron\NoRoot\EApkInstaller.cs" />

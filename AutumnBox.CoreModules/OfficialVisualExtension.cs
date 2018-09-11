@@ -6,20 +6,31 @@
 using AutumnBox.Basic.Data;
 using AutumnBox.OpenFramework.Content;
 using AutumnBox.OpenFramework.Extension;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutumnBox.CoreModules
 {
-    [ExtAuth("秋之盒-zsh2401")]
+    [ExtAuth("AutumnBox")]
     [ExtAuth("AutumnBox official", Lang = "en-us")]
     [ExtOfficial(true)]
     [ContextPermission(CtxPer.High)]
     public abstract class OfficialVisualExtension : AtmbVisualExtension
     {
+        private class SoundPlayAspect : ExtMainAsceptAttribute
+        {
+            public override void After(AfterArgs args)
+            {
+                base.After(args);
+                if (args.ReturnCode == 0 && !args.IsForceStopped)
+                {
+                    args.Extension.SoundPlayer.OK();
+                }
+            }
+        }
+        [SoundPlayAspect]
+        public override int Main()
+        {
+            return base.Main();
+        }
         protected void WriteLineAndSetTip(string msg)
         {
             WriteLine(msg);

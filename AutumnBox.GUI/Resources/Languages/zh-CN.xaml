@@ -36,6 +36,8 @@
      <s:String x:Key="UpdateWindowBtnSkipVersion">跳过此版本</s:String>
     
         <!--PanelSettings-->
+     <s:String x:Key="PanelSettingsUx">交互</s:String>
+    <s:String x:Key="PanelSettingsSounds">音效</s:String>
     <s:String x:Key="PanelSettingsInterface">界面</s:String>
     <s:String x:Key="PanelSettingsFinishedSound">功能完成音效</s:String>
     <s:String x:Key="PanelSettingsOther">其它</s:String>

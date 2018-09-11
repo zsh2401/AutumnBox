@@ -44,7 +44,7 @@ namespace AutumnBox.GUI.ViewModel
                 RaisePropertyChanged();
             }
         }
-   
+
 
         public bool DebugOnNext
         {
@@ -56,6 +56,15 @@ namespace AutumnBox.GUI.ViewModel
             {
                 Settings.Default.ShowDebuggingWindowNextLaunch = value;
                 RaisePropertyChanged();
+            }
+        }
+
+        public bool SoundEffectEnable
+        {
+            get => Settings.Default.NotifyOnFinish; set
+            {
+                Settings.Default.NotifyOnFinish = value;
+                Settings.Default.Save();
             }
         }
 
