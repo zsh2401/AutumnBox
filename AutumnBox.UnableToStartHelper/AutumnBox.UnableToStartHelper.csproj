@@ -35,6 +35,9 @@
   <PropertyGroup>
     <ApplicationIcon>title_icon.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>AutumnBox.UnableToStartHelper.Program</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />

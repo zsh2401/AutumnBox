@@ -50,10 +50,11 @@ namespace AutumnBox.GUI.Launcher
                 Print("AutumnBox.GUI starts at now!");
                 Process.Start(startInfo);
             }
-            catch (FileNotFoundException)
+            catch (Win32Exception)
             {
                 Print("找不到文件!请将整个秋之盒解压后再使用!");
                 Print("File not found!Please uncompresse all files!");
+                Console.ReadKey();
             }
 
         }
