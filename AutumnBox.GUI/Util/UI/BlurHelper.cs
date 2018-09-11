@@ -78,7 +78,8 @@ namespace AutumnBox.GUI.Util.UI
                 SizeOfData = accentStructSize,
                 Data = accentPtr
             };
-            NativeMethods.SetWindowCompositionAttribute(WindowPtr, ref data);
+            //这个类基本废弃,为了尽量少使用本地方法,所以删除了
+            //NativeMethods.SetWindowCompositionAttribute(WindowPtr, ref data);
 
             Marshal.FreeHGlobal(accentPtr);
         }

@@ -17,7 +17,6 @@ using AutumnBox.GUI.Util.Custom;
 using AutumnBox.GUI.Util.I18N;
 using AutumnBox.Support.Log;
 using System.Windows;
-
 namespace AutumnBox.GUI
 {
 

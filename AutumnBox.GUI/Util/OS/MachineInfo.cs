@@ -25,6 +25,7 @@ namespace AutumnBox.GUI.Util.OS
     /// </summary>
     internal class MachineInfo
     {
+#if NEED_MACHINE_INFO
         /*
          * 提供对大量管理信息和管理事件集合的访问，这些信息和事件是与根据 Windows 管理规范 (WMI) 结构对系统、设备和应用程序设置检测点有关的。
          * 应用程序和服务可以使用从 ManagementObjectSearcher 和 ManagementQuery 派生的类，查询感兴趣的管理信息（例如在磁盘上还剩多少可用空间、当前 CPU 利用率是多少、某一应用程序正连接到哪一数据库等等）；
@@ -522,7 +523,9 @@ namespace AutumnBox.GUI.Util.OS
             }
             return st;
         }
+#endif
     }
+
 
     #region 学习资料
     /*
@@ -1000,4 +1003,5 @@ namespace AutumnBox.GUI.Util.OS
     */
 
     #endregion
+
 }

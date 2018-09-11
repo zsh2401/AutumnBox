@@ -1,175 +1,28 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{84044FB2-BD38-4283-8065-B639270ECE0F}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AutumnBox.Basic</RootNamespace>
-    <AssemblyName>AutumnBox.Basic</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Configurations>Debug;Release;SDK</Configurations>
+    <Version>2018.9.11</Version>
+    <Authors>zsh2401</Authors>
+    <Company>zsh2401</Company>
+    <Copyright>Copyright © 2017 - 2018 zsh2401,All Rights Reserved</Copyright>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DocumentationFile>bin\Debug\AutumnBox.Basic.xml</DocumentationFile>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='SDK|AnyCPU'">
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <WarningLevel>0</WarningLevel>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\AutumnBox.Basic.xml</DocumentationFile>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'SDK|AnyCPU'">
-    <OutputPath>bin\Sdk\</OutputPath>
-    <DefineConstants>TRACE;SDK</DefineConstants>
-    <DocumentationFile>bin\Sdk\AutumnBox.Basic.xml</DocumentationFile>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
-  <PropertyGroup>
-    <ApplicationIcon>
-    </ApplicationIcon>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="PresentationCore" />
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Management" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
-    <Reference Include="WindowsBase" />
+    <None Remove="ManagedAdb\win32adb\adb.exe" />
+    <None Remove="ManagedAdb\win32adb\AdbWinApi.dll" />
+    <None Remove="ManagedAdb\win32adb\AdbWinUsbApi.dll" />
+    <None Remove="ManagedAdb\win32adb\fastboot.exe" />
+    <None Remove="ManagedAdb\win32adb\libwinpthread-1.dll" />
   </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Calling\Adb\AdbCommand.cs" />
-    <Compile Include="Calling\Adb\AdbCommandBuilder.cs" />
-    <Compile Include="Calling\Adb\ShellCommand.cs" />
-    <Compile Include="Calling\Adb\SuCommand.cs" />
-    <Compile Include="Calling\Cmd\WindowsCmdCommand.cs" />
-    <Compile Include="Calling\Fastboot\FastbootCommand.cs" />
-    <Compile Include="Calling\ProcessBasedCommand.cs" />
-    <Compile Include="Calling\IProcessBasedCommand.cs" />
-    <Compile Include="Calling\BuilderSchema\IArgBuilder.cs" />
-    <Compile Include="Calling\BuilderSchema\IDeviceSettableBuilder.cs" />
-    <Compile Include="Calling\BuilderSchema\IShellBuilder.cs" />
-    <Compile Include="Data\INotifyOutput.cs" />
-    <Compile Include="Data\IReceiveOutputByTo.cs" />
-    <Compile Include="Debugging\Logger.cs" />
-    <Compile Include="Device\DeviceExtension.Reboot.cs" />
-    <Compile Include="Device\Management\AppFx\Impl\ActivityManager.cs" />
-    <Compile Include="Device\Management\AppFx\Impl\BroadcastSender.cs" />
-    <Compile Include="Device\Management\AppFx\Impl\PackageManager.cs" />
-    <Compile Include="Device\Management\AppFx\Impl\ServiceManager.cs" />
-    <Compile Include="Device\Management\AppFx\PackageInfo.cs" />
-    <Compile Include="Device\Management\Hardware\IHardwareInfoGetter.cs" />
-    <Compile Include="Device\Management\AppFx\IActivityManager.cs" />
-    <Compile Include="Device\Management\AppFx\IBroadcastSender.cs" />
-    <Compile Include="Device\Management\AppFx\IServiceManager.cs" />
-    <Compile Include="Device\DependOnDeviceObject.cs" />
-    <Compile Include="Device\Management\Hardware\Impl\DeviceHardwareInfo.cs" />
-    <Compile Include="Device\Management\Hardware\Impl\DeviceHardwareInfoGetter.cs" />
-    <Compile Include="Device\Management\OS\IAndroidShell.cs" />
-    <Compile Include="Device\Management\OS\IBuildPropGetter.cs" />
-    <Compile Include="Device\Management\OS\IDpiModifier.cs" />
-    <Compile Include="Device\Management\OS\IFileSystem.cs" />
-    <Compile Include="Device\Management\AppFx\IPackageManager.cs" />
-    <Compile Include="Device\Management\OS\Impl\DpiModifier.cs" />
-    <Compile Include="Device\Management\OS\Impl\FileSystem.cs" />
-    <Compile Include="Device\DeviceBase.cs" />
-    <Compile Include="Device\Emulator.cs" />
-    <Compile Include="Device\NetDevice.cs" />
-    <Compile Include="Device\UsbDevice.cs" />
-    <Compile Include="Calling\IProcessBasedCommandResult.cs" />
-    <Compile Include="Device\IDevice.cs" />
-    <Compile Include="Exceptions\AdbShellCommandFailedException.cs" />
-    <Compile Include="Exceptions\DeviceHasNoSuException.cs" />
-    <Compile Include="Exceptions\DeviceNotAliveException.cs" />
-    <Compile Include="Device\DeviceExtension.Execute.cs" />
-    <Compile Include="FlowFramework\IOutputable.cs" />
-    <Compile Include="ManagedAdb\Adb.cs" />
-    <Compile Include="ManagedAdb\AdbClient.cs" />
-    <Compile Include="ManagedAdb\AdbClientWarpper.cs" />
-    <Compile Include="ManagedAdb\AdbResponse.cs" />
-    <Compile Include="ManagedAdb\AdbResponseState.cs" />
-    <Compile Include="ManagedAdb\LocalAdbServer.cs" />
-    <Compile Include="ManagedAdb\Extension.cs" />
-    <Compile Include="ManagedAdb\IAdbClient.cs" />
-    <Compile Include="ManagedAdb\IAdbServer.cs" />
-    <Compile Include="MultipleDevices\DeviceObjectFacotry.cs" />
-    <Compile Include="MultipleDevices\DevicesArrayExtension.cs" />
-    <Compile Include="MultipleDevices\DevicesChangedEvent.cs" />
-    <Compile Include="MultipleDevices\DevicesGetter.cs" />
-    <Compile Include="Device\Management\OS\UserManager.cs" />
-    <Compile Include="Exceptions\AdbCommandFailedException.cs" />
-    <Compile Include="Data\AdvanceOutput.cs" />
-    <Compile Include="Data\AdvanceOutputBuilder.cs" />
-    <Compile Include="Data\OutputBuilder.cs" />
-    <Compile Include="Extension\FileInfoExtension.cs" />
-    <Compile Include="Device\Management\OS\BuildPropKeys.cs" />
-    <Compile Include="Device\Management\OS\Impl\DeviceBuildPropSetter.cs" />
-    <Compile Include="Device\Management\Flash\FastbootDeviceInfoGetter.cs" />
-    <Compile Include="Exceptions\DeviceNotFoundException.cs" />
-    <Compile Include="Exceptions\PackageNotFoundException.cs" />
-    <Compile Include="Device\Management\OS\Impl\DeviceBuildPropGetter.cs" />
-    <Compile Include="Device\Management\Flash\DeviceImage.cs" />
-    <Compile Include="Device\Management\Flash\DeviceImageFinder.cs" />
-    <Compile Include="Exceptions\ExcutionException.cs" />
-    <Compile Include="Data\OutputReceivedEvent.cs" />
-    <Compile Include="FlowFramework\IFunctionFlowBase.cs" />
-    <Compile Include="FlowFramework\FunctionFlow.cs" />
-    <Compile Include="FlowFramework\FunctionFlowBase.cs" />
-    <Compile Include="FlowFramework\FlowArgs.cs" />
-    <Compile Include="FlowFramework\CheckResult.cs" />
-    <Compile Include="FlowFramework\ICompletable.cs" />
-    <Compile Include="FlowFramework\ResultType.cs" />
-    <Compile Include="FlowFramework\FlowEvents.cs" />
-    <Compile Include="FlowFramework\FunctionFlow.Private.cs" />
-    <Compile Include="FlowFramework\FunctionFlow.Public.cs" />
-    <Compile Include="FlowFramework\FunctionFlow.Protected.cs" />
-    <Compile Include="FlowFramework\FlowResult.cs" />
-    <Compile Include="FlowFramework\ToolKit.cs" />
-    <Compile Include="FlowFramework\IForceStoppable.cs" />
-    <Compile Include="FlowFramework\Stoper.cs" />
-    <Compile Include="MultipleDevices\IDevicesGetter.cs" />
-    <Compile Include="Data\Output.cs" />
-    <Compile Include="MultipleDevices\DevicesMonitor.cs" />
-    <Compile Include="Device\DeviceState.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Util\LinuxReturnCode.cs" />
-    <Compile Include="Util\NativeMethods.cs" />
-    <Compile Include="Util\ThrowIf.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\AutumnBox.Support\AutumnBox.Support.csproj">
-      <Project>{851B2EB0-0503-428D-BD87-063555B19451}</Project>
-      <Name>AutumnBox.Support</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Device\DeviceExtension.Management.cs" />
-    <None Include="packages.config" />
-  </ItemGroup>
+
   <ItemGroup>
     <Content Include="ManagedAdb\win32adb\adb.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -187,18 +40,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup />
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PreBuildEvent>
-    </PreBuildEvent>
-  </PropertyGroup>
-  <PropertyGroup>
-    <PostBuildEvent>if $(ConfigurationName) == SDK (
-rd /S /Q  google
-del /S AutumnBox.Support.*
-del /S Newtonsoft.Json.*
-del /S *.pdb
-)</PostBuildEvent>
-  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AutumnBox.Support\AutumnBox.Support.csproj" />
+  </ItemGroup>
+
 </Project>

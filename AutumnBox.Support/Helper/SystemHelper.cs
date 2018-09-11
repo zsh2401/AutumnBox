@@ -16,7 +16,9 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
+#if !LINUX
 using System.Management;
+#endif
 using System.Text;
 namespace AutumnBox.Support.Helper
 {
@@ -29,6 +31,7 @@ namespace AutumnBox.Support.Helper
         /// <param name="pid"></param>
         public static void KillProcessAndChildrens(int pid)
         {
+#if !LINUX
             ManagementObjectSearcher processSearcher = new ManagementObjectSearcher
               ("Select * From Win32_Process Where ParentProcessID=" + pid);
             ManagementObjectCollection processCollection = processSearcher.Get();
@@ -53,6 +56,12 @@ namespace AutumnBox.Support.Helper
                     KillProcessAndChildrens(Convert.ToInt32(mo["ProcessID"])); //kill child processes(also kills childrens of childrens etc.)
                 }
             }
+#else
+            if (Environment.OSVersion.Platform != PlatformID.Win32NT)
+            {
+                throw new NotImplementedException();
+            }
+#endif
         }
     }
 }
