@@ -31,10 +31,10 @@ namespace AutumnBox.OpenFramework.Open
         /// <summary>
         /// 默认情况的拒绝数值,等于Left
         /// </summary>
-        Deny = 0,
+        Deny = Left,
         /// <summary>
         /// 默认情况的同意数值,等于Right
         /// </summary>
-        Accept = 1,
+        Accept = Right,
     }
 }
