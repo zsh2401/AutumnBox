@@ -73,7 +73,7 @@ namespace AutumnBox.GUI.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("秋-AutumnBox")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Autumn")]
         public string Theme {
             get {
                 return ((string)(this["Theme"]));

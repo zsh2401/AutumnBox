@@ -13,6 +13,7 @@
 \* =============================================================================*/
 using AutumnBox.GUI.Properties;
 using AutumnBox.GUI.Util;
+using AutumnBox.GUI.Util.Custom;
 using AutumnBox.GUI.Util.I18N;
 using AutumnBox.Support.Log;
 using System.Windows;
@@ -36,10 +37,10 @@ namespace AutumnBox.GUI
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-            Current = this;
 #if !DEBUG
             this.DispatcherUnhandledException += FatalHandler.Current_DispatcherUnhandledException;
 #endif
+            ThemeManager.Instance.ApplyBySetting();
             if (Settings.Default.IsFirstLaunch)
             {
                 Logger.Info(this, "is first launch");

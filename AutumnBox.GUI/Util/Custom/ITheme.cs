@@ -14,7 +14,7 @@ namespace AutumnBox.GUI.Util.Custom
 {
     interface ITheme
     {
-        string ThemeName { get; }
+        string Name { get; }
         ResourceDictionary Resource { get; }
     }
 }

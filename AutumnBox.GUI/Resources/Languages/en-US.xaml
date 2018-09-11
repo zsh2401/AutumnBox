@@ -34,6 +34,8 @@
      <s:String x:Key="UpdateWindowBtnSkipVersion">Skip this version</s:String>
     
     <!--PanelSettings-->
+     <s:String x:Key="PanelSettingsInterface">Interface</s:String>
+        <s:String x:Key="PanelSettingsOther">Other</s:String>
     <s:String x:Key="PanelSettingsLanguage">Language</s:String>
       <s:String x:Key="PanelSettingsDebug">Debug</s:String>
     <s:String x:Key="PanelSettingsSendToDesktop">Create shortcut</s:String>

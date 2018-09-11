@@ -16,7 +16,7 @@ namespace AutumnBox.GUI.Util.Custom
         private const int INDEX_OF_THEME = 2;
         private const string FILE_PATH = "pack://application:,,,/AutumnBox.GUI;component/Resources/Themes/";
         private const string THEME_NAME_KEY = "ThemeName";
-        public static ThemeManager Instance { get; private set; }
+        public static IThemeManager Instance { get; private set; }
         static ThemeManager()
         {
             Instance = new ThemeManager();
@@ -26,21 +26,15 @@ namespace AutumnBox.GUI.Util.Custom
 
         public ITheme Current
         {
-            get => current;
+            get => GetCurrentTheme();
             set
             {
-                current = value ?? throw new ArgumentNullException();
-                Apply(current);
+                Apply(value);
             }
         }
-        private ITheme current;
 
         private List<ITheme> themes;
         private ThemeManager()
-        {
-            Load();
-        }
-        private void Load()
         {
             themes = new List<ITheme>() {
                 ThemeImpl.LoadFrom("Autumn.xaml"),
@@ -50,23 +44,30 @@ namespace AutumnBox.GUI.Util.Custom
         public void ApplyBySetting()
         {
             var settingTheme = Settings.Default.Theme;
-            var findingResult = themes.Find(_the => _the.ThemeName == settingTheme);
+            var findingResult = themes.Find(_the => _the.Name == settingTheme);
             Current = findingResult;
         }
 
+        private ITheme GetCurrentTheme()
+        {
+            var currentThemeName = App.Current.Resources[THEME_NAME_KEY].ToString();
+            return themes.Find((t) =>
+            {
+                return t.Name == currentThemeName;
+            });
+        }
         private void Apply(ITheme theme)
         {
-            if (theme == null)
+            if (Current.Equals(theme))
             {
                 return;
             }
             App.Current.Resources.MergedDictionaries[INDEX_OF_THEME] = theme.Resource;
-            current = theme;
         }
 
         private class ThemeImpl : ITheme
         {
-            public string ThemeName => Resource[THEME_NAME_KEY].ToString();
+            public string Name => Resource[THEME_NAME_KEY].ToString();
 
             public ResourceDictionary Resource { get; private set; }
 
@@ -81,10 +82,9 @@ namespace AutumnBox.GUI.Util.Custom
         }
         private class RandomTheme : ITheme
         {
-            public string ThemeName => "Random-随机";
+            public string Name => "Random-随机";
 
             public ResourceDictionary Resource => throw new NotImplementedException();
-            private ResourceDictionary current;
             public void Random() { }
         }
     }

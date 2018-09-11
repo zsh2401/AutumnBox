@@ -33,14 +33,13 @@ namespace AutumnBox.GUI.Util.I18N
         {
             get
             {
-                return current;
+                return GetCurrent();
             }
             set
             {
                 Apply(value);
             }
         }
-        private ILanguage current;
 
         public IEnumerable<ILanguage> Languages => languages;
         private List<Language> languages;
@@ -64,10 +63,20 @@ namespace AutumnBox.GUI.Util.I18N
                 return _l.LanCode == App.Current.Resources["LanguageCode"].ToString();
             });
         }
+        private ILanguage GetCurrent() {
+            var code = App.Current.Resources[LANG_CODE_KEY].ToString();
+            return languages.Find((t) =>
+            {
+                return t.LanCode == code;
+            });
+        }
         private void Apply(ILanguage lang)
         {
+            if (Current.Equals(lang))
+            {
+                return;
+            }
             App.Current.Resources.MergedDictionaries[INDEX_OF_LANG] = lang.Resource;
-            current = lang;
             Settings.Default.Language = lang.LanCode;
             Settings.Default.Save();
             LanguageChanged?.Invoke(this, new EventArgs());

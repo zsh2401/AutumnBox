@@ -5,6 +5,7 @@
 *************************************************/
 using AutumnBox.GUI.MVVM;
 using AutumnBox.GUI.Properties;
+using AutumnBox.GUI.Util.Custom;
 using AutumnBox.GUI.Util.I18N;
 using AutumnBox.GUI.Util.OS;
 using AutumnBox.GUI.View.Windows;
@@ -22,26 +23,28 @@ namespace AutumnBox.GUI.ViewModel
         #region MVVM
         public IEnumerable<ILanguage> Languages
         {
-            get => _langs;
-            set
-            {
-                _langs = value;
-                RaisePropertyChanged();
-            }
+            get => LanguageManager.Instance.Languages;
         }
-        private IEnumerable<ILanguage> _langs;
-
-        public ILanguage SelectedItem
+        public ILanguage SelectedLanguage
         {
-            get => _selectedItem;
+            get => LanguageManager.Instance.Current;
             set
             {
-                _selectedItem = value;
-                ApplyLanguage();
+                LanguageManager.Instance.Current = value;
                 RaisePropertyChanged();
             }
         }
-        private ILanguage _selectedItem;
+
+        public IEnumerable<ITheme> Themes { get => ThemeManager.Instance.Themes; }
+        public ITheme SelectedTheme
+        {
+            get => ThemeManager.Instance.Current; set
+            {
+                ThemeManager.Instance.Current = value;
+                RaisePropertyChanged();
+            }
+        }
+   
 
         public bool DebugOnNext
         {
@@ -59,12 +62,12 @@ namespace AutumnBox.GUI.ViewModel
         public ICommand SendToDesktop { get; private set; }
 
         public ICommand ShowDebugWindow { get; private set; }
-        public string DisplayMemberPath { get; set; } = nameof(ILanguage.LangName);
+
+        public string ThemeDisplayMemberPath { get; set; } = nameof(ITheme.Name);
+        public string LanguageDisplayMemberPath { get; set; } = nameof(ILanguage.LangName);
         #endregion
         public VMSettingsDialog()
         {
-            Languages = LanguageManager.Instance.Languages;
-            SelectedItem = LanguageManager.Instance.Current;
             SendToDesktop = new MVVMCommand((_) =>
             {
                 ShortcutHelper.CreateShortcutOnDesktop("AutumnBox", System.Environment.CurrentDirectory + "/AutumnBox.GUI.exe", "The AutumnBox-Dream of us");
@@ -73,17 +76,6 @@ namespace AutumnBox.GUI.ViewModel
             {
                 new LogWindow().Show();
             });
-        }
-        private void ApplyLanguage()
-        {
-            if (SelectedItem.Equals(LanguageManager.Instance.Current))
-            {
-                return;
-            }
-            else
-            {
-                LanguageManager.Instance.Current = SelectedItem;
-            }
         }
     }
 }
