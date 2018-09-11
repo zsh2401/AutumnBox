@@ -31,10 +31,9 @@
     <s:String x:Key="PanelHomeSendMail">发送邮件</s:String>
     
         <!--UpdateWindow-->
-    <s:String x:Key="UpdateWindowBtnClose">不</s:String>
      <s:String x:Key="UpdateWindowBtnUpdate">立刻下载新版本!l</s:String>
      <s:String x:Key="UpdateWindowTitle">检测到新版本</s:String>
-     <s:String x:Key="UpdateWindowCkbSkipVersion">跳过此版本</s:String>
+     <s:String x:Key="UpdateWindowBtnSkipVersion">跳过此版本</s:String>
     
         <!--PanelSettings-->
     <s:String x:Key="PanelSettingsLanguage">语言</s:String>

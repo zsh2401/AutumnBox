@@ -36,7 +36,7 @@ namespace AutumnBox.GUI.ViewModel
                 RaisePropertyChanged();
             }
         }
-        private string _stateString = "?";
+        private string _stateString = null;
 
         public Color StateStringColor
         {
@@ -90,7 +90,7 @@ namespace AutumnBox.GUI.ViewModel
         /// 连接到....
         /// </summary>
         /// <param name="ip"></param>
-        private async void ConnectTo(IPEndPoint ip)
+        private void ConnectTo(IPEndPoint ip)
         {
             StateString = App.Current.Resources["ContentConnectNetDeviceStateStringConnecting"].ToString();
             DoConnect.CanExecuteProp = false;

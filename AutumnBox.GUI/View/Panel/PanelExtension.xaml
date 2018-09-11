@@ -4,25 +4,31 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+         
              mc:Ignorable="d" d:DesignWidth="622.427" d:DesignHeight="281.547">
     <Grid>
-        <materialDesign:Card Margin="10,10,0,10" VerticalAlignment="Stretch" HorizontalAlignment="Left" Width="262">
-            <ListBox ItemsSource="{Binding Warppers}" SelectedItem="{Binding Selected,Mode=TwoWay}" Margin="0,0,0,0">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <Image RenderOptions.BitmapScalingMode="Fant" Height="20px" Width="20px" Source="{Binding Path=Icon}"/>
-                            <Label Content="{Binding Name}"/>
-                        </StackPanel>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
-        </materialDesign:Card>
-        <GroupBox Header="{Binding Selected.Name}" Visibility="{Binding DetailsVisibily}" FontSize="17" Margin="289,10,10,10">
-            <Grid>
-                <TextBlock TextWrapping = "Wrap" Text="{Binding Selected.Warpper.Info.FormatedDesc}" Foreground="{DynamicResource MainBackgroundForegroundBrush}" Margin="0,0,10,35"/>
-                <Button Style="{DynamicResource MaterialDesignToolButton}" Command="{Binding RunExtension}" Content="{Binding BtnRunExtensionContent}" Height="28" VerticalAlignment="Bottom"/>
-            </Grid>
-        </GroupBox>
+        <Grid Visibility="{Binding BaseVisibily}">
+            <TextBlock Foreground="{DynamicResource MainBackgroundForegroundBrush}" HorizontalAlignment="Center" VerticalAlignment="Center" Text="I'd love to change the world,but i dont know what to do"/>
+        </Grid>
+        <Grid Visibility="{Binding ExtensionsVisibily}">
+            <materialDesign:Card Margin="10,10,0,10" VerticalAlignment="Stretch" HorizontalAlignment="Left" Width="262">
+                <ListBox ItemsSource="{Binding Warppers}" SelectedItem="{Binding Selected,Mode=TwoWay}" Margin="0,0,0,0">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Image RenderOptions.BitmapScalingMode="Fant" Height="20px" Width="20px" Source="{Binding Path=Icon}"/>
+                                <Label Content="{Binding Name}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </materialDesign:Card>
+            <GroupBox Header="{Binding Selected.Name}" Visibility="{Binding DetailsVisibily}" FontSize="17" Margin="289,10,10,10">
+                <Grid>
+                    <TextBlock TextWrapping = "Wrap" Text="{Binding Selected.Warpper.Info.FormatedDesc}" Foreground="{DynamicResource MainBackgroundForegroundBrush}" Margin="0,0,10,35"/>
+                    <Button Style="{DynamicResource MaterialDesignToolButton}" Command="{Binding RunExtension}" Content="{Binding BtnRunExtensionContent}" Height="28" VerticalAlignment="Bottom"/>
+                </Grid>
+            </GroupBox>
+        </Grid>
     </Grid>
 </UserControl>

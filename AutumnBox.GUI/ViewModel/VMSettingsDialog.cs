@@ -67,7 +67,7 @@ namespace AutumnBox.GUI.ViewModel
             SelectedItem = LanguageManager.Instance.Current;
             SendToDesktop = new MVVMCommand((_) =>
             {
-                SystemHelper.CreateShortcutOnDesktop("AutumnBox", System.Environment.CurrentDirectory + "/AutumnBox.GUI.exe", "The AutumnBox-Dream of us");
+                ShortcutHelper.CreateShortcutOnDesktop("AutumnBox", System.Environment.CurrentDirectory + "/AutumnBox.GUI.exe", "The AutumnBox-Dream of us");
             });
             ShowDebugWindow = new MVVMCommand((_) =>
             {

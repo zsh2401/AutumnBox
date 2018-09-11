@@ -23,7 +23,7 @@ namespace AutumnBox.GUI.Util.OS
     /// <summary>
     /// SystemHelper static class, static methods about System
     /// </summary>
-    internal static class SystemHelper
+    internal static class ShortcutHelper
     {
         /// <summary>
         /// Create Shortcut
@@ -70,15 +70,5 @@ namespace AutumnBox.GUI.Util.OS
             CreateShortcut(desktop, shortcutName, targetPath, description, iconLocation);
         }
 
-        /// <summary>
-        /// 判断当前操作系统是否是win10
-        /// </summary>
-        public static bool IsWin10
-        {
-            get
-            {
-                return Environment.OSVersion.Version.Major == 10;
-            }
-        }
     }
 }

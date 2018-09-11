@@ -20,7 +20,6 @@
     FontFamily="{DynamicResource AutumnBox.Font}"
      Closed="_MainWindow_Closed">
     <Grid>
-        <WebBrowser x:Name="WTF" Width="1" Height="1" VerticalAlignment="Top"/>
         <materialDesign:Transitioner SelectedIndex="{Binding TranSelectIndex}">
             <Grid>
                 <StackPanel Orientation="Vertical" VerticalAlignment="Top">

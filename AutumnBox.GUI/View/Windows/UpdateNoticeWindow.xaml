@@ -8,12 +8,18 @@
         FontFamily="{DynamicResource AutumnBox.Font}"
         Title="{DynamicResource UpdateWindowTitle}" MinHeight="350" MinWidth="330" Height="350" Width="446"
         WindowStartupLocation="CenterScreen"
+        ShowInTaskbar="False"
+        WindowStyle="ToolWindow"
         ResizeMode="CanResize">
     <Grid Margin="1" Background="WhiteSmoke">
         <StackPanel Margin="10" VerticalAlignment="Top">
             <TextBlock Text="{Binding Model.Header}" TextWrapping="Wrap" FontSize="25"/>
             <TextBlock Text="{Binding Model.Message}" TextWrapping="Wrap" FontSize="15"/>
         </StackPanel>
-        <Button Margin="10" HorizontalAlignment="Center" VerticalAlignment="Bottom" Style="{DynamicResource MaterialDesignRaisedButton}" Command="{Binding GotoUpdate}" Content="{DynamicResource UpdateWindowBtnUpdate}"/>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+            <Button Margin="10" HorizontalAlignment="Center"  Style="{DynamicResource MaterialDesignFlatButton}" Click="Button_Click" Command="{Binding SkipThisVersion}" Content="{DynamicResource UpdateWindowBtnSkipVersion}"/>
+            <Button Margin="10" HorizontalAlignment="Center" Style="{DynamicResource MaterialDesignRaisedButton}" Click="Button_Click" Command="{Binding GotoUpdate}" Content="{DynamicResource UpdateWindowBtnUpdate}"/>
+        </StackPanel>
+        
     </Grid>
 </Window>

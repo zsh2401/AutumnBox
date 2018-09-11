@@ -121,6 +121,34 @@ namespace AutumnBox.GUI.ViewModel
         }
         private Visibility _detailsVisi = Visibility.Collapsed;
 
+        public Visibility BaseVisibily
+        {
+            get
+            {
+                return _baseVisi;
+            }
+            set
+            {
+                _baseVisi = value;
+                RaisePropertyChanged();
+            }
+        }
+        private Visibility _baseVisi = Visibility.Visible;
+
+        public Visibility ExtensionsVisibily
+        {
+            get
+            {
+                return _extsVisi;
+            }
+            set
+            {
+                _extsVisi = value;
+                RaisePropertyChanged();
+            }
+        }
+        private Visibility _extsVisi = Visibility.Collapsed;
+
         public string BtnRunExtensionContent
         {
             get
@@ -172,7 +200,18 @@ namespace AutumnBox.GUI.ViewModel
         }
         private void ComObserver()
         {
-            OpenFxObserver.Instance.Loaded += (_, __) =>
+            if (OpenFxObserver.Instance.IsLoaded)
+            {
+                LoadExtensions();
+            }
+            else
+            {
+                OpenFxObserver.Instance.Loaded += (_, __) =>
+                {
+                    LoadExtensions();
+                };
+            }
+            LanguageManager.Instance.LanguageChanged += (s, e) =>
             {
                 LoadExtensions();
             };
@@ -186,10 +225,6 @@ namespace AutumnBox.GUI.ViewModel
                 DeviceSelectionObserver.Instance.SelectedDevice += OnSelectDevice;
                 DeviceSelectionObserver.Instance.SelectedNoDevice += OnSelectNoDevice;
             }
-            LanguageManager.Instance.LanguageChanged += (s, e) =>
-            {
-                LoadExtensions();
-            };
         }
         public void LoadExtensions()
         {
@@ -200,6 +235,16 @@ namespace AutumnBox.GUI.ViewModel
             App.Current.Dispatcher.Invoke(() =>
             {
                 Warppers = WarpperWarpper.From(filted);
+                if (Warppers.Count() == 0)
+                {
+                    BaseVisibily = Visibility.Visible;
+                    ExtensionsVisibily = Visibility.Collapsed;
+                }
+                else
+                {
+                    BaseVisibily = Visibility.Collapsed;
+                    ExtensionsVisibily = Visibility.Visible;
+                }
             });
         }
     }

@@ -12,16 +12,9 @@
 *
 \* =============================================================================*/
 using System;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
-using AutumnBox.Basic.Util;
-using AutumnBox.Basic.MultipleDevices;
-using System.Windows.Threading;
-using System.Media;
 using AutumnBox.GUI.ViewModel;
-using AutumnBox.GUI.Util.UI;
-using AutumnBox.GUI.Util;
+using AutumnBox.Support.Log;
 
 namespace AutumnBox.GUI.View.Windows
 {
@@ -37,44 +30,13 @@ namespace AutumnBox.GUI.View.Windows
             DataContext = ViewModel;
         }
 
-        private void RegisterEvent()
-        {
-            //AdbHelper.AdbServerStartsFailed += (s, e) =>
-            //{
-            //    DevicesMonitor.Stop();
-            //    bool _continue = true;
-            //    Dispatcher.Invoke(() =>
-            //    {
-            //        _continue = BoxHelper.ShowChoiceDialog("msgWarning",
-            //            "msgStartAdbServerFail",
-            //            "btnExit", "btnIHaveCloseOtherPhoneHelper")
-            //            .ToBool();
-            //    });
-            //    if (!_continue)
-            //    {
-            //        Close();
-            //    }
-            //    else
-            //    {
-            //        Task.Run(() =>
-            //        {
-            //            Thread.Sleep(3000);
-            //            App.Current.Dispatcher.Invoke(DevicesMonitor.Begin);
-            //        });
-            //    }
-            //};
-        }
-
         private void MainWindow_Loaded(object sender, RoutedEventArgs _e)
         {
             ViewModel.LoadAsync(() =>
             {
-                RegisterEvent();
+                Logger.Info(this, "Loaded");
+                //RegisterEvent();
             });
-#if !DEBUG
-            Util.Extensions.SuppressScriptErrors(WTF, true);
-            WTF.Navigate(App.Current.Resources["urlApiStatistics"].ToString());
-#endif
             //#if ENABLE_BLUR
             //            UIHelper.SetOwnerTransparency(Config.BackgroundA);
             //            //开启Blur透明效果
