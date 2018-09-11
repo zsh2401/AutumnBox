@@ -36,8 +36,11 @@
      <s:String x:Key="UpdateWindowBtnSkipVersion">跳过此版本</s:String>
     
         <!--PanelSettings-->
+    <s:String x:Key="PanelSettingsInterface">界面</s:String>
+    <s:String x:Key="PanelSettingsFinishedSound">功能完成音效</s:String>
+    <s:String x:Key="PanelSettingsOther">其它</s:String>
     <s:String x:Key="PanelSettingsLanguage">语言</s:String>
-      <s:String x:Key="PanelSettingsDebug">调试</s:String>
+    <s:String x:Key="PanelSettingsDebug">调试</s:String>
     <s:String x:Key="PanelSettingsSendToDesktop">创建快捷方式</s:String>
     <s:String x:Key="PanelSettingsCreateDebugWindow">显示调试窗口</s:String>
     <s:String x:Key="PanelSettingsLaunchDebugWindowOnNextLaunch">在下次启动时显示调试窗口</s:String>

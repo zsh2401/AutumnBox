@@ -15,7 +15,7 @@
       <Value Profile="(Default)">NULL</Value>
     </Setting>
     <Setting Name="Theme" Type="System.String" Scope="User">
-      <Value Profile="(Default)">秋-AutumnBox</Value>
+      <Value Profile="(Default)">Autumn</Value>
     </Setting>
     <Setting Name="NotifyOnFinish" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
