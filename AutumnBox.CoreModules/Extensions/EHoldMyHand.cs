@@ -11,7 +11,7 @@ namespace AutumnBox.CoreModules.Extensions
 {
     [ExtName("Testing")]
     [ExtRequiredDeviceStates(Basic.Device.DeviceState.NoMatter)]
-    public class EHoldMyHand : AtmbVisualExtension
+    public class EHoldMyHand : OfficialVisualExtension
     {
         bool stoppable = false;
         protected override int VisualMain()
