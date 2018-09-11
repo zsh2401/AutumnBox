@@ -13,7 +13,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot.DpmSetter
     [ExtAppProperty("com.catchingnow.icebox")]
     [ExtIcon("Icons.icebox.png")]
     [ExtRequiredDeviceStates(Basic.Device.DeviceState.Poweron)]
-    public class EIceBox : BasedOnDpmSetterExtension
+    public class EIceBox : DpmSetterExtension
     {
         public override string ReceiverClassName => null;
 

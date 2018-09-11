@@ -14,7 +14,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot.DpmSetter
     [ExtAppProperty("com.web1n.stopapp")]
     [ExtIcon("Icons.stopapp.png")]
     [ExtRequiredDeviceStates(Basic.Device.DeviceState.Poweron)]
-    public class EStopApp : BasedOnDpmSetterExtension
+    public class EStopApp : DpmSetterExtension
     {
         public override string ReceiverClassName => throw new NotImplementedException();
 

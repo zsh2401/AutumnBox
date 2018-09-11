@@ -60,7 +60,7 @@
     <Compile Include="Extensions\Fastboot\EFlashRecovery.cs" />
     <Compile Include="Extensions\Poweron\NoRoot\DpmSetter\EAirForzenActivator.cs" />
     <Compile Include="Extensions\Poweron\NoRoot\DpmSetter\EBlackHole.cs" />
-    <Compile Include="Lib\BasedOnDpmSetterExtension.cs" />
+    <Compile Include="Lib\DpmSetterExtension.cs" />
     <Compile Include="Extensions\Poweron\NoRoot\DpmSetter\EIceBox.cs" />
     <Compile Include="Extensions\Poweron\NoRoot\DpmSetter\EStopApp.cs" />
     <Compile Include="Lib\GodPower.cs" />

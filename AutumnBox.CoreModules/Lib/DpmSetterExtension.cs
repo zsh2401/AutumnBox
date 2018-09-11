@@ -6,7 +6,7 @@
 using AutumnBox.Basic.Device;
 namespace AutumnBox.CoreModules.Lib
 {
-    public abstract class BasedOnDpmSetterExtension : OfficialVisualExtension
+    public abstract class DpmSetterExtension : OfficialVisualExtension
     {
         public abstract string ReceiverClassName { get; }
         public abstract string DpmAppPackageName { get; }

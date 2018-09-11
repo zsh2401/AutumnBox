@@ -65,7 +65,6 @@ namespace AutumnBox.CoreModules.Lib
 
         public void RemoveAllUser()
         {
-
             GetRemoveUserCommand().Execute().ThrowIfExitCodeNotEqualsZero();
         }
         public void RemoveAllAccount()
