@@ -244,7 +244,6 @@
     <Compile Include="View\Windows\FatalWindow.xaml.cs">
       <DependentUpon>FatalWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Resources\Images\ImageGetter.cs" />
     <Compile Include="Util\OS\AutoGC.cs" />
     <Compile Include="Util\OS\MachineInfo.cs" />
     <Compile Include="View\Windows\MainWindow.xaml.cs">
@@ -529,9 +528,6 @@
     <Resource Include="Resources\Drawable\Donate\alipay.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\loading.gif" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\Drawable\Donate\wechatpay.png" />
   </ItemGroup>
   <ItemGroup>
@@ -552,12 +548,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\ad_close.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Images\potd_close.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\Themes_Old\DreamTheme_files\bg.jpg" />
   </ItemGroup>
   <ItemGroup>
@@ -567,14 +557,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Drawable\Extension\defaultExtIcon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Images\Btn\close.png" />
-    <Resource Include="Resources\Images\Btn\close_selected.png" />
-    <Resource Include="Resources\Images\Btn\max.png" />
-    <Resource Include="Resources\Images\Btn\max_selected.png" />
-    <Resource Include="Resources\Images\Btn\min.png" />
-    <Resource Include="Resources\Images\Btn\min_selected.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Drawable\old_icon2.png" />
