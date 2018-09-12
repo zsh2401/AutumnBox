@@ -7,12 +7,13 @@ using AutumnBox.OpenFramework.Extension;
 
 namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot
 {
-    [ExtName("Modify dpi without root",Lang = "en-US")]
     [ExtName("免ROOT修改DPI")]
+    [ExtName("Modify dpi without root", Lang = "en-US")]
+    [ExtIcon("Icons.dpi.png")]
     [ExtRequiredDeviceStates(Basic.Device.DeviceState.Poweron)]
-    public class EDpiChanger : AutumnBoxExtension
+    public class EDpiChanger : OfficialVisualExtension
     {
-        public override int Main()
+        protected override int VisualMain()
         {
             Ux.ShowMessageDialog("此模块尚未完成,请等待");
             //TODO
