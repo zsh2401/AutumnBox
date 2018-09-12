@@ -31,15 +31,9 @@ namespace AutumnBox.CoreModules
             return base.Main();
         }
 
-        protected IProcessBasedCommand ExecutingCommand { get; set; } = null;
         protected override bool VisualStop()
         {
-            if (ExecutingCommand == null)
-            {
-                return false;
-            }
-            ExecutingCommand.Kill();
-            return true;
+            return false;
         }
     }
 }

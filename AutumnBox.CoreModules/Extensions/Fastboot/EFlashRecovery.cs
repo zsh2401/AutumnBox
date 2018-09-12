@@ -18,8 +18,8 @@ namespace AutumnBox.CoreModules.Extensions.Fastboot
         {
             OpenFileDialog fileDialog = new OpenFileDialog();
             fileDialog.Reset();
-            fileDialog.Title = "选择一个文件";
-            fileDialog.Filter = "镜像文件(*.img)|*.img|全部文件(*.*)|*.*";
+            fileDialog.Title = Res("EFlashRecoverySelectingTitle") ;
+            fileDialog.Filter = Res("EFlashRecoverySelectingFilter");
             fileDialog.Multiselect = false;
             if (fileDialog.ShowDialog() == true)
             {
@@ -28,6 +28,7 @@ namespace AutumnBox.CoreModules.Extensions.Fastboot
                 TargetDevice.GetFastboot($"boot \"{fileDialog.FileName}\"")
                     .To(OutputPrinter).Execute();
 
+                WriteExitCode(result.ExitCode);
                 if (result.ExitCode == 0)
                 {
                     return OK;

@@ -16,20 +16,28 @@ namespace AutumnBox.CoreModules.Extensions.Fastboot
 {
     [ExtName("加上BL锁")]
     [ExtName("Lock oem", Lang = "en-US")]
+    [ExtDesc("觉得解BL后不安全?想养老了?")]
+    [ExtDesc("Do you wanan relock oem for your device?")]
     [ExtRequiredDeviceStates(Basic.Device.DeviceState.Fastboot)]
     public class EOemLock : OfficialVisualExtension
     {
+        private FastbootCommand ExecutingCommand;
         protected override int VisualMain()
         {
-            if (!Ux.Agree("此操作将会清空你设备上的所有数据,确定吗?")) return ERR;
-            if (!Ux.Agree("再次警告!此操作将会清空你设备上的所有数据,确定吗?")) return ERR;
+            if (!Ux.Agree(Res("EOemLockWarn"))) return ERR;
+            if (!Ux.Agree(Res("EOemLockWarnAgain"))) return ERR;
             WriteInitInfo();
             ExecutingCommand = new FastbootCommand(TargetDevice, "oem lock");
-            WriteLineAndSetTip("正在执行oem lock命令");
+            WriteCommand(ExecutingCommand);
             WriteLine(ExecutingCommand.ToString());
             var exeResult = ExecutingCommand.To(OutputPrinter).Execute();
             WriteExitCode(exeResult.ExitCode);
             return exeResult.ExitCode;
+        }
+        protected override bool VisualStop()
+        {
+            ExecutingCommand.Kill();
+            return true;
         }
     }
 }
