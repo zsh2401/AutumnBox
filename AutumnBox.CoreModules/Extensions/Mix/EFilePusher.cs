@@ -22,8 +22,8 @@ namespace AutumnBox.CoreModules.Extensions.Mix
             {
                 Microsoft.Win32.OpenFileDialog fileDialog = new Microsoft.Win32.OpenFileDialog();
                 fileDialog.Reset();
-                fileDialog.Title = App.GetPublicResouce<string>("SelecteAFile");
-                fileDialog.Filter = "刷机包/压缩包文件(*.zip)|*.zip|镜像文件(*.img)|*.img|全部文件(*.*)|*.*";
+                fileDialog.Title = Res("EFilePusherTitle");
+                fileDialog.Filter = Res("EFilePusherFilter");
                 fileDialog.Multiselect = false;
                 dialogResult = fileDialog.ShowDialog();
                 seleFile = fileDialog.FileName;
@@ -40,8 +40,7 @@ namespace AutumnBox.CoreModules.Extensions.Mix
                 catch (Exception ex)
                 {
                     Logger.Warn("file pushing failed", ex);
-                    WriteLine("推送失败");
-                    Tip = "推送失败";
+                    WriteLineAndSetTip(Res("EFilePusherSuccessful"));
                     return ERR;
                 }
             }

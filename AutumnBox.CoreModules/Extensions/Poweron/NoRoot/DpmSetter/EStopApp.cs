@@ -22,7 +22,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot.DpmSetter
 
         protected override bool OnWarnUser()
         {
-            var warnMsg = string.Format(Res("DPMWarningFmt"), Res("AppNameStopApp"));
+            var warnMsg = string.Format(Res("EGodPowerWarningFmt"), Res("AppNameStopApp"));
             return Ux.Agree(warnMsg);
         }
         protected override int SetReciverAsDpm()

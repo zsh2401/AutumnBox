@@ -13,7 +13,7 @@ namespace AutumnBox.Basic.Calling
     /// <summary>
     /// 基于进程的命令
     /// </summary>
-    public class ProcessBasedCommand : IProcessBasedCommand, IReceiveOutputByTo<ProcessBasedCommand>
+    public class ProcessBasedCommand : IProcessBasedCommand
     {
         private class Result : IProcessBasedCommandResult
         {
@@ -43,7 +43,7 @@ namespace AutumnBox.Basic.Calling
         /// </summary>
         /// <param name="callback"></param>
         /// <returns></returns>
-        public ProcessBasedCommand To(Action<OutputReceivedEventArgs> callback)
+        public IProcessBasedCommand To(Action<OutputReceivedEventArgs> callback)
         {
             this.callback = callback;
             return this;
