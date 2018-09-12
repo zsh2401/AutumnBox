@@ -41,7 +41,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot.Sh
                 }
             }
             new ActivityManager(TargetDevice).StartActivity("me.piebridge.brevent", "ui.BreventActivity");
-            WriteLine(App.GetPublicResouce<string>("ExtensionRunning"));
+            WriteRunning();
             var result = TargetDevice.GetShellCommand($"sh /data/data/me.piebridge.brevent/brevent.sh")
                 .To(OutputPrinter)
                 .Execute();

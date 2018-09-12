@@ -4,8 +4,12 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.Basic.Device;
+using AutumnBox.OpenFramework.Extension;
+
 namespace AutumnBox.CoreModules.Lib
 {
+    [ExtDesc("使用奇淫技巧暴力设置设备管理员,\n注意:使用此模块前,必须先移除屏幕锁,指纹锁等,否则将可能导致不可预见的后果")]
+    [ExtDesc("Use the sneaky skills to set up the device administrator, \n Note: Before using this module, you must first remove the screen lock, fingerprint lock, etc., otherwise it may lead to unforeseen consequences", Lang = "en-us")]
     public abstract class DpmSetterExtension : OfficialVisualExtension
     {
         public abstract string ReceiverClassName { get; }
@@ -13,14 +17,13 @@ namespace AutumnBox.CoreModules.Lib
         protected GodPower GodPower { get; set; }
         protected virtual bool OnWarnUser()
         {
-            string warnMsg = string.Format(Res("DPMWarningFmt"), Res("AppNameThis"));
+            string warnMsg = string.Format(Res("EGodPowerWarningFmt"), Res("AppNameThis"));
             return Ux.Agree(warnMsg);
         }
 
         protected virtual int SetReciverAsDpm()
         {
-            WriteLine("设置设备管理员");
-            Tip = "设置设备管理员";
+            WriteLineAndSetTip(Res("DPMSetting"));
             TargetDevice
                 .GetShellCommand($"dpm set-device-owner {DpmAppPackageName}/{ReceiverClassName}")
                 .To(OutputPrinter)
@@ -30,30 +33,26 @@ namespace AutumnBox.CoreModules.Lib
 
         protected sealed override int VisualMain()
         {
+            WriteWaitingForUser();
             if (OnWarnUser())
             {
                 return ERR;
             }
-            WriteLine("初始化");
-            Tip = "初始化";
+            WriteInitInfo();
             GodPower = new GodPower(this, TargetDevice);
 
-            WriteLine("提取APK");
-            Tip = "提取APK";
+            WriteLineAndSetTip(Res("EGodPowerExtractingApk"));
             GodPower.Extract();
 
-            WriteLine("推送APK");
-            Tip = "推送APK";
+            WriteLineAndSetTip(Res("EGodPowerPushingApk"));
             GodPower.GetPushCommand().To(OutputPrinter).Execute();
 
-            WriteLine("移除用户");
-            Tip = "移除用户";
+            WriteLineAndSetTip(Res("EGodPowerRmUser"));
             GodPower.GetRemoveUserCommand().To(OutputPrinter).Execute();
 
-            WriteLine("移除账号");
-            Tip = "移除账号";
-
+            WriteLineAndSetTip(Res("EGodPowerRmAcc"));
             GodPower.GetRemoveAccountCommnad().To(OutputPrinter).Execute();
+
             return SetReciverAsDpm();
         }
     }

@@ -58,13 +58,15 @@
   <ItemGroup>
     <Compile Include="CoreLib.cs" />
     <Compile Include="Extensions\Fastboot\EFlashRecovery.cs" />
+    <Compile Include="Extensions\Fastboot\EOemLock.cs" />
     <Compile Include="Extensions\Poweron\NoRoot\DpmSetter\EAirForzenActivator.cs" />
     <Compile Include="Extensions\Poweron\NoRoot\DpmSetter\EBlackHole.cs" />
     <Compile Include="Lib\DpmSetterExtension.cs" />
     <Compile Include="Extensions\Poweron\NoRoot\DpmSetter\EIceBox.cs" />
     <Compile Include="Extensions\Poweron\NoRoot\DpmSetter\EStopApp.cs" />
     <Compile Include="Lib\GodPower.cs" />
-    <Compile Include="OfficialVisualExtension.cs" />
+    <Compile Include="OfficialVisualExtension.Kit.cs" />
+    <Compile Include="OfficialVisualExtension.Main.cs" />
     <Compile Include="Extensions\Poweron\NoRoot\EApkInstaller.cs" />
     <Compile Include="Extensions\Poweron\NoRoot\Sh\EBreventActivator.cs" />
     <Compile Include="Extensions\Poweron\NoRoot\Sh\EBreventActivator8.cs" />

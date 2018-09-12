@@ -12,7 +12,7 @@ namespace AutumnBox.Basic.Calling
     /// <summary>
     /// 基于进程的命令
     /// </summary>
-    public interface IProcessBasedCommand : IDisposable,INotifyOutput
+    public interface IProcessBasedCommand : IDisposable,INotifyOutput,IReceiveOutputByTo<IProcessBasedCommand>
     {
         /// <summary>
         /// 执行

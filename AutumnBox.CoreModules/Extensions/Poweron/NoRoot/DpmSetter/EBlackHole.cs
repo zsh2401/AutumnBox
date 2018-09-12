@@ -20,6 +20,5 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot.DpmSetter
         public override string ReceiverClassName => throw new NotImplementedException();
 
         public override string DpmAppPackageName => throw new NotImplementedException();
-
     }
 }

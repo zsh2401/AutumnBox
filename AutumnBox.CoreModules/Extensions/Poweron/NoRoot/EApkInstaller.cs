@@ -46,7 +46,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot
 
         private void Install(List<FileInfo> files)
         {
-            WriteLine(App.GetPublicResouce<string>("ExtensionIniting"));
+            WriteInitInfo();
             int successed = 0;
             int error = 0;
             int currentInstalling = 1;
@@ -70,13 +70,13 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot
                     SetTip(currentInstalling, totalCount);
                 }
             };
-            string fmtString = App.GetPublicResouce<string>("AppInstallingFinishedFmt");
+            string fmtString = Res("EAppInstallerFinishedFmt");
             WriteLine(string.Format(fmtString, successed, error, totalCount));
         }
 
         private void SetTip(double crt, double total)
         {
-            Tip = string.Format(App.GetPublicResouce<string>("AppInstallingFmt"), crt, total);
+            Tip = string.Format(Res("EAppInstallerInstallingFmt"), crt, total);
             Progress = crt / total * 100.0;
         }
     }

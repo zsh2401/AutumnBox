@@ -173,15 +173,32 @@
      <s:String x:Key="RunningWindowExceptionOnStopping">[警告]终止模块时发生严重异常,详情请看日志</s:String>
     
     <!--拓展模块池-->
+    <s:String x:Key="ExtensionExecutingCommandFmt">正在执行: {0}</s:String>
+    <s:String x:Key="ExtensionExitCodeIs">执行完成,退出码:</s:String>
     <s:String x:Key="ExtensionIniting">正在初始化</s:String>
     <s:String x:Key="ExtensionWaitingForUser">等待用户</s:String>
     <s:String x:Key="ExtensionRunning">正在进行</s:String>
-    <s:String x:Key="AppInstallingFmt">正在安装第{0}个,共{1}个APK</s:String>
-    <s:String x:Key="AppInstallingFinishedFmt">执行完毕,成功{0}个,失败{1}个,总共{2}个</s:String>
-    <s:String x:Key="DPMWarningFmt">本模块将会暴力删除你的账户与用户,并设置{0}为设备管理员(免ROOT),你确定这么做吗?</s:String>
-     <s:String x:Key="AppNameThis">这个APP</s:String>
+    
+    <s:String x:Key="EFilePusherSuccessful">推送成功</s:String>
+    <s:String x:Key="EFilePusherSelectingTitle">选择一个文件</s:String>
+    <s:String x:Key="EFilePusherSelectingFilter">任意文件(*.*)|*.*</s:String>
+    <s:String x:Key="EFilePusherFailed">推送失败</s:String>
+    
+    
+    <s:String x:Key="EAppInstallerInstallingFmt">正在安装第{0}个,共{1}个APK</s:String>
+    <s:String x:Key="EAppInstallerFinishedFmt">执行完毕,成功{0}个,失败{1}个,总共{2}个</s:String>
+    
+    <s:String x:Key="EGodPowerWarningFmt">本模块将会暴力删除你的账户与用户,并设置{0}为设备管理员(免ROOT),你确定这么做吗?</s:String>
+    <s:String x:Key="EGodPowerPushingApk">正在推送APK</s:String>
+    <s:String x:Key="EGodPowerExtractingApk">正在提取APK</s:String>
+    <s:String x:Key="EGodPowerRmUser">正在移除设备上所有多余用户</s:String>
+     <s:String x:Key="EGodPowerRmAcc">正在移除设备上所有账户</s:String>
+     <s:String x:Key="DPMSetting">正在设置设备管理员</s:String>
+    
+    <s:String x:Key="AppNameThis">这个APP</s:String>
     <s:String x:Key="AppNameIceBox">冰箱</s:String>
     <s:String x:Key="AppNameStopApp">小黑屋</s:String>
+    
     <!--按钮-->
     <s:String x:Key="btnAppOpsXAct">激活AppOpsX</s:String>
     <s:String x:Key="btnAccountInfo">账号信息</s:String>
@@ -267,34 +284,6 @@
     <s:String x:Key="btnCancel">取消</s:String>
     <!--按钮-->
 
-    <!--链接文字-->
-    <s:String x:Key="hyperLinkInstallModule">如何安装模块</s:String>
-    <s:String x:Key="hyperLinkUpdateNow">现在更新!</s:String>
-    <s:String x:Key="hyperLinkGithub">Github</s:String>
-    <s:String x:Key="hyperLinkBaiduPan">百度网盘</s:String>
-    <s:String x:Key="hyperLinkDownloadMiFlashPackage">下载MIUI线刷包</s:String>
-    <s:String x:Key="hyperLinkLinkHelp">设备连接帮助</s:String>
-    <s:String x:Key="hyperLinkOfficialWebsite">官网</s:String>
-    <s:String x:Key="hyperLinkOpenSource">开源地址</s:String>
-    <s:String x:Key="hyperLinkMoreHelp">更多帮助</s:String>
-     <s:String x:Key="hyperlinkJoinQQGroup">加入QQ群</s:String>
-    <s:String x:Key="hyperlinkDonate">捐赠</s:String>
-    <s:String x:Key="hyperlinkDonateList">捐赠者名单</s:String>
-    <s:String x:Key="hyperlinkExtensionsCenter">拓展下载中心</s:String>
-    <!--链接文字-->
-    
-    <!--tabitem-->
-    <s:String x:Key="tbiStart">开始</s:String>
-    <s:String x:Key="tbiOnPowerOn">开机</s:String>
-    <s:String x:Key="tbiOnRecovery">恢复模式/Sideload</s:String>
-    <s:String x:Key="tbiOnFastboot">Fastboot</s:String>
-     <s:String x:Key="tbiExtension">拓展模块</s:String>
-    <!--tabitem-->
-
-    <!--标题-->
-    <s:String x:Key="titleHaveAUpdate">检测到一个更新!</s:String>
-     <s:String x:Key="titleMustRead">必须阅读!</s:String>
-    <!--标题-->
     
     <!--信息(主要用于MMesssageBox)-->
 <s:String x:Key="msgDonatedVersionThanks">感谢您捐赠本软件.秋之盒捐赠版正是对您的回报</s:String>
@@ -378,7 +367,6 @@
         3-重启电脑
         4-去网吧
     </s:String>
-    <s:String x:Key="msgPleaseInputAPort">请输入一个小于65535的端口号</s:String>
     <s:String x:Key="msgFailed">失败了</s:String>
     <!--信息-->
 
