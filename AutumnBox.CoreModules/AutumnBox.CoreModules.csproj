@@ -170,5 +170,8 @@
     <Folder Include="MVVM\ViewModel\" />
     <Folder Include="MVVM\View\Windows\" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\dpi.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
