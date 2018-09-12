@@ -27,15 +27,15 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot.Sh
             bool fixAndroidO = false;
             if (new DeviceBuildPropGetter(TargetDevice).GetAndroidVersion() >= new Version("8.0.0"))
             {
-                var choice = Ux.DoChoice("msgNotice", "msgFixAndroidO", "btnDoNotOpen", "btnOpen");
+                var choice = Ux.DoChoice( "EBreventActivatorOpenNetDebugging", "EBreventActivatorBtnNo", "EBreventActivatorBtnOpen");
                 switch (choice)
                 {
                     case ChoiceResult.Cancel:
                         return ERR;
-                    case ChoiceResult.Deny:
+                    case ChoiceResult.Left:
                         fixAndroidO = false;
                         break;
-                    case ChoiceResult.Accept:
+                    case ChoiceResult.Right:
                         fixAndroidO = true;
                         break;
                 }
@@ -49,6 +49,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot.Sh
             {
                 usbDevice.OpenNetDebugging(5555);
             }
+            WriteExitCode(result.ExitCode);
             if (result.ExitCode == (int)LinuxReturnCode.None)
             {
                 return OK;
