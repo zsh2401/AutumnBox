@@ -179,6 +179,14 @@ Description:
     <s:String x:Key="EFlashRecoverySelectingTitle">Select a file</s:String>
     <s:String x:Key="EFlashRecoverySelectingFilter">Image file(*.img)|*.img|Any file(*.*)|*.*</s:String>
     
+        <s:String x:Key="EBreventActivatorOpenNetDebugging">
+        Your device is android 8.0 system,do you want open net-debugging after activated to ensure service normal running?
+         this operation maybe very dangerous!
+        &#x0a; iff you decide to turn it on,please keep the device unlocked during execution,otherwise activation is invalid!
+    </s:String>
+      <s:String x:Key="EBreventActivatorBtnOpen">Enable</s:String>
+    <s:String x:Key="EBreventActivatorBtnNo">Don't enable</s:String>
+    
      <s:String x:Key="EOemLockWarn">This will erase all the data on your device, OK?</s:String>
      <s:String x:Key="EOemLockWarnAgain">Once again, this will erase all the data on your device, OK?</s:String>
     

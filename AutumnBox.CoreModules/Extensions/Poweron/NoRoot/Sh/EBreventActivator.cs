@@ -25,6 +25,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot.Sh
             var result = TargetDevice.GetShellCommand($"sh /data/data/me.piebridge.brevent/brevent.sh")
                 .To(OutputPrinter)
                 .Execute();
+            WriteExitCode(result.ExitCode);
             if (result.ExitCode == (int)LinuxReturnCode.None)
             {
                 return OK;
