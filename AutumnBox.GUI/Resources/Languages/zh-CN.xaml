@@ -184,6 +184,11 @@
     <s:String x:Key="EFilePusherSelectingFilter">任意文件(*.*)|*.*</s:String>
     <s:String x:Key="EFilePusherFailed">推送失败</s:String>
     
+    <s:String x:Key="EFlashRecoverySelectingTitle">选择一个文件</s:String>
+    <s:String x:Key="EFlashRecoverySelectingFilter">镜像文件(*.img)|*.img|全部文件(*.*)|*.*</s:String>
+    
+     <s:String x:Key="EOemLockWarn">此操作将会清空你设备上的所有数据,确定吗?</s:String>
+     <s:String x:Key="EOemLockWarnAgain">再问一次,此操作将会清空你设备上的所有数据,确定吗?</s:String>
     
     <s:String x:Key="EAppInstallerInstallingFmt">正在安装第{0}个,共{1}个APK</s:String>
     <s:String x:Key="EAppInstallerFinishedFmt">执行完毕,成功{0}个,失败{1}个,总共{2}个</s:String>

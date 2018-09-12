@@ -176,6 +176,12 @@ Description:
     <s:String x:Key="EFilePusherSelectingFilter">Any file(*.*)|*.*</s:String>
     <s:String x:Key="EFilePusherFailed">Push failed</s:String>
     
+    <s:String x:Key="EFlashRecoverySelectingTitle">Select a file</s:String>
+    <s:String x:Key="EFlashRecoverySelectingFilter">Image file(*.img)|*.img|Any file(*.*)|*.*</s:String>
+    
+     <s:String x:Key="EOemLockWarn">This will erase all the data on your device, OK?</s:String>
+     <s:String x:Key="EOemLockWarnAgain">Once again, this will erase all the data on your device, OK?</s:String>
+    
     <s:String x:Key="EAppInstallerInstallingFmt">Installing {0},Total {1}</s:String>
     <s:String x:Key="EAppInstallerFinishedFmt">Finished,Success {0},Fail {1},Total {2}</s:String>
     

@@ -9,7 +9,7 @@ using System.Threading;
 
 namespace AutumnBox.CoreModules.Extensions
 {
-    [ExtName("Testing")]
+    [ExtName("Example extension")]
     [ExtRequiredDeviceStates(Basic.Device.DeviceState.NoMatter)]
     public class EHoldMyHand : OfficialVisualExtension
     {
