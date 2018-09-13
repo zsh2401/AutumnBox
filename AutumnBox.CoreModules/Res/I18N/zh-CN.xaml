@@ -15,6 +15,9 @@
     <s:String x:Key="EFilePusherSelectingFilter">任意文件(*.*)|*.*</s:String>
     <s:String x:Key="EFilePusherFailed">推送失败</s:String>
 
+    <s:String x:Key="EGCMNotSupported">不支持模拟器或其他类型设备</s:String>
+    <s:String x:Key="EGCMAlreadyEnableNetDebugging">此功能原理基于网络调试，但该设备已经开启，因此无需再进行操作</s:String>
+
     <s:String x:Key="EFlashRecoverySelectingTitle">选择一个文件</s:String>
     <s:String x:Key="EFlashRecoverySelectingFilter">镜像文件(*.img)|*.img|全部文件(*.*)|*.*</s:String>
 

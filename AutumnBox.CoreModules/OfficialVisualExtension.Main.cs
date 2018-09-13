@@ -3,14 +3,12 @@
 ** date:  2018/8/24 1:46:21 (UTC +8:00)
 ** desc： ...
 *************************************************/
-using AutumnBox.Basic.Calling;
-using AutumnBox.Basic.Data;
 using AutumnBox.OpenFramework.Content;
 using AutumnBox.OpenFramework.Extension;
 
 namespace AutumnBox.CoreModules
 {
-    [ExtAuth("AutumnBox")]
+    [ExtAuth("秋之盒官方")]
     [ExtAuth("AutumnBox official", Lang = "en-us")]
     [ExtOfficial(true)]
     [ContextPermission(CtxPer.High)]

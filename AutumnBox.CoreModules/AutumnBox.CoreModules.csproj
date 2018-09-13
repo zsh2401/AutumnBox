@@ -59,8 +59,10 @@
     <Compile Include="CoreLib.cs" />
     <Compile Include="Extensions\Fastboot\EFlashRecovery.cs" />
     <Compile Include="Extensions\Fastboot\EOemLock.cs" />
+    <Compile Include="Extensions\Poweron\NoRoot\DpmSetter\EFreezeYou.cs" />
     <Compile Include="Extensions\Poweron\NoRoot\DpmSetter\EAirForzenActivator.cs" />
     <Compile Include="Extensions\Poweron\NoRoot\DpmSetter\EBlackHole.cs" />
+    <Compile Include="Extensions\Poweron\NoRoot\EGCM.cs" />
     <Compile Include="Lib\DpmSetterExtension.cs" />
     <Compile Include="Extensions\Poweron\NoRoot\DpmSetter\EIceBox.cs" />
     <Compile Include="Extensions\Poweron\NoRoot\DpmSetter\EStopApp.cs" />
@@ -148,7 +150,7 @@
     <EmbeddedResource Include="Icons\freezeYou.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Icons\gmc.png" />
+    <EmbeddedResource Include="Icons\gcm.png" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Icons\Greenify.png" />
@@ -182,6 +184,9 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\flash.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

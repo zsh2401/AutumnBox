@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutumnBox.Basic", "AutumnBo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutumnBox.ConsoleTester", "AutumnBox.ConsoleTester\AutumnBox.ConsoleTester.csproj", "{AB494016-2D55-4E67-90A7-BC9AE44C4892}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutumnBox.Support", "AutumnBox.Support\AutumnBox.Support.csproj", "{851B2EB0-0503-428D-BD87-063555B19451}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutumnBox.Support", "AutumnBox.Support\AutumnBox.Support.csproj", "{851B2EB0-0503-428D-BD87-063555B19451}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutumnBox.Basic.Flows", "AutumnBox.Basic.Flows\AutumnBox.Basic.Flows.csproj", "{3091ECAE-7FF2-421D-B970-1C76D7CAB0C0}"
 EndProject
@@ -33,6 +33,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutumnBox.ExampleExtensions", "AutumnBox.ExampleExtensions\AutumnBox.ExampleExtensions.csproj", "{D81ACCBD-9D6A-4A5B-A0A5-4362F897074B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutumnBox.CoreModules", "AutumnBox.CoreModules\AutumnBox.CoreModules.csproj", "{8D9EB8B7-0271-4368-AA27-3DD6B62EEBDE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "OfficialExtension", "OfficialExtension", "{8810ED97-A5BB-448A-B96D-6A18846B14DB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -407,9 +409,10 @@ Global
 		{6676743F-1C88-4446-8D9C-8CB2D6DFE873} = {AD194958-76D4-4C60-BC3A-A6753B39D060}
 		{1F3778B8-BD3B-4288-A498-FD76D2E84F44} = {AD194958-76D4-4C60-BC3A-A6753B39D060}
 		{D81ACCBD-9D6A-4A5B-A0A5-4362F897074B} = {ED6D96D8-56EF-4E5B-B43F-100D1DB9EA30}
+		{8D9EB8B7-0271-4368-AA27-3DD6B62EEBDE} = {8810ED97-A5BB-448A-B96D-6A18846B14DB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {E8E55705-AE5C-4952-B4C7-9D7F81C38731}
 		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.PolicyInjection.6.0.1304.0\lib\NET45
+		SolutionGuid = {E8E55705-AE5C-4952-B4C7-9D7F81C38731}
 	EndGlobalSection
 EndGlobal
