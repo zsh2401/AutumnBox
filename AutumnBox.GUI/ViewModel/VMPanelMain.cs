@@ -6,6 +6,8 @@
 using AutumnBox.Basic.Util;
 using AutumnBox.GUI.Model;
 using AutumnBox.GUI.MVVM;
+using AutumnBox.GUI.Util;
+using AutumnBox.GUI.Util.OS;
 using AutumnBox.GUI.View.DialogContent;
 using AutumnBox.GUI.View.Windows;
 using MaterialDesignThemes.Wpf;
@@ -54,28 +56,36 @@ namespace AutumnBox.GUI.ViewModel
                 UseShellExecute = false,
                 Verb = "runas",
             };
-            var args = new ChoicerContentStartArgs
+            if (OSInfo.IsWindows10)
             {
-                Content = "msgShellChoiceTip",
-                ContentCenterButton = "CMD",
-                ContentRightButton = "PowerShell"
-            };
-            args.Choiced += (s, e) =>
-            {
-                switch (e.Result)
+                var args = new ChoicerContentStartArgs
                 {
-                    case ChoicerResult.Center:
-                        Process.Start(info);
-                        break;
-                    case ChoicerResult.Right:
-                        info.FileName = "powershell.exe";
-                        Process.Start(info);
-                        break;
-                    default:
-                        break;
-                }
-            };
-            View.MaterialDialog.ShowChoiceDialog(args);
+                    Content = "msgShellChoiceTip",
+                    ContentCenterButton = "CMD",
+                    ContentRightButton = "PowerShell"
+                };
+                args.Choiced += (s, e) =>
+                {
+                    switch (e.Result)
+                    {
+                        case ChoicerResult.Center:
+                            Process.Start(info);
+                            break;
+                        case ChoicerResult.Right:
+                            info.FileName = "powershell.exe";
+                            Process.Start(info);
+                            break;
+                        default:
+                            break;
+                    }
+                };
+                View.MaterialDialog.ShowChoiceDialog(args);
+            }
+            else
+            {
+                Process.Start(info);
+            }
+
         }
         private void Instance_SelectedDevice(object sender, EventArgs e)
         {

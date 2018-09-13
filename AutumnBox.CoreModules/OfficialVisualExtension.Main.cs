@@ -21,13 +21,13 @@ namespace AutumnBox.CoreModules
             public override void After(AfterArgs args)
             {
                 base.After(args);
-
             }
         }
 
         [SoundPlayAspect]
         public override int Main()
         {
+            WriteLineAndSetTip(MsgRunning);
             return base.Main();
         }
 

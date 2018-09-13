@@ -22,8 +22,8 @@ namespace AutumnBox.CoreModules.Extensions.Mix
             {
                 Microsoft.Win32.OpenFileDialog fileDialog = new Microsoft.Win32.OpenFileDialog();
                 fileDialog.Reset();
-                fileDialog.Title = Res("EFilePusherTitle");
-                fileDialog.Filter = Res("EFilePusherFilter");
+                fileDialog.Title = Res("EFilePusherSelectingTitle");
+                fileDialog.Filter = Res("EFilePusherSelectingFilter");
                 fileDialog.Multiselect = false;
                 dialogResult = fileDialog.ShowDialog();
                 seleFile = fileDialog.FileName;
