@@ -58,7 +58,6 @@ namespace AutumnBox.GUI.ViewModel
                 case Basic.Device.DeviceState.Unknown:
                     TabSelectedIndex = 6;
                     break;
-                case Basic.Device.DeviceState.None:
                 default:
                     break;
             }

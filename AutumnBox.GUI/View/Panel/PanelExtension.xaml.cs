@@ -9,16 +9,15 @@ namespace AutumnBox.GUI.View.Panel
     /// </summary>
     public partial class PanelExtension : UserControl
     {
-        public DeviceState TargetDeviceState
-        {
-            set
-            {
-                DataContext = new VMExtensions(value);
-            }
-        }
+        public DeviceState TargetDeviceState { get; set; } = (DeviceState)255;
         public PanelExtension()
         {
             InitializeComponent();
+        }
+
+        private void UserControl_Loaded(object sender, System.Windows.RoutedEventArgs e)
+        {
+            DataContext = new VMExtensions(TargetDeviceState);
         }
     }
 }

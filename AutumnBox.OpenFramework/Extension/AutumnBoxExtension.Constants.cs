@@ -11,6 +11,10 @@ namespace AutumnBox.OpenFramework.Extension
     partial class AutumnBoxExtension
     {
         /// <summary>
+        /// 无关
+        /// </summary>
+        public const DeviceState NoMatter = 0;
+        /// <summary>
         /// 所有状态
         /// </summary>
         public const DeviceState AllState = (DeviceState)255;
@@ -22,5 +26,9 @@ namespace AutumnBox.OpenFramework.Extension
         /// 发生错误
         /// </summary>
         public const int ERR = 1;
+        /// <summary>
+        /// 被用户在执行过程中的某个步骤取消
+        /// </summary>
+        public const int ERR_CANCLLED_BY_USER = 2;
     }
 }

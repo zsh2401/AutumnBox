@@ -49,15 +49,6 @@ namespace AutumnBox.Basic.Device
     /// </summary>
     public enum DeviceState : int
     {
-        /// <summary>
-        /// 所有状态,这个状态不可能发生在实机上,仅用于某些无关设备的模块
-        /// </summary>
-        NoMatter = 1 << 24,
-
-        /// <summary>
-        /// 无设备
-        /// </summary>
-        None = 1 << 0,
 
         /// <summary>
         /// 开机状态
@@ -85,13 +76,14 @@ namespace AutumnBox.Basic.Device
         Offline = 1 << 5,
 
         /// <summary>
-        /// 未知状态
-        /// </summary>
-        Unknown = 1 << 6,
-
-        /// <summary>
         /// 未允许ADB调试
         /// </summary>
-        Unauthorized = 1 << 7,
+        Unauthorized = 1 << 6,
+
+        /// <summary>
+        /// 未知状态
+        /// </summary>
+        Unknown = 1 << 7,
+
     }
 }

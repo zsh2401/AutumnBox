@@ -17,7 +17,7 @@ namespace AutumnBox.OpenFramework.Extension
     /// 视觉化秋之盒拓展模块
     /// </summary>
     public abstract class AtmbVisualExtension : AutumnBoxExtension
-    {
+    { 
         private class VisualUxManagerAttribute : ExtMainAsceptAttribute
         {
             /// <summary>
@@ -83,6 +83,24 @@ namespace AutumnBox.OpenFramework.Extension
                 {
                     UIController.OnFinish();
                 });
+                if (FinishedTip != null)
+                {
+                    Tip = FinishedTip;
+                }
+                else {
+                    switch (retCode) {
+                        case OK:
+                            Tip = "RunningWindowStateFinished";
+                            break;
+                        case ERR_CANCLLED_BY_USER:
+                            Tip = "RunningWindowStateCanclledByUser";
+                            break;
+                        default:
+                           Tip=  "RunningWindowStateError";
+                            break;
+
+                    }
+                }
                 Tip = FinishedTip ?? (retCode == 0 ? "RunningWindowStateFinished" : "RunningWindowStateError");
             }
             isRunning = false;
