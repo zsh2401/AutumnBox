@@ -129,6 +129,7 @@
     <Compile Include="Util\Bus\OpenFxObserver.cs" />
     <Compile Include="Util\Effect\Sounds.cs" />
     <Compile Include="Util\FatalHandler.cs" />
+    <Compile Include="Util\OS\OSInfo.cs" />
     <Compile Include="Util\Statistics.cs" />
     <Compile Include="Util\UI\BlurHelper.cs" />
     <Compile Include="Util\UI\UIHelper.cs" />
