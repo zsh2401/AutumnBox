@@ -9,6 +9,7 @@ using AutumnBox.GUI.Util.Bus;
 using AutumnBox.GUI.Util.I18N;
 using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.Warpper;
+using AutumnBox.Support.Log;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -234,19 +235,19 @@ namespace AutumnBox.GUI.ViewModel
         public void LoadExtensions()
         {
             IEnumerable<IExtensionWarpper> filted;
-            if (targetState == AutumnBoxExtension.NoMatter)
-            {
-                filted = from warpper in OpenFramework.Management.Manager.InternalManager.Warppers
-                         where warpper.Info.RequiredDeviceStates == 0
-                         select warpper;
-            }
-            else
-            {
-                filted = from warpper in OpenFramework.Management.Manager.InternalManager.Warppers
-                         where warpper.Info.RequiredDeviceStates.HasFlag(targetState)
-                         select warpper;
-            }
-
+            //if (targetState == AutumnBoxExtension.NoMatter)
+            //{
+            //    Logger.Debug(this,"??");
+            //    filted = from warpper in OpenFramework.Management.Manager.InternalManager.Warppers
+            //             where warpper.Info.RequiredDeviceStates == AutumnBoxExtension.NoMatter
+            //             select warpper;
+            //}
+            //else
+            //{
+            filted = from warpper in OpenFramework.Management.Manager.InternalManager.Warppers
+                     where warpper.Info.RequiredDeviceStates.HasFlag(targetState)
+                     select warpper;
+            //}
             Selected = null;
             App.Current.Dispatcher.Invoke(() =>
             {
