@@ -1,0 +1,43 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                     xmlns:s="clr-namespace:System;assembly=mscorlib"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <s:String x:Key="ExtensionExecutingCommandFmt">Executing command {0}</s:String>
+    <s:String x:Key="ExtensionExitCodeIs">Finished,exit code:</s:String>
+    <s:String x:Key="ExtensionIniting">Init...</s:String>
+    <s:String x:Key="ExtensionWaitingForUser">Waitting for user</s:String>
+    <s:String x:Key="ExtensionRunning">Running</s:String>
+
+    <s:String x:Key="EFilePusherSuccessful">Push successed</s:String>
+    <s:String x:Key="EFilePusherSelectingTitle">Selecte a file</s:String>
+    <s:String x:Key="EFilePusherSelectingFilter">Any file(*.*)|*.*</s:String>
+    <s:String x:Key="EFilePusherFailed">Push failed</s:String>
+
+    <s:String x:Key="EFlashRecoverySelectingTitle">Select a file</s:String>
+    <s:String x:Key="EFlashRecoverySelectingFilter">Image file(*.img)|*.img|Any file(*.*)|*.*</s:String>
+
+    <s:String x:Key="EBreventActivatorOpenNetDebugging">
+        Your device is android 8.0 system,do you want open net-debugging after activated to ensure service normal running?
+         this operation maybe very dangerous!
+        &#x0a; iff you decide to turn it on,please keep the device unlocked during execution,otherwise activation is invalid!
+    </s:String>
+    <s:String x:Key="EBreventActivatorBtnOpen">Enable</s:String>
+    <s:String x:Key="EBreventActivatorBtnNo">Don't enable</s:String>
+
+    <s:String x:Key="EOemLockWarn">This will erase all the data on your device, OK?</s:String>
+    <s:String x:Key="EOemLockWarnAgain">Once again, this will erase all the data on your device, OK?</s:String>
+
+    <s:String x:Key="EAppInstallerInstallingFmt">Installing {0},Total {1}</s:String>
+    <s:String x:Key="EAppInstallerFinishedFmt">Finished,Success {0},Fail {1},Total {2}</s:String>
+
+    <s:String x:Key="EGodPowerWarningFmt">This module will violently delete your account and users, and set {0} as the device owner(dpm). Are you sure you want to do this?</s:String>
+    <s:String x:Key="EGodPowerPushingApk">Pushing APK</s:String>
+    <s:String x:Key="EGodPowerExtractingApk">Extracting APK</s:String>
+    <s:String x:Key="EGodPowerRmUser">Remove all unnecessary users of device</s:String>
+    <s:String x:Key="EGodPowerRmAcc">Remove all account of device</s:String>
+    <s:String x:Key="DPMSetting">Setting DPM application</s:String>
+
+    <s:String x:Key="AppNameThis">this app</s:String>
+    <s:String x:Key="AppNameIceBox">Ice Box</s:String>
+    <s:String x:Key="AppNameStopApp">Stopapp</s:String>
+</ResourceDictionary>

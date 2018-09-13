@@ -35,7 +35,7 @@ namespace AutumnBox.CoreModules
             string result = key;
             App.RunOnUIThread(() =>
             {
-                result = App.GetPublicResouce(key)?.ToString() ?? key;
+                result = App.GetPublicResouce(key)?.ToString() ?? CoreLib.Current.Languages.Get(key) ?? key;
             });
             return result;
         }

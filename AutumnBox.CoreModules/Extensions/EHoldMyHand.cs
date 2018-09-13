@@ -16,6 +16,7 @@ namespace AutumnBox.CoreModules.Extensions
         bool stoppable = false;
         protected override int VisualMain()
         {
+            WriteInitInfo();
             WriteLine("开始执行");
             Thread.Sleep(3000);
             WriteLine("进度25");

@@ -49,7 +49,8 @@ namespace AutumnBox.OpenFramework.Open.Impl
         }
         private string Select(string key)
         {
-            var crtCode = ctx.App.CurrentLanguageCode;
+            var crtCode = ctx.App.CurrentLanguageCode.ToLower();
+            ctx.Logger.Warn(crtCode);
             if (Languages.TryGetValue(crtCode, out ResourceDictionary lang))
             {
                 return lang[key] as string;
@@ -67,7 +68,7 @@ namespace AutumnBox.OpenFramework.Open.Impl
             {
                 defaultLanguage = langResDict;
             }
-            Languages["regionCode"] = langResDict;
+            Languages[regionCode.ToLower()] = langResDict;
         }
     }
 }
