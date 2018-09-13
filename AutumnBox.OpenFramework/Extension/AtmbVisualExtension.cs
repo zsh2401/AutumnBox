@@ -53,7 +53,10 @@ namespace AutumnBox.OpenFramework.Extension
                 });
             }
         }
-
+        /// <summary>
+        /// 完成后的Tip,不设置则默认根据返回码判断是否成功
+        /// </summary>
+        protected string FinishedTip { get; set; } = null;
         /// <summary>
         /// 主函数
         /// </summary>
@@ -80,7 +83,7 @@ namespace AutumnBox.OpenFramework.Extension
                 {
                     UIController.OnFinish();
                 });
-                Tip = retCode == 0 ? "RunningWindowStateFinished" : "RunningWindowStateError";
+                Tip = FinishedTip ?? (retCode == 0 ? "RunningWindowStateFinished" : "RunningWindowStateError");
             }
             isRunning = false;
             return retCode;

@@ -7,7 +7,8 @@
     <s:String x:Key="ExtensionIniting">Init...</s:String>
     <s:String x:Key="ExtensionWaitingForUser">Waitting for user</s:String>
     <s:String x:Key="ExtensionRunning">Running</s:String>
-
+    <s:String x:Key="ExtensionCancelByUser">Cancelled by user</s:String>
+    
     <s:String x:Key="EFilePusherSuccessful">Push successed</s:String>
     <s:String x:Key="EFilePusherSelectingTitle">Selecte a file</s:String>
     <s:String x:Key="EFilePusherSelectingFilter">Any file(*.*)|*.*</s:String>
@@ -16,6 +17,9 @@
     <s:String x:Key="EFlashRecoverySelectingTitle">Select a file</s:String>
     <s:String x:Key="EFlashRecoverySelectingFilter">Image file(*.img)|*.img|Any file(*.*)|*.*</s:String>
 
+    <s:String x:Key="EApkInstallerSelectingTitle">Select a apk file</s:String>
+    <s:String x:Key="EApkInstallerSelectingFilter">Android APK file(*.apk)|*.apk</s:String>
+    
     <s:String x:Key="EBreventActivatorOpenNetDebugging">
         Your device is android 8.0 system,do you want open net-debugging after activated to ensure service normal running?
          this operation maybe very dangerous!

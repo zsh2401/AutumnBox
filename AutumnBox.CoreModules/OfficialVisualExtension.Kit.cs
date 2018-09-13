@@ -16,6 +16,7 @@ namespace AutumnBox.CoreModules
         protected string MsgWaitingForUser => Res("ExtensionWaitingForUser");
         protected string MsgExitCodeIs => Res("ExtensionExitCodeIs");
         protected string MsgRunning => Res("ExtensionRunning");
+        protected string MsgCancelledByUser=> Res("ExtensionCancelByUser");
         protected void WriteLineAndSetTip(string msg)
         {
             WriteLine(msg);
