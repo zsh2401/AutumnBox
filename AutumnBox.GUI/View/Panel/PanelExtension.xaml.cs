@@ -1,5 +1,6 @@
 ﻿using AutumnBox.Basic.Device;
 using AutumnBox.GUI.ViewModel;
+using AutumnBox.OpenFramework.Extension;
 using System.Windows.Controls;
 
 namespace AutumnBox.GUI.View.Panel
@@ -9,7 +10,7 @@ namespace AutumnBox.GUI.View.Panel
     /// </summary>
     public partial class PanelExtension : UserControl
     {
-        public DeviceState TargetDeviceState { get; set; } = (DeviceState)255;
+        public DeviceState TargetDeviceState { get; set; } = AutumnBoxExtension.NoMatter;
         public PanelExtension()
         {
             InitializeComponent();

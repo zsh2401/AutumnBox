@@ -13,7 +13,7 @@ namespace AutumnBox.OpenFramework.Extension
         /// <summary>
         /// 无关
         /// </summary>
-        public const DeviceState NoMatter = 0;
+        public const DeviceState NoMatter = (DeviceState)(1<<24);
         /// <summary>
         /// 所有状态
         /// </summary>
