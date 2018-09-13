@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
          FontFamily="{DynamicResource AutumnBox.Font}"
+             Loaded="UserControl_Loaded"
              mc:Ignorable="d" d:DesignWidth="622.427" d:DesignHeight="281.547">
     <Grid>
         <StackPanel Visibility="{Binding BaseVisibily}" VerticalAlignment="Center" Orientation="Vertical" HorizontalAlignment="Center">

@@ -10,7 +10,7 @@ using System.Threading;
 namespace AutumnBox.CoreModules.Extensions
 {
     [ExtName("Example extension")]
-    [ExtRequiredDeviceStates(Basic.Device.DeviceState.NoMatter)]
+    [ExtRequiredDeviceStates(NoMatter)]
     public class EHoldMyHand : OfficialVisualExtension
     {
         bool stoppable = false;

@@ -28,7 +28,7 @@
             <materialDesign:Card Margin="10" Height="305">
                 <StackPanel Margin="0,0,0,0">
                     <TextBlock Margin="15" FontSize="15"  Text="{DynamicResource PanelMoreEvenNoDevice}"/>
-                    <local:PanelExtension TargetDeviceState="NoMatter" Height="252"/>
+                    <local:PanelExtension Height="252"/>
                 </StackPanel>
             </materialDesign:Card>
             <materialDesign:Card Margin="10">
