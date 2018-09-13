@@ -20,6 +20,12 @@ namespace AutumnBox.GUI.ViewModel
 {
     class VMDeviceDetails : ViewModelBase
     {
+        private static string TryGet(Dictionary<string, string> dict, string key) {
+            try {
+                return dict[key];
+            } catch { }
+            return null;
+        }
         private const string DEFAULT_VALUE = "-";
         #region MVVM
         public Visibility InfoPanelVisibility
@@ -199,10 +205,10 @@ namespace AutumnBox.GUI.ViewModel
                 buildProp = getter.GetFull();
             });
             if (currentCode != taskCode) return;
-            Brand = buildProp[BuildPropKeys.Brand];
-            Model = buildProp[BuildPropKeys.Model];
-            AndroidVersion = buildProp[BuildPropKeys.AndroidVersion];
-            Product = buildProp[BuildPropKeys.ProductName];
+            Brand = TryGet(buildProp,BuildPropKeys.Brand);
+            Model = TryGet(buildProp, BuildPropKeys.Model);
+            AndroidVersion = TryGet(buildProp, BuildPropKeys.AndroidVersion);
+            Product = TryGet(buildProp, BuildPropKeys.ProductName);
             Root = device.HaveSU() ? "√" : "X";
 
             var hwInfo = await Task.Run(() =>

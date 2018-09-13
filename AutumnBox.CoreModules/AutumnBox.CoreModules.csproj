@@ -173,5 +173,15 @@
   <ItemGroup>
     <EmbeddedResource Include="Icons\dpi.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Page Include="Res\I18N\en-US.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Res\I18N\zh-CN.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
