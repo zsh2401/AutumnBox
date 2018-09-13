@@ -25,11 +25,13 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot
         {
             Microsoft.Win32.OpenFileDialog fileDialog = new Microsoft.Win32.OpenFileDialog();
             fileDialog.Reset();
-            fileDialog.Title = App.GetPublicResouce<string>("SelecteAFile");
-            fileDialog.Filter = "安卓安装包ApkFile(*.apk)|*.apk";
+            fileDialog.Title = Res("EApkInstallerSelectingTitle");
+            fileDialog.Filter = Res("EApkInstallerSelectingFilter");
             fileDialog.Multiselect = true;
+            WriteLineAndSetTip(MsgWaitingForUser);
             if (fileDialog.ShowDialog() == true)
             {
+                WriteLineAndSetTip(MsgRunning);
                 List<FileInfo> files = new List<FileInfo>();
                 foreach (string fileName in fileDialog.FileNames)
                 {
@@ -39,6 +41,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot
             }
             else
             {
+                FinishedTip = MsgCancelledByUser;
                 return ERR;
             }
             return OK;

@@ -8,6 +8,7 @@
     <s:String x:Key="ExtensionIniting">正在初始化</s:String>
     <s:String x:Key="ExtensionWaitingForUser">等待用户</s:String>
     <s:String x:Key="ExtensionRunning">正在进行</s:String>
+    <s:String x:Key="ExtensionCancelByUser">被用户取消</s:String>
 
     <s:String x:Key="EFilePusherSuccessful">推送成功</s:String>
     <s:String x:Key="EFilePusherSelectingTitle">选择一个文件</s:String>
@@ -17,6 +18,9 @@
     <s:String x:Key="EFlashRecoverySelectingTitle">选择一个文件</s:String>
     <s:String x:Key="EFlashRecoverySelectingFilter">镜像文件(*.img)|*.img|全部文件(*.*)|*.*</s:String>
 
+    <s:String x:Key="EApkInstallerSelectingTitle">选择一个APK</s:String>
+    <s:String x:Key="EApkInstallerSelectingFilter">安卓APK(*.apk)|*.apk</s:String>
+    
     <s:String x:Key="EBreventActivatorOpenNetDebugging">
         检测到您是安卓8.0系统,为了防止ADB服务被异常终止,请问需要在激活后开启ADB网络调试以保证服务正常运行吗?
          这可能会带来不可测的风险!
