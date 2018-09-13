@@ -48,10 +48,9 @@
     <s:String x:Key="PanelSettingsLaunchDebugWindowOnNextLaunch">在下次启动时显示调试窗口</s:String>
     
     <!--PanelExtensions-->
-     <s:String x:Key="PanelExtensionsDetailsFormat">开发者:{0}
-版本:{1}
-说明:
-     {2}</s:String>
+    <s:String x:Key="PanelExtensionsAuthFmt">开发者:{0}</s:String>
+      <s:String x:Key="PanelExtensionsVersionFmt">版本:{0}</s:String>
+      <s:String x:Key="PanelExtensionsDescFmt">说明:{0}</s:String>
     <s:String x:Key="PanelExtensionsNotFound">没有找到可用的拓展模块/功能</s:String>
     <s:String x:Key="PanelExtensionsButtonEnabled">运行此拓展</s:String>
     <s:String x:Key="PanelExtensionsButtonDisabled">此拓展不可在当前情况下运行</s:String>

@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Text;
 
 namespace AutumnBox.OpenFramework.Warpper
 {
@@ -84,6 +85,7 @@ namespace AutumnBox.OpenFramework.Warpper
                 return GetInfoByCurrentLanguage(nameof(ExtDescAttribute));
             }
         }
+        private readonly Version defaultVersion = new Version(0,0,0,0);
         /// <summary>
         /// 进行了挂载的说明信息
         /// </summary>
@@ -93,8 +95,19 @@ namespace AutumnBox.OpenFramework.Warpper
             {
                 try
                 {
-                    return string.Format(ctx.App.GetPublicResouce<string>("PanelExtensionsDetailsFormat"),
-                    Auth, Version, Desc);
+                    StringBuilder sb = new StringBuilder();
+                    if (Auth != null) {
+                        sb.AppendLine(string.Format(ctx.App.GetPublicResouce<string>("PanelExtensionsAuthFmt"),Auth));
+                    }
+                    if (Version != defaultVersion)
+                    {
+                        sb.AppendLine(string.Format(ctx.App.GetPublicResouce<string>("PanelExtensionsVersionFmt"), Version));
+                    }
+                    if (Desc != null)
+                    {
+                        sb.AppendLine(string.Format(ctx.App.GetPublicResouce<string>("PanelExtensionsDescFmt"), Desc));
+                    }
+                    return sb.ToString();
                 }
                 catch (Exception ex)
                 {

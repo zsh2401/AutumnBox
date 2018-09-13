@@ -33,5 +33,9 @@ namespace AutumnBox.OpenFramework.Extension
         /// <param name="major"></param>
         public ExtVersionAttribute(int major)
             : this(major, 0, 0) { }
+        /// <summary>
+        /// 无版本号
+        /// </summary>
+        public ExtVersionAttribute() :base(new Version(0,0,0,0)){ }
     }
 }
