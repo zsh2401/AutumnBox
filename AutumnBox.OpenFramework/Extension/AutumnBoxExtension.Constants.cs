@@ -17,7 +17,7 @@ namespace AutumnBox.OpenFramework.Extension
         /// <summary>
         /// 所有状态
         /// </summary>
-        public const DeviceState AllState = (DeviceState)255;
+        public const DeviceState AllState = (DeviceState)0b11111111;
         /// <summary>
         /// 完全成功
         /// </summary>
