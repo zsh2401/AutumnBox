@@ -7,7 +7,6 @@ using AutumnBox.OpenFramework.Content;
 using AutumnBox.OpenFramework.ExtLibrary;
 using AutumnBox.OpenFramework.Open.Impl;
 using System;
-using System.IO;
 using System.Windows;
 
 namespace AutumnBox.CoreModules

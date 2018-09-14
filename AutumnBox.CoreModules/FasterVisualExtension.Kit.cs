@@ -1,22 +1,17 @@
-﻿/*************************************************
-** auth： zsh2401@163.com
-** date:  2018/8/24 1:46:21 (UTC +8:00)
-** desc： ...
-*************************************************/
-using AutumnBox.Basic.Calling;
+﻿using AutumnBox.Basic.Calling;
 using AutumnBox.Basic.Data;
 using AutumnBox.OpenFramework.Content;
 using AutumnBox.OpenFramework.Extension;
 
 namespace AutumnBox.CoreModules
 {
-    public abstract partial class OfficialVisualExtension : AtmbVisualExtension
+    public abstract partial class FasterVisualExtension : AtmbVisualExtension
     {
         protected string MsgInit => Res("ExtensionIniting");
         protected string MsgWaitingForUser => Res("ExtensionWaitingForUser");
         protected string MsgExitCodeIs => Res("ExtensionExitCodeIs");
         protected string MsgRunning => Res("ExtensionRunning");
-        protected string MsgCancelledByUser=> Res("ExtensionCancelByUser");
+        protected string MsgCancelledByUser => Res("ExtensionCancelByUser");
         protected void WriteLineAndSetTip(string msg)
         {
             WriteLine(msg);
