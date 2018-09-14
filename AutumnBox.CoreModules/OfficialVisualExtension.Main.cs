@@ -12,26 +12,8 @@ namespace AutumnBox.CoreModules
     [ExtAuth("AutumnBox official", Lang = "en-us")]
     [ExtOfficial(true)]
     [ContextPermission(CtxPer.High)]
-    public abstract partial class OfficialVisualExtension : AtmbVisualExtension
+    public abstract class OfficialVisualExtension : FasterVisualExtension
     {
-        private class SoundPlayAspect : ExtMainAsceptAttribute
-        {
-            public override void After(AfterArgs args)
-            {
-                base.After(args);
-            }
-        }
-
-        [SoundPlayAspect]
-        public override int Main()
-        {
-            WriteLineAndSetTip(MsgRunning);
-            return base.Main();
-        }
-
-        protected override bool VisualStop()
-        {
-            return false;
-        }
+       
     }
 }
