@@ -8,24 +8,27 @@
              Loaded="UserControl_Loaded"
              mc:Ignorable="d" d:DesignWidth="622.427" d:DesignHeight="281.547">
     <Grid>
-        <StackPanel Visibility="{Binding BaseVisibily}" VerticalAlignment="Center" Orientation="Vertical" HorizontalAlignment="Center">
+        
+        <StackPanel Visibility="{Binding NotFoundVisibily}" VerticalAlignment="Center" Orientation="Vertical" HorizontalAlignment="Center">
             <TextBlock FontSize="25" Foreground="{DynamicResource MainBackgroundForegroundBrush}" HorizontalAlignment="Center" Text="{DynamicResource PanelExtensionsNotFound}"/>
             <Button Command="{Binding GotoDownloadExtension}" CommandParameter="{DynamicResource urlDownloadExtensions}" FontSize="13" HorizontalAlignment="Center" Content="下载拓展模块" Style="{DynamicResource MaterialDesignFlatButton}"/>
             <TextBlock Margin="10" FontSize="13" Foreground="{DynamicResource MainBackgroundForegroundBrush}" HorizontalAlignment="Center" VerticalAlignment="Center" Text="I'd love to change the world,but i dont know what to do"/>
         </StackPanel>
+        
         <Grid Visibility="{Binding ExtensionsVisibily}">
-            <materialDesign:Card Margin="10,10,0,10" VerticalAlignment="Stretch" HorizontalAlignment="Left" Width="262">
-                <ListBox ItemsSource="{Binding Warppers}" SelectedItem="{Binding Selected,Mode=TwoWay}" Margin="0,0,0,0">
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <Image RenderOptions.BitmapScalingMode="Fant" Height="20px" Width="20px" Source="{Binding Path=Icon}"/>
-                                <Label Content="{Binding Name}"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
-            </materialDesign:Card>
+            <ListBox Margin="10,10,0,10" VerticalAlignment="Stretch" HorizontalAlignment="Left" Width="262" ItemsSource="{Binding Warppers}" SelectedItem="{Binding Selected,Mode=TwoWay}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Image RenderOptions.BitmapScalingMode="Fant" Height="20px" Width="20px" Source="{Binding Path=Icon}"/>
+                            <Label Content="{Binding Name}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <Grid Visibility="{Binding HaveNoSelectionVisibily}" Margin="289,10,10,10">
+                <TextBlock FontSize="20" Foreground="{DynamicResource MainBackgroundForegroundBrush}" Text="{DynamicResource PanelExtensionsNoSelect}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
             <GroupBox Header="{Binding Selected.Name}" Visibility="{Binding DetailsVisibily}" FontSize="17" Margin="289,10,10,10">
                 <Grid>
                     <TextBlock TextWrapping = "Wrap" Text="{Binding Selected.Warpper.Info.FormatedDesc}" Foreground="{DynamicResource MainBackgroundForegroundBrush}" Margin="0,0,10,35"/>

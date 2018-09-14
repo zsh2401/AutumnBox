@@ -120,23 +120,32 @@ namespace AutumnBox.GUI.ViewModel
             {
                 _detailsVisi = value;
                 RaisePropertyChanged();
+                RaisePropertyChanged(nameof(HaveNoSelectionVisibily));
             }
         }
         private Visibility _detailsVisi = Visibility.Collapsed;
 
-        public Visibility BaseVisibily
+        public Visibility NotFoundVisibily
         {
             get
             {
-                return _baseVisi;
+                return _notFoundVisi;
             }
             set
             {
-                _baseVisi = value;
+                _notFoundVisi = value;
                 RaisePropertyChanged();
             }
         }
-        private Visibility _baseVisi = Visibility.Visible;
+        private Visibility _notFoundVisi = Visibility.Visible;
+
+        public Visibility HaveNoSelectionVisibily
+        {
+            get
+            {
+                return DetailsVisibily == Visibility.Visible ? Visibility.Hidden : Visibility.Visible;
+            }
+        }
 
         public Visibility ExtensionsVisibily
         {
@@ -235,31 +244,21 @@ namespace AutumnBox.GUI.ViewModel
         public void LoadExtensions()
         {
             IEnumerable<IExtensionWarpper> filted;
-            //if (targetState == AutumnBoxExtension.NoMatter)
-            //{
-            //    Logger.Debug(this,"??");
-            //    filted = from warpper in OpenFramework.Management.Manager.InternalManager.Warppers
-            //             where warpper.Info.RequiredDeviceStates == AutumnBoxExtension.NoMatter
-            //             select warpper;
-            //}
-            //else
-            //{
             filted = from warpper in OpenFramework.Management.Manager.InternalManager.Warppers
                      where warpper.Info.RequiredDeviceStates.HasFlag(targetState)
                      select warpper;
-            //}
             Selected = null;
             App.Current.Dispatcher.Invoke(() =>
             {
                 Warppers = WarpperWarpper.From(filted);
                 if (Warppers.Count() == 0)
                 {
-                    BaseVisibily = Visibility.Visible;
+                    NotFoundVisibily = Visibility.Visible;
                     ExtensionsVisibily = Visibility.Collapsed;
                 }
                 else
                 {
-                    BaseVisibily = Visibility.Collapsed;
+                    NotFoundVisibily = Visibility.Collapsed;
                     ExtensionsVisibily = Visibility.Visible;
                 }
             });
