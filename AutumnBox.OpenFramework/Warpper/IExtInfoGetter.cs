@@ -14,6 +14,10 @@ namespace AutumnBox.OpenFramework.Warpper
     public interface IExtInfoGetter
     {
         /// <summary>
+        /// 可用区域
+        /// </summary>
+        IEnumerable<string> Regions { get; }
+        /// <summary>
         /// 拓展模块名
         /// </summary>
         string Name { get; }
