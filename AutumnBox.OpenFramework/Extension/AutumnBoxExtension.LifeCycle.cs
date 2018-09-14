@@ -25,6 +25,7 @@ namespace AutumnBox.OpenFramework.Extension
     [ExtRunAsAdmin(false)]
     [ExtRequireRoot(false)]
     [ExtOfficial(false)]
+    [ExtRegion]
     //[ExtAppProperty("com.miui.fm","Fuck")]
     public abstract partial class AutumnBoxExtension : Context
     {

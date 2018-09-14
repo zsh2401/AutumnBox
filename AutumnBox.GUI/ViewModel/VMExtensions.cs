@@ -241,11 +241,29 @@ namespace AutumnBox.GUI.ViewModel
                 DeviceSelectionObserver.Instance.SelectedNoDevice += OnSelectNoDevice;
             }
         }
+        private bool Check(IExtensionWarpper warpper)
+        {
+            return warpper.Info.RequiredDeviceStates.HasFlag(targetState) && HaveCurrentRegion(warpper);
+        }
+        private bool HaveCurrentRegion(IExtensionWarpper warpper)
+        {
+            if (warpper.Info.Regions == null)
+            {
+                return true;
+            }
+            var crtLanCode = LanguageManager.Instance.Current.LanCode.ToLower();
+            Logger.Info(this, $"region checking:?");
+            return warpper.Info.Regions.Where((str) =>
+            {
+                Logger.Info(this,$"region checking:{str} {crtLanCode}");
+                return str.ToLower() == crtLanCode;
+            }).Count() > 0;
+        }
         public void LoadExtensions()
         {
             IEnumerable<IExtensionWarpper> filted;
             filted = from warpper in OpenFramework.Management.Manager.InternalManager.Warppers
-                     where warpper.Info.RequiredDeviceStates.HasFlag(targetState)
+                     where Check(warpper)
                      select warpper;
             Selected = null;
             App.Current.Dispatcher.Invoke(() =>

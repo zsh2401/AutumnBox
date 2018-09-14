@@ -70,6 +70,7 @@
     <Compile Include="Extension\ExtIconAttribute.cs" />
     <Compile Include="Extension\ExtInfoI18NAttribute.cs" />
     <Compile Include="Extension\ExtMinApiAttribute.cs" />
+    <Compile Include="Extension\ExtRegionAttribute.cs" />
     <Compile Include="Extension\ExtRequireRootAttribute.cs" />
     <Compile Include="Extension\ExtRunAsAdminAttribute.cs" />
     <Compile Include="Extension\ExtTargetApiAttribute.cs" />

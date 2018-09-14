@@ -11,6 +11,7 @@ namespace AutumnBox.CoreModules.Extensions
 {
     [ExtName("Example extension")]
     [ExtRequiredDeviceStates(NoMatter)]
+    [ExtRegion("en-us")]
     public class EHoldMyHand : OfficialVisualExtension
     {
         bool stoppable = false;

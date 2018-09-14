@@ -127,6 +127,11 @@ namespace AutumnBox.OpenFramework.Warpper
             }
         }
         /// <summary>
+        /// 区域
+        /// </summary>
+        public IEnumerable<string> Regions { get; private set; }
+
+        /// <summary>
         /// 构造
         /// </summary>
         /// <param name="ctx"></param>
@@ -167,6 +172,7 @@ namespace AutumnBox.OpenFramework.Warpper
             for (int i = 0; i < extInfoAttr.Length; i++)
             {
                 current = (ExtInfoAttribute)extInfoAttr[i];
+                Logger.Info(current.ToString());
                 infoTable.Add(current.Key, current);
             }
             RequiredDeviceStates = (DeviceState)infoTable[nameof(ExtRequiredDeviceStatesAttribute)].Value;
@@ -174,6 +180,7 @@ namespace AutumnBox.OpenFramework.Warpper
             RunAsAdmin = (bool)infoTable[nameof(ExtRunAsAdminAttribute)].Value;
             MinApi = (int)infoTable[nameof(ExtMinApiAttribute)].Value;
             TargetApi = (int)infoTable[nameof(ExtTargetApiAttribute)].Value;
+            Regions = infoTable[nameof(ExtRegionAttribute)].Value as IEnumerable<string>;
             try
             {
                 Icon = ReadIcon(infoTable[nameof(ExtIconAttribute)].Value.ToString());
