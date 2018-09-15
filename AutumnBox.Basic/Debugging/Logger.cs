@@ -3,17 +3,10 @@
 ** date:  2018/9/4 13:51:24 (UTC +8:00)
 ** desc： ...
 *************************************************/
-using AutumnBox.Support.Log;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Debugging
 {
-    public class Logger<TSenderClass>
+    internal class Logger<TSenderClass>
     {
         private readonly string TAG;
         public Logger()
@@ -22,16 +15,19 @@ namespace AutumnBox.Basic.Debugging
         }
         public void Debug(object content)
         {
-            Logger.Debug(TAG, content);
-        }
-        public void Debug(string method, object content)
-        {
-            Logger.Debug(TAG + $".{method}", content);
+            LoggingStation.RaiseEvent(TAG, content, LogLevel.Debug);
         }
         public void Info(object content)
         {
-            Logger.Info(TAG, content);
+            LoggingStation.RaiseEvent(TAG, content, LogLevel.Info);
         }
-
+        public void Warn(object content)
+        {
+            LoggingStation.RaiseEvent(TAG, content, LogLevel.Warn);
+        }
+        public void Fatal(object content)
+        {
+            LoggingStation.RaiseEvent(TAG, content, LogLevel.Fatal);
+        }
     }
 }
