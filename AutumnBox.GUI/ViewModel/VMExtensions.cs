@@ -252,10 +252,8 @@ namespace AutumnBox.GUI.ViewModel
                 return true;
             }
             var crtLanCode = LanguageManager.Instance.Current.LanCode.ToLower();
-            Logger.Info(this, $"region checking:?");
             return warpper.Info.Regions.Where((str) =>
             {
-                Logger.Info(this,$"region checking:{str} {crtLanCode}");
                 return str.ToLower() == crtLanCode;
             }).Count() > 0;
         }
