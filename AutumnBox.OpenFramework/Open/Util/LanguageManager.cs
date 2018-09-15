@@ -11,12 +11,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace AutumnBox.OpenFramework.Open.Impl
+namespace AutumnBox.OpenFramework.Open.Util
 {
     /// <summary>
     /// 语言管理器实现
     /// </summary>
-    public class LanguageManager : ILanguagesManager
+    public class LanguageManager
     {
         private ResourceDictionary defaultLanguage;
         private readonly Dictionary<string, ResourceDictionary> Languages;

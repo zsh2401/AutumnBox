@@ -2,10 +2,9 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:s="clr-namespace:System;assembly=mscorlib">
     <s:String x:Key="urlOfficialWebsite">http://www.atmb.top/</s:String>
-    <s:String x:Key="urlDonateList">http://www.atmb.top/donate/</s:String>
-    <s:String x:Key="urlOpensource">http://www.atmb.top/open_source/</s:String>
+    <s:String x:Key="urlDonateList">http://www.atmb.top/donate</s:String>
+    <s:String x:Key="urlOpensource">http://www.atmb.top/open_source</s:String>
     <s:String x:Key="urlJoinQQGroup">http://www.atmb.top/help/join_qq_group/</s:String>
-    <s:String x:Key="urlDownloadMiFlashPackage">http://www.atmb.top/download/miflash_pkg</s:String>
     <s:String x:Key="urlDownloadExtensions">http://www.atmb.top/extension/</s:String>
     <s:String x:Key="urlDvWebsite">http://dv.atmb.top</s:String>
 
@@ -13,9 +12,6 @@
     <s:String x:Key="urlApiPotd">http://www.atmb.top/api/potd</s:String>
     <s:String x:Key="urlApiUpdate">http://www.atmb.top/api/update</s:String>
     <s:String x:Key="urlApiStatistics">http://www.atmb.top/api/statistics</s:String>
-    <s:String x:Key="urlApiQueryuserFmt">http://dv.atmb.top/api/Queryuser</s:String>
-    <s:String x:Key="urlApiLoginFmt">http://dv.atmb.top/api/Login?type=cli&amp;account={0}&amp;pwd={1}</s:String>
-    <s:String x:Key="urlApiUpdateDv">http://dv.atmb.top/api/update_dv/simple</s:String>
 
 
     <s:String x:Key="urlEMail">mailto://zsh2401@163.com</s:String>

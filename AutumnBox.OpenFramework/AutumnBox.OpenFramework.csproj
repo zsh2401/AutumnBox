@@ -80,8 +80,7 @@
     <Compile Include="Extension\VisualUxManager.cs" />
     <Compile Include="Management\AutumnBoxGuiApi.cs" />
     <Compile Include="Management\IAutumnBox_GUI.cs" />
-    <Compile Include="Open\ILanguagesManager.cs" />
-    <Compile Include="Open\Impl\LanguageManager.cs" />
+    <Compile Include="Open\Util\LanguageManager.cs" />
     <Compile Include="Open\Impl\SoundImpl.cs" />
     <Compile Include="Open\Impl\UxImpl.cs" />
     <Compile Include="Open\ISoundPlayer.cs" />

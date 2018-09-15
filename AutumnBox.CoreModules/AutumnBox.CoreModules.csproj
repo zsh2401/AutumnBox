@@ -190,4 +190,9 @@
     <EmbeddedResource Include="Icons\flash.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>del /S System.*.dll
+del /S Microsoft.Win32.Primitives.dll
+del /S netstandard.dll</PostBuildEvent>
+  </PropertyGroup>
 </Project>
