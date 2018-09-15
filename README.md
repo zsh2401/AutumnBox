@@ -2,7 +2,7 @@
 #### 代码行数 : 3000+
 #### 主要语言 : C#
 #### 支持平台 : Windows 7及以上,建议Windows 10
-#### 运行所需环境: .Net framework 4.5
+#### 运行所需环境: .Net framework 4.6.1
 #### [说明书WIKI](https://github.com/zsh2401/AutumnBox/wiki)
 ***
 ![](https://www.atmb.top/images/demo/demo0.png)
