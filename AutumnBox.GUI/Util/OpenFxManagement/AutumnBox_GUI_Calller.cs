@@ -63,19 +63,12 @@ namespace AutumnBox.GUI.Util.OpenFxManagement
 
         public void Restart()
         {
-            Application.Current.Shutdown();
-            Process.Start(System.Reflection.Assembly.GetExecutingAssembly().Location);
+            Self.Restart(false);
         }
 
         public void RestartAsAdmin()
         {
-            ProcessStartInfo startInfo = new ProcessStartInfo("..\\AutumnBox-秋之盒.exe")
-            {
-                Arguments = $"-tryadmin -waitatmb"
-            };
-            Logger.Debug(this, startInfo.FileName + "  " + startInfo.Arguments);
-            Process.Start(startInfo);
-            Application.Current.Shutdown();
+            Self.Restart(true);
         }
 
         public void RunOnUIThread(Action act)
