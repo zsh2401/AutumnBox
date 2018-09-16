@@ -40,5 +40,9 @@ namespace AutumnBox.Basic.Device
         /// 检测设备是否还处于连接状态
         /// </summary>
         bool IsAlive { get; }
+        /// <summary>
+        /// 刷新状态
+        /// </summary>
+        void RefreshState();
     }
 }

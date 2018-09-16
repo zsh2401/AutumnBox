@@ -34,7 +34,7 @@ namespace AutumnBox.Basic.Util
                 throw new AdbShellCommandFailedException(result.ExitCode, result.Output.ToString());
             }
         }
-        public static void ThrowIfExitCodeNotEqualsZero(this IProcessBasedCommandResult result)
+        public static IProcessBasedCommandResult ThrowIfExitCodeNotEqualsZero(this IProcessBasedCommandResult result)
         {
             if (result.ExitCode != 0)
             {
@@ -43,6 +43,7 @@ namespace AutumnBox.Basic.Util
                     ExitCode = result.ExitCode
                 };
             }
+            return result;
         }
         public static void ThrowIfNotAlive(this IDevice device)
         {

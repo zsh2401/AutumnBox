@@ -3,6 +3,8 @@
 ** date:  2018/8/17 19:19:29 (UTC +8:00)
 ** desc： ...
 *************************************************/
+using AutumnBox.Basic.Device;
+using AutumnBox.Basic.Device.Management.OS;
 using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.Open;
 using System.Threading;
@@ -17,6 +19,8 @@ namespace AutumnBox.CoreModules.Extensions
         bool stoppable = false;
         protected override int VisualMain()
         {
+            var brand = TargetDevice.GetProp(BuildPropKeys.Brand);
+            WriteLine(brand);
             WriteInitInfo();
             WriteLine("开始执行");
             Thread.Sleep(3000);

@@ -12,6 +12,7 @@ using AutumnBox.GUI.Util.OpenFxManagement;
 using AutumnBox.GUI.View.Windows;
 using AutumnBox.OpenFramework;
 using System;
+using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -49,7 +50,9 @@ namespace AutumnBox.GUI.Util
         #region LOADING_FLOW
         private void Load()
         {
+            Trace.WriteLine("??");
             LoggingStation.Instance.Work();
+            Trace.WriteLine("??");
             Updater.CheckAndNotice();
 #if !DEBUG
             Statistics.Do();

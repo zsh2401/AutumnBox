@@ -49,7 +49,7 @@ namespace AutumnBox.GUI.Util.Debugging
         }
         private static string GetLogFileInfo()
         {
-            if (Directory.Exists(LOG_FLODER))
+            if (!Directory.Exists(LOG_FLODER))
             {
                 Directory.CreateDirectory(LOG_FLODER);
             }

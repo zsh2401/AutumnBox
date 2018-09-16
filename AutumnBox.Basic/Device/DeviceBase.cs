@@ -3,7 +3,9 @@
 ** date:  2018/8/30 4:54:12 (UTC +8:00)
 ** desc： ...
 *************************************************/
+using AutumnBox.Basic.Util;
 using System.Collections.Generic;
+using System.Text;
 
 namespace AutumnBox.Basic.Device
 {
@@ -75,6 +77,16 @@ namespace AutumnBox.Basic.Device
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(SerialNumber);
             return hashCode;
         }
+
+        private const string STATE_PATTERN = "";
+        public void RefreshState()
+        {
+            var exeResult = this.Adb("get-state");
+            exeResult.ThrowIfExitCodeNotEqualsZero();
+            var stateString = exeResult.Item1.ToString().Trim();
+            this.State = stateString.ToDeviceState();
+        }
+
         /// <summary>
         /// ==
         /// </summary>
