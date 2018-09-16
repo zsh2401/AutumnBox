@@ -33,7 +33,7 @@ namespace AutumnBox.GUI.Util.Debugging
 
         public void Warn(object content, Exception ex)
         {
-            LoggingStation.Instance.Log(TAG, "Warn", content.ToString());
+            LoggingStation.Instance.Log(TAG, "Warn", content + Environment.NewLine + ex);
         }
 
         public void Warn(Exception ex)

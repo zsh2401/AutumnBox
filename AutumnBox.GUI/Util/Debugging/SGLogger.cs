@@ -22,7 +22,7 @@ namespace AutumnBox.GUI.Util.Debugging
         }
         public static void Warn(object content, Exception ex)
         {
-            LoggingStation.Instance.Log(typeof(TSender).Name, nameof(Warn), ex);
+            LoggingStation.Instance.Log(typeof(TSender).Name, nameof(Warn), content + Environment.NewLine + ex);
         }
         public static void Warn(Exception ex)
         {
