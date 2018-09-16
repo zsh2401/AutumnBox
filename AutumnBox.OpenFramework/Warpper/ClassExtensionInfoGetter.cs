@@ -7,11 +7,9 @@ using AutumnBox.Basic.Device;
 using AutumnBox.OpenFramework.Content;
 using AutumnBox.OpenFramework.Extension;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Text;
 
 namespace AutumnBox.OpenFramework.Warpper
@@ -172,7 +170,6 @@ namespace AutumnBox.OpenFramework.Warpper
             for (int i = 0; i < extInfoAttr.Length; i++)
             {
                 current = (ExtInfoAttribute)extInfoAttr[i];
-                Logger.Info(current.ToString());
                 infoTable.Add(current.Key, current);
             }
             RequiredDeviceStates = (DeviceState)infoTable[nameof(ExtRequiredDeviceStatesAttribute)].Value;

@@ -1,28 +1,16 @@
-﻿/* =============================================================================*\
-*
-* Filename: SystemHelper
-* Description: 
-*
-* Version: 1.0
-* Created: 2017/10/14 1:22:46(UTC+8:00)
-* Compiler: Visual Studio 2017
-* 
-* Author: zsh2401
-* Company: I am free man
-*
-\* =============================================================================*/
-using AutumnBox.Support.Log;
+﻿using AutumnBox.GUI.Util.Debugging;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
-#if !LINUX
+using System.Linq;
 using System.Management;
-#endif
 using System.Text;
-namespace AutumnBox.Support.Helper
+using System.Threading.Tasks;
+
+namespace AutumnBox.GUI.Util.OS
 {
-    public static class SystemHelper
+    internal static class Manager
     {
         /// <summary>
         /// 杀死进程和他的子进程
@@ -46,7 +34,7 @@ namespace AutumnBox.Support.Helper
             }
             catch (Win32Exception e)
             {
-                Logger.Warn("Unknow exception", e);
+                SLogger.Warn("Unknow exception", e);
             }
 
             if (processCollection != null)

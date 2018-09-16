@@ -13,15 +13,15 @@ namespace AutumnBox.GUI.Util.Debugging
         {
             LoggingStation.Instance.Log(senderOrTag?.ToString() ?? NULL_SENDER_OR_TAG, nameof(Debug), content);
         }
-        public static void Warn<TSender>(object senderOrTag, object content)
+        public static void Warn(object senderOrTag, object content)
         {
             LoggingStation.Instance.Log(senderOrTag?.ToString() ?? NULL_SENDER_OR_TAG, nameof(Warn), content);
         }
-        public static void Warn<TSender>(object senderOrTag, object content, Exception ex)
+        public static void Warn(object senderOrTag, object content, Exception ex)
         {
-            LoggingStation.Instance.Log(senderOrTag?.ToString() ?? NULL_SENDER_OR_TAG, nameof(Warn), content, ex);
+            LoggingStation.Instance.Log(senderOrTag?.ToString() ?? NULL_SENDER_OR_TAG, nameof(Warn), content + Environment.NewLine + ex);
         }
-        public static void Fatal<TSender>(object senderOrTag, object content)
+        public static void Fatal(object senderOrTag, object content)
         {
             LoggingStation.Instance.Log(senderOrTag?.ToString() ?? NULL_SENDER_OR_TAG, nameof(Fatal), content);
         }

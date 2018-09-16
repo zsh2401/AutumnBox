@@ -27,7 +27,7 @@ namespace AutumnBox.GUI.Util
             void Finish();
         }
         private readonly ILoadingUI ui;
-        public AppLoader(ILoadingUI ui)
+        public AppLoader(ILoadingUI ui):this()
         {
             this.ui = ui;
         }
@@ -49,6 +49,7 @@ namespace AutumnBox.GUI.Util
         #region LOADING_FLOW
         private void Load()
         {
+            LoggingStation.Instance.Work();
             Updater.CheckAndNotice();
 #if !DEBUG
             Statistics.Do();
