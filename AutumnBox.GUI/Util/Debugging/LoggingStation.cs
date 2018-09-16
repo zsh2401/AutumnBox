@@ -74,6 +74,7 @@ namespace AutumnBox.GUI.Util.Debugging
         }
         private void TLog(string text)
         {
+            Debugger.Log(3, null, text);
             Console.WriteLine(text);
             sw.WriteLine(text);
         }

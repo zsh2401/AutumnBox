@@ -13,32 +13,33 @@ namespace AutumnBox.GUI.Util.Debugging
 
         public void Debug(object content)
         {
-            LoggingStation.Instance.Log(TAG, "Debug", content.ToString());
+            SLogger.Debug(TAG, content.ToString());
         }
 
         public void Fatal(object content)
         {
-            LoggingStation.Instance.Log(TAG, "Fatal", content.ToString());
+            SLogger.Fatal(TAG, content.ToString());
         }
 
         public void Info(object content)
         {
-            LoggingStation.Instance.Log(TAG, "Info", content.ToString());
+            SLogger.Info(TAG, content);
+     
         }
 
         public void Warn(object content)
         {
-            LoggingStation.Instance.Log(TAG, "Warn", content.ToString());
+            SLogger.Warn(TAG, content);
         }
 
         public void Warn(object content, Exception ex)
         {
-            LoggingStation.Instance.Log(TAG, "Warn", content + Environment.NewLine + ex);
+            SLogger.Warn(TAG, content,ex);
         }
 
         public void Warn(Exception ex)
         {
-            LoggingStation.Instance.Log(TAG, "Warn", ex.ToString());
+            SLogger.Warn(TAG, ex);
         }
     }
 }
