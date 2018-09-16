@@ -3,6 +3,7 @@
 ** date:  2018/8/15 15:44:31 (UTC +8:00)
 ** desc： ...
 *************************************************/
+using AutumnBox.GUI.Util.Debugging;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 

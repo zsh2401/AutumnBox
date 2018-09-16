@@ -13,7 +13,6 @@
 \* =============================================================================*/
 namespace AutumnBox.Basic.Data
 {
-    using AutumnBox.Support.Log;
     using System;
     using System.Collections.Generic;
 

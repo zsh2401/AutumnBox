@@ -3,8 +3,8 @@
 ** date:  2018/2/25 2:36:04 (UTC +8:00)
 ** desc： ...
 *************************************************/
+using AutumnBox.GUI.Util.Debugging;
 using AutumnBox.OpenFramework.Management;
-using AutumnBox.Support.Log;
 
 namespace AutumnBox.GUI.Util.OpenFxManagement
 {
@@ -12,9 +12,9 @@ namespace AutumnBox.GUI.Util.OpenFxManagement
     {
         public static void Init()
         {
-            Logger.Info("OFM", "Init ExtensionManager");
+            SLogger.Info("OFM", "Init ExtensionManager");
             Manager.InitFramework(new AutumnBox_GUI_Calller());
-            Logger.Info("OFM", "Inited ExtensionManager");
+            SLogger.Info("OFM", "Inited ExtensionManager");
         }
     }
 }

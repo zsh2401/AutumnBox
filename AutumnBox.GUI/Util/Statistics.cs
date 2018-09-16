@@ -3,12 +3,7 @@
 ** date:  2018/9/11 15:25:53 (UTC +8:00)
 ** desc： ...
 *************************************************/
-using AutumnBox.Support.Log;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using AutumnBox.GUI.Util.Debugging;
 using System.Windows.Controls;
 
 namespace AutumnBox.GUI.Util
@@ -16,9 +11,10 @@ namespace AutumnBox.GUI.Util
     static class Statistics
     {
         private const string TAG = "Statistics";
+        private static ILogger logger = new Logger(TAG);
         public static void Do()
         {
-            Logger.Info(TAG,"Doing");
+            logger.Info("Doing");
             App.Current.Dispatcher.Invoke(() =>
             {
                 var browser = new WebBrowser

@@ -4,7 +4,6 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.Basic.Device;
-using AutumnBox.Support.Log;
 using System.Net;
 using System.Text.RegularExpressions;
 

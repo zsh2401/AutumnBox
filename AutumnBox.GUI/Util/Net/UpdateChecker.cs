@@ -11,8 +11,7 @@
 * Company: I am free man
 *
 \* =============================================================================*/
-using AutumnBox.GUI.Properties;
-using AutumnBox.Support.Log;
+using AutumnBox.GUI.Util.Debugging;
 using Newtonsoft.Json;
 using System;
 using System.Text;
@@ -43,7 +42,7 @@ namespace AutumnBox.GUI.Util.Net
                 }
                 catch (Exception ex)
                 {
-                    Logger.Warn("Parse VersionString failed", ex);
+                    new Logger<UpdateCheckResult>().Warn("Parse VersionString failed", ex);
                     return new Version("0.0.5");
                 }
             }
@@ -59,7 +58,7 @@ namespace AutumnBox.GUI.Util.Net
                 }
                 catch (Exception ex)
                 {
-                    Logger.Warn(this, "Parse datetime failed", ex);
+                    new Logger<UpdateCheckResult>().Warn("Parse datetime failed", ex);
                     return new DateTime(1970, 1, 1);
                 }
             }
@@ -69,7 +68,7 @@ namespace AutumnBox.GUI.Util.Net
     {
         public override UpdateCheckResult Get()
         {
-            Logger.Info(this, "Getting update info....");
+            Logger.Info("Getting update info....");
 #if USE_LOCAL_API && DEBUG
             byte[] bytes = webClient.DownloadData("http://localhost:24010/api/update/");
 #else
@@ -77,7 +76,7 @@ namespace AutumnBox.GUI.Util.Net
 #endif
             string data = Encoding.UTF8.GetString(bytes);
             var result = (UpdateCheckResult)JsonConvert.DeserializeObject(data, typeof(UpdateCheckResult));
-            Logger.Info(this, "update check finished " + data);
+            Logger.Info("update check finished " + data);
             return result;
         }
     }

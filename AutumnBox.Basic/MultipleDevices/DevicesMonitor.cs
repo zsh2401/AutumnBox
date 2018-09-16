@@ -11,8 +11,8 @@
 * Company: I am free man
 *
 \* =============================================================================*/
+using AutumnBox.Basic.Debugging;
 using AutumnBox.Basic.Device;
-using AutumnBox.Support.Log;
 using System;
 using System.Collections.Generic;
 using System.Threading;
@@ -25,6 +25,10 @@ namespace AutumnBox.Basic.MultipleDevices
     /// </summary>
     public class DevicesMonitor
     {
+        private static readonly ILogger logger;
+        static DevicesMonitor() {
+            logger = new Logger<DevicesMonitor>();
+        }
         /// <summary>
         /// 设备拔插时间
         /// </summary>
@@ -54,7 +58,7 @@ namespace AutumnBox.Basic.MultipleDevices
                 }
                 catch (Exception ex)
                 {
-                    Logger.Warn(this, "Devices monitor error", ex);
+                    logger.Warn("Devices monitor error", ex);
                 }
                 isStarted = false; ;
             });

@@ -4,15 +4,16 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.GUI.Model;
+using AutumnBox.GUI.Util.Debugging;
 using AutumnBox.GUI.View.DialogContent;
-using AutumnBox.Support.Log;
 using MaterialDesignThemes.Wpf;
 using System;
 
 namespace AutumnBox.GUI.View
 {
-    static class MaterialDialog
+    internal static class MaterialDialog
     {
+
         public static void ShowChoiceDialog(ChoicerContentStartArgs args)
         {
             var content = new ContentChoice(args);
@@ -26,9 +27,9 @@ namespace AutumnBox.GUI.View
                     }
                     catch (Exception ex)
                     {
-                        Logger.Warn("ChoiceDialog","an error happend on closing choice dialog",ex);
+                        SLogger.Warn(senderOrTag: "ChoiceDialog", content: "an error happend on closing choice dialog", ex: ex);
                     }
-                }; 
+                };
             }));
         }
     }

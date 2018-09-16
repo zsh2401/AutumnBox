@@ -1,10 +1,10 @@
 ﻿using System;
 
-namespace AutumnBox.Basic.Debugging
+namespace AutumnBox.GUI.Util.Debugging
 {
     internal class Logger : ILogger
     {
-        private readonly string TAG = "";
+        protected string TAG { get; set; }
 
         public Logger(string tag)
         {
@@ -13,32 +13,32 @@ namespace AutumnBox.Basic.Debugging
 
         public void Debug(object content)
         {
-            LoggingStation.RaiseEvent(TAG, content, LogLevel.Debug);
+            LoggingStation.Instance.Log(TAG, "Debug", content.ToString());
         }
 
         public void Fatal(object content)
         {
-            LoggingStation.RaiseEvent(TAG, content, LogLevel.Fatal);
+            LoggingStation.Instance.Log(TAG, "Fatal", content.ToString());
         }
 
         public void Info(object content)
         {
-            LoggingStation.RaiseEvent(TAG, content, LogLevel.Info);
+            LoggingStation.Instance.Log(TAG, "Info", content.ToString());
         }
 
         public void Warn(object content)
         {
-            LoggingStation.RaiseEvent(TAG, content, LogLevel.Warn);
+            LoggingStation.Instance.Log(TAG, "Warn", content.ToString());
         }
 
         public void Warn(object content, Exception ex)
         {
-            LoggingStation.RaiseEvent(TAG, content + Environment.NewLine + ex, LogLevel.Warn);
+            LoggingStation.Instance.Log(TAG, "Warn", content.ToString());
         }
 
         public void Warn(Exception ex)
         {
-            LoggingStation.RaiseEvent(TAG, ex, LogLevel.Warn);
+            LoggingStation.Instance.Log(TAG, "Warn", ex.ToString());
         }
     }
 }

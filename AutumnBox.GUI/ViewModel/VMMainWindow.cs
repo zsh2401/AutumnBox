@@ -3,19 +3,10 @@
 ** date:  2018/8/15 19:04:29 (UTC +8:00)
 ** desc： ...
 *************************************************/
-using AutumnBox.Basic.Util;
 using AutumnBox.GUI.MVVM;
-using AutumnBox.GUI.Properties;
 using AutumnBox.GUI.Util;
-using AutumnBox.GUI.Util.Bus;
 using AutumnBox.GUI.Util.I18N;
-using AutumnBox.GUI.Util.OpenFxManagement;
-using AutumnBox.GUI.Util.UI;
-using AutumnBox.OpenFramework;
-using AutumnBox.Support.Log;
 using System;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace AutumnBox.GUI.ViewModel
 {

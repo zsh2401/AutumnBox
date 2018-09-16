@@ -41,8 +41,4 @@
     </Content>
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\AutumnBox.Support\AutumnBox.Support.csproj" />
-  </ItemGroup>
-
 </Project>

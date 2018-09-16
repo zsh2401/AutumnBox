@@ -5,7 +5,7 @@
 ** compiler: Visual Studio 2017
 ** desc： ...
 *********************************************************************************/
-using AutumnBox.Support.Log;
+using AutumnBox.Basic.Debugging;
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
@@ -17,7 +17,7 @@ namespace AutumnBox.Basic.Device.Management.OS
     /// </summary>
     public class DeviceBuildPropGetter : DependOnDeviceObject, IBuildPropGetter
     {
-
+        private readonly ILogger logger;
         /// <summary>
         /// 索引器
         /// </summary>
@@ -36,6 +36,7 @@ namespace AutumnBox.Basic.Device.Management.OS
         /// <param name="device"></param>
         public DeviceBuildPropGetter(IDevice device) : base(device)
         {
+            logger = new Logger<DeviceBuildPropGetter>();
         }
 
         /// <summary>
@@ -56,12 +57,12 @@ namespace AutumnBox.Basic.Device.Management.OS
             try
             {
                 var verStr = Get(BuildPropKeys.AndroidVersion);
-                Logger.Debug(this, verStr);
+                logger.Debug( verStr);
                 return new Version(verStr);
             }
             catch (Exception ex)
             {
-                Logger.DebugWarn(this, "Get android version failed", ex);
+                logger.Warn("Get android version failed", ex);
                 return null;
             }
         }

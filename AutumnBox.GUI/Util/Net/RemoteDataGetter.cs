@@ -11,7 +11,7 @@
 * Company: I am free man
 *
 \* =============================================================================*/
-using AutumnBox.Support.Log;
+using AutumnBox.GUI.Util.Debugging;
 using System;
 using System.Net;
 using System.Text;
@@ -22,8 +22,10 @@ namespace AutumnBox.GUI.Util.Net
         where TResult : class
     {
         protected readonly WebClient webClient;
+        protected ILogger Logger { get; set; }
         public RemoteDataGetter()
         {
+            Logger = new Logger(this.GetType().Name);
             ServicePointManager.Expect100Continue = true;
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
             ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
@@ -55,7 +57,7 @@ namespace AutumnBox.GUI.Util.Net
             }
             catch (Exception e)
             {
-                Logger.Warn(this, "获取失败", e);
+                Logger.Warn("获取失败", e);
                 return null;
             }
         }

@@ -3,8 +3,6 @@
 ** date:  2018/8/2 2:46:15 (UTC +8:00)
 ** desc： ...
 *************************************************/
-using AutumnBox.Support.Log;
-using System.Diagnostics;
 using System;
 using System.Windows;
 using AutumnBox.OpenFramework.Warpper;
@@ -12,6 +10,7 @@ using AutumnBox.GUI.View.Windows;
 using AutumnBox.OpenFramework.Management;
 using AutumnBox.GUI.Util.Effect;
 using AutumnBox.GUI.Properties;
+using AutumnBox.GUI.Util.Debugging;
 
 namespace AutumnBox.GUI.Util.OpenFxManagement
 {
@@ -115,6 +114,17 @@ namespace AutumnBox.GUI.Util.OpenFxManagement
         public bool PlaySoundWhenFinished()
         {
             return Settings.Default.NotifyOnFinish;
+        }
+
+        /// <summary>
+        /// 日志
+        /// </summary>
+        /// <param name="tagOrSender"></param>
+        /// <param name="levelString"></param>
+        /// <param name="text"></param>
+        public void Log(object tagOrSender, string levelString, string text)
+        {
+            LoggingStation.Instance.Log(tagOrSender?.ToString() ?? "UnknowClass", levelString, text);
         }
     }
 }

@@ -8,8 +8,8 @@ using AutumnBox.Basic.Device;
 using AutumnBox.Basic.Util;
 using AutumnBox.GUI.MVVM;
 using AutumnBox.GUI.Util.Bus;
+using AutumnBox.GUI.Util.Debugging;
 using AutumnBox.GUI.View.Windows;
-using AutumnBox.Support.Log;
 using System;
 using System.Net;
 using System.Threading.Tasks;
@@ -42,8 +42,10 @@ namespace AutumnBox.GUI.ViewModel
         private string _portString = "5555";
         public FlexiableCommand Open { get; private set; }
         #endregion
+        private readonly ILogger logger;
         public VMEnableDeviceNetDebugging()
         {
+            logger = new Logger<VMEnableDeviceNetDebugging>();
             Open = new FlexiableCommand(OpenImpl);
             Hint = App.Current.Resources[PORT_HINT_KEY].ToString();
         }
@@ -81,13 +83,13 @@ namespace AutumnBox.GUI.ViewModel
                     {
                         new AdbCommand($"connect {ip}:{port}").To((e) =>
                         {
-                            Logger.Info(this, e.Text);
+                            logger.Info(e.Text);
                         }).Execute();
                     }
                 }
                 catch (Exception ex)
                 {
-                    Logger.Warn(this, "connect failed", ex);
+                    logger.Warn("connect failed", ex);
                 }
             });
             ViewCloser();
@@ -98,12 +100,12 @@ namespace AutumnBox.GUI.ViewModel
             {
                 new AdbCommand($"{endPoint.Address}:{endPoint.Port}").To((e) =>
                 {
-                    Logger.Info(this, e.Text);
+                    logger.Info(e.Text);
                 }).Execute().ThrowIfExitCodeNotEqualsZero();
             }
             catch (Exception ex)
             {
-                Logger.Warn(this, "a exception happend on connect to new device", ex);
+                logger.Warn("a exception happend on connect to new device", ex);
             }
         }
     }

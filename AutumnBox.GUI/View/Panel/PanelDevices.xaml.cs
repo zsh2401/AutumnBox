@@ -1,9 +1,6 @@
-﻿using AutumnBox.Basic.Device;
-using AutumnBox.GUI.ViewModel;
-using AutumnBox.Support.Log;
+﻿using AutumnBox.GUI.ViewModel;
 using System;
 using System.Windows.Controls;
-using static AutumnBox.GUI.View.Panel.PanelDevices;
 
 namespace AutumnBox.GUI.View.Panel
 {
