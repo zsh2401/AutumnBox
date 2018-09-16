@@ -8,6 +8,7 @@ using AutumnBox.Basic.Calling;
 using AutumnBox.Basic.Calling.Adb;
 using AutumnBox.Basic.Calling.Fastboot;
 using AutumnBox.Basic.Data;
+using AutumnBox.Basic.Debugging;
 using AutumnBox.Basic.Device.Management.AppFx;
 using AutumnBox.Basic.Device.Management.OS;
 using AutumnBox.Basic.Util;
@@ -17,6 +18,18 @@ namespace AutumnBox.Basic.Device
     partial class DeviceExtension
     {
         private const string ipPattern = @"(?<ip>\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})";
+        /// <summary>
+        /// 获取build.prop中的值
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public static string GetProp(this IDevice device, string key)
+        {
+           var result =  new ShellCommand(device, $"getprop {key}")
+                .Execute()
+                .ThrowIfExitCodeNotEqualsZero();
+            return result.Output.ToString().Trim();
+        }
         /// <summary>
         /// Pull文件
         /// </summary>
