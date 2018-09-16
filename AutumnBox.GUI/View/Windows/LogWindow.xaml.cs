@@ -1,4 +1,4 @@
-﻿using AutumnBox.Support.Log;
+﻿using AutumnBox.GUI.Util.Debugging;
 using System;
 using System.Windows;
 using System.Windows.Controls;
@@ -13,16 +13,16 @@ namespace AutumnBox.GUI.View.Windows
         public LogWindow()
         {
             InitializeComponent();
-            TextBox.AppendText(Logger.logBuffer.ToString());
+            TextBox.AppendText(LoggingStation.Instance.CurrentLogged);
             TextBox.ScrollToEnd();
-            Logger.Logged += Logger_Logged;
+            LoggingStation.Instance.Logging += Logger_Logged;
         }
 
         private void Logger_Logged(object sender, LogEventArgs e)
         {
             App.Current.Dispatcher.Invoke(() =>
             {
-                TextBox.AppendText(e.FullMessage);
+                TextBox.AppendText(e.Content);
                 TextBox.ScrollToEnd();
             });
         }
@@ -34,7 +34,7 @@ namespace AutumnBox.GUI.View.Windows
 
         private void Window_Closed(object sender, EventArgs e)
         {
-            Logger.Logged -= Logger_Logged;
+            LoggingStation.Instance.Logging -= Logger_Logged;
         }
     }
 }

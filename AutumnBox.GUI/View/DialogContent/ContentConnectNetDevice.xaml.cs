@@ -1,8 +1,7 @@
-﻿using AutumnBox.GUI.View.Controls;
+﻿using AutumnBox.GUI.Util.Debugging;
+using AutumnBox.GUI.View.Controls;
 using AutumnBox.GUI.ViewModel;
-using AutumnBox.Support.Log;
 using MaterialDesignThemes.Wpf;
-using System.Windows.Controls;
 
 namespace AutumnBox.GUI.View.DialogContent
 {
@@ -18,7 +17,7 @@ namespace AutumnBox.GUI.View.DialogContent
             {
                 OnCloseCallback = () =>
                 {
-                    Logger.Info(this,"??");
+                    SGLogger<ContentConnectNetDevice>.Info("??");
                     Finish();
                 }
             };

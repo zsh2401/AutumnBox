@@ -9,7 +9,6 @@ using AutumnBox.Basic.MultipleDevices;
 using AutumnBox.GUI.MVVM;
 using AutumnBox.GUI.Util.Bus;
 using AutumnBox.GUI.View.DialogContent;
-using AutumnBox.Support.Log;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -86,7 +85,6 @@ namespace AutumnBox.GUI.ViewModel
 
         private void RaiseBusEvent()
         {
-            Logger.Debug(this, "Raise event");
             if (Selected == null)
             {
                 DeviceSelectionObserver.Instance.RaiseSelectNoDevice();

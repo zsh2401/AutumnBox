@@ -13,8 +13,8 @@
 \* =============================================================================*/
 using System;
 using System.Windows;
+using AutumnBox.GUI.Util.Debugging;
 using AutumnBox.GUI.ViewModel;
-using AutumnBox.Support.Log;
 
 namespace AutumnBox.GUI.View.Windows
 {
@@ -34,7 +34,7 @@ namespace AutumnBox.GUI.View.Windows
         {
             ViewModel.LoadAsync(() =>
             {
-                Logger.Info(this, "Loaded");
+                SGLogger<MainWindow>.Info("Loaded");
             });
         }
 

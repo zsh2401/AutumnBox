@@ -127,6 +127,13 @@
     <Compile Include="Util\AppLoader.cs" />
     <Compile Include="Util\Bus\ConnectedDevicesListener.cs" />
     <Compile Include="Util\Bus\OpenFxObserver.cs" />
+    <Compile Include="Util\Debugging\ILogger.cs" />
+    <Compile Include="Util\Debugging\LogEventArgs.cs" />
+    <Compile Include="Util\Debugging\Logger.cs" />
+    <Compile Include="Util\Debugging\LoggerGeneric.cs" />
+    <Compile Include="Util\Debugging\LoggingStation.cs" />
+    <Compile Include="Util\Debugging\SGLogger.cs" />
+    <Compile Include="Util\Debugging\SLogger.cs" />
     <Compile Include="Util\Effect\Sounds.cs" />
     <Compile Include="Util\FatalHandler.cs" />
     <Compile Include="Util\OS\OSInfo.cs" />
@@ -542,10 +549,6 @@
       <Project>{6516890c-86b6-40a0-8fd0-14ffdd62e1fe}</Project>
       <Name>AutumnBox.OpenFramework</Name>
     </ProjectReference>
-    <ProjectReference Include="..\AutumnBox.Support\AutumnBox.Support.csproj">
-      <Project>{851b2eb0-0503-428d-bd87-063555b19451}</Project>
-      <Name>AutumnBox.Support</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Themes_Old\DreamTheme_files\bg.jpg" />
@@ -582,6 +585,7 @@
   <ItemGroup>
     <Resource Include="Resources\Drawable\icon.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>del /S System.*.dll

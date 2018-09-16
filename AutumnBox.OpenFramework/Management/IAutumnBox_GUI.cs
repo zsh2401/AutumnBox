@@ -104,5 +104,12 @@ namespace AutumnBox.OpenFramework.Management
         /// </summary>
         /// <returns></returns>
         string GetCurrentLanguageCode();
+        /// <summary>
+        /// Log接口
+        /// </summary>
+        /// <param name="tagOrSender"></param>
+        /// <param name="levelString"></param>
+        /// <param name="text"></param>
+        void Log(object tagOrSender, string levelString, string text);
     }
 }

@@ -3,8 +3,8 @@
 ** date:  2018/9/10 19:33:53 (UTC +8:00)
 ** desc： ...
 *************************************************/
+using AutumnBox.GUI.Util.Debugging;
 using AutumnBox.GUI.View.Windows;
-using AutumnBox.Support.Log;
 using System;
 using System.Linq;
 using System.Windows;
@@ -19,10 +19,11 @@ namespace AutumnBox.GUI.Util
         };
         public static void Current_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
         {
+            var logger = new Logger("AutumnBoxFatalHandler");
             string src = e.Exception.Source;
             if (blockListForExceptionSource.Contains(src))
             {
-                Logger.Warn("Fatal handler", "PresentationCore Error", e.Exception);
+                logger.Warn("PresentationCore Error", e.Exception);
                 return;
             }
             string n = Environment.NewLine;
@@ -33,7 +34,7 @@ namespace AutumnBox.GUI.Util
                 $"Source:{n}{e.Exception.Source}{n}{n}" +
                 $"Inner:{n}{e.Exception.InnerException?.ToString() ?? "None"}{n}";
 
-            try { Logger.Fatal("Fatal handler", exstr); } catch { }
+            try { logger.Fatal(exstr); } catch { }
             ShowErrorToUser(exstr);
             e.Handled = true;
             App.Current.Shutdown(1);

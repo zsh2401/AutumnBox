@@ -137,10 +137,6 @@
       <Project>{84044fb2-bd38-4283-8065-b639270ece0f}</Project>
       <Name>AutumnBox.Basic</Name>
     </ProjectReference>
-    <ProjectReference Include="..\AutumnBox.Support\AutumnBox.Support.csproj">
-      <Project>{851B2EB0-0503-428D-BD87-063555B19451}</Project>
-      <Name>AutumnBox.Support</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="AutumnBox.OpenFramework.nuspec" />

@@ -3,15 +3,10 @@
 ** date:  2018/9/11 15:59:09 (UTC +8:00)
 ** desc： ...
 *************************************************/
+using AutumnBox.GUI.Util.Debugging;
 using AutumnBox.GUI.Util.OS;
-using AutumnBox.Support.Log;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutumnBox.GUI.Util
 {
@@ -19,11 +14,12 @@ namespace AutumnBox.GUI.Util
     {
         private const int SW_SHOWNOMAL = 1;
         private const string TAG = nameof(AlreadyHaveAutumnBoxChecker);
+        private static readonly ILogger logger = new Logger(nameof(AlreadyHaveAutumnBoxChecker));
         private static Process FindOtherProcess()
         {
             Process currentProcess = Process.GetCurrentProcess();
             Process[] Processes = Process.GetProcessesByName(currentProcess.ProcessName);
-            Logger.Info(TAG, $"have {Processes.Count()} autumnbox.gui process");
+            logger.Info($"have {Processes.Count()} autumnbox.gui process");
             foreach (Process process in Processes)
             {
                 if (process.Id != currentProcess.Id)
@@ -42,12 +38,13 @@ namespace AutumnBox.GUI.Util
             var process = FindOtherProcess();
             if (process != null)
             {
-                Logger.Debug(TAG,"found other autumnbox process,switch to it,and shutdown current");
-                Logger.Debug(TAG, "ShowWindowAsync()");
+                logger.Debug("found other autumnbox process,switch to it,and shutdown current");
+                logger.Debug("ShowWindowAsync()");
                 NativeMethods.ShowWindowAsync(process.MainWindowHandle, SW_SHOWNOMAL);
-                Logger.Debug(TAG, "SetForegroundWindow()");
+                logger.Debug("SetForegroundWindow()");
                 NativeMethods.SetForegroundWindow(process.MainWindowHandle);
-                App.Current.Dispatcher.Invoke(()=> {
+                App.Current.Dispatcher.Invoke(() =>
+                {
                     App.Current.Shutdown(1);
                 });
             }

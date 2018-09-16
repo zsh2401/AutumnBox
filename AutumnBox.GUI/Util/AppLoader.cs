@@ -5,18 +5,13 @@
 *************************************************/
 using AutumnBox.Basic.Exceptions;
 using AutumnBox.Basic.ManagedAdb;
-using AutumnBox.Basic.Util;
 using AutumnBox.GUI.Properties;
 using AutumnBox.GUI.Util.Bus;
+using AutumnBox.GUI.Util.Debugging;
 using AutumnBox.GUI.Util.OpenFxManagement;
-using AutumnBox.GUI.Util.UI;
 using AutumnBox.GUI.View.Windows;
 using AutumnBox.OpenFramework;
-using AutumnBox.Support.Log;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -46,6 +41,11 @@ namespace AutumnBox.GUI.Util
         }
         #endregion
 
+        private readonly ILogger logger;
+        public AppLoader()
+        {
+            logger = new Logger<AppLoader>();
+        }
         #region LOADING_FLOW
         private void Load()
         {
@@ -63,22 +63,28 @@ namespace AutumnBox.GUI.Util
                     new LogWindow().Show();
                 });
             }
-            Logger.Info(this, $"Run as " + (Self.HaveAdminPermission ? "Admin" : "Normal user"));
-            Logger.Info(this, $"AutumnBox version: {Self.Version}");
-            Logger.Info(this, $"SDK version: {BuildInfo.SDK_VERSION}");
-            Logger.Info(this, $"Windows version {Environment.OSVersion.Version}");
+            logger.Info($"Run as " + (Self.HaveAdminPermission ? "Admin" : "Normal user"));
+            logger.Info($"AutumnBox version: {Self.Version}");
+            logger.Info($"SDK version: {BuildInfo.SDK_VERSION}");
+            logger.Info($"Windows version {Environment.OSVersion.Version}");
+#if DEBUG
+            Basic.Debugging.LoggingStation.Logging += (s, e) =>
+            {
+                AutumnBox.GUI.Util.Debugging.LoggingStation.Instance.Log(e.Tag, e.Level.ToString(), e.Text);
+            };
+#endif
             ui.Progress = 30;
             ui.LoadingTip = App.Current.Resources["ldmsgStartAdb"].ToString();
-            Logger.Info(this, "Try to start adb server ");
+            logger.Info("Try to start adb server ");
             try
             {
                 Adb.DefaultLoad();
-                Logger.Info(this, "adb server starts successed");
+                logger.Info("adb server starts successed");
             }
             catch (AdbCommandFailedException e)
             {
-                Logger.Info(this, "adb server starts failed");
-                Logger.Warn(this, e);
+                logger.Info("adb server starts failed");
+                logger.Warn(e);
                 ui.Progress = 60;
                 ui.LoadingTip = App.Current.Resources["ldmsgAdbServerFailed"].ToString();
                 App.Current.Shutdown(e.ExitCode);
@@ -93,6 +99,6 @@ namespace AutumnBox.GUI.Util
             Thread.Sleep(1 * 1000);
             ui.Finish();
         }
-#endregion
+        #endregion
     }
 }

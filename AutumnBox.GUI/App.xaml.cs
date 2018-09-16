@@ -14,8 +14,8 @@
 using AutumnBox.GUI.Properties;
 using AutumnBox.GUI.Util;
 using AutumnBox.GUI.Util.Custom;
+using AutumnBox.GUI.Util.Debugging;
 using AutumnBox.GUI.Util.I18N;
-using AutumnBox.Support.Log;
 using System.Windows;
 namespace AutumnBox.GUI
 {
@@ -25,8 +25,10 @@ namespace AutumnBox.GUI
     /// </summary>
     public partial class App : Application
     {
+        private readonly ILogger logger;
         public App() : base()
         {
+            logger = new Logger<App>();
             Current = this;
             AlreadyHaveAutumnBoxChecker.Do();
         }
@@ -42,7 +44,7 @@ namespace AutumnBox.GUI
             ThemeManager.Instance.ApplyBySetting();
             if (Settings.Default.IsFirstLaunch)
             {
-                Logger.Info(this, "is first launch");
+                logger.Info("is first launch");
                 LanguageManager.Instance.ApplyByEnvoriment();
             }
             else
@@ -54,7 +56,7 @@ namespace AutumnBox.GUI
         protected override void OnExit(ExitEventArgs e)
         {
             base.OnExit(e);
-            Logger.Info(this, "Exit code : " + e.ApplicationExitCode);
+            logger.Info("Exit code : " + e.ApplicationExitCode);
             if (Settings.Default.IsFirstLaunch)
             {
                 Settings.Default.IsFirstLaunch = false;

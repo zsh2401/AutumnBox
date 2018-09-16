@@ -6,10 +6,9 @@
 
 using AutumnBox.Basic.Calling.Adb;
 using AutumnBox.GUI.MVVM;
-using AutumnBox.Support.Log;
+using AutumnBox.GUI.Util.Debugging;
 using System;
 using System.Net;
-using System.Threading.Tasks;
 using System.Windows.Media;
 
 namespace AutumnBox.GUI.ViewModel
@@ -81,7 +80,7 @@ namespace AutumnBox.GUI.ViewModel
         }
         private void DoConnectImp(object para)
         {
-            Logger.Info(this, "hehe");
+            SGLogger<VMContentConnectNetDevice>.Info("hehe");
             var input = ParseInput();
             if (!input.Item1) return;
             ConnectTo(input.Item2);
@@ -98,7 +97,7 @@ namespace AutumnBox.GUI.ViewModel
             var result = new AdbCommand($"{ip.Address}:{ip.Port}").To(
                  (e) =>
                  {
-                     Logger.Info(this, "connecting:" + e.Text);
+                     SGLogger<VMContentConnectNetDevice>.Info("connecting:" + e.Text);
                  }
                  ).Execute();
             IsRunning = false;

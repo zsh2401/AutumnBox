@@ -3,7 +3,7 @@
 ** date:  2018/8/17 16:17:24 (UTC +8:00)
 ** desc： ...
 *************************************************/
-using AutumnBox.Support.Log;
+using AutumnBox.GUI.Util.Debugging;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -63,7 +63,7 @@ namespace AutumnBox.GUI.Util
                 args.Add("-tryadmin");
             }
             startInfo.Arguments = string.Join(" " , args);
-            Logger.Debug("Self", startInfo.FileName + "  " + startInfo.Arguments);
+            SLogger.Debug("Self", startInfo.FileName + "  " + startInfo.Arguments);
             Process.Start(startInfo);
             App.Current.Shutdown(0);
         }

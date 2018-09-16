@@ -3,13 +3,9 @@
 ** date:  2018/9/11 16:44:53 (UTC +8:00)
 ** desc： ...
 *************************************************/
-using AutumnBox.Support.Log;
+using AutumnBox.GUI.Util.Debugging;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace AutumnBox.GUI.MVVM
@@ -50,7 +46,7 @@ namespace AutumnBox.GUI.MVVM
             }
             catch (Exception ex)
             {
-                Logger.Warn(this, "can't open " + parameter, ex);
+                SGLogger<OpenParameterUrlCommand>.Warn( "can't open " + parameter, ex);
             }
         }
     }
