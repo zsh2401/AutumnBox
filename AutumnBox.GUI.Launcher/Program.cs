@@ -11,6 +11,7 @@ namespace AutumnBox.GUI.Launcher
     {
         static void Main(string[] args)
         {
+            System.Text.Encoding.GetEncoding("GBK");
             new Program().Run(args);
         }
 
