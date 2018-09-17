@@ -82,6 +82,7 @@
     <Compile Include="Management\Filters\DeviceStateFilter.cs" />
     <Compile Include="Management\IWrapperFilter.cs" />
     <Compile Include="Management\IAutumnBox_GUI.cs" />
+    <Compile Include="Open\LoggerExtension.cs" />
     <Compile Include="Open\Util\LanguageManager.cs" />
     <Compile Include="Open\Impl\SoundImpl.cs" />
     <Compile Include="Open\Impl\UxImpl.cs" />

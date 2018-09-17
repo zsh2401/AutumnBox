@@ -84,7 +84,14 @@ namespace AutumnBox.GUI.ViewModel
         }
         private IEnumerable<WrapperWrapper> ww;
 
-        public ICommand RunExtension => _runExtension;
+        public FlexiableCommand RunExtension
+        {
+            get => _runExtension; set
+            {
+                _runExtension = value;
+                RaisePropertyChanged();
+            }
+        }
         private FlexiableCommand _runExtension;
 
         public WrapperWrapper Selected
@@ -196,18 +203,15 @@ namespace AutumnBox.GUI.ViewModel
             set
             {
                 BtnRunExtensionContent = value ? App.Current.Resources["PanelExtensionsButtonEnabled"].ToString() : App.Current.Resources["PanelExtensionsButtonDisabled"].ToString();
-                _runExtension.CanExecuteProp = value;
+                RunExtension.CanExecuteProp = value;
             }
         }
         private DeviceState targetState;
 
-        public VMExtensions()
+        internal void Load(DeviceState state)
         {
-            
-        }
-        internal void Load(DeviceState state) {
-            this.targetState = state;
-            _runExtension = new FlexiableCommand((args) =>
+            targetState = state;
+            RunExtension = new FlexiableCommand((args) =>
             {
                 Selected.Wrapper.RunAsync(DeviceSelectionObserver.Instance.CurrentDevice);
             });

@@ -8,6 +8,7 @@ using AutumnBox.OpenFramework.Content;
 using AutumnBox.OpenFramework.Exceptions;
 using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.Management;
+using AutumnBox.OpenFramework.Open;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -153,7 +154,7 @@ namespace AutumnBox.OpenFramework.Wrapper
             State = ExtensionWrapperState.Running;
             IsForceStopped = false;
             LastReturnCode = -1;
-            Logger.Debug("inited");
+            Logger.CDebug("inited");
             //创建前检测
             if (!BeforeCreateInstance(device))
             {
@@ -227,7 +228,7 @@ namespace AutumnBox.OpenFramework.Wrapper
         /// <returns></returns>
         private bool BeforeCreateInstance(IDevice targetDevice)
         {
-            Logger.Debug("BeforeCreateInstance() executing");
+            Logger.CDebug("BeforeCreateInstance() executing");
             ExtBeforeCreateArgs args = new ExtBeforeCreateArgs()
             {
                 TargetDevice = targetDevice,
@@ -240,7 +241,7 @@ namespace AutumnBox.OpenFramework.Wrapper
                 aspect.Before(args);
                 if (args.Prevent) return false;
             }
-            Logger.Debug("BeforeCreateInstance() executed");
+            Logger.CDebug("BeforeCreateInstance() executed");
             return true;
         }
 
@@ -269,7 +270,7 @@ namespace AutumnBox.OpenFramework.Wrapper
         /// <returns></returns>
         private bool BeforeMain(IDevice targetDevice)
         {
-            Logger.Debug("BeforeMain() executing");
+            Logger.CDebug("BeforeMain() executing");
             BeforeArgs args = new BeforeArgs(Instance)
             {
                 ExtWrapper = this,
@@ -281,7 +282,7 @@ namespace AutumnBox.OpenFramework.Wrapper
                 aspect.Before(args);
                 if (args.Prevent) return false;
             }
-            Logger.Debug("BeforeMain() executed");
+            Logger.CDebug("BeforeMain() executed");
             return true;
         }
 
@@ -290,7 +291,7 @@ namespace AutumnBox.OpenFramework.Wrapper
         /// </summary>
         private void MainFlow()
         {
-            Logger.Debug("MainFlow()");
+            Logger.CDebug("MainFlow()");
             Manager.RunningManager.Add(this);
             try
             {
@@ -307,7 +308,7 @@ namespace AutumnBox.OpenFramework.Wrapper
                 });
             }
             Manager.RunningManager.Remove(this);
-            Logger.Debug("MainFlow() executed");
+            Logger.CDebug("MainFlow() executed");
         }
 
         /// <summary>
@@ -332,7 +333,7 @@ namespace AutumnBox.OpenFramework.Wrapper
         /// </summary>
         private void AfterMain()
         {
-            Logger.Debug("AfterMain() executing");
+            Logger.CDebug("AfterMain() executing");
             AfterArgs args = new AfterArgs(Instance)
             {
                 ExtWrapper = this,
@@ -343,7 +344,7 @@ namespace AutumnBox.OpenFramework.Wrapper
             {
                 aspect.After(args);
             }
-            Logger.Debug("AfterMain() executed");
+            Logger.CDebug("AfterMain() executed");
         }
 
         /// <summary>
@@ -351,7 +352,7 @@ namespace AutumnBox.OpenFramework.Wrapper
         /// </summary>
         private void DestoryInstance()
         {
-            Logger.Debug("destoring instantces");
+            Logger.CDebug("destoring instantces");
             Instance = null;
             State = ExtensionWrapperState.Ready;
         }

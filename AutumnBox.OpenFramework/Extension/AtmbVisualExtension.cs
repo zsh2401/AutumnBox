@@ -6,6 +6,7 @@
 using AutumnBox.OpenFramework.Management;
 using AutumnBox.OpenFramework.Wrapper;
 using System;
+using AutumnBox.OpenFramework.Open;
 
 namespace AutumnBox.OpenFramework.Extension
 {
@@ -22,7 +23,7 @@ namespace AutumnBox.OpenFramework.Extension
             /// <param name="args"></param>
             public override void Before(BeforeArgs args)
             {
-                args.Extension.Logger.Debug("visual before");
+                args.Extension.Logger.CDebug("visual before");
                 base.Before(args);
                 var visualExt = (AtmbVisualExtension)args.Extension;
                 args.Extension.App.RunOnUIThread(() =>
@@ -64,7 +65,7 @@ namespace AutumnBox.OpenFramework.Extension
             int retCode = ERR;
             try
             {
-                Logger.Debug("Exeucting VisualMain()");
+                Logger.CDebug("Exeucting VisualMain()");
                 retCode = VisualMain();
             }
             catch (Exception ex)

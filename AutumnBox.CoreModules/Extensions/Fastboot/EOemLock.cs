@@ -11,7 +11,7 @@ namespace AutumnBox.CoreModules.Extensions.Fastboot
     [ExtName("加上BL锁")]
     [ExtName("Lock oem", Lang = "en-US")]
     [ExtDesc("觉得解BL后不安全?想养老了?")]
-    [ExtDesc("Do you wanan relock oem for your device?", Lang = "en-US")]
+    [ExtDesc("Do you wanna relock oem for your device?", Lang = "en-US")]
     [ExtRequiredDeviceStates(Basic.Device.DeviceState.Fastboot)]
     public class EOemLock : OfficialVisualExtension
     {
