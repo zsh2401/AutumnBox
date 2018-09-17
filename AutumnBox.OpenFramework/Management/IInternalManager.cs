@@ -24,5 +24,10 @@ namespace AutumnBox.OpenFramework.Management
         /// 获取所有的拓展模块包装器
         /// </summary>
         IEnumerable<IExtensionWarpper> Warppers { get; }
+        /// <summary>
+        /// 获取已加载的包装器
+        /// </summary>
+        /// <returns></returns>
+        IEnumerable<IExtensionWarpper> GetLoadedWarppers(params IWarpperFilter[] filters);
     }
 }

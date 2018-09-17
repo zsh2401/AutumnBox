@@ -251,6 +251,25 @@ namespace AutumnBox.OpenFramework.Management.Impl
 
             return result;
         }
+
+        public IEnumerable<IExtensionWarpper> GetLoadedWarppers(params IWarpperFilter[] filters)
+        {
+            List<IExtensionWarpper> all = Warppers.ToList();
+            foreach (var w in all)
+            {
+                foreach (var f in filters)
+                {
+                    if (!f.Do(w))
+                    {
+                        all.Remove(w);
+                        break;
+                    }
+                }
+            }
+
+            return all;
+        }
+
         /// <summary>
         ///析构
         /// </summary>

@@ -8,6 +8,7 @@ using AutumnBox.GUI.MVVM;
 using AutumnBox.GUI.Util.Bus;
 using AutumnBox.GUI.Util.I18N;
 using AutumnBox.OpenFramework.Extension;
+using AutumnBox.OpenFramework.Management.Filters;
 using AutumnBox.OpenFramework.Warpper;
 using System;
 using System.Collections.Generic;
@@ -239,29 +240,15 @@ namespace AutumnBox.GUI.ViewModel
                 DeviceSelectionObserver.Instance.SelectedNoDevice += OnSelectNoDevice;
             }
         }
-        private bool Check(IExtensionWarpper warpper)
-        {
-            return warpper.Info.RequiredDeviceStates.HasFlag(targetState) && HaveCurrentRegion(warpper);
-        }
-        private bool HaveCurrentRegion(IExtensionWarpper warpper)
-        {
-            if (warpper.Info.Regions == null)
-            {
-                return true;
-            }
-            var crtLanCode = LanguageManager.Instance.Current.LanCode.ToLower();
-            return warpper.Info.Regions.Where((str) =>
-            {
-                return str.ToLower() == crtLanCode;
-            }).Count() > 0;
-        }
         public void LoadExtensions()
         {
-            IEnumerable<IExtensionWarpper> filted;
-            filted = from warpper in OpenFramework.Management.Manager.InternalManager.Warppers
-                     where Check(warpper)
-                     select warpper;
             Selected = null;
+            IEnumerable<IExtensionWarpper> filted =
+                OpenFramework.Management.Manager.InternalManager
+                .GetLoadedWarppers(
+                new DeviceStateFilter(targetState),
+                CurrentRegionFilter.Singleton
+                );
             App.Current.Dispatcher.Invoke(() =>
             {
                 Warppers = WarpperWarpper.From(filted);

@@ -79,6 +79,9 @@
     <Compile Include="Extension\ExtOfficialAttribute.cs" />
     <Compile Include="Extension\VisualUxManager.cs" />
     <Compile Include="Management\AutumnBoxGuiApi.cs" />
+    <Compile Include="Management\Filters\CurrentRegionFilter.cs" />
+    <Compile Include="Management\Filters\DeviceStateFilter.cs" />
+    <Compile Include="Management\IWarpperFilter.cs" />
     <Compile Include="Management\IAutumnBox_GUI.cs" />
     <Compile Include="Open\Util\LanguageManager.cs" />
     <Compile Include="Open\Impl\SoundImpl.cs" />
