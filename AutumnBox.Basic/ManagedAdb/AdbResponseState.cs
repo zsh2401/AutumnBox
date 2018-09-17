@@ -9,10 +9,22 @@ using System.Text;
 
 namespace AutumnBox.Basic.ManagedAdb
 {
+    /// <summary>
+    /// ADB回应状态
+    /// </summary>
     public enum AdbResponseState
     {
+        /// <summary>
+        /// Okay
+        /// </summary>
         Okay,
+        /// <summary>
+        /// 失败
+        /// </summary>
         Fail,
+        /// <summary>
+        /// 未知
+        /// </summary>
         Unknown,
     }
 }

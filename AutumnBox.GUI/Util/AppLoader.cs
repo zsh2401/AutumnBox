@@ -72,9 +72,9 @@ namespace AutumnBox.GUI.Util
             logger.Info($"SDK version: {BuildInfo.SDK_VERSION}");
             logger.Info($"Windows version {Environment.OSVersion.Version}");
 #if DEBUG
-            Basic.Debugging.LoggingStation.Logging += (s, e) =>
+            Basic.Util.Debugging.LoggingStation.Logging += (s, e) =>
             {
-                AutumnBox.GUI.Util.Debugging.LoggingStation.Instance.Log(e.Tag, e.Level.ToString(), e.Text);
+                LoggingStation.Instance.Log(e.Tag, e.Level.ToString(), e.Text);
             };
 #endif
             ui.Progress = 30;

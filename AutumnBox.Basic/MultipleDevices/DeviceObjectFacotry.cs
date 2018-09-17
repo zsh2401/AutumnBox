@@ -9,14 +9,23 @@ using System.Text.RegularExpressions;
 
 namespace AutumnBox.Basic.MultipleDevices
 {
-    internal static class DeviceObjectFacotry
+    /// <summary>
+    /// 设备对象构造工厂
+    /// </summary>
+    public static class DeviceObjectFacotry
     {
         private const string DEVICES_PATTERN = @"(?i)^(?<sn>[^\u0020|^\t]+)[^\w]+(?<state>\w+)\u0020?.+?$";
         private static readonly Regex _deviceRegex = new Regex(DEVICES_PATTERN);
 
         private const string DEVICES_L_PATTERN = @"^(?<sn>[^\u0020|^\t]+)[^\w]+(?<state>\w+).+:(?<product>\w+).+:(?<model>\w+).+:(?<device>\w+).+:(?<transport_id>\w+)$";
         private static readonly Regex _deviceLRegex = new Regex(DEVICES_L_PATTERN);
-
+        /// <summary>
+        /// 尝试从SN和State字符串构造一个IDevice对象
+        /// </summary>
+        /// <param name="serialNumber"></param>
+        /// <param name="state"></param>
+        /// <param name="device"></param>
+        /// <returns></returns>
         public static bool TryParse(string serialNumber, string state, out IDevice device)
         {
             DeviceBase dev = null;
@@ -35,7 +44,12 @@ namespace AutumnBox.Basic.MultipleDevices
             dev.State = state.ToDeviceState();
             return device != null;
         }
-
+        /// <summary>
+        /// 解析一行adb devices的数据
+        /// </summary>
+        /// <param name="input"></param>
+        /// <param name="device"></param>
+        /// <returns></returns>
         public static bool AdbTryParse(string input, out IDevice device)
         {
             if (AdbLParse(input, out device))
@@ -48,7 +62,6 @@ namespace AutumnBox.Basic.MultipleDevices
             }
             return false;
         }
-
         private static bool TryParseSerialAsIPEnd(string serialNumber, out IPEndPoint iPEndPoint)
         {
             try
@@ -118,6 +131,12 @@ namespace AutumnBox.Basic.MultipleDevices
             device = dev;
             return true;
         }
+        /// <summary>
+        /// 解析一行fastboot devices的数据
+        /// </summary>
+        /// <param name="input"></param>
+        /// <param name="device"></param>
+        /// <returns></returns>
         public static bool FastbootTryParse(string input, out IDevice device)
         {
             if (SimpleParse(input, out device))

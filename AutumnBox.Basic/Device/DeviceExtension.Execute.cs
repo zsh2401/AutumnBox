@@ -25,12 +25,13 @@ namespace AutumnBox.Basic.Device
         /// <param name="device"></param>
         /// <param name="sh"></param>
         /// <param name="suCheck"></param>
+        /// <exception cref="Exceptions.DeviceHasNoSuException"></exception>
         /// <returns></returns>
         public static Tuple<Output, int> Su(this IDevice device, string sh, bool suCheck = true)
         {
             if (suCheck)
             {
-                device.SuCheck();
+                device.ThrowIfHaveNoSu();
             }
             var cmd = new SuCommand(device, sh);
             var result = cmd.Execute();

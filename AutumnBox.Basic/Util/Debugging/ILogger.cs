@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace AutumnBox.Basic.Debugging
+namespace AutumnBox.Basic.Util.Debugging
 {
     internal interface ILogger
     {

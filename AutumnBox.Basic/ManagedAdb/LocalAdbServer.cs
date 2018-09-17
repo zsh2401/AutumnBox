@@ -6,6 +6,7 @@
 using AutumnBox.Basic.Calling;
 using AutumnBox.Basic.Calling.Adb;
 using AutumnBox.Basic.Util;
+using AutumnBox.Basic.Util.Debugging;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -33,7 +34,7 @@ namespace AutumnBox.Basic.ManagedAdb
         /// IP
         /// </summary>
         public IPAddress IP { get; } = IPAddress.Parse("127.0.0.1");
-
+        private readonly ILogger logger = new Logger<LocalAdbServer>();
         /// <summary>
         /// 存活检测
         /// </summary>
@@ -45,10 +46,13 @@ namespace AutumnBox.Basic.ManagedAdb
         /// <summary>
         /// 开始
         /// </summary>
-        /// <param name="port"></param>
         public void Start()
         {
             new ProcessBasedCommand(Adb.AdbFilePath, $"-P {Port} start-server")
+                .To((e) =>
+                {
+                    logger.Info(e.Text);
+                })
                 .Execute()
                .ThrowIfExitCodeNotEqualsZero();
         }

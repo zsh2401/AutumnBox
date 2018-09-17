@@ -13,7 +13,6 @@ namespace AutumnBox.GUI.Util.Debugging
         private const string LOG_FLODER = "..\\logs";
         private const string LOG_FILENAME_FORMAT = "yy_MM_dd__HH_mm_ss";
         public static LoggingStation Instance { get; private set; }
-
         public event EventHandler<LogEventArgs> Logging;
         public string CurrentLogged
         {
@@ -25,7 +24,6 @@ namespace AutumnBox.GUI.Util.Debugging
         private List<string> logged;
         private Queue<string> buffer;
         private FileStream fs;
-
         private StreamWriter sw;
         public string LogFile { get; set; }
         static LoggingStation()
@@ -44,7 +42,10 @@ namespace AutumnBox.GUI.Util.Debugging
                 LogFile = GetLogFileInfo();
             }
             fs = new FileStream(LogFile, FileMode.OpenOrCreate, FileAccess.ReadWrite);
-            sw = new StreamWriter(fs);
+            sw = new StreamWriter(fs)
+            {
+                AutoFlush = true
+            };
             Task.Run(() =>
             {
                 Loop();
@@ -60,9 +61,9 @@ namespace AutumnBox.GUI.Util.Debugging
             string path = Path.Combine(LOG_FLODER, fileName);
             return path;
         }
-        public void Log(string tag, string level, object content)
+        public void Log(string tag, string prefix, object content)
         {
-            string logMessage = string.Format(LOG_INFO_FMT, tag, DateTime.Now.ToString("yy-MM-dd HH:mm:ss"), level, content);
+            string logMessage = string.Format(LOG_INFO_FMT, tag, DateTime.Now.ToString("yy-MM-dd HH:mm:ss"), prefix, content);
             buffer.Enqueue(logMessage);
             Logging?.Invoke(this, new LogEventArgs() { Content = logMessage });
         }

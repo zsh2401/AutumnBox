@@ -1,10 +1,8 @@
-﻿using AutumnBox.Basic.Calling.Adb;
-using AutumnBox.Basic.Debugging;
-using AutumnBox.Basic.Device.Management.OS;
+﻿using AutumnBox.Basic.Device;
 using AutumnBox.Basic.ManagedAdb;
+using AutumnBox.Basic.MultipleDevices;
 using System;
 using System.Collections;
-using System.Reflection;
 using System.Text;
 
 namespace AutumnBox.ConsoleTester
@@ -57,64 +55,12 @@ namespace AutumnBox.ConsoleTester
         }
         unsafe static void Main(string[] cmdargs)
         {
-            new Logger<object>().Debug(nameof(Main),"");
-            AdbServer.Instance.Start();
-            var cmd = new AdbCommand("devices");
-            //var cmd = acb.ToCommand();
-            //cmd.OutputReceived += (s, e) =>
-            //{
-            //    Console.WriteLine(e.Text);
-            //};
-            //cmd.Execute();
-            Console.WriteLine(cmd.Execute().Output);
-            //using (IAdbService adbService = AdbService.Instance)
-            //{
-            //    adbService.Start(5099);
-            //    AndroidShell shell = new AndroidShell("9dd1b490");
-            //    shell.OutputReceived += (s, e) =>
-            //    {
-            //        Console.Write(e.Content);
-            //    };
-            //    InputLoop(shell);
-            //}
-            Console.ReadKey();
-            //byte[] headBuffer = new byte[sizeof(byte) + sizeof(Int32)];
-            //byte[] buffer = new byte[1];
-            //using (AdvanceAdbClient client = new AdvanceAdbClient())
-            //{
-            //    client.Connect();
-            //    client.SetDevice("9dd1b490");
-            //    client.SendRequestNoData("shell:");
-            //    client.Socket.Receive(headBuffer);
-            //    //Console.WriteLine("header buffer");
-            //    //foreach (byte b in headBuffer)
-            //    //{
-            //    //    Console.Write(headBuffer[1]);
-            //    //}
-            //    //Console.WriteLine("header buffer");
-            //    using (Stream stream = client.GetStream())
-            //    {
-            //        while (stream.CanRead)
-            //        {
-            //            stream.Read(buffer, 0, buffer.Length);
-            //            //Console.Write(Convert.ToString(buffer[0], 16) + " ");
-            //            //if (buffer[0] == 0xa && stream.Length) break;
-            //            Console.Write(Encoding.UTF8.GetString(buffer));
-            //        }
-            //    }
-            //    Console.Write("\n");
-            //}
-            //foreach (byte b in buffer)
-            //{
-            //    Console.Write(Convert.ToString(b, 16) + " ");
-            //}
-        }
-        private static void InputLoop(IAndroidShell shell)
-        {
-            while (true)
+            var input = "asdjkasdsalk fastboot -afskl\"dasjajlk";
+            if (DeviceObjectFacotry.AdbTryParse(input, out IDevice device))
             {
-                shell.InputLine(Console.ReadLine());
+                Console.WriteLine(device.SerialNumber);
             }
+
         }
         private static byte[] BuildCommand(string command)
         {

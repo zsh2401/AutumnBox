@@ -44,7 +44,6 @@ namespace AutumnBox.GUI
             ThemeManager.Instance.ApplyBySetting();
             if (Settings.Default.IsFirstLaunch)
             {
-                logger.Info("is first launch");
                 LanguageManager.Instance.ApplyByEnvoriment();
             }
             else
@@ -52,7 +51,7 @@ namespace AutumnBox.GUI
                 LanguageManager.Instance.ApplyByLanguageCode(Settings.Default.Language);
             }
         }
-
+        
         protected override void OnExit(ExitEventArgs e)
         {
             base.OnExit(e);

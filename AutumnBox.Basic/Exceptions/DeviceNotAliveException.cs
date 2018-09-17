@@ -11,6 +11,9 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Exceptions
 {
+    /// <summary>
+    /// 设备不再存活
+    /// </summary>
    public class DeviceNotAliveException : Exception
     {
     }
