@@ -4,12 +4,12 @@
 ** desc： ...
 *************************************************/
 
-namespace AutumnBox.OpenFramework.Warpper
+namespace AutumnBox.OpenFramework.Wrapper
 {
     /// <summary>
     /// 拓展模块包装器的状态
     /// </summary>
-    public enum ExtensionWarpperState
+    public enum ExtensionWrapperState
     {
         /// <summary>
         /// 准备状态,只要是非运行状态,都是此状态

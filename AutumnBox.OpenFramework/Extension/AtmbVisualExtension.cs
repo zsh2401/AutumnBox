@@ -4,7 +4,7 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.OpenFramework.Management;
-using AutumnBox.OpenFramework.Warpper;
+using AutumnBox.OpenFramework.Wrapper;
 using System;
 
 namespace AutumnBox.OpenFramework.Extension
@@ -27,9 +27,9 @@ namespace AutumnBox.OpenFramework.Extension
                 var visualExt = (AtmbVisualExtension)args.Extension;
                 args.Extension.App.RunOnUIThread(() =>
                 {
-                    visualExt.UIController = AutumnBoxGuiApi.Main.GetUIControllerOf(args.ExtWarpper);
+                    visualExt.UIController = AutumnBoxGuiApi.Main.GetUIControllerOf(args.ExtWrapper);
                     visualExt.UIController.OnStart();
-                    visualExt.MyWarpper = args.ExtWarpper;
+                    visualExt.MyWrapper = args.ExtWrapper;
                     visualExt.UIController.Closing += visualExt.OnUIControllerClosing;
                 });
             }
@@ -45,7 +45,7 @@ namespace AutumnBox.OpenFramework.Extension
                 {
                     visualExt.UIController.Closing -= visualExt.OnUIControllerClosing;
                     visualExt.UIController = null;
-                    visualExt.MyWarpper = null;
+                    visualExt.MyWrapper = null;
                 });
             }
         }
@@ -141,7 +141,7 @@ namespace AutumnBox.OpenFramework.Extension
         {
             if (isRunning)
             {
-                MyWarpper.Stop();
+                MyWrapper.Stop();
                 args.Cancel = true;
             }
             else
@@ -163,7 +163,7 @@ namespace AutumnBox.OpenFramework.Extension
         {
             return false;
         }
-        internal IExtensionWarpper MyWarpper { get; set; }
+        internal IExtensionWrapper MyWrapper { get; set; }
         internal IExtensionUIController UIController { get; set; }
         /// <summary>
         /// 写一行数据

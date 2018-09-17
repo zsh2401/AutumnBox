@@ -5,14 +5,14 @@
 *************************************************/
 using AutumnBox.Basic.Device;
 using AutumnBox.OpenFramework.Extension;
-using AutumnBox.OpenFramework.Warpper;
+using AutumnBox.OpenFramework.Wrapper;
 
 namespace AutumnBox.OpenFramework.Management.Filters
 {
     /// <summary>
     /// 设备状态过滤器
     /// </summary>
-    public class DeviceStateFilter : IWarpperFilter
+    public class DeviceStateFilter : IWrapperFilter
     {
         private readonly DeviceState state;
         /// <summary>
@@ -26,12 +26,12 @@ namespace AutumnBox.OpenFramework.Management.Filters
         /// <summary>
         /// 执行
         /// </summary>
-        /// <param name="warpper"></param>
+        /// <param name="Wrapper"></param>
         /// <returns></returns>
-        public bool Do(IExtensionWarpper warpper)
+        public bool Do(IExtensionWrapper Wrapper)
         {
-            return warpper.Info.RequiredDeviceStates.HasFlag(state)
-                || warpper.Info.RequiredDeviceStates == state;
+            return Wrapper.Info.RequiredDeviceStates.HasFlag(state)
+                || Wrapper.Info.RequiredDeviceStates == state;
         }
     }
 }

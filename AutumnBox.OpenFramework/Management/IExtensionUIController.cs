@@ -41,11 +41,11 @@ namespace AutumnBox.OpenFramework.Management
         /// <param name="msg"></param>
         void AppendLine(string msg);
         /// <summary>
-        /// warpper开始运行了
+        /// wrapper开始运行了
         /// </summary>
         void OnStart();
         /// <summary>
-        /// warpper结束运行了
+        /// wrapper结束运行了
         /// </summary>
         void OnFinish();
     }

@@ -9,14 +9,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AutumnBox.OpenFramework.Content;
-using AutumnBox.OpenFramework.Warpper;
+using AutumnBox.OpenFramework.Wrapper;
 
 namespace AutumnBox.OpenFramework.Management.Filters
 {
     /// <summary>
     /// 根据目前秋之盒的区域进行筛选的筛选器
     /// </summary>
-    public class CurrentRegionFilter :Context, IWarpperFilter
+    public class CurrentRegionFilter :Context, IWrapperFilter
     {
         /// <summary>
         /// 单例
@@ -29,16 +29,16 @@ namespace AutumnBox.OpenFramework.Management.Filters
         /// <summary>
         /// DO!
         /// </summary>
-        /// <param name="warpper"></param>
+        /// <param name="wrapper"></param>
         /// <returns></returns>
-        public bool Do(IExtensionWarpper warpper)
+        public bool Do(IExtensionWrapper wrapper)
         {
             var crtLanCode = App.CurrentLanguageCode.ToLower();
-            if (warpper.Info.Regions == null)
+            if (wrapper.Info.Regions == null)
             {
                 return true;
             }
-            return warpper.Info.Regions.Where((str) =>
+            return wrapper.Info.Regions.Where((str) =>
             {
                 return str.ToLower() == crtLanCode;
             }).Count() > 0;

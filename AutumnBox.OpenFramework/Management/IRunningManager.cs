@@ -1,4 +1,4 @@
-﻿using AutumnBox.OpenFramework.Warpper;
+﻿using AutumnBox.OpenFramework.Wrapper;
 
 namespace AutumnBox.OpenFramework.Management
 {
@@ -10,12 +10,12 @@ namespace AutumnBox.OpenFramework.Management
         /// <summary>
         /// 添加
         /// </summary>
-        /// <param name="warpper"></param>
-        void Add(IExtensionWarpper warpper);
+        /// <param name="wrapper"></param>
+        void Add(IExtensionWrapper wrapper);
         /// <summary>
         /// 移除
         /// </summary>
-        /// <param name="warpper"></param>
-        void Remove(IExtensionWarpper warpper);
+        /// <param name="wrapper"></param>
+        void Remove(IExtensionWrapper wrapper);
     }
 }

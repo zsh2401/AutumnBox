@@ -5,7 +5,7 @@
 *************************************************/
 using AutumnBox.OpenFramework.Content;
 using AutumnBox.OpenFramework.Management;
-using AutumnBox.OpenFramework.Warpper;
+using AutumnBox.OpenFramework.Wrapper;
 using System;
 using System.Threading.Tasks;
 using System.Windows;
@@ -46,12 +46,12 @@ namespace AutumnBox.OpenFramework.Open.Impl
             return result;
         }
 
-        public IExtensionUIController GetUIControllerOf(IExtensionWarpper warpper)
+        public IExtensionUIController GetUIControllerOf(IExtensionWrapper wrapper)
         {
             IExtensionUIController result = null;
             RunOnUIThread(() =>
             {
-                result = sourceApi.GetUIControllerOf(warpper);
+                result = sourceApi.GetUIControllerOf(wrapper);
             });
             return result;
         }

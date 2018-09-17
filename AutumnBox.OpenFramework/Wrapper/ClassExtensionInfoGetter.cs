@@ -12,7 +12,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Text;
 
-namespace AutumnBox.OpenFramework.Warpper
+namespace AutumnBox.OpenFramework.Wrapper
 {
     /// <summary>
     /// ClassExtension包装器的信息获取器

@@ -43,7 +43,6 @@ namespace AutumnBox.GUI.Util.Net
             string html = Encoding.UTF8.GetString(bytes);
             PotdRemoteInfo remoteInfo = (PotdRemoteInfo)JsonConvert.DeserializeObject(html, typeof(PotdRemoteInfo));
             byte[] imgData = webClient.DownloadData(remoteInfo.Link);
-            logger.Info("get finished..");
             return new PotdGetterResult()
             {
                 RemoteInfo = remoteInfo,

@@ -9,7 +9,7 @@ using AutumnBox.GUI.Util.Bus;
 using AutumnBox.GUI.Util.I18N;
 using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.Management.Filters;
-using AutumnBox.OpenFramework.Warpper;
+using AutumnBox.OpenFramework.Wrapper;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -24,10 +24,10 @@ namespace AutumnBox.GUI.ViewModel
     class VMExtensions : ViewModelBase
     {
         #region WW
-        public class WarpperWarpper
+        public class WrapperWrapper
         {
-            public IExtensionWarpper Warpper { get; private set; }
-            public string Name => Warpper.Info.Name;
+            public IExtensionWrapper Wrapper { get; private set; }
+            public string Name => Wrapper.Info.Name;
             public ImageSource Icon
             {
                 get
@@ -37,13 +37,13 @@ namespace AutumnBox.GUI.ViewModel
                 }
             }
             private ImageSource icon;
-            private WarpperWarpper(IExtensionWarpper warpper)
+            private WrapperWrapper(IExtensionWrapper wrapper)
             {
-                this.Warpper = warpper;
+                this.Wrapper = wrapper;
             }
             private void LoadIcon()
             {
-                if (Warpper.Info.Icon == null)
+                if (Wrapper.Info.Icon == null)
                 {
                     icon = App.Current.Resources["DefaultExtensionIcon"] as ImageSource;
                 }
@@ -51,18 +51,18 @@ namespace AutumnBox.GUI.ViewModel
                 {
                     BitmapImage bmp = new BitmapImage();
                     bmp.BeginInit();
-                    bmp.StreamSource = new MemoryStream(Warpper.Info.Icon);
+                    bmp.StreamSource = new MemoryStream(Wrapper.Info.Icon);
                     bmp.EndInit();
                     bmp.Freeze();
                     icon = bmp;
                 }
             }
-            public static IEnumerable<WarpperWarpper> From(IEnumerable<IExtensionWarpper> warppers)
+            public static IEnumerable<WrapperWrapper> From(IEnumerable<IExtensionWrapper> wrappers)
             {
-                List<WarpperWarpper> result = new List<WarpperWarpper>();
-                foreach (var warpper in warppers)
+                List<WrapperWrapper> result = new List<WrapperWrapper>();
+                foreach (var wrapper in wrappers)
                 {
-                    result.Add(new WarpperWarpper(warpper));
+                    result.Add(new WrapperWrapper(wrapper));
                 }
                 return result;
             }
@@ -70,7 +70,7 @@ namespace AutumnBox.GUI.ViewModel
         #endregion
 
         #region MVVM
-        public IEnumerable<WarpperWarpper> Warppers
+        public IEnumerable<WrapperWrapper> Wrappers
         {
             get
             {
@@ -82,12 +82,12 @@ namespace AutumnBox.GUI.ViewModel
                 RaisePropertyChanged();
             }
         }
-        private IEnumerable<WarpperWarpper> ww;
+        private IEnumerable<WrapperWrapper> ww;
 
         public ICommand RunExtension => _runExtension;
         private FlexiableCommand _runExtension;
 
-        public WarpperWarpper Selected
+        public WrapperWrapper Selected
         {
             get
             {
@@ -107,7 +107,7 @@ namespace AutumnBox.GUI.ViewModel
                 RaisePropertyChanged();
             }
         }
-        private WarpperWarpper _selected;
+        private WrapperWrapper _selected;
 
         public Visibility DetailsVisibily
         {
@@ -206,7 +206,7 @@ namespace AutumnBox.GUI.ViewModel
             this.targetState = targetState;
             _runExtension = new FlexiableCommand((args) =>
             {
-                Selected.Warpper.RunAsync(DeviceSelectionObserver.Instance.CurrentDevice);
+                Selected.Wrapper.RunAsync(DeviceSelectionObserver.Instance.CurrentDevice);
             });
             GotoDownloadExtension = new OpenParameterUrlCommand();
             Selected = null;
@@ -243,16 +243,16 @@ namespace AutumnBox.GUI.ViewModel
         public void LoadExtensions()
         {
             Selected = null;
-            IEnumerable<IExtensionWarpper> filted =
+            IEnumerable<IExtensionWrapper> filted =
                 OpenFramework.Management.Manager.InternalManager
-                .GetLoadedWarppers(
+                .GetLoadedWrappers(
                 new DeviceStateFilter(targetState),
                 CurrentRegionFilter.Singleton
                 );
             App.Current.Dispatcher.Invoke(() =>
             {
-                Warppers = WarpperWarpper.From(filted);
-                if (Warppers.Count() == 0)
+                Wrappers = WrapperWrapper.From(filted);
+                if (Wrappers.Count() == 0)
                 {
                     NotFoundVisibily = Visibility.Visible;
                     ExtensionsVisibily = Visibility.Collapsed;

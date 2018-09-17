@@ -5,7 +5,7 @@
 *************************************************/
 using System;
 using System.Windows;
-using AutumnBox.OpenFramework.Warpper;
+using AutumnBox.OpenFramework.Wrapper;
 using AutumnBox.GUI.View.Windows;
 using AutumnBox.OpenFramework.Management;
 using AutumnBox.GUI.Util.Effect;
@@ -54,9 +54,9 @@ namespace AutumnBox.GUI.Util.OpenFxManagement
             return App.Current.Resources[key];
         }
 
-        public IExtensionUIController GetUIControllerOf(IExtensionWarpper warpper)
+        public IExtensionUIController GetUIControllerOf(IExtensionWrapper wrapper)
         {
-            var window = new RunningWindow(warpper);
+            var window = new RunningWindow(wrapper);
             return window.ViewModel;
         }
 

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AutumnBox.OpenFramework.Warpper
+namespace AutumnBox.OpenFramework.Wrapper
 {
     /// <summary>
     /// 拓展模块特性获取器
