@@ -4,7 +4,7 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.OpenFramework.Open;
-using AutumnBox.OpenFramework.Warpper;
+using AutumnBox.OpenFramework.Wrapper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,9 +36,9 @@ namespace AutumnBox.OpenFramework.Management
         /// <summary>
         /// 获取控制器
         /// </summary>
-        /// <param name="warpper"></param>
+        /// <param name="wrapper"></param>
         /// <returns></returns>
-        IExtensionUIController GetUIControllerOf(IExtensionWarpper warpper);
+        IExtensionUIController GetUIControllerOf(IExtensionWrapper wrapper);
         /// <summary>
         /// 获取主窗口
         /// </summary>

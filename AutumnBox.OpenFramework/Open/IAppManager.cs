@@ -1,4 +1,4 @@
-﻿using AutumnBox.OpenFramework.Warpper;
+﻿using AutumnBox.OpenFramework.Wrapper;
 using System;
 using System.Windows;
 

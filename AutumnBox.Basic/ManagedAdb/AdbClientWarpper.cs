@@ -11,7 +11,7 @@ namespace AutumnBox.Basic.ManagedAdb
     /// <summary>
     /// ADB客户端包装器
     /// </summary>
-    public class AdbClientWarpper : IDisposable
+    public class AdbClientWrapper : IDisposable
     {
         /// <summary>
         /// 包装的ADB客户端
@@ -22,7 +22,7 @@ namespace AutumnBox.Basic.ManagedAdb
         /// 构造
         /// </summary>
         /// <param name="core"></param>
-        public AdbClientWarpper(IAdbClient core)
+        public AdbClientWrapper(IAdbClient core)
         {
             this.core = core;
             if (!core.IsConnected)
@@ -93,7 +93,7 @@ namespace AutumnBox.Basic.ManagedAdb
         }
 
         // TODO: 仅当以上 Dispose(bool disposing) 拥有用于释放未托管资源的代码时才替代终结器。
-        // ~AdbClientWarpper() {
+        // ~AdbClientWrapper() {
         //   // 请勿更改此代码。将清理代码放入以上 Dispose(bool disposing) 中。
         //   Dispose(false);
         // }

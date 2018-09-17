@@ -10,7 +10,7 @@ namespace AutumnBox.OpenFramework.Exceptions
     /// <summary>
     /// 当一个包装类已经被创建过时抛出
     /// </summary>
-    public class WarpperAlreadyCreatedOnceException : Exception
+    public class WrapperAlreadyCreatedOnceException : Exception
     {
     }
 }

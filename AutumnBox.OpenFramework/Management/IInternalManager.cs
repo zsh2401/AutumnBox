@@ -1,5 +1,5 @@
 ﻿using AutumnBox.OpenFramework.ExtLibrary;
-using AutumnBox.OpenFramework.Warpper;
+using AutumnBox.OpenFramework.Wrapper;
 using System.Collections.Generic;
 namespace AutumnBox.OpenFramework.Management
 {
@@ -23,11 +23,11 @@ namespace AutumnBox.OpenFramework.Management
         /// <summary>
         /// 获取所有的拓展模块包装器
         /// </summary>
-        IEnumerable<IExtensionWarpper> Warppers { get; }
+        IEnumerable<IExtensionWrapper> Wrappers { get; }
         /// <summary>
         /// 获取已加载的包装器
         /// </summary>
         /// <returns></returns>
-        IEnumerable<IExtensionWarpper> GetLoadedWarppers(params IWarpperFilter[] filters);
+        IEnumerable<IExtensionWrapper> GetLoadedWrappers(params IWrapperFilter[] filters);
     }
 }

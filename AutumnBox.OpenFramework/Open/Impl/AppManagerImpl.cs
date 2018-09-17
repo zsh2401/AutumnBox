@@ -6,7 +6,7 @@
 using AutumnBox.OpenFramework.Content;
 using AutumnBox.OpenFramework.Exceptions;
 using AutumnBox.OpenFramework.Management;
-using AutumnBox.OpenFramework.Warpper;
+using AutumnBox.OpenFramework.Wrapper;
 using System;
 using System.Security.Principal;
 using System.Windows;
@@ -23,9 +23,9 @@ namespace AutumnBox.OpenFramework.Open.Impl
             this.sourceApi = sourceApi;
         }
 
-        public IExtensionUIController GetUIControllerOf(IExtensionWarpper warpper)
+        public IExtensionUIController GetUIControllerOf(IExtensionWrapper wrapper)
         {
-            return sourceApi.GetUIControllerOf(warpper);
+            return sourceApi.GetUIControllerOf(wrapper);
         }
         public bool IsRunAsAdmin
         {

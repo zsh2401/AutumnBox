@@ -6,7 +6,7 @@
 using AutumnBox.OpenFramework.Content;
 using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.ExtLibrary;
-using AutumnBox.OpenFramework.Warpper;
+using AutumnBox.OpenFramework.Wrapper;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -51,7 +51,7 @@ namespace AutumnBox.OpenFramework.Management.Impl
         /// <summary>
         /// 已加载的所有包装器
         /// </summary>
-        public IEnumerable<IExtensionWarpper> Warppers => GetWarppersFrom(Librarians);
+        public IEnumerable<IExtensionWrapper> Wrappers => GetWrappersFrom(Librarians);
         /// <summary>
         /// 日志标签
         /// </summary>
@@ -70,7 +70,7 @@ namespace AutumnBox.OpenFramework.Management.Impl
             {
                 ReloadLibs();
             }
-            Logger.Info($"loaded {Librarians.Count()} librarian and {Warppers.Count()} warppers");
+            Logger.Info($"loaded {Librarians.Count()} librarian and {Wrappers.Count()} Wrappers");
         }
         /// <summary>
         /// 拓展文件夹检查
@@ -230,33 +230,33 @@ namespace AutumnBox.OpenFramework.Management.Impl
         /// </summary>
         /// <param name="libs"></param>
         /// <returns></returns>
-        private IEnumerable<IExtensionWarpper> GetWarppersFrom(IEnumerable<ILibrarian> libs)
+        private IEnumerable<IExtensionWrapper> GetWrappersFrom(IEnumerable<ILibrarian> libs)
         {
-            List<IExtensionWarpper> result = new List<IExtensionWarpper>();
+            List<IExtensionWrapper> result = new List<IExtensionWrapper>();
             foreach (var lib in libs)
             {
                 try
                 {
-                    result.AddRange(lib.GetWarppers());
+                    result.AddRange(lib.GetWrappers());
                 }
                 catch (Exception ex)
                 {
                     Logger.Warn($"获取拓展模块封装类失败({lib.Name})", ex);
                 }
             }
-            ////筛选出未被创建过的Warppers
+            ////筛选出未被创建过的Wrappers
             //var filtedResult = from wp in result
-            //                   where cacheWarppers.IndexOf(wp) == -1
+            //                   where cacheWrappers.IndexOf(wp) == -1
             //                   select wp;
 
             return result;
         }
 
-        private bool IsOk(IExtensionWarpper warpper, IWarpperFilter[] filters)
+        private bool IsOk(IExtensionWrapper Wrapper, IWrapperFilter[] filters)
         {
             foreach (var filter in filters)
             {
-                if (!filter.Do(warpper))
+                if (!filter.Do(Wrapper))
                 {
                     return false;
                 }
@@ -264,9 +264,9 @@ namespace AutumnBox.OpenFramework.Management.Impl
             return true;
         }
 
-        public IEnumerable<IExtensionWarpper> GetLoadedWarppers(params IWarpperFilter[] filters)
+        public IEnumerable<IExtensionWrapper> GetLoadedWrappers(params IWrapperFilter[] filters)
         {
-            List<IExtensionWarpper> all = Warppers.ToList();
+            List<IExtensionWrapper> all = Wrappers.ToList();
             return from w in all
                    where IsOk(w, filters)
                    select w;

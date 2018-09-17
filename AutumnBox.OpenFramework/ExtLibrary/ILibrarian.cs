@@ -1,4 +1,4 @@
-﻿using AutumnBox.OpenFramework.Warpper;
+﻿using AutumnBox.OpenFramework.Wrapper;
 using System.Collections.Generic;
 
 namespace AutumnBox.OpenFramework.ExtLibrary
@@ -29,7 +29,7 @@ namespace AutumnBox.OpenFramework.ExtLibrary
         /// 获取该入口类所代表的程序集中的拓展的包装类
         /// </summary>
         /// <returns></returns>
-        IEnumerable<IExtensionWarpper> GetWarppers();
+        IEnumerable<IExtensionWrapper> GetWrappers();
         /// <summary>
         /// 当入口所代表的程序集被卸载时调用
         /// </summary>

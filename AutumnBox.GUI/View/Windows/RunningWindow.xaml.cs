@@ -1,5 +1,5 @@
 ﻿using AutumnBox.GUI.ViewModel;
-using AutumnBox.OpenFramework.Warpper;
+using AutumnBox.OpenFramework.Wrapper;
 using System.Windows;
 
 namespace AutumnBox.GUI.View.Windows
@@ -10,10 +10,10 @@ namespace AutumnBox.GUI.View.Windows
     public partial class RunningWindow : Window
     {
         internal readonly VMRunningWindow ViewModel;
-        public RunningWindow(IExtensionWarpper warpper)
+        public RunningWindow(IExtensionWrapper wrapper)
         {
             InitializeComponent();
-            ViewModel = new VMRunningWindow(this, warpper);
+            ViewModel = new VMRunningWindow(this, wrapper);
             DataContext = ViewModel;
         }
 

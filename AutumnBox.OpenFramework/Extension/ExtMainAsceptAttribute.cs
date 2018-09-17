@@ -5,7 +5,7 @@
 *************************************************/
 using AutumnBox.Basic.Device;
 using AutumnBox.OpenFramework.Content;
-using AutumnBox.OpenFramework.Warpper;
+using AutumnBox.OpenFramework.Wrapper;
 using System;
 
 namespace AutumnBox.OpenFramework.Extension
@@ -31,7 +31,7 @@ namespace AutumnBox.OpenFramework.Extension
         /// <summary>
         /// 拓展包装器
         /// </summary>
-        public IExtensionWarpper ExtWarpper { get; set; }
+        public IExtensionWrapper ExtWrapper { get; set; }
         /// <summary>
         /// 构造
         /// </summary>
@@ -61,7 +61,7 @@ namespace AutumnBox.OpenFramework.Extension
         /// <summary>
         /// 拓展包装器
         /// </summary>
-        public IExtensionWarpper ExtWarpper { get; set; }
+        public IExtensionWrapper ExtWrapper { get; set; }
         /// <summary>
         /// 构造
         /// </summary>

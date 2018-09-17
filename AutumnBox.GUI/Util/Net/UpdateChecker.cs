@@ -28,7 +28,7 @@ namespace AutumnBox.GUI.Util.Net
         [JsonProperty("message")]
         public string Message { get; set; } = "No update";
         [JsonProperty("updateUrl")]
-        public string UpdateUrl { get; set; } = "http://atmb.top/";
+        public string UpdateUrl { get; set; } = "http://www.atmb.top/";
         [JsonProperty("date")]
         public int[] TimeArray { get; set; } = new int[] { 1970, 1, 1 };
 
@@ -76,7 +76,7 @@ namespace AutumnBox.GUI.Util.Net
 #endif
             string data = Encoding.UTF8.GetString(bytes);
             var result = (UpdateCheckResult)JsonConvert.DeserializeObject(data, typeof(UpdateCheckResult));
-            Logger.Info("update check finished " + data);
+            Logger.Info("update check finished" + Environment.NewLine + data);
             return result;
         }
     }

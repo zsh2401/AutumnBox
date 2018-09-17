@@ -4,17 +4,17 @@ using AutumnBox.OpenFramework.Open;
 using System;
 using System.Collections.Generic;
 
-namespace AutumnBox.OpenFramework.Warpper
+namespace AutumnBox.OpenFramework.Wrapper
 {
     /// <summary>
     /// 拓展模块包装器
     /// </summary>
-    public interface IExtensionWarpper : IEquatable<IExtensionWarpper>
+    public interface IExtensionWrapper : IEquatable<IExtensionWrapper>
     {
         /// <summary>
         /// 状态
         /// </summary>
-        ExtensionWarpperState State { get; }
+        ExtensionWrapperState State { get; }
         /// <summary>
         /// 拓展模块信息获取器
         /// </summary>
@@ -42,7 +42,7 @@ namespace AutumnBox.OpenFramework.Warpper
         /// </summary>
         /// <param name="device"></param>
         /// <param name="callback"></param>
-        void RunAsync(IDevice device, Action<IExtensionWarpper> callback = null);
+        void RunAsync(IDevice device, Action<IExtensionWrapper> callback = null);
         /// <summary>
         /// 停止运行
         /// </summary>

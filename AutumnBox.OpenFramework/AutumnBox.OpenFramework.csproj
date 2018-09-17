@@ -61,7 +61,7 @@
     <Compile Include="Content\ContextPermissionAttribute.cs" />
     <Compile Include="Content\CtxPer.cs" />
     <Compile Include="Exceptions\LibrarianAlreadyCreatedOnceException.cs" />
-    <Compile Include="Exceptions\WarpperAlreadyCreatedOnceException.cs" />
+    <Compile Include="Exceptions\WrapperAlreadyCreatedOnceException.cs" />
     <Compile Include="Extension\AtmbVisualExtension.cs" />
     <Compile Include="Extension\AutumnBoxExtension.Constants.cs" />
     <Compile Include="Extension\ExtAppPropertyAttribute.cs" />
@@ -80,7 +80,7 @@
     <Compile Include="Management\AutumnBoxGuiApi.cs" />
     <Compile Include="Management\Filters\CurrentRegionFilter.cs" />
     <Compile Include="Management\Filters\DeviceStateFilter.cs" />
-    <Compile Include="Management\IWarpperFilter.cs" />
+    <Compile Include="Management\IWrapperFilter.cs" />
     <Compile Include="Management\IAutumnBox_GUI.cs" />
     <Compile Include="Open\Util\LanguageManager.cs" />
     <Compile Include="Open\Impl\SoundImpl.cs" />
@@ -90,7 +90,7 @@
     <Compile Include="Management\IExtensionUIController.cs" />
     <Compile Include="Open\IFrameworkManager.cs" />
     <Compile Include="Open\Impl\FxImpl.cs" />
-    <Compile Include="Warpper\ClassExtensionInfoGetter.cs" />
+    <Compile Include="Wrapper\ClassExtensionInfoGetter.cs" />
     <Compile Include="Management\IInternalManager.cs" />
     <Compile Include="Management\IRunningManager.cs" />
     <Compile Include="Management\Manager.cs" />
@@ -122,10 +122,10 @@
     <Compile Include="Extension\ExtDescAttribute.cs" />
     <Compile Include="Extension\ExtNameAttribute.cs" />
     <Compile Include="Extension\ForerunCheckResult.cs" />
-    <Compile Include="Warpper\ClassExtensionWrapper.cs" />
-    <Compile Include="Warpper\ExtensionWarpperState.cs" />
-    <Compile Include="Warpper\IExtInfoGetter.cs" />
-    <Compile Include="Warpper\IExtensionWarpper.cs" />
+    <Compile Include="Wrapper\ClassExtensionWrapper.cs" />
+    <Compile Include="Wrapper\ExtensionWarpperState.cs" />
+    <Compile Include="Wrapper\IExtInfoGetter.cs" />
+    <Compile Include="Wrapper\IExtensionWrapper.cs" />
     <Compile Include="ExtLibrary\ILibrarian.cs" />
     <Compile Include="Open\IAppManager.cs" />
     <Compile Include="Open\ILogger.cs" />

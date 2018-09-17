@@ -27,7 +27,7 @@ namespace AutumnBox.OpenFramework.Extension
         /// </summary>
         public bool Prevent { get; set; } = true;
         /// <summary>
-        /// 上下文,通常是Warpper
+        /// 上下文,通常是Wrapper
         /// </summary>
         public Context Context { get; internal set; }
     }

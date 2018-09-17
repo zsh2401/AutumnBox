@@ -8,7 +8,7 @@ using AutumnBox.OpenFramework.Exceptions;
 using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.Management;
 using AutumnBox.OpenFramework.Management.Impl;
-using AutumnBox.OpenFramework.Warpper;
+using AutumnBox.OpenFramework.Wrapper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -72,7 +72,7 @@ namespace AutumnBox.OpenFramework.ExtLibrary
         /// <summary>
         /// 用来存储所有已加载的包装类
         /// </summary>
-        protected List<IExtensionWarpper> loadedWarpper = new List<IExtensionWarpper>();
+        protected List<IExtensionWrapper> loadedWrapper = new List<IExtensionWrapper>();
         /// <summary>
         /// 运行检查
         /// </summary>
@@ -96,50 +96,50 @@ namespace AutumnBox.OpenFramework.ExtLibrary
             {
                 throw new NullReferenceException("ManagedAssembly must be setted");
             }
-            DoReload(loadedWarpper);
+            DoReload(loadedWrapper);
         }
         /// <summary>
         /// 重新加载的实现
         /// </summary>
-        /// <param name="warppers"></param>
-        protected virtual void DoReload(List<IExtensionWarpper> warppers)
+        /// <param name="wrappers"></param>
+        protected virtual void DoReload(List<IExtensionWrapper> wrappers)
         {
             var types = GetExtTypes();
-            warppers.AddRange(GetNewWarppersFrom(types));
+            wrappers.AddRange(GetNewWrappersFrom(types));
         }
         /// <summary>
         /// 获取未被加载过的包装类
         /// </summary>
         /// <param name="types"></param>
         /// <returns></returns>
-        protected virtual IEnumerable<IExtensionWarpper> GetNewWarppersFrom(IEnumerable<Type> types)
+        protected virtual IEnumerable<IExtensionWrapper> GetNewWrappersFrom(IEnumerable<Type> types)
         {
-            List<IExtensionWarpper> newWarppers = new List<IExtensionWarpper>();
+            List<IExtensionWrapper> newWrappers = new List<IExtensionWrapper>();
             foreach (var type in types)
             {
                 try
                 {
-                    var tmp = GetWarpperFor(type);
+                    var tmp = GetWrapperFor(type);
                     if (tmp.Check())
                     {
                         tmp.Ready();
-                        newWarppers.Add(tmp);
+                        newWrappers.Add(tmp);
                     }
                     else
                     {
                         tmp.Destory();
                     }
                 }
-                catch (WarpperAlreadyCreatedOnceException)
+                catch (WrapperAlreadyCreatedOnceException)
                 {
-                    Logger.Debug($"{type.Name}'s warppers was created once,skip it");
+                    Logger.Debug($"{type.Name}'s Wrappers was created once,skip it");
                 }
                 catch (Exception ex)
                 {
                     Logger.Warn($"an exception threw on create wappers for {type.Name}", ex);
                 }
             }
-            return newWarppers;
+            return newWrappers;
         }
         /// <summary>
         /// 获取符合条件的拓展模块类型
@@ -166,25 +166,25 @@ namespace AutumnBox.OpenFramework.ExtLibrary
         /// 获取该入口类管理的所有封装器
         /// </summary>
         /// <returns></returns>
-        public virtual IEnumerable<IExtensionWarpper> GetWarppers()
+        public virtual IEnumerable<IExtensionWrapper> GetWrappers()
         {
-            return loadedWarpper;
+            return loadedWrapper;
         }
         /// <summary>
         /// 为某个拓展获取包装类
         /// </summary>
         /// <param name="extType"></param>
         /// <returns></returns>
-        protected virtual IExtensionWarpper GetWarpperFor(Type extType)
+        protected virtual IExtensionWrapper GetWrapperFor(Type extType)
         {
             return new ClassExtensionWrapper(extType);
         }
         /// <summary>
         /// 析构所有包装类
         /// </summary>
-        protected virtual void DestoryWarppers()
+        protected virtual void DestoryWrappers()
         {
-            foreach (var w in loadedWarpper)
+            foreach (var w in loadedWrapper)
             {
                 try
                 {
@@ -201,7 +201,7 @@ namespace AutumnBox.OpenFramework.ExtLibrary
         /// </summary>
         public virtual void Destory()
         {
-            DestoryWarppers();
+            DestoryWrappers();
         }
     }
 }

@@ -3,21 +3,21 @@
 ** date:  2018/8/2 19:42:42 (UTC +8:00)
 ** desc： ...
 *************************************************/
-using AutumnBox.OpenFramework.Warpper;
+using AutumnBox.OpenFramework.Wrapper;
 using System.Collections.Generic;
 
 namespace AutumnBox.OpenFramework.Management.Impl
 {
     internal class RunningManagerImpl : IRunningManager
     {
-        private List<IExtensionWarpper> runningWarppers = new List<IExtensionWarpper>();
-        public void Add(IExtensionWarpper warpper)
+        private List<IExtensionWrapper> runningWrappers = new List<IExtensionWrapper>();
+        public void Add(IExtensionWrapper wrapper)
         {
-            runningWarppers.Add(warpper);
+            runningWrappers.Add(wrapper);
         }
-        public void Remove(IExtensionWarpper warpper)
+        public void Remove(IExtensionWrapper wrapper)
         {
-            runningWarppers.Remove(warpper);
+            runningWrappers.Remove(wrapper);
         }
     }
 }

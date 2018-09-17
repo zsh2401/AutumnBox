@@ -7,7 +7,7 @@
 using AutumnBox.GUI.MVVM;
 using AutumnBox.GUI.Util;
 using AutumnBox.OpenFramework.Management;
-using AutumnBox.OpenFramework.Warpper;
+using AutumnBox.OpenFramework.Wrapper;
 using System;
 using System.Threading.Tasks;
 using System.Windows;
@@ -86,17 +86,17 @@ namespace AutumnBox.GUI.ViewModel
         private string output;
 
         #endregion
-        private readonly IExtensionWarpper warpper;
+        private readonly IExtensionWrapper wrapper;
         private readonly Window view;
 
         public event EventHandler<UIControllerClosingEventArgs> Closing;
 
-        public VMRunningWindow(Window view, IExtensionWarpper warpper)
+        public VMRunningWindow(Window view, IExtensionWrapper wrapper)
         {
             this.view = view;
-            this.warpper = warpper;
-            Title = warpper.Info.Name;
-            Icon = warpper.Info.Icon.ToExtensionIcon();
+            this.wrapper = wrapper;
+            Title = wrapper.Info.Name;
+            Icon = wrapper.Info.Icon.ToExtensionIcon();
             output = "";
         }
 
@@ -118,13 +118,13 @@ namespace AutumnBox.GUI.ViewModel
 
         //public void Stop()
         //{
-        //    bool stopped = warpper.Stop();
+        //    bool stopped = wrapper.Stop();
         //    if (stopped)
         //    {
         //        AppendLine(App.Current.Resources["RunningWindowStopped"].ToString());
         //        Tip = "被强制终止";
         //        ProgressValue = 100;
-        //        warpperIsRunning = false;
+        //        wrapperIsRunning = false;
         //    }
         //    else
         //    {
@@ -145,7 +145,7 @@ namespace AutumnBox.GUI.ViewModel
         public void OnFinish()
         {
             ProgressValue = 100;
-            //warpperIsRunning = false;
+            //wrapperIsRunning = false;
             //view.Dispatcher.Invoke(() =>
             //{
 

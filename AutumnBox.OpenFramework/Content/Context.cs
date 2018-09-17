@@ -14,7 +14,7 @@ namespace AutumnBox.OpenFramework.Content
     [ContextPermission(CtxPer.Normal)]
     public abstract class Context : Object
     {
-        private ContextApiProvider apiWarpper;
+        private ContextApiProvider apiWrapper;
         /// <summary>
         /// 权限
         /// </summary>
@@ -46,41 +46,41 @@ namespace AutumnBox.OpenFramework.Content
         /// <summary>
         /// 声音播放器
         /// </summary>
-        public ISoundPlayer SoundPlayer => apiWarpper.Factory.GetSoundPlayer(this);
+        public ISoundPlayer SoundPlayer => apiWrapper.Factory.GetSoundPlayer(this);
         /// <summary>
         /// Ux api
         /// </summary>
-        public IUx Ux => apiWarpper.Ux;
+        public IUx Ux => apiWrapper.Ux;
         /// <summary>
         /// 日志API
         /// </summary>
-        public ILogger Logger => apiWarpper.Logger;
+        public ILogger Logger => apiWrapper.Logger;
         /// <summary>
         /// 秋之盒整体程序相关API
         /// </summary>
-        public IAppManager App => apiWarpper.App;
+        public IAppManager App => apiWrapper.App;
         /// <summary>
         /// 操作系统API
         /// </summary>
-        public IOSApi OperatingSystem => apiWarpper.OS;
+        public IOSApi OperatingSystem => apiWrapper.OS;
         /// <summary>
         /// 临时文件管理器
         /// </summary>
-        public ITemporaryFloder Tmp => apiWarpper.Tmp;
+        public ITemporaryFloder Tmp => apiWrapper.Tmp;
         /// <summary>
         /// 兼容性相关API
         /// </summary>
-        public ICompApi Comp => apiWarpper.Comp;
+        public ICompApi Comp => apiWrapper.Comp;
         /// <summary>
         /// 嵌入资源提取器
         /// </summary>
-        public IEmbeddedFileManager EmbFileManager => apiWarpper.Emb;
+        public IEmbeddedFileManager EmbFileManager => apiWrapper.Emb;
         /// <summary>
         /// 构建
         /// </summary>
         public Context()
         {
-            apiWarpper = new ContextApiProvider(this);
+            apiWrapper = new ContextApiProvider(this);
         }
     }
 }

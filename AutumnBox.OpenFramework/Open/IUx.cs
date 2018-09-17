@@ -3,7 +3,7 @@
 ** date:  2018/8/23 19:03:31 (UTC +8:00)
 ** desc： ...
 *************************************************/
-using AutumnBox.OpenFramework.Warpper;
+using AutumnBox.OpenFramework.Wrapper;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -12,14 +12,18 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace AutumnBox.OpenFramework.Warpper
+namespace AutumnBox.OpenFramework.Wrapper
 {
     /// <summary>
     /// 标准的拓展模块包装器
     /// </summary>
-    public class ClassExtensionWrapper : Context, IExtensionWarpper
+    public class ClassExtensionWrapper : Context, IExtensionWrapper
     {
-        #region static warpper checker
+        /// <summary>
+        /// TAG
+        /// </summary>
+        public override string LoggingTag => Info?.Name ??"ClassExtensionWrapper";
+        #region static Wrapper checker
         /// <summary>
         /// 已经进行过包装的拓展模块类
         /// </summary>
@@ -90,7 +94,7 @@ namespace AutumnBox.OpenFramework.Warpper
         /// <summary>
         /// 状态
         /// </summary>
-        public ExtensionWarpperState State { get; protected set; }
+        public ExtensionWrapperState State { get; protected set; }
 
         /// <summary>
         /// 创建检查,如果有问题就抛出异常
@@ -101,7 +105,7 @@ namespace AutumnBox.OpenFramework.Warpper
             int index = warppedType.IndexOf(t);
             if (index != -1)
             {
-                throw new WarpperAlreadyCreatedOnceException();
+                throw new WrapperAlreadyCreatedOnceException();
             }
         }
 
@@ -116,7 +120,7 @@ namespace AutumnBox.OpenFramework.Warpper
             Info = new ClassExtensionInfoGetter(this, t);
             Info.Reload();
             warppedType.Add(t);
-            State = ExtensionWarpperState.Ready;
+            State = ExtensionWrapperState.Ready;
         }
 
         /// <summary>
@@ -127,13 +131,13 @@ namespace AutumnBox.OpenFramework.Warpper
         {
             if (!PreCheck()) return;//多开检测
             /*初始化局部属性*/
-            State = ExtensionWarpperState.Running;
+            State = ExtensionWrapperState.Running;
             IsForceStopped = false;
             LastReturnCode = -1;
             Logger.Debug("inited");
             //创建前检测
             if (!BeforeCreateInstance(device)) {
-                State = ExtensionWarpperState.Ready;
+                State = ExtensionWrapperState.Ready;
                 return;
             }
             //创建实例
@@ -150,7 +154,7 @@ namespace AutumnBox.OpenFramework.Warpper
             }
             //摧毁实例
             DestoryInstance();
-            State = ExtensionWarpperState.Ready;
+            State = ExtensionWrapperState.Ready;
         }
 
         /// <summary>
@@ -158,7 +162,7 @@ namespace AutumnBox.OpenFramework.Warpper
         /// </summary>
         /// <param name="device"></param>
         /// <param name="callback"></param>
-        public void RunAsync(IDevice device, Action<IExtensionWarpper> callback = null)
+        public void RunAsync(IDevice device, Action<IExtensionWrapper> callback = null)
         {
             Task.Run(() =>
             {
@@ -182,7 +186,7 @@ namespace AutumnBox.OpenFramework.Warpper
         /// <returns></returns>
         private bool PreCheck()
         {
-            if (State == ExtensionWarpperState.Ready)
+            if (State == ExtensionWrapperState.Ready)
             {
                 return true;
             }
@@ -248,7 +252,7 @@ namespace AutumnBox.OpenFramework.Warpper
             Logger.Debug("BeforeMain() executing");
             BeforeArgs args = new BeforeArgs(Instance)
             {
-                ExtWarpper = this,
+                ExtWrapper = this,
                 TargetDevice = targetDevice,
                 Prevent = false,
             };
@@ -311,7 +315,7 @@ namespace AutumnBox.OpenFramework.Warpper
             Logger.Debug("AfterMain() executing");
             AfterArgs args = new AfterArgs(Instance)
             {
-                ExtWarpper = this,
+                ExtWrapper = this,
                 ReturnCode = LastReturnCode,
                 IsForceStopped = IsForceStopped
             };
@@ -329,7 +333,7 @@ namespace AutumnBox.OpenFramework.Warpper
         {
             Logger.Debug("destoring instantces");
             Instance = null;
-            State = ExtensionWarpperState.Ready;
+            State = ExtensionWrapperState.Ready;
         }
         #endregion
 
@@ -347,7 +351,7 @@ namespace AutumnBox.OpenFramework.Warpper
         /// </summary>
         /// <param name="other"></param>
         /// <returns></returns>
-        public bool Equals(IExtensionWarpper other)
+        public bool Equals(IExtensionWrapper other)
         {
             return other != null && other.GetHashCode() == GetHashCode();
         }
@@ -358,7 +362,7 @@ namespace AutumnBox.OpenFramework.Warpper
         /// <returns></returns>
         public override bool Equals(object obj)
         {
-            return base.Equals(obj as IExtensionWarpper);
+            return base.Equals(obj as IExtensionWrapper);
         }
 
         /// <summary>
