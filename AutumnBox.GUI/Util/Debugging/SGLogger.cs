@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace AutumnBox.GUI.Util.Debugging
 {
     public static class SGLogger<TSender>
     {
+        [Conditional("DEBUG")]
         public static void Debug(object content)
         {
             LoggingStation.Instance.Log(typeof(TSender).Name, nameof(Debug), content);

@@ -50,9 +50,7 @@ namespace AutumnBox.GUI.Util
         #region LOADING_FLOW
         private void Load()
         {
-            Trace.WriteLine("??");
             LoggingStation.Instance.Work();
-            Trace.WriteLine("??");
             Updater.CheckAndNotice();
 #if !DEBUG
             Statistics.Do();

@@ -8,36 +8,12 @@ using System;
 
 namespace AutumnBox.Basic.Util.Debugging
 {
-    internal class Logger<TSenderClass> : ILogger
+    internal class Logger<TSenderClass> : Logger
     {
         private readonly string TAG;
-        public Logger()
+        public Logger():base(typeof(TSenderClass).Name)
         {
             TAG = typeof(TSenderClass).Name;
-        }
-        public void Debug(object content)
-        {
-            LoggingStation.RaiseEvent(TAG, content, LogLevel.Debug);
-        }
-        public void Info(object content)
-        {
-            LoggingStation.RaiseEvent(TAG, content, LogLevel.Info);
-        }
-        public void Warn(object content)
-        {
-            LoggingStation.RaiseEvent(TAG, content, LogLevel.Warn);
-        }
-        public void Warn(object content,Exception ex)
-        {
-            LoggingStation.RaiseEvent(TAG, content + Environment.NewLine + ex, LogLevel.Info);
-        }
-        public void Warn(Exception ex)
-        {
-            LoggingStation.RaiseEvent(TAG, ex, LogLevel.Info);
-        }
-        public void Fatal(object content)
-        {
-            LoggingStation.RaiseEvent(TAG, content, LogLevel.Fatal);
         }
     }
 }

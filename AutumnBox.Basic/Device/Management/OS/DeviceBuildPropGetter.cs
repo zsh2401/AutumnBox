@@ -17,7 +17,7 @@ namespace AutumnBox.Basic.Device.Management.OS
     /// </summary>
     public class DeviceBuildPropGetter : DependOnDeviceObject
     {
-        private readonly ILogger logger;
+        private readonly Logger logger;
         /// <summary>
         /// 索引器
         /// </summary>

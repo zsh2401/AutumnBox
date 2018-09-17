@@ -19,7 +19,7 @@ namespace AutumnBox.GUI.Util
         {
             Process currentProcess = Process.GetCurrentProcess();
             Process[] Processes = Process.GetProcessesByName(currentProcess.ProcessName);
-            logger.Info($"have {Processes.Count()} autumnbox.gui process");
+            logger.Debug($"have {Processes.Count()} autumnbox.gui process");
             foreach (Process process in Processes)
             {
                 if (process.Id != currentProcess.Id)

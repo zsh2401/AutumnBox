@@ -167,9 +167,11 @@ namespace AutumnBox.OpenFramework.Wrapper
         {
             var extInfoAttr = ExtType.GetCustomAttributes(typeof(ExtInfoAttribute), true);
             ExtInfoAttribute current = null;
+            //Logger.Debug("ExtName:" + ExtType.Name);
             for (int i = 0; i < extInfoAttr.Length; i++)
             {
                 current = (ExtInfoAttribute)extInfoAttr[i];
+                //Logger.Debug("ExtAttrKey:"  + current);
                 infoTable.Add(current.Key, current);
             }
             RequiredDeviceStates = (DeviceState)infoTable[nameof(ExtRequiredDeviceStatesAttribute)].Value;
@@ -196,7 +198,6 @@ namespace AutumnBox.OpenFramework.Wrapper
             try
             {
                 string path = ExtType.Assembly.GetName().Name + "." + iconPath;
-                Logger.Info($"getting " + path);
                 Stream stream = ExtType.Assembly.GetManifestResourceStream(path);
                 byte[] buffer = new byte[stream.Length];
                 stream.Read(buffer, 0, buffer.Length);

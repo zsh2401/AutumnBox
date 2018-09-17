@@ -7,6 +7,7 @@ using AutumnBox.OpenFramework.Content;
 using AutumnBox.OpenFramework.ExtLibrary;
 using AutumnBox.OpenFramework.Open.Impl;
 using AutumnBox.OpenFramework.Open.Util;
+using AutumnBox.OpenFramework.Wrapper;
 using System;
 using System.Windows;
 
@@ -41,6 +42,20 @@ namespace AutumnBox.CoreModules
             Languages.Load("zh-TW", zh_cn);
             Languages.Load("zh-SG", zh_cn);
             Languages.Load("zh-HK", zh_cn);
+        }
+        protected override IExtensionWrapper GetWrapperFor(Type extType)
+        {
+            return new CustomWrapper(extType);
+        }
+        private class CustomWrapper : ClassExtensionWrapper {
+            protected internal CustomWrapper(Type t) : base(t)
+            {
+            }
+
+            public override void Ready()
+            {
+                
+            }
         }
     }
 }

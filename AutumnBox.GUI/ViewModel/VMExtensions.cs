@@ -201,9 +201,12 @@ namespace AutumnBox.GUI.ViewModel
         }
         private DeviceState targetState;
 
-        public VMExtensions(DeviceState targetState)
+        public VMExtensions()
         {
-            this.targetState = targetState;
+            
+        }
+        internal void Load(DeviceState state) {
+            this.targetState = state;
             _runExtension = new FlexiableCommand((args) =>
             {
                 Selected.Wrapper.RunAsync(DeviceSelectionObserver.Instance.CurrentDevice);

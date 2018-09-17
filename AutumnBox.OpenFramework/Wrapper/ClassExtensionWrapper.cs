@@ -22,7 +22,26 @@ namespace AutumnBox.OpenFramework.Wrapper
         /// <summary>
         /// TAG
         /// </summary>
-        public override string LoggingTag => Info?.Name ??"ClassExtensionWrapper";
+        public override string LoggingTag
+        {
+            get
+            {
+                try
+                {
+                    var name = Info.Name;
+                    if (name == null)
+                    {
+                        return "ClassExtensionWrapper";
+                    }
+                    return Info.Name + "'s wrapper";
+                }
+                catch
+                {
+                    return "ClassExtensionWrapper";
+                }
+            }
+        }
+
         #region static Wrapper checker
         /// <summary>
         /// 已经进行过包装的拓展模块类
@@ -113,7 +132,7 @@ namespace AutumnBox.OpenFramework.Wrapper
         /// 构造
         /// </summary>
         /// <param name="t"></param>
-        internal ClassExtensionWrapper(Type t)
+        internal protected ClassExtensionWrapper(Type t)
         {
             CreatedCheck(t);
             extType = t;
@@ -136,7 +155,8 @@ namespace AutumnBox.OpenFramework.Wrapper
             LastReturnCode = -1;
             Logger.Debug("inited");
             //创建前检测
-            if (!BeforeCreateInstance(device)) {
+            if (!BeforeCreateInstance(device))
+            {
                 State = ExtensionWrapperState.Ready;
                 return;
             }

@@ -5,13 +5,14 @@ namespace AutumnBox.GUI.Util.Debugging
     public static class SLogger
     {
         private const string NULL_SENDER_OR_TAG = "UnknowClass";
+        [System.Diagnostics.Conditional("DEBUG")]
         public static void Debug(object senderOrTag, object content)
         {
             LoggingStation.Instance.Log(senderOrTag?.ToString() ?? NULL_SENDER_OR_TAG, nameof(Debug), content);
         }
         public static void Info(object senderOrTag, object content)
         {
-            LoggingStation.Instance.Log(senderOrTag?.ToString() ?? NULL_SENDER_OR_TAG, nameof(Debug), content);
+            LoggingStation.Instance.Log(senderOrTag?.ToString() ?? NULL_SENDER_OR_TAG, nameof(Info), content);
         }
         public static void Warn(object senderOrTag, object content)
         {

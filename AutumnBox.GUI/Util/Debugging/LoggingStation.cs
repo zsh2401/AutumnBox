@@ -9,7 +9,7 @@ namespace AutumnBox.GUI.Util.Debugging
 {
     internal class LoggingStation : IDisposable
     {
-        private const string LOG_INFO_FMT = "[{0}][{1}/{2}]: {3}";
+        private const string LOG_INFO_FMT = "[{0}][{1}]<{2}>: {3}";
         private const string LOG_FLODER = "..\\logs";
         private const string LOG_FILENAME_FORMAT = "yy_MM_dd__HH_mm_ss";
         public static LoggingStation Instance { get; private set; }
@@ -63,7 +63,7 @@ namespace AutumnBox.GUI.Util.Debugging
         }
         public void Log(string tag, string prefix, object content)
         {
-            string logMessage = string.Format(LOG_INFO_FMT, tag, DateTime.Now.ToString("yy-MM-dd HH:mm:ss"), prefix, content);
+            string logMessage = string.Format(LOG_INFO_FMT, DateTime.Now.ToString("yy-MM-dd HH:mm:ss"), prefix, tag, content);
             buffer.Enqueue(logMessage);
             Logging?.Invoke(this, new LogEventArgs() { Content = logMessage });
         }
