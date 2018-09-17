@@ -68,7 +68,7 @@ namespace AutumnBox.GUI.Util.Net
     {
         public override UpdateCheckResult Get()
         {
-            Logger.Info("Getting update info....");
+            Logger.Debug("Getting update info....");
 #if USE_LOCAL_API && DEBUG
             byte[] bytes = webClient.DownloadData("http://localhost:24010/api/update/");
 #else
@@ -76,7 +76,7 @@ namespace AutumnBox.GUI.Util.Net
 #endif
             string data = Encoding.UTF8.GetString(bytes);
             var result = (UpdateCheckResult)JsonConvert.DeserializeObject(data, typeof(UpdateCheckResult));
-            Logger.Info("update check finished" + Environment.NewLine + data);
+            Logger.Debug("update check finished" + Environment.NewLine + data);
             return result;
         }
     }

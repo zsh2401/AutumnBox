@@ -14,7 +14,7 @@ namespace AutumnBox.GUI.Util
         private static ILogger logger = new Logger(TAG);
         public static void Do()
         {
-            logger.Info("Doing");
+            logger.Debug("Doing");
             App.Current.Dispatcher.Invoke(() =>
             {
                 var browser = new WebBrowser

@@ -2,7 +2,7 @@
 
 namespace AutumnBox.Basic.Util.Debugging
 {
-    internal class Logger : ILogger
+    internal class Logger
     {
         private readonly string TAG = "";
 
@@ -10,7 +10,7 @@ namespace AutumnBox.Basic.Util.Debugging
         {
             TAG = tag;
         }
-
+        [System.Diagnostics.Conditional("DEBUG")]
         public void Debug(object content)
         {
             LoggingStation.RaiseEvent(TAG, content, LogLevel.Debug);

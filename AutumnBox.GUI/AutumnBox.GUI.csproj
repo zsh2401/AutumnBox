@@ -127,7 +127,6 @@
     <Compile Include="Util\AppLoader.cs" />
     <Compile Include="Util\Bus\ConnectedDevicesListener.cs" />
     <Compile Include="Util\Bus\OpenFxObserver.cs" />
-    <Compile Include="Util\Debugging\IBaseLogger.cs" />
     <Compile Include="Util\Debugging\ILogger.cs" />
     <Compile Include="Util\Debugging\LogEventArgs.cs" />
     <Compile Include="Util\Debugging\Logger.cs" />

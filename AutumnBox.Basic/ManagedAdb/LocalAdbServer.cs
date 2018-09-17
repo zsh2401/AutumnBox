@@ -34,7 +34,7 @@ namespace AutumnBox.Basic.ManagedAdb
         /// IP
         /// </summary>
         public IPAddress IP { get; } = IPAddress.Parse("127.0.0.1");
-        private readonly ILogger logger = new Logger<LocalAdbServer>();
+        private readonly Logger logger = new Logger<LocalAdbServer>();
         /// <summary>
         /// 存活检测
         /// </summary>

@@ -10,7 +10,6 @@ namespace AutumnBox.GUI.Util.Debugging
         {
             TAG = tag;
         }
-
         public void Debug(object content)
         {
             SLogger.Debug(TAG, content.ToString());
