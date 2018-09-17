@@ -182,7 +182,7 @@ namespace AutumnBox.OpenFramework.Management.Impl
             {
                 try
                 {
-                    ILibrarian lib = GetExtranceFrom(ass);
+                    ILibrarian lib = GetLibrarianFrom(ass);
                     if (lib.Check())
                     {
                         lib.Ready();
@@ -201,7 +201,7 @@ namespace AutumnBox.OpenFramework.Management.Impl
         /// </summary>
         /// <param name="assembly"></param>
         /// <returns></returns>
-        private ILibrarian GetExtranceFrom(Assembly assembly)
+        private ILibrarian GetLibrarianFrom(Assembly assembly)
         {
             ILibrarian librarian = null;
             var types = from type in assembly.GetExportedTypes()

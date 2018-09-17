@@ -170,8 +170,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Extensions\Recovery\" />
-    <Folder Include="MVVM\ViewModel\" />
-    <Folder Include="MVVM\View\Windows\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Icons\dpi.png" />

@@ -47,7 +47,9 @@ namespace AutumnBox.OpenFramework.Extension
             {
                 args.Context.App.RunOnUIThread(() =>
                 {
-                    args.Context.Ux.ShowMessageDialog("Warning", "您的安卓设备版本过低....");
+                    var fmt = args.Context.App.GetPublicResouce<string>("OpenFxLowAndroidVersionFmt");
+                    var msg = string.Format(fmt, Value);
+                    args.Context.Ux.ShowWarnDialog(msg);
                 });
                 args.Prevent = true;
             }

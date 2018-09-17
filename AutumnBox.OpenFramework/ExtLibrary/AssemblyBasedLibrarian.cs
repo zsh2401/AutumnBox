@@ -120,9 +120,14 @@ namespace AutumnBox.OpenFramework.ExtLibrary
                 try
                 {
                     var tmp = GetWarpperFor(type);
-                    if (tmp.Usable)
+                    if (tmp.Check())
                     {
+                        tmp.Ready();
                         newWarppers.Add(tmp);
+                    }
+                    else
+                    {
+                        tmp.Destory();
                     }
                 }
                 catch (WarpperAlreadyCreatedOnceException)

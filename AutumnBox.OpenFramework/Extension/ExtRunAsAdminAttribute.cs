@@ -24,12 +24,22 @@ namespace AutumnBox.OpenFramework.Extension
         public ExtRunAsAdminAttribute() : base(true)
         {
         }
-
+        /// <summary>
+        /// Before
+        /// </summary>
+        /// <param name="args"></param>
         public override void Before(ExtBeforeCreateArgs args)
         {
-            if (!args.Context.App.IsRunAsAdmin && (bool)Value) {
-                args.Context.App.RunOnUIThread(()=> {
-
+            if (!args.Context.App.IsRunAsAdmin && (bool)Value)
+            {
+                args.Context.App.RunOnUIThread(() =>
+                {
+                    var choice = args.Context.Ux
+                    .DoChoice("OpenFxNeedAdminPermission");
+                    if (choice == Open.ChoiceResult.Accept)
+                    {
+                        args.Context.App.RestartAppAsAdmin();
+                    }
                 });
             }
         }

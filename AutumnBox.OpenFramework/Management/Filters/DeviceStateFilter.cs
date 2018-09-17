@@ -31,7 +31,7 @@ namespace AutumnBox.OpenFramework.Management.Filters
         public bool Do(IExtensionWarpper warpper)
         {
             return warpper.Info.RequiredDeviceStates.HasFlag(state)
-                || warpper.Info.RequiredDeviceStates == AutumnBoxExtension.NoMatter;
+                || warpper.Info.RequiredDeviceStates == state;
         }
     }
 }

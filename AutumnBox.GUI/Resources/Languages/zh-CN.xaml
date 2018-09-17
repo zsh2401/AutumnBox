@@ -78,6 +78,12 @@
     <s:String x:Key="PanelDevicesDisconnect">断开当前设备网络连接</s:String>
     <s:String x:Key="PanelDevicesEnableCurrent">开启当前设备网络调试</s:String>
     
+    <!--OpenFx-->
+     <s:String x:Key="OpenFxInstallAppFirst">请先安装相关应用</s:String>
+    <s:String x:Key="OpenFxNeedAdminPermission">此模块需要管理员权限,是否将秋之盒重启到管理员模式</s:String>
+    <s:String x:Key="OpenFxLowAndroidVersionFmt">此模块要求安卓版本为{0},而您的设备并没有达到此标准</s:String>
+    <s:String x:Key="OpenFxOverhighAndroidVersionFmt">您的设备安卓版本太高了,此模块仅支持{0}以下的安卓版本</s:String>
+    
     <!--PanelDeviceDetails-->
     <s:String x:Key="PanelDeviceDetailsStateNotFound">未连接设备</s:String>
     <s:String x:Key="PanelDeviceDetailsStatePoweron">设备处于开机状态</s:String>

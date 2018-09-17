@@ -16,7 +16,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot.Sh
     [ExtName("黑阀一键激活-安卓8")]
     [ExtName("Activate brevent by one key-Android O", Lang = "en-us")]
     [ExtDesc("一键激活黑阀,但值得注意的是,这样的激活方式,在重启后将失效")]
-    [ExtAppProperty("me.piebridge.brevent", AppLabel = "黑阀", AppLabel_en = "Brevent")]
+    [ExtAppProperty("me.piebridge.brevent")]
     [ExtMinAndroidVersion(8, 0, 0)]
     [ExtRequiredDeviceStates(DeviceState.Poweron)]
     [ExtIcon("Icons.brevent.png")]

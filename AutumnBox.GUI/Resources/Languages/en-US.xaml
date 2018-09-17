@@ -45,7 +45,7 @@
     <s:String x:Key="PanelSettingsLaunchDebugWindowOnNextLaunch">Show debug window on next launch</s:String>
     
  <!--PanelExtensions-->
-    <s:String x:Key="PanelExtensionsNoSelect">Plz select a extension on right</s:String>
+    <s:String x:Key="PanelExtensionsNoSelect">Plz select a extension on list</s:String>
     <s:String x:Key="PanelExtensionsAuthFmt">Auth:{0}</s:String>
       <s:String x:Key="PanelExtensionsVersionFmt">Version:{0}</s:String>
       <s:String x:Key="PanelExtensionsDescFmt">Desc:{0}</s:String>
@@ -74,6 +74,12 @@
     <s:String x:Key="PanelDevicesConnectTo">Connect to new device</s:String>
     <s:String x:Key="PanelDevicesDisconnect">Disconnect crt net device</s:String>
     <s:String x:Key="PanelDevicesEnableCurrent">Enable crt net-debugging</s:String>
+    
+        <!--OpenFx-->
+     <s:String x:Key="OpenFxInstallAppFirst">Please install app first</s:String>
+    <s:String x:Key="OpenFxNeedAdminPermission">This module requires administrator privileges to restart the AutumnBox to Administrator mode.</s:String>
+    <s:String x:Key="OpenFxLowAndroidVersionFmt">This module requires the Android version to be {0}, and your device does not meet this standard.</s:String>
+    <s:String x:Key="OpenFxOverhighAndroidVersionFmt">The Android version of your device is too high. This module only supports Android versions below {0}.</s:String>
     
     <!--PanelDeviceDetails-->
     <s:String x:Key="PanelDeviceDetailsStateNotFound">Device not found</s:String>

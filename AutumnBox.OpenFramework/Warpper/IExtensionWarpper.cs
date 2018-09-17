@@ -24,14 +24,14 @@ namespace AutumnBox.OpenFramework.Warpper
         /// </summary>
         int LastReturnCode { get; }
         /// <summary>
-        /// 最初的是否可用检测
-        /// </summary>
-        bool Usable { get; }
-        /// <summary>
-        /// 运行前检查
+        /// 创建后的预先检测
         /// </summary>
         /// <returns></returns>
-        ForerunCheckResult ForerunCheck(IDevice device);
+        bool Check();
+        /// <summary>
+        /// Check成功后调用
+        /// </summary>
+        void Ready();
         /// <summary>
         /// 开始运行
         /// </summary>
