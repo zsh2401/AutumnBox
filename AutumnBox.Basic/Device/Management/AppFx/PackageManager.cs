@@ -14,7 +14,7 @@ namespace AutumnBox.Basic.Device.Management.AppFx
     /// <summary>
     /// 包管理器实现
     /// </summary>
-    public class PackageManager : DependOnDeviceObject, IPackageManager
+    public class PackageManager : DependOnDeviceObject
     {
         /// <summary>
         /// 构造

@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 namespace AutumnBox.Basic.ManagedAdb
 {
     /// <summary>
-    /// Adb客户端
+    /// AutumnBox.Basic中与ADB程序直接接触的管理层
     /// </summary>
     public static class Adb
     {

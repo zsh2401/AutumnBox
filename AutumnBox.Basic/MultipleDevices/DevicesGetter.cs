@@ -11,10 +11,17 @@ using AutumnBox.Basic.Device;
 
 namespace AutumnBox.Basic.MultipleDevices
 {
+    /// <summary>
+    /// 已连接设备获取器
+    /// </summary>
     public class DevicesGetter : IDevicesGetter
     {
         private readonly AdbCommand adbDevices = new AdbCommand("devices -l");
         private readonly FastbootCommand fastbootDevices = new FastbootCommand("devices");
+        /// <summary>
+        /// 获取
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<IDevice> GetDevices()
         {
             List<IDevice> result = new List<IDevice>();

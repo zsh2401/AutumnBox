@@ -27,8 +27,7 @@ namespace AutumnBox.Basic.Device
         /// <param name="device"></param>
         public DependOnDeviceObject(IDevice device)
         {
-            device.ThrowIfNullArg();
-            this.Device = device;
+            this.Device = device ?? throw new ArgumentNullException(nameof(device));
         }
     }
 }

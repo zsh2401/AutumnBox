@@ -21,6 +21,7 @@ namespace AutumnBox.Basic.Device
         /// 开启网络调试
         /// </summary>
         /// <param name="port"></param>
+        /// <param name="tryConnect">是否在开启后尝试连接</param>
         public void OpenNetDebugging(ushort port, bool tryConnect = false)
         {
             IPAddress ip = null;

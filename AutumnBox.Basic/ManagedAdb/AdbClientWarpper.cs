@@ -8,10 +8,20 @@ using System;
 
 namespace AutumnBox.Basic.ManagedAdb
 {
+    /// <summary>
+    /// ADB客户端包装器
+    /// </summary>
     public class AdbClientWarpper : IDisposable
     {
+        /// <summary>
+        /// 包装的ADB客户端
+        /// </summary>
         public IAdbClient AdbClient => core;
         private readonly IAdbClient core;
+        /// <summary>
+        /// 构造
+        /// </summary>
+        /// <param name="core"></param>
         public AdbClientWarpper(IAdbClient core)
         {
             this.core = core;
@@ -20,14 +30,30 @@ namespace AutumnBox.Basic.ManagedAdb
                 core.Connect();
             }
         }
+        /// <summary>
+        /// 设置设备
+        /// </summary>
+        /// <param name="serialNumber"></param>
+        /// <returns></returns>
         public AdbResponse SetDevice(string serialNumber)
         {
             return SendRequest($"host:transport:{serialNumber}", false);
         }
+        /// <summary>
+        /// 设置设备
+        /// </summary>
+        /// <param name="device"></param>
+        /// <returns></returns>
         public AdbResponse SetDevice(IDevice device)
         {
             return SetDevice(device.SerialNumber);
         }
+        /// <summary>
+        /// 发送ADB请求
+        /// </summary>
+        /// <param name="request"></param>
+        /// <param name="readDataWhenOkay"></param>
+        /// <returns></returns>
         public AdbResponse SendRequest(string request, bool readDataWhenOkay = true)
         {
             core.SendRequest(request);
@@ -45,7 +71,10 @@ namespace AutumnBox.Basic.ManagedAdb
 
         #region IDisposable Support
         private bool disposedValue = false; // 要检测冗余调用
-
+        /// <summary>
+        /// Dispose
+        /// </summary>
+        /// <param name="disposing"></param>
         protected virtual void Dispose(bool disposing)
         {
             if (!disposedValue)
@@ -70,6 +99,9 @@ namespace AutumnBox.Basic.ManagedAdb
         // }
 
         // 添加此代码以正确实现可处置模式。
+        /// <summary>
+        /// Dispose
+        /// </summary>
         public void Dispose()
         {
             // 请勿更改此代码。将清理代码放入以上 Dispose(bool disposing) 中。

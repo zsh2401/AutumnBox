@@ -13,12 +13,22 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Device.Management.OS
 {
-    public class DpiModifier : DependOnDeviceObject, IDpiModifier
+    /// <summary>
+    /// DPI修改器
+    /// </summary>
+    public class DpiModifier : DependOnDeviceObject
     {
+        /// <summary>
+        /// 构造
+        /// </summary>
+        /// <param name="device"></param>
         public DpiModifier(IDevice device) : base(device)
         {
         }
-
+        /// <summary>
+        /// 获取设备默认DPI
+        /// </summary>
+        /// <returns></returns>
         public int GetSourceDpi()
         {
             int? result = new DeviceHardwareInfoGetter(Device).GetDpi();
@@ -28,7 +38,10 @@ namespace AutumnBox.Basic.Device.Management.OS
             }
             return (int)result;
         }
-
+        /// <summary>
+        /// 设置DPI
+        /// </summary>
+        /// <param name="dpi"></param>
         public void SetDpi(int dpi)
         {
             Device.Shell($"wm density {dpi}")

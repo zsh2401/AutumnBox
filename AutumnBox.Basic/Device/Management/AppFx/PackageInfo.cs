@@ -73,10 +73,17 @@ namespace AutumnBox.Basic.Device.Management.AppFx
         {
             
         }
+        /// <summary>
+        /// 卸载
+        /// </summary>
         public void Uninstall()
         {
             throw new NotImplementedException();
         }
+
+        /// <summary>
+        /// 强制停止
+        /// </summary>
         public void Stop()
         {
             throw new NotImplementedException();

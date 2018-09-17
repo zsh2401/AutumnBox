@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AutumnBox.Basic.Debugging
+namespace AutumnBox.Basic.Util.Debugging
 {
     internal class Logger : ILogger
     {

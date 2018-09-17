@@ -79,6 +79,9 @@ namespace AutumnBox.Basic.Device
         }
 
         private const string STATE_PATTERN = "";
+        /// <summary>
+        /// 刷新设备状态
+        /// </summary>
         public void RefreshState()
         {
             var exeResult = this.Adb("get-state");

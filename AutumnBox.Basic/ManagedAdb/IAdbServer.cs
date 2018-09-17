@@ -34,7 +34,6 @@ namespace AutumnBox.Basic.ManagedAdb
         /// <summary>
         /// 启动
         /// </summary>
-        /// <param name="startInfo"></param>
         void Start();
         /// <summary>
         /// 杀死

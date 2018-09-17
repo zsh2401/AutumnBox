@@ -13,6 +13,16 @@
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
     <WarningLevel>0</WarningLevel>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <DocumentationFile>bin\SDK\netstandard2.0\AutumnBox.Basic.xml</DocumentationFile>
+    <Optimize>true</Optimize>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>bin\Debug\netstandard2.0\AutumnBox.Basic.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>bin\Release\netstandard2.0\AutumnBox.Basic.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>

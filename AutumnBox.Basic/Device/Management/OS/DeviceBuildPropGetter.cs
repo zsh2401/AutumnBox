@@ -5,7 +5,7 @@
 ** compiler: Visual Studio 2017
 ** desc： ...
 *********************************************************************************/
-using AutumnBox.Basic.Debugging;
+using AutumnBox.Basic.Util.Debugging;
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
@@ -15,7 +15,7 @@ namespace AutumnBox.Basic.Device.Management.OS
     /// <summary>
     /// 设备Build.prop信息获取器
     /// </summary>
-    public class DeviceBuildPropGetter : DependOnDeviceObject, IBuildPropGetter
+    public class DeviceBuildPropGetter : DependOnDeviceObject
     {
         private readonly ILogger logger;
         /// <summary>

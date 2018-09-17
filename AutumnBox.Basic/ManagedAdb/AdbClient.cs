@@ -11,16 +11,31 @@ using System.Text;
 
 namespace AutumnBox.Basic.ManagedAdb
 {
+    /// <summary>
+    /// ADB客户端实现
+    /// </summary>
     public class AdbClient : IAdbClient
     {
+        /// <summary>
+        /// 内部的Socket
+        /// </summary>
         public Socket InnerSocket { get; private set; }
-
+        /// <summary>
+        /// 要连接的IP
+        /// </summary>
         public IPAddress IP { get; set; } = Adb.Server.IP;
-
+        /// <summary>
+        /// 要连接的端口
+        /// </summary>
         public ushort Port { get; set; } = Adb.Server.Port;
-
+        /// <summary>
+        /// 判断是否已经连接
+        /// </summary>
         public bool IsConnected { get; private set; }
-
+        /// <summary>
+        /// 构造
+        /// </summary>
+        /// <param name="connectAfterCreated">是否在构造后直接连接</param>
         public AdbClient(bool connectAfterCreated = true)
         {
             InnerSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
@@ -29,14 +44,19 @@ namespace AutumnBox.Basic.ManagedAdb
                 Connect();
             }
         }
-
+        /// <summary>
+        /// 连接
+        /// </summary>
         public void Connect()
         {
             if (IsConnected) return;
             InnerSocket.Connect(new IPEndPoint(IP, Port));
             IsConnected = true;
         }
-
+        /// <summary>
+        /// 接收Body
+        /// </summary>
+        /// <returns></returns>
         public byte[] ReceiveData()
         {
             byte[] lenBytes = new byte[4];
@@ -47,7 +67,10 @@ namespace AutumnBox.Basic.ManagedAdb
             InnerSocket.Receive(dataBuffer);
             return dataBuffer;
         }
-
+        /// <summary>
+        /// 接收状态数据
+        /// </summary>
+        /// <returns></returns>
         public byte[] ReceiveState()
         {
             byte[] buffer = new byte[4];
@@ -55,7 +78,10 @@ namespace AutumnBox.Basic.ManagedAdb
             return buffer;
             //return Encoding.UTF8.GetString(buffer);
         }
-
+        /// <summary>
+        /// 发送请求
+        /// </summary>
+        /// <param name="request"></param>
         public void SendRequest(string request)
         {
             InnerSocket.Send(request.ToAdbRequest());
@@ -63,7 +89,10 @@ namespace AutumnBox.Basic.ManagedAdb
 
         #region IDisposable Support
         private bool disposedValue = false; // 要检测冗余调用
-
+        /// <summary>
+        /// Dispose
+        /// </summary>
+        /// <param name="disposing"></param>
         protected virtual void Dispose(bool disposing)
         {
             if (!disposedValue)
@@ -87,6 +116,9 @@ namespace AutumnBox.Basic.ManagedAdb
         // }
 
         // 添加此代码以正确实现可处置模式。
+        /// <summary>
+        /// Dispose
+        /// </summary>
         public void Dispose()
         {
             IsConnected = false;

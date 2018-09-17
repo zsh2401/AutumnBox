@@ -5,27 +5,30 @@
 *************************************************/
 using AutumnBox.Basic.Calling.Adb;
 using AutumnBox.Basic.Util;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Device.Management.AppFx
 {
-    class ServiceManager : DependOnDeviceObject, IServiceManager
+    /// <summary>
+    /// 服务管理器
+    /// </summary>
+    public class ServiceManager : DependOnDeviceObject
     {
+        /// <summary>
+        /// 构造
+        /// </summary>
+        /// <param name="device"></param>
         public ServiceManager(IDevice device) : base(device)
         {
         }
-
+        /// <summary>
+        /// 启动一个服务
+        /// </summary>
+        /// <param name="pkgName"></param>
+        /// <param name="className"></param>
         public void StartService(string pkgName, string className)
         {
-            new AdbCommandBuilder().Device(Device)
-                .Shell().
-                Arg("am")
-                .Arg("startservice")
-                .Arg($"{pkgName}/.{className}").ToCommand().Execute()
+            new ShellCommand(Device, $"am startservice {pkgName}/.{className}")
+                .Execute()
                 .ThrowIfExitCodeNotEqualsZero();
         }
     }

@@ -4,13 +4,12 @@
 ** desc： ...
 *************************************************/
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Exceptions
 {
+    /// <summary>
+    /// 设备没有SU权限
+    /// </summary>
     public class DeviceHasNoSuException : Exception
     {
     }
