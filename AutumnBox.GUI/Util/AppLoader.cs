@@ -65,10 +65,14 @@ namespace AutumnBox.GUI.Util
                     new LogWindow().Show();
                 });
             }
+            logger.Info("");
+            logger.Info("======================");
             logger.Info($"Run as " + (Self.HaveAdminPermission ? "Admin" : "Normal user"));
             logger.Info($"AutumnBox version: {Self.Version}");
             logger.Info($"SDK version: {BuildInfo.SDK_VERSION}");
             logger.Info($"Windows version {Environment.OSVersion.Version}");
+            logger.Info("======================");
+            logger.Info("===loading===");
 #if DEBUG
             Basic.Util.Debugging.LoggingStation.Logging += (s, e) =>
             {
@@ -77,9 +81,10 @@ namespace AutumnBox.GUI.Util
 #endif
             ui.Progress = 30;
             ui.LoadingTip = App.Current.Resources["ldmsgStartAdb"].ToString();
-            logger.Info("Try to start adb server ");
+           
             try
             {
+                logger.Info("trying starts adb server ");
                 Adb.DefaultLoad();
                 logger.Info("adb server starts successed");
             }
@@ -89,6 +94,7 @@ namespace AutumnBox.GUI.Util
                 logger.Warn(e);
                 ui.Progress = 60;
                 ui.LoadingTip = App.Current.Resources["ldmsgAdbServerFailed"].ToString();
+                Thread.Sleep(10000);
                 App.Current.Shutdown(e.ExitCode);
             }
             ui.Progress = 60;
@@ -99,6 +105,7 @@ namespace AutumnBox.GUI.Util
             ui.Progress = 100;
             ui.LoadingTip = "Enjoy!";
             Thread.Sleep(1 * 1000);
+            logger.Info("===loaded===");
             ui.Finish();
         }
         #endregion

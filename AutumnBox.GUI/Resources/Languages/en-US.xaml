@@ -45,6 +45,7 @@
     <s:String x:Key="PanelSettingsLaunchDebugWindowOnNextLaunch">Show debug window on next launch</s:String>
     
  <!--PanelExtensions-->
+     <s:String x:Key="PanelExtesnionsDownloadExt">Download extension</s:String>
     <s:String x:Key="PanelExtensionsNoSelect">Plz select a extension on list</s:String>
     <s:String x:Key="PanelExtensionsAuthFmt">Auth:{0}</s:String>
       <s:String x:Key="PanelExtensionsVersionFmt">Version:{0}</s:String>
