@@ -252,22 +252,24 @@ namespace AutumnBox.OpenFramework.Management.Impl
             return result;
         }
 
+        private bool IsOk(IExtensionWarpper warpper, IWarpperFilter[] filters)
+        {
+            foreach (var filter in filters)
+            {
+                if (!filter.Do(warpper))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
         public IEnumerable<IExtensionWarpper> GetLoadedWarppers(params IWarpperFilter[] filters)
         {
             List<IExtensionWarpper> all = Warppers.ToList();
-            foreach (var w in all)
-            {
-                foreach (var f in filters)
-                {
-                    if (!f.Do(w))
-                    {
-                        all.Remove(w);
-                        break;
-                    }
-                }
-            }
-
-            return all;
+            return from w in all
+                   where IsOk(w, filters)
+                   select w;
         }
 
         /// <summary>
