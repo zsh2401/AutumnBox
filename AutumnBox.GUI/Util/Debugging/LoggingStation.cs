@@ -19,11 +19,13 @@ namespace AutumnBox.GUI.Util.Debugging
         {
             get
             {
-                return string.Join(Environment.NewLine, buffer);
+                return string.Join(Environment.NewLine, logged);
             }
         }
+        private List<string> logged;
         private Queue<string> buffer;
         private FileStream fs;
+
         private StreamWriter sw;
         public string LogFile { get; set; }
         static LoggingStation()
@@ -33,6 +35,7 @@ namespace AutumnBox.GUI.Util.Debugging
         private LoggingStation()
         {
             buffer = new Queue<string>(25);
+            logged = new List<string>();
         }
         public void Work()
         {
@@ -40,7 +43,7 @@ namespace AutumnBox.GUI.Util.Debugging
             {
                 LogFile = GetLogFileInfo();
             }
-            fs = new FileStream(LogFile, FileMode.OpenOrCreate, FileAccess.Write);
+            fs = new FileStream(LogFile, FileMode.OpenOrCreate, FileAccess.ReadWrite);
             sw = new StreamWriter(fs);
             Task.Run(() =>
             {
@@ -77,6 +80,7 @@ namespace AutumnBox.GUI.Util.Debugging
             Debugger.Log(3, null, text);
             Console.WriteLine(text);
             sw.WriteLine(text);
+            logged.Add(text);
         }
 
 
@@ -89,13 +93,13 @@ namespace AutumnBox.GUI.Util.Debugging
             {
                 if (disposing)
                 {
-                    // TODO: 释放托管状态(托管对象)。
+                    sw?.Dispose();
+                    fs?.Dispose();
                 }
-                sw?.Dispose();
-                fs?.Dispose();
                 sw = null;
                 fs = null;
                 buffer = null;
+                logged = null;
 
                 disposedValue = true;
             }
