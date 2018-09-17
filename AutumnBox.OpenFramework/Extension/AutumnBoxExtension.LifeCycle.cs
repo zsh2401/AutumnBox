@@ -3,9 +3,7 @@
 ** date:  2018/8/1 0:40:51 (UTC +8:00)
 ** desc： ...
 *************************************************/
-using AutumnBox.Basic.Device;
 using AutumnBox.OpenFramework.Content;
-using AutumnBox.OpenFramework.Open;
 
 namespace AutumnBox.OpenFramework.Extension
 {
@@ -18,15 +16,16 @@ namespace AutumnBox.OpenFramework.Extension
     [ExtAuth("佚名")]
     [ExtAuth("Anonymous", Lang = "en-us")]
     [ExtDesc(null)]
-    [ExtVersion]
+    [ExtVersion()]
     [ExtRequiredDeviceStates(NoMatter)]
     [ExtMinApi(8)]
-    [ExtTargetApi]
+    [ExtTargetApi()]
     [ExtRunAsAdmin(false)]
     [ExtRequireRoot(false)]
     [ExtOfficial(false)]
-    [ExtRegion]
-    //[ExtAppProperty("com.miui.fm","Fuck")]
+    [ExtRegion(null)]
+    //[ExtAppProperty("com.miui.fm")]
+    //[ExtMinAndroidVersion(7,0,0)]
     public abstract partial class AutumnBoxExtension : Context
     {
         /// <summary>

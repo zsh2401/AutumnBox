@@ -77,7 +77,6 @@
     <Compile Include="Extension\ExtMainAsceptAttribute.cs" />
     <Compile Include="Extension\ExtMinAndroidVersionAttribute.cs" />
     <Compile Include="Extension\ExtOfficialAttribute.cs" />
-    <Compile Include="Extension\VisualUxManager.cs" />
     <Compile Include="Management\AutumnBoxGuiApi.cs" />
     <Compile Include="Management\Filters\CurrentRegionFilter.cs" />
     <Compile Include="Management\Filters\DeviceStateFilter.cs" />

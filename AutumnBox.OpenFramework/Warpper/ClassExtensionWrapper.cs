@@ -49,16 +49,6 @@ namespace AutumnBox.OpenFramework.Warpper
         /// </summary>
         private readonly Type extType;
         /// <summary>
-        /// 经过检查后,确实可用
-        /// </summary>
-        public bool Usable
-        {
-            get
-            {
-                return BuildInfo.API_LEVEL >= Info.MinApi;
-            }
-        }
-        /// <summary>
         /// 创建实例前的切面
         /// </summary>
         private ExtBeforeCreateAspectAttribute[] BeforeCreateAspects
@@ -127,26 +117,6 @@ namespace AutumnBox.OpenFramework.Warpper
             Info.Reload();
             warppedType.Add(t);
             State = ExtensionWarpperState.Ready;
-        }
-
-        /// <summary>
-        /// 运行前检查
-        /// </summary>
-        /// <param name="device"></param>
-        /// <returns></returns>
-        public virtual ForerunCheckResult ForerunCheck(IDevice device)
-        {
-            ForerunCheckResult result;
-            if (Info.RequiredDeviceStates.HasFlag(device.State))
-            {
-                result = ForerunCheckResult.Ok;
-            }
-            else
-            {
-                result = ForerunCheckResult.DeviceStateNotRight;
-            }
-            Logger.Info(result.ToString());
-            return result;
         }
 
         /// <summary>
@@ -261,7 +231,6 @@ namespace AutumnBox.OpenFramework.Warpper
         /// <summary>
         /// 注入属性
         /// </summary>
-        /// <param name="instatcePkg"></param>
         /// <param name="device"></param>
         private void InjetctProperty(IDevice device)
         {
@@ -390,6 +359,23 @@ namespace AutumnBox.OpenFramework.Warpper
         public override bool Equals(object obj)
         {
             return base.Equals(obj as IExtensionWarpper);
+        }
+
+        /// <summary>
+        /// 创建后的检查,返回false则视为不可用,将不会有任何其他调用
+        /// </summary>
+        /// <returns></returns>
+        public virtual bool Check()
+        {
+            return BuildInfo.API_LEVEL >= Info.MinApi;
+        }
+
+        /// <summary>
+        /// 通过检查后调用
+        /// </summary>
+        public virtual void Ready()
+        {
+            Logger.Info("ready");
         }
         #endregion
     }

@@ -8,6 +8,7 @@ using AutumnBox.OpenFramework.Extension;
 
 namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot.DpmSetter
 {
+    [ExtRegion("zh-CN")]
     [ExtName("免ROOT激活FreezeYou")]
     [ExtName("Set FreezeYou as DPM without root", Lang ="en-us")]
     [ExtIcon("Icons.freezeYou.png")]

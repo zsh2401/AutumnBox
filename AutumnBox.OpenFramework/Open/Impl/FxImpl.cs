@@ -19,7 +19,8 @@ namespace AutumnBox.OpenFramework.Open.Impl
 
         public void ReloadLibs()
         {
-            Manager.InternalManager.Reload();
+            throw new System.Exception("You have no premission");
+            //Manager.InternalManager.Reload();
         }
     }
 }

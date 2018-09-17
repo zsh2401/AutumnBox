@@ -14,14 +14,6 @@ namespace AutumnBox.OpenFramework.Extension
     public sealed class ExtAppPropertyAttribute : ExtBeforeCreateAspectAttribute
     {
         /// <summary>
-        /// App名称
-        /// </summary>
-        public string AppLabel { get; set; }
-        /// <summary>
-        /// 英文App名
-        /// </summary>
-        public string AppLabel_en { get; set; }
-        /// <summary>
         /// 构造
         /// </summary>
         /// <param name="value"></param>
@@ -38,7 +30,7 @@ namespace AutumnBox.OpenFramework.Extension
             {
                 args.Context.App.RunOnUIThread(() =>
                 {
-                    args.Context.Ux.ShowMessageDialog("警告", "请先安装相关应用!");
+                    args.Context.Ux.ShowWarnDialog("OpenFxInstallAppFirst");
                 });
                 args.Prevent = true;
             }
