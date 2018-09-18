@@ -23,113 +23,30 @@ namespace AutumnBox.GUI.ViewModel
 {
     class VMExtensions : ViewModelBase
     {
-        #region WW
-        public class WrapperWrapper
-        {
-            public IExtensionWrapper Wrapper { get; private set; }
-            public string Name => Wrapper.Info.Name;
-            public ImageSource Icon
-            {
-                get
-                {
-                    if (icon == null) LoadIcon();
-                    return icon;
-                }
-            }
-            private ImageSource icon;
-            private WrapperWrapper(IExtensionWrapper wrapper)
-            {
-                this.Wrapper = wrapper;
-            }
-            private void LoadIcon()
-            {
-                if (Wrapper.Info.Icon == null)
-                {
-                    icon = App.Current.Resources["DefaultExtensionIcon"] as ImageSource;
-                }
-                else
-                {
-                    BitmapImage bmp = new BitmapImage();
-                    bmp.BeginInit();
-                    bmp.StreamSource = new MemoryStream(Wrapper.Info.Icon);
-                    bmp.EndInit();
-                    bmp.Freeze();
-                    icon = bmp;
-                }
-            }
-            public static IEnumerable<WrapperWrapper> From(IEnumerable<IExtensionWrapper> wrappers)
-            {
-                List<WrapperWrapper> result = new List<WrapperWrapper>();
-                foreach (var wrapper in wrappers)
-                {
-                    result.Add(new WrapperWrapper(wrapper));
-                }
-                return result;
-            }
-        }
-        #endregion
 
         #region MVVM
-        public IEnumerable<WrapperWrapper> Wrappers
+        public bool ExtPanelIsEnabled
+        {
+            get => _extPanelIsEnabled; set
+            {
+                _extPanelIsEnabled = value;
+                RaisePropertyChanged();
+            }
+        }
+        private bool _extPanelIsEnabled = false;
+        public Visibility ExtensionsVisibily
         {
             get
             {
-                return ww;
+                return _extVisi;
             }
             set
             {
-                ww = value;
+                _extVisi = value;
                 RaisePropertyChanged();
             }
         }
-        private IEnumerable<WrapperWrapper> ww;
-
-        public FlexiableCommand RunExtension
-        {
-            get => _runExtension; set
-            {
-                _runExtension = value;
-                RaisePropertyChanged();
-            }
-        }
-        private FlexiableCommand _runExtension;
-
-        public WrapperWrapper Selected
-        {
-            get
-            {
-                return _selected;
-            }
-            set
-            {
-                if (value == null)
-                {
-                    DetailsVisibily = Visibility.Collapsed;
-                }
-                else
-                {
-                    DetailsVisibily = Visibility.Visible;
-                }
-                _selected = value;
-                RaisePropertyChanged();
-            }
-        }
-        private WrapperWrapper _selected;
-
-        public Visibility DetailsVisibily
-        {
-            get
-            {
-                return _detailsVisi;
-            }
-            set
-            {
-                _detailsVisi = value;
-                RaisePropertyChanged();
-                RaisePropertyChanged(nameof(HaveNoSelectionVisibily));
-            }
-        }
-        private Visibility _detailsVisi = Visibility.Collapsed;
+        private Visibility _extVisi = Visibility.Collapsed;
 
         public Visibility NotFoundVisibily
         {
@@ -145,41 +62,17 @@ namespace AutumnBox.GUI.ViewModel
         }
         private Visibility _notFoundVisi = Visibility.Visible;
 
-        public Visibility HaveNoSelectionVisibily
+        public IEnumerable<IExtensionWrapper> Extensions
         {
-            get
+            get => extensions; set
             {
-                return DetailsVisibily == Visibility.Visible ? Visibility.Hidden : Visibility.Visible;
-            }
-        }
-
-        public Visibility ExtensionsVisibily
-        {
-            get
-            {
-                return _extsVisi;
-            }
-            set
-            {
-                _extsVisi = value;
+                extensions = value;
+                ExtensionsVisibily = extensions.Count() == 0 ? Visibility.Collapsed : Visibility.Visible;
+                NotFoundVisibily = extensions.Count() == 0 ? Visibility.Visible : Visibility.Collapsed;
                 RaisePropertyChanged();
             }
         }
-        private Visibility _extsVisi = Visibility.Collapsed;
-
-        public string BtnRunExtensionContent
-        {
-            get
-            {
-                return _btnContent;
-            }
-            set
-            {
-                _btnContent = value;
-                RaisePropertyChanged();
-            }
-        }
-        private string _btnContent;
+        private IEnumerable<IExtensionWrapper> extensions;
 
         public ICommand GotoDownloadExtension { get; private set; }
         #endregion
@@ -187,36 +80,35 @@ namespace AutumnBox.GUI.ViewModel
         #region Device
         public void OnSelectNoDevice(object sender, EventArgs e)
         {
-            Selected = null;
-            BtnStatus = false;
+            ExtPanelIsEnabled = false;
+            //BtnStatus = false;
         }
 
         public void OnSelectDevice(object sender, EventArgs e)
         {
-            Selected = null;
-            BtnStatus = (targetState & DeviceSelectionObserver.Instance.CurrentDevice.State) != 0;
+            ExtPanelIsEnabled = (targetState & DeviceSelectionObserver.Instance.CurrentDevice.State) != 0;
         }
 
         #endregion
-        private bool BtnStatus
-        {
-            set
-            {
-                BtnRunExtensionContent = value ? App.Current.Resources["PanelExtensionsButtonEnabled"].ToString() : App.Current.Resources["PanelExtensionsButtonDisabled"].ToString();
-                RunExtension.CanExecuteProp = value;
-            }
-        }
+        //private bool BtnStatus
+        //{
+        //    set
+        //    {
+        //        BtnRunExtensionContent = value ? App.Current.Resources["PanelExtensionsButtonEnabled"].ToString() : App.Current.Resources["PanelExtensionsButtonDisabled"].ToString();
+        //        RunExtension.CanExecuteProp = value;
+        //    }
+        //}
         private DeviceState targetState;
 
         internal void Load(DeviceState state)
         {
             targetState = state;
-            RunExtension = new FlexiableCommand((args) =>
-            {
-                Selected.Wrapper.RunAsync(DeviceSelectionObserver.Instance.CurrentDevice);
-            });
+            //RunExtension = new FlexiableCommand((args) =>
+            //{
+            //    Selected.Wrapper.RunAsync(DeviceSelectionObserver.Instance.CurrentDevice);
+            //});
             GotoDownloadExtension = new OpenParameterUrlCommand();
-            Selected = null;
+            //Selected = null;
             ComObserver();
         }
         private void ComObserver()
@@ -238,7 +130,8 @@ namespace AutumnBox.GUI.ViewModel
             };
             if (targetState == AutumnBoxExtension.NoMatter)
             {
-                BtnStatus = true;
+                ExtPanelIsEnabled = true;
+                //BtnStatus = true;
                 return;
             }
             else
@@ -249,7 +142,7 @@ namespace AutumnBox.GUI.ViewModel
         }
         public void LoadExtensions()
         {
-            Selected = null;
+            //Selected = null;
             IEnumerable<IExtensionWrapper> filted =
                 OpenFramework.Management.Manager.InternalManager
                 .GetLoadedWrappers(
@@ -258,17 +151,18 @@ namespace AutumnBox.GUI.ViewModel
                 );
             App.Current.Dispatcher.Invoke(() =>
             {
-                Wrappers = WrapperWrapper.From(filted);
-                if (Wrappers.Count() == 0)
-                {
-                    NotFoundVisibily = Visibility.Visible;
-                    ExtensionsVisibily = Visibility.Collapsed;
-                }
-                else
-                {
-                    NotFoundVisibily = Visibility.Collapsed;
-                    ExtensionsVisibily = Visibility.Visible;
-                }
+                Extensions = filted;
+                //Wrappers = WrapperWrapper.From(filted);
+                //if (Wrappers.Count() == 0)
+                //{
+                //    NotFoundVisibily = Visibility.Visible;
+                //    ExtensionsVisibily = Visibility.Collapsed;
+                //}
+                //else
+                //{
+                //    NotFoundVisibily = Visibility.Collapsed;
+                //    ExtensionsVisibily = Visibility.Visible;
+                //}
             });
         }
     }

@@ -52,9 +52,9 @@ namespace AutumnBox.GUI.Util
         {
             LoggingStation.Instance.Work();
             Updater.CheckAndNotice();
-#if !DEBUG
-            Statistics.Do();
-#endif
+//#if !DEBUG
+//            Statistics.Do();
+//#endif
             ui.Progress = 0;
             //如果设置在启动时打开调试窗口
             if (Settings.Default.ShowDebuggingWindowNextLaunch)
