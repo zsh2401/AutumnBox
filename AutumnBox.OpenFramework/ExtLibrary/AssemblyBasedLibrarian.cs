@@ -133,7 +133,7 @@ namespace AutumnBox.OpenFramework.ExtLibrary
                 }
                 catch (WrapperAlreadyCreatedOnceException)
                 {
-                    Logger.CDebug($"{type.Name}'s Wrappers was created once,skip it");
+                    Logger.CDebug($"{type.Name}'s wrappers was created once,skip it");
                 }
                 catch (Exception ex)
                 {

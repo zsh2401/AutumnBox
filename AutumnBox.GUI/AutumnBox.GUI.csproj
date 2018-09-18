@@ -146,7 +146,6 @@
     <Compile Include="Util\Custom\ITheme.cs" />
     <Compile Include="Util\Custom\IThemeManager.cs" />
     <Compile Include="Util\Custom\ThemeManager.cs" />
-    <Compile Include="Util\Custom\ThemeManagerOld.cs" />
     <Compile Include="Util\I18N\ILanguage.cs" />
     <Compile Include="Util\I18N\ILanguageManager.cs" />
     <Compile Include="Util\I18N\LanguageManager.cs" />
