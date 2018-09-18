@@ -11,6 +11,9 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.OpenFramework.Open
 {
+    /// <summary>
+    /// Logger拓展
+    /// </summary>
     public static class LoggerExtension
     {
         /// <summary>
@@ -19,9 +22,9 @@ namespace AutumnBox.OpenFramework.Open
         /// <param name="logger"></param>
         /// <param name="content"></param>
         [System.Diagnostics.Conditional("DEBUG")]
-        public static void CDebug(this ILogger logger,object content)
+        public static void CDebug(this ILogger logger, object content)
         {
-            logger.Debug(content?.ToString());
+            Management.AutumnBoxGuiApi.Main.Log(logger.Tag, "Debug", content?.ToString());
         }
     }
 }

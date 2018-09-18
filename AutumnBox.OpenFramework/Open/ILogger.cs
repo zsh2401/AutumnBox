@@ -8,10 +8,9 @@ namespace AutumnBox.OpenFramework.Open
     public interface ILogger
     {
         /// <summary>
-        /// 调试级别,不推荐使用
+        /// TAG
         /// </summary>
-        /// <param name="msg"></param>
-        void Debug(string msg);
+        string Tag { get; }
         /// <summary>
         /// Info级别
         /// </summary>

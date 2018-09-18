@@ -18,6 +18,9 @@ namespace AutumnBox.OpenFramework.Open.Impl
         {
             this.ctx = ctx;
         }
+
+        public string Tag => ctx.LoggingTag;
+
         public void Debug(string msg)
         {
             Management.AutumnBoxGuiApi.Main.Log(ctx.LoggingTag, nameof(Debug), msg);
