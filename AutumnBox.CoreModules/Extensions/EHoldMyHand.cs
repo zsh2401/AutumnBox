@@ -6,21 +6,20 @@
 using AutumnBox.Basic.Device;
 using AutumnBox.Basic.Device.Management.OS;
 using AutumnBox.OpenFramework.Extension;
-using AutumnBox.OpenFramework.Open;
 using System.Threading;
 
 namespace AutumnBox.CoreModules.Extensions
 {
     [ExtName("Example extension")]
     [ExtRequiredDeviceStates(NoMatter)]
-    [ExtRegion("en-us")]
     public class EHoldMyHand : OfficialVisualExtension
     {
         bool stoppable = false;
         protected override int VisualMain()
         {
             var brand = TargetDevice.GetProp(BuildPropKeys.Brand);
-            WriteLine(brand);
+            WriteLine(TargetDevice.Product);
+            Ux.ShowMessageDialog("Ok");
             WriteInitInfo();
             WriteLine("开始执行");
             Thread.Sleep(3000);

@@ -16,7 +16,7 @@
                 <local:PanelReboot  Width="170" Height="220"/>
             </materialDesign:Card>
         </Grid>
-        <materialDesign:Card  Margin="10,245,10,10" MaxWidth="800" VerticalAlignment="Stretch">
+        <materialDesign:Card  Margin="10,245,10,10" Width="800" MaxWidth="800" VerticalAlignment="Stretch">
             <TabControl   SelectedIndex="{Binding TabSelectedIndex,Mode=TwoWay}" Background="{x:Null}" BorderBrush="{x:Null}">
                 <TabItem  Style="{DynamicResource AtmbxExtTabItem}" TabIndex="0" Header="{DynamicResource PanelCurrentDevicePoweron}" Margin="-4,-3,-14,0"  FontSize="16">
                     <local:PanelExtension  TargetDeviceState="Poweron" Margin="0"/>

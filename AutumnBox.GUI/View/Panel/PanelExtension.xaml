@@ -17,6 +17,11 @@
         
         <Grid Visibility="{Binding ExtensionsVisibily}">
             <ListBox Margin="10,10,0,10" VerticalAlignment="Stretch" HorizontalAlignment="Left" Width="262" ItemsSource="{Binding Wrappers}" SelectedItem="{Binding Selected,Mode=TwoWay}">
+                <!--<ListBox.Resources>
+                    <Style TargetType="{x:Type RepeatButton}">
+                        <Setter Property="Visibility" Value="Collapsed"/>
+                    </Style>
+                </ListBox.Resources>-->
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
