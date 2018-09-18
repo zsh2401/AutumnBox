@@ -8,6 +8,7 @@ using AutumnBox.OpenFramework.Exceptions;
 using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.Management;
 using AutumnBox.OpenFramework.Management.Impl;
+using AutumnBox.OpenFramework.Open;
 using AutumnBox.OpenFramework.Wrapper;
 using System;
 using System.Collections.Generic;
@@ -51,7 +52,7 @@ namespace AutumnBox.OpenFramework.ExtLibrary
                 throw new Exception("Assembly was inited once!");
             }
             ManagedAssembly = assembly;
-            Logger.Debug($"Managed assembly {GetType().Assembly.GetName().Name}");
+            Logger.CDebug($"Managed assembly {GetType().Assembly.GetName().Name}");
         }
         /// <summary>
         /// 日志标签
@@ -132,7 +133,7 @@ namespace AutumnBox.OpenFramework.ExtLibrary
                 }
                 catch (WrapperAlreadyCreatedOnceException)
                 {
-                    Logger.Debug($"{type.Name}'s Wrappers was created once,skip it");
+                    Logger.CDebug($"{type.Name}'s Wrappers was created once,skip it");
                 }
                 catch (Exception ex)
                 {

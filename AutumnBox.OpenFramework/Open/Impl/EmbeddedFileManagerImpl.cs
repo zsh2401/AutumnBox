@@ -36,10 +36,10 @@ namespace AutumnBox.OpenFramework.Open.Impl
             public Stream GetStream()
             {
                 string fullPath = ctx.GetType().Assembly.GetName().Name + "." + path;
-                ctx.Logger.Debug(fullPath);
+                ctx.Logger.CDebug(fullPath);
                 var stream = ctx.GetType().Assembly
                     .GetManifestResourceStream(fullPath);
-                ctx.Logger.Debug(fullPath + "is exist?" + (stream == null));
+                ctx.Logger.CDebug(fullPath + "is exist?" + (stream == null));
                 return stream;
             }
             public void WriteTo(FileStream fs)
