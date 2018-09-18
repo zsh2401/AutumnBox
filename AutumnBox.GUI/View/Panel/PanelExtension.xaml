@@ -4,10 +4,13 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-         FontFamily="{DynamicResource AutumnBox.Font}"
+             xmlns:controls="clr-namespace:AutumnBox.GUI.View.Controls"
+             FontFamily="{DynamicResource AutumnBox.Font}"
              Loaded="UserControl_Loaded"
              mc:Ignorable="d" d:DesignWidth="622.427" d:DesignHeight="281.547">
     <Grid>
+
+        <controls:ExtensionsWrapPanel IsEnabled="{Binding ExtPanelIsEnabled}" Extensions="{Binding Extensions}" Visibility="{Binding ExtensionsVisibily}"/>
         
         <StackPanel Visibility="{Binding NotFoundVisibily}" VerticalAlignment="Center" Orientation="Vertical" HorizontalAlignment="Center">
             <TextBlock FontSize="25" Foreground="{DynamicResource MainBackgroundForegroundBrush}" HorizontalAlignment="Center" Text="{DynamicResource PanelExtensionsNotFound}"/>
@@ -15,13 +18,8 @@
             <TextBlock Margin="10" FontSize="13" Foreground="{DynamicResource MainBackgroundForegroundBrush}" HorizontalAlignment="Center" VerticalAlignment="Center" Text="I'd love to change the world,but i dont know what to do"/>
         </StackPanel>
         
-        <Grid Visibility="{Binding ExtensionsVisibily}">
+        <!--<Grid Visibility="{Binding ExtensionsVisibily}">
             <ListBox Margin="10,10,0,10" VerticalAlignment="Stretch" HorizontalAlignment="Left" Width="262" ItemsSource="{Binding Wrappers}" SelectedItem="{Binding Selected,Mode=TwoWay}">
-                <!--<ListBox.Resources>
-                    <Style TargetType="{x:Type RepeatButton}">
-                        <Setter Property="Visibility" Value="Collapsed"/>
-                    </Style>
-                </ListBox.Resources>-->
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
@@ -30,8 +28,8 @@
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
-            </ListBox>
-            <Grid Visibility="{Binding HaveNoSelectionVisibily}" Margin="289,10,10,10">
+            </ListBox>-->
+            <!--<Grid Visibility="{Binding HaveNoSelectionVisibily}" Margin="289,10,10,10">
                 <TextBlock FontSize="20" Foreground="{DynamicResource MainBackgroundForegroundBrush}" Text="{DynamicResource PanelExtensionsNoSelect}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </Grid>
             <GroupBox Header="{Binding Selected.Name}" Visibility="{Binding DetailsVisibily}" FontSize="17" Margin="289,10,10,10">
@@ -39,7 +37,7 @@
                     <TextBlock TextWrapping = "Wrap" Text="{Binding Selected.Wrapper.Info.FormatedDesc}" Foreground="{DynamicResource MainBackgroundForegroundBrush}" Margin="0,0,10,35"/>
                     <Button Style="{DynamicResource MaterialDesignToolButton}" Command="{Binding RunExtension}" Content="{Binding BtnRunExtensionContent}" Height="28" VerticalAlignment="Bottom"/>
                 </Grid>
-            </GroupBox>
-        </Grid>
+            </GroupBox>-->
+        <!--</Grid>-->
     </Grid>
 </UserControl>

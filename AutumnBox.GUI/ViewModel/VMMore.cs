@@ -6,12 +6,7 @@
 using AutumnBox.GUI.MVVM;
 using AutumnBox.OpenFramework;
 using AutumnBox.OpenFramework.Management;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutumnBox.GUI.ViewModel
 {
@@ -36,6 +31,5 @@ namespace AutumnBox.GUI.ViewModel
             });
             ApiVersion = BuildInfo.SDK_VERSION.ToString();
         }
-
     }
 }
