@@ -8,7 +8,6 @@ using AutumnBox.OpenFramework.Management;
 using AutumnBox.OpenFramework.Wrapper;
 using System;
 using System.Threading.Tasks;
-using System.Windows;
 
 namespace AutumnBox.OpenFramework.Open.Impl
 {
@@ -28,7 +27,7 @@ namespace AutumnBox.OpenFramework.Open.Impl
             ChoiceResult result = ChoiceResult.Cancel;
             RunOnUIThread(() =>
             {
-                var window = sourceApi.CreateChoiceWindow(message, btnLeft, btnRight, btnCancel);
+                dynamic window = sourceApi.CreateChoiceWindow(message, btnLeft, btnRight, btnCancel);
                 window.ShowDialog();
                 switch (window.DialogResult)
                 {
@@ -64,7 +63,7 @@ namespace AutumnBox.OpenFramework.Open.Impl
             });
         }
 
-        private Window currentLoadingWindow;
+        private dynamic currentLoadingWindow;
 
         public void ShowLoadingWindow()
         {

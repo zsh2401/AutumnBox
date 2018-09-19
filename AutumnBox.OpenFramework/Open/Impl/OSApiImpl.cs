@@ -28,9 +28,10 @@ namespace AutumnBox.OpenFramework.Open.Impl
         {
             get
             {
-                WindowsIdentity identity = WindowsIdentity.GetCurrent();
-                WindowsPrincipal principal = new WindowsPrincipal(identity);
-                return principal.IsInRole(WindowsBuiltInRole.Administrator);
+                throw new NotImplementedException();
+                //WindowsIdentity identity = WindowsIdentity.GetCurrent();
+                //WindowsPrincipal principal = new WindowsPrincipal(identity);
+                //return principal.IsInRole(WindowsBuiltInRole.Administrator);
             }
         }
 

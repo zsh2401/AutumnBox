@@ -43,18 +43,18 @@ namespace AutumnBox.OpenFramework.Management
         /// 获取主窗口
         /// </summary>
         /// <returns></returns>
-        Window GetMainWindow();
+        dynamic GetMainWindow();
         /// <summary>
         /// 获取调试窗口
         /// </summary>
         /// <returns></returns>
-        Window CreateDebugWindow();
+        dynamic CreateDebugWindow();
         /// <summary>
         /// 显示消息窗口
         /// </summary>
         /// <param name="title"></param>
         /// <param name="msg"></param>
-        Window CreateMessageWindow(string title, string msg);
+        dynamic CreateMessageWindow(string title, string msg);
         /// <summary>
         /// 创建选择窗口
         /// </summary>
@@ -63,14 +63,17 @@ namespace AutumnBox.OpenFramework.Management
         /// <param name="btnRight"></param>
         /// <param name="btnCancel"></param>
         /// <returns></returns>
-        Window CreateChoiceWindow(string msg, string btnLeft = null, string btnRight = null, string btnCancel = null);
+        dynamic CreateChoiceWindow(string msg, string btnLeft = null, string btnRight = null, string btnCancel = null);
         /// <summary>
         /// 获取加载窗口
         /// </summary>
         /// <returns></returns>
-        Window CreateLoadingWindow();
+        dynamic CreateLoadingWindow();
         #endregion
-
+        /// <summary>
+        /// 检测秋之盒是否以管理员模式运行
+        /// </summary>
+        bool IsRunAsAdmin { get; }
         /// <summary>
         /// 秋之盒版本号
         /// </summary>
