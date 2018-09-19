@@ -18,10 +18,6 @@ namespace AutumnBox.GUI.Util.Net
     [JsonObject(MemberSerialization.OptOut)]
     internal class MOTDResult
     {
-        [JsonProperty("header")]
-        public string Header { get; set; }
-        [JsonProperty("separator")]
-        public string Separator { get; set; }
         [JsonProperty("message")]
         public string Message { get; set; }
     }
