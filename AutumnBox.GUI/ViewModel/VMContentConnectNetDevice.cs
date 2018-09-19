@@ -8,6 +8,7 @@ using AutumnBox.Basic.Calling.Adb;
 using AutumnBox.GUI.MVVM;
 using AutumnBox.GUI.Util.Debugging;
 using System;
+using System.Diagnostics;
 using System.Net;
 using System.Windows.Media;
 
@@ -80,7 +81,12 @@ namespace AutumnBox.GUI.ViewModel
         }
         private void DoConnectImp(object para)
         {
-            SGLogger<VMContentConnectNetDevice>.Info("hehe");
+            if (IPString == "iloveyou")
+            {
+                //我喜欢你,曹娜(*^▽^*)
+                Process.Start("http://lovecaona.cn");
+                return;
+            }
             var input = ParseInput();
             if (!input.Item1) return;
             ConnectTo(input.Item2);
