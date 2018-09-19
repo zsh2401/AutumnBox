@@ -4,8 +4,12 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:viewmodel="clr-namespace:AutumnBox.GUI.ViewModel"
              FontFamily="{DynamicResource AutumnBox.Font}"
              mc:Ignorable="d" d:DesignHeight="218.803" d:DesignWidth="190.598">
+    <UserControl.DataContext>
+        <viewmodel:VMReboot/>
+    </UserControl.DataContext>
     <Grid>
         <StackPanel Orientation="Vertical">
             <TextBlock Text="{DynamicResource PanelRebootTitle}" TextAlignment="Center" FontSize="25" Margin="10"/>

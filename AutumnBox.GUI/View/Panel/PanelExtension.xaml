@@ -9,14 +9,14 @@
              FontFamily="{DynamicResource AutumnBox.Font}"
              Loaded="UserControl_Loaded"
              x:Name="thisCtrl"
-             mc:Ignorable="d" d:DesignWidth="622.427" d:DesignHeight="281.547">
+             mc:Ignorable="d" d:DesignWidth="622.427" d:DesignHeight="100">
 
     <UserControl.DataContext>
         <viewmodel:VMExtensions/>
     </UserControl.DataContext>
     <Grid>
         <Grid Visibility="{Binding ExtensionsVisibily}">
-            <ListBox ItemsSource="{Binding Docks}" SelectedItem="{Binding SelectedDock}" ScrollViewer.VerticalScrollBarVisibility="Hidden">
+            <ListBox ItemsSource="{Binding Docks}" MinHeight="100" SelectedItem="{Binding SelectedDock}" ScrollViewer.VerticalScrollBarVisibility="Hidden">
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel  IsEnabled="{Binding ExtPanelIsEnabled}" ItemHeight="100" ItemWidth="110"/>
@@ -24,7 +24,10 @@
                 </ListBox.ItemsPanel>
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel MinHeight="95" MinWidth="90" MaxWidth="90" ToolTip="{Binding ToolTip}" Margin="0" Orientation="Vertical">
+                        <StackPanel Background="#01000000" MinHeight="95" MinWidth="90" MaxWidth="90" ToolTip="{Binding ToolTip}" Margin="0" Orientation="Vertical">
+                            <StackPanel.InputBindings>
+                                <MouseBinding MouseAction="LeftDoubleClick" Command="{Binding DataContext.RunSelectedItem,ElementName=thisCtrl}"/>
+                            </StackPanel.InputBindings>
                             <Image RenderOptions.BitmapScalingMode="Fant" Height="50px" Width="50px" Source="{Binding Icon}"/>
                             <TextBlock TextAlignment="Center" FontSize="12" TextWrapping="Wrap" TextTrimming="WordEllipsis"  Text="{Binding Name}"/>
                         </StackPanel>

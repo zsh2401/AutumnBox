@@ -5,28 +5,42 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AutumnBox.GUI.View.Panel"
              xmlns:oftheday="clr-namespace:AutumnBox.GUI.View.OfTheDay"
+             xmlns:dockablz="http://dragablz.net/winfx/xaml/dockablz"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:dragablz="http://dragablz.net/winfx/xaml/dragablz"
+             xmlns:viewmodel="clr-namespace:AutumnBox.GUI.ViewModel"
              mc:Ignorable="d" 
              d:DesignHeight="619" d:DesignWidth="1042">
-    <Grid>
-        <Grid>
-            <local:PanelDevices x:Name="PanelDevices" Margin="0,37,10,0" HorizontalAlignment="Right" VerticalAlignment="Top" Width="183" Height="304"/>
-            <TabControl  Margin="10,10,205,10" SelectedIndex="{Binding TabSelectedIndex,Mode=TwoWay}" Background="{x:Null}" BorderBrush="{DynamicResource PrimaryLightBrush}">
+    <UserControl.DataContext>
+        <viewmodel:VMPanelMain/>
+    </UserControl.DataContext>
+    <DockPanel LastChildFill="False">
+        
+        <Grid DockPanel.Dock="Right" MinWidth="200" MaxWidth="200">
+            <local:PanelDevices x:Name="PanelDevices" HorizontalAlignment="Center" VerticalAlignment="Top" Width="183" Height="288"/>
+            <StackPanel VerticalAlignment="Bottom" Orientation="Vertical">
+                <oftheday:POTD Width="185" Height="140" Margin="0,0,0,10"/>
+                <Button Style="{DynamicResource MaterialDesignRaisedButton}" Command="{Binding StartShell}"  Content="{DynamicResource btnADBCMD}"  FontSize="14"  Margin="5,0,5,5"/>
+                <Button  Style="{DynamicResource MaterialDesignRaisedButton}" Command="{Binding ShowSettingsDialog}"  Content="{DynamicResource btnSetting}"   FontSize="14"   Margin="5,0,5,5" />
+            </StackPanel>
+        </Grid>
+        
+        <dockablz:Layout  DockPanel.Dock="Left">
+            <dragablz:TabablzControl  Style="{DynamicResource MaterialDesignTabablzControlStyle}" SelectedIndex="{Binding TabSelectedIndex,Mode=TwoWay}" >
                 <TabItem  Style="{DynamicResource AtmbxTabItem}" TabIndex="0" Header="{DynamicResource PanelMainStart}" Margin="-2,-2,-14,0"  FontSize="16">
                     <local:PanelHome/>
                 </TabItem>
-                <TabItem  Style="{DynamicResource AtmbxTabItem}" TabIndex="1" Header="{DynamicResource PanelMainCurrent}" Margin="14,-2,-18,0"  FontSize="16">
-                    <local:PanelCurrentDevice Width="819.7"/>
+                <TabItem Style="{DynamicResource AtmbxTabItem}" TabIndex="1" Header="{DynamicResource PanelMainCurrent}" Margin="14,-2,-18,0"  FontSize="16">
+                    <local:PanelCurrentDevice/>
                 </TabItem>
-
                 <TabItem  Style="{DynamicResource AtmbxTabItem}" TabIndex="1" Header="{DynamicResource PanelMainMore}" Margin="18,-2,-22,0"  FontSize="16">
                     <ScrollViewer HorizontalScrollBarVisibility="Disabled"  Template="{DynamicResource AtmbxScrollViewer}" VerticalScrollBarVisibility="Visible">
                         <local:PanelMore/>
                     </ScrollViewer>
                 </TabItem>
-            </TabControl>
-            <oftheday:POTD Margin="0,0,8,111" Width="185" Height="139" HorizontalAlignment="Right" VerticalAlignment="Bottom"></oftheday:POTD>
-            <Button Style="{DynamicResource MaterialDesignRaisedButton}" Command="{Binding StartShell}"  Content="{DynamicResource btnADBCMD}" Margin="0,0,10,50" Height="36"  FontSize="14"  HorizontalAlignment="Right" Width="183" VerticalAlignment="Bottom" />
-            <Button  Style="{DynamicResource MaterialDesignRaisedButton}" Command="{Binding ShowSettingsDialog}"  Content="{DynamicResource btnSetting}" Margin="0,0,10,10" VerticalAlignment="Bottom" Height="35"   FontSize="14"   HorizontalAlignment="Right" Width="183" />
-        </Grid>
-    </Grid>
+            </dragablz:TabablzControl>
+        </dockablz:Layout>
+
+
+    </DockPanel>
 </UserControl>

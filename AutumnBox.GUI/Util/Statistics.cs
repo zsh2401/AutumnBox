@@ -12,6 +12,8 @@ namespace AutumnBox.GUI.Util
     {
         private const string TAG = "Statistics";
         private static ILogger logger = new Logger(TAG);
+
+        [System.Diagnostics.Conditional("STAT")]
         public static void Do()
         {
             logger.Debug("Doing");

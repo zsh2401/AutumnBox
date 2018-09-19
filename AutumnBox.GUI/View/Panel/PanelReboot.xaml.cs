@@ -11,7 +11,6 @@ namespace AutumnBox.GUI.View.Panel
         public PanelReboot()
         {
             InitializeComponent();
-            DataContext = new VMReboot();
         }
     }
 }

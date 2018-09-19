@@ -1,8 +1,4 @@
-﻿using System.Linq;
-using System.Windows.Controls;
-using AutumnBox.Basic.Device;
-using AutumnBox.GUI.ViewModel;
-using AutumnBox.OpenFramework.Management;
+﻿using System.Windows.Controls;
 
 namespace AutumnBox.GUI.View.Panel
 {
@@ -14,7 +10,6 @@ namespace AutumnBox.GUI.View.Panel
         public PanelCurrentDevice()
         {
             InitializeComponent();
-            DataContext = new VMCurrentDevice();
         }
     }
 }

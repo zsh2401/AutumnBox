@@ -8,7 +8,7 @@
                xmlns:ctrl="clr-namespace:AutumnBox.GUI.View.Controls"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:viewmodel="clr-namespace:AutumnBox.GUI.ViewModel"
-             mc:Ignorable="d" d:DesignWidth="820" Height="933.5">
+             mc:Ignorable="d" d:DesignWidth="820" >
     <UserControl.DataContext>
         <viewmodel:VMMore/>
     </UserControl.DataContext>
@@ -33,7 +33,7 @@
             <materialDesign:Card Margin="10">
                 <StackPanel Margin="0,0,0,0">
                     <TextBlock Margin="15" FontSize="15"  Text="{DynamicResource PanelMoreEvenNoDevice}"/>
-                    <local:PanelExtension Height="252"/>
+                    <local:PanelExtension/>
                 </StackPanel>
             </materialDesign:Card>
             <materialDesign:Card Margin="10">
