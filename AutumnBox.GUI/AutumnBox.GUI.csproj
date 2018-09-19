@@ -602,7 +602,6 @@
   <PropertyGroup>
     <PostBuildEvent>del /S System.*.dll
 del /S Microsoft.Win32.Primitives.dll
-del /S netstandard.dll
 if $(ConfigurationName) == Release (
 rd /S /Q ..\logs
 rd /S /Q app.publish
