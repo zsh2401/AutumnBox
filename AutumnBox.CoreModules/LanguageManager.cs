@@ -1,6 +1,6 @@
 ﻿/*************************************************
 ** auth： zsh2401@163.com
-** date:  2018/9/12 17:30:20 (UTC +8:00)
+** date:  2018/9/19 17:14:28 (UTC +8:00)
 ** desc： ...
 *************************************************/
 using AutumnBox.OpenFramework.Content;
@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace AutumnBox.OpenFramework.Open.Util
+namespace AutumnBox.CoreModules
 {
     /// <summary>
     /// 语言管理器实现

@@ -1,158 +1,40 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6516890C-86B6-40A0-8FD0-14FFDD62E1FE}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AutumnBox.OpenFramework</RootNamespace>
-    <AssemblyName>AutumnBox.OpenFramework</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Configurations>Debug;Release;SDK</Configurations>
+    <Version>8.3</Version>
+    <Authors>zsh2401</Authors>
+    <Company>zsh2401</Company>
+    <Copyright>Copyright © 2017 - 2018 zsh2401,All Rights Reserved</Copyright>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Debug\AutumnBox.OpenFramework.xml</DocumentationFile>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
+
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CSharp" Version="4.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AutumnBox.Basic\AutumnBox.Basic.csproj" />
+  </ItemGroup>
+
+  <!-- <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='SDK|AnyCPU'">
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <WarningLevel>0</WarningLevel>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <DocumentationFile>bin\SDK\netstandard2.0\AutumnBox.Basic.xml</DocumentationFile>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\AutumnBox.OpenFramework.xml</DocumentationFile>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'SDK|AnyCPU'">
-    <OutputPath>bin\Sdk\</OutputPath>
-    <DefineConstants>TRACE;SDK</DefineConstants>
-    <DocumentationFile>bin\Sdk\AutumnBox.OpenFramework.xml</DocumentationFile>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>bin\Debug\netstandard2.0\AutumnBox.Basic.xml</DocumentationFile>
   </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
-    <Reference Include="WindowsBase" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Content\ContextPermissionAttribute.cs" />
-    <Compile Include="Content\CtxPer.cs" />
-    <Compile Include="Exceptions\LibrarianAlreadyCreatedOnceException.cs" />
-    <Compile Include="Exceptions\WrapperAlreadyCreatedOnceException.cs" />
-    <Compile Include="Extension\AtmbVisualExtension.cs" />
-    <Compile Include="Extension\AutumnBoxExtension.Constants.cs" />
-    <Compile Include="Extension\ExtAppPropertyAttribute.cs" />
-    <Compile Include="Extension\ExtBeforeCreateAspectAttribute.cs" />
-    <Compile Include="Extension\ExtInfoAttribute.cs" />
-    <Compile Include="Extension\ExtIconAttribute.cs" />
-    <Compile Include="Extension\ExtInfoI18NAttribute.cs" />
-    <Compile Include="Extension\ExtMinApiAttribute.cs" />
-    <Compile Include="Extension\ExtRegionAttribute.cs" />
-    <Compile Include="Extension\ExtRequireRootAttribute.cs" />
-    <Compile Include="Extension\ExtRunAsAdminAttribute.cs" />
-    <Compile Include="Extension\ExtTargetApiAttribute.cs" />
-    <Compile Include="Extension\ExtMainAsceptAttribute.cs" />
-    <Compile Include="Extension\ExtMinAndroidVersionAttribute.cs" />
-    <Compile Include="Extension\ExtOfficialAttribute.cs" />
-    <Compile Include="Management\AutumnBoxGuiApi.cs" />
-    <Compile Include="Management\Filters\CurrentRegionFilter.cs" />
-    <Compile Include="Management\Filters\DeviceStateFilter.cs" />
-    <Compile Include="Management\IWrapperFilter.cs" />
-    <Compile Include="Management\IAutumnBox_GUI.cs" />
-    <Compile Include="Open\LoggerExtension.cs" />
-    <Compile Include="Open\Util\LanguageManager.cs" />
-    <Compile Include="Open\Impl\SoundImpl.cs" />
-    <Compile Include="Open\Impl\UxImpl.cs" />
-    <Compile Include="Open\ISoundPlayer.cs" />
-    <Compile Include="Open\IUx.cs" />
-    <Compile Include="Management\IExtensionUIController.cs" />
-    <Compile Include="Open\IFrameworkManager.cs" />
-    <Compile Include="Open\Impl\FxImpl.cs" />
-    <Compile Include="Wrapper\ClassExtensionInfoGetter.cs" />
-    <Compile Include="Management\IInternalManager.cs" />
-    <Compile Include="Management\IRunningManager.cs" />
-    <Compile Include="Management\Manager.cs" />
-    <Compile Include="Management\Impl\RunningManagerImpl.cs" />
-    <Compile Include="Open\ChoiceResult.cs" />
-    <Compile Include="Open\Factory.cs" />
-    <Compile Include="Open\ICompApi.cs" />
-    <Compile Include="Open\IMd5.cs" />
-    <Compile Include="Open\Impl\AppManagerImpl.cs" />
-    <Compile Include="Open\Impl\CompImpl.cs" />
-    <Compile Include="Open\Impl\LoggerImpl.cs" />
-    <Compile Include="Open\Impl\Md5Impl.cs" />
-    <Compile Include="Open\Impl\OSApiImpl.cs" />
-    <Compile Include="Open\Impl\EmbeddedFileManagerImpl.cs" />
-    <Compile Include="Open\Impl\TemporaryFloderImpl.cs" />
-    <Compile Include="Open\IOSApi.cs" />
-    <Compile Include="Open\IEmbeddedFileManager.cs" />
-    <Compile Include="Open\ITemporaryFloder.cs" />
-    <Compile Include="Content\ContextApiProvider.cs" />
-    <Compile Include="ExtLibrary\DefaultLibrarian.cs" />
-    <Compile Include="ExtLibrary\ExtensionLibrarin.cs" />
-    <Compile Include="Management\Impl\InternalManagerImpl.cs" />
-    <Compile Include="Extension\ExtRequiredDeviceStatesAttribute.cs" />
-    <Compile Include="Extension\ExtVersionAttribute.cs" />
-    <Compile Include="Extension\AutumnBoxExtension.LifeCycle.cs" />
-    <Compile Include="Content\Context.cs" />
-    <Compile Include="ExtLibrary\AssemblyBasedLibrarian.cs" />
-    <Compile Include="Extension\ExtAuthAttribute.cs" />
-    <Compile Include="Extension\ExtDescAttribute.cs" />
-    <Compile Include="Extension\ExtNameAttribute.cs" />
-    <Compile Include="Extension\ForerunCheckResult.cs" />
-    <Compile Include="Wrapper\ClassExtensionWrapper.cs" />
-    <Compile Include="Wrapper\ExtensionWarpperState.cs" />
-    <Compile Include="Wrapper\IExtInfoGetter.cs" />
-    <Compile Include="Wrapper\IExtensionWrapper.cs" />
-    <Compile Include="ExtLibrary\ILibrarian.cs" />
-    <Compile Include="Open\IAppManager.cs" />
-    <Compile Include="Open\ILogger.cs" />
-    <Compile Include="Exceptions\AccessDeniedException.cs" />
-    <Compile Include="BuildInfo.cs" />
-    <Compile Include="Exceptions\UserDeniedException.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\AutumnBox.Basic\AutumnBox.Basic.csproj">
-      <Project>{84044fb2-bd38-4283-8065-b639270ece0f}</Project>
-      <Name>AutumnBox.Basic</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="AutumnBox.OpenFramework.nuspec" />
-    <Compile Include="Extension\AutumnBoxExtension.Useful.cs" />
-  </ItemGroup>
-  <ItemGroup />
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PostBuildEvent>if $(ConfigurationName) == SDK (
-rd /S /Q  google
-del /S AutumnBox.Support.*
-del /S Newtonsoft.Json.*
-del /S CSScriptLibrary.*
-)</PostBuildEvent>
-  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>bin\Release\netstandard2.0\AutumnBox.Basic.xml</DocumentationFile>
+  </PropertyGroup> -->
+
 </Project>

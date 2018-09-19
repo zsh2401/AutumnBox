@@ -558,7 +558,7 @@
       <Name>AutumnBox.Basic</Name>
     </ProjectReference>
     <ProjectReference Include="..\AutumnBox.OpenFramework\AutumnBox.OpenFramework.csproj">
-      <Project>{6516890c-86b6-40a0-8fd0-14ffdd62e1fe}</Project>
+      <Project>{6516890C-86B6-40A0-8FD0-14FFDD62E1FE}</Project>
       <Name>AutumnBox.OpenFramework</Name>
     </ProjectReference>
   </ItemGroup>

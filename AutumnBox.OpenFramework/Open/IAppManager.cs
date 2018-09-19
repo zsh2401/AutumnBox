@@ -27,7 +27,7 @@ namespace AutumnBox.OpenFramework.Open
         /// 获取秋之盒的主要主窗口
         /// </summary>
         /// <returns>秋之盒主窗口</returns>
-        Window GetMainWindow();
+        dynamic GetMainWindow();
         /// <summary>
         /// 获取界面语言代码 类似zh-CN
         /// </summary>

@@ -31,9 +31,14 @@ namespace AutumnBox.OpenFramework.Open.Impl
         {
             get
             {
-                WindowsIdentity identity = WindowsIdentity.GetCurrent();
-                WindowsPrincipal principal = new WindowsPrincipal(identity);
-                return principal.IsInRole(WindowsBuiltInRole.Administrator);
+                if (Environment.OSVersion.Platform == PlatformID.Win32NT)
+                {
+                    return sourceApi.IsRunAsAdmin;
+                }
+                else
+                {
+                    return false;
+                }
             }
         }
 
@@ -42,12 +47,12 @@ namespace AutumnBox.OpenFramework.Open.Impl
         public Version Version => sourceApi.Version;
 
 
-        public Window CreateDebuggingWindow()
+        public dynamic CreateDebuggingWindow()
         {
             return sourceApi.CreateDebugWindow();
         }
 
-        public Window GetMainWindow()
+        public dynamic GetMainWindow()
         {
             return sourceApi.GetMainWindow();
         }

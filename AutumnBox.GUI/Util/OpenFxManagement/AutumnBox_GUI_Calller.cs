@@ -24,12 +24,14 @@ namespace AutumnBox.GUI.Util.OpenFxManagement
             }
         }
 
-        public Window CreateDebugWindow()
+        public bool IsRunAsAdmin => Self.HaveAdminPermission;
+
+        public dynamic CreateDebugWindow()
         {
             return new LogWindow();
         }
 
-        public Window CreateMessageWindow(string title, string msg)
+        public dynamic CreateMessageWindow(string title, string msg)
         {
             return new MessageWindow()
             {
@@ -44,7 +46,7 @@ namespace AutumnBox.GUI.Util.OpenFxManagement
             return App.Current.Resources["LanguageCode"].ToString();
         }
 
-        public Window GetMainWindow()
+        public dynamic GetMainWindow()
         {
             return App.Current.MainWindow;
         }
@@ -75,7 +77,7 @@ namespace AutumnBox.GUI.Util.OpenFxManagement
             App.Current.Dispatcher.Invoke(act);
         }
 
-        public Window CreateChoiceWindow(string msg, string btnLeft = null, string btnRight = null, string btnCancel = null)
+        public dynamic CreateChoiceWindow(string msg, string btnLeft = null, string btnRight = null, string btnCancel = null)
         {
             var window = new ChoiceWindow()
             {
@@ -93,7 +95,7 @@ namespace AutumnBox.GUI.Util.OpenFxManagement
             App.Current.Shutdown();
         }
 
-        public Window CreateLoadingWindow()
+        public dynamic CreateLoadingWindow()
         {
             return new LoadingWindow()
             {

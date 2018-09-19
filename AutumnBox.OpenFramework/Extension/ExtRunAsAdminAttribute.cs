@@ -30,7 +30,7 @@ namespace AutumnBox.OpenFramework.Extension
         /// <param name="args"></param>
         public override void Before(ExtBeforeCreateArgs args)
         {
-            if (!args.Context.App.IsRunAsAdmin && (bool)Value)
+            if ((bool)Value && !args.Context.App.IsRunAsAdmin)
             {
                 args.Context.App.RunOnUIThread(() =>
                 {
