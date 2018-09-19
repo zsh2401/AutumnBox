@@ -7,6 +7,7 @@
 using AutumnBox.GUI.Properties;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 
 namespace AutumnBox.GUI.Util.Custom
@@ -38,14 +39,24 @@ namespace AutumnBox.GUI.Util.Custom
         {
             themes = new List<ITheme>() {
                 ThemeImpl.LoadFrom("Autumn.xaml"),
+                ThemeImpl.LoadFrom("Blue.xaml")
             };
         }
 
+        private static readonly Random ran = new Random();
         public void ApplyBySetting()
         {
-            var settingTheme = Settings.Default.Theme;
-            var findingResult = themes.Find(_the => _the.Name == settingTheme);
-            Current = findingResult;
+            if (Settings.Default.RandomTheme)
+            {
+                int next = ran.Next(0, Themes.Count());
+                Current = themes[next];
+            }
+            else
+            {
+                var settingTheme = Settings.Default.Theme;
+                var findingResult = themes.Find(_the => _the.Name == settingTheme);
+                Current = findingResult;
+            }
         }
 
         private ITheme GetCurrentTheme()
@@ -63,6 +74,8 @@ namespace AutumnBox.GUI.Util.Custom
                 return;
             }
             App.Current.Resources.MergedDictionaries[INDEX_OF_THEME] = theme.Resource;
+            Settings.Default.Theme = theme.Name;
+            Settings.Default.Save();
         }
 
         private class ThemeImpl : ITheme
@@ -79,13 +92,6 @@ namespace AutumnBox.GUI.Util.Custom
                     Resource = resouceDict,
                 };
             }
-        }
-        private class RandomTheme : ITheme
-        {
-            public string Name => "Random-随机";
-
-            public ResourceDictionary Resource => throw new NotImplementedException();
-            public void Random() { }
         }
     }
 }

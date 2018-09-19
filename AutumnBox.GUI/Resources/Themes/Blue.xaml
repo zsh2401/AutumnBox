@@ -1,0 +1,13 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="ThemeBase.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+    <system:String x:Key="ThemeName">晰梦-Clear dream</system:String>
+    <Color x:Key="SecondaryColor">#64B5F6</Color>
+    <Color x:Key="PrimaryLightColor">#2196F3</Color>
+    <Color x:Key="PrimaryMidColor">#2196F3</Color>
+    <Color x:Key="PrimaryDarkColor">#2196F3</Color>
+</ResourceDictionary>
