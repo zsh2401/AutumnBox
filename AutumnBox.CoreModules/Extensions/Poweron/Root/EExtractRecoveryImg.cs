@@ -17,6 +17,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.Root
     [ExtName("[ROOT]Extract recovery.img", Lang = "en-US")]
     [ExtVersion(0, 0, 5)]
     [ExtRequireRoot]
+    [ExtIcon("Icons.flash.png")]
     [ExtRequiredDeviceStates(DeviceState.Poweron)]
     public class EExtractRecoveryImg : OfficialVisualExtension
     {

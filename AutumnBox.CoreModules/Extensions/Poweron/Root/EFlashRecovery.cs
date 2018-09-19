@@ -11,6 +11,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.Root
     [ExtName("[ROOT]刷入REC")]
     [ExtName("[ROOT]Flast recovery.img", Lang = "en-US")]
     [ExtRequireRoot]
+    [ExtIcon("Icons.flash.png")]
     [ExtRequiredDeviceStates(DeviceState.Poweron)]
     class EFlashRecovery : AutumnBoxExtension
     {

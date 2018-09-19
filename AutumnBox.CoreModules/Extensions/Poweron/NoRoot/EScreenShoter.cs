@@ -13,6 +13,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot
 {
     [ExtName("截图并保存到电脑")]
     [ExtName("Screenshot and save to pc", Lang = "en-US")]
+    [ExtIcon("Icons.screenshot.png")]
     [ExtRequiredDeviceStates(Basic.Device.DeviceState.Poweron)]
     public class EScreenShoter : OfficialVisualExtension
     {

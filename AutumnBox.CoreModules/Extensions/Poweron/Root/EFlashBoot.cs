@@ -11,6 +11,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.Root
     [ExtName("[ROOT]刷入BOOT")]
     [ExtName("[ROOT]Flast boot.img", Lang = "en-US")]
     [ExtRequireRoot]
+    [ExtIcon("Icons.flash.png")]
     [ExtRequiredDeviceStates(DeviceState.Poweron)]
     class EFlashBoot : AutumnBoxExtension
     {
