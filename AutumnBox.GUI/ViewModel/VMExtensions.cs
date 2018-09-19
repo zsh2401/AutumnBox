@@ -4,8 +4,10 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.Basic.Device;
+using AutumnBox.GUI.Model;
 using AutumnBox.GUI.MVVM;
 using AutumnBox.GUI.Util.Bus;
+using AutumnBox.GUI.Util.Debugging;
 using AutumnBox.GUI.Util.I18N;
 using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.Management.Filters;
@@ -25,6 +27,26 @@ namespace AutumnBox.GUI.ViewModel
     {
 
         #region MVVM
+        public IEnumerable<ExtensionWrapperDock> Docks
+        {
+            get => _docks; set
+            {
+                _docks = value;
+                RaisePropertyChanged();
+            }
+        }
+        private IEnumerable<ExtensionWrapperDock> _docks;
+
+        public ExtensionWrapperDock SelectedDock
+        {
+            get => _selectedDock; set
+            {
+                _selectedDock = value;
+                RaisePropertyChanged();
+            }
+        }
+        private ExtensionWrapperDock _selectedDock;
+
         public bool ExtPanelIsEnabled
         {
             get => _extPanelIsEnabled; set
@@ -34,6 +56,7 @@ namespace AutumnBox.GUI.ViewModel
             }
         }
         private bool _extPanelIsEnabled = false;
+
         public Visibility ExtensionsVisibily
         {
             get
@@ -64,15 +87,16 @@ namespace AutumnBox.GUI.ViewModel
 
         public IEnumerable<IExtensionWrapper> Extensions
         {
-            get => extensions; set
+            get => _extensions; set
             {
-                extensions = value;
-                ExtensionsVisibily = extensions.Count() == 0 ? Visibility.Collapsed : Visibility.Visible;
-                NotFoundVisibily = extensions.Count() == 0 ? Visibility.Visible : Visibility.Collapsed;
+                _extensions = value;
+                Docks = value.ToDocks();
+                ExtensionsVisibily = _extensions.Count() == 0 ? Visibility.Collapsed : Visibility.Visible;
+                NotFoundVisibily = _extensions.Count() == 0 ? Visibility.Visible : Visibility.Collapsed;
                 RaisePropertyChanged();
             }
         }
-        private IEnumerable<IExtensionWrapper> extensions;
+        private IEnumerable<IExtensionWrapper> _extensions;
 
         public ICommand GotoDownloadExtension { get; private set; }
         #endregion
@@ -80,8 +104,8 @@ namespace AutumnBox.GUI.ViewModel
         #region Device
         public void OnSelectNoDevice(object sender, EventArgs e)
         {
+            SGLogger<VMExtensions>.Debug("Select no device");
             ExtPanelIsEnabled = false;
-            //BtnStatus = false;
         }
 
         public void OnSelectDevice(object sender, EventArgs e)
@@ -90,25 +114,12 @@ namespace AutumnBox.GUI.ViewModel
         }
 
         #endregion
-        //private bool BtnStatus
-        //{
-        //    set
-        //    {
-        //        BtnRunExtensionContent = value ? App.Current.Resources["PanelExtensionsButtonEnabled"].ToString() : App.Current.Resources["PanelExtensionsButtonDisabled"].ToString();
-        //        RunExtension.CanExecuteProp = value;
-        //    }
-        //}
         private DeviceState targetState;
 
         internal void Load(DeviceState state)
         {
             targetState = state;
-            //RunExtension = new FlexiableCommand((args) =>
-            //{
-            //    Selected.Wrapper.RunAsync(DeviceSelectionObserver.Instance.CurrentDevice);
-            //});
             GotoDownloadExtension = new OpenParameterUrlCommand();
-            //Selected = null;
             ComObserver();
         }
         private void ComObserver()
@@ -131,7 +142,6 @@ namespace AutumnBox.GUI.ViewModel
             if (targetState == AutumnBoxExtension.NoMatter)
             {
                 ExtPanelIsEnabled = true;
-                //BtnStatus = true;
                 return;
             }
             else
@@ -142,7 +152,6 @@ namespace AutumnBox.GUI.ViewModel
         }
         public void LoadExtensions()
         {
-            //Selected = null;
             IEnumerable<IExtensionWrapper> filted =
                 OpenFramework.Management.Manager.InternalManager
                 .GetLoadedWrappers(
@@ -152,17 +161,6 @@ namespace AutumnBox.GUI.ViewModel
             App.Current.Dispatcher.Invoke(() =>
             {
                 Extensions = filted;
-                //Wrappers = WrapperWrapper.From(filted);
-                //if (Wrappers.Count() == 0)
-                //{
-                //    NotFoundVisibily = Visibility.Visible;
-                //    ExtensionsVisibily = Visibility.Collapsed;
-                //}
-                //else
-                //{
-                //    NotFoundVisibily = Visibility.Collapsed;
-                //    ExtensionsVisibily = Visibility.Visible;
-                //}
             });
         }
     }

@@ -5,39 +5,38 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:controls="clr-namespace:AutumnBox.GUI.View.Controls"
+             xmlns:viewmodel="clr-namespace:AutumnBox.GUI.ViewModel"
              FontFamily="{DynamicResource AutumnBox.Font}"
              Loaded="UserControl_Loaded"
+             x:Name="thisCtrl"
              mc:Ignorable="d" d:DesignWidth="622.427" d:DesignHeight="281.547">
-    <Grid>
 
-        <controls:ExtensionsWrapPanel IsEnabled="{Binding ExtPanelIsEnabled}" Extensions="{Binding Extensions}" Visibility="{Binding ExtensionsVisibily}"/>
-        
+    <UserControl.DataContext>
+        <viewmodel:VMExtensions/>
+    </UserControl.DataContext>
+    <Grid>
+        <Grid Visibility="{Binding ExtensionsVisibily}">
+            <ListBox ItemsSource="{Binding Docks}" SelectedItem="{Binding SelectedDock}" ScrollViewer.VerticalScrollBarVisibility="Hidden">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel  IsEnabled="{Binding ExtPanelIsEnabled}" ItemHeight="100" ItemWidth="110"/>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel MinHeight="95" MinWidth="90" MaxWidth="90" ToolTip="{Binding ToolTip}" Margin="0" Orientation="Vertical">
+                            <Image RenderOptions.BitmapScalingMode="Fant" Height="50px" Width="50px" Source="{Binding Icon}"/>
+                            <TextBlock TextAlignment="Center" FontSize="12" TextWrapping="Wrap" TextTrimming="WordEllipsis"  Text="{Binding Name}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Grid>
+
         <StackPanel Visibility="{Binding NotFoundVisibily}" VerticalAlignment="Center" Orientation="Vertical" HorizontalAlignment="Center">
             <TextBlock FontSize="25" Foreground="{DynamicResource MainBackgroundForegroundBrush}" HorizontalAlignment="Center" Text="{DynamicResource PanelExtensionsNotFound}"/>
             <Button Command="{Binding GotoDownloadExtension}" CommandParameter="{DynamicResource urlDownloadExtensions}" FontSize="13" HorizontalAlignment="Center" Content="{DynamicResource PanelExtesnionsDownloadExt}" Style="{DynamicResource MaterialDesignFlatButton}"/>
             <TextBlock Margin="10" FontSize="13" Foreground="{DynamicResource MainBackgroundForegroundBrush}" HorizontalAlignment="Center" VerticalAlignment="Center" Text="I'd love to change the world,but i dont know what to do"/>
         </StackPanel>
-        
-        <!--<Grid Visibility="{Binding ExtensionsVisibily}">
-            <ListBox Margin="10,10,0,10" VerticalAlignment="Stretch" HorizontalAlignment="Left" Width="262" ItemsSource="{Binding Wrappers}" SelectedItem="{Binding Selected,Mode=TwoWay}">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <Image RenderOptions.BitmapScalingMode="Fant" Height="20px" Width="20px" Source="{Binding Path=Icon}"/>
-                            <Label Content="{Binding Name}"/>
-                        </StackPanel>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>-->
-            <!--<Grid Visibility="{Binding HaveNoSelectionVisibily}" Margin="289,10,10,10">
-                <TextBlock FontSize="20" Foreground="{DynamicResource MainBackgroundForegroundBrush}" Text="{DynamicResource PanelExtensionsNoSelect}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            </Grid>
-            <GroupBox Header="{Binding Selected.Name}" Visibility="{Binding DetailsVisibily}" FontSize="17" Margin="289,10,10,10">
-                <Grid>
-                    <TextBlock TextWrapping = "Wrap" Text="{Binding Selected.Wrapper.Info.FormatedDesc}" Foreground="{DynamicResource MainBackgroundForegroundBrush}" Margin="0,0,10,35"/>
-                    <Button Style="{DynamicResource MaterialDesignToolButton}" Command="{Binding RunExtension}" Content="{Binding BtnRunExtensionContent}" Height="28" VerticalAlignment="Bottom"/>
-                </Grid>
-            </GroupBox>-->
-        <!--</Grid>-->
     </Grid>
 </UserControl>

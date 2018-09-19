@@ -14,7 +14,6 @@ namespace AutumnBox.GUI.View.Panel
         public PanelExtension()
         {
             InitializeComponent();
-            DataContext = new VMExtensions();
         }
 
         private void UserControl_Loaded(object sender, System.Windows.RoutedEventArgs e)
