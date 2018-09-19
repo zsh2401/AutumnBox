@@ -35,6 +35,8 @@
     
     <!--PanelSettings-->
     <s:String x:Key="PanelSettingsUx">UX</s:String>
+    <s:String x:Key="PanelSettingsRandomTheme">Random theme</s:String>
+      <s:String x:Key="PanelSettingsRandomThemeTip">The colorful dream in your eyes</s:String>
      <s:String x:Key="PanelSettingsSounds">Sound effect</s:String>
     <s:String x:Key="PanelSettingsSoundsTip">Such as play notification sounds when extension finished</s:String>
      <s:String x:Key="PanelSettingsInterface">Interface</s:String>

@@ -4,63 +4,77 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:viewmodel="clr-namespace:AutumnBox.GUI.ViewModel"
              FontFamily="{DynamicResource AutumnBox.Font}"
              FontSize="15"
-             mc:Ignorable="d" Height="274.547" Width="530">
+             mc:Ignorable="d" Height="312.047" Width="530">
+    <UserControl.DataContext>
+        <viewmodel:VMSettingsDialog/>
+    </UserControl.DataContext>
     <Grid>
         <WrapPanel Margin="5" VerticalAlignment="Top">
-            <materialDesign:Card Margin="5" Width="250">
-                <StackPanel Margin="5">
-                    <TextBlock  Text="{DynamicResource PanelSettingsInterface}" Margin="0,0,0,5"/>
-                    <Label Height="1" Background="LightGray"/>
-                    <Grid>
-                        <TextBlock Margin="0,0,15,0" VerticalAlignment="Center" Text="{DynamicResource Theme}"/>
-                        <ComboBox HorizontalAlignment="Right" ItemsSource="{Binding Themes}" DisplayMemberPath="{Binding ThemeDisplayMemberPath}" SelectedItem="{Binding SelectedTheme}" Width="170"/>
-                    </Grid>
-                    <Grid>
-                        <TextBlock Margin="0,0,15,0" VerticalAlignment="Center" Text="{DynamicResource PanelSettingsLanguage}"/>
-                        <ComboBox HorizontalAlignment="Right" ItemsSource="{Binding Languages}" DisplayMemberPath="{Binding LanguageDisplayMemberPath}" SelectedItem="{Binding SelectedLanguage}" Width="170"/>
-                    </Grid>
-                </StackPanel>
-            </materialDesign:Card>
+            <StackPanel Width="260" Orientation="Vertical">
+                <materialDesign:Card Margin="5" Width="250">
+                    <StackPanel Margin="5">
+                        <TextBlock  Text="{DynamicResource PanelSettingsInterface}" Margin="0,0,0,5"/>
+                        <Label Height="1" Background="LightGray"/>
+                        <Grid>
+                            <StackPanel Orientation="Vertical" Margin="0,0,39,0">
+                                <TextBlock HorizontalAlignment="Left" FontSize="15" Text="{DynamicResource PanelSettingsRandomTheme}"/>
+                                <TextBlock Foreground="DarkSlateGray" TextWrapping="Wrap" FontSize="12" HorizontalAlignment="Left" Text="{DynamicResource PanelSettingsRandomThemeTip}"/>
+                            </StackPanel>
+                            <ToggleButton HorizontalAlignment="Right" Style="{DynamicResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding UseRandomTheme}"  ToolTip="{DynamicResource PanelSettingsRandomTheme}"/>
+                        </Grid>
+                        <Grid IsEnabled="{Binding ThemeComboBoxEnabled}">
+                            <TextBlock Margin="0,0,15,0" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{DynamicResource Theme}"/>
+                            <ComboBox HorizontalAlignment="Right" ItemsSource="{Binding Themes}" DisplayMemberPath="{Binding ThemeDisplayMemberPath}" SelectedItem="{Binding SelectedTheme}" Width="170"/>
+                        </Grid>
+                        <Grid>
+                            <TextBlock Margin="0,0,15,0" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{DynamicResource PanelSettingsLanguage}"/>
+                            <ComboBox HorizontalAlignment="Right" ItemsSource="{Binding Languages}" DisplayMemberPath="{Binding LanguageDisplayMemberPath}" SelectedItem="{Binding SelectedLanguage}" Width="170"/>
+                        </Grid>
+                    </StackPanel>
+                </materialDesign:Card>
+                
+                <materialDesign:Card Margin="5" Width="250">
+                    <StackPanel Margin="5" Orientation="Vertical">
+                        <TextBlock  Margin="0,0,0,5" Text="{DynamicResource PanelSettingsOther}"/>
+                        <Label Height="1" Background="LightGray"/>
+                        <Button Command="{Binding SendToDesktop}" FontSize="12" Margin="5" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource PanelSettingsSendToDesktop}"/>
+                    </StackPanel>
+                </materialDesign:Card>
+            </StackPanel>
 
-            <materialDesign:Card Margin="5" Width="250">
-                <StackPanel  Margin="5">
-                    <TextBlock  Text="{DynamicResource PanelSettingsDebug}" Margin="0,0,0,5"/>
-                    <Label Height="1" Background="LightGray"/>
-                    <Button  Command="{Binding ShowDebugWindow}" FontSize="12"  Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource PanelSettingsCreateDebugWindow}"/>
-                    <Grid>
-                        <StackPanel Orientation="Vertical" Margin="0,0,39,0">
-                            <TextBlock HorizontalAlignment="Left" Text="{DynamicResource PanelSettingsLaunchDebugWindowOnNextLaunch}"/>
-                            <TextBlock Foreground="DarkSlateGray" TextWrapping="Wrap" FontSize="12" HorizontalAlignment="Left" Text="{DynamicResource PanelSettingsLaunchDebugWindowOnNextLaunchTip}"/>
-                        </StackPanel>
-                        <ToggleButton HorizontalAlignment="Right" Style="{DynamicResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding DebugOnNext}"  ToolTip="{DynamicResource PanelSettingsLaunchDebugWindowOnNextLaunch}"/>
-                    </Grid>
-                </StackPanel>
-            </materialDesign:Card>
+            <StackPanel Width="260" Orientation="Vertical">
+                <materialDesign:Card Margin="5" Width="250">
+                    <StackPanel  Margin="5">
+                        <TextBlock  Text="{DynamicResource PanelSettingsDebug}" Margin="0,0,0,5"/>
+                        <Label Height="1" Background="LightGray"/>
+                        <Button  Command="{Binding ShowDebugWindow}" FontSize="12"  Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource PanelSettingsCreateDebugWindow}"/>
+                        <Grid>
+                            <StackPanel Orientation="Vertical" Margin="0,0,39,0">
+                                <TextBlock HorizontalAlignment="Left" Text="{DynamicResource PanelSettingsLaunchDebugWindowOnNextLaunch}"/>
+                                <TextBlock Foreground="DarkSlateGray" TextWrapping="Wrap" FontSize="12" HorizontalAlignment="Left" Text="{DynamicResource PanelSettingsLaunchDebugWindowOnNextLaunchTip}"/>
+                            </StackPanel>
+                            <ToggleButton HorizontalAlignment="Right" Style="{DynamicResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding DebugOnNext}"  ToolTip="{DynamicResource PanelSettingsLaunchDebugWindowOnNextLaunch}"/>
+                        </Grid>
+                    </StackPanel>
+                </materialDesign:Card>
 
-            <materialDesign:Card Margin="5" Width="250">
-                <StackPanel Margin="5" Orientation="Vertical">
-                    <TextBlock  Margin="0,0,0,5" Text="{DynamicResource PanelSettingsUx}"/>
-                    <Label Margin="0,0,0,5" Height="1" Background="LightGray"/>
-                    <Grid>
-                        <StackPanel Orientation="Vertical" Margin="0,0,39,0">
-                            <TextBlock HorizontalAlignment="Left" FontSize="15" Text="{DynamicResource PanelSettingsSounds}"/>
-                            <TextBlock Foreground="DarkSlateGray" TextWrapping="Wrap" HorizontalAlignment="Left" FontSize="12" Text="{DynamicResource PanelSettingsSoundsTip}"/>
-                        </StackPanel>
-                        <ToggleButton HorizontalAlignment="Right" Style="{DynamicResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding SoundEffectEnable}"  ToolTip="{DynamicResource PanelSettingsSounds}"/>
-                    </Grid>
-                </StackPanel>
-            </materialDesign:Card>
-            
-            <materialDesign:Card Margin="5" Width="250">
-                <StackPanel Margin="5" Orientation="Vertical">
-                    <TextBlock  Margin="0,0,0,5" Text="{DynamicResource PanelSettingsOther}"/>
-                    <Label Height="1" Background="LightGray"/>
-                    <Button Command="{Binding SendToDesktop}" FontSize="12" Margin="5" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource PanelSettingsSendToDesktop}"/>
-                </StackPanel>
-            </materialDesign:Card>
-            
+                <materialDesign:Card Margin="5" Width="250">
+                    <StackPanel Margin="5" Orientation="Vertical">
+                        <TextBlock  Margin="0,0,0,5" Text="{DynamicResource PanelSettingsUx}"/>
+                        <Label Margin="0,0,0,5" Height="1" Background="LightGray"/>
+                        <Grid>
+                            <StackPanel Orientation="Vertical" Margin="0,0,39,0">
+                                <TextBlock HorizontalAlignment="Left" FontSize="15" Text="{DynamicResource PanelSettingsSounds}"/>
+                                <TextBlock Foreground="DarkSlateGray" TextWrapping="Wrap" HorizontalAlignment="Left" FontSize="12" Text="{DynamicResource PanelSettingsSoundsTip}"/>
+                            </StackPanel>
+                            <ToggleButton HorizontalAlignment="Right" Style="{DynamicResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding SoundEffectEnable}"  ToolTip="{DynamicResource PanelSettingsSounds}"/>
+                        </Grid>
+                    </StackPanel>
+                </materialDesign:Card>
+            </StackPanel>
         </WrapPanel>
         <Button Margin="10" VerticalAlignment="Bottom" Style="{DynamicResource MaterialDesignFlatButton}" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Content="{DynamicResource btnClose}"/>
     </Grid>

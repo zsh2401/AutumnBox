@@ -21,6 +21,31 @@ namespace AutumnBox.GUI.ViewModel
     class VMSettingsDialog : ViewModelBase
     {
         #region MVVM
+        public bool UseRandomTheme
+        {
+            get
+            {
+                return Settings.Default.RandomTheme;
+            }
+            set
+            {
+                Settings.Default.RandomTheme = value;
+                Settings.Default.Save();
+                ThemeManager.Instance.ApplyBySetting();
+                RaisePropertyChanged();
+                RaisePropertyChanged(nameof(SelectedTheme));
+                RaisePropertyChanged(nameof(ThemeComboBoxEnabled));
+            }
+        }
+
+        public bool ThemeComboBoxEnabled
+        {
+            get
+            {
+                return !Settings.Default.RandomTheme;
+            }
+        }
+
         public IEnumerable<ILanguage> Languages
         {
             get => LanguageManager.Instance.Languages;
@@ -40,11 +65,12 @@ namespace AutumnBox.GUI.ViewModel
         {
             get => ThemeManager.Instance.Current; set
             {
-                ThemeManager.Instance.Current = value;
+                Settings.Default.Theme = value.Name;
+                Settings.Default.Save();
+                ThemeManager.Instance.ApplyBySetting();
                 RaisePropertyChanged();
             }
         }
-
 
         public bool DebugOnNext
         {

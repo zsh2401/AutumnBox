@@ -94,5 +94,17 @@ namespace AutumnBox.GUI.Properties {
                 this["NotifyOnFinish"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool RandomTheme {
+            get {
+                return ((bool)(this["RandomTheme"]));
+            }
+            set {
+                this["RandomTheme"] = value;
+            }
+        }
     }
 }

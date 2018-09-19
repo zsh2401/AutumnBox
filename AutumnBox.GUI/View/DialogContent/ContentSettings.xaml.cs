@@ -11,7 +11,6 @@ namespace AutumnBox.GUI.View.DialogContent
         public ContentSettings()
         {
             InitializeComponent();
-            DataContext = new VMSettingsDialog();
         }
     }
 }

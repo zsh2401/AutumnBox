@@ -37,6 +37,8 @@
     
         <!--PanelSettings-->
      <s:String x:Key="PanelSettingsUx">交互</s:String>
+    <s:String x:Key="PanelSettingsRandomTheme">随机主题</s:String>
+      <s:String x:Key="PanelSettingsRandomThemeTip">夕阳下,你眼中闪烁的泪光,奇迹般的五彩斑斓</s:String>
     <s:String x:Key="PanelSettingsSounds">音效</s:String>
     <s:String x:Key="PanelSettingsSoundsTip">例如功能结束时的音效，但这需要该功能支持</s:String>
     <s:String x:Key="PanelSettingsInterface">界面</s:String>
