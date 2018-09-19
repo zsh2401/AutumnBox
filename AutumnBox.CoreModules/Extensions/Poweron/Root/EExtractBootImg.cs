@@ -16,6 +16,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.Root
     [ExtName("[ROOT]提取BOOT.IMG")]
     [ExtName("[ROOT]Extract boot.img", Lang = "en-US")]
     [ExtRequireRoot]
+    [ExtIcon("Icons.flash.png")]
     [ExtRequiredDeviceStates(DeviceState.Poweron)]
     public class EExtractBootImg : OfficialVisualExtension
     {

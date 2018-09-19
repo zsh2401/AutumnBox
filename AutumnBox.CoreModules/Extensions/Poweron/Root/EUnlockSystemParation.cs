@@ -14,6 +14,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.Root
     [ExtName("[ROOT]Unlock system paration", Lang = "en-US")]
     [ExtRequiredDeviceStates(DeviceState.Poweron)]
     [ExtRequireRoot]
+    [ExtIcon("Icons.key.png")]
     public class EUnlockSystemParation : OfficialVisualExtension
     {
         protected override int VisualMain()

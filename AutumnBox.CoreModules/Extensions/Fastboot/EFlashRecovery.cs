@@ -12,7 +12,7 @@ namespace AutumnBox.CoreModules.Extensions.Fastboot
     [ExtName("刷入REC")]
     [ExtName("Flash recovery.img", Lang = "en-US")]
     [ExtRequiredDeviceStates(DeviceState.Fastboot)]
-    [ExtIcon("Icons.flash.png")]
+    [ExtIcon("Icons.cd.png")]
     public class EFlashRecovery : OfficialVisualExtension
     {
         protected override int VisualMain()
