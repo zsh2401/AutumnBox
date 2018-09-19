@@ -55,6 +55,7 @@
     <Compile Include="Extensions\Poweron\NoRoot\DpmSetter\EAirForzenActivator.cs" />
     <Compile Include="Extensions\Poweron\NoRoot\DpmSetter\EBlackHole.cs" />
     <Compile Include="Extensions\Poweron\NoRoot\EGCM.cs" />
+    <Compile Include="Extensions\Poweron\NoRoot\EGreenifyGrant.cs" />
     <Compile Include="Extensions\Poweron\NoRoot\Sh\EShizukuActivator.cs" />
     <Compile Include="FasterVisualExtension.Kit.cs" />
     <Compile Include="FasterVisualExtension.Main.cs" />
