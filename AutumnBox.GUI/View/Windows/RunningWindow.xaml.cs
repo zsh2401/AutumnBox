@@ -15,6 +15,10 @@ namespace AutumnBox.GUI.View.Windows
             InitializeComponent();
             ViewModel = new VMRunningWindow(this, wrapper);
             DataContext = ViewModel;
+            TBOutput.TextChanged += (s, e) =>
+            {
+                TBOutput.ScrollToEnd();
+            };
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)

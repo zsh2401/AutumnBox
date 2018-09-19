@@ -20,6 +20,6 @@
             <ProgressBar BorderBrush="Transparent" Background="Transparent"  IsIndeterminate="{Binding IsIndeterminate}"  Value="{Binding ProgressValue}"/>
             <TextBlock Margin="10" Text="{Binding Tip}" FontSize="25" />
         </StackPanel>
-        <TextBox  IsReadOnly="True"  Style="{x:Null}" BorderBrush="{DynamicResource PrimaryLightBrush}" Text="{Binding Output}" Margin="10,93,10,10" TextWrapping="Wrap"/>
+        <TextBox  x:Name="TBOutput" IsReadOnly="True"  Style="{x:Null}" BorderBrush="{DynamicResource PrimaryLightBrush}" Text="{Binding Output}" Margin="10,93,10,10" TextWrapping="Wrap"/>
     </Grid>
 </Window>
