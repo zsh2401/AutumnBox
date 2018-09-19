@@ -1,5 +1,4 @@
-﻿using AutumnBox.GUI.ViewModel;
-using System;
+﻿using System;
 using System.Windows.Controls;
 
 namespace AutumnBox.GUI.View.Panel
@@ -9,16 +8,14 @@ namespace AutumnBox.GUI.View.Panel
     /// </summary>
     public partial class PanelDevices : UserControl
     {
-        public static  bool hasOne = false;
-        private VMConnectDevices vm;
+        public static bool hasOne = false;
         public PanelDevices()
         {
-            if (hasOne) {
+            if (hasOne)
+            {
                 throw new Exception("1 app 1 devices panel!");
             }
             InitializeComponent();
-            vm = new VMConnectDevices();
-            DataContext = vm;
             hasOne = true;
         }
     }

@@ -6,9 +6,17 @@
              xmlns:local="clr-namespace:AutumnBox.GUI.View.Panel"
              xmlns:panel="clr-namespace:AutumnBox.GUI.View.Panel"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             FontFamily="{DynamicResource AutumnBox.Font}"
+             FontSize="12"
+             xmlns:dragablz="http://dragablz.net/winfx/xaml/dragablz"
+              xmlns:dockablz="clr-namespace:Dragablz.Dockablz;assembly=Dragablz"
+             xmlns:viewmodel="clr-namespace:AutumnBox.GUI.ViewModel"
              mc:Ignorable="d" MinWidth="820" d:DesignHeight="566" Width="797.5">
+    <UserControl.DataContext>
+        <viewmodel:VMCurrentDevice/>
+    </UserControl.DataContext>
     <DockPanel>
-        <DockPanel DockPanel.Dock="Top" Margin="10" MaxWidth="800" Height="220">
+        <DockPanel DockPanel.Dock="Top" Margin="10" Width="800" MaxWidth="800" Height="220">
             <materialDesign:Card DockPanel.Dock="Left" Width="610">
                 <panel:PanelDeviceDetails VerticalAlignment="Top" Height="220"/>
             </materialDesign:Card>
@@ -16,31 +24,88 @@
                 <local:PanelReboot  Width="170" Height="220"/>
             </materialDesign:Card>
         </DockPanel>
-        <materialDesign:Card Margin="0,0,0,5"  DockPanel.Dock="Bottom" Width="800" MaxWidth="800" VerticalAlignment="Stretch">
-            <TabControl Margin="2,2,2,2" SelectedIndex="{Binding TabSelectedIndex,Mode=TwoWay}" Background="{x:Null}" BorderBrush="{DynamicResource PrimaryLightBrush}">
-                <TabItem  Style="{DynamicResource AtmbxTabItem}" TabIndex="0" Header="{DynamicResource PanelCurrentDevicePoweron}" Margin="-2,-2,-16,0"  FontSize="16">
-                    <local:PanelExtension  TargetDeviceState="Poweron" Margin="0"/>
+        <materialDesign:Card DockPanel.Dock="Bottom" Width="800" Margin="0,5,0,10" MaxWidth="800">
+            <dockablz:Layout>
+                <dragablz:TabablzControl  SelectedIndex="{Binding TabSelectedIndex}" Style="{DynamicResource MaterialDesignTabablzControlStyle}">
+
+                    <TabItem TabIndex="0" Header="{DynamicResource PanelCurrentDevicePoweron}" FontSize="10">
+                        <local:PanelExtension TargetDeviceState="Poweron" Margin="0"/>
+                    </TabItem>
+
+                    <TabItem TabIndex="1" Header="{DynamicResource PanelCurrentDeviceRecovery}" FontSize="16">
+                        <local:PanelExtension TargetDeviceState="Recovery"  Margin="0"/>
+                    </TabItem>
+
+                    <TabItem TabIndex="2" Header="{DynamicResource PanelCurrentDeviceFastboot}" FontSize="16">
+                        <local:PanelExtension TargetDeviceState="Fastboot"  Margin="0"/>
+                    </TabItem>
+
+                    <TabItem TabIndex="3" Header="{DynamicResource PanelCurrentDeviceSideload}" FontSize="16">
+                        <local:PanelExtension TargetDeviceState="Sideload"  Margin="0"/>
+                    </TabItem>
+
+                    <TabItem TabIndex="4" Header="{DynamicResource PanelCurrentDeviceUnauthorized}" FontSize="16">
+                        <local:PanelExtension TargetDeviceState="Unauthorized"  Margin="0"/>
+                    </TabItem>
+
+                    <TabItem TabIndex="5" Header="{DynamicResource PanelCurrentDeviceOffline}" FontSize="16">
+                        <local:PanelExtension TargetDeviceState="Offline"  Margin="0"/>
+                    </TabItem>
+
+                    <TabItem TabIndex="6" Header="{DynamicResource PanelCurrentDeviceUnknown}" FontSize="12">
+                        <local:PanelExtension TargetDeviceState="Unknown"  Margin="0"/>
+                    </TabItem>
+                </dragablz:TabablzControl>
+            </dockablz:Layout>
+            <!--<TabControl TabStripPlacement="Left" Margin="10" SelectedIndex="{Binding TabSelectedIndex,Mode=TwoWay}" Background="{x:Null}" BorderBrush="{DynamicResource PrimaryLightBrush}">
+                <TabItem  ToolTip="{DynamicResource PanelCurrentDevicePoweron}"  Style="{DynamicResource AtmbxTabItem}" TabIndex="0">
+                    <TabItem.Header>
+                        <Image Height="20" Width="20" Source="{DynamicResource IconPoweron}"/>
+                    </TabItem.Header>
+                    -->
+            <!--<local:PanelExtension  TargetDeviceState="Poweron" Margin="0"/>-->
+            <!--
                 </TabItem>
 
-                <TabItem Style="{DynamicResource AtmbxTabItem}" TabIndex="1"  Header="{DynamicResource PanelCurrentDeviceRecovery}" Margin="16,-2,-26,0"  FontSize="16">
-                    <!--<local:PanelExtension  TargetDeviceState="Recovery" Margin="0"/>-->
+                <TabItem ToolTip="{DynamicResource PanelCurrentDeviceRecovery}"  Style="{DynamicResource AtmbxTabItem}" TabIndex="0"   FontSize="16" Margin="0">
+                    <TabItem.Header>
+                        <Image Height="20" Width="20" Source="{DynamicResource IconRecovery}"/>
+                    </TabItem.Header>
+                    -->
+            <!--<local:PanelExtension  TargetDeviceState="Poweron" Margin="0"/>-->
+            <!--
+                </TabItem>-->
+            <!--<TabItem Style="{DynamicResource AtmbxTabItem}" TabIndex="1"  Header="{DynamicResource PanelCurrentDeviceRecovery}" Margin="16,-2,-26,0"  FontSize="16">
+                    -->
+            <!--<local:PanelExtension  TargetDeviceState="Recovery" Margin="0"/>-->
+            <!--
                 </TabItem>
                 <TabItem Style="{DynamicResource AtmbxTabItem}" TabIndex="3"  Header="{DynamicResource PanelCurrentDeviceFastboot}" Margin="26,-2,-29,0"  FontSize="16">
-                    <!--<local:PanelExtension   TargetDeviceState="Fastboot" Margin="0"/>-->
+                    -->
+            <!--<local:PanelExtension   TargetDeviceState="Fastboot" Margin="0"/>-->
+            <!--
                 </TabItem>
                 <TabItem Style="{DynamicResource AtmbxTabItem}" TabIndex="2"  Header="{DynamicResource PanelCurrentDeviceSideload}" Margin="29,-2,-39,0"  FontSize="16">
-                    <!--<local:PanelExtension TargetDeviceState="Sideload" Margin="0"/>-->
+                    -->
+            <!--<local:PanelExtension TargetDeviceState="Sideload" Margin="0"/>-->
+            <!--
                 </TabItem>
                 <TabItem Style="{DynamicResource AtmbxTabItem}" TabIndex="4"  Header="{DynamicResource PanelCurrentDeviceUnauthorized}" Margin="39,-2,-48,0"  FontSize="16">
-                    <!--<local:PanelExtension TargetDeviceState="Unauthorized" Margin="0"/>-->
+                    -->
+            <!--<local:PanelExtension TargetDeviceState="Unauthorized" Margin="0"/>-->
+            <!--
                 </TabItem>
                 <TabItem Style="{DynamicResource AtmbxTabItem}" TabIndex="5"  Header="{DynamicResource PanelCurrentDeviceOffline}" Margin="48,-2,-58,0"  FontSize="16">
-                    <!--<local:PanelExtension TargetDeviceState="Offline" Margin="0"/>-->
+                    -->
+            <!--<local:PanelExtension TargetDeviceState="Offline" Margin="0"/>-->
+            <!--
                 </TabItem>
                 <TabItem Style="{DynamicResource AtmbxTabItem}" TabIndex="6"  Header="{DynamicResource PanelCurrentDeviceUnknown}" Margin="58,-2,-68,0"  FontSize="16">
-                    <!--<local:PanelExtension TargetDeviceState="Unknown" Margin="0"/>-->
-                </TabItem>
-            </TabControl>
+                    -->
+            <!--<local:PanelExtension TargetDeviceState="Unknown" Margin="0"/>-->
+            <!--
+                </TabItem>-->
+            <!--</TabControl>-->
         </materialDesign:Card>
     </DockPanel>
 </UserControl>

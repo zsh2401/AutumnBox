@@ -28,7 +28,7 @@ namespace AutumnBox.GUI.Util
             void Finish();
         }
         private readonly ILoadingUI ui;
-        public AppLoader(ILoadingUI ui):this()
+        public AppLoader(ILoadingUI ui) : this()
         {
             this.ui = ui;
         }
@@ -52,9 +52,7 @@ namespace AutumnBox.GUI.Util
         {
             LoggingStation.Instance.Work();
             Updater.CheckAndNotice();
-//#if !DEBUG
-//            Statistics.Do();
-//#endif
+            Statistics.Do();
             ui.Progress = 0;
             //如果设置在启动时打开调试窗口
             if (Settings.Default.ShowDebuggingWindowNextLaunch)
@@ -81,7 +79,7 @@ namespace AutumnBox.GUI.Util
 #endif
             ui.Progress = 30;
             ui.LoadingTip = App.Current.Resources["ldmsgStartAdb"].ToString();
-           
+
             try
             {
                 logger.Info("trying starts adb server ");

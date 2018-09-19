@@ -1,12 +1,13 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
-    
+
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
         <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
         <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepPurple.xaml" />
         <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Dragablz;component/Themes/materialdesign.xaml"/>
         <ResourceDictionary Source="Ctrls/Font.xaml"/>
         <ResourceDictionary Source="Ctrls/FantImage.xaml"/>
         <ResourceDictionary Source="Ctrls/TabItemStyle.xaml"/>
@@ -19,6 +20,11 @@
     
     <!--Images-->
     <BitmapImage x:Key="DefaultExtensionIcon">../Drawable/Extension/defaultExtIcon.png</BitmapImage>
+    <BitmapImage x:Key="IconPoweron">../Drawable/Extension/defaultExtIcon.png</BitmapImage>
+    <BitmapImage x:Key="IconRecovery">../Drawable/Extension/defaultExtIcon.png</BitmapImage>
+    <BitmapImage x:Key="IconFastboot">../Drawable/Extension/defaultExtIcon.png</BitmapImage>
+    <BitmapImage x:Key="IconSideload">../Drawable/Extension/defaultExtIcon.png</BitmapImage>
+    <BitmapImage x:Key="IconUnauth">../Drawable/Extension/defaultExtIcon.png</BitmapImage>
     <!--Images-->
     
     <!--Font-->
@@ -44,7 +50,7 @@
     <Color x:Key="PrimaryDarkForegroundColor">#FEFEFE</Color>
     <SolidColorBrush x:Key="PrimaryDarkForegroundBrush" Color="{DynamicResource PrimaryDarkForegroundColor}"/>
 
-    <Color x:Key="SecondaryColor">#FBA746</Color>
+    <Color x:Key="SecondaryColor">#FFEB3B</Color>
     <SolidColorBrush x:Key="SecondaryBrush" Color="{DynamicResource SecondaryColor}"/>
     
     <Color x:Key="SecondaryForegroundColor">#FEFEFE</Color>

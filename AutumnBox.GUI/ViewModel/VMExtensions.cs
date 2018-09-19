@@ -98,6 +98,8 @@ namespace AutumnBox.GUI.ViewModel
         }
         private IEnumerable<IExtensionWrapper> _extensions;
 
+        public ICommand RunSelectedItem { get; private set; }
+
         public ICommand GotoDownloadExtension { get; private set; }
         #endregion
 
@@ -121,6 +123,10 @@ namespace AutumnBox.GUI.ViewModel
             targetState = state;
             GotoDownloadExtension = new OpenParameterUrlCommand();
             ComObserver();
+            RunSelectedItem = new FlexiableCommand(() =>
+            {
+                SelectedDock?.Wrapper.RunAsync(DeviceSelectionObserver.Instance.CurrentDevice);
+            });
         }
         private void ComObserver()
         {

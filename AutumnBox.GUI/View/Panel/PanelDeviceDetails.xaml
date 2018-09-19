@@ -4,9 +4,13 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:viewmodel="clr-namespace:AutumnBox.GUI.ViewModel"
              FontFamily="{DynamicResource AutumnBox.Font}"
              FontSize="12"
              mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="220">
+    <UserControl.DataContext>
+        <viewmodel:VMDeviceDetails/>
+    </UserControl.DataContext>
     <Grid HorizontalAlignment="Center" Width="600" MaxWidth="670" MaxHeight="220">
         <!--<materialDesign:Transitioner SelectedIndex="{Binding TranSelectIndex}">-->
         <StackPanel Orientation="Vertical">

@@ -6,8 +6,11 @@
              xmlns:oftheday="clr-namespace:AutumnBox.GUI.View.OfTheDay"
              
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             
+             xmlns:viewmodel="clr-namespace:AutumnBox.GUI.ViewModel"
              mc:Ignorable="d" d:DesignHeight="566" d:DesignWidth="821">
+    <UserControl.DataContext>
+        <viewmodel:VMHome/>
+    </UserControl.DataContext>
     <Grid>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="5">
             <Image Height="100px" Source="/Resources/Drawable/icon.ico"></Image>
