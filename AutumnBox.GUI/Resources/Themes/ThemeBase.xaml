@@ -20,11 +20,6 @@
     
     <!--Images-->
     <BitmapImage x:Key="DefaultExtensionIcon">../Drawable/Extension/defaultExtIcon.png</BitmapImage>
-    <BitmapImage x:Key="IconPoweron">../Drawable/Extension/defaultExtIcon.png</BitmapImage>
-    <BitmapImage x:Key="IconRecovery">../Drawable/Extension/defaultExtIcon.png</BitmapImage>
-    <BitmapImage x:Key="IconFastboot">../Drawable/Extension/defaultExtIcon.png</BitmapImage>
-    <BitmapImage x:Key="IconSideload">../Drawable/Extension/defaultExtIcon.png</BitmapImage>
-    <BitmapImage x:Key="IconUnauth">../Drawable/Extension/defaultExtIcon.png</BitmapImage>
     <!--Images-->
     
     <!--Font-->

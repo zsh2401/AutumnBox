@@ -21,8 +21,18 @@
             <StackPanel VerticalAlignment="Bottom" Orientation="Vertical">
                 <oftheday:MOTD Width="185" Height="95" Margin="0,0,0,5"/>
                 <oftheday:POTD Width="185" Height="140" Margin="0,0,0,10"/>
-                <Button Style="{DynamicResource MaterialDesignRaisedButton}" Command="{Binding StartShell}"  Content="{DynamicResource btnADBCMD}"  FontSize="14"  Margin="5,0,5,5"/>
-                <Button  Style="{DynamicResource MaterialDesignRaisedButton}" Command="{Binding ShowSettingsDialog}"  Content="{DynamicResource btnSetting}"   FontSize="14"   Margin="5,0,5,5" />
+                <Button Style="{DynamicResource MaterialDesignRaisedButton}" Command="{Binding StartShell}"  FontSize="14"  Margin="5,0,5,5">
+                    <StackPanel Width="130" Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Console" Height="20"/>
+                        <TextBlock Margin="10,0,0,0" VerticalAlignment="Center" Text="{DynamicResource btnADBCMD}"/>
+                    </StackPanel>
+                </Button>
+                <Button  Style="{DynamicResource MaterialDesignRaisedButton}" Command="{Binding ShowSettingsDialog}"   FontSize="14"   Margin="5,0,5,5" >
+                    <StackPanel Width="130" Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Settings" Height="20"/>
+                        <TextBlock Margin="10,0,0,0" VerticalAlignment="Center" Text="{DynamicResource btnSetting}"/>
+                    </StackPanel>
+                </Button>
             </StackPanel>
         </Grid>
         
