@@ -11,7 +11,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot
     [ExtName("Modify dpi without root", Lang = "en-US")]
     [ExtIcon("Icons.dpi.png")]
     [ExtRequiredDeviceStates(Basic.Device.DeviceState.Poweron)]
-    public class EDpiChanger : OfficialVisualExtension
+    internal class EDpiChanger : OfficialVisualExtension
     {
         protected override int VisualMain()
         {

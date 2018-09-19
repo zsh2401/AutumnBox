@@ -13,7 +13,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot.DpmSetter
     [ExtIcon("Icons.AirForzen.png")]
     [ExtAppProperty("me.yourbay.airfrozen")]
     [ExtRequiredDeviceStates(Basic.Device.DeviceState.Poweron)]
-    public class EAirForzenActivator : DpmSetterExtension
+    internal class EAirForzenActivator : DpmSetterExtension
     {
         public override string ReceiverClassName => "me.yourbay.airfrozen";
 

@@ -12,7 +12,7 @@ namespace AutumnBox.CoreModules
     [ExtAuth("AutumnBox official", Lang = "en-us")]
     [ExtOfficial(true)]
     [ContextPermission(CtxPer.High)]
-    public abstract class OfficialVisualExtension : FasterVisualExtension
+    internal abstract class OfficialVisualExtension : FasterVisualExtension
     {
        
     }

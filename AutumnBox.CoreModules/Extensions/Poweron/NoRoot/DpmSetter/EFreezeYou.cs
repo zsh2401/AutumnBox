@@ -14,7 +14,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot.DpmSetter
     [ExtIcon("Icons.freezeYou.png")]
     [ExtAppProperty("me.yourbay.airfrozen")]
     [ExtRequiredDeviceStates(Basic.Device.DeviceState.Poweron)]
-    public class EFreezeYou : DpmSetterExtension
+    internal class EFreezeYou : DpmSetterExtension
     {
         public override string ReceiverClassName => "cf.playhi.freezeyou";
 

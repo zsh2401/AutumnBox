@@ -13,7 +13,7 @@ namespace AutumnBox.CoreModules.Extensions.Mix
     [ExtName("Push file to device", Lang = "en-US")]
     [ExtIcon("Icons.filepush.png")]
     [ExtRequiredDeviceStates(Basic.Device.DeviceState.Poweron | Basic.Device.DeviceState.Recovery)]
-    public class EFilePusher : OfficialVisualExtension
+    internal class EFilePusher : OfficialVisualExtension
     {
         protected override int VisualMain()
         {

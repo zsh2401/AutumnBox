@@ -16,7 +16,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot.Sh
     [ExtAppProperty("me.piebridge.brevent")]
     [ExtRequiredDeviceStates(DeviceState.Poweron)]
     [ExtIcon("Icons.brevent.png")]
-    public class EBreventActivator : OfficialVisualExtension
+    internal class EBreventActivator : OfficialVisualExtension
     {
         protected override int VisualMain()
         {

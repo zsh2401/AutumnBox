@@ -19,7 +19,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.Root
     [ExtRequireRoot]
     [ExtIcon("Icons.flash.png")]
     [ExtRequiredDeviceStates(DeviceState.Poweron)]
-    public class EExtractRecoveryImg : OfficialVisualExtension
+    internal class EExtractRecoveryImg : OfficialVisualExtension
     {
         protected override int VisualMain()
         {
