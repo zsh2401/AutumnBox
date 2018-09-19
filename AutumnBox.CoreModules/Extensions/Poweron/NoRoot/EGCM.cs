@@ -9,7 +9,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot
     [ExtAppProperty("com.ifreedomer.fuckmemory")]
     [ExtIcon("Icons.gcm.png")]
     [ExtRequiredDeviceStates(DeviceState.Poweron)]
-    public class EGCM : OfficialVisualExtension
+    internal class EGCM : OfficialVisualExtension
     {
         protected override int VisualMain()
         {

@@ -14,7 +14,7 @@ namespace AutumnBox.CoreModules.Extensions.Fastboot
     [ExtIcon("Icons.lock.png")]
     [ExtDesc("Do you wanna relock oem for your device?", Lang = "en-US")]
     [ExtRequiredDeviceStates(Basic.Device.DeviceState.Fastboot)]
-    public class EOemLock : OfficialVisualExtension
+    internal class EOemLock : OfficialVisualExtension
     {
         private FastbootCommand ExecutingCommand;
         protected override int VisualMain()

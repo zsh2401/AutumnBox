@@ -12,7 +12,7 @@ namespace AutumnBox.CoreModules.Extensions
 {
     [ExtName("Example extension")]
     [ExtRequiredDeviceStates(NoMatter)]
-    public class EHoldMyHand : OfficialVisualExtension
+    internal class EHoldMyHand : OfficialVisualExtension
     {
         bool stoppable = false;
         protected override int VisualMain()

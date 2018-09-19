@@ -148,7 +148,7 @@ namespace AutumnBox.OpenFramework.ExtLibrary
         /// <returns></returns>
         protected virtual IEnumerable<Type> GetExtTypes()
         {
-            return from type in ManagedAssembly.GetExportedTypes()
+            return from type in ManagedAssembly.GetTypes()
                    where IsExt(type)
                    select type;
         }

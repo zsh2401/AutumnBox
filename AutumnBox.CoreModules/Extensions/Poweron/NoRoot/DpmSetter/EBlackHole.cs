@@ -14,7 +14,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot.DpmSetter
     [ExtIcon("Icons.blackhole.png")]
     [ExtAppProperty(PKG_NAME)]
     [ExtRequiredDeviceStates(Basic.Device.DeviceState.Poweron)]
-    public class EBlackHole : DpmSetterExtension
+    internal class EBlackHole : DpmSetterExtension
     {
         public const string PKG_NAME = "com.hld.apurikakusu";
         public override string ReceiverClassName => throw new NotImplementedException();
