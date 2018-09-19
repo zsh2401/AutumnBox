@@ -292,6 +292,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Resources\Themes\Green.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Resources\Themes\Blue.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

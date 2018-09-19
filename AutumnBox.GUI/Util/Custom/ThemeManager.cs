@@ -39,7 +39,8 @@ namespace AutumnBox.GUI.Util.Custom
         {
             themes = new List<ITheme>() {
                 ThemeImpl.LoadFrom("Autumn.xaml"),
-                ThemeImpl.LoadFrom("Blue.xaml")
+                ThemeImpl.LoadFrom("Blue.xaml"),
+                ThemeImpl.LoadFrom("Green.xaml")
             };
         }
 
