@@ -13,7 +13,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.Root
     [ExtRequireRoot]
     [ExtIcon("Icons.flash.png")]
     [ExtRequiredDeviceStates(DeviceState.Poweron)]
-    class EFlashBoot : AutumnBoxExtension
+  abstract  class EFlashBoot : AutumnBoxExtension
     {
         public override int Main()
         {
