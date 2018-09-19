@@ -122,6 +122,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Model\ExtensionWrapperDock.cs" />
     <Compile Include="MVVM\OpenParameterUrlCommand.cs" />
     <Compile Include="Util\AlreadyHaveAutumnBoxChecker.cs" />
     <Compile Include="Util\AppLoader.cs" />
@@ -174,9 +175,6 @@
     <Compile Include="ViewModel\VMSettingsDialog.cs" />
     <Compile Include="ViewModel\VMUpdateWindow.cs" />
     <Compile Include="View\Controls\AtmbDialogContent.cs" />
-    <Compile Include="View\Controls\ExtensionsWrapPanel.xaml.cs">
-      <DependentUpon>ExtensionsWrapPanel.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\DialogContent\ContentChoice.xaml.cs">
       <DependentUpon>ContentChoice.xaml</DependentUpon>
     </Compile>
@@ -213,9 +211,6 @@
     </Compile>
     <Compile Include="View\Panel\PanelExtension.xaml.cs">
       <DependentUpon>PanelExtension.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Panel\PanelExtensionHome.xaml.cs">
-      <DependentUpon>PanelExtensionHome.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Panel\PanelHome.xaml.cs">
       <DependentUpon>PanelHome.xaml</DependentUpon>
@@ -426,10 +421,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Controls\ExtensionsWrapPanel.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="View\DialogContent\ContentChoice.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -471,10 +462,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Panel\PanelExtension.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Panel\PanelExtensionHome.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

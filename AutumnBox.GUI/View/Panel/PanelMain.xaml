@@ -15,7 +15,7 @@
                     <local:PanelHome/>
                 </TabItem>
                 <TabItem  Style="{DynamicResource AtmbxTabItem}" TabIndex="1" Header="{DynamicResource PanelMainCurrent}" Margin="14,-2,-18,0"  FontSize="16">
-                    <local:PanelCurrentDevice/>
+                    <local:PanelCurrentDevice Width="819.7"/>
                 </TabItem>
 
                 <TabItem  Style="{DynamicResource AtmbxTabItem}" TabIndex="1" Header="{DynamicResource PanelMainMore}" Margin="18,-2,-22,0"  FontSize="16">
