@@ -20,14 +20,27 @@ namespace AutumnBox.GUI.ViewModel
 {
     class VMDeviceDetails : ViewModelBase
     {
-        private static string TryGet(Dictionary<string, string> dict, string key) {
-            try {
+        private static string TryGet(Dictionary<string, string> dict, string key)
+        {
+            try
+            {
                 return dict[key];
-            } catch { }
+            }
+            catch { }
             return null;
         }
         private const string DEFAULT_VALUE = "-";
         #region MVVM
+        public string StateTip
+        {
+            get => _stateTip; set
+            {
+                _stateTip = value;
+                RaisePropertyChanged();
+            }
+        }
+        private string _stateTip;
+
         public Visibility InfoPanelVisibility
         {
             get => infoPanelVisibility; set
@@ -149,25 +162,28 @@ namespace AutumnBox.GUI.ViewModel
         {
             ResetStateStringByCurrentDevice();
         }
-        private void ResetStateStringByCurrentDevice() {
+        private void ResetStateStringByCurrentDevice()
+        {
             if (DeviceSelectionObserver.Instance.CurrentDevice == null)
             {
                 StateString = App.Current.Resources["PanelDeviceDetailsStateNotFound"].ToString();
             }
-            else {
-                StateString = App.Current.Resources["PanelDeviceDetailsState" + DeviceSelectionObserver.Instance.CurrentDevice.State].ToString();
+            else
+            {
+                StateTip = App.Current.Resources["PanelDeviceDetailsStateTip" + DeviceSelectionObserver.Instance.CurrentDevice.State]?.ToString();
+                StateString = App.Current.Resources["PanelDeviceDetailsState" + DeviceSelectionObserver.Instance.CurrentDevice.State]?.ToString();
             }
-           
+
         }
 
-        private void SelectedNoDevice(object sender, System.EventArgs e)
+        private void SelectedNoDevice(object sender, EventArgs e)
         {
             InfoPanelVisibility = Visibility.Collapsed;
             TranSelectIndex = 0;
             Reset();
         }
 
-        private void SelectedDevice(object sender, System.EventArgs e)
+        private void SelectedDevice(object sender, EventArgs e)
         {
             InfoPanelVisibility = Visibility.Visible;
             TranSelectIndex = 1;
@@ -205,7 +221,7 @@ namespace AutumnBox.GUI.ViewModel
                 buildProp = getter.GetFull();
             });
             if (currentCode != taskCode) return;
-            Brand = TryGet(buildProp,BuildPropKeys.Brand);
+            Brand = TryGet(buildProp, BuildPropKeys.Brand);
             Model = TryGet(buildProp, BuildPropKeys.Model);
             AndroidVersion = TryGet(buildProp, BuildPropKeys.AndroidVersion);
             Product = TryGet(buildProp, BuildPropKeys.ProductName);
