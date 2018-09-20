@@ -23,10 +23,7 @@ namespace AutumnBox.OpenFramework.Open.Impl
 
         public void OK()
         {
-            if (sourceApi.PlaySoundWhenFinished())
-            {
-                sourceApi.PlayOk();
-            }
+            sourceApi.PlayOk();
         }
     }
 }

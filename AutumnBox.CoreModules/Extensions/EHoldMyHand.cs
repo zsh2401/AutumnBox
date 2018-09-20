@@ -17,9 +17,9 @@ namespace AutumnBox.CoreModules.Extensions
         bool stoppable = false;
         protected override int VisualMain()
         {
-            var brand = TargetDevice.GetProp(BuildPropKeys.Brand);
-            WriteLine(TargetDevice.Product);
-            Ux.ShowMessageDialog("Ok");
+            //var brand = TargetDevice.GetProp(BuildPropKeys.Brand);
+            //WriteLine(TargetDevice.Product);
+            //Ux.ShowMessageDialog("Ok");
             WriteInitInfo();
             WriteLine("开始执行");
             Thread.Sleep(3000);
