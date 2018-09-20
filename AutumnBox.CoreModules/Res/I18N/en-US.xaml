@@ -11,6 +11,8 @@
 
     <s:String x:Key="EGCMNotSupported">Not supported this device</s:String>
     <s:String x:Key="EGCMAlreadyEnableNetDebugging">Finished</s:String>
+
+    <s:String x:Key="EBreventActivatorFirstMsg">This device seems to be the first time to activate the black domain. Please slide to the right in the mobile phone black domain interface, click the boot and then close this popup window.</s:String>
     
     <s:String x:Key="EFilePusherSuccessful">Push successed</s:String>
     <s:String x:Key="EFilePusherSelectingTitle">Selecte a file</s:String>
