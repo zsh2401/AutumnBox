@@ -17,6 +17,6 @@
     <language>zh-CN</language>
   </metadata>
   <files>
-    <file src="bin\Sdk\AutumnBox.Basic.dll" target="lib\net45" />
+    <file src="bin\Sdk\*\AutumnBox.Basic.dll" target="lib"/>
   </files>
 </package>

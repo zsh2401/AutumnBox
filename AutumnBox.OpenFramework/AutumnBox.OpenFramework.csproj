@@ -7,6 +7,7 @@
     <Authors>zsh2401</Authors>
     <Company>zsh2401</Company>
     <Copyright>Copyright © 2017 - 2018 zsh2401,All Rights Reserved</Copyright>
+    <Description>AutumnBox oepn framework</Description>
   </PropertyGroup>
 
   <ItemGroup>
