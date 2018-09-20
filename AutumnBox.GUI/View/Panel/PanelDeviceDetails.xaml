@@ -15,7 +15,7 @@
         <DockPanel>
             <StackPanel DockPanel.Dock="Top" Margin="5" Orientation="Vertical">
                 <TextBlock Margin="0,0,0,0" Text="{Binding StateString}" FontSize="40"/>
-                <TextBlock FontSize="15" Text="{Binding StateTip}"/>
+                <TextBlock Margin="5" FontSize="15" Text="{Binding StateTip}"/>
             </StackPanel>
             <DockPanel Visibility="{Binding InfoPanelVisibility}" Width="550" Margin="0,0,0,0">
                 <StackPanel DockPanel.Dock="Left" Width="275">

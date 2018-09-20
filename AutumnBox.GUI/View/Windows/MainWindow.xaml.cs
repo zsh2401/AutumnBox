@@ -13,6 +13,7 @@
 \* =============================================================================*/
 using System;
 using System.Windows;
+using AutumnBox.GUI.Properties;
 using AutumnBox.GUI.Util.Debugging;
 using AutumnBox.GUI.ViewModel;
 
@@ -35,6 +36,13 @@ namespace AutumnBox.GUI.View.Windows
             ViewModel.LoadAsync(() =>
             {
                 SGLogger<MainWindow>.Info("Loaded");
+                Dispatcher.Invoke(() =>
+                {
+                    if (Settings.Default.IsFirstLaunch)
+                    {
+                        new DialogContent.ContentDonate().Show();
+                    }
+                });
             });
         }
 

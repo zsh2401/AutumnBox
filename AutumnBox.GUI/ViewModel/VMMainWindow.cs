@@ -47,7 +47,7 @@ namespace AutumnBox.GUI.ViewModel
 #else
             string comp = "Release";
 #endif
-            Title = $"{App.Current.Resources["AppName"]}-{Self.Version}-{comp}";
+            Title = $"{App.Current.Resources["AppName"]}-{Self.Version.ToString(3)}-{comp}";
         }
 
         public double Progress

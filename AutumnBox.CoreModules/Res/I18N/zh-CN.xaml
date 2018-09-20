@@ -10,6 +10,9 @@
     <s:String x:Key="ExtensionRunning">正在进行</s:String>
     <s:String x:Key="ExtensionCancelByUser">被用户取消</s:String>
 
+
+    <s:String x:Key="EBreventActivatorFirstMsg">此设备似乎是第一次激活黑域,请在手机黑域界面向右滑,点击启动后再关闭此弹窗</s:String>
+    
     <s:String x:Key="EFilePusherSuccessful">推送成功</s:String>
     <s:String x:Key="EFilePusherSelectingTitle">选择一个文件</s:String>
     <s:String x:Key="EFilePusherSelectingFilter">任意文件(*.*)|*.*</s:String>
