@@ -27,11 +27,6 @@ namespace AutumnBox.OpenFramework.Management
         /// 播放失败音效
         /// </summary>
         void PlayErr();
-        /// <summary>
-        /// 获取用户设置:功能完成时播放音效
-        /// </summary>
-        /// <returns></returns>
-        bool PlaySoundWhenFinished();
         #region UI
         /// <summary>
         /// 获取控制器

@@ -12,9 +12,28 @@ namespace AutumnBox.CoreModules
     {
         private class SoundPlayAspect : ExtMainAsceptAttribute
         {
+            public override void Before(BeforeArgs args)
+            {
+                base.Before(args);
+                args.Extension.Logger.Info("sound,Before");
+            }
             public override void After(AfterArgs args)
             {
                 base.After(args);
+                if (args.IsForceStopped)
+                {
+                    //args.Extension.SoundPlayer.Err();
+                    return;
+                }
+                switch (args.ReturnCode)
+                {
+                    case 0:
+                        args.Extension.SoundPlayer.OK();
+                        break;
+                    default:
+                        //args.Extension.SoundPlayer.Err();
+                        break;
+                }
             }
         }
 
