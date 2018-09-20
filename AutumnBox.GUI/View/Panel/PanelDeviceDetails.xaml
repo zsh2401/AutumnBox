@@ -12,13 +12,13 @@
         <viewmodel:VMDeviceDetails/>
     </UserControl.DataContext>
     <Grid HorizontalAlignment="Center" Width="600" MaxWidth="670" MaxHeight="220">
-        <!--<materialDesign:Transitioner SelectedIndex="{Binding TranSelectIndex}">-->
-        <StackPanel Orientation="Vertical">
-            <StackPanel  Height="60" Margin="10,10,10,10" Orientation="Horizontal">
+        <DockPanel>
+            <StackPanel DockPanel.Dock="Top" Margin="5" Orientation="Vertical">
                 <TextBlock Margin="0,0,0,0" Text="{Binding StateString}" FontSize="40"/>
+                <TextBlock FontSize="15" Text="{Binding StateTip}"/>
             </StackPanel>
-            <StackPanel Visibility="{Binding InfoPanelVisibility}" Width="550" Margin="0,0,0,0" Orientation="Horizontal">
-                <StackPanel   Width="275">
+            <DockPanel Visibility="{Binding InfoPanelVisibility}" Width="550" Margin="0,0,0,0">
+                <StackPanel DockPanel.Dock="Left" Width="275">
                     <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
                         <TextBlock Text="{DynamicResource PanelDeviceDetailsBrand}"/>
                         <TextBlock Margin="10,0,0,0" Text="{Binding Brand}"/>
@@ -40,7 +40,7 @@
                         <TextBlock Margin="10,0,0,0" Text="{Binding Ram}"/>
                     </StackPanel>
                 </StackPanel>
-                <StackPanel Width="275" >
+                <StackPanel Width="275">
                     <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
                         <TextBlock  Text="{DynamicResource PanelDeviceDetailsRoot}"/>
                         <TextBlock Margin="10,0,0,0" Text="{Binding Root}"/>
@@ -50,8 +50,8 @@
                         <TextBlock Margin="10,0,0,0" Text="{Binding AndroidVersion}"/>
                     </StackPanel>
                 </StackPanel>
-            </StackPanel>
-        </StackPanel>
+            </DockPanel>
+        </DockPanel>
         <!--<materialDesign:TransitionerSlide OpeningEffect="{materialDesign:TransitionEffect FadeIn}">
                 <Grid>
                     <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="请确保链接设备!"/>

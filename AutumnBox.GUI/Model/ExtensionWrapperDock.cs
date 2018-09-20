@@ -4,6 +4,7 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.GUI.MVVM;
+using AutumnBox.GUI.Util;
 using AutumnBox.OpenFramework.Wrapper;
 using System;
 using System.Collections.Generic;
@@ -22,7 +23,7 @@ namespace AutumnBox.GUI.Model
         {
             get
             {
-                return Wrapper.Info.Name + System.Environment.NewLine +
+                return Wrapper.Info.Name + Environment.NewLine +
                      Wrapper.Info.FormatedDesc;
             }
         }
@@ -35,7 +36,7 @@ namespace AutumnBox.GUI.Model
             {
                 if (icon == null)
                 {
-                    LoadIcon();
+                    icon = Wrapper.Info.Icon.ToExtensionIcon();
                 }
                 return icon;
             }
@@ -44,23 +45,6 @@ namespace AutumnBox.GUI.Model
         public ExtensionWrapperDock(IExtensionWrapper wrapper)
         {
             this.Wrapper = wrapper;
-            LoadIcon();
-        }
-        private void LoadIcon()
-        {
-            if (Wrapper.Info.Icon == null)
-            {
-                icon = App.Current.Resources["DefaultExtensionIcon"] as ImageSource;
-            }
-            else
-            {
-                BitmapImage bmp = new BitmapImage();
-                bmp.BeginInit();
-                bmp.StreamSource = new MemoryStream(Info.Icon);
-                bmp.EndInit();
-                bmp.Freeze();
-                icon = bmp;
-            }
         }
     }
     internal static class ExtensionWrapperDockExtensions
