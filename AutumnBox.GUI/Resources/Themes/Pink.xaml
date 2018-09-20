@@ -5,9 +5,9 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="ThemeBase.xaml"/>
     </ResourceDictionary.MergedDictionaries>
-    <system:String x:Key="ThemeName">简绿-Green</system:String>
-    <Color x:Key="SecondaryColor">#e8f5e9</Color>
-    <Color x:Key="PrimaryLightColor">#4CAF50</Color>
-    <Color x:Key="PrimaryMidColor">#4CAF50</Color>
-    <Color x:Key="PrimaryDarkColor">#4CAF50</Color>
+    <system:String x:Key="ThemeName">For love-Pink</system:String>
+    <Color x:Key="SecondaryColor">#ffebee</Color>
+    <Color x:Key="PrimaryLightColor">#fb7299</Color>
+    <Color x:Key="PrimaryMidColor">#fb7299</Color>
+    <Color x:Key="PrimaryDarkColor">#fb7299</Color>
 </ResourceDictionary>
