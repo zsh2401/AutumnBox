@@ -57,7 +57,7 @@ namespace AutumnBox.OpenFramework.ExtLibrary
         /// <summary>
         /// 日志标签
         /// </summary>
-        public override string LoggingTag => ManagedAssembly.GetName().Name + " Librarian";
+        public override string LoggingTag => ManagedAssembly.GetName().Name + "'s librarian";
         /// <summary>
         /// 名字
         /// </summary>
