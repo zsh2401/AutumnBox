@@ -34,22 +34,44 @@ namespace AutumnBox.OpenFramework.Open
         /// <param name="btnCancel"></param>
         /// <returns></returns>
         ChoiceResult DoChoice(string message, string btnLeft = null, string btnRight = null, string btnCancel = null);
+        ///// <summary>
+        ///// 显示消息窗口
+        ///// </summary>
+        ///// <param name="title"></param>
+        ///// <param name="message"></param>
+        //void ShowMessageDialog(string title, string message);
+        ///// <summary>
+        ///// 显示消息窗口,使用默认标题
+        ///// </summary>
+        ///// <param name="message"></param>
+        //void ShowMessageDialog(string message);
+        ///// <summary>
+        ///// 显示警告窗口
+        ///// </summary>
+        ///// <param name="message"></param>
+        //void ShowWarnDialog(string message);
         /// <summary>
-        /// 显示消息窗口
+        /// 信息，通常情况下，此方法会阻塞至用户确认
+        /// 使用默认标题
         /// </summary>
-        /// <param name="title"></param>
-        /// <param name="message"></param>
-        void ShowMessageDialog(string title, string message);
+        /// <param name="message">信息</param>
+        void Message(string message);
+       /// <summary>
+       /// 显示信息，通常情况下，此方法会阻塞至用户确认
+       /// </summary>
+       /// <param name="title">标题</param>
+       /// <param name="message">信息</param>
+        void Message(string title, string message);
         /// <summary>
-        /// 显示消息窗口,使用默认标题
+        /// 警告，通常情况下，此方法会阻塞至用户确认
         /// </summary>
         /// <param name="message"></param>
-        void ShowMessageDialog(string message);
+        void Warn(string message);
         /// <summary>
-        /// 显示警告窗口
+        /// 错误，通常情况下，此方法会阻塞至用户确认
         /// </summary>
         /// <param name="message"></param>
-        void ShowWarnDialog(string message);
+        void Error(string message);
         /// <summary>
         /// 显示调试窗口
         /// </summary>

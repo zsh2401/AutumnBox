@@ -90,7 +90,7 @@ namespace AutumnBox.OpenFramework.Open.Impl
             });
         }
 
-        public void ShowMessageDialog(string title, string message)
+        public void Message(string title, string message)
         {
             RunOnUIThread(() =>
             {
@@ -98,20 +98,24 @@ namespace AutumnBox.OpenFramework.Open.Impl
             });
         }
 
-        public void ShowMessageDialog(string message)
+        public void Message(string message)
         {
             RunOnUIThread(() =>
             {
-                sourceApi.CreateMessageWindow(ctx.App.GetPublicResouce<string>("Notice"), message).ShowDialog();
+                sourceApi.CreateMessageWindow(ctx.App.GetPublicResouce<string>("OpenFxTitleMessage"), message).ShowDialog();
             });
         }
 
-        public void ShowWarnDialog(string message)
+        public void Warn(string message)
         {
             RunOnUIThread(() =>
             {
-                sourceApi.CreateMessageWindow(ctx.App.GetPublicResouce<string>("Warning"), message).ShowDialog();
+                sourceApi.CreateMessageWindow(ctx.App.GetPublicResouce<string>("OpenFxTitleWarning"), message).ShowDialog();
             });
+        }
+
+        public void Error(string message) {
+            sourceApi.CreateMessageWindow(ctx.App.GetPublicResouce<string>("OpenFxTitleError"), message).ShowDialog();
         }
 
         public void RunOnUIThread(Action action)
@@ -124,7 +128,7 @@ namespace AutumnBox.OpenFramework.Open.Impl
             bool result = true;
             RunOnUIThread(() =>
             {
-                result = DoChoice(message, "ChoiceWindowBtnDisagree", "ChoiceWindowBtnAgree", "ChoiceWindowBtnCancel") == ChoiceResult.Right;
+                result = DoChoice(message, "ChoiceWindowBtnDisagree", "ChoiceWindowBtnAgree", "ChoiceWindowBtnCancel") == ChoiceResult.Accept;
             });
             return result;
         }

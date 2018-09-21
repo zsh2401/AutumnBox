@@ -34,9 +34,9 @@ namespace AutumnBox.CoreModules.Lib
         protected sealed override int VisualMain()
         {
             WriteWaitingForUser();
-            if (OnWarnUser())
+            if (!OnWarnUser())
             {
-                return ERR;
+                return ERR_CANCLLED_BY_USER;
             }
             WriteInitInfo();
             GodPower = new GodPower(this, TargetDevice);

@@ -15,11 +15,16 @@ namespace AutumnBox.CoreModules.Extensions
     internal class EHoldMyHand : OfficialVisualExtension
     {
         bool stoppable = false;
+        //public EHoldMyHand() {
+        //    throw new System.Exception();
+        //}
         protected override int VisualMain()
         {
             //var brand = TargetDevice.GetProp(BuildPropKeys.Brand);
             //WriteLine(TargetDevice.Product);
             //Ux.ShowMessageDialog("Ok");
+            WriteLine(Ux.Agree("w").ToString());
+            Ux.Error("Ok");
             WriteInitInfo();
             WriteLine("开始执行");
             Thread.Sleep(3000);
