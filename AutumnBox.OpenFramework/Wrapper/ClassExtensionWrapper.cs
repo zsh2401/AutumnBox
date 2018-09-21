@@ -149,33 +149,11 @@ namespace AutumnBox.OpenFramework.Wrapper
         /// <param name="device"></param>
         public virtual void Run(IDevice device)
         {
-            if (!PreCheck()) return;//多开检测
-            /*初始化局部属性*/
-            State = ExtensionWrapperState.Running;
-            IsForceStopped = false;
-            LastReturnCode = -1;
-            Logger.CDebug("inited");
-            //创建前检测
-            if (!BeforeCreateInstance(device))
+            try { MainFlow(device); }
+            catch (Exception ex)
             {
-                State = ExtensionWrapperState.Ready;
-                return;
+                Logger.Warn("OpenFx", ex);
             }
-            //创建实例
-            CreateInstance();
-            //依赖注入
-            InjetctProperty(device);
-            //Main方法前检测
-            if (BeforeMain(device))
-            {
-                //执行主流程
-                MainFlow();
-                //运行结束切面
-                AfterMain();
-            }
-            //摧毁实例
-            DestoryInstance();
-            State = ExtensionWrapperState.Ready;
         }
 
         /// <summary>
@@ -192,6 +170,42 @@ namespace AutumnBox.OpenFramework.Wrapper
             });
         }
 
+        protected virtual void MainFlow(IDevice device)
+        {
+            if (!PreCheck()) return;//多开检测
+            /*初始化局部属性*/
+            State = ExtensionWrapperState.Running;
+            IsForceStopped = false;
+            LastReturnCode = -1;
+            Logger.CDebug("inited");
+            //创建前检测
+            if (!BeforeCreateInstance(device))
+            {
+                DestoryInstance();
+                return;
+            }
+            //创建实例
+            if (!CreateInstance())
+            {
+                Ux.Warn("OpenFxCantCreateInstance");
+                DestoryInstance();
+                State = ExtensionWrapperState.Ready;
+                return;
+            }
+            //依赖注入
+            InjetctProperty(device);
+            //Main方法前检测
+            if (BeforeMain(device))
+            {
+                //执行主流程
+                ExecMain();
+                //运行结束切面
+                AfterMain();
+            }
+            //摧毁实例
+            DestoryInstance();
+            State = ExtensionWrapperState.Ready;
+        }
         /// <summary>
         /// 当摧毁时被调用
         /// </summary>
@@ -215,7 +229,7 @@ namespace AutumnBox.OpenFramework.Wrapper
             {
                 App.RunOnUIThread(() =>
                 {
-                    Ux.ShowMessageDialog("警告", "该拓展模块已在运行,你不能开多个该模块!");
+                    Ux.Warn("OpenFxUnmultiable");
                 });
                 return false;
             }
@@ -248,9 +262,18 @@ namespace AutumnBox.OpenFramework.Wrapper
         /// <summary>
         /// 创建实例
         /// </summary>
-        private void CreateInstance()
+        private bool CreateInstance()
         {
-            Instance = (AutumnBoxExtension)Activator.CreateInstance(extType);
+            try
+            {
+                Instance = (AutumnBoxExtension)Activator.CreateInstance(extType);
+                return true;
+            }
+            catch (Exception e)
+            {
+                Logger.Warn("can't create extension instance", e);
+                return false;
+            }
         }
 
         /// <summary>
@@ -289,7 +312,7 @@ namespace AutumnBox.OpenFramework.Wrapper
         /// <summary>
         /// 主流程
         /// </summary>
-        private void MainFlow()
+        private void ExecMain()
         {
             Logger.CDebug("MainFlow()");
             Manager.RunningManager.Add(this);
@@ -303,8 +326,8 @@ namespace AutumnBox.OpenFramework.Wrapper
                 LastReturnCode = AutumnBoxExtension.ERR;
                 App.RunOnUIThread(() =>
                 {
-                    string stoppedMsg = $"{Info.Name} {App.GetPublicResouce<String>("msgExtensionWasFailed")}";
-                    Ux.ShowMessageDialog("Notice", stoppedMsg);
+                    string stoppedMsg = $"{Info.Name} {App.GetPublicResouce<String>("OpenFxExtensionFailed")}";
+                    Ux.Error(stoppedMsg);
                 });
             }
             Manager.RunningManager.Remove(this);

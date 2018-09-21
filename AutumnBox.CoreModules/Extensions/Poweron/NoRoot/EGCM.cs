@@ -14,7 +14,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot
         protected override int VisualMain()
         {
             if (TargetDevice is NetDevice) {
-                Ux.ShowMessageDialog(Res("EGCMAlreadyEnableNetDebugging"));
+                Ux.Message(Res("EGCMAlreadyEnableNetDebugging"));
                 return OK;
             }
             else if(TargetDevice is UsbDevice usbDevice){
@@ -23,7 +23,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot
                 usbDevice.OpenNetDebugging(5555,true);
                 return OK;
             }
-            Ux.ShowWarnDialog(Res("EGCMNotSupported"));
+            Ux.Warn(Res("EGCMNotSupported"));
             return ERR;
         }
     }

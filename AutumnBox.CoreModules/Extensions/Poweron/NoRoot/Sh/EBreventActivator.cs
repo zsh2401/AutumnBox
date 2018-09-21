@@ -35,7 +35,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot.Sh
             state = stateCheck;
             while (catCommand.Execute().ExitCode != (int)LinuxReturnCode.None && !requiredStop)
             {
-                Ux.ShowMessageDialog(Res("EBreventActivatorFirstMsg"));
+                Ux.Message(Res("EBreventActivatorFirstMsg"));
                 Thread.Sleep(2000);
             }
             if (requiredStop)

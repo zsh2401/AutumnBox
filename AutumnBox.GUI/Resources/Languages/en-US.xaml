@@ -81,7 +81,15 @@
     <s:String x:Key="PanelDevicesEnableCurrent">Enable crt net-debugging</s:String>
     
         <!--OpenFx-->
+     <s:String x:Key="OpenFxTitleError">Error</s:String>
+    <s:String x:Key="OpenFxTitleWarning">Warning</s:String>
+    <s:String x:Key="OpenFxCantRunMore">Can't run more</s:String>
+    <s:String x:Key="OpenFxTitleMessage">Message</s:String>
+    <s:String x:Key="OpenFxNoRoot">This device has no root permission</s:String>
+    <s:String x:Key="OpenFxCantCreateInstance">Error:cant't create the instance,please view the logs</s:String>
      <s:String x:Key="OpenFxInstallAppFirst">Please install app first</s:String>
+    <s:String x:Key="OpenFxInstallBtnIgnore">Ignore</s:String>
+    <s:String x:Key="OpenFxInstallBtnOk">OK</s:String>
     <s:String x:Key="OpenFxNeedAdminPermission">This module requires administrator privileges to restart the AutumnBox to Administrator mode.</s:String>
     <s:String x:Key="OpenFxLowAndroidVersionFmt">This module requires the Android version to be {0}, and your device does not meet this standard.</s:String>
     <s:String x:Key="OpenFxOverhighAndroidVersionFmt">The Android version of your device is too high. This module only supports Android versions below {0}.</s:String>

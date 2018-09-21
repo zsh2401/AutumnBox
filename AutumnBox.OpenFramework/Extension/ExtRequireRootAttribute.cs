@@ -39,7 +39,7 @@ namespace AutumnBox.OpenFramework.Extension
             {
                 args.Context.App.RunOnUIThread(() =>
                 {
-                    args.Context.Ux.ShowMessageDialog("Warning", "目前已连接设备没有ROOT!");
+                    args.Context.Ux.Warn("OpenFxNoRoot!");
                 });
                 args.Prevent = true;
             }

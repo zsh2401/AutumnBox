@@ -83,7 +83,17 @@
     <s:String x:Key="PanelDevicesEnableCurrent">开启当前设备网络调试</s:String>
     
     <!--OpenFx-->
+    <s:String x:Key="OpenFxTitleError">错误</s:String>
+    <s:String x:Key="OpenFxTitleWarning">警告</s:String>
+    <s:String x:Key="OpenFxCantRunMore">此模块已经在运行，你无法多开</s:String>
+    <s:String x:Key="OpenFxTitleMessage">信息</s:String>
+    <s:String x:Key="OpenFxWrapperException">错误：无法创建实例，请查看log</s:String>
+     <s:String x:Key="OpenFxCantCreateInstance">错误：无法创建实例，请查看log</s:String>
      <s:String x:Key="OpenFxInstallAppFirst">请先安装相关应用</s:String>
+     <s:String x:Key="OpenFxInstallBtnIgnore">忽略</s:String>
+    <s:String x:Key="OpenFxInstallBtnOk">好吧，我先去安装</s:String>
+    <s:String x:Key="OpenFxNoRoot">这个功能依赖于root，但你的设备没有root权限！请检查设备</s:String>
+     <s:String x:Key="OpenFxExtensionFailed">功能/模块在运行时遇到严重异常，详情查看日志</s:String>
     <s:String x:Key="OpenFxNeedAdminPermission">此模块需要管理员权限,是否将秋之盒重启到管理员模式</s:String>
     <s:String x:Key="OpenFxLowAndroidVersionFmt">此模块要求安卓版本为{0},而您的设备并没有达到此标准</s:String>
     <s:String x:Key="OpenFxOverhighAndroidVersionFmt">您的设备安卓版本太高了,此模块仅支持{0}以下的安卓版本</s:String>

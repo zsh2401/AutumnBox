@@ -98,7 +98,6 @@ namespace AutumnBox.OpenFramework.Extension
 
                     }
                 }
-                Tip = FinishedTip ?? (retCode == 0 ? "RunningWindowStateFinished" : "RunningWindowStateError");
             }
             isRunning = false;
             return retCode;

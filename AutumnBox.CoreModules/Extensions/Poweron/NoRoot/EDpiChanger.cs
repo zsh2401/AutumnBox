@@ -15,7 +15,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot
     {
         protected override int VisualMain()
         {
-            Ux.ShowMessageDialog("此模块尚未完成,请等待");
+            Ux.Error("此模块尚未完成,请等待");
             //TODO
             return OK;
         }

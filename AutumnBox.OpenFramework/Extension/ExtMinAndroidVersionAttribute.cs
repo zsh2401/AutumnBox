@@ -49,7 +49,7 @@ namespace AutumnBox.OpenFramework.Extension
                 {
                     var fmt = args.Context.App.GetPublicResouce<string>("OpenFxLowAndroidVersionFmt");
                     var msg = string.Format(fmt, Value);
-                    args.Context.Ux.ShowWarnDialog(msg);
+                    args.Context.Ux.Warn(msg);
                 });
                 args.Prevent = true;
             }

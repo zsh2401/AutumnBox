@@ -5,6 +5,7 @@
 *************************************************/
 using AutumnBox.Basic.Device;
 using AutumnBox.Basic.Device.Management.AppFx;
+using AutumnBox.OpenFramework.Open;
 
 namespace AutumnBox.OpenFramework.Extension
 {
@@ -28,11 +29,12 @@ namespace AutumnBox.OpenFramework.Extension
         {
             if (!InstallApplication(args.TargetDevice, Value as string))
             {
+                bool ignore = false;
                 args.Context.App.RunOnUIThread(() =>
-                {
-                    args.Context.Ux.ShowWarnDialog("OpenFxInstallAppFirst");
-                });
-                args.Prevent = true;
+                 {
+                     ChoiceResult  = args.Context.Ux.DoChoice("OpenFxInstallAppFirst", "OpenFxInstallBtnIgnore", "OpenFxInstallBtnOk");
+                 });
+                args.Prevent = (choice != ChoiceResult.Left);
             }
         }
         private static bool InstallApplication(IDevice device, string pkgName)
