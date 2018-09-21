@@ -32,9 +32,10 @@ namespace AutumnBox.OpenFramework.Extension
                 bool ignore = false;
                 args.Context.App.RunOnUIThread(() =>
                  {
-                     ChoiceResult  = args.Context.Ux.DoChoice("OpenFxInstallAppFirst", "OpenFxInstallBtnIgnore", "OpenFxInstallBtnOk");
+                     var choice  = args.Context.Ux.DoChoice("OpenFxInstallAppFirst", "OpenFxInstallBtnIgnore", "OpenFxInstallBtnOk");
+                     ignore = choice == ChoiceResult.Deny;
                  });
-                args.Prevent = (choice != ChoiceResult.Left);
+                args.Prevent = !ignore;
             }
         }
         private static bool InstallApplication(IDevice device, string pkgName)

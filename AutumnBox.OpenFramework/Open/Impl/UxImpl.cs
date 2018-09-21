@@ -114,8 +114,12 @@ namespace AutumnBox.OpenFramework.Open.Impl
             });
         }
 
-        public void Error(string message) {
-            sourceApi.CreateMessageWindow(ctx.App.GetPublicResouce<string>("OpenFxTitleError"), message).ShowDialog();
+        public void Error(string message)
+        {
+            RunOnUIThread(() =>
+            {
+                sourceApi.CreateMessageWindow(ctx.App.GetPublicResouce<string>("OpenFxTitleError"), message).ShowDialog();
+            });
         }
 
         public void RunOnUIThread(Action action)

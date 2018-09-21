@@ -12,6 +12,7 @@ namespace AutumnBox.CoreModules.Extensions
 {
     [ExtName("Example extension")]
     [ExtRequiredDeviceStates(NoMatter)]
+    [ExtAppProperty("com.miui.fm")]
     internal class EHoldMyHand : OfficialVisualExtension
     {
         bool stoppable = false;
