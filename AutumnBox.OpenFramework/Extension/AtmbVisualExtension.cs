@@ -15,6 +15,10 @@ namespace AutumnBox.OpenFramework.Extension
     /// </summary>
     public abstract class AtmbVisualExtension : AutumnBoxExtension
     {
+        /// <summary>
+        /// 创建
+        /// </summary>
+        /// <param name="args"></param>
         public override void OnCreate(ExtensionArgs args)
         {
             base.OnCreate(args);
@@ -44,28 +48,39 @@ namespace AutumnBox.OpenFramework.Extension
                 Logger.Warn("Fatal exception on VisualMain()", ex);
                 WriteLine(App.GetPublicResouce<string>("RunningWindowExceptionOnRunning"));
             }
+            isRunning = false;
+            return retCode;
+        }
+        /// <summary>
+        /// 完成
+        /// </summary>
+        /// <param name="args"></param>
+        public override void OnFinish(ExtensionFinishedArgs args)
+        {
+            base.OnFinish(args);
+            isRunning = false;
+            UIController.OnFinish();
+            if (args.ExitCode == 0)
+            {
+                SoundPlayer.OK();
+            }
             if (FinishedTip != null)
             {
                 Tip = FinishedTip;
+                return;
             }
-            else
+            switch (args.ExitCode)
             {
-                switch (retCode)
-                {
-                    case OK:
-                        Tip = App.GetPublicResouce<string>("RunningWindowStateFinished");
-                        break;
-                    case ERR_CANCELED_BY_USER:
-                        Tip = App.GetPublicResouce<string>("RunningWindowStateCanceledByUser");
-                        break;
-                    default:
-                        Tip = App.GetPublicResouce<string>("RunningWindowStateError");
-                        break;
-                }
+                case OK:
+                    Tip = App.GetPublicResouce<string>("RunningWindowStateFinished");
+                    break;
+                case ERR_CANCELED_BY_USER:
+                    Tip = App.GetPublicResouce<string>("RunningWindowStateCanceledByUser");
+                    break;
+                default:
+                    Tip = App.GetPublicResouce<string>("RunningWindowStateError");
+                    break;
             }
-            UIController.OnFinish();
-            isRunning = false;
-            return retCode;
         }
         /// <summary>
         /// 当停止时调用
@@ -83,20 +98,10 @@ namespace AutumnBox.OpenFramework.Extension
                 Logger.Warn("Fatal error on VisualStop()", ex);
                 WriteLine(App.GetPublicResouce<string>("RunningWindowExceptionOnStopping"));
             }
-            if (canStop)
-            {
-                Tip = "RunningWindowStateForceStopped";
-                WriteLine(App.GetPublicResouce<string>("RunningWindowStopped"));
-                App.RunOnUIThread(() =>
-                {
-                    UIController.OnFinish();
-                });
-            }
-            else
+            if (!canStop)
             {
                 WriteLine(App.GetPublicResouce<string>("RunningWindowCantStop"));
             }
-            isRunning = !canStop;
             return canStop;
         }
 
