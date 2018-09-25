@@ -4,7 +4,7 @@ using AutumnBox.OpenFramework.Extension;
 
 namespace AutumnBox.CoreModules
 {
-    public abstract partial class FasterVisualExtension : AtmbVisualExtension
+    partial class FasterVisualExtension : AtmbVisualExtension
     {
         protected string MsgInit => Res("ExtensionIniting");
         protected string MsgWaitingForUser => Res("ExtensionWaitingForUser");
