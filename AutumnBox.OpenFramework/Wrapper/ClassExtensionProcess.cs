@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.OpenFramework.Wrapper
 {
-    public sealed class ClassExtensionProcess : MarshalByRefObject, IExtensionProcess, IDisposable
+    public sealed class ClassExtensionProcess : IExtensionProcess, IDisposable
     {
         private readonly Context ctx;
         private readonly Type extensionType;
