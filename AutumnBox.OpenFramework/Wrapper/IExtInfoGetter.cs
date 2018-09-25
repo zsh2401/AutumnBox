@@ -13,12 +13,8 @@ namespace AutumnBox.OpenFramework.Wrapper
     /// </summary>
     public interface IExtInfoGetter
     {
-        ///// <summary>
-        ///// 获取键值化的信息
-        ///// </summary>
-        ///// <param name="key"></param>
-        ///// <returns></returns>
         //object this[string key] { get; }
+        //TValue Get<TValue>();
         /// <summary>
         /// 可用区域
         /// </summary>
