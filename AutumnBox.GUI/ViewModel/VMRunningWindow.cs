@@ -91,12 +91,12 @@ namespace AutumnBox.GUI.ViewModel
 
         public event EventHandler<UIControllerClosingEventArgs> Closing;
 
-        public VMRunningWindow(Window view, IExtensionWrapper wrapper)
+        public VMRunningWindow(Window view)
         {
             this.view = view;
-            this.wrapper = wrapper;
-            Title = wrapper.Info.Name;
-            Icon = wrapper.Info.Icon.ToExtensionIcon();
+            //this.wrapper = wrapper;
+            //Title = wrapper.Info.Name;
+            //Icon = wrapper.Info.Icon.ToExtensionIcon();
             output = "";
         }
 
@@ -132,10 +132,12 @@ namespace AutumnBox.GUI.ViewModel
         //    }
         //}
 
-        public void OnStart()
+        public void OnStart(IExtInfoGetter info)
         {
             view.Dispatcher.Invoke(() =>
             {
+                Title = info.Name;
+                Icon = info.Icon.ToExtensionIcon();
                 ProgressValue = -1;
                 //Tip = "RunningWindowStateRunning";
                 view.Show();

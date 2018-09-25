@@ -4,6 +4,8 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.OpenFramework.Content;
+using AutumnBox.OpenFramework.Exceptions;
+using System;
 
 namespace AutumnBox.OpenFramework.Extension
 {
@@ -28,21 +30,41 @@ namespace AutumnBox.OpenFramework.Extension
     //[ExtMinAndroidVersion(7,0,0)]
     public abstract partial class AutumnBoxExtension : Context
     {
+        protected ExtensionArgs Args { get; private set; }
         /// <summary>
-        /// 日志标签
+        /// 当拓展被创建后调用
         /// </summary>
-        public override string LoggingTag => ExtName;
+        /// <param name="args"></param>
+        public virtual void OnCreate(ExtensionArgs args)
+        {
+            Args = args;
+        }
+
         /// <summary>
         /// 主函数
         /// </summary>
         public abstract int Main();
+
         /// <summary>
-        /// 当用户要求终止时调用
+        /// 当拓展模块执行完成时调用,这通常发生在Main()函数之后
+        /// </summary>
+        /// <param name="args"></param>
+        public virtual void OnFinish(ExtensionFinishedArgs args) {}
+
+        /// <summary>
+        /// 当模块被要求终止时调用,如果做不到,请返回false或抛出异常
         /// </summary>
         /// <returns></returns>
         public virtual bool OnStopCommand()
         {
-            return true;
+            return false;
+        }
+
+        /// <summary>
+        /// 无论如何,在模块即将被析构时,都将调用此函数
+        /// </summary>
+        public virtual void OnDestory(ExtensionDestoryArgs args)
+        {
         }
     }
 }

@@ -50,7 +50,6 @@ namespace AutumnBox.CoreModules
         private string Select(string key)
         {
             var crtCode = ctx.App.CurrentLanguageCode.ToLower();
-            ctx.Logger.Warn(crtCode);
             if (Languages.TryGetValue(crtCode, out ResourceDictionary lang))
             {
                 return lang[key] as string;

@@ -3,6 +3,7 @@
 ** date:  2018/8/17 19:19:29 (UTC +8:00)
 ** desc： ...
 *************************************************/
+using AutumnBox.Basic.Calling.Adb;
 using AutumnBox.Basic.Device;
 using AutumnBox.Basic.Device.Management.OS;
 using AutumnBox.OpenFramework.Extension;
@@ -12,7 +13,7 @@ namespace AutumnBox.CoreModules.Extensions
 {
     [ExtName("Example extension")]
     [ExtRequiredDeviceStates(NoMatter)]
-    [ExtAppProperty("com.miui.fm")]
+    //[ExtAppProperty("com.miui.fm")]
     internal class EHoldMyHand : OfficialVisualExtension
     {
         bool stoppable = false;
@@ -35,6 +36,10 @@ namespace AutumnBox.CoreModules.Extensions
             WriteLine("现在可以被停止了");
             Progress = 50;
             stoppable = true;
+            new AdbCommand($"-s 01d1234 reboot")
+                .To(OutputPrinter)
+                .Execute();
+            WriteLine("??");
             Thread.Sleep(2500);
             return 0;                                                
         }

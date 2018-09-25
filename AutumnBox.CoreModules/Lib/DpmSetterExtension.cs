@@ -36,7 +36,7 @@ namespace AutumnBox.CoreModules.Lib
             WriteWaitingForUser();
             if (!OnWarnUser())
             {
-                return ERR_CANCLLED_BY_USER;
+                return ERR_CANCELED_BY_USER;
             }
             WriteInitInfo();
             GodPower = new GodPower(this, TargetDevice);

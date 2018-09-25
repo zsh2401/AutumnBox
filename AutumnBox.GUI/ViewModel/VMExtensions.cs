@@ -125,7 +125,7 @@ namespace AutumnBox.GUI.ViewModel
             ComObserver();
             RunSelectedItem = new FlexiableCommand(() =>
             {
-                SelectedDock?.Wrapper.RunAsync(DeviceSelectionObserver.Instance.CurrentDevice);
+                SelectedDock?.Wrapper?.GetProcess(DeviceSelectionObserver.Instance.CurrentDevice).Start();
             });
         }
         private void ComObserver()

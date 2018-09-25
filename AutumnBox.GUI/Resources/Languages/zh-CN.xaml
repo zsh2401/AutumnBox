@@ -195,7 +195,7 @@
     <s:String x:Key="RunningWindowStateFinished">执行完毕</s:String>
      <s:String x:Key="RunningWindowStateError">执行时遇到了错误</s:String>
     <s:String x:Key="RunningWindowCantStop">此模块无法被终止</s:String>
-    <s:String x:Key="RunningWindowStateForceStopped">被强制终止</s:String>
+    <s:String x:Key="RunningWindowStateCanceledByUser">被用户强制终止</s:String>
     <s:String x:Key="RunningWindowStopped">已被强制终止</s:String>
      <s:String x:Key="RunningWindowExceptionOnRunning">[警告]运行时发生严重异常,详情请看日志</s:String>
      <s:String x:Key="RunningWindowExceptionOnStopping">[警告]终止模块时发生严重异常,详情请看日志</s:String>

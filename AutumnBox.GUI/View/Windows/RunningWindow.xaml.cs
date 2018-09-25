@@ -10,10 +10,10 @@ namespace AutumnBox.GUI.View.Windows
     public partial class RunningWindow : Window
     {
         internal readonly VMRunningWindow ViewModel;
-        public RunningWindow(IExtensionWrapper wrapper)
+        public RunningWindow()
         {
             InitializeComponent();
-            ViewModel = new VMRunningWindow(this, wrapper);
+            ViewModel = new VMRunningWindow(this);
             DataContext = ViewModel;
             TBOutput.TextChanged += (s, e) =>
             {

@@ -28,7 +28,7 @@ namespace AutumnBox.Basic.Calling
         /// <summary>
         /// 进程
         /// </summary>
-        private Process process;
+        internal Process process;
         /// <summary>
         /// 进程开始信息
         /// </summary>

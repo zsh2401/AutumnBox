@@ -40,7 +40,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot.Sh
             }
             if (requiredStop)
             {
-                return ERR_CANCLLED_BY_USER;
+                return ERR_CANCELED_BY_USER;
             }
             state = stateExecutingShell;
             executingCommand = TargetDevice.GetShellCommand($"sh {SH_PATH}")

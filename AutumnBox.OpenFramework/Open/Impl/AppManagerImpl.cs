@@ -23,10 +23,6 @@ namespace AutumnBox.OpenFramework.Open.Impl
             this.sourceApi = sourceApi;
         }
 
-        public IExtensionUIController GetUIControllerOf(IExtensionWrapper wrapper)
-        {
-            return sourceApi.GetUIControllerOf(wrapper);
-        }
         public bool IsRunAsAdmin
         {
             get

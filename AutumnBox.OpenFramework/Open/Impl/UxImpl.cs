@@ -45,16 +45,6 @@ namespace AutumnBox.OpenFramework.Open.Impl
             return result;
         }
 
-        public IExtensionUIController GetUIControllerOf(IExtensionWrapper wrapper)
-        {
-            IExtensionUIController result = null;
-            RunOnUIThread(() =>
-            {
-                result = sourceApi.GetUIControllerOf(wrapper);
-            });
-            return result;
-        }
-
         public void ShowDebuggingWindow()
         {
             RunOnUIThread(() =>
