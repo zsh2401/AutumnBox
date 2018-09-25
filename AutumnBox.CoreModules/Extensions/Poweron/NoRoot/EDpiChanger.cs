@@ -17,7 +17,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot
         {
             Ux.Error("此模块尚未完成,请等待");
             //TODO
-            return OK;
+            return ERR;
         }
     }
 }
