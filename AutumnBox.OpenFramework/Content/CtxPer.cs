@@ -19,7 +19,7 @@ namespace AutumnBox.OpenFramework.Content
         /// <summary>
         /// 未知权限,相当于普通权限
         /// </summary>
-        None = 0,
+        None = 1,
         /// <summary>
         /// 普通级别权限,对秋之盒的操作需要询问用户
         /// </summary>

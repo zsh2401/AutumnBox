@@ -29,6 +29,6 @@ namespace AutumnBox.OpenFramework.Extension
         /// <summary>
         /// 被用户在执行过程中的某个步骤取消
         /// </summary>
-        public const int ERR_CANCLLED_BY_USER = 2;
+        public const int ERR_CANCELED_BY_USER = 2;
     }
 }

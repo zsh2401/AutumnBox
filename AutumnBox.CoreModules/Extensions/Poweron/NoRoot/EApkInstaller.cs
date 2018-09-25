@@ -19,7 +19,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot
     [ExtDesc("Install apk to device", Lang = "en-US")]
     [ExtIcon("Icons.android.png")]
     [ExtRequiredDeviceStates(DeviceState.Poweron)]
-    internal class EApkInstaller : OfficialVisualExtension
+    internal class EApkInstaller : StoppableOfficialExtension
     {
         protected override int VisualMain()
         {
@@ -44,8 +44,10 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot
                 FinishedTip = MsgCancelledByUser;
                 return ERR;
             }
-            return OK;
+            return exitCodeOnInstalling;
         }
+
+        private int exitCodeOnInstalling = OK;
 
         private void Install(List<FileInfo> files)
         {
@@ -57,10 +59,27 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot
             SetTip(currentInstalling, totalCount);
             foreach (var file in files)
             {
+
                 try
                 {
-                    file.InstallTo(TargetDevice);
-                    successed++;
+                    var result = CmdStation
+                         .GetAdbCommand(TargetDevice, $"install \"{file.FullName}\"")
+                         .To(OutputLogger)
+                         .Execute();
+                    if (RequestStop)
+                    {
+                        exitCodeOnInstalling = ERR_CANCELED_BY_USER;
+                        error++;
+                        break;
+                    }
+                    if (result.ExitCode == 0)
+                    {
+                        successed++;
+                    }
+                    else
+                    {
+                        error++;
+                    }
                 }
                 catch (Exception ex)
                 {

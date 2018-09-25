@@ -11,6 +11,9 @@ using AutumnBox.OpenFramework.Management;
 using AutumnBox.GUI.Util.Effect;
 using AutumnBox.GUI.Properties;
 using AutumnBox.GUI.Util.Debugging;
+using AutumnBox.OpenFramework.Extension;
+using System.Reflection;
+using System.Security.Policy;
 
 namespace AutumnBox.GUI.Util.OpenFxManagement
 {
@@ -56,9 +59,9 @@ namespace AutumnBox.GUI.Util.OpenFxManagement
             return App.Current.Resources[key];
         }
 
-        public IExtensionUIController GetUIControllerOf(IExtensionWrapper wrapper)
+        public IExtensionUIController GetUIController()
         {
-            var window = new RunningWindow(wrapper);
+            var window = new RunningWindow();
             return window.ViewModel;
         }
 
@@ -126,6 +129,44 @@ namespace AutumnBox.GUI.Util.OpenFxManagement
         public void Log(object tagOrSender, string levelString, string text)
         {
             LoggingStation.Instance.Log(tagOrSender?.ToString() ?? "UnknowClass", levelString, text);
+        }
+        public void LoadAssemblyToDomain(Assembly assembly)
+        {
+            AppDomain.CurrentDomain.Load(assembly.FullName);
+        }
+        public AppDomain GetExtAppDomain()
+        {
+            Evidence evi = AppDomain.CurrentDomain.Evidence;
+            AppDomainSetup ads = new AppDomainSetup()
+            {
+                ApplicationBase = AppDomain.CurrentDomain.BaseDirectory,
+                DisallowBindingRedirects = false,
+                DisallowCodeDownload = true,
+
+                ConfigurationFile =
+                AppDomain.CurrentDomain.SetupInformation.ConfigurationFile
+            };
+            var appDomain = AppDomain.CreateDomain("ad", evi, ads);
+            var loadedAssembly = AppDomain.CurrentDomain.GetAssemblies();
+            foreach (var loaded in loadedAssembly)
+            {
+                try
+                {
+                    appDomain.Load(loaded.GetName());
+                }
+                catch (Exception ex)
+                {
+                    SGLogger<AutumnBox_GUI_Calller>.Debug(ex);
+                }
+
+            }
+            return appDomain;
+        }
+
+        public AutumnBoxExtension GetInstanceFrom(AppDomain appDomain, Type type)
+        {
+            return (AutumnBoxExtension)appDomain
+                .CreateInstanceAndUnwrap(type.Assembly.FullName, type.FullName);
         }
     }
 }

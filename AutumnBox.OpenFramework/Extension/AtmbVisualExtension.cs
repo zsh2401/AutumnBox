@@ -14,51 +14,21 @@ namespace AutumnBox.OpenFramework.Extension
     /// 视觉化秋之盒拓展模块
     /// </summary>
     public abstract class AtmbVisualExtension : AutumnBoxExtension
-    { 
-        private class VisualUxManagerAttribute : ExtMainAsceptAttribute
+    {
+        public override void OnCreate(ExtensionArgs args)
         {
-            /// <summary>
-            /// 在Main之前
-            /// </summary>
-            /// <param name="args"></param>
-            public override void Before(BeforeArgs args)
+            base.OnCreate(args);
+            App.RunOnUIThread(() =>
             {
-                args.Extension.Logger.CDebug("visual before");
-                base.Before(args);
-                var visualExt = (AtmbVisualExtension)args.Extension;
-                args.Extension.App.RunOnUIThread(() =>
-                {
-                    visualExt.UIController = AutumnBoxGuiApi.Main.GetUIControllerOf(args.ExtWrapper);
-                    visualExt.UIController.OnStart();
-                    visualExt.MyWrapper = args.ExtWrapper;
-                    visualExt.UIController.Closing += visualExt.OnUIControllerClosing;
-                });
-            }
-            /// <summary>
-            /// 在Main之后
-            /// </summary>
-            /// <param name="args"></param>
-            public override void After(AfterArgs args)
-            {
-                base.After(args);
-                var visualExt = (AtmbVisualExtension)args.Extension;
-                args.Extension.App.RunOnUIThread(() =>
-                {
-                    visualExt.UIController.Closing -= visualExt.OnUIControllerClosing;
-                    visualExt.UIController = null;
-                    visualExt.MyWrapper = null;
-                });
-            }
+                UIController = AutumnBoxGuiApi.Main.GetUIController();
+                UIController.OnStart(args.Wrapper.Info);
+                UIController.Closing += OnUIControllerClosing;
+            });
         }
-        /// <summary>
-        /// 完成后的Tip,不设置则默认根据返回码判断是否成功
-        /// </summary>
-        protected string FinishedTip { get; set; } = null;
         /// <summary>
         /// 主函数
         /// </summary>
         /// <returns></returns>
-        [VisualUxManager]
         public override int Main()
         {
             isRunning = true;
@@ -74,52 +44,46 @@ namespace AutumnBox.OpenFramework.Extension
                 Logger.Warn("Fatal exception on VisualMain()", ex);
                 WriteLine(App.GetPublicResouce<string>("RunningWindowExceptionOnRunning"));
             }
-            if (!isForceStopped)
+            if (FinishedTip != null)
             {
-                App.RunOnUIThread(() =>
+                Tip = FinishedTip;
+            }
+            else
+            {
+                switch (retCode)
                 {
-                    UIController.OnFinish();
-                });
-                if (FinishedTip != null)
-                {
-                    Tip = FinishedTip;
-                }
-                else {
-                    switch (retCode) {
-                        case OK:
-                            Tip = "RunningWindowStateFinished";
-                            break;
-                        case ERR_CANCLLED_BY_USER:
-                            Tip = "RunningWindowStateCanclledByUser";
-                            break;
-                        default:
-                           Tip=  "RunningWindowStateError";
-                            break;
-
-                    }
+                    case OK:
+                        Tip = App.GetPublicResouce<string>("RunningWindowStateFinished");
+                        break;
+                    case ERR_CANCELED_BY_USER:
+                        Tip = App.GetPublicResouce<string>("RunningWindowStateCanceledByUser");
+                        break;
+                    default:
+                        Tip = App.GetPublicResouce<string>("RunningWindowStateError");
+                        break;
                 }
             }
+            UIController.OnFinish();
             isRunning = false;
             return retCode;
         }
-        bool isForceStopped = false;
         /// <summary>
         /// 当停止时调用
         /// </summary>
         /// <returns></returns>
-        public override sealed bool OnStopCommand()
+        public override bool OnStopCommand()
         {
+            bool canStop = false;
             try
             {
-                isForceStopped = VisualStop();
+                canStop = VisualStop();
             }
             catch (Exception ex)
             {
                 Logger.Warn("Fatal error on VisualStop()", ex);
                 WriteLine(App.GetPublicResouce<string>("RunningWindowExceptionOnStopping"));
-                isForceStopped = false;
             }
-            if (isForceStopped)
+            if (canStop)
             {
                 Tip = "RunningWindowStateForceStopped";
                 WriteLine(App.GetPublicResouce<string>("RunningWindowStopped"));
@@ -132,16 +96,20 @@ namespace AutumnBox.OpenFramework.Extension
             {
                 WriteLine(App.GetPublicResouce<string>("RunningWindowCantStop"));
             }
-            isRunning = !isForceStopped;
-            return isForceStopped;
+            isRunning = !canStop;
+            return canStop;
         }
 
+        /// <summary>
+        /// 完成后的Tip,不设置则默认根据返回码判断是否成功
+        /// </summary>
+        protected string FinishedTip { get; set; } = null;
         bool isRunning = true;
         internal void OnUIControllerClosing(object sender, UIControllerClosingEventArgs args)
         {
             if (isRunning)
             {
-                MyWrapper.Stop();
+                OnStopCommand();
                 args.Cancel = true;
             }
             else
@@ -163,8 +131,8 @@ namespace AutumnBox.OpenFramework.Extension
         {
             return false;
         }
-        internal IExtensionWrapper MyWrapper { get; set; }
-        internal IExtensionUIController UIController { get; set; }
+
+        private IExtensionUIController UIController { get; set; }
         /// <summary>
         /// 写一行数据
         /// </summary>

@@ -4,18 +4,24 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.Basic.Device;
+using AutumnBox.OpenFramework.Wrapper;
+using System;
 
 namespace AutumnBox.OpenFramework.Extension
 {
     partial class AutumnBoxExtension
     {
         /// <summary>
-        /// 拓展名
+        /// 日志标签
         /// </summary>
-        public string ExtName { get; set; }
+        public override string LoggingTag => Args.Wrapper.Info.Name;
         /// <summary>
         /// 目标设备
         /// </summary>
-        public IDevice TargetDevice { get; set; }
+        public IDevice TargetDevice => Args.TargetDevice;
+        /// <summary>
+        /// Wrapper
+        /// </summary>
+        public IExtensionWrapper Wrapper => Args.Wrapper;
     }
 }

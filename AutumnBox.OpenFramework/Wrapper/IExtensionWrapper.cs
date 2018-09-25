@@ -12,17 +12,9 @@ namespace AutumnBox.OpenFramework.Wrapper
     public interface IExtensionWrapper : IEquatable<IExtensionWrapper>
     {
         /// <summary>
-        /// 状态
-        /// </summary>
-        ExtensionWrapperState State { get; }
-        /// <summary>
         /// 拓展模块信息获取器
         /// </summary>
         IExtInfoGetter Info { get; }
-        /// <summary>
-        /// 上次执行完成的返回码
-        /// </summary>
-        int LastReturnCode { get; }
         /// <summary>
         /// 创建后的预先检测
         /// </summary>
@@ -33,21 +25,11 @@ namespace AutumnBox.OpenFramework.Wrapper
         /// </summary>
         void Ready();
         /// <summary>
-        /// 开始运行
+        /// 获取一个未开始的拓展模块进程(此进程非操作系统进程)
         /// </summary>
         /// <param name="device"></param>
-        void Run(IDevice device);
-        /// <summary>
-        /// 异步运行
-        /// </summary>
-        /// <param name="device"></param>
-        /// <param name="callback"></param>
-        void RunAsync(IDevice device, Action<IExtensionWrapper> callback = null);
-        /// <summary>
-        /// 停止运行
-        /// </summary>
         /// <returns></returns>
-        bool Stop();
+        IExtensionProcess GetProcess(IDevice device=null);
         /// <summary>
         /// 当该包装类被要求摧毁时调用
         /// </summary>

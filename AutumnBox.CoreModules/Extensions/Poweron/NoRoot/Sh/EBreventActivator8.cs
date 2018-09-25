@@ -20,6 +20,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot.Sh
     [ExtMinAndroidVersion(8, 0, 0)]
     [ExtRequiredDeviceStates(DeviceState.Poweron)]
     [ExtIcon("Icons.brevent.png")]
+    [Obsolete]
     internal abstract class EBreventActivator8 : OfficialVisualExtension
     {
         protected override int VisualMain()

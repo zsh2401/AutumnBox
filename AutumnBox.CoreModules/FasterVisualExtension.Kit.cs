@@ -1,6 +1,5 @@
 ﻿using AutumnBox.Basic.Calling;
 using AutumnBox.Basic.Data;
-using AutumnBox.OpenFramework.Content;
 using AutumnBox.OpenFramework.Extension;
 
 namespace AutumnBox.CoreModules
@@ -31,7 +30,7 @@ namespace AutumnBox.CoreModules
             string result = key;
             App.RunOnUIThread(() =>
             {
-                result = CoreLib.Current.Languages.Get(key) ?? App.GetPublicResouce(key)?.ToString() ?? key;
+                result = App.GetPublicResouce(key)?.ToString() ?? key;
             });
             return result;
         }

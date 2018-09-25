@@ -6,7 +6,7 @@ using System.IO;
 
 namespace AutumnBox.CoreModules.Lib
 {
-    public class GodPower : DependOnDeviceObject
+    internal class GodPower : DependOnDeviceObject
     {
         private const string FMT_CMD =
     "CLASSPATH=" + GODPOWER_APK_ON_DEVICE +

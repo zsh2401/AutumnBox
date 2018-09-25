@@ -14,7 +14,6 @@ namespace AutumnBox.OpenFramework.Management
     /// </summary>
     public static class Manager
     {
-
         private static IInternalManager _internalManager;
         /// <summary>
         /// 内部管理器

@@ -4,6 +4,7 @@
 ** desc： ...
 *************************************************/
 
+using AutumnBox.OpenFramework.Wrapper;
 using System;
 
 namespace AutumnBox.OpenFramework.Management
@@ -43,7 +44,7 @@ namespace AutumnBox.OpenFramework.Management
         /// <summary>
         /// wrapper开始运行了
         /// </summary>
-        void OnStart();
+        void OnStart(IExtInfoGetter info);
         /// <summary>
         /// wrapper结束运行了
         /// </summary>
