@@ -28,6 +28,7 @@ namespace AutumnBox.OpenFramework.Extension
                 UIController.OnStart(args.Wrapper.Info);
                 UIController.Closing += OnUIControllerClosing;
             });
+            Tip = App.GetPublicResouce<string>("RunningWindowStateRunning");
         }
         /// <summary>
         /// 主函数
@@ -88,6 +89,7 @@ namespace AutumnBox.OpenFramework.Extension
         /// <returns></returns>
         protected override bool OnStopCommand()
         {
+            Logger.CDebug("StopCommand()");
             bool canStop = false;
             try
             {
@@ -112,14 +114,16 @@ namespace AutumnBox.OpenFramework.Extension
         bool isRunning = true;
         internal void OnUIControllerClosing(object sender, UIControllerClosingEventArgs args)
         {
+            args.Cancel = isRunning;
             if (isRunning)
             {
-                OnStopCommand();
-                args.Cancel = true;
-            }
-            else
-            {
-                args.Cancel = false;
+                try
+                {
+                    Args.CurrentProcess.Kill();
+                }
+                catch (Exceptions.ExtensionCantBeStoppedException)
+                {
+                }
             }
         }
 

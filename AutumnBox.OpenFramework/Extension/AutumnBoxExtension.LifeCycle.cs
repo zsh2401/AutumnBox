@@ -5,6 +5,8 @@
 *************************************************/
 using AutumnBox.OpenFramework.Content;
 using AutumnBox.OpenFramework.Exceptions;
+using AutumnBox.OpenFramework.Open;
+using AutumnBox.OpenFramework.Wrapper;
 using System;
 
 namespace AutumnBox.OpenFramework.Extension
@@ -28,27 +30,46 @@ namespace AutumnBox.OpenFramework.Extension
     [ExtRegion(null)]
     //[ExtAppProperty("com.miui.fm")]
     //[ExtMinAndroidVersion(7,0,0)]
-    public abstract partial class AutumnBoxExtension : Context
+    public abstract partial class AutumnBoxExtension : Context, IClassExtension
     {
-        protected ExtensionArgs Args { get; private set; }
-        internal void Init(ExtensionArgs args)
+        private void PermissionCheck(Context ctx)
         {
+            bool isWrapper = ctx is IExtensionWrapper;
+            bool ctxPermissionIsEnough = ctx.Permission >= CtxPer.High;
+            bool isProcess = ctx is IExtensionProcess;
+            if (!(isWrapper || ctxPermissionIsEnough || isProcess))
+            {
+                throw new AccessDeniedException();
+            }
+        }
+        protected ExtensionArgs Args { get; private set; }
+        public void Init(Context caller, ExtensionArgs args)
+        {
+            PermissionCheck(caller);
             OnCreate(args);
         }
-        internal int Run()
+        public int Run(Context caller)
         {
+            PermissionCheck(caller);
             return Main();
         }
-        internal void Finish(ExtensionFinishedArgs args)
+        public void Finish(Context caller, ExtensionFinishedArgs args)
         {
+            PermissionCheck(caller);
+            Canceled = args.IsForceStopped;
+            Logger.CDebug("Finish()");
+            Logger.CDebug("is fs:" + args.IsForceStopped);
+            Logger.CDebug("exit code:" + args.ExitCode);
             OnFinish(args);
         }
-        internal bool Stop(ExtensionStopArgs args)
+        public bool TryStop(Context caller, ExtensionStopArgs args)
         {
+            PermissionCheck(caller);
             return OnStopCommand();
         }
-        internal void Destory(ExtensionDestoryArgs args)
+        public void Destory(Context caller, ExtensionDestoryArgs args)
         {
+            PermissionCheck(caller);
             OnDestory(args);
         }
 

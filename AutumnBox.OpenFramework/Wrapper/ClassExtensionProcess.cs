@@ -37,7 +37,7 @@ namespace AutumnBox.OpenFramework.Wrapper
         }
         public ExtBeforeCreateAspectAttribute[] bca;
 
-        private AutumnBoxExtension Instance { get; set; }
+        private IClassExtension Instance { get; set; }
         private readonly IExtensionWrapper wrapper;
 
         public ClassExtensionProcess(IExtensionWrapper wrapper, Type extType, IDevice targetDevice = null)
@@ -70,7 +70,7 @@ namespace AutumnBox.OpenFramework.Wrapper
 
         private void CreateInstance()
         {
-            Instance = (AutumnBoxExtension)Activator.CreateInstance(extensionType);
+            Instance = (IClassExtension)Activator.CreateInstance(extensionType);
         }
 
         private void InjectProperty()
@@ -81,7 +81,7 @@ namespace AutumnBox.OpenFramework.Wrapper
                 CurrentProcess = this,
                 TargetDevice = targetDevice
             };
-            Instance.Init(args);
+            Instance.Init(ctx, args);
         }
 
         private int ExecuteMainMethod()
@@ -89,7 +89,7 @@ namespace AutumnBox.OpenFramework.Wrapper
             Trace.WriteLine(GetHashCode().ToString());
             try
             {
-                return Instance.Main();
+                return Instance.Run(ctx);
             }
             catch (ExtensionCanceledException)
             {
@@ -148,7 +148,7 @@ namespace AutumnBox.OpenFramework.Wrapper
         }
 
         private bool executingMainMethod = false;
-        private bool isStopped = false;
+        private bool isForceStopped = false;
 
         private int MainFlow()
         {
@@ -170,17 +170,14 @@ namespace AutumnBox.OpenFramework.Wrapper
                 exitCode = ExecuteMainMethod();
                 executingMainMethod = false;
             });
-            while (executingMainMethod && !isStopped) ;
+            while (executingMainMethod && !isForceStopped) ;
             ExitCode = exitCode;
-            if (isStopped)
-            {
-                return exitCode;
-            }
             var finishedArgs = new ExtensionFinishedArgs()
             {
-                ExitCode = isStopped ? AutumnBoxExtension.ERR_CANCELED_BY_USER : exitCode
+                ExitCode = isForceStopped ? AutumnBoxExtension.ERR_CANCELED_BY_USER : exitCode,
+                IsForceStopped = isForceStopped
             };
-            Instance.Finish(finishedArgs);
+            Instance.Finish(ctx, finishedArgs);
             Dispose();
             State = ProcessState.Exited;
             return exitCode;
@@ -188,20 +185,19 @@ namespace AutumnBox.OpenFramework.Wrapper
 
         public void Kill()
         {
-            isStopped = false;
+            isForceStopped = false;
             try
             {
-                isStopped = Instance.Stop(new ExtensionStopArgs());
+                isForceStopped = Instance.TryStop(ctx,new ExtensionStopArgs());
             }
             catch (Exception ex)
             {
                 throw new ExtensionCantBeStoppedException(wrapper.Info.Name + " cant be stopped", ex);
             }
-            if (!isStopped)
+            if (!isForceStopped)
             {
                 throw new ExtensionCantBeStoppedException(wrapper.Info.Name + " cant be stopped");
             }
-            Instance.Canceled = isStopped;
         }
 
         #region IDisposable Support
@@ -215,7 +211,7 @@ namespace AutumnBox.OpenFramework.Wrapper
                 {
                     //Instance?.OnDestory(new ExtensionDestoryArgs());
                 }
-                Instance?.Destory(new ExtensionDestoryArgs());
+                Instance?.Destory(ctx, new ExtensionDestoryArgs());
                 BeforeCreatingAspects = null;
                 Instance = null;
                 disposedValue = true;

@@ -159,9 +159,10 @@ namespace AutumnBox.OpenFramework.ExtLibrary
         /// <returns></returns>
         protected virtual bool IsExt(Type t)
         {
-            var result = t.IsSubclassOf(typeof(AutumnBoxExtension));
+            Type extInterfaceType = typeof(IClassExtension);
+            bool isImpl = extInterfaceType.IsAssignableFrom(t);
             var isAbstract = t.IsAbstract;
-            return result && !isAbstract;
+            return isImpl && !isAbstract;
         }
         /// <summary>
         /// 获取该入口类管理的所有封装器
