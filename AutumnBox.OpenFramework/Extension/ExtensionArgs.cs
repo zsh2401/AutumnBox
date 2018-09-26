@@ -5,23 +5,24 @@
 *************************************************/
 using AutumnBox.Basic.Device;
 using AutumnBox.OpenFramework.Wrapper;
+using System;
 
 namespace AutumnBox.OpenFramework.Extension
 {
-    public class ExtensionArgs
+    public class ExtensionArgs : EventArgs
     {
         public IExtensionProcess CurrentProcess { get; set; }
         public IExtensionWrapper Wrapper { get; set; }
         public IDevice TargetDevice { get; set; }
     }
-    public class ExtensionDestoryArgs
+    public class ExtensionDestoryArgs : EventArgs
     {
 
     }
-    public class ExtensionStopArgs {
+    public class ExtensionStopArgs : EventArgs {
 
     }
-    public class ExtensionFinishedArgs
+    public class ExtensionFinishedArgs : EventArgs
     {
         public int ExitCode { get; set; }
     }
