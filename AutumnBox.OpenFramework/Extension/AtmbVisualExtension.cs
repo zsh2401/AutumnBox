@@ -34,7 +34,7 @@ namespace AutumnBox.OpenFramework.Extension
         /// 主函数
         /// </summary>
         /// <returns></returns>
-        public override int Main()
+        protected sealed override int Main()
         {
             isRunning = true;
             int retCode = ERR;

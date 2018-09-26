@@ -15,7 +15,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.Root
     [ExtRequiredDeviceStates(DeviceState.Poweron)]
     internal class EFlashBoot : AutumnBoxExtension
     {
-        public override int Main()
+        protected override int Main()
         {
             var warnMsg = CoreLib.Current.Languages.Get("EFlashBootObsoleteMsg");
             Ux.Warn(warnMsg);

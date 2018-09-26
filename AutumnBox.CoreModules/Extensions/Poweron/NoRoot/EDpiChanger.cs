@@ -15,7 +15,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot
     internal class EDpiChanger : AutumnBoxExtension
     {
         private Window mainWindow;
-        public override int Main()
+        protected override int Main()
         {
             Ux.Error("此模块尚未完成,请等待");
             return ERR;
