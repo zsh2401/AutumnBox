@@ -16,7 +16,7 @@ namespace AutumnBox.GUI.ViewModel
 {
     class VMConnectDevices : ViewModelBase
     {
-        public string DisplayMemeberPath { get; set; } = "SerialNumber";
+        public string DisplayMemeberPath { get; set; } = nameof(IDevice.SerialNumber);
 
         public IDevice Selected
         {
