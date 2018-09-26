@@ -32,46 +32,7 @@ namespace AutumnBox.OpenFramework.Extension
     //[ExtMinAndroidVersion(7,0,0)]
     public abstract partial class AutumnBoxExtension : Context, IClassExtension
     {
-        private void PermissionCheck(Context ctx)
-        {
-            bool isWrapper = ctx is IExtensionWrapper;
-            bool ctxPermissionIsEnough = ctx.Permission >= CtxPer.High;
-            bool isProcess = ctx is IExtensionProcess;
-            if (!(isWrapper || ctxPermissionIsEnough || isProcess))
-            {
-                throw new AccessDeniedException();
-            }
-        }
         protected ExtensionArgs Args { get; private set; }
-        public void Init(Context caller, ExtensionArgs args)
-        {
-            PermissionCheck(caller);
-            OnCreate(args);
-        }
-        public int Run(Context caller)
-        {
-            PermissionCheck(caller);
-            return Main();
-        }
-        public void Finish(Context caller, ExtensionFinishedArgs args)
-        {
-            PermissionCheck(caller);
-            Canceled = args.IsForceStopped;
-            Logger.CDebug("Finish()");
-            Logger.CDebug("is fs:" + args.IsForceStopped);
-            Logger.CDebug("exit code:" + args.ExitCode);
-            OnFinish(args);
-        }
-        public bool TryStop(Context caller, ExtensionStopArgs args)
-        {
-            PermissionCheck(caller);
-            return OnStopCommand();
-        }
-        public void Destory(Context caller, ExtensionDestoryArgs args)
-        {
-            PermissionCheck(caller);
-            OnDestory(args);
-        }
 
         /// <summary>
         /// 当拓展被创建后调用
@@ -85,7 +46,7 @@ namespace AutumnBox.OpenFramework.Extension
         /// <summary>
         /// 主函数
         /// </summary>
-        public abstract int Main();
+        protected abstract int Main();
 
         /// <summary>
         /// 当拓展模块执行完成时调用,这通常发生在Main()函数之后

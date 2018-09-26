@@ -15,7 +15,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.Root
     [ExtRequiredDeviceStates(DeviceState.Poweron)]
     internal class EFlashRecovery : AutumnBoxExtension
     {
-        public override int Main()
+        protected override int Main()
         {
             var warnMsg = CoreLib.Current.Languages.Get("EFlashRecoveryObsoleteMsg");
             Ux.Warn(warnMsg);
