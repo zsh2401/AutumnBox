@@ -3,11 +3,11 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <Configurations>Debug;Release;SDK</Configurations>
-    <Version>8.3</Version>
+    <Version>8.4.0-beta</Version>
     <Authors>zsh2401</Authors>
     <Company>zsh2401</Company>
     <Copyright>Copyright © 2017 - 2018 zsh2401,All Rights Reserved</Copyright>
-    <Description>AutumnBox oepn framework</Description>
+    <Description>Let's develop AutumnBox extension!</Description>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
