@@ -81,7 +81,7 @@ namespace AutumnBox.OpenFramework.Wrapper
                 CurrentProcess = this,
                 TargetDevice = targetDevice
             };
-            Instance.OnCreate(args);
+            Instance.Init(args);
         }
 
         private int ExecuteMainMethod()
@@ -180,7 +180,7 @@ namespace AutumnBox.OpenFramework.Wrapper
             {
                 ExitCode = isStopped ? AutumnBoxExtension.ERR_CANCELED_BY_USER : exitCode
             };
-            Instance.OnFinish(finishedArgs);
+            Instance.Finish(finishedArgs);
             Dispose();
             State = ProcessState.Exited;
             return exitCode;
@@ -191,7 +191,7 @@ namespace AutumnBox.OpenFramework.Wrapper
             isStopped = false;
             try
             {
-                isStopped = Instance.OnStopCommand();
+                isStopped = Instance.Stop(new ExtensionStopArgs());
             }
             catch (Exception ex)
             {
@@ -215,7 +215,7 @@ namespace AutumnBox.OpenFramework.Wrapper
                 {
                     //Instance?.OnDestory(new ExtensionDestoryArgs());
                 }
-                Instance?.OnDestory(new ExtensionDestoryArgs());
+                Instance?.Destory(new ExtensionDestoryArgs());
                 BeforeCreatingAspects = null;
                 Instance = null;
                 disposedValue = true;

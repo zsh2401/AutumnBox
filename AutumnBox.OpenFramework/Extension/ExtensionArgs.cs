@@ -18,6 +18,9 @@ namespace AutumnBox.OpenFramework.Extension
     {
 
     }
+    public class ExtensionStopArgs {
+
+    }
     public class ExtensionFinishedArgs
     {
         public int ExitCode { get; set; }

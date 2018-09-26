@@ -20,7 +20,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot
             Ux.Error("此模块尚未完成,请等待");
             return ERR;
         }
-        public override bool OnStopCommand()
+        protected override bool OnStopCommand()
         {
             App.RunOnUIThread(() =>
             {
