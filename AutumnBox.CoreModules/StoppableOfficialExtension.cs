@@ -4,6 +4,7 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.Basic.Calling;
+using AutumnBox.OpenFramework.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,11 +15,9 @@ namespace AutumnBox.CoreModules
 {
     internal abstract class StoppableOfficialExtension : OfficialVisualExtension
     {
-        protected bool RequestStop { get; private set; } = false;
         protected CommandStation CmdStation { get; private set; } = new CommandStation();
         protected override bool VisualStop()
         {
-            RequestStop = true;
             CmdStation.Free();
             return true;
         }

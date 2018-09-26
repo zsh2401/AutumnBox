@@ -19,7 +19,13 @@
     <s:String x:Key="EFilePusherSelectingFilter">Any file(*.*)|*.*</s:String>
     <s:String x:Key="EFilePusherFailed">Push failed</s:String>
 
-    <s:String x:Key="EFlashRecoverySelectingTitle">Select a file</s:String>
+
+    <s:String x:Key="EFlashRecoveryObsoleteMsg">This function is obsolete,plz reboot device to the fastboot mode,and use autumnbox fastboot function to flash recovery.img</s:String>
+    <s:String x:Key="EFlashBootObsoleteMsg">This function is obsolete,plz reboot device to the fastboot mode,and use autumnbox fastboot function to flash boot.img</s:String>
+    
+    <s:String x:Key="EFlashBootSelectingTitle">Select a image file</s:String>
+    <s:String x:Key="EFlashBootSelectingFilter">Image file(*.img)|*.img|Any file(*.*)|*.*</s:String>
+    <s:String x:Key="EFlashRecoverySelectingTitle">Select a image file</s:String>
     <s:String x:Key="EFlashRecoverySelectingFilter">Image file(*.img)|*.img|Any file(*.*)|*.*</s:String>
 
     <s:String x:Key="EApkInstallerSelectingTitle">Select a apk file</s:String>

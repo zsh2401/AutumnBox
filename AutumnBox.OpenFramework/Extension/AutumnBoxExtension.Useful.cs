@@ -4,6 +4,7 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.Basic.Device;
+using AutumnBox.OpenFramework.Exceptions;
 using AutumnBox.OpenFramework.Wrapper;
 using System;
 
@@ -23,5 +24,11 @@ namespace AutumnBox.OpenFramework.Extension
         /// Wrapper
         /// </summary>
         public IExtensionWrapper Wrapper => Args.Wrapper;
+        public bool Canceled { get; internal set; } = false;
+        protected void ThrowIfCanceled() {
+            if (Canceled) {
+                throw new ExtensionCanceledException();
+            }
+        }
     }
 }

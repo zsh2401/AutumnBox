@@ -91,6 +91,10 @@ namespace AutumnBox.OpenFramework.Wrapper
             {
                 return Instance.Main();
             }
+            catch (ExtensionCanceledException)
+            {
+                return AutumnBoxExtension.ERR_CANCELED_BY_USER;
+            }
             catch (Exception ex)
             {
                 ctx.Logger.Warn($"[Extension] {wrapper.Info.Name} was threw a exception", ex);
@@ -197,6 +201,7 @@ namespace AutumnBox.OpenFramework.Wrapper
             {
                 throw new ExtensionCantBeStoppedException(wrapper.Info.Name + " cant be stopped");
             }
+            Instance.Canceled = isStopped;
         }
 
         #region IDisposable Support

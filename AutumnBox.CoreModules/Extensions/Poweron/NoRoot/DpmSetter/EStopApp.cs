@@ -27,8 +27,10 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot.DpmSetter
         }
         protected override int SetReciverAsDpm()
         {
-            return GodPower
+            return CmdStation.Register(
+                GodPower
                 .GetSetStopAppCommand()
+                )
                 .To(OutputPrinter)
                 .Execute().ExitCode;
         }

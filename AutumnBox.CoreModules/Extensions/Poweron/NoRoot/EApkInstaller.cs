@@ -59,19 +59,13 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot
             SetTip(currentInstalling, totalCount);
             foreach (var file in files)
             {
-
                 try
                 {
                     var result = CmdStation
                          .GetAdbCommand(TargetDevice, $"install \"{file.FullName}\"")
                          .To(OutputLogger)
                          .Execute();
-                    if (RequestStop)
-                    {
-                        exitCodeOnInstalling = ERR_CANCELED_BY_USER;
-                        error++;
-                        break;
-                    }
+                    ThrowIfCanceled();
                     if (result.ExitCode == 0)
                     {
                         successed++;

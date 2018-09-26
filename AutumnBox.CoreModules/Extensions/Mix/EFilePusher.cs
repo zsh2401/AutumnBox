@@ -13,7 +13,7 @@ namespace AutumnBox.CoreModules.Extensions.Mix
     [ExtName("Push file to device", Lang = "en-US")]
     [ExtIcon("Icons.filepush.png")]
     [ExtRequiredDeviceStates(Basic.Device.DeviceState.Poweron | Basic.Device.DeviceState.Recovery)]
-    internal class EFilePusher : OfficialVisualExtension
+    internal class EFilePusher : StoppableOfficialExtension
     {
         protected override int VisualMain()
         {
@@ -30,22 +30,22 @@ namespace AutumnBox.CoreModules.Extensions.Mix
                 seleFile = fileDialog.FileName;
             });
 
-            if (dialogResult == true)
+            if (dialogResult != true) return ERR_CANCELED_BY_USER;
+            try
             {
-                try
-                {
-                    return new AdbCommand(TargetDevice, $"push \"{seleFile}\" /sdcard/")
-                        .To(OutputPrinter)
-                        .Execute().ExitCode;
-                }
-                catch (Exception ex)
-                {
-                    Logger.Warn("file pushing failed", ex);
-                    WriteLineAndSetTip(Res("EFilePusherSuccessful"));
-                    return ERR;
-                }
+                return CmdStation.GetAdbCommand(TargetDevice,
+                    $"push \"{seleFile}\" /sdcard/")
+                    .To(OutputPrinter)
+                    .Execute()
+                    .ExitCode;
             }
-            return ERR;
+            catch (Exception ex)
+            {
+                Logger.Warn("file pushing failed", ex);
+                WriteLineAndSetTip(Res("EFilePusherFailed"));
+                FinishedTip = "EFilePusherFailed";
+                return ERR;
+            }
         }
     }
 }

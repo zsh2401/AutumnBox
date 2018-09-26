@@ -31,7 +31,10 @@ namespace AutumnBox.GUI.ViewModel
             {
                 Settings.Default.RandomTheme = value;
                 Settings.Default.Save();
-                ThemeManager.Instance.ApplyBySetting();
+                if (value)
+                {
+                    ThemeManager.Instance.ApplyBySetting();
+                }
                 RaisePropertyChanged();
                 RaisePropertyChanged(nameof(SelectedTheme));
                 RaisePropertyChanged(nameof(ThemeComboBoxEnabled));

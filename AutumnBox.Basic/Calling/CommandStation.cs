@@ -32,6 +32,26 @@ namespace AutumnBox.Basic.Calling
             return command;
         }
         /// <summary>
+        /// 获取Shell命令
+        /// </summary>
+        /// <param name="device"></param>
+        /// <param name="cmd"></param>
+        /// <returns></returns>
+        public ShellCommand GetShellCommand(IDevice device, string cmd)
+        {
+            return Register(new ShellCommand(device, cmd));
+        }
+        /// <summary>
+        /// 获取su命令
+        /// </summary>
+        /// <param name="device"></param>
+        /// <param name="cmd"></param>
+        /// <returns></returns>
+        public SuCommand GetSuCommand(IDevice device, string cmd)
+        {
+            return Register(new SuCommand(device, cmd));
+        }
+        /// <summary>
         /// 获取一个被管理的ADB命令
         /// </summary>
         /// <param name="device"></param>
