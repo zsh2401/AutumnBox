@@ -25,5 +25,6 @@ namespace AutumnBox.OpenFramework.Extension
     public class ExtensionFinishedArgs : EventArgs
     {
         public int ExitCode { get; set; }
+        public bool IsForceStopped { get; set; }
     }
 }

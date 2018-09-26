@@ -22,9 +22,6 @@ namespace AutumnBox.CoreModules.Extensions
         //}
         protected override int VisualMain()
         {
-            //var brand = TargetDevice.GetProp(BuildPropKeys.Brand);
-            //WriteLine(TargetDevice.Product);
-            //Ux.ShowMessageDialog("Ok");
             WriteLine(Ux.Agree("w").ToString());
             Ux.Error("Ok");
             WriteInitInfo();
@@ -39,7 +36,6 @@ namespace AutumnBox.CoreModules.Extensions
             new AdbCommand($"-s 01d1234 reboot")
                 .To(OutputPrinter)
                 .Execute();
-            WriteLine("??");
             Thread.Sleep(2500);
             return 0;                                                
         }
