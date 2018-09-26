@@ -26,8 +26,8 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot.DpmSetter
         }
         protected override int SetReciverAsDpm()
         {
-            return GodPower
-                 .GetSetIceBoxCommand()
+            return CmdStation.Register(GodPower
+                 .GetSetIceBoxCommand())
                  .To(OutputPrinter)
                  .Execute()
                  .ExitCode;

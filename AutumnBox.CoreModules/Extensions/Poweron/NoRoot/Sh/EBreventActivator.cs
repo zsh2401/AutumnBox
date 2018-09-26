@@ -19,55 +19,34 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot.Sh
     [ExtAppProperty("me.piebridge.brevent")]
     [ExtRequiredDeviceStates(DeviceState.Poweron)]
     [ExtIcon("Icons.brevent.png")]
-    internal class EBreventActivator : OfficialVisualExtension
+    internal class EBreventActivator : StoppableOfficialExtension
     {
         private const string SH_PATH = "/data/data/me.piebridge.brevent/brevent.sh";
         private const int stateCheck = 0;
         private const int stateExecutingShell = 1;
-        private bool requiredStop = false;
         private int state = 0;
-        private IProcessBasedCommand executingCommand;
         protected override int VisualMain()
         {
             WriteInitInfo();
             new ActivityManager(TargetDevice).StartActivity("me.piebridge.brevent", "ui.BreventActivity");
-            var catCommand = new ShellCommand(TargetDevice, $"cat {SH_PATH}");
+            var catCommand = CmdStation.GetShellCommand(TargetDevice, $"cat {SH_PATH}");
             state = stateCheck;
-            while (catCommand.Execute().ExitCode != (int)LinuxReturnCode.None && !requiredStop)
+            while (catCommand.Execute().ExitCode != (int)LinuxReturnCode.None && !Canceled)
             {
                 Ux.Message(Res("EBreventActivatorFirstMsg"));
                 Thread.Sleep(2000);
             }
-            if (requiredStop)
-            {
-                return ERR_CANCELED_BY_USER;
-            }
+            ThrowIfCanceled();
+
             state = stateExecutingShell;
-            executingCommand = TargetDevice.GetShellCommand($"sh {SH_PATH}")
-                .To(OutputPrinter);
-            var result = executingCommand.Execute();
+            var result = CmdStation
+                .GetShellCommand(TargetDevice, $"sh {SH_PATH}")
+                .To(OutputPrinter)
+                .Execute();
+
+            ThrowIfCanceled();
             WriteExitCode(result.ExitCode);
-            if (result.ExitCode == (int)LinuxReturnCode.None)
-            {
-                return OK;
-            }
-            else
-            {
-                return ERR;
-            }
-        }
-        protected override bool VisualStop()
-        {
-            if (state == stateCheck)
-            {
-                requiredStop = true;
-                return true;
-            }
-            else
-            {
-                executingCommand.Kill();
-                return true;
-            }
+            return result.ExitCode;
         }
     }
 }

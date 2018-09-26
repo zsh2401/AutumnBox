@@ -14,7 +14,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot
     [ExtName("截图并保存到电脑")]
     [ExtName("Screenshot and save to pc", Lang = "en-US")]
     [ExtIcon("Icons.screenshot.png")]
-    [ExtRequiredDeviceStates(Basic.Device.DeviceState.Poweron)]
+    [ExtRequiredDeviceStates(DeviceState.Poweron)]
     internal class EScreenShoter : OfficialVisualExtension
     {
         protected override int VisualMain()
@@ -30,7 +30,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot
 
             if (dialogResult == DialogResult.OK)
             {
-                string tmpFile = $"{Adb.AdbTmpPathOnDevice}/dream.png";
+                string tmpFile = $"{Adb.AdbTmpPathOnDevice}/screenshot.png";
                 TargetDevice.Shell($"/system/bin/screencap -p {tmpFile}");
                 var result = new AdbCommand(TargetDevice, $"pull {tmpFile} {path}")
                     .To((e) =>

@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CoreLib.cs" />
+    <Compile Include="Extensions\Fastboot\EFlashBoot.cs" />
     <Compile Include="Extensions\Fastboot\EFlashRecovery.cs" />
     <Compile Include="Extensions\Fastboot\EOemLock.cs" />
     <Compile Include="Extensions\Poweron\NoRoot\DpmSetter\EFreezeYou.cs" />
@@ -67,7 +68,6 @@
     <Compile Include="OfficialVisualExtension.Main.cs" />
     <Compile Include="Extensions\Poweron\NoRoot\EApkInstaller.cs" />
     <Compile Include="Extensions\Poweron\NoRoot\Sh\EBreventActivator.cs" />
-    <Compile Include="Extensions\Poweron\NoRoot\Sh\EBreventActivator8.cs" />
     <Compile Include="Extensions\Poweron\NoRoot\EDpiChanger.cs" />
     <Compile Include="Extensions\Poweron\Root\EExtractBootImg.cs" />
     <Compile Include="Extensions\Poweron\Root\EFlashRecovery.cs" />

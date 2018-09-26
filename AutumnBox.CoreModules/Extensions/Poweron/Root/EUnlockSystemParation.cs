@@ -15,17 +15,29 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.Root
     [ExtRequiredDeviceStates(DeviceState.Poweron)]
     [ExtRequireRoot]
     [ExtIcon("Icons.key.png")]
-    internal class EUnlockSystemParation : OfficialVisualExtension
+    internal class EUnlockSystemParation : StoppableOfficialExtension
     {
         protected override int VisualMain()
         {
-            new AdbCommand(TargetDevice, $"root")
-                .To(OutputPrinter)
-                .Execute();
+            var enableRootResult = CmdStation
+                 .GetAdbCommand(TargetDevice,
+                 $"root")
+                 .To(OutputPrinter)
+                 .Execute();
+            ThrowIfCanceled();
+            if (enableRootResult.ExitCode != 0)
+            {
+                return enableRootResult.ExitCode;
+            }
+            
             Thread.Sleep(300);
-            var result = new AdbCommand(TargetDevice, $"disable-verity")
+            var result = CmdStation
+                .GetAdbCommand(TargetDevice,
+                $"disable-verity")
                 .To(OutputPrinter)
                 .Execute();
+
+            ThrowIfCanceled();
             return result.ExitCode;
         }
     }

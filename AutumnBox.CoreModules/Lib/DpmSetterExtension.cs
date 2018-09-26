@@ -3,6 +3,7 @@
 ** date:  2018/9/10 17:36:13 (UTC +8:00)
 ** desc： ...
 *************************************************/
+using AutumnBox.Basic.Calling;
 using AutumnBox.Basic.Device;
 using AutumnBox.OpenFramework.Extension;
 
@@ -10,7 +11,7 @@ namespace AutumnBox.CoreModules.Lib
 {
     [ExtDesc("使用奇淫技巧暴力设置设备管理员,\n注意:使用此模块前,必须先移除屏幕锁,指纹锁等,否则将可能导致不可预见的后果")]
     [ExtDesc("Use the sneaky skills to set up the device administrator, \n Note: Before using this module, you must first remove the screen lock, fingerprint lock, etc., otherwise it may lead to unforeseen consequences", Lang = "en-us")]
-    internal abstract class DpmSetterExtension : OfficialVisualExtension
+    internal abstract class DpmSetterExtension : StoppableOfficialExtension
     {
         public abstract string ReceiverClassName { get; }
         public abstract string DpmAppPackageName { get; }
@@ -24,10 +25,12 @@ namespace AutumnBox.CoreModules.Lib
         protected virtual int SetReciverAsDpm()
         {
             WriteLineAndSetTip(Res("DPMSetting"));
-            TargetDevice
-                .GetShellCommand($"dpm set-device-owner {DpmAppPackageName}/{ReceiverClassName}")
+            CmdStation
+                .GetShellCommand(TargetDevice,
+                $"dpm set-device-owner {DpmAppPackageName}/{ReceiverClassName}")
                 .To(OutputPrinter)
                 .Execute();
+            ThrowIfCanceled();
             return 0;
         }
 
@@ -38,20 +41,37 @@ namespace AutumnBox.CoreModules.Lib
             {
                 return ERR_CANCELED_BY_USER;
             }
+            ProcessBasedCommand command = null;
+            IProcessBasedCommandResult result = null;
             WriteInitInfo();
             GodPower = new GodPower(this, TargetDevice);
 
             WriteLineAndSetTip(Res("EGodPowerExtractingApk"));
             GodPower.Extract();
+            ThrowIfCanceled();
 
             WriteLineAndSetTip(Res("EGodPowerPushingApk"));
-            GodPower.GetPushCommand().To(OutputPrinter).Execute();
+            command = GodPower.GetPushCommand();
+            CmdStation.Register(command);
+            result = command
+                .To(OutputPrinter)
+                .Execute();
 
             WriteLineAndSetTip(Res("EGodPowerRmUser"));
-            GodPower.GetRemoveUserCommand().To(OutputPrinter).Execute();
+            command = GodPower.GetRemoveUserCommand();
+            CmdStation.Register(command);
+            result= command
+                .To(OutputPrinter)
+                .Execute();
+            ThrowIfCanceled();
 
             WriteLineAndSetTip(Res("EGodPowerRmAcc"));
-            GodPower.GetRemoveAccountCommnad().To(OutputPrinter).Execute();
+            command = GodPower.GetRemoveAccountCommnad();
+            CmdStation.Register(command);
+            result = command
+                .To(OutputPrinter)
+                .Execute();
+            ThrowIfCanceled();
 
             return SetReciverAsDpm();
         }
