@@ -19,7 +19,7 @@ namespace AutumnBox.OpenFramework.Extension
         /// 创建
         /// </summary>
         /// <param name="args"></param>
-        public override void OnCreate(ExtensionArgs args)
+        protected override void OnCreate(ExtensionArgs args)
         {
             base.OnCreate(args);
             App.RunOnUIThread(() =>
@@ -55,7 +55,7 @@ namespace AutumnBox.OpenFramework.Extension
         /// 完成
         /// </summary>
         /// <param name="args"></param>
-        public override void OnFinish(ExtensionFinishedArgs args)
+        protected override void OnFinish(ExtensionFinishedArgs args)
         {
             base.OnFinish(args);
             isRunning = false;
@@ -86,7 +86,7 @@ namespace AutumnBox.OpenFramework.Extension
         /// 当停止时调用
         /// </summary>
         /// <returns></returns>
-        public override bool OnStopCommand()
+        protected override bool OnStopCommand()
         {
             bool canStop = false;
             try
