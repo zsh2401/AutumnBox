@@ -12,7 +12,7 @@ namespace AutumnBox.Basic.Device.Management.Flash
     /// <summary>
     /// 获取处在Fastboot状态下的设备的信息
     /// </summary>
-    public class FastbootDeviceInfoGetter : DependOnDeviceObject
+    public class FastbootDeviceInfoGetter : DeviceCommander
     {
         private const string resultPattern = @".+:\u0020(?<result>.+)";
         /// <summary>
@@ -29,7 +29,12 @@ namespace AutumnBox.Basic.Device.Management.Flash
         /// <returns></returns>
         public string GetProduct()
         {
-            var text = Device.Fastboot("getvar product").Item1.ToString();
+            var text = CmdStation
+                .GetFastbootCommand(Device,"getvar product")
+                .To(RaiseOutput)
+                .Execute()
+                .Output
+                .ToString();
             var match = Regex.Match(text, resultPattern);
             if (match.Success)
             {
