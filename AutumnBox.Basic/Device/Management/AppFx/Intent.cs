@@ -4,12 +4,27 @@ using System.Text;
 
 namespace AutumnBox.Basic.Device.Management.AppFx
 {
+    /// <summary>
+    /// Intent,通常作为am命令的参数
+    /// </summary>
     public sealed class Intent
     {
+        /// <summary>
+        /// 序列化为arg时的设置
+        /// </summary>
         public enum IntentToArgOption
         {
+            /// <summary>
+            /// key带上双引号
+            /// </summary>
             KeyDoubleQuotation = 1 << 1,
+            /// <summary>
+            /// 值带上双引号
+            /// </summary>
             ValueDoubleQuotation = 1 << 2,
+            /// <summary>
+            /// 自动判断，必要时将值带上引号
+            /// </summary>
             AutoValueDoubleQuotation = 1 << 4
         }
         private static string ToIntentArg(string key, object value
@@ -84,10 +99,17 @@ namespace AutumnBox.Basic.Device.Management.AppFx
             return $"--{flag} {key} {_value}";
         }
         private readonly Dictionary<string, object> collection = new Dictionary<string, object>();
+        /// <summary>
+        /// 清空
+        /// </summary>
         public void Clear()
         {
             collection.Clear();
         }
+        /// <summary>
+        /// 转换为ADB参数
+        /// </summary>
+        /// <returns></returns>
         public string ToAdbArguments()
         {
             StringBuilder sb = new StringBuilder();
@@ -98,66 +120,151 @@ namespace AutumnBox.Basic.Device.Management.AppFx
             }
             return sb.ToString();
         }
+        /// <summary>
+        /// 序列化为字符
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return ToAdbArguments();
         }
-        public object this[string key]
-        {
-            get
-            {
-                return collection[key];
-            }
-            set
-            {
-                try
-                {
-                    collection[key] = value;
-                }
-                catch (KeyNotFoundException)
-                {
-                    //collection.Add(key, value);
-                }
-            }
-        }
+        /// <summary>
+        /// 添加空值
+        /// </summary>
+        /// <param name="key"></param>
         public void Add(string key)
         {
             collection.Add(key, null);
         }
+        /// <summary>
+        /// 添加字符值
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="value"></param>
         public void Add(string key, string value)
         {
+            if (string.IsNullOrEmpty(key))
+            {
+                throw new ArgumentException("message", nameof(key));
+            }
+
+            if (string.IsNullOrEmpty(value))
+            {
+                throw new ArgumentException("message", nameof(value));
+            }
+
             collection.Add(key, value);
         }
+        /// <summary>
+        /// 添加bool值
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="value"></param>
         public void Add(string key, bool value)
         {
+            if (string.IsNullOrEmpty(key))
+            {
+                throw new ArgumentException("message", nameof(key));
+            }
+
             collection.Add(key, value);
         }
+        /// <summary>
+        /// 添加int值
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="value"></param>
         public void Add(string key, int value)
         {
+            if (string.IsNullOrEmpty(key))
+            {
+                throw new ArgumentException("message", nameof(key));
+            }
+
             collection.Add(key, value);
         }
+        /// <summary>
+        /// 添加long值
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="value"></param>
         public void Add(string key, long value)
         {
+            if (string.IsNullOrEmpty(key))
+            {
+                throw new ArgumentException("message", nameof(key));
+            }
+
             collection.Add(key, value);
         }
+        /// <summary>
+        /// 添加float值
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="value"></param>
         public void Add(string key, float value)
         {
+            if (string.IsNullOrEmpty(key))
+            {
+                throw new ArgumentException("message", nameof(key));
+            }
+
             collection.Add(key, value);
         }
+        /// <summary>
+        /// 添加uri值
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="value"></param>
         public void Add(string key, Uri value)
         {
+            if (string.IsNullOrEmpty(key))
+            {
+                throw new ArgumentException("message", nameof(key));
+            }
+
             collection.Add(key, value);
         }
+        /// <summary>
+        /// 添加组件名
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="value"></param>
         public void Add(string key, ComponentName value)
         {
+            if (string.IsNullOrEmpty(key))
+            {
+                throw new ArgumentException("message", nameof(key));
+            }
+
             collection.Add(key, value);
         }
+        /// <summary>
+        /// 添加int数组
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="intArray"></param>
         public void Add(string key, int[] intArray)
         {
+            if (string.IsNullOrEmpty(key))
+            {
+                throw new ArgumentException("message", nameof(key));
+            }
+
             collection.Add(key, intArray);
         }
+        /// <summary>
+        /// 添加long数组
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="longArray"></param>
         public void Add(string key, long[] longArray)
         {
+            if (string.IsNullOrEmpty(key))
+            {
+                throw new ArgumentException("message", nameof(key));
+            }
+
             collection.Add(key, longArray);
         }
     }
