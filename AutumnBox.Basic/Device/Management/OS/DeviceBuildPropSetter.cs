@@ -12,7 +12,6 @@ namespace AutumnBox.Basic.Device.Management.OS
     [Obsolete("由于安卓碎片化原因,此类不保证可以正常运行,请自行实现相关功能", true)]
 #pragma warning disable CS1591 // 缺少对公共可见类型或成员的 XML 注释
     public class DeviceBuildPropSetter /*: IDisposable*/
-
     {
         //        private static readonly CommandExecuter executer = new CommandExecuter();
         //        private AndroidShell shellAsSu;

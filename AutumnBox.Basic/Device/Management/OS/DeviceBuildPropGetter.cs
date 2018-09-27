@@ -15,7 +15,7 @@ namespace AutumnBox.Basic.Device.Management.OS
     /// <summary>
     /// 设备Build.prop信息获取器
     /// </summary>
-    public class DeviceBuildPropGetter : DependOnDeviceObject
+    public class DeviceBuildPropGetter : DeviceCommander
     {
         private readonly Logger logger;
         /// <summary>
@@ -117,8 +117,12 @@ namespace AutumnBox.Basic.Device.Management.OS
         /// <returns></returns>
         public string Get(string key)
         {
-            var exeResult = Device.Shell($"getprop {key}");
-            return exeResult.Item2 == 0 ? exeResult.ToString() : null;
+            var exeResult = CmdStation.GetShellCommand(
+                Device,
+                $"getprop {key}")
+                .To(RaiseOutput)
+                .Execute() ;
+            return exeResult.ExitCode == 0 ? exeResult.Output.ToString() : null;
         }
 
         private const string propPattern = @"\[(?<pname>.+)\].+\[(?<pvalue>.+)\]";
