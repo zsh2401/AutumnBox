@@ -1,4 +1,5 @@
 ﻿using AutumnBox.Basic.Device;
+using AutumnBox.Basic.Device.Management.AppFx;
 using AutumnBox.Basic.ManagedAdb;
 using AutumnBox.Basic.MultipleDevices;
 using System;
@@ -59,50 +60,11 @@ namespace AutumnBox.ConsoleTester
        static int _xcount = 0;
         unsafe static void Main(string[] cmdargs)
         {
-            _xcount = 1;
-            string exeAssembly = Assembly.GetEntryAssembly().FullName;
-            // Construct and initialize settings for a second AppDomain.
-            AppDomainSetup ads = new AppDomainSetup
-            {
-                ApplicationBase = AppDomain.CurrentDomain.BaseDirectory,
-
-                DisallowBindingRedirects = false,
-                DisallowCodeDownload = true,
-                ConfigurationFile =
-                AppDomain.CurrentDomain.SetupInformation.ConfigurationFile
-            };
-
-            // Create the second AppDomain.
-            AppDomain ad2 = AppDomain.CreateDomain("AD #2", null, ads);
-
-            // Create an instance of MarshalbyRefType in the second AppDomain. 
-            // A proxy to the object is returned.
-            AppDomainTest mbrt =
-                (AppDomainTest)ad2.CreateInstanceAndUnwrap(
-                    exeAssembly,
-                    typeof(AppDomainTest).FullName
-                );
-
-            // Call a method on the object via the proxy, passing the 
-            // default AppDomain's friendly name in as a parameter.
-            Task.Run(()=> {
-                mbrt.RunNoS();
-            });
-            Thread.Sleep(3000);
-            // Unload the second AppDomain. This deletes its object and 
-            // invalidates the proxy object.
-            AppDomain.Unload(ad2);
-            //try
-            //{
-            //    // Call the method again. Note that this time it fails 
-            //    // because the second AppDomain was unloaded.
-            //    mbrt.SomeMethod(callingDomainName);
-            //    Console.WriteLine("Sucessful call.");
-            //}
-            //catch (AppDomainUnloadedException)
-            //{
-            //    Console.WriteLine("Failed call; this is expected.");
-            //}
+            var intent  = new Intent();
+            intent.Add("z",3);
+            intent.Add("h",true);
+            intent.Add("wtf","asdas");
+            Console.WriteLine(intent.ToAdbArguments());
         }
         [Serializable]
         private class AppDomainTest
