@@ -5,6 +5,7 @@
 ** compiler: Visual Studio 2017
 ** desc： ...
 *********************************************************************************/
+using AutumnBox.Basic.Data;
 using AutumnBox.Basic.Exceptions;
 using AutumnBox.Basic.Util;
 using System;
@@ -14,7 +15,7 @@ namespace AutumnBox.Basic.Device.Management.OS
     /// <summary>
     /// build.prop 设置器,通常需要root权限
     /// </summary>
-    public class DeviceBuildPropSetter : DeviceCommander
+    public class DeviceBuildPropSetter : DeviceCommander,Data.IReceiveOutputByTo<DeviceBuildPropSetter>
     {
         /// <summary>
         /// 构造器
@@ -47,6 +48,16 @@ namespace AutumnBox.Basic.Device.Management.OS
                 .To(RaiseOutput)
                 .Execute()
                 .ThrowIfShellExitCodeNotEqualsZero();
+        }
+        /// <summary>
+        /// 通过To模式订阅
+        /// </summary>
+        /// <param name="callback"></param>
+        /// <returns></returns>
+        public DeviceBuildPropSetter To(Action<OutputReceivedEventArgs> callback)
+        {
+            RegisterToCallback(callback);
+            return this;
         }
     }
 }
