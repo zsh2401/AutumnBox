@@ -7,6 +7,7 @@ namespace AutumnBox.Basic.Device.Management.AppFx
     /// <summary>
     /// 包信息
     /// </summary>
+    [Obsolete("等待重做")]
     public sealed class PackageInfo
     {
         #region Property

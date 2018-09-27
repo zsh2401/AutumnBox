@@ -95,7 +95,7 @@ namespace AutumnBox.Basic.Device.Management.AppFx
         /// <param name="pid"></param>
         /// <param name="level"></param>
         public void TrimMemory(int pid, TrimMemoryLevel level) {
-            new ShellCommand(Device,
+            CmdStation.GetShellCommand(Device,
                 $"am send-trim-memory {pid} {level}")
                    .To(RaiseOutput)
                 .Execute()

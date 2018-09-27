@@ -3,7 +3,9 @@
 ** date:  2018/8/31 9:35:07 (UTC +8:00)
 ** desc： ...
 *************************************************/
+using System;
 using AutumnBox.Basic.Calling.Adb;
+using AutumnBox.Basic.Data;
 using AutumnBox.Basic.Util;
 
 namespace AutumnBox.Basic.Device.Management.AppFx
@@ -11,7 +13,7 @@ namespace AutumnBox.Basic.Device.Management.AppFx
     /// <summary>
     /// 广播发送器
     /// </summary>
-    public class BroadcastSender : DependOnDeviceObject
+    public class BroadcastSender : DeviceCommander,Data.IReceiveOutputByTo<BroadcastSender>
     {
         /// <summary>
         /// 构造
@@ -26,9 +28,20 @@ namespace AutumnBox.Basic.Device.Management.AppFx
         /// <param name="broadcast"></param>
         public void Send(string broadcast)
         {
-            new ShellCommand(Device, $"am broadcast -a {broadcast}")
+            CmdStation.GetShellCommand(Device, 
+                $"am broadcast -a {broadcast}")
                 .Execute()
                 .ThrowIfExitCodeNotEqualsZero(); ;
+        }
+        /// <summary>
+        /// 通过To模式订阅
+        /// </summary>
+        /// <param name="callback"></param>
+        /// <returns></returns>
+        public BroadcastSender To(Action<OutputReceivedEventArgs> callback)
+        {
+            RegisterToCallback(callback);
+            return this;
         }
     }
 }

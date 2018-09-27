@@ -5,6 +5,7 @@
 *************************************************/
 using AutumnBox.Basic.Data;
 using AutumnBox.Basic.Util;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
@@ -14,6 +15,7 @@ namespace AutumnBox.Basic.Device.Management.AppFx
     /// <summary>
     /// 包管理器实现
     /// </summary>
+    [Obsolete("等待重做")]
     public class PackageManager : DependOnDeviceObject
     {
         /// <summary>
