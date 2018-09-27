@@ -6,13 +6,14 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using AutumnBox.Basic.Data;
 
 namespace AutumnBox.Basic.Device.Management.AppFx
 {
     /// <summary>
     /// 没错,这就是DPM!
     /// </summary>
-    public sealed class DevicePolicyManager : DeviceCommander
+    public sealed class DevicePolicyManager : DeviceCommander,Data.IReceiveOutputByTo<DevicePolicyManager>
     {
         /// <summary>
         /// 构造DPM实例
@@ -62,6 +63,16 @@ namespace AutumnBox.Basic.Device.Management.AppFx
         public void RemoveActiveAdmin(ComponentName cn, int? uid = null)
         {
             throw new NotImplementedException();
+        }
+        /// <summary>
+        /// 通过To模式订阅输出
+        /// </summary>
+        /// <param name="callback"></param>
+        /// <returns></returns>
+        public DevicePolicyManager To(Action<OutputReceivedEventArgs> callback)
+        {
+            RegisterToCallback(callback);
+            return this;
         }
     }
 }
