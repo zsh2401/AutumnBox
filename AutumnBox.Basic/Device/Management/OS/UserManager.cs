@@ -4,6 +4,7 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.Basic.Util;
+using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
@@ -26,6 +27,7 @@ namespace AutumnBox.Basic.Device.Management.OS
     /// <summary>
     /// 用户管理器
     /// </summary>
+    [Obsolete("等待重置")]
     public class UserManager
     {
         private static readonly Regex userInfoRegex;

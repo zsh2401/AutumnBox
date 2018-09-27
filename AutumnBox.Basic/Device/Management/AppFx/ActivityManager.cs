@@ -29,19 +29,21 @@ namespace AutumnBox.Basic.Device.Management.AppFx
         /// <param name="pkgName"></param>
         /// <param name="activityClassName"></param>
         /// <param name="intent"></param>
+        /// <exception cref="Exceptions.AdbShellCommandFailedException"></exception>
         public void StartActivity(string pkgName, string activityClassName, Intent intent = null)
         {
             CmdStation.GetShellCommand(Device,
                 $"am start -n {pkgName}/.{activityClassName} {intent?.ToAdbArguments()}")
                 .To(RaiseOutput)
                  .Execute()
-                 .ThrowIfExitCodeNotEqualsZero();
+                 .ThrowIfShellExitCodeNotEqualsZero();
         }
         /// <summary>
         /// 启动一个组件，例如某个activity
         /// </summary>
         /// <param name="componentName"></param>
         /// <param name="intent"></param>
+        /// <exception cref="Exceptions.AdbShellCommandFailedException"></exception>
         public void StartComponent(ComponentName componentName, Intent intent = null)
         {
             CmdStation.GetShellCommand(Device,
@@ -55,6 +57,7 @@ namespace AutumnBox.Basic.Device.Management.AppFx
         /// </summary>
         /// <param name="action"></param>
         /// <param name="intent"></param>
+        /// <exception cref="Exceptions.AdbShellCommandFailedException"></exception>
         public void StartAction(string action, Intent intent)
         {
             CmdStation.GetShellCommand(Device,
@@ -68,6 +71,7 @@ namespace AutumnBox.Basic.Device.Management.AppFx
         /// </summary>
         /// <param name="category"></param>
         /// <param name="intent"></param>
+        /// <exception cref="Exceptions.AdbShellCommandFailedException"></exception>
         public void StartCategory(string category, Intent intent)
         {
             CmdStation.GetShellCommand(Device,
@@ -81,6 +85,7 @@ namespace AutumnBox.Basic.Device.Management.AppFx
         /// adb command:adb shell am force-stop com.qihoo360.mobilesafe
         /// </summary>
         /// <param name="pkgName"></param>
+        /// <exception cref="Exceptions.AdbShellCommandFailedException"></exception>
         public void ForceStop(string pkgName) {
             CmdStation.GetShellCommand(Device,
                 $"am force-stop {pkgName}")
@@ -94,6 +99,7 @@ namespace AutumnBox.Basic.Device.Management.AppFx
         /// </summary>
         /// <param name="pid"></param>
         /// <param name="level"></param>
+        /// <exception cref="Exceptions.AdbShellCommandFailedException"></exception>
         public void TrimMemory(int pid, TrimMemoryLevel level) {
             CmdStation.GetShellCommand(Device,
                 $"am send-trim-memory {pid} {level}")

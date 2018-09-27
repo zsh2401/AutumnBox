@@ -13,7 +13,7 @@ namespace AutumnBox.Basic.Device.Management.AppFx
     /// <summary>
     /// 广播发送器
     /// </summary>
-    public class BroadcastSender : DeviceCommander,Data.IReceiveOutputByTo<BroadcastSender>
+    public sealed class BroadcastSender : DeviceCommander,Data.IReceiveOutputByTo<BroadcastSender>
     {
         /// <summary>
         /// 构造
@@ -25,11 +25,12 @@ namespace AutumnBox.Basic.Device.Management.AppFx
         /// <summary>
         /// 发送一个广播
         /// </summary>
-        /// <param name="broadcast"></param>
-        public void Send(string broadcast)
+        /// <param name="broadcast">广播内容</param>
+        /// <exception cref="Exceptions.AdbShellCommandFailedException"></exception>
+        public void Send(string broadcast,Intent intent=null)
         {
             CmdStation.GetShellCommand(Device, 
-                $"am broadcast -a {broadcast}")
+                $"am broadcast -a {broadcast} {intent?.ToAdbArguments()}")
                 .Execute()
                 .ThrowIfExitCodeNotEqualsZero(); ;
         }
