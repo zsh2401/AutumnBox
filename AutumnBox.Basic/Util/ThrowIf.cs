@@ -42,12 +42,13 @@ namespace AutumnBox.Basic.Util
         /// 放返回码不为0时抛出异常
         /// </summary>
         /// <param name="result"></param>
-        public static void ThrowIfShellExitCodeNotEqualsZero(this IProcessBasedCommandResult result)
+        public static IProcessBasedCommandResult ThrowIfShellExitCodeNotEqualsZero(this IProcessBasedCommandResult result)
         {
             if (result.ExitCode != 0)
             {
                 throw new AdbShellCommandFailedException(result.ExitCode, result.Output.ToString());
             }
+            return result;
         }
         /// <summary>
         /// 放返回码不为0时抛出异常
