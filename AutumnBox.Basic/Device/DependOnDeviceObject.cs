@@ -15,6 +15,7 @@ namespace AutumnBox.Basic.Device
     /// <summary>
     /// 依赖于具体设备的对象
     /// </summary>
+    [Obsolete]
     public class DependOnDeviceObject
     {
         /// <summary>
