@@ -15,13 +15,16 @@ namespace AutumnBox.Basic.Device.Management.OS
         /// 构造
         /// </summary>
         /// <param name="device"></param>
+       /// <exception cref="Exceptions.CommandNotFoundException"></exception>
         public Inputer(IDevice device) : base(device)
         {
+            ShellCommandHelper.CommandExistsCheck(device,"input");
         }
         /// <summary>
         /// 模拟按键
         /// </summary>
         /// <param name="keycode"></param>
+        /// <exception cref="Exceptions.AdbShellCommandFailedException"></exception>
         public void PressKey(int keycode)
         {
             CmdStation.GetShellCommand(Device,
@@ -34,6 +37,7 @@ namespace AutumnBox.Basic.Device.Management.OS
         /// 在目前的焦点文本框输入文本
         /// </summary>
         /// <param name="text"></param>
+        /// <exception cref="Exceptions.AdbShellCommandFailedException"></exception>
         public void InputText(string text)
         {
             CmdStation.GetShellCommand(Device,
@@ -49,6 +53,7 @@ namespace AutumnBox.Basic.Device.Management.OS
         /// <param name="startY"></param>
         /// <param name="endX"></param>
         /// <param name="endY"></param>
+        /// <exception cref="Exceptions.AdbShellCommandFailedException"></exception>
         public void Swipe(int startX, int startY, int endX, int endY)
         {
             CmdStation.GetShellCommand(Device,
@@ -62,6 +67,7 @@ namespace AutumnBox.Basic.Device.Management.OS
         /// </summary>
         /// <param name="x"></param>
         /// <param name="y"></param>
+        /// <exception cref="Exceptions.AdbShellCommandFailedException"></exception>
         public void Tap(int x, int y)
         {
             Swipe(x, y, x, y);

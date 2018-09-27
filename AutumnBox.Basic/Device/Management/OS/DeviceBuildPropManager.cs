@@ -10,12 +10,65 @@ using System.Text;
 
 namespace AutumnBox.Basic.Device.Management.OS
 {
-    public class DeviceBuildPropManager : DeviceCommander
+    /// <summary>
+    /// build.prop管理器
+    /// </summary>
+    public sealed class DeviceBuildPropManager : DeviceCommander
     {
+        /// <summary>
+        /// 获取器
+        /// </summary>
+        private DeviceBuildPropGetter Getter
+        {
+            get
+            {
+                if (_getter == null)
+                {
+                    _getter = new DeviceBuildPropGetter(Device);
+                }
+                return _getter;
+            }
+            set
+            {
+                _getter = value;
+            }
+        }
+        private DeviceBuildPropGetter _getter;
+        /// <summary>
+        /// 设置器
+        /// </summary>
+        private DeviceBuildPropSetter Setter
+        {
+            get
+            {
+                if (_setter == null)
+                {
+                    _setter = new DeviceBuildPropSetter(Device);
+                }
+                return _setter;
+            }
+            set
+            {
+                _setter = value;
+            }
+        }
+        private DeviceBuildPropSetter _setter;
+        /// <summary>
+        /// 构造管理器
+        /// </summary>
+        /// <param name="device"></param>
         public DeviceBuildPropManager(IDevice device) : base(device)
         {
+            //ShellCommandHelper.CommandExistsCheck(device,"getprop");
+            //ShellCommandHelper.CommandExistsCheck(device,"setprop");
         }
-        public virtual string this[string key]
+        /// <summary>
+        /// 获取或设置键值
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        /// <exception cref="Exceptions.AdbShellCommandFailedException"></exception>
+        public string this[string key]
         {
             get
             {
@@ -26,30 +79,36 @@ namespace AutumnBox.Basic.Device.Management.OS
                 Set(key, value);
             }
         }
-        public virtual string Get(string key)
+        /// <summary>
+        /// 获取键值
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        /// <exception cref="Exceptions.AdbShellCommandFailedException"></exception>
+        public string Get(string key)
         {
-            var result = CmdStation.GetShellCommand(Device,
-                $"getprop {key}")
-                .To(RaiseOutput)
-                .Execute();
-            return result.ExitCode == 0 ? result.Output.ToString() : null;
-        }
-        public virtual void Set(string key, string value)
-        {
-            SettingCheck();
-            CmdStation.GetShellCommand(Device,
-                $"setprop {key} {value}")
-                .To(RaiseOutput)
-                .Execute()
-                .ThrowIfShellExitCodeNotEqualsZero();
-        }
-        protected virtual void SettingCheck()
-        {
-            if (!Device.HaveSU())
+            if (string.IsNullOrEmpty(key))
             {
-                throw new Exceptions.DeviceHasNoSuException();
+                throw new ArgumentException("message", nameof(key));
             }
+            Getter.CmdStation = this.CmdStation;
+            return Getter.Get(key);
         }
-        protected virtual void GettingCheck() { }
+        /// <summary>
+        /// 设置键值
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="value"></param>
+        /// <exception cref="Exceptions.AdbShellCommandFailedException"></exception>
+        public void Set(string key, string value)
+        {
+            if (string.IsNullOrEmpty(key))
+            {
+                throw new ArgumentException("message", nameof(key));
+            }
+
+            Setter.CmdStation = this.CmdStation;
+            Setter.Set(key, value);
+        }
     }
 }
