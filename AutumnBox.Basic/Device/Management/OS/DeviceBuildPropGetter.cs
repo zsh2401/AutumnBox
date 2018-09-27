@@ -5,6 +5,7 @@
 ** compiler: Visual Studio 2017
 ** desc： ...
 *********************************************************************************/
+using AutumnBox.Basic.Data;
 using AutumnBox.Basic.Util.Debugging;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,7 @@ namespace AutumnBox.Basic.Device.Management.OS
     /// <summary>
     /// 设备Build.prop信息获取器
     /// </summary>
-    public class DeviceBuildPropGetter : DeviceCommander
+    public class DeviceBuildPropGetter : DeviceCommander,Data.IReceiveOutputByTo<DeviceBuildPropGetter>
     {
         private readonly Logger logger;
         /// <summary>
@@ -156,6 +157,16 @@ namespace AutumnBox.Basic.Device.Management.OS
         public void Reload()
         {
             loaded = GetFull();
+        }
+        /// <summary>
+        /// 通过To模式订阅输出事件
+        /// </summary>
+        /// <param name="callback"></param>
+        /// <returns></returns>
+        public DeviceBuildPropGetter To(Action<OutputReceivedEventArgs> callback)
+        {
+            RegisterToCallback(callback);
+            return this;
         }
     }
 }

@@ -3,6 +3,7 @@
 ** date:  2018/9/28 4:02:30 (UTC +8:00)
 ** desc： ...
 *************************************************/
+using AutumnBox.Basic.Data;
 using AutumnBox.Basic.Util;
 using System;
 using System.Collections.Generic;
@@ -13,7 +14,7 @@ namespace AutumnBox.Basic.Device.Management.OS
     /// <summary>
     /// build.prop管理器
     /// </summary>
-    public sealed class DeviceBuildPropManager : DeviceCommander
+    public sealed class DeviceBuildPropManager : DeviceCommander, Data.IReceiveOutputByTo<DeviceBuildPropManager>
     {
         /// <summary>
         /// 获取器
@@ -31,6 +32,7 @@ namespace AutumnBox.Basic.Device.Management.OS
             set
             {
                 _getter = value;
+                _getter.To(RaiseOutput);
             }
         }
         private DeviceBuildPropGetter _getter;
@@ -50,6 +52,7 @@ namespace AutumnBox.Basic.Device.Management.OS
             set
             {
                 _setter = value;
+                _setter.To(RaiseOutput);
             }
         }
         private DeviceBuildPropSetter _setter;
@@ -109,6 +112,16 @@ namespace AutumnBox.Basic.Device.Management.OS
 
             Setter.CmdStation = this.CmdStation;
             Setter.Set(key, value);
+        }
+        /// <summary>
+        /// 通过To模式订阅输出
+        /// </summary>
+        /// <param name="callback"></param>
+        /// <returns></returns>
+        public DeviceBuildPropManager To(Action<OutputReceivedEventArgs> callback)
+        {
+            RegisterToCallback(callback);
+            return this;
         }
     }
 }
