@@ -14,7 +14,7 @@ namespace AutumnBox.Basic.Device.Management.AppFx
     /// <summary>
     /// Activity管理器
     /// </summary>
-    public class ActivityManager : DeviceCommander,IReceiveOutputByTo<ActivityManager>
+    public class ActivityManager : DeviceCommander, IReceiveOutputByTo<ActivityManager>
     {
         /// <summary>
         /// 构造
@@ -31,7 +31,7 @@ namespace AutumnBox.Basic.Device.Management.AppFx
         /// <param name="intent"></param>
         public void StartActivity(string pkgName, string activityClassName, Intent intent = null)
         {
-            var cmd = CmdStation.GetShellCommand(Device,
+            CmdStation.GetShellCommand(Device,
                 $"am start -n {pkgName}/.{activityClassName} {intent?.ToAdbArguments()}")
                 .To(RaiseOutput)
                  .Execute()
@@ -44,11 +44,11 @@ namespace AutumnBox.Basic.Device.Management.AppFx
         /// <param name="intent"></param>
         public void StartComponent(ComponentName componentName, Intent intent = null)
         {
-            var cmd = new ShellCommand(Device,
-                $"am start -n {componentName.ToString()} {intent?.ToAdbArguments()}")
-                   .To(RaiseOutput)
-                 .Execute()
-                 .ThrowIfExitCodeNotEqualsZero();
+            CmdStation.GetShellCommand(Device,
+                 $"am start -n {componentName.ToString()} {intent?.ToAdbArguments()}")
+                    .To(RaiseOutput)
+                  .Execute()
+                  .ThrowIfShellExitCodeNotEqualsZero();
         }
         /// <summary>
         /// 启动一个动作
@@ -57,11 +57,11 @@ namespace AutumnBox.Basic.Device.Management.AppFx
         /// <param name="intent"></param>
         public void StartAction(string action, Intent intent)
         {
-            var cmd = new ShellCommand(Device,
+            CmdStation.GetShellCommand(Device,
                 $"am start -a {action} {intent?.ToAdbArguments()}")
                    .To(RaiseOutput)
                 .Execute()
-                .ThrowIfExitCodeNotEqualsZero();
+                .ThrowIfShellExitCodeNotEqualsZero();
         }
         /// <summary>
         /// 启动一个Category
@@ -70,11 +70,36 @@ namespace AutumnBox.Basic.Device.Management.AppFx
         /// <param name="intent"></param>
         public void StartCategory(string category, Intent intent)
         {
-            var cmd = new ShellCommand(Device,
-                $"am start -c {category} {intent?.ToAdbArguments()}")
+            CmdStation.GetShellCommand(Device,
+                 $"am start -c {category} {intent?.ToAdbArguments()}")
+                    .To(RaiseOutput)
+                 .Execute()
+                 .ThrowIfShellExitCodeNotEqualsZero();
+        }
+        /// <summary>
+        /// 强制停止某个APP
+        /// adb command:adb shell am force-stop com.qihoo360.mobilesafe
+        /// </summary>
+        /// <param name="pkgName"></param>
+        public void ForceStop(string pkgName) {
+            CmdStation.GetShellCommand(Device,
+                $"am force-stop {pkgName}")
                    .To(RaiseOutput)
                 .Execute()
-                .ThrowIfExitCodeNotEqualsZero();
+                .ThrowIfShellExitCodeNotEqualsZero();
+        }
+        /// <summary>
+        /// 发送收紧内存的命令
+        /// adb command example:adb shell am send-trim-memory 12345 RUNNING_LOW
+        /// </summary>
+        /// <param name="pid"></param>
+        /// <param name="level"></param>
+        public void TrimMemory(int pid, TrimMemoryLevel level) {
+            new ShellCommand(Device,
+                $"am send-trim-memory {pid} {level}")
+                   .To(RaiseOutput)
+                .Execute()
+                .ThrowIfShellExitCodeNotEqualsZero();
         }
         /// <summary>
         /// 通过To模式订阅
