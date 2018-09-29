@@ -24,8 +24,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="ClassBased\**" />
+    <EmbeddedResource Remove="ClassBased\**" />
+    <None Remove="ClassBased\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Properties\" />
-    <Folder Include="ClassBased\" />
   </ItemGroup>
 
   <ItemGroup>
