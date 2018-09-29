@@ -15,23 +15,11 @@ namespace AutumnBox.OpenFramework.Extension
     /// <summary>
     /// 标准的秋之盒拓展基类
     /// </summary>
-    [ExtName("无名拓展")]
-    [ExtName("Unknown extension", Lang = "en-us")]
-    [ExtAuth("佚名")]
-    [ExtAuth("Anonymous", Lang = "en-us")]
-    [ExtDesc(null)]
-    [ExtVersion()]
-    [ExtRequiredDeviceStates(NoMatter)]
-    [ExtMinApi(8)]
-    [ExtTargetApi()]
-    [ExtRunAsAdmin(false)]
-    [ExtRequireRoot(false)]
-    [ExtOfficial(false)]
-    [ExtRegion(null)]
-    //[ExtAppProperty("com.miui.fm")]
-    //[ExtMinAndroidVersion(7,0,0)]
     public abstract partial class AutumnBoxExtension : Context, IClassExtension
     {
+        /// <summary>
+        /// 拓展模块参数
+        /// </summary>
         protected ExtensionArgs Args { get; private set; }
 
         /// <summary>

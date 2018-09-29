@@ -3,6 +3,7 @@
 ** date:  2018/8/31 9:41:37 (UTC +8:00)
 ** desc： ...
 *************************************************/
+using AutumnBox.Basic.Calling;
 using AutumnBox.Basic.Data;
 using AutumnBox.Basic.Util;
 using System;
@@ -15,8 +16,8 @@ namespace AutumnBox.Basic.Device.Management.AppFx
     /// <summary>
     /// 包管理器实现
     /// </summary>
-    [Obsolete("等待重做")]
-    public class PackageManager : DependOnDeviceObject
+    [Obsolete("等待重做,请勿使用,如需相关功能,请自行实现")]
+    public class PackageManager : DeviceCommander, IReceiveOutputByTo<PackageManager>
     {
         /// <summary>
         /// 构造
@@ -28,6 +29,29 @@ namespace AutumnBox.Basic.Device.Management.AppFx
 
         private const string packagesPattern = @"package:(?<package>.+)";
         /// <summary>
+        /// 获取包的路径
+        /// </summary>
+        /// <param name="packageName"></param>
+        /// <returns></returns>
+        public string PathOf(string packageName)
+        {
+            throw new NotImplementedException();
+        }
+        /// <summary>
+        /// 安装包
+        /// </summary>
+        /// <param name="packagePath"></param>
+        /// <param name="options"></param>
+        /// <param name="targe"></param>
+        public void InstallPackage(string packagePath,
+            PackageManagerInstallOption options =
+                PackageManagerInstallOption.Reinstall,
+            InstallTarget targe =
+               InstallTarget.Default)
+        {
+            throw new NotImplementedException();
+        }
+        /// <summary>
         /// 获取设备上所有的包
         /// </summary>
         /// <returns></returns>
@@ -38,7 +62,7 @@ namespace AutumnBox.Basic.Device.Management.AppFx
             List<PackageInfo> packages = new List<PackageInfo>();
             foreach (Match m in matches)
             {
-                packages.Add(new PackageInfo(Device, m.Result("${package}"),false));
+                packages.Add(new PackageInfo(Device, m.Result("${package}"), false));
             }
             return packages;
         }
@@ -92,6 +116,17 @@ namespace AutumnBox.Basic.Device.Management.AppFx
         {
             Device.Adb($"uninstall {pkgName}")
                  .ThrowIfExitCodeNotEqualsZero();
+        }
+
+        /// <summary>
+        /// 通过To模式订阅输出
+        /// </summary>
+        /// <param name="callback"></param>
+        /// <returns></returns>
+        public PackageManager To(Action<OutputReceivedEventArgs> callback)
+        {
+            RegisterToCallback(callback);
+            return this;
         }
     }
 }

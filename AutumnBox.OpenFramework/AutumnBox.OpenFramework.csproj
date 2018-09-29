@@ -25,6 +25,7 @@
 
   <ItemGroup>
     <Folder Include="Properties\" />
+    <Folder Include="ClassBased\" />
   </ItemGroup>
 
   <ItemGroup>

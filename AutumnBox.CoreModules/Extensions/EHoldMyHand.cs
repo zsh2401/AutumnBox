@@ -33,11 +33,17 @@ namespace AutumnBox.CoreModules.Extensions
             WriteLine("现在可以被停止了");
             Progress = 50;
             stoppable = true;
-            new AdbCommand($"-s 01d1234 reboot")
-                .To(OutputPrinter)
-                .Execute();
             Thread.Sleep(2500);
-            return 0;                                                
+            Step(() =>
+            {
+                WriteLine("Haha");
+            });
+            Step(() =>
+            {
+                WriteLine("Hasdasdsaaha");
+            });
+            Thread.Sleep(5000);
+            return 0;
         }
         protected override bool VisualStop()
         {

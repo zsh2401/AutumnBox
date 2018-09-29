@@ -47,7 +47,7 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>..\..\AutumnBox_Output\AutumnBox\file\</OutputPath>
-    <DefineConstants>TRACE;NSTAT</DefineConstants>
+    <DefineConstants>TRACE;STAT</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
