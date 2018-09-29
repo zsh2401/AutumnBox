@@ -31,8 +31,12 @@ namespace AutumnBox.Basic.Device.Management.OS
             }
             set
             {
+                if (_getter != null)
+                {
+                    _setter.OutputReceived -= RaiseOutput;
+                }
                 _getter = value;
-                _getter.To(RaiseOutput);
+                _getter.OutputReceived += RaiseOutput;
             }
         }
         private DeviceBuildPropGetter _getter;
@@ -51,8 +55,12 @@ namespace AutumnBox.Basic.Device.Management.OS
             }
             set
             {
+                if (_setter != null)
+                {
+                    _setter.OutputReceived -= RaiseOutput;
+                }
                 _setter = value;
-                _setter.To(RaiseOutput);
+                _setter.OutputReceived += RaiseOutput;
             }
         }
         private DeviceBuildPropSetter _setter;

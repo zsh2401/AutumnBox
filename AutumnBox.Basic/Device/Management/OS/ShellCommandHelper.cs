@@ -46,11 +46,9 @@ namespace AutumnBox.Basic.Device.Management.OS
                     break;
                 case (int)LinuxReturnCode.KeyHasExpired:
                     throw new CommandNotFoundException(cmd);
-                    break;
                 default:
                     throw new
                    AdbShellCommandFailedException(result.ExitCode, result.Output.ToString());
-                    break;
             }
         }
     }

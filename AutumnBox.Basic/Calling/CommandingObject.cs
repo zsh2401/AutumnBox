@@ -10,6 +10,11 @@ using System.Text;
 
 namespace AutumnBox.Basic.Calling
 {
+    /// <summary>
+    /// 继承此对象,可以实现托管化的命令执行
+    /// </summary>
+    /// <seealso cref="AutumnBox.Basic.Data.INotifyOutput" />
+    /// <seealso cref="AutumnBox.Basic.Data.ICommandStationObject" />
     public abstract class CommandingObject : Object,INotifyOutput, ICommandStationObject
     {
         /// <summary>
@@ -62,7 +67,7 @@ namespace AutumnBox.Basic.Calling
         /// <returns></returns>
         protected void RegisterToCallback(Action<OutputReceivedEventArgs> callback)
         {
-            throw new NotImplementedException();
+            this.callback = callback;
         }
     }
 }

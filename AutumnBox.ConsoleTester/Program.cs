@@ -64,7 +64,8 @@ namespace AutumnBox.ConsoleTester
             intent.Add("z",3);
             intent.Add("h",true);
             intent.Add("wtf","asdas");
-            Console.WriteLine(intent.ToAdbArguments());
+            intent.Add("wow",new int[] { 1, 2, 3 });
+            Console.WriteLine(IntentStringHelper.ToAdbArguments(intent));
         }
         [Serializable]
         private class AppDomainTest
