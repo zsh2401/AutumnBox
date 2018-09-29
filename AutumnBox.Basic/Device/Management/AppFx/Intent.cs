@@ -9,96 +9,103 @@ namespace AutumnBox.Basic.Device.Management.AppFx
     /// </summary>
     public sealed class Intent
     {
-        /// <summary>
-        /// 序列化为arg时的设置
-        /// </summary>
-        public enum IntentToArgOption
-        {
-            /// <summary>
-            /// key带上双引号
-            /// </summary>
-            KeyDoubleQuotation = 1 << 1,
-            /// <summary>
-            /// 值带上双引号
-            /// </summary>
-            ValueDoubleQuotation = 1 << 2,
-            /// <summary>
-            /// 自动判断，必要时将值带上引号
-            /// </summary>
-            AutoValueDoubleQuotation = 1 << 4
-        }
-        private static string ToIntentArg(string key, object value
-            , IntentToArgOption option =
-            IntentToArgOption.KeyDoubleQuotation |
-            IntentToArgOption.AutoValueDoubleQuotation)
-        {
-            string flag = "esn";
-            string _value = value.ToString();
-            if (value is string str)
-            {
-                flag = "e";
-            }
-            else if (value is int intNumber)
-            {
-                flag = "ei";
-            }
-            else if (value is Boolean boolValue)
-            {
-                flag = "ez";
-                _value = _value.ToLower();
-            }
-            else if (value is long longNumber)
-            {
-                flag = "el";
-            }
-            else if (value is float floatNumber)
-            {
-                flag = "ef";
-            }
-            else if (value is Uri uri)
-            {
-                flag = "eu";
-            }
-            else if (value is ComponentName cn)
-            {
-                flag = "ecn";
-            }
-            else if (value is int[] intArray)
-            {
-                flag = "eia";
-                StringBuilder sb = new StringBuilder();
-                sb.Append(intArray[0]);
-                for (int i = 1; 1 < intArray.Length; i++)
-                {
-                    sb.Append($",{intArray[i]}");
-                }
-                _value = sb.ToString();
-            }
-            else if (value is long[] longArray)
-            {
-                flag = "ela";
-            }
-            if (option.HasFlag(IntentToArgOption.KeyDoubleQuotation))
-            {
-                key = $"\"{key}\"";
-            }
-            if (option.HasFlag(IntentToArgOption.AutoValueDoubleQuotation))
-            {
-                if (value is string || value is ComponentName)
-                {
-                    _value = $"\"{_value}\"";
-                }
-            }
-            else if (option.HasFlag(IntentToArgOption.ValueDoubleQuotation))
-            {
-                if (value is string || value is ComponentName)
-                {
-                    _value = $"\"{_value}\"";
-                }
-            }
-            return $"--{flag} {key} {_value}";
-        }
-        private readonly Dictionary<string, object> collection = new Dictionary<string, object>();
+        ///// <summary>
+        ///// 序列化为arg时的设置
+        ///// </summary>
+        //public enum IntentToArgOption
+        //{
+        //    /// <summary>
+        //    /// key带上双引号
+        //    /// </summary>
+        //    KeyDoubleQuotation = 1 << 1,
+        //    /// <summary>
+        //    /// 值带上双引号
+        //    /// </summary>
+        //    ValueDoubleQuotation = 1 << 2,
+        //    /// <summary>
+        //    /// 自动判断，必要时将值带上引号
+        //    /// </summary>
+        //    AutoValueDoubleQuotation = 1 << 4
+        //}
+        //private static string ToIntentArg(string key, object value
+        //    , IntentToArgOption option =
+        //    IntentToArgOption.KeyDoubleQuotation |
+        //    IntentToArgOption.AutoValueDoubleQuotation)
+        //{
+        //    string flag = "esn";
+        //    string _value = value.ToString();
+        //    if (value is string str)
+        //    {
+        //        flag = "e";
+        //    }
+        //    else if (value is int intNumber)
+        //    {
+        //        flag = "ei";
+        //    }
+        //    else if (value is Boolean boolValue)
+        //    {
+        //        flag = "ez";
+        //        _value = _value.ToLower();
+        //    }
+        //    else if (value is long longNumber)
+        //    {
+        //        flag = "el";
+        //    }
+        //    else if (value is float floatNumber)
+        //    {
+        //        flag = "ef";
+        //    }
+        //    else if (value is Uri uri)
+        //    {
+        //        flag = "eu";
+        //    }
+        //    else if (value is ComponentName cn)
+        //    {
+        //        flag = "ecn";
+        //    }
+        //    else if (value is int[] intArray)
+        //    {
+        //        flag = "eia";
+        //        StringBuilder sb = new StringBuilder();
+        //        sb.Append(intArray[0]);
+        //        for (int i = 1; 1 < intArray.Length; i++)
+        //        {
+        //            sb.Append($",{intArray[i]}");
+        //        }
+        //        _value = sb.ToString();
+        //    }
+        //    else if (value is long[] longArray)
+        //    {
+        //        flag = "ela";
+        //        StringBuilder sb = new StringBuilder();
+        //        sb.Append(longArray[0]);
+        //        for (int i = 1; 1 < longArray.Length; i++)
+        //        {
+        //            sb.Append($",{longArray[i]}");
+        //        }
+        //        _value = sb.ToString();
+        //    }
+        //    if (option.HasFlag(IntentToArgOption.KeyDoubleQuotation))
+        //    {
+        //        key = $"\"{key}\"";
+        //    }
+        //    if (option.HasFlag(IntentToArgOption.AutoValueDoubleQuotation))
+        //    {
+        //        if (value is string || value is ComponentName)
+        //        {
+        //            _value = $"\"{_value}\"";
+        //        }
+        //    }
+        //    else if (option.HasFlag(IntentToArgOption.ValueDoubleQuotation))
+        //    {
+        //        if (value is string || value is ComponentName)
+        //        {
+        //            _value = $"\"{_value}\"";
+        //        }
+        //    }
+        //    return $"--{flag} {key} {_value}";
+        //}
+        internal readonly Dictionary<string, object> collection = new Dictionary<string, object>();
         /// <summary>
         /// 清空
         /// </summary>
@@ -107,26 +114,12 @@ namespace AutumnBox.Basic.Device.Management.AppFx
             collection.Clear();
         }
         /// <summary>
-        /// 转换为ADB参数
-        /// </summary>
-        /// <returns></returns>
-        public string ToAdbArguments()
-        {
-            StringBuilder sb = new StringBuilder();
-            foreach (var kv in collection)
-            {
-                sb.Append(ToIntentArg(kv.Key, kv.Value));
-                sb.Append(" ");
-            }
-            return sb.ToString();
-        }
-        /// <summary>
         /// 序列化为字符
         /// </summary>
         /// <returns></returns>
         public override string ToString()
         {
-            return ToAdbArguments();
+            return this.ToAdbArguments();
         }
         /// <summary>
         /// 添加空值

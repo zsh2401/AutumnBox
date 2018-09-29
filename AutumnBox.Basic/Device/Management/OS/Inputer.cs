@@ -25,6 +25,18 @@ namespace AutumnBox.Basic.Device.Management.OS
         /// </summary>
         /// <param name="keycode"></param>
         /// <exception cref="Exceptions.AdbShellCommandFailedException"></exception>
+        public void PressKey(AndroidKeyCode keyCode) {
+            CmdStation.GetShellCommand(Device,
+                 $"input keyevent {(int)keyCode}")
+                 .To(RaiseOutput)
+                 .Execute()
+                 .ThrowIfShellExitCodeNotEqualsZero();
+        }
+        /// <summary>
+        /// 模拟按键
+        /// </summary>
+        /// <param name="keycode"></param>
+        /// <exception cref="Exceptions.AdbShellCommandFailedException"></exception>
         public void PressKey(int keycode)
         {
             CmdStation.GetShellCommand(Device,

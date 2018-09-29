@@ -14,7 +14,7 @@ namespace AutumnBox.Basic.Device.Management.OS
     /// <summary>
     /// Windows Manager,基于android wm命令
     /// </summary>
-    public class WindowManager : DeviceCommander,Data.IReceiveOutputByTo<WindowManager>
+    public class WindowManager : DeviceCommander, Data.IReceiveOutputByTo<WindowManager>
     {
         /// <summary>
         /// 构造Windows Manager
@@ -23,7 +23,7 @@ namespace AutumnBox.Basic.Device.Management.OS
         /// <exception cref="Exceptions.CommandNotFoundException">设备不支持wm命令时抛出</exception>
         public WindowManager(IDevice device) : base(device)
         {
-            ShellCommandHelper.SupportCheck(device,"wm");
+            ShellCommandHelper.SupportCheck(device, "wm");
         }
         /// <summary>
         /// 获取或设置Size,基于wm size命令
@@ -59,14 +59,16 @@ namespace AutumnBox.Basic.Device.Management.OS
         /// 重设Size
         /// </summary>
         /// <exception cref="Exceptions.AdbShellCommandFailedException"></exception>
-        public void ResetSize() {
+        public void ResetSize()
+        {
             throw new NotImplementedException();
         }
         /// <summary>
         /// 重设Density
         /// </summary>
         /// <exception cref="Exceptions.AdbShellCommandFailedException"></exception>
-        public void ResetDensity() {
+        public void ResetDensity()
+        {
             throw new NotImplementedException();
         }
         /// <summary>
