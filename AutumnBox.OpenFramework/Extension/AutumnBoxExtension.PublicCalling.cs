@@ -7,6 +7,9 @@ using AutumnBox.OpenFramework.Content;
 using AutumnBox.OpenFramework.Wrapper;
 using AutumnBox.OpenFramework.Exceptions;
 using AutumnBox.OpenFramework.Open;
+using System.Reflection;
+using System.Threading.Tasks;
+
 namespace AutumnBox.OpenFramework.Extension
 {
     /*此处是AutumnBoxExtension的一些实现部分,请勿随意调用*/
@@ -44,7 +47,26 @@ namespace AutumnBox.OpenFramework.Extension
         public int Run(Context caller)
         {
             PermissionCheck(caller);
+            //var mainMethod = this.GetType().GetMethod("Main");
+            //var result = mainMethod.Invoke(this, GetParameters(mainMethod));
+            //return result as int? ?? 0;
             return Main();
+        }
+        private object[] GetParameters(MethodInfo method)
+        {
+            try
+            {
+                var p1 = method.GetParameters()[0];
+                if (p1.ParameterType == typeof(ExtensionArgs))
+                {
+                    return new object[] { Args };
+                }
+                return null;
+            }
+            catch
+            {
+                return null;
+            }
         }
         /// <summary>
         /// 完成
