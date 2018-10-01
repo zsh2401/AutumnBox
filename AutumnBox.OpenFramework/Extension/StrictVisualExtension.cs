@@ -30,6 +30,7 @@ namespace AutumnBox.OpenFramework.Extension
             CmdStation.Free();
             return true;
         }
+
         #region Command Getter
         protected AdbCommand GetDeviceAdbCommand(string cmd)
         {
@@ -104,6 +105,18 @@ namespace AutumnBox.OpenFramework.Extension
         }
         private Lazy<ServiceManager> _sm;
 
+        protected DeviceBuildPropManager BuildProp => _buildProp.Value;
+        private Lazy<DeviceBuildPropManager> _buildProp;
+
+        protected BroadcastSender BroadcastSender => _bs.Value;
+        private Lazy<BroadcastSender> _bs;
+
+        protected Inputer Inputer => _inputer.Value;
+        private Lazy<Inputer> _inputer;
+
+        protected ScreenCapture ScreenCapture => _sc.Value;
+        private Lazy<ScreenCapture> _sc;
+
         private void InitLazyFactory()
         {
             _am = new Lazy<ActivityManager>(() => new ActivityManager(TargetDevice)
@@ -123,6 +136,22 @@ namespace AutumnBox.OpenFramework.Extension
                 CmdStation = CmdStation,
             });
             _sm = new Lazy<ServiceManager>(() => new ServiceManager(TargetDevice)
+            {
+                CmdStation = CmdStation,
+            });
+            _buildProp = new Lazy<DeviceBuildPropManager>(() => new DeviceBuildPropManager(TargetDevice)
+            {
+                CmdStation = CmdStation
+            });
+            _bs = new Lazy<BroadcastSender>(() => new BroadcastSender(TargetDevice)
+            {
+                CmdStation = CmdStation
+            });
+            _inputer = new Lazy<Inputer>(() => new Inputer(TargetDevice)
+            {
+                CmdStation = CmdStation
+            });
+            _sc = new Lazy<ScreenCapture>(() => new ScreenCapture(TargetDevice)
             {
                 CmdStation = CmdStation,
             });
