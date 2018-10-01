@@ -35,21 +35,6 @@ namespace AutumnBox.Basic.Device.Management.AppFx
                 .ThrowIfShellExitCodeNotEqualsZero();
         }
         /// <summary>
-        /// 启动一个服务
-        /// </summary>
-        /// <param name="pkgName"></param>
-        /// <param name="className"></param>
-        /// <param name="intent"></param>
-        /// <exception cref="Exceptions.AdbShellCommandFailedException"></exception>
-        public void Start(string pkgName, string className, Intent intent)
-        {
-            CmdStation.GetShellCommand(Device,
-                $"am startservice -n {pkgName}/.{className} {intent?.ToString()}")
-                .To(RaiseOutput)
-                .Execute()
-                .ThrowIfShellExitCodeNotEqualsZero();
-        }
-        /// <summary>
         /// 通过To模式订阅输出事件
         /// </summary>
         /// <param name="callback"></param>
