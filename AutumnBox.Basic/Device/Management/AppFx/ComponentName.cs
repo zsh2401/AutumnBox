@@ -7,24 +7,51 @@ namespace AutumnBox.Basic.Device.Management.AppFx
     /// <summary>
     /// 组件名
     /// </summary>
-    public class ComponentName
+    public struct ComponentName
     {
         /// <summary>
         /// 包名
         /// </summary>
-        public string PackageName { get; private set; }
+        public string PackageName { get; set; }
         /// <summary>
         /// 类名
         /// </summary>
-        public string ClassName { get; private set; }
+        public string ClassName { get; set; }
         /// <summary>
-        /// 通过包名和类名构造此类
+        /// 根据完整的类名获取
+        /// 如 
+        /// pkgName: com.example.test
+        /// className : com.example.test.hello.TestClass
+        /// 结果: com.example.test/com.example.test.hello.TestClass
         /// </summary>
         /// <param name="pkgName"></param>
-        /// <param name="className"></param>
-        public ComponentName(string pkgName,string className) {
-            this.PackageName = pkgName;
-            this.ClassName = className;
+        /// <param name="fullClassName"></param>
+        /// <returns></returns>
+        public static ComponentName FromFullClassName(string pkgName, string fullClassName)
+        {
+            return new ComponentName()
+            {
+                PackageName = pkgName,
+                ClassName = fullClassName
+            };
+        }
+        /// <summary>
+        /// 根据简写的类名获取
+        /// 如 
+        /// pkgName: com.example.test
+        /// className : hello.TestClass
+        /// 结果 com.example.test/.hello.TestClass
+        /// </summary>
+        /// <param name="pkgName"></param>
+        /// <param name="fullClassName"></param>
+        /// <returns></returns>
+        public static ComponentName FromSimplifiedClassName(string pkgName, string fullClassName)
+        {
+            return new ComponentName()
+            {
+                PackageName = pkgName,
+                ClassName = "." + fullClassName,
+            };
         }
         /// <summary>
         /// 字符串化
@@ -32,7 +59,7 @@ namespace AutumnBox.Basic.Device.Management.AppFx
         /// <returns></returns>
         public override string ToString()
         {
-            return $"{PackageName}/.{ClassName}";
+            return $"{PackageName}/{ClassName}";
         }
     }
 }

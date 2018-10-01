@@ -23,7 +23,7 @@ namespace AutumnBox.Basic.Device.Management.OS
         /// <summary>
         /// 模拟按键
         /// </summary>
-        /// <param name="keycode"></param>
+        /// <param name="keyCode">安卓键值,如果秋之盒中没有你需要的键值定义,可以进行强转: (AndroidKeyCode)233</param>
         /// <exception cref="Exceptions.AdbShellCommandFailedException"></exception>
         public void PressKey(AndroidKeyCode keyCode) {
             CmdStation.GetShellCommand(Device,
