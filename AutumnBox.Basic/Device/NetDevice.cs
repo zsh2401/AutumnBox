@@ -25,8 +25,15 @@ namespace AutumnBox.Basic.Device
         /// <param name="closeNetDebugging"></param>
         public void Disconnect(bool closeNetDebugging = true)
         {
-            new AdbCommand($"disconnect {SerialNumber}").Execute()
+            if (closeNetDebugging)
+            {
+                new AdbCommand(this,$"usb").Execute()
                 .ThrowIfExitCodeNotEqualsZero();
+            }
+            else {
+                new AdbCommand($"disconnect {SerialNumber}").Execute()
+                .ThrowIfExitCodeNotEqualsZero();
+            }
         }
     }
 }
