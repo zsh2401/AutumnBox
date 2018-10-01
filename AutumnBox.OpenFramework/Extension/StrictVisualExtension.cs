@@ -22,6 +22,7 @@ namespace AutumnBox.OpenFramework.Extension
         protected override void OnCreate(ExtensionArgs args)
         {
             base.OnCreate(args);
+            InitLazyFactory();
             CmdStation = new CommandStation();
         }
         protected override bool VisualStop()
@@ -56,34 +57,75 @@ namespace AutumnBox.OpenFramework.Extension
             return CmdStation.GetCmdCommand(cmd);
         }
         #endregion
+
         #region Device Manager Getter
-        protected ActivityManager GetActivitiyManager()
+        protected ActivityManager ActivityManager
         {
-            return new ActivityManager(TargetDevice)
+            get
             {
-                CmdStation = this.CmdStation,
-            };
+                return _am.Value;
+            }
         }
-        protected PackageManager GetPackageManager()
+        private Lazy<ActivityManager> _am;
+
+        protected DevicePolicyManager Dpm
         {
-            return new PackageManager(TargetDevice)
+            get
             {
-                CmdStation = this.CmdStation,
-            };
+                return _dpm.Value;
+            }
         }
-        protected WindowManager GetWindowManager()
+        private Lazy<DevicePolicyManager> _dpm;
+
+        protected PackageManager PackageManager
         {
-            return new WindowManager(TargetDevice)
+            get
             {
-                CmdStation = this.CmdStation,
-            };
+                return _pm.Value;
+            }
         }
-        protected ServiceManager GetServiceManager()
+        private Lazy<PackageManager> _pm;
+
+        protected WindowManager WindowManager
         {
-            return new ServiceManager(TargetDevice)
+            get
             {
-                CmdStation = this.CmdStation,
-            };
+                return _wm.Value;
+            }
+        }
+        private Lazy<WindowManager> _wm;
+
+        protected ServiceManager ServiceManager
+        {
+            get
+            {
+                return _sm.Value;
+            }
+        }
+        private Lazy<ServiceManager> _sm;
+
+        private void InitLazyFactory()
+        {
+            _am = new Lazy<ActivityManager>(() => new ActivityManager(TargetDevice)
+            {
+                CmdStation = CmdStation,
+            });
+            _dpm = new Lazy<DevicePolicyManager>(() => new DevicePolicyManager(TargetDevice)
+            {
+                CmdStation = CmdStation,
+            });
+            _pm = new Lazy<PackageManager>(() => new PackageManager(TargetDevice)
+            {
+                CmdStation = CmdStation,
+            });
+            _wm = new Lazy<WindowManager>(() => new WindowManager(TargetDevice)
+            {
+                CmdStation = CmdStation,
+            });
+            _sm = new Lazy<ServiceManager>(() => new ServiceManager(TargetDevice)
+            {
+                CmdStation = CmdStation,
+            });
         }
         #endregion
     }
