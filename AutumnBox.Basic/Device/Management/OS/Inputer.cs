@@ -82,7 +82,11 @@ namespace AutumnBox.Basic.Device.Management.OS
         /// <exception cref="Exceptions.AdbShellCommandFailedException"></exception>
         public void Tap(int x, int y)
         {
-            Swipe(x, y, x, y);
+            CmdStation.GetShellCommand(Device,
+                $"input tap {x} {y}")
+                .To(RaiseOutput)
+                .Execute()
+                .ThrowIfShellExitCodeNotEqualsZero();
         }
         /// <summary>
         /// 通过To模式订阅

@@ -22,10 +22,11 @@ namespace AutumnBox.CoreModules.Extensions
         //}
         protected override int VisualMain()
         {
-            WriteLine(Ux.Agree("w").ToString());
-            Ux.Error("Ok");
             WriteInitInfo();
+          
             WriteLine("开始执行");
+            Inputer.PressKey(AndroidKeyCode.MediaNext);
+            Inputer.Tap(200,300);
             Thread.Sleep(3000);
             WriteLine("进度25");
             Progress = 25;
