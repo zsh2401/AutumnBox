@@ -5,6 +5,8 @@
 *************************************************/
 using AutumnBox.Basic.Calling;
 using AutumnBox.Basic.Device;
+using AutumnBox.Basic.Device.Management.AppFx;
+using AutumnBox.Basic.Exceptions;
 using AutumnBox.OpenFramework.Extension;
 
 namespace AutumnBox.CoreModules.Lib
@@ -25,12 +27,20 @@ namespace AutumnBox.CoreModules.Lib
         protected virtual int SetReciverAsDpm()
         {
             WriteLineAndSetTip(Res("DPMSetting"));
-            GetDevcieShellCommand
-                ($"dpm set-device-owner {DpmAppPackageName}/{ReceiverClassName}")
-                .To(OutputPrinter)
-                .Execute();
+            var dpm = GetDeviceCommander<DevicePolicyManager>();
+            var cn = new ComponentName
+            {
+                ClassName = ReceiverClassName,
+                PackageName = DpmAppPackageName,
+            };
             ThrowIfCanceled();
-            return 0;
+            try {
+                dpm.SetDeviceOwner((cn));
+                return 0;
+            } catch (AdbShellCommandFailedException ex) {
+                WriteLine(ex.Message);
+                return 1;
+            }
         }
 
         protected sealed override int VisualMain()
