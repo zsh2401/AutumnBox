@@ -7,8 +7,10 @@ using AutumnBox.Basic.Calling;
 using AutumnBox.Basic.Calling.Adb;
 using AutumnBox.Basic.Calling.Cmd;
 using AutumnBox.Basic.Calling.Fastboot;
+using AutumnBox.Basic.Device;
 using AutumnBox.Basic.Device.Management.AppFx;
 using AutumnBox.Basic.Device.Management.OS;
+using AutumnBox.Basic.Util;
 using AutumnBox.OpenFramework.Exceptions;
 using System;
 using System.Collections.Generic;
@@ -59,101 +61,40 @@ namespace AutumnBox.OpenFramework.Extension
         }
         #endregion
 
-        #region Device Manager Getter
-        protected ActivityManager ActivityManager
+        #region Device Commander Getter
+        protected TDevCommander GetDeviceCommander<TDevCommander>()
+            where TDevCommander : DeviceCommander
         {
-            get
-            {
-                return _am.Value;
-            }
+            return DevCmderFcty.GetDeviceCommander<TDevCommander>();
         }
-        private Lazy<ActivityManager> _am;
 
-        protected DevicePolicyManager Dpm
-        {
-            get
-            {
-                return _dpm.Value;
-            }
-        }
-        private Lazy<DevicePolicyManager> _dpm;
+        protected ActivityManager ActivityManager => GetDeviceCommander<ActivityManager>();
 
-        protected PackageManager PackageManager
-        {
-            get
-            {
-                return _pm.Value;
-            }
-        }
-        private Lazy<PackageManager> _pm;
+        protected DevicePolicyManager Dpm => GetDeviceCommander<DevicePolicyManager>();
 
-        protected WindowManager WindowManager
-        {
-            get
-            {
-                return _wm.Value;
-            }
-        }
-        private Lazy<WindowManager> _wm;
+        protected PackageManager PackageManager => GetDeviceCommander<PackageManager>();
 
-        protected ServiceManager ServiceManager
-        {
-            get
-            {
-                return _sm.Value;
-            }
-        }
-        private Lazy<ServiceManager> _sm;
+        protected WindowManager WindowManager => GetDeviceCommander<WindowManager>();
 
-        protected DeviceBuildPropManager BuildProp => _buildProp.Value;
-        private Lazy<DeviceBuildPropManager> _buildProp;
+        protected ServiceManager ServiceManager => GetDeviceCommander<ServiceManager>();
 
-        protected BroadcastSender BroadcastSender => _bs.Value;
-        private Lazy<BroadcastSender> _bs;
+        protected DeviceBuildPropManager BuildProp => GetDeviceCommander<DeviceBuildPropManager>();
 
-        protected Inputer Inputer => _inputer.Value;
-        private Lazy<Inputer> _inputer;
+        protected BroadcastSender BroadcastSender => GetDeviceCommander<BroadcastSender>();
 
-        protected ScreenCapture ScreenCapture => _sc.Value;
-        private Lazy<ScreenCapture> _sc;
+        protected Inputer Inputer => GetDeviceCommander<Inputer>();
 
+        protected ScreenCapture ScreenCapture => GetDeviceCommander<ScreenCapture>();
+
+
+
+        private DeviceCommanderFactory DevCmderFcty => _deviceCommanderFactory.Value;
+        private Lazy<DeviceCommanderFactory> _deviceCommanderFactory;
         private void InitLazyFactory()
         {
-            _am = new Lazy<ActivityManager>(() => new ActivityManager(TargetDevice)
+            _deviceCommanderFactory = new Lazy<DeviceCommanderFactory>(() =>
             {
-                CmdStation = CmdStation,
-            });
-            _dpm = new Lazy<DevicePolicyManager>(() => new DevicePolicyManager(TargetDevice)
-            {
-                CmdStation = CmdStation,
-            });
-            _pm = new Lazy<PackageManager>(() => new PackageManager(TargetDevice)
-            {
-                CmdStation = CmdStation,
-            });
-            _wm = new Lazy<WindowManager>(() => new WindowManager(TargetDevice)
-            {
-                CmdStation = CmdStation,
-            });
-            _sm = new Lazy<ServiceManager>(() => new ServiceManager(TargetDevice)
-            {
-                CmdStation = CmdStation,
-            });
-            _buildProp = new Lazy<DeviceBuildPropManager>(() => new DeviceBuildPropManager(TargetDevice)
-            {
-                CmdStation = CmdStation
-            });
-            _bs = new Lazy<BroadcastSender>(() => new BroadcastSender(TargetDevice)
-            {
-                CmdStation = CmdStation
-            });
-            _inputer = new Lazy<Inputer>(() => new Inputer(TargetDevice)
-            {
-                CmdStation = CmdStation
-            });
-            _sc = new Lazy<ScreenCapture>(() => new ScreenCapture(TargetDevice)
-            {
-                CmdStation = CmdStation,
+                return new DeviceCommanderFactory(this.TargetDevice, this.CmdStation);
             });
         }
         #endregion

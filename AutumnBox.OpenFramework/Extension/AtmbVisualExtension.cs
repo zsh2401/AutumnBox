@@ -87,7 +87,7 @@ namespace AutumnBox.OpenFramework.Extension
         /// 当停止时调用
         /// </summary>
         /// <returns></returns>
-        protected override bool OnStopCommand()
+        protected sealed override bool OnStopCommand()
         {
             Logger.CDebug("StopCommand()");
             bool canStop = false;
