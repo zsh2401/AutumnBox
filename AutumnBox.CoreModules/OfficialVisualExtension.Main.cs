@@ -13,14 +13,14 @@ namespace AutumnBox.CoreModules
     [ExtAuth("AutumnBox official", Lang = "en-us")]
     [ExtOfficial(true)]
     [ContextPermission(CtxPer.High)]
-    internal abstract class OfficialVisualExtension : FasterVisualExtension
+    internal abstract partial class OfficialVisualExtension : StrictVisualExtension
     {
-        protected override string Res(string key)
+        protected string Res(string key)
         {
             string result = key;
             App.RunOnUIThread(() =>
             {
-                result = CoreLib.Current.Languages.Get(key) ?? base.Res(key);
+                result = CoreLib.Current.Languages.Get(key) ?? PublicRes(key);
             });
             return result;
         }

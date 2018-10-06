@@ -15,7 +15,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.Root
     [ExtRequiredDeviceStates(DeviceState.Poweron)]
     [ExtRequireRoot]
     [ExtIcon("Icons.key.png")]
-    internal class EUnlockSystemParation : StoppableOfficialExtension
+    internal class EUnlockSystemParation : OfficialVisualExtension
     {
         protected override int VisualMain()
         {

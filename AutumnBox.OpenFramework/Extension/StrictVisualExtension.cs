@@ -34,6 +34,11 @@ namespace AutumnBox.OpenFramework.Extension
         }
 
         #region Command Getter
+        protected ShellCommand GetDevcieShellCommand(string cmd)
+        {
+            ThrowIfCanceled();
+            return CmdStation.GetShellCommand(TargetDevice, cmd);
+        }
         protected AdbCommand GetDeviceAdbCommand(string cmd)
         {
             ThrowIfCanceled();

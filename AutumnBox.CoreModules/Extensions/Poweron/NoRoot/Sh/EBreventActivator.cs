@@ -19,7 +19,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot.Sh
     [ExtAppProperty("me.piebridge.brevent")]
     [ExtRequiredDeviceStates(DeviceState.Poweron)]
     [ExtIcon("Icons.brevent.png")]
-    internal class EBreventActivator : StoppableOfficialExtension
+    internal class EBreventActivator : OfficialVisualExtension
     {
         private const string SH_PATH = "/data/data/me.piebridge.brevent/brevent.sh";
         private const int stateCheck = 0;

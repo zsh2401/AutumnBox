@@ -16,7 +16,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot.Sh
     [ExtAppProperty(PKG_NAME)]
     [ExtIcon("Icons.ShizukuManager.png")]
     [ExtRequiredDeviceStates(DeviceState.Poweron)]
-    internal class EShizukuActivator : StoppableOfficialExtension
+    internal class EShizukuActivator : OfficialVisualExtension
     {
         private const int DELAY_AFTER_LAUNCH = 3000;
         private const string PKG_NAME = "moe.shizuku.privileged.api";

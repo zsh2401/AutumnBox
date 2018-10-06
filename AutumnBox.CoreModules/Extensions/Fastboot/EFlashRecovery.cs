@@ -13,7 +13,7 @@ namespace AutumnBox.CoreModules.Extensions.Fastboot
     [ExtName("Flash recovery.img", Lang = "en-US")]
     [ExtRequiredDeviceStates(DeviceState.Fastboot)]
     [ExtIcon("Icons.cd.png")]
-    internal class EFlashRecovery : StoppableOfficialExtension
+    internal class EFlashRecovery : OfficialVisualExtension
     {
         protected override int VisualMain()
         {
@@ -25,16 +25,15 @@ namespace AutumnBox.CoreModules.Extensions.Fastboot
             if (fileDialog.ShowDialog() != true) return ERR_CANCELED_BY_USER;
             fileDialog = null;
 
-            var result = CmdStation
-                .GetFastbootCommand(TargetDevice,
+            var result = GetDeviceFastbootCommand(
                 $"flash recovery \"{fileDialog.FileName}\"")
                 .To(OutputPrinter)
                 .Execute();
 
             if (result.ExitCode == 0)
             {
-                CmdStation
-               .GetFastbootCommand(TargetDevice,
+                
+               GetDeviceFastbootCommand(
                $"boot \"{fileDialog.FileName}\"")
                .To(OutputPrinter)
                .Execute();

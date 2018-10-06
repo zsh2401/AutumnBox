@@ -17,7 +17,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot
     [ExtVersion(2018,9,26)]
     [ExtIcon("Icons.Greenify.png")]
     [ExtRequiredDeviceStates(Basic.Device.DeviceState.Poweron)]
-    class EGreenifyGrant : StoppableOfficialExtension
+    class EGreenifyGrant : OfficialVisualExtension
     {
         private const string PKG_NAME = "com.oasisfeng.greenify";
         protected override int VisualMain()

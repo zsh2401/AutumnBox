@@ -4,7 +4,7 @@ using AutumnBox.OpenFramework.Extension;
 
 namespace AutumnBox.CoreModules
 {
-    partial class FasterVisualExtension
+    partial class OfficialVisualExtension
     {
         protected string MsgInit => Res("ExtensionIniting");
         protected string MsgWaitingForUser => Res("ExtensionWaitingForUser");
@@ -25,7 +25,7 @@ namespace AutumnBox.CoreModules
         {
             Logger.Info(e.Text);
         }
-        protected virtual string Res(string key)
+        protected string PublicRes(string key)
         {
             string result = key;
             App.RunOnUIThread(() =>
