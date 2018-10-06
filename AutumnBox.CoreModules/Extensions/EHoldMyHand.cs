@@ -25,7 +25,7 @@ namespace AutumnBox.CoreModules.Extensions
             WriteInitInfo();
           
             WriteLine("开始执行");
-            var inputer = Inputer;
+            Inputer inputer = GetDeviceCommander<Inputer>();
             inputer.PressKey(AndroidKeyCode.MediaNext);
             inputer.Tap(200,300);
             WriteLine(inputer.GetHashCode().ToString());
