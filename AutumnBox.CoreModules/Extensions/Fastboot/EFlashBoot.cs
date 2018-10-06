@@ -13,7 +13,7 @@ namespace AutumnBox.CoreModules.Extensions.Fastboot
     [ExtName("Flash boot.img", Lang = "en-US")]
     [ExtRequiredDeviceStates(DeviceState.Fastboot)]
     [ExtIcon("Icons.cd.png")]
-    internal class EFlashBoot : StoppableOfficialExtension
+    internal class EFlashBoot : OfficialVisualExtension
     {
         protected override int VisualMain()
         {
@@ -23,9 +23,7 @@ namespace AutumnBox.CoreModules.Extensions.Fastboot
             fileDialog.Filter = Res("EFlashBootSelectingFilter");
             fileDialog.Multiselect = false;
             if (fileDialog.ShowDialog() != true) return ERR_CANCELED_BY_USER;
-            var result = CmdStation
-                .GetFastbootCommand(TargetDevice,
-                $"flash boot \"{fileDialog.FileName}\"")
+            var result = GetDeviceFastbootCommand($"flash boot \"{fileDialog.FileName}\"")
                 .To(OutputPrinter)
                 .Execute();
             WriteExitCode(result.ExitCode);

@@ -58,8 +58,7 @@
     <Compile Include="Extensions\Poweron\NoRoot\EGCM.cs" />
     <Compile Include="Extensions\Poweron\NoRoot\EGreenifyGrant.cs" />
     <Compile Include="Extensions\Poweron\NoRoot\Sh\EShizukuActivator.cs" />
-    <Compile Include="FasterVisualExtension.Kit.cs" />
-    <Compile Include="FasterVisualExtension.Main.cs" />
+    <Compile Include="OfficialVisualExtension.Output.cs" />
     <Compile Include="LanguageManager.cs" />
     <Compile Include="Lib\DpmSetterExtension.cs" />
     <Compile Include="Extensions\Poweron\NoRoot\DpmSetter\EIceBox.cs" />
@@ -90,7 +89,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="StoppableOfficialExtension.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

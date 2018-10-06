@@ -11,7 +11,7 @@ namespace AutumnBox.CoreModules.Lib
 {
     [ExtDesc("使用奇淫技巧暴力设置设备管理员,\n注意:使用此模块前,必须先移除屏幕锁,指纹锁等,否则将可能导致不可预见的后果")]
     [ExtDesc("Use the sneaky skills to set up the device administrator, \n Note: Before using this module, you must first remove the screen lock, fingerprint lock, etc., otherwise it may lead to unforeseen consequences", Lang = "en-us")]
-    internal abstract class DpmSetterExtension : StoppableOfficialExtension
+    internal abstract class DpmSetterExtension : OfficialVisualExtension
     {
         public abstract string ReceiverClassName { get; }
         public abstract string DpmAppPackageName { get; }
@@ -25,9 +25,8 @@ namespace AutumnBox.CoreModules.Lib
         protected virtual int SetReciverAsDpm()
         {
             WriteLineAndSetTip(Res("DPMSetting"));
-            CmdStation
-                .GetShellCommand(TargetDevice,
-                $"dpm set-device-owner {DpmAppPackageName}/{ReceiverClassName}")
+            GetDevcieShellCommand
+                ($"dpm set-device-owner {DpmAppPackageName}/{ReceiverClassName}")
                 .To(OutputPrinter)
                 .Execute();
             ThrowIfCanceled();
@@ -60,7 +59,7 @@ namespace AutumnBox.CoreModules.Lib
             WriteLineAndSetTip(Res("EGodPowerRmUser"));
             command = GodPower.GetRemoveUserCommand();
             CmdStation.Register(command);
-            result= command
+            result = command
                 .To(OutputPrinter)
                 .Execute();
             ThrowIfCanceled();
