@@ -25,8 +25,11 @@ namespace AutumnBox.CoreModules.Extensions
             WriteInitInfo();
           
             WriteLine("开始执行");
-            Inputer.PressKey(AndroidKeyCode.MediaNext);
-            Inputer.Tap(200,300);
+            var inputer = Inputer;
+            inputer.PressKey(AndroidKeyCode.MediaNext);
+            inputer.Tap(200,300);
+            WriteLine(inputer.GetHashCode().ToString());
+            WriteLine(inputer.GetHashCode().ToString());
             Thread.Sleep(3000);
             WriteLine("进度25");
             Progress = 25;

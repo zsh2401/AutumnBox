@@ -19,6 +19,7 @@ namespace AutumnBox.Basic.Util
         /// <param name="CmdLineBuffer"></param>
         /// <param name="nCmdShow"></param>
         [DllImport("Setupapi.dll", EntryPoint = "InstallHinfSection", CallingConvention = CallingConvention.StdCall)]
+        [Obsolete("没什么卵用",true)]
         public static extern void InstallHinfSection(
             [In] IntPtr hwnd,
             [In] IntPtr ModuleHandle,
