@@ -36,7 +36,7 @@ namespace AutumnBox.OpenFramework.Open
         /// <summary>
         /// 声音API
         /// </summary>
-        private static ISoundPlayer _sound = new SoundImpl(AutumnBoxGuiApi.Main);
+        private static ISoundPlayer _sound = new SoundImpl(CallingBus.AutumnBox_GUI);
         #endregion
         /// <summary>
         /// 获取音效播放器
@@ -63,7 +63,7 @@ namespace AutumnBox.OpenFramework.Open
         /// <returns></returns>
         public IAppManager GetAppManager(Context ctx)
         {
-            return new AppManagerImpl(ctx, AutumnBoxGuiApi.Main);
+            return new AppManagerImpl(ctx, CallingBus.AutumnBox_GUI);
         }
         /// <summary>
         /// 获取操作系统API
@@ -126,7 +126,7 @@ namespace AutumnBox.OpenFramework.Open
         /// <returns></returns>
         public IUx GetUx(Context ctx)
         {
-            return new UxImpl(ctx, AutumnBoxGuiApi.Main);
+            return new UxImpl(ctx, CallingBus.AutumnBox_GUI);
         }
     }
 }

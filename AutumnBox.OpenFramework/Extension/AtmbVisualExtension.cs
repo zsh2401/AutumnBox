@@ -24,7 +24,7 @@ namespace AutumnBox.OpenFramework.Extension
             base.OnCreate(args);
             App.RunOnUIThread(() =>
             {
-                UIController = AutumnBoxGuiApi.Main.GetUIController();
+                UIController = CallingBus.AutumnBox_GUI.GetUIController();
                 UIController.OnStart(args.Wrapper.Info);
                 UIController.Closing += OnUIControllerClosing;
             });

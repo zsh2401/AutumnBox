@@ -3,6 +3,7 @@
 ** date:  2018/9/18 0:45:54 (UTC +8:00)
 ** desc： ...
 *************************************************/
+using AutumnBox.OpenFramework.Management;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +25,7 @@ namespace AutumnBox.OpenFramework.Open
         [System.Diagnostics.Conditional("DEBUG")]
         public static void CDebug(this ILogger logger, object content)
         {
-            Management.AutumnBoxGuiApi.Main.Log(logger.Tag, "Debug", content?.ToString());
+            CallingBus.AutumnBox_GUI.Log(logger.Tag, "Debug", content?.ToString());
         }
     }
 }
