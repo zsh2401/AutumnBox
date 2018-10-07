@@ -16,12 +16,12 @@ namespace AutumnBox.CoreModules
             WriteLine(msg);
             Tip = msg;
         }
-        protected void OutputPrinter(OutputReceivedEventArgs e)
+        protected virtual void OutputPrinter(OutputReceivedEventArgs e)
         {
             WriteLine(e.Text);
             Logger.Info(e.Text);
         }
-        protected void OutputLogger(OutputReceivedEventArgs e)
+        protected virtual void OutputLogger(OutputReceivedEventArgs e)
         {
             Logger.Info(e.Text);
         }

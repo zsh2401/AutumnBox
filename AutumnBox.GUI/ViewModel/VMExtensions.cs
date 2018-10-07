@@ -106,7 +106,6 @@ namespace AutumnBox.GUI.ViewModel
         #region Device
         public void OnSelectNoDevice(object sender, EventArgs e)
         {
-            SGLogger<VMExtensions>.Debug("Select no device");
             ExtPanelIsEnabled = false;
         }
 
