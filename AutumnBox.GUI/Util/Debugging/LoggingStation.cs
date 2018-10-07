@@ -45,7 +45,7 @@ namespace AutumnBox.GUI.Util.Debugging
             fs = new FileStream(LogFile, FileMode.OpenOrCreate, FileAccess.ReadWrite);
             sw = new StreamWriter(fs)
             {
-                AutoFlush = false
+                AutoFlush = true
             };
             new Thread(Loop)
             {
