@@ -17,10 +17,12 @@
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DefineConstants>TRACE;DEBUG;NETSTANDARD;NETSTANDARD2_0;WIN32</DefineConstants>
+    <DocumentationFile>bin\Release\netstandard2.0\AutumnBox.OpenFramework.xml</DocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='SDK|AnyCPU'">
     <DefineConstants>TRACE;WIN32</DefineConstants>
+    <DocumentationFile>bin\Release\netstandard2.0\AutumnBox.OpenFramework.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>

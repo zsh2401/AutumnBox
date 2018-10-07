@@ -4,6 +4,7 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.OpenFramework.Content;
+using AutumnBox.OpenFramework.Management;
 using System;
 
 namespace AutumnBox.OpenFramework.Open.Impl
@@ -23,27 +24,27 @@ namespace AutumnBox.OpenFramework.Open.Impl
 
         public void Debug(string msg)
         {
-            Management.AutumnBoxGuiApi.Main.Log(ctx.LoggingTag, nameof(Debug), msg);
+            CallingBus.AutumnBox_GUI.Log(ctx.LoggingTag, nameof(Debug), msg);
         }
 
         public void Fatal(string msg)
         {
-            Management.AutumnBoxGuiApi.Main.Log(ctx.LoggingTag, nameof(Fatal), msg);
+            CallingBus.AutumnBox_GUI.Log(ctx.LoggingTag, nameof(Fatal), msg);
         }
 
         public void Info(string msg)
         {
-            Management.AutumnBoxGuiApi.Main.Log(ctx.LoggingTag, nameof(Info), msg);
+            CallingBus.AutumnBox_GUI.Log(ctx.LoggingTag, nameof(Info), msg);
         }
 
         public void Warn(string msg)
         {
-            Management.AutumnBoxGuiApi.Main.Log(ctx.LoggingTag, nameof(Warn), msg);
+            CallingBus.AutumnBox_GUI.Log(ctx.LoggingTag, nameof(Warn), msg);
         }
 
         public void Warn(string msg, Exception ex)
         {
-            Management.AutumnBoxGuiApi.Main.Log(ctx.LoggingTag, nameof(Warn), msg + Environment.NewLine + ex);
+            CallingBus.AutumnBox_GUI.Log(ctx.LoggingTag, nameof(Warn), msg + Environment.NewLine + ex);
         }
     }
 }

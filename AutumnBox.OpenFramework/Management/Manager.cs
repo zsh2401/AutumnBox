@@ -50,24 +50,6 @@ namespace AutumnBox.OpenFramework.Management
                 return _runningManager;
             }
         }
-        private static bool inited = false;
-        /// <summary>
-        /// 初始化框架
-        /// </summary>
-#if !SDK
-        public
-#else
-        internal
-#endif
-        static void InitFramework(IAutumnBox_GUI autumnbox)
-        {
-            if (!inited)
-            {
-                AutumnBoxGuiApi.Main = autumnbox;
-                InternalManager.Reload();
-                inited = true;
-            }
-        }
         private static void PermissionCheck(Assembly assembly)
         {
             var caller = assembly.GetName().Name;
