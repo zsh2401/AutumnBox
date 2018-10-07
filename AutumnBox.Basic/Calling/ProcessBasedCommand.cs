@@ -136,7 +136,7 @@ namespace AutumnBox.Basic.Calling
         /// </summary>
         public void Kill()
         {
-            process?.Kill();
+            process.Kill();
         }
         #region IDisposable Support
         private bool disposedValue = false; // 要检测冗余调用

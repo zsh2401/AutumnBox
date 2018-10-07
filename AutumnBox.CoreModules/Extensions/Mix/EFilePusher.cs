@@ -4,8 +4,10 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.Basic.Calling.Adb;
+using AutumnBox.Basic.Data;
 using AutumnBox.OpenFramework.Extension;
 using System;
+using System.Text.RegularExpressions;
 
 namespace AutumnBox.CoreModules.Extensions.Mix
 {
@@ -15,6 +17,35 @@ namespace AutumnBox.CoreModules.Extensions.Mix
     [ExtRequiredDeviceStates(Basic.Device.DeviceState.Poweron | Basic.Device.DeviceState.Recovery)]
     internal class EFilePusher : OfficialVisualExtension
     {
+        protected override void OutputPrinter(OutputReceivedEventArgs e)
+        {
+            base.OutputPrinter(e);
+            ParseAndShowOnUI(e.Text);
+        }
+        static readonly Regex rg12 = new Regex("\\ (.*?)\\%");
+        static readonly Regex rg3 = new Regex("\\[(.*?)\\%");
+        private void ParseAndShowOnUI(string msg)
+        {
+            Match m;
+            try
+            {
+                m = rg12.Match(msg);
+                if (!m.Success)
+                {
+                    m = rg3.Match(msg);
+                }
+                var r = m.Result("$1");
+                App.RunOnUIThread(() =>
+                {
+                    Progress = double.Parse(r);
+                    Tip = r.ToString() + "%";
+                });
+            }
+            catch (Exception)
+            {
+                //Logger.Warn(this, "parse progress text failed", se);
+            }
+        }
         protected override int VisualMain()
         {
             bool? dialogResult = null;
@@ -33,8 +64,7 @@ namespace AutumnBox.CoreModules.Extensions.Mix
             if (dialogResult != true) return ERR_CANCELED_BY_USER;
             try
             {
-                return CmdStation.GetAdbCommand(TargetDevice,
-                    $"push \"{seleFile}\" /sdcard/")
+                return GetDeviceAdbCommand($"push \"{seleFile}\" /sdcard/")
                     .To(OutputPrinter)
                     .Execute()
                     .ExitCode;
@@ -46,6 +76,12 @@ namespace AutumnBox.CoreModules.Extensions.Mix
                 FinishedTip = "EFilePusherFailed";
                 return ERR;
             }
+        }
+        protected override bool VisualStop()
+        {
+            bool result =  base.VisualStop();
+            Logger.Info("stopped");
+            return result;
         }
     }
 }

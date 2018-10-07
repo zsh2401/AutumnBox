@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace AutumnBox.GUI.Util.Debugging
@@ -32,7 +33,7 @@ namespace AutumnBox.GUI.Util.Debugging
         }
         private LoggingStation()
         {
-            buffer = new Queue<string>(25);
+            buffer = new Queue<string>();
             logged = new List<string>();
         }
         public void Work()
@@ -44,12 +45,12 @@ namespace AutumnBox.GUI.Util.Debugging
             fs = new FileStream(LogFile, FileMode.OpenOrCreate, FileAccess.ReadWrite);
             sw = new StreamWriter(fs)
             {
-                AutoFlush = true
+                AutoFlush = false
             };
-            Task.Run(() =>
+            new Thread(Loop)
             {
-                Loop();
-            });
+                IsBackground = true
+            }.Start();
         }
         private static string GetLogFileInfo()
         {
@@ -71,15 +72,16 @@ namespace AutumnBox.GUI.Util.Debugging
         {
             while (true)
             {
-                if (buffer.Count == 0) continue;
-                var line = buffer.Dequeue();
-                TLog(line);
+                while (buffer.Count > 0)
+                {
+                    TLog(buffer.Dequeue());
+                }
+                Thread.Sleep(500);
             }
         }
         private void TLog(string text)
         {
             Debugger.Log(3, null, text + Environment.NewLine);
-            //Console.WriteLine(text);
             sw.WriteLine(text);
             logged.Add(text);
         }
