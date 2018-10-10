@@ -7,6 +7,7 @@ using AutumnBox.OpenFramework.Management;
 using AutumnBox.OpenFramework.Wrapper;
 using System;
 using AutumnBox.OpenFramework.Open;
+using System.Threading.Tasks;
 
 namespace AutumnBox.OpenFramework.Extension
 {
@@ -91,6 +92,7 @@ namespace AutumnBox.OpenFramework.Extension
         {
             Logger.CDebug("StopCommand()");
             bool canStop = false;
+
             try
             {
                 canStop = VisualStop();
@@ -119,7 +121,10 @@ namespace AutumnBox.OpenFramework.Extension
             {
                 try
                 {
-                    Args.CurrentProcess.Kill();
+                    Task.Run(() =>
+                    {
+                        Args.CurrentProcess.Kill();
+                    });
                 }
                 catch (Exceptions.ExtensionCantBeStoppedException)
                 {
@@ -148,7 +153,10 @@ namespace AutumnBox.OpenFramework.Extension
         /// <param name="message"></param>
         protected void WriteLine(string message)
         {
-            UIController.AppendLine(message);
+            App.RunOnUIThread(() =>
+            {
+                UIController.AppendLine(message);
+            });
             Logger.Info(message);
         }
         /// <summary>
@@ -158,12 +166,10 @@ namespace AutumnBox.OpenFramework.Extension
         {
             set
             {
+                App.RunOnUIThread(() =>
                 {
-                    App.RunOnUIThread(() =>
-                    {
-                        UIController.ProgressValue = value;
-                    });
-                }
+                    UIController.ProgressValue = value;
+                });
             }
         }
         /// <summary>

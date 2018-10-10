@@ -6,7 +6,9 @@
 using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using AutumnBox.Basic.Calling.Cmd;
 using AutumnBox.Basic.Data;
+using AutumnBox.Basic.Util.Debugging;
 
 namespace AutumnBox.Basic.Calling
 {
@@ -136,7 +138,9 @@ namespace AutumnBox.Basic.Calling
         /// </summary>
         public void Kill()
         {
-            process.Kill();
+            //process.Close();
+            //process.Kill();
+            process.KillByTaskKill();
         }
         #region IDisposable Support
         private bool disposedValue = false; // 要检测冗余调用
