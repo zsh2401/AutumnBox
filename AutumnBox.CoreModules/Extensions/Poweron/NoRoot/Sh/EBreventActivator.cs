@@ -13,9 +13,9 @@ using System.Threading;
 
 namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot.Sh
 {
-    [ExtName("黑阀一键激活")]
+    [ExtName("黑阈一键激活")]
     [ExtName("Activate brevent by one key", Lang = "en-us")]
-    [ExtDesc("一键激活黑阀,但值得注意的是,这样的激活方式,在重启后将失效")]
+    [ExtDesc("一键激活黑阈,但值得注意的是,这样的激活方式,在重启后将失效")]
     [ExtAppProperty("me.piebridge.brevent")]
     [ExtRequiredDeviceStates(DeviceState.Poweron)]
     [ExtIcon("Icons.brevent.png")]

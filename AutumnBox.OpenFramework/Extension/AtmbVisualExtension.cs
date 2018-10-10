@@ -88,11 +88,10 @@ namespace AutumnBox.OpenFramework.Extension
         /// 当停止时调用
         /// </summary>
         /// <returns></returns>
-        protected sealed override bool OnStopCommand()
+        protected sealed override bool OnStopCommand(ExtensionStopArgs args)
         {
             Logger.CDebug("StopCommand()");
             bool canStop = false;
-
             try
             {
                 canStop = VisualStop();
@@ -100,11 +99,18 @@ namespace AutumnBox.OpenFramework.Extension
             catch (Exception ex)
             {
                 Logger.Warn("Fatal error on VisualStop()", ex);
-                WriteLine(App.GetPublicResouce<string>("RunningWindowExceptionOnStopping"));
+                App.RunOnUIThread(() =>
+                {
+                    WriteLine(App.GetPublicResouce<string>("RunningWindowExceptionOnStopping"));
+                });
+
             }
             if (!canStop)
             {
-                WriteLine(App.GetPublicResouce<string>("RunningWindowCantStop"));
+                App.RunOnUIThread(() =>
+                {
+                    WriteLine(App.GetPublicResouce<string>("RunningWindowCantStop"));
+                });
             }
             return canStop;
         }

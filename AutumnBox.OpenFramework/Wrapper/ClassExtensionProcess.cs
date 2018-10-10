@@ -60,6 +60,7 @@ namespace AutumnBox.OpenFramework.Wrapper
             foreach (var aspect in BeforeCreatingAspects)
             {
                 aspect.Before(args);
+                Debug.WriteLine(args.Prevent);
                 if (args.Prevent)
                 {
                     return false;

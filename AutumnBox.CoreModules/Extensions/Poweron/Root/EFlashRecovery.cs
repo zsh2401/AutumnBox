@@ -4,20 +4,23 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.Basic.Device;
+using AutumnBox.CoreModules.Aspect;
 using AutumnBox.OpenFramework.Extension;
 
 namespace AutumnBox.CoreModules.Extensions.Poweron.Root
 {
     [ExtName("[ROOT]刷入REC")]
     [ExtName("[ROOT]Flast recovery.img", Lang = "en-US")]
-    //[ExtRequireRoot]
+    [ObsoleteImageOperator]
+    [ExtRequireRoot]
     [ExtIcon("Icons.flash.png")]
+    [ExtRegion("zh-CN","zh-HK","zh-TW","zh-SG")]
     [ExtRequiredDeviceStates(DeviceState.Poweron)]
     internal class EFlashRecovery : AutumnBoxExtension
     {
         protected override int Main()
         {
-            var warnMsg = CoreLib.Current.Languages.Get("EFlashRecoveryObsoleteMsg");
+            var warnMsg = CoreLib.Current.Languages.Get("EObsoleteAndTryImageHelper");
             Ux.Warn(warnMsg);
             return ERR;
         }

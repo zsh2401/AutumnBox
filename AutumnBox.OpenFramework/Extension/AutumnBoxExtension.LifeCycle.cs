@@ -15,7 +15,7 @@ namespace AutumnBox.OpenFramework.Extension
     /// <summary>
     /// 标准的秋之盒拓展基类
     /// </summary>
-    public abstract partial class AutumnBoxExtension : Context, IClassExtension
+    public abstract partial class AutumnBoxExtension : ClassExtensionBase, IClassExtension
     {
         /// <summary>
         /// 拓展模块参数
@@ -26,36 +26,10 @@ namespace AutumnBox.OpenFramework.Extension
         /// 当拓展被创建后调用
         /// </summary>
         /// <param name="args"></param>
-        protected virtual void OnCreate(ExtensionArgs args)
+        protected override void OnCreate(ExtensionArgs args)
         {
+            base.OnCreate(args);
             Args = args;
-        }
-
-        /// <summary>
-        /// 主函数
-        /// </summary>
-        protected abstract int Main();
-
-        /// <summary>
-        /// 当拓展模块执行完成时调用,这通常发生在Main()函数之后
-        /// </summary>
-        /// <param name="args"></param>
-        protected virtual void OnFinish(ExtensionFinishedArgs args) { }
-
-        /// <summary>
-        /// 当模块被要求终止时调用,如果做不到,请返回false或抛出异常
-        /// </summary>
-        /// <returns></returns>
-        protected virtual bool OnStopCommand()
-        {
-            return false;
-        }
-
-        /// <summary>
-        /// 无论如何,在模块即将被析构时,都将调用此函数
-        /// </summary>
-        protected virtual void OnDestory(ExtensionDestoryArgs args)
-        {
         }
     }
 }

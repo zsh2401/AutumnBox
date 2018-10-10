@@ -39,7 +39,7 @@ namespace AutumnBox.OpenFramework.Extension
             {
                 args.Context.App.RunOnUIThread(() =>
                 {
-                    args.Context.Ux.Warn("OpenFxNoRoot!");
+                    args.Context.Ux.Warn("OpenFxNoRoot");
                 });
                 args.Prevent = true;
             }
