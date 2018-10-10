@@ -36,7 +36,7 @@ namespace AutumnBox.OpenFramework.Extension
         /// <summary>
         /// 完全成功
         /// </summary>
-        public const int OK = 0;
+        public const int OK = 1;
         /// <summary>
         /// 发生错误
         /// </summary>

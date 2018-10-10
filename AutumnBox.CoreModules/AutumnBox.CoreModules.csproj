@@ -48,6 +48,8 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Aspect\RemoveLockNoticeAttribute.cs" />
+    <Compile Include="Aspect\UserAgreeAttribute.cs" />
     <Compile Include="CoreLib.cs" />
     <Compile Include="Extensions\Fastboot\EFlashBoot.cs" />
     <Compile Include="Extensions\Fastboot\EFlashRecovery.cs" />
@@ -58,6 +60,7 @@
     <Compile Include="Extensions\Poweron\NoRoot\EGCM.cs" />
     <Compile Include="Extensions\Poweron\NoRoot\EGreenifyGrant.cs" />
     <Compile Include="Extensions\Poweron\NoRoot\Sh\EShizukuActivator.cs" />
+    <Compile Include="Aspect\ObsoleteImageOperatorAttribute.cs" />
     <Compile Include="OfficialVisualExtension.Output.cs" />
     <Compile Include="LanguageManager.cs" />
     <Compile Include="Lib\DpmSetterExtension.cs" />

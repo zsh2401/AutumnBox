@@ -5,6 +5,7 @@
 *************************************************/
 using AutumnBox.Basic.Calling.Adb;
 using AutumnBox.Basic.Device;
+using AutumnBox.CoreModules.Aspect;
 using AutumnBox.OpenFramework.Extension;
 using System.Threading;
 
@@ -13,6 +14,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.Root
     [ExtName("[ROOT]解锁系统分区")]
     [ExtName("[ROOT]Unlock system paration", Lang = "en-US")]
     [ExtRequiredDeviceStates(DeviceState.Poweron)]
+    [ObsoleteImageOperator]
     [ExtRequireRoot]
     [ExtIcon("Icons.key.png")]
     internal class EUnlockSystemParation : OfficialVisualExtension

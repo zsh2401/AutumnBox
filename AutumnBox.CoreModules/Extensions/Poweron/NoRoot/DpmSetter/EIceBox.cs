@@ -5,6 +5,7 @@
 *************************************************/
 using AutumnBox.OpenFramework.Extension;
 using AutumnBox.CoreModules.Lib;
+using AutumnBox.Basic.Device.Management.AppFx;
 
 namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot.DpmSetter
 {
@@ -15,15 +16,8 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot.DpmSetter
     [ExtRequiredDeviceStates(Basic.Device.DeviceState.Poweron)]
     internal class EIceBox : DpmSetterExtension
     {
-        public override string ReceiverClassName => null;
+        protected override ComponentName ReceiverName => throw new System.NotImplementedException();
 
-        public override string DpmAppPackageName => null;
-
-        protected override bool OnWarnUser()
-        {
-            var warnMsg = string.Format(Res("EGodPowerWarningFmt"), Res("AppNameIceBox"));
-            return Ux.Agree(warnMsg);
-        }
         protected override int SetReciverAsDpm()
         {
             return CmdStation.Register(GodPower
