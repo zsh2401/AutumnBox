@@ -8,6 +8,7 @@ using AutumnBox.Basic.Data;
 using AutumnBox.OpenFramework.Extension;
 using System;
 using System.Text.RegularExpressions;
+using System.Threading;
 
 namespace AutumnBox.CoreModules.Extensions.Mix
 {
@@ -17,10 +18,23 @@ namespace AutumnBox.CoreModules.Extensions.Mix
     [ExtRequiredDeviceStates(Basic.Device.DeviceState.Poweron | Basic.Device.DeviceState.Recovery)]
     internal class EFilePusher : OfficialVisualExtension
     {
+        private string _latestLine = null;
         protected override void OutputPrinter(OutputReceivedEventArgs e)
         {
-            base.OutputPrinter(e);
-            ParseAndShowOnUI(e.Text);
+            _latestLine = e.Text;
+            //base.OutputPrinter(e);
+            //ParseAndShowOnUI(e.Text);
+        }
+        private bool _cancelReadingLoop = false;
+        private void ReadingLoop()
+        {
+            while (!_cancelReadingLoop)
+            {
+                Logger.Info(_latestLine);
+                WriteLine(_latestLine);
+                ParseAndShowOnUI(_latestLine);
+                Thread.Sleep(1000);
+            }
         }
         static readonly Regex rg12 = new Regex("\\ (.*?)\\%");
         static readonly Regex rg3 = new Regex("\\[(.*?)\\%");
@@ -48,6 +62,7 @@ namespace AutumnBox.CoreModules.Extensions.Mix
         }
         protected override int VisualMain()
         {
+            new Thread(ReadingLoop).Start();
             bool? dialogResult = null;
             string seleFile = null;
             App.RunOnUIThread(() =>
@@ -77,11 +92,10 @@ namespace AutumnBox.CoreModules.Extensions.Mix
                 return ERR;
             }
         }
-        protected override bool VisualStop()
+        protected override void OnFinish(ExtensionFinishedArgs args)
         {
-            bool result =  base.VisualStop();
-            Logger.Info("stopped");
-            return result;
+            base.OnFinish(args);
+            _cancelReadingLoop = true;
         }
     }
 }

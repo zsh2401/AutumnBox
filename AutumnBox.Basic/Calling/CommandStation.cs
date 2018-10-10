@@ -103,16 +103,15 @@ namespace AutumnBox.Basic.Calling
         /// </summary>
         public void Free()
         {
-            //var runningCommand = from cmd in commands
-            //                     where cmd.process.IsRunning()
-            //                     select cmd;
-            foreach (var cmd in commands)
+            var runningCommand = from cmd in commands
+                                 where cmd.process.IsRunning()
+                                 select cmd;
+            foreach (var cmd in runningCommand)
             {
                 try
                 {
                     logger.Debug("killing command:" + cmd);
                     cmd.Kill();
-                    logger.Debug(cmd.process.IsRunning() ? "failed" : "success");
                 }
                 catch (Exception ex)
                 {
