@@ -54,6 +54,12 @@
     <Color x:Key="MainBackgroundColor">#FEFEFE</Color>
     <SolidColorBrush x:Key="MainBackgroundBrush" Color="{DynamicResource MainBackgroundColor}"/>
 
+    <Color x:Key="CardBackgroundColor">#FEFEFE</Color>
+    <SolidColorBrush x:Key="CardBackgroundBrush" Color="{DynamicResource CardBackgroundColor}"/>
+
+    <Color x:Key="CardForegroundColor">#000</Color>
+    <SolidColorBrush x:Key="CardForegroundBrush" Color="{DynamicResource CardForegroundColor}"/>
+
     <Color x:Key="MainBackgroundForegroundColor">#000</Color>
     <SolidColorBrush x:Key="MainBackgroundForegroundBrush" Color="{DynamicResource MainBackgroundForegroundColor}"/>
     <!--AutumnBox Design-->

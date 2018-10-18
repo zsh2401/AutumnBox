@@ -14,7 +14,7 @@
     </UserControl.DataContext>
     <Grid Width="770">
         <StackPanel  Orientation="Vertical">
-            <materialDesign:Card Margin="10" Height="120">
+            <materialDesign:Card  Background="{DynamicResource CardBackgroundBrush}" Margin="10" Height="120">
                 <StackPanel>
                     <TextBlock FontSize="15"  Margin="15" Text="{DynamicResource PanelMoreExtensionSlogan}"/>
                     <StackPanel  Margin="15,0,0,10" Orientation="Horizontal">
@@ -30,13 +30,13 @@
                     </StackPanel>
                 </StackPanel>
             </materialDesign:Card>
-            <materialDesign:Card Margin="10">
+            <materialDesign:Card Margin="10"  Background="{DynamicResource CardBackgroundBrush}">
                 <StackPanel Margin="0,0,0,0">
                     <TextBlock Margin="15" FontSize="15"  Text="{DynamicResource PanelMoreEvenNoDevice}"/>
                     <local:PanelExtension/>
                 </StackPanel>
             </materialDesign:Card>
-            <materialDesign:Card Margin="10">
+            <materialDesign:Card Margin="10"  Background="{DynamicResource CardBackgroundBrush}">
                 <StackPanel Orientation="Vertical">
                     <TextBlock FontSize="15" Margin="15" Text="{DynamicResource PanelMoreCommonlyUsed}"/>
                     <WrapPanel Margin="10,0,10,10">
@@ -53,7 +53,7 @@
                     </WrapPanel>
                 </StackPanel>
             </materialDesign:Card>
-            <materialDesign:Card Margin="10" >
+            <materialDesign:Card Margin="10"  Background="{DynamicResource CardBackgroundBrush}">
                 <Image Source="/Resources/Drawable/More/halo.png"/>
             </materialDesign:Card>
             <TextBlock Foreground="{DynamicResource PrimaryLightBrush}" Margin="10" TextAlignment="Center" Text="In other words,please be ture"/>
