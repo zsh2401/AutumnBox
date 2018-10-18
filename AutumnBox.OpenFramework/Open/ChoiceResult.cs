@@ -19,22 +19,22 @@ namespace AutumnBox.OpenFramework.Open
         /// <summary>
         /// 取消
         /// </summary>
-        Cancel = -1,
+        Cancel = 0,
         /// <summary>
         /// 左按,通常代表拒绝
         /// </summary>
-        Left = 0,
+        Left = 1,
         /// <summary>
         /// 右按钮,默认代表同意
         /// </summary>
-        Right = 1,
+        Right = 2,
         /// <summary>
         /// 默认情况的拒绝数值,等于Left
         /// </summary>
-        Deny = Left,
+        Deny = 1,
         /// <summary>
         /// 默认情况的同意数值,等于Right
         /// </summary>
-        Accept = Right,
+        Accept = 2,
     }
 }

@@ -48,10 +48,6 @@ namespace AutumnBox.OpenFramework.Wrapper
         /// </summary>
         public virtual int TargetApi { get; set; }
         /// <summary>
-        /// 是否需要以系统级别管理员权限运行
-        /// </summary>
-        public virtual bool RunAsAdmin { get; set; }
-        /// <summary>
         /// 图标
         /// </summary>
         public virtual byte[] Icon { get; set; }
@@ -176,7 +172,6 @@ namespace AutumnBox.OpenFramework.Wrapper
             }
             RequiredDeviceStates = (DeviceState)infoTable[nameof(ExtRequiredDeviceStatesAttribute)].Value;
             Version = infoTable[nameof(ExtVersionAttribute)].Value as Version;
-            RunAsAdmin = (bool)infoTable[nameof(ExtRunAsAdminAttribute)].Value;
             MinApi = (int)infoTable[nameof(ExtMinApiAttribute)].Value;
             TargetApi = (int)infoTable[nameof(ExtTargetApiAttribute)].Value;
             Regions = infoTable[nameof(ExtRegionAttribute)].Value as IEnumerable<string>;

@@ -168,5 +168,16 @@ namespace AutumnBox.GUI.Util.OpenFxManagement
             return (AutumnBoxExtension)appDomain
                 .CreateInstanceAndUnwrap(type.Assembly.FullName, type.FullName);
         }
+
+        public dynamic GetYNWindow(string message, string btnYes, string btnNo)
+        {
+            return new YNWindow()
+            {
+                Owner = App.Current.MainWindow,
+                BtnYES = btnYes,
+                BtnNO = btnNo,
+                Message = message,
+            };
+        }
     }
 }

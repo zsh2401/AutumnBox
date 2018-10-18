@@ -13,7 +13,7 @@ namespace AutumnBox.CoreModules.Extensions
 {
     [ExtName("Example extension")]
     [ExtRequiredDeviceStates(NoMatter)]
-    //[ExtAppProperty("com.miui.fm")]
+    [ExtAppProperty("com.miui.calculatorx")]
     internal class EHoldMyHand : OfficialVisualExtension
     {
         bool stoppable = false;

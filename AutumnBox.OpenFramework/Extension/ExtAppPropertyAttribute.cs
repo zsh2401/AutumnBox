@@ -12,29 +12,33 @@ namespace AutumnBox.OpenFramework.Extension
     /// <summary>
     /// 声明需要依赖的APP,秋之盒将在运行前进行检查
     /// </summary>
-    public sealed class ExtAppPropertyAttribute : ExtBeforeCreateAspectAttribute
+    public sealed class ExtAppPropertyAttribute : BeforeCreatingAspect
     {
+        private readonly string value;
+
         /// <summary>
         /// 构造
         /// </summary>
         /// <param name="value"></param>
-        public ExtAppPropertyAttribute(string value) : base(value)
+        public ExtAppPropertyAttribute(string value)
         {
+            this.value = value;
         }
         /// <summary>
         /// 在那之前...
         /// </summary>
         /// <param name="args"></param>
-        public override void Before(ExtBeforeCreateArgs args)
+        /// <param name="canContinue"></param>
+        public override void Do(BeforeCreatingAspectArgs args, ref bool canContinue)
         {
-            if (!InstallApplication(args.TargetDevice, Value as string))
+            if (!InstallApplication(args.TargetDevice, value))
             {
+                bool ok = false;
                 args.Context.App.RunOnUIThread(() =>
                  {
-                     var choice = args.Context.Ux.DoChoice("OpenFxInstallAppFirst", "OpenFxInstallBtnIgnore", "OpenFxInstallBtnOk");
-                     bool ingore =  choice == ChoiceResult.Deny;
-                     args.Prevent = !ingore;
+                     ok = args.Context.Ux.DoYN("OpenFxInstallAppFirst", "OpenFxInstallBtnOk", "OpenFxInstallBtnIgnore");
                  });
+                canContinue = !ok;
             }
         }
         private static bool InstallApplication(IDevice device, string pkgName)

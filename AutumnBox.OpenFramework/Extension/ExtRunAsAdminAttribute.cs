@@ -9,28 +9,25 @@ namespace AutumnBox.OpenFramework.Extension
     /// <summary>
     /// 如果添加此标记,则秋之盒会保证该模块以管理员权限运行
     /// </summary>
-    public class ExtRunAsAdminAttribute : ExtBeforeCreateAspectAttribute
+    public class ExtRunAsAdminAttribute : BeforeCreatingAspect
     {
+        private readonly bool reqAdmin;
         /// <summary>
         /// 设定值
         /// </summary>
-        /// <param name="value"></param>
-        public ExtRunAsAdminAttribute(bool value) : base(value)
+        /// <param name="reqAdmin"></param>
+        public ExtRunAsAdminAttribute(bool reqAdmin = true)
         {
+            this.reqAdmin = reqAdmin;
         }
         /// <summary>
-        /// 使用默认值true
-        /// </summary>
-        public ExtRunAsAdminAttribute() : base(true)
-        {
-        }
-        /// <summary>
-        /// Before
+        /// 实现
         /// </summary>
         /// <param name="args"></param>
-        public override void Before(ExtBeforeCreateArgs args)
+        /// <param name="canContinue"></param>
+        public override void Do(BeforeCreatingAspectArgs args, ref bool canContinue)
         {
-            if ((bool)Value && !args.Context.App.IsRunAsAdmin)
+            if (reqAdmin && !args.Context.App.IsRunAsAdmin)
             {
                 args.Context.App.RunOnUIThread(() =>
                 {

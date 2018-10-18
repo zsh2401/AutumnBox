@@ -12,17 +12,15 @@ using AutumnBox.OpenFramework.Extension;
 
 namespace AutumnBox.CoreModules.Aspect
 {
-    internal class ObsoleteImageOperator : ExtBeforeCreateAspectAttribute
+    internal class ObsoleteImageOperator : BeforeCreatingAspect
     {
-        public ObsoleteImageOperator() : base(null)
-        {
-        }
 
-        public override void Before(ExtBeforeCreateArgs args)
+
+        public override void Do(BeforeCreatingAspectArgs args, ref bool canContinue)
         {
             var warnMsg = CoreLib.Current.Languages.Get("EObsoleteAndTryImageHelper");
             CoreLib.Context.Ux.Warn(warnMsg);
-            args.Prevent = true;
+            canContinue = false ;
         }
     }
 }

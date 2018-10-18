@@ -39,6 +39,11 @@ namespace AutumnBox.OpenFramework.Management
         /// <returns></returns>
         IExtensionUIController GetUIController();
         /// <summary>
+        /// 获取是否窗
+        /// </summary>
+        /// <returns></returns>
+        dynamic GetYNWindow(string message,string btnYes,string btnNo);
+        /// <summary>
         /// 获取主窗口
         /// </summary>
         /// <returns></returns>

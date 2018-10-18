@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using AutumnBox.GUI.Util.Debugging;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Input;
@@ -10,6 +11,10 @@ namespace AutumnBox.GUI.View.Windows
     /// </summary>
     public partial class ChoiceWindow : Window, INotifyPropertyChanged
     {
+        public int ClickedBtn { get; private set; } = 0;
+        public const int BTN_CANCEL = 0;
+        public const int BTN_LEFT = 1;
+        public const int BTN_RIGHT = 2;
         public string Message
         {
             get => _message; set
@@ -57,6 +62,10 @@ namespace AutumnBox.GUI.View.Windows
             BtnLeft = "ChoiceWindowBtnNo";
             BtnRight = "ChoiceWindowBtnYes";
             DataContext = this;
+            this.Closed += (s, e) =>
+            {
+                SGLogger<ChoiceWindow>.Debug("closed" + DialogResult);
+            };
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -67,19 +76,19 @@ namespace AutumnBox.GUI.View.Windows
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            DialogResult = null;
+            ClickedBtn = BTN_CANCEL;
             Close();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            DialogResult = false;
+            ClickedBtn = BTN_LEFT;
             Close();
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            DialogResult = true;
+            ClickedBtn = BTN_RIGHT;
             Close();
         }
 

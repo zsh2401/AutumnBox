@@ -10,13 +10,9 @@ using AutumnBox.OpenFramework.Open;
 namespace AutumnBox.CoreModules.Aspect
 {
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false)]
-    internal class RemoveLockNoticeAttribute : ExtBeforeCreateAspectAttribute
+    internal class RemoveLockNoticeAttribute : BeforeCreatingAspect
     {
-        public RemoveLockNoticeAttribute() : base(null)
-        {
-        }
-
-        public override void Before(ExtBeforeCreateArgs args)
+        public override void Do(BeforeCreatingAspectArgs args, ref bool canContinue)
         {
             string message = CoreLib.Current.Languages.Get("EDpmSetterRemoveLock");
             string btnLeft = CoreLib.Current.Languages.Get("EDpmSetterRemoveLockBtnLeft");
@@ -25,7 +21,7 @@ namespace AutumnBox.CoreModules.Aspect
             ChoiceResult choiceResult = CoreLib.Context.Ux
                 .DoChoice(message, btnLeft, btnRight, btnCancel);
             bool isRemoved = choiceResult == ChoiceResult.Accept;
-            args.Prevent = !isRemoved;
+           canContinue = isRemoved;
         }
     }
 }

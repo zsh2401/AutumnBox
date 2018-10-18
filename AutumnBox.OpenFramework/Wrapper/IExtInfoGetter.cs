@@ -13,8 +13,6 @@ namespace AutumnBox.OpenFramework.Wrapper
     /// </summary>
     public interface IExtInfoGetter
     {
-        //object this[string key] { get; }
-        //TValue Get<TValue>();
         /// <summary>
         /// 可用区域
         /// </summary>
@@ -51,10 +49,6 @@ namespace AutumnBox.OpenFramework.Wrapper
         /// 拓展模块的Type对象
         /// </summary>
         Type ExtType { get; }
-        /// <summary>
-        /// 拓展模块是否需要操作系统级别的管理员权限
-        /// </summary>
-        bool RunAsAdmin { get; }
         /// <summary>
         /// 拓展模块的版本
         /// </summary>
