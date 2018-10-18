@@ -12,6 +12,7 @@ namespace AutumnBox.OpenFramework.Extension
     /// <summary>
     /// 在拓展模块实例创建前的切面类Before()函数的参数
     /// </summary>
+    [Obsolete("",true)]
     public class ExtBeforeCreateArgs
     {
         /// <summary>
@@ -35,6 +36,7 @@ namespace AutumnBox.OpenFramework.Extension
     /// 在拓展模块实例创建前的切面类,包含具体的处理函数Before()
     /// </summary>
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false)]
+    [Obsolete("", true)]
     public abstract class ExtBeforeCreateAspectAttribute : ExtInfoAttribute
     {
         /// <summary>

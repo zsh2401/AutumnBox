@@ -15,38 +15,40 @@ namespace AutumnBox.OpenFramework.Extension
     /// <summary>
     /// 明确标记标明该拓展需要设备ROOT权限
     /// </summary>
-    public class ExtRequireRootAttribute : ExtBeforeCreateAspectAttribute
+    public class ExtRequireRootAttribute : BeforeCreatingAspect
     {
+        private readonly bool reqRoot;
+
         /// <summary>
         /// 构造
         /// </summary>
-        /// <param name="value"></param>
-        public ExtRequireRootAttribute(bool value) : base(value)
-        {
+        public ExtRequireRootAttribute(bool reqRoot) {
+            this.reqRoot = reqRoot;
         }
         /// <summary>
         /// 构造
         /// </summary>
-        public ExtRequireRootAttribute() : base(true) { }
+        public ExtRequireRootAttribute() : this(true) { }
 
-        public override void Before(ExtBeforeCreateArgs args)
+        private static bool DeviceHaveRoot(IDevice device)
         {
-            if ((!(bool)Value) ||  args.TargetDevice == null)
+            return device.HaveSU();
+        }
+
+        public override void Do(BeforeCreatingAspectArgs args, ref bool canContinue)
+        {
+            if (!reqRoot || args.TargetDevice == null)
             {
                 return;
             }
-            if (!DeviceHaveRoot(args.TargetDevice) && (bool)Value)
+            if (!DeviceHaveRoot(args.TargetDevice))
             {
                 args.Context.App.RunOnUIThread(() =>
                 {
                     args.Context.Ux.Warn("OpenFxNoRoot");
                 });
-                args.Prevent = true;
+                canContinue = true;
             }
-        }
-        private static bool DeviceHaveRoot(IDevice device)
-        {
-            return device.HaveSU();
         }
     }
 }

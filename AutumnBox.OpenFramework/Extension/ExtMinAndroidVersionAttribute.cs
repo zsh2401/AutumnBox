@@ -13,17 +13,18 @@ namespace AutumnBox.OpenFramework.Extension
     /// <summary>
     /// 运行模块所需的最低安卓版本...
     /// </summary>
-    public class ExtMinAndroidVersionAttribute : ExtBeforeCreateAspectAttribute
+    public class ExtMinAndroidVersionAttribute : BeforeCreatingAspect
     {
+        private readonly Version ver;
         /// <summary>
         /// 构造
         /// </summary>
         /// <param name="major"></param>
         /// <param name="minor"></param>
         /// <param name="build"></param>
-        public ExtMinAndroidVersionAttribute(int major, int minor, int build) :
-            base(new Version(major, minor, build))
+        public ExtMinAndroidVersionAttribute(int major, int minor, int build)
         {
+            this.ver = new Version(major, minor, build);
         }
 
         /// <summary>
@@ -41,17 +42,18 @@ namespace AutumnBox.OpenFramework.Extension
         /// 在创建前
         /// </summary>
         /// <param name="args"></param>
-        public override void Before(ExtBeforeCreateArgs args)
+        /// <param name="canContinue"></param>
+        public override void Do(BeforeCreatingAspectArgs args,ref bool canContinue)
         {
-            if (!VersionCheck(args.TargetDevice, Value as Version))
+            if (!VersionCheck(args.TargetDevice, ver))
             {
+                canContinue = false;
                 args.Context.App.RunOnUIThread(() =>
                 {
                     var fmt = args.Context.App.GetPublicResouce<string>("OpenFxLowAndroidVersionFmt");
-                    var msg = string.Format(fmt, Value);
+                    var msg = string.Format(fmt, ver);
                     args.Context.Ux.Warn(msg);
                 });
-                args.Prevent = true;
             }
         }
     }

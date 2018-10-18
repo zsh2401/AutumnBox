@@ -1,0 +1,25 @@
+﻿<Window x:Class="AutumnBox.GUI.View.Windows.YNWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AutumnBox.GUI.View.Windows"
+        mc:Ignorable="d"
+        FontFamily="{DynamicResource AutumnBox.Font}"
+        WindowStyle="None"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="CanResize"
+        MouseDown="Window_MouseDown"
+        Title="This is your choice!" 
+        MinWidth="350"
+        MinHeight="180"
+        ShowInTaskbar="False"
+       Height="180" Width="280">
+    <Grid Margin="5">
+        <TextBlock HorizontalAlignment="Center" FontSize="15" Text="{Binding Message}" Margin="0,0,0,47"></TextBlock>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+            <Button FontSize="12" Click="Button_Click_1" Margin="5" Style="{DynamicResource MaterialDesignFlatButton}" HorizontalAlignment="Left" Content="{Binding BtnNO}"></Button>
+            <Button FontSize="12" Click="Button_Click" Margin="5" Style="{DynamicResource MaterialDesignRaisedButton}" HorizontalAlignment="Right" Content="{Binding BtnYES}"></Button>
+        </StackPanel>
+    </Grid>
+</Window>

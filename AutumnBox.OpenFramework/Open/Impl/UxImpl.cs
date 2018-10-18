@@ -22,6 +22,16 @@ namespace AutumnBox.OpenFramework.Open.Impl
             this.sourceApi = sourceApi;
         }
 
+        public bool DoYN(string message, string btnYes = null, string btnNo = null)
+        {
+            bool? result = false;
+            RunOnUIThread(() =>
+            {
+               result =  sourceApi.GetYNWindow(message, btnYes, btnNo).ShowDialog();
+            });
+            return result == true;
+        }
+
         public ChoiceResult DoChoice(string message, string btnLeft = null, string btnRight = null, string btnCancel = null)
         {
             ChoiceResult result = ChoiceResult.Cancel;
@@ -29,13 +39,14 @@ namespace AutumnBox.OpenFramework.Open.Impl
             {
                 dynamic window = sourceApi.CreateChoiceWindow(message, btnLeft, btnRight, btnCancel);
                 window.ShowDialog();
-                switch (window.DialogResult)
+                int clickedBtnCode = window.ClickedBtn;
+                switch (clickedBtnCode)
                 {
-                    case true:
-                        result = ChoiceResult.Right;
-                        break;
-                    case false:
+                    case 1:
                         result = ChoiceResult.Left;
+                        break;
+                    case 2:
+                        result = ChoiceResult.Right;
                         break;
                     default:
                         result = ChoiceResult.Cancel;
@@ -44,6 +55,7 @@ namespace AutumnBox.OpenFramework.Open.Impl
             });
             return result;
         }
+
 
         public void ShowDebuggingWindow()
         {

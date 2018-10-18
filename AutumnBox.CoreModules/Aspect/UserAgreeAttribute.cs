@@ -13,17 +13,22 @@ using AutumnBox.OpenFramework.Extension;
 namespace AutumnBox.CoreModules.Aspect
 {
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false)]
-    internal class UserAgreeAttribute : ExtBeforeCreateAspectAttribute
+    internal class UserAgreeAttribute : BeforeCreatingAspect
     {
-        public UserAgreeAttribute(string value) : base(value)
+        private readonly string message;
+
+        public UserAgreeAttribute(string message)
         {
+            this.message = message ?? throw new ArgumentNullException(nameof(message));
         }
 
-        public override void Before(ExtBeforeCreateArgs args)
+
+
+        public override void Do(BeforeCreatingAspectArgs args, ref bool canContinue)
         {
-            string message = CoreLib.Current.Languages.Get(Value.ToString()) ?? Value.ToString();
+            string message = CoreLib.Current.Languages.Get(this.message) ?? this.message;
             bool isAgree = CoreLib.Context.Ux.Agree(message);
-            args.Prevent = !isAgree;
+           canContinue= isAgree;
         }
     }
 }

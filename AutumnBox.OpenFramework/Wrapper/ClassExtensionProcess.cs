@@ -22,20 +22,20 @@ namespace AutumnBox.OpenFramework.Wrapper
         /// <summary>
         /// 创建实例前的切面
         /// </summary>
-        public ExtBeforeCreateAspectAttribute[] BeforeCreatingAspects
+        public BeforeCreatingAspect[] BeforeCreatingAspects
         {
             set { bca = value; }
             get
             {
                 if (bca == null)
                 {
-                    var attrs = Attribute.GetCustomAttributes(extensionType, typeof(ExtBeforeCreateAspectAttribute), true);
-                    bca = (ExtBeforeCreateAspectAttribute[])attrs;
+                    var attrs = Attribute.GetCustomAttributes(extensionType, typeof(BeforeCreatingAspect), true);
+                    bca = (BeforeCreatingAspect[])attrs;
                 }
                 return bca;
             }
         }
-        public ExtBeforeCreateAspectAttribute[] bca;
+        public BeforeCreatingAspect[] bca;
 
         private IClassExtension Instance { get; set; }
         private readonly IExtensionWrapper wrapper;
@@ -50,18 +50,17 @@ namespace AutumnBox.OpenFramework.Wrapper
 
         private bool ExecuteBeforeCreatingInstanceAspect()
         {
-            var args = new ExtBeforeCreateArgs()
+            var args = new BeforeCreatingAspectArgs()
             {
                 Context = ctx,
-                ExtType = extensionType,
-                Prevent = false,
-                TargetDevice = targetDevice
+                ExtensionType = extensionType,
+                TargetDevice = targetDevice,
             };
+            bool canContinue = true;
             foreach (var aspect in BeforeCreatingAspects)
             {
-                aspect.Before(args);
-                Debug.WriteLine(args.Prevent);
-                if (args.Prevent)
+                aspect.Do(args, ref canContinue);
+                if (!canContinue)
                 {
                     return false;
                 }
@@ -189,7 +188,7 @@ namespace AutumnBox.OpenFramework.Wrapper
             isForceStopped = false;
             try
             {
-                isForceStopped = Instance.TryStop(ctx,new ExtensionStopArgs());
+                isForceStopped = Instance.TryStop(ctx, new ExtensionStopArgs());
             }
             catch (Exception ex)
             {

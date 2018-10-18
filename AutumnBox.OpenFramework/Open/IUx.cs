@@ -25,6 +25,15 @@ namespace AutumnBox.OpenFramework.Open
         /// <returns></returns>
         bool Agree(string message);
         /// <summary>
+        /// 进行是否的抉择
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="btnOK"></param>
+        /// <param name="btnNO"></param>
+        /// <returns></returns>
+        bool DoYN(string message, string btnOK = null, string btnNO = null);
+
+        /// <summary>
         /// 让用户做选择
         /// </summary>
         /// <param name="title"></param>
