@@ -5,5 +5,13 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="ThemeBase.xaml"/>
     </ResourceDictionary.MergedDictionaries>
-    <system:String x:Key="ThemeName">Autumn</system:String>
+    <system:String x:Key="ThemeName">黑暗Dark</system:String>
+    <Color x:Key="SecondaryColor">#BBBBBB</Color>
+    <Color x:Key="PrimaryLightColor">#0B0B0D</Color>
+    <Color x:Key="PrimaryMidColor">#0B0B0D</Color>
+    <Color x:Key="PrimaryDarkColor">#0B0B0D</Color>
+    <Color x:Key="CardBackgroundColor">#5E5E5E</Color>
+    <Color x:Key="CardForegroundColor">#BBBBBB</Color>
+    <Color x:Key="MainBackgroundColor">#5E5E5E</Color>
+    <Color x:Key="MainBackgroundForegroundColor">#BBBBBB</Color>
 </ResourceDictionary>

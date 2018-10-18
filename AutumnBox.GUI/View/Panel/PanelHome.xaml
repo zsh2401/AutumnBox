@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:oftheday="clr-namespace:AutumnBox.GUI.View.OfTheDay"
-             
+             Foreground="{DynamicResource MainBackgroundForegroundBrush}"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:viewmodel="clr-namespace:AutumnBox.GUI.ViewModel"
              mc:Ignorable="d" d:DesignHeight="566" d:DesignWidth="821">
@@ -16,24 +16,24 @@
             <Image Height="100px" Source="/Resources/Drawable/icon.ico"></Image>
             <StackPanel>
                 <TextBlock Text="{DynamicResource AppName}"  FontSize="25px"></TextBlock>
-                <TextBlock   Margin="0,0,0,0" FontSize="12px" TextWrapping="Wrap" Text="{DynamicResource AboutMessage}" VerticalAlignment="Top"/>
+                <TextBlock Margin="0,0,0,0" FontSize="12px" TextWrapping="Wrap" Text="{DynamicResource AboutMessage}" VerticalAlignment="Top"/>
             </StackPanel>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Bottom"  Margin="0,0,0,10">
             <StackPanel Orientation="Horizontal">
-                <materialDesign:Card Margin="10">
+                <materialDesign:Card Margin="10" Background="{DynamicResource CardBackgroundBrush}">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/Drawable/Home/donate.png" Margin="20" Height="110"></Image>
                         <StackPanel Width="150" Margin="10">
-                            <TextBlock Text="{DynamicResource PanelHomeSupport}" HorizontalAlignment="Center" FontSize="25px" ></TextBlock>
-                            <TextBlock Text="{DynamicResource PanelHomeSupportTip}" TextWrapping="Wrap" FontSize="12px" ></TextBlock>
+                            <TextBlock Foreground="{DynamicResource CardForegroundBrush}" Text="{DynamicResource PanelHomeSupport}" HorizontalAlignment="Center" FontSize="25px" ></TextBlock>
+                            <TextBlock Foreground="{DynamicResource CardForegroundBrush}" Text="{DynamicResource PanelHomeSupportTip}" TextWrapping="Wrap" FontSize="12px" ></TextBlock>
                             <Button Style="{DynamicResource MaterialDesignFlatButton}"  FontSize="12px" Command="{Binding Donate}" Content="{DynamicResource PanelDonate}" ></Button>
                             <Button Style="{DynamicResource MaterialDesignFlatButton}"  FontSize="12px" Command="{Binding OpenUrl}" CommandParameter="{DynamicResource urlDonateList}" Content="{DynamicResource PanelDonaters}" ></Button>
                         </StackPanel>
                     </StackPanel>
                 </materialDesign:Card>
-                <materialDesign:Card Margin="10">
+                <materialDesign:Card Margin="10" Background="{DynamicResource CardBackgroundBrush}">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/Drawable/Home/contact.png" Margin="20" Height="110"></Image>
                         <StackPanel Width="150" Margin="10">
@@ -45,8 +45,8 @@
                     </StackPanel>
                 </materialDesign:Card>
             </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <materialDesign:Card Margin="10">
+            <StackPanel Orientation="Horizontal" >
+                <materialDesign:Card Margin="10" Background="{DynamicResource CardBackgroundBrush}">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/Drawable/Home/misakasister.png" Margin="20" Width="110" Height="110"></Image>
                         <StackPanel Width="150" Margin="10">
@@ -57,7 +57,7 @@
                         </StackPanel>
                     </StackPanel>
                 </materialDesign:Card>
-                <materialDesign:Card Margin="10">
+                <materialDesign:Card Margin="10" Background="{DynamicResource CardBackgroundBrush}">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/Drawable/Home/github.png" Margin="20" Height="110"></Image>
                         <StackPanel Width="150" Margin="10">
