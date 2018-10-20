@@ -9,7 +9,7 @@ namespace AutumnBox.OpenFramework.Extension
     /// <summary>
     /// 拓展模块的图标
     /// </summary>
-    public class ExtIconAttribute : ExtInfoAttribute
+    public class ExtIconAttribute : SingleInfoAttribute
     {
         /// <summary>
         /// 构造

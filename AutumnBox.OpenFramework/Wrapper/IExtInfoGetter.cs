@@ -13,6 +13,7 @@ namespace AutumnBox.OpenFramework.Wrapper
     /// </summary>
     public interface IExtInfoGetter
     {
+        
         /// <summary>
         /// 可用区域
         /// </summary>

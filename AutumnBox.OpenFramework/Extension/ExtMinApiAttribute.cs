@@ -14,7 +14,7 @@ namespace AutumnBox.OpenFramework.Extension
     /// <summary>
     /// 运行所需的最低秋之盒API
     /// </summary>
-    public class ExtMinApiAttribute : ExtInfoAttribute
+    public class ExtMinApiAttribute : SingleInfoAttribute
     {
         /// <summary>
         /// 默认构造

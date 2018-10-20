@@ -56,19 +56,20 @@ namespace AutumnBox.OpenFramework.Wrapper
         /// <summary>
         /// 创建实例前的切面
         /// </summary>
-        private BeforeCreatingAspect[] BeforeCreateAspects
+        private IBeforeCreatingAspect[] BeforeCreateAspects
         {
             get
             {
                 if (bca == null)
                 {
-                    var attrs = Attribute.GetCustomAttributes(extType, typeof(BeforeCreatingAspect), true);
-                    bca = (BeforeCreatingAspect[])attrs;
+                    var scanner = new ClassExtensionInfoGetter.ClassExtensionAttributeScanner(extType);
+                    scanner.Scan(ClassExtensionInfoGetter.ClassExtensionAttributeScanner.ScanOption.BeforeCreatingAspect);
+                    bca = scanner.BeforeCreatingAspects;
                 }
                 return bca;
             }
         }
-        private BeforeCreatingAspect[] bca;
+        private IBeforeCreatingAspect[] bca;
 
         /// <summary>
         /// 拓展模块的信息获取器

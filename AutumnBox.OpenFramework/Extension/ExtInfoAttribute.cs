@@ -11,6 +11,7 @@ namespace AutumnBox.OpenFramework.Extension
     /// 所有拓展模块特性的基类
     /// </summary>
     [AttributeUsage(AttributeTargets.Class)]
+    [Obsolete("",true)]
     public abstract class ExtInfoAttribute : Attribute
     {
         /// <summary>

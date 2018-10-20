@@ -14,7 +14,7 @@ namespace AutumnBox.OpenFramework.Extension
 #else
     public
 #endif
-    sealed class ExtOfficialAttribute : ExtInfoAttribute
+    sealed class ExtOfficialAttribute : SingleInfoAttribute
     {
         /// <summary>
         /// 构造
