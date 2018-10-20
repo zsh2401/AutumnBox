@@ -11,8 +11,7 @@ using System.Threading;
 
 namespace AutumnBox.CoreModules.Extensions.Poweron.Root
 {
-    [ExtName("[ROOT]解锁系统分区")]
-    //[ExtName("[ROOT]Unlock system paration", Lang = "en-US")]
+    [ExtName("[ROOT]解锁系统分区", "en-us:[ROOT]Unlock system paration")]
     [ExtRequiredDeviceStates(DeviceState.Poweron)]
     [ObsoleteImageOperator]
     [ExtRequireRoot]

@@ -8,8 +8,7 @@ using System.Windows;
 
 namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot
 {
-    [ExtName("免ROOT修改DPI")]
-    //[ExtName("Modify dpi without root", Lang = "en-US")]
+    [ExtName("免ROOT修改DPI", "en-us:Modify dpi without root")]
     [ExtIcon("Icons.dpi.png")]
     [ExtRequiredDeviceStates(Basic.Device.DeviceState.Poweron)]
     internal class EDpiChanger : AutumnBoxExtension

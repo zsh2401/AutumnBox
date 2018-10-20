@@ -11,8 +11,7 @@ using System.Threading;
 
 namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot.Sh
 {
-    [ExtName("Activate ShizukuManager")]
-    //[ExtName("激活ShizukuManager", Lang = "zh-CN")]
+    [ExtName("Activate ShizukuManager", "zh-cn:激活ShizukuManager")]
     [ExtAppProperty(PKG_NAME)]
     [ExtIcon("Icons.ShizukuManager.png")]
     [ExtRequiredDeviceStates(DeviceState.Poweron)]
