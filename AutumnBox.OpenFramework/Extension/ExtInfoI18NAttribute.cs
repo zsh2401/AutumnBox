@@ -29,7 +29,14 @@ namespace AutumnBox.OpenFramework.Extension
         }
         private bool TryParse(string kv, ref string k, ref string v)
         {
-            return false;
+            try {
+                var splits = kv.Split(':');
+                k = splits.First();
+                v = string.Join("", splits, splits.Count() - 1);
+                return true;
+            } catch(Exception) {
+                return false;
+            }
         }
         private void Load(params string[] _kvs)
         {
