@@ -4,6 +4,11 @@
 ** desc： ...
 *************************************************/
 
+using AutumnBox.OpenFramework.Management;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
 namespace AutumnBox.OpenFramework.Extension
 {
     /// <summary>
@@ -12,11 +17,20 @@ namespace AutumnBox.OpenFramework.Extension
     public class ExtNameAttribute : ExtInfoI18NAttribute
     {
         /// <summary>
+        /// 默认key值
+        /// </summary>
+        public const string DEFAULT_KEY = "Name";
+        /// <summary>
         /// 构造
         /// </summary>
-        /// <param name="name"></param>
-        public ExtNameAttribute(string name):base(name)
+        /// <param name="pairsOfRegionsAndValue"></param>
+        /// <param name="values"></param>
+        public ExtNameAttribute(params string[] pairsOfRegionsAndValue):base(pairsOfRegionsAndValue)
         {
         }
+        /// <summary>
+        /// Key
+        /// </summary>
+        public override string Key => DEFAULT_KEY;
     }
 }

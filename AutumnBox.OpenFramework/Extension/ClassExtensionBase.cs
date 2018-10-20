@@ -15,10 +15,8 @@ namespace AutumnBox.OpenFramework.Extension
     /// <summary>
     /// 基础的IClassExtension的基础实现
     /// </summary>
-    [ExtName("无名拓展")]
-    [ExtName("Unknown extension", Lang = "en-us")]
-    [ExtAuth("佚名")]
-    [ExtAuth("Anonymous", Lang = "en-us")]
+    [ExtName("无名拓展", "en-us:Unknown extension")]
+    [ExtAuth("佚名", "en-us:Anonymous")]
     [ExtDesc(null)]
     [ExtVersion()]
     [ExtRequiredDeviceStates(AutumnBoxExtension.NoMatter)]

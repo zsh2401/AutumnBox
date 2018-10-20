@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Text;
 
 namespace AutumnBox.OpenFramework.Wrapper
@@ -19,7 +20,62 @@ namespace AutumnBox.OpenFramework.Wrapper
     /// </summary>
     public class ClassExtensionInfoGetter : Context, IExtInfoGetter
     {
+        internal class ClassExtensionAttributeScanner
+        {
+            public enum ScanOption
+            {
+                Informations = 1,
+                BeforeCreatingAspect = 1 << 1
+            }
+            private readonly Type type;
+
+            public ClassExtensionAttributeScanner(Type type)
+            {
+                this.type = type ?? throw new ArgumentNullException(nameof(type));
+            }
+            public void Scan(ScanOption options)
+            {
+                if (options.HasFlag(ScanOption.Informations))
+                {
+                    ScanInformations();
+                }
+                if (options.HasFlag(ScanOption.BeforeCreatingAspect)) {
+                    ScanAspects();
+                }
+
+            }
+            private void ScanAspects() {
+                Type interfaceType = typeof(IBeforeCreatingAspect);
+               BeforeCreatingAspects = (from attr in type.GetCustomAttributes(true)
+                                  where interfaceType.IsAssignableFrom(attr.GetType())
+                                  select (IBeforeCreatingAspect)attr).ToArray();
+            }
+            private void ScanInformations() {
+                Type interfaceType = typeof(IInformationAttribute);
+                Informations = new Dictionary<string, IInformationAttribute>();
+                var informatons = from attr in type.GetCustomAttributes(true)
+                                  where interfaceType.IsAssignableFrom(attr.GetType())
+                                  select (IInformationAttribute)attr;
+                foreach (var info in informatons) {
+                    Informations.Add(info.Key,info);
+                }
+            }
+            public Dictionary<string, IInformationAttribute> Informations { get; private set; }
+            public IBeforeCreatingAspect[] BeforeCreatingAspects { get; private set; }
+        }
         private readonly Context ctx;
+        /// <summary>
+        /// 获取信息
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public object this[string key]
+        {
+            get
+            {
+                return Infomations[key].Value;
+            }
+        }
         /// <summary>
         /// 获取的木白哦
         /// </summary>
@@ -27,18 +83,7 @@ namespace AutumnBox.OpenFramework.Wrapper
         /// <summary>
         /// 已获取的特性
         /// </summary>
-        public Dictionary<string, ExtInfoAttribute> Attributes
-        {
-            get
-            {
-                return infoTable;
-            }
-        }
-        /// <summary>
-        /// 表
-        /// </summary>
-        private readonly Dictionary<string, ExtInfoAttribute> infoTable
-            = new Dictionary<string, ExtInfoAttribute>();
+        public Dictionary<string, IInformationAttribute> Infomations { get; private set; }
         /// <summary>
         /// 最低API
         /// </summary>
@@ -66,7 +111,7 @@ namespace AutumnBox.OpenFramework.Wrapper
         {
             get
             {
-                return GetInfoByCurrentLanguage(nameof(ExtNameAttribute));
+                return this[ExtNameAttribute.DEFAULT_KEY] as string;
             }
         }
         /// <summary>
@@ -76,10 +121,10 @@ namespace AutumnBox.OpenFramework.Wrapper
         {
             get
             {
-                return GetInfoByCurrentLanguage(nameof(ExtDescAttribute));
+                return this[ExtDescAttribute.DEFAULT_KEY] as string;
             }
         }
-        private readonly Version defaultVersion = new Version(0,0,0,0);
+        private readonly Version defaultVersion = new Version(0, 0, 0, 0);
         /// <summary>
         /// 进行了挂载的说明信息
         /// </summary>
@@ -90,8 +135,9 @@ namespace AutumnBox.OpenFramework.Wrapper
                 try
                 {
                     StringBuilder sb = new StringBuilder();
-                    if (Auth != null) {
-                        sb.AppendLine(string.Format(ctx.App.GetPublicResouce<string>("PanelExtensionsAuthFmt"),Auth));
+                    if (Auth != null)
+                    {
+                        sb.AppendLine(string.Format(ctx.App.GetPublicResouce<string>("PanelExtensionsAuthFmt"), Auth));
                     }
                     if (Version != defaultVersion)
                     {
@@ -117,7 +163,7 @@ namespace AutumnBox.OpenFramework.Wrapper
         {
             get
             {
-                return GetInfoByCurrentLanguage(nameof(ExtAuthAttribute));
+                return this[ExtAuthAttribute.DEFAULT_KEY] as string;
             }
         }
         /// <summary>
@@ -136,48 +182,21 @@ namespace AutumnBox.OpenFramework.Wrapper
             this.ExtType = type;
         }
         /// <summary>
-        /// 根据当前语言获取I18N特性
-        /// </summary>
-        /// <param name="key"></param>
-        /// <returns></returns>
-        protected virtual string GetInfoByCurrentLanguage(string key)
-        {
-            string lanCode = ctx.App.CurrentLanguageCode.ToLower();
-            try
-            {
-                var keyWithLang = key + "_" + lanCode;
-                return (string)(infoTable[keyWithLang].Value);
-            }
-            catch { }
-            try
-            {
-                return (string)(infoTable[key].Value);
-            }
-            catch { }
-            throw new KeyNotFoundException("cannot found target or default language");
-        }
-        /// <summary>
         /// 重载
         /// </summary>
         public virtual void Reload()
         {
-            var extInfoAttr = ExtType.GetCustomAttributes(typeof(ExtInfoAttribute), true);
-            ExtInfoAttribute current = null;
-            //Logger.CDebug("ExtName:" + ExtType.Name);
-            for (int i = 0; i < extInfoAttr.Length; i++)
-            {
-                current = (ExtInfoAttribute)extInfoAttr[i];
-                //Logger.CDebug("ExtAttrKey"  + current);
-                infoTable.Add(current.Key, current);
-            }
-            RequiredDeviceStates = (DeviceState)infoTable[nameof(ExtRequiredDeviceStatesAttribute)].Value;
-            Version = infoTable[nameof(ExtVersionAttribute)].Value as Version;
-            MinApi = (int)infoTable[nameof(ExtMinApiAttribute)].Value;
-            TargetApi = (int)infoTable[nameof(ExtTargetApiAttribute)].Value;
-            Regions = infoTable[nameof(ExtRegionAttribute)].Value as IEnumerable<string>;
+            ClassExtensionAttributeScanner scanner = new ClassExtensionAttributeScanner(this.ExtType);
+            scanner.Scan(ClassExtensionAttributeScanner.ScanOption.Informations);
+            Infomations = scanner.Informations;
+            RequiredDeviceStates = (DeviceState)this[nameof(ExtRequiredDeviceStatesAttribute)];
+            Version = this[nameof(ExtVersionAttribute)] as Version;
+            MinApi = (int)this[nameof(ExtMinApiAttribute)];
+            TargetApi = (int)this[nameof(ExtTargetApiAttribute)];
+            Regions = this[nameof(ExtRegionAttribute)] as IEnumerable<string>;
             try
             {
-                Icon = ReadIcon(infoTable[nameof(ExtIconAttribute)].Value.ToString());
+                Icon = ReadIcon(this[nameof(ExtIconAttribute)].ToString());
             }
             catch (KeyNotFoundException)
             {

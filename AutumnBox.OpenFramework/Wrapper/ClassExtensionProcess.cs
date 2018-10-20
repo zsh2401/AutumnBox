@@ -22,20 +22,22 @@ namespace AutumnBox.OpenFramework.Wrapper
         /// <summary>
         /// 创建实例前的切面
         /// </summary>
-        public BeforeCreatingAspect[] BeforeCreatingAspects
+        public IBeforeCreatingAspect[] BeforeCreatingAspects
         {
             set { bca = value; }
             get
             {
                 if (bca == null)
                 {
-                    var attrs = Attribute.GetCustomAttributes(extensionType, typeof(BeforeCreatingAspect), true);
-                    bca = (BeforeCreatingAspect[])attrs;
+                    var scanner = new ClassExtensionInfoGetter.ClassExtensionAttributeScanner(extensionType);
+                    scanner.Scan(ClassExtensionInfoGetter.ClassExtensionAttributeScanner.ScanOption.BeforeCreatingAspect);
+                    var attrs = scanner.BeforeCreatingAspects;
+                    bca = attrs;
                 }
                 return bca;
             }
         }
-        public BeforeCreatingAspect[] bca;
+        public IBeforeCreatingAspect[] bca;
 
         private IClassExtension Instance { get; set; }
         private readonly IExtensionWrapper wrapper;

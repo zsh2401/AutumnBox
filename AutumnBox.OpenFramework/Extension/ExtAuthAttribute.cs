@@ -12,9 +12,12 @@ namespace AutumnBox.OpenFramework.Extension
     public class ExtAuthAttribute : ExtInfoI18NAttribute
     {
         /// <summary>
+        /// Dft key
+        /// </summary>
+        public const string DEFAULT_KEY = "Auth";
+        /// <summary>
         /// 构建
         /// </summary>
-        /// <param name="auth"></param>
-        public ExtAuthAttribute(string auth) : base(auth) { }
+        public ExtAuthAttribute(params string[] pairsOfRegionAndValue) : base(pairsOfRegionAndValue) { }
     }
 }

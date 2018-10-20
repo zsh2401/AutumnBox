@@ -16,7 +16,7 @@ namespace AutumnBox.OpenFramework.Extension
     /// 拓展模块运行所需的设备状态
     /// 秋之盒将确保只有设备符合该状态时才可以调用该模块
     /// </summary>
-    public class ExtRequiredDeviceStatesAttribute : ExtInfoAttribute
+    public class ExtRequiredDeviceStatesAttribute : SingleInfoAttribute
     {
         /// <summary>
         /// 构造

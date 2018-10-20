@@ -13,7 +13,7 @@ namespace AutumnBox.CoreModules.Extensions
 {
     [ExtName("Example extension")]
     [ExtRequiredDeviceStates(NoMatter)]
-    [ExtAppProperty("com.miui.calculatorx")]
+    //[ExtAppProperty("com.miui.calculatorx")]
     internal class EHoldMyHand : OfficialVisualExtension
     {
         bool stoppable = false;
@@ -22,6 +22,8 @@ namespace AutumnBox.CoreModules.Extensions
         //}
         protected override int VisualMain()
         {
+            Ux.Message("Hello!");
+            return OK;
             WriteInitInfo();
           
             WriteLine("开始执行");

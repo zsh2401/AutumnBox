@@ -12,11 +12,18 @@ namespace AutumnBox.OpenFramework.Extension
     public class ExtDescAttribute : ExtInfoI18NAttribute
     {
         /// <summary>
+        /// Default key
+        /// </summary>
+        public const string DEFAULT_KEY = "Desc";
+        /// <summary>
         /// 构造
         /// </summary>
-        /// <param name="desc"></param>
-        public ExtDescAttribute(string desc):base(desc) {
-       
+        public ExtDescAttribute(params string[] pairsRegionsAndValue) : base(pairsRegionsAndValue)
+        {
+            if (pairsRegionsAndValue == null)
+            {
+                throw new System.ArgumentNullException(nameof(pairsRegionsAndValue));
+            }
         }
     }
 }
