@@ -20,49 +20,7 @@ namespace AutumnBox.OpenFramework.Wrapper
     /// </summary>
     public class ClassExtensionInfoGetter : Context, IExtInfoGetter
     {
-        internal class ClassExtensionAttributeScanner
-        {
-            public enum ScanOption
-            {
-                Informations = 1,
-                BeforeCreatingAspect = 1 << 1
-            }
-            private readonly Type type;
-
-            public ClassExtensionAttributeScanner(Type type)
-            {
-                this.type = type ?? throw new ArgumentNullException(nameof(type));
-            }
-            public void Scan(ScanOption options)
-            {
-                if (options.HasFlag(ScanOption.Informations))
-                {
-                    ScanInformations();
-                }
-                if (options.HasFlag(ScanOption.BeforeCreatingAspect)) {
-                    ScanAspects();
-                    Debug.WriteLine($"have {BeforeCreatingAspects.Count()} aspects");
-                }
-            }
-            private void ScanAspects() {
-                Type interfaceType = typeof(IBeforeCreatingAspect);
-               BeforeCreatingAspects = (from attr in type.GetCustomAttributes(true)
-                                  where interfaceType.IsAssignableFrom(attr.GetType())
-                                  select (IBeforeCreatingAspect)attr).ToArray();
-            }
-            private void ScanInformations() {
-                Type interfaceType = typeof(IInformationAttribute);
-                Informations = new Dictionary<string, IInformationAttribute>();
-                var informatons = from attr in type.GetCustomAttributes(true)
-                                  where interfaceType.IsAssignableFrom(attr.GetType())
-                                  select (IInformationAttribute)attr;
-                foreach (var info in informatons) {
-                    Informations.Add(info.Key,info);
-                }
-            }
-            public Dictionary<string, IInformationAttribute> Informations { get; private set; }
-            public IBeforeCreatingAspect[] BeforeCreatingAspects { get; private set; }
-        }
+       
         private readonly Context ctx;
         /// <summary>
         /// 获取信息
@@ -186,8 +144,8 @@ namespace AutumnBox.OpenFramework.Wrapper
         /// </summary>
         public virtual void Reload()
         {
-            ClassExtensionAttributeScanner scanner = new ClassExtensionAttributeScanner(this.ExtType);
-            scanner.Scan(ClassExtensionAttributeScanner.ScanOption.Informations);
+            ClassExtensionScanner scanner = new ClassExtensionScanner(this.ExtType);
+            scanner.Scan(ClassExtensionScanner.ScanOption.Informations);
             Infomations = scanner.Informations;
             RequiredDeviceStates = (DeviceState)this[nameof(ExtRequiredDeviceStatesAttribute)];
             Version = this[nameof(ExtVersionAttribute)] as Version;

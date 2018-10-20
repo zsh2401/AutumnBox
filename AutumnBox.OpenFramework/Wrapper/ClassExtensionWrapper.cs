@@ -62,8 +62,8 @@ namespace AutumnBox.OpenFramework.Wrapper
             {
                 if (bca == null)
                 {
-                    var scanner = new ClassExtensionInfoGetter.ClassExtensionAttributeScanner(extType);
-                    scanner.Scan(ClassExtensionInfoGetter.ClassExtensionAttributeScanner.ScanOption.BeforeCreatingAspect);
+                    var scanner = new ClassExtensionScanner(extType);
+                    scanner.Scan(ClassExtensionScanner.ScanOption.BeforeCreatingAspect);
                     bca = scanner.BeforeCreatingAspects;
                 }
                 return bca;
