@@ -13,7 +13,10 @@ namespace AutumnBox.OpenFramework.Wrapper
     /// </summary>
     public interface IExtInfoGetter
     {
-        
+        /// <summary>
+        /// 获取Scanner
+        /// </summary>
+        ClassExtensionScanner Scanner { get; }
         /// <summary>
         /// 可用区域
         /// </summary>

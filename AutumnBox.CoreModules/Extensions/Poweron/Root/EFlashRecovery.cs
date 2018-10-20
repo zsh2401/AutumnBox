@@ -13,7 +13,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.Root
     [ObsoleteImageOperator]
     [ExtRequireRoot]
     [ExtIcon("Icons.flash.png")]
-    [ExtRegion("zh-CN","zh-HK","zh-TW","zh-SG")]
+    [ExtRegions("zh-CN","zh-HK","zh-TW","zh-SG")]
     [ExtRequiredDeviceStates(DeviceState.Poweron)]
     internal class EFlashRecovery : AutumnBoxExtension
     {

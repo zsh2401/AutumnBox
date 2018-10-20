@@ -15,7 +15,7 @@ using System.Windows.Forms;
 namespace AutumnBox.CoreModules.Extensions.Poweron.Root
 {
     [ExtName("[ROOT]提取Recovery", "en-us:[ROOT]Extract recovery.img")]
-    [ExtRegion("zh-CN", "zh-HK", "zh-TW", "zh-SG")]
+    [ExtRegions("zh-CN", "zh-HK", "zh-TW", "zh-SG")]
     [ExtVersion(0, 0, 5)]
     [ObsoleteImageOperator]
     [ExtRequireRoot]

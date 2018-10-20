@@ -13,6 +13,10 @@ namespace AutumnBox.OpenFramework.Extension
     public class ExtVersionAttribute : SingleInfoAttribute
     {
         /// <summary>
+        /// Key
+        /// </summary>
+        public override string Key =>  ExtensionInformationKeys.VERSION;
+        /// <summary>
         /// 构建
         /// </summary>
         /// <param name="major">主版本号</param>

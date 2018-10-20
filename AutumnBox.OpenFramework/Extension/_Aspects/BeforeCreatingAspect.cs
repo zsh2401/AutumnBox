@@ -11,15 +11,35 @@ using System.Text;
 
 namespace AutumnBox.OpenFramework.Extension
 {
+    /// <summary>
+    /// 创建前切面的参数
+    /// </summary>
     public class BeforeCreatingAspectArgs
     {
+        /// <summary>
+        /// 上下文
+        /// </summary>
         public Context Context { get; set; }
+        /// <summary>
+        /// 拓展模块的Type
+        /// </summary>
         public Type ExtensionType { get; set; }
+        /// <summary>
+        /// 目标设备
+        /// </summary>
         public IDevice TargetDevice { get; set; }
     }
+    /// <summary>
+    /// 创建前切面的基础实现
+    /// </summary>
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
     public abstract class BeforeCreatingAspect : Attribute,IBeforeCreatingAspect
     {
-        public abstract void Do(BeforeCreatingAspectArgs args, ref bool canContinue);
+        /// <summary>
+        /// 具体实现
+        /// </summary>
+        /// <param name="args"></param>
+        /// <param name="canContinue"></param>
+        public abstract void BeforeCreating(BeforeCreatingAspectArgs args, ref bool canContinue);
     }
 }

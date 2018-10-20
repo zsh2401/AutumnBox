@@ -35,7 +35,7 @@ namespace AutumnBox.OpenFramework.Extension
             return device.HaveSU();
         }
 
-        public override void Do(BeforeCreatingAspectArgs args, ref bool canContinue)
+        public override void BeforeCreating(BeforeCreatingAspectArgs args, ref bool canContinue)
         {
             if (!reqRoot || args.TargetDevice == null)
             {

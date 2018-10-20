@@ -18,64 +18,58 @@ namespace AutumnBox.OpenFramework.Extension
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
     public abstract class ExtInfoI18NAttribute : ExtensionAttribute, IInformationAttribute
     {
-        private const string DEFAULT_KEY = "all";
-        private Dictionary<string, string> kvs;
+        private const string DEFAULT_KEY = "ALL_REGIONS";
+        private const string KV_PATTERN = @"(?<key>[\w|\-]+):(?<value>.+)";
+        private readonly Regex regex = new Regex(KV_PATTERN);
+        private Dictionary<string, string> pairsOfRegionAndValue;
         /// <summary>
         /// 构建
         /// </summary>
         /// <param name="pairRegionAndValues"></param>
-        /// <param name="value"></param>
         public ExtInfoI18NAttribute(params string[] pairRegionAndValues)
         {
+            pairsOfRegionAndValue = new Dictionary<string, string>();
             Load(pairRegionAndValues);
         }
-        private bool TryParse(string kv, ref string k, ref string v)
+        private void Load(string[] _creatingData)
+        {
+            if (pairsOfRegionAndValue.Count() != 0)
+            {
+                pairsOfRegionAndValue.Clear();
+            }
+            if (_creatingData == null)
+            {
+                pairsOfRegionAndValue.Add(DEFAULT_KEY, null);
+                return;
+            }
+            foreach (string kv in _creatingData)
+            {
+                ParseAndAddToDict(kv);
+            }
+        }
+        private void ParseAndAddToDict(string kv)
+        {
+            var match = regex.Match(kv);
+            if (match.Success)
+            {
+                AddOrOverwrite(
+                    match.Result("${key}")
+                    , match.Result("${value}"));
+            }
+            else
+            {
+                AddOrOverwrite(DEFAULT_KEY, kv);
+            }
+        }
+        private void AddOrOverwrite(string key, string value)
         {
             try
             {
-                var splits = kv.Split(':');
-                if (splits.Count() >= 2)
-                {
-                    k = splits.First().ToLower();
-                    v = string.Join("", splits, startIndex: 1, count: splits.Count() - 1);
-                }
-                else
-                {
-                    k = DEFAULT_KEY;
-                    v = kv;
-                }
-                Debug.WriteLine($"{k}:{v}");
-                return true;
+                pairsOfRegionAndValue.Add(key, value);
             }
-            catch
+            catch (ArgumentException)
             {
-                return false;
-            }
-        }
-        private void Load(string[] _kvs)
-        {
-            kvs = new Dictionary<string, string>();
-            if (_kvs == null)
-            {
-                kvs.Add(DEFAULT_KEY, null);
-                return;
-            }
-            string currentKey = null;
-            string currentValue = null;
-            foreach (string kv in _kvs)
-            {
-                if (TryParse(kv, ref currentKey, ref currentValue))
-                {
-                    try
-                    {
-                        kvs.Add(currentKey, currentValue);
-                    }
-                    catch (ArgumentException)
-                    {
-                        //Same key already exists
-                        kvs[currentKey] = currentValue;
-                    }
-                }
+                pairsOfRegionAndValue[key] = value;
             }
         }
         /// <summary>
@@ -103,17 +97,25 @@ namespace AutumnBox.OpenFramework.Extension
             {
                 crtLanCode = CallingBus.AutumnBox_GUI.GetCurrentLanguageCode().ToLower();
             });
-            if (kvs.TryGetValue(crtLanCode, out string value))
+
+            if (pairsOfRegionAndValue.TryGetValue(crtLanCode, out string value))
             {
                 return value;
             }
-            try
+            else if (pairsOfRegionAndValue.TryGetValue(DEFAULT_KEY, out string defaultValue))
             {
-                return kvs[DEFAULT_KEY];
+                return defaultValue;
             }
-            catch
+            else
             {
-                return null;
+                try
+                {
+                    return pairsOfRegionAndValue.First().Value;
+                }
+                catch
+                {
+                    return null;
+                }
             }
         }
     }

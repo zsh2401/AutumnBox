@@ -11,11 +11,11 @@ namespace AutumnBox.OpenFramework.Extension
     /// </summary>
     public class ExtAuthAttribute : ExtInfoI18NAttribute
     {
+
         /// <summary>
-        /// Dft key
+        /// Key
         /// </summary>
-        public const string DEFAULT_KEY = "Auth";
-        public override string Key => DEFAULT_KEY;
+        public override string Key => ExtensionInformationKeys.AUTH;
         /// <summary>
         /// 构建
         /// </summary>

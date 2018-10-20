@@ -24,7 +24,7 @@ namespace AutumnBox.CoreModules.Aspect
 
 
 
-        public override void Do(BeforeCreatingAspectArgs args, ref bool canContinue)
+        public override void BeforeCreating(BeforeCreatingAspectArgs args, ref bool canContinue)
         {
             string message = CoreLib.Current.Languages.Get(this.message) ?? this.message;
             bool isAgree = CoreLib.Context.Ux.Agree(message);

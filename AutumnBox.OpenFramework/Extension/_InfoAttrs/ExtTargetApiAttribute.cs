@@ -12,6 +12,10 @@ namespace AutumnBox.OpenFramework.Extension
     public class ExtTargetApiAttribute : SingleInfoAttribute
     {
         /// <summary>
+        /// Key
+        /// </summary>
+        public override string Key => ExtensionInformationKeys.TARGET_ATMB_API;
+        /// <summary>
         /// 构造
         /// </summary>
         /// <param name="value"></param>
