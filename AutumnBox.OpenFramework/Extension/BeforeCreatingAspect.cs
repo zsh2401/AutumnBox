@@ -18,7 +18,7 @@ namespace AutumnBox.OpenFramework.Extension
         public IDevice TargetDevice { get; set; }
     }
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
-    public abstract class BeforeCreatingAspect : Attribute
+    public abstract class BeforeCreatingAspect : Attribute,IBeforeCreatingAspect
     {
         public abstract void Do(BeforeCreatingAspectArgs args, ref bool canContinue);
     }
