@@ -13,10 +13,8 @@ using System.IO;
 
 namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot
 {
-    [ExtName("安装APK")]
-    [ExtName("Install APK", Lang = "en-US")]
-    [ExtDesc("可直接向手机安装APK,不过要注意允许USB安装哦!")]
-    [ExtDesc("Install apk to device", Lang = "en-US")]
+    [ExtName("安装APK", "en-us:Install APK")]
+    [ExtDesc("可直接向手机安装APK,不过要注意允许USB安装哦!", "en-us:Install apk to device")]
     [ExtIcon("Icons.android.png")]
     [ExtRequiredDeviceStates(DeviceState.Poweron)]
     internal class EApkInstaller : OfficialVisualExtension
