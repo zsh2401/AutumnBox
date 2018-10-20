@@ -14,6 +14,9 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.OpenFramework.Wrapper
 {
+    /// <summary>
+    /// 拓展模块运行时进程,此进程非彼进程
+    /// </summary>
     public sealed class ClassExtensionProcess : IExtensionProcess, IDisposable
     {
         private readonly Context ctx;
@@ -43,7 +46,12 @@ namespace AutumnBox.OpenFramework.Wrapper
 
         private IClassExtension Instance { get; set; }
         private readonly IExtensionWrapper wrapper;
-
+        /// <summary>
+        /// 构造类
+        /// </summary>
+        /// <param name="wrapper"></param>
+        /// <param name="extType"></param>
+        /// <param name="targetDevice"></param>
         public ClassExtensionProcess(IExtensionWrapper wrapper, Type extType, IDevice targetDevice = null)
         {
             this.ctx = (Context)wrapper;
@@ -63,7 +71,7 @@ namespace AutumnBox.OpenFramework.Wrapper
             bool canContinue = true;
             foreach (var aspect in BeforeCreatingAspects)
             {
-                aspect.Do(args, ref canContinue);
+                aspect.BeforeCreating(args, ref canContinue);
                 if (!canContinue)
                 {
                     return false;
@@ -119,7 +127,13 @@ namespace AutumnBox.OpenFramework.Wrapper
             Running,
             Exited
         }
+        /// <summary>
+        /// 返回码
+        /// </summary>
         public int ExitCode { get; private set; } = -1;
+        /// <summary>
+        /// 开始执行
+        /// </summary>
         public void Start()
         {
             Task.Run(() =>
@@ -127,6 +141,10 @@ namespace AutumnBox.OpenFramework.Wrapper
                 MainFlowTryCatch();
             });
         }
+        /// <summary>
+        /// 等待结束
+        /// </summary>
+        /// <returns></returns>
         public int WaitForExit()
         {
             if (State == ProcessState.Ready)
@@ -186,7 +204,9 @@ namespace AutumnBox.OpenFramework.Wrapper
             State = ProcessState.Exited;
             return exitCode;
         }
-
+        /// <summary>
+        /// 试图杀死这个进程
+        /// </summary>
         public void Kill()
         {
             isForceStopped = false;
@@ -221,7 +241,9 @@ namespace AutumnBox.OpenFramework.Wrapper
                 disposedValue = true;
             }
         }
-
+        /// <summary>
+        /// 析构器
+        /// </summary>
         ~ClassExtensionProcess()
         {
             Dispose(false);

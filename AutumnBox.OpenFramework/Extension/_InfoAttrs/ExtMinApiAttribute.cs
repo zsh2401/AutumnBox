@@ -17,6 +17,10 @@ namespace AutumnBox.OpenFramework.Extension
     public class ExtMinApiAttribute : SingleInfoAttribute
     {
         /// <summary>
+        /// 使用标准key
+        /// </summary>
+        public override string Key => ExtensionInformationKeys.MIN_ATMB_API;
+        /// <summary>
         /// 默认构造
         /// </summary>
         /// <param name="value"></param>

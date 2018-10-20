@@ -16,7 +16,7 @@ namespace AutumnBox.CoreModules.Aspect
     {
 
 
-        public override void Do(BeforeCreatingAspectArgs args, ref bool canContinue)
+        public override void BeforeCreating(BeforeCreatingAspectArgs args, ref bool canContinue)
         {
             var warnMsg = CoreLib.Current.Languages.Get("EObsoleteAndTryImageHelper");
             CoreLib.Context.Ux.Warn(warnMsg);

@@ -6,6 +6,7 @@
 using AutumnBox.Basic.Device;
 using AutumnBox.OpenFramework.Content;
 using AutumnBox.OpenFramework.Extension;
+using AutumnBox.OpenFramework.Open;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -20,7 +21,7 @@ namespace AutumnBox.OpenFramework.Wrapper
     /// </summary>
     public class ClassExtensionInfoGetter : Context, IExtInfoGetter
     {
-       
+
         private readonly Context ctx;
         /// <summary>
         /// 获取信息
@@ -31,7 +32,9 @@ namespace AutumnBox.OpenFramework.Wrapper
         {
             get
             {
+                //Logger.CDebug($"getting {key}");
                 return Infomations[key].Value;
+
             }
         }
         /// <summary>
@@ -69,7 +72,7 @@ namespace AutumnBox.OpenFramework.Wrapper
         {
             get
             {
-                return this[ExtNameAttribute.DEFAULT_KEY] as string;
+                return this[ExtensionInformationKeys.NAME] as string;
             }
         }
         /// <summary>
@@ -79,7 +82,7 @@ namespace AutumnBox.OpenFramework.Wrapper
         {
             get
             {
-                return this[ExtDescAttribute.DEFAULT_KEY] as string;
+                return this[ExtensionInformationKeys.DESCRIPTION] as string;
             }
         }
         private readonly Version defaultVersion = new Version(0, 0, 0, 0);
@@ -121,13 +124,24 @@ namespace AutumnBox.OpenFramework.Wrapper
         {
             get
             {
-                return this[ExtAuthAttribute.DEFAULT_KEY] as string;
+                return this[ExtensionInformationKeys.AUTH] as string;
             }
         }
         /// <summary>
         /// 区域
         /// </summary>
         public IEnumerable<string> Regions { get; private set; }
+
+        /// <summary>
+        /// 获取一个扫描器
+        /// </summary>
+        public ClassExtensionScanner Scanner
+        {
+            get
+            {
+                return new ClassExtensionScanner(ExtType);
+            }
+        }
 
         /// <summary>
         /// 构造
@@ -147,14 +161,14 @@ namespace AutumnBox.OpenFramework.Wrapper
             ClassExtensionScanner scanner = new ClassExtensionScanner(this.ExtType);
             scanner.Scan(ClassExtensionScanner.ScanOption.Informations);
             Infomations = scanner.Informations;
-            RequiredDeviceStates = (DeviceState)this[nameof(ExtRequiredDeviceStatesAttribute)];
-            Version = this[nameof(ExtVersionAttribute)] as Version;
-            MinApi = (int)this[nameof(ExtMinApiAttribute)];
-            TargetApi = (int)this[nameof(ExtTargetApiAttribute)];
-            Regions = this[nameof(ExtRegionAttribute)] as IEnumerable<string>;
+            RequiredDeviceStates = (DeviceState)this[ExtensionInformationKeys.REQ_DEV_STATE];
+            Version = this[ExtensionInformationKeys.VERSION] as Version;
+            MinApi = (int)this[ExtensionInformationKeys.MIN_ATMB_API];
+            TargetApi = (int)this[ExtensionInformationKeys.TARGET_ATMB_API];
+            Regions = this[ExtensionInformationKeys.REGIONS] as IEnumerable<string>;
             try
             {
-                Icon = ReadIcon(this[nameof(ExtIconAttribute)].ToString());
+                Icon = ReadIcon(this[ExtensionInformationKeys.ICON].ToString());
             }
             catch (KeyNotFoundException)
             {

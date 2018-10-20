@@ -19,6 +19,10 @@ namespace AutumnBox.OpenFramework.Extension
     public class ExtRequiredDeviceStatesAttribute : SingleInfoAttribute
     {
         /// <summary>
+        /// Key
+        /// </summary>
+        public override string Key => ExtensionInformationKeys.REQ_DEV_STATE;
+        /// <summary>
         /// 构造
         /// </summary>
         /// <param name="state"></param>

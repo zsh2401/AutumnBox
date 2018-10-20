@@ -12,7 +12,7 @@ namespace AutumnBox.CoreModules.Aspect
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false)]
     internal class RemoveLockNoticeAttribute : BeforeCreatingAspect
     {
-        public override void Do(BeforeCreatingAspectArgs args, ref bool canContinue)
+        public override void BeforeCreating(BeforeCreatingAspectArgs args, ref bool canContinue)
         {
             string message = CoreLib.Current.Languages.Get("EDpmSetterRemoveLock");
             string btnLeft = CoreLib.Current.Languages.Get("EDpmSetterRemoveLockBtnLeft");

@@ -3,7 +3,7 @@ using AutumnBox.OpenFramework.Extension;
 
 namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot
 {
-    [ExtRegion("zh-CN")]
+    [ExtRegions("zh-CN")]
     [ExtName("免ROOT激活极客内存清理")]
     [ExtAppProperty("com.ifreedomer.fuckmemory")]
     [ExtIcon("Icons.gcm.png")]

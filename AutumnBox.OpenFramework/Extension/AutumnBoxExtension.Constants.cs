@@ -18,7 +18,7 @@ namespace AutumnBox.OpenFramework.Extension
     [ExtRunAsAdmin(false)]
     [ExtRequireRoot(false)]
     [ExtOfficial(false)]
-    [ExtRegion(null)]
+    [ExtRegions(null)]
     //[ExtAppProperty("com.miui.fm")]
     //[ExtMinAndroidVersion(7,0,0)]
     partial class AutumnBoxExtension

@@ -25,7 +25,7 @@ namespace AutumnBox.OpenFramework.Extension
         /// </summary>
         /// <param name="args"></param>
         /// <param name="canContinue"></param>
-        public override void Do(BeforeCreatingAspectArgs args, ref bool canContinue)
+        public override void BeforeCreating(BeforeCreatingAspectArgs args, ref bool canContinue)
         {
             if (reqAdmin && !args.Context.App.IsRunAsAdmin)
             {
