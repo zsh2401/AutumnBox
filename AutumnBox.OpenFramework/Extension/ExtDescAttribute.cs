@@ -15,15 +15,12 @@ namespace AutumnBox.OpenFramework.Extension
         /// Default key
         /// </summary>
         public const string DEFAULT_KEY = "Desc";
+        public override string Key => DEFAULT_KEY;
         /// <summary>
         /// 构造
         /// </summary>
         public ExtDescAttribute(params string[] pairsRegionsAndValue) : base(pairsRegionsAndValue)
         {
-            if (pairsRegionsAndValue == null)
-            {
-                throw new System.ArgumentNullException(nameof(pairsRegionsAndValue));
-            }
         }
     }
 }

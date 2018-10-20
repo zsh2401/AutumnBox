@@ -6,6 +6,7 @@
 using AutumnBox.OpenFramework.Management;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text.RegularExpressions;
 
@@ -17,6 +18,7 @@ namespace AutumnBox.OpenFramework.Extension
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
     public abstract class ExtInfoI18NAttribute : ExtensionAttribute, IInformationAttribute
     {
+        private const string DEFAULT_KEY = "all";
         private Dictionary<string, string> kvs;
         /// <summary>
         /// 构建
@@ -25,24 +27,49 @@ namespace AutumnBox.OpenFramework.Extension
         /// <param name="value"></param>
         public ExtInfoI18NAttribute(params string[] pairRegionAndValues)
         {
+            Debug.WriteLine("wtf?" + pairRegionAndValues?.Count());
             Load(pairRegionAndValues);
         }
         private bool TryParse(string kv, ref string k, ref string v)
         {
-            try {
+            try
+            {
+                //Debug.WriteLine("wocao");
+                //if (kv == null)
+                //{
+                //    k = DEFAULT_KEY;
+                //    v = kv;
+                //    return true;
+                //}
                 var splits = kv.Split(':');
-                k = splits.First();
-                v = string.Join("", splits, splits.Count() - 1);
+                if (splits.Count() > 2)
+                {
+                    k = splits.First();
+                    v = string.Join("", splits, startIndex: 1, count: splits.Count() - 1);
+                }
+                else
+                {
+                    k = DEFAULT_KEY;
+                    v = kv;
+                }
+                Debug.WriteLine($"k:{k} v:{v}");
                 return true;
-            } catch(Exception) {
+            }
+            catch
+            {
                 return false;
             }
         }
-        private void Load(params string[] _kvs)
+        private void Load(string[] _kvs)
         {
             kvs = new Dictionary<string, string>();
             string currentKey = null;
             string currentValue = null;
+            if (_kvs == null) {
+                currentKey = DEFAULT_KEY;
+                currentValue = null;
+                return;
+            }
             foreach (string kv in _kvs)
             {
                 if (TryParse(kv, ref currentKey, ref currentValue))
@@ -82,7 +109,7 @@ namespace AutumnBox.OpenFramework.Extension
             }
             try
             {
-                return kvs.First().Value;
+                return kvs[DEFAULT_KEY];
             }
             catch
             {

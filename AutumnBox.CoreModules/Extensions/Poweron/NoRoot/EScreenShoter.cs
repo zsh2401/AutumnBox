@@ -12,7 +12,7 @@ using System.Windows.Forms;
 namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot
 {
     [ExtName("截图并保存到电脑")]
-    [ExtName("Screenshot and save to pc", Lang = "en-US")]
+    //[ExtName("Screenshot and save to pc", Lang = "en-US")]
     [ExtIcon("Icons.screenshot.png")]
     [ExtRequiredDeviceStates(DeviceState.Poweron)]
     internal class EScreenShoter : OfficialVisualExtension

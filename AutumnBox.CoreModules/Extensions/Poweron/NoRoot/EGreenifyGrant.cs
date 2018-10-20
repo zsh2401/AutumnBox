@@ -12,7 +12,7 @@ using System;
 namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot
 {
     [ExtName("Greenify Aggressive Doze")]
-    [ExtName("绿色守护嗜睡模式",Lang ="zh-CN")]
+    //[ExtName("绿色守护嗜睡模式",Lang ="zh-CN")]
     [ExtAppProperty(PKG_NAME)]
     [ExtVersion(2018,9,26)]
     [ExtIcon("Icons.Greenify.png")]

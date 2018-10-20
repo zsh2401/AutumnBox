@@ -10,7 +10,7 @@ using AutumnBox.Basic.Device.Management.AppFx;
 namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot.DpmSetter
 {
     [ExtName("免ROOT激活冰箱")]
-    [ExtName("Set Icebox as DPM without root", Lang = "en-us")]
+    //[ExtName("Set Icebox as DPM without root", Lang = "en-us")]
     [ExtAppProperty("com.catchingnow.icebox")]
     [ExtIcon("Icons.icebox.png")]
     [ExtRequiredDeviceStates(Basic.Device.DeviceState.Poweron)]
