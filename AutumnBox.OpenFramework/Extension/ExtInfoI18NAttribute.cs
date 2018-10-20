@@ -34,9 +34,9 @@ namespace AutumnBox.OpenFramework.Extension
             try
             {
                 var splits = kv.Split(':');
-                if (splits.Count() > 2)
+                if (splits.Count() >= 2)
                 {
-                    k = splits.First();
+                    k = splits.First().ToLower();
                     v = string.Join("", splits, startIndex: 1, count: splits.Count() - 1);
                 }
                 else
@@ -44,6 +44,7 @@ namespace AutumnBox.OpenFramework.Extension
                     k = DEFAULT_KEY;
                     v = kv;
                 }
+                Debug.WriteLine($"{k}:{v}");
                 return true;
             }
             catch
@@ -100,7 +101,7 @@ namespace AutumnBox.OpenFramework.Extension
             string crtLanCode = null;
             CallingBus.AutumnBox_GUI.RunOnUIThread(() =>
             {
-                crtLanCode = CallingBus.AutumnBox_GUI.GetCurrentLanguageCode();
+                crtLanCode = CallingBus.AutumnBox_GUI.GetCurrentLanguageCode().ToLower();
             });
             if (kvs.TryGetValue(crtLanCode, out string value))
             {
