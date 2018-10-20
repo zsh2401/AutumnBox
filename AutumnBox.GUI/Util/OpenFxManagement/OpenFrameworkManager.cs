@@ -13,8 +13,8 @@ namespace AutumnBox.GUI.Util.OpenFxManagement
         public static void Init()
         {
             SLogger.Info("OFM", "Open Fx loading");
-            CallingBus.LoadApi(new AutumnBox_GUI_Calller());
-            Manager.InternalManager.Reload();
+            FxLoader.LoadApi(new AutumnBox_GUI_Calller());
+            FxLoader.LoadExtensions();
             SLogger.Info("OFM", "Open Fx loaded ExtensionManager");
         }
     }
