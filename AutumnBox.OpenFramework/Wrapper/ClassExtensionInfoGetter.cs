@@ -41,8 +41,8 @@ namespace AutumnBox.OpenFramework.Wrapper
                 }
                 if (options.HasFlag(ScanOption.BeforeCreatingAspect)) {
                     ScanAspects();
+                    Debug.WriteLine($"have {BeforeCreatingAspects.Count()} aspects");
                 }
-
             }
             private void ScanAspects() {
                 Type interfaceType = typeof(IBeforeCreatingAspect);

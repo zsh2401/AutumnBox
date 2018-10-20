@@ -9,6 +9,7 @@ using AutumnBox.OpenFramework.Exceptions;
 using AutumnBox.OpenFramework.Extension;
 using System;
 using System.Diagnostics;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace AutumnBox.OpenFramework.Wrapper
@@ -31,13 +32,14 @@ namespace AutumnBox.OpenFramework.Wrapper
                 {
                     var scanner = new ClassExtensionInfoGetter.ClassExtensionAttributeScanner(extensionType);
                     scanner.Scan(ClassExtensionInfoGetter.ClassExtensionAttributeScanner.ScanOption.BeforeCreatingAspect);
-                    var attrs = scanner.BeforeCreatingAspects;
-                    bca = attrs;
+                    bca = scanner.BeforeCreatingAspects;
+                    Debug.WriteLine("aspects's count:" + bca.Count());
+                    
                 }
                 return bca;
             }
         }
-        public IBeforeCreatingAspect[] bca;
+        private IBeforeCreatingAspect[] bca;
 
         private IClassExtension Instance { get; set; }
         private readonly IExtensionWrapper wrapper;

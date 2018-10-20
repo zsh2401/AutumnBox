@@ -14,6 +14,7 @@ namespace AutumnBox.CoreModules.Extensions
     [ExtName("Example extension")]
     [ExtRequiredDeviceStates(NoMatter)]
     [ExtDesc("wtf")]
+    [Aspect.ObsoleteImageOperator]
     //[ExtAppProperty("com.miui.calculatorx")]
     internal class EHoldMyHand : OfficialVisualExtension
     {
