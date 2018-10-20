@@ -10,7 +10,7 @@ using AutumnBox.OpenFramework.Extension;
 namespace AutumnBox.CoreModules.Extensions.Poweron.Root
 {
     [ExtName("[ROOT]刷入BOOT")]
-    [ExtName("[ROOT]Flast boot.img", Lang = "en-US")]
+    //[ExtName("[ROOT]Flast boot.img", Lang = "en-US")]
     [ExtRegion("zh-CN", "zh-HK", "zh-TW", "zh-SG")]
     [ObsoleteImageOperator]
     [ExtRequireRoot]

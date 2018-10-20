@@ -15,6 +15,7 @@ namespace AutumnBox.OpenFramework.Extension
         /// Dft key
         /// </summary>
         public const string DEFAULT_KEY = "Auth";
+        public override string Key => DEFAULT_KEY;
         /// <summary>
         /// 构建
         /// </summary>

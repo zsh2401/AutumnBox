@@ -10,7 +10,7 @@ using Microsoft.Win32;
 namespace AutumnBox.CoreModules.Extensions.Fastboot
 {
     [ExtName("刷入REC")]
-    [ExtName("Flash recovery.img", Lang = "en-US")]
+    //[ExtName("Flash recovery.img", Lang = "en-US")]
     [ExtRequiredDeviceStates(DeviceState.Fastboot)]
     [ExtIcon("Icons.cd.png")]
     internal class EFlashRecovery : OfficialVisualExtension

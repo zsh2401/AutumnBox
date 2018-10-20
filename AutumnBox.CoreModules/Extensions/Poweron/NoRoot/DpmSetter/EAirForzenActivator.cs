@@ -10,7 +10,7 @@ using AutumnBox.OpenFramework.Extension;
 namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot.DpmSetter
 {
     [ExtName("免ROOT激活空调狗")]
-    [ExtName("Set AirForzen as DPM without root", Lang = "en-us")]
+    //[ExtName("Set AirForzen as DPM without root", Lang = "en-us")]
     [ExtIcon("Icons.AirForzen.png")]
     [ExtAppProperty(PKGNAME)]
     [ExtRequiredDeviceStates(Basic.Device.DeviceState.Poweron)]
