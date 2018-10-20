@@ -27,20 +27,12 @@ namespace AutumnBox.OpenFramework.Extension
         /// <param name="value"></param>
         public ExtInfoI18NAttribute(params string[] pairRegionAndValues)
         {
-            Debug.WriteLine("wtf?" + pairRegionAndValues?.Count());
             Load(pairRegionAndValues);
         }
         private bool TryParse(string kv, ref string k, ref string v)
         {
             try
             {
-                //Debug.WriteLine("wocao");
-                //if (kv == null)
-                //{
-                //    k = DEFAULT_KEY;
-                //    v = kv;
-                //    return true;
-                //}
                 var splits = kv.Split(':');
                 if (splits.Count() > 2)
                 {
@@ -52,7 +44,6 @@ namespace AutumnBox.OpenFramework.Extension
                     k = DEFAULT_KEY;
                     v = kv;
                 }
-                Debug.WriteLine($"k:{k} v:{v}");
                 return true;
             }
             catch
@@ -63,18 +54,26 @@ namespace AutumnBox.OpenFramework.Extension
         private void Load(string[] _kvs)
         {
             kvs = new Dictionary<string, string>();
-            string currentKey = null;
-            string currentValue = null;
-            if (_kvs == null) {
-                currentKey = DEFAULT_KEY;
-                currentValue = null;
+            if (_kvs == null)
+            {
+                kvs.Add(DEFAULT_KEY, null);
                 return;
             }
+            string currentKey = null;
+            string currentValue = null;
             foreach (string kv in _kvs)
             {
                 if (TryParse(kv, ref currentKey, ref currentValue))
                 {
-                    kvs.Add(currentKey, currentValue);
+                    try
+                    {
+                        kvs.Add(currentKey, currentValue);
+                    }
+                    catch (ArgumentException)
+                    {
+                        //Same key already exists
+                        kvs[currentKey] = currentValue;
+                    }
                 }
             }
         }

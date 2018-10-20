@@ -5,7 +5,6 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot
 {
     [ExtRegion("zh-CN")]
     [ExtName("免ROOT激活极客内存清理")]
-    //[ExtName("Activate GCM without root",Lang ="en-US")]
     [ExtAppProperty("com.ifreedomer.fuckmemory")]
     [ExtIcon("Icons.gcm.png")]
     [ExtRequiredDeviceStates(DeviceState.Poweron)]

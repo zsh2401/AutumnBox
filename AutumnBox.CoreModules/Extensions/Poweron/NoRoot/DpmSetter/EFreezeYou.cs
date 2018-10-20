@@ -10,8 +10,7 @@ using AutumnBox.OpenFramework.Extension;
 namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot.DpmSetter
 {
     [ExtRegion("zh-CN")]
-    [ExtName("免ROOT激活FreezeYou")]
-    //[ExtName("Set FreezeYou as DPM without root", Lang = "en-us")]
+    [ExtName("免ROOT激活FreezeYou", "en-us:Set FreezeYou as DPM without root")]
     [ExtIcon("Icons.freezeYou.png")]
     [ExtAppProperty(PKGNAME)]
     [ExtRequiredDeviceStates(Basic.Device.DeviceState.Poweron)]
