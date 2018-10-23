@@ -5,6 +5,7 @@
 *************************************************/
 using AutumnBox.OpenFramework.Exceptions;
 using AutumnBox.OpenFramework.Management.Impl;
+using AutumnBox.OpenFramework.Service;
 using System.Reflection;
 
 namespace AutumnBox.OpenFramework.Management
@@ -60,5 +61,21 @@ namespace AutumnBox.OpenFramework.Management
                 throw new AccessDeniedException();
             }
         }
+        /// <summary>
+        /// 服务管理器
+        /// </summary>
+        public static IServicesManager ServicesManager
+        {
+            get
+            {
+                PermissionCheck(Assembly.GetCallingAssembly());
+                if (_servicesManager == null)
+                {
+                    _servicesManager = new ServicesManagerImpl();
+                }
+                return _servicesManager;
+            }
+        }
+        private static IServicesManager _servicesManager;
     }
 }

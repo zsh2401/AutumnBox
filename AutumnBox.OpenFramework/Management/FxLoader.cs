@@ -34,5 +34,11 @@ namespace AutumnBox.OpenFramework.Management
         {
             Manager.InternalManager.Reload();
         }
+        /// <summary>
+        /// 加载默认服务
+        /// </summary>
+        public static void LoadDefaultServices() {
+            //Manager.ServicesManager.RegisterService();
+        }
     }
 }
