@@ -33,7 +33,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot
             if (dialogResult == DialogResult.OK)
             {
                 string fileName = DateTime.Now.ToString("yyyyMMdd_HHmmss");
-                path = new FileInfo(Path.Combine(saveDir, fileName));
+                path = new FileInfo(Path.Combine(saveDir, fileName + ".png"));
                 try
                 {
                     var capture = GetDeviceCommander<ScreenCapture>();

@@ -15,7 +15,7 @@ namespace AutumnBox.Basic.Calling
     /// </summary>
     /// <seealso cref="AutumnBox.Basic.Data.INotifyOutput" />
     /// <seealso cref="AutumnBox.Basic.Data.ICommandStationObject" />
-    public abstract class CommandingObject : Object,INotifyOutput, ICommandStationObject
+    public abstract class CommandingObject : Object, INotifyOutput, ICommandStationObject
     {
         /// <summary>
         /// 命令站点，你可以设置自己的命令站点，或监听此命令站点
@@ -56,8 +56,7 @@ namespace AutumnBox.Basic.Calling
         /// <param name="e"></param>
         protected virtual void RaiseOutput(object sender, OutputReceivedEventArgs e)
         {
-            callback?.Invoke(e);
-            OutputReceived?.Invoke(this, e);
+            RaiseOutput(e);
         }
         private Action<OutputReceivedEventArgs> callback;
         /// <summary>
