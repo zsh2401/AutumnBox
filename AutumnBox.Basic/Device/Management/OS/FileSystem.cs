@@ -17,7 +17,7 @@ namespace AutumnBox.Basic.Device.Management.OS
     /// <summary>
     /// 简单的文件系统管理实现
     /// </summary>
-    public class FileSystem : DependOnDeviceObject
+    public class FileSystem : DeviceCommander
     {
         /// <summary>
         /// 构造

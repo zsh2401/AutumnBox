@@ -7,6 +7,7 @@
 using AutumnBox.Basic.Device;
 using AutumnBox.GUI.MVVM;
 using AutumnBox.GUI.Util.Bus;
+using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace AutumnBox.GUI.ViewModel
@@ -31,27 +32,48 @@ namespace AutumnBox.GUI.ViewModel
             InitCommands();
             InitEvents();
         }
-
+        bool running = false;
         private void InitCommands()
         {
             _toSystem = new FlexiableCommand(() =>
             {
-                DeviceSelectionObserver.Instance.CurrentDevice.Reboot2System();
+              
+                Task.Run(()=> {
+                    if (running) return;
+                    running = true;
+                    DeviceSelectionObserver.Instance.CurrentDevice.Reboot2System();
+                    running = false;
+                });
             })
             { CanExecuteProp = false };
             _toRecovery = new FlexiableCommand(() =>
             {
-                DeviceSelectionObserver.Instance.CurrentDevice.Reboot2Recovery();
+                Task.Run(() => {
+                    if (running) return;
+                    running = true;
+                    DeviceSelectionObserver.Instance.CurrentDevice.Reboot2Recovery();
+                    running = false;
+                });
             })
             { CanExecuteProp = false }; ;
             _toFastboot = new FlexiableCommand(() =>
             {
-                DeviceSelectionObserver.Instance.CurrentDevice.Reboot2Fastboot();
+                Task.Run(() => {
+                    if (running) return;
+                    running = true;
+                    DeviceSelectionObserver.Instance.CurrentDevice.Reboot2Fastboot();
+                    running = false;
+                });
             })
             { CanExecuteProp = false }; ;
             _to9008 = new FlexiableCommand(() =>
             {
-                DeviceSelectionObserver.Instance.CurrentDevice.Reboot29008();
+                Task.Run(() => {
+                    if (running) return;
+                    running = true;
+                    DeviceSelectionObserver.Instance.CurrentDevice.Reboot29008();
+                    running = false;
+                });
             })
             { CanExecuteProp = false };
         }

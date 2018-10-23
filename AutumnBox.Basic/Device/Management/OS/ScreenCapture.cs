@@ -4,6 +4,7 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.Basic.Data;
+using AutumnBox.Basic.Util;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -14,7 +15,7 @@ namespace AutumnBox.Basic.Device.Management.OS
     /// <summary>
     /// 截图器
     /// </summary>
-    public class ScreenCapture : DeviceCommander , Data.IReceiveOutputByTo<ScreenCapture>
+    public sealed class ScreenCapture : DeviceCommander, Data.IReceiveOutputByTo<ScreenCapture>
     {
         /// <summary>
         /// 构造截图器
@@ -34,7 +35,10 @@ namespace AutumnBox.Basic.Device.Management.OS
         /// </summary>
         public void Capture()
         {
-            throw new NotImplementedException();
+            CmdStation.GetShellCommand(Device, $"/system/bin/screencap -p {TmpPath}")
+                 .To(RaiseOutput)
+                 .Execute().
+                 ThrowIfExitCodeNotEqualsZero();
         }
         /// <summary>
         /// 将刚截的图保存到PC端
@@ -42,7 +46,10 @@ namespace AutumnBox.Basic.Device.Management.OS
         /// <param name="saveFile"></param>
         public void SaveToPC(FileInfo saveFile)
         {
-            throw new NotImplementedException();
+            CmdStation.GetAdbCommand(Device, $"pull {TmpPath} {saveFile.FullName}")
+                 .To(RaiseOutput)
+                 .Execute().
+                 ThrowIfExitCodeNotEqualsZero();
         }
         /// <summary>
         /// 通过To模式订阅输出事件

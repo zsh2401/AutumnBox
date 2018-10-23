@@ -5,8 +5,11 @@
 *************************************************/
 using AutumnBox.Basic.Calling.Adb;
 using AutumnBox.Basic.Device;
+using AutumnBox.Basic.Device.Management.OS;
 using AutumnBox.Basic.ManagedAdb;
 using AutumnBox.OpenFramework.Extension;
+using System;
+using System.IO;
 using System.Windows.Forms;
 
 namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot
@@ -19,24 +22,31 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot
         protected override int VisualMain()
         {
             DialogResult dialogResult = DialogResult.No;
-            string path = null;
+            FileInfo path = null;
+            string saveDir = null;
             App.RunOnUIThread(() =>
             {
                 FolderBrowserDialog fbd = new FolderBrowserDialog();
                 dialogResult = fbd.ShowDialog();
-                path = fbd.SelectedPath;
+                saveDir = fbd.SelectedPath;
             });
-
             if (dialogResult == DialogResult.OK)
             {
-                string tmpFile = $"{Adb.AdbTmpPathOnDevice}/screenshot.png";
-                TargetDevice.Shell($"/system/bin/screencap -p {tmpFile}");
-                var result = new AdbCommand(TargetDevice, $"pull {tmpFile} {path}")
-                    .To((e) =>
-                    {
-                        WriteLine(e.Text);
-                    }).Execute();
-                return result.ExitCode;
+                string fileName = DateTime.Now.ToString("yyyyMMdd_HHmmss");
+                path = new FileInfo(Path.Combine(saveDir, fileName));
+                try
+                {
+                    var capture = GetDeviceCommander<ScreenCapture>();
+                    capture.To(OutputPrinter);
+                    capture.Capture();
+                    capture.SaveToPC(path);
+                    return OK;
+                }
+                catch(Exception ex)
+                {
+                    Logger.Warn("can't capture",ex);
+                    return ERR;
+                }
             }
             return ERR;
         }
