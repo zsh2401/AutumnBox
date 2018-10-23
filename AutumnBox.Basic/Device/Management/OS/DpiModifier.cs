@@ -17,7 +17,7 @@ namespace AutumnBox.Basic.Device.Management.OS
     /// DPI修改器
     /// </summary>
     [Obsolete("Plz use WindowManager to instead")]
-    public class DpiModifier : DependOnDeviceObject
+    public class DpiModifier : DeviceCommander
     {
         /// <summary>
         /// 构造

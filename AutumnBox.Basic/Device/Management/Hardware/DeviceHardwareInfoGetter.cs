@@ -14,7 +14,7 @@ namespace AutumnBox.Basic.Device.Management.Hardware
     /// <summary>
     /// 设备硬件信息获取器
     /// </summary>
-    public class DeviceHardwareInfoGetter : DependOnDeviceObject
+    public class DeviceHardwareInfoGetter : DeviceCommander
     {
         private readonly Logger logger;
         /// <summary>

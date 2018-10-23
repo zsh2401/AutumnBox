@@ -20,10 +20,6 @@ namespace AutumnBox.OpenFramework.Open
     public interface IUx
     {
         /// <summary>
-        /// 目前选择的设备
-        /// </summary>
-        IDevice CurrentSelectedDevice { get; }
-        /// <summary>
         /// 询问用户是否同意字符串内容
         /// </summary>
         /// <param name="message"></param>

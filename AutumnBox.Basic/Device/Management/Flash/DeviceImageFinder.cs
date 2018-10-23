@@ -14,7 +14,7 @@ namespace AutumnBox.Basic.Device.Management.Flash
     /// <summary>
     /// 设备镜像路径寻找器,由于安卓碎片化严重,不保证能完美运行,如果有特殊需求请另行实现
     /// </summary>
-    public sealed class DeviceImageFinder : DependOnDeviceObject
+    public sealed class DeviceImageFinder : DeviceCommander
     {
         /// <summary>
         /// 创建实例
