@@ -3,6 +3,7 @@
 ** date:  2018/8/23 19:03:31 (UTC +8:00)
 ** desc： ...
 *************************************************/
+using AutumnBox.Basic.Device;
 using AutumnBox.OpenFramework.Wrapper;
 using System;
 using System.Collections.Generic;
@@ -18,6 +19,10 @@ namespace AutumnBox.OpenFramework.Open
     /// </summary>
     public interface IUx
     {
+        /// <summary>
+        /// 目前选择的设备
+        /// </summary>
+        IDevice CurrentSelectedDevice { get; }
         /// <summary>
         /// 询问用户是否同意字符串内容
         /// </summary>
@@ -43,22 +48,6 @@ namespace AutumnBox.OpenFramework.Open
         /// <param name="btnCancel"></param>
         /// <returns></returns>
         ChoiceResult DoChoice(string message, string btnLeft = null, string btnRight = null, string btnCancel = null);
-        ///// <summary>
-        ///// 显示消息窗口
-        ///// </summary>
-        ///// <param name="title"></param>
-        ///// <param name="message"></param>
-        //void ShowMessageDialog(string title, string message);
-        ///// <summary>
-        ///// 显示消息窗口,使用默认标题
-        ///// </summary>
-        ///// <param name="message"></param>
-        //void ShowMessageDialog(string message);
-        ///// <summary>
-        ///// 显示警告窗口
-        ///// </summary>
-        ///// <param name="message"></param>
-        //void ShowWarnDialog(string message);
         /// <summary>
         /// 信息，通常情况下，此方法会阻塞至用户确认
         /// 使用默认标题

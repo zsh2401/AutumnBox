@@ -6,6 +6,7 @@
 using AutumnBox.Basic.Calling.Adb;
 using AutumnBox.Basic.Device;
 using AutumnBox.Basic.Device.Management.OS;
+using AutumnBox.CoreModules.Aspect;
 using AutumnBox.OpenFramework.Extension;
 using System.Threading;
 
@@ -14,8 +15,9 @@ namespace AutumnBox.CoreModules.Extensions
     [ExtName("Example extension")]
     [ExtRequiredDeviceStates(NoMatter)]
     [ExtDesc("wtf")]
-    [Aspect.ObsoleteImageOperator]
+    //[ObsoleteImageOperator]6
     //[ExtAppProperty("com.miui.calculatorx")]
+    [UserAgree("Please be true")]
     internal class EHoldMyHand : OfficialVisualExtension
     {
         bool stoppable = false;

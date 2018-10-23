@@ -3,7 +3,9 @@
 ** date:  2018/3/6 16:48:15 (UTC +8:00)
 ** desc： ...
 *************************************************/
+using AutumnBox.OpenFramework.Management;
 using AutumnBox.OpenFramework.Open;
+using AutumnBox.OpenFramework.Service;
 using System;
 
 namespace AutumnBox.OpenFramework.Content
@@ -81,6 +83,10 @@ namespace AutumnBox.OpenFramework.Content
         public Context()
         {
             apiWrapper = new ContextApiProvider(this);
+        }
+        public AtmbService GetServiceById(int id)
+        {
+            return Manager.ServicesManager.GetServiceById(this,id);
         }
     }
 }
