@@ -61,7 +61,7 @@ namespace AutumnBox.Basic.Calling
             {
                 RedirectStandardError = true,
                 RedirectStandardOutput = true,
-                RedirectStandardInput = true,
+                RedirectStandardInput = false,
                 UseShellExecute = false,
                 CreateNoWindow = true,
                 FileName = executableFile,
@@ -111,6 +111,7 @@ namespace AutumnBox.Basic.Calling
         /// <param name="isErr"></param>
         private void RaiseOutputReceived(DataReceivedEventArgs e, bool isErr)
         {
+            //Debug.WriteLine("processBasedCmd:" + e.Data);
             callback?.Invoke(new OutputReceivedEventArgs(e, isErr));
             OutputReceived?.Invoke(this, new OutputReceivedEventArgs(e, isErr));
         }

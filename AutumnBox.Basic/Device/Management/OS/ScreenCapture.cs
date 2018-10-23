@@ -28,8 +28,7 @@ namespace AutumnBox.Basic.Device.Management.OS
         /// <summary>
         /// 截图临时文件目录
         /// </summary>
-        public string TmpPath { get; set; } =
-            Path.Combine(ManagedAdb.Adb.AdbTmpPathOnDevice, "screencap.png");
+        public string TmpPath { get; set; } = "/sdcard/atmb_sc.png";
         /// <summary>
         /// 截图
         /// </summary>

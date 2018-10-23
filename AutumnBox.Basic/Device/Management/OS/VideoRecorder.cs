@@ -5,9 +5,13 @@
 *************************************************/
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Text;
+using AutumnBox.Basic.Calling.Adb;
 using AutumnBox.Basic.Data;
+using AutumnBox.Basic.Util;
+using AutumnBox.Basic.Util.Debugging;
 
 namespace AutumnBox.Basic.Device.Management.OS
 {
@@ -16,27 +20,52 @@ namespace AutumnBox.Basic.Device.Management.OS
     /// </summary>
     public class VideoRecorder : DeviceCommander, Data.IReceiveOutputByTo<VideoRecorder>
     {
+        public int Seconds { get; set; } = 180;
+        public int BitRate { get; set; } = 4 * 1000 * 1000;
+        public Size Size { get; set; } = new Size
+        {
+            Height = 1280,
+            Width = 720
+        };
+        public bool EnableVerbose { get; set; } = false;
+        public string TmpFile { get; set; } = "/sdcard/atmb_record.mp4";
         /// <summary>
         /// 创建新的视频录制器实例
         /// </summary>
         /// <param name="device"></param>
         public VideoRecorder(IDevice device) : base(device)
         {
-            ShellCommandHelper.SupportCheck(device, "screenrecord");
+            ShellCommandHelper.CommandExistsCheck(device, "screenrecord");
         }
+        private ShellCommand executingCommand;
         /// <summary>
         /// 开始录制
         /// </summary>
         public void Start()
         {
-            throw new NotImplementedException();
+            Logger<VideoRecorder> logger = new Logger<VideoRecorder>();
+            string command = $"screenrecord " +
+                $"--size {Size.Width}x{Size.Height} " +
+                $"--bit-rate {BitRate} " +
+                $"--time-limit {Seconds} ";
+            if (EnableVerbose)
+            {
+                command += "--verbose ";
+            }
+            command += TmpFile;
+            logger.Info("The command of recoding:" + command);
+            var executingCommand = CmdStation.GetShellCommand(Device, command);
+            executingCommand
+                .To(RaiseOutput)
+                .Execute()
+                .ThrowIfExitCodeNotEqualsZero();
         }
         /// <summary>
         /// 停止录制
         /// </summary>
         public void Stop()
         {
-            throw new NotImplementedException();
+            executingCommand.Kill();
         }
         /// <summary>
         /// 将录制完成的文件保存到PC
@@ -44,7 +73,10 @@ namespace AutumnBox.Basic.Device.Management.OS
         /// <param name="saveFile"></param>
         public void SaveToPC(FileInfo saveFile)
         {
-            throw new NotImplementedException();
+            CmdStation.GetAdbCommand(Device, $"pull {TmpFile} {saveFile.FullName}")
+             .To(RaiseOutput)
+             .Execute().
+             ThrowIfExitCodeNotEqualsZero();
         }
         /// <summary>
         /// 通过To模式订阅输出事件

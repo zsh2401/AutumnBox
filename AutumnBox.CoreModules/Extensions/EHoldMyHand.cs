@@ -8,7 +8,9 @@ using AutumnBox.Basic.Device;
 using AutumnBox.Basic.Device.Management.OS;
 using AutumnBox.CoreModules.Aspect;
 using AutumnBox.OpenFramework.Extension;
+using System.IO;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace AutumnBox.CoreModules.Extensions
 {
@@ -26,14 +28,27 @@ namespace AutumnBox.CoreModules.Extensions
         //}
         protected override int VisualMain()
         {
-            Ux.Message("Hello!");
+            var recorder = GetDeviceCommander<VideoRecorder>();
+            recorder.To(OutputPrinter);
+            recorder.EnableVerbose = true;
+            recorder.Seconds = 10;
+            bool isRunning = true;
+            Task.Run(() =>
+            {
+                recorder.Start();
+                var filePath = Path.Combine(Tmp.Path, "ok.mp4");
+                FileInfo fileInfo = new FileInfo(filePath);
+                recorder.SaveToPC(fileInfo);
+                isRunning = false;
+            });
+            while (isRunning) ;
             return OK;
             WriteInitInfo();
-          
+
             WriteLine("开始执行");
             Inputer inputer = GetDeviceCommander<Inputer>();
             inputer.PressKey(AndroidKeyCode.MediaNext);
-            inputer.Tap(200,300);
+            inputer.Tap(200, 300);
             WriteLine(inputer.GetHashCode().ToString());
             WriteLine(inputer.GetHashCode().ToString());
             Thread.Sleep(3000);

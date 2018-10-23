@@ -19,7 +19,6 @@ namespace AutumnBox.CoreModules
         protected virtual void OutputPrinter(OutputReceivedEventArgs e)
         {
             WriteLine(e.Text);
-            Logger.Info(e.Text);
         }
         protected virtual void OutputLogger(OutputReceivedEventArgs e)
         {
