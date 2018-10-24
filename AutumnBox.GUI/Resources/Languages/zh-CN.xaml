@@ -125,6 +125,8 @@
     <s:String x:Key="PanelDeviceDetailsSw">软件信息</s:String>
     <s:String x:Key="PanelDeviceDetailsRoot">Root</s:String>
     <s:String x:Key="PanelDeviceDetailsAndroidVersion">Android</s:String>
+     <s:String x:Key="PanelDeviceDetailsScreenSize">分辨率</s:String>
+    <s:String x:Key="PanelDeviceDetailsDensity">DPI</s:String>
     
     <!--PanelMain-->
     <s:String x:Key="PanelMainStart">开始</s:String>

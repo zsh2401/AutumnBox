@@ -49,6 +49,14 @@
                         <TextBlock  Text="{DynamicResource PanelDeviceDetailsAndroidVersion}"/>
                         <TextBlock Margin="10,0,0,0" Text="{Binding AndroidVersion}"/>
                     </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                        <TextBlock  Text="{DynamicResource PanelDeviceDetailsDensity}"/>
+                        <TextBlock Margin="10,0,0,0" Text="{Binding Density}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                        <TextBlock  Text="{DynamicResource PanelDeviceDetailsScreenSize}"/>
+                        <TextBlock Margin="10,0,0,0" Text="{Binding ScreenSize}"/>
+                    </StackPanel>
                 </StackPanel>
             </DockPanel>
         </DockPanel>
