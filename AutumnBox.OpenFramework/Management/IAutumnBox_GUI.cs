@@ -44,6 +44,22 @@ namespace AutumnBox.OpenFramework.Management
         /// <returns></returns>
         dynamic GetYNWindow(string message,string btnYes,string btnNo);
         /// <summary>
+        /// 输入数字
+        /// </summary>
+        /// <param name="hint"></param>
+        /// <param name="min"></param>
+        /// <param name="max"></param>
+        /// <param name="result"></param>
+        /// <returns></returns>
+        bool InputNumber(string hint, int min, int max,out int result);
+        /// <summary>
+        /// 输入字符串
+        /// </summary>
+        /// <param name="hint"></param>
+        /// <param name="result"></param>
+        /// <returns></returns>
+        bool InputString(string hint,out string result);
+        /// <summary>
         /// 获取主窗口
         /// </summary>
         /// <returns></returns>

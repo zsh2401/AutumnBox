@@ -46,6 +46,11 @@
     <s:String x:Key="EAppInstallerInstallingFmt">Installing {0},Total {1}</s:String>
     <s:String x:Key="EAppInstallerFinishedFmt">Finished,Success {0},Fail {1},Total {2}</s:String>
 
+    <s:String x:Key="EDpiModiferMessageOfChoice">What't your want?</s:String>
+    <s:String x:Key="EDpiModiferLeftChoice">Modify DPI</s:String>
+    <s:String x:Key="EDpiModiferRightChoice">Reset DPI</s:String>
+    <s:String x:Key="EDpiModiferHintOfInputNumber">Input modify dpi</s:String>
+    
     <s:String x:Key="EGodPowerWarning">This module will violently delete your account and users, and set this application as the device owner(dpm). Are you sure you want to do this?</s:String>
     
     <s:String x:Key="EGodPowerWarningFmt">This module will violently delete your account and users, and set {0} as the device owner(dpm). Are you sure you want to do this?</s:String>
