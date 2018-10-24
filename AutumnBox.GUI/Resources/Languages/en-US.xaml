@@ -114,6 +114,9 @@
     <s:String x:Key="PanelDeviceDetailsSw">Software infomations</s:String>
     <s:String x:Key="PanelDeviceDetailsRoot">Root</s:String>
     <s:String x:Key="PanelDeviceDetailsAndroidVersion">Android</s:String>
+     <s:String x:Key="PanelDeviceDetailsScreenSize">Screen Size</s:String>
+    <s:String x:Key="PanelDeviceDetailsDensity">DPI</s:String>
+    
     <!--PanelMain-->
     <s:String x:Key="PanelMainStart">Start</s:String>
      <s:String x:Key="PanelMainCurrent">Current device</s:String>

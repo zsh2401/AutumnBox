@@ -4,6 +4,7 @@ using AutumnBox.Basic.ManagedAdb;
 using AutumnBox.Basic.MultipleDevices;
 using System;
 using System.Collections;
+using System.Drawing;
 using System.Reflection;
 using System.Text;
 using System.Threading;
@@ -57,20 +58,21 @@ namespace AutumnBox.ConsoleTester
             Console.WriteLine("WOW!");
             return 1;
         }
-       static int _xcount = 0;
+        static int _xcount = 0;
         unsafe static void Main(string[] cmdargs)
         {
-            var intent  = new Intent();
-            intent.Add("z",3);
-            intent.Add("h",true);
-            intent.Add("wtf","asdas");
-            intent.Add("wow",new int[] { 1, 2, 3 });
-            Console.WriteLine(IntentStringHelper.ToAdbArguments(intent));
+            Size size = new Size
+            {
+                Height = 50,
+                Width = 60,
+            };
+            Console.WriteLine(size);
         }
         [Serializable]
         private class AppDomainTest
         {
-            public void RunNoS() {
+            public void RunNoS()
+            {
                 int count = 0;
                 while (true)
                 {
@@ -92,7 +94,8 @@ namespace AutumnBox.ConsoleTester
                     }
                 });
             }
-            ~AppDomainTest() {
+            ~AppDomainTest()
+            {
                 Console.WriteLine(AppDomain.CurrentDomain.FriendlyName);
                 Console.WriteLine("no!!!");
             }

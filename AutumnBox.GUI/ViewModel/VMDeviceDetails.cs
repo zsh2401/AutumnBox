@@ -71,6 +71,34 @@ namespace AutumnBox.GUI.ViewModel
         }
         private string brand;
 
+        public string Density
+        {
+            get
+            {
+                return _density;
+            }
+            set
+            {
+                _density = value;
+                RaisePropertyChanged();
+            }
+        }
+        private string _density;
+
+        public string ScreenSize
+        {
+            get
+            {
+                return _screenSize;
+            }
+            set
+            {
+                _screenSize = value;
+                RaisePropertyChanged();
+            }
+        }
+        private string _screenSize;
+
         public string Model
         {
             get => model; set
@@ -204,6 +232,8 @@ namespace AutumnBox.GUI.ViewModel
             Root = DEFAULT_VALUE;
             Ram = DEFAULT_VALUE;
             Root = DEFAULT_VALUE;
+            Density = DEFAULT_VALUE;
+            ScreenSize = DEFAULT_VALUE;
         }
 
         private Random ran = new Random();
@@ -236,6 +266,19 @@ namespace AutumnBox.GUI.ViewModel
             Screen = hwInfo.ScreenInfo;
             Ram = hwInfo.SizeofRam + "G";
             Storage = hwInfo.SizeofRom + "G";
+            int density = 0;
+            int screenH = 0;
+            int screenW = 0;
+            await Task.Run(() =>
+             {
+                 var wm = new WindowManager(device);
+                 density = wm.Density;
+                 var sz = wm.Size;
+                 screenH = sz.Height;
+                 screenW = sz.Width;
+             });
+            Density = density.ToString();
+            ScreenSize = $"{screenW}x{screenH}";
         }
 
         ~VMDeviceDetails()
