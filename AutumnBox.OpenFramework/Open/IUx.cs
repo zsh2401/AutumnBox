@@ -45,16 +45,32 @@ namespace AutumnBox.OpenFramework.Open
         /// <returns></returns>
         ChoiceResult DoChoice(string message, string btnLeft = null, string btnRight = null, string btnCancel = null);
         /// <summary>
+        /// 要求用户输入一个数字
+        /// </summary>
+        /// <param name="hint">提示信息</param>
+        /// <param name="min">最小值</param>
+        /// <param name="max">最大值</param>
+        /// <exception cref="Exceptions.UserDeniedException">用户取消输入时抛出此异常</exception>
+        /// <returns></returns>
+        int InputNumber(string hint = null, int min = int.MinValue, int max = int.MaxValue);
+        /// <summary>
+        /// 输入字符串
+        /// </summary>
+        /// <param name="hint">提示信息</param>
+        /// <exception cref="Exceptions.UserDeniedException">用户取消输入时抛出此异常</exception>
+        /// <returns></returns>
+        string InputString(string hint);
+        /// <summary>
         /// 信息，通常情况下，此方法会阻塞至用户确认
         /// 使用默认标题
         /// </summary>
         /// <param name="message">信息</param>
         void Message(string message);
-       /// <summary>
-       /// 显示信息，通常情况下，此方法会阻塞至用户确认
-       /// </summary>
-       /// <param name="title">标题</param>
-       /// <param name="message">信息</param>
+        /// <summary>
+        /// 显示信息，通常情况下，此方法会阻塞至用户确认
+        /// </summary>
+        /// <param name="title">标题</param>
+        /// <param name="message">信息</param>
         void Message(string title, string message);
         /// <summary>
         /// 警告，通常情况下，此方法会阻塞至用户确认

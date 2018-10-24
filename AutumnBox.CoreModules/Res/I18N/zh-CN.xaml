@@ -48,6 +48,10 @@
     <s:String x:Key="EAppInstallerInstallingFmt">正在安装第{0}个,共{1}个APK</s:String>
     <s:String x:Key="EAppInstallerFinishedFmt">执行完毕,成功{0}个,失败{1}个,总共{2}个</s:String>
 
+    <s:String x:Key="EDpiModiferMessageOfChoice">您要做哪一个操作?</s:String>
+    <s:String x:Key="EDpiModiferLeftChoice">修改DPI</s:String>
+    <s:String x:Key="EDpiModiferRightChoice">重设DPI</s:String>
+    <s:String x:Key="EDpiModiferHintOfInputNumber">请输入要修改的DPI,一定要慎重</s:String>
 
     <s:String x:Key="EGodPowerWarning">本模块将会暴力删除你的账户与用户,并设置这个应用为设备管理员(免ROOT),你确定这么做吗?</s:String>
     <s:String x:Key="EGodPowerWarningFmt">本模块将会暴力删除你的账户与用户,并设置{0}为设备管理员(免ROOT),你确定这么做吗?</s:String>

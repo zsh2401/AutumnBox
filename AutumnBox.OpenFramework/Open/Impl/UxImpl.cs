@@ -27,7 +27,7 @@ namespace AutumnBox.OpenFramework.Open.Impl
             bool? result = false;
             RunOnUIThread(() =>
             {
-               result =  sourceApi.GetYNWindow(message, btnYes, btnNo).ShowDialog();
+                result = sourceApi.GetYNWindow(message, btnYes, btnNo).ShowDialog();
             });
             return result == true;
         }
@@ -137,6 +137,42 @@ namespace AutumnBox.OpenFramework.Open.Impl
                 result = DoChoice(message, "ChoiceWindowBtnDisagree", "ChoiceWindowBtnAgree", "ChoiceWindowBtnCancel") == ChoiceResult.Accept;
             });
             return result;
+        }
+
+        public int InputNumber(string hint = null, int min = int.MinValue, int max = int.MaxValue)
+        {
+            bool success = false;
+            int result = 0;
+            RunOnUIThread(() =>
+            {
+                success = sourceApi.InputNumber(hint, min, max, out result);
+            });
+            if (success)
+            {
+                return result;
+            }
+            else
+            {
+                throw new Exceptions.UserDeniedException();
+            }
+        }
+
+        public string InputString(string hint)
+        {
+            bool success = false;
+            string result = null;
+            RunOnUIThread(() =>
+            {
+                success = sourceApi.InputString(hint, out result);
+            });
+            if (success)
+            {
+                return result;
+            }
+            else
+            {
+                throw new Exceptions.UserDeniedException();
+            }
         }
     }
 }
