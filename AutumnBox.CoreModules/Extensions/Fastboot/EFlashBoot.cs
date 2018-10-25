@@ -9,8 +9,7 @@ using Microsoft.Win32;
 
 namespace AutumnBox.CoreModules.Extensions.Fastboot
 {
-    [ExtName("刷入Boot.img")]
-    //[ExtName("Flash boot.img", Lang = "en-US")]
+    [ExtName("刷入Boot.img", "en-us:Flash boot.img")]
     [ExtRequiredDeviceStates(DeviceState.Fastboot)]
     [ExtIcon("Icons.cd.png")]
     internal class EFlashBoot : OfficialVisualExtension
