@@ -1,5 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                      xmlns:s="clr-namespace:System;assembly=mscorlib"
+                     xml:space="preserve"
                       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     
     <s:String x:Key="ExtensionExecutingCommandFmt">Executing command {0}</s:String>
@@ -9,6 +10,12 @@
     <s:String x:Key="ExtensionRunning">Running</s:String>
     <s:String x:Key="ExtensionCancelByUser">Cancelled by user</s:String>
 
+
+    <s:String x:Key="EClearUsersWarning">Read it in detail, otherwise the consequences will be at your own risk!!!
+         There is only one thing you need to do manually: clear the screen lock and fingerprint lock, do it now, make sure there is no screen lock and fingerprint lock, click agree</s:String>
+    <s:String x:Key="EClearAccountsWarning">Read it in detail, otherwise the consequences will be at your own risk!!!
+         There is only one thing you need to do manually: clear the screen lock and fingerprint lock, do it now, make sure there is no screen lock and fingerprint lock, click agree</s:String>
+    
     <s:String x:Key="EGCMNotSupported">Not supported this device</s:String>
     <s:String x:Key="EGCMAlreadyEnableNetDebugging">Finished</s:String>
 

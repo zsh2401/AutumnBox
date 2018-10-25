@@ -11,6 +11,12 @@
     <s:String x:Key="ExtensionCancelByUser">被用户取消</s:String>
 
 
+
+    <s:String x:Key="EClearUsersWarning">详细阅读，否则后果自负!!!
+        你需要手动做的只有一件事：清除屏幕锁和指纹锁，现在立刻去做，确保没有屏幕锁和指纹锁后，请点击同意将开始执行操作</s:String>
+    <s:String x:Key="EClearAccountsWarning">详细阅读，否则后果自负!!!
+        你需要手动做的只有一件事：清除屏幕锁和指纹锁，现在立刻去做，确保没有屏幕锁和指纹锁后，请点击同意将开始执行操作</s:String>
+    
     <s:String x:Key="EBreventActivatorFirstMsg">此设备似乎是第一次激活黑域,请在手机黑域界面向右滑,点击启动后再关闭此弹窗</s:String>
     
     <s:String x:Key="EFilePusherSuccessful">推送成功</s:String>

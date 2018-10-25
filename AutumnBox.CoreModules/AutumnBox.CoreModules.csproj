@@ -57,6 +57,8 @@
     <Compile Include="Extensions\Poweron\NoRoot\DpmSetter\EFreezeYou.cs" />
     <Compile Include="Extensions\Poweron\NoRoot\DpmSetter\EAirForzenActivator.cs" />
     <Compile Include="Extensions\Poweron\NoRoot\DpmSetter\EBlackHole.cs" />
+    <Compile Include="Extensions\Poweron\NoRoot\EClearAccounts.cs" />
+    <Compile Include="Extensions\Poweron\NoRoot\EClearUsers.cs" />
     <Compile Include="Extensions\Poweron\NoRoot\EGCM.cs" />
     <Compile Include="Extensions\Poweron\NoRoot\EGreenifyGrant.cs" />
     <Compile Include="Extensions\Poweron\NoRoot\Sh\EShizukuActivator.cs" />
@@ -197,6 +199,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Icons\cd.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\nuclear.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
