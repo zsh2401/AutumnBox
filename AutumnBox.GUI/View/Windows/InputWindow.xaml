@@ -8,6 +8,8 @@
         mc:Ignorable="d"
         ResizeMode="NoResize"
         WindowStyle="None"
+        BorderBrush="{DynamicResource PrimaryDarkBrush}"
+        BorderThickness="1,1,1,1"
         ShowInTaskbar="True"
         WindowStartupLocation="CenterScreen"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
