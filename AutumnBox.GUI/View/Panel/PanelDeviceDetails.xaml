@@ -19,41 +19,41 @@
             </StackPanel>
             <DockPanel Visibility="{Binding InfoPanelVisibility}" Width="550" Margin="0,0,0,0">
                 <StackPanel DockPanel.Dock="Left" Width="275">
-                    <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                    <StackPanel ToolTip="{DynamicResource PanelDeviceDetailsToolTipDefault}" Orientation="Horizontal" Margin="0,0,0,10">
                         <TextBlock Text="{DynamicResource PanelDeviceDetailsBrand}"/>
                         <TextBlock Margin="10,0,0,0" Text="{Binding Brand}"/>
                     </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                    <StackPanel ToolTip="{DynamicResource PanelDeviceDetailsToolTipDefault}" Orientation="Horizontal" Margin="0,0,0,10">
                         <TextBlock Text="{DynamicResource PanelDeviceDetailsModel}"/>
                         <TextBlock Margin="10,0,0,0" Text="{Binding Model}"/>
                     </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                    <StackPanel  ToolTip="{DynamicResource PanelDeviceDetailsToolTipDefault}" Orientation="Horizontal" Margin="0,0,0,10">
                         <TextBlock  Text="{DynamicResource PanelDeviceDetailsProductName}"/>
                         <TextBlock Margin="10,0,0,0" Text="{Binding Product}"/>
                     </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                    <StackPanel ToolTip="{DynamicResource PanelDeviceDetailsToolTipStorage}" Orientation="Horizontal" Margin="0,0,0,10">
                         <TextBlock  Text="{DynamicResource PanelDeviceDetailsStorage}"/>
                         <TextBlock Margin="10,0,0,0" Text="{Binding Storage}"/>
                     </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                    <StackPanel ToolTip="{DynamicResource PanelDeviceDetailsToolTipDefault}" Orientation="Horizontal" Margin="0,0,0,10">
                         <TextBlock  Text="{DynamicResource PanelDeviceDetailsRam}"/>
                         <TextBlock Margin="10,0,0,0" Text="{Binding Ram}"/>
                     </StackPanel>
                 </StackPanel>
                 <StackPanel Width="275">
-                    <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                    <StackPanel ToolTip="{DynamicResource PanelDeviceDetailsToolTipSu}" Orientation="Horizontal" Margin="0,0,0,10">
                         <TextBlock  Text="{DynamicResource PanelDeviceDetailsRoot}"/>
                         <TextBlock Margin="10,0,0,0" Text="{Binding Root}"/>
                     </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                    <StackPanel ToolTip="{DynamicResource PanelDeviceDetailsToolTipAndroidVersion}" Orientation="Horizontal" Margin="0,0,0,10">
                         <TextBlock  Text="{DynamicResource PanelDeviceDetailsAndroidVersion}"/>
                         <TextBlock Margin="10,0,0,0" Text="{Binding AndroidVersion}"/>
                     </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                    <StackPanel ToolTip="{DynamicResource PanelDeviceDetailsToolTipDpi}" Orientation="Horizontal" Margin="0,0,0,10">
                         <TextBlock  Text="{DynamicResource PanelDeviceDetailsDensity}"/>
                         <TextBlock Margin="10,0,0,0" Text="{Binding Density}"/>
                     </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                    <StackPanel ToolTip="{DynamicResource PanelDeviceDetailsToolTipDefault}" Orientation="Horizontal" Margin="0,0,0,10">
                         <TextBlock  Text="{DynamicResource PanelDeviceDetailsScreenSize}"/>
                         <TextBlock Margin="10,0,0,0" Text="{Binding ScreenSize}"/>
                     </StackPanel>
