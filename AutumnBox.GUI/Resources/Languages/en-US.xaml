@@ -187,6 +187,10 @@
      <s:String x:Key="RunningWindowExceptionOnRunning">[Warn]An exception has threw on running,you can view the logs</s:String>
      <s:String x:Key="RunningWindowExceptionOnStopping">[Warn]An exception has threw on try stopping,you can view the logs</s:String>
     
+        <!--InputWindow-->
+            <s:String x:Key="InputWindowBtnOK">Finish</s:String>
+            <s:String x:Key="InputWindowBtnCancel">Cancel</s:String>
+    
         <!--拓展模块池-->
     
     
