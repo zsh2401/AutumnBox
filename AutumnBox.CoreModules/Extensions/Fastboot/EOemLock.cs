@@ -8,31 +8,22 @@ using AutumnBox.OpenFramework.Extension;
 
 namespace AutumnBox.CoreModules.Extensions.Fastboot
 {
-    [ExtName("加上BL锁")]
-    //[ExtName("Lock oem", Lang = "en-US")]
-    [ExtDesc("觉得解BL后不安全?想养老了?")]
+    [ExtName("加上BL锁", "en-us:Lock oem")]
+    [ExtDesc("觉得解BL后不安全?想养老了?", "en-us:Do you wanna relock oem for your device?")]
     [ExtIcon("Icons.lock.png")]
-    //[ExtDesc("Do you wanna relock oem for your device?", Lang = "en-US")]
     [ExtRequiredDeviceStates(Basic.Device.DeviceState.Fastboot)]
     internal class EOemLock : OfficialVisualExtension
     {
-        private FastbootCommand ExecutingCommand;
         protected override int VisualMain()
         {
-            if (!Ux.Agree(Res("EOemLockWarn"))) return ERR;
-            if (!Ux.Agree(Res("EOemLockWarnAgain"))) return ERR;
+            if (!Ux.Agree(Res("EOemLockWarn"))) return ERR_CANCELED_BY_USER;
+            if (!Ux.Agree(Res("EOemLockWarnAgain"))) return ERR_CANCELED_BY_USER;
             WriteInitInfo();
-            ExecutingCommand = new FastbootCommand(TargetDevice, "oem lock");
-            WriteCommand(ExecutingCommand);
-            WriteLine(ExecutingCommand.ToString());
-            var exeResult = ExecutingCommand.To(OutputPrinter).Execute();
-            WriteExitCode(exeResult.ExitCode);
-            return exeResult.ExitCode;
-        }
-        protected override bool VisualStop()
-        {
-            ExecutingCommand.Kill();
-            return true;
+            var result = CmdStation.GetFastbootCommand(TargetDevice, "oem lock")
+                 .To(OutputPrinter)
+                 .Execute();
+            WriteExitCode(result.ExitCode);
+            return result.ExitCode;
         }
     }
 }
