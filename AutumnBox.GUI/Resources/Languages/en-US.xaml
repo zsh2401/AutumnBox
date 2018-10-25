@@ -96,6 +96,11 @@
     <s:String x:Key="OpenFxOverhighAndroidVersionFmt">The Android version of your device is too high. This module only supports Android versions below {0}.</s:String>
     
     <!--PanelDeviceDetails-->
+    <s:String x:Key="PanelDeviceDetailsToolTipDefault">Nothing to explain, as the name suggests</s:String>
+    <s:String x:Key="PanelDeviceDetailsToolTipAndroidVersion">Android version of the device, from build.prop</s:String>
+    <s:String x:Key="PanelDeviceDetailsToolTipDpi">Pixel density, if modified, displays the modified DPI</s:String>
+    <s:String x:Key="PanelDeviceDetailsToolTipStorage">Unlike the storage space of the vendor ID, only the non-reserved storage space available to the user is calculated here.</s:String>
+    <s:String x:Key="PanelDeviceDetailsToolTipSu">According to the shell su command, if the su command does not exist, it is considered as no root.</s:String>
     <s:String x:Key="PanelDeviceDetailsStateNotFound">Device not found</s:String>
     <s:String x:Key="PanelDeviceDetailsStatePoweron">System runinng</s:String>
     <s:String x:Key="PanelDeviceDetailsStateRecovery">Recovery</s:String>

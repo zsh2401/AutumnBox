@@ -99,6 +99,11 @@
     <s:String x:Key="OpenFxOverhighAndroidVersionFmt">您的设备安卓版本太高了,此模块仅支持{0}以下的安卓版本</s:String>
     
     <!--PanelDeviceDetails-->
+    <s:String x:Key="PanelDeviceDetailsToolTipDefault">没什么好解释的,顾名思义</s:String>
+    <s:String x:Key="PanelDeviceDetailsToolTipAndroidVersion">设备的安卓版本,从build.prop获取</s:String>
+    <s:String x:Key="PanelDeviceDetailsToolTipDpi">像素密度,如果修改过,则显示被修改后的DPI</s:String>
+    <s:String x:Key="PanelDeviceDetailsToolTipStorage">与厂商标识的存储空间不同，此处仅计算用户可用非保留存储空间</s:String>
+    <s:String x:Key="PanelDeviceDetailsToolTipSu">根据shell su命令进行检测，如果su命令不存在，则视为无root</s:String>
     <s:String x:Key="PanelDeviceDetailsStateNotFound">未连接设备</s:String>
     <s:String x:Key="PanelDeviceDetailsStateTipNotFound">请尝试安装ADB驱动或关闭其他手机助手</s:String>
     <s:String x:Key="PanelDeviceDetailsStatePoweron">设备开机</s:String>
