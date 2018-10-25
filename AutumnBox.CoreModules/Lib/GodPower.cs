@@ -6,7 +6,7 @@ using System.IO;
 
 namespace AutumnBox.CoreModules.Lib
 {
-    internal class GodPower : DependOnDeviceObject
+    internal class GodPower : DeviceCommander
     {
         private const string FMT_CMD =
     "CLASSPATH=" + GODPOWER_APK_ON_DEVICE +
@@ -21,26 +21,26 @@ namespace AutumnBox.CoreModules.Lib
         public ShellCommand GetRemoveUserCommand()
         {
             var cmd = string.Format(FMT_CMD, ARG_RM_ALL_USR);
-            return new ShellCommand(Device, cmd);
+            return CmdStation.GetShellCommand(Device, cmd);
         }
         public ShellCommand GetRemoveAccountCommnad()
         {
             var cmd = string.Format(FMT_CMD, ARG_RM_ALL_ACC);
-            return new ShellCommand(Device, cmd);
+            return CmdStation.GetShellCommand(Device, cmd);
         }
         public ShellCommand GetSetIceBoxCommand()
         {
             var cmd = string.Format(FMT_CMD, ARG_SET_ICE_BOX);
-            return new ShellCommand(Device, cmd);
+            return CmdStation.GetShellCommand(Device, cmd);
         }
         public ShellCommand GetSetStopAppCommand()
         {
             var cmd = string.Format(FMT_CMD, ARG_SET_STP_APP);
-            return new ShellCommand(Device, cmd);
+            return CmdStation.GetShellCommand(Device, cmd);
         }
         public AdbCommand GetPushCommand()
         {
-            return new AdbCommand(Device, $"push \"{file.FullName}\" {GODPOWER_APK_ON_DEVICE}");
+            return  CmdStation.GetAdbCommand(Device, $"push \"{file.FullName}\" {GODPOWER_APK_ON_DEVICE}");
         }
         private FileInfo file;
         public void Extract()

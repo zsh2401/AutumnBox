@@ -53,8 +53,8 @@ namespace AutumnBox.OpenFramework.Extension
             if (match.Success)
             {
                 AddOrOverwrite(
-                    match.Result("${key}")
-                    , match.Result("${value}"));
+                    match.Result("${key}").ToLower() , 
+                    match.Result("${value}"));
             }
             else
             {
