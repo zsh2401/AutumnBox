@@ -202,7 +202,9 @@
      <s:String x:Key="RunningWindowExceptionOnRunning">[警告]运行时发生严重异常,详情请看日志</s:String>
      <s:String x:Key="RunningWindowExceptionOnStopping">[警告]终止模块时发生严重异常,详情请看日志</s:String>
     
-    
+    <!--InputWindow-->
+    <s:String x:Key="InputWindowBtnOK">完成</s:String>
+    <s:String x:Key="InputWindowBtnCancel">取消</s:String>
     
     <!--按钮-->
     <s:String x:Key="btnAppOpsXAct">激活AppOpsX</s:String>

@@ -168,6 +168,7 @@
     <Compile Include="ViewModel\VMDisconnectDevice.cs" />
     <Compile Include="ViewModel\VMEnableDeviceNetDebugging.cs" />
     <Compile Include="ViewModel\VMExtensions.cs" />
+    <Compile Include="ViewModel\VMInputWindow.cs" />
     <Compile Include="ViewModel\VMMore.cs" />
     <Compile Include="ViewModel\VMMotd.cs" />
     <Compile Include="ViewModel\VMPanelMain.cs" />
@@ -241,6 +242,9 @@
     <Compile Include="Util\Data\Md5.cs" />
     <Compile Include="View\Windows\ChoiceWindow.xaml.cs">
       <DependentUpon>ChoiceWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\InputWindow.xaml.cs">
+      <DependentUpon>InputWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Windows\LoadingWindow.xaml.cs">
       <DependentUpon>LoadingWindow.xaml</DependentUpon>
@@ -512,6 +516,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Windows\ChoiceWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\InputWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

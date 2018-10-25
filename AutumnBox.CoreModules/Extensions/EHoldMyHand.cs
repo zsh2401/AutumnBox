@@ -28,20 +28,22 @@ namespace AutumnBox.CoreModules.Extensions
         //}
         protected override int VisualMain()
         {
-            var recorder = GetDeviceCommander<VideoRecorder>();
-            recorder.To(OutputPrinter);
-            recorder.EnableVerbose = true;
-            recorder.Seconds = 10;
-            bool isRunning = true;
-            Task.Run(() =>
-            {
-                recorder.Start();
-                var filePath = Path.Combine(Tmp.Path, "ok.mp4");
-                FileInfo fileInfo = new FileInfo(filePath);
-                recorder.SaveToPC(fileInfo);
-                isRunning = false;
-            });
-            while (isRunning) ;
+            //var recorder = GetDeviceCommander<VideoRecorder>();
+            //recorder.To(OutputPrinter);
+            //recorder.EnableVerbose = true;
+            //recorder.Seconds = 10;
+            //bool isRunning = true;
+            //Task.Run(() =>
+            //{
+            //    recorder.Start();
+            //    var filePath = Path.Combine(Tmp.Path, "ok.mp4");
+            //    FileInfo fileInfo = new FileInfo(filePath);
+            //    recorder.SaveToPC(fileInfo);
+            //    isRunning = false;
+            //});
+            //while (isRunning) ;
+            var input = Ux.InputString("Please be true");
+            Ux.Message(input.ToString());
             return OK;
             WriteInitInfo();
 

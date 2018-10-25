@@ -179,5 +179,41 @@ namespace AutumnBox.GUI.Util.OpenFxManagement
                 Message = message,
             };
         }
+
+        public bool InputNumber(string hint, int min, int max, out int result)
+        {
+            int tmp = 0;
+            string _hint = App.Current.Resources[hint] as string ?? hint;
+            _hint += $"({min}~{max})";
+            var window = new InputWindow(_hint);
+            window.InputCheck = (str) =>
+            {
+                if (int.TryParse(str, out tmp))
+                {
+                    return min <= tmp && tmp <= max;
+                }
+                else
+                {
+                    return false;
+                }
+            };
+            window.ShowDialog();
+            result = tmp;
+            return window.DialogResult == true;
+        }
+
+        public bool InputString(string hint, out string result)
+        {
+            string tmp = null;
+            var window = new InputWindow(hint);
+            window.InputCheck = (str) =>
+            {
+                tmp = str;
+                return true;
+            };
+            window.ShowDialog();
+            result = tmp;
+            return window.DialogResult == true;
+        }
     }
 }
