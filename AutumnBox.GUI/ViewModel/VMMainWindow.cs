@@ -47,6 +47,10 @@ namespace AutumnBox.GUI.ViewModel
 #else
             string comp = "Release";
 #endif
+
+#if BETA
+            comp += " Beta(测试版)";
+#endif
             Title = $"{App.Current.Resources["AppName"]}-{Self.Version.ToString(3)}-{comp}";
         }
 
