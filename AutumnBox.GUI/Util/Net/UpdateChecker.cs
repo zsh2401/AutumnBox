@@ -18,66 +18,73 @@ using System.Text;
 
 namespace AutumnBox.GUI.Util.Net
 {
-    [JsonObject(MemberSerialization.OptOut)]
-    internal class UpdateCheckResult
-    {
-        [JsonProperty("header")]
-        public string Header { get; set; } = "Ok!";
-        [JsonProperty("version")]
-        public string VersionString { get; set; } = "0.0.0";
-        [JsonProperty("message")]
-        public string Message { get; set; } = "No update";
-        [JsonProperty("updateUrl")]
-        public string UpdateUrl { get; set; } = "http://www.atmb.top/";
-        [JsonProperty("date")]
-        public int[] TimeArray { get; set; } = new int[] { 1970, 1, 1 };
 
-        public Version Version
+    internal class RemoteVersionInfoGetter : JsonGetter<RemoteVersionInfoGetter.Result>
+    {
+        [JsonObject(MemberSerialization.OptOut)]
+        internal class Result
         {
-            get
+            [JsonProperty("header")]
+            public string Header { get; set; } = "NULL TITLE";
+            [JsonProperty("version")]
+            public string VersionString { get; set; } = "0.0.0";
+            [JsonProperty("message")]
+            public string Message { get; set; } = "No update";
+            [JsonProperty("updateUrl")]
+            public string UpdateUrl { get; set; } = "http://www.atmb.top/";
+            [JsonProperty("date")]
+            public int[] TimeArray { get; set; } = new int[] { 1970, 1, 1 };
+
+            public Version Version
             {
-                try
+                get
                 {
-                    return new Version(VersionString);
+                    try
+                    {
+                        return new Version(VersionString);
+                    }
+                    catch (Exception ex)
+                    {
+                        SLogger.Warn(this, "Parse VersionString failed", ex);
+                        return new Version("0.0.5");
+                    }
                 }
-                catch (Exception ex)
+            }
+
+            public DateTime Time
+            {
+                get
                 {
-                    new Logger<UpdateCheckResult>().Warn("Parse VersionString failed", ex);
-                    return new Version("0.0.5");
+                    try
+                    {
+                        return new DateTime(TimeArray[0], TimeArray[1], TimeArray[2]);
+                    }
+                    catch (Exception ex)
+                    {
+                        SLogger.Warn(this, "Parse datetime failed", ex);
+                        return new DateTime(1970, 1, 1);
+                    }
                 }
             }
         }
+        public RemoteVersionInfoGetter()
+        {
+            DebugUrl = "http://localhost:24010/api/update/";
+            Url = App.Current.Resources["urlApiUpdate"].ToString();
+        }
 
-        public DateTime Time
-        {
-            get
-            {
-                try
-                {
-                    return new DateTime(TimeArray[0], TimeArray[1], TimeArray[2]);
-                }
-                catch (Exception ex)
-                {
-                    new Logger<UpdateCheckResult>().Warn("Parse datetime failed", ex);
-                    return new DateTime(1970, 1, 1);
-                }
-            }
-        }
-    }
-    internal class UpdateChecker : RemoteDataGetter<UpdateCheckResult>
-    {
-        public override UpdateCheckResult Get()
-        {
-            Logger.Debug("Getting update info....");
-#if USE_LOCAL_API && DEBUG
-            byte[] bytes = webClient.DownloadData("http://localhost:24010/api/update/");
-#else
-            byte[] bytes = webClient.DownloadData(App.Current.Resources["urlApiUpdate"].ToString());
-#endif
-            string data = Encoding.UTF8.GetString(bytes);
-            var result = (UpdateCheckResult)JsonConvert.DeserializeObject(data, typeof(UpdateCheckResult));
-            Logger.Debug("update check finished" + Environment.NewLine + data);
-            return result;
-        }
+        //        public override UpdateCheckResult Get()
+        //        {
+        //            Logger.Debug("Getting update info....");
+        //#if USE_LOCAL_API && DEBUG
+        //            byte[] bytes = webClient.DownloadData("http://localhost:24010/api/update/");
+        //#else
+        //            byte[] bytes = webClient.DownloadData(App.Current.Resources["urlApiUpdate"].ToString());
+        //#endif
+        //            string data = Encoding.UTF8.GetString(bytes);
+        //            var result = (UpdateCheckResult)JsonConvert.DeserializeObject(data, typeof(UpdateCheckResult));
+        //            Logger.Debug("update check finished" + Environment.NewLine + data);
+        //            return result;
+        //        }
     }
 }

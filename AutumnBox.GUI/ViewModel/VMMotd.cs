@@ -27,11 +27,11 @@ namespace AutumnBox.GUI.ViewModel
 
         public VMMotd()
         {
-            new MOTDGetter().RunAsync((e) =>
+            new MOTDGetter().Try((result) =>
             {
                 App.Current.Dispatcher.Invoke(() =>
                 {
-                    Motd = e.Message;
+                    Motd = result.Message;
                 });
             });
         }

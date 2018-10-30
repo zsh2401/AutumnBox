@@ -21,17 +21,12 @@ namespace AutumnBox.GUI.Util.Net
         [JsonProperty("message")]
         public string Message { get; set; }
     }
-    internal class MOTDGetter : RemoteDataGetter<MOTDResult>
+    internal class MOTDGetter : JsonGetter<MOTDResult>
     {
-        public override MOTDResult Get()
+        public MOTDGetter()
         {
-#if USE_LOCAL_API && DEBUG
-            var json = webClient.DownloadString("http://localhost:24010/api/motd/");
-#else
-            var json = webClient.DownloadString(App.Current.Resources["urlApiMotd"].ToString());
-#endif
-            var result = (MOTDResult)JsonConvert.DeserializeObject(json, typeof(MOTDResult));
-            return result;
+            Url = (string)App.Current.Resources["urlApiMotd"];
+            DebugUrl = "http://localhost:24010/api/motd/";
         }
     }
 }

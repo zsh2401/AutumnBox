@@ -18,7 +18,7 @@ namespace AutumnBox.GUI.ViewModel
 {
     class VMUpdateWindow : ViewModelBase
     {
-        public UpdateCheckResult Model
+        public RemoteVersionInfoGetter.Result Model
         {
             get => model; set
             {
@@ -26,14 +26,14 @@ namespace AutumnBox.GUI.ViewModel
                 RaisePropertyChanged();
             }
         }
-        private UpdateCheckResult model;
+        private RemoteVersionInfoGetter.Result model;
 
         public ICommand GotoUpdate
         {
             get; private set;
         }
         public ICommand SkipThisVersion { get; private set; }
-        public VMUpdateWindow(UpdateCheckResult result)
+        public VMUpdateWindow(RemoteVersionInfoGetter.Result result)
         {
             this.Model = result;
             GotoUpdate = new MVVMCommand((para) =>
