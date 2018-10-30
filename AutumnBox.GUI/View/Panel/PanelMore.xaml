@@ -53,6 +53,30 @@
                     </WrapPanel>
                 </StackPanel>
             </materialDesign:Card>
+
+            <materialDesign:Card Margin="10"  Background="{DynamicResource CardBackgroundBrush}">
+                <StackPanel Orientation="Vertical">
+                    <TextBlock FontSize="15" Margin="15" Text="{DynamicResource PanelMoreOpenSourceLinks}"/>
+                    <WrapPanel Margin="10,0,10,10">
+                        <Button Content="{DynamicResource PanelMoreOSLinkAutumnBox}" CommandParameter="http://atmb.top/opensource/" Style="{DynamicResource MaterialDesignFlatButton}"  Command="{Binding OpenUrl}" />
+                        <Button Content="{DynamicResource PanelMoreOSLinkIsland}" CommandParameter="https://github.com/oasisfeng/island" Style="{DynamicResource MaterialDesignFlatButton}"  Command="{Binding OpenUrl}" />
+                        <Button Content="{DynamicResource PanelMoreOSLink_Magisk}" CommandParameter="https://github.com/topjohnwu/Magisk" Style="{DynamicResource MaterialDesignFlatButton}"  Command="{Binding OpenUrl}" />
+                        <Button Content="{DynamicResource PanelMoreOSLink_ShizukuManager}" CommandParameter="https://github.com/RikkaApps/Shizuku" Style="{DynamicResource MaterialDesignFlatButton}"  Command="{Binding OpenUrl}" />
+                        <Button Content="{DynamicResource PanelMoreOSLink_AppOpsX}" CommandParameter="https://github.com/8enet/AppOpsX" Style="{DynamicResource MaterialDesignFlatButton}"  Command="{Binding OpenUrl}" />
+                        <Button Content="{DynamicResource PanelMoreOSLink_MaterialDesignInXaml}" ToolTip="{DynamicResource PanelMoreOSLinkToolTip_MaterialDesignInXaml}" CommandParameter="https://github.com/MaterialDesignInXAML/MaterialDesignInXamlToolkit" Style="{DynamicResource MaterialDesignFlatButton}"  Command="{Binding OpenUrl}" />
+                        <Button Content="{DynamicResource PanelMoreOSLink_TeamWin}" ToolTip="{DynamicResource PanelMoreOSLink_TeamWinToolTip}" CommandParameter="https://github.com/TeamWin" Style="{DynamicResource MaterialDesignFlatButton}"  Command="{Binding OpenUrl}" />
+                        <Button Content="{DynamicResource PanelMoreOSLink_BilibiliDM}" ToolTip="{DynamicResource PanelMoreOSLinkToolTip_BilibiliDM}" CommandParameter="https://github.com/copyliu/bililive_dm" Style="{DynamicResource MaterialDesignFlatButton}"  Command="{Binding OpenUrl}" />
+                        <Button Content="{DynamicResource PanelMoreOSLink_awesome-adb}" CommandParameter="https://github.com/mzlogin/awesome-adb" Style="{DynamicResource MaterialDesignFlatButton}"  Command="{Binding OpenUrl}" />
+                        <Button Content="{DynamicResource PanelMoreOSLink_Ice-Box-Docs}" CommandParameter="https://github.com/heruoxin/Ice-Box-Docs" Style="{DynamicResource MaterialDesignFlatButton}"  Command="{Binding OpenUrl}" />
+                        <Button Content="{DynamicResource PanelMoreOSLink_NewtonsoftJson}" ToolTip="{DynamicResource PanelMoreOSLinkToolTip_NewtonsoftJson}" CommandParameter="https://github.com/JamesNK/Newtonsoft.Json" Style="{DynamicResource MaterialDesignFlatButton}"  Command="{Binding OpenUrl}" />
+                        <Button Content="{DynamicResource PanelMoreOSLink_TWRP}" CommandParameter="https://github.com/TeamWin/Team-Win-Recovery-Project" Style="{DynamicResource MaterialDesignFlatButton}"  Command="{Binding OpenUrl}" />
+                        <Button Content="{DynamicResource PanelMoreOSLink_Linux}" CommandParameter="https://github.com/torvalds/linux" Style="{DynamicResource MaterialDesignFlatButton}"  Command="{Binding OpenUrl}" />
+                        <Button Content="{DynamicResource PanelMoreOSLink_WebsiteOfficial}" CommandParameter="https://github.com/zsh2401/www.atmb.top" Style="{DynamicResource MaterialDesignFlatButton}"  Command="{Binding OpenUrl}" />
+                        
+                    </WrapPanel>
+                </StackPanel>
+            </materialDesign:Card>
+            
             <materialDesign:Card Margin="10"  Background="{DynamicResource CardBackgroundBrush}">
                 <Image Source="/Resources/Drawable/More/halo.png"/>
             </materialDesign:Card>

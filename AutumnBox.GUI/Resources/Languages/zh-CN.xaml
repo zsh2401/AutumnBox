@@ -159,7 +159,29 @@
     <s:String x:Key="PanelMoreLinkMtBBS">MT论坛</s:String>
     <s:String x:Key="PanelMoreLinkLineageOS">LineageOS</s:String>
     <s:String x:Key="PanelMoreLinkCoolapk">酷安网</s:String>
-  
+    <s:String x:Key="PanelMoreOpenSourceLinks">感谢为开源做出贡献的人们(相关开源项目)</s:String>
+    <s:String x:Key="PanelMoreOSLinkAutumnBox">秋之盒</s:String>
+    <s:String x:Key="PanelMoreOSLinkIsland">Island</s:String>
+     <s:String x:Key="PanelMoreOSLink_MaterialDesignInXaml">MaterialDesignInXaml</s:String>
+    <s:String x:Key="PanelMoreOSLinkToolTip_MaterialDesignInXaml">MaterialDesignInXaml让秋之盒能以MD界面展示</s:String>
+    <s:String x:Key="PanelMoreOSLink_Magisk">Magisk</s:String>
+    <s:String x:Key="PanelMoreOSLink_TeamWin">TeamWin</s:String>
+    <s:String x:Key="PanelMoreOSLink_TeamWinToolTip">知道TWRP吗?</s:String>
+    <s:String x:Key="PanelMoreOSLink_BilibiliDM">bilibili弹幕姬</s:String>
+    <s:String x:Key="PanelMoreOSLinkToolTip_BilibiliDM">秋之盒的开发中,参考了许多该开源项目的代码</s:String>
+    <s:String x:Key="PanelMoreOSLink_awesome-adb">awesome-adb</s:String>
+    <s:String x:Key="PanelMoreOSLinkToolTip_awesome-adb">秋之盒中的许多adb命令是从这里参考来的</s:String>
+    <s:String x:Key="PanelMoreOSLink_AppOpsX">App Ops X</s:String>
+   <s:String x:Key="PanelMoreOSLink_ShizukuManager">Shizuku Manager</s:String>
+    <s:String x:Key="PanelMoreOSLink_Ice-Box-Docs">冰箱在线文档</s:String>
+    <s:String x:Key="PanelMoreOSLink_NewtonsoftJson">Newtonsoft.Json</s:String>
+    <s:String x:Key="PanelMoreOSLinkToolTip_NewtonsoftJson">Newtonsoft.Json是秋之盒的Json库,同时也是最著名而好用的.NET平台Json库</s:String>
+    <s:String x:Key="PanelMoreOSLink_TWRP">TWRP</s:String>
+    <s:String x:Key="PanelMoreOSLink_Linux">Linux</s:String>
+    <s:String x:Key="PanelMoreOSLink_DpmBox">Dpm Box</s:String>
+     <s:String x:Key="PanelMoreOSLink_WebsiteOfficial">秋之盒官网开源</s:String>
+     <s:String x:Key="PanelMoreOSLinkToolTip_DpmBox">友情添加:小黑屋开发者</s:String>
+    
     <!--ContentConnectNetDevice-->
     <s:String x:Key="ContentConnectNetDeviceIP">设备IP地址</s:String>
     <s:String x:Key="ContentConnectNetDevicePort">该设备的网络调试端口</s:String>
