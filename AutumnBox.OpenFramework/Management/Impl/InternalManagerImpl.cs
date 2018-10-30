@@ -270,6 +270,7 @@ namespace AutumnBox.OpenFramework.Management.Impl
             List<IExtensionWrapper> all = Wrappers.ToList();
             return from w in all
                    where IsOk(w, filters)
+                   orderby (int)w.Info[ExtensionInformationKeys.PRIORITY] descending
                    select w;
         }
 

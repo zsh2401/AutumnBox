@@ -14,6 +14,12 @@ namespace AutumnBox.OpenFramework.Wrapper
     public interface IExtInfoGetter
     {
         /// <summary>
+        /// 索引器
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        object this[string key] { get; }
+        /// <summary>
         /// 获取Scanner
         /// </summary>
         ClassExtensionScanner Scanner { get; }
