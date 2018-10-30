@@ -11,9 +11,9 @@ using System;
 namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot.DpmSetter
 {
     [ExtName("免ROOT激活小黑屋", "en-us:Set StopApp as DPM without root")]
-    [ExtAppProperty("com.web1n.stopapp")]
+    [ExtAppProperty("web1n.stopapp")]
     [ExtIcon("Icons.stopapp.png")]
-    [ExtPriority(1)]
+    [ExtPriority(ExtPriority.HIGH)]
     [ExtRequiredDeviceStates(Basic.Device.DeviceState.Poweron)]
     internal class EStopApp : DpmSetterExtension
     {
