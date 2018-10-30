@@ -11,13 +11,6 @@ namespace AutumnBox.OpenFramework.Service
    public interface IServicesManager
     {
         /// <summary>
-        /// 根据ID获取服务
-        /// </summary>
-        /// <param name="ctx"></param>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        AtmbService GetServiceById(Context ctx,int id);
-        /// <summary>
         /// 根据名称获取服务
         /// </summary>
         /// <param name="ctx"></param>
@@ -25,9 +18,24 @@ namespace AutumnBox.OpenFramework.Service
         /// <returns></returns>
         AtmbService GetServiceByName(Context ctx,string name);
         /// <summary>
-        /// 注册服务
+        /// 启动一个服务
         /// </summary>
-        /// <param name="service"></param>
-        void RegisterService(AtmbService service);
+        /// <param name="typeOfService"></param>
+        void StartService(Type typeOfService);
+        /// <summary>
+        /// 启动服务
+        /// </summary>
+        /// <typeparam name="TService"></typeparam>
+        void StartService<TService>() where TService : AtmbService;
+        /// <summary>
+        /// 停止服务
+        /// </summary>
+        /// <param name="typeOfService"></param>
+        void StopService(Type typeOfService);
+        /// <summary>
+        /// 停止服务
+        /// </summary>
+        /// <typeparam name="TService"></typeparam>
+        void StopService<TService>() where TService : AtmbService;
     }
 }

@@ -13,26 +13,11 @@ namespace AutumnBox.OpenFramework.Service
 {
     internal class ServicesManagerImpl : IServicesManager
     {
-        private readonly List<AtmbService> _serviceCollection;
+        internal readonly List<AtmbService> _serviceCollection;
 
         public ServicesManagerImpl()
         {
             _serviceCollection = new List<AtmbService>();
-        }
-
-        public AtmbService GetServiceById(Context ctx, int id)
-        {
-            var result = from service in _serviceCollection
-                         where service.Id == id
-                         select service;
-            if (result.Count() != 0)
-            {
-                return result.First();
-            }
-            else
-            {
-                throw new KeyNotFoundException();
-            }
         }
 
         public AtmbService GetServiceByName(Context ctx, string name)
@@ -46,35 +31,43 @@ namespace AutumnBox.OpenFramework.Service
             }
             else
             {
-                throw new KeyNotFoundException();
+                throw new KeyNotFoundException("Service not found!");
             }
         }
 
-        public void RegisterService(AtmbService service)
+        public AtmbService GetInstance(Type t) {
+            var filtResult = from serv in _serviceCollection
+                           where serv.GetType() == t
+                           select serv;
+            if (filtResult.Count() > 0)
+            {
+                return filtResult.First();
+            }
+            else {
+                object _obj =  Activator.CreateInstance(t);
+                AtmbService instance = (AtmbService)_obj;
+                _serviceCollection.Add(instance);
+                return instance;
+            }
+        }
+        public void StartService(Type typeOfService)
         {
-            _serviceCollection.Add(service);
+            GetInstance(typeOfService).Start();
         }
 
-        internal void StopAll() {
-            _serviceCollection.ForEach((service) =>
-            {
-                if (service.State == ServiceState.Running)
-                {
-                    try { service.Stop(); } catch { }
-                }
-            });
+        public void StartService<TService>() where TService : AtmbService
+        {
+            StartService(typeof(TService));
         }
 
-        internal void FreeAll()
+        public void StopService(Type typeOfService)
         {
-            _serviceCollection.ForEach((service) =>
-            {
-                if (service.State == ServiceState.Running)
-                {
-                    try { service.Stop(); } catch { }
-                }
-                try { service.Destory(); } catch { }
-            });
+            GetInstance(typeOfService).Stop();
+        }
+
+        public void StopService<TService>() where TService : AtmbService
+        {
+            StopService(typeof(TService));
         }
     }
 }

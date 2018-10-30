@@ -8,6 +8,7 @@ using AutumnBox.Basic.Device;
 using AutumnBox.Basic.Device.Management.OS;
 using AutumnBox.CoreModules.Aspect;
 using AutumnBox.OpenFramework.Extension;
+using AutumnBox.OpenFramework.Open;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
@@ -28,20 +29,11 @@ namespace AutumnBox.CoreModules.Extensions
         //}
         protected override int VisualMain()
         {
-            //var recorder = GetDeviceCommander<VideoRecorder>();
-            //recorder.To(OutputPrinter);
-            //recorder.EnableVerbose = true;
-            //recorder.Seconds = 10;
-            //bool isRunning = true;
-            //Task.Run(() =>
-            //{
-            //    recorder.Start();
-            //    var filePath = Path.Combine(Tmp.Path, "ok.mp4");
-            //    FileInfo fileInfo = new FileInfo(filePath);
-            //    recorder.SaveToPC(fileInfo);
-            //    isRunning = false;
-            //});
-            //while (isRunning) ;
+            IMd5 md5 =  (IMd5)GetService("md5");
+            WriteLine(md5.GetHashCode().ToString());
+            md5 = (IMd5)GetService("md5");
+            WriteLine(md5.GetHashCode().ToString());
+            return OK;
             var input = Ux.InputString("Please be true");
             Ux.Message(input.ToString());
             return OK;

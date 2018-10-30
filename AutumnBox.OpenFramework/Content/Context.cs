@@ -84,9 +84,14 @@ namespace AutumnBox.OpenFramework.Content
         {
             apiWrapper = new ContextApiProvider(this);
         }
-        public AtmbService GetServiceById(int id)
+        /// <summary>
+        /// 获取全局服务
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public AtmbService GetService(string name)
         {
-            return Manager.ServicesManager.GetServiceById(this,id);
+            return Manager.ServicesManager.GetServiceByName(this,name);
         }
     }
 }
