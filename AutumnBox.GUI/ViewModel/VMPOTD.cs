@@ -44,19 +44,22 @@ namespace AutumnBox.GUI.ViewModel
 
         public VMPOTD()
         {
-            new PotdGetter().RunAsync((result) =>
+            new PotdGetter().Try((result) =>
             {
-                SettingBy(result);
+                App.Current.Dispatcher.Invoke(() =>
+                {
+                    SettingBy(result);
+                });
             });
         }
-        private void SettingBy(PotdGetterResult result)
+        private void SettingBy(PotdGetter.Result result)
         {
             BitmapImage bmp = new BitmapImage();
             bmp.BeginInit();
             bmp.StreamSource = result.ImageMemoryStream;
             bmp.EndInit();
             Image = bmp;
-            url = result.RemoteInfo.ClickUrl;
+            url = result.ClickUrl;
         }
         private string url;
         public void OpenUrl()

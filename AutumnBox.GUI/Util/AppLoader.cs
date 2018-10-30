@@ -51,8 +51,6 @@ namespace AutumnBox.GUI.Util
         private void Load()
         {
             LoggingStation.Instance.Work();
-            Updater.CheckAndNotice();
-            Statistics.Do();
             ui.Progress = 0;
             //如果设置在启动时打开调试窗口
             if (Settings.Default.ShowDebuggingWindowNextLaunch)
@@ -70,7 +68,6 @@ namespace AutumnBox.GUI.Util
             logger.Info($"SDK version: {BuildInfo.SDK_VERSION}");
             logger.Info($"Windows version {Environment.OSVersion.Version}");
             logger.Info("======================");
-            logger.Info("===loading===");
 #if DEBUG
             Basic.Util.Debugging.LoggingStation.Logging += (s, e) =>
             {
@@ -95,15 +92,22 @@ namespace AutumnBox.GUI.Util
                 Thread.Sleep(10000);
                 App.Current.Shutdown(e.ExitCode);
             }
+
             ui.Progress = 60;
             ui.LoadingTip = App.Current.Resources["ldmsgLoadingExtensions"].ToString();
             OpenFrameworkManager.Init();
             OpenFxObserver.Instance.OnLoaded();
             ConnectedDevicesListener.Instance.Work();
+
+            ui.Progress = 90;
+            ui.LoadingTip = "How can a man die better?";
+            Updater.CheckAndNotice();
+            Statistics.Do();
+            ToastMotd.Do();
+
             ui.Progress = 100;
             ui.LoadingTip = "Enjoy!";
             Thread.Sleep(1 * 1000);
-            logger.Info("===loaded===");
             ui.Finish();
         }
         #endregion

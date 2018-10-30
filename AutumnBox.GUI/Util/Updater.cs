@@ -26,8 +26,8 @@ namespace AutumnBox.GUI.Util
         }
         public static void CheckAndNotice()
         {
-            UpdateChecker checker = new UpdateChecker();
-            checker.RunAsync((e) =>
+            RemoteVersionInfoGetter getter = new RemoteVersionInfoGetter();
+            getter.Try((e) =>
             {
                 if (e.Version > Self.Version && e.VersionString != Settings.Default.SkipVersion)
                 {

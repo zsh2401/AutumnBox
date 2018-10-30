@@ -10,44 +10,36 @@ using System.Text;
 
 namespace AutumnBox.GUI.Util.Net
 {
-    public class PotdGetterResult
+    internal class PotdGetter : JsonGetter<PotdGetter.Result>
     {
-        public MemoryStream ImageMemoryStream { get; internal set; }
-        public PotdRemoteInfo RemoteInfo { get; internal set; }
-    }
-    [JsonObject(MemberSerialization.OptOut)]
-    public class PotdRemoteInfo
-    {
-        [JsonProperty("canbeClosed")]
-        public bool? CanbeClosed { get; set; }
-        [JsonProperty("link")]
-        public string Link { get; set; }
-        [JsonProperty("click")]
-        public string ClickUrl { get; set; }
-        [JsonProperty("enable")]
-        public bool? Enable { get; set; }
-        [JsonProperty("isAd")]
-        public bool? IsAd { get; set; }
-    }
-    internal class PotdGetter : RemoteDataGetter<PotdGetterResult>
-    {
-
-        public override PotdGetterResult Get()
+        [JsonObject(MemberSerialization.OptOut)]
+        public class Result
         {
-            var logger = new Logger<PotdGetter>();
-#if USE_LOCAL_API && DEBUG
-            byte[] bytes = webClient.DownloadData("http://localhost:24010/api/potd/");
-#else
-             byte[] bytes = webClient.DownloadData(App.Current.Resources["urlApiPotd"].ToString());
-#endif
-            string html = Encoding.UTF8.GetString(bytes);
-            PotdRemoteInfo remoteInfo = (PotdRemoteInfo)JsonConvert.DeserializeObject(html, typeof(PotdRemoteInfo));
-            byte[] imgData = webClient.DownloadData(remoteInfo.Link);
-            return new PotdGetterResult()
-            {
-                RemoteInfo = remoteInfo,
-                ImageMemoryStream = new MemoryStream(imgData)
-            };
+            public MemoryStream ImageMemoryStream { get; set; }
+            [JsonProperty("canbeClosed")]
+            public bool? CanbeClosed { get; set; }
+            [JsonProperty("link")]
+            public string Link { get; set; }
+            [JsonProperty("click")]
+            public string ClickUrl { get; set; }
+            [JsonProperty("enable")]
+            public bool? Enable { get; set; }
+            [JsonProperty("isAd")]
+            public bool? IsAd { get; set; }
+        }
+        public PotdGetter()
+        {
+            DebugUrl = "http://localhost:24010/api/potd/";
+            Url = App.Current.Resources["urlApiPotd"].ToString();
+        }
+        protected override Result ParseJson(string json)
+        {
+            Result result = base.ParseJson(json);
+            byte[] imgData = webClient.DownloadData(result.Link);
+            SLogger.Info(this, "Converting");
+            result.ImageMemoryStream = new MemoryStream(imgData);
+            SLogger.Info(this, "Converted");
+            return result;
         }
     }
 }
