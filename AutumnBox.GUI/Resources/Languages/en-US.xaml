@@ -147,6 +147,29 @@
     <s:String x:Key="PanelMoreLinkMtBBS">MT BBS</s:String>
     <s:String x:Key="PanelMoreLinkLineageOS">LineageOS</s:String>
     <s:String x:Key="PanelMoreLinkCoolapk">Coolapk</s:String>
+     <s:String x:Key="PanelMoreOpenSourceLinks">Thanks to people who have contributed to open source (related open source projects)</s:String>
+    <s:String x:Key="PanelMoreOSLinkAutumnBox">AutumnBox</s:String>
+    <s:String x:Key="PanelMoreOSLinkIsland">Island</s:String>
+     <s:String x:Key="PanelMoreOSLink_MaterialDesignInXaml">MaterialDesignInXaml</s:String>
+    <s:String x:Key="PanelMoreOSLinkToolTip_MaterialDesignInXaml">MaterialDesignInXaml allows the Autumn Box to be displayed in the MD interface</s:String>
+    <s:String x:Key="PanelMoreOSLink_Magisk">Magisk</s:String>
+    <s:String x:Key="PanelMoreOSLink_TeamWin">TeamWin</s:String>
+    <s:String x:Key="PanelMoreOSLink_TeamWinToolTip">Do you know TWRP?</s:String>
+    <s:String x:Key="PanelMoreOSLink_BilibiliDM">bilibili danmuji</s:String>
+    <s:String x:Key="PanelMoreOSLinkToolTip_BilibiliDM">In the development of the autumn box, reference is made to the code of many open source projects.</s:String>
+    <s:String x:Key="PanelMoreOSLink_awesome-adb">awesome-adb</s:String>
+    <s:String x:Key="PanelMoreOSLinkToolTip_awesome-adb">Many of the adb commands in the Autumn Box are referenced from here.</s:String>
+    <s:String x:Key="PanelMoreOSLink_AppOpsX">App Ops X</s:String>
+   <s:String x:Key="PanelMoreOSLink_ShizukuManager">Shizuku Manager</s:String>
+    <s:String x:Key="PanelMoreOSLink_Ice-Box-Docs">IceBox online documentation</s:String>
+    <s:String x:Key="PanelMoreOSLink_NewtonsoftJson">Newtonsoft.Json</s:String>
+    <s:String x:Key="PanelMoreOSLinkToolTip_NewtonsoftJson">Newtonsoft.Json is the Json library of the Autumn Box, and is also the most famous and easy to use .NET platform Json library.</s:String>
+    <s:String x:Key="PanelMoreOSLink_TWRP">TWRP</s:String>
+    <s:String x:Key="PanelMoreOSLink_Linux">Linux</s:String>
+    <s:String x:Key="PanelMoreOSLink_DpmBox">Dpm Box</s:String>
+     <s:String x:Key="PanelMoreOSLink_WebsiteOfficial">Autumn Box official website open source</s:String>
+     <s:String x:Key="PanelMoreOSLinkToolTip_DpmBox">Friendship added: Little Black House Developer</s:String>
+    
     
     <!--ContentConnectNetDevice-->
     <s:String x:Key="ContentConnectNetDeviceIP">Device ip address</s:String>
