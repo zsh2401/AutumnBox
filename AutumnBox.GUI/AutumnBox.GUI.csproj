@@ -129,6 +129,7 @@
     <Compile Include="MVVM\OpenParameterUrlCommand.cs" />
     <Compile Include="Util\AlreadyHaveAutumnBoxChecker.cs" />
     <Compile Include="Util\AppLoader.cs" />
+    <Compile Include="Util\AppUnloader.cs" />
     <Compile Include="Util\Bus\ConnectedDevicesListener.cs" />
     <Compile Include="Util\Bus\OpenFxObserver.cs" />
     <Compile Include="Util\Debugging\ILogger.cs" />
