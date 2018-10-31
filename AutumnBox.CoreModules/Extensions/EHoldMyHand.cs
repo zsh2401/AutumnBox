@@ -31,7 +31,7 @@ namespace AutumnBox.CoreModules.Extensions
         {
             IMd5 md5 =  (IMd5)GetService("md5");
             WriteLine(md5.GetHashCode().ToString());
-            md5 = (IMd5)GetService("md5");
+            md5 = GetService<IMd5>("md5");
             WriteLine(md5.GetHashCode().ToString());
             return OK;
             var input = Ux.InputString("Please be true");
