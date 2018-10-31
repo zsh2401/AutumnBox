@@ -5,7 +5,6 @@
 *************************************************/
 using AutumnBox.OpenFramework.Content;
 using AutumnBox.OpenFramework.Management;
-using AutumnBox.OpenFramework.Wrapper;
 using System;
 using System.Threading.Tasks;
 
@@ -13,10 +12,10 @@ namespace AutumnBox.OpenFramework.Open.Impl
 {
     class UxImpl : IUx
     {
-        private readonly IAutumnBox_GUI sourceApi;
+        private readonly IBaseApi sourceApi;
         private readonly Context ctx;
 
-        public UxImpl(Context ctx, IAutumnBox_GUI sourceApi)
+        public UxImpl(Context ctx, IBaseApi sourceApi)
         {
             this.ctx = ctx;
             this.sourceApi = sourceApi;
@@ -27,7 +26,7 @@ namespace AutumnBox.OpenFramework.Open.Impl
             bool? result = false;
             RunOnUIThread(() =>
             {
-                result = sourceApi.GetYNWindow(message, btnYes, btnNo).ShowDialog();
+                result = sourceApi.DoYN(message, btnYes, btnNo);
             });
             return result == true;
         }
@@ -37,9 +36,7 @@ namespace AutumnBox.OpenFramework.Open.Impl
             ChoiceResult result = ChoiceResult.Cancel;
             RunOnUIThread(() =>
             {
-                dynamic window = sourceApi.CreateChoiceWindow(message, btnLeft, btnRight, btnCancel);
-                window.ShowDialog();
-                int clickedBtnCode = window.ClickedBtn;
+                int clickedBtnCode = sourceApi.DoChoice(message, btnLeft, btnRight, btnCancel);
                 switch (clickedBtnCode)
                 {
                     case 1:
@@ -61,24 +58,18 @@ namespace AutumnBox.OpenFramework.Open.Impl
         {
             RunOnUIThread(() =>
             {
-                sourceApi.CreateDebugWindow().Show();
+                sourceApi.ShowDebugUI();
             });
         }
 
-        private dynamic currentLoadingWindow;
 
         public void ShowLoadingWindow()
         {
-            if (currentLoadingWindow != null)
-            {
-                throw new System.Exception("you can show just only one loading window");
-            }
             Task.Run(() =>
             {
                 ctx.App.RunOnUIThread(() =>
                 {
-                    currentLoadingWindow = sourceApi.CreateLoadingWindow();
-                    currentLoadingWindow.ShowDialog();
+                    sourceApi.ShowLoadingUI();
                 });
             });
         }
@@ -87,8 +78,7 @@ namespace AutumnBox.OpenFramework.Open.Impl
         {
             ctx.App.RunOnUIThread(() =>
             {
-                currentLoadingWindow.Close();
-                currentLoadingWindow = null;
+                sourceApi.CloseLoadingUI();
             });
         }
 
@@ -96,7 +86,7 @@ namespace AutumnBox.OpenFramework.Open.Impl
         {
             RunOnUIThread(() =>
             {
-                sourceApi.CreateMessageWindow(title, message).ShowDialog();
+                sourceApi.ShowMessage(title, message);
             });
         }
 
@@ -104,7 +94,7 @@ namespace AutumnBox.OpenFramework.Open.Impl
         {
             RunOnUIThread(() =>
             {
-                sourceApi.CreateMessageWindow(ctx.App.GetPublicResouce<string>("OpenFxTitleMessage"), message).ShowDialog();
+                sourceApi.ShowMessage(ctx.App.GetPublicResouce<string>("OpenFxTitleMessage"), message);
             });
         }
 
@@ -112,7 +102,7 @@ namespace AutumnBox.OpenFramework.Open.Impl
         {
             RunOnUIThread(() =>
             {
-                sourceApi.CreateMessageWindow(ctx.App.GetPublicResouce<string>("OpenFxTitleWarning"), message).ShowDialog();
+                sourceApi.ShowMessage(ctx.App.GetPublicResouce<string>("OpenFxTitleWarning"), message);
             });
         }
 
@@ -120,7 +110,7 @@ namespace AutumnBox.OpenFramework.Open.Impl
         {
             RunOnUIThread(() =>
             {
-                sourceApi.CreateMessageWindow(ctx.App.GetPublicResouce<string>("OpenFxTitleError"), message).ShowDialog();
+                sourceApi.ShowMessage(ctx.App.GetPublicResouce<string>("OpenFxTitleError"), message);
             });
         }
 

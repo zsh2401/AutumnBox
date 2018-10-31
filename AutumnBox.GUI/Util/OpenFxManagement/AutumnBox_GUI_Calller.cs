@@ -14,11 +14,20 @@ using AutumnBox.GUI.Util.Debugging;
 using AutumnBox.OpenFramework.Extension;
 using System.Reflection;
 using System.Security.Policy;
+using AutumnBox.Basic.Device;
+using AutumnBox.GUI.Util.Bus;
 
 namespace AutumnBox.GUI.Util.OpenFxManagement
 {
-    internal partial class AutumnBox_GUI_Calller : IAutumnBox_GUI
+    internal partial class AutumnBox_GUI_Calller : IBaseApi
     {
+        public IDevice SelectedDevice
+        {
+            get
+            {
+                return DeviceSelectionObserver.Instance.CurrentDevice;
+            }
+        }
         public Version Version
         {
             get
@@ -29,19 +38,19 @@ namespace AutumnBox.GUI.Util.OpenFxManagement
 
         public bool IsRunAsAdmin => Self.HaveAdminPermission;
 
-        public dynamic CreateDebugWindow()
+        public void ShowDebugUI()
         {
-            return new LogWindow();
+            new LogWindow().Show();
         }
 
-        public dynamic CreateMessageWindow(string title, string msg)
+        public void ShowMessage(string title, string msg)
         {
-            return new MessageWindow()
+            new MessageWindow()
             {
                 Owner = App.Current.MainWindow,
                 MsgTitle = title,
                 Message = msg,
-            };
+            }.ShowDialog();
         }
 
         public string GetCurrentLanguageCode()
@@ -80,7 +89,7 @@ namespace AutumnBox.GUI.Util.OpenFxManagement
             App.Current.Dispatcher.Invoke(act);
         }
 
-        public dynamic CreateChoiceWindow(string msg, string btnLeft = null, string btnRight = null, string btnCancel = null)
+        public int DoChoice(string msg, string btnLeft = null, string btnRight = null, string btnCancel = null)
         {
             var window = new ChoiceWindow()
             {
@@ -90,7 +99,8 @@ namespace AutumnBox.GUI.Util.OpenFxManagement
             window.BtnLeft = btnLeft ?? window.BtnLeft;
             window.BtnCancel = btnCancel ?? window.BtnCancel;
             window.BtnRight = btnRight ?? window.BtnRight;
-            return window;
+            window.ShowDialog();
+            return window.ClickedBtn;
         }
 
         public void Shutdown()
@@ -98,12 +108,21 @@ namespace AutumnBox.GUI.Util.OpenFxManagement
             App.Current.Shutdown();
         }
 
-        public dynamic CreateLoadingWindow()
+        private static LoadingWindow loadingWindow;
+        public void ShowLoadingUI()
         {
-            return new LoadingWindow()
+            if (loadingWindow != null) return;
+            loadingWindow = new LoadingWindow()
             {
                 Owner = App.Current.MainWindow
             };
+            loadingWindow.ShowDialog();
+        }
+        public void CloseLoadingUI()
+        {
+            if (loadingWindow == null) return;
+            loadingWindow.Close();
+            loadingWindow = null;
         }
 
         public void PlayOk()
@@ -169,15 +188,17 @@ namespace AutumnBox.GUI.Util.OpenFxManagement
                 .CreateInstanceAndUnwrap(type.Assembly.FullName, type.FullName);
         }
 
-        public dynamic GetYNWindow(string message, string btnYes, string btnNo)
+        public bool DoYN(string message, string btnYes, string btnNo)
         {
-            return new YNWindow()
+            var window = new YNWindow()
             {
                 Owner = App.Current.MainWindow,
                 BtnYES = btnYes,
                 BtnNO = btnNo,
                 Message = message,
             };
+            window.ShowDialog();
+            return window.DialogResult == true;
         }
 
         public bool InputNumber(string hint, int min, int max, out int result)

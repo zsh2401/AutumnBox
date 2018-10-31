@@ -15,9 +15,9 @@ namespace AutumnBox.OpenFramework.Open.Impl
 {
     internal partial class AppManagerImpl : IAppManager
     {
-        private readonly IAutumnBox_GUI sourceApi;
+        private readonly IBaseApi sourceApi;
         private readonly Context ctx;
-        public AppManagerImpl(Context ctx, IAutumnBox_GUI sourceApi)
+        public AppManagerImpl(Context ctx, IBaseApi sourceApi)
         {
             this.ctx = ctx;
             this.sourceApi = sourceApi;
@@ -42,12 +42,6 @@ namespace AutumnBox.OpenFramework.Open.Impl
 
         public Version Version => sourceApi.Version;
 
-
-        public dynamic CreateDebuggingWindow()
-        {
-            return sourceApi.CreateDebugWindow();
-        }
-
         public dynamic GetMainWindow()
         {
             return sourceApi.GetMainWindow();
@@ -62,7 +56,6 @@ namespace AutumnBox.OpenFramework.Open.Impl
         {
             return sourceApi.GetResouce(key) as TReturn;
         }
-
 
         public void RestartApp()
         {

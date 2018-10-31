@@ -3,10 +3,14 @@
 ** date:  2018/10/21 1:28:25 (UTC +8:00)
 ** desc： ...
 *************************************************/
+using AutumnBox.OpenFramework.Content;
+using AutumnBox.OpenFramework.Management.Impl;
+using AutumnBox.OpenFramework.Open.ServiceImpl;
 using AutumnBox.OpenFramework.Service;
 using AutumnBox.OpenFramework.Service.Default;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 
 namespace AutumnBox.OpenFramework.Management
@@ -21,28 +25,35 @@ namespace AutumnBox.OpenFramework.Management
 #endif
         static class FxLoader
     {
+        [ContextPermission(CtxPer.High)]
+        private class FxLoaderContext : Context { }
+        private static Context fxLoaderCtx;
+
         /// <summary>
-        /// FxLoader总管理器
+        /// 完全加载
         /// </summary>
-        /// <param name="guiApiImpl"></param>
-        public static void LoadApi(IAutumnBox_GUI guiApiImpl)
-        {
-            CallingBus.LoadApi(guiApiImpl);
-        }
-        /// <summary>
-        /// 加载基础服务
-        /// </summary>
-        public static void LoadServices()
+        /// <param name="baseApi"></param>
+        public static void LoadBase(IBaseApi baseApi)
         {
             IServicesManager serviceManager = Manager.ServicesManager;
             serviceManager.StartService<SMd5>();
+            serviceManager.StartService<SBaseApiContainer>();
+            serviceManager.StartService<SSoundManager>();
+            var apiContainer = (SBaseApiContainer)serviceManager
+                 .GetServiceByName(null,SBaseApiContainer.NAME);
+            apiContainer.LoadApi(baseApi);
+            fxLoaderCtx = new FxLoaderContext();
         }
         /// <summary>
         /// 加载拓展模块
         /// </summary>
         public static void LoadExtensions()
         {
-            Manager.InternalManager.Reload();
+            IServicesManager serviceManager = Manager.ServicesManager;
+            serviceManager.StartService<InternalManagerImpl>();
+            var internalManager = fxLoaderCtx
+                .GetService<InternalManagerImpl>(InternalManagerImpl.SERVICE_NAME);
+            internalManager.Reload();
         }
 
         /// <summary>

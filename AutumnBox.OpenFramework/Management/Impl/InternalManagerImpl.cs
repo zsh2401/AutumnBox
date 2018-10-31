@@ -6,6 +6,7 @@
 using AutumnBox.OpenFramework.Content;
 using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.ExtLibrary;
+using AutumnBox.OpenFramework.Service;
 using AutumnBox.OpenFramework.Wrapper;
 using System;
 using System.Collections.Generic;
@@ -19,8 +20,10 @@ namespace AutumnBox.OpenFramework.Management.Impl
     /// <summary>
     /// 拓展模块管理器
     /// </summary>
-    internal sealed class InternalManagerImpl : Context, IInternalManager
+    [ServiceName(SERVICE_NAME)]
+    internal sealed class InternalManagerImpl : AtmbService, IInternalManager
     {
+        public const string SERVICE_NAME = "InternalManager";
         public const string PATTERN_DFT_EXT = "*.dll";
         public const string PATTERN_DFT_ATMBEXT = "*.atmb";
         public const string PATTERN_DFT_HEXT = "*.adll";

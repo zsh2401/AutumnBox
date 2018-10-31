@@ -3,7 +3,7 @@
     /// <summary>
     /// MD5 API
     /// </summary>
-    public interface IMd5
+    public interface IMd5Service
     {
         /// <summary>
         /// 获取某个文件的MD5

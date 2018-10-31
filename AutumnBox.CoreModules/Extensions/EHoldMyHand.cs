@@ -29,9 +29,9 @@ namespace AutumnBox.CoreModules.Extensions
         //}
         protected override int VisualMain()
         {
-            IMd5 md5 =  (IMd5)GetService("md5");
+            IMd5Service md5 =  (IMd5Service)GetService("md5");
             WriteLine(md5.GetHashCode().ToString());
-            md5 = GetService<IMd5>("md5");
+            md5 = GetService<IMd5Service>("md5");
             WriteLine(md5.GetHashCode().ToString());
             return OK;
             var input = Ux.InputString("Please be true");

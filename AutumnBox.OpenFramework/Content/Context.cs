@@ -5,6 +5,7 @@
 *************************************************/
 using AutumnBox.OpenFramework.Management;
 using AutumnBox.OpenFramework.Open;
+using AutumnBox.OpenFramework.Open.Impl;
 using AutumnBox.OpenFramework.Service;
 using System;
 
@@ -16,7 +17,6 @@ namespace AutumnBox.OpenFramework.Content
     [ContextPermission(CtxPer.Normal)]
     public abstract class Context : Object
     {
-        private ContextApiProvider apiWrapper;
         /// <summary>
         /// 权限
         /// </summary>
@@ -35,6 +35,7 @@ namespace AutumnBox.OpenFramework.Content
             }
         }
         private CtxPer permission = CtxPer.None;
+
         /// <summary>
         /// 日志标签
         /// </summary>
@@ -45,45 +46,51 @@ namespace AutumnBox.OpenFramework.Content
                 return GetType().Name;
             }
         }
-        /// <summary>
-        /// 声音播放器
-        /// </summary>
-        public ISoundPlayer SoundPlayer => apiWrapper.Factory.GetSoundPlayer(this);
+
         /// <summary>
         /// Ux api
         /// </summary>
-        public IUx Ux => apiWrapper.Ux;
+        public IUx Ux => _lazyUX.Value;
+        private Lazy<IUx> _lazyUX;
+
         /// <summary>
         /// 日志API
         /// </summary>
-        public ILogger Logger => apiWrapper.Logger;
+        public ILogger Logger => _lazyLogger.Value;
+        private Lazy<ILogger> _lazyLogger;
+
         /// <summary>
         /// 秋之盒整体程序相关API
         /// </summary>
-        public IAppManager App => apiWrapper.App;
-        /// <summary>
-        /// 操作系统API
-        /// </summary>
-        public IOSApi OperatingSystem => apiWrapper.OS;
+        public IAppManager App => _lazyApp.Value;
+        private Lazy<IAppManager> _lazyApp;
+
         /// <summary>
         /// 临时文件管理器
         /// </summary>
-        public ITemporaryFloder Tmp => apiWrapper.Tmp;
+        public ITemporaryFloder Tmp => _lazyTmp.Value;
+        private Lazy<ITemporaryFloder> _lazyTmp;
+
         /// <summary>
         /// 兼容性相关API
         /// </summary>
-        public ICompApi Comp => apiWrapper.Comp;
+        public ICompApi Comp => _comp;
+        private readonly static ICompApi _comp = new CompImpl();
+
         /// <summary>
         /// 嵌入资源提取器
         /// </summary>
-        public IEmbeddedFileManager EmbFileManager => apiWrapper.Emb;
+        public IEmbeddedFileManager EmbFileManager => _lazyEmb.Value;
+        private Lazy<IEmbeddedFileManager> _lazyEmb;
+
         /// <summary>
         /// 构建
         /// </summary>
         public Context()
         {
-            apiWrapper = new ContextApiProvider(this);
+            InitFactory();
         }
+
         /// <summary>
         /// 获取全局服务
         /// </summary>
@@ -110,6 +117,32 @@ namespace AutumnBox.OpenFramework.Content
         public void RunOnUIThread(Action act)
         {
             App.RunOnUIThread(act);
+        }
+        /// <summary>
+        /// 初始化各种懒加载工厂方法
+        /// </summary>
+        private void InitFactory()
+        {
+            _lazyApp = new Lazy<IAppManager>(() =>
+            {
+                return new AppManagerImpl(this, CallingBus.BaseApi);
+            });
+            _lazyUX = new Lazy<IUx>(() =>
+            {
+                return new UxImpl(this, CallingBus.BaseApi);
+            });
+            _lazyLogger = new Lazy<ILogger>(() =>
+            {
+                return new LoggerImpl(this);
+            });
+            _lazyTmp = new Lazy<ITemporaryFloder>(() =>
+            {
+                return new TemporaryFloderImpl(this);
+            });
+            _lazyEmb = new Lazy<IEmbeddedFileManager>(() =>
+            {
+                return new EmbeddedFileManagerImpl(this);
+            });
         }
     }
 }
