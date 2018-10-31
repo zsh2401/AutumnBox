@@ -28,6 +28,11 @@ namespace AutumnBox.Basic.Calling
         /// <param name="command"></param>
         public TCommand Register<TCommand>(TCommand command) where TCommand : ProcessBasedCommand
         {
+            ThrowIfLocked();
+            return CheckedRegister(command);
+        }
+        private TCommand CheckedRegister<TCommand>(TCommand command) where TCommand : ProcessBasedCommand
+        {
             commands.Add(command);
             return command;
         }
@@ -39,7 +44,8 @@ namespace AutumnBox.Basic.Calling
         /// <returns></returns>
         public ShellCommand GetShellCommand(IDevice device, string cmd)
         {
-            return Register(new ShellCommand(device, cmd));
+            ThrowIfLocked();
+            return CheckedRegister(new ShellCommand(device, cmd));
         }
         /// <summary>
         /// 获取su命令
@@ -49,7 +55,8 @@ namespace AutumnBox.Basic.Calling
         /// <returns></returns>
         public SuCommand GetSuCommand(IDevice device, string cmd)
         {
-            return Register(new SuCommand(device, cmd));
+            ThrowIfLocked();
+            return CheckedRegister(new SuCommand(device, cmd));
         }
         /// <summary>
         /// 获取一个被管理的ADB命令
@@ -59,7 +66,8 @@ namespace AutumnBox.Basic.Calling
         /// <returns></returns>
         public AdbCommand GetAdbCommand(IDevice device, string cmd)
         {
-            return Register(new AdbCommand(device, cmd));
+            ThrowIfLocked();
+            return CheckedRegister(new AdbCommand(device, cmd));
         }
         /// <summary>
         /// 获取一个被管理的ADB命令
@@ -68,7 +76,8 @@ namespace AutumnBox.Basic.Calling
         /// <returns></returns>
         public AdbCommand GetAdbCommand(string cmd)
         {
-            return Register(new AdbCommand(cmd));
+            ThrowIfLocked();
+            return CheckedRegister(new AdbCommand(cmd));
         }
         /// <summary>
         /// 获取一个被管理的ADB命令
@@ -78,7 +87,8 @@ namespace AutumnBox.Basic.Calling
         /// <returns></returns>
         public FastbootCommand GetFastbootCommand(IDevice device, string cmd)
         {
-            return Register(new FastbootCommand(device, cmd));
+            ThrowIfLocked();
+            return CheckedRegister(new FastbootCommand(device, cmd));
         }
         /// <summary>
         /// 获取一个被管理的ADB命令
@@ -87,7 +97,8 @@ namespace AutumnBox.Basic.Calling
         /// <returns></returns>
         public FastbootCommand GetFastbootCommand(string cmd)
         {
-            return Register(new FastbootCommand(cmd));
+            ThrowIfLocked();
+            return CheckedRegister(new FastbootCommand(cmd));
         }
         /// <summary>
         /// 获取一个被管理的Windows cmd命令
@@ -96,7 +107,8 @@ namespace AutumnBox.Basic.Calling
         /// <returns></returns>
         public WindowsCmdCommand GetCmdCommand(string cmd)
         {
-            return Register(new WindowsCmdCommand(cmd));
+            ThrowIfLocked();
+            return CheckedRegister(new WindowsCmdCommand(cmd));
         }
         /// <summary>
         /// 杀死所有被管理的命令的进程
@@ -118,6 +130,26 @@ namespace AutumnBox.Basic.Calling
                     logger.Warn($"can't stop command:{cmd.ToString()}", ex);
                 }
             }
+        }
+        bool locked = false;
+        private void ThrowIfLocked()
+        {
+            if (locked)
+            {
+                throw new InvalidOperationException("Command station has been locked");
+            }
+        }
+        /// <summary>
+        /// 锁定分配器
+        /// </summary>
+        public void Lock() {
+            locked = true;
+        }
+        /// <summary>
+        /// 解锁分配器
+        /// </summary>
+        public void Unlock() {
+            locked = false;
         }
     }
 }
