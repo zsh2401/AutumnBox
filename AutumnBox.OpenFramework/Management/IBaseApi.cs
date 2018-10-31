@@ -4,6 +4,7 @@
 ** desc： ...
 *************************************************/
 #define WIN32
+using AutumnBox.Basic.Device;
 using AutumnBox.OpenFramework.Open;
 using AutumnBox.OpenFramework.Wrapper;
 using System;
@@ -18,10 +19,7 @@ namespace AutumnBox.OpenFramework.Management
     /// <summary>
     /// 基础秋之盒主程序的API
     /// </summary>
-    public interface IAutumnBox_GUI
-#if WIN32
-        : INetFxApiCaller
-#endif
+    public interface IBaseApi
     {
         /// <summary>
         /// 播放成功音效
@@ -31,7 +29,6 @@ namespace AutumnBox.OpenFramework.Management
         /// 播放失败音效
         /// </summary>
         void PlayErr();
-#region UI
         /// <summary>
         /// 获取控制器
         /// </summary>
@@ -42,7 +39,7 @@ namespace AutumnBox.OpenFramework.Management
         /// 获取是否窗
         /// </summary>
         /// <returns></returns>
-        dynamic GetYNWindow(string message,string btnYes,string btnNo);
+        bool DoYN(string message,string btnYes,string btnNo);
         /// <summary>
         /// 输入数字
         /// </summary>
@@ -68,13 +65,13 @@ namespace AutumnBox.OpenFramework.Management
         /// 获取调试窗口
         /// </summary>
         /// <returns></returns>
-        dynamic CreateDebugWindow();
+        void ShowDebugUI();
         /// <summary>
         /// 显示消息窗口
         /// </summary>
         /// <param name="title"></param>
         /// <param name="msg"></param>
-        dynamic CreateMessageWindow(string title, string msg);
+        void ShowMessage(string title, string msg);
         /// <summary>
         /// 创建选择窗口
         /// </summary>
@@ -83,13 +80,16 @@ namespace AutumnBox.OpenFramework.Management
         /// <param name="btnRight"></param>
         /// <param name="btnCancel"></param>
         /// <returns></returns>
-        dynamic CreateChoiceWindow(string msg, string btnLeft = null, string btnRight = null, string btnCancel = null);
+        int DoChoice(string msg, string btnLeft = null, string btnRight = null, string btnCancel = null);
         /// <summary>
         /// 获取加载窗口
         /// </summary>
         /// <returns></returns>
-        dynamic CreateLoadingWindow();
-#endregion
+        void ShowLoadingUI();
+        /// <summary>
+        /// 关闭加载窗口
+        /// </summary>
+        void CloseLoadingUI();
         /// <summary>
         /// 检测秋之盒是否以管理员模式运行
         /// </summary>
@@ -116,7 +116,6 @@ namespace AutumnBox.OpenFramework.Management
         /// 关闭程序
         /// </summary>
         void Shutdown();
-
         /// <summary>
         /// 在UI线程中运行代码
         /// </summary>
@@ -127,6 +126,10 @@ namespace AutumnBox.OpenFramework.Management
         /// </summary>
         /// <returns></returns>
         string GetCurrentLanguageCode();
+        /// <summary>
+        /// 获取当前的优先设备
+        /// </summary>
+        IDevice SelectedDevice { get; }
         /// <summary>
         /// Log接口
         /// </summary>

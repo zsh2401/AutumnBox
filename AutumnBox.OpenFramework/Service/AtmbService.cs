@@ -25,7 +25,8 @@ namespace AutumnBox.OpenFramework.Service
         /// <summary>
         /// 构造
         /// </summary>
-        public AtmbService() {
+        public AtmbService()
+        {
             Name = GetServiceName(this.GetType());
         }
         /// <summary>
@@ -100,21 +101,12 @@ namespace AutumnBox.OpenFramework.Service
         /// <param name="args"></param>
         protected virtual void OnCreate(object[] args) { }
         /// <summary>
-        /// 当服务被请求启动时调用
+        /// 当服务被请求启动时调用,此方法将在主线程调用,如需覆写请勿阻塞
         /// </summary>
         /// <param name="args"></param>
         protected virtual void OnStartCommand(object[] args)
         {
-            Task.Run(() =>
-            {
-                TaskRun(args);
-            });
         }
-        /// <summary>
-        /// 服务的核心方法
-        /// </summary>
-        /// <param name="args"></param>
-        protected abstract void TaskRun(object[] args);
         /// <summary>
         /// 当服务被要求停止时调用
         /// </summary>

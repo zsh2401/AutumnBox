@@ -24,27 +24,27 @@ namespace AutumnBox.OpenFramework.Open.Impl
 
         public void Debug(string msg)
         {
-            CallingBus.AutumnBox_GUI.Log(ctx.LoggingTag, nameof(Debug), msg);
+            CallingBus.BaseApi.Log(ctx.LoggingTag, nameof(Debug), msg);
         }
 
         public void Fatal(string msg)
         {
-            CallingBus.AutumnBox_GUI.Log(ctx.LoggingTag, nameof(Fatal), msg);
+            CallingBus.BaseApi.Log(ctx.LoggingTag, nameof(Fatal), msg);
         }
 
         public void Info(string msg)
         {
-            CallingBus.AutumnBox_GUI.Log(ctx.LoggingTag, nameof(Info), msg);
+            CallingBus.BaseApi.Log(ctx.LoggingTag, nameof(Info), msg);
         }
 
         public void Warn(string msg)
         {
-            CallingBus.AutumnBox_GUI.Log(ctx.LoggingTag, nameof(Warn), msg);
+            CallingBus.BaseApi.Log(ctx.LoggingTag, nameof(Warn), msg);
         }
 
         public void Warn(string msg, Exception ex)
         {
-            CallingBus.AutumnBox_GUI.Log(ctx.LoggingTag, nameof(Warn), msg + Environment.NewLine + ex);
+            CallingBus.BaseApi.Log(ctx.LoggingTag, nameof(Warn), msg + Environment.NewLine + ex);
         }
     }
 }

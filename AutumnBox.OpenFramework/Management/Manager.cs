@@ -3,9 +3,11 @@
 ** date:  2018/8/4 1:02:15 (UTC +8:00)
 ** desc： ...
 *************************************************/
+using AutumnBox.OpenFramework.Content;
 using AutumnBox.OpenFramework.Exceptions;
 using AutumnBox.OpenFramework.Management.Impl;
 using AutumnBox.OpenFramework.Service;
+using System;
 using System.Reflection;
 
 namespace AutumnBox.OpenFramework.Management
@@ -15,7 +17,6 @@ namespace AutumnBox.OpenFramework.Management
     /// </summary>
     public static class Manager
     {
-        private static IInternalManager _internalManager;
         /// <summary>
         /// 内部管理器
         /// </summary>
@@ -28,27 +29,7 @@ namespace AutumnBox.OpenFramework.Management
         {
             get
             {
-                PermissionCheck(Assembly.GetCallingAssembly());
-                if (_internalManager == null)
-                {
-                    _internalManager = new InternalManagerImpl();
-                }
-                return _internalManager;
-            }
-        }
-        private static IRunningManager _runningManager;
-        /// <summary>
-        /// 运行管理器
-        /// </summary>
-        public static IRunningManager RunningManager
-        {
-            get
-            {
-                if (_runningManager == null)
-                {
-                    _runningManager = new RunningManagerImpl();
-                }
-                return _runningManager;
+                return (IInternalManager)ServicesManager.GetServiceByName(ServicesManager as Context, InternalManagerImpl.SERVICE_NAME);
             }
         }
         private static void PermissionCheck(Assembly assembly)
@@ -61,6 +42,7 @@ namespace AutumnBox.OpenFramework.Management
                 throw new AccessDeniedException();
             }
         }
+
         /// <summary>
         /// 服务管理器
         /// </summary>
@@ -68,7 +50,7 @@ namespace AutumnBox.OpenFramework.Management
         {
             get
             {
-                PermissionCheck(Assembly.GetCallingAssembly());
+                //PermissionCheck(Assembly.GetCallingAssembly());
                 if (_servicesManager == null)
                 {
                     _servicesManager = new ServicesManagerImpl();

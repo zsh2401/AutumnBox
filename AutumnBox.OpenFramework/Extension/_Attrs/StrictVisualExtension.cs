@@ -45,35 +45,66 @@ namespace AutumnBox.OpenFramework.Extension
         protected override bool VisualStop()
         {
             CmdStation.Free();
+            CmdStation.Lock();
             return true;
         }
 
         #region Command Getter
+        /// <summary>
+        /// 获取托管的shell命令
+        /// </summary>
+        /// <param name="cmd"></param>
+        /// <returns></returns>
         protected ShellCommand GetDevcieShellCommand(string cmd)
         {
             ThrowIfCanceled();
             return CmdStation.GetShellCommand(TargetDevice, cmd);
         }
+        /// <summary>
+        /// 获取托管的adb命令
+        /// </summary>
+        /// <param name="cmd"></param>
+        /// <returns></returns>
         protected AdbCommand GetDeviceAdbCommand(string cmd)
         {
             ThrowIfCanceled();
             return CmdStation.GetAdbCommand(TargetDevice, cmd);
         }
+        /// <summary>
+        /// 获取托管的设备无关adb命令
+        /// </summary>
+        /// <param name="cmd"></param>
+        /// <returns></returns>
         protected AdbCommand GetNoDeviceAdbCommand(string cmd)
         {
             ThrowIfCanceled();
             return CmdStation.GetAdbCommand(cmd);
         }
+        /// <summary>
+        /// 获取托管的fastboot命令
+        /// </summary>
+        /// <param name="cmd"></param>
+        /// <returns></returns>
         protected FastbootCommand GetDeviceFastbootCommand(string cmd)
         {
             ThrowIfCanceled();
             return CmdStation.GetFastbootCommand(TargetDevice, cmd);
         }
+        /// <summary>
+        /// 获取托管的设备无关fastboot命令
+        /// </summary>
+        /// <param name="cmd"></param>
+        /// <returns></returns>
         protected FastbootCommand GetNoDeviceFastbootCommand(string cmd)
         {
             ThrowIfCanceled();
             return CmdStation.GetFastbootCommand(cmd);
         }
+        /// <summary>
+        /// 获取windows cmd命令
+        /// </summary>
+        /// <param name="cmd"></param>
+        /// <returns></returns>
         protected WindowsCmdCommand GetWindowsCmdCommnad(string cmd)
         {
             ThrowIfCanceled();

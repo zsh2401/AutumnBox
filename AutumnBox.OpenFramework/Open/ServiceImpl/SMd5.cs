@@ -3,16 +3,14 @@
 ** date:  2018/10/30 22:50:31 (UTC +8:00)
 ** desc： ...
 *************************************************/
-using AutumnBox.OpenFramework.Open;
+using AutumnBox.OpenFramework.Service;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Text;
 
-namespace AutumnBox.OpenFramework.Service.Default
+namespace AutumnBox.OpenFramework.Open.ServiceImpl
 {
-    [ServiceName("md5")]
-    internal class SMd5 : AtmbService,IMd5
+    [ServiceName(ServicesNames.MD5)]
+    internal class SMd5 : AtmbService,IMd5Service
     {
         /// <summary>
         /// 会返回一个Md5值
@@ -56,11 +54,6 @@ namespace AutumnBox.OpenFramework.Service.Default
             var _fmd5 = GetMd5(_path);
             if (_fmd5 == _md5 || _fmd5.ToLower() == _md5) return true;
             return false;
-        }
-
-        protected override void TaskRun(object[] args)
-        {
-            
         }
     }
 }

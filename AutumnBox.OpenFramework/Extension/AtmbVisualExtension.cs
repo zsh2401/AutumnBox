@@ -25,7 +25,7 @@ namespace AutumnBox.OpenFramework.Extension
             base.OnCreate(args);
             App.RunOnUIThread(() =>
             {
-                UIController = CallingBus.AutumnBox_GUI.GetUIController();
+                UIController = CallingBus.BaseApi.GetUIController();
                 UIController.OnStart(args.Wrapper.Info);
                 UIController.Closing += OnUIControllerClosing;
             });
@@ -64,7 +64,8 @@ namespace AutumnBox.OpenFramework.Extension
             UIController.OnFinish();
             if (args.ExitCode == 0)
             {
-                SoundPlayer.OK();
+                var sound =  GetService<ISoundService>(ServicesNames.SOUND);
+                sound.OK();
             }
             if (FinishedTip != null)
             {
