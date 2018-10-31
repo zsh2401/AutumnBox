@@ -24,7 +24,7 @@ namespace AutumnBox.OpenFramework.Extension
         /// <summary>
         /// 运行
         /// </summary>
-        /// <param name="caller"></param>
+        /// <param name="methodCaller"></param>
         /// <returns></returns>
         int Run(Context methodCaller);
         /// <summary>

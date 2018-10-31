@@ -91,7 +91,25 @@ namespace AutumnBox.OpenFramework.Content
         /// <returns></returns>
         public AtmbService GetService(string name)
         {
-            return Manager.ServicesManager.GetServiceByName(this,name);
+            return Manager.ServicesManager.GetServiceByName(this, name);
+        }
+        /// <summary>
+        /// 获取并根据传入泛型拆箱
+        /// </summary>
+        /// <typeparam name="TReturn"></typeparam>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public TReturn GetService<TReturn>(string name) where TReturn : class
+        {
+            return Manager.ServicesManager.GetServiceByName(this, name) as TReturn;
+        }
+        /// <summary>
+        /// 在UI线程运行代码
+        /// </summary>
+        /// <param name="act"></param>
+        public void RunOnUIThread(Action act)
+        {
+            App.RunOnUIThread(act);
         }
     }
 }
