@@ -42,7 +42,7 @@ namespace AutumnBox.GUI.Util.Custom
                 ThemeImpl.LoadFrom("Blue.xaml"),
                 ThemeImpl.LoadFrom("Green.xaml"),
                  ThemeImpl.LoadFrom("Pink.xaml"),
-                 ThemeImpl.LoadFrom("Dark.xaml")
+                 //ThemeImpl.LoadFrom("Dark.xaml")
             };
         }
 
