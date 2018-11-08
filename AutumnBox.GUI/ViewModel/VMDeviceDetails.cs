@@ -9,6 +9,7 @@ using AutumnBox.Basic.Device.Management.Hardware;
 using AutumnBox.Basic.Device.Management.OS;
 using AutumnBox.GUI.MVVM;
 using AutumnBox.GUI.Util.Bus;
+using AutumnBox.GUI.Util.Debugging;
 using AutumnBox.GUI.Util.I18N;
 using System;
 using System.Collections.Generic;
@@ -20,6 +21,7 @@ namespace AutumnBox.GUI.ViewModel
 {
     class VMDeviceDetails : ViewModelBase
     {
+        protected override bool RaisePropertyChangedOnDispatcher { get; set; } = true;
         private static string TryGet(Dictionary<string, string> dict, string key)
         {
             try
@@ -217,9 +219,61 @@ namespace AutumnBox.GUI.ViewModel
             TranSelectIndex = 1;
             try
             {
-                By(DeviceSelectionObserver.Instance.CurrentDevice);
+                Task.Run(() =>
+                {
+                    RefreshInformationsThreadMethod(DeviceSelectionObserver.Instance.CurrentDevice);
+                });
+                //By(DeviceSelectionObserver.Instance.CurrentDevice);
             }
-            catch { }
+            catch(Exception ex) {
+                SLogger.Warn(this,"can't refresh device informations",ex);
+            }
+        }
+        private void RefreshInformationsThreadMethod(IDevice device)
+        {
+            int currentCode = ran.Next();
+            taskCode = currentCode;
+            ResetStateStringByCurrentDevice();
+
+            //获取与刷新build.prop内容
+            if (currentCode != taskCode) return;
+            Dictionary<string, string> buildProp = null;
+            var getter = new DeviceBuildPropGetter(device);
+            buildProp = getter.GetFull();
+            Brand = TryGet(buildProp, BuildPropKeys.Brand);
+            Model = TryGet(buildProp, BuildPropKeys.Model);
+            AndroidVersion = TryGet(buildProp, BuildPropKeys.AndroidVersion);
+            Product = TryGet(buildProp, BuildPropKeys.ProductName);
+            Root = device.HaveSU() ? "√" : "X";
+
+            //获取与刷新设备硬件信息
+            if (currentCode != taskCode) return;
+            DeviceHardwareInfoGetter hwInfoGetter = new DeviceHardwareInfoGetter(device);
+            var hwInfo = hwInfoGetter.Get();
+            if (currentCode != taskCode) return;
+            Screen = hwInfo.ScreenInfo;
+            Ram = hwInfo.SizeofRam + "G";
+            Storage = hwInfo.SizeofRom + "G";
+
+            //获取于刷新分辨率信息
+            if (currentCode != taskCode) return;
+            int? density = null;
+            int? screenH = null;
+            int? screenW = null;
+            try
+            {
+                WindowManager wm = new WindowManager(device);
+                density = wm.Density;
+                var sz = wm.Size;
+                screenH = sz.Height;
+                screenW = sz.Width;
+            }
+            catch (Exception ex)
+            {
+                SLogger.Warn(this, $"{device}'s window manager error", ex);
+            }
+            Density = density?.ToString() ?? DEFAULT_VALUE;
+            ScreenSize = $"{screenW?.ToString() ?? DEFAULT_VALUE}x{screenH?.ToString() ?? DEFAULT_VALUE}";
         }
 
         private void Reset()
@@ -266,19 +320,26 @@ namespace AutumnBox.GUI.ViewModel
             Screen = hwInfo.ScreenInfo;
             Ram = hwInfo.SizeofRam + "G";
             Storage = hwInfo.SizeofRom + "G";
-            int density = 0;
-            int screenH = 0;
-            int screenW = 0;
+            int? density = null;
+            int? screenH = null;
+            int? screenW = null;
             await Task.Run(() =>
              {
-                 var wm = new WindowManager(device);
-                 density = wm.Density;
-                 var sz = wm.Size;
-                 screenH = sz.Height;
-                 screenW = sz.Width;
+                 try
+                 {
+                     WindowManager wm = new WindowManager(device);
+                     density = wm.Density;
+                     var sz = wm.Size;
+                     screenH = sz.Height;
+                     screenW = sz.Width;
+                 }
+                 catch (Exception ex)
+                 {
+                     SLogger.Warn(this, $"{device}'s window manager error", ex);
+                 }
              });
-            Density = density.ToString();
-            ScreenSize = $"{screenW}x{screenH}";
+            Density = density?.ToString() ?? DEFAULT_VALUE;
+            ScreenSize = $"{screenW?.ToString() ?? DEFAULT_VALUE}x{screenH?.ToString() ?? DEFAULT_VALUE}";
         }
 
         ~VMDeviceDetails()
