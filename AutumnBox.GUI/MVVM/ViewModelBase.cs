@@ -4,9 +4,27 @@
 ** desc： ...
 *************************************************/
 
+using System.Runtime.CompilerServices;
+
 namespace AutumnBox.GUI.MVVM
 {
     class ViewModelBase : NotificationObject
     {
+        protected virtual bool RaisePropertyChangedOnDispatcher { get; set; } = false;
+        protected override void RaisePropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            if (RaisePropertyChangedOnDispatcher)
+            {
+                App.Current.Dispatcher.Invoke(() =>
+                {
+                    base.RaisePropertyChanged(propertyName);
+                });
+            }
+            else
+            {
+                base.RaisePropertyChanged(propertyName);
+            }
+
+        }
     }
 }
