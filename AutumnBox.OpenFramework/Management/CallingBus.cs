@@ -13,9 +13,7 @@ namespace AutumnBox.OpenFramework.Management
     internal static class CallingBus
     {
         [ContextPermission(CtxPer.High)]
-        private class CallingBusContext : Context {
-
-        }
+        private class CallingBusContext : Context { }
         [Obsolete("Please use service manager to get SBaseApiContainer then you can get it")]
         public static IBaseApi BaseApi
         {

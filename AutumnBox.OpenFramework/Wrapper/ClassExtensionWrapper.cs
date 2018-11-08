@@ -388,7 +388,11 @@ namespace AutumnBox.OpenFramework.Wrapper
         {
             Logger.Info("ready");
         }
-
+        /// <summary>
+        /// 获取拓展进程
+        /// </summary>
+        /// <param name="device"></param>
+        /// <returns></returns>
         public virtual IExtensionProcess GetProcess(IDevice device = null)
         {
             return new ClassExtensionProcess(this, extType, device)

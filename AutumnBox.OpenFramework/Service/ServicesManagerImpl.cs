@@ -35,16 +35,18 @@ namespace AutumnBox.OpenFramework.Service
             }
         }
 
-        public AtmbService GetInstance(Type t) {
+        public AtmbService GetInstance(Type t)
+        {
             var filtResult = from serv in _serviceCollection
-                           where serv.GetType() == t
-                           select serv;
+                             where serv.GetType() == t
+                             select serv;
             if (filtResult.Count() > 0)
             {
                 return filtResult.First();
             }
-            else {
-                object _obj =  Activator.CreateInstance(t);
+            else
+            {
+                object _obj = Activator.CreateInstance(t);
                 AtmbService instance = (AtmbService)_obj;
                 _serviceCollection.Add(instance);
                 return instance;
@@ -55,7 +57,7 @@ namespace AutumnBox.OpenFramework.Service
             GetInstance(typeOfService).Start();
         }
 
-        public void StartService<TService>() where TService : AtmbService
+        public void StartService<TService>() where TService : AtmbService, new()
         {
             StartService(typeof(TService));
         }

@@ -77,11 +77,18 @@ namespace AutumnBox.OpenFramework.Content
         public ICompApi Comp => _comp;
         private readonly static ICompApi _comp = new CompImpl();
 
+
+        /// <summary>
+        /// 嵌入资源提取器
+        /// </summary>
+        public IEmbeddedFileManager EmbeddedManager => _lazyEmb.Value;
+
         /// <summary>
         /// 嵌入资源提取器
         /// </summary>
         public IEmbeddedFileManager EmbFileManager => _lazyEmb.Value;
         private Lazy<IEmbeddedFileManager> _lazyEmb;
+
 
         /// <summary>
         /// 构建
