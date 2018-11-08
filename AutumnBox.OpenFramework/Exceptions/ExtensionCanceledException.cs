@@ -4,11 +4,12 @@
 ** desc： ...
 *************************************************/
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace AutumnBox.OpenFramework.Exceptions
 {
+    /// <summary>
+    /// 当模块已被停止时抛出
+    /// </summary>
     public class ExtensionCanceledException : Exception
     {
     }

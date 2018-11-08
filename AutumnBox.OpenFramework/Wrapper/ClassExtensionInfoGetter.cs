@@ -139,9 +139,14 @@ namespace AutumnBox.OpenFramework.Wrapper
         {
             get
             {
-                return new ClassExtensionScanner(ExtType);
+                if (_scanner == null)
+                {
+                    _scanner = new ClassExtensionScanner(ExtType);
+                }
+                return _scanner;
             }
         }
+        private ClassExtensionScanner _scanner;
 
         /// <summary>
         /// 构造
@@ -158,7 +163,7 @@ namespace AutumnBox.OpenFramework.Wrapper
         /// </summary>
         public virtual void Reload()
         {
-            ClassExtensionScanner scanner = new ClassExtensionScanner(this.ExtType);
+            ClassExtensionScanner scanner = this.Scanner;
             scanner.Scan(ClassExtensionScanner.ScanOption.Informations);
             Infomations = scanner.Informations;
             RequiredDeviceStates = (DeviceState)this[ExtensionInformationKeys.REQ_DEV_STATE];

@@ -20,10 +20,6 @@ namespace AutumnBox.OpenFramework.Wrapper
         /// <returns></returns>
         object this[string key] { get; }
         /// <summary>
-        /// 获取Scanner
-        /// </summary>
-        ClassExtensionScanner Scanner { get; }
-        /// <summary>
         /// 可用区域
         /// </summary>
         IEnumerable<string> Regions { get; }

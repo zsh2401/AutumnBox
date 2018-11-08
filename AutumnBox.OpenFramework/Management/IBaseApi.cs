@@ -32,7 +32,6 @@ namespace AutumnBox.OpenFramework.Management
         /// <summary>
         /// 获取控制器
         /// </summary>
-        /// <param name="wrapper"></param>
         /// <returns></returns>
         IExtensionUIController GetUIController();
         /// <summary>

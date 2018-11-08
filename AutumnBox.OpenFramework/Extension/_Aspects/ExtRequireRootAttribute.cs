@@ -34,7 +34,11 @@ namespace AutumnBox.OpenFramework.Extension
         {
             return device.HaveSU();
         }
-
+        /// <summary>
+        /// 从前有座山
+        /// </summary>
+        /// <param name="args"></param>
+        /// <param name="canContinue"></param>
         public override void BeforeCreating(BeforeCreatingAspectArgs args, ref bool canContinue)
         {
             if (!reqRoot || args.TargetDevice == null)

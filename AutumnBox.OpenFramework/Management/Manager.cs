@@ -50,7 +50,6 @@ namespace AutumnBox.OpenFramework.Management
         {
             get
             {
-                //PermissionCheck(Assembly.GetCallingAssembly());
                 if (_servicesManager == null)
                 {
                     _servicesManager = new ServicesManagerImpl();

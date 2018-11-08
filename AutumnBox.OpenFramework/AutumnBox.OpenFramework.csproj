@@ -27,13 +27,15 @@
 
   <ItemGroup>
     <Compile Remove="ClassBased\**" />
+    <Compile Remove="Service\Impl\**" />
     <EmbeddedResource Remove="ClassBased\**" />
+    <EmbeddedResource Remove="Service\Impl\**" />
     <None Remove="ClassBased\**" />
+    <None Remove="Service\Impl\**" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Properties\" />
-    <Folder Include="Service\Impl\" />
   </ItemGroup>
 
   <ItemGroup>

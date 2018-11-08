@@ -26,7 +26,7 @@ namespace AutumnBox.OpenFramework.Service
         /// 启动服务
         /// </summary>
         /// <typeparam name="TService"></typeparam>
-        void StartService<TService>() where TService : AtmbService;
+        void StartService<TService>() where TService : AtmbService,new();
         /// <summary>
         /// 停止服务
         /// </summary>
