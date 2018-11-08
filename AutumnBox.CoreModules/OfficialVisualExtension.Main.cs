@@ -9,8 +9,8 @@ using AutumnBox.OpenFramework.Extension;
 
 namespace AutumnBox.CoreModules
 {
-    [ExtAuth("秋之盒官方")]
-    //[ExtAuth("AutumnBox official", Lang = "en-us")]
+    [ExtAuth("秋之盒官方", "en-us:AutumnBox official")]
+    //[ExtAuth("l", Lang = "en-us")]
     [ExtOfficial(true)]
     [ContextPermission(CtxPer.High)]
     internal abstract partial class OfficialVisualExtension : StrictVisualExtension
