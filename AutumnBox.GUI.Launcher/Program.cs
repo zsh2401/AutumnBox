@@ -11,7 +11,6 @@ namespace AutumnBox.GUI.Launcher
     {
         static void Main(string[] args)
         {
-            System.Text.Encoding.GetEncoding("GBK");
             new Program().Run(args);
         }
 
@@ -35,13 +34,13 @@ namespace AutumnBox.GUI.Launcher
                 {
                     var pidIndex = args.ToList().IndexOf("-waitfor") + 1;
                     var pid = int.Parse(args[pidIndex]);
-                    Print($"Waiting {pid}...");
+                    Print($"Waiting for {pid}...");
                     Process.GetProcessById(pid).WaitForExit();
                 }
                 else if (args.Contains("-waitatmb"))
                 {
                     var proc = Process.GetProcessesByName("AutumnBox.GUI")[0];
-                    Print($"Waiting {proc.Id}...");
+                    Print($"Waiting for {proc.Id}...");
                     proc.WaitForExit();
                 }
             }
@@ -51,10 +50,11 @@ namespace AutumnBox.GUI.Launcher
                 Print("AutumnBox.GUI starts at now!");
                 Process.Start(startInfo);
             }
-            catch (Win32Exception)
+            catch (Win32Exception ex)
             {
-                Print("找不到文件!请将整个秋之盒解压后再使用!");
-                Print("File not found!Please uncompresse all files!");
+                Print("找不到文件!请将整个秋之盒解压后再使用!",ConsoleColor.Red);
+                Print("File not found!Please uncompresse all files!", ConsoleColor.Red);
+                Print(ex.ToString());
                 Console.ReadKey();
             }
 
