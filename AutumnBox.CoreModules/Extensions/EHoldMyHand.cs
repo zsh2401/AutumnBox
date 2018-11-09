@@ -23,50 +23,13 @@ namespace AutumnBox.CoreModules.Extensions
     [UserAgree("Please be true")]
     internal class EHoldMyHand : OfficialVisualExtension
     {
-        bool stoppable = false;
-        //public EHoldMyHand() {
-        //    throw new System.Exception();
-        //}
         protected override int VisualMain()
         {
-            IMd5Service md5 =  (IMd5Service)GetService("md5");
-            WriteLine(md5.GetHashCode().ToString());
-            md5 = GetService<IMd5Service>("md5");
-            WriteLine(md5.GetHashCode().ToString());
+            var recorder = GetDeviceCommander<VideoRecorder>();
+            recorder.Seconds = 10;
+            recorder.To(OutputPrinter);
+            recorder.Start();
             return OK;
-            var input = Ux.InputString("Please be true");
-            Ux.Message(input.ToString());
-            return OK;
-            WriteInitInfo();
-
-            WriteLine("开始执行");
-            Inputer inputer = GetDeviceCommander<Inputer>();
-            inputer.PressKey(AndroidKeyCode.MediaNext);
-            inputer.Tap(200, 300);
-            WriteLine(inputer.GetHashCode().ToString());
-            WriteLine(inputer.GetHashCode().ToString());
-            Thread.Sleep(3000);
-            WriteLine("进度25");
-            Progress = 25;
-            Thread.Sleep(3000);
-            WriteLine("现在可以被停止了");
-            Progress = 50;
-            stoppable = true;
-            Thread.Sleep(2500);
-            Step(() =>
-            {
-                WriteLine("Haha");
-            });
-            Step(() =>
-            {
-                WriteLine("Hasdasdsaaha");
-            });
-            Thread.Sleep(5000);
-            return 0;
-        }
-        protected override bool VisualStop()
-        {
-            return stoppable;
         }
     }
 }

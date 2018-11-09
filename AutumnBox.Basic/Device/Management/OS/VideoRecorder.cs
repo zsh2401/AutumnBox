@@ -40,7 +40,7 @@ namespace AutumnBox.Basic.Device.Management.OS
         /// <summary>
         /// 开启详细信息
         /// </summary>
-        public bool EnableVerbose { get; set; } = false;
+        public bool EnableVerbose { get; set; } = true;
         /// <summary>
         /// 临时文件存放目录
         /// </summary>
@@ -70,7 +70,8 @@ namespace AutumnBox.Basic.Device.Management.OS
             }
             command += TmpFile;
             logger.Info("The command of recoding:" + command);
-            var executingCommand = CmdStation.GetShellCommand(Device, command);
+            var cmd = new RealtimeShellCommand(Device,command);
+            var executingCommand = CmdStation.Register(cmd);
             executingCommand
                 .To(RaiseOutput)
                 .Execute()
