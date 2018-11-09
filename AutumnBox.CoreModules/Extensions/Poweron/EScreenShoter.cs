@@ -14,7 +14,7 @@ using System.Windows.Forms;
 
 namespace AutumnBox.CoreModules.Extensions
 {
-    [ExtName("截图并保存到电脑", "en-us:Screenshot and save to pc")]
+    [ExtName("截图并保存到电脑", "en-us:Capture the screen and save it to pc")]
     [ExtIcon("Icons.screenshot.png")]
     [ExtRequiredDeviceStates(DeviceState.Poweron)]
     internal class EScreenShoter : OfficialVisualExtension
