@@ -76,6 +76,45 @@ namespace AutumnBox.Basic.Calling
         public ProcessBasedCommand(string executableFile) : this(executableFile, null) { }
         private readonly object executeLock = new object();
         /// <summary>
+        /// 在进程开始前调用
+        /// </summary>
+        /// <param name="procStartInfo"></param>
+        protected virtual void BeforeProcessStart(ProcessStartInfo procStartInfo) {
+
+        }
+        /// <summary>
+        /// 当进程启动后调用
+        /// </summary>
+        /// <param name="proc"></param>
+        protected virtual void OnProcessStarted(Process proc)
+        {
+
+        }
+        /// <summary>
+        /// 注册进程事件
+        /// </summary>
+        /// <param name="proc"></param>
+        protected virtual void RegisterProcessEvent(Process proc)
+        {
+            proc.OutputDataReceived += (s, e) => RaiseOutputReceived(e, false);
+            proc.ErrorDataReceived += (s, e) => RaiseOutputReceived(e, true);
+        }
+        /// <summary>
+        /// 在准备等待进程前调用
+        /// </summary>
+        /// <param name="proc"></param>
+        protected virtual void BeforeWaiting(Process proc)
+        {
+
+        }
+        /// <summary>
+        /// 当进程结束时调用
+        /// </summary>
+        /// <param name="proc"></param>
+        protected virtual void OnProcessExited(Process proc)
+        {
+        }
+        /// <summary>
         /// 执行
         /// </summary>
         /// <returns></returns>
@@ -85,16 +124,19 @@ namespace AutumnBox.Basic.Calling
             {
                 outputBuilder.Clear();
                 int retCode = -1;
+                BeforeProcessStart(processStartInfo);
                 using (process = Process.Start(processStartInfo))
                 {
-                    process.OutputDataReceived += (s, e) => RaiseOutputReceived(e, false);
-                    process.ErrorDataReceived += (s, e) => RaiseOutputReceived(e, true);
+                    OnProcessStarted(process);
+                    RegisterProcessEvent(process);
                     process.BeginOutputReadLine();
                     process.BeginErrorReadLine();
+                    BeforeWaiting(process);
                     process.WaitForExit();
                     process.CancelErrorRead();
                     process.CancelOutputRead();
                     retCode = process.ExitCode;
+                    OnProcessExited(process);
                     process = null;
                 }
                 return new Result()
