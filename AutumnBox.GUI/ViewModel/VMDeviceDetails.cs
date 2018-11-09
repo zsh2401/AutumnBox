@@ -200,7 +200,7 @@ namespace AutumnBox.GUI.ViewModel
             }
             else
             {
-                StateTip = App.Current.Resources["PanelDeviceDetailsStateTip" + DeviceSelectionObserver.Instance.CurrentDevice.State]?.ToString();
+                StateTip = App.Current.Resources["PanelDeviceDetailsState" + DeviceSelectionObserver.Instance.CurrentDevice.State + "Tip"]?.ToString();
                 StateString = App.Current.Resources["PanelDeviceDetailsState" + DeviceSelectionObserver.Instance.CurrentDevice.State]?.ToString();
             }
 

@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Text;
+using AutumnBox.Basic.Calling;
 using AutumnBox.Basic.Calling.Adb;
 using AutumnBox.Basic.Data;
 using AutumnBox.Basic.Util;
@@ -53,7 +54,6 @@ namespace AutumnBox.Basic.Device.Management.OS
         {
             ShellCommandHelper.CommandExistsCheck(device, "screenrecord");
         }
-        private ShellCommand executingCommand;
         /// <summary>
         /// 开始录制
         /// </summary>
@@ -71,8 +71,8 @@ namespace AutumnBox.Basic.Device.Management.OS
             command += TmpFile;
             logger.Info("The command of recoding:" + command);
             var cmd = new RealtimeShellCommand(Device,command);
-            var executingCommand = CmdStation.Register(cmd);
-            executingCommand
+            CmdStation.Register(cmd);
+            cmd
                 .To(RaiseOutput)
                 .Execute()
                 .ThrowIfExitCodeNotEqualsZero();
@@ -82,7 +82,7 @@ namespace AutumnBox.Basic.Device.Management.OS
         /// </summary>
         public void Stop()
         {
-            executingCommand.Kill();
+            CmdStation.Free();
         }
         /// <summary>
         /// 将录制完成的文件保存到PC
