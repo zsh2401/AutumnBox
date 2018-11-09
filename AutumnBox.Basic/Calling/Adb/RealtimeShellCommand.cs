@@ -1,4 +1,5 @@
 ﻿using AutumnBox.Basic.Device;
+using AutumnBox.Basic.Util.Debugging;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -6,7 +7,7 @@ using System.Text;
 
 namespace AutumnBox.Basic.Calling.Adb
 {
-    class RealtimeShellCommand : AdbCommand
+   public class RealtimeShellCommand : AdbCommand
     {
         private readonly string shellCommand;
         public RealtimeShellCommand(IDevice device,string shellCommand) : base(device,"shell")
@@ -22,8 +23,13 @@ namespace AutumnBox.Basic.Calling.Adb
         {
             base.OnProcessStarted(proc);
             proc.StandardInput.WriteLine(shellCommand);
-            proc.StandardInput.WriteLine("echo $?");
             proc.StandardInput.WriteLine("exit");
+        }
+        protected override void RaiseOutputReceived(DataReceivedEventArgs e, bool isErr)
+        {
+            base.RaiseOutputReceived(e, isErr);
+            Trace.WriteLine(e.Data);
+            //new Logger<RealtimeShellCommand>().Info(e.Data);
         }
     }
 }

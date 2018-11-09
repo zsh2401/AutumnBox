@@ -151,9 +151,8 @@ namespace AutumnBox.Basic.Calling
         /// </summary>
         /// <param name="e"></param>
         /// <param name="isErr"></param>
-        private void RaiseOutputReceived(DataReceivedEventArgs e, bool isErr)
+        protected virtual  void RaiseOutputReceived(DataReceivedEventArgs e, bool isErr)
         {
-            //Debug.WriteLine("processBasedCmd:" + e.Data);
             callback?.Invoke(new OutputReceivedEventArgs(e, isErr));
             OutputReceived?.Invoke(this, new OutputReceivedEventArgs(e, isErr));
         }

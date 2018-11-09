@@ -67,7 +67,7 @@
     <s:String x:Key="PanelCurrentDeviceFastboot">Fastboot</s:String>
     <s:String x:Key="PanelCurrentDeviceUnknown">未知状态</s:String>
     <s:String x:Key="PanelCurrentDeviceUnauthorized">未授权USB调试</s:String>
-     <s:String x:Key="PanelCurrentDeviceOffline">异常离线状态</s:String>
+     <s:String x:Key="PanelCurrentDeviceOffline">异常离线</s:String>
     
     <!--PanelReboot-->
     <s:String x:Key="PanelRebootTitle">重启到</s:String>
@@ -105,21 +105,21 @@
     <s:String x:Key="PanelDeviceDetailsToolTipStorage">与厂商标识的存储空间不同，此处仅计算用户可用非保留存储空间</s:String>
     <s:String x:Key="PanelDeviceDetailsToolTipSu">根据shell su命令进行检测，如果su命令不存在，则视为无root</s:String>
     <s:String x:Key="PanelDeviceDetailsStateNotFound">未连接设备</s:String>
-    <s:String x:Key="PanelDeviceDetailsStateTipNotFound">请尝试安装ADB驱动或关闭其他手机助手</s:String>
+    <s:String x:Key="PanelDeviceDetailsStateNotFoundTip">请尝试安装ADB驱动或关闭其他手机助手</s:String>
     <s:String x:Key="PanelDeviceDetailsStatePoweron">设备开机</s:String>
-    <s:String x:Key="PanelDeviceDetailsStateTipPoweron">做你想做的</s:String>
+    <s:String x:Key="PanelDeviceDetailsStatePoweronTip">做你想做的</s:String>
     <s:String x:Key="PanelDeviceDetailsStateRecovery">恢复模式</s:String>
-    <s:String x:Key="PanelDeviceDetailsStateTipRecovery">..</s:String>
+    <s:String x:Key="PanelDeviceDetailsStateRecoveryTip">..</s:String>
     <s:String x:Key="PanelDeviceDetailsStateSideload">Sideload模式</s:String>
-    <s:String x:Key="PanelDeviceDetailsStateTipSideload">..</s:String>
+    <s:String x:Key="PanelDeviceDetailsStateSideloadTip">..</s:String>
     <s:String x:Key="PanelDeviceDetailsStateFastboot">Fastboot模式</s:String>
-    <s:String x:Key="PanelDeviceDetailsStateTipFastboot">..</s:String>
+    <s:String x:Key="PanelDeviceDetailsStateFastbootTip">.</s:String>
     <s:String x:Key="PanelDeviceDetailsStateUnauthorized">未授权</s:String>
-    <s:String x:Key="PanelDeviceDetailsStateTipUnauthorized">未获取USB调试权限,请前往手机授予</s:String>
+    <s:String x:Key="PanelDeviceDetailsStateUnauthorizedTip">未获取USB调试权限,请前往手机授予</s:String>
     <s:String x:Key="PanelDeviceDetailsStateOffline">异常离线</s:String>
-    <s:String x:Key="PanelDeviceDetailsStateTipOffline">请尝试拔插手机</s:String>
+    <s:String x:Key="PanelDeviceDetailsStateOfflineTip">请尝试拔插手机</s:String>
     <s:String x:Key="PanelDeviceDetailsStateUnknown">神奇的未知状态!</s:String>
-    <s:String x:Key="PanelDeviceDetailsStateTipUnknown">拔插手机，或重启秋之盒试试?</s:String>
+    <s:String x:Key="PanelDeviceDetailsStateUnknownTip">拔插手机，或重启秋之盒试试?</s:String>
     <s:String x:Key="PanelDeviceDetailsHw">硬件信息</s:String>
      <s:String x:Key="PanelDeviceDetailsBrand">厂商</s:String>
     <s:String x:Key="PanelDeviceDetailsModel">型号</s:String>
