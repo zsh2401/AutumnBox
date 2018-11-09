@@ -10,6 +10,7 @@ using AutumnBox.OpenFramework.Extension;
 using System;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace AutumnBox.OpenFramework.Wrapper
@@ -17,7 +18,7 @@ namespace AutumnBox.OpenFramework.Wrapper
     /// <summary>
     /// 拓展模块运行时进程,此进程非彼进程
     /// </summary>
-    public sealed class ClassExtensionProcess : IExtensionProcess, IDisposable
+    public sealed class ClassExtensionProcess : Context, IExtensionProcess, IDisposable
     {
         private readonly Context ctx;
         private readonly Type extensionType;
@@ -37,7 +38,7 @@ namespace AutumnBox.OpenFramework.Wrapper
                     scanner.Scan(ClassExtensionScanner.ScanOption.BeforeCreatingAspect);
                     bca = scanner.BeforeCreatingAspects;
                     Debug.WriteLine("aspects's count:" + bca.Count());
-                    
+
                 }
                 return bca;
             }
@@ -192,7 +193,10 @@ namespace AutumnBox.OpenFramework.Wrapper
                 exitCode = ExecuteMainMethod();
                 executingMainMethod = false;
             });
-            while (executingMainMethod && !isForceStopped) ;
+            while (executingMainMethod && !isForceStopped)
+            {
+                Thread.Sleep(1000);
+            }
             ExitCode = exitCode;
             var finishedArgs = new ExtensionFinishedArgs()
             {
@@ -200,8 +204,8 @@ namespace AutumnBox.OpenFramework.Wrapper
                 IsForceStopped = isForceStopped
             };
             Instance.Finish(ctx, finishedArgs);
-            Dispose();
             State = ProcessState.Exited;
+            Dispose();
             return exitCode;
         }
         /// <summary>

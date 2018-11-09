@@ -43,6 +43,7 @@ namespace AutumnBox.OpenFramework.Extension
             {
                 Logger.CDebug("Exeucting VisualMain()");
                 retCode = VisualMain();
+                Logger.CDebug("Executed VisualMain()");
             }
             catch (Exception ex)
             {
