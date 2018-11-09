@@ -20,14 +20,30 @@ namespace AutumnBox.Basic.Device.Management.OS
     /// </summary>
     public class VideoRecorder : DeviceCommander, Data.IReceiveOutputByTo<VideoRecorder>
     {
+        /// <summary>
+        /// 录制时长
+        /// </summary>
         public int Seconds { get; set; } = 180;
+        /// <summary>
+        /// 码率
+        /// </summary>
         public int BitRate { get; set; } = 4 * 1000 * 1000;
+        /// <summary>
+        /// 录制分辨率
+        /// </summary>
         public Size Size { get; set; } = new Size
         {
             Height = 1280,
             Width = 720
         };
+
+        /// <summary>
+        /// 开启详细信息
+        /// </summary>
         public bool EnableVerbose { get; set; } = false;
+        /// <summary>
+        /// 临时文件存放目录
+        /// </summary>
         public string TmpFile { get; set; } = "/sdcard/atmb_record.mp4";
         /// <summary>
         /// 创建新的视频录制器实例
