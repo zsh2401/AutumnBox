@@ -9,7 +9,7 @@
         WindowStyle="None"
         WindowStartupLocation="CenterOwner"
         ShowInTaskbar="False"
-        Title="Choice window" MinHeight="225" MaxWidth="300" Height="225" Width="300" MouseDown="Window_MouseDown">
+        Title="Choice window" MinHeight="225" MinWidth="300" Height="225" Width="400" MouseDown="Window_MouseDown">
     <Grid>
         <StackPanel Orientation="Vertical" Margin="5,5,5,47">
             <TextBlock Text="{Binding Message}" TextWrapping="WrapWithOverflow"/>
