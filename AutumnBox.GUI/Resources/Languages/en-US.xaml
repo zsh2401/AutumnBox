@@ -205,10 +205,12 @@
     <!--MessageWindow-->
      <s:String x:Key="MessageWindowDoubleClickToClose">Click anywhere on this window to close</s:String>
     
-    <!--ChoiceWindow-->
+        <!--ChoiceWindow-->
     <s:String x:Key="ChoiceWindowBtnCancel">Cancel</s:String>
     <s:String x:Key="ChoiceWindowBtnYes">Yes</s:String>
     <s:String x:Key="ChoiceWindowBtnNo">No</s:String>
+      <s:String x:Key="ChoiceWindowBtnAgree">Agree</s:String>
+    <s:String x:Key="ChoiceWindowBtnDisagree">Disagree</s:String>
     
      <!--LoadingWindow-->
      <s:String x:Key="LoadingWindowMessage">Please wait...</s:String>
