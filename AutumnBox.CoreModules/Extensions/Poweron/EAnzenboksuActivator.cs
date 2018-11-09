@@ -13,6 +13,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron
     [ExtName("一键激活第二空间")]
     [ExtIcon("Icons.Anzenbokusu.png")]
     [ExtRegions("zh-CN")]
+    [ExtRequiredDeviceStates(Basic.Device.DeviceState.Poweron)]
     [ExtAppProperty(PKG_NAME)]
     [DpmReceiver(RECEIVER_NAME)]
     internal class EAnzenboksuActivator : EDpmSetterBase
