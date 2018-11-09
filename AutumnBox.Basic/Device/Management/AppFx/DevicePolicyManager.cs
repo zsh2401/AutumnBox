@@ -7,6 +7,8 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using AutumnBox.Basic.Data;
+using AutumnBox.Basic.Device.Management.OS;
+using AutumnBox.Basic.Util;
 
 namespace AutumnBox.Basic.Device.Management.AppFx
 {
@@ -21,6 +23,7 @@ namespace AutumnBox.Basic.Device.Management.AppFx
         /// <param name="device"></param>
         public DevicePolicyManager(IDevice device) : base(device)
         {
+            ShellCommandHelper.CommandExistsCheck(device, "dpm");
         }
         /// <summary>
         /// 设置ActiveAdmin
@@ -30,8 +33,28 @@ namespace AutumnBox.Basic.Device.Management.AppFx
         /// <exception cref="Exceptions.AdbShellCommandFailedException"></exception>
         public void SetActiveAdmin(ComponentName cn, int? uid = null)
         {
-            throw new NotImplementedException();
+            SetActiveAdmin(cn.ToString(), uid);
         }
+        /// <summary>
+        /// Set active admin
+        /// </summary>
+        /// <param name="componentName"></param>
+        /// <param name="uid"></param>
+        public void SetActiveAdmin(string componentName, int? uid = null)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("set-active-admin ");
+            if (uid != null)
+            {
+                sb.Append($"--user {uid} ");
+            }
+            sb.Append(componentName);
+            CmdStation.GetShellCommand(Device, sb.ToString())
+                .To(RaiseOutput)
+                .Execute().
+                ThrowIfShellExitCodeNotEqualsZero();
+        }
+
         /// <summary>
         /// 设置ActiveAdmin
         /// </summary>
@@ -41,8 +64,33 @@ namespace AutumnBox.Basic.Device.Management.AppFx
         /// <exception cref="Exceptions.AdbShellCommandFailedException"></exception>
         public void SetProfileOwner(ComponentName cn, int? uid = null, string name = null)
         {
-            throw new NotImplementedException();
+            SetProfileOwner(cn.ToString(), uid, name);
         }
+        /// <summary>
+        /// Set Profile Owner
+        /// </summary>
+        /// <param name="componentName"></param>
+        /// <param name="uid"></param>
+        /// <param name="name"></param>
+        public void SetProfileOwner(string componentName, int? uid = null, string name = null)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("set-profile-owner ");
+            if (uid != null)
+            {
+                sb.Append($"--user {uid} ");
+            }
+            if (name != null)
+            {
+                sb.Append($"--name {name} ");
+            }
+            sb.Append(componentName);
+            CmdStation.GetShellCommand(Device, sb.ToString())
+                .To(RaiseOutput)
+                .Execute().
+                ThrowIfShellExitCodeNotEqualsZero();
+        }
+
         /// <summary>
         /// 设置Device Owner
         /// </summary>
@@ -52,7 +100,7 @@ namespace AutumnBox.Basic.Device.Management.AppFx
         /// <exception cref="Exceptions.AdbShellCommandFailedException"></exception>
         public void SetDeviceOwner(ComponentName cn, int? uid = null, string name = null)
         {
-            throw new NotImplementedException();
+            SetDeviceOwner(cn.ToString(), uid, name);
         }
         /// <summary>
         /// 设置Device Owner
@@ -63,8 +111,23 @@ namespace AutumnBox.Basic.Device.Management.AppFx
         /// <exception cref="Exceptions.AdbShellCommandFailedException"></exception>
         public void SetDeviceOwner(string componentName, int? uid = null, string name = null)
         {
-            throw new NotImplementedException();
+            StringBuilder sb = new StringBuilder();
+            sb.Append("set-device-owner ");
+            if (uid != null)
+            {
+                sb.Append($"--user {uid} ");
+            }
+            if (name != null)
+            {
+                sb.Append($"--name {name} ");
+            }
+            sb.Append(componentName);
+            CmdStation.GetShellCommand(Device, sb.ToString())
+                .To(RaiseOutput)
+                .Execute().
+                ThrowIfShellExitCodeNotEqualsZero();
         }
+
         /// <summary>
         /// 移除ActiveAdmin
         /// </summary>
@@ -73,18 +136,29 @@ namespace AutumnBox.Basic.Device.Management.AppFx
         /// <exception cref="Exceptions.AdbShellCommandFailedException"></exception>
         public void RemoveActiveAdmin(ComponentName cn, int? uid = null)
         {
-            throw new NotImplementedException();
+            RemoveActiveAdmin(cn.ToString(), uid);
         }
         /// <summary>
         /// 移除ActiveAdmin
         /// </summary>
-        /// <param name="compnentName">组件名</param>
+        /// <param name="componentName">组件名</param>
         /// <param name="uid">UID,不填则将对全部用户起效</param>
         /// <exception cref="Exceptions.AdbShellCommandFailedException"></exception>
-        public void RemoveActiveAdmin(string compnentName, int? uid = null)
+        public void RemoveActiveAdmin(string componentName, int? uid = null)
         {
-            throw new NotImplementedException();
+            StringBuilder sb = new StringBuilder();
+            sb.Append("remove-device-owner ");
+            if (uid != null)
+            {
+                sb.Append($"--user {uid} ");
+            }
+            sb.Append(componentName);
+            CmdStation.GetShellCommand(Device, sb.ToString())
+                .To(RaiseOutput)
+                .Execute().
+                ThrowIfShellExitCodeNotEqualsZero();
         }
+
         /// <summary>
         /// 通过To模式订阅输出
         /// </summary>
