@@ -12,7 +12,7 @@ using System;
 using System.IO;
 using System.Windows.Forms;
 
-namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot
+namespace AutumnBox.CoreModules.Extensions
 {
     [ExtName("截图并保存到电脑", "en-us:Screenshot and save to pc")]
     [ExtIcon("Icons.screenshot.png")]

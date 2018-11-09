@@ -9,7 +9,7 @@ using AutumnBox.Basic.Device.Management.AppFx;
 using AutumnBox.OpenFramework.Extension;
 using System.Threading;
 
-namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot.Sh
+namespace AutumnBox.CoreModules.Extensions.Poweron
 {
     [ExtName("Activate ShizukuManager", "zh-cn:激活ShizukuManager")]
     [ExtAppProperty(PKG_NAME)]

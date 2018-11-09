@@ -4,27 +4,21 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.Basic.Device.Management.AppFx;
+using AutumnBox.CoreModules.Attribute;
 using AutumnBox.CoreModules.Lib;
 using AutumnBox.OpenFramework.Extension;
 
-namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot.DpmSetter
+namespace AutumnBox.CoreModules.Extensions.Poweron
 {
     [ExtRegions("zh-CN")]
     [ExtName("免ROOT激活FreezeYou", "en-us:Set FreezeYou as DPM without root")]
     [ExtIcon("Icons.freezeYou.png")]
     [ExtAppProperty(PKGNAME)]
+    [DpmReceiver(RECEIVER_NAME)]
     [ExtRequiredDeviceStates(Basic.Device.DeviceState.Poweron)]
-    internal class EFreezeYou : DpmSetterExtension
+    internal class EFreezeYou : EDpmSetterBase
     {
         public const string PKGNAME = "cf.playhi.freezeyou";
-        public const string CLASSNAME = "DeviceAdminReceiver";
-        protected override ComponentName ReceiverName
-        {
-            get
-            {
-                return ComponentName
-                    .FromSimplifiedClassName(PKGNAME, CLASSNAME);
-            }
-        }
+        private const string RECEIVER_NAME = "cf.playhi.freezeyou/.DeviceAdminReceiver";
     }
 }

@@ -3,13 +3,12 @@
 ** date:  2018/8/13 9:33:21 (UTC +8:00)
 ** desc： ...
 *************************************************/
-using AutumnBox.Basic.Calling.Adb;
 using AutumnBox.Basic.Device;
 using AutumnBox.CoreModules.Aspect;
 using AutumnBox.OpenFramework.Extension;
 using System.Threading;
 
-namespace AutumnBox.CoreModules.Extensions.Poweron.Root
+namespace AutumnBox.CoreModules.Extensions.Poweron
 {
     [ExtName("[ROOT]解锁系统分区", "en-us:[ROOT]Unlock system paration")]
     [ExtRequiredDeviceStates(DeviceState.Poweron)]

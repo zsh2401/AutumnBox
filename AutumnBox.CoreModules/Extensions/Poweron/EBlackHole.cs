@@ -4,27 +4,21 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.Basic.Device.Management.AppFx;
+using AutumnBox.CoreModules.Attribute;
 using AutumnBox.CoreModules.Lib;
 using AutumnBox.OpenFramework.Extension;
 using System;
 
-namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot.DpmSetter
+namespace AutumnBox.CoreModules.Extensions.Poweron
 {
     [ExtName("免ROOT一键激活黑洞", "en-us:Set Blackhole as DPM without root")]
     [ExtIcon("Icons.blackhole.png")]
     [ExtAppProperty(PKGNAME)]
+    [DpmReceiver(RECEIVER_NAME)]
     [ExtRequiredDeviceStates(Basic.Device.DeviceState.Poweron)]
-    internal class EBlackHole : DpmSetterExtension
+    internal class EBlackHole : EDpmSetterBase
     {
         public const string PKGNAME = "com.hld.apurikakusu";
-        public const string CLASSNAME = "receiver.DPMReceiver";
-        protected override ComponentName ReceiverName
-        {
-            get
-            {
-                return ComponentName
-                    .FromSimplifiedClassName(PKGNAME, CLASSNAME);
-            }
-        }
+        public const string RECEIVER_NAME = "com.hld.apurikakusu/.receiver.DPMReceiver";
     }
 }
