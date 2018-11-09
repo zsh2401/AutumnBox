@@ -1,7 +1,7 @@
 ﻿using AutumnBox.Basic.Device;
 using AutumnBox.OpenFramework.Extension;
 
-namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot
+namespace AutumnBox.CoreModules.Extensions.Poweron
 {
     [ExtRegions("zh-CN")]
     [ExtName("免ROOT激活极客内存清理")]

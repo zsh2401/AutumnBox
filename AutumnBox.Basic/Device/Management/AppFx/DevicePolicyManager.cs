@@ -13,7 +13,7 @@ namespace AutumnBox.Basic.Device.Management.AppFx
     /// <summary>
     /// 没错,这就是DPM!
     /// </summary>
-    public sealed class DevicePolicyManager : DeviceCommander,Data.IReceiveOutputByTo<DevicePolicyManager>
+    public sealed class DevicePolicyManager : DeviceCommander, IReceiveOutputByTo<DevicePolicyManager>
     {
         /// <summary>
         /// 构造DPM实例
@@ -55,12 +55,33 @@ namespace AutumnBox.Basic.Device.Management.AppFx
             throw new NotImplementedException();
         }
         /// <summary>
+        /// 设置Device Owner
+        /// </summary>
+        /// <param name="componentName">组件名</param>
+        /// <param name="uid">UID,不填则将对全部用户起效</param>
+        /// <param name="name">易读的别名(the human-readable organization name)</param>
+        /// <exception cref="Exceptions.AdbShellCommandFailedException"></exception>
+        public void SetDeviceOwner(string componentName, int? uid = null, string name = null)
+        {
+            throw new NotImplementedException();
+        }
+        /// <summary>
         /// 移除ActiveAdmin
         /// </summary>
         /// <param name="cn">组件名</param>
         /// <param name="uid">UID,不填则将对全部用户起效</param>
         /// <exception cref="Exceptions.AdbShellCommandFailedException"></exception>
         public void RemoveActiveAdmin(ComponentName cn, int? uid = null)
+        {
+            throw new NotImplementedException();
+        }
+        /// <summary>
+        /// 移除ActiveAdmin
+        /// </summary>
+        /// <param name="compnentName">组件名</param>
+        /// <param name="uid">UID,不填则将对全部用户起效</param>
+        /// <exception cref="Exceptions.AdbShellCommandFailedException"></exception>
+        public void RemoveActiveAdmin(string compnentName, int? uid = null)
         {
             throw new NotImplementedException();
         }

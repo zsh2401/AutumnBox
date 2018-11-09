@@ -7,14 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot
+namespace AutumnBox.CoreModules.Extensions.Poweron
 {
     [ExtName("Clear all accounts", "zh-CN:暴力清空所有账号")]
     [ExtDesc("Use the tech by web1n", "zh-CN:使用web1n提供的黑科技暴力清空账号")]
     [UserAgree("EClearAccountsWarning")]
     [ExtIcon("Icons.nuclear.png")]
     [ExtRequiredDeviceStates(Basic.Device.DeviceState.Poweron)]
-    class EClearAccounts : OfficialVisualExtension
+    internal class EClearAccounts : OfficialVisualExtension
     {
         protected override int VisualMain()
         {

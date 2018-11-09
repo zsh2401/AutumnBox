@@ -4,27 +4,27 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.Basic.Device.Management.AppFx;
+using AutumnBox.CoreModules.Attribute;
 using AutumnBox.CoreModules.Lib;
 using AutumnBox.OpenFramework.Extension;
 using System;
 
-namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot.DpmSetter
+namespace AutumnBox.CoreModules.Extensions.Poweron
 {
     [ExtName("免ROOT激活小黑屋", "en-us:Set StopApp as DPM without root")]
-    [ExtAppProperty("web1n.stopapp")]
+    [ExtAppProperty(PKG_NAME)]
     [ExtIcon("Icons.stopapp.png")]
     [ExtPriority(ExtPriority.HIGH)]
+    [DpmReceiver("待会儿覆写方法，反正也用不到这里，呵呵哒，瞎写！")]
     [ExtRequiredDeviceStates(Basic.Device.DeviceState.Poweron)]
-    internal class EStopApp : DpmSetterExtension
+    internal class EStopApp : EDpmSetterBase
     {
-        protected override ComponentName ReceiverName => throw new System.NotImplementedException();
-
-        protected override int SetReciverAsDpm()
+        private const string PKG_NAME = "web1n.stopapp";
+        protected override int SetDpm()
         {
             return CmdStation.Register(
                 GodPower
-                .GetSetStopAppCommand()
-                )
+                .GetSetStopAppCommand())
                 .To(OutputPrinter)
                 .Execute().ExitCode;
         }

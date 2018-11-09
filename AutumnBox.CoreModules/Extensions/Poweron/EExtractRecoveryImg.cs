@@ -12,7 +12,7 @@ using AutumnBox.OpenFramework.Extension;
 using System.IO;
 using System.Windows.Forms;
 
-namespace AutumnBox.CoreModules.Extensions.Poweron.Root
+namespace AutumnBox.CoreModules.Extensions.Poweron
 {
     [ExtName("[ROOT]提取Recovery", "en-us:[ROOT]Extract recovery.img")]
     [ExtRegions("zh-CN", "zh-HK", "zh-TW", "zh-SG")]
@@ -25,9 +25,9 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.Root
     {
         protected override int VisualMain()
         {
-            var warnMsg = CoreLib.Current.Languages.Get("EObsoleteAndTryImageHelper");
-            Ux.Warn(warnMsg);
-            return ERR;
+            //var warnMsg = CoreLib.Current.Languages.Get("EObsoleteAndTryImageHelper");
+            //Ux.Warn(warnMsg);
+            //return ERR;
             string savePath = null;
             DialogResult dialogResult = DialogResult.No;
             App.RunOnUIThread(() =>

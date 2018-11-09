@@ -11,7 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 
-namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot
+namespace AutumnBox.CoreModules.Extensions
 {
     [ExtName("安装APK", "en-us:Install APK")]
     [ExtDesc("可直接向手机安装APK,不过要注意允许USB安装哦!", "en-us:Install apk to device")]

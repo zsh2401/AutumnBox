@@ -11,7 +11,7 @@ using AutumnBox.Basic.Util;
 using AutumnBox.OpenFramework.Extension;
 using System.Threading;
 
-namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot.Sh
+namespace AutumnBox.CoreModules.Extensions.Poweron
 {
     [ExtName("黑阈一键激活", "en-us:Activate brevent by one key")]
     [ExtDesc("一键激活黑阈,但值得注意的是,这样的激活方式,在重启后将失效","Activate the brevent service by one key")]

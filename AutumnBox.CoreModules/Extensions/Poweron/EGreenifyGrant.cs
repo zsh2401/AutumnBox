@@ -9,7 +9,7 @@ using AutumnBox.Basic.Device.Management.OS;
 using AutumnBox.OpenFramework.Extension;
 using System;
 
-namespace AutumnBox.CoreModules.Extensions.Poweron.NoRoot
+namespace AutumnBox.CoreModules.Extensions.Poweron
 {
     [ExtName("Greenify Aggressive Doze", "zh-CN:绿色守护嗜睡模式")]
     [ExtAppProperty(PKG_NAME)]
