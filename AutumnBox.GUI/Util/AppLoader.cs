@@ -68,12 +68,14 @@ namespace AutumnBox.GUI.Util
             logger.Info($"SDK version: {BuildInfo.SDK_VERSION}");
             logger.Info($"Windows version {Environment.OSVersion.Version}");
             logger.Info("======================");
-#if DEBUG
             Basic.Util.Debugging.LoggingStation.Logging += (s, e) =>
             {
+
+#if !DEBUG
+                if (e.Tag.ToLower() == "debug") return;
+#endif
                 LoggingStation.Instance.Log(e.Tag, e.Level.ToString(), e.Text);
             };
-#endif
             ui.Progress = 30;
             ui.LoadingTip = App.Current.Resources["ldmsgStartAdb"].ToString();
 
@@ -110,6 +112,6 @@ namespace AutumnBox.GUI.Util
             Thread.Sleep(1 * 1000);
             ui.Finish();
         }
-        #endregion
+#endregion
     }
 }
