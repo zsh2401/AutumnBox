@@ -10,7 +10,20 @@
     <s:String x:Key="ExtensionRunning">正在进行</s:String>
     <s:String x:Key="ExtensionCancelByUser">被用户取消</s:String>
 
-
+    <s:String x:Key="EDpmSetterBaseTipErrOtherAccounts">失败，有其它账户</s:String>
+    <s:String x:Key="EDpmSetterBaseMsgErrOtherAccounts">尝试使用秋之盒“暴力删除账户”功能进行删除</s:String>
+    
+    <s:String x:Key="EDpmSetterBaseTipErrOtherUsers">有其他用户</s:String>
+    <s:String x:Key="EDpmSetterBaseMsgErrOtherUsers">尝试使用秋之盒“暴力删除用户”功能进行删除</s:String>
+    
+    <s:String x:Key="EDpmSetterBaseTipErrMiuiSec">MIUI安全错误</s:String>
+    <s:String x:Key="EDpmSetterBaseMsgErrMiuiSec">前往开发者设置开启/关闭 MIUI安全设置</s:String>
+    
+    <s:String x:Key="EDpmSetterBaseTipSuccessed">成功</s:String>
+    <s:String x:Key="EDpmSetterBaseMsgSuccessed">开心不</s:String>
+    
+    <s:String x:Key="EDpmSetterBaseTipError">失败</s:String>
+    <s:String x:Key="EDpmSetterBaseMsgError">请复制下列内容找你要问的人</s:String>
 
     <s:String x:Key="EClearUsersWarning">详细阅读，否则后果自负!!!
         你需要手动做的只有一件事：清除屏幕锁和指纹锁，现在立刻去做，确保没有屏幕锁和指纹锁后，请点击同意将开始执行操作</s:String>

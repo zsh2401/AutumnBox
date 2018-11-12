@@ -10,7 +10,21 @@
     <s:String x:Key="ExtensionRunning">Running</s:String>
     <s:String x:Key="ExtensionCancelByUser">Cancelled by user</s:String>
 
-
+     <s:String x:Key="EDpmSetterBaseTipErrOtherAccounts">Failed,Have other accounts</s:String>
+    <s:String x:Key="EDpmSetterBaseMsgErrOtherAccounts">You can try the function which autumnbox provided and named "Clear all users"</s:String>
+    
+    <s:String x:Key="EDpmSetterBaseTipErrOtherUsers">Failed,Have other users</s:String>
+    <s:String x:Key="EDpmSetterBaseMsgErrOtherUsers">You can try the function which autumnbox provided and named "Clear all accounts"</s:String>
+    
+    <s:String x:Key="EDpmSetterBaseTipErrMiuiSec">Failed,MIUI Securiy Error</s:String>
+    <s:String x:Key="EDpmSetterBaseMsgErrMiuiSec">Goto developer settings and turn on/off MIUI security option</s:String>
+    
+    <s:String x:Key="EDpmSetterBaseTipSuccessed">Successed!</s:String>
+    <s:String x:Key="EDpmSetterBaseMsgSuccessed">Are you happy?</s:String>
+    
+    <s:String x:Key="EDpmSetterBaseTipError">Failed</s:String>
+    <s:String x:Key="EDpmSetterBaseMsgError">Please copy the error message to someone can handle this</s:String>
+    
     <s:String x:Key="EClearUsersWarning">Read it in detail, otherwise the consequences will be at your own risk!!!
          There is only one thing you need to do manually: clear the screen lock and fingerprint lock, do it now, make sure there is no screen lock and fingerprint lock, click agree</s:String>
     <s:String x:Key="EClearAccountsWarning">Read it in detail, otherwise the consequences will be at your own risk!!!

@@ -3,14 +3,12 @@
 ** date:  2018/9/10 17:36:13 (UTC +8:00)
 ** desc： ...
 *************************************************/
-using AutumnBox.Basic.Calling;
-using AutumnBox.Basic.Device;
-using AutumnBox.Basic.Device.Management.AppFx;
 using AutumnBox.Basic.Exceptions;
 using AutumnBox.CoreModules.Aspect;
 using AutumnBox.CoreModules.Attribute;
 using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.Wrapper;
+using System;
 
 namespace AutumnBox.CoreModules.Lib
 {
@@ -39,29 +37,31 @@ namespace AutumnBox.CoreModules.Lib
             };
             dpmCommander.To(OutputPrinter);
             dpmCommander.Extract();
+            Progress = 20;
 
             WriteLineAndSetTip(Res("EGodPowerExtractingApk"));
             dpmCommander.Extract();
             ThrowIfCanceled();
+            Progress = 40;
 
             WriteLineAndSetTip(Res("EGodPowerPushingApk"));
             dpmCommander.PushToDevice();
             ThrowIfCanceled();
+            Progress = 50;
 
             WriteLineAndSetTip(Res("EGodPowerRmUser"));
             dpmCommander.RemoveUsers();
             ThrowIfCanceled();
+            Progress = 60;
 
             WriteLineAndSetTip(Res("EGodPowerRmAcc"));
             dpmCommander.RemoveAccounts();
             ThrowIfCanceled();
+            Progress = 70;
 
-            return SetDpm();
-        }
-        protected virtual int SetDpm()
-        {
             WriteLineAndSetTip(Res("DPMSetting"));
             ThrowIfCanceled();
+            Progress = 80;
             try
             {
                 dpmCommander.SetDeviceOwner(_cn);
@@ -71,6 +71,44 @@ namespace AutumnBox.CoreModules.Lib
             {
                 WriteLine(ex.Message);
                 return ex.ExitCode ?? 1;
+            }
+            finally
+            {
+                Progress = 100;
+            }
+        }
+        protected override void OnFinish(ExtensionFinishedArgs args)
+        {
+            base.OnFinish(args);
+            try
+            {
+                switch (args.ExitCode)
+                {
+                    case CstmDpmCommander.OKAY:
+                        Tip = CoreLib.Current.Languages.Get("EDpmSetterBaseTipSuccessed");
+                        WriteLine(CoreLib.Current.Languages.Get("EDpmSetterBaseMsgSuccessed"));
+                        break;
+                    case CstmDpmCommander.ERR:
+                        Tip = CoreLib.Current.Languages.Get("EDpmSetterBaseTipError");
+                        WriteLine(CoreLib.Current.Languages.Get("EDpmSetterBaseMsgError"));
+                        break;
+                    case CstmDpmCommander.ERR_EXIST_OTHER_ACC:
+                        Tip = CoreLib.Current.Languages.Get("EDpmSetterBaseTipErrOtherAccounts");
+                        WriteLine(CoreLib.Current.Languages.Get("EDpmSetterBaseMsgErrOtherAccounts"));
+                        break;
+                    case CstmDpmCommander.ERR_EXIST_OTHER_USER:
+                        Tip = CoreLib.Current.Languages.Get("EDpmSetterBaseTipErrOtherUsers");
+                        WriteLine(CoreLib.Current.Languages.Get("EDpmSetterBaseMsgErrOtherUsers"));
+                        break;
+                    case CstmDpmCommander.ERR_MIUI_SEC:
+                        Tip = CoreLib.Current.Languages.Get("EDpmSetterBaseTipErrMiuiSec");
+                        WriteLine(CoreLib.Current.Languages.Get("EDpmSetterBaseMsgErrMIUISec"));
+                        break;
+                }
+            }
+            catch (Exception e)
+            {
+                Logger.Warn("Can not set tip and message on EDpmSetterBase.OnFinish()", e);
             }
         }
     }
