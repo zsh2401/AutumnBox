@@ -11,10 +11,11 @@ using System.Threading;
 namespace AutumnBox.CoreModules.Extensions.Poweron
 {
     [ExtName("[ROOT]解锁系统分区", "en-us:[ROOT]Unlock system paration")]
+    [ExtDesc("不是解锁BL！！！这个功能只是为了提供完整的root权限！")]
     [ExtRequiredDeviceStates(DeviceState.Poweron)]
     [ObsoleteImageOperator]
     [ExtRequireRoot]
-    [ExtIcon("Icons.key.png")]
+    [ExtIcon("Icons.unlock.png")]
     internal class EUnlockSystemParation : OfficialVisualExtension
     {
         protected override int VisualMain()

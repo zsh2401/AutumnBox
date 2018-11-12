@@ -3,6 +3,7 @@
 ** date:  2018/8/13 9:26:11 (UTC +8:00)
 ** desc： ...
 *************************************************/
+using AutumnBox.Basic.Device;
 using AutumnBox.Basic.Device.Management.OS;
 using AutumnBox.OpenFramework.Extension;
 using System.Windows;
@@ -31,10 +32,12 @@ namespace AutumnBox.CoreModules.Extensions.Poweron
                     //case OpenFramework.Open.ChoiceResult.Deny:
                     int target = Ux.InputNumber(messageInputNumber, min: 100, max: 1000);
                     wm.Density = target;
+                    TargetDevice.Reboot2System();
                     return OK;
                 case OpenFramework.Open.ChoiceResult.Right:
                     //case OpenFramework.Open.ChoiceResult.Accept:
                     wm.ResetDensity();
+                    TargetDevice.Reboot2System();
                     return OK;
                 default:
                     return ERR;
