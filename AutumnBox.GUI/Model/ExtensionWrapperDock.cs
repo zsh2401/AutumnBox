@@ -5,6 +5,7 @@
 *************************************************/
 using AutumnBox.GUI.MVVM;
 using AutumnBox.GUI.Util;
+using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.Wrapper;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
@@ -42,9 +44,20 @@ namespace AutumnBox.GUI.Model
             }
         }
         private ImageSource icon;
+        public Visibility RootVisibily
+        {
+            get => _rootVisibily; set
+            {
+                _rootVisibily = value;
+                RaisePropertyChanged();
+            }
+        }
+        private Visibility _rootVisibily;
         public ExtensionWrapperDock(IExtensionWrapper wrapper)
         {
             this.Wrapper = wrapper;
+            bool requiredRoot = (bool)wrapper.Info[ExtensionInformationKeys.ROOT] ;
+            RootVisibily = requiredRoot ?Visibility.Visible:Visibility.Hidden;
         }
     }
     internal static class ExtensionWrapperDockExtensions
