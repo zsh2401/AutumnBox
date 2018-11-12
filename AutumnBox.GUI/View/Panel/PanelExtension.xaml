@@ -24,20 +24,35 @@
                 </ListBox.ItemsPanel>
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel Background="#01000000" MinHeight="95" MinWidth="90" MaxWidth="90" ToolTip="{Binding ToolTip}" Margin="0" Orientation="Vertical">
-                            <StackPanel.InputBindings>
-                                <MouseBinding MouseAction="LeftDoubleClick" Command="{Binding DataContext.RunSelectedItem,ElementName=thisCtrl}"/>
-                            </StackPanel.InputBindings>
-                            <Image RenderOptions.BitmapScalingMode="Fant" Height="50px" Width="50px" Source="{Binding Icon}"/>
-                            <TextBlock TextAlignment="Center" FontSize="12" TextWrapping="Wrap" TextTrimming="WordEllipsis"  Text="{Binding Name}"/>
-                        </StackPanel>
+                        <Grid Height="100" Width="100">
+                            <StackPanel Background="#01000000" MinHeight="95" MinWidth="90" MaxWidth="90" ToolTip="{Binding ToolTip}" Margin="0" Orientation="Vertical">
+                                <StackPanel.InputBindings>
+                                    <MouseBinding MouseAction="LeftDoubleClick" Command="{Binding DataContext.RunSelectedItem,ElementName=thisCtrl}"/>
+                                </StackPanel.InputBindings>
+                                <Image RenderOptions.BitmapScalingMode="Fant" Height="50px" Width="50px" Source="{Binding Icon}"/>
+                                <TextBlock TextAlignment="Center" FontSize="12" TextWrapping="Wrap" TextTrimming="WordEllipsis"  Text="{Binding Name}"/>
+                            </StackPanel>
+                            <Grid VerticalAlignment="Top" Visibility="{Binding RootVisibily}" HorizontalAlignment="Right">
+                                <Grid.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform Angle="45"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Grid.RenderTransform>
+                                <TextBlock FontSize="10" TextAlignment="Center">ROOT</TextBlock>
+                            </Grid>
+                        </Grid>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
         </Grid>
 
         <StackPanel Visibility="{Binding NotFoundVisibily}" VerticalAlignment="Center" Orientation="Vertical" HorizontalAlignment="Center">
-            <TextBlock FontSize="25" Foreground="{DynamicResource MainBackgroundForegroundBrush}" HorizontalAlignment="Center" Text="{DynamicResource PanelExtensionsNotFound}"/>
+            <TextBlock FontSize="25" Foreground="{DynamicResource MainBackgroundForegroundBrush}" HorizontalAlignment="Center" Text="{DynamicResource PanelExtensionsNotFound}" RenderTransformOrigin="0.5,0.5">
+                
+            </TextBlock>
             <Button Command="{Binding GotoDownloadExtension}" CommandParameter="{DynamicResource urlDownloadExtensions}" FontSize="13" HorizontalAlignment="Center" Content="{DynamicResource PanelExtesnionsDownloadExt}" Style="{DynamicResource MaterialDesignFlatButton}"/>
             <TextBlock Margin="10" FontSize="13" Foreground="{DynamicResource MainBackgroundForegroundBrush}" HorizontalAlignment="Center" VerticalAlignment="Center" Text="I'd love to change the world,but i dont know what to do"/>
         </StackPanel>

@@ -15,9 +15,17 @@ namespace AutumnBox.OpenFramework.Extension
     /// <summary>
     /// 明确标记标明该拓展需要设备ROOT权限
     /// </summary>
-    public class ExtRequireRootAttribute : BeforeCreatingAspect
+    public class ExtRequireRootAttribute : BeforeCreatingAspect,IInformationAttribute
     {
         private readonly bool reqRoot;
+        /// <summary>
+        /// key
+        /// </summary>
+        public string Key => ExtensionInformationKeys.ROOT;
+        /// <summary>
+        /// value
+        /// </summary>
+        public object Value => reqRoot;
 
         /// <summary>
         /// 构造
