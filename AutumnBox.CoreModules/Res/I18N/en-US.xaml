@@ -10,6 +10,9 @@
     <s:String x:Key="ExtensionRunning">Running</s:String>
     <s:String x:Key="ExtensionCancelByUser">Cancelled by user</s:String>
 
+   
+    <s:String x:Key="EDeviceOwnerRemoverYNReboot">Finished,reboot to system?</s:String>
+    
      <s:String x:Key="EDpmSetterBaseTipErrOtherAccounts">Failed,Have other accounts</s:String>
     <s:String x:Key="EDpmSetterBaseMsgErrOtherAccounts">You can try the function which autumnbox provided and named "Clear all users"</s:String>
     

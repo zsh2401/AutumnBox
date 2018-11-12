@@ -55,7 +55,7 @@
     <Compile Include="Extensions\Fastboot\EFlashBoot.cs" />
     <Compile Include="Extensions\Fastboot\EFlashRecovery.cs" />
     <Compile Include="Extensions\Fastboot\EOemLock.cs" />
-    <Compile Include="Extensions\Mix\EDevicePolicyRemover.cs" />
+    <Compile Include="Extensions\Mix\EDeviceOwnerRemover.cs" />
     <Compile Include="Extensions\Poweron\EAnzenboksuActivator.cs" />
     <Compile Include="Extensions\Poweron\EFreezeYou.cs" />
     <Compile Include="Extensions\Poweron\EAirForzenActivator.cs" />

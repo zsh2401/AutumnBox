@@ -10,6 +10,8 @@
     <s:String x:Key="ExtensionRunning">正在进行</s:String>
     <s:String x:Key="ExtensionCancelByUser">被用户取消</s:String>
 
+    <s:String x:Key="EDeviceOwnerRemoverYNReboot">完成，但重启才可生效，是否重启？</s:String>
+
     <s:String x:Key="EDpmSetterBaseTipErrOtherAccounts">失败，有其它账户</s:String>
     <s:String x:Key="EDpmSetterBaseMsgErrOtherAccounts">尝试使用秋之盒“暴力删除账户”功能进行删除</s:String>
     
