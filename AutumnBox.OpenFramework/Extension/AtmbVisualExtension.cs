@@ -65,25 +65,26 @@ namespace AutumnBox.OpenFramework.Extension
             UIController.OnFinish();
             if (args.ExitCode == 0)
             {
-                var sound =  GetService<ISoundService>(ServicesNames.SOUND);
+                var sound = GetService<ISoundService>(ServicesNames.SOUND);
                 sound.OK();
             }
-            if (FinishedTip != null)
-            {
-                Tip = FinishedTip;
-                return;
-            }
-            switch (args.ExitCode)
+            Tip = GetTipByExitCode(args.ExitCode);
+        }
+        /// <summary>
+        /// 结束执行后，根据返回码获取Tip
+        /// </summary>
+        /// <param name="exitCode"></param>
+        /// <returns></returns>
+        protected string GetTipByExitCode(int exitCode)
+        {
+            switch (exitCode)
             {
                 case OK:
-                    Tip = App.GetPublicResouce<string>("RunningWindowStateFinished");
-                    break;
+                    return App.GetPublicResouce<string>("RunningWindowStateFinished");
                 case ERR_CANCELED_BY_USER:
-                    Tip = App.GetPublicResouce<string>("RunningWindowStateCanceledByUser");
-                    break;
+                    return App.GetPublicResouce<string>("RunningWindowStateCanceledByUser");
                 default:
-                    Tip = App.GetPublicResouce<string>("RunningWindowStateError");
-                    break;
+                    return App.GetPublicResouce<string>("RunningWindowStateError");
             }
         }
         /// <summary>
@@ -105,7 +106,6 @@ namespace AutumnBox.OpenFramework.Extension
                 {
                     WriteLine(App.GetPublicResouce<string>("RunningWindowExceptionOnStopping"));
                 });
-
             }
             if (!canStop)
             {
@@ -117,10 +117,10 @@ namespace AutumnBox.OpenFramework.Extension
             return canStop;
         }
 
-        /// <summary>
-        /// 完成后的Tip,不设置则默认根据返回码判断是否成功
-        /// </summary>
-        protected string FinishedTip { get; set; } = null;
+        ///// <summary>
+        ///// 完成后的Tip,不设置则默认根据返回码判断是否成功
+        ///// </summary>
+        //protected string FinishedTip { get; set; } = null;
         bool isRunning = true;
         internal void OnUIControllerClosing(object sender, UIControllerClosingEventArgs args)
         {

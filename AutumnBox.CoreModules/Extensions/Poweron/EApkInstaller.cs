@@ -39,8 +39,7 @@ namespace AutumnBox.CoreModules.Extensions
             }
             else
             {
-                FinishedTip = MsgCancelledByUser;
-                return ERR;
+                return ERR_CANCELED_BY_USER;
             }
             return exitCodeOnInstalling;
         }
