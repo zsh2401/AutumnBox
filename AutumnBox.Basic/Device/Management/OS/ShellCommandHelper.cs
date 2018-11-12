@@ -48,7 +48,7 @@ namespace AutumnBox.Basic.Device.Management.OS
                     throw new CommandNotFoundException(cmd);
                 default:
                     throw new
-                   AdbShellCommandFailedException(result.ExitCode, result.Output.ToString());
+                   AdbShellCommandFailedException(result.Output,result.ExitCode);
             }
         }
     }

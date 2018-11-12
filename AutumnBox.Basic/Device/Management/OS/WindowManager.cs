@@ -81,7 +81,7 @@ namespace AutumnBox.Basic.Device.Management.OS
                 }
                 else
                 {
-                    var sourceException = new AdbShellCommandFailedException(exeResult.ExitCode, exeResult.Output.ToString());
+                    var sourceException = new AdbShellCommandFailedException(exeResult.Output,exeResult.ExitCode);
                     throw new Exception("Can't get override size from this device", sourceException);
                 }
             }
@@ -108,7 +108,7 @@ namespace AutumnBox.Basic.Device.Management.OS
                 }
                 else
                 {
-                    var sourceException = new AdbShellCommandFailedException(exeResult.ExitCode, exeResult.Output.ToString());
+                    var sourceException = new AdbShellCommandFailedException(exeResult.Output,exeResult.ExitCode);
                     throw new Exception("Can't get physical size from this device", sourceException);
                 }
             }
@@ -157,7 +157,7 @@ namespace AutumnBox.Basic.Device.Management.OS
                 }
                 else
                 {
-                    var sourceException = new AdbShellCommandFailedException(exeResult.ExitCode, exeResult.Output.ToString());
+                    var sourceException = new AdbShellCommandFailedException(exeResult.Output,exeResult.ExitCode);
                     throw new Exception("Can't get physical density from this device", sourceException);
                 }
             }
@@ -180,7 +180,7 @@ namespace AutumnBox.Basic.Device.Management.OS
                 }
                 else
                 {
-                    var sourceException = new AdbShellCommandFailedException(exeResult.ExitCode, exeResult.Output.ToString());
+                    var sourceException = new AdbShellCommandFailedException(exeResult.Output,exeResult.ExitCode);
                     throw new Exception("Can't get physical override from this device", sourceException);
                 }
             }

@@ -170,5 +170,14 @@ namespace AutumnBox.Basic.Data
         {
             return !(output1 == output2);
         }
+
+        /// <summary>
+        /// ÒþÊ½×ª»»
+        /// </summary>
+        /// <param name="value"></param>
+        public static implicit operator string(Output value)
+        {
+            return value.ToString();
+        }
     }
 }

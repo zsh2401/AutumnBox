@@ -35,7 +35,7 @@ namespace AutumnBox.Basic.Util
         {
             if (result.Item2 != 0)
             {
-                throw new AdbShellCommandFailedException(result.Item2, result.Item1.ToString());
+                throw new AdbShellCommandFailedException(result.Item1, result.Item2);
             }
         }
         /// <summary>
@@ -46,7 +46,7 @@ namespace AutumnBox.Basic.Util
         {
             if (result.ExitCode != 0)
             {
-                throw new AdbShellCommandFailedException(result.ExitCode, result.Output.ToString());
+                throw new AdbShellCommandFailedException(result.Output,result.ExitCode);
             }
             return result;
         }
@@ -58,10 +58,7 @@ namespace AutumnBox.Basic.Util
         {
             if (result.ExitCode != 0)
             {
-                throw new AdbCommandFailedException(result.Output)
-                {
-                    ExitCode = result.ExitCode
-                };
+                throw new AdbCommandFailedException(result.Output, result.ExitCode);
             }
             return result;
         }
