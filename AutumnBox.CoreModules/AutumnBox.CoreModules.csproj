@@ -66,6 +66,7 @@
     <Compile Include="Extensions\Poweron\EScreenRecorder.cs" />
     <Compile Include="Extensions\Poweron\EShizukuActivator.cs" />
     <Compile Include="Aspect\ObsoleteImageOperatorAttribute.cs" />
+    <Compile Include="Lib\CstmDpmCommander.cs" />
     <Compile Include="OfficialVisualExtension.Output.cs" />
     <Compile Include="LanguageManager.cs" />
     <Compile Include="Lib\EDpmSetterBase.cs" />
@@ -109,6 +110,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <EmbeddedResource Include="Res\godpower.apk" />
+    <EmbeddedResource Include="Res\dpmpro" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AutumnBox.Basic\AutumnBox.Basic.csproj">
