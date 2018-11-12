@@ -4,9 +4,15 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AutumnBox.CoreModules.View"
+        FontFamily="{DynamicResource AutumnBox.Font}"
         mc:Ignorable="d"
-        Title="ScreenRecorderWindow" Height="450" Width="800">
+        WindowStartupLocation="CenterScreen"
+        Title="ScreenRecorderWindow" MinHeight="300" MinWidth="400" Height="300" Width="400">
     <Grid>
+        <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock FontSize="50" Text="未完成"/>
+            <TextBlock TextAlignment="Center"  FontSize="20" Text="请耐心等待"/>
+        </StackPanel>
         
     </Grid>
 </Window>

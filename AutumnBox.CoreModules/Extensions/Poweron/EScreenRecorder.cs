@@ -22,7 +22,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron
             App.RunOnUIThread(() =>
             {
                 window = new ScreenRecorderWindow();
-                window.ShowDialog();
+                window.Show();
             });
             return OK;
         }
