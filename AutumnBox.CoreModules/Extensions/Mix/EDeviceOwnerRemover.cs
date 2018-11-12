@@ -4,6 +4,7 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.Basic.Calling;
+using AutumnBox.Basic.Device;
 using AutumnBox.OpenFramework.Extension;
 using System;
 
@@ -14,7 +15,7 @@ namespace AutumnBox.CoreModules.Extensions.Mix
     [ExtRequireRoot]
     [ExtIcon("Icons.knife.png")]
     [ExtRequiredDeviceStates(Basic.Device.DeviceState.Poweron | Basic.Device.DeviceState.Recovery)]
-    internal class EDevicePolicyRemover : OfficialVisualExtension
+    internal class EDeviceOwnerRemover : OfficialVisualExtension
     {
         protected override int VisualMain()
         {
@@ -27,8 +28,14 @@ namespace AutumnBox.CoreModules.Extensions.Mix
                 .To(OutputPrinter)
                 .Execute();
             WriteExitCode(step2Result.ExitCode);
+
             if (step1Result.ExitCode == 0 && step2Result.ExitCode == 0)
             {
+                bool rebootToSystem = Ux.DoYN(Res("EDeviceOwnerRemoverYNReboot"));
+                if (rebootToSystem)
+                {
+                    TargetDevice.Reboot2System();
+                }
                 return 0;
             }
             else
