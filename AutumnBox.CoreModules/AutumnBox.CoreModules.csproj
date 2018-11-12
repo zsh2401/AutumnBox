@@ -55,6 +55,7 @@
     <Compile Include="Extensions\Fastboot\EFlashBoot.cs" />
     <Compile Include="Extensions\Fastboot\EFlashRecovery.cs" />
     <Compile Include="Extensions\Fastboot\EOemLock.cs" />
+    <Compile Include="Extensions\Mix\EDevicePolicyRemover.cs" />
     <Compile Include="Extensions\Poweron\EAnzenboksuActivator.cs" />
     <Compile Include="Extensions\Poweron\EFreezeYou.cs" />
     <Compile Include="Extensions\Poweron\EAirForzenActivator.cs" />
@@ -217,6 +218,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Icons\recorder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\knife.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
