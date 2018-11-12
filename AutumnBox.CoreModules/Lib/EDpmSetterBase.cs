@@ -70,7 +70,7 @@ namespace AutumnBox.CoreModules.Lib
             catch (AdbShellCommandFailedException ex)
             {
                 WriteLine(ex.Message);
-                return ex.ExitCode;
+                return ex.ExitCode ?? 1;
             }
         }
     }

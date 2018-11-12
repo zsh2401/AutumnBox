@@ -11,31 +11,15 @@ namespace AutumnBox.Basic.Exceptions
     /// <summary>
     /// ADB命令执行失败异常
     /// </summary>
-    public class AdbCommandFailedException : Exception
+    public class AdbCommandFailedException : CommandErrorException
     {
-        /// <summary>
-        /// 返回码
-        /// </summary>
-        public int ExitCode { get; set; }
-        /// <summary>
-        /// 构造
-        /// </summary>
-        public AdbCommandFailedException()
-            : base() { }
         /// <summary>
         /// 构造
         /// </summary>
         /// <param name="output"></param>
-        public AdbCommandFailedException(Output output)
-            : base(output.ToString())
-        {
-        }
-        /// <summary>
-        /// 构造
-        /// </summary>
-        /// <param name="message"></param>
-        public AdbCommandFailedException(string message)
-            : base(message)
+        /// <param name="exitCode"></param>
+        public AdbCommandFailedException(Output output,int exitCode)
+            : base(output.ToString(),exitCode)
         {
         }
     }

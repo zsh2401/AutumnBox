@@ -92,7 +92,7 @@ namespace AutumnBox.GUI.Util
                 ui.Progress = 60;
                 ui.LoadingTip = App.Current.Resources["ldmsgAdbServerFailed"].ToString();
                 Thread.Sleep(10000);
-                App.Current.Shutdown(e.ExitCode);
+                App.Current.Shutdown(e.ExitCode ?? 1);
             }
 
             ui.Progress = 60;

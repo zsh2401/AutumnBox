@@ -34,7 +34,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron
                 WriteExitCode(0);
                 return 0;
             }
-            catch (CommandFailedException ex)
+            catch (CommandErrorException ex)
             {
                 WriteExitCode(ex.ExitCode ?? 1);
                 return ex.ExitCode ?? 1;
