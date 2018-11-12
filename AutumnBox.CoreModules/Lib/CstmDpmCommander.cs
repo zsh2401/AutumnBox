@@ -31,9 +31,9 @@ namespace AutumnBox.CoreModules.Lib
             + PATH_OF_COMMAND_CLASS + " {0}";
         public const int OKAY = 0;
         public const int ERR = 1;
-        public const int EXIST_OTHER_USER = 1 << 1;
-        public const int EXIST_OTHER_ACC = 1 << 2;
-        public const int MIUI_SEC_ERR = 1 << 3;
+        public const int ERR_EXIST_OTHER_USER = 0b100;
+        public const int ERR_EXIST_OTHER_ACC = 0b1000;
+        public const int ERR_MIUI_SEC = 0b10000;
         private readonly Context context;
 
         public CstmDpmCommander(Context context, IDevice device) : base(device)

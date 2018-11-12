@@ -75,7 +75,7 @@ namespace AutumnBox.OpenFramework.Extension
         /// </summary>
         /// <param name="exitCode"></param>
         /// <returns></returns>
-        protected string GetTipByExitCode(int exitCode)
+        protected virtual string GetTipByExitCode(int exitCode)
         {
             switch (exitCode)
             {
