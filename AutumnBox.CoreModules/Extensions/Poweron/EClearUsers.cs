@@ -1,4 +1,5 @@
-﻿using AutumnBox.CoreModules.Aspect;
+﻿using AutumnBox.Basic.Exceptions;
+using AutumnBox.CoreModules.Aspect;
 using AutumnBox.CoreModules.Lib;
 using AutumnBox.OpenFramework.Extension;
 using System;
@@ -18,23 +19,30 @@ namespace AutumnBox.CoreModules.Extensions.Poweron
     {
         protected override int VisualMain()
         {
-            var gp = new GodPower(this, TargetDevice)
+            var dpm = new CstmDpmCommander(this, TargetDevice)
             {
                 CmdStation = this.CmdStation
             };
             Progress = 20;
-            gp.Extract();
+            dpm.Extract();
             Progress = 50;
-            gp.GetPushCommand()
-                .To(OutputPrinter)
-                .Execute();
+            dpm.PushToDevice();
             Progress = 80;
-            var result = gp.GetRemoveUserCommand()
-                 .To(OutputPrinter)
-                 .Execute();
-            Progress = 100;
-            WriteExitCode(result.ExitCode);
-            return result.ExitCode;
+            try
+            {
+                dpm.RemoveUsers();
+                WriteExitCode(0);
+                return 0;
+            }
+            catch (CommandFailedException ex)
+            {
+                WriteExitCode(ex.ExitCode ?? 1);
+                return ex.ExitCode ?? 1;
+            }
+            finally
+            {
+                Progress = 100;
+            }
         }
     }
 }

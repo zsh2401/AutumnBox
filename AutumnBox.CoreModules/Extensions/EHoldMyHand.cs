@@ -7,6 +7,7 @@ using AutumnBox.Basic.Calling.Adb;
 using AutumnBox.Basic.Device;
 using AutumnBox.Basic.Device.Management.OS;
 using AutumnBox.CoreModules.Aspect;
+using AutumnBox.CoreModules.Lib;
 using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.Open;
 using System.IO;
@@ -17,18 +18,23 @@ namespace AutumnBox.CoreModules.Extensions
 {
     [ExtName("Example extension")]
     [ExtRequiredDeviceStates(NoMatter)]
-    [ExtDesc("wtf")]
-    //[ObsoleteImageOperator]6
+    //[ExtDesc("wtf")]
+    //[ObsoleteImageOperator]
     //[ExtAppProperty("com.miui.calculatorx")]
     [UserAgree("Please be true")]
     internal class EHoldMyHand : OfficialVisualExtension
     {
         protected override int VisualMain()
         {
-            var recorder = GetDeviceCommander<VideoRecorder>();
-            recorder.Seconds = 10;
-            recorder.To(OutputPrinter);
-            recorder.Start();
+            CstmDpmCommander dpm = new CstmDpmCommander(this, TargetDevice)
+            {
+                CmdStation = this.CmdStation
+            };
+            dpm.To(OutputPrinter);
+            dpm.Extract();
+            dpm.PushToDevice();
+            dpm.ShowUsage();
+            dpm.SetDeviceOwner("com.fuck.aaa");
             return OK;
         }
     }

@@ -2,10 +2,12 @@
 using AutumnBox.Basic.Device;
 using AutumnBox.Basic.Util;
 using AutumnBox.OpenFramework.Content;
+using System;
 using System.IO;
 
 namespace AutumnBox.CoreModules.Lib
 {
+    [Obsolete("Please use CstmDpmCommander to instead",true)]
     internal class GodPower : DeviceCommander
     {
         private const string FMT_CMD =

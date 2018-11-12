@@ -14,18 +14,10 @@ namespace AutumnBox.CoreModules.Extensions.Poweron
     [ExtAppProperty(PKG_NAME)]
     [ExtIcon("Icons.icebox.png")]
     [ExtRequiredDeviceStates(Basic.Device.DeviceState.Poweron)]
-    [DpmReceiver("自行覆写SetDpm方法，用不上这个，任性！")]
+    [DpmReceiver(RECEIVER_NAME)]
     internal class EIceBox : EDpmSetterBase
     {
         private const string PKG_NAME = "com.catchingnow.icebox";
-
-        protected override int SetDpm()
-        {
-            return CmdStation.Register(GodPower
-                 .GetSetIceBoxCommand())
-                 .To(OutputPrinter)
-                 .Execute()
-                 .ExitCode;
-        }
+        private const string RECEIVER_NAME = "com.catchingnow.icebox/.receiver.DPMReceiver";
     }
 }

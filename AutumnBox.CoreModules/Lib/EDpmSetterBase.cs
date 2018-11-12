@@ -20,9 +20,8 @@ namespace AutumnBox.CoreModules.Lib
     [DpmReceiver(null)]
     internal abstract class EDpmSetterBase : OfficialVisualExtension
     {
-        protected GodPower GodPower { get; set; }
         private string _cn;
-
+        private CstmDpmCommander dpmCommander;
         protected override void OnCreate(ExtensionArgs args)
         {
             base.OnCreate(args);
@@ -33,37 +32,28 @@ namespace AutumnBox.CoreModules.Lib
         }
         protected sealed override int VisualMain()
         {
-            ProcessBasedCommand command = null;
-            IProcessBasedCommandResult result = null;
             WriteInitInfo();
-            GodPower = new GodPower(this, TargetDevice);
+            dpmCommander = new CstmDpmCommander(this, TargetDevice)
+            {
+                CmdStation = this.CmdStation
+            };
+            dpmCommander.To(OutputPrinter);
+            dpmCommander.Extract();
 
             WriteLineAndSetTip(Res("EGodPowerExtractingApk"));
-            GodPower.Extract();
+            dpmCommander.Extract();
             ThrowIfCanceled();
 
             WriteLineAndSetTip(Res("EGodPowerPushingApk"));
-            command = GodPower.GetPushCommand();
-            CmdStation.Register(command);
-            result = command
-                .To(OutputPrinter)
-                .Execute();
+            dpmCommander.PushToDevice();
             ThrowIfCanceled();
 
             WriteLineAndSetTip(Res("EGodPowerRmUser"));
-            command = GodPower.GetRemoveUserCommand();
-            CmdStation.Register(command);
-            result = command
-                .To(OutputPrinter)
-                .Execute();
+            dpmCommander.RemoveUsers();
             ThrowIfCanceled();
 
             WriteLineAndSetTip(Res("EGodPowerRmAcc"));
-            command = GodPower.GetRemoveAccountCommnad();
-            CmdStation.Register(command);
-            result = command
-                .To(OutputPrinter)
-                .Execute();
+            dpmCommander.RemoveAccounts();
             ThrowIfCanceled();
 
             return SetDpm();
@@ -71,17 +61,16 @@ namespace AutumnBox.CoreModules.Lib
         protected virtual int SetDpm()
         {
             WriteLineAndSetTip(Res("DPMSetting"));
-            DevicePolicyManager dpm = GetDeviceCommander<DevicePolicyManager>();
             ThrowIfCanceled();
             try
             {
-                dpm.SetDeviceOwner(_cn);
+                dpmCommander.SetDeviceOwner(_cn);
                 return 0;
             }
             catch (AdbShellCommandFailedException ex)
             {
                 WriteLine(ex.Message);
-                return 1;
+                return ex.ExitCode;
             }
         }
     }

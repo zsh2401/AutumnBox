@@ -66,7 +66,7 @@ namespace AutumnBox.Basic.Calling
         /// <returns></returns>
         protected void RegisterToCallback(Action<OutputReceivedEventArgs> callback)
         {
-            this.callback = callback;
+            this.callback = callback ?? throw new ArgumentNullException(nameof(callback));
         }
     }
 }
