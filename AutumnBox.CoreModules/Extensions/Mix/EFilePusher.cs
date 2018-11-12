@@ -87,7 +87,7 @@ namespace AutumnBox.CoreModules.Extensions.Mix
             {
                 Logger.Warn("file pushing failed", ex);
                 WriteLineAndSetTip(Res("EFilePusherFailed"));
-                FinishedTip = "EFilePusherFailed";
+                //FinishedTip = "EFilePusherFailed";
                 return ERR;
             }
         }
