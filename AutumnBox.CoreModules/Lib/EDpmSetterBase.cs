@@ -85,24 +85,24 @@ namespace AutumnBox.CoreModules.Lib
                 switch (args.ExitCode)
                 {
                     case CstmDpmCommander.OKAY:
-                        Tip = CoreLib.Current.Languages.Get("EDpmSetterBaseTipSuccessed");
-                        WriteLine(CoreLib.Current.Languages.Get("EDpmSetterBaseMsgSuccessed"));
+                        Tip = Res("EDpmSetterBaseTipSuccessed");
+                        WriteLine(Res("EDpmSetterBaseMsgSuccessed"));
                         break;
                     case CstmDpmCommander.ERR:
-                        Tip = CoreLib.Current.Languages.Get("EDpmSetterBaseTipError");
-                        WriteLine(CoreLib.Current.Languages.Get("EDpmSetterBaseMsgError"));
+                        Tip = Res("EDpmSetterBaseTipError");
+                        WriteLine(Res("EDpmSetterBaseMsgError"));
                         break;
                     case CstmDpmCommander.ERR_EXIST_OTHER_ACC:
-                        Tip = CoreLib.Current.Languages.Get("EDpmSetterBaseTipErrOtherAccounts");
-                        WriteLine(CoreLib.Current.Languages.Get("EDpmSetterBaseMsgErrOtherAccounts"));
+                        Tip = Res("EDpmSetterBaseTipErrOtherAccounts");
+                        WriteLine(Res("EDpmSetterBaseMsgErrOtherAccounts"));
                         break;
                     case CstmDpmCommander.ERR_EXIST_OTHER_USER:
-                        Tip = CoreLib.Current.Languages.Get("EDpmSetterBaseTipErrOtherUsers");
-                        WriteLine(CoreLib.Current.Languages.Get("EDpmSetterBaseMsgErrOtherUsers"));
+                        Tip = Res("EDpmSetterBaseTipErrOtherUsers");
+                        WriteLine(Res("EDpmSetterBaseMsgErrOtherUsers"));
                         break;
                     case CstmDpmCommander.ERR_MIUI_SEC:
-                        Tip = CoreLib.Current.Languages.Get("EDpmSetterBaseTipErrMiuiSec");
-                        WriteLine(CoreLib.Current.Languages.Get("EDpmSetterBaseMsgErrMIUISec"));
+                        Tip = Res("EDpmSetterBaseTipErrMiuiSec");
+                        WriteLine(Res("EDpmSetterBaseMsgErrMIUISec"));
                         break;
                 }
             }
