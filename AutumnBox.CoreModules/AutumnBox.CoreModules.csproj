@@ -205,9 +205,6 @@
     <EmbeddedResource Include="Icons\screenshot.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Icons\key.png" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Icons\lock.png" />
   </ItemGroup>
   <ItemGroup>
@@ -221,6 +218,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Icons\knife.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\unlock.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
