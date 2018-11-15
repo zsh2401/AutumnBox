@@ -4,7 +4,6 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.Basic.Calling;
-using AutumnBox.Basic.Calling.Adb;
 using AutumnBox.Basic.Device.Management.OS;
 using AutumnBox.OpenFramework.Extension;
 using System;

@@ -11,7 +11,7 @@ using System;
 
 namespace AutumnBox.CoreModules.Extensions.Poweron
 {
-    [ExtName("免ROOT一键激活黑洞", "en-us:Set Blackhole as DPM without root")]
+    [ExtName("激活黑洞", "en-us:Set Blackhole as DPM without root")]
     [ExtIcon("Icons.blackhole.png")]
     [ExtAppProperty(PKGNAME)]
     [DpmReceiver(RECEIVER_NAME)]
