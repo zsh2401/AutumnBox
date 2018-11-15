@@ -8,6 +8,9 @@ using AutumnBox.OpenFramework.Open;
 using AutumnBox.OpenFramework.Open.Impl;
 using AutumnBox.OpenFramework.Service;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace AutumnBox.OpenFramework.Content
 {
@@ -104,7 +107,33 @@ namespace AutumnBox.OpenFramework.Content
         {
             InitFactory();
         }
-
+        /// <summary>
+        /// 启动一个另一个模块
+        /// </summary>
+        /// <param name="t"></param>
+        /// <param name="callback"></param>
+        /// <param name="extractData"></param>
+        public void StartExtension(Type t, Action<int> callback = null, Dictionary<string, object> extractData = null)
+        {
+            var wrappers = from wrapper in Manager.InternalManager.GetLoadedWrappers()
+                           where t == wrapper.Info.ExtType
+                           select wrapper;
+            if (wrappers.Count() == 0)
+            {
+                throw new Exception("Extension not found");
+            }
+            var proc = wrappers.First().GetProcess();
+            if (extractData != null)
+            {
+                proc.ExtractData = extractData;
+            }
+            proc.Start();
+            Task.Run(() =>
+            {
+                proc.WaitForExit();
+                callback?.Invoke(proc.ExitCode);
+            });
+        }
         /// <summary>
         /// 获取全局服务
         /// </summary>

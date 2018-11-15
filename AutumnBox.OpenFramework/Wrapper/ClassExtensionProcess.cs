@@ -9,6 +9,7 @@ using AutumnBox.OpenFramework.Exceptions;
 using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.Open;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading;
@@ -90,6 +91,7 @@ namespace AutumnBox.OpenFramework.Wrapper
             {
                 Wrapper = wrapper,
                 CurrentProcess = this,
+                ExtractData = this.ExtractData
             };
             Instance.Init(ctx, args);
         }
@@ -130,6 +132,11 @@ namespace AutumnBox.OpenFramework.Wrapper
         /// </summary>
         public int ExitCode { get; private set; } = -1;
         /// <summary>
+        /// 拓展数据
+        /// </summary>
+        public Dictionary<string,object> ExtractData { get; set; }
+
+        /// <summary>
         /// 开始执行
         /// </summary>
         public void Start()
@@ -145,10 +152,10 @@ namespace AutumnBox.OpenFramework.Wrapper
         /// <returns></returns>
         public int WaitForExit()
         {
-            if (State == ProcessState.Ready)
-            {
-                throw new InvalidOperationException("Process is finished");
-            }
+            //if (State == ProcessState.Ready)
+            //{
+            //    throw new InvalidOperationException("Process is finished");
+            //}
             while (State == ProcessState.Running) ;
             return ExitCode;
         }

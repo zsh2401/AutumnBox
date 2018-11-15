@@ -26,10 +26,12 @@ namespace AutumnBox.CoreModules.Extensions
     {
         protected override int VisualMain()
         {
-            Ux.ShowLoadingWindow();
-            Thread.Sleep(5000);
-            WriteLine(DeviceNow.ToString());
-            Ux.CloseLoadingWindow();
+            StartExtension(typeof(EScreenShoter), (exitCode) =>
+            {
+                WriteLine(exitCode.ToString());
+            }, new System.Collections.Generic.Dictionary<string, object>() {
+                { KEY_CLOSE_FINISHED,true }
+            });
             //CstmDpmCommander dpm = new CstmDpmCommander(this, TargetDevice)
             //{
             //    CmdStation = this.CmdStation

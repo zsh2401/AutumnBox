@@ -6,6 +6,7 @@
 using AutumnBox.Basic.Device;
 using AutumnBox.OpenFramework.Wrapper;
 using System;
+using System.Collections.Generic;
 
 namespace AutumnBox.OpenFramework.Extension
 {
@@ -22,6 +23,10 @@ namespace AutumnBox.OpenFramework.Extension
         /// 包装器
         /// </summary>
         public IExtensionWrapper Wrapper { get; set; }
+        /// <summary>
+        /// 拓展数据，通常为null
+        /// </summary>
+        public Dictionary<string,object> ExtractData { get; set; } = null;
     }
     /// <summary>
     /// 当拓展模块即将被摧毁时的参数

@@ -17,6 +17,21 @@ namespace AutumnBox.OpenFramework.Extension
     public abstract class AtmbVisualExtension : AutumnBoxExtension
     {
         /// <summary>
+        ///拓展数据的key：完成时是否直接关闭窗体
+        /// </summary>
+        public const string KEY_CLOSE_FINISHED = "close_on_finished";
+        /// <summary>
+        /// 关闭或隐藏UI,仅在模块完成后可用
+        /// </summary>
+        protected void CloseUI()
+        {
+            if (isRunning)
+            {
+                throw new InvalidOperationException("Extension si running!");
+            }
+            UIController.Close();
+        }
+        /// <summary>
         /// 创建
         /// </summary>
         /// <param name="args"></param>
@@ -69,6 +84,20 @@ namespace AutumnBox.OpenFramework.Extension
                 sound.OK();
             }
             Tip = GetTipByExitCode(args.ExitCode);
+            try
+            {
+                if ((bool)Args.ExtractData[KEY_CLOSE_FINISHED] == true)
+                {
+                    App.RunOnUIThread(() =>
+                    {
+                        CloseUI();
+                    });
+                }
+            }
+            catch (Exception e)
+            {
+                Logger.Warn("", e);
+            }
         }
         /// <summary>
         /// 结束执行后，根据返回码获取Tip
