@@ -10,7 +10,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron
     [ExtDesc("Use the tech by web1n", "zh-CN:使用web1n提供的黑科技暴力清空用户，这将会导致你的应用双开失效，以及其他可能的负面效果")]
     [UserAgree("EClearUsersWarning")]
     [ExtIcon("Icons.nuclear.png")]
-    [ExtRequiredDeviceStates(Basic.Device.DeviceState.Poweron)]
+    [ExtRequiredDeviceStates(DeviceState.Poweron)]
     class EClearUsers : OfficialVisualExtension
     {
         protected override int VisualMain()

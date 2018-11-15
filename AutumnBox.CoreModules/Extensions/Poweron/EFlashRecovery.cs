@@ -9,7 +9,7 @@ using AutumnBox.OpenFramework.Extension;
 
 namespace AutumnBox.CoreModules.Extensions.Poweron
 {
-    [ExtName("[ROOT]刷入REC", "en-us:[ROOT]Flast recovery.img")]
+    [ExtName("刷入REC", "en-us:[ROOT]Flast recovery.img")]
     [ObsoleteImageOperator]
     [ExtRequireRoot]
     [ExtIcon("Icons.flash.png")]

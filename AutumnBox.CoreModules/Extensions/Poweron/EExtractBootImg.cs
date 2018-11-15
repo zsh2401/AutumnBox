@@ -14,7 +14,7 @@ using System.Windows.Forms;
 
 namespace AutumnBox.CoreModules.Extensions.Poweron
 {
-    [ExtName("[ROOT]提取BOOT.IMG", "en-us:[ROOT]Extract boot.img")]
+    [ExtName("提取BOOT.IMG", "en-us:Extract boot.img")]
     [ExtRegions("zh-CN", "zh-HK", "zh-TW", "zh-SG")]
     [ObsoleteImageOperator]
     [ExtRequireRoot]
