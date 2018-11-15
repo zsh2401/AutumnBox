@@ -1,4 +1,5 @@
-﻿using AutumnBox.Basic.Exceptions;
+﻿using AutumnBox.Basic.Device;
+using AutumnBox.Basic.Exceptions;
 using AutumnBox.CoreModules.Aspect;
 using AutumnBox.CoreModules.Lib;
 using AutumnBox.OpenFramework.Extension;
@@ -44,6 +45,14 @@ namespace AutumnBox.CoreModules.Extensions.Poweron
             finally
             {
                 Progress = 100;
+            }
+        }
+        protected override void OnFinish(ExtensionFinishedArgs args)
+        {
+            base.OnFinish(args);
+            if (args.ExitCode == OK)
+            {
+                DeviceSelectedOnCreating.Reboot2System();
             }
         }
     }
