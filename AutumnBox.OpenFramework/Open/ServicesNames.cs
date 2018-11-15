@@ -22,5 +22,13 @@ namespace AutumnBox.OpenFramework.Open
         /// MD5服务器
         /// </summary>
         public const string MD5 = "md5";
+        /// <summary>
+        /// 资源管理器
+        /// </summary>
+        public const string RESOURCES = "res";
+        /// <summary>
+        /// 设备选择器
+        /// </summary>
+        public const string DEVICE_SELECTOR = "deviceSelector";
     }
 }

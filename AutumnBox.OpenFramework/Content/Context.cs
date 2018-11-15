@@ -89,6 +89,13 @@ namespace AutumnBox.OpenFramework.Content
         public IEmbeddedFileManager EmbFileManager => _lazyEmb.Value;
         private Lazy<IEmbeddedFileManager> _lazyEmb;
 
+        public IServicesManager ServicesManager
+        {
+            get
+            {
+                return Manager.ServicesManager;
+            }
+        }
 
         /// <summary>
         /// 构建

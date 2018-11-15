@@ -26,15 +26,19 @@ namespace AutumnBox.CoreModules.Extensions
     {
         protected override int VisualMain()
         {
-            CstmDpmCommander dpm = new CstmDpmCommander(this, TargetDevice)
-            {
-                CmdStation = this.CmdStation
-            };
-            dpm.To(OutputPrinter);
-            dpm.Extract();
-            dpm.PushToDevice();
-            dpm.ShowUsage();
-            dpm.SetDeviceOwner("com.fuck.aaa");
+            Ux.ShowLoadingWindow();
+            Thread.Sleep(5000);
+            WriteLine(DeviceNow.ToString());
+            Ux.CloseLoadingWindow();
+            //CstmDpmCommander dpm = new CstmDpmCommander(this, TargetDevice)
+            //{
+            //    CmdStation = this.CmdStation
+            //};
+            //dpm.To(OutputPrinter);
+            //dpm.Extract();
+            //dpm.PushToDevice();
+            //dpm.ShowUsage();
+            //dpm.SetDeviceOwner("com.fuck.aaa");
             return OK;
         }
     }

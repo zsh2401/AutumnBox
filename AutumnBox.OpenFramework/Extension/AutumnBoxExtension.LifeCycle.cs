@@ -30,6 +30,7 @@ namespace AutumnBox.OpenFramework.Extension
         {
             base.OnCreate(args);
             Args = args;
+            DeviceSelectedOnCreating = DeviceNow;
         }
     }
 }

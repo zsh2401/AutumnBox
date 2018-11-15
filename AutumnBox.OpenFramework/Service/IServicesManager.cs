@@ -16,7 +16,22 @@ namespace AutumnBox.OpenFramework.Service
         /// <param name="ctx"></param>
         /// <param name="name"></param>
         /// <returns></returns>
-        AtmbService GetServiceByName(Context ctx,string name);
+        AtmbService GetServiceByName(Context ctx,string serviceName);
+        /// <summary>
+        /// 根据泛型获取服务
+        /// </summary>
+        /// <typeparam name="TService"></typeparam>
+        /// <param name="ctx"></param>
+        /// <returns></returns>
+        AtmbService GetService<TService>(Context ctx);
+        /// <summary>
+        /// 根据服务名获取服务，并转换为传入的泛型
+        /// </summary>
+        /// <typeparam name="TService"></typeparam>
+        /// <param name="ctx"></param>
+        /// <param name="serviceName"></param>
+        /// <returns></returns>
+        TService GetServiceByName<TService>(Context ctx, string serviceName) where TService : AtmbService;
         /// <summary>
         /// 启动一个服务
         /// </summary>

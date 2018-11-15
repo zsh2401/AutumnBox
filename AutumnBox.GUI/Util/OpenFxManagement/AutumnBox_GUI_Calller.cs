@@ -236,5 +236,15 @@ namespace AutumnBox.GUI.Util.OpenFxManagement
             result = tmp;
             return window.DialogResult == true;
         }
+
+        public void SetResource(string key, object value)
+        {
+            App.Current.Resources[key] = value;
+        }
+
+        public void AddResource(string key, object value)
+        {
+            App.Current.Resources.Add(key,value);
+        }
     }
 }
