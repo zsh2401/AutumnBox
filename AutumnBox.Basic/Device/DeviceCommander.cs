@@ -11,7 +11,14 @@ namespace AutumnBox.Basic.Device
     /// </summary>
     public abstract class DeviceCommander : CommandingObject
     {
+        /// <summary>
+        /// 目标设备
+        /// </summary>
         public IDevice Device { get; private set; }
+        /// <summary>
+        /// 构造器
+        /// </summary>
+        /// <param name="device"></param>
         public DeviceCommander(IDevice device)
         {
             this.Device = device;
