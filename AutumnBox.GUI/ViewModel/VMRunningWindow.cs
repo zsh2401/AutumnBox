@@ -18,6 +18,15 @@ namespace AutumnBox.GUI.ViewModel
     class VMRunningWindow : ViewModelBase, IExtensionUIController
     {
         #region MVVM
+        public FlexiableCommand Copy
+        {
+            get => _copy; set
+            {
+                _copy = value;
+                RaisePropertyChanged();
+            }
+        }
+        private FlexiableCommand _copy;
         public double ProgressValue
         {
             get => progressValue; set
@@ -86,7 +95,6 @@ namespace AutumnBox.GUI.ViewModel
         private string output;
 
         #endregion
-        private readonly IExtensionWrapper wrapper;
         private readonly Window view;
 
         public event EventHandler<UIControllerClosingEventArgs> Closing;
@@ -97,6 +105,10 @@ namespace AutumnBox.GUI.ViewModel
             //this.wrapper = wrapper;
             //Title = wrapper.Info.Name;
             //Icon = wrapper.Info.Icon.ToExtensionIcon();
+            Copy = new FlexiableCommand(() =>
+            {
+                Clipboard.SetText(Output);
+            });
             output = "";
         }
 
