@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using AutumnBox.OpenFramework.Content;
+using AutumnBox.OpenFramework.Exceptions;
 
 namespace AutumnBox.OpenFramework.Service
 {
@@ -31,7 +32,7 @@ namespace AutumnBox.OpenFramework.Service
             }
             else
             {
-                throw new KeyNotFoundException("Service not found!");
+                throw new ServiceNotFoundException(name);
             }
         }
 
@@ -52,6 +53,7 @@ namespace AutumnBox.OpenFramework.Service
                 return instance;
             }
         }
+
         public void StartService(Type typeOfService)
         {
             GetInstance(typeOfService).Start();
@@ -70,6 +72,23 @@ namespace AutumnBox.OpenFramework.Service
         public void StopService<TService>() where TService : AtmbService
         {
             StopService(typeof(TService));
+        }
+
+        public AtmbService GetService<TService>(Context ctx)
+        {
+            var servs = from serv in _serviceCollection
+                        where serv is TService
+                        select serv;
+            if (servs.Count() == 0)
+            {
+                throw new ServiceNotFoundException("T" + typeof(TService).FullName);
+            }
+            return servs.First();
+        }
+
+        public TService GetServiceByName<TService>(Context ctx, string serviceName) where TService : AtmbService
+        {
+            return GetServiceByName(ctx, serviceName) as TService;
         }
     }
 }

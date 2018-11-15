@@ -6,8 +6,10 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using AutumnBox.Basic.Device;
 using AutumnBox.OpenFramework.Content;
 using AutumnBox.OpenFramework.Exceptions;
+using AutumnBox.OpenFramework.Open;
 using AutumnBox.OpenFramework.Wrapper;
 
 namespace AutumnBox.OpenFramework.Extension
@@ -28,13 +30,15 @@ namespace AutumnBox.OpenFramework.Extension
     [ExtRegions(null)]
     //[ExtAppProperty("com.miui.fm")]
     //[ExtMinAndroidVersion(7,0,0)]
-    public abstract class ClassExtensionBase :Context, IClassExtension
+    public abstract class ClassExtensionBase : Context, IClassExtension
     {
         /// <summary>
         /// 当拓展被创建后调用
         /// </summary>
         /// <param name="args"></param>
-        protected virtual void OnCreate(ExtensionArgs args) { }
+        protected virtual void OnCreate(ExtensionArgs args)
+        {
+        }
         /// <summary>
         /// 主函数
         /// </summary>

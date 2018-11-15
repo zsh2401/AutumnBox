@@ -22,10 +22,6 @@ namespace AutumnBox.OpenFramework.Extension
         /// 包装器
         /// </summary>
         public IExtensionWrapper Wrapper { get; set; }
-        /// <summary>
-        /// 目标设备
-        /// </summary>
-        public IDevice TargetDevice { get; set; }
     }
     /// <summary>
     /// 当拓展模块即将被摧毁时的参数
