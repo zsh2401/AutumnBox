@@ -391,7 +391,6 @@ namespace AutumnBox.OpenFramework.Wrapper
         /// <summary>
         /// 获取拓展进程
         /// </summary>
-        /// <param name="device"></param>
         /// <returns></returns>
         public virtual IExtensionProcess GetProcess()
         {

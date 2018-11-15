@@ -19,6 +19,11 @@ namespace AutumnBox.CoreModules.Extensions
     [ExtRequiredDeviceStates(DeviceState.Poweron)]
     internal class EScreenShoter : OfficialVisualExtension
     {
+        protected override void OnCreate(ExtensionArgs args)
+        {
+            base.OnCreate(args);
+            Logger.Info(args.ExtractData[KEY_CLOSE_FINISHED].ToString() ?? "0");
+        }
         protected override int VisualMain()
         {
             DialogResult dialogResult = DialogResult.No;
@@ -42,13 +47,16 @@ namespace AutumnBox.CoreModules.Extensions
                     capture.SaveToPC(path);
                     return OK;
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
-                    Logger.Warn("can't capture",ex);
+                    Logger.Warn("can't capture", ex);
                     return ERR;
                 }
             }
-            return ERR;
+            else
+            {
+                return ERR_CANCELED_BY_USER;
+            }
         }
         protected override bool VisualStop()
         {

@@ -49,5 +49,9 @@ namespace AutumnBox.OpenFramework.Management
         /// wrapper结束运行了
         /// </summary>
         void OnFinish();
+        /// <summary>
+        /// 强制使控制器不再可见或关闭
+        /// </summary>
+        void Close();
     }
 }

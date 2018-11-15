@@ -11,6 +11,7 @@ namespace AutumnBox.OpenFramework.Open
         /// TAG
         /// </summary>
         string Tag { get; }
+
         /// <summary>
         /// Info级别
         /// </summary>
