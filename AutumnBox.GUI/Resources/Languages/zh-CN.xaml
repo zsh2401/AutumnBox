@@ -9,6 +9,10 @@
     <s:String x:Key="AppDesc">开源,简约,免费的图形化ADB工具箱</s:String>
     
     
+     <!--LibsWindow-->
+    <s:String x:Key="LibsWindowTitle">已加载的拓展模块库</s:String>
+    <s:String x:Key="LibsWindowLoadedWrapper">加载的包装器: </s:String>
+    
     <!--PanelHome-->
     <s:String x:Key="PanelHomeOpenSource">开源</s:String>
     <s:String x:Key="PanelHomeOpenSourceTip">为了共同的进步与对用户的透明性,秋之盒一直以GPL3.0协议开源</s:String>
@@ -142,6 +146,7 @@
       <s:String x:Key="PanelMoreEvenNoDevice">什么?没连接设备或设备状态异常?这些模块无需设备正常连接!</s:String>
      <s:String x:Key="PanelMoreBtnOpenExtensionFloder">打开拓展模块文件夹</s:String>
     <s:String x:Key="PanelMoreBtnHowToInstallExtension">如何安装拓展模块?</s:String>
+    <s:String x:Key="PanelMoreBtnViewLoadedModules">浏览已加载模块</s:String>
      <s:String x:Key="PanelMoreExtensionsDownloadCenter">下载拓展模块</s:String>
      <s:String x:Key="PanelMoreExtensionSlogan">使用各种模块,做你想做的事</s:String>
     <s:String x:Key="PanelMoreExtensionApi">模块API版本</s:String>
