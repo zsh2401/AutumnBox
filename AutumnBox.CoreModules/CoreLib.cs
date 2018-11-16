@@ -18,7 +18,7 @@ namespace AutumnBox.CoreModules
         public static CoreLib Current { get; private set; }
         public LanguageManager Languages { get; private set; }
 
-        public override string Name => "AutumnBox.Core Modules";
+        public override string Name => "AutumnBox Core Modules";
 
         public override int MinApiLevel => 8;
 
