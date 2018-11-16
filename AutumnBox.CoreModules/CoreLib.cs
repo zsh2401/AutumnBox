@@ -23,7 +23,10 @@ namespace AutumnBox.CoreModules
         public override int MinApiLevel => 8;
 
         public override int TargetApiLevel => 8;
-
+        public string GetTextByKey(string key)
+        {
+            return Languages.Get(key) ?? this.App.GetPublicResouce<string>(key);
+        }
         public CoreLib()
         {
             Context = this;
@@ -45,14 +48,15 @@ namespace AutumnBox.CoreModules
         {
             return new CustomWrapper(extType);
         }
-        private class CustomWrapper : ClassExtensionWrapper {
+        private class CustomWrapper : ClassExtensionWrapper
+        {
             protected internal CustomWrapper(Type t) : base(t)
             {
             }
 
             public override void Ready()
             {
-                
+
             }
         }
     }
