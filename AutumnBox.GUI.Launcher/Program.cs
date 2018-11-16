@@ -3,7 +3,6 @@ using System.Diagnostics;
 using System.Security.Principal;
 using System.Linq;
 using System.ComponentModel;
-using System.IO;
 
 namespace AutumnBox.GUI.Launcher
 {

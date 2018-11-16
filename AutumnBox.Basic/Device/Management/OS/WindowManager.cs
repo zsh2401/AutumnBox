@@ -4,9 +4,7 @@
 ** desc： ...
 *************************************************/
 using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Text;
 using System.Text.RegularExpressions;
 using AutumnBox.Basic.Data;
 using AutumnBox.Basic.Exceptions;

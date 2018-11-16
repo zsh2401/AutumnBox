@@ -6,10 +6,8 @@
 
 using AutumnBox.GUI.MVVM;
 using AutumnBox.GUI.View.DialogContent;
-using AutumnBox.GUI.View.Windows;
 using MaterialDesignThemes.Wpf;
 using System.Diagnostics;
-using System.Windows.Input;
 
 namespace AutumnBox.GUI.ViewModel
 {

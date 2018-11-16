@@ -1,7 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
+﻿/*************************************************
+** auth： zsh2401@163.com
+** date:  2018/8/13 8:18:26 (UTC +8:00)
+** desc： ...
+*************************************************/
 namespace AutumnBox.OpenFramework.Extension
 {
     /// <summary>

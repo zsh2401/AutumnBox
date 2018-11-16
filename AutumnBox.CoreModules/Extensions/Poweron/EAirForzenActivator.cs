@@ -3,7 +3,6 @@
 ** date:  2018/9/11 18:27:19 (UTC +8:00)
 ** desc： ...
 *************************************************/
-using AutumnBox.Basic.Device.Management.AppFx;
 using AutumnBox.CoreModules.Attribute;
 using AutumnBox.CoreModules.Lib;
 using AutumnBox.OpenFramework.Extension;

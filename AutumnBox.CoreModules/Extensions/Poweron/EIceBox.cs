@@ -5,7 +5,6 @@
 *************************************************/
 using AutumnBox.OpenFramework.Extension;
 using AutumnBox.CoreModules.Lib;
-using AutumnBox.Basic.Device.Management.AppFx;
 using AutumnBox.CoreModules.Attribute;
 
 namespace AutumnBox.CoreModules.Extensions.Poweron

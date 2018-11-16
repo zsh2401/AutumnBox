@@ -12,7 +12,6 @@ using AutumnBox.GUI.Util.OpenFxManagement;
 using AutumnBox.GUI.View.Windows;
 using AutumnBox.OpenFramework;
 using System;
-using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 

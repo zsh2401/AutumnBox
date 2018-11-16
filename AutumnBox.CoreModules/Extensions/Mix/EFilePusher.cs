@@ -3,7 +3,6 @@
 ** date:  2018/8/13 9:53:12 (UTC +8:00)
 ** desc： ...
 *************************************************/
-using AutumnBox.Basic.Calling.Adb;
 using AutumnBox.Basic.Data;
 using AutumnBox.OpenFramework.Extension;
 using System;

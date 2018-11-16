@@ -3,8 +3,6 @@
 ** date:  2018/8/13 9:01:58 (UTC +8:00)
 ** desc： ...
 *************************************************/
-using AutumnBox.Basic.Calling;
-using AutumnBox.Basic.Calling.Adb;
 using AutumnBox.Basic.Device;
 using AutumnBox.Basic.Device.Management.AppFx;
 using AutumnBox.Basic.Util;

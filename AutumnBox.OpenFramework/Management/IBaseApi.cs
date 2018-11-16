@@ -5,14 +5,7 @@
 *************************************************/
 #define WIN32
 using AutumnBox.Basic.Device;
-using AutumnBox.OpenFramework.Open;
-using AutumnBox.OpenFramework.Wrapper;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 
 namespace AutumnBox.OpenFramework.Management
 {

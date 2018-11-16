@@ -9,7 +9,6 @@ using AutumnBox.GUI.Util;
 using AutumnBox.OpenFramework.Management;
 using AutumnBox.OpenFramework.Wrapper;
 using System;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
 

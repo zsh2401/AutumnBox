@@ -69,16 +69,16 @@ namespace AutumnBox.Basic.ManagedAdb
         /// 加载
         /// </summary>
         /// <param name="adbToolsDir"></param>
-        /// <param name="adb"></param>
-        /// <param name="fastboot"></param>
+        /// <param name="adbClient"></param>
+        /// <param name="fastbootClient"></param>
         /// <param name="server"></param>
         /// <param name="startTheServer"></param>
-        public static void Load(DirectoryInfo adbToolsDir,FileInfo adb, FileInfo fastboot, IAdbServer server, bool startTheServer)
+        public static void Load(DirectoryInfo adbToolsDir,FileInfo adbClient, FileInfo fastbootClient, IAdbServer server, bool startTheServer)
         {
-            AdbToolsDir = adbToolsDir;
-            AdbFile = adb;
-            FastbootFile = fastboot;
-            Server = server;
+            AdbToolsDir = adbToolsDir ?? throw new ArgumentNullException(nameof(adbToolsDir));
+            AdbFile = adbClient ?? throw new ArgumentNullException(nameof(adbClient));
+            FastbootFile = fastbootClient ?? throw new ArgumentNullException(nameof(fastbootClient));
+            Server = server ?? throw new ArgumentNullException(nameof(server));
             if (startTheServer)
             {
                 Server.Start();
