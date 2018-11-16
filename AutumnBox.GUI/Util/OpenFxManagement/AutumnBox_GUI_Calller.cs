@@ -180,7 +180,7 @@ namespace AutumnBox.GUI.Util.OpenFxManagement
             return appDomain;
         }
 
-        public AutumnBoxExtension GetInstanceFrom(AppDomain appDomain, Type type)
+        public IClassExtension GetInstanceFrom(AppDomain appDomain, Type type)
         {
             return (AutumnBoxExtension)appDomain
                 .CreateInstanceAndUnwrap(type.Assembly.FullName, type.FullName);
