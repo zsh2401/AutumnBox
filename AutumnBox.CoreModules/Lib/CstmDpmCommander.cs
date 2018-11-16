@@ -59,7 +59,6 @@ namespace AutumnBox.CoreModules.Lib
         public string ShowUsage()
         {
             string command = string.Format(CMD_FORMAT, "");
-            context.Logger.CDebug("executing:" + command);
             return CmdStation
                   .GetShellCommand(Device, command)
                   .To(RaiseOutput)
