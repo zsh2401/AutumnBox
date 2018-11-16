@@ -31,19 +31,20 @@ namespace AutumnBox.OpenFramework.Management
         /// <param name="baseApi"></param>
         public static void LoadBase(IBaseApi baseApi)
         {
+            //设置Context
+            fxLoaderCtx = new FxLoaderContext();
+
             IServicesManager serviceManager = Manager.ServicesManager;
             //加载API
             serviceManager.StartService<SBaseApiContainer>();
             var apiContainer = (SBaseApiContainer)serviceManager
-                .GetServiceByName(null, SBaseApiContainer.NAME);
+                .GetServiceByName(fxLoaderCtx, SBaseApiContainer.NAME);
             apiContainer.LoadApi(baseApi);
             //加载基础服务
             serviceManager.StartService<SMd5>();
             serviceManager.StartService<SSoundManager>();
             serviceManager.StartService<ResourcesManagerImpl>();
             serviceManager.StartService<SDeviceSelector>();
-            //设置Context
-            fxLoaderCtx = new FxLoaderContext();
         }
         /// <summary>
         /// 加载拓展模块
