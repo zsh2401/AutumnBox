@@ -1,0 +1,33 @@
+﻿<Window x:Class="AutumnBox.GUI.View.Windows.LibsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AutumnBox.GUI.View.Windows"
+        xmlns:viewmodel="clr-namespace:AutumnBox.GUI.ViewModel"
+        mc:Ignorable="d"
+        Title="{DynamicResource LibsWindowTitle}" ResizeMode="NoResize" Height="300" Width="400">
+    <Window.DataContext>
+        <viewmodel:VMLibsView x:Name="mContext"/>
+    </Window.DataContext>
+    <Grid>
+        <ListView ItemsSource="{Binding Libs}">
+            <ListView.ItemTemplate>
+                <ItemContainerTemplate>
+                    <Grid>
+                        <Grid.ToolTip>
+                            <Grid>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{DynamicResource LibsWindowLoadedWrapper}"/>
+                                    <TextBlock Text="{Binding Count}"/>
+                                </StackPanel>
+                            </Grid>
+                        </Grid.ToolTip>
+                        <TextBlock Text="{Binding Lib.Name}"/>
+                    </Grid>
+
+                </ItemContainerTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Window>
