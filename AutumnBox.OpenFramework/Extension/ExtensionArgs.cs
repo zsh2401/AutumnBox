@@ -3,7 +3,6 @@
 ** date:  2018/9/22 23:06:30 (UTC +8:00)
 ** desc： ...
 *************************************************/
-using AutumnBox.Basic.Device;
 using AutumnBox.OpenFramework.Wrapper;
 using System;
 using System.Collections.Generic;

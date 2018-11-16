@@ -13,7 +13,6 @@
 \* =============================================================================*/
 using System;
 using System.Runtime.InteropServices;
-using static AutumnBox.GUI.Util.UI.BlurHelper;
 
 namespace AutumnBox.GUI.Util.OS
 {

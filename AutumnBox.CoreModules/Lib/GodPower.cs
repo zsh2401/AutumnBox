@@ -1,4 +1,9 @@
-﻿using AutumnBox.Basic.Calling.Adb;
+﻿/*************************************************
+** auth： zsh2401@163.com
+** date:  2018/9/19 20:54:58 (UTC +8:00)
+** desc： ...
+*************************************************/
+using AutumnBox.Basic.Calling.Adb;
 using AutumnBox.Basic.Device;
 using AutumnBox.Basic.Util;
 using AutumnBox.OpenFramework.Content;

@@ -3,10 +3,8 @@
 ** date:  2018/8/13 9:37:22 (UTC +8:00)
 ** desc： ...
 *************************************************/
-using AutumnBox.Basic.Calling.Adb;
 using AutumnBox.Basic.Device;
 using AutumnBox.Basic.Device.Management.OS;
-using AutumnBox.Basic.ManagedAdb;
 using AutumnBox.OpenFramework.Extension;
 using System;
 using System.IO;

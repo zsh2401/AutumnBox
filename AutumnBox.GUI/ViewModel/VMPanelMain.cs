@@ -3,20 +3,13 @@
 ** date:  2018/8/18 19:08:39 (UTC +8:00)
 ** desc： ...
 *************************************************/
-using AutumnBox.Basic.Util;
 using AutumnBox.GUI.Model;
 using AutumnBox.GUI.MVVM;
-using AutumnBox.GUI.Util;
 using AutumnBox.GUI.Util.OS;
 using AutumnBox.GUI.View.DialogContent;
-using AutumnBox.GUI.View.Windows;
 using MaterialDesignThemes.Wpf;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace AutumnBox.GUI.ViewModel

@@ -4,10 +4,8 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.Basic.Calling;
-using AutumnBox.Basic.Calling.Adb;
 using AutumnBox.Basic.Device;
 using AutumnBox.Basic.Exceptions;
-using AutumnBox.Basic.Util;
 using System;
 using System.IO;
 namespace AutumnBox.Basic.Extension

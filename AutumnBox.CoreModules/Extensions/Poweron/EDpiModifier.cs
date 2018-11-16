@@ -6,7 +6,6 @@
 using AutumnBox.Basic.Device;
 using AutumnBox.Basic.Device.Management.OS;
 using AutumnBox.OpenFramework.Extension;
-using System.Windows;
 
 namespace AutumnBox.CoreModules.Extensions.Poweron
 {

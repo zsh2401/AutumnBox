@@ -7,7 +7,6 @@ using AutumnBox.Basic.Calling;
 using AutumnBox.Basic.Device;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace AutumnBox.Basic.Util
 {

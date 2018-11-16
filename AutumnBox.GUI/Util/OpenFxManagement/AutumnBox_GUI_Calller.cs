@@ -4,8 +4,6 @@
 ** desc： ...
 *************************************************/
 using System;
-using System.Windows;
-using AutumnBox.OpenFramework.Wrapper;
 using AutumnBox.GUI.View.Windows;
 using AutumnBox.OpenFramework.Management;
 using AutumnBox.GUI.Util.Effect;

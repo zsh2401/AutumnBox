@@ -4,11 +4,8 @@
 ** desc： ...
 *************************************************/
 using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
-using System.Text;
-using AutumnBox.Basic.Calling;
 using AutumnBox.Basic.Calling.Adb;
 using AutumnBox.Basic.Data;
 using AutumnBox.Basic.Util;

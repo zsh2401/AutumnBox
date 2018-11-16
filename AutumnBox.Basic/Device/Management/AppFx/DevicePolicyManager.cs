@@ -4,7 +4,6 @@
 ** desc： ...
 *************************************************/
 using System;
-using System.Collections.Generic;
 using System.Text;
 using AutumnBox.Basic.Data;
 using AutumnBox.Basic.Device.Management.OS;

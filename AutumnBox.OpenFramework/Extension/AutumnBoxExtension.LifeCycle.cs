@@ -3,11 +3,6 @@
 ** date:  2018/8/1 0:40:51 (UTC +8:00)
 ** desc： ...
 *************************************************/
-using AutumnBox.OpenFramework.Content;
-using AutumnBox.OpenFramework.Exceptions;
-using AutumnBox.OpenFramework.Open;
-using AutumnBox.OpenFramework.Wrapper;
-using System;
 
 namespace AutumnBox.OpenFramework.Extension
 {

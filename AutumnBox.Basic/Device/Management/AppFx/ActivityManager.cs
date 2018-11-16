@@ -4,8 +4,6 @@
 ** desc： ...
 *************************************************/
 using System;
-using AutumnBox.Basic.Calling;
-using AutumnBox.Basic.Calling.Adb;
 using AutumnBox.Basic.Data;
 using AutumnBox.Basic.Util;
 

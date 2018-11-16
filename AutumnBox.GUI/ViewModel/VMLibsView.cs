@@ -1,11 +1,8 @@
 ﻿using AutumnBox.GUI.Model;
 using AutumnBox.GUI.MVVM;
 using AutumnBox.GUI.Util.Bus;
-using AutumnBox.OpenFramework.ExtLibrary;
 using AutumnBox.OpenFramework.Management;
 using System.Collections.Generic;
-using System.Linq;
-using System.Windows;
 
 namespace AutumnBox.GUI.ViewModel
 {
