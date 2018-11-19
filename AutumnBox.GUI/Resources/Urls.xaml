@@ -3,21 +3,19 @@
                     xmlns:s="clr-namespace:System;assembly=mscorlib">
     <s:String x:Key="urlOfficialWebsite">http://www.atmb.top/</s:String>
     <s:String x:Key="urlDonateList">http://www.atmb.top/donate</s:String>
-    <s:String x:Key="urlOpensource">http://www.atmb.top/open_source</s:String>
-    <s:String x:Key="urlJoinQQGroup">http://www.atmb.top/help/join_qq_group/</s:String>
-    <s:String x:Key="urlDownloadExtensions">http://www.atmb.top/extension/</s:String>
-    <s:String x:Key="urlDvWebsite">http://dv.atmb.top</s:String>
+    <s:String x:Key="urlOpensource">http://www.atmb.top/go/opensource</s:String>
+    <s:String x:Key="urlJoinQQGroup">http://www.atmb.top/go/join_qq_group/</s:String>
+    <s:String x:Key="urlDownloadExtensions">http://www.atmb.top/go/download/extension</s:String>
 
-    <s:String x:Key="urlApiMotd">http://www.atmb.top/api/motd</s:String>
-    <s:String x:Key="urlApiPotd">http://www.atmb.top/api/potd</s:String>
-    <s:String x:Key="urlApiUpdate">http://www.atmb.top/api/update</s:String>
-    <s:String x:Key="urlApiStatistics">http://www.atmb.top/api/statistics</s:String>
-
+    <s:String x:Key="urlApiMotd">http://www.atmb.top/_api_/motd</s:String>
+    <s:String x:Key="urlApiPotd">http://www.atmb.top/_api_/potd</s:String>
+    <s:String x:Key="urlApiUpdate">http://www.atmb.top/_api_/update</s:String>
+    <s:String x:Key="urlApiStatistics">http://www.atmb.top/_api_/statistics</s:String>
+    <s:String x:Key="urlApiToastMotd">http://www.atmb.top/_api_/tmotd</s:String>
 
     <s:String x:Key="urlEMail">mailto://zsh2401@163.com</s:String>
-    <s:String x:Key="urlHelp">http://www.atmb.top/help/</s:String>
-    <s:String x:Key="urlHelpOfLinkDevice">http://www.atmb.top/help/link_device/</s:String>
-    <s:String x:Key="urlHelpOfInstallExtension">http://www.atmb.top/help/install_extension/</s:String>
-
+    <s:String x:Key="urlHelp">http://www.atmb.top/go/help/</s:String>
+    <s:String x:Key="urlHelpOfLinkDevice">http://www.atmb.top/go/help/link_device/</s:String>
+    <s:String x:Key="urlHelpOfInstallExtension">http://www.atmb.top/go/help/install_extension/</s:String>
     <s:String x:Key="urlExtensionDevelopDoc">https://github.com/zsh2401/AutumnBox/wiki/zh_CN_AutumnBox%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3</s:String>
 </ResourceDictionary>
