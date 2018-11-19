@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using AutumnBox.OpenFramework.Content;
+using AutumnBox.OpenFramework.Exceptions;
 
 namespace AutumnBox.OpenFramework.Service
 {
@@ -27,6 +28,10 @@ namespace AutumnBox.OpenFramework.Service
                          select service;
             if (result.Count() != 0)
             {
+                if (!result.First().Get(ctx))
+                {
+                    throw new AccessDeniedException();
+                }
                 return result.First();
             }
             else
@@ -52,6 +57,7 @@ namespace AutumnBox.OpenFramework.Service
                 return instance;
             }
         }
+
         public void StartService(Type typeOfService)
         {
             GetInstance(typeOfService).Start();

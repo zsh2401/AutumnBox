@@ -95,6 +95,24 @@ namespace AutumnBox.OpenFramework.Service
             OnDestory(null);
         }
 
+        internal bool Get(Context getter)
+        {
+            return OnGet(getter);
+        }
+
+        /// <summary>
+        /// 当有Context试图获取此服务时调用
+        /// </summary>
+        /// <param name="getter"></param>
+        /// <returns></returns>
+        protected virtual bool OnGet(Context getter)
+        {
+            if (getter == null)
+            {
+                throw new ArgumentNullException(nameof(getter));
+            }
+            return true;
+        }
         /// <summary>
         /// 当服务实例被创建时调用
         /// </summary>
