@@ -126,6 +126,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Model\ExtensionWrapperDock.cs" />
+    <Compile Include="Model\LibDock.cs" />
     <Compile Include="MVVM\OpenParameterUrlCommand.cs" />
     <Compile Include="Util\AlreadyHaveAutumnBoxChecker.cs" />
     <Compile Include="Util\AppLoader.cs" />
@@ -173,6 +174,7 @@
     <Compile Include="ViewModel\VMEnableDeviceNetDebugging.cs" />
     <Compile Include="ViewModel\VMExtensions.cs" />
     <Compile Include="ViewModel\VMInputWindow.cs" />
+    <Compile Include="ViewModel\VMLibsView.cs" />
     <Compile Include="ViewModel\VMMore.cs" />
     <Compile Include="ViewModel\VMMotd.cs" />
     <Compile Include="ViewModel\VMPanelMain.cs" />
@@ -249,6 +251,9 @@
     </Compile>
     <Compile Include="View\Windows\InputWindow.xaml.cs">
       <DependentUpon>InputWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\LibsWindow.xaml.cs">
+      <DependentUpon>LibsWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Windows\LoadingWindow.xaml.cs">
       <DependentUpon>LoadingWindow.xaml</DependentUpon>
@@ -524,6 +529,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Windows\InputWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\LibsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

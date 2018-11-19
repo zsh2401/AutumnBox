@@ -26,7 +26,8 @@ namespace AutumnBox.Basic.MultipleDevices
     public class DevicesMonitor
     {
         private static readonly Logger logger;
-        static DevicesMonitor() {
+        static DevicesMonitor()
+        {
             logger = new Logger<DevicesMonitor>();
         }
         /// <summary>

@@ -1,4 +1,8 @@
-﻿using AutumnBox.Basic.Device;
+﻿/*************************************************
+** auth： zsh2401@163.com
+** date:  2018/8/13 8:18:26 (UTC +8:00)
+** desc： ...
+*************************************************/
 using AutumnBox.OpenFramework.Wrapper;
 
 namespace AutumnBox.OpenFramework.Management

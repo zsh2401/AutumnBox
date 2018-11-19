@@ -14,7 +14,7 @@
     </UserControl.DataContext>
     <Grid Width="770">
         <StackPanel  Orientation="Vertical">
-            <materialDesign:Card  Background="{DynamicResource CardBackgroundBrush}" Margin="10" Height="120">
+            <materialDesign:Card  Background="{DynamicResource CardBackgroundBrush}" Margin="10">
                 <StackPanel>
                     <TextBlock FontSize="15"  Margin="15" Text="{DynamicResource PanelMoreExtensionSlogan}"/>
                     <StackPanel  Margin="15,0,0,10" Orientation="Horizontal">
@@ -22,12 +22,13 @@
                         <TextBlock Margin="5,0,0,0" VerticalAlignment="Center" FontSize="12" Text="{DynamicResource PanelMoreExtensionApi}"/>
                         <TextBlock Margin="15,0,0,0" VerticalAlignment="Center" FontSize="12" Text="{Binding ApiVersion}"/>
                     </StackPanel>
-                    <StackPanel Margin="10,0,10,0" Orientation="Horizontal">
+                    <WrapPanel Margin="10,0,10,0" Orientation="Horizontal">
                         <Button FontSize="12" Command="{Binding OpenExtFloder}" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource PanelMoreBtnOpenExtensionFloder}"/>
                         <Button FontSize="12" Command="{Binding OpenUrl}" CommandParameter="{DynamicResource urlHelpOfInstallExtension}" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource PanelMoreBtnHowToInstallExtension}"/>
                         <Button FontSize="12" Command="{Binding OpenUrl}" CommandParameter="{DynamicResource urlDownloadExtensions}" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource PanelMoreExtensionsDownloadCenter}"/>
-                        <Button FontSize="12" Command="{Binding OpenUrl}" CommandParameter="{DynamicResource urlDownloadExtensions}" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource PanelMoreExtensionsDoc}"></Button>
-                    </StackPanel>
+                        <Button FontSize="12" Command="{Binding OpenUrl}" CommandParameter="{DynamicResource urlDownloadExtensions}" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource PanelMoreExtensionsDoc}"/>
+                        <Button FontSize="12" Command="{Binding OpenLibsView}" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource PanelMoreBtnViewLoadedModules}"/>
+                    </WrapPanel>
                 </StackPanel>
             </materialDesign:Card>
             <materialDesign:Card Margin="10"  Background="{DynamicResource CardBackgroundBrush}">
@@ -76,11 +77,10 @@
                     </WrapPanel>
                 </StackPanel>
             </materialDesign:Card>
-            
+
             <materialDesign:Card Margin="10"  Background="{DynamicResource CardBackgroundBrush}">
                 <Image Source="/Resources/Drawable/More/halo.png"/>
             </materialDesign:Card>
-            <TextBlock Foreground="{DynamicResource PrimaryLightBrush}" Margin="10" TextAlignment="Center" Text="In other words,please be ture"/>
         </StackPanel>
 
     </Grid>

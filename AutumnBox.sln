@@ -9,8 +9,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutumnBox.Basic", "AutumnBo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutumnBox.ConsoleTester", "AutumnBox.ConsoleTester\AutumnBox.ConsoleTester.csproj", "{AB494016-2D55-4E67-90A7-BC9AE44C4892}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutumnBox.Basic.Flows", "AutumnBox.Basic.Flows\AutumnBox.Basic.Flows.csproj", "{3091ECAE-7FF2-421D-B970-1C76D7CAB0C0}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9C12A545-FC99-4185-86D1-22D029637239}"
 	ProjectSection(SolutionItems) = preProject
 		README.md = README.md
@@ -18,7 +16,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutumnBox.GUI.Launcher", "AutumnBox.GUI.Launcher\AutumnBox.GUI.Launcher.csproj", "{1F3778B8-BD3B-4288-A498-FD76D2E84F44}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutumnBox.OpenFramework", "AutumnBox.OpenFramework\AutumnBox.OpenFramework.csproj", "{6516890C-86B6-40A0-8FD0-14FFDD62E1FE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutumnBox.OpenFramework", "AutumnBox.OpenFramework\AutumnBox.OpenFramework.csproj", "{6516890C-86B6-40A0-8FD0-14FFDD62E1FE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{ED6D96D8-56EF-4E5B-B43F-100D1DB9EA30}"
 EndProject
@@ -138,37 +136,6 @@ Global
 		{AB494016-2D55-4E67-90A7-BC9AE44C4892}.SDK|x64.Build.0 = Release|Any CPU
 		{AB494016-2D55-4E67-90A7-BC9AE44C4892}.SDK|x86.ActiveCfg = Release|Any CPU
 		{AB494016-2D55-4E67-90A7-BC9AE44C4892}.SDK|x86.Build.0 = Release|Any CPU
-		{3091ECAE-7FF2-421D-B970-1C76D7CAB0C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3091ECAE-7FF2-421D-B970-1C76D7CAB0C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3091ECAE-7FF2-421D-B970-1C76D7CAB0C0}.Debug|ARM.ActiveCfg = Debug|Any CPU
-		{3091ECAE-7FF2-421D-B970-1C76D7CAB0C0}.Debug|ARM.Build.0 = Debug|Any CPU
-		{3091ECAE-7FF2-421D-B970-1C76D7CAB0C0}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{3091ECAE-7FF2-421D-B970-1C76D7CAB0C0}.Debug|x64.Build.0 = Debug|Any CPU
-		{3091ECAE-7FF2-421D-B970-1C76D7CAB0C0}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{3091ECAE-7FF2-421D-B970-1C76D7CAB0C0}.Debug|x86.Build.0 = Debug|Any CPU
-		{3091ECAE-7FF2-421D-B970-1C76D7CAB0C0}.DefaultBuild|Any CPU.ActiveCfg = Debug|Any CPU
-		{3091ECAE-7FF2-421D-B970-1C76D7CAB0C0}.DefaultBuild|Any CPU.Build.0 = Debug|Any CPU
-		{3091ECAE-7FF2-421D-B970-1C76D7CAB0C0}.DefaultBuild|ARM.ActiveCfg = Debug|Any CPU
-		{3091ECAE-7FF2-421D-B970-1C76D7CAB0C0}.DefaultBuild|ARM.Build.0 = Debug|Any CPU
-		{3091ECAE-7FF2-421D-B970-1C76D7CAB0C0}.DefaultBuild|x64.ActiveCfg = Debug|Any CPU
-		{3091ECAE-7FF2-421D-B970-1C76D7CAB0C0}.DefaultBuild|x64.Build.0 = Debug|Any CPU
-		{3091ECAE-7FF2-421D-B970-1C76D7CAB0C0}.DefaultBuild|x86.ActiveCfg = Debug|Any CPU
-		{3091ECAE-7FF2-421D-B970-1C76D7CAB0C0}.DefaultBuild|x86.Build.0 = Debug|Any CPU
-		{3091ECAE-7FF2-421D-B970-1C76D7CAB0C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3091ECAE-7FF2-421D-B970-1C76D7CAB0C0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3091ECAE-7FF2-421D-B970-1C76D7CAB0C0}.Release|ARM.ActiveCfg = Release|Any CPU
-		{3091ECAE-7FF2-421D-B970-1C76D7CAB0C0}.Release|ARM.Build.0 = Release|Any CPU
-		{3091ECAE-7FF2-421D-B970-1C76D7CAB0C0}.Release|x64.ActiveCfg = Release|Any CPU
-		{3091ECAE-7FF2-421D-B970-1C76D7CAB0C0}.Release|x64.Build.0 = Release|Any CPU
-		{3091ECAE-7FF2-421D-B970-1C76D7CAB0C0}.Release|x86.ActiveCfg = Release|Any CPU
-		{3091ECAE-7FF2-421D-B970-1C76D7CAB0C0}.Release|x86.Build.0 = Release|Any CPU
-		{3091ECAE-7FF2-421D-B970-1C76D7CAB0C0}.SDK|Any CPU.ActiveCfg = SDK|Any CPU
-		{3091ECAE-7FF2-421D-B970-1C76D7CAB0C0}.SDK|ARM.ActiveCfg = Release|Any CPU
-		{3091ECAE-7FF2-421D-B970-1C76D7CAB0C0}.SDK|ARM.Build.0 = Release|Any CPU
-		{3091ECAE-7FF2-421D-B970-1C76D7CAB0C0}.SDK|x64.ActiveCfg = Release|Any CPU
-		{3091ECAE-7FF2-421D-B970-1C76D7CAB0C0}.SDK|x64.Build.0 = Release|Any CPU
-		{3091ECAE-7FF2-421D-B970-1C76D7CAB0C0}.SDK|x86.ActiveCfg = Release|Any CPU
-		{3091ECAE-7FF2-421D-B970-1C76D7CAB0C0}.SDK|x86.Build.0 = Release|Any CPU
 		{1F3778B8-BD3B-4288-A498-FD76D2E84F44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1F3778B8-BD3B-4288-A498-FD76D2E84F44}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1F3778B8-BD3B-4288-A498-FD76D2E84F44}.Debug|ARM.ActiveCfg = Debug|Any CPU
@@ -269,10 +236,9 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{AB494016-2D55-4E67-90A7-BC9AE44C4892} = {ED6D96D8-56EF-4E5B-B43F-100D1DB9EA30}
-		{3091ECAE-7FF2-421D-B970-1C76D7CAB0C0} = {ED6D96D8-56EF-4E5B-B43F-100D1DB9EA30}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {E8E55705-AE5C-4952-B4C7-9D7F81C38731}
 		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.PolicyInjection.6.0.1304.0\lib\NET45
+		SolutionGuid = {E8E55705-AE5C-4952-B4C7-9D7F81C38731}
 	EndGlobalSection
 EndGlobal

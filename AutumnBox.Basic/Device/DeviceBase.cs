@@ -111,5 +111,13 @@ namespace AutumnBox.Basic.Device
         {
             return !(base1 == base2);
         }
+        /// <summary>
+        /// 字符串化
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return $"{SerialNumber}-{State.ToString().ToLower()}";
+        }
     }
 }

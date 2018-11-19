@@ -4,7 +4,6 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.Basic.Device;
-using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.Wrapper;
 
 namespace AutumnBox.OpenFramework.Management.Filters

@@ -391,11 +391,10 @@ namespace AutumnBox.OpenFramework.Wrapper
         /// <summary>
         /// 获取拓展进程
         /// </summary>
-        /// <param name="device"></param>
         /// <returns></returns>
-        public virtual IExtensionProcess GetProcess(IDevice device = null)
+        public virtual IExtensionProcess GetProcess()
         {
-            return new ClassExtensionProcess(this, extType, device)
+            return new ClassExtensionProcess(this, extType)
             {
                 BeforeCreatingAspects = this.BeforeCreateAspects
             };

@@ -12,7 +12,6 @@ using AutumnBox.GUI.Util.OpenFxManagement;
 using AutumnBox.GUI.View.Windows;
 using AutumnBox.OpenFramework;
 using System;
-using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -91,7 +90,7 @@ namespace AutumnBox.GUI.Util
                 logger.Warn(e);
                 ui.Progress = 60;
                 ui.LoadingTip = App.Current.Resources["ldmsgAdbServerFailed"].ToString();
-                Thread.Sleep(10000);
+                Thread.Sleep(10*1000);
                 App.Current.Shutdown(e.ExitCode ?? 1);
             }
 

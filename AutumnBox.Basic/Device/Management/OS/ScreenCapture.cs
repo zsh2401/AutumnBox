@@ -6,9 +6,7 @@
 using AutumnBox.Basic.Data;
 using AutumnBox.Basic.Util;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Text;
 
 namespace AutumnBox.Basic.Device.Management.OS
 {

@@ -1,12 +1,14 @@
-﻿using AutumnBox.Basic.Exceptions;
+﻿/*************************************************
+** auth： zsh2401@163.com
+** date:  2018/9/19 20:54:58 (UTC +8:00)
+** desc： ...
+*************************************************/
+
+using AutumnBox.Basic.Device;
+using AutumnBox.Basic.Exceptions;
 using AutumnBox.CoreModules.Aspect;
 using AutumnBox.CoreModules.Lib;
 using AutumnBox.OpenFramework.Extension;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutumnBox.CoreModules.Extensions.Poweron
 {
@@ -44,6 +46,14 @@ namespace AutumnBox.CoreModules.Extensions.Poweron
             finally
             {
                 Progress = 100;
+            }
+        }
+        protected override void OnFinish(ExtensionFinishedArgs args)
+        {
+            base.OnFinish(args);
+            if (args.ExitCode == OK)
+            {
+                DeviceSelectedOnCreating.Reboot2System();
             }
         }
     }

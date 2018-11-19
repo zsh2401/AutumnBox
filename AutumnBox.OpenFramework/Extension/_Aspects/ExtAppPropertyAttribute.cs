@@ -5,7 +5,6 @@
 *************************************************/
 using AutumnBox.Basic.Device;
 using AutumnBox.Basic.Device.Management.AppFx;
-using AutumnBox.OpenFramework.Open;
 
 namespace AutumnBox.OpenFramework.Extension
 {

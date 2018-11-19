@@ -4,8 +4,6 @@
 ** desc： ...
 *************************************************/
 using System;
-using System.Windows;
-using AutumnBox.OpenFramework.Wrapper;
 using AutumnBox.GUI.View.Windows;
 using AutumnBox.OpenFramework.Management;
 using AutumnBox.GUI.Util.Effect;
@@ -182,7 +180,7 @@ namespace AutumnBox.GUI.Util.OpenFxManagement
             return appDomain;
         }
 
-        public AutumnBoxExtension GetInstanceFrom(AppDomain appDomain, Type type)
+        public IClassExtension GetInstanceFrom(AppDomain appDomain, Type type)
         {
             return (AutumnBoxExtension)appDomain
                 .CreateInstanceAndUnwrap(type.Assembly.FullName, type.FullName);
@@ -235,6 +233,16 @@ namespace AutumnBox.GUI.Util.OpenFxManagement
             window.ShowDialog();
             result = tmp;
             return window.DialogResult == true;
+        }
+
+        public void SetResource(string key, object value)
+        {
+            App.Current.Resources[key] = value;
+        }
+
+        public void AddResource(string key, object value)
+        {
+            App.Current.Resources.Add(key,value);
         }
     }
 }

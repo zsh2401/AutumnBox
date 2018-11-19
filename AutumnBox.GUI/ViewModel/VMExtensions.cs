@@ -7,19 +7,15 @@ using AutumnBox.Basic.Device;
 using AutumnBox.GUI.Model;
 using AutumnBox.GUI.MVVM;
 using AutumnBox.GUI.Util.Bus;
-using AutumnBox.GUI.Util.Debugging;
 using AutumnBox.GUI.Util.I18N;
 using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.Management.Filters;
 using AutumnBox.OpenFramework.Wrapper;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 
 namespace AutumnBox.GUI.ViewModel
 {
@@ -124,7 +120,7 @@ namespace AutumnBox.GUI.ViewModel
             ComObserver();
             RunSelectedItem = new FlexiableCommand(() =>
             {
-                SelectedDock?.Wrapper?.GetProcess(DeviceSelectionObserver.Instance.CurrentDevice).Start();
+                SelectedDock?.Wrapper?.GetProcess().Start();
             });
         }
         private void ComObserver()

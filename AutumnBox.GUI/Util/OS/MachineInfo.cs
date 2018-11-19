@@ -11,12 +11,14 @@
 * Company: I am free man
 *
 \* =============================================================================*/
+#if NEED_MACHINE_INFO
 using System;
 using System.IO;
 using System.Management;
 using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
+#endif
 /*Code from http://blog.csdn.net/qq_23833037/article/details/78304738*/
 namespace AutumnBox.GUI.Util.OS
 {

@@ -4,7 +4,6 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.Basic.Device;
-using AutumnBox.OpenFramework.Open;
 
 namespace AutumnBox.OpenFramework.Extension
 {

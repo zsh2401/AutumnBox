@@ -16,7 +16,6 @@ using AutumnBox.GUI.Util;
 using AutumnBox.GUI.Util.Custom;
 using AutumnBox.GUI.Util.Debugging;
 using AutumnBox.GUI.Util.I18N;
-using AutumnBox.OpenFramework.Management;
 using System.Windows;
 namespace AutumnBox.GUI
 {

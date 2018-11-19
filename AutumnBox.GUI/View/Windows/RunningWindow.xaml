@@ -15,11 +15,17 @@
         WindowStartupLocation="CenterScreen"
         FontFamily="{DynamicResource AutumnBox.Font}"
         ResizeMode="CanResize"  Closing="Window_Closing">
-    <Grid Margin="1">
-        <StackPanel Margin="10" VerticalAlignment="Top">
+    <DockPanel Margin="1">
+        <StackPanel DockPanel.Dock="Top" Margin="5" VerticalAlignment="Top">
             <ProgressBar BorderBrush="Transparent" Background="Transparent"  IsIndeterminate="{Binding IsIndeterminate}"  Value="{Binding ProgressValue}"/>
             <TextBlock Margin="10" Text="{Binding Tip}" FontSize="25" />
         </StackPanel>
-        <TextBox  x:Name="TBOutput" IsReadOnly="True"  Style="{x:Null}" BorderBrush="{DynamicResource PrimaryLightBrush}" Text="{Binding Output}" Margin="10,93,10,10" TextWrapping="Wrap"/>
-    </Grid>
+        <DockPanel Margin="5" DockPanel.Dock="Bottom">
+            <StackPanel Margin="3" Orientation="Horizontal" DockPanel.Dock="Top" >
+                <Button FontSize="12" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource RunningWindowCopy}" Command="{Binding Copy}"/>
+                <TextBlock  VerticalAlignment="Center" Text="{DynamicResource RunningWindowCopyTip}"/>
+            </StackPanel>
+            <TextBox DockPanel.Dock="Bottom"  x:Name="TBOutput" IsReadOnly="True"  Style="{x:Null}" BorderBrush="{DynamicResource PrimaryLightBrush}" Text="{Binding Output}" TextWrapping="Wrap"/>
+        </DockPanel>
+    </DockPanel>
 </Window>

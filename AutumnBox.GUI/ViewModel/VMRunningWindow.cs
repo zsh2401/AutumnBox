@@ -9,7 +9,6 @@ using AutumnBox.GUI.Util;
 using AutumnBox.OpenFramework.Management;
 using AutumnBox.OpenFramework.Wrapper;
 using System;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
 
@@ -18,6 +17,15 @@ namespace AutumnBox.GUI.ViewModel
     class VMRunningWindow : ViewModelBase, IExtensionUIController
     {
         #region MVVM
+        public FlexiableCommand Copy
+        {
+            get => _copy; set
+            {
+                _copy = value;
+                RaisePropertyChanged();
+            }
+        }
+        private FlexiableCommand _copy;
         public double ProgressValue
         {
             get => progressValue; set
@@ -86,7 +94,6 @@ namespace AutumnBox.GUI.ViewModel
         private string output;
 
         #endregion
-        private readonly IExtensionWrapper wrapper;
         private readonly Window view;
 
         public event EventHandler<UIControllerClosingEventArgs> Closing;
@@ -94,9 +101,10 @@ namespace AutumnBox.GUI.ViewModel
         public VMRunningWindow(Window view)
         {
             this.view = view;
-            //this.wrapper = wrapper;
-            //Title = wrapper.Info.Name;
-            //Icon = wrapper.Info.Icon.ToExtensionIcon();
+            Copy = new FlexiableCommand(() =>
+            {
+                Clipboard.SetText(Output);
+            });
             output = "";
         }
 
@@ -111,27 +119,11 @@ namespace AutumnBox.GUI.ViewModel
 
         public bool OnWindowClosing()
         {
+            if (isFinishedClosing) return false;
             var args = new UIControllerClosingEventArgs();
             Closing?.Invoke(this, args);
             return args.Cancel;
         }
-
-        //public void Stop()
-        //{
-        //    bool stopped = wrapper.Stop();
-        //    if (stopped)
-        //    {
-        //        AppendLine(App.Current.Resources["RunningWindowStopped"].ToString());
-        //        Tip = "被强制终止";
-        //        ProgressValue = 100;
-        //        wrapperIsRunning = false;
-        //    }
-        //    else
-        //    {
-        //        AppendLine(App.Current.Resources["RunningWindowCantStop"].ToString());
-        //    }
-        //}
-
         public void OnStart(IExtInfoGetter info)
         {
             view.Dispatcher.Invoke(() =>
@@ -139,7 +131,6 @@ namespace AutumnBox.GUI.ViewModel
                 Title = info.Name;
                 Icon = info.Icon.ToExtensionIcon();
                 ProgressValue = -1;
-                //Tip = "RunningWindowStateRunning";
                 view.Show();
             });
         }
@@ -147,12 +138,13 @@ namespace AutumnBox.GUI.ViewModel
         public void OnFinish()
         {
             ProgressValue = 100;
-            //wrapperIsRunning = false;
-            //view.Dispatcher.Invoke(() =>
-            //{
+        }
 
-            //    Tip = args.ReturnCode == 0 ? "RunningWindowStateFinished" : "RunningWindowStateError";
-            //});
+        private bool isFinishedClosing = false;
+        public void Close()
+        {
+            isFinishedClosing = true;
+            view.Close();
         }
     }
 }

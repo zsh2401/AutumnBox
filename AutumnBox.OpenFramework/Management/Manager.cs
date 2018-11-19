@@ -7,7 +7,6 @@ using AutumnBox.OpenFramework.Content;
 using AutumnBox.OpenFramework.Exceptions;
 using AutumnBox.OpenFramework.Management.Impl;
 using AutumnBox.OpenFramework.Service;
-using System;
 using System.Reflection;
 
 namespace AutumnBox.OpenFramework.Management
