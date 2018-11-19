@@ -1,12 +1,8 @@
 ﻿using AutumnBox.GUI.Util.Debugging;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
-using System.Linq;
 using System.Management;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutumnBox.GUI.Util.OS
 {

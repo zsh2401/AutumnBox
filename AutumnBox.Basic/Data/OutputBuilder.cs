@@ -13,17 +13,17 @@ namespace AutumnBox.Basic.Data
     /// </summary>
     public class OutputBuilder
     {
-        private StringBuilder outSb;
-        private StringBuilder errSb;
-        private StringBuilder allSb;
+        private readonly StringBuilder sbOutput;
+        private readonly StringBuilder sbError;
+        private readonly StringBuilder sbAll;
         /// <summary>
         /// 构建一个新的OutputBuilder实例
         /// </summary>
         public OutputBuilder()
         {
-            outSb = new StringBuilder();
-            errSb = new StringBuilder();
-            allSb = new StringBuilder();
+            sbOutput = new StringBuilder();
+            sbError = new StringBuilder();
+            sbAll = new StringBuilder();
         }
 
         /// <summary>
@@ -32,8 +32,8 @@ namespace AutumnBox.Basic.Data
         /// <param name="text"></param>
         public void AppendOut(string text)
         {
-            outSb.AppendLine(text);
-            allSb.AppendLine(text);
+            sbOutput.AppendLine(text);
+            sbAll.AppendLine(text);
             LeastLine = text;
         }
 
@@ -43,8 +43,8 @@ namespace AutumnBox.Basic.Data
         /// <param name="text"></param>
         public void AppendError(string text)
         {
-            errSb.AppendLine(text);
-            allSb.AppendLine(text);
+            sbError.AppendLine(text);
+            sbAll.AppendLine(text);
             LeastLine = text;
         }
 
@@ -54,9 +54,9 @@ namespace AutumnBox.Basic.Data
         /// <param name="builder"></param>
         public void Append(OutputBuilder builder)
         {
-            outSb.Append(builder.outSb);
-            errSb.Append(builder.errSb);
-            allSb.Append(builder.allSb);
+            sbOutput.Append(builder.sbOutput);
+            sbError.Append(builder.sbError);
+            sbAll.Append(builder.sbAll);
         }
 
         /// <summary>
@@ -65,9 +65,9 @@ namespace AutumnBox.Basic.Data
         /// <param name="output"></param>
         public void Append(Output output)
         {
-            outSb.Append(output.Out);
-            errSb.Append(output.Error);
-            allSb.Append(output.All);
+            sbOutput.Append(output.Out);
+            sbError.Append(output.Error);
+            sbAll.Append(output.All);
         }
 
         /// <summary>
@@ -75,9 +75,9 @@ namespace AutumnBox.Basic.Data
         /// </summary>
         public virtual void Clear()
         {
-            outSb.Clear();
-            errSb.Clear();
-            allSb.Clear();
+            sbAll.Clear();
+            sbError.Clear();
+            sbOutput.Clear();
         }
 
         /// <summary>
@@ -139,7 +139,7 @@ namespace AutumnBox.Basic.Data
         /// <returns></returns>
         public Output ToOutput()
         {
-            return new Output(allSb.ToString(), outSb.ToString(), errSb.ToString());
+            return new Output(sbAll.ToString(), sbOutput.ToString(), sbError.ToString());
         }
 
         /// <summary>

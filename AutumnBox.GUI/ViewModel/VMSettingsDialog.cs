@@ -9,11 +9,7 @@ using AutumnBox.GUI.Util.Custom;
 using AutumnBox.GUI.Util.I18N;
 using AutumnBox.GUI.Util.OS;
 using AutumnBox.GUI.View.Windows;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace AutumnBox.GUI.ViewModel

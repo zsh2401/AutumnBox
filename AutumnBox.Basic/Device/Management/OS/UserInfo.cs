@@ -3,9 +3,6 @@
 ** date:  2018/9/28 4:45:34 (UTC +8:00)
 ** desc： ...
 *************************************************/
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace AutumnBox.Basic.Device.Management.OS
 {

@@ -7,7 +7,9 @@ using AutumnBox.Basic.Device;
 using AutumnBox.OpenFramework.Content;
 using AutumnBox.OpenFramework.Exceptions;
 using AutumnBox.OpenFramework.Extension;
+using AutumnBox.OpenFramework.Open;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading;
@@ -22,7 +24,6 @@ namespace AutumnBox.OpenFramework.Wrapper
     {
         private readonly Context ctx;
         private readonly Type extensionType;
-        private readonly IDevice targetDevice;
 
         /// <summary>
         /// 创建实例前的切面
@@ -52,13 +53,11 @@ namespace AutumnBox.OpenFramework.Wrapper
         /// </summary>
         /// <param name="wrapper"></param>
         /// <param name="extType"></param>
-        /// <param name="targetDevice"></param>
-        public ClassExtensionProcess(IExtensionWrapper wrapper, Type extType, IDevice targetDevice = null)
+        public ClassExtensionProcess(IExtensionWrapper wrapper, Type extType)
         {
             this.ctx = (Context)wrapper;
             this.wrapper = wrapper;
             this.extensionType = extType;
-            this.targetDevice = targetDevice;
         }
 
         private bool ExecuteBeforeCreatingInstanceAspect()
@@ -67,7 +66,7 @@ namespace AutumnBox.OpenFramework.Wrapper
             {
                 Context = ctx,
                 ExtensionType = extensionType,
-                TargetDevice = targetDevice,
+                TargetDevice = GetService<IDeviceSelector>(ServicesNames.DEVICE_SELECTOR).GetCurrent(this)
             };
             bool canContinue = true;
             foreach (var aspect in BeforeCreatingAspects)
@@ -92,7 +91,7 @@ namespace AutumnBox.OpenFramework.Wrapper
             {
                 Wrapper = wrapper,
                 CurrentProcess = this,
-                TargetDevice = targetDevice
+                ExtractData = this.ExtractData
             };
             Instance.Init(ctx, args);
         }
@@ -133,6 +132,11 @@ namespace AutumnBox.OpenFramework.Wrapper
         /// </summary>
         public int ExitCode { get; private set; } = -1;
         /// <summary>
+        /// 拓展数据
+        /// </summary>
+        public Dictionary<string,object> ExtractData { get; set; }
+
+        /// <summary>
         /// 开始执行
         /// </summary>
         public void Start()
@@ -148,10 +152,10 @@ namespace AutumnBox.OpenFramework.Wrapper
         /// <returns></returns>
         public int WaitForExit()
         {
-            if (State == ProcessState.Ready)
-            {
-                throw new InvalidOperationException("Process is finished");
-            }
+            //if (State == ProcessState.Ready)
+            //{
+            //    throw new InvalidOperationException("Process is finished");
+            //}
             while (State == ProcessState.Running) ;
             return ExitCode;
         }

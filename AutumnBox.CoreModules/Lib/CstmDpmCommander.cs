@@ -9,11 +9,7 @@ using AutumnBox.Basic.Util;
 using AutumnBox.OpenFramework.Content;
 using AutumnBox.OpenFramework.Open;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutumnBox.CoreModules.Lib
 {
@@ -59,7 +55,6 @@ namespace AutumnBox.CoreModules.Lib
         public string ShowUsage()
         {
             string command = string.Format(CMD_FORMAT, "");
-            context.Logger.CDebug("executing:" + command);
             return CmdStation
                   .GetShellCommand(Device, command)
                   .To(RaiseOutput)

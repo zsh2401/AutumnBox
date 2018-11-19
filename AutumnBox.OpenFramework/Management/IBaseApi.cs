@@ -5,14 +5,7 @@
 *************************************************/
 #define WIN32
 using AutumnBox.Basic.Device;
-using AutumnBox.OpenFramework.Open;
-using AutumnBox.OpenFramework.Wrapper;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 
 namespace AutumnBox.OpenFramework.Management
 {
@@ -103,6 +96,19 @@ namespace AutumnBox.OpenFramework.Management
         /// <param name="key"></param>
         /// <returns></returns>
         object GetResouce(string key);
+        /// <summary>
+        /// 设置资源
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        void SetResource(string key,object value);
+        /// <summary>
+        /// 添加资源
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="value"></param>
+       void AddResource(string key, object value);
         /// <summary>
         /// 重启程序
         /// </summary>

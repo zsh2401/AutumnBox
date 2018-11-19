@@ -8,10 +8,6 @@ using AutumnBox.OpenFramework.Management.Impl;
 using AutumnBox.OpenFramework.Open.ServiceImpl;
 using AutumnBox.OpenFramework.Service;
 using AutumnBox.OpenFramework.Service.Default;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Text;
 
 namespace AutumnBox.OpenFramework.Management
 {
@@ -35,14 +31,20 @@ namespace AutumnBox.OpenFramework.Management
         /// <param name="baseApi"></param>
         public static void LoadBase(IBaseApi baseApi)
         {
-            IServicesManager serviceManager = Manager.ServicesManager;
-            serviceManager.StartService<SMd5>();
-            serviceManager.StartService<SBaseApiContainer>();
-            serviceManager.StartService<SSoundManager>();
-            var apiContainer = (SBaseApiContainer)serviceManager
-                 .GetServiceByName(null,SBaseApiContainer.NAME);
-            apiContainer.LoadApi(baseApi);
+            //设置Context
             fxLoaderCtx = new FxLoaderContext();
+
+            IServicesManager serviceManager = Manager.ServicesManager;
+            //加载API
+            serviceManager.StartService<SBaseApiContainer>();
+            var apiContainer = (SBaseApiContainer)serviceManager
+                .GetServiceByName(fxLoaderCtx, SBaseApiContainer.NAME);
+            apiContainer.LoadApi(baseApi);
+            //加载基础服务
+            serviceManager.StartService<SMd5>();
+            serviceManager.StartService<SSoundManager>();
+            serviceManager.StartService<ResourcesManagerImpl>();
+            serviceManager.StartService<SDeviceSelector>();
         }
         /// <summary>
         /// 加载拓展模块

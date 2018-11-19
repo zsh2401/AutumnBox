@@ -24,7 +24,6 @@ namespace AutumnBox.GUI.View.OfTheDay
         public POTD()
         {
             InitializeComponent();
-            DataContext = new VMPOTD();
         }
 
         private void Image_MouseDown(object sender, MouseButtonEventArgs e)

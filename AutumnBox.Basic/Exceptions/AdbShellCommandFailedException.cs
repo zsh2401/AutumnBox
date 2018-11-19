@@ -3,12 +3,6 @@
 ** date:  2018/8/31 9:47:51 (UTC +8:00)
 ** desc： ...
 *************************************************/
-using AutumnBox.Basic.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Exceptions
 {

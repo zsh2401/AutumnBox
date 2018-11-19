@@ -4,17 +4,13 @@
 ** desc： ...
 *************************************************/
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Exceptions
 {
     /// <summary>
     /// 设备不再存活
     /// </summary>
-   public class DeviceNotAliveException : Exception
+    public class DeviceNotAliveException : Exception
     {
     }
 }

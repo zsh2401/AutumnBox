@@ -6,7 +6,6 @@
 using AutumnBox.GUI.Util.Debugging;
 using Newtonsoft.Json;
 using System.IO;
-using System.Text;
 
 namespace AutumnBox.GUI.Util.Net
 {

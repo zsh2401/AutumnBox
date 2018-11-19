@@ -4,6 +4,7 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.GUI.MVVM;
+using AutumnBox.GUI.View.Windows;
 using AutumnBox.OpenFramework;
 using AutumnBox.OpenFramework.Management;
 using System.Diagnostics;
@@ -13,10 +14,15 @@ namespace AutumnBox.GUI.ViewModel
     class VMMore : ViewModelBase
     {
         public string ApiVersion { get; set; }
+        public FlexiableCommand OpenLibsView { get; set; }
         public FlexiableCommand OpenExtFloder { get; set; }
         public FlexiableCommand OpenUrl { get; set; }
         public VMMore()
         {
+            OpenLibsView = new FlexiableCommand(() =>
+            {
+                new LibsWindow().ShowDialog();
+            });
             OpenExtFloder = new FlexiableCommand(() =>
             {
                 Process.Start(Manager.InternalManager.ExtensionPath);

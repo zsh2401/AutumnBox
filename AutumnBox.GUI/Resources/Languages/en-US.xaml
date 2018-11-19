@@ -7,6 +7,9 @@
     <s:String x:Key="LanguageCode">en-US</s:String>
     <s:String x:Key="AppDesc">Open source,free,simple,GUI adb toolbox</s:String>
         
+         <!--LibsWindow-->
+    <s:String x:Key="LibsWindowTitle">Loaded extension libs</s:String>
+    <s:String x:Key="LibsWindowLoadedWrapper">Loaded wrappers: </s:String>
     
     <!--PanelHome-->
     <s:String x:Key="PanelHomeOpenSource">Open source</s:String>
@@ -138,6 +141,7 @@
       <s:String x:Key="PanelMoreEvenNoDevice">Device not found?look there!</s:String>
      <s:String x:Key="PanelMoreBtnOpenExtensionFloder">Open extensions floder</s:String>
     <s:String x:Key="PanelMoreBtnHowToInstallExtension">How to install extesions?</s:String>
+    <s:String x:Key="PanelMoreBtnViewLoadedModules">View loaded modules</s:String>
      <s:String x:Key="PanelMoreExtensionsDownloadCenter">Download extensions</s:String>
      <s:String x:Key="PanelMoreExtensionSlogan">Download extension,do you want to do</s:String>
     <s:String x:Key="PanelMoreExtensionApi">Extension Fx API Version</s:String>
@@ -216,6 +220,8 @@
      <s:String x:Key="LoadingWindowMessage">Please wait...</s:String>
     
     <!--RunningWindow-->
+     <s:String x:Key="RunningWindowCopy">Copy output</s:String>
+        <s:String x:Key="RunningWindowCopyTip">This output is helpful for someone who is helping you</s:String>
      <s:String x:Key="RunningWindowStateRunning">Extension running~</s:String>
     <s:String x:Key="RunningWindowStateFinished">Finished</s:String>
      <s:String x:Key="RunningWindowStateError">Error</s:String>

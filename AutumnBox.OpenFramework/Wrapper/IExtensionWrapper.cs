@@ -27,9 +27,8 @@ namespace AutumnBox.OpenFramework.Wrapper
         /// <summary>
         /// 获取一个未开始的拓展模块进程(此进程非操作系统进程)
         /// </summary>
-        /// <param name="device"></param>
         /// <returns></returns>
-        IExtensionProcess GetProcess(IDevice device=null);
+        IExtensionProcess GetProcess();
         /// <summary>
         /// 当该包装类被要求摧毁时调用
         /// </summary>

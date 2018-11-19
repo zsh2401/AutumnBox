@@ -3,9 +3,9 @@
 ** date:  2018/9/22 23:06:30 (UTC +8:00)
 ** desc： ...
 *************************************************/
-using AutumnBox.Basic.Device;
 using AutumnBox.OpenFramework.Wrapper;
 using System;
+using System.Collections.Generic;
 
 namespace AutumnBox.OpenFramework.Extension
 {
@@ -23,9 +23,9 @@ namespace AutumnBox.OpenFramework.Extension
         /// </summary>
         public IExtensionWrapper Wrapper { get; set; }
         /// <summary>
-        /// 目标设备
+        /// 拓展数据，通常为null
         /// </summary>
-        public IDevice TargetDevice { get; set; }
+        public Dictionary<string,object> ExtractData { get; set; } = null;
     }
     /// <summary>
     /// 当拓展模块即将被摧毁时的参数

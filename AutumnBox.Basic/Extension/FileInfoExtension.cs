@@ -3,10 +3,9 @@
 ** date:  2018/8/29 0:15:54 (UTC +8:00)
 ** desc： ...
 *************************************************/
-using AutumnBox.Basic.Calling.Adb;
+using AutumnBox.Basic.Calling;
 using AutumnBox.Basic.Device;
 using AutumnBox.Basic.Exceptions;
-using AutumnBox.Basic.Util;
 using System;
 using System.IO;
 namespace AutumnBox.Basic.Extension
@@ -22,7 +21,8 @@ namespace AutumnBox.Basic.Extension
         /// <param name="fileInfo"></param>
         /// <param name="device"></param>
         /// <param name="path"></param>
-        public static void PushTo(this FileInfo fileInfo, IDevice device, string path)
+        /// <param name="cmdStation"></param>
+        public static void PushTo(this FileInfo fileInfo, IDevice device, string path, CommandStation cmdStation = null)
         {
             if (fileInfo == null)
             {
@@ -38,7 +38,8 @@ namespace AutumnBox.Basic.Extension
             {
                 throw new ArgumentNullException(nameof(path));
             }
-            using (var command = new AdbCommand(device, $"push \"{fileInfo.FullName}\" \"{path}\""))
+            using (var command = cmdStation.NullCheckAndGet()
+                .GetAdbCommand(device, $"push \"{fileInfo.FullName}\" \"{path}\""))
             {
                 var result = command.Execute();
                 if (result.ExitCode != 0)
@@ -52,7 +53,8 @@ namespace AutumnBox.Basic.Extension
         /// </summary>
         /// <param name="apkFileInfo"></param>
         /// <param name="device"></param>
-        public static void InstallTo(this FileInfo apkFileInfo, IDevice device)
+        /// <param name="cmdStation"></param>
+        public static void InstallTo(this FileInfo apkFileInfo, IDevice device, CommandStation cmdStation = null)
         {
             if (apkFileInfo == null)
             {
@@ -63,12 +65,12 @@ namespace AutumnBox.Basic.Extension
             {
                 throw new ArgumentNullException(nameof(device));
             }
-
             if (apkFileInfo.Extension != ".apk")
             {
                 throw new ArgumentException("Is not apk file!", nameof(apkFileInfo));
             }
-            using (var command = new AdbCommand(device, $"install \"{apkFileInfo.FullName}\""))
+            using (var command = cmdStation.NullCheckAndGet()
+                .GetAdbCommand(device, $"install \"{apkFileInfo.FullName}\""))
             {
                 var result = command.Execute();
                 if (result.ExitCode != 0)

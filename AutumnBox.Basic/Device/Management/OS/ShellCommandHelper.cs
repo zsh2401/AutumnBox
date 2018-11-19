@@ -6,9 +6,6 @@
 using AutumnBox.Basic.Calling.Adb;
 using AutumnBox.Basic.Exceptions;
 using AutumnBox.Basic.Util;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace AutumnBox.Basic.Device.Management.OS
 {

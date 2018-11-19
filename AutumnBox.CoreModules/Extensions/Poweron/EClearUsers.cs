@@ -1,12 +1,14 @@
-﻿using AutumnBox.Basic.Exceptions;
+﻿/*************************************************
+** auth： zsh2401@163.com
+** date:  2018/9/19 20:54:58 (UTC +8:00)
+** desc： ...
+*************************************************/
+
+using AutumnBox.Basic.Device;
+using AutumnBox.Basic.Exceptions;
 using AutumnBox.CoreModules.Aspect;
 using AutumnBox.CoreModules.Lib;
 using AutumnBox.OpenFramework.Extension;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutumnBox.CoreModules.Extensions.Poweron
 {
@@ -14,7 +16,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron
     [ExtDesc("Use the tech by web1n", "zh-CN:使用web1n提供的黑科技暴力清空用户，这将会导致你的应用双开失效，以及其他可能的负面效果")]
     [UserAgree("EClearUsersWarning")]
     [ExtIcon("Icons.nuclear.png")]
-    [ExtRequiredDeviceStates(Basic.Device.DeviceState.Poweron)]
+    [ExtRequiredDeviceStates(DeviceState.Poweron)]
     class EClearUsers : OfficialVisualExtension
     {
         protected override int VisualMain()
@@ -42,6 +44,14 @@ namespace AutumnBox.CoreModules.Extensions.Poweron
             finally
             {
                 Progress = 100;
+            }
+        }
+        protected override void OnFinish(ExtensionFinishedArgs args)
+        {
+            base.OnFinish(args);
+            if (args.ExitCode == OK)
+            {
+                DeviceSelectedOnCreating.Reboot2System();
             }
         }
     }

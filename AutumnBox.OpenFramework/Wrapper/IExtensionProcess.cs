@@ -1,10 +1,16 @@
-﻿namespace AutumnBox.OpenFramework.Wrapper
+﻿using System.Collections.Generic;
+
+namespace AutumnBox.OpenFramework.Wrapper
 {
     /// <summary>
     /// 拓展模块进程
     /// </summary>
     public interface IExtensionProcess
     {
+        /// <summary>
+        /// 拓展数据
+        /// </summary>
+        Dictionary<string,object> ExtractData { get; set; }
         /// <summary>
         /// 推出码
         /// </summary>

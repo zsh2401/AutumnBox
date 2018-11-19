@@ -1,4 +1,9 @@
-﻿using AutumnBox.Basic.Exceptions;
+﻿/*************************************************
+** auth： zsh2401@163.com
+** date:  2018/8/30 5:49:54 (UTC +8:00)
+** desc： ...
+*************************************************/
+using AutumnBox.Basic.Exceptions;
 using System;
 using System.Text.RegularExpressions;
 

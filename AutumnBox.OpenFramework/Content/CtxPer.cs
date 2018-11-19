@@ -17,6 +17,10 @@ namespace AutumnBox.OpenFramework.Content
     public enum CtxPer
     {
         /// <summary>
+        /// 低权限，当前版本中无用 
+        /// </summary>
+        Low = -1,
+        /// <summary>
         /// 未知权限,相当于普通权限
         /// </summary>
         None = 1,

@@ -3,16 +3,8 @@
 ** date:  2018/8/17 19:19:29 (UTC +8:00)
 ** desc： ...
 *************************************************/
-using AutumnBox.Basic.Calling.Adb;
-using AutumnBox.Basic.Device;
-using AutumnBox.Basic.Device.Management.OS;
 using AutumnBox.CoreModules.Aspect;
-using AutumnBox.CoreModules.Lib;
 using AutumnBox.OpenFramework.Extension;
-using AutumnBox.OpenFramework.Open;
-using System.IO;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace AutumnBox.CoreModules.Extensions
 {
@@ -26,15 +18,21 @@ namespace AutumnBox.CoreModules.Extensions
     {
         protected override int VisualMain()
         {
-            CstmDpmCommander dpm = new CstmDpmCommander(this, TargetDevice)
+            StartExtension(typeof(EScreenShoter), (exitCode) =>
             {
-                CmdStation = this.CmdStation
-            };
-            dpm.To(OutputPrinter);
-            dpm.Extract();
-            dpm.PushToDevice();
-            dpm.ShowUsage();
-            dpm.SetDeviceOwner("com.fuck.aaa");
+                WriteLine(exitCode.ToString());
+            }, new System.Collections.Generic.Dictionary<string, object>() {
+                { KEY_CLOSE_FINISHED,true }
+            });
+            //CstmDpmCommander dpm = new CstmDpmCommander(this, TargetDevice)
+            //{
+            //    CmdStation = this.CmdStation
+            //};
+            //dpm.To(OutputPrinter);
+            //dpm.Extract();
+            //dpm.PushToDevice();
+            //dpm.ShowUsage();
+            //dpm.SetDeviceOwner("com.fuck.aaa");
             return OK;
         }
     }

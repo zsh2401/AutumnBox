@@ -3,7 +3,6 @@
 ** date:  2018/9/12 16:01:08 (UTC +8:00)
 ** desc： ...
 *************************************************/
-using AutumnBox.Basic.Calling.Fastboot;
 using AutumnBox.OpenFramework.Extension;
 
 namespace AutumnBox.CoreModules.Extensions.Fastboot

@@ -41,7 +41,7 @@ namespace AutumnBox.Basic.ManagedAdb
         /// <returns></returns>
         public bool AliveCheck()
         {
-            throw new NotImplementedException();
+            return true;
         }
         /// <summary>
         /// 开始

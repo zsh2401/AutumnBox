@@ -40,7 +40,7 @@
                             <TextBlock Text="{DynamicResource PanelHomeContact}"  HorizontalAlignment="Center" FontSize="25px" ></TextBlock>
                             <Button Style="{DynamicResource MaterialDesignFlatButton}"  FontSize="12px" Command="{Binding OpenUrl}" CommandParameter="{DynamicResource urlOfficialWebsite}" Content="{DynamicResource PanelHomeOfficialWebsite}" FontFamily="{DynamicResource AutumnBox.Font}"></Button>
                             <Button Style="{DynamicResource MaterialDesignFlatButton}"  FontSize="12px" Command="{Binding OpenUrl}" CommandParameter="{DynamicResource urlJoinQQGroup}" Content="{DynamicResource PanelHomeJoinQQGroup}" ></Button>
-                            <Button Style="{DynamicResource MaterialDesignFlatButton}"  FontSize="12px" Command="{Binding OpenUrl}" CommandParameter="{DynamicResource urlEMail}" Content="{DynamicResource PanelHomeSendMail}" ></Button>
+                            <Button ToolTip="zsh2401@163.com" Style="{DynamicResource MaterialDesignFlatButton}"  FontSize="12px" Command="{Binding OpenUrl}" CommandParameter="{DynamicResource urlEMail}" Content="{DynamicResource PanelHomeSendMail}" ></Button>
                         </StackPanel>
                     </StackPanel>
                 </materialDesign:Card>

@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Aspect\RemoveLockNoticeAttribute.cs" />
+    <Compile Include="Aspect\ThreeStepWarn.cs" />
     <Compile Include="Aspect\UserAgreeAttribute.cs" />
     <Compile Include="Attribute\DpmReceiverAttribute.cs" />
     <Compile Include="CoreLib.cs" />

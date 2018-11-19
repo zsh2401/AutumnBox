@@ -1,4 +1,5 @@
 ﻿using AutumnBox.Basic.Device;
+using AutumnBox.OpenFramework.Content;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -13,6 +14,6 @@ namespace AutumnBox.OpenFramework.Open
         /// <summary>
         /// 获取在GUI中当前选择的设备
         /// </summary>
-        IDevice CurrentSelection { get; }
+        IDevice GetCurrent(Context ctx);
     }
 }
