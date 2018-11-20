@@ -51,9 +51,10 @@
                         <Image Source="/Resources/Drawable/Home/misakasister.png" Margin="20" Width="110" Height="110"></Image>
                         <StackPanel Width="150" Margin="10">
                             <TextBlock Text="{DynamicResource PanelHomeHelp}"  HorizontalAlignment="Center" FontSize="25px" ></TextBlock>
-                            <TextBlock Text="{DynamicResource PanelHomeHelpTip}" TextWrapping="Wrap" FontSize="12px" ></TextBlock>
+                            <!--<TextBlock Text="{DynamicResource PanelHomeHelpTip}" TextWrapping="Wrap" FontSize="12px" ></TextBlock>-->
                             <Button Style="{DynamicResource MaterialDesignFlatButton}"  FontSize="12px" Command="{Binding OpenUrl}" CommandParameter="{DynamicResource urlHelpOfLinkDevice}" Content="{DynamicResource PanelHomeLinkHelp}" ></Button>
                             <Button Style="{DynamicResource MaterialDesignFlatButton}"  FontSize="12px" Command="{Binding OpenUrl}" CommandParameter="{DynamicResource urlHelp}" Content="{DynamicResource PanelHomeMoreHelp}" ></Button>
+                            <Button Style="{DynamicResource MaterialDesignFlatButton}"  FontSize="12px" Command="{Binding OpenUrl}" CommandParameter="{DynamicResource urlComments}" Content="{DynamicResource PanelHomeReport}" ></Button>
                         </StackPanel>
                     </StackPanel>
                 </materialDesign:Card>

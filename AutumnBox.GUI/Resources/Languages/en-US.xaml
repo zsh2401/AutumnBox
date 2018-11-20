@@ -22,6 +22,7 @@
     <s:String x:Key="PanelDonaters">Donater list</s:String>
     
     <s:String x:Key="PanelHomeHelp">Help</s:String>
+     <s:String x:Key="PanelHomeReport">Report</s:String>
      <s:String x:Key="PanelHomeHelpTip">Do you need some help?</s:String>
      <s:String x:Key="PanelHomeLinkHelp">Link device via usb</s:String>
      <s:String x:Key="PanelHomeMoreHelp">More</s:String>
