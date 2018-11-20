@@ -69,7 +69,6 @@ namespace AutumnBox.GUI.Util
             logger.Info("======================");
             Basic.Util.Debugging.LoggingStation.Logging += (s, e) =>
             {
-
 #if !DEBUG
                 if (e.Tag.ToLower() == "debug") return;
 #endif
@@ -77,7 +76,6 @@ namespace AutumnBox.GUI.Util
             };
             ui.Progress = 30;
             ui.LoadingTip = App.Current.Resources["ldmsgStartAdb"].ToString();
-
             try
             {
                 logger.Info("trying starts adb server ");

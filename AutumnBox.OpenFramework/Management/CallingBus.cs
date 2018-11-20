@@ -13,6 +13,7 @@ namespace AutumnBox.OpenFramework.Management
     {
         [ContextPermission(CtxPer.High)]
         private class CallingBusContext : Context { }
+        private static readonly CallingBusContext ctx = new CallingBusContext();
         [Obsolete("Please use service manager to get SBaseApiContainer then you can get it")]
         public static IBaseApi BaseApi
         {
@@ -20,7 +21,7 @@ namespace AutumnBox.OpenFramework.Management
             {
                 if (apiContainer == null)
                 {
-                    var service = Manager.ServicesManager.GetServiceByName(null, SBaseApiContainer.NAME);
+                    var service = Manager.ServicesManager.GetServiceByName(ctx, SBaseApiContainer.NAME);
                     apiContainer = (SBaseApiContainer)service;
                 }
                 return apiContainer.GetApi(new CallingBusContext());

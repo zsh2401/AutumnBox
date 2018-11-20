@@ -18,7 +18,7 @@ namespace AutumnBox.OpenFramework.Content
     /// AutumnBox开放框架上下文
     /// </summary>
     [ContextPermission(CtxPer.Normal)]
-    public abstract class Context : Object
+    public abstract class Context : object
     {
         /// <summary>
         /// 权限
