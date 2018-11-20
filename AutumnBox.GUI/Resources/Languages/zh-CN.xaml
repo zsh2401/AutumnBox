@@ -24,6 +24,7 @@
     <s:String x:Key="PanelDonaters">捐赠者名单</s:String>
     
     <s:String x:Key="PanelHomeHelp">帮助</s:String>
+    <s:String x:Key="PanelHomeReport">快速反馈</s:String>
      <s:String x:Key="PanelHomeHelpTip">而有些人则需要一点小小的帮助</s:String>
      <s:String x:Key="PanelHomeLinkHelp">设备连接帮助</s:String>
      <s:String x:Key="PanelHomeMoreHelp">更多帮助</s:String>

@@ -5,6 +5,7 @@
     <s:String x:Key="urlDonateList">http://www.atmb.top/donate</s:String>
     <s:String x:Key="urlOpensource">http://www.atmb.top/go/opensource</s:String>
     <s:String x:Key="urlJoinQQGroup">http://www.atmb.top/go/join_qq_group/</s:String>
+    <s:String x:Key="urlComments">http://www.atmb.top/comments/</s:String>
     <s:String x:Key="urlDownloadExtensions">http://www.atmb.top/go/download/extension</s:String>
 
     <s:String x:Key="urlApiMotd">http://www.atmb.top/_api_/motd</s:String>
