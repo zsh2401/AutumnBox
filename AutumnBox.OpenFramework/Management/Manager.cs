@@ -16,6 +16,9 @@ namespace AutumnBox.OpenFramework.Management
     /// </summary>
     public static class Manager
     {
+        [ContextPermission(CtxPer.High)]
+        private class ManagerContext : Context { }
+        private readonly static ManagerContext ctx = new ManagerContext();
         /// <summary>
         /// 内部管理器
         /// </summary>
@@ -28,7 +31,7 @@ namespace AutumnBox.OpenFramework.Management
         {
             get
             {
-                return (IInternalManager)ServicesManager.GetServiceByName(ServicesManager as Context, InternalManagerImpl.SERVICE_NAME);
+                return (IInternalManager)ServicesManager.GetServiceByName(ctx, InternalManagerImpl.SERVICE_NAME);
             }
         }
         private static void PermissionCheck(Assembly assembly)
