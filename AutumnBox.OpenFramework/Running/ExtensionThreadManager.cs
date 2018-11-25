@@ -60,8 +60,17 @@ namespace AutumnBox.OpenFramework.Running
 
             public Thread Thread { get; set; }
 
-            public int ExitCode { get; private set; } = (int)ExtensionExitCodes.Killed;
+            public int ExitCode
+            {
+                get
+                {
+                    return shutDownExitCode ?? _exitCode;
+                }
+                private set { _exitCode = value; }
+            }
+            private int _exitCode = (int)ExtensionExitCodes.Killed;
 
+            private int? shutDownExitCode = null;
             public int Id { get; internal set; }
 
             public bool IsRunning => Thread?.IsAlive == true;
@@ -133,7 +142,7 @@ namespace AutumnBox.OpenFramework.Running
 
             public void Shutdown(int exitCode)
             {
-                ExitCode = exitCode;
+                shutDownExitCode = exitCode;
                 Kill();
             }
 

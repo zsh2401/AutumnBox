@@ -9,7 +9,7 @@ namespace AutumnBox.CoreModules.Extensions
         public override int Main(Dictionary<string, object> args)
         {
             Ux.Message("Wow");
-            Args.CurrentThread.Kill();
+            Args.CurrentThread.Shutdown(5);
             Ux.Message("WTF");
             return 0;
         }
