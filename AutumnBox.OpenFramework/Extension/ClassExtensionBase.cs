@@ -80,10 +80,10 @@ namespace AutumnBox.OpenFramework.Extension
         {
             switch (signalName)
             {
-                case Signals.DESTORY_COMMNAD:
+                case Signals.COMMAND_DESTORY:
                     OnDestory(value);
                     break;
-                case Signals.STOP_COMMAND:
+                case Signals.COMMAND_STOP:
                     if (!OnStopCommand(value))
                     {
                         throw new ExtensionCantBeStoppedException("Cant stop!",null);

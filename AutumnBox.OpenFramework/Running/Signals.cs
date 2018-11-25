@@ -12,11 +12,11 @@ namespace AutumnBox.OpenFramework.Running
         /// <summary>
         /// 当模块进程被请求杀死时发生
         /// </summary>
-        public const string STOP_COMMAND = "COMMAND_STOP";
+        public const string COMMAND_STOP = "COMMAND_STOP";
         /// <summary>
         /// 摧毁参数
         /// </summary>
-        public const string DESTORY_COMMNAD = "COMMAND_DESTORY";
+        public const string COMMAND_DESTORY = "COMMAND_DESTORY";
         /// <summary>
         /// 已创建
         /// </summary>

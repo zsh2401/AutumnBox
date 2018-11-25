@@ -25,7 +25,7 @@ namespace AutumnBox.CoreModules.Extensions
             }, new System.Collections.Generic.Dictionary<string, object>() {
                 { KEY_CLOSE_FINISHED,true }
             });
-            //WriteLine("Step1");
+            WriteLine("Step1");
             //Thread.Sleep(3000);
             //WriteLine("Step2");
             //CstmDpmCommander dpm = new CstmDpmCommander(this, TargetDevice)
