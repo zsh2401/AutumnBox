@@ -20,6 +20,6 @@ namespace AutumnBox.OpenFramework.Extension
         /// </summary>
         /// <param name="args"></param>
         /// <returns></returns>
-        int Main(Dictionary<string, object> args);
+        int Main(Dictionary<string, object> data);
     }
 }

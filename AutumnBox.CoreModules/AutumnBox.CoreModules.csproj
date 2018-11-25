@@ -53,6 +53,7 @@
     <Compile Include="Aspect\UserAgreeAttribute.cs" />
     <Compile Include="Attribute\DpmReceiverAttribute.cs" />
     <Compile Include="CoreLib.cs" />
+    <Compile Include="Extensions\ENormalExtension.cs" />
     <Compile Include="Extensions\Fastboot\EFlashBoot.cs" />
     <Compile Include="Extensions\Fastboot\EFlashRecovery.cs" />
     <Compile Include="Extensions\Fastboot\EOemLock.cs" />
