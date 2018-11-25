@@ -44,4 +44,4 @@ HistoryRelease/
 DemoPic/
 packages/
 ##do_not
-!AutumnBox.Basic/ManagedAdb/win32adb/*.*
+!AutumnBox.GUI/Resources/AdbExecutable/*.*

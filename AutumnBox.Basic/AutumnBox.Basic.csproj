@@ -26,32 +26,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="ManagedAdb\win32adb\adb.exe" />
-    <None Remove="ManagedAdb\win32adb\AdbWinApi.dll" />
-    <None Remove="ManagedAdb\win32adb\AdbWinUsbApi.dll" />
-    <None Remove="ManagedAdb\win32adb\fastboot.exe" />
-    <None Remove="ManagedAdb\win32adb\libwinpthread-1.dll" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="ManagedAdb\win32adb\adb.exe">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="ManagedAdb\win32adb\AdbWinApi.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="ManagedAdb\win32adb\AdbWinUsbApi.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="ManagedAdb\win32adb\fastboot.exe">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="ManagedAdb\win32adb\libwinpthread-1.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-
-  <ItemGroup>
     <Reference Include="System.Management">
       <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Management.dll</HintPath>
     </Reference>

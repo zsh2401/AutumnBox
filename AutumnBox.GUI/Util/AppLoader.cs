@@ -12,6 +12,7 @@ using AutumnBox.GUI.Util.OpenFxManagement;
 using AutumnBox.GUI.View.Windows;
 using AutumnBox.OpenFramework;
 using System;
+using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -79,7 +80,10 @@ namespace AutumnBox.GUI.Util
             try
             {
                 logger.Info("trying starts adb server ");
-                Adb.DefaultLoad();
+                DirectoryInfo adbRootDir = new DirectoryInfo("Resources/AdbExecutable/");
+                FileInfo adbExe = new FileInfo("Resources/AdbExecutable/adb.exe");
+                FileInfo fastbootExe = new FileInfo("Resources/AdbExecutable/fastboot.exe");
+                Adb.Load(adbRootDir,adbExe,fastbootExe,new LocalAdbServer(),true);
                 logger.Info("adb server starts successed");
             }
             catch (AdbCommandFailedException e)
