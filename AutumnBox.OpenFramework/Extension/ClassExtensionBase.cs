@@ -113,6 +113,6 @@ namespace AutumnBox.OpenFramework.Extension
         /// </summary>
         /// <param name="args"></param>
         /// <returns></returns>
-        public abstract int Main(Dictionary<string, object> args);
+        public abstract int Main(Dictionary<string, object> data);
     }
 }

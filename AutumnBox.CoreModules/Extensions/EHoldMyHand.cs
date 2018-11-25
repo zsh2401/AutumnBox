@@ -19,15 +19,15 @@ namespace AutumnBox.CoreModules.Extensions
     {
         protected override int VisualMain()
         {
-            //StartExtension(typeof(EScreenShoter), (exitCode) =>
-            //{
-            //    WriteLine(exitCode.ToString());
-            //}, new System.Collections.Generic.Dictionary<string, object>() {
-            //    { KEY_CLOSE_FINISHED,true }
-            //});
-            WriteLine("Step1");
-            Thread.Sleep(3000);
-            WriteLine("Step2");
+            StartExtension(typeof(ENormalExtension), (exitCode) =>
+            {
+                WriteLine(exitCode.ToString());
+            }, new System.Collections.Generic.Dictionary<string, object>() {
+                { KEY_CLOSE_FINISHED,true }
+            });
+            //WriteLine("Step1");
+            //Thread.Sleep(3000);
+            //WriteLine("Step2");
             //CstmDpmCommander dpm = new CstmDpmCommander(this, TargetDevice)
             //{
             //    CmdStation = this.CmdStation
