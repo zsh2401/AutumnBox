@@ -95,7 +95,7 @@ namespace AutumnBox.OpenFramework.Running
             {
                 try
                 {
-                    SendSignal(Signals.STOP_COMMAND);
+                    SendSignal(Signals.COMMAND_STOP);
                 }
                 catch
                 {
