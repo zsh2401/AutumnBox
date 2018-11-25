@@ -6,15 +6,19 @@
         xmlns:local="clr-namespace:AutumnBox.GUI.View.Windows"
         xmlns:viewmodel="clr-namespace:AutumnBox.GUI.ViewModel"
         mc:Ignorable="d"
+        x:Name="thisCtrl"
         Title="{DynamicResource LibsWindowTitle}" ResizeMode="NoResize" Height="300" Width="400">
     <Window.DataContext>
         <viewmodel:VMLibsView x:Name="mContext"/>
     </Window.DataContext>
     <Grid>
-        <ListView ItemsSource="{Binding Libs}">
+        <ListView ItemsSource="{Binding Libs}" SelectedItem="{Binding SelectedItem}">
             <ListView.ItemTemplate>
                 <ItemContainerTemplate>
                     <Grid>
+                        <Grid.InputBindings>
+                            <MouseBinding MouseAction="LeftDoubleClick" Command="{Binding DataContext.ShowInformation,ElementName=thisCtrl}"/>
+                        </Grid.InputBindings>
                         <Grid.ToolTip>
                             <Grid>
                                 <StackPanel Orientation="Horizontal">
