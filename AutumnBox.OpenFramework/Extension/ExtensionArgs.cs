@@ -3,6 +3,7 @@
 ** date:  2018/9/22 23:06:30 (UTC +8:00)
 ** desc： ...
 *************************************************/
+using AutumnBox.OpenFramework.Running;
 using AutumnBox.OpenFramework.Wrapper;
 using System;
 using System.Collections.Generic;
@@ -17,33 +18,25 @@ namespace AutumnBox.OpenFramework.Extension
         /// <summary>
         /// 目前的拓展模块进程
         /// </summary>
-        public IExtensionProcess CurrentProcess { get; set; }
+        public IExtensionThread CurrentThread { get; set; }
         /// <summary>
         /// 包装器
         /// </summary>
         public IExtensionWrapper Wrapper { get; set; }
         /// <summary>
-        /// 拓展数据，通常为null
+        /// 构造
         /// </summary>
-        public Dictionary<string,object> ExtractData { get; set; } = null;
-    }
-    /// <summary>
-    /// 当拓展模块即将被摧毁时的参数
-    /// </summary>
-    public class ExtensionDestoryArgs : EventArgs
-    {
-
-    }
-    /// <summary>
-    /// IClassExtension.OnStopCommand()的参数
-    /// </summary>
-    public class ExtensionStopArgs : EventArgs {
-
+        /// <param name="currentThread"></param>
+        /// <param name="wrapper"></param>
+        public ExtensionArgs(IExtensionThread currentThread, IExtensionWrapper wrapper) {
+            CurrentThread = currentThread ?? throw new ArgumentNullException(nameof(currentThread));
+            Wrapper = wrapper;
+        }
     }
     /// <summary>
     /// IClassExtension.OnFinished()的参数
     /// </summary>
-    public class ExtensionFinishedArgs : EventArgs
+    public class ExtensionStopCommandArgs : EventArgs
     {
         /// <summary>
         /// 返回码

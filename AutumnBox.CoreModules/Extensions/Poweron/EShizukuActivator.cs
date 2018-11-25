@@ -31,7 +31,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron
                 $"sh {SH_PATH}")
                 .To(OutputPrinter)
                 .Execute();
-            ThrowIfCanceled();
+           
             WriteExitCode(result.ExitCode);
             return result.ExitCode;
         }

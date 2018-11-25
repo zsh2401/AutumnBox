@@ -1,6 +1,7 @@
 ﻿using AutumnBox.Basic.Device;
 using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.Open;
+using AutumnBox.OpenFramework.Running;
 using System;
 using System.Collections.Generic;
 
@@ -28,7 +29,7 @@ namespace AutumnBox.OpenFramework.Wrapper
         /// 获取一个未开始的拓展模块进程(此进程非操作系统进程)
         /// </summary>
         /// <returns></returns>
-        IExtensionProcess GetProcess();
+        IExtensionThread GetThread();
         /// <summary>
         /// 当该包装类被要求摧毁时调用
         /// </summary>

@@ -6,6 +6,7 @@
 using AutumnBox.Basic.Device;
 using AutumnBox.Basic.Device.Management.OS;
 using AutumnBox.OpenFramework.Extension;
+using System.Collections.Generic;
 
 namespace AutumnBox.CoreModules.Extensions.Poweron
 {
@@ -14,7 +15,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron
     [ExtRequiredDeviceStates(Basic.Device.DeviceState.Poweron)]
     internal class EDpiModifier : AutumnBoxExtension
     {
-        protected override int Main()
+        public override int Main(Dictionary<string,object> args)
         {
             string messageOfChoice = CoreLib.Current.Languages.Get("EDpiModiferMessageOfChoice");
             string leftOfChoice = CoreLib.Current.Languages.Get("EDpiModiferLeftChoice");
@@ -42,7 +43,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron
                     return ERR;
             }
         }
-        protected override bool OnStopCommand(ExtensionStopArgs args)
+        protected override bool OnStopCommand(object args)
         {
             return false;
         }

@@ -60,7 +60,7 @@ namespace AutumnBox.CoreModules.Extensions
                          .GetAdbCommand(TargetDevice, $"install \"{file.FullName}\"")
                          .To(OutputLogger)
                          .Execute();
-                    ThrowIfCanceled();
+                   
                     if (result.ExitCode == 0)
                     {
                         successed++;

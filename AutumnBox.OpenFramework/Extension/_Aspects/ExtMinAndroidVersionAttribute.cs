@@ -6,6 +6,7 @@
 
 using AutumnBox.Basic.Device;
 using AutumnBox.Basic.Device.Management.OS;
+using AutumnBox.OpenFramework.Open;
 using System;
 
 namespace AutumnBox.OpenFramework.Extension
@@ -45,7 +46,8 @@ namespace AutumnBox.OpenFramework.Extension
         /// <param name="canContinue"></param>
         public override void BeforeCreating(BeforeCreatingAspectArgs args,ref bool canContinue)
         {
-            if (!VersionCheck(args.TargetDevice, ver))
+            IDevice selectedDevice = args.Context.GetService<IDeviceSelector>(ServicesNames.DEVICE_SELECTOR).GetCurrent(args.Context);
+            if (!VersionCheck(selectedDevice, ver))
             {
                 canContinue = false;
                 args.Context.App.RunOnUIThread(() =>

@@ -51,7 +51,6 @@ namespace AutumnBox.OpenFramework.Extension
         /// <returns></returns>
         protected ShellCommand GetDevcieShellCommand(string cmd)
         {
-            ThrowIfCanceled();
             return CmdStation.GetShellCommand(TargetDevice, cmd);
         }
         /// <summary>
@@ -61,7 +60,6 @@ namespace AutumnBox.OpenFramework.Extension
         /// <returns></returns>
         protected AdbCommand GetDeviceAdbCommand(string cmd)
         {
-            ThrowIfCanceled();
             return CmdStation.GetAdbCommand(TargetDevice, cmd);
         }
         /// <summary>
@@ -71,7 +69,7 @@ namespace AutumnBox.OpenFramework.Extension
         /// <returns></returns>
         protected AdbCommand GetNoDeviceAdbCommand(string cmd)
         {
-            ThrowIfCanceled();
+           
             return CmdStation.GetAdbCommand(cmd);
         }
         /// <summary>
@@ -81,7 +79,7 @@ namespace AutumnBox.OpenFramework.Extension
         /// <returns></returns>
         protected FastbootCommand GetDeviceFastbootCommand(string cmd)
         {
-            ThrowIfCanceled();
+           
             return CmdStation.GetFastbootCommand(TargetDevice, cmd);
         }
         /// <summary>
@@ -91,7 +89,7 @@ namespace AutumnBox.OpenFramework.Extension
         /// <returns></returns>
         protected FastbootCommand GetNoDeviceFastbootCommand(string cmd)
         {
-            ThrowIfCanceled();
+           
             return CmdStation.GetFastbootCommand(cmd);
         }
         /// <summary>
@@ -101,7 +99,7 @@ namespace AutumnBox.OpenFramework.Extension
         /// <returns></returns>
         protected WindowsCmdCommand GetWindowsCmdCommnad(string cmd)
         {
-            ThrowIfCanceled();
+           
             return CmdStation.GetCmdCommand(cmd);
         }
         #endregion

@@ -6,6 +6,7 @@
 using AutumnBox.OpenFramework.Content;
 using AutumnBox.OpenFramework.Management.Impl;
 using AutumnBox.OpenFramework.Open.ServiceImpl;
+using AutumnBox.OpenFramework.Running;
 using AutumnBox.OpenFramework.Service;
 using AutumnBox.OpenFramework.Service.Default;
 
@@ -45,6 +46,7 @@ namespace AutumnBox.OpenFramework.Management
             serviceManager.StartService<SSoundManager>();
             serviceManager.StartService<ResourcesManagerImpl>();
             serviceManager.StartService<SDeviceSelector>();
+            serviceManager.StartService<ExtensionThreadManager>();
         }
         /// <summary>
         /// 加载拓展模块

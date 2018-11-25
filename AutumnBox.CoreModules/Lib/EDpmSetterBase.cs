@@ -41,26 +41,25 @@ namespace AutumnBox.CoreModules.Lib
 
             WriteLineAndSetTip(Res("EGodPowerExtractingApk"));
             dpmCommander.Extract();
-            ThrowIfCanceled();
             Progress = 40;
 
             WriteLineAndSetTip(Res("EGodPowerPushingApk"));
             dpmCommander.PushToDevice();
-            ThrowIfCanceled();
+           
             Progress = 50;
 
             WriteLineAndSetTip(Res("EGodPowerRmUser"));
             dpmCommander.RemoveUsers();
-            ThrowIfCanceled();
+           
             Progress = 60;
 
             WriteLineAndSetTip(Res("EGodPowerRmAcc"));
             dpmCommander.RemoveAccounts();
-            ThrowIfCanceled();
+           
             Progress = 70;
 
             WriteLineAndSetTip(Res("DPMSetting"));
-            ThrowIfCanceled();
+           
             Progress = 80;
             try
             {
@@ -77,7 +76,7 @@ namespace AutumnBox.CoreModules.Lib
                 Progress = 100;
             }
         }
-        protected override void OnFinish(ExtensionFinishedArgs args)
+        protected override void OnFinish(FinishedArgs args)
         {
             base.OnFinish(args);
             try

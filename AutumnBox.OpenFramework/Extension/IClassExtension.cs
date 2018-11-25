@@ -5,45 +5,14 @@
 *************************************************/
 using AutumnBox.OpenFramework.Content;
 using System;
+using System.Collections.Generic;
 
 namespace AutumnBox.OpenFramework.Extension
 {
     /// <summary>
-    /// 标准的基于编译类的拓展
+    /// 标准的基于编译类的拓展，实现此接口的类，将会在程序集被加载时扫描并且记录
     /// </summary>
-    public interface IClassExtension
+    public interface IClassExtension : IExtension
     {
-        /// <summary>
-        /// 初始化
-        /// </summary>
-        /// <param name="methodCaller"></param>
-        /// <param name="args"></param>
-        void Init(Context methodCaller, ExtensionArgs args);
-        /// <summary>
-        /// 运行
-        /// </summary>
-        /// <param name="methodCaller"></param>
-        /// <returns></returns>
-        int Run(Context methodCaller);
-        /// <summary>
-        /// 尝试停止
-        /// </summary>
-        /// <exception cref="Exception">当无法停止时,将可能抛出异常</exception>
-        /// <param name="methodCaller"></param>
-        /// <param name="args"></param>
-        /// <returns></returns>
-        bool TryStop(Context methodCaller, ExtensionStopArgs args);
-        /// <summary>
-        /// 无论是否成功,都会呼唤此方法
-        /// </summary>
-        /// <param name="methodCaller"></param>
-        /// <param name="args"></param>
-        void Finish(Context methodCaller, ExtensionFinishedArgs args);
-        /// <summary>
-        /// 摧毁
-        /// </summary>
-        /// <param name="methodCaller"></param>
-        /// <param name="args"></param>
-        void Destory(Context methodCaller, ExtensionDestoryArgs args);
     }
 }

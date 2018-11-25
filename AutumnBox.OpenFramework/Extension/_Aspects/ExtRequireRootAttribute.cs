@@ -4,6 +4,7 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.Basic.Device;
+using AutumnBox.OpenFramework.Open;
 
 namespace AutumnBox.OpenFramework.Extension
 {
@@ -44,11 +45,12 @@ namespace AutumnBox.OpenFramework.Extension
         /// <param name="canContinue"></param>
         public override void BeforeCreating(BeforeCreatingAspectArgs args, ref bool canContinue)
         {
-            if (!reqRoot || args.TargetDevice == null)
+            IDevice selectedDevice = args.Context.GetService<IDeviceSelector>(ServicesNames.DEVICE_SELECTOR).GetCurrent(args.Context);
+            if (!reqRoot || selectedDevice == null)
             {
                 return;
             }
-            if (!DeviceHaveRoot(args.TargetDevice))
+            if (!DeviceHaveRoot(selectedDevice))
             {
                 args.Context.App.RunOnUIThread(() =>
                 {

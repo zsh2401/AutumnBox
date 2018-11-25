@@ -25,7 +25,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron
                  $"root")
                  .To(OutputPrinter)
                  .Execute();
-            ThrowIfCanceled();
+           
             if (enableRootResult.ExitCode != 0)
             {
                 return enableRootResult.ExitCode;
@@ -38,7 +38,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron
                 .To(OutputPrinter)
                 .Execute();
 
-            ThrowIfCanceled();
+           
             return result.ExitCode;
         }
     }

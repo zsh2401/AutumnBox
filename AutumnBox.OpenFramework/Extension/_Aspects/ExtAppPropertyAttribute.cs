@@ -5,6 +5,7 @@
 *************************************************/
 using AutumnBox.Basic.Device;
 using AutumnBox.Basic.Device.Management.AppFx;
+using AutumnBox.OpenFramework.Open;
 
 namespace AutumnBox.OpenFramework.Extension
 {
@@ -30,7 +31,8 @@ namespace AutumnBox.OpenFramework.Extension
         /// <param name="canContinue"></param>
         public override void BeforeCreating(BeforeCreatingAspectArgs args, ref bool canContinue)
         {
-            if (!InstallApplication(args.TargetDevice, value))
+            IDevice selectDevice = args.Context.GetService<IDeviceSelector>(ServicesNames.DEVICE_SELECTOR).GetCurrent(args.Context);
+            if (!InstallApplication(selectDevice, value))
             {
                 bool ok = false;
                 args.Context.App.RunOnUIThread(() =>

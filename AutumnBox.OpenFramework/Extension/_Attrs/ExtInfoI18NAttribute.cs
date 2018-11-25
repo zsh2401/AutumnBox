@@ -92,9 +92,9 @@ namespace AutumnBox.OpenFramework.Extension
         private string GetByCurrentLanCode()
         {
             string crtLanCode = null;
-            CallingBus.BaseApi.RunOnUIThread(() =>
+            Context.BaseApi.RunOnUIThread(() =>
             {
-                crtLanCode = CallingBus.BaseApi.GetCurrentLanguageCode().ToLower();
+                crtLanCode = Context.BaseApi.GetCurrentLanguageCode().ToLower();
             });
 
             if (pairsOfRegionAndValue.TryGetValue(crtLanCode, out string value))
