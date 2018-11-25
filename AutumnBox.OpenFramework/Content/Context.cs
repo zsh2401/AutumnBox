@@ -7,6 +7,7 @@ using AutumnBox.OpenFramework.Management;
 using AutumnBox.OpenFramework.Open;
 using AutumnBox.OpenFramework.Open.Impl;
 using AutumnBox.OpenFramework.Service;
+using AutumnBox.OpenFramework.Service.Default;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -92,6 +93,41 @@ namespace AutumnBox.OpenFramework.Content
         public IEmbeddedFileManager EmbFileManager => _lazyEmb.Value;
         private Lazy<IEmbeddedFileManager> _lazyEmb;
 
+        [ContextPermission(CtxPer.High)]
+        private class UniversalHighPermissionContext : Context
+        {
+            public UniversalHighPermissionContext(Context sourceContext)
+            {
+                SourceContext = sourceContext;
+            }
+            public Context SourceContext { get; }
+        }
+        internal Context HContext
+        {
+            get
+            {
+                if (hContext == null)
+                {
+                    hContext = new UniversalHighPermissionContext(this);
+                }
+                return hContext;
+            }
+        }
+        private UniversalHighPermissionContext hContext;
+        
+        internal IBaseApi BaseApi
+        {
+            get
+            {
+                var ctx = new UniversalHighPermissionContext(HContext);
+                string servName = SBaseApiContainer.NAME;
+                return GetService<SBaseApiContainer>(servName).GetApi(ctx);
+            }
+        }
+
+        /// <summary>
+        /// 服务管理器
+        /// </summary>
         public IServicesManager ServicesManager
         {
             get
@@ -100,6 +136,8 @@ namespace AutumnBox.OpenFramework.Content
             }
         }
 
+        static Context() {
+        }
         /// <summary>
         /// 构建
         /// </summary>
@@ -122,17 +160,12 @@ namespace AutumnBox.OpenFramework.Content
             {
                 throw new Exception("Extension not found");
             }
-            var proc = wrappers.First().GetProcess();
-            if (extractData != null)
+            var thread = wrappers.First().GetThread();
+            thread.Finished += (s, e) =>
             {
-                proc.ExtractData = extractData;
-            }
-            proc.Start();
-            Task.Run(() =>
-            {
-                proc.WaitForExit();
-                callback?.Invoke(proc.ExitCode);
-            });
+                callback?.Invoke(e.Thread.ExitCode);
+            };
+            thread.Start(extractData);
         }
         /// <summary>
         /// 获取全局服务
@@ -168,11 +201,11 @@ namespace AutumnBox.OpenFramework.Content
         {
             _lazyApp = new Lazy<IAppManager>(() =>
             {
-                return new AppManagerImpl(this, CallingBus.BaseApi);
+                return new AppManagerImpl(this, BaseApi);
             });
             _lazyUX = new Lazy<IUx>(() =>
             {
-                return new UxImpl(this, CallingBus.BaseApi);
+                return new UxImpl(this, BaseApi);
             });
             _lazyLogger = new Lazy<ILogger>(() =>
             {

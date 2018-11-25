@@ -21,13 +21,8 @@ namespace AutumnBox.Basic.Util
         /// <param name="device"></param>
         /// <param name="commandStation"></param>
         public DeviceCommanderFactory(IDevice device,CommandStation commandStation) {
-            if (commandStation == null)
-            {
-                throw new ArgumentNullException(nameof(commandStation));
-            }
-
             this.device = device ?? throw new ArgumentNullException(nameof(device));
-            this.commandStation = commandStation;
+            this.commandStation = commandStation ?? throw new ArgumentNullException(nameof(commandStation));
         }
         /// <summary>
         /// 获取一个设备命令器对象

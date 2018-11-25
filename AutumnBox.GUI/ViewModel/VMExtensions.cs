@@ -120,7 +120,7 @@ namespace AutumnBox.GUI.ViewModel
             ComObserver();
             RunSelectedItem = new FlexiableCommand(() =>
             {
-                SelectedDock?.Wrapper?.GetProcess().Start();
+                SelectedDock?.Wrapper?.GetThread().Start();
             });
         }
         private void ComObserver()

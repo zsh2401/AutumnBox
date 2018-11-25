@@ -7,6 +7,9 @@ using AutumnBox.OpenFramework.Management;
 using System;
 using AutumnBox.OpenFramework.Open;
 using System.Threading.Tasks;
+using System.Collections.Generic;
+using System.Threading;
+using AutumnBox.OpenFramework.Running;
 
 namespace AutumnBox.OpenFramework.Extension
 {
@@ -16,6 +19,20 @@ namespace AutumnBox.OpenFramework.Extension
     public abstract class AtmbVisualExtension : AutumnBoxExtension
     {
         /// <summary>
+        /// 完成参数
+        /// </summary>
+        public class FinishedArgs : EventArgs
+        {
+            /// <summary>
+            /// 返回码
+            /// </summary>
+            public int ExitCode { get; set; }
+            /// <summary>
+            /// 参数
+            /// </summary>
+            public Dictionary<string, object> Data { get; set; }
+        }
+        /// <summary>
         ///拓展数据的key：完成时是否直接关闭窗体
         /// </summary>
         public const string KEY_CLOSE_FINISHED = "close_on_finished";
@@ -24,12 +41,9 @@ namespace AutumnBox.OpenFramework.Extension
         /// </summary>
         protected void CloseUI()
         {
-            if (isRunning)
-            {
-                throw new InvalidOperationException("Extension si running!");
-            }
             UIController.Close();
         }
+
         /// <summary>
         /// 创建
         /// </summary>
@@ -39,19 +53,23 @@ namespace AutumnBox.OpenFramework.Extension
             base.OnCreate(args);
             App.RunOnUIThread(() =>
             {
-                UIController = CallingBus.BaseApi.GetUIController();
+                UIController = BaseApi.GetUIController();
                 UIController.OnStart(args.Wrapper.Info);
                 UIController.Closing += OnUIControllerClosing;
             });
             Tip = App.GetPublicResouce<string>("RunningWindowStateRunning");
         }
         /// <summary>
+        /// 主方法数据
+        /// </summary>
+        protected Dictionary<string, object> Data { get; private set; }
+        /// <summary>
         /// 主函数
         /// </summary>
         /// <returns></returns>
-        protected sealed override int Main()
+        public sealed override int Main(Dictionary<string, object> data)
         {
-            isRunning = true;
+            Data = data;
             int retCode = ERR;
             try
             {
@@ -59,23 +77,32 @@ namespace AutumnBox.OpenFramework.Extension
                 retCode = VisualMain();
                 Logger.CDebug("Executed VisualMain()");
             }
+            catch (ThreadAbortException)
+            {
+                retCode = (int)ExtensionExitCodes.Killed;
+            }
             catch (Exception ex)
             {
-                retCode = ERR;
+                retCode = (int)ExtensionExitCodes.ErrorUnknown; ;
                 Logger.Warn("Fatal exception on VisualMain()", ex);
                 WriteLine(App.GetPublicResouce<string>("RunningWindowExceptionOnRunning"));
             }
-            isRunning = false;
+            Logger.Info("Finished");
+            OnFinish(new FinishedArgs()
+            {
+                ExitCode = retCode,
+                Data = data
+            });
             return retCode;
         }
+
         /// <summary>
         /// 完成
         /// </summary>
+        /// <param name="exitCode"></param>
         /// <param name="args"></param>
-        protected override void OnFinish(ExtensionFinishedArgs args)
+        protected virtual void OnFinish(FinishedArgs args)
         {
-            base.OnFinish(args);
-            isRunning = false;
             UIController.OnFinish();
             if (args.ExitCode == 0)
             {
@@ -85,7 +112,7 @@ namespace AutumnBox.OpenFramework.Extension
             Tip = GetTipByExitCode(args.ExitCode);
             try
             {
-                if ((bool)Args.ExtractData[KEY_CLOSE_FINISHED] == true)
+                if ((bool)args.Data[KEY_CLOSE_FINISHED] == true)
                 {
                     App.RunOnUIThread(() =>
                     {
@@ -98,6 +125,7 @@ namespace AutumnBox.OpenFramework.Extension
                 Logger.Warn("", e);
             }
         }
+
         /// <summary>
         /// 结束执行后，根据返回码获取Tip
         /// </summary>
@@ -115,11 +143,12 @@ namespace AutumnBox.OpenFramework.Extension
                     return App.GetPublicResouce<string>("RunningWindowStateError");
             }
         }
+
         /// <summary>
         /// 当停止时调用
         /// </summary>
         /// <returns></returns>
-        protected sealed override bool OnStopCommand(ExtensionStopArgs args)
+        protected sealed override bool OnStopCommand(object args)
         {
             Logger.CDebug("StopCommand()");
             bool canStop = false;
@@ -145,26 +174,30 @@ namespace AutumnBox.OpenFramework.Extension
             return canStop;
         }
 
-        ///// <summary>
-        ///// 完成后的Tip,不设置则默认根据返回码判断是否成功
-        ///// </summary>
-        //protected string FinishedTip { get; set; } = null;
-        bool isRunning = true;
         internal void OnUIControllerClosing(object sender, UIControllerClosingEventArgs args)
         {
-            args.Cancel = isRunning;
-            if (isRunning)
+            if (Args.CurrentThread.IsRunning)
             {
                 try
                 {
-                    Task.Run(() =>
+                    Args.CurrentThread.Kill();
+                    OnFinish(new FinishedArgs()
                     {
-                        Args.CurrentProcess.Kill();
+                        ExitCode = (int)ExtensionExitCodes.Killed,
+                        Data = Data,
                     });
                 }
                 catch (Exceptions.ExtensionCantBeStoppedException)
                 {
                 }
+                finally
+                {
+                    args.Cancel = true;
+                }
+            }
+            else
+            {
+                args.Cancel = false;
             }
         }
 
@@ -173,6 +206,7 @@ namespace AutumnBox.OpenFramework.Extension
         /// </summary>
         /// <returns></returns>
         protected abstract int VisualMain();
+
         /// <summary>
         /// 可视化停止
         /// </summary>
@@ -183,6 +217,7 @@ namespace AutumnBox.OpenFramework.Extension
         }
 
         private IExtensionUIController UIController { get; set; }
+
         /// <summary>
         /// 写一行数据
         /// </summary>
@@ -195,6 +230,7 @@ namespace AutumnBox.OpenFramework.Extension
             });
             Logger.Info(message);
         }
+
         /// <summary>
         /// 进度
         /// </summary>
@@ -208,6 +244,7 @@ namespace AutumnBox.OpenFramework.Extension
                 });
             }
         }
+
         /// <summary>
         /// 设置简要信息
         /// </summary>

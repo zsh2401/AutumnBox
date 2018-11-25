@@ -17,15 +17,20 @@ namespace AutumnBox.OpenFramework.Extension
         /// <summary>
         /// 上下文
         /// </summary>
-        public Context Context { get; set; }
+        public Context Context { get;  }
         /// <summary>
         /// 拓展模块的Type
         /// </summary>
-        public Type ExtensionType { get; set; }
+        public Type ExtensionType { get;  }
         /// <summary>
-        /// 目标设备
+        /// 构建
         /// </summary>
-        public IDevice TargetDevice { get; set; }
+        /// <param name="context"></param>
+        /// <param name="extensionType"></param>
+        public BeforeCreatingAspectArgs(Context context, Type extensionType) {
+            Context = context ?? throw new ArgumentNullException(nameof(context));
+            ExtensionType = extensionType ?? throw new ArgumentNullException(nameof(extensionType));
+        }
     }
     /// <summary>
     /// 创建前切面的基础实现

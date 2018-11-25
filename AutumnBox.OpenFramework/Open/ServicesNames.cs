@@ -15,6 +15,10 @@ namespace AutumnBox.OpenFramework.Open
     public static class ServicesNames
     {
         /// <summary>
+        /// 线程管理器
+        /// </summary>
+        public const string THREAD_MANAGER = "___thread_manager";
+        /// <summary>
         /// 声音管理器服务名
         /// </summary>
         public const string SOUND = "sound_manager";

@@ -9,6 +9,7 @@ using AutumnBox.OpenFramework.Exceptions;
 using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.Management;
 using AutumnBox.OpenFramework.Open;
+using AutumnBox.OpenFramework.Running;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -101,74 +102,6 @@ namespace AutumnBox.OpenFramework.Wrapper
             Info.Reload();
             warppedType.Add(t);
         }
-
-        ///// <summary>
-        ///// 运行
-        ///// </summary>
-        ///// <param name="device"></param>
-        //public virtual void Run(IDevice device)
-        //{
-        //    try { MainFlow(device); }
-        //    catch (Exception ex)
-        //    {
-        //        Logger.Warn("OpenFx", ex);
-        //        DestoryInstance();
-        //    }
-        //}
-
-        ///// <summary>
-        ///// 异步运行
-        ///// </summary>
-        ///// <param name="device"></param>
-        ///// <param name="callback"></param>
-        //public void RunAsync(IDevice device, Action<IExtensionWrapper> callback = null)
-        //{
-        //    Task.Run(() =>
-        //    {
-        //        Run(device);
-        //        callback?.Invoke(this);
-        //    });
-        //}
-
-        //protected virtual void MainFlow(IDevice device)
-        //{
-        //    IExtensionProcess executor = GetExecutor(device);
-        //    executor.Start();
-        //    LastReturnCode = executor.WaitForExit();
-        //    if (!PreCheck()) return;//多开检测
-        //    /*初始化局部属性*/
-        //    State = ExtensionWrapperState.Running;
-        //    IsForceStopped = false;
-        //    LastReturnCode = -1;
-        //    Logger.CDebug("inited");
-        //    //创建前检测
-        //    if (!BeforeCreateInstance(device))
-        //    {
-        //        DestoryInstance();
-        //        return;
-        //    }
-        //    //创建实例
-        //    if (!CreateInstance())
-        //    {
-        //        Ux.Warn("OpenFxCantCreateInstance");
-        //        DestoryInstance();
-        //        State = ExtensionWrapperState.Ready;
-        //        return;
-        //    }
-        //    //依赖注入
-        //    InjetctProperty(device);
-        //    //Main方法前检测
-        //    if (BeforeMain(device))
-        //    {
-        //        //执行主流程
-        //        ExecMain();
-        //        //运行结束切面
-        //        AfterMain();
-        //    }
-        //    //摧毁实例
-        //    DestoryInstance();
-        //    State = ExtensionWrapperState.Ready;
-        //}
         /// <summary>
         /// 当摧毁时被调用
         /// </summary>
@@ -176,173 +109,6 @@ namespace AutumnBox.OpenFramework.Wrapper
         {
             Logger.CDebug("Good bye");
         }
-
-        #region 标准的执行流程
-        ///// <summary>
-        ///// 多开检查
-        ///// </summary>
-        ///// <returns></returns>
-        //private bool PreCheck()
-        //{
-        //    if (State == ExtensionWrapperState.Ready)
-        //    {
-        //        return true;
-        //    }
-        //    else
-        //    {
-        //        App.RunOnUIThread(() =>
-        //        {
-        //            Ux.Warn("OpenFxUnmultiable");
-        //        });
-        //        return false;
-        //    }
-        //}
-
-        ///// <summary>
-        ///// 运行实例创建前的切面函数
-        ///// </summary>
-        ///// <param name="targetDevice"></param>
-        ///// <returns></returns>
-        //private bool BeforeCreateInstance(IDevice targetDevice)
-        //{
-        //    Logger.CDebug("BeforeCreateInstance() executing");
-        //    ExtBeforeCreateArgs args = new ExtBeforeCreateArgs()
-        //    {
-        //        TargetDevice = targetDevice,
-        //        ExtType = extType,
-        //        Prevent = false,
-        //        Context = this,
-        //    };
-        //    foreach (var aspect in BeforeCreateAspects)
-        //    {
-        //        aspect.Before(args);
-        //        if (args.Prevent) return false;
-        //    }
-        //    Logger.CDebug("BeforeCreateInstance() executed");
-        //    return true;
-        //}
-
-        ///// <summary>
-        ///// 创建实例
-        ///// </summary>
-        //private bool CreateInstance()
-        //{
-        //    try
-        //    {
-        //        Instance = (AutumnBoxExtension)Activator.CreateInstance(extType);
-        //        return true;
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        Logger.Warn("can't create extension instance", e);
-        //        return false;
-        //    }
-        //}
-
-        ///// <summary>
-        ///// 注入属性
-        ///// </summary>
-        ///// <param name="device"></param>
-        //private void InjetctProperty(IDevice device)
-        //{
-        //    Instance.TargetDevice = device;
-        //    Instance.ExtName = Info.Name;
-        //}
-
-        ///// <summary>
-        ///// 运行Main的运行前切面函数
-        ///// </summary>
-        ///// <param name="targetDevice"></param>
-        ///// <returns></returns>
-        //private bool BeforeMain(IDevice targetDevice)
-        //{
-        //    Logger.CDebug("BeforeMain() executing");
-        //    BeforeArgs args = new BeforeArgs(Instance)
-        //    {
-        //        ExtWrapper = this,
-        //        TargetDevice = targetDevice,
-        //        Prevent = false,
-        //    };
-        //    foreach (var aspect in MainAsceptAttributes)
-        //    {
-        //        aspect.Before(args);
-        //        if (args.Prevent) return false;
-        //    }
-        //    Logger.CDebug("BeforeMain() executed");
-        //    return true;
-        //}
-
-        ///// <summary>
-        ///// 主流程
-        ///// </summary>
-        //private void ExecMain()
-        //{
-        //    Logger.CDebug("MainFlow()");
-        //    Manager.RunningManager.Add(this);
-        //    try
-        //    {
-        //        LastReturnCode = Instance.Main();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Logger.Warn($"[Extension] {Info.Name} was threw a exception", ex);
-        //        LastReturnCode = AutumnBoxExtension.ERR;
-        //        App.RunOnUIThread(() =>
-        //        {
-        //            string stoppedMsg = $"{Info.Name} {App.GetPublicResouce<String>("OpenFxExtensionFailed")}";
-        //            Ux.Error(stoppedMsg);
-        //        });
-        //    }
-        //    Manager.RunningManager.Remove(this);
-        //    Logger.CDebug("MainFlow() executed");
-        //}
-
-        ///// <summary>
-        ///// 停止
-        ///// </summary>
-        ///// <returns></returns>
-        //public virtual bool Stop()
-        //{
-        //    try
-        //    {
-        //        IsForceStopped = Instance.OnStopCommand();
-        //    }
-        //    catch
-        //    {
-        //        IsForceStopped = false;
-        //    }
-        //    return IsForceStopped;
-        //}
-
-        ///// <summary>
-        ///// 运行Main的运行后切面函数
-        ///// </summary>
-        //private void AfterMain()
-        //{
-        //    Logger.CDebug("AfterMain() executing");
-        //    AfterArgs args = new AfterArgs(Instance)
-        //    {
-        //        ExtWrapper = this,
-        //        ReturnCode = LastReturnCode,
-        //        IsForceStopped = IsForceStopped
-        //    };
-        //    foreach (var aspect in MainAsceptAttributes)
-        //    {
-        //        aspect.After(args);
-        //    }
-        //    Logger.CDebug("AfterMain() executed");
-        //}
-
-        ///// <summary>
-        ///// 摧毁相关实例
-        ///// </summary>
-        //private void DestoryInstance()
-        //{
-        //    Logger.CDebug("destoring instantces");
-        //    Instance = null;
-        //    State = ExtensionWrapperState.Ready;
-        //}
-        #endregion
 
         #region Equals
         /// <summary>
@@ -388,16 +154,20 @@ namespace AutumnBox.OpenFramework.Wrapper
         {
             Logger.Info("ready");
         }
+
+        private IExtensionThreadManager GetThreadManager()
+        {
+            var manager = GetService<IExtensionThreadManager>(ServicesNames.THREAD_MANAGER);
+            return manager;
+        }
         /// <summary>
         /// 获取拓展进程
         /// </summary>
         /// <returns></returns>
-        public virtual IExtensionProcess GetProcess()
+        public virtual IExtensionThread GetThread()
         {
-            return new ClassExtensionProcess(this, extType)
-            {
-                BeforeCreatingAspects = this.BeforeCreateAspects
-            };
+            var mgr = GetThreadManager();
+            return mgr.Allocate(this,extType);
         }
         #endregion
     }

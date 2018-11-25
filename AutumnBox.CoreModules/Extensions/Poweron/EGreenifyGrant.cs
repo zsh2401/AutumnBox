@@ -28,21 +28,21 @@ namespace AutumnBox.CoreModules.Extensions.Poweron
                 .To(OutputPrinter)
                 .Execute();
             WriteExitCode(result.ExitCode);
-            ThrowIfCanceled();
+           
 
             result = CmdStation.GetShellCommand(TargetDevice,
                 $"pm grant {PKG_NAME} android.permission.DUMP")
                 .To(OutputPrinter)
                 .Execute();
             WriteExitCode(result.ExitCode);
-            ThrowIfCanceled();
+           
 
             result = CmdStation.GetShellCommand(TargetDevice,
                 $"pm grant {PKG_NAME} android.permission.READ_LOGS")
                 .To(OutputPrinter)
                 .Execute();
             WriteExitCode(result.ExitCode);
-            ThrowIfCanceled();
+           
 
             if (androidVersion.Major >= 8)
             {
@@ -51,7 +51,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron
                .To(OutputPrinter)
                .Execute();
                 WriteExitCode(result.ExitCode);
-                ThrowIfCanceled();
+               
             }
 
             result = CmdStation.GetShellCommand(TargetDevice,
@@ -59,7 +59,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron
                 .To(OutputPrinter)
                 .Execute();
             WriteExitCode(result.ExitCode);
-            ThrowIfCanceled();
+           
             return 0;
         }
     }

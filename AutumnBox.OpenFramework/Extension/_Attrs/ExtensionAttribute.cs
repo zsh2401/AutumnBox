@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutumnBox.OpenFramework.Content;
+using System;
 
 namespace AutumnBox.OpenFramework.Extension
 {
@@ -8,5 +9,26 @@ namespace AutumnBox.OpenFramework.Extension
     [AttributeUsage(AttributeTargets.Class)]
     public abstract class ExtensionAttribute : Attribute
     {
+        /// <summary>
+        /// 提供的Context
+        /// </summary>
+        protected AttributeContext Context
+        {
+            get
+            {
+                return _lazyCtx.Value;
+            }
+        }
+        private Lazy<AttributeContext> _lazyCtx;
+        /// <summary>
+        /// 构造与初始化
+        /// </summary>
+        public ExtensionAttribute()
+        {
+            _lazyCtx = new Lazy<AttributeContext>(() =>
+            {
+                return new AttributeContext(this);
+            });
+        }
     }
 }

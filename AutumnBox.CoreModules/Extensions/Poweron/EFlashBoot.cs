@@ -6,6 +6,7 @@
 using AutumnBox.Basic.Device;
 using AutumnBox.CoreModules.Aspect;
 using AutumnBox.OpenFramework.Extension;
+using System.Collections.Generic;
 
 namespace AutumnBox.CoreModules.Extensions.Poweron
 {
@@ -17,7 +18,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron
     [ExtRequiredDeviceStates(DeviceState.Poweron)]
     internal class EFlashBoot : AutumnBoxExtension
     {
-        protected override int Main()
+        public override int Main(Dictionary<string,object> args)
         {
             var warnMsg = CoreLib.Current.Languages.Get("EObsoleteAndTryImageHelper");
             Ux.Warn(warnMsg);

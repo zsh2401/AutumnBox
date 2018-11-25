@@ -29,12 +29,12 @@ namespace AutumnBox.CoreModules.Extensions.Poweron
             new ActivityManager(TargetDevice).StartActivity("me.piebridge.brevent", "ui.BreventActivity");
             var catCommand = CmdStation.GetShellCommand(TargetDevice, $"cat {SH_PATH}");
             state = stateCheck;
-            while (catCommand.Execute().ExitCode != (int)LinuxReturnCode.None && !Canceled)
+            while (catCommand.Execute().ExitCode != (int)LinuxReturnCode.None)
             {
                 Ux.Message(Res("EBreventActivatorFirstMsg"));
                 Thread.Sleep(2000);
             }
-            ThrowIfCanceled();
+           
 
             state = stateExecutingShell;
             var result = CmdStation
@@ -42,7 +42,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron
                 .To(OutputPrinter)
                 .Execute();
 
-            ThrowIfCanceled();
+           
             WriteExitCode(result.ExitCode);
             return result.ExitCode;
         }

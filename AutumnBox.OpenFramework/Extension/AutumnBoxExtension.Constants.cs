@@ -4,6 +4,7 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.Basic.Device;
+using AutumnBox.OpenFramework.Running;
 
 namespace AutumnBox.OpenFramework.Extension
 {
@@ -34,14 +35,14 @@ namespace AutumnBox.OpenFramework.Extension
         /// <summary>
         /// 完全成功
         /// </summary>
-        public const int OK = 0;
+        public const int OK = (int)ExtensionExitCodes.Ok;
         /// <summary>
         /// 发生错误
         /// </summary>
-        public const int ERR = 1;
+        public const int ERR = (int)ExtensionExitCodes.ErrorUnknown;
         /// <summary>
         /// 被用户在执行过程中的某个步骤取消
         /// </summary>
-        public const int ERR_CANCELED_BY_USER = 2;
+        public const int ERR_CANCELED_BY_USER = (int)ExtensionExitCodes.Killed;
     }
 }

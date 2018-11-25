@@ -16,7 +16,7 @@ namespace AutumnBox.OpenFramework.Open.ServiceImpl
         /// </summary>
         public void OK()
         {
-            CallingBus.BaseApi.PlayOk();
+            BaseApi.PlayOk();
         }
     }
 }

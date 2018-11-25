@@ -6,6 +6,7 @@
 
 using AutumnBox.CoreModules.View;
 using AutumnBox.OpenFramework.Extension;
+using System.Collections.Generic;
 
 namespace AutumnBox.CoreModules.Extensions.Poweron
 {
@@ -18,7 +19,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron
     internal class EScreenRecorder : AutumnBoxExtension
     {
         private ScreenRecorderWindow window;
-        protected override int Main()
+        public override int Main(Dictionary<string, object> args)
         {
             App.RunOnUIThread(() =>
             {
@@ -27,7 +28,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron
             });
             return OK;
         }
-        protected override bool OnStopCommand(ExtensionStopArgs args)
+        protected override bool OnStopCommand(object args)
         {
             App.RunOnUIThread(() =>
             {

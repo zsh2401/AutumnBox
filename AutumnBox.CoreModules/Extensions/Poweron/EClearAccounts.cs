@@ -4,6 +4,7 @@
 ** desc： ...
 *************************************************/
 
+using System.Collections.Generic;
 using AutumnBox.Basic.Device;
 using AutumnBox.Basic.Exceptions;
 using AutumnBox.CoreModules.Aspect;
@@ -48,9 +49,9 @@ namespace AutumnBox.CoreModules.Extensions.Poweron
                 Progress = 100;
             }
         }
-        protected override void OnFinish(ExtensionFinishedArgs args)
+        protected override void OnFinish(FinishedArgs args)
         {
-            base.OnFinish(args);
+            base.OnFinish( args);
             if (args.ExitCode == OK)
             {
                 DeviceSelectedOnCreating.Reboot2System();

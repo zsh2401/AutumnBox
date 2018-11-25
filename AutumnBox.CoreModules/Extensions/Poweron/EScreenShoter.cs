@@ -17,11 +17,6 @@ namespace AutumnBox.CoreModules.Extensions
     [ExtRequiredDeviceStates(DeviceState.Poweron)]
     internal class EScreenShoter : OfficialVisualExtension
     {
-        protected override void OnCreate(ExtensionArgs args)
-        {
-            base.OnCreate(args);
-            Logger.Info(args.ExtractData[KEY_CLOSE_FINISHED].ToString() ?? "0");
-        }
         protected override int VisualMain()
         {
             DialogResult dialogResult = DialogResult.No;

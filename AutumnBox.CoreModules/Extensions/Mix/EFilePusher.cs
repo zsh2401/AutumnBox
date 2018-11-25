@@ -6,6 +6,7 @@
 using AutumnBox.Basic.Data;
 using AutumnBox.OpenFramework.Extension;
 using System;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Threading;
 
@@ -90,7 +91,7 @@ namespace AutumnBox.CoreModules.Extensions.Mix
                 return ERR;
             }
         }
-        protected override void OnFinish(ExtensionFinishedArgs args)
+        protected override void OnFinish(FinishedArgs args)
         {
             base.OnFinish(args);
             _cancelReadingLoop = true;
