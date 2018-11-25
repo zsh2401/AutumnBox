@@ -131,6 +131,12 @@ namespace AutumnBox.OpenFramework.Running
                 Started?.Invoke(this, new ThreadStartedEventArgs());
             }
 
+            public void Shutdown(int exitCode)
+            {
+                ExitCode = exitCode;
+                Kill();
+            }
+
             public ThreadImpl(Type extensionType, IExtensionWrapper wrapper)
             {
                 this.extensionType = extensionType;

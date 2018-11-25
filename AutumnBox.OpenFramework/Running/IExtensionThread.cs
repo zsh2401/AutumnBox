@@ -30,6 +30,11 @@ namespace AutumnBox.OpenFramework.Running
         /// </summary>
         void Kill();
         /// <summary>
+        /// 结束线程,并设定返回码
+        /// </summary>
+        /// <param name="exitCode"></param>
+        void Shutdown(int exitCode);
+        /// <summary>
         /// 执行完毕
         /// </summary>
         event EventHandler<ThreadFinishedEventArgs> Finished;
