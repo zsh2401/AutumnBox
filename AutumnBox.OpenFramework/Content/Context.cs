@@ -180,21 +180,21 @@ namespace AutumnBox.OpenFramework.Content
         /// <summary>
         /// 获取全局服务
         /// </summary>
-        /// <param name="name"></param>
+        /// <param name="serviceName"></param>
         /// <returns></returns>
-        public AtmbService GetService(string name)
+        public AtmbService GetService(string serviceName)
         {
-            return Manager.ServicesManager.GetServiceByName(this, name);
+            return Manager.ServicesManager.GetServiceByName(this, serviceName);
         }
         /// <summary>
         /// 获取并根据传入泛型拆箱
         /// </summary>
         /// <typeparam name="TReturn"></typeparam>
-        /// <param name="name"></param>
+        /// <param name="serviceName"></param>
         /// <returns></returns>
-        public TReturn GetService<TReturn>(string name) where TReturn : class
+        public TReturn GetService<TReturn>(string serviceName) where TReturn : class
         {
-            return Manager.ServicesManager.GetServiceByName(this, name) as TReturn;
+            return Manager.ServicesManager.GetServiceByName(this, serviceName) as TReturn;
         }
         /// <summary>
         /// 在UI线程运行代码
