@@ -26,7 +26,7 @@ namespace AutumnBox.CoreModules.Lib
             "CLASSPATH=" + PATH_OF_ATMP_APK + " app_process /system/bin "
             + PATH_OF_COMMAND_CLASS + " {0}";
         public const int OKAY = 0;
-        public const int ERR = 1;
+        public const int ERR = 1;   
         public const int ERR_EXIST_OTHER_USER = 0b100;
         public const int ERR_EXIST_OTHER_ACC = 0b1000;
         public const int ERR_MIUI_SEC = 0b10000;
