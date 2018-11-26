@@ -16,7 +16,6 @@ namespace AutumnBox.OpenFramework.Running
         /// </summary>
         /// <param name="wrapper"></param>
         /// <param name="typeOfExtension"></param>
-        /// <param name="extractData"></param>
         /// <returns></returns>
         IExtensionThread Allocate(IExtensionWrapper wrapper,Type typeOfExtension);
         /// <summary>

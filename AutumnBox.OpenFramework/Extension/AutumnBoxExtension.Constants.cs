@@ -8,20 +8,6 @@ using AutumnBox.OpenFramework.Running;
 
 namespace AutumnBox.OpenFramework.Extension
 {
-    [ExtName("无名拓展", "en-us:Unknown extension")]
-    [ExtAuth("佚名", "en-us:Anonymous")]
-    [ExtDesc(null)]
-    [ExtVersion()]
-    [ExtRequiredDeviceStates(NoMatter)]
-    [ExtMinApi(8)]
-    [ExtTargetApi()]
-    [ExtRunAsAdmin(false)]
-    [ExtRequireRoot(false)]
-    [ExtOfficial(false)]
-    [ExtRegions(null)]
-    [ExtPriority(ExtPriority.NORMAL)]
-    //[ExtAppProperty("com.miui.fm")]
-    //[ExtMinAndroidVersion(7,0,0)]
     partial class AutumnBoxExtension
     {
         /// <summary>

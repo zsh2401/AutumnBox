@@ -18,9 +18,13 @@ namespace AutumnBox.OpenFramework.Running
         /// </summary>
         int Id { get; }
         /// <summary>
+        /// 启动数据
+        /// </summary>
+        Dictionary<string, object> Data { get; set; }
+        /// <summary>
         /// 开始
         /// </summary>
-        void Start(Dictionary<string,object> extractData=null);
+        void Start();
         /// <summary>
         /// 检查是否在运行中
         /// </summary>

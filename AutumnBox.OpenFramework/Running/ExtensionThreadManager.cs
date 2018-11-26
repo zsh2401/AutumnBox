@@ -16,7 +16,7 @@ namespace AutumnBox.OpenFramework.Running
         private readonly List<IExtensionThread> runnings = new List<IExtensionThread>();
         public IExtensionThread Allocate(IExtensionWrapper wrapper, Type typeOfExtension)
         {
-            var thread = new ThreadImpl(typeOfExtension, wrapper)
+            var thread = new ExtensionThread(typeOfExtension, wrapper)
             {
                 Id = AlllocatePID()
             };
@@ -54,103 +54,6 @@ namespace AutumnBox.OpenFramework.Running
             return runnings;
         }
 
-        private class ThreadImpl : IExtensionThread
-        {
-            private readonly Type extensionType;
-
-            public Thread Thread { get; set; }
-
-            public int ExitCode
-            {
-                get
-                {
-                    return shutDownExitCode ?? _exitCode;
-                }
-                private set { _exitCode = value; }
-            }
-            private int _exitCode = (int)ExtensionExitCodes.Killed;
-
-            private int? shutDownExitCode = null;
-            public int Id { get; internal set; }
-
-            public bool IsRunning => Thread?.IsAlive == true;
-
-            public IExtensionWrapper Wrapper { get; }
-
-            public event EventHandler<ThreadFinishedEventArgs> Finished;
-            public event EventHandler<ThreadStartedEventArgs> Started;
-
-            private IExtension instance;
-
-            public void SendSignal(string signal, object value = null)
-            {
-                if (string.IsNullOrWhiteSpace(signal))
-                {
-                    throw new ArgumentException("message", nameof(signal));
-                }
-                instance.ReceiveSignal(signal, value);
-            }
-
-            public void Kill()
-            {
-                try
-                {
-                    SendSignal(Signals.COMMAND_STOP);
-                }
-                catch
-                {
-                    return;
-                }
-                try
-                {
-                    Thread.Abort();
-                }
-                catch (ThreadAbortException) { }
-            }
-
-            private static readonly Dictionary<string, object> defaultData = new Dictionary<string, object>()
-            {
-                {AtmbVisualExtension.KEY_CLOSE_FINISHED,false}
-            };
-
-            public void Start(Dictionary<string, object> extractData = null)
-            {
-                Thread = new Thread(() =>
-                {
-                    try
-                    {
-                        instance = (IExtension)Activator.CreateInstance(extensionType);
-                        instance.ReceiveSignal(Signals.ON_CREATED, new ExtensionArgs(this, Wrapper));
-                        ExitCode = instance.Main(extractData ?? defaultData);
-                    }
-                    catch (ThreadAbortException)
-                    {
-                        ExitCode = (int)ExtensionExitCodes.Killed;
-                    }
-                    catch (Exception)
-                    {
-                        ExitCode = (int)ExtensionExitCodes.ErrorUnknown;
-                    }
-                    finally
-                    {
-                        Finished?.Invoke(this, new ThreadFinishedEventArgs(this));
-                    }
-                });
-                Thread.Start();
-                Started?.Invoke(this, new ThreadStartedEventArgs());
-            }
-
-            public void Shutdown(int exitCode)
-            {
-                shutDownExitCode = exitCode;
-                Kill();
-            }
-
-            public ThreadImpl(Type extensionType, IExtensionWrapper wrapper)
-            {
-                this.extensionType = extensionType;
-                Wrapper = wrapper ?? throw new ArgumentNullException(nameof(wrapper));
-            }
-        }
+        
     }
 }
