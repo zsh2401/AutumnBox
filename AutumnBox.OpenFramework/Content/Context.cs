@@ -6,6 +6,7 @@
 using AutumnBox.OpenFramework.Management;
 using AutumnBox.OpenFramework.Open;
 using AutumnBox.OpenFramework.Open.Impl;
+using AutumnBox.OpenFramework.Running;
 using AutumnBox.OpenFramework.Service;
 using AutumnBox.OpenFramework.Service.Default;
 using System;
@@ -114,12 +115,12 @@ namespace AutumnBox.OpenFramework.Content
             }
         }
         private UniversalHighPermissionContext hContext;
-        
+
         internal IBaseApi BaseApi
         {
             get
             {
-                var ctx = new UniversalHighPermissionContext(HContext);
+                var ctx = new UniversalHighPermissionContext(this);
                 string servName = SBaseApiContainer.NAME;
                 return GetService<SBaseApiContainer>(servName).GetApi(ctx);
             }
@@ -136,7 +137,8 @@ namespace AutumnBox.OpenFramework.Content
             }
         }
 
-        static Context() {
+        static Context()
+        {
         }
         /// <summary>
         /// 构建
@@ -146,26 +148,34 @@ namespace AutumnBox.OpenFramework.Content
             InitFactory();
         }
         /// <summary>
-        /// 启动一个另一个模块
+        /// 获取一个新的拓展模块线程
         /// </summary>
-        /// <param name="t"></param>
-        /// <param name="callback"></param>
-        /// <param name="extractData"></param>
-        public void StartExtension(Type t, Action<int> callback = null, Dictionary<string, object> extractData = null)
+        /// <param name="extensionType"></param>
+        /// <returns></returns>
+        public IExtensionThread NewExtensionThread(Type extensionType)
         {
             var wrappers = from wrapper in Manager.InternalManager.GetLoadedWrappers()
-                           where t == wrapper.Info.ExtType
+                           where extensionType == wrapper.Info.ExtType
                            select wrapper;
             if (wrappers.Count() == 0)
             {
                 throw new Exception("Extension not found");
             }
-            var thread = wrappers.First().GetThread();
+            return wrappers.First().GetThread();
+        }
+        /// <summary>
+        /// 启动一个另一个模块
+        /// </summary>
+        /// <param name="t"></param>
+        /// <param name="callback"></param>
+        public void StartExtension(Type t, Action<int> callback = null)
+        {
+            var thread = NewExtensionThread(t);
             thread.Finished += (s, e) =>
             {
                 callback?.Invoke(e.Thread.ExitCode);
             };
-            thread.Start(extractData);
+            thread.Start();
         }
         /// <summary>
         /// 获取全局服务

@@ -111,7 +111,7 @@ namespace AutumnBox.OpenFramework.Extension
         /// <summary>
         /// 主要方法
         /// </summary>
-        /// <param name="args"></param>
+        /// <param name="data"></param>
         /// <returns></returns>
         public abstract int Main(Dictionary<string, object> data);
     }

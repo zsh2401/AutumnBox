@@ -99,7 +99,6 @@ namespace AutumnBox.OpenFramework.Extension
         /// <summary>
         /// 完成
         /// </summary>
-        /// <param name="exitCode"></param>
         /// <param name="args"></param>
         protected virtual void OnFinish(FinishedArgs args)
         {
