@@ -113,10 +113,14 @@ namespace AutumnBox.GUI.ViewModel
         #endregion
         private DeviceState targetState;
 
+        public VMExtensions()
+        {
+            GotoDownloadExtension = new OpenParameterUrlCommand();
+        }
+
         internal void Load(DeviceState state)
         {
             targetState = state;
-            GotoDownloadExtension = new OpenParameterUrlCommand();
             ComObserver();
             RunSelectedItem = new FlexiableCommand(() =>
             {
