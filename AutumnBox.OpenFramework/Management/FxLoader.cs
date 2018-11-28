@@ -47,6 +47,7 @@ namespace AutumnBox.OpenFramework.Management
             serviceManager.StartService<ResourcesManagerImpl>();
             serviceManager.StartService<SDeviceSelector>();
             serviceManager.StartService<ExtensionThreadManager>();
+            serviceManager.StartService<Open.Impl.OSApiImpl>();
         }
         /// <summary>
         /// 加载拓展模块

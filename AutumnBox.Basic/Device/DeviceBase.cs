@@ -44,7 +44,7 @@ namespace AutumnBox.Basic.Device
         {
             get
             {
-                return this.Adb("get-state").Item2 == 0;
+                return State == DeviceState.Fastboot || this.Adb("get-state").Item2 == 0;
             }
         }
 

@@ -4,6 +4,7 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.Basic.Device;
+using System.Diagnostics;
 using System.Net;
 using System.Text.RegularExpressions;
 
@@ -14,7 +15,7 @@ namespace AutumnBox.Basic.MultipleDevices
     /// </summary>
     public static class DeviceObjectFacotry
     {
-        private const string DEVICES_PATTERN = @"(?i)^(?<sn>[^\u0020|^\t]+)[^\w]+(?<state>\w+)\u0020?.+?$";
+        private const string DEVICES_PATTERN = @"(?i)^(?<sn>[^\u0020|^\t]+)[^\w]+(?<state>\w+)[^\w+]?$";
         private static readonly Regex _deviceRegex = new Regex(DEVICES_PATTERN);
 
         private const string DEVICES_L_PATTERN = @"^(?<sn>[^\u0020|^\t]+)[^\w]+(?<state>\w+).+:(?<product>\w+).+:(?<model>\w+).+:(?<device>\w+).+:(?<transport_id>\w+)$";
@@ -127,7 +128,8 @@ namespace AutumnBox.Basic.MultipleDevices
                 dev = new UsbDevice();
             }
             dev.SerialNumber = match.Result("${sn}");
-            dev.State = match.Result("${state}").ToDeviceState();
+            //Debug.WriteLine(match.Result("${state}"));
+            dev.State = match.Result("${state}").Trim().ToDeviceState();
             device = dev;
             return true;
         }

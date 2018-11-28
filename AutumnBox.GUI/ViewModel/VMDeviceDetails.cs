@@ -216,6 +216,7 @@ namespace AutumnBox.GUI.ViewModel
         {
             InfoPanelVisibility = Visibility.Visible;
             TranSelectIndex = 1;
+            Reset();
             try
             {
                 Task.Run(() =>
@@ -230,6 +231,7 @@ namespace AutumnBox.GUI.ViewModel
         }
         private void RefreshInformationsThreadMethod(IDevice device)
         {
+            if (device.State == DeviceState.Fastboot) return;
             int currentCode = ran.Next();
             taskCode = currentCode;
             ResetStateStringByCurrentDevice();
