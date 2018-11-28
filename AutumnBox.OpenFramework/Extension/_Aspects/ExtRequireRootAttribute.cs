@@ -58,6 +58,9 @@ namespace AutumnBox.OpenFramework.Extension
                 });
                 canContinue = true;
             }
+            else {
+                canContinue = false;
+            }
         }
     }
 }
