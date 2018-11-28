@@ -7,7 +7,7 @@
     <s:String x:Key="LanguageName">简体中文</s:String>
     <s:String x:Key="LanguageCode">zh-CN</s:String>
     <s:String x:Key="AppDesc">开源,简约,免费的图形化ADB工具箱</s:String>
-    
+     <s:String x:Key="TitleSuffixAdmin">[管理员模式]</s:String>
     
      <!--LibsWindow-->
     <s:String x:Key="LibsWindowTitle">已加载的拓展模块库</s:String>

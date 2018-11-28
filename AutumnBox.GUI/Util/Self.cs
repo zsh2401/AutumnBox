@@ -62,10 +62,13 @@ namespace AutumnBox.GUI.Util
             {
                 args.Add("-tryadmin");
             }
-            startInfo.Arguments = string.Join(" " , args);
+            startInfo.Arguments = string.Join(" ", args);
             SLogger.Debug("Self", startInfo.FileName + "  " + startInfo.Arguments);
             Process.Start(startInfo);
-            App.Current.Shutdown(0);
+            App.Current.Dispatcher.Invoke(() =>
+            {
+                App.Current.Shutdown(0);
+            });
         }
     }
 }

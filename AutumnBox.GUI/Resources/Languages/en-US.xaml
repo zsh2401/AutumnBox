@@ -6,7 +6,8 @@
     <s:String x:Key="LanguageName">English</s:String>
     <s:String x:Key="LanguageCode">en-US</s:String>
     <s:String x:Key="AppDesc">Open source,free,simple,GUI adb toolbox</s:String>
-        
+    <s:String x:Key="TitleSuffixAdmin">[Administrator]</s:String>
+    
          <!--LibsWindow-->
     <s:String x:Key="LibsWindowTitle">Loaded extension libs</s:String>
     <s:String x:Key="LibsWindowLoadedWrapper">Loaded wrappers: </s:String>
