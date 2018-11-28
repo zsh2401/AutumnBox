@@ -29,15 +29,16 @@ namespace AutumnBox.OpenFramework.Extension
         {
             if (reqAdmin && !args.Context.App.IsRunAsAdmin)
             {
-                args.Context.App.RunOnUIThread(() =>
+                var choice = args.Context.Ux
+                .DoChoice("OpenFxNeedAdminPermission");
+                if (choice == Open.ChoiceResult.Accept)
                 {
-                    var choice = args.Context.Ux
-                    .DoChoice("OpenFxNeedAdminPermission");
-                    if (choice == Open.ChoiceResult.Accept)
-                    {
-                        args.Context.App.RestartAppAsAdmin();
-                    }
-                });
+                    args.Context.App.RestartAppAsAdmin();
+                }
+                else
+                {
+                    canContinue = false;
+                }
             }
         }
     }
