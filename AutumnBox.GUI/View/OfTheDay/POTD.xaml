@@ -9,6 +9,10 @@
         <viewmodel:VMPOTD/>
     </UserControl.DataContext>
     <Grid>
-        <Image MouseDown="Image_MouseDown" Source="{Binding Image}" Stretch="Fill"></Image>
+        <Image Source="{Binding Image}" Stretch="Fill">
+            <Image.InputBindings>
+                <MouseBinding MouseAction="LeftClick" Command="{Binding Click}"></MouseBinding>
+            </Image.InputBindings>
+        </Image>
     </Grid>
 </UserControl>

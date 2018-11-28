@@ -161,7 +161,6 @@
     <Compile Include="Util\Data\IResourceManager.cs" />
     <Compile Include="Util\Net\PotdGetter.cs" />
     <Compile Include="Util\Net\MOTDGetter.cs" />
-    <Compile Include="Util\Net\RemoteDataGetter.cs" />
     <Compile Include="Util\Net\UpdateChecker.cs" />
     <Compile Include="MVVM\FlexiableCommand.cs" />
     <Compile Include="Util\OS\ShortcutHelper.cs" />
