@@ -63,6 +63,9 @@
     <None Include="开源地址.url">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="请全部解压后再运行本软件">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="本软件绝无恶意代码,如有误报请放行">
