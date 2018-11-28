@@ -20,7 +20,6 @@ namespace AutumnBox.GUI.Util
 {
     class AppLoader
     {
-        #region OTHER
         public interface ILoadingUI
         {
             string LoadingTip { set; }
@@ -40,7 +39,6 @@ namespace AutumnBox.GUI.Util
                 callback?.Invoke();
             });
         }
-        #endregion
 
         private readonly ILogger logger;
         public AppLoader()
