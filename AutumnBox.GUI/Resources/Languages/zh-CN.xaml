@@ -114,11 +114,11 @@
     <s:String x:Key="PanelDeviceDetailsStatePoweron">设备开机</s:String>
     <s:String x:Key="PanelDeviceDetailsStatePoweronTip">做你想做的</s:String>
     <s:String x:Key="PanelDeviceDetailsStateRecovery">恢复模式</s:String>
-    <s:String x:Key="PanelDeviceDetailsStateRecoveryTip">..</s:String>
+    <s:String x:Key="PanelDeviceDetailsStateRecoveryTip">...</s:String>
     <s:String x:Key="PanelDeviceDetailsStateSideload">Sideload模式</s:String>
-    <s:String x:Key="PanelDeviceDetailsStateSideloadTip">..</s:String>
+    <s:String x:Key="PanelDeviceDetailsStateSideloadTip">...</s:String>
     <s:String x:Key="PanelDeviceDetailsStateFastboot">Fastboot模式</s:String>
-    <s:String x:Key="PanelDeviceDetailsStateFastbootTip">.</s:String>
+    <s:String x:Key="PanelDeviceDetailsStateFastbootTip">...</s:String>
     <s:String x:Key="PanelDeviceDetailsStateUnauthorized">未授权</s:String>
     <s:String x:Key="PanelDeviceDetailsStateUnauthorizedTip">未获取USB调试权限,请前往手机授予</s:String>
     <s:String x:Key="PanelDeviceDetailsStateOffline">异常离线</s:String>
