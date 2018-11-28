@@ -11,7 +11,7 @@ namespace AutumnBox.OpenFramework.Extension
     /// <summary>
     /// 明确标记标明该拓展需要设备ROOT权限
     /// </summary>
-    public class ExtRequireRootAttribute : BeforeCreatingAspect,IInformationAttribute
+    public class ExtRequireRootAttribute : BeforeCreatingAspect, IInformationAttribute
     {
         private readonly bool reqRoot;
         /// <summary>
@@ -26,7 +26,8 @@ namespace AutumnBox.OpenFramework.Extension
         /// <summary>
         /// 构造
         /// </summary>
-        public ExtRequireRootAttribute(bool reqRoot) {
+        public ExtRequireRootAttribute(bool reqRoot)
+        {
             this.reqRoot = reqRoot;
         }
         /// <summary>
@@ -50,16 +51,17 @@ namespace AutumnBox.OpenFramework.Extension
             {
                 return;
             }
-            if (!DeviceHaveRoot(selectedDevice))
+            if (DeviceHaveRoot(selectedDevice))
+            {
+                canContinue = false;
+            }
+            else
             {
                 args.Context.App.RunOnUIThread(() =>
                 {
                     args.Context.Ux.Warn("OpenFxNoRoot");
                 });
                 canContinue = true;
-            }
-            else {
-                canContinue = false;
             }
         }
     }
