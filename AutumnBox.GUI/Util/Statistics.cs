@@ -24,11 +24,19 @@ namespace AutumnBox.GUI.Util
                     Width = 1,
                     Height = 1,
                     MaxHeight = 1,
-                    MaxWidth = 1
+                    MaxWidth = 1,
                 };
                 (App.Current.MainWindow.Content as Grid).Children.Add(browser);
                 browser.SuppressScriptErrors(true);
-                browser.Navigate(App.Current.Resources["urlApiStatistics"].ToString());
+                string url = App.Current.Resources["urlApiStatistics"].ToString();
+                url += "?v=" + Self.Version.ToString();
+                logger.Info("Browser statistics is navigating to " + url);
+                browser.Navigate(url);
+                //browser.Navigated += (s, e) =>
+                //{
+                //    (App.Current.MainWindow.Content as Grid).Children.Remove(browser);
+                //    browser.Dispose();
+                //};
             });
         }
     }
