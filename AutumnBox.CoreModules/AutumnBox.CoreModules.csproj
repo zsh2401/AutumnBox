@@ -53,6 +53,7 @@
     <Compile Include="Aspect\UserAgreeAttribute.cs" />
     <Compile Include="Attribute\DpmReceiverAttribute.cs" />
     <Compile Include="CoreLib.cs" />
+    <Compile Include="Extensions\ERestartApp.cs" />
     <Compile Include="Extensions\Fastboot\EFlashBoot.cs" />
     <Compile Include="Extensions\Fastboot\EFlashRecovery.cs" />
     <Compile Include="Extensions\Fastboot\EOemLock.cs" />
@@ -222,6 +223,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Icons\unlock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\restart.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

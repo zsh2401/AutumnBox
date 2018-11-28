@@ -10,6 +10,10 @@
     <s:String x:Key="ExtensionRunning">正在进行</s:String>
     <s:String x:Key="ExtensionCancelByUser">被用户取消</s:String>
 
+    <s:String x:Key="ERestartAppMsg">你想重启到什么状态?</s:String>
+    <s:String x:Key="ERestartAppBtnAdmin">管理员模式</s:String>
+    <s:String x:Key="ERestartAppBtnNormal">普通模式</s:String>
+    
     <s:String x:Key="EDeviceOwnerRemoverYNReboot">完成，但重启才可生效，是否重启？</s:String>
 
     <s:String x:Key="EDpmSetterBaseTipErrOtherAccounts">失败，有其它账户</s:String>

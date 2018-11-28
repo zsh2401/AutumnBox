@@ -10,7 +10,10 @@
     <s:String x:Key="ExtensionRunning">Running</s:String>
     <s:String x:Key="ExtensionCancelByUser">Cancelled by user</s:String>
 
-   
+    <s:String x:Key="ERestartAppMsg">Which one is you want?</s:String>
+     <s:String x:Key="ERestartAppBtnAdmin">Restart as admin</s:String>
+     <s:String x:Key="ERestartAppBtnNormal">Restart</s:String>
+    
     <s:String x:Key="EDeviceOwnerRemoverYNReboot">Finished,reboot to system?</s:String>
     
      <s:String x:Key="EDpmSetterBaseTipErrOtherAccounts">Failed,Have other accounts</s:String>

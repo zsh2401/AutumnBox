@@ -33,6 +33,7 @@ namespace AutumnBox.GUI.ViewModel
                 InitTitle();
             };
             InitTitle();
+            base.RaisePropertyChangedOnDispatcher = true;
         }
 
         private void Instance_LanguageChanged(object sender, EventArgs e)
@@ -42,16 +43,20 @@ namespace AutumnBox.GUI.ViewModel
 
         private void InitTitle()
         {
-#if DEBUG
-            string comp = "Debug";
+            string comp = "";
+#if BETA
+            comp = "BETA";
+#elif DEBUG
+            comp = "DEBUG";
 #else
-            string comp = "Release";
+            comp = "RELEASE";
 #endif
 
-#if BETA
-            comp += " Beta(测试版)";
-#endif
             Title = $"{App.Current.Resources["AppName"]}-{Self.Version.ToString(3)}-{comp}";
+            if (Self.HaveAdminPermission)
+            {
+                Title += " " + App.Current.Resources["TitleSuffixAdmin"];
+            }
         }
 
         public double Progress
