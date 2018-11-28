@@ -11,7 +11,7 @@ namespace AutumnBox.GUI.Util.Net
     {
         public ToastMotdGetter()
         {
-            DebugUrl = "http://localhost:24010/api/tmotd";
+            DebugUrl = "http://localhost:24010/_api_/tmotd";
             Url = App.Current.Resources["urlApiToastMotd"] as string;
         }
         public class Result

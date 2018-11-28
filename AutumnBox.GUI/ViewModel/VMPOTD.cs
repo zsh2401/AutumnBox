@@ -4,7 +4,9 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.GUI.MVVM;
+using AutumnBox.GUI.Util.Debugging;
 using AutumnBox.GUI.Util.Net;
+using System;
 using System.Diagnostics;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -44,6 +46,17 @@ namespace AutumnBox.GUI.ViewModel
 
         public VMPOTD()
         {
+            Click = new FlexiableCommand(() =>
+            {
+                try
+                {
+                    Process.Start(url);
+                }
+                catch (Exception e)
+                {
+                    SLogger.Warn(this,"Click potd is failed", e);
+                }
+            });
             new PotdGetter().Try((result) =>
             {
                 App.Current.Dispatcher.Invoke(() =>
@@ -52,23 +65,16 @@ namespace AutumnBox.GUI.ViewModel
                 });
             });
         }
+
         private void SettingBy(PotdGetter.Result result)
         {
+            url = result.ClickUrl;
             BitmapImage bmp = new BitmapImage();
             bmp.BeginInit();
             bmp.StreamSource = result.ImageMemoryStream;
             bmp.EndInit();
             Image = bmp;
-            url = result.ClickUrl;
         }
         private string url;
-        public void OpenUrl()
-        {
-            try
-            {
-                Process.Start(url);
-            }
-            catch { }
-        }
     }
 }

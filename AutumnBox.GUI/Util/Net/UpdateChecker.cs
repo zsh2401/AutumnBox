@@ -69,22 +69,8 @@ namespace AutumnBox.GUI.Util.Net
         }
         public RemoteVersionInfoGetter()
         {
-            DebugUrl = "http://localhost:24010/api/update/";
+            DebugUrl = "http://localhost:24010/_api_/update/";
             Url = App.Current.Resources["urlApiUpdate"].ToString();
         }
-
-        //        public override UpdateCheckResult Get()
-        //        {
-        //            Logger.Debug("Getting update info....");
-        //#if USE_LOCAL_API && DEBUG
-        //            byte[] bytes = webClient.DownloadData("http://localhost:24010/api/update/");
-        //#else
-        //            byte[] bytes = webClient.DownloadData(App.Current.Resources["urlApiUpdate"].ToString());
-        //#endif
-        //            string data = Encoding.UTF8.GetString(bytes);
-        //            var result = (UpdateCheckResult)JsonConvert.DeserializeObject(data, typeof(UpdateCheckResult));
-        //            Logger.Debug("update check finished" + Environment.NewLine + data);
-        //            return result;
-        //        }
     }
 }

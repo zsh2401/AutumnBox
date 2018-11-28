@@ -26,7 +26,7 @@ namespace AutumnBox.GUI.Util.Net
         public MOTDGetter()
         {
             Url = (string)App.Current.Resources["urlApiMotd"];
-            DebugUrl = "http://localhost:24010/api/motd/";
+            DebugUrl = "http://localhost:24010/_api_/motd/";
         }
     }
 }

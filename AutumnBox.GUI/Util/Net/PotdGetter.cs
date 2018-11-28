@@ -28,7 +28,7 @@ namespace AutumnBox.GUI.Util.Net
         }
         public PotdGetter()
         {
-            DebugUrl = "http://localhost:24010/api/potd/";
+            DebugUrl = "http://localhost:24010/_api_/potd/";
             Url = App.Current.Resources["urlApiPotd"].ToString();
         }
         protected override Result ParseJson(string json)

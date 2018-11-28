@@ -25,10 +25,5 @@ namespace AutumnBox.GUI.View.OfTheDay
         {
             InitializeComponent();
         }
-
-        private void Image_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            (DataContext as VMPOTD).OpenUrl();
-        }
     }
 }
