@@ -6,13 +6,15 @@
 using AutumnBox.Basic.Calling;
 using AutumnBox.Basic.Data;
 using AutumnBox.OpenFramework.Content;
+using AutumnBox.OpenFramework.Service;
 using System;
 using System.Diagnostics;
 using System.Security.Principal;
 
 namespace AutumnBox.OpenFramework.Open.Impl
 {
-    class OSApiImpl : Context, IOSApi
+    [ServiceName(ServicesNames.OS)]
+    class OSApiImpl : AtmbService, IOSApi
     {
         public bool IsWindows10
         {
@@ -28,10 +30,7 @@ namespace AutumnBox.OpenFramework.Open.Impl
         {
             get
             {
-                throw new NotImplementedException();
-                //WindowsIdentity identity = WindowsIdentity.GetCurrent();
-                //WindowsPrincipal principal = new WindowsPrincipal(identity);
-                //return principal.IsInRole(WindowsBuiltInRole.Administrator);
+                return BaseApi.IsRunAsAdmin;
             }
         }
 

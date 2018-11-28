@@ -34,5 +34,9 @@ namespace AutumnBox.OpenFramework.Open
         /// 设备选择器
         /// </summary>
         public const string DEVICE_SELECTOR = "deviceSelector";
+        /// <summary>
+        /// 该服务提供一些秋之盒封装的与操作系统相关的API
+        /// </summary>
+        public const string OS = "__os";
     }
 }
