@@ -10,6 +10,7 @@ using System.Threading;
 namespace AutumnBox.CoreModules.Extensions
 {
     [ExtName("Example extension")]
+    [ExtRegions("en-US")]
     [ExtRequiredDeviceStates(NoMatter)]
     //[ExtDesc("wtf")]
     //[ObsoleteImageOperator]
