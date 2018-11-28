@@ -22,7 +22,7 @@ namespace AutumnBox.GUI.View.Windows
         {
             App.Current.Dispatcher.Invoke(() =>
             {
-                TextBox.AppendText(e.Content);
+                TextBox.AppendText(e.Content + Environment.NewLine);
                 TextBox.ScrollToEnd();
             });
         }
@@ -35,6 +35,11 @@ namespace AutumnBox.GUI.View.Windows
         private void Window_Closed(object sender, EventArgs e)
         {
             LoggingStation.Instance.Logging -= Logger_Logged;
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Clipboard.SetText(TextBox.Text);
         }
     }
 }

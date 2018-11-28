@@ -10,9 +10,11 @@
         Title="LogWindow" Height="525.5" Width="791.378"
         Closed="Window_Closed"
         >
-    <Grid>
-        <TextBox x:Name="TextBox" Style="{x:Null}" IsReadOnly="False" Margin="10,10,10,30" TextWrapping="Wrap"/>
-        <Button HorizontalAlignment="Right" VerticalAlignment="Bottom" Content="Go to the end" Click="Button_Click" Margin="294,266,10,5"/>
-
-    </Grid>
+    <DockPanel>
+        <StackPanel Margin="5"  DockPanel.Dock="Bottom" Orientation="Horizontal">
+            <Button Margin="5" HorizontalAlignment="Right" VerticalAlignment="Bottom" Content="{DynamicResource btnCopy}" Click="Button_Click_1"/>
+            <Button Margin="5"  HorizontalAlignment="Right" VerticalAlignment="Bottom" Content="Go to the end" Click="Button_Click"/>
+        </StackPanel>
+        <TextBox DockPanel.Dock="Top" x:Name="TextBox" Style="{x:Null}" IsReadOnly="True" TextWrapping="Wrap"/>
+    </DockPanel>
 </Window>
