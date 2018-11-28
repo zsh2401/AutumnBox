@@ -19,18 +19,11 @@ namespace AutumnBox.CoreModules.Extensions
     {
         protected override int VisualMain()
         {
-            //WriteLine("Step1");
-            //Thread.Sleep(3000);
-            //WriteLine("Step2");
-            //CstmDpmCommander dpm = new CstmDpmCommander(this, TargetDevice)
-            //{
-            //    CmdStation = this.CmdStation
-            //};
-            //dpm.To(OutputPrinter);
-            //dpm.Extract();
-            //dpm.PushToDevice();
-            //dpm.ShowUsage();
-            //dpm.SetDeviceOwner("com.fuck.aaa");
+            var thread = NewExtensionThread(typeof(EScreenShoter));
+            thread.Data[KEY_CLOSE_FINISHED] = true;
+            thread.Start();
+            thread.WaitForExit();
+            WriteLine(thread.ExitCode.ToString());
             return OK;
         }
     }

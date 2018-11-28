@@ -68,13 +68,14 @@ namespace AutumnBox.OpenFramework.Running
             catch (ThreadAbortException) { }
         }
 
-
+        private bool isRunning = false;
         public void Start()
         {
             Thread = new Thread(() =>
             {
                 try
                 {
+                    isRunning = true;
                     instance = (IExtension)Activator.CreateInstance(extensionType);
                     instance.ReceiveSignal(Signals.ON_CREATED, new ExtensionArgs(this, Wrapper));
                     ExitCode = instance.Main(Data);
@@ -89,6 +90,7 @@ namespace AutumnBox.OpenFramework.Running
                 }
                 finally
                 {
+                    isRunning = false;
                     Finished?.Invoke(this, new ThreadFinishedEventArgs(this));
                 }
             });
@@ -100,6 +102,11 @@ namespace AutumnBox.OpenFramework.Running
         {
             shutDownExitCode = exitCode;
             Kill();
+        }
+
+        public void WaitForExit()
+        {
+            while (isRunning) ;
         }
 
         public ExtensionThread(Type extensionType, IExtensionWrapper wrapper)

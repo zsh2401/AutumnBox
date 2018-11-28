@@ -39,6 +39,10 @@ namespace AutumnBox.OpenFramework.Running
         /// <param name="exitCode"></param>
         void Shutdown(int exitCode);
         /// <summary>
+        /// 无限期等待,直到停止
+        /// </summary>
+        void WaitForExit();
+        /// <summary>
         /// 执行完毕
         /// </summary>
         event EventHandler<ThreadFinishedEventArgs> Finished;
