@@ -7,7 +7,7 @@
              xmlns:viewmodel="clr-namespace:AutumnBox.GUI.ViewModel"
              FontFamily="{DynamicResource AutumnBox.Font}"
              FontSize="15"
-             mc:Ignorable="d" Height="312.047" Width="530">
+             mc:Ignorable="d" Height="343.047" Width="530">
     <UserControl.DataContext>
         <viewmodel:VMSettingsDialog/>
     </UserControl.DataContext>
@@ -18,13 +18,13 @@
                     <StackPanel Margin="5">
                         <TextBlock  Text="{DynamicResource PanelSettingsInterface}" Margin="0,0,0,5"/>
                         <Label Height="1" Background="LightGray"/>
-                        <Grid>
-                            <StackPanel Orientation="Vertical" Margin="0,0,39,0">
+                        <DockPanel>
+                            <ToggleButton DockPanel.Dock="Right" Style="{DynamicResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding UseRandomTheme}"  ToolTip="{DynamicResource PanelSettingsRandomTheme}"/>
+                            <StackPanel Orientation="Vertical" DockPanel.Dock="Left">
                                 <TextBlock HorizontalAlignment="Left" FontSize="15" Text="{DynamicResource PanelSettingsRandomTheme}"/>
                                 <TextBlock Foreground="DarkSlateGray" TextWrapping="Wrap" FontSize="12" HorizontalAlignment="Left" Text="{DynamicResource PanelSettingsRandomThemeTip}"/>
                             </StackPanel>
-                            <ToggleButton HorizontalAlignment="Right" Style="{DynamicResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding UseRandomTheme}"  ToolTip="{DynamicResource PanelSettingsRandomTheme}"/>
-                        </Grid>
+                        </DockPanel>
                         <Grid IsEnabled="{Binding ThemeComboBoxEnabled}">
                             <TextBlock Margin="0,0,15,0" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{DynamicResource Theme}"/>
                             <ComboBox HorizontalAlignment="Right" ItemsSource="{Binding Themes}" DisplayMemberPath="{Binding ThemeDisplayMemberPath}" SelectedItem="{Binding SelectedTheme}" Width="170"/>
@@ -65,13 +65,37 @@
                     <StackPanel Margin="5" Orientation="Vertical">
                         <TextBlock  Margin="0,0,0,5" Text="{DynamicResource PanelSettingsUx}"/>
                         <Label Margin="0,0,0,5" Height="1" Background="LightGray"/>
-                        <Grid>
-                            <StackPanel Orientation="Vertical" Margin="0,0,39,0">
+                        <DockPanel>
+                            <ToggleButton DockPanel.Dock="Right" Style="{DynamicResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding SoundEffectEnable}"  ToolTip="{DynamicResource PanelSettingsSounds}"/>
+                            <StackPanel Orientation="Vertical" DockPanel.Dock="Left">
                                 <TextBlock HorizontalAlignment="Left" FontSize="15" Text="{DynamicResource PanelSettingsSounds}"/>
                                 <TextBlock Foreground="DarkSlateGray" TextWrapping="Wrap" HorizontalAlignment="Left" FontSize="12" Text="{DynamicResource PanelSettingsSoundsTip}"/>
                             </StackPanel>
-                            <ToggleButton HorizontalAlignment="Right" Style="{DynamicResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding SoundEffectEnable}"  ToolTip="{DynamicResource PanelSettingsSounds}"/>
+                        </DockPanel>
+                    </StackPanel>
+                </materialDesign:Card>
+
+                <materialDesign:Card Margin="5" Width="250">
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock  Margin="0,0,0,5" Text="{DynamicResource PanelSettingsVersionInfo}"/>
+                        <Label Margin="0,0,0,5" Height="1" Background="LightGray"/>
+                        <Grid>
+                            <TextBlock HorizontalAlignment="Left" Text="{DynamicResource PanelSettingsGUIVersionLabel}"/>
+                            <TextBlock HorizontalAlignment="Right" Text="{Binding AutumnBoxGUIVersion}"/>
                         </Grid>
+                        <Grid>
+                            <TextBlock HorizontalAlignment="Left" Text="{DynamicResource PanelSettingsBasicVersionLabel}"/>
+                            <TextBlock HorizontalAlignment="Right" Text="{Binding AutumnBoxGUIVersion}"/>
+                        </Grid>
+                        <Grid>
+                            <TextBlock HorizontalAlignment="Left" Text="{DynamicResource PanelSettingsOpenFxVersionLabel}"/>
+                            <TextBlock HorizontalAlignment="Right" Text="{Binding AutumnBoxGUIVersion}"/>
+                        </Grid>
+                        <Grid>
+                            <TextBlock HorizontalAlignment="Left" Text="{DynamicResource PanelSettingsCoreLibVersionLabel}"/>
+                            <TextBlock HorizontalAlignment="Right" Text="{Binding OpenFxVersion}"/>
+                        </Grid>
+                        <Button Style="{DynamicResource MaterialDesignFlatButton}" Command="{Binding UpdateCheck}" Content="{DynamicResource PanelSettingsUpdateCheck}"/>
                     </StackPanel>
                 </materialDesign:Card>
             </StackPanel>

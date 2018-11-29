@@ -41,6 +41,12 @@
      <s:String x:Key="UpdateWindowBtnSkipVersion">跳过此版本</s:String>
     
         <!--PanelSettings-->
+     <s:String x:Key="PanelSettingsGUIVersionLabel">图形界面</s:String>
+     <s:String x:Key="PanelSettingsCoreLibVersionLabel">核心模块</s:String>
+     <s:String x:Key="PanelSettingsBasicVersionLabel">ADB封装库</s:String>
+    <s:String x:Key="PanelSettingsOpenFxVersionLabel">开放框架</s:String>
+    <s:String x:Key="PanelSettingsVersionInfo">版本信息</s:String>
+      <s:String x:Key="PanelSettingsUpdateCheck">更新检测</s:String>
      <s:String x:Key="PanelSettingsUx">交互</s:String>
     <s:String x:Key="PanelSettingsRandomTheme">随机主题</s:String>
       <s:String x:Key="PanelSettingsRandomThemeTip">夕阳下,你眼中闪烁的泪光,奇迹般的五彩斑斓</s:String>
