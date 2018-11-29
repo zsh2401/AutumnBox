@@ -1,13 +1,13 @@
 [中文](README_zh-CN.md)
 
-[![](http://www.atmb.top/images/readmeheader.png "Go to the Autumn Box Official Website")](http://www.atmb.top)
+![](http://www.atmb.top/images/readmeheader.png)
 #### Code lines : 3000+
 #### Main language : C#
 #### Supporting Platform : Recommended Windows 10, minimum Windows 7
 #### Running the required environment: .Net Framework 4.6.1
-#### [Instructions WIKI] (https://github.com/zsh2401/AutumnBox/wiki)
+#### [Instructions WIKI](https://github.com/zsh2401/AutumnBox/wiki)
 ***
-[For more information, please go to the official website] (http://www.atmb.top)
+[For more information, please go to the official website](http://www.atmb.top)
 ![](https://www.atmb.top/images/demo/show_launch.gif)
 ![](https://www.atmb.top/images/demo/show5.gif)
 ![](https://www.atmb.top/images/demo/show3.png)
