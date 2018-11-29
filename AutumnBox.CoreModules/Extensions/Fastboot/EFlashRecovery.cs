@@ -22,7 +22,6 @@ namespace AutumnBox.CoreModules.Extensions.Fastboot
             fileDialog.Filter = Res("EFlashRecoverySelectingFilter");
             fileDialog.Multiselect = false;
             if (fileDialog.ShowDialog() != true) return ERR_CANCELED_BY_USER;
-            fileDialog = null;
 
             var result = GetDeviceFastbootCommand(
                 $"flash recovery \"{fileDialog.FileName}\"")

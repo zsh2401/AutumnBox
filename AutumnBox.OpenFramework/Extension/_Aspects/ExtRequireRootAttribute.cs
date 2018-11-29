@@ -53,15 +53,15 @@ namespace AutumnBox.OpenFramework.Extension
             }
             if (DeviceHaveRoot(selectedDevice))
             {
-                canContinue = false;
+                canContinue = true;
             }
             else
             {
+                canContinue = false;
                 args.Context.App.RunOnUIThread(() =>
                 {
                     args.Context.Ux.Warn("OpenFxNoRoot");
                 });
-                canContinue = true;
             }
         }
     }

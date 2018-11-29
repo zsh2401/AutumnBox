@@ -39,6 +39,7 @@
      <s:String x:Key="UpdateWindowBtnSkipVersion">Skip this version</s:String>
     
     <!--PanelSettings-->
+    <s:String x:Key="PanelSettingsUpdateCheck">Update check</s:String>
     <s:String x:Key="PanelSettingsUx">UX</s:String>
     <s:String x:Key="PanelSettingsRandomTheme">Random theme</s:String>
       <s:String x:Key="PanelSettingsRandomThemeTip">The colorful dream in your eyes</s:String>
