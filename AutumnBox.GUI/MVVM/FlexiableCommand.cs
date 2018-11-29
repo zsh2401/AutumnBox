@@ -48,7 +48,7 @@ namespace AutumnBox.GUI.MVVM
             return CanExecuteProp;
         }
 
-        public void Execute(object parameter)
+        public virtual void Execute(object parameter)
         {
             Action?.Invoke(parameter);
         }

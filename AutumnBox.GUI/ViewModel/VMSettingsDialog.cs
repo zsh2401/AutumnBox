@@ -5,11 +5,17 @@
 *************************************************/
 using AutumnBox.GUI.MVVM;
 using AutumnBox.GUI.Properties;
+using AutumnBox.GUI.Util;
 using AutumnBox.GUI.Util.Custom;
+using AutumnBox.GUI.Util.Debugging;
 using AutumnBox.GUI.Util.I18N;
 using AutumnBox.GUI.Util.OS;
 using AutumnBox.GUI.View.Windows;
+using AutumnBox.OpenFramework.ExtLibrary;
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using System.Windows.Input;
 
 namespace AutumnBox.GUI.ViewModel
@@ -17,6 +23,56 @@ namespace AutumnBox.GUI.ViewModel
     class VMSettingsDialog : ViewModelBase
     {
         #region MVVM
+        public string GUIVersion
+        {
+            get => _guiVersion; set
+            {
+                _guiVersion = value;
+                RaisePropertyChanged();
+            }
+        }
+        private string _guiVersion;
+
+        public string BasicVersion
+        {
+            get => _basicVersion; set
+            {
+                _basicVersion = value;
+                RaisePropertyChanged();
+            }
+        }
+        private string _basicVersion;
+
+        public string OpenFxVersion
+        {
+            get => _openFxVersion; set
+            {
+                _openFxVersion = value;
+                RaisePropertyChanged();
+            }
+        }
+        private string _openFxVersion;
+
+        public string CoreLibVersion
+        {
+            get => _coreLibVersion; set
+            {
+                _coreLibVersion = value;
+                RaisePropertyChanged();
+            }
+        }
+        private string _coreLibVersion;
+
+        public ICommand UpdateCheck
+        {
+            get => _updateCheck; set
+            {
+                _updateCheck = value;
+                RaisePropertyChanged();
+            }
+        }
+        private ICommand _updateCheck;
+
         public bool UseRandomTheme
         {
             get
@@ -60,6 +116,7 @@ namespace AutumnBox.GUI.ViewModel
         }
 
         public IEnumerable<ITheme> Themes { get => ThemeManager.Instance.Themes; }
+
         public ITheme SelectedTheme
         {
             get => ThemeManager.Instance.Current; set
@@ -99,6 +156,7 @@ namespace AutumnBox.GUI.ViewModel
 
         public string ThemeDisplayMemberPath { get; set; } = nameof(ITheme.Name);
         public string LanguageDisplayMemberPath { get; set; } = nameof(ILanguage.LangName);
+
         #endregion
         public VMSettingsDialog()
         {
@@ -110,6 +168,28 @@ namespace AutumnBox.GUI.ViewModel
             {
                 new LogWindow().Show();
             });
+            UpdateCheck = new FlexiableCommand(() =>
+            {
+                Updater.CheckAndNotice(showDontNeedToUpdate: true);
+            });
+            try
+            {
+                GUIVersion = Self.Version.ToString();
+                BasicVersion = typeof(Basic.ManagedAdb.LocalAdbServer).Assembly.GetName().Version.ToString();
+                OpenFxVersion = OpenFramework.BuildInfo.SDK_VERSION.ToString();
+
+                var coreLibFilterResult = from lib in OpenFramework.Management.Manager.InternalManager.Librarians
+                                          where lib.Name == "AutumnBox Core Modules"
+                                          select lib;
+                if (coreLibFilterResult.Count() == 0) return;
+                var assemblyLib = coreLibFilterResult.First() as AssemblyBasedLibrarian;
+                Assembly assembly = assemblyLib.ManagedAssembly;
+                CoreLibVersion = assembly.GetName().Version.ToString();
+            }
+            catch (Exception e)
+            {
+                SLogger.Warn(this, "fail to get version infos", e);
+            }
         }
     }
 }
