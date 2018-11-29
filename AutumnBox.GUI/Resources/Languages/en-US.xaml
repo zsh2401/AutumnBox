@@ -39,7 +39,14 @@
      <s:String x:Key="UpdateWindowBtnSkipVersion">Skip this version</s:String>
     
     <!--PanelSettings-->
+     <s:String x:Key="PanelSettingsTitleDontNeedUpdate">You are using the newest version</s:String>
+     <s:String x:Key="PanelSettingsMsgDontNeedUpdate">Do not need any update</s:String>
+    <s:String x:Key="PanelSettingsGUIVersionLabel">GUI</s:String>
+     <s:String x:Key="PanelSettingsCoreLibVersionLabel">Core Lib</s:String>
+     <s:String x:Key="PanelSettingsBasicVersionLabel">Basic</s:String>
+    <s:String x:Key="PanelSettingsOpenFxVersionLabel">Open Fx</s:String>
     <s:String x:Key="PanelSettingsUpdateCheck">Update check</s:String>
+     <s:String x:Key="PanelSettingsVersionInfo">Version Information</s:String>
     <s:String x:Key="PanelSettingsUx">UX</s:String>
     <s:String x:Key="PanelSettingsRandomTheme">Random theme</s:String>
       <s:String x:Key="PanelSettingsRandomThemeTip">The colorful dream in your eyes</s:String>
@@ -491,6 +498,11 @@
     <s:String x:Key="titContact">Contact</s:String>
     <s:String x:Key="titSupport">Support</s:String>
     <!--开始面板-->
+    
+    <!--PanelDonte-->
+    <s:String x:Key="PanelDonateBtnCaption">There have more way to donate me!</s:String>
+     <s:String x:Key="PanelDonateBtnGotoDonatePage">Go to donate page</s:String>
+    <s:String x:Key="PanelDonateDescription">You donate is great encouragement to me</s:String>
     
     <!--静态界面标记-->
     <s:String x:Key="ckbShowDebugWindowOnNextLaunch">Show debug window on next launch</s:String>

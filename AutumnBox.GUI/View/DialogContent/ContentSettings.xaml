@@ -7,7 +7,7 @@
              xmlns:viewmodel="clr-namespace:AutumnBox.GUI.ViewModel"
              FontFamily="{DynamicResource AutumnBox.Font}"
              FontSize="15"
-             mc:Ignorable="d" Height="343.047" Width="530">
+             mc:Ignorable="d" Height="376.047" Width="530">
     <UserControl.DataContext>
         <viewmodel:VMSettingsDialog/>
     </UserControl.DataContext>
@@ -37,12 +37,29 @@
                 </materialDesign:Card>
                 
                 <materialDesign:Card Margin="5" Width="250">
-                    <StackPanel Margin="5" Orientation="Vertical">
-                        <TextBlock  Margin="0,0,0,5" Text="{DynamicResource PanelSettingsOther}"/>
-                        <Label Height="1" Background="LightGray"/>
-                        <Button Command="{Binding SendToDesktop}" FontSize="12" Margin="5" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource PanelSettingsSendToDesktop}"/>
+                    <StackPanel Orientation="Vertical" Margin="5">
+                        <TextBlock  Margin="0,0,0,5" Text="{DynamicResource PanelSettingsVersionInfo}"/>
+                        <Label Margin="0,0,0,5" Height="1" Background="LightGray"/>
+                        <Grid>
+                            <TextBlock HorizontalAlignment="Left" Text="{DynamicResource PanelSettingsGUIVersionLabel}"/>
+                            <TextBlock HorizontalAlignment="Right" Text="{Binding GUIVersion}"/>
+                        </Grid>
+                        <Grid>
+                            <TextBlock HorizontalAlignment="Left" Text="{DynamicResource PanelSettingsBasicVersionLabel}"/>
+                            <TextBlock HorizontalAlignment="Right" Text="{Binding BasicVersion}"/>
+                        </Grid>
+                        <Grid>
+                            <TextBlock HorizontalAlignment="Left" Text="{DynamicResource PanelSettingsOpenFxVersionLabel}"/>
+                            <TextBlock HorizontalAlignment="Right" Text="{Binding OpenFxVersion}"/>
+                        </Grid>
+                        <Grid>
+                            <TextBlock HorizontalAlignment="Left" Text="{DynamicResource PanelSettingsCoreLibVersionLabel}"/>
+                            <TextBlock HorizontalAlignment="Right" Text="{Binding CoreLibVersion}"/>
+                        </Grid>
+                        <Button Style="{DynamicResource MaterialDesignFlatButton}" Command="{Binding UpdateCheck}" Content="{DynamicResource PanelSettingsUpdateCheck}"/>
                     </StackPanel>
                 </materialDesign:Card>
+                
             </StackPanel>
 
             <StackPanel Width="260" Orientation="Vertical">
@@ -76,28 +93,13 @@
                 </materialDesign:Card>
 
                 <materialDesign:Card Margin="5" Width="250">
-                    <StackPanel Orientation="Vertical">
-                        <TextBlock  Margin="0,0,0,5" Text="{DynamicResource PanelSettingsVersionInfo}"/>
-                        <Label Margin="0,0,0,5" Height="1" Background="LightGray"/>
-                        <Grid>
-                            <TextBlock HorizontalAlignment="Left" Text="{DynamicResource PanelSettingsGUIVersionLabel}"/>
-                            <TextBlock HorizontalAlignment="Right" Text="{Binding AutumnBoxGUIVersion}"/>
-                        </Grid>
-                        <Grid>
-                            <TextBlock HorizontalAlignment="Left" Text="{DynamicResource PanelSettingsBasicVersionLabel}"/>
-                            <TextBlock HorizontalAlignment="Right" Text="{Binding AutumnBoxGUIVersion}"/>
-                        </Grid>
-                        <Grid>
-                            <TextBlock HorizontalAlignment="Left" Text="{DynamicResource PanelSettingsOpenFxVersionLabel}"/>
-                            <TextBlock HorizontalAlignment="Right" Text="{Binding AutumnBoxGUIVersion}"/>
-                        </Grid>
-                        <Grid>
-                            <TextBlock HorizontalAlignment="Left" Text="{DynamicResource PanelSettingsCoreLibVersionLabel}"/>
-                            <TextBlock HorizontalAlignment="Right" Text="{Binding OpenFxVersion}"/>
-                        </Grid>
-                        <Button Style="{DynamicResource MaterialDesignFlatButton}" Command="{Binding UpdateCheck}" Content="{DynamicResource PanelSettingsUpdateCheck}"/>
+                    <StackPanel Margin="5" Orientation="Vertical">
+                        <TextBlock  Margin="0,0,0,5" Text="{DynamicResource PanelSettingsOther}"/>
+                        <Label Height="1" Background="LightGray"/>
+                        <Button Command="{Binding SendToDesktop}" FontSize="12" Margin="5" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource PanelSettingsSendToDesktop}"/>
                     </StackPanel>
                 </materialDesign:Card>
+                
             </StackPanel>
         </WrapPanel>
         <Button Margin="10" VerticalAlignment="Bottom" Style="{DynamicResource MaterialDesignFlatButton}" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Content="{DynamicResource btnClose}"/>

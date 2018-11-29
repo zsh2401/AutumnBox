@@ -19,7 +19,7 @@ namespace AutumnBox.GUI.Util
                 Settings.Default.Save();
             }
         }
-        public static void CheckAndNotice()
+        public static void CheckAndNotice(bool showDontNeedToUpdate = false)
         {
             RemoteVersionInfoGetter getter = new RemoteVersionInfoGetter();
             getter.Try((e) =>
@@ -29,6 +29,18 @@ namespace AutumnBox.GUI.Util
                     App.Current.Dispatcher.Invoke(() =>
                     {
                         new UpdateNoticeWindow(e).Show();
+                    });
+                }
+                else if (showDontNeedToUpdate)
+                {
+                    App.Current.Dispatcher.Invoke(() =>
+                    {
+                        new MessageWindow()
+                        {
+                            MsgTitle = "PanelSettingsTitleDontNeedUpdate",
+                            Message = "PanelSettingsMsgDontNeedUpdate",
+                            Owner = App.Current.MainWindow
+                        }.Show();
                     });
                 }
             });

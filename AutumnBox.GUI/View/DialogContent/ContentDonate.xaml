@@ -7,11 +7,17 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              FontFamily="{DynamicResource AutumnBox.Font}"
-             mc:Ignorable="d" Height="340.5" Width="666">
-    <Grid>
-        <Image RenderOptions.BitmapScalingMode="Fant" HorizontalAlignment="Left" Height="317" VerticalAlignment="Top" Width="210" Source="/AutumnBox.GUI;component/Resources/Drawable/Donate/alipay.jpg" Margin="10,10,0,0"/>
-        <Image RenderOptions.BitmapScalingMode="Fant" HorizontalAlignment="Left" Height="317" Margin="225,10,0,0" VerticalAlignment="Top" Width="242" Source="/AutumnBox.GUI;component/Resources/Drawable/Donate/wechatpay.png"/>
-        <TextBlock Margin="482,47,10,0" TextWrapping="Wrap" Text="{DynamicResource DonateDescription}" VerticalAlignment="Top" FontSize="24" Height="280" />
-        <Button x:Name="BtnClose" Style="{DynamicResource MaterialDesignFlatButton}" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Height="30" VerticalAlignment="Top"  Content="{DynamicResource btnClose}" HorizontalAlignment="Right" Width="91" Margin="0,4,10,0"/>
-    </Grid>
+             mc:Ignorable="d" Height="340.5" Width="718">
+    <DockPanel>
+        <Image Margin="5" DockPanel.Dock="Left" RenderOptions.BitmapScalingMode="Fant" Source="/AutumnBox.GUI;component/Resources/Drawable/Donate/alipay.jpg"/>
+        <Image Margin="5"  DockPanel.Dock="Left"  RenderOptions.BitmapScalingMode="Fant" Source="/AutumnBox.GUI;component/Resources/Drawable/Donate/wechatpay.png"/>
+        <StackPanel Margin="5" DockPanel.Dock="Right" Orientation="Vertical">
+            <Button x:Name="BtnClose" Style="{DynamicResource MaterialDesignFlatButton}" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Content="{DynamicResource btnClose}" HorizontalAlignment="Right"/>
+            <TextBlock Margin="5" TextWrapping="Wrap" Text="{DynamicResource PanelDonateDescription }" FontSize="24" />
+            <Button Click="Button_Click" Margin="5" Style="{DynamicResource MaterialDesignFlatButton}">
+                <TextBlock Text="{DynamicResource PanelDonateBtnGotoDonatePage}" TextWrapping="Wrap"></TextBlock>
+            </Button>
+            <TextBlock Text="{DynamicResource PanelDonateBtnCaption}" TextWrapping="Wrap"/>
+        </StackPanel>
+    </DockPanel>
 </controls:AtmbDialogContent>

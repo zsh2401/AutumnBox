@@ -41,6 +41,8 @@
      <s:String x:Key="UpdateWindowBtnSkipVersion">跳过此版本</s:String>
     
         <!--PanelSettings-->
+    <s:String x:Key="PanelSettingsTitleDontNeedUpdate">无需更新</s:String>
+    <s:String x:Key="PanelSettingsMsgDontNeedUpdate">无需任何更新,你已经是最新版本了</s:String>
      <s:String x:Key="PanelSettingsGUIVersionLabel">图形界面</s:String>
      <s:String x:Key="PanelSettingsCoreLibVersionLabel">核心模块</s:String>
      <s:String x:Key="PanelSettingsBasicVersionLabel">ADB封装库</s:String>
@@ -467,6 +469,12 @@
     <s:String x:Key="titSupport">支持</s:String>
 
     <!--开始面板-->
+    
+        <!--PanelDonte-->
+    <s:String x:Key="PanelDonateBtnCaption">↑↑这里有捐赠者记录以及更多互惠互利的经济支援方式哦~</s:String>
+     <s:String x:Key="PanelDonateBtnGotoDonatePage">前往捐赠页面</s:String>
+    <s:String x:Key="PanelDonateDescription">赠人玫瑰,手留余香.
+    谢谢你对中国软件生态做出的贡献</s:String>
     
     <!--静态界面标记-->
     <s:String x:Key="ckbShowDebugWindowOnNextLaunch">下次启动时显示Debug窗口</s:String>
