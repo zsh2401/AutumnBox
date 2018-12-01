@@ -58,6 +58,11 @@
     <Compile Include="Model\ReportHeader.cs" />
     <Compile Include="MVVM\NotificationObject.cs" />
     <Compile Include="MVVM\ViewModelBase.cs" />
+    <Compile Include="Util\LogsScanner.cs" />
+    <Compile Include="ViewModel\VMUploader.cs" />
+    <Compile Include="View\UploadingWindow.xaml.cs">
+      <DependentUpon>UploadingWindow.xaml</DependentUpon>
+    </Compile>
     <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -73,6 +78,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\UploadingWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MVVM\ModelBase.cs" />

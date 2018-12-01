@@ -26,10 +26,10 @@ namespace AutumnBox.Reporter.Util
             request.Headers["UserName"] = header.UserName ?? "";
             request.Headers["UserMail"] = header.UserMail.ToString() ?? "";
             request.Headers["Remark"] = header.Remark ?? "";
+            request.Headers["LogName"] = log.LogName;
             request.ContentType = "text";
             byte[] data = Encoding.UTF8.GetBytes(log.Content);
             request.ContentLength = data.Length;
-            request.ContentType = "text";
             using (var stream = request.GetRequestStream())
             {
                 stream.Write(data, 0, data.Length);

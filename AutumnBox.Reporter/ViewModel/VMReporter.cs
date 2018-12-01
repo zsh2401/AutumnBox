@@ -1,10 +1,12 @@
 ﻿using AutumnBox.Reporter.Model;
 using AutumnBox.Reporter.MVVM;
 using AutumnBox.Reporter.Util;
+using AutumnBox.Reporter.View;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -14,26 +16,6 @@ namespace AutumnBox.Reporter.ViewModel
 {
     class VMReporter : ViewModelBase
     {
-        public double UploadProgress
-        {
-            get => _uploadProgress; set
-            {
-                _uploadProgress = value;
-                RaisePropertyChanged();
-            }
-        }
-        private double _uploadProgress;
-
-        public Visibility UploadingPanelVisibily
-        {
-            get => _uploadingPanelVisibily; set
-            {
-                _uploadingPanelVisibily = value;
-                RaisePropertyChanged();
-            }
-        }
-        private Visibility _uploadingPanelVisibily = Visibility.Hidden;
-
         public ReportHeader Header
         {
             get => _header; set
@@ -43,6 +25,21 @@ namespace AutumnBox.Reporter.ViewModel
             }
         }
         private ReportHeader _header;
+
+        public bool IsSelectAll
+        {
+            get => _isSelectAll;
+            set
+            {
+                _isSelectAll = value;
+                foreach (var log in Logs)
+                {
+                    log.NeedUpload = value;
+                }
+                RaisePropertyChanged();
+            }
+        }
+        private bool _isSelectAll = false;
 
         public IEnumerable<Log> Logs
         {
@@ -67,29 +64,30 @@ namespace AutumnBox.Reporter.ViewModel
 
         public VMReporter()
         {
-            Header = new ReportHeader()
+            Header = new ReportHeader();
+            Submit = new FlexiableCommand(SubmitImpl);
+            Logs = LogsScanner.Scan();
+            UpdateIsSelectAll();
+        }
+        private void UpdateIsSelectAll()
+        {
+            int countOfNeedUpload = Logs.Where((log) =>
             {
-                UUID = Guid.NewGuid().ToString(),
-            };
-            Submit = new FlexiableCommand(() =>
+                return log.NeedUpload;
+            }).Count();
+            IsSelectAll = countOfNeedUpload == Logs.Count();
+        }
+        private void SubmitImpl()
+        {
+            var needUploads = from log in Logs
+                              where log.NeedUpload
+                              select log;
+            if (needUploads.Count() == 0)
             {
-                UploadingPanelVisibily = Visibility.Visible;
-                UploadProgress = 0;
-                var uploader = new Uploader(Header);
-                int uploaded = 0;
-                uploader.Upload(Logs, (ex) =>
-                {
-                    if (ex != null)
-                    {
-                        Trace.WriteLine(ex);
-                    }
-                    UploadProgress = uploaded / Logs.Count() * 100;
-                    if (uploaded == Logs.Count())
-                    {
-                        UploadingPanelVisibily = Visibility.Hidden;
-                    }
-                });
-            });
+                MessageBox.Show("请至少选择一个Log文件！", "警告", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+            new UploadingWindow(needUploads).ShowDialog();
         }
     }
 }
