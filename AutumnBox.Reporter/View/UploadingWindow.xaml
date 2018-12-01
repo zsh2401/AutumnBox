@@ -7,6 +7,8 @@
         xmlns:local="clr-namespace:AutumnBox.Reporter.View"
         xmlns:viewmodel="clr-namespace:AutumnBox.Reporter.ViewModel"
         mc:Ignorable="d"
+        Activated="Window_Activated"
+        Closing="Window_Closing"
         Title="UploadingWindow" Height="233.805" Width="362.195">
     <Window.DataContext>
         <viewmodel:VMUploader></viewmodel:VMUploader>

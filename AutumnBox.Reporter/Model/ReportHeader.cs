@@ -30,7 +30,7 @@ namespace AutumnBox.Reporter.Model
         }
         private string _userName;
 
-        public MailAddress UserMail
+        public string UserMail
         {
             get => _userMail; set
             {
@@ -38,7 +38,7 @@ namespace AutumnBox.Reporter.Model
                 RaisePropertyChanged();
             }
         }
-        private MailAddress _userMail;
+        private string _userMail;
 
         public string Remark
         {

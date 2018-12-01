@@ -87,7 +87,7 @@ namespace AutumnBox.Reporter.ViewModel
                 MessageBox.Show("请至少选择一个Log文件！", "警告", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
-            new UploadingWindow(needUploads).ShowDialog();
+            new UploadingWindow(Header, needUploads).ShowDialog();
         }
     }
 }

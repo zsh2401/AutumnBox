@@ -21,10 +21,24 @@ namespace AutumnBox.Reporter.View
     /// </summary>
     public partial class UploadingWindow : Window
     {
-        internal UploadingWindow(IEnumerable<Log> logs)
+        private readonly ReportHeader header;
+        private readonly IEnumerable<Log> logs;
+
+        internal UploadingWindow(ReportHeader header,IEnumerable<Log> logs)
         {
             InitializeComponent();
-            (DataContext as VMUploader).StartUpload(logs);
+            this.header = header ?? throw new ArgumentNullException(nameof(header));
+            this.logs = logs ?? throw new ArgumentNullException(nameof(logs));
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            (DataContext as VMUploader).Stop();
+        }
+
+        private void Window_Activated(object sender, EventArgs e)
+        {
+            (DataContext as VMUploader).StartUpload(header, logs);
         }
     }
 }
