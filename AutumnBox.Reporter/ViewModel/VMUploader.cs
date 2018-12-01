@@ -12,7 +12,9 @@ namespace AutumnBox.Reporter.ViewModel
 {
     class VMUploader : ViewModelBase
     {
-        private const string API = "";
+        private const string API = "https://atmb.xxwhite.com/api/sublog";
+
+
         public string Status
         {
             get => _status; set
@@ -86,7 +88,7 @@ namespace AutumnBox.Reporter.ViewModel
             request.Method = "POST";
             request.Headers["Id"] = header.UUID;
             request.Headers["UserName"] = header.UserName ?? "";
-            request.Headers["UserMail"] = header.UserMail.ToString() ?? "";
+            request.Headers["UserMail"] = header.UserMail ?? "";
             request.Headers["Remark"] = header.Remark ?? "";
             request.Headers["LogName"] = log.LogName;
             request.ContentType = "text";

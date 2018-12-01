@@ -45,7 +45,7 @@ namespace AutumnBox.Reporter.Model
 
         private string ReadContent()
         {
-            return File.ReadAllText(LogName);
+            return File.ReadAllText(LogFile.FullName);
         }
     }
 }
