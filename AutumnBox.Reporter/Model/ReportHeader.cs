@@ -39,7 +39,7 @@ namespace AutumnBox.Reporter.Model
             }
         }
         private MailAddress _userMail;
-        
+
         public string Remark
         {
             get => _remark; set
@@ -49,5 +49,10 @@ namespace AutumnBox.Reporter.Model
             }
         }
         private string _remark;
+
+        public ReportHeader()
+        {
+            UUID = Guid.NewGuid().ToString();
+        }
     }
 }

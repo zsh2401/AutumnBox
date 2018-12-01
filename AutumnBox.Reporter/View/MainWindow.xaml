@@ -40,15 +40,24 @@
 
                 </DockPanel>
 
-                <ListBox ItemsSource="{Binding Logs}" DockPanel.Dock="Right"></ListBox>
+                <DockPanel DockPanel.Dock="Right">
+                    <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
+                        <CheckBox VerticalContentAlignment="Center" IsChecked="{Binding IsSelectAll}"/>
+                        <TextBlock  Text="全选"/>
+                    </StackPanel>
+                    <ListView ItemsSource="{Binding Logs}" DockPanel.Dock="Bottom">
+                        <ListView.ItemTemplate>
+                            <ItemContainerTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <CheckBox IsChecked="{Binding NeedUpload}"/>
+                                    <TextBlock Text="{Binding LogName}"/>
+                                </StackPanel>
+                            </ItemContainerTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </DockPanel>
+                
             </DockPanel>
         </DockPanel>
-
-        <Grid Background="White" Visibility="{Binding UploadingPanelVisibily}">
-            <StackPanel Margin="0,20,0,0" Orientation="Vertical" VerticalAlignment="Top">
-                <TextBlock FontSize="40" TextAlignment="Center">上传中</TextBlock>
-                <ProgressBar Value="{Binding UploadProgress}"></ProgressBar>
-            </StackPanel>
-        </Grid>
     </Grid>
 </Window>
