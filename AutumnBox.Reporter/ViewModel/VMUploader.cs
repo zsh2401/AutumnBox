@@ -2,6 +2,8 @@
 using AutumnBox.Reporter.MVVM;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -84,14 +86,15 @@ namespace AutumnBox.Reporter.ViewModel
         }
         private void Upload(ReportHeader header, Log log)
         {
-            WebRequest request = WebRequest.CreateHttp(API);
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(API);
             request.Method = "POST";
-            request.Headers["Id"] = header.UUID;
+            request.Headers["SubmitId"] = header.UUID;
             request.Headers["UserName"] = header.UserName ?? "";
             request.Headers["UserMail"] = header.UserMail ?? "";
             request.Headers["Remark"] = header.Remark ?? "";
             request.Headers["LogName"] = log.LogName;
-            request.ContentType = "text";
+            request.ContentType = "application/json";
+            request.Accept = "application/json";
             byte[] data = Encoding.UTF8.GetBytes(log.Content);
             request.ContentLength = data.Length;
             using (var stream = request.GetRequestStream())
@@ -100,6 +103,10 @@ namespace AutumnBox.Reporter.ViewModel
             }
             using (var response = request.GetResponse())
             {
+                using (var reader = new StreamReader(response.GetResponseStream()))
+                {
+                    Trace.WriteLine(reader.ReadToEnd());
+                }
             }
         }
         public void Stop()
