@@ -77,7 +77,7 @@ namespace AutumnBox.Reporter.ViewModel
             {
                 Upload(header, log);
                 CountOfUploaded++;
-                Progress = CountOfUploaded / CountOfTotal;
+                Progress = CountOfUploaded / CountOfTotal * 100;
             }
             Status = "传输完毕";
             executingThread = null;
