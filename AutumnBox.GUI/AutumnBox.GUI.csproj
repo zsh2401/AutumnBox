@@ -246,6 +246,9 @@
     <Compile Include="Util\Extensions.cs" />
     <Compile Include="Util\OpenFxManagement\OpenFrameworkManager.cs" />
     <Compile Include="Util\Data\Md5.cs" />
+    <Compile Include="View\Windows\AdbFailedWindow.xaml.cs">
+      <DependentUpon>AdbFailedWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Windows\ChoiceWindow.xaml.cs">
       <DependentUpon>ChoiceWindow.xaml</DependentUpon>
     </Compile>
@@ -521,6 +524,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Panel\PanelReboot.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\AdbFailedWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

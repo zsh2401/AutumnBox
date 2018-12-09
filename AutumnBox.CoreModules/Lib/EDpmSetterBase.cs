@@ -7,6 +7,7 @@ using AutumnBox.Basic.Exceptions;
 using AutumnBox.CoreModules.Aspect;
 using AutumnBox.CoreModules.Attribute;
 using AutumnBox.OpenFramework.Extension;
+using AutumnBox.OpenFramework.Running;
 using AutumnBox.OpenFramework.Wrapper;
 using System;
 
@@ -57,7 +58,6 @@ namespace AutumnBox.CoreModules.Lib
             dpmCommander.RemoveAccounts();
            
             Progress = 70;
-
             WriteLineAndSetTip(Res("DPMSetting"));
            
             Progress = 80;
@@ -66,10 +66,10 @@ namespace AutumnBox.CoreModules.Lib
                 dpmCommander.SetDeviceOwner(_cn);
                 return 0;
             }
-            catch (AdbShellCommandFailedException ex)
+            catch (Exception ex)
             {
                 WriteLine(ex.Message);
-                return ex.ExitCode ?? 1;
+                return (int)ExtensionExitCodes.Exception;
             }
             finally
             {
