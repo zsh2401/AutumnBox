@@ -7,8 +7,18 @@
     <s:String x:Key="LanguageCode">en-US</s:String>
     <s:String x:Key="AppDesc">Open source,free,simple,GUI adb toolbox</s:String>
     <s:String x:Key="TitleSuffixAdmin">[Administrator]</s:String>
+        
+        <!--Adb failed Window-->
+    <s:String x:Key="AdbFailedWindowTitle">CAN NOT START THE ADB SERVER!</s:String>
+     <s:String x:Key="AdbFailedWindowAdvice">你可以尝试:
+        * 关闭其他手机助手
+        * 重启电脑
+        * 打开任务管理器关闭ADB进程
+     </s:String>
+    <s:String x:Key="AdbFailedWindowCopyNotice"> THE FLOWLING TEXT AND SEND IT TO SOMEONE WHO CAN HANDLE THIS</s:String>
+    <s:String x:Key="AdbFailedWindowBtnCopy">COPY</s:String>
     
-         <!--LibsWindow-->
+        <!--LibsWindow-->
     <s:String x:Key="LibsWindowTitle">Loaded extension libs</s:String>
     <s:String x:Key="LibsWindowLoadedWrapper">Loaded wrappers: </s:String>
     

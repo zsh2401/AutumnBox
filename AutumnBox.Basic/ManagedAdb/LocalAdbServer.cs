@@ -23,6 +23,15 @@ namespace AutumnBox.Basic.ManagedAdb
     public sealed class LocalAdbServer : IAdbServer
     {
         /// <summary>
+        /// 实例
+        /// </summary>
+        public static readonly LocalAdbServer Instance;
+        static LocalAdbServer()
+        {
+            Instance = new LocalAdbServer();
+        }
+        private LocalAdbServer() { }
+        /// <summary>
         /// 默认端口
         /// </summary>
         public const ushort DEFAULT_PORT = 54030;
@@ -57,13 +66,25 @@ namespace AutumnBox.Basic.ManagedAdb
                .ThrowIfExitCodeNotEqualsZero();
         }
         /// <summary>
+        /// 为ture将使得Kill方法失效
+        /// </summary>
+#if SDK
+            internal 
+#else
+        public
+#endif
+        bool InvalidKill
+        { get; set; } = false;
+
+        /// <summary>
         /// 杀死
         /// </summary>
         public void Kill()
         {
+            if (InvalidKill) return;
             new ProcessBasedCommand(Adb.AdbFilePath, $"-P {Port} kill-server")
-                .Execute()
-                .ThrowIfExitCodeNotEqualsZero();
+            .Execute()
+            .ThrowIfExitCodeNotEqualsZero();
         }
         /// <summary>
         /// 析构

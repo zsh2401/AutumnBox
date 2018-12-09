@@ -9,6 +9,17 @@
     <s:String x:Key="AppDesc">开源,简约,免费的图形化ADB工具箱</s:String>
      <s:String x:Key="TitleSuffixAdmin">[管理员模式]</s:String>
     
+    <!--Adb failed Window-->
+    <s:String x:Key="AdbFailedWindowTitle">史诗级问题!无法启动ADB服务!</s:String>
+     <s:String x:Key="AdbFailedWindowAdvice">你可以尝试:
+        * 关闭其他手机助手
+        * 重启电脑
+        * 打开任务管理器关闭ADB进程
+         或
+     </s:String>
+    <s:String x:Key="AdbFailedWindowCopyNotice">下列内容,并发送给你要问的人</s:String>
+    <s:String x:Key="AdbFailedWindowBtnCopy">复制</s:String>
+    
      <!--LibsWindow-->
     <s:String x:Key="LibsWindowTitle">已加载的拓展模块库</s:String>
     <s:String x:Key="LibsWindowLoadedWrapper">加载的包装器: </s:String>

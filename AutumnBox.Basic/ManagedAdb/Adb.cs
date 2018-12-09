@@ -3,6 +3,7 @@
 ** date:  2018/9/9 18:02:46 (UTC +8:00)
 ** desc： ...
 *************************************************/
+using AutumnBox.Basic.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -53,19 +54,6 @@ namespace AutumnBox.Basic.ManagedAdb
         private const string AUTUMNBOX_BASIC_ADB_FILE = "ManagedAdb/win32adb/adb.exe";
         private const string AUTUMNBOX_BASIC_FASTBOOT_FILE = "ManagedAdb/win32adb/fastboot.exe";
         /// <summary>
-        /// 默认加载
-        /// </summary>
-        public static void DefaultLoad()
-        {
-            Load(
-                new DirectoryInfo(AUTUMNBOX_BASIC_ADB_TOOLS),
-                new FileInfo(AUTUMNBOX_BASIC_ADB_FILE),
-                new FileInfo(AUTUMNBOX_BASIC_FASTBOOT_FILE),
-                new LocalAdbServer(),
-                true
-                );
-        }
-        /// <summary>
         /// 加载
         /// </summary>
         /// <param name="adbToolsDir"></param>
@@ -75,6 +63,7 @@ namespace AutumnBox.Basic.ManagedAdb
         /// <param name="startTheServer"></param>
         public static void Load(DirectoryInfo adbToolsDir,FileInfo adbClient, FileInfo fastbootClient, IAdbServer server, bool startTheServer)
         {
+            //throw new AdbCommandFailedException(null,0);
             AdbToolsDir = adbToolsDir ?? throw new ArgumentNullException(nameof(adbToolsDir));
             AdbFile = adbClient ?? throw new ArgumentNullException(nameof(adbClient));
             FastbootFile = fastbootClient ?? throw new ArgumentNullException(nameof(fastbootClient));

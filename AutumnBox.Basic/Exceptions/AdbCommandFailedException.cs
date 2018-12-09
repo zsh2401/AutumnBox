@@ -18,7 +18,7 @@ namespace AutumnBox.Basic.Exceptions
         /// <param name="output"></param>
         /// <param name="exitCode"></param>
         public AdbCommandFailedException(Output output,int exitCode)
-            : base(output.ToString(),exitCode)
+            : base(output?.ToString(),exitCode)
         {
         }
     }

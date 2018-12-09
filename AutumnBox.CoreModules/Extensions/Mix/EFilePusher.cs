@@ -7,6 +7,7 @@ using AutumnBox.Basic.Data;
 using AutumnBox.OpenFramework.Extension;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text.RegularExpressions;
 using System.Threading;
 
@@ -74,11 +75,12 @@ namespace AutumnBox.CoreModules.Extensions.Mix
                 dialogResult = fileDialog.ShowDialog();
                 seleFile = fileDialog.FileName;
             });
+            FileInfo fileInfo = new FileInfo(seleFile);
 
             if (dialogResult != true) return ERR_CANCELED_BY_USER;
             try
             {
-                return GetDeviceAdbCommand($"push \"{seleFile}\" /sdcard/")
+                return GetDeviceAdbCommand($"push \"{fileInfo.FullName}\" \"/sdcard/{fileInfo.Name}\"")
                     .To(OutputPrinter)
                     .Execute()
                     .ExitCode;
@@ -87,7 +89,6 @@ namespace AutumnBox.CoreModules.Extensions.Mix
             {
                 Logger.Warn("file pushing failed", ex);
                 WriteLineAndSetTip(Res("EFilePusherFailed"));
-                //FinishedTip = "EFilePusherFailed";
                 return ERR;
             }
         }
