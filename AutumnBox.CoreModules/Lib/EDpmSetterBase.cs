@@ -21,6 +21,7 @@ namespace AutumnBox.CoreModules.Lib
     {
         private string _cn;
         private CstmDpmCommander dpmCommander;
+
         protected override void OnCreate(ExtensionArgs args)
         {
             base.OnCreate(args);
@@ -29,6 +30,7 @@ namespace AutumnBox.CoreModules.Lib
             var infos = scanner.Informations;
             _cn = infos[DpmReceiverAttribute.KEY].Value as string;
         }
+
         protected sealed override int VisualMain()
         {
             WriteInitInfo();
@@ -76,6 +78,7 @@ namespace AutumnBox.CoreModules.Lib
                 Progress = 100;
             }
         }
+
         protected override void OnFinish(FinishedArgs args)
         {
             base.OnFinish(args);
