@@ -242,7 +242,18 @@ namespace AutumnBox.GUI.Util.OpenFxManagement
 
         public void AddResource(string key, object value)
         {
-            App.Current.Resources.Add(key,value);
+            App.Current.Resources.Add(key, value);
+        }
+
+        public void ShowException(string title, string sketch, string exceptionMessage)
+        {
+            new ExceptionWindow()
+            {
+                MessageTitle = title,
+                ExceptionMessage = exceptionMessage,
+                Sketch = sketch,
+                Owner = App.Current.MainWindow
+            }.Show();
         }
     }
 }

@@ -48,20 +48,20 @@ namespace AutumnBox.CoreModules.Lib
 
             WriteLineAndSetTip(Res("EGodPowerPushingApk"));
             dpmCommander.PushToDevice();
-           
+
             Progress = 50;
 
             WriteLineAndSetTip(Res("EGodPowerRmUser"));
             dpmCommander.RemoveUsers();
-           
+
             Progress = 60;
 
             WriteLineAndSetTip(Res("EGodPowerRmAcc"));
             dpmCommander.RemoveAccounts();
-           
+
             Progress = 70;
             WriteLineAndSetTip(Res("DPMSetting"));
-           
+
             Progress = 80;
             try
             {
@@ -79,38 +79,29 @@ namespace AutumnBox.CoreModules.Lib
             }
         }
 
-        protected override void OnFinish(FinishedArgs args)
+     
+
+        protected override string GetTipByExitCode(int exitCode)
         {
-            base.OnFinish(args);
-            try
+            switch (Args.CurrentThread.ExitCode)
             {
-                switch (args.ExitCode)
-                {
-                    case CstmDpmCommander.OKAY:
-                        Tip = Res("EDpmSetterBaseTipSuccessed");
-                        WriteLine(Res("EDpmSetterBaseMsgSuccessed"));
-                        break;
-                    case CstmDpmCommander.ERR:
-                        Tip = Res("EDpmSetterBaseTipError");
-                        WriteLine(Res("EDpmSetterBaseMsgError"));
-                        break;
-                    case CstmDpmCommander.ERR_EXIST_OTHER_ACC:
-                        Tip = Res("EDpmSetterBaseTipErrOtherAccounts");
-                        WriteLine(Res("EDpmSetterBaseMsgErrOtherAccounts"));
-                        break;
-                    case CstmDpmCommander.ERR_EXIST_OTHER_USER:
-                        Tip = Res("EDpmSetterBaseTipErrOtherUsers");
-                        WriteLine(Res("EDpmSetterBaseMsgErrOtherUsers"));
-                        break;
-                    case CstmDpmCommander.ERR_MIUI_SEC:
-                        Tip = Res("EDpmSetterBaseTipErrMiuiSec");
-                        WriteLine(Res("EDpmSetterBaseMsgErrMIUISec"));
-                        break;
-                }
-            }
-            catch (Exception e)
-            {
-                Logger.Warn("Can not set tip and message on EDpmSetterBase.OnFinish()", e);
+                case CstmDpmCommander.OKAY:
+                    WriteLine(Res("EDpmSetterBaseMsgSuccessed"));
+                    return Res("EDpmSetterBaseTipSuccessed");
+                case CstmDpmCommander.ERR:
+                    WriteLine(Res("EDpmSetterBaseMsgError"));
+                    return Res("EDpmSetterBaseTipError");
+                case CstmDpmCommander.ERR_EXIST_OTHER_ACC:
+                    WriteLine(Res("EDpmSetterBaseMsgErrOtherAccounts"));
+                    return Res("EDpmSetterBaseTipErrOtherAccounts");
+                case CstmDpmCommander.ERR_EXIST_OTHER_USER:
+                    WriteLine(Res("EDpmSetterBaseMsgErrOtherUsers"));
+                    return Res("EDpmSetterBaseTipErrOtherUsers");
+                case CstmDpmCommander.ERR_MIUI_SEC:
+                    WriteLine(Res("EDpmSetterBaseMsgErrMIUISec"));
+                    return Res("EDpmSetterBaseTipErrMiuiSec");
+                default:
+                    return base.GetTipByExitCode(exitCode);
             }
         }
     }

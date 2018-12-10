@@ -15,6 +15,13 @@ namespace AutumnBox.OpenFramework.Management
     public interface IBaseApi
     {
         /// <summary>
+        /// 显示异常信息
+        /// </summary>
+        /// <param name="title"></param>
+        /// <param name="sketch"></param>
+        /// <param name="exceptionMessage"></param>
+        void ShowException(string title, string sketch, string exceptionMessage);
+        /// <summary>
         /// 播放成功音效
         /// </summary>
         void PlayOk();
@@ -31,7 +38,7 @@ namespace AutumnBox.OpenFramework.Management
         /// 获取是否窗
         /// </summary>
         /// <returns></returns>
-        bool DoYN(string message,string btnYes,string btnNo);
+        bool DoYN(string message, string btnYes, string btnNo);
         /// <summary>
         /// 输入数字
         /// </summary>
@@ -40,14 +47,14 @@ namespace AutumnBox.OpenFramework.Management
         /// <param name="max"></param>
         /// <param name="result"></param>
         /// <returns></returns>
-        bool InputNumber(string hint, int min, int max,out int result);
+        bool InputNumber(string hint, int min, int max, out int result);
         /// <summary>
         /// 输入字符串
         /// </summary>
         /// <param name="hint"></param>
         /// <param name="result"></param>
         /// <returns></returns>
-        bool InputString(string hint,out string result);
+        bool InputString(string hint, out string result);
         /// <summary>
         /// 获取主窗口
         /// </summary>
@@ -102,13 +109,13 @@ namespace AutumnBox.OpenFramework.Management
         /// <param name="key"></param>
         /// <param name="value"></param>
         /// <returns></returns>
-        void SetResource(string key,object value);
+        void SetResource(string key, object value);
         /// <summary>
         /// 添加资源
         /// </summary>
         /// <param name="key"></param>
         /// <param name="value"></param>
-       void AddResource(string key, object value);
+        void AddResource(string key, object value);
         /// <summary>
         /// 重启程序
         /// </summary>

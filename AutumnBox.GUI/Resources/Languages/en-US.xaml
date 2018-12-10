@@ -104,6 +104,8 @@
     <s:String x:Key="PanelDevicesEnableCurrent">Enable crt net-debugging</s:String>
     
         <!--OpenFx-->
+    <s:String x:Key="OpenFxExceptionMsgTitleFmt">{0} have an error</s:String>
+    <s:String x:Key="OpenFxExceptionSketch">May you can copy the following text and find some help</s:String>
      <s:String x:Key="OpenFxTitleError">Error</s:String>
     <s:String x:Key="OpenFxTitleWarning">Warning</s:String>
     <s:String x:Key="OpenFxCantRunMore">Can't run more</s:String>

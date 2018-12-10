@@ -92,9 +92,9 @@ namespace AutumnBox.CoreModules.Extensions.Mix
                 return ERR;
             }
         }
-        protected override void OnFinish(FinishedArgs args)
+        protected override void OnDestory(object args)
         {
-            base.OnFinish(args);
+            base.OnDestory(args);
             _cancelReadingLoop = true;
         }
     }

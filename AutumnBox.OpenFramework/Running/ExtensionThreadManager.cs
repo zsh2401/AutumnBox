@@ -16,7 +16,7 @@ namespace AutumnBox.OpenFramework.Running
         private readonly List<IExtensionThread> runnings = new List<IExtensionThread>();
         public IExtensionThread Allocate(IExtensionWrapper wrapper, Type typeOfExtension)
         {
-            var thread = new ExtensionThread(typeOfExtension, wrapper)
+            var thread = new ExtensionThread(this,typeOfExtension, wrapper)
             {
                 Id = AlllocatePID()
             };

@@ -49,13 +49,14 @@ namespace AutumnBox.CoreModules.Extensions.Poweron
                 Progress = 100;
             }
         }
-        protected override void OnFinish(FinishedArgs args)
+
+        protected override void OnDestory(object args)
         {
-            base.OnFinish( args);
-            if (args.ExitCode == OK)
+            if (Args.CurrentThread.ExitCode == OK)
             {
                 DeviceSelectedOnCreating.Reboot2System();
             }
+            base.OnDestory(args);
         }
     }
 }

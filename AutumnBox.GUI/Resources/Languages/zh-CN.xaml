@@ -52,6 +52,7 @@
      <s:String x:Key="UpdateWindowBtnSkipVersion">跳过此版本</s:String>
     
         <!--PanelSettings-->
+    
     <s:String x:Key="PanelSettingsTitleDontNeedUpdate">无需更新</s:String>
     <s:String x:Key="PanelSettingsMsgDontNeedUpdate">无需任何更新,你已经是最新版本了</s:String>
      <s:String x:Key="PanelSettingsGUIVersionLabel">图形界面</s:String>
@@ -107,6 +108,8 @@
     <s:String x:Key="PanelDevicesEnableCurrent">开启当前设备网络调试</s:String>
     
     <!--OpenFx-->
+    <s:String x:Key="OpenFxExceptionMsgTitleFmt">{0} 发生了错误</s:String>
+    <s:String x:Key="OpenFxExceptionSketch">或许,你可以尝试复制下面的信息以寻求帮助</s:String>
     <s:String x:Key="OpenFxTitleError">错误</s:String>
     <s:String x:Key="OpenFxTitleWarning">警告</s:String>
     <s:String x:Key="OpenFxCantRunMore">此模块已经在运行，你无法多开</s:String>
