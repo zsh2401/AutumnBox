@@ -5,9 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AutumnBox.GUI.View.Windows"
         mc:Ignorable="d"
-        ResizeMode="NoResize"
         FontFamily="{DynamicResource AutumnBox.Font}"
         WindowStartupLocation="CenterOwner"
+        
+        MouseDown="Window_MouseDown"
         Title="{Binding MessageTitle}" Height="400" Width="380.864">
     <Grid>
         <DockPanel>
@@ -15,8 +16,8 @@
                 <TextBlock FontSize="30" Foreground="OrangeRed" Text="{Binding MessageTitle}" TextWrapping="Wrap"/>
                 <TextBlock Text="{Binding Sketch}" TextWrapping="Wrap"/>
             </StackPanel>
-            <Button Width="100" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource btnCopy}" DockPanel.Dock="Top"></Button>
-            <TextBox DockPanel.Dock="Bottom" Style="{x:Null}" Margin="5" Text="{Binding ExceptionMessage}"/>
+            <Button Click="Button_Click" Width="100" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource btnCopy}" DockPanel.Dock="Top"></Button>
+            <TextBox IsReadOnly="True" DockPanel.Dock="Bottom" Style="{x:Null}" Margin="5" Text="{Binding ExceptionMessage}"/>
         </DockPanel>
 
     </Grid>

@@ -65,5 +65,18 @@ namespace AutumnBox.GUI.View.Windows
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(memeberName));
         }
         public event PropertyChangedEventHandler PropertyChanged;
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                DragMove();
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Clipboard.SetText(ExceptionMessage);
+        }
     }
 }
