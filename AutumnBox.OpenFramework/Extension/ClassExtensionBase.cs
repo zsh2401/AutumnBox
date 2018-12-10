@@ -3,6 +3,7 @@
 ** date:  2018/10/10 19:13:50 (UTC +8:00)
 ** desc： ...
 *************************************************/
+using System;
 using System.Collections.Generic;
 using AutumnBox.OpenFramework.Content;
 using AutumnBox.OpenFramework.Exceptions;
@@ -58,6 +59,12 @@ namespace AutumnBox.OpenFramework.Extension
         }
 
         /// <summary>
+        /// 主函数发生异常时调用
+        /// </summary>
+        /// <param name="e"></param>
+        protected virtual void OnExcetpion(Exception e) { }
+
+        /// <summary>
         /// 无论如何,在模块即将被析构时,都将调用此函数
         /// </summary>
         protected virtual void OnDestory(object args) { }
@@ -86,11 +93,14 @@ namespace AutumnBox.OpenFramework.Extension
                 case Signals.COMMAND_STOP:
                     if (!OnStopCommand(value))
                     {
-                        throw new ExtensionCantBeStoppedException("Cant stop!",null);
+                        throw new ExtensionCantBeStoppedException("Cant stop!", null);
                     }
                     break;
                 case Signals.ON_CREATED:
                     OnCreate(value as ExtensionArgs);
+                    break;
+                case Signals.ON_EXCEPTION:
+                    OnExcetpion(value as Exception);
                     break;
                 default:
                     OnReceiveUnknownSignal(signalName, value);

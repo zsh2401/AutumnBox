@@ -19,29 +19,20 @@ namespace AutumnBox.OpenFramework.Extension
     public abstract class AtmbVisualExtension : AutumnBoxExtension
     {
         /// <summary>
-        /// 完成参数
-        /// </summary>
-        public class FinishedArgs : EventArgs
-        {
-            /// <summary>
-            /// 返回码
-            /// </summary>
-            public int ExitCode { get; set; }
-            /// <summary>
-            /// 参数
-            /// </summary>
-            public Dictionary<string, object> Data { get; set; }
-        }
-        /// <summary>
         ///拓展数据的key：完成时是否直接关闭窗体
         /// </summary>
         public const string KEY_CLOSE_FINISHED = "close_on_finished";
+
         /// <summary>
         /// 关闭或隐藏UI,仅在模块完成后可用
         /// </summary>
         protected void CloseUI()
         {
-            UIController.Close();
+            App.RunOnUIThread(() =>
+            {
+                UIController.Close();
+            }
+            );
         }
 
         /// <summary>
@@ -59,10 +50,12 @@ namespace AutumnBox.OpenFramework.Extension
             });
             Tip = App.GetPublicResouce<string>("RunningWindowStateRunning");
         }
+
         /// <summary>
         /// 主方法数据
         /// </summary>
         protected Dictionary<string, object> Data { get; private set; }
+
         /// <summary>
         /// 主函数
         /// </summary>
@@ -70,48 +63,45 @@ namespace AutumnBox.OpenFramework.Extension
         public sealed override int Main(Dictionary<string, object> data)
         {
             Data = data;
-            int retCode = ERR;
-            try
-            {
-                Logger.CDebug("Exeucting VisualMain()");
-                retCode = VisualMain();
-                Logger.CDebug("Executed VisualMain()");
-            }
-            catch (ThreadAbortException)
-            {
-                retCode = (int)ExtensionExitCodes.Killed;
-            }
-            catch (Exception ex)
-            {
-                retCode = (int)ExtensionExitCodes.ErrorUnknown; ;
-                Logger.Warn("Fatal exception on VisualMain()", ex);
-                WriteLine(App.GetPublicResouce<string>("RunningWindowExceptionOnRunning"));
-            }
-            Logger.Info("Finished");
-            OnFinish(new FinishedArgs()
-            {
-                ExitCode = retCode,
-                Data = data
-            });
-            return retCode;
+            return VisualMain();
         }
 
         /// <summary>
-        /// 完成
+        /// 异常处理
+        /// </summary>
+        /// <param name="e"></param>
+        protected override void OnExcetpion(Exception e)
+        {
+            base.OnExcetpion(e);
+            CloseUI();
+            UIController = null;
+            Data = null;
+        }
+
+        /// <summary>
+        /// 摧毁
         /// </summary>
         /// <param name="args"></param>
-        protected virtual void OnFinish(FinishedArgs args)
+        protected override void OnDestory(object args)
         {
+            base.OnDestory(args);
+            if (Args.CurrentThread.ExitCode == (int)ExtensionExitCodes.Exception)
+            {
+                return;
+            }
+            //Logger.Info(Args.CurrentThread.ExitCode.ToString());
+            //Logger.Info(((int)ExtensionExitCodes.Exception).ToString());
             UIController.OnFinish();
-            if (args.ExitCode == 0)
+            if (Args.CurrentThread.ExitCode == 0)
             {
                 var sound = GetService<ISoundService>(ServicesNames.SOUND);
                 sound.OK();
             }
-            Tip = GetTipByExitCode(args.ExitCode);
+
+            Tip = GetTipByExitCode(Args.CurrentThread.ExitCode);
             try
             {
-                if ((bool)args.Data[KEY_CLOSE_FINISHED] == true)
+                if ((bool)Data[KEY_CLOSE_FINISHED] == true)
                 {
                     App.RunOnUIThread(() =>
                     {
@@ -123,6 +113,8 @@ namespace AutumnBox.OpenFramework.Extension
             {
                 Logger.Warn("", e);
             }
+            UIController = null;
+            Data = null;
         }
 
         /// <summary>
@@ -180,11 +172,6 @@ namespace AutumnBox.OpenFramework.Extension
                 try
                 {
                     Args.CurrentThread.Kill();
-                    OnFinish(new FinishedArgs()
-                    {
-                        ExitCode = (int)ExtensionExitCodes.Killed,
-                        Data = Data,
-                    });
                 }
                 catch (Exceptions.ExtensionCantBeStoppedException)
                 {

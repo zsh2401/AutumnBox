@@ -5,6 +5,7 @@
 *************************************************/
 using AutumnBox.CoreModules.Aspect;
 using AutumnBox.OpenFramework.Extension;
+using System;
 using System.Threading;
 
 namespace AutumnBox.CoreModules.Extensions
@@ -20,11 +21,7 @@ namespace AutumnBox.CoreModules.Extensions
     {
         protected override int VisualMain()
         {
-            var thread = NewExtensionThread(typeof(EScreenShoter));
-            thread.Data[KEY_CLOSE_FINISHED] = true;
-            thread.Start();
-            thread.WaitForExit();
-            WriteLine(thread.ExitCode.ToString());
+            throw new Exception();
             return OK;
         }
     }

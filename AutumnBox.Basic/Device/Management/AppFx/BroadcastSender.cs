@@ -25,6 +25,7 @@ namespace AutumnBox.Basic.Device.Management.AppFx
         /// 发送一个广播
         /// </summary>
         /// <param name="broadcast">广播内容</param>
+        /// <param name="intent"></param>
         /// <exception cref="Exceptions.AdbShellCommandFailedException"></exception>
         public void Send(string broadcast,Intent intent=null)
         {

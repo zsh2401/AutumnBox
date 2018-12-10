@@ -1,4 +1,5 @@
-﻿using AutumnBox.OpenFramework.Extension;
+﻿using AutumnBox.OpenFramework.Content;
+using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.Wrapper;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Threading;
 
 namespace AutumnBox.OpenFramework.Running
 {
-    internal class ExtensionThread : IExtensionThread
+    internal sealed class ExtensionThread : Context, IExtensionThread
     {
         private readonly Type extensionType;
 
@@ -48,7 +49,15 @@ namespace AutumnBox.OpenFramework.Running
             {
                 throw new ArgumentException("message", nameof(signal));
             }
-            instance.ReceiveSignal(signal, value);
+            try
+            {
+                Logger.Warn($"sending signal {signal} to {Wrapper.Info.Name}");
+                instance.ReceiveSignal(signal, value);
+            }
+            catch (Exception e)
+            {
+                Logger.Warn($"a exception was thrown when {Wrapper.Info.Name} handling signal: {signal}", e);
+            }
         }
 
         public void Kill()
@@ -69,34 +78,47 @@ namespace AutumnBox.OpenFramework.Running
         }
 
         private bool isRunning = false;
+
         public void Start()
         {
-            Thread = new Thread(() =>
-            {
-                try
-                {
-                    isRunning = true;
-                    instance = (IExtension)Activator.CreateInstance(extensionType);
-                    instance.ReceiveSignal(Signals.ON_CREATED, new ExtensionArgs(this, Wrapper));
-                    ExitCode = instance.Main(Data);
-                }
-                catch (ThreadAbortException)
-                {
-                    ExitCode = (int)ExtensionExitCodes.Killed;
-                }
-                catch (Exception)
-                {
-                    ExitCode = (int)ExtensionExitCodes.ErrorUnknown;
-                }
-                finally
-                {
-                    isRunning = false;
-                    Finished?.Invoke(this, new ThreadFinishedEventArgs(this));
-                }
-            });
+            Thread = new Thread(Flow);
             Thread.Start();
             Started?.Invoke(this, new ThreadStartedEventArgs());
         }
+
+        private void Flow()
+        {
+            try
+            {
+                isRunning = true;
+                instance = (IExtension)Activator.CreateInstance(extensionType);
+                SendSignal(Signals.ON_CREATED, new ExtensionArgs(this, Wrapper));
+                ExitCode = instance.Main(Data);
+            }
+            catch (ThreadAbortException)
+            {
+                ExitCode = (int)ExtensionExitCodes.Killed;
+            }
+            catch (Exception e)
+            {
+                ExitCode = (int)ExtensionExitCodes.Exception;
+                SendSignal(Signals.ON_EXCEPTION, e);
+                string fmt = App.GetPublicResouce<string>("OpenFxExceptionMsgTitleFmt");
+                fmt = string.Format(fmt, Wrapper.Info.Name);
+                string sketch = App.GetPublicResouce<string>("OpenFxExceptionSketch");
+                Ux.RunOnUIThread(() =>
+                {
+                    BaseApi.ShowException(fmt, sketch, e.ToString());
+                });
+            }
+            finally
+            {
+                SendSignal(Signals.COMMAND_DESTORY);
+                isRunning = false;
+                Finished?.Invoke(this, new ThreadFinishedEventArgs(this));
+            }
+        }
+
 
         public void Shutdown(int exitCode)
         {
@@ -109,8 +131,13 @@ namespace AutumnBox.OpenFramework.Running
             while (isRunning) ;
         }
 
-        public ExtensionThread(Type extensionType, IExtensionWrapper wrapper)
+        public ExtensionThread(ExtensionThreadManager threadManager, Type extensionType, IExtensionWrapper wrapper)
         {
+            if (threadManager == null)
+            {
+                throw new ArgumentNullException(nameof(threadManager));
+            }
+
             this.extensionType = extensionType;
             Wrapper = wrapper ?? throw new ArgumentNullException(nameof(wrapper));
         }

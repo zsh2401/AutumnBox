@@ -21,5 +21,9 @@ namespace AutumnBox.OpenFramework.Running
         /// 已创建
         /// </summary>
         public const string ON_CREATED = "ON_CREATED";
+        /// <summary>
+        /// 异常
+        /// </summary>
+        public const string ON_EXCEPTION = "ON_EXCEPTION";
     }
 }

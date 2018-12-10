@@ -8,8 +8,11 @@
         mc:Ignorable="d"
         FontFamily="{DynamicResource AutumnBox.Font}"
         WindowStyle="None"
+        BorderBrush="{DynamicResource PrimaryLightBrush}"
+        BorderThickness="1"
+        ResizeMode="NoResize"
         WindowStartupLocation="CenterOwner"
-        Title="{Binding MsgTitle}" MinHeight="220" MinWidth="400" Height="220" Width="400"  MouseDoubleClick="Window_MouseDoubleClick" MouseDown="Window_MouseDown">
+        Title="{Binding MsgTitle}" MinHeight="220" MinWidth="400" Height="252" Width="458.182"  MouseDoubleClick="Window_MouseDoubleClick" MouseDown="Window_MouseDown">
     <Grid>
         <StackPanel Margin="0,0,0,0">
             <TextBlock Margin="10,5,10,5" Text="{Binding MsgTitle}" TextAlignment="Center" FontSize="20"/>

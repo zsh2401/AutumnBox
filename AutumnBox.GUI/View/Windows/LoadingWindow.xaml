@@ -7,10 +7,13 @@
         mc:Ignorable="d"
         ShowInTaskbar="False"
         WindowStyle="None"
+        BorderBrush="{DynamicResource PrimaryLightBrush}"
+        BorderThickness="1"
         WindowStartupLocation="CenterOwner"
         ResizeMode="NoResize"
-        Title="LoadingWindow" Background="Black" MinHeight="100" MinWidth="350" Height="100" Width="333" MouseDown="Window_MouseDown">
-    <Grid Margin="1" Background="White">
+         Background="White"
+        Title="LoadingWindow" MinHeight="100" MinWidth="350" Height="100" Width="333" MouseDown="Window_MouseDown">
+    <Grid>
         <StackPanel Orientation="Horizontal" Margin="10">
             <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}" Value="0" IsIndeterminate="True" Height="50" Width="50"/>
             <TextBlock FontSize="25" Margin="20,0,0,0" VerticalAlignment="Center" Text="{DynamicResource LoadingWindowMessage}"/>
