@@ -13,10 +13,10 @@
 ![](https://www.atmb.top/images/demo/show3.png)
 ![](https://www.atmb.top/images/demo/show6.png)
 ***
-## AutumnBox is what?
+## What is AutumnBox?
 A desktop program for GUI encapsulation of the Google Adb toolkit,help all people.
 ***
-## AutumnBox What can I do?
+## What can AutumnBox  do?
 * Brush third-party Recovery for your device
 * Push files to the device
 * One-click activation of the brevent service
