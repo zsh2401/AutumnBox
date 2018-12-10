@@ -44,7 +44,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron
             WriteExitCode(result.ExitCode);
            
 
-            if (androidVersion.Major >= 8)
+            if (androidVersion == null || androidVersion.Major >= 8)
             {
                 result = CmdStation.GetShellCommand(TargetDevice,
                $"pm grant {PKG_NAME} android.permission.READ_APP_OPS_STATS")
