@@ -12,14 +12,19 @@
         WindowStyle="ToolWindow"
         ResizeMode="CanResize">
     <Grid Margin="1" Background="WhiteSmoke">
-        <StackPanel Margin="10" VerticalAlignment="Top">
-            <TextBlock Text="{Binding Model.Header}" TextWrapping="Wrap" FontSize="25"/>
-            <TextBlock Text="{Binding Model.Message}" TextWrapping="Wrap" FontSize="15"/>
-        </StackPanel>
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom">
-            <Button Margin="10" HorizontalAlignment="Center"  Style="{DynamicResource MaterialDesignFlatButton}" Click="Button_Click" Command="{Binding SkipThisVersion}" Content="{DynamicResource UpdateWindowBtnSkipVersion}"/>
-            <Button Margin="10" HorizontalAlignment="Center" Style="{DynamicResource MaterialDesignRaisedButton}" Click="Button_Click" Command="{Binding GotoUpdate}" Content="{DynamicResource UpdateWindowBtnUpdate}"/>
-        </StackPanel>
+        <DockPanel>
+            <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Margin="10" HorizontalAlignment="Center"  Style="{DynamicResource MaterialDesignFlatButton}" Click="Button_Click" Command="{Binding SkipThisVersion}" Content="{DynamicResource UpdateWindowBtnSkipVersion}"/>
+                <Button Margin="10" HorizontalAlignment="Center" Style="{DynamicResource MaterialDesignRaisedButton}" Click="Button_Click" Command="{Binding GotoUpdate}" Content="{DynamicResource UpdateWindowBtnUpdate}"/>
+            </StackPanel>
+            <ScrollViewer DockPanel.Dock="Top" Margin="10" Template="{DynamicResource AtmbxScrollViewer}">
+                <Grid>
+                    <TextBlock Text="{Binding Model.Header}" TextWrapping="Wrap" FontSize="25"/>
+                    <TextBlock Text="{Binding Model.Message}" TextWrapping="Wrap" FontSize="15"/>
+                </Grid>
+            </ScrollViewer>
+        </DockPanel>
+      
         
     </Grid>
 </Window>

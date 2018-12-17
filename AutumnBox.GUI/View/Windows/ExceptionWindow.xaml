@@ -9,7 +9,7 @@
         WindowStartupLocation="CenterOwner"
         
         MouseDown="Window_MouseDown"
-        Title="{Binding MessageTitle}" Height="400" Width="380.864">
+        Title="{Binding MessageTitle}" Height="300" Width="500">
     <Grid>
         <DockPanel>
             <StackPanel DockPanel.Dock="Top" Orientation="Vertical" Margin="10">

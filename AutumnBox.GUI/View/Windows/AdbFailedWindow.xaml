@@ -8,10 +8,11 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterOwner"
         FontFamily="{DynamicResource AutumnBox.Font}"
-        Title="{DynamicResource AdbFailedWindowTitle}" Height="350" Width="500">
+        Title="{DynamicResource AdbFailedWindowTitle}" Height="650" Width="500">
     <Grid>
         <DockPanel Margin="10">
             <StackPanel  DockPanel.Dock="Top" Orientation="Vertical">
+                <Image Source="/Resources/Drawable/Misaka/adbfail.png"></Image>
                 <TextBlock Foreground="Red" FontSize="22" Text="{DynamicResource AdbFailedWindowTitle}" />
                 <TextBlock Margin="0,5,0,0" FontSize="15" Text="{DynamicResource AdbFailedWindowAdvice}" />
                 <StackPanel Orientation="Horizontal">

@@ -8,18 +8,26 @@
         FontFamily="{DynamicResource AutumnBox.Font}"
         WindowStyle="None"
         WindowStartupLocation="CenterOwner"
-        ResizeMode="CanResize"
+        ResizeMode="NoResize"
+        BorderThickness="1"
+        BorderBrush="{DynamicResource PrimaryLightBrush}"
         MouseDown="Window_MouseDown"
         Title="This is your choice!" 
         MinWidth="350"
-        MinHeight="180"
+        MinHeight="200"
         ShowInTaskbar="False"
        Height="180" Width="280">
     <Grid Margin="5">
-        <TextBlock HorizontalAlignment="Center" FontSize="15" Text="{Binding Message}" Margin="0,0,0,47"></TextBlock>
-        <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Center">
-            <Button FontSize="12" Click="Button_Click_1" Margin="5" Style="{DynamicResource MaterialDesignFlatButton}" HorizontalAlignment="Left" Content="{Binding BtnNO}"></Button>
-            <Button FontSize="12" Click="Button_Click" Margin="5" Style="{DynamicResource MaterialDesignRaisedButton}" HorizontalAlignment="Right" Content="{Binding BtnYES}"></Button>
-        </StackPanel>
+        <DockPanel>
+            <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+                <Button FontSize="12" Click="Button_Click_1" Margin="5" Style="{DynamicResource MaterialDesignFlatButton}" HorizontalAlignment="Left" Content="{Binding BtnNO}"></Button>
+                <Button FontSize="12" Click="Button_Click" Margin="5" Style="{DynamicResource MaterialDesignRaisedButton}" HorizontalAlignment="Right" Content="{Binding BtnYES}"></Button>
+            </StackPanel>
+            <ScrollViewer DockPanel.Dock="Bottom" Margin="10" Template="{DynamicResource AtmbxScrollViewer}">
+                <TextBlock DockPanel.Dock="Top" FontSize="15" Text="{Binding Message}"/>
+            </ScrollViewer>
+        </DockPanel>
+            
+       
     </Grid>
 </Window>
