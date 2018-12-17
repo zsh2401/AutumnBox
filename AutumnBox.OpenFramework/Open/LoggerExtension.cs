@@ -18,7 +18,7 @@ namespace AutumnBox.OpenFramework.Open
     public static class LoggerExtension
     {
         /// <summary>
-        /// DEBUG LOG
+        /// 编译时的debug日志方法,与秋之盒调试模式无关
         /// </summary>
         /// <param name="logger"></param>
         /// <param name="content"></param>

@@ -36,6 +36,8 @@ namespace AutumnBox.GUI.Util.OpenFxManagement
 
         public bool IsRunAsAdmin => Self.HaveAdminPermission;
 
+        public bool IsDeveloperMode => Settings.Default.DeveloperMode;
+
         public void ShowDebugUI()
         {
             new LogWindow().Show();

@@ -15,6 +15,10 @@ namespace AutumnBox.OpenFramework.Management
     public interface IBaseApi
     {
         /// <summary>
+        /// 是否是调试模式
+        /// </summary>
+        bool IsDeveloperMode { get; }
+        /// <summary>
         /// 显示异常信息
         /// </summary>
         /// <param name="title"></param>

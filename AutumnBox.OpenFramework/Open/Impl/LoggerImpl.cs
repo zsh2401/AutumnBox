@@ -24,6 +24,7 @@ namespace AutumnBox.OpenFramework.Open.Impl
 
         public void Debug(string msg)
         {
+            if (!ctx.BaseApi.IsDeveloperMode) return;
             CallingBus.BaseApi.Log(ctx.LoggingTag, nameof(Debug), msg);
         }
 

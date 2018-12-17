@@ -11,7 +11,11 @@ namespace AutumnBox.OpenFramework.Open
         /// TAG
         /// </summary>
         string Tag { get; }
-
+        /// <summary>
+        /// 只有在开启秋之盒调试模式时此方法才会有效
+        /// </summary>
+        /// <param name="msg"></param>
+        void Debug(string msg);
         /// <summary>
         /// Info级别
         /// </summary>

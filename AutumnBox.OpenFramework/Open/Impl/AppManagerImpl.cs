@@ -42,6 +42,8 @@ namespace AutumnBox.OpenFramework.Open.Impl
 
         public Version Version => sourceApi.Version;
 
+        public bool IsDeveloperMode => sourceApi.IsDeveloperMode;
+
         public dynamic GetMainWindow()
         {
             return sourceApi.GetMainWindow();

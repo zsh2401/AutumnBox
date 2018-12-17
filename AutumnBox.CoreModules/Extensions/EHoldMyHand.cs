@@ -13,7 +13,7 @@ using System.Threading;
 namespace AutumnBox.CoreModules.Extensions
 {
     [ExtName("Example extension")]
-    [ExtRegions("en-US")]
+    [ExtDeveloperMode(true)]
     [ExtRequiredDeviceStates(AutumnBoxExtension.NoMatter)]
     //[ExtDesc("wtf")]
     //[ObsoleteImageOperator]

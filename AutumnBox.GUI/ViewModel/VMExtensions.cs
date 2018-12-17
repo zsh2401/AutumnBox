@@ -144,6 +144,10 @@ namespace AutumnBox.GUI.ViewModel
             {
                 LoadExtensions();
             };
+            ExtensionViewRefresher.Instance.Refreshing += (s, e) =>
+            {
+                LoadExtensions();
+            };
             if (targetState == AutumnBoxExtension.NoMatter)
             {
                 ExtPanelIsEnabled = true;
@@ -161,7 +165,8 @@ namespace AutumnBox.GUI.ViewModel
                 OpenFramework.Management.Manager.InternalManager
                 .GetLoadedWrappers(
                 new DeviceStateFilter(targetState),
-                CurrentRegionFilter.Singleton
+                CurrentRegionFilter.Singleton,
+                DevelopingFilter.Singleton
                 );
             App.Current.Dispatcher.Invoke(() =>
             {
