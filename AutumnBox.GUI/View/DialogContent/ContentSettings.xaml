@@ -7,7 +7,7 @@
              xmlns:viewmodel="clr-namespace:AutumnBox.GUI.ViewModel"
              FontFamily="{DynamicResource AutumnBox.Font}"
              FontSize="15"
-             mc:Ignorable="d" Height="376.047" Width="530">
+             mc:Ignorable="d" Height="410" Width="530">
     <UserControl.DataContext>
         <viewmodel:VMSettingsDialog/>
     </UserControl.DataContext>
@@ -74,6 +74,13 @@
                                 <TextBlock Foreground="DarkSlateGray" TextWrapping="Wrap" FontSize="12" HorizontalAlignment="Left" Text="{DynamicResource PanelSettingsLaunchDebugWindowOnNextLaunchTip}"/>
                             </StackPanel>
                             <ToggleButton HorizontalAlignment="Right" Style="{DynamicResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding DebugOnNext}"  ToolTip="{DynamicResource PanelSettingsLaunchDebugWindowOnNextLaunch}"/>
+                        </Grid>
+                        <Grid>
+                            <StackPanel Orientation="Vertical" Margin="0,0,39,0">
+                                <TextBlock HorizontalAlignment="Left" Text="{DynamicResource PanelSettingsDeveloperMode}"/>
+                                <TextBlock Foreground="DarkSlateGray" TextWrapping="Wrap" FontSize="12" HorizontalAlignment="Left" Text="{DynamicResource PanelSettingsDeveloperModeTip}"/>
+                            </StackPanel>
+                            <ToggleButton HorizontalAlignment="Right" Style="{DynamicResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding DeveloperMode}"  ToolTip="{DynamicResource PanelSettingsLaunchDebugWindowOnNextLaunch}"/>
                         </Grid>
                     </StackPanel>
                 </materialDesign:Card>

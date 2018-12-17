@@ -6,6 +6,7 @@
 using AutumnBox.GUI.MVVM;
 using AutumnBox.GUI.Properties;
 using AutumnBox.GUI.Util;
+using AutumnBox.GUI.Util.Bus;
 using AutumnBox.GUI.Util.Custom;
 using AutumnBox.GUI.Util.Debugging;
 using AutumnBox.GUI.Util.I18N;
@@ -23,6 +24,20 @@ namespace AutumnBox.GUI.ViewModel
     class VMSettingsDialog : ViewModelBase
     {
         #region MVVM
+        public bool DeveloperMode
+        {
+            get
+            {
+                return Settings.Default.DeveloperMode;
+            }
+            set
+            {
+                Settings.Default.DeveloperMode = value;
+                ExtensionViewRefresher.Instance.Refresh();
+                RaisePropertyChanged();
+            }
+        }
+
         public string GUIVersion
         {
             get => _guiVersion; set
