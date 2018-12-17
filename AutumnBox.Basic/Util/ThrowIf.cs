@@ -46,7 +46,7 @@ namespace AutumnBox.Basic.Util
         {
             if (result.ExitCode != 0)
             {
-                throw new AdbShellCommandFailedException(result.Output,result.ExitCode);
+                throw new AdbShellCommandFailedException(result.Output, result.ExitCode);
             }
             return result;
         }
@@ -59,6 +59,20 @@ namespace AutumnBox.Basic.Util
             if (result.ExitCode != 0)
             {
                 throw new AdbCommandFailedException(result.Output, result.ExitCode);
+            }
+            return result;
+        }
+        /// <summary>
+        /// 当ExitCode不为0时抛出异常
+        /// </summary>
+        /// <param name="result"></param>
+        /// <exception cref="CommandErrorException"></exception>
+        /// <returns></returns>
+        public static CommandExecutor.Result ThrowIfExitCodeIsNotZero(this CommandExecutor.Result result)
+        {
+            if (result.ExitCode != 0)
+            {
+                throw new CommandErrorException(result.Output, result.ExitCode);
             }
             return result;
         }
