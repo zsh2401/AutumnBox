@@ -14,10 +14,12 @@
         WindowStartupLocation="CenterOwner"
         Title="{Binding MsgTitle}" MinHeight="220" MinWidth="400" Height="252" Width="458.182"  MouseDoubleClick="Window_MouseDoubleClick" MouseDown="Window_MouseDown">
     <Grid>
-        <StackPanel Margin="0,0,0,0">
-            <TextBlock Margin="10,5,10,5" Text="{Binding MsgTitle}" TextAlignment="Center" FontSize="20"/>
-            <TextBlock Margin="10,2,10,0" Text="{Binding Message}" FontSize="15" TextWrapping="Wrap"/>
-        </StackPanel>
+        <DockPanel>
+            <TextBlock DockPanel.Dock="Top" Margin="10,5,10,5" Text="{Binding MsgTitle}" TextAlignment="Center" FontSize="20"/>
+            <ScrollViewer DockPanel.Dock="Bottom" Margin="10" Template="{DynamicResource AtmbxScrollViewer}">
+                <TextBlock Text="{Binding Message}" FontSize="15" TextWrapping="Wrap"/>
+            </ScrollViewer>
+        </DockPanel>
         <materialDesign:Snackbar IsActive="{Binding SnackBarActive}">
             <materialDesign:SnackbarMessage Content="{DynamicResource MessageWindowDoubleClickToClose}"/>
         </materialDesign:Snackbar>
