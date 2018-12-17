@@ -39,7 +39,6 @@ namespace AutumnBox.CoreModules.Aspect
             if (!args.Context.Ux.DoYN(CoreLib.Current.GetTextByKey(keyOrContnetFirst))) return;
             if (!args.Context.Ux.DoYN(CoreLib.Current.GetTextByKey(keyOrContnetSec))) return;
             if (!args.Context.Ux.DoYN(CoreLib.Current.GetTextByKey(keyOrContnetThr))) return;
-            throw new NotImplementedException();
         }
     }
 }
