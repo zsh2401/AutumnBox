@@ -8,6 +8,7 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 using AutumnBox.Basic.Calling.Cmd;
 using AutumnBox.Basic.Data;
+using AutumnBox.Basic.Util;
 using AutumnBox.Basic.Util.Debugging;
 
 namespace AutumnBox.Basic.Calling
@@ -17,6 +18,10 @@ namespace AutumnBox.Basic.Calling
     /// </summary>
     public class ProcessBasedCommand : IProcessBasedCommand
     {
+        /// <summary>
+        /// 不创建新窗口
+        /// </summary>
+        public bool NeverCreateNewWindow { get; set; } = false;
         private class Result : IProcessBasedCommandResult
         {
             public Output Output { get; set; }
@@ -34,7 +39,7 @@ namespace AutumnBox.Basic.Calling
         /// <summary>
         /// 进程开始信息
         /// </summary>
-        private readonly ProcessStartInfo processStartInfo;
+        private ProcessStartInfo processStartInfo;
         /// <summary>
         /// 输出事件
         /// </summary>
@@ -57,17 +62,14 @@ namespace AutumnBox.Basic.Calling
         /// <param name="args"></param>
         public ProcessBasedCommand(string executableFile, string args)
         {
-            processStartInfo = new ProcessStartInfo()
+            if (string.IsNullOrWhiteSpace(executableFile))
             {
-                RedirectStandardError = true,
-                RedirectStandardOutput = true,
-                RedirectStandardInput = false,
-                UseShellExecute = false,
-                CreateNoWindow = true,
-                FileName = executableFile,
-                Arguments = args,
-            };
+                throw new ArgumentException("message", nameof(executableFile));
+            }
+
             outputBuilder.Register(this);
+            this.executableFile = executableFile;
+            this.args = args;
         }
         /// <summary>
         /// 无参数的构造
@@ -75,11 +77,15 @@ namespace AutumnBox.Basic.Calling
         /// <param name="executableFile"></param>
         public ProcessBasedCommand(string executableFile) : this(executableFile, null) { }
         private readonly object executeLock = new object();
+        private readonly string executableFile;
+        private readonly string args;
+
         /// <summary>
         /// 在进程开始前调用
         /// </summary>
         /// <param name="procStartInfo"></param>
-        protected virtual void BeforeProcessStart(ProcessStartInfo procStartInfo) {
+        protected virtual void BeforeProcessStart(ProcessStartInfo procStartInfo)
+        {
 
         }
         /// <summary>
@@ -96,8 +102,11 @@ namespace AutumnBox.Basic.Calling
         /// <param name="proc"></param>
         protected virtual void RegisterProcessEvent(Process proc)
         {
-            proc.OutputDataReceived += (s, e) => RaiseOutputReceived(e, false);
-            proc.ErrorDataReceived += (s, e) => RaiseOutputReceived(e, true);
+            if (proc.StartInfo.CreateNoWindow)
+            {
+                proc.OutputDataReceived += (s, e) => RaiseOutputReceived(e, false);
+                proc.ErrorDataReceived += (s, e) => RaiseOutputReceived(e, true);
+            }
         }
         /// <summary>
         /// 在准备等待进程前调用
@@ -122,6 +131,16 @@ namespace AutumnBox.Basic.Calling
         {
             lock (executeLock)
             {
+                processStartInfo = new ProcessStartInfo()
+                {
+                    RedirectStandardError = NeverCreateNewWindow || !Settings.CreateNewWindow,
+                    RedirectStandardOutput = NeverCreateNewWindow || !Settings.CreateNewWindow,
+                    RedirectStandardInput = false,
+                    UseShellExecute = false,
+                    CreateNoWindow = NeverCreateNewWindow || !Settings.CreateNewWindow,
+                    FileName = executableFile,
+                    Arguments = args,
+                };
                 outputBuilder.Clear();
                 int retCode = -1;
                 BeforeProcessStart(processStartInfo);
@@ -129,12 +148,19 @@ namespace AutumnBox.Basic.Calling
                 {
                     OnProcessStarted(process);
                     RegisterProcessEvent(process);
-                    process.BeginOutputReadLine();
-                    process.BeginErrorReadLine();
+                    if (process.StartInfo.CreateNoWindow)
+                    {
+                        process.BeginOutputReadLine();
+                        process.BeginErrorReadLine();
+                    }
+
                     BeforeWaiting(process);
                     process.WaitForExit();
-                    process.CancelErrorRead();
-                    process.CancelOutputRead();
+                    if (process.StartInfo.CreateNoWindow)
+                    {
+                        process.CancelErrorRead();
+                        process.CancelOutputRead();
+                    }
                     retCode = process.ExitCode;
                     OnProcessExited(process);
                     process = null;
@@ -151,7 +177,7 @@ namespace AutumnBox.Basic.Calling
         /// </summary>
         /// <param name="e"></param>
         /// <param name="isErr"></param>
-        protected virtual  void RaiseOutputReceived(DataReceivedEventArgs e, bool isErr)
+        protected virtual void RaiseOutputReceived(DataReceivedEventArgs e, bool isErr)
         {
             callback?.Invoke(new OutputReceivedEventArgs(e, isErr));
             OutputReceived?.Invoke(this, new OutputReceivedEventArgs(e, isErr));

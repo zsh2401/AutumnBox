@@ -118,5 +118,17 @@ namespace AutumnBox.GUI.Properties {
                 this["DeveloperMode"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool DisplayCmdWindow {
+            get {
+                return ((bool)(this["DisplayCmdWindow"]));
+            }
+            set {
+                this["DisplayCmdWindow"] = value;
+            }
+        }
     }
 }

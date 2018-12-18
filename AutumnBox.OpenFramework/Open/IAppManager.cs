@@ -10,6 +10,10 @@ namespace AutumnBox.OpenFramework.Open
     public interface IAppManager
     {
         /// <summary>
+        /// 是否应该展示CMD窗口
+        /// </summary>
+        bool ShouldDisplayCmdWindow { get; }
+        /// <summary>
         /// 是否是秋之盒开发者模式
         /// </summary>
         bool IsDeveloperMode { get; }

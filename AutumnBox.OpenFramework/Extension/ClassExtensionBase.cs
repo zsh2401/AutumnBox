@@ -32,6 +32,10 @@ namespace AutumnBox.OpenFramework.Extension
     public abstract class ClassExtensionBase : Context, IClassExtension
     {
         /// <summary>
+        /// 切面阻止了...
+        /// </summary>
+        public class AspectPreventedException :Exception { }
+        /// <summary>
         /// 构造
         /// </summary>
         public ClassExtensionBase()
@@ -46,7 +50,7 @@ namespace AutumnBox.OpenFramework.Extension
                 aspect.BeforeCreating(bcaArgs, ref canContinue);
                 if (!canContinue)
                 {
-                    throw new System.Exception("Can't create instance");
+                    throw new AspectPreventedException();
                 }
             }
         }

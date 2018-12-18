@@ -3,6 +3,7 @@ using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.Wrapper;
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Text;
 using System.Threading;
 
@@ -94,6 +95,25 @@ namespace AutumnBox.OpenFramework.Running
                 instance = (IExtension)Activator.CreateInstance(extensionType);
                 SendSignal(Signals.ON_CREATED, new ExtensionArgs(this, Wrapper));
                 ExitCode = instance.Main(Data);
+            }
+            catch (TargetInvocationException e)
+            {
+                if (e.InnerException is ClassExtensionBase.AspectPreventedException)
+                {
+                    ExitCode = (int)ExtensionExitCodes.CanceledByUser;
+                }
+                else
+                {
+                    ExitCode = (int)ExtensionExitCodes.Exception;
+                    SendSignal(Signals.ON_EXCEPTION, e);
+                    string fmt = App.GetPublicResouce<string>("OpenFxExceptionMsgTitleFmt");
+                    fmt = string.Format(fmt, Wrapper.Info.Name);
+                    string sketch = App.GetPublicResouce<string>("OpenFxExceptionSketch");
+                    Ux.RunOnUIThread(() =>
+                    {
+                        BaseApi.ShowException(fmt, sketch, e.ToString());
+                    });
+                }
             }
             catch (ThreadAbortException)
             {

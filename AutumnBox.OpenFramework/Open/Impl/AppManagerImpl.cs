@@ -44,6 +44,8 @@ namespace AutumnBox.OpenFramework.Open.Impl
 
         public bool IsDeveloperMode => sourceApi.IsDeveloperMode;
 
+        public bool ShouldDisplayCmdWindow => sourceApi.ShouldDisplayCmdWindow;
+
         public dynamic GetMainWindow()
         {
             return sourceApi.GetMainWindow();

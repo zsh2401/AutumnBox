@@ -16,8 +16,20 @@ namespace AutumnBox.Basic.MultipleDevices
     /// </summary>
     public class DevicesGetter : IDevicesGetter
     {
-        private readonly AdbCommand adbDevices = new AdbCommand("devices -l");
-        private readonly FastbootCommand fastbootDevices = new FastbootCommand("devices");
+        private const string ADB_DEVICES_COMMAND = "devices -l";
+        private const string FSB_DEVICES_COMMAND = "devices";
+        private readonly AdbCommand adbDevices;
+        private readonly FastbootCommand fastbootDevices;
+        /// <summary>
+        /// 构造器
+        /// </summary>
+        public DevicesGetter()
+        {
+            adbDevices = new AdbCommand(ADB_DEVICES_COMMAND);
+            fastbootDevices = new FastbootCommand(FSB_DEVICES_COMMAND);
+            adbDevices.NeverCreateNewWindow = true;
+            fastbootDevices.NeverCreateNewWindow = true;
+        }
         /// <summary>
         /// 获取
         /// </summary>

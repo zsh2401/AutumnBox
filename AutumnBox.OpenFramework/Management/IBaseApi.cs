@@ -15,6 +15,10 @@ namespace AutumnBox.OpenFramework.Management
     public interface IBaseApi
     {
         /// <summary>
+        /// 是否应该展示CMD窗口
+        /// </summary>
+        bool ShouldDisplayCmdWindow { get; }
+        /// <summary>
         /// 是否是调试模式
         /// </summary>
         bool IsDeveloperMode { get; }
