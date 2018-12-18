@@ -5,11 +5,14 @@ using System.Linq;
 using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace AutumnBox.Reporter.Model
 {
-    class ReportHeader : ModelBase
+    [XmlRoot("header")]
+    public class ReportHeader : ModelBase
     {
+        [XmlAttribute("uuid")]
         public string UUID
         {
             get => _uuid; set
@@ -20,6 +23,7 @@ namespace AutumnBox.Reporter.Model
         }
         private string _uuid;
 
+        [XmlAttribute("userName")]
         public string UserName
         {
             get => _userName; set
@@ -30,6 +34,7 @@ namespace AutumnBox.Reporter.Model
         }
         private string _userName;
 
+        [XmlAttribute("userMail")]
         public string UserMail
         {
             get => _userMail; set
@@ -40,6 +45,7 @@ namespace AutumnBox.Reporter.Model
         }
         private string _userMail;
 
+        [XmlElement("remark")]
         public string Remark
         {
             get => _remark; set
