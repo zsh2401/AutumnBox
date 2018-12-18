@@ -77,6 +77,8 @@
     <s:String x:Key="PanelSettingsLaunchDebugWindowOnNextLaunchTip">这是给开发者准备的</s:String>
     <s:String x:Key="PanelSettingsDeveloperMode">秋之盒调试模式</s:String>
     <s:String x:Key="PanelSettingsDeveloperModeTip">Logger.Debug()将可使用,开发中模块也会展示</s:String>
+    <s:String x:Key="PanelSettingsDisplayCmdWindow">显示命令行窗口</s:String>
+    <s:String x:Key="PanelSettingsDisplayCmdWindowTip">或许你可以通过这个来排查某些疑难杂症,仅在部分情况下支持</s:String>
     <!--PanelExtensions-->
       <s:String x:Key="PanelExtesnionsDownloadExt">下载更多拓展模块</s:String>
     <s:String x:Key="PanelExtensionsNoSelect">请在左边选择一个拓展/功能</s:String>

@@ -70,6 +70,10 @@
     <s:String x:Key="PanelSettingsCreateDebugWindow">Show debug window</s:String>
     <s:String x:Key="PanelSettingsLaunchDebugWindowOnNextLaunch">Show debug window on next launch</s:String>
     <s:String x:Key="PanelSettingsLaunchDebugWindowOnNextLaunchTip">For developer</s:String>
+    <s:String x:Key="PanelSettingsDeveloperMode">ATMB DEV MODE</s:String>
+    <s:String x:Key="PanelSettingsDeveloperModeTip">Logger.Debug() will have been enabled and DeveloperMode Extension will have been shown</s:String>
+    <s:String x:Key="PanelSettingsDisplayCmdWindow">Display CmdWindow</s:String>
+    <s:String x:Key="PanelSettingsDisplayCmdWindowTip">Maybe Useful?</s:String>
     
  <!--PanelExtensions-->
      <s:String x:Key="PanelExtesnionsDownloadExt">Download extension</s:String>

@@ -1,6 +1,7 @@
 ﻿using AutumnBox.Basic.Data;
 using AutumnBox.Basic.Device;
 using AutumnBox.Basic.ManagedAdb;
+using AutumnBox.Basic.Util;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -15,6 +16,29 @@ namespace AutumnBox.Basic.Calling
     /// </summary>
     public class CommandExecutor : INotifyOutput, IDisposable, IReceiveOutputByTo<CommandExecutor>
     {
+        /// <summary>
+        /// 进程事件
+        /// </summary>
+        public class ProcessEventArgs : EventArgs
+        {
+            /// <summary>
+            /// 进程
+            /// </summary>
+            public Process Process { get; set; }
+            /// <summary>
+            /// 构造
+            /// </summary>
+            /// <param name="process"></param>
+            public ProcessEventArgs(Process process) { }
+        }
+        /// <summary>
+        /// 进程开始了
+        /// </summary>
+        public event EventHandler<ProcessEventArgs> ProcessStarted;
+        /// <summary>
+        /// 进程结束了
+        /// </summary>
+        public event EventHandler<ProcessEventArgs> ProcessExited;
         /// <summary>
         /// 命令执行器的结果
         /// </summary>
@@ -250,6 +274,16 @@ namespace AutumnBox.Basic.Calling
         protected readonly object _lock = new object();
 
         /// <summary>
+        /// 综合进行判断,是否开启新窗口
+        /// </summary>
+        protected bool CreateNoWindow
+        {
+            get
+            {
+                return this.NeverCreateNewWindow || !Settings.CreateNewWindow;
+            }
+        }
+        /// <summary>
         /// 获取进程启动信息
         /// </summary>
         /// <param name="fileName"></param>
@@ -259,34 +293,45 @@ namespace AutumnBox.Basic.Calling
         {
             return new ProcessStartInfo()
             {
-                RedirectStandardError = true,
-                RedirectStandardOutput = true,
-                RedirectStandardInput = false,
+                RedirectStandardError = CreateNoWindow,
+                RedirectStandardOutput = CreateNoWindow,
+                RedirectStandardInput = CreateNoWindow,
                 UseShellExecute = false,
-                CreateNoWindow = true,
+                CreateNoWindow = CreateNoWindow,
                 FileName = fileName,
                 Arguments = args,
             };
         }
+
         /// <summary>
         /// 进程启动了,进行一些流处理等操作
         /// </summary>
         /// <param name="process"></param>
-        protected virtual void ProcessStarted(Process process)
+        protected virtual void OnProcessStarted(Process process)
         {
-            process.OutputDataReceived += (s, e) => RaiseOutputReceived(e, false);
-            process.ErrorDataReceived += (s, e) => RaiseOutputReceived(e, true);
-            currentProcess.BeginOutputReadLine();
-            currentProcess.BeginErrorReadLine();
+
+            if (process.StartInfo.RedirectStandardOutput)
+            {
+                process.OutputDataReceived += (s, e) => RaiseOutputReceived(e, false);
+                process.ErrorDataReceived += (s, e) => RaiseOutputReceived(e, true);
+                currentProcess.BeginOutputReadLine();
+                currentProcess.BeginErrorReadLine();
+            }
+            ProcessStarted?.Invoke(this, new ProcessEventArgs(process));
         }
+
         /// <summary>
         /// 进程结束了,释放资源
         /// </summary>
         /// <param name="process"></param>
-        protected virtual void ProcessExited(Process process)
+        protected virtual void OnProcessExited(Process process)
         {
-            process.CancelErrorRead();
-            process.CancelOutputRead();
+            ProcessExited?.Invoke(this, new ProcessEventArgs(process));
+            if (process.StartInfo.RedirectStandardOutput)
+            {
+                process.CancelErrorRead();
+                process.CancelOutputRead();
+            }
             try { currentProcess?.Dispose(); } catch { }
         }
 
@@ -307,10 +352,10 @@ namespace AutumnBox.Basic.Calling
             outputBuilder.Clear();
             pStartInfo = GetStartInfo(fileName, args);
             currentProcess = Process.Start(pStartInfo);
-            ProcessStarted(currentProcess);
+            OnProcessStarted(currentProcess);
             currentProcess.WaitForExit();
             exitCode = currentProcess.ExitCode;
-            ProcessExited(currentProcess);
+            OnProcessExited(currentProcess);
             currentProcess = null;
             return new Result(outputBuilder.Result, exitCode);
         }
@@ -338,6 +383,11 @@ namespace AutumnBox.Basic.Calling
             callback?.Invoke(new OutputReceivedEventArgs(e, isErr));
             OutputReceived?.Invoke(this, new OutputReceivedEventArgs(e, isErr));
         }
+
+        /// <summary>
+        /// 设置此值为true,则无论如何都不可能显示CMD窗口
+        /// </summary>
+        public bool NeverCreateNewWindow { get; set; } = false;
 
         /// <summary>
         /// 构造CommandExecutor

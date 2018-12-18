@@ -24,7 +24,7 @@ namespace AutumnBox.CoreModules.Extensions
         protected override void Processing(Dictionary<string, object> data)
         {
             Ux.ShowLoadingWindow();
-            Ux.Message(Executor.Cmd("ping baidu.com").Output.ToString());
+            Ux.Message(Executor.Cmd("ping www.baidu.com").Output.ToString());
             Ux.CloseLoadingWindow();
         }
     }

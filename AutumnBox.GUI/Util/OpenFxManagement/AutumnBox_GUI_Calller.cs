@@ -38,6 +38,8 @@ namespace AutumnBox.GUI.Util.OpenFxManagement
 
         public bool IsDeveloperMode => Settings.Default.DeveloperMode;
 
+        public bool ShouldDisplayCmdWindow => Settings.Default.DisplayCmdWindow;
+
         public void ShowDebugUI()
         {
             new LogWindow().Show();

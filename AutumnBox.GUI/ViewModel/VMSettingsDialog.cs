@@ -24,6 +24,20 @@ namespace AutumnBox.GUI.ViewModel
     class VMSettingsDialog : ViewModelBase
     {
         #region MVVM
+        public bool DisplayCmdWindow
+        {
+            get
+            {
+                return Settings.Default.DisplayCmdWindow;
+            }
+            set
+            {
+                Settings.Default.DisplayCmdWindow = value;
+                Basic.Util.Settings.CreateNewWindow = value;
+                RaisePropertyChanged();
+            }
+        }
+
         public bool DeveloperMode
         {
             get

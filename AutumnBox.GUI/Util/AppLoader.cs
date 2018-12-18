@@ -73,6 +73,7 @@ namespace AutumnBox.GUI.Util
 #endif
                 LoggingStation.Instance.Log(e.Tag, e.Level.ToString(), e.Text);
             };
+            Basic.Util.Settings.CreateNewWindow = Settings.Default.DisplayCmdWindow;
             ui.Progress = 30;
             ui.LoadingTip = App.Current.Resources["ldmsgStartAdb"].ToString();
             try
