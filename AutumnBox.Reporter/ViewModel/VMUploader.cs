@@ -1,5 +1,6 @@
 ﻿using AutumnBox.Reporter.Model;
 using AutumnBox.Reporter.MVVM;
+using AutumnBox.Reporter.Util;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -14,9 +15,6 @@ namespace AutumnBox.Reporter.ViewModel
 {
     class VMUploader : ViewModelBase
     {
-        private const string API = "https://atmb.xxwhite.com/api/sublog";
-
-
         public string Status
         {
             get => _status; set
@@ -63,52 +61,26 @@ namespace AutumnBox.Reporter.ViewModel
         }
 
         private Thread executingThread;
+
         public void StartUpload(ReportHeader header, IEnumerable<Log> logs)
         {
             executingThread = new Thread(() =>
             {
-                UploadInnerMethod(header, logs);
+                Status = "正在传输";
+                CountOfTotal = logs.Count();
+                new Uploader(header).Upload(logs, (e) =>
+                {
+                    CountOfUploaded++;
+                    Progress = CountOfUploaded / CountOfTotal * 100;
+                    if (CountOfUploaded == CountOfTotal)
+                    {
+                        Status = "传输完毕";
+                    }
+                });
             });
             executingThread.Start();
         }
-        private void UploadInnerMethod(ReportHeader header, IEnumerable<Log> logs)
-        {
-            Status = "传输中";
-            CountOfTotal = logs.Count();
-            foreach (var log in logs)
-            {
-                Upload(header, log);
-                CountOfUploaded++;
-                Progress = CountOfUploaded / CountOfTotal * 100;
-            }
-            Status = "传输完毕";
-            executingThread = null;
-        }
-        private void Upload(ReportHeader header, Log log)
-        {
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(API);
-            request.Method = "POST";
-            request.Headers["SubmitId"] = header.UUID;
-            request.Headers["UserName"] = header.UserName ?? "";
-            request.Headers["UserMail"] = header.UserMail ?? "";
-            request.Headers["Remark"] = header.Remark ?? "";
-            request.Headers["LogName"] = log.LogName;
-            request.ContentType = "application/json";
-            request.Accept = "application/json";
-            byte[] data = Encoding.UTF8.GetBytes(log.Content);
-            request.ContentLength = data.Length;
-            using (var stream = request.GetRequestStream())
-            {
-                stream.Write(data, 0, data.Length);
-            }
-            using (var response = request.GetResponse())
-            {
-                using (var reader = new StreamReader(response.GetResponseStream()))
-                {
-                    Trace.WriteLine(reader.ReadToEnd());
-                }
-            }
-        }
+
         public void Stop()
         {
             executingThread?.Abort();
