@@ -168,6 +168,7 @@
     <s:String x:Key="PanelMainStart">开始</s:String>
      <s:String x:Key="PanelMainCurrent">针对当前设备</s:String>
     <s:String x:Key="PanelMainMore">更多</s:String>
+    <s:String x:Key="PanelMainBtnDlExt">下载拓展模块</s:String>
     
     <!--PanelMore-->
       <s:String x:Key="PanelMoreEvenNoDevice">什么?没连接设备或设备状态异常?这些模块无需设备正常连接!</s:String>

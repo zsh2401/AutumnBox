@@ -163,6 +163,8 @@
     <s:String x:Key="PanelMainStart">Start</s:String>
      <s:String x:Key="PanelMainCurrent">Current device</s:String>
     <s:String x:Key="PanelMainMore">More</s:String>
+     <s:String x:Key="PanelMainBtnDlExt">Download Extensions</s:String>
+    
     <!--PanelMore-->
       <s:String x:Key="PanelMoreEvenNoDevice">Device not found?look there!</s:String>
      <s:String x:Key="PanelMoreBtnOpenExtensionFloder">Open extensions floder</s:String>

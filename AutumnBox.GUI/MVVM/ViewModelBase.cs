@@ -4,12 +4,18 @@
 ** desc： ...
 *************************************************/
 
+using System;
 using System.Runtime.CompilerServices;
+using System.Windows.Input;
 
 namespace AutumnBox.GUI.MVVM
 {
     class ViewModelBase : NotificationObject
     {
+        //public ICommand OpenUrl => _lazyOpenUrl.Value;
+        //private Lazy<ICommand> _lazyOpenUrl = 
+        //    new Lazy<ICommand>(() => new OpenParameterUrlCommand());
+
         protected virtual bool RaisePropertyChangedOnDispatcher { get; set; } = false;
         protected override void RaisePropertyChanged([CallerMemberName] string propertyName = null)
         {
