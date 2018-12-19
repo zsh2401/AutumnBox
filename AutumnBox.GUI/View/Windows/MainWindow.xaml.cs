@@ -24,16 +24,14 @@ namespace AutumnBox.GUI.View.Windows
     /// </summary>
     public sealed partial class MainWindow : Window
     {
-        private readonly VMMainWindow ViewModel = new VMMainWindow();
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = ViewModel;
         }
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs _e)
         {
-            ViewModel.LoadAsync(() =>
+            (DataContext as VMMainWindow).LoadAsync(() =>
             {
                 SGLogger<MainWindow>.Info("Loaded");
                 Dispatcher.Invoke(() =>

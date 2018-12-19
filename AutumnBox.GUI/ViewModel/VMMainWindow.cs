@@ -97,7 +97,7 @@ namespace AutumnBox.GUI.ViewModel
                 });
             }
         }
-        private int tranIndex;
+        private int tranIndex = 0;
 
         public void LoadAsync(Action callback = null)
         {
@@ -106,7 +106,7 @@ namespace AutumnBox.GUI.ViewModel
 
         public void Finish()
         {
-            TranSelectIndex = 1;
+            TranSelectIndex++;
         }
     }
 }
