@@ -18,7 +18,7 @@
     <DebugSymbols>false</DebugSymbols>
     <DebugType>none</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\AutumnBox_Output\AutumnBoxDev\</OutputPath>
+    <OutputPath>..\..\AutumnBox_Output_Dev\AutumnBox\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -42,7 +42,7 @@
   </PropertyGroup>
   <PropertyGroup />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Preview|AnyCPU'">
-    <OutputPath>..\..\AutumnBox_Output\AutumnBoxDev\</OutputPath>
+    <OutputPath>..\..\AutumnBox_Output\AutumnBox\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <Optimize>true</Optimize>
     <PlatformTarget>AnyCPU</PlatformTarget>
