@@ -34,5 +34,15 @@ namespace AutumnBox.GUI.Util.OS
         [DllImport("User32.dll")]
         public static extern bool SetForegroundWindow(IntPtr hWnd);
 
+        #region HelpButtonHelper
+        [DllImport("user32.dll")]
+        public static extern uint GetWindowLong(IntPtr hwnd, int index);
+
+        [DllImport("user32.dll")]
+        public static extern int SetWindowLong(IntPtr hwnd, int index, uint newStyle);
+
+        [DllImport("user32.dll")]
+        public static extern bool SetWindowPos(IntPtr hwnd, IntPtr hwndInsertAfter, int x, int y, int width, int height, uint flags);
+        #endregion
     }
 }

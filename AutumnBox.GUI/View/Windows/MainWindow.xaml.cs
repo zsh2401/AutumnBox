@@ -12,6 +12,7 @@
 *
 \* =============================================================================*/
 using System;
+using System.Diagnostics;
 using System.Windows;
 using AutumnBox.GUI.Properties;
 using AutumnBox.GUI.Util.Debugging;
@@ -31,6 +32,17 @@ namespace AutumnBox.GUI.View.Windows
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs _e)
         {
+            //Util.UI.HelpButtonHelper.EnableHelpButton(this, () =>
+            //{
+            //    try
+            //    {
+            //        Process.Start(App.Current.Resources["urlHelp"] as string);
+            //    }
+            //    catch (Exception e)
+            //    {
+            //        SGLogger<MainWindow>.Warn("can not open help url", e);
+            //    }
+            //});
             (DataContext as VMMainWindow).LoadAsync(() =>
             {
                 SGLogger<MainWindow>.Info("Loaded");
