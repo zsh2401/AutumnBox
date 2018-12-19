@@ -7,11 +7,26 @@ using AutumnBox.GUI.MVVM;
 using AutumnBox.GUI.Util;
 using AutumnBox.GUI.Util.I18N;
 using System;
+using System.Windows;
 
 namespace AutumnBox.GUI.ViewModel
 {
     class VMMainWindow : ViewModelBase, AppLoader.ILoadingUI
     {
+        public string Version
+        {
+            get
+            {
+                return _version;
+            }
+            set
+            {
+                _version = value;
+                RaisePropertyChanged();
+            }
+        }
+        private string _version;
+
         public string Title
         {
             get
@@ -34,6 +49,11 @@ namespace AutumnBox.GUI.ViewModel
             };
             InitTitle();
             base.RaisePropertyChangedOnDispatcher = true;
+#if PREVIEW
+            Version = $"{Self.Version.ToString(3)} {App.Current.Resources["Preview"]}";
+#else
+            Version = $"{Self.Version.ToString(3)}";
+#endif
         }
 
         private void Instance_LanguageChanged(object sender, EventArgs e)
@@ -44,12 +64,12 @@ namespace AutumnBox.GUI.ViewModel
         private void InitTitle()
         {
             string comp = "";
-#if BETA
-            comp = "BETA";
+#if PREVIEW
+            comp = "PREVIEW";
 #elif DEBUG
             comp = "DEBUG";
 #else
-            comp = "RELEASE";
+            comp = "STABLE";
 #endif
 
             Title = $"{App.Current.Resources["AppName"]}-{Self.Version.ToString(3)}-{comp}";

@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Configurations>Debug;Release;SDK</Configurations>
+    <Configurations>Debug;Release;SDK;Preview</Configurations>
     <Version>2018.12.18.1</Version>
     <Authors>zsh2401</Authors>
     <Company>zsh2401</Company>
@@ -22,6 +22,10 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>bin\Release\netstandard2.0\AutumnBox.Basic.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Preview|AnyCPU'">
     <DocumentationFile>bin\Release\netstandard2.0\AutumnBox.Basic.xml</DocumentationFile>
   </PropertyGroup>
 
