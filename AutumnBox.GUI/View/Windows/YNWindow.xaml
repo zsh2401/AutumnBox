@@ -17,9 +17,14 @@
        Height="190" Width="300">
     <Grid>
         <DockPanel>
-            <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Center">
-                <Button FontSize="12" Click="Button_Click_1" Margin="5" Style="{DynamicResource MaterialDesignFlatButton}" HorizontalAlignment="Left" Content="{Binding BtnNO}"></Button>
-                <Button FontSize="12" Click="Button_Click" Margin="5" Style="{DynamicResource MaterialDesignRaisedButton}" HorizontalAlignment="Right" Content="{Binding BtnYES}"></Button>
+            <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom">
+                <Grid Width="150">
+                    <Button FontSize="12" HorizontalAlignment="Center" Click="Button_Click_1" Margin="5" Style="{DynamicResource MaterialDesignRaisedButton}" Content="{Binding BtnNO}"/>
+                </Grid>
+                <Grid Width="150">
+                    <Button FontSize="12" HorizontalAlignment="Center" Click="Button_Click" Margin="5" Style="{DynamicResource MaterialDesignFlatButton}" Content="{Binding BtnYES}"/>
+                </Grid>
+
             </StackPanel>
             <ScrollViewer DockPanel.Dock="Bottom" Margin="5" Template="{DynamicResource AtmbxScrollViewer}">
                 <TextBlock MouseDown="Window_MouseDown" DockPanel.Dock="Top" FontSize="15" TextWrapping="Wrap" Text="{Binding Message}"/>

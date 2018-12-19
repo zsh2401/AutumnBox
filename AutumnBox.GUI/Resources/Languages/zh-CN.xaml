@@ -117,7 +117,7 @@
     
     <!--OpenFx-->
      <s:String x:Key="OpenFxBtnYes">好</s:String>
-     <s:String x:Key="OpenFxBtnNo">不</s:String>
+     <s:String x:Key="OpenFxBtnNo">取消</s:String>
     <s:String x:Key="OpenFxExceptionMsgTitleFmt">{0} 发生了错误</s:String>
     <s:String x:Key="OpenFxExceptionSketch">或许,你可以尝试复制下面的信息以寻求帮助</s:String>
     <s:String x:Key="OpenFxTitleError">错误</s:String>
