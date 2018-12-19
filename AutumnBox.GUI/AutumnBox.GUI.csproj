@@ -151,6 +151,7 @@
     <Compile Include="Util\Statistics.cs" />
     <Compile Include="Util\ToastMotd.cs" />
     <Compile Include="Util\UI\BlurHelper.cs" />
+    <Compile Include="Util\UI\HelpButtonHelper.cs" />
     <Compile Include="Util\UI\UIHelper.cs" />
     <Compile Include="Model\ChoicerContentStartArgs.cs" />
     <Compile Include="Util\Data\Converter.cs" />
