@@ -7,7 +7,7 @@
              xmlns:viewmodel="clr-namespace:AutumnBox.GUI.ViewModel"
              FontFamily="{DynamicResource AutumnBox.Font}"
              FontSize="15"
-             mc:Ignorable="d" Height="400" Width="760">
+             mc:Ignorable="d" Height="320" Width="750">
     <UserControl.DataContext>
         <viewmodel:VMSettingsDialog/>
     </UserControl.DataContext>
@@ -36,31 +36,21 @@
                         </Grid>
                     </StackPanel>
                 </materialDesign:Card>
-                
+
                 <materialDesign:Card Margin="5" Width="250">
-                    <StackPanel Orientation="Vertical" Margin="5">
-                        <TextBlock  Margin="0,0,0,5" Text="{DynamicResource PanelSettingsVersionInfo}"/>
+                    <StackPanel Margin="5" Orientation="Vertical">
+                        <TextBlock  Margin="0,0,0,5" Text="{DynamicResource PanelSettingsUx}"/>
                         <Label Margin="0,0,0,5" Height="1" Background="LightGray"/>
-                        <Grid>
-                            <TextBlock HorizontalAlignment="Left" Text="{DynamicResource PanelSettingsGUIVersionLabel}"/>
-                            <TextBlock HorizontalAlignment="Right" Text="{Binding GUIVersion}"/>
-                        </Grid>
-                        <Grid>
-                            <TextBlock HorizontalAlignment="Left" Text="{DynamicResource PanelSettingsBasicVersionLabel}"/>
-                            <TextBlock HorizontalAlignment="Right" Text="{Binding BasicVersion}"/>
-                        </Grid>
-                        <Grid>
-                            <TextBlock HorizontalAlignment="Left" Text="{DynamicResource PanelSettingsOpenFxVersionLabel}"/>
-                            <TextBlock HorizontalAlignment="Right" Text="{Binding OpenFxVersion}"/>
-                        </Grid>
-                        <Grid>
-                            <TextBlock HorizontalAlignment="Left" Text="{DynamicResource PanelSettingsCoreLibVersionLabel}"/>
-                            <TextBlock HorizontalAlignment="Right" Text="{Binding CoreLibVersion}"/>
-                        </Grid>
-                        <Button Style="{DynamicResource MaterialDesignFlatButton}" Command="{Binding UpdateCheck}" Content="{DynamicResource PanelSettingsUpdateCheck}"/>
+                        <DockPanel>
+                            <ToggleButton DockPanel.Dock="Right" Style="{DynamicResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding SoundEffectEnable}"  ToolTip="{DynamicResource PanelSettingsSounds}"/>
+                            <StackPanel Orientation="Vertical" DockPanel.Dock="Left">
+                                <TextBlock HorizontalAlignment="Left" FontSize="15" Text="{DynamicResource PanelSettingsSounds}"/>
+                                <TextBlock Foreground="DarkSlateGray" TextWrapping="Wrap" HorizontalAlignment="Left" FontSize="12" Text="{DynamicResource PanelSettingsSoundsTip}"/>
+                            </StackPanel>
+                        </DockPanel>
                     </StackPanel>
                 </materialDesign:Card>
-                
+
             </StackPanel>
 
             <StackPanel Width="260" Orientation="Vertical">
@@ -92,31 +82,45 @@
                         </Grid>
                     </StackPanel>
                 </materialDesign:Card>
+            </StackPanel>
 
-                <materialDesign:Card Margin="5" Width="250">
-                    <StackPanel Margin="5" Orientation="Vertical">
-                        <TextBlock  Margin="0,0,0,5" Text="{DynamicResource PanelSettingsUx}"/>
+            <StackPanel Orientation="Vertical" Width="230">
+
+                <materialDesign:Card Margin="5">
+                    <StackPanel Orientation="Vertical" Margin="5">
+                        <TextBlock  Margin="0,0,0,5" Text="{DynamicResource PanelSettingsVersionInfo}"/>
                         <Label Margin="0,0,0,5" Height="1" Background="LightGray"/>
-                        <DockPanel>
-                            <ToggleButton DockPanel.Dock="Right" Style="{DynamicResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding SoundEffectEnable}"  ToolTip="{DynamicResource PanelSettingsSounds}"/>
-                            <StackPanel Orientation="Vertical" DockPanel.Dock="Left">
-                                <TextBlock HorizontalAlignment="Left" FontSize="15" Text="{DynamicResource PanelSettingsSounds}"/>
-                                <TextBlock Foreground="DarkSlateGray" TextWrapping="Wrap" HorizontalAlignment="Left" FontSize="12" Text="{DynamicResource PanelSettingsSoundsTip}"/>
-                            </StackPanel>
-                        </DockPanel>
+                        <Grid>
+                            <TextBlock HorizontalAlignment="Left" Text="{DynamicResource PanelSettingsGUIVersionLabel}"/>
+                            <TextBlock HorizontalAlignment="Right" Text="{Binding GUIVersion}"/>
+                        </Grid>
+                        <Grid>
+                            <TextBlock HorizontalAlignment="Left" Text="{DynamicResource PanelSettingsBasicVersionLabel}"/>
+                            <TextBlock HorizontalAlignment="Right" Text="{Binding BasicVersion}"/>
+                        </Grid>
+                        <Grid>
+                            <TextBlock HorizontalAlignment="Left" Text="{DynamicResource PanelSettingsOpenFxVersionLabel}"/>
+                            <TextBlock HorizontalAlignment="Right" Text="{Binding OpenFxVersion}"/>
+                        </Grid>
+                        <Grid>
+                            <TextBlock HorizontalAlignment="Left" Text="{DynamicResource PanelSettingsCoreLibVersionLabel}"/>
+                            <TextBlock HorizontalAlignment="Right" Text="{Binding CoreLibVersion}"/>
+                        </Grid>
+                        <Button Style="{DynamicResource MaterialDesignFlatButton}" Command="{Binding UpdateCheck}" Content="{DynamicResource PanelSettingsUpdateCheck}"/>
                     </StackPanel>
                 </materialDesign:Card>
 
-               
-                
+                <materialDesign:Card Margin="5">
+                    <StackPanel Margin="5" Orientation="Vertical">
+                        <TextBlock  Margin="0,0,0,5" Text="{DynamicResource PanelSettingsOther}"/>
+                        <Label Height="1" Background="LightGray"/>
+                        <Button Command="{Binding SendToDesktop}" FontSize="12" Margin="5" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource PanelSettingsSendToDesktop}"/>
+                    </StackPanel>
+                </materialDesign:Card>
             </StackPanel>
-            <materialDesign:Card Margin="5" Width="230">
-                <StackPanel Margin="5" Orientation="Vertical">
-                    <TextBlock  Margin="0,0,0,5" Text="{DynamicResource PanelSettingsOther}"/>
-                    <Label Height="1" Background="LightGray"/>
-                    <Button Command="{Binding SendToDesktop}" FontSize="12" Margin="5" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource PanelSettingsSendToDesktop}"/>
-                </StackPanel>
-            </materialDesign:Card>
+            
+            
+            
         </StackPanel>
         
     </DockPanel>
