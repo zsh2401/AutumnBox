@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -30,7 +31,10 @@ namespace AutumnBox.Basic.ManagedAdb
         {
             Instance = new LocalAdbServer();
         }
-        private LocalAdbServer() { }
+        private LocalAdbServer()
+        {
+            _lazyPort = new Lazy<ushort>(() => AllocatePort());
+        }
         /// <summary>
         /// 默认端口
         /// </summary>
@@ -38,7 +42,8 @@ namespace AutumnBox.Basic.ManagedAdb
         /// <summary>
         /// 端口
         /// </summary>
-        public ushort Port { get; } = DEFAULT_PORT;
+        public ushort Port { get => _lazyPort.Value; }
+        private Lazy<ushort> _lazyPort;
         /// <summary>
         /// IP
         /// </summary>
@@ -69,7 +74,7 @@ namespace AutumnBox.Basic.ManagedAdb
         /// 为ture将使得Kill方法失效
         /// </summary>
 #if SDK
-            internal 
+        internal
 #else
         public
 #endif
@@ -93,6 +98,39 @@ namespace AutumnBox.Basic.ManagedAdb
         {
             Kill();
         }
+
+        private const ushort MIN_PORT = 1000;
+        private const ushort MAX_PORT = ushort.MaxValue;
+        private static readonly Random ran = new Random();
+        internal static ushort AllocatePort()
+        {
+            //if (!PortInUse(DEFAULT_PORT)) return DEFAULT_PORT;
+            ushort port;
+            do
+            {
+                port = (ushort)ran.Next(MIN_PORT, MAX_PORT);
+            } while (PortInUse(port));
+            return port;
+        }
+        internal static bool PortInUse(int port)
+        {
+            bool inUse = false;
+
+            IPGlobalProperties ipProperties = IPGlobalProperties.GetIPGlobalProperties();
+            IPEndPoint[] ipEndPoints = ipProperties.GetActiveTcpListeners();
+
+
+            foreach (IPEndPoint endPoint in ipEndPoints)
+            {
+                if (endPoint.Port == port)
+                {
+                    inUse = true;
+                    break;
+                }
+            }
+            return inUse;
+        }
+
         /// <summary>
         /// 析构
         /// </summary>
