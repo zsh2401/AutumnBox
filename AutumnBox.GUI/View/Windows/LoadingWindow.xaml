@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AutumnBox.GUI.View.Windows"
         mc:Ignorable="d"
+        FontFamily="{DynamicResource AutumnBox.Font}"
         ShowInTaskbar="False"
         WindowStyle="None"
         BorderBrush="{DynamicResource PrimaryLightBrush}"
