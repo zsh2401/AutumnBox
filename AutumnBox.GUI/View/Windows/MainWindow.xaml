@@ -37,7 +37,7 @@
                     <TextBlock HorizontalAlignment="Center"  Margin="10" FontSize="30" Text="{DynamicResource AppDesc}"/>
                 </StackPanel>
             </materialDesign:TransitionerSlide>-->
-            
+
             <materialDesign:TransitionerSlide>
                 <materialDesign:TransitionerSlide.OpeningEffects>
                     <materialDesign:TransitionEffect Kind="ExpandIn" Duration="0:0:1" />
@@ -45,7 +45,8 @@
                 <Grid>
                     <StackPanel Orientation="Vertical" VerticalAlignment="Top">
                         <Image Source="/Resources/Drawable/icon.ico" Height="200"/>
-                        <TextBlock HorizontalAlignment="Center" Margin="10" FontSize="50" Text="{DynamicResource AppName}"/>
+                        <TextBlock HorizontalAlignment="Center" FontSize="50" Text="{DynamicResource AppNameWithVersion}"/>
+                        <TextBlock HorizontalAlignment="Center" FontSize="18" Text="{Binding Version}"/>
                         <TextBlock HorizontalAlignment="Center"  Margin="10" FontSize="30" Text="{DynamicResource AppDesc}"/>
                     </StackPanel>
                     <StackPanel VerticalAlignment="Bottom" Orientation="Vertical" Margin="10">
@@ -54,7 +55,7 @@
                     </StackPanel>
                 </Grid>
             </materialDesign:TransitionerSlide>
-            
+
 
 
             <materialDesign:TransitionerSlide>
