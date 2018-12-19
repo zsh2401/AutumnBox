@@ -148,6 +148,7 @@
     <Compile Include="Util\Net\ToastMotdGetter.cs" />
     <Compile Include="Util\OS\Manager.cs" />
     <Compile Include="Util\OS\OSInfo.cs" />
+    <Compile Include="Util\OS\TaskKill.cs" />
     <Compile Include="Util\Statistics.cs" />
     <Compile Include="Util\ToastMotd.cs" />
     <Compile Include="Util\UI\BlurHelper.cs" />
