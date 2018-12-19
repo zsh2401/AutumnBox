@@ -9,6 +9,7 @@ using AutumnBox.GUI.Properties;
 using AutumnBox.GUI.Util.Bus;
 using AutumnBox.GUI.Util.Debugging;
 using AutumnBox.GUI.Util.OpenFxManagement;
+using AutumnBox.GUI.Util.OS;
 using AutumnBox.GUI.View.Windows;
 using AutumnBox.OpenFramework;
 using System;
@@ -78,6 +79,7 @@ namespace AutumnBox.GUI.Util
             ui.LoadingTip = App.Current.Resources["ldmsgStartAdb"].ToString();
             try
             {
+                TaskKill.Kill("adb.exe");
                 logger.Info("trying starts adb server ");
                 DirectoryInfo adbRootDir = new DirectoryInfo("Resources/AdbExecutable/");
                 FileInfo adbExe = new FileInfo("Resources/AdbExecutable/adb.exe");

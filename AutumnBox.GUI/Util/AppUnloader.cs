@@ -4,6 +4,7 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.Basic.ManagedAdb;
+using AutumnBox.GUI.Util.OS;
 using AutumnBox.OpenFramework.Management;
 
 namespace AutumnBox.GUI.Util
@@ -17,6 +18,7 @@ namespace AutumnBox.GUI.Util
                 FxLoader.UnloadExtensions();
                 FxLoader.UnloadServices();
                 Adb.Server.Kill();
+                TaskKill.Kill("adb.exe");
             }
             catch { }
         }
