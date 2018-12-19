@@ -26,6 +26,7 @@ namespace AutumnBox.CoreModules.Extensions
             Ux.ShowLoadingWindow();
             Ux.Message(Executor.Cmd("ping www.baidu.com").Output.ToString());
             Ux.CloseLoadingWindow();
+            throw new Exception();
         }
     }
 }

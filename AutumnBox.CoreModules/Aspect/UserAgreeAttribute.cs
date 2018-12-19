@@ -12,7 +12,7 @@ using AutumnBox.OpenFramework.Extension;
 
 namespace AutumnBox.CoreModules.Aspect
 {
-    [AttributeUsage(AttributeTargets.Class, AllowMultiple = false)]
+    [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
     internal class UserAgreeAttribute : BeforeCreatingAspect
     {
         private readonly string message;
@@ -27,7 +27,7 @@ namespace AutumnBox.CoreModules.Aspect
         public override void BeforeCreating(BeforeCreatingAspectArgs args, ref bool canContinue)
         {
             string message = CoreLib.Current.Languages.Get(this.message) ?? this.message;
-            bool isAgree = CoreLib.Context.Ux.Agree(message);
+            bool isAgree = CoreLib.Context.Ux.DoYN(message);
            canContinue= isAgree;
         }
     }

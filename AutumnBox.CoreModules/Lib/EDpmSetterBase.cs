@@ -15,6 +15,8 @@ namespace AutumnBox.CoreModules.Lib
 {
     [ExtDesc("使用奇淫技巧暴力设置设备管理员,\n注意:使用此模块前,必须先移除屏幕锁,指纹锁等,否则将可能导致不可预见的后果", "en-us:Use the sneaky skills to set up the device administrator, \n Note: Before using this module, you must first remove the screen lock, fingerprint lock, etc., otherwise it may lead to unforeseen consequences")]
     [UserAgree("EGodPowerWarning")]
+    [UserAgree("EGodPowerMsgDeleteLockFirst")]
+    [UserAgree("EGodPowerWarningAgain")]
     [ExtIcon("Icons.nuclear.png")]
     [DpmReceiver(null)]
     internal abstract class EDpmSetterBase : OfficialVisualExtension
@@ -79,7 +81,7 @@ namespace AutumnBox.CoreModules.Lib
             }
         }
 
-     
+
 
         protected override string GetTipByExitCode(int exitCode)
         {

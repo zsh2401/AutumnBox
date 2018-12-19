@@ -195,8 +195,8 @@ namespace AutumnBox.GUI.Util.OpenFxManagement
             var window = new YNWindow()
             {
                 Owner = App.Current.MainWindow,
-                BtnYES = btnYes,
-                BtnNO = btnNo,
+                BtnYES = btnYes ?? "OpenFxBtnYes",
+                BtnNO = btnNo ?? "OpenFxBtnNo",
                 Message = message,
             };
             window.ShowDialog();
