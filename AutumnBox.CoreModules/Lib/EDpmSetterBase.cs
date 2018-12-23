@@ -3,6 +3,7 @@
 ** date:  2018/9/10 17:36:13 (UTC +8:00)
 ** desc： ...
 *************************************************/
+using AutumnBox.Basic.Calling;
 using AutumnBox.Basic.Exceptions;
 using AutumnBox.CoreModules.Aspect;
 using AutumnBox.CoreModules.Attribute;
@@ -65,24 +66,36 @@ namespace AutumnBox.CoreModules.Lib
             WriteLineAndSetTip(Res("DPMSetting"));
 
             Progress = 80;
+            bool success = (SetDpmWithDpm() || SetDpmWithDpmPro(dpmCommander));
+            return success ? OK : ERR;
+        }
+
+        protected virtual bool SetDpmWithDpm()
+        {
+            WriteLine("using dpm");
+            using (CommandExecutor executor = new CommandExecutor())
+            {
+                executor.To(OutputPrinter);
+                var result = executor.AdbShell(DeviceSelectedOnCreating, $"dpm set-device-owner {_cn}");
+                return result.ExitCode == 0;
+            }
+        }
+        protected virtual bool SetDpmWithDpmPro(CstmDpmCommander dpmPro)
+        {
             try
             {
+                WriteLine("using dpm pro");
                 dpmCommander.SetDeviceOwner(_cn);
-                return 0;
+                return true;
             }
             catch (Exception ex)
             {
                 WriteLine(ex.Message);
-                return (int)ExtensionExitCodes.Exception;
-            }
-            finally
-            {
-                Progress = 100;
+                return false;
             }
         }
 
-
-
+        [Obsolete]
         protected override string GetTipByExitCode(int exitCode)
         {
             switch (Args.CurrentThread.ExitCode)
