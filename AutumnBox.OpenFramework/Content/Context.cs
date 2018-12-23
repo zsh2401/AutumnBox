@@ -136,7 +136,10 @@ namespace AutumnBox.OpenFramework.Content
                 return Manager.ServicesManager;
             }
         }
-
+        /// <summary>
+        /// 获取拓展模块文件夹
+        /// </summary>
+        public System.IO.DirectoryInfo ExtensionDir => new System.IO.DirectoryInfo(Manager.InternalManager.ExtensionPath);
         static Context()
         {
         }
