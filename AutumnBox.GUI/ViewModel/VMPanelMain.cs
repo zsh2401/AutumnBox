@@ -3,6 +3,7 @@
 ** date:  2018/8/18 19:08:39 (UTC +8:00)
 ** desc： ...
 *************************************************/
+using AutumnBox.Basic.ManagedAdb;
 using AutumnBox.GUI.Model;
 using AutumnBox.GUI.MVVM;
 using AutumnBox.GUI.Util.OS;
@@ -51,6 +52,7 @@ namespace AutumnBox.GUI.ViewModel
                 UseShellExecute = false,
                 Verb = "runas",
             };
+            info.EnvironmentVariables["ANDROID_ADB_SERVER_PORT"] = Adb.Server.Port.ToString();
             if (OSInfo.IsWindows10)
             {
                 var args = new ChoicerContentStartArgs
