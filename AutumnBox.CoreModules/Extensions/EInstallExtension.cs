@@ -24,20 +24,40 @@ namespace AutumnBox.CoreModules.Extensions
     {
         protected override void Processing(Dictionary<string, object> data)
         {
-            RunOnUIThread(()=> {
+            string dialogResult = null;
+
+            RunOnUIThread(() =>
+            {
                 OpenFileDialog fileDialog = new OpenFileDialog();
                 fileDialog.Reset();
                 fileDialog.Title = "选择你要安装的拓展模块文件";
                 fileDialog.Filter = "秋之盒拓展模块文件|*.dll;*.atmb;*.odll;*.adll";
                 fileDialog.Multiselect = false;
-                if (fileDialog.ShowDialog() == true) {
-                    FileInfo result = new FileInfo(fileDialog.FileName);
-                    string target = Path.Combine(Manager.InternalManager.ExtensionPath,result.Name);
-                    File.Copy(result.FullName,target);
+                if (fileDialog.ShowDialog() == true)
+                {
+                    dialogResult = fileDialog.FileName;
                 }
-                bool shouldReboot = Ux.DoYN("重启秋之盒才能使安装的模块生效,是否这么做?","重启秋之盒","不是现在");
-                NewExtensionThread(typeof(ERestartApp)).Start();
             });
+            if (dialogResult != null)
+            {
+                FileInfo result = new FileInfo(dialogResult);
+                string target = Path.Combine(Manager.InternalManager.ExtensionPath, result.Name);
+                Ux.ShowLoadingWindow();
+                try
+                {
+                    File.Copy(result.FullName, target);
+                    bool shouldReboot = Ux.DoYN("重启秋之盒才能使安装的模块生效,是否这么做?", "重启秋之盒", "不是现在");
+                    NewExtensionThread(typeof(ERestartApp)).Start();
+                }
+                catch (Exception e)
+                {
+                    Ux.Warn("复制失败!" + Environment.NewLine + Environment.NewLine + e);
+                }
+                finally
+                {
+                    Ux.CloseLoadingWindow();
+                }
+            }
         }
     }
 }
