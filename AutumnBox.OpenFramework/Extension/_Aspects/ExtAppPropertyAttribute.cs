@@ -34,12 +34,12 @@ namespace AutumnBox.OpenFramework.Extension
             IDevice selectDevice = args.Context.GetService<IDeviceSelector>(ServicesNames.DEVICE_SELECTOR).GetCurrent(args.Context);
             if (!InstallApplication(selectDevice, value))
             {
-                bool ok = false;
+                ChoiceResult choice = ChoiceResult.Deny;
                 args.Context.App.RunOnUIThread(() =>
                  {
-                     ok = args.Context.Ux.DoYN("OpenFxInstallAppFirst", "OpenFxInstallBtnOk", "OpenFxInstallBtnIgnore");
+                     choice = args.Context.Ux.DoChoice("OpenFxInstallAppFirst", "OpenFxInstallBtnIgnore", "OpenFxInstallBtnOk");
                  });
-                canContinue = !ok;
+                canContinue = (choice == ChoiceResult.Deny);
             }
         }
         private static bool InstallApplication(IDevice device, string pkgName)
