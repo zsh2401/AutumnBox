@@ -19,7 +19,7 @@
                 <Button Click="Button_Click" Style="{DynamicResource MaterialDesignFlatButton}" Margin="10" HorizontalAlignment="Left" VerticalAlignment="Bottom" Content="{Binding BtnCancel}"/>
                 <StackPanel Margin="10" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom">
                     <Button Click="Button_Click_1" Style="{DynamicResource MaterialDesignFlatButton}" Content="{Binding BtnLeft}"/>
-                    <Button Click="Button_Click_2" Margin="10,0,0,0" Style="{DynamicResource MaterialDesignRaisedButton}" Content="{Binding BtnRight}"/>
+                    <Button Click="Button_Click_2" Margin="20,0,0,0" Style="{DynamicResource MaterialDesignFlatButton}" Content="{Binding BtnRight}"/>
                 </StackPanel>
             </Grid>
             <ScrollViewer DockPanel.Dock="Top" Margin="5" Template="{DynamicResource AtmbxScrollViewer}">
