@@ -135,7 +135,7 @@
     <s:String x:Key="PanelDeviceDetailsToolTipSu">According to the shell su command, if the su command does not exist, it is considered as no root.</s:String>
     <s:String x:Key="PanelDeviceDetailsStateNotFound">Device not found</s:String>
     <s:String x:Key="PanelDeviceDetailsStateNotFoundTip">Maybe you lost a adb drvier?</s:String>
-    <s:String x:Key="PanelDeviceDetailsStatePoweron">System runinng</s:String>
+    <s:String x:Key="PanelDeviceDetailsStatePoweron">System running</s:String>
     <s:String x:Key="PanelDeviceDetailsStatePoweronTip">Do you want to do</s:String>
     <s:String x:Key="PanelDeviceDetailsStateRecovery">Recovery</s:String>
     <s:String x:Key="PanelDeviceDetailsStateRecoveryTip">..</s:String>
