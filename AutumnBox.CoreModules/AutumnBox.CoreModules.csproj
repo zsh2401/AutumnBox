@@ -65,6 +65,7 @@
     <Compile Include="Attribute\DpmReceiverAttribute.cs" />
     <Compile Include="CoreLib.cs" />
     <Compile Include="Extensions\EDownloadExtension.cs" />
+    <Compile Include="Extensions\EInstallExtension.cs" />
     <Compile Include="Extensions\ERestartApp.cs" />
     <Compile Include="Extensions\Fastboot\EFlashBoot.cs" />
     <Compile Include="Extensions\Fastboot\EFlashRecovery.cs" />
@@ -241,6 +242,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Icons\download.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\add.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
