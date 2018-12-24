@@ -138,6 +138,7 @@ namespace AutumnBox.OpenFramework.ExtLibrary
                     }
                     else
                     {
+                        Logger.CDebug("Check result is false");
                         tmp.Destory();
                     }
                 }

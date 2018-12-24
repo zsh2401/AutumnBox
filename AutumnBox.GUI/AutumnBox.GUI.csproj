@@ -95,6 +95,17 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'SDK|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\SDK\</OutputPath>
+    <DefineConstants>TRACE;STAT</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Dragablz, Version=0.0.3.203, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Dragablz.0.0.3.203\lib\net45\Dragablz.dll</HintPath>
@@ -626,11 +637,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AutumnBox.Basic\AutumnBox.Basic.csproj">
-      <Project>{84044fb2-bd38-4283-8065-b639270ece0f}</Project>
+      <Project>{5276bfb4-b089-4e34-9c42-42ea019ef320}</Project>
       <Name>AutumnBox.Basic</Name>
     </ProjectReference>
     <ProjectReference Include="..\AutumnBox.OpenFramework\AutumnBox.OpenFramework.csproj">
-      <Project>{6516890C-86B6-40A0-8FD0-14FFDD62E1FE}</Project>
+      <Project>{60988b1a-74b7-470a-aeba-6d7fe474614d}</Project>
       <Name>AutumnBox.OpenFramework</Name>
     </ProjectReference>
   </ItemGroup>

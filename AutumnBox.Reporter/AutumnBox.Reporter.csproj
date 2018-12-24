@@ -7,7 +7,7 @@
     <ProjectGuid>{63D2F1E0-E652-44ED-993D-5214798B064F}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>AutumnBox.Reporter</RootNamespace>
-    <AssemblyName>AutumnBox.Reporter</AssemblyName>
+    <AssemblyName>AutumnBox-报告问题</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -19,7 +19,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\AutumnBox_Output\AutumnBoxDev\</OutputPath>
+    <OutputPath>..\..\AutumnBox_Output_Dev\AutumnBox\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -35,6 +35,16 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Preview|AnyCPU'">
     <OutputPath>..\..\AutumnBox_Output\AutumnBoxDev\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'SDK|AnyCPU'">
+    <OutputPath>bin\SDK\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <Optimize>true</Optimize>
     <DebugType>pdbonly</DebugType>
@@ -123,4 +133,8 @@
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>del /S *.exe.config
+del /S *.pdb</PostBuildEvent>
+  </PropertyGroup>
 </Project>

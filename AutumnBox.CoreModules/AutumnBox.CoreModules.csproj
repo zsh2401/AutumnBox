@@ -41,6 +41,16 @@
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'SDK|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\SDK\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -131,7 +141,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AutumnBox.Basic\AutumnBox.Basic.csproj">
-      <Project>{84044fb2-bd38-4283-8065-b639270ece0f}</Project>
+      <Project>{5276bfb4-b089-4e34-9c42-42ea019ef320}</Project>
       <Name>AutumnBox.Basic</Name>
       <Private>False</Private>
     </ProjectReference>
@@ -141,7 +151,7 @@
       <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\AutumnBox.OpenFramework\AutumnBox.OpenFramework.csproj">
-      <Project>{6516890c-86b6-40a0-8fd0-14ffdd62e1fe}</Project>
+      <Project>{60988b1a-74b7-470a-aeba-6d7fe474614d}</Project>
       <Name>AutumnBox.OpenFramework</Name>
       <Private>False</Private>
     </ProjectReference>
