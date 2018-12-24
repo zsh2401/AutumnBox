@@ -1,72 +1,69 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <Configurations>Debug;Release;SDK;Preview</Configurations>
-    <Version>8.15</Version>
-    <Authors>zsh2401</Authors>
-    <Company>zsh2401</Company>
-    <Copyright>Copyright © 2017 - 2018 zsh2401,All Rights Reserved</Copyright>
-    <Description>Let's develop AutumnBox extension!</Description>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{60988B1A-74B7-470A-AEBA-6D7FE474614D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AutumnBox.OpenFramework</RootNamespace>
+    <AssemblyName>AutumnBox.OpenFramework</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
   </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>bin\Release\netstandard2.0\AutumnBox.OpenFramework.xml</DocumentationFile>
-    <DefineConstants>TRACE;WIN32</DefineConstants>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;NETFX NET461</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\AutumnBox.OpenFramework.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX NET461</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\AutumnBox.OpenFramework.xml</DocumentationFile>
   </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Preview|AnyCPU'">
-    <DocumentationFile>bin\Release\netstandard2.0\AutumnBox.OpenFramework.xml</DocumentationFile>
-    <DefineConstants>TRACE;WIN32</DefineConstants>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'SDK|AnyCPU'">
+    <OutputPath>bin\SDK\</OutputPath>
+    <DefineConstants>TRACE;NETFX NET461</DefineConstants>
     <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>bin\SDK\AutumnBox.OpenFramework.xml</DocumentationFile>
   </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DefineConstants>TRACE;DEBUG;NETSTANDARD;NETSTANDARD2_0;WIN32</DefineConstants>
-    <DocumentationFile>bin\Release\netstandard2.0\AutumnBox.OpenFramework.xml</DocumentationFile>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='SDK|AnyCPU'">
-    <DefineConstants>TRACE;WIN32</DefineConstants>
-    <DocumentationFile>bin\Release\netstandard2.0\AutumnBox.OpenFramework.xml</DocumentationFile>
-  </PropertyGroup>
-
   <ItemGroup>
-    <Compile Remove="ClassBased\**" />
-    <Compile Remove="Service\Impl\**" />
-    <EmbeddedResource Remove="ClassBased\**" />
-    <EmbeddedResource Remove="Service\Impl\**" />
-    <None Remove="ClassBased\**" />
-    <None Remove="Service\Impl\**" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
-
   <ItemGroup>
-    <Folder Include="Properties\" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-
   <ItemGroup>
-    <PackageReference Include="Microsoft.CSharp" Version="4.5.0" />
+    <ProjectReference Include="..\AutumnBox.Basic\AutumnBox.Basic.csproj">
+      <Project>{5276bfb4-b089-4e34-9c42-42ea019ef320}</Project>
+      <Name>AutumnBox.Basic</Name>
+    </ProjectReference>
   </ItemGroup>
-
   <ItemGroup>
-    <ProjectReference Include="..\AutumnBox.Basic\AutumnBox.Basic.csproj" />
+    <None Include="AutumnBox.OpenFramework.nuspec" />
   </ItemGroup>
-
-  <!-- <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='SDK|AnyCPU'">
-    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
-    <WarningLevel>0</WarningLevel>
-    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
-    <DocumentationFile>bin\SDK\netstandard2.0\AutumnBox.Basic.xml</DocumentationFile>
-    <Optimize>true</Optimize>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>bin\Debug\netstandard2.0\AutumnBox.Basic.xml</DocumentationFile>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>bin\Release\netstandard2.0\AutumnBox.Basic.xml</DocumentationFile>
-  </PropertyGroup> -->
-
+  <Import Project="..\AutumnBox.OpenFramework.Shared\AutumnBox.OpenFramework.Shared.projitems" Label="Shared" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

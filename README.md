@@ -1,7 +1,7 @@
 [中文](README_zh-CN.md)
 
 ![](http://www.atmb.top/images/readmeheader.png)
-#### Code lines : 3000+
+#### Code lines : 5400+ (Not inlcude .xaml)
 #### Main language : C#
 #### Supporting Platform : Recommended Windows 10, minimum Windows 7
 #### Running the required environment: .Net Framework 4.6.1

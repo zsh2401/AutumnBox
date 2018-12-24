@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>49e6d09e-b234-4aa4-97b0-e82fb60c36d2</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>AutumnBox.OpenFramework.Shared</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)BuildInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Content\AttributeContext.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Content\Context.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Content\ContextPermissionAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Content\CtxPer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Exceptions\AccessDeniedException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Exceptions\ExtensionCanceledException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Exceptions\ExtensionCantBeStoppedException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Exceptions\LibrarianAlreadyCreatedOnceException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Exceptions\ServiceNotFoundException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Exceptions\UserDeniedException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Exceptions\WrapperAlreadyCreatedOnceException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extension\AtmbVisualExtension.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extension\AutumnBoxExtension.Constants.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extension\AutumnBoxExtension.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extension\ClassExtensionBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extension\ExtensionArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extension\IClassExtension.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extension\IExtension.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extension\SharpExtension.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extension\StrictVisualExtension.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extension\_Aspects\BeforeCreatingAspect.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extension\_Aspects\ExtAppPropertyAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extension\_Aspects\ExtMinAndroidVersionAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extension\_Aspects\ExtRequireRootAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extension\_Aspects\ExtRunAsAdminAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extension\_Attrs\ExtensionAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extension\_Attrs\ExtensionInformationKeys.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extension\_Attrs\ExtInfoI18NAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extension\_Attrs\IBeforeCreatingAspect.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extension\_Attrs\IInformationAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extension\_Attrs\SingleInfoAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extension\_InfoAttrs\ExtAuthAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extension\_InfoAttrs\ExtDescAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extension\_InfoAttrs\ExtDeveloperMode.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extension\_InfoAttrs\ExtIconAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extension\_InfoAttrs\ExtMinApiAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extension\_InfoAttrs\ExtNameAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extension\_InfoAttrs\ExtOfficialAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extension\_InfoAttrs\ExtPriority.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extension\_InfoAttrs\ExtRegionsAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extension\_InfoAttrs\ExtRequiredDeviceStatesAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extension\_InfoAttrs\ExtTargetApiAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extension\_InfoAttrs\ExtVersionAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ExtLibrary\AssemblyBasedLibrarian.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ExtLibrary\DefaultLibrarian.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ExtLibrary\ExtensionLibrarin.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ExtLibrary\ILibrarian.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Management\CallingBus.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Management\Filters\CurrentRegionFilter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Management\Filters\DevelopingFilter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Management\Filters\DeviceStateFilter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Management\FxLoader.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Management\IBaseApi.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Management\IExtensionUIController.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Management\IInternalManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Management\Impl\InternalManagerImpl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Management\IWrapperFilter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Management\Manager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Open\ChoiceResult.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Open\IAppManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Open\ICompApi.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Open\IDeviceSelector.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Open\IEmbeddedFileManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Open\IFrameworkManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Open\ILogger.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Open\IMd5Service.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Open\Impl\AppManagerImpl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Open\Impl\CompImpl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Open\Impl\EmbeddedFileManagerImpl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Open\Impl\FxImpl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Open\Impl\LoggerImpl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Open\Impl\OSApiImpl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Open\Impl\TemporaryFloderImpl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Open\Impl\UxImpl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Open\IOSApi.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Open\IResourcesManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Open\ISoundService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Open\ITemporaryFloder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Open\IUx.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Open\LoggerExtension.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Open\ServiceImpl\ResourcesManagerImpl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Open\ServiceImpl\SDeviceSelector.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Open\ServiceImpl\SMd5.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Open\ServiceImpl\SSoundManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Open\ServicesNames.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Running\Events.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Running\ExtensionExitCodes.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Running\ExtensionThread.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Running\ExtensionThreadManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Running\IExtensionThread.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Running\IExtensionThreadManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Running\Signals.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Service\AtmbService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Service\Default\SBaseApiContainer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Service\IServicesManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Service\ServiceName.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Service\ServicesManagerImpl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Service\ServiceState.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Wrapper\ClassExtensionInfoGetter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Wrapper\ClassExtensionScanner.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Wrapper\ClassExtensionWrapper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Wrapper\IExtensionWrapper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Wrapper\IExtInfoGetter.cs" />
+  </ItemGroup>
+</Project>

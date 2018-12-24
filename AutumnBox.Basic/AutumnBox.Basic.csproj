@@ -1,38 +1,65 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <Configurations>Debug;Release;SDK;Preview</Configurations>
-    <Version>2018.12.18.1</Version>
-    <Authors>zsh2401</Authors>
-    <Company>zsh2401</Company>
-    <Copyright>Copyright © 2017 - 2018 zsh2401,All Rights Reserved</Copyright>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5276BFB4-B089-4E34-9C42-42EA019EF320}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AutumnBox.Basic</RootNamespace>
+    <AssemblyName>AutumnBox.Basic</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
   </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='SDK|AnyCPU'">
-    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
-    <WarningLevel>0</WarningLevel>
-    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
-    <DocumentationFile>bin\SDK\netstandard2.0\AutumnBox.Basic.xml</DocumentationFile>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;NETFX NET461</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\AutumnBox.Basic.xml</DocumentationFile>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX NET461</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\AutumnBox.Basic.xml</DocumentationFile>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
   </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>bin\Debug\netstandard2.0\AutumnBox.Basic.xml</DocumentationFile>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'SDK|AnyCPU'">
+    <OutputPath>bin\SDK\</OutputPath>
+    <DefineConstants>TRACE;NETFX NET461</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>bin\SDK\AutumnBox.Basic.xml</DocumentationFile>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
   </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>bin\Release\netstandard2.0\AutumnBox.Basic.xml</DocumentationFile>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Preview|AnyCPU'">
-    <DocumentationFile>bin\Release\netstandard2.0\AutumnBox.Basic.xml</DocumentationFile>
-  </PropertyGroup>
-
   <ItemGroup>
-    <Reference Include="System.Management">
-      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Management.dll</HintPath>
-    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
-
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="..\AutumnBox.Basic.Shared\AutumnBox.Basic.Shared.projitems" Label="Shared" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

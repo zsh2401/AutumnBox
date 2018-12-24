@@ -6,6 +6,7 @@
 using System;
 using System.Drawing;
 using System.Text.RegularExpressions;
+using System.Windows;
 using AutumnBox.Basic.Data;
 using AutumnBox.Basic.Exceptions;
 using AutumnBox.Basic.Util;

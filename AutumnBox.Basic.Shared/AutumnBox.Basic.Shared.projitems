@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>8e101f07-8c10-4ab6-a427-f24618c25de5</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>AutumnBox.Basic</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Calling\Adb\AdbCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Calling\Adb\RealtimeShellCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Calling\Adb\ShellCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Calling\Adb\SuCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Calling\Cmd\WindowsCmdCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Calling\CommandExecutor.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Calling\CommandingObject.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Calling\CommandStation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Calling\Fastboot\FastbootCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Calling\IProcessBasedCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Calling\IProcessBasedCommandResult.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Calling\ProcessBasedCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Calling\ProcessExtension.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\ICommandStationObject.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\INotifyOutput.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\IReceiveOutputByTo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\Output.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\OutputBuilder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\OutputReceivedEvent.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Device\DeviceBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Device\DeviceCommander.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Device\DeviceExtension.Execute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Device\DeviceExtension.Management.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Device\DeviceExtension.Reboot.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Device\DeviceState.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Device\Emulator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Device\IDevice.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Device\Management\AppFx\ActivityManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Device\Management\AppFx\BroadcastSender.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Device\Management\AppFx\ComponentName.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Device\Management\AppFx\DevicePolicyManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Device\Management\AppFx\InstallTarget.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Device\Management\AppFx\Intent.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Device\Management\AppFx\IntentStringHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Device\Management\AppFx\PackageInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Device\Management\AppFx\PackageManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Device\Management\AppFx\PackageManagerInstallOption.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Device\Management\AppFx\ServiceManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Device\Management\AppFx\TrimMemoryLevel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Device\Management\Flash\DeviceImage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Device\Management\Flash\DeviceImageFinder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Device\Management\Flash\FastbootDeviceInfoGetter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Device\Management\Hardware\DeviceHardwareInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Device\Management\Hardware\DeviceHardwareInfoGetter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Device\Management\OS\AndroidKeyCode.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Device\Management\OS\BuildPropKeys.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Device\Management\OS\DeviceBuildPropGetter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Device\Management\OS\DeviceBuildPropManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Device\Management\OS\DeviceBuildPropSetter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Device\Management\OS\FileSystem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Device\Management\OS\Inputer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Device\Management\OS\ScreenCapture.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Device\Management\OS\ShellCommandHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Device\Management\OS\UserInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Device\Management\OS\UserManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Device\Management\OS\VideoRecorder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Device\Management\OS\WindowManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Device\NetDevice.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Device\UsbDevice.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Exceptions\AdbCommandFailedException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Exceptions\AdbShellCommandFailedException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Exceptions\CommandErrorException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Exceptions\CommandNotFoundException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Exceptions\DeviceHasNoSuException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Exceptions\DeviceNotAliveException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Exceptions\DeviceNotFoundException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Exceptions\PackageNotFoundException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extension\ExtensionShared.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extension\FileInfoExtension.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ManagedAdb\Adb.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ManagedAdb\AdbClient.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ManagedAdb\AdbClientWarpper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ManagedAdb\AdbResponse.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ManagedAdb\AdbResponseState.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ManagedAdb\Extension.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ManagedAdb\IAdbClient.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ManagedAdb\IAdbServer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ManagedAdb\LocalAdbServer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MultipleDevices\DeviceObjectFacotry.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MultipleDevices\DevicesArrayExtension.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MultipleDevices\DevicesChangedEvent.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MultipleDevices\DevicesGetter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MultipleDevices\DevicesMonitor.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MultipleDevices\IDevicesGetter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Util\Debugging\Logger.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Util\Debugging\LoggerGeneric.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Util\Debugging\LoggingStation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Util\DeviceCommanderFactory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Util\LinuxReturnCode.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Util\NativeMethods.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Util\Settings.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Util\ThrowIf.cs" />
+  </ItemGroup>
+</Project>
