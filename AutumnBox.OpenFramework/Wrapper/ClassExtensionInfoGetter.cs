@@ -188,15 +188,19 @@ namespace AutumnBox.OpenFramework.Wrapper
         {
             try
             {
-                string path = ExtType.Assembly.GetName().Name + "." + iconPath;
+                //Logger.Debug($"loading {iconPath}");
+                string path = ExtType.Assembly.GetName().Name/*.Replace('-','_') */+ "." + iconPath;
+                //Logger.Debug($"loading {iconPath}");
                 Stream stream = ExtType.Assembly.GetManifestResourceStream(path);
+                //Logger.Debug($"icon stream len:{stream.Length}");
                 byte[] buffer = new byte[stream.Length];
                 stream.Read(buffer, 0, buffer.Length);
+                //Logger.Debug($"loaded icon: {path} size:{buffer.Length}");
                 return buffer;
             }
             catch (Exception ex)
             {
-                Debug.WriteLine(ex);
+                Logger.Warn("cannot load icon", ex);
                 return new byte[0];
             }
         }

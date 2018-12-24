@@ -47,7 +47,10 @@ namespace AutumnBox.CoreModules.Extensions
                 {
                     File.Copy(result.FullName, target);
                     bool shouldReboot = Ux.DoYN("重启秋之盒才能使安装的模块生效,是否这么做?", "重启秋之盒", "不是现在");
-                    NewExtensionThread(typeof(ERestartApp)).Start();
+                    if (shouldReboot)
+                    {
+                        NewExtensionThread(typeof(ERestartApp)).Start();
+                    }
                 }
                 catch (Exception e)
                 {
