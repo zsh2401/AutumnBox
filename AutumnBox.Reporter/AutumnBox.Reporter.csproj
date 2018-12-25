@@ -34,7 +34,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Preview|AnyCPU'">
-    <OutputPath>..\..\AutumnBox_Output\AutumnBoxDev\</OutputPath>
+    <OutputPath>..\..\AutumnBox_Output\AutumnBox\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <Optimize>true</Optimize>
     <DebugType>pdbonly</DebugType>
