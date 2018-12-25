@@ -4,6 +4,7 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.Basic.Calling;
+using AutumnBox.Basic.Device.Management.AppFx;
 using AutumnBox.Basic.Exceptions;
 using AutumnBox.CoreModules.Aspect;
 using AutumnBox.CoreModules.Attribute;
@@ -66,20 +67,43 @@ namespace AutumnBox.CoreModules.Lib
             WriteLineAndSetTip(Res("DPMSetting"));
 
             Progress = 80;
-            bool success = (SetDpmWithDpm() || SetDpmWithDpmPro(dpmCommander));
-            return success ? OK : ERR;
+            try
+            {
+                return SetDpmWithDpm() ? OK : ERR;
+            }
+            catch (CommandNotFoundException)
+            {
+                if (Ux.DoYN(Res("EGodPowerUseDpmPro")))
+                {
+                    return SetDpmWithDpmPro(dpmCommander) ? OK : ERR;
+                }
+                else
+                {
+                    return ERR;
+                }
+            }
         }
 
         protected virtual bool SetDpmWithDpm()
         {
             WriteLine("using dpm");
-            using (CommandExecutor executor = new CommandExecutor())
+            var dpm = new DevicePolicyManager(DeviceSelectedOnCreating)
             {
-                executor.To(OutputPrinter);
-                var result = executor.AdbShell(DeviceSelectedOnCreating, $"dpm set-device-owner {_cn}");
-                return result.ExitCode == 0;
+                CmdStation = CmdStation
+            };
+            dpm.To(OutputPrinter);
+            try
+            {
+                dpm.SetDeviceOwner(_cn);
+                return true;
+            }
+            catch (Exception e)
+            {
+                Logger.Warn("", e);
+                return false;
             }
         }
+
         protected virtual bool SetDpmWithDpmPro(CstmDpmCommander dpmPro)
         {
             try
@@ -95,7 +119,6 @@ namespace AutumnBox.CoreModules.Lib
             }
         }
 
-        [Obsolete]
         protected override string GetTipByExitCode(int exitCode)
         {
             switch (Args.CurrentThread.ExitCode)

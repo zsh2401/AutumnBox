@@ -34,7 +34,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'SDK|AnyCPU'">
     <OutputPath>bin\SDK\</OutputPath>
-    <DefineConstants>TRACE;NETFX NET461</DefineConstants>
+    <DefineConstants>TRACE;NETFX NET461 SDK</DefineConstants>
     <Optimize>true</Optimize>
     <DebugType>pdbonly</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>

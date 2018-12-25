@@ -42,7 +42,7 @@ namespace AutumnBox.Basic.Device.Management.AppFx
         public void SetActiveAdmin(string componentName, int? uid = null)
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("set-active-admin ");
+            sb.Append("dpm set-active-admin ");
             if (uid != null)
             {
                 sb.Append($"--user {uid} ");
@@ -74,7 +74,7 @@ namespace AutumnBox.Basic.Device.Management.AppFx
         public void SetProfileOwner(string componentName, int? uid = null, string name = null)
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("set-profile-owner ");
+            sb.Append("dpm set-profile-owner ");
             if (uid != null)
             {
                 sb.Append($"--user {uid} ");
@@ -111,7 +111,7 @@ namespace AutumnBox.Basic.Device.Management.AppFx
         public void SetDeviceOwner(string componentName, int? uid = null, string name = null)
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("set-device-owner ");
+            sb.Append("dpm set-device-owner ");
             if (uid != null)
             {
                 sb.Append($"--user {uid} ");
@@ -146,7 +146,7 @@ namespace AutumnBox.Basic.Device.Management.AppFx
         public void RemoveActiveAdmin(string componentName, int? uid = null)
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("remove-device-owner ");
+            sb.Append("dpm remove-device-owner ");
             if (uid != null)
             {
                 sb.Append($"--user {uid} ");
