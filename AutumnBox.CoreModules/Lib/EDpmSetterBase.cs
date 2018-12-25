@@ -33,6 +33,17 @@ namespace AutumnBox.CoreModules.Lib
             scanner.Scan(ClassExtensionScanner.ScanOption.Informations);
             var infos = scanner.Informations;
             _cn = infos[DpmReceiverAttribute.KEY].Value as string;
+            EnableHelpButton(() =>
+            {
+                try
+                {
+                    System.Diagnostics.Process.Start("http://www.atmb.top/go/dpmhelp");
+                }
+                catch (Exception e)
+                {
+                    Logger.Warn("cannot go to dpm setter's help", e);
+                }
+            });
         }
 
         protected sealed override int VisualMain()
