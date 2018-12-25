@@ -18,7 +18,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron
     [DpmReceiver(RECEIVER_NAME)]
     internal class EAnzenboksuActivator : EDpmSetterBase
     {
-        public const string PKG_NAME = "com.hl.danzenbokusu";
-        public const string RECEIVER_NAME = "com.hl.danzenbokusu/.receiver.DPMReceiver";
+        public const string PKG_NAME = "com.hld.anzenbokusu";
+        public const string RECEIVER_NAME = "com.hld.anzenbokusu/.receiver.DPMReceiver";
     }
 }

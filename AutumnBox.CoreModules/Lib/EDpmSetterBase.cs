@@ -121,26 +121,29 @@ namespace AutumnBox.CoreModules.Lib
 
         protected override string GetTipByExitCode(int exitCode)
         {
-            switch (Args.CurrentThread.ExitCode)
-            {
-                case CstmDpmCommander.OKAY:
-                    WriteLine(Res("EDpmSetterBaseMsgSuccessed"));
-                    return Res("EDpmSetterBaseTipSuccessed");
-                case CstmDpmCommander.ERR:
-                    WriteLine(Res("EDpmSetterBaseMsgError"));
-                    return Res("EDpmSetterBaseTipError");
-                case CstmDpmCommander.ERR_EXIST_OTHER_ACC:
-                    WriteLine(Res("EDpmSetterBaseMsgErrOtherAccounts"));
-                    return Res("EDpmSetterBaseTipErrOtherAccounts");
-                case CstmDpmCommander.ERR_EXIST_OTHER_USER:
-                    WriteLine(Res("EDpmSetterBaseMsgErrOtherUsers"));
-                    return Res("EDpmSetterBaseTipErrOtherUsers");
-                case CstmDpmCommander.ERR_MIUI_SEC:
-                    WriteLine(Res("EDpmSetterBaseMsgErrMIUISec"));
-                    return Res("EDpmSetterBaseTipErrMiuiSec");
-                default:
-                    return base.GetTipByExitCode(exitCode);
-            }
+            Ux.Message(Res("EDpmSetterBaseFinishedMessage"));
+            WriteLine(Res("EDpmSetterBaseFinishedMessage"));
+            return Res("EDpmSetterBaseFinished");
+            //switch (Args.CurrentThread.ExitCode)
+            //{
+            //    case CstmDpmCommander.OKAY:
+            //        WriteLine(Res("EDpmSetterBaseMsgSuccessed"));
+            //        return Res("EDpmSetterBaseTipSuccessed");
+            //    case CstmDpmCommander.ERR:
+            //        WriteLine(Res("EDpmSetterBaseMsgError"));
+            //        return Res("EDpmSetterBaseTipError");
+            //    case CstmDpmCommander.ERR_EXIST_OTHER_ACC:
+            //        WriteLine(Res("EDpmSetterBaseMsgErrOtherAccounts"));
+            //        return Res("EDpmSetterBaseTipErrOtherAccounts");
+            //    case CstmDpmCommander.ERR_EXIST_OTHER_USER:
+            //        WriteLine(Res("EDpmSetterBaseMsgErrOtherUsers"));
+            //        return Res("EDpmSetterBaseTipErrOtherUsers");
+            //    case CstmDpmCommander.ERR_MIUI_SEC:
+            //        WriteLine(Res("EDpmSetterBaseMsgErrMIUISec"));
+            //        return Res("EDpmSetterBaseTipErrMiuiSec");
+            //    default:
+            //        return base.GetTipByExitCode(exitCode);
+            //}
         }
     }
 }

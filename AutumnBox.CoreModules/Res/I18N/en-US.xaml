@@ -85,6 +85,8 @@
     <s:String x:Key="EGodPowerWarningAgain">This is last chance to cancel,are sure to continue?</s:String>
     <s:String x:Key="EGodPowerWarningFmt">This module will violently delete your account and users, and set {0} as the device owner(dpm). Are you sure you want to do this?</s:String>
     <s:String x:Key="EGodPowerUseDpmPro">command dpm is failed,use dpm pro?</s:String>
+    <s:String x:Key="EDpmSetterBaseFinished">Maybe successful?</s:String>
+    <s:String x:Key="EDpmSetterBaseFinishedMessage">Maybe successful?Please check your app</s:String>
     <s:String x:Key="EGodPowerPushingApk">Pushing APK</s:String>
     <s:String x:Key="EGodPowerExtractingApk">Extracting APK</s:String>
     <s:String x:Key="EGodPowerRmUser">Remove all unnecessary users of device</s:String>
