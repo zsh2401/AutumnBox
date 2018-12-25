@@ -11,6 +11,7 @@ using AutumnBox.GUI.Util.UI;
 using AutumnBox.OpenFramework.Management;
 using AutumnBox.OpenFramework.Wrapper;
 using System;
+using System.Drawing;
 using System.Windows;
 using System.Windows.Media;
 
@@ -93,6 +94,25 @@ namespace AutumnBox.GUI.ViewModel
                 RaisePropertyChanged();
             }
         }
+
+        public System.Drawing.Size ViewSize
+        {
+            get
+            {
+                return new System.Drawing.Size
+                {
+                    Height = (int)view.Height,
+                    Width = (int)view.Width,
+                };
+            }
+            set
+            {
+                view.Height = value.Height;
+                view.Width = value.Width;
+            }
+        }
+
+
         private string output;
 
         #endregion
