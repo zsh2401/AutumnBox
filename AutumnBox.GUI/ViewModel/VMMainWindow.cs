@@ -43,16 +43,18 @@ namespace AutumnBox.GUI.ViewModel
 
         public VMMainWindow()
         {
+            base.RaisePropertyChangedOnDispatcher = true;
+            InitTitle();
             LanguageManager.Instance.LanguageChanged += (s, e) =>
             {
                 InitTitle();
             };
-            InitTitle();
-            base.RaisePropertyChangedOnDispatcher = true;
 #if PREVIEW
-            Version = $"{Self.Version.ToString(3)} {App.Current.Resources["Preview"]}";
+            Version = $"{Self.Version.ToString(3)} {App.Current.Resources["VersionTypePreview"]}";
+#elif DEBUG
+            Version = $"{Self.Version.ToString(3)} {App.Current.Resources["VersionTypeBeta"]}";
 #else
-            Version = $"{Self.Version.ToString(3)}";
+            Version = $"{Self.Version.ToString(3)} {App.Current.Resources["VersionTypeStable"]}";
 #endif
         }
 
@@ -63,16 +65,14 @@ namespace AutumnBox.GUI.ViewModel
 
         private void InitTitle()
         {
-            string comp = "";
 #if PREVIEW
-            comp = "PREVIEW";
+            Title = $"{App.Current.Resources["AppName"]}-{Self.Version.ToString(3)}-{App.Current.Resources["VersionTypePreview"]}";
 #elif DEBUG
-            comp = "DEBUG";
-#else
-            comp = "STABLE";
+           Title = $"{App.Current.Resources["AppName"]}-{Self.Version.ToString(3)}-{{App.Current.Resources["VersionTypeBeta"]}";
+#elif RELEASE
+           Title = $"{App.Current.Resources["AppName"]}-{Self.Version.ToString(2)}";
 #endif
 
-            Title = $"{App.Current.Resources["AppName"]}-{Self.Version.ToString(3)}-{comp}";
             if (Self.HaveAdminPermission)
             {
                 Title += " " + App.Current.Resources["TitleSuffixAdmin"];

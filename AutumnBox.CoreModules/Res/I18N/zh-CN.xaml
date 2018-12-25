@@ -88,6 +88,7 @@
      </s:String>
     <s:String x:Key="EGodPowerWarningAgain">这是你最后一次取消的机会,一旦开始操作将不可停止</s:String>
     <s:String x:Key="EGodPowerWarningFmt">本模块将会暴力删除你的账户与用户,并设置{0}为设备管理员(免ROOT),你确定这么做吗?</s:String>
+    <s:String x:Key="EGodPowerUseDpmPro">手机缺失DPM,是否使用DPM PRO(by web1n and zsh2401)?</s:String>
     <s:String x:Key="EGodPowerPushingApk">正在推送APK</s:String>
     <s:String x:Key="EGodPowerExtractingApk">正在提取APK</s:String>
     <s:String x:Key="EGodPowerRmUser">正在移除设备上所有多余用户</s:String>
