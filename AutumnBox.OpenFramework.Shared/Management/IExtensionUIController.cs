@@ -25,6 +25,11 @@ namespace AutumnBox.OpenFramework.Management
     public interface IExtensionUIController
     {
         /// <summary>
+        /// 开启帮助按钮
+        /// </summary>
+        /// <param name="action"></param>
+        void EnableHelp(Action action);
+        /// <summary>
         /// 当UI试图被用户关闭中时发生
         /// </summary>
         event EventHandler<UIControllerClosingEventArgs> Closing;

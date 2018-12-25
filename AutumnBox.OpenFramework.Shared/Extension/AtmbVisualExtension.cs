@@ -36,6 +36,18 @@ namespace AutumnBox.OpenFramework.Extension
         }
 
         /// <summary>
+        /// 开启帮助按钮
+        /// </summary>
+        /// <param name="action"></param>
+        protected void EnableHelpButton(Action action)
+        {
+            RunOnUIThread(() =>
+            {
+                UIController.EnableHelp(action);
+            });
+        }
+
+        /// <summary>
         /// 创建
         /// </summary>
         /// <param name="args"></param>

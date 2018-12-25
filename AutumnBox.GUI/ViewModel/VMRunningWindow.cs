@@ -6,6 +6,8 @@
 
 using AutumnBox.GUI.MVVM;
 using AutumnBox.GUI.Util;
+using AutumnBox.GUI.Util.Debugging;
+using AutumnBox.GUI.Util.UI;
 using AutumnBox.OpenFramework.Management;
 using AutumnBox.OpenFramework.Wrapper;
 using System;
@@ -145,6 +147,12 @@ namespace AutumnBox.GUI.ViewModel
         {
             isFinishedClosing = true;
             view.Close();
+        }
+
+        public void EnableHelp(Action action)
+        {
+            SGLogger<VMRunningWindow>.Info("calling enable help button");
+            HelpButtonHelper.EnableHelpButton(view, action);
         }
     }
 }
