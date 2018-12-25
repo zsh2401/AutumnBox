@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Threading;
 using AutumnBox.OpenFramework.Running;
+using System.Drawing;
 
 namespace AutumnBox.OpenFramework.Extension
 {
@@ -46,6 +47,10 @@ namespace AutumnBox.OpenFramework.Extension
                 UIController.EnableHelp(action);
             });
         }
+        /// <summary>
+        /// 视图大小
+        /// </summary>
+        protected Size ViewSize { get => UIController.ViewSize; set => UIController.ViewSize = value; }
 
         /// <summary>
         /// 创建

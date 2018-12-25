@@ -68,7 +68,7 @@ namespace AutumnBox.GUI.ViewModel
 #if PREVIEW
             Title = $"{App.Current.Resources["AppName"]}-{Self.Version.ToString(3)}-{App.Current.Resources["VersionTypePreview"]}";
 #elif DEBUG
-           Title = $"{App.Current.Resources["AppName"]}-{Self.Version.ToString(3)}-{{App.Current.Resources["VersionTypeBeta"]}";
+           Title = $"{App.Current.Resources["AppName"]}-{Self.Version.ToString(3)}-{App.Current.Resources["VersionTypeBeta"]}";
 #elif RELEASE
            Title = $"{App.Current.Resources["AppName"]}-{Self.Version.ToString(2)}";
 #endif

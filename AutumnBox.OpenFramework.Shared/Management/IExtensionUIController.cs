@@ -6,6 +6,7 @@
 
 using AutumnBox.OpenFramework.Wrapper;
 using System;
+using System.Drawing;
 
 namespace AutumnBox.OpenFramework.Management
 {
@@ -24,6 +25,10 @@ namespace AutumnBox.OpenFramework.Management
     /// </summary>
     public interface IExtensionUIController
     {
+        /// <summary>
+        /// 视图大小
+        /// </summary>
+        Size ViewSize { get; set; }
         /// <summary>
         /// 开启帮助按钮
         /// </summary>

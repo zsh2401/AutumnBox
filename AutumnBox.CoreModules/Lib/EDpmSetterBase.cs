@@ -33,6 +33,12 @@ namespace AutumnBox.CoreModules.Lib
             scanner.Scan(ClassExtensionScanner.ScanOption.Informations);
             var infos = scanner.Informations;
             _cn = infos[DpmReceiverAttribute.KEY].Value as string;
+            RunOnUIThread(()=> {
+                var viewSize = ViewSize;
+                viewSize.Height += 100;
+                viewSize.Width += 100;
+                ViewSize = viewSize;
+            });
             EnableHelpButton(() =>
             {
                 try
