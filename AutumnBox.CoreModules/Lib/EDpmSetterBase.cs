@@ -33,7 +33,8 @@ namespace AutumnBox.CoreModules.Lib
             scanner.Scan(ClassExtensionScanner.ScanOption.Informations);
             var infos = scanner.Informations;
             _cn = infos[DpmReceiverAttribute.KEY].Value as string;
-            RunOnUIThread(()=> {
+            RunOnUIThread(() =>
+            {
                 var viewSize = ViewSize;
                 viewSize.Height += 100;
                 viewSize.Width += 100;
@@ -112,6 +113,31 @@ namespace AutumnBox.CoreModules.Lib
             try
             {
                 dpm.SetDeviceOwner(_cn);
+                return true;
+            }
+            catch (Exception e)
+            {
+                Logger.Warn("", e);
+                return SetDpmWithDpmAndPutSettings();
+            }
+        }
+        protected virtual bool SetDpmWithDpmAndPutSettings()
+        {
+            WriteLine("using dpm step 2");
+            var dpm = new DevicePolicyManager(DeviceSelectedOnCreating)
+            {
+                CmdStation = CmdStation
+            };
+            dpm.To(OutputPrinter);
+            try
+            {
+                using (CommandExecutor executor = new CommandExecutor())
+                {
+                    executor.To(OutputPrinter);
+                    executor.AdbShell(DeviceSelectedOnCreating, "settings put global device_provisioned 0");
+                    dpm.SetDeviceOwner(_cn);
+                    executor.AdbShell(DeviceSelectedOnCreating, "settings put global device_provisioned 1");
+                }
                 return true;
             }
             catch (Exception e)
