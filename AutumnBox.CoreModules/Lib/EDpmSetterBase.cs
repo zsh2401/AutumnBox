@@ -44,7 +44,7 @@ namespace AutumnBox.CoreModules.Lib
             {
                 try
                 {
-                    System.Diagnostics.Process.Start("http://www.atmb.top/go/dpmhelp");
+                    System.Diagnostics.Process.Start("http://www.atmb.top/go/help/dpmhelp");
                 }
                 catch (Exception e)
                 {
