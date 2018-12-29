@@ -12,33 +12,12 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.GUI.Util.Net
 {
-    internal class JsonGetter<TResultObject>
+    internal abstract class JsonGetter<TResultObject>
     {
         protected readonly WebClient webClient;
-        public string Url
-        {
-            get
-            {
-#if USE_LOCAL_API && DEBUG
-                return DebugUrl ?? _url;
-#else
-                return _url;
-#endif
-            }
-            set
-            {
-                _url = value;
-            }
-        }
-        private string _url;
-        public string DebugUrl { get; set; } = null;
-        public JsonGetter(string url) : this()
-        {
-            if (string.IsNullOrWhiteSpace(url))
-            {
-                throw new ArgumentException("message", nameof(url));
-            }
-        }
+
+        public abstract string Url { get; }
+
         public JsonGetter()
         {
             webClient = new WebClient()
@@ -46,6 +25,7 @@ namespace AutumnBox.GUI.Util.Net
                 Encoding = Encoding.UTF8
             };
         }
+
         public void Try(Action<TResultObject> callback)
         {
             if (callback == null)
@@ -56,8 +36,7 @@ namespace AutumnBox.GUI.Util.Net
             {
                 try
                 {
-                    var result = ParseJson(GetJson());
-                    callback(result);
+                    callback(GetSync());
                 }
                 catch (Exception e)
                 {
@@ -65,11 +44,18 @@ namespace AutumnBox.GUI.Util.Net
                 }
             });
         }
+
+        public TResultObject GetSync()
+        {
+            return ParseJson(GetJson());
+        }
+
         protected virtual TResultObject ParseJson(string json)
         {
             var obj = JsonConvert.DeserializeObject<TResultObject>(json);
             return obj;
         }
+
         protected virtual string GetJson()
         {
             return webClient.DownloadString(Url);

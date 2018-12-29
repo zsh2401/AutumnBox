@@ -9,11 +9,11 @@ namespace AutumnBox.GUI.Util.Net
 {
     internal class ToastMotdGetter : JsonGetter<ToastMotdGetter.Result>
     {
-        public ToastMotdGetter()
-        {
-            DebugUrl = "http://localhost:24010/_api_/tmotd";
-            Url = App.Current.Resources["urlApiToastMotd"] as string;
-        }
+#if USE_LOCAL_API
+        public override string Url => "http://localhost:24010/_api_/tmotd";
+#else
+        public override string Url => App.Current.Resources["urlApiToastMotd"] as string;
+#endif
         public class Result
         {
             [JsonProperty("enable")]

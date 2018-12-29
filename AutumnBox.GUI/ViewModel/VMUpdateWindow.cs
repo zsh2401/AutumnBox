@@ -5,6 +5,7 @@
 *************************************************/
 using AutumnBox.GUI.MVVM;
 using AutumnBox.GUI.Properties;
+using AutumnBox.GUI.Util;
 using AutumnBox.GUI.Util.Net;
 using System.Diagnostics;
 using System.Windows.Input;
@@ -28,12 +29,12 @@ namespace AutumnBox.GUI.ViewModel
             get; private set;
         }
         public ICommand SkipThisVersion { get; private set; }
-        public VMUpdateWindow(RemoteVersionInfoGetter.Result result)
+        public VMUpdateWindow()
         {
-            this.Model = result;
+            Model = Updater.Result;
             GotoUpdate = new MVVMCommand((para) =>
             {
-                Process.Start(result.UpdateUrl);
+                Process.Start(Model.UpdateUrl);
             });
             SkipThisVersion = new MVVMCommand((p) =>
             {

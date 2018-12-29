@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AutumnBox.GUI.View.Windows"
+        xmlns:viewmodel="clr-namespace:AutumnBox.GUI.ViewModel"
         mc:Ignorable="d"
         FontFamily="{DynamicResource AutumnBox.Font}"
         Title="{DynamicResource UpdateWindowTitle}" MinHeight="350" MinWidth="330" Height="350" Width="446"
@@ -11,6 +12,9 @@
         ShowInTaskbar="False"
         WindowStyle="ToolWindow"
         ResizeMode="CanResize">
+    <Window.DataContext>
+        <viewmodel:VMUpdateWindow/>
+    </Window.DataContext>
     <Grid Margin="1" Background="WhiteSmoke">
         <DockPanel>
             <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Center">
