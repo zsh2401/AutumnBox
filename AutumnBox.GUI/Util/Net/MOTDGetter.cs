@@ -23,10 +23,11 @@ namespace AutumnBox.GUI.Util.Net
     }
     internal class MOTDGetter : JsonGetter<MOTDResult>
     {
-        public MOTDGetter()
-        {
-            Url = (string)App.Current.Resources["urlApiMotd"];
-            DebugUrl = "http://localhost:24010/_api_/motd/";
-        }
+#if USE_LOCAL_API
+        public override string Url => "http://localhost:24010/_api_/motd/";
+#else
+        public override string Url => (string)App.Current.Resources["urlApiMotd"];
+#endif
+
     }
 }

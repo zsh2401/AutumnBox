@@ -4,13 +4,17 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.GUI.Properties;
+using AutumnBox.GUI.Util.Debugging;
 using AutumnBox.GUI.Util.Net;
 using AutumnBox.GUI.View.Windows;
+using System;
+using System.Threading.Tasks;
 
 namespace AutumnBox.GUI.Util
 {
-    public static class Updater
+    internal static class Updater
     {
+        public static RemoteVersionInfoGetter.Result Result { get; private set; }
         static Updater()
         {
             if (Settings.Default.SkipVersion == "NULL")
@@ -19,31 +23,47 @@ namespace AutumnBox.GUI.Util
                 Settings.Default.Save();
             }
         }
-        public static void CheckAndNotice(bool showDontNeedToUpdate = false)
+        public static Task RefreshAsync(Action callback)
         {
-            RemoteVersionInfoGetter getter = new RemoteVersionInfoGetter();
-            getter.Try((e) =>
+            return Task.Run(() =>
             {
-                if (e.Version > Self.Version && e.VersionString != Settings.Default.SkipVersion)
+                RemoteVersionInfoGetter getter = new RemoteVersionInfoGetter();
+                try
                 {
-                    App.Current.Dispatcher.Invoke(() =>
-                    {
-                        new UpdateNoticeWindow(e).Show();
-                    });
+                    Result = getter.GetSync();
+                    callback?.Invoke();
                 }
-                else if (showDontNeedToUpdate)
+                catch (Exception e)
                 {
-                    App.Current.Dispatcher.Invoke(() =>
-                    {
-                        new MessageWindow()
-                        {
-                            MsgTitle = "PanelSettingsTitleDontNeedUpdate",
-                            Message = "PanelSettingsMsgDontNeedUpdate",
-                            Owner = App.Current.MainWindow
-                        }.Show();
-                    });
+                    SLogger.Warn(nameof(Updater), "cannot refresh update informations", e);
                 }
             });
+        }
+        public static void ShowUI(bool showIsLatestVersion = true, bool showSkippedVersion = false)
+        {
+            if (Result == null) return;
+
+            if (Result.Version > Self.Version &&
+                (Result.Version > Version.Parse(Settings.Default.SkipVersion) ||
+                showSkippedVersion))
+            {
+                App.Current.Dispatcher.Invoke(() =>
+                {
+                    new UpdateNoticeWindow().Show();
+                });
+            }
+            else if (showIsLatestVersion)
+            {
+                App.Current.Dispatcher.Invoke(() =>
+                {
+                    new MessageWindow()
+                    {
+                        MsgTitle = "PanelSettingsTitleDontNeedUpdate",
+                        Message = "PanelSettingsMsgDontNeedUpdate",
+                        Owner = App.Current.MainWindow
+                    }.Show();
+                });
+            }
         }
     }
 }

@@ -54,14 +54,17 @@ namespace AutumnBox.GUI.ViewModel
                 }
                 catch (Exception e)
                 {
-                    SLogger.Warn(this,"Click potd is failed", e);
+                    SLogger.Warn(this, "Click potd is failed", e);
                 }
             });
             new PotdGetter().Try((result) =>
             {
                 App.Current.Dispatcher.Invoke(() =>
                 {
-                    SettingBy(result);
+                    if (result.Enable == true)
+                    {
+                        SettingBy(result);
+                    }
                 });
             });
         }

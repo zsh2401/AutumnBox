@@ -109,7 +109,10 @@ namespace AutumnBox.GUI.Util
 
             ui.Progress = 90;
             ui.LoadingTip = "How can a man die better?";
-            Updater.CheckAndNotice();
+            Updater.RefreshAsync(() =>
+            {
+                Updater.ShowUI(false);
+            });
             Statistics.Do();
             ToastMotd.Do();
 

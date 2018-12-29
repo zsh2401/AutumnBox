@@ -9,10 +9,9 @@ namespace AutumnBox.GUI.View.Windows
     /// </summary>
     public partial class UpdateNoticeWindow : Window
     {
-        internal UpdateNoticeWindow(RemoteVersionInfoGetter.Result result)
+        internal UpdateNoticeWindow()
         {
             InitializeComponent();
-            DataContext = new VMUpdateWindow(result);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

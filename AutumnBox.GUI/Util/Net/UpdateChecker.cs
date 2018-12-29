@@ -67,10 +67,10 @@ namespace AutumnBox.GUI.Util.Net
                 }
             }
         }
-        public RemoteVersionInfoGetter()
-        {
-            DebugUrl = "http://localhost:24010/_api_/update/";
-            Url = App.Current.Resources["urlApiUpdate"].ToString();
-        }
+#if USE_LOCAL_API
+        public override string Url => "http://localhost:24010/_api_/update/";
+#else
+        public override string Url => App.Current.Resources["urlApiUpdate"].ToString();
+#endif
     }
 }

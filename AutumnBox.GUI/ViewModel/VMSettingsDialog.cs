@@ -199,7 +199,10 @@ namespace AutumnBox.GUI.ViewModel
             });
             UpdateCheck = new FlexiableCommand(() =>
             {
-                Updater.CheckAndNotice(showDontNeedToUpdate: true);
+                Updater.RefreshAsync(() =>
+                {
+                    Updater.ShowUI(true,true);
+                });
             });
             try
             {
