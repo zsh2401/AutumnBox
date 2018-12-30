@@ -23,14 +23,19 @@ namespace AutumnBox.GUI.ViewModel
             }
         }
         private int selectedIndex;
-        public VMCurrentDevice() {
-            Util.Bus.DeviceSelectionObserver.Instance.SelectedDevice += SelectedDevice;
-            Util.Bus.DeviceSelectionObserver.Instance.SelectedNoDevice += NoDevice;
+
+        public VMCurrentDevice()
+        {
+            if (Util.Bus.DeviceSelectionObserver.Instance != null)
+            {
+                Util.Bus.DeviceSelectionObserver.Instance.SelectedDevice += SelectedDevice;
+                Util.Bus.DeviceSelectionObserver.Instance.SelectedNoDevice += NoDevice;
+            }
         }
 
         private void NoDevice(object sender, EventArgs e)
         {
-            
+
         }
 
         private void SelectedDevice(object sender, EventArgs e)

@@ -12,7 +12,10 @@ namespace AutumnBox.GUI.Util.OS
     {
         public static void Kill(string exeName)
         {
-            new CommandExecutor().Cmd($"taskkill /F /IM {exeName} /T");
+            using (var executor = new CommandExecutor())
+            {
+                executor.Cmd($"taskkill /F /IM {exeName} /T");
+            }
         }
     }
 }
