@@ -24,8 +24,19 @@ namespace AutumnBox.GUI.ViewModel
         }
         private int selectedIndex;
 
+        public FlexiableCommand PreFunctionPage { get; }
+        public FlexiableCommand NextFunctionPage { get; }
+
         public VMCurrentDevice()
         {
+            PreFunctionPage = new FlexiableCommand(() =>
+            {
+                TabSelectedIndex = (TabSelectedIndex - 1) % 7;
+            });
+            NextFunctionPage = new FlexiableCommand(() =>
+            {
+                TabSelectedIndex = (TabSelectedIndex + 1) % 7;
+            });
             if (Util.Bus.DeviceSelectionObserver.Instance != null)
             {
                 Util.Bus.DeviceSelectionObserver.Instance.SelectedDevice += SelectedDevice;

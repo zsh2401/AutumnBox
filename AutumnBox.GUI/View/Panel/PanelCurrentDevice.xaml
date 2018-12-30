@@ -24,39 +24,68 @@
                 <local:PanelReboot  Width="170" Height="220"/>
             </materialDesign:Card>
         </DockPanel>
-        <materialDesign:Card  Background="{DynamicResource CardBackgroundBrush}" DockPanel.Dock="Bottom" Width="800" Margin="0,5,0,10" MaxWidth="800">
-            <dockablz:Layout>
-                <dragablz:TabablzControl  SelectedIndex="{Binding TabSelectedIndex}" Style="{DynamicResource MaterialDesignTabablzControlStyle}">
 
-                    <TabItem TabIndex="0" Header="{DynamicResource PanelCurrentDevicePoweron}" FontSize="10">
+        <materialDesign:Card  Background="{DynamicResource CardBackgroundBrush}" DockPanel.Dock="Bottom" Width="800" Margin="5">
+
+            <DockPanel>
+                <Grid DockPanel.Dock="Top">
+                    <Button Content="上一个" HorizontalAlignment="Left" Command="{Binding PreFunctionPage}" Style="{DynamicResource MaterialDesignFlatButton}"/>
+                    <TextBlock HorizontalAlignment="Center" FontSize="30">Wow</TextBlock>
+                    <Button Content="下一个" HorizontalAlignment="Right" Command="{Binding NextFunctionPage}" Style="{DynamicResource MaterialDesignFlatButton}"/>
+                </Grid>
+                <materialDesign:Transitioner SelectedIndex="{Binding TabSelectedIndex}">
+
+                    <materialDesign:TransitionerSlide>
+                        <materialDesign:TransitionerSlide.OpeningEffects>
+                            <materialDesign:TransitionEffect Kind="FadeIn" Duration="0:0:1" />
+                        </materialDesign:TransitionerSlide.OpeningEffects>
                         <local:PanelExtension TargetDeviceState="Poweron" Margin="0"/>
-                    </TabItem>
+                    </materialDesign:TransitionerSlide>
 
-                    <TabItem TabIndex="1" Header="{DynamicResource PanelCurrentDeviceRecovery}" FontSize="16">
-                        <local:PanelExtension TargetDeviceState="Recovery"  Margin="0"/>
-                    </TabItem>
+                    <materialDesign:TransitionerSlide>
+                        <materialDesign:TransitionerSlide.OpeningEffects>
+                            <materialDesign:TransitionEffect Kind="SlideInFromRight" Duration="0:0:1" />
+                        </materialDesign:TransitionerSlide.OpeningEffects>
+                        <local:PanelExtension TargetDeviceState="Recovery" Margin="0"/>
+                    </materialDesign:TransitionerSlide>
 
-                    <TabItem TabIndex="2" Header="{DynamicResource PanelCurrentDeviceFastboot}" FontSize="16">
-                        <local:PanelExtension TargetDeviceState="Fastboot"  Margin="0"/>
-                    </TabItem>
+                    <materialDesign:TransitionerSlide>
+                        <materialDesign:TransitionerSlide.OpeningEffects>
+                            <materialDesign:TransitionEffect Kind="SlideInFromRight" Duration="0:0:1" />
+                        </materialDesign:TransitionerSlide.OpeningEffects>
+                        <local:PanelExtension TargetDeviceState="Fastboot" Margin="0"/>
+                    </materialDesign:TransitionerSlide>
 
-                    <TabItem TabIndex="3" Header="{DynamicResource PanelCurrentDeviceSideload}" FontSize="16">
-                        <local:PanelExtension TargetDeviceState="Sideload"  Margin="0"/>
-                    </TabItem>
+                    <materialDesign:TransitionerSlide>
+                        <materialDesign:TransitionerSlide.OpeningEffects>
+                            <materialDesign:TransitionEffect Kind="SlideInFromRight" Duration="0:0:1" />
+                        </materialDesign:TransitionerSlide.OpeningEffects>
+                        <local:PanelExtension TargetDeviceState="Sideload" Margin="0"/>
+                    </materialDesign:TransitionerSlide>
 
-                    <TabItem TabIndex="4" Header="{DynamicResource PanelCurrentDeviceUnauthorized}" FontSize="16">
-                        <local:PanelExtension TargetDeviceState="Unauthorized"  Margin="0"/>
-                    </TabItem>
+                    <materialDesign:TransitionerSlide>
+                        <materialDesign:TransitionerSlide.OpeningEffects>
+                            <materialDesign:TransitionEffect Kind="SlideInFromRight" Duration="0:0:1" />
+                        </materialDesign:TransitionerSlide.OpeningEffects>
+                        <local:PanelExtension TargetDeviceState="Unauthorized" Margin="0"/>
+                    </materialDesign:TransitionerSlide>
 
-                    <TabItem TabIndex="5" Header="{DynamicResource PanelCurrentDeviceOffline}" FontSize="16">
-                        <local:PanelExtension TargetDeviceState="Offline"  Margin="0"/>
-                    </TabItem>
+                    <materialDesign:TransitionerSlide>
+                        <materialDesign:TransitionerSlide.OpeningEffects>
+                            <materialDesign:TransitionEffect Kind="SlideInFromRight" Duration="0:0:1" />
+                        </materialDesign:TransitionerSlide.OpeningEffects>
+                        <local:PanelExtension TargetDeviceState="Offline" Margin="0"/>
+                    </materialDesign:TransitionerSlide>
+                </materialDesign:Transitioner>
 
-                    <TabItem TabIndex="6" Header="{DynamicResource PanelCurrentDeviceUnknown}" FontSize="12">
-                        <local:PanelExtension TargetDeviceState="Unknown"  Margin="0"/>
-                    </TabItem>
-                </dragablz:TabablzControl>
-            </dockablz:Layout>
+                <materialDesign:TransitionerSlide>
+                    <materialDesign:TransitionerSlide.OpeningEffects>
+                        <materialDesign:TransitionEffect Kind="SlideInFromRight" Duration="0:0:1" />
+                    </materialDesign:TransitionerSlide.OpeningEffects>
+                    <local:PanelExtension TargetDeviceState="Unknown" Margin="0"/>
+                </materialDesign:TransitionerSlide>
+            </DockPanel>
+
         </materialDesign:Card>
     </DockPanel>
 </UserControl>
