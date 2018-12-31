@@ -31,11 +31,11 @@ namespace AutumnBox.GUI.ViewModel
         {
             PreFunctionPage = new FlexiableCommand(() =>
             {
-                TabSelectedIndex = (TabSelectedIndex - 1) % 7;
+                TabSelectedIndex = (TabSelectedIndex - 1) % 6;
             });
             NextFunctionPage = new FlexiableCommand(() =>
             {
-                TabSelectedIndex = (TabSelectedIndex + 1) % 7;
+                TabSelectedIndex = (TabSelectedIndex + 1) % 6;
             });
             if (Util.Bus.DeviceSelectionObserver.Instance != null)
             {
