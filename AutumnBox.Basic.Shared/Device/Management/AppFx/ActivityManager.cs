@@ -37,6 +37,20 @@ namespace AutumnBox.Basic.Device.Management.AppFx
                  .ThrowIfShellExitCodeNotEqualsZero();
         }
         /// <summary>
+        /// 启动一个Activity
+        /// </summary>
+        /// <param name="componentNameString">组件名字符串</param>
+        /// <param name="intent"></param>
+        /// <exception cref="Exceptions.AdbShellCommandFailedException"></exception>
+        public void StartActivity(string componentNameString, Intent intent = null)
+        {
+            CmdStation.GetShellCommand(Device,
+                $"am start -n {componentNameString} {intent?.ToAdbArguments()}")
+                .To(RaiseOutput)
+                 .Execute()
+                 .ThrowIfShellExitCodeNotEqualsZero();
+        }
+        /// <summary>
         /// 启动一个组件，例如某个activity
         /// </summary>
         /// <param name="componentName"></param>
