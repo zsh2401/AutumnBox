@@ -9,7 +9,7 @@
         FontFamily="{DynamicResource AutumnBox.Font}"
         Title="{DynamicResource UpdateWindowTitle}" MinHeight="350" MinWidth="330" Height="350" Width="446"
         WindowStartupLocation="CenterScreen"
-        ShowInTaskbar="False"
+        ShowInTaskbar="True"
         WindowStyle="ToolWindow"
         ResizeMode="CanResize">
     <Window.DataContext>
