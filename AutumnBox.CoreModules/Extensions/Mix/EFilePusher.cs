@@ -75,9 +75,8 @@ namespace AutumnBox.CoreModules.Extensions.Mix
                 dialogResult = fileDialog.ShowDialog();
                 seleFile = fileDialog.FileName;
             });
-            FileInfo fileInfo = new FileInfo(seleFile);
-
             if (dialogResult != true) return ERR_CANCELED_BY_USER;
+            FileInfo fileInfo = new FileInfo(seleFile);
             try
             {
                 return GetDeviceAdbCommand($"push \"{fileInfo.FullName}\" \"/sdcard/{fileInfo.Name}\"")
