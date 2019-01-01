@@ -6,17 +6,17 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:viewmodel="clr-namespace:AutumnBox.GUI.ViewModel"
              FontFamily="{DynamicResource AutumnBox.Font}"
-             mc:Ignorable="d" d:DesignHeight="218.803" d:DesignWidth="190.598">
+             FontSize="20">
     <UserControl.DataContext>
         <viewmodel:VMReboot/>
     </UserControl.DataContext>
     <Grid>
-        <StackPanel Orientation="Vertical">
-            <TextBlock Text="{DynamicResource PanelRebootTitle}" TextAlignment="Center" FontSize="25" Margin="10"/>
-            <Button Style="{DynamicResource MaterialDesignFlatButton}" Command="{Binding ToSystem}"  Content="{DynamicResource PanelRebootToSystem}"   VerticalAlignment="Top" FontSize="12"/>
-            <Button Style="{DynamicResource MaterialDesignFlatButton}" Command="{Binding ToRecovery}" Content="{DynamicResource PanelRebootToRecovery}" VerticalAlignment="Top" FontSize="12"/>
-            <Button Style="{DynamicResource MaterialDesignFlatButton}" Command="{Binding ToFastboot}" Content="{DynamicResource PanelRebootToFastboot}"  VerticalAlignment="Top" FontSize="12"/>
-            <Button Style="{DynamicResource MaterialDesignFlatButton}" Command="{Binding To9008}" Content="{DynamicResource PanelRebootTo9008}"  VerticalAlignment="Top" FontSize="12"/>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="{DynamicResource PanelRebootTitle}" Margin="10"/>
+            <Button  Margin="25,0,0,0" Style="{DynamicResource MaterialDesignFlatButton}" Command="{Binding ToSystem}"  Content="{DynamicResource PanelRebootToSystem}" />
+            <Button  Margin="25,0,0,0" Style="{DynamicResource MaterialDesignFlatButton}" Command="{Binding ToRecovery}" Content="{DynamicResource PanelRebootToRecovery}"/>
+            <Button  Margin="25,0,0,0" Style="{DynamicResource MaterialDesignFlatButton}" Command="{Binding ToFastboot}" Content="{DynamicResource PanelRebootToFastboot}" />
+            <Button  Margin="25,0,0,0" Style="{DynamicResource MaterialDesignFlatButton}" Command="{Binding To9008}" Content="{DynamicResource PanelRebootTo9008}" />
         </StackPanel>
     </Grid>
 </UserControl>

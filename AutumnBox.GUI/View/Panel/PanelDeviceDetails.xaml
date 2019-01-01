@@ -5,20 +5,22 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:viewmodel="clr-namespace:AutumnBox.GUI.ViewModel"
+             xmlns:local="clr-namespace:AutumnBox.GUI.View.Panel"
              FontFamily="{DynamicResource AutumnBox.Font}"
              FontSize="12"
-             mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="220">
+             mc:Ignorable="d">
     <UserControl.DataContext>
         <viewmodel:VMDeviceDetails/>
     </UserControl.DataContext>
-    <Grid HorizontalAlignment="Center" Width="600" MaxWidth="670" MaxHeight="220">
+    <Grid>
         <DockPanel>
-            <StackPanel DockPanel.Dock="Top" Margin="5" Orientation="Vertical">
-                <TextBlock Margin="0,0,0,0" Text="{Binding StateString}" FontSize="40"/>
-                <TextBlock Margin="5" FontSize="15" Text="{Binding StateTip}"/>
+            <StackPanel DockPanel.Dock="Top" Margin="0" Orientation="Vertical">
+                <TextBlock TextAlignment="Center" Margin="0,0,0,0" Text="{Binding StateString}" FontSize="40"/>
+                <TextBlock TextAlignment="Center" Margin="2" FontSize="15" Text="{Binding StateTip}"/>
+                <local:PanelReboot HorizontalAlignment="Center"/>
             </StackPanel>
-            <DockPanel Visibility="{Binding InfoPanelVisibility}" Width="550" Margin="0,0,0,0">
-                <StackPanel DockPanel.Dock="Left" Width="275">
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                <StackPanel DockPanel.Dock="Left" Width="200">
                     <StackPanel ToolTip="{DynamicResource PanelDeviceDetailsToolTipDefault}" Orientation="Horizontal" Margin="0,0,0,10">
                         <TextBlock Text="{DynamicResource PanelDeviceDetailsBrand}"/>
                         <TextBlock Margin="10,0,0,0" Text="{Binding Brand}"/>
@@ -31,6 +33,8 @@
                         <TextBlock  Text="{DynamicResource PanelDeviceDetailsProductName}"/>
                         <TextBlock Margin="10,0,0,0" Text="{Binding Product}"/>
                     </StackPanel>
+                </StackPanel>
+                <StackPanel DockPanel.Dock="Left" Width="200">
                     <StackPanel ToolTip="{DynamicResource PanelDeviceDetailsToolTipStorage}" Orientation="Horizontal" Margin="0,0,0,10">
                         <TextBlock  Text="{DynamicResource PanelDeviceDetailsStorage}"/>
                         <TextBlock Margin="10,0,0,0" Text="{Binding Storage}"/>
@@ -39,8 +43,12 @@
                         <TextBlock  Text="{DynamicResource PanelDeviceDetailsRam}"/>
                         <TextBlock Margin="10,0,0,0" Text="{Binding Ram}"/>
                     </StackPanel>
+                    <StackPanel ToolTip="{DynamicResource PanelDeviceDetailsToolTipDefault}" Orientation="Horizontal" Margin="0,0,0,10">
+                        <TextBlock  Text="{DynamicResource PanelDeviceDetailsScreenSize}"/>
+                        <TextBlock Margin="10,0,0,0" Text="{Binding ScreenSize}"/>
+                    </StackPanel>
                 </StackPanel>
-                <StackPanel Width="275">
+                <StackPanel DockPanel.Dock="Right" Width="200">
                     <StackPanel ToolTip="{DynamicResource PanelDeviceDetailsToolTipSu}" Orientation="Horizontal" Margin="0,0,0,10">
                         <TextBlock  Text="{DynamicResource PanelDeviceDetailsRoot}"/>
                         <TextBlock Margin="10,0,0,0" Text="{Binding Root}"/>
@@ -53,18 +61,10 @@
                         <TextBlock  Text="{DynamicResource PanelDeviceDetailsDensity}"/>
                         <TextBlock Margin="10,0,0,0" Text="{Binding Density}"/>
                     </StackPanel>
-                    <StackPanel ToolTip="{DynamicResource PanelDeviceDetailsToolTipDefault}" Orientation="Horizontal" Margin="0,0,0,10">
-                        <TextBlock  Text="{DynamicResource PanelDeviceDetailsScreenSize}"/>
-                        <TextBlock Margin="10,0,0,0" Text="{Binding ScreenSize}"/>
-                    </StackPanel>
                 </StackPanel>
-            </DockPanel>
+                
+            </StackPanel>
+            
         </DockPanel>
-        <!--<materialDesign:TransitionerSlide OpeningEffect="{materialDesign:TransitionEffect FadeIn}">
-                <Grid>
-                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="请确保链接设备!"/>
-                </Grid>
-            </materialDesign:TransitionerSlide>-->
-        <!--</materialDesign:Transitioner>-->
     </Grid>
 </UserControl>

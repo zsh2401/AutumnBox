@@ -4,6 +4,7 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.GUI.MVVM;
+using AutumnBox.GUI.Util.Debugging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,11 +32,13 @@ namespace AutumnBox.GUI.ViewModel
         {
             PreFunctionPage = new FlexiableCommand(() =>
             {
-                TabSelectedIndex = (TabSelectedIndex - 1) % 6;
+                TabSelectedIndex = (TabSelectedIndex - 1 + 7) % 7;
+                SGLogger<VMCurrentDevice>.Info(TabSelectedIndex.ToString());
             });
             NextFunctionPage = new FlexiableCommand(() =>
             {
-                TabSelectedIndex = (TabSelectedIndex + 1) % 6;
+                TabSelectedIndex = (TabSelectedIndex + 1) % 7;
+                SGLogger<VMCurrentDevice>.Info(TabSelectedIndex.ToString());
             });
             if (Util.Bus.DeviceSelectionObserver.Instance != null)
             {

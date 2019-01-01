@@ -96,6 +96,14 @@
     <s:String x:Key="PanelExtensionsButtonDisabled">此拓展不可在当前情况下运行</s:String>
     
      <!--PanelCurrentDevice-->
+     <s:String x:Key="PanelWhenCurrentDevicePoweron">当设备处于开机时可用</s:String>
+    <s:String x:Key="PanelWhenCurrentDeviceRecovery">当设备处于恢复模式</s:String>
+    <s:String x:Key="PanelWhenCurrentDeviceSideload">当设备处于Sideload</s:String>
+    <s:String x:Key="PanelWhenCurrentDeviceFastboot">当设备处于Fastboot</s:String>
+    <s:String x:Key="PanelWhenCurrentDeviceUnknown">当设备处于未知状态</s:String>
+    <s:String x:Key="PanelWhenCurrentDeviceUnauthorized">当设备未授权USB调试时可用</s:String>
+     <s:String x:Key="PanelWhenCurrentDeviceOffline">当设备处于异常离线时可用</s:String>
+    
     <s:String x:Key="PanelCurrentDevicePoweron">开机</s:String>
     <s:String x:Key="PanelCurrentDeviceRecovery">恢复模式</s:String>
     <s:String x:Key="PanelCurrentDeviceSideload">Sideload</s:String>
