@@ -14,7 +14,7 @@ namespace AutumnBox.CoreModules.Extensions
 {
     [ExtName("Example extension")]
     [ExtDeveloperMode(true)]
-    [ExtRequiredDeviceStates(AutumnBoxExtension.NoMatter)]
+    [ExtRequiredDeviceStates(Basic.Device.DeviceState.Sideload)]
     //[ExtDesc("wtf")]
     //[ObsoleteImageOperator]
     //[ExtAppProperty("com.miui.calculatorx")]

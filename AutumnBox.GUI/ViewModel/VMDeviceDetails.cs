@@ -207,7 +207,7 @@ namespace AutumnBox.GUI.ViewModel
 
         private void SelectedNoDevice(object sender, EventArgs e)
         {
-            InfoPanelVisibility = Visibility.Collapsed;
+            InfoPanelVisibility = Visibility.Hidden;
             TranSelectIndex = 0;
             Reset();
         }

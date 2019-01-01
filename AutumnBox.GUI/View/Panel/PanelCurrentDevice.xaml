@@ -11,47 +11,178 @@
              xmlns:dragablz="http://dragablz.net/winfx/xaml/dragablz"
               xmlns:dockablz="clr-namespace:Dragablz.Dockablz;assembly=Dragablz"
              xmlns:viewmodel="clr-namespace:AutumnBox.GUI.ViewModel"
-             mc:Ignorable="d" MinWidth="820" d:DesignHeight="566" Width="797.5">
+             mc:Ignorable="d" MinWidth="820" d:DesignHeight="566">
     <UserControl.DataContext>
         <viewmodel:VMCurrentDevice/>
     </UserControl.DataContext>
     <DockPanel>
-        <DockPanel DockPanel.Dock="Top" Margin="10" Width="800" MaxWidth="800" Height="220">
-            <materialDesign:Card Background="{DynamicResource CardBackgroundBrush}" DockPanel.Dock="Left" Width="610">
-                <panel:PanelDeviceDetails VerticalAlignment="Top" Height="220"/>
-            </materialDesign:Card>
-            <materialDesign:Card Background="{DynamicResource CardBackgroundBrush}" Margin="10,0,0,0">
-                <local:PanelReboot  Width="170" Height="220"/>
-            </materialDesign:Card>
-        </DockPanel>
-
-        <materialDesign:Card  Background="{DynamicResource CardBackgroundBrush}" DockPanel.Dock="Bottom" Width="800" Margin="5">
-
+        <panel:PanelDeviceDetails DockPanel.Dock="Top" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+        <Grid DockPanel.Dock="Bottom" Margin="0,0,0,1">
             <DockPanel>
-                <Grid DockPanel.Dock="Top">
-                    <Button Content="上一个" HorizontalAlignment="Left" Command="{Binding PreFunctionPage}" Style="{DynamicResource MaterialDesignFlatButton}"/>
-                    <TextBlock HorizontalAlignment="Center" FontSize="30">Wow</TextBlock>
-                    <Button Content="下一个" HorizontalAlignment="Right" Command="{Binding NextFunctionPage}" Style="{DynamicResource MaterialDesignFlatButton}"/>
-                </Grid>
-                <materialDesign:Transitioner SelectedIndex="{Binding TabSelectedIndex}">
+                <materialDesign:PackIcon Background="{DynamicResource CardBackgroundBrush}" Foreground="{DynamicResource PrimaryLightBrush}" DockPanel.Dock="Left" VerticalAlignment="Center" Width="30" Height="70" Kind="NavigateBefore">
+                    <materialDesign:PackIcon.InputBindings>
+                        <MouseBinding MouseAction="LeftClick" Command="{Binding PreFunctionPage}"/>
+                    </materialDesign:PackIcon.InputBindings>
+                </materialDesign:PackIcon>
+                
+                <materialDesign:PackIcon Background="{DynamicResource CardBackgroundBrush}" Foreground="{DynamicResource PrimaryLightBrush}" DockPanel.Dock="Right" VerticalAlignment="Center" Width="30" Height="70" Kind="NavigateNext">
+                    <materialDesign:PackIcon.InputBindings>
+                        <MouseBinding MouseAction="LeftClick" Command="{Binding NextFunctionPage}"/>
+                    </materialDesign:PackIcon.InputBindings>
+                </materialDesign:PackIcon>
+                
+                
+                <!--模块面板-->
+                <materialDesign:Transitioner SelectedIndex="{Binding TabSelectedIndex}" Margin="0">
 
                     <materialDesign:TransitionerSlide>
                         <materialDesign:TransitionerSlide.OpeningEffects>
-                            <materialDesign:TransitionEffect Kind="FadeIn" Duration="0:0:1" />
+                            <materialDesign:TransitionEffect Kind="SlideInFromBottom" Duration="0:0:1" />
                         </materialDesign:TransitionerSlide.OpeningEffects>
-                        <local:PanelExtension TargetDeviceState="Poweron" Margin="0"/>
+
+                        <DockPanel HorizontalAlignment="Center">
+                            <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,10">
+                                <materialDesign:PackIcon Foreground="{DynamicResource PrimaryLightBrush}" VerticalAlignment="Bottom"  Kind="MenuDownOutline"></materialDesign:PackIcon>
+                                <materialDesign:PackIcon Foreground="{DynamicResource PrimaryLightBrush}" VerticalAlignment="Center" Kind="PowerPlug"></materialDesign:PackIcon>
+                                <TextBlock HorizontalAlignment="Center" FontSize="18" DockPanel.Dock="Top" Text="{DynamicResource PanelWhenCurrentDevicePoweron}"/>
+                                <materialDesign:PackIcon Foreground="{DynamicResource PrimaryLightBrush}" VerticalAlignment="Bottom" Kind="MenuDownOutline"></materialDesign:PackIcon>
+                            </StackPanel>
+                            <local:PanelExtension HorizontalAlignment="Center" TargetDeviceState="Poweron"/>
+                        </DockPanel>
+                        
+                    </materialDesign:TransitionerSlide>
+
+                    <materialDesign:TransitionerSlide>
+                        <materialDesign:TransitionerSlide.OpeningEffects>
+                            <materialDesign:TransitionEffect Kind="SlideInFromBottom" Duration="0:0:1" />
+                        </materialDesign:TransitionerSlide.OpeningEffects>
+
+                        <DockPanel HorizontalAlignment="Center">
+                            <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,10">
+                                <materialDesign:PackIcon Foreground="{DynamicResource PrimaryLightBrush}" VerticalAlignment="Bottom"  Kind="MenuDownOutline"></materialDesign:PackIcon>
+                                <materialDesign:PackIcon Foreground="{DynamicResource PrimaryLightBrush}" VerticalAlignment="Center" Kind="Father"></materialDesign:PackIcon>
+                                <TextBlock HorizontalAlignment="Center" FontSize="18" DockPanel.Dock="Top" Text="{DynamicResource PanelWhenCurrentDeviceRecovery}"/>
+                                <materialDesign:PackIcon Foreground="{DynamicResource PrimaryLightBrush}" VerticalAlignment="Bottom" Kind="MenuDownOutline"></materialDesign:PackIcon>
+                            </StackPanel>
+                            <local:PanelExtension HorizontalAlignment="Center" TargetDeviceState="Recovery"/>
+                        </DockPanel>
+
+                    </materialDesign:TransitionerSlide>
+
+                    <materialDesign:TransitionerSlide>
+                        <materialDesign:TransitionerSlide.OpeningEffects>
+                            <materialDesign:TransitionEffect Kind="SlideInFromBottom" Duration="0:0:1" />
+                        </materialDesign:TransitionerSlide.OpeningEffects>
+
+                        <DockPanel HorizontalAlignment="Center">
+                            <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,10">
+                                <materialDesign:PackIcon Foreground="{DynamicResource PrimaryLightBrush}" VerticalAlignment="Bottom"  Kind="MenuDownOutline"></materialDesign:PackIcon>
+                                <materialDesign:PackIcon Foreground="{DynamicResource PrimaryLightBrush}" VerticalAlignment="Center" Kind="Build"></materialDesign:PackIcon>
+                                <TextBlock HorizontalAlignment="Center" FontSize="18" DockPanel.Dock="Top" Text="{DynamicResource PanelWhenCurrentDeviceFastboot}"/>
+                                <materialDesign:PackIcon Foreground="{DynamicResource PrimaryLightBrush}" VerticalAlignment="Bottom" Kind="MenuDownOutline"></materialDesign:PackIcon>
+                            </StackPanel>
+                            <local:PanelExtension HorizontalAlignment="Center" TargetDeviceState="Fastboot"/>
+                        </DockPanel>
+
                     </materialDesign:TransitionerSlide>
 
                     <materialDesign:TransitionerSlide>
                         <materialDesign:TransitionerSlide.OpeningEffects>
                             <materialDesign:TransitionEffect Kind="SlideInFromRight" Duration="0:0:1" />
+                        </materialDesign:TransitionerSlide.OpeningEffects>
+
+                        <DockPanel HorizontalAlignment="Center">
+                            <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,10">
+                                <materialDesign:PackIcon Foreground="{DynamicResource PrimaryLightBrush}" VerticalAlignment="Bottom"  Kind="MenuDownOutline"></materialDesign:PackIcon>
+                                <materialDesign:PackIcon Foreground="{DynamicResource PrimaryLightBrush}" VerticalAlignment="Center" Kind="FileDownload"></materialDesign:PackIcon>
+                                <TextBlock HorizontalAlignment="Center" FontSize="18" DockPanel.Dock="Top" Text="{DynamicResource PanelWhenCurrentDeviceSideload}"/>
+                                <materialDesign:PackIcon Foreground="{DynamicResource PrimaryLightBrush}" VerticalAlignment="Bottom" Kind="MenuDownOutline"></materialDesign:PackIcon>
+                            </StackPanel>
+                            <local:PanelExtension HorizontalAlignment="Center" TargetDeviceState="Sideload"/>
+                        </DockPanel>
+
+                    </materialDesign:TransitionerSlide>
+
+                    <materialDesign:TransitionerSlide>
+                        <materialDesign:TransitionerSlide.OpeningEffects>
+                            <materialDesign:TransitionEffect Kind="SlideInFromRight" Duration="0:0:1" />
+                        </materialDesign:TransitionerSlide.OpeningEffects>
+
+                        <!--开机状态-->
+                        <DockPanel HorizontalAlignment="Center">
+                            <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,10">
+                                <materialDesign:PackIcon Foreground="{DynamicResource PrimaryLightBrush}" VerticalAlignment="Bottom"  Kind="MenuDownOutline"></materialDesign:PackIcon>
+                                <materialDesign:PackIcon Foreground="{DynamicResource PrimaryLightBrush}" VerticalAlignment="Center" Kind="AccountWarningOutline"></materialDesign:PackIcon>
+                                <TextBlock HorizontalAlignment="Center" FontSize="18" DockPanel.Dock="Top" Text="{DynamicResource PanelWhenCurrentDeviceUnauthorized}"/>
+                                <materialDesign:PackIcon Foreground="{DynamicResource PrimaryLightBrush}" VerticalAlignment="Bottom" Kind="MenuDownOutline"></materialDesign:PackIcon>
+                            </StackPanel>
+                            <local:PanelExtension HorizontalAlignment="Center" TargetDeviceState="Unauthorized"/>
+                        </DockPanel>
+
+                    </materialDesign:TransitionerSlide>
+
+                    <materialDesign:TransitionerSlide>
+                        <materialDesign:TransitionerSlide.OpeningEffects>
+                            <materialDesign:TransitionEffect Kind="SlideInFromRight" Duration="0:0:1" />
+                        </materialDesign:TransitionerSlide.OpeningEffects>
+
+                        <!--恢复模式-->
+                        <DockPanel HorizontalAlignment="Center">
+                            <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,10">
+                                <materialDesign:PackIcon Foreground="{DynamicResource PrimaryLightBrush}" VerticalAlignment="Bottom"  Kind="MenuDownOutline"></materialDesign:PackIcon>
+                                <materialDesign:PackIcon Foreground="{DynamicResource PrimaryLightBrush}" VerticalAlignment="Center" Kind="OfflineBolt"></materialDesign:PackIcon>
+                                <TextBlock HorizontalAlignment="Center" FontSize="18" DockPanel.Dock="Top" Text="{DynamicResource PanelWhenCurrentDeviceOffline}"/>
+                                <materialDesign:PackIcon Foreground="{DynamicResource PrimaryLightBrush}" VerticalAlignment="Bottom" Kind="MenuDownOutline"></materialDesign:PackIcon>
+                            </StackPanel>
+                            <local:PanelExtension HorizontalAlignment="Center" TargetDeviceState="Offline"/>
+                        </DockPanel>
+
+                    </materialDesign:TransitionerSlide>
+
+                    <materialDesign:TransitionerSlide>
+                        <materialDesign:TransitionerSlide.OpeningEffects>
+                            <materialDesign:TransitionEffect Kind="SlideInFromRight" Duration="0:0:1" />
+                        </materialDesign:TransitionerSlide.OpeningEffects>
+
+                        <DockPanel HorizontalAlignment="Center">
+                            <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,10">
+                                <materialDesign:PackIcon Foreground="{DynamicResource PrimaryLightBrush}" VerticalAlignment="Bottom"  Kind="MenuDownOutline"></materialDesign:PackIcon>
+                                <materialDesign:PackIcon Foreground="{DynamicResource PrimaryLightBrush}" VerticalAlignment="Center" Kind="AutoAwesomeMosaic"></materialDesign:PackIcon>
+                                <TextBlock HorizontalAlignment="Center" FontSize="18" DockPanel.Dock="Top" Text="{DynamicResource PanelWhenCurrentDeviceUnknown}"/>
+                                <materialDesign:PackIcon Foreground="{DynamicResource PrimaryLightBrush}" VerticalAlignment="Bottom" Kind="MenuDownOutline"></materialDesign:PackIcon>
+                            </StackPanel>
+                            <local:PanelExtension HorizontalAlignment="Center" TargetDeviceState="Unknown"/>
+                        </DockPanel>
+
+                    </materialDesign:TransitionerSlide>
+                </materialDesign:Transitioner>
+            </DockPanel>
+            
+        </Grid>
+        <!--<materialDesign:Card DockPanel.Dock="Bottom"  Background="{DynamicResource CardBackgroundBrush}">
+
+            <DockPanel>
+                <Button DockPanel.Dock="Left" Content="上一个" HorizontalAlignment="Left" Command="{Binding PreFunctionPage}" Style="{DynamicResource MaterialDesignFlatButton}"/>
+                <Button DockPanel.Dock="Right" Content="下一个" HorizontalAlignment="Right" Command="{Binding NextFunctionPage}" Style="{DynamicResource MaterialDesignFlatButton}"/>
+                <materialDesign:Transitioner SelectedIndex="{Binding TabSelectedIndex}" Margin="0">
+
+                    <materialDesign:TransitionerSlide>
+                        <materialDesign:TransitionerSlide.OpeningEffects>
+                            <materialDesign:TransitionEffect Kind="SlideInFromBottom" Duration="0:0:1" />
+                        </materialDesign:TransitionerSlide.OpeningEffects>
+                        <local:PanelExtension HorizontalAlignment="Center" TargetDeviceState="Poweron"/>
+                    </materialDesign:TransitionerSlide>
+
+                    <materialDesign:TransitionerSlide>
+                        <materialDesign:TransitionerSlide.OpeningEffects>
+                            <materialDesign:TransitionEffect Kind="SlideInFromBottom" Duration="0:0:1" />
                         </materialDesign:TransitionerSlide.OpeningEffects>
                         <local:PanelExtension TargetDeviceState="Recovery" Margin="0"/>
                     </materialDesign:TransitionerSlide>
 
                     <materialDesign:TransitionerSlide>
                         <materialDesign:TransitionerSlide.OpeningEffects>
-                            <materialDesign:TransitionEffect Kind="SlideInFromRight" Duration="0:0:1" />
+                            <materialDesign:TransitionEffect Kind="SlideInFromBottom" Duration="0:0:1" />
                         </materialDesign:TransitionerSlide.OpeningEffects>
                         <local:PanelExtension TargetDeviceState="Fastboot" Margin="0"/>
                     </materialDesign:TransitionerSlide>
@@ -76,16 +207,20 @@
                         </materialDesign:TransitionerSlide.OpeningEffects>
                         <local:PanelExtension TargetDeviceState="Offline" Margin="0"/>
                     </materialDesign:TransitionerSlide>
-                </materialDesign:Transitioner>
 
-                <materialDesign:TransitionerSlide>
-                    <materialDesign:TransitionerSlide.OpeningEffects>
-                        <materialDesign:TransitionEffect Kind="SlideInFromRight" Duration="0:0:1" />
-                    </materialDesign:TransitionerSlide.OpeningEffects>
-                    <local:PanelExtension TargetDeviceState="Unknown" Margin="0"/>
-                </materialDesign:TransitionerSlide>
+                    <materialDesign:TransitionerSlide>
+                        <materialDesign:TransitionerSlide.OpeningEffects>
+                            <materialDesign:TransitionEffect Kind="SlideInFromRight" Duration="0:0:1" />
+                        </materialDesign:TransitionerSlide.OpeningEffects>
+                        <Grid>
+                            <TextBlock>HeheDa</TextBlock>
+                            <local:PanelExtension TargetDeviceState="Unknown" Margin="0"/>
+                        </Grid>
+
+                    </materialDesign:TransitionerSlide>
+                </materialDesign:Transitioner>
             </DockPanel>
 
-        </materialDesign:Card>
+        </materialDesign:Card>-->
     </DockPanel>
 </UserControl>

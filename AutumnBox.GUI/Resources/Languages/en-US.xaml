@@ -92,6 +92,14 @@
     <s:String x:Key="PanelExtensionsButtonDisabled">Sorry,this extension can't run now</s:String>
     
          <!--PanelCurrentDevice-->
+         <s:String x:Key="PanelWhenCurrentDevicePoweron">Usable when device poweron</s:String>
+    <s:String x:Key="PanelWhenCurrentDeviceRecovery">Usable when the device in recovery mode</s:String>
+    <s:String x:Key="PanelWhenCurrentDeviceSideload">Usable when the device in sideload mode</s:String>
+    <s:String x:Key="PanelWhenCurrentDeviceFastboot">Usable when the device in fastboot mode</s:String>
+    <s:String x:Key="PanelWhenCurrentDeviceUnknown">Usable when the device state is unknown</s:String>
+    <s:String x:Key="PanelWhenCurrentDeviceUnauthorized">Usable when the device is no authorized usb request</s:String>
+     <s:String x:Key="PanelWhenCurrentDeviceOffline">Usable when the device in offline mode</s:String>
+    
     <s:String x:Key="PanelCurrentDevicePoweron">System running</s:String>
     <s:String x:Key="PanelCurrentDeviceRecovery">Recovery</s:String>
     <s:String x:Key="PanelCurrentDeviceSideload">Sideload</s:String>
