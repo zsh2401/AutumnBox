@@ -14,7 +14,7 @@ namespace AutumnBox.CoreModules.Extensions
 {
     [ExtName("Example extension")]
     [ExtDeveloperMode(true)]
-    [ExtRequiredDeviceStates(Basic.Device.DeviceState.Sideload)]
+    [ExtRequiredDeviceStates(NoMatter)]
     //[ExtDesc("wtf")]
     //[ObsoleteImageOperator]
     //[ExtAppProperty("com.miui.calculatorx")]
@@ -23,6 +23,7 @@ namespace AutumnBox.CoreModules.Extensions
     {
         protected override void Processing(Dictionary<string, object> data)
         {
+            throw new Exception();
             Ux.ShowLoadingWindow();
             Ux.Message(Executor.Cmd("ping www.baidu.com").Output.ToString());
             Ux.CloseLoadingWindow();
