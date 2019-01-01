@@ -37,7 +37,7 @@
 
                     <materialDesign:TransitionerSlide>
                         <materialDesign:TransitionerSlide.OpeningEffects>
-                            <materialDesign:TransitionEffect Kind="SlideInFromBottom" Duration="0:0:1" />
+                            <materialDesign:TransitionEffect Kind="ExpandIn" Duration="0:0:1" />
                         </materialDesign:TransitionerSlide.OpeningEffects>
 
                         <DockPanel HorizontalAlignment="Center">
@@ -54,7 +54,7 @@
 
                     <materialDesign:TransitionerSlide>
                         <materialDesign:TransitionerSlide.OpeningEffects>
-                            <materialDesign:TransitionEffect Kind="SlideInFromBottom" Duration="0:0:1" />
+                            <materialDesign:TransitionEffect Kind="ExpandIn" Duration="0:0:1" />
                         </materialDesign:TransitionerSlide.OpeningEffects>
 
                         <DockPanel HorizontalAlignment="Center">
@@ -71,7 +71,7 @@
 
                     <materialDesign:TransitionerSlide>
                         <materialDesign:TransitionerSlide.OpeningEffects>
-                            <materialDesign:TransitionEffect Kind="SlideInFromBottom" Duration="0:0:1" />
+                            <materialDesign:TransitionEffect Kind="SlideInFromTop" Duration="0:0:1" />
                         </materialDesign:TransitionerSlide.OpeningEffects>
 
                         <DockPanel HorizontalAlignment="Center">
@@ -105,10 +105,10 @@
 
                     <materialDesign:TransitionerSlide>
                         <materialDesign:TransitionerSlide.OpeningEffects>
-                            <materialDesign:TransitionEffect Kind="SlideInFromRight" Duration="0:0:1" />
+                            <materialDesign:TransitionEffect Kind="SlideInFromLeft" Duration="0:0:1" />
                         </materialDesign:TransitionerSlide.OpeningEffects>
 
-                        <!--开机状态-->
+    
                         <DockPanel HorizontalAlignment="Center">
                             <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,10">
                                 <materialDesign:PackIcon Foreground="{DynamicResource PrimaryLightBrush}" VerticalAlignment="Bottom"  Kind="MenuDownOutline"></materialDesign:PackIcon>
@@ -123,10 +123,9 @@
 
                     <materialDesign:TransitionerSlide>
                         <materialDesign:TransitionerSlide.OpeningEffects>
-                            <materialDesign:TransitionEffect Kind="SlideInFromRight" Duration="0:0:1" />
+                            <materialDesign:TransitionEffect Kind="ExpandIn" Duration="0:0:1" />
                         </materialDesign:TransitionerSlide.OpeningEffects>
 
-                        <!--恢复模式-->
                         <DockPanel HorizontalAlignment="Center">
                             <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,10">
                                 <materialDesign:PackIcon Foreground="{DynamicResource PrimaryLightBrush}" VerticalAlignment="Bottom"  Kind="MenuDownOutline"></materialDesign:PackIcon>
@@ -141,7 +140,7 @@
 
                     <materialDesign:TransitionerSlide>
                         <materialDesign:TransitionerSlide.OpeningEffects>
-                            <materialDesign:TransitionEffect Kind="SlideInFromRight" Duration="0:0:1" />
+                            <materialDesign:TransitionEffect Kind="SlideInFromTop" Duration="0:0:1" />
                         </materialDesign:TransitionerSlide.OpeningEffects>
 
                         <DockPanel HorizontalAlignment="Center">

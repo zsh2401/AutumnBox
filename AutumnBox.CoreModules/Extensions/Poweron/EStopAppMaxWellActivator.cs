@@ -22,8 +22,11 @@ namespace AutumnBox.CoreModules.Extensions.Poweron
             //启动小黑屋确保sh被释放
             var am = new ActivityManager(DeviceSelectedOnCreating) { CmdStation = this.CmdStation };
             am.To(OutputPrinter);
-            am.StartActivity(MAIN_ACTIVITY);
-
+            try
+            {
+                am.StartActivity(MAIN_ACTIVITY);
+            }
+            catch { }
             using (CommandExecutor executor = new CommandExecutor())
             {
                 executor.To(OutputPrinter);
