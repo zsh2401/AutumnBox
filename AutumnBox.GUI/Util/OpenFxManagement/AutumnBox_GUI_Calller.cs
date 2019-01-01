@@ -72,7 +72,10 @@ namespace AutumnBox.GUI.Util.OpenFxManagement
 
         public IExtensionUIController GetUIController()
         {
-            var window = new RunningWindow();
+            var window = new RunningWindow
+            {
+                Owner = App.Current.MainWindow
+            };
             return window.ViewModel;
         }
 
