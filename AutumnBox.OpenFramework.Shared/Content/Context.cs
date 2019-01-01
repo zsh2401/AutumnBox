@@ -167,6 +167,21 @@ namespace AutumnBox.OpenFramework.Content
             return wrappers.First().GetThread();
         }
         /// <summary>
+        /// 获取一个新的拓展模块线程
+        /// </summary>
+        /// <returns></returns>
+        public IExtensionThread NewExtensionThread(string className)
+        {
+            var wrappers = from wrapper in Manager.InternalManager.GetLoadedWrappers()
+                           where className == wrapper.Info.ExtType.Name
+                           select wrapper;
+            if (wrappers.Count() == 0)
+            {
+                throw new Exception("Extension not found");
+            }
+            return wrappers.First().GetThread();
+        }
+        /// <summary>
         /// 启动一个另一个模块
         /// </summary>
         /// <param name="t"></param>

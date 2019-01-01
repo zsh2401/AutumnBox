@@ -6,6 +6,7 @@
 
 using AutumnBox.Basic.Calling.Adb;
 using AutumnBox.GUI.MVVM;
+using AutumnBox.GUI.Util.Bus;
 using AutumnBox.GUI.Util.Debugging;
 using System;
 using System.Diagnostics;
@@ -97,25 +98,10 @@ namespace AutumnBox.GUI.ViewModel
         /// <param name="ip"></param>
         private void ConnectTo(IPEndPoint ip)
         {
-            StateString = App.Current.Resources["ContentConnectNetDeviceStateStringConnecting"].ToString();
-            DoConnect.CanExecuteProp = false;
-            IsRunning = true;
-            var result = new AdbCommand($"{ip.Address}:{ip.Port}").To(
-                 (e) =>
-                 {
-                     SGLogger<VMContentConnectNetDevice>.Info("connecting:" + e.Text);
-                 }
-                 ).Execute();
-            IsRunning = false;
-            if (result.ExitCode == 0)
-            {
-                OnCloseCallback();
-            }
-            else
-            {
-                StateString = App.Current.Resources["ContentConnectNetDeviceStateStringFailed"].ToString();
-                DoConnect.CanExecuteProp = true;
-            }
+            var thread = AtmbContext.Instance.NewExtensionThread("ENetDeviceConnecter");
+            thread.Data["endpoint"] = ip;
+            thread.Start();
+            OnCloseCallback();
         }
         private Tuple<bool, IPEndPoint> ParseInput()
         {
