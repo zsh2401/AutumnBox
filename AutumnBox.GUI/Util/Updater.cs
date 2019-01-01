@@ -49,7 +49,9 @@ namespace AutumnBox.GUI.Util
             {
                 App.Current.Dispatcher.Invoke(() =>
                 {
-                    new UpdateNoticeWindow().Show();
+                    new UpdateNoticeWindow() {
+                        Owner = App.Current.MainWindow,
+                    }.Show();
                 });
             }
             else if (showIsLatestVersion)
