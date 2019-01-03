@@ -90,7 +90,7 @@
     <Compile Include="Extensions\Poweron\EClearAccounts.cs" />
     <Compile Include="Extensions\Poweron\EClearUsers.cs" />
     <Compile Include="Extensions\Poweron\EGCM.cs" />
-    <Compile Include="Extensions\Poweron\EGreenifyGrant.cs" />
+    <Compile Include="Extensions\Poweron\EGreenifyGranter.cs" />
     <Compile Include="Extensions\Poweron\EHideAnzen.cs" />
     <Compile Include="Extensions\Poweron\EIslandActivator.cs" />
     <Compile Include="Extensions\Poweron\EScreenRecorder.cs" />
