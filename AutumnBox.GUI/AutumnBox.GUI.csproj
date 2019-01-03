@@ -268,7 +268,7 @@
     <Compile Include="View\Panel\PanelReboot.xaml.cs">
       <DependentUpon>PanelReboot.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Util\OpenFxManagement\AutumnBox_GUI_Calller.cs" />
+    <Compile Include="Util\OpenFxManagement\AutumnBox_GUI_Caller.cs" />
     <Compile Include="Util\Extensions.cs" />
     <Compile Include="Util\OpenFxManagement\OpenFrameworkManager.cs" />
     <Compile Include="Util\Data\Md5.cs" />

@@ -17,7 +17,7 @@ using AutumnBox.GUI.Util.Bus;
 
 namespace AutumnBox.GUI.Util.OpenFxManagement
 {
-    internal partial class AutumnBox_GUI_Calller : IBaseApi
+    internal partial class AutumnBox_GUI_Caller : IBaseApi
     {
         public IDevice SelectedDevice
         {
@@ -132,7 +132,7 @@ namespace AutumnBox.GUI.Util.OpenFxManagement
 
         public void PlayOk()
         {
-            SGLogger<AutumnBox_GUI_Calller>.Info("Playing ok");
+            SGLogger<AutumnBox_GUI_Caller>.Info("Playing ok");
             if (Settings.Default.NotifyOnFinish)
             {
                 Sounds.OK.Play();
@@ -180,7 +180,7 @@ namespace AutumnBox.GUI.Util.OpenFxManagement
                 }
                 catch (Exception ex)
                 {
-                    SGLogger<AutumnBox_GUI_Calller>.Debug(ex);
+                    SGLogger<AutumnBox_GUI_Caller>.Debug(ex);
                 }
 
             }
