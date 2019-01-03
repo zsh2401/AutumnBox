@@ -14,7 +14,7 @@ namespace AutumnBox.GUI.Util.OpenFxManagement
         {
             SLogger.Info("OFM", "Open Fx loading");
             SLogger.Info("OFM", "Injecting API");
-            FxLoader.LoadBase(new AutumnBox_GUI_Calller());
+            FxLoader.LoadBase(new AutumnBox_GUI_Caller());
             SLogger.Info("OFM", "Injected API");
             SLogger.Info("OFM", "Loading extensions");
             FxLoader.LoadExtensions();

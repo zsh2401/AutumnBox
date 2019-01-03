@@ -6,7 +6,7 @@
     <SharedGUID>49e6d09e-b234-4aa4-97b0-e82fb60c36d2</SharedGUID>
   </PropertyGroup>
   <PropertyGroup Label="Configuration">
-    <Import_RootNamespace>AutumnBox.OpenFramework.Shared</Import_RootNamespace>
+    <Import_RootNamespace>AutumnBox.OpenFramework</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)BuildInfo.cs" />
@@ -28,6 +28,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Extension\ExtensionArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\IClassExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\IExtension.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extension\JustExtension\LExtensionMainAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extension\JustExtension\LeafExtension.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extension\JustExtension\LSignalReceive.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\SharpExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\StrictVisualExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\_Aspects\BeforeCreatingAspect.cs" />
