@@ -20,12 +20,12 @@ namespace AutumnBox.OpenFramework.Extension.LeafExtension
         /// <param name="pattern"></param>
         public LSignalReceiveAttribute(string pattern)
         {
-            Pattern = pattern ?? throw new ArgumentNullException(nameof(pattern));
+            Pattern = pattern;
         }
         /// <summary>
         /// 接收所有消息
         /// </summary>
-        public LSignalReceiveAttribute() : this("*")
+        public LSignalReceiveAttribute() : this(null)
         {
         }
     }
