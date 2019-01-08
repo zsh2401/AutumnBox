@@ -37,6 +37,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Extension\LeafExtension\LPropertySeviceAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\LeafExtension\LSignalReceiveAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\LeafExtension\LSignalDistributor.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extension\LeafExtension\ApiAllocator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\SharpExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\StrictVisualExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\_Aspects\BeforeCreatingAspect.cs" />

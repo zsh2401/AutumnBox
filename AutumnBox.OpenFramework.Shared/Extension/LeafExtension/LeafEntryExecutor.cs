@@ -20,21 +20,16 @@ namespace AutumnBox.OpenFramework.Extension.LeafExtension
             List<object> ps = new List<object>();
             foreach (var pInfo in pInfos)
             {
-                ps.Add(GetInstance(pInfo.ParameterType));
+                if (pInfo.ParameterType == typeof(Dictionary<string, object>))
+                {
+                    ps.Add(data);
+                }
+                else
+                {
+                    ps.Add(ApiAllocator.GetProperty(ext.Context, pInfo.ParameterType));
+                }
             }
             return ps.ToArray();
-        }
-        private object GetInstance(Type paraT)
-        {
-            if (paraT == typeof(Open.IAppManager))
-            {
-                return ext.Context.App;
-            }
-            else if (paraT == typeof(Open.IUx))
-            {
-                return ext.Context.Ux;
-            }
-            return null;
         }
         private MethodInfo FindEntry()
         {
