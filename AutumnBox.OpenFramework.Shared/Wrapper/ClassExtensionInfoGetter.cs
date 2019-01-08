@@ -32,9 +32,15 @@ namespace AutumnBox.OpenFramework.Wrapper
         {
             get
             {
-                //Logger.CDebug($"getting {key}");
-                return Infomations[key].Value;
-
+                try
+                {
+                    return Infomations[key].Value;
+                }
+                catch (Exception e)
+                {
+                    ctx.Logger.Warn($"InfoGetter:can not get info '{key}' ",e);
+                    return null;
+                }
             }
         }
         /// <summary>
@@ -168,8 +174,8 @@ namespace AutumnBox.OpenFramework.Wrapper
             Infomations = scanner.Informations;
             RequiredDeviceStates = (DeviceState)this[ExtensionInformationKeys.REQ_DEV_STATE];
             Version = this[ExtensionInformationKeys.VERSION] as Version;
-            MinApi = (int)this[ExtensionInformationKeys.MIN_ATMB_API];
-            TargetApi = (int)this[ExtensionInformationKeys.TARGET_ATMB_API];
+            MinApi = (int)(this[ExtensionInformationKeys.MIN_ATMB_API] ?? BuildInfo.API_LEVEL);
+            TargetApi = (int)(this[ExtensionInformationKeys.TARGET_ATMB_API] ?? BuildInfo.API_LEVEL);
             Regions = this[ExtensionInformationKeys.REGIONS] as IEnumerable<string>;
             try
             {

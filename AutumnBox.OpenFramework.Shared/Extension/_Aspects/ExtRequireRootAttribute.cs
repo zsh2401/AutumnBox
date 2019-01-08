@@ -5,12 +5,14 @@
 *************************************************/
 using AutumnBox.Basic.Device;
 using AutumnBox.OpenFramework.Open;
+using System;
 
 namespace AutumnBox.OpenFramework.Extension
 {
     /// <summary>
     /// 明确标记标明该拓展需要设备ROOT权限
     /// </summary>
+    [AttributeUsage(AttributeTargets.Class, AllowMultiple = false)]
     public class ExtRequireRootAttribute : BeforeCreatingAspect, IInformationAttribute
     {
         private readonly bool reqRoot;

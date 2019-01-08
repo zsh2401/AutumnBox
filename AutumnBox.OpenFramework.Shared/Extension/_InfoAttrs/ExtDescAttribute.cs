@@ -4,11 +4,14 @@
 ** desc： ...
 *************************************************/
 
+using System;
+
 namespace AutumnBox.OpenFramework.Extension
 {
     /// <summary>
     /// 拓展模块说明特性
     /// </summary>
+    [AttributeUsage(AttributeTargets.Class,AllowMultiple =false)]
     public class ExtDescAttribute : ExtInfoI18NAttribute
     {
         /// <summary>
