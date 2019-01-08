@@ -3,6 +3,7 @@
 ** date:  2018/8/17 19:19:29 (UTC +8:00)
 ** desc： ...
 *************************************************/
+using AutumnBox.Basic.Device;
 using AutumnBox.CoreModules.Aspect;
 using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.Extension.LeafExtension;
@@ -24,6 +25,9 @@ namespace AutumnBox.CoreModules.Extensions
         [LProperty]
         private IUx Ux { get; set; }
 
+        [LProperty]
+        private IDevice Device { get; set; }
+
         [LSignalReceive(Signals.ON_CREATED)]
         private void OnCreate(string message, ExtensionArgs args)
         {
@@ -33,6 +37,7 @@ namespace AutumnBox.CoreModules.Extensions
         {
             ux.Message("Leaf extension!");
             ux.Message(data.Count().ToString());
+            ux.Message(Device?.ToString() ?? "NO DEVICE");
         }
     }
 }

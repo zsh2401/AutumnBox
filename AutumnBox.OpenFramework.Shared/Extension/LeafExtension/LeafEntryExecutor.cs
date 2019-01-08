@@ -26,7 +26,11 @@ namespace AutumnBox.OpenFramework.Extension.LeafExtension
                 }
                 else
                 {
-                    ps.Add(ApiAllocator.GetProperty(ext.Context, pInfo.ParameterType));
+                    try
+                    {
+                        ps.Add(ApiAllocator.GetProperty(ext.Context, pInfo.ParameterType));
+                    }
+                    catch { }
                 }
             }
             return ps.ToArray();
