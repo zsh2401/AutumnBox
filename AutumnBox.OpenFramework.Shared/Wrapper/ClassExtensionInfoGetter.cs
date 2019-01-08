@@ -44,7 +44,7 @@ namespace AutumnBox.OpenFramework.Wrapper
             }
         }
         /// <summary>
-        /// 获取的木白哦
+        /// 获取的目标
         /// </summary>
         public Type ExtType { get; private set; }
         /// <summary>
@@ -62,7 +62,7 @@ namespace AutumnBox.OpenFramework.Wrapper
         /// <summary>
         /// 图标
         /// </summary>
-        public virtual byte[] Icon { get; set; }
+        public virtual byte[] Icon { get; set; } = null;
         /// <summary>
         /// 拓展模块版本号
         /// </summary>
@@ -184,6 +184,7 @@ namespace AutumnBox.OpenFramework.Wrapper
             catch (KeyNotFoundException)
             {
             }
+            catch (NullReferenceException) { }
         }
         /// <summary>
         /// 加载图标

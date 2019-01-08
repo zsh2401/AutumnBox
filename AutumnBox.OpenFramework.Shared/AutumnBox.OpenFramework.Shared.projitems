@@ -29,7 +29,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Extension\IClassExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\IExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\LeafExtension\LeafEntryExecutor.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Extension\LeafExtension\LeafManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extension\LeafExtension\LeafContext.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\LeafExtension\LeafPropertyInjector.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\LeafExtension\LMainAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\LeafExtension\LeafExtensionBase.cs" />

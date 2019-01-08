@@ -39,7 +39,7 @@ namespace AutumnBox.OpenFramework.Extension.LeafExtension
         public LeafExtensionBase()
         {
             //初始化上下文
-            Context = this.NewContext();
+            Context = new LeafContext();
             //执行切面
             ExecuteBca();
             //注入属性

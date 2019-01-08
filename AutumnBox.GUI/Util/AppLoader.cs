@@ -103,9 +103,7 @@ namespace AutumnBox.GUI.Util
             ui.Progress = 60;
             ui.LoadingTip = App.Current.Resources["ldmsgLoadingExtensions"].ToString();
             OpenFrameworkManager.Init();
-            logger.Info("openfx inited");
             OpenFxObserver.Instance.OnLoaded();
-            logger.Info("??");
             ConnectedDevicesListener.Instance.Work();
 
             ui.Progress = 90;

@@ -13,7 +13,6 @@ namespace AutumnBox.OpenFramework.Extension.LeafExtension
         public LeafEntryExecutor(LeafExtensionBase ext)
         {
             this.ext = ext ?? throw new ArgumentNullException(nameof(ext));
-            this.data = data ?? throw new ArgumentNullException(nameof(data));
             entry = FindEntry();
         }
         private object[] GetPara(ParameterInfo[] pInfos)
@@ -31,6 +30,10 @@ namespace AutumnBox.OpenFramework.Extension.LeafExtension
             {
                 return ext.Context.App;
             }
+            else if (paraT == typeof(Open.IUx))
+            {
+                return ext.Context.Ux;
+            }
             return null;
         }
         private MethodInfo FindEntry()
@@ -47,7 +50,7 @@ namespace AutumnBox.OpenFramework.Extension.LeafExtension
         }
         private bool IsEntry(MethodInfo info)
         {
-            return info.GetCustomAttribute(typeof(LMainAttribute)) != null;
+            return info.Name == "Main" || info.GetCustomAttribute(typeof(LMainAttribute)) != null;
         }
         public int? Execute(Dictionary<string, object> data = null)
         {
