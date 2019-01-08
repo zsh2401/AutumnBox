@@ -3,7 +3,6 @@
 ** date:  2018/8/19 20:39:02 (UTC +8:00)
 ** desc： ...
 *************************************************/
-using AutumnBox.Basic.Exceptions;
 using AutumnBox.Basic.ManagedAdb;
 using AutumnBox.GUI.Properties;
 using AutumnBox.GUI.Util.Bus;
@@ -104,7 +103,9 @@ namespace AutumnBox.GUI.Util
             ui.Progress = 60;
             ui.LoadingTip = App.Current.Resources["ldmsgLoadingExtensions"].ToString();
             OpenFrameworkManager.Init();
+            logger.Info("openfx inited");
             OpenFxObserver.Instance.OnLoaded();
+            logger.Info("??");
             ConnectedDevicesListener.Instance.Work();
 
             ui.Progress = 90;

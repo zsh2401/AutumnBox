@@ -3,31 +3,34 @@
 ** date:  2018/8/19 19:22:23 (UTC +8:00)
 ** desc： ...
 *************************************************/
+using AutumnBox.GUI.Util.Debugging;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutumnBox.GUI.Util.Bus
 {
-     class OpenFxObserver
+    class OpenFxObserver
     {
         public static readonly OpenFxObserver Instance;
         static OpenFxObserver()
         {
             Instance = new OpenFxObserver();
         }
-        private OpenFxObserver() { }
+        private OpenFxObserver()
+        {
+            SGLogger<OpenFxObserver>.Debug("Created");
+        }
         public void OnLoaded()
         {
+           
             if (IsLoaded)
             {
                 return;
             }
+
             IsLoaded = true;
             App.Current.Dispatcher.Invoke(() =>
             {
+                SGLogger<OpenFxObserver>.Debug("Raising Loaded Event");
                 LoadedSource?.Invoke(this, new EventArgs());
             });
         }
@@ -37,7 +40,8 @@ namespace AutumnBox.GUI.Util.Bus
             {
                 if (IsLoaded)
                 {
-                    LoadedSource += value;
+                    value?.Invoke(this, new EventArgs());
+                    //LoadedSource += value;
                 }
                 else
                 {

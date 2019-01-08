@@ -4,11 +4,14 @@
 ** desc： ...
 *************************************************/
 
+using System;
+
 namespace AutumnBox.OpenFramework.Extension
 {
     /// <summary>
     /// 如果添加此标记,则秋之盒会保证该模块以管理员权限运行
     /// </summary>
+    [AttributeUsage(AttributeTargets.Class,AllowMultiple = false)]
     public class ExtRunAsAdminAttribute : BeforeCreatingAspect
     {
         private readonly bool reqAdmin;
