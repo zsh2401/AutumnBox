@@ -26,16 +26,36 @@ namespace AutumnBox.OpenFramework.Extension.LeafExtension
                 var paras = method.GetParameters();
                 isReceiveValue = (paras.Count() == 1);
             }
-            public void Do(object value)
+            public void Do(string message, object value)
             {
-                if (isReceiveValue)
+                bool executed = false;
+                try
+                {
+                    method.Invoke(owner, new object[] { message, value });
+                    executed = true;
+                }
+                catch (TargetParameterCountException) { }
+                if (executed) return;
+                try
+                {
+                    method.Invoke(owner, new object[] { message });
+                    executed = true;
+                }
+                catch (TargetParameterCountException) { }
+                if (executed) return;
+                try
                 {
                     method.Invoke(owner, new object[] { value });
+                    executed = true;
                 }
-                else
+                catch (TargetParameterCountException) { }
+                if (executed) return;
+                try
                 {
                     method.Invoke(owner, new object[] { });
+                    executed = true;
                 }
+                catch (TargetParameterCountException) { }
             }
         }
         private readonly List<ReceiverWrapper> wrappers = new List<ReceiverWrapper>();
@@ -64,7 +84,7 @@ namespace AutumnBox.OpenFramework.Extension.LeafExtension
                              select method;
             foreach (var method in canReceive)
             {
-                method.Do(value);
+                method.Do(message, value);
             }
         }
     }

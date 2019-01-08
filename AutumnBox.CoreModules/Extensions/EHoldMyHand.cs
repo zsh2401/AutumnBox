@@ -8,7 +8,9 @@ using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.Extension.LeafExtension;
 using AutumnBox.OpenFramework.Open;
 using AutumnBox.OpenFramework.Running;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 
 namespace AutumnBox.CoreModules.Extensions
 {
@@ -19,24 +21,18 @@ namespace AutumnBox.CoreModules.Extensions
     //[UserAgree("Please be true")]
     internal class EHoldMyHand : LeafExtensionBase
     {
-        [LSignalReceive]
-        private void OnCreate()
+        [LProperty]
+        private IUx Ux { get; set; }
+
+        [LSignalReceive(Signals.ON_CREATED)]
+        private void OnCreate(string message, ExtensionArgs args)
         {
-            Trace.WriteLine("6666");
+            Ux.Message($"message->{message} " + args.Wrapper.ToString() ?? "NULL");
         }
-        //[LMain]
-        public void Main(IUx ux)
+        public void Main(IUx ux,Dictionary<string,object> data)
         {
             ux.Message("Leaf extension!");
+            ux.Message(data.Count().ToString());
         }
-
-        //protected override void Processing(Dictionary<string, object> data)
-        //{
-        //    throw new Exception();
-        //    Ux.ShowLoadingWindow();
-        //    Ux.Message(Executor.Cmd("ping www.baidu.com").Output.ToString());
-        //    Ux.CloseLoadingWindow();
-        //    throw new Exception();
-        //}
     }
 }
