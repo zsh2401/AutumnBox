@@ -259,10 +259,19 @@ namespace AutumnBox.OpenFramework.Management.Impl
         {
             foreach (var filter in filters)
             {
-                if (!filter.DoFilter(Wrapper))
+                try
                 {
+                    if (!filter.DoFilter(Wrapper))
+                    {
+                        return false;
+                    }
+                }
+                catch (Exception e)
+                {
+                    Logger.Warn($"can not filter extension", e);
                     return false;
                 }
+
             }
             return true;
         }

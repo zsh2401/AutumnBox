@@ -1,4 +1,5 @@
-﻿using AutumnBox.OpenFramework.Extension;
+﻿using AutumnBox.OpenFramework.Content;
+using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.Wrapper;
 using System.Reflection;
 
@@ -21,7 +22,14 @@ namespace AutumnBox.OpenFramework.Management.Filters
         /// <returns></returns>
         public bool DoFilter(IExtensionWrapper Wrapper)
         {
-            return Wrapper.Info.ExtType.GetCustomAttribute(typeof(ExtHideAttribute)) == null;
+            if (Wrapper.Info.TryGet(ExtensionInformationKeys.IS_HIDE, out object result))
+            {
+                return result == null || !(bool)result;
+            }
+            else
+            {
+                return true;
+            }
         }
     }
 }

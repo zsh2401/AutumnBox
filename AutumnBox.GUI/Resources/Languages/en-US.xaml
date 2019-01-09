@@ -129,6 +129,7 @@
     <s:String x:Key="OpenFxCantRunMore">Can't run more</s:String>
     <s:String x:Key="OpenFxTitleMessage">Message</s:String>
     <s:String x:Key="OpenFxNoRoot">This device has no root permission</s:String>
+    <s:String x:Key="OpenFxNoRootIgnore">Ignore</s:String>
     <s:String x:Key="OpenFxExtensionFailed">Fatal error! plz view the logs</s:String>
     <s:String x:Key="OpenFxCantCreateInstance">Error:cant't create the instance,please view the logs</s:String>
      <s:String x:Key="OpenFxInstallAppFirst">Please install app first</s:String>

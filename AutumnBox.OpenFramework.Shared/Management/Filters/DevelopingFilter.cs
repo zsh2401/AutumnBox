@@ -22,9 +22,16 @@ namespace AutumnBox.OpenFramework.Management.Filters
         /// <returns></returns>
         public bool DoFilter(IExtensionWrapper Wrapper)
         {
-            if (Wrapper.Info.ExtType.GetCustomAttribute(typeof(ExtDeveloperMode)) != null)
+            if (Wrapper.Info.TryGet(ExtensionInformationKeys.IS_DEVELOPING, out bool isDevExt))
             {
-                return (Wrapper as Context).App.IsDeveloperMode;
+                if (isDevExt)
+                {
+                    return (Wrapper as Context).App.IsDeveloperMode;
+                }
+                else
+                {
+                    return true;
+                }
             }
             else
             {

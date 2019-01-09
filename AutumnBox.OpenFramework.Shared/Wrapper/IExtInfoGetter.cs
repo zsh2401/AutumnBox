@@ -20,6 +20,16 @@ namespace AutumnBox.OpenFramework.Wrapper
         /// <returns></returns>
         object this[string key] { get; }
         /// <summary>
+        /// 尝试获取
+        /// </summary>
+        /// <returns></returns>
+        bool TryGet(string key, out object result);
+        /// <summary>
+        /// 泛型结果的尝试获取
+        /// </summary>
+        /// <returns></returns>
+        bool TryGet<TResult>(string key, out TResult result);
+        /// <summary>
         /// 可用区域
         /// </summary>
         IEnumerable<string> Regions { get; }

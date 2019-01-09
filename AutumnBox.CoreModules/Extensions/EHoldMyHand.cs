@@ -21,6 +21,7 @@ namespace AutumnBox.CoreModules.Extensions
     [ExtRequiredDeviceStates(AutumnBoxExtension.NoMatter)]
     //[UserAgree("Please be true")]
     [ExtDeveloperMode]
+    [ExtRequireRoot]
     internal class EHoldMyHand : LeafExtensionBase
     {
         [LProperty]
