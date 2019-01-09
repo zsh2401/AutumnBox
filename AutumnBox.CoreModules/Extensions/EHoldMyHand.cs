@@ -16,10 +16,11 @@ using System.Linq;
 namespace AutumnBox.CoreModules.Extensions
 {
     [ExtName("Example extension")]
-    //[ExtDeveloperMode(true)]
+
     [ExtIcon("Icons.flash.png")]
     [ExtRequiredDeviceStates(AutumnBoxExtension.NoMatter)]
     //[UserAgree("Please be true")]
+    [ExtDeveloperMode]
     internal class EHoldMyHand : LeafExtensionBase
     {
         [LProperty]

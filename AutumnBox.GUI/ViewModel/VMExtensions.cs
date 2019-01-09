@@ -166,7 +166,8 @@ namespace AutumnBox.GUI.ViewModel
                 .GetLoadedWrappers(
                 new DeviceStateFilter(targetState),
                 CurrentRegionFilter.Singleton,
-                DevelopingFilter.Singleton
+                DevelopingFilter.Singleton,
+                HideFilter.Singleton
                 );
             App.Current.Dispatcher.Invoke(() =>
             {

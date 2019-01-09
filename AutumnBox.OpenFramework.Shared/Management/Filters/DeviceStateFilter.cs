@@ -27,7 +27,7 @@ namespace AutumnBox.OpenFramework.Management.Filters
         /// </summary>
         /// <param name="Wrapper"></param>
         /// <returns></returns>
-        public bool Do(IExtensionWrapper Wrapper)
+        public bool DoFilter(IExtensionWrapper Wrapper)
         {
             return Wrapper.Info.RequiredDeviceStates.HasFlag(state)
                 || Wrapper.Info.RequiredDeviceStates == state;

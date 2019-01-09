@@ -27,7 +27,7 @@ namespace AutumnBox.OpenFramework.Management.Filters
         /// </summary>
         /// <param name="wrapper"></param>
         /// <returns></returns>
-        public bool Do(IExtensionWrapper wrapper)
+        public bool DoFilter(IExtensionWrapper wrapper)
         {
             var crtLanCode = App.CurrentLanguageCode.ToLower();
             if (wrapper.Info.Regions == null)

@@ -15,7 +15,7 @@
     [ExtOfficial(false)]
     [ExtRegions(null)]
     [ExtPriority(ExtPriority.NORMAL)]
-    [ExtDeveloperMode(false)]
+    //[ExtDeveloperMode]
     //[ExtAppProperty("com.miui.fm")]
     //[ExtMinAndroidVersion(7,0,0)]
     public class EmptyExtension
