@@ -7,22 +7,7 @@ namespace AutumnBox.OpenFramework.Extension.LeafExtension
     /// <summary>
     /// Leaf模块
     /// </summary>
-    [ExtName("无名拓展", "en-us:Unknown extension")]
-    [ExtAuth("佚名", "en-us:Anonymous")]
-    [ExtDesc(null)]
-    [ExtVersion()]
-    [ExtRequiredDeviceStates(AutumnBoxExtension.NoMatter)]
-    [ExtMinApi(8)]
-    [ExtTargetApi()]
-    [ExtRunAsAdmin(false)]
-    [ExtRequireRoot(false)]
-    [ExtOfficial(false)]
-    [ExtRegions(null)]
-    [ExtDeveloperMode(false)]
-    [ExtPriority(ExtPriority.NORMAL)]
-    //[ExtAppProperty("com.miui.fm")]
-    //[ExtMinAndroidVersion(7,0,0)]
-    public abstract class LeafExtensionBase : IClassExtension
+    public abstract class LeafExtensionBase : EmptyExtension, IClassExtension
     {
         /// <summary>
         /// 上下文
