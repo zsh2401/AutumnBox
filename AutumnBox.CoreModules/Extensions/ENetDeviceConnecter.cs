@@ -4,8 +4,8 @@ using System.Net;
 
 namespace AutumnBox.CoreModules.Extensions
 {
-    [ExtDeveloperMode(true)]
     [ExtName("网络设备连接器")]
+    [ExtHide]
     [ExtRequiredDeviceStates(NoMatter)]
     class ENetDeviceConnecter : OfficialVisualExtension
     {

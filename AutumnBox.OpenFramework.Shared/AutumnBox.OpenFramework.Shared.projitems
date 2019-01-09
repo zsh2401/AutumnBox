@@ -55,6 +55,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Extension\_InfoAttrs\ExtAuthAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\_InfoAttrs\ExtDescAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\_InfoAttrs\ExtDeveloperMode.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extension\_InfoAttrs\ExtHideAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\_InfoAttrs\ExtIconAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\_InfoAttrs\ExtMinApiAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\_InfoAttrs\ExtNameAttribute.cs" />
@@ -72,6 +73,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Management\Filters\CurrentRegionFilter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\Filters\DevelopingFilter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\Filters\DeviceStateFilter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Management\Filters\HideFilter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\FxLoader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\IBaseApi.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\IExtensionUIController.cs" />

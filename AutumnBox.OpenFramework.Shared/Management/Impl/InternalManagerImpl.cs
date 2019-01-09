@@ -259,7 +259,7 @@ namespace AutumnBox.OpenFramework.Management.Impl
         {
             foreach (var filter in filters)
             {
-                if (!filter.Do(Wrapper))
+                if (!filter.DoFilter(Wrapper))
                 {
                     return false;
                 }

@@ -17,6 +17,6 @@ namespace AutumnBox.OpenFramework.Management
         /// </summary>
         /// <param name="Wrapper"></param>
         /// <returns></returns>
-        bool Do(IExtensionWrapper Wrapper);
+        bool DoFilter(IExtensionWrapper Wrapper);
     }
 }

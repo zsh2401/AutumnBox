@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using AutumnBox.OpenFramework.Content;
+﻿using AutumnBox.OpenFramework.Content;
 using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.Wrapper;
+using System.Reflection;
 
 namespace AutumnBox.OpenFramework.Management.Filters
 {
@@ -12,28 +10,25 @@ namespace AutumnBox.OpenFramework.Management.Filters
     /// </summary>
     public class DevelopingFilter : IWrapperFilter
     {
-        public static DevelopingFilter Singleton { get; }
-        static DevelopingFilter()
-        {
-            Singleton = new DevelopingFilter();
-        }
+        /// <summary>
+        /// 单例
+        /// </summary>
+        public static readonly DevelopingFilter Singleton = new DevelopingFilter();
         private DevelopingFilter() { }
-        public bool Do(IExtensionWrapper Wrapper)
+        /// <summary>
+        /// 执行过滤
+        /// </summary>
+        /// <param name="Wrapper"></param>
+        /// <returns></returns>
+        public bool DoFilter(IExtensionWrapper Wrapper)
         {
-            try
+            if (Wrapper.Info.ExtType.GetCustomAttribute(typeof(ExtDeveloperMode)) != null)
             {
-                if (Wrapper.Info[ExtensionInformationKeys.IS_DEVELOPING] as bool? == true)
-                {
-                    return ((Context)Wrapper).BaseApi.IsDeveloperMode;
-                }
-                else
-                {
-                    return true;
-                }
+                return (Wrapper as Context).App.IsDeveloperMode;
             }
-            catch
+            else
             {
-                return false;
+                return true;
             }
         }
     }

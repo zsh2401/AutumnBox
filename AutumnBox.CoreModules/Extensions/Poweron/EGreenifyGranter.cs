@@ -57,7 +57,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron
                     result = executor.AdbShell(device, GRANT_PRE, GET_APP_OPS_STATS);
                     Count(result);
                 }
-                result = executor.Adb(device, "am force-stop", PKG_NAME);
+                result = executor.AdbShell(device, "am force-stop", PKG_NAME);
                 Count(result);
                 WriteLine($"successed: {successed} failed:{error}");
                 return OK;

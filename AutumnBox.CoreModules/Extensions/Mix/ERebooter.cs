@@ -12,9 +12,9 @@ using System.Collections.Generic;
 namespace AutumnBox.CoreModules.Extensions.Mix
 {
     [ExtName("__Reboot to system")]
-    [ExtDeveloperMode(true)]
     [ExtRequiredDeviceStates(AutumnBoxExtension.NoMatter)]
-    [UserAgree(" ERebooterAreUSure")]
+    [UserAgree("ERebooterAreUSure")]
+    [ExtHide]
     internal class ERebooter : LeafExtensionBase
     {
         public const int SYSTEM = 0;
