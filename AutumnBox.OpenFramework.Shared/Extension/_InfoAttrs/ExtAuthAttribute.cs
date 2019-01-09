@@ -4,6 +4,8 @@
 ** desc： ...
 *************************************************/
 
+using System;
+
 namespace AutumnBox.OpenFramework.Extension
 {
     /// <summary>

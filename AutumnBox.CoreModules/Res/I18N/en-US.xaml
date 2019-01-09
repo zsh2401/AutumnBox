@@ -6,6 +6,7 @@
         <s:String x:Key="EGreenifyGranterMaybeSuccess">MaybeSuccess</s:String>
     <s:String x:Key="EGreenifyGranterNotice">This activator activates most of its ROOT-free functions with reference to the green daemon file. Activation may not be successful due to problems with the Android platform.</s:String>
     
+       <s:String x:Key="ERebooterAreUSure">Are you sure to reboot this device?</s:String>
     
     <s:String x:Key="ExtensionExecutingCommandFmt">Executing command {0}</s:String>
     <s:String x:Key="ExtensionExitCodeIs">Finished,exit code:</s:String>

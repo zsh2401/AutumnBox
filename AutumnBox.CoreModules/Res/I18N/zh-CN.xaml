@@ -8,6 +8,8 @@
      <s:String x:Key="EGreenifyGranterMaybeSuccess">可能成功</s:String>
     <s:String x:Key="EGreenifyGranterNotice">本激活器参照绿色守护文档对其大部分免ROOT功能进行激活,由于安卓平台的问题,激活不一定可以成功</s:String>
     
+     <s:String x:Key="ERebooterAreUSure">你确定要对该设备进行重启吗?</s:String>
+    
     <!--拓展模块池-->
     <s:String x:Key="ExtensionExecutingCommandFmt">正在执行: {0}</s:String>
     <s:String x:Key="ExtensionExitCodeIs">执行完成,退出码:</s:String>

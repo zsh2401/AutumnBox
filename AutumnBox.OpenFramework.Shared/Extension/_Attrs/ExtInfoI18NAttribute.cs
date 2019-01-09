@@ -14,7 +14,6 @@ namespace AutumnBox.OpenFramework.Extension
     /// <summary>
     /// 支持多语言的字符串特性
     /// </summary>
-    [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
     public abstract class ExtInfoI18NAttribute : ExtensionAttribute, IInformationAttribute
     {
         private const string DEFAULT_KEY = "ALL_REGIONS";

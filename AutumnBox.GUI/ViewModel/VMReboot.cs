@@ -33,47 +33,41 @@ namespace AutumnBox.GUI.ViewModel
             InitEvents();
         }
         bool running = false;
+
+        private const int SYSTEM = 0;
+        private const int FASTBOOT = 1;
+        private const int RECOVERY = 2;
+        private const int _9008 = 3;
+        private const string KEY_REBOOT_OPTION = "reboot_option";
+
         private void InitCommands()
         {
             _toSystem = new FlexiableCommand(() =>
             {
-              
-                Task.Run(()=> {
-                    if (running) return;
-                    running = true;
-                    DeviceSelectionObserver.Instance.CurrentDevice.Reboot2System();
-                    running = false;
-                });
+                var thread = AtmbContext.Instance.NewExtensionThread("ERebooter");
+                thread.Data[KEY_REBOOT_OPTION] = SYSTEM;
+                thread.Start();
             })
             { CanExecuteProp = false };
             _toRecovery = new FlexiableCommand(() =>
             {
-                Task.Run(() => {
-                    if (running) return;
-                    running = true;
-                    DeviceSelectionObserver.Instance.CurrentDevice.Reboot2Recovery();
-                    running = false;
-                });
+                var thread = AtmbContext.Instance.NewExtensionThread("ERebooter");
+                thread.Data[KEY_REBOOT_OPTION] = RECOVERY;
+                thread.Start();
             })
             { CanExecuteProp = false }; ;
             _toFastboot = new FlexiableCommand(() =>
             {
-                Task.Run(() => {
-                    if (running) return;
-                    running = true;
-                    DeviceSelectionObserver.Instance.CurrentDevice.Reboot2Fastboot();
-                    running = false;
-                });
+                var thread = AtmbContext.Instance.NewExtensionThread("ERebooter");
+                thread.Data[KEY_REBOOT_OPTION] = FASTBOOT;
+                thread.Start();
             })
             { CanExecuteProp = false }; ;
             _to9008 = new FlexiableCommand(() =>
             {
-                Task.Run(() => {
-                    if (running) return;
-                    running = true;
-                    DeviceSelectionObserver.Instance.CurrentDevice.Reboot29008();
-                    running = false;
-                });
+                var thread = AtmbContext.Instance.NewExtensionThread("ERebooter");
+                thread.Data[KEY_REBOOT_OPTION] = _9008;
+                thread.Start();
             })
             { CanExecuteProp = false };
         }

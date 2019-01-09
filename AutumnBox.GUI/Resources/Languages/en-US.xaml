@@ -659,7 +659,7 @@
     </s:String>
 
     <!--关于信息-->
-    <s:String x:Key="AboutMessage">This is an open source software that complies with the GPL 3.0. Please follow the open source agreement when necessary.
+    <s:String x:Key="AboutMessage">This is an open source software that complies with the LGPL 3.0. Please follow the open source agreement when necessary.
 Developer Email zsh2401@163.com
         
 Acknowledgements for the outstanding contributions of the following companies and projects (in no particular order)

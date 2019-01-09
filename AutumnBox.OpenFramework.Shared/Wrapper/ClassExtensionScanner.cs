@@ -68,7 +68,7 @@ namespace AutumnBox.OpenFramework.Wrapper
                               select (IInformationAttribute)attr;
             foreach (var info in informatons)
             {
-                Informations.Add(info.Key, info);
+                Informations[info.Key] = info;
             }
         }
         /// <summary>
