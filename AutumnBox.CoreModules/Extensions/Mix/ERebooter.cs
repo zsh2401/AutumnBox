@@ -23,6 +23,7 @@ namespace AutumnBox.CoreModules.Extensions.Mix
         public const int _9008 = 3;
         public const string KEY_REBOOT_OPTION = "reboot_option";
 
+        [LMain]
         public void Main(IDevice device, Dictionary<string, object> data)
         {
             switch (data[KEY_REBOOT_OPTION])
