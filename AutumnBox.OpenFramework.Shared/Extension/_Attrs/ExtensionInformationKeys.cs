@@ -24,6 +24,7 @@ namespace AutumnBox.OpenFramework.Extension
         public const string TARGET_ATMB_API = "TgtAtmbApi";
         public const string ROOT = "root";
         public const string IS_DEVELOPING = "IsDeveloping";
+        public const string IS_HIDE = "IsHide";
 #pragma warning restore CS1591 // 缺少对公共可见类型或成员的 XML 注释
     }
 }

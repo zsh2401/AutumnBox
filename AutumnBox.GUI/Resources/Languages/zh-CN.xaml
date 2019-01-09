@@ -140,6 +140,7 @@
      <s:String x:Key="OpenFxInstallBtnIgnore">强行继续!</s:String>
     <s:String x:Key="OpenFxInstallBtnOk">好吧</s:String>
     <s:String x:Key="OpenFxNoRoot">这个功能依赖于root，但你的设备没有root权限！请检查设备</s:String>
+      <s:String x:Key="OpenFxNoRootIgnore">忽略并继续</s:String>
      <s:String x:Key="OpenFxExtensionFailed">功能/模块在运行时遇到严重异常，详情查看日志</s:String>
     <s:String x:Key="OpenFxNeedAdminPermission">此模块需要管理员权限,是否将秋之盒重启到管理员模式</s:String>
     <s:String x:Key="OpenFxLowAndroidVersionFmt">此模块要求安卓版本为{0},而您的设备并没有达到此标准</s:String>

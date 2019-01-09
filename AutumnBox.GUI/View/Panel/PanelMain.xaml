@@ -51,7 +51,7 @@
                     <local:PanelCurrentDevice/>
                 </TabItem>
                 <TabItem  Style="{DynamicResource AtmbxTabItem}" TabIndex="1" Header="{DynamicResource PanelMainMore}" Margin="18,-2,-22,0"  FontSize="16">
-                    <ScrollViewer HorizontalScrollBarVisibility="Disabled"  Template="{DynamicResource AtmbxScrollViewer}" VerticalScrollBarVisibility="Visible">
+                    <ScrollViewer HorizontalScrollBarVisibility="Disabled"  Template="{DynamicResource AtmbxScrollViewer}" VerticalScrollBarVisibility="Hidden">
                         <local:PanelMore/>
                     </ScrollViewer>
                 </TabItem>

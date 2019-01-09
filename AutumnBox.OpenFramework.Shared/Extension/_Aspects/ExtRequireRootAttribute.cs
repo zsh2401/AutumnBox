@@ -59,11 +59,16 @@ namespace AutumnBox.OpenFramework.Extension
             }
             else
             {
-                canContinue = false;
-                args.Context.App.RunOnUIThread(() =>
+
+                switch (args.Context.Ux.DoChoice("OpenFxNoRoot", "OpenFxNoRootIgnore"))
                 {
-                    args.Context.Ux.Warn("OpenFxNoRoot");
-                });
+                    case ChoiceResult.Left:
+                        canContinue = true;
+                        break;
+                    default:
+                        canContinue = false;
+                        break;
+                }
             }
         }
     }

@@ -34,11 +34,11 @@ namespace AutumnBox.OpenFramework.Wrapper
             {
                 try
                 {
-                    return Infomations[key].Value;
+                    return Informations[key].Value;
                 }
                 catch (Exception e)
                 {
-                    ctx.Logger.Warn($"InfoGetter:can not get info '{key}' ",e);
+                    ctx.Logger.Warn($"InfoGetter:can not get info '{key}' ", e);
                     return null;
                 }
             }
@@ -50,7 +50,7 @@ namespace AutumnBox.OpenFramework.Wrapper
         /// <summary>
         /// 已获取的特性
         /// </summary>
-        public Dictionary<string, IInformationAttribute> Infomations { get; private set; }
+        public Dictionary<string, IInformationAttribute> Informations { get; private set; }
         /// <summary>
         /// 最低API
         /// </summary>
@@ -158,7 +158,7 @@ namespace AutumnBox.OpenFramework.Wrapper
         /// 构造
         /// </summary>
         /// <param name="ctx"></param>
-        /// <param name="type"></param>
+        /// <param name="type"></param> 
         public ClassExtensionInfoGetter(Context ctx, Type type)
         {
             this.ctx = ctx;
@@ -171,7 +171,7 @@ namespace AutumnBox.OpenFramework.Wrapper
         {
             ClassExtensionScanner scanner = this.Scanner;
             scanner.Scan(ClassExtensionScanner.ScanOption.Informations);
-            Infomations = scanner.Informations;
+            Informations = scanner.Informations;
             RequiredDeviceStates = (DeviceState)this[ExtensionInformationKeys.REQ_DEV_STATE];
             Version = this[ExtensionInformationKeys.VERSION] as Version;
             MinApi = (int)(this[ExtensionInformationKeys.MIN_ATMB_API] ?? BuildInfo.API_LEVEL);
@@ -209,6 +209,45 @@ namespace AutumnBox.OpenFramework.Wrapper
             {
                 Logger.Warn("cannot load icon", ex);
                 return new byte[0];
+            }
+        }
+        /// <summary>
+        /// 尝试获取
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="result"></param>
+        /// <returns></returns>
+        public bool TryGet(string key, out object result)
+        {
+            try
+            {
+                result = Informations[key];
+                return true;
+            }
+            catch
+            {
+                result = null;
+                return false;
+            }
+        }
+        /// <summary>
+        /// 泛型的尝试获取
+        /// </summary>
+        /// <typeparam name="TResult"></typeparam>
+        /// <param name="key"></param>
+        /// <param name="result"></param>
+        /// <returns></returns>
+        public bool TryGet<TResult>(string key, out TResult result)
+        {
+            try
+            {
+                result = (TResult)Informations[key];
+                return true;
+            }
+            catch
+            {
+                result = default(TResult);
+                return false;
             }
         }
     }
