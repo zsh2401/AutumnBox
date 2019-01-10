@@ -17,24 +17,27 @@ namespace AutumnBox.CoreModules.Extensions.Poweron
     [ExtRequiredDeviceStates(DeviceState.Poweron)]
     internal class EShizukuActivator : OfficialVisualExtension
     {
-        private const int DELAY_AFTER_LAUNCH = 3000;
+        private const int DELAY_AFTER_LAUNCH = 1500;
         private const string PKG_NAME = "moe.shizuku.privileged.api";
         private const string ACTIVITY_CLASS = "MainActivity";
         private const string SH_PATH = "/sdcard/Android/data/moe.shizuku.privileged.api/files/start.sh";
         protected override int VisualMain()
         {
             WriteInitInfo();
-            new ActivityManager(TargetDevice).StartActivity("me.piebridge.brevent", "ui.BreventActivity");
-            Thread.Sleep(DELAY_AFTER_LAUNCH);
+            //new ActivityManager(TargetDevice)
+            //{
+            //    CmdStation = this.CmdStation
+            //}.To(OutputPrinter).StartActivity("moe.shizuku.manager.MainActivity");
+            //Thread.Sleep(DELAY_AFTER_LAUNCH);
             var result = CmdStation
                 .GetShellCommand(TargetDevice,
                 $"sh {SH_PATH}")
                 .To(OutputPrinter)
                 .Execute();
-           
+
             WriteExitCode(result.ExitCode);
             return result.ExitCode;
         }
-        
+
     }
 }
