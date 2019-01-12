@@ -17,8 +17,6 @@ namespace AutumnBox.GUI.ViewModel
 {
     class VMPanelMain : ViewModelBase
     {
-        public ICommand OpenUrl { get; set; } = new OpenParameterUrlCommand();
-
         public ICommand StartShell { get; private set; }
         public ICommand ShowSettingsDialog { get; private set; }
         public int TabSelectedIndex

@@ -6,7 +6,7 @@
 using AutumnBox.GUI.Util.Debugging;
 using System.Windows.Controls;
 
-namespace AutumnBox.GUI.Util
+namespace AutumnBox.GUI.Util.Net
 {
     static class Statistics
     {
@@ -28,15 +28,10 @@ namespace AutumnBox.GUI.Util
                 };
                 (App.Current.MainWindow.Content as Grid).Children.Add(browser);
                 browser.SuppressScriptErrors(true);
-                string url = App.Current.Resources["urlApiStatistics"].ToString();
+                string url = App.Current.Resources["WebApiStatistics"]?.ToString();
                 url += "?v=" + Self.Version.ToString();
                 logger.Info("Browser statistics is navigating to " + url);
                 browser.Navigate(url);
-                //browser.Navigated += (s, e) =>
-                //{
-                //    (App.Current.MainWindow.Content as Grid).Children.Remove(browser);
-                //    browser.Dispose();
-                //};
             });
         }
     }

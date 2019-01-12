@@ -37,7 +37,6 @@ namespace AutumnBox.OpenFramework.Open
         /// <summary>
         /// 让用户做选择
         /// </summary>
-        /// <param name="title"></param>
         /// <param name="message"></param>
         /// <param name="btnLeft"></param>
         /// <param name="btnRight"></param>

@@ -51,7 +51,7 @@ namespace AutumnBox.OpenFramework.Extension
         /// <returns></returns>
         protected ShellCommand GetDevcieShellCommand(string cmd)
         {
-            return CmdStation.GetShellCommand(TargetDevice, cmd);
+            return CmdStation.GetShellCommand(DeviceSelectedOnCreating, cmd);
         }
         /// <summary>
         /// 获取托管的adb命令
@@ -60,7 +60,7 @@ namespace AutumnBox.OpenFramework.Extension
         /// <returns></returns>
         protected AdbCommand GetDeviceAdbCommand(string cmd)
         {
-            return CmdStation.GetAdbCommand(TargetDevice, cmd);
+            return CmdStation.GetAdbCommand(DeviceSelectedOnCreating, cmd);
         }
         /// <summary>
         /// 获取托管的设备无关adb命令
@@ -80,7 +80,7 @@ namespace AutumnBox.OpenFramework.Extension
         protected FastbootCommand GetDeviceFastbootCommand(string cmd)
         {
            
-            return CmdStation.GetFastbootCommand(TargetDevice, cmd);
+            return CmdStation.GetFastbootCommand(DeviceSelectedOnCreating, cmd);
         }
         /// <summary>
         /// 获取托管的设备无关fastboot命令
@@ -122,7 +122,7 @@ namespace AutumnBox.OpenFramework.Extension
         {
             _deviceCommanderFactory = new Lazy<DeviceCommanderFactory>(() =>
             {
-                return new DeviceCommanderFactory(this.TargetDevice, this.CmdStation);
+                return new DeviceCommanderFactory(DeviceSelectedOnCreating, CmdStation);
             });
         }
         #endregion
