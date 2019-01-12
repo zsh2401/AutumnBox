@@ -120,6 +120,7 @@
     
     <!--PanelDevices-->
     <s:String x:Key="PanelDevicesTitle">已连接设备列表</s:String>
+     <s:String x:Key="PanelHelpForConnectDevice">如何连接设备?</s:String>
     <s:String x:Key="PanelDevicesConnectTo">网络连接新设备</s:String>
     <s:String x:Key="PanelDevicesDisconnect">断开当前设备网络连接</s:String>
     <s:String x:Key="PanelDevicesEnableCurrent">开启当前设备网络调试</s:String>

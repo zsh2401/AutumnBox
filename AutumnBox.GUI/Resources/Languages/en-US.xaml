@@ -117,6 +117,7 @@
     
      <!--PanelDevices-->
     <s:String x:Key="PanelDevicesTitle">Connected devices</s:String>
+    <s:String x:Key="PanelHelpForConnectDevice">How to connect device?</s:String>
     <s:String x:Key="PanelDevicesConnectTo">Connect to new device</s:String>
     <s:String x:Key="PanelDevicesDisconnect">Disconnect crt net device</s:String>
     <s:String x:Key="PanelDevicesEnableCurrent">Enable crt net-debugging</s:String>
