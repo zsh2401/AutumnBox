@@ -7,6 +7,7 @@ using AutumnBox.Basic.ManagedAdb;
 using AutumnBox.GUI.Properties;
 using AutumnBox.GUI.Util.Bus;
 using AutumnBox.GUI.Util.Debugging;
+using AutumnBox.GUI.Util.Net;
 using AutumnBox.GUI.Util.OpenFxManagement;
 using AutumnBox.GUI.Util.OS;
 using AutumnBox.GUI.View.Windows;

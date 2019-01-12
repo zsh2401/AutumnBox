@@ -1,23 +1,30 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:s="clr-namespace:System;assembly=mscorlib">
-    <s:String x:Key="urlOfficialWebsite">http://www.atmb.top/</s:String>
-    <s:String x:Key="urlDonateList">http://www.atmb.top/donate</s:String>
-    <s:String x:Key="urlDonatePage">http://www.atmb.top/donate</s:String>
-    <s:String x:Key="urlOpensource">http://www.atmb.top/go/opensource</s:String>
-    <s:String x:Key="urlJoinQQGroup">http://www.atmb.top/go/join_qq_group/</s:String>
-    <s:String x:Key="urlComments">http://www.atmb.top/comments/</s:String>
-    <s:String x:Key="urlDownloadExtensions">http://www.atmb.top/go/download/extension</s:String>
+    
+    <!--Go-->
+    <s:String x:Key="UrlGoPrefix">http://www.atmb.top/go?a=</s:String>
+    <s:String x:Key="AGoHelp">help</s:String>
+    <s:String x:Key="AGoQQGroup">qq_gr</s:String>
+    <s:String x:Key="AGoOpenSource">os</s:String>
+    <s:String x:Key="AGoDonate">donate</s:String>
+    <s:String x:Key="AGoFeedback">feedback</s:String>
+    <s:String x:Key="AGoConnectDevice">c_dev</s:String>
+    <s:String x:Key="AGoDownloadExtensions">dl_ext</s:String>
+    <s:String x:Key="AGoDonationList">donation_ls</s:String>
+    <s:String x:Key="AGoInstallExtension">ist_ext</s:String>
+    <s:String x:Key="AGoExtensionDevelopDoc">dev_ext</s:String>
+    <!--Go-->
+    
+    <!--WEB-->
+    <s:String x:Key="UrlOfficialWebsite">http://www.atmb.top/</s:String>
 
-    <s:String x:Key="urlApiMotd">http://www.atmb.top/_api_/motd</s:String>
-    <s:String x:Key="urlApiPotd">http://www.atmb.top/_api_/potd</s:String>
-    <s:String x:Key="urlApiUpdate">http://www.atmb.top/_api_/update</s:String>
-    <s:String x:Key="urlApiStatistics">http://www.atmb.top/_api_/statistics</s:String>
-    <s:String x:Key="urlApiToastMotd">http://www.atmb.top/_api_/tmotd</s:String>
+    <!--WEBAPI-->
+    <s:String x:Key="WebApiMotd">http://www.atmb.top/_api_/motd</s:String>
+    <s:String x:Key="WebApiPotd">http://www.atmb.top/_api_/potd</s:String>
+    <s:String x:Key="WebApiUpdate">http://www.atmb.top/_api_/update</s:String>
+    <s:String x:Key="WebApiStatistics">http://www.atmb.top/_api_/statistics</s:String>
+    <s:String x:Key="WebApiToastMotd">http://www.atmb.top/_api_/tmotd</s:String>
+    <!--WEBAPI-->
 
-    <s:String x:Key="urlEMail">mailto://zsh2401@163.com</s:String>
-    <s:String x:Key="urlHelp">http://www.atmb.top/go/help/</s:String>
-    <s:String x:Key="urlHelpOfLinkDevice">http://www.atmb.top/go/help/link_device/</s:String>
-    <s:String x:Key="urlHelpOfInstallExtension">http://www.atmb.top/go/help/install_extension/</s:String>
-    <s:String x:Key="urlExtensionDevelopDoc">https://github.com/zsh2401/AutumnBox/wiki/zh_CN_AutumnBox%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3</s:String>
 </ResourceDictionary>

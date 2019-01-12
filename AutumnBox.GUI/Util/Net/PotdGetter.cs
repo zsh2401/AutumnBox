@@ -14,7 +14,7 @@ namespace AutumnBox.GUI.Util.Net
 #if USE_LOCAL_API
         public override string Url => "http://localhost:24010/_api_/potd/";
 #else
-        public override string Url=> App.Current.Resources["urlApiPotd"].ToString();
+        public override string Url=> App.Current.Resources["WebApiPotd"].ToString();
 #endif
 
         [JsonObject(MemberSerialization.OptOut)]

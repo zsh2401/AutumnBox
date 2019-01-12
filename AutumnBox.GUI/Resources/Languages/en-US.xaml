@@ -42,7 +42,7 @@
      <s:String x:Key="PanelHomeReport">Report</s:String>
      <s:String x:Key="PanelHomeHelpTip">Do you need some help?</s:String>
      <s:String x:Key="PanelHomeLinkHelp">Link device via usb</s:String>
-     <s:String x:Key="PanelHomeMoreHelp">More</s:String>
+     <s:String x:Key="PanelHomeManual">Manual</s:String>
     
     <s:String x:Key="PanelHomeContact">Contact</s:String>
     <s:String x:Key="PanelHomeOfficialWebsite">Official website</s:String>

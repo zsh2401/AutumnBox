@@ -15,10 +15,11 @@ namespace AutumnBox.OpenFramework.Extension
         /// <param name="signalName"></param>
         /// <param name="value"></param>
         void ReceiveSignal(string signalName, object value = null);
+
         /// <summary>
         /// 主方法
         /// </summary>
-        /// <param name="args"></param>
+        /// <param name="data">传入的键值数据</param>
         /// <returns></returns>
         int Main(Dictionary<string, object> data);
     }

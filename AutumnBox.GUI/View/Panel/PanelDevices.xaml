@@ -14,6 +14,7 @@
             <ListBox Foreground="{DynamicResource MainBackgroundForegroundBrush}" VerticalAlignment="Top"  DisplayMemberPath="{Binding DisplayMemeberPath}" ItemsSource="{Binding Devices}" SelectedItem="{Binding Selected,Mode=TwoWay}" Height="151"/>
             <StackPanel Orientation="Vertical" VerticalAlignment="Bottom">
                 <Button Style="{DynamicResource MaterialDesignFlatButton}" FontFamily="{DynamicResource AutumnBox.Font}" Content="{DynamicResource PanelDevicesConnectTo}"  Command="{Binding ConnectDevice}"  FontSize="12"/>
+                <Button Style="{DynamicResource MaterialDesignFlatButton}" FontFamily="{DynamicResource AutumnBox.Font}" Content="{DynamicResource PanelDevicesConnectTo}"  Command="{Binding ConnectDevice}"  FontSize="12"/>
                 <Button Style="{DynamicResource MaterialDesignFlatButton}" FontFamily="{DynamicResource AutumnBox.Font}" Content="{DynamicResource PanelDevicesEnableCurrent}" Command="{Binding OpenDeviceNetDebugging}"  FontSize="12"/>
                 <Button Style="{DynamicResource MaterialDesignFlatButton}" FontFamily="{DynamicResource AutumnBox.Font}" Content="{DynamicResource PanelDevicesDisconnect}" Command="{Binding DisconnectDevice}" FontSize="12"/>
             </StackPanel>

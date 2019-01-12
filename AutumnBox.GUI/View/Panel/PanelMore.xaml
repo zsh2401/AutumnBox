@@ -24,9 +24,9 @@
                     </StackPanel>
                     <WrapPanel Margin="10,0,10,0" Orientation="Horizontal">
                         <Button FontSize="12" Command="{Binding OpenExtFloder}" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource PanelMoreBtnOpenExtensionFloder}"/>
-                        <Button FontSize="12" Command="{Binding OpenUrl}" CommandParameter="{DynamicResource urlHelpOfInstallExtension}" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource PanelMoreBtnHowToInstallExtension}"/>
-                        <Button FontSize="12" Command="{Binding OpenUrl}" CommandParameter="{DynamicResource urlDownloadExtensions}" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource PanelMoreExtensionsDownloadCenter}"/>
-                        <Button FontSize="12" Command="{Binding OpenUrl}" CommandParameter="{DynamicResource urlDownloadExtensions}" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource PanelMoreExtensionsDoc}"/>
+                        <Button FontSize="12" Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoInstallExtension}" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource PanelMoreBtnHowToInstallExtension}"/>
+                        <Button FontSize="12" Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoDownloadExtensions}" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource PanelMoreExtensionsDownloadCenter}"/>
+                        <Button FontSize="12" Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoExtensionDevelopDoc}" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource PanelMoreExtensionsDoc}"/>
                         <Button FontSize="12" Command="{Binding OpenLibsView}" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource PanelMoreBtnViewLoadedModules}"/>
                     </WrapPanel>
                     <TextBlock Margin="15" FontSize="15"  Text="{DynamicResource PanelMoreEvenNoDevice}"/>

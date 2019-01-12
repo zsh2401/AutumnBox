@@ -16,7 +16,6 @@ namespace AutumnBox.OpenFramework.Open.Impl
 {
     internal class TemporaryFloderImpl : ITemporaryFloder
     {
-        private readonly Context ctx;
         public TemporaryFloderImpl(Context ctx)
         {
             var floderName = ctx.GetType().Assembly.GetName().Name;

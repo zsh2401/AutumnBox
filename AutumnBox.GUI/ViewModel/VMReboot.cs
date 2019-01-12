@@ -32,7 +32,6 @@ namespace AutumnBox.GUI.ViewModel
             InitCommands();
             InitEvents();
         }
-        bool running = false;
 
         private const int SYSTEM = 0;
         private const int FASTBOOT = 1;

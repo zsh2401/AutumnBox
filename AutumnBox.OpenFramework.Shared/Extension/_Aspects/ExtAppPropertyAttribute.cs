@@ -44,7 +44,9 @@ namespace AutumnBox.OpenFramework.Extension
         }
         private static bool InstallApplication(IDevice device, string pkgName)
         {
+#pragma warning disable CS0618 // 类型或成员已过时
             return new PackageManager(device).IsInstall(pkgName) == true;
+#pragma warning restore CS0618 // 类型或成员已过时
         }
     }
 }

@@ -11,6 +11,9 @@ namespace AutumnBox.OpenFramework.Extension
     /// </summary>
     public class ExtRegionsAttribute : SingleInfoAttribute
     {
+        /// <summary>
+        /// KEY
+        /// </summary>
         public override string Key => ExtensionInformationKeys.REGIONS;
         /// <summary>
         /// 构造

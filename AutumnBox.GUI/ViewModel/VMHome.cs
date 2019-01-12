@@ -13,19 +13,6 @@ namespace AutumnBox.GUI.ViewModel
 {
     class VMHome : ViewModelBase
     {
-        public FlexiableCommand OpenUrl
-        {
-            get
-            {
-                return _openUrl;
-            }
-            set
-            {
-                _openUrl = value;
-                RaisePropertyChanged();
-            }
-        }
-        private FlexiableCommand _openUrl;
         public FlexiableCommand Donate
         {
             get
@@ -45,14 +32,6 @@ namespace AutumnBox.GUI.ViewModel
             {
                 DialogHost.Show(new ContentDonate());
             });
-            OpenUrl = new FlexiableCommand((args) =>
-         {
-             try
-             {
-                 Process.Start(args.ToString());
-             }
-             catch { }
-         });
         }
     }
 }

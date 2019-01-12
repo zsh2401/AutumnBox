@@ -16,7 +16,6 @@ namespace AutumnBox.GUI.ViewModel
         public string ApiVersion { get; set; }
         public FlexiableCommand OpenLibsView { get; set; }
         public FlexiableCommand OpenExtFloder { get; set; }
-        public FlexiableCommand OpenUrl { get; set; }
         public VMMore()
         {
             OpenLibsView = new FlexiableCommand(() =>
@@ -26,14 +25,6 @@ namespace AutumnBox.GUI.ViewModel
             OpenExtFloder = new FlexiableCommand(() =>
             {
                 Process.Start(Manager.InternalManager.ExtensionPath);
-            });
-            OpenUrl = new FlexiableCommand((para) =>
-            {
-                try
-                {
-                    Process.Start(para.ToString());
-                }
-                catch { }
             });
             ApiVersion = BuildInfo.SDK_VERSION.ToString();
         }

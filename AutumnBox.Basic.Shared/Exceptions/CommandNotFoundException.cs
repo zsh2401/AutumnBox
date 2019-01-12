@@ -7,8 +7,14 @@ using System;
 
 namespace AutumnBox.Basic.Exceptions
 {
+    /// <summary>
+    /// 命令找不到时的异常
+    /// </summary>
     public class CommandNotFoundException : Exception
     {
+        /// <summary>
+        /// 命令找不到时的异常
+        /// </summary>
         public CommandNotFoundException(string cmd) : base(cmd + "not found")
         {
 
