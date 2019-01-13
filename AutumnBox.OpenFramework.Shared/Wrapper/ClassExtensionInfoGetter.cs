@@ -38,7 +38,7 @@ namespace AutumnBox.OpenFramework.Wrapper
                 }
                 catch (Exception e)
                 {
-                    ctx.Logger.Warn($"InfoGetter:can not get info '{key}' ", e);
+                    ctx.Logger.DebugWarn($"InfoGetter:can not get info '{key}' ", e);
                     return null;
                 }
             }
@@ -207,7 +207,7 @@ namespace AutumnBox.OpenFramework.Wrapper
             }
             catch (Exception ex)
             {
-                Logger.Warn("cannot load icon", ex);
+                Logger.DebugWarn("cannot load icon", ex);
                 return new byte[0];
             }
         }
@@ -221,7 +221,7 @@ namespace AutumnBox.OpenFramework.Wrapper
         {
             try
             {
-                result = Informations[key];
+                result = Informations[key].Value;
                 return true;
             }
             catch
@@ -237,11 +237,51 @@ namespace AutumnBox.OpenFramework.Wrapper
         /// <param name="key"></param>
         /// <param name="result"></param>
         /// <returns></returns>
-        public bool TryGet<TResult>(string key, out TResult result)
+        public bool TryGet<TResult>(string key, out TResult result) 
         {
             try
             {
-                result = (TResult)Informations[key];
+                result = (TResult)Informations[key].Value;
+                return true;
+            }
+            catch
+            {
+                result = default(TResult);
+                return false;
+            }
+        }
+        /// <summary>
+        /// 泛型的尝试获取
+        /// </summary>
+        /// <typeparam name="TResult"></typeparam>
+        /// <param name="key"></param>
+        /// <param name="result"></param>
+        /// <returns></returns>
+        public bool TryGetClassType<TResult>(string key, out TResult result) where TResult:class
+        {
+            try
+            {
+                result = Informations[key].Value as TResult; 
+                return true;
+            }
+            catch
+            {
+                result = null;
+                return false;
+            }
+        }
+        /// <summary>
+        /// 尝试获取值类型
+        /// </summary>
+        /// <typeparam name="TResult"></typeparam>
+        /// <param name="key"></param>
+        /// <param name="result"></param>
+        /// <returns></returns>
+        public bool TryGetValueType<TResult>(string key, out TResult result) where TResult : struct
+        {
+            try
+            {
+                result = (TResult)Informations[key].Value;
                 return true;
             }
             catch

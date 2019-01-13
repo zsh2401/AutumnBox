@@ -22,9 +22,10 @@ namespace AutumnBox.OpenFramework.Management.Filters
         /// <returns></returns>
         public bool DoFilter(IExtensionWrapper Wrapper)
         {
-            if (Wrapper.Info.TryGet(ExtensionInformationKeys.IS_HIDE, out object result))
+            if (Wrapper.Info.TryGetValueType(ExtensionInformationKeys.IS_HIDE, out bool result))
             {
-                return result == null || !(bool)result;
+
+                return !result;
             }
             else
             {

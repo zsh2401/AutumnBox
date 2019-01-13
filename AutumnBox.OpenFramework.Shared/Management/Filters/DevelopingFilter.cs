@@ -22,7 +22,7 @@ namespace AutumnBox.OpenFramework.Management.Filters
         /// <returns></returns>
         public bool DoFilter(IExtensionWrapper Wrapper)
         {
-            if (Wrapper.Info.TryGet(ExtensionInformationKeys.IS_DEVELOPING, out bool isDevExt))
+            if (Wrapper.Info.TryGetValueType(ExtensionInformationKeys.IS_DEVELOPING, out bool isDevExt))
             {
                 if (isDevExt)
                 {

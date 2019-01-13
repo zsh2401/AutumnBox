@@ -33,12 +33,12 @@ namespace AutumnBox.GUI.ViewModel
             PreFunctionPage = new FlexiableCommand(() =>
             {
                 TabSelectedIndex = (TabSelectedIndex - 1 + 7) % 7;
-                SGLogger<VMCurrentDevice>.Info(TabSelectedIndex.ToString());
+                //SGLogger<VMCurrentDevice>.Info(TabSelectedIndex.ToString());
             });
             NextFunctionPage = new FlexiableCommand(() =>
             {
                 TabSelectedIndex = (TabSelectedIndex + 1) % 7;
-                SGLogger<VMCurrentDevice>.Info(TabSelectedIndex.ToString());
+                //SGLogger<VMCurrentDevice>.Info(TabSelectedIndex.ToString());
             });
             if (Util.Bus.DeviceSelectionObserver.Instance != null)
             {

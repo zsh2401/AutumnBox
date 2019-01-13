@@ -23,7 +23,7 @@ namespace AutumnBox.Basic.Device.Management.Hardware
         /// <param name="device"></param>
         public DeviceHardwareInfoGetter(IDevice device) : base(device)
         {
-            logger = new Logger<DeviceHardwareInfo>();
+            logger = new Logger<DeviceHardwareInfoGetter>();
         }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace AutumnBox.Basic.Device.Management.Hardware
             }
             catch (Exception e)
             {
-                logger.Warn("Get Battery info fail", e);
+                logger.Debug($"Get Battery info fail {e}");
                 return null;
             }
         }
@@ -73,8 +73,9 @@ namespace AutumnBox.Basic.Device.Management.Hardware
             {
                 return Convert.ToInt32(match.Result("${dpi}"));
             }
-            catch
+            catch (Exception e)
             {
+                logger.Debug($"Get Battery info fail {e}");
                 return null;
             }
         }
@@ -100,7 +101,7 @@ namespace AutumnBox.Basic.Device.Management.Hardware
             }
             catch (Exception e)
             {
-                logger.Warn( "Get MemTotal fail", e);
+                logger.Debug($"Get size of ram info fail {e}");
                 return null;
             }
         }
@@ -131,7 +132,7 @@ namespace AutumnBox.Basic.Device.Management.Hardware
                     return null;
                 }
             }
-            catch (Exception e) { logger.Warn( "get storage fail ", e); return null; }
+            catch (Exception e) { logger.Debug("get storage fail " + e); return null; }
         }
         /// <summary>
         /// 获取设备SOC信息
@@ -145,7 +146,7 @@ namespace AutumnBox.Basic.Device.Management.Hardware
                 var hehe = output.Split(' ');
                 return hehe[hehe.Length - 1];
             }
-            catch (Exception e) { logger.Warn( "Get cpuinfo fail", e); return null; }
+            catch (Exception e) { logger.Debug("Get cpuinfo fail" + e); return null; }
         }
         /// <summary>
         /// 获取设备屏幕信息
@@ -158,7 +159,7 @@ namespace AutumnBox.Basic.Device.Management.Hardware
                 string output = Device.Shell("cat /proc/hwinfo | grep LCD").Item1.LineOut[0];
                 return output.Split(':')[1].TrimStart();
             }
-            catch (Exception e) { logger.Warn("Get LCD info fail", e); return null; }
+            catch (Exception e) { logger.Debug("Get LCD info fail" + e); return null; }
         }
         /// <summary>
         /// 获取设备闪存信息
@@ -171,13 +172,13 @@ namespace AutumnBox.Basic.Device.Management.Hardware
                 string output = Device.Shell("cat /proc/hwinfo | grep EMMC").Item1.LineOut[0];
                 return output.Split(':')[1].TrimStart() + " EMMC";
             }
-            catch (Exception e) { logger.Warn("Get EMMC info fail", e); }
+            catch (Exception e) { logger.Debug("Get EMMC info fail" + e); }
             try
             {
                 string output = Device.Shell("cat /proc/hwinfo | grep UFS").Item1.LineOut[0];
                 return output.Split(':')[1].TrimStart() + " UFS";
             }
-            catch (Exception e) { logger.Warn("Get UFS info fail", e); return null; }
+            catch (Exception e) { logger.Debug("Get UFS info fail" + e); return null; }
         }
     }
 }
