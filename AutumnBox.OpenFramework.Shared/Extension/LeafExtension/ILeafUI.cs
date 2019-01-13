@@ -6,7 +6,7 @@ namespace AutumnBox.OpenFramework.Extension.LeafExtension
     /// <summary>
     /// LeafExtension使用的UI控制器
     /// </summary>
-    public interface ILeafUI
+    public interface ILeafUI : IDisposable
     {
         /// <summary>
         /// 显示界面
@@ -51,6 +51,14 @@ namespace AutumnBox.OpenFramework.Extension.LeafExtension
         /// <summary>
         /// 大小
         /// </summary>
-        Size Size { get; }
+        Size Size { set; get; }
+        /// <summary>
+        /// 图标
+        /// </summary>
+        byte[] Icon { get; set; }
+        /// <summary>
+        /// 标题
+        /// </summary>
+        string Title { get; set; }
     }
 }

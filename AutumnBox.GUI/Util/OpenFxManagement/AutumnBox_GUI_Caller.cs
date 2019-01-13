@@ -14,6 +14,7 @@ using System.Reflection;
 using System.Security.Policy;
 using AutumnBox.Basic.Device;
 using AutumnBox.GUI.Util.Bus;
+using AutumnBox.OpenFramework.Extension.LeafExtension;
 
 namespace AutumnBox.GUI.Util.OpenFxManagement
 {
@@ -261,6 +262,16 @@ namespace AutumnBox.GUI.Util.OpenFxManagement
                 Sketch = sketch,
                 Owner = App.Current.MainWindow
             }.Show();
+        }
+
+        public ILeafUI NewLeafUI()
+        {
+            ILeafUI result = null;
+            App.Current.Dispatcher.Invoke(() =>
+            {
+                result = new LeafWindow().DataContext as ILeafUI;
+            });
+            return result;
         }
     }
 }

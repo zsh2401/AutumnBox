@@ -1,5 +1,6 @@
 ﻿using AutumnBox.Basic.Device;
 using AutumnBox.OpenFramework.Content;
+using AutumnBox.OpenFramework.Management;
 using AutumnBox.OpenFramework.Open;
 using System;
 
@@ -12,6 +13,10 @@ namespace AutumnBox.OpenFramework.Extension.LeafExtension
             if (propertyType == typeof(ILogger))
             {
                 return ctx.Logger;
+            }
+            if (propertyType == typeof(ILeafUI))
+            {
+                return CallingBus.BaseApi.NewLeafUI();
             }
             else if (propertyType == typeof(IUx))
             {

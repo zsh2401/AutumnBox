@@ -200,6 +200,7 @@
     <Compile Include="ViewModel\VMEnableDeviceNetDebugging.cs" />
     <Compile Include="ViewModel\VMExtensions.cs" />
     <Compile Include="ViewModel\VMInputWindow.cs" />
+    <Compile Include="ViewModel\VMLeafUI.cs" />
     <Compile Include="ViewModel\VMLibsView.cs" />
     <Compile Include="ViewModel\VMMore.cs" />
     <Compile Include="ViewModel\VMMotd.cs" />
@@ -283,6 +284,9 @@
     </Compile>
     <Compile Include="View\Windows\InputWindow.xaml.cs">
       <DependentUpon>InputWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\LeafWindow.xaml.cs">
+      <DependentUpon>LeafWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Windows\LibsWindow.xaml.cs">
       <DependentUpon>LibsWindow.xaml</DependentUpon>
@@ -569,6 +573,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Windows\InputWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\LeafWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

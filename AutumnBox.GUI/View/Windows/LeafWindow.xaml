@@ -1,0 +1,30 @@
+﻿<Window x:Class="AutumnBox.GUI.View.Windows.LeafWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AutumnBox.GUI.View.Windows"
+        xmlns:viewmodel="clr-namespace:AutumnBox.GUI.ViewModel"
+        mc:Ignorable="d"
+         MinHeight="300" MinWidth="450" Height="300" Width="450" BorderThickness="1,0,1,1"
+        FontFamily="{DynamicResource AutumnBox.Font}"
+        BorderBrush="{DynamicResource PrimaryLightBrush}"
+        WindowStartupLocation="CenterScreen"
+        Title="{Binding Title}">
+    <Window.DataContext>
+        <viewmodel:VMLeafUI/>
+    </Window.DataContext>
+    <DockPanel>
+        <StackPanel DockPanel.Dock="Top" Margin="5" VerticalAlignment="Top">
+            <ProgressBar BorderBrush="Transparent" Background="Transparent"  IsIndeterminate="{Binding IsIndeterminate}"  Value="{Binding Progress}"/>
+            <TextBlock Margin="10" Text="{Binding Tip}" FontSize="25" />
+        </StackPanel>
+        <DockPanel Margin="5" DockPanel.Dock="Bottom">
+            <StackPanel Margin="3" Orientation="Horizontal" DockPanel.Dock="Top" >
+                <Button FontSize="12" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource RunningWindowCopy}" Command="{Binding Copy}"/>
+                <TextBlock  VerticalAlignment="Center" Text="{DynamicResource RunningWindowCopyTip}"/>
+            </StackPanel>
+            <TextBox DockPanel.Dock="Bottom"  x:Name="TBOutput" IsReadOnly="True"  Style="{x:Null}" BorderBrush="{DynamicResource PrimaryLightBrush}" Text="{Binding Content}" TextWrapping="Wrap"/>
+        </DockPanel>
+    </DockPanel>
+</Window>
