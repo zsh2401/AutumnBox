@@ -6,6 +6,7 @@
 #define WIN32
 using AutumnBox.Basic.Device;
 using System;
+using AutumnBox.OpenFramework.Extension.LeafExtension;
 
 namespace AutumnBox.OpenFramework.Management
 {
@@ -14,6 +15,11 @@ namespace AutumnBox.OpenFramework.Management
     /// </summary>
     public interface IBaseApi
     {
+        /// <summary>
+        /// 获取新的LeafUI实现
+        /// </summary>
+        /// <returns></returns>
+        ILeafUI NewLeafUI();
         /// <summary>
         /// 是否应该展示CMD窗口
         /// </summary>

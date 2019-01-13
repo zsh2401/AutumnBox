@@ -268,10 +268,18 @@
     <!--LoadingWindow-->
      <s:String x:Key="LoadingWindowMessage">请耐心等待 :)</s:String>
     
-
+<!--LeafWindow-->
+    <s:String x:Key="LeafUITipCodeUnknown">结束</s:String>
+    <s:String x:Key="LeafUITipCode0">成功</s:String>
+    <s:String x:Key="LeafUITipCode-1">失败</s:String>
+    <s:String x:Key="LeafUITipCode-2">发生了严重异常</s:String>
+    <s:String x:Key="LeafUITipCode-3">被用户强制终止</s:String>
+    <s:String x:Key="LeafUITipCode-4">模块执行时被杀死</s:String>
+     <s:String x:Key="LeafUITipUnknow">非正常结束</s:String>
+    
     <!--RunningWindow-->
      <s:String x:Key="RunningWindowCopy">复制输出信息</s:String>
-        <s:String x:Key="RunningWindowCopyTip">这些输出信息可以更好的帮助他人解决你的问题</s:String>
+      <s:String x:Key="RunningWindowCopyTip">这些输出信息可以更好的帮助他人解决你的问题</s:String>
     <s:String x:Key="RunningWindowStateRunning">模块正在运行中~</s:String>
     <s:String x:Key="RunningWindowStateFinished">执行完毕</s:String>
      <s:String x:Key="RunningWindowStateError">执行时遇到了错误</s:String>

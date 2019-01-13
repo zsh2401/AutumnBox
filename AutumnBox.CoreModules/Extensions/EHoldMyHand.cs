@@ -12,6 +12,7 @@ using AutumnBox.OpenFramework.Running;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading;
 
 namespace AutumnBox.CoreModules.Extensions
 {
@@ -21,7 +22,7 @@ namespace AutumnBox.CoreModules.Extensions
     [ExtRequiredDeviceStates(AutumnBoxExtension.NoMatter)]
     //[UserAgree("Please be true")]
     [ExtDeveloperMode]
-    [ExtRequireRoot]
+    //[ExtRequireRoot]
     internal class EHoldMyHand : LeafExtensionBase
     {
         [LProperty]
@@ -30,16 +31,20 @@ namespace AutumnBox.CoreModules.Extensions
         [LProperty]
         private IDevice Device { get; set; }
 
-        [LSignalReceive(Signals.ON_CREATED)]
-        private void OnCreate(string message, ExtensionArgs args)
+        //[LSignalReceive(Signals.ON_CREATED)]
+        //private void OnCreate(string message, ExtensionArgs args)
+        //{
+        //    Ux.Message($"message->{message} " + args.Wrapper.ToString() ?? "NULL");
+        //}
+        public void Main(ILeafUI ui, IUx ux, Dictionary<string, object> data)
         {
-            Ux.Message($"message->{message} " + args.Wrapper.ToString() ?? "NULL");
-        }
-        public void Main(IUx ux,Dictionary<string,object> data)
-        {
-            ux.Message("Leaf extension!");
-            ux.Message(data.Count().ToString());
-            ux.Message(Device?.ToString() ?? "NO DEVICE");
+            using (ui)
+            {
+                ui.Show();
+                ui.WriteLine("Hello Leaf UI!");
+                Thread.Sleep(2000);
+                ui.Finish();
+            }
         }
     }
 }

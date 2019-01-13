@@ -125,7 +125,11 @@ namespace AutumnBox.GUI.ViewModel
             this.view = view;
             Copy = new FlexiableCommand(() =>
             {
-                Clipboard.SetText(Output);
+                try
+                {
+                    Clipboard.SetText(Output);
+                }
+                catch { }
             });
             output = "";
         }

@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         FontFamily="{DynamicResource AutumnBox.Font}"
         WindowStartupLocation="CenterOwner"
-        
+        MinHeight="300" MinWidth="500"
         MouseDown="Window_MouseDown"
         Title="{Binding MessageTitle}" Height="300" Width="500">
     <Grid>
