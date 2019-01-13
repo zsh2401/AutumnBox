@@ -23,12 +23,30 @@ namespace AutumnBox.OpenFramework.Wrapper
         /// 尝试获取
         /// </summary>
         /// <returns></returns>
+        [Obsolete]
         bool TryGet(string key, out object result);
         /// <summary>
         /// 泛型结果的尝试获取
         /// </summary>
         /// <returns></returns>
+        [Obsolete]
         bool TryGet<TResult>(string key, out TResult result);
+        /// <summary>
+        ///  尝试获取值类型
+        /// </summary>
+        /// <typeparam name="TResult"></typeparam>
+        /// <param name="key"></param>
+        /// <param name="result"></param>
+        /// <returns></returns>
+        bool TryGetValueType<TResult>(string key, out TResult result) where TResult : struct;
+        /// <summary>
+        /// 尝试获取Class类型
+        /// </summary>
+        /// <typeparam name="TResult"></typeparam>
+        /// <param name="key"></param>
+        /// <param name="result"></param>
+        /// <returns></returns>
+        bool TryGetClassType<TResult>(string key, out TResult result) where TResult : class;
         /// <summary>
         /// 可用区域
         /// </summary>

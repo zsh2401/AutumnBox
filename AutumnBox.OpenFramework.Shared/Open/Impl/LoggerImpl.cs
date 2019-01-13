@@ -28,6 +28,12 @@ namespace AutumnBox.OpenFramework.Open.Impl
             CallingBus.BaseApi.Log(ctx.LoggingTag, nameof(Debug), msg);
         }
 
+        public void DebugWarn(string msg, Exception e)
+        {
+            if (!ctx.BaseApi.IsDeveloperMode) return;
+            CallingBus.BaseApi.Log(ctx.LoggingTag, "DebugW", $"{msg}{Environment.NewLine}{e}");
+        }
+
         public void Fatal(string msg)
         {
             CallingBus.BaseApi.Log(ctx.LoggingTag, nameof(Fatal), msg);
