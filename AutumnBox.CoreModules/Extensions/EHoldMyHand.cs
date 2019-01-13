@@ -40,6 +40,7 @@ namespace AutumnBox.CoreModules.Extensions
         {
             using (ui)
             {
+                ui.Icon = this.GetIconBytes();
                 ui.Show();
                 ui.WriteLine("Hello Leaf UI!");
                 Thread.Sleep(2000);
