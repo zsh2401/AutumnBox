@@ -25,7 +25,7 @@
                 <Button FontSize="12" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource RunningWindowCopy}" Command="{Binding Copy}"/>
                 <TextBlock  VerticalAlignment="Center" Text="{DynamicResource RunningWindowCopyTip}"/>
             </StackPanel>
-            <TextBox DockPanel.Dock="Bottom"  x:Name="TBOutput" IsReadOnly="True"  Style="{x:Null}" BorderBrush="{DynamicResource PrimaryLightBrush}" Text="{Binding Content}" TextWrapping="Wrap"/>
+            <TextBox DockPanel.Dock="Bottom"  TextChanged="TBOutput_TextChanged" x:Name="TBOutput" IsReadOnly="True"  Style="{x:Null}" BorderBrush="{DynamicResource PrimaryLightBrush}" Text="{Binding Content}" TextWrapping="Wrap"/>
         </DockPanel>
     </DockPanel>
 </Window>

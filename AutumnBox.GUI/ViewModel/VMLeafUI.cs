@@ -3,6 +3,7 @@ using AutumnBox.GUI.Util.UI;
 using AutumnBox.OpenFramework.Extension.LeafExtension;
 using System;
 using System.Diagnostics;
+using System.Text;
 using System.Windows;
 
 namespace AutumnBox.GUI.ViewModel
@@ -66,6 +67,7 @@ namespace AutumnBox.GUI.ViewModel
 
         public VMLeafUI()
         {
+            _contentBuilder = new StringBuilder();
             RaisePropertyChangedOnDispatcher = true;
             Title = "LeafUI Window";
             Progress = -1;
@@ -83,13 +85,11 @@ namespace AutumnBox.GUI.ViewModel
 
         public string Content
         {
-            get => _content; set
-            {
-                _content = value;
-                RaisePropertyChanged();
-            }
+            get => _contentBuilder?.ToString();
+            set { }
         }
-        private string _content;
+
+        private readonly StringBuilder _contentBuilder;
 
         public double Progress
         {
@@ -189,7 +189,6 @@ namespace AutumnBox.GUI.ViewModel
         {
             App.Current.Dispatcher.Invoke(() =>
             {
-                Trace.WriteLine("LeafUITipCode" + exitCode);
                 Finish(App.Current.Resources["LeafUITipCode" + exitCode] as string
                     ?? App.Current.Resources["LeafUITipCodeUnknown"] as string);
             });
@@ -226,7 +225,8 @@ namespace AutumnBox.GUI.ViewModel
         public void WriteLine(object content)
         {
             if (_locked) return;
-            Content += $"{content}{Environment.NewLine}";
+            _contentBuilder.AppendLine(content?.ToString());
+            RaisePropertyChanged(nameof(Content));
         }
 
         public void Dispose()
