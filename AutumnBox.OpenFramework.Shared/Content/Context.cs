@@ -175,7 +175,7 @@ namespace AutumnBox.OpenFramework.Content
             var wrappers = from wrapper in Manager.InternalManager.GetLoadedWrappers()
                            where className == wrapper.Info.ExtType.Name
                            select wrapper;
-            if (wrappers.Count() == 0)
+            if (!wrappers.Any())
             {
                 throw new Exception("Extension not found");
             }

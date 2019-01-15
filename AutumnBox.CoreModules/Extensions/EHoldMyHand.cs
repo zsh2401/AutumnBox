@@ -5,10 +5,13 @@
 *************************************************/
 using AutumnBox.Basic.Device;
 using AutumnBox.CoreModules.Aspect;
+using AutumnBox.CoreModules.Extensions.Mix;
+using AutumnBox.OpenFramework.Content;
 using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.Extension.LeafExtension;
 using AutumnBox.OpenFramework.Open;
 using AutumnBox.OpenFramework.Running;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -31,17 +34,24 @@ namespace AutumnBox.CoreModules.Extensions
         [LProperty]
         private IDevice Device { get; set; }
 
-        //[LSignalReceive(Signals.ON_CREATED)]
-        //private void OnCreate(string message, ExtensionArgs args)
-        //{
-        //    Ux.Message($"message->{message} " + args.Wrapper.ToString() ?? "NULL");
-        //}
-        public void Main(ILeafUI ui, IUx ux, Dictionary<string, object> data)
+        [LMain]
+        public void Main(IDevice device,Context context, ILeafUI ui, IUx ux, Dictionary<string, object> data)
         {
             using (ui)
             {
                 ui.Icon = this.GetIconBytes();
+                ui.CloseButtonClicked += (s, e) =>
+                {
+                    e.CanBeClosed = false;
+                };
+                ui.Title = "Mother fucker";
                 ui.Show();
+
+                var thread = context.NewExtensionThread("ELeafUIDemo");
+                //thread.Data["test"] = "b";
+                thread.Start();
+
+                ui.WriteLine(device?.ToString() ?? "null");
                 ui.WriteLine("Hello Leaf UI!");
                 Thread.Sleep(2000);
                 ui.Finish();

@@ -8,13 +8,21 @@ namespace AutumnBox.OpenFramework.Extension.LeafExtension
     internal class LeafEntryExecutor
     {
         private readonly LeafExtensionBase ext;
+
         private Dictionary<string, object> data;
+
         private readonly MethodInfo entry;
+
         public LeafEntryExecutor(LeafExtensionBase ext)
         {
             this.ext = ext ?? throw new ArgumentNullException(nameof(ext));
             entry = FindEntry();
         }
+        /// <summary>
+        /// 获取参数列表对应的值列表
+        /// </summary>
+        /// <param name="pInfos"></param>
+        /// <returns></returns>
         private object[] GetPara(ParameterInfo[] pInfos)
         {
             List<object> ps = new List<object>();
@@ -28,13 +36,21 @@ namespace AutumnBox.OpenFramework.Extension.LeafExtension
                 {
                     try
                     {
-                        ps.Add(ApiAllocator.GetProperty(ext.Context, pInfo.ParameterType));
+                        var result = ApiAllocator.GetParamterValue(data,ext.Context, pInfo);
+                        ps.Add(result);
                     }
-                    catch { }
+                    catch
+                    {
+                        ps.Add(null);
+                    }
                 }
             }
             return ps.ToArray();
         }
+        /// <summary>
+        /// 寻找入口点函数
+        /// </summary>
+        /// <returns></returns>
         private MethodInfo FindEntry()
         {
             var type = ext.GetType();
@@ -47,10 +63,20 @@ namespace AutumnBox.OpenFramework.Extension.LeafExtension
             }
             return entries.First();
         }
+        /// <summary>
+        /// 判断一个函数是否是入口点
+        /// </summary>
+        /// <param name="info"></param>
+        /// <returns></returns>
         private bool IsEntry(MethodInfo info)
         {
             return info.Name == "Main" || info.GetCustomAttribute(typeof(LMainAttribute)) != null;
         }
+        /// <summary>
+        /// 进行执行
+        /// </summary>
+        /// <param name="data">键值对数据</param>
+        /// <returns>可能的int返回值</returns>
         public int? Execute(Dictionary<string, object> data = null)
         {
             this.data = data;

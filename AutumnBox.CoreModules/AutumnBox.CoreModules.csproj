@@ -75,6 +75,7 @@
     <Compile Include="Aspect\UserAgreeAttribute.cs" />
     <Compile Include="Attribute\DpmReceiverAttribute.cs" />
     <Compile Include="CoreLib.cs" />
+    <Compile Include="Extensions\ELeafUIDemo.cs" />
     <Compile Include="Extensions\EDownloadExtension.cs" />
     <Compile Include="Extensions\EInstallExtension.cs" />
     <Compile Include="Extensions\ENetDeviceConnecter.cs" />

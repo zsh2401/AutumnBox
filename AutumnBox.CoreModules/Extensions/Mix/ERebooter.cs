@@ -7,6 +7,7 @@ using AutumnBox.Basic.Device;
 using AutumnBox.CoreModules.Aspect;
 using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.Extension.LeafExtension;
+using AutumnBox.OpenFramework.Open;
 using System.Collections.Generic;
 
 namespace AutumnBox.CoreModules.Extensions.Mix
@@ -24,9 +25,9 @@ namespace AutumnBox.CoreModules.Extensions.Mix
         public const string KEY_REBOOT_OPTION = "reboot_option";
 
         [LMain]
-        public void Main(IDevice device, Dictionary<string, object> data)
+        public void Main(IDevice device, [LFromData(KEY_REBOOT_OPTION)]int rebootOption)
         {
-            switch (data[KEY_REBOOT_OPTION])
+            switch (rebootOption)
             {
                 case RECOVERY:
                     device.Reboot2Recovery();

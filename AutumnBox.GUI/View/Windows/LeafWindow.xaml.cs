@@ -25,5 +25,10 @@ namespace AutumnBox.GUI.View.Windows
             InitializeComponent();
             (DataContext as VMLeafUI).View = this;
         }
+
+        private void TBOutput_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            (sender as TextBox).ScrollToEnd();
+        }
     }
 }

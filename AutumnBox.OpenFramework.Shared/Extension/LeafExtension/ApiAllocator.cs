@@ -3,11 +3,33 @@ using AutumnBox.OpenFramework.Content;
 using AutumnBox.OpenFramework.Management;
 using AutumnBox.OpenFramework.Open;
 using System;
+using System.Collections.Generic;
+using System.Reflection;
 
 namespace AutumnBox.OpenFramework.Extension.LeafExtension
 {
     internal static class ApiAllocator
     {
+        public static object GetParamterValue(Dictionary<string, object> data, Context ctx, ParameterInfo pInfo)
+        {
+            var fromDataAttr = pInfo.GetCustomAttribute<LFromDataAttribute>();
+            if (fromDataAttr == null)
+            {
+                return GetProperty(ctx, pInfo.ParameterType);
+            }
+            else
+            {
+                string key = fromDataAttr.Key ?? pInfo.Name;
+                if (data.TryGetValue(key, out object value))
+                {
+                    return value;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
         public static object GetProperty(Context ctx, Type propertyType)
         {
             if (propertyType == typeof(ILogger))
