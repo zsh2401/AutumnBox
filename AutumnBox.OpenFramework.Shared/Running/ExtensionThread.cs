@@ -84,6 +84,7 @@ namespace AutumnBox.OpenFramework.Running
         {
             Thread = new Thread(Flow);
             Thread.Start();
+            Thread.IsBackground = true;
             Started?.Invoke(this, new ThreadStartedEventArgs());
         }
 
