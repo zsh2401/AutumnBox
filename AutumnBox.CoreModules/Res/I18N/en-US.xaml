@@ -3,10 +3,10 @@
                      xml:space="preserve"
                       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     
-        <s:String x:Key="EGreenifyGranterMaybeSuccess">MaybeSuccess</s:String>
+    <s:String x:Key="EGreenifyGranterMaybeSuccess">MaybeSuccess</s:String>
     <s:String x:Key="EGreenifyGranterNotice">This activator activates most of its ROOT-free functions with reference to the green daemon file. Activation may not be successful due to problems with the Android platform.</s:String>
     
-       <s:String x:Key="ERebooterAreUSure">Are you sure to reboot this device?</s:String>
+    <s:String x:Key="ERebooterAreUSure">Are you sure to reboot this device?</s:String>
     
     <s:String x:Key="ExtensionExecutingCommandFmt">Executing command {0}</s:String>
     <s:String x:Key="ExtensionExitCodeIs">Finished,exit code:</s:String>
@@ -15,26 +15,14 @@
     <s:String x:Key="ExtensionRunning">Running</s:String>
     <s:String x:Key="ExtensionCancelByUser">Cancelled by user</s:String>
 
+    <s:String x:Key="EInstallExtensionFileDialogTitle">Select extension file(s)</s:String>
+    <s:String x:Key="EInstallExtensionFileDialogFilter">Ext file|*.dll;*.atmb;*.odll;*.adll</s:String>
+    
     <s:String x:Key="ERestartAppMsg">Which one is you want?</s:String>
      <s:String x:Key="ERestartAppBtnAdmin">Restart as admin</s:String>
      <s:String x:Key="ERestartAppBtnNormal">Restart</s:String>
     
     <s:String x:Key="EDeviceOwnerRemoverYNReboot">Finished,reboot to system?</s:String>
-    
-     <s:String x:Key="EDpmSetterBaseTipErrOtherAccounts">Failed,Have other accounts</s:String>
-    <s:String x:Key="EDpmSetterBaseMsgErrOtherAccounts">You can try the function which autumnbox provided and named "Clear all users"</s:String>
-    
-    <s:String x:Key="EDpmSetterBaseTipErrOtherUsers">Failed,Have other users</s:String>
-    <s:String x:Key="EDpmSetterBaseMsgErrOtherUsers">You can try the function which autumnbox provided and named "Clear all accounts"</s:String>
-    
-    <s:String x:Key="EDpmSetterBaseTipErrMiuiSec">Failed,MIUI Securiy Error</s:String>
-    <s:String x:Key="EDpmSetterBaseMsgErrMiuiSec">Goto developer settings and turn on/off MIUI security option</s:String>
-    
-    <s:String x:Key="EDpmSetterBaseTipSuccessed">Successed!</s:String>
-    <s:String x:Key="EDpmSetterBaseMsgSuccessed">Are you happy?</s:String>
-    
-    <s:String x:Key="EDpmSetterBaseTipError">Failed</s:String>
-    <s:String x:Key="EDpmSetterBaseMsgError">Please copy the error message to someone can handle this</s:String>
     
     <s:String x:Key="EClearUsersWarning">Read it in detail, otherwise the consequences will be at your own risk!!!
          There is only one thing you need to do manually: clear the screen lock and fingerprint lock, do it now, make sure there is no screen lock and fingerprint lock, click agree</s:String>
@@ -51,26 +39,8 @@
     <s:String x:Key="EFilePusherSelectingFilter">Any file(*.*)|*.*</s:String>
     <s:String x:Key="EFilePusherFailed">Push failed</s:String>
 
-    <s:String x:Key="EObsoleteAndTryImageHelper">This function is obsolete,please try the Image Helper application on android</s:String>
-    
-    <s:String x:Key="EFlashRecoveryObsoleteMsg">This function is obsolete,plz reboot device to the fastboot mode,and use autumnbox fastboot function to flash recovery.img</s:String>
-    <s:String x:Key="EFlashBootObsoleteMsg">This function is obsolete,plz reboot device to the fastboot mode,and use autumnbox fastboot function to flash boot.img</s:String>
-    
-    <s:String x:Key="EFlashBootSelectingTitle">Select a image file</s:String>
-    <s:String x:Key="EFlashBootSelectingFilter">Image file(*.img)|*.img|Any file(*.*)|*.*</s:String>
-    <s:String x:Key="EFlashRecoverySelectingTitle">Select a image file</s:String>
-    <s:String x:Key="EFlashRecoverySelectingFilter">Image file(*.img)|*.img|Any file(*.*)|*.*</s:String>
-
     <s:String x:Key="EApkInstallerSelectingTitle">Select a apk file</s:String>
     <s:String x:Key="EApkInstallerSelectingFilter">Android APK file(*.apk)|*.apk</s:String>
-    
-    <s:String x:Key="EBreventActivatorOpenNetDebugging">
-        Your device is android 8.0 system,do you want open net-debugging after activated to ensure service normal running?
-         this operation maybe very dangerous!
-        &#x0a; iff you decide to turn it on,please keep the device unlocked during execution,otherwise activation is invalid!
-    </s:String>
-    <s:String x:Key="EBreventActivatorBtnOpen">Enable</s:String>
-    <s:String x:Key="EBreventActivatorBtnNo">Don't enable</s:String>
 
     <s:String x:Key="EOemLockWarn">This will erase all the data on your device, OK?</s:String>
     <s:String x:Key="EOemLockWarnAgain">Once again, this will erase all the data on your device, OK?</s:String>
@@ -96,9 +66,6 @@
     <s:String x:Key="EGodPowerExtractingApk">Extracting APK</s:String>
     <s:String x:Key="EGodPowerRmUser">Remove all unnecessary users of device</s:String>
     <s:String x:Key="EGodPowerRmAcc">Remove all account of device</s:String>
-    <s:String x:Key="DPMSetting">Setting DPM application</s:String>
-
-    <s:String x:Key="AppNameThis">this app</s:String>
-    <s:String x:Key="AppNameIceBox">Ice Box</s:String>
-    <s:String x:Key="AppNameStopApp">Stopapp</s:String>
+    <s:String x:Key="EGodPowerSettingDPM">Setting DPM application</s:String>
+    
 </ResourceDictionary>

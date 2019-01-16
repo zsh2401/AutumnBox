@@ -14,12 +14,9 @@ using System.Threading;
 namespace AutumnBox.CoreModules.Extensions.Hidden
 {
     [ExtName("Example extension")]
-
     [ExtIcon("Icons.flash.png")]
     [ExtRequiredDeviceStates(AutumnBoxExtension.NoMatter)]
-    //[UserAgree("Please be true")]
     [ExtDeveloperMode]
-    //[ExtRequireRoot]
     internal class EHoldMyHand : LeafExtensionBase
     {
         [LProperty]

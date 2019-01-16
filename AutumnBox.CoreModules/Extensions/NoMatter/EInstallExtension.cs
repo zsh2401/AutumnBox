@@ -7,9 +7,9 @@ using Microsoft.Win32;
 using System;
 using System.IO;
 
-namespace AutumnBox.CoreModules.Extensions.Hidden
+namespace AutumnBox.CoreModules.Extensions.NoMatter
 {
-    [ExtName("en-us:Install Extension","安装拓展模块")]
+    [ExtName("Install Extension","zh-cn:安装拓展模块")]
     [ExtAuth("zsh2401")]
     [ExtPriority(ExtPriority.HIGH)]
     [ExtIcon("Icons.add.png")]
@@ -52,8 +52,8 @@ namespace AutumnBox.CoreModules.Extensions.Hidden
             {
                 OpenFileDialog fileDialog = new OpenFileDialog();
                 fileDialog.Reset();
-                fileDialog.Title = "选择你要安装的拓展模块文件";
-                fileDialog.Filter = "秋之盒拓展模块文件|*.dll;*.atmb;*.odll;*.adll";
+                fileDialog.Title = CoreLib.Current.Languages.Get("EInstallExtensionFileDialogTitle");
+                fileDialog.Filter = CoreLib.Current.Languages.Get("EInstallExtensionFileDialogFilter");
                 fileDialog.Multiselect = true;
                 selectResult = fileDialog.ShowDialog();
                 result = fileDialog.FileNames;

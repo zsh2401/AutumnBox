@@ -75,10 +75,10 @@
     <Compile Include="Aspect\UserAgreeAttribute.cs" />
     <Compile Include="Attribute\DpmReceiverAttribute.cs" />
     <Compile Include="CoreLib.cs" />
-    <Compile Include="Extensions\Hidden\ELeafUIDemo.cs" />
-    <Compile Include="Extensions\Hidden\EInstallExtension.cs" />
+    <Compile Include="Extensions\NoMatter\ELeafUIDemo.cs" />
+    <Compile Include="Extensions\NoMatter\EInstallExtension.cs" />
     <Compile Include="Extensions\Hidden\ENetDeviceConnecter.cs" />
-    <Compile Include="Extensions\Mix\ERestartApp.cs" />
+    <Compile Include="Extensions\NoMatter\ERestartApp.cs" />
     <Compile Include="Extensions\Fastboot\EFlashBoot.cs" />
     <Compile Include="Extensions\Fastboot\EFlashRecovery.cs" />
     <Compile Include="Extensions\Fastboot\EOemLock.cs" />
@@ -109,12 +109,8 @@
     <Compile Include="Extensions\Poweron\EApkInstaller.cs" />
     <Compile Include="Extensions\Poweron\EBreventActivator.cs" />
     <Compile Include="Extensions\Poweron\EDpiModifier.cs" />
-    <Compile Include="Extensions\Poweron\EExtractBootImg.cs" />
-    <Compile Include="Extensions\Poweron\EFlashRecovery.cs" />
-    <Compile Include="Extensions\Poweron\EExtractRecoveryImg.cs" />
     <Compile Include="Extensions\Mix\EFilePusher.cs" />
-    <Compile Include="Extensions\Poweron\EFlashBoot.cs" />
-    <Compile Include="Extensions\Hidden\EHoldMyHand.cs" />
+    <Compile Include="Extensions\NoMatter\EHoldMyHand.cs" />
     <Compile Include="Extensions\Poweron\EScreenShoter.cs" />
     <Compile Include="Extensions\Poweron\EUnlockSystemParation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">

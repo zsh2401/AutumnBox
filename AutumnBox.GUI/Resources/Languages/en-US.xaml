@@ -3,7 +3,7 @@
                     xml:space="preserve"
                     xmlns:s="clr-namespace:System;assembly=mscorlib">
     <s:String x:Key="AppName">AutumnBox</s:String>
-     <s:String x:Key="AppNameWithVersion">AutumnBox 2019</s:String>
+     <s:String x:Key="AppNameWithVersion">AutumnBox 2019.2</s:String>
     <s:String x:Key="VersionTypePreview">Preview</s:String>
     <s:String x:Key="VersionTypeStable">Stable</s:String>
     <s:String x:Key="VersionTypeBeta">BETA</s:String>
