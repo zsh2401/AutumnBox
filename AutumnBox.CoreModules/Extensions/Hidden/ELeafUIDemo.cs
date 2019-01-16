@@ -1,7 +1,7 @@
 ﻿using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.Extension.LeafExtension;
 
-namespace AutumnBox.CoreModules.Extensions
+namespace AutumnBox.CoreModules.Extensions.Hidden
 {
     [ExtName("Leaf UI Demo")]
     [ExtRequiredDeviceStates(AutumnBoxExtension.NoMatter)]

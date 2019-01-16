@@ -4,20 +4,14 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.Basic.Device;
-using AutumnBox.CoreModules.Aspect;
-using AutumnBox.CoreModules.Extensions.Mix;
 using AutumnBox.OpenFramework.Content;
 using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.Extension.LeafExtension;
 using AutumnBox.OpenFramework.Open;
-using AutumnBox.OpenFramework.Running;
-using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
 using System.Threading;
 
-namespace AutumnBox.CoreModules.Extensions
+namespace AutumnBox.CoreModules.Extensions.Hidden
 {
     [ExtName("Example extension")]
 
