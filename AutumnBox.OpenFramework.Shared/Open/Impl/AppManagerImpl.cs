@@ -63,42 +63,44 @@ namespace AutumnBox.OpenFramework.Open.Impl
 
         public void RestartApp()
         {
-            if (ctx.Permission == CtxPer.High)
-            {
-                sourceApi.Restart();
-                return;
-            }
-            var fmtMsg = GetPublicResouce<string>("msgRequestRestartAppFormat");
-            string title = GetPublicResouce<string>("Notice");
-            string msg = string.Format(fmtMsg, ctx.GetType().Name);
-            if (ctx.Ux.DoChoice(msg, "btnDeny", "btnAccept") == ChoiceResult.Right)
-            {
-                sourceApi.Restart();
-            }
-            else
-            {
-                throw new UserDeniedException();
-            }
+            sourceApi.Restart();
+            //if (ctx.Permission == CtxPer.High)
+            //{
+            //    sourceApi.Restart();
+            //    return;
+            //}
+            //var fmtMsg = GetPublicResouce<string>("msgRequestRestartAppFormat");
+            //string title = GetPublicResouce<string>("Notice");
+            //string msg = string.Format(fmtMsg, ctx.GetType().Name);
+            //if (ctx.Ux.DoChoice(msg, "btnDeny", "btnAccept") == ChoiceResult.Right)
+            //{
+            //    sourceApi.Restart();
+            //}
+            //else
+            //{
+            //    throw new UserDeniedException();
+            //}
         }
 
         public void RestartAppAsAdmin()
         {
-            if (ctx.Permission == CtxPer.High)
-            {
-                sourceApi.RestartAsAdmin();
-                return;
-            }
-            var fmtMsg = GetPublicResouce<string>("msgRequestRestartAppAsAdminFormat");
-            string title = GetPublicResouce<string>("Notice");
-            string msg = string.Format(fmtMsg, ctx.GetType().Name);
-            if (ctx.Ux.DoChoice(msg, "btnDeny", "btnAccept") == ChoiceResult.Right)
-            {
-                sourceApi.RestartAsAdmin();
-            }
-            else
-            {
-                throw new UserDeniedException();
-            }
+            sourceApi.RestartAsAdmin();
+            //if (ctx.Permission == CtxPer.High)
+            //{
+            //    sourceApi.RestartAsAdmin();
+            //    return;
+            //}
+            //var fmtMsg = GetPublicResouce<string>("msgRequestRestartAppAsAdminFormat");
+            //string title = GetPublicResouce<string>("Notice");
+            //string msg = string.Format(fmtMsg, ctx.GetType().Name);
+            //if (ctx.Ux.DoChoice(msg, "btnDeny", "btnAccept") == ChoiceResult.Right)
+            //{
+            //    sourceApi.RestartAsAdmin();
+            //}
+            //else
+            //{
+            //    throw new UserDeniedException();
+            //}
         }
 
         public void RunOnUIThread(Action act)
