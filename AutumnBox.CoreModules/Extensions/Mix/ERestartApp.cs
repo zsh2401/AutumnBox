@@ -1,9 +1,10 @@
 ﻿using AutumnBox.OpenFramework.Content;
 using AutumnBox.OpenFramework.Extension;
+using AutumnBox.OpenFramework.Extension.LeafExtension;
 using AutumnBox.OpenFramework.Open;
 using System.Collections.Generic;
 
-namespace AutumnBox.CoreModules.Extensions
+namespace AutumnBox.CoreModules.Extensions.Mix
 {
     [ExtName("Restart AutumnBox","zh-CN:重启秋之盒")]
     [ExtAuth("zsh2401","zh-cn:秋之盒官方")]
@@ -11,26 +12,27 @@ namespace AutumnBox.CoreModules.Extensions
     [ExtTargetApi(8)]
     [ContextPermission(CtxPer.High)]
     [ExtIcon("Icons.restart.png")]
-    internal class ERestartApp : AutumnBoxExtension
+    internal class ERestartApp : LeafExtensionBase
     {
-        public override int Main(Dictionary<string, object> data)
+        [LMain]
+        public int Main(IUx ux,IAppManager app)
         {
             string msg = CoreLib.Current.Languages.Get("ERestartAppMsg");
             string btnAdmin = CoreLib.Current.Languages.Get("ERestartAppBtnAdmin");
             string btnNormal = CoreLib.Current.Languages.Get("ERestartAppBtnNormal");
-            ChoiceResult choiceResult =  Ux.DoChoice(msg, btnAdmin, btnNormal);
+            ChoiceResult choiceResult = ux.DoChoice(msg, btnAdmin, btnNormal);
             switch (choiceResult)
             {
                 case ChoiceResult.Left:
-                    App.RestartAppAsAdmin();
+                    app.RestartAppAsAdmin();
                     break;
                 case ChoiceResult.Right:
-                    App.RestartApp();
+                    app.RestartApp();
                     break;
                 default:
-                    return ERR_CANCELED_BY_USER;
+                    return AutumnBoxExtension.ERR_CANCELED_BY_USER;
             }
-            return OK;
+            return AutumnBoxExtension.OK;
         }
     }
 }
