@@ -82,7 +82,7 @@ namespace AutumnBox.CoreModules.Lib
             dpmCommander.RemoveAccounts();
 
             Progress = 70;
-            WriteLineAndSetTip(Res("DPMSetting"));
+            WriteLineAndSetTip(Res("EGodPowerSettingDPM"));
 
             Progress = 80;
             try

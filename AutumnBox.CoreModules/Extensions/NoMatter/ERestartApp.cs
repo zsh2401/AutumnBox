@@ -2,9 +2,8 @@
 using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.Extension.LeafExtension;
 using AutumnBox.OpenFramework.Open;
-using System.Collections.Generic;
 
-namespace AutumnBox.CoreModules.Extensions.Mix
+namespace AutumnBox.CoreModules.Extensions.NoMatter
 {
     [ExtName("Restart AutumnBox","zh-CN:重启秋之盒")]
     [ExtAuth("zsh2401","zh-cn:秋之盒官方")]

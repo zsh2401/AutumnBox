@@ -4,7 +4,7 @@
                     xmlns:s="clr-namespace:System;assembly=mscorlib">
 
     <s:String x:Key="AppName">秋之盒</s:String>
-    <s:String x:Key="AppNameWithVersion">秋之盒 2019</s:String>
+    <s:String x:Key="AppNameWithVersion">秋之盒 2019.2</s:String>
     <s:String x:Key="VersionTypePreview">预览版</s:String>
     <s:String x:Key="VersionTypeStable">稳定版</s:String>
     <s:String x:Key="VersionTypeBeta">内测版</s:String>
