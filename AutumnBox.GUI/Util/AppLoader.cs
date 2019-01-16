@@ -80,13 +80,13 @@ namespace AutumnBox.GUI.Util
             try
             {
                 TaskKill.Kill("adb.exe");
-                logger.Info("trying starts adb server ");
+                logger.Info("trying starts adb server");
                 DirectoryInfo adbRootDir = new DirectoryInfo("Resources/AdbExecutable/");
                 FileInfo adbExe = new FileInfo("Resources/AdbExecutable/adb.exe");
                 FileInfo fastbootExe = new FileInfo("Resources/AdbExecutable/fastboot.exe");
                 IAdbServer server = LocalAdbServer.Instance;
-                logger.Info($"lanunching adb server at {server.IP}:{server.Port}");
                 Adb.Load(adbRootDir, adbExe, fastbootExe, server, true);
+                logger.Info($"adb server started at {server.IP}:{server.Port}");
             }
             catch (Exception e)
             {

@@ -5,10 +5,12 @@
 *************************************************/
 using AutumnBox.Basic.Calling;
 using AutumnBox.Basic.Calling.Adb;
+using AutumnBox.Basic.Calling.Cmd;
 using AutumnBox.Basic.Util;
 using AutumnBox.Basic.Util.Debugging;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -42,13 +44,28 @@ namespace AutumnBox.Basic.ManagedAdb
         /// <summary>
         /// 端口
         /// </summary>
-        public ushort Port { get => _lazyPort.Value; }
+        public ushort Port
+        {
+            get
+            {
+                lock (portGettingLock)
+                {
+                    if (!running) throw new InvalidOperationException("server is killed");
+                    return _lazyPort.Value;
+                }
+            }
+        }
         private Lazy<ushort> _lazyPort;
+
+        private bool running = false;
+        private readonly object portGettingLock = new object();
+
         /// <summary>
         /// IP
         /// </summary>
         public IPAddress IP { get; } = IPAddress.Parse("127.0.0.1");
         private readonly Logger logger = new Logger<LocalAdbServer>();
+
         /// <summary>
         /// 存活检测
         /// </summary>
@@ -62,13 +79,17 @@ namespace AutumnBox.Basic.ManagedAdb
         /// </summary>
         public void Start()
         {
-            new ProcessBasedCommand(Adb.AdbFilePath, $"-P {Port} start-server")
-                .To((e) =>
-                {
-                    logger.Info(e.Text);
-                })
-                .Execute()
-               .ThrowIfExitCodeNotEqualsZero();
+            lock (portGettingLock)
+            {
+                new ProcessBasedCommand(Adb.AdbFilePath, $"-P{_lazyPort.Value} start-server")
+                   .To((e) =>
+                   {
+                       logger.Info(e.Text);
+                   })
+                   .Execute()
+                  .ThrowIfExitCodeNotEqualsZero();
+                running = true;
+            }
         }
         /// <summary>
         /// 为ture将使得Kill方法失效
@@ -86,10 +107,15 @@ namespace AutumnBox.Basic.ManagedAdb
         /// </summary>
         public void Kill()
         {
-            if (InvalidKill) return;
-            new ProcessBasedCommand(Adb.AdbFilePath, $"-P {Port} kill-server")
-            .Execute()
-            .ThrowIfExitCodeNotEqualsZero();
+            lock (portGettingLock)
+            {
+                if (InvalidKill) return;
+                new ProcessBasedCommand(Adb.AdbFilePath, $"-P{Port} kill-server")
+                .Execute()
+                .ThrowIfExitCodeNotEqualsZero();
+                new WindowsCmdCommand("taskkill /F /IM {adb.exe} /T").Execute();
+                running = false;
+            }
         }
         /// <summary>
         /// 析构
