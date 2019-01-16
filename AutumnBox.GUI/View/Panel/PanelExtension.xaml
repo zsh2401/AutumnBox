@@ -50,10 +50,8 @@
         </Grid>
 
         <StackPanel Visibility="{Binding NotFoundVisibily}" VerticalAlignment="Center" Orientation="Vertical" HorizontalAlignment="Center">
-            <TextBlock FontSize="25" Foreground="{DynamicResource MainBackgroundForegroundBrush}" HorizontalAlignment="Center" Text="{DynamicResource PanelExtensionsNotFound}" RenderTransformOrigin="0.5,0.5">
-                
-            </TextBlock>
-            <Button Command="{Binding GotoDownloadExtension}" CommandParameter="{DynamicResource urlDownloadExtensions}" FontSize="13" HorizontalAlignment="Center" Content="{DynamicResource PanelExtesnionsDownloadExt}" Style="{DynamicResource MaterialDesignFlatButton}"/>
+            <TextBlock FontSize="25" Foreground="{DynamicResource MainBackgroundForegroundBrush}" HorizontalAlignment="Center" Text="{DynamicResource PanelExtensionsNotFound}" RenderTransformOrigin="0.5,0.5"/>
+            <Button Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoDownloadExtensions}" FontSize="13" HorizontalAlignment="Center" Content="{DynamicResource PanelExtesnionsDownloadExt}" Style="{DynamicResource MaterialDesignFlatButton}"/>
             <TextBlock Margin="10" FontSize="13" Foreground="{DynamicResource MainBackgroundForegroundBrush}" HorizontalAlignment="Center" VerticalAlignment="Center" Text="I'd love to change the world,but i dont know what to do"/>
         </StackPanel>
     </Grid>
