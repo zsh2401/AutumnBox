@@ -141,8 +141,9 @@ namespace AutumnBox.OpenFramework.Management.Impl
             {
                 try
                 {
-                    var data = File.ReadAllBytes(file.FullName);
-                    buffer.Add(AppDomain.CurrentDomain.Load(data));
+                    var assembly = Assembly.LoadFile(file.FullName);
+                    //AppDomain.CurrentDomain.
+                    buffer.Add(assembly);
                 }
                 catch (Exception ex)
                 {
