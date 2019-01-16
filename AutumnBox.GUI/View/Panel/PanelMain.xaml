@@ -15,10 +15,9 @@
         <viewmodel:VMPanelMain/>
     </UserControl.DataContext>
     <DockPanel LastChildFill="False">
-        
-        <Grid DockPanel.Dock="Right" MinWidth="200" MaxWidth="200">
-            <local:PanelDevices x:Name="PanelDevices" HorizontalAlignment="Center" VerticalAlignment="Top" Width="183" Height="250"/>
-            <StackPanel VerticalAlignment="Bottom" Orientation="Vertical">
+
+        <DockPanel DockPanel.Dock="Right" MinWidth="200" MaxWidth="200">
+            <StackPanel DockPanel.Dock="Bottom" VerticalAlignment="Bottom" Orientation="Vertical">
                 <oftheday:MOTD Width="185" Height="95" Margin="0,0,0,5"/>
                 <oftheday:POTD Width="185" Height="140" Margin="0,0,0,10"/>
                 <Button Style="{DynamicResource MaterialDesignRaisedButton}" Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoDownloadExtensions}"  FontSize="14"  Margin="5,0,5,5">
@@ -40,7 +39,8 @@
                     </StackPanel>
                 </Button>
             </StackPanel>
-        </Grid>
+            <local:PanelDevices DockPanel.Dock="Top" x:Name="PanelDevices" Width="183" MinHeight="250"/>
+        </DockPanel>
         
         <dockablz:Layout  DockPanel.Dock="Left">
             <dragablz:TabablzControl  Style="{DynamicResource MaterialDesignTabablzControlStyle}" SelectedIndex="{Binding TabSelectedIndex,Mode=TwoWay}" >
