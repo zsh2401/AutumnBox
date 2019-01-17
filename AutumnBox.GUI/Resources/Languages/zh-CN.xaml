@@ -15,6 +15,7 @@
      <s:String x:Key="TitleSuffixAdmin">[管理员模式]</s:String>
     
     
+    
     <!--Adb failed Window-->
     <s:String x:Key="AdbFailedWindowTitle">史诗级问题!无法启动ADB服务!</s:String>
      <s:String x:Key="AdbFailedWindowAdvice">你可以尝试:
@@ -33,7 +34,7 @@
     <!--PanelHome-->
     <s:String x:Key="PanelHomeOpenSource">开源</s:String>
     <s:String x:Key="PanelHomeOpenSourceTip">为了共同的进步与对用户的透明性,秋之盒现以LGPL 3.0协议开源</s:String>
-    <s:String x:Key="PanelHomeOpenSourceButton">浏览源代码</s:String>
+    <s:String x:Key="PanelHomeOpenSourceButton">开源相关</s:String>
     
     <s:String x:Key="PanelHomeSupport">支持</s:String>
     <s:String x:Key="PanelHomeSupportTip">为秋之盒做出贡献,我需要你的支持!</s:String>
@@ -236,6 +237,14 @@
     <s:String x:Key="PanelMoreOSLink_DpmBox">Dpm Box</s:String>
      <s:String x:Key="PanelMoreOSLink_WebsiteOfficial">秋之盒官网开源</s:String>
      <s:String x:Key="PanelMoreOSLinkToolTip_DpmBox">友情添加:小黑屋开发者</s:String>
+    
+    <!--OpenSourceWindow-->
+    <s:String x:Key="OpenSourceWindowTitle">开源</s:String>
+    <s:String x:Key="OpenSourceWindowDescription">  秋之盒现以LGPL3.0 (宽松的GNU公共协议)开源,请在必要时遵守开源协议
+        如果可以的话,希望能够标个星,这是对我开源代码的认可</s:String>
+    <s:String x:Key="OpenSourceWindowBtnAtmbRepo">秋之盒仓库</s:String>
+    <s:String x:Key="OpenSourceWindowBtnOfficialWebisteRepo">官网仓库</s:String>
+    
     
     <!--ContentConnectNetDevice-->
     <s:String x:Key="ContentConnectNetDeviceIP">设备IP地址</s:String>

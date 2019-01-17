@@ -31,7 +31,7 @@
     <!--PanelHome-->
     <s:String x:Key="PanelHomeOpenSource">Open source</s:String>
     <s:String x:Key="PanelHomeOpenSourceTip">For dream</s:String>
-    <s:String x:Key="PanelHomeOpenSourceButton">View source</s:String>
+    <s:String x:Key="PanelHomeOpenSourceButton">Open Source</s:String>
     
     <s:String x:Key="PanelHomeSupport">Support</s:String>
     <s:String x:Key="PanelHomeSupportTip">Make a contribution for autumn</s:String>
@@ -232,6 +232,12 @@
      <s:String x:Key="PanelMoreOSLink_WebsiteOfficial">Autumn Box official website open source</s:String>
      <s:String x:Key="PanelMoreOSLinkToolTip_DpmBox">Friendship added: Little Black House Developer</s:String>
     
+        <!--OpenSourceWindow-->
+    <s:String x:Key="OpenSourceWindowTitle">Open source</s:String>
+    <s:String x:Key="OpenSourceWindowDescription">The Box of Autumn is now open sourced under LGPL 3.0 (a loose GNU public agreement), please comply with the open source agreement if necessary.
+         If you can, I hope to be able to mark a star. This is recognition of my open source code.</s:String>
+    <s:String x:Key="OpenSourceWindowBtnAtmbRepo">AutumnBox Repo</s:String>
+    <s:String x:Key="OpenSourceWindowBtnOfficialWebisteRepo">Official Site Source Repo</s:String>
     
     <!--ContentConnectNetDevice-->
     <s:String x:Key="ContentConnectNetDeviceIP">Device ip address</s:String>
