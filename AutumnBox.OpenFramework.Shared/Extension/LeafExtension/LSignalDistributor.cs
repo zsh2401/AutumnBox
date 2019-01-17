@@ -74,11 +74,9 @@ namespace AutumnBox.OpenFramework.Extension.LeafExtension
                     wrappers.Add(new ReceiverWrapper(ext, method, (LSignalReceiveAttribute)attr));
                 }
             }
-            Trace.WriteLine($"scanned receiver {wrappers.Count()}");
         }
         public void Receive(string message, object value)
         {
-            Trace.WriteLine($"received {message} {value}");
             var canReceive = from method in wrappers
                              where method.ReceiveSignal == message || method.ReceiveSignal == null
                              select method;

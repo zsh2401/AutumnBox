@@ -1,6 +1,7 @@
 ﻿using AutumnBox.GUI.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,6 +30,9 @@ namespace AutumnBox.GUI.View.Windows
         private void TBOutput_TextChanged(object sender, TextChangedEventArgs e)
         {
             (sender as TextBox).ScrollToEnd();
+        }
+        ~LeafWindow() {
+            Trace.WriteLine("Leaf window ~");
         }
     }
 }

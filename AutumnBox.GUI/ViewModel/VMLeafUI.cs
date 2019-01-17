@@ -10,6 +10,17 @@ namespace AutumnBox.GUI.ViewModel
 {
     class VMLeafUI : ViewModelBase, ILeafUI
     {
+        private enum State
+        {
+            Initing = -1,
+            Ready = 0,
+            Running = 1,
+            Finished = 2,
+            Shutdown = 3,
+        }
+
+        private State CurrentState { get; set; } = State.Initing;
+
         public FlexiableCommand Copy
         {
             get => _copy; set
@@ -35,34 +46,29 @@ namespace AutumnBox.GUI.ViewModel
             get => _view; set
             {
                 _view = value;
-                InitView();
                 RaisePropertyChanged();
+                InitView();
             }
         }
         private Window _view;
 
         private void InitView()
         {
+            if (CurrentState != State.Ready) return;
             View.Closing += View_Closing;
         }
 
         private void View_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if (_isFinished) return;
+            if (CurrentState == State.Shutdown || CurrentState == State.Finished) return;
             LeafCloseBtnClickedEventArgs args = new LeafCloseBtnClickedEventArgs
             {
                 CanBeClosed = false
             };
             CloseButtonClicked?.Invoke(this, args);
             e.Cancel = !args.CanBeClosed;
-            if (args.CanBeClosed) Lock();
+            if (args.CanBeClosed) Finish();
             else WriteLine(App.Current.Resources["RunningWindowCantStop"]);
-        }
-
-        private bool _locked;
-        public void Lock()
-        {
-            _locked = true;
         }
 
         public VMLeafUI()
@@ -81,6 +87,7 @@ namespace AutumnBox.GUI.ViewModel
                 }
                 catch { }
             });
+            CurrentState = State.Ready;
         }
 
         public string Content
@@ -88,14 +95,12 @@ namespace AutumnBox.GUI.ViewModel
             get => _contentBuilder?.ToString();
             set { }
         }
-
         private readonly StringBuilder _contentBuilder;
 
         public double Progress
         {
             get => _progress; set
             {
-                if (_locked) return;
                 if (value == -1)
                 {
                     IsIndeterminate = true;
@@ -115,7 +120,6 @@ namespace AutumnBox.GUI.ViewModel
         {
             get => _tip; set
             {
-                if (_locked) return;
                 _tip = value;
                 RaisePropertyChanged();
             }
@@ -136,7 +140,6 @@ namespace AutumnBox.GUI.ViewModel
             }
             set
             {
-                if (_locked) return;
                 View.Dispatcher.Invoke(() =>
                 {
                     View.Height = value.Height;
@@ -149,7 +152,6 @@ namespace AutumnBox.GUI.ViewModel
         {
             get => _icon; set
             {
-                if (_locked) return;
                 _icon = value;
                 RaisePropertyChanged();
             }
@@ -160,22 +162,13 @@ namespace AutumnBox.GUI.ViewModel
         {
             get => _title; set
             {
-                if (_locked) return;
                 _title = value;
                 RaisePropertyChanged();
             }
         }
         private string _title;
 
-        /// <summary>
-        /// 点击关闭按钮时发生
-        /// </summary>
         public event EventHandler<LeafCloseBtnClickedEventArgs> CloseButtonClicked;
-
-        /// <summary>
-        /// 是否已经完成
-        /// </summary>
-        private bool _isFinished = false;
 
         public void EnableHelpBtn(Action callback)
         {
@@ -187,6 +180,7 @@ namespace AutumnBox.GUI.ViewModel
 
         public void Finish(int exitCode = 0)
         {
+            ThrowIfNotRunning();
             App.Current.Dispatcher.Invoke(() =>
             {
                 Finish(App.Current.Resources["LeafUITipCode" + exitCode] as string
@@ -196,47 +190,57 @@ namespace AutumnBox.GUI.ViewModel
 
         public void Finish(string tip)
         {
-            if (_locked) return;
+            ThrowIfNotRunning();
             Tip = tip;
             Progress = 100;
-            Lock();
-            _isFinished = true;
+            CurrentState = State.Finished;
         }
 
         public void Show()
         {
-            if (_locked) return;
+            if (CurrentState != State.Ready)
+            {
+                throw new InvalidOperationException("Leaf UI is not ready!");
+            }
             View.Dispatcher.Invoke(() =>
             {
                 View.Show();
             });
+            CurrentState = State.Running;
         }
 
         public void Shutdown()
         {
-            if (_locked) return;
-            View.Dispatcher.Invoke(() =>
-            {
-                View.Close();
-            });
-            Lock();
+            CurrentState = State.Shutdown;
+            Dispose();
         }
 
         public void WriteLine(object content)
         {
-            if (_locked) return;
+            ThrowIfNotRunning();
             _contentBuilder.AppendLine(content?.ToString());
             RaisePropertyChanged(nameof(Content));
         }
 
         public void Dispose()
         {
-            if (!_isFinished)
+            if (CurrentState == State.Finished) return;
+            try
             {
-                App.Current.Dispatcher.Invoke(() =>
+                View.Dispatcher.Invoke(() =>
                 {
-                    Finish(App.Current.Resources["LeafUITipUnknow"] as string);
+                    View.Close();
                 });
+                View = null;
+            }
+            catch { }
+        }
+
+        private void ThrowIfNotRunning()
+        {
+            if (CurrentState != State.Running)
+            {
+                throw new InvalidOperationException("Leaf UI is locked!");
             }
         }
     }
