@@ -651,9 +651,6 @@
     <Resource Include="Resources\Drawable\Donate\wechatpay.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Drawable\Home\donate.png" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\AutumnBox.Basic\AutumnBox.Basic.csproj">
       <Project>{5276bfb4-b089-4e34-9c42-42ea019ef320}</Project>
       <Name>AutumnBox.Basic</Name>
@@ -681,15 +678,6 @@
     <Resource Include="Resources\Drawable\old_icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Drawable\Home\contact.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Drawable\Home\github.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Drawable\Home\misakasister.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\Drawable\More\halo.png" />
   </ItemGroup>
   <ItemGroup>
@@ -715,6 +703,10 @@
     <Content Include="Resources\AdbExecutable\libwinpthread-1.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Resources\Drawable\Donate\alishop.png" />
+    <Resource Include="Resources\Drawable\Donate\redpacket.jpg" />
+    <Resource Include="Resources\Drawable\Donate\wechatpay.jpg" />
+    <Resource Include="Resources\Drawable\Home\donate.png" />
     <Resource Include="Resources\Drawable\github.png" />
     <Resource Include="Resources\Drawable\Misaka\adbfail.png" />
   </ItemGroup>
