@@ -235,9 +235,9 @@ namespace AutumnBox.GUI.ViewModel
                 {
                     View.Close();
                 });
-                View = null;
             }
             catch { }
+            View = null;
         }
 
         private void ThrowIfNotRunning()
