@@ -33,8 +33,8 @@
     <s:String x:Key="PanelHomeOpenSourceTip">For dream</s:String>
     <s:String x:Key="PanelHomeOpenSourceButton">Open Source</s:String>
     
-    <s:String x:Key="PanelHomeSupport">Support</s:String>
-    <s:String x:Key="PanelHomeSupportTip">Make a contribution for autumn</s:String>
+    <s:String x:Key="PanelHomeSupport">Donate</s:String>
+    <s:String x:Key="PanelHomeSupportTip">I hope that you can support me who have not a stable source of income.</s:String>
     <s:String x:Key="PanelDonate">Donate</s:String>
     <s:String x:Key="PanelDonaters">Donater list</s:String>
     

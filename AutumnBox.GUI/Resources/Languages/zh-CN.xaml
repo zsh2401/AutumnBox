@@ -37,7 +37,7 @@
     <s:String x:Key="PanelHomeOpenSourceButton">开源相关</s:String>
     
     <s:String x:Key="PanelHomeSupport">支持</s:String>
-    <s:String x:Key="PanelHomeSupportTip">为秋之盒做出贡献,我需要你的支持!</s:String>
+    <s:String x:Key="PanelHomeSupportTip">我是一名学生,没有稳定的经济来源,我真的很希望你能够支持我,捐赠者将被永久记录</s:String>
     <s:String x:Key="PanelDonate">捐赠</s:String>
     <s:String x:Key="PanelDonaters">捐赠者名单</s:String>
     
@@ -530,7 +530,7 @@
     
         <!--PanelDonte-->
     <s:String x:Key="PanelDonateBtnCaption">↑↑这里有捐赠者记录以及更多互惠互利的经济支援方式哦~</s:String>
-     <s:String x:Key="PanelDonateBtnGotoDonatePage">前往捐赠页面</s:String>
+     <s:String x:Key="PanelDonateBtnGotoDonatePage">浏览捐赠名单或其它互惠互利捐赠方式</s:String>
     <s:String x:Key="PanelDonateDescription">赠人玫瑰,手留余香.
     谢谢你对中国软件生态做出的贡献</s:String>
     
