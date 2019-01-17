@@ -30,22 +30,10 @@ namespace AutumnBox.CoreModules.Extensions.Hidden
         {
             using (ui)
             {
-                ui.Icon = this.GetIconBytes();
-                ui.CloseButtonClicked += (s, e) =>
-                {
-                    e.CanBeClosed = false;
-                };
-                ui.Title = "Mother fucker";
                 ui.Show();
-
-                var thread = context.NewExtensionThread("ELeafUIDemo");
-                //thread.Data["test"] = "b";
-                thread.Start();
-
-                ui.WriteLine(device?.ToString() ?? "null");
-                ui.WriteLine("Hello Leaf UI!");
                 Thread.Sleep(2000);
-                ui.Finish();
+                ui.Shutdown();
+                ui.WriteLine("wtf");
             }
         }
     }

@@ -101,6 +101,7 @@ namespace AutumnBox.GUI.ViewModel
         {
             get => _progress; set
             {
+                ThrowIfNotRunning();
                 if (value == -1)
                 {
                     IsIndeterminate = true;
@@ -120,6 +121,7 @@ namespace AutumnBox.GUI.ViewModel
         {
             get => _tip; set
             {
+                ThrowIfNotRunning();
                 _tip = value;
                 RaisePropertyChanged();
             }
@@ -140,6 +142,7 @@ namespace AutumnBox.GUI.ViewModel
             }
             set
             {
+                ThrowIfNotRunning();
                 View.Dispatcher.Invoke(() =>
                 {
                     View.Height = value.Height;
@@ -152,6 +155,7 @@ namespace AutumnBox.GUI.ViewModel
         {
             get => _icon; set
             {
+                ThrowIfNotRunning();
                 _icon = value;
                 RaisePropertyChanged();
             }
@@ -162,6 +166,7 @@ namespace AutumnBox.GUI.ViewModel
         {
             get => _title; set
             {
+                ThrowIfNotRunning();
                 _title = value;
                 RaisePropertyChanged();
             }
@@ -212,7 +217,6 @@ namespace AutumnBox.GUI.ViewModel
         public void Shutdown()
         {
             CurrentState = State.Shutdown;
-            Dispose();
         }
 
         public void WriteLine(object content)
@@ -238,7 +242,7 @@ namespace AutumnBox.GUI.ViewModel
 
         private void ThrowIfNotRunning()
         {
-            if (CurrentState != State.Running)
+            if (CurrentState == State.Shutdown || CurrentState == State.Finished)
             {
                 throw new InvalidOperationException("Leaf UI is locked!");
             }
