@@ -44,7 +44,7 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugType>full</DebugType>
+    <DebugType>none</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>..\..\AutumnBox_Output\AutumnBox\file\</OutputPath>
     <DefineConstants>TRACE;STAT RELEASE</DefineConstants>
@@ -52,7 +52,7 @@
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
     <Prefer32Bit>true</Prefer32Bit>
-    <DebugSymbols>true</DebugSymbols>
+    <DebugSymbols>false</DebugSymbols>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>Resources\Drawable\icon.ico</ApplicationIcon>
@@ -717,6 +717,8 @@ del /S Microsoft.Win32.Primitives.dll
 if $(ConfigurationName) == Release (
 rd /S /Q ..\logs
 rd /S /Q app.publish
+del /S *.xml
+del /S *.pdb
 )
 
 </PostBuildEvent>

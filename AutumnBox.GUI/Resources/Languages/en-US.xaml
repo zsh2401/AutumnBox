@@ -547,7 +547,7 @@
     
     <!--PanelDonte-->
     <s:String x:Key="PanelDonateBtnCaption">There have more way to donate me!</s:String>
-     <s:String x:Key="PanelDonateBtnGotoDonatePage">Go to donate page</s:String>
+     <s:String x:Key="PanelDonateBtnGotoDonatePage">View Donor list</s:String>
     <s:String x:Key="PanelDonateDescription">You donate is great encouragement to me</s:String>
     
     <!--静态界面标记-->
