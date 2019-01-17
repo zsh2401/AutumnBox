@@ -16,7 +16,7 @@ namespace AutumnBox.OpenFramework.Running
         private readonly List<IExtensionThread> runnings = new List<IExtensionThread>();
         public IExtensionThread Allocate(IExtensionWrapper wrapper, Type typeOfExtension)
         {
-            var thread = new ExtensionThread(this,typeOfExtension, wrapper)
+            var thread = new ExtensionThread(this, typeOfExtension, wrapper)
             {
                 Id = AlllocatePID()
             };
@@ -25,6 +25,10 @@ namespace AutumnBox.OpenFramework.Running
             {
                 readys.Remove(thread);
                 runnings.Add(thread);
+            };
+            thread.Finished += (s, e) =>
+            {
+                runnings.Remove(thread);
             };
             return thread;
         }
@@ -54,6 +58,6 @@ namespace AutumnBox.OpenFramework.Running
             return runnings;
         }
 
-        
+
     }
 }

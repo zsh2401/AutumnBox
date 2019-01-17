@@ -269,7 +269,10 @@ namespace AutumnBox.GUI.Util.OpenFxManagement
             ILeafUI result = null;
             App.Current.Dispatcher.Invoke(() =>
             {
-                result = new LeafWindow().DataContext as ILeafUI;
+                result = new LeafWindow()
+                {
+                    Owner = App.Current.MainWindow,
+                }.DataContext as ILeafUI;
             });
             return result;
         }
