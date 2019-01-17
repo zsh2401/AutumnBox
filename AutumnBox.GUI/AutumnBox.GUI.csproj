@@ -150,6 +150,7 @@
     </Compile>
     <Compile Include="Model\ExtensionWrapperDock.cs" />
     <Compile Include="Model\LibDock.cs" />
+    <Compile Include="Model\OpenSourceProject.cs" />
     <Compile Include="MVVM\OpenParameterUrlCommand.cs" />
     <Compile Include="Util\AlreadyHaveAutumnBoxChecker.cs" />
     <Compile Include="Util\AppLoader.cs" />
@@ -195,6 +196,7 @@
     <Compile Include="Util\Updater.cs" />
     <Compile Include="ViewModel\VMContentChoice.cs" />
     <Compile Include="ViewModel\VMContentConnectNetDevice.cs" />
+    <Compile Include="ViewModel\VMOpenSource.cs" />
     <Compile Include="ViewModel\VMCurrentDevice.cs" />
     <Compile Include="ViewModel\VMDisconnectDevice.cs" />
     <Compile Include="ViewModel\VMEnableDeviceNetDebugging.cs" />
@@ -299,6 +301,9 @@
     </Compile>
     <Compile Include="View\Windows\MessageWindow.xaml.cs">
       <DependentUpon>MessageWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\OpenSourceWindow.xaml.cs">
+      <DependentUpon>OpenSourceWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Windows\RunningWindow.xaml.cs">
       <DependentUpon>RunningWindow.xaml</DependentUpon>
@@ -596,6 +601,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Windows\OpenSourceWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Windows\RunningWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -706,6 +715,7 @@
     <Content Include="Resources\AdbExecutable\libwinpthread-1.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Resources\Drawable\github.png" />
     <Resource Include="Resources\Drawable\Misaka\adbfail.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

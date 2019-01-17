@@ -63,7 +63,7 @@
                         <StackPanel Width="150" Margin="10">
                             <TextBlock Text="{DynamicResource PanelHomeOpenSource}"  HorizontalAlignment="Center" FontSize="25px" ></TextBlock>
                             <TextBlock Text="{DynamicResource PanelHomeOpenSourceTip}" TextWrapping="Wrap" FontSize="12px" ></TextBlock>
-                            <Button Style="{DynamicResource MaterialDesignFlatButton}" Command="{Binding OpenGoUrl}"  FontSize="12px" CommandParameter="{DynamicResource AGoOpenSource}" Content="{DynamicResource PanelHomeOpenSourceButton}" ></Button>
+                            <Button Style="{DynamicResource MaterialDesignFlatButton}" Command="{Binding ViewOpenSource}"  FontSize="12px" CommandParameter="{DynamicResource AGoOpenSource}" Content="{DynamicResource PanelHomeOpenSourceButton}" ></Button>
                         </StackPanel>
                     </StackPanel>
                 </materialDesign:Card>

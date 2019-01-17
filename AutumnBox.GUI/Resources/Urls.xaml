@@ -18,7 +18,9 @@
     
     <!--WEB-->
     <s:String x:Key="UrlOfficialWebsite">http://www.atmb.top/</s:String>
-
+    <s:String x:Key="UrlAtmbRepo">https://github.com/zsh2401/AutumnBox</s:String>
+    <s:String x:Key="UrlAtmbWebRepo">https://github.com/zsh2401/www.atmb.top</s:String>
+    
     <!--WEBAPI-->
     <s:String x:Key="WebApiMotd">http://www.atmb.top/_api_/motd</s:String>
     <s:String x:Key="WebApiPotd">http://www.atmb.top/_api_/potd</s:String>

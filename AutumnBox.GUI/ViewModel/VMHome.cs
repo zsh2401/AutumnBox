@@ -6,8 +6,10 @@
 
 using AutumnBox.GUI.MVVM;
 using AutumnBox.GUI.View.DialogContent;
+using AutumnBox.GUI.View.Windows;
 using MaterialDesignThemes.Wpf;
 using System.Diagnostics;
+using System.Windows.Input;
 
 namespace AutumnBox.GUI.ViewModel
 {
@@ -26,11 +28,33 @@ namespace AutumnBox.GUI.ViewModel
             }
         }
         private FlexiableCommand _donate;
+
+        public ICommand ViewOpenSource
+        {
+            get
+            {
+                return _os;
+            }
+            set
+            {
+                _os = value;
+                RaisePropertyChanged();
+            }
+        }
+        private ICommand _os;
+
         public VMHome()
         {
             Donate = new FlexiableCommand(() =>
             {
                 DialogHost.Show(new ContentDonate());
+            });
+            ViewOpenSource = new FlexiableCommand(() =>
+            {
+                new OpenSourceWindow()
+                {
+                    Owner = App.Current.MainWindow
+                }.Show();
             });
         }
     }
