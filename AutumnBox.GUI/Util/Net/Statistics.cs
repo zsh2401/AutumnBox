@@ -38,7 +38,7 @@ namespace AutumnBox.GUI.Util.Net
 #if PREVIEW
             "preview";
 #else
-            "STABLE";
+            "release";
 #endif
     }
 }
