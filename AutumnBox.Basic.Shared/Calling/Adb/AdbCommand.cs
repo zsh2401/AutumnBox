@@ -7,6 +7,7 @@ using AutumnBox.Basic.Device;
 using AutumnBox.Basic.ManagedAdb;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,6 +35,18 @@ namespace AutumnBox.Basic.Calling.Adb
             this($"-s {device.SerialNumber} {args}")
         {
 
+        }
+        /// <summary>
+        /// 在进程开始前对ADB服务进行检查
+        /// </summary>
+        /// <param name="procStartInfo"></param>
+        protected override void BeforeProcessStart(ProcessStartInfo procStartInfo)
+        {
+            if (!ManagedAdb.Adb.Server.IsEnable)
+            {
+                throw new InvalidOperationException("adb server is killed");
+            }
+            base.BeforeProcessStart(procStartInfo);
         }
     }
 }

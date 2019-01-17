@@ -90,7 +90,7 @@ namespace AutumnBox.GUI.Util
             }
             catch (Exception e)
             {
-                LocalAdbServer.Instance.InvalidKill = true;
+                //LocalAdbServer.Instance.InvalidKill = true;
                 logger.Warn("can not start adb server!", e);
                 App.Current.Dispatcher.Invoke(() =>
                 {

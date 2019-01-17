@@ -22,9 +22,14 @@ namespace AutumnBox.Basic.ManagedAdb
         /// </summary>
         ushort Port { get; }
         /// <summary>
+        /// 是否可用
+        /// </summary>
+        bool IsEnable { get; }
+        /// <summary>
         /// 存活检测
         /// </summary>
         /// <returns></returns>
+        [Obsolete]
         bool AliveCheck();
         /// <summary>
         /// 启动

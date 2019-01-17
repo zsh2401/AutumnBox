@@ -25,22 +25,40 @@ namespace AutumnBox.Basic.ManagedAdb
     /// </summary>
     public sealed class LocalAdbServer : IAdbServer
     {
+        private KilledWrapper Killed { get; set; } = new KilledWrapper();
+        private class KilledWrapper
+        {
+            public bool Value { get; set; } = false;
+            public void ThrowIfKilled()
+            {
+                if (Value)
+                {
+                    throw new InvalidOperationException("Adb server is killed");
+                }
+            }
+        }
+
         /// <summary>
         /// 实例
         /// </summary>
         public static readonly LocalAdbServer Instance;
+
+        /// <summary>
+        /// 静态单例构造
+        /// </summary>
         static LocalAdbServer()
         {
             Instance = new LocalAdbServer();
         }
+
+        /// <summary>
+        /// 私有构造方法
+        /// </summary>
         private LocalAdbServer()
         {
             _lazyPort = new Lazy<ushort>(() => AllocatePort());
         }
-        /// <summary>
-        /// 默认端口
-        /// </summary>
-        public const ushort DEFAULT_PORT = 54030;
+
         /// <summary>
         /// 端口
         /// </summary>
@@ -48,22 +66,19 @@ namespace AutumnBox.Basic.ManagedAdb
         {
             get
             {
-                lock (portGettingLock)
-                {
-                    if (!running) throw new InvalidOperationException("server is killed");
-                    return _lazyPort.Value;
-                }
+                return _lazyPort.Value;
             }
         }
         private Lazy<ushort> _lazyPort;
-
-        private bool running = false;
-        private readonly object portGettingLock = new object();
 
         /// <summary>
         /// IP
         /// </summary>
         public IPAddress IP { get; } = IPAddress.Parse("127.0.0.1");
+
+        /// <summary>
+        /// 日志器
+        /// </summary>
         private readonly Logger logger = new Logger<LocalAdbServer>();
 
         /// <summary>
@@ -72,14 +87,15 @@ namespace AutumnBox.Basic.ManagedAdb
         /// <returns></returns>
         public bool AliveCheck()
         {
-            return true;
+            throw new NotImplementedException();
         }
+
         /// <summary>
         /// 开始
         /// </summary>
         public void Start()
         {
-            lock (portGettingLock)
+            lock (Killed)
             {
                 new ProcessBasedCommand(Adb.AdbFilePath, $"-P{_lazyPort.Value} start-server")
                    .To((e) =>
@@ -88,35 +104,39 @@ namespace AutumnBox.Basic.ManagedAdb
                    })
                    .Execute()
                   .ThrowIfExitCodeNotEqualsZero();
-                running = true;
+                Killed.Value = false;
             }
         }
+
         /// <summary>
-        /// 为ture将使得Kill方法失效
+        /// 是否可用
         /// </summary>
-#if SDK
-        internal
-#else
-        public
-#endif
-        bool InvalidKill
-        { get; set; } = false;
+        public bool IsEnable
+        {
+            get
+            {
+                lock (Killed)
+                {
+                    return (!Killed.Value);
+                }
+            }
+        }
 
         /// <summary>
         /// 杀死
         /// </summary>
         public void Kill()
         {
-            lock (portGettingLock)
+            lock (Killed)
             {
-                if (InvalidKill) return;
                 new ProcessBasedCommand(Adb.AdbFilePath, $"-P{Port} kill-server")
                 .Execute()
                 .ThrowIfExitCodeNotEqualsZero();
                 new WindowsCmdCommand("taskkill /F /IM {adb.exe} /T").Execute();
-                running = false;
+                Killed.Value = true;
             }
         }
+
         /// <summary>
         /// 析构
         /// </summary>
@@ -125,9 +145,25 @@ namespace AutumnBox.Basic.ManagedAdb
             Kill();
         }
 
+        /// <summary>
+        /// 服务最小端口
+        /// </summary>
         private const ushort MIN_PORT = 1000;
+
+        /// <summary>
+        /// 最大端口
+        /// </summary>
         private const ushort MAX_PORT = ushort.MaxValue;
+
+        /// <summary>
+        /// 随机器
+        /// </summary>
         private static readonly Random ran = new Random();
+
+        /// <summary>
+        /// 分配端口
+        /// </summary>
+        /// <returns></returns>
         internal static ushort AllocatePort()
         {
             //if (!PortInUse(DEFAULT_PORT)) return DEFAULT_PORT;
@@ -138,6 +174,12 @@ namespace AutumnBox.Basic.ManagedAdb
             } while (PortInUse(port));
             return port;
         }
+
+        /// <summary>
+        /// 检查端口是否被使用
+        /// </summary>
+        /// <param name="port"></param>
+        /// <returns></returns>
         internal static bool PortInUse(int port)
         {
             bool inUse = false;

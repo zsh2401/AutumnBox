@@ -4,6 +4,7 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.Basic.Device;
+using AutumnBox.Basic.ManagedAdb;
 using AutumnBox.OpenFramework.Content;
 using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.Extension.LeafExtension;
@@ -26,8 +27,16 @@ namespace AutumnBox.CoreModules.Extensions.Hidden
         private IDevice Device { get; set; }
 
         [LMain]
-        public void Main(IDevice device,Context context, ILeafUI ui, IUx ux, Dictionary<string, object> data)
+        public void Main(IDevice device, Context context, ILeafUI ui, IUx ux, Dictionary<string, object> data)
         {
+            if (Adb.Server.IsEnable)
+            {
+                Adb.Server.Kill();
+            }
+            else
+            {
+                Adb.Server.Start();
+            }
             using (ui)
             {
                 ui.Show();
