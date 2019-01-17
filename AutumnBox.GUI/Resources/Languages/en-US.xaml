@@ -69,6 +69,12 @@
      <s:String x:Key="PanelSettingsSounds">Sound effect</s:String>
     <s:String x:Key="PanelSettingsSoundsTip">Such as play notification sounds when extension finished</s:String>
      <s:String x:Key="PanelSettingsInterface">Interface</s:String>
+    <s:String x:Key="PanelSettingsReset">Reset</s:String>
+    <s:String x:Key="PanelSettingsCmd">Command Line</s:String>
+     <s:String x:Key="PanelSettingsEnvVarCmdWindow">CMD with env var</s:String>
+    <s:String x:Key="PanelSettingsEnvVarCmdWindowTip">You can use AutumnBox's adb.exe in anywhere</s:String>
+    <s:String x:Key="PanelSettingsCmdAtDesktop">Launch CMD in desktop</s:String>
+    <s:String x:Key="PanelSettingsCmdAtDesktopTip">CMD work will launch in desktop</s:String>
         <s:String x:Key="PanelSettingsOther">Other</s:String>
     <s:String x:Key="PanelSettingsLanguage">Language</s:String>
       <s:String x:Key="PanelSettingsDebug">Debug</s:String>

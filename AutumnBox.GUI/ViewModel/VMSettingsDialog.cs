@@ -175,13 +175,54 @@ namespace AutumnBox.GUI.ViewModel
             get => Settings.Default.NotifyOnFinish; set
             {
                 Settings.Default.NotifyOnFinish = value;
-                Settings.Default.Save();
             }
         }
+
+        public bool StartCmdAtDesktop
+        {
+            get
+            {
+                return Settings.Default.StartCmdAtDesktop;
+            }
+            set
+            {
+                Settings.Default.StartCmdAtDesktop = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        public bool StartCmdAtDesktopEnable
+        {
+            get
+            {
+                return Settings.Default.EnvVarCmdWindow;
+            }
+            set
+            {
+                RaisePropertyChanged();
+            }
+        }
+
+        public bool UseEnvVarCmd
+        {
+            get => Settings.Default.EnvVarCmdWindow;
+            set
+            {
+                Settings.Default.EnvVarCmdWindow = value;
+                StartCmdAtDesktopEnable = value;
+                if (!value)
+                {
+                    StartCmdAtDesktop = false;
+                }
+            }
+        }
+
 
         public ICommand SendToDesktop { get; private set; }
 
         public ICommand ShowDebugWindow { get; private set; }
+
+        public ICommand ResetSettings { get; private set; }
 
         public string ThemeDisplayMemberPath { get; set; } = nameof(ITheme.Name);
         public string LanguageDisplayMemberPath { get; set; } = nameof(ILanguage.LangName);
@@ -189,6 +230,7 @@ namespace AutumnBox.GUI.ViewModel
         #endregion
         public VMSettingsDialog()
         {
+            ResetSettings = new MVVMCommand(ResetSettingsMethod);
             SendToDesktop = new MVVMCommand((_) =>
             {
                 ShortcutHelper.CreateShortcutOnDesktop("AutumnBox", System.Environment.CurrentDirectory + "/AutumnBox.GUI.exe", "The AutumnBox-Dream of us");
@@ -201,7 +243,7 @@ namespace AutumnBox.GUI.ViewModel
             {
                 Updater.RefreshAsync(() =>
                 {
-                    Updater.ShowUI(true,true);
+                    Updater.ShowUI(true, true);
                 });
             });
             try
@@ -221,6 +263,16 @@ namespace AutumnBox.GUI.ViewModel
             catch (Exception e)
             {
                 SLogger.Warn(this, "fail to get version infos", e);
+            }
+        }
+
+        private void ResetSettingsMethod(object para)
+        {
+            Settings.Default.Reset();
+            Settings.Default.Save();
+            foreach (var prop in GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance))
+            {
+                RaisePropertyChanged(prop.Name);
             }
         }
     }

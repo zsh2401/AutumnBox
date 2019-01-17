@@ -6,6 +6,7 @@
 using AutumnBox.Basic.ManagedAdb;
 using AutumnBox.GUI.Model;
 using AutumnBox.GUI.MVVM;
+using AutumnBox.GUI.Properties;
 using AutumnBox.GUI.Util.OS;
 using AutumnBox.GUI.View.DialogContent;
 using MaterialDesignThemes.Wpf;
@@ -45,12 +46,22 @@ namespace AutumnBox.GUI.ViewModel
         {
             ProcessStartInfo info = new ProcessStartInfo
             {
-                WorkingDirectory = Basic.ManagedAdb.Adb.AdbToolsDir.FullName,
+                WorkingDirectory = Adb.AdbToolsDir.FullName,
                 FileName = "cmd",
                 UseShellExecute = false,
                 Verb = "runas",
             };
             info.EnvironmentVariables["ANDROID_ADB_SERVER_PORT"] = Adb.Server.Port.ToString();
+            if (Settings.Default.EnvVarCmdWindow)
+            {
+                var pathEnv = info.EnvironmentVariables["path"];
+                info.EnvironmentVariables["path"] = $"{Adb.AdbToolsDir.FullName};" + pathEnv;
+
+            }
+            if (Settings.Default.StartCmdAtDesktop)
+            {
+                info.WorkingDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            }
             if (OSInfo.IsWindows10)
             {
                 var args = new ChoicerContentStartArgs
