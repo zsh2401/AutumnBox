@@ -29,10 +29,16 @@ namespace AutumnBox.GUI.Util.Net
                 (App.Current.MainWindow.Content as Grid).Children.Add(browser);
                 browser.SuppressScriptErrors(true);
                 string url = App.Current.Resources["WebApiStatistics"]?.ToString();
-                url += "?v=" + Self.Version.ToString();
-                logger.Info("Browser statistics is navigating to " + url);
+                url = $"{url}?v={Self.Version.ToString()}&t={VER_TYPE}";
+                //logger.Info("Statistics browser is navigating to " + url);
                 browser.Navigate(url);
             });
         }
+        public const string VER_TYPE =
+#if PREVIEW
+            "preview";
+#else
+            "STABLE";
+#endif
     }
 }

@@ -130,5 +130,29 @@ namespace AutumnBox.GUI.Properties {
                 this["DisplayCmdWindow"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool EnvVarCmdWindow {
+            get {
+                return ((bool)(this["EnvVarCmdWindow"]));
+            }
+            set {
+                this["EnvVarCmdWindow"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool StartCmdAtDesktop {
+            get {
+                return ((bool)(this["StartCmdAtDesktop"]));
+            }
+            set {
+                this["StartCmdAtDesktop"] = value;
+            }
+        }
     }
 }

@@ -7,15 +7,25 @@
              xmlns:viewmodel="clr-namespace:AutumnBox.GUI.ViewModel"
              FontFamily="{DynamicResource AutumnBox.Font}"
              FontSize="15"
-             mc:Ignorable="d" Height="320" Width="750">
+             mc:Ignorable="d" Width="600" Height="460">
     <UserControl.DataContext>
         <viewmodel:VMSettingsDialog/>
     </UserControl.DataContext>
     <DockPanel>
-        <Button DockPanel.Dock="Bottom" Margin="10" Style="{DynamicResource MaterialDesignFlatButton}" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Content="{DynamicResource btnClose}"/>
-        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
-            <StackPanel Width="260" Orientation="Vertical">
-                <materialDesign:Card Margin="5" Width="250">
+        <!--<materialDesign:Card DockPanel.Dock="Bottom">-->
+            <Grid Margin="5" DockPanel.Dock="Bottom">
+                <Label Height="1" VerticalAlignment="Top" Background="LightGray"/>
+                <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
+                    <Button Style="{DynamicResource MaterialDesignFlatButton}" Command="{Binding ResetSettings}" Content="{DynamicResource PanelSettingsReset}"/>
+                    <Button Command="{Binding SendToDesktop}" FontSize="12" Margin="5" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource PanelSettingsSendToDesktop}"/>
+                </StackPanel>
+                <Button  HorizontalAlignment="Right" Style="{DynamicResource MaterialDesignFlatButton}" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Content="{DynamicResource btnClose}"/>
+            </Grid>
+        <!--</materialDesign:Card>-->
+        
+        <ScrollViewer DockPanel.Dock="Top"  HorizontalScrollBarVisibility="Disabled"  Template="{DynamicResource AtmbxScrollViewer}" VerticalScrollBarVisibility="Hidden">
+            <StackPanel Orientation="Vertical">
+                <materialDesign:Card Margin="0,0,0,5">
                     <StackPanel Margin="5">
                         <TextBlock  Text="{DynamicResource PanelSettingsInterface}" Margin="0,0,0,5"/>
                         <Label Height="1" Background="LightGray"/>
@@ -36,8 +46,7 @@
                         </Grid>
                     </StackPanel>
                 </materialDesign:Card>
-
-                <materialDesign:Card Margin="5" Width="250">
+                <materialDesign:Card Margin="0,0,0,5">
                     <StackPanel Margin="5" Orientation="Vertical">
                         <TextBlock  Margin="0,0,0,5" Text="{DynamicResource PanelSettingsUx}"/>
                         <Label Margin="0,0,0,5" Height="1" Background="LightGray"/>
@@ -51,14 +60,36 @@
                     </StackPanel>
                 </materialDesign:Card>
 
-            </StackPanel>
-
-            <StackPanel Width="260" Orientation="Vertical">
-                <materialDesign:Card Margin="5" Width="250">
-                    <StackPanel  Margin="5">
-                        <TextBlock  Text="{DynamicResource PanelSettingsDebug}" Margin="0,0,0,5"/>
+                <materialDesign:Card Margin="0,0,0,5">
+                    <StackPanel Margin="5" Orientation="Vertical">
+                        <TextBlock  Margin="0,0,0,5" Text="{DynamicResource PanelSettingsCmd}"/>
                         <Label Height="1" Background="LightGray"/>
-                        <Button  Command="{Binding ShowDebugWindow}" FontSize="12"  Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource PanelSettingsCreateDebugWindow}"/>
+                        <DockPanel Margin="5">
+                            <StackPanel Orientation="Vertical" Margin="0,0,39,0">
+                                <TextBlock HorizontalAlignment="Left" Text="{DynamicResource PanelSettingsEnvVarCmdWindow}"/>
+                                <TextBlock Foreground="DarkSlateGray" TextWrapping="Wrap" FontSize="12" HorizontalAlignment="Left" Text="{DynamicResource PanelSettingsEnvVarCmdWindowTip}"/>
+                            </StackPanel>
+                            <ToggleButton HorizontalAlignment="Right" Style="{DynamicResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding UseEnvVarCmd}" />
+                        </DockPanel>
+                        <DockPanel IsEnabled="{Binding StartCmdAtDesktopEnable}" Margin="5">
+                            <StackPanel Orientation="Vertical" Margin="0,0,39,0">
+                                <TextBlock HorizontalAlignment="Left" Text="{DynamicResource PanelSettingsCmdAtDesktopTip}"/>
+                                <TextBlock Foreground="DarkSlateGray" TextWrapping="Wrap" FontSize="12" HorizontalAlignment="Left" Text="{DynamicResource PanelSettingsCmdAtDesktopTip}"/>
+                            </StackPanel>
+                            <ToggleButton HorizontalAlignment="Right" Style="{DynamicResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding StartCmdAtDesktop}"/>
+                        </DockPanel>
+                    </StackPanel>
+                </materialDesign:Card>
+                
+                <materialDesign:Card Margin="0,0,0,5">
+                    <StackPanel  Margin="5">
+
+                        <Grid Margin="0,0,0,5">
+                            <TextBlock  VerticalAlignment="Center"  HorizontalAlignment="Left" Text="{DynamicResource PanelSettingsDebug}"/>
+                            <Button  HorizontalAlignment="Right" Command="{Binding ShowDebugWindow}" FontSize="12"  Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource PanelSettingsCreateDebugWindow}"/>
+                        </Grid>
+                        <Label Height="1" Background="LightGray"/>
+                      
                         <Grid Margin="5">
                             <StackPanel Orientation="Vertical" Margin="0,0,39,0">
                                 <TextBlock HorizontalAlignment="Left" Text="{DynamicResource PanelSettingsLaunchDebugWindowOnNextLaunch}"/>
@@ -71,24 +102,26 @@
                                 <TextBlock HorizontalAlignment="Left" Text="{DynamicResource PanelSettingsDeveloperMode}"/>
                                 <TextBlock Foreground="DarkSlateGray" TextWrapping="Wrap" FontSize="12" HorizontalAlignment="Left" Text="{DynamicResource PanelSettingsDeveloperModeTip}"/>
                             </StackPanel>
-                            <ToggleButton HorizontalAlignment="Right" Style="{DynamicResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding DeveloperMode}"  ToolTip="{DynamicResource PanelSettingsLaunchDebugWindowOnNextLaunch}"/>
+                            <ToggleButton HorizontalAlignment="Right" Style="{DynamicResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding DeveloperMode}" />
                         </Grid>
                         <Grid Margin="5">
                             <StackPanel Orientation="Vertical" Margin="0,0,39,0">
                                 <TextBlock HorizontalAlignment="Left" Text="{DynamicResource PanelSettingsDisplayCmdWindow}"/>
                                 <TextBlock Foreground="DarkSlateGray" TextWrapping="Wrap" FontSize="12" HorizontalAlignment="Left" Text="{DynamicResource PanelSettingsDisplayCmdWindowTip}"/>
                             </StackPanel>
-                            <ToggleButton HorizontalAlignment="Right" Style="{DynamicResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding DisplayCmdWindow}"  ToolTip="{DynamicResource PanelSettingsLaunchDebugWindowOnNextLaunch}"/>
+                            <ToggleButton HorizontalAlignment="Right" Style="{DynamicResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding DisplayCmdWindow}" />
                         </Grid>
                     </StackPanel>
                 </materialDesign:Card>
-            </StackPanel>
 
-            <StackPanel Orientation="Vertical" Width="230">
+                
 
-                <materialDesign:Card Margin="5">
+                <materialDesign:Card Margin="0,0,0,5">
                     <StackPanel Orientation="Vertical" Margin="5">
-                        <TextBlock  Margin="0,0,0,5" Text="{DynamicResource PanelSettingsVersionInfo}"/>
+                        <Grid Margin="0,0,0,5">
+                            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left"   Text="{DynamicResource PanelSettingsVersionInfo}"/>
+                            <Button HorizontalAlignment="Right" Style="{DynamicResource MaterialDesignFlatButton}" Command="{Binding UpdateCheck}" Content="{DynamicResource PanelSettingsUpdateCheck}"/>
+                        </Grid>
                         <Label Margin="0,0,0,5" Height="1" Background="LightGray"/>
                         <Grid>
                             <TextBlock HorizontalAlignment="Left" Text="{DynamicResource PanelSettingsGUIVersionLabel}"/>
@@ -106,22 +139,12 @@
                             <TextBlock HorizontalAlignment="Left" Text="{DynamicResource PanelSettingsCoreLibVersionLabel}"/>
                             <TextBlock HorizontalAlignment="Right" Text="{Binding CoreLibVersion}"/>
                         </Grid>
-                        <Button Style="{DynamicResource MaterialDesignFlatButton}" Command="{Binding UpdateCheck}" Content="{DynamicResource PanelSettingsUpdateCheck}"/>
+                        
                     </StackPanel>
                 </materialDesign:Card>
 
-                <materialDesign:Card Margin="5">
-                    <StackPanel Margin="5" Orientation="Vertical">
-                        <TextBlock  Margin="0,0,0,5" Text="{DynamicResource PanelSettingsOther}"/>
-                        <Label Height="1" Background="LightGray"/>
-                        <Button Command="{Binding SendToDesktop}" FontSize="12" Margin="5" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource PanelSettingsSendToDesktop}"/>
-                    </StackPanel>
-                </materialDesign:Card>
             </StackPanel>
-            
-            
-            
-        </StackPanel>
-        
+        </ScrollViewer>
+       
     </DockPanel>
 </UserControl>

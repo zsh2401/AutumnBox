@@ -72,7 +72,12 @@
     <s:String x:Key="PanelSettingsSounds">音效</s:String>
     <s:String x:Key="PanelSettingsSoundsTip">例如功能结束时的音效，但这需要该功能支持</s:String>
     <s:String x:Key="PanelSettingsInterface">界面</s:String>
-    <s:String x:Key="PanelSettingsFinishedSound">功能完成音效</s:String>
+    <s:String x:Key="PanelSettingsCmd">命令行</s:String>
+    <s:String x:Key="PanelSettingsReset">重设</s:String>
+    <s:String x:Key="PanelSettingsEnvVarCmdWindow">带有全局变量的命令行</s:String>
+    <s:String x:Key="PanelSettingsEnvVarCmdWindowTip">这样,无论你在命令行中去到哪里,都可以使用秋之盒的ADB程序</s:String>
+    <s:String x:Key="PanelSettingsCmdAtDesktop">在桌面启动命令行</s:String>
+    <s:String x:Key="PanelSettingsCmdAtDesktopTip">启动命令行后,路径在桌面</s:String>
     <s:String x:Key="PanelSettingsOther">其它</s:String>
     <s:String x:Key="PanelSettingsLanguage">语言</s:String>
     <s:String x:Key="PanelSettingsDebug">调试</s:String>
