@@ -172,6 +172,10 @@ namespace AutumnBox.Basic.Calling
         /// <returns></returns>
         public virtual Result AdbShell(IDevice device, params string[] args)
         {
+            if (!ManagedAdb.Adb.Server.IsEnable)
+            {
+                throw new InvalidOperationException("adb server is killed");
+            }
             IAdbServer adbServer = AutumnBox.Basic.ManagedAdb.Adb.Server;
             FileInfo exe = AutumnBox.Basic.ManagedAdb.Adb.FastbootFile;
             string joined = string.Join(" ", args);
@@ -199,6 +203,10 @@ namespace AutumnBox.Basic.Calling
         /// <returns></returns>
         public virtual Result Adb(IDevice device, params string[] args)
         {
+            if (!ManagedAdb.Adb.Server.IsEnable)
+            {
+                throw new InvalidOperationException("adb server is killed");
+            }
             IAdbServer adbServer = AutumnBox.Basic.ManagedAdb.Adb.Server;
             FileInfo exe = AutumnBox.Basic.ManagedAdb.Adb.AdbFile;
             string joined = string.Join(" ", args);
@@ -225,6 +233,10 @@ namespace AutumnBox.Basic.Calling
         /// <returns></returns>
         public virtual Result Adb(params string[] args)
         {
+            if (!ManagedAdb.Adb.Server.IsEnable)
+            {
+                throw new InvalidOperationException("adb server is killed");
+            }
             IAdbServer adbServer = AutumnBox.Basic.ManagedAdb.Adb.Server;
             FileInfo exe = AutumnBox.Basic.ManagedAdb.Adb.AdbFile;
             string joined = string.Join(" ", args);
