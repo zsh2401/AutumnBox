@@ -99,6 +99,7 @@
     <Compile Include="Extensions\Poweron\EStopAppMaxWellActivator.cs" />
     <Compile Include="Extensions\Mix\ERebooter.cs" />
     <Compile Include="Lib\CstmDpmCommander.cs" />
+    <Compile Include="Lib\DpmFailedMessageParser.cs" />
     <Compile Include="OfficialVisualExtension.Output.cs" />
     <Compile Include="LanguageManager.cs" />
     <Compile Include="Lib\EDpmSetterBase.cs" />
