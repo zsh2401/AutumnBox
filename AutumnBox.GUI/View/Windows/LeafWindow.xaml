@@ -7,7 +7,7 @@
         xmlns:viewmodel="clr-namespace:AutumnBox.GUI.ViewModel"
         mc:Ignorable="d"
         Icon="{Binding Icon}"
-         MinHeight="300" MinWidth="450" Height="300" Width="450" BorderThickness="1,0,1,1"
+         MinHeight="300" MinWidth="450" Height="300" Width="450"
         FontFamily="{DynamicResource AutumnBox.Font}"
         BorderBrush="{DynamicResource PrimaryLightBrush}"
         WindowStartupLocation="CenterScreen"

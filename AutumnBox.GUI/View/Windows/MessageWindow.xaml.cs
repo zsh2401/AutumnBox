@@ -25,6 +25,7 @@ namespace AutumnBox.GUI.View.Windows
             }
         }
         private string _title;
+
         /// <summary>
         /// 信息
         /// </summary>
@@ -37,16 +38,6 @@ namespace AutumnBox.GUI.View.Windows
             }
         }
         private string _message;
-
-        public bool SnackBarActive
-        {
-            get => _snackBarActive; set
-            {
-                _snackBarActive = value;
-                RaisePropertyChanged();
-            }
-        }
-        private bool _snackBarActive;
 
         public MessageWindow()
         {
@@ -61,36 +52,12 @@ namespace AutumnBox.GUI.View.Windows
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(caller));
         }
 
-        private void Window_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            Close();
-        }
-
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (SnackBarActive == false)
-            {
-                ShowSnackBar();
-            }
-            if (e.LeftButton == System.Windows.Input.MouseButtonState.Pressed)
+            if (e.LeftButton == MouseButtonState.Pressed)
             {
                 DragMove();
             }
-        }
-        private void ShowSnackBar()
-        {
-            Task.Run(() =>
-            {
-                Dispatcher.Invoke(() =>
-                {
-                    SnackBarActive = true;
-                });
-                Thread.Sleep(2000);
-                Dispatcher.Invoke(() =>
-                {
-                    SnackBarActive = false;
-                });
-            });
         }
     }
 }

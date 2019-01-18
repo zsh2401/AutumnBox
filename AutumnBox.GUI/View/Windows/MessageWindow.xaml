@@ -7,12 +7,9 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         FontFamily="{DynamicResource AutumnBox.Font}"
-        WindowStyle="None"
-        BorderBrush="{DynamicResource PrimaryLightBrush}"
-        BorderThickness="1"
-        ResizeMode="NoResize"
+        WindowStyle="ToolWindow"
         WindowStartupLocation="CenterOwner"
-        Title="{Binding MsgTitle}" MinHeight="220" MinWidth="400" Height="252" Width="458.182"  MouseDoubleClick="Window_MouseDoubleClick" MouseDown="Window_MouseDown">
+        Title="{Binding MsgTitle}" MinHeight="220" MinWidth="460" Height="220" Width="460" >
     <Grid>
         <DockPanel>
             <TextBlock DockPanel.Dock="Top" Margin="10,5,10,5" Text="{Binding MsgTitle}" TextAlignment="Center" FontSize="20"/>
@@ -20,8 +17,5 @@
                 <TextBlock MouseDown="Window_MouseDown" Text="{Binding Message}" FontSize="15" TextWrapping="Wrap"/>
             </ScrollViewer>
         </DockPanel>
-        <materialDesign:Snackbar IsActive="{Binding SnackBarActive}">
-            <materialDesign:SnackbarMessage Content="{DynamicResource MessageWindowDoubleClickToClose}"/>
-        </materialDesign:Snackbar>
     </Grid>
 </Window>
