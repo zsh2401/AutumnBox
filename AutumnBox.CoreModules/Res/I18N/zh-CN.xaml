@@ -11,6 +11,11 @@
      <s:String x:Key="ERebooterAreUSure">你确定要对该设备进行重启吗?</s:String>
     
     <!--拓展模块池-->
+    <s:String x:Key="EFlashBootSelectingTitle">选择一个文件</s:String>
+    <s:String x:Key="EFlashBootSelectingFilter">镜像文件(*.img)|*.img|全部文件(*.*)|*.*</s:String>
+    <s:String x:Key="EFlashRecoverySelectingTitle">选择一个文件</s:String>
+    <s:String x:Key="EFlashRecoverySelectingFilter">镜像文件(*.img)|*.img|全部文件(*.*)|*.*</s:String>
+    
     <s:String x:Key="ExtensionExecutingCommandFmt">正在执行: {0}</s:String>
     <s:String x:Key="ExtensionExitCodeIs">执行完成,退出码:</s:String>
     <s:String x:Key="ExtensionIniting">正在初始化</s:String>
