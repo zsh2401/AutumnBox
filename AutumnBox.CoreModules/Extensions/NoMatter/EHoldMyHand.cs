@@ -3,7 +3,9 @@
 ** date:  2018/8/17 19:19:29 (UTC +8:00)
 ** desc： ...
 *************************************************/
+using AutumnBox.Basic.Calling;
 using AutumnBox.Basic.Device;
+using AutumnBox.Basic.Device.ManagementV2;
 using AutumnBox.Basic.ManagedAdb;
 using AutumnBox.OpenFramework.Content;
 using AutumnBox.OpenFramework.Extension;
@@ -29,17 +31,19 @@ namespace AutumnBox.CoreModules.Extensions.Hidden
         [LMain]
         public void Main(IDevice device, Context context, ILeafUI ui, IUx ux, Dictionary<string, object> data)
         {
-            if (Adb.Server.IsEnable)
-            {
-                Adb.Server.Kill();
-            }
-            else
-            {
-                Adb.Server.Start();
-            }
             using (ui)
             {
                 ui.Show();
+                using (var executor = new CommandExecutor())
+                {
+                    executor.To((e) => ui.WriteLine(e));
+                    using (AndroidShell shell = new AndroidShell(executor, device))
+                    {
+                        shell.WriteLine("ls");
+                        shell.WriteLine("ping www.baidu.com");
+                        Thread.Sleep(5000);
+                    }
+                }
                 Thread.Sleep(2000);
                 ui.Shutdown();
                 ui.WriteLine("wtf");

@@ -36,6 +36,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Device\DeviceState.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Device\Emulator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Device\IDevice.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Device\ManagementV2\AndroidShell.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Device\Management\AppFx\ActivityManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Device\Management\AppFx\BroadcastSender.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Device\Management\AppFx\ComponentName.cs" />
