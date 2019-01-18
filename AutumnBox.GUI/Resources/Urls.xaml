@@ -14,6 +14,7 @@
     <s:String x:Key="AGoDonationList">donation_ls</s:String>
     <s:String x:Key="AGoInstallExtension">ist_ext</s:String>
     <s:String x:Key="AGoExtensionDevelopDoc">dev_ext</s:String>
+    <s:String x:Key="AGoAdbFail">adb_fail</s:String>
     <!--Go-->
     
     <!--WEB-->

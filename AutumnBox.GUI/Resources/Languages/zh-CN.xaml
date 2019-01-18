@@ -17,6 +17,7 @@
     
     
     <!--Adb failed Window-->
+    <s:String x:Key="AdbFailedWindowGuide">查看在线说明书</s:String>
     <s:String x:Key="AdbFailedWindowTitle">史诗级问题!无法启动ADB服务!</s:String>
      <s:String x:Key="AdbFailedWindowAdvice">你可以尝试:
         * 关闭其他手机助手
