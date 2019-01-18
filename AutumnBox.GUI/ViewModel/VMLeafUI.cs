@@ -1,4 +1,5 @@
 ﻿using AutumnBox.GUI.MVVM;
+using AutumnBox.GUI.Util.Debugging;
 using AutumnBox.GUI.Util.UI;
 using AutumnBox.OpenFramework.Extension.LeafExtension;
 using System;
@@ -17,6 +18,7 @@ namespace AutumnBox.GUI.ViewModel
             Running = 1,
             Finished = 2,
             Shutdown = 3,
+            Unfinished = 4,
         }
 
         private State CurrentState { get; set; } = State.Initing;
@@ -60,15 +62,21 @@ namespace AutumnBox.GUI.ViewModel
 
         private void View_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if (CurrentState == State.Shutdown || CurrentState == State.Finished) return;
-            LeafCloseBtnClickedEventArgs args = new LeafCloseBtnClickedEventArgs
+            if (CurrentState == State.Shutdown || CurrentState == State.Finished || CurrentState == State.Unfinished)
             {
-                CanBeClosed = false
-            };
-            CloseButtonClicked?.Invoke(this, args);
-            e.Cancel = !args.CanBeClosed;
-            if (args.CanBeClosed) Finish();
-            else WriteLine(App.Current.Resources["RunningWindowCantStop"]);
+                e.Cancel = false;
+            }
+            else
+            {
+                LeafCloseBtnClickedEventArgs args = new LeafCloseBtnClickedEventArgs
+                {
+                    CanBeClosed = false
+                };
+                CloseButtonClicked?.Invoke(this, args);
+                e.Cancel = !args.CanBeClosed;
+                if (args.CanBeClosed) Finish();
+                else WriteLine(App.Current.Resources["RunningWindowCantStop"]);
+            }
         }
 
         public VMLeafUI()
@@ -228,15 +236,19 @@ namespace AutumnBox.GUI.ViewModel
 
         public void Dispose()
         {
-            if (CurrentState == State.Finished) return;
-            try
+            //Trace.WriteLine("LeafUI dispose");
+            if (CurrentState == State.Finished)
             {
-                View.Dispatcher.Invoke(() =>
-                {
-                    View.Close();
-                });
+                return;
             }
-            catch { }
+            else if (CurrentState == State.Running)
+            {
+                CurrentState = State.Unfinished;
+            }
+            View.Dispatcher.Invoke(() =>
+            {
+                View.Close();
+            });
             View = null;
         }
 
