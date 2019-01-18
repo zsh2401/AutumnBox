@@ -9,6 +9,7 @@ using AutumnBox.GUI.MVVM;
 using AutumnBox.GUI.Properties;
 using AutumnBox.GUI.Util.OS;
 using AutumnBox.GUI.View.DialogContent;
+using AutumnBox.GUI.View.Windows;
 using MaterialDesignThemes.Wpf;
 using System;
 using System.Diagnostics;
@@ -39,8 +40,7 @@ namespace AutumnBox.GUI.ViewModel
         }
         private void _ShowSettingsDialog()
         {
-            //new MessageWindow().ShowDialog();
-            DialogHost.Show(new ContentSettings());
+            (App.Current.MainWindow as MainWindow).DialogHost.ShowDialog(new ContentSettings());
         }
         private void _StartShell()
         {

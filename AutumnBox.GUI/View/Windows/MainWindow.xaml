@@ -66,6 +66,6 @@
             </materialDesign:TransitionerSlide>
         </materialDesign:Transitioner>
 
-        <materialDesign:DialogHost/>
+        <materialDesign:DialogHost x:Name="DialogHost"/>
     </Grid>
 </Window>

@@ -3,16 +3,12 @@
 ** date:  2018/8/17 19:19:29 (UTC +8:00)
 ** desc： ...
 *************************************************/
-using AutumnBox.Basic.Calling;
 using AutumnBox.Basic.Device;
-using AutumnBox.Basic.Device.ManagementV2;
-using AutumnBox.Basic.ManagedAdb;
 using AutumnBox.OpenFramework.Content;
 using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.Extension.LeafExtension;
 using AutumnBox.OpenFramework.Open;
 using System.Collections.Generic;
-using System.Threading;
 
 namespace AutumnBox.CoreModules.Extensions.Hidden
 {
@@ -34,10 +30,14 @@ namespace AutumnBox.CoreModules.Extensions.Hidden
             using (ui)
             {
                 ui.Show();
-                ux.Message("Hello world!");
-                Thread.Sleep(2000);
-                ui.Shutdown();
-                ui.WriteLine("wtf");
+                ui.ShowMessage("WTF");
+                bool? choice = ui.DoChoice("FUCK");
+                ui.WriteLine(choice.ToString());
+                bool yn = ui.DoYN("FUCK2");
+                ui.WriteLine(yn.ToString());
+                object result = ui.SelectFrom(new object[] { "a","b"});
+                ui.WriteLine(result);
+                ui.Finish();
             }
         }
     }

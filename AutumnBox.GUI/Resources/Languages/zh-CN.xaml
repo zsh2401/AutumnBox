@@ -15,7 +15,8 @@
      <s:String x:Key="TitleSuffixAdmin">[管理员模式]</s:String>
     
     
-    
+    <s:String x:Key="SignalSelectViewHint">选一个并单击! ^_^</s:String>
+     <s:String x:Key="SignalSelectViewCancel">取消</s:String>
     <!--Adb failed Window-->
     <s:String x:Key="AdbFailedWindowGuide">查看在线说明书</s:String>
     <s:String x:Key="AdbFailedWindowTitle">史诗级问题!无法启动ADB服务!</s:String>
