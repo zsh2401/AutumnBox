@@ -31,8 +31,8 @@ namespace AutumnBox.GUI.View.Windows
         {
             (sender as TextBox).ScrollToEnd();
         }
-        ~LeafWindow() {
-            Trace.WriteLine("Leaf window ~");
-        }
+        //~LeafWindow() {
+        //    Trace.WriteLine("Leaf window ~");
+        //}
     }
 }
