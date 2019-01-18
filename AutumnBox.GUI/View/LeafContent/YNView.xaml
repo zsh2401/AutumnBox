@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:AutumnBox.GUI.View.LeafContent"
               xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:system="clr-namespace:System;assembly=mscorlib"
+             FontFamily="{DynamicResource AutumnBox.Font}"
              mc:Ignorable="d" 
                Width="350" Height="200"
              >
