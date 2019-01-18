@@ -6,6 +6,7 @@
 using AutumnBox.GUI.Model;
 using AutumnBox.GUI.Util.Debugging;
 using AutumnBox.GUI.View.DialogContent;
+using AutumnBox.GUI.View.Windows;
 using MaterialDesignThemes.Wpf;
 using System;
 
@@ -17,7 +18,7 @@ namespace AutumnBox.GUI.View
         public static void ShowChoiceDialog(ChoicerContentStartArgs args)
         {
             var content = new ContentChoice(args);
-            DialogHost.Show(content, new DialogOpenedEventHandler((s, e) =>
+            (App.Current.MainWindow as MainWindow).DialogHost.ShowDialog(content, new DialogOpenedEventHandler((s, e) =>
             {
                 args.CloseDialog = () =>
                 {

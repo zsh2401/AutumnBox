@@ -14,6 +14,9 @@
     <s:String x:Key="AppDesc">Open source,free,simple,GUI adb toolbox</s:String>
     <s:String x:Key="TitleSuffixAdmin">[Administrator]</s:String>
         
+    
+    <s:String x:Key="SignalSelectViewHint">Select one and click it!^_^</s:String>
+     <s:String x:Key="SignalSelectViewCancel">Cancel</s:String>
         <!--Adb failed Window-->
     <s:String x:Key="AdbFailedWindowGuide">View online guide</s:String>
     <s:String x:Key="AdbFailedWindowTitle">CAN NOT START THE ADB SERVER!</s:String>

@@ -1,11 +1,15 @@
 ﻿using AutumnBox.GUI.MVVM;
 using AutumnBox.GUI.Util.Debugging;
 using AutumnBox.GUI.Util.UI;
+using AutumnBox.GUI.View.LeafContent;
+using AutumnBox.GUI.View.Windows;
 using AutumnBox.OpenFramework.Extension.LeafExtension;
+using MaterialDesignThemes.Wpf;
 using System;
-using System.Diagnostics;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace AutumnBox.GUI.ViewModel
 {
@@ -20,7 +24,6 @@ namespace AutumnBox.GUI.ViewModel
             Shutdown = 3,
             Unfinished = 4,
         }
-
         private State CurrentState { get; set; } = State.Initing;
 
         public FlexiableCommand Copy
@@ -43,7 +46,7 @@ namespace AutumnBox.GUI.ViewModel
         }
         private bool _isIndeterminate;
 
-        public Window View
+        public LeafWindow View
         {
             get => _view; set
             {
@@ -52,51 +55,7 @@ namespace AutumnBox.GUI.ViewModel
                 InitView();
             }
         }
-        private Window _view;
-
-        private void InitView()
-        {
-            if (CurrentState != State.Ready) return;
-            View.Closing += View_Closing;
-        }
-
-        private void View_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            if (CurrentState == State.Shutdown || CurrentState == State.Finished || CurrentState == State.Unfinished)
-            {
-                e.Cancel = false;
-            }
-            else
-            {
-                LeafCloseBtnClickedEventArgs args = new LeafCloseBtnClickedEventArgs
-                {
-                    CanBeClosed = false
-                };
-                CloseButtonClicked?.Invoke(this, args);
-                e.Cancel = !args.CanBeClosed;
-                if (args.CanBeClosed) Finish();
-                else WriteLine(App.Current.Resources["RunningWindowCantStop"]);
-            }
-        }
-
-        public VMLeafUI()
-        {
-            _contentBuilder = new StringBuilder();
-            RaisePropertyChangedOnDispatcher = true;
-            Title = "LeafUI Window";
-            Progress = -1;
-            Tip = App.Current.Resources["RunningWindowStateRunning"] as string;
-            Icon = null;
-            Copy = new FlexiableCommand(() =>
-            {
-                try
-                {
-                    Clipboard.SetText(Content);
-                }
-                catch { }
-            });
-            CurrentState = State.Ready;
-        }
+        private LeafWindow _view;
 
         public string Content
         {
@@ -123,7 +82,6 @@ namespace AutumnBox.GUI.ViewModel
             }
         }
         private double _progress;
-
 
         public string Tip
         {
@@ -182,6 +140,53 @@ namespace AutumnBox.GUI.ViewModel
         private string _title;
 
         public event EventHandler<LeafCloseBtnClickedEventArgs> CloseButtonClicked;
+
+        private Panel InnerPanel { get; set; }
+
+        private void InitView()
+        {
+            if (CurrentState != State.Ready) return;
+            View.Closing += View_Closing;
+            InnerPanel = (View.Content as Panel);
+        }
+
+        public VMLeafUI()
+        {
+            _contentBuilder = new StringBuilder();
+            RaisePropertyChangedOnDispatcher = true;
+            Title = "LeafUI Window";
+            Progress = -1;
+            Tip = App.Current.Resources["RunningWindowStateRunning"] as string;
+            Icon = null;
+            Copy = new FlexiableCommand(() =>
+            {
+                try
+                {
+                    Clipboard.SetText(Content);
+                }
+                catch { }
+            });
+            CurrentState = State.Ready;
+        }
+
+        private void View_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (CurrentState == State.Shutdown || CurrentState == State.Finished || CurrentState == State.Unfinished)
+            {
+                e.Cancel = false;
+            }
+            else
+            {
+                LeafCloseBtnClickedEventArgs args = new LeafCloseBtnClickedEventArgs
+                {
+                    CanBeClosed = false
+                };
+                CloseButtonClicked?.Invoke(this, args);
+                e.Cancel = !args.CanBeClosed;
+                if (args.CanBeClosed) Finish();
+                else WriteLine(App.Current.Resources["RunningWindowCantStop"]);
+            }
+        }
 
         public void EnableHelpBtn(Action callback)
         {
@@ -258,6 +263,77 @@ namespace AutumnBox.GUI.ViewModel
             {
                 throw new InvalidOperationException("Leaf UI is locked!");
             }
+        }
+
+        public void ShowMessage(string message)
+        {
+            if (message == null)
+            {
+                throw new ArgumentNullException(nameof(message));
+            }
+
+            Task<object> task = null;
+            App.Current.Dispatcher.Invoke(() =>
+            {
+                var view = new MessageView(message);
+                task = View.fuck.ShowDialog(view);
+            });
+            task.Wait();
+        }
+
+        public bool DoYN(string message)
+        {
+            if (message == null)
+            {
+                throw new ArgumentNullException(nameof(message));
+            }
+
+            Task<object> task = null;
+            App.Current.Dispatcher.Invoke(() =>
+            {
+                var view = new YNView(message,null,null);
+                task = View.fuck.ShowDialog(view);
+            });
+            task.Wait();
+            return (bool)task.Result;
+        }
+
+        public bool? DoChoice(string message, string btnYes = null, string btnNo = null, string btnCancel = null)
+        {
+            if (message == null)
+            {
+                throw new ArgumentNullException(nameof(message));
+            }
+
+            Task<object> task = null;
+            App.Current.Dispatcher.Invoke(() =>
+            {
+                var view = new ChoiceView(message,btnYes,btnNo,btnCancel);
+                task = View.fuck.ShowDialog(view);
+            });
+            task.Wait();
+            return (task.Result as bool?);
+        }
+
+        public object SelectFrom(object[] options,string hint=null)
+        {
+            if (options == null)
+            {
+                throw new ArgumentNullException(nameof(options));
+            }
+            Task<object> task = null;
+            App.Current.Dispatcher.Invoke(() =>
+            {
+                var view = new SingleSelectView(hint,options);
+                task = View.fuck.ShowDialog(view);
+            });
+            task.Wait();
+            return task.Result;
+        }
+
+        public object[] Select(object[] option, int maxSelect = 1)
+        {
+            throw new NotImplementedException();
         }
     }
 }

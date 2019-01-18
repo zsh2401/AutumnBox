@@ -1,0 +1,30 @@
+﻿<UserControl x:Class="AutumnBox.GUI.View.LeafContent.ChoiceView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AutumnBox.GUI.View.LeafContent"
+             mc:Ignorable="d" 
+                      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
+             FontFamily="{DynamicResource AutumnBox.Font}"
+             Width="350" Height="200">
+    <DockPanel>
+        <Grid DockPanel.Dock="Bottom">
+            <Button x:Name="BtnCancel" Command="materialDesign:DialogHost.CloseDialogCommand" CommandParameter="{x:Null}" Style="{DynamicResource MaterialDesignFlatButton}" HorizontalAlignment="Left" Content="{DynamicResource ChoiceWindowBtnCancel}"/>
+            <StackPanel  HorizontalAlignment="Right" Orientation="Horizontal">
+                <Button x:Name="BtnNo" Command="materialDesign:DialogHost.CloseDialogCommand" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource ChoiceWindowBtnNo}">
+                    <Button.CommandParameter>
+                        <system:Boolean>False</system:Boolean>
+                    </Button.CommandParameter>
+                </Button>
+                <Button x:Name="BtnYes" Command="materialDesign:DialogHost.CloseDialogCommand" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource ChoiceWindowBtnYes}">
+                    <Button.CommandParameter>
+                        <system:Boolean>True</system:Boolean>
+                    </Button.CommandParameter>
+                </Button>
+            </StackPanel>
+        </Grid>
+        <TextBlock  TextWrapping="Wrap" x:Name="TBContent" DockPanel.Dock="Top"></TextBlock>
+    </DockPanel>
+</UserControl>

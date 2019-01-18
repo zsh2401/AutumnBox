@@ -236,6 +236,18 @@
     <Compile Include="MVVM\ModelBase.cs" />
     <Compile Include="ViewModel\VMDeviceDetails.cs" />
     <Compile Include="ViewModel\VMHome.cs" />
+    <Compile Include="View\LeafContent\ChoiceView.xaml.cs">
+      <DependentUpon>ChoiceView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\LeafContent\MessageView.xaml.cs">
+      <DependentUpon>MessageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\LeafContent\SingleSelectView.xaml.cs">
+      <DependentUpon>SingleSelectView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\LeafContent\YNView.xaml.cs">
+      <DependentUpon>YNView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\MaterialDialog.cs" />
     <Compile Include="View\OfTheDay\MOTD.xaml.cs">
       <DependentUpon>MOTD.xaml</DependentUpon>
@@ -522,6 +534,22 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\DialogContent\ContentSettings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\LeafContent\ChoiceView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\LeafContent\MessageView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\LeafContent\SingleSelectView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\LeafContent\YNView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
