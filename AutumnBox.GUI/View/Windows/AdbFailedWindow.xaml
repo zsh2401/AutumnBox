@@ -4,17 +4,22 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AutumnBox.GUI.View.Windows"
+        xmlns:mvvm="clr-namespace:AutumnBox.GUI.MVVM"
         ResizeMode="NoResize"
         mc:Ignorable="d"
         WindowStartupLocation="CenterOwner"
         FontFamily="{DynamicResource AutumnBox.Font}"
         Title="{DynamicResource AdbFailedWindowTitle}" Height="650" Width="500">
+    <Window.DataContext>
+        <mvvm:ViewModelBase/>
+    </Window.DataContext>
     <Grid>
         <DockPanel Margin="10">
             <StackPanel  DockPanel.Dock="Top" Orientation="Vertical">
                 <Image Source="/Resources/Drawable/Misaka/adbfail.png"></Image>
                 <TextBlock Foreground="Red" FontSize="22" Text="{DynamicResource AdbFailedWindowTitle}" />
                 <TextBlock Margin="0,5,0,0" FontSize="15" Text="{DynamicResource AdbFailedWindowAdvice}" />
+                <Button Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoAdbFail}" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource AdbFailedWindowGuide}"/>
                 <StackPanel Orientation="Horizontal">
                     <Button Click="Button_Click" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource AdbFailedWindowBtnCopy}"/>
                     <TextBlock VerticalAlignment="Center" FontSize="15" Text="{DynamicResource AdbFailedWindowCopyNotice}" />

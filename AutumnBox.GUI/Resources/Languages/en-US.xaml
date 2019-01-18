@@ -15,6 +15,7 @@
     <s:String x:Key="TitleSuffixAdmin">[Administrator]</s:String>
         
         <!--Adb failed Window-->
+    <s:String x:Key="AdbFailedWindowGuide">View online guide</s:String>
     <s:String x:Key="AdbFailedWindowTitle">CAN NOT START THE ADB SERVER!</s:String>
      <s:String x:Key="AdbFailedWindowAdvice">你可以尝试:
         * 关闭其他手机助手
