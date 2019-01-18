@@ -34,16 +34,7 @@ namespace AutumnBox.CoreModules.Extensions.Hidden
             using (ui)
             {
                 ui.Show();
-                using (var executor = new CommandExecutor())
-                {
-                    executor.To((e) => ui.WriteLine(e));
-                    using (AndroidShell shell = new AndroidShell(executor, device))
-                    {
-                        shell.WriteLine("ls");
-                        shell.WriteLine("ping www.baidu.com");
-                        Thread.Sleep(5000);
-                    }
-                }
+                ux.Message("Hello world!");
                 Thread.Sleep(2000);
                 ui.Shutdown();
                 ui.WriteLine("wtf");
