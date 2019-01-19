@@ -13,7 +13,6 @@ namespace AutumnBox.CoreModules.Extensions.Poweron
     [ExtName("解锁系统分区", "en-us:[ROOT]Unlock system paration")]
     [ExtDesc("不是解锁BL！！！这个功能只是为了提供完整的root权限！")]
     [ExtRequiredDeviceStates(DeviceState.Poweron)]
-    [ObsoleteImageOperator]
     [ExtRequireRoot]
     [ExtIcon("Icons.unlock.png")]
     internal class EUnlockSystemParation : OfficialVisualExtension
@@ -31,7 +30,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron
                 return enableRootResult.ExitCode;
             }
             
-            Thread.Sleep(300);
+            Thread.Sleep(2000);
             var result = CmdStation
                 .GetAdbCommand(TargetDevice,
                 $"disable-verity")
