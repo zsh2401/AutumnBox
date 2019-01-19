@@ -193,6 +193,10 @@ namespace AutumnBox.GUI.ViewModel
             });
             CurrentState = State.Ready;
         }
+        public DialogHost HiddenGetDialogHost()
+        {
+            return View.DialogHost;
+        }
 
         private void View_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
@@ -367,6 +371,19 @@ namespace AutumnBox.GUI.ViewModel
         public object[] Select(object[] option, int maxSelect = 1)
         {
             throw new NotImplementedException();
+        }
+
+        public void RunOnUIThread(Action act)
+        {
+            if (act == null)
+            {
+                throw new ArgumentNullException(nameof(act));
+            }
+
+            App.Current.Dispatcher.Invoke(() =>
+            {
+                act();
+            });
         }
     }
 }
