@@ -19,7 +19,7 @@ namespace AutumnBox.OpenFramework.Extension.LeafExtension
             foreach (var prop in properties)
             {
                 var setter = prop.GetSetMethod() ?? prop.GetSetMethod(true);
-                setter.Invoke(ext, new object[] { ApiAllocator.GetProperty(ext.Context, prop.PropertyType) });
+                setter.Invoke(ext, new object[] { ApiAllocator.GetProperty(ext.Context, ext.GetType(),prop.PropertyType) });
             }
         }
         private bool IsInjectableProperty(PropertyInfo propInfo)

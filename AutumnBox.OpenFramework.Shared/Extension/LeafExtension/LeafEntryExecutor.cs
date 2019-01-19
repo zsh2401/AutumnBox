@@ -37,7 +37,7 @@ namespace AutumnBox.OpenFramework.Extension.LeafExtension
                 {
                     try
                     {
-                        var result = ApiAllocator.GetParamterValue(data, ext.Context, pInfo);
+                        var result = ApiAllocator.GetParamterValue(data, ext.GetType(), ext.Context, pInfo);
                         ps.Add(result);
                     }
                     catch

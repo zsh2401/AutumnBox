@@ -68,6 +68,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Extension\_InfoAttrs\ExtRegionsAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\_InfoAttrs\ExtRequiredDeviceStatesAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\_InfoAttrs\ExtTargetApiAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extension\_InfoAttrs\ExtTextAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\_InfoAttrs\ExtVersionAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ExtLibrary\AssemblyBasedLibrarian.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ExtLibrary\DefaultLibrarian.cs" />
@@ -112,6 +113,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Open\ServiceImpl\SMd5.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\ServiceImpl\SSoundManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\ServicesNames.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Open\TextAttrManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Running\Events.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Running\ExtensionExitCodes.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Running\ExtensionThread.cs" />

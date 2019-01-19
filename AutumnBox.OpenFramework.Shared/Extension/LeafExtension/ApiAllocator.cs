@@ -10,12 +10,12 @@ namespace AutumnBox.OpenFramework.Extension.LeafExtension
 {
     internal static class ApiAllocator
     {
-        public static object GetParamterValue(Dictionary<string, object> data, Context ctx, ParameterInfo pInfo)
+        public static object GetParamterValue(Dictionary<string, object> data, Type extType,Context ctx, ParameterInfo pInfo)
         {
             var fromDataAttr = pInfo.GetCustomAttribute<LFromDataAttribute>();
             if (fromDataAttr == null)
             {
-                return GetProperty(ctx, pInfo.ParameterType);
+                return GetProperty(ctx, extType, pInfo.ParameterType);
             }
             else
             {
@@ -30,7 +30,7 @@ namespace AutumnBox.OpenFramework.Extension.LeafExtension
                 }
             }
         }
-        public static object GetProperty(Context ctx, Type propertyType)
+        public static object GetProperty(Context ctx, Type extType, Type propertyType)
         {
             if (propertyType == typeof(ILogger))
             {
@@ -87,6 +87,12 @@ namespace AutumnBox.OpenFramework.Extension.LeafExtension
             else if (propertyType == typeof(IDevice))
             {
                 return ctx.GetService<IDeviceSelector>(ServicesNames.DEVICE_SELECTOR).GetCurrent(ctx);
+            }
+            else if (propertyType == typeof(TextAttrManager))
+            {
+                var m =  new TextAttrManager(extType);
+                m.Load();
+                return m;
             }
             return null;
         }
