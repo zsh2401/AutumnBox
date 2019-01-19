@@ -54,6 +54,7 @@ namespace AutumnBox.OpenFramework.Extension.LeafExtension
         void Shutdown();
         #endregion
 
+        #region 输出函数
         /// <summary>
         /// 输出
         /// </summary>
@@ -64,11 +65,17 @@ namespace AutumnBox.OpenFramework.Extension.LeafExtension
         /// </summary>
         /// <param name="output"></param>
         void WriteOutput(string output);
+        #endregion
         /// <summary>
         /// 开启帮助按钮
         /// </summary>
         /// <param name="callback"></param>
         void EnableHelpBtn(Action callback);
+        /// <summary>
+        /// 在UI线程中执行代码
+        /// </summary>
+        /// <param name="act"></param>
+        void RunOnUIThread(Action act);
 
         #region Leaf交互API
         /// <summary>

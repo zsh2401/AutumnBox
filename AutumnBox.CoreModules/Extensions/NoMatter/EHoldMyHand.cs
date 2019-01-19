@@ -16,7 +16,7 @@ namespace AutumnBox.CoreModules.Extensions.Hidden
     [ExtIcon("Icons.flash.png")]
     [ExtRequiredDeviceStates(AutumnBoxExtension.NoMatter)]
     [ExtDeveloperMode]
-    [ExtText("fuck","Hello","zh-cn:你好!")]
+    [ExtText("fuck", "Hello", "zh-cn:你好!")]
     internal class EHoldMyHand : LeafExtensionBase
     {
         [LProperty]
@@ -26,7 +26,7 @@ namespace AutumnBox.CoreModules.Extensions.Hidden
         private IDevice Device { get; set; }
 
         [LMain]
-        public void Main(IDevice device, Context context, ILeafUI ui, IUx ux, Dictionary<string, object> data,TextAttrManager manager)
+        public void Main(IDevice device, Context context, ILeafUI ui, IUx ux, Dictionary<string, object> data, TextAttrManager manager)
         {
             using (ui)
             {
@@ -38,7 +38,7 @@ namespace AutumnBox.CoreModules.Extensions.Hidden
                 ui.WriteLine(choice.ToString());
                 bool yn = ui.DoYN("FUCK2c   2rqwhewqhehqweqhwewqhejwqhewqjhqwejkqwhewqhWW");
                 ui.WriteLine(yn.ToString());
-                object result = ui.SelectFrom(new object[] { "a","qqdasdsadasb","c","a","s","c","a"},"选择你要做的SB操作");
+                object result = ui.SelectFrom(new object[] { "a", "qqdasdsadasb", "c", "a", "s", "c", "a" }, "选择你要做的SB操作");
                 ui.WriteLine(result);
                 ui.Finish();
             }
