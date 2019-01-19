@@ -288,7 +288,7 @@
      <s:String x:Key="LeafUITipRunning">运行中</s:String>
      <s:String x:Key="LeafUIBtnCopy">复制输出信息</s:String>
      <s:String x:Key="LeafUIBtnTip">这些输出信息可以用于更好的解决你的问题</s:String>
-    <s:String x:Key="LeafUIEnableFullContentTip">显示ADB输出(专业)</s:String>
+    <s:String x:Key="LeafUIEnableFullContentTip">显示专业输出信息</s:String>
     <s:String x:Key="LeafUITipCodeUnknown">结束</s:String>
     <s:String x:Key="LeafUITipCode0">成功</s:String>
     <s:String x:Key="LeafUITipCode-1">失败</s:String>

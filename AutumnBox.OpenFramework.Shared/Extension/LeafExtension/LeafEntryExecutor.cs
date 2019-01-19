@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 
@@ -36,7 +37,7 @@ namespace AutumnBox.OpenFramework.Extension.LeafExtension
                 {
                     try
                     {
-                        var result = ApiAllocator.GetParamterValue(data,ext.Context, pInfo);
+                        var result = ApiAllocator.GetParamterValue(data, ext.Context, pInfo);
                         ps.Add(result);
                     }
                     catch
@@ -54,10 +55,10 @@ namespace AutumnBox.OpenFramework.Extension.LeafExtension
         private MethodInfo FindEntry()
         {
             var type = ext.GetType();
-            var entries = from method in type.GetMethods()
+            var entries = from method in type.GetMethods(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)
                           where IsEntry(method)
                           select method;
-            if (entries.Count() == 0)
+            if (!entries.Any())
             {
                 throw new Exception("Entry not found!");
             }
@@ -70,7 +71,20 @@ namespace AutumnBox.OpenFramework.Extension.LeafExtension
         /// <returns></returns>
         private bool IsEntry(MethodInfo info)
         {
-            return info.Name == "Main" || info.GetCustomAttribute(typeof(LMainAttribute)) != null;
+            //Trace.WriteLine(info.GetParameters()[0].ParameterType.Name);
+            return (info.Name == "Main" || info.GetCustomAttribute(typeof(LMainAttribute)) != null)
+                && IsNotClassExtensionMain(info);
+        }
+        private bool IsNotClassExtensionMain(MethodInfo info)
+        {
+            var para = info.GetParameters();
+            if (para != null && para.Length == 1)
+            {
+                Trace.WriteLine(para[0].ParameterType);
+                Trace.WriteLine($"{typeof(Dictionary<string, object>)}");
+                return para[0].ParameterType != typeof(Dictionary<string, object>);
+            }
+            return true;
         }
         /// <summary>
         /// 进行执行
