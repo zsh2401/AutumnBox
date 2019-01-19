@@ -3,6 +3,7 @@
 ** date:  2018/11/12 12:05:40 (UTC +8:00)
 ** desc： ...
 *************************************************/
+using AutumnBox.Basic.Calling;
 using AutumnBox.Basic.Data;
 using AutumnBox.Basic.Device;
 using AutumnBox.Basic.Util;
@@ -13,7 +14,7 @@ using System.IO;
 
 namespace AutumnBox.CoreModules.Lib
 {
-    internal class CstmDpmCommander : DeviceCommander, IReceiveOutputByTo<CstmDpmCommander>
+    internal class CstmDpmCommander
     {
         public const string PATH_OF_EMB_APK = "Res.dpmpro";
         public const string PATH_OF_TMP_APK = "dpmpro";
@@ -30,17 +31,15 @@ namespace AutumnBox.CoreModules.Lib
         public const int ERR_EXIST_OTHER_USER = 0b100;
         public const int ERR_EXIST_OTHER_ACC = 0b1000;
         public const int ERR_MIUI_SEC = 0b10000;
+        private readonly CommandExecutor executor;
         private readonly Context context;
+        private readonly IDevice device;
 
-        public CstmDpmCommander(Context context, IDevice device) : base(device)
+        public CstmDpmCommander(CommandExecutor executor,Context context, IDevice device) 
         {
+            this.executor = executor ?? throw new ArgumentNullException(nameof(executor));
             this.context = context ?? throw new ArgumentNullException(nameof(context));
-        }
-
-        public CstmDpmCommander To(Action<OutputReceivedEventArgs> callback)
-        {
-            RegisterToCallback(callback);
-            return this;
+            this.device = device ?? throw new ArgumentNullException(nameof(device));
         }
         public void Extract()
         {
@@ -55,50 +54,30 @@ namespace AutumnBox.CoreModules.Lib
         public string ShowUsage()
         {
             string command = string.Format(CMD_FORMAT, "");
-            return CmdStation
-                  .GetShellCommand(Device, command)
-                  .To(RaiseOutput)
-                  .Execute()
-                  .ThrowIfExitCodeNotEqualsZero()
-                  .Output.ToString();
+            return executor.AdbShell(device,command).Output;
         }
-        public void PushToDevice()
+        public int PushToDevice()
         {
             DirectoryInfo dirInfo = context.Tmp.DirInfo;
             string path = Path.Combine(dirInfo.FullName, PATH_OF_TMP_APK);
-            CmdStation
-                .GetAdbCommand($"push \"{path}\" {PATH_OF_ATMP_APK}")
-                .To(RaiseOutput)
-                .Execute()
-                .ThrowIfExitCodeNotEqualsZero();
+            string command = $"push \"{path}\" {PATH_OF_ATMP_APK}";
+            return executor.Adb(device, command).ExitCode ;
         }
-        public void RemoveUsers()
+        public int RemoveUsers()
         {
             string command = string.Format(CMD_FORMAT, CMD_REMOVE_USER);
-            CmdStation
-                .GetShellCommand(Device, command)
-                .To(RaiseOutput)
-                .Execute()
-                .ThrowIfExitCodeNotEqualsZero();
+            return executor.AdbShell(device, command).ExitCode;
         }
-        public void RemoveAccounts()
+        public int RemoveAccounts()
         {
             string command = string.Format(CMD_FORMAT, CMD_REMOVE_ACC);
-            CmdStation
-                .GetShellCommand(Device, command)
-                .To(RaiseOutput)
-                .Execute()
-                .ThrowIfExitCodeNotEqualsZero();
+            return executor.AdbShell(device, command).ExitCode;
         }
-        public void SetDeviceOwner(string componentName)
+        public CommandExecutor.Result SetDeviceOwner(string componentName)
         {
             string setDeviceOwnerArg = $"{CMD_SET_DEVICE_OWNER} {componentName}";
             string command = string.Format(CMD_FORMAT, setDeviceOwnerArg);
-            CmdStation
-                .GetShellCommand(Device, command)
-                .To(RaiseOutput)
-                .Execute()
-                .ThrowIfExitCodeNotEqualsZero();
+            return executor.AdbShell(device, command);
         }
     }
 }
