@@ -17,8 +17,8 @@ namespace AutumnBox.OpenFramework.Extension
     public abstract class ExtInfoI18NAttribute : ExtensionAttribute, IInformationAttribute
     {
         private const string DEFAULT_KEY = "ALL_REGIONS";
-        private const string KV_PATTERN = @"(?<key>[\w|\-]+):(?<value>.+)";
-        private readonly Regex regex = new Regex(KV_PATTERN);
+        private const string KV_PATTERN = @"(?<key>[^:]+):(?<value>[\s\S]+)";
+        private static readonly Regex regex = new Regex(KV_PATTERN);
         private Dictionary<string, string> pairsOfRegionAndValue;
         /// <summary>
         /// 构建
@@ -51,7 +51,7 @@ namespace AutumnBox.OpenFramework.Extension
             if (match.Success)
             {
                 AddOrOverwrite(
-                    match.Result("${key}").ToLower() , 
+                    match.Result("${key}").ToLower(),
                     match.Result("${value}"));
             }
             else

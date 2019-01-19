@@ -43,7 +43,7 @@ namespace AutumnBox.CoreModules.Lib
     [ExtText(TIP_OK, "Success!!", "zh-cn:设置成功!")]
     [ExtText(TIP_FAIL, "Fail!!", "zh-cn:失败!")]
     [ExtText(OK_MSG, "Fail!!", "zh-cn:终于成功了,请前往手机端软件进行确认,如果需要卸载,一定要前往该软件其设置内进行操作,否则可能导致DPM残留,那可就没得救了")]
-    [ExtText(ERR_MSG_KEY_DO_ALREADY_SET, "Fail!!", "zh-cn:设备管理员已经被设置过了!请先移除这个设备管理员(冻结APP请前往该APP设置进行移除)")]
+    [ExtText(ERR_MSG_KEY_DO_ALREADY_SET, "Fail!!", "zh-cn:设备管理员已经被设置过了!请先移除之前的设备管理员应用(冻结APP请前往该APP设置进行移除)")]
     [ExtText(ERR_MSG_KEY_UNKNOWN, "Fail!!", "zh-cn:奇怪的问题,请点击左上角复制按钮,并将其发送给你想咨询的人")]
     [ExtText(ERR_MSG_KEY_HAVE_USERS, "Fail!!", "zh-cn:设备上还有多余的用户!请尝试删除应用多开,访客模式等再试")]
     [ExtText(ERR_MSG_KEY_HAVE_ACCOUNTS, "Fail!!", "zh-cn:设备上还有多余的账号!前往设置->同步/账号->删除,然后再试")]
@@ -98,6 +98,7 @@ namespace AutumnBox.CoreModules.Lib
                     return;
                 }
                 //提示用户移除屏幕锁等
+                Logger.Info(texts["WarningRemoveLock"]);
                 if (!UI.DoYN(texts["WarningRemoveLock"]))
                 {
                     UI.Shutdown();
