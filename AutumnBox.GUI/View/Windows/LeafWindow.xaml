@@ -22,14 +22,21 @@
                 <ProgressBar BorderBrush="Transparent" Background="Transparent"  IsIndeterminate="{Binding IsIndeterminate}"  Value="{Binding Progress}"/>
                 <TextBlock Margin="10" Text="{Binding Tip}" FontSize="25" />
             </StackPanel>
-            <DockPanel Margin="5" DockPanel.Dock="Bottom">
-                <StackPanel Margin="3" Orientation="Horizontal" DockPanel.Dock="Top" >
-                    <Button FontSize="12" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource RunningWindowCopy}" Command="{Binding Copy}"/>
-                    <TextBlock  VerticalAlignment="Center" Text="{DynamicResource RunningWindowCopyTip}"/>
+            <DockPanel Margin="3,0,3,3" DockPanel.Dock="Bottom">
+                <StackPanel  Orientation="Horizontal" DockPanel.Dock="Top" >
+
+                    <Button ToolTip="{DynamicResource LeafUIBtnTip}" FontSize="12" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource LeafUIBtnCopy}" Command="{Binding Copy}"/>
+                    <StackPanel Orientation="Horizontal">
+                        <ToggleButton IsChecked="{Binding EnableFullContent}"/>
+                        <TextBlock VerticalAlignment="Center" Text="{DynamicResource LeafUIEnableFullContentTip}"/>
+                    </StackPanel>
                 </StackPanel>
-                <TextBox DockPanel.Dock="Bottom"  TextChanged="TBOutput_TextChanged" x:Name="TBOutput" IsReadOnly="True"  Style="{x:Null}" BorderBrush="{DynamicResource PrimaryLightBrush}" Text="{Binding Content}" TextWrapping="Wrap"/>
+                <Grid DockPanel.Dock="Bottom" >
+                    <TextBox  TextChanged="TBOutput_TextChanged" IsReadOnly="True"  Style="{x:Null}" BorderBrush="{DynamicResource PrimaryLightBrush}" Text="{Binding Content}" TextWrapping="Wrap"/>
+                    <TextBox Visibility="{Binding FullContentVisility}"  TextChanged="TBOutput_TextChanged" IsReadOnly="True"  Style="{x:Null}" BorderBrush="{DynamicResource PrimaryLightBrush}" Text="{Binding FullContent}" TextWrapping="Wrap"/>
+                </Grid>
             </DockPanel>
         </DockPanel>
-        <materialDesign:DialogHost x:Name="fuck"/>
+        <materialDesign:DialogHost x:Name="DialogHost"/>
     </Grid>
 </Window>

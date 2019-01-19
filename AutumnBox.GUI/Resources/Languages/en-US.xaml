@@ -279,6 +279,19 @@
      <!--LoadingWindow-->
      <s:String x:Key="LoadingWindowMessage">Please wait...</s:String>
     
+    <!--LeafWindow-->
+     <s:String x:Key="LeafUITipRunning">Running</s:String>
+    <s:String x:Key="LeafUIBtnCopy">Copy output information</s:String>
+         <s:String x:Key="LeafUIBtnTip">This output information is useful to one who can help you handle questions</s:String>
+    <s:String x:Key="LeafUIEnableFullContentTip">Show adb output(pro)</s:String>
+    <s:String x:Key="LeafUITipCodeUnknown">Unknown</s:String>
+    <s:String x:Key="LeafUITipCode0">Success</s:String>
+    <s:String x:Key="LeafUITipCode-1">Fail</s:String>
+    <s:String x:Key="LeafUITipCode-2">Exception</s:String>
+    <s:String x:Key="LeafUITipCode-3">Force stopped by user</s:String>
+    <s:String x:Key="LeafUITipCode-4">Killed</s:String>
+     <s:String x:Key="LeafUITipUnknow">Abnormal end</s:String>
+    
     <!--RunningWindow-->
      <s:String x:Key="RunningWindowCopy">Copy output</s:String>
         <s:String x:Key="RunningWindowCopyTip">This output is helpful for someone who is helping you</s:String>

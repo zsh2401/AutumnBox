@@ -60,6 +60,11 @@ namespace AutumnBox.OpenFramework.Extension.LeafExtension
         /// <param name="content"></param>
         void WriteLine(object content);
         /// <summary>
+        /// 写入一段输出内容,仅在开启详细输出时显示
+        /// </summary>
+        /// <param name="output"></param>
+        void WriteOutput(string output);
+        /// <summary>
         /// 开启帮助按钮
         /// </summary>
         /// <param name="callback"></param>
