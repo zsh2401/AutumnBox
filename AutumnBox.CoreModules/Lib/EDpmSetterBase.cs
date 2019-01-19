@@ -32,7 +32,7 @@ namespace AutumnBox.CoreModules.Lib
     [ExtText("WarningLastChance", 
         "This is the last chance to cancel,are sure to continue?", 
         "zh-cn:这是你最后一次取消的机会,一旦开始操作将不可停止")]
-    [ExtText("Extract", "Extract dpmpro to device", "zh-cn:提取dpmpro")]
+    [ExtText("Extract", "Extracting dpmpro to device", "zh-cn:提取dpmpro")]
     [ExtText("Push", "Pushing dpmpro to device", "zh-cn:推送dpmpro")]
     [ExtText("RMAcc", "Removing accounts", "zh-cn:正在移除所有账号")]
     [ExtText("RMUser", "Removing users", "zh-cn:正在移除所有用户")]
@@ -42,13 +42,25 @@ namespace AutumnBox.CoreModules.Lib
     [ExtText("MayFailedAdvice", "Maybe successful?Please check your app", "zh-cn:由于安卓DPM原因, 无法确定是否成功, 请自行查看手机进行判断")]
     [ExtText(TIP_OK, "Success!!", "zh-cn:设置成功!")]
     [ExtText(TIP_FAIL, "Fail!!", "zh-cn:失败!")]
-    [ExtText(OK_MSG, "Fail!!", "zh-cn:终于成功了,请前往手机端软件进行确认,如果需要卸载,一定要前往该软件其设置内进行操作,否则可能导致DPM残留,那可就没得救了")]
-    [ExtText(ERR_MSG_KEY_DO_ALREADY_SET, "Fail!!", "zh-cn:设备管理员已经被设置过了!请先移除之前的设备管理员应用(冻结APP请前往该APP设置进行移除)")]
-    [ExtText(ERR_MSG_KEY_UNKNOWN, "Fail!!", "zh-cn:奇怪的问题,请点击左上角复制按钮,并将其发送给你想咨询的人")]
-    [ExtText(ERR_MSG_KEY_HAVE_USERS, "Fail!!", "zh-cn:设备上还有多余的用户!请尝试删除应用多开,访客模式等再试")]
-    [ExtText(ERR_MSG_KEY_HAVE_ACCOUNTS, "Fail!!", "zh-cn:设备上还有多余的账号!前往设置->同步/账号->删除,然后再试")]
-    [ExtText(ERR_MSG_KEY_MIUI_SEC, "Fail!!", "zh-cn:出现这个问题,请关闭MIUI优化并开启MIUI安全调试!(均在开发者选项中)然后再试!")]
-    [ExtText(ERR_MSG_KEY_DPM_NOT_FOUND, "dpm not found!", "zh-cn:在你的设备上,dpmpro似乎被阉割了,蛋疼啊...")]
+    [ExtText(OK_MSG, 
+        "Finally succeeded, please go to the mobile phone software to confirm, if you need to uninstall, be sure to go to the software to operate within its settings, otherwise it may cause DPM residue, then it will not be saved.",
+        "zh-cn:终于成功了,请前往手机端软件进行确认,如果需要卸载,一定要前往该软件其设置内进行操作,否则可能导致DPM残留,那可就没得救了")]
+    [ExtText(ERR_MSG_KEY_DO_ALREADY_SET,
+        "Already have a device owner on the device, please remove it first",
+        "zh-cn:设备管理员已经被设置过了!请先移除之前的设备管理员应用(冻结APP请前往该APP设置进行移除)")]
+    [ExtText(ERR_MSG_KEY_UNKNOWN, "Unknown erroe!plz check the pro output!!", 
+        "zh-cn:奇怪的问题,请点击左上角复制按钮,并将其发送给你想咨询的人")]
+    [ExtText(ERR_MSG_KEY_HAVE_USERS, "There are other users on the device, please delete the visitor and other users.", 
+        "zh-cn:设备上还有多余的用户!请尝试删除应用多开,访客模式等再试")]
+    [ExtText(ERR_MSG_KEY_HAVE_ACCOUNTS, 
+        "There are other accounts on the device, please go to setttings->accounts/sync and remove all.", 
+        "zh-cn:设备上还有多余的账号!前往设置->同步/账号->删除,然后再试")]
+    [ExtText(ERR_MSG_KEY_MIUI_SEC, 
+        "Please go to the developer settings and turn on MIUI USB Security Setting and turn off  MIUI Opt Setting"
+        , "zh-cn:出现这个问题,请关闭MIUI优化并开启MIUI安全调试!(均在开发者选项中)然后再试!")]
+    [ExtText(ERR_MSG_KEY_DPM_NOT_FOUND,
+        "dpm not found...", 
+        "zh-cn:在你的设备上,dpmpro似乎被阉割了,蛋疼啊...")]
     internal abstract class EDpmSetterBase : LeafExtensionBase
     {
         public const string TIP_OK = "_OK";
