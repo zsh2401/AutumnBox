@@ -20,9 +20,9 @@ using System;
 namespace AutumnBox.CoreModules.Lib
 {
     [ExtDesc("使用奇淫技巧暴力设置设备管理员,\n注意:使用此模块前,必须先移除屏幕锁,指纹锁等,否则将可能导致不可预见的后果", "en-us:Use the sneaky skills to set up the device administrator, \n Note: Before using this module, you must first remove the screen lock, fingerprint lock, etc., otherwise it may lead to unforeseen consequences")]
-
     [ExtIcon("Icons.nuclear.png")]
     [DpmReceiver(null)]
+
     [ExtText("Warning", 
         "This module will violently delete your account and users, and set this app as the device owner. Are you sure you want to do this?",
         "zh-cn:本模块将会暴力删除你的账户与用户,并设置这个应用为设备管理员(免ROOT),你确定这么做吗?")]
@@ -38,10 +38,29 @@ namespace AutumnBox.CoreModules.Lib
     [ExtText("RMUser", "Removing users", "zh-cn:正在移除所有用户")]
     [ExtText("SettingDpm", "Setting device owner", "zh-cn:正在设置设备管理员")]
     [ExtText("UseDpmPro", "The dpm command not found,do you wanna try dpmpro?", "zh-cn:您的设备缺少DPM,使用DPMPRO吗?")]
-    [ExtText("MaySuccess", "May successed", "zh-cn:可能成功")]
-    [ExtText("MaySuccessAdvice", "Maybe successful?Please check your app", "zh-cn:由于安卓DPM原因, 无法确定是否成功, 请自行查看手机进行判断")]
+    [ExtText("MayFailed", "May successed", "zh-cn:可能失败")]
+    [ExtText("MayFailedAdvice", "Maybe successful?Please check your app", "zh-cn:由于安卓DPM原因, 无法确定是否成功, 请自行查看手机进行判断")]
+    [ExtText(TIP_OK, "Success!!", "zh-cn:设置成功!")]
+    [ExtText(TIP_FAIL, "Fail!!", "zh-cn:失败!")]
+    [ExtText(OK_MSG, "Fail!!", "zh-cn:终于成功了,请前往手机端软件进行确认,如果需要卸载,一定要前往该软件其设置内进行操作,否则可能导致DPM残留,那可就没得救了")]
+    [ExtText(ERR_MSG_KEY_DO_ALREADY_SET, "Fail!!", "zh-cn:设备管理员已经被设置过了!请先移除这个设备管理员(冻结APP请前往该APP设置进行移除)")]
+    [ExtText(ERR_MSG_KEY_UNKNOWN, "Fail!!", "zh-cn:奇怪的问题,请点击左上角复制按钮,并将其发送给你想咨询的人")]
+    [ExtText(ERR_MSG_KEY_HAVE_USERS, "Fail!!", "zh-cn:设备上还有多余的用户!请尝试删除应用多开,访客模式等再试")]
+    [ExtText(ERR_MSG_KEY_HAVE_ACCOUNTS, "Fail!!", "zh-cn:设备上还有多余的账号!前往设置->同步/账号->删除,然后再试")]
+    [ExtText(ERR_MSG_KEY_MIUI_SEC, "Fail!!", "zh-cn:出现这个问题,请关闭MIUI优化并开启MIUI安全调试!(均在开发者选项中)然后再试!")]
+    [ExtText(ERR_MSG_KEY_DPM_NOT_FOUND, "dpm not found!", "zh-cn:在你的设备上,dpmpro似乎被阉割了,蛋疼啊...")]
     internal abstract class EDpmSetterBase : LeafExtensionBase
     {
+        public const string TIP_OK = "_OK";
+        public const string TIP_FAIL = "_FAIL";
+        public const string ERR_MSG_KEY_UNKNOWN = "_Unknown";
+        public const string ERR_MSG_KEY_HAVE_USERS = "_HaveUsers";
+        public const string ERR_MSG_KEY_HAVE_ACCOUNTS = "_HaveAccs";
+        public const string ERR_MSG_KEY_MIUI_SEC = "_MiuiSec";
+        public const string ERR_MSG_KEY_DO_ALREADY_SET = "_AlreadySet";
+        public const string ERR_MSG_KEY_DPM_NOT_FOUND = "_DpmNotFound";
+        public const string OK_MSG = "_Ok";
+
         /// <summary>
         /// UI
         /// </summary>
@@ -144,16 +163,17 @@ namespace AutumnBox.CoreModules.Lib
                     if (DpmFailedMessageParser.TryParse(resultOfSetDpm, out string tip, out string message))
                     {
                         //解析成功,在输出框写下简要信息与建议
-                        UI.WriteLine(message);
+                        UI.WriteLine(texts[message]);
+                        UI.ShowMessage(texts[message]);
                         //UI流程结束
-                        UI.Finish(tip);
+                        UI.Finish(texts[tip]);
                     }
                     else
                     {
                         //解析失败,告诉用户可能成功
-                        UI.ShowMessage(texts["MaySuccessAdvice"]);
-                        UI.WriteLine(texts["MaySuccessAdvice"]);
-                        UI.Finish(texts["MaySuccess"]);
+                        UI.ShowMessage(texts["MayFailedAdvice"]);
+                        UI.WriteLine(texts["MayFailedAdvice"]);
+                        UI.Finish(texts["MayFailed"]);
                     }
                 }
             }
