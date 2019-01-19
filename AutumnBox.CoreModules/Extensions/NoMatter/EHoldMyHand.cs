@@ -33,12 +33,12 @@ namespace AutumnBox.CoreModules.Extensions.Hidden
                 ui.Show();
                 ui.WriteLine(manager["fuck"]);
                 ui.WriteOutput("fuck asdasjkdshadskjhkj");
-                ui.ShowMessage("WTF");
-                bool? choice = ui.DoChoice("FUCK");
+                ui.ShowMessage("WTF\n\n\n\n\n\nasdadas\n\n\nasdasdsahsdkajghsdakjfhsdjkaghsdfjkghjkfsdhgjkshfdjkgfhsjdgkhdskfjghjW");
+                bool? choice = ui.DoChoice("FUCcqwjeiwqeqehqWK");
                 ui.WriteLine(choice.ToString());
-                bool yn = ui.DoYN("FUCK2");
+                bool yn = ui.DoYN("FUCK2c   2rqwhewqhehqweqhwewqhejwqhewqjhqwejkqwhewqhWW");
                 ui.WriteLine(yn.ToString());
-                object result = ui.SelectFrom(new object[] { "a","b"});
+                object result = ui.SelectFrom(new object[] { "a","qqdasdsadasb","c","a","s","c","a"},"选择你要做的SB操作");
                 ui.WriteLine(result);
                 ui.Finish();
             }

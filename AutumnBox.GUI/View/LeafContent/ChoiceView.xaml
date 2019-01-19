@@ -25,6 +25,8 @@
                 </Button>
             </StackPanel>
         </Grid>
-        <TextBlock  TextWrapping="Wrap" x:Name="TBContent" DockPanel.Dock="Top"></TextBlock>
+        <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" DockPanel.Dock="Top">
+            <TextBlock  TextWrapping="Wrap" x:Name="TBContent" />
+        </ScrollViewer>
     </DockPanel>
 </UserControl>

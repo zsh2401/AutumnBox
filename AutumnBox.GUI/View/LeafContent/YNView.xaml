@@ -11,7 +11,7 @@
                Width="350" Height="200"
              >
     <DockPanel>
-        <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom" HorizontalAlignment="Center" Margin="10">
+        <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom" HorizontalAlignment="Center" Margin="0">
             <Button x:Name="BtnNo" HorizontalAlignment="Left" Command="materialDesign:DialogHost.CloseDialogCommand" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource ChoiceWindowBtnNo}">
                 <Button.CommandParameter>
                     <system:Boolean>False</system:Boolean>
@@ -23,6 +23,8 @@
                 </Button.CommandParameter>
             </Button>
         </StackPanel>
-        <TextBlock  TextWrapping="Wrap" x:Name="TBContent" DockPanel.Dock="Top"></TextBlock>
+        <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" DockPanel.Dock="Top">
+            <TextBlock  TextWrapping="Wrap" x:Name="TBContent" ></TextBlock>
+        </ScrollViewer>
     </DockPanel>
 </UserControl>
