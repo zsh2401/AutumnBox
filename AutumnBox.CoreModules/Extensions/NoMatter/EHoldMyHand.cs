@@ -16,6 +16,7 @@ namespace AutumnBox.CoreModules.Extensions.Hidden
     [ExtIcon("Icons.flash.png")]
     [ExtRequiredDeviceStates(AutumnBoxExtension.NoMatter)]
     [ExtDeveloperMode]
+    [ExtText("fuck","Hello","zh-cn:你好!")]
     internal class EHoldMyHand : LeafExtensionBase
     {
         [LProperty]
@@ -25,11 +26,12 @@ namespace AutumnBox.CoreModules.Extensions.Hidden
         private IDevice Device { get; set; }
 
         [LMain]
-        public void Main(IDevice device, Context context, ILeafUI ui, IUx ux, Dictionary<string, object> data)
+        public void Main(IDevice device, Context context, ILeafUI ui, IUx ux, Dictionary<string, object> data,TextAttrManager manager)
         {
             using (ui)
             {
                 ui.Show();
+                ui.WriteLine(manager["fuck"]);
                 ui.WriteOutput("fuck asdasjkdshadskjhkj");
                 ui.ShowMessage("WTF");
                 bool? choice = ui.DoChoice("FUCK");
