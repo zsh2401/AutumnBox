@@ -30,6 +30,7 @@ namespace AutumnBox.CoreModules.Extensions.Hidden
             using (ui)
             {
                 ui.Show();
+                ui.WriteOutput("fuck asdasjkdshadskjhkj");
                 ui.ShowMessage("WTF");
                 bool? choice = ui.DoChoice("FUCK");
                 ui.WriteLine(choice.ToString());

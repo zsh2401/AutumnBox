@@ -64,6 +64,30 @@ namespace AutumnBox.GUI.ViewModel
         }
         private readonly StringBuilder _contentBuilder;
 
+        public string FullContent
+        {
+            get => _fullContentBuilder?.ToString();
+            set { }
+        }
+        private readonly StringBuilder _fullContentBuilder;
+
+        public bool EnableFullContent
+        {
+            get => _enableFullContent; set
+            {
+                _enableFullContent = value;
+                RaisePropertyChanged();
+                RaisePropertyChanged(nameof(FullContentVisility));
+            }
+        }
+        private bool _enableFullContent = false;
+
+        public Visibility FullContentVisility
+        {
+            get => _enableFullContent ? Visibility.Visible : Visibility.Hidden;
+            set { }
+        }
+
         public double Progress
         {
             get => _progress; set
@@ -153,16 +177,17 @@ namespace AutumnBox.GUI.ViewModel
         public VMLeafUI()
         {
             _contentBuilder = new StringBuilder();
+            _fullContentBuilder = new StringBuilder();
             RaisePropertyChangedOnDispatcher = true;
             Title = "LeafUI Window";
             Progress = -1;
-            Tip = App.Current.Resources["RunningWindowStateRunning"] as string;
+            Tip = App.Current.Resources["LeafUITipRunning"] as string;
             Icon = null;
             Copy = new FlexiableCommand(() =>
             {
                 try
                 {
-                    Clipboard.SetText(Content);
+                    Clipboard.SetText(FullContent);
                 }
                 catch { }
             });
@@ -237,6 +262,14 @@ namespace AutumnBox.GUI.ViewModel
             ThrowIfNotRunning();
             _contentBuilder.AppendLine(content?.ToString());
             RaisePropertyChanged(nameof(Content));
+            WriteOutput(content?.ToString());
+        }
+
+        public void WriteOutput(string output)
+        {
+            ThrowIfNotRunning();
+            _fullContentBuilder.AppendLine(output?.ToString());
+            RaisePropertyChanged(nameof(FullContent));
         }
 
         public void Dispose()
@@ -276,7 +309,7 @@ namespace AutumnBox.GUI.ViewModel
             App.Current.Dispatcher.Invoke(() =>
             {
                 var view = new MessageView(message);
-                task = View.fuck.ShowDialog(view);
+                task = View.DialogHost.ShowDialog(view);
             });
             task.Wait();
         }
@@ -291,8 +324,8 @@ namespace AutumnBox.GUI.ViewModel
             Task<object> task = null;
             App.Current.Dispatcher.Invoke(() =>
             {
-                var view = new YNView(message,null,null);
-                task = View.fuck.ShowDialog(view);
+                var view = new YNView(message, null, null);
+                task = View.DialogHost.ShowDialog(view);
             });
             task.Wait();
             return (bool)task.Result;
@@ -308,14 +341,14 @@ namespace AutumnBox.GUI.ViewModel
             Task<object> task = null;
             App.Current.Dispatcher.Invoke(() =>
             {
-                var view = new ChoiceView(message,btnYes,btnNo,btnCancel);
-                task = View.fuck.ShowDialog(view);
+                var view = new ChoiceView(message, btnYes, btnNo, btnCancel);
+                task = View.DialogHost.ShowDialog(view);
             });
             task.Wait();
             return (task.Result as bool?);
         }
 
-        public object SelectFrom(object[] options,string hint=null)
+        public object SelectFrom(object[] options, string hint = null)
         {
             if (options == null)
             {
@@ -324,8 +357,8 @@ namespace AutumnBox.GUI.ViewModel
             Task<object> task = null;
             App.Current.Dispatcher.Invoke(() =>
             {
-                var view = new SingleSelectView(hint,options);
-                task = View.fuck.ShowDialog(view);
+                var view = new SingleSelectView(hint, options);
+                task = View.DialogHost.ShowDialog(view);
             });
             task.Wait();
             return task.Result;
