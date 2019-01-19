@@ -66,11 +66,11 @@ namespace AutumnBox.CoreModules.Lib
         {
             using (UI)
             {
-                //初始化UI
-                InitUI();
-
                 //显示UI
                 UI.Show();
+
+                //初始化UI
+                InitUI();
 
                 //第一次警告
                 if (!UI.DoYN(texts["Warning"]))
@@ -171,17 +171,17 @@ namespace AutumnBox.CoreModules.Lib
             viewSize.Width += 100;
             UI.Size = viewSize;
 
-            //UI.EnableHelpBtn(() =>
-            //{
-            //    try
-            //    {
-            //        System.Diagnostics.Process.Start("http://www.atmb.top/go/help/dpmhelp");
-            //    }
-            //    catch (Exception e)
-            //    {
-            //        Logger.Warn("cannot go to dpm setter's help", e);
-            //    }
-            //});
+            UI.EnableHelpBtn(() =>
+            {
+                try
+                {
+                    System.Diagnostics.Process.Start("http://www.atmb.top/go/help/dpmhelp");
+                }
+                catch (Exception e)
+                {
+                    Logger.Warn("cannot go to dpm setter's help", e);
+                }
+            });
         }
 
         /// <summary>
