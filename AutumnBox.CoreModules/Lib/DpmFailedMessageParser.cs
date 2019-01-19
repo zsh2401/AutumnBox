@@ -1,12 +1,14 @@
-﻿using System;
+﻿using AutumnBox.Basic.Calling;
 
 namespace AutumnBox.CoreModules.Lib
 {
     internal static class DpmFailedMessageParser
     {
-        public static bool TryParse(string output, out string tip, out string message)
+        public static bool TryParse(CommandExecutor.Result result, out string tip, out string message)
         {
-            throw new NotImplementedException();
+            tip = null;
+            message = null;
+            return false;
         }
     }
 }

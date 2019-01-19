@@ -5,6 +5,7 @@
 *************************************************/
 
 using System.Collections.Generic;
+using AutumnBox.Basic.Calling;
 using AutumnBox.Basic.Device;
 using AutumnBox.Basic.Exceptions;
 using AutumnBox.CoreModules.Aspect;
@@ -22,30 +23,29 @@ namespace AutumnBox.CoreModules.Extensions.Poweron
     {
         protected override int VisualMain()
         {
-            var dpm = new CstmDpmCommander(this, TargetDevice)
+            using (var executor = new CommandExecutor())
             {
-                CmdStation = this.CmdStation
-            };
-            Progress = 20;
-            dpm.Extract();
-            Progress = 50;
-            dpm.PushToDevice();
-            Progress = 80;
-            try
-            {
-                dpm.RemoveUsers();
-                WriteExitCode(0);
-                return 0;
-            }
-            catch (CommandErrorException ex)
-            {
-                WriteExitCode(ex.ExitCode ?? 1);
-                return ex.ExitCode ?? 1;
-            }
-            finally
-            {
-                Progress = 100;
-                
+                var dpm = new CstmDpmCommander(executor, this, TargetDevice);
+                Progress = 20;
+                dpm.Extract();
+                Progress = 50;
+                dpm.PushToDevice();
+                Progress = 80;
+                try
+                {
+                    dpm.RemoveUsers();
+                    WriteExitCode(0);
+                    return 0;
+                }
+                catch (CommandErrorException ex)
+                {
+                    WriteExitCode(ex.ExitCode ?? 1);
+                    return ex.ExitCode ?? 1;
+                }
+                finally
+                {
+                    Progress = 100;
+                }
             }
         }
         protected override void OnDestory(object args)
