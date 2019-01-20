@@ -9,6 +9,7 @@ using AutumnBox.GUI.MVVM;
 using AutumnBox.GUI.Properties;
 using AutumnBox.GUI.Util.OS;
 using AutumnBox.GUI.View.DialogContent;
+using AutumnBox.GUI.View.LeafContent;
 using AutumnBox.GUI.View.Windows;
 using MaterialDesignThemes.Wpf;
 using System;
@@ -56,7 +57,6 @@ namespace AutumnBox.GUI.ViewModel
             {
                 var pathEnv = info.EnvironmentVariables["path"];
                 info.EnvironmentVariables["path"] = $"{Adb.AdbToolsDir.FullName};" + pathEnv;
-
             }
             if (Settings.Default.StartCmdAtDesktop)
             {
@@ -64,28 +64,20 @@ namespace AutumnBox.GUI.ViewModel
             }
             if (OSInfo.IsWindows10)
             {
-                var args = new ChoicerContentStartArgs
+                var view = new ChoiceView(
+                    content: App.Current.Resources["msgShellChoiceTip"].ToString(),
+                    btnYes: "PowerShell",
+                    btnNo: "CMD",
+                   btnCancel: null);
+                var task = (App.Current.MainWindow as MainWindow).DialogHost.ShowDialog(view, closingEventHandler: (s, e) =>
                 {
-                    Content = "msgShellChoiceTip",
-                    ContentCenterButton = "CMD",
-                    ContentRightButton = "PowerShell"
-                };
-                args.Choiced += (s, e) =>
-                {
-                    switch (e.Result)
+                    if (e.Parameter == null) return;
+                    if ((bool)e.Parameter == true)
                     {
-                        case ChoicerResult.Center:
-                            Process.Start(info);
-                            break;
-                        case ChoicerResult.Right:
-                            info.FileName = "powershell.exe";
-                            Process.Start(info);
-                            break;
-                        default:
-                            break;
+                        info.FileName = "powershell.exe";
                     }
-                };
-                View.MaterialDialog.ShowChoiceDialog(args);
+                    Process.Start(info);
+                });
             }
             else
             {
