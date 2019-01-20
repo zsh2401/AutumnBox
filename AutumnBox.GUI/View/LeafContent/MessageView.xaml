@@ -7,8 +7,7 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              Background="{DynamicResource MainBackgroundBrush}"
-             Width="350" Height="200"
-             d:DesignHeight="400" d:DesignWidth="250">
+             Width="350" Height="200">
     <DockPanel>
         <Button Style="{DynamicResource MaterialDesignFlatButton}" DockPanel.Dock="Bottom" Command="materialDesign:DialogHost.CloseDialogCommand" CommandParameter="WTF">OK</Button>
         <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
