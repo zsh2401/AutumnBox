@@ -154,5 +154,17 @@ namespace AutumnBox.GUI.Properties {
                 this["StartCmdAtDesktop"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool DoubleClickRunExt {
+            get {
+                return ((bool)(this["DoubleClickRunExt"]));
+            }
+            set {
+                this["DoubleClickRunExt"] = value;
+            }
+        }
     }
 }

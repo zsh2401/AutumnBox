@@ -217,6 +217,15 @@ namespace AutumnBox.GUI.ViewModel
             }
         }
 
+        public bool DoubleClickToStartExtension
+        {
+            get => Settings.Default.DoubleClickRunExt;
+            set
+            {
+                Settings.Default.DoubleClickRunExt = value;
+                RaisePropertyChanged();
+            }
+        }
 
         public ICommand SendToDesktop { get; private set; }
 

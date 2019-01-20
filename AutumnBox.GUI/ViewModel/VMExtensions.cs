@@ -6,7 +6,9 @@
 using AutumnBox.Basic.Device;
 using AutumnBox.GUI.Model;
 using AutumnBox.GUI.MVVM;
+using AutumnBox.GUI.Properties;
 using AutumnBox.GUI.Util.Bus;
+using AutumnBox.GUI.Util.Debugging;
 using AutumnBox.GUI.Util.I18N;
 using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.Management.Filters;
@@ -32,16 +34,6 @@ namespace AutumnBox.GUI.ViewModel
             }
         }
         private IEnumerable<ExtensionWrapperDock> _docks;
-
-        public ExtensionWrapperDock SelectedDock
-        {
-            get => _selectedDock; set
-            {
-                _selectedDock = value;
-                RaisePropertyChanged();
-            }
-        }
-        private ExtensionWrapperDock _selectedDock;
 
         public bool ExtPanelIsEnabled
         {
@@ -94,7 +86,25 @@ namespace AutumnBox.GUI.ViewModel
         }
         private IEnumerable<IExtensionWrapper> _extensions;
 
-        public ICommand RunSelectedItem { get; private set; }
+        public ICommand ClickItem
+        {
+            get => _clickItem; private set
+            {
+                _clickItem = value;
+                RaisePropertyChanged();
+            }
+        }
+        private ICommand _clickItem;
+
+        public ICommand DoubleClickItem
+        {
+            get => _doubleClickItem; private set
+            {
+                _doubleClickItem = value;
+                RaisePropertyChanged();
+            }
+        }
+        private ICommand _doubleClickItem;
 
         public ICommand GotoDownloadExtension { get; private set; }
         #endregion
@@ -122,9 +132,21 @@ namespace AutumnBox.GUI.ViewModel
         {
             targetState = state;
             ComObserver();
-            RunSelectedItem = new FlexiableCommand(() =>
+            ClickItem = new FlexiableCommand((p) =>
             {
-                SelectedDock?.Wrapper?.GetThread().Start();
+                SGLogger<VMExtensions>.Info(p);
+                if (!Settings.Default.DoubleClickRunExt)
+                {
+                    (p as ExtensionWrapperDock)?.Wrapper?.GetThread().Start();
+                }
+            });
+            DoubleClickItem = new FlexiableCommand((p) =>
+            {
+                SGLogger<VMExtensions>.Info(p);
+                if (Settings.Default.DoubleClickRunExt)
+                {
+                    (p as ExtensionWrapperDock)?.Wrapper?.GetThread().Start();
+                }
             });
         }
         private void ComObserver()
