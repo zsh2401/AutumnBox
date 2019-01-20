@@ -7,7 +7,7 @@
              xmlns:viewmodel="clr-namespace:AutumnBox.GUI.ViewModel"
              FontFamily="{DynamicResource AutumnBox.Font}"
              FontSize="15"
-             mc:Ignorable="d" Width="600" Height="460">
+             mc:Ignorable="d" Width="600" Height="480">
     <UserControl.DataContext>
         <viewmodel:VMSettingsDialog/>
     </UserControl.DataContext>
@@ -44,6 +44,13 @@
                             <TextBlock Margin="0,0,15,0" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{DynamicResource PanelSettingsLanguage}"/>
                             <ComboBox HorizontalAlignment="Right" ItemsSource="{Binding Languages}" DisplayMemberPath="{Binding LanguageDisplayMemberPath}" SelectedItem="{Binding SelectedLanguage}" Width="170"/>
                         </Grid>
+                        <DockPanel Margin="5">
+                            <StackPanel Orientation="Vertical" Margin="0,0,39,0">
+                                <TextBlock HorizontalAlignment="Left" Text="{DynamicResource PanelSettingsDoubleClickToStartExt}"/>
+                                <TextBlock Foreground="DarkSlateGray" TextWrapping="Wrap" FontSize="12" HorizontalAlignment="Left" Text="{DynamicResource PanelSettingsDoubleClickToStartExtTip}"/>
+                            </StackPanel>
+                            <ToggleButton HorizontalAlignment="Right" Style="{DynamicResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding DoubleClickToStartExtension}" />
+                        </DockPanel>
                     </StackPanel>
                 </materialDesign:Card>
                 <materialDesign:Card Margin="0,0,0,5">

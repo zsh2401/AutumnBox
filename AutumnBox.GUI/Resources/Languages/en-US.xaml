@@ -59,6 +59,8 @@
      <s:String x:Key="UpdateWindowBtnSkipVersion">Skip this version</s:String>
     
     <!--PanelSettings-->
+    <s:String x:Key="PanelSettingsDoubleClickToStartExt">Double click to run extension</s:String>
+    <s:String x:Key="PanelSettingsDoubleClickToStartExtTip">run extension by single click if you disable this option</s:String>
      <s:String x:Key="PanelSettingsTitleDontNeedUpdate">You are using the newest version</s:String>
      <s:String x:Key="PanelSettingsMsgDontNeedUpdate">Do not need any update</s:String>
     <s:String x:Key="PanelSettingsGUIVersionLabel">GUI</s:String>
