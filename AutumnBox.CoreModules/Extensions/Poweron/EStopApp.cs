@@ -9,7 +9,7 @@ using AutumnBox.OpenFramework.Extension;
 
 namespace AutumnBox.CoreModules.Extensions.Poweron
 {
-    [ExtName("激活小黑屋", "en-us:Set StopApp as DPM without root")]
+    [ExtName("激活小黑屋", "en-us:Set StopApp as DPM")]
     [ExtAppProperty(PKG_NAME)]
     [ExtIcon("Icons.stopapp.png")]
     [ExtPriority(ExtPriority.HIGH + 1)]
