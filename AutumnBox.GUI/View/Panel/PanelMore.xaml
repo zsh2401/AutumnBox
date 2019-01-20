@@ -5,7 +5,6 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              FontFamily="{DynamicResource AutumnBox.Font}"
              xmlns:local="clr-namespace:AutumnBox.GUI.View.Panel"
-               xmlns:ctrl="clr-namespace:AutumnBox.GUI.View.Controls"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:viewmodel="clr-namespace:AutumnBox.GUI.ViewModel"
              mc:Ignorable="d" d:DesignWidth="820" >

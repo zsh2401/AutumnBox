@@ -17,13 +17,14 @@ namespace AutumnBox.GUI.Util.UI
             {
                 var ipStr = values[0] as string;
                 var portStr = values[1] as string;
+                if (ipStr == "iloveyou") return ipStr;
                 var ip = IPAddress.Parse(ipStr);
                 var port = ushort.Parse(portStr);
                 return new IPEndPoint(ip, port);
             }
             catch
             {
-                return null;
+                return false;
             }
         }
 

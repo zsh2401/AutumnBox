@@ -72,7 +72,7 @@ namespace AutumnBox.OpenFramework.Extension.LeafExtension
         /// 写入一段输出内容,仅在开启详细输出时显示
         /// </summary>
         /// <param name="output"></param>
-        void WriteOutput(string output);
+        void WriteOutput(object output);
         #endregion
         /// <summary>
         /// 开启帮助按钮

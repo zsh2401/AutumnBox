@@ -70,15 +70,15 @@ namespace AutumnBox.GUI.ViewModel
         {
             ConnectDevice = new FlexiableCommand((p) =>
             {
-                new ContentConnectNetDevice().Show();
+                AtmbContext.Instance.NewExtensionThread("ENetDeviceConnecter")?.Start();
             });
             DisconnectDevice = new FlexiableCommand((p) =>
             {
-                new ContentDisconnectDevice().Show();
+                AtmbContext.Instance.NewExtensionThread("ENetDeviceDisconnecter")?.Start();
             });
             OpenDeviceNetDebugging = new FlexiableCommand((p) =>
             {
-                new ContentEnableDeviceNetDebugging().Show();
+                AtmbContext.Instance.NewExtensionThread("EOpenUsbDeviceNetDebugging")?.Start();
             });
             ConnectedDevicesListener.Instance.DevicesChanged += ConnectedDevicesChanged;
         }
