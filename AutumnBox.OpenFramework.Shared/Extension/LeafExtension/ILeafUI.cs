@@ -27,7 +27,11 @@ namespace AutumnBox.OpenFramework.Extension.LeafExtension
         /// <summary>
         /// 进度条
         /// </summary>
-        double Progress { get; set; }
+        int Progress { get; set; }
+        /// <summary>
+        /// 是否显示专业输出
+        /// </summary>
+        bool ProOutputVisible { get; set; }
         /// <summary>
         /// 请求退出时发生
         /// </summary>

@@ -88,7 +88,7 @@ namespace AutumnBox.GUI.ViewModel
             set { }
         }
 
-        public double Progress
+        public int Progress
         {
             get => _progress; set
             {
@@ -105,7 +105,7 @@ namespace AutumnBox.GUI.ViewModel
                 RaisePropertyChanged();
             }
         }
-        private double _progress;
+        private int _progress;
 
         public string Tip
         {
@@ -166,6 +166,12 @@ namespace AutumnBox.GUI.ViewModel
         public event EventHandler<LeafCloseBtnClickedEventArgs> CloseButtonClicked;
 
         private Panel InnerPanel { get; set; }
+
+        public bool ProOutputVisible
+        {
+            get => EnableFullContent;
+            set => EnableFullContent = value;
+        }
 
         private void InitView()
         {
