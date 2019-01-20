@@ -170,12 +170,16 @@
     <Compile Include="Util\FatalHandler.cs" />
     <Compile Include="Util\Net\JsonGetter.cs" />
     <Compile Include="Util\Net\ToastMotdGetter.cs" />
+    <Compile Include="Util\OpenFxManagement\GUIApiManager.cs" />
+    <Compile Include="Util\OpenFxManagement\IAutumnBoxGUIApi.cs" />
+    <Compile Include="Util\OpenFxManagement\IVMLeafUIApi.cs" />
     <Compile Include="Util\OS\Manager.cs" />
     <Compile Include="Util\OS\OSInfo.cs" />
     <Compile Include="Util\OS\TaskKill.cs" />
     <Compile Include="Util\Net\Statistics.cs" />
     <Compile Include="Util\ToastMotd.cs" />
     <Compile Include="Util\UI\BlurHelper.cs" />
+    <Compile Include="Util\UI\EndPointConverter.cs" />
     <Compile Include="Util\UI\HelpButtonHelper.cs" />
     <Compile Include="Util\UI\UIHelper.cs" />
     <Compile Include="Model\ChoicerContentStartArgs.cs" />
@@ -214,7 +218,6 @@
     <Compile Include="Util\Bus\DeviceSelectionObserver.cs" />
     <Compile Include="ViewModel\VMSettingsDialog.cs" />
     <Compile Include="ViewModel\VMUpdateWindow.cs" />
-    <Compile Include="View\Controls\AtmbDialogContent.cs" />
     <Compile Include="View\DialogContent\ContentConnectNetDevice.xaml.cs">
       <DependentUpon>ContentConnectNetDevice.xaml</DependentUpon>
     </Compile>
@@ -505,6 +508,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Resources\Other.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Resources\Urls.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -706,7 +713,9 @@
   <ItemGroup>
     <Resource Include="Resources\Drawable\icon.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="View\Controls\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\AdbExecutable\adb.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

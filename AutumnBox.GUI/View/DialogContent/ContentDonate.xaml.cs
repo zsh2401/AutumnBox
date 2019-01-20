@@ -1,8 +1,4 @@
-﻿using AutumnBox.GUI.Util.Debugging;
-using AutumnBox.GUI.View.Controls;
-using System;
-using System.Diagnostics;
-using System.Windows.Controls;
+﻿using System.Windows.Controls;
 
 namespace AutumnBox.GUI.View.DialogContent
 {

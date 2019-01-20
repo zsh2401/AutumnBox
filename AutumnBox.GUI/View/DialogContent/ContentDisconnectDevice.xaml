@@ -1,5 +1,4 @@
-﻿<controls:AtmbDialogContent
-    xmlns:controls="clr-namespace:AutumnBox.GUI.View.Controls"
+﻿<UserControl
     x:Class="AutumnBox.GUI.View.DialogContent.ContentDisconnectDevice"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -16,4 +15,4 @@
             <Button Command="materialDesign:DialogHost.CloseDialogCommand" Style="{DynamicResource MaterialDesignFlatButton}" Margin="5" Content="{DynamicResource ContentDisconnectNetDeviceBtnCancel}"/>
         </StackPanel>
     </Grid>
-</controls:AtmbDialogContent>
+</UserControl>

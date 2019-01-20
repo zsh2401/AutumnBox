@@ -15,6 +15,7 @@ using System.Security.Policy;
 using AutumnBox.Basic.Device;
 using AutumnBox.GUI.Util.Bus;
 using AutumnBox.OpenFramework.Extension.LeafExtension;
+using AutumnBox.GUI.View.DialogContent;
 
 namespace AutumnBox.GUI.Util.OpenFxManagement
 {
@@ -282,7 +283,7 @@ namespace AutumnBox.GUI.Util.OpenFxManagement
             switch (viewId)
             {
                 case "inputIpEndPoint":
-                    return null;
+                    return new ContentConnectNetDevice();
             }
             return null;
         }

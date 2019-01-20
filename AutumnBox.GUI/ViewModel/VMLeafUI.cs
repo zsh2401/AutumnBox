@@ -299,7 +299,7 @@ namespace AutumnBox.GUI.ViewModel
             WriteOutput(content?.ToString());
         }
 
-        public void WriteOutput(string output)
+        public void WriteOutput(object output)
         {
             ThrowIfNotRunning();
             _fullContentBuilder.AppendLine(output?.ToString());
