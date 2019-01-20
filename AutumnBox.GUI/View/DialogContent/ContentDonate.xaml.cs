@@ -9,23 +9,11 @@ namespace AutumnBox.GUI.View.DialogContent
     /// <summary>
     /// ContentDonate.xaml 的交互逻辑
     /// </summary>
-    public partial class ContentDonate : AtmbDialogContent
+    public partial class ContentDonate : UserControl
     {
         public ContentDonate()
         {
             InitializeComponent();
-        }
-
-        private void Button_Click(object sender, System.Windows.RoutedEventArgs e)
-        {
-            try
-            {
-                Process.Start(App.Current.Resources["urlDonatePage"].ToString());
-            }
-            catch (Exception ex)
-            {
-                SLogger.Warn(this, "can not open donate page url", ex);
-            }
         }
     }
 }

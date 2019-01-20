@@ -215,9 +215,6 @@
     <Compile Include="ViewModel\VMSettingsDialog.cs" />
     <Compile Include="ViewModel\VMUpdateWindow.cs" />
     <Compile Include="View\Controls\AtmbDialogContent.cs" />
-    <Compile Include="View\DialogContent\ContentChoice.xaml.cs">
-      <DependentUpon>ContentChoice.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\DialogContent\ContentConnectNetDevice.xaml.cs">
       <DependentUpon>ContentConnectNetDevice.xaml</DependentUpon>
     </Compile>
@@ -248,7 +245,6 @@
     <Compile Include="View\LeafContent\YNView.xaml.cs">
       <DependentUpon>YNView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\MaterialDialog.cs" />
     <Compile Include="View\OfTheDay\MOTD.xaml.cs">
       <DependentUpon>MOTD.xaml</DependentUpon>
     </Compile>
@@ -510,10 +506,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Resources\Urls.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\DialogContent\ContentChoice.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
