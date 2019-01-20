@@ -173,6 +173,28 @@ namespace AutumnBox.GUI.ViewModel
             set => EnableFullContent = value;
         }
 
+        public int Height
+        {
+            get => _height;
+            set
+            {
+                _height = value;
+                RaisePropertyChanged();
+            }
+        }
+        private int _height;
+
+        public int Width
+        {
+            get => _width;
+            set
+            {
+                _width = value;
+                RaisePropertyChanged();
+            }
+        }
+        private int _width;
+
         private void InitView()
         {
             if (CurrentState != State.Ready) return;
