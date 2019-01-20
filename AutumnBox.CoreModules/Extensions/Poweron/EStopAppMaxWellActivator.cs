@@ -8,7 +8,7 @@ using System.Threading;
 
 namespace AutumnBox.CoreModules.Extensions.Poweron
 {
-    [ExtName("激活小黑屋麦克斯韦妖模式", "en-us:StopApp MaxWell")]
+    [ExtName("StopApp MaxWell Mode", "zh-cn:激活小黑屋麦克斯韦妖模式")]
     [ExtAuth("zsh2401")]
     [ExtAppProperty(PKG_NAME)]
     [ExtPriority(ExtPriority.HIGH - 1)]

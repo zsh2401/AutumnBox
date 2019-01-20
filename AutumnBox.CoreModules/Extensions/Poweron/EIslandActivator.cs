@@ -4,7 +4,7 @@ using AutumnBox.OpenFramework.Extension;
 
 namespace AutumnBox.CoreModules.Extensions.Poweron
 {
-    [ExtName("Activate Island by on key", "zh-cn:一键激活岛")]
+    [ExtName("Set Island as DPM", "zh-cn:一键激活岛")]
     [ExtAppProperty(PKG_NAME)]
     [ExtIcon("Icons.Island.png")]
     [ExtRequiredDeviceStates(Basic.Device.DeviceState.Poweron)]

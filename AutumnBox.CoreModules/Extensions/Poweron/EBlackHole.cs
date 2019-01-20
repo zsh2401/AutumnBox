@@ -9,11 +9,10 @@ using AutumnBox.OpenFramework.Extension;
 
 namespace AutumnBox.CoreModules.Extensions.Poweron
 {
-    [ExtName("激活黑洞", "en-us:Set Blackhole as DPM without root")]
+    [ExtName("激活黑洞", "en-us:Set Blackhole as DPM")]
     [ExtIcon("Icons.blackhole.png")]
     [ExtAppProperty(PKGNAME)]
     [DpmReceiver(RECEIVER_NAME)]
-    [ExtRequiredDeviceStates(Basic.Device.DeviceState.Poweron)]
     internal class EBlackHole : EDpmSetterBase
     {
         public const string PKGNAME = "com.hld.apurikakusu";

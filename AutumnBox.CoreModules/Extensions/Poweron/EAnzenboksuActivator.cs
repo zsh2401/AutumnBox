@@ -10,9 +10,8 @@ using AutumnBox.OpenFramework.Extension;
 
 namespace AutumnBox.CoreModules.Extensions.Poweron
 {
-    [ExtName("激活第二空间")]
+    [ExtName("激活第二空间","en-us:Set Anzenboksu as DPM")]
     [ExtIcon("Icons.Anzenbokusu.png")]
-    [ExtRegions("zh-CN")]
     [ExtRequiredDeviceStates(Basic.Device.DeviceState.Poweron)]
     [ExtAppProperty(PKG_NAME)]
     [DpmReceiver(RECEIVER_NAME)]

@@ -9,8 +9,8 @@ using AutumnBox.OpenFramework.Extension;
 
 namespace AutumnBox.CoreModules.Extensions.Poweron
 {
-    [ExtRegions("zh-CN")]
-    [ExtName("激活FreezeYou", "en-us:Set FreezeYou as DPM without root")]
+    //[ExtRegions("zh-CN")]
+    [ExtName("激活FreezeYou", "en-us:Set FreezeYou! as DPM")]
     [ExtIcon("Icons.freezeYou.png")]
     [ExtAppProperty(PKGNAME)]
     [DpmReceiver(RECEIVER_NAME)]
