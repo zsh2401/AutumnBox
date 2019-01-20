@@ -1,5 +1,6 @@
 ﻿using AutumnBox.GUI.MVVM;
 using AutumnBox.GUI.Util.Debugging;
+using AutumnBox.GUI.Util.OpenFxManagement;
 using AutumnBox.GUI.Util.UI;
 using AutumnBox.GUI.View.LeafContent;
 using AutumnBox.GUI.View.Windows;
@@ -13,7 +14,7 @@ using System.Windows.Controls;
 
 namespace AutumnBox.GUI.ViewModel
 {
-    class VMLeafUI : ViewModelBase, ILeafUI
+    class VMLeafUI : ViewModelBase, ILeafUI,IVMLeafUIApi
     {
         private enum State
         {
@@ -221,7 +222,8 @@ namespace AutumnBox.GUI.ViewModel
             });
             CurrentState = State.Ready;
         }
-        public DialogHost HiddenGetDialogHost()
+
+        public DialogHost GetDialogHost()
         {
             return View.DialogHost;
         }

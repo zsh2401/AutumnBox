@@ -18,7 +18,7 @@ using AutumnBox.OpenFramework.Extension.LeafExtension;
 
 namespace AutumnBox.GUI.Util.OpenFxManagement
 {
-    internal partial class AutumnBox_GUI_Caller : IBaseApi
+    internal partial class AutumnBox_GUI_Caller : IBaseApi, IAutumnBoxGUIApi
     {
         public IDevice SelectedDevice
         {
@@ -275,6 +275,16 @@ namespace AutumnBox.GUI.Util.OpenFxManagement
                 }.DataContext as ILeafUI;
             });
             return result;
+        }
+
+        public object GetNewView(string viewId)
+        {
+            switch (viewId)
+            {
+                case "inputIpEndPoint":
+                    return null;
+            }
+            return null;
         }
     }
 }
