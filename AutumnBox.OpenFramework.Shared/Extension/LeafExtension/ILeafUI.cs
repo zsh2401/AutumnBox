@@ -17,9 +17,13 @@ namespace AutumnBox.OpenFramework.Extension.LeafExtension
         /// </summary>
         string Title { get; set; }
         /// <summary>
-        /// 大小
+        /// LeafUI高度
         /// </summary>
-        Size Size { set; get; }
+        int Height { get; set; }
+        /// <summary>
+        /// LeafUI宽度
+        /// </summary>
+        int Width { get; set; }
         /// <summary>
         /// 状态描述
         /// </summary>
