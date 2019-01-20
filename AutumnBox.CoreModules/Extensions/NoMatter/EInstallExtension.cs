@@ -36,7 +36,7 @@ namespace AutumnBox.CoreModules.Extensions.NoMatter
                         string target = Path.Combine(extensionPath, file.Name);
                         file.CopyTo(target,true);
                         copied++;
-                        ui.Progress = (Convert.ToDouble(copied) /  files.Length * 100);
+                        ui.Progress = (int)(Convert.ToDouble(copied) /  files.Length * 100);
                     }
                     app.RestartApp();
                 }
