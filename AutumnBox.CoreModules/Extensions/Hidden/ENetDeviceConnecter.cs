@@ -1,6 +1,4 @@
 ﻿using AutumnBox.Basic.Calling;
-using AutumnBox.GUI.Util.OpenFxManagement;
-using AutumnBox.OpenFramework.Content;
 using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.Extension.LeafExtension;
 using AutumnBox.OpenFramework.Open;
@@ -52,8 +50,9 @@ namespace AutumnBox.CoreModules.Extensions.Hidden
 
         private bool TryGetInputEndPoint(ILeafUI ui, TextAttrManager texts, out IPEndPoint endPoint)
         {
-            IVMLeafUIApi leafUIHideApi = (IVMLeafUIApi)ui;
-            IAutumnBoxGUIApi guiHideApi = (IAutumnBoxGUIApi)GUIApiManager.BaseApiInstance;
+            var guiHideApi = HideApiManager.guiHideApi;
+            var leafUIHideApi = ui.ToLeafUIHideApi();
+
             Task<object> dialogTask = null;
             do
             {
