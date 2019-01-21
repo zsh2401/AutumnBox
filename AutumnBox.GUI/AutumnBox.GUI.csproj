@@ -713,9 +713,7 @@
   <ItemGroup>
     <Resource Include="Resources\Drawable\icon.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="View\Controls\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Resources\AdbExecutable\adb.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
