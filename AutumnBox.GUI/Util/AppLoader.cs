@@ -10,8 +10,10 @@ using AutumnBox.GUI.Util.Debugging;
 using AutumnBox.GUI.Util.Net;
 using AutumnBox.GUI.Util.OpenFxManagement;
 using AutumnBox.GUI.Util.OS;
+using AutumnBox.GUI.View.DialogContent;
 using AutumnBox.GUI.View.Windows;
 using AutumnBox.OpenFramework;
+using MaterialDesignThemes.Wpf;
 using System;
 using System.IO;
 using System.Threading;
@@ -51,6 +53,15 @@ namespace AutumnBox.GUI.Util
         {
             LoggingStation.Instance.Work();
             ui.Progress = 0;
+            if (Settings.Default.IsFirstLaunch)
+            {
+                Task langDialogTask = null;
+                App.Current.Dispatcher.Invoke(() =>
+                {
+                    langDialogTask = (App.Current.MainWindow as MainWindow).DialogHost.ShowDialog(new LanguageChoice());
+                });
+                langDialogTask.Wait();
+            }
             //如果设置在启动时打开调试窗口
             if (Settings.Default.ShowDebuggingWindowNextLaunch)
             {
