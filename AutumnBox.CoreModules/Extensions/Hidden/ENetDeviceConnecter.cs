@@ -74,6 +74,7 @@ namespace AutumnBox.CoreModules.Extensions.Hidden
             }
             else if (dialogTask.Result is string str && str == "iloveyou")
             {
+                //我喜欢你,曹娜(*^▽^*)
                 System.Diagnostics.Process.Start("https://lovecaona.cn");
             }
             endPoint = null;
