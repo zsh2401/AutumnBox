@@ -68,11 +68,11 @@ namespace AutumnBox.Basic.Device
             device.ThrowIfNotAlive();
             if (device.State == DeviceState.Fastboot)
             {
-                device.Fastboot("reboot-edl").ThrowIfExitCodeNotEqualsZero();
+                device.Fastboot("oem edl").ThrowIfExitCodeNotEqualsZero();
             }
             else
             {
-                device.Adb("reboot-edl").ThrowIfExitCodeNotEqualsZero();
+                device.Adb("reboot edl").ThrowIfExitCodeNotEqualsZero();
             }
         }
     }
