@@ -9,7 +9,7 @@ namespace AutumnBox.GUI.Util.Debugging
     internal class LoggingStation : IDisposable
     {
         private const string LOG_INFO_FMT = "[{0}][{1}]<{2}>: {3}";
-        private const string LOG_FLODER = "..\\logs";
+        public const string LOG_FLODER = "..\\logs";
         private const string LOG_FILENAME_FORMAT = "yy_MM_dd__HH_mm_ss";
         public static LoggingStation Instance { get; private set; }
         public event EventHandler<LogEventArgs> Logging;

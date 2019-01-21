@@ -7,22 +7,22 @@
              xmlns:viewmodel="clr-namespace:AutumnBox.GUI.ViewModel"
              FontFamily="{DynamicResource AutumnBox.Font}"
              FontSize="15"
-             mc:Ignorable="d" Width="600" Height="480">
+             mc:Ignorable="d" Width="450">
     <UserControl.DataContext>
         <viewmodel:VMSettingsDialog/>
     </UserControl.DataContext>
     <DockPanel>
         <!--<materialDesign:Card DockPanel.Dock="Bottom">-->
-            <Grid Margin="5" DockPanel.Dock="Bottom">
-                <Label Height="1" VerticalAlignment="Top" Background="LightGray"/>
-                <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
-                    <Button Style="{DynamicResource MaterialDesignFlatButton}" Command="{Binding ResetSettings}" Content="{DynamicResource PanelSettingsReset}"/>
-                    <Button Command="{Binding SendToDesktop}" FontSize="12" Margin="5" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource PanelSettingsSendToDesktop}"/>
-                </StackPanel>
-                <Button  HorizontalAlignment="Right" Style="{DynamicResource MaterialDesignFlatButton}" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Content="{DynamicResource btnClose}"/>
-            </Grid>
+        <Grid Margin="5" DockPanel.Dock="Bottom">
+            <Label Height="1" VerticalAlignment="Top" Background="LightGray"/>
+            <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
+                <Button Style="{DynamicResource MaterialDesignFlatButton}" Command="{Binding ResetSettings}" Content="{DynamicResource PanelSettingsReset}"/>
+                <Button Command="{Binding SendToDesktop}" FontSize="12" Margin="5" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource PanelSettingsSendToDesktop}"/>
+            </StackPanel>
+            <Button  HorizontalAlignment="Right" Style="{DynamicResource MaterialDesignFlatButton}" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Content="{DynamicResource btnClose}"/>
+        </Grid>
         <!--</materialDesign:Card>-->
-        
+
         <ScrollViewer DockPanel.Dock="Top"  HorizontalScrollBarVisibility="Disabled"  Template="{DynamicResource AtmbxScrollViewer}" VerticalScrollBarVisibility="Hidden">
             <StackPanel Orientation="Vertical">
                 <materialDesign:Card Margin="0,0,0,5">
@@ -31,25 +31,26 @@
                         <Label Height="1" Background="LightGray"/>
                         <DockPanel>
                             <ToggleButton DockPanel.Dock="Right" Style="{DynamicResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding UseRandomTheme}"  ToolTip="{DynamicResource PanelSettingsRandomTheme}"/>
-                            <StackPanel Orientation="Vertical" DockPanel.Dock="Left">
-                                <TextBlock HorizontalAlignment="Left" FontSize="15" Text="{DynamicResource PanelSettingsRandomTheme}"/>
-                                <TextBlock Foreground="DarkSlateGray" TextWrapping="Wrap" FontSize="12" HorizontalAlignment="Left" Text="{DynamicResource PanelSettingsRandomThemeTip}"/>
+                            <StackPanel DockPanel.Dock="Left">
+                                <TextBlock FontSize="15" Text="{DynamicResource PanelSettingsRandomTheme}"/>
+                                <TextBlock Foreground="DarkSlateGray" TextWrapping="Wrap" FontSize="12" Text="{DynamicResource PanelSettingsRandomThemeTip}"/>
                             </StackPanel>
                         </DockPanel>
-                        <Grid IsEnabled="{Binding ThemeComboBoxEnabled}">
-                            <TextBlock Margin="0,0,15,0" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{DynamicResource Theme}"/>
-                            <ComboBox HorizontalAlignment="Right" ItemsSource="{Binding Themes}" DisplayMemberPath="{Binding ThemeDisplayMemberPath}" SelectedItem="{Binding SelectedTheme}" Width="170"/>
-                        </Grid>
-                        <Grid>
-                            <TextBlock Margin="0,0,15,0" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{DynamicResource PanelSettingsLanguage}"/>
-                            <ComboBox HorizontalAlignment="Right" ItemsSource="{Binding Languages}" DisplayMemberPath="{Binding LanguageDisplayMemberPath}" SelectedItem="{Binding SelectedLanguage}" Width="170"/>
-                        </Grid>
-                        <DockPanel Margin="5">
-                            <StackPanel Orientation="Vertical" Margin="0,0,39,0">
-                                <TextBlock HorizontalAlignment="Left" Text="{DynamicResource PanelSettingsDoubleClickToStartExt}"/>
-                                <TextBlock Foreground="DarkSlateGray" TextWrapping="Wrap" FontSize="12" HorizontalAlignment="Left" Text="{DynamicResource PanelSettingsDoubleClickToStartExtTip}"/>
+                        <DockPanel IsEnabled="{Binding ThemeComboBoxEnabled}">
+                            <ComboBox DockPanel.Dock="Right" ItemsSource="{Binding Themes}" DisplayMemberPath="{Binding ThemeDisplayMemberPath}" SelectedItem="{Binding SelectedTheme}"/>
+                            <TextBlock DockPanel.Dock="Left" Margin="0,0,15,0"  VerticalAlignment="Center" Text="{DynamicResource Theme}"/>
+                        </DockPanel>
+                        <DockPanel>
+                            <ComboBox DockPanel.Dock="Right" ItemsSource="{Binding Languages}" DisplayMemberPath="{Binding LanguageDisplayMemberPath}" SelectedItem="{Binding SelectedLanguage}"/>
+                            <TextBlock DockPanel.Dock="Left" Margin="0,0,15,0"  VerticalAlignment="Center" Text="{DynamicResource PanelSettingsLanguage}"/>
+                        </DockPanel>
+                        <DockPanel>
+                            <ToggleButton DockPanel.Dock="Right" Style="{DynamicResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding DoubleClickToStartExtension}" />
+                            <StackPanel DockPanel.Dock="Left">
+                                <TextBlock Text="{DynamicResource PanelSettingsDoubleClickToStartExt}"/>
+                                <TextBlock Foreground="DarkSlateGray" TextWrapping="Wrap" FontSize="12" Text="{DynamicResource PanelSettingsDoubleClickToStartExtTip}"/>
                             </StackPanel>
-                            <ToggleButton HorizontalAlignment="Right" Style="{DynamicResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding DoubleClickToStartExtension}" />
+
                         </DockPanel>
                     </StackPanel>
                 </materialDesign:Card>
@@ -60,8 +61,8 @@
                         <DockPanel>
                             <ToggleButton DockPanel.Dock="Right" Style="{DynamicResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding SoundEffectEnable}"  ToolTip="{DynamicResource PanelSettingsSounds}"/>
                             <StackPanel Orientation="Vertical" DockPanel.Dock="Left">
-                                <TextBlock HorizontalAlignment="Left" FontSize="15" Text="{DynamicResource PanelSettingsSounds}"/>
-                                <TextBlock Foreground="DarkSlateGray" TextWrapping="Wrap" HorizontalAlignment="Left" FontSize="12" Text="{DynamicResource PanelSettingsSoundsTip}"/>
+                                <TextBlock FontSize="15" Text="{DynamicResource PanelSettingsSounds}"/>
+                                <TextBlock Foreground="DarkSlateGray" TextWrapping="Wrap" FontSize="12" Text="{DynamicResource PanelSettingsSoundsTip}"/>
                             </StackPanel>
                         </DockPanel>
                     </StackPanel>
@@ -71,87 +72,91 @@
                     <StackPanel Margin="5" Orientation="Vertical">
                         <TextBlock  Margin="0,0,0,5" Text="{DynamicResource PanelSettingsCmd}"/>
                         <Label Height="1" Background="LightGray"/>
-                        <DockPanel Margin="5">
-                            <StackPanel Orientation="Vertical" Margin="0,0,39,0">
-                                <TextBlock HorizontalAlignment="Left" Text="{DynamicResource PanelSettingsEnvVarCmdWindow}"/>
-                                <TextBlock Foreground="DarkSlateGray" TextWrapping="Wrap" FontSize="12" HorizontalAlignment="Left" Text="{DynamicResource PanelSettingsEnvVarCmdWindowTip}"/>
+                        <DockPanel>
+                            <ToggleButton DockPanel.Dock="Right" Style="{DynamicResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding UseEnvVarCmd}" />
+                            <StackPanel DockPanel.Dock="Left" Orientation="Vertical">
+                                <TextBlock Text="{DynamicResource PanelSettingsEnvVarCmdWindow}"/>
+                                <TextBlock Foreground="DarkSlateGray" TextWrapping="Wrap" FontSize="12" Text="{DynamicResource PanelSettingsEnvVarCmdWindowTip}"/>
                             </StackPanel>
-                            <ToggleButton HorizontalAlignment="Right" Style="{DynamicResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding UseEnvVarCmd}" />
+
                         </DockPanel>
-                        <DockPanel IsEnabled="{Binding StartCmdAtDesktopEnable}" Margin="5">
-                            <StackPanel Orientation="Vertical" Margin="0,0,39,0">
-                                <TextBlock HorizontalAlignment="Left" Text="{DynamicResource PanelSettingsCmdAtDesktopTip}"/>
-                                <TextBlock Foreground="DarkSlateGray" TextWrapping="Wrap" FontSize="12" HorizontalAlignment="Left" Text="{DynamicResource PanelSettingsCmdAtDesktopTip}"/>
+                        <DockPanel IsEnabled="{Binding StartCmdAtDesktopEnable}">
+                            <ToggleButton DockPanel.Dock="Right" Style="{DynamicResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding StartCmdAtDesktop}"/>
+                            <StackPanel DockPanel.Dock="Left" Orientation="Vertical">
+                                <TextBlock Text="{DynamicResource PanelSettingsCmdAtDesktopTip}"/>
+                                <TextBlock Foreground="DarkSlateGray" TextWrapping="Wrap" FontSize="12" Text="{DynamicResource PanelSettingsCmdAtDesktopTip}"/>
                             </StackPanel>
-                            <ToggleButton HorizontalAlignment="Right" Style="{DynamicResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding StartCmdAtDesktop}"/>
+
                         </DockPanel>
                     </StackPanel>
                 </materialDesign:Card>
-                
+
                 <materialDesign:Card Margin="0,0,0,5">
                     <StackPanel  Margin="5">
 
-                        <Grid Margin="0,0,0,5">
-                            <TextBlock  VerticalAlignment="Center"  HorizontalAlignment="Left" Text="{DynamicResource PanelSettingsDebug}"/>
-                            <Button  HorizontalAlignment="Right" Command="{Binding ShowDebugWindow}" FontSize="12"  Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource PanelSettingsCreateDebugWindow}"/>
-                        </Grid>
+                        <DockPanel Margin="0,0,0,5">
+                            <Button  DockPanel.Dock="Right" Command="{Binding ShowDebugWindow}" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource PanelSettingsCreateDebugWindow}"/>
+                            <Button  DockPanel.Dock="Right" Command="{Binding OpenLogFloder}" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource PanelSettingsViewLogFloder}"/>
+                            <TextBlock  VerticalAlignment="Center"  DockPanel.Dock="Left" Text="{DynamicResource PanelSettingsDebug}"/>
+                        </DockPanel>
                         <Label Height="1" Background="LightGray"/>
-                      
-                        <Grid Margin="5">
-                            <StackPanel Orientation="Vertical" Margin="0,0,39,0">
-                                <TextBlock HorizontalAlignment="Left" Text="{DynamicResource PanelSettingsLaunchDebugWindowOnNextLaunch}"/>
-                                <TextBlock Foreground="DarkSlateGray" TextWrapping="Wrap" FontSize="12" HorizontalAlignment="Left" Text="{DynamicResource PanelSettingsLaunchDebugWindowOnNextLaunchTip}"/>
+
+                        <DockPanel>
+                            <ToggleButton DockPanel.Dock="Right" Style="{DynamicResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding DebugOnNext}"/>
+                            <StackPanel DockPanel.Dock="Left">
+                                <TextBlock Text="{DynamicResource PanelSettingsLaunchDebugWindowOnNextLaunch}"/>
+                                <TextBlock Foreground="DarkSlateGray" TextWrapping="Wrap" FontSize="12" Text="{DynamicResource PanelSettingsLaunchDebugWindowOnNextLaunchTip}"/>
                             </StackPanel>
-                            <ToggleButton HorizontalAlignment="Right" Style="{DynamicResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding DebugOnNext}"  ToolTip="{DynamicResource PanelSettingsLaunchDebugWindowOnNextLaunch}"/>
-                        </Grid>
-                        <Grid Margin="5">
-                            <StackPanel Orientation="Vertical" Margin="0,0,39,0">
-                                <TextBlock HorizontalAlignment="Left" Text="{DynamicResource PanelSettingsDeveloperMode}"/>
-                                <TextBlock Foreground="DarkSlateGray" TextWrapping="Wrap" FontSize="12" HorizontalAlignment="Left" Text="{DynamicResource PanelSettingsDeveloperModeTip}"/>
+
+                        </DockPanel>
+                        <DockPanel>
+                            <ToggleButton DockPanel.Dock="Right" Style="{DynamicResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding DeveloperMode}" />
+                            <StackPanel DockPanel.Dock="Left">
+                                <TextBlock Text="{DynamicResource PanelSettingsDeveloperMode}"/>
+                                <TextBlock Foreground="DarkSlateGray" TextWrapping="Wrap" FontSize="12" Text="{DynamicResource PanelSettingsDeveloperModeTip}"/>
                             </StackPanel>
-                            <ToggleButton HorizontalAlignment="Right" Style="{DynamicResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding DeveloperMode}" />
-                        </Grid>
-                        <Grid Margin="5">
-                            <StackPanel Orientation="Vertical" Margin="0,0,39,0">
-                                <TextBlock HorizontalAlignment="Left" Text="{DynamicResource PanelSettingsDisplayCmdWindow}"/>
-                                <TextBlock Foreground="DarkSlateGray" TextWrapping="Wrap" FontSize="12" HorizontalAlignment="Left" Text="{DynamicResource PanelSettingsDisplayCmdWindowTip}"/>
+                        </DockPanel>
+                        <DockPanel>
+                            <ToggleButton DockPanel.Dock="Right" Style="{DynamicResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding DisplayCmdWindow}" />
+                            <StackPanel DockPanel.Dock="Left">
+                                <TextBlock Text="{DynamicResource PanelSettingsDisplayCmdWindow}"/>
+                                <TextBlock Foreground="DarkSlateGray" TextWrapping="Wrap" FontSize="12" Text="{DynamicResource PanelSettingsDisplayCmdWindowTip}"/>
                             </StackPanel>
-                            <ToggleButton HorizontalAlignment="Right" Style="{DynamicResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding DisplayCmdWindow}" />
-                        </Grid>
+                        </DockPanel>
                     </StackPanel>
                 </materialDesign:Card>
 
-                
+
 
                 <materialDesign:Card Margin="0,0,0,5">
                     <StackPanel Orientation="Vertical" Margin="5">
-                        <Grid Margin="0,0,0,5">
-                            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left"   Text="{DynamicResource PanelSettingsVersionInfo}"/>
-                            <Button HorizontalAlignment="Right" Style="{DynamicResource MaterialDesignFlatButton}" Command="{Binding UpdateCheck}" Content="{DynamicResource PanelSettingsUpdateCheck}"/>
-                        </Grid>
+                        <DockPanel Margin="0,0,0,5">
+                            <Button DockPanel.Dock="Right" Style="{DynamicResource MaterialDesignFlatButton}" Command="{Binding UpdateCheck}" Content="{DynamicResource PanelSettingsUpdateCheck}"/>
+                            <TextBlock VerticalAlignment="Center" DockPanel.Dock="Left"   Text="{DynamicResource PanelSettingsVersionInfo}"/>
+                        </DockPanel>
                         <Label Margin="0,0,0,5" Height="1" Background="LightGray"/>
-                        <Grid>
-                            <TextBlock HorizontalAlignment="Left" Text="{DynamicResource PanelSettingsGUIVersionLabel}"/>
-                            <TextBlock HorizontalAlignment="Right" Text="{Binding GUIVersion}"/>
-                        </Grid>
-                        <Grid>
-                            <TextBlock HorizontalAlignment="Left" Text="{DynamicResource PanelSettingsBasicVersionLabel}"/>
-                            <TextBlock HorizontalAlignment="Right" Text="{Binding BasicVersion}"/>
-                        </Grid>
-                        <Grid>
-                            <TextBlock HorizontalAlignment="Left" Text="{DynamicResource PanelSettingsOpenFxVersionLabel}"/>
-                            <TextBlock HorizontalAlignment="Right" Text="{Binding OpenFxVersion}"/>
-                        </Grid>
-                        <Grid>
-                            <TextBlock HorizontalAlignment="Left" Text="{DynamicResource PanelSettingsCoreLibVersionLabel}"/>
-                            <TextBlock HorizontalAlignment="Right" Text="{Binding CoreLibVersion}"/>
-                        </Grid>
-                        
+                        <DockPanel>
+                            <TextBlock DockPanel.Dock="Right" Text="{Binding GUIVersion}"/>
+                            <TextBlock DockPanel.Dock="Left" Text="{DynamicResource PanelSettingsGUIVersionLabel}"/>
+                        </DockPanel>
+                        <DockPanel>
+                            <TextBlock DockPanel.Dock="Right" Text="{Binding BasicVersion}"/>
+                            <TextBlock DockPanel.Dock="Left" Text="{DynamicResource PanelSettingsBasicVersionLabel}"/>
+                        </DockPanel>
+                        <DockPanel>
+                            <TextBlock DockPanel.Dock="Right" Text="{Binding OpenFxVersion}"/>
+                            <TextBlock DockPanel.Dock="Left" Text="{DynamicResource PanelSettingsOpenFxVersionLabel}"/>
+                        </DockPanel>
+                        <DockPanel>
+                            <TextBlock DockPanel.Dock="Right" Text="{Binding CoreLibVersion}"/>
+                            <TextBlock DockPanel.Dock="Left" Text="{DynamicResource PanelSettingsCoreLibVersionLabel}"/>
+                        </DockPanel>
+
                     </StackPanel>
                 </materialDesign:Card>
 
             </StackPanel>
         </ScrollViewer>
-       
+
     </DockPanel>
 </UserControl>

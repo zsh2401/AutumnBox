@@ -15,6 +15,7 @@ using AutumnBox.GUI.View.Windows;
 using AutumnBox.OpenFramework.ExtLibrary;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Input;
@@ -101,6 +102,17 @@ namespace AutumnBox.GUI.ViewModel
             }
         }
         private ICommand _updateCheck;
+
+        public ICommand OpenLogFloder
+        {
+            get => _openLogFloder; set
+            {
+                _openLogFloder = value;
+                RaisePropertyChanged();
+            }
+        }
+        private ICommand _openLogFloder;
+
 
         public bool UseRandomTheme
         {
@@ -254,6 +266,14 @@ namespace AutumnBox.GUI.ViewModel
                 {
                     Updater.ShowUI(true, true);
                 });
+            });
+            OpenLogFloder = new MVVMCommand((p) =>
+            {
+                try
+                {
+                    Process.Start(LoggingStation.LOG_FLODER);
+                }
+                catch { }
             });
             try
             {

@@ -41,7 +41,10 @@ namespace AutumnBox.GUI.ViewModel
         }
         private void _ShowSettingsDialog()
         {
-            (App.Current.MainWindow as MainWindow).DialogHost.ShowDialog(new ContentSettings());
+            (App.Current.MainWindow as MainWindow).DialogHost.ShowDialog(new ContentSettings()
+            {
+                Height = 480
+            });
         }
         private void _StartShell()
         {
