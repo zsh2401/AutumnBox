@@ -55,7 +55,7 @@ namespace AutumnBox.Basic.Device
         /// <returns></returns>
         public bool Equals(IDevice other)
         {
-            return other != null && other.SerialNumber == this.SerialNumber;
+            return other != null && other.SerialNumber == this.SerialNumber && other.State == this.State ;
         }
 
         /// <summary>
