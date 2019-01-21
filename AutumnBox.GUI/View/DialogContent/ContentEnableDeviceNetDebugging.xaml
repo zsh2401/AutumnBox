@@ -15,10 +15,10 @@
             <TextBlock Margin="0,15,0,0" Text="{DynamicResource ContentEnableDeviceNetDebuggingWarningContent}" FontSize="15" TextWrapping="Wrap"/>
         </StackPanel>
         <StackPanel VerticalAlignment="Bottom">
-            <TextBox Text="{Binding PortString}" materialDesign:HintAssist.Hint="{DynamicResource ContentEnableDeviceNetDebuggingPortHint}"  Margin="10"/>
+            <TextBox x:Name="TBPort" Text="5555"  FontSize="20" Margin="10"/>
             <Grid  Margin="5">
                 <Button Command="materialDesign:DialogHost.CloseDialogCommand" HorizontalAlignment="Left" Style="{DynamicResource MaterialDesignRaisedButton}" Content="{DynamicResource ContentEnableDeviceNetDebuggingBtnCancel}"/>
-                <Button Command="{Binding Open}" HorizontalAlignment="Right" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource ContentEnableDeviceNetDebuggingBtnOpen}"/>
+                <Button Command="materialDesign:DialogHost.CloseDialogCommand" CommandParameter="{Binding ElementName=TBPort,Path=Text}" HorizontalAlignment="Right" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource ContentEnableDeviceNetDebuggingBtnOpen}"/>
             </Grid>
         </StackPanel>
 

@@ -27,10 +27,11 @@ namespace AutumnBox.Basic.Device
         {
             if (closeNetDebugging)
             {
-                new AdbCommand(this,$"usb").Execute()
+                new AdbCommand(this, $"usb").Execute()
                 .ThrowIfExitCodeNotEqualsZero();
             }
-            else {
+            else
+            {
                 new AdbCommand($"disconnect {SerialNumber}").Execute()
                 .ThrowIfExitCodeNotEqualsZero();
             }
