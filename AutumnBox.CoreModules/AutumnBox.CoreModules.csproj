@@ -108,7 +108,6 @@
     <Compile Include="Aspect\ObsoleteImageOperatorAttribute.cs" />
     <Compile Include="Extensions\Poweron\EStopAppMaxWellActivator.cs" />
     <Compile Include="Extensions\Mix\ERebooter.cs" />
-    <Compile Include="HideApiManager.cs" />
     <Compile Include="Lib\CstmDpmCommander.cs" />
     <Compile Include="Lib\DpmFailedMessageParser.cs" />
     <Compile Include="OfficialVisualExtension.Output.cs" />

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Threading.Tasks;
 
 namespace AutumnBox.OpenFramework.Extension.LeafExtension
 {
@@ -117,7 +118,7 @@ namespace AutumnBox.OpenFramework.Extension.LeafExtension
         /// <param name="options">选项,至少要有一个值</param>
         /// <param name="hint">简要提示,不传为默认</param>
         /// <returns>被选择的那个对象,如果用户取消选择,返回为null</returns>
-        object SelectFrom(object[] options,string hint=null);
+        object SelectFrom(object[] options, string hint = null);
 
         /// <summary>
         /// 8.23暂未实现!! 进行选择,将会阻塞至用户完成选择
@@ -126,6 +127,20 @@ namespace AutumnBox.OpenFramework.Extension.LeafExtension
         /// <param name="maxSelect">最多可选</param>
         /// <returns>用户选择的所有选项,如果用户取消,则这个数组为null</returns>
         object[] Select(object[] option, int maxSelect = 2);
+
+#if!SDK
+        /// <summary>
+        /// 获取DialogHost
+        /// </summary>
+        /// <returns></returns>
+        object _GetDialogHost();
+        /// <summary>
+        /// 显示Dialog
+        /// </summary>
+        /// <param name="content"></param>
+        /// <returns></returns>
+        Task<object> _ShowDialog(object content);
+#endif
         #endregion
     }
 }

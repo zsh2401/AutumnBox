@@ -127,6 +127,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Service\ServiceName.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Service\ServicesManagerImpl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Service\ServiceState.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Util\UnstableAPI.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Wrapper\ClassExtensionInfoGetter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Wrapper\ClassExtensionScanner.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Wrapper\ClassExtensionWrapper.cs" />

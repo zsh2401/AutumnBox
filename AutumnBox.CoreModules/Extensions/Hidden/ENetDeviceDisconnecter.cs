@@ -2,6 +2,7 @@
 using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.Extension.LeafExtension;
 using AutumnBox.OpenFramework.Open;
+using AutumnBox.OpenFramework.Util;
 using MaterialDesignThemes.Wpf;
 using System.Threading.Tasks;
 
@@ -14,8 +15,6 @@ namespace AutumnBox.CoreModules.Extensions.Hidden
         [LMain]
         private void EntryPoint(ILeafUI ui, IDevice device, TextAttrManager texts)
         {
-            var leaf = ui.ToLeafUIHideApi();
-            var atmbgui = HideApiManager.guiHideApi;
             using (ui)
             {
                 ui.Title = this.GetName();
@@ -23,12 +22,7 @@ namespace AutumnBox.CoreModules.Extensions.Hidden
                 ui.Show();
                 if (device is NetDevice netDevice)
                 {
-                    Task<object> dialogTask = null;
-                    ui.RunOnUIThread(() =>
-                    {
-                        var view = atmbgui.GetNewView("disconnectChoiceView");
-                        dialogTask = leaf.GetDialogHost().ShowDialog(view);
-                    });
+                    Task<object> dialogTask = ui.ShowDialogById("disconnectChoiceView");
                     dialogTask.Wait();
                     bool? choice = (bool?)dialogTask.Result;
                     switch (choice)

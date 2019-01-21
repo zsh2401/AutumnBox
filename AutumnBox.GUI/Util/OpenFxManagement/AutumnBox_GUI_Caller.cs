@@ -19,7 +19,7 @@ using AutumnBox.GUI.View.DialogContent;
 
 namespace AutumnBox.GUI.Util.OpenFxManagement
 {
-    internal partial class AutumnBox_GUI_Caller : IBaseApi, IAutumnBoxGUIApi
+    internal partial class AutumnBox_GUI_Caller : IBaseApi
     {
         public IDevice SelectedDevice
         {

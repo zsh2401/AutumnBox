@@ -3,6 +3,7 @@ using AutumnBox.Basic.Exceptions;
 using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.Extension.LeafExtension;
 using AutumnBox.OpenFramework.Open;
+using AutumnBox.OpenFramework.Util;
 using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
@@ -20,9 +21,6 @@ namespace AutumnBox.CoreModules.Extensions.Hidden
         [LMain]
         private void EntryPoint(ILeafUI ui, IDevice device, TextAttrManager texts)
         {
-            var hiddenLeaf = ui.ToLeafUIHideApi();
-            var gui = HideApiManager.guiHideApi;
-
             using (ui)
             {
                 ui.Title = this.GetName();
@@ -30,11 +28,7 @@ namespace AutumnBox.CoreModules.Extensions.Hidden
                 if (device is UsbDevice usbDevice)
                 {
                     Task<object> dialogTask = null;
-                    ui.RunOnUIThread(() =>
-                    {
-                        var view = gui.GetNewView("portInputView");
-                        dialogTask = hiddenLeaf.GetDialogHost().ShowDialog(view);
-                    });
+                    ui.ShowDialogById("portInputView");
                     dialogTask.Wait();
                     if (ushort.TryParse(dialogTask.Result?.ToString(), out ushort result))
                     {
