@@ -199,11 +199,8 @@
     <Compile Include="Util\Self.cs" />
     <Compile Include="Util\Updater.cs" />
     <Compile Include="ViewModel\VMContentChoice.cs" />
-    <Compile Include="ViewModel\VMContentConnectNetDevice.cs" />
     <Compile Include="ViewModel\VMOpenSource.cs" />
     <Compile Include="ViewModel\VMCurrentDevice.cs" />
-    <Compile Include="ViewModel\VMDisconnectDevice.cs" />
-    <Compile Include="ViewModel\VMEnableDeviceNetDebugging.cs" />
     <Compile Include="ViewModel\VMExtensions.cs" />
     <Compile Include="ViewModel\VMInputWindow.cs" />
     <Compile Include="ViewModel\VMLeafUI.cs" />
