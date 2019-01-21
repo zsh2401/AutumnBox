@@ -60,6 +60,7 @@
      <s:String x:Key="UpdateWindowBtnSkipVersion">跳过此版本</s:String>
     
         <!--PanelSettings-->
+    <s:String x:Key="PanelSettingsViewLogFloder">打开日志文件夹</s:String>
     <s:String x:Key="PanelSettingsDoubleClickToStartExt">双击运行拓展模块</s:String>
     <s:String x:Key="PanelSettingsDoubleClickToStartExtTip">否则单击就可运行</s:String>
     <s:String x:Key="PanelSettingsTitleDontNeedUpdate">无需更新</s:String>
