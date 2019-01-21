@@ -64,6 +64,9 @@ namespace AutumnBox.Basic.MultipleDevices
                 isStarted = false; ;
             });
         }
+        /// <summary>
+        /// 循环检测设备信息
+        /// </summary>
         private void Loop()
         {
             IDevicesGetter getter = new DevicesGetter();
