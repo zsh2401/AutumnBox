@@ -44,19 +44,33 @@ namespace AutumnBox.OpenFramework.Extension
         /// </summary>
         /// <param name="args"></param>
         /// <param name="canContinue"></param>
-        public override void BeforeCreating(BeforeCreatingAspectArgs args,ref bool canContinue)
+        public override void BeforeCreating(BeforeCreatingAspectArgs args, ref bool canContinue)
         {
             IDevice selectedDevice = args.Context.GetService<IDeviceSelector>(ServicesNames.DEVICE_SELECTOR).GetCurrent(args.Context);
+            bool _canContinue = false;
             if (!VersionCheck(selectedDevice, ver))
             {
-                canContinue = false;
+
                 args.Context.App.RunOnUIThread(() =>
                 {
                     var fmt = args.Context.App.GetPublicResouce<string>("OpenFxLowAndroidVersionFmt");
+                    var btnIgnore = args.Context.App.GetPublicResouce<string>("OpenFxLowAndroidBtnIgnore");
+                    var btnOK = args.Context.App.GetPublicResouce<string>("OpenFxLowAndroidBtnOK");
+                    var btnCancel = args.Context.App.GetPublicResouce<string>("OpenFxLowAndroidBtnCancel");
                     var msg = string.Format(fmt, ver);
-                    args.Context.Ux.Warn(msg);
+                    ChoiceResult result = args.Context.Ux.DoChoice(msg,btnIgnore,btnOK,btnCancel);
+                    switch (result)
+                    {
+                        case ChoiceResult.Left:
+                            _canContinue = true;
+                            break;
+                        default:
+                            _canContinue = false;
+                            break;
+                    }
                 });
             }
+            canContinue = _canContinue;
         }
     }
 }
