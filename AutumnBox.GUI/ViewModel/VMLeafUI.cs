@@ -14,7 +14,7 @@ using System.Windows.Controls;
 
 namespace AutumnBox.GUI.ViewModel
 {
-    class VMLeafUI : ViewModelBase, ILeafUI,IVMLeafUIApi
+    class VMLeafUI : ViewModelBase, ILeafUI
     {
         private enum State
         {
@@ -223,7 +223,7 @@ namespace AutumnBox.GUI.ViewModel
             CurrentState = State.Ready;
         }
 
-        public DialogHost GetDialogHost()
+        public object _GetDialogHost()
         {
             return View.DialogHost;
         }
@@ -414,6 +414,16 @@ namespace AutumnBox.GUI.ViewModel
             {
                 act();
             });
+        }
+
+        public Task<object> _ShowDialog(object content)
+        {
+            Task<object> dialogTask = null;
+            RunOnUIThread(() =>
+            {
+                dialogTask = View.DialogHost.ShowDialog(content);
+            });
+            return dialogTask;
         }
     }
 }

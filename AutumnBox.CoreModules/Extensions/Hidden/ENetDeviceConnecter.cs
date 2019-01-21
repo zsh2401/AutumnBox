@@ -2,6 +2,7 @@
 using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.Extension.LeafExtension;
 using AutumnBox.OpenFramework.Open;
+using AutumnBox.OpenFramework.Util;
 using MaterialDesignThemes.Wpf;
 using System.Net;
 using System.Threading.Tasks;
@@ -48,11 +49,8 @@ namespace AutumnBox.CoreModules.Extensions.Hidden
             }
         }
 
-        private bool TryGetInputEndPoint(ILeafUI ui, TextAttrManager texts, out IPEndPoint endPoint)
+        private bool TryGetInputEndPoint(ILeafUI ui,TextAttrManager texts, out IPEndPoint endPoint)
         {
-            var guiHideApi = HideApiManager.guiHideApi;
-            var leafUIHideApi = ui.ToLeafUIHideApi();
-
             Task<object> dialogTask = null;
             do
             {
@@ -60,11 +58,7 @@ namespace AutumnBox.CoreModules.Extensions.Hidden
                 {
                     ui.ShowMessage(texts["PleaseInputRightIP"]);
                 }
-                ui.RunOnUIThread(() =>
-                {
-                    object view = guiHideApi.GetNewView("inputIpEndPoint");
-                    dialogTask = leafUIHideApi.GetDialogHost().ShowDialog(view);
-                });
+                dialogTask = ui.ShowDialogById("inputIpEndPoint");
                 dialogTask.Wait();
             } while (dialogTask.Result is bool);
             if (dialogTask.Result is IPEndPoint endPointResult)

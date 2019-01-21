@@ -16,6 +16,12 @@ namespace AutumnBox.OpenFramework.Management
     public interface IBaseApi
     {
         /// <summary>
+        /// 从秋之盒库中获取已实现的View,通常将此View用于DialogHost
+        /// </summary>
+        /// <param name="viewId"></param>
+        /// <returns></returns>
+        object GetNewView(string viewId);
+        /// <summary>
         /// 获取新的LeafUI实现
         /// </summary>
         /// <returns></returns>

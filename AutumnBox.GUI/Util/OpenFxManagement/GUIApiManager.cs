@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.GUI.Util.OpenFxManagement
 {
-    public class GUIApiManager
+    internal class GUIApiManager
     {
         public static readonly IBaseApi BaseApiInstance;
         static GUIApiManager()
