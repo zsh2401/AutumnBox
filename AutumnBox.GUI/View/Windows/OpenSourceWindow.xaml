@@ -29,7 +29,7 @@
             <TextBlock VerticalAlignment="Bottom" TextAlignment="Center">Copyright © 2017 - 2019 zsh2401,All Rights Reserved</TextBlock>
         </Grid>
         
-        <ListView ScrollViewer.HorizontalScrollBarVisibility="Hidden"  ScrollViewer.VerticalScrollBarVisibility="Hidden" ItemsSource="{Binding Projects}" DockPanel.Dock="Right">
+        <ListView ScrollViewer.HorizontalScrollBarVisibility="Hidden"  ScrollViewer.VerticalScrollBarVisibility="Auto" ItemsSource="{Binding Projects}" DockPanel.Dock="Right">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
@@ -41,7 +41,7 @@
                             <TextBlock FontSize="12" Foreground="Gray" Text="{Binding LicenseName}"/>
                             <TextBlock FontSize="12" Margin="20,0,0,0" Foreground="Gray" Text="{Binding Owner}"/>
                         </StackPanel>
-                        <TextBlock MaxWidth="360" Foreground="Gray" FontSize="12" TextWrapping="Wrap" Text="{Binding Description}"/>
+                        <TextBlock MaxWidth="330" Foreground="Gray" FontSize="12" TextWrapping="Wrap" Text="{Binding Description}"/>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
