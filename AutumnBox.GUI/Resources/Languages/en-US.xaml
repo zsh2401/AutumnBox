@@ -151,6 +151,9 @@
     <s:String x:Key="OpenFxInstallBtnOk">OK</s:String>
     <s:String x:Key="OpenFxNeedAdminPermission">This module requires administrator privileges to restart the AutumnBox to Administrator mode.</s:String>
     <s:String x:Key="OpenFxLowAndroidVersionFmt">This module requires the Android version to be {0}, and your device does not meet this standard.</s:String>
+    <s:String x:Key="OpenFxLowAndroidBtnIgnore">Ignore and continue</s:String>
+    <s:String x:Key="OpenFxLowAndroidBtnCancel">Cancel</s:String>
+    <s:String x:Key="OpenFxLowAndroidBtnOk">OK</s:String>
     <s:String x:Key="OpenFxOverhighAndroidVersionFmt">The Android version of your device is too high. This module only supports Android versions below {0}.</s:String>
     
     <!--PanelDeviceDetails-->
