@@ -183,18 +183,26 @@ namespace AutumnBox.GUI.ViewModel
         }
         public void LoadExtensions()
         {
-            IEnumerable<IExtensionWrapper> filted =
-                OpenFramework.Management.Manager.InternalManager
-                .GetLoadedWrappers(
-                new DeviceStateFilter(targetState),
-                CurrentRegionFilter.Singleton,
-                DevelopingFilter.Singleton,
-                HideFilter.Singleton
-                );
-            App.Current.Dispatcher.Invoke(() =>
+            try
             {
-                Extensions = filted;
-            });
+                IEnumerable<IExtensionWrapper> filted =
+                    OpenFramework.Management.Manager.InternalManager
+                    .GetLoadedWrappers(
+                    new DeviceStateFilter(targetState),
+                    CurrentRegionFilter.Singleton,
+                    DevelopingFilter.Singleton,
+                    HideFilter.Singleton
+                    );
+                App.Current.Dispatcher.Invoke(() =>
+                {
+                    Extensions = filted;
+                });
+            }
+            catch (Exception e)
+            {
+                SGLogger<VMExtensions>.Warn("can not refresh extensions", e);
+            }
+
         }
     }
 }

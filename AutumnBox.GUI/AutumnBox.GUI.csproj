@@ -197,6 +197,7 @@
     <Compile Include="Util\Self.cs" />
     <Compile Include="Util\Updater.cs" />
     <Compile Include="ViewModel\VMContentChoice.cs" />
+    <Compile Include="ViewModel\VMLanguageChoice.cs" />
     <Compile Include="ViewModel\VMOpenSource.cs" />
     <Compile Include="ViewModel\VMCurrentDevice.cs" />
     <Compile Include="ViewModel\VMExtensions.cs" />
@@ -231,6 +232,9 @@
     <Compile Include="MVVM\ModelBase.cs" />
     <Compile Include="ViewModel\VMDeviceDetails.cs" />
     <Compile Include="ViewModel\VMHome.cs" />
+    <Compile Include="View\DialogContent\LanguageChoice.xaml.cs">
+      <DependentUpon>LanguageChoice.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\LeafContent\ChoiceView.xaml.cs">
       <DependentUpon>ChoiceView.xaml</DependentUpon>
     </Compile>
@@ -528,6 +532,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\DialogContent\ContentSettings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DialogContent\LanguageChoice.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
