@@ -13,14 +13,10 @@ namespace AutumnBox.CoreModules.Extensions.Poweron
     [ExtAppProperty(PKG_NAME)]
     [ExtPriority(ExtPriority.HIGH - 1)]
     [ExtIcon("Icons.stopapp.png")]
-    [ExtRequiredDeviceStates(Basic.Device.DeviceState.Poweron)]
+    [ExtRequiredDeviceStates(DeviceState.Poweron)]
     class EStopAppMaxWellActivator : LeafExtensionBase
     {
         private const string PKG_NAME = "web1n.stopapp";
-        private const string MAIN_ACTIVITY = "web1n.stopapp/.activity.MainActivity";
-        private const string ACTIVATE_BY_SH = "sh /sdcard/Android/data/web1n.stopapp/files/demon.sh";
-        private const string ACTIVATE_COMMAND =
-            "CLASSPATH=web1n.stopapp*/base.apk app_process /system/bin com.web1n.stopapp.app_process.DemonStart";
         [LMain]
         private void Main(ILeafUI ui, IDevice device)
         {

@@ -25,7 +25,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron
         {
             using (var executor = new CommandExecutor())
             {
-                var dpm = new CstmDpmCommander(executor, this, TargetDevice);
+                var dpm = new DpmPro(executor, this, TargetDevice);
                 Progress = 20;
                 dpm.Extract();
                 Progress = 50;

@@ -14,7 +14,7 @@ using System.IO;
 
 namespace AutumnBox.CoreModules.Lib
 {
-    internal class CstmDpmCommander
+    internal class DpmPro
     {
         public const string PATH_OF_EMB_APK = "Res.dpmpro";
         public const string PATH_OF_TMP_APK = "dpmpro";
@@ -26,16 +26,12 @@ namespace AutumnBox.CoreModules.Lib
         public const string CMD_FORMAT =
             "CLASSPATH=" + PATH_OF_ATMP_APK + " app_process /system/bin "
             + PATH_OF_COMMAND_CLASS + " {0}";
-        public const int OKAY = 0;
-        public const int ERR = 1;   
-        public const int ERR_EXIST_OTHER_USER = 0b100;
-        public const int ERR_EXIST_OTHER_ACC = 0b1000;
-        public const int ERR_MIUI_SEC = 0b10000;
+
         private readonly CommandExecutor executor;
         private readonly Context context;
         private readonly IDevice device;
 
-        public CstmDpmCommander(CommandExecutor executor,Context context, IDevice device) 
+        public DpmPro(CommandExecutor executor,Context context, IDevice device) 
         {
             this.executor = executor ?? throw new ArgumentNullException(nameof(executor));
             this.context = context ?? throw new ArgumentNullException(nameof(context));
@@ -50,11 +46,6 @@ namespace AutumnBox.CoreModules.Lib
             {
                 embFile.WriteTo(fs);
             }
-        }
-        public string ShowUsage()
-        {
-            string command = string.Format(CMD_FORMAT, "");
-            return executor.AdbShell(device,command).Output;
         }
         public int PushToDevice()
         {

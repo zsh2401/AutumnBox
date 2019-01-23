@@ -81,28 +81,33 @@ namespace AutumnBox.CoreModules.Lib
     [DpmReceiver(null)]
     internal abstract class EDpmSetterBase : LeafExtensionBase
     {
+        private ILeafUI ui;
+        private TextAttrManager texts;
+
         /// <summary>
         /// 入口函数
         /// </summary>
         [LMain]
-        public void EntryPoint(IDevice device, TextAttrManager texts, ILeafUI ui, ILogger logger)
+        private void EntryPoint(IDevice device, TextAttrManager _texts, ILeafUI _ui, ILogger logger)
         {
+            ui = _ui;
+            texts = _texts;
             using (ui)
             {
-                //显示ui
-                ui.Show();
-
-                //初始化ui
-                InitUI(this, ui, logger);
-
-                //做出警告
+                ui.Show();    //显示ui
+                InitUI(this, ui, logger);   //初始化ui
+                //做出一系列警告与提示,只要一个不被同意,立刻再见
                 if (!DoWarn(ui, texts))
                 {
-                    ui.Shutdown();
-                    return;
+                    ui.Shutdown();//直接关闭UI
+                    return;//退出函数
                 }
 
-                //获取要设置的接收器组件名
+                /*
+                 * 正式开始流程
+                 */
+
+                //通过反射获取子类配置的接收器组件名
                 string componentName = GetDpmReceiverName(GetType());
 
                 //构造一个命令执行器
@@ -112,62 +117,84 @@ namespace AutumnBox.CoreModules.Lib
                     executor.To(e => ui.WriteOutput(e.Text));
 
                     //构造一个dpmpro的控制器
-                    var dpmpro = new CstmDpmCommander(executor, CoreLib.Current, device);
+                    var dpmpro = new DpmPro(executor, CoreLib.Current, device);
 
                     //将dpmpro提取到临时目录
-                    ui.Progress = 0;
-                    ui.Tip = texts["Extract"];
-                    ui.WriteLine(texts["Extract"]);
+                    SetProgress("Extract", 0);
                     dpmpro.Extract();
 
                     //推送dpmpro到设备
-                    ui.Progress = 20;
-                    ui.Tip = texts["Push"];
-                    ui.WriteLine(texts["Push"]);
+                    SetProgress("Push", 20);
                     dpmpro.PushToDevice();
 
                     //移除账户
-                    ui.Progress = 40;
-                    ui.Tip = texts["RMAcc"];
-                    ui.WriteLine(texts["RMAcc"]);
+                    SetProgress("RMAcc", 40);
                     dpmpro.RemoveAccounts();
 
                     //移除用户
-                    ui.Progress = 60;
-                    ui.Tip = texts["RMUser"];
-                    ui.WriteLine(texts["RMUser"]);
+                    SetProgress("RMUser", 60);
                     dpmpro.RemoveUsers();
 
-                    //使用设备自带dpm设置管理员,并记录结果
-                    ui.Progress = 80;
-                    ui.Tip = texts["SettingDpm"];
-                    ui.WriteLine(texts["SettingDpm"]);
-                    var resultOfSetDpm = executor.AdbShell(device, "dpm set-device-owner", componentName);
+                    //使用可能的方式设置管理员,并记录结果
+                    SetProgress("SettingDpm", 80);
+                    var result = SetDeviceOwner(device,executor,dpmpro,componentName);
 
-                    //如果返回值为127,也就是说这设备连dpm都阉割了,就询问用户是否用dpmpro来设置设备管理员
-                    if (resultOfSetDpm.ExitCode == 127 && ui.DoYN(texts["UseDpmPro"]))
-                    {
-                        //用dpmpro设置设备管理员,并记录结果
-                        resultOfSetDpm = dpmpro.SetDeviceOwner(componentName);
-                    }
                     //使用输出解析器,对记录的输出进行解析
-                    if (DpmFailedMessageParser.TryParse(resultOfSetDpm, out string tip, out string message))
+                    if (DpmFailedMessageParser.TryParse(result, out string keyOfTip, out string keyOfmessage))
                     {
                         //解析成功,在输出框写下简要信息与建议
-                        ui.WriteLine(texts[message]);
-                        ui.ShowMessage(texts[message]);
+                        ui.WriteLine(texts[keyOfmessage]);
+                        ui.ShowMessage(texts[keyOfmessage]);
                         //ui流程结束
-                        ui.Finish(texts[tip]);
+                        ui.Finish(texts[keyOfTip]);
                     }
                     else
                     {
-                        //解析失败,告诉用户可能成功
+                        //解析失败,告诉用户可能失败
                         ui.ShowMessage(texts["MayFailedAdvice"]);
                         ui.WriteLine(texts["MayFailedAdvice"]);
+                        //ui流程结束
                         ui.Finish(texts["MayFailed"]);
                     }
                 }
             }
+        }
+
+        private CommandExecutor.Result SetDeviceOwner(IDevice device,CommandExecutor executor, DpmPro dpmpro, string componentName)
+        {
+            CommandExecutor.Result result = null;
+           //先用自带dpm进行设置
+            result = executor.AdbShell(device, "dpm set-device-owner", componentName);
+            //如果返回值为127,也就是说这设备连dpm都阉割了,就询问用户是否用dpmpro来设置设备管理员
+            if (result.ExitCode == 127 && ui.DoYN(texts["UseDpmPro"]))
+            {
+                //用dpmpro设置设备管理员,并记录结果(覆盖普通dpm设置器的记录)
+                result = dpmpro.SetDeviceOwner(componentName);
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// 设置进度信息,与核心代码无关
+        /// </summary>
+        /// <param name="keyOfTip"></param>
+        /// <param name="progress"></param>
+        private void SetProgress(string keyOfTip, int progress)
+        {
+            string tip = texts[keyOfTip] ?? keyOfTip;
+            ui.Tip = tip;
+            ui.Progress = progress;
+            ui.WriteLine(tip);
+        }
+
+        /// <summary>
+        /// 接收摧毁消息,将重要字段置null
+        /// </summary>
+        [LSignalReceive(Signals.COMMAND_DESTORY)]
+        private void OnDestory()
+        {
+            ui = null;
+            texts = null;
         }
 
         #region 需要被外部解析器使用的文本键值
