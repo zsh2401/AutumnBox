@@ -40,6 +40,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.Dpm
     [ExtText("BtnIgnore", "Continue!", "zh-cn:强行继续")]
     [ExtText("BtnOk", "Okay", "zh-cn:好吧")]
     [ExtText("BtnCancel", "Extracting dpmpro to device", "zh-cn:取消")]
+    [ExtText("Checking", "Checking", "zh-cn:正在准备")]
     [ExtText("Extract", "Extracting dpmpro to device", "zh-cn:提取dpmpro")]
     [ExtText("Push", "Pushing dpmpro to device", "zh-cn:推送dpmpro")]
     [ExtText("RMAcc", "Removing accounts", "zh-cn:正在移除所有账号")]
@@ -105,13 +106,13 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.Dpm
         /// LeafUI
         /// </summary>
         [LProperty]
-        private ILeafUI UI { get; set; }
+        public ILeafUI UI { get; set; }
 
         /// <summary>
         /// TextManager
         /// </summary>
         [LProperty]
-        private TextAttrManager TextManager { get; set; }
+        public TextAttrManager TextManager { get; set; }
 
         /// <summary>
         /// 日志器
@@ -123,30 +124,33 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.Dpm
         /// Device
         /// </summary>
         [LProperty]
-        private IDevice Device { get; set; }
+        public IDevice Device { get; set; }
 
         /// <summary>
         /// 入口函数
         /// </summary>
         [LMain]
-        private void EntryPoint()
+        public void EntryPoint()
         {
             using (UI)
             {
                 UI.Show();    //显示ui
                 InitUI();   //初始化ui
-                //做出一系列警告与提示,只要一个不被同意,立刻再见
-                if (!DoAppCheck() && !DoWarn())
-                {
-                    UI.Shutdown();//直接关闭UI
-                    return;//退出函数
-                }
 
-                /*
-                 * 正式开始流程
-                 */
 
-                //通过反射获取子类配置的接收器组件名
+                //执行前的一些检查与提示
+                SetProgress("Checking", 10);
+                if (!DoAppCheck()) return;//进行APP安装检查
+                if (!DoWarn()) return;//进行一系列提示与警告
+
+                ////做出一系列警告与提示,只要一个不被同意,立刻再见
+                //if ((!DoAppCheck()) && (!DoWarn()))
+                //{
+                //    UI.Shutdown();//直接关闭UI
+                //    return;//退出函数
+                //}
+
+                /* 正式开始流程 */
 
                 //构造一个命令执行器
                 using (CommandExecutor executor = new CommandExecutor())
