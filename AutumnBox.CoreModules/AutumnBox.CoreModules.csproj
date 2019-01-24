@@ -81,7 +81,6 @@
     <Compile Include="Aspect\RemoveLockNoticeAttribute.cs" />
     <Compile Include="Aspect\ThreeStepWarn.cs" />
     <Compile Include="Aspect\UserAgreeAttribute.cs" />
-    <Compile Include="Attribute\DpmReceiverAttribute.cs" />
     <Compile Include="CoreLib.cs" />
     <Compile Include="Extensions\Hidden\ENetDeviceDisconnecter.cs" />
     <Compile Include="Extensions\Hidden\EOpenUsbDeviceNetDebugging.cs" />
@@ -93,29 +92,28 @@
     <Compile Include="Extensions\Fastboot\EFlashRecovery.cs" />
     <Compile Include="Extensions\Fastboot\EOemLock.cs" />
     <Compile Include="Extensions\Mix\EDeviceOwnerRemover.cs" />
-    <Compile Include="Extensions\Poweron\EAnzenboksuActivator.cs" />
-    <Compile Include="Extensions\Poweron\EFreezeYou.cs" />
-    <Compile Include="Extensions\Poweron\EAirForzenActivator.cs" />
-    <Compile Include="Extensions\Poweron\EBlackHole.cs" />
+    <Compile Include="Extensions\Poweron\Dpm\EAnzenboksuActivator.cs" />
+    <Compile Include="Extensions\Poweron\Dpm\EFreezeYou.cs" />
+    <Compile Include="Extensions\Poweron\Dpm\EAirForzenActivator.cs" />
+    <Compile Include="Extensions\Poweron\Dpm\EBlackHole.cs" />
     <Compile Include="Extensions\Poweron\EClearAccounts.cs" />
     <Compile Include="Extensions\Poweron\EClearUsers.cs" />
     <Compile Include="Extensions\Poweron\EGCM.cs" />
     <Compile Include="Extensions\Poweron\EGreenifyGranter.cs" />
-    <Compile Include="Extensions\Poweron\EHideAnzen.cs" />
-    <Compile Include="Extensions\Poweron\EIslandActivator.cs" />
+    <Compile Include="Extensions\Poweron\Dpm\EHideAnzen.cs" />
+    <Compile Include="Extensions\Poweron\Dpm\EIslandActivator.cs" />
     <Compile Include="Extensions\Poweron\EScreenRecorder.cs" />
     <Compile Include="Extensions\Poweron\EShizukuActivator.cs" />
     <Compile Include="Aspect\ObsoleteImageOperatorAttribute.cs" />
     <Compile Include="Extensions\Poweron\EStopAppMaxWellActivator.cs" />
     <Compile Include="Extensions\Mix\ERebooter.cs" />
-    <Compile Include="Lib\DpmPro.cs" />
-    <Compile Include="Lib\DpmFailedMessageParser.cs" />
+    <Compile Include="Extensions\Poweron\Dpm\DpmPro.cs" />
+    <Compile Include="Extensions\Poweron\Dpm\DpmFailedMessageParser.cs" />
     <Compile Include="OfficialVisualExtension.Output.cs" />
     <Compile Include="LanguageManager.cs" />
-    <Compile Include="Lib\EDpmSetterBase.cs" />
-    <Compile Include="Extensions\Poweron\EIceBox.cs" />
-    <Compile Include="Extensions\Poweron\EStopApp.cs" />
-    <Compile Include="Lib\GodPower.cs" />
+    <Compile Include="Extensions\Poweron\Dpm\DeviceOwnerSetter.cs" />
+    <Compile Include="Extensions\Poweron\Dpm\EIceBox.cs" />
+    <Compile Include="Extensions\Poweron\Dpm\EStopApp.cs" />
     <Compile Include="OfficialVisualExtension.Main.cs" />
     <Compile Include="Extensions\Poweron\EApkInstaller.cs" />
     <Compile Include="Extensions\Poweron\EBreventActivator.cs" />
@@ -214,9 +212,7 @@
   <ItemGroup>
     <EmbeddedResource Include="Icons\Usersir.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Extensions\Recovery\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="Icons\dpi.png" />
   </ItemGroup>

@@ -1,6 +1,6 @@
 ﻿using AutumnBox.Basic.Calling;
 
-namespace AutumnBox.CoreModules.Lib
+namespace AutumnBox.CoreModules.Extensions.Poweron.Dpm
 {
     internal static class DpmFailedMessageParser
     {
@@ -9,33 +9,33 @@ namespace AutumnBox.CoreModules.Lib
             var outputString = result.Output.ToString().ToLower();
             if (result.ExitCode == 0 && outputString.Contains("success"))
             {
-                tip = EDpmSetterBase.TIP_OK;
-                message = EDpmSetterBase.OK_MSG;
+                tip = DeviceOwnerSetter.TIP_OK;
+                message = DeviceOwnerSetter.OK_MSG;
             }
             else if (outputString.Contains("already several accounts on the device"))
             {
-                tip = EDpmSetterBase.TIP_FAIL;
-                message = EDpmSetterBase.ERR_MSG_KEY_HAVE_ACCOUNTS;
+                tip = DeviceOwnerSetter.TIP_FAIL;
+                message = DeviceOwnerSetter.ERR_MSG_KEY_HAVE_ACCOUNTS;
             }
             else if (outputString.Contains("already several users on the device"))
             {
-                tip = EDpmSetterBase.TIP_FAIL;
-                message = EDpmSetterBase.ERR_MSG_KEY_HAVE_USERS;
+                tip = DeviceOwnerSetter.TIP_FAIL;
+                message = DeviceOwnerSetter.ERR_MSG_KEY_HAVE_USERS;
             }
             else if (outputString.Contains("nor current process has android.permission.MANAGE_DEVICE_ADMINS"))
             {
-                tip = EDpmSetterBase.TIP_FAIL;
-                message = EDpmSetterBase.ERR_MSG_KEY_MIUI_SEC;
+                tip = DeviceOwnerSetter.TIP_FAIL;
+                message = DeviceOwnerSetter.ERR_MSG_KEY_MIUI_SEC;
             }
             else if (outputString.Contains("but device owner is already set"))
             {
-                tip = EDpmSetterBase.TIP_FAIL;
-                message = EDpmSetterBase.ERR_MSG_KEY_DO_ALREADY_SET;
+                tip = DeviceOwnerSetter.TIP_FAIL;
+                message = DeviceOwnerSetter.ERR_MSG_KEY_DO_ALREADY_SET;
             }
             else if (result.ExitCode == 127)
             {
-                tip = EDpmSetterBase.TIP_FAIL;
-                message = EDpmSetterBase.ERR_MSG_KEY_DPM_NOT_FOUND;
+                tip = DeviceOwnerSetter.TIP_FAIL;
+                message = DeviceOwnerSetter.ERR_MSG_KEY_DPM_NOT_FOUND;
             }
             else
             {

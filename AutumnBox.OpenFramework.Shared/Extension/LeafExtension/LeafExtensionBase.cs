@@ -64,6 +64,7 @@ namespace AutumnBox.OpenFramework.Extension.LeafExtension
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
+        [LDoNotScan]
         public int Main(Dictionary<string, object> data)
         {
             return executor.Execute(data) ?? 0;
