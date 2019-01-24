@@ -59,10 +59,6 @@ namespace AutumnBox.OpenFramework.Extension.LeafExtension
             var methods = from method in type.GetMethods(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)
                           where method.GetCustomAttribute<LDoNotScan>() == null
                           select method;
-            foreach (var method in methods)
-            {
-                Trace.WriteLine($"{method.DeclaringType}.{method.Name}()");
-            }
             var result = FindExplicitMain(methods);
             if (result == null) return FindImplicitMain(methods) ?? throw new Exception("Entry not found");
             else return result;
