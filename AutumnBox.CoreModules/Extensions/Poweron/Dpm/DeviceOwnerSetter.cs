@@ -48,7 +48,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.Dpm
     [ExtText("SettingDpm", "Setting device owner", "zh-cn:正在设置设备管理员")]
     [ExtText("UseDpmPro", "The dpm command not found,do you wanna try dpmpro?", "zh-cn:您的设备缺少DPM,使用DPMPRO吗?")]
     [ExtText("MayFailed", "May successed", "zh-cn:可能失败")]
-    [ExtText("MayFailedAdvice", "Maybe successful?Please check your app", "zh-cn:由于安卓DPM原因, 无法确定是否成功, 请自行查看手机进行判断")]
+    [ExtText("MayFailedAdvice", "Maybe successful?Please check your app", "zh-cn:很有可能失败了!\n由于安卓DPM原因, 无法确定是否成功, 请自行查看手机进行判断")]
     [ExtText(TIP_OK, "Success!!", "zh-cn:设置成功!")]
     [ExtText(TIP_FAIL, "Fail!!", "zh-cn:失败!")]
     [ExtText(OK_MSG,
@@ -70,6 +70,10 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.Dpm
     [ExtText(ERR_MSG_KEY_DPM_NOT_FOUND,
         "dpm not found...",
         "zh-cn:在你的设备上,dpmpro似乎被阉割了,蛋疼啊...")]
+    [ExtText(ERR_MSG_KEY_UNKNOWN_ADMIN,
+        "Please make sure you have the relevant app installed",
+        "zh-cn:找不到设备管理员程序!请确保你安装了相关应用!")]
+    
     #endregion
 
     [ExtDesc("使用奇淫技巧暴力设置设备管理员", "en-us:Use the sneaky skills to set up the device administrator")]
@@ -89,6 +93,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.Dpm
         public const string ERR_MSG_KEY_MIUI_SEC = "_MiuiSec";
         public const string ERR_MSG_KEY_DO_ALREADY_SET = "_AlreadySet";
         public const string ERR_MSG_KEY_DPM_NOT_FOUND = "_DpmNotFound";
+        public const string ERR_MSG_KEY_UNKNOWN_ADMIN = "_UnknownAdmin";
         public const string OK_MSG = "_Ok";
         #endregion
 
@@ -138,17 +143,17 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.Dpm
                 InitUI();   //初始化ui
 
 
-                //执行前的一些检查与提示
-                SetProgress("Checking", 10);
-                if (!DoAppCheck()) return;//进行APP安装检查
-                if (!DoWarn()) return;//进行一系列提示与警告
+                ////执行前的一些检查与提示
+                //SetProgress("Checking", 10);
+                //if (!DoAppCheck()) return;//进行APP安装检查
+                //if (!DoWarn()) return;//进行一系列提示与警告
 
-                ////做出一系列警告与提示,只要一个不被同意,立刻再见
-                //if ((!DoAppCheck()) && (!DoWarn()))
-                //{
-                //    UI.Shutdown();//直接关闭UI
-                //    return;//退出函数
-                //}
+                //做出一系列警告与提示,只要一个不被同意,立刻再见
+                if (!(DoAppCheck() && DoWarn()))
+                {
+                    UI.Shutdown();//直接关闭UI
+                    return;//退出函数
+                }
 
                 /* 正式开始流程 */
 
@@ -248,7 +253,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.Dpm
             Device = null;
         }
 
-        #region 几个静态辅助函数
+        #region 几个辅助函数
         /// <summary>
         /// 进行一系列警告,只要一条不同意便返回false
         /// </summary>
