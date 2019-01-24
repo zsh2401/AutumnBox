@@ -17,7 +17,7 @@
                 <TextBlock FontSize="15" Text="{Binding Sketch}" TextWrapping="Wrap"/>
             </StackPanel>
             <Button Click="Button_Click" Width="100" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource btnCopy}" DockPanel.Dock="Top"></Button>
-            <TextBox IsReadOnly="True" DockPanel.Dock="Bottom" Style="{x:Null}" Margin="5" Text="{Binding ExceptionMessage}"/>
+            <TextBox TextWrapping="Wrap" IsReadOnly="True" DockPanel.Dock="Bottom" Style="{x:Null}" Margin="5" Text="{Binding ExceptionMessage}"/>
         </DockPanel>
 
     </Grid>
