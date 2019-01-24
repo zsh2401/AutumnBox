@@ -56,45 +56,43 @@ namespace AutumnBox.OpenFramework.Extension.LeafExtension
         private MethodInfo FindEntry()
         {
             var type = ext.GetType();
-            var explicitMain = from method in type.GetMethods(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)
-                               where IsExplicitMain(method)
-                               select method;
-            if (explicitMain.Any())
+            var methods = from method in type.GetMethods(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)
+                          where method.GetCustomAttribute<LDoNotScan>() == null
+                          select method;
+            foreach (var method in methods)
             {
-                return explicitMain.First();
+                Trace.WriteLine($"{method.DeclaringType}.{method.Name}()");
             }
-            else
-            {
-                var implicitMain = from method in type.GetMethods(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)
-                                   where IsImplicitMain(method)
-                                   select method;
-                if (!implicitMain.Any())
-                {
-                    throw new Exception("Entry not found!");
-                }
-                else
-                {
-                    return implicitMain.First();
-                }
-            }
+            var result = FindExplicitMain(methods);
+            if (result == null) return FindImplicitMain(methods) ?? throw new Exception("Entry not found");
+            else return result;
         }
         /// <summary>
         /// 判断是否是显式入口点
         /// </summary>
-        /// <param name="info"></param>
         /// <returns></returns>
-        private bool IsExplicitMain(MethodInfo info)
+        private MethodInfo FindExplicitMain(IEnumerable<MethodInfo> methods)
         {
-            return info.GetCustomAttribute<LMainAttribute>() != null;
+            var filt = from method in methods
+                       where method.GetCustomAttribute<LMainAttribute>() != null
+                       select method;
+            return filt.Any() ? filt.First() : null;
         }
         /// <summary>
         /// 判断是否是隐式入口点
         /// </summary>
-        /// <param name="info"></param>
         /// <returns></returns>
-        private bool IsImplicitMain(MethodInfo info)
+        private MethodInfo FindImplicitMain(IEnumerable<MethodInfo> methods)
         {
-            return info.Name == "Main" && info.GetCustomAttribute<LDoNotScan>() == null;
+            var filt = from method in methods
+                       where method.Name == "Main" && !IsClassExtensionMain(method)
+                       select method;
+            return filt.Any() ? filt.First() : null;
+        }
+        private bool IsClassExtensionMain(MethodInfo method)
+        {
+            var para = method.GetParameters();
+            return para.Length == 1 && para[0].ParameterType == typeof(Dictionary<string, object>);
         }
         /// <summary>
         /// 进行执行
