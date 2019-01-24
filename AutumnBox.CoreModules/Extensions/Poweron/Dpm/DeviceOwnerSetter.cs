@@ -6,18 +6,13 @@
 using AutumnBox.Basic.Calling;
 using AutumnBox.Basic.Device;
 using AutumnBox.Basic.Device.Management.AppFx;
-using AutumnBox.Basic.Exceptions;
-using AutumnBox.CoreModules.Aspect;
-using AutumnBox.CoreModules.Attribute;
-using AutumnBox.OpenFramework.Content;
 using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.Extension.LeafExtension;
 using AutumnBox.OpenFramework.Open;
 using AutumnBox.OpenFramework.Running;
-using AutumnBox.OpenFramework.Wrapper;
 using System;
 
-namespace AutumnBox.CoreModules.Lib
+namespace AutumnBox.CoreModules.Extensions.Poweron.Dpm
 {
     #region 激活前的警告文本
     [ExtText("Warning",
@@ -41,6 +36,10 @@ namespace AutumnBox.CoreModules.Lib
     #endregion
 
     #region 激活途中要用的文本
+    [ExtText("HaveNotInstallApp", "You have not install the relative application!", "zh-cn:秋之盒检测到你没有安装相关应用!")]
+    [ExtText("BtnIgnore", "Continue!", "zh-cn:强行继续")]
+    [ExtText("BtnOk", "Okay", "zh-cn:好吧")]
+    [ExtText("BtnCancel", "Extracting dpmpro to device", "zh-cn:取消")]
     [ExtText("Extract", "Extracting dpmpro to device", "zh-cn:提取dpmpro")]
     [ExtText("Push", "Pushing dpmpro to device", "zh-cn:推送dpmpro")]
     [ExtText("RMAcc", "Removing accounts", "zh-cn:正在移除所有账号")]
@@ -78,28 +77,68 @@ namespace AutumnBox.CoreModules.Lib
     [ExtTargetApi(8)]
     [ExtRequiredDeviceStates(DeviceState.Poweron)]
     [ExtIcon("Icons.nuclear.png")]
-    [DpmReceiver(null)]
-    internal abstract class EDpmSetterBase : LeafExtensionBase
+    internal abstract class DeviceOwnerSetter : LeafExtensionBase
     {
-        private ILeafUI ui;
-        private TextAttrManager texts;
+        #region 需要被外部解析器使用的文本键值
+        public const string TIP_OK = "_OK";
+        public const string TIP_FAIL = "_FAIL";
+        public const string ERR_MSG_KEY_UNKNOWN = "_Unknown";
+        public const string ERR_MSG_KEY_HAVE_USERS = "_HaveUsers";
+        public const string ERR_MSG_KEY_HAVE_ACCOUNTS = "_HaveAccs";
+        public const string ERR_MSG_KEY_MIUI_SEC = "_MiuiSec";
+        public const string ERR_MSG_KEY_DO_ALREADY_SET = "_AlreadySet";
+        public const string ERR_MSG_KEY_DPM_NOT_FOUND = "_DpmNotFound";
+        public const string OK_MSG = "_Ok";
+        #endregion
+
+        /// <summary>
+        /// 必须是完整的组件名,包括包名
+        /// </summary>
+        protected abstract string ComponentName { get; }
+
+        /// <summary>
+        /// 依赖的App包名,用于在开始正式流程前对该应用安装情况进行检测,如果为null,则不检测
+        /// </summary>
+        protected abstract string PackageName { get; }
+
+        /// <summary>
+        /// LeafUI
+        /// </summary>
+        [LProperty]
+        private ILeafUI UI { get; set; }
+
+        /// <summary>
+        /// TextManager
+        /// </summary>
+        [LProperty]
+        private TextAttrManager TextManager { get; set; }
+
+        /// <summary>
+        /// 日志器
+        /// </summary>
+        [LProperty]
+        private ILogger Logger { get; set; }
+
+        /// <summary>
+        /// Device
+        /// </summary>
+        [LProperty]
+        private IDevice Device { get; set; }
 
         /// <summary>
         /// 入口函数
         /// </summary>
         [LMain]
-        private void EntryPoint(IDevice device, TextAttrManager _texts, ILeafUI _ui, ILogger logger)
+        private void EntryPoint()
         {
-            ui = _ui;
-            texts = _texts;
-            using (ui)
+            using (UI)
             {
-                ui.Show();    //显示ui
-                InitUI(this, ui, logger);   //初始化ui
+                UI.Show();    //显示ui
+                InitUI();   //初始化ui
                 //做出一系列警告与提示,只要一个不被同意,立刻再见
-                if (!DoWarn(ui, texts))
+                if (!DoAppCheck() && !DoWarn())
                 {
-                    ui.Shutdown();//直接关闭UI
+                    UI.Shutdown();//直接关闭UI
                     return;//退出函数
                 }
 
@@ -108,16 +147,15 @@ namespace AutumnBox.CoreModules.Lib
                  */
 
                 //通过反射获取子类配置的接收器组件名
-                string componentName = GetDpmReceiverName(GetType());
 
                 //构造一个命令执行器
                 using (CommandExecutor executor = new CommandExecutor())
                 {
                     //将命令执行器输出定向到界面
-                    executor.To(e => ui.WriteOutput(e.Text));
+                    executor.To(e => UI.WriteOutput(e.Text));
 
                     //构造一个dpmpro的控制器
-                    var dpmpro = new DpmPro(executor, CoreLib.Current, device);
+                    var dpmpro = new DpmPro(executor, CoreLib.Current, Device);
 
                     //将dpmpro提取到临时目录
                     SetProgress("Extract", 0);
@@ -137,39 +175,46 @@ namespace AutumnBox.CoreModules.Lib
 
                     //使用可能的方式设置管理员,并记录结果
                     SetProgress("SettingDpm", 80);
-                    var result = SetDeviceOwner(device,executor,dpmpro,componentName);
+                    var result = SetDeviceOwner(executor, dpmpro);
 
                     //使用输出解析器,对记录的输出进行解析
                     if (DpmFailedMessageParser.TryParse(result, out string keyOfTip, out string keyOfmessage))
                     {
                         //解析成功,在输出框写下简要信息与建议
-                        ui.WriteLine(texts[keyOfmessage]);
-                        ui.ShowMessage(texts[keyOfmessage]);
+                        UI.WriteLine(TextManager[keyOfmessage]);
+                        UI.ShowMessage(TextManager[keyOfmessage]);
                         //ui流程结束
-                        ui.Finish(texts[keyOfTip]);
+                        UI.Finish(TextManager[keyOfTip]);
                     }
                     else
                     {
                         //解析失败,告诉用户可能失败
-                        ui.ShowMessage(texts["MayFailedAdvice"]);
-                        ui.WriteLine(texts["MayFailedAdvice"]);
+                        UI.ShowMessage(TextManager["MayFailedAdvice"]);
+                        UI.WriteLine(TextManager["MayFailedAdvice"]);
                         //ui流程结束
-                        ui.Finish(texts["MayFailed"]);
+                        UI.Finish(TextManager["MayFailed"]);
                     }
                 }
             }
         }
 
-        private CommandExecutor.Result SetDeviceOwner(IDevice device,CommandExecutor executor, DpmPro dpmpro, string componentName)
+        /// <summary>
+        /// 用所有可能的方法设置设备管理员,并返回结果
+        /// </summary>
+        /// <param name="device"></param>
+        /// <param name="executor"></param>
+        /// <param name="dpmpro"></param>
+        /// <returns></returns>
+        private CommandExecutor.Result SetDeviceOwner(CommandExecutor executor, DpmPro dpmpro)
         {
             CommandExecutor.Result result = null;
-           //先用自带dpm进行设置
-            result = executor.AdbShell(device, "dpm set-device-owner", componentName);
+            //先用自带dpm进行设置
+            result = executor.AdbShell(Device, "dpm set-device-owner", ComponentName);
             //如果返回值为127,也就是说这设备连dpm都阉割了,就询问用户是否用dpmpro来设置设备管理员
-            if (result.ExitCode == 127 && ui.DoYN(texts["UseDpmPro"]))
+            if (result.ExitCode == 127 && UI.DoYN(TextManager["UseDpmPro"]))
             {
                 //用dpmpro设置设备管理员,并记录结果(覆盖普通dpm设置器的记录)
-                result = dpmpro.SetDeviceOwner(componentName);
+                result = dpmpro.SetDeviceOwner(ComponentName);
             }
             return result;
         }
@@ -181,10 +226,10 @@ namespace AutumnBox.CoreModules.Lib
         /// <param name="progress"></param>
         private void SetProgress(string keyOfTip, int progress)
         {
-            string tip = texts[keyOfTip] ?? keyOfTip;
-            ui.Tip = tip;
-            ui.Progress = progress;
-            ui.WriteLine(tip);
+            string tip = TextManager[keyOfTip] ?? keyOfTip;
+            UI.Tip = tip;
+            UI.Progress = progress;
+            UI.WriteLine(tip);
         }
 
         /// <summary>
@@ -193,21 +238,11 @@ namespace AutumnBox.CoreModules.Lib
         [LSignalReceive(Signals.COMMAND_DESTORY)]
         private void OnDestory()
         {
-            ui = null;
-            texts = null;
+            UI = null;
+            TextManager = null;
+            Logger = null;
+            Device = null;
         }
-
-        #region 需要被外部解析器使用的文本键值
-        public const string TIP_OK = "_OK";
-        public const string TIP_FAIL = "_FAIL";
-        public const string ERR_MSG_KEY_UNKNOWN = "_Unknown";
-        public const string ERR_MSG_KEY_HAVE_USERS = "_HaveUsers";
-        public const string ERR_MSG_KEY_HAVE_ACCOUNTS = "_HaveAccs";
-        public const string ERR_MSG_KEY_MIUI_SEC = "_MiuiSec";
-        public const string ERR_MSG_KEY_DO_ALREADY_SET = "_AlreadySet";
-        public const string ERR_MSG_KEY_DPM_NOT_FOUND = "_DpmNotFound";
-        public const string OK_MSG = "_Ok";
-        #endregion
 
         #region 几个静态辅助函数
         /// <summary>
@@ -216,7 +251,7 @@ namespace AutumnBox.CoreModules.Lib
         /// <param name="ui"></param>
         /// <param name="texts"></param>
         /// <returns></returns>
-        private static bool DoWarn(ILeafUI ui, TextAttrManager texts)
+        private bool DoWarn()
         {
             string[] warnMessageKeys = new string[]
             {
@@ -229,7 +264,7 @@ namespace AutumnBox.CoreModules.Lib
             };
             foreach (string key in warnMessageKeys)
             {
-                bool yn = ui.DoYN(texts[key]);
+                bool yn = UI.DoYN(TextManager[key]);
                 if (!yn) return false;
             }
             return true;
@@ -238,13 +273,13 @@ namespace AutumnBox.CoreModules.Lib
         /// <summary>
         ///  初始化UI
         /// </summary>
-        private static void InitUI(LeafExtensionBase leaf, ILeafUI ui, ILogger logger)
+        private void InitUI()
         {
-            ui.Icon = leaf.GetIconBytes();
-            ui.Title = leaf.GetName();
-            ui.Height += 100;
-            ui.Width += 100;
-            ui.EnableHelpBtn(() =>
+            UI.Icon = this.GetIconBytes();
+            UI.Title = this.GetName();
+            UI.Height += 100;
+            UI.Width += 100;
+            UI.EnableHelpBtn(() =>
             {
                 try
                 {
@@ -252,21 +287,25 @@ namespace AutumnBox.CoreModules.Lib
                 }
                 catch (Exception e)
                 {
-                    logger.Warn("cannot go to dpm setter's help", e);
+                    Logger.Warn("cannot go to dpm setter's help", e);
                 }
             });
         }
 
         /// <summary>
-        /// 获取子类需要设置的DPM接收器组件名
+        /// 对相关APP进行检查
         /// </summary>
         /// <returns></returns>
-        private static string GetDpmReceiverName(Type classExtension)
+        private bool DoAppCheck()
         {
-            ClassExtensionScanner scanner = new ClassExtensionScanner(classExtension);
-            scanner.Scan(ClassExtensionScanner.ScanOption.Informations);
-            var infos = scanner.Informations;
-            return infos[DpmReceiverAttribute.KEY].Value as string;
+            if (PackageName == null) return true;
+#pragma warning disable CS0618 // 类型或成员已过时
+            var pm = new PackageManager(Device);
+#pragma warning restore CS0618 // 类型或成员已过时
+            var isInstall = pm.IsInstall(PackageName);
+            return isInstall || UI.DoChoice(TextManager["HaveNotInstallApp"],
+                btnYes: TextManager["BtnOkay"], btnNo: TextManager["BtnIgnore"],
+               btnCancel: TextManager["BtnCancel"]) == false;
         }
         #endregion
     }

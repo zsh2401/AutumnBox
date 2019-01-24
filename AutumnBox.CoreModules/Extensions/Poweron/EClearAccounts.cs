@@ -8,7 +8,7 @@ using AutumnBox.Basic.Calling;
 using AutumnBox.Basic.Device;
 using AutumnBox.Basic.Exceptions;
 using AutumnBox.CoreModules.Aspect;
-using AutumnBox.CoreModules.Lib;
+using AutumnBox.CoreModules.Extensions.Poweron.Dpm;
 using AutumnBox.OpenFramework.Extension;
 
 namespace AutumnBox.CoreModules.Extensions.Poweron

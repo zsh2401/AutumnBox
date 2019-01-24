@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutumnBox.OpenFramework.Open;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -55,36 +56,45 @@ namespace AutumnBox.OpenFramework.Extension.LeafExtension
         private MethodInfo FindEntry()
         {
             var type = ext.GetType();
-            var entries = from method in type.GetMethods(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)
-                          where IsEntry(method)
-                          select method;
-            if (!entries.Any())
+            var explicitMain = from method in type.GetMethods(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)
+                               where IsExplicitMain(method)
+                               select method;
+            if (explicitMain.Any())
             {
-                throw new Exception("Entry not found!");
+                return explicitMain.First();
             }
-            return entries.First();
+            else
+            {
+                var implicitMain = from method in type.GetMethods(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)
+                                   where IsImplicitMain(method)
+                                   select method;
+                if (!implicitMain.Any())
+                {
+                    throw new Exception("Entry not found!");
+                }
+                else
+                {
+                    return implicitMain.First();
+                }
+            }
         }
         /// <summary>
-        /// 判断一个函数是否是入口点
+        /// 判断是否是显式入口点
         /// </summary>
         /// <param name="info"></param>
         /// <returns></returns>
-        private bool IsEntry(MethodInfo info)
+        private bool IsExplicitMain(MethodInfo info)
         {
-            //Trace.WriteLine(info.GetParameters()[0].ParameterType.Name);
-            return (info.Name == "Main" || info.GetCustomAttribute(typeof(LMainAttribute)) != null)
-                && IsNotClassExtensionMain(info);
+            return info.GetCustomAttribute<LMainAttribute>() != null;
         }
-        private bool IsNotClassExtensionMain(MethodInfo info)
+        /// <summary>
+        /// 判断是否是隐式入口点
+        /// </summary>
+        /// <param name="info"></param>
+        /// <returns></returns>
+        private bool IsImplicitMain(MethodInfo info)
         {
-            var para = info.GetParameters();
-            if (para != null && para.Length == 1)
-            {
-                Trace.WriteLine(para[0].ParameterType);
-                Trace.WriteLine($"{typeof(Dictionary<string, object>)}");
-                return para[0].ParameterType != typeof(Dictionary<string, object>);
-            }
-            return true;
+            return info.Name == "Main" && info.GetCustomAttribute<LDoNotScan>() == null;
         }
         /// <summary>
         /// 进行执行

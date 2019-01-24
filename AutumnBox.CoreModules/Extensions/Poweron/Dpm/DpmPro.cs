@@ -4,15 +4,13 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.Basic.Calling;
-using AutumnBox.Basic.Data;
 using AutumnBox.Basic.Device;
-using AutumnBox.Basic.Util;
 using AutumnBox.OpenFramework.Content;
 using AutumnBox.OpenFramework.Open;
 using System;
 using System.IO;
 
-namespace AutumnBox.CoreModules.Lib
+namespace AutumnBox.CoreModules.Extensions.Poweron.Dpm
 {
     internal class DpmPro
     {
