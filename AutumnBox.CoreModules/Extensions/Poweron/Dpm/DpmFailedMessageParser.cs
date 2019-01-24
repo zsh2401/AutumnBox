@@ -37,6 +37,11 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.Dpm
                 tip = DeviceOwnerSetter.TIP_FAIL;
                 message = DeviceOwnerSetter.ERR_MSG_KEY_DPM_NOT_FOUND;
             }
+            else if (outputString.Contains("unknown admin"))
+            {
+                tip = DeviceOwnerSetter.TIP_FAIL;
+                message = DeviceOwnerSetter.ERR_MSG_KEY_UNKNOWN_ADMIN;
+            }
             else
             {
                 tip = null;
