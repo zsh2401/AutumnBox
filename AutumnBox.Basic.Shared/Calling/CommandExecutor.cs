@@ -42,7 +42,7 @@ namespace AutumnBox.Basic.Calling
         /// <summary>
         /// 命令执行器的结果
         /// </summary>
-        public class Result
+        public class Result : ICommandResult
         {
             /// <summary>
             /// 返回码
