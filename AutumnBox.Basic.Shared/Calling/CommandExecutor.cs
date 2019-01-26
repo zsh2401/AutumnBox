@@ -172,12 +172,8 @@ namespace AutumnBox.Basic.Calling
         /// <returns></returns>
         public virtual Result AdbShell(IDevice device, params string[] args)
         {
-            if (!ManagedAdb.Adb.Server.IsEnable)
-            {
-                throw new InvalidOperationException("adb server is killed");
-            }
-            IAdbServer adbServer = AutumnBox.Basic.ManagedAdb.Adb.Server;
-            FileInfo exe = AutumnBox.Basic.ManagedAdb.Adb.FastbootFile;
+            IAdbServer adbServer = ManagedAdb.Adb.Server;
+            FileInfo exe = ManagedAdb.Adb.FastbootFile;
             string joined = string.Join(" ", args);
             return Adb(device, $"shell {joined}");
         }
@@ -189,11 +185,11 @@ namespace AutumnBox.Basic.Calling
         /// <returns></returns>
         public virtual Result Fastboot(IDevice device, params string[] args)
         {
-            IAdbServer adbServer = AutumnBox.Basic.ManagedAdb.Adb.Server;
-            FileInfo exe = AutumnBox.Basic.ManagedAdb.Adb.FastbootFile;
+            IAdbServer adbServer = ManagedAdb.Adb.Server;
+            FileInfo exe = ManagedAdb.Adb.FastbootFile;
             string joined = string.Join(" ", args);
             string compCommand = $"-s {device.SerialNumber} {joined}";
-            return Execute(exe.FullName, compCommand);
+            return Execute(exe.Name, compCommand);
         }
         /// <summary>
         /// 执行针对设备的adb命令
@@ -207,11 +203,11 @@ namespace AutumnBox.Basic.Calling
             {
                 throw new InvalidOperationException("adb server is killed");
             }
-            IAdbServer adbServer = AutumnBox.Basic.ManagedAdb.Adb.Server;
-            FileInfo exe = AutumnBox.Basic.ManagedAdb.Adb.AdbFile;
+            IAdbServer adbServer = ManagedAdb.Adb.Server;
+            FileInfo exe = ManagedAdb.Adb.AdbFile;
             string joined = string.Join(" ", args);
-            string compCommand = $"-P{adbServer.Port} -s {device.SerialNumber} {joined}";
-            return Execute(exe.FullName, compCommand);
+            string compCommand = $"-s {device.SerialNumber} {joined}";
+            return Execute(exe.Name, compCommand);
         }
         /// <summary>
         /// 执行非针对设备的fastboot命令
@@ -220,11 +216,11 @@ namespace AutumnBox.Basic.Calling
         /// <returns></returns>
         public virtual Result Fastboot(params string[] args)
         {
-            IAdbServer adbServer = AutumnBox.Basic.ManagedAdb.Adb.Server;
-            FileInfo exe = AutumnBox.Basic.ManagedAdb.Adb.FastbootFile;
+            IAdbServer adbServer = ManagedAdb.Adb.Server;
+            FileInfo exe = ManagedAdb.Adb.FastbootFile;
             string joined = string.Join(" ", args);
             string compCommand = $"{joined}";
-            return Execute(exe.FullName, compCommand);
+            return Execute(exe.Name, compCommand);
         }
         /// <summary>
         /// 执行非针对设备的adb命令
@@ -237,12 +233,12 @@ namespace AutumnBox.Basic.Calling
             {
                 throw new InvalidOperationException("adb server is killed");
             }
-            IAdbServer adbServer = AutumnBox.Basic.ManagedAdb.Adb.Server;
-            FileInfo exe = AutumnBox.Basic.ManagedAdb.Adb.AdbFile;
+            IAdbServer adbServer = ManagedAdb.Adb.Server;
+            FileInfo exe = ManagedAdb.Adb.AdbFile;
             string joined = string.Join(" ", args);
-            string compCommand = $"-P{adbServer.Port} {joined}";
-            return Execute(exe.FullName, compCommand);
+            return Execute(exe.Name, joined);
         }
+
         /// <summary>
         /// 向标准输入流输入一个字符
         /// </summary>
@@ -303,7 +299,7 @@ namespace AutumnBox.Basic.Calling
         /// <returns></returns>
         protected virtual ProcessStartInfo GetStartInfo(string fileName, string args)
         {
-            return new ProcessStartInfo()
+            var pInfo = new ProcessStartInfo()
             {
                 RedirectStandardError = CreateNoWindow,
                 RedirectStandardOutput = CreateNoWindow,
@@ -313,6 +309,11 @@ namespace AutumnBox.Basic.Calling
                 FileName = fileName,
                 Arguments = args,
             };
+            string pathEnv = pInfo.EnvironmentVariables["path"];
+            pInfo.EnvironmentVariables["path"] = $"{ManagedAdb.Adb.AdbToolsDir};{pathEnv}";
+            pInfo.WorkingDirectory = Environment.CurrentDirectory;
+            pInfo.EnvironmentVariables["ANDROID_ADB_SERVER_PORT"] = ManagedAdb.Adb.Server?.Port.ToString();
+            return pInfo;
         }
 
         /// <summary>
