@@ -38,7 +38,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.Dpm
     #region 激活途中要用的文本
     [ExtText("HaveNotInstallApp", "You have not install the relative application!", "zh-cn:秋之盒检测到你没有安装相关应用!")]
     [ExtText("BtnIgnore", "Continue!", "zh-cn:强行继续")]
-    [ExtText("BtnOk", "Okay", "zh-cn:好吧")]
+    [ExtText("BtnOk", "Okay", "zh-cn:确认")]
     [ExtText("BtnCancel", "Extracting dpmpro to device", "zh-cn:取消")]
     [ExtText("Checking", "Checking", "zh-cn:正在准备")]
     [ExtText("Extract", "Extracting dpmpro to device", "zh-cn:提取dpmpro")]
@@ -69,7 +69,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.Dpm
         , "zh-cn:出现这个问题,请关闭MIUI优化并开启MIUI安全调试!(均在开发者选项中)然后再试!")]
     [ExtText(ERR_MSG_KEY_DPM_NOT_FOUND,
         "dpm not found...",
-        "zh-cn:在你的设备上,dpmpro似乎被阉割了,蛋疼啊...")]
+        "zh-cn:你设备上的DPM命令被精简,无法设定")]
     [ExtText(ERR_MSG_KEY_UNKNOWN_ADMIN,
         "Please make sure you have the relevant app installed",
         "zh-cn:找不到设备管理员程序!请确保你安装了相关应用!")]
