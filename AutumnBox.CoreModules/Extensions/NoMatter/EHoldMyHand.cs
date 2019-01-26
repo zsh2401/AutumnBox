@@ -3,6 +3,7 @@
 ** date:  2018/8/17 19:19:29 (UTC +8:00)
 ** desc： ...
 *************************************************/
+using AutumnBox.Basic.Calling;
 using AutumnBox.Basic.Device;
 using AutumnBox.OpenFramework.Content;
 using AutumnBox.OpenFramework.Extension;
@@ -17,7 +18,7 @@ namespace AutumnBox.CoreModules.Extensions.Hidden
     [ExtRequiredDeviceStates(AutumnBoxExtension.NoMatter)]
     [ExtDeveloperMode]
     [ExtText("fuck", "Hello", "zh-cn:你好!")]
-    [ExtMinAndroidVersion(9,0,0)]
+    [ExtMinAndroidVersion(9, 0, 0)]
     internal class EHoldMyHand : LeafExtensionBase
     {
         [LProperty]
@@ -32,15 +33,25 @@ namespace AutumnBox.CoreModules.Extensions.Hidden
             using (ui)
             {
                 ui.Show();
-                ui.WriteLine(manager["fuck"]);
-                ui.WriteOutput("fuck asdasjkdshadskjhkj");
-                ui.ShowMessage("WTF\n\n\n\n\n\nasdadas\n\n\nasdasdsahsdkajghsdakjfhsdjkaghsdfjkghjkfsdhgjkshfdjkgfhsjdgkhdskfjghjW");
-                bool? choice = ui.DoChoice("FUCcqwjeiwqeqehqWK");
-                ui.WriteLine(choice.ToString());
-                bool yn = ui.DoYN("FUCK2c   2rqwhewqhehqweqhwewqhejwqhewqjhqwejkqwhewqhWW");
-                ui.WriteLine(yn.ToString());
-                object result = ui.SelectFrom(new object[] { "a", "qqdasdsadasb", "c", "a", "s", "c", "a" }, "选择你要做的SB操作");
-                ui.WriteLine(result);
+                using (CommandExecutor executor = new CommandExecutor())
+                {
+                    ui.CloseButtonClicked += (s, e) =>
+                    {
+                        e.CanBeClosed = true;
+                        executor.Dispose();
+                    };
+                    executor.To(e => ui.WriteOutput(e.Text));
+                    executor.AdbShell(device, "ping baidu.com");
+                }
+                //ui.WriteLine(manager["fuck"]);
+                //ui.WriteOutput("fuck asdasjkdshadskjhkj");
+                //ui.ShowMessage("WTF\n\n\n\n\n\nasdadas\n\n\nasdasdsahsdkajghsdakjfhsdjkaghsdfjkghjkfsdhgjkshfdjkgfhsjdgkhdskfjghjW");
+                //bool? choice = ui.DoChoice("FUCcqwjeiwqeqehqWK");
+                //ui.WriteLine(choice.ToString());
+                //bool yn = ui.DoYN("FUCK2c   2rqwhewqhehqweqhwewqhejwqhewqjhqwejkqwhewqhWW");
+                //ui.WriteLine(yn.ToString());
+                //object result = ui.SelectFrom(new object[] { "a", "qqdasdsadasb", "c", "a", "s", "c", "a" }, "选择你要做的SB操作");
+                //ui.WriteLine(result);
                 ui.Finish();
             }
         }
