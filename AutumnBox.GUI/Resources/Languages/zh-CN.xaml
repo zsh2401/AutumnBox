@@ -17,9 +17,9 @@
     
     <s:String x:Key="UserLicenseTitle">用户协议</s:String>
     <s:String x:Key="UserLicenseContent">本协议基于基于LGPL3.0,添加以下额外条例
-        使用秋之盒AutumnoBox,则代表你同意这些条例
-    1.秋之盒开发者会尽量保证秋之盒的安全与稳定性,但可能造成的损失,开发者不负任何责任
-        2.
+使用秋之盒AutumnoBox,则代表你同意这些条例
+1.秋之盒开发者会尽量保证秋之盒的安全与稳定性,但可能造成的损失,开发者不负任何责任
+2.
     </s:String>
  <s:String x:Key="BtnOpenSourceLisence">开源协议</s:String>
     

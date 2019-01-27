@@ -21,8 +21,8 @@
             <DockPanel DockPanel.Dock="Top">
                 <TextBlock DockPanel.Dock="Top" TextAlignment="Center" FontSize="25" Text="{DynamicResource UserLicenseTitle}"/>
                 <Button HorizontalAlignment="Center" Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoOSLisence}" Style="{DynamicResource MaterialDesignFlatButton}" DockPanel.Dock="Bottom" Content="{DynamicResource BtnOpenSourceLisence}"/>
-                <ScrollViewer DockPanel.Dock="Bottom">
-                    <TextBlock TextWrapping="Wrap" Text="{DynamicResource UserLicenseContent}"/>
+                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" DockPanel.Dock="Bottom">
+                    <TextBlock Margin="15" FontSize="15" TextWrapping="Wrap" Text="{DynamicResource UserLicenseContent}"/>
                 </ScrollViewer>
             </DockPanel>
         </DockPanel>
