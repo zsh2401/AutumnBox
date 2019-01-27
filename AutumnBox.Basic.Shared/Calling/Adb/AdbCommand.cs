@@ -23,7 +23,7 @@ namespace AutumnBox.Basic.Calling.Adb
         /// 构造一条设备无关的ADB命令
         /// </summary>
         /// <param name="args"></param>
-        public AdbCommand(string args) : base(ManagedAdb.Adb.AdbFilePath,$"-P{ManagedAdb.Adb.Server.Port} " + args)
+        public AdbCommand(string args) : base(ManagedAdb.Adb.AdbFilePath,args)
         {
         }
         /// <summary>

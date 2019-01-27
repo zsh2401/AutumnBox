@@ -141,6 +141,12 @@ namespace AutumnBox.Basic.Calling
                     FileName = executableFile,
                     Arguments = args,
                 };
+                if (ManagedAdb.Adb.Manager?.Server?.IsEnable == true)
+                {
+                    string pathEnv = processStartInfo.EnvironmentVariables["path"];
+                    processStartInfo.EnvironmentVariables["path"] = $"{ManagedAdb.Adb.AdbToolsDir.FullName};{pathEnv}";
+                    processStartInfo.EnvironmentVariables["ANDROID_ADB_SERVER_PORT"] = ManagedAdb.Adb.Server.Port.ToString();
+                }
                 outputBuilder.Clear();
                 int retCode = -1;
                 BeforeProcessStart(processStartInfo);
