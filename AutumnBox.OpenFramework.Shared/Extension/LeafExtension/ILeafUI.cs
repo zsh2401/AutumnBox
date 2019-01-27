@@ -94,12 +94,13 @@ namespace AutumnBox.OpenFramework.Extension.LeafExtension
         /// <returns></returns>
         void ShowMessage(string message);
         /// <summary>
-        /// 让用户对一条信息进行确认
+        /// 让用户对一条信息进行确认,可自定义按钮
         /// </summary>
         /// <param name="message"></param>
-        /// <exception cref="ArgumentNullException"></exception>
+        /// <param name="btnYes"></param>
+        /// <param name="btnNo"></param>
         /// <returns></returns>
-        bool DoYN(string message);
+        bool DoYN(string message, string btnYes=null, string btnNo=null);
         /// <summary>
         /// 让用户进行选择
         /// </summary>
