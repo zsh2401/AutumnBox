@@ -47,14 +47,11 @@ namespace AutumnBox.GUI.ViewModel
         {
             Donate = new FlexiableCommand(() =>
             {
-                DialogHost.Show(new ContentDonate());
+                (App.Current.MainWindow as MainWindow).DialogHost.ShowDialog(new ContentDonate());
             });
             ViewOpenSource = new FlexiableCommand(() =>
             {
-                new OpenSourceWindow()
-                {
-                    Owner = App.Current.MainWindow
-                }.Show();
+                (App.Current.MainWindow as MainWindow).DialogHost.ShowDialog(new ContentOpenSource());
             });
         }
     }
