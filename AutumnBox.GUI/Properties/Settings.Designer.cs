@@ -166,5 +166,17 @@ namespace AutumnBox.GUI.Properties {
                 this["DoubleClickRunExt"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool LicenseAccepted {
+            get {
+                return ((bool)(this["LicenseAccepted"]));
+            }
+            set {
+                this["LicenseAccepted"] = value;
+            }
+        }
     }
 }

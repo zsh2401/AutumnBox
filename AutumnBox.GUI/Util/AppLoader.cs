@@ -15,6 +15,7 @@ using AutumnBox.GUI.View.Windows;
 using AutumnBox.OpenFramework;
 using MaterialDesignThemes.Wpf;
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
@@ -61,6 +62,31 @@ namespace AutumnBox.GUI.Util
                     langDialogTask = (App.Current.MainWindow as MainWindow).DialogHost.ShowDialog(new LanguageChoice());
                 });
                 langDialogTask.Wait();
+            }
+#if PREVIEW || DEBUG
+            Settings.Default.LicenseAccepted = false;
+#endif
+            if (!Settings.Default.LicenseAccepted)
+            {
+                Task<object> dialogTask = null;
+                App.Current.Dispatcher.Invoke(() =>
+                {
+                    dialogTask = (App.Current.MainWindow as MainWindow).DialogHost.ShowDialog(new ContentLicense());
+                });
+                dialogTask.Wait();
+                bool accepted = dialogTask.Result != null;
+                if (!accepted)
+                {
+                    App.Current.Dispatcher.Invoke(() =>
+                    {
+                        App.Current.Shutdown(0);
+                    });
+                    return;
+                }
+                else
+                {
+                    Settings.Default.LicenseAccepted = true;
+                }
             }
             //如果设置在启动时打开调试窗口
             if (Settings.Default.ShowDebuggingWindowNextLaunch)
