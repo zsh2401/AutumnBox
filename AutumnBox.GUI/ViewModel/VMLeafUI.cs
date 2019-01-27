@@ -348,23 +348,6 @@ namespace AutumnBox.GUI.ViewModel
             task.Wait();
         }
 
-        public bool DoYN(string message)
-        {
-            if (message == null)
-            {
-                throw new ArgumentNullException(nameof(message));
-            }
-
-            Task<object> task = null;
-            App.Current.Dispatcher.Invoke(() =>
-            {
-                var view = new YNView(message, null, null);
-                task = View.DialogHost.ShowDialog(view);
-            });
-            task.Wait();
-            return (bool)task.Result;
-        }
-
         public bool? DoChoice(string message, string btnYes = null, string btnNo = null, string btnCancel = null)
         {
             if (message == null)
@@ -424,6 +407,23 @@ namespace AutumnBox.GUI.ViewModel
                 dialogTask = View.DialogHost.ShowDialog(content);
             });
             return dialogTask;
+        }
+
+        public bool DoYN(string message, string btnYes=null, string btnNo=null)
+        {
+            if (message == null)
+            {
+                throw new ArgumentNullException(nameof(message));
+            }
+
+            Task<object> task = null;
+            App.Current.Dispatcher.Invoke(() =>
+            {
+                var view = new YNView(message, btnYes, btnNo);
+                task = View.DialogHost.ShowDialog(view);
+            });
+            task.Wait();
+            return (bool)task.Result;
         }
     }
 }
