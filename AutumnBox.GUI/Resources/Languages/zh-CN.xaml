@@ -541,6 +541,7 @@
     
         <!--PanelDonte-->
     <s:String x:Key="PanelDonateBtnCaption">↑↑这里有捐赠者记录以及更多互惠互利的经济支援方式哦~</s:String>
+    <s:String x:Key="PanelDonateBtnPayPal">你还可以使用PayPal进行捐赠</s:String>
      <s:String x:Key="PanelDonateBtnGotoDonatePage">浏览捐赠名单或其它互惠互利捐赠方式</s:String>
     <s:String x:Key="PanelDonateDescription">赠人玫瑰,手留余香.
     谢谢你对中国软件生态做出的贡献</s:String>

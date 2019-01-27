@@ -571,6 +571,7 @@
     <!--PanelDonte-->
     <s:String x:Key="PanelDonateBtnCaption">Thanks....Thanks....Thanks....</s:String>
      <s:String x:Key="PanelDonateBtnGotoDonatePage">View donor list</s:String>
+    <s:String x:Key="PanelDonateBtnPayPal">Use the PayPal in case u can not use AliPay or WeChat Pay</s:String>
     <s:String x:Key="PanelDonateDescription">We make a living by what we get. We make a life by what we give.--Winston Churchhill</s:String>
     
     <!--静态界面标记-->
