@@ -227,6 +227,9 @@
     <Compile Include="View\DialogContent\ContentEnableDeviceNetDebugging.xaml.cs">
       <DependentUpon>ContentEnableDeviceNetDebugging.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\DialogContent\ContentOpenSource.xaml.cs">
+      <DependentUpon>ContentOpenSource.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\DialogContent\ContentSettings.xaml.cs">
       <DependentUpon>ContentSettings.xaml</DependentUpon>
     </Compile>
@@ -529,6 +532,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\DialogContent\ContentEnableDeviceNetDebugging.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DialogContent\ContentOpenSource.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
