@@ -14,6 +14,9 @@
     <s:String x:Key="AppDesc">Open source,free,simple,GUI adb toolbox</s:String>
     <s:String x:Key="TitleSuffixAdmin">[Administrator]</s:String>
         
+    <s:String x:Key="UserLicenseTitle">User License</s:String>
+    <s:String x:Key="UserLicenseContent">XXX</s:String>
+    <s:String x:Key="BtnOpenSourceLisence">Open Source License</s:String>
     
     <s:String x:Key="SignalSelectViewHint">Select one and click it!^_^</s:String>
      <s:String x:Key="SignalSelectViewCancel">Cancel</s:String>
