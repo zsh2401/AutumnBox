@@ -189,7 +189,7 @@ namespace AutumnBox.Basic.Calling
             FileInfo exe = ManagedAdb.Adb.FastbootFile;
             string joined = string.Join(" ", args);
             string compCommand = $"-s {device.SerialNumber} {joined}";
-            return Execute(exe.Name, compCommand);
+            return Execute(exe.FullName, compCommand);
         }
         /// <summary>
         /// 执行针对设备的adb命令
@@ -207,7 +207,7 @@ namespace AutumnBox.Basic.Calling
             FileInfo exe = ManagedAdb.Adb.AdbFile;
             string joined = string.Join(" ", args);
             string compCommand = $"-s {device.SerialNumber} {joined}";
-            return Execute(exe.Name, compCommand);
+            return Execute(exe.FullName, compCommand);
         }
         /// <summary>
         /// 执行非针对设备的fastboot命令
@@ -220,7 +220,7 @@ namespace AutumnBox.Basic.Calling
             FileInfo exe = ManagedAdb.Adb.FastbootFile;
             string joined = string.Join(" ", args);
             string compCommand = $"{joined}";
-            return Execute(exe.Name, compCommand);
+            return Execute(exe.FullName, compCommand);
         }
         /// <summary>
         /// 执行非针对设备的adb命令
@@ -236,7 +236,7 @@ namespace AutumnBox.Basic.Calling
             IAdbServer adbServer = ManagedAdb.Adb.Server;
             FileInfo exe = ManagedAdb.Adb.AdbFile;
             string joined = string.Join(" ", args);
-            return Execute(exe.Name, joined);
+            return Execute(exe.FullName, joined);
         }
 
         /// <summary>
@@ -309,10 +309,12 @@ namespace AutumnBox.Basic.Calling
                 FileName = fileName,
                 Arguments = args,
             };
-            string pathEnv = pInfo.EnvironmentVariables["path"];
-            pInfo.EnvironmentVariables["path"] = $"{ManagedAdb.Adb.AdbToolsDir};{pathEnv}";
-            pInfo.WorkingDirectory = Environment.CurrentDirectory;
-            pInfo.EnvironmentVariables["ANDROID_ADB_SERVER_PORT"] = ManagedAdb.Adb.Server?.Port.ToString();
+            if (ManagedAdb.Adb.Manager?.Server?.IsEnable == true)
+            {
+                string pathEnv = pInfo.EnvironmentVariables["path"];
+                pInfo.EnvironmentVariables["path"] = $"{ManagedAdb.Adb.AdbToolsDir.FullName};{pathEnv}";
+                pInfo.EnvironmentVariables["ANDROID_ADB_SERVER_PORT"] = ManagedAdb.Adb.Server.Port.ToString();
+            }
             return pInfo;
         }
 
