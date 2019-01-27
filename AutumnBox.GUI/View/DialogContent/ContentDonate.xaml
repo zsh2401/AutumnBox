@@ -21,7 +21,7 @@
         </StackPanel>
         <DockPanel>
             <Button DockPanel.Dock="Right" FontSize="12" Command="materialDesign:DialogHost.CloseDialogCommand" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource btnClose}"/>
-            <Button HorizontalContentAlignment="Left" DockPanel.Dock="Left" FontSize="12" Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoDonate}" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource PanelDonateBtnGotoDonatePage}"/>
+            <Button HorizontalAlignment="Left" DockPanel.Dock="Left" FontSize="12" Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoDonate}" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource PanelDonateBtnGotoDonatePage}"/>
         </DockPanel>
     </StackPanel>
 </UserControl>
