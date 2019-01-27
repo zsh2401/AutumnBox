@@ -30,7 +30,6 @@ namespace AutumnBox.Basic.Device.ManagementV2
         /// <summary>
         /// 构造一个提供长久Shell的对象
         /// </summary>
-        /// <param name="executor"></param>
         /// <param name="device"></param>
         public AndroidShell(IDevice device)
         {
