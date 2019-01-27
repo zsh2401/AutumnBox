@@ -67,7 +67,9 @@
     <s:String x:Key="PanelSettingsMsgDontNeedUpdate">无需任何更新,你已经是最新版本了</s:String>
      <s:String x:Key="PanelSettingsGUIVersionLabel">图形界面</s:String>
      <s:String x:Key="PanelSettingsCoreLibVersionLabel">核心模块</s:String>
-     <s:String x:Key="PanelSettingsBasicVersionLabel">ADB封装库</s:String>
+      <s:String x:Key="PanelSettingsAdbVersionLabel">ADB</s:String>
+    <s:String x:Key="PanelSettingsLoading">加载中</s:String>
+     <s:String x:Key="PanelSettingsBasicVersionLabel">Basic封装库</s:String>
     <s:String x:Key="PanelSettingsOpenFxVersionLabel">开放框架</s:String>
     <s:String x:Key="PanelSettingsVersionInfo">版本信息</s:String>
       <s:String x:Key="PanelSettingsUpdateCheck">更新检测</s:String>

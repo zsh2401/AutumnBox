@@ -152,6 +152,11 @@
                             <TextBlock DockPanel.Dock="Left" Text="{DynamicResource PanelSettingsCoreLibVersionLabel}"/>
                         </DockPanel>
 
+                        <DockPanel>
+                            <TextBlock DockPanel.Dock="Right" Text="{Binding AdbVersion}"/>
+                            <TextBlock DockPanel.Dock="Left" Text="{DynamicResource PanelSettingsAdbVersionLabel}"/>
+                        </DockPanel>
+
                     </StackPanel>
                 </materialDesign:Card>
 

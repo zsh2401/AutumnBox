@@ -3,6 +3,7 @@
 ** date:  2018/8/21 20:19:06 (UTC +8:00)
 ** desc： ...
 *************************************************/
+using AutumnBox.Basic.Calling.Adb;
 using AutumnBox.GUI.MVVM;
 using AutumnBox.GUI.Properties;
 using AutumnBox.GUI.Util;
@@ -18,6 +19,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace AutumnBox.GUI.ViewModel
@@ -61,7 +64,7 @@ namespace AutumnBox.GUI.ViewModel
                 RaisePropertyChanged();
             }
         }
-        private string _guiVersion;
+        private string _guiVersion = "...";
 
         public string BasicVersion
         {
@@ -71,7 +74,7 @@ namespace AutumnBox.GUI.ViewModel
                 RaisePropertyChanged();
             }
         }
-        private string _basicVersion;
+        private string _basicVersion = "...";
 
         public string OpenFxVersion
         {
@@ -81,7 +84,7 @@ namespace AutumnBox.GUI.ViewModel
                 RaisePropertyChanged();
             }
         }
-        private string _openFxVersion;
+        private string _openFxVersion = "...";
 
         public string CoreLibVersion
         {
@@ -91,7 +94,17 @@ namespace AutumnBox.GUI.ViewModel
                 RaisePropertyChanged();
             }
         }
-        private string _coreLibVersion;
+        private string _coreLibVersion = "...";
+
+        public string AdbVersion
+        {
+            get => _adbVersion; set
+            {
+                _adbVersion = value;
+                RaisePropertyChanged();
+            }
+        }
+        private string _adbVersion = "...";
 
         public ICommand UpdateCheck
         {
@@ -251,6 +264,7 @@ namespace AutumnBox.GUI.ViewModel
         #endregion
         public VMSettingsDialog()
         {
+            RaisePropertyChangedOnDispatcher = true;
             ResetSettings = new MVVMCommand(ResetSettingsMethod);
             SendToDesktop = new MVVMCommand((_) =>
             {
@@ -275,6 +289,11 @@ namespace AutumnBox.GUI.ViewModel
                 }
                 catch { }
             });
+            Task.Run(() => LoadVersionInfoAsync());
+        }
+
+        private void LoadVersionInfoAsync()
+        {
             try
             {
                 GUIVersion = Self.Version.ToString();
@@ -288,6 +307,12 @@ namespace AutumnBox.GUI.ViewModel
                 var assemblyLib = coreLibFilterResult.First() as AssemblyBasedLibrarian;
                 Assembly assembly = assemblyLib.ManagedAssembly;
                 CoreLibVersion = assembly.GetName().Version.ToString();
+                string versionOutput = new AdbCommand("version").Execute().Output;
+                var match = Regex.Match(versionOutput, @"[\w|\s]*[version\s](?<name>[\d|\.]+)([\r\n|\n]*)Version\s(?<code>\d+)", RegexOptions.Multiline);
+                if (match.Success)
+                {
+                    AdbVersion = match.Result("${name}(${code})");
+                }
             }
             catch (Exception e)
             {
