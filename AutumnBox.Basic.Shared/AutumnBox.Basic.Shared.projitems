@@ -23,6 +23,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Calling\IProcessBasedCommandResult.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Calling\ProcessBasedCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Calling\ProcessExtension.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Calling\BasicCommandExecutor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\ICommandStationObject.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\INotifyOutput.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\IReceiveOutputByTo.cs" />
@@ -85,8 +86,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)ManagedAdb\AdbClientWarpper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ManagedAdb\AdbResponse.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ManagedAdb\AdbResponseState.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ManagedAdb\DefaultAdbManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ManagedAdb\Extension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ManagedAdb\IAdbClient.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ManagedAdb\IAdbManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ManagedAdb\IAdbServer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ManagedAdb\LocalAdbServer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MultipleDevices\DeviceObjectFacotry.cs" />
