@@ -14,40 +14,55 @@ namespace AutumnBox.Basic.ManagedAdb
     public static class Adb
     {
         /// <summary>
+        /// 管理器
+        /// </summary>
+        public static IAdbManager Manager { get; private set; }
+
+        /// <summary>
         /// ADB临时文件路径
         /// </summary>
+        [Obsolete("do not use", true)]
         public static string AdbTmpPathOnDevice { get; } = "/data/local/tmp";
+
         /// <summary>
         /// 服务器
         /// </summary>
-        public static IAdbServer Server { get; private set; }
+        public static IAdbServer Server => Manager.Server;
 
         /// <summary>
         /// ADB文件
         /// </summary>
-        public static FileInfo AdbFile { get; private set; }
+        public static FileInfo AdbFile => Manager.AdbFile;
+
         /// <summary>
         /// ADB文件路径
         /// </summary>
-        public static string AdbFilePath => AdbFile.FullName;
+        public static string AdbFilePath => Manager.AdbFile.FullName;
 
         /// <summary>
         /// Fastboot文件
         /// </summary>
-        public static FileInfo FastbootFile { get; private set; }
+        public static FileInfo FastbootFile => Manager.FastbootFile;
+
         /// <summary>
         /// Fastboot文件路径
         /// </summary>
-        public static string FastbootFilePath => FastbootFile.FullName;
+        public static string FastbootFilePath => Manager.FastbootFile.FullName;
 
         /// <summary>
         /// ADB文件夹路径
         /// </summary>
-        public static DirectoryInfo AdbToolsDir { get; private set; }
+        public static DirectoryInfo AdbToolsDir => Manager.ToolsDir;
 
-        private const string AUTUMNBOX_BASIC_ADB_TOOLS = "ManagedAdb/win32adb/";
-        private const string AUTUMNBOX_BASIC_ADB_FILE = "ManagedAdb/win32adb/adb.exe";
-        private const string AUTUMNBOX_BASIC_FASTBOOT_FILE = "ManagedAdb/win32adb/fastboot.exe";
+        /// <summary>
+        /// 加载
+        /// </summary>
+        /// <param name="adbManager"></param>
+        public static void Load(IAdbManager adbManager)
+        {
+            Manager = adbManager;
+        }
+
         /// <summary>
         /// 加载
         /// </summary>
@@ -56,13 +71,16 @@ namespace AutumnBox.Basic.ManagedAdb
         /// <param name="fastbootClient"></param>
         /// <param name="server"></param>
         /// <param name="startTheServer"></param>
-        public static void Load(DirectoryInfo adbToolsDir,FileInfo adbClient, FileInfo fastbootClient, IAdbServer server, bool startTheServer)
+        [Obsolete("Use Load(IAdbManager) to instead", true)]
+        public static void Load(DirectoryInfo adbToolsDir, FileInfo adbClient, FileInfo fastbootClient, IAdbServer server, bool startTheServer)
         {
-            //throw new AdbCommandFailedException(null,0);
-            AdbToolsDir = adbToolsDir ?? throw new ArgumentNullException(nameof(adbToolsDir));
-            AdbFile = adbClient ?? throw new ArgumentNullException(nameof(adbClient));
-            FastbootFile = fastbootClient ?? throw new ArgumentNullException(nameof(fastbootClient));
-            Server = server ?? throw new ArgumentNullException(nameof(server));
+            var manager = new DefaultAdbManager()
+            {
+                AdbFile = adbClient ?? throw new ArgumentNullException(nameof(adbClient)),
+                FastbootFile = fastbootClient ?? throw new ArgumentNullException(nameof(fastbootClient)),
+                Server = server ?? throw new ArgumentNullException(nameof(server)),
+                ToolsDir = adbToolsDir ?? throw new ArgumentNullException(nameof(adbToolsDir))
+            };
             if (startTheServer)
             {
                 Server.Start();

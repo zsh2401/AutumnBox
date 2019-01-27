@@ -152,6 +152,7 @@
     <Compile Include="Model\LibDock.cs" />
     <Compile Include="Model\OpenSourceProject.cs" />
     <Compile Include="MVVM\OpenParameterUrlCommand.cs" />
+    <Compile Include="Util\AdbManager.cs" />
     <Compile Include="Util\AlreadyHaveAutumnBoxChecker.cs" />
     <Compile Include="Util\AppLoader.cs" />
     <Compile Include="Util\AppUnloader.cs" />

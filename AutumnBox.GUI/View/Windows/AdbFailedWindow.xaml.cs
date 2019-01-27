@@ -22,13 +22,7 @@ namespace AutumnBox.GUI.View.Windows
         public AdbFailedWindow(string message)
         {
             InitializeComponent();
-            this.Closed += AdbFailedWindow_Closed;
             tbOutput.Text = message;
-        }
-
-        private void AdbFailedWindow_Closed(object sender, EventArgs e)
-        {
-            App.Current.Shutdown(1);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

@@ -41,7 +41,7 @@ namespace AutumnBox.CoreModules.Extensions.Hidden
                         executor.Dispose();
                     };
                     executor.To(e => ui.WriteOutput(e.Text));
-                    executor.AdbShell(device, "ping baidu.com");
+                    executor.Adb("help");
                 }
                 //ui.WriteLine(manager["fuck"]);
                 //ui.WriteOutput("fuck asdasjkdshadskjhkj");
