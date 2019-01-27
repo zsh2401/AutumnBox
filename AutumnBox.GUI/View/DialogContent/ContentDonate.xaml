@@ -13,13 +13,15 @@
     </UserControl.DataContext>
     <StackPanel>
         <TextBlock TextAlignment="Center" Margin="5" TextWrapping="Wrap" Text="{DynamicResource PanelDonateDescription }" FontSize="20" />
-        <Button  Command="{Binding OpenUrl}" CommandParameter="https://www.paypal.me/zsh2401" Style="{DynamicResource MaterialDesignFlatButton}" Content="Use the PayPal in case you can not use wechat or alipay"/>
+        <Button  Command="{Binding OpenUrl}" CommandParameter="https://www.paypal.me/zsh2401" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource PanelDonateBtnPayPal}"/>
         <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
             <Image Width="200" Margin="5" RenderOptions.BitmapScalingMode="Fant" Source="/AutumnBox.GUI;component/Resources/Drawable/Donate/alishop.png"/>
             <Image Width="200" Margin="5"  RenderOptions.BitmapScalingMode="Fant" Source="/AutumnBox.GUI;component/Resources/Drawable/Donate/redpacket.jpg"/>
             <Image Width="200" Margin="5"  RenderOptions.BitmapScalingMode="Fant" Source="/AutumnBox.GUI;component/Resources/Drawable/Donate/wechatpay.jpg"/>
         </StackPanel>
-        <Button FontSize="12" Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoDonate}" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource PanelDonateBtnGotoDonatePage}"/>
-        <Button FontSize="12" Command="materialDesign:DialogHost.CloseDialogCommand" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource btnClose}"/>
+        <DockPanel>
+            <Button DockPanel.Dock="Right" FontSize="12" Command="materialDesign:DialogHost.CloseDialogCommand" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource btnClose}"/>
+            <Button HorizontalContentAlignment="Left" DockPanel.Dock="Left" FontSize="12" Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoDonate}" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource PanelDonateBtnGotoDonatePage}"/>
+        </DockPanel>
     </StackPanel>
 </UserControl>
