@@ -24,6 +24,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Calling\ProcessBasedCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Calling\ProcessExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Calling\BasicCommandExecutor.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Calling\ProcessHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\ICommandStationObject.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\INotifyOutput.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\IReceiveOutputByTo.cs" />
