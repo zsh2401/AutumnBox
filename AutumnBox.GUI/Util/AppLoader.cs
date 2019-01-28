@@ -44,6 +44,12 @@ namespace AutumnBox.GUI.Util
             });
         }
 
+#if PREVIEW || DEBUG
+        private const bool isPreviewOrDebug = true;
+#else
+        private const bool isPreviewOrDebug = false;
+#endif
+
         private readonly ILogger logger;
         public AppLoader()
         {
@@ -54,7 +60,7 @@ namespace AutumnBox.GUI.Util
         {
             LoggingStation.Instance.Work();
             ui.Progress = 0;
-            if (Settings.Default.IsFirstLaunch)
+            if (isPreviewOrDebug || Settings.Default.IsFirstLaunch)
             {
                 Task langDialogTask = null;
                 App.Current.Dispatcher.Invoke(() =>
@@ -63,10 +69,7 @@ namespace AutumnBox.GUI.Util
                 });
                 langDialogTask.Wait();
             }
-#if PREVIEW || DEBUG
-            Settings.Default.LicenseAccepted = false;
-#endif
-            if (!Settings.Default.LicenseAccepted)
+            if (isPreviewOrDebug || !Settings.Default.LicenseAccepted)
             {
                 Task<object> dialogTask = null;
                 App.Current.Dispatcher.Invoke(() =>
