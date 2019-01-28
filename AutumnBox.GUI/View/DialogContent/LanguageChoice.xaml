@@ -7,15 +7,16 @@
              xmlns:viewmodel="clr-namespace:AutumnBox.GUI.ViewModel"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d"
-             FontFamily="{DynamicResource AutumnBox.Font}"
-             >
+             FontFamily="{DynamicResource AutumnBox.Font}">
     <UserControl.DataContext>
         <viewmodel:VMLanguageChoice/>
     </UserControl.DataContext>
-    <StackPanel Margin="10">
-        <TextBlock FontSize="18" TextAlignment="Center">选择语言</TextBlock>
-        <TextBlock FontSize="18" TextAlignment="Center">Choice Your Language</TextBlock>
-        <ComboBox DisplayMemberPath="LangName" Margin="0,25,0,25" ItemsSource="{Binding Languages}" SelectedItem="{Binding SelectedLanguage}"/>
-        <Button Style="{DynamicResource MaterialDesignFlatButton}" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Content="{DynamicResource btnClose}"/>
-    </StackPanel>
+    <Grid Margin="10">
+        <StackPanel>
+            <TextBlock TextAlignment="Center" Text="选择你的语言"/>
+            <TextBlock TextAlignment="Center" Text="Select Your Language"/>
+            <ListView DisplayMemberPath="LangName" Height="100" Width="200"  ItemsSource="{Binding Languages}" SelectedItem="{Binding SelectedLanguage}"/>
+            <Button HorizontalAlignment="Right" Style="{DynamicResource MaterialDesignToolButton}" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Content="{DynamicResource btnOK}"/>
+        </StackPanel>
+    </Grid>
 </UserControl>
