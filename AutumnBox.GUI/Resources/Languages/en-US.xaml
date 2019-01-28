@@ -15,7 +15,25 @@
     <s:String x:Key="TitleSuffixAdmin">[Administrator]</s:String>
         
     <s:String x:Key="UserLicenseTitle">User License</s:String>
-    <s:String x:Key="UserLicenseContent">XXX</s:String>
+    <s:String x:Key="UserLicenseContent">This agreement is still being prepared, and the final interpretation is owned by zsh2401.
+You are welcome to use the AutumnBox (hereinafter referred to as software).
+The AutumnBox is based on the LGPL 3.0 and adds the following regulations as a user agreement.
+
+Please read the following terms carefully. If you disagree with any of the terms of this agreement, you may opt out of the Autumn Box.
+By agreeing to the Terms and starting to use the Autumn Box, it means that you (the "User") fully accept all the terms of this Agreement.
+This agreement is based on LGPL 3.0 and adds the following additional regulations
+        
+Responsibility related:
+        1. This software will not maliciously attack any of your devices (computer, mobile phone, etc.)
+        2. The software is not responsible for the damage caused by bugs or other accidents.
+        3. The software developer is not obliged to teach the user
+        4. The software is based on the LGPL3.0 open source protocol, any user must modify the source code to open source
+privacy:
+        For the user statistics, the software will send your computer brief information and location information anonymously at runtime, but it does not involve any sensitive privacy. You can refer to the relevant source code by yourself.
+Agreement modification:
+        1. This agreement is not perfect, Autumn Box has the right to modify this agreement if necessary, any changes will be publicly displayed immediately
+        2. Regardless of the version of the Autumn Box used, users are required to follow the latest version of the User Agreement.
+        3. If you are not satisfied with the modification of this agreement, users should immediately stop using any version of the software.</s:String>
     <s:String x:Key="BtnOpenSourceLisence">Open Source License</s:String>
     
     <s:String x:Key="SignalSelectViewHint">Select one and click it!^_^</s:String>
