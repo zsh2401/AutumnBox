@@ -170,12 +170,12 @@ namespace AutumnBox.GUI.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool LicenseAccepted {
+        public bool GuidePassed {
             get {
-                return ((bool)(this["LicenseAccepted"]));
+                return ((bool)(this["GuidePassed"]));
             }
             set {
-                this["LicenseAccepted"] = value;
+                this["GuidePassed"] = value;
             }
         }
     }

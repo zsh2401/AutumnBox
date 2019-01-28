@@ -38,7 +38,7 @@
     <Setting Name="DoubleClickRunExt" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="LicenseAccepted" Type="System.Boolean" Scope="User">
+    <Setting Name="GuidePassed" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
   </Settings>

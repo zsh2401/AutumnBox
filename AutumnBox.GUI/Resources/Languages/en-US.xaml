@@ -36,6 +36,19 @@ Agreement modification:
         3. If you are not satisfied with the modification of this agreement, users should immediately stop using any version of the software.</s:String>
     <s:String x:Key="BtnOpenSourceLisence">Open Source License</s:String>
     
+      <s:String x:Key="ContentGuideTitleSettings">Settings</s:String>
+    <s:String x:Key="ContentGuideTitleLast">There are something you need</s:String>
+    <s:String x:Key="ContentGuideOfficialWebsite">Official Website:</s:String>
+    <s:String x:Key="ContentGuideLinkOfficialWebsite">https://www.atmb.top</s:String>
+    <s:String x:Key="ContentGuideOfficialManual">Manual:</s:String>
+    <s:String x:Key="ContentGuideLinkOfficialManual">https://www.atmb.top/help</s:String>
+    <s:String x:Key="ContentGuideQQGroup">QQ Group: 246177486</s:String>
+    <s:String x:Key="ContentGuideContact">Developer EMail: zsh2401@163.com</s:String>
+     <s:String x:Key="ContentGuideBtnPrev">Prev</s:String>
+    <s:String x:Key="ContentGuideBtnNext">Next</s:String>
+      <s:String x:Key="ContentGuideBtnFinish">Finish</s:String>
+    <s:String x:Key="ContentGuideBtnCancel">Cancel</s:String>
+    
     <s:String x:Key="SignalSelectViewHint">Select one and click it!^_^</s:String>
      <s:String x:Key="SignalSelectViewCancel">Cancel</s:String>
         <!--Adb failed Window-->
