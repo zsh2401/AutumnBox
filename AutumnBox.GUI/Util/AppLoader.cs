@@ -60,36 +60,23 @@ namespace AutumnBox.GUI.Util
         {
             LoggingStation.Instance.Work();
             ui.Progress = 0;
-            if (isPreviewOrDebug || Settings.Default.IsFirstLaunch)
-            {
-                Task langDialogTask = null;
-                App.Current.Dispatcher.Invoke(() =>
-                {
-                    langDialogTask = (App.Current.MainWindow as MainWindow).DialogHost.ShowDialog(new LanguageChoice());
-                });
-                langDialogTask.Wait();
-            }
-            if (isPreviewOrDebug || !Settings.Default.LicenseAccepted)
+            //如果没有通过引导,启动引导
+            if (isPreviewOrDebug || !Settings.Default.GuidePassed)
             {
                 Task<object> dialogTask = null;
                 App.Current.Dispatcher.Invoke(() =>
                 {
-                    dialogTask = (App.Current.MainWindow as MainWindow).DialogHost.ShowDialog(new ContentLicense());
+                    dialogTask = (App.Current.MainWindow as MainWindow).DialogHost.ShowDialog(new ContentGuide());
                 });
                 dialogTask.Wait();
-                bool accepted = dialogTask.Result != null;
-                if (!accepted)
+                Settings.Default.GuidePassed = ((dialogTask.Result as bool?) == true);
+            }
+            if (!Settings.Default.GuidePassed)
+            {
+                App.Current.Dispatcher.Invoke(() =>
                 {
-                    App.Current.Dispatcher.Invoke(() =>
-                    {
-                        App.Current.Shutdown(0);
-                    });
-                    return;
-                }
-                else
-                {
-                    Settings.Default.LicenseAccepted = true;
-                }
+                    App.Current.Shutdown();
+                });
             }
             //如果设置在启动时打开调试窗口
             if (Settings.Default.ShowDebuggingWindowNextLaunch)

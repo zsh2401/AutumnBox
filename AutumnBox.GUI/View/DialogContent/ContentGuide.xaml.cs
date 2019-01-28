@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace AutumnBox.GUI.View.DialogContent
 {
     /// <summary>
-    /// ContentLicense.xaml 的交互逻辑
+    /// ContentGuide.xaml 的交互逻辑
     /// </summary>
-    public partial class ContentLicense : UserControl
+    public partial class ContentGuide : UserControl
     {
-        public ContentLicense()
+        public ContentGuide()
         {
             InitializeComponent();
         }

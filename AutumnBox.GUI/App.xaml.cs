@@ -57,7 +57,7 @@ namespace AutumnBox.GUI
         {
             base.OnExit(e);
             logger.Info("Exit code : " + e.ApplicationExitCode);
-            if (Settings.Default.IsFirstLaunch)
+            if (Settings.Default.IsFirstLaunch && Settings.Default.GuidePassed)
             {
                 Settings.Default.IsFirstLaunch = false;
             }

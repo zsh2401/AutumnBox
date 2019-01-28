@@ -19,6 +19,7 @@
     <s:String x:Key="UserLicenseContent">本协议仍然在编写当中,最终解释权归zsh2401所有
 欢迎您使用秋之盒-AutumnBox(下称本软件)。
 秋之盒基于LGPL3.0协议,并添加以下条例作为用户协议
+如果你点击下一步,则视为同意
 
 请您仔细阅读以下条款，如果您对本协议的任何条款表示异议，您可以选择退出秋之盒。
 当您同意本条款并开始使用秋之盒，意味着您（即「用户」）完全接受本协议项下的全部条款。
@@ -37,6 +38,19 @@
         3.如果对本协议修改不满,用户应该立刻停止使用任何版本的本软件
     </s:String>
  <s:String x:Key="BtnOpenSourceLisence">开源协议</s:String>
+    
+    <s:String x:Key="ContentGuideTitleSettings">一些设置</s:String>
+    <s:String x:Key="ContentGuideTitleLast">最后,有些东西需要你记住</s:String>
+    <s:String x:Key="ContentGuideOfficialWebsite">官网:</s:String>
+    <s:String x:Key="ContentGuideLinkOfficialWebsite">https://www.atmb.top</s:String>
+    <s:String x:Key="ContentGuideOfficialManual">说明书:</s:String>
+    <s:String x:Key="ContentGuideLinkOfficialManual">https://www.atmb.top/help</s:String>
+    <s:String x:Key="ContentGuideQQGroup">QQ群: 246177486</s:String>
+    <s:String x:Key="ContentGuideContact">联系开发者: zsh2401@163.com</s:String>
+     <s:String x:Key="ContentGuideBtnPrev">上一步</s:String>
+    <s:String x:Key="ContentGuideBtnNext">下一步</s:String>
+      <s:String x:Key="ContentGuideBtnFinish">完成</s:String>
+    <s:String x:Key="ContentGuideBtnCancel">取消</s:String>
     
     <s:String x:Key="SignalSelectViewHint">选一个并单击! ^_^</s:String>
      <s:String x:Key="SignalSelectViewCancel">取消</s:String>
