@@ -31,7 +31,7 @@ namespace AutumnBox.GUI.View.Windows
                 {
                     try
                     {
-                        Process.Start(App.Current.Resources["UrlGoPrefix"].ToString() + App.Current.Resources["AGoAdbFailed"].ToString());
+                        Process.Start(App.Current.Resources["UrlGoPrefix"].ToString() + App.Current.Resources["AGoAdbFail"].ToString());
                     }
                     catch { }
                 });
