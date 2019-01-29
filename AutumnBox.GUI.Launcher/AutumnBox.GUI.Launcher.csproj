@@ -73,6 +73,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="说明书.url">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="官网.url">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
