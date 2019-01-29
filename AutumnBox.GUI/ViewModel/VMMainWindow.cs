@@ -70,7 +70,7 @@ namespace AutumnBox.GUI.ViewModel
 #elif DEBUG
            Title = $"{App.Current.Resources["AppName"]}-{Self.Version.ToString(3)}-{App.Current.Resources["VersionTypeBeta"]}";
 #elif RELEASE
-           Title = $"{App.Current.Resources["AppName"]}-{Self.Version.ToString(3)}";
+            Title = $"{App.Current.Resources["AppName"]}-{Self.Version.ToString(3)}";
 #endif
 
             if (Self.HaveAdminPermission)
@@ -127,6 +127,17 @@ namespace AutumnBox.GUI.ViewModel
         public void Finish()
         {
             TranSelectIndex++;
+            ResizeMode = ResizeMode.CanResize;
         }
+
+        public ResizeMode ResizeMode
+        {
+            get => _resizeMode; set
+            {
+                _resizeMode = value;
+                RaisePropertyChanged();
+            }
+        }
+        private ResizeMode _resizeMode = ResizeMode.NoResize;
     }
 }
