@@ -1,5 +1,7 @@
-﻿using System;
+﻿using AutumnBox.GUI.Util.UI;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +25,17 @@ namespace AutumnBox.GUI.View.Windows
         {
             InitializeComponent();
             tbOutput.Text = message;
+            this.Loaded += (s, e) =>
+            {
+                HelpButtonHelper.EnableHelpButton(this, () =>
+                {
+                    try
+                    {
+                        Process.Start(App.Current.Resources["UrlGoPrefix"].ToString() + App.Current.Resources["AGoAdbFailed"].ToString());
+                    }
+                    catch { }
+                });
+            };
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
