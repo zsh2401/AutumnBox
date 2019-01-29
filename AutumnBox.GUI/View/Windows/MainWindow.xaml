@@ -26,32 +26,14 @@
     <Grid>
         <materialDesign:Transitioner SelectedIndex="{Binding TranSelectIndex}">
 
-
-            <!--<materialDesign:TransitionerSlide>
-                <materialDesign:TransitionerSlide.OpeningEffects>
-                    <materialDesign:TransitionEffect Kind="SlideInFromBottom" Duration="0:0:0" />
-                </materialDesign:TransitionerSlide.OpeningEffects>
-                <StackPanel Orientation="Vertical" VerticalAlignment="Top">
-                    <Image Source="/Resources/Drawable/icon.ico" Height="200"/>
-                    <TextBlock HorizontalAlignment="Center" Margin="10" FontSize="50" Text="{DynamicResource AppName}"/>
-                    <TextBlock HorizontalAlignment="Center"  Margin="10" FontSize="30" Text="{DynamicResource AppDesc}"/>
-                </StackPanel>
-            </materialDesign:TransitionerSlide>-->
-
             <materialDesign:TransitionerSlide>
                 <materialDesign:TransitionerSlide.OpeningEffects>
                     <materialDesign:TransitionEffect Kind="ExpandIn" Duration="0:0:1" />
                 </materialDesign:TransitionerSlide.OpeningEffects>
                 <Grid>
-                    <StackPanel Orientation="Vertical" VerticalAlignment="Top">
-                        <Image Source="/Resources/Drawable/icon.ico" Height="200"/>
-                        <TextBlock HorizontalAlignment="Center" FontSize="50" Text="{DynamicResource AppNameWithVersion}"/>
-                        <TextBlock HorizontalAlignment="Center" FontSize="18" Text="{Binding Version}"/>
-                        <TextBlock HorizontalAlignment="Center"  Margin="10" FontSize="30" Text="{DynamicResource AppDesc}"/>
-                    </StackPanel>
-                    <StackPanel VerticalAlignment="Bottom" Orientation="Vertical" Margin="10">
-                        <ProgressBar Value="{Binding Progress}"  Background="{x:Null}" BorderBrush="{x:Null}" Margin="0,0,0,30"></ProgressBar>
-                        <TextBlock  TextAlignment="Right" Text="{Binding LoadingTip}" FontSize="20"></TextBlock>
+                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <TextBlock FontSize="80" Text="AutumnBox 2019"/>
+                        <ProgressBar IsIndeterminate="True"  Background="{x:Null}" BorderBrush="{x:Null}"/>
                     </StackPanel>
                 </Grid>
             </materialDesign:TransitionerSlide>
