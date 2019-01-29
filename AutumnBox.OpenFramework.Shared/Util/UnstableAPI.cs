@@ -24,7 +24,9 @@ namespace AutumnBox.OpenFramework.Util
             Task<object> dialogTask = null;
             ui.RunOnUIThread(() =>
             {
+#if!SDK
                 dialogTask = ui._ShowDialog(content);
+#endif
             });
             return dialogTask;
         }
@@ -35,7 +37,11 @@ namespace AutumnBox.OpenFramework.Util
         /// <returns></returns>
         public static object GetDialogHost(this ILeafUI ui)
         {
+#if !SDK
             return ui._GetDialogHost();
+#else
+            throw new Exception();
+#endif
         }
         /// <summary>
         /// 请在UI线程操作,根据ID获取秋之盒View
@@ -57,7 +63,9 @@ namespace AutumnBox.OpenFramework.Util
             Task<object> dialogTask = null;
             ui.RunOnUIThread(() =>
             {
+#if !SDK
                 dialogTask = ui.ShowDialog(GetViewById(viewId));
+#endif
             });
             return dialogTask;
         }
