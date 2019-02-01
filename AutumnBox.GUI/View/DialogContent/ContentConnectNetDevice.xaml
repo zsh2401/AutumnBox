@@ -19,6 +19,6 @@
                 </MultiBinding>
             </Button.CommandParameter>
         </Button>
-        <Button Margin="5" Command="materialDesign:DialogHost.CloseDialogCommand" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource ContentConnectNetDeviceBtnCancel}" />
+        <Button IsCancel="True" Margin="5" Command="materialDesign:DialogHost.CloseDialogCommand" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource ContentConnectNetDeviceBtnCancel}" />
     </StackPanel>
 </UserControl>

@@ -9,7 +9,7 @@
              Background="{DynamicResource MainBackgroundBrush}"
              Width="350" Height="200">
     <DockPanel>
-        <Button Style="{DynamicResource MaterialDesignFlatButton}" DockPanel.Dock="Bottom" Command="materialDesign:DialogHost.CloseDialogCommand" CommandParameter="WTF">OK</Button>
+        <Button IsCancel="True" IsDefault="True" Style="{DynamicResource MaterialDesignFlatButton}" DockPanel.Dock="Bottom" Command="materialDesign:DialogHost.CloseDialogCommand" CommandParameter="WTF">OK</Button>
         <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
             <TextBlock TextWrapping="Wrap" x:Name="TBContent"/>
         </ScrollViewer>

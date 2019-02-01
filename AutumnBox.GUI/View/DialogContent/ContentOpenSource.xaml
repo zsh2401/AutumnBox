@@ -23,7 +23,7 @@
                     <Button Command="{Binding OpenUrl}" CommandParameter="{DynamicResource UrlAtmbRepo}" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource OpenSourceWindowBtnAtmbRepo}"/>
                     <Button  Command="{Binding OpenUrl}" CommandParameter="{DynamicResource UrlAtmbWebRepo}" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource OpenSourceWindowBtnOfficialWebisteRepo}"/>
                 </StackPanel>
-                <Button Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" HorizontalAlignment="Center" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource btnClose}"/>
+                <Button IsCancel="True" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" HorizontalAlignment="Center" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource btnClose}"/>
             </StackPanel>
             <StackPanel VerticalAlignment="Bottom" >
                 <TextBlock TextAlignment="Center">Copyright © 2017 - 2019 zsh2401,All Rights Reserved</TextBlock>
