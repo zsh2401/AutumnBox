@@ -11,7 +11,7 @@
              mc:Ignorable="d" Height="130.435" Width="292.976">
     <Grid>
         <StackPanel>
-            <Button Command="materialDesign:DialogHost.CloseDialogCommand" Style="{DynamicResource MaterialDesignRaisedButton}" Margin="5" Content="{DynamicResource ContentDisconnectNetDeviceBtnDisableAndDisconnect}">
+            <Button IsDefault="True" Command="materialDesign:DialogHost.CloseDialogCommand" Style="{DynamicResource MaterialDesignRaisedButton}" Margin="5" Content="{DynamicResource ContentDisconnectNetDeviceBtnDisableAndDisconnect}">
                 <Button.CommandParameter>
                     <system:Boolean>True</system:Boolean>
                 </Button.CommandParameter>
@@ -21,7 +21,7 @@
                     <system:Boolean>False</system:Boolean>
                 </Button.CommandParameter>
             </Button>
-            <Button Command="materialDesign:DialogHost.CloseDialogCommand" Style="{DynamicResource MaterialDesignFlatButton}" Margin="5" Content="{DynamicResource ContentDisconnectNetDeviceBtnCancel}"/>
+            <Button IsCancel="True" Command="materialDesign:DialogHost.CloseDialogCommand" Style="{DynamicResource MaterialDesignFlatButton}" Margin="5" Content="{DynamicResource ContentDisconnectNetDeviceBtnCancel}"/>
         </StackPanel>
     </Grid>
 </UserControl>

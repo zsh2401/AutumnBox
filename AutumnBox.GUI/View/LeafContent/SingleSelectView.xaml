@@ -9,7 +9,7 @@
              FontFamily="{DynamicResource AutumnBox.Font}"
              Width="350" Height="200">
     <DockPanel>
-        <Button DockPanel.Dock="Bottom"  Command="materialDesign:DialogHost.CloseDialogCommand" CommandParameter="{x:Null}" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource SignalSelectViewCancel}"/>
+        <Button IsCancel="True" DockPanel.Dock="Bottom"  Command="materialDesign:DialogHost.CloseDialogCommand" CommandParameter="{x:Null}" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource SignalSelectViewCancel}"/>
         <TextBlock Margin="5" TextWrapping="Wrap" x:Name="TBHint" DockPanel.Dock="Top" Text="{DynamicResource SignalSelectViewHint}"/>
         <ListView DockPanel.Dock="Top" x:Name="LVOptions">
             <ListView.ItemTemplate>

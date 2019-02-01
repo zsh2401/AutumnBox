@@ -43,15 +43,15 @@ namespace AutumnBox.CoreModules.Extensions.Hidden
                     executor.To(e => ui.WriteOutput(e.Text));
                     executor.Adb("help");
                 }
-                //ui.WriteLine(manager["fuck"]);
-                //ui.WriteOutput("fuck asdasjkdshadskjhkj");
-                //ui.ShowMessage("WTF\n\n\n\n\n\nasdadas\n\n\nasdasdsahsdkajghsdakjfhsdjkaghsdfjkghjkfsdhgjkshfdjkgfhsjdgkhdskfjghjW");
-                //bool? choice = ui.DoChoice("FUCcqwjeiwqeqehqWK");
-                //ui.WriteLine(choice.ToString());
-                //bool yn = ui.DoYN("FUCK2c   2rqwhewqhehqweqhwewqhejwqhewqjhqwejkqwhewqhWW");
-                //ui.WriteLine(yn.ToString());
-                //object result = ui.SelectFrom(new object[] { "a", "qqdasdsadasb", "c", "a", "s", "c", "a" }, "选择你要做的SB操作");
-                //ui.WriteLine(result);
+                ui.WriteLine(manager["fuck"]);
+                ui.WriteOutput("fuck asdasjkdshadskjhkj");
+                ui.ShowMessage("WTF\n\n\n\n\n\nasdadas\n\n\nasdasdsahsdkajghsdakjfhsdjkaghsdfjkghjkfsdhgjkshfdjkgfhsjdgkhdskfjghjW");
+                bool? choice = ui.DoChoice("FUCcqwjeiwqeqehqWK");
+                ui.WriteLine(choice.ToString());
+                bool yn = ui.DoYN("FUCK2c   2rqwhewqhehqweqhwewqhejwqhewqjhqwejkqwhewqhWW");
+                ui.WriteLine(yn.ToString());
+                object result = ui.SelectFrom(new object[] { "a", "qqdasdsadasb", "c", "a", "s", "c", "a" }, "选择你要做的SB操作");
+                ui.WriteLine(result);
                 ui.Finish();
             }
         }

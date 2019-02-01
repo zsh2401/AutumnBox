@@ -12,12 +12,12 @@
              >
     <DockPanel>
         <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom" HorizontalAlignment="Center" Margin="0">
-            <Button x:Name="BtnNo" HorizontalAlignment="Left" Command="materialDesign:DialogHost.CloseDialogCommand" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource ChoiceWindowBtnNo}">
+            <Button IsCancel="True" x:Name="BtnNo" HorizontalAlignment="Left" Command="materialDesign:DialogHost.CloseDialogCommand" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource ChoiceWindowBtnNo}">
                 <Button.CommandParameter>
                     <system:Boolean>False</system:Boolean>
                 </Button.CommandParameter>
             </Button>
-            <Button Margin="30,0,0,0" x:Name="BtnYes" HorizontalAlignment="Right" Command="materialDesign:DialogHost.CloseDialogCommand" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource ChoiceWindowBtnYes}">
+            <Button IsDefault="True" Margin="30,0,0,0" x:Name="BtnYes" HorizontalAlignment="Right" Command="materialDesign:DialogHost.CloseDialogCommand" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource ChoiceWindowBtnYes}">
                 <Button.CommandParameter>
                     <system:Boolean>True</system:Boolean>
                 </Button.CommandParameter>

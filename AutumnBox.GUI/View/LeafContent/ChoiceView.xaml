@@ -11,14 +11,14 @@
              Width="350" Height="200">
     <DockPanel>
         <Grid DockPanel.Dock="Bottom">
-            <Button x:Name="BtnCancel" Command="materialDesign:DialogHost.CloseDialogCommand" CommandParameter="{x:Null}" Style="{DynamicResource MaterialDesignFlatButton}" HorizontalAlignment="Left" Content="{DynamicResource ChoiceWindowBtnCancel}"/>
+            <Button IsCancel="True" x:Name="BtnCancel" Command="materialDesign:DialogHost.CloseDialogCommand" CommandParameter="{x:Null}" Style="{DynamicResource MaterialDesignFlatButton}" HorizontalAlignment="Left" Content="{DynamicResource ChoiceWindowBtnCancel}"/>
             <StackPanel  HorizontalAlignment="Right" Orientation="Horizontal">
                 <Button x:Name="BtnNo" Command="materialDesign:DialogHost.CloseDialogCommand" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource ChoiceWindowBtnNo}">
                     <Button.CommandParameter>
                         <system:Boolean>False</system:Boolean>
                     </Button.CommandParameter>
                 </Button>
-                <Button x:Name="BtnYes" Command="materialDesign:DialogHost.CloseDialogCommand" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource ChoiceWindowBtnYes}">
+                <Button IsDefault="True" x:Name="BtnYes" Command="materialDesign:DialogHost.CloseDialogCommand" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource ChoiceWindowBtnYes}">
                     <Button.CommandParameter>
                         <system:Boolean>True</system:Boolean>
                     </Button.CommandParameter>

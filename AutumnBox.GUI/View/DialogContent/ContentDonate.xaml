@@ -20,7 +20,7 @@
             <Image Width="200" Margin="5"  RenderOptions.BitmapScalingMode="Fant" Source="/AutumnBox.GUI;component/Resources/Drawable/Donate/wechatpay.jpg"/>
         </StackPanel>
         <DockPanel>
-            <Button DockPanel.Dock="Right" FontSize="12" Command="materialDesign:DialogHost.CloseDialogCommand" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource btnClose}"/>
+            <Button IsCancel="True" DockPanel.Dock="Right" FontSize="12" Command="materialDesign:DialogHost.CloseDialogCommand" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource btnClose}"/>
             <Button HorizontalAlignment="Left" DockPanel.Dock="Left" FontSize="12" Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoDonate}" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource PanelDonateBtnGotoDonatePage}"/>
         </DockPanel>
     </StackPanel>

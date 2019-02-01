@@ -19,7 +19,7 @@
                 <Button Style="{DynamicResource MaterialDesignFlatButton}" Command="{Binding ResetSettings}" Content="{DynamicResource PanelSettingsReset}"/>
                 <Button Command="{Binding SendToDesktop}" FontSize="12" Margin="5" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource PanelSettingsSendToDesktop}"/>
             </StackPanel>
-            <Button  HorizontalAlignment="Right" Style="{DynamicResource MaterialDesignFlatButton}" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Content="{DynamicResource btnClose}"/>
+            <Button  IsCancel="True"  IsDefault="True" HorizontalAlignment="Right" Style="{DynamicResource MaterialDesignFlatButton}" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Content="{DynamicResource btnClose}"/>
         </Grid>
         <!--</materialDesign:Card>-->
 
