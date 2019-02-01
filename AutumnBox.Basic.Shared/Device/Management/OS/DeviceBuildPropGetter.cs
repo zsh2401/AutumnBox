@@ -16,7 +16,7 @@ namespace AutumnBox.Basic.Device.Management.OS
     /// <summary>
     /// 设备Build.prop信息获取器
     /// </summary>
-    public class DeviceBuildPropGetter : DeviceCommander,Data.IReceiveOutputByTo<DeviceBuildPropGetter>
+    public class DeviceBuildPropGetter : DeviceCommander, Data.IReceiveOutputByTo<DeviceBuildPropGetter>
     {
         private readonly Logger logger;
         /// <summary>
@@ -55,15 +55,17 @@ namespace AutumnBox.Basic.Device.Management.OS
         /// <returns></returns>
         public Version GetAndroidVersion()
         {
-            try
+            var verStr = Get(BuildPropKeys.AndroidVersion);
+            if (Version.TryParse(verStr, out Version result1))
             {
-                var verStr = Get(BuildPropKeys.AndroidVersion);
-                logger.Debug( verStr);
-                return new Version(verStr);
+                return result1;
             }
-            catch (Exception ex)
+            else if (Version.TryParse(verStr + ".0", out Version result2))
             {
-                logger.Warn("Get android version failed", ex);
+                return result2;
+            }
+            else
+            {
                 return null;
             }
         }
@@ -122,7 +124,7 @@ namespace AutumnBox.Basic.Device.Management.OS
                 Device,
                 $"getprop {key}")
                 .To(RaiseOutput)
-                .Execute() ;
+                .Execute();
             return exeResult.ExitCode == 0 ? exeResult.Output.ToString() : null;
         }
 
@@ -149,7 +151,7 @@ namespace AutumnBox.Basic.Device.Management.OS
                 return null;
             }
         }
-       
+
         private Dictionary<string, string> loaded;
         /// <summary>
         /// 重载
