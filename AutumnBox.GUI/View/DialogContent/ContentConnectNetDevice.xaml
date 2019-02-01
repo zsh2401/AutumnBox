@@ -11,7 +11,7 @@
         <TextBox x:Name="TBIP" MaxLength="16" materialDesign:HintAssist.Hint="{DynamicResource ContentConnectNetDeviceIP}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="192.168." />
         <TextBox x:Name="TBPort" MaxLength="5" materialDesign:HintAssist.Hint="{DynamicResource ContentConnectNetDevicePort}" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  Text="5555"/>
 
-        <Button Margin="5" Command="materialDesign:DialogHost.CloseDialogCommand" Style="{DynamicResource MaterialDesignRaisedButton}" Content="{DynamicResource ContentConnectNetDeviceBtnConnect}">
+        <Button Margin="5" Command="materialDesign:DialogHost.CloseDialogCommand" Style="{DynamicResource MaterialDesignRaisedButton}" Content="{DynamicResource ContentConnectNetDeviceBtnConnect}" IsDefault="True">
             <Button.CommandParameter>
                 <MultiBinding Converter="{StaticResource EndPointConverter}">
                     <Binding Path="Text" ElementName="TBIP"/>
