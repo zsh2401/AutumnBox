@@ -71,7 +71,11 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.Dpm
         {
             output = output.ToLower();
             tip = textAttrManager[TIP_FAILED];
-            if (output.Contains("already several accounts on the device"))
+            if (output.Contains("segmentation fault"))
+            {
+                msg = textAttrManager[MSG_SEG_FAULT];
+            }
+            else if (output.Contains("already several accounts on the device"))
             {
                 msg = textAttrManager[MSG_OTH_ACC];
             }
@@ -94,10 +98,6 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.Dpm
             else if (output.Contains("unknown admin"))
             {
                 msg = textAttrManager[MSG_OWNER_NTF];
-            }
-            else if (output.Contains("segmentation fault"))
-            {
-                msg = textAttrManager[MSG_SEG_FAULT];
             }
             else
             {
