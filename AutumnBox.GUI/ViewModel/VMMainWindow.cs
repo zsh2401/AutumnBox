@@ -6,6 +6,7 @@
 using AutumnBox.GUI.MVVM;
 using AutumnBox.GUI.Util;
 using AutumnBox.GUI.Util.I18N;
+using AutumnBox.GUI.Util.UI;
 using System;
 using System.Windows;
 
@@ -13,6 +14,16 @@ namespace AutumnBox.GUI.ViewModel
 {
     class VMMainWindow : ViewModelBase, AppLoader.ILoadingUI
     {
+        public string Sentence
+        {
+            get => _sentence; set
+            {
+                _sentence = value;
+                RaisePropertyChanged();
+            }
+        }
+        private string _sentence;
+
         public string Version
         {
             get
@@ -44,6 +55,7 @@ namespace AutumnBox.GUI.ViewModel
         public VMMainWindow()
         {
             base.RaisePropertyChangedOnDispatcher = true;
+            Sentence = Sentences.Value();
             InitTitle();
             LanguageManager.Instance.LanguageChanged += (s, e) =>
             {
@@ -68,7 +80,7 @@ namespace AutumnBox.GUI.ViewModel
 #if PREVIEW
             Title = $"{App.Current.Resources["AppName"]}-{Self.Version.ToString(3)}-{App.Current.Resources["VersionTypePreview"]}";
 #elif DEBUG
-           Title = $"{App.Current.Resources["AppName"]}-{Self.Version.ToString(3)}-{App.Current.Resources["VersionTypeBeta"]}";
+            Title = $"{App.Current.Resources["AppName"]}-{Self.Version.ToString(3)}-{App.Current.Resources["VersionTypeBeta"]}";
 #elif RELEASE
             Title = $"{App.Current.Resources["AppName"]}-{Self.Version.ToString(3)}";
 #endif
