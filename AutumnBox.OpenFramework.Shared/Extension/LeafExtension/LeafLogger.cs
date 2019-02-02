@@ -77,7 +77,6 @@ namespace AutumnBox.OpenFramework.Extension.LeafExtension
     {
         public LeafLogger() : base(typeof(TCategory).Name)
         {
-            Trace.WriteLine("creating");
         }
     }
 }
