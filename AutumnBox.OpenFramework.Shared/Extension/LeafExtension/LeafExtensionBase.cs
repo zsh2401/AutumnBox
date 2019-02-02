@@ -23,16 +23,22 @@ namespace AutumnBox.OpenFramework.Extension.LeafExtension
         /// </summary>
         public LeafExtensionBase()
         {
+
             //初始化上下文
             Context = new LeafContext();
+
+            //初始化API注入器
+            ApiAllocator apiAllocator = new ApiAllocator(Context, GetType());
+
             //执行切面
             ExecuteBca();
+
             //注入属性
-            injector = new LeafPropertyInjector(this);
+            injector = new LeafPropertyInjector(this, apiAllocator);
             injector.Inject();
 
             //构造入口点执行器
-            executor = new LeafEntryExecutor(this);
+            executor = new LeafEntryExecutor(this, apiAllocator);
 
             //注册信号接收系统
             signalDistributor = new LSignalDistributor(this);
