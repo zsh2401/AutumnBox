@@ -40,7 +40,14 @@ namespace AutumnBox.OpenFramework.Extension.LeafExtension
 
         public void Debug(object message)
         {
+            if (!CallingBus.BaseApi.IsDeveloperMode) return;
             CallingBus.BaseApi.Log(categoryName, nameof(Debug), message?.ToString());
+        }
+
+        public void Debug(object message,Exception e)
+        {
+            if (!CallingBus.BaseApi.IsDeveloperMode) return;
+            CallingBus.BaseApi.Log(categoryName, nameof(Debug), $"{message}{Environment.NewLine}{e}");
         }
 
         public void Exception(Exception e)
