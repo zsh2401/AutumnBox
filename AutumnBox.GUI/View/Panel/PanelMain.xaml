@@ -18,8 +18,8 @@
 
         <DockPanel DockPanel.Dock="Right" MinWidth="200" MaxWidth="200">
             <StackPanel DockPanel.Dock="Bottom" VerticalAlignment="Bottom" Orientation="Vertical">
-                <oftheday:MOTD Height="95" />
-                <oftheday:POTD Height="142"/>
+                <oftheday:MOTD  Height="95" />
+                <oftheday:POTD Height="142" Margin="0,0,0,10"/>
                 <Button Style="{DynamicResource MaterialDesignFlatButton}" Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoDownloadExtensions}"  FontSize="14"  Margin="5,0,5,5">
                     <StackPanel Width="130" Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="ViewModule" />
@@ -43,7 +43,7 @@
         </DockPanel>
         
         <dockablz:Layout  DockPanel.Dock="Left">
-            <dragablz:TabablzControl  Style="{DynamicResource MaterialDesignTabablzControlStyle}" SelectedIndex="{Binding TabSelectedIndex,Mode=TwoWay}" >
+            <dragablz:TabablzControl BorderThickness="0,0,1,0" Style="{DynamicResource MaterialDesignTabablzControlStyle}" SelectedIndex="{Binding TabSelectedIndex,Mode=TwoWay}" >
                 <TabItem TabIndex="0" Header="{DynamicResource PanelMainStart}"  FontSize="16">
                     <local:PanelHome/>
                 </TabItem>

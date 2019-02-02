@@ -13,7 +13,7 @@
         <viewmodel:VMConnectDevices/>
     </UserControl.DataContext>
     <dockablz:Layout>
-        <dragablz:TabablzControl BorderThickness="0,0,0,1"  Style="{DynamicResource MaterialDesignTabablzControlStyle}">
+        <dragablz:TabablzControl BorderThickness="0"  Style="{DynamicResource MaterialDesignTabablzControlStyle}">
             <TabItem Header="{DynamicResource Devices}"  FontSize="16">
                 <Grid>
                     <DockPanel>

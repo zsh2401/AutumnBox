@@ -364,10 +364,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Resources\Themes\Ctrls\CenterTab.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Resources\Themes\Dark.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
