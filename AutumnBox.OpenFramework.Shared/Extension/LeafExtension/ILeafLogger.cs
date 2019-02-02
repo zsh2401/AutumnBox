@@ -13,6 +13,12 @@ namespace AutumnBox.OpenFramework.Extension.LeafExtension
         /// <param name="message"></param>
         void Debug(object message);
         /// <summary>
+        /// 带有异常的Debug级别信息
+        /// </summary>
+        /// <param name="messsage"></param>
+        /// <param name="e"></param>
+        void Debug(object messsage, Exception e);
+        /// <summary>
         /// 普通信息
         /// </summary>
         /// <param name="message"></param>
