@@ -180,6 +180,7 @@
     <Compile Include="Util\UI\BlurHelper.cs" />
     <Compile Include="Util\UI\EndPointConverter.cs" />
     <Compile Include="Util\UI\HelpButtonHelper.cs" />
+    <Compile Include="Util\UI\Sentences.cs" />
     <Compile Include="Util\UI\UIHelper.cs" />
     <Compile Include="Model\ChoicerContentStartArgs.cs" />
     <Compile Include="Util\Data\Converter.cs" />

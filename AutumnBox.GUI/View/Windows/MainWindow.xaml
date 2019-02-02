@@ -35,6 +35,7 @@
                         <TextBlock FontSize="80" Text="AutumnBox 2019"/>
                         <ProgressBar IsIndeterminate="True"  Background="{x:Null}" BorderBrush="{x:Null}"/>
                     </StackPanel>
+                    <TextBlock VerticalAlignment="Bottom" HorizontalAlignment="Center" Foreground="Gray" FontStyle="Italic" Margin="10" TextWrapping="Wrap" Text="{Binding Sentence}"/>
                 </Grid>
             </materialDesign:TransitionerSlide>
 
