@@ -5,19 +5,33 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:viewmodel="clr-namespace:AutumnBox.GUI.ViewModel"
+             xmlns:dockablz="http://dragablz.net/winfx/xaml/dockablz"
+             xmlns:dragablz="http://dragablz.net/winfx/xaml/dragablz"
+             FontFamily="{DynamicResource AutumnBox.Font}"
              mc:Ignorable="d" d:DesignWidth="177.009" d:DesignHeight="303.769">
     <UserControl.DataContext>
         <viewmodel:VMConnectDevices/>
     </UserControl.DataContext>
-    <GroupBox Header="{DynamicResource PanelDevicesTitle}">
-        <Grid>
-            <ListBox Foreground="{DynamicResource MainBackgroundForegroundBrush}" VerticalAlignment="Top"  DisplayMemberPath="{Binding DisplayMemeberPath}" ItemsSource="{Binding Devices}" SelectedItem="{Binding Selected,Mode=TwoWay}" Height="151"/>
-            <StackPanel Orientation="Vertical" VerticalAlignment="Bottom">
-                <Button Style="{DynamicResource MaterialDesignFlatButton}" FontFamily="{DynamicResource AutumnBox.Font}" Content="{DynamicResource PanelHelpForConnectDevice}"  Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoConnectDevice}"  FontSize="12"/>
-                <Button Style="{DynamicResource MaterialDesignFlatButton}" FontFamily="{DynamicResource AutumnBox.Font}" Content="{DynamicResource PanelDevicesConnectTo}"  Command="{Binding ConnectDevice}"  FontSize="12"/>
-                <Button Style="{DynamicResource MaterialDesignFlatButton}" FontFamily="{DynamicResource AutumnBox.Font}" Content="{DynamicResource PanelDevicesEnableCurrent}" Command="{Binding OpenDeviceNetDebugging}"  FontSize="12"/>
-                <Button Style="{DynamicResource MaterialDesignFlatButton}" FontFamily="{DynamicResource AutumnBox.Font}" Content="{DynamicResource PanelDevicesDisconnect}" Command="{Binding DisconnectDevice}" FontSize="12"/>
-            </StackPanel>
-        </Grid>
-    </GroupBox>
+    <dockablz:Layout>
+        <dragablz:TabablzControl BorderThickness="0,0,0,1"  Style="{DynamicResource MaterialDesignTabablzControlStyle}">
+            <TabItem Header="{DynamicResource Devices}"  FontSize="16">
+                <Grid>
+                    <DockPanel>
+                        <StackPanel Orientation="Vertical" DockPanel.Dock="Bottom">
+                            <Button Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource PanelHelpForConnectDevice}"  Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoConnectDevice}"  FontSize="12"/>
+                            <Button Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource PanelDevicesConnectTo}"  Command="{Binding ConnectDevice}"  FontSize="12"/>
+                            <Button Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource PanelDevicesEnableCurrent}" Command="{Binding OpenDeviceNetDebugging}"  FontSize="12"/>
+                            <Button Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource PanelDevicesDisconnect}" Command="{Binding DisconnectDevice}" FontSize="12"/>
+                        </StackPanel>
+                        <ListBox Foreground="{DynamicResource MainBackgroundForegroundBrush}" DockPanel.Dock="Top"  DisplayMemberPath="{Binding DisplayMemeberPath}" ItemsSource="{Binding Devices}" SelectedItem="{Binding Selected,Mode=TwoWay}"/>
+                    </DockPanel>
+                </Grid>
+            </TabItem>
+        </dragablz:TabablzControl>
+    </dockablz:Layout>
+    <!--<GroupBox Header="{DynamicResource PanelDevicesTitle}" 
+              Style="{DynamicResource MaterialDesignGroupBox}"
+  materialDesign:ShadowAssist.ShadowDepth="Depth3">
+       
+    </GroupBox>-->
 </UserControl>
