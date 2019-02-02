@@ -134,7 +134,6 @@ namespace AutumnBox.GUI.ViewModel
             ComObserver();
             ClickItem = new FlexiableCommand((p) =>
             {
-                SGLogger<VMExtensions>.Info(p);
                 if (!Settings.Default.DoubleClickRunExt)
                 {
                     (p as ExtensionWrapperDock)?.Wrapper?.GetThread().Start();
@@ -142,7 +141,6 @@ namespace AutumnBox.GUI.ViewModel
             });
             DoubleClickItem = new FlexiableCommand((p) =>
             {
-                SGLogger<VMExtensions>.Info(p);
                 if (Settings.Default.DoubleClickRunExt)
                 {
                     (p as ExtensionWrapperDock)?.Wrapper?.GetThread().Start();

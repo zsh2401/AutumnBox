@@ -4,23 +4,39 @@ using AutumnBox.OpenFramework.Management;
 using AutumnBox.OpenFramework.Open;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Reflection;
 
 namespace AutumnBox.OpenFramework.Extension.LeafExtension
 {
-    internal static class ApiAllocator
+    internal class ApiAllocator
     {
-        public static object GetParamterValue(Dictionary<string, object> data, Type extType,Context ctx, ParameterInfo pInfo)
+        private readonly Context ctx;
+        private readonly Type leafType;
+
+        public Dictionary<string, object> ExtData { get; set; }
+
+        public ApiAllocator(Context ctx, Type leafType)
         {
+            this.ctx = ctx ?? throw new ArgumentNullException(nameof(ctx));
+            this.leafType = leafType ?? throw new ArgumentNullException(nameof(leafType));
+        }
+
+        public object GetParamterValue(ParameterInfo pInfo)
+        {
+            if (ExtData == null)
+            {
+                throw new InvalidOperationException("Have not set ExtData!");
+            }
             var fromDataAttr = pInfo.GetCustomAttribute<LFromDataAttribute>();
             if (fromDataAttr == null)
             {
-                return GetProperty(ctx, extType, pInfo.ParameterType);
+                return GetByType(pInfo.ParameterType);
             }
             else
             {
                 string key = fromDataAttr.Key ?? pInfo.Name;
-                if (data.TryGetValue(key, out object value))
+                if (ExtData.TryGetValue(key, out object value))
                 {
                     return value;
                 }
@@ -30,71 +46,77 @@ namespace AutumnBox.OpenFramework.Extension.LeafExtension
                 }
             }
         }
-        public static object GetProperty(Context ctx, Type extType, Type propertyType)
+
+        public object GetByType(Type type)
         {
-            if (propertyType == typeof(ILogger))
+            if (type == typeof(ILogger))
             {
                 return ctx.Logger;
             }
-            if (propertyType == typeof(ILeafUI))
+            else if (type == typeof(ILeafUI))
             {
                 return CallingBus.BaseApi.NewLeafUI();
             }
-            else if (propertyType == typeof(IUx))
+            else if (type.Name.StartsWith("ILeafLogger"))
+            {
+                return LeafLogger.From(leafType, type);
+            }
+            else if (type == typeof(IUx))
             {
                 return ctx.Ux;
             }
-            else if (propertyType == typeof(IAppManager))
+            else if (type == typeof(IAppManager))
             {
                 return ctx.App;
             }
-            else if (propertyType == typeof(ITemporaryFloder))
+            else if (type == typeof(ITemporaryFloder))
             {
                 return ctx.Tmp;
             }
-            else if (propertyType == typeof(IEmbeddedFileManager))
+            else if (type == typeof(IEmbeddedFileManager))
             {
                 return ctx.EmbeddedManager;
             }
-            else if (propertyType == typeof(IOSApi))
+            else if (type == typeof(IOSApi))
             {
                 return ctx.GetService<IOSApi>(ServicesNames.OS);
             }
-            else if (propertyType == typeof(IDeviceSelector))
+            else if (type == typeof(IDeviceSelector))
             {
                 return ctx.GetService<IDeviceSelector>(ServicesNames.DEVICE_SELECTOR);
             }
-            else if (propertyType == typeof(IMd5Service))
+            else if (type == typeof(IMd5Service))
             {
                 return ctx.GetService<IMd5Service>(ServicesNames.MD5);
             }
-            else if (propertyType == typeof(IResourcesManager))
+            else if (type == typeof(IResourcesManager))
             {
                 return ctx.GetService<IResourcesManager>(ServicesNames.RESOURCES);
             }
-            else if (propertyType == typeof(ICompApi))
+            else if (type == typeof(ICompApi))
             {
                 return ctx.Comp;
             }
-            else if (propertyType == typeof(ISoundService))
+            else if (type == typeof(ISoundService))
             {
                 return ctx.GetService<ISoundService>(ServicesNames.SOUND);
             }
-            else if (propertyType == typeof(Context))
+            else if (type == typeof(Context))
             {
                 return ctx;
             }
-            else if (propertyType == typeof(IDevice))
+            else if (type == typeof(IDevice))
             {
                 return ctx.GetService<IDeviceSelector>(ServicesNames.DEVICE_SELECTOR).GetCurrent(ctx);
             }
-            else if (propertyType == typeof(TextAttrManager))
+            else if (type == typeof(TextAttrManager))
             {
-                var m =  new TextAttrManager(extType);
+                var m = new TextAttrManager(leafType);
                 m.Load();
                 return m;
             }
             return null;
+
         }
     }
 }

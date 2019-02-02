@@ -6,10 +6,12 @@ namespace AutumnBox.OpenFramework.Extension.LeafExtension
     internal class LeafPropertyInjector
     {
         private readonly LeafExtensionBase ext;
+        private readonly ApiAllocator apiAllocator;
 
-        public LeafPropertyInjector(LeafExtensionBase ext)
+        public LeafPropertyInjector(LeafExtensionBase ext,ApiAllocator apiAllocator)
         {
             this.ext = ext ?? throw new System.ArgumentNullException(nameof(ext));
+            this.apiAllocator = apiAllocator ?? throw new System.ArgumentNullException(nameof(apiAllocator));
         }
         public void Inject()
         {
@@ -19,7 +21,7 @@ namespace AutumnBox.OpenFramework.Extension.LeafExtension
             foreach (var prop in properties)
             {
                 var setter = prop.GetSetMethod() ?? prop.GetSetMethod(true);
-                setter.Invoke(ext, new object[] { ApiAllocator.GetProperty(ext.Context, ext.GetType(),prop.PropertyType) });
+                setter.Invoke(ext, new object[] { apiAllocator.GetByType(prop.PropertyType) });
             }
         }
         private bool IsInjectableProperty(PropertyInfo propInfo)

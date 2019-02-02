@@ -5,6 +5,7 @@
 *************************************************/
 using AutumnBox.Basic.Calling;
 using AutumnBox.Basic.Device;
+using AutumnBox.OpenFramework;
 using AutumnBox.OpenFramework.Content;
 using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.Extension.LeafExtension;
@@ -18,7 +19,7 @@ namespace AutumnBox.CoreModules.Extensions.Hidden
     [ExtRequiredDeviceStates(AutumnBoxExtension.NoMatter)]
     [ExtDeveloperMode]
     [ExtText("fuck", "Hello", "zh-cn:你好!")]
-    [ExtMinAndroidVersion(9, 0, 0)]
+    //[ExtMinAndroidVersion(9, 0, 0)]
     internal class EHoldMyHand : LeafExtensionBase
     {
         [LProperty]
@@ -28,11 +29,12 @@ namespace AutumnBox.CoreModules.Extensions.Hidden
         private IDevice Device { get; set; }
 
         [LMain]
-        public void Main(IDevice device, Context context, ILeafUI ui, IUx ux, Dictionary<string, object> data, TextAttrManager manager)
+        public void Main(IDevice device, ILeafLogger<SharpExtension> logger,Context context, ILeafUI ui, IUx ux, Dictionary<string, object> data, TextAttrManager manager)
         {
             using (ui)
             {
                 ui.Show();
+                logger.Info("WTF");
                 using (CommandExecutor executor = new CommandExecutor())
                 {
                     ui.CloseButtonClicked += (s, e) =>

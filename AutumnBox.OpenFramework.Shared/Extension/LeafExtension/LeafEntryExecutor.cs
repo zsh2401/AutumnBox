@@ -10,14 +10,15 @@ namespace AutumnBox.OpenFramework.Extension.LeafExtension
     internal class LeafEntryExecutor
     {
         private readonly LeafExtensionBase ext;
-
+        private readonly ApiAllocator apiAllocator;
         private Dictionary<string, object> data;
 
         private readonly MethodInfo entry;
 
-        public LeafEntryExecutor(LeafExtensionBase ext)
+        public LeafEntryExecutor(LeafExtensionBase ext, ApiAllocator apiAllocator)
         {
             this.ext = ext ?? throw new ArgumentNullException(nameof(ext));
+            this.apiAllocator = apiAllocator ?? throw new ArgumentNullException(nameof(apiAllocator));
             entry = FindEntry();
         }
         /// <summary>
@@ -27,6 +28,7 @@ namespace AutumnBox.OpenFramework.Extension.LeafExtension
         /// <returns></returns>
         private object[] GetPara(ParameterInfo[] pInfos)
         {
+            apiAllocator.ExtData = data ?? throw new NullReferenceException("ext data is null!!") ;
             List<object> ps = new List<object>();
             foreach (var pInfo in pInfos)
             {
@@ -38,11 +40,12 @@ namespace AutumnBox.OpenFramework.Extension.LeafExtension
                 {
                     try
                     {
-                        var result = ApiAllocator.GetParamterValue(data, ext.GetType(), ext.Context, pInfo);
+                        var result = apiAllocator.GetParamterValue(pInfo);
                         ps.Add(result);
                     }
-                    catch
+                    catch(Exception e)
                     {
+                        Trace.WriteLine(e);
                         ps.Add(null);
                     }
                 }
@@ -98,7 +101,6 @@ namespace AutumnBox.OpenFramework.Extension.LeafExtension
         public int? Execute(Dictionary<string, object> data = null)
         {
             this.data = data;
-
             //获取其需要的参数列表
             var para = GetPara(entry.GetParameters());
             //执行
