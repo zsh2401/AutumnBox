@@ -30,8 +30,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Extension\IClassExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\IExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\LeafExtension\ILeafLogger.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Extension\LeafExtension\ILeafLoggerG.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extension\LeafExtension\ILeafLogger.Generic.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\LeafExtension\LDoNotScan.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extension\LeafExtension\LeafKit.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\LeafExtension\LeafLogger.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\LeafExtension\LFromDataAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\LeafExtension\ILeafUI.cs" />
