@@ -19,19 +19,15 @@
         <panel:PanelDeviceDetails DockPanel.Dock="Top" VerticalAlignment="Top" HorizontalAlignment="Center"/>
         <Grid DockPanel.Dock="Bottom" Margin="0,0,0,1">
             <DockPanel>
-                <materialDesign:PackIcon Background="{DynamicResource CardBackgroundBrush}" Foreground="{DynamicResource PrimaryLightBrush}" DockPanel.Dock="Left" VerticalAlignment="Center" Width="30" Height="70" Kind="NavigateBefore">
-                    <materialDesign:PackIcon.InputBindings>
-                        <MouseBinding MouseAction="LeftClick" Command="{Binding PreFunctionPage}"/>
-                    </materialDesign:PackIcon.InputBindings>
-                </materialDesign:PackIcon>
-                
-                <materialDesign:PackIcon Background="{DynamicResource CardBackgroundBrush}" Foreground="{DynamicResource PrimaryLightBrush}" DockPanel.Dock="Right" VerticalAlignment="Center" Width="30" Height="70" Kind="NavigateNext">
-                    <materialDesign:PackIcon.InputBindings>
-                        <MouseBinding MouseAction="LeftClick" Command="{Binding NextFunctionPage}"/>
-                    </materialDesign:PackIcon.InputBindings>
-                </materialDesign:PackIcon>
-                
-                
+
+                <Button Command="{Binding PreFunctionPage}" Height="70" DockPanel.Dock="Left" Style="{DynamicResource MaterialDesignToolButton}">
+                    <materialDesign:PackIcon  Height="70" Width="30" Foreground="{DynamicResource PrimaryLightBrush}"  Kind="NavigateBefore"></materialDesign:PackIcon>
+                </Button>
+
+                <Button Command="{Binding NextFunctionPage}" Height="70" DockPanel.Dock="Right" Style="{DynamicResource MaterialDesignToolButton}">
+                    <materialDesign:PackIcon Height="70" Width="30"  Foreground="{DynamicResource PrimaryLightBrush}"  Kind="NavigateNext"></materialDesign:PackIcon>
+                </Button>
+
                 <!--模块面板-->
                 <materialDesign:Transitioner SelectedIndex="{Binding TabSelectedIndex}" Margin="0">
 
