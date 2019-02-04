@@ -23,7 +23,10 @@
                             <Button Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource PanelDevicesEnableCurrent}" Command="{Binding OpenDeviceNetDebugging}"  FontSize="12"/>
                             <Button Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource PanelDevicesDisconnect}" Command="{Binding DisconnectDevice}" FontSize="12"/>
                         </StackPanel>
-                        <ListBox Foreground="{DynamicResource MainBackgroundForegroundBrush}" DockPanel.Dock="Top"  DisplayMemberPath="{Binding DisplayMemeberPath}" ItemsSource="{Binding Devices}" SelectedItem="{Binding Selected,Mode=TwoWay}"/>
+                        <Grid DockPanel.Dock="Top">
+                            <TextBlock Visibility="{Binding NoDeviceVisibility}" Text="{DynamicResource PanelDevicesNoOne}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Gray" FontSize="14"/>
+                            <ListBox Visibility="{Binding ListVisibility}" DisplayMemberPath="{Binding DisplayMemeberPath}" ItemsSource="{Binding Devices}" SelectedItem="{Binding Selected,Mode=TwoWay}"/>
+                        </Grid>
                     </DockPanel>
                 </Grid>
             </TabItem>
