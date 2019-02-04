@@ -11,11 +11,36 @@ using AutumnBox.GUI.Util.Bus;
 using AutumnBox.GUI.View.DialogContent;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows;
 
 namespace AutumnBox.GUI.ViewModel
 {
     class VMConnectDevices : ViewModelBase
     {
+        public Visibility NoDeviceVisibility
+        {
+            get => _noDevV; set
+            {
+                _noDevV = value;
+                RaisePropertyChanged();
+                //if (value == Visibility.Visible) ListVisibility = Visibility.Hidden;
+                //else ListVisibility = Visibility.Visible;
+            }
+        }
+        private Visibility _noDevV = Visibility.Visible;
+
+        public Visibility ListVisibility
+        {
+            get => _listV; set
+            {
+                _listV = value;
+                RaisePropertyChanged();
+                if (value == Visibility.Visible) NoDeviceVisibility = Visibility.Hidden;
+                else NoDeviceVisibility = Visibility.Visible;
+            }
+        }
+        private Visibility _listV = Visibility.Hidden;
+
         public string DisplayMemeberPath { get; set; } = nameof(IDevice.SerialNumber);
 
         public IDevice Selected
@@ -47,10 +72,12 @@ namespace AutumnBox.GUI.ViewModel
                 if (value.Count() > 0)
                 {
                     Selected = _devices[0];
+                    ListVisibility = Visibility.Visible;
                 }
                 else
                 {
                     Selected = null;
+                    ListVisibility = Visibility.Hidden;
                 }
             }
         }
@@ -94,6 +121,7 @@ namespace AutumnBox.GUI.ViewModel
                 DeviceSelectionObserver.Instance.RaiseSelectDevice(Selected);
             }
         }
+
 
         private void ConnectedDevicesChanged(object sender, DevicesChangedEventArgs e)
         {
