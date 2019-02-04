@@ -10,7 +10,7 @@ namespace AutumnBox.Basic.Calling.Adb
     /// <summary>
     /// 相比ShellCommand来说，能够更加实时获取输出的ShellCommand
     /// </summary>
-    [Obsolete("极度不可靠,请使用AndroidShell代替",true)]
+    [Obsolete("极度不可靠,请使用AndroidShell代替")]
     public class RealtimeShellCommand : AdbCommand
     {
         private readonly string shellCommand;
