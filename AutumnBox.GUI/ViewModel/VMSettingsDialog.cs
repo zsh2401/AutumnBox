@@ -314,9 +314,8 @@ namespace AutumnBox.GUI.ViewModel
                     AdbVersion = match.Result("${name}(${code})");
                 }
             }
-            catch (Exception e)
+            catch
             {
-                SLogger.Warn(this, "fail to get version infos", e);
             }
         }
 

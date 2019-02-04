@@ -9,11 +9,17 @@ namespace AutumnBox.GUI.Util.UI
     static class Sentences
     {
         private static readonly Random ran = new Random();
-        public static string Value()
+        public static string Next()
         {
-            int next = ran.Next(0, sentences.Length);
-            return sentences[next];
-            //return sentences.Last();
+            try
+            {
+                int next = ran.Next(0, sentences.Length);
+                return sentences[next];
+            }
+            catch
+            {
+                return "The best thing I could,is end it all";
+            }
         }
         private static readonly string[] sentences = new string[]
         {
