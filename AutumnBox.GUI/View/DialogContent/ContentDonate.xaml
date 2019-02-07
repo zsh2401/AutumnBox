@@ -7,21 +7,20 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mvvm="clr-namespace:AutumnBox.GUI.MVVM"
     FontFamily="{DynamicResource AutumnBox.Font}"
+    Width="630"
              mc:Ignorable="d">
     <UserControl.DataContext>
         <mvvm:ViewModelBase/>
     </UserControl.DataContext>
     <StackPanel>
         <TextBlock TextAlignment="Center" Margin="5" TextWrapping="Wrap" Text="{DynamicResource PanelDonateDescription }" FontSize="20" />
-        <Button  Command="{Binding OpenUrl}" CommandParameter="https://www.paypal.me/zsh2401" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource PanelDonateBtnPayPal}"/>
+        <Button HorizontalAlignment="Center"  Command="{Binding OpenUrl}" CommandParameter="https://www.paypal.me/zsh2401" Style="{DynamicResource MaterialDesignToolButton}" Content="{DynamicResource PanelDonateBtnPayPal}"/>
+        <Button HorizontalAlignment="Center" DockPanel.Dock="Left" Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoDonate}" Style="{DynamicResource MaterialDesignToolButton}" Content="{DynamicResource PanelDonateBtnGotoDonatePage}"/>
         <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
             <Image Width="200" Margin="5" RenderOptions.BitmapScalingMode="Fant" Source="/AutumnBox.GUI;component/Resources/Drawable/Donate/alishop.png"/>
             <Image Width="200" Margin="5"  RenderOptions.BitmapScalingMode="Fant" Source="/AutumnBox.GUI;component/Resources/Drawable/Donate/redpacket.jpg"/>
             <Image Width="200" Margin="5"  RenderOptions.BitmapScalingMode="Fant" Source="/AutumnBox.GUI;component/Resources/Drawable/Donate/wechatpay.jpg"/>
         </StackPanel>
-        <DockPanel>
-            <Button IsCancel="True" DockPanel.Dock="Right" FontSize="12" Command="materialDesign:DialogHost.CloseDialogCommand" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource btnClose}"/>
-            <Button HorizontalAlignment="Left" DockPanel.Dock="Left" FontSize="12" Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoDonate}" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource PanelDonateBtnGotoDonatePage}"/>
-        </DockPanel>
+        <Button HorizontalAlignment="Center" IsCancel="True" DockPanel.Dock="Right" FontSize="12" Command="materialDesign:DialogHost.CloseDialogCommand" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource btnClose}"/>
     </StackPanel>
 </UserControl>
