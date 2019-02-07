@@ -9,6 +9,12 @@ namespace AutumnBox.OpenFramework.Extension.LeafExtension
     public interface ILeafLogger
     {
         /// <summary>
+        /// 原始的LOG
+        /// </summary>
+        /// <param name="TAG"></param>
+        /// <param name="message"></param>
+        void Log(string TAG, string message);
+        /// <summary>
         /// Debug类型,仅在秋之盒调试模式开启时可用
         /// </summary>
         /// <param name="message"></param>
