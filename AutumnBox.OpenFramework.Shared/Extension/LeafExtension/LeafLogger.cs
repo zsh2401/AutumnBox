@@ -41,43 +41,48 @@ namespace AutumnBox.OpenFramework.Extension.LeafExtension
         public void Debug(object message)
         {
             if (!CallingBus.BaseApi.IsDeveloperMode) return;
-            CallingBus.BaseApi.Log(categoryName, nameof(Debug), message?.ToString());
+            Log(nameof(Debug), message?.ToString());
         }
 
-        public void Debug(object message,Exception e)
+        public void Debug(object message, Exception e)
         {
             if (!CallingBus.BaseApi.IsDeveloperMode) return;
-            CallingBus.BaseApi.Log(categoryName, nameof(Debug), $"{message}{Environment.NewLine}{e}");
+            Log(nameof(Debug), $"{message}{Environment.NewLine}{e}");
         }
 
         public void Exception(Exception e)
         {
-            CallingBus.BaseApi.Log(categoryName, nameof(Exception), e?.ToString());
+            Log(nameof(Exception), e?.ToString());
         }
 
         public void Fatal(object message)
         {
-            CallingBus.BaseApi.Log(categoryName, nameof(Fatal), message?.ToString());
+            Log(nameof(Fatal), message?.ToString());
         }
 
         public void Fatal(object message, Exception ex)
         {
-            CallingBus.BaseApi.Log(categoryName, nameof(Fatal), $"{message}{Environment.NewLine}{ex}");
+            Log(nameof(Fatal), $"{message}{Environment.NewLine}{ex}");
         }
 
         public void Info(object message)
         {
-            CallingBus.BaseApi.Log(categoryName, nameof(Info), message?.ToString());
+            Log(nameof(Info), message?.ToString());
+        }
+
+        public void Log(string TAG, string message)
+        {
+            CallingBus.BaseApi.Log(categoryName, TAG, message);
         }
 
         public void Warn(object message)
         {
-            CallingBus.BaseApi.Log(categoryName, nameof(Warn), message?.ToString());
+            Log(nameof(Warn), message?.ToString());
         }
 
         public void Warn(object message, Exception e)
         {
-            CallingBus.BaseApi.Log(categoryName, nameof(Warn), $"{message}{Environment.NewLine}{e}");
+            Log(nameof(Warn), $"{message}{Environment.NewLine}{e}");
         }
     }
     class LeafLogger<TCategory> : LeafLogger, ILeafLogger<TCategory>
