@@ -34,6 +34,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Extension\LeafExtension\LDoNotScan.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\LeafExtension\LeafKit.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\LeafExtension\LeafLogger.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extension\LeafExtension\LeafTerminatedException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extension\LeafExtension\LeafUIHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\LeafExtension\LFromDataAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\LeafExtension\ILeafUI.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\LeafExtension\LeafCloseBtnClickedEventArgs.cs" />

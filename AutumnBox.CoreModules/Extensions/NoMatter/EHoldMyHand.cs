@@ -45,6 +45,7 @@ namespace AutumnBox.CoreModules.Extensions.Hidden
                     executor.To(e => ui.WriteOutput(e.Text));
                     executor.Adb("help");
                 }
+                this.End();
                 ui.WriteLine(manager["fuck"]);
                 ui.WriteOutput("fuck asdasjkdshadskjhkj");
                 ui.ShowMessage("WTF\n\n\n\n\n\nasdadas\n\n\nasdasdsahsdkajghsdakjfhsdjkaghsdfjkghjkfsdhgjkshfdjkgfhsjdgkhdskfjghjW");
