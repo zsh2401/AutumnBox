@@ -53,6 +53,7 @@ namespace AutumnBox.Basic.Device.Management.OS
         /// 获取安卓版本 类似 8.0.0
         /// </summary>
         /// <returns></returns>
+        [Obsolete("不可靠函数,建议使用Get(BuildPropKeys.AndroidVersion);获取字符串格式的版本号")]
         public Version GetAndroidVersion()
         {
             var verStr = Get(BuildPropKeys.AndroidVersion);
