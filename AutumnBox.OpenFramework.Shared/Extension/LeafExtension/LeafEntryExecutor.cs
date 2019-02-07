@@ -28,7 +28,7 @@ namespace AutumnBox.OpenFramework.Extension.LeafExtension
         /// <returns></returns>
         private object[] GetPara(ParameterInfo[] pInfos)
         {
-            apiAllocator.ExtData = data ?? throw new NullReferenceException("ext data is null!!") ;
+            apiAllocator.ExtData = data ?? throw new NullReferenceException("ext data is null!!");
             List<object> ps = new List<object>();
             foreach (var pInfo in pInfos)
             {
@@ -43,7 +43,7 @@ namespace AutumnBox.OpenFramework.Extension.LeafExtension
                         var result = apiAllocator.GetParamterValue(pInfo);
                         ps.Add(result);
                     }
-                    catch(Exception e)
+                    catch (Exception e)
                     {
                         Trace.WriteLine(e);
                         ps.Add(null);
@@ -104,7 +104,23 @@ namespace AutumnBox.OpenFramework.Extension.LeafExtension
             //获取其需要的参数列表
             var para = GetPara(entry.GetParameters());
             //执行
-            var result = entry.Invoke(ext, para);
+            object result = null;
+            try
+            {
+                result = entry.Invoke(ext, para);
+            }
+            catch (TargetInvocationException e)
+            {
+                if (e.InnerException is LeafTerminatedException _e)
+                {
+                    result = _e.ExitCode;
+                }
+                else
+                {
+                    throw e.InnerException;
+                }
+            }
+
             //处理可能的返回值
             if (result is int exitCode)
             {

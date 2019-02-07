@@ -50,5 +50,15 @@ namespace AutumnBox.OpenFramework.Extension.LeafExtension
             var result = filted.First();
             return result.Info.Name;
         }
+        /// <summary>
+        /// 通过抛出指定的异常中断模块主要流程
+        /// </summary>
+        /// <exception cref="LeafTerminatedException"></exception>
+        /// <param name="leaf"></param>
+        /// <param name="exitCode"></param>
+        public static void End(this LeafExtensionBase leaf,int exitCode=0)
+        {
+            throw new LeafTerminatedException(exitCode);
+        }
     }
 }
