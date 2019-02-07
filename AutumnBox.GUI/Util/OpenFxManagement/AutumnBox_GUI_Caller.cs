@@ -134,7 +134,6 @@ namespace AutumnBox.GUI.Util.OpenFxManagement
 
         public void PlayOk()
         {
-            SGLogger<AutumnBox_GUI_Caller>.Info("Playing ok");
             if (Settings.Default.NotifyOnFinish)
             {
                 Sounds.OK.Play();
