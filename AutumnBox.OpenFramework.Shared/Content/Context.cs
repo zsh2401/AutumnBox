@@ -8,11 +8,8 @@ using AutumnBox.OpenFramework.Open;
 using AutumnBox.OpenFramework.Open.Impl;
 using AutumnBox.OpenFramework.Running;
 using AutumnBox.OpenFramework.Service;
-using AutumnBox.OpenFramework.Service.Default;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace AutumnBox.OpenFramework.Content
 {
@@ -94,35 +91,11 @@ namespace AutumnBox.OpenFramework.Content
         public IEmbeddedFileManager EmbFileManager => _lazyEmb.Value;
         private Lazy<IEmbeddedFileManager> _lazyEmb;
 
-        [ContextPermission(CtxPer.High)]
-        private class UniversalHighPermissionContext : Context
-        {
-            public UniversalHighPermissionContext(Context sourceContext)
-            {
-                SourceContext = sourceContext;
-            }
-            public Context SourceContext { get; }
-        }
-        internal Context HContext
-        {
-            get
-            {
-                if (hContext == null)
-                {
-                    hContext = new UniversalHighPermissionContext(this);
-                }
-                return hContext;
-            }
-        }
-        private UniversalHighPermissionContext hContext;
-
         internal IBaseApi BaseApi
         {
             get
             {
-                var ctx = new UniversalHighPermissionContext(this);
-                string servName = SBaseApiContainer.NAME;
-                return GetService<SBaseApiContainer>(servName).GetApi(ctx);
+                return CallingBus.BaseApi;
             }
         }
 
@@ -157,7 +130,7 @@ namespace AutumnBox.OpenFramework.Content
         /// <returns></returns>
         public IExtensionThread NewExtensionThread(Type extensionType)
         {
-            var wrappers = from wrapper in Manager.InternalManager.GetLoadedWrappers()
+            var wrappers = from wrapper in Manager.InternalManager.Wrappers
                            where extensionType == wrapper.Info.ExtType
                            select wrapper;
             if (wrappers.Count() == 0)
@@ -172,7 +145,7 @@ namespace AutumnBox.OpenFramework.Content
         /// <returns></returns>
         public IExtensionThread NewExtensionThread(string className)
         {
-            var wrappers = from wrapper in Manager.InternalManager.GetLoadedWrappers()
+            var wrappers = from wrapper in Manager.InternalManager.Wrappers
                            where className == wrapper.Info.ExtType.Name
                            select wrapper;
             if (!wrappers.Any())

@@ -11,10 +11,10 @@ using System;
 using System.Diagnostics;
 using System.Security.Principal;
 
-namespace AutumnBox.OpenFramework.Open.Impl
+namespace AutumnBox.OpenFramework.Open.ServiceImpl
 {
     [ServiceName(ServicesNames.OS)]
-    class OSApiImpl : AtmbService, IOSApi
+    class SOSApi : AtmbService, IOSApi
     {
         public bool IsWindows10
         {

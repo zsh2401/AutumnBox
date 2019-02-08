@@ -3,6 +3,7 @@
 ** date:  2018/8/1 1:28:18 (UTC +8:00)
 ** desc： ...
 *************************************************/
+using AutumnBox.OpenFramework.Content;
 using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.ExtLibrary;
 using AutumnBox.OpenFramework.Service;
@@ -13,14 +14,14 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 
-namespace AutumnBox.OpenFramework.Management.Impl
+namespace AutumnBox.OpenFramework.Management
 {
 
     /// <summary>
     /// 拓展模块管理器
     /// </summary>
     [ServiceName(SERVICE_NAME)]
-    internal sealed class InternalManagerImpl : AtmbService, IInternalManager
+    internal sealed class InternalManagerImpl : Context, IInternalManager
     {
         public const string SERVICE_NAME = "InternalManager";
         public const string PATTERN_DFT_EXT = "*.dll";
@@ -256,35 +257,6 @@ namespace AutumnBox.OpenFramework.Management.Impl
             return result;
         }
 
-        private bool IsOk(IExtensionWrapper Wrapper, IWrapperFilter[] filters)
-        {
-            foreach (var filter in filters)
-            {
-                try
-                {
-                    if (!filter.DoFilter(Wrapper))
-                    {
-                        return false;
-                    }
-                }
-                catch (Exception e)
-                {
-                    Logger.Warn($"can not filter extension", e);
-                    return false;
-                }
-
-            }
-            return true;
-        }
-
-        public IEnumerable<IExtensionWrapper> GetLoadedWrappers(params IWrapperFilter[] filters)
-        {
-            List<IExtensionWrapper> all = Wrappers.ToList();
-            return from w in all
-                   where IsOk(w, filters)
-                   orderby (int)w.Info[ExtensionInformationKeys.PRIORITY] descending
-                   select w;
-        }
 
         /// <summary>
         ///析构

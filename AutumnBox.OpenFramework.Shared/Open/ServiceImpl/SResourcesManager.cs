@@ -1,10 +1,5 @@
-﻿using AutumnBox.OpenFramework.Content;
-using AutumnBox.OpenFramework.Management;
+﻿using AutumnBox.OpenFramework.Management;
 using AutumnBox.OpenFramework.Service;
-using AutumnBox.OpenFramework.Service.Default;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace AutumnBox.OpenFramework.Open.ServiceImpl
 {
@@ -14,8 +9,7 @@ namespace AutumnBox.OpenFramework.Open.ServiceImpl
         private readonly IBaseApi baseApi;
         public SResourcesManager()
         {
-            var container = GetService<SBaseApiContainer>(SBaseApiContainer.NAME);
-            baseApi = container.GetApi(this);
+            baseApi = CallingBus.BaseApi;
         }
 
         public object this[string key]

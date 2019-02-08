@@ -11,7 +11,7 @@ using AutumnBox.GUI.Util.Bus;
 using AutumnBox.GUI.Util.Debugging;
 using AutumnBox.GUI.Util.I18N;
 using AutumnBox.OpenFramework.Extension;
-using AutumnBox.OpenFramework.Management.Filters;
+using AutumnBox.OpenFramework.Management;
 using AutumnBox.OpenFramework.Wrapper;
 using System;
 using System.Collections.Generic;
@@ -184,13 +184,8 @@ namespace AutumnBox.GUI.ViewModel
             try
             {
                 IEnumerable<IExtensionWrapper> filted =
-                    OpenFramework.Management.Manager.InternalManager
-                    .GetLoadedWrappers(
-                    new DeviceStateFilter(targetState),
-                    CurrentRegionFilter.Singleton,
-                    DevelopingFilter.Singleton,
-                    HideFilter.Singleton
-                    );
+                    Manager.InternalManager.Wrappers.
+                    State(targetState).Region(LanguageManager.Instance.Current.LanCode).Hide().Dev(Settings.Default.DeveloperMode);
                 App.Current.Dispatcher.Invoke(() =>
                 {
                     Extensions = filted;

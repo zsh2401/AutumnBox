@@ -10,7 +10,7 @@ using System.Threading;
 namespace AutumnBox.OpenFramework.Running
 {
     [ServiceName(ServicesNames.THREAD_MANAGER)]
-    internal class ExtensionThreadManager : AtmbService, IExtensionThreadManager
+    internal class SExtensionThreadManager : AtmbService, IExtensionThreadManager
     {
         private readonly List<IExtensionThread> readys = new List<IExtensionThread>();
         private readonly List<IExtensionThread> runnings = new List<IExtensionThread>();

@@ -153,7 +153,7 @@ namespace AutumnBox.OpenFramework.Running
             while (isRunning) ;
         }
 
-        public ExtensionThread(ExtensionThreadManager threadManager, Type extensionType, IExtensionWrapper wrapper)
+        public ExtensionThread(SExtensionThreadManager threadManager, Type extensionType, IExtensionWrapper wrapper)
         {
             if (threadManager == null)
             {

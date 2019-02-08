@@ -3,12 +3,9 @@
 ** date:  2018/10/21 1:28:25 (UTC +8:00)
 ** desc： ...
 *************************************************/
-using AutumnBox.OpenFramework.Content;
-using AutumnBox.OpenFramework.Management.Impl;
 using AutumnBox.OpenFramework.Open.ServiceImpl;
 using AutumnBox.OpenFramework.Running;
 using AutumnBox.OpenFramework.Service;
-using AutumnBox.OpenFramework.Service.Default;
 
 namespace AutumnBox.OpenFramework.Management
 {
@@ -22,43 +19,33 @@ namespace AutumnBox.OpenFramework.Management
 #endif
         static class FxLoader
     {
-        [ContextPermission(CtxPer.High)]
-        private class FxLoaderContext : Context { }
-        private static Context fxLoaderCtx;
-
         /// <summary>
-        /// 完全加载
+        /// 初始化环境
         /// </summary>
         /// <param name="baseApi"></param>
-        public static void LoadBase(IBaseApi baseApi)
+        public static void InitEnv(IBaseApi baseApi)
         {
-            //设置Context
-            fxLoaderCtx = new FxLoaderContext();
-
-            IServicesManager serviceManager = Manager.ServicesManager;
             //加载API
-            serviceManager.StartService<SBaseApiContainer>();
-            var apiContainer = (SBaseApiContainer)serviceManager
-                .GetServiceByName(fxLoaderCtx, SBaseApiContainer.NAME);
-            apiContainer.LoadApi(baseApi);
+            CallingBus.BaseApi = baseApi ?? throw new System.ArgumentNullException(nameof(baseApi));
+
+            //初始化服务
+            Manager.ServicesManager = new ServicesManagerImpl();
+            Manager.InternalManager = new InternalManagerImpl();
+
             //加载基础服务
-            serviceManager.StartService<SMd5>();
-            serviceManager.StartService<SSoundManager>();
-            serviceManager.StartService<SResourcesManager>();
-            serviceManager.StartService<SDeviceSelector>();
-            serviceManager.StartService<ExtensionThreadManager>();
-            serviceManager.StartService<Open.Impl.OSApiImpl>();
+            Manager.ServicesManager.StartService<SMd5>();
+            Manager.ServicesManager.StartService<SSoundManager>();
+            Manager.ServicesManager.StartService<SResourcesManager>();
+            Manager.ServicesManager.StartService<SDeviceSelector>();
+            Manager.ServicesManager.StartService<SExtensionThreadManager>();
+            Manager.ServicesManager.StartService<SOSApi>();
         }
         /// <summary>
         /// 加载拓展模块
         /// </summary>
         public static void LoadExtensions()
         {
-            IServicesManager serviceManager = Manager.ServicesManager;
-            serviceManager.StartService<InternalManagerImpl>();
-            var internalManager = fxLoaderCtx
-                .GetService<InternalManagerImpl>(InternalManagerImpl.SERVICE_NAME);
-            internalManager.Reload();
+            Manager.InternalManager.Reload();
         }
 
         /// <summary>
