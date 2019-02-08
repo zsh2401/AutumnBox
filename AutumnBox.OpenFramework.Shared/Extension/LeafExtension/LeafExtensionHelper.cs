@@ -19,7 +19,7 @@ namespace AutumnBox.OpenFramework.Extension.LeafExtension
         /// <returns></returns>
         public static byte[] GetIconBytes(this LeafExtensionBase leaf)
         {
-            var filted = from wrapper in Manager.InternalManager.GetLoadedWrappers()
+            var filted = from wrapper in Manager.InternalManager.Wrappers
                          where wrapper.Info.ExtType == leaf.GetType()
                          select wrapper;
             var result = filted.First();
@@ -32,7 +32,7 @@ namespace AutumnBox.OpenFramework.Extension.LeafExtension
         /// <returns></returns>
         public static IExtInfoGetter GetInformations(this LeafExtensionBase leaf)
         {
-            var filted = from wrapper in Manager.InternalManager.GetLoadedWrappers()
+            var filted = from wrapper in Manager.InternalManager.Wrappers
                          where wrapper.Info.ExtType == leaf.GetType()
                          select wrapper;
             return filted.First().Info;
@@ -44,7 +44,7 @@ namespace AutumnBox.OpenFramework.Extension.LeafExtension
         /// <returns></returns>
         public static string GetName(this LeafExtensionBase leaf)
         {
-            var filted = from wrapper in Manager.InternalManager.GetLoadedWrappers()
+            var filted = from wrapper in Manager.InternalManager.Wrappers
                          where wrapper.Info.ExtType == leaf.GetType()
                          select wrapper;
             var result = filted.First();

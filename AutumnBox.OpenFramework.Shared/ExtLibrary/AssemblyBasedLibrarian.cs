@@ -7,7 +7,6 @@ using AutumnBox.OpenFramework.Content;
 using AutumnBox.OpenFramework.Exceptions;
 using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.Management;
-using AutumnBox.OpenFramework.Management.Impl;
 using AutumnBox.OpenFramework.Open;
 using AutumnBox.OpenFramework.Wrapper;
 using System;

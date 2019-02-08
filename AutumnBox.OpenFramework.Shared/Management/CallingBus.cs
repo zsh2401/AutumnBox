@@ -4,28 +4,14 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.OpenFramework.Content;
-using AutumnBox.OpenFramework.Service.Default;
-using System;
 
 namespace AutumnBox.OpenFramework.Management
 {
     internal static class CallingBus
     {
-        [ContextPermission(CtxPer.High)]
-        private class CallingBusContext : Context { }
-        private static readonly CallingBusContext ctx = new CallingBusContext();
         public static IBaseApi BaseApi
         {
-            get
-            {
-                if (apiContainer == null)
-                {
-                    var service = Manager.ServicesManager.GetServiceByName(ctx, SBaseApiContainer.NAME);
-                    apiContainer = (SBaseApiContainer)service;
-                }
-                return apiContainer.GetApi(new CallingBusContext());
-            }
+            get;set;
         }
-        static SBaseApiContainer apiContainer;
     }
 }
