@@ -42,7 +42,7 @@ namespace AutumnBox.OpenFramework.ExtLibrary
                 {
                     throw new NullReferenceException("Managed assembly was not loaded");
                 }
-                return (Manager.InternalManager as InternalManagerImpl)
+                return (OpenFx.LibsManager as TheWanderingEarthManager)
                     .IsOnceAssembly(ManagedAssembly);
             }
         }

@@ -15,8 +15,7 @@ namespace AutumnBox.GUI.Util
         {
             try
             {
-                FxLoader.UnloadExtensions();
-                FxLoader.UnloadServices();
+                OpenFx.Unload();
                 Adb.Server.Kill();
                 TaskKill.Kill("adb.exe");
             }

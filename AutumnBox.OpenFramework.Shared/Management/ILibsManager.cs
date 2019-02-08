@@ -6,23 +6,15 @@ namespace AutumnBox.OpenFramework.Management
     /// <summary>
     /// 总的拓展模块管理器
     /// </summary>
-    public interface IInternalManager 
+    public interface ILibsManager 
     {
-        /// <summary>
-        /// 管理的拓展模块路径
-        /// </summary>
-        string ExtensionPath { get; }
         /// <summary>
         /// 重载
         /// </summary>
-        void Reload();
+        void Load();
         /// <summary>
         /// 已加载的库管理器
         /// </summary>
         IEnumerable<ILibrarian> Librarians { get; }
-        /// <summary>
-        /// 获取所有的拓展模块包装器
-        /// </summary>
-        IEnumerable<IExtensionWrapper> Wrappers { get; }
     }
 }

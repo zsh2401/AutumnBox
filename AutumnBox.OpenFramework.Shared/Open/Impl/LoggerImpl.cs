@@ -25,33 +25,33 @@ namespace AutumnBox.OpenFramework.Open.Impl
         public void Debug(string msg)
         {
             if (!ctx.BaseApi.IsDeveloperMode) return;
-            CallingBus.BaseApi.Log(ctx.LoggingTag, nameof(Debug), msg);
+            OpenFx.BaseApi.Log(ctx.LoggingTag, nameof(Debug), msg);
         }
 
         public void DebugWarn(string msg, Exception e)
         {
             if (!ctx.BaseApi.IsDeveloperMode) return;
-            CallingBus.BaseApi.Log(ctx.LoggingTag, "DebugW", $"{msg}{Environment.NewLine}{e}");
+            OpenFx.BaseApi.Log(ctx.LoggingTag, "DebugW", $"{msg}{Environment.NewLine}{e}");
         }
 
         public void Fatal(string msg)
         {
-            CallingBus.BaseApi.Log(ctx.LoggingTag, nameof(Fatal), msg);
+            OpenFx.BaseApi.Log(ctx.LoggingTag, nameof(Fatal), msg);
         }
 
         public void Info(string msg)
         {
-            CallingBus.BaseApi.Log(ctx.LoggingTag, nameof(Info), msg);
+            OpenFx.BaseApi.Log(ctx.LoggingTag, nameof(Info), msg);
         }
 
         public void Warn(string msg)
         {
-            CallingBus.BaseApi.Log(ctx.LoggingTag, nameof(Warn), msg);
+            OpenFx.BaseApi.Log(ctx.LoggingTag, nameof(Warn), msg);
         }
 
         public void Warn(string msg, Exception ex)
         {
-            CallingBus.BaseApi.Log(ctx.LoggingTag, nameof(Warn), msg + Environment.NewLine + ex);
+            OpenFx.BaseApi.Log(ctx.LoggingTag, nameof(Warn), msg + Environment.NewLine + ex);
         }
     }
 }

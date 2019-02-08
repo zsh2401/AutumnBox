@@ -50,7 +50,7 @@ namespace AutumnBox.OpenFramework.Util
         /// <returns></returns>
         public static object GetViewById(string id)
         {
-            return CallingBus.BaseApi.GetNewView(id);
+            return OpenFx.BaseApi.GetNewView(id);
         }
         /// <summary>
         /// 显示对话

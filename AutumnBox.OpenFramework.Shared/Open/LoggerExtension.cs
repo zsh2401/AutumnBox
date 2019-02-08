@@ -25,7 +25,7 @@ namespace AutumnBox.OpenFramework.Open
         [System.Diagnostics.Conditional("DEBUG")]
         public static void CDebug(this ILogger logger, object content)
         {
-            CallingBus.BaseApi.Log(logger.Tag, "Debug", content?.ToString());
+            OpenFx.BaseApi.Log(logger.Tag, "Debug", content?.ToString());
         }
     }
 }

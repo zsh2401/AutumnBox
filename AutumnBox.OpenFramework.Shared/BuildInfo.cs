@@ -15,6 +15,10 @@ namespace AutumnBox.OpenFramework
     public static class BuildInfo
     {
         /// <summary>
+        /// 拓展模块路径
+        /// </summary>
+        public const string DEFAULT_EXTENSION_PATH = "..\\exts";
+        /// <summary>
         /// SDK版本,不设计为Const是为了防止编译器优化
         /// </summary>
         public static readonly int API_LEVEL;
@@ -34,10 +38,6 @@ namespace AutumnBox.OpenFramework
         /// AutumnBox.OpenFramework的程序集名称
         /// </summary>
         internal const string AUTUMNBOX_OPENFRAMEWORK_ASSEMBLY_NAME = "AutumnBox.OpenFramework";
-        /// <summary>
-        /// AutumnBox.ConsoleTester的程序集名称
-        /// </summary>
-        internal const string AUTUMNBOX_CONSOLE_TESTER_ASSEMBLY_NAME = "AutumnBox.ConsoleTester";
         static BuildInfo()
         {
             Assembly asm = Assembly.GetExecutingAssembly();

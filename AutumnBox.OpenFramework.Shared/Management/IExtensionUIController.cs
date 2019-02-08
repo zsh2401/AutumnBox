@@ -13,7 +13,12 @@ namespace AutumnBox.OpenFramework.Management
     /// <summary>
     /// UI控制器关闭事件参数
     /// </summary>
-    public class UIControllerClosingEventArgs : EventArgs
+#if SDK
+    internal
+#else
+    public
+#endif
+     class UIControllerClosingEventArgs : EventArgs
     {
         /// <summary>
         /// 取消
@@ -23,7 +28,12 @@ namespace AutumnBox.OpenFramework.Management
     /// <summary>
     /// 拓展模块运行中界面控制器
     /// </summary>
-    public interface IExtensionUIController
+#if SDK
+    internal
+#else
+    public
+#endif
+    interface IExtensionUIController
     {
         /// <summary>
         /// 视图大小

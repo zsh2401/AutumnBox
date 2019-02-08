@@ -20,15 +20,13 @@ namespace AutumnBox.OpenFramework.Management
     /// <summary>
     /// 拓展模块管理器
     /// </summary>
-    [ServiceName(SERVICE_NAME)]
-    internal sealed class InternalManagerImpl : Context, IInternalManager
+    internal sealed class TheWanderingEarthManager : Context, ILibsManager
     {
-        public const string SERVICE_NAME = "InternalManager";
         public const string PATTERN_DFT_EXT = "*.dll";
         public const string PATTERN_DFT_ATMBEXT = "*.atmb";
         public const string PATTERN_DFT_HEXT = "*.adll";
         public const string PATTERN_ONCE_EXT = "*.odll";
-
+        private readonly string extDir;
         private Assembly[] onceAssemblies;
         public bool IsOnceAssembly(Assembly assembly)
         {
@@ -36,16 +34,6 @@ namespace AutumnBox.OpenFramework.Management
             {
                 return ass == assembly;
             }).Count() != 0;
-        }
-        /// <summary>
-        /// 拓展模块路径
-        /// </summary>
-        public string ExtensionPath
-        {
-            get
-            {
-                return "..\\exts";
-            }
         }
         /// <summary>
         /// 已加载的所有入口类
@@ -62,7 +50,7 @@ namespace AutumnBox.OpenFramework.Management
         /// <summary>
         /// 重新加载所有拓展模块
         /// </summary>
-        public void Reload()
+        public void Load()
         {
             DirCheck();
             if (Librarians == null)
@@ -73,15 +61,13 @@ namespace AutumnBox.OpenFramework.Management
             {
                 ReloadLibs();
             }
-            Logger.Info($"loaded {Librarians.Count()} librarian and {Wrappers.Count()} Wrappers");
         }
         /// <summary>
         /// 拓展文件夹检查
         /// </summary>
         private void DirCheck()
         {
-            Logger.Info("checking ext floder");
-            DirectoryInfo dir = new DirectoryInfo(ExtensionPath);
+            DirectoryInfo dir = new DirectoryInfo(extDir);
             if (!dir.Exists)
             {
                 dir.Create();
@@ -92,8 +78,7 @@ namespace AutumnBox.OpenFramework.Management
         /// </summary>
         private void GetLibs()
         {
-
-            DirectoryInfo dir = new DirectoryInfo(ExtensionPath);
+            DirectoryInfo dir = new DirectoryInfo(extDir);
             List<FileInfo> dllFiles = new List<FileInfo>();
             dllFiles.AddRange(dir.GetFiles(PATTERN_DFT_EXT));
             dllFiles.AddRange(dir.GetFiles(PATTERN_DFT_HEXT));
@@ -249,19 +234,18 @@ namespace AutumnBox.OpenFramework.Management
                     Logger.Warn($"获取拓展模块封装类失败({lib.Name})", ex);
                 }
             }
-            ////筛选出未被创建过的Wrappers
-            //var filtedResult = from wp in result
-            //                   where cacheWrappers.IndexOf(wp) == -1
-            //                   select wp;
-
             return result;
         }
 
+        public TheWanderingEarthManager(string extDir)
+        {
+            this.extDir = extDir ?? throw new ArgumentNullException(nameof(extDir));
+        }
 
         /// <summary>
         ///析构
         /// </summary>
-        ~InternalManagerImpl()
+        ~TheWanderingEarthManager()
         {
             foreach (var lib in Librarians)
             {

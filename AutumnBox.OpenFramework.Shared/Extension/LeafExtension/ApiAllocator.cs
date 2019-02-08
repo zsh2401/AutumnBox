@@ -55,7 +55,7 @@ namespace AutumnBox.OpenFramework.Extension.LeafExtension
             }
             else if (type == typeof(ILeafUI))
             {
-                return CallingBus.BaseApi.NewLeafUI();
+                return OpenFx.BaseApi.NewLeafUI();
             }
             else if (type.Name.StartsWith("ILeafLogger"))
             {
