@@ -7,6 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutumnBox.GUI", "AutumnBox.
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9C12A545-FC99-4185-86D1-22D029637239}"
 	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
 		AutumnBox.OpenFramework\AutumnBox.OpenFramework.nuspec = AutumnBox.OpenFramework\AutumnBox.OpenFramework.nuspec
 		LICENSE = LICENSE
 		README.md = README.md
@@ -223,7 +224,7 @@ Global
 		{60988B1A-74B7-470A-AEBA-6D7FE474614D} = {FA99B881-45A3-4D66-8ECE-9D65DFC57C48}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.PolicyInjection.6.0.1304.0\lib\NET45
 		SolutionGuid = {E8E55705-AE5C-4952-B4C7-9D7F81C38731}
+		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.PolicyInjection.6.0.1304.0\lib\NET45
 	EndGlobalSection
 EndGlobal

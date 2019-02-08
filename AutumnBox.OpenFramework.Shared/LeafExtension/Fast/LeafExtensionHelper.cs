@@ -3,7 +3,7 @@ using AutumnBox.OpenFramework.Management;
 using AutumnBox.OpenFramework.Wrapper;
 using System.Linq;
 
-namespace AutumnBox.OpenFramework.LeafExtension
+namespace AutumnBox.OpenFramework.LeafExtension.Fast
 {
     /// <summary>
     /// LeafExtension的帮助类
@@ -54,7 +54,7 @@ namespace AutumnBox.OpenFramework.LeafExtension
         /// <exception cref="LeafTerminatedException"></exception>
         /// <param name="leaf"></param>
         /// <param name="exitCode"></param>
-        public static void End(this LeafExtensionBase leaf,int exitCode=0)
+        public static void EndCurrentLeafThread(this LeafExtensionBase leaf,int exitCode=0)
         {
             throw new LeafTerminatedException(exitCode);
         }
