@@ -44,7 +44,7 @@ namespace AutumnBox.OpenFramework.Management
             //加载基础服务
             serviceManager.StartService<SMd5>();
             serviceManager.StartService<SSoundManager>();
-            serviceManager.StartService<ResourcesManagerImpl>();
+            serviceManager.StartService<SResourcesManager>();
             serviceManager.StartService<SDeviceSelector>();
             serviceManager.StartService<ExtensionThreadManager>();
             serviceManager.StartService<Open.Impl.OSApiImpl>();

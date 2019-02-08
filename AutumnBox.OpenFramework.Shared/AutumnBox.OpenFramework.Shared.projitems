@@ -98,13 +98,11 @@
     <Compile Include="$(MSBuildThisFileDirectory)Open\ICompApi.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\IDeviceSelector.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\IEmbeddedFileManager.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Open\IFrameworkManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\ILogger.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\IMd5Service.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\Impl\AppManagerImpl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\Impl\CompImpl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\Impl\EmbeddedFileManagerImpl.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Open\Impl\FxImpl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\Impl\LoggerImpl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\Impl\OSApiImpl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\Impl\TemporaryFloderImpl.cs" />
@@ -115,7 +113,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Open\ITemporaryFloder.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\IUx.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\LoggerExtension.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Open\ServiceImpl\ResourcesManagerImpl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Open\ServiceImpl\SResourcesManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\ServiceImpl\SDeviceSelector.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\ServiceImpl\SMd5.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\ServiceImpl\SSoundManager.cs" />
@@ -134,6 +132,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Service\ServiceName.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Service\ServicesManagerImpl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Service\ServiceState.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Util\Md5.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Util\OSInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Util\Sound.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Util\UnstableAPI.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Wrapper\ClassExtensionInfoGetter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Wrapper\ClassExtensionScanner.cs" />

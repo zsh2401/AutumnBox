@@ -1,8 +1,11 @@
-﻿namespace AutumnBox.OpenFramework.Open
+﻿using System;
+
+namespace AutumnBox.OpenFramework.Open
 {
     /// <summary>
     /// MD5 API
     /// </summary>
+    [Obsolete("Use Md5 static class to instead")]
     public interface IMd5Service
     {
         /// <summary>

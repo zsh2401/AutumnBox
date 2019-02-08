@@ -1,8 +1,11 @@
-﻿namespace AutumnBox.OpenFramework.Open
+﻿using System;
+
+namespace AutumnBox.OpenFramework.Open
 {
     /// <summary>
     /// 接近操作系统的API
     /// </summary>
+    [Obsolete("Use OSInfo class to instead")]
     public interface IOSApi
     {
         /// <summary>

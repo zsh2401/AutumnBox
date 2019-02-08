@@ -9,10 +9,10 @@ using System.Text;
 namespace AutumnBox.OpenFramework.Open.ServiceImpl
 {
     [ServiceName(ServicesNames.RESOURCES)]
-    internal class ResourcesManagerImpl : AtmbService, IResourcesManager
+    internal class SResourcesManager : AtmbService, IResourcesManager
     {
         private readonly IBaseApi baseApi;
-        public ResourcesManagerImpl()
+        public SResourcesManager()
         {
             var container = GetService<SBaseApiContainer>(SBaseApiContainer.NAME);
             baseApi = container.GetApi(this);
