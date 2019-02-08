@@ -35,13 +35,13 @@
     <Compile Include="$(MSBuildThisFileDirectory)LeafExtension\Kit\Impl\LeafLogger.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)LeafExtension\LeafConstants.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)LeafExtension\LeafTerminatedException.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)LeafExtension\LeafUIHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)LeafExtension\Fast\LeafUIHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)LeafExtension\Attributes\LFromDataAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)LeafExtension\Kit\ILeafUI.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)LeafExtension\Kit\LeafCloseBtnClickedEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)LeafExtension\Internal\LeafEntryExecutor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)LeafExtension\Internal\LeafContext.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)LeafExtension\LeafExtensionHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)LeafExtension\Fast\LeafExtensionHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)LeafExtension\Internal\LeafPropertyInjector.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)LeafExtension\Attributes\LMainAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)LeafExtension\LeafExtensionBase.cs" />
@@ -140,5 +140,6 @@
     <Folder Include="$(MSBuildThisFileDirectory)LeafExtension\Attributes\" />
     <Folder Include="$(MSBuildThisFileDirectory)LeafExtension\Internal\" />
     <Folder Include="$(MSBuildThisFileDirectory)LeafExtension\Kit\Impl\" />
+    <Folder Include="$(MSBuildThisFileDirectory)LeafExtension\Fast\" />
   </ItemGroup>
 </Project>

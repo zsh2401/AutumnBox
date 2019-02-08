@@ -30,7 +30,7 @@
 *.dll
 *.psd
 *.txt
-fast
+#fast
 gfast.exe
 makezip
 ##dirs
