@@ -1,11 +1,10 @@
-﻿using System;
+﻿using AutumnBox.OpenFramework.LeafExtension.Attributes;
+using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 
-namespace AutumnBox.OpenFramework.Extension.LeafExtension
+namespace AutumnBox.OpenFramework.LeafExtension.Internal
 {
     internal sealed class LSignalDistributor
     {

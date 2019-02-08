@@ -1,9 +1,10 @@
 ﻿using AutumnBox.Basic.Device;
 using AutumnBox.OpenFramework.Extension;
-using AutumnBox.OpenFramework.Extension.LeafExtension;
+using AutumnBox.OpenFramework.LeafExtension;
+using AutumnBox.OpenFramework.LeafExtension.Attributes;
+using AutumnBox.OpenFramework.LeafExtension.Kit;
 using AutumnBox.OpenFramework.Open;
 using AutumnBox.OpenFramework.Util;
-using MaterialDesignThemes.Wpf;
 using System.Threading.Tasks;
 
 namespace AutumnBox.CoreModules.Extensions.Hidden

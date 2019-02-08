@@ -14,8 +14,8 @@ using System.Reflection;
 using System.Security.Policy;
 using AutumnBox.Basic.Device;
 using AutumnBox.GUI.Util.Bus;
-using AutumnBox.OpenFramework.Extension.LeafExtension;
 using AutumnBox.GUI.View.DialogContent;
+using AutumnBox.OpenFramework.LeafExtension.Kit;
 
 namespace AutumnBox.GUI.Util.OpenFxManagement
 {

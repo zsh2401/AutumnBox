@@ -5,10 +5,11 @@
 *************************************************/
 using AutumnBox.Basic.Calling;
 using AutumnBox.Basic.Device;
-using AutumnBox.OpenFramework;
 using AutumnBox.OpenFramework.Content;
 using AutumnBox.OpenFramework.Extension;
-using AutumnBox.OpenFramework.Extension.LeafExtension;
+using AutumnBox.OpenFramework.LeafExtension;
+using AutumnBox.OpenFramework.LeafExtension.Attributes;
+using AutumnBox.OpenFramework.LeafExtension.Kit;
 using AutumnBox.OpenFramework.Open;
 using System.Collections.Generic;
 
@@ -16,7 +17,7 @@ namespace AutumnBox.CoreModules.Extensions.Hidden
 {
     [ExtName("Example extension")]
     [ExtIcon("Icons.flash.png")]
-    [ExtRequiredDeviceStates(AutumnBoxExtension.NoMatter)]
+    [ExtRequiredDeviceStates(LeafConstants.NoMatter)]
     [ExtDeveloperMode]
     [ExtText("fuck", "Hello", "zh-cn:你好!")]
     //[ExtMinAndroidVersion(9, 0, 0)]
@@ -29,7 +30,7 @@ namespace AutumnBox.CoreModules.Extensions.Hidden
         private IDevice Device { get; set; }
 
         [LMain]
-        public void Main(IDevice device, ILeafLogger<SharpExtension> logger,Context context, ILeafUI ui, IUx ux, Dictionary<string, object> data, TextAttrManager manager)
+        public void Main(IDevice device, ILeafLogger logger,Context context, ILeafUI ui, IUx ux, Dictionary<string, object> data, TextAttrManager manager)
         {
             using (ui)
             {

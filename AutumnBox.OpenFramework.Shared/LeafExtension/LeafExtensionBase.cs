@@ -1,8 +1,11 @@
 ﻿using System.Collections.Generic;
 using AutumnBox.OpenFramework.Content;
+using AutumnBox.OpenFramework.Extension;
+using AutumnBox.OpenFramework.LeafExtension.Attributes;
+using AutumnBox.OpenFramework.LeafExtension.Internal;
 using AutumnBox.OpenFramework.Wrapper;
 
-namespace AutumnBox.OpenFramework.Extension.LeafExtension
+namespace AutumnBox.OpenFramework.LeafExtension
 {
     /// <summary>
     /// Leaf模块

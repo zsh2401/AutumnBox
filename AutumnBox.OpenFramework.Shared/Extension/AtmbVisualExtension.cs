@@ -15,6 +15,7 @@ namespace AutumnBox.OpenFramework.Extension
     /// <summary>
     /// 视觉化秋之盒拓展模块
     /// </summary>
+    [Obsolete]
     public abstract class AtmbVisualExtension : AutumnBoxExtension
     {
         /// <summary>

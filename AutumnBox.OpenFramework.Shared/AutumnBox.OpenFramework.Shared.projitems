@@ -29,27 +29,27 @@
     <Compile Include="$(MSBuildThisFileDirectory)Extension\ExtensionArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\IClassExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\IExtension.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Extension\LeafExtension\ILeafLogger.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Extension\LeafExtension\ILeafLogger.Generic.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Extension\LeafExtension\LDoNotScan.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Extension\LeafExtension\LeafKit.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Extension\LeafExtension\LeafLogger.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Extension\LeafExtension\LeafTerminatedException.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Extension\LeafExtension\LeafUIHelper.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Extension\LeafExtension\LFromDataAttribute.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Extension\LeafExtension\ILeafUI.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Extension\LeafExtension\LeafCloseBtnClickedEventArgs.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Extension\LeafExtension\LeafEntryExecutor.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Extension\LeafExtension\LeafContext.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Extension\LeafExtension\LeafExtensionHelper.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Extension\LeafExtension\LeafPropertyInjector.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Extension\LeafExtension\LMainAttribute.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Extension\LeafExtension\LeafExtensionBase.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Extension\LeafExtension\LPropertyAttribute.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Extension\LeafExtension\LPropertySeviceAttribute.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Extension\LeafExtension\LSignalReceiveAttribute.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Extension\LeafExtension\LSignalDistributor.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Extension\LeafExtension\ApiAllocator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)LeafExtension\Kit\ILeafLogger.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)LeafExtension\Kit\ILeafLogger.Generic.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)LeafExtension\Attributes\LDoNotScanAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)LeafExtension\Kit\Impl\LeafLogger.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)LeafExtension\LeafConstants.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)LeafExtension\LeafTerminatedException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)LeafExtension\LeafUIHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)LeafExtension\Attributes\LFromDataAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)LeafExtension\Kit\ILeafUI.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)LeafExtension\Kit\LeafCloseBtnClickedEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)LeafExtension\Internal\LeafEntryExecutor.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)LeafExtension\Internal\LeafContext.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)LeafExtension\LeafExtensionHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)LeafExtension\Internal\LeafPropertyInjector.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)LeafExtension\Attributes\LMainAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)LeafExtension\LeafExtensionBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)LeafExtension\Attributes\LPropertyAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)LeafExtension\Attributes\LPropertySeviceAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)LeafExtension\Attributes\LSignalReceiveAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)LeafExtension\Internal\LSignalDistributor.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)LeafExtension\Internal\ApiAllocator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\SharpExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\StrictVisualExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\_Aspects\BeforeCreatingAspect.cs" />
@@ -135,5 +135,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)Wrapper\ClassExtensionWrapper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Wrapper\IExtensionWrapper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Wrapper\IExtInfoGetter.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)LeafExtension\Attributes\" />
+    <Folder Include="$(MSBuildThisFileDirectory)LeafExtension\Internal\" />
+    <Folder Include="$(MSBuildThisFileDirectory)LeafExtension\Kit\Impl\" />
   </ItemGroup>
 </Project>

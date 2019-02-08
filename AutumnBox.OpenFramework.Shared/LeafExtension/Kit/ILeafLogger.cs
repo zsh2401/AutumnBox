@@ -1,7 +1,6 @@
-﻿using AutumnBox.OpenFramework.Open;
-using System;
+﻿using System;
 
-namespace AutumnBox.OpenFramework.Extension.LeafExtension
+namespace AutumnBox.OpenFramework.LeafExtension.Kit
 {
     /// <summary>
     /// LeafExtension专用日志器

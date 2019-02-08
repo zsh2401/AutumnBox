@@ -1,13 +1,15 @@
 ﻿using AutumnBox.Basic.Device;
 using AutumnBox.OpenFramework.Content;
+using AutumnBox.OpenFramework.LeafExtension.Attributes;
+using AutumnBox.OpenFramework.LeafExtension.Kit;
+using AutumnBox.OpenFramework.LeafExtension.Kit.Impl;
 using AutumnBox.OpenFramework.Management;
 using AutumnBox.OpenFramework.Open;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Reflection;
 
-namespace AutumnBox.OpenFramework.Extension.LeafExtension
+namespace AutumnBox.OpenFramework.LeafExtension.Internal
 {
     internal class ApiAllocator
     {

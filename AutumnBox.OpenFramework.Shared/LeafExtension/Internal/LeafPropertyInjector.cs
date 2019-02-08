@@ -1,7 +1,8 @@
-﻿using System.Linq;
+﻿using AutumnBox.OpenFramework.LeafExtension.Attributes;
+using System.Linq;
 using System.Reflection;
 
-namespace AutumnBox.OpenFramework.Extension.LeafExtension
+namespace AutumnBox.OpenFramework.LeafExtension.Internal
 {
     internal class LeafPropertyInjector
     {

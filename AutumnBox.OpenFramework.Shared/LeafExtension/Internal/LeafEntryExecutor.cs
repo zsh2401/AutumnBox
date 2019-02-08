@@ -1,5 +1,4 @@
-﻿using AutumnBox.OpenFramework.Management;
-using AutumnBox.OpenFramework.Open;
+﻿using AutumnBox.OpenFramework.LeafExtension.Attributes;
 using AutumnBox.OpenFramework.Util;
 using System;
 using System.Collections.Generic;
@@ -7,7 +6,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 
-namespace AutumnBox.OpenFramework.Extension.LeafExtension
+namespace AutumnBox.OpenFramework.LeafExtension.Internal
 {
     internal class LeafEntryExecutor
     {
@@ -62,7 +61,7 @@ namespace AutumnBox.OpenFramework.Extension.LeafExtension
         {
             var type = ext.GetType();
             var methods = from method in type.GetMethods(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)
-                          where method.GetCustomAttribute<LDoNotScan>() == null
+                          where method.GetCustomAttribute<LDoNotScanAttribute>() == null
                           select method;
             var result = FindExplicitMain(methods);
             if (result == null) return FindImplicitMain(methods) ?? throw new Exception("Entry not found");

@@ -16,6 +16,7 @@ namespace AutumnBox.OpenFramework.Extension
     /// <summary>
     /// 严格化拓展的诞生只有一个目标:让拓展模块可以被完美的停止
     /// </summary>
+    [Obsolete]
     public abstract class StrictVisualExtension : AtmbVisualExtension
     {
         /// <summary>

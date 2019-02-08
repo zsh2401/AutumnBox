@@ -1,10 +1,12 @@
 ﻿using AutumnBox.OpenFramework.Extension;
-using AutumnBox.OpenFramework.Extension.LeafExtension;
+using AutumnBox.OpenFramework.LeafExtension;
+using AutumnBox.OpenFramework.LeafExtension.Attributes;
+using AutumnBox.OpenFramework.LeafExtension.Kit;
 
 namespace AutumnBox.CoreModules.Extensions.NoMatter
 {
     [ExtName("Leaf UI Demo")]
-    [ExtRequiredDeviceStates(AutumnBoxExtension.NoMatter)]
+    [ExtRequiredDeviceStates(LeafConstants.NoMatter)]
     [ExtDeveloperMode]
     [ExtIcon("Icons.Usersir.png")]
     public class ELeafUIDemo : LeafExtensionBase

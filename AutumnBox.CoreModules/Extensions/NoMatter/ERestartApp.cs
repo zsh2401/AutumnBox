@@ -1,6 +1,7 @@
 ﻿using AutumnBox.OpenFramework.Content;
 using AutumnBox.OpenFramework.Extension;
-using AutumnBox.OpenFramework.Extension.LeafExtension;
+using AutumnBox.OpenFramework.LeafExtension;
+using AutumnBox.OpenFramework.LeafExtension.Attributes;
 using AutumnBox.OpenFramework.Open;
 
 namespace AutumnBox.CoreModules.Extensions.NoMatter
@@ -11,6 +12,7 @@ namespace AutumnBox.CoreModules.Extensions.NoMatter
     [ExtTargetApi(8)]
     [ContextPermission(CtxPer.High)]
     [ExtIcon("Icons.restart.png")]
+    [ExtRequiredDeviceStates(LeafConstants.NoMatter)]
     internal class ERestartApp : LeafExtensionBase
     {
         [LMain]

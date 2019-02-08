@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AutumnBox.OpenFramework.Extension.LeafExtension
+namespace AutumnBox.OpenFramework.LeafExtension.Kit
 {
     /// <summary>
     /// LeafUI的关闭按钮被点击时发生的事件
