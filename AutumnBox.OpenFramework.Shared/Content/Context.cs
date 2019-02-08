@@ -3,6 +3,7 @@
 ** date:  2018/3/6 16:48:15 (UTC +8:00)
 ** desc： ...
 *************************************************/
+using AutumnBox.OpenFramework.Fast;
 using AutumnBox.OpenFramework.Management;
 using AutumnBox.OpenFramework.Open;
 using AutumnBox.OpenFramework.Open.Impl;
@@ -95,7 +96,7 @@ namespace AutumnBox.OpenFramework.Content
         {
             get
             {
-                return CallingBus.BaseApi;
+                return OpenFx.BaseApi;
             }
         }
 
@@ -106,15 +107,8 @@ namespace AutumnBox.OpenFramework.Content
         {
             get
             {
-                return Manager.ServicesManager;
+                return OpenFx.ServicesManager;
             }
-        }
-        /// <summary>
-        /// 获取拓展模块文件夹
-        /// </summary>
-        public System.IO.DirectoryInfo ExtensionDir => new System.IO.DirectoryInfo(Manager.InternalManager.ExtensionPath);
-        static Context()
-        {
         }
         /// <summary>
         /// 构建
@@ -130,7 +124,7 @@ namespace AutumnBox.OpenFramework.Content
         /// <returns></returns>
         public IExtensionThread NewExtensionThread(Type extensionType)
         {
-            var wrappers = from wrapper in Manager.InternalManager.Wrappers
+            var wrappers = from wrapper in OpenFx.LibsManager.Wrappers()
                            where extensionType == wrapper.Info.ExtType
                            select wrapper;
             if (wrappers.Count() == 0)
@@ -145,7 +139,7 @@ namespace AutumnBox.OpenFramework.Content
         /// <returns></returns>
         public IExtensionThread NewExtensionThread(string className)
         {
-            var wrappers = from wrapper in Manager.InternalManager.Wrappers
+            var wrappers = from wrapper in OpenFx.LibsManager.Wrappers()
                            where className == wrapper.Info.ExtType.Name
                            select wrapper;
             if (!wrappers.Any())
@@ -175,7 +169,7 @@ namespace AutumnBox.OpenFramework.Content
         /// <returns></returns>
         public AtmbService GetService(string serviceName)
         {
-            return Manager.ServicesManager.GetServiceByName(this, serviceName);
+            return OpenFx.ServicesManager.GetServiceByName(this, serviceName);
         }
         /// <summary>
         /// 获取并根据传入泛型拆箱
@@ -185,7 +179,7 @@ namespace AutumnBox.OpenFramework.Content
         /// <returns></returns>
         public TReturn GetService<TReturn>(string serviceName) where TReturn : class
         {
-            return Manager.ServicesManager.GetServiceByName(this, serviceName) as TReturn;
+            return OpenFx.ServicesManager.GetServiceByName(this, serviceName) as TReturn;
         }
         /// <summary>
         /// 在UI线程运行代码

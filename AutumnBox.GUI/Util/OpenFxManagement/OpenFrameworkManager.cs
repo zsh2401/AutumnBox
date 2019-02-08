@@ -4,21 +4,25 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.GUI.Util.Debugging;
+using AutumnBox.OpenFramework.Fast;
 using AutumnBox.OpenFramework.Management;
+using System.Linq;
 
 namespace AutumnBox.GUI.Util.OpenFxManagement
 {
     internal static class OpenFrameworkManager
     {
+        private const string TAG = "OFM";
         public static void Init()
         {
-            SLogger.Info("OFM", "Open Fx loading");
-            SLogger.Info("OFM", "Injecting API");
-            FxLoader.LoadBase(GUIApiManager.BaseApiInstance);
-            SLogger.Info("OFM", "Injected API");
-            SLogger.Info("OFM", "Loading extensions");
-            FxLoader.LoadExtensions();
-            SLogger.Info("OFM", "Loaded extensions");
+            SLogger.Info(TAG, "OpenFx loading");
+            SLogger.Info(TAG, "Init OpenFx env");
+            OpenFx.InitEnv(GUIApiManager.BaseApiInstance);
+            SLogger.Info(TAG, "OpenFx env inited");
+            SLogger.Info(TAG, "Load extensions");
+            OpenFx.LoadExtensions();
+            SLogger.Info(TAG,$"There are {OpenFx.LibsManager.Librarians.Count()} librarians and {OpenFx.LibsManager.Wrappers().Count()} wrappers");
+            SLogger.Info(TAG, "Loaded extensions");
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using AutumnBox.OpenFramework.Content;
+﻿using AutumnBox.OpenFramework;
+using AutumnBox.OpenFramework.Content;
 using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.Extension.LeafExtension;
 using AutumnBox.OpenFramework.Management;
@@ -28,7 +29,7 @@ namespace AutumnBox.CoreModules.Extensions.NoMatter
                 {
                     ui.Show();
                     ui.Icon = this.GetIconBytes();
-                    string extensionPath = Manager.InternalManager.ExtensionPath;
+                    string extensionPath = BuildInfo.DEFAULT_EXTENSION_PATH;
                     int copied = 0;
                     foreach (var filepath in files)
                     {

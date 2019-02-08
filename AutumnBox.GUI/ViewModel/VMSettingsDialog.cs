@@ -300,7 +300,7 @@ namespace AutumnBox.GUI.ViewModel
                 BasicVersion = typeof(Basic.ManagedAdb.LocalAdbServer).Assembly.GetName().Version.ToString();
                 OpenFxVersion = OpenFramework.BuildInfo.SDK_VERSION.ToString();
 
-                var coreLibFilterResult = from lib in OpenFramework.Management.Manager.InternalManager.Librarians
+                var coreLibFilterResult = from lib in OpenFramework.Management.OpenFx.LibsManager.Librarians
                                           where lib.Name == "AutumnBox Core Modules"
                                           select lib;
                 if (coreLibFilterResult.Count() == 0) return;

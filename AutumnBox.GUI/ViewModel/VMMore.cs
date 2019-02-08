@@ -24,7 +24,7 @@ namespace AutumnBox.GUI.ViewModel
             });
             OpenExtFloder = new FlexiableCommand(() =>
             {
-                Process.Start(Manager.InternalManager.ExtensionPath);
+                Process.Start(BuildInfo.DEFAULT_EXTENSION_PATH);
             });
             ApiVersion = BuildInfo.SDK_VERSION.ToString();
         }

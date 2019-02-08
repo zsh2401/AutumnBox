@@ -16,7 +16,7 @@ namespace AutumnBox.OpenFramework.Open.ServiceImpl
                 throw new ArgumentNullException(nameof(ctx));
             }
 
-            return CallingBus.BaseApi.SelectedDevice;
+            return OpenFx.BaseApi.SelectedDevice;
         }
     }
 }

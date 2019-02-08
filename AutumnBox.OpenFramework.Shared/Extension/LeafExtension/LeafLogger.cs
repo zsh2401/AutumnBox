@@ -40,13 +40,13 @@ namespace AutumnBox.OpenFramework.Extension.LeafExtension
 
         public void Debug(object message)
         {
-            if (!CallingBus.BaseApi.IsDeveloperMode) return;
+            if (!OpenFx.BaseApi.IsDeveloperMode) return;
             Log(nameof(Debug), message?.ToString());
         }
 
         public void Debug(object message, Exception e)
         {
-            if (!CallingBus.BaseApi.IsDeveloperMode) return;
+            if (!OpenFx.BaseApi.IsDeveloperMode) return;
             Log(nameof(Debug), $"{message}{Environment.NewLine}{e}");
         }
 
@@ -72,7 +72,7 @@ namespace AutumnBox.OpenFramework.Extension.LeafExtension
 
         public void Log(string TAG, string message)
         {
-            CallingBus.BaseApi.Log(categoryName, TAG, message);
+            OpenFx.BaseApi.Log(categoryName, TAG, message);
         }
 
         public void Warn(object message)

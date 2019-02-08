@@ -13,7 +13,12 @@ namespace AutumnBox.OpenFramework.Management
     /// <summary>
     /// 基础秋之盒主程序的API
     /// </summary>
-    public interface IBaseApi
+#if SDK
+    internal 
+#else
+    public
+#endif
+    interface IBaseApi
     {
         /// <summary>
         /// 从秋之盒库中获取已实现的View,通常将此View用于DialogHost

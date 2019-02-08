@@ -9,7 +9,7 @@ namespace AutumnBox.OpenFramework.Open.ServiceImpl
         private readonly IBaseApi baseApi;
         public SResourcesManager()
         {
-            baseApi = CallingBus.BaseApi;
+            baseApi = OpenFx.BaseApi;
         }
 
         public object this[string key]

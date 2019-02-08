@@ -19,7 +19,7 @@ namespace AutumnBox.OpenFramework.Open.Impl
         public TemporaryFloderImpl(Context ctx)
         {
             var floderName = ctx.GetType().Assembly.GetName().Name;
-            var path = System.IO.Path.Combine(Manager.InternalManager.ExtensionPath, floderName);
+            var path = System.IO.Path.Combine(BuildInfo.DEFAULT_EXTENSION_PATH, floderName);
             DirInfo = new DirectoryInfo(path);
             Create();
         }

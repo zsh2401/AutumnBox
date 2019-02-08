@@ -11,6 +11,7 @@ using AutumnBox.GUI.Util.Bus;
 using AutumnBox.GUI.Util.Debugging;
 using AutumnBox.GUI.Util.I18N;
 using AutumnBox.OpenFramework.Extension;
+using AutumnBox.OpenFramework.Fast;
 using AutumnBox.OpenFramework.Management;
 using AutumnBox.OpenFramework.Wrapper;
 using System;
@@ -184,7 +185,7 @@ namespace AutumnBox.GUI.ViewModel
             try
             {
                 IEnumerable<IExtensionWrapper> filted =
-                    Manager.InternalManager.Wrappers.
+                    OpenFx.LibsManager.Wrappers().
                     State(targetState).Region(LanguageManager.Instance.Current.LanCode).Hide().Dev(Settings.Default.DeveloperMode);
                 App.Current.Dispatcher.Invoke(() =>
                 {

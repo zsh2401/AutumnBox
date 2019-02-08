@@ -1,5 +1,6 @@
 ﻿using AutumnBox.OpenFramework.Management;
 using AutumnBox.OpenFramework.Open;
+using AutumnBox.OpenFramework.Util;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -109,7 +110,7 @@ namespace AutumnBox.OpenFramework.Extension.LeafExtension
             try
             {
                 result = entry.Invoke(ext, para);
-                CallingBus.BaseApi.PlayOk();
+                Sound.Play(Sound.Id.Ok);
             }
             catch (TargetInvocationException e)
             {
@@ -122,7 +123,7 @@ namespace AutumnBox.OpenFramework.Extension.LeafExtension
                     throw e.InnerException;
                 }
             }
-     
+
             //处理可能的返回值
             if (result is int exitCode)
             {
