@@ -1,10 +1,8 @@
 ﻿using AutumnBox.OpenFramework.Management;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Text;
 
-namespace AutumnBox.OpenFramework.Extension.LeafExtension
+namespace AutumnBox.OpenFramework.LeafExtension.Kit.Impl
 {
     class LeafLogger : ILeafLogger
     {

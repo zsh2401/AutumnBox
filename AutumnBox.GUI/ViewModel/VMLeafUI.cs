@@ -1,10 +1,8 @@
 ﻿using AutumnBox.GUI.MVVM;
-using AutumnBox.GUI.Util.Debugging;
-using AutumnBox.GUI.Util.OpenFxManagement;
 using AutumnBox.GUI.Util.UI;
 using AutumnBox.GUI.View.LeafContent;
 using AutumnBox.GUI.View.Windows;
-using AutumnBox.OpenFramework.Extension.LeafExtension;
+using AutumnBox.OpenFramework.LeafExtension.Kit;
 using MaterialDesignThemes.Wpf;
 using System;
 using System.Text;

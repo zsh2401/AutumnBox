@@ -1,4 +1,4 @@
-﻿namespace AutumnBox.OpenFramework.Extension.LeafExtension
+﻿namespace AutumnBox.OpenFramework.LeafExtension.Kit
 {
     /// <summary>
     /// 通过泛型指定参数

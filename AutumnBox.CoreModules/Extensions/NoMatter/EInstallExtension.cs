@@ -1,8 +1,9 @@
 ﻿using AutumnBox.OpenFramework;
 using AutumnBox.OpenFramework.Content;
 using AutumnBox.OpenFramework.Extension;
-using AutumnBox.OpenFramework.Extension.LeafExtension;
-using AutumnBox.OpenFramework.Management;
+using AutumnBox.OpenFramework.LeafExtension;
+using AutumnBox.OpenFramework.LeafExtension.Attributes;
+using AutumnBox.OpenFramework.LeafExtension.Kit;
 using AutumnBox.OpenFramework.Open;
 using Microsoft.Win32;
 using System;
@@ -17,7 +18,7 @@ namespace AutumnBox.CoreModules.Extensions.NoMatter
     [ExtMinApi(8)]
     [ExtTargetApi(8)]
     [ContextPermission(CtxPer.High)]
-    [ExtRequiredDeviceStates(AutumnBoxExtension.NoMatter)]
+    [ExtRequiredDeviceStates(LeafConstants.NoMatter)]
     class EInstallExtension : LeafExtensionBase
     {
         [LMain]

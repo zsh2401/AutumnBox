@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace AutumnBox.OpenFramework.Extension.LeafExtension
+namespace AutumnBox.OpenFramework.LeafExtension.Attributes
 {
     /// <summary>
     /// 可以标记信号接收函数

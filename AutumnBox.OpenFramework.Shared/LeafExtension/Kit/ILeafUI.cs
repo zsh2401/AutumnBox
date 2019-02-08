@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Drawing;
 using System.Threading.Tasks;
 
-namespace AutumnBox.OpenFramework.Extension.LeafExtension
+namespace AutumnBox.OpenFramework.LeafExtension.Kit
 {
     /// <summary>
     /// LeafExtension使用的UI控制器

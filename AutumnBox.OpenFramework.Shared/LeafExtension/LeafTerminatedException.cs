@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace AutumnBox.OpenFramework.Extension.LeafExtension
+namespace AutumnBox.OpenFramework.LeafExtension
 {
     /// <summary>
     /// LeafUI Finish异常标记

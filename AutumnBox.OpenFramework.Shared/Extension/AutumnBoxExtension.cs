@@ -14,6 +14,7 @@ namespace AutumnBox.OpenFramework.Extension
     /// <summary>
     /// 标准的秋之盒拓展基类
     /// </summary>
+    [Obsolete]
     public abstract partial class AutumnBoxExtension : ClassExtensionBase
     {
         /// <summary>

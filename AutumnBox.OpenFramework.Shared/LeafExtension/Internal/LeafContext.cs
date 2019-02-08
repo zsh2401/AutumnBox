@@ -1,10 +1,6 @@
 ﻿using AutumnBox.OpenFramework.Content;
-using System;
-using System.Collections.Generic;
-using System.Reflection;
-using System.Text;
 
-namespace AutumnBox.OpenFramework.Extension.LeafExtension
+namespace AutumnBox.OpenFramework.LeafExtension.Internal
 {
     /// <summary>
     /// LeafExtension的依赖注入器

@@ -1,12 +1,9 @@
 ﻿using AutumnBox.OpenFramework.Fast;
 using AutumnBox.OpenFramework.Management;
 using AutumnBox.OpenFramework.Wrapper;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
-namespace AutumnBox.OpenFramework.Extension.LeafExtension
+namespace AutumnBox.OpenFramework.LeafExtension
 {
     /// <summary>
     /// LeafExtension的帮助类

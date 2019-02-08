@@ -9,6 +9,7 @@ namespace AutumnBox.OpenFramework.Extension
     /// <summary>
     /// 锋利可控的拓展模块
     /// </summary>
+    [Obsolete]
     public abstract class SharpExtension : AutumnBoxExtension
     {
         /// <summary>

@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace AutumnBox.OpenFramework.Extension.LeafExtension
+namespace AutumnBox.OpenFramework.LeafExtension.Attributes
 {
     /// <summary>
     /// Main函数中进行此标记的参数将会根据KEY从Data中获取值
