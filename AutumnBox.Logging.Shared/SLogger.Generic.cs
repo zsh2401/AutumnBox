@@ -9,16 +9,26 @@ namespace AutumnBox.Logging
     {
         private static string Category => typeof(TCategory).Name;
 
-        [Conditional("DEBUG")]
         public static void Debug(object message)
         {
             LoggingManager.LogStation.Log(new Log(nameof(Debug), Category, message));
         }
 
-        [Conditional("DEBUG")]
         public static void Debug(object message, Exception e)
         {
             LoggingManager.LogStation.Log(new Log(nameof(Debug), Category, message, e));
+        }
+
+        [Conditional("DEBUG")]
+        public static void CDebug(object message)
+        {
+            LoggingManager.LogStation.Log(new Log(nameof(CDebug), Category, message));
+        }
+
+        [Conditional("DEBUG")]
+        public static void CDebug(object message, Exception e)
+        {
+            LoggingManager.LogStation.Log(new Log(nameof(CDebug), Category, message, e));
         }
 
         public static void Exception(Exception e)
