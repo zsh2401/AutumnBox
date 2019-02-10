@@ -30,8 +30,10 @@ namespace AutumnBox.CoreModules.Extensions.Hidden
         private IDevice Device { get; set; }
 
         [LMain]
-        public void Main(IDevice device, ILeafLogger logger,Context context, ILeafUI ui, IUx ux, Dictionary<string, object> data, TextAttrManager manager)
+        public void Main(IDevice device, ILeafLogger logger, Context context, ILeafUI ui, IUx ux, Dictionary<string, object> data, TextAttrManager manager)
         {
+            var wtf = Logging.LoggerFactory.Auto<EHoldMyHand>();
+            wtf.Log("Debug","WORI");
             using (ui)
             {
                 ui.Show();
@@ -46,7 +48,6 @@ namespace AutumnBox.CoreModules.Extensions.Hidden
                     executor.To(e => ui.WriteOutput(e.Text));
                     executor.Adb("help");
                 }
-                this.End();
                 ui.WriteLine(manager["fuck"]);
                 ui.WriteOutput("fuck asdasjkdshadskjhkj");
                 ui.ShowMessage("WTF\n\n\n\n\n\nasdadas\n\n\nasdasdsahsdkajghsdakjfhsdjkaghsdfjkghjkfsdhgjkshfdjkgfhsjdgkhdskfjghjW");

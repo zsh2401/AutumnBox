@@ -4,12 +4,10 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.Basic.Calling.Cmd;
-using AutumnBox.Basic.Util.Debugging;
+using AutumnBox.Logging;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Management;
-using System.Text;
 
 namespace AutumnBox.Basic.Calling
 {
@@ -47,7 +45,7 @@ namespace AutumnBox.Basic.Calling
         {
             if (Environment.OSVersion.Platform == PlatformID.Win32NT)
             {
-                var logger = new Logger(nameof(ProcessExtensions));
+                var logger = LoggerFactory.Auto(nameof(ProcessExtensions));
                 new WindowsCmdCommand($"taskkill /F /PID {proc.Id}")
                     .To((e) =>
                     {

@@ -6,7 +6,7 @@
 ** desc： ...
 *********************************************************************************/
 using AutumnBox.Basic.Data;
-using AutumnBox.Basic.Util.Debugging;
+using AutumnBox.Logging;
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
@@ -18,7 +18,7 @@ namespace AutumnBox.Basic.Device.Management.OS
     /// </summary>
     public class DeviceBuildPropGetter : DeviceCommander, Data.IReceiveOutputByTo<DeviceBuildPropGetter>
     {
-        private readonly Logger logger;
+        private readonly ILogger logger;
         /// <summary>
         /// 索引器
         /// </summary>
@@ -37,7 +37,7 @@ namespace AutumnBox.Basic.Device.Management.OS
         /// <param name="device"></param>
         public DeviceBuildPropGetter(IDevice device) : base(device)
         {
-            logger = new Logger<DeviceBuildPropGetter>();
+            logger = LoggerFactory.Auto<DeviceBuildPropGetter>();
         }
 
         /// <summary>

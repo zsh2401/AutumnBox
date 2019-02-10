@@ -1,9 +1,6 @@
 ﻿using AutumnBox.Basic.Device;
-using AutumnBox.Basic.Util.Debugging;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Text;
 
 namespace AutumnBox.Basic.Calling.Adb
 {

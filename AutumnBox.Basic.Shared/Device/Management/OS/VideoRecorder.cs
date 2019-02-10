@@ -6,11 +6,10 @@
 using System;
 using System.Drawing;
 using System.IO;
-using System.Windows;
 using AutumnBox.Basic.Calling.Adb;
 using AutumnBox.Basic.Data;
 using AutumnBox.Basic.Util;
-using AutumnBox.Basic.Util.Debugging;
+using AutumnBox.Logging;
 
 namespace AutumnBox.Basic.Device.Management.OS
 {
@@ -57,7 +56,7 @@ namespace AutumnBox.Basic.Device.Management.OS
         /// </summary>
         public void Start()
         {
-            Logger<VideoRecorder> logger = new Logger<VideoRecorder>();
+            ILogger logger = LoggerFactory.Auto<VideoRecorder>();
             string command = $"screenrecord " +
                 $"--size {Size.Width}x{Size.Height} " +
                 $"--bit-rate {BitRate} " +
@@ -68,7 +67,7 @@ namespace AutumnBox.Basic.Device.Management.OS
             }
             command += TmpFile;
             logger.Info("The command of recoding:" + command);
-            var cmd = new RealtimeShellCommand(Device,command);
+            var cmd = new RealtimeShellCommand(Device, command);
             CmdStation.Register(cmd);
             cmd
                 .To(RaiseOutput)

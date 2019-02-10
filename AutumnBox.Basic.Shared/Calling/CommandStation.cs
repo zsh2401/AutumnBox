@@ -10,8 +10,7 @@ using AutumnBox.Basic.Device;
 using System;
 using System.Linq;
 using System.Collections.Generic;
-using System.Text;
-using AutumnBox.Basic.Util.Debugging;
+using AutumnBox.Logging;
 
 namespace AutumnBox.Basic.Calling
 {
@@ -20,7 +19,7 @@ namespace AutumnBox.Basic.Calling
     /// </summary>
     public sealed class CommandStation
     {
-        private Logger<CommandStation> logger = new Logger<CommandStation>();
+        private ILogger<CommandStation> logger = LoggerFactory.AutoT<CommandStation>();
         private readonly List<ProcessBasedCommand> commands = new List<ProcessBasedCommand>();
         /// <summary>
         /// 注册一个命令,并交由CommandStation管理
@@ -142,13 +141,15 @@ namespace AutumnBox.Basic.Calling
         /// <summary>
         /// 锁定分配器
         /// </summary>
-        public void Lock() {
+        public void Lock()
+        {
             locked = true;
         }
         /// <summary>
         /// 解锁分配器
         /// </summary>
-        public void Unlock() {
+        public void Unlock()
+        {
             locked = false;
         }
     }
