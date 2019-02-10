@@ -19,7 +19,7 @@ namespace AutumnBox.CoreModules.Extensions.Hidden
     [ExtName("Example extension")]
     [ExtIcon("Icons.flash.png")]
     [ExtRequiredDeviceStates(LeafConstants.NoMatter)]
-    [ExtDeveloperMode]
+    //[ExtDeveloperMode]
     [ExtText("fuck", "Hello", "zh-cn:你好!")]
     //[ExtMinAndroidVersion(9, 0, 0)]
     internal class EHoldMyHand : LeafExtensionBase
@@ -36,7 +36,7 @@ namespace AutumnBox.CoreModules.Extensions.Hidden
             using (ui)
             {
                 ui.Show();
-                logger.Info("WTF");
+                logger.Debug("WTF");
                 using (CommandExecutor executor = new CommandExecutor())
                 {
                     ui.CloseButtonClicked += (s, e) =>
