@@ -5,6 +5,7 @@
 *************************************************/
 using AutumnBox.Basic.Calling;
 using AutumnBox.Basic.Device;
+using AutumnBox.Logging;
 using AutumnBox.OpenFramework.Content;
 using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.LeafExtension;
@@ -30,10 +31,8 @@ namespace AutumnBox.CoreModules.Extensions.Hidden
         private IDevice Device { get; set; }
 
         [LMain]
-        public void Main(IDevice device, ILeafLogger logger, Context context, ILeafUI ui, IUx ux, Dictionary<string, object> data, TextAttrManager manager)
+        public void Main(IDevice device, ILogger<string> logger, Context context, ILeafUI ui, IUx ux, Dictionary<string, object> data, TextAttrManager manager)
         {
-            var wtf = Logging.LoggerFactory.Auto<EHoldMyHand>();
-            wtf.Log("Debug","WORI");
             using (ui)
             {
                 ui.Show();

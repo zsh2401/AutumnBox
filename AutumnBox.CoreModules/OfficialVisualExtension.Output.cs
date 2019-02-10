@@ -6,6 +6,7 @@
 
 using AutumnBox.Basic.Calling;
 using AutumnBox.Basic.Data;
+using AutumnBox.Logging;
 
 namespace AutumnBox.CoreModules
 {

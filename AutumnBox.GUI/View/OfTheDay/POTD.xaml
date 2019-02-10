@@ -11,7 +11,7 @@
     <Grid>
         <Image Source="{Binding Image}" Stretch="Fill">
             <Image.InputBindings>
-                <MouseBinding MouseAction="LeftClick" Command="{Binding Click}"></MouseBinding>
+                <MouseBinding MouseAction="LeftClick" Command="{Binding OpenUrl}"></MouseBinding>
             </Image.InputBindings>
         </Image>
     </Grid>

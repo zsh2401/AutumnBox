@@ -4,6 +4,7 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.Basic.Device;
+using AutumnBox.Logging;
 using AutumnBox.OpenFramework.Extension;
 using System;
 using System.Collections.Generic;

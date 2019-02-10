@@ -3,6 +3,7 @@
 ** date:  2018/3/6 16:48:15 (UTC +8:00)
 ** desc： ...
 *************************************************/
+using AutumnBox.Logging;
 using AutumnBox.OpenFramework.Fast;
 using AutumnBox.OpenFramework.Management;
 using AutumnBox.OpenFramework.Open;
@@ -204,7 +205,7 @@ namespace AutumnBox.OpenFramework.Content
             });
             _lazyLogger = new Lazy<ILogger>(() =>
             {
-                return new LoggerImpl(this);
+                return LoggerFactory.Auto(GetType().Name);
             });
             _lazyTmp = new Lazy<ITemporaryFloder>(() =>
             {

@@ -9,6 +9,7 @@ using AutumnBox.OpenFramework.Open;
 using System.Collections.Generic;
 using AutumnBox.OpenFramework.Running;
 using System.Drawing;
+using AutumnBox.Logging;
 
 namespace AutumnBox.OpenFramework.Extension
 {
@@ -157,7 +158,6 @@ namespace AutumnBox.OpenFramework.Extension
         /// <returns></returns>
         protected sealed override bool OnStopCommand(object args)
         {
-            Logger.CDebug("StopCommand()");
             bool canStop = false;
             try
             {

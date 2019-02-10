@@ -11,6 +11,7 @@ using AutumnBox.GUI.MVVM;
 using AutumnBox.GUI.Util.Bus;
 using AutumnBox.GUI.Util.Debugging;
 using AutumnBox.GUI.Util.I18N;
+using AutumnBox.Logging;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -225,8 +226,9 @@ namespace AutumnBox.GUI.ViewModel
                 });
                 //By(DeviceSelectionObserver.Instance.CurrentDevice);
             }
-            catch(Exception ex) {
-                SLogger.Warn(this,"can't refresh device informations",ex);
+            catch (Exception ex)
+            {
+                SLogger<VMDeviceDetails>.Warn("can't refresh device informations", ex);
             }
         }
         private void RefreshInformationsThreadMethod(IDevice device)

@@ -1,4 +1,5 @@
-﻿using AutumnBox.OpenFramework.Content;
+﻿using AutumnBox.Logging;
+using AutumnBox.OpenFramework.Content;
 using AutumnBox.OpenFramework.Extension;
 using System;
 using System.Collections.Generic;

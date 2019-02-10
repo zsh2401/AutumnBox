@@ -4,14 +4,14 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.GUI.Util.Debugging;
+using AutumnBox.Logging;
 using System.Windows.Controls;
 
 namespace AutumnBox.GUI.Util.Net
 {
     static class Statistics
     {
-        private const string TAG = "Statistics";
-        private static ILogger logger = new Logger(TAG);
+        private static ILogger logger = LoggerFactory.Auto(nameof(Statistics));
 
         [System.Diagnostics.Conditional("STAT")]
         public static void Do()

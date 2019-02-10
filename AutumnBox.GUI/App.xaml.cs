@@ -26,10 +26,8 @@ namespace AutumnBox.GUI
     /// </summary>
     public partial class App : Application
     {
-        private readonly ILogger logger;
         public App() : base()
         {
-            logger = new Logger<App>();
             Current = this;
             AlreadyHaveAutumnBoxChecker.Do();
         }
@@ -56,7 +54,6 @@ namespace AutumnBox.GUI
         protected override void OnExit(ExitEventArgs e)
         {
             base.OnExit(e);
-            logger.Info("Exit code : " + e.ApplicationExitCode);
             if (Settings.Default.IsFirstLaunch && Settings.Default.GuidePassed)
             {
                 Settings.Default.IsFirstLaunch = false;

@@ -4,6 +4,7 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.Basic.Device;
+using AutumnBox.Logging;
 using AutumnBox.OpenFramework.Content;
 using AutumnBox.OpenFramework.Exceptions;
 using AutumnBox.OpenFramework.Extension;
@@ -107,7 +108,7 @@ namespace AutumnBox.OpenFramework.Wrapper
         /// </summary>
         public virtual void Destory()
         {
-            Logger.CDebug("Good bye");
+            Logger.Debug("Good bye");
         }
 
         #region Equals

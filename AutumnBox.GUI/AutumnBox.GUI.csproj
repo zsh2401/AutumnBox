@@ -151,7 +151,6 @@
     <Compile Include="Model\ExtensionWrapperDock.cs" />
     <Compile Include="Model\LibDock.cs" />
     <Compile Include="Model\OpenSourceProject.cs" />
-    <Compile Include="MVVM\OpenParameterUrlCommand.cs" />
     <Compile Include="Util\AdbManager.cs" />
     <Compile Include="Util\AlreadyHaveAutumnBoxChecker.cs" />
     <Compile Include="Util\AppLoader.cs" />
@@ -160,13 +159,8 @@
     <Compile Include="Util\Bus\ConnectedDevicesListener.cs" />
     <Compile Include="Util\Bus\ExtensionViewRefresher.cs" />
     <Compile Include="Util\Bus\OpenFxObserver.cs" />
-    <Compile Include="Util\Debugging\ILogger.cs" />
     <Compile Include="Util\Debugging\LogEventArgs.cs" />
-    <Compile Include="Util\Debugging\Logger.cs" />
-    <Compile Include="Util\Debugging\LoggerGeneric.cs" />
     <Compile Include="Util\Debugging\LoggingStation.cs" />
-    <Compile Include="Util\Debugging\SGLogger.cs" />
-    <Compile Include="Util\Debugging\SLogger.cs" />
     <Compile Include="Util\Effect\Sounds.cs" />
     <Compile Include="Util\FatalHandler.cs" />
     <Compile Include="Util\Net\JsonGetter.cs" />

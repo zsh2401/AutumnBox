@@ -175,7 +175,6 @@ namespace AutumnBox.GUI.ViewModel
 
         public void EnableHelp(Action action)
         {
-            SGLogger<VMRunningWindow>.Info("calling enable help button");
             HelpButtonHelper.EnableHelpButton(view, action);
         }
     }

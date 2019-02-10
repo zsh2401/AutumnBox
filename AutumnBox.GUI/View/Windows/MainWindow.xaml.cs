@@ -17,6 +17,7 @@ using System.Windows;
 using AutumnBox.GUI.Properties;
 using AutumnBox.GUI.Util.Debugging;
 using AutumnBox.GUI.ViewModel;
+using AutumnBox.Logging;
 using MaterialDesignThemes.Wpf;
 
 namespace AutumnBox.GUI.View.Windows
@@ -35,7 +36,7 @@ namespace AutumnBox.GUI.View.Windows
         {
             (DataContext as VMMainWindow).LoadAsync(() =>
             {
-                SGLogger<MainWindow>.Info("Loaded");
+                SLogger<MainWindow>.Info("Loaded");
                 Dispatcher.Invoke(() =>
                 {
                     if (Settings.Default.IsFirstLaunch)

@@ -1,4 +1,5 @@
 ﻿using AutumnBox.GUI.Util.Debugging;
+using AutumnBox.Logging;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
@@ -62,10 +63,6 @@ namespace AutumnBox.GUI.View.Windows
             BtnLeft = "ChoiceWindowBtnNo";
             BtnRight = "ChoiceWindowBtnYes";
             DataContext = this;
-            this.Closed += (s, e) =>
-            {
-                SGLogger<ChoiceWindow>.Debug("closed" + DialogResult);
-            };
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

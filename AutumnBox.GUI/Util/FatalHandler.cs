@@ -5,6 +5,7 @@
 *************************************************/
 using AutumnBox.GUI.Util.Debugging;
 using AutumnBox.GUI.View.Windows;
+using AutumnBox.Logging;
 using System;
 using System.Linq;
 using System.Windows;
@@ -19,7 +20,7 @@ namespace AutumnBox.GUI.Util
         };
         public static void Current_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
         {
-            var logger = new Logger("AutumnBoxFatalHandler");
+            var logger = LoggerFactory.Auto<FatalHandler>();
             string src = e.Exception.Source;
             if (blockListForExceptionSource.Contains(src))
             {
@@ -34,7 +35,7 @@ namespace AutumnBox.GUI.Util
                 $"Source:{n}{e.Exception.Source}{n}{n}" +
                 $"Inner:{n}{e.Exception.InnerException?.ToString() ?? "None"}{n}";
 
-            try { logger.Fatal(exstr); } catch { }
+            try { logger.Warn(exstr); } catch { }
             ShowErrorToUser(exstr);
             e.Handled = true;
             App.Current.Shutdown(1);

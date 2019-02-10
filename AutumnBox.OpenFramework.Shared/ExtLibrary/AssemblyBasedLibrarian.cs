@@ -3,6 +3,7 @@
 ** date:  2018/8/1 0:58:55 (UTC +8:00)
 ** desc： ...
 *************************************************/
+using AutumnBox.Logging;
 using AutumnBox.OpenFramework.Content;
 using AutumnBox.OpenFramework.Exceptions;
 using AutumnBox.OpenFramework.Extension;
@@ -61,7 +62,6 @@ namespace AutumnBox.OpenFramework.ExtLibrary
                 throw new Exception("Assembly was inited once!");
             }
             ManagedAssembly = assembly;
-            Logger.CDebug($"Managed assembly {GetType().Assembly.GetName().Name}");
         }
         /// <summary>
         /// 日志标签
@@ -137,13 +137,13 @@ namespace AutumnBox.OpenFramework.ExtLibrary
                     }
                     else
                     {
-                        Logger.CDebug("Check result is false");
+                        Logger.Debug("Check result is false");
                         tmp.Destory();
                     }
                 }
                 catch (WrapperAlreadyCreatedOnceException)
                 {
-                    Logger.CDebug($"{type.Name}'s wrappers was created once,skip it");
+                    Logger.Debug($"{type.Name}'s wrappers was created once,skip it");
                 }
                 catch (Exception ex)
                 {

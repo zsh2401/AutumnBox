@@ -167,12 +167,5 @@ namespace AutumnBox.OpenFramework.Management
         /// 获取当前的优先设备
         /// </summary>
         IDevice SelectedDevice { get; }
-        /// <summary>
-        /// Log接口
-        /// </summary>
-        /// <param name="tagOrSender"></param>
-        /// <param name="levelString"></param>
-        /// <param name="text"></param>
-        void Log(object tagOrSender, string levelString, string text);
     }
 }

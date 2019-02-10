@@ -4,6 +4,7 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.GUI.Util.Debugging;
+using AutumnBox.Logging;
 using System;
 
 namespace AutumnBox.GUI.Util.Bus
@@ -17,7 +18,6 @@ namespace AutumnBox.GUI.Util.Bus
         }
         private OpenFxObserver()
         {
-            SGLogger<OpenFxObserver>.Debug("Created");
         }
         public void OnLoaded()
         {
@@ -30,7 +30,7 @@ namespace AutumnBox.GUI.Util.Bus
             IsLoaded = true;
             App.Current.Dispatcher.Invoke(() =>
             {
-                SGLogger<OpenFxObserver>.Debug("Raising Loaded Event");
+                SLogger<OpenFxObserver>.Debug("Raising Loaded Event");
                 LoadedSource?.Invoke(this, new EventArgs());
             });
         }

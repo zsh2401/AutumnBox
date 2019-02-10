@@ -4,6 +4,7 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.Basic.Device;
+using AutumnBox.Logging;
 using AutumnBox.OpenFramework.Content;
 using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.Open;
@@ -38,7 +39,7 @@ namespace AutumnBox.OpenFramework.Wrapper
                 }
                 catch (Exception e)
                 {
-                    ctx.Logger.DebugWarn($"InfoGetter:can not get info '{key}' ", e);
+                    ctx.Logger.Debug($"InfoGetter:can not get info '{key}' ", e);
                     return null;
                 }
             }
@@ -195,19 +196,14 @@ namespace AutumnBox.OpenFramework.Wrapper
         {
             try
             {
-                //Logger.Debug($"loading {iconPath}");
-                string path = ExtType.Assembly.GetName().Name/*.Replace('-','_') */+ "." + iconPath;
-                //Logger.Debug($"loading {iconPath}");
+                string path = ExtType.Assembly.GetName().Name + "." + iconPath;
                 Stream stream = ExtType.Assembly.GetManifestResourceStream(path);
-                //Logger.Debug($"icon stream len:{stream.Length}");
                 byte[] buffer = new byte[stream.Length];
                 stream.Read(buffer, 0, buffer.Length);
-                //Logger.Debug($"loaded icon: {path} size:{buffer.Length}");
                 return buffer;
             }
             catch (Exception ex)
             {
-                Logger.DebugWarn("cannot load icon", ex);
                 return new byte[0];
             }
         }
@@ -237,7 +233,7 @@ namespace AutumnBox.OpenFramework.Wrapper
         /// <param name="key"></param>
         /// <param name="result"></param>
         /// <returns></returns>
-        public bool TryGet<TResult>(string key, out TResult result) 
+        public bool TryGet<TResult>(string key, out TResult result)
         {
             try
             {
@@ -257,11 +253,11 @@ namespace AutumnBox.OpenFramework.Wrapper
         /// <param name="key"></param>
         /// <param name="result"></param>
         /// <returns></returns>
-        public bool TryGetClassType<TResult>(string key, out TResult result) where TResult:class
+        public bool TryGetClassType<TResult>(string key, out TResult result) where TResult : class
         {
             try
             {
-                result = Informations[key].Value as TResult; 
+                result = Informations[key].Value as TResult;
                 return true;
             }
             catch

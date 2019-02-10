@@ -16,6 +16,7 @@ using AutumnBox.Basic.Device;
 using AutumnBox.GUI.Util.Bus;
 using AutumnBox.GUI.View.DialogContent;
 using AutumnBox.OpenFramework.LeafExtension.Kit;
+using AutumnBox.Logging;
 
 namespace AutumnBox.GUI.Util.OpenFxManagement
 {
@@ -144,56 +145,10 @@ namespace AutumnBox.GUI.Util.OpenFxManagement
         {
             throw new NotImplementedException();
         }
-
-        /// <summary>
-        /// 日志
-        /// </summary>
-        /// <param name="tagOrSender"></param>
-        /// <param name="levelString"></param>
-        /// <param name="text"></param>
-        public void Log(object tagOrSender, string levelString, string text)
-        {
-            LoggingStation.Instance.Log(tagOrSender?.ToString() ?? "UnknowClass", levelString, text);
-        }
         public void LoadAssemblyToDomain(Assembly assembly)
         {
             AppDomain.CurrentDomain.Load(assembly.FullName);
         }
-        public AppDomain GetExtAppDomain()
-        {
-            Evidence evi = AppDomain.CurrentDomain.Evidence;
-            AppDomainSetup ads = new AppDomainSetup()
-            {
-                ApplicationBase = AppDomain.CurrentDomain.BaseDirectory,
-                DisallowBindingRedirects = false,
-                DisallowCodeDownload = true,
-
-                ConfigurationFile =
-                AppDomain.CurrentDomain.SetupInformation.ConfigurationFile
-            };
-            var appDomain = AppDomain.CreateDomain("ad", evi, ads);
-            var loadedAssembly = AppDomain.CurrentDomain.GetAssemblies();
-            foreach (var loaded in loadedAssembly)
-            {
-                try
-                {
-                    appDomain.Load(loaded.GetName());
-                }
-                catch (Exception ex)
-                {
-                    SGLogger<AutumnBox_GUI_Caller>.Debug(ex);
-                }
-
-            }
-            return appDomain;
-        }
-
-        public IClassExtension GetInstanceFrom(AppDomain appDomain, Type type)
-        {
-            return (AutumnBoxExtension)appDomain
-                .CreateInstanceAndUnwrap(type.Assembly.FullName, type.FullName);
-        }
-
         public bool DoYN(string message, string btnYes, string btnNo)
         {
             var window = new YNWindow()

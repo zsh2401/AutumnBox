@@ -5,6 +5,7 @@
 *************************************************/
 using AutumnBox.Basic.Calling;
 using AutumnBox.Basic.Data;
+using AutumnBox.Logging;
 using AutumnBox.OpenFramework.Content;
 using AutumnBox.OpenFramework.Service;
 using System;
