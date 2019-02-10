@@ -149,6 +149,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Model\ExtensionWrapperDock.cs" />
+    <Compile Include="Model\FormatLog.cs" />
     <Compile Include="Model\LibDock.cs" />
     <Compile Include="Model\OpenSourceProject.cs" />
     <Compile Include="Util\AdbManager.cs" />

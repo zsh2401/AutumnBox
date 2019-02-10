@@ -53,12 +53,12 @@ namespace AutumnBox.OpenFramework.Running
             }
             try
             {
-                Logger.Info($"sending signal {signal} to {Wrapper.Info.Name}");
+                Logger.Debug($"sending signal {signal} to {Wrapper.Info.Name}");
                 instance.ReceiveSignal(signal, value);
             }
             catch (Exception e)
             {
-                Logger.Warn($"a exception was thrown when {Wrapper.Info.Name} handling signal: {signal}", e);
+                Logger.Debug($"a exception was thrown when {Wrapper.Info.Name} handling signal: {signal}", e);
             }
         }
 

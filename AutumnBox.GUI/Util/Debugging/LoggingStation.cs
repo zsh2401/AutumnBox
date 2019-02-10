@@ -1,4 +1,5 @@
-﻿using AutumnBox.GUI.Properties;
+﻿using AutumnBox.GUI.Model;
+using AutumnBox.GUI.Properties;
 using AutumnBox.Logging.Management;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,6 @@ namespace AutumnBox.GUI.Util.Debugging
     [HeritableStation]
     internal class LoggingStation : ILoggingStation, IDisposable
     {
-        private const string LOG_INFO_FMT = "[{0}][{1}]<{2}>: {3}";
         public const string LOG_FLODER = "..\\logs";
         private const string LOG_FILENAME_FORMAT = "yy_MM_dd__HH_mm_ss";
         public IEnumerable<ILog> Logs => logged;
@@ -24,8 +24,8 @@ namespace AutumnBox.GUI.Util.Debugging
                 return string.Join(Environment.NewLine, logged);
             }
         }
-        private List<ILog> logged;
-        private Queue<ILog> buffer;
+        private List<FormatLog> logged;
+        private Queue<FormatLog> buffer;
         private FileStream fs;
         private StreamWriter sw;
         public string LogFile { get; set; }
@@ -35,8 +35,8 @@ namespace AutumnBox.GUI.Util.Debugging
         }
         private LoggingStation()
         {
-            buffer = new Queue<ILog>();
-            logged = new List<ILog>();
+            buffer = new Queue<FormatLog>();
+            logged = new List<FormatLog>();
         }
         public void Work()
         {
@@ -66,12 +66,7 @@ namespace AutumnBox.GUI.Util.Debugging
         }
         public void Log(ILog log)
         {
-            buffer.Enqueue(log);
-            Logging?.Invoke(this, new LogEventArgs(log));
-        }
-        private string Format(ILog log)
-        {
-            return string.Format(LOG_INFO_FMT, DateTime.Now.ToString("yy-MM-dd HH:mm:ss"), log.Level, log.Category, log.Message);
+            buffer.Enqueue(new FormatLog(log));
         }
         private void Loop()
         {
@@ -88,10 +83,9 @@ namespace AutumnBox.GUI.Util.Debugging
         {
             var log = buffer.Dequeue();
             if (log.Level.ToLower() == "debug" && !Settings.Default.DeveloperMode)
-            {
                 return;
-            }
-            string format = Format(log);
+            Logging?.Invoke(this, new LogEventArgs(log));
+            string format = log.Formated;
             Console.WriteLine(format);
             sw.WriteLine(format);
             logged.Add(log);
