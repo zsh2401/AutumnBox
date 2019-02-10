@@ -14,8 +14,8 @@
     </UserControl.DataContext>
     <StackPanel>
         <TextBlock TextAlignment="Center" Margin="5" TextWrapping="Wrap" Text="{DynamicResource PanelDonateDescription }" FontSize="20" />
-        <Button HorizontalAlignment="Center"  Command="{Binding OpenUrl}" CommandParameter="https://www.paypal.me/zsh2401" Style="{DynamicResource MaterialDesignToolButton}" Content="{DynamicResource PanelDonateBtnPayPal}"/>
-        <Button HorizontalAlignment="Center" DockPanel.Dock="Left" Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoDonate}" Style="{DynamicResource MaterialDesignToolButton}" Content="{DynamicResource PanelDonateBtnGotoDonatePage}"/>
+        <Button HorizontalAlignment="Center"  Command="{Binding OpenUrl}" CommandParameter="https://www.paypal.me/zsh2401" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource PanelDonateBtnPayPal}"/>
+        <Button HorizontalAlignment="Center" DockPanel.Dock="Left" Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoDonate}" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource PanelDonateBtnGotoDonatePage}"/>
         <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
             <Image Width="200" Margin="5" RenderOptions.BitmapScalingMode="Fant" Source="/AutumnBox.GUI;component/Resources/Drawable/Donate/alishop.png"/>
             <Image Width="200" Margin="5"  RenderOptions.BitmapScalingMode="Fant" Source="/AutumnBox.GUI;component/Resources/Drawable/Donate/redpacket.jpg"/>
