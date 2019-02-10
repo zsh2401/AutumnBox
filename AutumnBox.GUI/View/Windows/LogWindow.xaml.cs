@@ -38,7 +38,6 @@ namespace AutumnBox.GUI.View.Windows
 
         private void CopySelected()
         {
-            SLogger<LogWindow>.Debug("Copy");
             StringBuilder sb = new StringBuilder();
             foreach (FormatLog log in LB.SelectedItems)
             {
