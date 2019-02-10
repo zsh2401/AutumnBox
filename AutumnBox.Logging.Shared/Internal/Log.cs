@@ -27,7 +27,7 @@ namespace AutumnBox.Logging.Internal
         }
         public Log(string level, object category, object message, Exception e) : this(level, category, message)
         {
-            message += $"{Environment.NewLine}{e.ToString()}";
+            Message += $"{Environment.NewLine}{e.ToString()}";
         }
     }
 }
