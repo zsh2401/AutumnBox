@@ -17,7 +17,12 @@ namespace AutumnBox.Logging.Internal
         {
             Time = DateTime.Now;
             Level = level ?? "Info";
-            Category = category?.ToString() ?? "Unknow";
+            if (category is string)
+                Category = category.ToString();
+            else if (category != null)
+                Category = category.GetType().Name;
+            else
+                Category = "UnknowClass";
             Message = message?.ToString();
         }
         public Log(string level, object category, object message, Exception e) : this(level, category, message)

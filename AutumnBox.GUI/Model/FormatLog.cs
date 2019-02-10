@@ -16,7 +16,7 @@ namespace AutumnBox.GUI.Model
 
         public string Message => log.Message;
 
-        public const string FMT = "[{0}][{2}/{1}]>{3}";
+        public const string FMT = "[{0}][{2}/{1}]:{3}";
         public string Formated
         {
             get

@@ -205,7 +205,7 @@ namespace AutumnBox.OpenFramework.Content
             });
             _lazyLogger = new Lazy<ILogger>(() =>
             {
-                return LoggerFactory.Auto(GetType().Name);
+                return LoggerFactory.Auto(LoggingTag);
             });
             _lazyTmp = new Lazy<ITemporaryFloder>(() =>
             {
