@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>b29dea5d-d4c3-4c8b-810e-52466875835d</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>AutumnBox.Logging</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Internal\LoggerImpl.Generic.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)LoggerExtension.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SLogger.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SLogger.Generic.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ILogger.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Management\ILog.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Management\ILoggingStation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Management\HeritableStationAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Internal\LoggerImpl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Internal\OnlyRecordLoggingStation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)LoggerFactory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Internal\Log.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Management\LoggingManager.cs" />
+  </ItemGroup>
+</Project>

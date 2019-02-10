@@ -4,19 +4,12 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.Basic.Calling;
-using AutumnBox.Basic.Calling.Adb;
 using AutumnBox.Basic.Calling.Cmd;
 using AutumnBox.Basic.Util;
-using AutumnBox.Basic.Util.Debugging;
+using AutumnBox.Logging;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
 using System.Net;
 using System.Net.NetworkInformation;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.ManagedAdb
 {
@@ -79,7 +72,7 @@ namespace AutumnBox.Basic.ManagedAdb
         /// <summary>
         /// 日志器
         /// </summary>
-        private readonly Logger logger = new Logger<LocalAdbServer>();
+        private readonly ILogger logger = LoggerFactory.Auto<LocalAdbServer>();
 
         /// <summary>
         /// 存活检测

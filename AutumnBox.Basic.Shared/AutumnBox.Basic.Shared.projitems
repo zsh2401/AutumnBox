@@ -99,9 +99,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)MultipleDevices\DevicesGetter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MultipleDevices\DevicesMonitor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MultipleDevices\IDevicesGetter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Util\Debugging\Logger.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Util\Debugging\LoggerGeneric.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Util\Debugging\LoggingStation.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Util\DeviceCommanderFactory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Util\LinuxReturnCode.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Util\NativeMethods.cs" />

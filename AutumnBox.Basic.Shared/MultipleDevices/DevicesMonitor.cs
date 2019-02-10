@@ -11,8 +11,8 @@
 * Company: I am free man
 *
 \* =============================================================================*/
-using AutumnBox.Basic.Util.Debugging;
 using AutumnBox.Basic.Device;
+using AutumnBox.Logging;
 using System;
 using System.Collections.Generic;
 using System.Threading;
@@ -25,10 +25,10 @@ namespace AutumnBox.Basic.MultipleDevices
     /// </summary>
     public class DevicesMonitor
     {
-        private static readonly Logger logger;
+        private static readonly ILogger logger;
         static DevicesMonitor()
         {
-            logger = new Logger<DevicesMonitor>();
+            logger = LoggerFactory.Auto<DevicesMonitor>();
         }
         /// <summary>
         /// 设备拔插时间

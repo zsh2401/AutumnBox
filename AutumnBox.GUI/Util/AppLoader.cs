@@ -12,6 +12,7 @@ using AutumnBox.GUI.Util.OpenFxManagement;
 using AutumnBox.GUI.Util.OS;
 using AutumnBox.GUI.View.DialogContent;
 using AutumnBox.GUI.View.Windows;
+using AutumnBox.Logging.Management;
 using AutumnBox.OpenFramework;
 using MaterialDesignThemes.Wpf;
 using System;
@@ -60,6 +61,7 @@ namespace AutumnBox.GUI.Util
         {
             LoggingStation.Instance.Work();
             ui.Progress = 0;
+            Logging.SLogger<AppLoader>.Info("test");
             //如果没有通过引导,启动引导
             if (isPreviewOrDebug || !Settings.Default.GuidePassed)
             {
@@ -94,13 +96,7 @@ namespace AutumnBox.GUI.Util
             logger.Info($"SDK version: {BuildInfo.SDK_VERSION}");
             logger.Info($"Windows version {Environment.OSVersion.Version}");
             logger.Info("======================");
-            Basic.Util.Debugging.LoggingStation.Logging += (s, e) =>
-            {
-#if !DEBUG
-                if (e.Tag.ToLower() == "debug") return;
-#endif
-                LoggingStation.Instance.Log(e.Tag, e.Level.ToString(), e.Text);
-            };
+            LoggingManager.SetLogStation(null, true);
             Basic.Util.Settings.CreateNewWindow = Settings.Default.DisplayCmdWindow;
             ui.Progress = 30;
             ui.LoadingTip = App.Current.Resources["ldmsgStartAdb"].ToString();

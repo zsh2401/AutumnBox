@@ -2,6 +2,7 @@
 using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.LeafExtension;
 using AutumnBox.OpenFramework.LeafExtension.Attributes;
+using AutumnBox.OpenFramework.LeafExtension.Fast;
 using AutumnBox.OpenFramework.LeafExtension.Kit;
 using AutumnBox.OpenFramework.Open;
 using AutumnBox.OpenFramework.Util;

@@ -5,7 +5,7 @@
 ** compiler: Visual Studio 2017
 ** desc： ...
 *********************************************************************************/
-using AutumnBox.Basic.Util.Debugging;
+using AutumnBox.Logging;
 using System;
 using System.Text.RegularExpressions;
 
@@ -16,14 +16,14 @@ namespace AutumnBox.Basic.Device.Management.Hardware
     /// </summary>
     public class DeviceHardwareInfoGetter : DeviceCommander
     {
-        private readonly Logger logger;
+        private readonly ILogger logger;
         /// <summary>
         /// 构造
         /// </summary>
         /// <param name="device"></param>
         public DeviceHardwareInfoGetter(IDevice device) : base(device)
         {
-            logger = new Logger<DeviceHardwareInfoGetter>();
+            logger = LoggerFactory.Auto<DeviceHardwareInfoGetter>();
         }
 
         /// <summary>

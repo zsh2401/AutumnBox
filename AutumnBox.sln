@@ -30,12 +30,18 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Win32", "Win32", "{FA99B881
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{2377CBDA-1330-43FC-BBD0-9D6B26FD9DA2}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "AutumnBox.Logging.Shared", "AutumnBox.Logging.Shared\AutumnBox.Logging.Shared.shproj", "{B29DEA5D-D4C3-4C8B-810E-52466875835D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutumnBox.Logging", "AutumnBox.Logging\AutumnBox.Logging.csproj", "{F90CB434-6ED4-4244-9D78-C8016F0856C1}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		AutumnBox.OpenFramework.Shared\AutumnBox.OpenFramework.Shared.projitems*{49e6d09e-b234-4aa4-97b0-e82fb60c36d2}*SharedItemsImports = 13
 		AutumnBox.Basic.Shared\AutumnBox.Basic.Shared.projitems*{5276bfb4-b089-4e34-9c42-42ea019ef320}*SharedItemsImports = 4
 		AutumnBox.OpenFramework.Shared\AutumnBox.OpenFramework.Shared.projitems*{60988b1a-74b7-470a-aeba-6d7fe474614d}*SharedItemsImports = 4
 		AutumnBox.Basic.Shared\AutumnBox.Basic.Shared.projitems*{8e101f07-8c10-4ab6-a427-f24618c25de5}*SharedItemsImports = 13
+		AutumnBox.Logging.Shared\AutumnBox.Logging.Shared.projitems*{b29dea5d-d4c3-4c8b-810e-52466875835d}*SharedItemsImports = 13
+		AutumnBox.Logging.Shared\AutumnBox.Logging.Shared.projitems*{f90cb434-6ed4-4244-9d78-c8016f0856c1}*SharedItemsImports = 4
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -210,6 +216,38 @@ Global
 		{60988B1A-74B7-470A-AEBA-6D7FE474614D}.SDK|x64.Build.0 = SDK|Any CPU
 		{60988B1A-74B7-470A-AEBA-6D7FE474614D}.SDK|x86.ActiveCfg = SDK|Any CPU
 		{60988B1A-74B7-470A-AEBA-6D7FE474614D}.SDK|x86.Build.0 = SDK|Any CPU
+		{F90CB434-6ED4-4244-9D78-C8016F0856C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F90CB434-6ED4-4244-9D78-C8016F0856C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F90CB434-6ED4-4244-9D78-C8016F0856C1}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{F90CB434-6ED4-4244-9D78-C8016F0856C1}.Debug|ARM.Build.0 = Debug|Any CPU
+		{F90CB434-6ED4-4244-9D78-C8016F0856C1}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{F90CB434-6ED4-4244-9D78-C8016F0856C1}.Debug|x64.Build.0 = Debug|Any CPU
+		{F90CB434-6ED4-4244-9D78-C8016F0856C1}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F90CB434-6ED4-4244-9D78-C8016F0856C1}.Debug|x86.Build.0 = Debug|Any CPU
+		{F90CB434-6ED4-4244-9D78-C8016F0856C1}.Preview|Any CPU.ActiveCfg = Release|Any CPU
+		{F90CB434-6ED4-4244-9D78-C8016F0856C1}.Preview|Any CPU.Build.0 = Release|Any CPU
+		{F90CB434-6ED4-4244-9D78-C8016F0856C1}.Preview|ARM.ActiveCfg = Release|Any CPU
+		{F90CB434-6ED4-4244-9D78-C8016F0856C1}.Preview|ARM.Build.0 = Release|Any CPU
+		{F90CB434-6ED4-4244-9D78-C8016F0856C1}.Preview|x64.ActiveCfg = Release|Any CPU
+		{F90CB434-6ED4-4244-9D78-C8016F0856C1}.Preview|x64.Build.0 = Release|Any CPU
+		{F90CB434-6ED4-4244-9D78-C8016F0856C1}.Preview|x86.ActiveCfg = Release|Any CPU
+		{F90CB434-6ED4-4244-9D78-C8016F0856C1}.Preview|x86.Build.0 = Release|Any CPU
+		{F90CB434-6ED4-4244-9D78-C8016F0856C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F90CB434-6ED4-4244-9D78-C8016F0856C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F90CB434-6ED4-4244-9D78-C8016F0856C1}.Release|ARM.ActiveCfg = Release|Any CPU
+		{F90CB434-6ED4-4244-9D78-C8016F0856C1}.Release|ARM.Build.0 = Release|Any CPU
+		{F90CB434-6ED4-4244-9D78-C8016F0856C1}.Release|x64.ActiveCfg = Release|Any CPU
+		{F90CB434-6ED4-4244-9D78-C8016F0856C1}.Release|x64.Build.0 = Release|Any CPU
+		{F90CB434-6ED4-4244-9D78-C8016F0856C1}.Release|x86.ActiveCfg = Release|Any CPU
+		{F90CB434-6ED4-4244-9D78-C8016F0856C1}.Release|x86.Build.0 = Release|Any CPU
+		{F90CB434-6ED4-4244-9D78-C8016F0856C1}.SDK|Any CPU.ActiveCfg = Release|Any CPU
+		{F90CB434-6ED4-4244-9D78-C8016F0856C1}.SDK|Any CPU.Build.0 = Release|Any CPU
+		{F90CB434-6ED4-4244-9D78-C8016F0856C1}.SDK|ARM.ActiveCfg = Release|Any CPU
+		{F90CB434-6ED4-4244-9D78-C8016F0856C1}.SDK|ARM.Build.0 = Release|Any CPU
+		{F90CB434-6ED4-4244-9D78-C8016F0856C1}.SDK|x64.ActiveCfg = Release|Any CPU
+		{F90CB434-6ED4-4244-9D78-C8016F0856C1}.SDK|x64.Build.0 = Release|Any CPU
+		{F90CB434-6ED4-4244-9D78-C8016F0856C1}.SDK|x86.ActiveCfg = Release|Any CPU
+		{F90CB434-6ED4-4244-9D78-C8016F0856C1}.SDK|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -222,9 +260,11 @@ Global
 		{5276BFB4-B089-4E34-9C42-42EA019EF320} = {FA99B881-45A3-4D66-8ECE-9D65DFC57C48}
 		{49E6D09E-B234-4AA4-97B0-E82FB60C36D2} = {2377CBDA-1330-43FC-BBD0-9D6B26FD9DA2}
 		{60988B1A-74B7-470A-AEBA-6D7FE474614D} = {FA99B881-45A3-4D66-8ECE-9D65DFC57C48}
+		{B29DEA5D-D4C3-4C8B-810E-52466875835D} = {2377CBDA-1330-43FC-BBD0-9D6B26FD9DA2}
+		{F90CB434-6ED4-4244-9D78-C8016F0856C1} = {FA99B881-45A3-4D66-8ECE-9D65DFC57C48}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {E8E55705-AE5C-4952-B4C7-9D7F81C38731}
 		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.PolicyInjection.6.0.1304.0\lib\NET45
+		SolutionGuid = {E8E55705-AE5C-4952-B4C7-9D7F81C38731}
 	EndGlobalSection
 EndGlobal
