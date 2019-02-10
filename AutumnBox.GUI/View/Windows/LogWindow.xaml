@@ -6,15 +6,41 @@
         xmlns:local="clr-namespace:AutumnBox.GUI.View.Windows"
         xmlns:viewmodel="clr-namespace:AutumnBox.GUI.ViewModel"
         mc:Ignorable="d"
-        WindowStartupLocation="CenterScreen"
-        Title="LogWindow" Height="525.5" Width="791.378"
-        Closed="Window_Closed"
-        >
-    <DockPanel>
-        <StackPanel Margin="5"  DockPanel.Dock="Bottom" Orientation="Horizontal">
-            <Button Margin="5" HorizontalAlignment="Right" VerticalAlignment="Bottom" Content="{DynamicResource btnCopy}" Click="Button_Click_1"/>
-            <Button Margin="5"  HorizontalAlignment="Right" VerticalAlignment="Bottom" Content="Go to the end" Click="Button_Click"/>
-        </StackPanel>
-        <TextBox DockPanel.Dock="Top" x:Name="TextBox" Style="{x:Null}" IsReadOnly="True" TextWrapping="Wrap"/>
-    </DockPanel>
+        FontFamily="Microsoft YaHei UI"
+        WindowStartupLocation="CenterScreen" MinHeight="525" MinWidth="800"
+        Title="{Binding Title}">
+    <Window.DataContext>
+        <viewmodel:VMLog></viewmodel:VMLog>
+    </Window.DataContext>
+    <Grid>
+        <ScrollViewer x:Name="SViewer" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Visible">
+            <Grid>
+                <ListBox PreviewMouseWheel="LB_PreviewMouseWheel" SelectionMode="Extended"  Foreground="#F1EAE3" x:Name="LB" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Background="Black" ItemsSource="{Binding Logs}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="0">
+                                <DockPanel>
+                                    <StackPanel  Orientation="Horizontal" DockPanel.Dock="Left">
+                                        <TextBlock Text="["/>
+                                        <TextBlock Text="{Binding LogWindowTimeString}"/>
+                                        <TextBlock Text="/"/>
+                                        <TextBlock Foreground="#7aa723" Text="{Binding Category}"/>
+                                        <TextBlock Text="/"/>
+                                        <TextBlock Text="{Binding Level}">
+                                            <TextBlock.Foreground>
+                                                <SolidColorBrush Color="{Binding LevelColor}"></SolidColorBrush>
+                                            </TextBlock.Foreground>
+                                        </TextBlock>
+                                        <TextBlock Text="]: "/>
+                                    </StackPanel>
+                                    <TextBlock Foreground="Gray" TextWrapping="Wrap" DockPanel.Dock="Right" Text="{Binding Message}"/>
+                                </DockPanel>
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Grid>
+           
+        </ScrollViewer>
+    </Grid>
 </Window>

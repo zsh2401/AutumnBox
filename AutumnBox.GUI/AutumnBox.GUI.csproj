@@ -194,6 +194,7 @@
     <Compile Include="Util\Updater.cs" />
     <Compile Include="ViewModel\VMContentChoice.cs" />
     <Compile Include="ViewModel\VMGuide.cs" />
+    <Compile Include="ViewModel\VMLog.cs" />
     <Compile Include="ViewModel\VMOpenSource.cs" />
     <Compile Include="ViewModel\VMCurrentDevice.cs" />
     <Compile Include="ViewModel\VMExtensions.cs" />
