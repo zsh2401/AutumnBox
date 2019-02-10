@@ -4,6 +4,7 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.GUI.Util.Debugging;
+using AutumnBox.Logging;
 using Newtonsoft.Json;
 using System;
 using System.Net;

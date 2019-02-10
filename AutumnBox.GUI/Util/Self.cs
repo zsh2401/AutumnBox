@@ -4,6 +4,7 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.GUI.Util.Debugging;
+using AutumnBox.Logging;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;

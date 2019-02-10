@@ -4,6 +4,7 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.GUI.Util.Debugging;
+using AutumnBox.Logging;
 using Newtonsoft.Json;
 using System.IO;
 
@@ -34,9 +35,7 @@ namespace AutumnBox.GUI.Util.Net
         {
             Result result = base.ParseJson(json);
             byte[] imgData = webClient.DownloadData(result.ImageSource);
-            SLogger.Info(this, "Converting");
             result.ImageMemoryStream = new MemoryStream(imgData);
-            SLogger.Info(this, "Converted");
             return result;
         }
     }

@@ -29,10 +29,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Extension\ExtensionArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\IClassExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\IExtension.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)LeafExtension\Kit\ILeafLogger.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)LeafExtension\Kit\ILeafLogger.Generic.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)LeafExtension\Attributes\LDoNotScanAttribute.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)LeafExtension\Kit\Impl\LeafLogger.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)LeafExtension\LeafConstants.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)LeafExtension\LeafTerminatedException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)LeafExtension\Fast\LeafUIHelper.cs" />
@@ -93,12 +90,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)Open\ICompApi.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\IDeviceSelector.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\IEmbeddedFileManager.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Open\ILogger.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\IMd5Service.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\Impl\AppManagerImpl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\Impl\CompImpl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\Impl\EmbeddedFileManagerImpl.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Open\Impl\LoggerImpl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\ServiceImpl\SOSApi.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\Impl\TemporaryFloderImpl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\Impl\UxImpl.cs" />
@@ -107,7 +102,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Open\ISoundService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\ITemporaryFloder.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\IUx.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Open\LoggerExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\ServiceImpl\SResourcesManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\ServiceImpl\SDeviceSelector.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\ServiceImpl\SMd5.cs" />
@@ -139,7 +133,6 @@
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)LeafExtension\Attributes\" />
     <Folder Include="$(MSBuildThisFileDirectory)LeafExtension\Internal\" />
-    <Folder Include="$(MSBuildThisFileDirectory)LeafExtension\Kit\Impl\" />
     <Folder Include="$(MSBuildThisFileDirectory)LeafExtension\Fast\" />
   </ItemGroup>
 </Project>

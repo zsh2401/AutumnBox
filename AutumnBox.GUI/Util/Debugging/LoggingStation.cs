@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AutumnBox.GUI.Properties;
+using AutumnBox.Logging.Management;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -6,11 +8,13 @@ using System.Threading;
 
 namespace AutumnBox.GUI.Util.Debugging
 {
-    internal class LoggingStation : IDisposable
+    [HeritableStation]
+    internal class LoggingStation : ILoggingStation, IDisposable
     {
         private const string LOG_INFO_FMT = "[{0}][{1}]<{2}>: {3}";
         public const string LOG_FLODER = "..\\logs";
         private const string LOG_FILENAME_FORMAT = "yy_MM_dd__HH_mm_ss";
+        public IEnumerable<ILog> Logs => logged;
         public static LoggingStation Instance { get; private set; }
         public event EventHandler<LogEventArgs> Logging;
         public string CurrentLogged
@@ -20,8 +24,8 @@ namespace AutumnBox.GUI.Util.Debugging
                 return string.Join(Environment.NewLine, logged);
             }
         }
-        private List<string> logged;
-        private Queue<string> buffer;
+        private List<ILog> logged;
+        private Queue<ILog> buffer;
         private FileStream fs;
         private StreamWriter sw;
         public string LogFile { get; set; }
@@ -31,8 +35,8 @@ namespace AutumnBox.GUI.Util.Debugging
         }
         private LoggingStation()
         {
-            buffer = new Queue<string>();
-            logged = new List<string>();
+            buffer = new Queue<ILog>();
+            logged = new List<ILog>();
         }
         public void Work()
         {
@@ -60,11 +64,14 @@ namespace AutumnBox.GUI.Util.Debugging
             string path = Path.Combine(LOG_FLODER, fileName);
             return path;
         }
-        public void Log(string tag, string prefix, object content)
+        public void Log(ILog log)
         {
-            string logMessage = string.Format(LOG_INFO_FMT, DateTime.Now.ToString("yy-MM-dd HH:mm:ss"), prefix, tag, content);
-            buffer.Enqueue(logMessage);
-            Logging?.Invoke(this, new LogEventArgs() { Content = logMessage });
+            buffer.Enqueue(log);
+            Logging?.Invoke(this, new LogEventArgs(log));
+        }
+        private string Format(ILog log)
+        {
+            return string.Format(LOG_INFO_FMT, DateTime.Now.ToString("yy-MM-dd HH:mm:ss"), log.Level, log.Category, log.Message);
         }
         private void Loop()
         {
@@ -72,16 +79,22 @@ namespace AutumnBox.GUI.Util.Debugging
             {
                 while (buffer.Count > 0)
                 {
-                    TLog(buffer.Dequeue());
+                    Next();
                 }
                 Thread.Sleep(500);
             }
         }
-        private void TLog(string text)
+        private void Next()
         {
-            Debugger.Log(3, null, text + Environment.NewLine);
-            sw.WriteLine(text);
-            logged.Add(text);
+            var log = buffer.Dequeue();
+            if (log.Level.ToLower() == "debug" && !Settings.Default.DeveloperMode)
+            {
+                return;
+            }
+            string format = Format(log);
+            Console.WriteLine(format);
+            sw.WriteLine(format);
+            logged.Add(log);
         }
 
 

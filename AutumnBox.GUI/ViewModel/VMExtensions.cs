@@ -10,6 +10,7 @@ using AutumnBox.GUI.Properties;
 using AutumnBox.GUI.Util.Bus;
 using AutumnBox.GUI.Util.Debugging;
 using AutumnBox.GUI.Util.I18N;
+using AutumnBox.Logging;
 using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.Fast;
 using AutumnBox.OpenFramework.Management;
@@ -107,7 +108,6 @@ namespace AutumnBox.GUI.ViewModel
         }
         private ICommand _doubleClickItem;
 
-        public ICommand GotoDownloadExtension { get; private set; }
         #endregion
 
         #region Device
@@ -126,7 +126,6 @@ namespace AutumnBox.GUI.ViewModel
 
         public VMExtensions()
         {
-            GotoDownloadExtension = new OpenParameterUrlCommand();
         }
 
         internal void Load(DeviceState state)
@@ -194,7 +193,7 @@ namespace AutumnBox.GUI.ViewModel
             }
             catch (Exception e)
             {
-                SGLogger<VMExtensions>.Warn("can not refresh extensions", e);
+                SLogger<VMExtensions>.Warn("can not refresh extensions", e);
             }
 
         }

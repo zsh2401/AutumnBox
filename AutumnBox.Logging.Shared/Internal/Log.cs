@@ -16,9 +16,9 @@ namespace AutumnBox.Logging.Internal
         public Log(string level, object category, object message)
         {
             Time = DateTime.Now;
-            Level = level ?? throw new ArgumentNullException(nameof(level));
-            Category = category?.ToString() ?? throw new ArgumentNullException(nameof(category));
-            Message = message?.ToString() ?? throw new ArgumentNullException(nameof(message));
+            Level = level ?? "Info";
+            Category = category?.ToString() ?? "Unknow";
+            Message = message?.ToString();
         }
         public Log(string level, object category, object message, Exception e) : this(level, category, message)
         {

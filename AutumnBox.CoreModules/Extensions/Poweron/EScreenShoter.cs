@@ -5,6 +5,7 @@
 *************************************************/
 using AutumnBox.Basic.Device;
 using AutumnBox.Basic.Device.Management.OS;
+using AutumnBox.Logging;
 using AutumnBox.OpenFramework.Extension;
 using System;
 using System.IO;

@@ -5,6 +5,7 @@
 *************************************************/
 
 using AutumnBox.GUI.Util.Debugging;
+using AutumnBox.Logging;
 using System;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
@@ -50,7 +51,6 @@ namespace AutumnBox.GUI.MVVM
 
         protected void _OpenGoUrl(object para)
         {
-            SLogger.Info(this, para);
             var goPre = App.Current.Resources["UrlGoPrefix"] as string;
             try
             {

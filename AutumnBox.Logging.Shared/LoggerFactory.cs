@@ -47,7 +47,7 @@ namespace AutumnBox.Logging
             bool isGLogger = genericArgs.Length == 1;
             if (isGLogger)
             {
-                Type loggerT = typeof(ILogger<>);
+                Type loggerT = typeof(LoggerImpl<>);
                 loggerT = loggerT.MakeGenericType(genericArgs[0]);
                 return Activator.CreateInstance(loggerT);
             }

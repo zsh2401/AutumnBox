@@ -5,6 +5,7 @@
 *************************************************/
 using AutumnBox.GUI.Util.Debugging;
 using AutumnBox.GUI.Util.OS;
+using AutumnBox.Logging;
 using System.Diagnostics;
 using System.Linq;
 
@@ -14,7 +15,7 @@ namespace AutumnBox.GUI.Util
     {
         private const int SW_SHOWNOMAL = 1;
         private const string TAG = nameof(AlreadyHaveAutumnBoxChecker);
-        private static readonly ILogger logger = new Logger(nameof(AlreadyHaveAutumnBoxChecker));
+        private static readonly ILogger logger = LoggerFactory.Auto(nameof(AlreadyHaveAutumnBoxChecker));
         private static Process FindOtherProcess()
         {
             Process currentProcess = Process.GetCurrentProcess();

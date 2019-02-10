@@ -1,4 +1,5 @@
-﻿using AutumnBox.OpenFramework.ExtLibrary;
+﻿using AutumnBox.Logging;
+using AutumnBox.OpenFramework.ExtLibrary;
 using AutumnBox.OpenFramework.Management;
 using AutumnBox.OpenFramework.Wrapper;
 using System;
@@ -28,7 +29,7 @@ namespace AutumnBox.OpenFramework.Fast
                 }
                 catch (Exception ex)
                 {
-                    OpenFx.BaseApi.Log("LibExtension", "Warn", $"获取拓展模块封装类失败({lib.Name}){ex}");
+                    SLogger<ILibsManager>.Warn($"获取拓展模块封装类失败({lib.Name}){ex}");
                 }
             }
             return result;

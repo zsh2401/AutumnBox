@@ -4,6 +4,7 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.GUI.Util.Debugging;
+using AutumnBox.Logging;
 using AutumnBox.OpenFramework.Fast;
 using AutumnBox.OpenFramework.Management;
 using System.Linq;

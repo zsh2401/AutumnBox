@@ -1,8 +1,8 @@
 ﻿using AutumnBox.Basic.Device;
+using AutumnBox.Logging;
 using AutumnBox.OpenFramework.Content;
 using AutumnBox.OpenFramework.LeafExtension.Attributes;
 using AutumnBox.OpenFramework.LeafExtension.Kit;
-using AutumnBox.OpenFramework.LeafExtension.Kit.Impl;
 using AutumnBox.OpenFramework.Management;
 using AutumnBox.OpenFramework.Open;
 using System;
@@ -51,17 +51,13 @@ namespace AutumnBox.OpenFramework.LeafExtension.Internal
 
         public object GetByType(Type type)
         {
-            if (type == typeof(ILogger))
-            {
-                return ctx.Logger;
-            }
-            else if (type == typeof(ILeafUI))
+            if (type == typeof(ILeafUI))
             {
                 return OpenFx.BaseApi.NewLeafUI();
             }
-            else if (type.Name.StartsWith("ILeafLogger"))
+            else if (type.Name.StartsWith(nameof(ILogger)))
             {
-                return LeafLogger.From(leafType, type);
+                return LoggerFactory.Auto(type, leafType);
             }
             else if (type == typeof(IUx))
             {

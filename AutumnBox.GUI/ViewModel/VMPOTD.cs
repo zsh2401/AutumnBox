@@ -16,19 +16,15 @@ namespace AutumnBox.GUI.ViewModel
 {
     class VMPOTD : ViewModelBase
     {
-        public ICommand Click
+        public string Url
         {
-            get
+            get => _url; set
             {
-                return _click;
-            }
-            set
-            {
-                _click = value;
+                _url = value;
                 RaisePropertyChanged();
             }
         }
-        private ICommand _click;
+        private string _url;
 
         public ImageSource Image
         {
@@ -46,17 +42,6 @@ namespace AutumnBox.GUI.ViewModel
 
         public VMPOTD()
         {
-            Click = new FlexiableCommand(() =>
-            {
-                try
-                {
-                    Process.Start(url);
-                }
-                catch (Exception e)
-                {
-                    SLogger.Warn(this, "Click potd is failed", e);
-                }
-            });
             new PotdGetter().Try((result) =>
             {
                 App.Current.Dispatcher.Invoke(() =>
@@ -71,13 +56,13 @@ namespace AutumnBox.GUI.ViewModel
 
         private void SettingBy(PotdGetter.Result result)
         {
-            url = result.ClickUrl;
+            Url = result.ClickUrl;
             BitmapImage bmp = new BitmapImage();
             bmp.BeginInit();
             bmp.StreamSource = result.ImageMemoryStream;
             bmp.EndInit();
             Image = bmp;
         }
-        private string url;
+
     }
 }

@@ -7,6 +7,7 @@ using AutumnBox.GUI.Properties;
 using AutumnBox.GUI.Util.Debugging;
 using AutumnBox.GUI.Util.Net;
 using AutumnBox.GUI.View.Windows;
+using AutumnBox.Logging;
 using System;
 using System.Threading.Tasks;
 
