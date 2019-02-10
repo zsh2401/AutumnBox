@@ -4,13 +4,14 @@ using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.Wrapper;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Reflection;
 using System.Text;
 using System.Threading;
 
 namespace AutumnBox.OpenFramework.Running
 {
-    internal sealed class ExtensionThread : Context, IExtensionThread,IDisposable
+    internal sealed class ExtensionThread : Context, IExtensionThread, IDisposable
     {
         private readonly Type extensionType;
 
@@ -107,13 +108,14 @@ namespace AutumnBox.OpenFramework.Running
                 else
                 {
                     ExitCode = (int)ExtensionExitCodes.Exception;
-                    SendSignal(Signals.ON_EXCEPTION, e);
+                    SendSignal(Signals.ON_EXCEPTION, e.InnerException);
+                    Logger.Warn($"{extensionType.Name}-extension error", e.InnerException);
                     string fmt = App.GetPublicResouce<string>("OpenFxExceptionMsgTitleFmt");
                     fmt = string.Format(fmt, Wrapper.Info.Name);
                     string sketch = App.GetPublicResouce<string>("OpenFxExceptionSketch");
                     Ux.RunOnUIThread(() =>
                     {
-                        BaseApi.ShowException(fmt, sketch, e.ToString());
+                        BaseApi.ShowException(fmt, sketch, e.InnerException.ToString());
                     });
                 }
             }
@@ -125,6 +127,7 @@ namespace AutumnBox.OpenFramework.Running
             {
                 ExitCode = (int)ExtensionExitCodes.Exception;
                 SendSignal(Signals.ON_EXCEPTION, e);
+                Logger.Warn($"{extensionType.Name}-extension error", e);
                 string fmt = App.GetPublicResouce<string>("OpenFxExceptionMsgTitleFmt");
                 fmt = string.Format(fmt, Wrapper.Info.Name);
                 string sketch = App.GetPublicResouce<string>("OpenFxExceptionSketch");
@@ -138,7 +141,7 @@ namespace AutumnBox.OpenFramework.Running
                 SendSignal(Signals.COMMAND_DESTORY);
                 isRunning = false;
                 Finished?.Invoke(this, new ThreadFinishedEventArgs(this));
-                
+
             }
         }
 
