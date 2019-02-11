@@ -164,6 +164,7 @@
     <ProjectReference Include="..\AutumnBox.Logging\AutumnBox.Logging.csproj">
       <Project>{f90cb434-6ed4-4244-9d78-c8016f0856c1}</Project>
       <Name>AutumnBox.Logging</Name>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\AutumnBox.OpenFramework\AutumnBox.OpenFramework.csproj">
       <Project>{60988b1a-74b7-470a-aeba-6d7fe474614d}</Project>
@@ -274,6 +275,9 @@
   <PropertyGroup>
     <PostBuildEvent>del /S System.*.dll
 del /S Microsoft.Win32.Primitives.dll
-del /S netstandard.dll</PostBuildEvent>
+del /S netstandard.dll
+if $(ConfigurationName) == Release (
+del /S *.pdb
+)</PostBuildEvent>
   </PropertyGroup>
 </Project>
