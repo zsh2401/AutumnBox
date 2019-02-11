@@ -49,6 +49,17 @@
 
                 <materialDesign:Card Margin="10" Background="{DynamicResource CardBackgroundBrush}">
                     <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon  Kind="GithubCircle" Margin="20" Height="110" Width="110"></materialDesign:PackIcon>
+                        <StackPanel Width="150" Margin="10">
+                            <TextBlock Text="{DynamicResource PanelHomeOpenSource}"  HorizontalAlignment="Center" FontSize="25px" ></TextBlock>
+                            <TextBlock Text="{DynamicResource PanelHomeOpenSourceTip}" TextWrapping="Wrap" FontSize="12px" ></TextBlock>
+                            <Button Style="{DynamicResource MaterialDesignFlatButton}" Command="{Binding ViewOpenSource}"  FontSize="12px" CommandParameter="{DynamicResource AGoOpenSource}" Content="{DynamicResource PanelHomeOpenSourceButton}" ></Button>
+                        </StackPanel>
+                    </StackPanel>
+                </materialDesign:Card>
+                
+                <materialDesign:Card Margin="10" Background="{DynamicResource CardBackgroundBrush}">
+                    <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/Drawable/Home/donate.png" Margin="20" Height="110"></Image>
                         <StackPanel Width="150" Margin="10">
                             <TextBlock Foreground="{DynamicResource CardForegroundBrush}" Text="{DynamicResource PanelHomeSupport}" HorizontalAlignment="Center" FontSize="25px" ></TextBlock>
@@ -57,6 +68,7 @@
                         </StackPanel>
                     </StackPanel>
                 </materialDesign:Card>
+                
                 <materialDesign:Card Margin="10" Background="{DynamicResource CardBackgroundBrush}">
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="EmailVariant" Margin="20" Height="110" Width="110"/>
@@ -80,16 +92,7 @@
                         </StackPanel>
                     </StackPanel>
                 </materialDesign:Card>
-                <materialDesign:Card Margin="10" Background="{DynamicResource CardBackgroundBrush}">
-                    <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon  Kind="GithubCircle" Margin="20" Height="110" Width="110"></materialDesign:PackIcon>
-                        <StackPanel Width="150" Margin="10">
-                            <TextBlock Text="{DynamicResource PanelHomeOpenSource}"  HorizontalAlignment="Center" FontSize="25px" ></TextBlock>
-                            <TextBlock Text="{DynamicResource PanelHomeOpenSourceTip}" TextWrapping="Wrap" FontSize="12px" ></TextBlock>
-                            <Button Style="{DynamicResource MaterialDesignFlatButton}" Command="{Binding ViewOpenSource}"  FontSize="12px" CommandParameter="{DynamicResource AGoOpenSource}" Content="{DynamicResource PanelHomeOpenSourceButton}" ></Button>
-                        </StackPanel>
-                    </StackPanel>
-                </materialDesign:Card>
+               
             </WrapPanel>
         </DockPanel>
     </Grid>
