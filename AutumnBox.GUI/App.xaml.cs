@@ -11,12 +11,7 @@
 * Company: I am free man
 *
 \* =============================================================================*/
-using AutumnBox.GUI.Properties;
 using AutumnBox.GUI.Util;
-using AutumnBox.GUI.Util.Custom;
-using AutumnBox.GUI.Util.Debugging;
-using AutumnBox.GUI.Util.I18N;
-using System.Diagnostics;
 using System.Windows;
 namespace AutumnBox.GUI
 {
@@ -29,7 +24,6 @@ namespace AutumnBox.GUI
         public App() : base()
         {
             Current = this;
-            AlreadyHaveAutumnBoxChecker.Do();
         }
 
         public static new App Current { get; private set; }
@@ -37,32 +31,17 @@ namespace AutumnBox.GUI
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-#if !DEBUG
-            this.DispatcherUnhandledException += FatalHandler.Current_DispatcherUnhandledException;
-#endif
-            ThemeManager.Instance.ApplyBySetting();
-            if (Settings.Default.IsFirstLaunch)
+            AppLoader.Instance.Failed += (s, _e) =>
             {
-                LanguageManager.Instance.ApplyByEnvoriment();
-            }
-            else
-            {
-                LanguageManager.Instance.ApplyByLanguageCode(Settings.Default.Language);
-            }
+                Shutdown(1);
+            };
+            AppLoader.Instance.LoadAsync();
         }
-        
+
         protected override void OnExit(ExitEventArgs e)
         {
             base.OnExit(e);
-            if (Settings.Default.IsFirstLaunch && Settings.Default.GuidePassed)
-            {
-                Settings.Default.IsFirstLaunch = false;
-            }
-            Settings.Default.Save();
-            new AppUnloader().Unload();
-#if DEBUG
-            Process.GetCurrentProcess().Kill();
-#endif
+            AppUnloader.Instance.Unload();
         }
     }
 }

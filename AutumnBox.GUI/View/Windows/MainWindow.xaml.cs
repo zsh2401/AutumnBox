@@ -34,9 +34,8 @@ namespace AutumnBox.GUI.View.Windows
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs _e)
         {
-            (DataContext as VMMainWindow).LoadAsync(() =>
+            Util.AppLoader.Instance.Loaded += (s, e) =>
             {
-                SLogger<MainWindow>.Info("Loaded");
                 Dispatcher.Invoke(() =>
                 {
                     if (Settings.Default.IsFirstLaunch)
@@ -44,7 +43,7 @@ namespace AutumnBox.GUI.View.Windows
                         DialogHost.ShowDialog(new DialogContent.ContentDonate());
                     }
                 });
-            });
+            };
         }
 
         private void _MainWindow_Closed(object sender, EventArgs e)

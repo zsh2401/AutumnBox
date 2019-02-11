@@ -160,6 +160,7 @@
     <Compile Include="Util\Bus\ConnectedDevicesListener.cs" />
     <Compile Include="Util\Bus\ExtensionViewRefresher.cs" />
     <Compile Include="Util\Bus\OpenFxObserver.cs" />
+    <Compile Include="Util\ConditionalVars.cs" />
     <Compile Include="Util\Debugging\LogEventArgs.cs" />
     <Compile Include="Util\Debugging\LoggingStation.cs" />
     <Compile Include="Util\Effect\Sounds.cs" />

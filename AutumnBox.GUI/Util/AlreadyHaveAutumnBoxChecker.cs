@@ -20,35 +20,24 @@ namespace AutumnBox.GUI.Util
         {
             Process currentProcess = Process.GetCurrentProcess();
             Process[] Processes = Process.GetProcessesByName(currentProcess.ProcessName);
-            logger.Debug($"have {Processes.Count()} autumnbox.gui process");
             foreach (Process process in Processes)
             {
                 if (process.Id != currentProcess.Id)
                 {
                     return process;
-                    //if (Assembly.GetExecutingAssembly().Location.Replace("/", "\\") == currentProcess.MainModule.FileName)
-                    //{
-                    //    return process;
-                    //}
                 }
             }
             return null;
         }
-        public static void Do()
+        public static bool Do()
         {
             var process = FindOtherProcess();
             if (process != null)
             {
-                logger.Debug("found other autumnbox process,switch to it,and shutdown current");
-                logger.Debug("ShowWindowAsync()");
                 NativeMethods.ShowWindowAsync(process.MainWindowHandle, SW_SHOWNOMAL);
-                logger.Debug("SetForegroundWindow()");
                 NativeMethods.SetForegroundWindow(process.MainWindowHandle);
-                App.Current.Dispatcher.Invoke(() =>
-                {
-                    App.Current.Shutdown(1);
-                });
             }
+            return process == null;
         }
     }
 }
