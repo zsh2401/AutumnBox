@@ -1,11 +1,10 @@
 ﻿using AutumnBox.Logging.Internal;
-using System.IO;
 using System.Reflection;
 
 namespace AutumnBox.Logging.Management
 {
     /// <summary>
-    /// 
+    /// 日志系统管理器
     /// </summary>
     public static class LoggingManager
     {

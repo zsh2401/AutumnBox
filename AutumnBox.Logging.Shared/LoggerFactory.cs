@@ -19,7 +19,7 @@ namespace AutumnBox.Logging
             return new Internal.LoggerImpl(typeof(TCategoryClass).Name);
         }
         /// <summary>
-        /// Auto
+        /// 传入字符串的Category名,并获取日志器
         /// </summary>
         /// <param name="categoryName"></param>
         /// <returns></returns>
@@ -39,7 +39,8 @@ namespace AutumnBox.Logging
         /// <summary>
         /// 通过需要的日志器类型,自动构造
         /// </summary>
-        /// <param name="loggerType"></param>
+        /// <param name="loggerType">日志器类型</param>
+        /// <param name="defaultCategory">日志器类型错误时的基础Category类型</param>
         /// <returns></returns>
         public static object Auto(Type loggerType, Type defaultCategory = null)
         {
