@@ -61,6 +61,7 @@ namespace AutumnBox.GUI.Util
         private void Load()
         {
             LoggingStation.Instance.Work();
+            LoggingManager.SetLogStation(LoggingStation.Instance, true);
             ui.Progress = 0;
             //如果没有通过引导,启动引导
             if (isPreviewOrDebug || !Settings.Default.GuidePassed)
@@ -89,14 +90,12 @@ namespace AutumnBox.GUI.Util
                     new LogWindow().Show();
                 });
             }
-            logger.Info("");
             logger.Info("======================");
             logger.Info($"Run as " + (Self.HaveAdminPermission ? "Admin" : "Normal user"));
             logger.Info($"AutumnBox version: {Self.Version}");
             logger.Info($"SDK version: {BuildInfo.SDK_VERSION}");
             logger.Info($"Windows version {Environment.OSVersion.Version}");
             logger.Info("======================");
-            LoggingManager.SetLogStation(LoggingStation.Instance, true);
             Basic.Util.Settings.CreateNewWindow = Settings.Default.DisplayCmdWindow;
             ui.Progress = 30;
             ui.LoadingTip = App.Current.Resources["ldmsgStartAdb"].ToString();

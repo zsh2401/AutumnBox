@@ -21,16 +21,13 @@ namespace AutumnBox.GUI.Util.Bus
         }
         public void OnLoaded()
         {
-           
             if (IsLoaded)
             {
                 return;
             }
-
             IsLoaded = true;
             App.Current.Dispatcher.Invoke(() =>
             {
-                SLogger<OpenFxObserver>.Debug("Raising Loaded Event");
                 LoadedSource?.Invoke(this, new EventArgs());
             });
         }
@@ -41,7 +38,6 @@ namespace AutumnBox.GUI.Util.Bus
                 if (IsLoaded)
                 {
                     value?.Invoke(this, new EventArgs());
-                    //LoadedSource += value;
                 }
                 else
                 {

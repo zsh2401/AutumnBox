@@ -12,7 +12,7 @@ namespace AutumnBox.GUI.Model
         public DateTime Time => log.Time;
 
         public string TimeString => Time.ToString("yy-MM-dd HH:mm:ss");
-        public string LogWindowTimeString => Time.ToString("HH:mm:ss");
+        public string LogWindowTimeString => Time.ToString("HH:mm:ss.ms");
         public Color LevelColor
         {
             get

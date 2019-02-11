@@ -15,24 +15,41 @@ namespace AutumnBox.GUI.Util.Debugging
         public const string LOG_FLODER = "..\\logs";
         private const string LOG_FILENAME_FORMAT = "yy_MM_dd__HH_mm_ss";
         public IEnumerable<ILog> Logs => logged;
-        public static LoggingStation Instance { get; private set; }
-        public event EventHandler<LogEventArgs> Logging;
-        public string CurrentLogged
+        public static LoggingStation Instance
         {
             get
             {
-                return string.Join(Environment.NewLine, logged);
+                if (_instance == null)
+                {
+                    _instance = new LoggingStation();
+                }
+                return _instance;
             }
         }
+        private static LoggingStation _instance;
+        public event EventHandler<LogEventArgs> Logging;
         private List<FormatLog> logged;
         private Queue<FormatLog> buffer;
         private FileStream fs;
         private StreamWriter sw;
-        public string LogFile { get; set; }
-        static LoggingStation()
+        private FileInfo LogFile
         {
-            Instance = new LoggingStation();
+            get
+            {
+                if (_logFile == null)
+                {
+                    if (!Directory.Exists(LOG_FLODER))
+                    {
+                        Directory.CreateDirectory(LOG_FLODER);
+                    }
+                    string fileName = DateTime.Now.ToString(LOG_FILENAME_FORMAT) + ".log";
+                    string path = Path.Combine(LOG_FLODER, fileName);
+                    _logFile = new FileInfo(path);
+                }
+                return _logFile;
+            }
         }
+        private FileInfo _logFile;
         private LoggingStation()
         {
             buffer = new Queue<FormatLog>();
@@ -40,29 +57,16 @@ namespace AutumnBox.GUI.Util.Debugging
         }
         public void Work()
         {
-            if (LogFile == null)
-            {
-                LogFile = GetLogFileInfo();
-            }
-            fs = new FileStream(LogFile, FileMode.OpenOrCreate, FileAccess.ReadWrite);
+            fs = new FileStream(LogFile.FullName, FileMode.OpenOrCreate, FileAccess.ReadWrite);
             sw = new StreamWriter(fs)
             {
                 AutoFlush = true
             };
             new Thread(Loop)
             {
+                Name = "LoggingStation",
                 IsBackground = true
             }.Start();
-        }
-        private static string GetLogFileInfo()
-        {
-            if (!Directory.Exists(LOG_FLODER))
-            {
-                Directory.CreateDirectory(LOG_FLODER);
-            }
-            string fileName = DateTime.Now.ToString(LOG_FILENAME_FORMAT) + ".log";
-            string path = Path.Combine(LOG_FLODER, fileName);
-            return path;
         }
         public void Log(ILog log)
         {
@@ -84,13 +88,12 @@ namespace AutumnBox.GUI.Util.Debugging
             var log = buffer.Dequeue();
             if (log.Level.ToLower() == "debug" && !Settings.Default.DeveloperMode)
                 return;
-            Logging?.Invoke(this, new LogEventArgs(log));
+            try { Logging?.Invoke(this, new LogEventArgs(log)); } catch { }
             string format = log.Formated;
             Console.WriteLine(format);
             sw.WriteLine(format);
             logged.Add(log);
         }
-
 
         #region IDisposable Support
         private bool disposedValue = false; // 要检测冗余调用
