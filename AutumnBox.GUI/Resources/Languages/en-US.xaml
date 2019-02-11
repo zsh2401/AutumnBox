@@ -734,16 +734,11 @@ Agreement modification:
     </s:String>
 
     <!--关于信息-->
-    <s:String x:Key="AboutMessage">This is an open source software that complies with the LGPL 3.0. Please follow the open source agreement when necessary.
-Developer Email zsh2401@163.com
-        
-Acknowledgements for the outstanding contributions of the following companies and projects (in no particular order)
-  Newtonsoft.Json | Google | Android | Linux | C# | Microsoft | MaterialDesignInXaml
-        
-Thanks to the following people for their support in the early days of AutumnBox (in no particular order)
+    <s:String x:Key="AboutMessage">The Autumn Box is an ADB graphical toolbox that allows you to operate your phone through ADB in the easiest way, helping whites and old birds.
+The Box of Autumn is currently open sourced with LGPL 3.0, safe, free, trustworthy, and if necessary, please comply with the open source agreement.
+Acknowledgement:
 MonoLogueChi,饼干怪兽,hxy,yume,白瀛,web1n,咖枯,毛线没有团团,my0402
-        
-If you have made a great contribution but have not been recorded, please contact me!</s:String>
+Newtonsoft.Json | Google | Android | Linux | C# | Microsoft | MaterialDesignInXaml</s:String>
     <!--关于信息-->
 
     <s:String x:Key="warningOpenNetDebugging">

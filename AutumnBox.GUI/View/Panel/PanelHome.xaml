@@ -13,14 +13,6 @@
     </UserControl.DataContext>
     <Grid>
         <DockPanel>
-            <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="5">
-                <Image Height="100px" Source="/Resources/Drawable/icon.ico"></Image>
-                <StackPanel>
-                    <TextBlock Text="{DynamicResource AppNameWithVersion}"  FontSize="25px"></TextBlock>
-                    <TextBlock Margin="0,0,0,0" FontSize="12px" TextWrapping="Wrap" Text="{DynamicResource AboutMessage}" VerticalAlignment="Top"/>
-                </StackPanel>
-            </StackPanel>
-
             <WrapPanel DockPanel.Dock="Bottom" Width="680">
                 <materialDesign:Card Visibility="{Binding MotdVisibility}" Width="320" Height="150" Margin="10" Background="{DynamicResource CardBackgroundBrush}">
                     <DockPanel>
@@ -46,6 +38,17 @@
                         </Image>
                     </DockPanel>
                 </materialDesign:Card>
+
+                <materialDesign:Card Margin="10" Background="{DynamicResource CardBackgroundBrush}" Width="660">
+                    <DockPanel DockPanel.Dock="Top" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="5">
+                        <Image DockPanel.Dock="Left" Height="100px" Source="/Resources/Drawable/icon.ico"></Image>
+                        <StackPanel DockPanel.Dock="Right">
+                            <TextBlock Text="{DynamicResource AppNameWithVersion}"  FontSize="25px"></TextBlock>
+                            <TextBlock  TextWrapping="Wrap" Margin="0,0,0,0" FontSize="12px" Text="{DynamicResource AboutMessage}" VerticalAlignment="Top"/>
+                        </StackPanel>
+                    </DockPanel>
+                </materialDesign:Card>
+              
 
                 <materialDesign:Card Margin="10" Background="{DynamicResource CardBackgroundBrush}">
                     <StackPanel Orientation="Horizontal">
