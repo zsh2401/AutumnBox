@@ -18,7 +18,7 @@ namespace AutumnBox.GUI.Util
 #if DEBUG
             CompileType.Debug;
 #elif PREVIEW
-            CompileType.Preview
+            CompileType.Preview;
 #else
             CompileType.Release;
 #endif

@@ -46,6 +46,14 @@ namespace AutumnBox.GUI.Util.Net
             });
         }
 
+        public Task<TResultObject> Advance()
+        {
+            return Task.Run(() =>
+            {
+                return GetSync();
+            });
+        }
+
         public TResultObject GetSync()
         {
             return ParseJson(GetJson());

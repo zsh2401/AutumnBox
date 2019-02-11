@@ -8,26 +8,31 @@
              xmlns:dockablz="http://dragablz.net/winfx/xaml/dockablz"
              xmlns:dragablz="http://dragablz.net/winfx/xaml/dragablz"
              FontFamily="{DynamicResource AutumnBox.Font}"
-             mc:Ignorable="d" d:DesignWidth="177.009" d:DesignHeight="303.769">
+             mc:Ignorable="d" d:DesignWidth="200" d:DesignHeight="280"
+             >
     <UserControl.DataContext>
         <viewmodel:VMConnectDevices/>
     </UserControl.DataContext>
     <dockablz:Layout>
         <dragablz:TabablzControl BorderThickness="0"  Style="{DynamicResource MaterialDesignTabablzControlStyle}">
             <TabItem Header="{DynamicResource Devices}"  FontSize="16">
-                <Grid>
-                    <DockPanel>
-                        <StackPanel Orientation="Vertical" DockPanel.Dock="Bottom">
-                            <Button Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource PanelHelpForConnectDevice}"  Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoConnectDevice}"  FontSize="12"/>
-                            <Button Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource PanelDevicesConnectTo}"  Command="{Binding ConnectDevice}"  FontSize="12"/>
-                            <Button Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource PanelDevicesEnableCurrent}" Command="{Binding OpenDeviceNetDebugging}"  FontSize="12"/>
-                            <Button Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource PanelDevicesDisconnect}" Command="{Binding DisconnectDevice}" FontSize="12"/>
-                        </StackPanel>
-                        <Grid DockPanel.Dock="Top">
-                            <TextBlock Visibility="{Binding NoDeviceVisibility}" Text="{DynamicResource PanelDevicesNoOne}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Gray" FontSize="14"/>
-                            <ListBox Visibility="{Binding ListVisibility}" DisplayMemberPath="{Binding DisplayMemeberPath}" ItemsSource="{Binding Devices}" SelectedItem="{Binding Selected,Mode=TwoWay}"/>
-                        </Grid>
-                    </DockPanel>
+                <Grid Margin="2,0,0,2" x:Name="mGrid">
+                    <materialDesign:Card  Height="{Binding ElementName=mGrid,Path=ActualHeight}">
+                        <DockPanel>
+                            <StackPanel Orientation="Vertical" DockPanel.Dock="Bottom">
+                                <Button Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource PanelDevicesConnectTo}"  Command="{Binding ConnectDevice}"  FontSize="12"/>
+                                <Button Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource PanelDevicesEnableCurrent}" Command="{Binding OpenDeviceNetDebugging}"  FontSize="12"/>
+                                <Button Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource PanelDevicesDisconnect}" Command="{Binding DisconnectDevice}" FontSize="12"/>
+                            </StackPanel>
+                            <Grid DockPanel.Dock="Top">
+                                <StackPanel VerticalAlignment="Center" Visibility="{Binding NoDeviceVisibility}">
+                                    <TextBlock Text="{DynamicResource PanelDevicesNoOne}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Gray" FontSize="14"/>
+                                    <Button Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource PanelHelpForConnectDevice}"  Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoConnectDevice}"  FontSize="12"/>
+                                </StackPanel>
+                                <ListBox Visibility="{Binding ListVisibility}" DisplayMemberPath="{Binding DisplayMemeberPath}" ItemsSource="{Binding Devices}" SelectedItem="{Binding Selected,Mode=TwoWay}"/>
+                            </Grid>
+                        </DockPanel>
+                    </materialDesign:Card>
                 </Grid>
             </TabItem>
         </dragablz:TabablzControl>

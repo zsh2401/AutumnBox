@@ -20,6 +20,20 @@ namespace AutumnBox.GUI.ViewModel
 {
     class VMPanelMain : ViewModelBase
     {
+        public FlexiableCommand Donate
+        {
+            get
+            {
+                return _donate;
+            }
+            set
+            {
+                _donate = value;
+                RaisePropertyChanged();
+            }
+        }
+        private FlexiableCommand _donate;
+
         public ICommand StartShell { get; private set; }
         public ICommand ShowSettingsDialog { get; private set; }
         public int TabSelectedIndex
@@ -34,6 +48,10 @@ namespace AutumnBox.GUI.ViewModel
         private int tabSelectedIndex;
         public VMPanelMain()
         {
+            Donate = new FlexiableCommand(() =>
+            {
+                (App.Current.MainWindow as MainWindow).DialogHost.ShowDialog(new ContentDonate());
+            });
             StartShell = new FlexiableCommand(_StartShell);
             ShowSettingsDialog = new FlexiableCommand(_ShowSettingsDialog);
             Util.Bus.DeviceSelectionObserver.Instance.SelectedNoDevice += NoDevice;
