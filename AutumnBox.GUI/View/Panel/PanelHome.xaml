@@ -31,6 +31,8 @@
                         <TextBlock DockPanel.Dock="Bottom"  FontSize="12" Text="{Binding MOTD}" />
                     </DockPanel>
                 </materialDesign:Card>
+                <!--Card size : 320X150-->
+                <!--Image size : 320X110 if have title-->
                 <materialDesign:Card Visibility="{Binding PotdVisibility}" Width="320" Height="150" Margin="10" Background="{DynamicResource CardBackgroundBrush}">
                     <DockPanel>
                         <StackPanel Orientation="Vertical" DockPanel.Dock="Top"  Visibility="{Binding PotdTitleVisibility}">
