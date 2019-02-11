@@ -19,5 +19,7 @@
   <files>
     <file src="bin\Sdk\AutumnBox.Basic.dll" target="lib/net461"/>
   <file src="bin\Sdk\AutumnBox.Basic.xml" target="lib/net461"/>
+    <file src="bin\Sdk\AutumnBox.Logging.xml" target="lib/net461"/>
+    <file src="bin\Sdk\AutumnBox.Logging.dll" target="lib/net461"/>
   </files>
 </package>

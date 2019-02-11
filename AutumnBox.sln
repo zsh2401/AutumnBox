@@ -240,8 +240,8 @@ Global
 		{F90CB434-6ED4-4244-9D78-C8016F0856C1}.Release|x64.Build.0 = Release|Any CPU
 		{F90CB434-6ED4-4244-9D78-C8016F0856C1}.Release|x86.ActiveCfg = Release|Any CPU
 		{F90CB434-6ED4-4244-9D78-C8016F0856C1}.Release|x86.Build.0 = Release|Any CPU
-		{F90CB434-6ED4-4244-9D78-C8016F0856C1}.SDK|Any CPU.ActiveCfg = Release|Any CPU
-		{F90CB434-6ED4-4244-9D78-C8016F0856C1}.SDK|Any CPU.Build.0 = Release|Any CPU
+		{F90CB434-6ED4-4244-9D78-C8016F0856C1}.SDK|Any CPU.ActiveCfg = SDK|Any CPU
+		{F90CB434-6ED4-4244-9D78-C8016F0856C1}.SDK|Any CPU.Build.0 = SDK|Any CPU
 		{F90CB434-6ED4-4244-9D78-C8016F0856C1}.SDK|ARM.ActiveCfg = Release|Any CPU
 		{F90CB434-6ED4-4244-9D78-C8016F0856C1}.SDK|ARM.Build.0 = Release|Any CPU
 		{F90CB434-6ED4-4244-9D78-C8016F0856C1}.SDK|x64.ActiveCfg = Release|Any CPU
@@ -264,7 +264,7 @@ Global
 		{F90CB434-6ED4-4244-9D78-C8016F0856C1} = {FA99B881-45A3-4D66-8ECE-9D65DFC57C48}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.PolicyInjection.6.0.1304.0\lib\NET45
 		SolutionGuid = {E8E55705-AE5C-4952-B4C7-9D7F81C38731}
+		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.PolicyInjection.6.0.1304.0\lib\NET45
 	EndGlobalSection
 EndGlobal
