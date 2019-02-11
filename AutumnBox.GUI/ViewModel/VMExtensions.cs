@@ -149,17 +149,10 @@ namespace AutumnBox.GUI.ViewModel
         }
         private void ComObserver()
         {
-            if (OpenFxObserver.Instance.IsLoaded)
+            OpenFxObserver.Instance.Loaded += (_, __) =>
             {
                 LoadExtensions();
-            }
-            else
-            {
-                OpenFxObserver.Instance.Loaded += (_, __) =>
-                {
-                    LoadExtensions();
-                };
-            }
+            };
             LanguageManager.Instance.LanguageChanged += (s, e) =>
             {
                 LoadExtensions();
