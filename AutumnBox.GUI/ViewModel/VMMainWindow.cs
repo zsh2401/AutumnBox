@@ -12,7 +12,7 @@ using System.Windows;
 
 namespace AutumnBox.GUI.ViewModel
 {
-    class VMMainWindow : ViewModelBase, AppLoader.ILoadingUI
+    class VMMainWindow : ViewModelBase
     {
         public string Sentence
         {
@@ -24,18 +24,6 @@ namespace AutumnBox.GUI.ViewModel
         }
         private string _sentence;
 
-        public string Version
-        {
-            get
-            {
-                return _version;
-            }
-            set
-            {
-                _version = value;
-                RaisePropertyChanged();
-            }
-        }
         private string _version;
 
         public string Title
@@ -61,13 +49,10 @@ namespace AutumnBox.GUI.ViewModel
             {
                 InitTitle();
             };
-#if PREVIEW
-            Version = $"{Self.Version.ToString(3)} {App.Current.Resources["VersionTypePreview"]}";
-#elif DEBUG
-            Version = $"{Self.Version.ToString(3)} {App.Current.Resources["VersionTypeBeta"]}";
-#else
-            Version = $"{Self.Version.ToString(3)} {App.Current.Resources["VersionTypeStable"]}";
-#endif
+            AppLoader.Instance.Loaded += (s, e) =>
+            {
+                TranSelectIndex++;
+            };
         }
 
         private void Instance_LanguageChanged(object sender, EventArgs e)
@@ -91,33 +76,6 @@ namespace AutumnBox.GUI.ViewModel
             }
         }
 
-        public double Progress
-        {
-            get => progress; set
-            {
-                App.Current.Dispatcher.Invoke(() =>
-                {
-                    progress = value;
-                    RaisePropertyChanged();
-                });
-            }
-        }
-        private double progress = 10;
-
-        public string LoadingTip
-        {
-            get => loadingTip; set
-            {
-                App.Current.Dispatcher.Invoke(() =>
-                {
-                    loadingTip = value;
-                    RaisePropertyChanged();
-                });
-
-            }
-        }
-        private string loadingTip;
-
         public int TranSelectIndex
         {
             get => tranIndex; set
@@ -130,17 +88,6 @@ namespace AutumnBox.GUI.ViewModel
             }
         }
         private int tranIndex = 0;
-
-        public void LoadAsync(Action callback = null)
-        {
-            new AppLoader(this).LoadAsync(callback);
-        }
-
-        public void Finish()
-        {
-            TranSelectIndex++;
-            ResizeMode = ResizeMode.CanResize;
-        }
 
         public ResizeMode ResizeMode
         {
