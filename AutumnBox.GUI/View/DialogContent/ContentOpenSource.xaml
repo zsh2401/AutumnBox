@@ -16,7 +16,7 @@
     <DockPanel>
         <Grid Margin="5" DockPanel.Dock="Left" Width="400">
             <StackPanel VerticalAlignment="Top">
-                <Image Width="200" Source="/Resources/Drawable/github.png"/>
+                <materialDesign:PackIcon  HorizontalAlignment="Center" Kind="GithubCircle" Margin="20" Height="200" Width="200"></materialDesign:PackIcon>
                 <TextBlock TextAlignment="Center" FontSize="25" Text="{DynamicResource OpenSourceWindowTitle}"/>
                 <TextBlock TextAlignment="Center" TextWrapping="Wrap" Text="{DynamicResource OpenSourceWindowDescription}"/>
                 <StackPanel Margin="0,20,0,0" HorizontalAlignment="Center" Orientation="Horizontal">
