@@ -24,7 +24,6 @@ namespace AutumnBox.GUI.ViewModel
         }
         private string _sentence;
 
-        private string _version;
 
         public string Title
         {
@@ -55,21 +54,15 @@ namespace AutumnBox.GUI.ViewModel
             };
         }
 
-        private void Instance_LanguageChanged(object sender, EventArgs e)
-        {
-            InitTitle();
-        }
-
         private void InitTitle()
         {
 #if PREVIEW
             Title = $"{App.Current.Resources["AppName"]}-{Self.Version.ToString(3)}-{App.Current.Resources["VersionTypePreview"]}";
-#elif DEBUG
-            Title = $"{App.Current.Resources["AppName"]}-{Self.Version.ToString(3)}-{App.Current.Resources["VersionTypeBeta"]}";
 #elif RELEASE
-            Title = $"{App.Current.Resources["AppName"]}-{Self.Version.ToString(3)}";
+            Title = $"{App.Current.Resources["AppName"]}-{Self.Version.ToString(3)}-{App.Current.Resources["VersionTypeStable"]}";
+#else
+            Title = $"{App.Current.Resources["AppName"]}-{Self.Version.ToString(3)}-{App.Current.Resources["VersionTypeBeta"]}";
 #endif
-
             if (Self.HaveAdminPermission)
             {
                 Title += " " + App.Current.Resources["TitleSuffixAdmin"];
