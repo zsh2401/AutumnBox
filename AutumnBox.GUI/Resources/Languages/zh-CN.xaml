@@ -712,16 +712,12 @@
     </s:String>
     
     <!--关于信息-->
-    <s:String x:Key="AboutMessage">这是一个遵守LGPL3.0协议的开源软件,请在必要的时候遵守开源协议
-开发者电子邮件 zsh2401@163.com
-        
-鸣谢以下公司和项目做出的卓越贡献(排名不分先后)
- Newtonsoft.Json  | Google | Android | Linux | C# | Microsoft | MaterialDesignInXaml
-        
-感谢以下人员在AutumnBox初期给予的支持(排名不分先后)
+    <s:String x:Key="AboutMessage">秋之盒是一个ADB图形化工具箱,让你用最简单的方式通过ADB对手机进行操作,帮助小白,方便老鸟
+秋之盒目前以LGPL3.0进行开源,安全,免费,值得信任,在必要时,也请您遵守开源协议
+鸣谢:
 MonoLogueChi,饼干怪兽,hxy,yume,白瀛,web1n,咖枯,毛线没有团团,my0402
-        
-如果你也做出了卓越贡献但未被记录,请联系我!</s:String>
+Newtonsoft.Json  | Google | Android | Linux | C# | Microsoft | MaterialDesignInXaml 
+    </s:String>
     <!--关于信息-->
 
     <s:String x:Key="warningOpenNetDebugging">
