@@ -16,44 +16,66 @@
     </UserControl.DataContext>
     <DockPanel LastChildFill="False">
 
-        <DockPanel DockPanel.Dock="Right" MinWidth="200" MaxWidth="200">
-            <StackPanel DockPanel.Dock="Bottom" VerticalAlignment="Bottom" Orientation="Vertical">
-                <oftheday:MOTD  Height="95" />
-                <oftheday:POTD Height="142" Margin="0,0,0,10"/>
-                <Button Style="{DynamicResource MaterialDesignFlatButton}" Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoDownloadExtensions}"  FontSize="14"  Margin="5,0,5,5">
-                    <StackPanel Width="130" Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="ViewModule" />
-                        <TextBlock Margin="10,0,0,0" VerticalAlignment="Center" Text="{DynamicResource PanelMainBtnDlExt}"/>
-                    </StackPanel>
-                </Button>
-                <Button Style="{DynamicResource MaterialDesignFlatButton}" Command="{Binding StartShell}"  FontSize="14"  Margin="5,0,5,5">
-                    <StackPanel Width="130" Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="Console" Height="20"/>
-                        <TextBlock Margin="10,0,0,0" VerticalAlignment="Center" Text="{DynamicResource btnADBCMD}"/>
-                    </StackPanel>
-                </Button>
-                <Button  Style="{DynamicResource MaterialDesignFlatButton}" Command="{Binding ShowSettingsDialog}"   FontSize="14"   Margin="5,0,5,5" >
-                    <StackPanel Width="130" Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="Settings" Height="20"/>
-                        <TextBlock Margin="10,0,0,0" VerticalAlignment="Center" Text="{DynamicResource btnSetting}"/>
-                    </StackPanel>
-                </Button>
-            </StackPanel>
+        <DockPanel DockPanel.Dock="Right" MinWidth="200" MaxWidth="200" >
+            <materialDesign:Card DockPanel.Dock="Bottom" Margin="2,5,0,0">
+                <StackPanel>
+                    <Button Margin="5" Style="{DynamicResource MaterialDesignFlatButton}" Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoDownloadExtensions}"  FontSize="14">
+                        <StackPanel Width="130" Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="ViewModule" />
+                            <TextBlock Margin="10,0,0,0" VerticalAlignment="Center" Text="{DynamicResource PanelMainBtnDlExt}"/>
+                        </StackPanel>
+                    </Button>
+                    <Button Margin="0,5,0,0" Style="{DynamicResource MaterialDesignFlatButton}" Command="{Binding Donate}"  FontSize="14">
+                        <StackPanel Width="130" Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Heart" />
+                            <TextBlock Margin="10,0,0,0" VerticalAlignment="Center" Text="{DynamicResource Donate}"/>
+                        </StackPanel>
+                    </Button>
+                    <Button Margin="0,5,0,0" Style="{DynamicResource MaterialDesignFlatButton}" Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoHelp}"  FontSize="14">
+                        <StackPanel Width="130" Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Notebook" />
+                            <TextBlock Margin="10,0,0,0" VerticalAlignment="Center" Text="{DynamicResource PanelHomeManual}"/>
+                        </StackPanel>
+                    </Button>
+                    <Button Style="{DynamicResource MaterialDesignFlatButton}" Command="{Binding StartShell}"  FontSize="14">
+                        <StackPanel Width="130" Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Console" Height="20"/>
+                            <TextBlock Margin="10,0,0,0" VerticalAlignment="Center" Text="{DynamicResource btnADBCMD}"/>
+                        </StackPanel>
+                    </Button>
+                    <Button Style="{DynamicResource MaterialDesignFlatButton}" Command="{Binding ShowSettingsDialog}"   FontSize="14" >
+                        <StackPanel Width="130" Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Settings" Height="20"/>
+                            <TextBlock Margin="10,0,0,0" VerticalAlignment="Center" Text="{DynamicResource btnSetting}"/>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+            </materialDesign:Card>
             <local:PanelDevices DockPanel.Dock="Top" x:Name="PanelDevices" MinHeight="250"/>
         </DockPanel>
-        
+
         <dockablz:Layout  DockPanel.Dock="Left">
-            <dragablz:TabablzControl BorderThickness="0,0,1,0" Style="{DynamicResource MaterialDesignTabablzControlStyle}" SelectedIndex="{Binding TabSelectedIndex,Mode=TwoWay}" >
+            <dragablz:TabablzControl BorderThickness="0,0,0,0" Style="{DynamicResource MaterialDesignTabablzControlStyle}" SelectedIndex="{Binding TabSelectedIndex,Mode=TwoWay}" >
                 <TabItem TabIndex="0" Header="{DynamicResource PanelMainStart}"  FontSize="16">
-                    <local:PanelHome/>
+                    <Grid  x:Name="mTabItem">
+                        <materialDesign:Card Margin="0,0,5,0" Height="{Binding ElementName=mTabItem,Path=ActualHeight}">
+                            <ScrollViewer HorizontalScrollBarVisibility="Disabled"  Template="{DynamicResource AtmbxScrollViewer}" VerticalScrollBarVisibility="Hidden">
+                                <local:PanelHome/>
+                            </ScrollViewer>
+                        </materialDesign:Card>
+                    </Grid>
                 </TabItem>
                 <TabItem TabIndex="1" Header="{DynamicResource PanelMainCurrent}"  FontSize="16">
-                    <local:PanelCurrentDevice/>
+                    <materialDesign:Card Margin="0,0,5,0" Height="{Binding ElementName=mTabItem,Path=ActualHeight}">
+                        <local:PanelCurrentDevice/>
+                    </materialDesign:Card>
                 </TabItem>
                 <TabItem  TabIndex="2" Header="{DynamicResource PanelMainMore}"  FontSize="16">
-                    <ScrollViewer HorizontalScrollBarVisibility="Disabled"  Template="{DynamicResource AtmbxScrollViewer}" VerticalScrollBarVisibility="Hidden">
-                        <local:PanelMore/>
-                    </ScrollViewer>
+                    <materialDesign:Card Margin="0,0,5,0" Height="{Binding ElementName=mTabItem,Path=ActualHeight}">
+                        <ScrollViewer HorizontalScrollBarVisibility="Disabled"  Template="{DynamicResource AtmbxScrollViewer}" VerticalScrollBarVisibility="Hidden">
+                            <local:PanelMore/>
+                        </ScrollViewer>
+                    </materialDesign:Card>
                 </TabItem>
             </dragablz:TabablzControl>
         </dockablz:Layout>

@@ -7,21 +7,44 @@
              Foreground="{DynamicResource MainBackgroundForegroundBrush}"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:viewmodel="clr-namespace:AutumnBox.GUI.ViewModel"
-             mc:Ignorable="d" d:DesignHeight="566" d:DesignWidth="821">
+             mc:Ignorable="d" d:DesignWidth="821">
     <UserControl.DataContext>
         <viewmodel:VMHome/>
     </UserControl.DataContext>
     <Grid>
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="5">
-            <Image Height="100px" Source="/Resources/Drawable/icon.ico"></Image>
-            <StackPanel>
-                <TextBlock Text="{DynamicResource AppNameWithVersion}"  FontSize="25px"></TextBlock>
-                <TextBlock Margin="0,0,0,0" FontSize="12px" TextWrapping="Wrap" Text="{DynamicResource AboutMessage}" VerticalAlignment="Top"/>
+        <DockPanel>
+            <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="5">
+                <Image Height="100px" Source="/Resources/Drawable/icon.ico"></Image>
+                <StackPanel>
+                    <TextBlock Text="{DynamicResource AppNameWithVersion}"  FontSize="25px"></TextBlock>
+                    <TextBlock Margin="0,0,0,0" FontSize="12px" TextWrapping="Wrap" Text="{DynamicResource AboutMessage}" VerticalAlignment="Top"/>
+                </StackPanel>
             </StackPanel>
-        </StackPanel>
 
-        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Bottom"  Margin="0,0,0,10">
-            <StackPanel Orientation="Horizontal">
+            <WrapPanel DockPanel.Dock="Bottom" Width="680">
+                <materialDesign:Card Visibility="{Binding MotdVisibility}" Width="320" Height="150" Margin="10" Background="{DynamicResource CardBackgroundBrush}">
+                    <DockPanel>
+                        <StackPanel DockPanel.Dock="Top" Visibility="{Binding MotdTitleVisibility}">
+                            <TextBlock Margin="2" Text="{Binding MOTDTitle}" DockPanel.Dock="Top" FontSize="18"/>
+                            <Separator  Grid.Row="2" Style="{StaticResource MaterialDesignDarkSeparator}" Margin="0"/>
+                        </StackPanel>
+                        <TextBlock DockPanel.Dock="Bottom"  FontSize="12" Text="{Binding MOTD}" />
+                    </DockPanel>
+                </materialDesign:Card>
+                <materialDesign:Card Visibility="{Binding PotdVisibility}" Width="320" Height="150" Margin="10" Background="{DynamicResource CardBackgroundBrush}">
+                    <DockPanel>
+                        <StackPanel Orientation="Vertical" DockPanel.Dock="Top"  Visibility="{Binding PotdTitleVisibility}">
+                            <TextBlock Margin="2" FontSize="18" Text="{Binding POTDTitle}"/>
+                            <Separator Grid.Row="2" Style="{StaticResource MaterialDesignDarkSeparator}" Margin="0"/>
+                        </StackPanel>
+                        <Image DockPanel.Dock="Bottom" Source="{Binding POTD}" Stretch="Fill">
+                            <Image.InputBindings>
+                                <MouseBinding MouseAction="LeftClick" Command="{Binding OpenUrl}" CommandParameter="{Binding POTDTarget}"></MouseBinding>
+                            </Image.InputBindings>
+                        </Image>
+                    </DockPanel>
+                </materialDesign:Card>
+
                 <materialDesign:Card Margin="10" Background="{DynamicResource CardBackgroundBrush}">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/Drawable/Home/donate.png" Margin="20" Height="110"></Image>
@@ -43,8 +66,7 @@
                         </StackPanel>
                     </StackPanel>
                 </materialDesign:Card>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" >
+
                 <materialDesign:Card Margin="10" Background="{DynamicResource CardBackgroundBrush}">
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="HelpBox" Margin="20" Width="110" Height="110"></materialDesign:PackIcon>
@@ -66,7 +88,7 @@
                         </StackPanel>
                     </StackPanel>
                 </materialDesign:Card>
-            </StackPanel>
-        </StackPanel>
+            </WrapPanel>
+        </DockPanel>
     </Grid>
 </UserControl>

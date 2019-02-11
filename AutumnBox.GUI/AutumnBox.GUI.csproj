@@ -165,7 +165,9 @@
     <Compile Include="Util\Debugging\LoggingStation.cs" />
     <Compile Include="Util\Effect\Sounds.cs" />
     <Compile Include="Util\FatalHandler.cs" />
+    <Compile Include="Util\Net\DuoduoMOTDGetter.cs" />
     <Compile Include="Util\Net\JsonGetter.cs" />
+    <Compile Include="Util\Net\LiupeiqiangPOTDGetter.cs" />
     <Compile Include="Util\Net\ToastMotdGetter.cs" />
     <Compile Include="Util\OpenFxManagement\GUIApiManager.cs" />
     <Compile Include="Util\OS\OSInfo.cs" />

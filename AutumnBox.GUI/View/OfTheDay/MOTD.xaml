@@ -13,6 +13,6 @@
         <viewmodel:VMMotd/>
     </UserControl.DataContext>
     <Grid>
-        <TextBox BorderThickness="0,1,0,1" Style="{x:Null}" TextWrapping="Wrap" BorderBrush="{DynamicResource PrimaryDarkBrush}" IsReadOnly="True" Text="{Binding Motd}"/>
+        <TextBox BorderThickness="0" Style="{x:Null}" TextWrapping="Wrap" BorderBrush="{DynamicResource PrimaryDarkBrush}" IsReadOnly="True" Text="{Binding Motd}"/>
     </Grid>
 </UserControl>
