@@ -118,7 +118,7 @@ namespace AutumnBox.GUI.Util
         private void InitErrorHandlerSystem()
         {
 #if !DEBUG
-            this.DispatcherUnhandledException += FatalHandler.Current_DispatcherUnhandledException;
+            App.Current.DispatcherUnhandledException += FatalHandler.Current_DispatcherUnhandledException;
 #endif
         }
         private void InitLogSystem()
