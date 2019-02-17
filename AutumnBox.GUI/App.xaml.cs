@@ -12,6 +12,8 @@
 *
 \* =============================================================================*/
 using AutumnBox.GUI.Util;
+using AutumnBox.GUI.Util.Net;
+using System;
 using System.Windows;
 namespace AutumnBox.GUI
 {
@@ -21,6 +23,7 @@ namespace AutumnBox.GUI
     /// </summary>
     public partial class App : Application
     {
+        public const int ERR_BANNED_VERSION = 2501;
         public App() : base()
         {
             Current = this;
@@ -42,6 +45,12 @@ namespace AutumnBox.GUI
         {
             base.OnExit(e);
             AppUnloader.Instance.Unload();
+            if (e.ApplicationExitCode == ERR_BANNED_VERSION)
+            {
+                string banned = Resources["CurrentVersionHasBeenBanned"].ToString();
+                string message = $"{banned}{Environment.NewLine}{Banner.Reason}";
+                MessageBox.Show(message, banned, MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
         }
     }
 }

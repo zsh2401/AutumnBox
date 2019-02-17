@@ -6,12 +6,13 @@
 using AutumnBox.GUI.Properties;
 using AutumnBox.GUI.Util.Debugging;
 using AutumnBox.GUI.Util.Net;
+using AutumnBox.GUI.Util.Net.Getters;
 using AutumnBox.GUI.View.Windows;
 using AutumnBox.Logging;
 using System;
 using System.Threading.Tasks;
 
-namespace AutumnBox.GUI.Util
+namespace AutumnBox.GUI.Util.Net
 {
     internal static class Updater
     {

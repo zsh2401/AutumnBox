@@ -8,7 +8,7 @@ using AutumnBox.Logging;
 using Newtonsoft.Json;
 using System.IO;
 
-namespace AutumnBox.GUI.Util.Net
+namespace AutumnBox.GUI.Util.Net.Getters
 {
     internal class PotdGetter : JsonGetter<PotdGetter.Result>
     {

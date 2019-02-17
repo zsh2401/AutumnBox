@@ -14,6 +14,8 @@
     <s:String x:Key="AppDesc">Open source,free,simple,GUI adb toolbox</s:String>
     <s:String x:Key="TitleSuffixAdmin">[Administrator]</s:String>
         
+      <s:String x:Key="CurrentVersionHasBeenBanned">The current version has been banned</s:String>
+    
     <s:String x:Key="UserLicenseTitle">User License</s:String>
     <s:String x:Key="UserLicenseContent">This agreement is still being prepared, and the final interpretation is owned by zsh2401.
 You are welcome to use the AutumnBox (hereinafter referred to as software).

@@ -7,6 +7,7 @@ using AutumnBox.GUI.MVVM;
 using AutumnBox.GUI.Properties;
 using AutumnBox.GUI.Util;
 using AutumnBox.GUI.Util.Net;
+using AutumnBox.GUI.Util.Net.Getters;
 using System.Diagnostics;
 using System.Windows.Input;
 

@@ -11,6 +11,7 @@ using AutumnBox.GUI.Util.Bus;
 using AutumnBox.GUI.Util.Custom;
 using AutumnBox.GUI.Util.Debugging;
 using AutumnBox.GUI.Util.I18N;
+using AutumnBox.GUI.Util.Net;
 using AutumnBox.GUI.Util.OS;
 using AutumnBox.GUI.View.Windows;
 using AutumnBox.OpenFramework.ExtLibrary;

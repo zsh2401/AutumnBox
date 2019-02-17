@@ -13,7 +13,7 @@
 \* =============================================================================*/
 using Newtonsoft.Json;
 
-namespace AutumnBox.GUI.Util.Net
+namespace AutumnBox.GUI.Util.Net.Getters
 {
     [JsonObject(MemberSerialization.OptOut)]
     internal class MOTDResult

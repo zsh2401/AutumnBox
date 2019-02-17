@@ -11,10 +11,14 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AutumnBox.GUI.Util.Net
+namespace AutumnBox.GUI.Util.Net.Getters
 {
     internal abstract class JsonGetter<TResultObject>
     {
+        public interface IJsonSettable
+        {
+            string Json { set; }
+        }
         protected readonly WebClient webClient;
 
         public abstract string Url { get; }
@@ -62,6 +66,10 @@ namespace AutumnBox.GUI.Util.Net
         protected virtual TResultObject ParseJson(string json)
         {
             var obj = JsonConvert.DeserializeObject<TResultObject>(json);
+            if (obj is IJsonSettable jsonSettable)
+            {
+                jsonSettable.Json = json;
+            }
             return obj;
         }
 

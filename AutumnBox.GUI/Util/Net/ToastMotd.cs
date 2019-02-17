@@ -4,9 +4,10 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.GUI.Util.Net;
+using AutumnBox.GUI.Util.Net.Getters;
 using AutumnBox.GUI.View.Windows;
 
-namespace AutumnBox.GUI.Util
+namespace AutumnBox.GUI.Util.Net
 {
     static class ToastMotd
     {

@@ -5,7 +5,7 @@
 *************************************************/
 using Newtonsoft.Json;
 
-namespace AutumnBox.GUI.Util.Net
+namespace AutumnBox.GUI.Util.Net.Getters
 {
     internal class ToastMotdGetter : JsonGetter<ToastMotdGetter.Result>
     {

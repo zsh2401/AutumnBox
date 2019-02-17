@@ -17,7 +17,7 @@ using Newtonsoft.Json;
 using System;
 using System.Text;
 
-namespace AutumnBox.GUI.Util.Net
+namespace AutumnBox.GUI.Util.Net.Getters
 {
 
     internal class RemoteVersionInfoGetter : JsonGetter<RemoteVersionInfoGetter.Result>

@@ -208,6 +208,7 @@ namespace AutumnBox.GUI.Util
             });
             Statistics.Do();
             ToastMotd.Do();
+            Banner.Check();
         }
         private void OnLoading()
         {
