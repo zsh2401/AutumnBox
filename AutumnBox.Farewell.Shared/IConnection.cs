@@ -9,7 +9,7 @@ namespace AutumnBox.Farewell
     {
         IDevice Owner { get; }
         void Connect();
-        object ExecuteCommand(string command);
+        byte[] ExecuteCommand(string command);
         bool IsAlive { get; }
         event EventHandler<ConnectionConnnectedEventArgs> Connected;
         event EventHandler<ConnectionDisposedEventArgs> Disposed;

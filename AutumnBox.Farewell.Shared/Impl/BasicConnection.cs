@@ -20,7 +20,7 @@ namespace AutumnBox.Farewell.Impl
             throw new NotImplementedException();
         }
 
-        public object ExecuteCommand(string command)
+        public byte[] ExecuteCommand(string command)
         {
             throw new NotImplementedException();
         }
