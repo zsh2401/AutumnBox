@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.GUI.Util.Net.Getters
 {
-    class MOTDV2Getter : JsonGetter<MOTDV2Getter.Result>
+    class MotdV2Getter : JsonGetter<MotdV2Getter.Result>
     {
 #if DEBUG
         public override string Url => "http://localhost:24010/_api_/motdv2";

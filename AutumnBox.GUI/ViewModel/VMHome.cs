@@ -157,7 +157,7 @@ namespace AutumnBox.GUI.ViewModel
 
         private void InitPotd()
         {
-            new POTDV2Getter().Advance().ContinueWith((task) =>
+            new PotdV2Getter().Advance().ContinueWith((task) =>
             {
                 if (!task.IsFaulted)
                 {
@@ -179,7 +179,7 @@ namespace AutumnBox.GUI.ViewModel
 
         private void InitMotd()
         {
-            new MOTDV2Getter().Advance().ContinueWith((task) =>
+            new MotdV2Getter().Advance().ContinueWith((task) =>
             {
                 if (!task.IsFaulted)
                 {

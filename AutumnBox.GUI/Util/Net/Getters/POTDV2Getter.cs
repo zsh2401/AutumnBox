@@ -5,7 +5,7 @@ using System.Windows.Media.Imaging;
 
 namespace AutumnBox.GUI.Util.Net.Getters
 {
-    class POTDV2Getter : JsonGetter<POTDV2Getter.Result>
+    class PotdV2Getter : JsonGetter<PotdV2Getter.Result>
     {
 #if DEBUG
         public override string Url => "http://localhost:24010/_api_/potdv2";

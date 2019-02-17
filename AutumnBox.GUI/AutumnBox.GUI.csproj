@@ -153,7 +153,7 @@
     <Compile Include="Model\LibDock.cs" />
     <Compile Include="Model\OpenSourceProject.cs" />
     <Compile Include="Util\AdbManager.cs" />
-    <Compile Include="Util\AlreadyHaveAutumnBoxChecker.cs" />
+    <Compile Include="Util\OS\OtherProcessChecker.cs" />
     <Compile Include="Util\AppLoader.cs" />
     <Compile Include="Util\AppUnloader.cs" />
     <Compile Include="Util\Bus\AtmbContext.cs" />
@@ -166,9 +166,9 @@
     <Compile Include="Util\Effect\Sounds.cs" />
     <Compile Include="Util\FatalHandler.cs" />
     <Compile Include="Util\Net\Banner.cs" />
-    <Compile Include="Util\Net\Getters\MOTDV2Getter.cs" />
+    <Compile Include="Util\Net\Getters\MotdV2Getter.cs" />
     <Compile Include="Util\Net\Getters\JsonGetter.cs" />
-    <Compile Include="Util\Net\Getters\POTDV2Getter.cs" />
+    <Compile Include="Util\Net\Getters\PotdV2Getter.cs" />
     <Compile Include="Util\Net\Getters\ToastMotdGetter.cs" />
     <Compile Include="Util\Net\Getters\VersionBanInfoGetter.cs" />
     <Compile Include="Util\OpenFxManagement\GUIApiManager.cs" />
@@ -190,9 +190,7 @@
     <Compile Include="Util\I18N\ILanguageManager.cs" />
     <Compile Include="Util\I18N\LanguageManager.cs" />
     <Compile Include="Util\Data\IResourceManager.cs" />
-    <Compile Include="Util\Net\Getters\PotdGetter.cs" />
-    <Compile Include="Util\Net\Getters\MOTDGetter.cs" />
-    <Compile Include="Util\Net\Getters\UpdateChecker.cs" />
+    <Compile Include="Util\Net\Getters\RemoteVersionInfoGetter.cs" />
     <Compile Include="MVVM\FlexiableCommand.cs" />
     <Compile Include="Util\OS\ShortcutHelper.cs" />
     <Compile Include="Util\Self.cs" />
@@ -207,9 +205,7 @@
     <Compile Include="ViewModel\VMLeafUI.cs" />
     <Compile Include="ViewModel\VMLibsView.cs" />
     <Compile Include="ViewModel\VMMore.cs" />
-    <Compile Include="ViewModel\VMMotd.cs" />
     <Compile Include="ViewModel\VMPanelMain.cs" />
-    <Compile Include="ViewModel\VMPOTD.cs" />
     <Compile Include="ViewModel\VMReboot.cs" />
     <Compile Include="ViewModel\VMMainWindow.cs" />
     <Compile Include="ViewModel\VMRunningWindow.cs" />
@@ -251,12 +247,6 @@
     </Compile>
     <Compile Include="View\LeafContent\YNView.xaml.cs">
       <DependentUpon>YNView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\OfTheDay\MOTD.xaml.cs">
-      <DependentUpon>MOTD.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\OfTheDay\POTD.xaml.cs">
-      <DependentUpon>POTD.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Panel\PanelCurrentDevice.xaml.cs">
       <DependentUpon>PanelCurrentDevice.xaml</DependentUpon>
@@ -561,14 +551,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\LeafContent\YNView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\OfTheDay\MOTD.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\OfTheDay\POTD.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

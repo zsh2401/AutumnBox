@@ -11,15 +11,12 @@
 * Company: I am free man
 *
 \* =============================================================================*/
-using AutumnBox.GUI.Util.Debugging;
 using AutumnBox.Logging;
 using Newtonsoft.Json;
 using System;
-using System.Text;
 
 namespace AutumnBox.GUI.Util.Net.Getters
 {
-
     internal class RemoteVersionInfoGetter : JsonGetter<RemoteVersionInfoGetter.Result>
     {
         [JsonObject(MemberSerialization.OptOut)]

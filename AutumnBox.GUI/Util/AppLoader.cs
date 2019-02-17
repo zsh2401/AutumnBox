@@ -95,7 +95,7 @@ namespace AutumnBox.GUI.Util
         }
         private void CheckOtherAutumnBox()
         {
-            if (!AlreadyHaveAutumnBoxChecker.Do())
+            if (!OtherProcessChecker.Do())
             {
                 Fail();
             }
