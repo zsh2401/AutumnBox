@@ -31,6 +31,7 @@
     <s:String x:Key="WebApiToastMotd">http://www.atmb.top/_api_/tmotd</s:String>
     <s:String x:Key="WebApiMotdV2">http://www.atmb.top/_api_/motdv2</s:String>
     <s:String x:Key="WebApiPotdV2">http://www.atmb.top/_api_/potdv2</s:String>
+    <s:String x:Key="WebApiBanInfo">http://www.atmb.top/_api_/ban</s:String>
     <!--WEBAPI-->
 
 </ResourceDictionary>

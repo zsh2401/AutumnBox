@@ -3,9 +3,9 @@ using Newtonsoft.Json;
 using System.IO;
 using System.Windows.Media.Imaging;
 
-namespace AutumnBox.GUI.Util.Net
+namespace AutumnBox.GUI.Util.Net.Getters
 {
-    class LiupeiqiangPOTDGetter : JsonGetter<LiupeiqiangPOTDGetter.Result>
+    class POTDV2Getter : JsonGetter<POTDV2Getter.Result>
     {
 #if DEBUG
         public override string Url => "http://localhost:24010/_api_/potdv2";

@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AutumnBox.GUI.Util.Net
+namespace AutumnBox.GUI.Util.Net.Getters
 {
-    class DuoduoMOTDGetter : JsonGetter<DuoduoMOTDGetter.Result>
+    class MOTDV2Getter : JsonGetter<MOTDV2Getter.Result>
     {
 #if DEBUG
         public override string Url => "http://localhost:24010/_api_/motdv2";

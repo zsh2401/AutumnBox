@@ -14,6 +14,7 @@
     <s:String x:Key="AppDesc">开源,简约,免费的图形化ADB工具箱</s:String>
      <s:String x:Key="TitleSuffixAdmin">[管理员模式]</s:String>
     
+    <s:String x:Key="CurrentVersionHasBeenBanned">此版本秋之盒已被禁用!</s:String>
     
     <s:String x:Key="UserLicenseTitle">秋之盒使用协议 1.0</s:String>
     <s:String x:Key="UserLicenseContent">本协议仍然在编写当中,最终解释权归zsh2401所有

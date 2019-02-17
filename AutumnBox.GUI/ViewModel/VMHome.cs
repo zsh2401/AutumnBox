@@ -6,6 +6,7 @@
 
 using AutumnBox.GUI.MVVM;
 using AutumnBox.GUI.Util.Net;
+using AutumnBox.GUI.Util.Net.Getters;
 using AutumnBox.GUI.View.DialogContent;
 using AutumnBox.GUI.View.Windows;
 using AutumnBox.Logging;
@@ -156,7 +157,7 @@ namespace AutumnBox.GUI.ViewModel
 
         private void InitPotd()
         {
-            new LiupeiqiangPOTDGetter().Advance().ContinueWith((task) =>
+            new POTDV2Getter().Advance().ContinueWith((task) =>
             {
                 if (!task.IsFaulted)
                 {
@@ -178,7 +179,7 @@ namespace AutumnBox.GUI.ViewModel
 
         private void InitMotd()
         {
-            new DuoduoMOTDGetter().Advance().ContinueWith((task) =>
+            new MOTDV2Getter().Advance().ContinueWith((task) =>
             {
                 if (!task.IsFaulted)
                 {

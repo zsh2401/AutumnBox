@@ -5,6 +5,7 @@
 *************************************************/
 using AutumnBox.GUI.MVVM;
 using AutumnBox.GUI.Util.Net;
+using AutumnBox.GUI.Util.Net.Getters;
 
 namespace AutumnBox.GUI.ViewModel
 {
