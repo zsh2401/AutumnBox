@@ -246,5 +246,10 @@ namespace AutumnBox.GUI.Util.OpenFxManagement
                     return null;
             }
         }
+
+        public void RefreshExtensionList()
+        {
+            ExtensionViewRefresher.Instance.Refresh();
+        }
     }
 }

@@ -61,6 +61,14 @@ namespace AutumnBox.OpenFramework.Open.Impl
             return sourceApi.GetResouce(key) as TReturn;
         }
 
+        public void RefreshExtensionView()
+        {
+            sourceApi.RunOnUIThread(() =>
+            {
+                sourceApi.RefreshExtensionList();
+            });
+        }
+
         public void RestartApp()
         {
             sourceApi.Restart();

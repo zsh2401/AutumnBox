@@ -10,6 +10,10 @@ namespace AutumnBox.OpenFramework.Open
     public interface IAppManager
     {
         /// <summary>
+        /// 刷新被展示的拓展模块列表
+        /// </summary>
+        void RefreshExtensionView();
+        /// <summary>
         /// 是否应该展示CMD窗口
         /// </summary>
         bool ShouldDisplayCmdWindow { get; }
