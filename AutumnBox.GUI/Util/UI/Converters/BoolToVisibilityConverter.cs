@@ -5,6 +5,7 @@ using System.Windows.Data;
 
 namespace AutumnBox.GUI.Util.UI.Converters
 {
+    [ValueConversion(typeof(object), typeof(Visibility), ParameterType = typeof(BoolToVisibilityConverterParameter))]
     class BoolToVisibilityConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)

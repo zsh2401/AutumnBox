@@ -182,6 +182,7 @@
     <Compile Include="Util\UI\Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="Util\UI\Converters\BoolToVisibilityConverterParameter.cs" />
     <Compile Include="Util\UI\Converters\EndPointConverter.cs" />
+    <Compile Include="Util\UI\Converters\NonBoolConverter.cs" />
     <Compile Include="Util\UI\Converters\NullToVisibilityConverterParameter.cs" />
     <Compile Include="Util\UI\HelpButtonHelper.cs" />
     <Compile Include="Util\UI\Converters\NullToVisibilityConverter.cs" />
