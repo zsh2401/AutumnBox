@@ -36,7 +36,7 @@
                                 <TextBlock Foreground="DarkSlateGray" TextWrapping="Wrap" FontSize="12" Text="{DynamicResource PanelSettingsRandomThemeTip}"/>
                             </StackPanel>
                         </DockPanel>
-                        <DockPanel IsEnabled="{Binding ThemeComboBoxEnabled}">
+                        <DockPanel IsEnabled="{Binding Converter={StaticResource NonBoolConverter},Path=UseRandomTheme}">
                             <ComboBox DockPanel.Dock="Right" ItemsSource="{Binding Themes}" DisplayMemberPath="{Binding ThemeDisplayMemberPath}" SelectedItem="{Binding SelectedTheme}"/>
                             <TextBlock DockPanel.Dock="Left" Margin="0,0,15,0"  VerticalAlignment="Center" Text="{DynamicResource Theme}"/>
                         </DockPanel>
@@ -80,7 +80,7 @@
                             </StackPanel>
 
                         </DockPanel>
-                        <DockPanel IsEnabled="{Binding StartCmdAtDesktopEnable}">
+                        <DockPanel IsEnabled="{Binding UseEnvVarCmd}">
                             <ToggleButton DockPanel.Dock="Right" Style="{DynamicResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding StartCmdAtDesktop}"/>
                             <StackPanel DockPanel.Dock="Left" Orientation="Vertical">
                                 <TextBlock Text="{DynamicResource PanelSettingsCmdAtDesktopTip}"/>
