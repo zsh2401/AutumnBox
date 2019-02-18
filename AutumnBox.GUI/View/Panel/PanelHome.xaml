@@ -12,32 +12,10 @@
     </UserControl.DataContext>
     <Grid>
         <DockPanel>
-            <WrapPanel DockPanel.Dock="Bottom" Width="680">
-                <materialDesign:Card Visibility="{Binding MotdVisibility}" Width="320" Height="150" Margin="10" Background="{DynamicResource CardBackgroundBrush}">
-                    <DockPanel>
-                        <StackPanel DockPanel.Dock="Top" Visibility="{Binding MotdTitleVisibility}">
-                            <TextBlock Margin="2" Text="{Binding MOTDTitle}" DockPanel.Dock="Top" FontSize="18"/>
-                            <Separator  Grid.Row="2" Style="{StaticResource MaterialDesignDarkSeparator}" Margin="0"/>
-                        </StackPanel>
-                        <TextBlock DockPanel.Dock="Bottom"  FontSize="12" Text="{Binding MOTD}" />
-                    </DockPanel>
-                </materialDesign:Card>
-                <!--Card size : 320X150-->
-                <!--Image size : 320X110 if have title-->
-                <materialDesign:Card Visibility="{Binding PotdVisibility}" Width="320" Height="150" Margin="10" Background="{DynamicResource CardBackgroundBrush}">
-                    <DockPanel>
-                        <StackPanel Orientation="Vertical" DockPanel.Dock="Top"  Visibility="{Binding PotdTitleVisibility}">
-                            <TextBlock Margin="2" FontSize="18" Text="{Binding POTDTitle}"/>
-                            <Separator Grid.Row="2" Style="{StaticResource MaterialDesignDarkSeparator}" Margin="0"/>
-                        </StackPanel>
-                        <Image DockPanel.Dock="Bottom" Source="{Binding POTD}" Stretch="Fill">
-                            <Image.InputBindings>
-                                <MouseBinding MouseAction="LeftClick" Command="{Binding OpenUrl}" CommandParameter="{Binding POTDTarget}"></MouseBinding>
-                            </Image.InputBindings>
-                        </Image>
-                    </DockPanel>
-                </materialDesign:Card>
-
+            <!--Card size : 320X150-->
+            <!--Image size : 320X110 if have title-->
+            <WrapPanel x:Name="TipsPanel" DockPanel.Dock="Bottom" Width="680">
+               
                 <materialDesign:Card Margin="10" Background="{DynamicResource CardBackgroundBrush}" Width="660">
                     <DockPanel DockPanel.Dock="Top" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="5">
                         <Image DockPanel.Dock="Left" Height="100px" Source="/Resources/Drawable/icon.ico"></Image>

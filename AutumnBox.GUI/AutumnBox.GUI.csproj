@@ -152,7 +152,9 @@
     <Compile Include="Model\FormatLog.cs" />
     <Compile Include="Model\LibDock.cs" />
     <Compile Include="Model\OpenSourceProject.cs" />
+    <Compile Include="Model\Tip.cs" />
     <Compile Include="Util\AdbManager.cs" />
+    <Compile Include="Util\Net\Getters\TipsGetter.cs" />
     <Compile Include="Util\OS\OtherProcessChecker.cs" />
     <Compile Include="Util\AppLoader.cs" />
     <Compile Include="Util\AppUnloader.cs" />
@@ -177,8 +179,10 @@
     <Compile Include="Util\Net\Statistics.cs" />
     <Compile Include="Util\Net\ToastMotd.cs" />
     <Compile Include="Util\UI\BlurHelper.cs" />
+    <Compile Include="Util\UI\BoolToVisibilityConverter.cs" />
     <Compile Include="Util\UI\EndPointConverter.cs" />
     <Compile Include="Util\UI\HelpButtonHelper.cs" />
+    <Compile Include="Util\UI\NullToVisibilityConverter.cs" />
     <Compile Include="Util\UI\Sentences.cs" />
     <Compile Include="Util\UI\UIHelper.cs" />
     <Compile Include="Model\ChoicerContentStartArgs.cs" />
@@ -211,6 +215,7 @@
     <Compile Include="ViewModel\VMRunningWindow.cs" />
     <Compile Include="Util\Bus\DeviceSelectionObserver.cs" />
     <Compile Include="ViewModel\VMSettingsDialog.cs" />
+    <Compile Include="ViewModel\VMTip.cs" />
     <Compile Include="ViewModel\VMUpdateWindow.cs" />
     <Compile Include="View\DialogContent\ContentConnectNetDevice.xaml.cs">
       <DependentUpon>ContentConnectNetDevice.xaml</DependentUpon>
@@ -280,6 +285,9 @@
     <Compile Include="Util\Extensions.cs" />
     <Compile Include="Util\OpenFxManagement\OpenFrameworkManager.cs" />
     <Compile Include="Util\Data\Md5.cs" />
+    <Compile Include="View\TipCard.xaml.cs">
+      <DependentUpon>TipCard.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Windows\AdbFailedWindow.xaml.cs">
       <DependentUpon>AdbFailedWindow.xaml</DependentUpon>
     </Compile>
@@ -583,6 +591,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Panel\PanelReboot.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TipCard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
