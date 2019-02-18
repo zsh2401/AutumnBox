@@ -8,7 +8,7 @@ using System.Windows.Input;
 
 namespace AutumnBox.GUI.MVVM
 {
-    class FlexiableCommand : ICommand
+    class FlexiableCommand : NotificationObject, ICommand
     {
         public bool CanExecuteProp
         {
@@ -20,6 +20,7 @@ namespace AutumnBox.GUI.MVVM
             {
                 _canExecute = value;
                 CanExecuteChanged?.Invoke(this, new EventArgs());
+                RaisePropertyChanged();
             }
         }
         private bool _canExecute = true;

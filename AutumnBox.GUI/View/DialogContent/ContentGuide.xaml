@@ -18,15 +18,13 @@
     <DockPanel>
         <Grid Margin="20" DockPanel.Dock="Bottom">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                <Button Command="{Binding Cancel}"  Style="{DynamicResource MaterialDesignRaisedButton}" Content="{DynamicResource ContentGuideBtnCancel}">
-                    
-                </Button>
+                <Button  Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"  Style="{DynamicResource MaterialDesignRaisedButton}" Content="{DynamicResource ContentGuideBtnCancel}"/>
                 <Button Command="{Binding Prev}" Margin="25,0,0,0" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource ContentGuideBtnPrev}"/>
             </StackPanel>
 
-            <Button  Visibility="{Binding NextVisibility}" Command="{Binding Next}" HorizontalAlignment="Right" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource ContentGuideBtnNext}">
-            </Button>
-            <Button Visibility="{Binding FinishVisibility}" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" HorizontalAlignment="Right" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource ContentGuideBtnFinish}">
+            <Button  Visibility="{Binding Converter={StaticResource BoolToVisibilityConverter},ConverterParameter={StaticResource VisibleIf_IsTrue},Path=Next.CanExecuteProp}" Command="{Binding Next}" HorizontalAlignment="Right" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource ContentGuideBtnNext}"/>
+
+            <Button Visibility="{Binding Converter={StaticResource BoolToVisibilityConverter},ConverterParameter={StaticResource VisibleIf_IsFalse},Path=Next.CanExecuteProp}" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" HorizontalAlignment="Right" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource ContentGuideBtnFinish}">
                 <Button.CommandParameter>
                     <system:Boolean>True</system:Boolean>
                 </Button.CommandParameter>

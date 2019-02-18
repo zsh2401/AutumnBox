@@ -1,15 +1,10 @@
 ﻿using AutumnBox.GUI.MVVM;
-using AutumnBox.GUI.Util.I18N;
-using MaterialDesignThemes.Wpf;
-using System.Collections.Generic;
-using System.Windows;
-using System.Windows.Input;
 
 namespace AutumnBox.GUI.ViewModel
 {
     class VMGuide : VMSettingsDialog
     {
-        public ICommand Next
+        public FlexiableCommand Next
         {
             get => _next; set
             {
@@ -17,9 +12,9 @@ namespace AutumnBox.GUI.ViewModel
                 RaisePropertyChanged();
             }
         }
-        private ICommand _next;
+        private FlexiableCommand _next;
 
-        public ICommand Cancel
+        public FlexiableCommand Cancel
         {
             get => _cancel; set
             {
@@ -27,27 +22,7 @@ namespace AutumnBox.GUI.ViewModel
                 RaisePropertyChanged();
             }
         }
-        private ICommand _cancel;
-
-        public Visibility NextVisibility
-        {
-            get => _nextVisi; set
-            {
-                _nextVisi = value;
-                RaisePropertyChanged();
-            }
-        }
-        private Visibility _nextVisi = Visibility.Visible;
-
-        public Visibility FinishVisibility
-        {
-            get => _finishVisi; set
-            {
-                _finishVisi = value;
-                RaisePropertyChanged();
-            }
-        }
-        private Visibility _finishVisi = Visibility.Hidden;
+        private FlexiableCommand _cancel;
 
         public FlexiableCommand Prev
         {
@@ -67,13 +42,18 @@ namespace AutumnBox.GUI.ViewModel
                 RaisePropertyChanged();
                 if (Index == ItemsCount - 1)
                 {
-                    NextVisibility = Visibility.Hidden;
-                    FinishVisibility = Visibility.Visible;
+                    Next.CanExecuteProp = false;
+                    Prev.CanExecuteProp = true;
+                }
+                else if (Index == 0)
+                {
+                    Next.CanExecuteProp = true;
+                    Prev.CanExecuteProp = false;
                 }
                 else
                 {
-                    NextVisibility = Visibility.Visible;
-                    FinishVisibility = Visibility.Hidden;
+                    Next.CanExecuteProp = true;
+                    Prev.CanExecuteProp = true;
                 }
             }
         }
@@ -91,8 +71,7 @@ namespace AutumnBox.GUI.ViewModel
 
         public VMGuide()
         {
-            Next = new MVVMCommand(_Next);
-            Cancel = DialogHost.CloseDialogCommand;
+            Next = new FlexiableCommand(_Next);
             Prev = new FlexiableCommand(_Prev)
             {
                 CanExecuteProp = false
@@ -101,17 +80,12 @@ namespace AutumnBox.GUI.ViewModel
 
         private void _Next(object para)
         {
-            Prev.CanExecuteProp = true;
             Index++;
         }
 
         private void _Prev()
         {
             Index--;
-            if (Index == 0)
-            {
-                Prev.CanExecuteProp = false;
-            }
         }
     }
 }

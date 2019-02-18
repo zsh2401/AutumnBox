@@ -43,16 +43,6 @@ namespace AutumnBox.GUI.ViewModel
         }
         private string _stateTip;
 
-        public Visibility InfoPanelVisibility
-        {
-            get => infoPanelVisibility; set
-            {
-                infoPanelVisibility = value;
-                RaisePropertyChanged();
-            }
-        }
-        private Visibility infoPanelVisibility;
-
         public string StateString
         {
             get => stateString; set
@@ -171,15 +161,6 @@ namespace AutumnBox.GUI.ViewModel
         }
         private string androidVersion;
 
-        public int TranSelectIndex
-        {
-            get => selectIndex; set
-            {
-                selectIndex = value;
-                RaisePropertyChanged();
-            }
-        }
-        private int selectIndex = 0;
         #endregion
         public VMDeviceDetails()
         {
@@ -192,6 +173,7 @@ namespace AutumnBox.GUI.ViewModel
         {
             ResetStateStringByCurrentDevice();
         }
+
         private void ResetStateStringByCurrentDevice()
         {
             if (DeviceSelectionObserver.Instance.CurrentDevice == null)
@@ -208,15 +190,11 @@ namespace AutumnBox.GUI.ViewModel
 
         private void SelectedNoDevice(object sender, EventArgs e)
         {
-            InfoPanelVisibility = Visibility.Hidden;
-            TranSelectIndex = 0;
             Reset();
         }
 
         private void SelectedDevice(object sender, EventArgs e)
         {
-            InfoPanelVisibility = Visibility.Visible;
-            TranSelectIndex = 1;
             Reset();
             try
             {
@@ -224,7 +202,6 @@ namespace AutumnBox.GUI.ViewModel
                 {
                     RefreshInformationsThreadMethod(DeviceSelectionObserver.Instance.CurrentDevice);
                 });
-                //By(DeviceSelectionObserver.Instance.CurrentDevice);
             }
             catch (Exception ex)
             {
