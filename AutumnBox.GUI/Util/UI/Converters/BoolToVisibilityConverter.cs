@@ -9,26 +9,35 @@ namespace AutumnBox.GUI.Util.UI.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value is true)
+            if (parameter is null || parameter is BoolToVisibilityConverterParameter.VisibleIf_IsTrue)
             {
-                return Visibility.Visible;
+                return VisibilityIfIsTrue((bool)value);
             }
             else
             {
-                return Visibility.Collapsed;
+                return VisibilityIfIsFalse((bool)value);
             }
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value is Visibility.Visible)
+            if (parameter is null || parameter is BoolToVisibilityConverterParameter.VisibleIf_IsTrue)
             {
-                return true;
+                return value is Visibility.Visible;
             }
             else
             {
-                return false;
+                return !(value is Visibility.Visible);
             }
+        }
+
+        private Visibility VisibilityIfIsTrue(bool v)
+        {
+            return v ? Visibility.Visible : Visibility.Collapsed;
+        }
+        private Visibility VisibilityIfIsFalse(bool v)
+        {
+            return !v ? Visibility.Visible : Visibility.Collapsed;
         }
     }
 }
