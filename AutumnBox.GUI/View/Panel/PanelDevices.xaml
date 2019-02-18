@@ -25,11 +25,11 @@
                                 <Button Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource PanelDevicesDisconnect}" Command="{Binding DisconnectDevice}" FontSize="12"/>
                             </StackPanel>
                             <Grid DockPanel.Dock="Top">
-                                <StackPanel VerticalAlignment="Center" Visibility="{Binding NoDeviceVisibility}">
+                                <StackPanel VerticalAlignment="Center" Visibility="{Binding Converter={StaticResource NullToVisibilityConverter},ConverterParameter={StaticResource VisibleIf_IsNull}, Path=Devices}">
                                     <TextBlock Text="{DynamicResource PanelDevicesNoOne}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Gray" FontSize="14"/>
                                     <Button Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource PanelHelpForConnectDevice}"  Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoConnectDevice}"  FontSize="12"/>
                                 </StackPanel>
-                                <ListBox Visibility="{Binding ListVisibility}" DisplayMemberPath="{Binding DisplayMemeberPath}" ItemsSource="{Binding Devices}" SelectedItem="{Binding Selected,Mode=TwoWay}"/>
+                                <ListBox Visibility="{Binding Converter={StaticResource NullToVisibilityConverter},Path=Devices,ConverterParameter={StaticResource VisibleIf_IsNotNull}}" DisplayMemberPath="{Binding DisplayMemeberPath}" ItemsSource="{Binding Devices}" SelectedItem="{Binding Selected,Mode=TwoWay}"/>
                             </Grid>
                         </DockPanel>
                     </materialDesign:Card>
@@ -37,9 +37,4 @@
             </TabItem>
         </dragablz:TabablzControl>
     </dockablz:Layout>
-    <!--<GroupBox Header="{DynamicResource PanelDevicesTitle}" 
-              Style="{DynamicResource MaterialDesignGroupBox}"
-  materialDesign:ShadowAssist.ShadowDepth="Depth3">
-       
-    </GroupBox>-->
 </UserControl>

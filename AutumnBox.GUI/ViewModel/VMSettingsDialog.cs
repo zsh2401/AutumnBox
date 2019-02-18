@@ -144,17 +144,9 @@ namespace AutumnBox.GUI.ViewModel
                 }
                 RaisePropertyChanged();
                 RaisePropertyChanged(nameof(SelectedTheme));
-                RaisePropertyChanged(nameof(ThemeComboBoxEnabled));
             }
         }
 
-        public bool ThemeComboBoxEnabled
-        {
-            get
-            {
-                return !Settings.Default.RandomTheme;
-            }
-        }
 
         public IEnumerable<ILanguage> Languages
         {
@@ -217,25 +209,13 @@ namespace AutumnBox.GUI.ViewModel
             }
         }
 
-        public bool StartCmdAtDesktopEnable
-        {
-            get
-            {
-                return Settings.Default.EnvVarCmdWindow;
-            }
-            set
-            {
-                RaisePropertyChanged();
-            }
-        }
-
         public bool UseEnvVarCmd
         {
             get => Settings.Default.EnvVarCmdWindow;
             set
             {
                 Settings.Default.EnvVarCmdWindow = value;
-                StartCmdAtDesktopEnable = value;
+                RaisePropertyChanged();
                 if (!value)
                 {
                     StartCmdAtDesktop = false;

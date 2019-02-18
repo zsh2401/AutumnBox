@@ -1,9 +1,11 @@
 ﻿using AutumnBox.Logging;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
-
+using System.Linq;
 namespace AutumnBox.GUI.Util.UI.Converters
 {
     [ValueConversion(typeof(object), typeof(Visibility), ParameterType = typeof(NullToVisibilityConverterParameter))]
@@ -11,7 +13,7 @@ namespace AutumnBox.GUI.Util.UI.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            SLogger.Info(this, $"p:{parameter} v:{value}");
+            SLogger.Info(this, $"p:{parameter} v:{(value ?? "null")}");
             if (parameter is NullToVisibilityConverterParameter.VisibleIf_IsNull)
             {
                 return VisibleIf_IsNull(value);
@@ -40,7 +42,7 @@ namespace AutumnBox.GUI.Util.UI.Converters
         }
         private Visibility VisibleIf_IsNotNull(object v)
         {
-            return v == null ? Visibility.Collapsed : Visibility.Visible;
+            return v != null ? Visibility.Visible : Visibility.Collapsed;
         }
     }
 }
