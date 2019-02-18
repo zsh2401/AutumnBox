@@ -76,16 +76,9 @@ namespace AutumnBox.GUI.ViewModel
             {
                 _enableFullContent = value;
                 RaisePropertyChanged();
-                RaisePropertyChanged(nameof(FullContentVisility));
             }
         }
         private bool _enableFullContent = false;
-
-        public Visibility FullContentVisility
-        {
-            get => _enableFullContent ? Visibility.Visible : Visibility.Hidden;
-            set { }
-        }
 
         public int Progress
         {
