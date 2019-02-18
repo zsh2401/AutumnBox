@@ -10,6 +10,7 @@ using AutumnBox.GUI.Util.Custom;
 using AutumnBox.GUI.Util.Debugging;
 using AutumnBox.GUI.Util.I18N;
 using AutumnBox.GUI.Util.Net;
+using AutumnBox.GUI.Util.Net.Getters;
 using AutumnBox.GUI.Util.OpenFxManagement;
 using AutumnBox.GUI.Util.OS;
 using AutumnBox.GUI.View.DialogContent;

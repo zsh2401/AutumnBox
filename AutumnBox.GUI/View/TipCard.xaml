@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="AutumnBox.GUI.View.TipCard"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AutumnBox.GUI.View"
+             xmlns:viewmodel="clr-namespace:AutumnBox.GUI.ViewModel"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:ui="clr-namespace:AutumnBox.GUI.Util.UI"
+             mc:Ignorable="d" 
+             Width="340" Height="170" x:Name="mCard">
+    <UserControl.DataContext>
+        <viewmodel:VMTip></viewmodel:VMTip>
+    </UserControl.DataContext>
+    <UserControl.Resources>
+        <ui:NullToVisibilityConverter x:Key="nvc"></ui:NullToVisibilityConverter>
+    </UserControl.Resources>
+    <materialDesign:Card Margin="10" Height="150" Width="320">
+        <StackPanel>
+            <TextBlock FontSize="25" Text="{Binding Tip.Title}" Visibility="{Binding Converter={StaticResource nvc},Path=Tip.Title}"/>
+            <Separator Visibility="{Binding Converter={StaticResource nvc},ConverterParameter=Title}"/>
+            <TextBlock Text="{Binding Tip.Content}" Visibility="{Binding Converter={StaticResource nvc},Path=Tip.Content}"/>
+        </StackPanel>
+    </materialDesign:Card>
+</UserControl>
