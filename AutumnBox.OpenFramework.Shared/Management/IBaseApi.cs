@@ -21,6 +21,10 @@ namespace AutumnBox.OpenFramework.Management
     interface IBaseApi
     {
         /// <summary>
+        /// 刷新拓展模块列表
+        /// </summary>
+        void RefreshExtensionList();
+        /// <summary>
         /// 从秋之盒库中获取已实现的View,通常将此View用于DialogHost
         /// </summary>
         /// <param name="viewId"></param>

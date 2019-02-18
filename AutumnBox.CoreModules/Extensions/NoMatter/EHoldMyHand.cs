@@ -31,7 +31,7 @@ namespace AutumnBox.CoreModules.Extensions.Hidden
         private IDevice Device { get; set; }
 
         [LMain]
-        public void Main(IDevice device, ILogger<string> logger, Context context, ILeafUI ui, IUx ux, Dictionary<string, object> data, TextAttrManager manager)
+        public void Main(IDevice device, IAppManager app, ILogger<string> logger, Context context, ILeafUI ui, IUx ux, Dictionary<string, object> data, TextAttrManager manager)
         {
             using (ui)
             {
@@ -47,6 +47,11 @@ namespace AutumnBox.CoreModules.Extensions.Hidden
                     executor.To(e => ui.WriteOutput(e.Text));
                     executor.Adb("help");
                 }
+                CoreLib.Current.TEST = false;
+                app.RefreshExtensionView();
+                ui.ShowMessage("meile!");
+                CoreLib.Current.TEST = true;
+                app.RefreshExtensionView();
                 ui.WriteLine(manager["fuck"]);
                 ui.WriteOutput("fuck asdasjkdshadskjhkj");
                 ui.ShowMessage("WTF\n\n\n\n\n\nasdadas\n\n\nasdasdsahsdkajghsdakjfhsdjkaghsdfjkghjkfsdhgjkshfdjkgfhsjdgkhdskfjghjW");

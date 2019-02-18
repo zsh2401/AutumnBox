@@ -7,6 +7,7 @@ using AutumnBox.OpenFramework.Content;
 using AutumnBox.OpenFramework.ExtLibrary;
 using AutumnBox.OpenFramework.Wrapper;
 using System;
+using System.Collections.Generic;
 using System.Windows;
 
 namespace AutumnBox.CoreModules
@@ -43,6 +44,11 @@ namespace AutumnBox.CoreModules
             Languages.Load("zh-TW", zh_cn);
             Languages.Load("zh-SG", zh_cn);
             Languages.Load("zh-HK", zh_cn);
+        }
+        public bool TEST = true;
+        public override IEnumerable<IExtensionWrapper> GetWrappers()
+        {
+            return TEST ? base.GetWrappers() : null;
         }
         protected override IExtensionWrapper GetWrapperFor(Type extType)
         {
