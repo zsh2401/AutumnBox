@@ -14,7 +14,7 @@
         <viewmodel:VMExtensions/>
     </UserControl.DataContext>
     <Grid>
-        <Grid Visibility="{Binding ExtensionsVisibily}">
+        <Grid Visibility="{Binding Converter={StaticResource NullToVisibilityConverter},ConverterParameter={StaticResource VisibleIf_IsNotNull},Path=Extensions}">
             <ListBox ItemsSource="{Binding Docks}" MinHeight="100" ScrollViewer.VerticalScrollBarVisibility="Hidden">
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
@@ -49,7 +49,7 @@
             </ListBox>
         </Grid>
 
-        <StackPanel Visibility="{Binding NotFoundVisibily}" VerticalAlignment="Center" Orientation="Vertical" HorizontalAlignment="Center">
+        <StackPanel Visibility="{Binding Converter={StaticResource NullToVisibilityConverter},ConverterParameter={StaticResource VisibleIf_IsNull},Path=Extensions}" VerticalAlignment="Center" Orientation="Vertical" HorizontalAlignment="Center">
             <TextBlock FontSize="25" Foreground="{DynamicResource MainBackgroundForegroundBrush}" HorizontalAlignment="Center" Text="{DynamicResource PanelExtensionsNotFound}" RenderTransformOrigin="0.5,0.5"/>
             <Button Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoDownloadExtensions}" FontSize="13" HorizontalAlignment="Center" Content="{DynamicResource PanelExtesnionsDownloadExt}" Style="{DynamicResource MaterialDesignFlatButton}"/>
             <TextBlock Margin="10" FontSize="13" Foreground="{DynamicResource MainBackgroundForegroundBrush}" HorizontalAlignment="Center" VerticalAlignment="Center" Text="I'd love to change the world,but i dont know what to do"/>

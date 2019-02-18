@@ -47,42 +47,12 @@ namespace AutumnBox.GUI.ViewModel
         }
         private bool _extPanelIsEnabled = false;
 
-        public Visibility ExtensionsVisibily
-        {
-            get
-            {
-                return _extVisi;
-            }
-            set
-            {
-                _extVisi = value;
-                RaisePropertyChanged();
-            }
-        }
-        private Visibility _extVisi = Visibility.Collapsed;
-
-        public Visibility NotFoundVisibily
-        {
-            get
-            {
-                return _notFoundVisi;
-            }
-            set
-            {
-                _notFoundVisi = value;
-                RaisePropertyChanged();
-            }
-        }
-        private Visibility _notFoundVisi = Visibility.Visible;
-
         public IEnumerable<IExtensionWrapper> Extensions
         {
             get => _extensions; set
             {
                 _extensions = value;
-                Docks = value.ToDocks();
-                ExtensionsVisibily = _extensions.Count() == 0 ? Visibility.Collapsed : Visibility.Visible;
-                NotFoundVisibily = _extensions.Count() == 0 ? Visibility.Visible : Visibility.Collapsed;
+                Docks = value?.ToDocks();
                 RaisePropertyChanged();
             }
         }
@@ -181,7 +151,14 @@ namespace AutumnBox.GUI.ViewModel
                     State(targetState).Region(LanguageManager.Instance.Current.LanCode).Hide().Dev(Settings.Default.DeveloperMode);
                 App.Current.Dispatcher.Invoke(() =>
                 {
-                    Extensions = filted;
+                    if (filted.Count() == 0)
+                    {
+                        Extensions = null;
+                    }
+                    else
+                    {
+                        Extensions = filted;
+                    }
                 });
             }
             catch (Exception e)
