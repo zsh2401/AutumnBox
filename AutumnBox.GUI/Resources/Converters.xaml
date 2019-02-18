@@ -1,0 +1,6 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:converters="clr-namespace:AutumnBox.GUI.Util.UI.Converters">
+    <converters:NullToVisibilityConverter x:Key="NullToVisibilityConverter"></converters:NullToVisibilityConverter>
+    <converters:EndPointConverter x:Key="EndPointConverter"/>
+</ResourceDictionary>

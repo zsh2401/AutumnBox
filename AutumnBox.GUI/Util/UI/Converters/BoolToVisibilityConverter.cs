@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
 
-namespace AutumnBox.GUI.Util.UI
+namespace AutumnBox.GUI.Util.UI.Converters
 {
     class BoolToVisibilityConverter : IValueConverter
     {

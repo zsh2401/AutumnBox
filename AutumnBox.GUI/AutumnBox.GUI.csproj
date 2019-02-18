@@ -179,10 +179,11 @@
     <Compile Include="Util\Net\Statistics.cs" />
     <Compile Include="Util\Net\ToastMotd.cs" />
     <Compile Include="Util\UI\BlurHelper.cs" />
-    <Compile Include="Util\UI\BoolToVisibilityConverter.cs" />
-    <Compile Include="Util\UI\EndPointConverter.cs" />
+    <Compile Include="Util\UI\Converters\BoolToVisibilityConverter.cs" />
+    <Compile Include="Util\UI\Converters\EndPointConverter.cs" />
+    <Compile Include="Util\UI\Converters\NullToVisibilityConverterParameter.cs" />
     <Compile Include="Util\UI\HelpButtonHelper.cs" />
-    <Compile Include="Util\UI\NullToVisibilityConverter.cs" />
+    <Compile Include="Util\UI\Converters\NullToVisibilityConverter.cs" />
     <Compile Include="Util\UI\Sentences.cs" />
     <Compile Include="Util\UI\UIHelper.cs" />
     <Compile Include="Model\ChoicerContentStartArgs.cs" />
@@ -362,6 +363,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Resources\Converters.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resources\Themes\Dark.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -507,10 +512,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Resources\Themes_Old\DreamTheme_files\ColorAndBrushes.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Resources\Other.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
