@@ -34,7 +34,7 @@
                 </StackPanel>
                 <Grid DockPanel.Dock="Bottom" >
                     <TextBox  TextChanged="TBOutput_TextChanged" IsReadOnly="True"  Style="{x:Null}" BorderBrush="{DynamicResource PrimaryLightBrush}" Text="{Binding Content}" TextWrapping="Wrap"/>
-                    <TextBox Visibility="{Binding FullContentVisility}"  TextChanged="TBOutput_TextChanged" IsReadOnly="True"  Style="{x:Null}" BorderBrush="{DynamicResource PrimaryLightBrush}" Text="{Binding FullContent}" TextWrapping="Wrap"/>
+                    <TextBox Visibility="{Binding Converter={StaticResource BoolToVisibilityConverter},ConverterParameter={StaticResource VisibleIf_IsTrue},Path=EnableFullContent}"  TextChanged="TBOutput_TextChanged" IsReadOnly="True"  Style="{x:Null}" BorderBrush="{DynamicResource PrimaryLightBrush}" Text="{Binding FullContent}" TextWrapping="Wrap"/>
                 </Grid>
             </DockPanel>
         </DockPanel>
