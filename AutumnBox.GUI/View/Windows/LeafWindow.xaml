@@ -8,7 +8,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Icon="{Binding Icon}"
-         MinHeight="300" MinWidth="450" Height="{Binding Height}" Width="{Binding Width}"
+         MinHeight="300" MinWidth="450" Height="{Binding Height,Mode=TwoWay}" Width="{Binding Width,Mode=TwoWay}"
         d:DesignHeight="300" d:DesignWidth="450"
         FontFamily="{DynamicResource AutumnBox.Font}"
         BorderBrush="{DynamicResource PrimaryLightBrush}"

@@ -117,29 +117,6 @@ namespace AutumnBox.GUI.ViewModel
         }
         private string _tip;
 
-        public System.Drawing.Size Size
-        {
-            get
-            {
-                System.Drawing.Size size = new System.Drawing.Size();
-                View.Dispatcher.Invoke(() =>
-                {
-                    size.Height = (int)View.Height;
-                    size.Width = (int)View.Width;
-                });
-                return size;
-            }
-            set
-            {
-                ThrowIfNotRunning();
-                View.Dispatcher.Invoke(() =>
-                {
-                    View.Height = value.Height;
-                    View.Width = value.Width;
-                });
-            }
-        }
-
         public byte[] Icon
         {
             get => _icon; set
@@ -363,7 +340,7 @@ namespace AutumnBox.GUI.ViewModel
             return (task.Result as bool?);
         }
 
-        public object SelectFrom(object[] options, string hint = null)
+        public object SelectFrom(string hint, params object[] options)
         {
             if (options == null)
             {
@@ -407,7 +384,7 @@ namespace AutumnBox.GUI.ViewModel
             return dialogTask;
         }
 
-        public bool DoYN(string message, string btnYes=null, string btnNo=null)
+        public bool DoYN(string message, string btnYes = null, string btnNo = null)
         {
             if (message == null)
             {
