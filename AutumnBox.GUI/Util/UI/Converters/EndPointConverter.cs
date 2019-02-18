@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
 
-namespace AutumnBox.GUI.Util.UI
+namespace AutumnBox.GUI.Util.UI.Converters
 {
     class EndPointConverter : IMultiValueConverter
     {

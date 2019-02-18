@@ -12,14 +12,11 @@
     <UserControl.DataContext>
         <viewmodel:VMTip></viewmodel:VMTip>
     </UserControl.DataContext>
-    <UserControl.Resources>
-        <ui:NullToVisibilityConverter x:Key="nvc"></ui:NullToVisibilityConverter>
-    </UserControl.Resources>
     <materialDesign:Card Margin="10" Height="150" Width="320">
         <StackPanel>
-            <TextBlock FontSize="25" Text="{Binding Tip.Title}" Visibility="{Binding Converter={StaticResource nvc},Path=Tip.Title}"/>
-            <Separator Visibility="{Binding Converter={StaticResource nvc},ConverterParameter=Title}"/>
-            <TextBlock Text="{Binding Tip.Content}" Visibility="{Binding Converter={StaticResource nvc},Path=Tip.Content}"/>
+            <TextBlock FontSize="25" Text="{Binding Tip.Title}" Visibility="{Binding Converter={StaticResource NullToVisibilityConverter},Path=Tip.Title}"/>
+            <Separator Visibility="{Binding Converter={StaticResource NullToVisibilityConverter},ConverterParameter=VisibleIf_IsNotNull,Path=Title}"/>
+            <TextBlock Text="{Binding Tip.Content}" Visibility="{Binding Converter={StaticResource NullToVisibilityConverter},Path=Tip.Content}"/>
         </StackPanel>
     </materialDesign:Card>
 </UserControl>
