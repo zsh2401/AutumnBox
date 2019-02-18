@@ -99,7 +99,7 @@ namespace AutumnBox.OpenFramework.LeafExtension.Kit
         /// <param name="btnYes"></param>
         /// <param name="btnNo"></param>
         /// <returns></returns>
-        bool DoYN(string message, string btnYes=null, string btnNo=null);
+        bool DoYN(string message, string btnYes = null, string btnNo = null);
         /// <summary>
         /// 让用户进行选择
         /// </summary>
@@ -116,9 +116,9 @@ namespace AutumnBox.OpenFramework.LeafExtension.Kit
         /// </summary>
         /// <exception cref="ArgumentNullException"></exception>
         /// <param name="options">选项,至少要有一个值</param>
-        /// <param name="hint">简要提示,不传为默认</param>
+        /// <param name="hint">简要提示,传null为默认</param>
         /// <returns>被选择的那个对象,如果用户取消选择,返回为null</returns>
-        object SelectFrom(object[] options, string hint = null);
+        object SelectFrom(string hint, params object[] options);
 
         /// <summary>
         /// 8.23暂未实现!! 进行选择,将会阻塞至用户完成选择

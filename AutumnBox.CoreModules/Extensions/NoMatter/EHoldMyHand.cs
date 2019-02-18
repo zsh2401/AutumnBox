@@ -59,8 +59,8 @@ namespace AutumnBox.CoreModules.Extensions.Hidden
                 ui.WriteLine(choice.ToString());
                 bool yn = ui.DoYN("FUCK2c   2rqwhewqhehqweqhwewqhejwqhewqjhqwejkqwhewqhWW");
                 ui.WriteLine(yn.ToString());
-                object result = ui.SelectFrom(new object[] { "a", "qqdasdsadasb", "c", "a", "s", "c", "a" }, "选择你要做的SB操作");
-                ui.WriteLine(result);
+                //object result = ui.SelectFrom(new object[] { "a", "qqdasdsadasb", "c", "a", "s", "c", "a" }, "选择你要做的SB操作");
+                //ui.WriteLine(result);
                 ui.Finish();
             }
         }
