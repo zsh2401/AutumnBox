@@ -3,4 +3,5 @@
                     xmlns:converters="clr-namespace:AutumnBox.GUI.Util.UI.Converters">
     <converters:NullToVisibilityConverter x:Key="NullToVisibilityConverter"></converters:NullToVisibilityConverter>
     <converters:EndPointConverter x:Key="EndPointConverter"/>
+    <converters:NonBoolConverter x:Key="NonBoolConverter"/>
 </ResourceDictionary>
