@@ -60,9 +60,7 @@ namespace AutumnBox.OpenFramework.Wrapper
         private void ScanInformations()
         {
             Type interfaceType = typeof(IInformationAttribute);
-            Logger.Debug($"scanning {type}");
             var attrs = type.GetCustomAttributes(true);
-            Logger.Debug($"scanned: " + attrs.Count());
             Informations = new Dictionary<string, IInformationAttribute>();
             var informatons = from attr in attrs
                               where interfaceType.IsAssignableFrom(attr.GetType())
