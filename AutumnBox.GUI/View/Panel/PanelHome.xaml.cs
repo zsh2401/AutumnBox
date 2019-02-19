@@ -61,9 +61,25 @@ namespace AutumnBox.GUI.View.Panel
                 Enumerator = null;
             }
         }
+
         private void AddTipCard(Tip tip)
         {
             var card = new TipCard(tip);
+            switch (tip.Col)
+            {
+                case 1:
+                    StackColume1.Children.Add(card);
+                    break;
+                case 2:
+                    StackColume2.Children.Add(card);
+                    break;
+                default:
+                    AutoAddTipToCol(card);
+                    break;
+            }
+        }
+        private void AutoAddTipToCol(TipCard card)
+        {
             if (StackColume2.ActualHeight < StackColume1.ActualHeight)
             {
                 StackColume2.Children.Add(card);

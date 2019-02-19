@@ -8,6 +8,9 @@ namespace AutumnBox.GUI.Model
     [JsonObject(MemberSerialization.OptOut)]
     class Tip : ModelBase
     {
+        [JsonProperty("col")]
+        public uint? Col { get; set; } = null;
+
         [JsonProperty("title")]
         public string Title { get; set; }
 
