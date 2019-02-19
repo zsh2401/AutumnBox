@@ -15,13 +15,7 @@
             <DockPanel.InputBindings>
                 <MouseBinding MouseAction="LeftDoubleClick" Command="{Binding RefreshTips}"/>
             </DockPanel.InputBindings>
-            <!--Card size : 320X150-->
-            <!--Image size : 320X110 if have title-->
             <WrapPanel x:Name="mWrapPanel" DockPanel.Dock="Bottom" Width="680">
-                <StackPanel Orientation="Horizontal" Width="{Binding ElementName=mWrapPanel,Path=ActualWidth}">
-                    <StackPanel VerticalAlignment="Top" x:Name="StackColume1" Width="340"/>
-                    <StackPanel VerticalAlignment="Top" x:Name="StackColume2" Width="340"/>
-                </StackPanel>
                 <materialDesign:Card Margin="10" Background="{DynamicResource CardBackgroundBrush}" Width="660">
                     <DockPanel DockPanel.Dock="Top" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="5">
                         <Image DockPanel.Dock="Left" Height="100px" Source="/Resources/Drawable/icon.ico"></Image>
@@ -78,8 +72,18 @@
                         </StackPanel>
                     </StackPanel>
                 </materialDesign:Card>
-
             </WrapPanel>
+
+            <Grid DockPanel.Dock="Top" Width="{Binding ElementName=mWrapPanel,Path=ActualWidth}">
+                <StackPanel Orientation="Horizontal" >
+                    <StackPanel VerticalAlignment="Top" x:Name="StackColume1" Width="340"/>
+                    <StackPanel VerticalAlignment="Top" x:Name="StackColume2" Width="340"/>
+                </StackPanel>
+                <StackPanel Visibility="{Binding Converter={StaticResource NullToVisibilityConverter},ConverterParameter={StaticResource VisibleIf_IsNull}, Path=Tips}" Margin="40" HorizontalAlignment="Center" Orientation="Horizontal">
+                    <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}" Value="0" IsIndeterminate="True" Height="25" Width="25"/>
+                    <TextBlock Foreground="Gray" Margin="20,0,0,0" VerticalAlignment="Center" Text="{DynamicResource LoadingWindowMessage}"/>
+                </StackPanel>
+            </Grid>
         </DockPanel>
     </Grid>
 </UserControl>

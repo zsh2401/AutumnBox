@@ -185,6 +185,7 @@
     <Compile Include="Util\UI\Converters\ObjectEqualsToVisibilityConverter.cs" />
     <Compile Include="Util\UI\HelpButtonHelper.cs" />
     <Compile Include="Util\UI\Converters\NullToVisibilityConverter.cs" />
+    <Compile Include="Util\UI\TipsWaterfallFlow.cs" />
     <Compile Include="Util\UI\Sentences.cs" />
     <Compile Include="Util\UI\UIHelper.cs" />
     <Compile Include="Model\ChoicerContentStartArgs.cs" />

@@ -12,6 +12,7 @@ using AutumnBox.GUI.View.DialogContent;
 using AutumnBox.GUI.View.Windows;
 using AutumnBox.Logging;
 using MaterialDesignThemes.Wpf;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -62,6 +63,7 @@ namespace AutumnBox.GUI.ViewModel
         }
         private ICommand _refresh;
 
+
         public IEnumerable<Tip> Tips
         {
             get => _tips; set
@@ -89,6 +91,7 @@ namespace AutumnBox.GUI.ViewModel
 
         private void _RefreshTips()
         {
+            Tips = null;
             new TipsGetter().Advance().ContinueWith(task =>
             {
                 if (task.IsCompleted)

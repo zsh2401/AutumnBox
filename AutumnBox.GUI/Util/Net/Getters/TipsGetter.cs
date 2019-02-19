@@ -14,7 +14,7 @@ namespace AutumnBox.GUI.Util.Net.Getters
         public class Result : IJsonSettable
         {
             [JsonProperty("tips")]
-            public Tip[] Tips { get; set; }
+            public List<Tip> Tips { get; set; }
             public string Json { get; set; }
         }
         public override string Url => "http://localhost:24010/_api_/tips/index.json";
