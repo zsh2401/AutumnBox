@@ -168,9 +168,7 @@
     <Compile Include="Util\Effect\Sounds.cs" />
     <Compile Include="Util\FatalHandler.cs" />
     <Compile Include="Util\Net\Banner.cs" />
-    <Compile Include="Util\Net\Getters\MotdV2Getter.cs" />
     <Compile Include="Util\Net\Getters\JsonGetter.cs" />
-    <Compile Include="Util\Net\Getters\PotdV2Getter.cs" />
     <Compile Include="Util\Net\Getters\ToastMotdGetter.cs" />
     <Compile Include="Util\Net\Getters\VersionBanInfoGetter.cs" />
     <Compile Include="Util\OpenFxManagement\GUIApiManager.cs" />
