@@ -14,8 +14,12 @@
         <DockPanel>
             <!--Card size : 320X150-->
             <!--Image size : 320X110 if have title-->
-            <WrapPanel x:Name="TipsPanel" DockPanel.Dock="Bottom" Width="680">
-               
+            <WrapPanel x:Name="mWrapPanel" DockPanel.Dock="Bottom" Width="680">
+                <Button x:Name="btnRefresh" Command="{Binding RefreshTips}">Refresh(only presents in preview or debug)</Button>
+                <StackPanel Orientation="Horizontal" Width="{Binding ElementName=mWrapPanel,Path=ActualWidth}">
+                    <StackPanel VerticalAlignment="Top" x:Name="StackColume1" Width="340"/>
+                    <StackPanel VerticalAlignment="Top" x:Name="StackColume2" Width="340"/>
+                </StackPanel>
                 <materialDesign:Card Margin="10" Background="{DynamicResource CardBackgroundBrush}" Width="660">
                     <DockPanel DockPanel.Dock="Top" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="5">
                         <Image DockPanel.Dock="Left" Height="100px" Source="/Resources/Drawable/icon.ico"></Image>
@@ -25,7 +29,7 @@
                         </StackPanel>
                     </DockPanel>
                 </materialDesign:Card>
-              
+
 
                 <materialDesign:Card Margin="10" Background="{DynamicResource CardBackgroundBrush}">
                     <StackPanel Orientation="Horizontal">
@@ -37,7 +41,7 @@
                         </StackPanel>
                     </StackPanel>
                 </materialDesign:Card>
-                
+
                 <materialDesign:Card Margin="10" Background="{DynamicResource CardBackgroundBrush}">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/Drawable/Home/donate.png" Margin="20" Height="110"></Image>
@@ -48,7 +52,7 @@
                         </StackPanel>
                     </StackPanel>
                 </materialDesign:Card>
-                
+
                 <materialDesign:Card Margin="10" Background="{DynamicResource CardBackgroundBrush}">
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="EmailVariant" Margin="20" Height="110" Width="110"/>
@@ -72,7 +76,7 @@
                         </StackPanel>
                     </StackPanel>
                 </materialDesign:Card>
-               
+
             </WrapPanel>
         </DockPanel>
     </Grid>

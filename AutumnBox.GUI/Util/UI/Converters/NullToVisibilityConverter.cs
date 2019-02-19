@@ -13,7 +13,6 @@ namespace AutumnBox.GUI.Util.UI.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            SLogger.Info(this, $"p:{parameter} v:{(value ?? "null")}");
             if (parameter is NullToVisibilityConverterParameter.VisibleIf_IsNull)
             {
                 return VisibleIf_IsNull(value);
