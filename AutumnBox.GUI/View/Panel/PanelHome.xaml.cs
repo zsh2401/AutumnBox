@@ -19,9 +19,6 @@ namespace AutumnBox.GUI.View.Panel
         {
             InitializeComponent();
             (DataContext as INotifyPropertyChanged).PropertyChanged += PanelHome_PropertyChanged;
-#if RELEASE
-            btnRefresh.Visibility = System.Windows.Visibility.Collapsed;
-#endif
         }
         private async void PanelHome_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {

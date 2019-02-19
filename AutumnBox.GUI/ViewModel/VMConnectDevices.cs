@@ -27,8 +27,8 @@ namespace AutumnBox.GUI.ViewModel
             {
                 _selected = value;
                 RaisePropertyChanged();
-                RaiseBusEvent();
                 SwitchCommandState();
+                RaiseBusEvent();
             }
         }
         private IDevice _selected;
@@ -42,6 +42,7 @@ namespace AutumnBox.GUI.ViewModel
             set
             {
                 _devices = value?.ToArray();
+                Selected = _devices?.Count() > 0 ? _devices.First() : null;
                 RaisePropertyChanged();
             }
         }
