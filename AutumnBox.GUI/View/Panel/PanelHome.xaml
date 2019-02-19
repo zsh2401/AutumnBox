@@ -12,10 +12,12 @@
     </UserControl.DataContext>
     <Grid>
         <DockPanel>
+            <DockPanel.InputBindings>
+                <MouseBinding MouseAction="LeftDoubleClick" Command="{Binding RefreshTips}"/>
+            </DockPanel.InputBindings>
             <!--Card size : 320X150-->
             <!--Image size : 320X110 if have title-->
             <WrapPanel x:Name="mWrapPanel" DockPanel.Dock="Bottom" Width="680">
-                <Button x:Name="btnRefresh" Command="{Binding RefreshTips}">Refresh(only presents in preview or debug)</Button>
                 <StackPanel Orientation="Horizontal" Width="{Binding ElementName=mWrapPanel,Path=ActualWidth}">
                     <StackPanel VerticalAlignment="Top" x:Name="StackColume1" Width="340"/>
                     <StackPanel VerticalAlignment="Top" x:Name="StackColume2" Width="340"/>

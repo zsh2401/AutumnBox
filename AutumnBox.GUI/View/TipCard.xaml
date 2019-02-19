@@ -12,8 +12,8 @@
     </UserControl.DataContext>
     <materialDesign:Card Margin="10" Width="320">
         <StackPanel Margin="5">
-            <TextBlock DockPanel.Dock="Top" FontSize="22" TextWrapping="Wrap" Text="{Binding Tip.Title}" Visibility="{Binding Converter={StaticResource NullToVisibilityConverter},Path=Tip.Title}"/>
-            <TextBlock TextWrapping="Wrap" Foreground="Gray" Visibility="{Binding Converter={StaticResource NullToVisibilityConverter},Path=Tip.Text}" Text="{Binding Tip.Text}"/>
+            <TextBlock DockPanel.Dock="Top" FontSize="20" TextWrapping="Wrap" Text="{Binding Tip.Title}" Visibility="{Binding Converter={StaticResource NullToVisibilityConverter},Path=Tip.Title}"/>
+            <TextBlock TextWrapping="Wrap" FontSize="12" Foreground="Gray" Visibility="{Binding Converter={StaticResource NullToVisibilityConverter},Path=Tip.Text}" Text="{Binding Tip.Text}"/>
             <Button DockPanel.Dock="Bottom" Visibility="{Binding Converter={StaticResource NullToVisibilityConverter},Path=Tip.Target}" Padding="0" FontSize="13"  Style="{DynamicResource MaterialDesignFlatButton}" HorizontalAlignment="Left"  Command="{Binding OpenUrl}" CommandParameter="{Binding Tip.Target}">
                 <TextBlock TextDecorations="Underline" Text="{DynamicResource PanelHomeLink}"/>
             </Button>
