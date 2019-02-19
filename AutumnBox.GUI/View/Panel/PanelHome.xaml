@@ -13,7 +13,7 @@
     </UserControl.DataContext>
     <Grid>
         <DockPanel>
-            <TextBlock Margin="10" FontSize="6" DockPanel.Dock="Bottom" HorizontalAlignment="Center" Foreground="Gray">But our love was a song sung by a dying swan</TextBlock>
+            <TextBlock Margin="10" FontSize="8" DockPanel.Dock="Bottom" HorizontalAlignment="Center" Foreground="Gray">But our love was a song sung by a dying swan</TextBlock>
 
             <StackPanel>
                 <WrapPanel HorizontalAlignment="Center" DockPanel.Dock="Top">
