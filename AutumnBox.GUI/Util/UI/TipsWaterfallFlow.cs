@@ -1,5 +1,6 @@
 ﻿using AutumnBox.GUI.Model;
 using AutumnBox.GUI.View;
+using AutumnBox.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,6 +35,7 @@ namespace AutumnBox.GUI.Util.UI
             {
                 Clear();
                 if (tips == null) return;
+                SLogger.Info(this,"Refreshing");
                 foreach (var tip in tips)
                 {
                     AddTipCard(tip);

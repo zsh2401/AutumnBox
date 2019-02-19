@@ -154,6 +154,7 @@
     <Compile Include="Model\OpenSourceProject.cs" />
     <Compile Include="Model\Tip.cs" />
     <Compile Include="Util\AdbManager.cs" />
+    <Compile Include="Util\Net\Getters\CstGetter.cs" />
     <Compile Include="Util\Net\Getters\TipsGetter.cs" />
     <Compile Include="Util\OS\OtherProcessChecker.cs" />
     <Compile Include="Util\AppLoader.cs" />

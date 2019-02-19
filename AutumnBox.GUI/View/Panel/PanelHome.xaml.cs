@@ -8,6 +8,7 @@ using System.ComponentModel;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using System.Windows.Markup;
 
 namespace AutumnBox.GUI.View.Panel
 {
@@ -20,14 +21,19 @@ namespace AutumnBox.GUI.View.Panel
         public PanelHome()
         {
             InitializeComponent();
-            flow = new TipsWaterfallFlow(StackColume1,StackColume2);
+            flow = new TipsWaterfallFlow(StackColume1, StackColume2);
             (DataContext as INotifyPropertyChanged).PropertyChanged += PanelHome_PropertyChanged;
         }
         private void PanelHome_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == "Tips")
+            switch (e.PropertyName)
             {
-                flow.TipsChanged((DataContext as VMHome).Tips);
+                case "Tips":
+                    flow.TipsChanged((DataContext as VMHome).Tips);
+                    break;
+                case "CstXamlObject":
+                    FullCustomGrid.Content = (DataContext as VMHome).CstXamlObject;
+                    break;
             }
         }
     }

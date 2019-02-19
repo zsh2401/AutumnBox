@@ -18,7 +18,7 @@ namespace AutumnBox.GUI.Util.Net.Getters
             public string Json { get; set; }
         }
 #if DEBUG
-        public override string Url => "http://localhost:24010/_api_/tips/index.json";
+        public override string Url => "http://localhost:24010/_api_/tips/v1.json";
 #else
         public override string Url => App.Current.Resources["WebApiTips"].ToString();
 #endif
