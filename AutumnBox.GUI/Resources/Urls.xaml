@@ -28,8 +28,8 @@
     <s:String x:Key="WebApiStatistics">http://www.atmb.top/_api_/statistics</s:String>
     <s:String x:Key="WebApiToastMotd">http://www.atmb.top/_api_/tmotd</s:String>
     <s:String x:Key="WebApiBanInfo">http://www.atmb.top/_api_/ban</s:String>
-    <s:String x:Key="WebApiCst">http://www.atmb.top/_api_/cst</s:String>
-    <s:String x:Key="WebApiTips">http://www.atmb.top/_api_/tips</s:String>
+    <s:String x:Key="WebApiCst">"http://atmb.top/_api_/cst/v1.xaml</s:String>
+    <s:String x:Key="WebApiTips">http://www.atmb.top/_api_/tips/v1.json</s:String>
     <!--WEBAPI-->
 
 </ResourceDictionary>
