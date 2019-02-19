@@ -2,21 +2,26 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:AutumnBox.GUI.View"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:viewmodel="clr-namespace:AutumnBox.GUI.ViewModel"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             xmlns:ui="clr-namespace:AutumnBox.GUI.Util.UI"
              mc:Ignorable="d" 
-             Width="340" Height="170" x:Name="mCard">
+             x:Name="mCard">
     <UserControl.DataContext>
         <viewmodel:VMTip></viewmodel:VMTip>
     </UserControl.DataContext>
-    <materialDesign:Card Margin="10" Height="150" Width="320">
-        <StackPanel>
-            <TextBlock FontSize="25" Text="{Binding Tip.Title}" Visibility="{Binding Converter={StaticResource NullToVisibilityConverter},Path=Tip.Title}"/>
-            <Separator Visibility="{Binding Converter={StaticResource NullToVisibilityConverter},ConverterParameter=VisibleIf_IsNotNull,Path=Title}"/>
-            <TextBlock Text="{Binding Tip.Content}" Visibility="{Binding Converter={StaticResource NullToVisibilityConverter},Path=Tip.Content}"/>
+    <materialDesign:Card Margin="10" Width="320">
+        <StackPanel Margin="5">
+            <TextBlock DockPanel.Dock="Top" FontSize="22" TextWrapping="Wrap" Text="{Binding Tip.Title}" Visibility="{Binding Converter={StaticResource NullToVisibilityConverter},Path=Tip.Title}"/>
+            <TextBlock TextWrapping="Wrap" Foreground="Gray" Visibility="{Binding Converter={StaticResource NullToVisibilityConverter},Path=Tip.Text}" Text="{Binding Tip.Text}"/>
+            <Button DockPanel.Dock="Bottom" Visibility="{Binding Converter={StaticResource NullToVisibilityConverter},Path=Tip.Target}" Padding="0" FontSize="13"  Style="{DynamicResource MaterialDesignFlatButton}" HorizontalAlignment="Left"  Command="{Binding OpenUrl}" CommandParameter="{Binding Tip.Target}">
+                <TextBlock TextDecorations="Underline" Text="{DynamicResource PanelHomeLink}"/>
+            </Button>
+            <Image DockPanel.Dock="Top" Visibility="{Binding Converter={StaticResource NullToVisibilityConverter},ConverterParameter={StaticResource VisibleIf_IsNotNull},Path=Tip.Image}" Source="{Binding Tip.Image}">
+                <Image.InputBindings>
+                    <MouseBinding MouseAction="LeftClick" Command="{Binding OpenUrl}" CommandParameter="{Binding Tip.ImageTarget}"/>
+                </Image.InputBindings>
+            </Image>
         </StackPanel>
     </materialDesign:Card>
 </UserControl>

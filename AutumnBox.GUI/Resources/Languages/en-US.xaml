@@ -69,6 +69,7 @@ Agreement modification:
     <s:String x:Key="LibsWindowLoadedWrapper">Loaded wrappers: </s:String>
     
     <!--PanelHome-->
+     <s:String x:Key="PanelHomeLink">Link</s:String>
     <s:String x:Key="PanelHomeOpenSource">Open source</s:String>
     <s:String x:Key="PanelHomeOpenSourceTip">For dream</s:String>
     <s:String x:Key="PanelHomeOpenSourceButton">Open Source</s:String>

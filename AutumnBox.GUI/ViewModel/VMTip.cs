@@ -1,5 +1,7 @@
 ﻿using AutumnBox.GUI.Model;
 using AutumnBox.GUI.MVVM;
+using AutumnBox.Logging;
+using System.Net;
 
 namespace AutumnBox.GUI.ViewModel
 {
@@ -11,24 +13,8 @@ namespace AutumnBox.GUI.ViewModel
             {
                 _tip = value;
                 RaisePropertyChanged();
-                Handle();
             }
         }
         private Tip _tip;
-
-        public object Content
-        {
-            get => Content; set
-            {
-                _content = value;
-                RaisePropertyChanged();
-            }
-        }
-        private object _content;
-
-        private void Handle()
-        {
-            Content = Tip.Content;
-        }
     }
 }

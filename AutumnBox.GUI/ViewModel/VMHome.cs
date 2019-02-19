@@ -4,6 +4,7 @@
 ** desc： ...
 *************************************************/
 
+using AutumnBox.GUI.Model;
 using AutumnBox.GUI.MVVM;
 using AutumnBox.GUI.Util.Net;
 using AutumnBox.GUI.Util.Net.Getters;
@@ -11,6 +12,7 @@ using AutumnBox.GUI.View.DialogContent;
 using AutumnBox.GUI.View.Windows;
 using AutumnBox.Logging;
 using MaterialDesignThemes.Wpf;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Windows;
@@ -50,6 +52,26 @@ namespace AutumnBox.GUI.ViewModel
         }
         private ICommand _os;
 
+        public ICommand RefreshTips
+        {
+            get => _refresh; set
+            {
+                _refresh = value;
+                RaisePropertyChanged();
+            }
+        }
+        private ICommand _refresh;
+
+        public IEnumerable<Tip> Tips
+        {
+            get => _tips; set
+            {
+                _tips = value;
+                RaisePropertyChanged();
+            }
+        }
+        private IEnumerable<Tip> _tips;
+
         public VMHome()
         {
             RaisePropertyChangedOnDispatcher = true;
@@ -60,6 +82,19 @@ namespace AutumnBox.GUI.ViewModel
             ViewOpenSource = new FlexiableCommand(() =>
             {
                 (App.Current.MainWindow as MainWindow).DialogHost.ShowDialog(new ContentOpenSource());
+            });
+            RefreshTips = new FlexiableCommand(_RefreshTips);
+            _RefreshTips();
+        }
+
+        private void _RefreshTips()
+        {
+            new TipsGetter().Advance().ContinueWith(task =>
+            {
+                if (task.IsCompleted)
+                {
+                    Tips = task.Result.Tips;
+                }
             });
         }
     }
