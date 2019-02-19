@@ -71,7 +71,12 @@
     <s:String x:Key="LibsWindowTitle">已加载的拓展模块库</s:String>
     <s:String x:Key="LibsWindowLoadedWrapper">加载的包装器: </s:String>
     
+     <s:String x:Key="PanelTipHeader">小提示</s:String>
+     <s:String x:Key="PanelCstHeader">每日信息</s:String>
+     <s:String x:Key="PanelFailed">加载失败</s:String>
+    
     <!--PanelHome-->
+    
       <s:String x:Key="PanelHomeLink">链接</s:String>
     <s:String x:Key="PanelHomeOpenSource">开源</s:String>
     <s:String x:Key="PanelHomeOpenSourceTip">为了共同的进步与对用户的透明性,秋之盒现以LGPL 3.0协议开源</s:String>

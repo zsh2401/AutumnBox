@@ -155,6 +155,7 @@
     <Compile Include="Model\Tip.cs" />
     <Compile Include="Util\AdbManager.cs" />
     <Compile Include="Util\Net\Getters\CstGetter.cs" />
+    <Compile Include="Util\Net\Getters\CstOptionsGetter.cs" />
     <Compile Include="Util\Net\Getters\TipsGetter.cs" />
     <Compile Include="Util\OS\OtherProcessChecker.cs" />
     <Compile Include="Util\AppLoader.cs" />
@@ -204,7 +205,9 @@
     <Compile Include="Util\Self.cs" />
     <Compile Include="Util\Net\Updater.cs" />
     <Compile Include="ViewModel\VMContentChoice.cs" />
+    <Compile Include="ViewModel\VMCst.cs" />
     <Compile Include="ViewModel\VMGuide.cs" />
+    <Compile Include="ViewModel\VMDefaultInformation.cs" />
     <Compile Include="ViewModel\VMLog.cs" />
     <Compile Include="ViewModel\VMOpenSource.cs" />
     <Compile Include="ViewModel\VMCurrentDevice.cs" />
@@ -219,8 +222,12 @@
     <Compile Include="ViewModel\VMRunningWindow.cs" />
     <Compile Include="Util\Bus\DeviceSelectionObserver.cs" />
     <Compile Include="ViewModel\VMSettingsDialog.cs" />
-    <Compile Include="ViewModel\VMTip.cs" />
+    <Compile Include="ViewModel\VMTipCard.cs" />
+    <Compile Include="ViewModel\VMTips.cs" />
     <Compile Include="ViewModel\VMUpdateWindow.cs" />
+    <Compile Include="View\CstPreview.xaml.cs">
+      <DependentUpon>CstPreview.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\DialogContent\ContentConnectNetDevice.xaml.cs">
       <DependentUpon>ContentConnectNetDevice.xaml</DependentUpon>
     </Compile>
@@ -257,8 +264,14 @@
     <Compile Include="View\LeafContent\YNView.xaml.cs">
       <DependentUpon>YNView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Panel\PanelCst.xaml.cs">
+      <DependentUpon>PanelCst.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Panel\PanelCurrentDevice.xaml.cs">
       <DependentUpon>PanelCurrentDevice.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Panel\PanelDefaultInformation.xaml.cs">
+      <DependentUpon>PanelDefaultInformation.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Panel\PanelDeviceDetails.xaml.cs">
       <DependentUpon>PanelDeviceDetails.xaml</DependentUpon>
@@ -289,6 +302,9 @@
     <Compile Include="Util\Extensions.cs" />
     <Compile Include="Util\OpenFxManagement\OpenFrameworkManager.cs" />
     <Compile Include="Util\Data\Md5.cs" />
+    <Compile Include="View\Panel\PanelTips.xaml.cs">
+      <DependentUpon>PanelTips.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\TipCard.xaml.cs">
       <DependentUpon>TipCard.xaml</DependentUpon>
     </Compile>
@@ -522,6 +538,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\CstPreview.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\DialogContent\ContentConnectNetDevice.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -566,7 +586,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Panel\PanelCst.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Panel\PanelCurrentDevice.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Panel\PanelDefaultInformation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -595,6 +623,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Panel\PanelReboot.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Panel\PanelTips.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

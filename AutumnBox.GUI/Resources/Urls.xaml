@@ -29,7 +29,9 @@
     <s:String x:Key="WebApiToastMotd">http://www.atmb.top/_api_/tmotd</s:String>
     <s:String x:Key="WebApiBanInfo">http://www.atmb.top/_api_/ban</s:String>
     <s:String x:Key="WebApiCst">"http://atmb.top/_api_/cst/v1.xaml</s:String>
+    <s:String x:Key="WebApiCstOpt">http://www.atmb.top/_api_/cst/v1.json</s:String>
     <s:String x:Key="WebApiTips">http://www.atmb.top/_api_/tips/v1.json</s:String>
+
     <!--WEBAPI-->
 
 </ResourceDictionary>

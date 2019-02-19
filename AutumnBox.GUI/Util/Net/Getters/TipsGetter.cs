@@ -13,6 +13,8 @@ namespace AutumnBox.GUI.Util.Net.Getters
         [JsonObject(MemberSerialization.OptOut)]
         public class Result : IJsonSettable
         {
+            [JsonProperty("enable")]
+            public bool Enable { get; set; } = true;
             [JsonProperty("tips")]
             public List<Tip> Tips { get; set; }
             public string Json { get; set; }
