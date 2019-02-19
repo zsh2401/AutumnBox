@@ -24,14 +24,12 @@
     <s:String x:Key="UrlAtmbWebRepo">https://github.com/zsh2401/www.atmb.top</s:String>
     
     <!--WEBAPI-->
-    <s:String x:Key="WebApiMotd">http://www.atmb.top/_api_/motd</s:String>
-    <s:String x:Key="WebApiPotd">http://www.atmb.top/_api_/potd</s:String>
     <s:String x:Key="WebApiUpdate">http://www.atmb.top/_api_/update</s:String>
     <s:String x:Key="WebApiStatistics">http://www.atmb.top/_api_/statistics</s:String>
     <s:String x:Key="WebApiToastMotd">http://www.atmb.top/_api_/tmotd</s:String>
-    <s:String x:Key="WebApiMotdV2">http://www.atmb.top/_api_/motdv2</s:String>
-    <s:String x:Key="WebApiPotdV2">http://www.atmb.top/_api_/potdv2</s:String>
     <s:String x:Key="WebApiBanInfo">http://www.atmb.top/_api_/ban</s:String>
+    <s:String x:Key="WebApiCst">http://www.atmb.top/_api_/cst</s:String>
+    <s:String x:Key="WebApiTips">http://www.atmb.top/_api_/tips</s:String>
     <!--WEBAPI-->
 
 </ResourceDictionary>
