@@ -5,7 +5,7 @@ using System.Net;
 
 namespace AutumnBox.GUI.ViewModel
 {
-    class VMTip : ViewModelBase
+    class VMTipCard : ViewModelBase
     {
         public Tip Tip
         {

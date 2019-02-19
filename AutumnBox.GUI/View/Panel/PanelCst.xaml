@@ -1,0 +1,53 @@
+﻿<UserControl x:Class="AutumnBox.GUI.View.Panel.PanelCst"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AutumnBox.GUI.View.Panel"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:viewmodel="clr-namespace:AutumnBox.GUI.ViewModel"
+                Visibility="{Binding Converter={StaticResource BoolToVisibilityConverter},Path=IsNotHidden}"
+             mc:Ignorable="d" 
+            Width="680">
+    <UserControl.DataContext>
+        <viewmodel:VMCst></viewmodel:VMCst>
+    </UserControl.DataContext>
+    <Grid>
+        <Expander IsExpanded="True" Background="Transparent">
+            <Expander.Header>
+                <DockPanel>
+                    <Button DockPanel.Dock="Right" HorizontalAlignment="Right" Command="{Binding Hide}" Style="{DynamicResource MaterialDesignToolButton}">
+                        <materialDesign:PackIcon Kind="Hide"/>
+                    </Button>
+                    <Button Margin="0,0,15,0" DockPanel.Dock="Right" HorizontalAlignment="Right" Command="{Binding Refresh}" Style="{DynamicResource MaterialDesignToolButton}">
+                        <materialDesign:PackIcon Kind="Refresh"/>
+                    </Button>
+
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Margin="0,0,10,0" Kind="MessageBulleted" VerticalAlignment="Center"/>
+                        <TextBlock DockPanel.Dock="Left" HorizontalAlignment="Left" FontSize="15" VerticalAlignment="Center"
+                               Text="{DynamicResource PanelCstHeader}"/>
+                    </StackPanel>
+                    
+                </DockPanel>
+            </Expander.Header>
+            <Grid>
+                <ContentControl Content="{Binding Content}"/>
+
+                <ProgressBar 
+                    Margin="30"
+                    Visibility="{Binding Converter={StaticResource ObjectEqualsToVisibilityConverter},ConverterParameter=3, Path=Status}" 
+                    Style="{StaticResource MaterialDesignCircularProgressBar}" Value="0" IsIndeterminate="True" Height="25" Width="25"/>
+
+                <StackPanel
+                      Margin="30"
+                      Visibility="{Binding Converter={StaticResource ObjectEqualsToVisibilityConverter},ConverterParameter=1, Path=Status}" >
+                    <materialDesign:PackIcon Kind="SmsFailed" Height="25" Width="25" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <TextBlock Text="{DynamicResource PanelFailed}" Foreground="Gray" HorizontalAlignment="Center"/>
+                </StackPanel>
+
+
+            </Grid>
+        </Expander>
+    </Grid>
+</UserControl>

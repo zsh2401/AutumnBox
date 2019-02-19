@@ -1,6 +1,4 @@
-﻿using AutumnBox.GUI.Model;
-using AutumnBox.GUI.ViewModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,14 +16,13 @@ using System.Windows.Shapes;
 namespace AutumnBox.GUI.View
 {
     /// <summary>
-    /// TipCard.xaml 的交互逻辑
+    /// CstPreview.xaml 的交互逻辑
     /// </summary>
-    public partial class TipCard : UserControl
+    public partial class CstPreview : UserControl
     {
-        internal TipCard(Tip tip)
+        public CstPreview()
         {
             InitializeComponent();
-            (DataContext as VMTipCard).Tip = tip;
         }
     }
 }
