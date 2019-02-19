@@ -13,7 +13,7 @@ namespace AutumnBox.GUI.Util.Net.Getters
 #if DEBUG
         public string Url { get; set; } = "http://localhost:24010/_api_/cst/v1.xaml";
 #else
-        public string Url { get; set; } = App.Current.Resources["WebApiTips"].ToString();
+        public string Url { get; set; } = App.Current.Resources["WebApiCst"].ToString();
 #endif
 
         private static ParserContext context;
