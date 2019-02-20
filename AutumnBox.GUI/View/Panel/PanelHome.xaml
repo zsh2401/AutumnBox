@@ -16,15 +16,18 @@
             <TextBlock Margin="10" FontSize="10" DockPanel.Dock="Bottom" HorizontalAlignment="Center" Foreground="Gray" Text="{Binding BottomSentence}"/>
 
             <StackPanel>
-                <Grid HorizontalAlignment="Center" Visibility="{Binding Converter={StaticResource BoolToVisibilityConverter},ConverterParameter={StaticResource VisibleIf_IsTrue}, Path=Settings.CstEnable}">
+                <Grid Visibility="{Binding Converter={StaticResource BoolToVisibilityConverter},ConverterParameter={StaticResource VisibleIf_IsTrue}, Path=Settings.CstEnable}">
                     <panel:PanelCst/>
                 </Grid>
-                <Grid HorizontalAlignment="Center" DockPanel.Dock="Top" Visibility="{Binding Converter={StaticResource BoolToVisibilityConverter},ConverterParameter={StaticResource VisibleIf_IsTrue},Path=Settings.TipsEnable}">
+                <Grid DockPanel.Dock="Top" Visibility="{Binding Converter={StaticResource BoolToVisibilityConverter},ConverterParameter={StaticResource VisibleIf_IsTrue},Path=Settings.TipsEnable}">
                     <panel:PanelTips />
                 </Grid>
                 <panel:PanelDefaultInformation></panel:PanelDefaultInformation>
             </StackPanel>
 
         </DockPanel>
+        <Button Margin="5" Command="{Binding Refresh}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Style="{DynamicResource MaterialDesignToolButton}">
+            <materialDesign:PackIcon Kind="Refresh"/>
+        </Button>
     </Grid>
 </UserControl>
