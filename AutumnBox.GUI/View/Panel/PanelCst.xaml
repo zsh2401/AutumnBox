@@ -6,7 +6,6 @@
              xmlns:local="clr-namespace:AutumnBox.GUI.View.Panel"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:viewmodel="clr-namespace:AutumnBox.GUI.ViewModel"
-                Visibility="{Binding Converter={StaticResource BoolToVisibilityConverter},Path=IsNotHidden}"
              mc:Ignorable="d" 
             Width="680">
     <UserControl.DataContext>

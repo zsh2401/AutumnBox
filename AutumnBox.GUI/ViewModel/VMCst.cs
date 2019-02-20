@@ -46,42 +46,18 @@ namespace AutumnBox.GUI.ViewModel
         }
         private string _status = LOADING;
 
-        public bool IsNotHidden
-        {
-            get => _isNotHidden; set
-            {
-                _isNotHidden = value;
-                RaisePropertyChanged();
-            }
-        }
-        private bool _isNotHidden = true;
-
-        public ICommand Hide
-        {
-            get => _hide; set
-            {
-                _hide = value;
-                RaisePropertyChanged();
-            }
-        }
-        private ICommand _hide;
 
         public VMCst()
         {
             RaisePropertyChangedOnDispatcher = true;
             _Refresh();
             Refresh = new FlexiableCommand(_Refresh);
-            Hide = new FlexiableCommand(() =>
-            {
-                IsNotHidden = false;
-            });
         }
 
         public void _Refresh()
         {
             Status = LOADING;
             Content = null;
-            InitSettings();
             new CstGetter().DoAsync().ContinueWith(task =>
             {
                 if (task.IsFaulted)
@@ -93,20 +69,6 @@ namespace AutumnBox.GUI.ViewModel
                 {
                     Status = SUCCESS;
                     Content = task.Result;
-                }
-            });
-        }
-
-        private void InitSettings() {
-            new CstOptionsGetter().Advance().ContinueWith(task =>
-            {
-                if (task.IsFaulted)
-                {
-                    SLogger<VMCst>.Warn("Can not get cst options", task.Exception);
-                }
-                else
-                {
-                    IsNotHidden = task.Result.Enable;
                 }
             });
         }

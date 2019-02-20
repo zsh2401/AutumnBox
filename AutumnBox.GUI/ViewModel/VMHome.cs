@@ -6,25 +6,50 @@
 
 using AutumnBox.GUI.Model;
 using AutumnBox.GUI.MVVM;
-using AutumnBox.GUI.Util.Net;
 using AutumnBox.GUI.Util.Net.Getters;
-using AutumnBox.GUI.View.DialogContent;
-using AutumnBox.GUI.View.Windows;
+using AutumnBox.GUI.Util.UI;
 using AutumnBox.Logging;
-using MaterialDesignThemes.Wpf;
-using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Windows;
-using System.Windows.Input;
-using System.Windows.Markup;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 
 namespace AutumnBox.GUI.ViewModel
 {
     class VMHome : ViewModelBase
     {
+        public string BottomSentence => Sentences.Next();
+
+        public HomeSettings Settings
+        {
+            get => _settings; set
+            {
+                _settings = value;
+                RaisePropertyChanged();
+            }
+        }
+        private HomeSettings _settings;
+
+
+        public VMHome()
+        {
+            Settings = new HomeSettings()
+            {
+                TipsEnable = true,
+                CstEnable = true
+            };
+            FetchSettings();
+        }
+
+        private void FetchSettings()
+        {
+            new HomeSettingsGetter().Advance().ContinueWith((task) =>
+            {
+                if (task.IsFaulted)
+                {
+                    SLogger.Warn(this, "can not get home settings", task.Exception);
+                }
+                else
+                {
+                    Settings = task.Result;
+                }
+            });
+        }
     }
 }

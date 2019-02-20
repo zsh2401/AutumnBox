@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutumnBox.Logging;
+using System;
 using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
@@ -10,7 +11,7 @@ namespace AutumnBox.GUI.Util.UI.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (parameter is null || parameter is BoolToVisibilityConverterParameter.VisibleIf_IsTrue)
+            if (parameter is null || !(parameter is BoolToVisibilityConverterParameter) | parameter is BoolToVisibilityConverterParameter.VisibleIf_IsTrue)
             {
                 return VisibilityIfIsTrue((bool)value);
             }

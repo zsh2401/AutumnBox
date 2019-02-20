@@ -11,7 +11,7 @@ namespace AutumnBox.GUI.Util.Net.Getters
     public class CstGetter
     {
 #if DEBUG
-        public string Url { get; set; } = "http://localhost:24010/_api_/cst/v1.xaml";
+        public string Url { get; set; } = "http://localhost:24010/_api_/home_v1/cst.xaml";
 #else
         public string Url { get; set; } = App.Current.Resources["WebApiCst"].ToString();
 #endif

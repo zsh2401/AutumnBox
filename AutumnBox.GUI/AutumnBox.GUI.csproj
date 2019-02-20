@@ -150,12 +150,13 @@
     </Compile>
     <Compile Include="Model\ExtensionWrapperDock.cs" />
     <Compile Include="Model\FormatLog.cs" />
+    <Compile Include="Model\HomeSettings.cs" />
     <Compile Include="Model\LibDock.cs" />
     <Compile Include="Model\OpenSourceProject.cs" />
     <Compile Include="Model\Tip.cs" />
     <Compile Include="Util\AdbManager.cs" />
     <Compile Include="Util\Net\Getters\CstGetter.cs" />
-    <Compile Include="Util\Net\Getters\CstOptionsGetter.cs" />
+    <Compile Include="Util\Net\Getters\HomeSettingsGetter.cs" />
     <Compile Include="Util\Net\Getters\TipsGetter.cs" />
     <Compile Include="Util\OS\OtherProcessChecker.cs" />
     <Compile Include="Util\AppLoader.cs" />

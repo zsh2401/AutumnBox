@@ -13,14 +13,12 @@ namespace AutumnBox.GUI.Util.Net.Getters
         [JsonObject(MemberSerialization.OptOut)]
         public class Result : IJsonSettable
         {
-            [JsonProperty("enable")]
-            public bool Enable { get; set; } = true;
             [JsonProperty("tips")]
             public List<Tip> Tips { get; set; }
             public string Json { get; set; }
         }
 #if DEBUG
-        public override string Url => "http://localhost:24010/_api_/tips/v1.json";
+        public override string Url => "http://localhost:24010/_api_/home_v1/tips.json";
 #else
         public override string Url => App.Current.Resources["WebApiTips"].ToString();
 #endif
