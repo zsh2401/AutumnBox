@@ -39,7 +39,19 @@ namespace AutumnBox.GUI.Util.UI
             "与你交织紧握的手,传来了无与伦比的温暖,但愿永远不忘这份感觉,这是你所留下的温存",
             "Since I was young, I knew I’d find you,But our love was a song sung by a dying swan",
             "And in your dreams you’ll see me falling, falling,Breathe in the light,I’ll stay here in the shadow",
-         "我知道已被忘却,流浪的航程太长太长,但那一刻要叫我一声啊,当人类又看到了蓝天,当鲜花又挂上了枝头,地球,我的流浪地球"
+         "我知道已被忘却,流浪的航程太长太长,但那一刻要叫我一声啊,当人类又看到了蓝天,当鲜花又挂上了枝头,地球,我的流浪地球",
+         "一壶浊酒尽余欢,今宵别梦寒",
+         "长亭外 古道边,芳草碧连天",
+         "记得，我们一起坐在海边看天,好像已过了千年万年",
+         "东临碣石，以观沧海 水何澹澹，山岛竦峙\n树木丛生，百草丰茂 秋风萧瑟，洪波涌起",
+         "今天，还不知道啊，你和思念哪个更远,明天，更不知道啊，我们要带着家园飞向谁边",
+         "世界之外有一个等待,倒数的爱黑夜慢慢散开",
+         "像钻石珍贵的希望,在心底在蔓延在绽放",
+         "月光把天空照亮,洒下一片光芒点缀海洋",
+         "每当流星从天而降,心中的梦想都随风飘扬",
+         "展开透明翅膀越出天窗,找寻一个最美丽的希望",
+         "不经历风雨 怎能有传奇,我会在这里等着你",
+         "Now I'm here, blinking in the starlight,Now I'm here, suddenly I see"
         };
     }
 }

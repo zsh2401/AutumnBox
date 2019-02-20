@@ -7,9 +7,7 @@
              xmlns:viewmodel="clr-namespace:AutumnBox.GUI.ViewModel"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-             Width="680"
-             Visibility="{Binding Converter={StaticResource BoolToVisibilityConverter},Path=IsNotHidden}"
-             >
+             Width="680">
     <UserControl.DataContext>
         <viewmodel:VMTips/>
     </UserControl.DataContext>

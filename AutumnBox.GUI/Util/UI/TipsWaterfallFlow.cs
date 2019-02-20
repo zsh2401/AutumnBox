@@ -35,7 +35,6 @@ namespace AutumnBox.GUI.Util.UI
             {
                 Clear();
                 if (tips == null) return;
-                SLogger.Info(this,"Refreshing");
                 foreach (var tip in tips)
                 {
                     AddTipCard(tip);

@@ -17,8 +17,12 @@
 
             <StackPanel>
                 <WrapPanel HorizontalAlignment="Center" DockPanel.Dock="Top">
-                    <panel:PanelCst/>
-                    <panel:PanelTips/>
+                    <Grid Visibility="{Binding Converter={StaticResource BoolToVisibilityConverter},ConverterParameter={StaticResource VisibleIf_IsTrue}, Path=Settings.CstEnable}">
+                        <panel:PanelCst/>
+                    </Grid>
+                    <Grid Visibility="{Binding Converter={StaticResource BoolToVisibilityConverter},ConverterParameter={StaticResource VisibleIf_IsTrue},Path=Settings.TipsEnable}">
+                        <panel:PanelTips />
+                    </Grid>
                 </WrapPanel>
                 <panel:PanelDefaultInformation></panel:PanelDefaultInformation>
             </StackPanel>

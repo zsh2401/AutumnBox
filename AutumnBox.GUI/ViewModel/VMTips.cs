@@ -50,35 +50,11 @@ namespace AutumnBox.GUI.ViewModel
         }
         private string _status = LOADING;
 
-        public bool IsNotHidden
-        {
-            get => _isNotHidden; set
-            {
-                _isNotHidden = value;
-                RaisePropertyChanged();
-            }
-        }
-        private bool _isNotHidden = true;
-
-        public ICommand Hide
-        {
-            get => _hide; set
-            {
-                _hide = value;
-                RaisePropertyChanged();
-            }
-        }
-        private ICommand _hide;
-
         public VMTips()
         {
             RaisePropertyChangedOnDispatcher = true;
             _Refresh();
             Refresh = new FlexiableCommand(_Refresh);
-            Hide = new FlexiableCommand(() =>
-            {
-                IsNotHidden = false;
-            });
         }
 
         public void _Refresh()
@@ -96,7 +72,6 @@ namespace AutumnBox.GUI.ViewModel
                 else
                 {
                     Status = SUCCESS;
-                    IsNotHidden = task.Result.Enable;
                     Tips = task.Result.Tips;
                 }
             });

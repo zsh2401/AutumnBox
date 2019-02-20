@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:s="clr-namespace:System;assembly=mscorlib">
-    
+
     <!--Go-->
     <s:String x:Key="UrlGoPrefix">http://www.atmb.top/go?a=</s:String>
     <s:String x:Key="AGoHelp">help</s:String>
@@ -17,20 +17,21 @@
     <s:String x:Key="AGoAdbFail">adb_fail</s:String>
     <s:String x:Key="AGoOSLisence">os_lisence</s:String>
     <!--Go-->
-    
+
     <!--WEB-->
     <s:String x:Key="UrlOfficialWebsite">http://www.atmb.top/</s:String>
     <s:String x:Key="UrlAtmbRepo">https://github.com/zsh2401/AutumnBox</s:String>
     <s:String x:Key="UrlAtmbWebRepo">https://github.com/zsh2401/www.atmb.top</s:String>
-    
+
     <!--WEBAPI-->
     <s:String x:Key="WebApiUpdate">http://www.atmb.top/_api_/update</s:String>
     <s:String x:Key="WebApiStatistics">http://www.atmb.top/_api_/statistics</s:String>
     <s:String x:Key="WebApiToastMotd">http://www.atmb.top/_api_/tmotd</s:String>
     <s:String x:Key="WebApiBanInfo">http://www.atmb.top/_api_/ban</s:String>
-    <s:String x:Key="WebApiCst">http://atmb.top/_api_/cst/v1.xaml</s:String>
-    <s:String x:Key="WebApiCstOpt">http://www.atmb.top/_api_/cst/v1.json</s:String>
-    <s:String x:Key="WebApiTips">http://www.atmb.top/_api_/tips/v1.json</s:String>
+
+    <s:String x:Key="WebApiHomeSettings">http://www.atmb.top/_api_/home_v1/settings.json</s:String>
+    <s:String x:Key="WebApiCst">http://atmb.top/_api_/home_v1/cst.xaml</s:String>
+    <s:String x:Key="WebApiTips">http://www.atmb.top/_api_/home_v1/tips.json</s:String>
 
     <!--WEBAPI-->
 
