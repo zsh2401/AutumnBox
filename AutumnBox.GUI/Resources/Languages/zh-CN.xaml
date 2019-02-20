@@ -71,7 +71,7 @@
     <s:String x:Key="LibsWindowTitle">已加载的拓展模块库</s:String>
     <s:String x:Key="LibsWindowLoadedWrapper">加载的包装器: </s:String>
     
-     <s:String x:Key="PanelTipHeader">小提示</s:String>
+     <s:String x:Key="PanelTipHeader">卡片</s:String>
      <s:String x:Key="PanelCstHeader">每日信息</s:String>
      <s:String x:Key="PanelFailed">加载失败</s:String>
     
