@@ -10,6 +10,7 @@ using AutumnBox.GUI.Util.Net.Getters;
 using AutumnBox.GUI.Util.UI;
 using AutumnBox.Logging;
 using System.Threading;
+using System.Windows.Input;
 
 namespace AutumnBox.GUI.ViewModel
 {
@@ -28,14 +29,29 @@ namespace AutumnBox.GUI.ViewModel
         private HomeSettings _settings;
 
 
+        public ICommand Refresh
+        {
+            get => _ref; set
+            {
+                _ref = value;
+                RaisePropertyChanged();
+            }
+        }
+        private ICommand _ref;
+
         public VMHome()
         {
+            RaisePropertyChangedOnDispatcher = true;
             Settings = new HomeSettings()
             {
                 TipsEnable = true,
                 CstEnable = true
             };
             FetchSettings();
+            Refresh = new MVVMCommand(p =>
+            {
+                FetchSettings();
+            });
         }
 
         private void FetchSettings()

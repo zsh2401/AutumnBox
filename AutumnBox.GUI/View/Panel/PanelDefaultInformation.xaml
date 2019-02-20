@@ -6,69 +6,86 @@
              xmlns:local="clr-namespace:AutumnBox.GUI.View.Panel"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:viewmodel="clr-namespace:AutumnBox.GUI.ViewModel"
-             mc:Ignorable="d" 
-             Width="680">
+             mc:Ignorable="d" >
     <UserControl.DataContext>
         <viewmodel:VMDefaultInformation/>
     </UserControl.DataContext>
     <Grid>
-        <WrapPanel x:Name="mWrapPanel" DockPanel.Dock="Bottom" Width="680">
-            <materialDesign:Card Margin="10" Background="{DynamicResource CardBackgroundBrush}" Width="660">
-                <DockPanel DockPanel.Dock="Top" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="5">
-                    <Image DockPanel.Dock="Left" Height="100px" Source="/Resources/Drawable/icon.ico"></Image>
-                    <StackPanel DockPanel.Dock="Right">
-                        <TextBlock Text="{DynamicResource AppNameWithVersion}"  FontSize="25px"></TextBlock>
-                        <TextBlock Foreground="Gray"  TextWrapping="Wrap" Margin="0,0,0,0" FontSize="12px" Text="{DynamicResource AboutMessage}" VerticalAlignment="Top"/>
+        <Expander IsExpanded="True" Background="Transparent">
+            <Expander.Header>
+                <DockPanel Width="592">
+                    <Button DockPanel.Dock="Right" HorizontalAlignment="Right" Command="{Binding Hide}" Style="{DynamicResource MaterialDesignToolButton}">
+                        <materialDesign:PackIcon Kind="Hide"/>
+                    </Button>
+                    <Button Margin="0,0,15,0" DockPanel.Dock="Right" HorizontalAlignment="Right" Command="{Binding Refresh}" Style="{DynamicResource MaterialDesignToolButton}">
+                        <materialDesign:PackIcon Kind="Refresh"/>
+                    </Button>
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Margin="0,0,10,0" Kind="AboutOutline" VerticalAlignment="Center"/>
+                        <TextBlock DockPanel.Dock="Left" HorizontalAlignment="Left" FontSize="15" VerticalAlignment="Center"
+                               Text="(ﾉﾟ∀ﾟ)ﾉ "/>
                     </StackPanel>
+
                 </DockPanel>
-            </materialDesign:Card>
+            </Expander.Header>
+            <WrapPanel x:Name="mWrapPanel" DockPanel.Dock="Bottom" Width="680">
+                <materialDesign:Card Margin="10" Background="{DynamicResource CardBackgroundBrush}" Width="660">
+                    <DockPanel DockPanel.Dock="Top" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="5">
+                        <Image DockPanel.Dock="Left" Height="100px" Source="/Resources/Drawable/icon.ico"></Image>
+                        <StackPanel DockPanel.Dock="Right">
+                            <TextBlock Text="{DynamicResource AppNameWithVersion}"  FontSize="25px"></TextBlock>
+                            <TextBlock Foreground="Gray"  TextWrapping="Wrap" Margin="0,0,0,0" FontSize="12px" Text="{DynamicResource AboutMessage}" VerticalAlignment="Top"/>
+                        </StackPanel>
+                    </DockPanel>
+                </materialDesign:Card>
 
 
-            <materialDesign:Card Margin="10" Background="{DynamicResource CardBackgroundBrush}">
-                <StackPanel Orientation="Horizontal">
-                    <materialDesign:PackIcon  Kind="GithubCircle" Margin="20" Height="110" Width="110"></materialDesign:PackIcon>
-                    <StackPanel Width="150" Margin="10">
-                        <TextBlock Text="{DynamicResource PanelHomeOpenSource}"  HorizontalAlignment="Center" FontSize="25px" ></TextBlock>
-                        <TextBlock Foreground="Gray"  Text="{DynamicResource PanelHomeOpenSourceTip}" TextWrapping="Wrap" FontSize="12px" ></TextBlock>
-                        <Button Style="{DynamicResource MaterialDesignFlatButton}" Command="{Binding ViewOpenSource}"  FontSize="12px" CommandParameter="{DynamicResource AGoOpenSource}" Content="{DynamicResource PanelHomeOpenSourceButton}" ></Button>
+                <materialDesign:Card Margin="10" Background="{DynamicResource CardBackgroundBrush}">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon  Kind="GithubCircle" Margin="20" Height="110" Width="110"></materialDesign:PackIcon>
+                        <StackPanel Width="150" Margin="10">
+                            <TextBlock Text="{DynamicResource PanelHomeOpenSource}"  HorizontalAlignment="Center" FontSize="25px" ></TextBlock>
+                            <TextBlock Foreground="Gray"  Text="{DynamicResource PanelHomeOpenSourceTip}" TextWrapping="Wrap" FontSize="12px" ></TextBlock>
+                            <Button Style="{DynamicResource MaterialDesignFlatButton}" Command="{Binding ViewOpenSource}"  FontSize="12px" CommandParameter="{DynamicResource AGoOpenSource}" Content="{DynamicResource PanelHomeOpenSourceButton}" ></Button>
+                        </StackPanel>
                     </StackPanel>
-                </StackPanel>
-            </materialDesign:Card>
+                </materialDesign:Card>
 
-            <materialDesign:Card Margin="10" Background="{DynamicResource CardBackgroundBrush}">
-                <StackPanel Orientation="Horizontal">
-                    <Image Source="/Resources/Drawable/Home/donate.png" Margin="20" Height="110"></Image>
-                    <StackPanel Width="150" Margin="10">
-                        <TextBlock Foreground="{DynamicResource CardForegroundBrush}" Text="{DynamicResource PanelHomeSupport}" HorizontalAlignment="Center" FontSize="25px" ></TextBlock>
-                        <TextBlock Foreground="Gray" Text="{DynamicResource PanelHomeSupportTip}" TextWrapping="Wrap" FontSize="12px" ></TextBlock>
-                        <Button Style="{DynamicResource MaterialDesignFlatButton}"  FontSize="12px" Command="{Binding Donate}" Content="{DynamicResource PanelDonate}" ></Button>
+                <materialDesign:Card Margin="10" Background="{DynamicResource CardBackgroundBrush}">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/Drawable/Home/donate.png" Margin="20" Height="110"></Image>
+                        <StackPanel Width="150" Margin="10">
+                            <TextBlock Foreground="{DynamicResource CardForegroundBrush}" Text="{DynamicResource PanelHomeSupport}" HorizontalAlignment="Center" FontSize="25px" ></TextBlock>
+                            <TextBlock Foreground="Gray" Text="{DynamicResource PanelHomeSupportTip}" TextWrapping="Wrap" FontSize="12px" ></TextBlock>
+                            <Button Style="{DynamicResource MaterialDesignFlatButton}"  FontSize="12px" Command="{Binding Donate}" Content="{DynamicResource PanelDonate}" ></Button>
+                        </StackPanel>
                     </StackPanel>
-                </StackPanel>
-            </materialDesign:Card>
+                </materialDesign:Card>
 
-            <materialDesign:Card Margin="10" Background="{DynamicResource CardBackgroundBrush}">
-                <StackPanel Orientation="Horizontal">
-                    <materialDesign:PackIcon Kind="EmailVariant" Margin="20" Height="110" Width="110"/>
-                    <StackPanel Width="150" Margin="10">
-                        <TextBlock Text="{DynamicResource PanelHomeContact}"  HorizontalAlignment="Center" FontSize="25px" ></TextBlock>
-                        <TextBlock Foreground="Gray"  FontSize="12" TextAlignment="Center">zsh2401@163.com</TextBlock>
-                        <Button Style="{DynamicResource MaterialDesignFlatButton}"  FontSize="12px" Command="{Binding OpenUrl}" CommandParameter="{DynamicResource UrlOfficialWebsite}" Content="{DynamicResource PanelHomeOfficialWebsite}" FontFamily="{DynamicResource AutumnBox.Font}"></Button>
-                        <Button Style="{DynamicResource MaterialDesignFlatButton}"  FontSize="12px" Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoQQGroup}" Content="{DynamicResource PanelHomeJoinQQGroup}" ></Button>
+                <materialDesign:Card Margin="10" Background="{DynamicResource CardBackgroundBrush}">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="EmailVariant" Margin="20" Height="110" Width="110"/>
+                        <StackPanel Width="150" Margin="10">
+                            <TextBlock Text="{DynamicResource PanelHomeContact}"  HorizontalAlignment="Center" FontSize="25px" ></TextBlock>
+                            <TextBlock Foreground="Gray"  FontSize="12" TextAlignment="Center">zsh2401@163.com</TextBlock>
+                            <Button Style="{DynamicResource MaterialDesignFlatButton}"  FontSize="12px" Command="{Binding OpenUrl}" CommandParameter="{DynamicResource UrlOfficialWebsite}" Content="{DynamicResource PanelHomeOfficialWebsite}" FontFamily="{DynamicResource AutumnBox.Font}"></Button>
+                            <Button Style="{DynamicResource MaterialDesignFlatButton}"  FontSize="12px" Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoQQGroup}" Content="{DynamicResource PanelHomeJoinQQGroup}" ></Button>
+                        </StackPanel>
                     </StackPanel>
-                </StackPanel>
-            </materialDesign:Card>
+                </materialDesign:Card>
 
-            <materialDesign:Card Margin="10" Background="{DynamicResource CardBackgroundBrush}">
-                <StackPanel Orientation="Horizontal">
-                    <materialDesign:PackIcon Kind="HelpBox" Margin="20" Width="110" Height="110"></materialDesign:PackIcon>
-                    <StackPanel Width="150" Margin="10">
-                        <TextBlock Text="{DynamicResource PanelHomeHelp}"  HorizontalAlignment="Center" FontSize="25px" ></TextBlock>
-                        <TextBlock Foreground="Gray"  TextWrapping="Wrap" Text="{DynamicResource PanelHomeHelpTip}"  HorizontalAlignment="Center" FontSize="12" ></TextBlock>
-                        <Button Style="{DynamicResource MaterialDesignFlatButton}"  FontSize="12px" Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoHelp}" Content="{DynamicResource PanelHomeManual}" ></Button>
-                        <Button Style="{DynamicResource MaterialDesignFlatButton}"  FontSize="12px" Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoFeedback}" Content="{DynamicResource PanelHomeReport}" ></Button>
+                <materialDesign:Card Margin="10" Background="{DynamicResource CardBackgroundBrush}">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="HelpBox" Margin="20" Width="110" Height="110"></materialDesign:PackIcon>
+                        <StackPanel Width="150" Margin="10">
+                            <TextBlock Text="{DynamicResource PanelHomeHelp}"  HorizontalAlignment="Center" FontSize="25px" ></TextBlock>
+                            <TextBlock Foreground="Gray"  TextWrapping="Wrap" Text="{DynamicResource PanelHomeHelpTip}"  HorizontalAlignment="Center" FontSize="12" ></TextBlock>
+                            <Button Style="{DynamicResource MaterialDesignFlatButton}"  FontSize="12px" Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoHelp}" Content="{DynamicResource PanelHomeManual}" ></Button>
+                            <Button Style="{DynamicResource MaterialDesignFlatButton}"  FontSize="12px" Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoFeedback}" Content="{DynamicResource PanelHomeReport}" ></Button>
+                        </StackPanel>
                     </StackPanel>
-                </StackPanel>
-            </materialDesign:Card>
-        </WrapPanel>
+                </materialDesign:Card>
+            </WrapPanel>
+        </Expander>
     </Grid>
 </UserControl>

@@ -13,7 +13,7 @@
     <Grid>
         <Expander IsExpanded="True" Background="Transparent">
             <Expander.Header>
-                <DockPanel>
+                <DockPanel HorizontalAlignment="Center" Width="592">
                     <Button DockPanel.Dock="Right" HorizontalAlignment="Right" Command="{Binding Hide}" Style="{DynamicResource MaterialDesignToolButton}">
                         <materialDesign:PackIcon Kind="Hide"/>
                     </Button>
@@ -30,7 +30,7 @@
                 </DockPanel>
             </Expander.Header>
             <Grid>
-                <ContentControl Content="{Binding Content}"/>
+                <ContentControl x:Name="mContent" Content="{Binding Content}"/>
 
                 <ProgressBar 
                     Margin="30"
