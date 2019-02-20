@@ -33,9 +33,16 @@ namespace AutumnBox.GUI.Model
                 RaisePropertyChanged();
             }
         }
+        private bool _cst;
+
+        //[JsonProperty("tips_index")]
+        //public int TipsIndex { get; set; }
+
+        //[JsonProperty("cst_index")]
+        //public int CstIndex { get; set; }
 
         public string Json { get; set; }
 
-        private bool _cst;
+
     }
 }

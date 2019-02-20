@@ -1,4 +1,6 @@
-﻿using System.Windows.Controls;
+﻿using AutumnBox.GUI.ViewModel;
+using System.ComponentModel;
+using System.Windows.Controls;
 
 namespace AutumnBox.GUI.View.Panel
 {
