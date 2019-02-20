@@ -6,8 +6,7 @@
              xmlns:local="clr-namespace:AutumnBox.GUI.View.Panel"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:viewmodel="clr-namespace:AutumnBox.GUI.ViewModel"
-             mc:Ignorable="d" 
-            Width="680">
+             mc:Ignorable="d">
     <UserControl.DataContext>
         <viewmodel:VMCst></viewmodel:VMCst>
     </UserControl.DataContext>
