@@ -2,6 +2,7 @@
 using AutumnBox.Logging;
 using AutumnBox.OpenFramework.Content;
 using AutumnBox.OpenFramework.LeafExtension.Attributes;
+using AutumnBox.OpenFramework.LeafExtension.Internal.Impl;
 using AutumnBox.OpenFramework.LeafExtension.Kit;
 using AutumnBox.OpenFramework.Management;
 using AutumnBox.OpenFramework.Open;
@@ -73,7 +74,7 @@ namespace AutumnBox.OpenFramework.LeafExtension.Internal
             }
             else if (type == typeof(IEmbeddedFileManager))
             {
-                return ctx.EmbeddedManager;
+                return new LeafEmb(leafType.Assembly);
             }
             else if (type == typeof(IOSApi))
             {

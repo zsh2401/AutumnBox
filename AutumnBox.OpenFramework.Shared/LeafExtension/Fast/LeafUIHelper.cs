@@ -1,5 +1,6 @@
 ﻿using AutumnBox.Basic.Device;
 using AutumnBox.OpenFramework.LeafExtension.Kit;
+using System.Threading;
 
 namespace AutumnBox.OpenFramework.LeafExtension.Fast
 {
@@ -17,7 +18,7 @@ namespace AutumnBox.OpenFramework.LeafExtension.Fast
         public static void EFinish(this ILeafUI ui, int exitCode = 0)
         {
             ui.Finish(exitCode);
-            LeafExtensionHelper.EndCurrentLeafThread(null, exitCode);
+            Thread.CurrentThread.Abort();
         }
         /// <summary>
         /// 
@@ -28,7 +29,7 @@ namespace AutumnBox.OpenFramework.LeafExtension.Fast
         public static void EFinish(this ILeafUI ui, string tip)
         {
             ui.Finish(tip);
-            LeafExtensionHelper.EndCurrentLeafThread(null);
+            Thread.CurrentThread.Abort();
         }
         /// <summary>
         /// Shutdown
@@ -37,7 +38,7 @@ namespace AutumnBox.OpenFramework.LeafExtension.Fast
         public static void EShutdown(this ILeafUI ui)
         {
             ui.Shutdown();
-            LeafExtensionHelper.EndCurrentLeafThread(null);
+            Thread.CurrentThread.Abort();
         }
         /// <summary>
         /// 检查是否安装APP并询问用户,如果处于不恰当情况,将停止LeafExtension执行流程

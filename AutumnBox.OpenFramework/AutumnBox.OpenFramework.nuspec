@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>AutumnBox.SDK</id>
-    <version>$version$-beta</version>
+    <version>$version$</version>
     <title>AutumnBox.SDK</title>
     <authors>$author$</authors>
     <owners>$author$</owners>

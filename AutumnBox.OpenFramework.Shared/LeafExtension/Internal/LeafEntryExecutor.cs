@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
+using System.Threading;
 
 namespace AutumnBox.OpenFramework.LeafExtension.Internal
 {
@@ -106,22 +107,22 @@ namespace AutumnBox.OpenFramework.LeafExtension.Internal
             var para = GetPara(entry.GetParameters());
             //执行
             object result = null;
-            try
-            {
+            //try
+            //{
                 result = entry.Invoke(ext, para);
                 Sound.Play(Sound.Id.Ok);
-            }
-            catch (TargetInvocationException e)
-            {
-                if (e.InnerException is LeafTerminatedException _e)
-                {
-                    result = _e.ExitCode;
-                }
-                else
-                {
-                    throw e.InnerException;
-                }
-            }
+            //}
+            //catch (TargetInvocationException e)
+            //{
+            //    if (e.InnerException is LeafTerminatedException _e)
+            //    {
+            //        result = _e.ExitCode;
+            //    }
+            //    else
+            //    {
+            //        throw e.InnerException;
+            //    }
+            //}
 
             //处理可能的返回值
             if (result is int exitCode)

@@ -30,6 +30,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Extension\IClassExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\IExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)LeafExtension\Attributes\LDoNotScanAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)LeafExtension\Internal\Impl\LeafEmbManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)LeafExtension\LeafConstants.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)LeafExtension\LeafTerminatedException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)LeafExtension\Fast\LeafUIHelper.cs" />
@@ -132,7 +133,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)LeafExtension\Attributes\" />
-    <Folder Include="$(MSBuildThisFileDirectory)LeafExtension\Internal\" />
     <Folder Include="$(MSBuildThisFileDirectory)LeafExtension\Fast\" />
   </ItemGroup>
 </Project>
