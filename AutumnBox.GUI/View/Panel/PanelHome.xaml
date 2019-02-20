@@ -16,17 +16,12 @@
             <TextBlock Margin="10" FontSize="10" DockPanel.Dock="Bottom" HorizontalAlignment="Center" Foreground="Gray" Text="{Binding BottomSentence}"/>
 
             <StackPanel>
-                <WrapPanel x:Name="mWrap" HorizontalAlignment="Center" DockPanel.Dock="Top">
-
-                    <Grid x:Name="mCst" Visibility="{Binding Converter={StaticResource BoolToVisibilityConverter},ConverterParameter={StaticResource VisibleIf_IsTrue}, Path=Settings.CstEnable}">
-                        <panel:PanelCst/>
-                    </Grid>
-                    
-                    <Grid x:Name="mTips" Visibility="{Binding Converter={StaticResource BoolToVisibilityConverter},ConverterParameter={StaticResource VisibleIf_IsTrue},Path=Settings.TipsEnable}">
-                        <panel:PanelTips />
-                    </Grid>
-
-                </WrapPanel>
+                <Grid HorizontalAlignment="Center" Visibility="{Binding Converter={StaticResource BoolToVisibilityConverter},ConverterParameter={StaticResource VisibleIf_IsTrue}, Path=Settings.CstEnable}">
+                    <panel:PanelCst/>
+                </Grid>
+                <Grid HorizontalAlignment="Center" DockPanel.Dock="Top" Visibility="{Binding Converter={StaticResource BoolToVisibilityConverter},ConverterParameter={StaticResource VisibleIf_IsTrue},Path=Settings.TipsEnable}">
+                    <panel:PanelTips />
+                </Grid>
                 <panel:PanelDefaultInformation></panel:PanelDefaultInformation>
             </StackPanel>
 
