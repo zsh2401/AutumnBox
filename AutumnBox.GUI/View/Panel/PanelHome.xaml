@@ -13,16 +13,19 @@
     </UserControl.DataContext>
     <Grid>
         <DockPanel>
-            <TextBlock Margin="10" FontSize="8" DockPanel.Dock="Bottom" HorizontalAlignment="Center" Foreground="Gray">But our love was a song sung by a dying swan</TextBlock>
+            <TextBlock Margin="10" FontSize="10" DockPanel.Dock="Bottom" HorizontalAlignment="Center" Foreground="Gray" Text="{Binding BottomSentence}"/>
 
             <StackPanel>
-                <WrapPanel HorizontalAlignment="Center" DockPanel.Dock="Top">
-                    <Grid Visibility="{Binding Converter={StaticResource BoolToVisibilityConverter},ConverterParameter={StaticResource VisibleIf_IsTrue}, Path=Settings.CstEnable}">
+                <WrapPanel x:Name="mWrap" HorizontalAlignment="Center" DockPanel.Dock="Top">
+
+                    <Grid x:Name="mCst" Visibility="{Binding Converter={StaticResource BoolToVisibilityConverter},ConverterParameter={StaticResource VisibleIf_IsTrue}, Path=Settings.CstEnable}">
                         <panel:PanelCst/>
                     </Grid>
-                    <Grid Visibility="{Binding Converter={StaticResource BoolToVisibilityConverter},ConverterParameter={StaticResource VisibleIf_IsTrue},Path=Settings.TipsEnable}">
+                    
+                    <Grid x:Name="mTips" Visibility="{Binding Converter={StaticResource BoolToVisibilityConverter},ConverterParameter={StaticResource VisibleIf_IsTrue},Path=Settings.TipsEnable}">
                         <panel:PanelTips />
                     </Grid>
+
                 </WrapPanel>
                 <panel:PanelDefaultInformation></panel:PanelDefaultInformation>
             </StackPanel>

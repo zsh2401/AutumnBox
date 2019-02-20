@@ -9,6 +9,7 @@ using AutumnBox.GUI.MVVM;
 using AutumnBox.GUI.Util.Net.Getters;
 using AutumnBox.GUI.Util.UI;
 using AutumnBox.Logging;
+using System.Threading;
 
 namespace AutumnBox.GUI.ViewModel
 {
