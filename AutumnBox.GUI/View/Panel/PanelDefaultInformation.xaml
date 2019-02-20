@@ -14,14 +14,14 @@
         <Expander IsExpanded="True" Background="Transparent">
             <Expander.Header>
                 <DockPanel Width="592">
-                    <Button DockPanel.Dock="Right" HorizontalAlignment="Right" Command="{Binding Hide}" Style="{DynamicResource MaterialDesignToolButton}">
+                    <!--<Button DockPanel.Dock="Right" HorizontalAlignment="Right" Command="{Binding Hide}" Style="{DynamicResource MaterialDesignToolButton}">
                         <materialDesign:PackIcon Kind="Hide"/>
                     </Button>
                     <Button Margin="0,0,15,0" DockPanel.Dock="Right" HorizontalAlignment="Right" Command="{Binding Refresh}" Style="{DynamicResource MaterialDesignToolButton}">
                         <materialDesign:PackIcon Kind="Refresh"/>
-                    </Button>
+                    </Button>-->
                     <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Margin="0,0,10,0" Kind="AboutOutline" VerticalAlignment="Center"/>
+                        <!--<materialDesign:PackIcon Margin="0,0,10,0" Kind="AboutOutline" VerticalAlignment="Center"/>-->
                         <TextBlock DockPanel.Dock="Left" HorizontalAlignment="Left" FontSize="15" VerticalAlignment="Center"
                                Text="(ﾉﾟ∀ﾟ)ﾉ "/>
                     </StackPanel>

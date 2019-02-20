@@ -8,53 +8,79 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              Width="680">
     <Grid>
-        <WrapPanel>
-            <materialDesign:Card Margin="10" Width="320">
-                <StackPanel Margin="5">
-                    <TextBlock DockPanel.Dock="Top" FontSize="20" TextWrapping="Wrap" Text="欢迎来到全新的秋之盒" />
-                    <TextBlock TextWrapping="Wrap" FontSize="12" Foreground="Gray" Text="或许你可以看看这些"/>
-                    <StackPanel Orientation="Horizontal">
-                        <Button DockPanel.Dock="Bottom" Padding="0" FontSize="13"  Style="{DynamicResource MaterialDesignFlatButton}" Command="{Binding OpenUrl}" CommandParameter="http://atmb.top/">
-                            <TextBlock TextDecorations="Underline" Text="秋之盒官网"/>
-                        </Button>
-                        <Button Margin="10,0,0,0" DockPanel.Dock="Bottom" Padding="0" FontSize="13"  Style="{DynamicResource MaterialDesignFlatButton}"  Command="{Binding OpenUrl}" CommandParameter="http://atmb.top/help">
-                            <TextBlock TextDecorations="Underline" Text="说明书"/>
-                        </Button>
-                    </StackPanel>
 
-                    <Image Source="http://b-ssl.duitang.com/uploads/item/201205/03/20120503181506_5RQKv.jpeg">
-                        <Image.InputBindings>
-                            <MouseBinding MouseAction="LeftClick" Command="{Binding OpenUrl}" CommandParameter="http://www.zsh2401.top"/>
-                        </Image.InputBindings>
-                    </Image>
-                </StackPanel>
-            </materialDesign:Card>
-            <StackPanel VerticalAlignment="Top">
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+            <WrapPanel HorizontalAlignment="Center">
                 <materialDesign:Card Margin="10" Width="320">
                     <StackPanel Margin="5">
-                        <TextBlock DockPanel.Dock="Top" FontSize="20" TextWrapping="Wrap" Text="扫码领红包!" />
-                        <TextBlock TextWrapping="Wrap" FontSize="12" Foreground="Gray" Text="这是最为互利的捐赠方式了,你我都是完全受利!"/>
-                        <Image Source="http://atmb.top/_api_/home_v1/alipayqrcode.png">
+                        <TextBlock DockPanel.Dock="Top" FontSize="20" TextWrapping="Wrap" Text="欢迎来到全新的秋之盒" />
+                        <TextBlock TextWrapping="Wrap" FontSize="12" Foreground="Gray" Text="或许你可以看看这些"/>
+                        <StackPanel Orientation="Horizontal">
+                            <Button DockPanel.Dock="Bottom" Padding="0" FontSize="13"  Style="{DynamicResource MaterialDesignFlatButton}" Command="{Binding OpenUrl}" CommandParameter="http://atmb.top/">
+                                <TextBlock TextDecorations="Underline" Text="秋之盒官网"/>
+                            </Button>
+                            <Button Margin="10,0,0,0" DockPanel.Dock="Bottom" Padding="0" FontSize="13"  Style="{DynamicResource MaterialDesignFlatButton}"  Command="{Binding OpenUrl}" CommandParameter="http://atmb.top/help">
+                                <TextBlock TextDecorations="Underline" Text="说明书"/>
+                            </Button>
+                        </StackPanel>
+
+                        <Image Source="http://b-ssl.duitang.com/uploads/item/201205/03/20120503181506_5RQKv.jpeg">
                             <Image.InputBindings>
                                 <MouseBinding MouseAction="LeftClick" Command="{Binding OpenUrl}" CommandParameter="http://www.zsh2401.top"/>
                             </Image.InputBindings>
                         </Image>
                     </StackPanel>
                 </materialDesign:Card>
+                <StackPanel VerticalAlignment="Top">
+                    <materialDesign:Card Margin="10" Width="320">
+                        <StackPanel Margin="5">
+                            <TextBlock DockPanel.Dock="Top" FontSize="20" TextWrapping="Wrap" Text="扫码领红包!" />
+                            <TextBlock TextWrapping="Wrap" FontSize="12" Foreground="Gray" Text="这个方式你无需付出,而我也可以得到收益...真的很感谢你啊!(不方便扫码可以搜索564908538)"/>
+                            <Image Source="http://atmb.top/_api_/home_v1/alipayqrcode.png">
+                                <Image.InputBindings>
+                                    <MouseBinding MouseAction="LeftClick" Command="{Binding OpenUrl}" CommandParameter="http://www.zsh2401.top"/>
+                                </Image.InputBindings>
+                            </Image>
+                        </StackPanel>
+                    </materialDesign:Card>
 
-                <materialDesign:Card Height="80" Margin="0" Width="320">
-                    <StackPanel Margin="5">
-                        <TextBlock DockPanel.Dock="Top" FontSize="20" TextWrapping="Wrap" Text="福利!" />
-                        <TextBlock TextWrapping="Wrap" FontSize="12" Foreground="Gray" Text="我还搭建了一个免费的贴吧云签到!要试试吗?"/>
-                        <Button Style="{DynamicResource MaterialDesignFlatButton}" Padding="0" HorizontalAlignment="Left" Command="{Binding OpenUrl}" CommandParameter="http://dream.zsh2401.top:2402/" Content="{DynamicResource PanelHomeLink}"/>
-                    </StackPanel>
-                </materialDesign:Card>
-            </StackPanel>
+                    <materialDesign:Card Height="65" Margin="0" Width="320">
+                        <StackPanel Margin="5">
+                            <TextBlock DockPanel.Dock="Top" FontSize="20" TextWrapping="Wrap" Text="福利!" />
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock VerticalAlignment="Center" TextWrapping="Wrap" FontSize="12" Foreground="Gray" Text="我搭建了一个免费的贴吧云签到!要试试吗?"/>
+                                <Button FontSize="12" Style="{DynamicResource MaterialDesignFlatButton}" HorizontalAlignment="Left" Command="{Binding OpenUrl}" CommandParameter="http://dream.zsh2401.top:2402/" Content="看看>>"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </materialDesign:Card>
+                </StackPanel>
+            </WrapPanel>
+
             
-            <materialDesign:Card Margin="10" Width="660">
-                <WebBrowser Source="http://www.baidu.com"/>
-            </materialDesign:Card>
             
-        </WrapPanel>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
     </Grid>
 </UserControl>

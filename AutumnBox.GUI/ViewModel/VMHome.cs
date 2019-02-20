@@ -51,6 +51,7 @@ namespace AutumnBox.GUI.ViewModel
             Refresh = new MVVMCommand(p =>
             {
                 FetchSettings();
+                RaisePropertyChanged(nameof(BottomSentence));
             });
         }
 
