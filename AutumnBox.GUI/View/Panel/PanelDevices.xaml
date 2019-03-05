@@ -8,7 +8,7 @@
              xmlns:dockablz="http://dragablz.net/winfx/xaml/dockablz"
              xmlns:dragablz="http://dragablz.net/winfx/xaml/dragablz"
              FontFamily="{DynamicResource AutumnBox.Font}"
-             mc:Ignorable="d" d:DesignWidth="200" d:DesignHeight="280"
+             mc:Ignorable="d" d:DesignWidth="200" d:DesignHeight="400"
              >
     <UserControl.DataContext>
         <viewmodel:VMConnectDevices/>
@@ -20,6 +20,7 @@
                     <materialDesign:Card  Height="{Binding ElementName=mGrid,Path=ActualHeight}">
                         <DockPanel>
                             <StackPanel Orientation="Vertical" DockPanel.Dock="Bottom">
+                                <Button Visibility="{Binding Converter={StaticResource NullToVisibilityConverter},ConverterParameter={StaticResource VisibleIf_IsNotNull}, Path=Devices}" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource PanelHelpForConnectDevice}"  Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoConnectDevice}"  FontSize="12"/>
                                 <Button Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource PanelDevicesConnectTo}"  Command="{Binding ConnectDevice}"  FontSize="12"/>
                                 <Button Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource PanelDevicesEnableCurrent}" Command="{Binding OpenDeviceNetDebugging}"  FontSize="12"/>
                                 <Button Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource PanelDevicesDisconnect}" Command="{Binding DisconnectDevice}" FontSize="12"/>
