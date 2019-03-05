@@ -42,11 +42,7 @@ namespace AutumnBox.GUI.ViewModel
         public VMHome()
         {
             RaisePropertyChangedOnDispatcher = true;
-            Settings = new HomeSettings()
-            {
-                TipsEnable = true,
-                CstEnable = true
-            };
+            Settings = new HomeSettings();
             FetchSettings();
             Refresh = new MVVMCommand(p =>
             {

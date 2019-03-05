@@ -14,10 +14,7 @@
         <Expander IsExpanded="True" Background="Transparent">
             <Expander.Header>
                 <DockPanel HorizontalAlignment="Center" Width="592">
-                    <Button DockPanel.Dock="Right" HorizontalAlignment="Right" Command="{Binding Hide}" Style="{DynamicResource MaterialDesignToolButton}">
-                        <materialDesign:PackIcon Kind="Hide"/>
-                    </Button>
-                    <Button Margin="0,0,15,0" DockPanel.Dock="Right" HorizontalAlignment="Right" Command="{Binding Refresh}" Style="{DynamicResource MaterialDesignToolButton}">
+                    <Button DockPanel.Dock="Right" HorizontalAlignment="Right" Command="{Binding Refresh}" Style="{DynamicResource MaterialDesignToolButton}">
                         <materialDesign:PackIcon Kind="Refresh"/>
                     </Button>
 

@@ -22,7 +22,7 @@ namespace AutumnBox.GUI.Model
                 RaisePropertyChanged();
             }
         }
-        private bool _tips;
+        private bool _tips = false;
 
         [JsonProperty("cst_enable")]
         public bool CstEnable
@@ -33,7 +33,7 @@ namespace AutumnBox.GUI.Model
                 RaisePropertyChanged();
             }
         }
-        private bool _cst;
+        private bool _cst = true;
 
         //[JsonProperty("tips_index")]
         //public int TipsIndex { get; set; }
