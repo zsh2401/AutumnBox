@@ -26,7 +26,7 @@ namespace AutumnBox.CoreModules.Extensions.Hidden
                 if (device is UsbDevice usbDevice)
                 {
                     Task<object> dialogTask = null;
-                    ui.ShowDialogById("portInputView");
+                    dialogTask = ui.ShowDialogById("portInputView");
                     dialogTask.Wait();
                     if (ushort.TryParse(dialogTask.Result?.ToString(), out ushort result))
                     {

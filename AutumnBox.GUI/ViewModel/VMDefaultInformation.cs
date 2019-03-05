@@ -54,6 +54,8 @@ namespace AutumnBox.GUI.ViewModel
         }
         private ICommand _os;
 
+        public ICommand ViewUpdateLogs { get; set; }
+
         public VMDefaultInformation()
         {
             Donate = new FlexiableCommand(() =>
@@ -63,6 +65,10 @@ namespace AutumnBox.GUI.ViewModel
             ViewOpenSource = new FlexiableCommand(() =>
             {
                 (App.Current.MainWindow as MainWindow).DialogHost.ShowDialog(new ContentOpenSource());
+            });
+            ViewUpdateLogs = new MVVMCommand(p =>
+            {
+                (App.Current.MainWindow as MainWindow).DialogHost.ShowDialog(new ContentUpdateLog());
             });
         }
     }

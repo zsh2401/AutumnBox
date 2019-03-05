@@ -154,6 +154,7 @@
     <Compile Include="Model\LibDock.cs" />
     <Compile Include="Model\OpenSourceProject.cs" />
     <Compile Include="Model\Tip.cs" />
+    <Compile Include="Model\VersionInfo.cs" />
     <Compile Include="Util\AdbManager.cs" />
     <Compile Include="Util\Net\Getters\CstGetter.cs" />
     <Compile Include="Util\Net\Getters\HomeSettingsGetter.cs" />
@@ -225,6 +226,7 @@
     <Compile Include="ViewModel\VMSettingsDialog.cs" />
     <Compile Include="ViewModel\VMTipCard.cs" />
     <Compile Include="ViewModel\VMTips.cs" />
+    <Compile Include="ViewModel\VMUpdateLogs.cs" />
     <Compile Include="ViewModel\VMUpdateWindow.cs" />
     <Compile Include="View\CstPreview.xaml.cs">
       <DependentUpon>CstPreview.xaml</DependentUpon>
@@ -253,6 +255,9 @@
     <Compile Include="MVVM\ModelBase.cs" />
     <Compile Include="ViewModel\VMDeviceDetails.cs" />
     <Compile Include="ViewModel\VMHome.cs" />
+    <Compile Include="View\DialogContent\ContentUpdateLog.xaml.cs">
+      <DependentUpon>ContentUpdateLog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\LeafContent\ChoiceView.xaml.cs">
       <DependentUpon>ChoiceView.xaml</DependentUpon>
     </Compile>
@@ -568,6 +573,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\DialogContent\ContentSettings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DialogContent\ContentUpdateLog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
