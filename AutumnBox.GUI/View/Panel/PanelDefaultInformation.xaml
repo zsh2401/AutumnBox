@@ -33,7 +33,11 @@
                     <DockPanel DockPanel.Dock="Top" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="5">
                         <Image DockPanel.Dock="Left" Height="100px" Source="/Resources/Drawable/icon.ico"></Image>
                         <StackPanel DockPanel.Dock="Right">
-                            <TextBlock Text="{DynamicResource AppNameWithVersion}"  FontSize="25px"></TextBlock>
+                            <Grid>
+                                <TextBlock Text="{DynamicResource AppNameWithVersion}"  FontSize="25px"/>
+                                <Button HorizontalAlignment="Right"  Command="{Binding ViewUpdateLogs}" FontSize="12" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource PanelHomeUpdateLogs}"/>
+                            </Grid>
+            
                             <TextBlock Foreground="Gray"  TextWrapping="Wrap" Margin="0,0,0,0" FontSize="12px" Text="{DynamicResource AboutMessage}" VerticalAlignment="Top"/>
                         </StackPanel>
                     </DockPanel>

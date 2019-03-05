@@ -73,6 +73,7 @@ Agreement modification:
      <s:String x:Key="PanelFailed">ERROR</s:String>
     
     <!--PanelHome-->
+     <s:String x:Key="PanelHomeUpdateLogs">What's new?</s:String>
      <s:String x:Key="PanelHomeLink">Link</s:String>
     <s:String x:Key="PanelHomeOpenSource">Open source</s:String>
     <s:String x:Key="PanelHomeOpenSourceTip">For dream</s:String>
