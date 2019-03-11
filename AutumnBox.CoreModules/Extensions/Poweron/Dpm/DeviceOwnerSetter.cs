@@ -60,7 +60,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.Dpm
     [ExtTargetApi(8)]
     [ExtRequiredDeviceStates(DeviceState.Poweron)]
     [ExtIcon("Icons.nuclear.png")]
-    internal abstract class DeviceOwnerSetter : LeafExtensionBase
+    public abstract class DeviceOwnerSetter : LeafExtensionBase
     {
         /// <summary>
         /// 必须是完整的组件名,包括包名

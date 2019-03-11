@@ -96,6 +96,7 @@
     <Compile Include="Extensions\Poweron\Dpm\EFreezeYou.cs" />
     <Compile Include="Extensions\Poweron\Dpm\EAirForzenActivator.cs" />
     <Compile Include="Extensions\Poweron\Dpm\EBlackHole.cs" />
+    <Compile Include="Extensions\Poweron\Dpm\ETaiChi.cs" />
     <Compile Include="Extensions\Poweron\EClearAccounts.cs" />
     <Compile Include="Extensions\Poweron\EClearUsers.cs" />
     <Compile Include="Extensions\Poweron\EGCM.cs" />
@@ -217,7 +218,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Icons\Usersir.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\taichi.png" />
+  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Icons\dpi.png" />
   </ItemGroup>
