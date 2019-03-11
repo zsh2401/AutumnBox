@@ -27,6 +27,7 @@ namespace AutumnBox.GUI.ViewModel
 
         private static readonly IEnumerable<VersionInfo> data = new List<VersionInfo>()
         {
+              new VersionInfo("2019.3.11","2019-3-11","细节BUG修复,支持一键激活太极"),
             new VersionInfo("2019.3.5","2019-3-5","秋之盒三月更新来袭,诸多新特性,全新API,界面设计优化"),
             new VersionInfo("2019.1.18","2019-1-18","紧急修复一个臭名昭著的恶性BUG"),
             new VersionInfo("2019.1.11","2019-1-11","强烈建议更新,这个版本将是将来所有拓展模块的基础版本\n优化绿守激活器\n修复大量BUG"),
