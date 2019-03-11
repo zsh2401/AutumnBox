@@ -157,8 +157,18 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.Dpm
                     SetProgress("SettingDpm", 80);
                     var codeOfSetDeviceOwner = SetDeviceOwner(executor, dpmpro).ExitCode;
 
+                    if (codeOfSetDeviceOwner == 0 && //如果设置成功并且
+                        (PackageName == "com.catchingnow.icebox" //目标包名是小黑屋
+                        || PackageName == "web1n.stopapp")) //或冰箱
+                    {
+                        //给予APPOPS权限
+                        executor.AdbShell(Device, $"pm grant {PackageName} android.permission.GET_APP_OPS_STATS");
+                    }
+
                     //使用输出解析器,对记录的输出进行解析
                     DpmFailedMessageParser.Parse(codeOfSetDeviceOwner, outputBuilder.ToString(), out string tip, out string message);
+
+
 
                     //在输出框写下简要信息与建议
                     UI.WriteLine(message);
