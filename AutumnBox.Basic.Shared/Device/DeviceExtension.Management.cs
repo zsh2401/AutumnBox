@@ -69,8 +69,17 @@ namespace AutumnBox.Basic.Device
         /// <returns></returns>
         public static bool HaveSU(this IDevice device)
         {
-            var command = new SuCommand(device, "ls");
-            return command.Execute().ExitCode == 0;
+            ///话说是哪位鬼才想到的使用不验证 su 存在直接用 su -c 检查有没有 root 的？
+            ///var command = new SuCommand(device, "ls");
+            
+            
+            /// 这玩意太长，我是不满意
+            /// 顺便在控制台执行的时候遇到了一些神奇的问题
+            /// 话说啥时候 ShellCommand 负责解释的是 sh 而不是 adb -s <device> shell <cmd> 呢？
+            var testSuCommand = "echo id | su | grep uid=0 >/dev/null"
+            
+            var testSuCommandAvailability = new ShellCommand(device, testSuCommand);
+            return testSuCommandAvailability.Execute().ExitCode == 0;
         }
         /// <summary>
         /// 获取Shell命令对象
