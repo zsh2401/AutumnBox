@@ -76,9 +76,7 @@ namespace AutumnBox.Basic.Device
             /// 这玩意太长，我是不满意
             /// 顺便在控制台执行的时候遇到了一些神奇的问题
             /// 话说啥时候 ShellCommand 负责解释的是 sh 而不是 adb -s <device> shell <cmd> 呢？
-            var testSuCommand = "echo id | su | grep uid=0 >/dev/null"
-            
-            var testSuCommandAvailability = new ShellCommand(device, testSuCommand);
+            var testSuCommandAvailability = new ShellCommand(device,"echo id | su | grep uid=0 >/dev/null");
             return testSuCommandAvailability.Execute().ExitCode == 0;
         }
         /// <summary>
