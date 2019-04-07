@@ -26,6 +26,9 @@ namespace AutumnBox.Basic.Calling.Adb
         /// </example>
         /// <param name="device"></param>
         /// <param name="suCommand"></param>
+        
+        ///不要认为 su 永远存在，顺便尽量复用 su
+        [Obsolete("不验证 su 可用性，强烈建议不要使用这个，以 ShellCommand 代替")]
         public SuCommand(IDevice device, string suCommand) : base(device, $"su -c {suCommand}")
         {
         }
