@@ -71,9 +71,23 @@ namespace AutumnBox.CoreModules.Extensions.Hidden
             }
             else if (dialogTask.Result is string str)
             {
-                if (str == "iloveyou" || str .ToLower() == "yin")
+                switch (str.ToLower())
                 {
-                    ui.ShowMessage("经历了这么多,我才明白最珍贵的其实是你也爱我。抱歉曾经对你的冷漠，现在，我只爱你，Yin Yin。");
+                    case "iloveyou":
+                        ui.ShowMessage("经历了这么多,我才明白最珍贵的其实是你也爱我。\n抱歉曾经对你的冷漠，现在，我只爱你，Yin Yin。");
+                        break;
+                    case "future":
+                        ui.ShowMessage("你要相信我,我们一定可以成功,我们的未来一定是可期的。这不是空口无凭，我一直在努力去让自己变得更好，即便现在的我在最错误的道路上，但总有一天，冰会化成水的，我也会回到正确的方向上");
+                        break;
+                    case "fear":
+                        ui.ShowMessage("猫猫,那天晚上你真的吓到我了...我真的好害怕失去你,这么多年以来,我第一次如此珍视一个人...我是男子汉,我不敢哭...求求你,不要这样对我了,好吗");
+                        break;
+                    case "dream":
+                        ui.ShowMessage("我总是在梦里梦到你,好开心鸭!!!!我一定要在把你紧紧抱住,抱2分钟!!!然后松开,摸摸你的头,然后吻上去!!!");
+                        break;
+                    case "somuch":
+                        ui.ShowMessage("我有太多太多想说的了,可我不知道该怎么对你说,我,爱,你");
+                        break;
                 }
             }
             endPoint = null;
