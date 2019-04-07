@@ -1,4 +1,5 @@
 ﻿using AutumnBox.Basic.Calling;
+using AutumnBox.GUI.View.Windows;
 using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.LeafExtension;
 using AutumnBox.OpenFramework.LeafExtension.Attributes;
@@ -51,7 +52,7 @@ namespace AutumnBox.CoreModules.Extensions.Hidden
             }
         }
 
-        private bool TryGetInputEndPoint(ILeafUI ui,TextAttrManager texts, out IPEndPoint endPoint)
+        private bool TryGetInputEndPoint(ILeafUI ui, TextAttrManager texts, out IPEndPoint endPoint)
         {
             Task<object> dialogTask = null;
             do
@@ -68,10 +69,12 @@ namespace AutumnBox.CoreModules.Extensions.Hidden
                 endPoint = endPointResult;
                 return true;
             }
-            else if (dialogTask.Result is string str && str == "iloveyou")
+            else if (dialogTask.Result is string str)
             {
-                //我喜欢你,曹娜(*^▽^*)
-                System.Diagnostics.Process.Start("https://lovecaona.cn");
+                if (str == "iloveyou" || str .ToLower() == "yin")
+                {
+                    ui.ShowMessage("经历了这么多,我才明白最珍贵的其实是你也爱我。抱歉曾经对你的冷漠，现在，我只爱你，Yin Yin。");
+                }
             }
             endPoint = null;
             return false;
