@@ -28,7 +28,7 @@ using System.Windows;
 #endif
 [assembly: AssemblyCompany("zsh2401")]
 [assembly: AssemblyProduct("AutumnBox")]
-[assembly: AssemblyCopyright("Copyright © 2017 - 2018 zsh2401,All Rights Reserved")]
+[assembly: AssemblyCopyright("Copyright © 2017 - 2019 zsh2401,All Rights Reserved")]
 [assembly: AssemblyTrademark("AutumnBox")]
 [assembly: AssemblyCulture("")]
 // 将 ComVisible 设置为 false 会使此程序集中的类型
@@ -65,6 +65,6 @@ using System.Windows;
 // 可以指定所有值，也可以使用以下所示的 "*" 预置版本号和修订号
 // 方法是按如下所示使用“*”: :
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("2019.3.11")]
-[assembly: AssemblyFileVersion("2019.3.11")]
+[assembly: AssemblyVersion("2019.4.13")]
+[assembly: AssemblyFileVersion("2019.4.13")]
 [assembly: NeutralResourcesLanguage("zh-CN")]
