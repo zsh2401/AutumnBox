@@ -95,6 +95,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Open\Impl\AppManagerImpl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\Impl\CompImpl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\Impl\EmbeddedFileManagerImpl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Open\Impl\StorageManagerImpl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Open\IStorageManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\ServiceImpl\SOSApi.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\Impl\TemporaryFloderImpl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\Impl\UxImpl.cs" />

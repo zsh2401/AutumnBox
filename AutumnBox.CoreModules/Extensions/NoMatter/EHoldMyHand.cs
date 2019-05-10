@@ -12,7 +12,9 @@ using AutumnBox.OpenFramework.LeafExtension;
 using AutumnBox.OpenFramework.LeafExtension.Attributes;
 using AutumnBox.OpenFramework.LeafExtension.Kit;
 using AutumnBox.OpenFramework.Open;
+using AutumnBox.OpenFramework.Open.Impl;
 using System.Collections.Generic;
+using System.IO;
 
 namespace AutumnBox.CoreModules.Extensions.Hidden
 {
@@ -36,31 +38,18 @@ namespace AutumnBox.CoreModules.Extensions.Hidden
             using (ui)
             {
                 ui.Show();
-                logger.Debug("WTF");
-                using (CommandExecutor executor = new CommandExecutor())
+                var storageManager = new StorageManagerImpl(context);
+                using (var fs = storageManager.OpenFile("wtf"))
                 {
-                    ui.CloseButtonClicked += (s, e) =>
+                    using (StreamWriter sw = new StreamWriter(fs))
                     {
-                        e.CanBeClosed = true;
-                        executor.Dispose();
-                    };
-                    executor.To(e => ui.WriteOutput(e.Text));
-                    executor.Adb("help");
+                        sw.Write("hello!");
+                    }
                 }
-                CoreLib.Current.TEST = false;
-                app.RefreshExtensionView();
-                ui.ShowMessage("meile!");
-                CoreLib.Current.TEST = true;
-                app.RefreshExtensionView();
-                ui.WriteLine(manager["fuck"]);
-                ui.WriteOutput("fuck asdasjkdshadskjhkj");
-                ui.ShowMessage("WTF\n\n\n\n\n\nasdadas\n\n\nasdasdsahsdkajghsdakjfhsdjkaghsdfjkghjkfsdhgjkshfdjkgfhsjdgkhdskfjghjW");
-                bool? choice = ui.DoChoice("FUCcqwjeiwqeqehqWK");
-                ui.WriteLine(choice.ToString());
-                bool yn = ui.DoYN("FUCK2c   2rqwhewqhehqweqhwewqhejwqhewqjhqwejkqwhewqhWW");
-                ui.WriteLine(yn.ToString());
-                //object result = ui.SelectFrom(new object[] { "a", "qqdasdsadasb", "c", "a", "s", "c", "a" }, "选择你要做的SB操作");
-                //ui.WriteLine(result);
+                List<string> list = new List<string>() {
+                    "1","2"
+                };
+                storageManager.SaveJsonObject("main",list);
                 ui.Finish();
             }
         }
