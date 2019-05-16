@@ -148,9 +148,11 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Model\DefaultView.cs" />
     <Compile Include="Model\ExtensionWrapperDock.cs" />
     <Compile Include="Model\FormatLog.cs" />
     <Compile Include="Model\HomeSettings.cs" />
+    <Compile Include="Model\IAtmbViewItem.cs" />
     <Compile Include="Model\LibDock.cs" />
     <Compile Include="Model\OpenSourceProject.cs" />
     <Compile Include="Model\Tip.cs" />
@@ -211,6 +213,7 @@
     <Compile Include="ViewModel\VMGuide.cs" />
     <Compile Include="ViewModel\VMDefaultInformation.cs" />
     <Compile Include="ViewModel\VMLog.cs" />
+    <Compile Include="ViewModel\VMMainWindowV2.cs" />
     <Compile Include="ViewModel\VMOpenSource.cs" />
     <Compile Include="ViewModel\VMCurrentDevice.cs" />
     <Compile Include="ViewModel\VMExtensions.cs" />
@@ -337,6 +340,9 @@
     </Compile>
     <Compile Include="View\Windows\LogWindow.xaml.cs">
       <DependentUpon>LogWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\MainWindowV2.xaml.cs">
+      <DependentUpon>MainWindowV2.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Windows\MessageWindow.xaml.cs">
       <DependentUpon>MessageWindow.xaml</DependentUpon>
@@ -673,6 +679,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Windows\LogWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\MainWindowV2.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

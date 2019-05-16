@@ -1,0 +1,76 @@
+﻿<Window x:Class="AutumnBox.GUI.View.Windows.MainWindowV2"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AutumnBox.GUI.View.Windows"
+        xmlns:viewmodel="clr-namespace:AutumnBox.GUI.ViewModel"
+        FontFamily="{DynamicResource AutumnBox.Font}"
+        mc:Ignorable="d"
+       
+        Title="{DynamicResource AppName}" Height="720" Width="1280">
+    <Window.DataContext>
+        <viewmodel:VMMainWindowV2></viewmodel:VMMainWindowV2>
+    </Window.DataContext>
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="_File">
+                <MenuItem Command="{Binding OpenLoggingWindow}" Header="Logs" InputGestureText="Ctrl + Alt + L"/>
+                <MenuItem Command="{Binding Exit}" Header="Exit" InputGestureText="Ctrl + E"/>
+            </MenuItem>
+            <MenuItem Header="_Edit">
+                <MenuItem Header="Settings"/>
+                <MenuItem Header="Language"/>
+                <MenuItem Header="View"/>
+            </MenuItem>
+            <MenuItem Header="_Terminal">
+                <MenuItem Header="ADB Command Line" InputGestureText="Ctrl + Alt + C"/>
+                <MenuItem Header="ADB Command Line(Power shell)" InputGestureText="Ctrl + Alt + S"/>
+            </MenuItem>
+            <MenuItem Header="_Help">
+                <MenuItem Header="Help">
+                    <MenuItem Header="Guide"/>
+                    <MenuItem Header="Help">
+                        <MenuItem.Icon>
+                            <Image Source="/Resources/Drawable/icon.png" Height="20"></Image>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="_About">
+                <MenuItem Header="About"/>
+                <MenuItem Header="Donate"/>
+                <MenuItem Header="Join us"/>
+                <MenuItem Header="Open source"/>
+            </MenuItem>
+            <MenuItem Header="_Devices"/>
+
+        </Menu>
+
+        <DockPanel DockPanel.Dock="Bottom">
+            <DockPanel Background="WhiteSmoke"   DockPanel.Dock="Left" Width="250">
+                <Label DockPanel.Dock="Top" Height="1" Background="White"></Label>
+                <ListBox x:Name="ViewItemList"  SelectionChanged="ViewItemList_SelectionChanged" ItemsSource="{Binding ViewItems}" Background="WhiteSmoke">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="{Binding Icon}"></Image>
+                                <TextBlock Text="{Binding Name}"></TextBlock>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </DockPanel>
+
+            <Grid>
+                <Grid x:Name="ViewGrid"/>
+                <Grid DockPanel.Dock="Bottom" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <StackPanel>
+                        <TextBlock Foreground="Gray" FontSize="60">AutumnBox</TextBlock>
+                        <TextBlock Foreground="Gray" FontSize="25">Open source,easy to use,free</TextBlock>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+        </DockPanel>
+    </DockPanel>
+</Window>
