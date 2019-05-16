@@ -156,8 +156,11 @@
     <Compile Include="Model\FormatLog.cs" />
     <Compile Include="Model\HomeSettings.cs" />
     <Compile Include="Model\IAtmbViewItem.cs" />
+    <Compile Include="Model\ISliceController.cs" />
     <Compile Include="Model\LibDock.cs" />
     <Compile Include="Model\OpenSourceProject.cs" />
+    <Compile Include="Model\SliceController.cs" />
+    <Compile Include="View\Controls\SliceView.cs" />
     <Compile Include="Model\Tip.cs" />
     <Compile Include="Model\VersionInfo.cs" />
     <Compile Include="Util\AdbManager.cs" />
@@ -234,8 +237,18 @@
     <Compile Include="ViewModel\VMTips.cs" />
     <Compile Include="ViewModel\VMUpdateLogs.cs" />
     <Compile Include="ViewModel\VMUpdateWindow.cs" />
+    <Compile Include="ViewModel\VMWelcome.cs" />
     <Compile Include="View\CstPreview.xaml.cs">
       <DependentUpon>CstPreview.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Slices\More.xaml.cs">
+      <DependentUpon>More.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Slices\Settings.xaml.cs">
+      <DependentUpon>Settings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Slices\Home.xaml.cs">
+      <DependentUpon>Home.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\DialogContent\ContentConnectNetDevice.xaml.cs">
       <DependentUpon>ContentConnectNetDevice.xaml</DependentUpon>
@@ -466,6 +479,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\CstPreview.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Slices\More.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Slices\Settings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Slices\Home.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
