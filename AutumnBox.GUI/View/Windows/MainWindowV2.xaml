@@ -22,7 +22,7 @@
     </Window.InputBindings>
     <DockPanel>
         <controls1:MainMenu x:Name="Menu" DockPanel.Dock="Top"/>
-
+        <controls1:DeviceBar DockPanel.Dock="Top"/>
         <Grid >
             <TabControl  SelectedItem="{Binding SelectedSlice}" TabStripPlacement="Left" ItemsSource="{Binding Slices}">
                 <TabControl.ItemTemplate>

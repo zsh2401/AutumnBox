@@ -161,7 +161,11 @@
     <Compile Include="Model\OpenSourceProject.cs" />
     <Compile Include="Model\SliceController.cs" />
     <Compile Include="Util\Bus\MainWindowBus.cs" />
+    <Compile Include="ViewModel\VMDeviceSelector.cs" />
     <Compile Include="ViewModel\VMMainMenu.cs" />
+    <Compile Include="View\Controls\DeviceBar.xaml.cs">
+      <DependentUpon>DeviceBar.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Controls\MainMenu.xaml.cs">
       <DependentUpon>MainMenu.xaml</DependentUpon>
     </Compile>
@@ -248,6 +252,9 @@
     </Compile>
     <Compile Include="View\Slices\More.xaml.cs">
       <DependentUpon>More.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Slices\OpenSourceInformation.xaml.cs">
+      <DependentUpon>OpenSourceInformation.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Slices\Settings.xaml.cs">
       <DependentUpon>Settings.xaml</DependentUpon>
@@ -489,6 +496,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Controls\DeviceBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Controls\MainMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -498,6 +509,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Slices\More.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Slices\OpenSourceInformation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -741,6 +756,9 @@
     <Content Include="Resources\AdbExecutable\libwinpthread-1.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Resources\Drawable\github.png" />
+    <Resource Include="Resources\Drawable\DeviceBar\phone.png" />
+    <Resource Include="Resources\Drawable\android.png" />
     <Resource Include="Resources\MenuIcon\icon.png" />
     <Resource Include="Resources\MenuIcon\settings.png" />
     <Resource Include="Resources\MenuIcon\cmd.png" />

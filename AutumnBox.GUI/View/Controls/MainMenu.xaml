@@ -51,8 +51,8 @@
                 </MenuItem>
                 <MenuItem Header="{DynamicResource MenuCheckUpdate}" Command="{Binding UpdateCheck}"/>
                 <MenuItem Header="{DynamicResource MenuUpdateLog}" Command="{Binding OpenUpdateLogs}"/>
-                <MenuItem Header="{DynamicResource MenuOpenSource}"/>
-                <MenuItem Header="{DynamicResource MenuAbout}"/>
+                <MenuItem Header="{DynamicResource MenuOpenSource}" Command="{Binding OpenOSInformation}"/>
+                <MenuItem Header="{DynamicResource MenuAbout}" Command="{Binding OpenAbout}"/>
             </MenuItem>
         </Menu>
     </Grid>

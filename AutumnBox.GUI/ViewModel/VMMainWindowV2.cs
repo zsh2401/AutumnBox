@@ -1,14 +1,8 @@
-﻿using AutumnBox.Basic.ManagedAdb;
-using AutumnBox.GUI.MVVM;
-using AutumnBox.GUI.Util.Bus;
+﻿using AutumnBox.GUI.MVVM;
 using AutumnBox.GUI.View.Controls;
 using AutumnBox.GUI.View.Slices;
-using AutumnBox.GUI.View.Windows;
-using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Windows.Input;
 using SliceController = AutumnBox.GUI.Model.SliceController;
 
 namespace AutumnBox.GUI.ViewModel
