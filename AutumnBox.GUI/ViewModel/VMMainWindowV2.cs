@@ -1,8 +1,12 @@
-﻿using AutumnBox.GUI.MVVM;
+﻿using AutumnBox.Basic.ManagedAdb;
+using AutumnBox.GUI.MVVM;
+using AutumnBox.GUI.Util.Bus;
 using AutumnBox.GUI.View.Controls;
 using AutumnBox.GUI.View.Slices;
 using AutumnBox.GUI.View.Windows;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows.Input;
 using SliceController = AutumnBox.GUI.Model.SliceController;
@@ -34,29 +38,17 @@ namespace AutumnBox.GUI.ViewModel
             set
             {
                 selectedSlice = value;
-                SelectionChanged();
                 RaisePropertyChanged();
             }
         }
         private SliceController selectedSlice;
 
 
-        public ICommand Exit { get; set; }
-        public ICommand OpenLoggingWindow { get; set; }
-        public ICommand UpdateLogs { get; set; }
-        public ICommand Settings { get; set; }
-
         private readonly SliceView home = new SliceView(new Home());
 
         public VMMainWindowV2()
         {
-            InitCommand();
             InitPages();
-        }
-
-        private void SelectionChanged()
-        {
-            //if(SelectedPage)
         }
 
         public void InitPages()
@@ -69,18 +61,10 @@ namespace AutumnBox.GUI.ViewModel
             SelectedSlice = Slices.First();
         }
 
-        public void InitCommand()
-        {
-            Exit = new MVVMCommand(p => { App.Current.Shutdown(0); });
-            OpenLoggingWindow = new MVVMCommand(p => { new LogWindow().Show(); });
-            UpdateLogs = new MVVMCommand(p => ShowSlice("testXXX"));
-            Settings = new MVVMCommand(p => ShowSlice(new Settings()));
-        }
-
-        public void ShowSlice(object view)
+        public void ShowSlice(object view, string title)
         {
             SelectedSlice = slices[0];
-            home.Next(view);
+            home.Next(view, title);
         }
     }
 }

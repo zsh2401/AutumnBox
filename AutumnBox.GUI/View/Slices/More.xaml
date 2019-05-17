@@ -11,8 +11,9 @@
         <viewmodel:VMMore/>
     </UserControl.DataContext>
     <Grid>
-        <StackPanel  Orientation="Vertical">
-            <!--<materialDesign:Card  Background="{DynamicResource CardBackgroundBrush}" Margin="0,0,0,10">-->
+        <ScrollViewer>
+            <StackPanel  Orientation="Vertical">
+
                 <StackPanel>
                     <TextBlock FontSize="15"  Margin="15" Text="{DynamicResource PanelMoreExtensionSlogan}"/>
                     <StackPanel  Margin="15,0,0,10" Orientation="Horizontal">
@@ -28,15 +29,12 @@
                         <Button FontSize="12" Command="{Binding OpenLibsView}" Content="{DynamicResource PanelMoreBtnViewLoadedModules}"/>
                     </WrapPanel>
                     <TextBlock Margin="15" FontSize="15"  Text="{DynamicResource PanelMoreEvenNoDevice}"/>
-                    <!--<local:PanelExtension/>-->
                 </StackPanel>
-            <!--</materialDesign:Card>-->
-            <!--<materialDesign:Card Margin="0,0,0,10" Background="{DynamicResource CardBackgroundBrush}">-->
                 <StackPanel Orientation="Vertical">
                     <TextBlock FontSize="15" Margin="15" Text="{DynamicResource PanelMoreCommonlyUsed}"/>
                     <WrapPanel Margin="10,0,10,10">
                         <Button Content="{DynamicResource PanelMoreLinkGapps}" CommandParameter="https://opengapps.org/"  Command="{Binding OpenUrl}" />
-                    <Button Content="{DynamicResource PanelMoreLinkAICP}"  CommandParameter="http://www.aicp-rom.com/"  Command="{Binding OpenUrl}" />
+                        <Button Content="{DynamicResource PanelMoreLinkAICP}"  CommandParameter="http://www.aicp-rom.com/"  Command="{Binding OpenUrl}" />
                         <Button Content="{DynamicResource PanelMoreLinkMiuiLineFlash}" CommandParameter="http://www.miui.com/shuaji-393.html"  Command="{Binding OpenUrl}" />
                         <Button Content="{DynamicResource PanelMoreLinkDownloadMiFlash}" CommandParameter="http://www.miui.com/shuaji-393.html"  Command="{Binding OpenUrl}" />
                         <Button Content="{DynamicResource PanelMoreLinkMIUI}" CommandParameter="https://miui.com/"  Command="{Binding OpenUrl}" />
@@ -65,12 +63,9 @@
 
                     </WrapPanel>
                 </StackPanel>
-            <!--</materialDesign:Card>-->
 
-            <!--<materialDesign:Card Background="{DynamicResource CardBackgroundBrush}">-->
                 <Image Source="/Resources/Drawable/More/halo.png"/>
-            <!--</materialDesign:Card>-->
-        </StackPanel>
-
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </UserControl>

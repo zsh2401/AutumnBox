@@ -160,6 +160,11 @@
     <Compile Include="Model\LibDock.cs" />
     <Compile Include="Model\OpenSourceProject.cs" />
     <Compile Include="Model\SliceController.cs" />
+    <Compile Include="Util\Bus\MainWindowBus.cs" />
+    <Compile Include="ViewModel\VMMainMenu.cs" />
+    <Compile Include="View\Controls\MainMenu.xaml.cs">
+      <DependentUpon>MainMenu.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Controls\SliceView.cs" />
     <Compile Include="Model\Tip.cs" />
     <Compile Include="Model\VersionInfo.cs" />
@@ -330,6 +335,9 @@
     <Compile Include="View\Panel\PanelTips.xaml.cs">
       <DependentUpon>PanelTips.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Slices\UpdateLog.xaml.cs">
+      <DependentUpon>UpdateLog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\TipCard.xaml.cs">
       <DependentUpon>TipCard.xaml</DependentUpon>
     </Compile>
@@ -368,6 +376,9 @@
     </Compile>
     <Compile Include="View\Windows\RunningWindow.xaml.cs">
       <DependentUpon>RunningWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\StartWindow.xaml.cs">
+      <DependentUpon>StartWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Windows\UpdateNoticeWindow.xaml.cs">
       <DependentUpon>UpdateNoticeWindow.xaml</DependentUpon>
@@ -475,6 +486,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\Urls.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Controls\MainMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -586,6 +601,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Slices\UpdateLog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\TipCard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -635,6 +654,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Windows\RunningWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\StartWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -718,6 +741,10 @@
     <Content Include="Resources\AdbExecutable\libwinpthread-1.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Resources\MenuIcon\cmd.png" />
+    <Resource Include="Resources\MenuIcon\ps.png" />
+    <Resource Include="Resources\MenuIcon\debug.png" />
+    <Resource Include="Resources\MenuIcon\exit.png" />
     <Resource Include="Resources\Drawable\More\halo.png" />
     <Resource Include="Resources\Drawable\Donate\alishop.png" />
     <Resource Include="Resources\Drawable\Donate\redpacket.jpg" />

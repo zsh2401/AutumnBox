@@ -6,52 +6,30 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AutumnBox.GUI.View.Windows"
         xmlns:viewmodel="clr-namespace:AutumnBox.GUI.ViewModel"
-        FontFamily="{DynamicResource AutumnBox.Font}"
+    xmlns:controls1="clr-namespace:AutumnBox.GUI.View.Controls"
+    FontFamily="{DynamicResource AutumnBox.Font}"
         mc:Ignorable="d"
         ShowInTaskbar="True"
         Icon="/Resources/Drawable/icon.png"
         Title="{DynamicResource AppName}" Height="720" Width="1280">
     <Window.DataContext>
-        <viewmodel:VMMainWindowV2></viewmodel:VMMainWindowV2>
+        <viewmodel:VMMainWindowV2/>
     </Window.DataContext>
+
     <DockPanel>
-        <Menu DockPanel.Dock="Top">
-            <MenuItem Header="_File">
-                <MenuItem Command="{Binding OpenLoggingWindow}" Header="Logs" InputGestureText="Ctrl + Alt + L"/>
-                <MenuItem Command="{Binding Exit}" Header="Exit" InputGestureText="Ctrl + E"/>
-            </MenuItem>
-            <MenuItem Header="_Edit">
-                <MenuItem Header="Settings" Command="{Binding Settings}"/>
-                <MenuItem Header="Language"/>
-                <MenuItem Header="View"/>
-            </MenuItem>
-            <MenuItem Header="_Terminal">
-                <MenuItem Header="ADB Command Line" InputGestureText="Ctrl + Alt + C"/>
-                <MenuItem Header="ADB Command Line(Power shell)" InputGestureText="Ctrl + Alt + S"/>
-            </MenuItem>
-            <MenuItem Header="_Help">
-                <MenuItem Header="Guide">
-                    <MenuItem.Icon>
-                        <Image Source="/Resources/Drawable/icon.png" Height="20"></Image>
-                    </MenuItem.Icon>
-                </MenuItem>
-                <MenuItem Header="About AutumnBox"/>
-                <MenuItem Header="Check update"/>
-                <MenuItem Header="Update logs" Command="{Binding UpdateLogs}"/>
-                <MenuItem Header="Open source"/>
-            </MenuItem>
-        </Menu>
+        <controls1:MainMenu DockPanel.Dock="Top"/>
 
         <!--<Grid DockPanel.Dock="Bottom" Background="Transparent"></Grid>-->
-        <Grid DockPanel.Dock="Bottom">
+        <!--<Grid DockPanel.Dock="Bottom">
             <Grid DockPanel.Dock="Bottom" VerticalAlignment="Center" HorizontalAlignment="Center">
                 <StackPanel>
                     <TextBlock Foreground="Gray" FontSize="60">AutumnBox</TextBlock>
                     <TextBlock Foreground="Gray" FontSize="25">Open source,easy to use,free</TextBlock>
                 </StackPanel>
-            </Grid>
+            </Grid>-->
 
-            <TabControl  SelectedItem="{Binding SelectedSlice}" TabStripPlacement="Left" Background="Transparent" ItemsSource="{Binding Slices}">
+        <Grid >
+            <TabControl  SelectedItem="{Binding SelectedSlice}" TabStripPlacement="Left" ItemsSource="{Binding Slices}">
                 <TabControl.ItemTemplate>
                     <DataTemplate>
                         <StackPanel MinWidth="250" MaxWidth="250" Orientation="Horizontal">
@@ -69,6 +47,11 @@
                     </DataTemplate>
                 </TabControl.ContentTemplate>
             </TabControl>
+
+
+            <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalAlignment="Right">
+                <StackPanel controls:Growl.Token="main" controls:Growl.GrowlParent="True" VerticalAlignment="Top" Margin="0,10,10,10"/>
+            </ScrollViewer>
 
         </Grid>
     </DockPanel>

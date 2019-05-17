@@ -80,12 +80,14 @@ namespace AutumnBox.GUI.Util
             CheckOtherAutumnBox();
             OnLoading();
 
+            Trace.WriteLine("Loading");
+            InitLogSystem();
+            logger.Info("wtf");
             InitErrorHandlerSystem();
             InitLanguageSystem();
-            InitThemeSystem();
-            InitLogSystem();
-            ShowDebugWindowIfNeed();
-            ShowGuideIfNeed();
+            //InitThemeSystem();
+            //ShowDebugWindowIfNeed();
+            //ShowGuideIfNeed();
             PrintInformations();
             InitAutumnBoxBasic();
             InitAutumnBoxOpenFx();
