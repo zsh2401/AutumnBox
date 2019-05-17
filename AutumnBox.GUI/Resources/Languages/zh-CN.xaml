@@ -16,6 +16,24 @@
     
     <s:String x:Key="CurrentVersionHasBeenBanned">此版本秋之盒已被禁用!</s:String>
     
+    <s:String x:Key="MenuFile">文件(_F)</s:String>
+    <s:String x:Key="MenuDebug">调试窗口(_D)</s:String>
+    <s:String x:Key="MenuExit">退出(_X)</s:String>
+     <s:String x:Key="MenuEdit">编辑(_E)</s:String>
+    <s:String x:Key="MenuSettings">设置(_S)</s:String>
+    <s:String x:Key="MenuTerminatal">终端(_T)</s:String>
+    <s:String x:Key="MenuCMD">ADB命令行(_C)</s:String>
+    <s:String x:Key="MenuPS">ADB命令行-Powershell(_P)</s:String>
+    <s:String x:Key="MenuHelp">帮助(_H)</s:String>
+    <s:String x:Key="MenuGuide">说明书(_G)</s:String>
+    <s:String x:Key="MenuCheckUpdate">检查更新(_U)</s:String>
+    <s:String x:Key="MenuUpdateLog">更新日志</s:String>
+    <s:String x:Key="MenuOpenSource">开源相关(_O)</s:String>
+      <s:String x:Key="MenuAbout">关于秋之盒(_A)</s:String>
+    
+    <s:String x:Key="SliceTitleHome">主页</s:String>
+    <s:String x:Key="SliceTitleMore">更多</s:String>
+    
     <s:String x:Key="UserLicenseTitle">秋之盒使用协议 1.0</s:String>
     <s:String x:Key="UserLicenseContent">本协议仍然在编写当中,最终解释权归zsh2401所有
 欢迎您使用秋之盒-AutumnBox(下称本软件)。

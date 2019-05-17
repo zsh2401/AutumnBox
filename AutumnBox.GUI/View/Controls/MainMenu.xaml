@@ -12,47 +12,47 @@
     </UserControl.DataContext>
     <Grid>
         <Menu DockPanel.Dock="Top">
-            <MenuItem Header="_File">
-                <MenuItem Command="{Binding OpenLoggingWindow}" Header="Logs" InputGestureText="Ctrl + Alt + L">
+            <MenuItem Header="{DynamicResource MenuFile}">
+                <MenuItem Command="{Binding OpenLoggingWindow}" Header="{DynamicResource MenuDebug}">
                     <MenuItem.Icon>
                         <Image Source="/Resources/MenuIcon/debug.png"></Image>
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Command="{Binding Exit}" Header="Exit" InputGestureText="Ctrl + E">
+                <MenuItem Command="{Binding Exit}" Header="{DynamicResource MenuExit}" InputGestureText="Alt + F4">
                     <MenuItem.Icon>
                         <Image Source="/Resources/MenuIcon/exit.png"></Image>
                     </MenuItem.Icon>
                 </MenuItem>
             </MenuItem>
-            <MenuItem Header="_Edit">
-                <MenuItem Header="Settings" Command="{Binding OpenSettings}">
+            <MenuItem Header="{DynamicResource MenuEdit}">
+                <MenuItem Header="{DynamicResource MenuSettings}" Command="{Binding OpenSettings}">
                     <MenuItem.Icon>
                         <Image Source="/Resources/MenuIcon/settings.png"></Image>
                     </MenuItem.Icon>
                 </MenuItem>
             </MenuItem>
-            <MenuItem Header="_Terminal">
-                <MenuItem Header="ADB Command Line" InputGestureText="Ctrl + Alt + C" Command="{Binding OpenShell}" CommandParameter="cmd.exe">
+            <MenuItem Header="{DynamicResource MenuTerminatal}">
+                <MenuItem Header="{DynamicResource MenuCMD}" InputGestureText="Ctrl + Alt + C" Command="{Binding OpenShell}" CommandParameter="cmd.exe">
                     <MenuItem.Icon>
                         <Image Source="/Resources/MenuIcon/cmd.png"></Image>
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Header="ADB Command Line(Power shell)" InputGestureText="Ctrl + Alt + S" Command="{Binding OpenShell}" CommandParameter="powershell.exe">
+                <MenuItem Header="{DynamicResource MenuPS}" InputGestureText="Ctrl + Alt + S" Command="{Binding OpenShell}" CommandParameter="powershell.exe">
                     <MenuItem.Icon>
                         <Image Source="/Resources/MenuIcon/ps.png"></Image>
                     </MenuItem.Icon>
                 </MenuItem>
             </MenuItem>
-            <MenuItem Header="_Help">
-                <MenuItem Header="Guide">
+            <MenuItem Header="{DynamicResource MenuHelp}">
+                <MenuItem Header="{DynamicResource MenuGuide}" InputGestureText="Ctrl + F1">
                     <MenuItem.Icon>
                         <Image Source="/Resources/MenuIcon/icon.png"></Image>
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Header="About"/>
-                <MenuItem Header="Check update" Command="{Binding UpdateCheck}"/>
-                <MenuItem Header="Update logs" Command="{Binding OpenUpdateLogs}"/>
-                <MenuItem Header="Open source"/>
+                <MenuItem Header="{DynamicResource MenuCheckUpdate}" Command="{Binding UpdateCheck}"/>
+                <MenuItem Header="{DynamicResource MenuUpdateLog}" Command="{Binding OpenUpdateLogs}"/>
+                <MenuItem Header="{DynamicResource MenuOpenSource}"/>
+                <MenuItem Header="{DynamicResource MenuAbout}"/>
             </MenuItem>
         </Menu>
     </Grid>

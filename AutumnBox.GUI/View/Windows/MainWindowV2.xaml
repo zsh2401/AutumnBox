@@ -16,26 +16,18 @@
         <viewmodel:VMMainWindowV2/>
     </Window.DataContext>
     <Window.InputBindings>
-        <KeyBinding Modifiers="Ctrl" Key="E"  Command="{Binding Menu.DataContext.Exit}"/>
-        <KeyBinding Modifiers="Ctrl+Alt" Key="S"  Command="{Binding OpenShell}" CommandParameter="powershell.exe"/>
+        <KeyBinding Modifiers="Ctrl" Key="F1"  Command="{Binding DataContext.OpenGoUrl,ElementName=Menu}" CommandParameter="{DynamicResource AGoHelp}"/>
+        <KeyBinding Modifiers="Ctrl+Alt" Key="S"  Command="{Binding DataContext.OpenShell,ElementName=Menu}" CommandParameter="powershell.exe"/>
+        <KeyBinding Modifiers="Ctrl+Alt" Key="C"  Command="{Binding DataContext.OpenShell,ElementName=Menu}" CommandParameter="cmd.exe"/>
     </Window.InputBindings>
     <DockPanel>
         <controls1:MainMenu x:Name="Menu" DockPanel.Dock="Top"/>
-
-        <!--<Grid DockPanel.Dock="Bottom" Background="Transparent"></Grid>-->
-        <!--<Grid DockPanel.Dock="Bottom">
-            <Grid DockPanel.Dock="Bottom" VerticalAlignment="Center" HorizontalAlignment="Center">
-                <StackPanel>
-                    <TextBlock Foreground="Gray" FontSize="60">AutumnBox</TextBlock>
-                    <TextBlock Foreground="Gray" FontSize="25">Open source,easy to use,free</TextBlock>
-                </StackPanel>
-            </Grid>-->
 
         <Grid >
             <TabControl  SelectedItem="{Binding SelectedSlice}" TabStripPlacement="Left" ItemsSource="{Binding Slices}">
                 <TabControl.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel MinWidth="250" MaxWidth="250" Orientation="Horizontal">
+                        <StackPanel Width="150" Orientation="Horizontal">
                             <Image Height="20" Source="{Binding Icon}"/>
                             <TextBlock TextWrapping="Wrap" Text="{Binding Title}"/>
                         </StackPanel>

@@ -55,8 +55,8 @@ namespace AutumnBox.GUI.ViewModel
         {
             Slices = new List<SliceController>()
             {
-                new SliceController("home","Welcome to AutumnBox",null,home),
-                new SliceController("more","More",null,new More()),
+                new SliceController("home","SliceTitleHome",null,home),
+                new SliceController("more","SliceTitleMore",null,new More()),
             };
             SelectedSlice = Slices.First();
         }

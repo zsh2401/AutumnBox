@@ -20,7 +20,7 @@ namespace AutumnBox.GUI.Model
         public SliceController(string id, string title, object icon, object view)
         {
             Id = id ?? throw new ArgumentNullException(nameof(id));
-            Title = title ?? throw new ArgumentNullException(nameof(title));
+            Title = App.Current.Resources[title]?.ToString() ?? title ?? throw new ArgumentNullException(nameof(title));
             Icon = icon;
             View = view ?? throw new ArgumentNullException(nameof(view));
         }
