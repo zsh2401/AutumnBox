@@ -11,12 +11,12 @@ namespace AutumnBox.GUI.ViewModel
 {
     class VMMainMenu : ViewModelBase
     {
-        public ICommand Exit { get; set; }
-        public ICommand OpenLoggingWindow { get; set; }
-        public ICommand OpenUpdateLogs { get; set; }
-        public ICommand OpenSettings { get; set; }
-        public ICommand OpenShell { get; set; }
-        public ICommand UpdateCheck { get; set; }
+        public ICommand Exit { get;  }
+        public ICommand OpenLoggingWindow { get;  }
+        public ICommand OpenUpdateLogs { get;  }
+        public ICommand OpenSettings { get;  }
+        public ICommand OpenShell { get;  }
+        public ICommand UpdateCheck { get;  }
         public VMMainMenu()
         {
             Exit = new MVVMCommand(p => { App.Current.Shutdown(0); });
@@ -34,12 +34,12 @@ namespace AutumnBox.GUI.ViewModel
                     Verb = "runas",
                 };
                 info.EnvironmentVariables["ANDROID_ADB_SERVER_PORT"] = Adb.Server.Port.ToString();
-                if (AutumnBox.GUI.Properties.Settings.Default.EnvVarCmdWindow)
+                if (Properties.Settings.Default.EnvVarCmdWindow)
                 {
                     var pathEnv = info.EnvironmentVariables["path"];
                     info.EnvironmentVariables["path"] = $"{Adb.AdbToolsDir.FullName};" + pathEnv;
                 }
-                if (AutumnBox.GUI.Properties.Settings.Default.StartCmdAtDesktop)
+                if (Properties.Settings.Default.StartCmdAtDesktop)
                 {
                     info.WorkingDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
                 }

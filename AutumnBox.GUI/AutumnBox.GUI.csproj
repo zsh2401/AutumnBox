@@ -741,6 +741,8 @@
     <Content Include="Resources\AdbExecutable\libwinpthread-1.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Resources\MenuIcon\icon.png" />
+    <Resource Include="Resources\MenuIcon\settings.png" />
     <Resource Include="Resources\MenuIcon\cmd.png" />
     <Resource Include="Resources\MenuIcon\ps.png" />
     <Resource Include="Resources\MenuIcon\debug.png" />

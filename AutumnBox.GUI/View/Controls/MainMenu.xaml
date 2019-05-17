@@ -4,41 +4,52 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AutumnBox.GUI.View.Controls"
+             xmlns:viewmodel="clr-namespace:AutumnBox.GUI.ViewModel"
              mc:Ignorable="d" 
              d:DesignWidth="800">
     <UserControl.DataContext>
-        <local:MainMenu></local:MainMenu>
+        <viewmodel:VMMainMenu/>
     </UserControl.DataContext>
     <Grid>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="_File">
                 <MenuItem Command="{Binding OpenLoggingWindow}" Header="Logs" InputGestureText="Ctrl + Alt + L">
                     <MenuItem.Icon>
-                        <Image Source="/Resources/MenuIcon/debug.png" Height="20"></Image>
+                        <Image Source="/Resources/MenuIcon/debug.png"></Image>
                     </MenuItem.Icon>
                 </MenuItem>
                 <MenuItem Command="{Binding Exit}" Header="Exit" InputGestureText="Ctrl + E">
                     <MenuItem.Icon>
-                        <Image Source="/Resources/MenuIcon/exit.png" Height="20"></Image>
+                        <Image Source="/Resources/MenuIcon/exit.png"></Image>
                     </MenuItem.Icon>
                 </MenuItem>
             </MenuItem>
             <MenuItem Header="_Edit">
                 <MenuItem Header="Settings" Command="{Binding OpenSettings}">
-
+                    <MenuItem.Icon>
+                        <Image Source="/Resources/MenuIcon/settings.png"></Image>
+                    </MenuItem.Icon>
                 </MenuItem>
             </MenuItem>
             <MenuItem Header="_Terminal">
-                <MenuItem Header="ADB Command Line" InputGestureText="Ctrl + Alt + C" Command="{Binding OpenShell}" CommandParameter="cmd.exe"/>
-                <MenuItem Header="ADB Command Line(Power shell)" InputGestureText="Ctrl + Alt + S" Command="{Binding OpenShell}" CommandParameter="powershell.exe"/>
+                <MenuItem Header="ADB Command Line" InputGestureText="Ctrl + Alt + C" Command="{Binding OpenShell}" CommandParameter="cmd.exe">
+                    <MenuItem.Icon>
+                        <Image Source="/Resources/MenuIcon/cmd.png"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="ADB Command Line(Power shell)" InputGestureText="Ctrl + Alt + S" Command="{Binding OpenShell}" CommandParameter="powershell.exe">
+                    <MenuItem.Icon>
+                        <Image Source="/Resources/MenuIcon/ps.png"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>
             </MenuItem>
             <MenuItem Header="_Help">
                 <MenuItem Header="Guide">
                     <MenuItem.Icon>
-                        <Image Source="/Resources/Drawable/icon.png" Height="20"></Image>
+                        <Image Source="/Resources/MenuIcon/icon.png"></Image>
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Header="About AutumnBox"/>
+                <MenuItem Header="About"/>
                 <MenuItem Header="Check update" Command="{Binding UpdateCheck}"/>
                 <MenuItem Header="Update logs" Command="{Binding OpenUpdateLogs}"/>
                 <MenuItem Header="Open source"/>

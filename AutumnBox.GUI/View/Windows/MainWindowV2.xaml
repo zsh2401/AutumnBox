@@ -15,9 +15,12 @@
     <Window.DataContext>
         <viewmodel:VMMainWindowV2/>
     </Window.DataContext>
-
+    <Window.InputBindings>
+        <KeyBinding Modifiers="Ctrl" Key="E"  Command="{Binding Menu.DataContext.Exit}"/>
+        <KeyBinding Modifiers="Ctrl+Alt" Key="S"  Command="{Binding OpenShell}" CommandParameter="powershell.exe"/>
+    </Window.InputBindings>
     <DockPanel>
-        <controls1:MainMenu DockPanel.Dock="Top"/>
+        <controls1:MainMenu x:Name="Menu" DockPanel.Dock="Top"/>
 
         <!--<Grid DockPanel.Dock="Bottom" Background="Transparent"></Grid>-->
         <!--<Grid DockPanel.Dock="Bottom">
