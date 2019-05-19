@@ -1,0 +1,27 @@
+﻿<UserControl
+    x:Class="AutumnBox.GUI.View.DialogContent.ContentDisconnectDevice"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AutumnBox.GUI.View.DialogContent"
+    xmlns:system="clr-namespace:System;assembly=mscorlib"
+    FontFamily="{DynamicResource AutumnBox.Font}"
+             mc:Ignorable="d" Height="130.435" Width="292.976">
+    <Grid>
+        <StackPanel>
+            <Button IsDefault="True" Command="materialDesign:DialogHost.CloseDialogCommand" Style="{DynamicResource MaterialDesignRaisedButton}" Margin="5" Content="{DynamicResource ContentDisconnectNetDeviceBtnDisableAndDisconnect}">
+                <Button.CommandParameter>
+                    <system:Boolean>True</system:Boolean>
+                </Button.CommandParameter>
+            </Button>
+            <Button Command="materialDesign:DialogHost.CloseDialogCommand" Style="{DynamicResource MaterialDesignFlatButton}" Margin="5"  Content="{DynamicResource ContentDisconnectNetDeviceBtnOnlyDisconnect}">
+                <Button.CommandParameter>
+                    <system:Boolean>False</system:Boolean>
+                </Button.CommandParameter>
+            </Button>
+            <Button IsCancel="True" Command="materialDesign:DialogHost.CloseDialogCommand" Style="{DynamicResource MaterialDesignFlatButton}" Margin="5" Content="{DynamicResource ContentDisconnectNetDeviceBtnCancel}"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

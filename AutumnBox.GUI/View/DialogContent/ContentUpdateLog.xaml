@@ -1,0 +1,37 @@
+﻿<UserControl x:Class="AutumnBox.GUI.View.DialogContent.ContentUpdateLog"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                          xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:local="clr-namespace:AutumnBox.GUI.View.DialogContent"
+             xmlns:viewmodel="clr-namespace:AutumnBox.GUI.ViewModel"
+             mc:Ignorable="d" 
+             FontFamily="{DynamicResource AutumnBox.Font}"
+             Height="450" Width="800">
+    <UserControl.DataContext>
+        <viewmodel:VMUpdateLogs></viewmodel:VMUpdateLogs>
+    </UserControl.DataContext>
+    <Grid>
+        <DockPanel>
+            <DockPanel DockPanel.Dock="Top">
+                <Button FontSize="25" DockPanel.Dock="Right"   IsCancel="True"  IsDefault="True" HorizontalAlignment="Right" Style="{DynamicResource MaterialDesignFlatButton}" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Content="×"/>
+                <TextBlock Margin="5" FontSize="40">Farewell under the stars</TextBlock>
+            </DockPanel>
+            <ListView ItemsSource="{Binding Versions}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <DockPanel>
+                            <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
+                                <Label Background="{DynamicResource PrimaryLightBrush}" Width="5"/>
+                                <TextBlock Margin="10,0,0,0" FontSize="30" Text="{Binding Version}"/>
+                                <TextBlock VerticalAlignment="Center" Foreground="Gray" Margin="20,0,0,0" Text="{Binding Time}"/>
+                            </StackPanel>
+                            <TextBlock Margin="5" Text="{Binding Content}" TextWrapping="Wrap"/>
+                        </DockPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </DockPanel>
+    </Grid>
+</UserControl>

@@ -125,6 +125,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)View\Controls\DeviceBar.xaml.cs">
       <DependentUpon>DeviceBar.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)View\Controls\ExtensionsPanel.xaml.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)View\Controls\MainMenu.xaml.cs">
       <DependentUpon>MainMenu.xaml</DependentUpon>
     </Compile>
@@ -274,6 +275,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="$(MSBuildThisFileDirectory)View\Controls\DeviceBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)View\Controls\ExtensionsPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -478,6 +483,9 @@
     <None Include="$(MSBuildThisFileDirectory)App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="D:\Sources\AutumnBoxWorkingSpace\AutumnBox\AutumnBox.GUI.Shared\View\Controls\ExtensionsPanel.xaml.cs">
+      <DependentUpon>ExtensionsPanel.xaml</DependentUpon>
+    </Compile>
     <Compile Update="S:\AutumnBoxWorkingSpace\AutumnBox\AutumnBox.GUI.Shared\View\Controls\OldExtensionSlice.xaml.cs">
       <DependentUpon>OldExtensionSlice.xaml</DependentUpon>
     </Compile>

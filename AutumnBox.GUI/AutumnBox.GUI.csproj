@@ -144,6 +144,26 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ChoicerContentStartArgs.cs" />
+    <Compile Include="Model\DefaultView.cs" />
+    <Compile Include="Model\ExtensionWrapperDock.cs" />
+    <Compile Include="Model\FormatLog.cs" />
+    <Compile Include="Model\HomeSettings.cs" />
+    <Compile Include="Model\IAtmbViewItem.cs" />
+    <Compile Include="Model\ISliceController.cs" />
+    <Compile Include="Model\LibDock.cs" />
+    <Compile Include="Model\OpenSourceProject.cs" />
+    <Compile Include="Model\SliceController.cs" />
+    <Compile Include="Model\Tip.cs" />
+    <Compile Include="Model\VersionInfo.cs" />
+    <Compile Include="MVVM\FlexiableCommand.cs" />
+    <Compile Include="MVVM\ModelBase.cs" />
+    <Compile Include="MVVM\MVVMCommand.cs" />
+    <Compile Include="MVVM\NotificationObject.cs" />
+    <Compile Include="MVVM\ViewModelBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -152,6 +172,247 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Util\AdbManager.cs" />
+    <Compile Include="Util\AppLoader.cs" />
+    <Compile Include="Util\AppUnloader.cs" />
+    <Compile Include="Util\Bus\AtmbContext.cs" />
+    <Compile Include="Util\Bus\ConnectedDevicesListener.cs" />
+    <Compile Include="Util\Bus\DeviceSelectionObserver.cs" />
+    <Compile Include="Util\Bus\ExtensionViewRefresher.cs" />
+    <Compile Include="Util\Bus\MainWindowBus.cs" />
+    <Compile Include="Util\Bus\OpenFxObserver.cs" />
+    <Compile Include="Util\ConditionalVars.cs" />
+    <Compile Include="Util\Custom\ITheme.cs" />
+    <Compile Include="Util\Custom\IThemeManager.cs" />
+    <Compile Include="Util\Custom\ThemeManager.cs" />
+    <Compile Include="Util\Data\Converter.cs" />
+    <Compile Include="Util\Data\IResourceManager.cs" />
+    <Compile Include="Util\Data\Md5.cs" />
+    <Compile Include="Util\Debugging\LogEventArgs.cs" />
+    <Compile Include="Util\Debugging\LoggingStation.cs" />
+    <Compile Include="Util\Effect\Sounds.cs" />
+    <Compile Include="Util\Extensions.cs" />
+    <Compile Include="Util\FatalHandler.cs" />
+    <Compile Include="Util\I18N\ILanguage.cs" />
+    <Compile Include="Util\I18N\ILanguageManager.cs" />
+    <Compile Include="Util\I18N\LanguageManager.cs" />
+    <Compile Include="Util\Net\Banner.cs" />
+    <Compile Include="Util\Net\Getters\CstGetter.cs" />
+    <Compile Include="Util\Net\Getters\HomeSettingsGetter.cs" />
+    <Compile Include="Util\Net\Getters\JsonGetter.cs" />
+    <Compile Include="Util\Net\Getters\RemoteVersionInfoGetter.cs" />
+    <Compile Include="Util\Net\Getters\TipsGetter.cs" />
+    <Compile Include="Util\Net\Getters\ToastMotdGetter.cs" />
+    <Compile Include="Util\Net\Getters\VersionBanInfoGetter.cs" />
+    <Compile Include="Util\Net\Statistics.cs" />
+    <Compile Include="Util\Net\ToastMotd.cs" />
+    <Compile Include="Util\Net\Updater.cs" />
+    <Compile Include="Util\OpenFxManagement\AutumnBox_GUI_Caller.cs" />
+    <Compile Include="Util\OpenFxManagement\GUIApiManager.cs" />
+    <Compile Include="Util\OpenFxManagement\OpenFrameworkManager.cs" />
+    <Compile Include="Util\OS\MachineInfo.cs" />
+    <Compile Include="Util\OS\NativeMethods.cs" />
+    <Compile Include="Util\OS\OSInfo.cs" />
+    <Compile Include="Util\OS\OtherProcessChecker.cs" />
+    <Compile Include="Util\OS\ShortcutHelper.cs" />
+    <Compile Include="Util\OS\TaskKill.cs" />
+    <Compile Include="Util\Self.cs" />
+    <Compile Include="Util\UI\BlurHelper.cs" />
+    <Compile Include="Util\UI\Converters\BoolToVisibilityConverter.cs" />
+    <Compile Include="Util\UI\Converters\BoolToVisibilityConverterParameter.cs" />
+    <Compile Include="Util\UI\Converters\EndPointConverter.cs" />
+    <Compile Include="Util\UI\Converters\NonBoolConverter.cs" />
+    <Compile Include="Util\UI\Converters\NullToVisibilityConverter.cs" />
+    <Compile Include="Util\UI\Converters\NullToVisibilityConverterParameter.cs" />
+    <Compile Include="Util\UI\Converters\ObjectEqualsToVisibilityConverter.cs" />
+    <Compile Include="Util\UI\HelpButtonHelper.cs" />
+    <Compile Include="Util\UI\Sentences.cs" />
+    <Compile Include="Util\UI\TipsWaterfallFlow.cs" />
+    <Compile Include="Util\UI\UIHelper.cs" />
+    <Compile Include="ViewModel\VMConnectDevices.cs" />
+    <Compile Include="ViewModel\VMContentChoice.cs" />
+    <Compile Include="ViewModel\VMCst.cs" />
+    <Compile Include="ViewModel\VMCurrentDevice.cs" />
+    <Compile Include="ViewModel\VMDefaultInformation.cs" />
+    <Compile Include="ViewModel\VMDeviceDetails.cs" />
+    <Compile Include="ViewModel\VMDeviceSelector.cs" />
+    <Compile Include="ViewModel\VMExtensions.cs" />
+    <Compile Include="ViewModel\VMGuide.cs" />
+    <Compile Include="ViewModel\VMHome.cs" />
+    <Compile Include="ViewModel\VMInputWindow.cs" />
+    <Compile Include="ViewModel\VMLeafUI.cs" />
+    <Compile Include="ViewModel\VMLibsView.cs" />
+    <Compile Include="ViewModel\VMLog.cs" />
+    <Compile Include="ViewModel\VMMainMenu.cs" />
+    <Compile Include="ViewModel\VMMainWindow.cs" />
+    <Compile Include="ViewModel\VMMainWindowV2.cs" />
+    <Compile Include="ViewModel\VMMore.cs" />
+    <Compile Include="ViewModel\VMOldExtension.cs" />
+    <Compile Include="ViewModel\VMOpenSource.cs" />
+    <Compile Include="ViewModel\VMPanelMain.cs" />
+    <Compile Include="ViewModel\VMReboot.cs" />
+    <Compile Include="ViewModel\VMRunningWindow.cs" />
+    <Compile Include="ViewModel\VMSettingsDialog.cs" />
+    <Compile Include="ViewModel\VMTipCard.cs" />
+    <Compile Include="ViewModel\VMTips.cs" />
+    <Compile Include="ViewModel\VMUpdateLogs.cs" />
+    <Compile Include="ViewModel\VMUpdateWindow.cs" />
+    <Compile Include="ViewModel\VMWelcome.cs" />
+    <Compile Include="View\Controls\DeviceBar.xaml.cs">
+      <DependentUpon>DeviceBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Controls\ExtensionsPanel.xaml.cs">
+      <DependentUpon>ExtensionsPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Controls\MainMenu.xaml.cs">
+      <DependentUpon>MainMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Controls\OldExtensionSlice.xaml.cs">
+      <DependentUpon>OldExtensionSlice.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Controls\SliceView.cs" />
+    <Compile Include="View\CstPreview.xaml.cs">
+      <DependentUpon>CstPreview.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DialogContent\ContentConnectNetDevice.xaml.cs">
+      <DependentUpon>ContentConnectNetDevice.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DialogContent\ContentDisconnectDevice.xaml.cs">
+      <DependentUpon>ContentDisconnectDevice.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DialogContent\ContentDonate.xaml.cs">
+      <DependentUpon>ContentDonate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DialogContent\ContentEnableDeviceNetDebugging.xaml.cs">
+      <DependentUpon>ContentEnableDeviceNetDebugging.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DialogContent\ContentGuide.xaml.cs">
+      <DependentUpon>ContentGuide.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DialogContent\ContentOpenSource.xaml.cs">
+      <DependentUpon>ContentOpenSource.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DialogContent\ContentSettings.xaml.cs">
+      <DependentUpon>ContentSettings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DialogContent\ContentUpdateLog.xaml.cs">
+      <DependentUpon>ContentUpdateLog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\LeafContent\ChoiceView.xaml.cs">
+      <DependentUpon>ChoiceView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\LeafContent\MessageView.xaml.cs">
+      <DependentUpon>MessageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\LeafContent\SingleSelectView.xaml.cs">
+      <DependentUpon>SingleSelectView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\LeafContent\YNView.xaml.cs">
+      <DependentUpon>YNView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Panel\PanelCst.xaml.cs">
+      <DependentUpon>PanelCst.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Panel\PanelCurrentDevice.xaml.cs">
+      <DependentUpon>PanelCurrentDevice.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Panel\PanelDefaultInformation.xaml.cs">
+      <DependentUpon>PanelDefaultInformation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Panel\PanelDeviceDetails.xaml.cs">
+      <DependentUpon>PanelDeviceDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Panel\PanelDevices.xaml.cs">
+      <DependentUpon>PanelDevices.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Panel\PanelExtension.xaml.cs">
+      <DependentUpon>PanelExtension.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Panel\PanelHome.xaml.cs">
+      <DependentUpon>PanelHome.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Panel\PanelMain.xaml.cs">
+      <DependentUpon>PanelMain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Panel\PanelMore.xaml.cs">
+      <DependentUpon>PanelMore.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Panel\PanelReboot.xaml.cs">
+      <DependentUpon>PanelReboot.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Panel\PanelTips.xaml.cs">
+      <DependentUpon>PanelTips.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Slices\Home.xaml.cs">
+      <DependentUpon>Home.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Slices\More.xaml.cs">
+      <DependentUpon>More.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Slices\OpenSourceInformation.xaml.cs">
+      <DependentUpon>OpenSourceInformation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Slices\Settings.xaml.cs">
+      <DependentUpon>Settings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Slices\UpdateLog.xaml.cs">
+      <DependentUpon>UpdateLog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TipCard.xaml.cs">
+      <DependentUpon>TipCard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\AdbFailedWindow.xaml.cs">
+      <DependentUpon>AdbFailedWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\ChoiceWindow.xaml.cs">
+      <DependentUpon>ChoiceWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\ExceptionWindow.xaml.cs">
+      <DependentUpon>ExceptionWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\FatalWindow.xaml.cs">
+      <DependentUpon>FatalWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\InputWindow.xaml.cs">
+      <DependentUpon>InputWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\LeafWindow.xaml.cs">
+      <DependentUpon>LeafWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\LibsWindow.xaml.cs">
+      <DependentUpon>LibsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\LoadingWindow.xaml.cs">
+      <DependentUpon>LoadingWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\LogWindow.xaml.cs">
+      <DependentUpon>LogWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\MainWindowV2.xaml.cs">
+      <DependentUpon>MainWindowV2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\MessageWindow.xaml.cs">
+      <DependentUpon>MessageWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\OpenSourceWindow.xaml.cs">
+      <DependentUpon>OpenSourceWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\RunningWindow.xaml.cs">
+      <DependentUpon>RunningWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\StartWindow.xaml.cs">
+      <DependentUpon>StartWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\UpdateNoticeWindow.xaml.cs">
+      <DependentUpon>UpdateNoticeWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\YNWindow.xaml.cs">
+      <DependentUpon>YNWindow.xaml</DependentUpon>
+    </Compile>
+    <None Include="App.config" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
@@ -196,6 +457,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
     <Page Include="Resources\Converters.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -264,6 +529,210 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="View\Controls\DeviceBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Controls\ExtensionsPanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Controls\MainMenu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Controls\OldExtensionSlice.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\CstPreview.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\DialogContent\ContentConnectNetDevice.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\DialogContent\ContentDisconnectDevice.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\DialogContent\ContentDonate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\DialogContent\ContentEnableDeviceNetDebugging.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\DialogContent\ContentGuide.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\DialogContent\ContentOpenSource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\DialogContent\ContentSettings.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\DialogContent\ContentUpdateLog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\LeafContent\ChoiceView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\LeafContent\MessageView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\LeafContent\SingleSelectView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\LeafContent\YNView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Panel\PanelCst.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Panel\PanelCurrentDevice.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Panel\PanelDefaultInformation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Panel\PanelDeviceDetails.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Panel\PanelDevices.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Panel\PanelExtension.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Panel\PanelHome.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Panel\PanelMain.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Panel\PanelMore.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Panel\PanelReboot.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Panel\PanelTips.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Slices\Home.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Slices\More.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Slices\OpenSourceInformation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Slices\Settings.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Slices\UpdateLog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\TipCard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Windows\AdbFailedWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Windows\ChoiceWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Windows\ExceptionWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Windows\FatalWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Windows\InputWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Windows\LeafWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Windows\LibsWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Windows\LoadingWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Windows\LogWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Windows\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Windows\MainWindowV2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Windows\MessageWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Windows\OpenSourceWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Windows\RunningWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Windows\StartWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Windows\UpdateNoticeWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Windows\YNWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\AdbExecutable\adb.exe">
@@ -301,7 +770,6 @@
     <Resource Include="Resources\MenuIcon\settings.png" />
     <Content Include="Resources\Sound\ok.wav" />
   </ItemGroup>
-  <Import Project="..\AutumnBox.GUI.Shared\AutumnBox.GUI.Shared.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>del /S System.*.dll

@@ -31,19 +31,18 @@
             <TabItem Header="Welcome">
                 <panel:PanelDefaultInformation/>
             </TabItem>
-            <TabItem Header="Functions">
+            <TabItem  Header="Functions">
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
                     <StackPanel Orientation="Vertical">
-                        <panel:PanelExtension TargetDeviceState="Poweron"/>
-                        <panel:PanelExtension TargetDeviceState="Recovery"/>
-                        <panel:PanelExtension TargetDeviceState="Fastboot"/>
-                        <panel:PanelExtension TargetDeviceState="Sideload"/>
-                        <panel:PanelExtension TargetDeviceState="Offline"/>
-                        <panel:PanelExtension TargetDeviceState="Unauthorized"/>
-                        <panel:PanelExtension/>
+                        <!--<controls1:ExtensionsPanel TargetState="Poweron" Title="Fuck"/>-->
+                        <!--<panel:PanelExtension Margin="20,10,20,10"  TargetDeviceState="Recovery"/>
+                        <panel:PanelExtension Margin="20,10,20,10"  TargetDeviceState="Fastboot"/>
+                        <panel:PanelExtension Margin="20,10,20,10"  TargetDeviceState="Sideload"/>
+                        <panel:PanelExtension Margin="20,10,20,10"  TargetDeviceState="Offline"/>
+                        <panel:PanelExtension Margin="20,10,20,10"  TargetDeviceState="Unauthorized"/>
+                        <panel:PanelExtension Margin="20,10,20,10" />-->
                     </StackPanel>
                 </ScrollViewer>
-               
             </TabItem>
             <TabItem Header="More">
                 <panel:PanelDefaultInformation/>

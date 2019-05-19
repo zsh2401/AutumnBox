@@ -1,0 +1,22 @@
+﻿<UserControl
+    x:Class="AutumnBox.GUI.View.Controls.OldExtensionSlice"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:AutumnBox.GUI.View.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodel="clr-namespace:AutumnBox.GUI.ViewModel"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+    <UserControl.DataContext>
+        <viewmodel:VMOldExtension/>
+    </UserControl.DataContext>
+    <StackPanel Orientation="Vertical">
+        <StackPanel Orientation="Horizontal">
+            <Image Margin="20" Height="80" Width="80" Source="{Binding Wrapper.Info.Icon}"/>
+            <TextBlock VerticalAlignment="Center" FontSize="40" Text="{Binding Wrapper.Info.Name}"/>
+        </StackPanel>
+        <Button HorizontalAlignment="Left" Margin="10" Command="{Binding Execute}" Style="{DynamicResource ButtonSuccess}" Content="Run"/>
+    </StackPanel>
+</UserControl>

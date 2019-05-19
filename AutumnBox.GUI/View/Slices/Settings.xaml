@@ -1,0 +1,117 @@
+﻿<UserControl
+    xmlns:controls="clr-namespace:AutumnBox.GUI.View.Controls"
+    x:Class="AutumnBox.GUI.View.Slices.Settings"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:viewmodel="clr-namespace:AutumnBox.GUI.ViewModel"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.DataContext>
+        <viewmodel:VMSettingsDialog/>
+    </UserControl.DataContext>
+    <Grid>
+        <TabControl >
+            <TabItem Header="{DynamicResource PanelSettingsDebug}">
+                <StackPanel  Margin="5">
+
+                    <DockPanel Margin="0,0,0,5">
+                        <Button  DockPanel.Dock="Right" Command="{Binding ShowDebugWindow}"  Content="{DynamicResource PanelSettingsCreateDebugWindow}"/>
+                        <Button  DockPanel.Dock="Right" Command="{Binding OpenLogFloder}"  Content="{DynamicResource PanelSettingsViewLogFloder}"/>
+                        <TextBlock  VerticalAlignment="Center"  DockPanel.Dock="Left" Text="{DynamicResource PanelSettingsDebug}"/>
+                    </DockPanel>
+                    <Label Height="1" Background="LightGray"/>
+
+                    <DockPanel>
+                        <ToggleButton Style="{DynamicResource ToggleButtonSwitch}" DockPanel.Dock="Right" IsChecked="{Binding DebugOnNext}"/>
+                        <StackPanel DockPanel.Dock="Left">
+                            <TextBlock Text="{DynamicResource PanelSettingsLaunchDebugWindowOnNextLaunch}"/>
+                            <TextBlock Foreground="DarkSlateGray" TextWrapping="Wrap" FontSize="12" Text="{DynamicResource PanelSettingsLaunchDebugWindowOnNextLaunchTip}"/>
+                        </StackPanel>
+
+                    </DockPanel>
+                    <DockPanel>
+                        <ToggleButton Style="{DynamicResource ToggleButtonSwitch}" DockPanel.Dock="Right"  IsChecked="{Binding DeveloperMode}" />
+                        <StackPanel DockPanel.Dock="Left">
+                            <TextBlock Text="{DynamicResource PanelSettingsDeveloperMode}"/>
+                            <TextBlock Foreground="DarkSlateGray" TextWrapping="Wrap" FontSize="12" Text="{DynamicResource PanelSettingsDeveloperModeTip}"/>
+                        </StackPanel>
+                    </DockPanel>
+                    <DockPanel>
+                        <ToggleButton Style="{DynamicResource ToggleButtonSwitch}" DockPanel.Dock="Right"  IsChecked="{Binding DisplayCmdWindow}" />
+                        <StackPanel DockPanel.Dock="Left">
+                            <TextBlock Text="{DynamicResource PanelSettingsDisplayCmdWindow}"/>
+                            <TextBlock Foreground="DarkSlateGray" TextWrapping="Wrap" FontSize="12" Text="{DynamicResource PanelSettingsDisplayCmdWindowTip}"/>
+                        </StackPanel>
+                    </DockPanel>
+                </StackPanel>
+            </TabItem>
+
+            <TabItem Header="{DynamicResource PanelSettingsVersionInfo}">
+                <StackPanel Orientation="Vertical" Margin="5">
+                    <Label Margin="0,0,0,5" Height="1" Background="LightGray"/>
+                    <DockPanel>
+                        <TextBlock DockPanel.Dock="Right" Text="{Binding GUIVersion}"/>
+                        <TextBlock DockPanel.Dock="Left" Text="{DynamicResource PanelSettingsGUIVersionLabel}"/>
+                    </DockPanel>
+                    <DockPanel>
+                        <TextBlock DockPanel.Dock="Right" Text="{Binding BasicVersion}"/>
+                        <TextBlock DockPanel.Dock="Left" Text="{DynamicResource PanelSettingsBasicVersionLabel}"/>
+                    </DockPanel>
+                    <DockPanel>
+                        <TextBlock DockPanel.Dock="Right" Text="{Binding OpenFxVersion}"/>
+                        <TextBlock DockPanel.Dock="Left" Text="{DynamicResource PanelSettingsOpenFxVersionLabel}"/>
+                    </DockPanel>
+                    <DockPanel>
+                        <TextBlock DockPanel.Dock="Right" Text="{Binding CoreLibVersion}"/>
+                        <TextBlock DockPanel.Dock="Left" Text="{DynamicResource PanelSettingsCoreLibVersionLabel}"/>
+                    </DockPanel>
+
+                    <DockPanel>
+                        <TextBlock DockPanel.Dock="Right" Text="{Binding AdbVersion}"/>
+                        <TextBlock DockPanel.Dock="Left" Text="{DynamicResource PanelSettingsAdbVersionLabel}"/>
+                    </DockPanel>
+
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="{DynamicResource PanelSettingsCmd}">
+                <StackPanel Margin="5" Orientation="Vertical">
+                    <Label Height="1" Background="LightGray"/>
+                    <DockPanel>
+                        <ToggleButton DockPanel.Dock="Right" Style="{DynamicResource ToggleButtonSwitch}" IsChecked="{Binding UseEnvVarCmd}" />
+                        <StackPanel DockPanel.Dock="Left" Orientation="Vertical">
+                            <TextBlock Text="{DynamicResource PanelSettingsEnvVarCmdWindow}"/>
+                            <TextBlock Foreground="DarkSlateGray" TextWrapping="Wrap" FontSize="12" Text="{DynamicResource PanelSettingsEnvVarCmdWindowTip}"/>
+                        </StackPanel>
+
+                    </DockPanel>
+                    <DockPanel IsEnabled="{Binding UseEnvVarCmd}">
+                        <ToggleButton DockPanel.Dock="Right" Style="{DynamicResource ToggleButtonSwitch}" IsChecked="{Binding StartCmdAtDesktop}"/>
+                        <StackPanel DockPanel.Dock="Left" Orientation="Vertical">
+                            <TextBlock Text="{DynamicResource PanelSettingsCmdAtDesktopTip}"/>
+                            <TextBlock Foreground="DarkSlateGray" TextWrapping="Wrap" FontSize="12" Text="{DynamicResource PanelSettingsCmdAtDesktopTip}"/>
+                        </StackPanel>
+
+                    </DockPanel>
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="{DynamicResource PanelSettingsUx}">
+                <StackPanel Margin="5" Orientation="Vertical">
+                    <Label Margin="0,0,0,5" Height="1" Background="LightGray"/>
+                    <DockPanel>
+                        <ComboBox DockPanel.Dock="Right" ItemsSource="{Binding Languages}" DisplayMemberPath="{Binding LanguageDisplayMemberPath}" SelectedItem="{Binding SelectedLanguage}"/>
+                        <TextBlock DockPanel.Dock="Left" Margin="0,0,15,0"  VerticalAlignment="Center" Text="{DynamicResource PanelSettingsLanguage}"/>
+                    </DockPanel>
+                    <DockPanel>
+                        <ToggleButton DockPanel.Dock="Right" Style="{DynamicResource ToggleButtonSwitch}" IsChecked="{Binding SoundEffectEnable}"  ToolTip="{DynamicResource PanelSettingsSounds}"/>
+                        <StackPanel Orientation="Vertical" DockPanel.Dock="Left">
+                            <TextBlock Text="{DynamicResource PanelSettingsSounds}"/>
+                            <TextBlock Foreground="DarkSlateGray" TextWrapping="Wrap" FontSize="12" Text="{DynamicResource PanelSettingsSoundsTip}"/>
+                        </StackPanel>
+                    </DockPanel>
+                </StackPanel>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</UserControl>
