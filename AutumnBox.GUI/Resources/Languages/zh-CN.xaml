@@ -31,10 +31,9 @@
     <s:String x:Key="MenuOpenSource">开源相关(_O)</s:String>
     <s:String x:Key="MenuAbout">关于秋之盒(_A)</s:String>
     
-    <s:String x:Key="SliceTitleHome">主页</s:String>
-    <s:String x:Key="SliceTitleMore">更多</s:String>
-    
       <s:String x:Key="DeviceBarConnectHelp">如何连接设备?</s:String>
+    
+    
     
     <s:String x:Key="UserLicenseTitle">秋之盒使用协议 1.0</s:String>
     <s:String x:Key="UserLicenseContent">本协议仍然在编写当中,最终解释权归zsh2401所有
@@ -161,6 +160,7 @@
     <s:String x:Key="PanelSettingsDisplayCmdWindow">显示命令行窗口</s:String>
     <s:String x:Key="PanelSettingsDisplayCmdWindowTip">或许你可以通过这个来排查某些疑难杂症,仅在部分情况下支持</s:String>
     <!--PanelExtensions-->
+      <s:String x:Key="PanelExtesnionTitleFmt">当设备处于{0}时可用</s:String>
       <s:String x:Key="PanelExtesnionsDownloadExt">下载更多拓展模块</s:String>
     <s:String x:Key="PanelExtensionsNoSelect">请在左边选择一个拓展/功能</s:String>
     <s:String x:Key="PanelExtensionsAuthFmt">开发者:{0}</s:String>
@@ -169,7 +169,14 @@
     <s:String x:Key="PanelExtensionsNotFound">没有找到可用的拓展模块/功能</s:String>
     <s:String x:Key="PanelExtensionsButtonEnabled">运行此拓展</s:String>
     <s:String x:Key="PanelExtensionsButtonDisabled">此拓展不可在当前情况下运行</s:String>
-    
+     <s:String x:Key="PanelExtensionsWhenCurrentDevicePoweron">当设备处于开机时可用</s:String>
+    <s:String x:Key="PanelExtensionsWhenCurrentDeviceRecovery">当设备处于恢复模式</s:String>
+    <s:String x:Key="PanelExtensionsWhenCurrentDeviceSideload">当设备处于Sideload</s:String>
+    <s:String x:Key="PanelExtensionsWhenCurrentDeviceFastboot">当设备处于Fastboot</s:String>
+    <s:String x:Key="PanelExtensionsWhenCurrentDeviceUnknown">当设备处于未知状态</s:String>
+    <s:String x:Key="PanelExtensionsWhenCurrentDeviceUnauthorized">当设备未授权USB调试时可用</s:String>
+     <s:String x:Key="PanelExtensionsWhenCurrentDeviceOffline">当设备处于异常离线时可用</s:String>
+     <s:String x:Key="PanelExtensionsWhenCurrentDeviceNoMatter">这些模块无需设备连接也可使用</s:String>
      <!--PanelCurrentDevice-->
      <s:String x:Key="PanelWhenCurrentDevicePoweron">当设备处于开机时可用</s:String>
     <s:String x:Key="PanelWhenCurrentDeviceRecovery">当设备处于恢复模式</s:String>

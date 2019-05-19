@@ -94,8 +94,34 @@ namespace AutumnBox.GUI.ViewModel
         #endregion
         private DeviceState targetState;
 
+        public string Title
+        {
+            get => _title; set
+            {
+                _title = value;
+                RaisePropertyChanged();
+            }
+        }
+        private string _title;
+
         public VMExtensions()
         {
+            LanguageManager.Instance.LanguageChanged += (s, e) =>
+            {
+                ResetTitle();
+            };
+            ResetTitle();
+        }
+        private void ResetTitle()
+        {
+            if (targetState == AutumnBoxExtension.NoMatter)
+            {
+                Title = App.Current.Resources[$"PanelExtensionsWhenCurrentDeviceNoMatter"].ToString();
+            }
+            else
+            {
+                Title = App.Current.Resources[$"PanelExtensionsWhenCurrentDevice{DeviceSelectionObserver.Instance.CurrentDevice.State}"].ToString();
+            }
         }
 
         internal void Load(DeviceState state)

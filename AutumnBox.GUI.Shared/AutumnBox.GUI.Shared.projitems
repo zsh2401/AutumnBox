@@ -111,6 +111,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\VMMainWindow.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\VMMainWindowV2.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\VMMore.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\VMOldExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\VMOpenSource.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\VMPanelMain.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\VMReboot.cs" />
@@ -127,6 +128,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)View\Controls\MainMenu.xaml.cs">
       <DependentUpon>MainMenu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)View\Controls\OldExtensionSlice.xaml.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)View\Controls\SliceView.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)View\CstPreview.xaml.cs">
       <DependentUpon>CstPreview.xaml</DependentUpon>
@@ -276,6 +278,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)View\Controls\MainMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)View\Controls\OldExtensionSlice.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -470,5 +476,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="S:\AutumnBoxWorkingSpace\AutumnBox\AutumnBox.GUI.Shared\View\Controls\OldExtensionSlice.xaml.cs">
+      <DependentUpon>OldExtensionSlice.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 </Project>

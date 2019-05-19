@@ -8,51 +8,47 @@
              FontFamily="{DynamicResource AutumnBox.Font}"
              Loaded="UserControl_Loaded"
              x:Name="thisCtrl"
+            
              mc:Ignorable="d" d:DesignWidth="622.427" d:DesignHeight="100">
 
     <UserControl.DataContext>
         <viewmodel:VMExtensions/>
     </UserControl.DataContext>
-    <Grid>
-        <Grid Visibility="{Binding Converter={StaticResource NullToVisibilityConverter},ConverterParameter={StaticResource VisibleIf_IsNotNull},Path=Extensions}">
-            <ListBox ItemsSource="{Binding Docks}" MinHeight="100" ScrollViewer.VerticalScrollBarVisibility="Hidden">
-                <ListBox.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <WrapPanel  IsEnabled="{Binding ExtPanelIsEnabled}" ItemHeight="100" ItemWidth="110"/>
-                    </ItemsPanelTemplate>
-                </ListBox.ItemsPanel>
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <Grid Height="100" Width="100">
-                            <StackPanel Background="#01000000" MinHeight="95" MinWidth="90" MaxWidth="90" ToolTip="{Binding ToolTip}" Margin="0" Orientation="Vertical">
-                                <StackPanel.InputBindings>
-                                    <MouseBinding MouseAction="LeftClick" Command="{Binding DataContext.ClickItem,ElementName=thisCtrl}" CommandParameter="{Binding}"/>
-                                    <MouseBinding MouseAction="LeftDoubleClick" Command="{Binding DataContext.DoubleClickItem,ElementName=thisCtrl}" CommandParameter="{Binding}"/>
-                                </StackPanel.InputBindings>
-                                <Image RenderOptions.BitmapScalingMode="Fant" Height="50px" Width="50px" Source="{Binding Icon}"/>
-                                <TextBlock TextAlignment="Center" FontSize="12" TextWrapping="Wrap" TextTrimming="WordEllipsis"  Text="{Binding Name}"/>
-                            </StackPanel>
-                            <Grid VerticalAlignment="Top" Visibility="{Binding RootVisibily}" HorizontalAlignment="Right">
-                                <Grid.RenderTransform>
-                                    <TransformGroup>
-                                        <ScaleTransform/>
-                                        <SkewTransform/>
-                                        <RotateTransform Angle="45"/>
-                                        <TranslateTransform/>
-                                    </TransformGroup>
-                                </Grid.RenderTransform>
-                                <TextBlock FontSize="10" TextAlignment="Center">ROOT</TextBlock>
-                            </Grid>
-                        </Grid>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
-        </Grid>
+    <StackPanel  Visibility="{Binding Converter={StaticResource NullToVisibilityConverter},ConverterParameter={StaticResource VisibleIf_IsNotNull},Path=Extensions}">
 
-        <StackPanel Visibility="{Binding Converter={StaticResource NullToVisibilityConverter},ConverterParameter={StaticResource VisibleIf_IsNull},Path=Extensions}" VerticalAlignment="Center" Orientation="Vertical" HorizontalAlignment="Center">
-            <TextBlock FontSize="25" Foreground="{DynamicResource MainBackgroundForegroundBrush}" HorizontalAlignment="Center" Text="{DynamicResource PanelExtensionsNotFound}" RenderTransformOrigin="0.5,0.5"/>
-            <Button Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoDownloadExtensions}" FontSize="13" HorizontalAlignment="Center" Content="{DynamicResource PanelExtesnionsDownloadExt}" Style="{DynamicResource MaterialDesignFlatButton}"/>
-            <TextBlock Margin="10" FontSize="13" Foreground="{DynamicResource MainBackgroundForegroundBrush}" HorizontalAlignment="Center" VerticalAlignment="Center" Text="I'd love to change the world,but i dont know what to do"/>
-        </StackPanel>
-    </Grid>
+        <TextBlock Margin="10" Text="{Binding Title}"/>
+        <!--<DataGrid ItemsSource="{Binding Docks}"/>-->
+        <ListBox ItemsSource="{Binding Docks}" BorderThickness="0" MinHeight="100" ScrollViewer.VerticalScrollBarVisibility="Hidden">
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel  IsEnabled="{Binding ExtPanelIsEnabled}" ItemHeight="100" ItemWidth="110"/>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid Height="100" Width="100">
+                        <StackPanel Background="#01000000" ToolTip="{Binding ToolTip}" Margin="20,0,20,0" Orientation="Vertical">
+                            <StackPanel.InputBindings>
+                                <MouseBinding MouseAction="LeftClick" Command="{Binding DataContext.ClickItem,ElementName=thisCtrl}" CommandParameter="{Binding}"/>
+                                <MouseBinding MouseAction="LeftDoubleClick" Command="{Binding DataContext.DoubleClickItem,ElementName=thisCtrl}" CommandParameter="{Binding}"/>
+                            </StackPanel.InputBindings>
+                            <Image  RenderOptions.BitmapScalingMode="Fant" Source="{Binding Icon}"/>
+                            <TextBlock TextAlignment="Center" FontSize="11" TextWrapping="Wrap" TextTrimming="WordEllipsis"  Text="{Binding Name}"/>
+                        </StackPanel>
+                        <Grid VerticalAlignment="Top" Visibility="{Binding RootVisibily}" HorizontalAlignment="Right">
+                            <Grid.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="45"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Grid.RenderTransform>
+                            <TextBlock FontSize="10" TextAlignment="Center">ROOT</TextBlock>
+                        </Grid>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </StackPanel>
 </UserControl>

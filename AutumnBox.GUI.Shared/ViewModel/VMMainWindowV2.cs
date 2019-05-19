@@ -1,7 +1,10 @@
 ﻿using AutumnBox.GUI.MVVM;
 using AutumnBox.GUI.View.Controls;
 using AutumnBox.GUI.View.Slices;
+using AutumnBox.OpenFramework.Fast;
+using AutumnBox.OpenFramework.Management;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using SliceController = AutumnBox.GUI.Model.SliceController;
 
@@ -9,7 +12,7 @@ namespace AutumnBox.GUI.ViewModel
 {
     class VMMainWindowV2 : ViewModelBase
     {
-        public IEnumerable<SliceController> Slices
+        public ObservableCollection<SliceController> Slices
         {
             get
             {
@@ -17,11 +20,11 @@ namespace AutumnBox.GUI.ViewModel
             }
             set
             {
-                slices = value.ToList();
+                slices = value;
                 RaisePropertyChanged();
             }
         }
-        private List<SliceController> slices;
+        private ObservableCollection<SliceController> slices;
 
         public SliceController SelectedSlice
         {
@@ -47,12 +50,24 @@ namespace AutumnBox.GUI.ViewModel
 
         public void InitPages()
         {
-            Slices = new List<SliceController>()
+            Slices = new ObservableCollection<SliceController>()
             {
                 new SliceController("home","SliceTitleHome",null,home),
                 new SliceController("more","SliceTitleMore",null,new More()),
             };
+            InitExtensionPages();
             SelectedSlice = Slices.First();
+        }
+        private void InitExtensionPages()
+        {
+            //var wrappers = OpenFx.LibsManager.Wrappers();
+            //foreach (var wrapper in wrappers)
+            //{
+            //    Slices.Add(new SliceController(wrapper.Info.Name,
+            //        wrapper.Info.Name,
+            //        wrapper.Info.Icon,
+            //        new OldExtensionSlice(wrapper)));
+            //}
         }
 
         public void ShowSlice(object view, string title)

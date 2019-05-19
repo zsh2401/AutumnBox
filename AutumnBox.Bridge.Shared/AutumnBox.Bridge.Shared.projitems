@@ -9,5 +9,11 @@
     <Import_RootNamespace>AutumnBox.Bridge</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)IAtmbSlice.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)IAtmbLibManager.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Util\" />
+    <Folder Include="$(MSBuildThisFileDirectory)BaseClasses\" />
   </ItemGroup>
 </Project>
