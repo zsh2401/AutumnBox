@@ -1,7 +1,5 @@
-﻿using AutumnBox.GUI.ViewModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,22 +15,13 @@ using System.Windows.Shapes;
 namespace AutumnBox.GUI.View.Windows
 {
     /// <summary>
-    /// LeafWindow.xaml 的交互逻辑
+    /// SettingsWindow.xaml 的交互逻辑
     /// </summary>
-    public partial class LeafWindow : Window
+    public partial class SettingsWindow
     {
-        public LeafWindow()
+        public SettingsWindow()
         {
             InitializeComponent();
-            (DataContext as VMLeafUI).View = this;
         }
-
-        private void TBOutput_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            (sender as TextBox).ScrollToEnd();
-        }
-        //~LeafWindow() {
-        //    Trace.WriteLine("Leaf window ~");
-        //}
     }
 }

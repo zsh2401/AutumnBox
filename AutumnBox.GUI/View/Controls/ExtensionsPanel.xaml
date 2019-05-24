@@ -15,8 +15,8 @@
 
         <StackPanel Orientation="Horizontal">
             <TextBlock x:Name="TBTitle" FontSize="20" Margin="20" Foreground="DarkGray"/>
-            <TextBlock FontSize="25" Foreground="Gray" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="{Binding Converter={StaticResource BoolToVisibilityConverter},ConverterParameter={StaticResource VisibleIf_IsFalse},Path=ExtPanelIsEnabled}" Text="-当前设备状态不支持"/>
+            <TextBlock FontSize="20" Foreground="DarkGray" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="{Binding Converter={StaticResource BoolToVisibilityConverter},ConverterParameter={StaticResource VisibleIf_IsFalse},Path=ExtPanelIsEnabled}" Text="{DynamicResource ExtensionsPanelDontSupState}"/>
         </StackPanel>
-        <WrapPanel x:Name="DocksPanel"/>
+        <WrapPanel IsEnabled="{Binding ExtPanelIsEnabled}" x:Name="DocksPanel"/>
     </StackPanel>
 </UserControl>

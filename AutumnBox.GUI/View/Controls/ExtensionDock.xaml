@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:AutumnBox.GUI.View.Controls"
              mc:Ignorable="d" 
             Height="120" Width="120" MouseDoubleClick="UserControl_MouseDoubleClick">
-    <StackPanel Margin="10" ToolTip="{Binding Info.FormattedDesc}">
+    <StackPanel Margin="10" ToolTip="{Binding Info.ToolTip}">
         <Image HorizontalAlignment="Center" Height="60" Source="{Binding Info.Icon}"/>
         <TextBlock TextAlignment="Center" TextWrapping="Wrap" Margin="0,5,0,0" Text="{Binding Info.Name}"/>
     </StackPanel>

@@ -18,10 +18,14 @@ using AutumnBox.GUI.View.Windows;
 using AutumnBox.Logging;
 using AutumnBox.Logging.Management;
 using AutumnBox.OpenFramework;
+using HandyControl.Data;
+using HandyControl.Tools;
 using MaterialDesignThemes.Wpf;
 using System;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
+using System.Management;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -77,6 +81,7 @@ namespace AutumnBox.GUI.Util
         }
         private void Load()
         {
+            ConfigHelper.Instance.SetSystemVersionInfo(GetSystemVersionInfo());
             CheckOtherAutumnBox();
             OnLoading();
 
@@ -97,6 +102,21 @@ namespace AutumnBox.GUI.Util
             MainWindowBus.SwitchToMainGrid();
             logger.Info("wow");
             OnLoaded();
+        }
+        private SystemVersionInfo GetSystemVersionInfo()
+        {
+            var managementClass = new ManagementClass("Win32_OperatingSystem");
+            var instances = managementClass.GetInstances();
+            foreach (var instance in instances)
+            {
+                if (instance["Version"] is string version)
+                {
+                    var nums = version.Split('.').Select(int.Parse).ToList();
+                    var info = new SystemVersionInfo(nums[0], nums[1], nums[2]);
+                    return info;
+                }
+            }
+            return default(SystemVersionInfo);
         }
         private void CheckOtherAutumnBox()
         {

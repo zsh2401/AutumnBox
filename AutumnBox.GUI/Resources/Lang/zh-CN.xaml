@@ -2,10 +2,10 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:AutumnBox.GUI.Resources.Lang"
                     xmlns:s="clr-namespace:System;assembly=mscorlib">
-    <s:String x:Key="RegionCode">zh-CN;zh-HK;zh-SG;zh-TW</s:String>
-    <s:String x:Key="Name">中文</s:String>
-    <s:String x:Key="AppName">Autumn Box</s:String>
-    
+
+    <s:String x:Key="AppName">秋之盒 2019</s:String>
+    <s:String x:Key="App">秋之盒</s:String>
+
     <s:String x:Key="MenuFile">文件(_F)</s:String>
     <s:String x:Key="MenuDebug">调试窗口(_D)</s:String>
     <s:String x:Key="MenuExit">退出(_X)</s:String>
@@ -20,4 +20,6 @@
     <s:String x:Key="MenuUpdateLog">更新日志</s:String>
     <s:String x:Key="MenuOpenSource">开源相关(_O)</s:String>
     <s:String x:Key="MenuAbout">关于秋之盒(_A)</s:String>
+    
+    
 </ResourceDictionary>

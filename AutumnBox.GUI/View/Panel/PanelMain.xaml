@@ -18,10 +18,10 @@
         <controls1:MainMenu x:Name="Menu" DockPanel.Dock="Top"/>
         <controls1:DeviceBar DockPanel.Dock="Top"/>
         <TabControl TabStripPlacement="Left">
-            <TabItem Header="Home">
+            <TabItem Header="{DynamicResource Home}">
                 <local:PanelDefaultInformation/>
             </TabItem>
-            <TabItem Header="Functions">
+            <TabItem Header="{DynamicResource Functions}">
                 <ScrollViewer HorizontalScrollBarVisibility="Disabled">
                     <StackPanel Orientation="Vertical">
                         <controls1:ExtensionsPanel TargetDeviceState="Poweron"/>
@@ -34,7 +34,7 @@
                     </StackPanel>
                 </ScrollViewer>
             </TabItem>
-            <TabItem Header="More">
+            <TabItem Header="{DynamicResource More}">
                 <local:PanelMore/>
             </TabItem>
         </TabControl>

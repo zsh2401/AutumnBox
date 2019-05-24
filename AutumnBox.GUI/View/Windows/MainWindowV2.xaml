@@ -11,14 +11,21 @@
     FontFamily="{DynamicResource AutumnBox.Font}"
         mc:Ignorable="d"
         ShowInTaskbar="True"
+    
         Icon="/Resources/Drawable/icon.png"
         Title="{DynamicResource AppName}" Height="720" Width="1280">
     <Window.DataContext>
         <viewmodel:VMMainWindowV2/>
     </Window.DataContext>
-    <Grid x:Name="MainGrid">
-        <panel:PanelLoading/>
+    <Grid>
+        <Grid x:Name="MainGrid">
+            <panel:PanelLoading/>
+        </Grid>
+        <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalAlignment="Right" Grid.Column="1">
+            <StackPanel controls:Growl.Token="main" controls:Growl.GrowlParent="True" VerticalAlignment="Top" Margin="0,10,10,10"/>
+        </ScrollViewer>
     </Grid>
+
     <!--<DockPanel>
         <controls1:MainMenu x:Name="Menu" DockPanel.Dock="Top"/>
         <controls1:DeviceBar DockPanel.Dock="Top"/>

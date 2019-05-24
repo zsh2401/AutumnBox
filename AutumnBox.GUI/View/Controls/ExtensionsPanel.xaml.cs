@@ -34,14 +34,14 @@ namespace AutumnBox.GUI.View.Controls
         }
         private void InitTitle()
         {
-            string resKey = $"PanelExtensionsWhenCurrentDevice{TargetDeviceState.ToString()}";
+            string resKey = $"ExtensionsPanel{TargetDeviceState.ToString()}";
             if (TryFindResource(resKey) != null)
             {
                 TBTitle.SetResourceReference(TextBlock.TextProperty, resKey);
             }
             else
             {
-                TBTitle.SetResourceReference(TextBlock.TextProperty, "PanelExtensionsWhenCurrentDeviceNoMatter");
+                TBTitle.SetResourceReference(TextBlock.TextProperty, "ExtensionsPanelNoMatter");
             }
         }
         private void LoadVM()

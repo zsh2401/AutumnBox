@@ -23,7 +23,7 @@ namespace AutumnBox.GUI.ViewModel
             Exit = new MVVMCommand(p => { App.Current.Shutdown(0); });
             OpenLoggingWindow = new MVVMCommand(p => { new LogWindow().Show(); });
             OpenUpdateLogs = new MVVMCommand(p => MainWindowBus.ShowSlice(new UpdateLog(), "Farewell under the stars"));
-            OpenSettings = new MVVMCommand(p => MainWindowBus.ShowSlice(new Settings(), "Settings"));
+            OpenSettings = new MVVMCommand(p => new SettingsWindow().ShowDialog());
             UpdateCheck = new MVVMCommand(P => MainWindowBus.Info("wtf"));
             OpenOSInformation = new MVVMCommand(p => MainWindowBus.ShowSlice(new OpenSourceInformation(),"Open Source"));
             OpenShell = new MVVMCommand(p =>

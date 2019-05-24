@@ -409,6 +409,9 @@
     <Compile Include="View\Windows\RunningWindow.xaml.cs">
       <DependentUpon>RunningWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Windows\SettingsWindow.xaml.cs">
+      <DependentUpon>SettingsWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Windows\StartWindow.xaml.cs">
       <DependentUpon>StartWindow.xaml</DependentUpon>
     </Compile>
@@ -478,6 +481,10 @@
     <Page Include="Resources\Languages\zh-CN.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Lang\zh-CN.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\Themes\Autumn.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -739,6 +746,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="View\Windows\SettingsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Windows\StartWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -786,7 +797,13 @@
     <Resource Include="Resources\MenuIcon\icon.png" />
     <Resource Include="Resources\MenuIcon\ps.png" />
     <Resource Include="Resources\MenuIcon\settings.png" />
-    <Content Include="Resources\Sound\ok.wav" />
+    <Content Include="Resources\Sound\ok.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\Icon\" />
+    <Folder Include="Resources\Img\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
