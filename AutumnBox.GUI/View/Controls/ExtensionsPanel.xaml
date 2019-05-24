@@ -12,7 +12,6 @@
         <viewmodel:VMExtensions/>
     </UserControl.DataContext>
     <StackPanel  Visibility="{Binding Converter={StaticResource NullToVisibilityConverter},ConverterParameter={StaticResource VisibleIf_IsNotNull},Path=Docks}">
-
         <StackPanel Orientation="Horizontal">
             <TextBlock x:Name="TBTitle" FontSize="20" Margin="20" Foreground="DarkGray"/>
             <TextBlock FontSize="20" Foreground="DarkGray" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="{Binding Converter={StaticResource BoolToVisibilityConverter},ConverterParameter={StaticResource VisibleIf_IsFalse},Path=ExtPanelIsEnabled}" Text="{DynamicResource ExtensionsPanelDontSupState}"/>

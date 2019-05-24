@@ -22,7 +22,8 @@
                 <local:PanelDefaultInformation/>
             </TabItem>
             <TabItem Header="{DynamicResource Functions}">
-                <ScrollViewer HorizontalScrollBarVisibility="Disabled">
+                <controls1:AllExtensionsPanel/>
+                <!--<ScrollViewer HorizontalScrollBarVisibility="Disabled">
                     <StackPanel Orientation="Vertical">
                         <controls1:ExtensionsPanel TargetDeviceState="Poweron"/>
                         <controls1:ExtensionsPanel TargetDeviceState="Recovery"/>
@@ -32,7 +33,7 @@
                         <controls1:ExtensionsPanel TargetDeviceState="Unknown"/>
                         <controls1:ExtensionsPanel/>
                     </StackPanel>
-                </ScrollViewer>
+                </ScrollViewer>-->
             </TabItem>
             <TabItem Header="{DynamicResource More}">
                 <local:PanelMore/>

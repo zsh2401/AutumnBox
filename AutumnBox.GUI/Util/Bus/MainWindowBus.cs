@@ -31,6 +31,10 @@ namespace AutumnBox.GUI.Util.Bus
         {
             Growl.Success(App.Current.Resources[message]?.ToString() ?? message, TOKEN_PANEL_MAIN);
         }
+        public static void Warning(string message)
+        {
+            Growl.Warning(App.Current.Resources[message]?.ToString() ?? message, TOKEN_PANEL_MAIN);
+        }
         public static void ShowSlice(object view, string title = null)
         {
             var vm = App.Current.MainWindow.DataContext as VMMainWindowV2;
