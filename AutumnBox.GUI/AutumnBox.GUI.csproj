@@ -180,7 +180,7 @@
     <Compile Include="Util\Bus\DeviceSelectionObserver.cs" />
     <Compile Include="Util\Bus\ExtensionViewRefresher.cs" />
     <Compile Include="Util\Bus\MainWindowBus.cs" />
-    <Compile Include="Util\Bus\OpenFxObserver.cs" />
+    <Compile Include="Util\Bus\OpenFxEventBus.cs" />
     <Compile Include="Util\ConditionalVars.cs" />
     <Compile Include="Util\Custom\ITheme.cs" />
     <Compile Include="Util\Custom\IThemeManager.cs" />
@@ -261,6 +261,9 @@
     <Compile Include="View\Controls\DeviceBar.xaml.cs">
       <DependentUpon>DeviceBar.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Controls\ExtensionDock.xaml.cs">
+      <DependentUpon>ExtensionDock.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Controls\ExtensionsPanel.xaml.cs">
       <DependentUpon>ExtensionsPanel.xaml</DependentUpon>
     </Compile>
@@ -330,6 +333,9 @@
     </Compile>
     <Compile Include="View\Panel\PanelHome.xaml.cs">
       <DependentUpon>PanelHome.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Panel\PanelLoading.xaml.cs">
+      <DependentUpon>PanelLoading.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Panel\PanelMain.xaml.cs">
       <DependentUpon>PanelMain.xaml</DependentUpon>
@@ -513,6 +519,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Resources\Themes\HandyControlLib.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Resources\Themes\Pink.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -532,6 +542,10 @@
     <Page Include="View\Controls\DeviceBar.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Controls\ExtensionDock.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Controls\ExtensionsPanel.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -624,6 +638,10 @@
     <Page Include="View\Panel\PanelHome.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Panel\PanelLoading.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Panel\PanelMain.xaml">
       <Generator>MSBuild:Compile</Generator>

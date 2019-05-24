@@ -93,7 +93,9 @@ namespace AutumnBox.GUI.Util
             InitAutumnBoxOpenFx();
             RunDeviceListener();
             FetchRemoteData();
-
+            logger.Info("fetch");
+            MainWindowBus.SwitchToMainGrid();
+            logger.Info("wow");
             OnLoaded();
         }
         private void CheckOtherAutumnBox()
@@ -197,7 +199,7 @@ namespace AutumnBox.GUI.Util
         private void InitAutumnBoxOpenFx()
         {
             OpenFrameworkManager.Init();
-            OpenFxObserver.Instance.OnLoaded();
+            OpenFxEventBus.OnLoaded();
         }
         private void RunDeviceListener()
         {

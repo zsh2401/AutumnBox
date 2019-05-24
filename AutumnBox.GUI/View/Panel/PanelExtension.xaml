@@ -14,8 +14,9 @@
         <viewmodel:VMExtensions/>
     </UserControl.DataContext>
     <StackPanel  Visibility="{Binding Converter={StaticResource NullToVisibilityConverter},ConverterParameter={StaticResource VisibleIf_IsNotNull},Path=Extensions}">
-        <TextBlock x:Name="TBTitle" Margin="14"/>
-        <ListBox ItemsSource="{Binding Docks}" BorderThickness="0" MinHeight="100" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+        <TextBlock x:Name="TBTitle" FontSize="20" Margin="5"/>
+        <WrapPanel x:Name="DocksPanel"/>
+        <!--<ListBox ItemsSource="{Binding Docks}" BorderThickness="0" MinHeight="100" ScrollViewer.VerticalScrollBarVisibility="Disabled">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel  IsEnabled="{Binding ExtPanelIsEnabled}" ItemHeight="100" ItemWidth="110"/>
@@ -46,6 +47,6 @@
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>
-        </ListBox>
+        </ListBox>-->
     </StackPanel>
 </UserControl>

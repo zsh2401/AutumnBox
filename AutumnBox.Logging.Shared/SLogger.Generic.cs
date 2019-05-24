@@ -50,6 +50,7 @@ namespace AutumnBox.Logging
         {
             LoggingManager.LogStation.Log(new Log(nameof(CDebug), Category, message, e));
         }
+
         /// <summary>
         /// 写出一条仅包含异常信息的日志
         /// </summary>
@@ -58,6 +59,7 @@ namespace AutumnBox.Logging
         {
             LoggingManager.LogStation.Log(new Log(nameof(Exception), Category, e));
         }
+
         /// <summary>
         /// 写出一条Info级别日志
         /// </summary>
@@ -66,6 +68,7 @@ namespace AutumnBox.Logging
         {
             LoggingManager.LogStation.Log(new Log(nameof(Info), Category, message));
         }
+
         /// <summary>
         /// 写出一条警告级别日志
         /// </summary>
@@ -74,6 +77,7 @@ namespace AutumnBox.Logging
         {
             LoggingManager.LogStation.Log(new Log(nameof(Warn), Category, message));
         }
+
         /// <summary>
         /// 写出一条带有异常信息的警告级别日志
         /// </summary>

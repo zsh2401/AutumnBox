@@ -42,10 +42,10 @@ namespace AutumnBox.GUI.ViewModel
 
         public VMLibsView()
         {
-            OpenFxObserver.Instance.Loaded += (s, e) =>
+            OpenFxEventBus.AfterOpenFxLoaded(() =>
             {
                 Load();
-            };
+            });
             ShowInformation = new FlexiableCommand(() =>
             {
                 SelectedItem.Lib.ShowInformation();

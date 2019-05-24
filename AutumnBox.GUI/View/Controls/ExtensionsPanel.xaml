@@ -5,11 +5,18 @@
     xmlns:local="using:AutumnBox.GUI.View.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodel="clr-namespace:AutumnBox.GUI.ViewModel"
     mc:Ignorable="d"
     d:DesignWidth="400" x:Name="mThis">
+    <UserControl.DataContext>
+        <viewmodel:VMExtensions/>
+    </UserControl.DataContext>
+    <StackPanel  Visibility="{Binding Converter={StaticResource NullToVisibilityConverter},ConverterParameter={StaticResource VisibleIf_IsNotNull},Path=Docks}">
 
-    <StackPanel Margin="20,10,20,10">
-        <TextBlock  Foreground="Black" FontSize="25" Text="{Binding Title,ElementName=mThis}"/>
-        <WrapPanel x:Name="docksContainer"/>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock x:Name="TBTitle" FontSize="20" Margin="20" Foreground="DarkGray"/>
+            <TextBlock FontSize="25" Foreground="Gray" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="{Binding Converter={StaticResource BoolToVisibilityConverter},ConverterParameter={StaticResource VisibleIf_IsFalse},Path=ExtPanelIsEnabled}" Text="-当前设备状态不支持"/>
+        </StackPanel>
+        <WrapPanel x:Name="DocksPanel"/>
     </StackPanel>
 </UserControl>

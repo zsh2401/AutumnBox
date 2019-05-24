@@ -14,12 +14,19 @@ namespace AutumnBox.GUI.View.Panel
         public PanelExtension()
         {
             InitializeComponent();
-
         }
 
         private void UserControl_Loaded(object sender, System.Windows.RoutedEventArgs e)
         {
-            TBTitle.SetResourceReference(TextBlock.TextProperty, "PanelExtensionsWhenCurrentDeviceRecovery");
+            string resKey = $"PanelExtensionsWhenCurrentDevice{TargetDeviceState.ToString()}";
+            if (TryFindResource(resKey) != null)
+            {
+                TBTitle.SetResourceReference(TextBlock.TextProperty, resKey);
+            }
+            else
+            {
+                TBTitle.SetResourceReference(TextBlock.TextProperty, "PanelExtensionsWhenCurrentDeviceNoMatter");
+            }
             (DataContext as VMExtensions)?.Load(TargetDeviceState);
         }
     }

@@ -16,17 +16,17 @@
     <Window.DataContext>
         <viewmodel:VMMainWindowV2/>
     </Window.DataContext>
-    <Window.InputBindings>
-        <KeyBinding Modifiers="Ctrl" Key="F1"  Command="{Binding DataContext.OpenGoUrl,ElementName=Menu}" CommandParameter="{DynamicResource AGoHelp}"/>
-        <KeyBinding Modifiers="Ctrl+Alt" Key="S"  Command="{Binding DataContext.OpenShell,ElementName=Menu}" CommandParameter="powershell.exe"/>
-        <KeyBinding Modifiers="Ctrl+Alt" Key="C"  Command="{Binding DataContext.OpenShell,ElementName=Menu}" CommandParameter="cmd.exe"/>
-    </Window.InputBindings>
-    <DockPanel>
+    <Grid x:Name="MainGrid">
+        <panel:PanelLoading/>
+    </Grid>
+    <!--<DockPanel>
         <controls1:MainMenu x:Name="Menu" DockPanel.Dock="Top"/>
-        <controls1:DeviceBar DockPanel.Dock="Bottom"/>
-        <!--<TabControl DockPanel.Dock="Bottom">
+        <controls1:DeviceBar DockPanel.Dock="Top"/>
+        -->
+    <!--<TabControl DockPanel.Dock="Bottom">
 
             <TabItem Header="Functions">-->
+    <!--
         <TabControl TabStripPlacement="Left">
             <TabItem Header="Welcome">
                 <panel:PanelDefaultInformation/>
@@ -34,13 +34,15 @@
             <TabItem  Header="Functions">
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
                     <StackPanel Orientation="Vertical">
-                        <controls1:ExtensionsPanel Title="{DynamicResource PanelExtensionsWhenCurrentDevicePoweron}"/>
-                        <!--<panel:PanelExtension Margin="20,10,20,10"  TargetDeviceState="Recovery"/>
+                        -->
+    <!--<controls1:ExtensionsPanel Title="{DynamicResource PanelExtensionsWhenCurrentDevicePoweron}"/>-->
+    <!--<panel:PanelExtension Margin="20,10,20,10"  TargetDeviceState="Recovery"/>
                         <panel:PanelExtension Margin="20,10,20,10"  TargetDeviceState="Fastboot"/>
                         <panel:PanelExtension Margin="20,10,20,10"  TargetDeviceState="Sideload"/>
                         <panel:PanelExtension Margin="20,10,20,10"  TargetDeviceState="Offline"/>
                         <panel:PanelExtension Margin="20,10,20,10"  TargetDeviceState="Unauthorized"/>
                         <panel:PanelExtension Margin="20,10,20,10" />-->
+    <!--
                     </StackPanel>
                 </ScrollViewer>
             </TabItem>
@@ -48,13 +50,14 @@
                 <panel:PanelDefaultInformation/>
             </TabItem>
         </TabControl>
-        <!--</TabItem>
+        -->
+    <!--</TabItem>
             -->
-        <!--<TabItem Header="More"></TabItem>-->
-        <!--
+    <!--<TabItem Header="More"></TabItem>-->
+    <!--
         </TabControl>-->
 
-        <!--<Grid >
+    <!--<Grid >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="41*"/>
                 <ColumnDefinition Width="383*"/>
@@ -84,5 +87,6 @@
             </ScrollViewer>
 
         </Grid>-->
-    </DockPanel>
+    <!--
+    </DockPanel>-->
 </Window>

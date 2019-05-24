@@ -8,14 +8,37 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:dragablz="http://dragablz.net/winfx/xaml/dragablz"
              xmlns:viewmodel="clr-namespace:AutumnBox.GUI.ViewModel"
+             xmlns:controls1="clr-namespace:AutumnBox.GUI.View.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="619" d:DesignWidth="1042">
     <UserControl.DataContext>
         <viewmodel:VMPanelMain/>
     </UserControl.DataContext>
-    <DockPanel LastChildFill="False">
-
-        <DockPanel DockPanel.Dock="Right" MinWidth="200" MaxWidth="200" >
+    <DockPanel>
+        <controls1:MainMenu x:Name="Menu" DockPanel.Dock="Top"/>
+        <controls1:DeviceBar DockPanel.Dock="Top"/>
+        <TabControl TabStripPlacement="Left">
+            <TabItem Header="Home">
+                <local:PanelDefaultInformation/>
+            </TabItem>
+            <TabItem Header="Functions">
+                <ScrollViewer HorizontalScrollBarVisibility="Disabled">
+                    <StackPanel Orientation="Vertical">
+                        <controls1:ExtensionsPanel TargetDeviceState="Poweron"/>
+                        <controls1:ExtensionsPanel TargetDeviceState="Recovery"/>
+                        <controls1:ExtensionsPanel TargetDeviceState="Fastboot"/>
+                        <controls1:ExtensionsPanel TargetDeviceState="Unauthorized"/>
+                        <controls1:ExtensionsPanel TargetDeviceState="Offline"/>
+                        <controls1:ExtensionsPanel TargetDeviceState="Unknown"/>
+                        <controls1:ExtensionsPanel/>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+            <TabItem Header="More">
+                <local:PanelMore/>
+            </TabItem>
+        </TabControl>
+        <!--<DockPanel DockPanel.Dock="Right" MinWidth="200" MaxWidth="200" >
             <materialDesign:Card DockPanel.Dock="Bottom" Margin="2,5,0,0">
                 <StackPanel>
                     <Button Margin="5" Style="{DynamicResource MaterialDesignFlatButton}" Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoDownloadExtensions}"  FontSize="14">
@@ -58,7 +81,7 @@
                 <TabItem TabIndex="0" Header="{DynamicResource PanelMainStart}"  FontSize="16">
                     <Grid  x:Name="mTabItem">
                         <materialDesign:Card Margin="0,0,5,0" Height="{Binding ElementName=mTabItem,Path=ActualHeight}">
-                            <ScrollViewer HorizontalScrollBarVisibility="Disabled"  Template="{DynamicResource AtmbxScrollViewer}" VerticalScrollBarVisibility="Hidden">
+                            <ScrollViewer HorizontalScrollBarVisibility="Disabled"   VerticalScrollBarVisibility="Hidden">
                                 <local:PanelHome/>
                             </ScrollViewer>
                         </materialDesign:Card>
@@ -71,13 +94,13 @@
                 </TabItem>
                 <TabItem  TabIndex="2" Header="{DynamicResource PanelMainMore}"  FontSize="16">
                     <materialDesign:Card Margin="0,0,5,0" Height="{Binding ElementName=mTabItem,Path=ActualHeight}">
-                        <ScrollViewer HorizontalScrollBarVisibility="Disabled"  Template="{DynamicResource AtmbxScrollViewer}" VerticalScrollBarVisibility="Hidden">
+                        <ScrollViewer HorizontalScrollBarVisibility="Disabled"   VerticalScrollBarVisibility="Hidden">
                             <local:PanelMore/>
                         </ScrollViewer>
                     </materialDesign:Card>
                 </TabItem>
             </dragablz:TabablzControl>
-        </dockablz:Layout>
+        </dockablz:Layout>-->
 
 
     </DockPanel>
