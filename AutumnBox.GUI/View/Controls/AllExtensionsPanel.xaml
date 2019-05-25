@@ -6,28 +6,36 @@
              xmlns:local="clr-namespace:AutumnBox.GUI.View.Controls"
              xmlns:viewmodel="clr-namespace:AutumnBox.GUI.ViewModel"
              mc:Ignorable="d" 
-                      x:Name="thisCtrl"
+                      x:Name="mThis"
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.DataContext>
         <viewmodel:VMExtensionsNoCategory/>
     </UserControl.DataContext>
     <DockPanel>
-        <ListBox Width="300" DockPanel.Dock="Left" ItemsSource="{Binding Docks}" SelectedItem="{Binding SelectedDock}" BorderThickness="0" ScrollViewer.VerticalScrollBarVisibility="Disabled">
-            <ListBox.ItemTemplate>
+        <ItemsControl   ItemsSource="{Binding Docks}"  BorderThickness="0" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Grid Margin="0,5,0,0">
-                        <StackPanel ToolTip="{Binding ToolTip}" Margin="20,0,20,0" Orientation="Horizontal">
-                            <Image  RenderOptions.BitmapScalingMode="Fant" Height="50" Source="{Binding Icon}"/>
+                    <Grid Margin="20">
+                        <Grid.InputBindings>
+                            <MouseBinding MouseAction="LeftClick" Command="{Binding DataContext.ClickItem,ElementName=mThis}" CommandParameter="{Binding}"/>
+                            <MouseBinding MouseAction="LeftDoubleClick" Command="{Binding DataContext.DoubleClickItem,ElementName=mThis}" CommandParameter="{Binding}"/>
+                        </Grid.InputBindings>
+                        <StackPanel ToolTip="{Binding ToolTip}" Orientation="Horizontal">
+                            <Image  RenderOptions.BitmapScalingMode="Fant" Width="50" Source="{Binding Icon}"/>
                             <Grid Margin="5,0,0,0">
                                 <TextBlock Visibility="{Binding RootVisibily}" VerticalAlignment="Top" FontSize="11"  Foreground="Orange">ROOT</TextBlock>
                                 <TextBlock VerticalAlignment="Center"  FontSize="12" TextWrapping="Wrap" TextTrimming="WordEllipsis"  Text="{Binding Name}"/>
                             </Grid>
-
                         </StackPanel>
                     </Grid>
                 </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
         <Grid/>
     </DockPanel>
 </UserControl>
