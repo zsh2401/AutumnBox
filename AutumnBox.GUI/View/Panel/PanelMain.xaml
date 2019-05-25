@@ -16,26 +16,15 @@
     </UserControl.DataContext>
     <DockPanel>
         <controls1:MainMenu x:Name="Menu" DockPanel.Dock="Top"/>
-        <controls1:DeviceBar DockPanel.Dock="Top"/>
-        <TabControl TabStripPlacement="Left">
-            <TabItem Header="{DynamicResource Home}">
+        <controls1:DeviceBar DockPanel.Dock="Top"  Margin="15"/>
+        <TabControl Background="Transparent" TabStripPlacement="Left">
+            <TabItem Background="Transparent" Header="{DynamicResource Home}">
                 <local:PanelDefaultInformation/>
             </TabItem>
-            <TabItem Header="{DynamicResource Functions}">
+            <TabItem Background="Transparent" Header="{DynamicResource Functions}">
                 <controls1:AllExtensionsPanel/>
-                <!--<ScrollViewer HorizontalScrollBarVisibility="Disabled">
-                    <StackPanel Orientation="Vertical">
-                        <controls1:ExtensionsPanel TargetDeviceState="Poweron"/>
-                        <controls1:ExtensionsPanel TargetDeviceState="Recovery"/>
-                        <controls1:ExtensionsPanel TargetDeviceState="Fastboot"/>
-                        <controls1:ExtensionsPanel TargetDeviceState="Unauthorized"/>
-                        <controls1:ExtensionsPanel TargetDeviceState="Offline"/>
-                        <controls1:ExtensionsPanel TargetDeviceState="Unknown"/>
-                        <controls1:ExtensionsPanel/>
-                    </StackPanel>
-                </ScrollViewer>-->
             </TabItem>
-            <TabItem Header="{DynamicResource More}">
+            <TabItem Background="Transparent" Header="{DynamicResource More}">
                 <local:PanelMore/>
             </TabItem>
         </TabControl>
