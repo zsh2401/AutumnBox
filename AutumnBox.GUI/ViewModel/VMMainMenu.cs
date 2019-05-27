@@ -11,12 +11,12 @@ namespace AutumnBox.GUI.ViewModel
 {
     class VMMainMenu : ViewModelBase
     {
-        public ICommand Exit { get;  }
-        public ICommand OpenLoggingWindow { get;  }
-        public ICommand OpenUpdateLogs { get;  }
-        public ICommand OpenSettings { get;  }
-        public ICommand OpenShell { get;  }
-        public ICommand UpdateCheck { get;  }
+        public ICommand Exit { get; }
+        public ICommand OpenLoggingWindow { get; }
+        public ICommand OpenUpdateLogs { get; }
+        public ICommand OpenSettings { get; }
+        public ICommand OpenShell { get; }
+        public ICommand UpdateCheck { get; }
         public ICommand OpenOSInformation { get; }
         public VMMainMenu()
         {
@@ -25,7 +25,7 @@ namespace AutumnBox.GUI.ViewModel
             OpenUpdateLogs = new MVVMCommand(p => MainWindowBus.ShowSlice(new UpdateLog(), "Farewell under the stars"));
             OpenSettings = new MVVMCommand(p => new SettingsWindow().ShowDialog());
             UpdateCheck = new MVVMCommand(P => MainWindowBus.Info("wtf"));
-            OpenOSInformation = new MVVMCommand(p => new OpenSourceWindow().ShowDialog());
+            OpenOSInformation = new MVVMCommand(p => new OpenSourceWindow() { Owner = App.Current.MainWindow }.ShowDialog());
             OpenShell = new MVVMCommand(p =>
             {
                 ProcessStartInfo info = new ProcessStartInfo
