@@ -19,6 +19,43 @@ namespace AutumnBox.Basic.Device
         /// IP
         /// </summary>
         public IPEndPoint IPEndPoint { get; internal set; }
+
+        /// <summary>
+        /// 网络连接的设备
+        /// </summary>
+        /// <param name="serialNumber"></param>
+        /// <param name="state"></param>
+        /// <param name="ipEndPoint"></param>
+        public NetDevice(string serialNumber, DeviceState state, IPEndPoint ipEndPoint)
+        {
+            this.SerialNumber = serialNumber ?? throw new ArgumentNullException(nameof(serialNumber));
+            this.State = state;
+            this.IPEndPoint = ipEndPoint;
+        }
+
+        /// <summary>
+        /// 解析
+        /// </summary>
+        /// <param name="serialNumber"></param>
+        /// <param name="ipEndPoint"></param>
+        /// <returns></returns>
+        public static bool TryParseEndPoint(string serialNumber, out IPEndPoint ipEndPoint)
+        {
+            try
+            {
+                var splited = serialNumber.Split(':');
+                var ip = IPAddress.Parse(splited[0]);
+                var port = ushort.Parse(splited[1]);
+                ipEndPoint = new IPEndPoint(ip, port);
+                return true;
+            }
+            catch
+            {
+                ipEndPoint = null;
+                return false;
+            }
+        }
+
         /// <summary>
         /// 断开连接
         /// </summary>

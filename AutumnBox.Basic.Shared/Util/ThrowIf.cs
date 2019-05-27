@@ -82,7 +82,7 @@ namespace AutumnBox.Basic.Util
         /// <param name="device"></param>
         public static void ThrowIfNotAlive(this IDevice device)
         {
-            if (device.IsAlive == false)
+            if (device.IsAlive() == false)
             {
                 throw new DeviceNotAliveException();
             }

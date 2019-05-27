@@ -18,6 +18,17 @@ namespace AutumnBox.Basic.Device
     public sealed class UsbDevice : DeviceBase
     {
         /// <summary>
+        /// 创建
+        /// </summary>
+        /// <param name="serialNumber"></param>
+        /// <param name="state"></param>
+        public UsbDevice(string serialNumber, DeviceState state)
+        {
+            this.SerialNumber = serialNumber ?? throw new ArgumentNullException(nameof(serialNumber));
+            this.State = state;
+        }
+
+        /// <summary>
         /// 开启网络调试
         /// </summary>
         /// <param name="port"></param>

@@ -93,7 +93,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)ManagedAdb\IAdbManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ManagedAdb\IAdbServer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ManagedAdb\LocalAdbServer.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)MultipleDevices\DeviceObjectFacotry.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MultipleDevices\DevicesArrayExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MultipleDevices\DevicesChangedEvent.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MultipleDevices\DevicesGetter.cs" />

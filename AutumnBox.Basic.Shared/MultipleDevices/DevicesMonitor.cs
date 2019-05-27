@@ -36,10 +36,12 @@ namespace AutumnBox.Basic.MultipleDevices
         public event DevicesChangedHandler DevicesChanged;
         private CancellationTokenSource tokenSource;
         private bool isStarted = false;
+
         /// <summary>
         /// 检测间隔
         /// </summary>
         public int Interval { get; set; } = 2000;
+
         /// <summary>
         /// 开始
         /// </summary>
@@ -64,6 +66,7 @@ namespace AutumnBox.Basic.MultipleDevices
                 isStarted = false; ;
             });
         }
+
         /// <summary>
         /// 循环检测设备信息
         /// </summary>
@@ -84,6 +87,7 @@ namespace AutumnBox.Basic.MultipleDevices
                 Thread.Sleep(Interval);
             }
         }
+
         /// <summary>
         /// 取消
         /// </summary>

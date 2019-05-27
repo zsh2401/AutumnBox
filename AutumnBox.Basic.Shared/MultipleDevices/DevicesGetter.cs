@@ -30,6 +30,7 @@ namespace AutumnBox.Basic.MultipleDevices
             adbDevices.NeverCreateNewWindow = true;
             fastbootDevices.NeverCreateNewWindow = true;
         }
+
         /// <summary>
         /// 获取
         /// </summary>
@@ -41,23 +42,25 @@ namespace AutumnBox.Basic.MultipleDevices
             Fastboot(result);
             return result;
         }
+
         private void Adb(List<IDevice> devices)
         {
             var lineOutput = adbDevices.Execute().Output.LineOut;
             for (int i = 1; i < lineOutput.Count(); i++)
             {
-                if (DeviceObjectFacotry.AdbTryParse(lineOutput[i], out IDevice device))
+                if (DeviceBase.TryParse(lineOutput[i], out IDevice device))
                 {
                     devices.Add(device);
                 }
             }
         }
+
         private void Fastboot(List<IDevice> devices)
         {
             var lineOutput = fastbootDevices.Execute().Output.LineOut;
             for (int i = 0; i < lineOutput.Count(); i++)
             {
-                if (DeviceObjectFacotry.FastbootTryParse(lineOutput[i], out IDevice device))
+                if (DeviceBase.TryParse(lineOutput[i], out IDevice device))
                 {
                     devices.Add(device);
                 }
