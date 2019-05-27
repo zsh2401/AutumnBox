@@ -70,6 +70,7 @@ namespace AutumnBox.GUI.ViewModel
 
         private void Load()
         {
+         
             Docks = OpenFx.LibsManager.Wrappers()
                     .Region(Util.I18N.LanguageManager.Instance.Current.LanCode)
                     .Hide()

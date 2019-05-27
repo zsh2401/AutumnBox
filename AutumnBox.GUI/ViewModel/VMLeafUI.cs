@@ -1,4 +1,5 @@
 ﻿using AutumnBox.GUI.MVVM;
+using AutumnBox.GUI.Util.Bus;
 using AutumnBox.GUI.Util.UI;
 using AutumnBox.GUI.View.LeafContent;
 using AutumnBox.GUI.View.Windows;
@@ -9,11 +10,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using static AutumnBox.GUI.Util.Bus.DialogManager;
 
 namespace AutumnBox.GUI.ViewModel
 {
     class VMLeafUI : ViewModelBase, ILeafUI
     {
+        public string Token { get; }
         private enum State
         {
             Initing = -1,
@@ -23,6 +26,16 @@ namespace AutumnBox.GUI.ViewModel
             Shutdown = 3,
             Unfinished = 4,
         }
+        public Visibility LoadingLineVisibility
+        {
+            get => lv; set
+            {
+                lv = value;
+                RaisePropertyChanged();
+            }
+        }
+        private Visibility lv;
+
         private State CurrentState { get; set; } = State.Initing;
 
         public FlexiableCommand Copy
@@ -91,6 +104,10 @@ namespace AutumnBox.GUI.ViewModel
                     _progress = 0;
                     RaisePropertyChanged();
                     return;
+                }
+                if (value == 100)
+                {
+                    LoadingLineVisibility = Visibility.Hidden;
                 }
                 IsIndeterminate = false;
                 _progress = value;
@@ -173,6 +190,7 @@ namespace AutumnBox.GUI.ViewModel
 
         public VMLeafUI()
         {
+            Token = Guid.NewGuid().ToString();
             _contentBuilder = new StringBuilder();
             _fullContentBuilder = new StringBuilder();
             RaisePropertyChangedOnDispatcher = true;
@@ -191,10 +209,6 @@ namespace AutumnBox.GUI.ViewModel
             CurrentState = State.Ready;
         }
 
-        public object _GetDialogHost()
-        {
-            return View.DialogHost;
-        }
 
         private void View_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
@@ -239,6 +253,7 @@ namespace AutumnBox.GUI.ViewModel
             Tip = tip;
             Progress = 100;
             CurrentState = State.Finished;
+
         }
 
         public void Show()
@@ -311,7 +326,8 @@ namespace AutumnBox.GUI.ViewModel
             App.Current.Dispatcher.Invoke(() =>
             {
                 var view = new MessageView(message);
-                task = View.DialogHost.ShowDialog(view);
+                task = DialogManager.Show(Token, new MessageView(message));
+                //task = View.DialogHost.ShowDialog(view);
             });
             task.Wait();
         }
@@ -327,7 +343,7 @@ namespace AutumnBox.GUI.ViewModel
             App.Current.Dispatcher.Invoke(() =>
             {
                 var view = new ChoiceView(message, btnYes, btnNo, btnCancel);
-                task = View.DialogHost.ShowDialog(view);
+                //task = View.DialogHost.ShowDialog(view);
             });
             task.Wait();
             return (task.Result as bool?);
@@ -343,7 +359,7 @@ namespace AutumnBox.GUI.ViewModel
             App.Current.Dispatcher.Invoke(() =>
             {
                 var view = new SingleSelectView(hint, options);
-                task = View.DialogHost.ShowDialog(view);
+                //task = View.DialogHost.ShowDialog(view);
             });
             task.Wait();
             return task.Result;
@@ -372,7 +388,7 @@ namespace AutumnBox.GUI.ViewModel
             Task<object> dialogTask = null;
             RunOnUIThread(() =>
             {
-                dialogTask = View.DialogHost.ShowDialog(content);
+                //dialogTask = View.DialogHost.ShowDialog(content);
             });
             return dialogTask;
         }
@@ -388,7 +404,7 @@ namespace AutumnBox.GUI.ViewModel
             App.Current.Dispatcher.Invoke(() =>
             {
                 var view = new YNView(message, btnYes, btnNo);
-                task = View.DialogHost.ShowDialog(view);
+                task = DialogManager.Show(Token, view);
             });
             task.Wait();
             return (bool)task.Result;

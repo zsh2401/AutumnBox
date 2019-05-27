@@ -16,7 +16,7 @@ namespace AutumnBox.Basic.MultipleDevices
     /// </summary>
     public class DevicesGetter : IDevicesGetter
     {
-        private const string ADB_DEVICES_COMMAND = "devices -l";
+        private const string ADB_DEVICES_COMMAND = "devices";
         private const string FSB_DEVICES_COMMAND = "devices";
         private readonly AdbCommand adbDevices;
         private readonly FastbootCommand fastbootDevices;

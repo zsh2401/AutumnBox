@@ -16,9 +16,9 @@
     </UserControl.DataContext>
     <DockPanel>
         <controls1:MainMenu x:Name="Menu" DockPanel.Dock="Top"/>
-        <controls1:DeviceBar DockPanel.Dock="Top"  Margin="15"/>
+        <controls1:DeviceBar DockPanel.Dock="Top"  Margin="10"/>
         <TabControl Background="Transparent" TabStripPlacement="Left">
-            <TabItem Background="Transparent" Header="{DynamicResource Home}">
+            <TabItem Width="120" Background="Transparent" Header="{DynamicResource Home}">
                 <local:PanelDefaultInformation/>
             </TabItem>
             <TabItem Background="Transparent" Header="{DynamicResource Functions}">

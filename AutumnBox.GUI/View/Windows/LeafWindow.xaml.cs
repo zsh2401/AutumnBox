@@ -19,7 +19,7 @@ namespace AutumnBox.GUI.View.Windows
     /// <summary>
     /// LeafWindow.xaml 的交互逻辑
     /// </summary>
-    public partial class LeafWindow : Window
+    public partial class LeafWindow 
     {
         public LeafWindow()
         {

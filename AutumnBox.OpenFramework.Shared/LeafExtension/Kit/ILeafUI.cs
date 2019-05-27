@@ -130,11 +130,6 @@ namespace AutumnBox.OpenFramework.LeafExtension.Kit
 
 #if!SDK
         /// <summary>
-        /// 获取DialogHost
-        /// </summary>
-        /// <returns></returns>
-        object _GetDialogHost();
-        /// <summary>
         /// 显示Dialog
         /// </summary>
         /// <param name="content"></param>

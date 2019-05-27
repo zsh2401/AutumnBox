@@ -18,24 +18,11 @@ namespace AutumnBox.Basic.Device
         /// 序列号
         /// </summary>
         public string SerialNumber { get; internal protected set; }
-        /// <summary>
-        /// Product
-        /// </summary>
-        public string Product { get; internal protected set; }
 
-        /// <summary>
-        /// Model
-        /// </summary>
-        public string Model { get; internal protected set; }
-
-        /// <summary>
-        /// TransportId
-        /// </summary>
-        public string TransportId { get; internal protected set; }
         /// <summary>
         /// State
         /// </summary>
-        public DeviceState State { get; internal protected set; }
+        public DeviceState State => GetState();
 
         /// <summary>
         /// 检测是否存活
@@ -55,7 +42,7 @@ namespace AutumnBox.Basic.Device
         /// <returns></returns>
         public bool Equals(IDevice other)
         {
-            return other != null && other.SerialNumber == this.SerialNumber && other.State == this.State ;
+            return other != null && other.SerialNumber == this.SerialNumber && other.State == this.State;
         }
 
         /// <summary>
@@ -67,6 +54,7 @@ namespace AutumnBox.Basic.Device
         {
             return Equals(obj as IDevice);
         }
+
         /// <summary>
         /// 获取Hash码
         /// </summary>
@@ -78,16 +66,13 @@ namespace AutumnBox.Basic.Device
             return hashCode;
         }
 
-        private const string STATE_PATTERN = "";
-        /// <summary>
-        /// 刷新设备状态
-        /// </summary>
-        public void RefreshState()
+
+        private DeviceState GetState()
         {
             var exeResult = this.Adb("get-state");
             exeResult.ThrowIfExitCodeNotEqualsZero();
             var stateString = exeResult.Item1.ToString().Trim();
-            this.State = stateString.ToDeviceState();
+            return stateString.ToDeviceState();
         }
 
         /// <summary>
@@ -111,6 +96,7 @@ namespace AutumnBox.Basic.Device
         {
             return !(base1 == base2);
         }
+
         /// <summary>
         /// 字符串化
         /// </summary>

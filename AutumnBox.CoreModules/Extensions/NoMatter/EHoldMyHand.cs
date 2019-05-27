@@ -38,18 +38,9 @@ namespace AutumnBox.CoreModules.Extensions.Hidden
             using (ui)
             {
                 ui.Show();
-                var storageManager = new StorageManagerImpl(context);
-                using (var fs = storageManager.OpenFile("wtf"))
-                {
-                    using (StreamWriter sw = new StreamWriter(fs))
-                    {
-                        sw.Write("hello!");
-                    }
-                }
-                List<string> list = new List<string>() {
-                    "1","2"
-                };
-                storageManager.SaveJsonObject("main",list);
+                ui.Title = "TEST";
+                ui.ShowMessage("wow");
+                ui.WriteOutput(ui.DoYN("wwww", "yes", "no"));
                 ui.Finish();
             }
         }

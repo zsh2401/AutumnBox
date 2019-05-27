@@ -28,19 +28,6 @@ namespace AutumnBox.OpenFramework.Util
             return dialogTask;
         }
         /// <summary>
-        /// 请在UI线程操作,获取LeafUI DialogHost(MaterialDesignInXaml)
-        /// </summary>
-        /// <param name="ui"></param>
-        /// <returns></returns>
-        public static object GetDialogHost(this ILeafUI ui)
-        {
-#if !SDK
-            return ui._GetDialogHost();
-#else
-            throw new Exception();
-#endif
-        }
-        /// <summary>
         /// 请在UI线程操作,根据ID获取秋之盒View
         /// </summary>
         /// <param name="id"></param>

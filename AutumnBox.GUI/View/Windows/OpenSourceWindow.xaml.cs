@@ -17,7 +17,7 @@ namespace AutumnBox.GUI.View.Windows
     /// <summary>
     /// OpenSourceWindow.xaml 的交互逻辑
     /// </summary>
-    public partial class OpenSourceWindow : Window
+    public partial class OpenSourceWindow 
     {
         public OpenSourceWindow()
         {
