@@ -10,7 +10,10 @@ using AutumnBox.GUI.Util.Net;
 using AutumnBox.GUI.Util.Net.Getters;
 using AutumnBox.GUI.View.Windows;
 using AutumnBox.Logging;
+using HandyControl.Controls;
+using HandyControl.Data;
 using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 
 namespace AutumnBox.GUI.Util.Net
@@ -29,14 +32,47 @@ namespace AutumnBox.GUI.Util.Net
         public static void Do()
         {
             var getter = new RemoteVersionInfoGetter();
-            MainWindowBus.Info("正在检测更新");
-            getter.Advance().ContinueWith(result =>
+            MainWindowBus.Info("Update.CheckingUpdate");
+            getter.Advance().ContinueWith(task =>
             {
-                if (Result.Version > Self.Version)
+                if (task.IsFaulted)
                 {
-                    MainWindowBus.Info("检测到更新");
+                    MainWindowBus.Warning("Update.Failed");
+                }
+                else
+                {
+                    if (task.Result.Version > Self.Version)
+                    {
+                        App.Current.Dispatcher.Invoke(() =>
+                        {
+                            DoAsk(task.Result);
+                        });
+                    }
+                    else
+                    {
+                        MainWindowBus.Success("Update.IsLatestVersion");
+                    }
                 }
             });
+        }
+        public static void DoAsk(RemoteVersionInfoGetter.Result result)
+        {
+            GrowlInfo gInfo = new GrowlInfo
+            {
+                ConfirmStr = App.Current.Resources["Update.UpdateNow"].ToString(),
+                CancelStr = App.Current.Resources["Update.Cancel"].ToString(),
+                Message = $"{App.Current.Resources["Update.HaveAUpdate"]}  v{result.Version}\n{result.Message}",
+                Token = MainWindowBus.TOKEN_PANEL_MAIN,
+                ActionBeforeClose = (isConfirmed) =>
+                {
+                    if (isConfirmed)
+                    {
+                        try { Process.Start(result.UpdateUrl); } catch { }
+                    }
+                    return true;
+                }
+            };
+            Growl.Ask(gInfo);
         }
     }
 }

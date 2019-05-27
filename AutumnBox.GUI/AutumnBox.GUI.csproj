@@ -182,6 +182,7 @@
     <Compile Include="Util\Bus\ExtensionViewRefresher.cs" />
     <Compile Include="Util\Bus\MainWindowBus.cs" />
     <Compile Include="Util\Bus\OpenFxEventBus.cs" />
+    <Compile Include="Util\Bus\WinM.cs" />
     <Compile Include="Util\ConditionalVars.cs" />
     <Compile Include="Util\Custom\ITheme.cs" />
     <Compile Include="Util\Custom\IThemeManager.cs" />

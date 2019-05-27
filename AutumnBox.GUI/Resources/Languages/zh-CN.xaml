@@ -50,6 +50,13 @@
      <s:String x:Key="ExtensionsPanelOffline">当设备处于异常离线时可用</s:String>
     <s:String x:Key="ExtensionsPanelNoMatter">这些模块无需设备连接也可使用</s:String>
     
+     <s:String x:Key="Update.Failed">更新检查失败</s:String>
+    <s:String x:Key="Update.HaveAUpdate">检测到更新</s:String>
+     <s:String x:Key="Update.CheckingUpdate">正在检查更新!</s:String>
+    <s:String x:Key="Update.UpdateNow">立刻更新</s:String>
+     <s:String x:Key="Update.IsLatestVersion">当前已是最新版本</s:String>
+    <s:String x:Key="Update.Cancel">取消</s:String>
+    
     <s:String x:Key="UserLicenseTitle">秋之盒使用协议 1.0</s:String>
     <s:String x:Key="UserLicenseContent">本协议仍然在编写当中,最终解释权归zsh2401所有
 欢迎您使用秋之盒-AutumnBox(下称本软件)。

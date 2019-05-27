@@ -2,8 +2,6 @@
 using AutumnBox.GUI.MVVM;
 using AutumnBox.GUI.Util.Bus;
 using AutumnBox.GUI.Util.Net;
-using AutumnBox.GUI.View.Slices;
-using AutumnBox.GUI.View.Windows;
 using System;
 using System.Diagnostics;
 using System.Windows.Input;
@@ -22,33 +20,33 @@ namespace AutumnBox.GUI.ViewModel
         public VMMainMenu()
         {
             Exit = new MVVMCommand(p => { App.Current.Shutdown(0); });
-            OpenLoggingWindow = new MVVMCommand(p => { new LogWindow().Show(); });
-            OpenUpdateLogs = new MVVMCommand(p => new UpdateLogsWindow() { Owner = App.Current.MainWindow }.ShowDialog());
-            OpenSettings = new MVVMCommand(p => new SettingsWindow().ShowDialog());
+            OpenLoggingWindow = new MVVMCommand(p => WinM.X("Log"));
+            OpenUpdateLogs = new MVVMCommand(p => WinM.X("UpdateLogs"));
+            OpenSettings = new MVVMCommand(p => WinM.X("Settings"));
             UpdateCheck = new MVVMCommand(P => Updater.Do());
-            OpenOSInformation = new MVVMCommand(p => new OpenSourceWindow() { Owner = App.Current.MainWindow }.ShowDialog());
-            OpenShell = new MVVMCommand(p =>
+            OpenOSInformation = new MVVMCommand(p => WinM.X("OpenSource"));
+            OpenShell = new MVVMCommand(p => OpenShellMethod(p?.ToString()));
+        }
+        private static void OpenShellMethod(string fileName)
+        {
+            ProcessStartInfo info = new ProcessStartInfo
             {
-                ProcessStartInfo info = new ProcessStartInfo
-                {
-                    WorkingDirectory = Adb.AdbToolsDir.FullName,
-                    FileName = "cmd",
-                    UseShellExecute = false,
-                    Verb = "runas",
-                };
-                info.EnvironmentVariables["ANDROID_ADB_SERVER_PORT"] = Adb.Server.Port.ToString();
-                if (Properties.Settings.Default.EnvVarCmdWindow)
-                {
-                    var pathEnv = info.EnvironmentVariables["path"];
-                    info.EnvironmentVariables["path"] = $"{Adb.AdbToolsDir.FullName};" + pathEnv;
-                }
-                if (Properties.Settings.Default.StartCmdAtDesktop)
-                {
-                    info.WorkingDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-                }
-                info.FileName = p?.ToString() ?? "cmd.exe";
-                Process.Start(info);
-            });
+                WorkingDirectory = Adb.AdbToolsDir.FullName,
+                FileName = fileName ?? "cmd.exe",
+                UseShellExecute = false,
+                Verb = "runas",
+            };
+            info.EnvironmentVariables["ANDROID_ADB_SERVER_PORT"] = Adb.Server.Port.ToString();
+            if (Properties.Settings.Default.EnvVarCmdWindow)
+            {
+                var pathEnv = info.EnvironmentVariables["path"];
+                info.EnvironmentVariables["path"] = $"{Adb.AdbToolsDir.FullName};" + pathEnv;
+            }
+            if (Properties.Settings.Default.StartCmdAtDesktop)
+            {
+                info.WorkingDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            }
+            Process.Start(info);
         }
     }
 }

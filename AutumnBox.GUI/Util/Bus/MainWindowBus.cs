@@ -2,6 +2,7 @@
 using AutumnBox.GUI.View.Windows;
 using AutumnBox.GUI.ViewModel;
 using HandyControl.Controls;
+using System;
 
 namespace AutumnBox.GUI.Util.Bus
 {
@@ -25,7 +26,7 @@ namespace AutumnBox.GUI.Util.Bus
         }
         public static void Info(string message)
         {
-            Growl.Success(App.Current.Resources[message]?.ToString() ?? message, TOKEN_PANEL_MAIN);
+            Growl.Info(App.Current.Resources[message]?.ToString() ?? message, TOKEN_PANEL_MAIN);
         }
         public static void Success(string message)
         {
@@ -35,10 +36,9 @@ namespace AutumnBox.GUI.Util.Bus
         {
             Growl.Warning(App.Current.Resources[message]?.ToString() ?? message, TOKEN_PANEL_MAIN);
         }
-        public static void ShowSlice(object view, string title = null)
+        public static void Ask(string message, Func<bool, bool> callback)
         {
-            var vm = App.Current.MainWindow.DataContext as VMMainWindowV2;
-            vm.ShowSlice(view, title);
+            Growl.Ask(message, callback);
         }
     }
 }
