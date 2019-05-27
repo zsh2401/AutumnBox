@@ -17,6 +17,7 @@
     <DockPanel>
         <controls1:MainMenu x:Name="Menu" DockPanel.Dock="Top"/>
         <controls1:DeviceBar DockPanel.Dock="Top"  Margin="10"/>
+        <controls1:BottomBar DockPanel.Dock="Bottom"/>
         <TabControl Background="Transparent" TabStripPlacement="Left">
             <TabItem Width="120" Background="Transparent" Header="{DynamicResource Home}">
                 <local:PanelDefaultInformation/>

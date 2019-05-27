@@ -263,6 +263,9 @@
     <Compile Include="View\Controls\AllExtensionsPanel.xaml.cs">
       <DependentUpon>AllExtensionsPanel.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Controls\BottomBar.xaml.cs">
+      <DependentUpon>BottomBar.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Controls\DeviceBar.xaml.cs">
       <DependentUpon>DeviceBar.xaml</DependentUpon>
     </Compile>
@@ -552,6 +555,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="View\Controls\AllExtensionsPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Controls\BottomBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

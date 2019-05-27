@@ -1,0 +1,19 @@
+﻿<UserControl x:Class="AutumnBox.GUI.View.Controls.BottomBar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AutumnBox.GUI.View.Controls"
+             mc:Ignorable="d" 
+             FontFamily="{DynamicResource AutumnBox.Font}"
+             Foreground="Gray"
+             Background="White">
+    <Grid>
+        <StackPanel>
+            <Grid Height="1" Background="LightGray"/>
+        </StackPanel>
+        <StackPanel Margin="5" VerticalAlignment="Center" Orientation="Horizontal">
+            <TextBlock>Test</TextBlock>
+        </StackPanel>
+    </Grid>
+</UserControl>

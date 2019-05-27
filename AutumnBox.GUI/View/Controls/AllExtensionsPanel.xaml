@@ -19,13 +19,13 @@
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Button Command="{Binding Execute}"  Margin="10" Height="100" Width="300"  ToolTip="{Binding ToolTip}" >
-                        <StackPanel Height="80" Width="280" Orientation="Horizontal">
+                    <Button Command="{Binding Execute}"  Margin="5" Height="100" Width="250"  ToolTip="{Binding ToolTip}" >
+                        <StackPanel Height="80" Width="220"  Orientation="Horizontal">
                             <Image  RenderOptions.BitmapScalingMode="Fant" Width="50" Source="{Binding Icon}"/>
-                            <Grid Margin="5,0,0,0">
+                            <StackPanel VerticalAlignment="Center" Orientation="Vertical">
                                 <TextBlock Visibility="{Binding RootVisibily}" VerticalAlignment="Top" FontSize="11"  Foreground="Orange">ROOT</TextBlock>
                                 <TextBlock VerticalAlignment="Center"  FontSize="12" TextWrapping="Wrap" TextTrimming="WordEllipsis"  Text="{Binding Name}"/>
-                            </Grid>
+                            </StackPanel>
                         </StackPanel>
                     </Button>
                 </DataTemplate>
