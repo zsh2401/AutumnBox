@@ -359,6 +359,7 @@ namespace AutumnBox.GUI.ViewModel
             App.Current.Dispatcher.Invoke(() =>
             {
                 var view = new SingleSelectView(hint, options);
+                task = DialogManager.Show(Token, view);
                 //task = View.DialogHost.ShowDialog(view);
             });
             task.Wait();

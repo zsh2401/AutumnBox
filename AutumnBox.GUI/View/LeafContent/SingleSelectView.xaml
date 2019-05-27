@@ -6,21 +6,19 @@
              xmlns:local="clr-namespace:AutumnBox.GUI.View.LeafContent"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
+             Background="White"
              FontFamily="{DynamicResource AutumnBox.Font}"
+             x:Name="mThis"
              Width="350" Height="200">
     <DockPanel>
-        <Button IsCancel="True" DockPanel.Dock="Bottom"  Command="materialDesign:DialogHost.CloseDialogCommand" CommandParameter="{x:Null}" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource SignalSelectViewCancel}"/>
+        <Button Click="Button_Click" Margin="5" IsCancel="True" DockPanel.Dock="Bottom" Content="{DynamicResource SignalSelectViewCancel}"/>
         <TextBlock Margin="5" TextWrapping="Wrap" x:Name="TBHint" DockPanel.Dock="Top" Text="{DynamicResource SignalSelectViewHint}"/>
-        <ListView DockPanel.Dock="Top" x:Name="LVOptions">
-            <ListView.ItemTemplate>
+        <ItemsControl DockPanel.Dock="Top" x:Name="LVOptions">
+            <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Width="240" Text="{Binding}" TextWrapping="Wrap">
-                        <TextBlock.InputBindings>
-                            <MouseBinding MouseAction="LeftClick" Command="materialDesign:DialogHost.CloseDialogCommand" CommandParameter="{Binding}"/>
-                        </TextBlock.InputBindings>
-                    </TextBlock>
+                    <Button Margin="2"  Width="240" Content="{Binding}" Command="{Binding DataContext.Select,ElementName=mThis}" CommandParameter="{Binding}"/>
                 </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
     </DockPanel>
 </UserControl>
