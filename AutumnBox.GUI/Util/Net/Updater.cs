@@ -4,6 +4,7 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.GUI.Properties;
+using AutumnBox.GUI.Util.Bus;
 using AutumnBox.GUI.Util.Debugging;
 using AutumnBox.GUI.Util.Net;
 using AutumnBox.GUI.Util.Net.Getters;
@@ -25,49 +26,17 @@ namespace AutumnBox.GUI.Util.Net
                 Settings.Default.Save();
             }
         }
-        public static Task RefreshAsync(Action callback)
+        public static void Do()
         {
-            return Task.Run(() =>
+            var getter = new RemoteVersionInfoGetter();
+            MainWindowBus.Info("正在检测更新");
+            getter.Advance().ContinueWith(result =>
             {
-                RemoteVersionInfoGetter getter = new RemoteVersionInfoGetter();
-                try
+                if (Result.Version > Self.Version)
                 {
-                    Result = getter.GetSync();
-                    callback?.Invoke();
-                }
-                catch (Exception e)
-                {
-                    SLogger.Warn(nameof(Updater), "cannot refresh update informations", e);
+                    MainWindowBus.Info("检测到更新");
                 }
             });
-        }
-        public static void ShowUI(bool showIsLatestVersion = true, bool showSkippedVersion = false)
-        {
-            if (Result == null) return;
-
-            if (Result.Version > Self.Version &&
-                (Result.Version > Version.Parse(Settings.Default.SkipVersion) ||
-                showSkippedVersion))
-            {
-                App.Current.Dispatcher.Invoke(() =>
-                {
-                    new UpdateNoticeWindow() {
-                        Owner = App.Current.MainWindow,
-                    }.Show();
-                });
-            }
-            else if (showIsLatestVersion)
-            {
-                App.Current.Dispatcher.Invoke(() =>
-                {
-                    new MessageWindow()
-                    {
-                        MsgTitle = "PanelSettingsTitleDontNeedUpdate",
-                        Message = "PanelSettingsMsgDontNeedUpdate",
-                        Owner = App.Current.MainWindow
-                    }.Show();
-                });
-            }
         }
     }
 }

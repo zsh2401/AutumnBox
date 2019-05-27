@@ -423,6 +423,9 @@
     <Compile Include="View\Windows\StartWindow.xaml.cs">
       <DependentUpon>StartWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Windows\UpdateLogsWindow.xaml.cs">
+      <DependentUpon>UpdateLogsWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Windows\UpdateNoticeWindow.xaml.cs">
       <DependentUpon>UpdateNoticeWindow.xaml</DependentUpon>
     </Compile>
@@ -769,6 +772,10 @@
     <Page Include="View\Windows\StartWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Windows\UpdateLogsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Windows\UpdateNoticeWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

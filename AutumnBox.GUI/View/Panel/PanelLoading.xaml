@@ -4,10 +4,14 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AutumnBox.GUI.View.Panel"
+             xmlns:controls="clr-namespace:HandyControl.Controls;assembly=HandyControl"
              mc:Ignorable="d" 
              FontFamily="{DynamicResource AutumnBox.Font}"
-            Height="720" Width="1280" Background="WhiteSmoke">
+            Height="720" Width="1280" Background="White">
     <Grid>
-        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="120">Autumn Box</TextBlock>
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="120">Autumn Box</TextBlock>
+            <controls:LoadingLine/>
+        </StackPanel>
     </Grid>
 </UserControl>

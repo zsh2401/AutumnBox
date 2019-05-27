@@ -227,10 +227,7 @@ namespace AutumnBox.GUI.Util
         }
         private void FetchRemoteData()
         {
-            Updater.RefreshAsync(() =>
-            {
-                Updater.ShowUI(false);
-            });
+            Updater.Do();
             Statistics.Do();
             ToastMotd.Do();
             Banner.Check();

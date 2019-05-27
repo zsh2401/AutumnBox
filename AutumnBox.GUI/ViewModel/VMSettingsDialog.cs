@@ -257,10 +257,7 @@ namespace AutumnBox.GUI.ViewModel
             });
             UpdateCheck = new FlexiableCommand(() =>
             {
-                Updater.RefreshAsync(() =>
-                {
-                    Updater.ShowUI(true, true);
-                });
+                Updater.Do();
             });
             OpenLogFloder = new MVVMCommand((p) =>
             {

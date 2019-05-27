@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HandyControl.Controls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,11 +16,11 @@ using System.Windows.Shapes;
 namespace AutumnBox.GUI.View.Windows
 {
     /// <summary>
-    /// LibsWindow.xaml 的交互逻辑
+    /// UpdateLogsWindow.xaml 的交互逻辑
     /// </summary>
-    public partial class LibsWindow
+    public partial class UpdateLogsWindow : BlurWindow
     {
-        public LibsWindow()
+        public UpdateLogsWindow()
         {
             InitializeComponent();
         }

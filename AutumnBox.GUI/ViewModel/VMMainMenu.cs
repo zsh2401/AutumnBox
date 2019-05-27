@@ -1,6 +1,7 @@
 ﻿using AutumnBox.Basic.ManagedAdb;
 using AutumnBox.GUI.MVVM;
 using AutumnBox.GUI.Util.Bus;
+using AutumnBox.GUI.Util.Net;
 using AutumnBox.GUI.View.Slices;
 using AutumnBox.GUI.View.Windows;
 using System;
@@ -22,9 +23,9 @@ namespace AutumnBox.GUI.ViewModel
         {
             Exit = new MVVMCommand(p => { App.Current.Shutdown(0); });
             OpenLoggingWindow = new MVVMCommand(p => { new LogWindow().Show(); });
-            OpenUpdateLogs = new MVVMCommand(p => MainWindowBus.ShowSlice(new UpdateLog(), "Farewell under the stars"));
+            OpenUpdateLogs = new MVVMCommand(p => new UpdateLogsWindow() { Owner = App.Current.MainWindow }.ShowDialog());
             OpenSettings = new MVVMCommand(p => new SettingsWindow().ShowDialog());
-            UpdateCheck = new MVVMCommand(P => MainWindowBus.Info("wtf"));
+            UpdateCheck = new MVVMCommand(P => Updater.Do());
             OpenOSInformation = new MVVMCommand(p => new OpenSourceWindow() { Owner = App.Current.MainWindow }.ShowDialog());
             OpenShell = new MVVMCommand(p =>
             {
