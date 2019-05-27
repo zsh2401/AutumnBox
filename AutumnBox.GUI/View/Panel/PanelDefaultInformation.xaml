@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:AutumnBox.GUI.View.Panel"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:viewmodel="clr-namespace:AutumnBox.GUI.ViewModel"
+             Background="White"
              mc:Ignorable="d" >
     <UserControl.DataContext>
         <viewmodel:VMDefaultInformation/>
@@ -50,7 +51,7 @@
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Margin="20">
-                <Image Source="/Resources/Drawable/Home/help.png"  Height="110"/>
+                <Image Source="/Resources/Drawable/Home/help.png"  Height="110" Width="110" Margin="20"/>
                 <StackPanel Width="150" Margin="10">
                     <TextBlock Text="{DynamicResource PanelHomeHelp}"  HorizontalAlignment="Center" FontSize="25px" ></TextBlock>
                     <TextBlock Foreground="Gray"  TextWrapping="Wrap" Text="{DynamicResource PanelHomeHelpTip}"  HorizontalAlignment="Center" FontSize="12" ></TextBlock>

@@ -11,6 +11,7 @@
        ResizeMode="NoResize"
     Style="{StaticResource WindowBlur}"
     ShowTitle="True"
+    Title="Farewell under the stars"
     FontFamily="{DynamicResource AutumnBox.Font}"
     WindowStartupLocation="CenterOwner"
          Height="450" Width="600">
@@ -19,9 +20,6 @@
     </Window.DataContext>
     <Grid>
         <DockPanel>
-
-            <TextBlock  DockPanel.Dock="Top" Margin="5" FontSize="40">Farewell under the stars</TextBlock>
-
             <ScrollViewer HorizontalScrollBarVisibility="Disabled">
                 <ItemsControl ItemsSource="{Binding Versions}">
                     <ItemsControl.ItemTemplate>

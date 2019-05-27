@@ -12,7 +12,7 @@
         mc:Ignorable="d"
         ShowInTaskbar="True"
         Icon="/Resources/Drawable/icon.png"
-        Title="{DynamicResource AppName}" Height="720" Width="1280">
+        Title="{DynamicResource AppName}" MinHeight="625" MinWidth="950" Height="625" Width="950">
     <Window.DataContext>
         <viewmodel:VMMainWindowV2/>
     </Window.DataContext>

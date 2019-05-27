@@ -7,7 +7,7 @@
              xmlns:controls="clr-namespace:HandyControl.Controls;assembly=HandyControl"
              mc:Ignorable="d" 
              FontFamily="{DynamicResource AutumnBox.Font}"
-            Height="720" Width="1280" Background="White">
+            Background="White">
     <Grid>
         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
             <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="120">Autumn Box</TextBlock>
