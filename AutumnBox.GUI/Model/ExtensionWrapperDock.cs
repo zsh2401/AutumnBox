@@ -5,11 +5,13 @@
 *************************************************/
 using AutumnBox.GUI.MVVM;
 using AutumnBox.GUI.Util;
+using AutumnBox.GUI.Util.Bus;
 using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.Wrapper;
 using System;
 using System.Collections.Generic;
 using System.Windows;
+using System.Windows.Input;
 using System.Windows.Media;
 
 namespace AutumnBox.GUI.Model
@@ -48,11 +50,41 @@ namespace AutumnBox.GUI.Model
             }
         }
         private Visibility _rootVisibily;
+
+        public FlexiableCommand Execute
+        {
+            get => _execute; set
+            {
+                _execute = value;
+                RaisePropertyChanged();
+            }
+        }
+        private FlexiableCommand _execute;
+
         public ExtensionWrapperDock(IExtensionWrapper wrapper)
         {
             this.Wrapper = wrapper;
-            bool requiredRoot = (bool)wrapper.Info[ExtensionInformationKeys.ROOT] ;
-            RootVisibily = requiredRoot ?Visibility.Visible:Visibility.Hidden;
+            bool requiredRoot = (bool)wrapper.Info[ExtensionInformationKeys.ROOT];
+            RootVisibily = requiredRoot ? Visibility.Visible : Visibility.Hidden;
+            Execute = new FlexiableCommand(p =>
+            {
+                wrapper.GetThread().Start();
+            });
+            DeviceSelectionObserver.Instance.SelectedNoDevice += SelectNoDevice;
+            DeviceSelectionObserver.Instance.SelectedDevice += SelectedDevice;
+        }
+
+        private void SelectedDevice(object sender, EventArgs e)
+        {
+            bool isNM = Wrapper.Info.RequiredDeviceStates == AutumnBoxExtension.NoMatter;
+            bool hasFlag = DeviceSelectionObserver.Instance.CurrentDevice.State.HasFlag(Wrapper.Info.RequiredDeviceStates);
+            Execute.CanExecuteProp = isNM || hasFlag;
+        }
+
+        private void SelectNoDevice(object sender, EventArgs e)
+        {
+            bool isNM = Wrapper.Info.RequiredDeviceStates == AutumnBoxExtension.NoMatter;
+            Execute.CanExecuteProp = isNM;
         }
     }
     internal static class ExtensionWrapperDockExtensions
