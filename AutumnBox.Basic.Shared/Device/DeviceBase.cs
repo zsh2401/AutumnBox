@@ -70,9 +70,16 @@ namespace AutumnBox.Basic.Device
         private DeviceState GetState()
         {
             var exeResult = this.Adb("get-state");
-            exeResult.ThrowIfExitCodeNotEqualsZero();
-            var stateString = exeResult.Item1.ToString().Trim();
-            return stateString.ToDeviceState();
+            try
+            {
+                exeResult.ThrowIfExitCodeNotEqualsZero();
+                var stateString = exeResult.Item1.ToString().Trim();
+                return stateString.ToDeviceState();
+            }
+            catch
+            {
+                return DeviceState.Offline;
+            }
         }
 
         /// <summary>

@@ -7,13 +7,16 @@
              mc:Ignorable="d" 
              FontFamily="{DynamicResource AutumnBox.Font}"
              Foreground="Gray"
+             FontSize="15"
              Background="White">
     <Grid>
         <StackPanel>
             <Grid Height="1" Background="LightGray"/>
         </StackPanel>
-        <StackPanel Margin="5" VerticalAlignment="Center" Orientation="Horizontal">
-            <TextBlock>Test</TextBlock>
+        <StackPanel Margin="2" VerticalAlignment="Center" Orientation="Horizontal">
+            <Image Source="/Resources/Icon/adb.png" Height="15" Margin="20,0,5,0"/>
+            <TextBlock>ADB Version:</TextBlock>
+            <TextBlock>v1.0.0.0</TextBlock>
         </StackPanel>
     </Grid>
 </UserControl>

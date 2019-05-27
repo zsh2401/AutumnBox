@@ -813,12 +813,14 @@
     <Resource Include="Resources\MenuIcon\icon.png" />
     <Resource Include="Resources\MenuIcon\ps.png" />
     <Resource Include="Resources\MenuIcon\settings.png" />
+    <Resource Include="Resources\Icon\adb.png" />
+    <Resource Include="Resources\Drawable\Home\mail.png" />
+    <Resource Include="Resources\Drawable\Home\help.png" />
     <Content Include="Resources\Sound\ok.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resources\Icon\" />
     <Folder Include="Resources\Img\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
