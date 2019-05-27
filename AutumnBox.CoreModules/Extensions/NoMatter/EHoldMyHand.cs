@@ -41,6 +41,7 @@ namespace AutumnBox.CoreModules.Extensions.Hidden
                 ui.Title = "TEST";
                 ui.ShowMessage("wow");
                 ui.WriteOutput(ui.DoYN("wwww", "yes", "no"));
+                ui.WriteOutput(ui.DoChoice("www"));
                 ui.Finish();
             }
         }

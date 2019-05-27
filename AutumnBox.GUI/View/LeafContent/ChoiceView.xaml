@@ -8,17 +8,18 @@
                       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:system="clr-namespace:System;assembly=mscorlib"
              FontFamily="{DynamicResource AutumnBox.Font}"
+             Background="White"
              Width="350" Height="200">
     <DockPanel>
         <Grid DockPanel.Dock="Bottom">
-            <Button IsCancel="True" x:Name="BtnCancel" Command="materialDesign:DialogHost.CloseDialogCommand" CommandParameter="{x:Null}" Style="{DynamicResource MaterialDesignFlatButton}" HorizontalAlignment="Left" Content="{DynamicResource ChoiceWindowBtnCancel}"/>
+            <Button Click="BtnCancel_Click" Margin="5" IsCancel="True" x:Name="BtnCancel" HorizontalAlignment="Left" Content="{DynamicResource ChoiceWindowBtnCancel}"/>
             <StackPanel  HorizontalAlignment="Right" Orientation="Horizontal">
-                <Button x:Name="BtnNo" Command="materialDesign:DialogHost.CloseDialogCommand" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource ChoiceWindowBtnNo}">
+                <Button Click="BtnNo_Click" x:Name="BtnNo"  Content="{DynamicResource ChoiceWindowBtnNo}">
                     <Button.CommandParameter>
                         <system:Boolean>False</system:Boolean>
                     </Button.CommandParameter>
                 </Button>
-                <Button IsDefault="True" x:Name="BtnYes" Command="materialDesign:DialogHost.CloseDialogCommand" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource ChoiceWindowBtnYes}">
+                <Button Click="BtnYes_Click"  Margin="5" IsDefault="True" x:Name="BtnYes"  Content="{DynamicResource ChoiceWindowBtnYes}">
                     <Button.CommandParameter>
                         <system:Boolean>True</system:Boolean>
                     </Button.CommandParameter>

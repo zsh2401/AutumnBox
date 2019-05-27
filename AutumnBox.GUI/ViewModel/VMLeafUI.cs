@@ -343,7 +343,7 @@ namespace AutumnBox.GUI.ViewModel
             App.Current.Dispatcher.Invoke(() =>
             {
                 var view = new ChoiceView(message, btnYes, btnNo, btnCancel);
-                //task = View.DialogHost.ShowDialog(view);
+                task = DialogManager.Show(Token, view);
             });
             task.Wait();
             return (task.Result as bool?);
