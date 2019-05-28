@@ -232,6 +232,7 @@
     <Compile Include="Util\UI\Sentences.cs" />
     <Compile Include="Util\UI\TipsWaterfallFlow.cs" />
     <Compile Include="Util\UI\UIHelper.cs" />
+    <Compile Include="ViewModel\VMBottomBar.cs" />
     <Compile Include="ViewModel\VMConnectDevices.cs" />
     <Compile Include="ViewModel\VMContentChoice.cs" />
     <Compile Include="ViewModel\VMCst.cs" />
@@ -832,6 +833,7 @@
     <Resource Include="Resources\Icon\adb.png" />
     <Resource Include="Resources\Drawable\Home\mail.png" />
     <Resource Include="Resources\Drawable\Home\help.png" />
+    <Resource Include="Resources\Drawable\BottomBar\phone.png" />
     <Content Include="Resources\Sound\ok.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

@@ -42,6 +42,15 @@
             <s:String x:Key="MenuOpenExtFloder">打开拓展模块文件夹(_O)</s:String>
                 <s:String x:Key="MenuDlExt">下载拓展模块(_D)</s:String>
     
+      <s:String x:Key="BottomBar.Port">端口</s:String>
+      <s:String x:Key="BottomBar.AdbVersion">ADB版本</s:String>
+    <s:String x:Key="BottomBar.Mode">运行模式</s:String>
+    <s:String x:Key="BottomBar.Mode.RunAsUser">秋之盒目前以[用户]权限运行</s:String>
+     <s:String x:Key="BottomBar.Mode.RunAsAdmin">秋之盒目前以[管理员]权限运行</s:String>
+    <s:String x:Key="BottomBar.Devices.Prev">监测中,已有</s:String>
+    <s:String x:Key="BottomBar.Devices.Suf">台设备连接</s:String>
+     <s:String x:Key="BottomBar.RunningTask">个正在执行的任务</s:String>
+    
     <s:String x:Key="DeviceBarConnectHelp">如何连接设备?</s:String>
     
     
