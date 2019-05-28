@@ -1,0 +1,24 @@
+﻿<controls:BlurWindow
+    xmlns:controls="clr-namespace:HandyControl.Controls;assembly=HandyControl"
+    x:Class="AutumnBox.GUI.View.Windows.AboutWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AutumnBox.GUI.View.Windows"
+        mc:Ignorable="d"
+    Style="{StaticResource WindowBlur}"
+   ResizeMode="NoResize"
+    ShowTitle="True"
+    WindowStartupLocation="CenterOwner"
+    FontFamily="{DynamicResource AutumnBox.Font}"
+        Title="{DynamicResource AppNameWithVersion}" Height="150" Width="300">
+    <Grid>
+        <StackPanel VerticalAlignment="Top" Margin="10,20,10,10" Orientation="Horizontal">
+                <Image Source="/Resources/Drawable/Icon.ico" Height="40"/>
+                <TextBlock HorizontalAlignment="Center" FontSize="35" Text="{DynamicResource AppNameWithVersion}"/>
+            </StackPanel>
+
+        <TextBlock Margin="0,0,0,20" VerticalAlignment="Bottom" HorizontalAlignment="Center" Text="Copyright © 2017 - 2019 zsh2401,All Rights Reserved"/>
+    </Grid>
+</controls:BlurWindow>

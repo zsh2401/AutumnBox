@@ -1,5 +1,6 @@
 ﻿using AutumnBox.GUI.MVVM;
 using AutumnBox.GUI.Util;
+using AutumnBox.GUI.Util.Bus;
 using AutumnBox.GUI.Util.I18N;
 using AutumnBox.GUI.Util.UI;
 using AutumnBox.GUI.View.Controls;
@@ -38,6 +39,10 @@ namespace AutumnBox.GUI.ViewModel
             {
                 InitTitle();
             };
+            AppLoader.Instance.Loaded += (s, e) =>
+            {
+                MainWindowBus.SwitchToMainGrid();
+            };
         }
 
         private void InitTitle()
@@ -49,10 +54,10 @@ namespace AutumnBox.GUI.ViewModel
 #else
             Title = $"{App.Current.Resources["AppName"]}-{Self.Version.ToString(3)}-{App.Current.Resources["VersionTypeBeta"]}";
 #endif
-            if (Self.HaveAdminPermission)
-            {
-                Title += " " + App.Current.Resources["TitleSuffixAdmin"];
-            }
+            //if (Self.HaveAdminPermission)
+            //{
+            //    Title += " " + App.Current.Resources["TitleSuffixAdmin"];
+            //}
         }
     }
 }

@@ -21,7 +21,7 @@
         <ContentControl x:Name="MainGrid">
             <panel:PanelLoading/>
         </ContentControl>
-        <ScrollViewer VerticalScrollBarVisibility="Hidden" VerticalAlignment="Bottom" HorizontalAlignment="Right" Grid.Column="1">
+        <ScrollViewer Margin="0,0,0,30" VerticalScrollBarVisibility="Hidden" VerticalAlignment="Bottom" HorizontalAlignment="Right" Grid.Column="1">
             <StackPanel controls:Growl.Token="main" controls:Growl.GrowlParent="True" Margin="0,10,10,10"/>
         </ScrollViewer>
     </Grid>

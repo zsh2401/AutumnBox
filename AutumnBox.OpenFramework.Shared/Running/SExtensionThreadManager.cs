@@ -14,6 +14,7 @@ namespace AutumnBox.OpenFramework.Running
     {
         private readonly List<IExtensionThread> readys = new List<IExtensionThread>();
         private readonly List<IExtensionThread> runnings = new List<IExtensionThread>();
+
         public IExtensionThread Allocate(IExtensionWrapper wrapper, Type typeOfExtension)
         {
             var thread = new ExtensionThread(this, typeOfExtension, wrapper)

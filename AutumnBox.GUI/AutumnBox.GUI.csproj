@@ -381,6 +381,9 @@
     <Compile Include="View\TipCard.xaml.cs">
       <DependentUpon>TipCard.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Windows\AboutWindow.xaml.cs">
+      <DependentUpon>AboutWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Windows\AdbFailedWindow.xaml.cs">
       <DependentUpon>AdbFailedWindow.xaml</DependentUpon>
     </Compile>
@@ -719,6 +722,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="View\Windows\AboutWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Windows\AdbFailedWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -834,11 +841,13 @@
     <Resource Include="Resources\Drawable\Home\mail.png" />
     <Resource Include="Resources\Drawable\Home\help.png" />
     <Resource Include="Resources\Drawable\BottomBar\phone.png" />
+    <Resource Include="Resources\MenuIcon\guide-book.png" />
     <Content Include="Resources\Sound\ok.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Resources\Drawable\MenuBar\" />
     <Folder Include="Resources\Img\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

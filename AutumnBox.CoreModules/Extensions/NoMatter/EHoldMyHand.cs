@@ -43,6 +43,7 @@ namespace AutumnBox.CoreModules.Extensions.Hidden
                 ui.WriteOutput(ui.DoYN("wwww", "yes", "no"));
                 ui.WriteOutput(ui.DoChoice("www"));
                 ui.WriteOutput(ui.SelectFrom(null,"a","b","c","d"));
+                throw new System.Exception();
                 ui.Finish();
             }
         }

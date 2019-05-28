@@ -11,6 +11,7 @@ namespace AutumnBox.GUI.ViewModel
 {
     class VMMainMenu : ViewModelBase
     {
+        public ICommand OpenAbout { get; }
         public ICommand Exit { get; }
         public ICommand OpenLoggingWindow { get; }
         public ICommand OpenUpdateLogs { get; }
@@ -35,6 +36,7 @@ namespace AutumnBox.GUI.ViewModel
             OpenShell = new MVVMCommand(p => OpenShellMethod(p?.ToString()));
             InstallExtension = new MVVMCommand(p => ExtensionBridge.Start("EInstallExtension"));
             ViewLibs = new MVVMCommand(p => WinM.X("Libs"));
+            OpenAbout = new MVVMCommand(p => WinM.X("About"));
             OpenExtFloder = new MVVMCommand(p => Process.Start(BuildInfo.DEFAULT_EXTENSION_PATH));
         }
         private static void OpenShellMethod(string fileName)

@@ -57,7 +57,12 @@
             </MenuItem>
 
             <MenuItem Header="{DynamicResource MenuHelp}">
-                <MenuItem Header="{DynamicResource MenuGuide}" Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoHelp}" InputGestureText="Ctrl + F1">
+                <MenuItem Header="{DynamicResource MenuGuide}" Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoHelp}" InputGestureText="ALT + H + G">
+                    <MenuItem.Icon>
+                        <Image Source="/Resources/MenuIcon/guide-book.png"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="{DynamicResource MenuOfficialWebsite}" Command="{Binding OpenUrl}" CommandParameter="{DynamicResource UrlOfficialWebsite}">
                     <MenuItem.Icon>
                         <Image Source="/Resources/MenuIcon/icon.png"></Image>
                     </MenuItem.Icon>

@@ -40,6 +40,10 @@ namespace AutumnBox.GUI.Util.Bus
         {
             Growl.Warning(App.Current.Resources[message]?.ToString() ?? message, TOKEN_PANEL_MAIN);
         }
+        public static void Error(string message)
+        {
+            Growl.Error(App.Current.Resources[message]?.ToString() ?? message, TOKEN_PANEL_MAIN);
+        }
         public static void Ask(string message, Func<bool, bool> callback)
         {
             Growl.Ask(message, callback);

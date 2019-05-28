@@ -37,7 +37,7 @@ namespace AutumnBox.GUI.Util.Net
             {
                 if (task.IsFaulted)
                 {
-                    MainWindowBus.Warning("Update.Failed");
+                    MainWindowBus.Error("Update.Failed");
                 }
                 else
                 {

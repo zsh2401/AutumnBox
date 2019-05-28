@@ -2,11 +2,14 @@
 using AutumnBox.GUI.MVVM;
 using AutumnBox.GUI.Util;
 using AutumnBox.GUI.Util.Bus;
+using AutumnBox.OpenFramework.Open;
+using AutumnBox.OpenFramework.Running;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace AutumnBox.GUI.ViewModel
@@ -63,6 +66,8 @@ namespace AutumnBox.GUI.ViewModel
         }
         private int _countOfTaskRunning;
 
+        private readonly IExtensionThreadManager threadManager;
+
         public VMBottomBar()
         {
             Port = Basic.ManagedAdb.Adb.Server.Port;
@@ -72,7 +77,17 @@ namespace AutumnBox.GUI.ViewModel
             };
             _isAdmin = Self.HaveAdminPermission;
             GetAdbVersion();
+            threadManager = (IExtensionThreadManager)AtmbContext.Instance.GetService(ServicesNames.THREAD_MANAGER);
+            Task.Run(() =>
+            {
+                while (true)
+                {
+                    UpdateCountOfTaskRunning();
+                    Thread.Sleep(500);
+                }
+            });
         }
+
         private void GetAdbVersion()
         {
             string versionOutput = new AdbCommand("version").Execute().Output;
@@ -81,6 +96,15 @@ namespace AutumnBox.GUI.ViewModel
             {
                 AdbVersion = match.Result("${name}(${code})");
             }
+        }
+
+        private void UpdateCountOfTaskRunning()
+        {
+            try
+            {
+                CountOfTaskRunning = threadManager.GetRunning().Count();
+            }
+            catch { }
         }
     }
 }

@@ -81,13 +81,12 @@ namespace AutumnBox.GUI.Util
         }
         private void Load()
         {
-            ConfigHelper.Instance.SetSystemVersionInfo(GetSystemVersionInfo());
+
             CheckOtherAutumnBox();
             OnLoading();
 
-            Trace.WriteLine("Loading");
+            InitHandyControl();
             InitLogSystem();
-            logger.Info("wtf");
             InitErrorHandlerSystem();
             InitLanguageSystem();
             //InitThemeSystem();
@@ -98,9 +97,6 @@ namespace AutumnBox.GUI.Util
             InitAutumnBoxOpenFx();
             RunDeviceListener();
             FetchRemoteData();
-            logger.Info("fetch");
-            MainWindowBus.SwitchToMainGrid();
-            logger.Info("wow");
             OnLoaded();
         }
         private SystemVersionInfo GetSystemVersionInfo()
@@ -124,6 +120,10 @@ namespace AutumnBox.GUI.Util
             {
                 Fail();
             }
+        }
+        private void InitHandyControl()
+        {
+            ConfigHelper.Instance.SetSystemVersionInfo(GetSystemVersionInfo());
         }
         private void InitThemeSystem()
         {

@@ -10,7 +10,7 @@
             Background="White">
     <Grid>
         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="120">Autumn Box</TextBlock>
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="120" Text="{DynamicResource AppNameWithVersion}"/>
             <controls:LoadingLine/>
         </StackPanel>
         <TextBlock x:Name="TBSentence" VerticalAlignment="Bottom" HorizontalAlignment="Center" TextWrapping="Wrap" Foreground="Gray" Margin="10"/>
