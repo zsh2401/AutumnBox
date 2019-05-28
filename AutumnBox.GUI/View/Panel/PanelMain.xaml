@@ -18,14 +18,20 @@
         <controls1:MainMenu x:Name="Menu" DockPanel.Dock="Top"/>
         <controls1:DeviceBar DockPanel.Dock="Top"  Margin="10"/>
         <controls1:BottomBar DockPanel.Dock="Bottom"/>
-        <TabControl Background="Transparent" TabStripPlacement="Left">
-            <TabItem Width="120" Background="Transparent" Header="{DynamicResource Home}">
+        <TabControl x:Name="TabControl" SelectedIndex="{Binding TabSelectedIndex}" Background="Transparent" TabStripPlacement="Left">
+            <TabItem TabIndex="0" Width="120" Background="Transparent" Header="{DynamicResource Home}">
                 <local:PanelDefaultInformation/>
             </TabItem>
-            <TabItem Background="Transparent" Header="{DynamicResource Functions}">
-                <controls1:AllExtensionsPanel/>
+            <TabItem  TabIndex="1"  Background="Transparent" Header="{DynamicResource Functions}">
+                <ScrollViewer x:Name="SVFunctions">
+                    <StackPanel>
+                        <local:PanelDeviceDetails/>
+                        <controls1:AllExtensionsPanel/>
+                    </StackPanel>
+                </ScrollViewer>
+             
             </TabItem>
-            <TabItem Background="Transparent" Header="{DynamicResource More}">
+            <TabItem TabIndex="2" Background="Transparent" Header="{DynamicResource More}">
                 <ScrollViewer HorizontalScrollBarVisibility="Disabled">
                     <local:PanelMore/>
                 </ScrollViewer>

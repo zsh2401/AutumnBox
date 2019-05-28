@@ -48,12 +48,7 @@ namespace AutumnBox.GUI.ViewModel
 
         public VMDeviceSelector()
         {
-            ConnectedDevicesListener.Instance.DevicesChanged += (s, e) =>
-            {
-                Devices = e.Devices;
-                if (Devices.Count() >= 1)
-                    SelectedDevice = Devices.First();
-            };
+
             ConnectDevice = new FlexiableCommand((p) =>
             {
                 ExtensionBridge.Start("ENetDeviceConnecter");
@@ -66,6 +61,12 @@ namespace AutumnBox.GUI.ViewModel
             {
                 ExtensionBridge.Start("EOpenUsbDeviceNetDebugging");
             });
+            ConnectedDevicesListener.Instance.DevicesChanged += (s, e) =>
+            {
+                Devices = e.Devices;
+                if (Devices.Count() >= 1)
+                    SelectedDevice = Devices.First();
+            };
             RefreshCommandState();
         }
 
