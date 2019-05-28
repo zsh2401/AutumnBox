@@ -6,8 +6,8 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.Dpm
     [ExtIcon("Icons.taichi.png")]
     class ETaiChi : DeviceOwnerSetter
     {
-        protected override string ComponentName => "me.weishu.exp";
+        protected override string ComponentName => "me.weishu.exp/.DeviceAdmin";
 
-        protected override string PackageName => "me.weishu.exp/.DeviceAdmin";
+        protected override string PackageName => "me.weishu.exp";
     }
 }

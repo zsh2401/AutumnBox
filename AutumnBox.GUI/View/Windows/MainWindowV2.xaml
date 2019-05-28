@@ -13,7 +13,7 @@
         ShowInTaskbar="True"
     x:Name="thisWindow"
         Icon="/Resources/Drawable/icon.png"
-        Title="{Binding Title}" MinHeight="625" MinWidth="950" Height="625" Width="950">
+        Title="{Binding Title}" MinHeight="625" MinWidth="930" Height="625" Width="915">
     <Window.DataContext>
         <viewmodel:VMMainWindowV2/>
     </Window.DataContext>
