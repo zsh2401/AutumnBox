@@ -179,6 +179,7 @@
     <Compile Include="Util\Bus\ConnectedDevicesListener.cs" />
     <Compile Include="Util\Bus\DeviceSelectionObserver.cs" />
     <Compile Include="Util\Bus\DialogManager.cs" />
+    <Compile Include="Util\Bus\ExtensionBridge.cs" />
     <Compile Include="Util\Bus\ExtensionViewRefresher.cs" />
     <Compile Include="Util\Bus\MainWindowBus.cs" />
     <Compile Include="Util\Bus\OpenFxEventBus.cs" />

@@ -3,6 +3,7 @@ using AutumnBox.GUI.Model;
 using AutumnBox.GUI.MVVM;
 using AutumnBox.GUI.Properties;
 using AutumnBox.GUI.Util.Bus;
+using AutumnBox.GUI.Util.I18N;
 using AutumnBox.GUI.View.Controls;
 using AutumnBox.Logging;
 using AutumnBox.OpenFramework.Extension;
@@ -65,19 +66,33 @@ namespace AutumnBox.GUI.ViewModel
         {
             InitCommand();
             RaisePropertyChangedOnDispatcher = true;
-            OpenFxEventBus.AfterOpenFxLoaded(Load);
+            OpenFxEventBus.AfterOpenFxLoaded(() =>
+            {
+                Load();
+                MainWindowBus.ExtensionListRefreshing += (s, e) => Load();
+                LanguageManager.Instance.LanguageChanged += (s, e) => Load();
+                DeviceSelectionObserver.Instance.SelectedDevice += (s, e) => Order();
+                DeviceSelectionObserver.Instance.SelectedNoDevice += (s, e) => Order();
+            });
         }
 
         private void Load()
         {
-         
             Docks = OpenFx.LibsManager.Wrappers()
-                    .Region(Util.I18N.LanguageManager.Instance.Current.LanCode)
+                    .Region(LanguageManager.Instance.Current.LanCode)
                     .Hide()
                     .Dev(Settings.Default.DeveloperMode)
                     .ToDocks();
+            Order();
         }
 
+        private void Order()
+        {
+            Docks = from dock in Docks
+                    orderby dock.Wrapper.Info[ExtensionInformationKeys.PRIORITY] descending
+                    orderby dock.Usable descending
+                    select dock;
+        }
         private void InitCommand()
         {
             ClickItem = new FlexiableCommand((p) =>
@@ -95,6 +110,7 @@ namespace AutumnBox.GUI.ViewModel
                 }
             });
         }
+
         private void StartExtension(IExtensionWrapper extensionWrapper)
         {
             if (extensionWrapper == null) return;

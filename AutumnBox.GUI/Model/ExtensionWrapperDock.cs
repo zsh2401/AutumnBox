@@ -61,6 +61,16 @@ namespace AutumnBox.GUI.Model
         }
         private FlexiableCommand _execute;
 
+        public bool Usable
+        {
+            get
+            {
+                bool isNM = Info.RequiredDeviceStates == AutumnBoxExtension.NoMatter;
+                bool hasFlag = DeviceSelectionObserver.Instance?.CurrentDevice?.State.HasFlag(Info.RequiredDeviceStates) == true;
+                return isNM || hasFlag;
+                    
+            }
+        }
         public ExtensionWrapperDock(IExtensionWrapper wrapper)
         {
             this.Wrapper = wrapper;

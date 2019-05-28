@@ -16,6 +16,11 @@ namespace AutumnBox.GUI.Util.Bus
                 return (MainWindowV2)App.Current.MainWindow;
             }
         }
+        public static event EventHandler ExtensionListRefreshing;
+        public static void ReloadExtensionList()
+        {
+            ExtensionListRefreshing?.Invoke(null, new EventArgs());
+        }
         public static void SwitchToMainGrid()
         {
             App.Current.Dispatcher.Invoke(() =>

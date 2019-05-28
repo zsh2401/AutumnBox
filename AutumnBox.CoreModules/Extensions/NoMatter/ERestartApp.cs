@@ -10,6 +10,7 @@ namespace AutumnBox.CoreModules.Extensions.NoMatter
     [ExtAuth("zsh2401","zh-cn:秋之盒官方")]
     [ExtMinApi(8)]
     [ExtTargetApi(8)]
+    [ExtHide]
     [ContextPermission(CtxPer.High)]
     [ExtIcon("Icons.restart.png")]
     [ExtRequiredDeviceStates(LeafConstants.NoMatter)]

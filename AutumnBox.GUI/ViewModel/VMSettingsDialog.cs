@@ -52,7 +52,7 @@ namespace AutumnBox.GUI.ViewModel
             set
             {
                 Settings.Default.DeveloperMode = value;
-                ExtensionViewRefresher.Instance.Refresh();
+                MainWindowBus.ReloadExtensionList();
                 RaisePropertyChanged();
             }
         }

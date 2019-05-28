@@ -18,6 +18,7 @@ namespace AutumnBox.CoreModules.Extensions.NoMatter
     [ExtIcon("Icons.add.png")]
     [ExtMinApi(8)]
     [ExtTargetApi(8)]
+    [ExtHide]
     [ContextPermission(CtxPer.High)]
     [ExtRequiredDeviceStates(LeafConstants.NoMatter)]
     class EInstallExtension : LeafExtensionBase

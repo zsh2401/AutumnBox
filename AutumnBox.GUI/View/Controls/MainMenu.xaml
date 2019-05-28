@@ -13,11 +13,7 @@
     <Grid>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="{DynamicResource MenuFile}">
-                <MenuItem Command="{Binding OpenLoggingWindow}" Header="{DynamicResource MenuDebug}">
-                    <MenuItem.Icon>
-                        <Image Source="/Resources/MenuIcon/debug.png"></Image>
-                    </MenuItem.Icon>
-                </MenuItem>
+                <MenuItem Header="{DynamicResource MenuRestart}" Command="{Binding Restart}"/>
                 <MenuItem Command="{Binding Exit}" Header="{DynamicResource MenuExit}" InputGestureText="Alt + F4">
                     <MenuItem.Icon>
                         <Image Source="/Resources/MenuIcon/exit.png"></Image>
@@ -43,6 +39,23 @@
                     </MenuItem.Icon>
                 </MenuItem>
             </MenuItem>
+
+            <MenuItem Header="{DynamicResource MenuExtension}">
+                <MenuItem Header="{DynamicResource MenuExtensionHelp}" Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoHowInstallExt}"/>
+                <MenuItem InputGestureText="ALT + X + D"  Header="{DynamicResource MenuDlExt}" Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoDownloadExtensions}"/>
+                <MenuItem InputGestureText="ALT + X + I" Header="{DynamicResource MenuInstallExtension}" Command="{Binding InstallExtension}"/>
+                <MenuItem InputGestureText="ALT +X + O" Header="{DynamicResource MenuOpenExtFloder}" Command="{Binding OpenExtFloder}"/>
+            </MenuItem>
+            <MenuItem Header="{DynamicResource MenuDebug}">
+                <MenuItem Command="{Binding OpenLoggingWindow}" Header="{DynamicResource MenuLoggingWindow}">
+                    <MenuItem.Icon>
+                        <Image Source="/Resources/MenuIcon/debug.png"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="{DynamicResource MenuDevDocs}" Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoExtensionDevelopDoc}"/>
+                <MenuItem Header="{DynamicResource MenuLibs}" Command="{Binding ViewLibs}"/>
+            </MenuItem>
+
             <MenuItem Header="{DynamicResource MenuHelp}">
                 <MenuItem Header="{DynamicResource MenuGuide}" Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoHelp}" InputGestureText="Ctrl + F1">
                     <MenuItem.Icon>
@@ -54,6 +67,7 @@
                 <MenuItem Header="{DynamicResource MenuOpenSource}" Command="{Binding OpenOSInformation}"/>
                 <MenuItem Header="{DynamicResource MenuAbout}" Command="{Binding OpenAbout}"/>
             </MenuItem>
+
         </Menu>
     </Grid>
 </UserControl>
