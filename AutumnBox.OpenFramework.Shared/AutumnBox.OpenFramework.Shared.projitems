@@ -123,12 +123,12 @@
     <Compile Include="$(MSBuildThisFileDirectory)Service\ServiceName.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Service\ServicesManagerImpl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Service\ServiceState.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)SliceExtension\ISliceExtension.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)SliceExtension\SliceExtensionBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Util\Md5.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Util\OSInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Util\Sound.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Util\UnstableAPI.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)LeafExtension\View\DialogClosedEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)LeafExtension\View\ILeafDialog.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Wrapper\ClassExtensionInfoGetter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Wrapper\ClassExtensionScanner.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Wrapper\ClassExtensionWrapper.cs" />
@@ -138,5 +138,6 @@
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)LeafExtension\Attributes\" />
     <Folder Include="$(MSBuildThisFileDirectory)LeafExtension\Fast\" />
+    <Folder Include="$(MSBuildThisFileDirectory)LeafExtension\View\" />
   </ItemGroup>
 </Project>

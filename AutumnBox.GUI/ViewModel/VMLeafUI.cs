@@ -4,9 +4,12 @@ using AutumnBox.GUI.Util.UI;
 using AutumnBox.GUI.View.LeafContent;
 using AutumnBox.GUI.View.Windows;
 using AutumnBox.OpenFramework.LeafExtension.Kit;
+using AutumnBox.OpenFramework.LeafExtension.View;
+using HandyControl.Controls;
 using MaterialDesignThemes.Wpf;
 using System;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -360,7 +363,6 @@ namespace AutumnBox.GUI.ViewModel
             {
                 var view = new SingleSelectView(hint, options);
                 task = DialogManager.Show(Token, view);
-                //task = View.DialogHost.ShowDialog(view);
             });
             task.Wait();
             return task.Result;
@@ -384,14 +386,23 @@ namespace AutumnBox.GUI.ViewModel
             });
         }
 
-        public Task<object> _ShowDialog(object content)
+        public Task<object> ShowLeafDialog(ILeafDialog dialog)
         {
-            Task<object> dialogTask = null;
-            RunOnUIThread(() =>
+            var hDialog = Dialog.Show(dialog.ViewContent, Token);
+            return Task.Run(() =>
             {
-                //dialogTask = View.DialogHost.ShowDialog(content);
+                object result = null;
+                dialog.Closed += (s, e) =>
+                {
+                    App.Current.Dispatcher.Invoke(() => { hDialog.Close(); });
+                    result = e.Result;
+                };
+                while (!App.Current.Dispatcher.Invoke(() => hDialog.IsClosed))
+                {
+                    Thread.Sleep(200);
+                }
+                return result;
             });
-            return dialogTask;
         }
 
         public bool DoYN(string message, string btnYes = null, string btnNo = null)
@@ -409,6 +420,18 @@ namespace AutumnBox.GUI.ViewModel
             });
             task.Wait();
             return (bool)task.Result;
+        }
+
+        public string InputString(string hint = null,string _default=null)
+        {
+            Task<object> task = null;
+            App.Current.Dispatcher.Invoke(() =>
+            {
+                var view = new InputView(hint, _default);
+                task = DialogManager.Show(Token, view);
+            });
+            task.Wait();
+            return task.Result as string;
         }
     }
 }

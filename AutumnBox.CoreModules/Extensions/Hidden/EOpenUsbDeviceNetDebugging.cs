@@ -14,6 +14,8 @@ namespace AutumnBox.CoreModules.Extensions.Hidden
     [ExtHide]
     [ExtName("Enable net-debugging", "zh-cn:开启设备网络调试")]
     [ExtText("Fail", "Failed", "zh-cn:开启或连接失败!")]
+    [ExtText("Hint", "Input a port", "zh-cn:输入一个端口!")]
+    [ExtText("InputError", "ERROR INPUT,PLEASE CHECK", "zh-cn:输入了不正确的端口,请重新输入!")]
     class EOpenUsbDeviceNetDebugging : LeafExtensionBase
     {
         [LMain]
@@ -23,29 +25,22 @@ namespace AutumnBox.CoreModules.Extensions.Hidden
             {
                 ui.Title = this.GetName();
                 ui.Show();
-                if (device is UsbDevice usbDevice)
+                var dev = (UsbDevice)device;
+                ushort? port = null;
+                do
                 {
-                    Task<object> dialogTask = null;
-                    dialogTask = ui.ShowDialogById("portInputView");
-                    dialogTask.Wait();
-                    if (ushort.TryParse(dialogTask.Result?.ToString(), out ushort result))
+                    var input = ui.InputString(texts["Hint"], "5555");
+                    if (input == null) return;
+                    if (ushort.TryParse(input, out ushort _port))
                     {
-                        try
-                        {
-                            usbDevice.OpenNetDebugging(result, true);
-                        }
-                        catch (AdbCommandFailedException e)
-                        {
-                            ui.WriteOutput(e.Message);
-                            ui.ShowMessage(texts["Failed"]);
-                        }
+                        port = _port;
                     }
-                }
-                else
-                {
-                    ui.ShowMessage("ERROR!");
-                }
-                ui.Shutdown();
+                    else
+                    {
+                        ui.EWarn(texts["InputError"]);
+                    }
+                } while (port == null);
+                dev.OpenNetDebugging((ushort)port, true);
             }
         }
     }

@@ -12,6 +12,11 @@ namespace AutumnBox.GUI.ViewModel
 {
     class VMDeviceSelector : ViewModelBase
     {
+
+        public FlexiableCommand ConnectDevice { get; set; }
+        public FlexiableCommand DisconnectDevice { get; set; }
+        public FlexiableCommand OpenDeviceNetDebugging { get; set; }
+
         public IEnumerable<IDevice> Devices
         {
             get
@@ -49,14 +54,34 @@ namespace AutumnBox.GUI.ViewModel
                 if (Devices.Count() >= 1)
                     SelectedDevice = Devices.First();
             };
-
+            ConnectDevice = new FlexiableCommand((p) =>
+            {
+                ExtensionBridge.Start("ENetDeviceConnecter");
+            });
+            DisconnectDevice = new FlexiableCommand((p) =>
+            {
+                ExtensionBridge.Start("ENetDeviceDisconnecter");
+            });
+            OpenDeviceNetDebugging = new FlexiableCommand((p) =>
+            {
+                ExtensionBridge.Start("EOpenUsbDeviceNetDebugging");
+            });
+            RefreshCommandState();
         }
+
         private void SelectionChanged()
         {
             if (SelectedDevice != null)
                 DeviceSelectionObserver.Instance.RaiseSelectDevice(SelectedDevice);
             else
                 DeviceSelectionObserver.Instance.RaiseSelectNoDevice();
+            RefreshCommandState();
+        }
+
+        private void RefreshCommandState()
+        {
+            DisconnectDevice.CanExecuteProp = SelectedDevice is NetDevice;
+            OpenDeviceNetDebugging.CanExecuteProp = SelectedDevice is UsbDevice;
         }
     }
 }

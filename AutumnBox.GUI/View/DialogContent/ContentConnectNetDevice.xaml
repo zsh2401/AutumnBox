@@ -6,19 +6,16 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              FontFamily="{DynamicResource AutumnBox.Font}"
               xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             mc:Ignorable="d" Height="175.953" Width="172.53">
+    xmlns:controls="clr-namespace:HandyControl.Controls;assembly=HandyControl"
+    Background="White"
+    mc:Ignorable="d" Height="175.953" Width="172.53">
     <StackPanel Orientation="Vertical" Margin="10">
-        <TextBox x:Name="TBIP" MaxLength="16" materialDesign:HintAssist.Hint="{DynamicResource ContentConnectNetDeviceIP}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="192.168." />
-        <TextBox x:Name="TBPort" MaxLength="5" materialDesign:HintAssist.Hint="{DynamicResource ContentConnectNetDevicePort}" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  Text="5555"/>
+        <controls:TextBox x:Name="TBIP" MaxLength="16" Margin="5" controls:InfoElement.Placeholder="{DynamicResource ContentConnectNetDeviceIP}" Text="192.168." />
+        <controls:TextBox x:Name="TBPort" MaxLength="5" Margin="5" controls:InfoElement.Placeholder="{DynamicResource ContentConnectNetDevicePort}"  Text="5555"/>
 
-        <Button Margin="5" Command="materialDesign:DialogHost.CloseDialogCommand" Style="{DynamicResource MaterialDesignRaisedButton}" Content="{DynamicResource ContentConnectNetDeviceBtnConnect}" IsDefault="True">
-            <Button.CommandParameter>
-                <MultiBinding Converter="{StaticResource EndPointConverter}">
-                    <Binding Path="Text" ElementName="TBIP"/>
-                    <Binding Path="Text" ElementName="TBPort"/>
-                </MultiBinding>
-            </Button.CommandParameter>
-        </Button>
-        <Button IsCancel="True" Margin="5" Command="materialDesign:DialogHost.CloseDialogCommand" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource ContentConnectNetDeviceBtnCancel}" />
+        <StackPanel>
+            <Button Click="Button_Click" Margin="5"  Content="{DynamicResource ContentConnectNetDeviceBtnConnect}" IsDefault="True"/>
+            <Button Click="Button_Click_1" IsCancel="True" Margin="5" Content="{DynamicResource ContentConnectNetDeviceBtnCancel}" />
+        </StackPanel>
     </StackPanel>
 </UserControl>

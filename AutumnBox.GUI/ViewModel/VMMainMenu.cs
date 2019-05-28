@@ -27,7 +27,7 @@ namespace AutumnBox.GUI.ViewModel
             Restart = new MVVMCommand(p => ExtensionBridge.Start("ERestartApp"));
             Exit = new MVVMCommand(p => { App.Current.Shutdown(0); });
             ViewLibs = new MVVMCommand(p => WinM.X("Libs"));
-            OpenLoggingWindow = new MVVMCommand(p => WinM.X("Log"));
+            OpenLoggingWindow = new MVVMCommand(p => WinM.D("Log"));
             OpenUpdateLogs = new MVVMCommand(p => WinM.X("UpdateLogs"));
             OpenSettings = new MVVMCommand(p => WinM.X("Settings"));
             UpdateCheck = new MVVMCommand(P => Updater.Do());

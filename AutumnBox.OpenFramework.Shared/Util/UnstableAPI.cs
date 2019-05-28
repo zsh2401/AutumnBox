@@ -1,6 +1,6 @@
 ﻿using AutumnBox.OpenFramework.LeafExtension.Kit;
+using AutumnBox.OpenFramework.LeafExtension.View;
 using AutumnBox.OpenFramework.Management;
-using System;
 using System.Threading.Tasks;
 
 namespace AutumnBox.OpenFramework.Util
@@ -10,23 +10,6 @@ namespace AutumnBox.OpenFramework.Util
     /// </summary>
     public static class UnstableAPI
     {
-        /// <summary>
-        /// 在LeafUI显示对话
-        /// </summary>
-        /// <param name="ui">LeafUI</param>
-        /// <param name="content">内容,推荐为一个View</param>
-        /// <returns>对话任务</returns>
-        public static Task<object> ShowDialog(this ILeafUI ui, object content)
-        {
-            Task<object> dialogTask = null;
-            ui.RunOnUIThread(() =>
-            {
-#if!SDK
-                dialogTask = ui._ShowDialog(content);
-#endif
-            });
-            return dialogTask;
-        }
         /// <summary>
         /// 请在UI线程操作,根据ID获取秋之盒View
         /// </summary>
@@ -48,7 +31,7 @@ namespace AutumnBox.OpenFramework.Util
             ui.RunOnUIThread(() =>
             {
 #if !SDK
-                dialogTask = ui.ShowDialog(GetViewById(viewId));
+                dialogTask = ui.ShowLeafDialog((ILeafDialog)GetViewById(viewId));
 #endif
             });
             return dialogTask;

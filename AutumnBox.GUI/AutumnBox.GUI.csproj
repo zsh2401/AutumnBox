@@ -314,6 +314,9 @@
     <Compile Include="View\LeafContent\ChoiceView.xaml.cs">
       <DependentUpon>ChoiceView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\LeafContent\InputView.xaml.cs">
+      <DependentUpon>InputView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\LeafContent\MessageView.xaml.cs">
       <DependentUpon>MessageView.xaml</DependentUpon>
     </Compile>
@@ -626,6 +629,10 @@
     <Page Include="View\LeafContent\ChoiceView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\LeafContent\InputView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\LeafContent\MessageView.xaml">
       <Generator>MSBuild:Compile</Generator>

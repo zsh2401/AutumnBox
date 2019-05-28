@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutumnBox.OpenFramework.LeafExtension.View;
+using System;
 using System.Threading.Tasks;
 
 namespace AutumnBox.OpenFramework.LeafExtension.Kit
@@ -8,6 +9,11 @@ namespace AutumnBox.OpenFramework.LeafExtension.Kit
     /// </summary>
     public interface ILeafUI : IDisposable
     {
+        /// <summary>
+        /// 显示Leaf窗口内的交互Dialog
+        /// </summary>
+        /// <param name="dialog"></param>
+        Task<object> ShowLeafDialog(ILeafDialog dialog);
         /// <summary>
         /// 图标
         /// </summary>
@@ -87,11 +93,20 @@ namespace AutumnBox.OpenFramework.LeafExtension.Kit
 
         #region Leaf交互API
         /// <summary>
+        /// 让用户输入一些字符串
+        /// </summary>
+        /// <param name="hint"></param>
+        /// <param name="_default"></param>
+        /// <returns></returns>
+        string InputString(string hint = null,string _default=null);
+
+        /// <summary>
         /// 显示一条信息,并阻塞至用户点击确认
         /// </summary>
         /// <exception cref="ArgumentNullException"></exception>
         /// <returns></returns>
         void ShowMessage(string message);
+
         /// <summary>
         /// 让用户对一条信息进行确认,可自定义按钮
         /// </summary>
@@ -100,6 +115,7 @@ namespace AutumnBox.OpenFramework.LeafExtension.Kit
         /// <param name="btnNo"></param>
         /// <returns></returns>
         bool DoYN(string message, string btnYes = null, string btnNo = null);
+
         /// <summary>
         /// 让用户进行选择
         /// </summary>
@@ -128,14 +144,6 @@ namespace AutumnBox.OpenFramework.LeafExtension.Kit
         /// <returns>用户选择的所有选项,如果用户取消,则这个数组为null</returns>
         object[] Select(object[] option, int maxSelect = 2);
 
-#if!SDK
-        /// <summary>
-        /// 显示Dialog
-        /// </summary>
-        /// <param name="content"></param>
-        /// <returns></returns>
-        Task<object> _ShowDialog(object content);
-#endif
         #endregion
     }
 }

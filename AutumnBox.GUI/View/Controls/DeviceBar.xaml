@@ -10,9 +10,14 @@
     <UserControl.DataContext>
         <viewmodel:VMDeviceSelector/>
     </UserControl.DataContext>
-    <StackPanel Orientation="Horizontal">
-        <Image Source="/Resources/Drawable/DeviceBar/phone.png" Height="20" Margin="10,0,10,0"/>
-        <ComboBox Width="200" SelectedItem="{Binding SelectedDevice}" ItemsSource="{Binding Devices}"/>
-        <Button Margin="10,0,0,0" Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoConnectDevice}" Content="{DynamicResource DeviceBarConnectHelp}"/>
+    <StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Image Source="/Resources/Drawable/DeviceBar/phone.png" Height="20" Margin="10,0,10,0"/>
+            <ComboBox Width="200" SelectedItem="{Binding SelectedDevice}" ItemsSource="{Binding Devices}" DisplayMemberPath="SerialNumber"/>
+            <Button Margin="10,0,0,0" Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoConnectDevice}" Content="{DynamicResource DeviceBarConnectHelp}"/>
+            <Button Margin="10,0,0,0" Content="{DynamicResource PanelDevicesConnectTo}"  Command="{Binding ConnectDevice}" />
+            <Button Margin="10,0,0,0" Content="{DynamicResource PanelDevicesEnableCurrent}" Command="{Binding OpenDeviceNetDebugging}" />
+            <Button Margin="10,0,0,0" Content="{DynamicResource PanelDevicesDisconnect}" Command="{Binding DisconnectDevice}"/>
+        </StackPanel>
     </StackPanel>
 </UserControl>

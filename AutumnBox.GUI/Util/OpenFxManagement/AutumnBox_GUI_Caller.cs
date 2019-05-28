@@ -8,15 +8,11 @@ using AutumnBox.GUI.View.Windows;
 using AutumnBox.OpenFramework.Management;
 using AutumnBox.GUI.Util.Effect;
 using AutumnBox.GUI.Properties;
-using AutumnBox.GUI.Util.Debugging;
-using AutumnBox.OpenFramework.Extension;
 using System.Reflection;
-using System.Security.Policy;
 using AutumnBox.Basic.Device;
 using AutumnBox.GUI.Util.Bus;
 using AutumnBox.GUI.View.DialogContent;
 using AutumnBox.OpenFramework.LeafExtension.Kit;
-using AutumnBox.Logging;
 
 namespace AutumnBox.GUI.Util.OpenFxManagement
 {

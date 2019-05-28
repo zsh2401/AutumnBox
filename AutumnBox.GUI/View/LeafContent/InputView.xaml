@@ -1,0 +1,18 @@
+﻿<UserControl x:Class="AutumnBox.GUI.View.LeafContent.InputView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AutumnBox.GUI.View.LeafContent"
+             mc:Ignorable="d" 
+             Background="White"
+             Height="140" Width="300">
+    <StackPanel>
+        <TextBlock Margin="10" x:Name="TBHint"/>
+        <TextBox x:Name="TBInput" Margin="10"/>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Click="Button_Click_1" Content="X" Margin="10"  HorizontalAlignment="Left"/>
+            <Button Click="Button_Click" Content="OK" HorizontalAlignment="Right"/>
+        </StackPanel>
+    </StackPanel>
+</UserControl>
