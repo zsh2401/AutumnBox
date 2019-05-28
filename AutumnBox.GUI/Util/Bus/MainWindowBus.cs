@@ -25,8 +25,7 @@ namespace AutumnBox.GUI.Util.Bus
         {
             App.Current.Dispatcher.Invoke(() =>
             {
-                MainWindow.MainGrid.Children.Clear();
-                MainWindow.MainGrid.Children.Add(new PanelMain());
+                MainWindow.MainGrid.Content = new PanelMain();
             });
         }
         public static void Info(string message)
