@@ -44,7 +44,7 @@
                 <MenuItem Header="{DynamicResource MenuExtensionHelp}" Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoHowInstallExt}"/>
                 <MenuItem InputGestureText="ALT + X + D"  Header="{DynamicResource MenuDlExt}" Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoDownloadExtensions}"/>
                 <MenuItem InputGestureText="ALT + X + I" Header="{DynamicResource MenuInstallExtension}" Command="{Binding InstallExtension}"/>
-                <MenuItem InputGestureText="ALT +X + O" Header="{DynamicResource MenuOpenExtFloder}" Command="{Binding OpenExtFloder}"/>
+                <MenuItem InputGestureText="ALT + X + O" Header="{DynamicResource MenuOpenExtFloder}" Command="{Binding OpenExtFloder}"/>
             </MenuItem>
             <MenuItem Header="{DynamicResource MenuDebug}">
                 <MenuItem Command="{Binding OpenLoggingWindow}" Header="{DynamicResource MenuLoggingWindow}">

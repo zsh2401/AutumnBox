@@ -13,5 +13,6 @@
             <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="120">Autumn Box</TextBlock>
             <controls:LoadingLine/>
         </StackPanel>
+        <TextBlock x:Name="TBSentence" VerticalAlignment="Bottom" HorizontalAlignment="Center" TextWrapping="Wrap" Foreground="Gray" Margin="10"/>
     </Grid>
 </UserControl>
