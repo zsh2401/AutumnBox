@@ -17,9 +17,9 @@
         <StackPanel Orientation="Vertical">
                 <TextBlock Foreground="Red" FontSize="22" Text="{DynamicResource AdbFailedWindowTitle}" />
                 <TextBlock Margin="0,5,0,0" FontSize="15" Text="{DynamicResource AdbFailedWindowAdvice}" />
-                <Button Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoAdbFail}" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource AdbFailedWindowGuide}"/>
+                <Button Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoAdbFail}"  Content="{DynamicResource AdbFailedWindowGuide}"/>
                 <StackPanel Orientation="Horizontal">
-                    <Button Click="Button_Click" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource AdbFailedWindowBtnCopy}"/>
+                    <Button Click="Button_Click" Content="{DynamicResource AdbFailedWindowBtnCopy}"/>
                     <TextBlock VerticalAlignment="Center" FontSize="15" Text="{DynamicResource AdbFailedWindowCopyNotice}" />
                 </StackPanel>
                 <TextBox Height="140" TextWrapping="Wrap" Margin="5" IsReadOnly="True"  x:Name="tbOutput"/>

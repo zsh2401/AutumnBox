@@ -7,6 +7,7 @@
         xmlns:viewmodel="clr-namespace:AutumnBox.GUI.ViewModel"
         mc:Ignorable="d"
         FontFamily="Microsoft YaHei UI"
+        Background="Black"
         WindowStartupLocation="CenterScreen" MinHeight="525" MinWidth="800"
         Title="{Binding Title}">
     <Window.DataContext>
@@ -15,10 +16,10 @@
     <Grid>
         <ScrollViewer x:Name="SViewer" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Visible">
             <Grid>
-                <ListBox PreviewMouseWheel="LB_PreviewMouseWheel" SelectionMode="Extended"  Foreground="#F1EAE3" x:Name="LB" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Background="Black" ItemsSource="{Binding Logs}">
+                <ListBox Background="Transparent" PreviewMouseWheel="LB_PreviewMouseWheel" SelectionMode="Extended"  Foreground="#F1EAE3" x:Name="LB" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding Logs}">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <Grid Margin="0">
+                            <Grid Margin="0" Background="Transparent">
                                 <DockPanel>
                                     <StackPanel  Orientation="Horizontal" DockPanel.Dock="Left">
                                         <TextBlock Text="["/>

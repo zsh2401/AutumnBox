@@ -2,15 +2,6 @@
 using AutumnBox.GUI.Util;
 using AutumnBox.GUI.Util.Bus;
 using AutumnBox.GUI.Util.I18N;
-using AutumnBox.GUI.Util.UI;
-using AutumnBox.GUI.View.Controls;
-using AutumnBox.GUI.View.Slices;
-using AutumnBox.OpenFramework.Fast;
-using AutumnBox.OpenFramework.Management;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using SliceController = AutumnBox.GUI.Model.SliceController;
 
 namespace AutumnBox.GUI.ViewModel
 {

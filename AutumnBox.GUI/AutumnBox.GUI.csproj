@@ -359,21 +359,6 @@
     <Compile Include="View\Panel\PanelTips.xaml.cs">
       <DependentUpon>PanelTips.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Slices\Home.xaml.cs">
-      <DependentUpon>Home.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Slices\More.xaml.cs">
-      <DependentUpon>More.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Slices\OpenSourceInformation.xaml.cs">
-      <DependentUpon>OpenSourceInformation.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Slices\Settings.xaml.cs">
-      <DependentUpon>Settings.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Slices\UpdateLog.xaml.cs">
-      <DependentUpon>UpdateLog.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\TipCard.xaml.cs">
       <DependentUpon>TipCard.xaml</DependentUpon>
     </Compile>
@@ -407,9 +392,6 @@
     <Compile Include="View\Windows\LogWindow.xaml.cs">
       <DependentUpon>LogWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Windows\MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\Windows\MainWindowV2.xaml.cs">
       <DependentUpon>MainWindowV2.xaml</DependentUpon>
     </Compile>
@@ -425,14 +407,8 @@
     <Compile Include="View\Windows\SettingsWindow.xaml.cs">
       <DependentUpon>SettingsWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Windows\StartWindow.xaml.cs">
-      <DependentUpon>StartWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\Windows\UpdateLogsWindow.xaml.cs">
       <DependentUpon>UpdateLogsWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Windows\UpdateNoticeWindow.xaml.cs">
-      <DependentUpon>UpdateNoticeWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Windows\YNWindow.xaml.cs">
       <DependentUpon>YNWindow.xaml</DependentUpon>
@@ -694,26 +670,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\Slices\Home.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\Slices\More.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\Slices\OpenSourceInformation.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\Slices\Settings.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\Slices\UpdateLog.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="View\TipCard.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -758,10 +714,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\Windows\MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="View\Windows\MainWindowV2.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -782,17 +734,9 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Windows\StartWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="View\Windows\UpdateLogsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Windows\UpdateNoticeWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="View\Windows\YNWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

@@ -161,7 +161,7 @@ namespace AutumnBox.GUI.Util
                 Task<object> dialogTask = null;
                 App.Current.Dispatcher.Invoke(() =>
                 {
-                    dialogTask = (App.Current.MainWindow as MainWindow).DialogHost.ShowDialog(new ContentGuide());
+                    //dialogTask = (App.Current.MainWindow as MainWindow).DialogHost.ShowDialog(new ContentGuide());
                 });
                 dialogTask.Wait();
                 Settings.Default.GuidePassed = ((dialogTask.Result as bool?) == true);

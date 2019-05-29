@@ -19,7 +19,7 @@
         <ItemsControl ItemsSource="{Binding Libs}">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Button Width="300" Command="{Binding DataContext.ShowInformation,ElementName=thisCtrl}" Margin="20">
+                    <Button Width="300" Command="{Binding ShowInformation,ElementName=mContext}" CommandParameter="{Binding Lib}" Margin="20">
                         <Button.ToolTip>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="{DynamicResource LibsWindowLoadedWrapper}"/>

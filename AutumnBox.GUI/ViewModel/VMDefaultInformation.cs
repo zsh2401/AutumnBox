@@ -26,50 +26,8 @@ namespace AutumnBox.GUI.ViewModel
 {
     class VMDefaultInformation : ViewModelBase
     {
-        public FlexiableCommand Donate
-        {
-            get
-            {
-                return _donate;
-            }
-            set
-            {
-                _donate = value;
-                RaisePropertyChanged();
-            }
-        }
-        private FlexiableCommand _donate;
-
-        public ICommand ViewOpenSource
-        {
-            get
-            {
-                return _os;
-            }
-            set
-            {
-                _os = value;
-                RaisePropertyChanged();
-            }
-        }
-        private ICommand _os;
-
-        public ICommand ViewUpdateLogs { get; set; }
-
         public VMDefaultInformation()
         {
-            Donate = new FlexiableCommand(() =>
-            {
-                (App.Current.MainWindow as MainWindow).DialogHost.ShowDialog(new ContentDonate());
-            });
-            ViewOpenSource = new FlexiableCommand(() =>
-            {
-                (App.Current.MainWindow as MainWindow).DialogHost.ShowDialog(new ContentOpenSource());
-            });
-            ViewUpdateLogs = new MVVMCommand(p =>
-            {
-                (App.Current.MainWindow as MainWindow).DialogHost.ShowDialog(new ContentUpdateLog());
-            });
         }
     }
 }

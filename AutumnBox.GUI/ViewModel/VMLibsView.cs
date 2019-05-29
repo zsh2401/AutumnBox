@@ -1,6 +1,7 @@
 ﻿using AutumnBox.GUI.Model;
 using AutumnBox.GUI.MVVM;
 using AutumnBox.GUI.Util.Bus;
+using AutumnBox.OpenFramework.ExtLibrary;
 using AutumnBox.OpenFramework.Management;
 using System.Collections.Generic;
 using System.Windows.Input;
@@ -46,9 +47,9 @@ namespace AutumnBox.GUI.ViewModel
             {
                 Load();
             });
-            ShowInformation = new FlexiableCommand(() =>
+            ShowInformation = new FlexiableCommand((p) =>
             {
-                SelectedItem.Lib.ShowInformation();
+                (p as ILibrarian).ShowInformation();
             });
         }
 
