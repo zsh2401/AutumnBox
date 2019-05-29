@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
+        FontFamily="{DynamicResource AutumnBox.Font}"
         Title="秋之盒遇到了错误" MinHeight="400" MinWidth="500" Width="500" Height="400">
     <DockPanel>
         

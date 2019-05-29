@@ -13,14 +13,14 @@ using System.Windows.Threading;
 
 namespace AutumnBox.GUI.Util
 {
-    class FatalHandler
+    static class FatalHandler
     {
         private static string[] blockListForExceptionSource = {
             "PresentationCore"
         };
         public static void Current_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
         {
-            var logger = LoggerFactory.Auto<FatalHandler>();
+            var logger = LoggerFactory.Auto(nameof(FatalHandler));
             string src = e.Exception.Source;
             if (blockListForExceptionSource.Contains(src))
             {

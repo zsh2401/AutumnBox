@@ -23,8 +23,8 @@
     <StackPanel Margin="10,10,10,0">
         <TextBox BorderBrush="{Binding TextBoxBorderBrush}"  materialDesign:HintAssist.Hint="{Binding Hint}"  Text="{Binding Input}"/>
         <StackPanel Margin="0,10,0,0" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button  Command="{Binding Cancel}" FontSize="10" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource InputWindowBtnCancel}"/>
-            <Button Command="{Binding Finish}" FontSize="10" Margin="40,0,0,0" Style="{DynamicResource MaterialDesignRaisedButton}" Content="{DynamicResource InputWindowBtnOK}"/>
+            <Button  Command="{Binding Cancel}" FontSize="10"  Content="{DynamicResource InputWindowBtnCancel}"/>
+            <Button Command="{Binding Finish}" FontSize="10" Margin="40,0,0,0"  Content="{DynamicResource InputWindowBtnOK}"/>
         </StackPanel>
         
     </StackPanel>

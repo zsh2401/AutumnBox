@@ -22,7 +22,7 @@
         </StackPanel>
         <DockPanel Margin="5" DockPanel.Dock="Bottom">
             <StackPanel Margin="3" Orientation="Horizontal" DockPanel.Dock="Top" >
-                <Button FontSize="12" Style="{DynamicResource MaterialDesignFlatButton}" Content="{DynamicResource RunningWindowCopy}" Command="{Binding Copy}"/>
+                <Button FontSize="12"  Content="{DynamicResource RunningWindowCopy}" Command="{Binding Copy}"/>
                 <TextBlock  VerticalAlignment="Center" Text="{DynamicResource RunningWindowCopyTip}"/>
             </StackPanel>
             <TextBox DockPanel.Dock="Bottom"  x:Name="TBOutput" IsReadOnly="True"  Style="{x:Null}" BorderBrush="{DynamicResource PrimaryLightBrush}" Text="{Binding Output}" TextWrapping="Wrap"/>

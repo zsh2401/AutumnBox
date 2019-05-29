@@ -184,8 +184,6 @@
     <Compile Include="Util\Custom\ITheme.cs" />
     <Compile Include="Util\Custom\IThemeManager.cs" />
     <Compile Include="Util\Custom\ThemeManager.cs" />
-    <Compile Include="Util\Data\Converter.cs" />
-    <Compile Include="Util\Data\IResourceManager.cs" />
     <Compile Include="Util\Data\Md5.cs" />
     <Compile Include="Util\Debugging\LogEventArgs.cs" />
     <Compile Include="Util\Debugging\LoggingStation.cs" />
@@ -211,7 +209,6 @@
     <Compile Include="Util\OpenFxManagement\OpenFrameworkManager.cs" />
     <Compile Include="Util\OS\MachineInfo.cs" />
     <Compile Include="Util\OS\NativeMethods.cs" />
-    <Compile Include="Util\OS\OSInfo.cs" />
     <Compile Include="Util\OS\OtherProcessChecker.cs" />
     <Compile Include="Util\OS\ShortcutHelper.cs" />
     <Compile Include="Util\OS\TaskKill.cs" />
@@ -227,7 +224,6 @@
     <Compile Include="Util\UI\HelpButtonHelper.cs" />
     <Compile Include="Util\UI\Sentences.cs" />
     <Compile Include="Util\UI\TipsWaterfallFlow.cs" />
-    <Compile Include="Util\UI\UIHelper.cs" />
     <Compile Include="ViewModel\VMBottomBar.cs" />
     <Compile Include="ViewModel\VMConnectDevices.cs" />
     <Compile Include="ViewModel\VMContentChoice.cs" />

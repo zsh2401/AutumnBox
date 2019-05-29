@@ -90,8 +90,8 @@ namespace AutumnBox.GUI.Util
             InitErrorHandlerSystem();
             InitLanguageSystem();
             //InitThemeSystem();
-            //ShowDebugWindowIfNeed();
             //ShowGuideIfNeed();
+            ShowDebugWindowIfNeed();
             PrintInformations();
             InitAutumnBoxBasic();
             InitAutumnBoxOpenFx();
@@ -179,7 +179,7 @@ namespace AutumnBox.GUI.Util
                 //打开调试窗口
                 App.Current.Dispatcher.Invoke(() =>
                 {
-                    new LogWindow().Show();
+                    WinM.D("Log");
                 });
             }
         }
