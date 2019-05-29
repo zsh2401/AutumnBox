@@ -10,35 +10,35 @@ using System.Threading;
 
 namespace AutumnBox.CoreModules.Extensions.Poweron
 {
-    [ExtName("解锁系统分区", "en-us:[ROOT]Unlock system paration")]
-    [ExtDesc("This extension can not unlock BL!", "zh-cn:不是解锁BL！！！这个功能只是为了提供完整的root权限！")]
-    [ExtRequiredDeviceStates(DeviceState.Poweron)]
-    [ExtRequireRoot]
-    [ExtIcon("Icons.unlock.png")]
-    internal class EUnlockSystemParation : OfficialVisualExtension
-    {
-        protected override int VisualMain()
-        {
-            var enableRootResult = CmdStation
-                 .GetAdbCommand(TargetDevice,
-                 $"root")
-                 .To(OutputPrinter)
-                 .Execute();
+    //[ExtName("解锁系统分区", "en-us:[ROOT]Unlock system paration")]
+    //[ExtDesc("This extension can not unlock BL!", "zh-cn:不是解锁BL！！！这个功能只是为了提供完整的root权限！")]
+    //[ExtRequiredDeviceStates(DeviceState.Poweron)]
+    //[ExtRequireRoot]
+    //[ExtIcon("Icons.unlock.png")]
+    //internal class EUnlockSystemParation : OfficialVisualExtension
+    //{
+    //    protected override int VisualMain()
+    //    {
+    //        var enableRootResult = CmdStation
+    //             .GetAdbCommand(TargetDevice,
+    //             $"root")
+    //             .To(OutputPrinter)
+    //             .Execute();
            
-            if (enableRootResult.ExitCode != 0)
-            {
-                return enableRootResult.ExitCode;
-            }
+    //        if (enableRootResult.ExitCode != 0)
+    //        {
+    //            return enableRootResult.ExitCode;
+    //        }
             
-            Thread.Sleep(2000);
-            var result = CmdStation
-                .GetAdbCommand(TargetDevice,
-                $"disable-verity")
-                .To(OutputPrinter)
-                .Execute();
+    //        Thread.Sleep(2000);
+    //        var result = CmdStation
+    //            .GetAdbCommand(TargetDevice,
+    //            $"disable-verity")
+    //            .To(OutputPrinter)
+    //            .Execute();
 
            
-            return result.ExitCode;
-        }
-    }
+    //        return result.ExitCode;
+    //    }
+    //}
 }

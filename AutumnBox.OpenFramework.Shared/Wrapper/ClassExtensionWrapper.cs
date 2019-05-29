@@ -158,7 +158,7 @@ namespace AutumnBox.OpenFramework.Wrapper
 
         private IExtensionThreadManager GetThreadManager()
         {
-            var manager = GetService<IExtensionThreadManager>(ServicesNames.THREAD_MANAGER);
+            var manager = ExtensionThreadManager.Instance;
             return manager;
         }
         /// <summary>

@@ -8,8 +8,8 @@ using AutumnBox.OpenFramework.Fast;
 using AutumnBox.OpenFramework.Management;
 using AutumnBox.OpenFramework.Open;
 using AutumnBox.OpenFramework.Open.Impl;
+using AutumnBox.OpenFramework.Open.Management;
 using AutumnBox.OpenFramework.Running;
-using AutumnBox.OpenFramework.Service;
 using System;
 using System.Linq;
 
@@ -100,17 +100,6 @@ namespace AutumnBox.OpenFramework.Content
                 return OpenFx.BaseApi;
             }
         }
-
-        /// <summary>
-        /// 服务管理器
-        /// </summary>
-        public IServicesManager ServicesManager
-        {
-            get
-            {
-                return OpenFx.ServicesManager;
-            }
-        }
         /// <summary>
         /// 构建
         /// </summary>
@@ -164,25 +153,6 @@ namespace AutumnBox.OpenFramework.Content
             thread.Start();
         }
         /// <summary>
-        /// 获取全局服务
-        /// </summary>
-        /// <param name="serviceName"></param>
-        /// <returns></returns>
-        public AtmbService GetService(string serviceName)
-        {
-            return OpenFx.ServicesManager.GetServiceByName(this, serviceName);
-        }
-        /// <summary>
-        /// 获取并根据传入泛型拆箱
-        /// </summary>
-        /// <typeparam name="TReturn"></typeparam>
-        /// <param name="serviceName"></param>
-        /// <returns></returns>
-        public TReturn GetService<TReturn>(string serviceName) where TReturn : class
-        {
-            return OpenFx.ServicesManager.GetServiceByName(this, serviceName) as TReturn;
-        }
-        /// <summary>
         /// 在UI线程运行代码
         /// </summary>
         /// <param name="act"></param>
@@ -197,11 +167,11 @@ namespace AutumnBox.OpenFramework.Content
         {
             _lazyApp = new Lazy<IAppManager>(() =>
             {
-                return new AppManagerImpl(this, BaseApi);
+                return OpenApiFactory.Get<IAppManager>(this);
             });
             _lazyUX = new Lazy<IUx>(() =>
             {
-                return new UxImpl(this, BaseApi);
+                return OpenApiFactory.Get<IUx>(this);
             });
             _lazyLogger = new Lazy<ILogger>(() =>
             {
@@ -209,11 +179,11 @@ namespace AutumnBox.OpenFramework.Content
             });
             _lazyTmp = new Lazy<ITemporaryFloder>(() =>
             {
-                return new TemporaryFloderImpl(this);
+                return OpenApiFactory.Get<ITemporaryFloder>(this);
             });
             _lazyEmb = new Lazy<IEmbeddedFileManager>(() =>
             {
-                return new EmbeddedFileManagerImpl(this);
+                return OpenApiFactory.Get<IEmbeddedFileManager>(this);
             });
         }
     }

@@ -4,6 +4,7 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.Basic.Device;
+using AutumnBox.OpenFramework.Management;
 using AutumnBox.OpenFramework.Open;
 using System;
 
@@ -48,7 +49,7 @@ namespace AutumnBox.OpenFramework.Extension
         /// <param name="canContinue"></param>
         public override void BeforeCreating(BeforeCreatingAspectArgs args, ref bool canContinue)
         {
-            IDevice selectedDevice = args.Context.GetService<IDeviceSelector>(ServicesNames.DEVICE_SELECTOR).GetCurrent(args.Context);
+            IDevice selectedDevice = OpenFx.BaseApi.SelectedDevice;
             if (!reqRoot || selectedDevice == null)
             {
                 return;

@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.IO;
-
+using AutumnBox.OpenFramework.Open.Management;
 namespace AutumnBox.OpenFramework.Open.Impl
 {
     internal class StorageManagerImpl : IStorageManager
@@ -11,9 +11,9 @@ namespace AutumnBox.OpenFramework.Open.Impl
         private const string FILES_DIR = "files";
         private const string JSON_EXT = ".ajson";
         private const string FILE_EXT = ".aextf";
-        public StorageManagerImpl(string storageId)
+        public StorageManagerImpl(InitSettings settings)
         {
-            this.storageId = storageId ?? throw new ArgumentNullException(nameof(storageId));
+            this.storageId = settings.Arg?.ToString() ?? throw new ArgumentNullException(nameof(storageId));
             Init();
         }
         public DirectoryInfo CacheDirectory { get; private set; }

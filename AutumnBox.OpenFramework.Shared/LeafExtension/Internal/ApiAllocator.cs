@@ -6,6 +6,7 @@ using AutumnBox.OpenFramework.LeafExtension.Internal.Impl;
 using AutumnBox.OpenFramework.LeafExtension.Kit;
 using AutumnBox.OpenFramework.Management;
 using AutumnBox.OpenFramework.Open;
+using AutumnBox.OpenFramework.Open.Management;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
@@ -60,53 +61,13 @@ namespace AutumnBox.OpenFramework.LeafExtension.Internal
             {
                 return LoggerFactory.Auto(type, leafType);
             }
-            else if (type == typeof(IUx))
+            else if (type == typeof(IDevice))
             {
-                return ctx.Ux;
-            }
-            else if (type == typeof(IAppManager))
-            {
-                return ctx.App;
-            }
-            else if (type == typeof(ITemporaryFloder))
-            {
-                return ctx.Tmp;
-            }
-            else if (type == typeof(IEmbeddedFileManager))
-            {
-                return new LeafEmb(leafType.Assembly);
-            }
-            else if (type == typeof(IOSApi))
-            {
-                return ctx.GetService<IOSApi>(ServicesNames.OS);
-            }
-            else if (type == typeof(IDeviceSelector))
-            {
-                return ctx.GetService<IDeviceSelector>(ServicesNames.DEVICE_SELECTOR);
-            }
-            else if (type == typeof(IMd5Service))
-            {
-                return ctx.GetService<IMd5Service>(ServicesNames.MD5);
-            }
-            else if (type == typeof(IResourcesManager))
-            {
-                return ctx.GetService<IResourcesManager>(ServicesNames.RESOURCES);
-            }
-            else if (type == typeof(ICompApi))
-            {
-                return ctx.Comp;
-            }
-            else if (type == typeof(ISoundService))
-            {
-                return ctx.GetService<ISoundService>(ServicesNames.SOUND);
+                return OpenFx.BaseApi.SelectedDevice;
             }
             else if (type == typeof(Context))
             {
                 return ctx;
-            }
-            else if (type == typeof(IDevice))
-            {
-                return ctx.GetService<IDeviceSelector>(ServicesNames.DEVICE_SELECTOR).GetCurrent(ctx);
             }
             else if (type == typeof(TextAttrManager))
             {

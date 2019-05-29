@@ -1,37 +1,23 @@
-﻿/*************************************************
-** auth： zsh2401@163.com
-** date:  2018/8/1 21:19:39 (UTC +8:00)
-** desc： ...
-*************************************************/
-using AutumnBox.Basic.Calling;
+﻿using AutumnBox.Basic.Calling;
 using AutumnBox.Basic.Data;
 using AutumnBox.Logging;
-using AutumnBox.OpenFramework.Content;
-using AutumnBox.OpenFramework.Service;
+using AutumnBox.OpenFramework.Management;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
-using System.Security.Principal;
+using System.Text;
 
-namespace AutumnBox.OpenFramework.Open.ServiceImpl
+namespace AutumnBox.OpenFramework.Open.Impl
 {
-    [ServiceName(ServicesNames.OS)]
-    class SOSApi : AtmbService, IOSApi
+    class OSImpl : IOSApi
     {
+        public bool IsRunAsAdmin => OpenFx.BaseApi.IsRunAsAdmin;
+
         public bool IsWindows10
         {
             get
             {
                 return Environment.OSVersion.Version.Major == 10;
-            }
-        }
-
-        public override string LoggingTag => "AutumnBox OperatingSystemAPI";
-
-        public bool IsRunAsAdmin
-        {
-            get
-            {
-                return BaseApi.IsRunAsAdmin;
             }
         }
 
@@ -50,7 +36,7 @@ namespace AutumnBox.OpenFramework.Open.ServiceImpl
             }
             catch (Exception ex)
             {
-                Logger.Warn("failed", ex);
+                SLogger<OSImpl>.Warn("failed", ex);
                 return false;
             }
         }
@@ -77,7 +63,6 @@ namespace AutumnBox.OpenFramework.Open.ServiceImpl
                     proc.BeginOutputReadLine();
                     proc.BeginErrorReadLine();
                     proc.WaitForExit();
-                    Logger.Info(outputBuilder.Result.ToString());
                     exitCode = proc.ExitCode;
                     proc.Dispose();
                     return exitCode == 0;
@@ -85,7 +70,7 @@ namespace AutumnBox.OpenFramework.Open.ServiceImpl
             }
             catch (Exception ex)
             {
-                Logger.Warn("failed", ex);
+                SLogger<OSImpl>.Warn("failed", ex);
                 return false;
             }
         }

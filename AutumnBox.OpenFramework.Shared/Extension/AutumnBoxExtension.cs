@@ -6,6 +6,7 @@
 
 using AutumnBox.Basic.Device;
 using AutumnBox.OpenFramework.Open;
+using AutumnBox.OpenFramework.Open.Management;
 using AutumnBox.OpenFramework.Wrapper;
 using System;
 
@@ -40,8 +41,8 @@ namespace AutumnBox.OpenFramework.Extension
         {
             get
             {
-                IDeviceSelector selector = GetService<IDeviceSelector>(ServicesNames.DEVICE_SELECTOR);
-                return selector.GetCurrent(this);
+                IDeviceSelector selector = OpenApiFactory.Get<IDeviceSelector>();
+                return selector.GetCurrent();
             }
         }
 

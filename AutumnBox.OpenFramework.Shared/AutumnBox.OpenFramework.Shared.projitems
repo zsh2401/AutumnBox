@@ -21,7 +21,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Exceptions\ServiceNotFoundException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Exceptions\UserDeniedException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Exceptions\WrapperAlreadyCreatedOnceException.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Extension\AtmbVisualExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\AutumnBoxExtension.Constants.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\AutumnBoxExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\ClassExtensionBase.cs" />
@@ -30,6 +29,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Extension\IClassExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\IExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)LeafExtension\Attributes\LDoNotScanAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)LeafExtension\Internal\ApiAllocator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)LeafExtension\Internal\Impl\LeafEmbManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)LeafExtension\LeafConstants.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)LeafExtension\LeafTerminatedException.cs" />
@@ -47,9 +47,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)LeafExtension\Attributes\LPropertySeviceAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)LeafExtension\Attributes\LSignalReceiveAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)LeafExtension\Internal\LSignalDistributor.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)LeafExtension\Internal\ApiAllocator.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Extension\SharpExtension.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Extension\StrictVisualExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\_Aspects\BeforeCreatingAspect.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\_Aspects\ExtAppPropertyAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\_Aspects\ExtMinAndroidVersionAttribute.cs" />
@@ -84,6 +81,16 @@
     <Compile Include="$(MSBuildThisFileDirectory)Management\IBaseApi.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\IExtensionUIController.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\ILibsManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Open\IClassTextManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Open\Impl\ClassTextManagerImpl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Open\Impl\DeviceSelectorImpl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Open\Impl\Md5Impl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Open\Impl\OSImpl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Open\Impl\ResManagerImpl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Open\Impl\SoundImpl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Open\Impl\TemporaryFloderImpl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Open\ITemporaryFloder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Open\Management\OpenApiFactory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\TheWanderingEarthManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\OpenFx.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\ChoiceResult.cs" />
@@ -95,34 +102,23 @@
     <Compile Include="$(MSBuildThisFileDirectory)Open\Impl\AppManagerImpl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\Impl\CompImpl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\Impl\EmbeddedFileManagerImpl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Open\Management\InitSettings.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\Impl\StorageManagerImpl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\IStorageManager.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Open\ServiceImpl\SOSApi.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Open\Impl\TemporaryFloderImpl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\Impl\UxImpl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\IOSApi.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\IResourcesManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\ISoundService.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Open\ITemporaryFloder.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\IUx.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Open\ServiceImpl\SResourcesManager.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Open\ServiceImpl\SDeviceSelector.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Open\ServiceImpl\SMd5.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Open\ServiceImpl\SSoundManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\ServicesNames.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\TextAttrManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Running\Events.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Running\ExtensionExitCodes.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Running\ExtensionThread.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Running\SExtensionThreadManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Running\ExtensionThreadManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Running\IExtensionThread.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Running\IExtensionThreadManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Running\Signals.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Service\AtmbService.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Service\IServicesManager.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Service\ServiceName.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Service\ServicesManagerImpl.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Service\ServiceState.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Util\Md5.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Util\OSInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Util\Sound.cs" />
@@ -139,5 +135,6 @@
     <Folder Include="$(MSBuildThisFileDirectory)LeafExtension\Attributes\" />
     <Folder Include="$(MSBuildThisFileDirectory)LeafExtension\Fast\" />
     <Folder Include="$(MSBuildThisFileDirectory)LeafExtension\View\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Open\Management\" />
   </ItemGroup>
 </Project>

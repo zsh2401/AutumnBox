@@ -1,16 +1,11 @@
-﻿/*************************************************
-** auth： zsh2401@163.com
-** date:  2018/10/30 22:50:31 (UTC +8:00)
-** desc： ...
-*************************************************/
-using AutumnBox.OpenFramework.Service;
-using System;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Text;
 
-namespace AutumnBox.OpenFramework.Open.ServiceImpl
+namespace AutumnBox.OpenFramework.Open.Impl
 {
-    [ServiceName(ServicesNames.MD5)]
-    internal class SMd5 : AtmbService,IMd5Service
+    class Md5Impl : IMd5Service
     {
         /// <summary>
         /// 会返回一个Md5值

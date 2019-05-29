@@ -36,10 +36,7 @@ namespace AutumnBox.OpenFramework.Running
         public IExtensionWrapper Wrapper { get; }
 
         public Dictionary<string, object> Data { get; set; } =
-            new Dictionary<string, object>()
-            {
-                {AtmbVisualExtension.KEY_CLOSE_FINISHED,false}
-            };
+            new Dictionary<string, object>();
 
         public event EventHandler<ThreadFinishedEventArgs> Finished;
         public event EventHandler<ThreadStartedEventArgs> Started;
@@ -157,7 +154,7 @@ namespace AutumnBox.OpenFramework.Running
             while (isRunning) ;
         }
 
-        public ExtensionThread(SExtensionThreadManager threadManager, Type extensionType, IExtensionWrapper wrapper)
+        public ExtensionThread(ExtensionThreadManager threadManager, Type extensionType, IExtensionWrapper wrapper)
         {
             if (threadManager == null)
             {

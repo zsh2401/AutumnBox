@@ -6,6 +6,7 @@
 using AutumnBox.OpenFramework.Content;
 using AutumnBox.OpenFramework.Exceptions;
 using AutumnBox.OpenFramework.Management;
+using AutumnBox.OpenFramework.Open.Management;
 using AutumnBox.OpenFramework.Wrapper;
 using System;
 using System.Security.Principal;
@@ -16,11 +17,11 @@ namespace AutumnBox.OpenFramework.Open.Impl
     internal partial class AppManagerImpl : IAppManager
     {
         private readonly IBaseApi sourceApi;
-        private readonly Context ctx;
-        public AppManagerImpl(Context ctx, IBaseApi sourceApi)
+        //private readonly Context ctx;
+        public AppManagerImpl(InitSettings initSettings)
         {
-            this.ctx = ctx;
-            this.sourceApi = sourceApi;
+            //this.ctx = ctx;
+            this.sourceApi = OpenFx.BaseApi;
         }
 
         public bool IsRunAsAdmin
@@ -118,21 +119,7 @@ namespace AutumnBox.OpenFramework.Open.Impl
 
         public void ShutdownApp()
         {
-            if (ctx.Permission == CtxPer.High)
-            {
-                sourceApi.Shutdown();
-                return;
-            }
-            var fmtMsg = GetPublicResouce<string>("msgRequestShutdownAppFormat");
-            string msg = string.Format(fmtMsg, ctx.GetType().Name);
-            if (ctx.Ux.DoChoice(msg, "btnDeny", "btnAccept") == ChoiceResult.Right)
-            {
-                sourceApi.Shutdown();
-            }
-            else
-            {
-                throw new UserDeniedException();
-            }
+            sourceApi.Shutdown();
         }
     }
 }

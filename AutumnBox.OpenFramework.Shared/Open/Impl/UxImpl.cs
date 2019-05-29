@@ -5,6 +5,7 @@
 *************************************************/
 using AutumnBox.OpenFramework.Content;
 using AutumnBox.OpenFramework.Management;
+using AutumnBox.OpenFramework.Open.Management;
 using System;
 using System.Threading.Tasks;
 
@@ -13,12 +14,10 @@ namespace AutumnBox.OpenFramework.Open.Impl
     class UxImpl : IUx
     {
         private readonly IBaseApi sourceApi;
-        private readonly Context ctx;
 
-        public UxImpl(Context ctx, IBaseApi sourceApi)
+        public UxImpl()
         {
-            this.ctx = ctx;
-            this.sourceApi = sourceApi;
+            this.sourceApi = OpenFx.BaseApi;
         }
 
         public bool DoYN(string message, string btnYes = null, string btnNo = null)
@@ -67,7 +66,7 @@ namespace AutumnBox.OpenFramework.Open.Impl
         {
             Task.Run(() =>
             {
-                ctx.App.RunOnUIThread(() =>
+                sourceApi.RunOnUIThread(() =>
                 {
                     sourceApi.ShowLoadingUI();
                 });
@@ -76,7 +75,7 @@ namespace AutumnBox.OpenFramework.Open.Impl
 
         public void CloseLoadingWindow()
         {
-            ctx.App.RunOnUIThread(() =>
+            sourceApi.RunOnUIThread(() =>
             {
                 sourceApi.CloseLoadingUI();
             });
@@ -94,7 +93,7 @@ namespace AutumnBox.OpenFramework.Open.Impl
         {
             RunOnUIThread(() =>
             {
-                sourceApi.ShowMessage(ctx.App.GetPublicResouce<string>("OpenFxTitleMessage"), message);
+                sourceApi.ShowMessage(sourceApi.GetResouce("OpenFxTitleMessage") as string, message);
             });
         }
 
@@ -102,7 +101,7 @@ namespace AutumnBox.OpenFramework.Open.Impl
         {
             RunOnUIThread(() =>
             {
-                sourceApi.ShowMessage(ctx.App.GetPublicResouce<string>("OpenFxTitleWarning"), message);
+                sourceApi.ShowMessage(sourceApi.GetResouce("OpenFxTitleWarning") as string, message);
             });
         }
 
@@ -110,13 +109,13 @@ namespace AutumnBox.OpenFramework.Open.Impl
         {
             RunOnUIThread(() =>
             {
-                sourceApi.ShowMessage(ctx.App.GetPublicResouce<string>("OpenFxTitleError"), message);
+                sourceApi.ShowMessage(sourceApi.GetResouce("OpenFxTitleError") as string, message);
             });
         }
 
         public void RunOnUIThread(Action action)
         {
-            ctx.App.RunOnUIThread(action);
+            sourceApi.RunOnUIThread(action);
         }
 
         public bool Agree(string message)

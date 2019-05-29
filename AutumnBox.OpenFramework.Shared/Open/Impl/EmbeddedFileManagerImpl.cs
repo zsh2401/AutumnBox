@@ -4,6 +4,7 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.OpenFramework.Content;
+using AutumnBox.OpenFramework.Open.Management;
 using System.IO;
 
 namespace AutumnBox.OpenFramework.Open.Impl
@@ -12,11 +13,11 @@ namespace AutumnBox.OpenFramework.Open.Impl
     {
         private class EmbeddedFileImpl : IEmbeddedFile
         {
-            public readonly Context ctx;
+            public readonly object requester;
             public readonly string path;
-            public EmbeddedFileImpl(Context ctx, string path)
+            public EmbeddedFileImpl(object requester, string path)
             {
-                this.ctx = ctx;
+                this.requester = requester;
                 this.path = path;
             }
             public void CopyTo(Stream targetStream)
@@ -35,8 +36,8 @@ namespace AutumnBox.OpenFramework.Open.Impl
             }
             public Stream GetStream()
             {
-                string fullPath = ctx.GetType().Assembly.GetName().Name + "." + path;
-                var stream = ctx.GetType().Assembly
+                string fullPath = requester.GetType().Assembly.GetName().Name + "." + path;
+                var stream = requester.GetType().Assembly
                     .GetManifestResourceStream(fullPath);
                 return stream;
             }
@@ -45,14 +46,14 @@ namespace AutumnBox.OpenFramework.Open.Impl
                 CopyTo(fs);
             }
         }
-        private readonly Context ctx;
-        public EmbeddedFileManagerImpl(Context ctx)
+        private readonly object requester;
+        public EmbeddedFileManagerImpl(InitSettings initSettings)
         {
-            this.ctx = ctx;
+            this.requester = initSettings.Requester;
         }
         public IEmbeddedFile Get(string innerResPath)
         {
-            return new EmbeddedFileImpl(ctx, innerResPath);
+            return new EmbeddedFileImpl(requester, innerResPath);
         }
     }
 }

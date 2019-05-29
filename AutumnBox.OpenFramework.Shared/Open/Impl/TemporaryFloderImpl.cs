@@ -5,6 +5,7 @@
 *************************************************/
 using AutumnBox.OpenFramework.Content;
 using AutumnBox.OpenFramework.Management;
+using AutumnBox.OpenFramework.Open.Management;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -16,9 +17,9 @@ namespace AutumnBox.OpenFramework.Open.Impl
 {
     internal class TemporaryFloderImpl : ITemporaryFloder
     {
-        public TemporaryFloderImpl(Context ctx)
+        public TemporaryFloderImpl(InitSettings initSettings)
         {
-            var floderName = ctx.GetType().Assembly.GetName().Name;
+            var floderName = initSettings.Requester.GetType().Assembly.GetName().Name;
             var path = System.IO.Path.Combine(BuildInfo.DEFAULT_EXTENSION_PATH, floderName);
             DirInfo = new DirectoryInfo(path);
             Create();

@@ -77,7 +77,7 @@ namespace AutumnBox.GUI.ViewModel
             };
             _isAdmin = Self.HaveAdminPermission;
             GetAdbVersion();
-            threadManager = (IExtensionThreadManager)AtmbContext.Instance.GetService(ServicesNames.THREAD_MANAGER);
+            threadManager = ExtensionThreadManager.Instance;
             Task.Run(() =>
             {
                 while (true)

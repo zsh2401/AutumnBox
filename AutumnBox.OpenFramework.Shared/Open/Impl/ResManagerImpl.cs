@@ -1,13 +1,14 @@
 ﻿using AutumnBox.OpenFramework.Management;
-using AutumnBox.OpenFramework.Service;
+using System;
+using System.Collections.Generic;
+using System.Text;
 
-namespace AutumnBox.OpenFramework.Open.ServiceImpl
+namespace AutumnBox.OpenFramework.Open.Impl
 {
-    [ServiceName(ServicesNames.RESOURCES)]
-    internal class SResourcesManager : AtmbService, IResourcesManager
+    class ResManagerImpl : IResourcesManager
     {
         private readonly IBaseApi baseApi;
-        public SResourcesManager()
+        public ResManagerImpl()
         {
             baseApi = OpenFx.BaseApi;
         }

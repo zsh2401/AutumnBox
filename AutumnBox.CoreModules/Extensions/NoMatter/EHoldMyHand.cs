@@ -13,8 +13,10 @@ using AutumnBox.OpenFramework.LeafExtension.Attributes;
 using AutumnBox.OpenFramework.LeafExtension.Kit;
 using AutumnBox.OpenFramework.Open;
 using AutumnBox.OpenFramework.Open.Impl;
+using AutumnBox.OpenFramework.Open.Management;
 using System.Collections.Generic;
 using System.IO;
+using System.Reflection;
 
 namespace AutumnBox.CoreModules.Extensions.Hidden
 {
@@ -39,11 +41,14 @@ namespace AutumnBox.CoreModules.Extensions.Hidden
             {
                 ui.Show();
                 ui.Title = "TEST";
+                var storageManager = OpenApiFactory.Get(typeof(IStorageManager),this,"123");
+                ui.WriteLine(storageManager?.ToString() ?? "null");
+                ui.WriteLine(this.GetType().Namespace);
                 ui.ShowMessage("wow");
                 ui.WriteOutput(ui.DoYN("wwww", "yes", "no"));
                 ui.WriteOutput(ui.DoChoice("www"));
                 ui.WriteOutput(ui.SelectFrom(null,"a","b","c","d"));
-                throw new System.Exception();
+                //throw new System.Exception(); ;
                 ui.Finish();
             }
         }

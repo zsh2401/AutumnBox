@@ -1,17 +1,19 @@
-﻿using AutumnBox.OpenFramework.Extension;
-using AutumnBox.OpenFramework.Open;
-using AutumnBox.OpenFramework.Service;
+﻿using AutumnBox.OpenFramework.Open;
 using AutumnBox.OpenFramework.Wrapper;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Threading;
 
 namespace AutumnBox.OpenFramework.Running
 {
-    [ServiceName(ServicesNames.THREAD_MANAGER)]
-    internal class SExtensionThreadManager : AtmbService, IExtensionThreadManager
+#if SDK
+    internal 
+#else
+    public
+#endif
+
+    class ExtensionThreadManager : IExtensionThreadManager
     {
+        public static ExtensionThreadManager Instance { get; }
         private readonly List<IExtensionThread> readys = new List<IExtensionThread>();
         private readonly List<IExtensionThread> runnings = new List<IExtensionThread>();
 
@@ -36,6 +38,11 @@ namespace AutumnBox.OpenFramework.Running
 
         private readonly Random ran = new Random();
 
+        static ExtensionThreadManager()
+        {
+            Instance = new ExtensionThreadManager();
+        }
+        private ExtensionThreadManager() { }
         private int AlllocatePID()
         {
             int nextPid;
@@ -58,7 +65,5 @@ namespace AutumnBox.OpenFramework.Running
         {
             return runnings;
         }
-
-
     }
 }
