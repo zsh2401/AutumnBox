@@ -19,7 +19,7 @@ namespace AutumnBox.GUI.View.Windows
     /// <summary>
     /// AdbFailedWindow.xaml 的交互逻辑
     /// </summary>
-    public partial class AdbFailedWindow : Window
+    public partial class AdbFailedWindow
     {
         public AdbFailedWindow(string message)
         {

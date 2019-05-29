@@ -10,7 +10,7 @@ namespace AutumnBox.GUI.View.Windows
     /// <summary>
     /// MessageWindow.xaml 的交互逻辑
     /// </summary>
-    public partial class MessageWindow : Window, INotifyPropertyChanged
+    public partial class MessageWindow : INotifyPropertyChanged
     {
         /// <summary>
         /// 标题
