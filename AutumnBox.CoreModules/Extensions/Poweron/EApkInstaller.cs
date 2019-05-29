@@ -58,7 +58,7 @@ namespace AutumnBox.CoreModules.Extensions
                 try
                 {
                     var result = CmdStation
-                         .GetAdbCommand(TargetDevice, $"install \"{file.FullName}\"")
+                         .GetAdbCommand(TargetDevice, $"install -r -t -d \"{file.FullName}\"")
                          .To(OutputLogger)
                          .Execute();
                    
