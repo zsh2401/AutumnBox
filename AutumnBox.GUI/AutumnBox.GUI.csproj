@@ -235,7 +235,7 @@
     <Compile Include="ViewModel\VMCurrentDevice.cs" />
     <Compile Include="ViewModel\VMDefaultInformation.cs" />
     <Compile Include="ViewModel\VMDeviceDetails.cs" />
-    <Compile Include="ViewModel\VMDeviceSelector.cs" />
+    <Compile Include="ViewModel\VMDeviceBar.cs" />
     <Compile Include="ViewModel\VMExtensions.cs" />
     <Compile Include="ViewModel\VMExtensionsNoCategory.cs" />
     <Compile Include="ViewModel\VMGuide.cs" />
@@ -259,8 +259,8 @@
     <Compile Include="ViewModel\VMUpdateLogs.cs" />
     <Compile Include="ViewModel\VMUpdateWindow.cs" />
     <Compile Include="ViewModel\VMWelcome.cs" />
-    <Compile Include="View\Controls\AllExtensionsPanel.xaml.cs">
-      <DependentUpon>AllExtensionsPanel.xaml</DependentUpon>
+    <Compile Include="View\Controls\ExtensionsPanel.xaml.cs">
+      <DependentUpon>ExtensionsPanel.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Controls\BottomBar.xaml.cs">
       <DependentUpon>BottomBar.xaml</DependentUpon>
@@ -268,45 +268,17 @@
     <Compile Include="View\Controls\DeviceBar.xaml.cs">
       <DependentUpon>DeviceBar.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Controls\ExtensionDock.xaml.cs">
-      <DependentUpon>ExtensionDock.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Controls\ExtensionsPanel.xaml.cs">
-      <DependentUpon>ExtensionsPanel.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\Controls\MainMenu.xaml.cs">
       <DependentUpon>MainMenu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Controls\OldExtensionSlice.xaml.cs">
-      <DependentUpon>OldExtensionSlice.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Controls\SliceView.cs" />
     <Compile Include="View\CstPreview.xaml.cs">
       <DependentUpon>CstPreview.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\DialogContent\ContentConnectNetDevice.xaml.cs">
       <DependentUpon>ContentConnectNetDevice.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\DialogContent\ContentDisconnectDevice.xaml.cs">
-      <DependentUpon>ContentDisconnectDevice.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\DialogContent\ContentDonate.xaml.cs">
-      <DependentUpon>ContentDonate.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\DialogContent\ContentEnableDeviceNetDebugging.xaml.cs">
-      <DependentUpon>ContentEnableDeviceNetDebugging.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\DialogContent\ContentGuide.xaml.cs">
       <DependentUpon>ContentGuide.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\DialogContent\ContentOpenSource.xaml.cs">
-      <DependentUpon>ContentOpenSource.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\DialogContent\ContentSettings.xaml.cs">
-      <DependentUpon>ContentSettings.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\DialogContent\ContentUpdateLog.xaml.cs">
-      <DependentUpon>ContentUpdateLog.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\LeafContent\ChoiceView.xaml.cs">
       <DependentUpon>ChoiceView.xaml</DependentUpon>
@@ -370,6 +342,9 @@
     </Compile>
     <Compile Include="View\Windows\ChoiceWindow.xaml.cs">
       <DependentUpon>ChoiceWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\DonateWindow.xaml.cs">
+      <DependentUpon>DonateWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Windows\ExceptionWindow.xaml.cs">
       <DependentUpon>ExceptionWindow.xaml</DependentUpon>
@@ -538,7 +513,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\Controls\AllExtensionsPanel.xaml">
+    <Page Include="View\Controls\ExtensionsPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -550,19 +525,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\Controls\ExtensionDock.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Controls\ExtensionsPanel.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="View\Controls\MainMenu.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\Controls\OldExtensionSlice.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -574,31 +537,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\DialogContent\ContentDisconnectDevice.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\DialogContent\ContentDonate.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\DialogContent\ContentEnableDeviceNetDebugging.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="View\DialogContent\ContentGuide.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\DialogContent\ContentOpenSource.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\DialogContent\ContentSettings.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\DialogContent\ContentUpdateLog.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -685,6 +624,10 @@
     <Page Include="View\Windows\ChoiceWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Windows\DonateWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Windows\ExceptionWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -782,6 +725,7 @@
     <Resource Include="Resources\Drawable\Home\help.png" />
     <Resource Include="Resources\Drawable\BottomBar\phone.png" />
     <Resource Include="Resources\MenuIcon\guide-book.png" />
+    <Resource Include="Resources\MenuIcon\donate.png" />
     <Content Include="Resources\Sound\ok.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

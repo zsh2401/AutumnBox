@@ -234,10 +234,6 @@ namespace AutumnBox.GUI.Util.OpenFxManagement
             {
                 case "inputIpEndPoint":
                     return new ContentConnectNetDevice();
-                case "portInputView":
-                    return new ContentEnableDeviceNetDebugging();
-                case "disconnectChoiceView":
-                    return new ContentDisconnectDevice();
                 default:
                     return null;
             }

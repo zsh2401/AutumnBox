@@ -10,7 +10,7 @@ using System.Windows.Input;
 
 namespace AutumnBox.GUI.ViewModel
 {
-    class VMDeviceSelector : ViewModelBase
+    class VMDeviceBar : ViewModelBase
     {
 
         public FlexiableCommand ConnectDevice { get; set; }
@@ -46,7 +46,7 @@ namespace AutumnBox.GUI.ViewModel
         }
         private IDevice _selectedDev;
 
-        public VMDeviceSelector()
+        public VMDeviceBar()
         {
 
             ConnectDevice = new FlexiableCommand((p) =>

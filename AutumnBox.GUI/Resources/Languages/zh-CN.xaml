@@ -37,6 +37,7 @@
      <s:String x:Key="MenuExtension">拓展模块(_X)</s:String>
      <s:String x:Key="MenuInstallExtension">安装拓展模块(_I)</s:String>
     <s:String x:Key="MenuLibs">已安装模块信息(_V)</s:String>
+        <s:String x:Key="MenuDonate">捐赠(_N)</s:String>
         <s:String x:Key="MenuExtensionHelp">如何安装拓展模块?(_H)</s:String>
        <s:String x:Key="MenuDebug">调试(_D)</s:String>
            <s:String x:Key="MenuDevDocs">秋之盒模块开发文档(_D)</s:String>

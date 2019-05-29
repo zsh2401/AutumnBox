@@ -1,21 +1,34 @@
-﻿<UserControl
-    x:Class="AutumnBox.GUI.View.Controls.ExtensionsPanel"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:AutumnBox.GUI.View.Controls"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:viewmodel="clr-namespace:AutumnBox.GUI.ViewModel"
-    mc:Ignorable="d"
-    d:DesignWidth="400" x:Name="mThis">
+﻿<UserControl x:Class="AutumnBox.GUI.View.Controls.ExtensionsPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AutumnBox.GUI.View.Controls"
+             xmlns:viewmodel="clr-namespace:AutumnBox.GUI.ViewModel"
+             xmlns:panel="clr-namespace:AutumnBox.GUI.View.Panel"
+             mc:Ignorable="d" 
+                      x:Name="mThis">
     <UserControl.DataContext>
-        <viewmodel:VMExtensions/>
+        <viewmodel:VMExtensionsNoCategory/>
     </UserControl.DataContext>
-    <StackPanel  Visibility="{Binding Converter={StaticResource NullToVisibilityConverter},ConverterParameter={StaticResource VisibleIf_IsNotNull},Path=Docks}">
-        <StackPanel Orientation="Horizontal">
-            <TextBlock x:Name="TBTitle" FontSize="20" Margin="20" Foreground="DarkGray"/>
-            <TextBlock FontSize="20" Foreground="DarkGray" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="{Binding Converter={StaticResource BoolToVisibilityConverter},ConverterParameter={StaticResource VisibleIf_IsFalse},Path=ExtPanelIsEnabled}" Text="{DynamicResource ExtensionsPanelDontSupState}"/>
-        </StackPanel>
-        <WrapPanel IsEnabled="{Binding ExtPanelIsEnabled}" x:Name="DocksPanel"/>
-    </StackPanel>
+    <ItemsControl   ItemsSource="{Binding Docks}"  BorderThickness="0">
+        <ItemsControl.ItemsPanel>
+            <ItemsPanelTemplate>
+                <WrapPanel/>
+            </ItemsPanelTemplate>
+        </ItemsControl.ItemsPanel>
+        <ItemsControl.ItemTemplate>
+            <DataTemplate>
+                <Button Command="{Binding Execute}"  Margin="5" Height="100" Width="250"  ToolTip="{Binding ToolTip}" >
+                    <StackPanel Height="80" Width="220"  Orientation="Horizontal">
+                        <Image  RenderOptions.BitmapScalingMode="Fant" Width="50" Source="{Binding Icon}"/>
+                        <StackPanel VerticalAlignment="Center" Orientation="Vertical">
+                            <TextBlock Visibility="{Binding RootVisibily}" VerticalAlignment="Top" FontSize="11"  Foreground="Orange">ROOT</TextBlock>
+                            <TextBlock VerticalAlignment="Center"  FontSize="12" TextWrapping="Wrap" TextTrimming="WordEllipsis"  Text="{Binding Name}"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Button>
+            </DataTemplate>
+        </ItemsControl.ItemTemplate>
+    </ItemsControl>
 </UserControl>

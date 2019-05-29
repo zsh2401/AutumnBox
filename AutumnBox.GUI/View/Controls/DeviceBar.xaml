@@ -8,7 +8,7 @@
              mc:Ignorable="d" 
              d:DesignWidth="800" Margin="10">
     <UserControl.DataContext>
-        <viewmodel:VMDeviceSelector/>
+        <viewmodel:VMDeviceBar/>
     </UserControl.DataContext>
     <StackPanel>
         <StackPanel Orientation="Horizontal">

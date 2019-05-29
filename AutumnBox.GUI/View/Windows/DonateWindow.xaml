@@ -1,0 +1,29 @@
+﻿<controls:BlurWindow
+    xmlns:controls="clr-namespace:HandyControl.Controls;assembly=HandyControl"
+    x:Class="AutumnBox.GUI.View.Windows.DonateWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AutumnBox.GUI.View.Windows"
+    xmlns:mvvm="clr-namespace:AutumnBox.GUI.MVVM"
+    mc:Ignorable="d"
+    Style="{StaticResource WindowBlur}"
+    ShowTitle="True"
+    ResizeMode="NoResize"
+    FontFamily="{DynamicResource AutumnBox.Font}"
+        Title="Love you" Width="600" Height="350">
+    <Window.DataContext>
+        <mvvm:ViewModelBase/>
+    </Window.DataContext>
+    <StackPanel>
+        <TextBlock TextAlignment="Center" Margin="5" TextWrapping="Wrap" Text="{DynamicResource PanelDonateDescription }" FontSize="20" />
+        <Button HorizontalAlignment="Center"  Command="{Binding OpenUrl}" CommandParameter="https://www.paypal.me/zsh2401"  Content="{DynamicResource PanelDonateBtnPayPal}"/>
+        <Button HorizontalAlignment="Center" DockPanel.Dock="Left" Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoDonate}"  Content="{DynamicResource PanelDonateBtnGotoDonatePage}"/>
+        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+            <Image Height="200" Margin="5" RenderOptions.BitmapScalingMode="Fant" Source="/AutumnBox.GUI;component/Resources/Drawable/Donate/alishop.png"/>
+            <Image Height="200" Margin="5"  RenderOptions.BitmapScalingMode="Fant" Source="/AutumnBox.GUI;component/Resources/Drawable/Donate/redpacket.jpg"/>
+            <Image Height="200" Margin="5"  RenderOptions.BitmapScalingMode="Fant" Source="/AutumnBox.GUI;component/Resources/Drawable/Donate/wechatpay.jpg"/>
+        </StackPanel>
+    </StackPanel>
+</controls:BlurWindow>

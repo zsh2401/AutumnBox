@@ -10,17 +10,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AutumnBox.GUI.View.DialogContent
+namespace AutumnBox.GUI.View.Windows
 {
     /// <summary>
-    /// ContentUpdateLog.xaml 的交互逻辑
+    /// DonateWindow.xaml 的交互逻辑
     /// </summary>
-    public partial class ContentUpdateLog : UserControl
+    public partial class DonateWindow
     {
-        public ContentUpdateLog()
+        public DonateWindow()
         {
             InitializeComponent();
         }

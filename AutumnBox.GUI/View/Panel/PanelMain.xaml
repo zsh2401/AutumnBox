@@ -26,7 +26,7 @@
                 <ScrollViewer x:Name="SVFunctions">
                     <StackPanel>
                         <local:PanelDeviceDetails/>
-                        <controls1:AllExtensionsPanel/>
+                        <controls1:ExtensionsPanel/>
                     </StackPanel>
                 </ScrollViewer>
              
