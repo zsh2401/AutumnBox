@@ -3,42 +3,42 @@
 ** date:  2018/8/29 1:45:39 (UTC +8:00)
 ** desc： ...
 *************************************************/
+using AutumnBox.Basic.Calling;
 using AutumnBox.Basic.Device;
 using AutumnBox.OpenFramework.Extension;
+using AutumnBox.OpenFramework.LeafExtension;
+using AutumnBox.OpenFramework.LeafExtension.Attributes;
+using AutumnBox.OpenFramework.LeafExtension.Fast;
+using AutumnBox.OpenFramework.LeafExtension.Kit;
+using AutumnBox.OpenFramework.Open;
 using Microsoft.Win32;
 
 namespace AutumnBox.CoreModules.Extensions.Fastboot
 {
-    //[ExtName("刷入REC", "en-us:Flash recovery.img")]
-    //[ExtRequiredDeviceStates(DeviceState.Fastboot)]
-    //[ExtIcon("Icons.cd.png")]
-    //internal class EFlashRecovery : OfficialVisualExtension
-    //{
-    //    protected override int VisualMain()
-    //    {
-    //        OpenFileDialog fileDialog = new OpenFileDialog();
-    //        fileDialog.Reset();
-    //        fileDialog.Title = Res("EFlashRecoverySelectingTitle");
-    //        fileDialog.Filter = Res("EFlashRecoverySelectingFilter");
-    //        fileDialog.Multiselect = false;
-    //        if (fileDialog.ShowDialog() != true) return ERR_CANCELED_BY_USER;
-
-    //        var result = GetDeviceFastbootCommand(
-    //            $"flash recovery \"{fileDialog.FileName}\"")
-    //            .To(OutputPrinter)
-    //            .Execute();
-
-    //        if (result.ExitCode == 0)
-    //        {
-                
-    //           GetDeviceFastbootCommand(
-    //           $"boot \"{fileDialog.FileName}\"")
-    //           .To(OutputPrinter)
-    //           .Execute();
-    //        }
-
-    //        WriteExitCode(result.ExitCode);
-    //        return result.ExitCode;
-    //    }
-    //}
+    [ExtName("刷入REC", "en-us:Flash recovery.img")]
+    [ExtRequiredDeviceStates(DeviceState.Fastboot)]
+    [ExtIcon("Icons.cd.png")]
+    [ExtText("Title", "Select a image file", "zh-cn:选择一个文件")]
+    [ExtText("Filter", "Image file(*.img)|*.img|Any file(*.*)|*.*", "zh-cn:镜像文件(*.img)|*.img|全部文件(*.*)|*.*")]
+    internal class EFlashRecovery : LeafExtensionBase
+    {
+        [LMain]
+        public void EntryPoint(ILeafUI ui, IDevice device, TextAttrManager text)
+        {
+            using (ui)
+            {
+                OpenFileDialog fileDialog = new OpenFileDialog();
+                fileDialog.Reset();
+                fileDialog.Title = text["Title"];
+                fileDialog.Filter = text["Filter"];
+                fileDialog.Multiselect = false;
+                if (fileDialog.ShowDialog() != true) ui.EFinish();
+                CommandExecutor executor = new CommandExecutor();
+                executor.OutputReceived += (s, e) => ui.WriteOutput(e.Text);
+                executor.Fastboot(device,$"flash recovery \"{fileDialog.FileName}\"");
+                executor.Fastboot(device,$"boot \"{fileDialog.FileName}\"");
+                ui.Finish();
+            }
+        }
+    }
 }
