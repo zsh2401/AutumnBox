@@ -27,6 +27,9 @@ namespace AutumnBox.CoreModules.Extensions.Fastboot
         {
             using (ui)
             {
+                ui.Title = this.GetName();
+                ui.Icon = this.GetIconBytes();
+                ui.Show();
                 OpenFileDialog fileDialog = new OpenFileDialog();
                 fileDialog.Reset();
                 fileDialog.Title = textManager["EFlashBootSelectingTitle"];

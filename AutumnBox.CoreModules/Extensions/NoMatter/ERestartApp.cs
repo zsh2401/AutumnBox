@@ -8,20 +8,21 @@ namespace AutumnBox.CoreModules.Extensions.NoMatter
 {
     [ExtName("Restart AutumnBox","zh-CN:重启秋之盒")]
     [ExtAuth("zsh2401","zh-cn:秋之盒官方")]
-    [ExtMinApi(8)]
-    [ExtTargetApi(8)]
     [ExtHide]
     [ContextPermission(CtxPer.High)]
     [ExtIcon("Icons.restart.png")]
     [ExtRequiredDeviceStates(LeafConstants.NoMatter)]
+    [ExtText("msg","Reboot to which mode?","zh-cn:重启到哪一个模式?")]
+    [ExtText("user", "用户", "zh-cn:User")]
+    [ExtText("admin", "管理员", "zh-cn:Administrator")]
     internal class ERestartApp : LeafExtensionBase
     {
         [LMain]
-        public int Main(IUx ux,IAppManager app)
+        public int Main(IUx ux, IAppManager app,TextAttrManager text)
         {
-            string msg = CoreLib.Current.Languages.Get("ERestartAppMsg");
-            string btnAdmin = CoreLib.Current.Languages.Get("ERestartAppBtnAdmin");
-            string btnNormal = CoreLib.Current.Languages.Get("ERestartAppBtnNormal");
+            string msg = text["msg"];
+            string btnAdmin = text["admin"];
+            string btnNormal = text["user"];
             ChoiceResult choiceResult = ux.DoChoice(msg, btnAdmin, btnNormal);
             switch (choiceResult)
             {

@@ -9,6 +9,7 @@ using AutumnBox.CoreModules.Aspect;
 using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.LeafExtension;
 using AutumnBox.OpenFramework.LeafExtension.Attributes;
+using AutumnBox.OpenFramework.LeafExtension.Fast;
 using AutumnBox.OpenFramework.LeafExtension.Kit;
 using AutumnBox.OpenFramework.Open;
 
@@ -27,6 +28,9 @@ namespace AutumnBox.CoreModules.Extensions.Fastboot
         {
             using (ui)
             {
+                ui.Title = this.GetName();
+                ui.Icon = this.GetIconBytes();
+                ui.Show();
                 if (!ui.DoYN(textManager["warn"])) return;
                 if (!ui.DoYN(textManager["warn2"])) return;
                 CommandExecutor executor = new CommandExecutor();

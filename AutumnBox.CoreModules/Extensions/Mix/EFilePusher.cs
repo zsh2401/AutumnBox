@@ -3,9 +3,16 @@
 ** date:  2018/8/13 9:53:12 (UTC +8:00)
 ** desc： ...
 *************************************************/
+using AutumnBox.Basic.Calling;
 using AutumnBox.Basic.Data;
+using AutumnBox.Basic.Device;
 using AutumnBox.Logging;
 using AutumnBox.OpenFramework.Extension;
+using AutumnBox.OpenFramework.LeafExtension;
+using AutumnBox.OpenFramework.LeafExtension.Attributes;
+using AutumnBox.OpenFramework.LeafExtension.Fast;
+using AutumnBox.OpenFramework.LeafExtension.Kit;
+using AutumnBox.OpenFramework.Open;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -14,88 +21,36 @@ using System.Threading;
 
 namespace AutumnBox.CoreModules.Extensions.Mix
 {
-    //[ExtName("推送文件到手机主目录", "en-us:Push file to device")]
-    //[ExtIcon("Icons.filepush.png")]
-    //[ExtRequiredDeviceStates(Basic.Device.DeviceState.Poweron | Basic.Device.DeviceState.Recovery)]
-    //internal class EFilePusher : OfficialVisualExtension
-    //{
-    //    private string _latestLine = null;
-    //    protected override void OutputPrinter(OutputReceivedEventArgs e)
-    //    {
-    //        _latestLine = e.Text;
-    //        //base.OutputPrinter(e);
-    //        //ParseAndShowOnUI(e.Text);
-    //    }
-    //    private bool _cancelReadingLoop = false;
-    //    private void ReadingLoop()
-    //    {
-    //        while (!_cancelReadingLoop)
-    //        {
-    //            Logger.Info(_latestLine);
-    //            WriteLine(_latestLine);
-    //            ParseAndShowOnUI(_latestLine);
-    //            Thread.Sleep(1000);
-    //        }
-    //    }
-    //    static readonly Regex rg12 = new Regex("\\ (.*?)\\%");
-    //    static readonly Regex rg3 = new Regex("\\[(.*?)\\%");
-    //    private void ParseAndShowOnUI(string msg)
-    //    {
-    //        Match m;
-    //        try
-    //        {
-    //            m = rg12.Match(msg);
-    //            if (!m.Success)
-    //            {
-    //                m = rg3.Match(msg);
-    //            }
-    //            var r = m.Result("$1");
-    //            App.RunOnUIThread(() =>
-    //            {
-    //                Progress = double.Parse(r);
-    //                Tip = r.ToString() + "%";
-    //            });
-    //        }
-    //        catch (Exception)
-    //        {
-    //            //Logger.Warn(this, "parse progress text failed", se);
-    //        }
-    //    }
-    //    protected override int VisualMain()
-    //    {
-    //        new Thread(ReadingLoop).Start();
-    //        bool? dialogResult = null;
-    //        string seleFile = null;
-    //        App.RunOnUIThread(() =>
-    //        {
-    //            Microsoft.Win32.OpenFileDialog fileDialog = new Microsoft.Win32.OpenFileDialog();
-    //            fileDialog.Reset();
-    //            fileDialog.Title = Res("EFilePusherSelectingTitle");
-    //            fileDialog.Filter = Res("EFilePusherSelectingFilter");
-    //            fileDialog.Multiselect = false;
-    //            dialogResult = fileDialog.ShowDialog();
-    //            seleFile = fileDialog.FileName;
-    //        });
-    //        if (dialogResult != true) return ERR_CANCELED_BY_USER;
-    //        FileInfo fileInfo = new FileInfo(seleFile);
-    //        try
-    //        {
-    //            return GetDeviceAdbCommand($"push \"{fileInfo.FullName}\" \"/sdcard/{fileInfo.Name}\"")
-    //                .To(OutputPrinter)
-    //                .Execute()
-    //                .ExitCode;
-    //        }
-    //        catch (Exception ex)
-    //        {
-    //            Logger.Warn("file pushing failed", ex);
-    //            WriteLineAndSetTip(Res("EFilePusherFailed"));
-    //            return ERR;
-    //        }
-    //    }
-    //    protected override void OnDestory(object args)
-    //    {
-    //        base.OnDestory(args);
-    //        _cancelReadingLoop = true;
-    //    }
-    //}
+    [ExtName("推送文件到手机主目录", "en-us:Push file to device")]
+    [ExtIcon("Icons.filepush.png")]
+    [ExtRequiredDeviceStates(DeviceState.Poweron | DeviceState.Recovery)]
+    [ExtText("Title","","zh-cn:")]
+    [ExtText("Filter", "", "zh-cn:")]
+    internal class EFilePusher : LeafExtensionBase
+    {
+        [LMain]
+        public void EntryPoint(ILeafUI ui, IDevice device,TextAttrManager text)
+        {
+            using (ui)
+            {
+                bool? dialogResult = null;
+                string seleFile = null;
+                ui.RunOnUIThread(() =>
+                {
+                    Microsoft.Win32.OpenFileDialog fileDialog = new Microsoft.Win32.OpenFileDialog();
+                    fileDialog.Reset();
+                    fileDialog.Title = text["Title"];
+                    fileDialog.Filter = text["Filter"];
+                    fileDialog.Multiselect = false;
+                    dialogResult = fileDialog.ShowDialog();
+                    seleFile = fileDialog.FileName;
+                });
+                if (dialogResult != true) ui.EShutdown();
+                FileInfo fileInfo = new FileInfo(seleFile);
+                CommandExecutor executor = new CommandExecutor();
+                var result = executor.Fastboot(device,$"push \"{fileInfo.FullName}\" \"/sdcard/{fileInfo.Name}\"");
+                ui.Finish(result.ExitCode);
+            }
+        }
+    }
 }
