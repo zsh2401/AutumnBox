@@ -271,6 +271,9 @@
     <Compile Include="View\Controls\MainMenu.xaml.cs">
       <DependentUpon>MainMenu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Controls\RebootBar.xaml.cs">
+      <DependentUpon>RebootBar.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\CstPreview.xaml.cs">
       <DependentUpon>CstPreview.xaml</DependentUpon>
     </Compile>
@@ -298,20 +301,11 @@
     <Compile Include="View\Panel\PanelCst.xaml.cs">
       <DependentUpon>PanelCst.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Panel\PanelCurrentDevice.xaml.cs">
-      <DependentUpon>PanelCurrentDevice.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\Panel\PanelDefaultInformation.xaml.cs">
       <DependentUpon>PanelDefaultInformation.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Panel\PanelDeviceDetails.xaml.cs">
       <DependentUpon>PanelDeviceDetails.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Panel\PanelDevices.xaml.cs">
-      <DependentUpon>PanelDevices.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Panel\PanelExtension.xaml.cs">
-      <DependentUpon>PanelExtension.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Panel\PanelHome.xaml.cs">
       <DependentUpon>PanelHome.xaml</DependentUpon>
@@ -324,9 +318,6 @@
     </Compile>
     <Compile Include="View\Panel\PanelMore.xaml.cs">
       <DependentUpon>PanelMore.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Panel\PanelReboot.xaml.cs">
-      <DependentUpon>PanelReboot.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Panel\PanelTips.xaml.cs">
       <DependentUpon>PanelTips.xaml</DependentUpon>
@@ -529,6 +520,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="View\Controls\RebootBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\CstPreview.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -565,23 +560,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\Panel\PanelCurrentDevice.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="View\Panel\PanelDefaultInformation.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
     <Page Include="View\Panel\PanelDeviceDetails.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\Panel\PanelDevices.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\Panel\PanelExtension.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -598,10 +581,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="View\Panel\PanelMore.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\Panel\PanelReboot.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

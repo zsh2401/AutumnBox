@@ -37,11 +37,8 @@
                 <StackPanel
                       Margin="30"
                       Visibility="{Binding Converter={StaticResource ObjectEqualsToVisibilityConverter},ConverterParameter=1, Path=Status}" >
-                    <materialDesign:PackIcon Kind="SmsFailed" Height="25" Width="25" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     <TextBlock Text="{DynamicResource PanelFailed}" Foreground="Gray" HorizontalAlignment="Center"/>
                 </StackPanel>
-
-
             </Grid>
         </Expander>
     </Grid>

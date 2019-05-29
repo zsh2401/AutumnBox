@@ -6,6 +6,7 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:viewmodel="clr-namespace:AutumnBox.GUI.ViewModel"
              xmlns:local="clr-namespace:AutumnBox.GUI.View.Panel"
+             xmlns:controls="clr-namespace:AutumnBox.GUI.View.Controls"
              FontFamily="{DynamicResource AutumnBox.Font}"
              FontSize="12"
              mc:Ignorable="d">
@@ -17,7 +18,7 @@
             <StackPanel DockPanel.Dock="Top" Margin="0" Orientation="Vertical">
                 <TextBlock TextAlignment="Center" Margin="0,0,0,0" Text="{Binding StateString}" FontSize="40"/>
                 <TextBlock TextAlignment="Center" Margin="2" FontSize="15" Text="{Binding StateTip}"/>
-                <local:PanelReboot HorizontalAlignment="Center"/>
+                <controls:RebootBar HorizontalAlignment="Center"/>
             </StackPanel>
             <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
                 <StackPanel DockPanel.Dock="Left" Width="200">
