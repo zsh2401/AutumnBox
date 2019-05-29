@@ -1,22 +1,19 @@
-﻿using AutumnBox.OpenFramework.Content;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Text;
 
 namespace AutumnBox.OpenFramework.Open.Impl
 {
-    public class StorageManagerImpl : IStorageManager
+    internal class StorageManagerImpl : IStorageManager
     {
-        private readonly object requester;
+        private readonly string storageId;
         private const string CACHE_DIR = "cache";
         private const string FILES_DIR = "files";
         private const string JSON_EXT = ".ajson";
         private const string FILE_EXT = ".aextf";
-        public StorageManagerImpl(object requester)
+        public StorageManagerImpl(string storageId)
         {
-            this.requester = requester ?? throw new ArgumentNullException(nameof(requester));
+            this.storageId = storageId ?? throw new ArgumentNullException(nameof(storageId));
             Init();
         }
         public DirectoryInfo CacheDirectory { get; private set; }
@@ -25,8 +22,8 @@ namespace AutumnBox.OpenFramework.Open.Impl
         private void Init()
         {
             /*初始化Chief Directory*/
-            string assemblyName = requester.GetType().Assembly.GetName().Name;
-            string chiefPath = Path.Combine(BuildInfo.DEFAULT_EXTENSION_PATH, assemblyName);
+            string chiefDirName = storageId.GetHashCode().ToString();
+            string chiefPath = Path.Combine(BuildInfo.DEFAULT_EXTENSION_PATH, chiefDirName);
             ChiefDirectory = new DirectoryInfo(chiefPath);
             if (!ChiefDirectory.Exists) ChiefDirectory.Create();
 

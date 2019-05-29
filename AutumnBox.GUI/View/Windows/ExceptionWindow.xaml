@@ -1,10 +1,14 @@
-﻿<Window x:Class="AutumnBox.GUI.View.Windows.ExceptionWindow"
+﻿<controls:BlurWindow
+    xmlns:controls="clr-namespace:HandyControl.Controls;assembly=HandyControl"
+    x:Class="AutumnBox.GUI.View.Windows.ExceptionWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AutumnBox.GUI.View.Windows"
         mc:Ignorable="d"
+    Style="{StaticResource WindowBlur}"
+    ShowTitle="True"
         FontFamily="{DynamicResource AutumnBox.Font}"
         WindowStartupLocation="CenterOwner"
         MinHeight="300" MinWidth="500"
@@ -16,9 +20,8 @@
                 <TextBlock FontSize="30" Foreground="OrangeRed" Text="{Binding MessageTitle}" TextWrapping="Wrap"/>
                 <TextBlock FontSize="15" Text="{Binding Sketch}" TextWrapping="Wrap"/>
             </StackPanel>
-            <Button Click="Button_Click" Width="100" Content="{DynamicResource btnCopy}" DockPanel.Dock="Top"></Button>
+            <Button Click="Button_Click" Width="100" Content="{DynamicResource Copy}" DockPanel.Dock="Top"></Button>
             <TextBox TextWrapping="Wrap" IsReadOnly="True" DockPanel.Dock="Bottom" Style="{x:Null}" Margin="5" Text="{Binding ExceptionMessage}"/>
         </DockPanel>
-
     </Grid>
-</Window>
+</controls:BlurWindow>

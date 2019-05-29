@@ -1,4 +1,6 @@
-﻿<Window x:Class="AutumnBox.GUI.View.Windows.MessageWindow"
+﻿<controls:BlurWindow
+    xmlns:controls="clr-namespace:HandyControl.Controls;assembly=HandyControl"
+    x:Class="AutumnBox.GUI.View.Windows.MessageWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -7,7 +9,9 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         FontFamily="{DynamicResource AutumnBox.Font}"
-        WindowStyle="ToolWindow"
+        ResizeMode="NoResize"
+    Style="{StaticResource WindowBlur}"
+    ShowTitle="True"
         WindowStartupLocation="CenterOwner"
         Title="{Binding MsgTitle}" MinHeight="220" MinWidth="460" Height="220" Width="460" >
     <Grid>
@@ -18,4 +22,4 @@
             </ScrollViewer>
         </DockPanel>
     </Grid>
-</Window>
+</controls:BlurWindow>

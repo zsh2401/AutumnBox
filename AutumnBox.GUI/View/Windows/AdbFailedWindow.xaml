@@ -1,4 +1,6 @@
-﻿<Window x:Class="AutumnBox.GUI.View.Windows.AdbFailedWindow"
+﻿<controls:BlurWindow
+    xmlns:controls="clr-namespace:HandyControl.Controls;assembly=HandyControl"
+    x:Class="AutumnBox.GUI.View.Windows.AdbFailedWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -8,6 +10,7 @@
         ResizeMode="NoResize"
         mc:Ignorable="d"
         WindowStartupLocation="CenterOwner"
+    Style="{StaticResource WindowBlur}"
         FontFamily="{DynamicResource AutumnBox.Font}"
         Title="{DynamicResource AdbFailedWindowTitle}" Width="400" Height="400">
     <Window.DataContext>
@@ -25,4 +28,4 @@
                 <TextBox Height="140" TextWrapping="Wrap" Margin="5" IsReadOnly="True"  x:Name="tbOutput"/>
             </StackPanel>
     </Grid>
-</Window>
+</controls:BlurWindow>

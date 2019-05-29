@@ -6,8 +6,7 @@
         xmlns:local="clr-namespace:AutumnBox.GUI.View.Windows"
         xmlns:viewmodel="clr-namespace:AutumnBox.GUI.ViewModel"
         mc:Ignorable="d"
-        FontFamily="Microsoft YaHei UI"
-        Background="Black"
+        FontFamily="{DynamicResource AutumnBox.Font}"
         WindowStartupLocation="CenterScreen" MinHeight="525" MinWidth="800"
         Title="{Binding Title}">
     <Window.DataContext>

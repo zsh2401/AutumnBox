@@ -19,10 +19,10 @@
         <DockPanel>
             <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom">
                 <Grid Width="150">
-                    <Button FontSize="12" HorizontalAlignment="Center" Click="Button_Click_1" Margin="5" Style="{DynamicResource MaterialDesignFlatButton}" Content="{Binding BtnNO}"/>
+                    <Button FontSize="12" HorizontalAlignment="Center" Click="Button_Click_1" Margin="5"  Content="{Binding BtnNO}"/>
                 </Grid>
                 <Grid Width="150">
-                    <Button FontSize="12" HorizontalAlignment="Center" Click="Button_Click" Margin="5" Style="{DynamicResource MaterialDesignFlatButton}" Content="{Binding BtnYES}"/>
+                    <Button FontSize="12" HorizontalAlignment="Center" Click="Button_Click" Margin="5" Content="{Binding BtnYES}"/>
                 </Grid>
 
             </StackPanel>

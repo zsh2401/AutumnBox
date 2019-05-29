@@ -11,6 +11,18 @@ namespace AutumnBox.GUI.ViewModel
 {
     class VMMainMenu : ViewModelBase
     {
+        public bool ShowDebugWindowNextTime
+        {
+            get
+            {
+                return Properties.Settings.Default.ShowDebuggingWindowNextLaunch;
+            }
+            set
+            {
+                Properties.Settings.Default.ShowDebuggingWindowNextLaunch = value;
+                RaisePropertyChanged();
+            }
+        }
         public ICommand Donate { get; }
         public ICommand OpenAbout { get; }
         public ICommand Exit { get; }

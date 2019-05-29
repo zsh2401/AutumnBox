@@ -19,7 +19,7 @@ namespace AutumnBox.GUI.View.Windows
     /// <summary>
     /// ExceptionWindow.xaml 的交互逻辑
     /// </summary>
-    public partial class ExceptionWindow : Window, INotifyPropertyChanged
+    public partial class ExceptionWindow : INotifyPropertyChanged
     {
         public string MessageTitle
         {

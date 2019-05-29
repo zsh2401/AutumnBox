@@ -16,7 +16,7 @@
         </StackPanel>
         <DockPanel DockPanel.Dock="Top"  Margin="10">
             <TextBlock DockPanel.Dock="Top" FontSize="18" Foreground="OrangeRed" TextWrapping="Wrap" Text="AutumnBox遇到了毁灭性的问题" VerticalAlignment="Top" Margin="0"/>
-            <TextBox DockPanel.Dock="Bottom" x:Name="TxtBxStackTrace" TextWrapping="Wrap" Text="Fuck!" />
+            <TextBox Height="200" DockPanel.Dock="Bottom" x:Name="TxtBxStackTrace" TextWrapping="Wrap" Text="Fuck!" />
         </DockPanel>
     </DockPanel>
 </Window>

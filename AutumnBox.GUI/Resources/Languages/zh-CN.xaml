@@ -19,31 +19,32 @@
     
     <s:String x:Key="CurrentVersionHasBeenBanned">此版本秋之盒已被禁用!</s:String>
     
-    <s:String x:Key="MenuFile">文件(_F)</s:String>
-     <s:String x:Key="MenuRestart">重启秋之盒(_R)</s:String>
-    <s:String x:Key="MenuLoggingWindow">日志窗口(_D)</s:String>
-    <s:String x:Key="MenuExit">退出(_X)</s:String>
-     <s:String x:Key="MenuEdit">编辑(_E)</s:String>
-    <s:String x:Key="MenuSettings">设置(_S)</s:String>
-    <s:String x:Key="MenuTerminatal">终端(_T)</s:String>
-    <s:String x:Key="MenuCMD">ADB命令行(_C)</s:String>
-    <s:String x:Key="MenuPS">ADB命令行-Powershell(_P)</s:String>
-    <s:String x:Key="MenuHelp">帮助(_H)</s:String>
-    <s:String x:Key="MenuGuide">说明书(_G)</s:String>
-    <s:String x:Key="MenuCheckUpdate">检查更新(_U)</s:String>
-    <s:String x:Key="MenuUpdateLog">更新日志</s:String>
-    <s:String x:Key="MenuOpenSource">开源相关(_O)</s:String>
-    <s:String x:Key="MenuAbout">关于秋之盒(_A)</s:String>
-     <s:String x:Key="MenuExtension">拓展模块(_X)</s:String>
-     <s:String x:Key="MenuInstallExtension">安装拓展模块(_I)</s:String>
-    <s:String x:Key="MenuLibs">已安装模块信息(_V)</s:String>
-        <s:String x:Key="MenuDonate">捐赠(_N)</s:String>
-        <s:String x:Key="MenuExtensionHelp">如何安装拓展模块?(_H)</s:String>
-       <s:String x:Key="MenuDebug">调试(_D)</s:String>
-           <s:String x:Key="MenuDevDocs">秋之盒模块开发文档(_D)</s:String>
-            <s:String x:Key="MenuOpenExtFloder">打开拓展模块文件夹(_O)</s:String>
-                <s:String x:Key="MenuDlExt">下载拓展模块(_D)</s:String>
-                    <s:String x:Key="MenuOfficialWebsite">官网(_W)</s:String>
+    <s:String x:Key="Menu.File">文件(_F)</s:String>
+     <s:String x:Key="Menu.Restart">重启秋之盒(_R)</s:String>
+    <s:String x:Key="Menu.LoggingWindow">日志窗口(_D)</s:String>
+    <s:String x:Key="Menu.Exit">退出(_X)</s:String>
+     <s:String x:Key="Menu.Edit">编辑(_E)</s:String>
+    <s:String x:Key="Menu.Settings">设置(_S)</s:String>
+    <s:String x:Key="Menu.Terminatal">命令行(_C)</s:String>
+    <s:String x:Key="Menu.CMD">ADB命令行(_V)</s:String>
+    <s:String x:Key="Menu.PS">ADB命令行-Powershell(_B)</s:String>
+    <s:String x:Key="Menu.Help">帮助(_H)</s:String>
+    <s:String x:Key="Menu.Guide">说明书(_G)</s:String>
+    <s:String x:Key="Menu.CheckUpdate">检查更新(_U)</s:String>
+    <s:String x:Key="Menu.UpdateLog">更新日志</s:String>
+    <s:String x:Key="Menu.OpenSource">开源相关(_O)</s:String>
+    <s:String x:Key="Menu.About">关于秋之盒(_A)</s:String>
+     <s:String x:Key="Menu.Extension">拓展模块(_X)</s:String>
+     <s:String x:Key="Menu.InstallExtension">安装拓展模块(_I)</s:String>
+    <s:String x:Key="Menu.Libs">已安装模块信息(_V)</s:String>
+     <s:String x:Key="Menu.Donate">捐赠(_N)</s:String>
+    <s:String x:Key="Menu.ExtensionHelp">如何安装拓展模块?(_H)</s:String>
+   <s:String x:Key="Menu.Debug">调试(_D)</s:String>
+    <s:String x:Key="Menu.DevDocs">秋之盒模块开发文档(_D)</s:String>
+     <s:String x:Key="Menu.OpenExtFloder">打开拓展模块文件夹(_O)</s:String>
+    <s:String x:Key="Menu.DlExt">下载拓展模块(_D)</s:String>
+    <s:String x:Key="Menu.OfficialWebsite">官网(_W)</s:String>
+   <s:String x:Key="Menu.ShowLoggingWindowNextTime">下次启动显示日志窗口</s:String>
     
       <s:String x:Key="BottomBar.Port">端口</s:String>
       <s:String x:Key="BottomBar.AdbVersion">ADB版本</s:String>
@@ -57,6 +58,7 @@
     <s:String x:Key="DeviceBarConnectHelp">如何连接设备?</s:String>
     
     
+          <s:String x:Key="Copy">复制</s:String>
       <s:String x:Key="Home">主页</s:String>
       <s:String x:Key="Functions">功能</s:String>
       <s:String x:Key="More">更多</s:String>

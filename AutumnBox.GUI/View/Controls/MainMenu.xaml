@@ -12,70 +12,71 @@
     </UserControl.DataContext>
     <Grid>
         <Menu DockPanel.Dock="Top">
-            <MenuItem Header="{DynamicResource MenuFile}">
-                <MenuItem Header="{DynamicResource MenuRestart}" Command="{Binding Restart}"/>
-                <MenuItem Command="{Binding Exit}" Header="{DynamicResource MenuExit}" InputGestureText="Alt + F4">
+            <MenuItem Header="{DynamicResource Menu.File}">
+                <MenuItem Header="{DynamicResource Menu.Restart}" Command="{Binding Restart}"/>
+                <MenuItem Command="{Binding Exit}" Header="{DynamicResource Menu.Exit}" InputGestureText="Alt + F4">
                     <MenuItem.Icon>
                         <Image Source="/Resources/MenuIcon/exit.png"></Image>
                     </MenuItem.Icon>
                 </MenuItem>
             </MenuItem>
-            <MenuItem Header="{DynamicResource MenuEdit}">
-                <MenuItem Header="{DynamicResource MenuSettings}" Command="{Binding OpenSettings}">
+            <MenuItem Header="{DynamicResource Menu.Edit}">
+                <MenuItem Header="{DynamicResource Menu.Settings}" Command="{Binding OpenSettings}">
                     <MenuItem.Icon>
                         <Image Source="/Resources/MenuIcon/settings.png"></Image>
                     </MenuItem.Icon>
                 </MenuItem>
             </MenuItem>
-            <MenuItem Header="{DynamicResource MenuTerminatal}">
-                <MenuItem Header="{DynamicResource MenuCMD}" InputGestureText="Alt + T + C" Command="{Binding OpenShell}" CommandParameter="cmd.exe">
+            <MenuItem Header="{DynamicResource Menu.Terminatal}">
+                <MenuItem Header="{DynamicResource Menu.CMD}" InputGestureText="Alt + C + V" Command="{Binding OpenShell}" CommandParameter="cmd.exe">
                     <MenuItem.Icon>
                         <Image Source="/Resources/MenuIcon/cmd.png"></Image>
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Header="{DynamicResource MenuPS}" InputGestureText="Alt + T + P" Command="{Binding OpenShell}" CommandParameter="powershell.exe">
+                <MenuItem Header="{DynamicResource Menu.PS}" InputGestureText="Alt + C + B" Command="{Binding OpenShell}" CommandParameter="powershell.exe">
                     <MenuItem.Icon>
                         <Image Source="/Resources/MenuIcon/ps.png"></Image>
                     </MenuItem.Icon>
                 </MenuItem>
             </MenuItem>
 
-            <MenuItem Header="{DynamicResource MenuExtension}">
-                <MenuItem Header="{DynamicResource MenuExtensionHelp}" Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoHowInstallExt}"/>
-                <MenuItem InputGestureText="ALT + X + D"  Header="{DynamicResource MenuDlExt}" Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoDownloadExtensions}"/>
-                <MenuItem InputGestureText="ALT + X + I" Header="{DynamicResource MenuInstallExtension}" Command="{Binding InstallExtension}"/>
-                <MenuItem InputGestureText="ALT + X + O" Header="{DynamicResource MenuOpenExtFloder}" Command="{Binding OpenExtFloder}"/>
+            <MenuItem Header="{DynamicResource Menu.Extension}">
+                <MenuItem Header="{DynamicResource Menu.ExtensionHelp}" Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoHowInstallExt}"/>
+                <MenuItem InputGestureText="ALT + X + D"  Header="{DynamicResource Menu.DlExt}" Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoDownloadExtensions}"/>
+                <MenuItem InputGestureText="ALT + X + I" Header="{DynamicResource Menu.InstallExtension}" Command="{Binding InstallExtension}"/>
+                <MenuItem InputGestureText="ALT + X + O" Header="{DynamicResource Menu.OpenExtFloder}" Command="{Binding OpenExtFloder}"/>
             </MenuItem>
-            <MenuItem Header="{DynamicResource MenuDebug}">
-                <MenuItem Command="{Binding OpenLoggingWindow}" Header="{DynamicResource MenuLoggingWindow}">
+            <MenuItem Header="{DynamicResource Menu.Debug}">
+                <MenuItem Command="{Binding OpenLoggingWindow}" Header="{DynamicResource Menu.LoggingWindow}">
                     <MenuItem.Icon>
                         <Image Source="/Resources/MenuIcon/debug.png"></Image>
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Header="{DynamicResource MenuDevDocs}" Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoExtensionDevelopDoc}"/>
-                <MenuItem Header="{DynamicResource MenuLibs}" Command="{Binding ViewLibs}"/>
+                <MenuItem Header="{DynamicResource Menu.ShowLoggingWindowNextTime}" IsCheckable="True" IsChecked="{Binding ShowDebugWindowNextTime}"/>
+                <MenuItem Header="{DynamicResource Menu.DevDocs}" Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoExtensionDevelopDoc}"/>
+                <MenuItem Header="{DynamicResource Menu.Libs}" Command="{Binding ViewLibs}"/>
             </MenuItem>
 
-            <MenuItem Header="{DynamicResource MenuHelp}">
-                <MenuItem Header="{DynamicResource MenuDonate}" Command="{Binding Donate}">
+            <MenuItem Header="{DynamicResource Menu.Help}">
+                <MenuItem Header="{DynamicResource Menu.Donate}" Command="{Binding Donate}">
                     <MenuItem.Icon>
                         <Image Source="/Resources/MenuIcon/donate.png"></Image>
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Header="{DynamicResource MenuGuide}" Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoHelp}" InputGestureText="ALT + H + G">
+                <MenuItem Header="{DynamicResource Menu.Guide}" Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoHelp}" InputGestureText="ALT + H + G">
                     <MenuItem.Icon>
                         <Image Source="/Resources/MenuIcon/guide-book.png"></Image>
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Header="{DynamicResource MenuOfficialWebsite}" Command="{Binding OpenUrl}" CommandParameter="{DynamicResource UrlOfficialWebsite}">
+                <MenuItem Header="{DynamicResource Menu.OfficialWebsite}" Command="{Binding OpenUrl}" CommandParameter="{DynamicResource UrlOfficialWebsite}">
                     <MenuItem.Icon>
                         <Image Source="/Resources/MenuIcon/icon.png"></Image>
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Header="{DynamicResource MenuCheckUpdate}" Command="{Binding UpdateCheck}"/>
-                <MenuItem Header="{DynamicResource MenuUpdateLog}" Command="{Binding OpenUpdateLogs}"/>
-                <MenuItem Header="{DynamicResource MenuOpenSource}" Command="{Binding OpenOSInformation}"/>
-                <MenuItem Header="{DynamicResource MenuAbout}" Command="{Binding OpenAbout}"/>
+                <MenuItem Header="{DynamicResource Menu.CheckUpdate}" Command="{Binding UpdateCheck}"/>
+                <MenuItem Header="{DynamicResource Menu.UpdateLog}" Command="{Binding OpenUpdateLogs}"/>
+                <MenuItem Header="{DynamicResource Menu.OpenSource}" Command="{Binding OpenOSInformation}"/>
+                <MenuItem Header="{DynamicResource Menu.About}" Command="{Binding OpenAbout}"/>
             </MenuItem>
 
         </Menu>
