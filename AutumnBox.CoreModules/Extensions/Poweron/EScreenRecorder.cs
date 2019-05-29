@@ -12,7 +12,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron
 {
     [ExtName("屏幕录制器", "en-us:Screen recorder")]
     [ExtAuth("秋之盒官方", "en-us:AutumnBox official")]
-    [ExtHide]
+    [ExtDeveloperMode]
     [ExtRequiredDeviceStates(Basic.Device.DeviceState.Poweron)]
     [ExtVersion(1, 0, 0)]
     [ExtIcon("Icons.recorder.png")]

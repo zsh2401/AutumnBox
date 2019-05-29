@@ -29,13 +29,11 @@ namespace AutumnBox.CoreModules.Extensions.Poweron
                 case OpenFramework.Open.ChoiceResult.Cancel:
                     return ERR_CANCELED_BY_USER;
                 case OpenFramework.Open.ChoiceResult.Left:
-                    //case OpenFramework.Open.ChoiceResult.Deny:
                     int target = Ux.InputNumber(messageInputNumber, min: 100, max: 1000);
                     wm.Density = target;
                     TargetDevice.Reboot2System();
                     return OK;
                 case OpenFramework.Open.ChoiceResult.Right:
-                    //case OpenFramework.Open.ChoiceResult.Accept:
                     wm.ResetDensity();
                     TargetDevice.Reboot2System();
                     return OK;

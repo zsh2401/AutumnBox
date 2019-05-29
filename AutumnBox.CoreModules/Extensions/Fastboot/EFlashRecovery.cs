@@ -39,8 +39,8 @@ namespace AutumnBox.CoreModules.Extensions.Fastboot
                 CommandExecutor executor = new CommandExecutor();
                 executor.OutputReceived += (s, e) => ui.WriteOutput(e.Text);
                 executor.Fastboot(device,$"flash recovery \"{fileDialog.FileName}\"");
-                executor.Fastboot(device,$"boot \"{fileDialog.FileName}\"");
-                ui.Finish();
+                var result = executor.Fastboot(device,$"boot \"{fileDialog.FileName}\"");
+                ui.Finish(result.ExitCode);
             }
         }
     }

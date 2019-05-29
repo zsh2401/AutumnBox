@@ -21,6 +21,7 @@ namespace AutumnBox.OpenFramework.Open
         {
             this.classExtensionType = classExtensionType ?? throw new ArgumentNullException(nameof(classExtensionType));
             ResourceCollection = new Dictionary<string, ExtTextAttribute>();
+            Load();
         }
         /// <summary>
         /// 进行加载

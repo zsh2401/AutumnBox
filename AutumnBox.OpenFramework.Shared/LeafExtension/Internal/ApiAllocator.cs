@@ -72,7 +72,6 @@ namespace AutumnBox.OpenFramework.LeafExtension.Internal
             else if (type == typeof(TextAttrManager))
             {
                 var m = new TextAttrManager(leafType);
-                m.Load();
                 return m;
             }
             return null;

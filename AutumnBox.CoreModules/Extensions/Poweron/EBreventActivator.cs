@@ -34,7 +34,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron
                 ui.Title = this.GetName();
                 ui.Icon = this.GetIconBytes();
                 ui.Show();
-                ui.ECheckApp(device, "me.piebridge.brevent");
+                ui.AppPropertyCheck(device, "me.piebridge.brevent");
                 CommandExecutor executor = new CommandExecutor();
                 executor.OutputReceived += (s, e) => ui.WriteLine(e.Text);
                 if (executor.AdbShell(device, $"cat {SH_PATH}").ExitCode != 0)
@@ -42,8 +42,8 @@ namespace AutumnBox.CoreModules.Extensions.Poweron
                     ui.ShowMessage(text["firstMsg"]);
                     Thread.Sleep(2000);
                 }
-                executor.AdbShell(device,$"sh {SH_PATH}");
-                ui.Finish();
+                var result = executor.AdbShell(device,$"sh {SH_PATH}");
+                ui.Finish(result.ExitCode);
             }
         }
     }

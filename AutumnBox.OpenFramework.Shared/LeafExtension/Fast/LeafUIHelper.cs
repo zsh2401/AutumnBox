@@ -1,9 +1,16 @@
 ﻿using AutumnBox.Basic.Device;
+using AutumnBox.Basic.Device.Management.AppFx;
+using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.LeafExtension.Kit;
+using AutumnBox.OpenFramework.Open;
 using System.Threading;
 
 namespace AutumnBox.OpenFramework.LeafExtension.Fast
 {
+    [ExtText("msg", "Do you have install the relative app?", "zh-cn:你似乎没有安装对应APP?")]
+    [ExtText("continue", "Continue forcely", "zh-cn:强行继续")]
+    [ExtText("ok", "Ok", "zh-cn:好")]
+    [ExtText("cancel", "Cancel", "zh-cn:取消")]
     /// <summary>
     /// LeafUI相关拓展函数
     /// </summary>
@@ -40,15 +47,24 @@ namespace AutumnBox.OpenFramework.LeafExtension.Fast
             ui.Shutdown();
             Thread.CurrentThread.Abort();
         }
+        static readonly TextAttrManager text = new TextAttrManager(typeof(LeafUIHelper));
         /// <summary>
         /// 检查是否安装APP并询问用户,如果处于不恰当情况,将停止LeafExtension执行流程
         /// </summary>
         /// <param name="ui"></param>
         /// <param name="device"></param>
         /// <param name="packageName"></param>
-        public static void ECheckApp(this ILeafUI ui, IDevice device, string packageName)
+
+        public static void AppPropertyCheck(this ILeafUI ui, IDevice device, string packageName)
         {
-            throw new System.NotImplementedException();
+#pragma warning disable CS0618 // 类型或成员已过时
+            bool isInstall = new PackageManager(device).IsInstall(packageName) == true;
+#pragma warning restore CS0618 // 类型或成员已过时
+            if (!isInstall)
+            {
+                bool? choice = ui.DoChoice(text["msg"], text["ok"], text["continue"], text["cancel"]);
+                if (choice == null || choice == true) ui.EShutdown();
+            }
         }
         /// <summary>
         /// 检查设备安卓版本
