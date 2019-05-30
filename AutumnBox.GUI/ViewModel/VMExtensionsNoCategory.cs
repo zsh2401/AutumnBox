@@ -90,7 +90,7 @@ namespace AutumnBox.GUI.ViewModel
         {
             Docks = from dock in Docks
                     orderby dock.Wrapper.Info[ExtensionInformationKeys.PRIORITY] descending
-                    orderby dock.Usable descending
+                    orderby dock.Execute.CanExecuteProp descending
                     select dock;
         }
         private void InitCommand()

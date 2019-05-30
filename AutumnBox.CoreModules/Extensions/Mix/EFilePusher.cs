@@ -33,6 +33,8 @@ namespace AutumnBox.CoreModules.Extensions.Mix
         {
             using (ui)
             {
+                ui.Title = this.GetName();
+                ui.Show();
                 bool? dialogResult = null;
                 string seleFile = null;
                 ui.RunOnUIThread(() =>
