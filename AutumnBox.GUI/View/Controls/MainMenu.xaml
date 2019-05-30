@@ -80,6 +80,8 @@
                 <MenuItem Header="{DynamicResource Menu.About}" Command="{Binding OpenAbout}"/>
             </MenuItem>
 
+            <MenuItem Header="_Language" ItemsSource="{Binding}" Command="{Binding OpenSettings}"/>
+
         </Menu>
     </Grid>
 </UserControl>
