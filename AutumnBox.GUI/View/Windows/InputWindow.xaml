@@ -14,17 +14,18 @@
         WindowStartupLocation="CenterScreen"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:viewmodel="clr-namespace:AutumnBox.GUI.ViewModel"
-        Title="InputWindow" Height="90" Width="280"
+        Title="InputWindow" Height="120" Width="280"
         MouseDown="Window_MouseDown"
         >
     <Window.DataContext>
         <viewmodel:VMInputWindow/>
     </Window.DataContext>
     <StackPanel Margin="10,10,10,0">
+        <TextBlock Text="{Binding Hint}"/>
         <TextBox BorderBrush="{Binding TextBoxBorderBrush}"  Text="{Binding Input}"/>
         <StackPanel Margin="0,10,0,0" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button  Command="{Binding Cancel}" FontSize="10"  Content="{DynamicResource InputWindowBtnCancel}"/>
-            <Button Command="{Binding Finish}" FontSize="10" Margin="40,0,0,0"  Content="{DynamicResource InputWindowBtnOK}"/>
+            <Button  Command="{Binding Cancel}" FontSize="10"  Content="X"/>
+            <Button Command="{Binding Finish}" FontSize="10" Margin="40,0,0,0"  Content="OK"/>
         </StackPanel>
         
     </StackPanel>

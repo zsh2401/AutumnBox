@@ -27,7 +27,7 @@
                 <StackPanel Width="150" Margin="10">
                     <TextBlock Text="{DynamicResource PanelHomeOpenSource}"  HorizontalAlignment="Center" FontSize="25px" ></TextBlock>
                     <TextBlock Foreground="Gray"  Text="{DynamicResource PanelHomeOpenSourceTip}" TextWrapping="Wrap" FontSize="12px" ></TextBlock>
-                    <Button Margin="5" Command="{Binding ViewOpenSource}"  FontSize="12px" CommandParameter="{DynamicResource AGoOpenSource}" Content="{DynamicResource PanelHomeOpenSourceButton}" ></Button>
+                    <Button Command="{Binding ShowWindowDialog}" CommandParameter="OpenSource" Margin="5"  FontSize="12px" Content="{DynamicResource PanelHomeOpenSourceButton}" ></Button>
                 </StackPanel>
             </StackPanel>
 
@@ -36,7 +36,7 @@
                 <StackPanel Width="150" Margin="10">
                     <TextBlock Foreground="{DynamicResource CardForegroundBrush}" Text="{DynamicResource PanelHomeSupport}" HorizontalAlignment="Center" FontSize="25px" ></TextBlock>
                     <TextBlock Foreground="Gray" Text="{DynamicResource PanelHomeSupportTip}" TextWrapping="Wrap" FontSize="12px" ></TextBlock>
-                    <Button  Margin="5" FontSize="12px" Command="{Binding Donate}" Content="{DynamicResource PanelDonate}" ></Button>
+                    <Button  Command="{Binding ShowWindowDialog}" CommandParameter="Donate" Margin="5" FontSize="12px"  Content="{DynamicResource PanelDonate}" ></Button>
                 </StackPanel>
             </StackPanel>
 

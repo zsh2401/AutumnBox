@@ -1,6 +1,8 @@
 ﻿using AutumnBox.GUI.Model;
 using AutumnBox.GUI.MVVM;
+using AutumnBox.GUI.Properties;
 using AutumnBox.GUI.Util;
+using AutumnBox.GUI.Util.Bus;
 using AutumnBox.GUI.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -32,6 +34,10 @@ namespace AutumnBox.GUI.View.Windows
                 App.Current.Dispatcher.Invoke(() =>
                 {
                     Menu.Visibility = Visibility.Visible;
+                    if (Settings.Default.IsFirstLaunch)
+                    {
+                        WinM.X("Donate");
+                    }
                 });
             };
         }

@@ -293,9 +293,6 @@
     <Compile Include="View\Panel\PanelDeviceDetails.xaml.cs">
       <DependentUpon>PanelDeviceDetails.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Panel\PanelHome.xaml.cs">
-      <DependentUpon>PanelHome.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\Panel\PanelLoading.xaml.cs">
       <DependentUpon>PanelLoading.xaml</DependentUpon>
     </Compile>
@@ -544,10 +541,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="View\Panel\PanelDeviceDetails.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\Panel\PanelHome.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

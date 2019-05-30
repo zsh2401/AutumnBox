@@ -4,6 +4,7 @@
 ** desc： ...
 *************************************************/
 
+using AutumnBox.GUI.Util.Bus;
 using AutumnBox.GUI.Util.Debugging;
 using AutumnBox.Logging;
 using System;
@@ -15,6 +16,16 @@ namespace AutumnBox.GUI.MVVM
 {
     class ViewModelBase : NotificationObject
     {
+        public ICommand ShowWindowDialog
+        {
+            get => _showWindowDialog; set
+            {
+                _showWindowDialog = value;
+                RaisePropertyChanged();
+            }
+        }
+        private ICommand _showWindowDialog;
+
         public ICommand OpenUrl
         {
             get
@@ -47,6 +58,7 @@ namespace AutumnBox.GUI.MVVM
         {
             OpenUrl = new FlexiableCommand(_OpenUrl);
             OpenGoUrl = new FlexiableCommand(_OpenGoUrl);
+            ShowWindowDialog = new FlexiableCommand(_ShowWindowDialog);
         }
 
         protected void _OpenGoUrl(object para)
@@ -71,6 +83,10 @@ namespace AutumnBox.GUI.MVVM
             {
                 SLogger.Warn(this, $"can not open url {para}", e);
             }
+        }
+        protected void _ShowWindowDialog(object para)
+        {
+            WinM.X(para.ToString());
         }
 
         protected virtual bool RaisePropertyChangedOnDispatcher { get; set; } = false;
