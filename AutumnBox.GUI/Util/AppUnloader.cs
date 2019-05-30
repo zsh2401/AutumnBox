@@ -29,7 +29,7 @@ namespace AutumnBox.GUI.Util
         {
             try
             {
-                if (Settings.Default.IsFirstLaunch)
+                if (Settings.Default.IsFirstLaunch && Settings.Default.GuidePassed)
                 {
                     Settings.Default.IsFirstLaunch = false;
                 }

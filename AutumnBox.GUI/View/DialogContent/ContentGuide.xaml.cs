@@ -12,17 +12,33 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using AutumnBox.GUI.Util.Bus;
+using static AutumnBox.GUI.Util.Bus.DialogManager;
 
 namespace AutumnBox.GUI.View.DialogContent
 {
     /// <summary>
     /// ContentGuide.xaml 的交互逻辑
     /// </summary>
-    public partial class ContentGuide : UserControl
+    public partial class ContentGuide : UserControl,IDialog
     {
         public ContentGuide()
         {
             InitializeComponent();
+        }
+
+        public object ViewContent => this;
+
+        public event EventHandler<DialogClosedEventArgs> Closed;
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Closed?.Invoke(this, new DialogClosedEventArgs(false));
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Closed?.Invoke(this, new DialogClosedEventArgs(true));
         }
     }
 }

@@ -89,7 +89,7 @@ namespace AutumnBox.GUI.Util
             InitErrorHandlerSystem();
             InitLanguageSystem();
             //InitThemeSystem();
-            //ShowGuideIfNeed();
+            ShowGuideIfNeed();
             ShowDebugWindowIfNeed();
             PrintInformations();
             InitAutumnBoxBasic();
@@ -160,7 +160,7 @@ namespace AutumnBox.GUI.Util
                 Task<object> dialogTask = null;
                 App.Current.Dispatcher.Invoke(() =>
                 {
-                    //dialogTask = (App.Current.MainWindow as MainWindow).DialogHost.ShowDialog(new ContentGuide());
+                    dialogTask = DialogManager.Show(MainWindowBus.TOKEN_DIALOG,new ContentGuide());
                 });
                 dialogTask.Wait();
                 Settings.Default.GuidePassed = ((dialogTask.Result as bool?) == true);

@@ -9,6 +9,7 @@ namespace AutumnBox.GUI.Util.Bus
     public static class MainWindowBus
     {
         public const string TOKEN_PANEL_MAIN = "main";
+        public const string TOKEN_DIALOG = "main";
         public static MainWindowV2 MainWindow
         {
             get

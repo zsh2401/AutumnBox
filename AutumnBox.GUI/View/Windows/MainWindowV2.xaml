@@ -10,6 +10,7 @@
     xmlns:panel="clr-namespace:AutumnBox.GUI.View.Panel"
     FontFamily="{DynamicResource AutumnBox.Font}"
         mc:Ignorable="d"
+               controls:Dialog.Token="main"
     NonClientAreaHeight="20"
                       Style="{StaticResource WindowWin10}"
         ShowInTaskbar="True"
