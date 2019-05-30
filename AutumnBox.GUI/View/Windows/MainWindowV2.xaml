@@ -1,4 +1,4 @@
-﻿<Window
+﻿<controls:Window
     xmlns:controls="clr-namespace:HandyControl.Controls;assembly=HandyControl" x:Class="AutumnBox.GUI.View.Windows.MainWindowV2"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -10,13 +10,31 @@
     xmlns:panel="clr-namespace:AutumnBox.GUI.View.Panel"
     FontFamily="{DynamicResource AutumnBox.Font}"
         mc:Ignorable="d"
+    NonClientAreaHeight="20"
+                      Style="{StaticResource WindowWin10}"
         ShowInTaskbar="True"
     x:Name="thisWindow"
-        Icon="/Resources/Drawable/icon.png"
-        Title="{Binding Title}" MinHeight="625" MinWidth="930" Height="625" Width="915">
+    Icon="/Resources/Drawable/icon.ico"
+        Title="{Binding Title}" MinHeight="625" MinWidth="930" Height="625" Width="930">
     <Window.DataContext>
         <viewmodel:VMMainWindowV2/>
     </Window.DataContext>
+    <Window.InputBindings>
+        <KeyBinding Modifiers="Ctrl" Key="F1" Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoHelp}" />
+        <KeyBinding Modifiers="Shift" Key="C" Command="{Binding Path=DataContext.OpenShell,ElementName=Menu}" CommandParameter="cmd.exe"/>
+        <KeyBinding Modifiers="Shift" Key="V" Command="{Binding Path=DataContext.OpenShell,ElementName=Menu}" CommandParameter="powershell.exe"/>
+        <KeyBinding Modifiers="Shift" Key="G" Command="{Binding Path=DataContext.DlExt,ElementName=Menu}" />
+        <KeyBinding Modifiers="Shift" Key="O" Command="{Binding Path=DataContext.OpenExtFloder,ElementName=Menu}" />
+        <KeyBinding Modifiers="Shift" Key="D" Command="{Binding Path=DataContext.OpenLoggingWindow,ElementName=Menu}" />
+    </Window.InputBindings>
+    <controls:Window.NonClientAreaContent>
+        <StackPanel Orientation="Horizontal">
+            <Grid>
+                <TextBlock Margin="5" FontSize="13" VerticalAlignment="Center" Text="{DynamicResource LoadingAppName}"/>
+                <controls1:MainMenu x:Name="Menu" Visibility="Hidden"/>
+            </Grid>
+        </StackPanel>
+    </controls:Window.NonClientAreaContent>
     <Grid>
         <ContentControl x:Name="MainGrid">
             <panel:PanelLoading/>
@@ -25,4 +43,4 @@
             <StackPanel controls:Growl.Token="main" controls:Growl.GrowlParent="True" Margin="0,10,10,10"/>
         </ScrollViewer>
     </Grid>
-</Window>
+</controls:Window>

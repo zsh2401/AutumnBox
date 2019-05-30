@@ -342,11 +342,17 @@
     <Compile Include="View\Windows\InputWindow.xaml.cs">
       <DependentUpon>InputWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Windows\LanguageWindow.xaml.cs">
+      <DependentUpon>LanguageWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Windows\LeafWindow.xaml.cs">
       <DependentUpon>LeafWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Windows\LibsWindow.xaml.cs">
       <DependentUpon>LibsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\LicenseWindow.xaml.cs">
+      <DependentUpon>LicenseWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Windows\LoadingWindow.xaml.cs">
       <DependentUpon>LoadingWindow.xaml</DependentUpon>
@@ -613,6 +619,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="View\Windows\LanguageWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Windows\LeafWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -620,6 +630,10 @@
     <Page Include="View\Windows\LibsWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Windows\LicenseWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Windows\LoadingWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

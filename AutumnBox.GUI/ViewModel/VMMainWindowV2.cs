@@ -2,6 +2,7 @@
 using AutumnBox.GUI.Util;
 using AutumnBox.GUI.Util.Bus;
 using AutumnBox.GUI.Util.I18N;
+using System.Windows;
 
 namespace AutumnBox.GUI.ViewModel
 {
@@ -21,6 +22,7 @@ namespace AutumnBox.GUI.ViewModel
             }
         }
         private string _title;
+
 
         public VMMainWindowV2()
         {

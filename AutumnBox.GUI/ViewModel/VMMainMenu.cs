@@ -35,6 +35,7 @@ namespace AutumnBox.GUI.ViewModel
         }
         public ICommand Donate { get; }
         public ICommand OpenAbout { get; }
+        public ICommand ViewLicense { get; }
         public ICommand Exit { get; }
         public ICommand OpenLoggingWindow { get; }
         public ICommand OpenUpdateLogs { get; }
@@ -55,6 +56,7 @@ namespace AutumnBox.GUI.ViewModel
             OpenUpdateLogs = new MVVMCommand(p => WinM.X("UpdateLogs"));
             OpenSettings = new MVVMCommand(p => WinM.X("Settings"));
             UpdateCheck = new MVVMCommand(P => Updater.Do());
+            ViewLicense = new MVVMCommand(p => WinM.X("License"));
             OpenOSInformation = new MVVMCommand(p => WinM.X("OpenSource"));
             OpenShell = new MVVMCommand(p => OpenShellMethod(p?.ToString()));
             InstallExtension = new MVVMCommand(p => ExtensionBridge.Start("EInstallExtension"));

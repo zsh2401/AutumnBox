@@ -1,5 +1,6 @@
 ﻿using AutumnBox.GUI.Model;
 using AutumnBox.GUI.MVVM;
+using AutumnBox.GUI.Util;
 using AutumnBox.GUI.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -26,6 +27,13 @@ namespace AutumnBox.GUI.View.Windows
         public MainWindowV2()
         {
             InitializeComponent();
+            AppLoader.Instance.Loaded += (s, e) =>
+            {
+                App.Current.Dispatcher.Invoke(() =>
+                {
+                    Menu.Visibility = Visibility.Visible;
+                });
+            };
         }
     }
 }

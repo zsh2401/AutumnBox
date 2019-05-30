@@ -15,7 +15,6 @@
         <viewmodel:VMPanelMain/>
     </UserControl.DataContext>
     <DockPanel>
-        <controls1:MainMenu x:Name="Menu" DockPanel.Dock="Top"/>
         <controls1:DeviceBar DockPanel.Dock="Top"  Margin="10"/>
         <controls1:BottomBar DockPanel.Dock="Bottom"/>
         <TabControl x:Name="TabControl" SelectedIndex="{Binding TabSelectedIndex}" Background="Transparent" TabStripPlacement="Left">

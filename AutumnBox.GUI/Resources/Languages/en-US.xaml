@@ -44,6 +44,7 @@
      <s:String x:Key="Menu.OpenExtFloder">_Open extension floder</s:String>
     <s:String x:Key="Menu.DlExt">_Download extensions</s:String>
     <s:String x:Key="Menu.OfficialWebsite">Official _website</s:String>
+            <s:String x:Key="Menu.License">User _license</s:String>
    <s:String x:Key="Menu.ShowLoggingWindowNextTime">Show logging window after next launch</s:String>
        <s:String x:Key="Menu.DebugMode">Debuug mode</s:String>
     

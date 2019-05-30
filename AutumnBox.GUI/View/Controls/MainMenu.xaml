@@ -28,12 +28,12 @@
                 </MenuItem>
             </MenuItem>
             <MenuItem Header="{DynamicResource Menu.Terminatal}">
-                <MenuItem Header="{DynamicResource Menu.CMD}" InputGestureText="Alt + C + V" Command="{Binding OpenShell}" CommandParameter="cmd.exe">
+                <MenuItem Header="{DynamicResource Menu.CMD}" InputGestureText="Shift + C" Command="{Binding OpenShell}" CommandParameter="cmd.exe">
                     <MenuItem.Icon>
                         <Image Source="/Resources/MenuIcon/cmd.png"></Image>
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Header="{DynamicResource Menu.PS}" InputGestureText="Alt + C + B" Command="{Binding OpenShell}" CommandParameter="powershell.exe">
+                <MenuItem Header="{DynamicResource Menu.PS}" InputGestureText="Shift + V" Command="{Binding OpenShell}" CommandParameter="powershell.exe">
                     <MenuItem.Icon>
                         <Image Source="/Resources/MenuIcon/ps.png"></Image>
                     </MenuItem.Icon>
@@ -42,12 +42,12 @@
 
             <MenuItem Header="{DynamicResource Menu.Extension}">
                 <MenuItem Header="{DynamicResource Menu.ExtensionHelp}" Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoHowInstallExt}"/>
-                <MenuItem InputGestureText="ALT + X + D"  Header="{DynamicResource Menu.DlExt}" Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoDownloadExtensions}"/>
-                <MenuItem InputGestureText="ALT + X + I" Header="{DynamicResource Menu.InstallExtension}" Command="{Binding InstallExtension}"/>
-                <MenuItem InputGestureText="ALT + X + O" Header="{DynamicResource Menu.OpenExtFloder}" Command="{Binding OpenExtFloder}"/>
+                <MenuItem InputGestureText="Shift + G" Header="{DynamicResource Menu.DlExt}" Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoDownloadExtensions}"/>
+                <MenuItem Header="{DynamicResource Menu.InstallExtension}" Command="{Binding InstallExtension}"/>
+                <MenuItem InputGestureText="Shift + O" Header="{DynamicResource Menu.OpenExtFloder}" Command="{Binding OpenExtFloder}"/>
             </MenuItem>
             <MenuItem Header="{DynamicResource Menu.Debug}">
-                <MenuItem Command="{Binding OpenLoggingWindow}" Header="{DynamicResource Menu.LoggingWindow}">
+                <MenuItem InputGestureText="Shift + D" Command="{Binding OpenLoggingWindow}" Header="{DynamicResource Menu.LoggingWindow}">
                     <MenuItem.Icon>
                         <Image Source="/Resources/MenuIcon/debug.png"></Image>
                     </MenuItem.Icon>
@@ -64,7 +64,7 @@
                         <Image Source="/Resources/MenuIcon/donate.png"></Image>
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Header="{DynamicResource Menu.Guide}" Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoHelp}" InputGestureText="ALT + H + G">
+                <MenuItem Header="{DynamicResource Menu.Guide}" Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoHelp}" InputGestureText="Ctrl + F1">
                     <MenuItem.Icon>
                         <Image Source="/Resources/MenuIcon/guide-book.png"></Image>
                     </MenuItem.Icon>
@@ -78,9 +78,10 @@
                 <MenuItem Header="{DynamicResource Menu.UpdateLog}" Command="{Binding OpenUpdateLogs}"/>
                 <MenuItem Header="{DynamicResource Menu.OpenSource}" Command="{Binding OpenOSInformation}"/>
                 <MenuItem Header="{DynamicResource Menu.About}" Command="{Binding OpenAbout}"/>
+                <MenuItem Header="{DynamicResource Menu.License}" Command="{Binding ViewLicense}"/>
             </MenuItem>
 
-            <MenuItem Header="_Language" ItemsSource="{Binding}" Command="{Binding OpenSettings}"/>
+            <MenuItem Header="_Language" Command="{Binding OpenSettings}"/>
 
         </Menu>
     </Grid>
