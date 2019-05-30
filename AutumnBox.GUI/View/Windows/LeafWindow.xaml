@@ -25,7 +25,7 @@
         <DockPanel>
             <StackPanel DockPanel.Dock="Top" Margin="5" VerticalAlignment="Top">
                 <controls:LoadingLine Visibility="{Binding LoadingLineVisibility}"/>
-                <!--<ProgressBar BorderBrush="Transparent" Background="Transparent"  Value="{Binding Progress}" Style="{DynamicResource ProgressBarPlayer}"/>-->
+                <ProgressBar Visibility="{Binding ProgressBarVisibility}" BorderBrush="Transparent" Background="Transparent"  Value="{Binding Progress}"/>
                 <TextBlock Margin="10" Text="{Binding Tip}" FontSize="25" />
             </StackPanel>
             <DockPanel Margin="3,0,3,3" DockPanel.Dock="Bottom">

@@ -100,7 +100,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.Dpm
         /// 入口函数
         /// </summary>
         [LMain]
-        public void EntryPoint()
+        public void EntryPoint(ITemporaryFloder tmp,IEmbeddedFileManager emb)
         {
             using (UI)
             {
@@ -135,7 +135,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.Dpm
                     executor.To(e => UI.WriteOutput(e.Text));
 
                     //构造一个dpmpro的控制器
-                    var dpmpro = new DpmPro(executor, CoreLib.Current, Device);
+                    var dpmpro = new DpmPro(executor,emb,tmp, Device);
 
                     //将dpmpro提取到临时目录
                     SetProgress("Extract", 0);

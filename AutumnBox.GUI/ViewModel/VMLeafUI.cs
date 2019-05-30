@@ -39,6 +39,16 @@ namespace AutumnBox.GUI.ViewModel
         }
         private Visibility lv;
 
+        public Visibility ProgressBarVisibility
+        {
+            get => _pbv; set
+            {
+                _pbv = value;
+                RaisePropertyChanged();
+            }
+        }
+        private Visibility _pbv = Visibility.Hidden;
+
         private State CurrentState { get; set; } = State.Initing;
 
         public FlexiableCommand Copy
@@ -51,15 +61,6 @@ namespace AutumnBox.GUI.ViewModel
         }
         private FlexiableCommand _copy;
 
-        public bool IsIndeterminate
-        {
-            get => _isIndeterminate; set
-            {
-                _isIndeterminate = value;
-                RaisePropertyChanged();
-            }
-        }
-        private bool _isIndeterminate;
 
         public LeafWindow View
         {
@@ -103,16 +104,21 @@ namespace AutumnBox.GUI.ViewModel
                 ThrowIfNotRunning();
                 if (value == -1)
                 {
-                    IsIndeterminate = true;
                     _progress = 0;
+                    LoadingLineVisibility = Visibility.Visible;
+                    ProgressBarVisibility = Visibility.Hidden;
                     RaisePropertyChanged();
                     return;
                 }
-                if (value == 100)
+                else if(value < 100)
                 {
                     LoadingLineVisibility = Visibility.Hidden;
+                    ProgressBarVisibility = Visibility.Visible;
                 }
-                IsIndeterminate = false;
+                if (value == 100)
+                {
+                    LoadingLineVisibility = Visibility.Collapsed;
+                }
                 _progress = value;
                 RaisePropertyChanged();
             }
@@ -422,7 +428,7 @@ namespace AutumnBox.GUI.ViewModel
             return (bool)task.Result;
         }
 
-        public string InputString(string hint = null,string _default=null)
+        public string InputString(string hint = null, string _default = null)
         {
             Task<object> task = null;
             App.Current.Dispatcher.Invoke(() =>
