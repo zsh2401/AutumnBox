@@ -64,16 +64,7 @@
       <s:String x:Key="Functions">功能</s:String>
       <s:String x:Key="More">更多</s:String>
     
-     <s:String x:Key="ExtensionsPanelDontSupState">--不支持当前状态</s:String>
-    <s:String x:Key="ExtensionsPanelPoweron">当设备处于开机时可用</s:String>
-    <s:String x:Key="ExtensionsPanelRecovery">当设备处于恢复模式</s:String>
-    <s:String x:Key="ExtensionsPanelSideload">当设备处于Sideload</s:String>
-    <s:String x:Key="ExtensionsPanelFastboot">当设备处于Fastboot</s:String>
-    <s:String x:Key="ExtensionsPanelUnknown">当设备处于未知状态</s:String>
-    <s:String x:Key="ExtensionsPanelUnauthorized">当设备未授权USB调试时可用</s:String>
-     <s:String x:Key="ExtensionsPanelOffline">当设备处于异常离线时可用</s:String>
-    <s:String x:Key="ExtensionsPanelNoMatter">这些模块无需设备连接也可使用</s:String>
-    
+
      <s:String x:Key="Update.Failed">更新检查失败</s:String>
     <s:String x:Key="Update.HaveAUpdate">检测到更新</s:String>
      <s:String x:Key="Update.CheckingUpdate">正在检查更新!</s:String>
@@ -314,12 +305,6 @@
      <s:String x:Key="PanelDeviceDetailsScreenSize">分辨率</s:String>
     <s:String x:Key="PanelDeviceDetailsDensity">DPI</s:String>
     
-    <!--PanelMain-->
-    <s:String x:Key="PanelMainStart">开始</s:String>
-     <s:String x:Key="PanelMainCurrent">针对当前设备</s:String>
-    <s:String x:Key="PanelMainMore">更多</s:String>
-    <s:String x:Key="PanelMainBtnDlExt">下载拓展模块</s:String>
-    
     <!--PanelMore-->
       <s:String x:Key="PanelMoreEvenNoDevice">什么?没连接设备或设备状态异常?这些模块无需设备正常连接!</s:String>
      <s:String x:Key="PanelMoreBtnOpenExtensionFloder">打开拓展模块文件夹</s:String>
@@ -382,21 +367,7 @@
     <s:String x:Key="ContentConnectNetDeviceStateStringFailed">连接失败</s:String>
      <s:String x:Key="ContentConnectNetDeviceBtnConnect">连接</s:String>
     <s:String x:Key="ContentConnectNetDeviceBtnCancel">取消</s:String>
-    
-    <!--ContentDisconnectNetDevice-->
-     <s:String x:Key="ContentDisconnectNetDeviceBtnOnlyDisconnect">仅断开连接</s:String>
-     <s:String x:Key="ContentDisconnectNetDeviceBtnDisableAndDisconnect">关闭网络调试并断开</s:String>
-    <s:String x:Key="ContentDisconnectNetDeviceBtnCancel">取消</s:String>
-    
-    <!--ContentEnableDeviceNetDebugging-->
-    <s:String x:Key="ContentEnableDeviceNetDebuggingBtnCancel">取消</s:String>
-    <s:String x:Key="ContentEnableDeviceNetDebuggingBtnOpen">开启</s:String>
-    <s:String x:Key="ContentEnableDeviceNetDebuggingWarning">警告</s:String>
-    <s:String x:Key="ContentEnableDeviceNetDebuggingWarningContent">开启网络调试有很大风险,这可能导致你的设备被同网络下的人控制,你确定要开启吗?</s:String>
-    <s:String x:Key="ContentEnableDeviceNetDebuggingGetIPFailed">成功开启网络调试,但获取IP失败了,请手动查看手机IP并连接</s:String>
-    <s:String x:Key="ContentEnableDeviceNetDebuggingPortHint">端口号</s:String>
-    <s:String x:Key="ContentEnableDeviceNetDebuggingPortErrorHint">端口格式错误,请检查!</s:String>
-    
+  
     
     <!--ChoiceWindow-->
     <s:String x:Key="ChoiceWindowBtnCancel">取消</s:String>
@@ -421,21 +392,7 @@
     <s:String x:Key="LeafUITipCode-4">模块执行时被杀死</s:String>
      <s:String x:Key="LeafUITipUnknow">非正常结束</s:String>
     
-    <!--RunningWindow-->
-     <s:String x:Key="RunningWindowCopy">复制输出信息</s:String>
-      <s:String x:Key="RunningWindowCopyTip">这些输出信息可以更好的帮助他人解决你的问题</s:String>
-    <s:String x:Key="RunningWindowStateRunning">模块正在运行中~</s:String>
-    <s:String x:Key="RunningWindowStateFinished">执行完毕</s:String>
-     <s:String x:Key="RunningWindowStateError">执行时遇到了错误</s:String>
-    <s:String x:Key="RunningWindowCantStop">此模块无法被终止</s:String>
-    <s:String x:Key="RunningWindowStateCanceledByUser">被用户强制终止</s:String>
-    <s:String x:Key="RunningWindowStopped">已被强制终止</s:String>
-     <s:String x:Key="RunningWindowExceptionOnRunning">[警告]运行时发生严重异常,详情请看日志</s:String>
-     <s:String x:Key="RunningWindowExceptionOnStopping">[警告]终止模块时发生严重异常,详情请看日志</s:String>
     
-    <!--InputWindow-->
-    <s:String x:Key="InputWindowBtnOK">完成</s:String>
-    <s:String x:Key="InputWindowBtnCancel">取消</s:String>
     
         <!--PanelDonte-->
     <s:String x:Key="PanelDonateBtnCaption">↑↑这里有捐赠者记录以及更多互惠互利的经济支援方式哦~</s:String>
@@ -443,27 +400,6 @@
      <s:String x:Key="PanelDonateBtnGotoDonatePage">浏览捐赠名单或其它互惠互利捐赠方式</s:String>
     <s:String x:Key="PanelDonateDescription">赠人玫瑰,手留余香.
     谢谢你对中国软件生态做出的贡献</s:String>
-    
-
-    <!--设备信息标记-->
-    <s:String x:Key="diDeviceState">设备状态</s:String>
-    <s:String x:Key="diSWRoot">Root</s:String>
-    <s:String x:Key="diHWBattery">电量</s:String>
-    <s:String x:Key="diHWSOC">SOC</s:String>
-    <s:String x:Key="diHWStorage">闪存</s:String>
-    <s:String x:Key="diHWRom">Rom</s:String>
-    <s:String x:Key="diHWRam">Ram</s:String>
-    <s:String x:Key="diHWScreen">屏幕</s:String>
-    <s:String x:Key="diModel">设备型号</s:String>
-    <s:String x:Key="diCode">设备代号</s:String>
-    <s:String x:Key="diAndroidVersion">安卓版本</s:String>
-    <!--设备信息标记-->
-
-    <!--PullingWindow使用的-->
-    <s:String x:Key="btnStopPulling">停止导出</s:String>
-    <s:String x:Key="pulling">正在导出,稍安勿躁</s:String>
-    <!--PullingWindow使用的-->
-    
     
 
     
@@ -484,10 +420,4 @@ Newtonsoft.Json  | Google | Android | Linux | C# | Microsoft | MaterialDesignInX
     <s:String x:Key="Contact">联系开发者</s:String>
     <s:String x:Key="Donate">捐赠开发者</s:String>
     
-    <!--加载提示-->
-    <s:String x:Key="ldmsgLoginAccount">正在登陆账户</s:String>
-    <s:String x:Key="ldmsgStartAdb">正在启动ADB服务</s:String>
-    <s:String x:Key=" ldmsgAdbServerFailed">ADB服务启动失败，软件即将退出，请稍后再试</s:String>
-    <s:String x:Key="ldmsgLoadingExtensions">正在加载拓展</s:String>
-    <s:String x:Key="ldmsgStartDeviceMonitor">正在启动设备拔插监听</s:String>
 </ResourceDictionary>

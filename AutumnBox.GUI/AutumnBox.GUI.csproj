@@ -363,9 +363,6 @@
     <Compile Include="View\Windows\OpenSourceWindow.xaml.cs">
       <DependentUpon>OpenSourceWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Windows\RunningWindow.xaml.cs">
-      <DependentUpon>RunningWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\Windows\SettingsWindow.xaml.cs">
       <DependentUpon>SettingsWindow.xaml</DependentUpon>
     </Compile>
@@ -641,10 +638,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="View\Windows\OpenSourceWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\Windows\RunningWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

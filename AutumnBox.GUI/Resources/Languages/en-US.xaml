@@ -2,19 +2,73 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xml:space="preserve"
                     xmlns:s="clr-namespace:System;assembly=mscorlib">
+    <s:String x:Key="LanguageName">English</s:String>
+    <s:String x:Key="LanguageCode">en-US</s:String>
+    
     <s:String x:Key="AppName">AutumnBox</s:String>
-     <s:String x:Key="AppNameWithVersion">AutumnBox 2019.2</s:String>
+     <s:String x:Key="AppNameWithVersion">AutumnBox 2019.6</s:String>
     <s:String x:Key="VersionTypePreview">Preview</s:String>
     <s:String x:Key="VersionTypeStable">Stable</s:String>
     <s:String x:Key="VersionTypeBeta">BETA</s:String>
     
     
-    <s:String x:Key="LanguageName">English</s:String>
-    <s:String x:Key="LanguageCode">en-US</s:String>
-    <s:String x:Key="AppDesc">Open source,free,simple,GUI adb toolbox</s:String>
+
+    <s:String x:Key="AppDesc">Open source,Easy to use,Free</s:String>
     <s:String x:Key="TitleSuffixAdmin">[Administrator]</s:String>
         
       <s:String x:Key="CurrentVersionHasBeenBanned">The current version has been banned</s:String>
+    
+    <s:String x:Key="Menu.File">_File</s:String>
+     <s:String x:Key="Menu.Restart">_Restart</s:String>
+    <s:String x:Key="Menu.LoggingWindow">_Debug window</s:String>
+    <s:String x:Key="Menu.Exit">E_xit</s:String>
+     <s:String x:Key="Menu.Edit">_Edit</s:String>
+    <s:String x:Key="Menu.Settings">_Settings</s:String>
+    <s:String x:Key="Menu.Terminatal">_CommandLine</s:String>
+    <s:String x:Key="Menu.CMD">ADB CMD(_V)</s:String>
+    <s:String x:Key="Menu.PS">Power shell(_B)</s:String>
+    <s:String x:Key="Menu.Help">_Help</s:String>
+    <s:String x:Key="Menu.Guide">_Guide</s:String>
+    <s:String x:Key="Menu.CheckUpdate">_Update check</s:String>
+    <s:String x:Key="Menu.UpdateLog">Update logs</s:String>
+    <s:String x:Key="Menu.OpenSource">_Open source</s:String>
+    <s:String x:Key="Menu.About">_About</s:String>
+     <s:String x:Key="Menu.Extension">E_xtension</s:String>
+     <s:String x:Key="Menu.InstallExtension">_Install extension</s:String>
+    <s:String x:Key="Menu.Libs">_View info of lib installed</s:String>
+     <s:String x:Key="Menu.Donate">Do_nate</s:String>
+    <s:String x:Key="Menu.ExtensionHelp">_How to install extension?</s:String>
+   <s:String x:Key="Menu.Debug">_Debug</s:String>
+    <s:String x:Key="Menu.DevDocs">Extension _documents</s:String>
+     <s:String x:Key="Menu.OpenExtFloder">_Open extension floder</s:String>
+    <s:String x:Key="Menu.DlExt">_Download extensions</s:String>
+    <s:String x:Key="Menu.OfficialWebsite">Official _website</s:String>
+   <s:String x:Key="Menu.ShowLoggingWindowNextTime">Show logging window after next launch</s:String>
+       <s:String x:Key="Menu.DebugMode">Debuug mode</s:String>
+    
+      <s:String x:Key="BottomBar.Port">port</s:String>
+      <s:String x:Key="BottomBar.AdbVersion">ADB version</s:String>
+    <s:String x:Key="BottomBar.Mode">mode</s:String>
+    <s:String x:Key="BottomBar.Mode.RunAsUser">&lt;User&gt;</s:String>
+     <s:String x:Key="BottomBar.Mode.RunAsAdmin">&lt;Administrator&gt;</s:String>
+    <s:String x:Key="BottomBar.Devices.Prev">There are</s:String>
+    <s:String x:Key="BottomBar.Devices.Suf">device(s) connected</s:String>
+     <s:String x:Key="BottomBar.RunningTask">task running</s:String>
+    
+        <s:String x:Key="DeviceBarConnectHelp">How to connect device?</s:String>
+    
+              <s:String x:Key="Copy">Copy</s:String>
+      <s:String x:Key="Home">Home</s:String>
+      <s:String x:Key="Functions">Functions</s:String>
+      <s:String x:Key="More">More</s:String>
+    
+         <s:String x:Key="Update.Failed">Can not check update</s:String>
+    <s:String x:Key="Update.HaveAUpdate">There is a update!</s:String>
+     <s:String x:Key="Update.CheckingUpdate">Checking update</s:String>
+    <s:String x:Key="Update.UpdateNow">Update now!</s:String>
+     <s:String x:Key="Update.IsLatestVersion">There is no update</s:String>
+    <s:String x:Key="Update.Cancel">Cancel</s:String>
+    
     
     <s:String x:Key="UserLicenseTitle">User License</s:String>
     <s:String x:Key="UserLicenseContent">This agreement is still being prepared, and the final interpretation is owned by zsh2401.
