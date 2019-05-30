@@ -81,12 +81,11 @@ namespace AutumnBox.GUI.Util
         }
         private void Load()
         {
-
             CheckOtherAutumnBox();
             OnLoading();
 
-            InitHandyControl();
             InitLogSystem();
+            InitHandyControl();
             InitErrorHandlerSystem();
             InitLanguageSystem();
             //InitThemeSystem();
