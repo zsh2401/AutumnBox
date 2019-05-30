@@ -114,12 +114,6 @@
     <Reference Include="HandyControl, Version=1.5.5.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\HandyControl.1.5.5\lib\net45\HandyControl.dll</HintPath>
     </Reference>
-    <Reference Include="MaterialDesignColors, Version=1.1.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MaterialDesignColors.1.1.3\lib\net45\MaterialDesignColors.dll</HintPath>
-    </Reference>
-    <Reference Include="MaterialDesignThemes.Wpf, Version=2.5.0.1205, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MaterialDesignThemes.2.5.0.1205\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -223,7 +217,6 @@
     <Compile Include="Util\UI\Converters\ObjectEqualsToVisibilityConverter.cs" />
     <Compile Include="Util\UI\HelpButtonHelper.cs" />
     <Compile Include="Util\UI\Sentences.cs" />
-    <Compile Include="Util\UI\TipsWaterfallFlow.cs" />
     <Compile Include="ViewModel\VMBottomBar.cs" />
     <Compile Include="ViewModel\VMConnectDevices.cs" />
     <Compile Include="ViewModel\VMContentChoice.cs" />
@@ -294,9 +287,6 @@
     <Compile Include="View\LeafContent\YNView.xaml.cs">
       <DependentUpon>YNView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Panel\PanelCst.xaml.cs">
-      <DependentUpon>PanelCst.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\Panel\PanelDefaultInformation.xaml.cs">
       <DependentUpon>PanelDefaultInformation.xaml</DependentUpon>
     </Compile>
@@ -314,12 +304,6 @@
     </Compile>
     <Compile Include="View\Panel\PanelMore.xaml.cs">
       <DependentUpon>PanelMore.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Panel\PanelTips.xaml.cs">
-      <DependentUpon>PanelTips.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\TipCard.xaml.cs">
-      <DependentUpon>TipCard.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Windows\AboutWindow.xaml.cs">
       <DependentUpon>AboutWindow.xaml</DependentUpon>
@@ -555,10 +539,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\Panel\PanelCst.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="View\Panel\PanelDefaultInformation.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -580,14 +560,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="View\Panel\PanelMore.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\Panel\PanelTips.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\TipCard.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

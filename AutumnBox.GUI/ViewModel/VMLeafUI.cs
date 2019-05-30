@@ -6,14 +6,12 @@ using AutumnBox.GUI.View.Windows;
 using AutumnBox.OpenFramework.LeafExtension.Kit;
 using AutumnBox.OpenFramework.LeafExtension.View;
 using HandyControl.Controls;
-using MaterialDesignThemes.Wpf;
 using System;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using static AutumnBox.GUI.Util.Bus.DialogManager;
 
 namespace AutumnBox.GUI.ViewModel
 {

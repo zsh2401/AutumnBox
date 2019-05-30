@@ -10,7 +10,6 @@ using AutumnBox.GUI.Util.Custom;
 using AutumnBox.GUI.Util.Debugging;
 using AutumnBox.GUI.Util.I18N;
 using AutumnBox.GUI.Util.Net;
-using AutumnBox.GUI.Util.Net.Getters;
 using AutumnBox.GUI.Util.OpenFxManagement;
 using AutumnBox.GUI.Util.OS;
 using AutumnBox.GUI.View.DialogContent;
@@ -20,13 +19,9 @@ using AutumnBox.Logging.Management;
 using AutumnBox.OpenFramework;
 using HandyControl.Data;
 using HandyControl.Tools;
-using MaterialDesignThemes.Wpf;
 using System;
-using System.Diagnostics;
-using System.IO;
 using System.Linq;
 using System.Management;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace AutumnBox.GUI.Util

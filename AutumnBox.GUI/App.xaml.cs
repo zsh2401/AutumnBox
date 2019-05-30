@@ -45,12 +45,6 @@ namespace AutumnBox.GUI
         {
             base.OnExit(e);
             AppUnloader.Instance.Unload();
-            if (e.ApplicationExitCode == ERR_BANNED_VERSION)
-            {
-                string banned = Resources["CurrentVersionHasBeenBanned"].ToString();
-                string message = $"{banned}{Environment.NewLine}{Banner.Reason}";
-                MessageBox.Show(message, banned, MessageBoxButton.OK, MessageBoxImage.Warning);
-            }
         }
     }
 }

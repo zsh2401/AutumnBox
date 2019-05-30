@@ -100,7 +100,6 @@ namespace AutumnBox.GUI.Util.I18N
         }
         public void ApplyByLanguageCode(string langCode)
         {
-            SLogger<LanguageManager>.Info(langCode);
             var lang = languages.Find((_lang) => _lang.LanCode == langCode);
             if (lang != null)
             {

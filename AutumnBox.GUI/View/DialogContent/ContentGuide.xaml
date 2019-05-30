@@ -34,7 +34,7 @@
                         <TextBlock TextAlignment="Center" FontSize="20" Text="选择你的语言"/>
                         <TextBlock TextAlignment="Center" FontSize="20" Text="Select Your Language"/>
                     </StackPanel>
-                    <ListView Style="{x:Null}" DockPanel.Dock="Bottom" Margin="0,25,0,0" DisplayMemberPath="LangName"  HorizontalContentAlignment="Center" ItemsSource="{Binding Languages}" SelectedItem="{Binding SelectedLanguage}"/>
+                    <ListBox DockPanel.Dock="Bottom" Margin="0,25,0,0" DisplayMemberPath="LangName"  HorizontalContentAlignment="Center" ItemsSource="{Binding Languages}" SelectedItem="{Binding SelectedLanguage}"/>
                 </DockPanel>
             </TabItem>
             <TabItem Header="2" TabIndex="1">

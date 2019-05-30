@@ -11,7 +11,6 @@ namespace AutumnBox.GUI.Util.Net
         public static string Reason { get; private set; }
         public static void Check()
         {
-            SLogger.Debug(TAG, "doing banned-check");
             new VersionBanInfoGetter().Advance().ContinueWith((task) =>
             {
                 SLogger.Debug(TAG, "the banned-check task is over");
@@ -21,9 +20,12 @@ namespace AutumnBox.GUI.Util.Net
                     var result = task.Result;
                     if (result.Banned)
                     {
-                        Reason = result.Reason;
                         App.Current.Dispatcher.Invoke(() =>
                         {
+                            string banned = App.Current.Resources["CurrentVersionHasBeenBanned"].ToString();
+                            string message = $"{banned}{Environment.NewLine}{Reason}";
+                            MessageBox.Show(message, banned, MessageBoxButton.OK, MessageBoxImage.Warning);
+                            Reason = result.Reason;
                             App.Current.Shutdown(App.ERR_BANNED_VERSION);
                         });
                     }
