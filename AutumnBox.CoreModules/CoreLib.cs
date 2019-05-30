@@ -20,18 +20,17 @@ namespace AutumnBox.CoreModules
 
         public override string Name => "AutumnBox Core Modules";
 
-        public override int MinApiLevel => 8;
+        public override int MinApiLevel => 10;
 
-        public override int TargetApiLevel => 8;
+        public override int TargetApiLevel => 10;
         public CoreLib()
         {
             Context = this;
             Current = this;
         }
-        public bool TEST = true;
         public override IEnumerable<IExtensionWrapper> GetWrappers()
         {
-            return TEST ? base.GetWrappers() : null;
+            return base.GetWrappers();
         }
         protected override IExtensionWrapper GetWrapperFor(Type extType)
         {

@@ -24,8 +24,8 @@ namespace AutumnBox.CoreModules.Extensions.Mix
     [ExtName("推送文件到手机主目录", "en-us:Push file to device")]
     [ExtIcon("Icons.filepush.png")]
     [ExtRequiredDeviceStates(DeviceState.Poweron | DeviceState.Recovery)]
-    [ExtText("Title","","zh-cn:")]
-    [ExtText("Filter", "", "zh-cn:")]
+    [ExtText("title","Select a file", "zh-cn:选择一个文件")]
+    [ExtText("filter", "Any file", "zh-cn:任意文件(*.*)|*.*")]
     internal class EFilePusher : LeafExtensionBase
     {
         [LMain]
@@ -39,8 +39,8 @@ namespace AutumnBox.CoreModules.Extensions.Mix
                 {
                     Microsoft.Win32.OpenFileDialog fileDialog = new Microsoft.Win32.OpenFileDialog();
                     fileDialog.Reset();
-                    fileDialog.Title = text["Title"];
-                    fileDialog.Filter = text["Filter"];
+                    fileDialog.Title = text["title"];
+                    fileDialog.Filter = text["filter"];
                     fileDialog.Multiselect = false;
                     dialogResult = fileDialog.ShowDialog();
                     seleFile = fileDialog.FileName;
@@ -48,7 +48,8 @@ namespace AutumnBox.CoreModules.Extensions.Mix
                 if (dialogResult != true) ui.EShutdown();
                 FileInfo fileInfo = new FileInfo(seleFile);
                 CommandExecutor executor = new CommandExecutor();
-                var result = executor.Fastboot(device,$"push \"{fileInfo.FullName}\" \"/sdcard/{fileInfo.Name}\"");
+                executor.OutputReceived += (s, e) => ui.WriteLine(e.Text);
+                var result = executor.Adb(device,$"push \"{fileInfo.FullName}\" \"/sdcard/{fileInfo.Name}\"");
                 ui.Finish(result.ExitCode);
             }
         }
