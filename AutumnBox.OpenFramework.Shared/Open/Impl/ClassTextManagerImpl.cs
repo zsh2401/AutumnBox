@@ -17,7 +17,7 @@ namespace AutumnBox.OpenFramework.Open.Impl
         /// <param name="initSettings"></param>
         public ClassTextManagerImpl(ApiRequest request)
         {
-            this.classExtensionType = request?.RequesterInstance?.GetType() ?? throw new ArgumentNullException(nameof(classExtensionType));
+            this.classExtensionType = request?.RequesterType ?? throw new ArgumentNullException(nameof(request.RequesterType));
             ResourceCollection = new Dictionary<string, ExtTextAttribute>();
             Load();
         }

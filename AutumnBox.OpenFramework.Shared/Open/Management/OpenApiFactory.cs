@@ -1,4 +1,5 @@
-﻿using AutumnBox.OpenFramework.Open.Impl;
+﻿using AutumnBox.Logging;
+using AutumnBox.OpenFramework.Open.Impl;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -95,8 +96,9 @@ namespace AutumnBox.OpenFramework.Open.Management
                 {
                     return Activator.CreateInstance(implType, request);
                 }
-                catch
+                catch (Exception ex)
                 {
+                    SLogger.Warn(nameof(OpenApiFactory), "could not create instance", ex);
                     return Activator.CreateInstance(implType);
                 }
             }
