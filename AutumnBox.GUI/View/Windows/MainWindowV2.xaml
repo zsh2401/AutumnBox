@@ -24,9 +24,10 @@
         <KeyBinding Modifiers="Ctrl" Key="F1" Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoHelp}" />
         <KeyBinding Modifiers="Shift" Key="C" Command="{Binding Path=DataContext.OpenShell,ElementName=Menu}" CommandParameter="cmd.exe"/>
         <KeyBinding Modifiers="Shift" Key="V" Command="{Binding Path=DataContext.OpenShell,ElementName=Menu}" CommandParameter="powershell.exe"/>
-        <KeyBinding Modifiers="Shift" Key="G" Command="{Binding Path=DataContext.DlExt,ElementName=Menu}" />
+        <KeyBinding Modifiers="Shift" Key="G" Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoDownloadExtensions}" />
         <KeyBinding Modifiers="Shift" Key="O" Command="{Binding Path=DataContext.OpenExtFloder,ElementName=Menu}" />
         <KeyBinding Modifiers="Shift" Key="D" Command="{Binding Path=DataContext.OpenLoggingWindow,ElementName=Menu}" />
+        <KeyBinding Modifiers="Shift" Key="R" Command="{Binding Path=DataContext.Restart,ElementName=Menu}" />
     </Window.InputBindings>
     <controls:Window.NonClientAreaContent>
         <StackPanel Orientation="Horizontal">
@@ -40,7 +41,7 @@
         <ContentControl x:Name="MainGrid">
             <panel:PanelLoading/>
         </ContentControl>
-        <ScrollViewer Margin="0,0,0,30" VerticalScrollBarVisibility="Hidden" VerticalAlignment="Bottom" HorizontalAlignment="Right" Grid.Column="1">
+        <ScrollViewer Margin="0,0,0,30" VerticalScrollBarVisibility="Hidden" VerticalAlignment="Top" HorizontalAlignment="Right" Grid.Column="1">
             <StackPanel controls:Growl.Token="main" controls:Growl.GrowlParent="True" Margin="0,10,10,10"/>
         </ScrollViewer>
     </Grid>

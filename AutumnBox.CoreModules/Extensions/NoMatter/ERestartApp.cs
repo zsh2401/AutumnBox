@@ -13,8 +13,8 @@ namespace AutumnBox.CoreModules.Extensions.NoMatter
     [ExtIcon("Icons.restart.png")]
     [ExtRequiredDeviceStates(LeafConstants.NoMatter)]
     [ExtText("msg","Reboot to which mode?","zh-cn:重启到哪一个模式?")]
-    [ExtText("user", "用户", "zh-cn:User")]
-    [ExtText("admin", "管理员", "zh-cn:Administrator")]
+    [ExtText("user", "User", "zh-cn:用户")]
+    [ExtText("admin", "Administrator", "zh-cn:管理员")]
     internal class ERestartApp : LeafExtensionBase
     {
         [LMain]
