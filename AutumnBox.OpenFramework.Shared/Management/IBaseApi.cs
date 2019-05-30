@@ -59,11 +59,6 @@ namespace AutumnBox.OpenFramework.Management
         /// </summary>
         void PlayErr();
         /// <summary>
-        /// 获取控制器
-        /// </summary>
-        /// <returns></returns>
-        IExtensionUIController GetUIController();
-        /// <summary>
         /// 获取是否窗
         /// </summary>
         /// <returns></returns>
