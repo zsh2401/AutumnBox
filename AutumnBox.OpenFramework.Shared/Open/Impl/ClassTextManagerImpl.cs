@@ -13,16 +13,18 @@ namespace AutumnBox.OpenFramework.Open.Impl
         /// <summary>
         /// 构造
         /// </summary>
+        /// <param name="request"></param>
         /// <param name="initSettings"></param>
-        public ClassTextManagerImpl(InitSettings initSettings)
+        public ClassTextManagerImpl(ApiRequest request)
         {
-            this.classExtensionType = initSettings?.Requester?.GetType() ?? throw new ArgumentNullException(nameof(classExtensionType));
+            this.classExtensionType = request?.RequesterInstance?.GetType() ?? throw new ArgumentNullException(nameof(classExtensionType));
             ResourceCollection = new Dictionary<string, ExtTextAttribute>();
+            Load();
         }
         /// <summary>
         /// 进行加载
         /// </summary>
-        public void Load()
+        private void Load()
         {
             var objAttrs = classExtensionType.GetCustomAttributes(typeof(ExtTextAttribute), true);
             var attrs = (ExtTextAttribute[])objAttrs;

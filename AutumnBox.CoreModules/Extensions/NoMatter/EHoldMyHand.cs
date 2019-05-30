@@ -28,26 +28,20 @@ namespace AutumnBox.CoreModules.Extensions.Hidden
     //[ExtMinAndroidVersion(9, 0, 0)]
     internal class EHoldMyHand : LeafExtensionBase
     {
-        [LProperty]
-        private IUx Ux { get; set; }
-
-        [LProperty]
-        private IDevice Device { get; set; }
-
         [LMain]
-        public void Main(IDevice device, IAppManager app, ILogger<string> logger, Context context, ILeafUI ui, IUx ux, Dictionary<string, object> data, TextAttrManager manager)
+        public void Main(IDevice device, ILeafUI ui, IClassTextManager text)
         {
             using (ui)
             {
-                ui.Show();
                 ui.Title = "TEST";
-                var storageManager = OpenApiFactory.Get(typeof(IStorageManager),this,"123");
-                ui.WriteLine(storageManager?.ToString() ?? "null");
+                ui.Show();
+                //storageManager = OpenApiFactory.Get<IStorageManager>(this, "123");
+                ui.WriteLine(text["fuck"]);
                 ui.WriteLine(this.GetType().Namespace);
                 ui.ShowMessage("wow");
                 ui.WriteOutput(ui.DoYN("wwww", "yes", "no"));
                 ui.WriteOutput(ui.DoChoice("www"));
-                ui.WriteOutput(ui.SelectFrom(null,"a","b","c","d"));
+                ui.WriteOutput(ui.SelectFrom(null, "a", "b", "c", "d"));
                 //throw new System.Exception(); ;
                 ui.Finish();
             }

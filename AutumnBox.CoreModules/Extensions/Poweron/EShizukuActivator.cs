@@ -24,7 +24,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron
     {
         private const string PKG_NAME = "moe.shizuku.privileged.api";
         private const string SH_PATH = "/sdcard/Android/data/moe.shizuku.privileged.api/files/start.sh";
-        public void EntryPoint(ILeafUI ui, IDevice device, TextAttrManager text)
+        public void EntryPoint(ILeafUI ui, IDevice device, IClassTextManager text)
         {
             using (ui)
             {

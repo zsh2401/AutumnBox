@@ -18,7 +18,7 @@ namespace AutumnBox.CoreModules.Extensions.NoMatter
     internal class ERestartApp : LeafExtensionBase
     {
         [LMain]
-        public int Main(IUx ux, IAppManager app,TextAttrManager text)
+        public int Main(IUx ux, IAppManager app, IClassTextManager text)
         {
             string msg = text["msg"];
             string btnAdmin = text["admin"];

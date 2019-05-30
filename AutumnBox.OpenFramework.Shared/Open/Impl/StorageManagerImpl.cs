@@ -11,9 +11,10 @@ namespace AutumnBox.OpenFramework.Open.Impl
         private const string FILES_DIR = "files";
         private const string JSON_EXT = ".ajson";
         private const string FILE_EXT = ".aextf";
-        public StorageManagerImpl(InitSettings settings)
+        public StorageManagerImpl(ApiRequest settings)
         {
-            this.storageId = settings.Arg?.ToString() ?? throw new ArgumentNullException(nameof(storageId));
+            var requester = settings?.RequesterInstance ?? throw new ArgumentNullException(nameof(storageId));
+            this.storageId = requester.GetType().Assembly.GetName().ToString().GetHashCode().ToString();
             Init();
         }
         public DirectoryInfo CacheDirectory { get; private set; }

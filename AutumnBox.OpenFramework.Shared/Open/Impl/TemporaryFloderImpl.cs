@@ -17,9 +17,9 @@ namespace AutumnBox.OpenFramework.Open.Impl
 {
     internal class TemporaryFloderImpl : ITemporaryFloder
     {
-        public TemporaryFloderImpl(InitSettings initSettings)
+        public TemporaryFloderImpl(ApiRequest request)
         {
-            var floderName = initSettings.Requester.GetType().Assembly.GetName().Name;
+            var floderName = request.RequesterInstance.GetType().Assembly.GetName().Name;
             var path = System.IO.Path.Combine(BuildInfo.DEFAULT_EXTENSION_PATH, floderName);
             DirInfo = new DirectoryInfo(path);
             Create();

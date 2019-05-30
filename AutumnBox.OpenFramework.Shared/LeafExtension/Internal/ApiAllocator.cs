@@ -15,15 +15,13 @@ namespace AutumnBox.OpenFramework.LeafExtension.Internal
 {
     internal class ApiAllocator
     {
-        private readonly Context ctx;
-        private readonly Type leafType;
+        private readonly LeafExtensionBase leafInstance;
 
         public Dictionary<string, object> ExtData { get; set; }
 
-        public ApiAllocator(Context ctx, Type leafType)
+        public ApiAllocator(LeafExtensionBase leafInstance)
         {
-            this.ctx = ctx ?? throw new ArgumentNullException(nameof(ctx));
-            this.leafType = leafType ?? throw new ArgumentNullException(nameof(leafType));
+            this.leafInstance = leafInstance ?? throw new ArgumentNullException(nameof(leafInstance));
         }
 
         public object GetParamterValue(ParameterInfo pInfo)
@@ -59,23 +57,24 @@ namespace AutumnBox.OpenFramework.LeafExtension.Internal
             }
             else if (type.Name.StartsWith(nameof(ILogger)))
             {
-                return LoggerFactory.Auto(type, leafType);
+                return LoggerFactory.Auto(leafInstance.GetType().Name);
             }
             else if (type == typeof(IDevice))
             {
                 return OpenFx.BaseApi.SelectedDevice;
             }
-            else if (type == typeof(Context))
+            else if (type == typeof(Dictionary<string, object>))
             {
-                return ctx;
+                return ExtData;
             }
-            else if (type == typeof(TextAttrManager))
+            else if (type == typeof(IEmbeddedFileManager))
             {
-                var m = new TextAttrManager(leafType);
-                return m;
+                return new LeafEmb(leafInstance.GetType().Assembly);
             }
-            return null;
-
+            else
+            {
+                return OpenApiFactory.Get(type, leafInstance);
+            }
         }
     }
 }

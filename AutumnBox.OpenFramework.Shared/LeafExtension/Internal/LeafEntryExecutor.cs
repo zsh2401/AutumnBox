@@ -107,22 +107,8 @@ namespace AutumnBox.OpenFramework.LeafExtension.Internal
             var para = GetPara(entry.GetParameters());
             //执行
             object result = null;
-            //try
-            //{
-                result = entry.Invoke(ext, para);
-                Sound.Play(Sound.Id.Ok);
-            //}
-            //catch (TargetInvocationException e)
-            //{
-            //    if (e.InnerException is LeafTerminatedException _e)
-            //    {
-            //        result = _e.ExitCode;
-            //    }
-            //    else
-            //    {
-            //        throw e.InnerException;
-            //    }
-            //}
+            result = entry.Invoke(ext, para);
+            Sound.Play(Sound.Id.Ok);
 
             //处理可能的返回值
             if (result is int exitCode)

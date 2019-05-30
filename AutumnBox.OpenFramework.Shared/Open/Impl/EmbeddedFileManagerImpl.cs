@@ -47,9 +47,9 @@ namespace AutumnBox.OpenFramework.Open.Impl
             }
         }
         private readonly object requester;
-        public EmbeddedFileManagerImpl(InitSettings initSettings)
+        public EmbeddedFileManagerImpl(ApiRequest initSettings)
         {
-            this.requester = initSettings.Requester;
+            this.requester = initSettings.RequesterInstance;
         }
         public IEmbeddedFile Get(string innerResPath)
         {

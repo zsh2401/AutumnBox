@@ -23,7 +23,7 @@ namespace AutumnBox.CoreModules.Extensions.Fastboot
     internal class EFlashBoot : LeafExtensionBase
     {
         [LMain]
-        public void EntryPoint(ILeafUI ui, TextAttrManager textManager,IDevice device)
+        public void EntryPoint(ILeafUI ui, IClassTextManager textManager,IDevice device)
         {
             using (ui)
             {

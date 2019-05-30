@@ -3,6 +3,7 @@ using AutumnBox.Basic.Device.Management.AppFx;
 using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.LeafExtension.Kit;
 using AutumnBox.OpenFramework.Open;
+using AutumnBox.OpenFramework.Open.Management;
 using System.Threading;
 
 namespace AutumnBox.OpenFramework.LeafExtension.Fast
@@ -47,7 +48,7 @@ namespace AutumnBox.OpenFramework.LeafExtension.Fast
             ui.Shutdown();
             Thread.CurrentThread.Abort();
         }
-        static readonly TextAttrManager text = new TextAttrManager(typeof(LeafUIHelper));
+        static readonly IClassTextManager text = OpenApiFactory.Get<IClassTextManager>(typeof(LeafUIHelper));
         /// <summary>
         /// 检查是否安装APP并询问用户,如果处于不恰当情况,将停止LeafExtension执行流程
         /// </summary>

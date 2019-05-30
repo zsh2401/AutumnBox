@@ -31,7 +31,7 @@ namespace AutumnBox.OpenFramework.LeafExtension
             Context = new LeafContext();
 
             //初始化API注入器
-            ApiAllocator apiAllocator = new ApiAllocator(Context, GetType());
+            ApiAllocator apiAllocator = new ApiAllocator(this);
 
             //执行切面
             ExecuteBca();

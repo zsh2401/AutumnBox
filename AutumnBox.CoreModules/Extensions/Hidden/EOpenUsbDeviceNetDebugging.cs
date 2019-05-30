@@ -19,7 +19,7 @@ namespace AutumnBox.CoreModules.Extensions.Hidden
     class EOpenUsbDeviceNetDebugging : LeafExtensionBase
     {
         [LMain]
-        private void EntryPoint(ILeafUI ui, IDevice device, TextAttrManager texts)
+        private void EntryPoint(ILeafUI ui, IDevice device, IClassTextManager texts)
         {
             using (ui)
             {

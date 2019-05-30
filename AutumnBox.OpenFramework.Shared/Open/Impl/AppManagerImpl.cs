@@ -18,7 +18,7 @@ namespace AutumnBox.OpenFramework.Open.Impl
     {
         private readonly IBaseApi sourceApi;
         //private readonly Context ctx;
-        public AppManagerImpl(InitSettings initSettings)
+        public AppManagerImpl(ApiRequest initSettings)
         {
             //this.ctx = ctx;
             this.sourceApi = OpenFx.BaseApi;

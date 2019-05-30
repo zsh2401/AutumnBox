@@ -29,7 +29,7 @@ namespace AutumnBox.CoreModules.Extensions.Mix
     internal class EFilePusher : LeafExtensionBase
     {
         [LMain]
-        public void EntryPoint(ILeafUI ui, IDevice device,TextAttrManager text)
+        public void EntryPoint(ILeafUI ui, IDevice device, IClassTextManager text)
         {
             using (ui)
             {

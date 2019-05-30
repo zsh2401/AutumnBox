@@ -82,7 +82,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.Dpm
         /// TextManager
         /// </summary>
         [LProperty]
-        public TextAttrManager TextManager { get; set; }
+        public IClassTextManager TextManager { get; set; }
 
         /// <summary>
         /// 日志器

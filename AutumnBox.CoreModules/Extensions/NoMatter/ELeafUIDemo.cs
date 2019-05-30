@@ -29,7 +29,7 @@ namespace AutumnBox.CoreModules.Extensions.NoMatter
         /// </param>
         /// <param name="ui">需要获取的UI,将会被LeafExtensionBase进行注入</param>
         [LMain]
-        public void Main(ILeafUI ui, Context context, TextAttrManager textManager)
+        public void Main(ILeafUI ui, Context context, IClassTextManager textManager)
         {
             /*
              * 一定要进行using,此处是为了确保LeafUI被正确释放

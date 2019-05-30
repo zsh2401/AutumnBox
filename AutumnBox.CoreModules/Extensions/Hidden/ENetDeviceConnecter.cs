@@ -21,7 +21,7 @@ namespace AutumnBox.CoreModules.Extensions.Hidden
     class ENetDeviceConnecter : LeafExtensionBase
     {
         [LMain]
-        private void EntryPoint(ILeafUI ui, TextAttrManager texts)
+        private void EntryPoint(ILeafUI ui, IClassTextManager texts)
         {
             using (ui)
             {
@@ -53,7 +53,7 @@ namespace AutumnBox.CoreModules.Extensions.Hidden
             }
         }
 
-        private bool TryGetInputEndPoint(ILeafUI ui, TextAttrManager texts, out IPEndPoint endPoint)
+        private bool TryGetInputEndPoint(ILeafUI ui, IClassTextManager texts, out IPEndPoint endPoint)
         {
             Task<object> dialogTask = ui.ShowDialogById("inputIpEndPoint");
             dialogTask.Wait();
