@@ -1,5 +1,6 @@
 ﻿using AutumnBox.Basic.ManagedAdb;
 using AutumnBox.GUI.MVVM;
+using AutumnBox.GUI.Properties;
 using AutumnBox.GUI.Util.Bus;
 using AutumnBox.GUI.Util.Net;
 using AutumnBox.OpenFramework;
@@ -11,6 +12,15 @@ namespace AutumnBox.GUI.ViewModel
 {
     class VMMainMenu : ViewModelBase
     {
+        public bool DebugMode
+        {
+            get => Settings.Default.DeveloperMode; set
+            {
+                Settings.Default.DeveloperMode = value;
+                MainWindowBus.ReloadExtensionList();
+                RaisePropertyChanged();
+            }
+        }
         public bool ShowDebugWindowNextTime
         {
             get

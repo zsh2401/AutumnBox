@@ -4,7 +4,6 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.Basic.Device;
-using AutumnBox.CoreModules.Aspect;
 using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.LeafExtension;
 using AutumnBox.OpenFramework.LeafExtension.Attributes;
@@ -14,7 +13,6 @@ namespace AutumnBox.CoreModules.Extensions.Mix
 {
     [ExtName("__Reboot to system")]
     [ExtRequiredDeviceStates(AutumnBoxExtension.NoMatter)]
-    [UserAgree("ERebooterAreUSure")]
     [ExtText("aus", "Are you sure to reboot your device?", "zh-cn:你确定要重启吗?")]
     [ExtHide]
     internal class ERebooter : LeafExtensionBase
@@ -28,7 +26,7 @@ namespace AutumnBox.CoreModules.Extensions.Mix
         [LMain]
         public void Main(IDevice device, [LFromData(KEY_REBOOT_OPTION)]int rebootOption, IClassTextManager text, IUx ux)
         {
-            if (!ux.Agree(text["aus"])) return;
+            if (!ux.DoYN(text["aus"])) return;
             switch (rebootOption)
             {
                 case RECOVERY:

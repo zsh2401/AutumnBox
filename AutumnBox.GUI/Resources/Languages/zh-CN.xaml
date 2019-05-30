@@ -45,6 +45,7 @@
     <s:String x:Key="Menu.DlExt">下载拓展模块(_D)</s:String>
     <s:String x:Key="Menu.OfficialWebsite">官网(_W)</s:String>
    <s:String x:Key="Menu.ShowLoggingWindowNextTime">下次启动显示日志窗口</s:String>
+       <s:String x:Key="Menu.DebugMode">调试模式</s:String>
     
       <s:String x:Key="BottomBar.Port">端口</s:String>
       <s:String x:Key="BottomBar.AdbVersion">ADB版本</s:String>

@@ -6,6 +6,11 @@
 using AutumnBox.Basic.Device;
 using AutumnBox.Basic.Device.Management.OS;
 using AutumnBox.OpenFramework.Extension;
+using AutumnBox.OpenFramework.LeafExtension;
+using AutumnBox.OpenFramework.LeafExtension.Attributes;
+using AutumnBox.OpenFramework.LeafExtension.Fast;
+using AutumnBox.OpenFramework.LeafExtension.Kit;
+using AutumnBox.OpenFramework.Open;
 using System.Collections.Generic;
 
 namespace AutumnBox.CoreModules.Extensions.Poweron
@@ -13,37 +18,51 @@ namespace AutumnBox.CoreModules.Extensions.Poweron
     [ExtName("修改DPI", "en-us:Modify dpi without root")]
     [ExtIcon("Icons.dpi.png")]
     [ExtRequiredDeviceStates(Basic.Device.DeviceState.Poweron)]
-    internal class EDpiModifier : AutumnBoxExtension
+    [ExtText("msg", "", "zh-cn:")]
+    [ExtText("left", "", "zh-cn:")]
+    [ExtText("right", "", "zh-cn:")]
+    [ExtText("hint", "", "zh-cn:")]
+    internal class EDpiModifier : LeafExtensionBase
     {
-        public override int Main(Dictionary<string,object> args)
+        [LMain]
+        public void Main(IDevice device, ILeafUI ui, IClassTextManager text)
         {
-            string messageOfChoice = CoreLib.Current.Languages.Get("EDpiModiferMessageOfChoice");
-            string leftOfChoice = CoreLib.Current.Languages.Get("EDpiModiferLeftChoice");
-            string rightOfChoice = CoreLib.Current.Languages.Get("EDpiModiferRightChoice");
-            string messageInputNumber = CoreLib.Current.Languages.Get("EDpiModiferHintOfInputNumber");
-
-            var choiceResult = Ux.DoChoice(messageOfChoice,leftOfChoice,rightOfChoice);
-            var wm = new WindowManager(TargetDevice);
-            switch (choiceResult)
+            string messageOfChoice = text["msg"];
+            string leftOfChoice = text["left"];
+            string rightOfChoice = text["right"];
+            string messageInputNumber = text["hint"];
+            using (ui)
             {
-                case OpenFramework.Open.ChoiceResult.Cancel:
-                    return ERR_CANCELED_BY_USER;
-                case OpenFramework.Open.ChoiceResult.Left:
-                    int target = Ux.InputNumber(messageInputNumber, min: 100, max: 1000);
-                    wm.Density = target;
-                    TargetDevice.Reboot2System();
-                    return OK;
-                case OpenFramework.Open.ChoiceResult.Right:
-                    wm.ResetDensity();
-                    TargetDevice.Reboot2System();
-                    return OK;
-                default:
-                    return ERR;
+                ui.Icon = this.GetIconBytes();
+                ui.Title = this.GetName();
+                ui.Show();
+                var choiceResult = ui.DoChoice(messageOfChoice, rightOfChoice, leftOfChoice);
+                var wm = new WindowManager(device);
+                switch (choiceResult)
+                {
+                    case null:
+                        ui.EShutdown();
+                        break;
+                    case true:
+                        if (int.TryParse(ui.InputString(messageInputNumber), out int target))
+                        {
+                            wm.Density = target;
+                            device.Reboot2System();
+                            ui.EFinish();
+                        }
+                        else
+                        {
+                            ui.Finish(LeafConstants.ERR_CANCELED_BY_USER);
+                        }
+
+                        break;
+                    case false:
+                        wm.ResetDensity();
+                        device.Reboot2System();
+                        ui.EFinish();
+                        break;
+                }
             }
-        }
-        protected override bool OnStopCommand(object args)
-        {
-            return false;
         }
     }
 }

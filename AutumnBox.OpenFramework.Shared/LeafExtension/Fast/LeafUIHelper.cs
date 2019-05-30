@@ -97,9 +97,9 @@ namespace AutumnBox.OpenFramework.LeafExtension.Fast
         /// <param name="btnYes"></param>
         /// <param name="btnNo"></param>
         /// <returns></returns>
-        public static bool EYN(this ILeafUI ui, string msg, string btnYes = null, string btnNo = null)
+        public static void EAgree(this ILeafUI ui, string msg, string btnYes = null, string btnNo = null)
         {
-            throw new System.NotImplementedException();
+            if (ui.DoYN(msg, btnYes, btnNo)) ui.EShutdown();
         }
         /// <summary>
         /// 进行可取消的是否抉择

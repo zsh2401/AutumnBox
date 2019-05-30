@@ -13,12 +13,12 @@
     WindowStartupLocation="CenterOwner"
     FontFamily="{DynamicResource AutumnBox.Font}"
         Title="{DynamicResource AppNameWithVersion}" Height="150" Width="300">
-    <Grid>
-        <StackPanel VerticalAlignment="Top" Margin="10,20,10,10" Orientation="Horizontal">
-                <Image Source="/Resources/Drawable/Icon.ico" Height="40"/>
-                <TextBlock HorizontalAlignment="Center" FontSize="35" Text="{DynamicResource AppNameWithVersion}"/>
-            </StackPanel>
-
-        <TextBlock Margin="0,0,0,20" VerticalAlignment="Bottom" HorizontalAlignment="Center" Text="Copyright © 2017 - 2019 zsh2401,All Rights Reserved"/>
-    </Grid>
+    <StackPanel>
+        <StackPanel VerticalAlignment="Top" Margin="10,10,10,20" Orientation="Horizontal">
+            <Image Source="/Resources/Drawable/Icon.ico" Height="40"/>
+            <TextBlock HorizontalAlignment="Center" FontSize="35" Text="{DynamicResource AppNameWithVersion}"/>
+        </StackPanel>
+        <TextBlock HorizontalAlignment="Center" Text="www.atmb.top"/>
+        <TextBlock Margin="0,5,0,20" VerticalAlignment="Bottom" HorizontalAlignment="Center" Text="Copyright © 2017 - 2019 zsh2401,All Rights Reserved"/>
+    </StackPanel>
 </controls:BlurWindow>

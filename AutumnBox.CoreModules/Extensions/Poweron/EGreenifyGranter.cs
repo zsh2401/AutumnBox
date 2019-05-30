@@ -6,7 +6,6 @@
 using AutumnBox.Basic.Calling;
 using AutumnBox.Basic.Device;
 using AutumnBox.Basic.Device.Management.OS;
-using AutumnBox.CoreModules.Aspect;
 using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.LeafExtension;
 using AutumnBox.OpenFramework.LeafExtension.Attributes;
@@ -44,7 +43,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron
                 ui.Title = this.GetName();
                 ui.Icon = this.GetIconBytes();
                 ui.Show();
-                if (!ui.EYN(text["notice"])) ui.EShutdown();
+                ui.EAgree(text["notice"]);
                 using (var executor = new CommandExecutor())
                 {
                     Version androidVersion = new DeviceBuildPropGetter(device).GetAndroidVersion();

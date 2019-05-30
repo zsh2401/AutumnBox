@@ -19,6 +19,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron
     [ExtRequiredDeviceStates(DeviceState.Poweron)]
     [ExtRequireRoot]
     [ExtIcon("Icons.unlock.png")]
+    [ExtText("reboot", "Reboot device?", "zh-cn:似乎成功了.\n重启设备生效,是否重启?")]
     internal class EUnlockSystemParation : LeafExtensionBase
     {
         [LMain]
@@ -33,6 +34,10 @@ namespace AutumnBox.CoreModules.Extensions.Poweron
                 executor.OutputReceived += (s, e) => ui.WriteLine(e.Text);
                 executor.Adb(device, "root");
                 var result = executor.Adb(device, "disable-verity");
+                if (result.ExitCode == 0 && ui.DoYN(text["reboot"]))
+                {
+                    device.Reboot2System();
+                }
                 ui.Finish(result.ExitCode);
             }
         }

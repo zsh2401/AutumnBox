@@ -5,7 +5,6 @@
 *************************************************/
 using AutumnBox.Basic.Calling;
 using AutumnBox.Basic.Device;
-using AutumnBox.CoreModules.Aspect;
 using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.LeafExtension;
 using AutumnBox.OpenFramework.LeafExtension.Attributes;

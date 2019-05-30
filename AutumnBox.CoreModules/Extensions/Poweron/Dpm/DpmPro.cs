@@ -26,20 +26,22 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.Dpm
             + PATH_OF_COMMAND_CLASS + " {0}";
 
         private readonly CommandExecutor executor;
-        private readonly Context context;
+        private readonly IEmbeddedFileManager emb;
+        private readonly ITemporaryFloder tmp;
         private readonly IDevice device;
 
-        public DpmPro(CommandExecutor executor,Context context, IDevice device) 
+        public DpmPro(CommandExecutor executor, IEmbeddedFileManager emb, ITemporaryFloder tmp, IDevice device)
         {
             this.executor = executor ?? throw new ArgumentNullException(nameof(executor));
-            this.context = context ?? throw new ArgumentNullException(nameof(context));
+            this.emb = emb ?? throw new ArgumentNullException(nameof(emb));
+            this.tmp = tmp ?? throw new ArgumentNullException(nameof(tmp));
             this.device = device ?? throw new ArgumentNullException(nameof(device));
         }
         public void Extract()
         {
-            DirectoryInfo dirInfo = context.Tmp.DirInfo;
+            DirectoryInfo dirInfo = tmp.DirInfo;
             string path = Path.Combine(dirInfo.FullName, PATH_OF_TMP_APK);
-            IEmbeddedFile embFile = context.EmbeddedManager.Get(PATH_OF_EMB_APK);
+            IEmbeddedFile embFile = emb.Get(PATH_OF_EMB_APK);
             using (FileStream fs = File.Open(path, FileMode.OpenOrCreate, FileAccess.ReadWrite))
             {
                 embFile.WriteTo(fs);
@@ -47,10 +49,10 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.Dpm
         }
         public int PushToDevice()
         {
-            DirectoryInfo dirInfo = context.Tmp.DirInfo;
+            DirectoryInfo dirInfo = tmp.DirInfo;
             string path = Path.Combine(dirInfo.FullName, PATH_OF_TMP_APK);
             string command = $"push \"{path}\" {PATH_OF_ATMP_APK}";
-            return executor.Adb(device, command).ExitCode ;
+            return executor.Adb(device, command).ExitCode;
         }
         public int RemoveUsers()
         {

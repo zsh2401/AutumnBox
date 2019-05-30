@@ -21,8 +21,12 @@ namespace AutumnBox.CoreModules.Extensions.NoMatter
     [ExtHide]
     [ContextPermission(CtxPer.High)]
     [ExtRequiredDeviceStates(LeafConstants.NoMatter)]
+    [ExtText("title", "Select extension file(s)", "zh-cn:选择秋之盒拓展模块文件(可多选)")]
+    [ExtText("filter", "Extension File|*.dll;*.atmb;*.odll;*.adll", "zh-cn:秋之盒拓展模块文件|*.dll;*.atmb;*.odll;*.adll")]
     class EInstallExtension : LeafExtensionBase
     {
+        [LProperty]
+        public IClassTextManager Text { get; set; }
         [LMain]
         public void Main(IUx ux, ILeafUI ui, IAppManager app)
         {
@@ -56,8 +60,8 @@ namespace AutumnBox.CoreModules.Extensions.NoMatter
             {
                 OpenFileDialog fileDialog = new OpenFileDialog();
                 fileDialog.Reset();
-                fileDialog.Title = CoreLib.Current.Languages.Get("EInstallExtensionFileDialogTitle");
-                fileDialog.Filter = CoreLib.Current.Languages.Get("EInstallExtensionFileDialogFilter");
+                fileDialog.Title = Text["title"];
+                fileDialog.Filter = Text["filter"];
                 fileDialog.Multiselect = true;
                 selectResult = fileDialog.ShowDialog();
                 result = fileDialog.FileNames;

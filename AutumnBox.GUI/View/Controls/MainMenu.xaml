@@ -52,6 +52,7 @@
                         <Image Source="/Resources/MenuIcon/debug.png"></Image>
                     </MenuItem.Icon>
                 </MenuItem>
+                <MenuItem Header="{DynamicResource Menu.DebugMode}" IsCheckable="True" IsChecked="{Binding DebugMode}"/>
                 <MenuItem Header="{DynamicResource Menu.ShowLoggingWindowNextTime}" IsCheckable="True" IsChecked="{Binding ShowDebugWindowNextTime}"/>
                 <MenuItem Header="{DynamicResource Menu.DevDocs}" Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoExtensionDevelopDoc}"/>
                 <MenuItem Header="{DynamicResource Menu.Libs}" Command="{Binding ViewLibs}"/>
