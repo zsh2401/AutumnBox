@@ -3,6 +3,7 @@ using AutumnBox.GUI.Util.Bus;
 using AutumnBox.GUI.Util.UI;
 using AutumnBox.GUI.View.LeafContent;
 using AutumnBox.GUI.View.Windows;
+using AutumnBox.OpenFramework.LeafExtension;
 using AutumnBox.OpenFramework.LeafExtension.Kit;
 using AutumnBox.OpenFramework.LeafExtension.View;
 using HandyControl.Controls;
@@ -228,7 +229,8 @@ namespace AutumnBox.GUI.ViewModel
                 bool? closeResult = Closing?.Invoke(this, new LeafUIClosingEventArgs());
                 if (closeResult == true)
                 {
-                    e.Cancel = false;
+                    e.Cancel = true;
+                    Finish(LeafConstants.ERR_CANCELED_BY_USER);
                 }
                 else
                 {
