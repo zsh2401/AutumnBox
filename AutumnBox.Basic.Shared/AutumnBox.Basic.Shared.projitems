@@ -99,8 +99,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Exceptions\DeviceNotAliveException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Exceptions\DeviceNotFoundException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Exceptions\PackageNotFoundException.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Extension\ExtensionShared.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Extension\FileInfoExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ManagedAdb\Adb.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ManagedAdb\AdbClient.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ManagedAdb\AdbClientWarpper.cs" />
@@ -117,7 +115,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)MultipleDevices\DevicesGetter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MultipleDevices\DevicesMonitor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MultipleDevices\IDevicesGetter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Util\DeviceCommanderFactory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Util\LinuxReturnCode.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Util\NativeMethods.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Util\Settings.cs" />

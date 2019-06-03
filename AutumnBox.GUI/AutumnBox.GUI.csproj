@@ -320,9 +320,6 @@
     <Compile Include="View\Windows\InputWindow.xaml.cs">
       <DependentUpon>InputWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Windows\LanguageWindow.xaml.cs">
-      <DependentUpon>LanguageWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\Windows\LeafWindow.xaml.cs">
       <DependentUpon>LeafWindow.xaml</DependentUpon>
     </Compile>
@@ -580,10 +577,6 @@
     <Page Include="View\Windows\InputWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\Windows\LanguageWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Windows\LeafWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
