@@ -6,7 +6,9 @@ using System.Management;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using AutumnBox.Basic.Calling.Cmd;
 using AutumnBox.Basic.Data;
+using AutumnBox.Logging;
 
 namespace AutumnBox.Basic.Calling
 {
@@ -38,6 +40,12 @@ namespace AutumnBox.Basic.Calling
         }
         private readonly object _executingLock = new object();
 
+        /// <summary>
+        /// 执行命令
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <param name="args"></param>
+        /// <returns></returns>
         public ICommandResult Execute(string fileName, string args)
         {
             lock (_executingLock)
@@ -85,15 +93,49 @@ namespace AutumnBox.Basic.Calling
 
         private bool isDisposed = false;
 
+        /// <summary>
+        /// 析构本执行器
+        /// </summary>
         public void Dispose()
         {
             isDisposed = true;
             CancelCurrent();
         }
-
+        /// <summary>
+        /// 取消当前执行的任务
+        /// </summary>
         public void CancelCurrent()
         {
-            currentProcess?.KillByTaskKill();
+            if (currentProcess != null)
+                this.KillProcessAndChildren(currentProcess.Id);
+        }
+
+        private void KillProcessAndChildren(int pid)
+        {
+            try
+            {
+                ManagementObjectSearcher searcher = new ManagementObjectSearcher("Select * From Win32_Process Where ParentProcessID=" + pid);
+                ManagementObjectCollection moc = searcher.Get();
+                foreach (ManagementObject mo in moc)
+                {
+                    KillProcessAndChildren(Convert.ToInt32(mo["ProcessID"]));
+                }
+                Kill(pid);
+            }
+            catch (Exception e)
+            {
+                SLogger<HestExecutor>.Warn("Can not cancel current command", e);
+                /* process already exited */
+            }
+        }
+        private void Kill(int pid)
+        {
+            new WindowsCmdCommand($"taskkill /F /PID {pid}")
+                .To((e) =>
+                {
+                    SLogger<HestExecutor>.Debug(e.Text);
+                })
+                .Execute();
         }
     }
 }

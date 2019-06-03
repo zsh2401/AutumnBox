@@ -15,6 +15,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Calling\Adb\SuCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Calling\Cmd\WindowsCmdCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Calling\CommandExecutor.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Calling\CommandExecutorExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Calling\CommandingObject.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Calling\CommandStation.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Calling\Fastboot\FastbootCommand.cs" />

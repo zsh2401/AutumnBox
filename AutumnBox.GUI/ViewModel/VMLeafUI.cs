@@ -226,7 +226,16 @@ namespace AutumnBox.GUI.ViewModel
             }
             else
             {
-                bool? closeResult = Closing?.Invoke(this, new LeafUIClosingEventArgs());
+                bool? closeResult = null;
+                try
+                {
+                    closeResult = Closing?.Invoke(this, new LeafUIClosingEventArgs());
+                }
+                catch (Exception ex)
+                {
+                    WriteLine(ex);
+                }
+
                 if (closeResult == true)
                 {
                     e.Cancel = true;

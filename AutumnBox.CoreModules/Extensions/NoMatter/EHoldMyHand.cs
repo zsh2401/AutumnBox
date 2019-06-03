@@ -19,6 +19,8 @@ using AutumnBox.OpenFramework.Open.Management;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace AutumnBox.CoreModules.Extensions.Hidden
 {
@@ -43,10 +45,13 @@ namespace AutumnBox.CoreModules.Extensions.Hidden
                     return true;
                 };
                 ui.WriteLine("wtf");
-                //executor.OutputReceived += (s, e) => ui.WriteOutput(e.Text);
-               var result =  executor.Execute("cmd.exe","/c ping baidu.com");
-                //ui.WriteOutput("===");
-                //ui.WriteOutput(result.Output);
+                executor.OutputReceived += (s, e) =>
+                {
+                    ui.WriteLine(e.Text);
+                };
+                var result = executor.Cmd("ping baidu.com");
+                ui.WriteOutput("===");
+                ui.WriteOutput(result.Output);
                 ui.Finish();
             }
         }

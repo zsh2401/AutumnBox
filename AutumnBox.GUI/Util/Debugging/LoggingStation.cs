@@ -85,14 +85,16 @@ namespace AutumnBox.GUI.Util.Debugging
         }
         private void Next()
         {
-            var log = buffer.Dequeue();
-            if (log.Level.ToLower() == "debug" && !Settings.Default.DeveloperMode)
-                return;
-            try { Logging?.Invoke(this, new LogEventArgs(log)); } catch { }
-            string format = log.Formated;
-            Console.WriteLine(format);
-            sw.WriteLine(format);
-            logged.Add(log);
+            try {
+                var log = buffer.Dequeue();
+                if (log.Level.ToLower() == "debug" && !Settings.Default.DeveloperMode)
+                    return;
+                try { Logging?.Invoke(this, new LogEventArgs(log)); } catch { }
+                string format = log.Formated;
+                Console.WriteLine(format);
+                sw.WriteLine(format);
+                logged.Add(log);
+            } catch { }
         }
 
         #region IDisposable Support
