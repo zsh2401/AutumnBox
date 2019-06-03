@@ -36,10 +36,21 @@ namespace AutumnBox.Basic.Data
         /// </summary>
         /// <param name="sourceEventArgs"></param>
         /// <param name="isError"></param>
-        public OutputReceivedEventArgs(DataReceivedEventArgs sourceEventArgs, bool isError = false) {
+        public OutputReceivedEventArgs(DataReceivedEventArgs sourceEventArgs, bool isError = false)
+        {
             IsError = isError;
             SourceArgs = sourceEventArgs;
             Text = sourceEventArgs.Data;
+        }
+        /// <summary>
+        /// 构建
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="isError"></param>
+        public OutputReceivedEventArgs(string text, bool isError = false)
+        {
+            Text = text;
+            IsError = isError;
         }
     }
     internal class CaoNa_I_Miss_You { }

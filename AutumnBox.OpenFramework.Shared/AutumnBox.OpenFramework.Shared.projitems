@@ -36,7 +36,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)LeafExtension\Fast\LeafUIHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)LeafExtension\Attributes\LFromDataAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)LeafExtension\Kit\ILeafUI.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)LeafExtension\Kit\LeafCloseBtnClickedEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)LeafExtension\Kit\LeafUIEvents.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)LeafExtension\Internal\LeafEntryExecutor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)LeafExtension\Internal\LeafContext.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)LeafExtension\Fast\LeafExtensionHelper.cs" />

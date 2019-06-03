@@ -99,7 +99,7 @@ namespace AutumnBox.GUI.ViewModel
         {
             get => _progress; set
             {
-                ThrowIfNotRunning();
+                if (CurrentState == State.Shutdown || CurrentState == State.Finished) return;
                 if (value == -1)
                 {
                     _progress = 0;
@@ -108,7 +108,7 @@ namespace AutumnBox.GUI.ViewModel
                     RaisePropertyChanged();
                     return;
                 }
-                else if(value < 100)
+                else if (value < 100)
                 {
                     LoadingLineVisibility = Visibility.Hidden;
                     ProgressBarVisibility = Visibility.Visible;
@@ -127,7 +127,7 @@ namespace AutumnBox.GUI.ViewModel
         {
             get => _tip; set
             {
-                ThrowIfNotRunning();
+                if (CurrentState == State.Shutdown || CurrentState == State.Finished) return;
                 _tip = value;
                 RaisePropertyChanged();
             }
@@ -138,7 +138,7 @@ namespace AutumnBox.GUI.ViewModel
         {
             get => _icon; set
             {
-                ThrowIfNotRunning();
+                if (CurrentState == State.Shutdown || CurrentState == State.Finished) return;
                 _icon = value;
                 RaisePropertyChanged();
             }
@@ -149,14 +149,14 @@ namespace AutumnBox.GUI.ViewModel
         {
             get => _title; set
             {
-                ThrowIfNotRunning();
+                if (CurrentState == State.Shutdown || CurrentState == State.Finished) return;
                 _title = value;
                 RaisePropertyChanged();
             }
         }
         private string _title;
 
-        public event EventHandler<LeafCloseBtnClickedEventArgs> CloseButtonClicked;
+        public event LeafUIClosingEventHandler Closing;
 
         private Panel InnerPanel { get; set; }
 
@@ -225,14 +225,16 @@ namespace AutumnBox.GUI.ViewModel
             }
             else
             {
-                LeafCloseBtnClickedEventArgs args = new LeafCloseBtnClickedEventArgs
+                bool? closeResult = Closing?.Invoke(this, new LeafUIClosingEventArgs());
+                if (closeResult == true)
                 {
-                    CanBeClosed = false
-                };
-                CloseButtonClicked?.Invoke(this, args);
-                e.Cancel = !args.CanBeClosed;
-                if (args.CanBeClosed) Finish();
-                else WriteLine(App.Current.Resources["RunningWindowCantStop"]);
+                    e.Cancel = false;
+                }
+                else
+                {
+                    e.Cancel = true;
+                    WriteLine(App.Current.Resources["RunningWindowCantStop"]);
+                }
             }
         }
 
@@ -246,7 +248,7 @@ namespace AutumnBox.GUI.ViewModel
 
         public void Finish(int exitCode = 0)
         {
-            ThrowIfNotRunning();
+            if (CurrentState == State.Shutdown || CurrentState == State.Finished) return;
             App.Current.Dispatcher.Invoke(() =>
             {
                 Finish(App.Current.Resources["LeafUITipCode" + exitCode] as string
@@ -256,11 +258,10 @@ namespace AutumnBox.GUI.ViewModel
 
         public void Finish(string tip)
         {
-            ThrowIfNotRunning();
+            if (CurrentState == State.Shutdown || CurrentState == State.Finished) return;
             Tip = tip;
             Progress = 100;
             CurrentState = State.Finished;
-
         }
 
         public void Show()
@@ -279,11 +280,15 @@ namespace AutumnBox.GUI.ViewModel
         public void Shutdown()
         {
             CurrentState = State.Shutdown;
+            App.Current.Dispatcher.Invoke(() =>
+            {
+                View?.Close();
+            });
         }
 
         public void WriteLine(object content)
         {
-            ThrowIfNotRunning();
+            if (CurrentState == State.Shutdown || CurrentState == State.Finished) return;
             _contentBuilder.AppendLine(content?.ToString());
             RaisePropertyChanged(nameof(Content));
             WriteOutput(content?.ToString());
@@ -291,14 +296,13 @@ namespace AutumnBox.GUI.ViewModel
 
         public void WriteOutput(object output)
         {
-            ThrowIfNotRunning();
+            if (CurrentState == State.Shutdown || CurrentState == State.Finished) return;
             _fullContentBuilder.AppendLine(output?.ToString());
             RaisePropertyChanged(nameof(FullContent));
         }
 
         public void Dispose()
         {
-            //Trace.WriteLine("LeafUI dispose");
             if (CurrentState == State.Finished)
             {
                 return;
@@ -307,19 +311,11 @@ namespace AutumnBox.GUI.ViewModel
             {
                 CurrentState = State.Unfinished;
             }
-            View.Dispatcher.Invoke(() =>
+            View?.Dispatcher.Invoke(() =>
             {
-                View.Close();
+                View?.Close();
             });
             View = null;
-        }
-
-        private void ThrowIfNotRunning()
-        {
-            if (CurrentState == State.Shutdown || CurrentState == State.Finished)
-            {
-                throw new InvalidOperationException("Leaf UI is locked!");
-            }
         }
 
         public void ShowMessage(string message)
@@ -334,7 +330,6 @@ namespace AutumnBox.GUI.ViewModel
             {
                 var view = new MessageView(message);
                 task = DialogManager.Show(Token, new MessageView(message));
-                //task = View.DialogHost.ShowDialog(view);
             });
             task.Wait();
         }

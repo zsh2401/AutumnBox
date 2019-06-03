@@ -13,7 +13,7 @@ namespace AutumnBox.CoreModules.Extensions.NoMatter
 {
     [ExtName("Leaf UI Demo", "zh-cn:LeafUI官方演示")]
     [ExtRequiredDeviceStates(LeafConstants.NoMatter)]
-    [ExtText("testkey","默认值,defaultvalue","zh-cn:中文值")]//本模块专用文本!
+    [ExtText("testkey", "默认值,defaultvalue", "zh-cn:中文值")]//本模块专用文本!
     [ExtDeveloperMode]
     public class ELeafUIDemo : LeafExtensionBase
     {
@@ -43,14 +43,14 @@ namespace AutumnBox.CoreModules.Extensions.NoMatter
                 //将LeafUI的标题设置为本模块的名称
                 ui.Title = this.GetName();
                 //绑定LeafUI关闭事件,并非必要的操作
-                ui.CloseButtonClicked += (s, e) =>
+                ui.Closing += (s, e) =>
                 {
                     /*
                      * 当用户点击停止按钮时发生
                      * 请在此处销毁你调用的资源
                      * 如果你不想你的模块被中途停止,请返回false
                     */
-                    e.CanBeClosed = false;
+                    return true;
                 };
 
                 /*完成初始化,调用展示方法后,UI将可见*/

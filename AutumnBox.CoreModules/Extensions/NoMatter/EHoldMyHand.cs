@@ -5,6 +5,7 @@
 *************************************************/
 using AutumnBox.Basic.Calling;
 using AutumnBox.Basic.Device;
+using AutumnBox.Basic.ManagedAdb;
 using AutumnBox.CoreModules.Extensions.Poweron.Dpm;
 using AutumnBox.Logging;
 using AutumnBox.OpenFramework.Content;
@@ -30,21 +31,22 @@ namespace AutumnBox.CoreModules.Extensions.Hidden
     internal class EHoldMyHand : LeafExtensionBase
     {
         [LMain]
-        public void Main(IDevice device, ILeafUI ui, IClassTextManager text, IEmbeddedFileManager emb, ITemporaryFloder tmp)
+        public void Main(ILeafUI ui, ICommandExecutor executor)
         {
             using (ui)
             {
                 ui.Title = "TEST";
                 ui.Show();
-                ////storageManager = OpenApiFactory.Get<IStorageManager>(this, "123");
-                //ui.WriteLine(text["fuck"]);
-                //ui.WriteLine(this.GetType().Namespace);
-                //ui.ShowMessage("wow");
-                //ui.WriteOutput(ui.DoYN("wwww", "yes", "no"));
-                //ui.WriteOutput(ui.DoChoice("www"));
-                //ui.WriteOutput(ui.SelectFrom(null, "a", "b", "c", "d"));
-                var dpmpro = new DpmPro(new CommandExecutor(), emb, tmp, new UsbDevice("aaabbb", DeviceState.Poweron));
-                dpmpro.Extract();
+                ui.Closing += (s, e) =>
+                {
+                    executor.Dispose();
+                    return true;
+                };
+                ui.WriteLine("wtf");
+                //executor.OutputReceived += (s, e) => ui.WriteOutput(e.Text);
+               var result =  executor.Execute("cmd.exe","/c ping baidu.com");
+                //ui.WriteOutput("===");
+                //ui.WriteOutput(result.Output);
                 ui.Finish();
             }
         }

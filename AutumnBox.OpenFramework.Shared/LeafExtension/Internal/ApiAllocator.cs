@@ -1,4 +1,5 @@
-﻿using AutumnBox.Basic.Device;
+﻿using AutumnBox.Basic.Calling;
+using AutumnBox.Basic.Device;
 using AutumnBox.Logging;
 using AutumnBox.OpenFramework.Content;
 using AutumnBox.OpenFramework.LeafExtension.Attributes;
@@ -70,6 +71,10 @@ namespace AutumnBox.OpenFramework.LeafExtension.Internal
             else if (type == typeof(IEmbeddedFileManager))
             {
                 return new LeafEmb(leafInstance.GetType().Assembly);
+            }
+            else if (type == typeof(ICommandExecutor))
+            {
+                return new HestExecutor();
             }
             else
             {

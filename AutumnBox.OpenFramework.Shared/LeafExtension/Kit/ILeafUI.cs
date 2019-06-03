@@ -4,6 +4,8 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.OpenFramework.LeafExtension.Kit
 {
+
+
     /// <summary>
     /// LeafExtension使用的UI控制器
     /// </summary>
@@ -45,7 +47,7 @@ namespace AutumnBox.OpenFramework.LeafExtension.Kit
         /// <summary>
         /// 请求退出时发生
         /// </summary>
-        event EventHandler<LeafCloseBtnClickedEventArgs> CloseButtonClicked;
+        event LeafUIClosingEventHandler Closing;
 
         #region 生命周期函数
         /// <summary>
@@ -98,7 +100,7 @@ namespace AutumnBox.OpenFramework.LeafExtension.Kit
         /// <param name="hint"></param>
         /// <param name="_default"></param>
         /// <returns></returns>
-        string InputString(string hint = null,string _default=null);
+        string InputString(string hint = null, string _default = null);
 
         /// <summary>
         /// 显示一条信息,并阻塞至用户点击确认
