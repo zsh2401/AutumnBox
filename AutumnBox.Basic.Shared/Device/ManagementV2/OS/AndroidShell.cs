@@ -7,7 +7,7 @@ using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace AutumnBox.Basic.Device.ManagementV2
+namespace AutumnBox.Basic.Device.ManagementV2.OS
 {
     /// <summary>
     /// 提供一个长期存在的Shell控制功能

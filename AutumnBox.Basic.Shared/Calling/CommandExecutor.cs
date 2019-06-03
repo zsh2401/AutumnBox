@@ -14,7 +14,7 @@ namespace AutumnBox.Basic.Calling
     /// <summary>
     /// 命令执行器
     /// </summary>
-    public class CommandExecutor : INotifyOutput, IDisposable, IReceiveOutputByTo<CommandExecutor>
+    public class CommandExecutor : INotifyOutput, IDisposable, IReceiveOutputByTo<CommandExecutor>, ICommandExecutor
     {
         /// <summary>
         /// 进程事件
@@ -71,6 +71,10 @@ namespace AutumnBox.Basic.Calling
         /// 当接收到输出时发生
         /// </summary>
         public event OutputReceivedEventHandler OutputReceived;
+        public event EventHandler Disposed;
+        public event EventHandler<CommandExecutingEventArgs> CommandExecuting;
+        public event EventHandler<CommandExecutedEventArgs> CommandExecuted;
+
         /// <summary>
         /// 杀死当前正在执行的进程
         /// </summary>
@@ -366,13 +370,18 @@ namespace AutumnBox.Basic.Calling
             ProcessStartInfo pStartInfo;
             outputBuilder.Clear();
             pStartInfo = GetStartInfo(fileName, args);
+            DateTime start = DateTime.Now;
             currentProcess = Process.Start(pStartInfo);
             OnProcessStarted(currentProcess);
+            try { CommandExecuting?.Invoke(this, new CommandExecutingEventArgs(fileName, args)); } catch { }
             currentProcess.WaitForExit();
+            DateTime end = DateTime.Now;
             exitCode = currentProcess.ExitCode;
             OnProcessExited(currentProcess);
             currentProcess = null;
-            return new Result(outputBuilder.Result, exitCode);
+            var result = new Result(outputBuilder.Result, exitCode);
+            try { CommandExecuted?.Invoke(this, new CommandExecutedEventArgs(fileName, args, result, end - start)); } catch { }
+            return result;
         }
         /// <summary>
         /// 执行
@@ -433,6 +442,7 @@ namespace AutumnBox.Basic.Calling
                 currentProcess?.Dispose();
                 currentProcess = null;
                 disposedValue = true;
+                try { Disposed?.Invoke(this, new EventArgs()); } catch { }
             }
         }
 
@@ -463,6 +473,19 @@ namespace AutumnBox.Basic.Calling
         {
             this.callback = callback ?? throw new ArgumentNullException(nameof(callback));
             return this;
+        }
+
+        ICommandResult ICommandExecutor.Execute(string fileName, string args)
+        {
+            lock (_lock)
+            {
+                return ExecuteWithoutLock(fileName, args);
+            }
+        }
+
+        public void CancelCurrent()
+        {
+            KillCurrent();
         }
         #endregion
     }

@@ -5,6 +5,7 @@
 ** compiler: Visual Studio 2017
 ** desc： ...
 *********************************************************************************/
+using System;
 using System.Text.RegularExpressions;
 
 namespace AutumnBox.Basic.Device.Management.Flash
@@ -12,6 +13,7 @@ namespace AutumnBox.Basic.Device.Management.Flash
     /// <summary>
     /// 获取处在Fastboot状态下的设备的信息
     /// </summary>
+    [Obsolete("", true)]
     public class FastbootDeviceInfoGetter : DeviceCommander
     {
         private const string resultPattern = @".+:\u0020(?<result>.+)";

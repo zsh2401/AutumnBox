@@ -6,6 +6,7 @@
 ** desc： ...
 *********************************************************************************/
 using AutumnBox.Basic.Util;
+using System;
 using System.Linq;
 
 namespace AutumnBox.Basic.Device.Management.Flash
@@ -14,6 +15,7 @@ namespace AutumnBox.Basic.Device.Management.Flash
     /// <summary>
     /// 设备镜像路径寻找器,由于安卓碎片化严重,不保证能完美运行,如果有特殊需求请另行实现
     /// </summary>
+    [Obsolete("",true)]
     public sealed class DeviceImageFinder : DeviceCommander
     {
         /// <summary>

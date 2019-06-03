@@ -10,6 +10,7 @@ namespace AutumnBox.Basic.Device.Management.Flash
     /// <summary>
     /// 设备镜像
     /// </summary>
+    [Obsolete("", true)]
     public enum DeviceImage
     {
         /// <summary>

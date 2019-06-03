@@ -44,14 +44,11 @@ namespace AutumnBox.CoreModules.Extensions.Hidden
                     executor.Dispose();
                     return true;
                 };
-                ui.WriteLine("wtf");
                 executor.OutputReceived += (s, e) =>
                 {
                     ui.WriteLine(e.Text);
                 };
                 var result = executor.Cmd("ping baidu.com");
-                ui.WriteOutput("===");
-                ui.WriteOutput(result.Output);
                 ui.Finish();
             }
         }

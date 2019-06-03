@@ -26,7 +26,7 @@ namespace AutumnBox.Basic.Calling
         /// <summary>
         /// 接收到输出时触发的事件
         /// </summary>
-        event EventHandler<OutputReceivedEventArgs> OutputReceived;
+        event OutputReceivedEventHandler OutputReceived;
         /// <summary>
         /// 执行命令
         /// </summary>

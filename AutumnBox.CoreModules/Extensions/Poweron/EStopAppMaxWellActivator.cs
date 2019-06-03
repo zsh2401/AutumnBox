@@ -1,5 +1,5 @@
 ﻿using AutumnBox.Basic.Device;
-using AutumnBox.Basic.Device.ManagementV2;
+using AutumnBox.Basic.Device.ManagementV2.OS;
 using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.LeafExtension;
 using AutumnBox.OpenFramework.LeafExtension.Attributes;
