@@ -30,11 +30,11 @@ namespace AutumnBox.Basic.Calling
         /// <summary>
         /// 开始执行一条命令时触发
         /// </summary>
-        public event EventHandler<CommandExecutingEventArgs> CommandExecuting;
+        public event CommandExecutingEventHandler CommandExecuting;
         /// <summary>
         /// 一条命令执行完毕时触发
         /// </summary>
-        public event EventHandler<CommandExecutedEventArgs> CommandExecuted;
+        public event CommandExecutedEventHandler CommandExecuted;
         /// <summary>
         /// 接收到输出信息时触发
         /// </summary>

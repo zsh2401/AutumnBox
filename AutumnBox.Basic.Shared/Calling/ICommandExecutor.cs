@@ -9,7 +9,7 @@ namespace AutumnBox.Basic.Calling
     /// <summary>
     /// 标准的CommandExecutor命令执行器
     /// </summary>
-    public interface ICommandExecutor : IDisposable
+    public interface ICommandExecutor : IDisposable,INotifyOutput
     {
         /// <summary>
         /// 当CommandExecutor被析构时触发
@@ -18,15 +18,11 @@ namespace AutumnBox.Basic.Calling
         /// <summary>
         /// 当一条命令开始执行时触发
         /// </summary>
-        event EventHandler<CommandExecutingEventArgs> CommandExecuting;
+        event CommandExecutingEventHandler CommandExecuting;
         /// <summary>
         /// 当一条命令完成时触发
         /// </summary>
-        event EventHandler<CommandExecutedEventArgs> CommandExecuted;
-        /// <summary>
-        /// 接收到输出时触发的事件
-        /// </summary>
-        event OutputReceivedEventHandler OutputReceived;
+        event CommandExecutedEventHandler CommandExecuted;
         /// <summary>
         /// 执行命令
         /// </summary>

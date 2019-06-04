@@ -71,9 +71,50 @@ namespace AutumnBox.Basic.Calling
         /// 当接收到输出时发生
         /// </summary>
         public event OutputReceivedEventHandler OutputReceived;
+        /// <summary>
+        /// 析构时触发的事件
+        /// </summary>
         public event EventHandler Disposed;
+        /// <summary>
+        /// 当命令开始执行时发生
+        /// </summary>
         public event EventHandler<CommandExecutingEventArgs> CommandExecuting;
+        /// <summary>
+        /// 当命令执行完成时发生
+        /// </summary>
         public event EventHandler<CommandExecutedEventArgs> CommandExecuted;
+
+        /// <summary>
+        /// 隐式的接口事件
+        /// </summary>
+        event CommandExecutingEventHandler ICommandExecutor.CommandExecuting
+        {
+            add
+            {
+                ExecutingSource += value;
+            }
+            remove
+            {
+                ExecutingSource -= value;
+            }
+        }
+        private event CommandExecutingEventHandler ExecutingSource;
+        /// <summary>
+        /// 隐式的接口事件
+        /// </summary>
+        event CommandExecutedEventHandler ICommandExecutor.CommandExecuted
+        {
+            add
+            {
+                ExecutedSource += value;
+            }
+            remove
+            {
+                ExecutedSource -= value;
+            }
+        }
+        private event CommandExecutedEventHandler ExecutedSource;
+
 
         /// <summary>
         /// 杀死当前正在执行的进程
@@ -373,14 +414,24 @@ namespace AutumnBox.Basic.Calling
             DateTime start = DateTime.Now;
             currentProcess = Process.Start(pStartInfo);
             OnProcessStarted(currentProcess);
-            try { CommandExecuting?.Invoke(this, new CommandExecutingEventArgs(fileName, args)); } catch { }
+            try
+            {
+                CommandExecuting?.Invoke(this, new CommandExecutingEventArgs(fileName, args));
+                ExecutingSource?.Invoke(this, new CommandExecutingEventArgs(fileName, args));
+            }
+            catch { }
             currentProcess.WaitForExit();
             DateTime end = DateTime.Now;
             exitCode = currentProcess.ExitCode;
             OnProcessExited(currentProcess);
             currentProcess = null;
             var result = new Result(outputBuilder.Result, exitCode);
-            try { CommandExecuted?.Invoke(this, new CommandExecutedEventArgs(fileName, args, result, end - start)); } catch { }
+            try
+            {
+                CommandExecuted?.Invoke(this, new CommandExecutedEventArgs(fileName, args, result, end - start));
+                ExecutedSource?.Invoke(this, new CommandExecutedEventArgs(fileName, args, result, end - start));
+            }
+            catch { }
             return result;
         }
         /// <summary>

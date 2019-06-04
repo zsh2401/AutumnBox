@@ -18,6 +18,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Calling\CommandExecutorExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Calling\CommandingObject.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Calling\CommandStation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Calling\Events.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Calling\Fastboot\FastbootCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Calling\HestExecutor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Calling\ICommandExecutor.cs" />
@@ -29,8 +30,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Calling\ProcessExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Calling\BasicCommandExecutor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Calling\ProcessHelper.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Data\CommandExecutedEventArgs.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Data\CommandExecutingEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\ICommandStationObject.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\INotifyOutput.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\IReceiveOutputByTo.cs" />
