@@ -14,11 +14,20 @@ namespace AutumnBox.Basic.Device.ManagementV2.OS
         private readonly IDevice device;
         private readonly ICommandExecutor executor;
         private static readonly Regex regex = new Regex(@"(?<uptime>\d+[\.|\d+]?)[^\d]+(?<idle>\d+[\.|\d+]?)");
+        /// <summary>
+        /// 构造Uptime类
+        /// </summary>
+        /// <param name="device"></param>
+        /// <param name="executor"></param>
         public Uptime(IDevice device, ICommandExecutor executor)
         {
             this.device = device ?? throw new ArgumentNullException(nameof(device));
             this.executor = executor ?? throw new ArgumentNullException(nameof(executor));
         }
+        /// <summary>
+        /// 获取运行时间
+        /// </summary>
+        /// <returns></returns>
         public double GetRunningSeconds()
         {
             var output = executor.AdbShell(device, "cat /proc/uptime").ThrowIfError().Output.All;
@@ -32,6 +41,10 @@ namespace AutumnBox.Basic.Device.ManagementV2.OS
                 throw new Exception("Could not parse the output");
             }
         }
+        /// <summary>
+        /// 获取空闲时间
+        /// </summary>
+        /// <returns></returns>
         public double GetIdleSeconds()
         {
             var output = executor.AdbShell(device, "cat /proc/uptime").ThrowIfError().Output.All;
