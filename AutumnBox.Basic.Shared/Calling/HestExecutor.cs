@@ -55,15 +55,22 @@ namespace AutumnBox.Basic.Calling
         /// <returns></returns>
         private ProcessStartInfo GetStartInfo(string fileName, string args)
         {
-            return new ProcessStartInfo()
+            var pStartInfo =   new ProcessStartInfo()
             {
                 FileName = fileName,
                 Arguments = args,
                 UseShellExecute = false,
                 CreateNoWindow = true,
                 RedirectStandardError = true,
-                RedirectStandardOutput = true
+                RedirectStandardOutput = true,
             };
+            if (ManagedAdb.Adb.Manager?.Server?.IsEnable == true)
+            {
+                string pathEnv = pStartInfo.EnvironmentVariables["path"];
+                pStartInfo.EnvironmentVariables["path"] = $"{ManagedAdb.Adb.AdbToolsDir.FullName};{pathEnv}";
+                pStartInfo.EnvironmentVariables["ANDROID_ADB_SERVER_PORT"] = ManagedAdb.Adb.Server.Port.ToString();
+            }
+            return pStartInfo;
         }
         /// <summary>
         /// 执行锁,确保随时只有一条命令在执行

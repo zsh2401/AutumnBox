@@ -5,6 +5,7 @@
 *************************************************/
 using AutumnBox.Basic.Calling;
 using AutumnBox.Basic.Device;
+using AutumnBox.Basic.Device.ManagementV2.OS;
 using AutumnBox.Basic.ManagedAdb;
 using AutumnBox.CoreModules.Extensions.Poweron.Dpm;
 using AutumnBox.Logging;
@@ -33,7 +34,7 @@ namespace AutumnBox.CoreModules.Extensions.Hidden
     internal class EHoldMyHand : LeafExtensionBase
     {
         [LMain]
-        public void Main(ILeafUI ui, ICommandExecutor executor)
+        public void Main(ILeafUI ui, ICommandExecutor executor,IDevice device)
         {
             using (ui)
             {
@@ -48,7 +49,7 @@ namespace AutumnBox.CoreModules.Extensions.Hidden
                 {
                     ui.WriteLine(e.Text);
                 };
-                var result = executor.Cmd("ping baidu.com");
+                ui.WriteLine(new MemInfoGetter(device,executor).Get().Total);
                 ui.Finish();
             }
         }

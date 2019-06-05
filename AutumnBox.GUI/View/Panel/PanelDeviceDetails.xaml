@@ -9,6 +9,7 @@
              xmlns:controls="clr-namespace:AutumnBox.GUI.View.Controls"
              FontFamily="{DynamicResource AutumnBox.Font}"
              FontSize="12"
+             d:DesignWidth="270"
              mc:Ignorable="d">
     <UserControl.DataContext>
         <viewmodel:VMDeviceDetails/>
@@ -16,12 +17,12 @@
     <Grid>
         <DockPanel>
             <StackPanel DockPanel.Dock="Top" Margin="0" Orientation="Vertical">
-                <TextBlock TextAlignment="Center" Margin="0,0,0,0" Text="{Binding StateString}" FontSize="40"/>
+                <TextBlock TextAlignment="Center" Margin="0,0,0,0" Text="{Binding StateString}" FontSize="25" TextWrapping="Wrap"/>
                 <TextBlock TextAlignment="Center" Margin="2" FontSize="15" Text="{Binding StateTip}"/>
-                <controls:RebootBar HorizontalAlignment="Center"/>
+                <controls:DevicePerformance/>
             </StackPanel>
-            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                <StackPanel DockPanel.Dock="Left" Width="200">
+            <WrapPanel HorizontalAlignment="Center">
+                <StackPanel Width="100">
                     <StackPanel ToolTip="{DynamicResource PanelDeviceDetailsToolTipDefault}" Orientation="Horizontal" Margin="0,0,0,10">
                         <TextBlock Text="{DynamicResource PanelDeviceDetailsBrand}"/>
                         <TextBlock Margin="10,0,0,0" Text="{Binding Brand}"/>
@@ -35,7 +36,8 @@
                         <TextBlock Margin="10,0,0,0" Text="{Binding Product}"/>
                     </StackPanel>
                 </StackPanel>
-                <StackPanel DockPanel.Dock="Left" Width="200">
+
+                <StackPanel Width="100">
                     <StackPanel ToolTip="{DynamicResource PanelDeviceDetailsToolTipStorage}" Orientation="Horizontal" Margin="0,0,0,10">
                         <TextBlock  Text="{DynamicResource PanelDeviceDetailsStorage}"/>
                         <TextBlock Margin="10,0,0,0" Text="{Binding Storage}"/>
@@ -49,7 +51,8 @@
                         <TextBlock Margin="10,0,0,0" Text="{Binding ScreenSize}"/>
                     </StackPanel>
                 </StackPanel>
-                <StackPanel DockPanel.Dock="Right" Width="200">
+
+                <StackPanel  Width="100">
                     <StackPanel ToolTip="{DynamicResource PanelDeviceDetailsToolTipSu}" Orientation="Horizontal" Margin="0,0,0,10">
                         <TextBlock  Text="{DynamicResource PanelDeviceDetailsRoot}"/>
                         <TextBlock Margin="10,0,0,0" Text="{Binding Root}"/>
@@ -64,8 +67,7 @@
                     </StackPanel>
                 </StackPanel>
                 
-            </StackPanel>
-            
+            </WrapPanel>
         </DockPanel>
     </Grid>
 </UserControl>

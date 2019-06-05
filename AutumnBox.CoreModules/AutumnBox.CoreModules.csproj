@@ -81,6 +81,7 @@
     <Compile Include="CoreLib.cs" />
     <Compile Include="Extensions\Hidden\ENetDeviceDisconnecter.cs" />
     <Compile Include="Extensions\Hidden\EOpenUsbDeviceNetDebugging.cs" />
+    <Compile Include="Extensions\Mix\EDeviceReboot.cs" />
     <Compile Include="Extensions\NoMatter\ELeafUIDemo.cs" />
     <Compile Include="Extensions\NoMatter\EInstallExtension.cs" />
     <Compile Include="Extensions\Hidden\ENetDeviceConnecter.cs" />
@@ -259,6 +260,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Icons\add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\restartdevice.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

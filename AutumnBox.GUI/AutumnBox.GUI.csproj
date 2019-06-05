@@ -222,6 +222,7 @@
     <Compile Include="ViewModel\VMDefaultInformation.cs" />
     <Compile Include="ViewModel\VMDeviceDetails.cs" />
     <Compile Include="ViewModel\VMDeviceBar.cs" />
+    <Compile Include="ViewModel\VMDevicePerformance.cs" />
     <Compile Include="ViewModel\VMExtensions.cs" />
     <Compile Include="ViewModel\VMExtensionsNoCategory.cs" />
     <Compile Include="ViewModel\VMGuide.cs" />
@@ -245,6 +246,9 @@
     <Compile Include="ViewModel\VMUpdateLogs.cs" />
     <Compile Include="ViewModel\VMUpdateWindow.cs" />
     <Compile Include="ViewModel\VMWelcome.cs" />
+    <Compile Include="View\Controls\DevicePerformance.xaml.cs">
+      <DependentUpon>DevicePerformance.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Controls\ExtensionsPanel.xaml.cs">
       <DependentUpon>ExtensionsPanel.xaml</DependentUpon>
     </Compile>
@@ -477,6 +481,10 @@
     <Page Include="Resources\Urls.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Controls\DevicePerformance.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Controls\ExtensionsPanel.xaml">
       <SubType>Designer</SubType>

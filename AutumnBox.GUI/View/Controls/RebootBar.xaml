@@ -11,12 +11,15 @@
         <viewmodel:VMReboot/>
     </UserControl.DataContext>
     <Grid>
-        <StackPanel Orientation="Horizontal">
-            <TextBlock Text="{DynamicResource PanelRebootTitle}" Margin="10"/>
-            <Button  Margin="25,0,0,0" Command="{Binding ToSystem}"  Content="{DynamicResource PanelRebootToSystem}" />
-            <Button  Margin="25,0,0,0"  Command="{Binding ToRecovery}" Content="{DynamicResource PanelRebootToRecovery}"/>
-            <Button  Margin="25,0,0,0"  Command="{Binding ToFastboot}" Content="{DynamicResource PanelRebootToFastboot}" />
-            <Button  Margin="25,0,0,0" Command="{Binding To9008}" Content="{DynamicResource PanelRebootTo9008}" />
-        </StackPanel>
+        <DockPanel>
+            <TextBlock DockPanel.Dock="Top" Text="{DynamicResource PanelRebootTitle}" Margin="10" FontSize="15" HorizontalAlignment="Center"/>
+            <WrapPanel DockPanel.Dock="Right">
+                <Button  Margin="5" Command="{Binding ToSystem}"  Content="{DynamicResource PanelRebootToSystem}" />
+                <Button  Margin="5"  Command="{Binding ToRecovery}" Content="{DynamicResource PanelRebootToRecovery}"/>
+                <Button  Margin="5"  Command="{Binding ToFastboot}" Content="{DynamicResource PanelRebootToFastboot}" />
+                <Button  Margin="5" Command="{Binding To9008}" Content="{DynamicResource PanelRebootTo9008}" />
+            </WrapPanel>
+
+        </DockPanel>
     </Grid>
 </UserControl>

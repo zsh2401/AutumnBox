@@ -1,0 +1,27 @@
+﻿<UserControl x:Class="AutumnBox.GUI.View.Controls.DevicePerformance"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AutumnBox.GUI.View.Controls"
+             xmlns:viewmodel="clr-namespace:AutumnBox.GUI.ViewModel"
+             mc:Ignorable="d" 
+             d:DesignHeight="200" d:DesignWidth="270">
+    <UserControl.DataContext>
+        <viewmodel:VMDevicePerformance/>
+    </UserControl.DataContext>
+    <StackPanel>
+        <TextBlock Margin="5" FontSize="15">CPU</TextBlock>
+        <ProgressBar Value="{Binding CPUPercent}"/>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Margin="5" FontSize="15">MemInfo</TextBlock>
+            <TextBlock VerticalAlignment="Center" FontSize="15" Text="{Binding UsedMem}"/>
+            <TextBlock VerticalAlignment="Center" FontSize="15" Text="MB"/>
+            <TextBlock VerticalAlignment="Center" FontSize="15" Text="/"/>
+            <TextBlock VerticalAlignment="Center" FontSize="15" Text="{Binding TotalMem}"/>
+            <TextBlock VerticalAlignment="Center" FontSize="15" Text="MB"/>
+        </StackPanel>
+       
+        <ProgressBar Value="{Binding MemPercent}"/>
+    </StackPanel>
+</UserControl>

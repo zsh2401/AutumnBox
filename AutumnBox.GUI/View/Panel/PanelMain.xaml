@@ -22,12 +22,19 @@
                 <local:PanelDefaultInformation/>
             </TabItem>
             <TabItem  TabIndex="1"  Background="Transparent" Header="{DynamicResource Functions}">
-                <ScrollViewer x:Name="SVFunctions">
-                    <StackPanel>
-                        <local:PanelDeviceDetails/>
-                        <controls1:ExtensionsPanel/>
+                <DockPanel>
+                    <StackPanel Width="270" DockPanel.Dock="Right">
+                        <local:PanelDeviceDetails />
                     </StackPanel>
-                </ScrollViewer>
+                    
+                    <ScrollViewer x:Name="SVFunctions">
+                        <StackPanel>
+
+                            <controls1:ExtensionsPanel/>
+                        </StackPanel>
+                    </ScrollViewer>
+                </DockPanel>
+
              
             </TabItem>
             <TabItem TabIndex="2" Background="Transparent" Header="{DynamicResource More}">
