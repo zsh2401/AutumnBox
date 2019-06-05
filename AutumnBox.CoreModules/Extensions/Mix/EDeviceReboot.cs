@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.CoreModules.Extensions.Mix
 {
-    [ExtName("Reboot", "重启")]
+    [ExtName("Reboot", "zh-cn:重启")]
     [ExtAuth("zsh2401")]
     [ExtVersion(1,0,0)]
     [ExtIcon("Icons.restartdevice.png")]
