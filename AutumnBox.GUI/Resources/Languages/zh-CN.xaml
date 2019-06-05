@@ -65,7 +65,29 @@
       <s:String x:Key="Functions">功能</s:String>
       <s:String x:Key="More">更多</s:String>
     
-
+      <s:String x:Key="Dash.State.NoDevice">无设备</s:String>
+      <s:String x:Key="Dash.State.Poweron">开机</s:String>
+     <s:String x:Key="Dash.State.Recovery">恢复模式</s:String>
+     <s:String x:Key="Dash.State.Fastboot">Fastboot</s:String>
+     <s:String x:Key="Dash.State.Sideload">Sideload</s:String>
+     <s:String x:Key="Dash.State.Unauthorized">未允许USB调试</s:String>
+     <s:String x:Key="Dash.State.Offline">离线</s:String>
+    <s:String x:Key="Dash.State.Unknow">未知</s:String>
+    <s:String x:Key="Dash.CPU.Usage">处理器使用率</s:String>
+    <s:String x:Key="Dash.CPU.Core">处理器核心数</s:String>
+    <s:String x:Key="Dash.Ram.Usage">内存使用率</s:String>
+    <s:String x:Key="Dash.Build.Brand">品牌</s:String>
+    <s:String x:Key="Dash.Build.Model">型号</s:String>
+    <s:String x:Key="Dash.Build.Code">代号</s:String>
+    <s:String x:Key="Dash.Build.AndroidVersion">安卓版本</s:String>
+    <s:String x:Key="Dash.Build.Pixel">分辨率</s:String>
+    <s:String x:Key="Dash.Battery.Level">电量</s:String>
+    <s:String x:Key="Dash.Battery.Charging">充电状态</s:String>
+    <s:String x:Key="Dash.Battery.Voltage">电池电压</s:String>
+      <s:String x:Key="Dash.Battery.Temperature">电池温度</s:String>
+    <s:String x:Key="Dash.Boot.LastTime">上次重启</s:String>
+     <s:String x:Key="Dash.Boot.Time">开机时间</s:String>
+    
      <s:String x:Key="Update.Failed">更新检查失败</s:String>
     <s:String x:Key="Update.HaveAUpdate">检测到更新</s:String>
      <s:String x:Key="Update.CheckingUpdate">正在检查更新!</s:String>

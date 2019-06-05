@@ -23,15 +23,13 @@
             </TabItem>
             <TabItem  TabIndex="1"  Background="Transparent" Header="{DynamicResource Functions}">
                 <DockPanel>
-                    <StackPanel Width="270" DockPanel.Dock="Right">
-                        <local:PanelDeviceDetails />
-                    </StackPanel>
-                    
-                    <ScrollViewer x:Name="SVFunctions">
-                        <StackPanel>
-
-                            <controls1:ExtensionsPanel/>
-                        </StackPanel>
+                    <Grid Width="270" DockPanel.Dock="Right">
+                        <ScrollViewer>
+                            <local:DeviceDash Margin="25"/>
+                        </ScrollViewer>
+                    </Grid>
+                    <ScrollViewer>
+                        <controls1:ExtensionsPanel/>
                     </ScrollViewer>
                 </DockPanel>
 

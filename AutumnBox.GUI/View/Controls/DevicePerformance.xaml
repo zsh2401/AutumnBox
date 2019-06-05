@@ -11,15 +11,15 @@
         <viewmodel:VMDevicePerformance/>
     </UserControl.DataContext>
     <StackPanel>
-        <TextBlock Margin="5" FontSize="15" Text="{DynamicResource Performance.CPU}"/>
+        <TextBlock Margin="5" Text="{DynamicResource Performance.CPU}"/>
         <ProgressBar Style="{Binding CpuBarStyle}"  Height="15" Margin="5"  Value="{Binding CpuPercent}"/>
         <StackPanel Orientation="Horizontal">
-            <TextBlock Margin="5" FontSize="15" Text="{DynamicResource Performance.Memory}"/>
-            <TextBlock VerticalAlignment="Center" FontSize="15" Text="{Binding UsedMem}"/>
-            <TextBlock VerticalAlignment="Center" FontSize="15" Text="MB"/>
-            <TextBlock VerticalAlignment="Center" FontSize="15" Text="/"/>
-            <TextBlock VerticalAlignment="Center" FontSize="15" Text="{Binding TotalMem}"/>
-            <TextBlock VerticalAlignment="Center" FontSize="15" Text="MB"/>
+            <TextBlock Margin="5" Text="{DynamicResource Performance.Memory}"/>
+            <TextBlock VerticalAlignment="Center" Text="{Binding UsedMem}"/>
+            <TextBlock VerticalAlignment="Center" Text="MB"/>
+            <TextBlock VerticalAlignment="Center" Text="/"/>
+            <TextBlock VerticalAlignment="Center" Text="{Binding TotalMem}"/>
+            <TextBlock VerticalAlignment="Center" Text="MB"/>
         </StackPanel>
 
         <ProgressBar Style="{Binding MemBarStyle}" Height="15" Margin="5" Value="{Binding MemPercent}"/>

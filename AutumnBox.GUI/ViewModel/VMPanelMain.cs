@@ -34,7 +34,8 @@ namespace AutumnBox.GUI.ViewModel
 
         private void NoDevice(object sender, EventArgs e)
         {
-            TabSelectedIndex = 0;
+            //if(TabSelectedIndex )
+            //TabSelectedIndex = 0;
         }
     }
 }

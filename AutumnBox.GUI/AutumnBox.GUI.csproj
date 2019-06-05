@@ -220,6 +220,7 @@
     <Compile Include="ViewModel\VMCst.cs" />
     <Compile Include="ViewModel\VMCurrentDevice.cs" />
     <Compile Include="ViewModel\VMDefaultInformation.cs" />
+    <Compile Include="ViewModel\VMDeviceDash.cs" />
     <Compile Include="ViewModel\VMDeviceDetails.cs" />
     <Compile Include="ViewModel\VMDeviceBar.cs" />
     <Compile Include="ViewModel\VMDevicePerformance.cs" />
@@ -287,6 +288,9 @@
     </Compile>
     <Compile Include="View\LeafContent\YNView.xaml.cs">
       <DependentUpon>YNView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Panel\DeviceDash.xaml.cs">
+      <DependentUpon>DeviceDash.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Panel\PanelDefaultInformation.xaml.cs">
       <DependentUpon>PanelDefaultInformation.xaml</DependentUpon>
@@ -537,6 +541,10 @@
     <Page Include="View\LeafContent\YNView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Panel\DeviceDash.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Panel\PanelDefaultInformation.xaml">
       <Generator>MSBuild:Compile</Generator>

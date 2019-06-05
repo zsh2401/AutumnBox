@@ -64,6 +64,29 @@
       <s:String x:Key="Functions">Functions</s:String>
       <s:String x:Key="More">More</s:String>
     
+    <s:String x:Key="Dash.State.NoDevice">No device</s:String>
+      <s:String x:Key="Dash.State.Poweron">Poweron</s:String>
+     <s:String x:Key="Dash.State.Recovery">Recovery</s:String>
+     <s:String x:Key="Dash.State.Fastboot">Fastboot</s:String>
+     <s:String x:Key="Dash.State.Sideload">Sideload</s:String>
+     <s:String x:Key="Dash.State.Unauthorized">Unauthorized</s:String>
+     <s:String x:Key="Dash.State.Offline">Offline</s:String>
+    <s:String x:Key="Dash.State.Unknow">Unknow</s:String>
+    <s:String x:Key="Dash.CPU.Usage">CPU Usage</s:String>
+    <s:String x:Key="Dash.CPU.Core">CPU Cores</s:String>
+    <s:String x:Key="Dash.Ram.Usage">Ram Usage</s:String>
+    <s:String x:Key="Dash.Build.Brand">Brand</s:String>
+    <s:String x:Key="Dash.Build.Model">Model</s:String>
+    <s:String x:Key="Dash.Build.Code">Code</s:String>
+    <s:String x:Key="Dash.Build.AndroidVersion">Android Version</s:String>
+    <s:String x:Key="Dash.Build.Pixel">Screen Pixel</s:String>
+    <s:String x:Key="Dash.Battery.Level">Battery Level</s:String>
+    <s:String x:Key="Dash.Battery.Charging">Charging</s:String>
+    <s:String x:Key="Dash.Battery.Voltage">Battery Voltage</s:String>
+      <s:String x:Key="Dash.Battery.Temperature">Battery Temperature</s:String>
+    <s:String x:Key="Dash.Boot.LastTime">Last boot</s:String>
+     <s:String x:Key="Dash.Boot.Time">Already boot</s:String>
+    
          <s:String x:Key="Update.Failed">Can not check update</s:String>
     <s:String x:Key="Update.HaveAUpdate">There is a update!</s:String>
      <s:String x:Key="Update.CheckingUpdate">Checking update</s:String>
