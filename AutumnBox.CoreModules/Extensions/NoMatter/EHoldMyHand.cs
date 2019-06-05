@@ -50,8 +50,9 @@ namespace AutumnBox.CoreModules.Extensions.Hidden
                 {
                     ui.WriteLine(e.Text);
                 };
-                var getter = new Uptime(device,executor);
-                ui.WriteLine(getter.GetRunningSeconds()); 
+                var getter = new BatteryManager(device, executor);
+                ui.WriteLine(getter.GetBatteryInfo().MaxCharingVoltage);
+
                 ui.Finish();
             }
         }
