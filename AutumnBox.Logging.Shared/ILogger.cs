@@ -23,5 +23,9 @@ namespace AutumnBox.Logging
         /// <param name="e"></param>
         void Log(string level, object message, Exception e);
     }
+    /// <summary>
+    /// 泛型的日志器,根据泛型参数
+    /// </summary>
+    /// <typeparam name="TCategory"></typeparam>
     public interface ILogger<TCategory> : ILogger { }
 }

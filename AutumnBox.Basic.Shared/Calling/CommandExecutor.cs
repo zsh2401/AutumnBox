@@ -533,7 +533,9 @@ namespace AutumnBox.Basic.Calling
                 return ExecuteWithoutLock(fileName, args);
             }
         }
-
+        /// <summary>
+        /// 杀死当前正在执行的任务
+        /// </summary>
         public void CancelCurrent()
         {
             KillCurrent();

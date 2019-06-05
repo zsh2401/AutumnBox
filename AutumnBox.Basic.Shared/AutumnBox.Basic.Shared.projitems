@@ -53,6 +53,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Device\ManagementV2\OS\AndroidShell.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Device\ManagementV2\OS\BuildKeys.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Device\ManagementV2\OS\BuildReder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Device\ManagementV2\OS\CachedBuildReader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Device\ManagementV2\OS\HardwareInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Device\ManagementV2\OS\HardwareInfoGetter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Device\ManagementV2\OS\UserInfo.cs" />
