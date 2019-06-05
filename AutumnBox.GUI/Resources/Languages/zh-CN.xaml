@@ -73,6 +73,11 @@
      <s:String x:Key="Update.IsLatestVersion">当前已是最新版本</s:String>
     <s:String x:Key="Update.Cancel">取消</s:String>
     
+    <s:String x:Key="Performance.CPU">CPU使用</s:String>
+   <s:String x:Key="Performance.Memory">内存使用</s:String>
+       <s:String x:Key="Performance.BootTime">启动</s:String>
+    <s:String x:Key="Performance.RunningTime">运行时间</s:String>
+    
     <s:String x:Key="UserLicenseTitle">秋之盒使用协议 1.0</s:String>
     <s:String x:Key="UserLicenseContent">本协议仍然在编写当中,最终解释权归zsh2401所有
 欢迎您使用秋之盒-AutumnBox(下称本软件)。

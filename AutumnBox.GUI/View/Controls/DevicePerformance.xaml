@@ -11,17 +11,27 @@
         <viewmodel:VMDevicePerformance/>
     </UserControl.DataContext>
     <StackPanel>
-        <TextBlock Margin="5" FontSize="15">CPU</TextBlock>
-        <ProgressBar Value="{Binding CPUPercent}"/>
+        <TextBlock Margin="5" FontSize="15" Text="{DynamicResource Performance.CPU}"/>
+        <ProgressBar Style="{Binding CpuBarStyle}"  Height="15" Margin="5"  Value="{Binding CpuPercent}"/>
         <StackPanel Orientation="Horizontal">
-            <TextBlock Margin="5" FontSize="15">MemInfo</TextBlock>
+            <TextBlock Margin="5" FontSize="15" Text="{DynamicResource Performance.Memory}"/>
             <TextBlock VerticalAlignment="Center" FontSize="15" Text="{Binding UsedMem}"/>
             <TextBlock VerticalAlignment="Center" FontSize="15" Text="MB"/>
             <TextBlock VerticalAlignment="Center" FontSize="15" Text="/"/>
             <TextBlock VerticalAlignment="Center" FontSize="15" Text="{Binding TotalMem}"/>
             <TextBlock VerticalAlignment="Center" FontSize="15" Text="MB"/>
         </StackPanel>
-       
-        <ProgressBar Value="{Binding MemPercent}"/>
+
+        <ProgressBar Style="{Binding MemBarStyle}" Height="15" Margin="5" Value="{Binding MemPercent}"/>
+        <StackPanel Margin="5" Orientation="Horizontal">
+            <TextBlock Text="{DynamicResource Performance.BootTime}"/>
+            <TextBlock Text=":"/>
+            <TextBlock Text="{Binding BootTimeString}"/>
+            <TextBlock Margin="10,0,0,0" Text="{DynamicResource Performance.RunningTime}"/>
+            <TextBlock Text=":"/>
+            <TextBlock Text="{Binding RunningTimeString}"/>
+
+        </StackPanel>
+        
     </StackPanel>
 </UserControl>

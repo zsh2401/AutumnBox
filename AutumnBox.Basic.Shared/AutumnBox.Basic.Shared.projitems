@@ -59,6 +59,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Device\ManagementV2\OS\HardwareInfoGetter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Device\ManagementV2\OS\MemInfoGetter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Device\ManagementV2\OS\MemoryInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Device\ManagementV2\OS\StatGetter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Device\ManagementV2\OS\Uptime.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Device\ManagementV2\OS\UserInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Device\ManagementV2\OS\UserManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Device\ManagementV2\OS\WindowManager.cs" />

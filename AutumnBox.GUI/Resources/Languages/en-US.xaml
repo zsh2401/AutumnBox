@@ -71,6 +71,10 @@
      <s:String x:Key="Update.IsLatestVersion">There is no update</s:String>
     <s:String x:Key="Update.Cancel">Cancel</s:String>
     
+    <s:String x:Key="Performance.CPU">CPU usage</s:String>
+   <s:String x:Key="Performance.Memory">Memory usage</s:String>
+           <s:String x:Key="Performance.BootTime">Boot</s:String>
+    <s:String x:Key="Performance.RunningTime">Running</s:String>
     
     <s:String x:Key="UserLicenseTitle">User License</s:String>
     <s:String x:Key="UserLicenseContent">This agreement is still being prepared, and the final interpretation is owned by zsh2401.

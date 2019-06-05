@@ -19,6 +19,7 @@ using AutumnBox.OpenFramework.Open.Impl;
 using AutumnBox.OpenFramework.Open.Management;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
@@ -34,7 +35,7 @@ namespace AutumnBox.CoreModules.Extensions.Hidden
     internal class EHoldMyHand : LeafExtensionBase
     {
         [LMain]
-        public void Main(ILeafUI ui, ICommandExecutor executor,IDevice device)
+        public void Main(ILeafUI ui, ICommandExecutor executor, IDevice device)
         {
             using (ui)
             {
@@ -49,7 +50,8 @@ namespace AutumnBox.CoreModules.Extensions.Hidden
                 {
                     ui.WriteLine(e.Text);
                 };
-                ui.WriteLine(new MemInfoGetter(device,executor).Get().Total);
+                var getter = new Uptime(device,executor);
+                ui.WriteLine(getter.GetRunningSeconds()); 
                 ui.Finish();
             }
         }
