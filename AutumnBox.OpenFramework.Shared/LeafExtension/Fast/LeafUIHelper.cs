@@ -99,7 +99,7 @@ namespace AutumnBox.OpenFramework.LeafExtension.Fast
         /// <returns></returns>
         public static void EAgree(this ILeafUI ui, string msg, string btnYes = null, string btnNo = null)
         {
-            if (ui.DoYN(msg, btnYes, btnNo)) ui.EShutdown();
+            if (!ui.DoYN(msg, btnYes, btnNo)) ui.EShutdown();
         }
         /// <summary>
         /// 进行可取消的是否抉择
