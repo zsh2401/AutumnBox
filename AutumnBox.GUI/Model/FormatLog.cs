@@ -22,9 +22,10 @@ namespace AutumnBox.GUI.Model
                     case "Debug":
                         return Colors.Green;
                     case "Info":
-                        return Color.FromRgb(34, 96, 0xDC);
+                        return Colors.AliceBlue;
+                        //return Color.FromRgb(34, 96, 0xDC);
                     case "Exception":
-                        return Colors.Red;
+                        return Colors.OrangeRed;
                     case "Warn":
                         return Colors.Orange;
                     default:

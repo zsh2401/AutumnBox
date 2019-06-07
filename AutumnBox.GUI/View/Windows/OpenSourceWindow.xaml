@@ -36,24 +36,25 @@
             </StackPanel>
             <TextBlock VerticalAlignment="Bottom" TextAlignment="Center">Copyright © 2017 - 2019 zsh2401,All Rights Reserved</TextBlock>
         </Grid>
-        
-        <ItemsControl ScrollViewer.HorizontalScrollBarVisibility="Hidden"  ScrollViewer.VerticalScrollBarVisibility="Visible" ItemsSource="{Binding Projects}" DockPanel.Dock="Right">
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Margin="5">
-                        <StackPanel.InputBindings>
-                            <MouseBinding MouseAction="LeftClick" Command="{Binding DataContext.OpenUrl,ElementName=mThis}" CommandParameter="{Binding Url}"/>
-                        </StackPanel.InputBindings>
-                        <TextBlock TextWrapping="Wrap" FontSize="15" Text="{Binding Name}"/>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock FontSize="12" Foreground="Gray" Text="{Binding LicenseName}"/>
-                            <TextBlock FontSize="12" Margin="20,0,0,0" Foreground="Gray" Text="{Binding Owner}"/>
+
+        <ScrollViewer VerticalScrollBarVisibility="Visible">
+            <ItemsControl ItemsSource="{Binding Projects}" DockPanel.Dock="Right">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Margin="5">
+                            <StackPanel.InputBindings>
+                                <MouseBinding MouseAction="LeftClick" Command="{Binding DataContext.OpenUrl,ElementName=mThis}" CommandParameter="{Binding Url}"/>
+                            </StackPanel.InputBindings>
+                            <TextBlock TextDecorations="Underline" TextWrapping="Wrap" FontSize="15" Text="{Binding Name}"/>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontSize="12" Foreground="Gray" Text="{Binding LicenseName}"/>
+                                <TextBlock FontSize="12" Margin="20,0,0,0" Foreground="Gray" Text="{Binding Owner}"/>
+                            </StackPanel>
+                            <TextBlock Foreground="Gray" FontSize="12" TextWrapping="Wrap" Text="{Binding Description}"/>
                         </StackPanel>
-                        <TextBlock Foreground="Gray" FontSize="12" TextWrapping="Wrap" Text="{Binding Description}"/>
-                    </StackPanel>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
-        
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
     </DockPanel>
 </controls:BlurWindow>

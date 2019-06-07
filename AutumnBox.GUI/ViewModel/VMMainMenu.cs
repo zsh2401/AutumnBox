@@ -33,36 +33,19 @@ namespace AutumnBox.GUI.ViewModel
                 RaisePropertyChanged();
             }
         }
-        public ICommand Donate { get; }
-        public ICommand OpenAbout { get; }
-        public ICommand ViewLicense { get; }
         public ICommand Exit { get; }
-        public ICommand OpenLoggingWindow { get; }
-        public ICommand OpenUpdateLogs { get; }
-        public ICommand OpenSettings { get; }
         public ICommand OpenShell { get; }
         public ICommand UpdateCheck { get; }
-        public ICommand OpenOSInformation { get; }
         public ICommand InstallExtension { get; }
         public ICommand Restart { get; }
-        public ICommand ViewLibs { get; }
         public ICommand OpenExtFloder { get; }
         public VMMainMenu()
         {
             Restart = new MVVMCommand(p => ExtensionBridge.Start("ERestartApp"));
             Exit = new MVVMCommand(p => { App.Current.Shutdown(0); });
-            ViewLibs = new MVVMCommand(p => WinM.X("Libs"));
-            OpenLoggingWindow = new MVVMCommand(p => WinM.D("Log"));
-            OpenUpdateLogs = new MVVMCommand(p => WinM.X("UpdateLogs"));
-            OpenSettings = new MVVMCommand(p => WinM.X("Settings"));
             UpdateCheck = new MVVMCommand(P => Updater.Do());
-            ViewLicense = new MVVMCommand(p => WinM.X("License"));
-            OpenOSInformation = new MVVMCommand(p => WinM.X("OpenSource"));
             OpenShell = new MVVMCommand(p => OpenShellMethod(p?.ToString()));
             InstallExtension = new MVVMCommand(p => ExtensionBridge.Start("EInstallExtension"));
-            ViewLibs = new MVVMCommand(p => WinM.X("Libs"));
-            OpenAbout = new MVVMCommand(p => WinM.X("About"));
-            Donate = new MVVMCommand(p => WinM.X("Donate"));
             OpenExtFloder = new MVVMCommand(p => Process.Start(BuildInfo.DEFAULT_EXTENSION_PATH));
         }
         private static void OpenShellMethod(string fileName)

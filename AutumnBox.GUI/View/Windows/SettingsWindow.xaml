@@ -15,7 +15,7 @@
     WindowStartupLocation="CenterOwner"
     FontFamily="{DynamicResource AutumnBox.Font}"
     Title="{DynamicResource ContentGuideTitleSettings}"
-          Height="400" Width="400">
+          Height="200" Width="400">
     <Window.DataContext>
         <viewmodel:VMSettingsDialog/>
     </Window.DataContext>

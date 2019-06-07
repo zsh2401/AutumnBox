@@ -26,7 +26,7 @@
         <KeyBinding Modifiers="Shift" Key="V" Command="{Binding Path=DataContext.OpenShell,ElementName=Menu}" CommandParameter="powershell.exe"/>
         <KeyBinding Modifiers="Shift" Key="G" Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoDownloadExtensions}" />
         <KeyBinding Modifiers="Shift" Key="O" Command="{Binding Path=DataContext.OpenExtFloder,ElementName=Menu}" />
-        <KeyBinding Modifiers="Shift" Key="D" Command="{Binding Path=DataContext.OpenLoggingWindow,ElementName=Menu}" />
+        <KeyBinding Modifiers="Shift" Key="D" Command="{Binding ShowWindowDialog}" CommandParameter="Log"/>
         <KeyBinding Modifiers="Shift" Key="R" Command="{Binding Path=DataContext.Restart,ElementName=Menu}" />
     </Window.InputBindings>
     <controls:Window.NonClientAreaContent>

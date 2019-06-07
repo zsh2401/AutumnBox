@@ -26,6 +26,16 @@ namespace AutumnBox.GUI.MVVM
         }
         private ICommand _showWindowDialog;
 
+        public ICommand ShowWindow
+        {
+            get => _showWindow; set
+            {
+                _showWindow = value;
+                RaisePropertyChanged();
+            }
+        }
+        private ICommand _showWindow;
+
         public ICommand OpenUrl
         {
             get
@@ -56,39 +66,11 @@ namespace AutumnBox.GUI.MVVM
 
         public ViewModelBase()
         {
-            OpenUrl = new FlexiableCommand(_OpenUrl);
-            OpenGoUrl = new FlexiableCommand(_OpenGoUrl);
-            ShowWindowDialog = new FlexiableCommand(_ShowWindowDialog);
+            OpenUrl = _OpenUrlCommand;
+            OpenGoUrl = _OpenGoUrlCommand;
+            ShowWindowDialog = _ShowWindowDialogCommnand;
+            ShowWindow = _ShowWindowCommand;
         }
-
-        protected void _OpenGoUrl(object para)
-        {
-            var goPre = App.Current.Resources["UrlGoPrefix"] as string;
-            try
-            {
-                Process.Start(goPre + para);
-            }
-            catch (Exception e)
-            {
-                SLogger.Warn(this, $"can not open url {para}", e);
-            }
-        }
-        protected void _OpenUrl(object para)
-        {
-            try
-            {
-                Process.Start(para as string);
-            }
-            catch (Exception e)
-            {
-                SLogger.Warn(this, $"can not open url {para}", e);
-            }
-        }
-        protected void _ShowWindowDialog(object para)
-        {
-            WinM.X(para.ToString());
-        }
-
         protected virtual bool RaisePropertyChangedOnDispatcher { get; set; } = false;
         protected override void RaisePropertyChanged([CallerMemberName] string propertyName = null)
         {
@@ -103,7 +85,51 @@ namespace AutumnBox.GUI.MVVM
             {
                 base.RaisePropertyChanged(propertyName);
             }
+        }
 
+
+
+        private static readonly ICommand _OpenGoUrlCommand;
+        private static readonly ICommand _OpenUrlCommand;
+        private static readonly ICommand _ShowWindowDialogCommnand;
+        private static readonly ICommand _ShowWindowCommand;
+        static ViewModelBase()
+        {
+            _OpenUrlCommand = new MVVMCommand(_OpenUrl);
+            _OpenGoUrlCommand = new MVVMCommand(_OpenGoUrl);
+            _ShowWindowDialogCommnand = new MVVMCommand(_ShowWindowDialog);
+            _ShowWindowCommand = new MVVMCommand(_ShowWindow);
+        }
+        private static void _OpenGoUrl(object para)
+        {
+            var goPre = App.Current.Resources["UrlGoPrefix"] as string;
+            try
+            {
+                Process.Start(goPre + para);
+            }
+            catch (Exception e)
+            {
+                SLogger<ViewModelBase>.Warn($"can not open url {para}", e);
+            }
+        }
+        private static void _OpenUrl(object para)
+        {
+            try
+            {
+                Process.Start(para as string);
+            }
+            catch (Exception e)
+            {
+                SLogger<ViewModelBase>.Warn($"can not open url {para}", e);
+            }
+        }
+        private static void _ShowWindowDialog(object para)
+        {
+            WinM.X(para.ToString());
+        }
+        private static void _ShowWindow(object para)
+        {
+            WinM.D(para.ToString());
         }
     }
 }
