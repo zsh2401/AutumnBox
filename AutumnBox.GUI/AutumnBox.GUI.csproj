@@ -55,8 +55,7 @@
     <DebugSymbols>false</DebugSymbols>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>
-    </ApplicationIcon>
+    <ApplicationIcon>Resources\Drawable\icon.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>AutumnBox.GUI.App</StartupObject>
@@ -195,6 +194,7 @@
     <Compile Include="Util\Net\Getters\TipsGetter.cs" />
     <Compile Include="Util\Net\Getters\ToastMotdGetter.cs" />
     <Compile Include="Util\Net\Getters\VersionBanInfoGetter.cs" />
+    <Compile Include="Util\Net\HomeContentProvider.cs" />
     <Compile Include="Util\Net\Statistics.cs" />
     <Compile Include="Util\Net\ToastMotd.cs" />
     <Compile Include="Util\Net\Updater.cs" />
@@ -218,16 +218,8 @@
     <Compile Include="Util\UI\HelpButtonHelper.cs" />
     <Compile Include="Util\UI\Sentences.cs" />
     <Compile Include="ViewModel\VMBottomBar.cs" />
-    <Compile Include="ViewModel\VMConnectDevices.cs" />
-    <Compile Include="ViewModel\VMContentChoice.cs" />
-    <Compile Include="ViewModel\VMCst.cs" />
-    <Compile Include="ViewModel\VMCurrentDevice.cs" />
-    <Compile Include="ViewModel\VMDefaultInformation.cs" />
     <Compile Include="ViewModel\VMDeviceDash.cs" />
-    <Compile Include="ViewModel\VMDeviceDetails.cs" />
     <Compile Include="ViewModel\VMDeviceBar.cs" />
-    <Compile Include="ViewModel\VMDevicePerformance.cs" />
-    <Compile Include="ViewModel\VMExtensions.cs" />
     <Compile Include="ViewModel\VMExtensionsNoCategory.cs" />
     <Compile Include="ViewModel\VMGuide.cs" />
     <Compile Include="ViewModel\VMHome.cs" />
@@ -238,21 +230,11 @@
     <Compile Include="ViewModel\VMMainMenu.cs" />
     <Compile Include="ViewModel\VMMainWindow.cs" />
     <Compile Include="ViewModel\VMMainWindowV2.cs" />
-    <Compile Include="ViewModel\VMMore.cs" />
-    <Compile Include="ViewModel\VMOldExtension.cs" />
     <Compile Include="ViewModel\VMOpenSource.cs" />
     <Compile Include="ViewModel\VMPanelMain.cs" />
-    <Compile Include="ViewModel\VMReboot.cs" />
     <Compile Include="ViewModel\VMRunningWindow.cs" />
     <Compile Include="ViewModel\VMSettingsDialog.cs" />
-    <Compile Include="ViewModel\VMTipCard.cs" />
-    <Compile Include="ViewModel\VMTips.cs" />
     <Compile Include="ViewModel\VMUpdateLogs.cs" />
-    <Compile Include="ViewModel\VMUpdateWindow.cs" />
-    <Compile Include="ViewModel\VMWelcome.cs" />
-    <Compile Include="View\Controls\DevicePerformance.xaml.cs">
-      <DependentUpon>DevicePerformance.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\Controls\ExtensionsPanel.xaml.cs">
       <DependentUpon>ExtensionsPanel.xaml</DependentUpon>
     </Compile>
@@ -264,9 +246,6 @@
     </Compile>
     <Compile Include="View\Controls\MainMenu.xaml.cs">
       <DependentUpon>MainMenu.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Controls\RebootBar.xaml.cs">
-      <DependentUpon>RebootBar.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\CstPreview.xaml.cs">
       <DependentUpon>CstPreview.xaml</DependentUpon>
@@ -297,9 +276,6 @@
     </Compile>
     <Compile Include="View\Panel\PanelDefaultInformation.xaml.cs">
       <DependentUpon>PanelDefaultInformation.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Panel\PanelDeviceDetails.xaml.cs">
-      <DependentUpon>PanelDeviceDetails.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Panel\PanelLoading.xaml.cs">
       <DependentUpon>PanelLoading.xaml</DependentUpon>
@@ -489,10 +465,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\Controls\DevicePerformance.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="View\Controls\ExtensionsPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -508,10 +480,6 @@
     <Page Include="View\Controls\MainMenu.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\Controls\RebootBar.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\CstPreview.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -550,10 +518,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Panel\PanelDefaultInformation.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\Panel\PanelDeviceDetails.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

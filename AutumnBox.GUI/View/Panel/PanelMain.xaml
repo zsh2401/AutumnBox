@@ -9,6 +9,7 @@
              xmlns:dragablz="http://dragablz.net/winfx/xaml/dragablz"
              xmlns:viewmodel="clr-namespace:AutumnBox.GUI.ViewModel"
              xmlns:controls1="clr-namespace:AutumnBox.GUI.View.Controls"
+             xmlns:controls="clr-namespace:HandyControl.Controls;assembly=HandyControl"
              mc:Ignorable="d" 
              d:DesignHeight="619" d:DesignWidth="1042">
     <UserControl.DataContext>
@@ -19,7 +20,12 @@
         <controls1:BottomBar DockPanel.Dock="Bottom"/>
         <TabControl x:Name="TabControl" SelectedIndex="{Binding TabSelectedIndex}" Background="Transparent" TabStripPlacement="Left">
             <TabItem TabIndex="0" Width="120" Background="Transparent" Header="{DynamicResource Home}">
-                <local:PanelDefaultInformation/>
+                <DockPanel>
+                    <controls:LoadingLine x:Name="LoadingLine" DockPanel.Dock="Top"/>
+                    <ContentControl x:Name="HomeContent">
+                        <local:PanelDefaultInformation/>
+                    </ContentControl>
+                </DockPanel>
             </TabItem>
             <TabItem  TabIndex="1"  Background="Transparent" Header="{DynamicResource Functions}">
                 <DockPanel>
@@ -33,7 +39,7 @@
                     </ScrollViewer>
                 </DockPanel>
 
-             
+
             </TabItem>
             <TabItem TabIndex="2" Background="Transparent" Header="{DynamicResource More}">
                 <ScrollViewer HorizontalScrollBarVisibility="Disabled">

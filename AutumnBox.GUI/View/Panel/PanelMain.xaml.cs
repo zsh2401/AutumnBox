@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using AutumnBox.GUI.Util.Net;
+using System.Windows.Controls;
 
 namespace AutumnBox.GUI.View.Panel
 {
@@ -10,6 +11,22 @@ namespace AutumnBox.GUI.View.Panel
         public PanelMain()
         {
             InitializeComponent();
+            Loaded += PanelMain_Loaded;
+        }
+
+        private void PanelMain_Loaded(object sender, System.Windows.RoutedEventArgs e)
+        {
+            HomeContentProvider.AfterLoaded((content) =>
+            {
+                App.Current.Dispatcher.Invoke(() =>
+                {
+                    LoadingLine.Visibility = System.Windows.Visibility.Hidden;
+                    if (content != null)
+                    {
+                        HomeContent.Content = content;
+                    }
+                });
+            });
         }
     }
 }

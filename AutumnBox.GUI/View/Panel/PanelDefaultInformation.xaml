@@ -6,10 +6,11 @@
              xmlns:local="clr-namespace:AutumnBox.GUI.View.Panel"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:viewmodel="clr-namespace:AutumnBox.GUI.ViewModel"
+             xmlns:viewmodel1="clr-namespace:AutumnBox.GUI.MVVM"
              Background="White"
              mc:Ignorable="d" >
     <UserControl.DataContext>
-        <viewmodel:VMDefaultInformation/>
+        <viewmodel1:ViewModelBase/>
     </UserControl.DataContext>
     <Grid>
         <WrapPanel x:Name="mWrapPanel" DockPanel.Dock="Bottom" Width="680">

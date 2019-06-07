@@ -51,8 +51,8 @@
       <s:String x:Key="BottomBar.Port">port</s:String>
       <s:String x:Key="BottomBar.AdbVersion">ADB version</s:String>
     <s:String x:Key="BottomBar.Mode">mode</s:String>
-    <s:String x:Key="BottomBar.Mode.RunAsUser">&lt;User&gt;</s:String>
-     <s:String x:Key="BottomBar.Mode.RunAsAdmin">&lt;Administrator&gt;</s:String>
+    <s:String x:Key="BottomBar.Mode.RunAsUser">AutumnBox run as &lt;User&gt; currently</s:String>
+     <s:String x:Key="BottomBar.Mode.RunAsAdmin">AutumnBox run as &lt;Administrator&gt; currently</s:String>
     <s:String x:Key="BottomBar.Devices.Prev">There are </s:String>
     <s:String x:Key="BottomBar.Devices.Suf"> device(s) connected</s:String>
      <s:String x:Key="BottomBar.RunningTask"> task running</s:String>

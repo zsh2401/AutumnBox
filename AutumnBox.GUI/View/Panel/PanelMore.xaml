@@ -5,12 +5,14 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              FontFamily="{DynamicResource AutumnBox.Font}"
              xmlns:local="clr-namespace:AutumnBox.GUI.View.Panel"
+                          xmlns:openfx="clr-namespace:AutumnBox.OpenFramework"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:viewmodel="clr-namespace:AutumnBox.GUI.ViewModel"
+             xmlns:viewmodel1="clr-namespace:AutumnBox.GUI.MVVM"
              Background="White"
              mc:Ignorable="d" d:DesignWidth="820" >
     <UserControl.DataContext>
-        <viewmodel:VMMore/>
+        <viewmodel1:ViewModelBase/>
     </UserControl.DataContext>
     <Grid>
         <StackPanel  Orientation="Vertical">
@@ -22,11 +24,11 @@
                     <TextBlock Margin="15,0,0,0" VerticalAlignment="Center" FontSize="12" Text="{Binding ApiVersion}"/>
                 </StackPanel>
                 <WrapPanel Margin="10,0,10,0" Orientation="Horizontal">
-                    <Button Margin="5" FontSize="12" Command="{Binding OpenExtFloder}"  Content="{DynamicResource PanelMoreBtnOpenExtensionFloder}"/>
+                    <Button Margin="5" FontSize="12" Command="{Binding OpenUrl}"  CommandParameter="..\\exts" Content="{DynamicResource PanelMoreBtnOpenExtensionFloder}"/>
                     <Button Margin="5" FontSize="12" Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoInstallExtension}"  Content="{DynamicResource PanelMoreBtnHowToInstallExtension}"/>
                     <Button Margin="5" FontSize="12" Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoDownloadExtensions}"  Content="{DynamicResource PanelMoreExtensionsDownloadCenter}"/>
                     <Button Margin="5" FontSize="12" Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoExtensionDevelopDoc}"  Content="{DynamicResource PanelMoreExtensionsDoc}"/>
-                    <Button Margin="5" FontSize="12" Command="{Binding OpenLibsView}"  Content="{DynamicResource PanelMoreBtnViewLoadedModules}"/>
+                    <Button Margin="5" FontSize="12" Command="{Binding ShowWindowDialog}"  CommandParameter="Libs" Content="{DynamicResource PanelMoreBtnViewLoadedModules}"/>
                 </WrapPanel>
             </StackPanel>
 
