@@ -14,7 +14,7 @@
         <viewmodel:VMLog></viewmodel:VMLog>
     </Window.DataContext>
     <Grid>
-        <ScrollViewer x:Name="SViewer" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Visible">
+        <ScrollViewer Style="{x:Null}" x:Name="SViewer" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Visible">
             <Grid>
                 <ListBox Style="{x:Null}" Background="Transparent" PreviewMouseWheel="LB_PreviewMouseWheel" SelectionMode="Extended"  Foreground="#F1EAE3" x:Name="LB" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding Logs}">
                     <ListBox.ItemTemplate>

@@ -47,6 +47,7 @@
         <s:String x:Key="Menu.License">用户协议(_L)</s:String>
    <s:String x:Key="Menu.ShowLoggingWindowNextTime">下次启动显示日志窗口</s:String>
        <s:String x:Key="Menu.DebugMode">调试模式</s:String>
+        <s:String x:Key="Menu.RefreshHome">刷新主页</s:String>
     
       <s:String x:Key="BottomBar.Port">端口</s:String>
       <s:String x:Key="BottomBar.AdbVersion">ADB版本</s:String>

@@ -6,10 +6,12 @@
 
 using AutumnBox.GUI.Util.Bus;
 using AutumnBox.GUI.Util.Debugging;
+using AutumnBox.GUI.Util.Net.HomeContent;
 using AutumnBox.Logging;
 using System;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace AutumnBox.GUI.MVVM
@@ -64,12 +66,33 @@ namespace AutumnBox.GUI.MVVM
         }
         private ICommand _openGoUrl;
 
+        public ICommand RefreshHomeContent
+        {
+            get
+            {
+                return _refreshHomeContent;
+            }
+            set
+            {
+                _refreshHomeContent = value;
+                RaisePropertyChanged();
+            }
+        }
+        private ICommand _refreshHomeContent;
+
         public ViewModelBase()
         {
             OpenUrl = _OpenUrlCommand;
             OpenGoUrl = _OpenGoUrlCommand;
             ShowWindowDialog = _ShowWindowDialogCommnand;
             ShowWindow = _ShowWindowCommand;
+            RefreshHomeContent = new MVVMCommand((p) =>
+            {
+                Task.Run(() =>
+                {
+                    HomeContentProvider.Do();
+                });
+            });
         }
         protected virtual bool RaisePropertyChangedOnDispatcher { get; set; } = false;
         protected override void RaisePropertyChanged([CallerMemberName] string propertyName = null)

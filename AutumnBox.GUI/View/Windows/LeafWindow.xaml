@@ -5,7 +5,6 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AutumnBox.GUI.View.Windows"
         xmlns:viewmodel="clr-namespace:AutumnBox.GUI.ViewModel"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:controls="clr-namespace:HandyControl.Controls;assembly=HandyControl"
         mc:Ignorable="d"
         Icon="{Binding Icon}"

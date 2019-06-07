@@ -47,6 +47,7 @@
             <s:String x:Key="Menu.License">User _license</s:String>
    <s:String x:Key="Menu.ShowLoggingWindowNextTime">Show logging window after next launch</s:String>
        <s:String x:Key="Menu.DebugMode">Debuug mode</s:String>
+          <s:String x:Key="Menu.RefreshHome">Refresh Home</s:String>
     
       <s:String x:Key="BottomBar.Port">port</s:String>
       <s:String x:Key="BottomBar.AdbVersion">ADB version</s:String>

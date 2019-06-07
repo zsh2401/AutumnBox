@@ -24,16 +24,4 @@
     <s:String x:Key="UrlAtmbRepo">https://github.com/zsh2401/AutumnBox</s:String>
     <s:String x:Key="UrlAtmbWebRepo">https://github.com/zsh2401/www.atmb.top</s:String>
 
-    <!--WEBAPI-->
-    <s:String x:Key="WebApiUpdate">http://www.atmb.top/_api_/update</s:String>
-    <s:String x:Key="WebApiStatistics">http://www.atmb.top/_api_/statistics</s:String>
-    <s:String x:Key="WebApiToastMotd">http://www.atmb.top/_api_/tmotd</s:String>
-    <s:String x:Key="WebApiBanInfo">http://www.atmb.top/_api_/ban</s:String>
-
-    <s:String x:Key="WebApiHomeSettings">http://www.atmb.top/_api_/home_v1/settings.json</s:String>
-    <s:String x:Key="WebApiCst">http://atmb.top/_api_/home_v1/cst.xaml</s:String>
-    <s:String x:Key="WebApiTips">http://www.atmb.top/_api_/home_v1/tips.json</s:String>
-
-    <!--WEBAPI-->
-
 </ResourceDictionary>

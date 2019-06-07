@@ -194,7 +194,10 @@
     <Compile Include="Util\Net\Getters\TipsGetter.cs" />
     <Compile Include="Util\Net\Getters\ToastMotdGetter.cs" />
     <Compile Include="Util\Net\Getters\VersionBanInfoGetter.cs" />
-    <Compile Include="Util\Net\HomeContentProvider.cs" />
+    <Compile Include="Util\Net\HomeContent\Events.cs" />
+    <Compile Include="Util\Net\HomeContent\HomeContentProvider.cs" />
+    <Compile Include="Util\Net\HomeContent\IHomeContentGetter.cs" />
+    <Compile Include="Util\Net\HomeContent\RemoteXamlReader.cs" />
     <Compile Include="Util\Net\Statistics.cs" />
     <Compile Include="Util\Net\ToastMotd.cs" />
     <Compile Include="Util\Net\Updater.cs" />
@@ -389,6 +392,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Resources\ApiUrls.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resources\Converters.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

@@ -56,6 +56,7 @@
                 <MenuItem Header="{DynamicResource Menu.ShowLoggingWindowNextTime}" IsCheckable="True" IsChecked="{Binding ShowDebugWindowNextTime}"/>
                 <MenuItem Header="{DynamicResource Menu.DevDocs}" Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoExtensionDevelopDoc}"/>
                 <MenuItem Header="{DynamicResource Menu.Libs}" Command="{Binding ShowWindowDialog}" CommandParameter="Libs"/>
+                <MenuItem Header="{DynamicResource Menu.RefreshHome}" InputGestureText="Ctrl + F5" Command="{Binding RefreshHomeContent}"/>
             </MenuItem>
 
             <MenuItem Header="{DynamicResource Menu.Help}">
