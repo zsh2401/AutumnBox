@@ -12,6 +12,7 @@
     Style="{StaticResource WindowBlur}"
     ShowTitle="True"
     ResizeMode="NoResize"
+        ShowInTaskbar="False"
     FontFamily="{DynamicResource AutumnBox.Font}"
         Title="Love you" Width="600" Height="350">
     <Window.DataContext>

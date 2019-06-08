@@ -9,6 +9,7 @@
         xmlns:mvvm="clr-namespace:AutumnBox.GUI.MVVM"
         ResizeMode="NoResize"
         mc:Ignorable="d"
+        ShowInTaskbar="False"
         WindowStartupLocation="CenterOwner"
     Style="{StaticResource WindowBlur}"
         FontFamily="{DynamicResource AutumnBox.Font}"

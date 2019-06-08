@@ -12,6 +12,7 @@
         ResizeMode="NoResize"
     Style="{StaticResource WindowBlur}"
     ShowTitle="True"
+        ShowInTaskbar="False"
         WindowStartupLocation="CenterOwner"
         Title="{Binding MsgTitle}" MinHeight="220" MinWidth="460" Height="220" Width="460" >
     <Grid>

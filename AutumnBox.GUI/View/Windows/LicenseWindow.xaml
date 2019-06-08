@@ -10,6 +10,7 @@
     WindowStartupLocation="CenterOwner"
     FontFamily="{DynamicResource AutumnBox.Font}"
     Style="{DynamicResource WindowBlur}"
+        ShowInTaskbar="False"
     ResizeMode="NoResize"
     ShowTitle="True"
         Title="{DynamicResource UserLicenseTitle}" Height="300" Width="400">

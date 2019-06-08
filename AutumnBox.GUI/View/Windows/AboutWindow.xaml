@@ -10,6 +10,7 @@
     xmlns:mvvm="clr-namespace:AutumnBox.GUI.MVVM"
     xmlns:panel="clr-namespace:AutumnBox.GUI.View.Panel"
     mc:Ignorable="d"
+    ShowInTaskbar="False"
     Style="{StaticResource WindowBlur}"
    ResizeMode="NoResize"
     ShowTitle="True"

@@ -10,6 +10,7 @@
         mc:Ignorable="d"
     WindowStartupLocation="CenterOwner"
         x:Name="thisCtrl"
+        ShowInTaskbar="False"
     Style="{StaticResource WindowBlur}"
     ShowTitle="True"
         Title="{DynamicResource LibsWindowTitle}" ResizeMode="NoResize" Height="300" Width="400">

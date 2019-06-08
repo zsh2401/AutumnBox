@@ -345,9 +345,6 @@
     <Compile Include="View\Windows\SettingsWindow.xaml.cs">
       <DependentUpon>SettingsWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Windows\UpdateLogsWindow.xaml.cs">
-      <DependentUpon>UpdateLogsWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\Windows\YNWindow.xaml.cs">
       <DependentUpon>YNWindow.xaml</DependentUpon>
     </Compile>
@@ -617,10 +614,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="View\Windows\SettingsWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Windows\UpdateLogsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

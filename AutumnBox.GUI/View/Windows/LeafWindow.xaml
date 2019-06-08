@@ -13,6 +13,7 @@
          MinHeight="300" MinWidth="450" Height="{Binding Height,Mode=TwoWay}" Width="{Binding Width,Mode=TwoWay}"
         d:DesignHeight="300" d:DesignWidth="450"
         FontFamily="{DynamicResource AutumnBox.Font}"
+                         ShowInTaskbar="True"
         WindowStartupLocation="CenterScreen"
            controls:Dialog.Token="{Binding Token}"
         Title="{Binding Title}">

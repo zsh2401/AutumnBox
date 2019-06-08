@@ -14,6 +14,7 @@
         FontFamily="{DynamicResource AutumnBox.Font}"
         Height="450" Width="800"
     ShowTitle="True"
+        ShowInTaskbar="False"
     Style="{DynamicResource WindowBlur}"
         Title="{DynamicResource OpenSourceWindowTitle}" MinHeight="500" MinWidth="800">
     <Window.DataContext>
