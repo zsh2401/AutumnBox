@@ -9,6 +9,7 @@ using AutumnBox.Basic.Device;
 using AutumnBox.Basic.Device.Management.AppFx;
 using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.LeafExtension;
+using AutumnBox.OpenFramework.LeafExtension.Attributes;
 using AutumnBox.OpenFramework.LeafExtension.Fast;
 using AutumnBox.OpenFramework.LeafExtension.Kit;
 using AutumnBox.OpenFramework.Open;
@@ -24,6 +25,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron
     {
         private const string PKG_NAME = "moe.shizuku.privileged.api";
         private const string SH_PATH = "/sdcard/Android/data/moe.shizuku.privileged.api/files/start.sh";
+        [LMain]
         public void EntryPoint(ILeafUI ui, IDevice device, IClassTextManager text)
         {
             using (ui)
