@@ -45,6 +45,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Device\Emulator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Device\IDevice.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Device\ManagementV2\AppFx\ActivityManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Device\ManagementV2\AppFx\PackageInstaller.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Device\ManagementV2\AppFx\ComponentName.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Device\ManagementV2\AppFx\Intent.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Device\ManagementV2\AppFx\IntentStringHelper.cs" />
