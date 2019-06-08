@@ -1,6 +1,7 @@
 ﻿using AutumnBox.GUI.View.Panel;
 using AutumnBox.GUI.View.Windows;
 using AutumnBox.GUI.ViewModel;
+using AutumnBox.Logging;
 using HandyControl.Controls;
 using System;
 
@@ -26,7 +27,17 @@ namespace AutumnBox.GUI.Util.Bus
         {
             App.Current.Dispatcher.Invoke(() =>
             {
-                MainWindow.MainGrid.Content = new PanelMain();
+                try
+                {
+                    SLogger.Info(nameof(MainWindowBus), "Panel creating");
+                    var panel = new PanelMain();
+                    MainWindow.MainContentContainer.Content = panel;
+                    SLogger.Info(nameof(MainWindowBus), "Created panel instance");
+                }
+                catch (Exception e)
+                {
+                    SLogger.Warn(nameof(MainWindowBus), "Could not create panel", e);
+                }
             });
         }
         public static void Info(string message)

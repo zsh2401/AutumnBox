@@ -5,6 +5,8 @@
 *************************************************/
 using AutumnBox.OpenFramework.Content;
 using AutumnBox.OpenFramework.ExtLibrary;
+using AutumnBox.OpenFramework.Open;
+using AutumnBox.OpenFramework.Open.Management;
 using AutumnBox.OpenFramework.Wrapper;
 using System;
 using System.Collections.Generic;
@@ -28,13 +30,15 @@ namespace AutumnBox.CoreModules
             Context = this;
             Current = this;
         }
-        public override IEnumerable<IExtensionWrapper> GetWrappers()
-        {
-            return base.GetWrappers();
-        }
         protected override IExtensionWrapper GetWrapperFor(Type extType)
         {
             return new CustomWrapper(extType);
+        }
+        public override void Destory()
+        {
+            base.Destory();
+            IStorageManager storageManager = OpenApiFactory.Get<IStorageManager>(this);
+            storageManager.ClearCache();
         }
         private class CustomWrapper : ClassExtensionWrapper
         {

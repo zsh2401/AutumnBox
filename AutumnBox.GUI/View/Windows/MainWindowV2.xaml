@@ -39,7 +39,7 @@
         </StackPanel>
     </controls:Window.NonClientAreaContent>
     <Grid>
-        <ContentControl x:Name="MainGrid">
+        <ContentControl x:Name="MainContentContainer">
             <panel:PanelLoading/>
         </ContentControl>
         <ScrollViewer Margin="0,0,0,30" VerticalScrollBarVisibility="Hidden" VerticalAlignment="Top" HorizontalAlignment="Right" Grid.Column="1">

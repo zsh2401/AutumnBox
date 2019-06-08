@@ -2,6 +2,7 @@
 using AutumnBox.GUI.Util;
 using AutumnBox.GUI.Util.Bus;
 using AutumnBox.GUI.Util.I18N;
+using AutumnBox.Logging;
 using System.Windows;
 
 namespace AutumnBox.GUI.ViewModel
@@ -34,7 +35,9 @@ namespace AutumnBox.GUI.ViewModel
             };
             AppLoader.Instance.Loaded += (s, e) =>
             {
+                SLogger<VMMainWindowV2>.Info("switching");
                 MainWindowBus.SwitchToMainGrid();
+                SLogger<VMMainWindowV2>.Info("switched");
             };
         }
 

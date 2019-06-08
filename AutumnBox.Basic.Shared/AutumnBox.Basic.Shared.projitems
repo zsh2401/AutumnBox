@@ -61,6 +61,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Device\ManagementV2\OS\KeyInputer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Device\ManagementV2\OS\MemInfoGetter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Device\ManagementV2\OS\MemoryInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Device\ManagementV2\OS\ScreenCapture.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Device\ManagementV2\OS\StatGetter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Device\ManagementV2\OS\Uptime.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Device\ManagementV2\OS\UserInfo.cs" />
@@ -90,7 +91,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Device\Management\OS\DeviceBuildPropSetter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Device\Management\OS\FileSystem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Device\Management\OS\Inputer.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Device\Management\OS\ScreenCapture.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Device\Management\OS\ShellCommandHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Device\Management\OS\UserInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Device\Management\OS\UserManager.cs" />
