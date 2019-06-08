@@ -61,6 +61,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Device\ManagementV2\OS\KeyInputer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Device\ManagementV2\OS\MemInfoGetter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Device\ManagementV2\OS\MemoryInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Device\ManagementV2\OS\ScreenCap.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Device\ManagementV2\OS\ScreenCapture.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Device\ManagementV2\OS\StatGetter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Device\ManagementV2\OS\Uptime.cs" />
