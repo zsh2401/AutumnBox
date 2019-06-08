@@ -22,9 +22,11 @@
             <TabItem TabIndex="0" Width="120" Background="Transparent" Header="{DynamicResource Home}">
                 <DockPanel>
                     <controls:LoadingLine x:Name="LoadingLine" DockPanel.Dock="Top"/>
-                    <ContentControl x:Name="HomeContent">
-                        <local:PanelDefaultInformation/>
-                    </ContentControl>
+                    <ScrollViewer>
+                        <ContentControl x:Name="HomeContent">
+                            <local:PanelDefaultInformation/>
+                        </ContentControl>
+                    </ScrollViewer>
                 </DockPanel>
             </TabItem>
             <TabItem  TabIndex="1"  Background="Transparent" Header="{DynamicResource Functions}">

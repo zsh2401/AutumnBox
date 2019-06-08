@@ -830,7 +830,7 @@ Agreement modification:
 The Box of Autumn is currently open sourced with LGPL 3.0, safe, free, trustworthy, and if necessary, please comply with the open source agreement.
 Acknowledgement:
 MonoLogueChi,饼干怪兽,hxy,yume,白瀛,web1n,咖枯,毛线没有团团,my0402
-Newtonsoft.Json | Google | Android | Linux | C# | Microsoft | MaterialDesignInXaml</s:String>
+Newtonsoft.Json | Google | Android | Linux | C# | Microsoft | HandyControl</s:String>
     <!--关于信息-->
 
     <s:String x:Key="warningOpenNetDebugging">

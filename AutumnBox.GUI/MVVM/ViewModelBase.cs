@@ -7,6 +7,7 @@
 using AutumnBox.GUI.Util.Bus;
 using AutumnBox.GUI.Util.Debugging;
 using AutumnBox.GUI.Util.Net.HomeContent;
+using AutumnBox.GUI.Util.UI;
 using AutumnBox.Logging;
 using System;
 using System.Diagnostics;
@@ -79,6 +80,8 @@ namespace AutumnBox.GUI.MVVM
             }
         }
         private ICommand _refreshHomeContent;
+
+        public string Sentence => Sentences.Next();
 
         public ViewModelBase()
         {

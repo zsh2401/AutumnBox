@@ -24,7 +24,7 @@ namespace AutumnBox.GUI.Util.Net.HomeContent
             context.XmlnsDictionary.Add("mc", "http://schemas.openxmlformats.org/markup-compatibility/2006");
             context.XmlnsDictionary.Add("vm", "clr-namespace:AutumnBox.GUI.ViewModel");
             context.XmlnsDictionary.Add("system", "clr-namespace:System;assembly=mscorlib");
-            //context.XmlnsDictionary.Add("handycontrol", "clr-namespace:HandyControl.Controls;assembly=HandyControl");
+            context.XmlnsDictionary.Add("handycontrol", "clr-namespace:HandyControl.Controls;assembly=HandyControl");
             //context.XmlnsDictionary.Add("panel", "clr-namespace:AutumnBox.GUI.View.Panel");
             //context.XmlnsDictionary.Add("atmbctrl", "clr-namespace:AutumnBox.GUI.View.Controls");
         }
