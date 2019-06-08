@@ -217,7 +217,7 @@ namespace AutumnBox.GUI.Util
         }
         private void InitUtilities()
         {
-            var adb = VersionInformation.Adb;
+            _ = VersionInformation.Adb;
         }
         private void RunDeviceListener()
         {
