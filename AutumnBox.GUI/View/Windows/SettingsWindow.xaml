@@ -23,7 +23,6 @@
         <TabControl Background="Transparent">
             <TabItem Background="Transparent" Header="{DynamicResource PanelSettingsUx}">
                 <StackPanel Margin="5" Orientation="Vertical">
-                    <Label Margin="0,0,0,5" Height="1" Background="LightGray"/>
                     <DockPanel Margin="5">
                         <ComboBox DockPanel.Dock="Right" ItemsSource="{Binding Languages}" DisplayMemberPath="{Binding LanguageDisplayMemberPath}" SelectedItem="{Binding SelectedLanguage}"/>
                         <TextBlock DockPanel.Dock="Left" Margin="0,0,15,0"  VerticalAlignment="Center" Text="{DynamicResource PanelSettingsLanguage}"/>
@@ -42,7 +41,6 @@
             
             <TabItem Background="Transparent" Header="{DynamicResource PanelSettingsDebug}">
                 <StackPanel  Margin="5">
-                    <Label Height="1" Background="LightGray"/>
 
                     <DockPanel Margin="5">
                         <ToggleButton Style="{DynamicResource ToggleButtonSwitch}" DockPanel.Dock="Right" IsChecked="{Binding DebugOnNext}"/>
@@ -69,36 +67,9 @@
                 </StackPanel>
             </TabItem>
 
-            <TabItem Background="Transparent" Header="{DynamicResource PanelSettingsVersionInfo}">
-                <StackPanel Orientation="Vertical" Margin="5">
-                    <Label Margin="0,0,0,5" Height="1" Background="LightGray"/>
-                    <DockPanel Margin="5">
-                        <TextBlock DockPanel.Dock="Right" Text="{Binding GUIVersion}"/>
-                        <TextBlock DockPanel.Dock="Left" Text="{DynamicResource PanelSettingsGUIVersionLabel}"/>
-                    </DockPanel>
-                    <DockPanel Margin="5">
-                        <TextBlock DockPanel.Dock="Right" Text="{Binding BasicVersion}"/>
-                        <TextBlock DockPanel.Dock="Left" Text="{DynamicResource PanelSettingsBasicVersionLabel}"/>
-                    </DockPanel>
-                    <DockPanel Margin="5">
-                        <TextBlock DockPanel.Dock="Right" Text="{Binding OpenFxVersion}"/>
-                        <TextBlock DockPanel.Dock="Left" Text="{DynamicResource PanelSettingsOpenFxVersionLabel}"/>
-                    </DockPanel>
-                    <DockPanel Margin="5">
-                        <TextBlock DockPanel.Dock="Right" Text="{Binding CoreLibVersion}"/>
-                        <TextBlock DockPanel.Dock="Left" Text="{DynamicResource PanelSettingsCoreLibVersionLabel}"/>
-                    </DockPanel>
-
-                    <DockPanel Margin="5">
-                        <TextBlock DockPanel.Dock="Right" Text="{Binding AdbVersion}"/>
-                        <TextBlock DockPanel.Dock="Left" Text="{DynamicResource PanelSettingsAdbVersionLabel}"/>
-                    </DockPanel>
-
-                </StackPanel>
-            </TabItem>
+            
             <TabItem Background="Transparent" Header="{DynamicResource PanelSettingsCmd}">
                 <StackPanel Margin="5" Orientation="Vertical">
-                    <Label Height="1" Background="LightGray"/>
                     <DockPanel Margin="5">
                         <ToggleButton DockPanel.Dock="Right" Style="{DynamicResource ToggleButtonSwitch}" IsChecked="{Binding UseEnvVarCmd}" />
                         <StackPanel DockPanel.Dock="Left" Orientation="Vertical">

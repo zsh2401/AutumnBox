@@ -25,18 +25,17 @@
     <s:String x:Key="Menu.Exit">E_xit</s:String>
      <s:String x:Key="Menu.Edit">_Edit</s:String>
     <s:String x:Key="Menu.Settings">_Settings</s:String>
-    <s:String x:Key="Menu.Terminatal">_CommandLine</s:String>
+    <s:String x:Key="Menu.Terminatal">_Command Line</s:String>
     <s:String x:Key="Menu.CMD">ADB CMD(_V)</s:String>
     <s:String x:Key="Menu.PS">Power shell(_B)</s:String>
     <s:String x:Key="Menu.Help">_Help</s:String>
     <s:String x:Key="Menu.Guide">_Guide</s:String>
-    <s:String x:Key="Menu.CheckUpdate">_Update check</s:String>
-    <s:String x:Key="Menu.UpdateLog">Update logs</s:String>
+        <s:String x:Key="Menu.CheckUpdate">Check update</s:String>
     <s:String x:Key="Menu.OpenSource">_Open source</s:String>
     <s:String x:Key="Menu.About">_About</s:String>
      <s:String x:Key="Menu.Extension">E_xtension</s:String>
      <s:String x:Key="Menu.InstallExtension">_Install extension</s:String>
-    <s:String x:Key="Menu.Libs">_View info of lib installed</s:String>
+    <s:String x:Key="Menu.Libs">_View installed extensions</s:String>
      <s:String x:Key="Menu.Donate">Do_nate</s:String>
     <s:String x:Key="Menu.ExtensionHelp">_How to install extension?</s:String>
    <s:String x:Key="Menu.Debug">_Debug</s:String>
@@ -44,7 +43,6 @@
      <s:String x:Key="Menu.OpenExtFloder">_Open extension floder</s:String>
     <s:String x:Key="Menu.DlExt">_Download extensions</s:String>
     <s:String x:Key="Menu.OfficialWebsite">Official _website</s:String>
-            <s:String x:Key="Menu.License">User _license</s:String>
    <s:String x:Key="Menu.ShowLoggingWindowNextTime">Show logging window after next launch</s:String>
        <s:String x:Key="Menu.DebugMode">Debuug mode</s:String>
           <s:String x:Key="Menu.RefreshHome">Refresh Home</s:String>
@@ -95,10 +93,18 @@
      <s:String x:Key="Update.IsLatestVersion">There is no update</s:String>
     <s:String x:Key="Update.Cancel">Cancel</s:String>
     
-    <s:String x:Key="Performance.CPU">CPU usage</s:String>
-   <s:String x:Key="Performance.Memory">Memory usage</s:String>
-           <s:String x:Key="Performance.BootTime">Boot</s:String>
-    <s:String x:Key="Performance.RunningTime">Running</s:String>
+     <s:String x:Key="Version.GUI">GUI</s:String>
+     <s:String x:Key="Version.CoreModules">Core Modules</s:String>
+     <s:String x:Key="Version.ADB">ADB</s:String>
+     <s:String x:Key="Version.Basic">Basic Library</s:String>
+    <s:String x:Key="Version.OpenFx">Open Framework</s:String>
+     <s:String x:Key="Version.Logging">Logging Framework</s:String>
+     <s:String x:Key="Version.OS">Operating System</s:String>
+      <s:String x:Key="Version.Net">.Net Environment</s:String>
+    <s:String x:Key="QQGroup">QQ Group</s:String>
+   <s:String x:Key="EMail">E-Mail</s:String>
+   <s:String x:Key="OpenSource">Open source</s:String>
+            <s:String x:Key="UpdateCheck">Update check</s:String>
     
     <s:String x:Key="UserLicenseTitle">User License</s:String>
     <s:String x:Key="UserLicenseContent">This agreement is still being prepared, and the final interpretation is owned by zsh2401.

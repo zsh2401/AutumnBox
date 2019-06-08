@@ -20,7 +20,9 @@ namespace AutumnBox.GUI.Util.Net
 {
     internal static class Updater
     {
+        private static bool isFristCheck = true;
         public static RemoteVersionInfoGetter.Result Result { get; private set; }
+
         static Updater()
         {
             if (Settings.Default.SkipVersion == "NULL")
@@ -29,15 +31,22 @@ namespace AutumnBox.GUI.Util.Net
                 Settings.Default.Save();
             }
         }
+
         public static void Do()
         {
             var getter = new RemoteVersionInfoGetter();
-            MainWindowBus.Info("Update.CheckingUpdate");
+            if (!isFristCheck)
+            {
+                MainWindowBus.Info("Update.CheckingUpdate");
+            }
             getter.Advance().ContinueWith(task =>
             {
                 if (task.IsFaulted)
                 {
-                    MainWindowBus.Error("Update.Failed");
+                    if (!isFristCheck)
+                    {
+                        MainWindowBus.Error("Update.Failed");
+                    }
                 }
                 else
                 {
@@ -53,12 +62,14 @@ namespace AutumnBox.GUI.Util.Net
                         MainWindowBus.Success("Update.IsLatestVersion");
                     }
                 }
+                isFristCheck = false;
             });
         }
         public static void DoAsk(RemoteVersionInfoGetter.Result result)
         {
             GrowlInfo gInfo = new GrowlInfo
             {
+                WaitTime = int.MaxValue,
                 ConfirmStr = App.Current.Resources["Update.UpdateNow"].ToString(),
                 CancelStr = App.Current.Resources["Update.Cancel"].ToString(),
                 Message = $"{App.Current.Resources["Update.HaveAUpdate"]}  v{result.Version}\n{result.Message}",

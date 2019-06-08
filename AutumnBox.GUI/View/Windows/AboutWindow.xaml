@@ -6,19 +6,18 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AutumnBox.GUI.View.Windows"
-        mc:Ignorable="d"
+         xmlns:util="clr-namespace:AutumnBox.GUI.Util"
+    xmlns:mvvm="clr-namespace:AutumnBox.GUI.MVVM"
+    xmlns:panel="clr-namespace:AutumnBox.GUI.View.Panel"
+    mc:Ignorable="d"
     Style="{StaticResource WindowBlur}"
    ResizeMode="NoResize"
     ShowTitle="True"
     WindowStartupLocation="CenterOwner"
     FontFamily="{DynamicResource AutumnBox.Font}"
-        Title="{DynamicResource AppNameWithVersion}" Height="150" Width="300">
-    <StackPanel>
-        <StackPanel VerticalAlignment="Top" Margin="10,10,10,20" Orientation="Horizontal">
-            <Image Source="/Resources/Drawable/Icon.ico" Height="40"/>
-            <TextBlock HorizontalAlignment="Center" FontSize="35" Text="{DynamicResource AppNameWithVersion}"/>
-        </StackPanel>
-        <TextBlock HorizontalAlignment="Center" Text="www.atmb.top"/>
-        <TextBlock Margin="0,5,0,20" VerticalAlignment="Bottom" HorizontalAlignment="Center" Text="Copyright © 2017 - 2019 zsh2401,All Rights Reserved"/>
-    </StackPanel>
+        Title="{DynamicResource AppNameWithVersion}" Height="430" Width="700">
+    <DockPanel>
+        <panel:PanelAbout DockPanel.Dock="Left"/>
+        <panel:PanelUpdateLogs DockPanel.Dock="Right"/>
+    </DockPanel>
 </controls:BlurWindow>

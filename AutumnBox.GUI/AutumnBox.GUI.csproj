@@ -220,6 +220,8 @@
     <Compile Include="Util\UI\Converters\ObjectEqualsToVisibilityConverter.cs" />
     <Compile Include="Util\UI\HelpButtonHelper.cs" />
     <Compile Include="Util\UI\Sentences.cs" />
+    <Compile Include="Util\VersionInformation.cs" />
+    <Compile Include="ViewModel\VMAbout.cs" />
     <Compile Include="ViewModel\VMBottomBar.cs" />
     <Compile Include="ViewModel\VMDeviceDash.cs" />
     <Compile Include="ViewModel\VMDeviceBar.cs" />
@@ -277,6 +279,9 @@
     <Compile Include="View\Panel\DeviceDash.xaml.cs">
       <DependentUpon>DeviceDash.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Panel\PanelAbout.xaml.cs">
+      <DependentUpon>PanelAbout.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Panel\PanelDefaultInformation.xaml.cs">
       <DependentUpon>PanelDefaultInformation.xaml</DependentUpon>
     </Compile>
@@ -288,6 +293,9 @@
     </Compile>
     <Compile Include="View\Panel\PanelMore.xaml.cs">
       <DependentUpon>PanelMore.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Panel\PanelUpdateLogs.xaml.cs">
+      <DependentUpon>PanelUpdateLogs.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Windows\AboutWindow.xaml.cs">
       <DependentUpon>AboutWindow.xaml</DependentUpon>
@@ -524,6 +532,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Panel\PanelAbout.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Panel\PanelDefaultInformation.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -539,6 +551,10 @@
     <Page Include="View\Panel\PanelMore.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Panel\PanelUpdateLogs.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Windows\AboutWindow.xaml">
       <SubType>Designer</SubType>

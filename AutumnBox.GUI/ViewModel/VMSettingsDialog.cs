@@ -57,56 +57,6 @@ namespace AutumnBox.GUI.ViewModel
             }
         }
 
-        public string GUIVersion
-        {
-            get => _guiVersion; set
-            {
-                _guiVersion = value;
-                RaisePropertyChanged();
-            }
-        }
-        private string _guiVersion = "...";
-
-        public string BasicVersion
-        {
-            get => _basicVersion; set
-            {
-                _basicVersion = value;
-                RaisePropertyChanged();
-            }
-        }
-        private string _basicVersion = "...";
-
-        public string OpenFxVersion
-        {
-            get => _openFxVersion; set
-            {
-                _openFxVersion = value;
-                RaisePropertyChanged();
-            }
-        }
-        private string _openFxVersion = "...";
-
-        public string CoreLibVersion
-        {
-            get => _coreLibVersion; set
-            {
-                _coreLibVersion = value;
-                RaisePropertyChanged();
-            }
-        }
-        private string _coreLibVersion = "...";
-
-        public string AdbVersion
-        {
-            get => _adbVersion; set
-            {
-                _adbVersion = value;
-                RaisePropertyChanged();
-            }
-        }
-        private string _adbVersion = "...";
-
         public ICommand UpdateCheck
         {
             get => _updateCheck; set
@@ -267,34 +217,6 @@ namespace AutumnBox.GUI.ViewModel
                 }
                 catch { }
             });
-            Task.Run(() => LoadVersionInfoAsync());
-        }
-
-        private void LoadVersionInfoAsync()
-        {
-            try
-            {
-                GUIVersion = Self.Version.ToString();
-                BasicVersion = typeof(Basic.ManagedAdb.LocalAdbServer).Assembly.GetName().Version.ToString();
-                OpenFxVersion = OpenFramework.BuildInfo.SDK_VERSION.ToString();
-
-                var coreLibFilterResult = from lib in OpenFramework.Management.OpenFx.LibsManager.Librarians
-                                          where lib.Name == "AutumnBox Core Modules"
-                                          select lib;
-                if (coreLibFilterResult.Count() == 0) return;
-                var assemblyLib = coreLibFilterResult.First() as AssemblyBasedLibrarian;
-                Assembly assembly = assemblyLib.ManagedAssembly;
-                CoreLibVersion = assembly.GetName().Version.ToString();
-                string versionOutput = new AdbCommand("version").Execute().Output;
-                var match = Regex.Match(versionOutput, @"[\w|\s]*[version\s](?<name>[\d|\.]+)([\r\n|\n]*)Version\s(?<code>\d+)", RegexOptions.Multiline);
-                if (match.Success)
-                {
-                    AdbVersion = match.Result("${name}(${code})");
-                }
-            }
-            catch
-            {
-            }
         }
 
         private void ResetSettingsMethod(object para)

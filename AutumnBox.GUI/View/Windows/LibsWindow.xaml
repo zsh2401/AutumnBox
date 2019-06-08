@@ -8,6 +8,7 @@
         xmlns:local="clr-namespace:AutumnBox.GUI.View.Windows"
         xmlns:viewmodel="clr-namespace:AutumnBox.GUI.ViewModel"
         mc:Ignorable="d"
+    WindowStartupLocation="CenterOwner"
         x:Name="thisCtrl"
     Style="{StaticResource WindowBlur}"
     ShowTitle="True"

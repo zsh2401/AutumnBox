@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              FontFamily="{DynamicResource AutumnBox.Font}"
              xmlns:local="clr-namespace:AutumnBox.GUI.View.Panel"
+                          xmlns:util="clr-namespace:AutumnBox.GUI.Util"
                           xmlns:openfx="clr-namespace:AutumnBox.OpenFramework"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:viewmodel="clr-namespace:AutumnBox.GUI.ViewModel"
@@ -21,7 +22,7 @@
                 <StackPanel  Margin="15,0,0,10" Orientation="Horizontal">
                     <Image Height="20" Source="{DynamicResource DefaultExtensionIcon}"/>
                     <TextBlock Margin="5,0,0,0" VerticalAlignment="Center" FontSize="12" Text="{DynamicResource PanelMoreExtensionApi}"/>
-                    <TextBlock Margin="15,0,0,0" VerticalAlignment="Center" FontSize="12" Text="{Binding ApiVersion}"/>
+                    <TextBlock Margin="15,0,0,0" VerticalAlignment="Center" FontSize="12" Text="{x:Static util:VersionInformation.OpenFxString}"/>
                 </StackPanel>
                 <WrapPanel Margin="10,0,10,0" Orientation="Horizontal">
                     <Button Margin="5" FontSize="12" Command="{Binding OpenUrl}"  CommandParameter="..\\exts" Content="{DynamicResource PanelMoreBtnOpenExtensionFloder}"/>

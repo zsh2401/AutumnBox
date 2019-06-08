@@ -1,0 +1,105 @@
+﻿<UserControl x:Class="AutumnBox.GUI.View.Panel.PanelAbout"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AutumnBox.GUI.View.Panel"
+             xmlns:mvvm="clr-namespace:AutumnBox.GUI.MVVM"
+             xmlns:controls="clr-namespace:HandyControl.Controls;assembly=HandyControl"
+             mc:Ignorable="d" 
+                      xmlns:util="clr-namespace:AutumnBox.GUI.Util"
+             xmlns:viewmodel="clr-namespace:AutumnBox.GUI.ViewModel"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.DataContext>
+        <viewmodel:VMAbout/>
+    </UserControl.DataContext>
+    <DockPanel>
+        <StackPanel DockPanel.Dock="Bottom">
+            <TextBlock HorizontalAlignment="Center" Text="www.atmb.top" TextDecorations="Underline">
+                <TextBlock.InputBindings>
+                    <MouseBinding MouseAction="LeftClick" Command="{Binding OpenUrl}" CommandParameter="{DynamicResource UrlOfficialWebsite}"/>
+                </TextBlock.InputBindings>
+            </TextBlock>
+            <TextBlock HorizontalAlignment="Center" Text="{DynamicResource UserLicenseTitle}" TextDecorations="Underline">
+                <TextBlock.InputBindings>
+                    <MouseBinding MouseAction="LeftClick" Command="{Binding ShowWindowDialog}" CommandParameter="License"/>
+                </TextBlock.InputBindings>
+            </TextBlock>
+            <TextBlock HorizontalAlignment="Center" Text="{DynamicResource OpenSource}" TextDecorations="Underline">
+                <TextBlock.InputBindings>
+                    <MouseBinding MouseAction="LeftClick" Command="{Binding ShowWindowDialog}" CommandParameter="OpenSource"/>
+                </TextBlock.InputBindings>
+            </TextBlock>
+            <TextBlock Margin="0,5,0,5" VerticalAlignment="Bottom" HorizontalAlignment="Center" Text="Copyright © 2017 - 2019 zsh2401,All Rights Reserved"/>
+        </StackPanel>
+
+        <StackPanel DockPanel.Dock="Top">
+            <StackPanel Margin="10" Orientation="Horizontal">
+                <Image Source="/Resources/Drawable/Icon.ico" Height="30" Margin="5"/>
+                <StackPanel>
+                    <TextBlock FontSize="20" Text="{DynamicResource AppNameWithVersion}"/>
+                    <TextBlock Text="{DynamicResource AppDesc}" Foreground="Gray"/>
+                </StackPanel>
+            </StackPanel>
+
+            <controls:Shield Margin="2" HorizontalAlignment="Center" Subject="{DynamicResource EMail}" Status="zsh2401@163.com" Color="#d8624c"/>
+            <controls:Shield Margin="2" HorizontalAlignment="Center" Subject="{DynamicResource QQGroup}" Status="246177486" Color="#1182c3"/>
+            
+            <DockPanel Margin="30,10,30,0">
+                <TextBlock DockPanel.Dock="Right" Text="{x:Static util:VersionInformation.GUIString}"/>
+                <TextBlock DockPanel.Dock="Left" Text="{DynamicResource Version.GUI}"/>
+            </DockPanel>
+            <DockPanel Margin="30,0,30,0">
+                <TextBlock DockPanel.Dock="Right" Text="{x:Static util:VersionInformation.BasicString}"/>
+                <TextBlock DockPanel.Dock="Left" Text="{DynamicResource Version.Basic}"/>
+            </DockPanel>
+            <DockPanel Margin="30,0,30,0">
+                <TextBlock DockPanel.Dock="Right" Text="{x:Static util:VersionInformation.LoggingString}"/>
+                <TextBlock DockPanel.Dock="Left" Text="{DynamicResource Version.Logging}"/>
+            </DockPanel>
+            
+            <DockPanel Margin="30,0,30,0">
+                <TextBlock DockPanel.Dock="Right" Text="{x:Static util:VersionInformation.OpenFxString}"/>
+                <TextBlock DockPanel.Dock="Left" Text="{DynamicResource Version.OpenFx}"/>
+            </DockPanel>
+            
+            <DockPanel Margin="30,0,30,0">
+                <TextBlock DockPanel.Dock="Right" Text="{x:Static util:VersionInformation.CoreLibString}"/>
+                <TextBlock DockPanel.Dock="Left" Text="{DynamicResource Version.CoreModules}"/>
+            </DockPanel>
+
+            <Grid Height="1" Margin="25,5,25,5" Background="LightGray"/>
+            <DockPanel Margin="30,0,30,0">
+                <TextBlock DockPanel.Dock="Right" Text="{x:Static util:VersionInformation.Adb}"/>
+                <TextBlock DockPanel.Dock="Left" Text="{DynamicResource Version.ADB}"/>
+            </DockPanel>
+
+            <DockPanel Margin="30,0,30,0">
+                <TextBlock DockPanel.Dock="Right" Text="{x:Static util:VersionInformation.OSString}"/>
+                <TextBlock DockPanel.Dock="Left" Text="{DynamicResource Version.OS}"/>
+            </DockPanel>
+
+            <DockPanel Margin="30,0,30,0">
+                <TextBlock DockPanel.Dock="Right" Text="{x:Static util:VersionInformation.DotNetFrameworkString}"/>
+                <TextBlock DockPanel.Dock="Left" Text="{DynamicResource Version.Net}"/>
+            </DockPanel>
+
+            <Grid Height="1" Margin="25,5,25,5" Background="LightGray"/>
+
+            <DockPanel Margin="30,0,30,0">
+                <TextBlock DockPanel.Dock="Right" Text="{x:Static util:VersionInformation.HandyControlString}"/>
+                <TextBlock DockPanel.Dock="Left" Text="HandyControl"/>
+            </DockPanel>
+
+            <DockPanel Margin="30,0,30,0">
+                <TextBlock DockPanel.Dock="Right" Text="{x:Static util:VersionInformation.JsonLibString}"/>
+                <TextBlock DockPanel.Dock="Left" Text="Newtonsoft.Json"/>
+            </DockPanel>
+
+            <DockPanel Margin="30,0,30,0">
+                <TextBlock DockPanel.Dock="Right" Text="{x:Static util:VersionInformation.SharpZipLibString}"/>
+                <TextBlock DockPanel.Dock="Left" Text="SharpZipLib"/>
+            </DockPanel>
+        </StackPanel>
+    </DockPanel>
+</UserControl>

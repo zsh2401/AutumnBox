@@ -83,12 +83,12 @@ namespace AutumnBox.GUI.Util
             InitHandyControl();
             InitErrorHandlerSystem();
             InitLanguageSystem();
-            //InitThemeSystem();
             ShowGuideIfNeed();
             ShowDebugWindowIfNeed();
             PrintInformations();
             InitAutumnBoxBasic();
             InitAutumnBoxOpenFx();
+            InitUtilities();
             RunDeviceListener();
             FetchRemoteData();
             OnLoaded();
@@ -155,7 +155,7 @@ namespace AutumnBox.GUI.Util
                 Task<object> dialogTask = null;
                 App.Current.Dispatcher.Invoke(() =>
                 {
-                    dialogTask = DialogManager.Show(MainWindowBus.TOKEN_DIALOG,new ContentGuide());
+                    dialogTask = DialogManager.Show(MainWindowBus.TOKEN_DIALOG, new ContentGuide());
                 });
                 dialogTask.Wait();
                 Settings.Default.GuidePassed = ((dialogTask.Result as bool?) == true);
@@ -214,6 +214,10 @@ namespace AutumnBox.GUI.Util
         {
             OpenFrameworkManager.Init();
             OpenFxEventBus.OnLoaded();
+        }
+        private void InitUtilities()
+        {
+            var adb = VersionInformation.Adb;
         }
         private void RunDeviceListener()
         {

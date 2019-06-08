@@ -76,10 +76,8 @@
                     </MenuItem.Icon>
                 </MenuItem>
                 <MenuItem Header="{DynamicResource Menu.CheckUpdate}" Command="{Binding UpdateCheck}"/>
-                <MenuItem Header="{DynamicResource Menu.UpdateLog}" Command="{Binding ShowWindowDialog}" CommandParameter="UpdateLogs"/>
                 <MenuItem Header="{DynamicResource Menu.OpenSource}" Command="{Binding ShowWindowDialog}" CommandParameter="OpenSource"/>
                 <MenuItem Header="{DynamicResource Menu.About}" Command="{Binding ShowWindowDialog}" CommandParameter="About"/>
-                <MenuItem Header="{DynamicResource Menu.License}" Command="{Binding ShowWindowDialog}" CommandParameter="License"/>
             </MenuItem>
         </Menu>
     </Grid>
