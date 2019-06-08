@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutumnBox.Logging;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +11,14 @@ namespace AutumnBox.GUI.Util.Bus
     {
         public static void Start(string className)
         {
-            AtmbContext.Instance.NewExtensionThread(className)?.Start();
+            try
+            {
+                AtmbContext.Instance.NewExtensionThread(className)?.Start();
+            }
+            catch (Exception e)
+            {
+                SLogger.Warn(nameof(ExtensionBridge), "extension not found", e);
+            }
         }
     }
 }
