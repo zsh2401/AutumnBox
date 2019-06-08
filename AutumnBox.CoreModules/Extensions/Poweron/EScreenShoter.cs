@@ -5,6 +5,7 @@
 *************************************************/
 using AutumnBox.Basic.Calling;
 using AutumnBox.Basic.Device;
+using AutumnBox.Basic.Device.ManagementV2.OS;
 using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.LeafExtension;
 using AutumnBox.OpenFramework.LeafExtension.Attributes;
@@ -14,7 +15,6 @@ using AutumnBox.OpenFramework.Open;
 using HandyControl.Controls;
 using System;
 using System.IO;
-using System.Windows.Forms;
 
 namespace AutumnBox.CoreModules.Extensions
 {
@@ -24,20 +24,28 @@ namespace AutumnBox.CoreModules.Extensions
     internal class EScreenShoter : LeafExtensionBase
     {
         [LMain]
-        public void EntryPoint(IDevice device, ILeafUI ui, IStorageManager storageManager, IAppManager app)
+        public void EntryPoint(IDevice device, ILeafUI ui, IStorageManager storageManager,
+            IAppManager app, Basic.Calling.ICommandExecutor executor)
         {
             using (ui)
             {
                 //初始化LeafUI并展示
                 ui.Title = this.GetName();
                 ui.Icon = this.GetIconBytes();
+                executor.OutputReceived += (s, e) => ui.WriteOutput(e.Text);
+                ui.Closing += (s, e) =>
+                {
+                    executor.Dispose();
+                    return true;
+                };
+
                 ui.Show();
 
-                //初始化命令执行器,并监听输出事件
-                var executor = new CommandExecutor();
-                executor.OutputReceived += (s, e) => ui.WriteOutput(e.Text);
+
                 //生成一个在设备上的临时文件名
                 var tmpPath = GenerateTmpPath();
+                //点亮屏幕
+                new KeyInputer(device, executor).RaiseKeyEvent(AndroidKeyCode.WakeUp);
                 //进行截图,并保存到那个临时文件
                 var capResult = executor.AdbShell(device, $"screencap -p {tmpPath}");
                 //如果成功了
@@ -83,29 +91,28 @@ namespace AutumnBox.CoreModules.Extensions
             var path = Path.Combine(storageManager.CacheDirectory.FullName, randomFileName);
             return new FileInfo(path);
         }
-        private FileInfo GetSaveTarget(ILeafUI ui)
-        {
-            DialogResult dialogResult = DialogResult.No;
-            FileInfo path = null;
-            string saveDir = null;
-            ui.RunOnUIThread(() =>
-            {
-                FolderBrowserDialog fbd = new FolderBrowserDialog();
-                dialogResult = fbd.ShowDialog();
-                saveDir = fbd.SelectedPath;
-            });
-            if (dialogResult == DialogResult.OK)
-            {
-                string fileName = DateTime.Now.ToString("yyyyMMdd_HHmmss");
-                path = new FileInfo(Path.Combine(saveDir, fileName + ".png"));
-                return path;
-            }
-            else
-            {
-                return null;
-            }
-
-        }
+        //private FileInfo GetSaveTarget(ILeafUI ui)
+        //{
+        //    DialogResult dialogResult = DialogResult.No;
+        //    FileInfo path = null;
+        //    string saveDir = null;
+        //    ui.RunOnUIThread(() =>
+        //    {
+        //        FolderBrowserDialog fbd = new FolderBrowserDialog();
+        //        dialogResult = fbd.ShowDialog();
+        //        saveDir = fbd.SelectedPath;
+        //    });
+        //    if (dialogResult == DialogResult.OK)
+        //    {
+        //        string fileName = DateTime.Now.ToString("yyyyMMdd_HHmmss");
+        //        path = new FileInfo(Path.Combine(saveDir, fileName + ".png"));
+        //        return path;
+        //    }
+        //    else
+        //    {
+        //        return null;
+        //    }
+        //}
         /// <summary>
         /// 生成手机上的临时截图文件名
         /// </summary>
