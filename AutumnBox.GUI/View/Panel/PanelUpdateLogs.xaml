@@ -16,7 +16,7 @@
                 <DataTemplate>
                     <DockPanel Margin="10">
                         <StackPanel  DockPanel.Dock="Top" Orientation="Horizontal">
-                            <TextBlock FontSize="30" Text="{Binding Version}"/>
+                            <TextBlock FontSize="20" Text="{Binding Version}"/>
                             <TextBlock VerticalAlignment="Center" Foreground="Gray" Margin="10,0,0,0" Text="{Binding Time}"/>
                         </StackPanel>
                         <TextBlock Margin="5" Text="{Binding Content}" TextWrapping="Wrap"/>
