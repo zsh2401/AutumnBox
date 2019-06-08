@@ -259,6 +259,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Icons\restartdevice.png" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\screenshotv2.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>del /S System.*.dll

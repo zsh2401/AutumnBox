@@ -63,6 +63,8 @@
       <s:String x:Key="Functions">Functions</s:String>
       <s:String x:Key="More">More</s:String>
     
+       <s:String x:Key="StateNotRightTipFmt">It's usable when device on this states: {0}</s:String>
+    
     <s:String x:Key="Dash.State.NoDevice">No device</s:String>
       <s:String x:Key="Dash.State.Poweron">Poweron</s:String>
      <s:String x:Key="Dash.State.Recovery">Recovery</s:String>

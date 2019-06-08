@@ -19,8 +19,8 @@ using System.IO;
 
 namespace AutumnBox.CoreModules.Extensions
 {
-    [ExtName("Capture the screen and save it to pc", "zh-cn:截图并保存到电脑")]
-    [ExtIcon("Icons.screenshot.png")]
+    [ExtName("Screen capture", "zh-cn:截图器V2")]
+    [ExtIcon("Icons.screenshotv2.png")]
     [ExtRequiredDeviceStates(DeviceState.Poweron)]
     internal class EScreenShoter : LeafExtensionBase
     {

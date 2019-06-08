@@ -1,19 +1,13 @@
-﻿using AutumnBox.Basic.Calling;
-using AutumnBox.Basic.Device;
+﻿using AutumnBox.Basic.Device;
 using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.LeafExtension;
 using AutumnBox.OpenFramework.LeafExtension.Fast;
 using AutumnBox.OpenFramework.LeafExtension.Kit;
 using AutumnBox.OpenFramework.Open;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutumnBox.CoreModules.Extensions.Mix
 {
-    [ExtName("Reboot", "zh-cn:重启")]
+    [ExtName("Reboot", "zh-cn:高级重启")]
     [ExtAuth("zsh2401")]
     [ExtVersion(1,0,0)]
     [ExtIcon("Icons.restartdevice.png")]

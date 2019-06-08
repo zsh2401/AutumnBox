@@ -64,6 +64,8 @@
       <s:String x:Key="Functions">功能</s:String>
       <s:String x:Key="More">更多</s:String>
     
+    <s:String x:Key="StateNotRightTipFmt">该功能在设备处于[{0}]状态下时可用</s:String>
+    
       <s:String x:Key="Dash.State.NoDevice">无设备</s:String>
       <s:String x:Key="Dash.State.Poweron">开机</s:String>
      <s:String x:Key="Dash.State.Recovery">恢复模式</s:String>

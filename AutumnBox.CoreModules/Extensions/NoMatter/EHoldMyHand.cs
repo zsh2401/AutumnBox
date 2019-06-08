@@ -28,7 +28,7 @@ namespace AutumnBox.CoreModules.Extensions.Hidden
 {
     [ExtName("Example extension")]
     [ExtIcon("Icons.flash.png")]
-    [ExtRequiredDeviceStates(LeafConstants.NoMatter)]
+    [ExtRequiredDeviceStates(DeviceState.Fastboot | DeviceState.Recovery)]
     [ExtDeveloperMode]
     [ExtText("fuck", "Hello", "zh-cn:你好!")]
     //[ExtMinAndroidVersion(9, 0, 0)]
