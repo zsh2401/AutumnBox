@@ -1,54 +1,75 @@
 ﻿using System;
 using System.IO;
+using System.Security.Cryptography;
 
 namespace AutumnBox.OpenFramework.Util
 {
     /// <summary>
-    /// Md5工具
+    ///     Md5工具
     /// </summary>
     public static class Md5
     {
         /// <summary>
-        /// 会返回一个Md5值
+        ///     获取文件的Md5值
         /// </summary>
-        /// <param name="_path">需要校验的文件路径</param>
-        /// <returns></returns>
-        public static string GetMd5(string _path)
+        /// <param name="path">需要校验的文件路径</param>
+        /// <returns>小写的Md5值</returns>
+        public static string GetMd5(string path)
         {
-            var strResult = "no md5";
-            var strHashData = "";
-
-            byte[] arrbytHashValue;
-            FileStream oFileStream = null;
-
-            System.Security.Cryptography.MD5CryptoServiceProvider oMD5Hasher = new System.Security.Cryptography.MD5CryptoServiceProvider();
-
-            try
-            {
-                oFileStream = new FileStream(_path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
-                arrbytHashValue = oMD5Hasher.ComputeHash(oFileStream); //计算指定Stream 对象的哈希值
-                oFileStream.Close();
-                //由以连字符分隔的十六进制对构成的String，其中每一对表示value 中对应的元素；例如“F-2C-4A”
-                strHashData = BitConverter.ToString(arrbytHashValue);
-                //替换-
-                strHashData = strHashData.Replace("-", "");
-                strResult = strHashData.ToLower();
-            }
-            catch (Exception) { }
-
-            return strResult;
+            var oFileStream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+            return GetMd5(oFileStream);
         }
 
         /// <summary>
-        /// 校验Md5值是否一致
+        ///     获取文件流的Md5值
         /// </summary>
-        /// <param name="_path">需要校验的文件路径</param>
-        /// <param name="_md5">需要校验的文件md5值</param>
-        /// <returns></returns>
-        public static bool CheckMd5(string _path, string _md5)
+        /// <param name="stream">数据流</param>
+        /// <returns>小写的Md5值</returns>
+        public static string GetMd5(Stream stream)
         {
-            var _fmd5 = GetMd5(_path);
-            if (_fmd5 == _md5 || _fmd5.ToLower() == _md5) return true;
+            try
+            {
+                var arrayHashValue = new MD5CryptoServiceProvider().ComputeHash(stream);
+                var strHashData = BitConverter.ToString(arrayHashValue);
+                strHashData = strHashData.Replace("-", "");
+                return strHashData.ToLower();
+            }
+            catch
+            {
+                return "no md5";
+            }
+        }
+
+        /// <summary>
+        ///     获取Byte[]的Md5值
+        /// </summary>
+        /// <param name="bytes">Byte[]</param>
+        /// <returns>小写的Md5值</returns>
+        public static string GetMd5(byte[] bytes)
+        {
+            try
+            {
+                var arrayHashValue = new MD5CryptoServiceProvider().ComputeHash(bytes);
+                var strHashData = BitConverter.ToString(arrayHashValue);
+                strHashData = strHashData.Replace("-", "");
+                return strHashData.ToLower();
+            }
+            catch
+            {
+                return "no md5";
+            }
+        }
+
+        /// <summary>
+        ///     校验文件Md5值是否正确
+        /// </summary>
+        /// <param name="path">需要校验的文件路径</param>
+        /// <param name="md5">需要校验的文件md5值</param>
+        /// <returns></returns>
+        public static bool CheckMd5(string path, string md5)
+        {
+            var fmd5 = GetMd5(path);
+            if (fmd5.Equals(md5, StringComparison.OrdinalIgnoreCase)) return true;
             return false;
         }
     }
