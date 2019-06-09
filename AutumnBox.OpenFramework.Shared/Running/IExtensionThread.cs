@@ -10,6 +10,12 @@ namespace AutumnBox.OpenFramework.Running
     public interface IExtensionThread
     {
         /// <summary>
+        /// 发送信号
+        /// </summary>
+        /// <param name="signal"></param>
+        /// <param name="value"></param>
+        void SendSignal(string signal, object value = null);
+        /// <summary>
         /// 返回码
         /// </summary>
         int ExitCode { get; }
