@@ -1,5 +1,6 @@
 ﻿using AutumnBox.Basic.Device;
 using AutumnBox.Basic.Device.Management.AppFx;
+using AutumnBox.Logging;
 using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.LeafExtension.Kit;
 using AutumnBox.OpenFramework.Open;
@@ -8,13 +9,13 @@ using System.Threading;
 
 namespace AutumnBox.OpenFramework.LeafExtension.Fast
 {
+    /// <summary>
+    /// LeafUI相关拓展函数
+    /// </summary>
     [ExtText("msg", "Do you have install the relative app?", "zh-cn:你似乎没有安装对应APP?")]
     [ExtText("continue", "Continue forcely", "zh-cn:强行继续")]
     [ExtText("ok", "Ok", "zh-cn:好")]
     [ExtText("cancel", "Cancel", "zh-cn:取消")]
-    /// <summary>
-    /// LeafUI相关拓展函数
-    /// </summary>
     public static class LeafUIHelper
     {
         /// <summary>
@@ -48,7 +49,12 @@ namespace AutumnBox.OpenFramework.LeafExtension.Fast
             ui.Shutdown();
             Thread.CurrentThread.Abort();
         }
-        static readonly IClassTextManager text = OpenApiFactory.Get<IClassTextManager>(typeof(LeafUIHelper));
+        private static readonly IClassTextManager text;
+        static LeafUIHelper()
+        {
+            text = OpenApiFactory.SGet<IClassTextManager>(typeof(LeafUIHelper));
+            SLogger.Debug(nameof(LeafUIHelper),$"{typeof(LeafUIHelper)}'s IClassTextManager created");
+        }
         /// <summary>
         /// 检查是否安装APP并询问用户,如果处于不恰当情况,将停止LeafExtension执行流程
         /// </summary>

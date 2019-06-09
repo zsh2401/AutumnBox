@@ -1,4 +1,5 @@
-﻿using AutumnBox.OpenFramework.Extension;
+﻿using AutumnBox.Logging;
+using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.Open.Management;
 using System;
 using System.Collections.Generic;
@@ -27,6 +28,7 @@ namespace AutumnBox.OpenFramework.Open.Impl
         private void Load()
         {
             var objAttrs = classExtensionType.GetCustomAttributes(typeof(ExtTextAttribute), true);
+            SLogger<ClassTextManagerImpl>.Debug($"There are {objAttrs.Length} ExtTextAttribute on {classExtensionType.Name}");
             var attrs = (ExtTextAttribute[])objAttrs;
             foreach (var attr in attrs)
             {

@@ -29,7 +29,7 @@ namespace AutumnBox.CoreModules.Extensions.NoMatter
         /// </param>
         /// <param name="ui">需要获取的UI,将会被LeafExtensionBase进行注入</param>
         [LMain]
-        public void Main(ILeafUI ui, Context context, IClassTextManager textManager)
+        public void Main(ILeafUI ui, IClassTextManager textManager)
         {
             /*
              * 一定要进行using,此处是为了确保LeafUI被正确释放
@@ -110,10 +110,10 @@ namespace AutumnBox.CoreModules.Extensions.NoMatter
                         executor.Dispose();
                         break;
                     case false:
-                        var thread = context.NewExtensionThread("EHoldMyHand");
-                        thread.Data["wtf"] = "aaa";//可以传参数哦
-                        thread.Start();
-                        thread.WaitForExit();
+                        //var thread = context.NewExtensionThread("EHoldMyHand");
+                        //thread.Data["wtf"] = "aaa";//可以传参数哦
+                        //thread.Start();
+                        //thread.WaitForExit();
                         break;
                     default:
                         ui.ShowMessage("哼,气得我变大了!");

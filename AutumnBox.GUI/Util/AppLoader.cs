@@ -1,4 +1,5 @@
-﻿/*************************************************
+﻿#define MUST_SHOW_GUIDE
+/*************************************************
 ** auth： zsh2401@163.com
 ** date:  2018/8/19 20:39:02 (UTC +8:00)
 ** desc： ...
@@ -147,10 +148,9 @@ namespace AutumnBox.GUI.Util
         }
         private void ShowGuideIfNeed()
         {
+            bool need = !Settings.Default.GuidePassed;
             //如果没有通过引导,启动引导
-            if (ConditionalVars.CurrentCompileType == ConditionalVars.CompileType.Debug
-                || ConditionalVars.CurrentCompileType == ConditionalVars.CompileType.Preview
-                || !Settings.Default.GuidePassed)
+            if (need)
             {
                 Task<object> dialogTask = null;
                 App.Current.Dispatcher.Invoke(() =>
