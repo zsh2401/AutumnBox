@@ -7,7 +7,7 @@ namespace AutumnBox.OpenFramework.Open.Management
     /// <summary>
     /// 初始化设置
     /// </summary>
-    public class ApiRequest
+    internal class ApiRequest
     {
         /// <summary>
         /// 此次API请求的唯一ID

@@ -12,14 +12,16 @@ namespace AutumnBox.OpenFramework.Open.Management
     /// <summary>
     /// 开放API工厂,所有Open命名空间下的API都可由此获取
     /// </summary>
-    public static class OpenApiFactory
+    internal static class OpenApiFactory
     {
         private const string IMPLS_NAMESPACE = "AutumnBox.OpenFramework.Open.Impl";
         static readonly Dictionary<Type, Type> ApiAndImplsInformation = new Dictionary<Type, Type>();
+
         static OpenApiFactory()
         {
             ScanAndLoad();
         }
+
         /// <summary>
         /// 扫描并加载所有API与实现对应关系
         /// </summary>
