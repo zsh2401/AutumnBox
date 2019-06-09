@@ -415,6 +415,7 @@
     
 <!--LeafWindow-->
      <s:String x:Key="LeafUITipRunning">运行中</s:String>
+            <s:String x:Key="LeafUICannotStop">这个模块无法中途停止</s:String>
      <s:String x:Key="LeafUIBtnCopy">复制输出信息</s:String>
      <s:String x:Key="LeafUIBtnTip">这些输出信息可以用于更好的解决你的问题</s:String>
     <s:String x:Key="LeafUIEnableFullContentTip">显示专业输出信息</s:String>

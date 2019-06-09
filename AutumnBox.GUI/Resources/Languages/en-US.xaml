@@ -424,6 +424,7 @@ Agreement modification:
     
     <!--LeafWindow-->
      <s:String x:Key="LeafUITipRunning">Running</s:String>
+        <s:String x:Key="LeafUICannotStop">This extension can not be stopped</s:String>
     <s:String x:Key="LeafUIBtnCopy">Copy output information</s:String>
          <s:String x:Key="LeafUIBtnTip">This output information is useful to one who can help you handle questions</s:String>
     <s:String x:Key="LeafUIEnableFullContentTip">Show adb output(pro)</s:String>

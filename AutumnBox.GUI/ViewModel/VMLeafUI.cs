@@ -3,6 +3,7 @@ using AutumnBox.GUI.Util.Bus;
 using AutumnBox.GUI.Util.UI;
 using AutumnBox.GUI.View.LeafContent;
 using AutumnBox.GUI.View.Windows;
+using AutumnBox.Logging;
 using AutumnBox.OpenFramework.LeafExtension;
 using AutumnBox.OpenFramework.LeafExtension.Kit;
 using AutumnBox.OpenFramework.LeafExtension.View;
@@ -229,7 +230,9 @@ namespace AutumnBox.GUI.ViewModel
                 bool? closeResult = null;
                 try
                 {
+                    SLogger<VMLeafUI>.Info("handling closing event");
                     closeResult = Closing?.Invoke(this, new LeafUIClosingEventArgs());
+                    SLogger<VMLeafUI>.Info($"handled closing event {closeResult?.ToString() ?? "null"}");
                 }
                 catch (Exception ex)
                 {
@@ -244,7 +247,7 @@ namespace AutumnBox.GUI.ViewModel
                 else
                 {
                     e.Cancel = true;
-                    WriteLine(App.Current.Resources["RunningWindowCantStop"]);
+                    WriteLine(App.Current.Resources["LeafUICannotStop"]);
                 }
             }
         }
