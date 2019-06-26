@@ -37,7 +37,7 @@ namespace AutumnBox.CoreModules
         public override void Destory()
         {
             base.Destory();
-            IStorageManager storageManager = OpenApiFactory.Get<IStorageManager>(this);
+            IStorageManager storageManager = ApiFactory.Get<IStorageManager>(this);
             storageManager.ClearCache();
         }
         private class CustomWrapper : ClassExtensionWrapper
