@@ -1,4 +1,5 @@
-﻿<controls:BlurWindow
+﻿<custom:NiceWindow
+    xmlns:custom="clr-namespace:AutumnBox.GUI.View.Custom"
     xmlns:controls="clr-namespace:HandyControl.Controls;assembly=HandyControl"
     x:Class="AutumnBox.GUI.View.Windows.OpenSourceWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -13,9 +14,7 @@
         WindowStartupLocation="CenterOwner"
         FontFamily="{DynamicResource AutumnBox.Font}"
         Height="450" Width="800"
-    ShowTitle="True"
         ShowInTaskbar="False"
-    Style="{DynamicResource WindowBlur}"
         Title="{DynamicResource OpenSourceWindowTitle}" MinHeight="500" MinWidth="800">
     <Window.DataContext>
         <viewmodel:VMOpenSource/>
@@ -58,4 +57,4 @@
             </ItemsControl>
         </ScrollViewer>
     </DockPanel>
-</controls:BlurWindow>
+</custom:NiceWindow>

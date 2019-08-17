@@ -1,4 +1,5 @@
-﻿<controls:BlurWindow
+﻿<custom:NiceWindow
+    xmlns:custom="clr-namespace:AutumnBox.GUI.View.Custom"
     xmlns:controls="clr-namespace:HandyControl.Controls;assembly=HandyControl"
     x:Class="AutumnBox.GUI.View.Windows.AdbFailedWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -11,7 +12,6 @@
         mc:Ignorable="d"
         ShowInTaskbar="False"
         WindowStartupLocation="CenterOwner"
-    Style="{StaticResource WindowBlur}"
         FontFamily="{DynamicResource AutumnBox.Font}"
         Title="{DynamicResource AdbFailedWindowTitle}" Width="400" Height="400">
     <Window.DataContext>
@@ -29,4 +29,4 @@
                 <TextBox Height="140" TextWrapping="Wrap" Margin="5" IsReadOnly="True"  x:Name="tbOutput"/>
             </StackPanel>
     </Grid>
-</controls:BlurWindow>
+</custom:NiceWindow>

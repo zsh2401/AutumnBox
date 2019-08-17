@@ -1,4 +1,5 @@
-﻿<controls:BlurWindow
+﻿<custom:NiceWindow
+    xmlns:custom="clr-namespace:AutumnBox.GUI.View.Custom"
     xmlns:controls="clr-namespace:HandyControl.Controls;assembly=HandyControl"
     x:Class="AutumnBox.GUI.View.Windows.DonateWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -9,8 +10,6 @@
     xmlns:mvvm="clr-namespace:AutumnBox.GUI.MVVM"
     WindowStartupLocation="CenterOwner"
     mc:Ignorable="d"
-    Style="{StaticResource WindowBlur}"
-    ShowTitle="True"
     ResizeMode="NoResize"
         ShowInTaskbar="False"
     FontFamily="{DynamicResource AutumnBox.Font}"
@@ -28,4 +27,4 @@
             <Image Height="200" Margin="5"  RenderOptions.BitmapScalingMode="Fant" Source="/AutumnBox.GUI;component/Resources/Drawable/Donate/wechatpay.jpg"/>
         </StackPanel>
     </StackPanel>
-</controls:BlurWindow>
+</custom:NiceWindow>

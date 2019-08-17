@@ -255,6 +255,7 @@
     <Compile Include="View\CstPreview.xaml.cs">
       <DependentUpon>CstPreview.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Custom\NiceWindow.cs" />
     <Compile Include="View\DialogContent\ContentConnectNetDevice.xaml.cs">
       <DependentUpon>ContentConnectNetDevice.xaml</DependentUpon>
     </Compile>
