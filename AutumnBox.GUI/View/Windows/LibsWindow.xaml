@@ -1,4 +1,5 @@
-﻿<controls:BlurWindow
+﻿<custom:NiceWindow
+    xmlns:custom="clr-namespace:AutumnBox.GUI.View.Custom"
     xmlns:controls="clr-namespace:HandyControl.Controls;assembly=HandyControl"
     x:Class="AutumnBox.GUI.View.Windows.LibsWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -11,8 +12,6 @@
     WindowStartupLocation="CenterOwner"
         x:Name="thisCtrl"
         ShowInTaskbar="False"
-    Style="{StaticResource WindowBlur}"
-    ShowTitle="True"
         Title="{DynamicResource LibsWindowTitle}" ResizeMode="NoResize" Height="300" Width="400">
     <Window.DataContext>
         <viewmodel:VMLibsView x:Name="mContext"/>
@@ -34,4 +33,4 @@
             </ItemsControl.ItemTemplate>
         </ItemsControl>
     </Grid>
-</controls:BlurWindow>
+</custom:NiceWindow>

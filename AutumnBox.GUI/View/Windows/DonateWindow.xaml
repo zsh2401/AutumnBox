@@ -13,18 +13,28 @@
     ResizeMode="NoResize"
         ShowInTaskbar="False"
     FontFamily="{DynamicResource AutumnBox.Font}"
-        Title="Love you" Width="600" Height="350">
+        Title="Love you" Width="680" Height="350">
     <Window.DataContext>
         <mvvm:ViewModelBase/>
     </Window.DataContext>
-    <StackPanel>
-        <TextBlock TextAlignment="Center" Margin="5" TextWrapping="Wrap" Text="{DynamicResource PanelDonateDescription }" FontSize="20" />
-        <Button HorizontalAlignment="Center"  Command="{Binding OpenUrl}" CommandParameter="https://www.paypal.me/zsh2401"  Content="{DynamicResource PanelDonateBtnPayPal}"/>
-        <Button HorizontalAlignment="Center" DockPanel.Dock="Left" Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoDonate}"  Content="{DynamicResource PanelDonateBtnGotoDonatePage}"/>
-        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-            <Image Height="200" Margin="5" RenderOptions.BitmapScalingMode="Fant" Source="/AutumnBox.GUI;component/Resources/Drawable/Donate/alishop.png"/>
-            <Image Height="200" Margin="5"  RenderOptions.BitmapScalingMode="Fant" Source="/AutumnBox.GUI;component/Resources/Drawable/Donate/redpacket.jpg"/>
-            <Image Height="200" Margin="5"  RenderOptions.BitmapScalingMode="Fant" Source="/AutumnBox.GUI;component/Resources/Drawable/Donate/wechatpay.jpg"/>
+    <DockPanel>
+        <StackPanel VerticalAlignment="Center"  DockPanel.Dock="Left" Orientation="Vertical" HorizontalAlignment="Center">
+            <Image Source="/Resources/Drawable/Donate/pot4winter.png" Width="160" HorizontalAlignment="Center"></Image>
+            <StackPanel VerticalAlignment="Center" Margin="0,20,0,20">
+                <TextBlock FontSize="10" VerticalAlignment="Center" HorizontalAlignment="Center">向冬之盆中投入您对秋之盒的支持</TextBlock>
+                <TextBlock FontSize="10" VerticalAlignment="Center" HorizontalAlignment="Center">(这是开发者的小猫娘画的)</TextBlock>
+            </StackPanel>
+            <Button Margin="0,0,0,10" HorizontalAlignment="Center"  Command="{Binding OpenUrl}" CommandParameter="https://www.paypal.me/zsh2401"  Content="{DynamicResource PanelDonateBtnPayPal}"/>
+            <Button HorizontalAlignment="Center" DockPanel.Dock="Left" Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoDonate}"  Content="{DynamicResource PanelDonateBtnGotoDonatePage}"/>
         </StackPanel>
-    </StackPanel>
+        <StackPanel VerticalAlignment="Center">
+            <TextBlock TextAlignment="Center" Margin="5" TextWrapping="Wrap" Text="赠人玫瑰,收留余香,感谢您为中国软件生态做出的贡献" FontSize="15" />
+            <TextBlock TextAlignment="Center" Margin="5" TextWrapping="Wrap" Text="We make a living by what we get. We make a life by what we give.--Winston Churchhill" FontSize="11" />
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                <Image Height="200" Margin="5" RenderOptions.BitmapScalingMode="Fant" Source="/AutumnBox.GUI;component/Resources/Drawable/Donate/alishop.png"/>
+                <Image Height="200" Margin="5"  RenderOptions.BitmapScalingMode="Fant" Source="/AutumnBox.GUI;component/Resources/Drawable/Donate/redpacket.jpg"/>
+                <Image Height="200" Margin="5"  RenderOptions.BitmapScalingMode="Fant" Source="/AutumnBox.GUI;component/Resources/Drawable/Donate/wechatpay.jpg"/>
+            </StackPanel>
+        </StackPanel>
+    </DockPanel>
 </custom:NiceWindow>

@@ -34,7 +34,7 @@ namespace AutumnBox.OpenFramework.Management
             BaseApi = baseApi ?? throw new System.ArgumentNullException(nameof(baseApi));
 
             //初始化服务
-            LibsManager = new OnceLoader();
+            LibsManager = new LiYinLoader();
         }
 
         /// <summary>

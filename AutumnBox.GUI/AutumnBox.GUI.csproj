@@ -663,6 +663,7 @@
     <Resource Include="Resources\Drawable\BottomBar\phone.png" />
     <Resource Include="Resources\MenuIcon\guide-book.png" />
     <Resource Include="Resources\MenuIcon\donate.png" />
+    <Resource Include="Resources\Drawable\Donate\pot4winter.png" />
     <Content Include="Resources\Sound\ok.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

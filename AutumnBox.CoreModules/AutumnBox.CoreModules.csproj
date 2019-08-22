@@ -93,6 +93,7 @@
     <Compile Include="Extensions\Poweron\Dpm\ETaiChi.cs" />
     <Compile Include="Extensions\Poweron\EClearAccounts.cs" />
     <Compile Include="Extensions\Poweron\EClearUsers.cs" />
+    <Compile Include="Extensions\Poweron\EFluidPermissionGranter.cs" />
     <Compile Include="Extensions\Poweron\EGCM.cs" />
     <Compile Include="Extensions\Poweron\EGreenifyGranter.cs" />
     <Compile Include="Extensions\Poweron\Dpm\EHideAnzen.cs" />

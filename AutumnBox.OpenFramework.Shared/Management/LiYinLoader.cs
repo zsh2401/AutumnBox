@@ -9,7 +9,7 @@ using AutumnBox.OpenFramework.ExtLibrary;
 
 namespace AutumnBox.OpenFramework.Management
 {
-    internal class OnceLoader : ILibsManager
+    internal class LiYinLoader : ILibsManager
     {
         private const string PATTERN_DEFAULT = "*.dll";
         private const string PATTERN_ATMBEXT = "*.aext";
@@ -30,7 +30,7 @@ namespace AutumnBox.OpenFramework.Management
             try {
                 return lib.Check();
             } catch (Exception e){
-                SLogger<OnceLoader>.Warn($"An error occurred when checking a librarian",e);
+                SLogger<LiYinLoader>.Warn($"An error occurred when checking a librarian",e);
                 return false;
             }
         }
@@ -43,7 +43,7 @@ namespace AutumnBox.OpenFramework.Management
             }
             catch (Exception e)
             {
-                SLogger<OnceLoader>.Warn($"There is an error occurred when calling a librarian's Ready() method", e);
+                SLogger<LiYinLoader>.Warn($"There is an error occurred when calling a librarian's Ready() method", e);
                 return false;
             }
         }
@@ -60,7 +60,7 @@ namespace AutumnBox.OpenFramework.Management
                 .Concat(extDir.GetFiles(PATTERN_DEFAULT))
                 .Concat(extDir.GetFiles(PATTERN_ATMBEXT))
                 .Concat(extDir.GetFiles(PATTERN_OEXT));
-            SLogger<OnceLoader>.Debug($"There are {files.Count()} extension file");
+            SLogger<LiYinLoader>.Debug($"There are {files.Count()} extension file");
             return files;
         }
         private IEnumerable<Assembly> GetAssemblies(IEnumerable<FileInfo> files)
@@ -70,8 +70,9 @@ namespace AutumnBox.OpenFramework.Management
             {
                 try
                 {
-                    if (file.Extension == PATTERN_OEXT)
+                    if (file.Extension == PATTERN_OEXT.Substring(1))
                     {
+                        SLogger<LiYinLoader>.Info($"{file} is an aoext");
                         result.Add(Assembly.LoadFile(file.FullName));
                     }
                     else
@@ -81,10 +82,10 @@ namespace AutumnBox.OpenFramework.Management
                 }
                 catch (Exception e)
                 {
-                    SLogger<OnceLoader>.Warn($"can not load extension: {file.Name}", e);
+                    SLogger<LiYinLoader>.Warn($"can not load extension: {file.Name}", e);
                 }
             }
-            SLogger<OnceLoader>.Debug($"There are {result.Count()} assemblies");
+            SLogger<LiYinLoader>.Debug($"There are {result.Count()} assemblies");
             return result;
         }
         private IEnumerable<ILibrarian> GetLibManagers(IEnumerable<Assembly> assemblies)
@@ -108,7 +109,7 @@ namespace AutumnBox.OpenFramework.Management
                 }
                 catch (Exception e)
                 {
-                    SLogger<OnceLoader>.Warn($"Can not create the instance of {assembly.GetName().Name}'s librarian", e);
+                    SLogger<LiYinLoader>.Warn($"Can not create the instance of {assembly.GetName().Name}'s librarian", e);
                 }
             }
             return result;

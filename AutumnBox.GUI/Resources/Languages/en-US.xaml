@@ -6,8 +6,8 @@
     <s:String x:Key="LanguageCode">en-US</s:String>
     
     <s:String x:Key="AppName">AutumnBox</s:String>
-            <s:String x:Key="LoadingAppName">AutumnBox 2019.6</s:String>
-     <s:String x:Key="AppNameWithVersion">AutumnBox 2019.6</s:String>
+            <s:String x:Key="LoadingAppName">AutumnBox 2019.9-BETA 1</s:String>
+     <s:String x:Key="AppNameWithVersion">AutumnBox 2019.9</s:String>
     <s:String x:Key="VersionTypePreview">Preview</s:String>
     <s:String x:Key="VersionTypeStable">Stable</s:String>
     <s:String x:Key="VersionTypeBeta">BETA</s:String>
@@ -709,7 +709,7 @@ Agreement modification:
     <!--PanelDonte-->
     <s:String x:Key="PanelDonateBtnCaption">Thanks....Thanks....Thanks....</s:String>
      <s:String x:Key="PanelDonateBtnGotoDonatePage">View donor list</s:String>
-    <s:String x:Key="PanelDonateBtnPayPal">Use the PayPal in case u can not use AliPay or WeChat Pay</s:String>
+    <s:String x:Key="PanelDonateBtnPayPal">Use the PayPal</s:String>
     <s:String x:Key="PanelDonateDescription">We make a living by what we get. We make a life by what we give.--Winston Churchhill</s:String>
     
     <!--静态界面标记-->

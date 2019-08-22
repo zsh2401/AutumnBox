@@ -1,4 +1,5 @@
-﻿<controls:BlurWindow
+﻿<custom:NiceWindow
+    xmlns:custom="clr-namespace:AutumnBox.GUI.View.Custom"
     xmlns:controls="clr-namespace:HandyControl.Controls;assembly=HandyControl"
     x:Class="AutumnBox.GUI.View.Windows.ExceptionWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -7,8 +8,6 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AutumnBox.GUI.View.Windows"
         mc:Ignorable="d"
-    Style="{StaticResource WindowBlur}"
-    ShowTitle="True"
         FontFamily="{DynamicResource AutumnBox.Font}"
         WindowStartupLocation="CenterOwner"
         MinHeight="300" MinWidth="500"
@@ -24,4 +23,4 @@
             <TextBox TextWrapping="Wrap" IsReadOnly="True" DockPanel.Dock="Bottom" Style="{x:Null}" Margin="5" Text="{Binding ExceptionMessage}"/>
         </DockPanel>
     </Grid>
-</controls:BlurWindow>
+</custom:NiceWindow>
