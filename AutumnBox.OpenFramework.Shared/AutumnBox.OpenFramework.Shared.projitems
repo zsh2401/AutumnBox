@@ -81,6 +81,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Management\IBaseApi.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\IExtensionUIController.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\ILibsManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Management\OnceLoader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\ApiFactory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\IClassTextManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\Impl\RunningManagerImpl.cs" />

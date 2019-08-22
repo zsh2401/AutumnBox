@@ -34,7 +34,7 @@ namespace AutumnBox.OpenFramework.Management
             BaseApi = baseApi ?? throw new System.ArgumentNullException(nameof(baseApi));
 
             //初始化服务
-            LibsManager = new TheWanderingEarthManager(BuildInfo.DEFAULT_EXTENSION_PATH);
+            LibsManager = new OnceLoader();
         }
 
         /// <summary>

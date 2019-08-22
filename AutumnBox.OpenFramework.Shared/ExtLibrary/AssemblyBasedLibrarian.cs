@@ -33,21 +33,6 @@ namespace AutumnBox.OpenFramework.ExtLibrary
                 $"Loaded `IExtension`:{GetWrappers().Count()}");
         }
         /// <summary>
-        /// 是否是无占用型加载
-        /// </summary>
-        public bool IsUnoccupiedLoading
-        {
-            get
-            {
-                if (ManagedAssembly == null)
-                {
-                    throw new NullReferenceException("Managed assembly was not loaded");
-                }
-                return (OpenFx.LibsManager as TheWanderingEarthManager)
-                    .IsOnceAssembly(ManagedAssembly);
-            }
-        }
-        /// <summary>
         /// 管理的程序集
         /// </summary>
         public Assembly ManagedAssembly { get; private set; }
