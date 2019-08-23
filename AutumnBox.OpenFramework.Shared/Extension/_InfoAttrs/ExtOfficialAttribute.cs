@@ -20,7 +20,7 @@ namespace AutumnBox.OpenFramework.Extension
         /// 构造
         /// </summary>
         /// <param name="value"></param>
-        public ExtOfficialAttribute(bool value) : base(value)
+        public ExtOfficialAttribute(bool value=true) : base(value)
         {
         }
     }
