@@ -101,7 +101,7 @@ namespace AutumnBox.GUI.Model
         private bool StateCheck()
         {
             var reqState = Wrapper.Info.RequiredDeviceStates;
-            var crtState = DeviceSelectionObserver.Instance.CurrentDevice.State;
+            var crtState = DeviceSelectionObserver.Instance.CurrentDevice?.State ?? 0;
             if (reqState == LeafConstants.NoMatter) return true;
             else if (reqState.HasFlag(crtState)) return true;
             else

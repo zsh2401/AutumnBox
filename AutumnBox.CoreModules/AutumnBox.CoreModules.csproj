@@ -91,7 +91,7 @@
     <Compile Include="Extensions\Poweron\Dpm\EAirForzenActivator.cs" />
     <Compile Include="Extensions\Poweron\Dpm\EBlackHole.cs" />
     <Compile Include="Extensions\Poweron\Dpm\ETaiChi.cs" />
-    <Compile Include="Extensions\Poweron\Dpm\GreateActivator.cs" />
+    <Compile Include="Extensions\Poweron\Dpm\GreateDPMActivator.cs" />
     <Compile Include="Extensions\Poweron\EClearAccounts.cs" />
     <Compile Include="Extensions\Poweron\EClearUsers.cs" />
     <Compile Include="Extensions\Poweron\EFluidPermissionGranter.cs" />
