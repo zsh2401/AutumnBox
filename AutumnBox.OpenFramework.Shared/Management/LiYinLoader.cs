@@ -20,21 +20,29 @@ namespace AutumnBox.OpenFramework.Management
         {
             Librarians = Ready(Check(GetLibManagers(GetAssemblies(GetFiles()))));
         }
+
         private IEnumerable<ILibrarian> Check(IEnumerable<ILibrarian> libs)
         {
             return from lib in libs
                    where SafeCheck(lib)
                    select lib;
         }
-        private bool SafeCheck(ILibrarian lib) {
-            try {
+
+        private bool SafeCheck(ILibrarian lib)
+        {
+            try
+            {
                 return lib.Check();
-            } catch (Exception e){
-                SLogger<LiYinLoader>.Warn($"An error occurred when checking a librarian",e);
+            }
+            catch (Exception e)
+            {
+                SLogger<LiYinLoader>.Warn($"An error occurred when checking a librarian", e);
                 return false;
             }
         }
-        private bool SafeReady(ILibrarian lib) {
+
+        private bool SafeReady(ILibrarian lib)
+        {
             try
             {
                 lib.Ready();
@@ -56,7 +64,7 @@ namespace AutumnBox.OpenFramework.Management
         private IEnumerable<FileInfo> GetFiles()
         {
             var extDir = new DirectoryInfo(BuildInfo.DEFAULT_EXTENSION_PATH);
-            var files =  new List<FileInfo>()
+            var files = new List<FileInfo>()
                 .Concat(extDir.GetFiles(PATTERN_DEFAULT))
                 .Concat(extDir.GetFiles(PATTERN_ATMBEXT))
                 .Concat(extDir.GetFiles(PATTERN_OEXT));
