@@ -1,9 +1,6 @@
-﻿using AutumnBox.SERT.Shared.Impl;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using AutumnBox.SERT.Impl;
 
-namespace AutumnBox.SERT.Shared
+namespace AutumnBox.SERT
 {
     public static class SERT
     {

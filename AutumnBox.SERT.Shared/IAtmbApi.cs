@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace AutumnBox.SERT.Shared
+namespace AutumnBox.SERT
 {
 #pragma warning disable IDE1006 // 命名样式
     public interface IAtmbApi

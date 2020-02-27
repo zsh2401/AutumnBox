@@ -1,5 +1,5 @@
 ﻿using System;
-using AutumnBox.SERT.Shared.Impl;
+using AutumnBox.SERT.Impl;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace AutumnBox.Tests

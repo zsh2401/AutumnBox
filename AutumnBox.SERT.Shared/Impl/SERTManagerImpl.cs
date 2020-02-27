@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace AutumnBox.SERT.Shared.Impl
+namespace AutumnBox.SERT.Impl
 {
     internal class SERTManagerImpl : ISERTManager
     {

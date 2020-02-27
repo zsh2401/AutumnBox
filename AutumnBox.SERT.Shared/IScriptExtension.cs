@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
+﻿using AutumnBox.SERT.Runtime;
+using System;
 
-namespace AutumnBox.SERT.Shared
+namespace AutumnBox.SERT
 {
-    public interface IScriptExtension : IDisposable
+    internal interface IScriptExtension : IDisposable
     {
         string Id { get; }
         byte[] Icon { get; }

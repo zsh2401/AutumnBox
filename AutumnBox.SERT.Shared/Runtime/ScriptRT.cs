@@ -1,15 +1,16 @@
-﻿using Microsoft.ClearScript;
+﻿using AutumnBox.Logging;
 using Microsoft.ClearScript.V8;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Text;
+using System.Threading.Tasks;
 
-namespace AutumnBox.SERT.Shared.Runtime
+namespace AutumnBox.SERT.Runtime
 {
-    internal class ScriptRT : IDisposable
+    internal class ScriptRT : IScriptRT
     {
-        private readonly V8ScriptEngine engine;
+        internal readonly V8ScriptEngine engine;
+
+        public event EventHandler<ScriptRTOutputEventArgs> LogReceived;
 
         public bool HasMainFunction
         {
@@ -27,27 +28,37 @@ namespace AutumnBox.SERT.Shared.Runtime
             }
         }
 
-        public ScriptRT(string script)
+        public string RTID => throw new NotImplementedException();
+
+        public ScriptRT(string script, ushort? port = null)
         {
-            engine = new V8ScriptEngine();
-            InitEnv();
+            if (port != null)
+            {
+                engine = new V8ScriptEngine(V8ScriptEngineFlags.EnableDebugging | V8ScriptEngineFlags.AwaitDebuggerAndPauseOnStart, 9033);
+            }
+            else
+            {
+                engine = new V8ScriptEngine();
+            }
+            new EnvLoader(engine).Load();
             engine.Execute(script);
         }
 
-        public void ImportAsFunction(string functionName) { }
 
         public int Main()
         {
             try
             {
-                if (engine.Invoke("main") is int retCode)
+                var result = engine.Invoke("main");
+                Debug.WriteLine(result);
+                if (result is int retCode)
                     return retCode;
                 else
                     return 0;
             }
             catch (Exception exception)
             {
-                Debug.WriteLine(exception);
+                SLogger<ScriptRT>.Warn(exception);
                 return -1;
             }
         }
@@ -57,22 +68,46 @@ namespace AutumnBox.SERT.Shared.Runtime
             engine?.Dispose();
         }
 
-        private void InitEnv()
+        public void LoadEnv()
         {
-            //engine.Execute("var atmb = {}");
-            //engine.AddHostType("atmb.dn_Console", HostItemFlags.DirectAccess, typeof(Console));
-            //engine.AddHostType("atmb.dn_Datetime", HostItemFlags.DirectAccess, typeof(DateTime));
-            engine.AddHostType("___DNConsole", typeof(Console));
-            engine.AddHostType("___DNDatetime", typeof(DateTime));
-
-            engine.Execute(@"var atmb = {
-                    dn_Console : ___DNConsole,
-                    dn_DateTime : ___DNDatetime
-            }");
-            engine.AddHostObject("atmb.log", new Action<string>((string text) =>
-            {
-                Debug.WriteLine(text);
-            }));
+            throw new NotImplementedException();
         }
+
+        public void LoadScript(string code)
+        {
+            throw new NotImplementedException();
+        }
+
+        object GetVar(string varName) { }
+        T GetVar<T>(string varName) { }
+        void SetVar(string varName, object value) { }
+
+        public bool VarAvailable(string name)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<T> CallFuncAsync<T>(string funcName, params object[] args)
+        {
+            Action<object> onResolved = (resolve) => { };
+            Action<object> onRejected = (reason) => { };
+            dynamic promise = engine.Invoke(funcName, args);
+            promise.then(onResolved, onRejected);
+        }
+        Task<object> CallFuncAsync(string funcName, params object[] args) { }
+        T CallFunc<T>(string funcName, params object[] args) { }
+        object CallFunc(string funcName, params object[] args) { }
+
+        public Task<object> CallFuncAsync(string funcName, params string[] args)
+        {
+            throw new NotImplementedException();
+        }
+
+        public object CallFunc(string funcName, params string[] args)
+        {
+            throw new NotImplementedException();
+        }
+
+        public delegate void LogMethod(params object[] args);
     }
 }

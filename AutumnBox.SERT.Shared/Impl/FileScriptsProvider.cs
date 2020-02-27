@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace AutumnBox.SERT.Shared.Impl
+namespace AutumnBox.SERT.Impl
 {
     public class FileScriptsProvider : IRawScriptsProvider
     {

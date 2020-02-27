@@ -52,6 +52,12 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AutumnBox.Logging\AutumnBox.Logging.csproj">
+      <Project>{f90cb434-6ed4-4244-9d78-c8016f0856c1}</Project>
+      <Name>AutumnBox.Logging</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="..\AutumnBox.SERT.Shared\AutumnBox.SERT.Shared.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Microsoft.ClearScript.6.0.0\build\net45\Microsoft.ClearScript.targets" Condition="Exists('..\packages\Microsoft.ClearScript.6.0.0\build\net45\Microsoft.ClearScript.targets')" />

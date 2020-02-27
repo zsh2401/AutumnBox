@@ -1,7 +1,7 @@
 ﻿using System;
-using AutumnBox.SERT.Shared.Runtime;
+using AutumnBox.SERT.Runtime;
 
-namespace AutumnBox.SERT.Shared.Impl
+namespace AutumnBox.SERT.Impl
 {
     public class ScriptExtension : IScriptExtension
     {
