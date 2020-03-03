@@ -9,7 +9,7 @@
 
 [官网](http://www.atmb.top)   
 
-![](https://s2.ax1x.com/2020/03/03/34ehQg.png)
+![](https://s2.ax1x.com/2020/03/03/34mXNt.png)
 
 ### 能做什么?
 * 为您的设备刷入第三方Recovery
