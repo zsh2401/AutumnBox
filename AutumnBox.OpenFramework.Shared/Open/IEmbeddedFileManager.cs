@@ -37,8 +37,9 @@ namespace AutumnBox.OpenFramework.Open
         /// <summary>
         /// 获取内嵌资源的抽象对象
         /// </summary>
+        /// <param name="context">一个与内嵌资源位于同一程序集的对象</param>
         /// <param name="innerResPath"></param>
         /// <returns></returns>
-        IEmbeddedFile Get(string innerResPath);
+        IEmbeddedFile Get(object context, string innerResPath);
     }
 }

@@ -57,7 +57,7 @@ namespace AutumnBox.GUI.Util
         }
         private static Version GetCoreLibVersion()
         {
-            var coreLibFilterResult = from lib in OpenFramework.Management.OpenFx.LibsManager.Librarians
+            var coreLibFilterResult = from lib in OpenFramework.Management.OpenFxLoader.LibsManager.Librarians
                                       where lib.Name == "AutumnBox Core Modules"
                                       select lib;
             if (coreLibFilterResult.Count() == 0) return new Version(0, 0, 1);

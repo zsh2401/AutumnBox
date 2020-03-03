@@ -38,6 +38,10 @@ namespace AutumnBox.OpenFramework
         /// AutumnBox.OpenFramework的程序集名称
         /// </summary>
         internal const string AUTUMNBOX_OPENFRAMEWORK_ASSEMBLY_NAME = "AutumnBox.OpenFramework";
+        /// <summary>
+        /// AutumnBox.OpenFramework的程序集名称
+        /// </summary>
+        internal const string AUTUMNBOX_LOGGING_ASSEMBLY_NAME = "AutumnBox.Logging";
         static BuildInfo()
         {
             Assembly asm = Assembly.GetExecutingAssembly();

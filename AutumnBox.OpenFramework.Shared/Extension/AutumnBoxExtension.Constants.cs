@@ -8,12 +8,15 @@ using AutumnBox.OpenFramework.Running;
 
 namespace AutumnBox.OpenFramework.Extension
 {
-    partial class AutumnBoxExtension
+    /// <summary>
+    /// 历史遗留
+    /// </summary>
+    public partial class AutumnBoxExtension
     {
         /// <summary>
         /// 无关
         /// </summary>
-        public const DeviceState NoMatter = (DeviceState)(1<<24);
+        public const DeviceState NoMatter = (DeviceState)(1 << 24);
         /// <summary>
         /// 所有状态
         /// </summary>

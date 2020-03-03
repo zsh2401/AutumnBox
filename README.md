@@ -1,34 +1,32 @@
-[中文](README_zh-CN.md)
-
-![](http://www.atmb.top/images/readmeheader.png)
-#### Code lines : 25000+ (Not inlcude .xaml)
-#### Main language : C#
-#### Supporting Platform : Recommended Windows 10, minimum Windows 7
-#### Running the required environment: .Net Framework 4.6.1
-#### [Instructions WIKI](https://github.com/zsh2401/AutumnBox/wiki)
+[![](http://www.atmb.top/images/readmeheader.png "前往秋之盒官网")](http://www.atmb.top)   
+#### 代码行数 : 26000+ (不包含.xaml)
+#### 主要语言 : C#
+#### 支持平台 : 建议微软视窗操作系统10,最低微软视窗操作系统7
+#### 运行所需环境: .Net Framework 4.6.1
+#### [说明书WIKI](https://github.com/zsh2401/AutumnBox/wiki)
 ***
-[For more information, please go to the official website](http://www.atmb.top)
+[更多介绍内容请前往官网](http://www.atmb.top)   
 ![](https://www.atmb.top/images/demo/show_launch.gif)
 ![](https://www.atmb.top/images/demo/show5.gif)
 ![](https://www.atmb.top/images/demo/show3.png)
 ![](https://www.atmb.top/images/demo/show6.png)
 ***
-## What is AutumnBox?
-A desktop program for GUI encapsulation of the Google Adb toolkit,help all people.
+## AutumnBox是什么?
+一个对Google ADB工具包进行GUI封装的桌面程序,方便小白,帮助老鸟
 ***
-## What can AutumnBox  do?
-* Brush third-party Recovery for your device
-* Push files to the device
-* One-click activation of the brevent service
-* One-click activation of the ICE-BOX
-* Unlock System and get full root control
-* Functional development ideas centered on the expansion module will support more and more functions in the future
+## AutumnBox能干什么?
+* 为您的设备刷入第三方Recovery
+* 向设备推送文件
+* 一键激活黑域服务
+* 一键激活冰箱
+* 解锁System,获取完整root控制权
+* 以拓展模块为中心的功能开发思想,将来将会支持越来越多的功能
 * ...
 ***
-## Performing the development of the AutumnBox expansion module
-The main function of the Autumn Box is developed with the idea of ​​expanding modules.
-If you are also a developer, please download the SDK and start developing the autumn box expansion module.
-[**AutumnBox development documentation**](https://github.com/zsh2401/AutumnBox/wiki/zh_CN_AutumnBox%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3)
+## 进行AutumnBox拓展模块开发
+秋之盒的主体功能便是以拓展模块为思想开发的     
+如果您也是一位开发者,欢迎下载SDK开始开发秋之盒拓展模块    
+[**AutumnBox开发文档**](https://github.com/zsh2401/AutumnBox/wiki/zh_CN_AutumnBox%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3)
 
-## Contact Developer
-Zsh2401@163.com
+## 联系开发者
+zsh2401@163.com

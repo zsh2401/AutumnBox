@@ -11,12 +11,17 @@ namespace AutumnBox.OpenFramework.Open
     public interface IStorageManager
     {
         /// <summary>
+        /// 将根据其计算并划分存储文件区域
+        /// </summary>
+        /// <param name="id">唯一识别</param>
+        void Init(string id);
+        /// <summary>
         /// 根据ID打开一个文件
         /// </summary>
         /// <param name="fileId"></param>
         /// <param name="createIfNotExist"></param>
         /// <returns></returns>
-        FileStream OpenFile(string fileId,bool createIfNotExist=true);
+        FileStream OpenFile(string fileId, bool createIfNotExist = true);
         /// <summary>
         /// 删除一个文件
         /// </summary>
@@ -27,7 +32,7 @@ namespace AutumnBox.OpenFramework.Open
         /// </summary>
         /// <param name="jsonId"></param>
         /// <param name="jsonObject"></param>
-        void SaveJsonObject(string jsonId,object jsonObject);
+        void SaveJsonObject(string jsonId, object jsonObject);
         /// <summary>
         /// 读取一个JsonObject
         /// </summary>

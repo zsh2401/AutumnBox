@@ -3,10 +3,9 @@
 ** date:  2018/9/22 23:06:30 (UTC +8:00)
 ** desc： ...
 *************************************************/
-using AutumnBox.OpenFramework.Running;
+using AutumnBox.OpenFramework.Management.ExtensionThreading;
 using AutumnBox.OpenFramework.Wrapper;
 using System;
-using System.Collections.Generic;
 
 namespace AutumnBox.OpenFramework.Extension
 {
@@ -28,7 +27,8 @@ namespace AutumnBox.OpenFramework.Extension
         /// </summary>
         /// <param name="currentThread"></param>
         /// <param name="wrapper"></param>
-        public ExtensionArgs(IExtensionThread currentThread, IExtensionWrapper wrapper) {
+        public ExtensionArgs(IExtensionThread currentThread, IExtensionWrapper wrapper)
+        {
             CurrentThread = currentThread ?? throw new ArgumentNullException(nameof(currentThread));
             Wrapper = wrapper;
         }

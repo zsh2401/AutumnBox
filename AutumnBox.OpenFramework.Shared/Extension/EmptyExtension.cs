@@ -10,8 +10,6 @@
     [ExtRequiredDeviceStates(AutumnBoxExtension.NoMatter)]
     [ExtMinApi(8)]
     [ExtTargetApi()]
-    [ExtRunAsAdmin(false)]
-    [ExtRequireRoot(false)]
     [ExtOfficial(false)]
     [ExtRegions(null)]
     [ExtPriority(ExtPriority.NORMAL)]

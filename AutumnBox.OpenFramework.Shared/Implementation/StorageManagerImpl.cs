@@ -1,0 +1,118 @@
+﻿using AutumnBox.OpenFramework.Open;
+using Newtonsoft.Json;
+using System;
+using System.IO;
+namespace AutumnBox.OpenFramework.Implementation
+{
+    internal class StorageManagerImpl : IStorageManager
+    {
+        private string storageId;
+        private const string CACHE_DIR = "cache";
+        private const string FILES_DIR = "files";
+        private const string JSON_EXT = ".ajson";
+        private const string FILE_EXT = ".aextf";
+
+        public StorageManagerImpl()
+        {
+
+        }
+        public DirectoryInfo CacheDirectory { get; private set; }
+        private DirectoryInfo ChiefDirectory { get; set; }
+        private DirectoryInfo FilesDirectory { get; set; }
+        public void Init(string id)
+        {
+            storageId = id.GetHashCode().ToString();
+
+            /*初始化Chief Directory*/
+            string chiefDirName = storageId.GetHashCode().ToString();
+            string chiefPath = Path.Combine(BuildInfo.DEFAULT_EXTENSION_PATH, chiefDirName);
+            ChiefDirectory = new DirectoryInfo(chiefPath);
+            if (!ChiefDirectory.Exists) ChiefDirectory.Create();
+
+            /*初始化子文件夹*/
+            CacheDirectory = InitChildDirectory(CACHE_DIR);
+            FilesDirectory = InitChildDirectory(FILES_DIR);
+        }
+        private DirectoryInfo InitChildDirectory(string dirName)
+        {
+            string path = Path.Combine(ChiefDirectory.FullName, dirName);
+            DirectoryInfo dir = new DirectoryInfo(path);
+            if (!dir.Exists) dir.Create();
+            return dir;
+        }
+
+        public void ClearCache()
+        {
+            CacheDirectory.Delete(true);
+            InitChildDirectory(CACHE_DIR);
+        }
+
+        public void ClearFiles()
+        {
+            FileInfo[] files = FilesDirectory.GetFiles($"*{FILE_EXT}");
+            foreach (var file in files)
+            {
+                file.Delete();
+            }
+        }
+
+        public void ClearJsonObjects()
+        {
+            FileInfo[] files = FilesDirectory.GetFiles($"*{JSON_EXT}");
+            foreach (var file in files)
+            {
+                file.Delete();
+            }
+        }
+
+        private string GetFileName(string fileId)
+        {
+            return fileId.GetHashCode().ToString();
+        }
+
+        public void DeleteFile(string fileId)
+        {
+            var path = Path.Combine(FilesDirectory.FullName, GetFileName(fileId) + ".aextf");
+            File.Delete(path);
+        }
+
+        public FileStream OpenFile(string fileId, bool createIfNotExist = true)
+        {
+            var path = Path.Combine(FilesDirectory.FullName, GetFileName(fileId) + FILE_EXT);
+            FileMode mode = createIfNotExist ? FileMode.OpenOrCreate : FileMode.Open;
+            var fs = new FileStream(path, mode, FileAccess.ReadWrite);
+            return fs;
+        }
+
+        public TResult ReadJsonObject<TResult>(string jsonId)
+        {
+            using (var fs = OpenFile(jsonId, false))
+            {
+                using (var sr = new StreamReader(fs))
+                {
+                    var json = sr.ReadToEnd();
+                    return JsonConvert.DeserializeObject<TResult>(json);
+                }
+            }
+        }
+
+        public void SaveJsonObject(string jsonId, object jsonObject)
+        {
+            using (var fs = OpenFile(jsonId))
+            {
+                using (var sw = new StreamWriter(fs))
+                {
+                    var json = JsonConvert.SerializeObject(jsonObject);
+                    sw.Write(json);
+                }
+            }
+        }
+
+        public void Restore()
+        {
+            ClearCache();
+            ClearFiles();
+            ClearJsonObjects();
+        }
+    }
+}

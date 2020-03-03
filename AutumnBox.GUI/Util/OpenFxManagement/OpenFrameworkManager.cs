@@ -18,11 +18,11 @@ namespace AutumnBox.GUI.Util.OpenFxManagement
         {
             SLogger.Info(TAG, "OpenFx loading");
             SLogger.Info(TAG, "Init OpenFx env");
-            OpenFx.InitEnv(GUIApiManager.BaseApiInstance);
+            OpenFxLoader.InitEnv(GUIApiManager.BaseApiInstance);
             SLogger.Info(TAG, "OpenFx env inited");
             SLogger.Info(TAG, "Load extensions");
-            OpenFx.LoadExtensions();
-            SLogger.Info(TAG,$"There are {OpenFx.LibsManager.Librarians.Count()} librarians and {OpenFx.LibsManager.Wrappers().Count()} wrappers");
+            OpenFxLoader.LoadExtensions();
+            SLogger.Info(TAG,$"There are {OpenFxLoader.LibsManager.Librarians.Count()} librarians and {OpenFxLoader.LibsManager.Wrappers().Count()} wrappers");
             SLogger.Info(TAG, "Loaded extensions");
         }
     }

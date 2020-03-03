@@ -34,7 +34,7 @@ namespace AutumnBox.GUI.Util
                     Settings.Default.IsFirstLaunch = false;
                 }
                 Settings.Default.Save();
-                try { OpenFx.Unload(); } catch { }
+                try { OpenFxLoader.Unload(); } catch { }
                 if (Adb.Server?.IsEnable == true)
                 {
                     Adb.Server.Kill();

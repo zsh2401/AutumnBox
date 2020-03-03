@@ -12,7 +12,7 @@ using System.Reflection;
 using AutumnBox.Basic.Device;
 using AutumnBox.GUI.Util.Bus;
 using AutumnBox.GUI.View.DialogContent;
-using AutumnBox.OpenFramework.LeafExtension.Kit;
+using AutumnBox.OpenFramework.Open.LeafUI;
 
 namespace AutumnBox.GUI.Util.OpenFxManagement
 {
