@@ -5,8 +5,7 @@ namespace AutumnBox.OpenFramework.Open
     /// <summary>
     /// MD5 API
     /// </summary>
-    [Obsolete("Use Md5 static class to instead")]
-    public interface IMd5Service
+    public interface IMd5
     {
         /// <summary>
         /// 获取某个文件的MD5

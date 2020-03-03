@@ -20,9 +20,9 @@ using System.Text;
 namespace AutumnBox.OpenFramework.Open
 {
     /// <summary>
-    /// API工厂
+    /// API湖
     /// </summary>
-    public interface IAPIFactory
+    public interface ILake
     {
         /// <summary>
         /// 注册
@@ -30,28 +30,28 @@ namespace AutumnBox.OpenFramework.Open
         /// <param name="type"></param>
         /// <param name="factory"></param>
         /// <returns></returns>
-        IAPIFactory Register(Type type, Func<object> factory);
+        ILake Register(Type type, Func<object> factory);
         /// <summary>
         /// 注册
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="factory"></param>
         /// <returns></returns>
-        IAPIFactory Register<T>(Func<object> factory);
+        ILake Register<T>(Func<object> factory);
         /// <summary>
         /// 注册
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="impl"></param>
         /// <returns></returns>
-        IAPIFactory Register<T>(Type impl);
+        ILake Register<T>(Type impl);
         /// <summary>
         /// 注册
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <typeparam name="TImpl"></typeparam>
         /// <returns></returns>
-        IAPIFactory Register<T, TImpl>();
+        ILake Register<T, TImpl>();
 
         /// <summary>
         /// 注册
@@ -59,35 +59,36 @@ namespace AutumnBox.OpenFramework.Open
         /// <param name="type"></param>
         /// <param name="factory"></param>
         /// <returns></returns>
-        IAPIFactory RegisterSingleton(Type type, Func<object> factory);
+        ILake RegisterSingleton(Type type, Func<object> factory);
         /// <summary>
         /// 注册
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="factory"></param>
         /// <returns></returns>
-        IAPIFactory RegisterSingleton<T>(Func<object> factory);
+        ILake RegisterSingleton<T>(Func<object> factory);
         /// <summary>
         /// 注册
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="impl"></param>
         /// <returns></returns>
-        IAPIFactory RegisterSingleton<T>(Type impl);
+        ILake RegisterSingleton<T>(Type impl);
         /// <summary>
         /// 注册
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <typeparam name="TImpl"></typeparam>
         /// <returns></returns>
-        IAPIFactory RegisterSingleton<T, TImpl>();
+        ILake RegisterSingleton<T, TImpl>();
         /// <summary>
         /// 注册
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="value"></param>
         /// <returns></returns>
-        IAPIFactory RegisterSingleton<T>(T value);
+        ILake RegisterSingleton<T>(T value);
+
         /// <summary>
         /// 获取
         /// </summary>
