@@ -88,6 +88,7 @@ namespace AutumnBox.OpenFramework.Open
         /// <param name="value"></param>
         /// <returns></returns>
         ILake RegisterSingleton<T>(T value);
+        //ILake RegisterSingleton<T>(T value);
 
         /// <summary>
         /// 获取

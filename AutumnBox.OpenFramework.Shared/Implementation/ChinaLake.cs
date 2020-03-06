@@ -16,6 +16,7 @@
 using AutumnBox.OpenFramework.Open;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading;
 
 namespace AutumnBox.OpenFramework.Implementation
@@ -27,7 +28,7 @@ namespace AutumnBox.OpenFramework.Implementation
         {
             factories = new Dictionary<Type, Func<object>>();
             RegisterSingleton<ILake>(this);
-            RegisterSingleton<IMethodProxy, MethodProxy>();
+            RegisterSingleton<IMethodProxy>(new MethodProxy(this));
         }
         public object Get(Type type)
         {
@@ -52,7 +53,9 @@ namespace AutumnBox.OpenFramework.Implementation
 
         public ILake Register<T>(Type impl)
         {
-            return Register(typeof(T), Get<IMethodProxy>().GetClassBuilder(impl));
+            var mp = Get<IMethodProxy>();
+            Debug.WriteLine(mp);
+            return Register(typeof(T), mp.GetClassBuilder(impl));
         }
 
         public ILake Register<T, TImpl>()
