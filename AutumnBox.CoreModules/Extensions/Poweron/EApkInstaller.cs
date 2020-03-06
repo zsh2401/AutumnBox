@@ -35,7 +35,7 @@ namespace AutumnBox.CoreModules.Extensions
         [LProperty]
         public ILeafUI UI { get; set; }
         [LProperty]
-        public IClassTextManager Text { get; set; }
+        public IClassTextDictionary Text { get; set; }
         [LMain]
         public void EntryPoint()
         {

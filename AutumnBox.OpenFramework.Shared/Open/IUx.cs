@@ -10,7 +10,6 @@ namespace AutumnBox.OpenFramework.Open
     /// <summary>
     /// 秋之盒用户交互API
     /// </summary>
-    [Obsolete]
     public interface IUx
     {
         /// <summary>

@@ -24,7 +24,7 @@ namespace AutumnBox.CoreModules.Extensions.Mix
         public const string KEY_REBOOT_OPTION = "reboot_option";
 
         [LMain]
-        public void Main(IDevice device, [LFromData(KEY_REBOOT_OPTION)]int rebootOption, IClassTextManager text, IUx ux)
+        public void Main(IDevice device, [LFromData(KEY_REBOOT_OPTION)]int rebootOption, IClassTextDictionary text, IUx ux)
         {
             if (!ux.DoYN(text["aus"])) return;
             switch (rebootOption)

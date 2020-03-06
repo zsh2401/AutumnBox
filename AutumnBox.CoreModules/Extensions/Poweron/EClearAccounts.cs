@@ -28,7 +28,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron
     internal class EClearAccounts : LeafExtensionBase
     {
         [LMain]
-        public void EntryPoint(ILeafUI ui, IDevice device, IClassTextManager text, ITemporaryFloder tmp, IEmbeddedFileManager emb)
+        public void EntryPoint(ILeafUI ui, IDevice device, IClassTextDictionary text, ITemporaryFloder tmp, IEmbeddedFileManager emb)
         {
             using (ui)
             {

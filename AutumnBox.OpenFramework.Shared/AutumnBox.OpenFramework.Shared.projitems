@@ -22,7 +22,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Extension\ExtensionArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\IClassExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\IExtension.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Implementation\APIFactory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Implementation\ChinaLake.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Implementation\MethodProxy.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Leaf\Attributes\LAttributeReader.cs" />
@@ -36,8 +35,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Management\ExtLibrary\AssemblyBasedLibrarian.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\Wrapper\ExtensionAttributeReader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\Wrapper\IExtensionAttributeReader.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Open\IADBManager.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Open\IClassTextReader.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Open\TextKit\ClassTextAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Open\TextKit\IClassTextReader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\ILake.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\IOpenFxManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\LakeProvider.cs" />
@@ -80,8 +79,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Management\IBaseApi.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\ILibsManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\ExtLibrary\DreamLibManager.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Open\ApiFactory.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Open\IClassTextManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Open\TextKit\IClassTextDictionary.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Implementation\RunningManagerImpl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\IRunningManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Implementation\ClassTextManagerImpl.cs" />

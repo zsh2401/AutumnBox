@@ -27,6 +27,6 @@ namespace AutumnBox.OpenFramework.Open
         /// </summary>
         /// <param name="type"></param>
         /// <returns></returns>
-        IClassTextManager Read(Type type);
+        IClassTextDictionary Read(Type type);
     }
 }

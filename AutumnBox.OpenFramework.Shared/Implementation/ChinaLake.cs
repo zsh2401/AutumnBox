@@ -21,8 +21,12 @@ namespace AutumnBox.OpenFramework.Implementation
 {
     internal class ChinaLake : ILake
     {
-        delegate object Factory();
-        private Dictionary<Type, Factory> factories;
+        private Dictionary<Type, Func<object>> factories;
+        public ChinaLake()
+        {
+            factories = new Dictionary<Type, Func<object>>();
+            Register<IMethodProxy, MethodProxy>();
+        }
         public object Get(Type type)
         {
             return factories[type]();
@@ -30,52 +34,54 @@ namespace AutumnBox.OpenFramework.Implementation
 
         public T Get<T>()
         {
-            throw new NotImplementedException();
+            return (T)Get(typeof(T));
         }
 
         public ILake Register(Type type, Func<object> factory)
         {
-            throw new NotImplementedException();
+            factories[type] = factory;
+            return this;
         }
 
         public ILake Register<T>(Func<object> factory)
         {
-            throw new NotImplementedException();
+            return Register(typeof(T), factory);
         }
 
         public ILake Register<T>(Type impl)
         {
-            throw new NotImplementedException();
+            return Register(typeof(T), Get<IMethodProxy>().GetClassBuilder(impl));
         }
 
         public ILake Register<T, TImpl>()
         {
-            throw new NotImplementedException();
+            return Register<T>(typeof(TImpl));
         }
 
         public ILake RegisterSingleton(Type type, Func<object> factory)
         {
-            throw new NotImplementedException();
+            var lazy = new Lazy<object>(factory);
+            return Register(type, () => lazy.Value);
         }
 
         public ILake RegisterSingleton<T>(Func<object> factory)
         {
-            throw new NotImplementedException();
+            return RegisterSingleton(typeof(T), factory);
         }
 
         public ILake RegisterSingleton<T>(Type impl)
         {
-            throw new NotImplementedException();
+            return RegisterSingleton<T>(() => Get<IMethodProxy>().GetClassBuilder(impl));
         }
 
         public ILake RegisterSingleton<T, TImpl>()
         {
-            throw new NotImplementedException();
+            return RegisterSingleton<T>(typeof(TImpl));
         }
 
         public ILake RegisterSingleton<T>(T value)
         {
-            throw new NotImplementedException();
+            return RegisterSingleton<T>(() => value);
         }
     }
 }

@@ -3,8 +3,6 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.OpenFramework.Open.LKit
 {
-
-
     /// <summary>
     /// LeafExtension使用的UI控制器
     /// </summary>
@@ -53,6 +51,10 @@ namespace AutumnBox.OpenFramework.Open.LKit
         /// 显示界面
         /// </summary>
         void Show();
+        /// <summary>
+        /// 以Dialog的方式显示在秋之盒之上
+        /// </summary>
+        void ShowDialog();
         /// <summary>
         /// 完成,进度将被置为完成,Tip将根据返回值决定,并且关闭按钮点击事件将不再被触发
         /// </summary>

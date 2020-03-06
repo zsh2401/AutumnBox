@@ -16,7 +16,7 @@ namespace AutumnBox.CoreModules.Extensions.Hidden
     public class ENetDeviceDisconnecter : LeafExtensionBase
     {
         [LMain]
-        private void EntryPoint(ILeafUI ui, IDevice device, IClassTextManager texts)
+        private void EntryPoint(ILeafUI ui, IDevice device, IClassTextDictionary texts)
         {
             using (ui)
             {

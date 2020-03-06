@@ -36,7 +36,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron
         private int successed = 0;
         private int error = 0;
         [LMain]
-        public void EntryPoint(ILeafUI ui, IDevice device, IClassTextManager text)
+        public void EntryPoint(ILeafUI ui, IDevice device, IClassTextDictionary text)
         {
             using (ui)
             {

@@ -48,7 +48,7 @@ namespace AutumnBox.OpenFramework.LeafExtension.Fast
             ui.Shutdown();
             Thread.CurrentThread.Abort();
         }
-        private static readonly IClassTextManager text;
+        private static readonly IClassTextDictionary text;
         static LeafUIHelper()
         {
             text = LakeProvider.Lake.Get<IClassTextReader>().Read((typeof(LeafUIHelper)));

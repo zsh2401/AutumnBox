@@ -27,7 +27,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron
     {
         private const string SH_PATH = "/data/data/me.piebridge.brevent/brevent.sh";
         [LMain]
-        public void EntryPoint(ILeafUI ui, IDevice device,IClassTextManager text)
+        public void EntryPoint(ILeafUI ui, IDevice device,IClassTextDictionary text)
         {
             using (ui)
             {

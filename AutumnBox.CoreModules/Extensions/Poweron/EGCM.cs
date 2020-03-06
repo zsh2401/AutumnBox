@@ -18,7 +18,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron
     internal class EGCM : LeafExtensionBase
     {
         [LMain]
-        public void EntryPoint(ILeafUI ui, IDevice device, IClassTextManager text)
+        public void EntryPoint(ILeafUI ui, IDevice device, IClassTextDictionary text)
         {
             using (ui)
             {

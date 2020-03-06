@@ -5,6 +5,7 @@ namespace AutumnBox.OpenFramework.Open
 {
     /// <summary>
     /// 内嵌资源包装类
+    /// 无法直接通过Lake获取
     /// </summary>
     public interface IEmbeddedFile
     {

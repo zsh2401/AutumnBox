@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace AutumnBox.OpenFramework.Implementation
 {
-    internal class ClassTextManagerImpl : IClassTextManager
+    internal class ClassTextManagerImpl : IClassTextDictionary
     {
         private readonly Type classExtensionType;
         private readonly Dictionary<string, ExtTextAttribute> ResourceCollection;

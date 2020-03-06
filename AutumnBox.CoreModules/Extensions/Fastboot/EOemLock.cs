@@ -23,7 +23,7 @@ namespace AutumnBox.CoreModules.Extensions.Fastboot
     internal class EOemLock : LeafExtensionBase
     {
         [LMain]
-        public void EntryPoint(ILeafUI ui, IDevice device, IClassTextManager textManager)
+        public void EntryPoint(ILeafUI ui, IDevice device, IClassTextDictionary textManager)
         {
             using (ui)
             {

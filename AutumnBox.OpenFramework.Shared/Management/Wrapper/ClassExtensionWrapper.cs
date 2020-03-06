@@ -28,28 +28,16 @@ namespace AutumnBox.OpenFramework.Management.Wrapper
         /// 托管的拓展模块Type
         /// </summary>
         private readonly Type extType;
-        /// <summary>
-        /// 创建实例前的切面
-        /// </summary>
-        private IBeforeCreatingAspect[] BeforeCreateAspects
-        {
-            get
-            {
-                if (bca == null)
-                {
-                    var scanner = new ClassExtensionScanner(extType);
-                    scanner.Scan(ClassExtensionScanner.ScanOption.BeforeCreatingAspect);
-                    bca = scanner.BeforeCreatingAspects;
-                }
-                return bca;
-            }
-        }
-        private IBeforeCreatingAspect[] bca;
 
         /// <summary>
         /// 拓展模块的信息获取器
         /// </summary>
         public IExtensionInfoDictionary Info { get; protected set; }
+
+        /// <summary>
+        /// 所包装的拓展模块类型
+        /// </summary>
+        public Type ExtensionType => extType;
 
         /// <summary>
         /// 创建检查,如果有问题就抛出异常
@@ -72,7 +60,7 @@ namespace AutumnBox.OpenFramework.Management.Wrapper
         {
             CreatedCheck(t);
             extType = t;
-            Info = new ClassExtensionInfoGetter(this, t);
+            Info = new ClassExtensionInfoReader(t);
             Info.Reload();
             warppedType.Add(t);
         }

@@ -50,8 +50,8 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.Dpm
         private const string MSG_DPM_NTF = "11";
         private const string MSG_OWNER_NTF = "12";
         private const string MSG_SEG_FAULT = "13";
-        private static readonly IClassTextManager textAttrManager
-            = ApiFactory.SGet<IClassTextManager>(typeof(DpmFailedMessageParser));
+        private static readonly IClassTextDictionary textAttrManager
+            = ApiFactory.SGet<IClassTextDictionary>(typeof(DpmFailedMessageParser));
 
         public static void Parse(int exitCode, string output, out string tip, out string message)
         {

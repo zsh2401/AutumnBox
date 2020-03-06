@@ -47,11 +47,21 @@ namespace AutumnBox.OpenFramework.Implementation
 
         public object GetPublicResouce(string key)
         {
+            if (key is null)
+            {
+                throw new ArgumentNullException(nameof(key));
+            }
+
             return sourceApi.GetResouce(key);
         }
 
         public TReturn GetPublicResouce<TReturn>(string key) where TReturn : class
         {
+            if (key is null)
+            {
+                throw new ArgumentNullException(nameof(key));
+            }
+
             return sourceApi.GetResouce(key) as TReturn;
         }
 
@@ -107,7 +117,32 @@ namespace AutumnBox.OpenFramework.Implementation
 
         public void RunOnUIThread(Action act)
         {
+            if (act is null)
+            {
+                throw new ArgumentNullException(nameof(act));
+            }
+
             sourceApi.RunOnUIThread(act);
+        }
+
+        public void ShowException(string title, string sketch, Exception e)
+        {
+            if (string.IsNullOrEmpty(title))
+            {
+                throw new ArgumentException("message", nameof(title));
+            }
+
+            if (string.IsNullOrEmpty(sketch))
+            {
+                throw new ArgumentException("message", nameof(sketch));
+            }
+
+            if (e is null)
+            {
+                throw new ArgumentNullException(nameof(e));
+            }
+
+            sourceApi.ShowException(title, sketch, e.ToString());
         }
 
         public void ShutdownApp()

@@ -4,6 +4,8 @@
 ** desc： ...
 *************************************************/
 
+using AutumnBox.OpenFramework.Management.ExtLibrary;
+
 namespace AutumnBox.OpenFramework.Management
 {
     /// <summary>

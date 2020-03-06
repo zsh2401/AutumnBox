@@ -44,14 +44,9 @@ namespace AutumnBox.OpenFramework.LeafExtension.Internal.Impl
                 CopyTo(fs);
             }
         }
-        private readonly Assembly assembly;
-        public LeafEmb(Assembly assembly)
+        public IEmbeddedFile Get(object context, string innerResPath)
         {
-            this.assembly = assembly ?? throw new ArgumentNullException(nameof(assembly));
-        }
-        public IEmbeddedFile Get(string innerResPath)
-        {
-            return new LeafEmbFile(assembly, innerResPath);
+            return new LeafEmbFile(context.GetType().Assembly, innerResPath);
         }
     }
 }

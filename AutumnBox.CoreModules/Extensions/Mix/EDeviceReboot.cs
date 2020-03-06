@@ -20,7 +20,7 @@ namespace AutumnBox.CoreModules.Extensions.Mix
     [ExtText("9008", "9008", "zh-cn:9008(不可靠)")]
     class EDeviceReboot : LeafExtensionBase
     {
-        public void Main(IDevice device, ILeafUI ui, IClassTextManager text)
+        public void Main(IDevice device, ILeafUI ui, IClassTextDictionary text)
         {
             using (ui)
             {

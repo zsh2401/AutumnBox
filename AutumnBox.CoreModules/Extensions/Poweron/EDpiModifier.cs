@@ -25,7 +25,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron
     internal class EDpiModifier : LeafExtensionBase
     {
         [LMain]
-        public void Main(IDevice device, ILeafUI ui, IClassTextManager text)
+        public void Main(IDevice device, ILeafUI ui, IClassTextDictionary text)
         {
             using (ui)
             {

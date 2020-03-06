@@ -66,17 +66,13 @@ namespace AutumnBox.OpenFramework.Extension.Leaf.Internal
             {
                 return ExtData;
             }
-            else if (type == typeof(IEmbeddedFileManager))
-            {
-                return new LeafEmb(leafInstance.GetType().Assembly);
-            }
             else if (type == typeof(ICommandExecutor))
             {
                 return new HestExecutor();
             }
             else
             {
-                return OpenApiFactory.Get(type, leafInstance);
+                return LakeProvider.Lake.Get(type);
             }
         }
     }
