@@ -12,10 +12,6 @@ namespace AutumnBox.OpenFramework.Implementation
         private const string JSON_EXT = ".ajson";
         private const string FILE_EXT = ".aextf";
 
-        public StorageManagerImpl()
-        {
-
-        }
         public DirectoryInfo CacheDirectory { get; private set; }
         private DirectoryInfo ChiefDirectory { get; set; }
         private DirectoryInfo FilesDirectory { get; set; }

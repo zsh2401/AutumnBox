@@ -52,7 +52,7 @@ namespace AutumnBox.OpenFramework.Extension.Leaf.Internal
         {
             if (type == typeof(ILeafUI))
             {
-                return OpenFxLoader.BaseApi.NewLeafUI();
+                return LakeProvider.Lake.Get<IBaseApi>().NewLeafUI();
             }
             else if (type.Name.StartsWith(nameof(ILogger)))
             {
@@ -60,7 +60,7 @@ namespace AutumnBox.OpenFramework.Extension.Leaf.Internal
             }
             else if (type == typeof(IDevice))
             {
-                return OpenFxLoader.BaseApi.SelectedDevice;
+                return LakeProvider.Lake.Get<IBaseApi>().SelectedDevice;
             }
             else if (type == typeof(Dictionary<string, object>))
             {

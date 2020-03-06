@@ -10,7 +10,18 @@ namespace AutumnBox.OpenFramework.Implementation
 {
     internal class OSImpl : IOperatingSystemAPI
     {
-        public bool IsRunAsAdmin => OpenFxLoader.BaseApi.IsRunAsAdmin;
+        private readonly IBaseApi baseApi;
+
+        public OSImpl(IBaseApi baseApi)
+        {
+            if (baseApi is null)
+            {
+                throw new ArgumentNullException(nameof(baseApi));
+            }
+
+            this.baseApi = baseApi;
+        }
+        public bool IsRunAsAdmin => baseApi.IsRunAsAdmin;
 
         public bool IsWindows10
         {

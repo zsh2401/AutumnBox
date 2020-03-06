@@ -33,6 +33,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Leaf\Fast\LeafUIHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Leaf\Attributes\LFromDataAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\ExtLibrary\AssemblyBasedLibrarian.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Management\LakeLoader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\Wrapper\ExtensionAttributeReader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\Wrapper\IExtensionAttributeReader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\TextKit\ClassTextAttribute.cs" />

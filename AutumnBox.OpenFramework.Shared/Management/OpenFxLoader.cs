@@ -18,10 +18,6 @@ namespace AutumnBox.OpenFramework.Management
 #endif
         static class OpenFxLoader
     {
-        /// <summary>
-        /// 内部API
-        /// </summary>
-        internal static IBaseApi BaseApi { get; set; }
 
         /// <summary>
         /// 内部管理器
@@ -35,8 +31,12 @@ namespace AutumnBox.OpenFramework.Management
 
         public static void InitEnv(IBaseApi baseApi)
         {
-            //加载API
-            BaseApi = baseApi ?? throw new System.ArgumentNullException(nameof(baseApi));
+            if (baseApi is null)
+            {
+                throw new System.ArgumentNullException(nameof(baseApi));
+            }
+
+            LakeLoader.Load(baseApi);
 
             //初始化服务
             LibsManager = new DreamLibManager();
