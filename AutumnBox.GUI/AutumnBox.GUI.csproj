@@ -164,7 +164,6 @@
     <Compile Include="Util\AdbManager.cs" />
     <Compile Include="Util\AppLoader.cs" />
     <Compile Include="Util\AppUnloader.cs" />
-    <Compile Include="Util\Bus\AtmbContext.cs" />
     <Compile Include="Util\Bus\ConnectedDevicesListener.cs" />
     <Compile Include="Util\Bus\DeviceSelectionObserver.cs" />
     <Compile Include="Util\Bus\DialogManager.cs" />
@@ -237,7 +236,6 @@
     <Compile Include="ViewModel\VMMainWindowV2.cs" />
     <Compile Include="ViewModel\VMOpenSource.cs" />
     <Compile Include="ViewModel\VMPanelMain.cs" />
-    <Compile Include="ViewModel\VMRunningWindow.cs" />
     <Compile Include="ViewModel\VMSettingsDialog.cs" />
     <Compile Include="ViewModel\VMUpdateLogs.cs" />
     <Compile Include="View\Controls\ExtensionsPanel.xaml.cs">

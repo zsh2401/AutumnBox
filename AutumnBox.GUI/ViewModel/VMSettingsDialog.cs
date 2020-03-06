@@ -3,10 +3,8 @@
 ** date:  2018/8/21 20:19:06 (UTC +8:00)
 ** desc： ...
 *************************************************/
-using AutumnBox.Basic.Calling.Adb;
 using AutumnBox.GUI.MVVM;
 using AutumnBox.GUI.Properties;
-using AutumnBox.GUI.Util;
 using AutumnBox.GUI.Util.Bus;
 using AutumnBox.GUI.Util.Custom;
 using AutumnBox.GUI.Util.Debugging;
@@ -14,14 +12,9 @@ using AutumnBox.GUI.Util.I18N;
 using AutumnBox.GUI.Util.Net;
 using AutumnBox.GUI.Util.OS;
 using AutumnBox.GUI.View.Windows;
-using AutumnBox.OpenFramework.ExtLibrary;
-using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Reflection;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace AutumnBox.GUI.ViewModel

@@ -1,7 +1,7 @@
-﻿using System;
+﻿using AutumnBox.OpenFramework.Open.LKit;
+using System;
 using System.Net;
 using System.Windows.Controls;
-using AutumnBox.OpenFramework.LeafExtension.View;
 
 namespace AutumnBox.GUI.View.DialogContent
 {

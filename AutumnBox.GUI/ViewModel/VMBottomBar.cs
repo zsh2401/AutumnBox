@@ -2,12 +2,8 @@
 using AutumnBox.GUI.MVVM;
 using AutumnBox.GUI.Util;
 using AutumnBox.GUI.Util.Bus;
-using AutumnBox.OpenFramework.Open;
-using AutumnBox.OpenFramework.Running;
-using System;
-using System.Collections.Generic;
+using AutumnBox.OpenFramework.Management.ExtensionThreading;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;

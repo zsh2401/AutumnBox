@@ -4,9 +4,8 @@ using AutumnBox.GUI.Util.UI;
 using AutumnBox.GUI.View.LeafContent;
 using AutumnBox.GUI.View.Windows;
 using AutumnBox.Logging;
-using AutumnBox.OpenFramework.LeafExtension;
-using AutumnBox.OpenFramework.LeafExtension.View;
-using AutumnBox.OpenFramework.Open.LeafUI;
+using AutumnBox.OpenFramework.Extension.Leaf;
+using AutumnBox.OpenFramework.Open.LKit;
 using HandyControl.Controls;
 using System;
 using System.Text;
@@ -445,6 +444,19 @@ namespace AutumnBox.GUI.ViewModel
             });
             task.Wait();
             return task.Result as string;
+        }
+
+        public void ShowDialog()
+        {
+            if (CurrentState != State.Ready)
+            {
+                throw new InvalidOperationException("Leaf UI is not ready!");
+            }
+            View.Dispatcher.Invoke(() =>
+            {
+                View.Show();
+            });
+            CurrentState = State.Running;
         }
     }
 }

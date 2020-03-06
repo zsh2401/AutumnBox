@@ -4,7 +4,7 @@ using AutumnBox.OpenFramework.Management.Wrapper;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace AutumnBox.OpenFramework.Management.Fast
+namespace AutumnBox.OpenFramework.Management.Wrapper
 {
     /// <summary>
     /// 一些过滤器

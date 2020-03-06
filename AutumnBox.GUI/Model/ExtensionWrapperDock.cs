@@ -8,13 +8,11 @@ using AutumnBox.GUI.MVVM;
 using AutumnBox.GUI.Util;
 using AutumnBox.GUI.Util.Bus;
 using AutumnBox.OpenFramework.Extension;
-using AutumnBox.OpenFramework.LeafExtension;
-using AutumnBox.OpenFramework.Wrapper;
+using AutumnBox.OpenFramework.Extension.Leaf;
+using AutumnBox.OpenFramework.Management.Wrapper;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Windows;
-using System.Windows.Input;
 using System.Windows.Media;
 
 namespace AutumnBox.GUI.Model
@@ -31,7 +29,7 @@ namespace AutumnBox.GUI.Model
         }
         public IExtensionWrapper Wrapper { get; private set; }
         public string Name => Wrapper.Info.Name;
-        public IExtInfoGetter Info => Wrapper.Info;
+        public IExtensionInfoDictionary Info => Wrapper.Info;
         public ImageSource Icon
         {
             get

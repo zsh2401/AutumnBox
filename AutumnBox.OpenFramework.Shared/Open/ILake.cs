@@ -20,7 +20,7 @@ using System.Text;
 namespace AutumnBox.OpenFramework.Open
 {
     /// <summary>
-    /// API湖
+    /// 湖
     /// </summary>
     public interface ILake
     {

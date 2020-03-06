@@ -4,18 +4,12 @@ using AutumnBox.GUI.MVVM;
 using AutumnBox.GUI.Properties;
 using AutumnBox.GUI.Util.Bus;
 using AutumnBox.GUI.Util.I18N;
-using AutumnBox.GUI.View.Controls;
-using AutumnBox.Logging;
 using AutumnBox.OpenFramework.Extension;
-using AutumnBox.OpenFramework.Fast;
 using AutumnBox.OpenFramework.Management;
-using AutumnBox.OpenFramework.Wrapper;
-using System;
+using AutumnBox.OpenFramework.Management.ExtLibrary;
+using AutumnBox.OpenFramework.Management.Wrapper;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace AutumnBox.GUI.ViewModel

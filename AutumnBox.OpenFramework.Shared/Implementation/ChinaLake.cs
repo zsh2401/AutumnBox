@@ -21,11 +21,12 @@ namespace AutumnBox.OpenFramework.Implementation
 {
     internal class ChinaLake : ILake
     {
-        private Dictionary<Type, Func<object>> factories;
+        private readonly Dictionary<Type, Func<object>> factories;
         public ChinaLake()
         {
             factories = new Dictionary<Type, Func<object>>();
-            Register<IMethodProxy, MethodProxy>();
+            RegisterSingleton<ILake>(this);
+            RegisterSingleton<IMethodProxy, MethodProxy>();
         }
         public object Get(Type type)
         {

@@ -1,4 +1,6 @@
 ﻿using AutumnBox.Logging;
+using AutumnBox.OpenFramework.Management.ExtensionThreading;
+using AutumnBox.OpenFramework.Open;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +15,7 @@ namespace AutumnBox.GUI.Util.Bus
         {
             try
             {
-                AtmbContext.Instance.NewExtensionThread(className)?.Start();
+                LakeProvider.Lake.Get<IRunningManager>().GetNewThread(className)?.Start();
             }
             catch (Exception e)
             {

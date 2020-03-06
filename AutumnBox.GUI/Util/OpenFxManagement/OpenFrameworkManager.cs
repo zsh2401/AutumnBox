@@ -3,10 +3,9 @@
 ** date:  2018/2/25 2:36:04 (UTC +8:00)
 ** desc： ...
 *************************************************/
-using AutumnBox.GUI.Util.Debugging;
 using AutumnBox.Logging;
-using AutumnBox.OpenFramework.Fast;
 using AutumnBox.OpenFramework.Management;
+using AutumnBox.OpenFramework.Management.ExtLibrary;
 using System.Linq;
 
 namespace AutumnBox.GUI.Util.OpenFxManagement
