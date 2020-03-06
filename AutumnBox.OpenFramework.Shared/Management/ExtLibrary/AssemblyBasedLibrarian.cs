@@ -6,7 +6,7 @@
 using AutumnBox.Logging;
 using AutumnBox.OpenFramework.Exceptions;
 using AutumnBox.OpenFramework.Extension;
-using AutumnBox.OpenFramework.Wrapper;
+using AutumnBox.OpenFramework.Management.Wrapper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,17 +17,17 @@ namespace AutumnBox.OpenFramework.Management.ExtLibrary
     /// <summary>
     /// 入口类基类
     /// </summary>
-    public abstract class AssemblyBasedLibrarian : Context, ILibrarian
+    public abstract class AssemblyBasedLibrarian : ILibrarian
     {
         /// <summary>
         /// 显示信息
         /// </summary>
         public virtual void ShowInformation()
         {
-            Ux.Message($"Name:{Name}\n" +
-                $"MinApi: {MinApiLevel}\n" +
-                $"TargetApi: {TargetApiLevel}\n" +
-                $"Loaded `IExtension`:{GetWrappers().Count()}");
+            //Ux.Message($"Name:{Name}\n" +
+            //    $"MinApi: {MinApiLevel}\n" +
+            //    $"TargetApi: {TargetApiLevel}\n" +
+            //    $"Loaded `IExtension`:{GetWrappers().Count()}");
         }
         /// <summary>
         /// 管理的程序集
@@ -45,10 +45,6 @@ namespace AutumnBox.OpenFramework.Management.ExtLibrary
             }
             ManagedAssembly = assembly;
         }
-        /// <summary>
-        /// 日志标签
-        /// </summary>
-        public override string LoggingTag => ManagedAssembly.GetName().Name + "'s librarian";
         /// <summary>
         /// 名字
         /// </summary>
@@ -119,17 +115,20 @@ namespace AutumnBox.OpenFramework.Management.ExtLibrary
                     }
                     else
                     {
-                        Logger.Debug("Check result is false");
+                        SLogger.Debug($"{ManagedAssembly.GetName().Name} 's librarian",
+                            "Check result is false");
                         tmp.Destory();
                     }
                 }
                 catch (WrapperAlreadyCreatedOnceException)
                 {
-                    Logger.Debug($"{type.Name}'s wrappers was created once,skip it");
+                    SLogger.Debug($"{ManagedAssembly.GetName().Name} 's librarian", 
+                        $"{type.Name}'s wrappers was created once,skip it");
                 }
                 catch (Exception ex)
                 {
-                    Logger.Warn($"an exception threw on create wappers for {type.Name}", ex);
+                    SLogger.Debug($"{ManagedAssembly.GetName().Name} 's librarian", 
+                        $"an exception threw on create wappers for {type.Name}", ex);
                 }
             }
             return newWrappers;

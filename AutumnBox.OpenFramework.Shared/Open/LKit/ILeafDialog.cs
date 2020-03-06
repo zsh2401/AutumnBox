@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AutumnBox.OpenFramework.Extension.Leaf
+namespace AutumnBox.OpenFramework.Open.LKit
 {
     public interface ILeafDialog
     {

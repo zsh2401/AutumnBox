@@ -13,10 +13,7 @@
 *
 * ==============================================================================
 */
-using AutumnBox.OpenFramework.Wrapper;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using AutumnBox.OpenFramework.Management.Wrapper;
 
 namespace AutumnBox.OpenFramework.Open
 {
@@ -28,7 +25,7 @@ namespace AutumnBox.OpenFramework.Open
         /// <summary>
         /// 获取所有拓展模块包装器
         /// </summary>
-        IExtensionWrapper[] Warppers { get; }
+        IExtensionWrapper[] Wrappers { get; }
         /// <summary>
         /// 获取SDK等级
         /// </summary>

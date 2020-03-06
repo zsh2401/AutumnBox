@@ -9,7 +9,7 @@ namespace AutumnBox.OpenFramework.Extension
     /// <summary>
     /// 运行所需的最低秋之盒API
     /// </summary>
-    public class ExtMinApiAttribute : SingleInfoAttribute
+    public class ExtMinApiAttribute : ExtInfoAttribute
     {
         /// <summary>
         /// 使用标准key

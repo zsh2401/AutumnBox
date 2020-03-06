@@ -10,20 +10,6 @@ namespace AutumnBox.OpenFramework.Management.Wrapper
     /// </summary>
     public sealed class ClassExtensionScanner
     {
-        /// <summary>
-        /// 扫描设置
-        /// </summary>
-        public enum ScanOption
-        {
-            /// <summary>
-            /// 扫描信息
-            /// </summary>
-            Informations = 1,
-            /// <summary>
-            /// 扫描切面
-            /// </summary>
-            BeforeCreatingAspect = 1 << 1
-        }
         private readonly Type type;
         /// <summary>
         /// 创造
@@ -37,23 +23,9 @@ namespace AutumnBox.OpenFramework.Management.Wrapper
         /// 执行扫描操作
         /// </summary>
         /// <param name="options"></param>
-        public void Scan(ScanOption options)
+        public void Scan()
         {
-            if (options.HasFlag(ScanOption.Informations))
-            {
-                ScanInformations();
-            }
-            if (options.HasFlag(ScanOption.BeforeCreatingAspect))
-            {
-                ScanAspects();
-            }
-        }
-        private void ScanAspects()
-        {
-            Type interfaceType = typeof(IBeforeCreatingAspect);
-            BeforeCreatingAspects = (from attr in type.GetCustomAttributes(true)
-                                     where interfaceType.IsAssignableFrom(attr.GetType())
-                                     select (IBeforeCreatingAspect)attr).ToArray();
+            ScanInformations();
         }
         private void ScanInformations()
         {
@@ -72,9 +44,5 @@ namespace AutumnBox.OpenFramework.Management.Wrapper
         /// 被扫描出来的信息
         /// </summary>
         public Dictionary<string, IInformationAttribute> Informations { get; private set; }
-        /// <summary>
-        /// 被扫描出来的切面
-        /// </summary>
-        public IBeforeCreatingAspect[] BeforeCreatingAspects { get; private set; }
     }
 }

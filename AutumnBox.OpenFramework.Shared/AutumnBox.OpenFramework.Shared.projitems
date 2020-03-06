@@ -23,7 +23,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Extension\IClassExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\IExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Implementation\APIFactory.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Implementation\LakeImpl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Implementation\ChinaLake.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Implementation\MethodProxy.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Leaf\Attributes\LAttributeReader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Leaf\Attributes\LDoNotScanAttribute.cs" />
@@ -34,10 +34,11 @@
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Leaf\Fast\LeafUIHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Leaf\Attributes\LFromDataAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\ExtLibrary\AssemblyBasedLibrarian.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Management\Wrapper\ExtensionAttributeReader.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Management\Wrapper\IExtensionAttributeReader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\IADBManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\IClassTextReader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\ILake.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Open\ILogger.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\IOpenFxManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\LakeProvider.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\LKit\ILeafUI.cs" />
@@ -53,11 +54,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Leaf\Attributes\LSignalReceiveAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Leaf\Internal\LSignalDistributor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Attribute\ExtensionAttribute.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Extension\Attribute\ExtensionInformationKeys.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extension\ExtensionInformationKeys.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Attribute\ExtInfoI18NAttribute.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Extension\Attribute\IBeforeCreatingAspect.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Attribute\IInformationAttribute.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Extension\Attribute\SingleInfoAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extension\Attribute\ExtInfoAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Attribute\ExtAuthAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Attribute\ExtDescAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Attribute\ExtDeveloperMode.cs" />
@@ -114,13 +114,13 @@
     <Compile Include="$(MSBuildThisFileDirectory)Management\ExtensionThreading\IExtensionThread.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\ExtensionThreading\IExtensionThreadManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\ExtensionThreading\Signals.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Extension\Leaf\View\DialogClosedEventArgs.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Extension\Leaf\View\ILeafDialog.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Open\LKit\DialogClosedEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Open\LKit\ILeafDialog.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\Wrapper\ClassExtensionInfoReader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\Wrapper\ClassExtensionScanner.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\Wrapper\ClassExtensionWrapper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\Wrapper\IExtensionWrapper.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Management\Wrapper\IExtInfoGetter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Management\Wrapper\IExtensionInfoDictionary.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Extension\Attribute\" />

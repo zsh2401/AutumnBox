@@ -1,4 +1,4 @@
-﻿using AutumnBox.OpenFramework.Wrapper;
+﻿using AutumnBox.OpenFramework.Management.Wrapper;
 using System.Collections.Generic;
 
 namespace AutumnBox.OpenFramework.Management.ExtLibrary

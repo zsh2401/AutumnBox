@@ -4,7 +4,6 @@ using AutumnBox.Logging;
 using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.Open;
 using AutumnBox.OpenFramework.Open.LKit;
-using AutumnBox.OpenFramework.Open.Management;
 using System.Threading;
 
 namespace AutumnBox.OpenFramework.LeafExtension.Fast
@@ -52,8 +51,8 @@ namespace AutumnBox.OpenFramework.LeafExtension.Fast
         private static readonly IClassTextManager text;
         static LeafUIHelper()
         {
-            text = OpenApiFactory.SGet<IClassTextManager>(typeof(LeafUIHelper));
-            SLogger.Debug(nameof(LeafUIHelper),$"{typeof(LeafUIHelper)}'s IClassTextManager created");
+            text = LakeProvider.Lake.Get<IClassTextReader>().Read((typeof(LeafUIHelper)));
+            SLogger.Debug(nameof(LeafUIHelper), $"{typeof(LeafUIHelper)}'s IClassTextManager created");
         }
         /// <summary>
         /// 检查是否安装APP并询问用户,如果处于不恰当情况,将停止LeafExtension执行流程

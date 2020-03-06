@@ -3,7 +3,7 @@
     /// <summary>
     /// 隐藏的拓展
     /// </summary>
-    public class ExtHideAttribute : SingleInfoAttribute
+    public class ExtHideAttribute : ExtInfoAttribute
     {
         /// <summary>
         /// KEY

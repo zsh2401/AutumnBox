@@ -49,7 +49,7 @@ namespace AutumnBox.OpenFramework.Management.Wrapper
         /// <summary>
         /// 拓展模块的信息获取器
         /// </summary>
-        public IExtInfoGetter Info { get; protected set; }
+        public IExtensionInfoDictionary Info { get; protected set; }
 
         /// <summary>
         /// 创建检查,如果有问题就抛出异常

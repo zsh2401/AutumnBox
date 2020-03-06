@@ -1,5 +1,4 @@
-﻿using AutumnBox.OpenFramework.Open;
-using AutumnBox.OpenFramework.Wrapper;
+﻿using AutumnBox.OpenFramework.Management.Wrapper;
 using System;
 using System.Collections.Generic;
 
@@ -19,7 +18,7 @@ namespace AutumnBox.OpenFramework.Management.ExtensionThreading
 
         public IExtensionThread Allocate(IExtensionWrapper wrapper, Type typeOfExtension)
         {
-            var thread = new ExtensionThread(this, typeOfExtension, wrapper)
+            var thread = new ExtensionThread(this, wrapper.ExtensionType, wrapper)
             {
                 Id = AlllocatePID()
             };

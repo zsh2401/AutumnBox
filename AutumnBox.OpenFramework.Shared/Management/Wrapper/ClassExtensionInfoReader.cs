@@ -17,7 +17,7 @@ namespace AutumnBox.OpenFramework.Management.Wrapper
     /// <summary>
     /// ClassExtension包装器的信息获取器
     /// </summary>
-    public class ClassExtensionInfoReader : IExtInfoGetter
+    public class ClassExtensionInfoReader : IExtensionInfoDictionary
     {
 
         /// <summary>
@@ -168,7 +168,7 @@ namespace AutumnBox.OpenFramework.Management.Wrapper
         public virtual void Reload()
         {
             ClassExtensionScanner scanner = this.Scanner;
-            scanner.Scan(ClassExtensionScanner.ScanOption.Informations);
+            scanner.Scan();
             Informations = scanner.Informations;
             RequiredDeviceStates = (DeviceState)this[ExtensionInformationKeys.REQ_DEV_STATE];
             Version = this[ExtensionInformationKeys.VERSION] as Version;

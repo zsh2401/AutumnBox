@@ -4,7 +4,7 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.OpenFramework.Management.ExtensionThreading;
-using AutumnBox.OpenFramework.Wrapper;
+using AutumnBox.OpenFramework.Management.Wrapper;
 using System;
 
 namespace AutumnBox.OpenFramework.Extension

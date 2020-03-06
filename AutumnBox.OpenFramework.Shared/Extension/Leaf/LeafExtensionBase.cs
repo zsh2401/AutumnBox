@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using AutumnBox.OpenFramework.LeafExtension.Attributes;
+using AutumnBox.OpenFramework.Extension.Leaf.Attributes;
+using AutumnBox.OpenFramework.Extension.Leaf.Internal;
 using AutumnBox.OpenFramework.LeafExtension.Internal;
-using AutumnBox.OpenFramework.Wrapper;
 
 namespace AutumnBox.OpenFramework.Extension.Leaf
 {
@@ -17,13 +17,10 @@ namespace AutumnBox.OpenFramework.Extension.Leaf
         /// <summary>
         /// 构造函数
         /// </summary>
-        public LeafExtensionBase()
+        internal LeafExtensionBase()
         {
             //初始化API注入器
             ApiAllocator apiAllocator = new ApiAllocator(this);
-
-            //执行切面
-            ExecuteBca();
 
             //注入属性
             injector = new LeafPropertyInjector(this, apiAllocator);
@@ -35,26 +32,6 @@ namespace AutumnBox.OpenFramework.Extension.Leaf
             //注册信号接收系统
             signalDistributor = new LSignalDistributor(this);
             signalDistributor.ScanReceiver();
-        }
-
-        /// <summary>
-        /// 执行切面函数
-        /// </summary>
-        private void ExecuteBca()
-        {
-            var scanner = new ClassExtensionScanner(GetType());
-            scanner.Scan(ClassExtensionScanner.ScanOption.BeforeCreatingAspect);
-            var bcAspects = scanner.BeforeCreatingAspects;
-            bool canContinue = true;
-            BeforeCreatingAspectArgs bcaArgs = new BeforeCreatingAspectArgs(Context, GetType());
-            foreach (var aspect in bcAspects)
-            {
-                aspect.BeforeCreating(bcaArgs, ref canContinue);
-                if (!canContinue)
-                {
-                    throw new ClassExtensionBase.AspectPreventedException();
-                }
-            }
         }
 
         /// <summary>

@@ -1,6 +1,4 @@
-﻿using AutumnBox.OpenFramework.Wrapper;
-using System;
-using System.Windows;
+﻿using System;
 
 namespace AutumnBox.OpenFramework.Open
 {
@@ -9,6 +7,13 @@ namespace AutumnBox.OpenFramework.Open
     /// </summary>
     public interface IAppManager
     {
+        /// <summary>
+        /// 显示异常窗口
+        /// </summary>
+        /// <param name="title"></param>
+        /// <param name="sketch"></param>
+        /// <param name="e"></param>
+        void ShowException(string title, string sketch, Exception e);
         /// <summary>
         /// 刷新被展示的拓展模块列表
         /// </summary>

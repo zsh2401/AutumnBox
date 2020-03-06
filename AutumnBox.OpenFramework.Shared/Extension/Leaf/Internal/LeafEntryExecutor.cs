@@ -1,6 +1,7 @@
 ﻿using AutumnBox.OpenFramework.Extension.Leaf;
+using AutumnBox.OpenFramework.Extension.Leaf.Attributes;
 using AutumnBox.OpenFramework.Extension.Leaf.Internal;
-using AutumnBox.OpenFramework.LeafExtension.Attributes;
+using AutumnBox.OpenFramework.Open;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -108,8 +109,7 @@ namespace AutumnBox.OpenFramework.LeafExtension.Internal
             //执行
             object result = null;
             result = entry.Invoke(ext, para);
-            Sound.Play(Sound.Id.Ok);
-
+            LakeProvider.Lake.Get<ISoundService>().OK();
             //处理可能的返回值
             if (result is int exitCode)
             {

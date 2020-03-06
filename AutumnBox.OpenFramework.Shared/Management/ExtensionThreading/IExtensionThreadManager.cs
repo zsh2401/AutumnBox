@@ -1,7 +1,6 @@
-﻿using AutumnBox.OpenFramework.Wrapper;
+﻿using AutumnBox.OpenFramework.Management.Wrapper;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace AutumnBox.OpenFramework.Management.ExtensionThreading
 {
@@ -17,12 +16,12 @@ namespace AutumnBox.OpenFramework.Management.ExtensionThreading
         /// <param name="wrapper"></param>
         /// <param name="typeOfExtension"></param>
         /// <returns></returns>
-        IExtensionThread Allocate(IExtensionWrapper wrapper,Type typeOfExtension);
+        IExtensionThread Allocate(IExtensionWrapper wrapper, Type typeOfExtension);
         /// <summary>
         /// 获取运行中的
         /// </summary>
         /// <returns></returns>
-        IEnumerable<IExtensionThread>  GetRunning();
+        IEnumerable<IExtensionThread> GetRunning();
         /// <summary>
         /// 根据ID查找正在运行的线程
         /// </summary>

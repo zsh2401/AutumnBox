@@ -9,9 +9,13 @@ namespace AutumnBox.OpenFramework.Management.Wrapper
     public interface IExtensionWrapper : IEquatable<IExtensionWrapper>
     {
         /// <summary>
+        /// 获取被包装的拓展模块类型
+        /// </summary>
+        Type ExtensionType { get; }
+        /// <summary>
         /// 拓展模块信息获取器
         /// </summary>
-        IExtInfoGetter Info { get; }
+        IExtensionInfoDictionary Info { get; }
         /// <summary>
         /// 创建后的预先检测
         /// </summary>

@@ -1,8 +1,7 @@
 ﻿using AutumnBox.OpenFramework.Extension.Leaf;
-using AutumnBox.OpenFramework.Fast;
 using AutumnBox.OpenFramework.Management;
 using AutumnBox.OpenFramework.Management.ExtLibrary;
-using AutumnBox.OpenFramework.Wrapper;
+using AutumnBox.OpenFramework.Management.Wrapper;
 using System.Linq;
 
 namespace AutumnBox.OpenFramework.LeafExtension.Fast
@@ -30,7 +29,7 @@ namespace AutumnBox.OpenFramework.LeafExtension.Fast
         /// </summary>
         /// <param name="leaf"></param>
         /// <returns></returns>
-        public static IExtInfoGetter GetInformations(this LeafExtensionBase leaf)
+        public static IExtensionInfoDictionary GetInformations(this LeafExtensionBase leaf)
         {
             var filted = from wrapper in OpenFxLoader.LibsManager.Wrappers()
                          where wrapper.Info.ExtType == leaf.GetType()

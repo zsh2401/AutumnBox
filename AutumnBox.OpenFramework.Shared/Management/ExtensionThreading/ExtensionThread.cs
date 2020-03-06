@@ -1,6 +1,7 @@
 ﻿using AutumnBox.Logging;
 using AutumnBox.OpenFramework.Extension;
-using AutumnBox.OpenFramework.Wrapper;
+using AutumnBox.OpenFramework.Management.Wrapper;
+using AutumnBox.OpenFramework.Open;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
@@ -90,28 +91,8 @@ namespace AutumnBox.OpenFramework.Management.ExtensionThreading
             {
                 isRunning = true;
                 instance = (IExtension)Activator.CreateInstance(extensionType);
-                SendSignal(Signals.ON_CREATED, new ExtensionArgs(this, Wrapper));
+                SendSignal(Signals.ON_CREATED);
                 ExitCode = instance.Main(Data);
-            }
-            catch (TargetInvocationException e)
-            {
-                if (e.InnerException is ClassExtensionBase.AspectPreventedException)
-                {
-                    ExitCode = (int)ExtensionExitCodes.CanceledByUser;
-                }
-                else
-                {
-                    ExitCode = (int)ExtensionExitCodes.Exception;
-                    SendSignal(Signals.ON_EXCEPTION, e.InnerException);
-                    Logger.Warn($"{extensionType.Name}-extension error", e.InnerException);
-                    string fmt = App.GetPublicResouce<string>("OpenFxExceptionMsgTitleFmt");
-                    fmt = string.Format(fmt, Wrapper.Info.Name);
-                    string sketch = App.GetPublicResouce<string>("OpenFxExceptionSketch");
-                    Ux.RunOnUIThread(() =>
-                    {
-                        BaseApi.ShowException(fmt, sketch, e.InnerException.ToString());
-                    });
-                }
             }
             catch (ThreadAbortException)
             {
@@ -119,23 +100,20 @@ namespace AutumnBox.OpenFramework.Management.ExtensionThreading
             }
             catch (Exception e)
             {
+                var appManager = LakeProvider.Lake.Get<IAppManager>();
                 ExitCode = (int)ExtensionExitCodes.Exception;
-                SendSignal(Signals.ON_EXCEPTION, e);
-                Logger.Warn($"{extensionType.Name}-extension error", e);
-                string fmt = App.GetPublicResouce<string>("OpenFxExceptionMsgTitleFmt");
+                SendSignal(Signals.ON_EXCEPTION, e.InnerException);
+                SLogger<ExtensionThread>.Warn($"{extensionType.Name}-extension error", e.InnerException);
+                string fmt = appManager.GetPublicResouce<string>("OpenFxExceptionMsgTitleFmt");
                 fmt = string.Format(fmt, Wrapper.Info.Name);
-                string sketch = App.GetPublicResouce<string>("OpenFxExceptionSketch");
-                Ux.RunOnUIThread(() =>
-                {
-                    BaseApi.ShowException(fmt, sketch, e.ToString());
-                });
+                string sketch = appManager.GetPublicResouce<string>("OpenFxExceptionSketch");
+                appManager.ShowException(fmt, sketch, e.GetType() == typeof(TargetInvocationException) ? e.InnerException : e);
             }
             finally
             {
                 SendSignal(Signals.COMMAND_DESTORY);
                 isRunning = false;
                 Finished?.Invoke(this, new ThreadFinishedEventArgs(this));
-
             }
         }
 

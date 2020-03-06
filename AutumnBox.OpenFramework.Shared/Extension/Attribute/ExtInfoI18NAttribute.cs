@@ -4,6 +4,7 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.OpenFramework.Management;
+using AutumnBox.OpenFramework.Open;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,7 @@ namespace AutumnBox.OpenFramework.Extension
     {
         private const string DEFAULT_KEY = "ALL_REGIONS";
         private const string KV_PATTERN = @"^(?<key>[a-z|A-Z|-]+):(?<value>[\s\S]+)$";
-        private static readonly Regex regex = new Regex(KV_PATTERN,RegexOptions.Compiled | RegexOptions.Multiline);
+        private static readonly Regex regex = new Regex(KV_PATTERN, RegexOptions.Compiled | RegexOptions.Multiline);
         private Dictionary<string, string> pairsOfRegionAndValue;
         /// <summary>
         /// 构建
@@ -91,9 +92,10 @@ namespace AutumnBox.OpenFramework.Extension
         private string GetByCurrentLanCode()
         {
             string crtLanCode = null;
-            Context.BaseApi.RunOnUIThread(() =>
+            var appManager = LakeProvider.Lake.Get<IAppManager>();
+            appManager.RunOnUIThread(() =>
             {
-                crtLanCode = Context.BaseApi.GetCurrentLanguageCode().ToLower();
+                crtLanCode = appManager.CurrentLanguageCode.ToLower();
             });
 
             if (pairsOfRegionAndValue.TryGetValue(crtLanCode, out string value))

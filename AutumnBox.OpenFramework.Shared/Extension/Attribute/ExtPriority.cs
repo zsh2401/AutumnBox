@@ -9,7 +9,7 @@ namespace AutumnBox.OpenFramework.Extension
     /// <summary>
     /// 拓展模块优先级
     /// </summary>
-    public class ExtPriority : SingleInfoAttribute
+    public class ExtPriority : ExtInfoAttribute
     {
 #pragma warning disable CS1591 // 缺少对公共可见类型或成员的 XML 注释
         public const int LOW = -1;

@@ -3,14 +3,7 @@
 ** date:  2018/8/23 19:03:31 (UTC +8:00)
 ** desc： ...
 *************************************************/
-using AutumnBox.Basic.Device;
-using AutumnBox.OpenFramework.Wrapper;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 
 namespace AutumnBox.OpenFramework.Open
 {

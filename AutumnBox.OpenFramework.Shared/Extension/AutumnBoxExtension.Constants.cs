@@ -4,7 +4,7 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.Basic.Device;
-using AutumnBox.OpenFramework.Running;
+using AutumnBox.OpenFramework.Management.ExtensionThreading;
 
 namespace AutumnBox.OpenFramework.Extension
 {

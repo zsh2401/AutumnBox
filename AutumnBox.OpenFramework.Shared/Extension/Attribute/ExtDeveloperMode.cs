@@ -3,7 +3,7 @@
     /// <summary>
     /// 拓展模块是否是开发人员模式
     /// </summary>
-    public class ExtDeveloperMode : SingleInfoAttribute
+    public class ExtDeveloperMode : ExtInfoAttribute
     {
         /// <summary>
         /// Key

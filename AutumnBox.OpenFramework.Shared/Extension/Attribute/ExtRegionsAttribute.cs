@@ -9,7 +9,7 @@ namespace AutumnBox.OpenFramework.Extension
     /// <summary>
     /// 模块可用的区域
     /// </summary>
-    public class ExtRegionsAttribute : SingleInfoAttribute
+    public class ExtRegionsAttribute : ExtInfoAttribute
     {
         /// <summary>
         /// KEY

@@ -9,7 +9,7 @@ namespace AutumnBox.OpenFramework.Extension
     /// <summary>
     /// 拓展模块的目标API
     /// </summary>
-    public class ExtTargetApiAttribute : SingleInfoAttribute
+    public class ExtTargetApiAttribute : ExtInfoAttribute
     {
         /// <summary>
         /// Key

@@ -1,4 +1,4 @@
-﻿namespace AutumnBox.OpenFramework.Extension.Leaf
+﻿namespace AutumnBox.OpenFramework.Open.LKit
 {
     public class DialogClosedEventArgs
     {

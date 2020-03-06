@@ -10,7 +10,7 @@ namespace AutumnBox.OpenFramework.Extension
     /// <summary>
     /// 拓展模块版本号
     /// </summary>
-    public class ExtVersionAttribute : SingleInfoAttribute
+    public class ExtVersionAttribute : ExtInfoAttribute
     {
         /// <summary>
         /// Key

@@ -7,7 +7,7 @@ namespace AutumnBox.OpenFramework.Extension
     /// <summary>
     /// 包含单信息的Attribute
     /// </summary>
-    public abstract class SingleInfoAttribute : ExtensionAttribute, IInformationAttribute
+    public abstract class ExtInfoAttribute : ExtensionAttribute, IInformationAttribute
     {
         /// <summary>
         /// Key
@@ -21,7 +21,7 @@ namespace AutumnBox.OpenFramework.Extension
         /// 根据值构造
         /// </summary>
         /// <param name="value"></param>
-        public SingleInfoAttribute(object value)
+        public ExtInfoAttribute(object value)
         {
             this.Value = value;
         }

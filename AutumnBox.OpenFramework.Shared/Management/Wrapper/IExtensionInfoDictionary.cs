@@ -7,7 +7,7 @@ namespace AutumnBox.OpenFramework.Management.Wrapper
     /// <summary>
     /// 拓展模块特性获取器
     /// </summary>
-    public interface IExtInfoGetter
+    public interface IExtensionInfoDictionary
     {
         /// <summary>
         /// 索引器
@@ -15,18 +15,7 @@ namespace AutumnBox.OpenFramework.Management.Wrapper
         /// <param name="key"></param>
         /// <returns></returns>
         object this[string key] { get; }
-        /// <summary>
-        /// 尝试获取
-        /// </summary>
-        /// <returns></returns>
-        [Obsolete]
-        bool TryGet(string key, out object result);
-        /// <summary>
-        /// 泛型结果的尝试获取
-        /// </summary>
-        /// <returns></returns>
-        [Obsolete]
-        bool TryGet<TResult>(string key, out TResult result);
+
         /// <summary>
         ///  尝试获取值类型
         /// </summary>
@@ -43,6 +32,7 @@ namespace AutumnBox.OpenFramework.Management.Wrapper
         /// <param name="result"></param>
         /// <returns></returns>
         bool TryGetClassType<TResult>(string key, out TResult result) where TResult : class;
+
         /// <summary>
         /// 可用区域
         /// </summary>
