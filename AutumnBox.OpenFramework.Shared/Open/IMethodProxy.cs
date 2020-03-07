@@ -21,9 +21,10 @@ namespace AutumnBox.OpenFramework.Open
 {
     public interface IMethodProxy
     {
-        public object CallMethod(object _this, string name);
-        public Func<TClass> GetClassBuilder<TClass>();
-        public Func<object> GetClassBuilder(Type classType);
-        public Func<object> GetMethodCaller(object owner, string methodName);
+        object CallMethod(object _this, string name, params ILake[] lakes);
+        TClass CreateClass<TClass>();
+        Func<TClass> GetClassBuilder<TClass>();
+        Func<object> GetClassBuilder(Type classType);
+        Func<object> GetMethodCaller(object owner, string methodName);
     }
 }

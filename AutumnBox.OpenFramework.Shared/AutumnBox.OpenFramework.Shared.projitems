@@ -36,6 +36,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Management\LakeLoader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\Wrapper\ExtensionAttributeReader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\Wrapper\IExtensionAttributeReader.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Open\IProxyManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\TextKit\ClassTextAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\TextKit\IClassTextReader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\ILake.cs" />
