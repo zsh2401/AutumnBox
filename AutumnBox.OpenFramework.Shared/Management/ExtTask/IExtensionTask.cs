@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace AutumnBox.OpenFramework.Management.ExtensionThreading
+namespace AutumnBox.OpenFramework.Management.ExtTask
 {
     /// <summary>
     /// 拓展模块线程
     /// </summary>
-    public interface IExtensionThread
+    public interface IExtensionTask
     {
         /// <summary>
         /// 发送信号

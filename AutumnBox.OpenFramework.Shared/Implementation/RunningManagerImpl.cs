@@ -7,7 +7,7 @@ using AutumnBox.OpenFramework.Open;
 
 namespace AutumnBox.OpenFramework.Implementation
 {
-    internal  class RunningManagerImpl : IRunningManager
+    internal  class RunningManagerImpl : IThreadManager
     {
         public IExtensionThread GetNewThread(string extensionClassName)
         {

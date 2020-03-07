@@ -1,4 +1,4 @@
-﻿namespace AutumnBox.OpenFramework.Management.ExtensionThreading
+﻿namespace AutumnBox.OpenFramework.Management.ExtTask
 {
     /// <summary>
     /// 拓展模块退出码

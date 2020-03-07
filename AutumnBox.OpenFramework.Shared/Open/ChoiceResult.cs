@@ -10,7 +10,6 @@ namespace AutumnBox.OpenFramework.Open
     /// <summary>
     /// App.ShowChoiceBox()的返回值
     /// </summary>
-    [Obsolete]
     public enum ChoiceResult
     {
         /// <summary>

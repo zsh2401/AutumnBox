@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace AutumnBox.OpenFramework.Management.ExtensionThreading
+namespace AutumnBox.OpenFramework.Management.ExtTask
 {
 #if SDK
     internal 
@@ -10,13 +10,13 @@ namespace AutumnBox.OpenFramework.Management.ExtensionThreading
     public
 #endif
 
-    class ExtensionThreadManager : IExtensionThreadManager
+    class ExtensionThreadManager : IExtensionTaskManager
     {
         public static ExtensionThreadManager Instance { get; }
-        private readonly List<IExtensionThread> readys = new List<IExtensionThread>();
-        private readonly List<IExtensionThread> runnings = new List<IExtensionThread>();
+        private readonly List<IExtensionTask> readys = new List<IExtensionTask>();
+        private readonly List<IExtensionTask> runnings = new List<IExtensionTask>();
 
-        public IExtensionThread Allocate(IExtensionWrapper wrapper, Type typeOfExtension)
+        public IExtensionTask Allocate(IExtensionWrapper wrapper, Type typeOfExtension)
         {
             var thread = new ExtensionThread(this, wrapper.ExtensionType, wrapper)
             {
@@ -48,11 +48,11 @@ namespace AutumnBox.OpenFramework.Management.ExtensionThreading
             do
             {
                 nextPid = ran.Next();
-            } while (FindThreadById(nextPid) != null);
+            } while (FindTaskById(nextPid) != null);
             return nextPid;
         }
 
-        public IExtensionThread FindThreadById(int id)
+        public IExtensionTask FindTaskById(int id)
         {
             return runnings.Find((thr) =>
             {
@@ -60,7 +60,7 @@ namespace AutumnBox.OpenFramework.Management.ExtensionThreading
             });
         }
 
-        public IEnumerable<IExtensionThread> GetRunning()
+        public IEnumerable<IExtensionTask> GetRunning()
         {
             return runnings;
         }

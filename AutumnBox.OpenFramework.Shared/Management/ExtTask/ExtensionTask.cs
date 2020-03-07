@@ -7,9 +7,9 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Threading;
 
-namespace AutumnBox.OpenFramework.Management.ExtensionThreading
+namespace AutumnBox.OpenFramework.Management.ExtTask
 {
-    internal sealed class ExtensionThread : IExtensionThread, IDisposable
+    internal sealed class ExtensionThread : IExtensionTask, IDisposable
     {
         private readonly Type extensionType;
 

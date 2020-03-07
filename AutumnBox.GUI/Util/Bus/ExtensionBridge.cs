@@ -15,7 +15,7 @@ namespace AutumnBox.GUI.Util.Bus
         {
             try
             {
-                LakeProvider.Lake.Get<IRunningManager>().GetNewThread(className)?.Start();
+                LakeProvider.Lake.Get<IThreadManager>().GetNewThread(className)?.Start();
             }
             catch (Exception e)
             {
