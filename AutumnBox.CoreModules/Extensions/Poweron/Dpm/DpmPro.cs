@@ -5,7 +5,6 @@
 *************************************************/
 using AutumnBox.Basic.Calling;
 using AutumnBox.Basic.Device;
-using AutumnBox.OpenFramework.Content;
 using AutumnBox.OpenFramework.Open;
 using System;
 using System.IO;
@@ -27,14 +26,14 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.Dpm
 
         private readonly CommandExecutor executor;
         private readonly IEmbeddedFileManager emb;
-        private readonly ITemporaryFloder tmp;
+        private readonly IStorageManager storageManager;
         private readonly IDevice device;
 
-        public DpmPro(CommandExecutor executor, IEmbeddedFileManager emb, ITemporaryFloder tmp, IDevice device)
+        public DpmPro(CommandExecutor executor, IEmbeddedFileManager emb, IStorageManager storageManager, IDevice device)
         {
             this.executor = executor ?? throw new ArgumentNullException(nameof(executor));
             this.emb = emb ?? throw new ArgumentNullException(nameof(emb));
-            this.tmp = tmp ?? throw new ArgumentNullException(nameof(tmp));
+            this.storageManager = storageManager ?? throw new ArgumentNullException(nameof(storageManager));
             this.device = device ?? throw new ArgumentNullException(nameof(device));
         }
         public void Extract()
@@ -49,7 +48,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.Dpm
         }
         public int PushToDevice()
         {
-            DirectoryInfo dirInfo = tmp.DirInfo;
+            DirectoryInfo dirInfo = storageManager.CacheDirectory;
             string path = Path.Combine(dirInfo.FullName, PATH_OF_TMP_APK);
             string command = $"push \"{path}\" {PATH_OF_ATMP_APK}";
             return executor.Adb(device, command).ExitCode;

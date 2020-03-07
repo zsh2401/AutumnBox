@@ -23,6 +23,13 @@ namespace AutumnBox.OpenFramework.Open
         /// <returns></returns>
         FileStream OpenFile(string fileId, bool createIfNotExist = true);
         /// <summary>
+        /// 将一个Stream写入文件
+        /// </summary>
+        /// <param name="srcSource">源Stream</param>
+        /// <param name="fileId">文件ID</param>
+        /// <returns>写入完成后,返回文件的信息</returns>
+        FileInfo WriteToFile(Stream srcSource, string fileId = null);
+        /// <summary>
         /// 删除一个文件
         /// </summary>
         /// <param name="fileId"></param>

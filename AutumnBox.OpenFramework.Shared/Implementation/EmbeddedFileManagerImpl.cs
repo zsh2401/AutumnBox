@@ -5,6 +5,7 @@
 *************************************************/
 using AutumnBox.OpenFramework.Open;
 using System.IO;
+using System.Reflection;
 
 namespace AutumnBox.OpenFramework.Implementation
 {
@@ -12,11 +13,15 @@ namespace AutumnBox.OpenFramework.Implementation
     {
         private class EmbeddedFileImpl : IEmbeddedFile
         {
-            public readonly object requester;
+            private readonly Assembly assembly;
             public readonly string path;
-            public EmbeddedFileImpl(object requester, string path)
+            public EmbeddedFileImpl(Assembly assembly, string path)
             {
-                this.requester = requester;
+                if (string.IsNullOrEmpty(path))
+                {
+                    throw new System.ArgumentException("message", nameof(path));
+                }
+                this.assembly = assembly ?? throw new System.ArgumentNullException(nameof(assembly));
                 this.path = path;
             }
             public void CopyTo(Stream targetStream)
@@ -35,8 +40,8 @@ namespace AutumnBox.OpenFramework.Implementation
             }
             public Stream GetStream()
             {
-                string fullPath = requester.GetType().Assembly.GetName().Name + "." + path;
-                var stream = requester.GetType().Assembly
+                string fullPath = assembly.GetName().Name + "." + path;
+                var stream = assembly
                     .GetManifestResourceStream(fullPath);
                 return stream;
             }
@@ -45,9 +50,9 @@ namespace AutumnBox.OpenFramework.Implementation
                 CopyTo(fs);
             }
         }
-        public IEmbeddedFile Get(object context, string innerResPath)
+        public IEmbeddedFile Get(Assembly assembly, string innerResPath)
         {
-            return new EmbeddedFileImpl(context, innerResPath);
+            return new EmbeddedFileImpl(assembly, innerResPath);
         }
     }
 }

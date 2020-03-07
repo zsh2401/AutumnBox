@@ -17,7 +17,7 @@ namespace AutumnBox.OpenFramework.Extension.Leaf
         /// <summary>
         /// 构造函数
         /// </summary>
-        internal LeafExtensionBase()
+        public LeafExtensionBase()
         {
             //初始化API注入器
             ApiAllocator apiAllocator = new ApiAllocator(this);

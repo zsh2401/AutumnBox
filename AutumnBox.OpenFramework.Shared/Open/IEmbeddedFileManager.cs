@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Reflection;
 
 namespace AutumnBox.OpenFramework.Open
 {
@@ -38,9 +39,9 @@ namespace AutumnBox.OpenFramework.Open
         /// <summary>
         /// 获取内嵌资源的抽象对象
         /// </summary>
-        /// <param name="context">一个与内嵌资源位于同一程序集的对象</param>
+        /// <param name="assembly">内嵌资源所在程序集</param>
         /// <param name="innerResPath"></param>
         /// <returns></returns>
-        IEmbeddedFile Get(object context, string innerResPath);
+        IEmbeddedFile Get(Assembly assembly, string innerResPath);
     }
 }

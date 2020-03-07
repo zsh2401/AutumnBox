@@ -9,12 +9,12 @@ using AutumnBox.Basic.Device;
 using AutumnBox.Basic.Device.Management.AppFx;
 using AutumnBox.Logging;
 using AutumnBox.OpenFramework.Extension;
-using AutumnBox.OpenFramework.LeafExtension;
-using AutumnBox.OpenFramework.LeafExtension.Attributes;
+using AutumnBox.OpenFramework.Extension.Leaf;
+using AutumnBox.OpenFramework.Extension.Leaf.Attributes;
 using AutumnBox.OpenFramework.LeafExtension.Fast;
-using AutumnBox.OpenFramework.LeafExtension.Kit;
+using AutumnBox.OpenFramework.Management.ExtensionThreading;
 using AutumnBox.OpenFramework.Open;
-using AutumnBox.OpenFramework.Running;
+using AutumnBox.OpenFramework.Open.LKit;
 using System;
 
 namespace AutumnBox.CoreModules.Extensions.Poweron.Dpm
@@ -100,8 +100,9 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.Dpm
         /// 入口函数
         /// </summary>
         [LMain]
-        public void EntryPoint(ITemporaryFloder tmp,IEmbeddedFileManager emb)
+        public void EntryPoint(IStorageManager storageManager, IEmbeddedFileManager emb)
         {
+            storageManager.Init("dos");
             using (UI)
             {
                 UI.Show();    //显示ui
@@ -135,7 +136,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.Dpm
                     executor.To(e => UI.WriteOutput(e.Text));
 
                     //构造一个dpmpro的控制器
-                    var dpmpro = new DpmPro(executor,emb,tmp, Device);
+                    var dpmpro = new DpmPro(executor, emb, storageManager, Device);
 
                     //将dpmpro提取到临时目录
                     SetProgress("Extract", 0);
