@@ -37,6 +37,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Management\Wrapper\ExtensionAttributeReader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\Wrapper\IExtensionAttributeReader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\IProxyManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Open\ProxyKit\IProxy.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Open\ProxyKit\IProxyCreator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Open\ProxyKit\RequestingObjectEvent.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\TextKit\ClassTextAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\TextKit\IClassTextReader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\ILake.cs" />
