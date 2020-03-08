@@ -5,13 +5,13 @@ namespace AutumnBox.OpenFramework.Management.ExtTask
     /// <summary>
     /// 线程结束事件参数
     /// </summary>
-    public class ThreadFinishedEventArgs : EventArgs
+    public class TaskFinishedEventArgs : EventArgs
     {
         /// <summary>
         /// 构造
         /// </summary>
         /// <param name="task"></param>
-        public ThreadFinishedEventArgs(IExtensionTask task)
+        public TaskFinishedEventArgs(IExtensionTask task)
         {
             Task = task ?? throw new ArgumentNullException(nameof(task));
         }
@@ -23,5 +23,5 @@ namespace AutumnBox.OpenFramework.Management.ExtTask
     /// <summary>
     /// 线程开始执行的参数
     /// </summary>
-    public class ThreadStartedEventArgs : EventArgs { }
+    public class TaskStartedEventArgs : EventArgs { }
 }

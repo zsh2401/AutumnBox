@@ -10,23 +10,17 @@ namespace AutumnBox.OpenFramework.Management.ExtTask
     public interface IExtensionTask
     {
         /// <summary>
-        /// 发送信号
-        /// </summary>
-        /// <param name="signal"></param>
-        /// <param name="value"></param>
-        void SendSignal(string signal, object value = null);
-        /// <summary>
-        /// 返回码
-        /// </summary>
-        int ExitCode { get; }
-        /// <summary>
         /// ID
         /// </summary>
         int Id { get; }
         /// <summary>
         /// 启动数据
         /// </summary>
-        Dictionary<string, object> Data { get; set; }
+        Dictionary<string, object> Args { get; set; }
+        /// <summary>
+        /// 结果
+        /// </summary>
+        object Result { get; }
         /// <summary>
         /// 开始
         /// </summary>
@@ -51,10 +45,10 @@ namespace AutumnBox.OpenFramework.Management.ExtTask
         /// <summary>
         /// 执行完毕
         /// </summary>
-        event EventHandler<ThreadFinishedEventArgs> Finished;
+        event EventHandler<TaskFinishedEventArgs> Finished;
         /// <summary>
         /// 线程开始执行了
         /// </summary>
-        event EventHandler<ThreadStartedEventArgs> Started;
+        event EventHandler<TaskStartedEventArgs> Started;
     }
 }

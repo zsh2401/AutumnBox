@@ -28,12 +28,5 @@ namespace AutumnBox.OpenFramework.Open
         /// 接口湖
         /// </summary>
         public static ILake Lake { get; internal set; }
-        static LakeProvider()
-        {
-            if (Lake == null)
-            {
-                Lake = null;
-            }
-        }
     }
 }

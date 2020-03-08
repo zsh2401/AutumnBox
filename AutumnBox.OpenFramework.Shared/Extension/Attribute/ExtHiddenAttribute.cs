@@ -3,20 +3,20 @@
     /// <summary>
     /// 隐藏的拓展
     /// </summary>
-    public class ExtHideAttribute : ExtInfoAttribute
+    public class ExtHiddenAttribute : ExtInfoAttribute
     {
         /// <summary>
         /// KEY
         /// </summary>
-        public override string Key => ExtensionInformationKeys.IS_HIDE;
+        public override string Key => ExtensionInformationKeys.IS_HIDDEN;
         /// <summary>
         /// 隐藏的拓展标记
         /// </summary>
-        public ExtHideAttribute() : base(true) { }
+        public ExtHiddenAttribute() : base(true) { }
         /// <summary>
         /// 隐藏的拓展标记
         /// </summary>
-        public ExtHideAttribute(bool value) : base(value)
+        public ExtHiddenAttribute(bool value) : base(value)
         {
         }
     }

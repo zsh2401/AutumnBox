@@ -1,9 +1,9 @@
-﻿namespace AutumnBox.OpenFramework.Management.ExtTask
+﻿namespace AutumnBox.OpenFramework.Extension
 {
     /// <summary>
     /// 信号
     /// </summary>
-    public static class Signals
+    public static class ExtensionSignals
     {
         /// <summary>
         /// 当模块进程被请求杀死时发生

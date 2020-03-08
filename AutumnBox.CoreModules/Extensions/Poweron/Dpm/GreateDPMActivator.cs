@@ -18,7 +18,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.Dpm
     internal class GreateDPMActivator : LeafExtensionBase
     {
         [LMain]
-        public void EntryPoint(ILeafUI ui,IThreadManager rm)
+        public void EntryPoint(ILeafUI ui,ITaskManager rm)
         {
             using (ui)
             {

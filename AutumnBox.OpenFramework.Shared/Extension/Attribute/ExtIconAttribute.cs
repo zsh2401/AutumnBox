@@ -19,7 +19,7 @@ namespace AutumnBox.OpenFramework.Extension
         /// 构造
         /// </summary>
         /// <param name="iconPath"></param>
-        public ExtIconAttribute(string iconPath):base(iconPath)
+        public ExtIconAttribute(string iconPath) : base(iconPath)
         {
 
         }

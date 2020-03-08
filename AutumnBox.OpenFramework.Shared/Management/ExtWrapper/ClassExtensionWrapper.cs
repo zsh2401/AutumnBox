@@ -5,8 +5,7 @@
 *************************************************/
 using AutumnBox.Logging;
 using AutumnBox.OpenFramework.Exceptions;
-using AutumnBox.OpenFramework.Extension;
-using AutumnBox.OpenFramework.Management.ExtensionThreading;
+using AutumnBox.OpenFramework.Management.ExtTask;
 using System;
 using System.Collections.Generic;
 
@@ -126,7 +125,7 @@ namespace AutumnBox.OpenFramework.Management.Wrapper
         /// 获取拓展进程
         /// </summary>
         /// <returns></returns>
-        public virtual IExtensionThread GetThread()
+        public virtual IExtensionTask NewTask()
         {
             var mgr = GetThreadManager();
             return mgr.Allocate(this, extType);

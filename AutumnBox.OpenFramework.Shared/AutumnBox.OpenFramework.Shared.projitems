@@ -19,12 +19,11 @@
     <Compile Include="$(MSBuildThisFileDirectory)Exceptions\WrapperAlreadyCreatedOnceException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\AutumnBoxExtension.Constants.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\EmptyExtension.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Extension\ExtensionArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extension\FallExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\IClassExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\IExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Implementation\ChinaLake.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Implementation\MethodProxy.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Extension\Leaf\Attributes\LAttributeReader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Leaf\Attributes\LDoNotScanAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Leaf\Internal\ApiAllocator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Leaf\Internal\Impl\LeafEmbManager.cs" />
@@ -66,7 +65,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Attribute\ExtAuthAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Attribute\ExtDescAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Attribute\ExtDeveloperMode.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Extension\Attribute\ExtHideAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extension\Attribute\ExtHiddenAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Attribute\ExtIconAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Attribute\ExtMinApiAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Attribute\ExtNameAttribute.cs" />
@@ -87,7 +86,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Management\ExtLibrary\DreamLibManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\TextKit\IClassTextDictionary.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Implementation\RunningManagerImpl.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Open\IThreadManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Open\ITaskManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Implementation\ClassTextManagerImpl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Implementation\DeviceSelectorImpl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Implementation\Md5Impl.cs" />
@@ -117,7 +116,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Management\ExtTask\ExtensionTaskManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\ExtTask\IExtensionTask.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\ExtTask\IExtensionTaskManager.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Management\ExtTask\Signals.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extension\ExtensionSignals.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\LKit\DialogClosedEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\LKit\ILeafDialog.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\ExtWrapper\ClassExtensionInfoReader.cs" />
@@ -130,7 +129,6 @@
     <Folder Include="$(MSBuildThisFileDirectory)Extension\Attribute\" />
     <Folder Include="$(MSBuildThisFileDirectory)Extension\Leaf\" />
     <Folder Include="$(MSBuildThisFileDirectory)Extension\Leaf\Fast\" />
-    <Folder Include="$(MSBuildThisFileDirectory)Extension\Leaf\View\" />
     <Folder Include="$(MSBuildThisFileDirectory)Open\LKit\" />
   </ItemGroup>
 </Project>

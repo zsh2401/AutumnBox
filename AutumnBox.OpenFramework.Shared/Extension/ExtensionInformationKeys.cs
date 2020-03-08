@@ -22,9 +22,9 @@ namespace AutumnBox.OpenFramework.Extension
         public const string REGIONS = "Regions";
         public const string MIN_ATMB_API = "MinAtmbApi";
         public const string TARGET_ATMB_API = "TgtAtmbApi";
-        public const string ROOT = "root";
-        public const string IS_DEVELOPING = "IsDeveloping";
-        public const string IS_HIDE = "IsHide";
+        public const string ROOT = "NEED_ROOT";
+        public const string IS_DEVELOPING = "ENABLE_ON_DEVELOPER_MODE";
+        public const string IS_HIDDEN = "HIDDEN";
 #pragma warning restore CS1591 // 缺少对公共可见类型或成员的 XML 注释
     }
 }

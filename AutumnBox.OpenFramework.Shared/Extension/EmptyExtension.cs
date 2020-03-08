@@ -6,17 +6,15 @@
     [ExtName("无名拓展", "en-us:Unknown extension")]
     [ExtAuth("佚名", "en-us:Anonymous")]
     [ExtDesc(null)]
-    [ExtVersion()]
+    [ExtVersion(0, 0, 1)]
     [ExtRequiredDeviceStates(AutumnBoxExtension.NoMatter)]
     [ExtMinApi(8)]
-    [ExtTargetApi()]
+    [ExtTargetApi]
     [ExtOfficial(false)]
     [ExtRegions(null)]
     [ExtPriority(ExtPriority.NORMAL)]
     [ExtDeveloperMode(false)]
-    [ExtHide(false)]
-    //[ExtAppProperty("com.miui.fm")]
-    //[ExtMinAndroidVersion(7,0,0)]
+    [ExtHidden(false)]
     public class EmptyExtension
     {
     }
