@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using AutumnBox.OpenFramework.Extension.Leaf.Attributes;
 using AutumnBox.OpenFramework.Extension.Leaf.Internal;
-using AutumnBox.OpenFramework.LeafExtension.Internal;
 
 namespace AutumnBox.OpenFramework.Extension.Leaf
 {
@@ -10,7 +9,6 @@ namespace AutumnBox.OpenFramework.Extension.Leaf
     /// </summary>
     public abstract class LeafExtensionBase : EmptyExtension, IClassExtension
     {
-        private readonly LSignalDistributor signalDistributor;
         private readonly LeafEntryExecutor executor;
         private readonly LeafPropertyInjector injector;
 
@@ -28,10 +26,6 @@ namespace AutumnBox.OpenFramework.Extension.Leaf
 
             //构造入口点执行器
             executor = new LeafEntryExecutor(this, apiAllocator);
-
-            //注册信号接收系统
-            signalDistributor = new LSignalDistributor(this);
-            signalDistributor.ScanReceiver();
         }
 
 

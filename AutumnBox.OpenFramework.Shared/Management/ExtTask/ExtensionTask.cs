@@ -9,23 +9,14 @@ using System.Threading;
 
 namespace AutumnBox.OpenFramework.Management.ExtTask
 {
-    internal sealed class ExtensionThread : IExtensionTask, IDisposable
+    internal sealed class ExtensionTask : IExtensionTask, IDisposable
     {
         private readonly Type extensionType;
 
         public Thread Thread { get; set; }
 
-        public int ExitCode
-        {
-            get
-            {
-                return shutDownExitCode ?? _exitCode;
-            }
-            private set { _exitCode = value; }
-        }
-        private int _exitCode = (int)ExtensionExitCodes.Killed;
+        public object Result { get; private set; } = null;
 
-        private int? shutDownExitCode = null;
 
         public int Id { get; internal set; }
 
@@ -33,41 +24,16 @@ namespace AutumnBox.OpenFramework.Management.ExtTask
 
         public IExtensionWrapper Wrapper { get; }
 
-        public Dictionary<string, object> Data { get; set; } =
+        public Dictionary<string, object> Args { get; set; } =
             new Dictionary<string, object>();
 
-        public event EventHandler<ThreadFinishedEventArgs> Finished;
-        public event EventHandler<ThreadStartedEventArgs> Started;
+        public event EventHandler<TaskFinishedEventArgs> Finished;
+        public event EventHandler<TaskStartedEventArgs> Started;
 
         private IExtension instance;
 
-        public void SendSignal(string signal, object value = null)
-        {
-            if (string.IsNullOrWhiteSpace(signal))
-            {
-                throw new ArgumentException("message", nameof(signal));
-            }
-            try
-            {
-                SLogger<ExtensionThread>.Debug($"sending signal {signal} to {Wrapper.Info.Name}");
-                instance.ReceiveSignal(signal, value);
-            }
-            catch (Exception e)
-            {
-                SLogger<ExtensionThread>.Debug($"a exception was thrown when {Wrapper.Info.Name} handling signal: {signal}", e);
-            }
-        }
-
         public void Kill()
         {
-            try
-            {
-                SendSignal(Signals.COMMAND_STOP);
-            }
-            catch
-            {
-                return;
-            }
             try
             {
                 Thread.Abort();
@@ -82,7 +48,7 @@ namespace AutumnBox.OpenFramework.Management.ExtTask
             Thread = new Thread(Flow);
             Thread.Start();
             Thread.IsBackground = true;
-            Started?.Invoke(this, new ThreadStartedEventArgs());
+            Started?.Invoke(this, new TaskStartedEventArgs());
         }
 
         private void Flow()
@@ -91,19 +57,17 @@ namespace AutumnBox.OpenFramework.Management.ExtTask
             {
                 isRunning = true;
                 instance = (IExtension)Activator.CreateInstance(extensionType);
-                SendSignal(Signals.ON_CREATED);
-                ExitCode = instance.Main(Data);
+                Result = instance.Main(Args);
             }
             catch (ThreadAbortException)
             {
-                ExitCode = (int)ExtensionExitCodes.Killed;
+                Result = null;
             }
             catch (Exception e)
             {
                 var appManager = LakeProvider.Lake.Get<IAppManager>();
-                ExitCode = (int)ExtensionExitCodes.Exception;
-                SendSignal(Signals.ON_EXCEPTION, e.InnerException);
-                SLogger<ExtensionThread>.Warn($"{extensionType.Name}-extension error", e.InnerException);
+                Result = e;
+                SLogger<ExtensionTask>.Warn($"{extensionType.Name}-extension error", e.InnerException);
                 string fmt = appManager.GetPublicResouce<string>("OpenFxExceptionMsgTitleFmt");
                 fmt = string.Format(fmt, Wrapper.Info.Name);
                 string sketch = appManager.GetPublicResouce<string>("OpenFxExceptionSketch");
@@ -111,16 +75,15 @@ namespace AutumnBox.OpenFramework.Management.ExtTask
             }
             finally
             {
-                SendSignal(Signals.COMMAND_DESTORY);
+                instance.Dispose();
                 isRunning = false;
-                Finished?.Invoke(this, new ThreadFinishedEventArgs(this));
+                Finished?.Invoke(this, new TaskFinishedEventArgs(this));
             }
         }
 
 
         public void Shutdown(int exitCode)
         {
-            shutDownExitCode = exitCode;
             Kill();
         }
 
@@ -129,15 +92,9 @@ namespace AutumnBox.OpenFramework.Management.ExtTask
             while (isRunning) ;
         }
 
-        public ExtensionThread(ExtensionThreadManager threadManager, Type extensionType, IExtensionWrapper wrapper)
+        public ExtensionTask(Type extensionType)
         {
-            if (threadManager == null)
-            {
-                throw new ArgumentNullException(nameof(threadManager));
-            }
-
             this.extensionType = extensionType;
-            Wrapper = wrapper ?? throw new ArgumentNullException(nameof(wrapper));
         }
 
         #region IDisposable Support
@@ -161,11 +118,11 @@ namespace AutumnBox.OpenFramework.Management.ExtTask
         }
 
         // TODO: 仅当以上 Dispose(bool disposing) 拥有用于释放未托管资源的代码时才替代终结器。
-        ~ExtensionThread()
-        {
-            // 请勿更改此代码。将清理代码放入以上 Dispose(bool disposing) 中。
-            Dispose(false);
-        }
+        //~ExtensionTask()
+        //{
+        //    // 请勿更改此代码。将清理代码放入以上 Dispose(bool disposing) 中。
+        //    Dispose(false);
+        //}
 
         // 添加此代码以正确实现可处置模式。
         public void Dispose()

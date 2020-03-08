@@ -61,20 +61,20 @@ namespace AutumnBox.OpenFramework.Implementation
             }
         }
 
-        private string GetFileName(string fileId)
+        private string GenerateFileName(string fileId)
         {
             return fileId.GetHashCode().ToString();
         }
 
         public void DeleteFile(string fileId)
         {
-            var path = Path.Combine(FilesDirectory.FullName, GetFileName(fileId) + ".aextf");
+            var path = Path.Combine(FilesDirectory.FullName, GenerateFileName(fileId) + FILE_EXT);
             File.Delete(path);
         }
 
         public FileStream OpenFile(string fileId, bool createIfNotExist = true)
         {
-            var path = Path.Combine(FilesDirectory.FullName, GetFileName(fileId) + FILE_EXT);
+            var path = Path.Combine(FilesDirectory.FullName, GenerateFileName(fileId) + FILE_EXT);
             FileMode mode = createIfNotExist ? FileMode.OpenOrCreate : FileMode.Open;
             var fs = new FileStream(path, mode, FileAccess.ReadWrite);
             return fs;
@@ -109,6 +109,18 @@ namespace AutumnBox.OpenFramework.Implementation
             ClearCache();
             ClearFiles();
             ClearJsonObjects();
+        }
+
+        public FileInfo WriteToFile(Stream srcSource, string fileId = null)
+        {
+            string path = Path.Combine(FilesDirectory.FullName, GenerateFileName(fileId) + FILE_EXT);
+            using (var writer = new FileStream(path, FileMode.OpenOrCreate, FileAccess.Write))
+            {
+                srcSource.CopyTo(writer);
+                writer.Flush();
+            }
+            FileInfo file = new FileInfo(path);
+            return file;
         }
     }
 }

@@ -9,7 +9,7 @@ namespace AutumnBox.OpenFramework.Extension.Leaf.Internal
         private readonly LeafExtensionBase ext;
         private readonly ApiAllocator apiAllocator;
 
-        public LeafPropertyInjector(LeafExtensionBase ext,ApiAllocator apiAllocator)
+        public LeafPropertyInjector(LeafExtensionBase ext, ApiAllocator apiAllocator)
         {
             this.ext = ext ?? throw new System.ArgumentNullException(nameof(ext));
             this.apiAllocator = apiAllocator ?? throw new System.ArgumentNullException(nameof(apiAllocator));

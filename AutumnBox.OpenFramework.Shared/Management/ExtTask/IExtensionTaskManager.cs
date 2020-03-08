@@ -14,10 +14,8 @@ namespace AutumnBox.OpenFramework.Management.ExtTask
         /// <summary>
         /// 分配
         /// </summary>
-        /// <param name="wrapper"></param>
-        /// <param name="typeOfExtension"></param>
         /// <returns></returns>
-        IExtensionTask Allocate(IExtension extension);
+        IExtensionTask Allocate(Type extType);
         /// <summary>
         /// 获取运行中的
         /// </summary>

@@ -5,7 +5,7 @@ using System.IO;
 using System.Reflection;
 using System.Text;
 
-namespace AutumnBox.OpenFramework.LeafExtension.Internal.Impl
+namespace AutumnBox.OpenFramework.Extension.Leaf.Internal
 {
     internal class LeafEmb : IEmbeddedFileManager
     {
@@ -44,9 +44,10 @@ namespace AutumnBox.OpenFramework.LeafExtension.Internal.Impl
                 CopyTo(fs);
             }
         }
-        public IEmbeddedFile Get(object context, string innerResPath)
+
+        public IEmbeddedFile Get(Assembly assembly, string innerResPath)
         {
-            return new LeafEmbFile(context.GetType().Assembly, innerResPath);
+            return new LeafEmbFile(assembly, innerResPath);
         }
     }
 }

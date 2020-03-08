@@ -6,7 +6,7 @@ using AutumnBox.OpenFramework.Open;
 using AutumnBox.OpenFramework.Open.LKit;
 using System.Threading;
 
-namespace AutumnBox.OpenFramework.LeafExtension.Fast
+namespace AutumnBox.OpenFramework.Extension.Extension.Leaf
 {
     /// <summary>
     /// LeafUI相关拓展函数

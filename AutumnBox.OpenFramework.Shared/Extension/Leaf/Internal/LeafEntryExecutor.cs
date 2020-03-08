@@ -8,36 +8,35 @@ using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 
-namespace AutumnBox.OpenFramework.LeafExtension.Internal
+namespace AutumnBox.OpenFramework.Extension.Leaf.Internal
 {
     internal class LeafEntryExecutor
     {
         private readonly LeafExtensionBase ext;
         private readonly ApiAllocator apiAllocator;
-        private Dictionary<string, object> data;
-
-        private readonly MethodInfo entry;
+        private MethodInfo entry;
 
         public LeafEntryExecutor(LeafExtensionBase ext, ApiAllocator apiAllocator)
         {
             this.ext = ext ?? throw new ArgumentNullException(nameof(ext));
             this.apiAllocator = apiAllocator ?? throw new ArgumentNullException(nameof(apiAllocator));
-            entry = FindEntry();
+
         }
         /// <summary>
         /// 获取参数列表对应的值列表
         /// </summary>
         /// <param name="pInfos"></param>
+        /// <param name="args"></param>
         /// <returns></returns>
-        private object[] GetPara(ParameterInfo[] pInfos)
+        private object[] GetPara(ParameterInfo[] pInfos, Dictionary<string, object> args)
         {
-            apiAllocator.ExtData = data ?? throw new NullReferenceException("ext data is null!!");
+            apiAllocator.ExtData = args ?? throw new NullReferenceException("ext data is null!!");
             List<object> ps = new List<object>();
             foreach (var pInfo in pInfos)
             {
                 if (pInfo.ParameterType == typeof(Dictionary<string, object>))
                 {
-                    ps.Add(data);
+                    ps.Add(args);
                 }
                 else
                 {
@@ -91,21 +90,26 @@ namespace AutumnBox.OpenFramework.LeafExtension.Internal
                        select method;
             return filt.Any() ? filt.First() : null;
         }
+        /// <summary>
+        /// 判断是否为IExtension.Main
+        /// </summary>
+        /// <param name="method"></param>
+        /// <returns></returns>
         private bool IsClassExtensionMain(MethodInfo method)
         {
-            var para = method.GetParameters();
-            return para.Length == 1 && para[0].ParameterType == typeof(Dictionary<string, object>);
+            var tMethod = typeof(IExtension).GetMethod(nameof(IExtension.Main));
+            return method == tMethod;
         }
         /// <summary>
         /// 进行执行
         /// </summary>
-        /// <param name="data">键值对数据</param>
+        /// <param name="argsDictionary"></param>
         /// <returns>可能的int返回值</returns>
-        public int? Execute(Dictionary<string, object> data = null)
+        public object Execute(Dictionary<string, object> argsDictionary)
         {
-            this.data = data;
+            entry = FindEntry();
             //获取其需要的参数列表
-            var para = GetPara(entry.GetParameters());
+            var para = GetPara(entry.GetParameters(), argsDictionary);
             //执行
             object result = null;
             result = entry.Invoke(ext, para);

@@ -1,10 +1,9 @@
-﻿using AutumnBox.OpenFramework.Extension.Leaf;
-using AutumnBox.OpenFramework.Management;
+﻿using AutumnBox.OpenFramework.Management;
 using AutumnBox.OpenFramework.Management.ExtLibrary;
 using AutumnBox.OpenFramework.Management.Wrapper;
 using System.Linq;
 
-namespace AutumnBox.OpenFramework.LeafExtension.Fast
+namespace AutumnBox.OpenFramework.Extension.Leaf
 {
     /// <summary>
     /// LeafExtension的帮助类

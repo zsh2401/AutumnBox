@@ -1,4 +1,5 @@
-﻿using AutumnBox.OpenFramework.Management.Wrapper;
+﻿using AutumnBox.OpenFramework.Extension;
+using AutumnBox.OpenFramework.Management.Wrapper;
 using System;
 using System.Collections.Generic;
 
@@ -10,15 +11,15 @@ namespace AutumnBox.OpenFramework.Management.ExtTask
     public
 #endif
 
-    class ExtensionThreadManager : IExtensionTaskManager
+    class ExtensionTaskManager : IExtensionTaskManager
     {
-        public static ExtensionThreadManager Instance { get; }
+        public static ExtensionTaskManager Instance { get; }
         private readonly List<IExtensionTask> readys = new List<IExtensionTask>();
         private readonly List<IExtensionTask> runnings = new List<IExtensionTask>();
 
-        public IExtensionTask Allocate(IExtensionWrapper wrapper, Type typeOfExtension)
+        public IExtensionTask Allocate(Type extType)
         {
-            var thread = new ExtensionThread(this, wrapper.ExtensionType, wrapper)
+            var thread = new ExtensionTask(extType)
             {
                 Id = AlllocatePID()
             };
@@ -37,11 +38,11 @@ namespace AutumnBox.OpenFramework.Management.ExtTask
 
         private readonly Random ran = new Random();
 
-        static ExtensionThreadManager()
+        static ExtensionTaskManager()
         {
-            Instance = new ExtensionThreadManager();
+            Instance = new ExtensionTaskManager();
         }
-        private ExtensionThreadManager() { }
+        private ExtensionTaskManager() { }
         private int AlllocatePID()
         {
             int nextPid;
@@ -60,9 +61,6 @@ namespace AutumnBox.OpenFramework.Management.ExtTask
             });
         }
 
-        public IEnumerable<IExtensionTask> GetRunning()
-        {
-            return runnings;
-        }
+        public IEnumerable<IExtensionTask> RunningTasks => runnings.ToArray();
     }
 }

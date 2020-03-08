@@ -1,6 +1,4 @@
-﻿using AutumnBox.OpenFramework.Management.ExtensionThreading;
-using AutumnBox.OpenFramework.Management.ExtTask;
-using System;
+﻿using System;
 
 namespace AutumnBox.OpenFramework.Management.Wrapper
 {
@@ -26,11 +24,6 @@ namespace AutumnBox.OpenFramework.Management.Wrapper
         /// Check成功后调用
         /// </summary>
         void Ready();
-        /// <summary>
-        /// 获取一个未开始的拓展模块任务
-        /// </summary>
-        /// <returns></returns>
-        IExtensionTask NewTask();
         /// <summary>
         /// 当该包装类被要求摧毁时调用
         /// </summary>

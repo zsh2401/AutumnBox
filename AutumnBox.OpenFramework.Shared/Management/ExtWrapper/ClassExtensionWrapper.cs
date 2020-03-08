@@ -115,21 +115,6 @@ namespace AutumnBox.OpenFramework.Management.Wrapper
         {
             SLogger.Info(Info.Name, "Ready");
         }
-
-        private IExtensionThreadManager GetThreadManager()
-        {
-            var manager = ExtensionThreadManager.Instance;
-            return manager;
-        }
-        /// <summary>
-        /// 获取拓展进程
-        /// </summary>
-        /// <returns></returns>
-        public virtual IExtensionTask NewTask()
-        {
-            var mgr = GetThreadManager();
-            return mgr.Allocate(this, extType);
-        }
         #endregion
     }
 }
