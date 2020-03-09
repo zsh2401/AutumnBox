@@ -37,6 +37,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Management\ExtWrapper\ExtensionAttributeReader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\ExtWrapper\IExtensionAttributeReader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\IKeyLake.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Open\INotificationManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\ProxyKit\InjectAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\ProxyKit\IProxy.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\ProxyKit\IProxy.g.cs" />
@@ -97,7 +98,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Open\ChoiceResult.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\IAppManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\ICompApi.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Open\IDeviceSelector.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Open\ADBKit\IDeviceManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\IEmbeddedFileService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\IMd5.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Implementation\AppManagerImpl.cs" />
@@ -130,5 +131,6 @@
     <Folder Include="$(MSBuildThisFileDirectory)Extension\Leaf\" />
     <Folder Include="$(MSBuildThisFileDirectory)Extension\Leaf\Fast\" />
     <Folder Include="$(MSBuildThisFileDirectory)Open\LKit\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Open\ADBKit\" />
   </ItemGroup>
 </Project>

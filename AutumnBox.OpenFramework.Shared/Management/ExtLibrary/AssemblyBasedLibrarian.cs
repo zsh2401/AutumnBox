@@ -122,12 +122,12 @@ namespace AutumnBox.OpenFramework.Management.ExtLibrary
                 }
                 catch (WrapperAlreadyCreatedOnceException)
                 {
-                    SLogger.Debug($"{ManagedAssembly.GetName().Name} 's librarian", 
+                    SLogger.Debug($"{ManagedAssembly.GetName().Name} 's librarian",
                         $"{type.Name}'s wrappers was created once,skip it");
                 }
                 catch (Exception ex)
                 {
-                    SLogger.Debug($"{ManagedAssembly.GetName().Name} 's librarian", 
+                    SLogger.Debug($"{ManagedAssembly.GetName().Name} 's librarian",
                         $"an exception threw on create wappers for {type.Name}", ex);
                 }
             }

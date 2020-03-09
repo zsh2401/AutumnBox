@@ -32,7 +32,7 @@ namespace AutumnBox.OpenFramework.Management
             lake.RegisterSingleton(baseApi);
             lake.RegisterSingleton<IMd5, Md5Impl>();
             lake.RegisterSingleton<IEmbeddedFileManager, EmbeddedFileManagerImpl>();
-            lake.RegisterSingleton<IDeviceSelector, DeviceSelectorImpl>();
+            lake.RegisterSingleton<IDeviceManager, DeviceSelectorImpl>();
             lake.RegisterSingleton<IOperatingSystemAPI, OSImpl>();
             lake.Register<IStorageManager, StorageManagerImpl>();
 

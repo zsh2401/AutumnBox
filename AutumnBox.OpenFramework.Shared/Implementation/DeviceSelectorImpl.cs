@@ -4,7 +4,7 @@ using AutumnBox.OpenFramework.Open;
 
 namespace AutumnBox.OpenFramework.Implementation
 {
-    class DeviceSelectorImpl : IDeviceSelector
+    class DeviceSelectorImpl : IDeviceManager
     {
         private readonly IBaseApi baseApi;
         public DeviceSelectorImpl(IBaseApi baseApi)

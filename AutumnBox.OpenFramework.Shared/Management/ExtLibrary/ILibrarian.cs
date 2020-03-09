@@ -9,10 +9,6 @@ namespace AutumnBox.OpenFramework.Management.ExtLibrary
     public interface ILibrarian
     {
         /// <summary>
-        /// 显示信息等
-        /// </summary>
-        void ShowInformation();
-        /// <summary>
         /// 代表该程序集的入口类的名称
         /// </summary>
         string Name { get; }
