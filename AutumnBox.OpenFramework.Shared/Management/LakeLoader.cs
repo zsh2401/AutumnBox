@@ -16,6 +16,7 @@
 
 using AutumnBox.OpenFramework.Implementation;
 using AutumnBox.OpenFramework.Open;
+using AutumnBox.OpenFramework.Open.ADBKit;
 
 namespace AutumnBox.OpenFramework.Management
 {

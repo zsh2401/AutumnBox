@@ -62,29 +62,5 @@ namespace AutumnBox.Basic.ManagedAdb
         {
             Manager = adbManager;
         }
-
-        /// <summary>
-        /// 加载
-        /// </summary>
-        /// <param name="adbToolsDir"></param>
-        /// <param name="adbClient"></param>
-        /// <param name="fastbootClient"></param>
-        /// <param name="server"></param>
-        /// <param name="startTheServer"></param>
-        [Obsolete("Use Load(IAdbManager) to instead", true)]
-        public static void Load(DirectoryInfo adbToolsDir, FileInfo adbClient, FileInfo fastbootClient, IAdbServer server, bool startTheServer)
-        {
-            var manager = new DefaultAdbManager()
-            {
-                AdbFile = adbClient ?? throw new ArgumentNullException(nameof(adbClient)),
-                FastbootFile = fastbootClient ?? throw new ArgumentNullException(nameof(fastbootClient)),
-                Server = server ?? throw new ArgumentNullException(nameof(server)),
-                ToolsDir = adbToolsDir ?? throw new ArgumentNullException(nameof(adbToolsDir))
-            };
-            if (startTheServer)
-            {
-                Server.Start();
-            }
-        }
     }
 }

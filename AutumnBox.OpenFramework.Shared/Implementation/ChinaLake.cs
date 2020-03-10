@@ -28,8 +28,6 @@ namespace AutumnBox.OpenFramework.Implementation
         public ChinaLake()
         {
             factories = new Dictionary<Type, Func<object>>();
-            RegisterSingleton<ILake>(this);
-            RegisterSingleton<IMethodProxy>(new MethodProxy(this));
         }
 
         public object Get(Type type)
@@ -37,58 +35,10 @@ namespace AutumnBox.OpenFramework.Implementation
             return factories[type]();
         }
 
-        public T Get<T>()
-        {
-            return (T)Get(typeof(T));
-        }
-
         public ILake Register(Type type, Func<object> factory)
         {
             factories[type] = factory;
             return this;
-        }
-
-        public ILake Register<T>(Func<object> factory)
-        {
-            return Register(typeof(T), factory);
-        }
-
-        public ILake Register<T>(Type impl)
-        {
-            var mp = Get<IMethodProxy>();
-            Debug.WriteLine(mp);
-            return Register(typeof(T), mp.GetClassBuilder(impl));
-        }
-
-        public ILake Register<T, TImpl>()
-        {
-            return Register<T>(typeof(TImpl));
-        }
-
-        public ILake RegisterSingleton(Type type, Func<object> factory)
-        {
-            var lazy = new Lazy<object>(factory);
-            return Register(type, () => lazy.Value);
-        }
-
-        public ILake RegisterSingleton<T>(Func<object> factory)
-        {
-            return RegisterSingleton(typeof(T), factory);
-        }
-
-        public ILake RegisterSingleton<T>(Type impl)
-        {
-            return RegisterSingleton<T>(() => Get<IMethodProxy>().GetClassBuilder(impl));
-        }
-
-        public ILake RegisterSingleton<T, TImpl>()
-        {
-            return RegisterSingleton<T>(typeof(TImpl));
-        }
-
-        public ILake RegisterSingleton<T>(T value)
-        {
-            return RegisterSingleton<T>(() => value);
         }
     }
 }

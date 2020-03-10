@@ -1,6 +1,6 @@
 ﻿using AutumnBox.Basic.Device;
 using AutumnBox.OpenFramework.Management;
-using AutumnBox.OpenFramework.Open;
+using AutumnBox.OpenFramework.Open.ADBKit;
 
 namespace AutumnBox.OpenFramework.Implementation
 {
@@ -16,9 +16,9 @@ namespace AutumnBox.OpenFramework.Implementation
 
             this.baseApi = baseApi;
         }
-        public IDevice GetCurrent()
-        {
-            return baseApi.SelectedDevice;
-        }
+
+        public IDevice Selected { get => baseApi.SelectedDevice; set => throw new System.NotImplementedException(); }
+
+        public IDevice[] ConnectedDevices => throw new System.NotImplementedException();
     }
 }
