@@ -25,82 +25,17 @@ namespace AutumnBox.OpenFramework.Open
     public interface ILake
     {
         /// <summary>
-        /// 注册
+        /// 注册一个工厂
         /// </summary>
-        /// <param name="type"></param>
+        /// <param name="t"></param>
         /// <param name="factory"></param>
         /// <returns></returns>
-        ILake Register(Type type, Func<object> factory);
+        ILake Register(Type t, Func<object> factory);
         /// <summary>
-        /// 注册
+        /// 获取一个值
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="factory"></param>
+        /// <param name="t"></param>
         /// <returns></returns>
-        ILake Register<T>(Func<object> factory);
-        /// <summary>
-        /// 注册
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="impl"></param>
-        /// <returns></returns>
-        ILake Register<T>(Type impl);
-        /// <summary>
-        /// 注册
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <typeparam name="TImpl"></typeparam>
-        /// <returns></returns>
-        ILake Register<T, TImpl>() where TImpl : T;
-
-        /// <summary>
-        /// 注册
-        /// </summary>
-        /// <param name="type"></param>
-        /// <param name="factory"></param>
-        /// <returns></returns>
-        ILake RegisterSingleton(Type type, Func<object> factory);
-        /// <summary>
-        /// 注册
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="factory"></param>
-        /// <returns></returns>
-        ILake RegisterSingleton<T>(Func<object> factory);
-        /// <summary>
-        /// 注册
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="impl"></param>
-        /// <returns></returns>
-        ILake RegisterSingleton<T>(Type impl);
-        /// <summary>
-        /// 注册
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <typeparam name="TImpl"></typeparam>
-        /// <returns></returns>
-        ILake RegisterSingleton<T, TImpl>() where TImpl : T;
-        /// <summary>
-        /// 注册
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="value"></param>
-        /// <returns></returns>
-        ILake RegisterSingleton<T>(T value);
-        //ILake RegisterSingleton<T>(T value);
-
-        /// <summary>
-        /// 获取
-        /// </summary>
-        /// <param name="type"></param>
-        /// <returns></returns>
-        object Get(Type type);
-        /// <summary>
-        /// 泛型化的获取
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <returns></returns>
-        T Get<T>();
+        object Get(Type t);
     }
 }
