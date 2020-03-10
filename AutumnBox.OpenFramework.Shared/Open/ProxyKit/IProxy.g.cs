@@ -25,7 +25,7 @@ namespace AutumnBox.OpenFramework.Open.ProxyKit
         /// <summary>
         /// 基于键的湖列表
         /// </summary>
-        List<IKeyLake> KeyLakes { get; }
+        List<IKeyValuePool> KeyLakes { get; }
         /// <summary>
         /// 被代理对象的实例
         /// </summary>

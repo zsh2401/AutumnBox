@@ -36,7 +36,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Management\LakeLoader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\ExtWrapper\ExtensionAttributeReader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\ExtWrapper\IExtensionAttributeReader.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Open\IKeyLake.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Open\IKeyValuePool.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\INotificationManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\ProxyKit\InjectAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\ProxyKit\IProxy.cs" />

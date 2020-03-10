@@ -51,7 +51,7 @@ namespace AutumnBox.OpenFramework.Open
         /// <typeparam name="T"></typeparam>
         /// <typeparam name="TImpl"></typeparam>
         /// <returns></returns>
-        ILake Register<T, TImpl>();
+        ILake Register<T, TImpl>() where TImpl : T;
 
         /// <summary>
         /// 注册
@@ -80,7 +80,7 @@ namespace AutumnBox.OpenFramework.Open
         /// <typeparam name="T"></typeparam>
         /// <typeparam name="TImpl"></typeparam>
         /// <returns></returns>
-        ILake RegisterSingleton<T, TImpl>();
+        ILake RegisterSingleton<T, TImpl>() where TImpl : T;
         /// <summary>
         /// 注册
         /// </summary>

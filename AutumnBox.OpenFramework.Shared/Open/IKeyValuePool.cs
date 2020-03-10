@@ -13,16 +13,15 @@
 *
 * ==============================================================================
 */
-using System;
+
 using System.Collections.Generic;
-using System.Text;
 
 namespace AutumnBox.OpenFramework.Open
 {
     /// <summary>
-    /// 以键为基础的湖
+    /// 以键为基础的池塘
     /// </summary>
-    public interface IKeyLake
+    public interface IKeyValuePool : IDictionary<string, object>
     {
     }
 }

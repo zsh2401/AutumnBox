@@ -21,7 +21,7 @@ namespace AutumnBox.OpenFramework.Implementation
 
             public List<ILake> Lakes { get; } = new List<ILake>();
 
-            public List<IKeyLake> KeyLakes { get; } = new List<IKeyLake>();
+            public List<IKeyValuePool> KeyLakes { get; } = new List<IKeyValuePool>();
 
             public event RequestingObjectEventHandler RequestingObject;
 
