@@ -38,6 +38,7 @@ namespace AutumnBox.GUI
             {
                 Shutdown(1);
             };
+            string? n = "w";
             AppLoader.Instance.LoadAsync();
         }
 

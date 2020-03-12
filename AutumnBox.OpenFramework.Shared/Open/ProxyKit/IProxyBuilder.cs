@@ -20,6 +20,6 @@ namespace AutumnBox.OpenFramework.Open.ProxyKit
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        IProxy CreateProxyOf<T>();
+        IProxy<T> CreateProxyOf<T>();
     }
 }

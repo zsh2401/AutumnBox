@@ -93,7 +93,7 @@ namespace AutumnBox.OpenFramework.Management.Wrapper
         }
         private static bool IsHide(this IExtensionWrapper wrapper)
         {
-            if (wrapper.Info.TryGetValueType(ExtensionInformationKeys.IS_HIDE, out bool result))
+            if (wrapper.Info.TryGetValueType(ExtensionInformationKeys.IS_HIDDEN, out bool result))
             {
 
                 return !result;

@@ -1,65 +1,26 @@
-﻿using AutumnBox.OpenFramework.Open;
+﻿using AutumnBox.Logging;
+using AutumnBox.OpenFramework.Open;
 using AutumnBox.OpenFramework.Open.ProxyKit;
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 
 namespace AutumnBox.OpenFramework.Implementation
 {
-    class ProxyBuilder : IProxyBuilder
+    public class ProxyBuilder : IProxyBuilder
     {
-        private class Proxy : IProxy
+        public IProxy<T> CreateProxyOf<T>()
         {
-            private readonly Type type;
-            private object instance;
-            public Proxy(Type type)
-            {
-                this.type = type ?? throw new ArgumentNullException(nameof(type));
-            }
-            public Func<Type, object> ExtraDependencyFactory { set => throw new NotImplementedException(); }
-
-            public object Instance => instance;
-
-            public List<ILake> Lakes { get; } = new List<ILake>();
-
-            public List<IKeyValuePool> KeyLakes { get; } = new List<IKeyValuePool>();
-
-            public event RequestingObjectEventHandler RequestingObject;
-
-            public void CreateInstance()
-            {
-                var x = type.GetConstructors()[0];
-                var parameters = x.GetParameters();
-                var args = new List<object>();
-                foreach (var p in parameters)
-                {
-                    object v;
-                    try
-                    {
-                        v = factory.Get(p.ParameterType);
-                    }
-                    catch (Exception e)
-                    {
-                        SLogger<MethodProxy>.Warn("Can not inject value", e);
-                        v = null;
-                    }
-                    args.Add(v);
-                }
-                return () => Activator.CreateInstance(classType, args.ToArray());
-            }
-
-            public object InvokeMethod(string methodName)
-            {
-                throw new NotImplementedException();
-            }
+            var proxy = new Proxy<T>();
+            proxy.Lakes.Add(LakeProvider.Lake);
+            return proxy;
         }
+
         public IProxy CreateProxyOf(Type type)
         {
-            return new Proxy(type);
-        }
-
-        public IProxy CreateProxyOf<T>()
-        {
-            return new Proxy(typeof(T));
+            var proxy = new Proxy<object>(type);
+            proxy.Lakes.Add(LakeProvider.Lake);
+            return (IProxy)proxy;
         }
     }
 }

@@ -21,7 +21,7 @@ using System.Threading;
 
 namespace AutumnBox.OpenFramework.Implementation
 {
-    internal class ChinaLake : ILake
+    public class ChinaLake : ILake
     {
         private readonly Dictionary<Type, Func<object>> factories;
 

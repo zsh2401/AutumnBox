@@ -34,4 +34,4 @@ using System.Windows;
 )]
 [assembly: AssemblyVersion("2019.8.22")]
 [assembly: AssemblyFileVersion("2019.8.22")]
-[assembly: NeutralResourcesLanguage("zh-CN")]
+[assembly: NeutralResourcesLanguage("")]
