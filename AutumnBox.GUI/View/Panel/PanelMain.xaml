@@ -11,7 +11,6 @@
              xmlns:controls1="clr-namespace:AutumnBox.GUI.View.Controls"
              xmlns:controls="clr-namespace:HandyControl.Controls;assembly=HandyControl"
              mc:Ignorable="d" 
-             Background="White"
              d:DesignHeight="619" d:DesignWidth="1042">
     <UserControl.DataContext>
         <viewmodel:VMPanelMain/>

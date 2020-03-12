@@ -39,7 +39,7 @@
             </Grid>
         </StackPanel>
     </controls:Window.NonClientAreaContent>
-    <Grid Background="White">
+    <Grid>
         <ContentControl x:Name="MainContentContainer">
             <panel:PanelLoading Margin="0"/>
         </ContentControl>

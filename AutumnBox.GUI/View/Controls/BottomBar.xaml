@@ -5,41 +5,41 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AutumnBox.GUI.View.Controls"
              xmlns:viewmodel="clr-namespace:AutumnBox.GUI.ViewModel"
+             xmlns:hc="https://handyorg.github.io/handycontrol"
              mc:Ignorable="d" 
              FontSize="12"
              FontFamily="{DynamicResource AutumnBox.Font}"
-             Foreground="Gray"
-             d:DesignWidth="800"
-             Background="White">
+             Foreground="{DynamicResource PrimaryTextBrush}" 
+             
+             d:DesignWidth="800">
     <UserControl.DataContext>
         <viewmodel:VMBottomBar/>
     </UserControl.DataContext>
-    <Grid>
-        <StackPanel>
-            <Grid Height="1" Background="LightGray"/>
-        </StackPanel>
-        <Grid Margin="20,0,20,0">
-            <StackPanel HorizontalAlignment="Left" Margin="3" VerticalAlignment="Center" Orientation="Horizontal">
-                <Image Source="/Resources/Drawable/BottomBar/phone.png" Height="15" Margin="0,0,5,0"/>
-                <TextBlock Text="{DynamicResource BottomBar.Devices.Prev}"/>
-                <TextBlock Text="{Binding CountOfDevices}"/>
-                <TextBlock Text="{DynamicResource BottomBar.Devices.Suf}"/>
+    <DockPanel>
+        <hc:Divider DockPanel.Dock="Top" Orientation="Horizontal" Margin="1"/>
+        <Grid>
+            <Grid Margin="20,0,20,0">
+                <StackPanel HorizontalAlignment="Left" Margin="3" VerticalAlignment="Center" Orientation="Horizontal">
+                    <Image Source="/Resources/Drawable/BottomBar/phone.png" Height="15" Margin="0,0,5,0"/>
+                    <TextBlock  Text="{DynamicResource BottomBar.Devices.Prev}"/>
+                    <TextBlock   Text="{Binding CountOfDevices}"/>
+                    <TextBlock  Text="{DynamicResource BottomBar.Devices.Suf}"/>
+                </StackPanel>
+            </Grid>
+            <StackPanel Margin="3" Orientation="Horizontal" HorizontalAlignment="Right">
+                <TextBlock Text="{Binding CountOfTaskRunning}"/>
+                <TextBlock Text="{DynamicResource BottomBar.RunningTask}" Margin="0,0,20,0"/>
+                <Grid>
+                    <TextBlock Visibility="{Binding Converter={StaticResource BoolToVisibilityConverter},ConverterParameter={StaticResource VisibleIf_IsFalse},Path=IsAdmin}" Text="{DynamicResource BottomBar.Mode.RunAsUser}"/>
+                    <TextBlock Visibility="{Binding Converter={StaticResource BoolToVisibilityConverter},ConverterParameter={StaticResource VisibleIf_IsTrue},Path=IsAdmin}"  Text="{DynamicResource BottomBar.Mode.RunAsAdmin}"/>
+                </Grid>
+
+                <Image Source="/Resources/Icon/adb.png" Height="15" Margin="20,0,5,0"/>
+                <TextBlock VerticalAlignment="Center" Text="{DynamicResource BottomBar.AdbVersion}"/>
+                <TextBlock Margin="3,0,0,0" VerticalAlignment="Center" Text="{Binding AdbVersion}"/>
+                <TextBlock Margin="20,0,0,0" VerticalAlignment="Center" Text="{DynamicResource BottomBar.Port}"/>
+                <TextBlock Margin="3,0,0,0" VerticalAlignment="Center" Text="{Binding Port}"/>
             </StackPanel>
         </Grid>
-        <StackPanel Margin="3" Orientation="Horizontal" HorizontalAlignment="Right">
-            <TextBlock Text="{Binding CountOfTaskRunning}"/>
-            <TextBlock Text="{DynamicResource BottomBar.RunningTask}" Margin="0,0,20,0"/>
-            <Grid>
-                <TextBlock Visibility="{Binding Converter={StaticResource BoolToVisibilityConverter},ConverterParameter={StaticResource VisibleIf_IsFalse},Path=IsAdmin}" Text="{DynamicResource BottomBar.Mode.RunAsUser}"/>
-                <TextBlock Visibility="{Binding Converter={StaticResource BoolToVisibilityConverter},ConverterParameter={StaticResource VisibleIf_IsTrue},Path=IsAdmin}"  Text="{DynamicResource BottomBar.Mode.RunAsAdmin}"/>
-            </Grid>
-
-            <Image Source="/Resources/Icon/adb.png" Height="15" Margin="20,0,5,0"/>
-            <TextBlock VerticalAlignment="Center" Text="{DynamicResource BottomBar.AdbVersion}"/>
-            <TextBlock Margin="3,0,0,0" VerticalAlignment="Center" Text="{Binding AdbVersion}"/>
-            <TextBlock Margin="20,0,0,0" VerticalAlignment="Center" Text="{DynamicResource BottomBar.Port}"/>
-            <TextBlock Margin="3,0,0,0" VerticalAlignment="Center" Text="{Binding Port}"/>
-        </StackPanel>
-        
-    </Grid>
+    </DockPanel>
 </UserControl>

@@ -7,13 +7,13 @@
              xmlns:controls="clr-namespace:HandyControl.Controls;assembly=HandyControl"
              mc:Ignorable="d" 
              FontFamily="{DynamicResource AutumnBox.Font}"
-             Width="800"
-            Background="White">
+             Width="800">
     <Grid>
         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="60" Text="{DynamicResource LoadingAppName}"/>
-            <TextBlock Text="{DynamicResource AppDesc}" FontSize="30" Margin="5" HorizontalAlignment="Center"/>
-            <controls:LoadingLine/>
+            <Image Source="/Resources/Drawable/icon.png" Width="120"/>
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="40" Text="{DynamicResource AppNameWithVersion}"/>
+            <TextBlock Text="{DynamicResource AppDesc}" FontSize="15" Margin="5" HorizontalAlignment="Center"/>
+            <!--<controls:LoadingLine/>-->
         </StackPanel>
         <TextBlock x:Name="TBSentence" VerticalAlignment="Bottom" HorizontalAlignment="Center" TextWrapping="Wrap" Foreground="Gray" Margin="10"/>
     </Grid>
