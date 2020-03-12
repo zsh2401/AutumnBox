@@ -3,7 +3,7 @@ using System.IO;
 
 namespace AutumnBox.ADBProvider
 {
-    public class ATMBAdbManager : IAdbManager
+    public class ATMBWin32AdbManager : IAdbManager
     {
         private const string ADB_TOOLS_PATH = "adb_tools/";
 

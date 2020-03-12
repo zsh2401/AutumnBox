@@ -194,7 +194,7 @@ namespace AutumnBox.GUI.Util
             {
                 TaskKill.Kill("adb.exe");
                 logger.Info("adb server starting");
-                var adbManager = new ATMBAdbManager();
+                var adbManager = new ATMBWin32AdbManager();
                 adbManager.Extract();
                 Adb.Load(adbManager);
                 Adb.Server.Start();
