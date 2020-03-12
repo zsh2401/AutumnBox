@@ -8,7 +8,7 @@ using AutumnBox.OpenFramework.Open;
 
 namespace AutumnBox.OpenFramework.Implementation
 {
-    internal class RunningManagerImpl : ITaskManager
+    internal class TaskManagerImpl : ITaskManager
     {
         public IExtensionTask[] Tasks => ExtensionTaskManager.Instance.RunningTasks.ToArray();
 
@@ -19,7 +19,7 @@ namespace AutumnBox.OpenFramework.Implementation
                            select wrapper;
             if (!wrappers.Any())
             {
-                throw new Exception("Extension not found");
+                throw new ArgumentException("Extension not found");
             }
             return new ExtensionTask(wrappers.First().ExtensionType);
         }
@@ -36,7 +36,7 @@ namespace AutumnBox.OpenFramework.Implementation
                            select wrapper;
             if (!wrappers.Any())
             {
-                throw new Exception("Extension not found");
+                throw new ArgumentException("Extension not found");
             }
             return new ExtensionTask(wrappers.First().ExtensionType);
         }

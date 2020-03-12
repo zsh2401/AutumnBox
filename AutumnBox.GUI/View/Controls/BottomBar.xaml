@@ -33,13 +33,13 @@
                 <TextBlock Visibility="{Binding Converter={StaticResource BoolToVisibilityConverter},ConverterParameter={StaticResource VisibleIf_IsFalse},Path=IsAdmin}" Text="{DynamicResource BottomBar.Mode.RunAsUser}"/>
                 <TextBlock Visibility="{Binding Converter={StaticResource BoolToVisibilityConverter},ConverterParameter={StaticResource VisibleIf_IsTrue},Path=IsAdmin}"  Text="{DynamicResource BottomBar.Mode.RunAsAdmin}"/>
             </Grid>
-            
+
             <Image Source="/Resources/Icon/adb.png" Height="15" Margin="20,0,5,0"/>
             <TextBlock VerticalAlignment="Center" Text="{DynamicResource BottomBar.AdbVersion}"/>
             <TextBlock Margin="3,0,0,0" VerticalAlignment="Center" Text="{Binding AdbVersion}"/>
             <TextBlock Margin="20,0,0,0" VerticalAlignment="Center" Text="{DynamicResource BottomBar.Port}"/>
             <TextBlock Margin="3,0,0,0" VerticalAlignment="Center" Text="{Binding Port}"/>
         </StackPanel>
-
+        
     </Grid>
 </UserControl>

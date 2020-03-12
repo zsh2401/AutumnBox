@@ -32,8 +32,9 @@ namespace AutumnBox.OpenFramework.Management
             LakeProvider.Lake = new ChinaLake();
             LakeProvider.Lake.RegisterSingleton<IProxyBuilder>(new ProxyBuilder());
             LakeProvider.Lake.RegisterSingleton<IBaseApi>(baseApi);
-            LakeProvider.Lake.RegisterSingleton<ITaskManager, RunningManagerImpl>();
+            LakeProvider.Lake.RegisterSingleton<ITaskManager, TaskManagerImpl>();
             LakeProvider.Lake.RegisterSingleton<IMd5, Md5Impl>();
+            LakeProvider.Lake.RegisterSingleton<ISoundService, SoundImpl>();
             LakeProvider.Lake.RegisterSingleton<IEmbeddedFileManager, EmbeddedFileManagerImpl>();
             LakeProvider.Lake.RegisterSingleton<IDeviceManager, DeviceSelectorImpl>();
             LakeProvider.Lake.RegisterSingleton<IOperatingSystemAPI, OSImpl>();

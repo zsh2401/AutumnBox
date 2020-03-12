@@ -54,7 +54,7 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>none</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\AutumnBox_Output\AutumnBox\file\</OutputPath>
+    <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE;STAT RELEASE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -391,6 +391,10 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AutumnBox.ADBProvider\AutumnBox.ADBProvider.csproj">
+      <Project>{3274914b-cf88-4101-a74e-d408d16eba88}</Project>
+      <Name>AutumnBox.ADBProvider</Name>
+    </ProjectReference>
     <ProjectReference Include="..\AutumnBox.Basic\AutumnBox.Basic.csproj">
       <Project>{5276bfb4-b089-4e34-9c42-42ea019ef320}</Project>
       <Name>AutumnBox.Basic</Name>
@@ -635,21 +639,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\AdbExecutable\adb.exe">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\AdbExecutable\AdbWinApi.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\AdbExecutable\AdbWinUsbApi.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\AdbExecutable\fastboot.exe">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\AdbExecutable\libwinpthread-1.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <None Include="Resources\TextFile1.txt" />
     <Resource Include="Resources\Drawable\android.png" />
     <Resource Include="Resources\Drawable\DeviceBar\phone.png" />

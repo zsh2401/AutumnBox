@@ -23,7 +23,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Extension\IClassExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\IExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Implementation\ChinaLake.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Implementation\MethodProxy.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Leaf\Attributes\LDoNotScanAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Leaf\Internal\ApiAllocator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Leaf\Internal\Impl\LeafEmbManager.cs" />
@@ -88,7 +87,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Management\ILibsManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\ExtLibrary\DreamLibManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\TextKit\IClassTextDictionary.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Implementation\RunningManagerImpl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Implementation\TaskManagerImpl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\ITaskManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Implementation\ClassTextManagerImpl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Implementation\DeviceSelectorImpl.cs" />

@@ -12,7 +12,7 @@ namespace AutumnBox.GUI.Util.Debugging
     [HeritableStation]
     internal class LoggingStation : ILoggingStation, IDisposable
     {
-        public const string LOG_FLODER = "..\\logs";
+        public const string LOG_FLODER = "logs";
         private const string LOG_FILENAME_FORMAT = "yy_MM_dd__HH_mm_ss";
         public IEnumerable<ILog> Logs => logged;
         public static LoggingStation Instance

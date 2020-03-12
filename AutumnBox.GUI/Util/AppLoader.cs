@@ -4,6 +4,7 @@
 ** date:  2018/8/19 20:39:02 (UTC +8:00)
 ** desc： ...
 *************************************************/
+using AutumnBox.ADBProvider;
 using AutumnBox.Basic.ManagedAdb;
 using AutumnBox.GUI.Properties;
 using AutumnBox.GUI.Util.Bus;
@@ -193,7 +194,9 @@ namespace AutumnBox.GUI.Util
             {
                 TaskKill.Kill("adb.exe");
                 logger.Info("adb server starting");
-                Adb.Load(new AdbManager());
+                var adbManager = new ATMBAdbManager();
+                adbManager.Extract();
+                Adb.Load(adbManager);
                 Adb.Server.Start();
                 logger.Info($"adb server started at {Adb.Server.IP}:{Adb.Server.Port}");
             }
