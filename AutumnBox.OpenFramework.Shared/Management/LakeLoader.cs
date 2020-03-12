@@ -17,6 +17,7 @@
 using AutumnBox.OpenFramework.Implementation;
 using AutumnBox.OpenFramework.Open;
 using AutumnBox.OpenFramework.Open.ADBKit;
+using AutumnBox.OpenFramework.Open.ProxyKit;
 
 namespace AutumnBox.OpenFramework.Management
 {
@@ -28,16 +29,15 @@ namespace AutumnBox.OpenFramework.Management
     {
         public static void Load(IBaseApi baseApi)
         {
-            var lake = new ChinaLake();
-
-            lake.RegisterSingleton(baseApi);
-            lake.RegisterSingleton<IMd5, Md5Impl>();
-            lake.RegisterSingleton<IEmbeddedFileManager, EmbeddedFileManagerImpl>();
-            lake.RegisterSingleton<IDeviceManager, DeviceSelectorImpl>();
-            lake.RegisterSingleton<IOperatingSystemAPI, OSImpl>();
-            lake.Register<IStorageManager, StorageManagerImpl>();
-
-            LakeProvider.Lake = lake;
+            LakeProvider.Lake = new ChinaLake();
+            LakeProvider.Lake.RegisterSingleton<IProxyBuilder>(new ProxyBuilder());
+            LakeProvider.Lake.RegisterSingleton<IBaseApi>(baseApi);
+            LakeProvider.Lake.RegisterSingleton<ITaskManager, RunningManagerImpl>();
+            LakeProvider.Lake.RegisterSingleton<IMd5, Md5Impl>();
+            LakeProvider.Lake.RegisterSingleton<IEmbeddedFileManager, EmbeddedFileManagerImpl>();
+            LakeProvider.Lake.RegisterSingleton<IDeviceManager, DeviceSelectorImpl>();
+            LakeProvider.Lake.RegisterSingleton<IOperatingSystemAPI, OSImpl>();
+            LakeProvider.Lake.Register<IStorageManager, StorageManagerImpl>();
         }
     }
 }

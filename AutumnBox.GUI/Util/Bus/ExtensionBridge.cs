@@ -1,11 +1,6 @@
 ﻿using AutumnBox.Logging;
-using AutumnBox.OpenFramework.Management.ExtensionThreading;
 using AutumnBox.OpenFramework.Open;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutumnBox.GUI.Util.Bus
 {
@@ -15,7 +10,7 @@ namespace AutumnBox.GUI.Util.Bus
         {
             try
             {
-                LakeProvider.Lake.Get<ITaskManager>().GetNewThread(className)?.Start();
+                LakeProvider.Lake.Get<ITaskManager>().CreateNewTaskOf(className)?.Start();
             }
             catch (Exception e)
             {

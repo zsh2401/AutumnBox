@@ -241,7 +241,7 @@ namespace AutumnBox.GUI.ViewModel
                 if (closeResult == true)
                 {
                     e.Cancel = true;
-                    Finish(LeafConstants.ERR_CANCELED_BY_USER);
+                    Finish(0);
                 }
                 else
                 {

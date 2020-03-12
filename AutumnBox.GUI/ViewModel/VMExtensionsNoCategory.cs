@@ -8,6 +8,7 @@ using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.Management;
 using AutumnBox.OpenFramework.Management.ExtLibrary;
 using AutumnBox.OpenFramework.Management.Wrapper;
+using AutumnBox.OpenFramework.Open;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Input;
@@ -114,9 +115,13 @@ namespace AutumnBox.GUI.ViewModel
             DeviceState targetStates = extensionWrapper.Info.RequiredDeviceStates;
 
             if (isNMExt)//如果目标模块无关设备状态,直接执行
-                extensionWrapper.GetThread().Start();
+            {
+                LakeProvider.Lake.Get<ITaskManager>().CreateNewTaskOf(extensionWrapper.ExtensionType).Start();
+            }
             else if (isSelectingDevice && targetStates.HasFlag(crtDev.State))//有关设备状态,并且设备状态正确,执行
-                extensionWrapper.GetThread().Start();
+            {
+                LakeProvider.Lake.Get<ITaskManager>().CreateNewTaskOf(extensionWrapper.ExtensionType).Start();
+            }
             else//不符合执行条件,警告
                 MainWindowBus.Warning("IS NOT TARGET STATE ERROR");
         }

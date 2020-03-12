@@ -2,7 +2,7 @@
 using AutumnBox.GUI.MVVM;
 using AutumnBox.GUI.Util;
 using AutumnBox.GUI.Util.Bus;
-using AutumnBox.OpenFramework.Management.ExtensionThreading;
+using AutumnBox.OpenFramework.Open;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -62,7 +62,7 @@ namespace AutumnBox.GUI.ViewModel
         }
         private int _countOfTaskRunning;
 
-        private readonly IExtensionThreadManager threadManager;
+        private readonly ITaskManager taskManager;
 
         public VMBottomBar()
         {
@@ -73,7 +73,7 @@ namespace AutumnBox.GUI.ViewModel
             };
             _isAdmin = Self.HaveAdminPermission;
             GetAdbVersion();
-            threadManager = ExtensionThreadManager.Instance;
+            taskManager = LakeProvider.Lake.Get<ITaskManager>();
             Task.Run(() =>
             {
                 while (true)
@@ -98,7 +98,7 @@ namespace AutumnBox.GUI.ViewModel
         {
             try
             {
-                CountOfTaskRunning = threadManager.GetRunning().Count();
+                CountOfTaskRunning = taskManager.Tasks.Length;
             }
             catch { }
         }

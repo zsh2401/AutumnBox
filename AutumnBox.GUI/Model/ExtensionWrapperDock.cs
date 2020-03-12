@@ -10,6 +10,7 @@ using AutumnBox.GUI.Util.Bus;
 using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.Extension.Leaf;
 using AutumnBox.OpenFramework.Management.Wrapper;
+using AutumnBox.OpenFramework.Open;
 using System;
 using System.Collections.Generic;
 using System.Windows;
@@ -94,7 +95,9 @@ namespace AutumnBox.GUI.Model
         private void ExecuteImpl()
         {
             if (StateCheck())
-                Wrapper.GetThread().Start();
+            {
+                LakeProvider.Lake.Get<ITaskManager>().CreateNewTaskOf(Wrapper.ExtensionType).Start();
+            }
         }
         private bool StateCheck()
         {

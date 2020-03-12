@@ -14,6 +14,7 @@
 * ==============================================================================
 */
 
+using AutumnBox.OpenFramework.Implementation;
 using AutumnBox.OpenFramework.Open.ProxyKit;
 using System;
 
@@ -24,7 +25,7 @@ namespace AutumnBox.OpenFramework.Open
     /// </summary>
     public static class ILakeExtension
     {
-        private readonly static IProxyBuilder proxyBuilder;
+        private readonly static IProxyBuilder proxyBuilder = new ProxyBuilder();
         /// <summary>
         /// 泛型地获取一个值
         /// </summary>

@@ -62,6 +62,7 @@ namespace AutumnBox.OpenFramework.Management.ExtLibrary
         private IEnumerable<FileInfo> GetFiles()
         {
             var extDir = new DirectoryInfo(BuildInfo.DEFAULT_EXTENSION_PATH);
+            if (!extDir.Exists) extDir.Create();
             var files = new List<FileInfo>()
                 .Concat(extDir.GetFiles(PATTERN_DEFAULT))
                 .Concat(extDir.GetFiles(PATTERN_ATMBEXT))

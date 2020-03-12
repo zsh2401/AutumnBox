@@ -48,7 +48,7 @@ namespace AutumnBox.GUI.ViewModel
             });
             ShowInformation = new FlexiableCommand((p) =>
             {
-                (p as ILibrarian).ShowInformation();
+                //(p as ILibrarian).ShowInformation();
             });
         }
 
