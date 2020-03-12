@@ -11,12 +11,13 @@
              xmlns:controls1="clr-namespace:AutumnBox.GUI.View.Controls"
              xmlns:controls="clr-namespace:HandyControl.Controls;assembly=HandyControl"
              mc:Ignorable="d" 
+             Background="White"
              d:DesignHeight="619" d:DesignWidth="1042">
     <UserControl.DataContext>
         <viewmodel:VMPanelMain/>
     </UserControl.DataContext>
     <DockPanel>
-        <controls1:DeviceBar DockPanel.Dock="Top"  Margin="10"/>
+        <controls1:DeviceBar DockPanel.Dock="Top" />
         <controls1:BottomBar DockPanel.Dock="Bottom"/>
         <TabControl x:Name="TabControl" SelectedIndex="{Binding TabSelectedIndex}" Background="Transparent" TabStripPlacement="Left">
             <TabItem TabIndex="0" Width="120" Background="Transparent" Header="{DynamicResource Home}">

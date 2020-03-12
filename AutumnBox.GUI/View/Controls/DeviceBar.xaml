@@ -6,7 +6,8 @@
              xmlns:local="clr-namespace:AutumnBox.GUI.View.Controls"
              xmlns:viewmodel="clr-namespace:AutumnBox.GUI.ViewModel"
              mc:Ignorable="d" 
-             d:DesignWidth="800" Margin="10">
+             Background="White"
+             d:DesignWidth="800" Padding="10">
     <UserControl.DataContext>
         <viewmodel:VMDeviceBar/>
     </UserControl.DataContext>
