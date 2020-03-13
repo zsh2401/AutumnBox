@@ -33,9 +33,11 @@
     </Window.InputBindings>
     <controls:Window.NonClientAreaContent>
         <StackPanel Orientation="Horizontal">
+            <TextBlock Margin="5" FontSize="13" VerticalAlignment="Center" Text="{DynamicResource AppName}"/>
+            <controls1:MainMenu x:Name="Menu" Visibility="Collapsed"/>
             <Grid>
-                <TextBlock Margin="5" FontSize="13" VerticalAlignment="Center" Text="{DynamicResource LoadingAppName}"/>
-                <controls1:MainMenu x:Name="Menu" Visibility="Hidden"/>
+             
+              
             </Grid>
         </StackPanel>
     </controls:Window.NonClientAreaContent>

@@ -232,6 +232,7 @@
     <Compile Include="ViewModel\VMBottomBar.cs" />
     <Compile Include="ViewModel\VMDeviceDash.cs" />
     <Compile Include="ViewModel\VMDeviceBar.cs" />
+    <Compile Include="ViewModel\VMDeviceSelector.cs" />
     <Compile Include="ViewModel\VMExtensionsNoCategory.cs" />
     <Compile Include="ViewModel\VMGuide.cs" />
     <Compile Include="ViewModel\VMHome.cs" />
@@ -246,6 +247,9 @@
     <Compile Include="ViewModel\VMPanelMain.cs" />
     <Compile Include="ViewModel\VMSettingsDialog.cs" />
     <Compile Include="ViewModel\VMUpdateLogs.cs" />
+    <Compile Include="View\Controls\DeviceSelector.xaml.cs">
+      <DependentUpon>DeviceSelector.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Controls\ExtensionsPanel.xaml.cs">
       <DependentUpon>ExtensionsPanel.xaml</DependentUpon>
     </Compile>
@@ -297,6 +301,9 @@
     </Compile>
     <Compile Include="View\Panel\PanelMain.xaml.cs">
       <DependentUpon>PanelMain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Panel\PanelMainV2.xaml.cs">
+      <DependentUpon>PanelMainV2.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Panel\PanelMore.xaml.cs">
       <DependentUpon>PanelMore.xaml</DependentUpon>
@@ -488,6 +495,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="View\Controls\DeviceSelector.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Controls\ExtensionsPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -555,6 +566,10 @@
     <Page Include="View\Panel\PanelMain.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Panel\PanelMainV2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Panel\PanelMore.xaml">
       <Generator>MSBuild:Compile</Generator>

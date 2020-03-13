@@ -6,12 +6,16 @@
              xmlns:local="clr-namespace:AutumnBox.GUI.View.Controls"
              xmlns:viewmodel="clr-namespace:AutumnBox.GUI.ViewModel"
              mc:Ignorable="d" 
+             Background="{DynamicResource RegionBrush}"
              d:DesignWidth="800">
     <UserControl.DataContext>
         <viewmodel:VMMainMenu/>
     </UserControl.DataContext>
-    <Grid>
-        <Menu DockPanel.Dock="Top">
+    <DockPanel>
+        <Grid DockPanel.Dock="Right">
+            <local:DeviceSelector Width="200"/>
+        </Grid>
+        <Menu DockPanel.Dock="Left">
             <MenuItem Header="{DynamicResource Menu.File}">
                 <MenuItem Header="{DynamicResource Menu.Restart}" InputGestureText="Shift + R" Command="{Binding Restart}"/>
                 <MenuItem Command="{Binding Exit}" Header="{DynamicResource Menu.Exit}" InputGestureText="Alt + F4">
@@ -80,5 +84,5 @@
                 <MenuItem Header="{DynamicResource Menu.About}" Command="{Binding ShowWindowDialog}" CommandParameter="About"/>
             </MenuItem>
         </Menu>
-    </Grid>
+    </DockPanel>
 </UserControl>

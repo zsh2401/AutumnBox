@@ -10,13 +10,13 @@
              FontSize="12"
              FontFamily="{DynamicResource AutumnBox.Font}"
              Foreground="{DynamicResource PrimaryTextBrush}" 
-             
+             Background="{DynamicResource RegionBrush}"
              d:DesignWidth="800">
     <UserControl.DataContext>
         <viewmodel:VMBottomBar/>
     </UserControl.DataContext>
     <DockPanel>
-        <hc:Divider DockPanel.Dock="Top" Orientation="Horizontal" Margin="1"/>
+        <!--<hc:Divider DockPanel.Dock="Top" Orientation="Horizontal" Margin="1"/>-->
         <Grid>
             <Grid Margin="20,0,20,0">
                 <StackPanel HorizontalAlignment="Left" Margin="3" VerticalAlignment="Center" Orientation="Horizontal">

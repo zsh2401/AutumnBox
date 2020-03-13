@@ -6,7 +6,9 @@
              xmlns:local="clr-namespace:AutumnBox.GUI.View.Panel"
              xmlns:viewmodel="clr-namespace:AutumnBox.GUI.ViewModel"
              mc:Ignorable="d" 
-              d:DesignWidth="250">
+             Padding="15"
+             Background="{DynamicResource RegionBrush}"
+              d:DesignWidth="200">
     <UserControl.DataContext>
         <viewmodel:VMDeviceDash/>
     </UserControl.DataContext>

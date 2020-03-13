@@ -30,7 +30,7 @@ namespace AutumnBox.GUI.Util.Bus
                 try
                 {
                     SLogger.Info(nameof(MainWindowBus), "Panel creating");
-                    var panel = new PanelMain();
+                    var panel = new PanelMainV2();
                     MainWindow.MainContentContainer.Content = panel;
                     SLogger.Info(nameof(MainWindowBus), "Created panel instance");
                 }

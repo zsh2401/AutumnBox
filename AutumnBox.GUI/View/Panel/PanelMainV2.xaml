@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="AutumnBox.GUI.View.Panel.PanelMainV2"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AutumnBox.GUI.View.Panel"
+             xmlns:hc="https://handyorg.github.io/handycontrol"
+             xmlns:controls="clr-namespace:AutumnBox.GUI.View.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="900">
+    <DockPanel>
+        <controls:BottomBar DockPanel.Dock="Bottom"/>
+
+
+
+        <Border DockPanel.Dock="Left" Effect="{StaticResource EffectShadow4}"  CornerRadius="10" Padding="5" Margin="15" Background="{DynamicResource RegionBrush}">
+            <local:DeviceDash   Width="200" />
+        </Border>
+
+
+        <DockPanel>
+            <controls:ExtensionsPanel DockPanel.Dock="Bottom"/>
+        </DockPanel>
+    </DockPanel>
+</UserControl>
