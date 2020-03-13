@@ -10,23 +10,53 @@
              FontSize="12"
              FontFamily="{DynamicResource AutumnBox.Font}"
              Foreground="{DynamicResource PrimaryTextBrush}" 
-             Background="{DynamicResource RegionBrush}"
              d:DesignWidth="800">
     <UserControl.DataContext>
         <viewmodel:VMBottomBar/>
     </UserControl.DataContext>
-    <DockPanel>
-        <!--<hc:Divider DockPanel.Dock="Top" Orientation="Horizontal" Margin="1"/>-->
-        <Grid>
-            <Grid Margin="20,0,20,0">
-                <StackPanel HorizontalAlignment="Left" Margin="3" VerticalAlignment="Center" Orientation="Horizontal">
-                    <Image Source="/Resources/Drawable/BottomBar/phone.png" Height="15" Margin="0,0,5,0"/>
-                    <TextBlock  Text="{DynamicResource BottomBar.Devices.Prev}"/>
-                    <TextBlock   Text="{Binding CountOfDevices}"/>
-                    <TextBlock  Text="{DynamicResource BottomBar.Devices.Suf}"/>
-                </StackPanel>
+    <DockPanel VerticalAlignment="Center">
+        <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
+            <TextBlock Text="{Binding CountOfTaskRunning}"/>
+            <TextBlock Text="{DynamicResource BottomBar.RunningTask}"/>
+            <hc:Divider Orientation="Vertical"/>
+            <Grid>
+                <TextBlock Visibility="{Binding Converter={StaticResource BoolToVisibilityConverter},ConverterParameter={StaticResource VisibleIf_IsFalse},Path=IsAdmin}" Text="{DynamicResource BottomBar.Mode.RunAsUser}"/>
+                <TextBlock Visibility="{Binding Converter={StaticResource BoolToVisibilityConverter},ConverterParameter={StaticResource VisibleIf_IsTrue},Path=IsAdmin}"  Text="{DynamicResource BottomBar.Mode.RunAsAdmin}"/>
             </Grid>
-            <StackPanel Margin="3" Orientation="Horizontal" HorizontalAlignment="Right">
+            <hc:Divider Orientation="Vertical"/>
+            <Image Source="/Resources/Icon/adb.png" Height="15"/>
+            <TextBlock Text="{DynamicResource BottomBar.AdbVersion}"/>
+            <TextBlock Margin="3,0,0,0" Text="{Binding AdbVersion}"/>
+            <hc:Divider Orientation="Vertical"/>
+            <TextBlock Margin="20,0,0,0" Text="{DynamicResource BottomBar.Port}"/>
+            <TextBlock Margin="3,0,10,0"  Text="{Binding Port}"/>
+        </StackPanel>
+
+        <StackPanel DockPanel.Dock="Left" Orientation="Horizontal">
+            <Image Source="/Resources/Drawable/BottomBar/phone.png" Height="15"/>
+            <TextBlock  Text="{DynamicResource BottomBar.Devices.Prev}"/>
+            <TextBlock   Text="{Binding CountOfDevices}"/>
+            <TextBlock  Text="{DynamicResource BottomBar.Devices.Suf}"/>
+        </StackPanel>
+
+    </DockPanel>
+    <!--<DockPanel>
+        <StackPanel DockPanel.Dock="Left" VerticalAlignment="Center" Orientation="Horizontal">
+            <Image Source="/Resources/Drawable/BottomBar/phone.png" Height="15" Margin="0,0,5,0"/>
+            <TextBlock  Text="{DynamicResource BottomBar.Devices.Prev}"/>
+            <TextBlock   Text="{Binding CountOfDevices}"/>
+            <TextBlock  Text="{DynamicResource BottomBar.Devices.Suf}"/>
+            <hc:Divider Margin="0" Orientation="Vertical"/>
+        </StackPanel>
+        <hc:Divider/
+        -->
+    <!--<hc:Divider DockPanel.Dock="Top" Orientation="Horizontal" Margin="1"/>-->
+    <!--
+        <Grid DockPanel.Dock="Left">
+            <Grid>
+                
+            </Grid>
+            <StackPanel  Margin="3" Orientation="Horizontal" HorizontalAlignment="Right">
                 <TextBlock Text="{Binding CountOfTaskRunning}"/>
                 <TextBlock Text="{DynamicResource BottomBar.RunningTask}" Margin="0,0,20,0"/>
                 <Grid>
@@ -41,5 +71,6 @@
                 <TextBlock Margin="3,0,0,0" VerticalAlignment="Center" Text="{Binding Port}"/>
             </StackPanel>
         </Grid>
-    </DockPanel>
+        
+    </DockPanel>-->
 </UserControl>

@@ -9,11 +9,13 @@
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="900">
     <DockPanel>
-        <controls:BottomBar DockPanel.Dock="Bottom"/>
+        <hc:Divider DockPanel.Dock="Top" Margin="0" Effect="{StaticResource EffectShadow4}" />
+
+        <controls:BottomBar Effect="{StaticResource EffectShadow4}"  Height="20" Background="{DynamicResource RegionBrush}" DockPanel.Dock="Bottom"/>
+        <hc:Divider DockPanel.Dock="Bottom" Margin="0"/>
 
 
-
-        <Border DockPanel.Dock="Left" Effect="{StaticResource EffectShadow4}"  CornerRadius="10" Padding="5" Margin="15" Background="{DynamicResource RegionBrush}">
+        <Border DockPanel.Dock="Left" Effect="{StaticResource EffectShadow4}"  CornerRadius="10" Padding="5" Margin="10" Background="{DynamicResource RegionBrush}">
             <local:DeviceDash   Width="200" />
         </Border>
 

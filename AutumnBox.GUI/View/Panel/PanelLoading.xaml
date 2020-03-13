@@ -6,8 +6,7 @@
              xmlns:local="clr-namespace:AutumnBox.GUI.View.Panel"
              xmlns:controls="clr-namespace:HandyControl.Controls;assembly=HandyControl"
              mc:Ignorable="d" 
-             FontFamily="{DynamicResource AutumnBox.Font}"
-             Width="800">
+             FontFamily="{DynamicResource AutumnBox.Font}">
     <Grid>
         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Image Source="/Resources/Drawable/icon.png" Width="120"/>

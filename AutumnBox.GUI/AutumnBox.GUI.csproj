@@ -211,6 +211,9 @@
     <Compile Include="Util\OpenFxManagement\AutumnBox_GUI_Caller.cs" />
     <Compile Include="Util\OpenFxManagement\GUIApiManager.cs" />
     <Compile Include="Util\OpenFxManagement\OpenFrameworkManager.cs" />
+    <Compile Include="Util\OS\BlurKit\AcrylicHelper.cs" />
+    <Compile Include="Util\OS\BlurKit\OSVersions.cs" />
+    <Compile Include="Util\OS\BlurKit\SystemInfo.cs" />
     <Compile Include="Util\OS\MachineInfo.cs" />
     <Compile Include="Util\OS\NativeMethods.cs" />
     <Compile Include="Util\OS\OtherProcessChecker.cs" />
@@ -373,6 +376,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="Util\OS\BlurKit\README.md" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">

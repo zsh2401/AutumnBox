@@ -3,6 +3,7 @@ using AutumnBox.GUI.MVVM;
 using AutumnBox.GUI.Properties;
 using AutumnBox.GUI.Util;
 using AutumnBox.GUI.Util.Bus;
+using AutumnBox.GUI.Util.OS.BlurKit;
 using AutumnBox.GUI.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Forms;
 using System.Windows.Input;
+using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
@@ -40,6 +42,12 @@ namespace AutumnBox.GUI.View.Windows
                     }
                 });
             };
+        }
+        protected override void OnActivated(EventArgs e)
+        {
+            base.OnActivated(e);
+            var intptrHelper = new WindowInteropHelper(this);
+            AcrylicHelper.EnableBlur(intptrHelper.Handle);
         }
     }
 }

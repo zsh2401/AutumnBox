@@ -15,7 +15,7 @@
         <Grid DockPanel.Dock="Right">
             <local:DeviceSelector Width="200"/>
         </Grid>
-        <Menu DockPanel.Dock="Left">
+        <Menu VerticalAlignment="Center" DockPanel.Dock="Left">
             <MenuItem Header="{DynamicResource Menu.File}">
                 <MenuItem Header="{DynamicResource Menu.Restart}" InputGestureText="Shift + R" Command="{Binding Restart}"/>
                 <MenuItem Command="{Binding Exit}" Header="{DynamicResource Menu.Exit}" InputGestureText="Alt + F4">

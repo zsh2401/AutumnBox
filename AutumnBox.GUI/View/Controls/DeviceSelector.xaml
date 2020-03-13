@@ -6,16 +6,13 @@
              xmlns:local="clr-namespace:AutumnBox.GUI.View.Controls"
              xmlns:viewmodel="clr-namespace:AutumnBox.GUI.ViewModel"
              mc:Ignorable="d" 
-             d:DesignHeight="40" d:DesignWidth="800">
+             d:DesignHeight="40" d:DesignWidth="200">
     <UserControl.DataContext>
         <viewmodel:VMDeviceSelector/>
     </UserControl.DataContext>
     <DockPanel >
         <Image DockPanel.Dock="Left" Source="/Resources/Drawable/DeviceBar/phone.png" Height="20" Margin="10,0,5,0"/>
-        <ComboBox  FontSize="8" Height="10" DockPanel.Dock="Right" >
-            <ComboBoxItem Content="Fuck"/>
-            <ComboBoxItem Content="Fuck"/>
-            <ComboBoxItem Content="Fuck"/>
+        <ComboBox  FontSize="8" Height="5" Margin="5" DockPanel.Dock="Right" ItemsSource="{Binding Devices}" SelectedItem="{Binding SelectedDevice}">
         </ComboBox>
     </DockPanel>
 </UserControl>

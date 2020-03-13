@@ -16,6 +16,8 @@
         ShowInTaskbar="True"
     ShowTitle="False"
     x:Name="thisWindow"
+   
+    Background="#CCFFFFFF"
     Icon="/Resources/Drawable/icon.ico"
         Title="{Binding Title}" MinHeight="625" MinWidth="930" Height="625" Width="930">
     <Window.DataContext>
@@ -33,17 +35,15 @@
     </Window.InputBindings>
     <controls:Window.NonClientAreaContent>
         <StackPanel Orientation="Horizontal">
-            <TextBlock Margin="5" FontSize="13" VerticalAlignment="Center" Text="{DynamicResource AppName}"/>
-            <controls1:MainMenu x:Name="Menu" Visibility="Collapsed"/>
             <Grid>
-             
-              
+                <TextBlock Margin="5" FontSize="13" VerticalAlignment="Center" Text="{DynamicResource AppName}"/>
+                <controls1:MainMenu x:Name="Menu" Visibility="Collapsed"/>
             </Grid>
         </StackPanel>
     </controls:Window.NonClientAreaContent>
     <Grid>
         <ContentControl x:Name="MainContentContainer">
-            <panel:PanelLoading Margin="0"/>
+            <panel:PanelLoading />
         </ContentControl>
         <ScrollViewer Margin="0,0,0,30" VerticalScrollBarVisibility="Hidden" VerticalAlignment="Top" HorizontalAlignment="Right" Grid.Column="1">
             <StackPanel controls:Growl.Token="main" controls:Growl.GrowlParent="True" Margin="0,10,10,10"/>
