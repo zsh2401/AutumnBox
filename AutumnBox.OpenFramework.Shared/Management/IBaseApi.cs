@@ -21,6 +21,17 @@ namespace AutumnBox.OpenFramework.Management
     interface IBaseApi
     {
         /// <summary>
+        /// 添加一个面板
+        /// </summary>
+        /// <param name="view"></param>
+        /// <param name="priority"></param>
+        void AppendPanel(object view, int priority);
+        /// <summary>
+        /// 移除一个被添加过的面板
+        /// </summary>
+        /// <param name="view"></param>
+        void RemovePanel(object view);
+        /// <summary>
         /// 刷新拓展模块列表
         /// </summary>
         void RefreshExtensionList();

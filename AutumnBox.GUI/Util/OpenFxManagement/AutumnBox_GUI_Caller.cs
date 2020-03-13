@@ -13,6 +13,7 @@ using AutumnBox.Basic.Device;
 using AutumnBox.GUI.Util.Bus;
 using AutumnBox.GUI.View.DialogContent;
 using AutumnBox.OpenFramework.Open.LKit;
+using System.Linq;
 
 namespace AutumnBox.GUI.Util.OpenFxManagement
 {
@@ -234,6 +235,17 @@ namespace AutumnBox.GUI.Util.OpenFxManagement
         public void RefreshExtensionList()
         {
             ExtensionViewRefresher.Instance.Refresh();
+        }
+
+        public void AppendPanel(object view, int priority)
+        {
+            PanelsManager.Views.Add(new PanelsManager.ViewContainer(view, priority));
+        }
+
+        public void RemovePanel(object view)
+        {
+            var target = PanelsManager.Views.Where((v) => v.View == view).First();
+            PanelsManager.Views.Remove(target);
         }
     }
 }
