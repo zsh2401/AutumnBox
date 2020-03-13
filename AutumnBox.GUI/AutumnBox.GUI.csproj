@@ -179,6 +179,7 @@
     <Compile Include="Util\Bus\ExtensionViewRefresher.cs" />
     <Compile Include="Util\Bus\MainWindowBus.cs" />
     <Compile Include="Util\Bus\OpenFxEventBus.cs" />
+    <Compile Include="Util\Bus\PanelsManager.cs" />
     <Compile Include="Util\Bus\WinM.cs" />
     <Compile Include="Util\ConditionalVars.cs" />
     <Compile Include="Util\Custom\ITheme.cs" />
@@ -247,6 +248,7 @@
     <Compile Include="ViewModel\VMMainWindow.cs" />
     <Compile Include="ViewModel\VMMainWindowV2.cs" />
     <Compile Include="ViewModel\VMOpenSource.cs" />
+    <Compile Include="ViewModel\VMPanelList.cs" />
     <Compile Include="ViewModel\VMPanelMain.cs" />
     <Compile Include="ViewModel\VMSettingsDialog.cs" />
     <Compile Include="ViewModel\VMUpdateLogs.cs" />
@@ -264,6 +266,9 @@
     </Compile>
     <Compile Include="View\Controls\MainMenu.xaml.cs">
       <DependentUpon>MainMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Controls\PanelListView.xaml.cs">
+      <DependentUpon>PanelListView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\CstPreview.xaml.cs">
       <DependentUpon>CstPreview.xaml</DependentUpon>
@@ -518,6 +523,10 @@
     <Page Include="View\Controls\MainMenu.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Controls\PanelListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\CstPreview.xaml">
       <Generator>MSBuild:Compile</Generator>

@@ -39,6 +39,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Open\IKeyValuePool.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\ILake.Extension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\INotificationManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Open\ILeafPanelManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\ProxyKit\InjectAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\ProxyKit\IProxy.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\ProxyKit\IProxy.g.cs" />

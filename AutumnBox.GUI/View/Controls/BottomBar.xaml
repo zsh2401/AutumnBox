@@ -9,7 +9,6 @@
              mc:Ignorable="d" 
              FontSize="12"
              FontFamily="{DynamicResource AutumnBox.Font}"
-             Foreground="{DynamicResource PrimaryTextBrush}" 
              d:DesignWidth="800">
     <UserControl.DataContext>
         <viewmodel:VMBottomBar/>

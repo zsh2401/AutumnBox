@@ -35,7 +35,7 @@ namespace AutumnBox.GUI.View.Windows
             {
                 App.Current.Dispatcher.Invoke(() =>
                 {
-                    Menu.Visibility = Visibility.Visible;
+                    MenuContainer.Visibility = Visibility.Visible;
                     if (Settings.Default.IsFirstLaunch)
                     {
                         WinM.X("Donate");

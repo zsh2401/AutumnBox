@@ -9,22 +9,28 @@
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="900">
     <DockPanel>
-        <hc:Divider DockPanel.Dock="Top" Margin="0" Effect="{StaticResource EffectShadow4}" />
+        <!--<hc:Divider DockPanel.Dock="Top" Margin="0" Effect="{StaticResource EffectShadow1}" />-->
 
         <controls:BottomBar Effect="{StaticResource EffectShadow4}"  Height="20" Background="{DynamicResource BackgroundBrush}" DockPanel.Dock="Bottom"/>
         <hc:Divider DockPanel.Dock="Bottom" Margin="0"/>
 
 
-        <DockPanel Margin="10" DockPanel.Dock="Left">
-            <DockPanel >
-                <controls:DeviceSelector DockPanel.Dock="Top" Margin="0,0,0,10"/>
-                <local:DeviceDash Width="200" />
-            </DockPanel>
-            <!--<Border DockPanel.Dock="Bottom" Effect="{StaticResource EffectShadow4}"  CornerRadius="5" Padding="5" Margin="10" Background="{DynamicResource BackgroundBrush}">
-              
-            </Border>-->
-        </DockPanel>
-        <hc:Divider Orientation="Vertical" DockPanel.Dock="Left"/>
+        <controls:PanelListView DockPanel.Dock="Left"/>
+        <!--<ScrollViewer Background="Transparent" DockPanel.Dock="Left" Padding="0,0,20,0">
+            <StackPanel Orientation="Vertical">
+                <Border DockPanel.Dock="Bottom" Effect="{StaticResource EffectShadow1}" Height="100"  CornerRadius="5" Padding="15" Margin="8" Background="{DynamicResource BackgroundBrush}">
+                    <TextBlock Text="Test Panel 2"/>
+                </Border>
+                <Border DockPanel.Dock="Bottom" Effect="{StaticResource EffectShadow1}"  CornerRadius="5" Padding="5" Margin="8" Background="{DynamicResource BackgroundBrush}">
+                    <controls:DeviceSelector DockPanel.Dock="Top"/>
+                </Border>
+       
+                <Border DockPanel.Dock="Bottom" Effect="{StaticResource EffectShadow1}"  CornerRadius="5" Padding="15" Margin="8" Background="{DynamicResource BackgroundBrush}">
+                    <local:DeviceDash Width="240" />
+                </Border>
+            </StackPanel>
+        </ScrollViewer>-->
+        <!--<hc:Divider Orientation="Vertical" DockPanel.Dock="Left"/>-->
 
 
 

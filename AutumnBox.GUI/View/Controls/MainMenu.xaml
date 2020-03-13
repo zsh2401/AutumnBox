@@ -6,83 +6,77 @@
              xmlns:local="clr-namespace:AutumnBox.GUI.View.Controls"
              xmlns:viewmodel="clr-namespace:AutumnBox.GUI.ViewModel"
              mc:Ignorable="d" 
-             Background="{DynamicResource RegionBrush}"
              d:DesignWidth="800">
     <UserControl.DataContext>
         <viewmodel:VMMainMenu/>
     </UserControl.DataContext>
-    <DockPanel>
-        <Grid DockPanel.Dock="Right">
-            <!--<local:DeviceSelector Width="200"/>-->
-        </Grid>
-        <Menu VerticalAlignment="Center" DockPanel.Dock="Left">
-            <MenuItem Header="{DynamicResource Menu.File}">
-                <MenuItem Header="{DynamicResource Menu.Restart}" InputGestureText="Shift + R" Command="{Binding Restart}"/>
-                <MenuItem Command="{Binding Exit}" Header="{DynamicResource Menu.Exit}" InputGestureText="Alt + F4">
-                    <MenuItem.Icon>
-                        <Image Source="/Resources/MenuIcon/exit.png"></Image>
-                    </MenuItem.Icon>
-                </MenuItem>
+    <Menu VerticalAlignment="Center" DockPanel.Dock="Left" Background="Transparent">
+        <MenuItem Header="{DynamicResource Menu.File}">
+            <MenuItem Header="{DynamicResource Menu.Restart}" InputGestureText="Shift + R" Command="{Binding Restart}"/>
+            <MenuItem Command="{Binding Exit}" Header="{DynamicResource Menu.Exit}" InputGestureText="Alt + F4">
+                <MenuItem.Icon>
+                    <Image Source="/Resources/MenuIcon/exit.png"></Image>
+                </MenuItem.Icon>
             </MenuItem>
-            <MenuItem Header="{DynamicResource Menu.Edit}">
-                <MenuItem Header="{DynamicResource Menu.Settings}" Command="{Binding ShowWindowDialog}" CommandParameter="Settings">
-                    <MenuItem.Icon>
-                        <Image Source="/Resources/MenuIcon/settings.png"></Image>
-                    </MenuItem.Icon>
-                </MenuItem>
+        </MenuItem>
+        <MenuItem Header="{DynamicResource Menu.Edit}">
+            <MenuItem Header="{DynamicResource Menu.Settings}" Command="{Binding ShowWindowDialog}" CommandParameter="Settings">
+                <MenuItem.Icon>
+                    <Image Source="/Resources/MenuIcon/settings.png"></Image>
+                </MenuItem.Icon>
             </MenuItem>
-            <MenuItem Header="{DynamicResource Menu.Terminatal}">
-                <MenuItem Header="{DynamicResource Menu.CMD}" InputGestureText="Shift + C" Command="{Binding OpenShell}" CommandParameter="cmd.exe">
-                    <MenuItem.Icon>
-                        <Image Source="/Resources/MenuIcon/cmd.png"></Image>
-                    </MenuItem.Icon>
-                </MenuItem>
-                <MenuItem Header="{DynamicResource Menu.PS}" InputGestureText="Shift + V" Command="{Binding OpenShell}" CommandParameter="powershell.exe">
-                    <MenuItem.Icon>
-                        <Image Source="/Resources/MenuIcon/ps.png"></Image>
-                    </MenuItem.Icon>
-                </MenuItem>
+        </MenuItem>
+        <MenuItem Header="{DynamicResource Menu.Terminatal}">
+            <MenuItem Header="{DynamicResource Menu.CMD}" InputGestureText="Shift + C" Command="{Binding OpenShell}" CommandParameter="cmd.exe">
+                <MenuItem.Icon>
+                    <Image Source="/Resources/MenuIcon/cmd.png"></Image>
+                </MenuItem.Icon>
             </MenuItem>
+            <MenuItem Header="{DynamicResource Menu.PS}" InputGestureText="Shift + V" Command="{Binding OpenShell}" CommandParameter="powershell.exe">
+                <MenuItem.Icon>
+                    <Image Source="/Resources/MenuIcon/ps.png"></Image>
+                </MenuItem.Icon>
+            </MenuItem>
+        </MenuItem>
 
-            <MenuItem Header="{DynamicResource Menu.Extension}">
-                <MenuItem Header="{DynamicResource Menu.ExtensionHelp}" Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoHowInstallExt}"/>
-                <MenuItem InputGestureText="Shift + G" Header="{DynamicResource Menu.DlExt}" Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoDownloadExtensions}"/>
-                <MenuItem Header="{DynamicResource Menu.InstallExtension}" Command="{Binding InstallExtension}"/>
-                <MenuItem InputGestureText="Shift + O" Header="{DynamicResource Menu.OpenExtFloder}" Command="{Binding OpenExtFloder}"/>
+        <MenuItem Header="{DynamicResource Menu.Extension}">
+            <MenuItem Header="{DynamicResource Menu.ExtensionHelp}" Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoHowInstallExt}"/>
+            <MenuItem InputGestureText="Shift + G" Header="{DynamicResource Menu.DlExt}" Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoDownloadExtensions}"/>
+            <MenuItem Header="{DynamicResource Menu.InstallExtension}" Command="{Binding InstallExtension}"/>
+            <MenuItem InputGestureText="Shift + O" Header="{DynamicResource Menu.OpenExtFloder}" Command="{Binding OpenExtFloder}"/>
+        </MenuItem>
+        <MenuItem Header="{DynamicResource Menu.Debug}">
+            <MenuItem InputGestureText="Shift + D" Command="{Binding ShowWindow}" CommandParameter="Log" Header="{DynamicResource Menu.LoggingWindow}">
+                <MenuItem.Icon>
+                    <Image Source="/Resources/MenuIcon/debug.png"></Image>
+                </MenuItem.Icon>
             </MenuItem>
-            <MenuItem Header="{DynamicResource Menu.Debug}">
-                <MenuItem InputGestureText="Shift + D" Command="{Binding ShowWindow}" CommandParameter="Log" Header="{DynamicResource Menu.LoggingWindow}">
-                    <MenuItem.Icon>
-                        <Image Source="/Resources/MenuIcon/debug.png"></Image>
-                    </MenuItem.Icon>
-                </MenuItem>
-                <MenuItem Header="{DynamicResource Menu.DebugMode}" IsCheckable="True" IsChecked="{Binding DebugMode}"/>
-                <MenuItem Header="{DynamicResource Menu.ShowLoggingWindowNextTime}" IsCheckable="True" IsChecked="{Binding ShowDebugWindowNextTime}"/>
-                <MenuItem Header="{DynamicResource Menu.DevDocs}" Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoExtensionDevelopDoc}"/>
-                <MenuItem Header="{DynamicResource Menu.Libs}" Command="{Binding ShowWindowDialog}" CommandParameter="Libs"/>
-                <MenuItem Header="{DynamicResource Menu.RefreshHome}" InputGestureText="Ctrl + F5" Command="{Binding RefreshHomeContent}"/>
-            </MenuItem>
+            <MenuItem Header="{DynamicResource Menu.DebugMode}" IsCheckable="True" IsChecked="{Binding DebugMode}"/>
+            <MenuItem Header="{DynamicResource Menu.ShowLoggingWindowNextTime}" IsCheckable="True" IsChecked="{Binding ShowDebugWindowNextTime}"/>
+            <MenuItem Header="{DynamicResource Menu.DevDocs}" Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoExtensionDevelopDoc}"/>
+            <MenuItem Header="{DynamicResource Menu.Libs}" Command="{Binding ShowWindowDialog}" CommandParameter="Libs"/>
+            <MenuItem Header="{DynamicResource Menu.RefreshHome}" InputGestureText="Ctrl + F5" Command="{Binding RefreshHomeContent}"/>
+        </MenuItem>
 
-            <MenuItem Header="{DynamicResource Menu.Help}">
-                <MenuItem Header="{DynamicResource Menu.Donate}" Command="{Binding ShowWindowDialog}" CommandParameter="Donate">
-                    <MenuItem.Icon>
-                        <Image Source="/Resources/MenuIcon/donate.png"></Image>
-                    </MenuItem.Icon>
-                </MenuItem>
-                <MenuItem Header="{DynamicResource Menu.Guide}" Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoHelp}" InputGestureText="Ctrl + F1">
-                    <MenuItem.Icon>
-                        <Image Source="/Resources/MenuIcon/guide-book.png"></Image>
-                    </MenuItem.Icon>
-                </MenuItem>
-                <MenuItem Header="{DynamicResource Menu.OfficialWebsite}" Command="{Binding OpenUrl}" CommandParameter="{DynamicResource UrlOfficialWebsite}">
-                    <MenuItem.Icon>
-                        <Image Source="/Resources/MenuIcon/icon.png"></Image>
-                    </MenuItem.Icon>
-                </MenuItem>
-                <MenuItem Header="{DynamicResource Menu.CheckUpdate}" Command="{Binding UpdateCheck}"/>
-                <MenuItem Header="{DynamicResource Menu.OpenSource}" Command="{Binding ShowWindowDialog}" CommandParameter="OpenSource"/>
-                <MenuItem Header="{DynamicResource Menu.About}" Command="{Binding ShowWindowDialog}" CommandParameter="About"/>
+        <MenuItem Header="{DynamicResource Menu.Help}">
+            <MenuItem Header="{DynamicResource Menu.Donate}" Command="{Binding ShowWindowDialog}" CommandParameter="Donate">
+                <MenuItem.Icon>
+                    <Image Source="/Resources/MenuIcon/donate.png"></Image>
+                </MenuItem.Icon>
             </MenuItem>
-        </Menu>
-    </DockPanel>
+            <MenuItem Header="{DynamicResource Menu.Guide}" Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoHelp}" InputGestureText="Ctrl + F1">
+                <MenuItem.Icon>
+                    <Image Source="/Resources/MenuIcon/guide-book.png"></Image>
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Header="{DynamicResource Menu.OfficialWebsite}" Command="{Binding OpenUrl}" CommandParameter="{DynamicResource UrlOfficialWebsite}">
+                <MenuItem.Icon>
+                    <Image Source="/Resources/MenuIcon/icon.png"></Image>
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Header="{DynamicResource Menu.CheckUpdate}" Command="{Binding UpdateCheck}"/>
+            <MenuItem Header="{DynamicResource Menu.OpenSource}" Command="{Binding ShowWindowDialog}" CommandParameter="OpenSource"/>
+            <MenuItem Header="{DynamicResource Menu.About}" Command="{Binding ShowWindowDialog}" CommandParameter="About"/>
+        </MenuItem>
+    </Menu>
 </UserControl>
