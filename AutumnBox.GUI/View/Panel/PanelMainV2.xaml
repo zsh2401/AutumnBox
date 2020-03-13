@@ -11,17 +11,27 @@
     <DockPanel>
         <hc:Divider DockPanel.Dock="Top" Margin="0" Effect="{StaticResource EffectShadow4}" />
 
-        <controls:BottomBar Effect="{StaticResource EffectShadow4}"  Height="20" Background="{DynamicResource RegionBrush}" DockPanel.Dock="Bottom"/>
+        <controls:BottomBar Effect="{StaticResource EffectShadow4}"  Height="20" Background="{DynamicResource BackgroundBrush}" DockPanel.Dock="Bottom"/>
         <hc:Divider DockPanel.Dock="Bottom" Margin="0"/>
 
 
-        <Border DockPanel.Dock="Left" Effect="{StaticResource EffectShadow4}"  CornerRadius="10" Padding="5" Margin="10" Background="{DynamicResource RegionBrush}">
-            <local:DeviceDash   Width="200" />
-        </Border>
-
-
-        <DockPanel>
-            <controls:ExtensionsPanel DockPanel.Dock="Bottom"/>
+        <DockPanel Margin="10" DockPanel.Dock="Left">
+            <DockPanel >
+                <controls:DeviceSelector DockPanel.Dock="Top" Margin="0,0,0,10"/>
+                <local:DeviceDash Width="200" />
+            </DockPanel>
+            <!--<Border DockPanel.Dock="Bottom" Effect="{StaticResource EffectShadow4}"  CornerRadius="5" Padding="5" Margin="10" Background="{DynamicResource BackgroundBrush}">
+              
+            </Border>-->
         </DockPanel>
+        <hc:Divider Orientation="Vertical" DockPanel.Dock="Left"/>
+
+
+
+        <!--<Border DockPanel.Dock="Bottom" Effect="{StaticResource EffectShadow4}"  CornerRadius="10" Padding="5" Margin="10" Background="{DynamicResource BackgroundBrush}">
+    
+        </Border>-->
+        <controls:ExtensionsPanel/>
+
     </DockPanel>
 </UserControl>

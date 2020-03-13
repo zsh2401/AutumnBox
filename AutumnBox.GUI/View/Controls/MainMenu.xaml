@@ -13,7 +13,7 @@
     </UserControl.DataContext>
     <DockPanel>
         <Grid DockPanel.Dock="Right">
-            <local:DeviceSelector Width="200"/>
+            <!--<local:DeviceSelector Width="200"/>-->
         </Grid>
         <Menu VerticalAlignment="Center" DockPanel.Dock="Left">
             <MenuItem Header="{DynamicResource Menu.File}">
