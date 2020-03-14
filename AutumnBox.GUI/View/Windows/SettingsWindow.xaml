@@ -38,11 +38,11 @@
                     <DockPanel Margin="5">
 
                         <StackPanel Orientation="Vertical" DockPanel.Dock="Left">
-                            <TextBlock Margin="0,0,0,10" Text="THEME"/>
+                            <TextBlock Margin="0,0,0,10" Text="{DynamicResource PanelSettingsTheme}"/>
                             <hc:ButtonGroup>
-                                <RadioButton  IsChecked="{Binding ShouldUseLightTheme}" Content="亮色"/>
-                                <RadioButton IsChecked="{Binding ShouldUseAutoTheme}" Content="自动"/>
-                                <RadioButton  IsChecked="{Binding ShouldUseDarkTheme}" Content="暗色"/>
+                                <RadioButton  IsChecked="{Binding ShouldUseLightTheme}" Content="{DynamicResource PanelSettingsThemeLight}"/>
+                                <RadioButton IsChecked="{Binding ShouldUseAutoTheme}" Content="{DynamicResource PanelSettingsThemeAuto}"/>
+                                <RadioButton  IsChecked="{Binding ShouldUseDarkTheme}" Content="{DynamicResource PanelSettingsThemeDark}"/>
                             </hc:ButtonGroup>
                         </StackPanel>
                     </DockPanel>

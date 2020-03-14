@@ -198,6 +198,11 @@ Agreement modification:
     <s:String x:Key="PanelSettingsDoubleClickToStartExtTip">run extension by single click if you disable this option</s:String>
      <s:String x:Key="PanelSettingsTitleDontNeedUpdate">You are using the newest version</s:String>
      <s:String x:Key="PanelSettingsMsgDontNeedUpdate">Do not need any update</s:String>
+    
+            <s:String x:Key="PanelSettingsTheme">Theme</s:String>
+      <s:String x:Key="PanelSettingsThemeLight">Light</s:String>
+      <s:String x:Key="PanelSettingsThemeDark">Dark</s:String>
+      <s:String x:Key="PanelSettingsThemeAuto">Auto</s:String>
     <s:String x:Key="PanelSettingsGUIVersionLabel">GUI</s:String>
      <s:String x:Key="PanelSettingsCoreLibVersionLabel">Core Lib</s:String>
      <s:String x:Key="PanelSettingsAdbVersionLabel">ADB</s:String>

@@ -205,6 +205,10 @@
     <s:String x:Key="PanelSettingsTitleDontNeedUpdate">无需更新</s:String>
     <s:String x:Key="PanelSettingsMsgDontNeedUpdate">无需任何更新,你已经是最新版本了</s:String>
 
+        <s:String x:Key="PanelSettingsTheme">主题</s:String>
+      <s:String x:Key="PanelSettingsThemeLight">亮色</s:String>
+      <s:String x:Key="PanelSettingsThemeDark">暗色</s:String>
+      <s:String x:Key="PanelSettingsThemeAuto">自动</s:String>
     <s:String x:Key="PanelSettingsVersionInfo">版本信息</s:String>
       <s:String x:Key="PanelSettingsUpdateCheck">更新检测</s:String>
      <s:String x:Key="PanelSettingsUx">交互</s:String>

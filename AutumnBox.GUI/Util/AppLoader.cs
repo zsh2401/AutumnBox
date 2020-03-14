@@ -81,7 +81,6 @@ namespace AutumnBox.GUI.Util
             CheckOtherAutumnBox();
             OnLoading();
 
-            InitThemeSystem();
             InitLogSystem();
             InitHandyControl();
 

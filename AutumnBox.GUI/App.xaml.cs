@@ -13,6 +13,7 @@
 \* =============================================================================*/
 using AutumnBox.GUI.Util;
 using AutumnBox.GUI.Util.Net;
+using AutumnBox.GUI.Util.Theme;
 using System;
 using System.Windows;
 namespace AutumnBox.GUI
@@ -27,12 +28,14 @@ namespace AutumnBox.GUI
         public App() : base()
         {
             Current = this;
+
         }
 
         public static new App Current { get; private set; }
 
         protected override void OnStartup(StartupEventArgs e)
         {
+            ThemeManager.Instance.Reload();
             base.OnStartup(e);
             AppLoader.Instance.Failed += (s, _e) =>
             {

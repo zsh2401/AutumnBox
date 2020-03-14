@@ -34,6 +34,7 @@ namespace AutumnBox.GUI.ViewModel
                 RaisePropertyChanged();
             }
         }
+
         public bool ShouldUseAutoTheme
         {
             get => ThemeManager.Instance.ThemeMode == ThemeMode.Auto;
@@ -46,6 +47,7 @@ namespace AutumnBox.GUI.ViewModel
                 RaisePropertyChanged();
             }
         }
+
         public bool ShouldUseLightTheme
         {
             get => ThemeManager.Instance.ThemeMode == ThemeMode.Light;
@@ -171,6 +173,19 @@ namespace AutumnBox.GUI.ViewModel
 
         public ICommand ResetSettings { get; private set; }
 
+        public IEnumerable<ILanguage> Languages
+        {
+            get => LanguageManager.Instance.Languages;
+        }
+        public ILanguage SelectedLanguage
+        {
+            get => LanguageManager.Instance.Current;
+            set
+            {
+                LanguageManager.Instance.Current = value;
+                RaisePropertyChanged();
+            }
+        }
         public string LanguageDisplayMemberPath { get; set; } = nameof(ILanguage.LangName);
 
         #endregion
