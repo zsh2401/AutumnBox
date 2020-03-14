@@ -12,8 +12,8 @@
         <viewmodel:VMPanelList/>
     </UserControl.DataContext>
 
-    <ScrollViewer Padding="0,5,0,0">
-        <ItemsControl ItemsSource="{Binding Views}">
+    <ScrollViewer>
+        <ItemsControl ItemsSource="{Binding Views}" Padding="15,10,15,0" Margin="0,0,0,100">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <StackPanel Orientation="Vertical" IsItemsHost="True"/>
@@ -23,7 +23,7 @@
             <ItemsControl.ItemTemplate>
                 <ItemContainerTemplate>
 
-                    <Border CornerRadius="5" Padding="15" Margin="10,5,10,5" Background="{DynamicResource BorderBrush}">
+                    <Border CornerRadius="5" Padding="15" Margin="10,10,10,10" Effect="{DynamicResource EffectShadow4}" Background="{DynamicResource BlurWindowBackgroundBrush}">
                         <ContentControl Content="{Binding View}"/>
                     </Border>
 

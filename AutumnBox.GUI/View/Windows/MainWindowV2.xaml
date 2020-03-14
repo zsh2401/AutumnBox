@@ -15,7 +15,7 @@
     NonClientAreaHeight="20"
                       Style="{StaticResource WindowWin10}"
         ShowInTaskbar="True"
-    ShowTitle="True"
+    ShowTitle="False"
     x:Name="thisWindow"
        Background="{DynamicResource BlurWindowBackgroundBrush}"
     Icon="/Resources/Drawable/icon.ico"
@@ -33,20 +33,24 @@
         <KeyBinding Modifiers="Shift" Key="D" Command="{Binding ShowWindowDialog}" CommandParameter="Log"/>
         <KeyBinding Modifiers="Shift" Key="R" Command="{Binding Path=DataContext.Restart,ElementName=Menu}" />
     </Window.InputBindings>
-    <!--<controls:Window.NonClientAreaContent>
+    <controls:Window.NonClientAreaContent>
         <StackPanel Orientation="Horizontal">
             <Grid>
-                <TextBlock Margin="5" FontSize="13" VerticalAlignment="Center" Text="{DynamicResource AppName}"/>
-                <controls1:MainMenu x:Name="Menu" Visibility="Collapsed"/>
+                <!--<TextBlock Margin="5" FontSize="13" VerticalAlignment="Center" Text="{DynamicResource AppName}"/>-->
+                <Grid x:Name="MenuContainer" Visibility="Collapsed">
+                    <controls1:MainMenu/>
+                </Grid>
+               
             </Grid>
         </StackPanel>
-    </controls:Window.NonClientAreaContent>-->
+    </controls:Window.NonClientAreaContent>
     <Grid>
         <DockPanel>
-            <StackPanel  DockPanel.Dock="Top" Orientation="Vertical" x:Name="MenuContainer" Visibility="Collapsed">
+            <controls:Divider Margin="0" DockPanel.Dock="Top"/>
+            <!--<StackPanel  DockPanel.Dock="Top" Orientation="Vertical" x:Name="MenuContainer" Visibility="Collapsed">
                 <controls:Divider  Margin="0"/>
                 <controls1:MainMenu Background="{DynamicResource BorderBrush}" Effect="{StaticResource EffectShadow2}"  x:Name="Menu"  DockPanel.Dock="Top" />
-            </StackPanel>
+            </StackPanel>-->
 
             <ContentControl DockPanel.Dock="Bottom" x:Name="MainContentContainer">
                 <panel:PanelLoading Background="{DynamicResource RegionBrush}"/>

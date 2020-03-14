@@ -10,11 +10,11 @@
              d:DesignHeight="600" d:DesignWidth="900">
     <Grid>
         <DockPanel>
-            <controls:PanelListView Padding="0,0,0,20" DockPanel.Dock="Left"/>
+            <controls:PanelListView DockPanel.Dock="Left"/>
             <controls:ExtensionsPanel Padding="0,0,20,0"/>
         </DockPanel>
         <Border VerticalAlignment="Bottom" Effect="{StaticResource EffectShadow1}"  CornerRadius="5" Background="{DynamicResource BorderBrush}">
-            <controls:BottomBar Effect="{StaticResource EffectShadow4}"  Height="20" Background="{DynamicResource BorderBrush}" DockPanel.Dock="Bottom"/>
+            <controls:BottomBar Effect="{StaticResource EffectShadow4}"  Height="20" Background="{DynamicResource RegionBrush}" DockPanel.Dock="Bottom"/>
         </Border>
     </Grid>
 </UserControl>

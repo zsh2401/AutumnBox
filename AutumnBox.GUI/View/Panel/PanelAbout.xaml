@@ -8,8 +8,9 @@
              xmlns:controls="clr-namespace:HandyControl.Controls;assembly=HandyControl"
              mc:Ignorable="d" 
                       xmlns:util="clr-namespace:AutumnBox.GUI.Util"
+             Foreground="{DynamicResource PrimaryTextBrush}"
              xmlns:viewmodel="clr-namespace:AutumnBox.GUI.ViewModel"
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="400">
     <UserControl.DataContext>
         <viewmodel:VMAbout/>
     </UserControl.DataContext>
@@ -38,7 +39,7 @@
                 <Image Source="/Resources/Drawable/Icon.ico" Height="30" Margin="5"/>
                 <StackPanel>
                     <TextBlock FontSize="20" Text="{DynamicResource AppNameWithVersion}"/>
-                    <TextBlock Text="{DynamicResource AppDesc}" Foreground="Gray"/>
+                    <TextBlock Text="{DynamicResource AppDesc}" Foreground="{DynamicResource SecondaryTextBrush}"/>
                 </StackPanel>
             </StackPanel>
 

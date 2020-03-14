@@ -638,25 +638,24 @@
     <Resource Include="Resources\Drawable\Misaka\adbfail.png" />
     <Resource Include="Resources\Drawable\More\halo.png" />
     <Resource Include="Resources\MenuIcon\cmd.png" />
-    <Resource Include="Resources\MenuIcon\debug.png" />
     <Resource Include="Resources\MenuIcon\exit.png" />
     <Resource Include="Resources\MenuIcon\icon.png" />
-    <Resource Include="Resources\MenuIcon\ps.png" />
-    <Resource Include="Resources\MenuIcon\settings.png" />
     <Resource Include="Resources\Icon\adb.png" />
     <Resource Include="Resources\Drawable\Home\mail.png" />
     <Resource Include="Resources\Drawable\Home\help.png" />
-    <Resource Include="Resources\Drawable\BottomBar\phone.png" />
-    <Resource Include="Resources\MenuIcon\guide-book.png" />
     <Resource Include="Resources\MenuIcon\donate.png" />
     <Resource Include="Resources\Drawable\Donate\pot4winter.png" />
+    <Resource Include="Resources\MenuIcon\powershell.png" />
+    <Resource Include="Resources\MenuIcon\debug.png" />
+    <Resource Include="Resources\MenuIcon\settings.png" />
+    <Resource Include="Resources\MenuIcon\guide-book.png" />
+    <Resource Include="Resources\Drawable\BottomBar\phone.png" />
     <Content Include="Resources\Sound\ok.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\Drawable\MenuBar\" />
-    <Folder Include="Resources\Img\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">

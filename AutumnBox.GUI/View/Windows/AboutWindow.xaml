@@ -13,11 +13,11 @@
     ShowInTaskbar="False"
    ResizeMode="NoResize"
     WindowStartupLocation="CenterOwner"
-      Background="#10FFFFFF"
+      Background="{DynamicResource BlurWindowBackgroundBrush}"
     FontFamily="{DynamicResource AutumnBox.Font}"
         Title="{DynamicResource AppNameWithVersion}" Height="430" Width="700">
-    <DockPanel>
-        <panel:PanelAbout Effect="{DynamicResource EffectShadow2}" DockPanel.Dock="Left" Background="{DynamicResource BackgroundBrush}"/>
+    <DockPanel Background="{DynamicResource BlurWindowBackgroundBrush}">
+        <panel:PanelAbout  Effect="{DynamicResource EffectShadow2}" DockPanel.Dock="Left"/>
         <panel:PanelUpdateLogs DockPanel.Dock="Right"/>
     </DockPanel>
 </custom:NiceWindow>

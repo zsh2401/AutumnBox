@@ -34,7 +34,7 @@
             </MenuItem>
             <MenuItem Header="{DynamicResource Menu.PS}" InputGestureText="Shift + V" Command="{Binding OpenShell}" CommandParameter="powershell.exe">
                 <MenuItem.Icon>
-                    <Image Source="/Resources/MenuIcon/ps.png"></Image>
+                    <Image Source="/Resources/MenuIcon/powershell.png"></Image>
                 </MenuItem.Icon>
             </MenuItem>
         </MenuItem>
