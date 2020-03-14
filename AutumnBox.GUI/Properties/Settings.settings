@@ -14,8 +14,8 @@
     <Setting Name="SkipVersion" Type="System.String" Scope="User">
       <Value Profile="(Default)">NULL</Value>
     </Setting>
-    <Setting Name="Theme" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Autumn</Value>
+    <Setting Name="Theme" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">4</Value>
     </Setting>
     <Setting Name="NotifyOnFinish" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>

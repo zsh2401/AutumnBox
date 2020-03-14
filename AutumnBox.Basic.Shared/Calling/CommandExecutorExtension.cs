@@ -163,7 +163,7 @@ namespace AutumnBox.Basic.Calling
 
             if (!ManagedAdb.Adb.Server.IsEnable)
             {
-                throw new InvalidOperationException("adb server is killed");
+                throw new InvalidOperationException("adb server was killed");
             }
             FileInfo exe = ManagedAdb.Adb.AdbFile;
             string joined = string.Join(" ", args);

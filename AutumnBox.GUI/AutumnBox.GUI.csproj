@@ -221,6 +221,9 @@
     <Compile Include="Util\OS\ShortcutHelper.cs" />
     <Compile Include="Util\OS\TaskKill.cs" />
     <Compile Include="Util\Self.cs" />
+    <Compile Include="Util\Theme\IThemeManager.cs" />
+    <Compile Include="Util\Theme\ThemeManager.cs" />
+    <Compile Include="Util\Theme\ThemeMode.cs" />
     <Compile Include="Util\UI\BlurHelper.cs" />
     <Compile Include="Util\UI\Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="Util\UI\Converters\BoolToVisibilityConverterParameter.cs" />
@@ -444,63 +447,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Resources\Themes\Autumn.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Include="Resources\Resources.xaml">
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Resources\Themes\Blue.xaml">
       <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
-    <Page Include="Resources\Themes\Ctrls\ExtTabItemStyle.xaml">
+    <Page Include="Resources\Themes\ThemeDark.xaml">
+      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
-    <Page Include="Resources\Themes\Ctrls\FantImage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Resources\Themes\Ctrls\Font.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Resources\Themes\Ctrls\ScrollViewerStyle.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Resources\Themes\Ctrls\TabItemStyle.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Resources\Themes\Ctrls\TextBlockStyle.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Resources\Themes\Dark.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Resources\Themes\Green.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Resources\Themes\HandyControlLib.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Resources\Themes\Pink.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Resources\Themes\ThemeBase.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Resources\Themes\ThemeBaseV2.xaml">
+    <Page Include="Resources\Themes\ThemeLight.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Resources\Urls.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Custom\NiceWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -662,7 +625,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\TextFile1.txt" />
     <Resource Include="Resources\Drawable\android.png" />
     <Resource Include="Resources\Drawable\DeviceBar\phone.png" />
     <Resource Include="Resources\Drawable\Donate\alishop.png" />

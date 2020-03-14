@@ -6,11 +6,11 @@
 using AutumnBox.GUI.MVVM;
 using AutumnBox.GUI.Properties;
 using AutumnBox.GUI.Util.Bus;
-using AutumnBox.GUI.Util.Custom;
 using AutumnBox.GUI.Util.Debugging;
 using AutumnBox.GUI.Util.I18N;
 using AutumnBox.GUI.Util.Net;
 using AutumnBox.GUI.Util.OS;
+using AutumnBox.GUI.Util.Theme;
 using AutumnBox.GUI.View.Windows;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -22,6 +22,43 @@ namespace AutumnBox.GUI.ViewModel
     class VMSettingsDialog : ViewModelBase
     {
         #region MVVM
+        public bool ShouldUseDarkTheme
+        {
+            get => ThemeManager.Instance.ThemeMode == ThemeMode.Dark;
+            set
+            {
+                if (value)
+                {
+                    ThemeManager.Instance.ThemeMode = ThemeMode.Dark;
+                }
+                RaisePropertyChanged();
+            }
+        }
+        public bool ShouldUseAutoTheme
+        {
+            get => ThemeManager.Instance.ThemeMode == ThemeMode.Auto;
+            set
+            {
+                if (value)
+                {
+                    ThemeManager.Instance.ThemeMode = ThemeMode.Auto;
+                }
+                RaisePropertyChanged();
+            }
+        }
+        public bool ShouldUseLightTheme
+        {
+            get => ThemeManager.Instance.ThemeMode == ThemeMode.Light;
+            set
+            {
+                if (value)
+                {
+                    ThemeManager.Instance.ThemeMode = ThemeMode.Light;
+                }
+                RaisePropertyChanged();
+            }
+        }
+
         public bool DisplayCmdWindow
         {
             get
@@ -69,54 +106,6 @@ namespace AutumnBox.GUI.ViewModel
             }
         }
         private ICommand _openLogFloder;
-
-
-        public bool UseRandomTheme
-        {
-            get
-            {
-                return Settings.Default.RandomTheme;
-            }
-            set
-            {
-                Settings.Default.RandomTheme = value;
-                Settings.Default.Save();
-                if (value)
-                {
-                    ThemeManager.Instance.ApplyBySetting();
-                }
-                RaisePropertyChanged();
-                RaisePropertyChanged(nameof(SelectedTheme));
-            }
-        }
-
-
-        public IEnumerable<ILanguage> Languages
-        {
-            get => LanguageManager.Instance.Languages;
-        }
-        public ILanguage SelectedLanguage
-        {
-            get => LanguageManager.Instance.Current;
-            set
-            {
-                LanguageManager.Instance.Current = value;
-                RaisePropertyChanged();
-            }
-        }
-
-        public IEnumerable<ITheme> Themes { get => ThemeManager.Instance.Themes; }
-
-        public ITheme SelectedTheme
-        {
-            get => ThemeManager.Instance.Current; set
-            {
-                Settings.Default.Theme = value.Name;
-                Settings.Default.Save();
-                ThemeManager.Instance.ApplyBySetting();
-                RaisePropertyChanged();
-            }
-        }
 
         public bool DebugOnNext
         {
@@ -182,7 +171,6 @@ namespace AutumnBox.GUI.ViewModel
 
         public ICommand ResetSettings { get; private set; }
 
-        public string ThemeDisplayMemberPath { get; set; } = nameof(ITheme.Name);
         public string LanguageDisplayMemberPath { get; set; } = nameof(ILanguage.LangName);
 
         #endregion

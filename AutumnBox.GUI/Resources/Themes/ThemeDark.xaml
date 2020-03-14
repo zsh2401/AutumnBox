@@ -1,0 +1,13 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/SkinDark.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Theme.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <FontFamily x:Key="AutumnBox.Font">Microsoft YaHei Light</FontFamily>
+    <BitmapImage x:Key="DefaultExtensionIcon">../Drawable/Extension/defaultExtIcon.png</BitmapImage>
+
+    <SolidColorBrush x:Key="BlurWindowBackgroundBrush" Color="#99000000"/>
+    
+</ResourceDictionary>

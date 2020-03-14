@@ -11,7 +11,7 @@
     <DockPanel>
         <!--<hc:Divider DockPanel.Dock="Top" Margin="0" Effect="{StaticResource EffectShadow1}" />-->
 
-        <controls:BottomBar Effect="{StaticResource EffectShadow4}"  Height="20" Background="{DynamicResource BackgroundBrush}" DockPanel.Dock="Bottom"/>
+        <controls:BottomBar Effect="{StaticResource EffectShadow4}"  Height="20" Background="{DynamicResource BorderBrush}" DockPanel.Dock="Bottom"/>
         <hc:Divider DockPanel.Dock="Bottom" Margin="0"/>
 
 

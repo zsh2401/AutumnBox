@@ -1,4 +1,5 @@
-﻿<controls:Window
+﻿<custom:NiceWindow
+    xmlns:custom="clr-namespace:AutumnBox.GUI.View.Custom"
     xmlns:controls="clr-namespace:HandyControl.Controls;assembly=HandyControl" x:Class="AutumnBox.GUI.View.Windows.MainWindowV2"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -16,8 +17,7 @@
         ShowInTaskbar="True"
     ShowTitle="True"
     x:Name="thisWindow"
-   
-    Background="#CCFFFFFF"
+       Background="{DynamicResource BlurWindowBackgroundBrush}"
     Icon="/Resources/Drawable/icon.ico"
         Title="{Binding Title}" MinHeight="625" MinWidth="930" Height="625" Width="930">
     <Window.DataContext>
@@ -45,7 +45,7 @@
         <DockPanel>
             <StackPanel  DockPanel.Dock="Top" Orientation="Vertical" x:Name="MenuContainer" Visibility="Collapsed">
                 <controls:Divider  Margin="0"/>
-                <controls1:MainMenu Background="{DynamicResource BackgroundBrush}" Effect="{StaticResource EffectShadow2}"  x:Name="Menu"  DockPanel.Dock="Top" />
+                <controls1:MainMenu Background="{DynamicResource BorderBrush}" Effect="{StaticResource EffectShadow2}"  x:Name="Menu"  DockPanel.Dock="Top" />
             </StackPanel>
 
             <ContentControl DockPanel.Dock="Bottom" x:Name="MainContentContainer">
@@ -58,4 +58,4 @@
             <StackPanel controls:Growl.Token="main" controls:Growl.GrowlParent="True" Margin="0,10,10,10"/>
         </ScrollViewer>
     </Grid>
-</controls:Window>
+</custom:NiceWindow>

@@ -2,6 +2,16 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:s="clr-namespace:System;assembly=mscorlib">
 
+    <s:String x:Key="APIUpdateCheck">https://www.atmb.top/client-api/v2020/update/</s:String>
+    <s:String x:Key="APIMOTD">https://www.atmb.top/client-api/v2020/motd/</s:String>
+    <s:String x:Key="APIBanCheck">https://www.atmb.top/client-api/v2020/ban/</s:String>
+
+    <s:String x:Key="URLAtmbOfficialWebsite">http://www.atmb.top/</s:String>
+    <s:String x:Key="URLAtmbAbout">http://www.atmb.top/about/</s:String>
+    <s:String x:Key="URLAtmbGuide">http://www.atmb.top/guide/</s:String>
+    <s:String x:Key="URLAtmbDonate">http://www.atmb.top/donate/</s:String>
+    <s:String x:Key="URLAtmbOpenSource">http://www.atmb.top/dev/os/</s:String>
+
     <!--Go-->
     <s:String x:Key="UrlGoPrefix">http://www.atmb.top/go?a=</s:String>
     <s:String x:Key="AGoHelp">help</s:String>

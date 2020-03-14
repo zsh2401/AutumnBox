@@ -81,8 +81,10 @@ namespace AutumnBox.GUI.Util
             CheckOtherAutumnBox();
             OnLoading();
 
+            InitThemeSystem();
             InitLogSystem();
             InitHandyControl();
+
             InitErrorHandlerSystem();
             InitLanguageSystem();
             ShowGuideIfNeed();
@@ -123,7 +125,7 @@ namespace AutumnBox.GUI.Util
         }
         private void InitThemeSystem()
         {
-            ThemeManager.Instance.ApplyBySetting();
+            Util.Theme.ThemeManager.Instance.Reload();
         }
         private void InitLanguageSystem()
         {
