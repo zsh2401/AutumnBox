@@ -38,7 +38,7 @@
             <Grid>
                 <!--<TextBlock Margin="5" FontSize="13" VerticalAlignment="Center" Text="{DynamicResource AppName}"/>-->
                 <Grid x:Name="MenuContainer" Visibility="Collapsed">
-                    <controls1:MainMenu/>
+                    <controls1:MainMenu x:Name="Menu"/>
                 </Grid>
                
             </Grid>
