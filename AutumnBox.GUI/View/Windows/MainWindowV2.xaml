@@ -12,7 +12,10 @@
     FontFamily="{DynamicResource AutumnBox.Font}"
         mc:Ignorable="d"
                controls:Dialog.Token="main"
+    OtherButtonBackground="{DynamicResource BorderBrush}"
+    CloseButtonBackground="{DynamicResource BorderBrush}"
     NonClientAreaHeight="20"
+    NonClientAreaBackground="{DynamicResource BorderBrush}"
                       Style="{StaticResource WindowWin10}"
         ShowInTaskbar="True"
     ShowTitle="False"
@@ -37,7 +40,7 @@
         <StackPanel Orientation="Horizontal">
             <Grid>
                 <!--<TextBlock Margin="5" FontSize="13" VerticalAlignment="Center" Text="{DynamicResource AppName}"/>-->
-                <Grid x:Name="MenuContainer" Visibility="Collapsed">
+                <Grid x:Name="MenuContainer"  Visibility="Collapsed">
                     <controls1:MainMenu x:Name="Menu"/>
                 </Grid>
                
@@ -46,17 +49,12 @@
     </controls:Window.NonClientAreaContent>
     <Grid>
         <DockPanel>
-            <controls:Divider Margin="0" DockPanel.Dock="Top"/>
-            <!--<StackPanel  DockPanel.Dock="Top" Orientation="Vertical" x:Name="MenuContainer" Visibility="Collapsed">
-                <controls:Divider  Margin="0"/>
-                <controls1:MainMenu Background="{DynamicResource BorderBrush}" Effect="{StaticResource EffectShadow2}"  x:Name="Menu"  DockPanel.Dock="Top" />
-            </StackPanel>-->
+            <controls:Divider DockPanel.Dock="Top" Margin="0" LineStroke="{DynamicResource ThirdlyTextBrush}" />
 
             <ContentControl DockPanel.Dock="Bottom" x:Name="MainContentContainer">
-                <panel:PanelLoading Background="{DynamicResource RegionBrush}"/>
+                <panel:PanelLoading Background="{DynamicResource BorderBrush}"/>
             </ContentControl>
         </DockPanel>
-
 
         <ScrollViewer Margin="0,0,0,30" VerticalScrollBarVisibility="Hidden" VerticalAlignment="Top" HorizontalAlignment="Right" Grid.Column="1">
             <StackPanel controls:Growl.Token="main" controls:Growl.GrowlParent="True" Margin="0,10,10,10"/>

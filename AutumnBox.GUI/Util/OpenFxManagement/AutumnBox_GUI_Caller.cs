@@ -239,13 +239,13 @@ namespace AutumnBox.GUI.Util.OpenFxManagement
 
         public void AppendPanel(object view, int priority)
         {
-            PanelsManager.Views.Add(new PanelsManager.ViewContainer(view, priority));
+            PanelsManager.Instance.Views.Add(new PanelsManager.ViewContainer(view, priority));
         }
 
         public void RemovePanel(object view)
         {
-            var target = PanelsManager.Views.Where((v) => v.View == view).First();
-            PanelsManager.Views.Remove(target);
+            var target = PanelsManager.Instance.Views.Where((v) => v.View == view).First();
+            PanelsManager.Instance.Views.Remove(target);
         }
     }
 }

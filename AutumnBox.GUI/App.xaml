@@ -6,7 +6,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Resources/Languages/zh-CN.xaml"/>
-                <ResourceDictionary Source="/Resources/Themes/ThemeDark.xaml"/>
+                <ResourceDictionary Source="/Resources/Themes/ThemeLight.xaml"/>
                 <ResourceDictionary Source="/View/Custom/NiceWindow.xaml"/>
                 <ResourceDictionary Source="/Resources/Urls.xaml"/>
                 <ResourceDictionary Source="/Resources/Converters.xaml"/>

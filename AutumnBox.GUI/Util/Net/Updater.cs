@@ -5,16 +5,10 @@
 *************************************************/
 using AutumnBox.GUI.Properties;
 using AutumnBox.GUI.Util.Bus;
-using AutumnBox.GUI.Util.Debugging;
-using AutumnBox.GUI.Util.Net;
 using AutumnBox.GUI.Util.Net.Getters;
-using AutumnBox.GUI.View.Windows;
-using AutumnBox.Logging;
 using HandyControl.Controls;
 using HandyControl.Data;
-using System;
 using System.Diagnostics;
-using System.Threading.Tasks;
 
 namespace AutumnBox.GUI.Util.Net
 {

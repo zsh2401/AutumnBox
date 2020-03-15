@@ -14,7 +14,7 @@ namespace AutumnBox.GUI.Util.Bus
             }
             catch (Exception e)
             {
-                SLogger.Warn(nameof(ExtensionBridge), "extension not found", e);
+                SLogger.Warn(nameof(ExtensionBridge), $"Can not run extension : {className}", e);
             }
         }
     }

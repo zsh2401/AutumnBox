@@ -13,7 +13,7 @@
     </UserControl.DataContext>
 
     <ScrollViewer>
-        <ItemsControl ItemsSource="{Binding Views}" Padding="15,10,15,0" Margin="0,0,0,100">
+        <ItemsControl ItemsSource="{Binding Views}" Padding="5,5,15,5" >
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <StackPanel Orientation="Vertical" IsItemsHost="True"/>
@@ -23,7 +23,7 @@
             <ItemsControl.ItemTemplate>
                 <ItemContainerTemplate>
 
-                    <Border CornerRadius="5" Padding="15" Margin="10,10,10,10" Effect="{DynamicResource EffectShadow4}" Background="{DynamicResource BlurWindowBackgroundBrush}">
+                    <Border CornerRadius="5" Padding="15" Margin="10,10,10,10" Effect="{DynamicResource EffectShadow4}" Background="{DynamicResource BorderBrush}">
                         <ContentControl Content="{Binding View}"/>
                     </Border>
 

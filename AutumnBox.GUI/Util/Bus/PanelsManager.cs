@@ -19,11 +19,22 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Controls;
 using System.Linq;
+using AutumnBox.GUI.MVVM;
 
 namespace AutumnBox.GUI.Util.Bus
 {
-    internal static class PanelsManager
+    internal class PanelsManager : NotificationObject
     {
+        public ObservableCollection<ViewContainer> Views
+        {
+            get => _views; set
+            {
+                _views = value;
+                RaisePropertyChanged();
+            }
+        }
+        private ObservableCollection<ViewContainer> _views;
+
         public class ViewContainer
         {
             public int Priority { get; }
@@ -34,28 +45,25 @@ namespace AutumnBox.GUI.Util.Bus
                 this.Priority = priority;
             }
         }
-        public static ObservableCollection<ViewContainer> Views { get; } = new ObservableCollection<ViewContainer>();
+        public static PanelsManager Instance { get; }
         static PanelsManager()
         {
+            Instance = new PanelsManager();
+        }
+        private PanelsManager()
+        {
+            Views = new ObservableCollection<ViewContainer>();
             Views.Add(new ViewContainer(new DeviceSelector()));
             Views.Add(new ViewContainer(new DeviceDash()));
-            Views.Add(new ViewContainer(new TextBlock() { Text = "You can really dance!", Height = 300 }, 20));
-            //Sort();
+            Sort();
+            Views.CollectionChanged += (s, e) => Sort();
         }
-        private static bool isSorting = false;
-        public static void Sort()
+        public void Sort()
         {
-            if (!isSorting) isSorting = true;
-            else return;
             var ordered = from view in Views
                           orderby view.Priority descending
                           select view;
-            Views.Clear();
-            foreach (var view in ordered)
-            {
-                Views.Add(view);
-            }
-            isSorting = false;
+            Views = new ObservableCollection<ViewContainer>(ordered);
         }
     }
 }

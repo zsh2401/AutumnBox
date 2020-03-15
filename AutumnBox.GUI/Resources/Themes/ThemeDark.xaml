@@ -8,6 +8,6 @@
     <FontFamily x:Key="AutumnBox.Font">Microsoft YaHei Light</FontFamily>
     <BitmapImage x:Key="DefaultExtensionIcon">../Drawable/Extension/defaultExtIcon.png</BitmapImage>
 
-    <SolidColorBrush x:Key="BlurWindowBackgroundBrush" Color="#99000000"/>
+    <SolidColorBrush x:Key="BlurWindowBackgroundBrush" Color="{DynamicResource SecondaryRegionColor}"/>
 
 </ResourceDictionary>

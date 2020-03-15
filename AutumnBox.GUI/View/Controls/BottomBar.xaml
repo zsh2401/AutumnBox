@@ -33,8 +33,8 @@
         </StackPanel>
 
         <StackPanel DockPanel.Dock="Left" Orientation="Horizontal">
-            <Image Margin="15,0,0,0" Source="/Resources/Drawable/BottomBar/phone.png" Height="15"/>
-            <TextBlock  Text="{DynamicResource BottomBar.Devices.Prev}"/>
+            <!--<Image Margin="15,0,0,0" Source="/Resources/Drawable/BottomBar/phone.png" Height="15"/>-->
+            <TextBlock Margin="15,0,0,0" Text="{DynamicResource BottomBar.Devices.Prev}"/>
             <TextBlock   Text="{Binding CountOfDevices}"/>
             <TextBlock  Text="{DynamicResource BottomBar.Devices.Suf}"/>
         </StackPanel>

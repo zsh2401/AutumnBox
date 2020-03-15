@@ -13,7 +13,7 @@
     </UserControl.DataContext>
     <DockPanel >
         <Image DockPanel.Dock="Left" Source="/Resources/Drawable/DeviceBar/phone.png" Height="20" Margin="10,0,5,0"/>
-        <ComboBox  Background="Transparent"  DockPanel.Dock="Right" ItemsSource="{Binding Devices}" SelectedItem="{Binding SelectedDevice}">
+        <ComboBox  DockPanel.Dock="Right" ItemsSource="{Binding Devices}" SelectedItem="{Binding SelectedDevice}">
         </ComboBox>
     </DockPanel>
 </UserControl>
