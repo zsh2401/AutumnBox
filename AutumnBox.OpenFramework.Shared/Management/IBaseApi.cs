@@ -21,6 +21,22 @@ namespace AutumnBox.OpenFramework.Management
     interface IBaseApi
     {
         /// <summary>
+        /// 获取NewtonsoftJson的版本号
+        /// </summary>
+        Version NewtonsoftJsonVersion { get; }
+        /// <summary>
+        /// 获取日志器版本号
+        /// </summary>
+        Version AutumnBoxLoggingVersion { get; }
+        /// <summary>
+        /// 获取秋之盒GUI程序版本号
+        /// </summary>
+        Version AutumnBoxGUIVersion { get; }
+        /// <summary>
+        /// 获取秋之盒基础版本号
+        /// </summary>
+        Version AutumnBoxBasicVersion { get; }
+        /// <summary>
         /// 添加一个面板
         /// </summary>
         /// <param name="view"></param>

@@ -7,11 +7,10 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Resources/Languages/zh-CN.xaml"/>
                 <ResourceDictionary Source="/Resources/Themes/ThemeLight.xaml"/>
-                <ResourceDictionary Source="/View/Custom/NiceWindow.xaml"/>
+                <ResourceDictionary Source="/View/Custom/NiceWindowStyle.xaml"/>
                 <ResourceDictionary Source="/Resources/Urls.xaml"/>
                 <ResourceDictionary Source="/Resources/Converters.xaml"/>
                 <ResourceDictionary Source="/Resources/ApiUrls.xaml"/>
-                
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

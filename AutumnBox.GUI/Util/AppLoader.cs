@@ -8,12 +8,12 @@ using AutumnBox.ADBProvider;
 using AutumnBox.Basic.ManagedAdb;
 using AutumnBox.GUI.Properties;
 using AutumnBox.GUI.Util.Bus;
-using AutumnBox.GUI.Util.Custom;
 using AutumnBox.GUI.Util.Debugging;
 using AutumnBox.GUI.Util.I18N;
 using AutumnBox.GUI.Util.Net;
 using AutumnBox.GUI.Util.OpenFxManagement;
 using AutumnBox.GUI.Util.OS;
+using AutumnBox.GUI.Util.Remote;
 using AutumnBox.GUI.View.DialogContent;
 using AutumnBox.GUI.View.Windows;
 using AutumnBox.Logging;
@@ -221,7 +221,7 @@ namespace AutumnBox.GUI.Util
         }
         private void InitUtilities()
         {
-            _ = VersionInformation.Adb;
+            _ = VersionInfos.Adb;
         }
         private void RunDeviceListener()
         {
@@ -229,10 +229,11 @@ namespace AutumnBox.GUI.Util
         }
         private void FetchRemoteData()
         {
-            Updater.Do();
-            Statistics.Do();
-            ToastMotd.Do();
-            Banner.Check();
+            _ = new RemoteInteractivator().DoInteractivate();
+            //Updater.Do();
+            //Statistics.Do();
+            //ToastMotd.Do();
+            //Banner.Check();
         }
         private void OnLoading()
         {

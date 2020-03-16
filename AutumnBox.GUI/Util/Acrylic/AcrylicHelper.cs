@@ -16,7 +16,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace AutumnBox.GUI.Util.OS.BlurKit
+namespace AutumnBox.GUI.Util.OS.Acrylic
 {
     internal enum AccentFlagsType
     {

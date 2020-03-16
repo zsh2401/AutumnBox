@@ -7,7 +7,7 @@ using System.Text.RegularExpressions;
 
 namespace AutumnBox.GUI.Util
 {
-    static class VersionInformation
+    static class VersionInfos
     {
         public static Version Basic { get; }
 
@@ -66,7 +66,7 @@ namespace AutumnBox.GUI.Util
             return assembly.GetName().Version;
         }
 
-        static VersionInformation()
+        static VersionInfos()
         {
             Basic = typeof(Basic.ManagedAdb.LocalAdbServer).Assembly.GetName().Version;
             GUI = Self.Version;

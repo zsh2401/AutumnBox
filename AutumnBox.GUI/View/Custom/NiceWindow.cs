@@ -1,4 +1,4 @@
-﻿using AutumnBox.GUI.Util.OS.BlurKit;
+﻿using AutumnBox.GUI.Util.OS.Acrylic;
 using System;
 using System.Windows;
 using System.Windows.Interop;

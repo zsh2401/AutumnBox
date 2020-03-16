@@ -19,7 +19,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AutumnBox.GUI.Util.OS.BlurKit
+namespace AutumnBox.GUI.Util.OS.Acrylic
 {
     class OSVersions
     {

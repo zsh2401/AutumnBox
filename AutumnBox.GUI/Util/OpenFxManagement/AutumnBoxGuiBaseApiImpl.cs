@@ -17,7 +17,7 @@ using System.Linq;
 
 namespace AutumnBox.GUI.Util.OpenFxManagement
 {
-    internal partial class AutumnBox_GUI_Caller : IBaseApi
+    internal partial class AutumnBoxGuiBaseApiImpl : IBaseApi
     {
         public IDevice SelectedDevice
         {
@@ -26,6 +26,7 @@ namespace AutumnBox.GUI.Util.OpenFxManagement
                 return DeviceSelectionObserver.Instance.CurrentDevice;
             }
         }
+
         public Version Version
         {
             get
@@ -39,6 +40,14 @@ namespace AutumnBox.GUI.Util.OpenFxManagement
         public bool IsDeveloperMode => Settings.Default.DeveloperMode;
 
         public bool ShouldDisplayCmdWindow => Settings.Default.DisplayCmdWindow;
+
+        public Version NewtonsoftJsonVersion => VersionInfos.JsonLib;
+
+        public Version AutumnBoxLoggingVersion => VersionInfos.Logging;
+
+        public Version AutumnBoxGUIVersion => VersionInfos.GUI;
+
+        public Version AutumnBoxBasicVersion => VersionInfos.Basic;
 
         public void ShowDebugUI()
         {
@@ -134,10 +143,12 @@ namespace AutumnBox.GUI.Util.OpenFxManagement
         {
             throw new NotImplementedException();
         }
+
         public void LoadAssemblyToDomain(Assembly assembly)
         {
             AppDomain.CurrentDomain.Load(assembly.FullName);
         }
+
         public bool DoYN(string message, string btnYes, string btnNo)
         {
             var window = new YNWindow()

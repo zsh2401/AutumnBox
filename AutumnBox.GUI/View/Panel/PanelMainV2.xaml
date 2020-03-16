@@ -12,12 +12,12 @@
         <DockPanel>
             <Border DockPanel.Dock="Bottom"  Effect="{StaticResource EffectShadow4}"  CornerRadius="0" Background="{DynamicResource BorderBrush}">
                 <DockPanel>
-                    <controls:BottomBar DockPanel.Dock="Bottom" Effect="{StaticResource EffectShadow4}"  Height="20"/>
+                    <controls:StatusBar DockPanel.Dock="Bottom" Effect="{StaticResource EffectShadow4}"  Height="20"/>
                     <hc:Divider DockPanel.Dock="Bottom" Margin="0" LineStroke="{DynamicResource ThirdlyTextBrush}" />
                 </DockPanel>
             </Border>
             <controls:PanelListView DockPanel.Dock="Left"/>
-            <controls:ExtensionsPanel DockPanel.Dock="Right"/>
+            <controls:ExtensionsFinder DockPanel.Dock="Right"/>
         </DockPanel>
     </Grid>
 </UserControl>

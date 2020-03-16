@@ -17,7 +17,7 @@ namespace AutumnBox.GUI.Util.OpenFxManagement
         {
             SLogger.Info(TAG, "OpenFx loading");
             SLogger.Info(TAG, "Init OpenFx env");
-            OpenFxLoader.InitEnv(GUIApiManager.BaseApiInstance);
+            OpenFxLoader.InitEnv(new AutumnBoxGuiBaseApiImpl());
             SLogger.Info(TAG, "OpenFx env inited");
             SLogger.Info(TAG, "Load extensions");
             OpenFxLoader.LoadExtensions();

@@ -1,7 +1,6 @@
 ﻿using AutumnBox.GUI.Properties;
 using AutumnBox.GUI.Util;
 using AutumnBox.GUI.Util.Bus;
-using AutumnBox.GUI.Util.OS.BlurKit;
 using System;
 using System.Windows;
 using System.Windows.Interop;
@@ -27,12 +26,6 @@ namespace AutumnBox.GUI.View.Windows
                     }
                 });
             };
-        }
-        protected override void OnActivated(EventArgs e)
-        {
-            base.OnActivated(e);
-            var intptrHelper = new WindowInteropHelper(this);
-            AcrylicHelper.EnableBlur(intptrHelper.Handle);
         }
     }
 }

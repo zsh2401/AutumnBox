@@ -16,7 +16,7 @@
 using AutumnBox.GUI.Model;
 using System;
 
-namespace AutumnBox.GUI.Util.OS.BlurKit
+namespace AutumnBox.GUI.Util.OS.Acrylic
 {
     class SystemInfo
     {

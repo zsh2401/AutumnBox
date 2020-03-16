@@ -47,58 +47,58 @@
             <controls:Shield Margin="2" HorizontalAlignment="Center" Subject="{DynamicResource QQGroup}" Status="246177486" Color="#1182c3"/>
             
             <DockPanel Margin="30,10,30,0">
-                <TextBlock DockPanel.Dock="Right" Text="{x:Static util:VersionInformation.GUIString}"/>
+                <TextBlock DockPanel.Dock="Right" Text="{x:Static util:VersionInfos.GUIString}"/>
                 <TextBlock DockPanel.Dock="Left" Text="{DynamicResource Version.GUI}"/>
             </DockPanel>
             <DockPanel Margin="30,0,30,0">
-                <TextBlock DockPanel.Dock="Right" Text="{x:Static util:VersionInformation.BasicString}"/>
+                <TextBlock DockPanel.Dock="Right" Text="{x:Static util:VersionInfos.BasicString}"/>
                 <TextBlock DockPanel.Dock="Left" Text="{DynamicResource Version.Basic}"/>
             </DockPanel>
             <DockPanel Margin="30,0,30,0">
-                <TextBlock DockPanel.Dock="Right" Text="{x:Static util:VersionInformation.LoggingString}"/>
+                <TextBlock DockPanel.Dock="Right" Text="{x:Static util:VersionInfos.LoggingString}"/>
                 <TextBlock DockPanel.Dock="Left" Text="{DynamicResource Version.Logging}"/>
             </DockPanel>
             
             <DockPanel Margin="30,0,30,0">
-                <TextBlock DockPanel.Dock="Right" Text="{x:Static util:VersionInformation.OpenFxString}"/>
+                <TextBlock DockPanel.Dock="Right" Text="{x:Static util:VersionInfos.OpenFxString}"/>
                 <TextBlock DockPanel.Dock="Left" Text="{DynamicResource Version.OpenFx}"/>
             </DockPanel>
             
             <DockPanel Margin="30,0,30,0">
-                <TextBlock DockPanel.Dock="Right" Text="{x:Static util:VersionInformation.CoreLibString}"/>
+                <TextBlock DockPanel.Dock="Right" Text="{x:Static util:VersionInfos.CoreLibString}"/>
                 <TextBlock DockPanel.Dock="Left" Text="{DynamicResource Version.CoreModules}"/>
             </DockPanel>
 
             <Grid Height="1" Margin="25,5,25,5" Background="LightGray"/>
             <DockPanel Margin="30,0,30,0">
-                <TextBlock DockPanel.Dock="Right" Text="{x:Static util:VersionInformation.Adb}"/>
+                <TextBlock DockPanel.Dock="Right" Text="{x:Static util:VersionInfos.Adb}"/>
                 <TextBlock DockPanel.Dock="Left" Text="{DynamicResource Version.ADB}"/>
             </DockPanel>
 
             <DockPanel Margin="30,0,30,0">
-                <TextBlock DockPanel.Dock="Right" Text="{x:Static util:VersionInformation.OSString}"/>
+                <TextBlock DockPanel.Dock="Right" Text="{x:Static util:VersionInfos.OSString}"/>
                 <TextBlock DockPanel.Dock="Left" Text="{DynamicResource Version.OS}"/>
             </DockPanel>
 
             <DockPanel Margin="30,0,30,0">
-                <TextBlock DockPanel.Dock="Right" Text="{x:Static util:VersionInformation.DotNetFrameworkString}"/>
+                <TextBlock DockPanel.Dock="Right" Text="{x:Static util:VersionInfos.DotNetFrameworkString}"/>
                 <TextBlock DockPanel.Dock="Left" Text="{DynamicResource Version.Net}"/>
             </DockPanel>
 
             <Grid Height="1" Margin="25,5,25,5" Background="LightGray"/>
 
             <DockPanel Margin="30,0,30,0">
-                <TextBlock DockPanel.Dock="Right" Text="{x:Static util:VersionInformation.HandyControlString}"/>
+                <TextBlock DockPanel.Dock="Right" Text="{x:Static util:VersionInfos.HandyControlString}"/>
                 <TextBlock DockPanel.Dock="Left" Text="HandyControl"/>
             </DockPanel>
 
             <DockPanel Margin="30,0,30,0">
-                <TextBlock DockPanel.Dock="Right" Text="{x:Static util:VersionInformation.JsonLibString}"/>
+                <TextBlock DockPanel.Dock="Right" Text="{x:Static util:VersionInfos.JsonLibString}"/>
                 <TextBlock DockPanel.Dock="Left" Text="Newtonsoft.Json"/>
             </DockPanel>
 
             <DockPanel Margin="30,0,30,0">
-                <TextBlock DockPanel.Dock="Right" Text="{x:Static util:VersionInformation.SharpZipLibString}"/>
+                <TextBlock DockPanel.Dock="Right" Text="{x:Static util:VersionInfos.SharpZipLibString}"/>
                 <TextBlock DockPanel.Dock="Left" Text="SharpZipLib"/>
             </DockPanel>
         </StackPanel>

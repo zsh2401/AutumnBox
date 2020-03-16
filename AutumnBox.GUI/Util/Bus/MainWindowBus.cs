@@ -29,10 +29,10 @@ namespace AutumnBox.GUI.Util.Bus
             {
                 try
                 {
-                    SLogger.Info(nameof(MainWindowBus), "Panel creating");
+                    //SLogger.Info(nameof(MainWindowBus), "Panel creating");
                     var panel = new PanelMainV2();
                     MainWindow.MainContentContainer.Content = panel;
-                    SLogger.Info(nameof(MainWindowBus), "Created panel instance");
+                    //SLogger.Info(nameof(MainWindowBus), "Created panel instance");
                 }
                 catch (Exception e)
                 {
@@ -58,7 +58,7 @@ namespace AutumnBox.GUI.Util.Bus
         }
         public static void Ask(string message, Func<bool, bool> callback)
         {
-            Growl.Ask(message, callback);
+            Growl.Ask(App.Current.Resources[message]?.ToString() ?? message, callback, TOKEN_PANEL_MAIN);
         }
     }
 }

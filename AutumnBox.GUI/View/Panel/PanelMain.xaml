@@ -17,7 +17,7 @@
     </UserControl.DataContext>
     <DockPanel>
         <controls1:DeviceBar DockPanel.Dock="Top" />
-        <controls1:BottomBar DockPanel.Dock="Bottom"/>
+        <controls1:StatusBar DockPanel.Dock="Bottom"/>
         <TabControl x:Name="TabControl" SelectedIndex="{Binding TabSelectedIndex}" Background="Transparent" TabStripPlacement="Left">
             <TabItem TabIndex="0" Width="120" Background="Transparent" Header="{DynamicResource Home}">
                 <DockPanel>
@@ -33,11 +33,11 @@
                 <DockPanel>
                     <Grid Width="270" DockPanel.Dock="Right">
                         <ScrollViewer>
-                            <local:DeviceDash Margin="25"/>
+                            <controls1:DeviceDash Margin="25"/>
                         </ScrollViewer>
                     </Grid>
                     <ScrollViewer>
-                        <controls1:ExtensionsPanel/>
+                        <controls1:ExtensionsFinder/>
                     </ScrollViewer>
                 </DockPanel>
 

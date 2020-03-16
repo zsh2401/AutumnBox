@@ -182,11 +182,6 @@
     <Compile Include="Util\Bus\OpenFxEventBus.cs" />
     <Compile Include="Util\Bus\PanelsManager.cs" />
     <Compile Include="Util\Bus\WinM.cs" />
-    <Compile Include="Util\ConditionalVars.cs" />
-    <Compile Include="Util\Custom\ITheme.cs" />
-    <Compile Include="Util\Custom\IThemeManager.cs" />
-    <Compile Include="Util\Custom\ThemeManager.cs" />
-    <Compile Include="Util\Data\Md5.cs" />
     <Compile Include="Util\Debugging\LogEventArgs.cs" />
     <Compile Include="Util\Debugging\LoggingStation.cs" />
     <Compile Include="Util\Effect\Sounds.cs" />
@@ -210,22 +205,24 @@
     <Compile Include="Util\Net\Statistics.cs" />
     <Compile Include="Util\Net\ToastMotd.cs" />
     <Compile Include="Util\Net\Updater.cs" />
-    <Compile Include="Util\OpenFxManagement\AutumnBox_GUI_Caller.cs" />
-    <Compile Include="Util\OpenFxManagement\GUIApiManager.cs" />
+    <Compile Include="Util\OpenFxManagement\AutumnBoxGuiBaseApiImpl.cs" />
     <Compile Include="Util\OpenFxManagement\OpenFrameworkManager.cs" />
-    <Compile Include="Util\OS\BlurKit\AcrylicHelper.cs" />
-    <Compile Include="Util\OS\BlurKit\OSVersions.cs" />
-    <Compile Include="Util\OS\BlurKit\SystemInfo.cs" />
+    <Compile Include="Util\Acrylic\AcrylicHelper.cs" />
+    <Compile Include="Util\Acrylic\OSVersions.cs" />
+    <Compile Include="Util\Acrylic\SystemInfo.cs" />
     <Compile Include="Util\OS\MachineInfo.cs" />
     <Compile Include="Util\OS\NativeMethods.cs" />
     <Compile Include="Util\OS\OtherProcessChecker.cs" />
     <Compile Include="Util\OS\ShortcutHelper.cs" />
     <Compile Include="Util\OS\TaskKill.cs" />
+    <Compile Include="Util\Remote\IndexReader.cs" />
+    <Compile Include="Util\Remote\MOTDHandler.cs" />
+    <Compile Include="Util\Remote\NetReader.cs" />
+    <Compile Include="Util\Remote\RemoteInteractivator.cs" />
     <Compile Include="Util\Self.cs" />
     <Compile Include="Util\Theme\IThemeManager.cs" />
     <Compile Include="Util\Theme\ThemeManager.cs" />
     <Compile Include="Util\Theme\ThemeMode.cs" />
-    <Compile Include="Util\UI\BlurHelper.cs" />
     <Compile Include="Util\UI\Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="Util\UI\Converters\BoolToVisibilityConverterParameter.cs" />
     <Compile Include="Util\UI\Converters\EndPointConverter.cs" />
@@ -233,9 +230,10 @@
     <Compile Include="Util\UI\Converters\NullToVisibilityConverter.cs" />
     <Compile Include="Util\UI\Converters\NullToVisibilityConverterParameter.cs" />
     <Compile Include="Util\UI\Converters\ObjectEqualsToVisibilityConverter.cs" />
+    <Compile Include="Util\UI\Converters\VisibleIf.cs" />
     <Compile Include="Util\UI\HelpButtonHelper.cs" />
     <Compile Include="Util\UI\Sentences.cs" />
-    <Compile Include="Util\VersionInformation.cs" />
+    <Compile Include="Util\VersionInfos.cs" />
     <Compile Include="ViewModel\VMAbout.cs" />
     <Compile Include="ViewModel\VMBottomBar.cs" />
     <Compile Include="ViewModel\VMDeviceDash.cs" />
@@ -259,11 +257,11 @@
     <Compile Include="View\Controls\DeviceSelector.xaml.cs">
       <DependentUpon>DeviceSelector.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Controls\ExtensionsPanel.xaml.cs">
-      <DependentUpon>ExtensionsPanel.xaml</DependentUpon>
+    <Compile Include="View\Controls\ExtensionsFinder.xaml.cs">
+      <DependentUpon>ExtensionsFinder.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Controls\BottomBar.xaml.cs">
-      <DependentUpon>BottomBar.xaml</DependentUpon>
+    <Compile Include="View\Controls\StatusBar.xaml.cs">
+      <DependentUpon>StatusBar.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Controls\DeviceBar.xaml.cs">
       <DependentUpon>DeviceBar.xaml</DependentUpon>
@@ -271,11 +269,8 @@
     <Compile Include="View\Controls\MainMenu.xaml.cs">
       <DependentUpon>MainMenu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Controls\PanelListView.xaml.cs">
-      <DependentUpon>PanelListView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\CstPreview.xaml.cs">
-      <DependentUpon>CstPreview.xaml</DependentUpon>
+    <Compile Include="View\Controls\XCardsViewer.xaml.cs">
+      <DependentUpon>XCardsViewer.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Custom\NiceWindow.cs" />
     <Compile Include="View\DialogContent\ContentConnectNetDevice.xaml.cs">
@@ -299,7 +294,7 @@
     <Compile Include="View\LeafContent\YNView.xaml.cs">
       <DependentUpon>YNView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Panel\DeviceDash.xaml.cs">
+    <Compile Include="View\Controls\DeviceDash.xaml.cs">
       <DependentUpon>DeviceDash.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Panel\PanelAbout.xaml.cs">
@@ -385,7 +380,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Util\OS\BlurKit\README.md" />
+    <None Include="Util\Acrylic\README.md" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
@@ -460,7 +455,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\Custom\NiceWindow.xaml">
+    <Page Include="View\Custom\NiceWindowStyle.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -468,11 +463,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Controls\ExtensionsPanel.xaml">
+    <Page Include="View\Controls\ExtensionsFinder.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Controls\BottomBar.xaml">
+    <Page Include="View\Controls\StatusBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -484,13 +479,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\Controls\PanelListView.xaml">
+    <Page Include="View\Controls\XCardsViewer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\CstPreview.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="View\DialogContent\ContentConnectNetDevice.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -520,7 +511,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\Panel\DeviceDash.xaml">
+    <Page Include="View\Controls\DeviceDash.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
