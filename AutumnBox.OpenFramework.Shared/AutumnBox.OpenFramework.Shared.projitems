@@ -30,8 +30,12 @@
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Leaf\LeafTerminatedException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Leaf\Fast\LeafUIHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Leaf\Attributes\LFromDataAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Implementation\ClassTextReader.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Implementation\DeviceManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Implementation\NotificationManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Implementation\ProxyBuilder.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Implementation\ProxyImpl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Implementation\XCardManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\ExtLibrary\AssemblyBasedLibrarian.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\LakeLoader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\ExtWrapper\ExtensionAttributeReader.cs" />
@@ -39,7 +43,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Open\IKeyValuePool.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\ILake.Extension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\INotificationManager.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Open\ILeafPanelManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Open\IXCardsManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\ProxyKit\InjectAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\ProxyKit\IProxy.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\ProxyKit\IProxy.g.cs" />
@@ -90,7 +94,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Open\TextKit\IClassTextDictionary.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Implementation\TaskManagerImpl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\ITaskManager.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Implementation\ClassTextManagerImpl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Implementation\ClassTextDictionary.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Implementation\DeviceSelectorImpl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Implementation\Md5Impl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Implementation\OSImpl.cs" />

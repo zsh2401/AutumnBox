@@ -48,7 +48,7 @@ namespace AutumnBox.OpenFramework.Open
         /// <param name="lake"></param>
         /// <param name="factory"></param>
         /// <returns></returns>
-        public static ILake Register<T>(this ILake lake, Func<object> factory)
+        public static ILake Register<T>(this ILake lake, Func<T> factory)
         {
             if (lake is null)
             {

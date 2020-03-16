@@ -14,9 +14,12 @@
 * ==============================================================================
 */
 
+using AutumnBox.Basic.Calling;
+using AutumnBox.Basic.Device;
 using AutumnBox.OpenFramework.Implementation;
 using AutumnBox.OpenFramework.Open;
 using AutumnBox.OpenFramework.Open.ADBKit;
+using AutumnBox.OpenFramework.Open.LKit;
 using AutumnBox.OpenFramework.Open.ProxyKit;
 
 namespace AutumnBox.OpenFramework.Management
@@ -38,7 +41,18 @@ namespace AutumnBox.OpenFramework.Management
             LakeProvider.Lake.RegisterSingleton<IEmbeddedFileManager, EmbeddedFileManagerImpl>();
             LakeProvider.Lake.RegisterSingleton<IDeviceManager, DeviceSelectorImpl>();
             LakeProvider.Lake.RegisterSingleton<IOperatingSystemAPI, OSImpl>();
+            LakeProvider.Lake.RegisterSingleton<IUx, UxImpl>();
+            LakeProvider.Lake.RegisterSingleton<IAppManager, AppManagerImpl>();
+            LakeProvider.Lake.RegisterSingleton<IDeviceManager, DeviceManager>();
+            LakeProvider.Lake.RegisterSingleton<IClassTextReader, ClassTextReader>();
+            LakeProvider.Lake.RegisterSingleton<ICompApi, CompImpl>();
+            LakeProvider.Lake.RegisterSingleton<INotificationManager, NotificationManager>();
+
+
             LakeProvider.Lake.Register<IStorageManager, StorageManagerImpl>();
+            LakeProvider.Lake.Register<ICommandExecutor, HestExecutor>();
+            LakeProvider.Lake.Register<IDevice>(() => LakeProvider.Lake.Get<IBaseApi>().SelectedDevice);
+            LakeProvider.Lake.Register<ILeafUI>(() => LakeProvider.Lake.Get<IBaseApi>().NewLeafUI());
         }
     }
 }

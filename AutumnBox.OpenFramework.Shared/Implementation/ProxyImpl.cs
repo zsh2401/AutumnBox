@@ -19,6 +19,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Reflection;
+using System.Linq;
 
 namespace AutumnBox.OpenFramework.Implementation
 {
@@ -33,6 +34,11 @@ namespace AutumnBox.OpenFramework.Implementation
         public Proxy(Type type)
         {
             this.type = type ?? throw new ArgumentNullException(nameof(type));
+        }
+        public Proxy(object instance)
+        {
+            this._instance = instance ?? throw new ArgumentNullException(nameof(instance));
+            type = _instance.GetType();
         }
         private object _instance;
 
@@ -50,8 +56,23 @@ namespace AutumnBox.OpenFramework.Implementation
             var con = type.GetConstructors()[0];
             var args = BuildArgsArray(extraArgs ?? new Dictionary<string, object>(), con.GetParameters());
             _instance = Activator.CreateInstance(type, args);
+            InjectProperty();
         }
 
+        public void InjectProperty()
+        {
+            var injectableProperties = from property in type.GetProperties()
+                                       where property.GetCustomAttribute<InjectAttribute>() != null
+                                       where property.GetSetMethod() != null
+                                       select property;
+            foreach (var prop in injectableProperties)
+            {
+                if (TryGetValueFromLake(prop.PropertyType, out object value))
+                {
+                    prop.GetSetMethod().Invoke(_instance, new object[] { value });
+                }
+            }
+        }
         public object InvokeMethod(string methodName, Dictionary<string, object> extraArgs = null)
         {
             if (_instance == null)

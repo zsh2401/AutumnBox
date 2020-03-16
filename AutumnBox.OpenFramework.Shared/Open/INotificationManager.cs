@@ -14,6 +14,7 @@
 * ==============================================================================
 */
 
+using System;
 using System.Threading.Tasks;
 
 namespace AutumnBox.OpenFramework.Open
@@ -24,37 +25,11 @@ namespace AutumnBox.OpenFramework.Open
     public interface INotificationManager
     {
         /// <summary>
-        /// 发送一个确认
+        /// 发送一个通知
         /// </summary>
-        /// <param name="msg"></param>
-        /// <param name="btnConfirmText"></param>
-        /// <returns></returns>
-        Task SendConfirm(string msg, string btnConfirmText = null);
-        /// <summary>
-        /// 发送一个是与否的通知
-        /// </summary>
-        /// <param name="msg"></param>
-        /// <param name="btnYesText"></param>
-        /// <param name="btnNoText"></param>
-        /// <returns></returns>
-        Task<bool> SendYN(string msg, string btnYesText = null, string btnNoText = null);
-        /// <summary>
-        /// 发送信息
-        /// </summary>
-        /// <param name="title"></param>
-        /// <param name="msg"></param>
-        void SendMessage(string msg, string title = null);
-        /// <summary>
-        /// 发送警告信息
-        /// </summary>
-        /// <param name="warnMsg"></param>
-        /// <param name="title"></param>
-        void SendWarning(string warnMsg, string title = null);
-        /// <summary>
-        /// 发送错误信息
-        /// </summary>
-        /// <param name="errorMsg"></param>
-        /// <param name="title"></param>
-        void SendError(string errorMsg, string title = null);
+        /// <param name="msg">内容</param>
+        /// <param name="title">标题</param>
+        /// <param name="onClickHandler">当点击时的执行函数</param>
+        void SendMessage(string msg, string title = null, Action onClickHandler = null);
     }
 }

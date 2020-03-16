@@ -20,6 +20,10 @@ namespace AutumnBox.OpenFramework.Open.ProxyKit
         /// </summary>
         void CreateInstance(Dictionary<string, object> extraArgs = null);
         /// <summary>
+        /// 注入属性
+        /// </summary>
+        void InjectProperty();
+        /// <summary>
         /// 执行方法
         /// </summary>
         /// <param name="methodName"></param>

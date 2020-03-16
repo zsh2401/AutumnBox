@@ -14,6 +14,8 @@ using AutumnBox.GUI.Util.Bus;
 using AutumnBox.GUI.View.DialogContent;
 using AutumnBox.OpenFramework.Open.LKit;
 using System.Linq;
+using System.Threading.Tasks;
+using AutumnBox.GUI.Util.OS.Acrylic;
 
 namespace AutumnBox.GUI.Util.OpenFxManagement
 {
@@ -115,6 +117,9 @@ namespace AutumnBox.GUI.Util.OpenFxManagement
         }
 
         private static LoadingWindow loadingWindow;
+
+        public event EventHandler Destorying;
+
         public void ShowLoadingUI()
         {
             if (loadingWindow != null) return;
@@ -257,6 +262,16 @@ namespace AutumnBox.GUI.Util.OpenFxManagement
         {
             var target = PanelsManager.Instance.Views.Where((v) => v.View == view).First();
             PanelsManager.Instance.Views.Remove(target);
+        }
+
+        public Task SendNotification(string msg, string title = null, Action clickHandler = null)
+        {
+            MainWindowBus.Ask(msg,clickHandler);
+        }
+
+        public void SetWindowBlur(IntPtr hWnd)
+        {
+            AcrylicHelper.EnableBlur(hWnd);
         }
     }
 }

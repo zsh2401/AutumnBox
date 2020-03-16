@@ -6,14 +6,14 @@ using System.Collections.Generic;
 
 namespace AutumnBox.OpenFramework.Implementation
 {
-    internal class ClassTextManagerImpl : IClassTextDictionary
+    internal class ClassTextDictionary : IClassTextDictionary
     {
         private readonly Type classExtensionType;
         private readonly Dictionary<string, ExtTextAttribute> ResourceCollection;
         /// <summary>
         /// 构造
         /// </summary>
-        public ClassTextManagerImpl(Type target)
+        public ClassTextDictionary(Type target)
         {
             this.classExtensionType = target ?? throw new ArgumentNullException(nameof(target));
             ResourceCollection = new Dictionary<string, ExtTextAttribute>();
@@ -25,7 +25,7 @@ namespace AutumnBox.OpenFramework.Implementation
         private void Load()
         {
             var objAttrs = classExtensionType.GetCustomAttributes(typeof(ExtTextAttribute), true);
-            SLogger<ClassTextManagerImpl>.Debug($"There are {objAttrs.Length} ExtTextAttribute on {classExtensionType.Name}");
+            SLogger<ClassTextDictionary>.Debug($"There are {objAttrs.Length} ExtTextAttribute on {classExtensionType.Name}");
             var attrs = (ExtTextAttribute[])objAttrs;
             foreach (var attr in attrs)
             {

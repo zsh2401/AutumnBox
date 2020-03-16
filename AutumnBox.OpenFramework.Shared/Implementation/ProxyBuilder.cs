@@ -7,7 +7,7 @@ using System.Reflection;
 
 namespace AutumnBox.OpenFramework.Implementation
 {
-    public class ProxyBuilder : IProxyBuilder
+    internal class ProxyBuilder : IProxyBuilder
     {
         public IProxy<T> CreateProxyOf<T>()
         {
@@ -20,7 +20,14 @@ namespace AutumnBox.OpenFramework.Implementation
         {
             var proxy = new Proxy<object>(type);
             proxy.Lakes.Add(LakeProvider.Lake);
-            return (IProxy)proxy;
+            return proxy;
+        }
+
+        public IProxy CreateProxyOf(object instance)
+        {
+            var proxy = new Proxy<object>(instance);
+            proxy.Lakes.Add(LakeProvider.Lake);
+            return proxy;
         }
     }
 }

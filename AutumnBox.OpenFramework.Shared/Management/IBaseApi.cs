@@ -7,6 +7,7 @@
 using AutumnBox.Basic.Device;
 using AutumnBox.OpenFramework.Open.LKit;
 using System;
+using System.Threading.Tasks;
 
 namespace AutumnBox.OpenFramework.Management
 {
@@ -20,6 +21,23 @@ namespace AutumnBox.OpenFramework.Management
 #endif
     interface IBaseApi
     {
+        /// <summary>
+        /// 发送通知
+        /// </summary>
+        /// <param name="msg"></param>
+        /// <param name="title"></param>
+        /// <param name="clickHandler"></param>
+        /// <returns></returns>
+        Task SendNotification(string msg, string title = null, Action clickHandler = null);
+        /// <summary>
+        /// 设置窗口背景模糊
+        /// </summary>
+        /// <param name="hWnd"></param>
+        void SetWindowBlur(IntPtr hWnd);
+        /// <summary>
+        /// 秋之盒正在结束
+        /// </summary>
+        event EventHandler Destorying;
         /// <summary>
         /// 获取NewtonsoftJson的版本号
         /// </summary>

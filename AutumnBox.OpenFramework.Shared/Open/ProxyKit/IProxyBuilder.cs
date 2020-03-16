@@ -21,5 +21,11 @@ namespace AutumnBox.OpenFramework.Open.ProxyKit
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
         IProxy<T> CreateProxyOf<T>();
+        /// <summary>
+        /// 为已存在的实例创建代理
+        /// </summary>
+        /// <param name="instance"></param>
+        /// <returns></returns>
+        IProxy CreateProxyOf(object instance);
     }
 }

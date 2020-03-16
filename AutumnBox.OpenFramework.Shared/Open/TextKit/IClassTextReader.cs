@@ -28,5 +28,11 @@ namespace AutumnBox.OpenFramework.Open
         /// <param name="type"></param>
         /// <returns></returns>
         IClassTextDictionary Read(Type type);
+        /// <summary>
+        /// 获取对应类文本管理器
+        /// </summary>
+        /// <param name="instance"></param>
+        /// <returns></returns>
+        IClassTextDictionary Read(object instance);
     }
 }

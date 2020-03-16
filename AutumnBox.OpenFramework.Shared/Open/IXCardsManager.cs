@@ -19,7 +19,7 @@ namespace AutumnBox.OpenFramework.Open
     /// <summary>
     /// LeafPanel
     /// </summary>
-    public interface ILeafPanel
+    public interface IXCard
     {
         /// <summary>
         /// 优先级
@@ -45,17 +45,17 @@ namespace AutumnBox.OpenFramework.Open
     /// <summary>
     /// Leaf面板管理器
     /// </summary>
-    public interface ILeafPanelManager
+    public interface IXCardsManager
     {
         /// <summary>
         /// 注册一个LeafPanel
         /// </summary>
-        /// <param name="panel"></param>
-        void Register(ILeafPanel panel);
+        /// <param name="card"></param>
+        void Register(IXCard card);
         /// <summary>
         /// 取消注册一个LeafPanel
         /// </summary>
-        /// <param name="panel"></param>
-        void Unregister(ILeafPanel panel);
+        /// <param name="card"></param>
+        void Unregister(IXCard card);
     }
 }

@@ -18,6 +18,10 @@ using System;
 
 namespace AutumnBox.OpenFramework.Open.ProxyKit
 {
+    /// <summary>
+    /// 使用在属性上时,将注入
+    /// </summary>
+    [AttributeUsage(AttributeTargets.Property)]
     public class InjectAttribute : Attribute
     {
     }
