@@ -118,7 +118,17 @@ namespace AutumnBox.GUI.Util.OpenFxManagement
 
         private static LoadingWindow loadingWindow;
 
-        public event EventHandler Destorying;
+        public event EventHandler Destorying
+        {
+            add
+            {
+                App.Current.Exit += (s, e) => value(s,new EventArgs());
+            }
+            remove
+            {
+                //TO DO
+            }
+        }
 
         public void ShowLoadingUI()
         {
@@ -264,9 +274,9 @@ namespace AutumnBox.GUI.Util.OpenFxManagement
             PanelsManager.Instance.Views.Remove(target);
         }
 
-        public Task SendNotification(string msg, string title = null, Action clickHandler = null)
+        public void SendNotification(string msg, string title = null, Action clickHandler = null)
         {
-            MainWindowBus.Ask(msg,clickHandler);
+            throw new NotImplementedException();
         }
 
         public void SetWindowBlur(IntPtr hWnd)

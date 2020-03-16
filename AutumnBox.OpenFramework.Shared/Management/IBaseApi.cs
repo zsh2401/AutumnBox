@@ -28,7 +28,7 @@ namespace AutumnBox.OpenFramework.Management
         /// <param name="title"></param>
         /// <param name="clickHandler"></param>
         /// <returns></returns>
-        Task SendNotification(string msg, string title = null, Action clickHandler = null);
+        void SendNotification(string msg, string title = null, Action clickHandler = null);
         /// <summary>
         /// 设置窗口背景模糊
         /// </summary>
