@@ -30,6 +30,6 @@ namespace AutumnBox.OpenFramework.Open
         /// <param name="msg">内容</param>
         /// <param name="title">标题</param>
         /// <param name="onClickHandler">当点击时的执行函数</param>
-        void SendMessage(string msg, string title = null, Action onClickHandler = null);
+        void SendNotification(string msg, string title = null, Action onClickHandler = null);
     }
 }

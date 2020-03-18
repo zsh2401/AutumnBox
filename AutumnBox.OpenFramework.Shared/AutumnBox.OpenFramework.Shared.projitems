@@ -41,7 +41,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Management\ExtWrapper\ExtensionAttributeReader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\ExtWrapper\IExtensionAttributeReader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\IKeyValuePool.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Open\ILake.Extension.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Open\ILake.BaseOnTypeExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\INotificationManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\IXCardsManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\ProxyKit\InjectAttribute.cs" />
@@ -138,5 +138,8 @@
     <Folder Include="$(MSBuildThisFileDirectory)Extension\Leaf\Fast\" />
     <Folder Include="$(MSBuildThisFileDirectory)Open\LKit\" />
     <Folder Include="$(MSBuildThisFileDirectory)Open\ADBKit\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)Open\ILake.BaseOnIdExtension.cs" />
   </ItemGroup>
 </Project>

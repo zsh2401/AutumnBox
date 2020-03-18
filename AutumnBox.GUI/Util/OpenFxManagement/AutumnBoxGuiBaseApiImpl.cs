@@ -122,7 +122,7 @@ namespace AutumnBox.GUI.Util.OpenFxManagement
         {
             add
             {
-                App.Current.Exit += (s, e) => value(s,new EventArgs());
+                App.Current.Exit += (s, e) => value(s, new EventArgs());
             }
             remove
             {
@@ -276,7 +276,7 @@ namespace AutumnBox.GUI.Util.OpenFxManagement
 
         public void SendNotification(string msg, string title = null, Action clickHandler = null)
         {
-            throw new NotImplementedException();
+            MainWindowBus.Info(msg);
         }
 
         public void SetWindowBlur(IntPtr hWnd)

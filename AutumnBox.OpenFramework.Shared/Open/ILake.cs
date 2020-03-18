@@ -27,15 +27,16 @@ namespace AutumnBox.OpenFramework.Open
         /// <summary>
         /// 注册一个工厂
         /// </summary>
-        /// <param name="t"></param>
+        /// <param name="id"></param>
         /// <param name="factory"></param>
-        /// <returns></returns>
-        ILake Register(Type t, Func<object> factory);
+        /// <returns>返回自身,以提供链式调用</returns>
+        ILake Register(string id, Func<object> factory);
         /// <summary>
         /// 获取一个值
         /// </summary>
-        /// <param name="t"></param>
-        /// <returns></returns>
-        object Get(Type t);
+        /// <param name="id"></param>
+        /// <exception cref="ArgumentException">当id无效时发生</exception>
+        /// <returns>如果成功,则返回值</returns>
+        object Get(string id);
     }
 }

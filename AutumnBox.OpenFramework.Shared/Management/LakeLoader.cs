@@ -32,27 +32,32 @@ namespace AutumnBox.OpenFramework.Management
     {
         public static void Load(IBaseApi baseApi)
         {
-            LakeProvider.Lake = new ChinaLake();
-            LakeProvider.Lake.RegisterSingleton<IProxyBuilder>(new ProxyBuilder());
-            LakeProvider.Lake.RegisterSingleton<IBaseApi>(baseApi);
-            LakeProvider.Lake.RegisterSingleton<ITaskManager, TaskManagerImpl>();
-            LakeProvider.Lake.RegisterSingleton<IMd5, Md5Impl>();
-            LakeProvider.Lake.RegisterSingleton<ISoundService, SoundImpl>();
-            LakeProvider.Lake.RegisterSingleton<IEmbeddedFileManager, EmbeddedFileManagerImpl>();
-            LakeProvider.Lake.RegisterSingleton<IDeviceManager, DeviceSelectorImpl>();
-            LakeProvider.Lake.RegisterSingleton<IOperatingSystemAPI, OSImpl>();
-            LakeProvider.Lake.RegisterSingleton<IUx, UxImpl>();
-            LakeProvider.Lake.RegisterSingleton<IAppManager, AppManagerImpl>();
-            LakeProvider.Lake.RegisterSingleton<IDeviceManager, DeviceManager>();
-            LakeProvider.Lake.RegisterSingleton<IClassTextReader, ClassTextReader>();
-            LakeProvider.Lake.RegisterSingleton<ICompApi, CompImpl>();
-            LakeProvider.Lake.RegisterSingleton<INotificationManager, NotificationManager>();
+            LakeProvider.Lake = new ChinaLake()
+                .RegisterSingleton<IProxyBuilder>(new ProxyBuilder())
+                .RegisterSingleton<IBaseApi>(baseApi)
+                .RegisterSingleton<ITaskManager, TaskManagerImpl>()
+                .RegisterSingleton<IMd5, Md5Impl>()
+                .RegisterSingleton<ISoundService, SoundImpl>()
+                .RegisterSingleton<IEmbeddedFileManager, EmbeddedFileManagerImpl>()
+                .RegisterSingleton<IDeviceManager, DeviceSelectorImpl>()
+                .RegisterSingleton<IOperatingSystemAPI, OSImpl>()
+                .RegisterSingleton<IUx, UxImpl>()
+                .RegisterSingleton<IAppManager, AppManagerImpl>()
+                .RegisterSingleton<IDeviceManager, DeviceManager>()
+                .RegisterSingleton<IClassTextReader, ClassTextReader>()
+                .RegisterSingleton<ICompApi, CompImpl>()
+                .RegisterSingleton<INotificationManager, NotificationManager>()
 
 
-            LakeProvider.Lake.Register<IStorageManager, StorageManagerImpl>();
-            LakeProvider.Lake.Register<ICommandExecutor, HestExecutor>();
-            LakeProvider.Lake.Register<IDevice>(() => LakeProvider.Lake.Get<IBaseApi>().SelectedDevice);
-            LakeProvider.Lake.Register<ILeafUI>(() => LakeProvider.Lake.Get<IBaseApi>().NewLeafUI());
+                .Register<IStorageManager, StorageManagerImpl>()
+                .Register<ICommandExecutor, HestExecutor>()
+                .Register<IDevice>(() => LakeProvider.Lake.Get<IBaseApi>().SelectedDevice)
+                .Register<ILeafUI>(() => LakeProvider.Lake.Get<IBaseApi>().NewLeafUI());
+
+            if (LakeProvider.Lake.Get<IAppManager>().IsDeveloperMode)
+            {
+                LakeProvider.Lake.Get<INotificationManager>().SendNotification("Default Lake Loaded");
+            }
         }
     }
 }

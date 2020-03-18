@@ -23,21 +23,21 @@ namespace AutumnBox.OpenFramework.Implementation
 {
     public class ChinaLake : ILake
     {
-        private readonly Dictionary<Type, Func<object>> factories;
+        private readonly Dictionary<string, Func<object>> factories;
 
         public ChinaLake()
         {
-            factories = new Dictionary<Type, Func<object>>();
+            factories = new Dictionary<string, Func<object>>();
         }
 
-        public object Get(Type type)
+        public object Get(string id)
         {
-            return factories[type]();
+            return factories[id]();
         }
 
-        public ILake Register(Type type, Func<object> factory)
+        public ILake Register(string id, Func<object> factory)
         {
-            factories[type] = factory;
+            factories[id] = factory;
             return this;
         }
     }
