@@ -24,5 +24,39 @@ namespace AutumnBox.OpenFramework.Open.ProxyKit
     [AttributeUsage(AttributeTargets.Property)]
     public class InjectAttribute : Attribute
     {
+        /// <summary>
+        /// 根据属性类型
+        /// </summary>
+        public InjectAttribute() { }
+        /// <summary>
+        /// 配置ID
+        /// </summary>
+        /// <param name="id"></param>
+        public InjectAttribute(string id)
+        {
+            if (string.IsNullOrEmpty(id))
+            {
+                throw new ArgumentException("message", nameof(id));
+            }
+
+            Id = id;
+        }
+        /// <summary>
+        /// 显示声明需要注入的类型
+        /// </summary>
+        /// <param name="type"></param>
+        public InjectAttribute(Type type)
+        {
+            Type = type ?? throw new ArgumentNullException(nameof(type));
+        }
+
+        /// <summary>
+        /// id
+        /// </summary>
+        public string Id { get; }
+        /// <summary>
+        /// 类型
+        /// </summary>
+        public Type Type { get; }
     }
 }

@@ -16,6 +16,7 @@
 using AutumnBox.Basic.Device;
 using AutumnBox.OpenFramework.Management;
 using AutumnBox.OpenFramework.Open.ADBKit;
+using AutumnBox.OpenFramework.Open.ProxyKit;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -24,6 +25,7 @@ namespace AutumnBox.OpenFramework.Implementation
 {
     class DeviceManager : IDeviceManager
     {
+
         private readonly IBaseApi baseApi;
 
         public DeviceManager(IBaseApi baseApi)

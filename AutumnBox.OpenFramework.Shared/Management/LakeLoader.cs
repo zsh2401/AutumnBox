@@ -47,7 +47,7 @@ namespace AutumnBox.OpenFramework.Management
                 .RegisterSingleton<IClassTextReader, ClassTextReader>()
                 .RegisterSingleton<ICompApi, CompImpl>()
                 .RegisterSingleton<INotificationManager, NotificationManager>()
-
+                .RegisterSingleton<ILibsManager>(OpenFxLoader.LibsManager)
 
                 .Register<IStorageManager, StorageManagerImpl>()
                 .Register<ICommandExecutor, HestExecutor>()
