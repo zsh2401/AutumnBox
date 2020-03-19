@@ -18,6 +18,7 @@ using AutumnBox.OpenFramework.Implementation;
 using AutumnBox.OpenFramework.Open.ProxyKit;
 using System;
 
+using System.Runtime.CompilerServices;
 namespace AutumnBox.OpenFramework.Open
 {
     /// <summary>

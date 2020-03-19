@@ -138,6 +138,7 @@
     <Folder Include="$(MSBuildThisFileDirectory)Extension\Leaf\Fast\" />
     <Folder Include="$(MSBuildThisFileDirectory)Open\LKit\" />
     <Folder Include="$(MSBuildThisFileDirectory)Open\ADBKit\" />
+    <Folder Include="$(MSBuildThisFileDirectory)IoC\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)Open\ILake.BaseOnIdExtension.cs" />
