@@ -3,21 +3,16 @@
 ** date:  2018/8/13 8:27:11 (UTC +8:00)
 ** desc： ...
 *************************************************/
-using AutumnBox.OpenFramework.Content;
-using AutumnBox.OpenFramework.ExtLibrary;
+using AutumnBox.OpenFramework.Management.ExtLibrary;
+using AutumnBox.OpenFramework.Management.Wrapper;
 using AutumnBox.OpenFramework.Open;
-using AutumnBox.OpenFramework.Open.Management;
-using AutumnBox.OpenFramework.Wrapper;
 using System;
-using System.Collections.Generic;
-using System.Windows;
 
 namespace AutumnBox.CoreModules
 {
-    [ContextPermission(CtxPer.High)]
     public sealed class CoreLib : ExtensionLibrarin
     {
-        public static Context Context { get; private set; }
+        public const string STORAGE_ID = "AutumnBox.CoreModules.Storage";
         public static CoreLib Current { get; private set; }
 
         public override string Name => "AutumnBox Core Modules";
@@ -27,7 +22,6 @@ namespace AutumnBox.CoreModules
         public override int TargetApiLevel => 10;
         public CoreLib()
         {
-            Context = this;
             Current = this;
         }
         protected override IExtensionWrapper GetWrapperFor(Type extType)
@@ -37,7 +31,8 @@ namespace AutumnBox.CoreModules
         public override void Destory()
         {
             base.Destory();
-            IStorageManager storageManager = ApiFactory.Get<IStorageManager>(this);
+            IStorageManager storageManager = LakeProvider.Lake.Get<IStorageManager>();
+            storageManager.Init(STORAGE_ID);
             storageManager.ClearCache();
         }
         private class CustomWrapper : ClassExtensionWrapper

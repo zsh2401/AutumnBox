@@ -51,7 +51,7 @@ namespace AutumnBox.OpenFramework.Open
         /// <returns></returns>
         public static object Get(this ILake lake, Type t)
         {
-            return lake.Get(GenerateNameOf(t));
+            return lake.Get(GenerateIdOf(t));
         }
         /// <summary>
         /// 尝试获取
@@ -234,7 +234,7 @@ namespace AutumnBox.OpenFramework.Open
                 throw new ArgumentNullException(nameof(factory));
             }
 
-            lake.Register(GenerateNameOf(target), factory);
+            lake.Register(GenerateIdOf(target), factory);
         }
         private static void RegisterSingletonBase(this ILake lake, Type target, Func<object> factory)
         {
@@ -254,7 +254,7 @@ namespace AutumnBox.OpenFramework.Open
             }
 
             var lazy = new Lazy<object>(factory);
-            lake.Register(GenerateNameOf(target), () => lazy.Value);
+            lake.Register(GenerateIdOf(target), () => lazy.Value);
         }
 
         private static Func<object> GetObjectBuilderOf(ILake lake, Type t)
@@ -290,7 +290,7 @@ namespace AutumnBox.OpenFramework.Open
                 return proxy.Instance;
             };
         }
-        private static string GenerateNameOf(Type t)
+        public static string GenerateIdOf(Type t)
         {
             if (t is null)
             {

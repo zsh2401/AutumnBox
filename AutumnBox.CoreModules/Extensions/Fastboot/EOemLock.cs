@@ -6,11 +6,10 @@
 using AutumnBox.Basic.Calling;
 using AutumnBox.Basic.Device;
 using AutumnBox.OpenFramework.Extension;
-using AutumnBox.OpenFramework.LeafExtension;
-using AutumnBox.OpenFramework.LeafExtension.Attributes;
-using AutumnBox.OpenFramework.LeafExtension.Fast;
-using AutumnBox.OpenFramework.LeafExtension.Kit;
+using AutumnBox.OpenFramework.Extension.Leaf;
+using AutumnBox.OpenFramework.Extension.Leaf.Attributes;
 using AutumnBox.OpenFramework.Open;
+using AutumnBox.OpenFramework.Open.LKit;
 
 namespace AutumnBox.CoreModules.Extensions.Fastboot
 {
@@ -23,13 +22,14 @@ namespace AutumnBox.CoreModules.Extensions.Fastboot
     internal class EOemLock : LeafExtensionBase
     {
         [LMain]
-        public void EntryPoint(ILeafUI ui, IDevice device, IClassTextDictionary textManager)
+        public void EntryPoint(ILeafUI ui, IDevice device, IClassTextReader textReader)
         {
             using (ui)
             {
                 ui.Title = this.GetName();
                 ui.Icon = this.GetIconBytes();
                 ui.Show();
+                var textManager = textReader.Read(this);
                 if (!ui.DoYN(textManager["warn"])) return;
                 if (!ui.DoYN(textManager["warn2"])) return;
                 CommandExecutor executor = new CommandExecutor();

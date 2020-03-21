@@ -91,17 +91,14 @@ namespace AutumnBox.OpenFramework.Implementation
 
         private bool TryGetValueFromLake(Type t, out object value)
         {
-
-            foreach (var lake in Lakes)
+            for (int i = Lakes.Count() - 1; i >= 0; i--)
             {
                 try
                 {
-                    value = lake.Get(t);
+                    value = Lakes[i].Get(t);
                     return true;
                 }
-                catch
-                {
-                }
+                catch { }
             }
             value = null;
             return false;

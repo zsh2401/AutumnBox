@@ -6,11 +6,11 @@
 using AutumnBox.Basic.Calling;
 using AutumnBox.Basic.Device;
 using AutumnBox.OpenFramework.Extension;
-using AutumnBox.OpenFramework.LeafExtension;
-using AutumnBox.OpenFramework.LeafExtension.Attributes;
-using AutumnBox.OpenFramework.LeafExtension.Fast;
-using AutumnBox.OpenFramework.LeafExtension.Kit;
+using AutumnBox.OpenFramework.Extension.Extension.Leaf;
+using AutumnBox.OpenFramework.Extension.Leaf;
+using AutumnBox.OpenFramework.Extension.Leaf.Attributes;
 using AutumnBox.OpenFramework.Open;
+using AutumnBox.OpenFramework.Open.LKit;
 using Microsoft.Win32;
 
 namespace AutumnBox.CoreModules.Extensions.Fastboot
@@ -23,23 +23,24 @@ namespace AutumnBox.CoreModules.Extensions.Fastboot
     internal class EFlashRecovery : LeafExtensionBase
     {
         [LMain]
-        public void EntryPoint(ILeafUI ui, IDevice device, IClassTextDictionary text)
+        public void EntryPoint(ILeafUI ui, IDevice device, IClassTextReader textReader)
         {
             using (ui)
             {
+                var textManager = textReader.Read(this);
                 ui.Title = this.GetName();
                 ui.Icon = this.GetIconBytes();
                 ui.Show();
                 OpenFileDialog fileDialog = new OpenFileDialog();
                 fileDialog.Reset();
-                fileDialog.Title = text["Title"];
-                fileDialog.Filter = text["Filter"];
+                fileDialog.Title = textManager["Title"];
+                fileDialog.Filter = textManager["Filter"];
                 fileDialog.Multiselect = false;
                 if (fileDialog.ShowDialog() != true) ui.EFinish();
                 CommandExecutor executor = new CommandExecutor();
                 executor.OutputReceived += (s, e) => ui.WriteOutput(e.Text);
-                executor.Fastboot(device,$"flash recovery \"{fileDialog.FileName}\"");
-                var result = executor.Fastboot(device,$"boot \"{fileDialog.FileName}\"");
+                executor.Fastboot(device, $"flash recovery \"{fileDialog.FileName}\"");
+                var result = executor.Fastboot(device, $"boot \"{fileDialog.FileName}\"");
                 ui.Finish(result.ExitCode);
             }
         }

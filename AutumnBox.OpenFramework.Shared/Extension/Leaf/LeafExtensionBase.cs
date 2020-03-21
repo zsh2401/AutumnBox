@@ -1,16 +1,21 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using AutumnBox.OpenFramework.Extension.Leaf.Attributes;
 using AutumnBox.OpenFramework.Extension.Leaf.Internal;
+using AutumnBox.OpenFramework.Open;
+using AutumnBox.OpenFramework.Open.ProxyKit;
 
 namespace AutumnBox.OpenFramework.Extension.Leaf
 {
     /// <summary>
     /// Leaf模块
     /// </summary>
-    public abstract class LeafExtensionBase : EmptyExtension, IClassExtension
+    public abstract class LeafExtensionBase : EmptyExtension, IClassExtension, ILake
     {
         private readonly LeafEntryExecutor executor;
         private readonly LeafPropertyInjector injector;
+        private readonly ILake lake;
+        private readonly IProxy proxy;
 
         /// <summary>
         /// 构造函数
@@ -26,6 +31,9 @@ namespace AutumnBox.OpenFramework.Extension.Leaf
 
             //构造入口点执行器
             executor = new LeafEntryExecutor(this, apiAllocator);
+            var proxy = lake.Get<IProxyBuilder>().CreateProxyOf(this);
+            proxy.InjectProperty();
+            proxy.Lakes.Add(this);
         }
 
 
@@ -37,6 +45,7 @@ namespace AutumnBox.OpenFramework.Extension.Leaf
         [LDoNotScan]
         public object Main(Dictionary<string, object> data)
         {
+            proxy.InvokeMethod("Main", data);
             executor.Execute(data);
             return null;
         }
@@ -80,6 +89,20 @@ namespace AutumnBox.OpenFramework.Extension.Leaf
             Dispose(true);
             // TODO: 如果在以上内容中替代了终结器，则取消注释以下行。
             // GC.SuppressFinalize(this);
+        }
+
+        public ILake Register(string id, Func<object> factory)
+        {
+            throw new NotImplementedException();
+        }
+
+        public object Get(string id)
+        {
+            if (id == ILakeBaseOnTypeExtension.GenerateIdOf(typeof(IClassTextDictionary)))
+            {
+                return lake.Get<IClassTextReader>().Read(this);
+            }
+            return null;
         }
         #endregion
     }
