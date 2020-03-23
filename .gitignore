@@ -44,4 +44,4 @@ HistoryRelease/
 DemoPic/
 packages/
 ##do_not
-!AutumnBox.GUI/Resources/AdbExecutable/*.*
+!AutumnBox.ADBProvider/adb_tools/*.*
