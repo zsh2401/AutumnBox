@@ -10,7 +10,6 @@ using AutumnBox.GUI.Properties;
 using AutumnBox.GUI.Util.Bus;
 using AutumnBox.GUI.Util.Debugging;
 using AutumnBox.GUI.Util.I18N;
-using AutumnBox.GUI.Util.Net;
 using AutumnBox.GUI.Util.OpenFxManagement;
 using AutumnBox.GUI.Util.OS;
 using AutumnBox.GUI.Util.Remote;
@@ -193,17 +192,17 @@ namespace AutumnBox.GUI.Util
             Basic.Util.Settings.CreateNewWindow = Settings.Default.DisplayCmdWindow;
             try
             {
+                logger.Info("killing other adb processes");
                 TaskKill.Kill("adb.exe");
-                logger.Info("adb server starting");
-                var adbManager = new ATMBWin32AdbManager();
-                adbManager.Extract();
+                logger.Info("autumnbox-adb-server is starting");
+                var adbManager = AdbProviderFactory.Get(true).AdbManager;
                 Adb.Load(adbManager);
                 Adb.Server.Start();
-                logger.Info($"adb server started at {Adb.Server.IP}:{Adb.Server.Port}");
+                logger.Info($"autumnbox-adb-server is started at {Adb.Server.IP}:{Adb.Server.Port}");
             }
             catch (Exception e)
             {
-                logger.Warn("can not start adb server!", e);
+                logger.Warn("there's some error happened while starting autumnbox-adb-server", e);
                 App.Current.Dispatcher.Invoke(() =>
                 {
                     new AdbFailedWindow(e.Message)

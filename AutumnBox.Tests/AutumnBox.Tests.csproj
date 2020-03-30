@@ -93,6 +93,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="OpenFX\ChinaLakeTest.cs" />
+    <Compile Include="OpenFX\Leafx\ProxyBuilderTest.cs" />
     <Compile Include="OpenFX\ProxyBuilderTest.cs" />
     <Compile Include="OpenFX\ProxyUsableTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

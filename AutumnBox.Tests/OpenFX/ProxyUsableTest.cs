@@ -33,25 +33,26 @@ namespace AutumnBox.Tests.OpenFX
         }
         private object CreateProxy(Type _interface, Type impl)
         {
-            AppDomain ad = AppDomain.CurrentDomain;
-            AssemblyName an = new AssemblyName("AtmbProxyObjects");
-            AssemblyBuilder asmBuilder = ad.DefineDynamicAssembly(
-                     an,
-                     AssemblyBuilderAccess.RunAndSave);
-            var fModule = asmBuilder.DefineDynamicModule("fuckingmodule", "tmp.dll");
-            var typeBuilder = fModule.DefineType(impl.FullName + "_s_proxy", TypeAttributes.Public);
+            throw new NotImplementedException();
+            //AppDomain ad = AppDomain.CurrentDomain;
+            //AssemblyName an = new AssemblyName("AtmbProxyObjects");
+            //AssemblyBuilder asmBuilder = ad.DefineDynamicAssembly(
+            //         an,
+            //         AssemblyBuilderAccess.RunAndSave);
+            //var fModule = asmBuilder.DefineDynamicModule("fuckingmodule", "tmp.dll");
+            //var typeBuilder = fModule.DefineType(impl.FullName + "_s_proxy", TypeAttributes.Public);
 
-            foreach (var pMethod in impl.GetMethods(BindingFlags.Public))
-            {
-                var paraTypes = pMethod.GetParameters()
-                    .Select((pInfo) => pInfo.ParameterType)
-                    .ToArray();
-                var methodBuilder = typeBuilder.DefineMethod(pMethod.Name,
-                    MethodAttributes.Public,
-                    pMethod.ReturnType,
-                    paraTypes);
-            }
-            typeBuilder.AddInterfaceImplementation(_interface);
+            //foreach (var pMethod in impl.GetMethods(BindingFlags.Public))
+            //{
+            //    var paraTypes = pMethod.GetParameters()
+            //        .Select((pInfo) => pInfo.ParameterType)
+            //        .ToArray();
+            //    var methodBuilder = typeBuilder.DefineMethod(pMethod.Name,
+            //        MethodAttributes.Public,
+            //        pMethod.ReturnType,
+            //        paraTypes);
+            //}
+            //typeBuilder.AddInterfaceImplementation(_interface);
         }
     }
 }
