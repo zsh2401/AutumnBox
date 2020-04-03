@@ -13,14 +13,14 @@
 *
 * ==============================================================================
 */
+
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace AutumnBox.OpenFramework.Leafx
 {
     public interface ILake
     {
         object Get(string id);
+        object Get(Type type);
     }
 }

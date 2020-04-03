@@ -2,25 +2,23 @@
 
 * ==============================================================================
 *
-* Filename: IAOPProxyBuilder
+* Filename: InjectType
 * Description: 
 *
 * Version: 1.0
-* Created: 2020/3/30 13:30:39
+* Created: 2020/3/30 18:04:32
 * Compiler: Visual Studio 2019
 *
 * Author: zsh2401
 *
 * ==============================================================================
 */
-using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace AutumnBox.OpenFramework.Leafx.DynamicProxy
+namespace AutumnBox.OpenFramework.Leafx.Attributes
 {
-    public interface IAOPProxyBuilder
+    public enum InjectType
     {
-        object Build(Type t);
+        ByName = 0,
+        ByType = 1,
     }
 }

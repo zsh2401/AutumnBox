@@ -20,5 +20,10 @@ namespace AutumnBox.OpenFramework.Leafx.Attributes
     [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property)]
     public class InjectAttribute : Attribute
     {
+        public InjectAttribute(InjectType injectType=InjectType.ByType) {
+            InjectType = injectType;
+        }
+
+        public InjectType InjectType { get; }
     }
 }
