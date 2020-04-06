@@ -3,7 +3,7 @@
 ### 简介
 秋之盒是一个对Google ADB工具包进行GUI封装的Windows桌面应用,方便小白,帮助老鸟
 - 代码行数:26000+ (不包含.xaml)
-- 主要语言:C#
+- 主要技术: C# / .NET / WPF / ADB
 - 支持的操作系统: Windows 7-Windows 10
 - 运行环境: .Net Framework 4.6.1
 

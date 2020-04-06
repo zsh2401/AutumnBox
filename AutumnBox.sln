@@ -11,7 +11,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		AutumnBox.OpenFramework\AutumnBox.OpenFramework.nuspec = AutumnBox.OpenFramework\AutumnBox.OpenFramework.nuspec
 		LICENSE = LICENSE
 		README.md = README.md
-		README_en.md = README_en.md
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutumnBox.GUI.Launcher", "AutumnBox.GUI.Launcher\AutumnBox.GUI.Launcher.csproj", "{1F3778B8-BD3B-4288-A498-FD76D2E84F44}"
