@@ -17,7 +17,6 @@ namespace AutumnBox.Tests.OpenFX.Leafx
             lake.RegisterSingleton<string>("test string");
 
             Assert.IsTrue(lake.Get<int>() == 1);
-            Assert.IsTrue(lake.Get<TestClass>().Str == "test string");
             Assert.IsTrue(lake.Get<string>() == "test string");
         }
         [TestMethod]

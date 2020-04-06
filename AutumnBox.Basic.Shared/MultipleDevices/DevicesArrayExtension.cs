@@ -10,7 +10,7 @@ using System.Linq;
 namespace AutumnBox.Basic.MultipleDevices
 {
     /// <summary>
-    /// 设备数组拖着赞
+    /// 设备数组拓展
     /// </summary>
     public static class DevicesArrayExtension
     {
