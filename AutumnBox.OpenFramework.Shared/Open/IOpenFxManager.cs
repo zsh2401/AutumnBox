@@ -15,6 +15,8 @@
 */
 using AutumnBox.OpenFramework.Management.ExtLibrary;
 using AutumnBox.OpenFramework.Management.Wrapper;
+using System;
+using System.Collections.Generic;
 
 namespace AutumnBox.OpenFramework.Open
 {
@@ -26,16 +28,31 @@ namespace AutumnBox.OpenFramework.Open
         /// <summary>
         /// 获取所有拓展模块包装器
         /// </summary>
-        IExtensionWrapper[] Wrappers { get; }
+        IEnumerable<IExtensionWrapper> Wrappers { get; }
 
         /// <summary>
         /// 获取所有库管理器
         /// </summary>
-        ILibrarian[] Librarians { get; }
+        List<ILibrarian> Librarians { get; }
+
+        /// <summary>
+        /// 当拓展列表发生变动时触发
+        /// </summary>
+        event EventHandler ExtensionsChanged;
+
+        /// <summary>
+        /// 引起事件
+        /// </summary>
+        void RaiseExtensionsChangedEvent();
 
         /// <summary>
         /// 获取SDK等级
         /// </summary>
         int SDKLevel { get; }
+
+        /// <summary>
+        /// 获取框架的版本
+        /// </summary>
+        Version OpenFxVersion { get; }
     }
 }

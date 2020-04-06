@@ -55,6 +55,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Management\ExtWrapper\IExtensionAttributeReader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\OpenFxLake.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\IKeyValuePool.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Open\ILanguageManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\INotificationManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\IXCardsManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\TextKit\ClassTextAttribute.cs" />
