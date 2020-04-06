@@ -42,10 +42,20 @@ namespace AutumnBox.Tests.OpenFX.Leafx
             Assert.IsTrue(lake.Get<int>() - lake.Get<int>() == -1);
         }
 
+        [TestMethod]
+        public void PropertyTest()
+        {
+            Assert.IsTrue(lake.Get("now") == lake.Get("now"));
+        }
+
         private class TestFactory
         {
             public const string TEST_STR = "test str";
             private int randTime = 0;
+
+            [Component(SingletonMode = true, Id = "now")]
+            public DateTime Now => DateTime.Now;
+
             [Component]
             private string StringFactory()
             {

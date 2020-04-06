@@ -17,7 +17,7 @@ using System;
 
 namespace AutumnBox.OpenFramework.Leafx.Attributes
 {
-    [AttributeUsage(AttributeTargets.Method | AttributeTargets.Class, AllowMultiple = false)]
+    [AttributeUsage(AttributeTargets.Method | AttributeTargets.Class | AttributeTargets.Property, AllowMultiple = false )]
     public sealed class ComponentAttribute : Attribute
     {
         public bool SingletonMode { get; set; } = true;

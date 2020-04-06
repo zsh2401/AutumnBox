@@ -25,13 +25,14 @@ namespace AutumnBox.OpenFramework.Leafx.Container.Support
         }
         private IEnumerable<(ComponentAttribute, MethodInfo)> GetRawMethods()
         {
-            return from method in factoryType.GetMethods(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance)
-                   where IsFactoryMethod(method)
-                   select (attr: method.GetCustomAttribute<ComponentAttribute>(), method);
-        }
-        private bool IsFactoryMethod(MethodInfo methodInfo)
-        {
-            return methodInfo.GetCustomAttribute(COMPONENT_ATTR_TYPE) != null;
+            var methods = from method in factoryType.GetMethods(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance)
+                          where method.GetCustomAttribute<ComponentAttribute>() != null
+                          select (attr: method.GetCustomAttribute<ComponentAttribute>(), method);
+
+            var propertiesGetters = from property in factoryType.GetProperties(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance)
+                                    where property.GetCustomAttribute<ComponentAttribute>() != null
+                                    select (property.GetCustomAttribute<ComponentAttribute>(), property.GetGetMethod());
+            return methods.Concat(propertiesGetters);
         }
         public void Read()
         {
