@@ -40,6 +40,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Leafx\Attributes\ComponentAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Leafx\Attributes\InjectAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Leafx\Attributes\InjectType.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Leafx\Attributes\SingletonComponentAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Leafx\Container\ILake.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Leafx\Container\Internal\InstanceActivator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Leafx\Container\Internal\PrototypeInjector.cs" />

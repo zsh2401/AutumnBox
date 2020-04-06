@@ -302,5 +302,16 @@ namespace AutumnBox.OpenFramework.Leafx.Container
 
             return $"___based_on_type_{t}";
         }
+
+
+        public static void LoadFrom(this IRegisterableLake rLake, Type factoryType)
+        {
+            if (factoryType.IsAbstract || factoryType.IsInterface)
+            {
+                throw new InvalidOperationException("Is not correct factory type");
+            }
+            var instance = Activator.CreateInstance(factoryType);
+            
+        }
     }
 }

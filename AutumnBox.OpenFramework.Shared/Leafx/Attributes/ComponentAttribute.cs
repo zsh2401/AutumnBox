@@ -17,7 +17,7 @@ using System;
 
 namespace AutumnBox.OpenFramework.Leafx.Attributes
 {
-    [AttributeUsage(AttributeTargets.Class, AllowMultiple = false)]
+    [AttributeUsage(AttributeTargets.Method, AllowMultiple = false)]
     public class ComponentAttribute : Attribute
     {
         public ComponentAttribute(Type type)
