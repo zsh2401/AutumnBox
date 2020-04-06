@@ -22,7 +22,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Extension\FallExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\IClassExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\IExtension.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Implementation\ChinaLake.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Leaf\Attributes\LDoNotScanAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Leaf\Internal\ApiAllocator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Leaf\Internal\Impl\LeafEmbManager.cs" />
@@ -33,39 +32,33 @@
     <Compile Include="$(MSBuildThisFileDirectory)Implementation\ClassTextReader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Implementation\DeviceManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Implementation\NotificationManager.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Implementation\ProxyBuilder.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Implementation\ProxyImpl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Implementation\XCardManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Leafx\Attributes\AroundMethodAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Leafx\Attributes\ComponentAttribute.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Leafx\Attributes\InjectAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Leafx\Attributes\AutoInjectAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Leafx\Attributes\InjectType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Leafx\Attributes\SingletonComponentAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Leafx\Container\ILake.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Leafx\Container\Internal\SunsetLake.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Leafx\Container\IRegisterableLake.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Leafx\Container\LakeHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Leafx\Container\LakeSourcesHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Leafx\Container\Support\ComponentFactoryReader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Leafx\DependencyInjector.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Leafx\ObjectManagement\ArgsBuilder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Leafx\ObjectManagement\DependeciesInjector.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Leafx\ObjectManagement\MethodProxy.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Leafx\ObjectManagement\ObjectBuilder.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\ExtLibrary\AssemblyBasedLibrarian.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\LakeLoader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\ExtWrapper\ExtensionAttributeReader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\ExtWrapper\IExtensionAttributeReader.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Management\OpenFxLake.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\IKeyValuePool.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Open\ILake.BaseOnTypeExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\INotificationManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\IXCardsManager.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Open\ProxyKit\InjectAttribute.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Open\ProxyKit\IProxy.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Open\ProxyKit\IProxy.g.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Open\ProxyKit\IProxyBuilder.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Open\ProxyKit\RequestingObjectEvent.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\TextKit\ClassTextAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\TextKit\IClassTextReader.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Open\ILake.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\IOpenFxManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\LakeProvider.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\LKit\ILeafUI.cs" />
@@ -152,8 +145,5 @@
     <Folder Include="$(MSBuildThisFileDirectory)Extension\Leaf\Fast\" />
     <Folder Include="$(MSBuildThisFileDirectory)Open\LKit\" />
     <Folder Include="$(MSBuildThisFileDirectory)Open\ADBKit\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="$(MSBuildThisFileDirectory)Open\ILake.BaseOnIdExtension.cs" />
   </ItemGroup>
 </Project>

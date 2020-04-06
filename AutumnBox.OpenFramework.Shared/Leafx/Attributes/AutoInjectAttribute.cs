@@ -18,12 +18,8 @@ using System;
 namespace AutumnBox.OpenFramework.Leafx.Attributes
 {
     [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property)]
-    public class InjectAttribute : Attribute
+    public class AutoInjectAttribute : Attribute
     {
-        public InjectAttribute(InjectType injectType=InjectType.ByType) {
-            InjectType = injectType;
-        }
-
-        public InjectType InjectType { get; }
+        public string Id { get; set; }
     }
 }

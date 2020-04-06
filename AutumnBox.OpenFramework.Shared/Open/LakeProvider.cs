@@ -13,9 +13,8 @@
 *
 * ==============================================================================
 */
-using System;
-using System.Collections.Generic;
-using System.Text;
+using AutumnBox.OpenFramework.Leafx;
+using AutumnBox.OpenFramework.Management;
 
 namespace AutumnBox.OpenFramework.Open
 {
@@ -27,6 +26,6 @@ namespace AutumnBox.OpenFramework.Open
         /// <summary>
         /// 接口湖
         /// </summary>
-        public static ILake Lake { get; internal set; }
+        public static ILake Lake => OpenFxLake.Lake;
     }
 }

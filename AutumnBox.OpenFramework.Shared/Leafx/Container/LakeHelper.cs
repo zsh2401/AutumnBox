@@ -71,6 +71,26 @@ namespace AutumnBox.OpenFramework.Leafx.Container
         /// <summary>
         /// 尝试获取
         /// </summary>
+        /// <param name="lake"></param>
+        /// <param name="t"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static bool TryGet(this ILake lake, string id, out object value)
+        {
+            try
+            {
+                value = lake.Get(id);
+                return true;
+            }
+            catch
+            {
+                value = default;
+                return false;
+            }
+        }
+        /// <summary>
+        /// 尝试获取
+        /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="lake"></param>
         /// <param name="value"></param>
@@ -89,7 +109,6 @@ namespace AutumnBox.OpenFramework.Leafx.Container
             }
         }
 
-
         /// <summary>
         /// 注册
         /// </summary>
@@ -97,7 +116,7 @@ namespace AutumnBox.OpenFramework.Leafx.Container
         /// <param name="t"></param>
         /// <param name="factory"></param>
         /// <returns></returns>
-        public static ILake Register(this IRegisterableLake lake, Type t, Func<object> factory)
+        public static IRegisterableLake Register(this IRegisterableLake lake, Type t, Func<object> factory)
         {
             RegisterBase(lake, t, () => factory());
             return lake;
@@ -109,7 +128,7 @@ namespace AutumnBox.OpenFramework.Leafx.Container
         /// <param name="lake"></param>
         /// <param name="factory"></param>
         /// <returns></returns>
-        public static ILake Register<T>(this IRegisterableLake lake, Func<T> factory)
+        public static IRegisterableLake Register<T>(this IRegisterableLake lake, Func<T> factory)
         {
             RegisterBase(lake, typeof(T), () => factory());
             return lake;
@@ -121,7 +140,7 @@ namespace AutumnBox.OpenFramework.Leafx.Container
         /// <param name="lake"></param>
         /// <param name="impl"></param>
         /// <returns></returns>
-        public static ILake Register<T>(this IRegisterableLake lake, Type impl)
+        public static IRegisterableLake Register<T>(this IRegisterableLake lake, Type impl)
         {
             RegisterBase(lake, typeof(T), GetObjectBuilderOf(lake, impl));
             return lake;
@@ -133,7 +152,7 @@ namespace AutumnBox.OpenFramework.Leafx.Container
         /// <param name="target"></param>
         /// <param name="impl"></param>
         /// <returns></returns>
-        public static ILake Register(this IRegisterableLake lake, Type target, Type impl)
+        public static IRegisterableLake Register(this IRegisterableLake lake, Type target, Type impl)
         {
             RegisterBase(lake, target, GetObjectBuilderOf(lake, impl));
             return lake;
@@ -144,7 +163,7 @@ namespace AutumnBox.OpenFramework.Leafx.Container
         /// <typeparam name="T"></typeparam>
         /// <typeparam name="TImpl"></typeparam>
         /// <returns></returns>
-        public static ILake Register<T, TImpl>(this IRegisterableLake lake) where TImpl : T
+        public static IRegisterableLake Register<T, TImpl>(this IRegisterableLake lake) where TImpl : T
         {
             RegisterBase(lake, typeof(T), GetObjectBuilderOf(lake, typeof(TImpl)));
             return lake;
@@ -158,7 +177,7 @@ namespace AutumnBox.OpenFramework.Leafx.Container
         /// <param name="type"></param>
         /// <param name="factory"></param>
         /// <returns></returns>
-        public static ILake RegisterSingleton(this IRegisterableLake lake, Type type, Func<object> factory)
+        public static IRegisterableLake RegisterSingleton(this IRegisterableLake lake, Type type, Func<object> factory)
         {
             RegisterSingletonBase(lake, type, factory);
             return lake;
@@ -170,7 +189,7 @@ namespace AutumnBox.OpenFramework.Leafx.Container
         /// <param name="lake"></param>
         /// <param name="factory"></param>
         /// <returns></returns>
-        public static ILake RegisterSingleton<T>(this IRegisterableLake lake, Func<object> factory)
+        public static IRegisterableLake RegisterSingleton<T>(this IRegisterableLake lake, Func<object> factory)
         {
             RegisterSingletonBase(lake, typeof(T), factory);
             return lake;
@@ -182,7 +201,7 @@ namespace AutumnBox.OpenFramework.Leafx.Container
         /// <param name="lake"></param>
         /// <param name="impl"></param>
         /// <returns></returns>
-        public static ILake RegisterSingleton<T>(this IRegisterableLake lake, Type impl)
+        public static IRegisterableLake RegisterSingleton<T>(this IRegisterableLake lake, Type impl)
         {
             RegisterSingletonBase(lake, typeof(T), GetObjectBuilderOf(lake, impl));
             return lake;
@@ -193,7 +212,7 @@ namespace AutumnBox.OpenFramework.Leafx.Container
         /// <typeparam name="T"></typeparam>
         /// <typeparam name="TImpl"></typeparam>
         /// <returns></returns>
-        public static ILake RegisterSingleton<T, TImpl>(this IRegisterableLake lake) where TImpl : T
+        public static IRegisterableLake RegisterSingleton<T, TImpl>(this IRegisterableLake lake) where TImpl : T
         {
             RegisterSingletonBase(lake, typeof(T), GetObjectBuilderOf(lake, typeof(TImpl)));
             return lake;
@@ -205,7 +224,7 @@ namespace AutumnBox.OpenFramework.Leafx.Container
         /// <param name="lake"></param>
         /// <param name="value"></param>
         /// <returns></returns>
-        public static ILake RegisterSingleton<T>(this IRegisterableLake lake, T value)
+        public static IRegisterableLake RegisterSingleton<T>(this IRegisterableLake lake, T value)
         {
             RegisterSingletonBase(lake, typeof(T), () => value);
             return lake;
@@ -218,7 +237,7 @@ namespace AutumnBox.OpenFramework.Leafx.Container
         /// <param name="id"></param>
         /// <param name="factory"></param>
         /// <returns></returns>
-        public static ILake RegisterSingleton(this IRegisterableLake lake, string id, Func<object> factory)
+        public static IRegisterableLake RegisterSingleton(this IRegisterableLake lake, string id, Func<object> factory)
         {
             lake.RegisterSingletonBase(id, factory);
             return lake;
@@ -231,7 +250,7 @@ namespace AutumnBox.OpenFramework.Leafx.Container
         /// <param name="id"></param>
         /// <param name="factory"></param>
         /// <returns></returns>
-        public static ILake Register(this IRegisterableLake lake, string id, Func<object> factory)
+        public static IRegisterableLake Register(this IRegisterableLake lake, string id, Func<object> factory)
         {
             lake.RegisterBase(id, factory);
             return lake;

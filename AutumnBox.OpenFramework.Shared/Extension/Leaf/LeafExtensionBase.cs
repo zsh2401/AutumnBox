@@ -2,20 +2,21 @@
 using System.Collections.Generic;
 using AutumnBox.OpenFramework.Extension.Leaf.Attributes;
 using AutumnBox.OpenFramework.Extension.Leaf.Internal;
+using AutumnBox.OpenFramework.Leafx;
+using AutumnBox.OpenFramework.Leafx.ObjectManagement;
 using AutumnBox.OpenFramework.Open;
-using AutumnBox.OpenFramework.Open.ProxyKit;
 
 namespace AutumnBox.OpenFramework.Extension.Leaf
 {
     /// <summary>
     /// Leaf模块
     /// </summary>
-    public abstract class LeafExtensionBase : EmptyExtension, IClassExtension, ILake
+    public abstract class LeafExtensionBase : EmptyExtension, IClassExtension
     {
         private readonly LeafEntryExecutor executor;
         private readonly LeafPropertyInjector injector;
         private readonly ILake lake;
-        private readonly IProxy proxy;
+        private readonly MethodProxy methodProxy;
 
         /// <summary>
         /// 构造函数
@@ -31,9 +32,7 @@ namespace AutumnBox.OpenFramework.Extension.Leaf
 
             //构造入口点执行器
             executor = new LeafEntryExecutor(this, apiAllocator);
-            var proxy = lake.Get<IProxyBuilder>().CreateProxyOf(this);
-            proxy.InjectProperty();
-            proxy.Lakes.Add(this);
+            methodProxy = new MethodProxy(this,"LMain",LakeProvider.Lake);
         }
 
 
@@ -43,11 +42,9 @@ namespace AutumnBox.OpenFramework.Extension.Leaf
         /// <param name="data"></param>
         /// <returns></returns>
         [LDoNotScan]
-        public object Main(Dictionary<string, object> data)
+        public object Main(Dictionary<string, object> args)
         {
-            proxy.InvokeMethod("Main", data);
-            executor.Execute(data);
-            return null;
+            return methodProxy.Invoke(args);
         }
 
 
@@ -94,15 +91,6 @@ namespace AutumnBox.OpenFramework.Extension.Leaf
         public ILake Register(string id, Func<object> factory)
         {
             throw new NotImplementedException();
-        }
-
-        public object Get(string id)
-        {
-            if (id == ILakeBaseOnTypeExtension.GenerateIdOf(typeof(IClassTextDictionary)))
-            {
-                return lake.Get<IClassTextReader>().Read(this);
-            }
-            return null;
         }
         #endregion
     }

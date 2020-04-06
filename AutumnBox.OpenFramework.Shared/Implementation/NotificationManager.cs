@@ -13,18 +13,16 @@
 *
 * ==============================================================================
 */
+using AutumnBox.OpenFramework.Leafx.Attributes;
 using AutumnBox.OpenFramework.Management;
 using AutumnBox.OpenFramework.Open;
-using AutumnBox.OpenFramework.Open.ProxyKit;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace AutumnBox.OpenFramework.Implementation
 {
     class NotificationManager : INotificationManager
     {
-        [Inject]
+        [AutoInject]
         public IBaseApi BaseApi { get; set; }
 
         public void SendNotification(string msg, string title = null, Action onClickHandler = null)
