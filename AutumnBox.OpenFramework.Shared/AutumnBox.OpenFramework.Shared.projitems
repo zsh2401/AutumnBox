@@ -45,9 +45,12 @@
     <Compile Include="$(MSBuildThisFileDirectory)Leafx\Container\Internal\PrototypeInjector.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Leafx\Container\Internal\SunsetLake.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Leafx\Container\IRegisterableLake.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Leafx\Container\LakeHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Leafx\Container\Support\ComponentScanner.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Leafx\DependencyInjector.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Leafx\ObjectManagement\IObjectMaintainer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Leafx\ObjectManagement\ArgsBuilder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Leafx\ObjectManagement\MethodProxy.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Leafx\ObjectManagement\ObjectBuilder.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\ExtLibrary\AssemblyBasedLibrarian.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\LakeLoader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\ExtWrapper\ExtensionAttributeReader.cs" />
