@@ -212,6 +212,32 @@ namespace AutumnBox.OpenFramework.Leafx.Container
         }
 
         /// <summary>
+        /// 根据ID注册单例
+        /// </summary>
+        /// <param name="lake"></param>
+        /// <param name="id"></param>
+        /// <param name="factory"></param>
+        /// <returns></returns>
+        public static ILake RegisterSingleton(this IRegisterableLake lake, string id, Func<object> factory)
+        {
+            lake.RegisterSingletonBase(id, factory);
+            return lake;
+        }
+
+        /// <summary>
+        /// 使用id注册多例
+        /// </summary>
+        /// <param name="lake"></param>
+        /// <param name="id"></param>
+        /// <param name="factory"></param>
+        /// <returns></returns>
+        public static ILake Register(this IRegisterableLake lake, string id, Func<object> factory)
+        {
+            lake.RegisterBase(id, factory);
+            return lake;
+        }
+
+        /// <summary>
         /// 注册函数的最内部实现
         /// </summary>
         /// <param name="lake"></param>
@@ -219,34 +245,42 @@ namespace AutumnBox.OpenFramework.Leafx.Container
         /// <param name="factory"></param>
         private static void RegisterBase(this IRegisterableLake lake, Type target, Func<object> factory)
         {
-            if (lake is null)
-            {
-                throw new ArgumentNullException(nameof(lake));
-            }
-
             if (target is null)
             {
                 throw new ArgumentNullException(nameof(target));
             }
-
-            if (factory is null)
-            {
-                throw new ArgumentNullException(nameof(factory));
-            }
-            lake.Register("", () => { return ""; });
-            lake.Register(GenerateIdByType(target), factory);
+            lake.RegisterBase(GenerateIdByType(target), factory);
         }
 
-        private static void RegisterSingletonBase(this IRegisterableLake lake, Type target, Func<object> factory)
+        private static void RegisterBase(this IRegisterableLake lake, string id, Func<object> factory)
         {
             if (lake is null)
             {
                 throw new ArgumentNullException(nameof(lake));
             }
 
-            if (target is null)
+            if (id is null)
             {
-                throw new ArgumentNullException(nameof(target));
+                throw new ArgumentNullException(nameof(id));
+            }
+
+            if (factory is null)
+            {
+                throw new ArgumentNullException(nameof(factory));
+            }
+            lake.Register(id, factory);
+        }
+
+        private static void RegisterSingletonBase(this IRegisterableLake lake, string id, Func<object> factory)
+        {
+            if (lake is null)
+            {
+                throw new ArgumentNullException(nameof(lake));
+            }
+
+            if (id is null)
+            {
+                throw new ArgumentNullException(nameof(id));
             }
 
             if (factory is null)
@@ -255,7 +289,13 @@ namespace AutumnBox.OpenFramework.Leafx.Container
             }
 
             var lazy = new Lazy<object>(factory);
-            lake.Register(GenerateIdByType(target), () => lazy.Value);
+            lake.Register(id, () => lazy.Value);
+        }
+
+        private static void RegisterSingletonBase(this IRegisterableLake lake, Type target, Func<object> factory)
+        {
+            var lazy = new Lazy<object>(factory);
+            lake.RegisterSingletonBase(GenerateIdByType(target), factory);
         }
 
         /// <summary>
@@ -311,7 +351,7 @@ namespace AutumnBox.OpenFramework.Leafx.Container
                 throw new InvalidOperationException("Is not correct factory type");
             }
             var instance = Activator.CreateInstance(factoryType);
-            
+
         }
     }
 }

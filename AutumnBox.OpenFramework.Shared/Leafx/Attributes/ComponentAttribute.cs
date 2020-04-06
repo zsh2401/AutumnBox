@@ -17,18 +17,10 @@ using System;
 
 namespace AutumnBox.OpenFramework.Leafx.Attributes
 {
-    [AttributeUsage(AttributeTargets.Method, AllowMultiple = false)]
-    public class ComponentAttribute : Attribute
+    [AttributeUsage(AttributeTargets.Method | AttributeTargets.Class, AllowMultiple = false)]
+    public sealed class ComponentAttribute : Attribute
     {
-        public ComponentAttribute(Type type)
-        {
-            if (type is null)
-            {
-                throw new ArgumentNullException(nameof(type));
-            }
-            Type = type;
-        }
-
-        public Type Type { get; }
+        public bool SingletonMode { get; set; } = true;
+        public string Id { get; set; } = null;
     }
 }
