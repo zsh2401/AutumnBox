@@ -42,10 +42,11 @@ Project("{840C416C-B8F3-42BC-B0DD-F6BB14C9F8CB}") = "AutumnBox.Installer", "Autu
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CrossPlatform", "CrossPlatform", "{B93C5F82-7CA6-4946-A7C0-161A2FBA22DA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutumnBox.CrossGUI", "AutumnBox.CrossGUI\AutumnBox.CrossGUI.csproj", "{2DADB4CF-FA9D-4A73-99C0-BE378860D185}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutumnBox.CrossGUI", "AutumnBox.CrossGUI\AutumnBox.CrossGUI.csproj", "{2DADB4CF-FA9D-4A73-99C0-BE378860D185}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		AutumnBox.OpenFramework.Shared\AutumnBox.OpenFramework.Shared.projitems*{2cff3b20-4778-47ef-8d8b-b106f7617954}*SharedItemsImports = 4
 		AutumnBox.OpenFramework.Shared\AutumnBox.OpenFramework.Shared.projitems*{49e6d09e-b234-4aa4-97b0-e82fb60c36d2}*SharedItemsImports = 13
 		AutumnBox.Basic.Shared\AutumnBox.Basic.Shared.projitems*{5276bfb4-b089-4e34-9c42-42ea019ef320}*SharedItemsImports = 4
 		AutumnBox.OpenFramework.Shared\AutumnBox.OpenFramework.Shared.projitems*{60988b1a-74b7-470a-aeba-6d7fe474614d}*SharedItemsImports = 4
@@ -739,7 +740,7 @@ Global
 		{2DADB4CF-FA9D-4A73-99C0-BE378860D185} = {B93C5F82-7CA6-4946-A7C0-161A2FBA22DA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.PolicyInjection.6.0.1304.0\lib\NET45
 		SolutionGuid = {E8E55705-AE5C-4952-B4C7-9D7F81C38731}
+		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.PolicyInjection.6.0.1304.0\lib\NET45
 	EndGlobalSection
 EndGlobal

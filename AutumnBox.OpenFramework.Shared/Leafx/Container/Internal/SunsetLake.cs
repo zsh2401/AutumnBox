@@ -19,7 +19,7 @@ using System.Text;
 
 namespace AutumnBox.OpenFramework.Leafx.Container.Internal
 {
-    class SunsetLake : IRegisterableLake
+    public class SunsetLake : IRegisterableLake
     {
         private readonly Dictionary<string, Func<object>> factories = new Dictionary<string, Func<object>>();
         public object Get(string id)

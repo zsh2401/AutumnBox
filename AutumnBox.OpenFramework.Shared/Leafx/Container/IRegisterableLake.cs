@@ -20,6 +20,5 @@ namespace AutumnBox.OpenFramework.Leafx
     public interface IRegisterableLake : ILake
     {
         void Register(string id,Func<object> factory);
-        void Register(Type type, Func<object> factory);
     }
 }

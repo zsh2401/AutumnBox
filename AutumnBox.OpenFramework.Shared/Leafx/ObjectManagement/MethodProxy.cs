@@ -15,6 +15,7 @@
 */
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -47,8 +48,8 @@ namespace AutumnBox.OpenFramework.Leafx.ObjectManagement
             }
 
             this.instance = instance ?? throw new ArgumentNullException(nameof(instance));
-            method = FindMethodByName(methodName);
-            this.Sources = sources.ToList();
+            this.method = FindMethodByName(methodName);
+            this.Sources = sources?.ToList() ?? new List<ILake>();
         }
 
         public MethodProxy(object instance, MethodInfo method, params ILake[] sources)
@@ -70,20 +71,28 @@ namespace AutumnBox.OpenFramework.Leafx.ObjectManagement
 
             this.instance = instance;
             this.method = method;
-            this.Sources = sources.ToList();
+            this.Sources = sources?.ToList() ?? new List<ILake>();
         }
 
         private MethodInfo FindMethodByName(string methodName)
         {
-            return instance.GetType().GetMethod(methodName);
+            var result = instance.GetType().GetMethod(methodName,
+                BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.Default | BindingFlags.Static);
+            if (result == null)
+            {
+                throw new InvalidOperationException($"Method {methodName} not found");
+            }
+            return result;
         }
 
         public object Invoke(Dictionary<string, object> extraArgs = null, bool inject = true)
         {
-            var args = ArgsBuilder.BuildArgs(
+            if (instance == null) throw new InvalidOperationException("test");
+            object[] args = ArgsBuilder.BuildArgs(
                 inject ? Sources : null,
                 extraArgs ?? new Dictionary<string, object>(),
                 method.GetParameters());
+
             return method.Invoke(instance, args);
         }
     }

@@ -21,6 +21,5 @@ namespace AutumnBox.OpenFramework.Leafx
     public interface ILake
     {
         object Get(string id);
-        object Get(Type type);
     }
 }
