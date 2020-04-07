@@ -43,6 +43,8 @@
   <ItemGroup>
     <Compile Include="EHelloWorld.cs" />
     <Compile Include="EssentialsLibrarin.cs" />
+    <Compile Include="ExternalXCards\AdXCard.cs" />
+    <Compile Include="ExternalXCards\MotdXCard.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -58,6 +60,9 @@
       <Project>{60988b1a-74b7-470a-aeba-6d7fe474614d}</Project>
       <Name>AutumnBox.OpenFramework</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DeviceOwnerManagement\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

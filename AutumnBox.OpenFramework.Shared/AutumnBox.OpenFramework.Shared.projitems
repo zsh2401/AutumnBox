@@ -33,7 +33,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Implementation\ClassTextReader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Implementation\DeviceManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Implementation\NotificationManager.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Implementation\XCardManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Implementation\XCardsManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Leafx\Attributes\AroundMethodAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Leafx\Attributes\ComponentAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Leafx\Attributes\AutoInjectAttribute.cs" />

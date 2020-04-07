@@ -20,18 +20,21 @@ using System.Collections.Generic;
 
 namespace AutumnBox.OpenFramework.Implementation
 {
-    internal sealed class XCardManager : IXCardsManager
+    internal sealed class XCardsManager : IXCardsManager
     {
         private readonly IBaseApi baseApi;
 
-        public XCardManager(IBaseApi baseApi)
+        public XCardsManager(IBaseApi baseApi)
         {
             if (baseApi is null)
             {
                 throw new ArgumentNullException(nameof(baseApi));
             }
             this.baseApi = baseApi;
-            baseApi.Destorying += AutumnBoxDestorying;
+            baseApi.RunOnUIThread(() =>
+            {
+                baseApi.Destorying += AutumnBoxDestorying;
+            });
         }
 
         private void AutumnBoxDestorying(object sender, EventArgs e)
@@ -43,15 +46,21 @@ namespace AutumnBox.OpenFramework.Implementation
 
         public void Register(IXCard card)
         {
-            card.Create();
-            baseApi.AppendPanel(card.View, card.Priority);
-            cards.Add(card);
+            baseApi.RunOnUIThread(() =>
+            {
+                card.Create();
+                baseApi.AppendPanel(card.View, card.Priority);
+                cards.Add(card);
+            });
         }
 
         public void Unregister(IXCard card)
         {
-            baseApi.RemovePanel(card.View);
-            card.Destory();
+            baseApi.RunOnUIThread(() =>
+            {
+                baseApi.RemovePanel(card.View);
+                card.Destory();
+            });
         }
     }
 }
