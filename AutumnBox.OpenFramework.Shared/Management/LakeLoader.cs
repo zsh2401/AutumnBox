@@ -21,6 +21,8 @@ using AutumnBox.OpenFramework.Implementation;
 using AutumnBox.OpenFramework.Open;
 using AutumnBox.OpenFramework.Open.ADBKit;
 using AutumnBox.OpenFramework.Open.LKit;
+using System.Collections.Generic;
+using AutumnBox.OpenFramework.Leafx;
 
 namespace AutumnBox.OpenFramework.Management
 {
@@ -33,6 +35,7 @@ namespace AutumnBox.OpenFramework.Management
         public static void Load(IBaseApi baseApi)
         {
             OpenFxLake.Lake
+                            .RegisterSingleton("all_sources", GetLakeGroup)
                             .RegisterSingleton<IBaseApi>(baseApi)
                             .RegisterSingleton<ITaskManager, TaskManagerImpl>()
                             .RegisterSingleton<IMd5, Md5Impl>()
@@ -57,6 +60,10 @@ namespace AutumnBox.OpenFramework.Management
             {
                 OpenFxLake.Lake.Get<INotificationManager>().SendNotification("Default Lake Loaded");
             }
+        }
+        private static List<ILake> GetLakeGroup()
+        {
+            return new List<ILake>() { OpenFxLake.Lake };
         }
     }
 }

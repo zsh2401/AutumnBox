@@ -96,6 +96,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="OpenFX\ChinaLakeTest.cs" />
+    <Compile Include="OpenFX\LeafExtension\LeafExtensionTest.cs" />
     <Compile Include="OpenFX\Leafx\ComponentFactoryTest.cs" />
     <Compile Include="OpenFX\Leafx\MethodProxyTest.cs" />
     <Compile Include="OpenFX\Leafx\ObjectInjectorTest.cs" />

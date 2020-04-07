@@ -1,4 +1,6 @@
 ﻿using AutumnBox.Basic.Device;
+using AutumnBox.Basic.MultipleDevices;
+using System;
 
 namespace AutumnBox.OpenFramework.Open.ADBKit
 {
@@ -15,5 +17,13 @@ namespace AutumnBox.OpenFramework.Open.ADBKit
         /// 获取已连接设备列表
         /// </summary>
         IDevice[] ConnectedDevices { get; }
+        /// <summary>
+        /// 设备拔插事件
+        /// </summary>
+        event DevicesChangedHandler DevicesChanged;
+        /// <summary>
+        /// 用户改变了选择设备时触发
+        /// </summary>
+        event EventHandler SelectedDeviceChanged;
     }
 }

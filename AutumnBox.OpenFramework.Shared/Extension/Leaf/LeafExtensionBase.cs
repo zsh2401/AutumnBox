@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using AutumnBox.Basic.Device;
 using AutumnBox.OpenFramework.Extension.Leaf.Attributes;
 using AutumnBox.OpenFramework.Extension.Leaf.Internal;
 using AutumnBox.OpenFramework.Leafx;
+using AutumnBox.OpenFramework.Leafx.Attributes;
 using AutumnBox.OpenFramework.Leafx.ObjectManagement;
 using AutumnBox.OpenFramework.Open;
 
@@ -13,28 +17,20 @@ namespace AutumnBox.OpenFramework.Extension.Leaf
     /// </summary>
     public abstract class LeafExtensionBase : EmptyExtension, IClassExtension
     {
-        private readonly LeafEntryExecutor executor;
-        private readonly LeafPropertyInjector injector;
-        private readonly ILake lake;
+        private IEnumerable<ILake> Sources { get; set; }
+
         private readonly MethodProxy methodProxy;
 
         /// <summary>
         /// 构造函数
         /// </summary>
-        public LeafExtensionBase()
+        public LeafExtensionBase(params ILake[] sources)
         {
-            //初始化API注入器
-            ApiAllocator apiAllocator = new ApiAllocator(this);
-
-            //注入属性
-            injector = new LeafPropertyInjector(this, apiAllocator);
-            injector.Inject();
-
+            Sources = sources;
+            this.InjectProperties(sources);
             //构造入口点执行器
-            executor = new LeafEntryExecutor(this, apiAllocator);
-            methodProxy = new MethodProxy(this,"LMain",LakeProvider.Lake);
+            methodProxy = new MethodProxy(this, this.FindEntryPoint(), Sources.ToArray());
         }
-
 
         /// <summary>
         /// 入口函数,继承者无需关心

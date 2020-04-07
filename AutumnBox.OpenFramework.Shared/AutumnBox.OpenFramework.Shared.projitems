@@ -26,6 +26,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Leaf\Internal\ApiAllocator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Leaf\Internal\Impl\LeafEmbManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Leaf\LeafConstants.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extension\Leaf\LeafExtensionHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Leaf\LeafTerminatedException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Leaf\Fast\LeafUIHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Leaf\Attributes\LFromDataAttribute.cs" />
@@ -66,7 +67,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Open\LKit\ILeafUI.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\LKit\LeafUIEvents.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Leaf\Internal\LeafEntryExecutor.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Extension\Leaf\Fast\LeafExtensionHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Leaf\Internal\LeafPropertyInjector.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Leaf\Attributes\LMainAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Leaf\LeafExtensionBase.cs" />
@@ -143,7 +143,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Extension\Attribute\" />
-    <Folder Include="$(MSBuildThisFileDirectory)Extension\Leaf\" />
     <Folder Include="$(MSBuildThisFileDirectory)Extension\Leaf\Fast\" />
     <Folder Include="$(MSBuildThisFileDirectory)Open\LKit\" />
     <Folder Include="$(MSBuildThisFileDirectory)Open\ADBKit\" />
