@@ -12,7 +12,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace AutumnBox.OpenFramework.Management.ExtLibrary
+namespace AutumnBox.OpenFramework.Management.ExtLibrary.Impl
 {
     /// <summary>
     /// 入口类基类

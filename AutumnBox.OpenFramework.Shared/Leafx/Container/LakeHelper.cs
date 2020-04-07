@@ -13,8 +13,10 @@
 *
 * ==============================================================================
 */
+using AutumnBox.Logging;
 using AutumnBox.OpenFramework.Leafx.ObjectManagement;
 using System;
+using System.Diagnostics;
 
 namespace AutumnBox.OpenFramework.Leafx.Container
 {
@@ -62,8 +64,9 @@ namespace AutumnBox.OpenFramework.Leafx.Container
                 value = lake.Get(t);
                 return true;
             }
-            catch
+            catch (Exception e)
             {
+                SLogger.Warn(nameof(LakeHelper), "Can not get component", e);
                 value = default;
                 return false;
             }
@@ -72,7 +75,7 @@ namespace AutumnBox.OpenFramework.Leafx.Container
         /// 尝试获取
         /// </summary>
         /// <param name="lake"></param>
-        /// <param name="t"></param>
+        /// <param name="id"></param>
         /// <param name="value"></param>
         /// <returns></returns>
         public static bool TryGet(this ILake lake, string id, out object value)
@@ -82,8 +85,9 @@ namespace AutumnBox.OpenFramework.Leafx.Container
                 value = lake.Get(id);
                 return true;
             }
-            catch
+            catch (Exception e)
             {
+                SLogger.Warn(nameof(LakeHelper), "Can not get component", e);
                 value = default;
                 return false;
             }
@@ -102,12 +106,13 @@ namespace AutumnBox.OpenFramework.Leafx.Container
                 value = lake.Get<T>();
                 return true;
             }
-            catch
+            catch (Exception e)
             {
+                SLogger.Warn(nameof(LakeHelper), "Can not get component", e);
                 value = default;
                 return false;
             }
-        }
+        }                                 
 
         /// <summary>
         /// 注册
@@ -313,7 +318,6 @@ namespace AutumnBox.OpenFramework.Leafx.Container
 
         private static void RegisterSingletonBase(this IRegisterableLake lake, Type target, Func<object> factory)
         {
-            var lazy = new Lazy<object>(factory);
             lake.RegisterSingletonBase(GenerateIdByType(target), factory);
         }
 
@@ -343,7 +347,8 @@ namespace AutumnBox.OpenFramework.Leafx.Container
             return () =>
             {
                 ObjectBuilder objBuilder = new ObjectBuilder(t, lake);
-                return objBuilder.Build();
+                var obj = objBuilder.Build();
+                return obj;
             };
         }
 

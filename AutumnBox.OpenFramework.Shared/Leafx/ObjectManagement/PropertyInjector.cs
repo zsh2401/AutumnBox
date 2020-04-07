@@ -41,7 +41,7 @@ namespace AutumnBox.OpenFramework.Leafx.ObjectManagement
                     var value = GetValue(attr.Id, property.PropertyType);
                     if (value != null)
                     {
-                        var setter = property.GetSetMethod();
+                        var setter = property.GetSetMethod(true);
                         setter.Invoke(instance, new object[] { value });
                     }
                     else
@@ -62,17 +62,22 @@ namespace AutumnBox.OpenFramework.Leafx.ObjectManagement
             {
                 return sources.Get(t);
             }
-            else {
+            else
+            {
                 var byIdResult = sources.Get(id);
                 return byIdResult != null ? byIdResult : sources.Get(t);
             }
         }
+
+        private const BindingFlags BINDING_FLAGS = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic;
         private IEnumerable<PropertyInfo> GetInjectableProperties()
         {
-            return from property in instance.GetType().GetProperties(ObjectManagementConstants.BINDING_FLAGS)
-                   where property.GetCustomAttribute<AutoInjectAttribute>() != null
-                   where property.GetSetMethod() != null
-                   select property;
+            var properties = from property in instance.GetType().GetProperties(BINDING_FLAGS)
+                             where property.GetCustomAttribute<AutoInjectAttribute>() != null
+                             where property.GetSetMethod(true) != null
+                             select property;
+            SLogger<PropertyInjector>.Debug($"Find {properties.Count()} Injectable properties in {instance.GetType().Name}");
+            return properties;
         }
     }
 }

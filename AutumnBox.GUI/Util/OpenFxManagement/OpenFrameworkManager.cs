@@ -7,6 +7,7 @@ using AutumnBox.Logging;
 using AutumnBox.OpenFramework.Management;
 using AutumnBox.OpenFramework.Management.ExtLibrary;
 using System.Linq;
+using AutumnBox.OpenFramework.Leafx.Container;
 
 namespace AutumnBox.GUI.Util.OpenFxManagement
 {
@@ -15,13 +16,14 @@ namespace AutumnBox.GUI.Util.OpenFxManagement
         private const string TAG = "OFM";
         public static void Init()
         {
-            SLogger.Info(TAG, "OpenFx loading");
+            var api = new AutumnBoxGuiBaseApiImpl();
             SLogger.Info(TAG, "Init OpenFx env");
-            OpenFxLoader.InitEnv(new AutumnBoxGuiBaseApiImpl());
+            OpenFx.Load(api);
             SLogger.Info(TAG, "OpenFx env inited");
             SLogger.Info(TAG, "Load extensions");
-            OpenFxLoader.LoadExtensions();
-            SLogger.Info(TAG,$"There are {OpenFxLoader.LibsManager.Librarians.Count()} librarians and {OpenFxLoader.LibsManager.Wrappers().Count()} wrappers");
+            OpenFx.RefreshExtensionsList();
+            ILibsManager libsManager = OpenFx.Lake.Get<ILibsManager>();
+            SLogger.Info(TAG, $"There are {libsManager.Librarians.Count()} librarians and {libsManager.Wrappers().Count()} wrappers");
             SLogger.Info(TAG, "Loaded extensions");
         }
     }

@@ -15,6 +15,7 @@
 */
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
@@ -42,7 +43,7 @@ namespace AutumnBox.OpenFramework.Leafx.ObjectManagement
 
         public object Build(Dictionary<string, object> extraArgs = null)
         {
-            var constructor = type.GetConstructors()[0];
+            var constructor = type.GetConstructors(ObjectManagementConstants.BINDING_FLAGS)[0];
             var args = ArgsBuilder.BuildArgs(
                 Sources,
                 extraArgs ?? new Dictionary<string, object>(), constructor.GetParameters());

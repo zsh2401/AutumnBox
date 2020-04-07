@@ -8,7 +8,7 @@ namespace AutumnBox.OpenFramework.Management.ExtLibrary
     /// <summary>
     /// 关于ILibsManager的拓展函数
     /// </summary>
-    public static class Lib
+    public static class LibrarianHelper
     {
         /// <summary>
         /// 获取加载的Wrappers

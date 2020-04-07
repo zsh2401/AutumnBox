@@ -4,10 +4,10 @@
 ** desc： ...
 *************************************************/
 
-namespace AutumnBox.OpenFramework.Management.ExtLibrary
+namespace AutumnBox.OpenFramework.Management.ExtLibrary.Impl
 {
     /// <summary>
-    /// 当程序集没有入口类时,将使用的默认入口类
+    /// 可供拓展的库管理器
     /// </summary>
     public abstract class ExtensionLibrarin : AssemblyBasedLibrarian
     {

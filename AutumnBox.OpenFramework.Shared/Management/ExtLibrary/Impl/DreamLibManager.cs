@@ -4,17 +4,20 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using AutumnBox.Logging;
+using AutumnBox.OpenFramework.Leafx.Attributes;
 
-namespace AutumnBox.OpenFramework.Management.ExtLibrary
+namespace AutumnBox.OpenFramework.Management.ExtLibrary.Impl
 {
     internal sealed class DreamLibManager : ILibsManager
     {
+        [AutoInject]
+        private ILibrarianBuilder LibrarianBuilder { get; set; }
         private const string PATTERN_DEFAULT = "*.dll";
         private const string PATTERN_ATMBEXT = "*.aext";
         private const string PATTERN_OEXT = "*.aoext";
         public IEnumerable<ILibrarian> Librarians { get; private set; }
 
-        public void Load()
+        public void Reload()
         {
             Librarians = Ready(Check(GetLibManagers(GetAssemblies(GetFiles()))));
         }
@@ -107,11 +110,11 @@ namespace AutumnBox.OpenFramework.Management.ExtLibrary
                                            select type);
                     if (libManagerTypes.Any())
                     {
-                        result.Add((ILibrarian)Activator.CreateInstance(libManagerTypes.First()));
+                        result.Add(LibrarianBuilder.BuildCustom(libManagerTypes.First()));
                     }
                     else
                     {
-                        result.Add(new DefaultLibrarian(assembly));
+                        result.Add(LibrarianBuilder.BuildDefault(assembly));
                     }
                 }
                 catch (Exception e)

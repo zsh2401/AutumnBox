@@ -5,6 +5,7 @@ using AutumnBox.OpenFramework.Management;
 using AutumnBox.OpenFramework.Management.ExtLibrary;
 using AutumnBox.OpenFramework.Management.Wrapper;
 using AutumnBox.OpenFramework.Open;
+using AutumnBox.OpenFramework.Leafx.Container;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +25,7 @@ namespace AutumnBox.OpenFramework.Extension.Leaf
         /// <returns></returns>
         public static byte[] GetIconBytes(this LeafExtensionBase leaf)
         {
-            var filted = from wrapper in OpenFxLoader.LibsManager.Wrappers()
+            var filted = from wrapper in OpenFx.Lake.Get<ILibsManager>().Wrappers()
                          where wrapper.Info.ExtType == leaf.GetType()
                          select wrapper;
             var result = filted.First();
@@ -37,7 +38,7 @@ namespace AutumnBox.OpenFramework.Extension.Leaf
         /// <returns></returns>
         public static IExtensionInfoDictionary GetInformations(this LeafExtensionBase leaf)
         {
-            var filted = from wrapper in OpenFxLoader.LibsManager.Wrappers()
+            var filted = from wrapper in OpenFx.Lake.Get<ILibsManager>().Wrappers()
                          where wrapper.Info.ExtType == leaf.GetType()
                          select wrapper;
             return filted.First().Info;
@@ -49,7 +50,7 @@ namespace AutumnBox.OpenFramework.Extension.Leaf
         /// <returns></returns>
         public static string GetName(this LeafExtensionBase leaf)
         {
-            var filted = from wrapper in OpenFxLoader.LibsManager.Wrappers()
+            var filted = from wrapper in OpenFx.Lake.Get<ILibsManager>().Wrappers()
                          where wrapper.Info.ExtType == leaf.GetType()
                          select wrapper;
             var result = filted.First();

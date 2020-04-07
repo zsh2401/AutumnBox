@@ -13,6 +13,7 @@ using AutumnBox.OpenFramework.Open;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Input;
+using AutumnBox.OpenFramework.Management.ExtTask;
 
 namespace AutumnBox.GUI.ViewModel
 {
@@ -74,7 +75,7 @@ namespace AutumnBox.GUI.ViewModel
 
         private void Load()
         {
-            Docks = OpenFxLoader.LibsManager.Wrappers()
+            Docks = OpenFx.Lake.Get<ILibsManager>().Wrappers()
                     .Region(LanguageManager.Instance.Current.LanCode)
                     .Hide()
                     .Dev(Settings.Default.DeveloperMode)
@@ -115,13 +116,13 @@ namespace AutumnBox.GUI.ViewModel
             IDevice crtDev = DeviceSelectionObserver.Instance.CurrentDevice;
             DeviceState targetStates = extensionWrapper.Info.RequiredDeviceStates;
 
-            if (isNMExt)//如果目标模块无关设备状态,直接执行
+            bool deviceConditionAllReady = isSelectingDevice && targetStates.HasFlag(crtDev.State);
+
+            //有关设备状态,并且设备状态正确,执行
+            //如果目标模块无关设备状态,直接执行
+            if (isNMExt || deviceConditionAllReady)
             {
-                LakeProvider.Lake.Get<ITaskManager>().CreateNewTaskOf(extensionWrapper.ExtensionType).Start();
-            }
-            else if (isSelectingDevice && targetStates.HasFlag(crtDev.State))//有关设备状态,并且设备状态正确,执行
-            {
-                LakeProvider.Lake.Get<ITaskManager>().CreateNewTaskOf(extensionWrapper.ExtensionType).Start();
+                OpenFx.Lake.Get<IExtensionTaskManager>().Allocate(extensionWrapper.ExtensionType).Start();
             }
             else//不符合执行条件,警告
                 MainWindowBus.Warning("IS NOT TARGET STATE ERROR");

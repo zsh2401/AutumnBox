@@ -13,7 +13,6 @@ namespace AutumnBox.OpenFramework.Management.ExtTask
 
     class ExtensionTaskManager : IExtensionTaskManager
     {
-        public static ExtensionTaskManager Instance { get; }
         private readonly List<IExtensionTask> readys = new List<IExtensionTask>();
         private readonly List<IExtensionTask> runnings = new List<IExtensionTask>();
 
@@ -38,11 +37,6 @@ namespace AutumnBox.OpenFramework.Management.ExtTask
 
         private readonly Random ran = new Random();
 
-        static ExtensionTaskManager()
-        {
-            Instance = new ExtensionTaskManager();
-        }
-        private ExtensionTaskManager() { }
         private int AlllocatePID()
         {
             int nextPid;

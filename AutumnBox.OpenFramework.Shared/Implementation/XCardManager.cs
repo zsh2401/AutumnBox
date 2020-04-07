@@ -17,11 +17,10 @@ using AutumnBox.OpenFramework.Management;
 using AutumnBox.OpenFramework.Open;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace AutumnBox.OpenFramework.Implementation
 {
-    class XCardManager : IXCardsManager
+    internal sealed class XCardManager : IXCardsManager
     {
         private readonly IBaseApi baseApi;
 

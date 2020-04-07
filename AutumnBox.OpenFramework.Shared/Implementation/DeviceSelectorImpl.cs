@@ -1,4 +1,6 @@
-﻿using AutumnBox.Basic.Device;
+﻿using System;
+using AutumnBox.Basic.Device;
+using AutumnBox.Basic.MultipleDevices;
 using AutumnBox.OpenFramework.Management;
 using AutumnBox.OpenFramework.Open.ADBKit;
 
@@ -20,5 +22,8 @@ namespace AutumnBox.OpenFramework.Implementation
         public IDevice Selected { get => baseApi.SelectedDevice; set => throw new System.NotImplementedException(); }
 
         public IDevice[] ConnectedDevices => throw new System.NotImplementedException();
+
+        public event DevicesChangedHandler DevicesChanged;
+        public event EventHandler SelectedDeviceChanged;
     }
 }

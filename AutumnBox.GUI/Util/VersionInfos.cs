@@ -1,5 +1,8 @@
 ﻿using AutumnBox.Basic.Calling.Adb;
+using AutumnBox.OpenFramework.Management;
 using AutumnBox.OpenFramework.Management.ExtLibrary;
+using AutumnBox.OpenFramework.Leafx.Container;
+using AutumnBox.OpenFramework.Management.ExtLibrary.Impl;
 using System;
 using System.Linq;
 using System.Reflection;
@@ -57,7 +60,8 @@ namespace AutumnBox.GUI.Util
         }
         private static Version GetCoreLibVersion()
         {
-            var coreLibFilterResult = from lib in OpenFramework.Management.OpenFxLoader.LibsManager.Librarians
+            var libsManager = AutumnBox.OpenFramework.Management.OpenFx.Lake.Get<ILibsManager>();
+            var coreLibFilterResult = from lib in libsManager.Librarians
                                       where lib.Name == "AutumnBox Core Modules"
                                       select lib;
             if (coreLibFilterResult.Count() == 0) return new Version(0, 0, 1);

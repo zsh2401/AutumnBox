@@ -83,13 +83,14 @@ namespace AutumnBox.GUI.Util
             InitLogSystem();
             InitHandyControl();
 
+            InitAutumnBoxBasic();
+            InitAutumnBoxOpenFx();
+
             InitErrorHandlerSystem();
             InitLanguageSystem();
             ShowGuideIfNeed();
             ShowDebugWindowIfNeed();
             PrintInformations();
-            InitAutumnBoxBasic();
-            InitAutumnBoxOpenFx();
             InitUtilities();
             RunDeviceListener();
             FetchRemoteData();

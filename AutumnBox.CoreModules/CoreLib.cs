@@ -6,7 +6,9 @@
 using AutumnBox.OpenFramework.Management.ExtLibrary;
 using AutumnBox.OpenFramework.Management.Wrapper;
 using AutumnBox.OpenFramework.Open;
+using AutumnBox.OpenFramework.Leafx.Container;
 using System;
+using AutumnBox.OpenFramework.Management.ExtLibrary.Impl;
 
 namespace AutumnBox.CoreModules
 {
@@ -24,6 +26,11 @@ namespace AutumnBox.CoreModules
         {
             Current = this;
         }
+        public override void Ready()
+        {
+            base.Ready();
+        }
+
         protected override IExtensionWrapper GetWrapperFor(Type extType)
         {
             return new CustomWrapper(extType);

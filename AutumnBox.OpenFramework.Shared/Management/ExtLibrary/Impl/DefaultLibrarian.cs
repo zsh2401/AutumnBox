@@ -5,7 +5,7 @@
 *************************************************/
 using System.Reflection;
 
-namespace AutumnBox.OpenFramework.Management.ExtLibrary
+namespace AutumnBox.OpenFramework.Management.ExtLibrary.Impl
 {
     sealed class DefaultLibrarian : AssemblyBasedLibrarian
     {

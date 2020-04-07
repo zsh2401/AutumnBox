@@ -10,7 +10,7 @@ namespace AutumnBox.OpenFramework.Management
         /// <summary>
         /// 重载
         /// </summary>
-        void Load();
+        void Reload();
         /// <summary>
         /// 已加载的库管理器
         /// </summary>

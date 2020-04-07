@@ -26,6 +26,6 @@ namespace AutumnBox.OpenFramework.Open
         /// <summary>
         /// 接口湖
         /// </summary>
-        public static ILake Lake => OpenFxLake.Lake;
+        public static ILake Lake => OpenFx.Lake;
     }
 }

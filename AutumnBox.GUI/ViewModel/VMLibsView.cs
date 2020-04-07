@@ -2,6 +2,7 @@
 using AutumnBox.GUI.MVVM;
 using AutumnBox.GUI.Util.Bus;
 using AutumnBox.OpenFramework.Management;
+using AutumnBox.OpenFramework.Leafx.Container;
 using AutumnBox.OpenFramework.Management.ExtLibrary;
 using System.Collections.Generic;
 
@@ -54,7 +55,8 @@ namespace AutumnBox.GUI.ViewModel
 
         public void Load()
         {
-            Libs = LibDock.From(OpenFxLoader.LibsManager.Librarians);
+            var libsManager = OpenFx.Lake.Get<ILibsManager>();
+            Libs = LibDock.From(libsManager.Librarians);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using AutumnBox.OpenFramework.Leafx;
+using AutumnBox.OpenFramework.Leafx.Attributes;
 using AutumnBox.OpenFramework.Leafx.Container;
 using AutumnBox.OpenFramework.Leafx.Container.Internal;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -45,10 +46,35 @@ namespace AutumnBox.Tests.OpenFX.Leafx
             Assert.IsTrue(testInterfaceImpl.Str == str);
             Assert.IsTrue(testInterfaceImpl.Sum == sum);
         }
+
+        [TestMethod]
+        public void InjectingTest()
+        {
+            IRegisterableLake lake = new SunsetLake();
+            const int TEST_SUM = 50;
+            const string TEST_STR = "test str";
+            lake.RegisterSingleton("sum", () => TEST_SUM);
+            lake.RegisterSingleton<string>(TEST_STR);
+            lake.RegisterSingleton<InjectTestClass, InjectTestClass>();
+            var testClass = lake.Get<InjectTestClass>();
+
+            Assert.IsTrue(testClass.Sum == TEST_SUM);
+            Assert.IsTrue(testClass.Str == TEST_STR);
+        }
         private interface ITestInterface
         {
             string Str { get; }
             int Sum { get; }
+        }
+        private class InjectTestClass
+        {
+            public string Str => _str;
+
+            [AutoInject]
+            private string _str { get; set; }
+
+            [AutoInject(Id = "sum")]
+            public int Sum { get; set; }
         }
         private class TestClass : ITestInterface
         {
