@@ -21,11 +21,11 @@ namespace AutumnBox.Tests.OpenFX.LeafExtension
 
             LeafExtensionBase leaf2 = new EEntryPointFindingTest2();
             var result2 = leaf2.Main(new Dictionary<string, object>());
-            Assert.IsTrue((string)result2 == EEntryPointFindingTest1.TEST_RESULT);
+            Assert.IsTrue((string)result2 == EEntryPointFindingTest2.TEST_RESULT);
 
             LeafExtensionBase leaf3 = new EEntryPointFindingTest3();
             var result3 = leaf3.Main(new Dictionary<string, object>());
-            Assert.IsTrue((string)result3 == EEntryPointFindingTest1.TEST_RESULT);
+            Assert.IsTrue((string)result3 == EEntryPointFindingTest3.TEST_RESULT);
         }
         private class EEntryPointFindingTest1 : LeafExtensionBase
         {

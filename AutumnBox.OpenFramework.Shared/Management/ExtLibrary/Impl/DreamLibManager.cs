@@ -46,6 +46,7 @@ namespace AutumnBox.OpenFramework.Management.ExtLibrary.Impl
         {
             try
             {
+                SLogger<DreamLibManager>.Info("Ready");
                 lib.Ready();
                 lib.Reload();
                 return true;
@@ -58,9 +59,18 @@ namespace AutumnBox.OpenFramework.Management.ExtLibrary.Impl
         }
         private IEnumerable<ILibrarian> Ready(IEnumerable<ILibrarian> libs)
         {
-            return from lib in libs
-                   where SafeReady(lib)
-                   select lib;
+            List<ILibrarian> buffer = new List<ILibrarian>();
+            foreach (var lib in libs)
+            {
+                if (SafeReady(lib))
+                {
+                    buffer.Add(lib);
+                }
+            }
+            return buffer;
+            //return from lib in libs
+            //       where SafeReady(lib)
+            //       select lib;
         }
         private IEnumerable<FileInfo> GetFiles()
         {
@@ -122,6 +132,7 @@ namespace AutumnBox.OpenFramework.Management.ExtLibrary.Impl
                     SLogger<DreamLibManager>.Warn($"Can not create the instance of {assembly.GetName().Name}'s librarian", e);
                 }
             }
+            SLogger<DreamLibManager>.Info($"Found {result.Count()} lib");
             return result;
         }
     }
