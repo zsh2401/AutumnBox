@@ -23,8 +23,9 @@
             <ItemsControl.ItemTemplate>
                 <ItemContainerTemplate>
 
-                    <Border CornerRadius="5" Padding="15" Margin="10,10,10,10" Effect="{DynamicResource EffectShadow4}" Background="{DynamicResource BorderBrush}">
+                    <Border CornerRadius="5" Padding="15" Margin="5" Effect="{DynamicResource EffectShadow1}" Background="{DynamicResource DarkMaskBrush}">
                         <ContentControl Content="{Binding View}"/>
+
                     </Border>
 
                 </ItemContainerTemplate>

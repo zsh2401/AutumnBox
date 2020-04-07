@@ -19,16 +19,16 @@
         </ItemsControl.ItemsPanel>
         <ItemsControl.ItemTemplate>
             <DataTemplate>
-                <Button Background="{DynamicResource BackgroundBrush}" Command="{Binding Execute}"  Margin="5" Height="60" Width="200"  ToolTip="{Binding ToolTip}" >
+                <Button Background="{DynamicResource SecondaryRegionBrush}" Command="{Binding Execute}"  Margin="5" Height="60" Width="200"  ToolTip="{Binding ToolTip}" >
                     <StackPanel Width="190"  Orientation="Horizontal" VerticalAlignment="Center">
                         <Image  RenderOptions.BitmapScalingMode="Fant" Width="40" Source="{Binding Icon}"/>
                         <StackPanel VerticalAlignment="Center" Margin="12,0,0,0">
                             <TextBlock DockPanel.Dock="Top" VerticalAlignment="Center"  TextWrapping="Wrap" TextTrimming="WordEllipsis"  Text="{Binding Name}"/>
-                            <!--<TextBlock DockPanel.Dock="Top"  VerticalAlignment="Center"  FontSize="12" TextWrapping="Wrap" TextTrimming="WordEllipsis"  Text="{Binding Info.Desc}"/>-->
                             <TextBlock DockPanel.Dock="Bottom"  Visibility="{Binding RootVisibily}" VerticalAlignment="Top" FontSize="11"  Foreground="Red">ROOT</TextBlock>
                         </StackPanel>
                     </StackPanel>
                 </Button>
+
             </DataTemplate>
         </ItemsControl.ItemTemplate>
     </ItemsControl>

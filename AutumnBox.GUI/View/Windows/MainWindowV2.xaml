@@ -20,7 +20,7 @@
         ShowInTaskbar="True"
     ShowTitle="False"
     x:Name="thisWindow"
-       Background="{DynamicResource BlurWindowBackgroundBrush}"
+       Background="{DynamicResource DefaultBrush}"
     Icon="/Resources/Drawable/icon.ico"
         Title="{Binding Title}" MinHeight="625" MinWidth="930" Height="625" Width="930">
     <Window.DataContext>

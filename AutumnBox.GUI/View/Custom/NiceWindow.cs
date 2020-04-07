@@ -20,8 +20,8 @@ namespace AutumnBox.GUI.View.Custom
         {
             base.OnActivated(e);
             //Background = (SolidColorBrush)App.Current.Resources["BlurWindowBackgroundBrush"];
-            var ptr = new WindowInteropHelper(this).Handle;
-            AcrylicHelper.EnableBlur(ptr);
+            //var ptr = new WindowInteropHelper(this).Handle;
+            //AcrylicHelper.EnableBlur(ptr);
         }
     }
 }
