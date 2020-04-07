@@ -7,7 +7,7 @@ using AutumnBox.Logging;
 
 namespace AutumnBox.OpenFramework.Management.ExtLibrary
 {
-    internal class DreamLibManager : ILibsManager
+    internal sealed class DreamLibManager : ILibsManager
     {
         private const string PATTERN_DEFAULT = "*.dll";
         private const string PATTERN_ATMBEXT = "*.aext";

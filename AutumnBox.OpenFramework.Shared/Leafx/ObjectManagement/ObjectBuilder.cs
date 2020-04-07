@@ -46,7 +46,9 @@ namespace AutumnBox.OpenFramework.Leafx.ObjectManagement
             var args = ArgsBuilder.BuildArgs(
                 Sources,
                 extraArgs ?? new Dictionary<string, object>(), constructor.GetParameters());
-            return constructor.Invoke(args);
+            var instance =  constructor.Invoke(args);
+            new PropertyInjector(instance, Sources.ToArray()).Inject();
+            return instance;
         }
     }
 }

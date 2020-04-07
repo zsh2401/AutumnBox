@@ -87,11 +87,6 @@ namespace AutumnBox.OpenFramework.Extension.Leaf
             // TODO: 如果在以上内容中替代了终结器，则取消注释以下行。
             // GC.SuppressFinalize(this);
         }
-
-        public ILake Register(string id, Func<object> factory)
-        {
-            throw new NotImplementedException();
-        }
         #endregion
     }
 }

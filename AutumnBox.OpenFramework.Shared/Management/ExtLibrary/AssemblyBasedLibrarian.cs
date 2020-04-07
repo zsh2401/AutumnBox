@@ -20,16 +20,6 @@ namespace AutumnBox.OpenFramework.Management.ExtLibrary
     public abstract class AssemblyBasedLibrarian : ILibrarian
     {
         /// <summary>
-        /// 显示信息
-        /// </summary>
-        public virtual void ShowInformation()
-        {
-            //Ux.Message($"Name:{Name}\n" +
-            //    $"MinApi: {MinApiLevel}\n" +
-            //    $"TargetApi: {TargetApiLevel}\n" +
-            //    $"Loaded `IExtension`:{GetWrappers().Count()}");
-        }
-        /// <summary>
         /// 管理的程序集
         /// </summary>
         public Assembly ManagedAssembly { get; private set; }

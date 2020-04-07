@@ -36,6 +36,11 @@ namespace AutumnBox.OpenFramework.Open
         List<ILibrarian> Librarians { get; }
 
         /// <summary>
+        /// 获取库管理器
+        /// </summary>
+        ILibrarian LibrarianOf(object context);
+
+        /// <summary>
         /// 当拓展列表发生变动时触发
         /// </summary>
         event EventHandler ExtensionsChanged;

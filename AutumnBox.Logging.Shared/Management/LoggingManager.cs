@@ -11,7 +11,7 @@ namespace AutumnBox.Logging.Management
         /// <summary>
         /// 日志站
         /// </summary>
-        public static ILoggingStation LogStation { get; private set; } = new OnlyRecordLoggingStation();
+        public static ILoggingStation LogStation { get; private set; } = new SimpleLoggingStation();
         private static bool _locked = false;
         /// <summary>
         /// 初始化

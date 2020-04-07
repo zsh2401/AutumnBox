@@ -9,7 +9,7 @@ namespace AutumnBox.OpenFramework.Leafx.Container
     {
         public static object Get(this IEnumerable<ILake> sources, string id)
         {
-            for (int i = sources.Count(); i >= 0; i--)
+            for (int i = sources.Count() - 1; i >= 0; i--)
             {
                 if (sources.ElementAt(i).TryGet(id, out object value))
                 {
@@ -20,7 +20,7 @@ namespace AutumnBox.OpenFramework.Leafx.Container
         }
         public static object Get(this IEnumerable<ILake> sources, Type t)
         {
-            for (int i = sources.Count(); i >= 0; i--)
+            for (int i = sources.Count() - 1; i >= 0; i--)
             {
                 if (sources.ElementAt(i).TryGet(t, out object value))
                 {

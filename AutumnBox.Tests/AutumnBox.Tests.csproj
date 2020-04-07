@@ -98,6 +98,7 @@
     <Compile Include="OpenFX\ChinaLakeTest.cs" />
     <Compile Include="OpenFX\Leafx\ComponentFactoryTest.cs" />
     <Compile Include="OpenFX\Leafx\MethodProxyTest.cs" />
+    <Compile Include="OpenFX\Leafx\ObjectInjectorTest.cs" />
     <Compile Include="OpenFX\Leafx\SunsetLakeTest.cs" />
     <Compile Include="OpenFX\ProxyBuilderTest.cs" />
     <Compile Include="OpenFX\ProxyUsableTest.cs" />
