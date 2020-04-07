@@ -55,7 +55,7 @@ namespace AutumnBox.OpenFramework.Management.Wrapper
         /// 构造
         /// </summary>
         /// <param name="t"></param>
-        internal protected ClassExtensionWrapper(Type t)
+        public ClassExtensionWrapper(Type t)
         {
             CreatedCheck(t);
             extType = t;

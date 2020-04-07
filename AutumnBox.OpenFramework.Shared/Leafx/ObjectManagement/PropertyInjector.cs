@@ -33,7 +33,7 @@ namespace AutumnBox.OpenFramework.Leafx.ObjectManagement
         /// </summary>
         public void Inject()
         {
-            foreach (var property in GetInjectableProperties())
+            foreach (var property in GetInjectableProperties(instance.GetType()))
             {
                 try
                 {
@@ -69,15 +69,24 @@ namespace AutumnBox.OpenFramework.Leafx.ObjectManagement
             }
         }
 
-        private const BindingFlags BINDING_FLAGS = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic;
-        private IEnumerable<PropertyInfo> GetInjectableProperties()
+        private const BindingFlags BINDING_FLAGS =
+            BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.FlattenHierarchy
+            ;
+        private IEnumerable<PropertyInfo> GetInjectableProperties(Type t)
         {
-            var properties = from property in instance.GetType().GetProperties(BINDING_FLAGS)
+            var properties = from property in t.GetProperties(BINDING_FLAGS)
                              where property.GetCustomAttribute<AutoInjectAttribute>() != null
                              where property.GetSetMethod(true) != null
                              select property;
-            SLogger<PropertyInjector>.Debug($"Find {properties.Count()} Injectable properties in {instance.GetType().Name}");
-            return properties;
+            SLogger<PropertyInjector>.Info($"Find {properties.Count()} Injectable properties in {instance.GetType().Name}");
+            if (t.BaseType == typeof(object))
+            {
+                return properties;
+            }
+            else
+            {
+                return properties.Concat(GetInjectableProperties(t.BaseType));
+            }
         }
     }
 }

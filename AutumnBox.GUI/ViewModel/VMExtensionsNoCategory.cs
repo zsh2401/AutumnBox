@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Input;
 using AutumnBox.OpenFramework.Management.ExtTask;
+using AutumnBox.Logging;
 
 namespace AutumnBox.GUI.ViewModel
 {
@@ -75,11 +76,13 @@ namespace AutumnBox.GUI.ViewModel
 
         private void Load()
         {
-            Docks = OpenFx.Lake.Get<ILibsManager>().Wrappers()
+            var libsManager = OpenFx.Lake.Get<ILibsManager>();
+            Docks = libsManager.Wrappers()
                     .Region(LanguageManager.Instance.Current.LanCode)
                     .Hide()
                     .Dev(Settings.Default.DeveloperMode)
                     .ToDocks();
+            SLogger<VMExtensionsNoCategory>.Info(Docks.Count());
             Order();
         }
 

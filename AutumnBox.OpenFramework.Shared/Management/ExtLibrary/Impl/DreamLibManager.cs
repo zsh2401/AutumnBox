@@ -11,7 +11,7 @@ namespace AutumnBox.OpenFramework.Management.ExtLibrary.Impl
     internal sealed class DreamLibManager : ILibsManager
     {
         [AutoInject]
-        private ILibrarianBuilder LibrarianBuilder { get; set; }
+        private IManagementObjectBuilder mObjBuilder { get; set; }
         private const string PATTERN_DEFAULT = "*.dll";
         private const string PATTERN_ATMBEXT = "*.aext";
         private const string PATTERN_OEXT = "*.aoext";
@@ -110,11 +110,11 @@ namespace AutumnBox.OpenFramework.Management.ExtLibrary.Impl
                                            select type);
                     if (libManagerTypes.Any())
                     {
-                        result.Add(LibrarianBuilder.BuildCustom(libManagerTypes.First()));
+                        result.Add(mObjBuilder.BuildLibrarian(libManagerTypes.First()));
                     }
                     else
                     {
-                        result.Add(LibrarianBuilder.BuildDefault(assembly));
+                        result.Add(mObjBuilder.BuildLibrarian(assembly));
                     }
                 }
                 catch (Exception e)

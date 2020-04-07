@@ -9,12 +9,12 @@ namespace AutumnBox.OpenFramework.Management.ExtLibrary.Impl
     /// <summary>
     /// 可供拓展的库管理器
     /// </summary>
-    public abstract class ExtensionLibrarin : AssemblyBasedLibrarian
+    public abstract class ExtensionLibrarian : AssemblyBasedLibrarian
     {
         /// <summary>
         /// 初始化构造器
         /// </summary>
-        public ExtensionLibrarin()
+        public ExtensionLibrarian()
         {
             LoadFrom(this.GetType().Assembly);
         }

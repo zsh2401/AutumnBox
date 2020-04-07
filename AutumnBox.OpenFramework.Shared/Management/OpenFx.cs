@@ -94,8 +94,8 @@ namespace AutumnBox.OpenFramework.Management
             //一些特殊的实时构建组件
             Lake.Register<IStorageManager, StorageManagerImpl>();
             Lake.Register<ICommandExecutor, HestExecutor>();
-            Lake.Register<IDevice>(() => LakeProvider.Lake.Get<IBaseApi>().SelectedDevice);
-            Lake.Register<ILeafUI>(() => LakeProvider.Lake.Get<IBaseApi>().NewLeafUI());
+            Lake.Register<IDevice>(() => Lake.Get<IBaseApi>().SelectedDevice);
+            Lake.Register<ILeafUI>(() => Lake.Get<IBaseApi>().NewLeafUI());
 
             if (Lake.Get<IAppManager>().IsDeveloperMode)
             {

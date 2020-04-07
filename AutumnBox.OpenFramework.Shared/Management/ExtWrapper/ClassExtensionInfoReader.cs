@@ -156,7 +156,6 @@ namespace AutumnBox.OpenFramework.Management.Wrapper
         /// <summary>
         /// 构造
         /// </summary>
-        /// <param name="ctx"></param>
         /// <param name="type"></param> 
         public ClassExtensionInfoReader(Type type)
         {

@@ -12,7 +12,7 @@ using AutumnBox.OpenFramework.Management.ExtLibrary.Impl;
 
 namespace AutumnBox.CoreModules
 {
-    public sealed class CoreLib : ExtensionLibrarin
+    public sealed class CoreLib : ExtensionLibrarian
     {
         public const string STORAGE_ID = "AutumnBox.CoreModules.Storage";
         public static CoreLib Current { get; private set; }

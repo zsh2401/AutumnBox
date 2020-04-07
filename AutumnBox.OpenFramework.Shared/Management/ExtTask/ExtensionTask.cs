@@ -7,6 +7,9 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Threading;
+using AutumnBox.OpenFramework.Leafx.ObjectManagement;
+using System.Diagnostics;
+using AutumnBox.OpenFramework.Leafx;
 
 namespace AutumnBox.OpenFramework.Management.ExtTask
 {
@@ -57,7 +60,8 @@ namespace AutumnBox.OpenFramework.Management.ExtTask
             try
             {
                 isRunning = true;
-                instance = (IExtension)Activator.CreateInstance(extensionType);
+                var builder = new ObjectBuilder(extensionType, LakeProvider.Lake);
+                instance = (IExtension)builder.Build();
                 Result = instance.Main(Args);
             }
             catch (ThreadAbortException)
@@ -66,13 +70,12 @@ namespace AutumnBox.OpenFramework.Management.ExtTask
             }
             catch (Exception e)
             {
-                var appManager = LakeProvider.Lake.Get<IAppManager>();
                 Result = e;
                 SLogger<ExtensionTask>.Warn($"{extensionType.Name}-extension error", e.InnerException);
-                string fmt = appManager.GetPublicResouce<string>("OpenFxExceptionMsgTitleFmt");
-                fmt = string.Format(fmt, Wrapper.Info.Name);
-                string sketch = appManager.GetPublicResouce<string>("OpenFxExceptionSketch");
-                appManager.ShowException(fmt, sketch, e.GetType() == typeof(TargetInvocationException) ? e.InnerException : e);
+                //string fmt = appManager.GetPublicResouce<string>("OpenFxExceptionMsgTitleFmt");
+                //fmt = string.Format(fmt, Wrapper.Info.Name);
+                //string sketch = appManager.GetPublicResouce<string>("OpenFxExceptionSketch");
+                //appManager.ShowException(fmt, sketch, e.GetType() == typeof(TargetInvocationException) ? e.InnerException : e);
             }
             finally
             {

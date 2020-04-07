@@ -67,7 +67,7 @@ namespace AutumnBox.GUI.Model
         public ExtensionWrapperDock(IExtensionWrapper wrapper)
         {
             this.Wrapper = wrapper;
-            bool requiredRoot = (bool)wrapper.Info[ExtensionInformationKeys.ROOT];
+            bool requiredRoot = wrapper.Info[ExtensionInformationKeys.ROOT] as bool? ?? false;
             RootVisibily = requiredRoot ? Visibility.Visible : Visibility.Collapsed;
             Execute = new FlexiableCommand(p =>
             {

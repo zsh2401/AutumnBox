@@ -53,8 +53,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Leafx\ObjectManagement\ObjectManagementConstants.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Leafx\ObjectManagement\PropertyInjector.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\ExtLibrary\Impl\AssemblyBasedLibrarian.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Management\ExtLibrary\ILibrarianBuilder.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Management\ExtLibrary\Impl\LibrarianBuilder.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\ExtWrapper\ExtensionAttributeReader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\ExtWrapper\IExtensionAttributeReader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\IManagementObjectBuilder.cs" />
@@ -96,7 +94,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Attribute\ExtTextAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Attribute\ExtVersionAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\ExtLibrary\Impl\DefaultLibrarian.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Management\ExtLibrary\Impl\ExtensionLibrarin.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Management\ExtLibrary\Impl\ExtensionLibrarian.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\ExtLibrary\ILibrarian.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\ExtLibrary\LibrarianHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\ExtWrapper\WrapperFilter.cs" />

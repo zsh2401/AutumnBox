@@ -21,16 +21,8 @@ namespace AutumnBox.OpenFramework.Extension.Leaf
 
         private readonly MethodProxy methodProxy;
 
-        /// <summary>
-        /// 构造函数
-        /// </summary>
-        public LeafExtensionBase(params ILake[] sources)
-        {
-            Sources = sources;
-            this.InjectProperties(sources);
-            //构造入口点执行器
-            methodProxy = new MethodProxy(this, this.FindEntryPoint(), Sources.ToArray());
-        }
+        [AutoInject]
+        private ILake Lake { get; set; }
 
         /// <summary>
         /// 入口函数,继承者无需关心
@@ -40,6 +32,11 @@ namespace AutumnBox.OpenFramework.Extension.Leaf
         [LDoNotScan]
         public object Main(Dictionary<string, object> args)
         {
+            if (Lake == null)
+            {
+                throw new InvalidOperationException("Lake has not been inject!");
+            }
+            var methodProxy = new MethodProxy(this, this.FindEntryPoint(), Lake);
             return methodProxy.Invoke(args);
         }
 
