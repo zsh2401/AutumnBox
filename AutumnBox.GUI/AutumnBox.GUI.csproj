@@ -125,6 +125,9 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Management" />
     <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll</HintPath>
+    </Reference>
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -190,6 +193,8 @@
     <Compile Include="Util\I18N\ILanguage.cs" />
     <Compile Include="Util\I18N\ILanguageManager.cs" />
     <Compile Include="Util\I18N\LanguageManager.cs" />
+    <Compile Include="Util\Loader\AppLoader.cs" />
+    <Compile Include="Util\Loader\StepAttribute.cs" />
     <Compile Include="Util\Net\Banner.cs" />
     <Compile Include="Util\Net\Getters\CstGetter.cs" />
     <Compile Include="Util\Net\Getters\HomeSettingsGetter.cs" />
@@ -357,6 +362,9 @@
     <Compile Include="View\Windows\MainWindowV2.xaml.cs">
       <DependentUpon>MainWindowV2.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Windows\MainWindowV3.xaml.cs">
+      <DependentUpon>MainWindowV3.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Windows\MessageWindow.xaml.cs">
       <DependentUpon>MessageWindow.xaml</DependentUpon>
     </Compile>
@@ -365,6 +373,9 @@
     </Compile>
     <Compile Include="View\Windows\SettingsWindow.xaml.cs">
       <DependentUpon>SettingsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\StartupWindow.xaml.cs">
+      <DependentUpon>StartupWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Windows\YNWindow.xaml.cs">
       <DependentUpon>YNWindow.xaml</DependentUpon>
@@ -595,6 +606,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="View\Windows\MainWindowV3.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Windows\MessageWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -604,6 +619,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="View\Windows\SettingsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\StartupWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -638,6 +657,8 @@
     <Resource Include="Resources\MenuIcon\settings.png" />
     <Resource Include="Resources\MenuIcon\guide-book.png" />
     <Resource Include="Resources\Drawable\BottomBar\phone.png" />
+    <Resource Include="Resources\Drawable\Startup\startup.jpg" />
+    <Resource Include="Resources\Drawable\Startup\startup_2.jpg" />
     <Content Include="Resources\Sound\ok.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

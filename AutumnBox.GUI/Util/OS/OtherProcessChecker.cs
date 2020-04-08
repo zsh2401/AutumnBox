@@ -39,5 +39,9 @@ namespace AutumnBox.GUI.Util.OS
             }
             return process == null;
         }
+        public static bool ThereIsOtherAutumnBox()
+        {
+            return Do();
+        }
     }
 }

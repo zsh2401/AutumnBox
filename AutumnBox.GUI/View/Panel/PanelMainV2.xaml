@@ -10,15 +10,14 @@
              d:DesignHeight="600" d:DesignWidth="900">
     <Grid>
         <DockPanel>
+            <Border DockPanel.Dock="Bottom"  Effect="{StaticResource EffectShadow4}"  CornerRadius="0" Background="{DynamicResource BorderBrush}">
+                <DockPanel>
+                    <controls:StatusBar DockPanel.Dock="Bottom" Effect="{StaticResource EffectShadow4}"  Height="20"/>
+                    <hc:Divider LineStroke="{DynamicResource SecondaryTextBrush}"  DockPanel.Dock="Bottom" Margin="0" />
+                </DockPanel>
+            </Border>
             <controls:PanelListView DockPanel.Dock="Left"/>
             <controls:ExtensionsFinder DockPanel.Dock="Right"/>
         </DockPanel>
-
-        <Border Height="20" VerticalAlignment="Bottom">
-            <Border.Effect>
-                <BlurEffect Radius="5" KernelType="Gaussian"></BlurEffect>
-            </Border.Effect>
-            <controls:StatusBar/>
-        </Border>
     </Grid>
 </UserControl>
