@@ -11,6 +11,8 @@ namespace AutumnBox.Essentials.Routines
         [AutoInject]
         private IAppManager AppManager { get; set; }
 
+        private const string MOTD_API_URL = "";
+
         public void Do()
         {
            

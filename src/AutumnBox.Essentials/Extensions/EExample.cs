@@ -7,8 +7,9 @@ namespace AutumnBox.Essentials
 {
     [ExtName("Example Extension")]
     [ExtDeveloperMode]
+    [ExtOfficial]
     [ExtAuth("zsh2401")]
-    class EHelloWorld : LeafExtensionBase
+    class EExample : LeafExtensionBase
     {
         [LMain]
         public void EntryPoint(ILeafUI ui)

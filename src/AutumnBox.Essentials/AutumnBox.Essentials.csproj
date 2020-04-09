@@ -41,7 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EHelloWorld.cs" />
+    <Compile Include="Extensions\EExample.cs" />
     <Compile Include="EssentialsLibrarin.cs" />
     <Compile Include="ExternalXCards\AdXCard.cs" />
     <Compile Include="ExternalXCards\MotdXCard.cs" />
@@ -66,8 +66,6 @@
       <Private>False</Private>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DeviceOwnerManagement\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
