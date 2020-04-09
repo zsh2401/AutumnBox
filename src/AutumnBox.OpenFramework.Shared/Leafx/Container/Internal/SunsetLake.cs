@@ -19,17 +19,36 @@ using System.Text;
 
 namespace AutumnBox.OpenFramework.Leafx.Container.Internal
 {
+    /// <summary>
+    /// 最简单基础的湖实现
+    /// </summary>
     public class SunsetLake : IRegisterableLake
     {
         private readonly Dictionary<string, Func<object>> factories = new Dictionary<string, Func<object>>();
+        /// <summary>
+        /// 根据id获取值
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public object Get(string id)
         {
+            lock (factories)
+            {
+            }
             return factories[id]();
         }
 
+        /// <summary>
+        /// 注册
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="factory"></param>
         public void Register(string id, Func<object> factory)
         {
-            factories[id] = factory;
+            lock (factories)
+            {
+                factories[id] = factory;
+            }
         }
     }
 }

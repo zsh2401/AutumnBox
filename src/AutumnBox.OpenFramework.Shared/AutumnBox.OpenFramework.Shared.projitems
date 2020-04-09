@@ -42,8 +42,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Leafx\Container\ILake.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Leafx\Container\Internal\SunsetLake.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Leafx\Container\IRegisterableLake.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Leafx\Container\LakeHelper.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Leafx\Container\LakeSourcesHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Leafx\Container\Lake.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Leafx\Container\LakeSources.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Leafx\Container\Support\ComponentFactoryReader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Leafx\DependencyInjector.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Leafx\ObjectManagement\ArgsBuilder.cs" />

@@ -14,6 +14,8 @@
 using AutumnBox.GUI.Util;
 using AutumnBox.GUI.Util.Net;
 using AutumnBox.GUI.Util.Theme;
+using AutumnBox.OpenFramework.Leafx.Container;
+using AutumnBox.OpenFramework.Open;
 using System;
 using System.Windows;
 namespace AutumnBox.GUI
@@ -28,7 +30,7 @@ namespace AutumnBox.GUI
         public App() : base()
         {
             Current = this;
-
+            this.GetType();
         }
 
         public static new App Current { get; private set; }
@@ -37,6 +39,7 @@ namespace AutumnBox.GUI
         {
             ThemeManager.Instance.Reload();
             base.OnStartup(e);
+            LakeProvider.Lake.SafeGet<int>();
             //AppLoader.Instance.Failed += (s, _e) =>
             //{
             //    Shutdown(1);

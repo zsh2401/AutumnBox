@@ -23,8 +23,31 @@ namespace AutumnBox.OpenFramework.Leafx.Container
     /// <summary>
     /// Lake的拓展函数
     /// </summary>
-    public static class LakeHelper
+    public static class Lake
     {
+        /// <summary>
+        /// 安全获取函数
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="lake"></param>
+        /// <param name="defaultValue"></param>
+        /// <returns></returns>
+        public static T SafeGet<T>(this ILake lake, T defaultValue = default(T))
+        {
+            if (lake is null)
+            {
+                throw new ArgumentNullException(nameof(lake));
+            }
+            try
+            {
+                return (T)lake.Get(typeof(T));
+            }
+            catch
+            {
+                return defaultValue;
+            }
+        }
+
         /// <summary>
         /// 泛型地获取一个值
         /// </summary>
@@ -66,7 +89,7 @@ namespace AutumnBox.OpenFramework.Leafx.Container
             }
             catch (Exception e)
             {
-                SLogger.Warn(nameof(LakeHelper), "Can not get component", e);
+                SLogger.Warn(nameof(Lake), "Can not get component", e);
                 value = default;
                 return false;
             }
@@ -87,7 +110,7 @@ namespace AutumnBox.OpenFramework.Leafx.Container
             }
             catch (Exception e)
             {
-                SLogger.Warn(nameof(LakeHelper), "Can not get component", e);
+                SLogger.Warn(nameof(Lake), "Can not get component", e);
                 value = default;
                 return false;
             }
@@ -108,11 +131,11 @@ namespace AutumnBox.OpenFramework.Leafx.Container
             }
             catch (Exception e)
             {
-                SLogger.Warn(nameof(LakeHelper), "Can not get component", e);
+                SLogger.Warn(nameof(Lake), "Can not get component", e);
                 value = default;
                 return false;
             }
-        }                                 
+        }
 
         /// <summary>
         /// 注册
