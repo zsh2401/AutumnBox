@@ -16,32 +16,8 @@
     CloseButtonBackground="{DynamicResource BorderBrush}"
     NonClientAreaHeight="20"
     NonClientAreaBackground="{DynamicResource BorderBrush}"
-                      Style="{StaticResource WindowWin10}"
         Title="{DynamicResource AppNameWithVersion}" Height="450" Width="800">
-    <Window.DataContext>
-        <viewmodel:VMMainWindowV2/>
-    </Window.DataContext>
-    <Window.InputBindings>
-        <KeyBinding Modifiers="Ctrl" Key="F1" Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoHelp}" />
-        <KeyBinding Modifiers="Shift" Key="C" Command="{Binding Path=DataContext.OpenShell,ElementName=Menu}" CommandParameter="cmd.exe"/>
-        <KeyBinding Modifiers="Shift" Key="V" Command="{Binding Path=DataContext.OpenShell,ElementName=Menu}" CommandParameter="powershell.exe"/>
-        <KeyBinding Modifiers="Shift" Key="G" Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoDownloadExtensions}" />
-        <KeyBinding Modifiers="Shift" Key="O" Command="{Binding Path=DataContext.OpenExtFloder,ElementName=Menu}" />
-        <KeyBinding Modifiers="Ctrl" Key="F5" Command="{Binding Path=DataContext.RefreshHomeContent,ElementName=Menu}" />
-        <KeyBinding Modifiers="Shift" Key="D" Command="{Binding ShowWindowDialog}" CommandParameter="Log"/>
-        <KeyBinding Modifiers="Shift" Key="R" Command="{Binding Path=DataContext.Restart,ElementName=Menu}" />
-    </Window.InputBindings>
-
-    <hc:Window.NonClientAreaContent>
-        <StackPanel Orientation="Horizontal">
-            <Grid>
-                <Grid x:Name="MenuContainer"  Visibility="Collapsed">
-                    <controls:MainMenu x:Name="Menu"/>
-                </Grid>
-            </Grid>
-        </StackPanel>
-    </hc:Window.NonClientAreaContent>
     <Grid>
-        <panel:PanelMainV2/>
+        <TextBlock Text="Hello world!"/>
     </Grid>
 </custom:NiceWindow>

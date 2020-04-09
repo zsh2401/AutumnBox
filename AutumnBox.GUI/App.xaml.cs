@@ -37,12 +37,12 @@ namespace AutumnBox.GUI
         {
             ThemeManager.Instance.Reload();
             base.OnStartup(e);
-            AppLoader.Instance.Failed += (s, _e) =>
-            {
-                Shutdown(1);
-            };
-            string? n = "w";
-            AppLoader.Instance.LoadAsync();
+            //AppLoader.Instance.Failed += (s, _e) =>
+            //{
+            //    Shutdown(1);
+            //};
+            //string? n = "w";
+            //AppLoader.Instance.LoadAsync();
         }
 
         protected override void OnExit(ExitEventArgs e)

@@ -176,6 +176,7 @@
     <Compile Include="Util\AdbManager.cs" />
     <Compile Include="Util\AppLoader.cs" />
     <Compile Include="Util\AppUnloader.cs" />
+    <Compile Include="Util\Bus\Broadcast.cs" />
     <Compile Include="Util\Bus\ConnectedDevicesListener.cs" />
     <Compile Include="Util\Bus\DeviceSelectionObserver.cs" />
     <Compile Include="Util\Bus\DialogManager.cs" />
@@ -184,6 +185,7 @@
     <Compile Include="Util\Bus\MainWindowBus.cs" />
     <Compile Include="Util\Bus\OpenFxEventBus.cs" />
     <Compile Include="Util\Bus\PanelsManager.cs" />
+    <Compile Include="Util\Bus\RuntimeVariablePool.cs" />
     <Compile Include="Util\Bus\WinM.cs" />
     <Compile Include="Util\Debugging\LogEventArgs.cs" />
     <Compile Include="Util\Debugging\LoggingStation.cs" />
@@ -193,8 +195,10 @@
     <Compile Include="Util\I18N\ILanguage.cs" />
     <Compile Include="Util\I18N\ILanguageManager.cs" />
     <Compile Include="Util\I18N\LanguageManager.cs" />
-    <Compile Include="Util\Loader\AppLoader.cs" />
+    <Compile Include="Util\Loader\AbstractAppLoader.cs" />
+    <Compile Include="Util\Loader\GeneralAppLoader.cs" />
     <Compile Include="Util\Loader\StepAttribute.cs" />
+    <Compile Include="Util\Loader\StepFinishedEventArgs.cs" />
     <Compile Include="Util\Net\Banner.cs" />
     <Compile Include="Util\Net\Getters\CstGetter.cs" />
     <Compile Include="Util\Net\Getters\HomeSettingsGetter.cs" />

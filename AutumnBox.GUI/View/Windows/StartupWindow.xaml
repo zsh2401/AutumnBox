@@ -22,13 +22,10 @@
         <SolidColorBrush Color="Transparent"/>
     </custom:NiceWindow.NonClientAreaBackground>
     <DockPanel VerticalAlignment="Bottom">
-        <ProgressBar Value="50"  Style="{x:Null}" IsHitTestVisible="False"  DockPanel.Dock="Top"></ProgressBar>
-
+        <ProgressBar DockPanel.Dock="Bottom" x:Name="ProgressBar" Value="50"  Style="{x:Null}" Margin="0,0,0,15"/>
         <StackPanel  DockPanel.Dock="Bottom" Margin="10" HorizontalAlignment="Left" Orientation="Vertical">
-            <TextBlock FontSize="30" Foreground="WhiteSmoke" Text="{DynamicResource AppNameWithVersion}"/>
-            <TextBlock FontSize="15" Foreground="WhiteSmoke"  Text="{DynamicResource AppDesc}"></TextBlock>
+            <TextBlock FontSize="40" Foreground="WhiteSmoke" Text="{DynamicResource AppNameWithVersion}"/>
+            <TextBlock FontSize="13" Foreground="WhiteSmoke"  Text="{DynamicResource AppDesc}"/>
         </StackPanel>
-
-
     </DockPanel>
 </custom:NiceWindow>
