@@ -11,7 +11,7 @@
     <UserControl.DataContext>
         <viewmodel:VMExtensionsNoCategory/>
     </UserControl.DataContext>
-    <ItemsControl HorizontalAlignment="Center"   ItemsSource="{Binding Docks}"  BorderThickness="0">
+    <ItemsControl  ItemsSource="{Binding Docks}"  BorderThickness="0">
         <ItemsControl.ItemsPanel>
             <ItemsPanelTemplate>
                 <WrapPanel/>

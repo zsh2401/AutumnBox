@@ -16,8 +16,28 @@
     CloseButtonBackground="{DynamicResource BorderBrush}"
     NonClientAreaHeight="20"
     NonClientAreaBackground="{DynamicResource BorderBrush}"
-        Title="{DynamicResource AppNameWithVersion}" Height="450" Width="800">
+    WindowStartupLocation="CenterScreen"
+        Icon="/Resources/Drawable/icon.ico"
+        Title="{DynamicResource AppNameWithVersion}" MinHeight="625" MinWidth="930" Height="625" Width="930">
+    <Window.InputBindings>
+        <KeyBinding Modifiers="Ctrl" Key="F1" Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoHelp}" />
+        <KeyBinding Modifiers="Shift" Key="C" Command="{Binding Path=DataContext.OpenShell,ElementName=Menu}" CommandParameter="cmd.exe"/>
+        <KeyBinding Modifiers="Shift" Key="V" Command="{Binding Path=DataContext.OpenShell,ElementName=Menu}" CommandParameter="powershell.exe"/>
+        <KeyBinding Modifiers="Shift" Key="G" Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoDownloadExtensions}" />
+        <KeyBinding Modifiers="Shift" Key="O" Command="{Binding Path=DataContext.OpenExtFloder,ElementName=Menu}" />
+        <KeyBinding Modifiers="Ctrl" Key="F5" Command="{Binding Path=DataContext.RefreshHomeContent,ElementName=Menu}" />
+        <KeyBinding Modifiers="Shift" Key="D" Command="{Binding ShowWindowDialog}" CommandParameter="Log"/>
+        <KeyBinding Modifiers="Shift" Key="R" Command="{Binding Path=DataContext.Restart,ElementName=Menu}" />
+    </Window.InputBindings>
+
+    <custom:NiceWindow.NonClientAreaContent>
+        <StackPanel Orientation="Horizontal">
+            <Grid>
+                <controls:MainMenu x:Name="Menu"/>
+            </Grid>
+        </StackPanel>
+    </custom:NiceWindow.NonClientAreaContent>
     <Grid>
-        <TextBlock Text="Hello world!"/>
+        <panel:PanelMainV2/>
     </Grid>
 </custom:NiceWindow>

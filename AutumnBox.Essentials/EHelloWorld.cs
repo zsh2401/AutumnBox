@@ -5,7 +5,9 @@ using AutumnBox.OpenFramework.Open.LKit;
 
 namespace AutumnBox.Essentials
 {
-    [ExtName("Hello world extension")]
+    [ExtName("Example Extension")]
+    [ExtDeveloperMode]
+    [ExtAuth("zsh2401")]
     class EHelloWorld : LeafExtensionBase
     {
         [LMain]
