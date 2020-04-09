@@ -38,7 +38,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\..\dist\Debug\</OutputPath>
     <DefineConstants>TRACE;DEBUG;USE_LOCAL_API</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -49,7 +49,7 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>none</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>..\..\dist\Release\</OutputPath>
     <DefineConstants>TRACE;STAT RELEASE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -89,7 +89,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Preview|AnyCPU'">
     <DebugSymbols>true</DebugSymbols>
-    <OutputPath>..\..\AutumnBox_Output\AutumnBox\file\</OutputPath>
+    <OutputPath>..\..\dist\Preview\</OutputPath>
     <DefineConstants>TRACE;STAT BETA PREVIEW</DefineConstants>
     <Optimize>true</Optimize>
     <DebugType>full</DebugType>
@@ -100,7 +100,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'SDK|AnyCPU'">
     <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\SDK\</OutputPath>
+    <OutputPath>..\..\dist\SDK\</OutputPath>
     <DefineConstants>TRACE;STAT</DefineConstants>
     <Optimize>true</Optimize>
     <DebugType>full</DebugType>

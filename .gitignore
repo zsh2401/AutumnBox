@@ -43,5 +43,6 @@ maker/
 HistoryRelease/
 DemoPic/
 packages/
+dist/
 ##do_not
 !AutumnBox.ADBProvider/adb_tools/*.*

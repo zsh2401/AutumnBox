@@ -17,7 +17,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\..\dist\Debug\extensions\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -25,7 +25,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>..\..\dist\Release\extensions\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -51,14 +51,17 @@
     <ProjectReference Include="..\AutumnBox.Basic\AutumnBox.Basic.csproj">
       <Project>{5276bfb4-b089-4e34-9c42-42ea019ef320}</Project>
       <Name>AutumnBox.Basic</Name>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\AutumnBox.Logging\AutumnBox.Logging.csproj">
       <Project>{f90cb434-6ed4-4244-9d78-c8016f0856c1}</Project>
       <Name>AutumnBox.Logging</Name>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\AutumnBox.OpenFramework\AutumnBox.OpenFramework.csproj">
       <Project>{60988b1a-74b7-470a-aeba-6d7fe474614d}</Project>
       <Name>AutumnBox.OpenFramework</Name>
+      <Private>False</Private>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

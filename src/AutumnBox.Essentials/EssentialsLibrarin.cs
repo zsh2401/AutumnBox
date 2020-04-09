@@ -8,11 +8,13 @@ namespace AutumnBox.Essentials
 {
     public class EssentialsLibrarin : ExtensionLibrarian
     {
+        public static EssentialsLibrarin Current { get; private set; }
+
         [AutoInject]
         private IXCardsManager XCardManager { get; set; }
 
         [AutoInject]
-        private IStorageManager StorageManager { get; set; }
+        public IStorageManager StorageManager { get; private set; }
 
         public const string ESSENTIALS_STORAGE_ID = "essentials_librarin_storage";
 
@@ -29,7 +31,8 @@ namespace AutumnBox.Essentials
             XCardManager.Register(new MotdXCard());
             XCardManager.Register(new AdXCard());
             StorageManager.Init(ESSENTIALS_STORAGE_ID);
-            StorageManager.SaveJsonObject("ess", true);
+            StorageManager.SaveJsonObject("init_flag", true);
+            Current = this;
         }
     }
 }
