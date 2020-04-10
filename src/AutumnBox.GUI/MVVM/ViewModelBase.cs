@@ -8,6 +8,8 @@ using AutumnBox.GUI.Util.Bus;
 using AutumnBox.GUI.Util.Debugging;
 using AutumnBox.GUI.Util.Net.HomeContent;
 using AutumnBox.GUI.Util.UI;
+using AutumnBox.Leafx;
+using AutumnBox.Leafx.ObjectManagement;
 using AutumnBox.Logging;
 using System;
 using System.Diagnostics;
@@ -17,8 +19,10 @@ using System.Windows.Input;
 
 namespace AutumnBox.GUI.MVVM
 {
-    class ViewModelBase : NotificationObject
+    internal class ViewModelBase : NotificationObject
     {
+        protected virtual bool InjectProperties => false;
+
         public ICommand ShowWindowDialog
         {
             get => _showWindowDialog; set
@@ -96,7 +100,12 @@ namespace AutumnBox.GUI.MVVM
                     HomeContentProvider.Do();
                 });
             });
+            if (InjectProperties)
+            {
+                DependeciesInjector.Inject(this, GLake.Lake);
+            }
         }
+
         protected virtual bool RaisePropertyChangedOnDispatcher { get; set; } = false;
         protected override void RaisePropertyChanged([CallerMemberName] string propertyName = null)
         {

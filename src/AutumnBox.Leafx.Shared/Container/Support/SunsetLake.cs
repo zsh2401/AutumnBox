@@ -13,9 +13,9 @@
 *
 * ==============================================================================
 */
+using AutumnBox.OpenFramework.Leafx.Container;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace AutumnBox.Leafx.Container.Support
 {
@@ -25,6 +25,12 @@ namespace AutumnBox.Leafx.Container.Support
     public class SunsetLake : IRegisterableLake
     {
         private readonly Dictionary<string, Func<object>> factories = new Dictionary<string, Func<object>>();
+        public SunsetLake()
+        {
+            this.RegisterSingleton<ILake>(this);
+            this.RegisterSingleton("register", () => this);
+            this.RegisterSingleton("lake_name", () => nameof(SunsetLake));
+        }
         /// <summary>
         /// 根据id获取值
         /// </summary>

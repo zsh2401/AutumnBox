@@ -35,7 +35,7 @@ namespace AutumnBox.Leafx.ObjectManagement
         }
         protected void InjectProperty()
         {
-            new PropertyInjector(this, Sources.ToArray()).Inject();
+            DependeciesInjector.Inject(this, Sources.ToArray());
         }
         protected object InvokeMethod(string methodName, Dictionary<string, object> args = null)
         {

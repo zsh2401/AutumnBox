@@ -91,8 +91,30 @@ namespace AutumnBox.Leafx.ObjectManagement
                 inject ? Sources : null,
                 extraArgs ?? new Dictionary<string, object>(),
                 method.GetParameters());
+            object rawInvoker() => method.Invoke(instance, args);
 
-            return method.Invoke(instance, args);
+            var aspects = GetAroundAspects();
+            if (aspects.Any())
+            {
+                var aspectArgs = new AroundMethodArgs()
+                {
+                    MethodInfo = method,
+                    Instance = instance,
+                    Args = args,
+                    ExtraArgs = extraArgs,
+                    Invoker = rawInvoker
+                };
+                return aspects.ElementAt(0).Around(aspectArgs);
+            }
+            else
+            {
+                return rawInvoker();
+            }
+        }
+
+         public IEnumerable<AroundMethodAttribute> GetAroundAspects()
+        {
+            return method.GetCustomAttributes<AroundMethodAttribute>();
         }
 
         public Func<object> GetInvoker(Dictionary<string, object> extraArgs = null, bool inject = true)

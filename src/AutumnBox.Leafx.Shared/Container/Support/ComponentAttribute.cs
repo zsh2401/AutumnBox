@@ -15,9 +15,9 @@
 */
 using System;
 
-namespace AutumnBox.Leafx.Attributes
+namespace AutumnBox.Leafx.Container.Support
 {
-    [AttributeUsage(AttributeTargets.Method | AttributeTargets.Class | AttributeTargets.Property, AllowMultiple = false )]
+    [AttributeUsage(AttributeTargets.Method | AttributeTargets.Class | AttributeTargets.Property, AllowMultiple = false)]
     public sealed class ComponentAttribute : Attribute
     {
         public bool SingletonMode { get; set; } = true;
