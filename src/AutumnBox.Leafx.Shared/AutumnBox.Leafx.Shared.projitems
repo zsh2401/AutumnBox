@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>d6013ec3-dd68-4945-916d-f77f1ead7fff</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>AutumnBox.Leafx</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Attributes\AroundMethodAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Attributes\AutoInjectAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Attributes\ComponentAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Attributes\InjectType.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Attributes\SingletonComponentAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Container\ILake.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Container\Smart\AssemblyScanner.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Container\Support\SunsetLake.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Container\IRegisterableLake.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Container\Lake.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Container\LakeSources.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Container\Support\ComponentFactoryReader.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ObjectManagement\ArgsBuilder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ObjectManagement\DependeciesInjector.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ObjectManagement\DependingObject.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ObjectManagement\MethodProxy.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ObjectManagement\ObjectBuilder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ObjectManagement\ObjectManagementConstants.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ObjectManagement\PropertyInjector.cs" />
+  </ItemGroup>
+</Project>
