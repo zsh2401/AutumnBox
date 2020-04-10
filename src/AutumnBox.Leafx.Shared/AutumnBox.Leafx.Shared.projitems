@@ -9,6 +9,7 @@
     <Import_RootNamespace>AutumnBox.Leafx</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Container\Support\ShouldAutoCreateException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ObjectManagement\AroundMethodArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ObjectManagement\AroundMethodAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ObjectManagement\AutoInjectAttribute.cs" />

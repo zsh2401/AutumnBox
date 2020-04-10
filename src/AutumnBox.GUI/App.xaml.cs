@@ -13,6 +13,9 @@
 \* =============================================================================*/
 using AutumnBox.GUI.Util;
 using AutumnBox.GUI.Util.Theme;
+using AutumnBox.Leafx;
+using AutumnBox.Leafx.Container;
+using AutumnBox.Leafx.Container.Support;
 using AutumnBox.OpenFramework.Open;
 using System.Windows;
 namespace AutumnBox.GUI
@@ -34,8 +37,14 @@ namespace AutumnBox.GUI
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            ThemeManager.Instance.Reload();
+            LoadComponent();
+            GLake.Lake.Get<IThemeManager>().Reload();
             base.OnStartup(e);
+        }
+
+        private void LoadComponent()
+        {
+            new ComponentFactoryReader((IRegisterableLake)GLake.Lake, typeof(ComponentFactory));
         }
 
         protected override void OnExit(ExitEventArgs e)

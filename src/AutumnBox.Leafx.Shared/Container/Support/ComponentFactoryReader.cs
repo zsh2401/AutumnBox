@@ -6,7 +6,7 @@ using AutumnBox.Leafx.ObjectManagement;
 
 namespace AutumnBox.Leafx.Container.Support
 {
-    internal sealed class ComponentFactoryReader
+    public sealed class ComponentFactoryReader
     {
         private readonly IRegisterableLake registerableLake;
         private readonly Type factoryType;
@@ -46,7 +46,17 @@ namespace AutumnBox.Leafx.Container.Support
         private void Register(ComponentAttribute attr, MethodInfo method)
         {
             var methodProxy = new MethodProxy(instance, method, registerableLake);
-            object factory() => methodProxy.Invoke();
+            object factory()
+            {
+                try
+                {
+                    return methodProxy.Invoke();
+                }
+                catch (ShouldAutoCreateException e)
+                {
+                    return new ObjectBuilder(e.T, registerableLake).Build();
+                }
+            }
 
             if (attr.SingletonMode)
             {
