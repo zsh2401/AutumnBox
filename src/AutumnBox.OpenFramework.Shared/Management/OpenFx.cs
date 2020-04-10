@@ -1,10 +1,4 @@
-﻿using AutumnBox.OpenFramework.Leafx;
-using AutumnBox.OpenFramework.Leafx.Container.Internal;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using AutumnBox.OpenFramework.Leafx.Container;
-using AutumnBox.OpenFramework.Management.ExtLibrary;
+﻿using AutumnBox.Leafx.Container;
 using AutumnBox.OpenFramework.Implementation;
 using AutumnBox.OpenFramework.Open;
 using AutumnBox.OpenFramework.Open.ADBKit;
@@ -14,6 +8,8 @@ using AutumnBox.OpenFramework.Open.LKit;
 using AutumnBox.OpenFramework.Management.ExtLibrary.Impl;
 using AutumnBox.OpenFramework.Management.ExtTask;
 using AutumnBox.Logging;
+using AutumnBox.Leafx.Container;
+using AutumnBox.Leafx.Container.Support;
 
 namespace AutumnBox.OpenFramework.Management
 {
@@ -31,7 +27,7 @@ namespace AutumnBox.OpenFramework.Management
         /// <summary>
         /// 获取OpenFx总湖
         /// </summary>
-        public static IRegisterableLake Lake { get; } = new SunsetLake();
+        public static IRegisterableLake Lake { get; private set; }
 
         /// <summary>
         /// 加载
@@ -39,6 +35,7 @@ namespace AutumnBox.OpenFramework.Management
         /// <param name="baseAPI"></param>
         public static void Load(IBaseApi baseAPI)
         {
+            Lake = baseAPI.GlobalLake;
             RegisterComponent(baseAPI);
         }
 

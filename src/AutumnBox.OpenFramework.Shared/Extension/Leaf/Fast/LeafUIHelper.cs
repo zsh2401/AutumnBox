@@ -1,11 +1,10 @@
 ﻿using AutumnBox.Basic.Device;
 using AutumnBox.Basic.Device.Management.AppFx;
 using AutumnBox.Logging;
-using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.Open;
 using AutumnBox.OpenFramework.Open.LKit;
 using System.Threading;
-using AutumnBox.OpenFramework.Leafx.Container;
+using AutumnBox.Leafx.Container;
 
 namespace AutumnBox.OpenFramework.Extension.Extension.Leaf
 {
@@ -21,7 +20,6 @@ namespace AutumnBox.OpenFramework.Extension.Extension.Leaf
         /// <summary>
         /// 
         /// </summary>
-        /// <exception cref="LeafTerminatedException"></exception>
         /// <param name="ui"></param>
         /// <param name="exitCode"></param>
         public static void EFinish(this ILeafUI ui, int exitCode = 0)

@@ -18,7 +18,7 @@ using AutumnBox.Leafx.ObjectManagement;
 using AutumnBox.Logging;
 using System;
 
-namespace AutumnBox.OpenFramework.Leafx.Container
+namespace AutumnBox.Leafx.Container
 {
     /// <summary>
     /// Lake的拓展函数

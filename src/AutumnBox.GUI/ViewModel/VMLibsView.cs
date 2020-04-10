@@ -2,8 +2,7 @@
 using AutumnBox.GUI.MVVM;
 using AutumnBox.GUI.Util.Bus;
 using AutumnBox.OpenFramework.Management;
-using AutumnBox.OpenFramework.Leafx.Container;
-using AutumnBox.OpenFramework.Management.ExtLibrary;
+using AutumnBox.Leafx.Container;
 using System.Collections.Generic;
 
 namespace AutumnBox.GUI.ViewModel

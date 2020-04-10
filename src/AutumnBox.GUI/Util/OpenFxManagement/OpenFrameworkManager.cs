@@ -7,7 +7,7 @@ using AutumnBox.Logging;
 using AutumnBox.OpenFramework.Management;
 using AutumnBox.OpenFramework.Management.ExtLibrary;
 using System.Linq;
-using AutumnBox.OpenFramework.Leafx.Container;
+using AutumnBox.Leafx.Container;
 
 namespace AutumnBox.GUI.Util.OpenFxManagement
 {

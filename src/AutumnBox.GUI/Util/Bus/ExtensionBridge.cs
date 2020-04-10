@@ -1,7 +1,7 @@
 ﻿using AutumnBox.Logging;
 using AutumnBox.OpenFramework.Open;
 using System;
-using AutumnBox.OpenFramework.Leafx.Container;
+using AutumnBox.Leafx.Container;
 
 namespace AutumnBox.GUI.Util.Bus
 {

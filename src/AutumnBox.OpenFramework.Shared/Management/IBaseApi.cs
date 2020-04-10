@@ -5,6 +5,7 @@
 *************************************************/
 #define WIN32
 using AutumnBox.Basic.Device;
+using AutumnBox.Leafx.Container;
 using AutumnBox.OpenFramework.Open.LKit;
 using System;
 using System.Threading.Tasks;
@@ -21,6 +22,10 @@ namespace AutumnBox.OpenFramework.Management
 #endif
     interface IBaseApi
     {
+        /// <summary>
+        /// 全局湖
+        /// </summary>
+        IRegisterableLake GlobalLake { get; }
         /// <summary>
         /// 发送通知
         /// </summary>

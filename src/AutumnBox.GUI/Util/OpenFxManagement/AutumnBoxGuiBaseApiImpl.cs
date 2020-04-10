@@ -16,6 +16,8 @@ using AutumnBox.OpenFramework.Open.LKit;
 using System.Linq;
 using System.Threading.Tasks;
 using AutumnBox.GUI.Util.OS.Acrylic;
+using AutumnBox.Leafx.Container;
+using AutumnBox.Leafx;
 
 namespace AutumnBox.GUI.Util.OpenFxManagement
 {
@@ -50,6 +52,8 @@ namespace AutumnBox.GUI.Util.OpenFxManagement
         public Version AutumnBoxGUIVersion => VersionInfos.GUI;
 
         public Version AutumnBoxBasicVersion => VersionInfos.Basic;
+
+        public IRegisterableLake GlobalLake => (IRegisterableLake)GLake.Lake;
 
         public void ShowDebugUI()
         {

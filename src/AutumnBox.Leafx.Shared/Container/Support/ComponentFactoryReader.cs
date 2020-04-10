@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Linq;
 using AutumnBox.Leafx.ObjectManagement;
-using AutumnBox.OpenFramework.Leafx.Container;
 
 namespace AutumnBox.Leafx.Container.Support
 {

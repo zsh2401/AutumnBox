@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using AutumnBox.Basic.Device;
+﻿using System.Collections.Generic;
+using AutumnBox.Leafx.Container;
+using AutumnBox.Leafx.ObjectManagement;
 using AutumnBox.OpenFramework.Extension.Leaf.Attributes;
-using AutumnBox.OpenFramework.Extension.Leaf.Internal;
-using AutumnBox.OpenFramework.Leafx;
-using AutumnBox.OpenFramework.Leafx.Attributes;
-using AutumnBox.OpenFramework.Leafx.ObjectManagement;
-using AutumnBox.OpenFramework.Open;
 
 namespace AutumnBox.OpenFramework.Extension.Leaf
 {
@@ -27,7 +20,7 @@ namespace AutumnBox.OpenFramework.Extension.Leaf
         /// <summary>
         /// 入口函数,继承者无需关心
         /// </summary>
-        /// <param name="data"></param>
+        /// <param name="args"></param>
         /// <returns></returns>
         [LDoNotScan]
         public object Main(Dictionary<string, object> args)

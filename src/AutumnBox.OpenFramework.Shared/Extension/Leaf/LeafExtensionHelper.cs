@@ -1,15 +1,13 @@
 ﻿using AutumnBox.OpenFramework.Extension.Leaf.Attributes;
-using AutumnBox.OpenFramework.Leafx;
-using AutumnBox.OpenFramework.Leafx.ObjectManagement;
 using AutumnBox.OpenFramework.Management;
 using AutumnBox.OpenFramework.Management.ExtLibrary;
 using AutumnBox.OpenFramework.Management.Wrapper;
-using AutumnBox.OpenFramework.Open;
-using AutumnBox.OpenFramework.Leafx.Container;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using AutumnBox.Leafx.Container;
+using AutumnBox.Leafx.ObjectManagement;
 
 namespace AutumnBox.OpenFramework.Extension.Leaf
 {
@@ -68,7 +66,7 @@ namespace AutumnBox.OpenFramework.Extension.Leaf
         }
         internal static void InjectProperties(this LeafExtensionBase leaf, params ILake[] sources)
         {
-            new PropertyInjector(leaf, sources).Inject();
+            DependeciesInjector.Inject(leaf, sources);
         }
         internal static MethodInfo FindEntryPoint(this LeafExtensionBase leaf)
         {

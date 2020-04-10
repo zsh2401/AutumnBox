@@ -12,11 +12,8 @@
 *
 \* =============================================================================*/
 using AutumnBox.GUI.Util;
-using AutumnBox.GUI.Util.Net;
 using AutumnBox.GUI.Util.Theme;
-using AutumnBox.OpenFramework.Leafx.Container;
 using AutumnBox.OpenFramework.Open;
-using System;
 using System.Windows;
 namespace AutumnBox.GUI
 {
@@ -39,13 +36,6 @@ namespace AutumnBox.GUI
         {
             ThemeManager.Instance.Reload();
             base.OnStartup(e);
-            LakeProvider.Lake.SafeGet<int>();
-            //AppLoader.Instance.Failed += (s, _e) =>
-            //{
-            //    Shutdown(1);
-            //};
-            //string? n = "w";
-            //AppLoader.Instance.LoadAsync();
         }
 
         protected override void OnExit(ExitEventArgs e)
