@@ -193,6 +193,7 @@
     <Compile Include="Util\I18N\ILanguage.cs" />
     <Compile Include="Util\I18N\ILanguageManager.cs" />
     <Compile Include="Util\I18N\LanguageManager.cs" />
+    <Compile Include="Util\IOpenFxBridge.cs" />
     <Compile Include="Util\Loader\AbstractAppLoader.cs" />
     <Compile Include="Util\Loader\GeneralAppLoader.cs" />
     <Compile Include="Util\Loader\StepAttribute.cs" />
@@ -671,6 +672,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\Drawable\MenuBar\" />
+    <Folder Include="Util\Impl\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
