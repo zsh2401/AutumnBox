@@ -13,10 +13,9 @@
 *
 * ==============================================================================
 */
-using AutumnBox.GUI.Model;
 using System;
 
-namespace AutumnBox.GUI.Util.OS.Acrylic
+namespace AutumnBox.GUI.Services.Impl.Arcylic
 {
     class SystemInfo
     {

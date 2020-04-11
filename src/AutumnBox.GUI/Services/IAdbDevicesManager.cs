@@ -1,4 +1,5 @@
 ﻿using AutumnBox.Basic.Device;
+using AutumnBox.Basic.MultipleDevices;
 using System;
 using System.Collections.Generic;
 
@@ -8,6 +9,7 @@ namespace AutumnBox.GUI.Services
     {
         IDevice SelectedDevice { get; set; }
         IEnumerable<IDevice> ConnectedDevices { get; }
+        event DevicesChangedHandler ConnectedDevicesChanged;
         event EventHandler DeviceSelectionChanged;
     }
 }

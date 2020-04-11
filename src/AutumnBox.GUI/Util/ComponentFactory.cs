@@ -14,7 +14,9 @@
 * ==============================================================================
 */
 
-using AutumnBox.GUI.Util.I18N;
+using AutumnBox.GUI.Services;
+using AutumnBox.GUI.Services.Impl;
+using AutumnBox.GUI.Services.Impl.Arcylic;
 using AutumnBox.GUI.Util.Impl;
 using AutumnBox.GUI.Util.Loader;
 using AutumnBox.Leafx.Container.Support;
@@ -32,7 +34,15 @@ namespace AutumnBox.GUI.Util
                 throw new ShouldAutoCreateException(typeof(LanguageManager));
 
         [Component]
-        public GeneralAppLoader AppLoader() =>
+        public GeneralAppLoader GetAppLoader() =>
                 throw new ShouldAutoCreateException(typeof(GeneralAppLoader));
+
+        [Component]
+        public IAcrylicHelper GetAcrylicHelper() =>
+            throw new ShouldAutoCreateException(typeof(AcrylicHelper));
+
+        [Component]
+        public IAdbDevicesManager GetAdbDevicesManager() =>
+            throw new ShouldAutoCreateException(typeof(AdbDevicesManagerImpl));
     }
 }

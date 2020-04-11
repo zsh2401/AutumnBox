@@ -13,10 +13,11 @@
 *
 * ==============================================================================
 */
+using AutumnBox.GUI.Services;
 using System;
 using System.Runtime.InteropServices;
 
-namespace AutumnBox.GUI.Util.OS.Acrylic
+namespace AutumnBox.GUI.Services.Impl.Arcylic
 {
     internal enum AccentFlagsType
     {
@@ -58,12 +59,12 @@ namespace AutumnBox.GUI.Util.OS.Acrylic
         public int AnimationId;
     }
 
-    internal static class AcrylicHelper
+    internal class AcrylicHelper : IAcrylicHelper
     {
         [DllImport("user32.dll")]
-        internal static extern int SetWindowCompositionAttribute(IntPtr hwnd, ref WindowCompositionAttributeData data);
+        private static extern int SetWindowCompositionAttribute(IntPtr hwnd, ref WindowCompositionAttributeData data);
 
-        internal static void EnableBlur(IntPtr hwnd, AccentFlagsType style = AccentFlagsType.Window)
+        private static void EnableBlur(IntPtr hwnd, AccentFlagsType style = AccentFlagsType.Window)
         {
             var accent = new AccentPolicy();
             var accentStructSize = Marshal.SizeOf(accent);
@@ -112,6 +113,11 @@ namespace AutumnBox.GUI.Util.OS.Acrylic
             SetWindowCompositionAttribute(hwnd, ref data);
 
             Marshal.FreeHGlobal(accentPtr);
+        }
+
+        public void SetWindowBlur(IntPtr hWnd)
+        {
+            EnableBlur(hWnd);
         }
     }
 }

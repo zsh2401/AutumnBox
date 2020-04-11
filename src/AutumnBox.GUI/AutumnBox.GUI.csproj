@@ -170,7 +170,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Resources\Languages\Lang.cs" />
-    <Compile Include="Services\Impl\AcrylicHelperImpl.cs" />
+    <Compile Include="Services\Impl\AdbDevicesManagerImpl.cs" />
     <Compile Include="Util\AdbManager.cs" />
     <Compile Include="Util\AppLoader.cs" />
     <Compile Include="Util\AppUnloader.cs" />
@@ -210,9 +210,9 @@
     <Compile Include="Util\Loader\StepFinishedEventArgs.cs" />
     <Compile Include="Util\OpenFxManagement\AutumnBoxGuiBaseApiImpl.cs" />
     <Compile Include="Util\OpenFxManagement\OpenFrameworkManager.cs" />
-    <Compile Include="Util\Acrylic\AcrylicHelper.cs" />
-    <Compile Include="Util\Acrylic\OSVersions.cs" />
-    <Compile Include="Util\Acrylic\SystemInfo.cs" />
+    <Compile Include="Services\Impl\Acrylic\AcrylicHelper.cs" />
+    <Compile Include="Services\Impl\Acrylic\OSVersions.cs" />
+    <Compile Include="Services\Impl\Acrylic\SystemInfo.cs" />
     <Compile Include="Util\OS\MachineInfo.cs" />
     <Compile Include="Util\OS\NativeMethods.cs" />
     <Compile Include="Util\OS\OtherProcessChecker.cs" />
@@ -385,7 +385,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Util\Acrylic\README.md" />
+    <None Include="Services\Impl\Acrylic\README.md" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
