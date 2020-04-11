@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace AutumnBox.GUI.Util.I18N
+namespace AutumnBox.GUI.Services
 {
 
     interface ILanguageManager

@@ -170,6 +170,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Resources\Languages\Lang.cs" />
+    <Compile Include="Services\Impl\AcrylicHelperImpl.cs" />
     <Compile Include="Util\AdbManager.cs" />
     <Compile Include="Util\AppLoader.cs" />
     <Compile Include="Util\AppUnloader.cs" />
@@ -190,29 +191,23 @@
     <Compile Include="Util\Effect\Sounds.cs" />
     <Compile Include="Util\Extensions.cs" />
     <Compile Include="Util\FatalHandler.cs" />
-    <Compile Include="Util\I18N\ILanguage.cs" />
-    <Compile Include="Util\I18N\ILanguageManager.cs" />
-    <Compile Include="Util\I18N\LanguageManager.cs" />
+    <Compile Include="Services\ILanguage.cs" />
+    <Compile Include="Services\ILanguageManager.cs" />
+    <Compile Include="Services\ILoggingManager.cs" />
+    <Compile Include="Services\IMessageBus.cs" />
+    <Compile Include="Util\Impl\LanguageManager.cs" />
+    <Compile Include="Services\IAcrylicHelper.cs" />
+    <Compile Include="Services\IAdbDevicesManager.cs" />
+    <Compile Include="Services\INotificationManager.cs" />
     <Compile Include="Util\IOpenFxBridge.cs" />
+    <Compile Include="Services\IOpenFxManager.cs" />
+    <Compile Include="Services\ISentenceService.cs" />
+    <Compile Include="Services\ISoundService.cs" />
+    <Compile Include="Services\IWindowManager.cs" />
     <Compile Include="Util\Loader\AbstractAppLoader.cs" />
     <Compile Include="Util\Loader\GeneralAppLoader.cs" />
     <Compile Include="Util\Loader\StepAttribute.cs" />
     <Compile Include="Util\Loader\StepFinishedEventArgs.cs" />
-    <Compile Include="Util\Net\Banner.cs" />
-    <Compile Include="Util\Net\Getters\CstGetter.cs" />
-    <Compile Include="Util\Net\Getters\HomeSettingsGetter.cs" />
-    <Compile Include="Util\Net\Getters\JsonGetter.cs" />
-    <Compile Include="Util\Net\Getters\RemoteVersionInfoGetter.cs" />
-    <Compile Include="Util\Net\Getters\TipsGetter.cs" />
-    <Compile Include="Util\Net\Getters\ToastMotdGetter.cs" />
-    <Compile Include="Util\Net\Getters\VersionBanInfoGetter.cs" />
-    <Compile Include="Util\Net\HomeContent\Events.cs" />
-    <Compile Include="Util\Net\HomeContent\HomeContentProvider.cs" />
-    <Compile Include="Util\Net\HomeContent\IHomeContentGetter.cs" />
-    <Compile Include="Util\Net\HomeContent\RemoteXamlReader.cs" />
-    <Compile Include="Util\Net\Statistics.cs" />
-    <Compile Include="Util\Net\ToastMotd.cs" />
-    <Compile Include="Util\Net\Updater.cs" />
     <Compile Include="Util\OpenFxManagement\AutumnBoxGuiBaseApiImpl.cs" />
     <Compile Include="Util\OpenFxManagement\OpenFrameworkManager.cs" />
     <Compile Include="Util\Acrylic\AcrylicHelper.cs" />
@@ -223,14 +218,10 @@
     <Compile Include="Util\OS\OtherProcessChecker.cs" />
     <Compile Include="Util\OS\ShortcutHelper.cs" />
     <Compile Include="Util\OS\TaskKill.cs" />
-    <Compile Include="Util\Remote\IndexReader.cs" />
-    <Compile Include="Util\Remote\MOTDHandler.cs" />
-    <Compile Include="Util\Remote\NetReader.cs" />
-    <Compile Include="Util\Remote\RemoteInteractivator.cs" />
     <Compile Include="Util\Self.cs" />
-    <Compile Include="Util\Theme\IThemeManager.cs" />
-    <Compile Include="Util\Theme\ThemeManager.cs" />
-    <Compile Include="Util\Theme\ThemeMode.cs" />
+    <Compile Include="Services\IThemeManager.cs" />
+    <Compile Include="Util\Impl\ThemeManager.cs" />
+    <Compile Include="Services\ThemeMode.cs" />
     <Compile Include="Util\UI\Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="Util\UI\Converters\BoolToVisibilityConverterParameter.cs" />
     <Compile Include="Util\UI\Converters\EndPointConverter.cs" />
@@ -672,7 +663,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\Drawable\MenuBar\" />
-    <Folder Include="Util\Impl\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">

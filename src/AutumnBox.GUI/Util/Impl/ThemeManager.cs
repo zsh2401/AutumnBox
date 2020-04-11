@@ -17,7 +17,7 @@ using AutumnBox.GUI.Properties;
 using System;
 using System.Windows;
 
-namespace AutumnBox.GUI.Util.Theme
+namespace AutumnBox.GUI.Util.Impl
 {
     class ThemeManager : IThemeManager
     {
@@ -35,12 +35,7 @@ namespace AutumnBox.GUI.Util.Theme
 
         private readonly ResourceDictionary LightTheme;
         private readonly ResourceDictionary DarkTheme;
-        public static IThemeManager Instance { get; }
-        static ThemeManager()
-        {
-            Instance = new ThemeManager();
-        }
-        private ThemeManager()
+        public ThemeManager()
         {
             LightTheme = new ResourceDictionary()
             {

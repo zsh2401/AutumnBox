@@ -4,12 +4,11 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.GUI.Properties;
-using AutumnBox.Logging;
 using System;
 using System.Collections.Generic;
 using System.Windows;
 
-namespace AutumnBox.GUI.Util.I18N
+namespace AutumnBox.GUI.Util
 {
     /// <summary>
     /// 语言管理器
@@ -61,7 +60,8 @@ namespace AutumnBox.GUI.Util.I18N
                 return _l.LanCode == App.Current.Resources["LanguageCode"].ToString();
             });
         }
-        private ILanguage GetCurrent() {
+        private ILanguage GetCurrent()
+        {
             var code = App.Current.Resources[LANG_CODE_KEY].ToString();
             return languages.Find((t) =>
             {

@@ -3,11 +3,12 @@
 ** date:  2018/8/17 15:15:33 (UTC +8:00)
 ** desc： ...
 *************************************************/
+using System;
 using System.Windows;
 
-namespace AutumnBox.GUI.Util.I18N
+namespace AutumnBox.GUI.Services
 {
-    interface ILanguage : System.IEquatable<ILanguage>
+    interface ILanguage : IEquatable<ILanguage>
     {
         string LanCode { get; }
         string LangName { get; }

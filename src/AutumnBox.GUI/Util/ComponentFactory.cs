@@ -15,8 +15,8 @@
 */
 
 using AutumnBox.GUI.Util.I18N;
+using AutumnBox.GUI.Util.Impl;
 using AutumnBox.GUI.Util.Loader;
-using AutumnBox.GUI.Util.Theme;
 using AutumnBox.Leafx.Container.Support;
 
 namespace AutumnBox.GUI.Util
