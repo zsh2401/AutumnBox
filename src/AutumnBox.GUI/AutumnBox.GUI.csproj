@@ -152,6 +152,7 @@
     <Compile Include="Model\Tip.cs" />
     <Compile Include="Model\VersionInfo.cs" />
     <Compile Include="MVVM\FlexiableCommand.cs" />
+    <Compile Include="MVVM\InjectableObject.cs" />
     <Compile Include="MVVM\ModelBase.cs" />
     <Compile Include="MVVM\MVVMCommand.cs" />
     <Compile Include="MVVM\NotificationObject.cs" />
@@ -170,11 +171,16 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Resources\Languages\Lang.cs" />
+    <Compile Include="Services\ILeafCardManager.cs" />
     <Compile Include="Services\Impl\AdbDevicesManagerImpl.cs" />
-    <Compile Include="Util\AdbManager.cs" />
+    <Compile Include="Services\IAppLifeCycleLoader.cs" />
+    <Compile Include="Services\Impl\LoggingManager.cs" />
+    <Compile Include="Services\Impl\MessageBusImpl.cs" />
+    <Compile Include="Services\IOperatingSystemService.cs" />
+    <Compile Include="Services\ISelfInfoService.cs" />
+    <Compile Include="Services\Service.cs" />
     <Compile Include="Util\AppLoader.cs" />
     <Compile Include="Util\AppUnloader.cs" />
-    <Compile Include="Util\Bus\Broadcast.cs" />
     <Compile Include="Util\Bus\ConnectedDevicesListener.cs" />
     <Compile Include="Util\Bus\DeviceSelectionObserver.cs" />
     <Compile Include="Util\Bus\DialogManager.cs" />
@@ -183,7 +189,6 @@
     <Compile Include="Util\Bus\MainWindowBus.cs" />
     <Compile Include="Util\Bus\OpenFxEventBus.cs" />
     <Compile Include="Util\Bus\PanelsManager.cs" />
-    <Compile Include="Util\Bus\RuntimeVariablePool.cs" />
     <Compile Include="Util\Bus\WinM.cs" />
     <Compile Include="Util\ComponentFactory.cs" />
     <Compile Include="Util\Debugging\LogEventArgs.cs" />
@@ -195,11 +200,10 @@
     <Compile Include="Services\ILanguageManager.cs" />
     <Compile Include="Services\ILoggingManager.cs" />
     <Compile Include="Services\IMessageBus.cs" />
-    <Compile Include="Util\Impl\LanguageManager.cs" />
+    <Compile Include="Services\Impl\LanguageManager.cs" />
     <Compile Include="Services\IAcrylicHelper.cs" />
     <Compile Include="Services\IAdbDevicesManager.cs" />
     <Compile Include="Services\INotificationManager.cs" />
-    <Compile Include="Util\IOpenFxBridge.cs" />
     <Compile Include="Services\IOpenFxManager.cs" />
     <Compile Include="Services\ISentenceService.cs" />
     <Compile Include="Services\ISoundService.cs" />
@@ -220,7 +224,7 @@
     <Compile Include="Util\OS\TaskKill.cs" />
     <Compile Include="Util\Self.cs" />
     <Compile Include="Services\IThemeManager.cs" />
-    <Compile Include="Util\Impl\ThemeManager.cs" />
+    <Compile Include="Services\Impl\ThemeManager.cs" />
     <Compile Include="Services\ThemeMode.cs" />
     <Compile Include="Util\UI\Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="Util\UI\Converters\BoolToVisibilityConverterParameter.cs" />
@@ -230,8 +234,9 @@
     <Compile Include="Util\UI\Converters\NullToVisibilityConverterParameter.cs" />
     <Compile Include="Util\UI\Converters\ObjectEqualsToVisibilityConverter.cs" />
     <Compile Include="Util\UI\Converters\VisibleIf.cs" />
+    <Compile Include="Util\UI\Converters\VisibleIfNot.cs" />
     <Compile Include="Util\UI\HelpButtonHelper.cs" />
-    <Compile Include="Util\UI\Sentences.cs" />
+    <Compile Include="Services\Impl\Sentences.cs" />
     <Compile Include="Util\VersionInfos.cs" />
     <Compile Include="ViewModel\VMAbout.cs" />
     <Compile Include="ViewModel\VMBottomBar.cs" />

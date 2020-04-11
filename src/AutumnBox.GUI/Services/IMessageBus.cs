@@ -17,7 +17,7 @@ namespace AutumnBox.GUI.Services
     }
     interface IMessageBus
     {
-        event EventHandler MessageReceived;
+        event EventHandler<MessageReceivedEventArgs> MessageReceived;
         void SendMessage(string msg_type, object value);
     }
 }

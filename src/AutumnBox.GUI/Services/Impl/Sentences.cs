@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AutumnBox.GUI.Services;
+using System;
 
 namespace AutumnBox.GUI.Util.UI
 {
-    static class Sentences
+    sealed class Sentences : ISentenceService
     {
-        private static readonly Random ran = new Random();
-        public static string Next()
+        private readonly Random ran = new Random();
+        public string Next()
         {
             try
             {

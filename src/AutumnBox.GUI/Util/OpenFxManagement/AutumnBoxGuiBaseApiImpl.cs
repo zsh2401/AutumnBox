@@ -14,10 +14,9 @@ using AutumnBox.GUI.Util.Bus;
 using AutumnBox.GUI.View.DialogContent;
 using AutumnBox.OpenFramework.Open.LKit;
 using System.Linq;
-using System.Threading.Tasks;
-using AutumnBox.GUI.Util.OS.Acrylic;
 using AutumnBox.Leafx.Container;
 using AutumnBox.Leafx;
+using AutumnBox.GUI.Services;
 
 namespace AutumnBox.GUI.Util.OpenFxManagement
 {
@@ -285,7 +284,7 @@ namespace AutumnBox.GUI.Util.OpenFxManagement
 
         public void SetWindowBlur(IntPtr hWnd)
         {
-            AcrylicHelper.EnableBlur(hWnd);
+            Service.Get<IAcrylicHelper>().SetWindowBlur(hWnd); ;
         }
     }
 }

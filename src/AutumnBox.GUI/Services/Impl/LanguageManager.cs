@@ -8,23 +8,18 @@ using System;
 using System.Collections.Generic;
 using System.Windows;
 
-namespace AutumnBox.GUI.Util
+namespace AutumnBox.GUI.Services.Impl
 {
     /// <summary>
     /// 语言管理器
     /// </summary>
-    class LanguageManager : ILanguageManager
+    sealed class LanguageManager : ILanguageManager
     {
         private const int INDEX_OF_LANG = 0;
         private const string FILE_PATH = "pack://application:,,,/AutumnBox.GUI;component/Resources/Languages/";
         private const string LANG_NAME_KEY = "LanguageName";
         private const string LANG_CODE_KEY = "LanguageCode";
         private const string DEFAULT_LANG_CODE = "en-US";
-        public static LanguageManager Instance { get; private set; }
-        static LanguageManager()
-        {
-            Instance = new LanguageManager();
-        }
 
         public ILanguage Current
         {
@@ -43,10 +38,9 @@ namespace AutumnBox.GUI.Util
 
         public event EventHandler LanguageChanged;
 
-        private LanguageManager()
+        public LanguageManager()
         {
             AllLoad();
-            Instance = this;
         }
         private void AllLoad()
         {

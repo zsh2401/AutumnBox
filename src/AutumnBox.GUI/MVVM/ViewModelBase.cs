@@ -4,9 +4,8 @@
 ** desc： ...
 *************************************************/
 
+using AutumnBox.GUI.Services;
 using AutumnBox.GUI.Util.Bus;
-using AutumnBox.GUI.Util.Debugging;
-using AutumnBox.GUI.Util.Net.HomeContent;
 using AutumnBox.GUI.Util.UI;
 using AutumnBox.Leafx;
 using AutumnBox.Leafx.ObjectManagement;
@@ -21,7 +20,7 @@ namespace AutumnBox.GUI.MVVM
 {
     internal class ViewModelBase : NotificationObject
     {
-        protected virtual bool InjectProperties => false;
+
 
         public ICommand ShowWindowDialog
         {
@@ -85,7 +84,9 @@ namespace AutumnBox.GUI.MVVM
         }
         private ICommand _refreshHomeContent;
 
-        public string Sentence => Sentences.Next();
+        [AutoInject]
+        private ISentenceService SentenceService { get; set; }
+        public string Sentence => SentenceService.Next();
 
         public ViewModelBase()
         {
@@ -93,17 +94,6 @@ namespace AutumnBox.GUI.MVVM
             OpenGoUrl = _OpenGoUrlCommand;
             ShowWindowDialog = _ShowWindowDialogCommnand;
             ShowWindow = _ShowWindowCommand;
-            RefreshHomeContent = new MVVMCommand((p) =>
-            {
-                Task.Run(() =>
-                {
-                    HomeContentProvider.Do();
-                });
-            });
-            if (InjectProperties)
-            {
-                DependeciesInjector.Inject(this, GLake.Lake);
-            }
         }
 
         protected virtual bool RaisePropertyChangedOnDispatcher { get; set; } = false;

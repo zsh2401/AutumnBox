@@ -1,4 +1,5 @@
 ﻿using AutumnBox.OpenFramework.Management.ExtTask;
+using AutumnBox.OpenFramework.Management.Wrapper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,8 @@ namespace AutumnBox.GUI.Services
     {
         IExtensionTask RunExtension(string extensionClassName);
         void LoadOpenFx();
+        void WakeIfLoaded(Action callback);
         IExtensionTask[] RunningTasks { get; }
+        IExtensionWrapper[] ExtensionWrappers { get; }
     }
 }

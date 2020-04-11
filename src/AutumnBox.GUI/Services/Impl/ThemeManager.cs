@@ -17,9 +17,9 @@ using AutumnBox.GUI.Properties;
 using System;
 using System.Windows;
 
-namespace AutumnBox.GUI.Util.Impl
+namespace AutumnBox.GUI.Services.Impl
 {
-    class ThemeManager : IThemeManager
+    sealed class ThemeManager : IThemeManager
     {
         public ThemeMode ThemeMode
         {
