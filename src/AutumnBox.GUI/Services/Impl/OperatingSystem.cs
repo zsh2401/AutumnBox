@@ -1,11 +1,13 @@
 ﻿using AutumnBox.GUI.Services.Impl.Arcylic;
 using AutumnBox.GUI.Services.Impl.OS;
+using AutumnBox.Leafx.Container.Support;
 using System;
 using System.Security.Principal;
 using System.Windows;
 
 namespace AutumnBox.GUI.Services.Impl
 {
+    [Component(Type = typeof(IOperatingSystemService))]
     class OperatingSystem : IOperatingSystemService
     {
         public bool HaveAdministratorPermission

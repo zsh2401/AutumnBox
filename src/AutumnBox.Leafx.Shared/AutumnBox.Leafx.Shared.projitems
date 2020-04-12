@@ -9,7 +9,7 @@
     <Import_RootNamespace>AutumnBox.Leafx</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)Container\Support\ClassComponentsReader.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Container\Support\ClassComponentsLoader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Container\Support\ClassComponentRegister.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Container\Support\ShouldAutoCreateException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ObjectManagement\AroundMethodArgs.cs" />

@@ -15,6 +15,7 @@ using AutumnBox.GUI.Util;
 using AutumnBox.Leafx;
 using AutumnBox.Leafx.Container;
 using AutumnBox.Leafx.Container.Support;
+using System.Reflection;
 using System.Windows;
 namespace AutumnBox.GUI
 {
@@ -56,7 +57,10 @@ namespace AutumnBox.GUI
         /// </summary>
         private void LoadComponent()
         {
-            new ComponentFactoryReader((IRegisterableLake)GLake.Lake, typeof(ComponentFactory));
+            new ClassComponentsLoader(
+                "AutumnBox.GUI.Services.Impl",
+                Current.Lake)
+                .Do();
         }
 
         protected override void OnExit(ExitEventArgs e)

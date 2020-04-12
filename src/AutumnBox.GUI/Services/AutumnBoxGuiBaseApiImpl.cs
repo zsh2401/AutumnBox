@@ -270,6 +270,7 @@ namespace AutumnBox.GUI.Services.Impl
 
         [AutoInject]
         private readonly IMessageBus messageBus;
+
         public void RefreshExtensionList()
         {
             messageBus.SendMessage(Messages.REFRESH_EXTENSIONS_VIEW);

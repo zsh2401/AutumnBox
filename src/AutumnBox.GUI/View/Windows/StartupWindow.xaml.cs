@@ -1,4 +1,5 @@
 ﻿using AutumnBox.GUI.Util.Loader;
+using AutumnBox.Leafx.ObjectManagement;
 using AutumnBox.Logging;
 using System;
 using System.Diagnostics;
@@ -11,10 +12,11 @@ namespace AutumnBox.GUI.View.Windows
     /// </summary>
     public partial class StartupWindow
     {
-        private readonly AbstractAppLoader appLoader = new GeneralAppLoader();
+        private readonly AbstractAppLoader appLoader;
         public StartupWindow()
         {
             InitializeComponent();
+            appLoader = (AbstractAppLoader)new ObjectBuilder(typeof(GeneralAppLoader),App.Current.Lake).Build();
             appLoader.StepFinished += AppLoader_StepFinished;
             appLoader.Succeced += AppLoader_Succeced;
             appLoader.Failed += AppLoader_Failed;

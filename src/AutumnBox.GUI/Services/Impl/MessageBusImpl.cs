@@ -1,9 +1,11 @@
-﻿using AutumnBox.Logging;
+﻿using AutumnBox.Leafx.Container.Support;
+using AutumnBox.Logging;
 using System;
 
 namespace AutumnBox.GUI.Services.Impl
 {
-    class MessageBusImpl : IMessageBus
+    [Component(Type = typeof(IMessageBus))]
+    sealed class MessageBusImpl : IMessageBus
     {
         public event EventHandler<MessageReceivedEventArgs> MessageReceived;
 

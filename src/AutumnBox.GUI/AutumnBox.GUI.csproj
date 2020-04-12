@@ -174,9 +174,11 @@
     <Compile Include="Services\ILeafCardManager.cs" />
     <Compile Include="Services\Impl\AdbDevicesManagerImpl.cs" />
     <Compile Include="Services\Impl\AppLifecycleManager.cs" />
+    <Compile Include="Services\Impl\LeafCardManager.cs" />
     <Compile Include="Services\Impl\LoggingManager.cs" />
     <Compile Include="Services\Impl\LoggingObject.cs" />
     <Compile Include="Services\Impl\MessageBusImpl.cs" />
+    <Compile Include="Services\Impl\NotificationManager.cs" />
     <Compile Include="Services\Impl\OpenFxManagerImpl.cs" />
     <Compile Include="Services\Impl\OperatingSystem.cs" />
     <Compile Include="Services\Impl\SubWindowDialogManagerImpl.cs" />
@@ -195,7 +197,6 @@
     <Compile Include="Util\Bus\MainWindowBus.cs" />
     <Compile Include="Util\Bus\OpenFxEventBus.cs" />
     <Compile Include="Util\Bus\PanelsManager.cs" />
-    <Compile Include="Util\ComponentFactory.cs" />
     <Compile Include="Util\Debugging\LogEventArgs.cs" />
     <Compile Include="Util\Debugging\LoggingStation.cs" />
     <Compile Include="Util\Effect\Sounds.cs" />

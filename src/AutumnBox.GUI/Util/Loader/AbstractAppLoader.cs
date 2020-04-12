@@ -46,6 +46,7 @@ namespace AutumnBox.GUI.Util.Loader
                 Logger.Info($"EXECUTED:: {stepMethods.ElementAt(i).Name}");
                 StepFinished?.Invoke(this, new StepFinishedEventArgs((uint)i, (uint)stepMethods.Count()));
             }
+            Logger.Info("All done!");
             Succeced?.Invoke(this, new EventArgs());
         }
 

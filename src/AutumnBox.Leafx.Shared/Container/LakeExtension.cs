@@ -88,7 +88,7 @@ namespace AutumnBox.Leafx.Container
             }
             catch (Exception e)
             {
-                SLogger.Warn(nameof(LakeExtension), "Can not get component", e);
+                SLogger.Warn(nameof(LakeExtension), $"Can not get component by type: {t.FullName}", e);
                 value = default;
                 return false;
             }
@@ -109,7 +109,7 @@ namespace AutumnBox.Leafx.Container
             }
             catch (Exception e)
             {
-                SLogger.Warn(nameof(LakeExtension), "Can not get component", e);
+                SLogger.Warn(nameof(LakeExtension), $"Can not get component by id: {id}", e);
                 value = default;
                 return false;
             }
@@ -130,7 +130,7 @@ namespace AutumnBox.Leafx.Container
             }
             catch (Exception e)
             {
-                SLogger.Warn(nameof(LakeExtension), "Can not get component", e);
+                SLogger.Warn(nameof(LakeExtension), $"Can not get component by type: {typeof(T).FullName}", e);
                 value = default;
                 return false;
             }
@@ -386,7 +386,7 @@ namespace AutumnBox.Leafx.Container
                 throw new ArgumentNullException(nameof(t));
             }
 
-            return $"___based_on_type_{t}";
+            return $"__registered_by_type::{t.GetHashCode()}";
         }
 
 

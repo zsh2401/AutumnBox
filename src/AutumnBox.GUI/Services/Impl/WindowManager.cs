@@ -1,8 +1,10 @@
-﻿using System;
+﻿using AutumnBox.Leafx.Container.Support;
+using System;
 using System.Windows;
 
 namespace AutumnBox.GUI.Services.Impl
 {
+    [Component(Type = typeof(IWindowManager))]
     class WindowManager : LoggingObject, IWindowManager
     {
         public Window MainWindow => App.Current.MainWindow;

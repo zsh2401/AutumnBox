@@ -27,10 +27,10 @@ namespace AutumnBox.OpenFramework.Implementation
 
         public void SendNotification(string msg, string title = null, Action onClickHandler = null)
         {
-            BaseApi.RunOnUIThread(() =>
-            {
-                BaseApi.SendNotification(msg, title, onClickHandler);
-            });
+            //BaseApi.RunOnUIThread(() =>
+            //{
+            //    BaseApi.SendNotification(msg, title, onClickHandler);
+            //});
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using AutumnBox.Leafx.Container;
+using AutumnBox.Leafx.Container.Support;
 using AutumnBox.Logging;
 using AutumnBox.OpenFramework.Management;
 using AutumnBox.OpenFramework.Management.ExtLibrary;
@@ -11,6 +12,7 @@ using System.Linq;
 
 namespace AutumnBox.GUI.Services.Impl
 {
+    [Component(Type = typeof(IOpenFxManager))]
     class OpenFxManagerImpl : IOpenFxManager
     {
         public IExtensionTask[] RunningTasks => OpenFx.Lake.Get<IExtensionTaskManager>().RunningTasks.ToArray();

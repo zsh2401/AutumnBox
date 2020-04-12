@@ -1,9 +1,11 @@
-﻿using HandyControl.Controls;
+﻿using AutumnBox.Leafx.Container.Support;
+using HandyControl.Controls;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace AutumnBox.GUI.Services.Impl
 {
+    [Component(Type = typeof(ISubWindowDialogManager))]
     class SubWindowDialogManagerImpl : ISubWindowDialogManager
     {
         private const int STATE_CHECK_INTERVAL = 100;

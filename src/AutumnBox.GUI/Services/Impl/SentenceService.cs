@@ -1,9 +1,10 @@
-﻿using AutumnBox.GUI.Services;
+﻿using AutumnBox.Leafx.Container.Support;
 using System;
 
-namespace AutumnBox.GUI.Util.UI
+namespace AutumnBox.GUI.Services.Impl
 {
-    sealed class SentenceService : ISentenceService
+    [Component(Type = typeof(ISentenceService))]
+    class SentenceService : ISentenceService
     {
         private readonly Random ran = new Random();
         public string Next()
