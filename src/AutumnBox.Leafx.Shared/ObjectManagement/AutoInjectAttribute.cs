@@ -17,7 +17,7 @@ using System;
 
 namespace AutumnBox.Leafx.ObjectManagement
 {
-    [AttributeUsage(AttributeTargets.Property)]
+    [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field)]
     public class AutoInjectAttribute : Attribute
     {
         public string Id { get; set; } = null;

@@ -31,26 +31,24 @@ namespace AutumnBox.Leafx.ObjectManagement
         /// </summary>
         public void Inject()
         {
-            foreach (var property in GetInjectableProperties(instance.GetType()))
+            foreach (var injectable in GetInjectables(instance.GetType()))
             {
                 try
                 {
-                    var attr = property.GetCustomAttribute<AutoInjectAttribute>();
-                    var value = GetValue(attr.Id, property.PropertyType);
+                    var value = GetValue(injectable.Attr.Id, injectable.ValueType);
                     if (value != null)
                     {
-                        var setter = property.GetSetMethod(true);
-                        setter.Invoke(instance, new object[] { value });
+                        injectable.Set(instance, value);
                     }
                     else
                     {
-                        SLogger<DependeciesInjector>.Info($"Injecting of {instance.GetType().FullName}.{property.Name} is skipped");
+                        SLogger<DependeciesInjector>.Info($"Can not found component: {(injectable.Attr.Id ?? injectable.ValueType?.Name)}. Injecting of {instance.GetType().FullName}.{injectable.Name} is skipped");
                     }
                 }
                 catch (Exception e)
                 {
                     SLogger<DependeciesInjector>
-                        .Warn($"Can't inject proerty:{instance.GetType().FullName}.{property.Name}", e);
+                        .Warn($"Can't inject proerty:{instance.GetType().FullName}.{injectable.Name}", e);
                 }
             }
         }
@@ -88,25 +86,66 @@ namespace AutumnBox.Leafx.ObjectManagement
         {
             new DependeciesInjector(instance, sources).Inject();
         }
+        private class InjectableInfo
+        {
+            public Type ValueType { get; }
+            public string Name { get; }
+            public AutoInjectAttribute Attr { get; }
+            private readonly Action<object, object> setter;
+            public InjectableInfo(PropertyInfo property)
+            {
+                if (property is null)
+                {
+                    throw new ArgumentNullException(nameof(property));
+                }
+
+                ValueType = property.PropertyType;
+                setter = (instance, v) => property.GetSetMethod(true).Invoke(instance, new object[] { v });
+                Name = property.Name;
+                Attr = property.GetCustomAttribute<AutoInjectAttribute>();
+            }
+            public InjectableInfo(FieldInfo field)
+            {
+                if (field is null)
+                {
+                    throw new ArgumentNullException(nameof(field));
+                }
+                ValueType = field.FieldType;
+                setter = (instance, v) => field.SetValue(instance, v);
+                Name = field.Name;
+                Attr = field.GetCustomAttribute<AutoInjectAttribute>();
+            }
+            public void Set(object instance, object value)
+            {
+                setter(instance, value);
+            }
+        }
 
         /// <summary>
         /// 获取所有可注入属性
         /// </summary>
         /// <param name="t"></param>
         /// <returns></returns>
-        private IEnumerable<PropertyInfo> GetInjectableProperties(Type t)
+        private IEnumerable<InjectableInfo> GetInjectables(Type t)
         {
-            var properties = from property in t.GetProperties(BINDING_FLAGS)
-                             where property.GetCustomAttribute<AutoInjectAttribute>() != null
-                             where property.GetSetMethod(true) != null
-                             select property;
+
+            var injectableProperties = from property in t.GetProperties(BINDING_FLAGS)
+                                       where property.GetCustomAttribute<AutoInjectAttribute>() != null
+                                       where property.GetSetMethod(true) != null
+                                       select new InjectableInfo(property);
+
+            var injectableFields = from field in t.GetFields(BINDING_FLAGS)
+                                   where field.GetCustomAttribute<AutoInjectAttribute>() != null
+                                   select new InjectableInfo(field);
+
+            var result = injectableProperties.Concat(injectableFields);
             if (t.BaseType == typeof(object))
             {
-                return properties;
+                return result;
             }
             else
             {
-                return properties.Concat(GetInjectableProperties(t.BaseType));
+                return result.Concat(GetInjectables(t.BaseType));
             }
         }
     }
