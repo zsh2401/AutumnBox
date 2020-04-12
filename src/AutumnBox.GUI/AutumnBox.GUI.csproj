@@ -209,7 +209,7 @@
     <Compile Include="Util\Loader\GeneralAppLoader.cs" />
     <Compile Include="Util\Loader\StepAttribute.cs" />
     <Compile Include="Util\Loader\StepFinishedEventArgs.cs" />
-    <Compile Include="Services\AutumnBoxGuiBaseApiImpl.cs" />
+    <Compile Include="Services\Impl\AutumnBoxGuiBaseApiImpl.cs" />
     <Compile Include="Services\Impl\Acrylic\AcrylicHelper.cs" />
     <Compile Include="Services\Impl\Acrylic\OSVersions.cs" />
     <Compile Include="Services\Impl\Acrylic\SystemInfo.cs" />
