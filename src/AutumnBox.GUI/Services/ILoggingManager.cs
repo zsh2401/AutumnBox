@@ -5,6 +5,6 @@ namespace AutumnBox.GUI.Services
     interface ILoggingManager
     {
         ILoggingStation LoggingStation { get; }
-        void AutoInit();
+        void Initialize();
     }
 }

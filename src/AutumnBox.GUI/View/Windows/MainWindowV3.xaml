@@ -37,6 +37,7 @@
             </Grid>
         </StackPanel>
     </custom:NiceWindow.NonClientAreaContent>
+
     <Grid>
         <panel:PanelMainV2/>
     </Grid>

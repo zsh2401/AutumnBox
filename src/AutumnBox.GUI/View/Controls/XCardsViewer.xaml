@@ -24,7 +24,6 @@
 
                 <Border CornerRadius="5" Padding="15" Margin="5" Effect="{DynamicResource EffectShadow1}" Background="{DynamicResource DarkMaskBrush}">
                     <ContentControl Content="{Binding View}"/>
-
                 </Border>
 
             </ItemContainerTemplate>

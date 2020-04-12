@@ -1,6 +1,4 @@
-﻿using AutumnBox.GUI.Util.Debugging;
-using AutumnBox.Logging;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Input;

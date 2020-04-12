@@ -16,7 +16,8 @@
 using AutumnBox.Basic.Device;
 using AutumnBox.GUI.MVVM;
 using AutumnBox.GUI.Services;
-using AutumnBox.GUI.Util.Bus;
+
+using AutumnBox.Leafx.ObjectManagement;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -53,6 +54,7 @@ namespace AutumnBox.GUI.ViewModel
         }
         private IDevice _selectedDev;
 
+        [AutoInject]
         private IAdbDevicesManager devicesManager;
 
         public VMDeviceSelector()

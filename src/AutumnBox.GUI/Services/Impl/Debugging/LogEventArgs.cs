@@ -1,7 +1,7 @@
 ﻿using AutumnBox.Logging.Management;
 using System;
 
-namespace AutumnBox.GUI.Util.Debugging
+namespace AutumnBox.GUI.Services.Impl.Debugging
 {
     class LogEventArgs : EventArgs
     {

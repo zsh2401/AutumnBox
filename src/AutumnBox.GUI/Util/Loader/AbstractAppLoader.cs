@@ -1,4 +1,5 @@
-﻿using AutumnBox.Logging;
+﻿using AutumnBox.Leafx.ObjectManagement;
+using AutumnBox.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,7 +43,8 @@ namespace AutumnBox.GUI.Util.Loader
             for (int i = 0; i < stepMethods.Count(); i++)
             {
                 Logger.Info($"EXECUTING:: {stepMethods.ElementAt(i).Name}");
-                stepMethods.ElementAt(i).Invoke(this, new object[0]);
+                var methodProxy = new MethodProxy(this, stepMethods.ElementAt(i),App.Current.Lake);
+                methodProxy.Invoke();
                 Logger.Info($"EXECUTED:: {stepMethods.ElementAt(i).Name}");
                 StepFinished?.Invoke(this, new StepFinishedEventArgs((uint)i, (uint)stepMethods.Count()));
             }

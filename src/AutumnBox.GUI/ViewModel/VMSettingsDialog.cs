@@ -6,8 +6,7 @@
 using AutumnBox.GUI.MVVM;
 using AutumnBox.GUI.Properties;
 using AutumnBox.GUI.Services;
-using AutumnBox.GUI.Util.Bus;
-using AutumnBox.GUI.Util.Debugging;
+using AutumnBox.GUI.Services.Impl.Debugging;
 using AutumnBox.GUI.View.Windows;
 using AutumnBox.Leafx.ObjectManagement;
 using System.Collections.Generic;
@@ -228,7 +227,7 @@ namespace AutumnBox.GUI.ViewModel
             {
                 try
                 {
-                    Process.Start(LoggingStation.LOG_FLODER);
+                    Process.Start(ZhangBeiHaiLoggingStation.LOG_FLODER);
                 }
                 catch { }
             });

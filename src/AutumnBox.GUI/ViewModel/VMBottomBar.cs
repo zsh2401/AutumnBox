@@ -1,7 +1,7 @@
 ﻿using AutumnBox.Basic.Calling.Adb;
 using AutumnBox.GUI.MVVM;
 using AutumnBox.GUI.Util;
-using AutumnBox.GUI.Util.Bus;
+
 using AutumnBox.OpenFramework.Open;
 using System.Linq;
 using AutumnBox.Leafx.Container;
@@ -68,6 +68,7 @@ namespace AutumnBox.GUI.ViewModel
         [AutoInject]
         private readonly ITaskManager taskManager;
 
+        [AutoInject]
         private readonly IAdbDevicesManager devicesManager;
 
         public VMBottomBar()

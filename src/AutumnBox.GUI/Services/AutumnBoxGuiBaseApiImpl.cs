@@ -6,14 +6,11 @@
 using System;
 using AutumnBox.GUI.View.Windows;
 using AutumnBox.OpenFramework.Management;
-using AutumnBox.GUI.Util.Effect;
 using AutumnBox.GUI.Properties;
 using System.Reflection;
 using AutumnBox.Basic.Device;
-using AutumnBox.GUI.Util.Bus;
 using AutumnBox.GUI.View.DialogContent;
 using AutumnBox.OpenFramework.Open.LKit;
-using System.Linq;
 using AutumnBox.Leafx.Container;
 using AutumnBox.Leafx;
 using AutumnBox.GUI.Util;

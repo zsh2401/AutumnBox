@@ -1,4 +1,5 @@
-﻿using AutumnBox.Leafx.Container.Support;
+﻿using AutumnBox.GUI.Services.Impl.Debugging;
+using AutumnBox.Leafx.Container.Support;
 using AutumnBox.Logging.Management;
 
 namespace AutumnBox.GUI.Services.Impl
@@ -6,17 +7,13 @@ namespace AutumnBox.GUI.Services.Impl
     [Component(Type = typeof(ILoggingManager))]
     sealed class LoggingManager : ILoggingManager
     {
-        public ILoggingStation LoggingStation { get; private set; }
+        public ILoggingStation LoggingStation => loggingStation;
+        private readonly ZhangBeiHaiLoggingStation loggingStation = new ZhangBeiHaiLoggingStation();
 
-        public LoggingManager()
+        public void Initialize()
         {
-            Util.Debugging.LoggingStation.Instance.Work();
-            LoggingStation = Util.Debugging.LoggingStation.Instance;
-        }
-        public void AutoInit()
-        {
-            Logging.Management.
-                LoggingManager.SetLogStation(LoggingStation);
+            loggingStation.Work();
+            Logging.Management.LoggingManager.SetLogStation(loggingStation);
         }
     }
 }

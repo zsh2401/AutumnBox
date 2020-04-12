@@ -16,9 +16,10 @@
                     <hc:Divider LineStroke="{DynamicResource SecondaryTextBrush}"  DockPanel.Dock="Bottom" Margin="0" />
                 </DockPanel>
             </Border>
-            <hc:ScrollViewer>
+            
+            <ScrollViewer>
                 <controls:XCardsViewer DockPanel.Dock="Left"/>
-            </hc:ScrollViewer>
+            </ScrollViewer>
 
             <controls:ExtensionsFinder Padding="0,10,0,0" DockPanel.Dock="Right"/>
         </DockPanel>

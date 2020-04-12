@@ -15,7 +15,7 @@
 */
 using AutumnBox.GUI.MVVM;
 using AutumnBox.GUI.Services;
-using AutumnBox.GUI.Util.Bus;
+
 using AutumnBox.Leafx.ObjectManagement;
 using System.Collections.ObjectModel;
 namespace AutumnBox.GUI.ViewModel
@@ -23,8 +23,8 @@ namespace AutumnBox.GUI.ViewModel
     class VMLeafCards : ViewModelBase
     {
         [AutoInject]
-        private readonly ILeafCardManager leafCardManager;
+        public ILeafCardManager leafCardManager;
 
-        public ObservableCollection<object> Views => leafCardManager.Views;
+        public ObservableCollection<ViewWrapper> Views => leafCardManager.Views;
     }
 }

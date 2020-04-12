@@ -3,31 +3,19 @@ using AutumnBox.GUI.Properties;
 using AutumnBox.Logging.Management;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading;
 
-namespace AutumnBox.GUI.Util.Debugging
+namespace AutumnBox.GUI.Services.Impl.Debugging
 {
     [HeritableStation]
-    internal class LoggingStation : ILoggingStation, IDisposable
+    internal class ZhangBeiHaiLoggingStation : ILoggingStation, IDisposable
     {
         public const string LOG_FLODER = "logs";
         private const string LOG_FILENAME_FORMAT = "yy_MM_dd__HH_mm_ss";
         public IEnumerable<ILog> Logs => logged;
-        public static LoggingStation Instance
-        {
-            get
-            {
-                if (_instance == null)
-                {
-                    _instance = new LoggingStation();
-                }
-                return _instance;
-            }
-        }
-        private static LoggingStation _instance;
+
         public event EventHandler<LogEventArgs> Logging;
         private List<FormatLog> logged;
         private Queue<FormatLog> buffer;
@@ -51,7 +39,7 @@ namespace AutumnBox.GUI.Util.Debugging
             }
         }
         private FileInfo _logFile;
-        private LoggingStation()
+        public ZhangBeiHaiLoggingStation()
         {
             buffer = new Queue<FormatLog>();
             logged = new List<FormatLog>();
@@ -104,7 +92,7 @@ namespace AutumnBox.GUI.Util.Debugging
             catch { }
         }
 
-#region IDisposable Support
+        #region IDisposable Support
         private bool disposedValue = false; // 要检测冗余调用
 
         protected virtual void Dispose(bool disposing)
@@ -139,6 +127,6 @@ namespace AutumnBox.GUI.Util.Debugging
             // TODO: 如果在以上内容中替代了终结器，则取消注释以下行。
             // GC.SuppressFinalize(this);
         }
-#endregion
+        #endregion
     }
 }

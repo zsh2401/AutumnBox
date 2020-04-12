@@ -1,13 +1,10 @@
 ﻿using AutumnBox.GUI.Model;
 using AutumnBox.GUI.MVVM;
-using AutumnBox.GUI.Util.Debugging;
-using AutumnBox.Logging.Management;
-using System;
-using System.Collections.Generic;
+using AutumnBox.GUI.Services;
+using AutumnBox.GUI.Services.Impl.Debugging;
+using AutumnBox.Leafx.ObjectManagement;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace AutumnBox.GUI.ViewModel
 {
@@ -43,16 +40,23 @@ namespace AutumnBox.GUI.ViewModel
 
         private StringBuilder _sb = new StringBuilder();
 
+        [AutoInject]
+        private ILoggingManager loggingManager;
+
         public VMLog()
         {
             RaisePropertyChangedOnDispatcher = true;
             Logs = new ObservableCollection<FormatLog>();
             Title = "AutumnBox Debug Window-Select and Ctrl+C to copy";
-            foreach (var log in LoggingStation.Instance.Logs)
+            foreach (var log in loggingManager.LoggingStation.Logs)
             {
                 Append((FormatLog)log);
             }
-            LoggingStation.Instance.Logging += Instance_Logging;
+            var myLoggingStation = (loggingManager.LoggingStation as ZhangBeiHaiLoggingStation);
+            if (myLoggingStation != null)
+            {
+                myLoggingStation.Logging += Instance_Logging;
+            }
         }
 
         private void Instance_Logging(object sender, LogEventArgs e)

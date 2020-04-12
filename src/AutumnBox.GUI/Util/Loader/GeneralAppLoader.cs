@@ -2,8 +2,7 @@
 using AutumnBox.Basic.ManagedAdb;
 using AutumnBox.Basic.Util;
 using AutumnBox.GUI.Services;
-using AutumnBox.GUI.Util.Bus;
-using AutumnBox.GUI.Util.Debugging;
+using AutumnBox.GUI.View.Controls;
 using AutumnBox.GUI.View.Windows;
 using AutumnBox.Leafx.ObjectManagement;
 using AutumnBox.Logging;
@@ -19,21 +18,9 @@ namespace AutumnBox.GUI.Util.Loader
 {
     sealed class GeneralAppLoader : AbstractAppLoader
     {
-        [AutoInject]
-        private readonly IOpenFxManager openFxManager;
-
-        [AutoInject]
-        private readonly IOperatingSystemService operatingSystemService;
-
-        [AutoInject]
-        private readonly ILanguageManager languageManager;
-
-        [AutoInject]
-        private readonly IAdbDevicesManager devicesManager;
-
 #pragma warning disable IDE0051 // 删除未使用的私有成员
         [Step(0)]
-        private void CheckOtherAutumnBox()
+        private void CheckOtherAutumnBox(IOperatingSystemService operatingSystemService)
         {
             if (!operatingSystemService.ThereIsOtherAutumnBoxProcess())
             {
@@ -64,7 +51,7 @@ namespace AutumnBox.GUI.Util.Loader
         }
 
         [Step(6)]
-        private void InitLanguageSystem()
+        private void InitLanguageSystem(ILanguageManager languageManager)
         {
             if (Properties.Settings.Default.IsFirstLaunch)
             {
@@ -85,10 +72,9 @@ namespace AutumnBox.GUI.Util.Loader
         }
 
         [Step(1)]
-        private void InitLogSystem()
+        private void InitLogSystem(ILoggingManager loggingManager)
         {
-            LoggingStation.Instance.Work();
-            LoggingManager.SetLogStation(LoggingStation.Instance, true);
+            loggingManager.Initialize();
         }
 
         [Step(7)]
@@ -103,7 +89,7 @@ namespace AutumnBox.GUI.Util.Loader
         }
 
         [Step(3)]
-        private void InitAutumnBoxBasic()
+        private void InitAutumnBoxBasic(IOperatingSystemService operatingSystemService)
         {
             Settings.CreateNewWindow = Properties.Settings.Default.DisplayCmdWindow;
             try
@@ -132,7 +118,7 @@ namespace AutumnBox.GUI.Util.Loader
 
 
         [Step(4)]
-        private void InitAutumnBoxOpenFx()
+        private void InitAutumnBoxOpenFx(IOpenFxManager openFxManager)
         {
             openFxManager.LoadOpenFx();
         }
@@ -144,9 +130,24 @@ namespace AutumnBox.GUI.Util.Loader
         }
 
         [Step(9)]
-        private void RunDeviceListener()
+        private void RunDeviceListener(IAdbDevicesManager devicesManager)
         {
             devicesManager.Initialize();
+        }
+        [Step(10)]
+        private void AddLeafCards(ILeafCardManager leafCardManager)
+        {
+            App.Current.Dispatcher.Invoke(() =>
+            {
+                leafCardManager.Add(new DeviceSelector(), 0);
+                leafCardManager.Add(new DeviceDash(), 0);
+            });
+        }
+
+        [Step(11)]
+        private void DisplayGuide()
+        {
+            Properties.Settings.Default.GuidePassed = true;
         }
 
         //[Step(10)]
