@@ -8,16 +8,18 @@ namespace AutumnBox.GUI.Services
 {
     public class MessageReceivedEventArgs : EventArgs
     {
-        public MessageReceivedEventArgs(object value)
+        public MessageReceivedEventArgs(string type,object value)
         {
             Value = value;
+            MessageType = type;
         }
 
         public object Value { get; }
+        public string MessageType { get; }
     }
     interface IMessageBus
     {
         event EventHandler<MessageReceivedEventArgs> MessageReceived;
-        void SendMessage(string msg_type, object value);
+        void SendMessage(string msg_type, object value = null);
     }
 }

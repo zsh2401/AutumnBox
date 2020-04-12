@@ -5,13 +5,11 @@
 *************************************************/
 using AutumnBox.GUI.MVVM;
 using AutumnBox.GUI.Properties;
+using AutumnBox.GUI.Services;
 using AutumnBox.GUI.Util.Bus;
 using AutumnBox.GUI.Util.Debugging;
-using AutumnBox.GUI.Util.I18N;
-using AutumnBox.GUI.Util.Net;
-using AutumnBox.GUI.Util.OS;
-using AutumnBox.GUI.Util.Theme;
 using AutumnBox.GUI.View.Windows;
+using AutumnBox.Leafx.ObjectManagement;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Reflection;
@@ -24,12 +22,12 @@ namespace AutumnBox.GUI.ViewModel
         #region MVVM
         public bool ShouldUseDarkTheme
         {
-            get => ThemeManager.Instance.ThemeMode == ThemeMode.Dark;
+            get => themeManager.ThemeMode == ThemeMode.Dark;
             set
             {
                 if (value)
                 {
-                    ThemeManager.Instance.ThemeMode = ThemeMode.Dark;
+                    themeManager.ThemeMode = ThemeMode.Dark;
                 }
                 RaisePropertyChanged();
             }
@@ -37,12 +35,12 @@ namespace AutumnBox.GUI.ViewModel
 
         public bool ShouldUseAutoTheme
         {
-            get => ThemeManager.Instance.ThemeMode == ThemeMode.Auto;
+            get => themeManager.ThemeMode == ThemeMode.Auto;
             set
             {
                 if (value)
                 {
-                    ThemeManager.Instance.ThemeMode = ThemeMode.Auto;
+                    themeManager.ThemeMode = ThemeMode.Auto;
                 }
                 RaisePropertyChanged();
             }
@@ -50,12 +48,12 @@ namespace AutumnBox.GUI.ViewModel
 
         public bool ShouldUseLightTheme
         {
-            get => ThemeManager.Instance.ThemeMode == ThemeMode.Light;
+            get => themeManager.ThemeMode == ThemeMode.Light;
             set
             {
                 if (value)
                 {
-                    ThemeManager.Instance.ThemeMode = ThemeMode.Light;
+                    themeManager.ThemeMode = ThemeMode.Light;
                 }
                 RaisePropertyChanged();
             }
@@ -84,7 +82,7 @@ namespace AutumnBox.GUI.ViewModel
             set
             {
                 Settings.Default.DeveloperMode = value;
-                MainWindowBus.ReloadExtensionList();
+                messageBus.SendMessage(Messages.REFRESH_EXTENSIONS_VIEW);
                 RaisePropertyChanged();
             }
         }
@@ -173,29 +171,50 @@ namespace AutumnBox.GUI.ViewModel
 
         public ICommand ResetSettings { get; private set; }
 
+
         public IEnumerable<ILanguage> Languages
         {
-            get => LanguageManager.Instance.Languages;
+            get => languageManager.Languages;
         }
         public ILanguage SelectedLanguage
         {
-            get => LanguageManager.Instance.Current;
+            get => languageManager.Current;
             set
             {
-                LanguageManager.Instance.Current = value;
+                languageManager.Current = value;
                 RaisePropertyChanged();
             }
         }
+
         public string LanguageDisplayMemberPath { get; set; } = nameof(ILanguage.LangName);
 
+
         #endregion
+        [AutoInject]
+        private readonly IThemeManager themeManager;
+
+        [AutoInject]
+        private readonly ILanguageManager languageManager;
+
+        [AutoInject]
+        private readonly IOperatingSystemService operatingSystemService;
+
+        [AutoInject]
+        private readonly IOpenFxManager openFxManager;
+
+        [AutoInject]
+        private readonly INotificationManager notificationManager;
+
+        [AutoInject]
+        private readonly IMessageBus messageBus;
+
         public VMSettingsDialog()
         {
             RaisePropertyChangedOnDispatcher = true;
             ResetSettings = new MVVMCommand(ResetSettingsMethod);
             SendToDesktop = new MVVMCommand((_) =>
             {
-                ShortcutHelper.CreateShortcutOnDesktop("AutumnBox", System.Environment.CurrentDirectory + "/AutumnBox.GUI.exe", "The AutumnBox-Dream of us");
+                operatingSystemService.CreateShortcutOnDesktop("AutumnBox", System.Environment.CurrentDirectory + "/AutumnBox.GUI.exe", "The AutumnBox-Dream of us");
             });
             ShowDebugWindow = new MVVMCommand((_) =>
             {
@@ -203,7 +222,7 @@ namespace AutumnBox.GUI.ViewModel
             });
             UpdateCheck = new FlexiableCommand(() =>
             {
-                Updater.Do();
+                openFxManager.RunExtension("EAutumnBoxUpdateChecker");
             });
             OpenLogFloder = new MVVMCommand((p) =>
             {

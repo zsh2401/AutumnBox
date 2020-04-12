@@ -1,4 +1,6 @@
-﻿using AutumnBox.GUI.Util.UI;
+﻿using AutumnBox.GUI.Services;
+using AutumnBox.GUI.Util.UI;
+using AutumnBox.Leafx.Container;
 using System.Windows.Controls;
 
 namespace AutumnBox.GUI.View.Panel
@@ -11,7 +13,7 @@ namespace AutumnBox.GUI.View.Panel
         public PanelLoading()
         {
             InitializeComponent();
-            TBSentence.Text = Sentences.Next();
+            TBSentence.Text = App.Current.Lake.Get<ISentenceService>().Next();
         }
     }
 }

@@ -1,9 +1,11 @@
 ﻿using AutumnBox.ADBProvider;
 using AutumnBox.Basic.ManagedAdb;
 using AutumnBox.Basic.Util;
+using AutumnBox.GUI.Services;
 using AutumnBox.GUI.Util.Bus;
 using AutumnBox.GUI.Util.Debugging;
 using AutumnBox.GUI.View.Windows;
+using AutumnBox.Leafx.ObjectManagement;
 using AutumnBox.Logging;
 using AutumnBox.Logging.Management;
 using AutumnBox.OpenFramework;
@@ -17,11 +19,23 @@ namespace AutumnBox.GUI.Util.Loader
 {
     sealed class GeneralAppLoader : AbstractAppLoader
     {
+        [AutoInject]
+        private readonly IOpenFxManager openFxManager;
+
+        [AutoInject]
+        private readonly IOperatingSystemService operatingSystemService;
+
+        [AutoInject]
+        private readonly ILanguageManager languageManager;
+
+        [AutoInject]
+        private readonly IAdbDevicesManager devicesManager;
+
 #pragma warning disable IDE0051 // 删除未使用的私有成员
         [Step(0)]
         private void CheckOtherAutumnBox()
         {
-            if (!OtherProcessChecker.ThereIsOtherAutumnBox())
+            if (!operatingSystemService.ThereIsOtherAutumnBoxProcess())
             {
                 OnError("There's other AutumnBox process", new System.Exception("There's other AutumnBox process"));
             }
@@ -49,21 +63,16 @@ namespace AutumnBox.GUI.Util.Loader
             ConfigHelper.Instance.SetSystemVersionInfo(GetSystemVersionInfo());
         }
 
-        private void InitThemeSystem()
-        {
-            Theme.ThemeManager.Instance.Reload();
-        }
-
         [Step(6)]
         private void InitLanguageSystem()
         {
-            if (AutumnBox.GUI.Properties.Settings.Default.IsFirstLaunch)
+            if (Properties.Settings.Default.IsFirstLaunch)
             {
-                LanguageManager.Instance.ApplyByEnvoriment();
+                languageManager.ApplyByEnvoriment();
             }
             else
             {
-                LanguageManager.Instance.ApplyByLanguageCode(Properties.Settings.Default.Language);
+                languageManager.ApplyByLanguageCode(Properties.Settings.Default.Language);
             }
         }
 
@@ -100,7 +109,7 @@ namespace AutumnBox.GUI.Util.Loader
             try
             {
                 Logger.Info("killing other adb processes");
-                TaskKill.Kill("adb.exe");
+                operatingSystemService.KillProcess("adb.exe");
                 Logger.Info("autumnbox-adb-server is starting");
                 var adbManager = AdbProviderFactory.Get(true).AdbManager;
                 Adb.Load(adbManager);
@@ -121,11 +130,11 @@ namespace AutumnBox.GUI.Util.Loader
             }
         }
 
+
         [Step(4)]
         private void InitAutumnBoxOpenFx()
         {
-            OpenFrameworkManager.Init();
-            OpenFxEventBus.OnLoaded();
+            openFxManager.LoadOpenFx();
         }
 
         [Step(8)]
@@ -137,14 +146,14 @@ namespace AutumnBox.GUI.Util.Loader
         [Step(9)]
         private void RunDeviceListener()
         {
-            ConnectedDevicesListener.Instance.Work();
+            devicesManager.Initialize();
         }
 
-        [Step(10)]
-        private void FetchRemoteData()
-        {
-            _ = new RemoteInteractivator().DoInteractivate();
-        }
+        //[Step(10)]
+        //private void FetchRemoteData()
+        //{
+        //    _ = new RemoteInteractivator().DoInteractivate();
+        //}
 #pragma warning restore IDE0051 // 删除未使用的私有成员
     }
 }

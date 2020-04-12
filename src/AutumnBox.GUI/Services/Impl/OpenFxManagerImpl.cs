@@ -11,13 +11,13 @@ using System.Linq;
 
 namespace AutumnBox.GUI.Services.Impl
 {
-    class OpenFxImpl : IOpenFxManager
+    class OpenFxManagerImpl : IOpenFxManager
     {
         public IExtensionTask[] RunningTasks => OpenFx.Lake.Get<IExtensionTaskManager>().RunningTasks.ToArray();
 
         public IExtensionWrapper[] ExtensionWrappers => OpenFx.Lake.Get<ILibsManager>().Wrappers().ToArray();
 
-        private ILogger logger = LoggerFactory.Auto(nameof(OpenFxImpl));
+        private ILogger logger = LoggerFactory.Auto(nameof(OpenFxManagerImpl));
         private readonly Queue<Action> handlers = new Queue<Action>();
         private bool isLoaded = false;
         public void LoadOpenFx()

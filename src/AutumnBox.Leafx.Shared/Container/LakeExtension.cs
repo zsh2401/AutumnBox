@@ -13,7 +13,6 @@
 *
 * ==============================================================================
 */
-using AutumnBox.Leafx.Container;
 using AutumnBox.Leafx.ObjectManagement;
 using AutumnBox.Logging;
 using System;
@@ -23,7 +22,7 @@ namespace AutumnBox.Leafx.Container
     /// <summary>
     /// Lake的拓展函数
     /// </summary>
-    public static class Lake
+    public static class LakeExtension
     {
         /// <summary>
         /// 安全获取函数
@@ -89,7 +88,7 @@ namespace AutumnBox.Leafx.Container
             }
             catch (Exception e)
             {
-                SLogger.Warn(nameof(Lake), "Can not get component", e);
+                SLogger.Warn(nameof(LakeExtension), "Can not get component", e);
                 value = default;
                 return false;
             }
@@ -110,7 +109,7 @@ namespace AutumnBox.Leafx.Container
             }
             catch (Exception e)
             {
-                SLogger.Warn(nameof(Lake), "Can not get component", e);
+                SLogger.Warn(nameof(LakeExtension), "Can not get component", e);
                 value = default;
                 return false;
             }
@@ -131,7 +130,7 @@ namespace AutumnBox.Leafx.Container
             }
             catch (Exception e)
             {
-                SLogger.Warn(nameof(Lake), "Can not get component", e);
+                SLogger.Warn(nameof(LakeExtension), "Can not get component", e);
                 value = default;
                 return false;
             }

@@ -3,7 +3,6 @@
 ** date:  2018/9/10 19:33:53 (UTC +8:00)
 ** desc： ...
 *************************************************/
-using AutumnBox.GUI.Util.Debugging;
 using AutumnBox.GUI.View.Windows;
 using AutumnBox.Logging;
 using System;

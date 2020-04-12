@@ -2,7 +2,9 @@
 using AutumnBox.Basic.Device;
 using AutumnBox.Basic.Device.ManagementV2.OS;
 using AutumnBox.GUI.MVVM;
+using AutumnBox.GUI.Services;
 using AutumnBox.GUI.Util.Bus;
+using AutumnBox.Leafx.ObjectManagement;
 using AutumnBox.Logging;
 using System;
 using System.Collections.Generic;
@@ -272,6 +274,10 @@ namespace AutumnBox.GUI.ViewModel
         private IDevice _dev;
 
         private uint refreshCount = 0;
+
+        [AutoInject]
+        private readonly IAdbDevicesManager devicesManager;
+
         public VMDeviceDash()
         {
             Task.Run(() =>
@@ -282,16 +288,15 @@ namespace AutumnBox.GUI.ViewModel
                     Thread.Sleep(REFRESH_INTERVAL);
                 }
             });
-            DeviceSelectionObserver.Instance.SelectedDevice += (s, e) => Reset();
-            DeviceSelectionObserver.Instance.SelectedNoDevice += (s, e) => Reset();
+            devicesManager.DeviceSelectionChanged += (s, e) => Reset();
         }
         private void Refresh()
         {
             if (refreshCount > uint.MaxValue - 10) refreshCount = 0;
             refreshCount++;
-            if (DeviceSelectionObserver.Instance.IsSelectedDevice)
+            if (devicesManager.SelectedDevice != null)
             {
-                Device = DeviceSelectionObserver.Instance.CurrentDevice;
+                Device = devicesManager.SelectedDevice;
                 try { RefreshStateString(); } catch (Exception e) { SLogger<VMDeviceDash>.Warn("error", e); }
                 try { RefreshCpu(); } catch (Exception e) { SLogger<VMDeviceDash>.Warn("error", e); }
                 try { RefreshRam(); } catch (Exception e) { SLogger<VMDeviceDash>.Warn("error", e); }

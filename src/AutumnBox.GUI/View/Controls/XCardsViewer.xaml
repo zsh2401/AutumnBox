@@ -9,7 +9,7 @@
              Width="300"
              d:DesignHeight="450" d:DesignWidth="300">
     <UserControl.DataContext>
-        <viewmodel:VMPanelList/>
+        <viewmodel:VMLeafCards/>
     </UserControl.DataContext>
 
     <ItemsControl ItemsSource="{Binding Views}">

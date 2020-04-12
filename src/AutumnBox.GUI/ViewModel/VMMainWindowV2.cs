@@ -1,14 +1,17 @@
 ﻿using AutumnBox.GUI.MVVM;
+using AutumnBox.GUI.Services;
 using AutumnBox.GUI.Util;
 using AutumnBox.GUI.Util.Bus;
-using AutumnBox.GUI.Util.I18N;
+using AutumnBox.Leafx.ObjectManagement;
 using AutumnBox.Logging;
-using System.Windows;
 
 namespace AutumnBox.GUI.ViewModel
 {
     class VMMainWindowV2 : ViewModelBase
     {
+        [AutoInject]
+        private readonly ILanguageManager languageManager;
+
 
         public string Title
         {
@@ -29,16 +32,16 @@ namespace AutumnBox.GUI.ViewModel
         {
             base.RaisePropertyChangedOnDispatcher = true;
             InitTitle();
-            LanguageManager.Instance.LanguageChanged += (s, e) =>
+            languageManager.LanguageChanged += (s, e) =>
             {
                 InitTitle();
             };
-            AppLoader.Instance.Loaded += (s, e) =>
-            {
-                SLogger<VMMainWindowV2>.Info("switching");
-                MainWindowBus.SwitchToMainGrid();
-                SLogger<VMMainWindowV2>.Info("switched");
-            };
+            //AppLoader.Instance.Loaded += (s, e) =>
+            //{
+            //    SLogger<VMMainWindowV2>.Info("switching");
+            //    MainWindowBus.SwitchToMainGrid();
+            //    SLogger<VMMainWindowV2>.Info("switched");
+            //};
         }
 
         private void InitTitle()
@@ -50,10 +53,6 @@ namespace AutumnBox.GUI.ViewModel
 #else
             Title = $"{App.Current.Resources["AppName"]}-{Self.Version.ToString(3)}-{App.Current.Resources["VersionTypeBeta"]}";
 #endif
-            //if (Self.HaveAdminPermission)
-            //{
-            //    Title += " " + App.Current.Resources["TitleSuffixAdmin"];
-            //}
         }
     }
 }

@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Windows.Controls;
+using AutumnBox.GUI.Services;
 using AutumnBox.GUI.Util.Bus;
-using static AutumnBox.GUI.Util.Bus.DialogManager;
 
 namespace AutumnBox.GUI.View.LeafContent
 {
     /// <summary>
     /// YNView.xaml 的交互逻辑
     /// </summary>
-    public partial class YNView : UserControl,IDialog
+    public partial class YNView : UserControl, ISubWindowDialog
     {
-        public YNView(string content,string btnYes,string btnNo)
+        public YNView(string content, string btnYes, string btnNo)
         {
             InitializeComponent();
             TBContent.Text = content ?? throw new ArgumentNullException(nameof(content));
@@ -18,18 +18,18 @@ namespace AutumnBox.GUI.View.LeafContent
             if (btnNo != null) BtnNo.Content = btnNo;
         }
 
-        public object ViewContent => this;
+        public object View => this;
 
-        public event EventHandler<DialogClosedEventArgs> Closed;
+        public event EventHandler<SubWindowFinishedEventArgs> Finished;
 
         private void BtnNo_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            Closed?.Invoke(this, new DialogClosedEventArgs(false));
+            Finished?.Invoke(this, new SubWindowFinishedEventArgs(false));
         }
 
         private void BtnYes_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            Closed?.Invoke(this, new DialogClosedEventArgs(true));
+            Finished?.Invoke(this, new SubWindowFinishedEventArgs(true));
         }
     }
 }

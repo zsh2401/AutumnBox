@@ -8,6 +8,8 @@ using AutumnBox.Leafx.Container;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
+using AutumnBox.Leafx.ObjectManagement;
+using AutumnBox.GUI.Services;
 
 namespace AutumnBox.GUI.ViewModel
 {
@@ -63,18 +65,20 @@ namespace AutumnBox.GUI.ViewModel
         }
         private int _countOfTaskRunning;
 
+        [AutoInject]
         private readonly ITaskManager taskManager;
+
+        private readonly IAdbDevicesManager devicesManager;
 
         public VMBottomBar()
         {
             Port = Basic.ManagedAdb.Adb.Server.Port;
-            ConnectedDevicesListener.Instance.DevicesChanged += (s, e) =>
+            devicesManager.ConnectedDevicesChanged += (s, e) =>
             {
                 CountOfDevices = e.Devices?.Count() ?? 0;
             };
             _isAdmin = Self.HaveAdminPermission;
             GetAdbVersion();
-            taskManager = LakeProvider.Lake.Get<ITaskManager>();
             Task.Run(() =>
             {
                 while (true)

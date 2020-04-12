@@ -14,15 +14,14 @@
 * ==============================================================================
 */
 using AutumnBox.GUI.View.Controls;
-using AutumnBox.GUI.View.Panel;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Windows.Controls;
 using System.Linq;
 using AutumnBox.GUI.MVVM;
+using System;
 
 namespace AutumnBox.GUI.Util.Bus
 {
+    [Obsolete("Use service to instead", true)]
     internal class PanelsManager : NotificationObject
     {
         public ObservableCollection<ViewContainer> Views

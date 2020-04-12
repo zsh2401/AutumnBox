@@ -66,7 +66,7 @@ namespace AutumnBox.OpenFramework.Extension.Leaf
         }
         internal static void InjectProperties(this LeafExtensionBase leaf, params ILake[] sources)
         {
-            DependeciesInjector.Inject(leaf, sources);
+            DependenciesInjector.Inject(leaf, sources);
         }
         internal static MethodInfo FindEntryPoint(this LeafExtensionBase leaf)
         {

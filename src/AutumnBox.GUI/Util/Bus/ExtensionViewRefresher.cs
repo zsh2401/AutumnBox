@@ -2,6 +2,7 @@
 
 namespace AutumnBox.GUI.Util.Bus
 {
+    [Obsolete("Use service to instead", true)]
     class ExtensionViewRefresher
     {
         public event EventHandler Refreshing;

@@ -8,6 +8,7 @@ namespace AutumnBox.GUI.Services
     interface IAdbDevicesManager
     {
         IDevice SelectedDevice { get; set; }
+        void Initialize();
         IEnumerable<IDevice> ConnectedDevices { get; }
         event DevicesChangedHandler ConnectedDevicesChanged;
         event EventHandler DeviceSelectionChanged;

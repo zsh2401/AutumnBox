@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Windows.Controls;
+using AutumnBox.GUI.Services;
 using AutumnBox.GUI.Util.Bus;
-using static AutumnBox.GUI.Util.Bus.DialogManager;
 
 namespace AutumnBox.GUI.View.LeafContent
 {
     /// <summary>
     /// MessageView.xaml 的交互逻辑
     /// </summary>
-    partial class MessageView : UserControl, IDialog
+    partial class MessageView : UserControl, ISubWindowDialog
     {
         public MessageView(string message)
         {
@@ -16,13 +16,13 @@ namespace AutumnBox.GUI.View.LeafContent
             TBContent.Text = message;
         }
 
-        public object ViewContent => this;
+        public object View => this;
 
-        public event EventHandler<DialogClosedEventArgs> Closed;
+        public event EventHandler<SubWindowFinishedEventArgs> Finished;
 
         private void Button_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            Closed?.Invoke(this,new DialogClosedEventArgs());
+            Finished?.Invoke(this, new SubWindowFinishedEventArgs(null));
         }
     }
 }

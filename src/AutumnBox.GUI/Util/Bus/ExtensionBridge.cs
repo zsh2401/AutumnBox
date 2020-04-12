@@ -5,6 +5,7 @@ using AutumnBox.Leafx.Container;
 
 namespace AutumnBox.GUI.Util.Bus
 {
+    [Obsolete("Use service to instead",true)]
     static class ExtensionBridge
     {
         public static void Start(string className)

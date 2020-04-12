@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.ObjectModel;
 
 namespace AutumnBox.GUI.Services
 {
     interface ILeafCardManager
     {
+        ObservableCollection<object> Views { get; }
+
         void Add(object view, int level);
         void Remove(object view);
     }

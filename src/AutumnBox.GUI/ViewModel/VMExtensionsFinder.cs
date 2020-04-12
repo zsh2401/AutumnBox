@@ -18,7 +18,7 @@ using AutumnBox.Leafx.ObjectManagement;
 
 namespace AutumnBox.GUI.ViewModel
 {
-    class VMExtensionsNoCategory : ViewModelBase
+    class VMExtensionsFinder : ViewModelBase
     {
         public IEnumerable<ExtensionWrapperDock> Docks
         {
@@ -63,17 +63,34 @@ namespace AutumnBox.GUI.ViewModel
         [AutoInject]
         private ILanguageManager LanguageManager { get; set; }
 
-        public VMExtensionsNoCategory()
+        [AutoInject]
+        private readonly IAdbDevicesManager adbDevicesManager;
+
+        [AutoInject]
+        private readonly IOpenFxManager openFxManager;
+
+        [AutoInject]
+        private readonly IMessageBus messageBus;
+
+        [AutoInject]
+        private readonly INotificationManager notificationManager;
+
+        public VMExtensionsFinder()
         {
             InitCommand();
             RaisePropertyChangedOnDispatcher = true;
-            OpenFxEventBus.AfterOpenFxLoaded(() =>
+            openFxManager.WakeIfLoaded(() =>
             {
                 Load();
-                MainWindowBus.ExtensionListRefreshing += (s, e) => Load();
+                messageBus.MessageReceived += (s, e) =>
+                {
+                    if (e.MessageType == Messages.REFRESH_EXTENSIONS_VIEW)
+                    {
+                        Load();
+                    }
+                };
                 LanguageManager.LanguageChanged += (s, e) => Load();
-                DeviceSelectionObserver.Instance.SelectedDevice += (s, e) => Order();
-                DeviceSelectionObserver.Instance.SelectedNoDevice += (s, e) => Order();
+                adbDevicesManager.DeviceSelectionChanged += (s, e) => Order();
             });
         }
 
@@ -85,7 +102,7 @@ namespace AutumnBox.GUI.ViewModel
                     .Hide()
                     .Dev(Settings.Default.DeveloperMode)
                     .ToDocks();
-            SLogger<VMExtensionsNoCategory>.Info(Docks.Count());
+            SLogger<VMExtensionsFinder>.Info(Docks.Count());
             Order();
         }
 
@@ -96,6 +113,7 @@ namespace AutumnBox.GUI.ViewModel
                     orderby dock.Execute.CanExecuteProp descending
                     select dock;
         }
+
         private void InitCommand()
         {
             ClickItem = new FlexiableCommand((p) =>
@@ -118,8 +136,8 @@ namespace AutumnBox.GUI.ViewModel
         {
             if (extensionWrapper == null) return;
             bool isNMExt = extensionWrapper.Info.RequiredDeviceStates == AutumnBoxExtension.NoMatter;
-            bool isSelectingDevice = DeviceSelectionObserver.Instance.IsSelectedDevice;
-            IDevice crtDev = DeviceSelectionObserver.Instance.CurrentDevice;
+            bool isSelectingDevice = adbDevicesManager.SelectedDevice != null;
+            IDevice crtDev = adbDevicesManager.SelectedDevice;
             DeviceState targetStates = extensionWrapper.Info.RequiredDeviceStates;
 
             bool deviceConditionAllReady = isSelectingDevice && targetStates.HasFlag(crtDev.State);
@@ -131,7 +149,7 @@ namespace AutumnBox.GUI.ViewModel
                 OpenFx.Lake.Get<IExtensionTaskManager>().Allocate(extensionWrapper.ExtensionType).Start();
             }
             else//不符合执行条件,警告
-                MainWindowBus.Warning("IS NOT TARGET STATE ERROR");
+                notificationManager.SendWarn("IS NOT TARGET STATE ERROR");
         }
     }
 }

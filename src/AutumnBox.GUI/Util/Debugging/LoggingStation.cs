@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Threading;
 
 namespace AutumnBox.GUI.Util.Debugging
@@ -76,28 +77,34 @@ namespace AutumnBox.GUI.Util.Debugging
         {
             while (true)
             {
-                while (buffer.Count > 0)
+                while (buffer.Any())
                 {
                     Next();
                 }
-                Thread.Sleep(500);
+                Thread.Sleep(100);
             }
         }
         private void Next()
         {
-            try {
+            try
+            {
                 var log = buffer.Dequeue();
                 if (log.Level.ToLower() == "debug" && !Settings.Default.DeveloperMode)
                     return;
                 try { Logging?.Invoke(this, new LogEventArgs(log)); } catch { }
                 string format = log.Formated;
+#if DEBUG
+                Trace.WriteLine(format);
+#else
                 Console.WriteLine(format);
+#endif
                 sw.WriteLine(format);
                 logged.Add(log);
-            } catch { }
+            }
+            catch { }
         }
 
-        #region IDisposable Support
+#region IDisposable Support
         private bool disposedValue = false; // 要检测冗余调用
 
         protected virtual void Dispose(bool disposing)
@@ -132,6 +139,6 @@ namespace AutumnBox.GUI.Util.Debugging
             // TODO: 如果在以上内容中替代了终结器，则取消注释以下行。
             // GC.SuppressFinalize(this);
         }
-        #endregion
+#endregion
     }
 }

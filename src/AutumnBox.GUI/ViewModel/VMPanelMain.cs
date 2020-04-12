@@ -4,6 +4,8 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.GUI.MVVM;
+using AutumnBox.GUI.Services;
+using AutumnBox.Leafx.ObjectManagement;
 using System;
 
 namespace AutumnBox.GUI.ViewModel
@@ -21,21 +23,17 @@ namespace AutumnBox.GUI.ViewModel
         }
         private int tabSelectedIndex;
 
+        [AutoInject]
+        private readonly IAdbDevicesManager adbDevicesManager;
+
         public VMPanelMain()
         {
-            Util.Bus.DeviceSelectionObserver.Instance.SelectedNoDevice += NoDevice;
-            Util.Bus.DeviceSelectionObserver.Instance.SelectedDevice += Instance_SelectedDevice;
+            adbDevicesManager.DeviceSelectionChanged += Instance_SelectedDevice;
         }
 
         private void Instance_SelectedDevice(object sender, EventArgs e)
         {
             TabSelectedIndex = 1;
-        }
-
-        private void NoDevice(object sender, EventArgs e)
-        {
-            //if(TabSelectedIndex )
-            //TabSelectedIndex = 0;
         }
     }
 }

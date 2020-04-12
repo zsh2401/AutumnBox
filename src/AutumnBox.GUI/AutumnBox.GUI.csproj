@@ -170,18 +170,22 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Resources\Languages\Lang.cs" />
+    <Compile Include="Services\IAppLifecycleManager.cs" />
     <Compile Include="Services\ILeafCardManager.cs" />
     <Compile Include="Services\Impl\AdbDevicesManagerImpl.cs" />
-    <Compile Include="Services\IAppLifeCycleLoader.cs" />
+    <Compile Include="Services\Impl\AppLifecycleManager.cs" />
     <Compile Include="Services\Impl\LoggingManager.cs" />
     <Compile Include="Services\Impl\LoggingObject.cs" />
     <Compile Include="Services\Impl\MessageBusImpl.cs" />
-    <Compile Include="Services\Impl\OpenFxImpl.cs" />
+    <Compile Include="Services\Impl\OpenFxManagerImpl.cs" />
     <Compile Include="Services\Impl\OperatingSystem.cs" />
+    <Compile Include="Services\Impl\SubWindowDialogManagerImpl.cs" />
     <Compile Include="Services\Impl\WindowManager.cs" />
     <Compile Include="Services\IOperatingSystemService.cs" />
-    <Compile Include="Services\ISelfInfoService.cs" />
-    <Compile Include="Services\Service.cs" />
+    <Compile Include="Services\ISubWindowDialog.cs" />
+    <Compile Include="Services\ISubWindowDialogManager.cs" />
+    <Compile Include="Services\Messages.cs" />
+    <Compile Include="Services\Component.cs" />
     <Compile Include="Util\AppUnloader.cs" />
     <Compile Include="Util\Bus\ConnectedDevicesListener.cs" />
     <Compile Include="Util\Bus\DeviceSelectionObserver.cs" />
@@ -214,7 +218,6 @@
     <Compile Include="Util\Loader\StepAttribute.cs" />
     <Compile Include="Util\Loader\StepFinishedEventArgs.cs" />
     <Compile Include="Services\AutumnBoxGuiBaseApiImpl.cs" />
-    <Compile Include="Services\Impl\OpenFx\OpenFrameworkManager.cs" />
     <Compile Include="Services\Impl\Acrylic\AcrylicHelper.cs" />
     <Compile Include="Services\Impl\Acrylic\OSVersions.cs" />
     <Compile Include="Services\Impl\Acrylic\SystemInfo.cs" />
@@ -237,14 +240,14 @@
     <Compile Include="Util\UI\Converters\VisibleIf.cs" />
     <Compile Include="Util\UI\Converters\VisibleIfNot.cs" />
     <Compile Include="Services\Impl\OS\HelpButtonHelper.cs" />
-    <Compile Include="Services\Impl\Sentences.cs" />
+    <Compile Include="Services\Impl\SentenceService.cs" />
     <Compile Include="Util\VersionInfos.cs" />
     <Compile Include="ViewModel\VMAbout.cs" />
     <Compile Include="ViewModel\VMBottomBar.cs" />
     <Compile Include="ViewModel\VMDeviceDash.cs" />
     <Compile Include="ViewModel\VMDeviceBar.cs" />
     <Compile Include="ViewModel\VMDeviceSelector.cs" />
-    <Compile Include="ViewModel\VMExtensionsNoCategory.cs" />
+    <Compile Include="ViewModel\VMExtensionsFinder.cs" />
     <Compile Include="ViewModel\VMGuide.cs" />
     <Compile Include="ViewModel\VMHome.cs" />
     <Compile Include="ViewModel\VMInputWindow.cs" />
@@ -255,7 +258,7 @@
     <Compile Include="ViewModel\VMMainWindow.cs" />
     <Compile Include="ViewModel\VMMainWindowV2.cs" />
     <Compile Include="ViewModel\VMOpenSource.cs" />
-    <Compile Include="ViewModel\VMPanelList.cs" />
+    <Compile Include="ViewModel\VMLeafCards.cs" />
     <Compile Include="ViewModel\VMPanelMain.cs" />
     <Compile Include="ViewModel\VMSettingsDialog.cs" />
     <Compile Include="ViewModel\VMUpdateLogs.cs" />
@@ -669,7 +672,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\Drawable\MenuBar\" />
-    <Folder Include="Util\OpenFxManagement\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">

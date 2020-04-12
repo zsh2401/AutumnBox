@@ -1,13 +1,11 @@
 ﻿using HandyControl.Controls;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace AutumnBox.GUI.Util.Bus
 {
+    [Obsolete("Use service to instead", true)]
     public static class DialogManager
     {
         private const int STATE_CHECK_INTERVAL = 200;

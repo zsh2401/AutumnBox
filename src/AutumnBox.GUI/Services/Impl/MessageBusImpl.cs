@@ -12,7 +12,7 @@ namespace AutumnBox.GUI.Services.Impl
             try
             {
                 MessageReceived?.Invoke(this,
-                    new MessageReceivedEventArgs(value));
+                    new MessageReceivedEventArgs(msg_type, value));
             }
             catch (Exception e)
             {

@@ -14,7 +14,7 @@ namespace AutumnBox.GUI.MVVM
         {
             if (InjectProperties)
             {
-                DependeciesInjector.Inject(this, App.Current.Lake);
+                DependenciesInjector.Inject(this, App.Current.Lake);
             }
         }
     }

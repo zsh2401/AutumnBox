@@ -4,6 +4,8 @@ using AutumnBox.GUI.Util.Bus;
 using AutumnBox.OpenFramework.Management;
 using AutumnBox.Leafx.Container;
 using System.Collections.Generic;
+using AutumnBox.GUI.Services;
+using AutumnBox.Leafx.ObjectManagement;
 
 namespace AutumnBox.GUI.ViewModel
 {
@@ -40,9 +42,12 @@ namespace AutumnBox.GUI.ViewModel
         }
         private FlexiableCommand _showInformation;
 
+        [AutoInject]
+        private readonly IOpenFxManager openFxManager;
+
         public VMLibsView()
         {
-            OpenFxEventBus.AfterOpenFxLoaded(() =>
+            openFxManager.WakeIfLoaded(() =>
             {
                 Load();
             });

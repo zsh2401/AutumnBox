@@ -22,5 +22,6 @@ namespace AutumnBox.Leafx.Container.Support
     {
         public bool SingletonMode { get; set; } = true;
         public string Id { get; set; } = null;
+        public Type Type { get; set; } = null;
     }
 }

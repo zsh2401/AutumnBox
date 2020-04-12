@@ -47,7 +47,7 @@ namespace AutumnBox.Leafx.ObjectManagement
                 Sources,
                 extraArgs ?? new Dictionary<string, object>(), constructor.GetParameters());
             var instance =  constructor.Invoke(args);
-            new DependeciesInjector(instance, Sources.ToArray()).Inject();
+            new DependenciesInjector(instance, Sources.ToArray()).Inject();
             return instance;
         }
     }

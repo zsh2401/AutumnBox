@@ -3,7 +3,7 @@ using System;
 
 namespace AutumnBox.GUI.Util.UI
 {
-    sealed class Sentences : ISentenceService
+    sealed class SentenceService : ISentenceService
     {
         private readonly Random ran = new Random();
         public string Next()

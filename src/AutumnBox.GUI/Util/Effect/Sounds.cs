@@ -4,10 +4,12 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.GUI.Properties;
+using System;
 using System.Media;
 
 namespace AutumnBox.GUI.Util.Effect
 {
+    [Obsolete("Use service to instead", true)]
     static class Sounds
     {
         public readonly static SoundPlayer OK;

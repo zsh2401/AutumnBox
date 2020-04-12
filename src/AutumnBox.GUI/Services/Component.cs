@@ -5,7 +5,7 @@ namespace AutumnBox.GUI.Services
     /// <summary>
     /// 与服务相关的一些帮助
     /// </summary>
-    public static class Service
+    public static class Component
     {
         /// <summary>
         /// 获取服务,不推荐使用此方法
@@ -15,6 +15,10 @@ namespace AutumnBox.GUI.Services
         public static T Get<T>()
         {
             return App.Current.Lake.Get<T>();
+        }
+        public static T GetComponent<T>(this object _)
+        {
+            return Get<T>();
         }
     }
 }

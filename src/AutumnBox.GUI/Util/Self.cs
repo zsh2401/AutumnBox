@@ -13,6 +13,7 @@ using System.Security.Principal;
 
 namespace AutumnBox.GUI.Util
 {
+    [Obsolete]
     static class Self
     {
         /// <summary>

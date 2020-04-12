@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.GUI.Services.Impl
 {
+    [Component(Type = typeof(IAdbDevicesManager))]
     sealed class AdbDevicesManagerImpl : IAdbDevicesManager
     {
         public IDevice SelectedDevice
@@ -41,7 +42,6 @@ namespace AutumnBox.GUI.Services.Impl
 
         public AdbDevicesManagerImpl()
         {
-            devicesMonitor.Start();
             devicesMonitor.DevicesChanged += DevicesMonitor_DevicesChanged;
         }
 
@@ -52,6 +52,15 @@ namespace AutumnBox.GUI.Services.Impl
             {
                 SelectedDevice = e.Devices.First();
             }
+            else if (!e.Devices.Any())
+            {
+                SelectedDevice = null;
+            }
+        }
+
+        public void Initialize()
+        {
+            devicesMonitor.Start();
         }
     }
 }

@@ -7,6 +7,7 @@ using System;
 
 namespace AutumnBox.GUI.Util.Bus
 {
+    [Obsolete("Use service to instead", true)]
     public static class MainWindowBus
     {
         public const string TOKEN_PANEL_MAIN = "main";

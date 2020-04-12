@@ -7,7 +7,7 @@ namespace AutumnBox.Leafx.Container
     /// <summary>
     /// LakeSources的帮助类
     /// </summary>
-    public static class LakeSources
+    public static class LakeSourcesExtension
     {
         /// <summary>
         /// 根据ID获取

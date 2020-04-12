@@ -10,9 +10,15 @@ namespace AutumnBox.Leafx.ObjectManagement
     /// <summary>
     /// 属性注入器
     /// </summary>
-    public sealed class DependeciesInjector
+    public sealed class DependenciesInjector
     {
+        /// <summary>
+        /// 即将被注入的实例
+        /// </summary>
         private readonly object instance;
+        /// <summary>
+        /// 湖
+        /// </summary>
         private readonly ILake[] sources;
 
         /// <summary>
@@ -20,7 +26,7 @@ namespace AutumnBox.Leafx.ObjectManagement
         /// </summary>
         /// <param name="instance"></param>
         /// <param name="sources"></param>
-        public DependeciesInjector(object instance, params ILake[] sources)
+        public DependenciesInjector(object instance, params ILake[] sources)
         {
             this.instance = instance ?? throw new System.ArgumentNullException(nameof(instance));
             this.sources = sources ?? throw new System.ArgumentNullException(nameof(sources));
@@ -42,16 +48,17 @@ namespace AutumnBox.Leafx.ObjectManagement
                     }
                     else
                     {
-                        SLogger<DependeciesInjector>.Info($"Can not found component: {(injectable.Attr.Id ?? injectable.ValueType?.Name)}. Injecting of {instance.GetType().FullName}.{injectable.Name} is skipped");
+                        SLogger<DependenciesInjector>.Info($"Can not found component: {(injectable.Attr.Id ?? injectable.ValueType?.Name)}. Injecting of {instance.GetType().FullName}.{injectable.Name} is skipped");
                     }
                 }
                 catch (Exception e)
                 {
-                    SLogger<DependeciesInjector>
+                    SLogger<DependenciesInjector>
                         .Warn($"Can't inject proerty:{instance.GetType().FullName}.{injectable.Name}", e);
                 }
             }
         }
+
         /// <summary>
         /// 获取值
         /// </summary>
@@ -84,41 +91,7 @@ namespace AutumnBox.Leafx.ObjectManagement
         /// <param name="sources"></param>
         public static void Inject(object instance, params ILake[] sources)
         {
-            new DependeciesInjector(instance, sources).Inject();
-        }
-        private class InjectableInfo
-        {
-            public Type ValueType { get; }
-            public string Name { get; }
-            public AutoInjectAttribute Attr { get; }
-            private readonly Action<object, object> setter;
-            public InjectableInfo(PropertyInfo property)
-            {
-                if (property is null)
-                {
-                    throw new ArgumentNullException(nameof(property));
-                }
-
-                ValueType = property.PropertyType;
-                setter = (instance, v) => property.GetSetMethod(true).Invoke(instance, new object[] { v });
-                Name = property.Name;
-                Attr = property.GetCustomAttribute<AutoInjectAttribute>();
-            }
-            public InjectableInfo(FieldInfo field)
-            {
-                if (field is null)
-                {
-                    throw new ArgumentNullException(nameof(field));
-                }
-                ValueType = field.FieldType;
-                setter = (instance, v) => field.SetValue(instance, v);
-                Name = field.Name;
-                Attr = field.GetCustomAttribute<AutoInjectAttribute>();
-            }
-            public void Set(object instance, object value)
-            {
-                setter(instance, value);
-            }
+            new DependenciesInjector(instance, sources).Inject();
         }
 
         /// <summary>
@@ -128,7 +101,6 @@ namespace AutumnBox.Leafx.ObjectManagement
         /// <returns></returns>
         private IEnumerable<InjectableInfo> GetInjectables(Type t)
         {
-
             var injectableProperties = from property in t.GetProperties(BINDING_FLAGS)
                                        where property.GetCustomAttribute<AutoInjectAttribute>() != null
                                        where property.GetSetMethod(true) != null
@@ -146,6 +118,69 @@ namespace AutumnBox.Leafx.ObjectManagement
             else
             {
                 return result.Concat(GetInjectables(t.BaseType));
+            }
+        }
+
+        /// <summary>
+        /// 可被注入目标的信息
+        /// </summary>
+        private class InjectableInfo
+        {
+            /// <summary>
+            /// 期望被注入的类型
+            /// </summary>
+            public Type ValueType { get; }
+            /// <summary>
+            /// 名称
+            /// </summary>
+            public string Name { get; }
+            /// <summary>
+            /// 特性
+            /// </summary>
+            public AutoInjectAttribute Attr { get; }
+            /// <summary>
+            /// 设置器
+            /// </summary>
+            private readonly Action<object, object> setter;
+            /// <summary>
+            /// 为属性构建可注入目标信息
+            /// </summary>
+            /// <param name="property"></param>
+            public InjectableInfo(PropertyInfo property)
+            {
+                if (property is null)
+                {
+                    throw new ArgumentNullException(nameof(property));
+                }
+
+                ValueType = property.PropertyType;
+                setter = (instance, v) => property.GetSetMethod(true).Invoke(instance, new object[] { v });
+                Name = property.Name;
+                Attr = property.GetCustomAttribute<AutoInjectAttribute>();
+            }
+            /// <summary>
+            /// 为字段构建可注入目标信息
+            /// </summary>
+            /// <param name="field"></param>
+            public InjectableInfo(FieldInfo field)
+            {
+                if (field is null)
+                {
+                    throw new ArgumentNullException(nameof(field));
+                }
+                ValueType = field.FieldType;
+                setter = (instance, v) => field.SetValue(instance, v);
+                Name = field.Name;
+                Attr = field.GetCustomAttribute<AutoInjectAttribute>();
+            }
+            /// <summary>
+            /// 进行设置(注入操作)
+            /// </summary>
+            /// <param name="instance"></param>
+            /// <param name="value"></param>
+            public void Set(object instance, object value)
+            {
+                setter(instance, value);
             }
         }
     }

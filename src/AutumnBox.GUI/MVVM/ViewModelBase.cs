@@ -8,6 +8,7 @@ using AutumnBox.GUI.Services;
 using AutumnBox.GUI.Util.Bus;
 using AutumnBox.GUI.Util.UI;
 using AutumnBox.Leafx;
+using AutumnBox.Leafx.Container;
 using AutumnBox.Leafx.ObjectManagement;
 using AutumnBox.Logging;
 using System;
@@ -148,13 +149,15 @@ namespace AutumnBox.GUI.MVVM
                 SLogger<ViewModelBase>.Warn($"can not open url {para}", e);
             }
         }
+        [AutoInject]
+        private readonly IWindowManager windowManager;
         private static void _ShowWindowDialog(object para)
         {
-            WinM.X(para.ToString());
+            App.Current.Lake.Get<IWindowManager>().ShowDialog(para.ToString());
         }
         private static void _ShowWindow(object para)
         {
-            WinM.D(para.ToString());
+            App.Current.Lake.Get<IWindowManager>().Show(para.ToString());
         }
     }
 }

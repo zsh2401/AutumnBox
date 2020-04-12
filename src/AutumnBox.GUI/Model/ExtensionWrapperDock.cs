@@ -16,6 +16,8 @@ using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Media;
+using AutumnBox.GUI.Services;
+using AutumnBox.Leafx.ObjectManagement;
 
 namespace AutumnBox.GUI.Model
 {
@@ -64,6 +66,12 @@ namespace AutumnBox.GUI.Model
         }
         private FlexiableCommand _execute;
 
+        [AutoInject]
+        private readonly IAdbDevicesManager devicesManager;
+
+        [AutoInject]
+        private readonly Services.INotificationManager notificationManager;
+
         public ExtensionWrapperDock(IExtensionWrapper wrapper)
         {
             this.Wrapper = wrapper;
@@ -73,24 +81,20 @@ namespace AutumnBox.GUI.Model
             {
                 ExecuteImpl();
             });
-            DeviceSelectionObserver.Instance.SelectedNoDevice += SelectNoDevice;
-            DeviceSelectionObserver.Instance.SelectedDevice += SelectedDevice;
+            devicesManager.DeviceSelectionChanged += SelectedDevice;
         }
 
         private void SelectedDevice(object sender, EventArgs e)
         {
-            //var reqState = Wrapper.Info.RequiredDeviceStates;
-            //var crtState = DeviceSelectionObserver.Instance.CurrentDevice.State;
-            //bool isNM = reqState == AutumnBoxExtension.NoMatter;
-            //bool hasFlag = reqState.HasFlag(crtState);
-            //Execute.CanExecuteProp = isNM || hasFlag;
-            Execute.CanExecuteProp = true;
-        }
-
-        private void SelectNoDevice(object sender, EventArgs e)
-        {
-            bool isNM = Wrapper.Info.RequiredDeviceStates == AutumnBoxExtension.NoMatter;
-            Execute.CanExecuteProp = isNM;
+            if (devicesManager.SelectedDevice == null)
+            {
+                bool isNM = Wrapper.Info.RequiredDeviceStates == AutumnBoxExtension.NoMatter;
+                Execute.CanExecuteProp = isNM;
+            }
+            else
+            {
+                Execute.CanExecuteProp = true;
+            }
         }
 
         private void ExecuteImpl()
@@ -103,12 +107,12 @@ namespace AutumnBox.GUI.Model
         private bool StateCheck()
         {
             var reqState = Wrapper.Info.RequiredDeviceStates;
-            var crtState = DeviceSelectionObserver.Instance.CurrentDevice?.State ?? 0;
+            var crtState = devicesManager.SelectedDevice?.State ?? 0;
             if (reqState == LeafConstants.NoMatter) return true;
             else if (reqState.HasFlag(crtState)) return true;
             else
             {
-                MainWindowBus.Warning(GetTip());
+                notificationManager.SendWarn(GetTip());
                 return false;
             }
         }

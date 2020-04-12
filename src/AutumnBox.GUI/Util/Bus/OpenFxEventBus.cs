@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.GUI.Util.Bus
 {
+    [Obsolete("Use service to instead", true)]
     static class OpenFxEventBus
     {
         private static readonly Stack<Action> fxLoadedHandlers = new Stack<Action>();

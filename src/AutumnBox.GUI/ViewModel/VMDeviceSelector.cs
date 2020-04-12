@@ -15,6 +15,7 @@
 */
 using AutumnBox.Basic.Device;
 using AutumnBox.GUI.MVVM;
+using AutumnBox.GUI.Services;
 using AutumnBox.GUI.Util.Bus;
 using System.Collections.Generic;
 using System.Linq;
@@ -52,9 +53,11 @@ namespace AutumnBox.GUI.ViewModel
         }
         private IDevice _selectedDev;
 
+        private IAdbDevicesManager devicesManager;
+
         public VMDeviceSelector()
         {
-            ConnectedDevicesListener.Instance.DevicesChanged += (s, e) =>
+            devicesManager.ConnectedDevicesChanged += (s, e) =>
             {
                 Devices = e.Devices;
                 if (Devices.Count() >= 1)
@@ -64,9 +67,9 @@ namespace AutumnBox.GUI.ViewModel
         private void SelectionChanged()
         {
             if (SelectedDevice != null)
-                DeviceSelectionObserver.Instance.RaiseSelectDevice(SelectedDevice);
+                devicesManager.SelectedDevice = SelectedDevice;
             else
-                DeviceSelectionObserver.Instance.RaiseSelectNoDevice();
+                devicesManager.SelectedDevice = null;
         }
     }
 }

@@ -16,16 +16,21 @@ using AutumnBox.OpenFramework.Open.LKit;
 using System.Linq;
 using AutumnBox.Leafx.Container;
 using AutumnBox.Leafx;
+using AutumnBox.GUI.Util;
+using AutumnBox.Leafx.ObjectManagement;
 
 namespace AutumnBox.GUI.Services.Impl
 {
     internal class AutumnBoxGuiBaseApiImpl : IBaseApi
     {
+        [AutoInject]
+        private readonly IAdbDevicesManager devicesManager;
+
         public IDevice SelectedDevice
         {
             get
             {
-                return DeviceSelectionObserver.Instance.CurrentDevice;
+                return devicesManager.SelectedDevice;
             }
         }
 
@@ -148,11 +153,14 @@ namespace AutumnBox.GUI.Services.Impl
             loadingWindow = null;
         }
 
+        [AutoInject]
+        private readonly ISoundService soundService;
+
         public void PlayOk()
         {
             if (Settings.Default.NotifyOnFinish)
             {
-                Sounds.OK.Play();
+                soundService.PlayOK();
             }
         }
 
@@ -260,30 +268,35 @@ namespace AutumnBox.GUI.Services.Impl
             }
         }
 
+        [AutoInject]
+        private readonly IMessageBus messageBus;
         public void RefreshExtensionList()
         {
-            ExtensionViewRefresher.Instance.Refresh();
+            messageBus.SendMessage(Messages.REFRESH_EXTENSIONS_VIEW);
         }
-
+        [AutoInject]
+        private readonly ILeafCardManager leafCardManager;
         public void AppendPanel(object view, int priority)
         {
-            PanelsManager.Instance.Views.Add(new PanelsManager.ViewContainer(view, priority));
+            leafCardManager.Add(view, priority);
         }
 
         public void RemovePanel(object view)
         {
-            var target = PanelsManager.Instance.Views.Where((v) => v.View == view).First();
-            PanelsManager.Instance.Views.Remove(target);
+            leafCardManager.Remove(view);
         }
+
+        [AutoInject]
+        private readonly INotificationManager notificationManager;
 
         public void SendNotification(string msg, string title = null, Action clickHandler = null)
         {
-            MainWindowBus.Info(msg);
+            notificationManager.SendInfo(msg);
         }
 
         public void SetWindowBlur(IntPtr hWnd)
         {
-            Service.Get<IAcrylicHelper>().SetWindowBlur(hWnd); ;
+            Component.Get<IAcrylicHelper>().SetWindowBlur(hWnd); ;
         }
     }
 }

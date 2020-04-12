@@ -13,12 +13,14 @@ namespace AutumnBox.GUI.ViewModel
 {
     class VMMainMenu : ViewModelBase
     {
+        [AutoInject]
+        private readonly IMessageBus messageBus;
         public bool DebugMode
         {
             get => Settings.Default.DeveloperMode; set
             {
                 Settings.Default.DeveloperMode = value;
-                MainWindowBus.ReloadExtensionList();
+                messageBus.SendMessage(Messages.REFRESH_EXTENSIONS_VIEW);
                 RaisePropertyChanged();
             }
         }
@@ -44,13 +46,16 @@ namespace AutumnBox.GUI.ViewModel
         [AutoInject]
         private IOpenFxManager OpenFxManager { get; set; }
 
+        [AutoInject]
+        private readonly IOpenFxManager openFxManager;
+
         public VMMainMenu()
         {
-            Restart = new MVVMCommand(p => ExtensionBridge.Start("ERestartApp"));
+            Restart = new MVVMCommand(p => openFxManager.RunExtension("ERestartApp"));
             Exit = new MVVMCommand(p => { App.Current.Shutdown(0); });
             UpdateCheck = new MVVMCommand(P => OpenFxManager.RunExtension("EAutumnBoxUpdateChecker"));
             OpenShell = new MVVMCommand(p => OpenShellMethod(p?.ToString()));
-            InstallExtension = new MVVMCommand(p => ExtensionBridge.Start("EInstallExtension"));
+            InstallExtension = new MVVMCommand(p => openFxManager.RunExtension("EInstallExtension"));
             OpenExtFloder = new MVVMCommand(p => Process.Start(BuildInfo.DEFAULT_EXTENSION_PATH));
         }
         private static void OpenShellMethod(string fileName)

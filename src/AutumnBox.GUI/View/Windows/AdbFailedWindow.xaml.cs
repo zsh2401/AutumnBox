@@ -1,4 +1,6 @@
-﻿using AutumnBox.GUI.Util.UI;
+﻿using AutumnBox.GUI.Services;
+using AutumnBox.GUI.Util.UI;
+using AutumnBox.Leafx.Container;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -27,7 +29,7 @@ namespace AutumnBox.GUI.View.Windows
             tbOutput.Text = message;
             this.Loaded += (s, e) =>
             {
-                HelpButtonHelper.EnableHelpButton(this, () =>
+                App.Current.Lake.Get<IOperatingSystemService>().EnableHelpButton(this, () =>
                 {
                     try
                     {

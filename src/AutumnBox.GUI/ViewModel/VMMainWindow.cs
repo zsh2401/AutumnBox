@@ -4,10 +4,10 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.GUI.MVVM;
+using AutumnBox.GUI.Services;
 using AutumnBox.GUI.Util;
-using AutumnBox.GUI.Util.I18N;
 using AutumnBox.GUI.Util.UI;
-using System;
+using AutumnBox.Leafx.ObjectManagement;
 using System.Windows;
 
 namespace AutumnBox.GUI.ViewModel
@@ -39,16 +39,25 @@ namespace AutumnBox.GUI.ViewModel
         }
         private string _title;
 
+        [AutoInject]
+        private readonly ISentenceService sentenceService;
+
+        [AutoInject]
+        private readonly ILanguageManager languageManager;
+
+        [AutoInject]
+        private readonly IAppLifecycleManager appLifecycleManager;
+
         public VMMainWindow()
         {
             base.RaisePropertyChangedOnDispatcher = true;
-            Sentence = Sentences.Next();
+            Sentence = sentenceService.Next();
             InitTitle();
-            LanguageManager.Instance.LanguageChanged += (s, e) =>
+            languageManager.LanguageChanged += (s, e) =>
             {
                 InitTitle();
             };
-            AppLoader.Instance.Loaded += (s, e) =>
+            appLifecycleManager.AppLoaded += (s, e) =>
             {
                 TranSelectIndex++;
             };

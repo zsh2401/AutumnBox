@@ -8,6 +8,7 @@ using System;
 
 namespace AutumnBox.GUI.Util.Bus
 {
+    [Obsolete("Use service to instead", true)]
     public class DeviceSelectionObserver
     {
         public static readonly DeviceSelectionObserver Instance;

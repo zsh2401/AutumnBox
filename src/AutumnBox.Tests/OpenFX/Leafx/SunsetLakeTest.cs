@@ -1,9 +1,7 @@
-﻿using AutumnBox.OpenFramework.Leafx;
-using AutumnBox.OpenFramework.Leafx.Attributes;
-using AutumnBox.OpenFramework.Leafx.Container;
-using AutumnBox.OpenFramework.Leafx.Container.Internal;
+﻿using AutumnBox.Leafx.Container;
+using AutumnBox.Leafx.Container.Support;
+using AutumnBox.Leafx.ObjectManagement;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 
 namespace AutumnBox.Tests.OpenFX.Leafx
 {

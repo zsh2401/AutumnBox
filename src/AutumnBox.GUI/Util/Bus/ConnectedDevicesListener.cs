@@ -5,10 +5,12 @@
 *************************************************/
 using AutumnBox.Basic.Device;
 using AutumnBox.Basic.MultipleDevices;
+using System;
 using System.Collections.Generic;
 
 namespace AutumnBox.GUI.Util.Bus
 {
+    [Obsolete("Use service to instead", true)]
     class ConnectedDevicesListener
     {
         public static readonly ConnectedDevicesListener Instance;

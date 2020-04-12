@@ -1,6 +1,8 @@
 ﻿using AutumnBox.GUI.Properties;
+using AutumnBox.GUI.Services;
 using AutumnBox.GUI.Util;
 using AutumnBox.GUI.Util.Bus;
+using AutumnBox.Leafx.Container;
 using System;
 using System.Windows;
 using System.Windows.Interop;
@@ -15,17 +17,17 @@ namespace AutumnBox.GUI.View.Windows
         public MainWindowV2()
         {
             InitializeComponent();
-            AppLoader.Instance.Loaded += (s, e) =>
-            {
-                App.Current.Dispatcher.Invoke(() =>
-                {
-                    MenuContainer.Visibility = Visibility.Visible;
-                    if (Settings.Default.IsFirstLaunch)
-                    {
-                        WinM.X("Donate");
-                    }
-                });
-            };
+            App.Current.Lake.Get<IAppLifecycleManager>().AppLoaded += (s, e) =>
+             {
+                 App.Current.Dispatcher.Invoke(() =>
+                 {
+                     MenuContainer.Visibility = Visibility.Visible;
+                     if (Settings.Default.IsFirstLaunch)
+                     {
+                         App.Current.Lake.Get<IWindowManager>().Show("Donate");
+                     }
+                 });
+             };
         }
     }
 }

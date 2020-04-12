@@ -1,8 +1,10 @@
 ﻿using AutumnBox.GUI.MVVM;
+using AutumnBox.GUI.Services;
 using AutumnBox.GUI.Util.Bus;
 using AutumnBox.GUI.Util.UI;
 using AutumnBox.GUI.View.LeafContent;
 using AutumnBox.GUI.View.Windows;
+using AutumnBox.Leafx.ObjectManagement;
 using AutumnBox.Logging;
 using AutumnBox.OpenFramework.Extension.Leaf;
 using AutumnBox.OpenFramework.Open.LKit;
@@ -251,11 +253,14 @@ namespace AutumnBox.GUI.ViewModel
             }
         }
 
+        [AutoInject]
+        private readonly IOperatingSystemService operatingSystemService;
+
         public void EnableHelpBtn(Action callback)
         {
             View.Dispatcher.Invoke(() =>
             {
-                HelpButtonHelper.EnableHelpButton(View, callback);
+                operatingSystemService.EnableHelpButton(View, callback);
             });
         }
 
@@ -331,6 +336,10 @@ namespace AutumnBox.GUI.ViewModel
             View = null;
         }
 
+
+        [AutoInject]
+        private readonly ISubWindowDialogManager subWindowDialogManager;
+
         public void ShowMessage(string message)
         {
             if (message == null)
@@ -342,7 +351,7 @@ namespace AutumnBox.GUI.ViewModel
             App.Current.Dispatcher.Invoke(() =>
             {
                 var view = new MessageView(message);
-                task = DialogManager.Show(Token, new MessageView(message));
+                task = subWindowDialogManager.ShowDialog(Token, new MessageView(message));
             });
             task.Wait();
         }
@@ -358,7 +367,7 @@ namespace AutumnBox.GUI.ViewModel
             App.Current.Dispatcher.Invoke(() =>
             {
                 var view = new ChoiceView(message, btnYes, btnNo, btnCancel);
-                task = DialogManager.Show(Token, view);
+                task = subWindowDialogManager.ShowDialog(Token, view);
             });
             task.Wait();
             return (task.Result as bool?);
@@ -374,7 +383,7 @@ namespace AutumnBox.GUI.ViewModel
             App.Current.Dispatcher.Invoke(() =>
             {
                 var view = new SingleSelectView(hint, options);
-                task = DialogManager.Show(Token, view);
+                task = subWindowDialogManager.ShowDialog(Token, view);
             });
             task.Wait();
             return task.Result;
@@ -428,7 +437,7 @@ namespace AutumnBox.GUI.ViewModel
             App.Current.Dispatcher.Invoke(() =>
             {
                 var view = new YNView(message, btnYes, btnNo);
-                task = DialogManager.Show(Token, view);
+                task = subWindowDialogManager.ShowDialog(Token, view);
             });
             task.Wait();
             return (bool)task.Result;
@@ -440,7 +449,7 @@ namespace AutumnBox.GUI.ViewModel
             App.Current.Dispatcher.Invoke(() =>
             {
                 var view = new InputView(hint, _default);
-                task = DialogManager.Show(Token, view);
+                task = subWindowDialogManager.ShowDialog(Token, view);
             });
             task.Wait();
             return task.Result as string;

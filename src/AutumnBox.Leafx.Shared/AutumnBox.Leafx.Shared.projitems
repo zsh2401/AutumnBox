@@ -9,6 +9,8 @@
     <Import_RootNamespace>AutumnBox.Leafx</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Container\Support\ClassComponentsReader.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Container\Support\ClassComponentRegister.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Container\Support\ShouldAutoCreateException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ObjectManagement\AroundMethodArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ObjectManagement\AroundMethodAttribute.cs" />
@@ -18,14 +20,15 @@
     <Compile Include="$(MSBuildThisFileDirectory)Container\Smart\AssemblyScanner.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Container\Support\SunsetLake.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Container\IRegisterableLake.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Container\Lake.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Container\LakeSources.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Container\LakeExtension.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Container\LakeSourcesExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Container\Support\ComponentFactoryReader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ObjectManagement\ArgsBuilder.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ObjectManagement\DependingObject.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ObjectManagement\MethodProxy.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ObjectManagement\ObjectBuilder.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ObjectManagement\ObjectManagementConstants.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ObjectManagement\DependeciesInjector.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ObjectManagement\DependenciesInjector.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Routines\IRoutinesManager.cs" />
   </ItemGroup>
 </Project>

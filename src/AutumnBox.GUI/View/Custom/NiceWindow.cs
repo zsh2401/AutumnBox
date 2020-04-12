@@ -1,13 +1,12 @@
-﻿using AutumnBox.GUI.Util.OS.Acrylic;
-using System;
+﻿using System;
 using System.Windows;
-using System.Windows.Interop;
 
 namespace AutumnBox.GUI.View.Custom
 {
     public class NiceWindow : HandyControl.Controls.Window
     {
-        static NiceWindow() {
+        static NiceWindow()
+        {
             DefaultStyleKeyProperty.OverrideMetadata(
                typeof(NiceWindow),
                new FrameworkPropertyMetadata(typeof(NiceWindow)));
@@ -19,9 +18,6 @@ namespace AutumnBox.GUI.View.Custom
         protected override void OnActivated(EventArgs e)
         {
             base.OnActivated(e);
-            //Background = (SolidColorBrush)App.Current.Resources["BlurWindowBackgroundBrush"];
-            //var ptr = new WindowInteropHelper(this).Handle;
-            //AcrylicHelper.EnableBlur(ptr);
         }
     }
 }
