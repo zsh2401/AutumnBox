@@ -10,7 +10,7 @@ namespace AutumnBox.GUI.Services
 {
     interface IOpenFxManager
     {
-        IExtensionTask RunExtension(string extensionClassName);
+        void RunExtension(string extensionClassName);
         void LoadOpenFx();
         void WakeIfLoaded(Action callback);
         IExtensionTask[] RunningTasks { get; }

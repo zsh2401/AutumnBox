@@ -3,13 +3,10 @@
 ** date:  2018/9/11 15:59:09 (UTC +8:00)
 ** desc： ...
 *************************************************/
-using AutumnBox.GUI.Util.Debugging;
-using AutumnBox.GUI.Util.OS;
 using AutumnBox.Logging;
 using System.Diagnostics;
-using System.Linq;
 
-namespace AutumnBox.GUI.Util.OS
+namespace AutumnBox.GUI.Services.Impl.OS
 {
     static class OtherProcessChecker
     {

@@ -1,9 +1,8 @@
-﻿using AutumnBox.GUI.Util.OS;
-using System;
+﻿using System;
 using System.Windows;
 using System.Windows.Interop;
 
-namespace AutumnBox.GUI.Util.UI
+namespace AutumnBox.GUI.Services.Impl.OS
 {
     static class HelpButtonHelper
     {

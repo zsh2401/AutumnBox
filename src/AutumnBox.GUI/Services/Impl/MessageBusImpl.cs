@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AutumnBox.Logging;
+using System;
 
 namespace AutumnBox.GUI.Services.Impl
 {
@@ -12,8 +9,15 @@ namespace AutumnBox.GUI.Services.Impl
 
         public void SendMessage(string msg_type, object value)
         {
-            MessageReceived?.Invoke(this,
-                new MessageReceivedEventArgs(value));
+            try
+            {
+                MessageReceived?.Invoke(this,
+                    new MessageReceivedEventArgs(value));
+            }
+            catch (Exception e)
+            {
+                SLogger<MessageBusImpl>.Warn($"An error occured when handling message : {msg_type}/{value}", e);
+            }
         }
     }
 }

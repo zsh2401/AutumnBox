@@ -16,11 +16,10 @@ using AutumnBox.OpenFramework.Open.LKit;
 using System.Linq;
 using AutumnBox.Leafx.Container;
 using AutumnBox.Leafx;
-using AutumnBox.GUI.Services;
 
-namespace AutumnBox.GUI.Util.OpenFxManagement
+namespace AutumnBox.GUI.Services.Impl
 {
-    internal partial class AutumnBoxGuiBaseApiImpl : IBaseApi
+    internal class AutumnBoxGuiBaseApiImpl : IBaseApi
     {
         public IDevice SelectedDevice
         {

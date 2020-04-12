@@ -3,7 +3,6 @@ using AutumnBox.GUI.Model;
 using AutumnBox.GUI.MVVM;
 using AutumnBox.GUI.Properties;
 using AutumnBox.GUI.Util.Bus;
-using AutumnBox.GUI.Util.I18N;
 using AutumnBox.Leafx.Container;
 using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.Management;
@@ -14,6 +13,8 @@ using System.Linq;
 using System.Windows.Input;
 using AutumnBox.OpenFramework.Management.ExtTask;
 using AutumnBox.Logging;
+using AutumnBox.GUI.Services;
+using AutumnBox.Leafx.ObjectManagement;
 
 namespace AutumnBox.GUI.ViewModel
 {
@@ -59,6 +60,9 @@ namespace AutumnBox.GUI.ViewModel
         }
         private ICommand _doubleClickItem;
 
+        [AutoInject]
+        private ILanguageManager LanguageManager { get; set; }
+
         public VMExtensionsNoCategory()
         {
             InitCommand();
@@ -67,7 +71,7 @@ namespace AutumnBox.GUI.ViewModel
             {
                 Load();
                 MainWindowBus.ExtensionListRefreshing += (s, e) => Load();
-                LanguageManager.Instance.LanguageChanged += (s, e) => Load();
+                LanguageManager.LanguageChanged += (s, e) => Load();
                 DeviceSelectionObserver.Instance.SelectedDevice += (s, e) => Order();
                 DeviceSelectionObserver.Instance.SelectedNoDevice += (s, e) => Order();
             });
@@ -77,7 +81,7 @@ namespace AutumnBox.GUI.ViewModel
         {
             var libsManager = OpenFx.Lake.Get<ILibsManager>();
             Docks = libsManager.Wrappers()
-                    .Region(LanguageManager.Instance.Current.LanCode)
+                    .Region(LanguageManager.Current.LanCode)
                     .Hide()
                     .Dev(Settings.Default.DeveloperMode)
                     .ToDocks();

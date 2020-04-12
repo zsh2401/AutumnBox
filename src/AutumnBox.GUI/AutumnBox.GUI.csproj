@@ -146,7 +146,6 @@
     <Compile Include="Model\ChoicerContentStartArgs.cs" />
     <Compile Include="Model\ExtensionWrapperDock.cs" />
     <Compile Include="Model\FormatLog.cs" />
-    <Compile Include="Model\HomeSettings.cs" />
     <Compile Include="Model\LibDock.cs" />
     <Compile Include="Model\OpenSourceProject.cs" />
     <Compile Include="Model\Tip.cs" />
@@ -175,11 +174,14 @@
     <Compile Include="Services\Impl\AdbDevicesManagerImpl.cs" />
     <Compile Include="Services\IAppLifeCycleLoader.cs" />
     <Compile Include="Services\Impl\LoggingManager.cs" />
+    <Compile Include="Services\Impl\LoggingObject.cs" />
     <Compile Include="Services\Impl\MessageBusImpl.cs" />
+    <Compile Include="Services\Impl\OpenFxImpl.cs" />
+    <Compile Include="Services\Impl\OperatingSystem.cs" />
+    <Compile Include="Services\Impl\WindowManager.cs" />
     <Compile Include="Services\IOperatingSystemService.cs" />
     <Compile Include="Services\ISelfInfoService.cs" />
     <Compile Include="Services\Service.cs" />
-    <Compile Include="Util\AppLoader.cs" />
     <Compile Include="Util\AppUnloader.cs" />
     <Compile Include="Util\Bus\ConnectedDevicesListener.cs" />
     <Compile Include="Util\Bus\DeviceSelectionObserver.cs" />
@@ -189,7 +191,6 @@
     <Compile Include="Util\Bus\MainWindowBus.cs" />
     <Compile Include="Util\Bus\OpenFxEventBus.cs" />
     <Compile Include="Util\Bus\PanelsManager.cs" />
-    <Compile Include="Util\Bus\WinM.cs" />
     <Compile Include="Util\ComponentFactory.cs" />
     <Compile Include="Util\Debugging\LogEventArgs.cs" />
     <Compile Include="Util\Debugging\LoggingStation.cs" />
@@ -212,16 +213,16 @@
     <Compile Include="Util\Loader\GeneralAppLoader.cs" />
     <Compile Include="Util\Loader\StepAttribute.cs" />
     <Compile Include="Util\Loader\StepFinishedEventArgs.cs" />
-    <Compile Include="Util\OpenFxManagement\AutumnBoxGuiBaseApiImpl.cs" />
-    <Compile Include="Util\OpenFxManagement\OpenFrameworkManager.cs" />
+    <Compile Include="Services\AutumnBoxGuiBaseApiImpl.cs" />
+    <Compile Include="Services\Impl\OpenFx\OpenFrameworkManager.cs" />
     <Compile Include="Services\Impl\Acrylic\AcrylicHelper.cs" />
     <Compile Include="Services\Impl\Acrylic\OSVersions.cs" />
     <Compile Include="Services\Impl\Acrylic\SystemInfo.cs" />
-    <Compile Include="Util\OS\MachineInfo.cs" />
-    <Compile Include="Util\OS\NativeMethods.cs" />
-    <Compile Include="Util\OS\OtherProcessChecker.cs" />
-    <Compile Include="Util\OS\ShortcutHelper.cs" />
-    <Compile Include="Util\OS\TaskKill.cs" />
+    <Compile Include="Services\Impl\OS\MachineInfo.cs" />
+    <Compile Include="Services\Impl\OS\NativeMethods.cs" />
+    <Compile Include="Services\Impl\OS\OtherProcessChecker.cs" />
+    <Compile Include="Services\Impl\OS\ShortcutHelper.cs" />
+    <Compile Include="Services\Impl\OS\TaskKill.cs" />
     <Compile Include="Util\Self.cs" />
     <Compile Include="Services\IThemeManager.cs" />
     <Compile Include="Services\Impl\ThemeManager.cs" />
@@ -235,7 +236,7 @@
     <Compile Include="Util\UI\Converters\ObjectEqualsToVisibilityConverter.cs" />
     <Compile Include="Util\UI\Converters\VisibleIf.cs" />
     <Compile Include="Util\UI\Converters\VisibleIfNot.cs" />
-    <Compile Include="Util\UI\HelpButtonHelper.cs" />
+    <Compile Include="Services\Impl\OS\HelpButtonHelper.cs" />
     <Compile Include="Services\Impl\Sentences.cs" />
     <Compile Include="Util\VersionInfos.cs" />
     <Compile Include="ViewModel\VMAbout.cs" />
@@ -668,6 +669,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\Drawable\MenuBar\" />
+    <Folder Include="Util\OpenFxManagement\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">

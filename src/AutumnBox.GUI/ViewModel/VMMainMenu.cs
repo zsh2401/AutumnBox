@@ -1,8 +1,9 @@
 ﻿using AutumnBox.Basic.ManagedAdb;
 using AutumnBox.GUI.MVVM;
 using AutumnBox.GUI.Properties;
+using AutumnBox.GUI.Services;
 using AutumnBox.GUI.Util.Bus;
-using AutumnBox.GUI.Util.Net;
+using AutumnBox.Leafx.ObjectManagement;
 using AutumnBox.OpenFramework;
 using System;
 using System.Diagnostics;
@@ -39,11 +40,15 @@ namespace AutumnBox.GUI.ViewModel
         public ICommand InstallExtension { get; }
         public ICommand Restart { get; }
         public ICommand OpenExtFloder { get; }
+
+        [AutoInject]
+        private IOpenFxManager OpenFxManager { get; set; }
+
         public VMMainMenu()
         {
             Restart = new MVVMCommand(p => ExtensionBridge.Start("ERestartApp"));
             Exit = new MVVMCommand(p => { App.Current.Shutdown(0); });
-            UpdateCheck = new MVVMCommand(P => Updater.Do());
+            UpdateCheck = new MVVMCommand(P => OpenFxManager.RunExtension("EAutumnBoxUpdateChecker"));
             OpenShell = new MVVMCommand(p => OpenShellMethod(p?.ToString()));
             InstallExtension = new MVVMCommand(p => ExtensionBridge.Start("EInstallExtension"));
             OpenExtFloder = new MVVMCommand(p => Process.Start(BuildInfo.DEFAULT_EXTENSION_PATH));

@@ -15,7 +15,7 @@ using IWshRuntimeLibrary;
 using System;
 using System.IO;
 
-namespace AutumnBox.GUI.Util.OS
+namespace AutumnBox.GUI.Services.Impl.OS
 {
     /// <summary>
     /// SystemHelper static class, static methods about System

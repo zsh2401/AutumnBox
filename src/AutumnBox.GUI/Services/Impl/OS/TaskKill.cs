@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AutumnBox.GUI.Util.OS
+namespace AutumnBox.GUI.Services.Impl.OS
 {
     static class TaskKill
     {

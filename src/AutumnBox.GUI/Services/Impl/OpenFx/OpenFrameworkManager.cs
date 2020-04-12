@@ -9,7 +9,7 @@ using AutumnBox.OpenFramework.Management.ExtLibrary;
 using System.Linq;
 using AutumnBox.Leafx.Container;
 
-namespace AutumnBox.GUI.Util.OpenFxManagement
+namespace AutumnBox.GUI.Services.Implsasad.OpenFx
 {
     internal static class OpenFrameworkManager
     {

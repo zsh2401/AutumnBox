@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace AutumnBox.GUI.Services
 {
     interface IOperatingSystemService
     {
         void KillProcess(string processName);
-        void CreateShortcut();
         bool ThereIsOtherAutumnBoxProcess();
         bool HaveAdministratorPermission { get; }
         bool IsWindows10 { get; }
         void RestartApplication();
-        void EnableHelpButton(IntPtr hWnd, Action onClickHandler);
+        void EnableHelpButton(Window window, Action onClickHandler);
         /// <summary>
         /// Create Shortcut
         /// </summary>

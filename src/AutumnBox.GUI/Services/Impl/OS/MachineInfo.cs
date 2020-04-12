@@ -20,7 +20,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 #endif
 /*Code from http://blog.csdn.net/qq_23833037/article/details/78304738*/
-namespace AutumnBox.GUI.Util.OS
+namespace AutumnBox.GUI.Services.Impl.OS
 {
     /// <summary>
     /// 此类用于获取当前主机的相关信息

@@ -14,7 +14,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace AutumnBox.GUI.Util.OS
+namespace AutumnBox.GUI.Services.Impl.OS
 {
     internal static class NativeMethods
     {

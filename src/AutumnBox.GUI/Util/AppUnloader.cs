@@ -5,7 +5,7 @@
 *************************************************/
 using AutumnBox.Basic.ManagedAdb;
 using AutumnBox.GUI.Properties;
-using AutumnBox.GUI.Util.OS;
+using AutumnBox.GUI.Services.Impl.OS;
 using AutumnBox.OpenFramework.Management;
 
 namespace AutumnBox.GUI.Util
