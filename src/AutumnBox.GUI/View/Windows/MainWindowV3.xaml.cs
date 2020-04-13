@@ -1,6 +1,8 @@
 ﻿using AutumnBox.GUI.Services;
+using AutumnBox.GUI.Services.Impl.OS;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,6 +30,7 @@ namespace AutumnBox.GUI.View.Windows
         {
             base.OnActivated(e);
             this.GetComponent<INotificationManager>().Token = "mainv3";
+            NativeMethods.SetForegroundWindow(Process.GetCurrentProcess().MainWindowHandle);
         }
     }
 }

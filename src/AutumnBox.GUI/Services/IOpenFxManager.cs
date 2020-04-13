@@ -13,7 +13,7 @@ namespace AutumnBox.GUI.Services
         void RunExtension(string extensionClassName);
         void LoadOpenFx();
         void WakeIfLoaded(Action callback);
-        IExtensionTask[] RunningTasks { get; }
+        Task<object>[] RunningTasks { get; }
         IExtensionWrapper[] ExtensionWrappers { get; }
     }
 }

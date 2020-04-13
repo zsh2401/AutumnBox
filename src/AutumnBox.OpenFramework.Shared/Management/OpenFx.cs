@@ -70,11 +70,10 @@ namespace AutumnBox.OpenFramework.Management
             //管理层面的组件
             Lake.RegisterSingleton<IManagementObjectBuilder, ManagementObjectBuilder>();
             Lake.RegisterSingleton<ILibsManager, DreamLibManager>();
-            Lake.RegisterSingleton<IExtensionTaskManager, ExtensionTaskManager>();
+            Lake.RegisterSingleton<IExtensionTaskManager, ExtensionTaskManagerV2>();
             SLogger.Info(nameof(OpenFx), "Management components are registered");
 
             //API层面的组件
-            Lake.RegisterSingleton<ITaskManager, TaskManagerImpl>();
             Lake.RegisterSingleton<IMd5, Md5Impl>();
             Lake.RegisterSingleton<ISoundService, SoundImpl>();
             Lake.RegisterSingleton<IEmbeddedFileManager, EmbeddedFileManagerImpl>();

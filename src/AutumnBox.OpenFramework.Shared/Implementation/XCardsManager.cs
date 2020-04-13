@@ -23,11 +23,11 @@ namespace AutumnBox.OpenFramework.Implementation
 {
     internal sealed class XCardsManager : IXCardsManager
     {
-        [AutoInject]
         private readonly IBaseApi baseApi;
 
-        public XCardsManager()
+        public XCardsManager(IBaseApi baseApi)
         {
+            this.baseApi = baseApi;
             baseApi.RunOnUIThread(() =>
             {
                 baseApi.Destorying += AutumnBoxDestorying;

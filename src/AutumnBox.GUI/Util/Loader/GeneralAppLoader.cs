@@ -19,14 +19,6 @@ namespace AutumnBox.GUI.Util.Loader
     sealed class GeneralAppLoader : AbstractAppLoader
     {
 #pragma warning disable IDE0051 // 删除未使用的私有成员
-        [Step(0)]
-        private void CheckOtherAutumnBox(IOperatingSystemService operatingSystemService)
-        {
-            if (!operatingSystemService.ThereIsOtherAutumnBoxProcess())
-            {
-                OnError("There's other AutumnBox process", new System.Exception("There's other AutumnBox process"));
-            }
-        }
 
         private SystemVersionInfo GetSystemVersionInfo()
         {

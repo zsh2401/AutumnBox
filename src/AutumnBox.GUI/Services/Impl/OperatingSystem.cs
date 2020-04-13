@@ -49,7 +49,7 @@ namespace AutumnBox.GUI.Services.Impl
 
         public bool ThereIsOtherAutumnBoxProcess()
         {
-            return OtherProcessChecker.ThereIsOtherAutumnBox();
+            return OtherProcessChecker.ThereIsOtherAutumnBoxProcess() != null;
         }
     }
 }

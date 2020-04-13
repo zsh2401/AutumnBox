@@ -13,7 +13,7 @@
             <Border DockPanel.Dock="Bottom"  Effect="{StaticResource EffectShadow4}"  CornerRadius="0" Background="{DynamicResource BorderBrush}">
                 <DockPanel>
                     <controls:StatusBar DockPanel.Dock="Bottom" Effect="{StaticResource EffectShadow4}"  Height="20"/>
-                    <hc:Divider LineStroke="{DynamicResource SecondaryTextBrush}"  DockPanel.Dock="Bottom" Margin="0" />
+                    <hc:Divider LineStroke="{DynamicResource DarkOpacityBrush}"  DockPanel.Dock="Bottom" Margin="0" />
                 </DockPanel>
             </Border>
             

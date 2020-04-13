@@ -146,7 +146,7 @@ namespace AutumnBox.GUI.ViewModel
             //如果目标模块无关设备状态,直接执行
             if (isNMExt || deviceConditionAllReady)
             {
-                OpenFx.Lake.Get<IExtensionTaskManager>().Allocate(extensionWrapper.ExtensionType).Start();
+                OpenFx.Lake.Get<IExtensionTaskManager>().Start(extensionWrapper.ExtensionType);
             }
             else//不符合执行条件,警告
                 notificationManager.Warn("IS NOT TARGET STATE ERROR");

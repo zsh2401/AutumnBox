@@ -10,10 +10,11 @@
     xmlns:mvvm="clr-namespace:AutumnBox.GUI.MVVM"
     WindowStartupLocation="CenterOwner"
     mc:Ignorable="d"
+    NonClientAreaBackground="Transparent"
     ResizeMode="NoResize"
         ShowInTaskbar="False"
     FontFamily="{DynamicResource AutumnBox.Font}"
-        Title="Love you" Width="680" Height="350">
+        Title="{DynamicResource Donate}" Width="680" Height="350">
     <Window.DataContext>
         <mvvm:ViewModelBase/>
     </Window.DataContext>

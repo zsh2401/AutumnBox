@@ -1,4 +1,5 @@
-﻿using AutumnBox.GUI.Util.Loader;
+﻿using AutumnBox.GUI.Services.Impl.OS;
+using AutumnBox.GUI.Util.Loader;
 using AutumnBox.Leafx.ObjectManagement;
 using AutumnBox.Logging;
 using System;
@@ -16,7 +17,7 @@ namespace AutumnBox.GUI.View.Windows
         public StartupWindow()
         {
             InitializeComponent();
-            appLoader = (AbstractAppLoader)new ObjectBuilder(typeof(GeneralAppLoader),App.Current.Lake).Build();
+            appLoader = (AbstractAppLoader)new ObjectBuilder(typeof(GeneralAppLoader), App.Current.Lake).Build();
             appLoader.StepFinished += AppLoader_StepFinished;
             appLoader.Succeced += AppLoader_Succeced;
             appLoader.Failed += AppLoader_Failed;
@@ -49,7 +50,7 @@ namespace AutumnBox.GUI.View.Windows
             SLogger<StartupWindow>.Info($"{e.FinishedStep} / {e.TotalStepCount}");
             App.Current.Dispatcher.Invoke(() =>
             {
-                ProgressBar.Value = progress;
+                //ProgressBar.Value = progress;
             });
         }
 
@@ -57,6 +58,7 @@ namespace AutumnBox.GUI.View.Windows
         {
             base.OnActivated(e);
             _ = appLoader.LoadAsync();
+            NativeMethods.SetForegroundWindow(Process.GetCurrentProcess().MainWindowHandle);
         }
     }
 }

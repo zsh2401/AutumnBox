@@ -11,6 +11,7 @@
     WindowStartupLocation="CenterOwner"
     FontFamily="{DynamicResource AutumnBox.Font}"
         ShowInTaskbar="False"
+    NonClientAreaBackground="Transparent"
     ResizeMode="NoResize"
         Title="{DynamicResource UserLicenseTitle}" Height="300" Width="400">
     <DockPanel Margin="5">

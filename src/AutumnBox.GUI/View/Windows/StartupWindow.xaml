@@ -9,20 +9,19 @@
         mc:Ignorable="d"
         ResizeMode="NoResize"
     WindowStartupLocation="CenterScreen"
+    ShowTitle="false"
+    Title="{DynamicResource AppNameWithVersion}"
     FontFamily="{DynamicResource AutumnBox.Font}"
         Height="400" Width="600">
     <Window.Background>
         <ImageBrush  ImageSource="/Resources/Drawable/Startup/startup_2.jpg" Stretch="UniformToFill"/>
     </Window.Background>
 
-    <custom:NiceWindow.ShowTitle>
-        False
-    </custom:NiceWindow.ShowTitle>
     <custom:NiceWindow.NonClientAreaBackground>
         <SolidColorBrush Color="Transparent"/>
     </custom:NiceWindow.NonClientAreaBackground>
     <DockPanel VerticalAlignment="Bottom">
-        <ProgressBar DockPanel.Dock="Bottom" x:Name="ProgressBar" Value="50"  Style="{x:Null}" Margin="0,0,0,15"/>
+        <!--<ProgressBar DockPanel.Dock="Bottom" x:Name="ProgressBar" Value="50"  Style="{x:Null}" Margin="0,0,0,15"/>-->
         <StackPanel  DockPanel.Dock="Bottom" Margin="10" HorizontalAlignment="Left" Orientation="Vertical">
             <TextBlock FontSize="40" Foreground="WhiteSmoke" Text="{DynamicResource AppNameWithVersion}"/>
             <TextBlock FontSize="13" Foreground="WhiteSmoke"  Text="{DynamicResource AppDesc}"/>

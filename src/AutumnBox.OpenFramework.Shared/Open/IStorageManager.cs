@@ -14,7 +14,7 @@ namespace AutumnBox.OpenFramework.Open
         /// 将根据其计算并划分存储文件区域
         /// </summary>
         /// <param name="id">唯一识别</param>
-        void Init(string id);
+        void Initialize(string id);
         /// <summary>
         /// 根据ID打开一个文件
         /// </summary>

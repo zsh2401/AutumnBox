@@ -21,6 +21,8 @@ namespace AutumnBox.Essentials.Extensions
     {
         private const string STR_KEY_CHECKING_UPDATE = "checking_update";
         private const string STR_KEY_FAIL = "cant_check_update";
+        private const string URL_UPDATE_CHECK_API = "";
+
         [LMain]
         public void EntryPoint(INotificationManager notificationManager, IClassTextReader reader)
         {

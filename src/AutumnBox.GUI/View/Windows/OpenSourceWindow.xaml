@@ -15,6 +15,7 @@
         FontFamily="{DynamicResource AutumnBox.Font}"
         Height="450" Width="800"
         ShowInTaskbar="False"
+    NonClientAreaBackground="Transparent"
         Title="{DynamicResource OpenSourceWindowTitle}" MinHeight="500" MinWidth="800">
     <Window.DataContext>
         <viewmodel:VMOpenSource/>
@@ -25,13 +26,15 @@
     <DockPanel>
         <Grid Margin="5" DockPanel.Dock="Left" Width="400">
             <StackPanel VerticalAlignment="Top">
-                <controls:AnimationPath  VerticalAlignment="Center" RepeatBehavior="1" Duration="0:0:6" Stretch="Uniform" Width="200" Height="200" Stroke="Black" Data="{StaticResource GithubGeometry}"/>
+                <controls:AnimationPath  VerticalAlignment="Center" RepeatBehavior="1" Duration="0:0:6" Stretch="Uniform" Width="200" Height="200" Stroke="{DynamicResource PrimaryTextBrush}" Data="{StaticResource GithubGeometry}"/>
                 <!--<Image Width="200" Source="/Resources/Drawable/github.png"/>-->
                 <TextBlock TextAlignment="Center" FontSize="25" Text="{DynamicResource OpenSourceWindowTitle}"/>
                 <TextBlock TextAlignment="Center" TextWrapping="Wrap" Text="{DynamicResource OpenSourceWindowDescription}"/>
                 <StackPanel Margin="0,20,0,0" HorizontalAlignment="Center" Orientation="Horizontal">
-                    <Button Command="{Binding OpenUrl}" CommandParameter="{DynamicResource UrlAtmbRepo}"  Content="{DynamicResource OpenSourceWindowBtnAtmbRepo}"/>
-                    <Button  Command="{Binding OpenUrl}" CommandParameter="{DynamicResource UrlAtmbWebRepo}"  Content="{DynamicResource OpenSourceWindowBtnOfficialWebisteRepo}"/>
+                    <controls:ButtonGroup>
+                        <Button Command="{Binding OpenUrl}" CommandParameter="{DynamicResource UrlAtmbRepo}"  Content="{DynamicResource OpenSourceWindowBtnAtmbRepo}"/>
+                        <Button  Command="{Binding OpenUrl}" CommandParameter="{DynamicResource UrlAtmbWebRepo}"  Content="{DynamicResource OpenSourceWindowBtnOfficialWebisteRepo}"/>
+                    </controls:ButtonGroup>
                 </StackPanel>
             </StackPanel>
             <TextBlock VerticalAlignment="Bottom" TextAlignment="Center">Copyright © 2017 - 2019 zsh2401,All Rights Reserved</TextBlock>

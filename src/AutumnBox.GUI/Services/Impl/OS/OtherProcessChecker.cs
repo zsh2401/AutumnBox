@@ -28,7 +28,7 @@ namespace AutumnBox.GUI.Services.Impl.OS
         }
         public static bool Do()
         {
-            var process = FindOtherProcess();
+            var process = ThereIsOtherAutumnBoxProcess();
             if (process != null)
             {
                 NativeMethods.ShowWindowAsync(process.MainWindowHandle, SW_SHOWNOMAL);
@@ -36,9 +36,9 @@ namespace AutumnBox.GUI.Services.Impl.OS
             }
             return process == null;
         }
-        public static bool ThereIsOtherAutumnBox()
+        public static Process ThereIsOtherAutumnBoxProcess()
         {
-            return Do();
+            return FindOtherProcess();
         }
     }
 }

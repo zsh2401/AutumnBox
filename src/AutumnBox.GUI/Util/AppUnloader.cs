@@ -37,7 +37,9 @@ namespace AutumnBox.GUI.Util
                 try { OpenFx.Unload(); } catch { }
                 if (Adb.Server?.IsEnable == true)
                 {
-                    Adb.Server.Kill();
+                    var server = Adb.Server;
+                    Adb.Load(null);
+                    server.Kill();
                     TaskKill.Kill("adb.exe");
                 }
             }

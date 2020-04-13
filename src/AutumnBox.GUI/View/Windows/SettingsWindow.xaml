@@ -12,7 +12,7 @@
     ShowInTaskbar="False"
     ResizeMode="NoResize"
     Background="{DynamicResource BlurWindowBackgroundBrush}"
-
+NonClientAreaBackground="Transparent"
     WindowStartupLocation="CenterOwner"
     FontFamily="{DynamicResource AutumnBox.Font}"
     Title="{DynamicResource ContentGuideTitleSettings}"

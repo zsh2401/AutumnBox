@@ -15,7 +15,7 @@ namespace AutumnBox.OpenFramework.Implementation
         public DirectoryInfo CacheDirectory { get; private set; }
         private DirectoryInfo ChiefDirectory { get; set; }
         private DirectoryInfo FilesDirectory { get; set; }
-        public void Init(string id)
+        public void Initialize(string id)
         {
             storageId = id.GetHashCode().ToString();
 

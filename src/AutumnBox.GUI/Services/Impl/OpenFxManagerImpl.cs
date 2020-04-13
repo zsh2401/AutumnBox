@@ -9,13 +9,14 @@ using AutumnBox.OpenFramework.Open;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace AutumnBox.GUI.Services.Impl
 {
     [Component(Type = typeof(IOpenFxManager))]
     class OpenFxManagerImpl : IOpenFxManager
     {
-        public IExtensionTask[] RunningTasks => OpenFx.Lake.Get<IExtensionTaskManager>().RunningTasks.ToArray();
+        public Task<object>[] RunningTasks => OpenFx.Lake.Get<IExtensionTaskManager>().RunningTasks.ToArray();
 
         public IExtensionWrapper[] ExtensionWrappers => OpenFx.Lake.Get<ILibsManager>().Wrappers().ToArray();
 
@@ -49,7 +50,7 @@ namespace AutumnBox.GUI.Services.Impl
         {
             try
             {
-                LakeProvider.Lake.Get<ITaskManager>().CreateNewTaskOf(extensionClassName)?.Start();
+                LakeProvider.Lake.Get<IExtensionTaskManager>().Start(extensionClassName);
             }
             catch (Exception e)
             {

@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Security.Principal;
+using System.Windows;
 
 namespace AutumnBox.GUI.Util
 {
@@ -54,18 +55,7 @@ namespace AutumnBox.GUI.Util
         /// <param name="asAdmin"></param>
         public static void Restart(bool asAdmin)
         {
-            ProcessStartInfo startInfo = new ProcessStartInfo(Path.Combine("..", "AutumnBox-秋之盒.exe"));
-            var args = new List<string>
-            {
-                $"-waitfor {Process.GetCurrentProcess().Id}"
-            };
-            if (asAdmin)
-            {
-                args.Add("-tryadmin");
-            }
-            startInfo.Arguments = string.Join(" ", args);
-            SLogger.Debug("Self", startInfo.FileName + "  " + startInfo.Arguments);
-            Process.Start(startInfo);
+            Process.Start(Application.ResourceAssembly.Location,"--wait");
             App.Current.Dispatcher.Invoke(() =>
             {
                 App.Current.Shutdown(0);

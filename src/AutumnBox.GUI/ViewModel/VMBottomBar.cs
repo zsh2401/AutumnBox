@@ -10,6 +10,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using AutumnBox.Leafx.ObjectManagement;
 using AutumnBox.GUI.Services;
+using AutumnBox.OpenFramework.Management.ExtTask;
 
 namespace AutumnBox.GUI.ViewModel
 {
@@ -66,7 +67,7 @@ namespace AutumnBox.GUI.ViewModel
         private int _countOfTaskRunning;
 
         [AutoInject]
-        private readonly ITaskManager taskManager;
+        private readonly IExtensionTaskManager taskManager;
 
         [AutoInject]
         private readonly IAdbDevicesManager devicesManager;
@@ -104,7 +105,7 @@ namespace AutumnBox.GUI.ViewModel
         {
             try
             {
-                CountOfTaskRunning = taskManager.Tasks.Length;
+                CountOfTaskRunning = taskManager.RunningTasks.Count();
             }
             catch { }
         }

@@ -44,18 +44,15 @@ namespace AutumnBox.GUI.ViewModel
         public ICommand OpenExtFloder { get; }
 
         [AutoInject]
-        private IOpenFxManager OpenFxManager { get; set; }
-
-        [AutoInject]
         private readonly IOpenFxManager openFxManager;
 
         public VMMainMenu()
         {
-            Restart = new MVVMCommand(p => openFxManager.RunExtension("ERestartApp"));
+            Restart = new MVVMCommand(p => openFxManager.RunExtension("EAutumnBoxRestarter"));
             Exit = new MVVMCommand(p => { App.Current.Shutdown(0); });
-            UpdateCheck = new MVVMCommand(P => OpenFxManager.RunExtension("EAutumnBoxUpdateChecker"));
+            UpdateCheck = new MVVMCommand(P => openFxManager.RunExtension("EAutumnBoxUpdateChecker"));
             OpenShell = new MVVMCommand(p => OpenShellMethod(p?.ToString()));
-            InstallExtension = new MVVMCommand(p => openFxManager.RunExtension("EInstallExtension"));
+            InstallExtension = new MVVMCommand(p => openFxManager.RunExtension("EExtensionInstaller"));
             OpenExtFloder = new MVVMCommand(p => Process.Start(BuildInfo.DEFAULT_EXTENSION_PATH));
         }
         private static void OpenShellMethod(string fileName)

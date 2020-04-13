@@ -17,6 +17,7 @@ using System.Windows;
 using System.Windows.Media;
 using AutumnBox.GUI.Services;
 using AutumnBox.Leafx.ObjectManagement;
+using AutumnBox.OpenFramework.Management.ExtTask;
 
 namespace AutumnBox.GUI.Model
 {
@@ -100,7 +101,7 @@ namespace AutumnBox.GUI.Model
         {
             if (StateCheck())
             {
-                LakeProvider.Lake.Get<ITaskManager>().CreateNewTaskOf(Wrapper.ExtensionType).Start();
+                this.GetComponent<IExtensionTaskManager>().Start(Wrapper.ExtensionType);
             }
         }
         private bool StateCheck()

@@ -11,10 +11,12 @@
 *
 \* =============================================================================*/
 using AutumnBox.GUI.Services;
+using AutumnBox.GUI.Services.Impl.OS;
 using AutumnBox.GUI.Util;
 using AutumnBox.Leafx;
 using AutumnBox.Leafx.Container;
 using AutumnBox.Leafx.Container.Support;
+using System.Linq;
 using System.Reflection;
 using System.Windows;
 namespace AutumnBox.GUI
@@ -47,9 +49,22 @@ namespace AutumnBox.GUI
 
         protected override void OnStartup(StartupEventArgs e)
         {
+            if (!CheckOther(e.Args)) return;
             LoadComponent();
             GLake.Lake.Get<IThemeManager>().Reload();
             base.OnStartup(e);
+        }
+        private bool CheckOther(string[] args)
+        {
+            var process = OtherProcessChecker.ThereIsOtherAutumnBoxProcess();
+            if (process != null && (!args.Contains("--wait")))
+            {
+                NativeMethods.SetForegroundWindow(process.MainWindowHandle);
+                App.Current.Shutdown(0);
+                return false;
+            }
+            process?.WaitForExit();
+            return true;
         }
 
         /// <summary>

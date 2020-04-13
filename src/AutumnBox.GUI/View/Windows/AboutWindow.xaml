@@ -13,6 +13,7 @@
     ShowInTaskbar="False"
    ResizeMode="NoResize"
     WindowStartupLocation="CenterOwner"
+    NonClientAreaBackground="Transparent"
       Background="{DynamicResource BlurWindowBackgroundBrush}"
     FontFamily="{DynamicResource AutumnBox.Font}"
         Title="{DynamicResource AppNameWithVersion}" Height="430" Width="700">

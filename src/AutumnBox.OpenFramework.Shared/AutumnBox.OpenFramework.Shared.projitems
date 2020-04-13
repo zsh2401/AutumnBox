@@ -35,6 +35,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Implementation\NotificationManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Implementation\XCardsManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\ExtLibrary\Impl\AssemblyBasedLibrarian.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Management\ExtTask\ExtensionTaskFactory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Management\ExtTask\ExtensionTaskManagerV2.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\ExtWrapper\ExtensionAttributeReader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\ExtWrapper\IExtensionAttributeReader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\IManagementObjectBuilder.cs" />
@@ -84,8 +86,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Management\ILibsManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\ExtLibrary\Impl\DreamLibManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\TextKit\IClassTextDictionary.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Implementation\TaskManagerImpl.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Open\ITaskManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Implementation\ClassTextDictionary.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Implementation\DeviceSelectorImpl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Implementation\Md5Impl.cs" />
@@ -108,11 +108,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Open\IResourcesManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\ISoundService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\IUx.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Management\ExtTask\ExtensionTaskEvents.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\ExtTask\ExtensionExitCodes.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Management\ExtTask\ExtensionTask.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Management\ExtTask\ExtensionTaskManager.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Management\ExtTask\IExtensionTask.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\ExtTask\IExtensionTaskManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\ExtensionSignals.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\LKit\DialogClosedEventArgs.cs" />

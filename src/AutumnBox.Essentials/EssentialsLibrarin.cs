@@ -45,7 +45,8 @@ namespace AutumnBox.Essentials
             SLogger<EssentialsLibrarin>.Info($"{nameof(EssentialsLibrarin)}'s ready");
             notificationManager.Success("Essentials library is loaded");
 
-            extensionTaskManager.Allocate(typeof(EAutumnBoxUpdateChecker)).Start();
+            extensionTaskManager.Start<EAutumnBoxUpdateChecker>();
+            extensionTaskManager.Start<EAutumnBoxAdFetcher>();
         }
 
         private const string ROUTINE_DO_METHOD_NAME = "Do";
