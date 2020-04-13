@@ -40,8 +40,8 @@
         </MenuItem>
 
         <MenuItem Header="{DynamicResource Menu.Extension}">
-            <MenuItem Header="{DynamicResource Menu.ExtensionHelp}" Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoHowInstallExt}"/>
-            <MenuItem InputGestureText="Shift + G" Header="{DynamicResource Menu.DlExt}" Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoDownloadExtensions}"/>
+            <MenuItem Header="{DynamicResource Menu.ExtensionHelp}" Command="{Binding HowToInstallExtension}" />
+            <MenuItem InputGestureText="Shift + G" Header="{DynamicResource Menu.DlExt}" Command="{Binding ExtensionStore}"/>
             <MenuItem Header="{DynamicResource Menu.InstallExtension}" Command="{Binding InstallExtension}"/>
             <MenuItem InputGestureText="Shift + O" Header="{DynamicResource Menu.OpenExtFloder}" Command="{Binding OpenExtFloder}"/>
         </MenuItem>
@@ -64,7 +64,7 @@
                     <Image Source="/Resources/MenuIcon/donate.png"></Image>
                 </MenuItem.Icon>
             </MenuItem>
-            <MenuItem Header="{DynamicResource Menu.Guide}" Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoHelp}" InputGestureText="Ctrl + F1">
+            <MenuItem Header="{DynamicResource Menu.Guide}" Command="{Binding ViewGuide}" InputGestureText="Ctrl + F1">
                 <MenuItem.Icon>
                     <Image Source="/Resources/MenuIcon/guide-book.png"></Image>
                 </MenuItem.Icon>

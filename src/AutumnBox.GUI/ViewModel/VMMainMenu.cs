@@ -5,6 +5,7 @@ using AutumnBox.GUI.Services;
 
 using AutumnBox.Leafx.ObjectManagement;
 using AutumnBox.OpenFramework;
+using AutumnBox.OpenFramework.Management.ExtTask;
 using System;
 using System.Diagnostics;
 using System.Windows.Input;
@@ -42,12 +43,18 @@ namespace AutumnBox.GUI.ViewModel
         public ICommand InstallExtension { get; }
         public ICommand Restart { get; }
         public ICommand OpenExtFloder { get; }
+        public ICommand ViewGuide { get; }
+        public ICommand ExtensionStore { get; }
+        public ICommand HowToInstallExtension { get; set; }
 
         [AutoInject]
         private readonly IOpenFxManager openFxManager;
 
         public VMMainMenu()
         {
+            HowToInstallExtension = new MVVMCommand(p => this.GetComponent<IExtensionTaskManager>().Start("EAutumnBoxGuideViewer", new System.Collections.Generic.Dictionary<string, object>() { { "path", "basic/install_extension" } }));
+            ExtensionStore = new MVVMCommand(p => openFxManager.RunExtension("EAutumnBoxExtensionStore"));
+            ViewGuide = new MVVMCommand(p => openFxManager.RunExtension("EAutumnBoxGuideViewer"));
             Restart = new MVVMCommand(p => openFxManager.RunExtension("EAutumnBoxRestarter"));
             Exit = new MVVMCommand(p => { App.Current.Shutdown(0); });
             UpdateCheck = new MVVMCommand(P => openFxManager.RunExtension("EAutumnBoxUpdateChecker"));
