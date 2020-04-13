@@ -21,8 +21,6 @@ namespace AutumnBox.GUI.MVVM
 {
     internal class ViewModelBase : NotificationObject
     {
-
-
         public ICommand ShowWindowDialog
         {
             get => _showWindowDialog; set
@@ -149,8 +147,6 @@ namespace AutumnBox.GUI.MVVM
                 SLogger<ViewModelBase>.Warn($"can not open url {para}", e);
             }
         }
-        [AutoInject]
-        private readonly IWindowManager windowManager;
         private static void _ShowWindowDialog(object para)
         {
             App.Current.Lake.Get<IWindowManager>().ShowDialog(para.ToString());

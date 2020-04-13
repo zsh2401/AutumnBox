@@ -1,9 +1,11 @@
 ﻿using AutumnBox.Leafx.ObjectManagement;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace AutumnBox.GUI.MVVM
 {
@@ -12,10 +14,14 @@ namespace AutumnBox.GUI.MVVM
         protected virtual bool InjectProperties => true;
         public InjectableObject()
         {
-            if (InjectProperties)
+            if ((!IsDesignMode()) && InjectProperties)
             {
-                DependenciesInjector.Inject(this, App.Current.Lake);
+                DependenciesInjector.Inject(this, App.Current?.Lake);
             }
+        }
+        public bool IsDesignMode()
+        {
+            return System.ComponentModel.DesignerProperties.GetIsInDesignMode(new DependencyObject());
         }
     }
 }

@@ -12,10 +12,8 @@
     xmlns:viewmodel="clr-namespace:AutumnBox.GUI.ViewModel"
     mc:Ignorable="d"
     ShowTitle="False"
-    OtherButtonBackground="{DynamicResource BorderBrush}"
-    CloseButtonBackground="{DynamicResource BorderBrush}"
-    NonClientAreaHeight="20"
-    NonClientAreaBackground="{DynamicResource BorderBrush}"
+    Background="{DynamicResource BorderBrush}"
+    NonClientAreaBackground="Transparent"
     WindowStartupLocation="CenterScreen"
         Icon="/Resources/Drawable/icon.ico"
         Title="{DynamicResource AppNameWithVersion}" MinHeight="625" MinWidth="930" Height="625" Width="930">

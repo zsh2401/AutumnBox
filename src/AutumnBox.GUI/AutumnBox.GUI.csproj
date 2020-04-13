@@ -193,6 +193,7 @@
     <Compile Include="Util\AppUnloader.cs" />
     <Compile Include="Services\Impl\Debugging\LogEventArgs.cs" />
     <Compile Include="Services\Impl\Debugging\ZhangBeiHaiLoggingStation.cs" />
+    <Compile Include="Util\DesignHelper.cs" />
     <Compile Include="Util\Extensions.cs" />
     <Compile Include="Util\FatalHandler.cs" />
     <Compile Include="Services\ILanguage.cs" />

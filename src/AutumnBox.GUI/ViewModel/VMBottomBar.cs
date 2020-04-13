@@ -74,6 +74,7 @@ namespace AutumnBox.GUI.ViewModel
 
         public VMBottomBar()
         {
+            if (IsDesignMode()) return;
             Port = Basic.ManagedAdb.Adb.Server.Port;
             devicesManager.ConnectedDevicesChanged += (s, e) =>
             {

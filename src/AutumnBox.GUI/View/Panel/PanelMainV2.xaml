@@ -13,8 +13,7 @@
     </UserControl.DataContext>
     <Grid>
         <DockPanel>
-            <controls:DeviceBar Background="{DynamicResource BorderBrush}" Padding="5" DockPanel.Dock="Top"/>
-            <hc:Divider DockPanel.Dock="Top" Margin="0" LineStroke="{DynamicResource DarkOpacityBrush}"/>
+            <controls:DeviceBar  Padding="5" DockPanel.Dock="Top"/>
 
             <Border DockPanel.Dock="Bottom"  Effect="{StaticResource EffectShadow4}"  CornerRadius="0" Background="{DynamicResource BorderBrush}">
                 <DockPanel>
@@ -22,12 +21,6 @@
                     <hc:Divider LineStroke="{DynamicResource DarkOpacityBrush}"  DockPanel.Dock="Bottom" Margin="0" />
                 </DockPanel>
             </Border>
-
-            <!--<ScrollViewer>
-                <controls:XCardsViewer DockPanel.Dock="Left"/>
-            </ScrollViewer>-->
-
-
 
             <hc:TabControl ItemsSource="{Binding Tabs}" Background="Transparent" DockPanel.Dock="Bottom" 
                            IsAnimationEnabled="True" IsDraggable="True" IsTabFillEnabled="False" ShowCloseButton="True">

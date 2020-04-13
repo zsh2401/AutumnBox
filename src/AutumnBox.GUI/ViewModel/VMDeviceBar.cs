@@ -9,7 +9,6 @@ namespace AutumnBox.GUI.ViewModel
 {
     class VMDeviceBar : ViewModelBase
     {
-
         public FlexiableCommand ConnectDevice { get; set; }
         public FlexiableCommand DisconnectDevice { get; set; }
         public FlexiableCommand OpenDeviceNetDebugging { get; set; }
@@ -51,7 +50,7 @@ namespace AutumnBox.GUI.ViewModel
 
         public VMDeviceBar()
         {
-
+            if (IsDesignMode()) return;
             ConnectDevice = new FlexiableCommand((p) =>
             {
                 openFxManager.RunExtension("ENetDeviceConnecter");

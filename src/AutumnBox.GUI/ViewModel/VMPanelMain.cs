@@ -68,6 +68,7 @@ namespace AutumnBox.GUI.ViewModel
 
         public VMPanelMain()
         {
+            if (IsDesignMode()) return;
             ClosingTab = new MVVMCommand(p =>
             {
                 var e = (CancelRoutedEventArgs)p;
