@@ -1,8 +1,10 @@
-﻿using AutumnBox.Essentials.Routines;
+﻿using AutumnBox.Essentials.Extensions;
+using AutumnBox.Essentials.Routines;
 using AutumnBox.Leafx.Container;
 using AutumnBox.Leafx.ObjectManagement;
 using AutumnBox.Logging;
 using AutumnBox.OpenFramework.Management.ExtLibrary.Impl;
+using AutumnBox.OpenFramework.Management.ExtTask;
 using AutumnBox.OpenFramework.Open;
 using System;
 using System.Threading.Tasks;
@@ -30,13 +32,20 @@ namespace AutumnBox.Essentials
 
         public override int TargetApiLevel => 11;
 
+        [AutoInject]
+        private readonly INotificationManager notificationManager;
+
+        [AutoInject]
+        private readonly IExtensionTaskManager extensionTaskManager;
+
         public override void Ready()
         {
             base.Ready();
             Current = this;
             SLogger<EssentialsLibrarin>.Info($"{nameof(EssentialsLibrarin)}'s ready");
-            RunRoutines<MotdLoader>();
-            RunRoutines<AdLoader>();
+            notificationManager.Success("Essentials library is loaded");
+
+            extensionTaskManager.Allocate(typeof(EAutumnBoxUpdateChecker)).Start();
         }
 
         private const string ROUTINE_DO_METHOD_NAME = "Do";

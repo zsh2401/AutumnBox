@@ -30,6 +30,9 @@ namespace AutumnBox.Leafx.Container.Support
             this.RegisterSingleton("register", () => this);
             this.RegisterSingleton("lake_name", () => nameof(SunsetLake));
         }
+
+        public int Size => factories.Count;
+
         /// <summary>
         /// 根据id获取值
         /// </summary>

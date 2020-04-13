@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\EAutumnBoxUpdateChecker.cs" />
     <Compile Include="Extensions\EExample.cs" />
     <Compile Include="EssentialsLibrarin.cs" />
     <Compile Include="ExternalXCards\AdXCard.cs" />

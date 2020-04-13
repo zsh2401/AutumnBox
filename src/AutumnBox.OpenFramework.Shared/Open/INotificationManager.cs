@@ -25,11 +25,25 @@ namespace AutumnBox.OpenFramework.Open
     public interface INotificationManager
     {
         /// <summary>
-        /// 发送一个通知
+        /// 发送消息
         /// </summary>
-        /// <param name="msg">内容</param>
-        /// <param name="title">标题</param>
-        /// <param name="onClickHandler">当点击时的执行函数</param>
-        void SendNotification(string msg, string title = null, Action onClickHandler = null);
+        /// <param name="msg"></param>
+        void Info(string msg);
+        /// <summary>
+        /// 向用户询问
+        /// </summary>
+        /// <param name="msg"></param>
+        /// <returns></returns>
+        Task<bool> Ask(string msg);
+        /// <summary>
+        /// 发送警告
+        /// </summary>
+        /// <param name="msg"></param>
+        void Warn(string msg);
+        /// <summary>
+        /// 发送成功消息
+        /// </summary>
+        /// <param name="msg"></param>
+        void Success(string msg);
     }
 }

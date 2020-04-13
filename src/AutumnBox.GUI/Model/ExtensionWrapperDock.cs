@@ -111,7 +111,7 @@ namespace AutumnBox.GUI.Model
             else if (reqState.HasFlag(crtState)) return true;
             else
             {
-                notificationManager.SendWarn(GetTip());
+                notificationManager.Warn(GetTip());
                 return false;
             }
         }

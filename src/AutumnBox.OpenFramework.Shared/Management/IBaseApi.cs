@@ -26,14 +26,28 @@ namespace AutumnBox.OpenFramework.Management
         /// 全局湖
         /// </summary>
         IRegisterableLake GlobalLake { get; }
+
         /// <summary>
-        /// 发送通知
+        /// 发送一条普通的通知
         /// </summary>
         /// <param name="msg"></param>
-        /// <param name="title"></param>
-        /// <param name="clickHandler"></param>
+        void SendNotificationInfo(string msg);
+        /// <summary>
+        /// 发送一条成功通知
+        /// </summary>
+        /// <param name="msg"></param>
+        void SendNotificationSuccess(string msg);
+        /// <summary>
+        /// 发送一条警告通知
+        /// </summary>
+        /// <param name="msg"></param>
+        void SendNotificationWarn(string msg);
+        /// <summary>
+        /// 发送一条询问通知
+        /// </summary>
+        /// <param name="msg"></param>
         /// <returns></returns>
-        void SendNotification(string msg, string title = null, Action clickHandler = null);
+        Task<bool> SendNotificationAsk(string msg);
         /// <summary>
         /// 设置窗口背景模糊
         /// </summary>

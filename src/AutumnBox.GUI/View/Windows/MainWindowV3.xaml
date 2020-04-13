@@ -40,5 +40,8 @@
 
     <Grid>
         <panel:PanelMainV2/>
+        <hc:ScrollViewer Margin="0,0,0,30" VerticalScrollBarVisibility="Hidden" VerticalAlignment="Top" HorizontalAlignment="Right" Grid.Column="1">
+            <StackPanel hc:Growl.Token="mainv3" hc:Growl.GrowlParent="True" Margin="0,10,10,10"/>
+        </hc:ScrollViewer>
     </Grid>
 </custom:NiceWindow>

@@ -149,7 +149,7 @@ namespace AutumnBox.GUI.ViewModel
                 OpenFx.Lake.Get<IExtensionTaskManager>().Allocate(extensionWrapper.ExtensionType).Start();
             }
             else//不符合执行条件,警告
-                notificationManager.SendWarn("IS NOT TARGET STATE ERROR");
+                notificationManager.Warn("IS NOT TARGET STATE ERROR");
         }
     }
 }

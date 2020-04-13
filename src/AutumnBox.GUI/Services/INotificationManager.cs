@@ -8,8 +8,10 @@ namespace AutumnBox.GUI.Services
 {
     interface INotificationManager
     {
-        Task<bool?> SendYN(string msg, string btnYes = null, string btnNo = null);
-        Task SendWarn(string msg);
-        Task SendInfo(string msg);
+        string Token { get; set; }
+        Task<bool> Ask(string msg);
+        void Warn(string msg);
+        void Info(string msg);
+        void Success(string msg);
     }
 }

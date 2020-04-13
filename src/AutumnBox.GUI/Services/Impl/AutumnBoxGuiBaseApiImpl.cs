@@ -17,6 +17,7 @@ using AutumnBox.GUI.Util;
 using AutumnBox.Leafx.ObjectManagement;
 using AutumnBox.Logging;
 using AutumnBox.Leafx.Container.Support;
+using System.Threading.Tasks;
 
 namespace AutumnBox.GUI.Services.Impl
 {
@@ -270,7 +271,6 @@ namespace AutumnBox.GUI.Services.Impl
             this.GetComponent<IMessageBus>().SendMessage(Messages.REFRESH_EXTENSIONS_VIEW);
         }
 
-
         public void AppendPanel(object view, int priority)
         {
             this.GetComponent<ILeafCardManager>().Add(view, priority);
@@ -281,14 +281,29 @@ namespace AutumnBox.GUI.Services.Impl
             this.GetComponent<ILeafCardManager>().Remove(view);
         }
 
-        public void SendNotification(string msg, string title = null, Action clickHandler = null)
-        {
-            this.GetComponent<INotificationManager>().SendInfo(msg);
-        }
-
         public void SetWindowBlur(IntPtr hWnd)
         {
             Component.Get<IAcrylicHelper>().SetWindowBlur(hWnd); ;
+        }
+
+        public void SendNotificationInfo(string msg)
+        {
+            this.GetComponent<INotificationManager>().Info(msg);
+        }
+
+        public void SendNotificationSuccess(string msg)
+        {
+            this.GetComponent<INotificationManager>().Success(msg);
+        }
+
+        public void SendNotificationWarn(string msg)
+        {
+            this.GetComponent<INotificationManager>().Warn(msg);
+        }
+
+        public Task<bool> SendNotificationAsk(string msg)
+        {
+            return this.GetComponent<INotificationManager>().Ask(msg);
         }
     }
 }

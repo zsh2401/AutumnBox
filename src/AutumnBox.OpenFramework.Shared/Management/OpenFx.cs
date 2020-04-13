@@ -97,7 +97,7 @@ namespace AutumnBox.OpenFramework.Management
 
             if (Lake.Get<IAppManager>().IsDeveloperMode)
             {
-                Lake.Get<INotificationManager>().SendNotification("Default Lake Loaded");
+                Lake.Get<INotificationManager>().Success($"{Lake.Size} components is registered");
             }
         }
     }

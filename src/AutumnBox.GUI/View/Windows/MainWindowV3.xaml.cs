@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutumnBox.GUI.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,11 @@ namespace AutumnBox.GUI.View.Windows
         public MainWindowV3()
         {
             InitializeComponent();
+        }
+        protected override void OnActivated(EventArgs e)
+        {
+            base.OnActivated(e);
+            this.GetComponent<INotificationManager>().Token = "mainv3";
         }
     }
 }

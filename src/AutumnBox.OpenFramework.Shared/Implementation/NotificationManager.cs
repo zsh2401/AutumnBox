@@ -17,20 +17,34 @@ using AutumnBox.Leafx.ObjectManagement;
 using AutumnBox.OpenFramework.Management;
 using AutumnBox.OpenFramework.Open;
 using System;
+using System.Threading.Tasks;
 
 namespace AutumnBox.OpenFramework.Implementation
 {
     class NotificationManager : INotificationManager
     {
         [AutoInject]
-        public IBaseApi BaseApi { get; set; }
+        private readonly IBaseApi baseApi;
 
-        public void SendNotification(string msg, string title = null, Action onClickHandler = null)
+        public Task<bool> Ask(string msg)
         {
-            //BaseApi.RunOnUIThread(() =>
-            //{
-            //    BaseApi.SendNotification(msg, title, onClickHandler);
-            //});
+            return baseApi.SendNotificationAsk(msg);
+        }
+
+        public void Info(string msg)
+        {
+            baseApi.SendNotificationInfo(msg);
+        }
+
+
+        public void Success(string msg)
+        {
+            baseApi.SendNotificationSuccess(msg);
+        }
+
+        public void Warn(string msg)
+        {
+            baseApi.SendNotificationWarn(msg);
         }
     }
 }
