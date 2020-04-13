@@ -7,8 +7,6 @@
              xmlns:viewmodel="clr-namespace:AutumnBox.GUI.ViewModel"
              xmlns:hc="https://handyorg.github.io/handycontrol"
              mc:Ignorable="d" 
-             Background="{DynamicResource RegionBrush}"
-
              d:DesignWidth="900" >
     <UserControl.DataContext>
         <viewmodel:VMDeviceBar/>

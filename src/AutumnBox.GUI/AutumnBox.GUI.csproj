@@ -182,10 +182,12 @@
     <Compile Include="Services\Impl\OpenFxManagerImpl.cs" />
     <Compile Include="Services\Impl\OperatingSystem.cs" />
     <Compile Include="Services\Impl\SubWindowDialogManagerImpl.cs" />
+    <Compile Include="Services\Impl\TabManager.cs" />
     <Compile Include="Services\Impl\WindowManager.cs" />
     <Compile Include="Services\IOperatingSystemService.cs" />
     <Compile Include="Services\ISubWindowDialog.cs" />
     <Compile Include="Services\ISubWindowDialogManager.cs" />
+    <Compile Include="Services\ITabsManager.cs" />
     <Compile Include="Services\Messages.cs" />
     <Compile Include="Services\Component.cs" />
     <Compile Include="Util\AppUnloader.cs" />
