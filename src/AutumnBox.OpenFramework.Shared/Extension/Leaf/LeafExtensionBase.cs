@@ -11,12 +11,8 @@ namespace AutumnBox.OpenFramework.Extension.Leaf
     /// </summary>
     public abstract class LeafExtensionBase : EmptyExtension, IClassExtension
     {
-        private IEnumerable<ILake> Sources { get; set; }
-
-        private readonly MethodProxy methodProxy;
-
         [AutoInject]
-        private ILake Lake { get; set; }
+        private readonly ILake lake;
 
         /// <summary>
         /// 入口函数,继承者无需关心
@@ -32,12 +28,12 @@ namespace AutumnBox.OpenFramework.Extension.Leaf
                 throw new InvalidOperationException("Lake has not been inject!");
             }
 #endif
-            var methodProxy = new MethodProxy(this, this.FindEntryPoint(), Lake);
-            return methodProxy.Invoke(args);
+            var methodProxy = new MethodProxy(this, this.FindEntryPoint(), lake);
+            return methodProxy.Invoke(args ?? new Dictionary<string, object>());
         }
 
 
-#region IDisposable Support
+        #region IDisposable Support
         private bool disposedValue = false; // 要检测冗余调用
         /// <summary>
         /// 析构一个LeafExtension
@@ -76,6 +72,6 @@ namespace AutumnBox.OpenFramework.Extension.Leaf
             // TODO: 如果在以上内容中替代了终结器，则取消注释以下行。
             // GC.SuppressFinalize(this);
         }
-#endregion
+        #endregion
     }
 }
