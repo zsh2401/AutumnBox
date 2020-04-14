@@ -19,6 +19,6 @@ namespace AutumnBox.Leafx.Container
 {
     public interface IRegisterableLake : ILake
     {
-        void Register(string id,Func<object> factory);
+        void RegisterComponent(string id,Func<object> factory);
     }
 }

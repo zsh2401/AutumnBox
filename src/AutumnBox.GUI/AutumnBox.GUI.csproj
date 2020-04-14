@@ -43,7 +43,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
-    <Prefer32Bit>true</Prefer32Bit>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -250,6 +250,7 @@
     <Compile Include="ViewModel\VMLibsView.cs" />
     <Compile Include="ViewModel\VMLog.cs" />
     <Compile Include="ViewModel\VMMainMenu.cs" />
+    <Compile Include="ViewModel\VMMainTabs.cs" />
     <Compile Include="ViewModel\VMMainWindow.cs" />
     <Compile Include="ViewModel\VMMainWindowV2.cs" />
     <Compile Include="ViewModel\VMOpenSource.cs" />
@@ -271,6 +272,9 @@
     </Compile>
     <Compile Include="View\Controls\MainMenu.xaml.cs">
       <DependentUpon>MainMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Controls\TabsViewer.xaml.cs">
+      <DependentUpon>TabsViewer.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Controls\XCardsViewer.xaml.cs">
       <DependentUpon>XCardsViewer.xaml</DependentUpon>
@@ -467,6 +471,10 @@
     <Page Include="Resources\Urls.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Controls\TabsViewer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Custom\NiceWindowStyle.xaml">
       <Generator>MSBuild:Compile</Generator>

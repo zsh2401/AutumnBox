@@ -21,6 +21,6 @@ namespace AutumnBox.Leafx.Container
     public interface ILake
     {
         int Size { get; }
-        object Get(string id);
+        object GetComponent(string id);
     }
 }

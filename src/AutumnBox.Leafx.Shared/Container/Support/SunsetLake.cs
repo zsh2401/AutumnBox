@@ -23,7 +23,14 @@ namespace AutumnBox.Leafx.Container.Support
     /// </summary>
     public class SunsetLake : IRegisterableLake
     {
+        /// <summary>
+        /// 内部维护一个字典用于存储所有工厂
+        /// </summary>
         private readonly Dictionary<string, Func<object>> factories = new Dictionary<string, Func<object>>();
+
+        /// <summary>
+        /// 构造Sunset Lake
+        /// </summary>
         public SunsetLake()
         {
             this.RegisterSingleton<ILake>(this);
@@ -31,6 +38,9 @@ namespace AutumnBox.Leafx.Container.Support
             this.RegisterSingleton("lake_name", () => nameof(SunsetLake));
         }
 
+        /// <summary>
+        /// 获取总记录量
+        /// </summary>
         public int Size => factories.Count;
 
         /// <summary>
@@ -38,12 +48,12 @@ namespace AutumnBox.Leafx.Container.Support
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public object Get(string id)
+        public object GetComponent(string id)
         {
             lock (factories)
             {
+                return factories[id]();
             }
-            return factories[id]();
         }
 
         /// <summary>
@@ -51,7 +61,7 @@ namespace AutumnBox.Leafx.Container.Support
         /// </summary>
         /// <param name="id"></param>
         /// <param name="factory"></param>
-        public void Register(string id, Func<object> factory)
+        public void RegisterComponent(string id, Func<object> factory)
         {
             lock (factories)
             {

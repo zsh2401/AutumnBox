@@ -4,6 +4,7 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.GUI.View.Windows;
+using AutumnBox.Leafx.Container;
 using AutumnBox.Logging;
 using System;
 using System.Linq;
@@ -14,7 +15,7 @@ namespace AutumnBox.GUI.Util
 {
     static class FatalHandler
     {
-        private static string[] blockListForExceptionSource = {
+        private readonly static string[] blockListForExceptionSource = {
             "PresentationCore"
         };
         public static void Current_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)

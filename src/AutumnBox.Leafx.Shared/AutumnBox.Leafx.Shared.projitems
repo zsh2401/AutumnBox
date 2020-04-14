@@ -9,6 +9,8 @@
     <Import_RootNamespace>AutumnBox.Leafx</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Container\ComponentDisposer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Container\ILakeRecord.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Container\Support\ClassComponentsLoader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Container\Support\ClassComponentRegister.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Container\Support\ShouldAutoCreateException.cs" />
@@ -20,7 +22,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Container\Smart\AssemblyScanner.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Container\Support\SunsetLake.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Container\IRegisterableLake.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Container\LakeExtension.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Container\LakeExtension.Getter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Container\LakeSourcesExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Container\Support\ComponentFactoryReader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ObjectManagement\ArgsBuilder.cs" />
@@ -30,5 +32,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)ObjectManagement\ObjectManagementConstants.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ObjectManagement\DependenciesInjector.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Routines\IRoutinesManager.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Container\LakeExtension.Register.cs" />
   </ItemGroup>
 </Project>
