@@ -1,12 +1,14 @@
 ﻿using AutumnBox.Essentials.Extensions;
 using AutumnBox.Essentials.Routines;
 using AutumnBox.Leafx.Container;
+using AutumnBox.Leafx.Container.Support;
 using AutumnBox.Leafx.ObjectManagement;
 using AutumnBox.Logging;
 using AutumnBox.OpenFramework.Management.ExtLibrary.Impl;
 using AutumnBox.OpenFramework.Management.ExtTask;
 using AutumnBox.OpenFramework.Open;
 using System;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace AutumnBox.Essentials
@@ -38,6 +40,9 @@ namespace AutumnBox.Essentials
         [AutoInject]
         private readonly IExtensionTaskManager extensionTaskManager;
 
+        [AutoInject(Id = "register")]
+        private readonly IRegisterableLake rlake;
+
         public override void Ready()
         {
             base.Ready();
@@ -47,6 +52,9 @@ namespace AutumnBox.Essentials
 
             extensionTaskManager.Start<EAutumnBoxUpdateChecker>();
             extensionTaskManager.Start<EAutumnBoxAdFetcher>();
+
+            var componentLoader = new ClassComponentsLoader("AutumnBox.Essentials", rlake, this.GetType().Assembly);
+            componentLoader.Do();
         }
 
         private const string ROUTINE_DO_METHOD_NAME = "Do";

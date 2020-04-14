@@ -1,11 +1,12 @@
 ﻿using AutumnBox.Leafx.ObjectManagement;
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Text;
 
 namespace AutumnBox.Leafx.Container
 {
-	public static class RLakeExtension
+	public static partial class LakeExtension
 	{
 		/// <summary>
 		/// 注册
@@ -248,7 +249,6 @@ namespace AutumnBox.Leafx.Container
 		/// <returns></returns>
 		private static Func<object> GetObjectBuilderOf(ILake lake, Type t)
 		{
-
 			if (lake is null)
 			{
 				throw new ArgumentNullException(nameof(lake));
@@ -267,6 +267,7 @@ namespace AutumnBox.Leafx.Container
 			{
 				ObjectBuilder objBuilder = new ObjectBuilder(t, lake);
 				var obj = objBuilder.Build();
+				FreeKitRecord(GenerateIdByType(t), obj);
 				return obj;
 			};
 		}

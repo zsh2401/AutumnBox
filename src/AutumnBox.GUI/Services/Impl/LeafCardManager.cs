@@ -33,7 +33,6 @@ namespace AutumnBox.GUI.Services.Impl
                     Views.Add(r);
                     return true;
                 });
-                SLogger<LeafCardManager>.Info($"There is {Views.Count()} leaf card");
             });
         }
         public void Remove(object view)
@@ -43,6 +42,7 @@ namespace AutumnBox.GUI.Services.Impl
             {
                 viewsWithP.RemoveAt(index);
             }
+            Reorder();
         }
     }
 }

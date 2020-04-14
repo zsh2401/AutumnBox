@@ -10,7 +10,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Container\ComponentDisposer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Container\IDisposableComponent.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Container\ILakeRecord.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Container\LakeExtension.Register.FreeKit.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Container\Support\ClassComponentsLoader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Container\Support\ClassComponentRegister.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Container\Support\ShouldAutoCreateException.cs" />

@@ -22,7 +22,7 @@ namespace AutumnBox.Leafx.Container
     /// <summary>
     /// Lake的拓展函数
     /// </summary>
-    public static class LakeExtension
+    public static partial class LakeExtension
     {
         /// <summary>
         /// 安全获取函数
@@ -71,7 +71,7 @@ namespace AutumnBox.Leafx.Container
         /// <returns></returns>
         public static object Get(this ILake lake, Type t)
         {
-            return lake.GetComponent(RLakeExtension.GenerateIdByType(t));
+            return lake.GetComponent(GenerateIdByType(t));
         }
 
         /// <summary>

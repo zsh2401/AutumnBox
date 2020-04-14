@@ -39,8 +39,11 @@
     <Grid>
         <hc:Divider VerticalAlignment="Top" Margin="0"/>
         <DockPanel>
-            <controls:XCardsViewer DockPanel.Dock="Left"/>
-            <controls:TabsViewer Padding="0,0,0,22" DockPanel.Dock="Right"/>
+            <hc:ScrollViewer Padding="0,0,0,22" DockPanel.Dock="Left">
+                <controls:XCardsViewer/>
+            </hc:ScrollViewer>
+            <controls:ExtensionsFinder DockPanel.Dock="Right"/>
+            <!--<controls:TabsViewer Padding="0,0,0,22" DockPanel.Dock="Right"/>-->
         </DockPanel>
         <DockPanel VerticalAlignment="Bottom" Background="{DynamicResource BorderBrush}">
             <hc:Divider LineStroke="{DynamicResource ThirdlyTextBrush}" DockPanel.Dock="Top" Margin="0"/>

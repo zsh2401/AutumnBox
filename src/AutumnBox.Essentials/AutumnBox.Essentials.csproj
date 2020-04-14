@@ -32,6 +32,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -50,11 +52,13 @@
     <Compile Include="Extensions\EExample.cs" />
     <Compile Include="EssentialsLibrarin.cs" />
     <Compile Include="Extensions\EExtensionInstaller.cs" />
+    <Compile Include="Extensions\EDevPanelSwitcher.cs" />
     <Compile Include="ExternalXCards\AdXCard.cs" />
     <Compile Include="ExternalXCards\MotdXCard.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Routines\AdLoader.cs" />
     <Compile Include="Routines\MotdLoader.cs" />
+    <Compile Include="XCards\DevPanel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AutumnBox.Basic\AutumnBox.Basic.csproj">
