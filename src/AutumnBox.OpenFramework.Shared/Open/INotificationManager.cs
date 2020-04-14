@@ -29,17 +29,20 @@ namespace AutumnBox.OpenFramework.Open
         /// </summary>
         /// <param name="msg"></param>
         void Info(string msg);
+
         /// <summary>
         /// 向用户询问
         /// </summary>
         /// <param name="msg"></param>
         /// <returns></returns>
         Task<bool> Ask(string msg);
+
         /// <summary>
         /// 发送警告
         /// </summary>
         /// <param name="msg"></param>
         void Warn(string msg);
+
         /// <summary>
         /// 发送成功消息
         /// </summary>
