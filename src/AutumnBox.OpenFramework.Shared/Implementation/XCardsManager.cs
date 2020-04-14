@@ -13,7 +13,7 @@
 *
 * ==============================================================================
 */
-using AutumnBox.Leafx.ObjectManagement;
+using AutumnBox.Leafx.Container.Support;
 using AutumnBox.OpenFramework.Management;
 using AutumnBox.OpenFramework.Open;
 using System;
@@ -21,6 +21,7 @@ using System.Collections.Generic;
 
 namespace AutumnBox.OpenFramework.Implementation
 {
+    [Component(Type = typeof(IXCardsManager))]
     internal sealed class XCardsManager : IXCardsManager
     {
         private readonly IBaseApi baseApi;

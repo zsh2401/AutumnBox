@@ -1,8 +1,10 @@
-﻿using AutumnBox.OpenFramework.Management;
+﻿using AutumnBox.Leafx.Container.Support;
+using AutumnBox.OpenFramework.Management;
 using AutumnBox.OpenFramework.Open;
 
 namespace AutumnBox.OpenFramework.Implementation
 {
+    [Component(Type = typeof(IResourcesManager))]
     internal class ResManagerImpl : IResourcesManager
     {
         private readonly IBaseApi baseApi;

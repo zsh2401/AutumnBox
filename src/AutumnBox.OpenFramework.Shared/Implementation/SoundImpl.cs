@@ -1,8 +1,10 @@
-﻿using AutumnBox.OpenFramework.Management;
+﻿using AutumnBox.Leafx.Container.Support;
+using AutumnBox.OpenFramework.Management;
 using AutumnBox.OpenFramework.Open;
 
 namespace AutumnBox.OpenFramework.Implementation
 {
+    [Component(Type = typeof(ISoundService))]
     internal class SoundImpl : ISoundService
     {
         private readonly IBaseApi baseApi;

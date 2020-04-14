@@ -3,12 +3,14 @@
 ** date:  2018/8/2 1:53:51 (UTC +8:00)
 ** desc： ...
 *************************************************/
+using AutumnBox.Leafx.Container.Support;
 using AutumnBox.OpenFramework.Management;
 using AutumnBox.OpenFramework.Open;
 using System;
 
 namespace AutumnBox.OpenFramework.Implementation
 {
+    [Component(Type =typeof(IAppManager))]
     internal partial class AppManagerImpl : IAppManager
     {
         private readonly IBaseApi sourceApi;

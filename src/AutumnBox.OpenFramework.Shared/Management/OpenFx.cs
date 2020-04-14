@@ -8,8 +8,6 @@ using AutumnBox.OpenFramework.Open.LKit;
 using AutumnBox.OpenFramework.Management.ExtLibrary.Impl;
 using AutumnBox.OpenFramework.Management.ExtTask;
 using AutumnBox.Logging;
-using AutumnBox.Leafx.Container;
-using AutumnBox.Leafx.Container.Support;
 
 namespace AutumnBox.OpenFramework.Management
 {
@@ -77,9 +75,9 @@ namespace AutumnBox.OpenFramework.Management
             Lake.RegisterSingleton<IMd5, Md5Impl>();
             Lake.RegisterSingleton<ISoundService, SoundImpl>();
             Lake.RegisterSingleton<IEmbeddedFileManager, EmbeddedFileManagerImpl>();
-            Lake.RegisterSingleton<IDeviceManager, DeviceSelectorImpl>();
             Lake.RegisterSingleton<IOperatingSystemAPI, OSImpl>();
             Lake.RegisterSingleton<IUx, UxImpl>();
+            Lake.RegisterSingleton<IResourcesManager, ResManagerImpl>();
             Lake.RegisterSingleton<IAppManager, AppManagerImpl>();
             Lake.RegisterSingleton<IDeviceManager, DeviceManager>();
             Lake.RegisterSingleton<IClassTextReader, ClassTextReader>();

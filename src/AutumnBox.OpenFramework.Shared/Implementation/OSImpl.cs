@@ -1,5 +1,6 @@
 ﻿using AutumnBox.Basic.Calling;
 using AutumnBox.Basic.Data;
+using AutumnBox.Leafx.Container.Support;
 using AutumnBox.Logging;
 using AutumnBox.OpenFramework.Management;
 using AutumnBox.OpenFramework.Open;
@@ -8,6 +9,7 @@ using System.Diagnostics;
 
 namespace AutumnBox.OpenFramework.Implementation
 {
+    [Component(Type = typeof(IOperatingSystemAPI))]
     internal class OSImpl : IOperatingSystemAPI
     {
         private readonly IBaseApi baseApi;

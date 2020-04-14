@@ -1,9 +1,11 @@
-﻿using AutumnBox.OpenFramework.Open;
+﻿using AutumnBox.Leafx.Container.Support;
+using AutumnBox.OpenFramework.Open;
 using System;
 using System.IO;
 
 namespace AutumnBox.OpenFramework.Implementation
 {
+    [Component(Type = typeof(IMd5))]
     internal class Md5Impl : IMd5
     {
         /// <summary>

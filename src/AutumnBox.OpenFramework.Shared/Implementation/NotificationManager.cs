@@ -13,6 +13,7 @@
 *
 * ==============================================================================
 */
+using AutumnBox.Leafx.Container.Support;
 using AutumnBox.Leafx.ObjectManagement;
 using AutumnBox.OpenFramework.Management;
 using AutumnBox.OpenFramework.Open;
@@ -21,6 +22,7 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.OpenFramework.Implementation
 {
+    [Component(Type = typeof(INotificationManager))]
     class NotificationManager : INotificationManager
     {
         [AutoInject]

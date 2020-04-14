@@ -13,6 +13,7 @@
 *
 * ==============================================================================
 */
+using AutumnBox.Leafx.Container.Support;
 using AutumnBox.OpenFramework.Open;
 using System;
 using System.Collections.Generic;
@@ -20,6 +21,7 @@ using System.Text;
 
 namespace AutumnBox.OpenFramework.Implementation
 {
+    [Component(Type = typeof(IClassTextReader))]
     class ClassTextReader : IClassTextReader
     {
         public IClassTextDictionary Read(Type type)

@@ -3,12 +3,14 @@
 ** date:  2018/8/2 2:09:45 (UTC +8:00)
 ** desc： ...
 *************************************************/
+using AutumnBox.Leafx.Container.Support;
 using AutumnBox.OpenFramework.Open;
 using System.IO;
 using System.Reflection;
 
 namespace AutumnBox.OpenFramework.Implementation
 {
+    [Component(Type = typeof(IEmbeddedFileManager))]
     class EmbeddedFileManagerImpl : IEmbeddedFileManager
     {
         private class EmbeddedFileImpl : IEmbeddedFile

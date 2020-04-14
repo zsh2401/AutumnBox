@@ -3,6 +3,7 @@
 ** date:  2018/8/23 19:13:03 (UTC +8:00)
 ** desc： ...
 *************************************************/
+using AutumnBox.Leafx.Container.Support;
 using AutumnBox.OpenFramework.Management;
 using AutumnBox.OpenFramework.Open;
 using System;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.OpenFramework.Implementation
 {
+    [Component(Type = typeof(IUx))]
     class UxImpl : IUx
     {
         private readonly IBaseApi sourceApi;

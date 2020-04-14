@@ -15,12 +15,14 @@
 */
 using AutumnBox.Basic.Device;
 using AutumnBox.Basic.MultipleDevices;
+using AutumnBox.Leafx.Container.Support;
 using AutumnBox.OpenFramework.Management;
 using AutumnBox.OpenFramework.Open.ADBKit;
 using System;
 
 namespace AutumnBox.OpenFramework.Implementation
 {
+    [Component(Type = typeof(IDeviceManager))]
     class DeviceManager : IDeviceManager
     {
 

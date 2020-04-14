@@ -3,6 +3,7 @@
 ** date:  2018/8/2 2:22:20 (UTC +8:00)
 ** desc： ...
 *************************************************/
+using AutumnBox.Leafx.Container.Support;
 using AutumnBox.OpenFramework.Open;
 using System;
 using System.Diagnostics;
@@ -10,6 +11,7 @@ using System.Reflection;
 
 namespace AutumnBox.OpenFramework.Implementation
 {
+    [Component(Type = typeof(ICompApi))]
     class CompImpl : ICompApi
     {
         public Version SdkVersion { get; set; }

@@ -87,7 +87,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Management\ExtLibrary\Impl\DreamLibManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\TextKit\IClassTextDictionary.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Implementation\ClassTextDictionary.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Implementation\DeviceSelectorImpl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Implementation\Md5Impl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Implementation\OSImpl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Implementation\ResManagerImpl.cs" />
