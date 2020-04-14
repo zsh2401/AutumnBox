@@ -12,7 +12,7 @@ namespace AutumnBox.OpenFramework.Extension.Leaf
     public abstract class LeafExtensionBase : EmptyExtension, IClassExtension
     {
         [AutoInject]
-        private readonly ILake lake;
+        private readonly ILake lake = null;
 
         /// <summary>
         /// 入口函数,继承者无需关心

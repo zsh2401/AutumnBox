@@ -37,7 +37,7 @@ namespace AutumnBox.CoreModules
         {
             base.Destory();
             IStorageManager storageManager = LakeProvider.Lake.Get<IStorageManager>();
-            storageManager.Init(STORAGE_ID);
+            storageManager.Initialize(STORAGE_ID);
             storageManager.ClearCache();
         }
         private class CustomWrapper : ClassExtensionWrapper
