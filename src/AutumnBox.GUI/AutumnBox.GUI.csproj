@@ -189,10 +189,10 @@
     <Compile Include="Services\ISubWindowDialogManager.cs" />
     <Compile Include="Services\ITabsManager.cs" />
     <Compile Include="Services\Messages.cs" />
-    <Compile Include="Services\Component.cs" />
     <Compile Include="Util\AppUnloader.cs" />
     <Compile Include="Services\Impl\Debugging\LogEventArgs.cs" />
     <Compile Include="Services\Impl\Debugging\ZhangBeiHaiLoggingStation.cs" />
+    <Compile Include="Util\AutumnObjectExtension.cs" />
     <Compile Include="Util\DesignHelper.cs" />
     <Compile Include="Util\Extensions.cs" />
     <Compile Include="Util\FatalHandler.cs" />

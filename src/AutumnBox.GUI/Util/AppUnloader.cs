@@ -5,6 +5,7 @@
 *************************************************/
 using AutumnBox.Basic.ManagedAdb;
 using AutumnBox.GUI.Properties;
+using AutumnBox.GUI.Services;
 using AutumnBox.GUI.Services.Impl.OS;
 using AutumnBox.OpenFramework.Management;
 

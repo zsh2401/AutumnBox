@@ -283,7 +283,7 @@ namespace AutumnBox.GUI.Services.Impl
 
         public void SetWindowBlur(IntPtr hWnd)
         {
-            Component.Get<IAcrylicHelper>().SetWindowBlur(hWnd); ;
+            this.GetComponent<IAcrylicHelper>().SetWindowBlur(hWnd); ;
         }
 
         public void SendNotificationInfo(string msg)

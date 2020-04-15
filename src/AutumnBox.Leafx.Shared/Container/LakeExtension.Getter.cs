@@ -31,7 +31,7 @@ namespace AutumnBox.Leafx.Container
         /// <param name="lake"></param>
         /// <param name="defaultValue"></param>
         /// <returns></returns>
-        public static T SafeGet<T>(this ILake lake, T defaultValue = default(T))
+        public static T SafeGet<T>(this ILake lake, T defaultValue = default)
         {
             if (lake is null)
             {

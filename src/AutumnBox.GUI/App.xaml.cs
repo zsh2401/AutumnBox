@@ -10,6 +10,7 @@
 * Author: zsh2401
 *
 \* =============================================================================*/
+using AutumnBox.GUI.Resources.Languages;
 using AutumnBox.GUI.Services;
 using AutumnBox.GUI.Services.Impl.OS;
 using AutumnBox.GUI.Util;
@@ -49,7 +50,17 @@ namespace AutumnBox.GUI
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            if (!CheckOther(e.Args)) return;
+            if (!CheckOther(e.Args))
+            {
+                Shutdown(0);
+                return;
+            };
+#if DEBUG
+            if (!Lang.FileCheck())
+            {
+                Shutdown(1);
+            }
+#endif
             LoadComponent();
             GLake.Lake.Get<IThemeManager>().Reload();
             base.OnStartup(e);

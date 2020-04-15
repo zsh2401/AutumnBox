@@ -13,6 +13,10 @@
 *
 * ==============================================================================
 */
+using System.Linq;
+using System.Collections.Generic;
+using System.Windows;
+using System;
 
 namespace AutumnBox.GUI.Resources.Languages
 {
@@ -21,43 +25,58 @@ namespace AutumnBox.GUI.Resources.Languages
     /// </summary>
     internal static class Lang
     {
-        /// <summary>
-        /// 获取
-        /// </summary>
-        /// <param name="key"></param>
-        /// <returns></returns>
-        public static string Get(string key, bool threadSafe = true)
+        public static List<(string, string)> Langs { get; }
+
+        static Lang()
         {
-            if (threadSafe)
-            {
-                return App.Current.Dispatcher.Invoke(() =>
-                {
-                    return (string)App.Current.Resources[key];
-                });
-            }
-            else
-            {
-                return (string)App.Current.Resources[key];
-            }
+            Langs = new List<(string, string)>() {
+                ( "简体中文","pack://application:,,,/AutumnBox.GUI;component/Resources/Languages/zh-CN.xaml"),
+                ("English","pack://application:,,,/AutumnBox.GUI;component/Resources/Languages/en-US.xaml"),
+            };
         }
-        /// <summary>
-        /// 安全地获取，当找不到对应文本时，将返回键
-        /// </summary>
-        /// <param name="key"></param>
-        /// <returns></returns>
-        public static string Safe(string key, bool threadSafe = true)
+        public static bool FileCheck()
         {
-            if (threadSafe)
+            IEnumerable<ResourceDictionary> langResourceDictionaries =
+                from langInfo in Langs
+                select new ResourceDictionary() { Source = new System.Uri(langInfo.Item2) };
+
+            var baseLang = langResourceDictionaries.FirstOrDefault();
+            bool allOk = true;
+
+            for (int i = 1; i < langResourceDictionaries.Count(); i++)
             {
-                return App.Current.Dispatcher.Invoke(() =>
-               {
-                   return App.Current.Resources[key] as string;
-               }) ?? key;
+                allOk = DiffAndPrint(baseLang, langResourceDictionaries.ElementAt(i));
             }
-            else
+            return allOk;
+        }
+        private static bool DiffAndPrint(ResourceDictionary baseLang, ResourceDictionary other)
+        {
+            var keysArray = new object[baseLang.Keys.Count];
+            baseLang.Keys.CopyTo(keysArray, 0);
+            var otherKeysArray = new object[other.Keys.Count];
+            other.Keys.CopyTo(otherKeysArray, 0);
+
+            var missing = from key in keysArray
+                          where !otherKeysArray.Contains(key)
+                          select key;
+
+            var extra = from key in otherKeysArray
+                        where !keysArray.Contains(key)
+                        select key;
+
+            missing.All((k) =>
             {
-                return App.Current.Resources[key] as string ?? key;
-            }
+                Console.WriteLine($"missing: {k}");
+                return true;
+            });
+
+            extra.All((k) =>
+            {
+                Console.WriteLine($"extra: {k}");
+                return true;
+            });
+
+            return !(missing.Any() || extra.Any());
         }
     }
 }
