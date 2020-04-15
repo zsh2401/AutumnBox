@@ -86,11 +86,13 @@ namespace AutumnBox.Leafx.ObjectManagement
 
         public object Invoke(Dictionary<string, object> extraArgs = null, bool inject = true)
         {
-            if (instance == null) throw new InvalidOperationException("test");
+            if (instance == null) throw new InvalidOperationException("Please create instance before invoke method");
+
             object[] args = ArgsBuilder.BuildArgs(
                 inject ? Sources : null,
                 extraArgs ?? new Dictionary<string, object>(),
                 method.GetParameters());
+
             object rawInvoker() => method.Invoke(instance, args);
 
             var aspects = GetAroundAspects();

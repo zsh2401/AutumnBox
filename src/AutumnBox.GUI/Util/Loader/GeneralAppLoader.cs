@@ -11,6 +11,7 @@ using AutumnBox.OpenFramework;
 using HandyControl.Data;
 using HandyControl.Tools;
 using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Management;
 
@@ -43,7 +44,7 @@ namespace AutumnBox.GUI.Util.Loader
         }
 
         [Step(6)]
-        private void InitLanguageSystem(ILanguageManager languageManager)
+        private void InitializeLanguageSystem(ILanguageManager languageManager)
         {
             if (Properties.Settings.Default.IsFirstLaunch)
             {

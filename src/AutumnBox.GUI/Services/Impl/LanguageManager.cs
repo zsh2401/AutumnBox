@@ -14,7 +14,7 @@ namespace AutumnBox.GUI.Services.Impl
     /// <summary>
     /// 语言管理器
     /// </summary>
-    [Component(Type = typeof(ILanguageManager))]
+
     sealed class LanguageManager : ILanguageManager
     {
         private const int INDEX_OF_LANG = 0;

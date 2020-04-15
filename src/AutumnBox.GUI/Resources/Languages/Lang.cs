@@ -25,20 +25,20 @@ namespace AutumnBox.GUI.Resources.Languages
     /// </summary>
     internal static class Lang
     {
-        public static List<(string, string)> Langs { get; }
+        public static List<(string, string, string)> Langs { get; }
 
         static Lang()
         {
-            Langs = new List<(string, string)>() {
-                ( "简体中文","pack://application:,,,/AutumnBox.GUI;component/Resources/Languages/zh-CN.xaml"),
-                ("English","pack://application:,,,/AutumnBox.GUI;component/Resources/Languages/en-US.xaml"),
+            Langs = new List<(string, string, string)>() {
+                ( "简体中文","zh-CN","pack://application:,,,/AutumnBox.GUI;component/Resources/Languages/zh-CN.xaml"),
+                ("English","en-US","pack://application:,,,/AutumnBox.GUI;component/Resources/Languages/en-US.xaml"),
             };
         }
         public static bool FileCheck()
         {
             IEnumerable<ResourceDictionary> langResourceDictionaries =
                 from langInfo in Langs
-                select new ResourceDictionary() { Source = new System.Uri(langInfo.Item2) };
+                select new ResourceDictionary() { Source = new System.Uri(langInfo.Item3) };
 
             var baseLang = langResourceDictionaries.FirstOrDefault();
             bool allOk = true;

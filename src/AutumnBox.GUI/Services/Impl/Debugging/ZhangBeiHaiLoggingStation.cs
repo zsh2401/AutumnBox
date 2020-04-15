@@ -22,6 +22,7 @@ namespace AutumnBox.GUI.Services.Impl.Debugging
         private Queue<FormatLog> buffer;
         private FileStream fs;
         private StreamWriter sw;
+        private Thread thread;
         private FileInfo LogFile
         {
             get
@@ -47,16 +48,21 @@ namespace AutumnBox.GUI.Services.Impl.Debugging
         }
         public void Work()
         {
-            fs = new FileStream(LogFile.FullName, FileMode.OpenOrCreate, FileAccess.ReadWrite);
-            sw = new StreamWriter(fs)
+            if (thread != null) return;
+            lock (this)
             {
-                AutoFlush = true
-            };
-            new Thread(Loop)
-            {
-                Name = "LoggingStation",
-                IsBackground = true
-            }.Start();
+                fs = new FileStream(LogFile.FullName, FileMode.OpenOrCreate, FileAccess.ReadWrite);
+                sw = new StreamWriter(fs)
+                {
+                    AutoFlush = true
+                };
+                thread = new Thread(Loop)
+                {
+                    Name = "LoggingStation",
+                    IsBackground = true
+                };
+                thread.Start();
+            }
         }
         public void Log(ILog log)
         {

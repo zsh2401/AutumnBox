@@ -23,7 +23,7 @@ namespace AutumnBox.OpenFramework.Extension.Leaf
         public object Main(Dictionary<string, object> args)
         {
 #if !DEBUG
-            if (Lake == null)
+            if (lake == null)
             {
                 throw new InvalidOperationException("Lake has not been inject!");
             }

@@ -55,14 +55,17 @@ namespace AutumnBox.GUI
                 Shutdown(0);
                 return;
             };
-#if DEBUG
+#if DEBUG && STRICT_CHECK
             if (!Lang.FileCheck())
             {
+                MessageBox.Show("Language File Error! See details in debug output!",
+                    "Error!",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
                 Shutdown(1);
             }
 #endif
             LoadComponent();
-            GLake.Lake.Get<IThemeManager>().Reload();
+            this.GetComponent<IThemeManager>().Reload();
             base.OnStartup(e);
         }
         private bool CheckOther(string[] args)
