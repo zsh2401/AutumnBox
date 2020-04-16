@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading;
@@ -31,7 +28,7 @@ namespace AutumnBox.Logging.Management
         {
             if (writeTask?.Status == TaskStatus.Running)
             {
-                throw new InvalidOperationException("FSCoreLogger is already started");
+                throw new InvalidOperationException($"{nameof(FSCoreLogger)} is already running");
             }
             writeTask = Task.Run(() =>
             {

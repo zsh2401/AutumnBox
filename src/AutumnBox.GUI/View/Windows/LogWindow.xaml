@@ -9,7 +9,7 @@
         FontFamily="{DynamicResource AutumnBox.Font}"
         Background="Black"
         WindowStartupLocation="CenterScreen" MinHeight="525" MinWidth="800"
-        Title="{Binding Title}">
+        Title="AutumnBox Debug Window-Select and Ctrl+C to copy">
     <Window.DataContext>
         <viewmodel:VMLog></viewmodel:VMLog>
     </Window.DataContext>
@@ -23,15 +23,11 @@
                                 <DockPanel>
                                     <StackPanel  Orientation="Horizontal" DockPanel.Dock="Left">
                                         <TextBlock Text="["/>
-                                        <TextBlock Text="{Binding LogWindowTimeString}"/>
+                                        <TextBlock Text="{Binding Time}"/>
                                         <TextBlock Text="/"/>
                                         <TextBlock Foreground="#FF8BF78E" Text="{Binding Category}"/>
                                         <TextBlock Text="/"/>
-                                        <TextBlock Text="{Binding Level}">
-                                            <TextBlock.Foreground>
-                                                <SolidColorBrush Color="{Binding LevelColor}"></SolidColorBrush>
-                                            </TextBlock.Foreground>
-                                        </TextBlock>
+                                        <TextBlock Text="{Binding Level}"/>
                                         <TextBlock Text="]: "/>
                                     </StackPanel>
                                     <TextBlock Foreground="LightGray" TextWrapping="Wrap" DockPanel.Dock="Right" Text="{Binding Message}"/>

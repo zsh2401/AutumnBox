@@ -7,7 +7,7 @@ namespace AutumnBox.Leafx.Container
 {
     public static partial class LakeExtension
     {
-        public static bool FreeKitStatus { get; private set; } = true;
+        public static bool FreeKitStatus { get; private set; } = false;
         public static bool CanModify { get; private set; } = true;
         public static void EnableFreeKit(bool canNotModify = true)
         {

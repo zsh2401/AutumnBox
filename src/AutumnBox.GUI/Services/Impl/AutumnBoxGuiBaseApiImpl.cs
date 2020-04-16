@@ -243,26 +243,22 @@ namespace AutumnBox.GUI.Services.Impl
 
         public ILeafUI NewLeafUI()
         {
-            ILeafUI result = null;
-            App.Current.Dispatcher.Invoke(() =>
+            return App.Current.Dispatcher.Invoke(() =>
             {
-                result = new LeafWindow()
+                return new LeafWindow()
                 {
                     Owner = App.Current.MainWindow,
                 }.DataContext as ILeafUI;
             });
-            return result;
         }
 
         public object GetNewView(string viewId)
         {
-            switch (viewId)
+            return viewId switch
             {
-                case "inputIpEndPoint":
-                    return new ContentConnectNetDevice();
-                default:
-                    return null;
-            }
+                "inputIpEndPoint" => new ContentConnectNetDevice(),
+                _ => null,
+            };
         }
 
 

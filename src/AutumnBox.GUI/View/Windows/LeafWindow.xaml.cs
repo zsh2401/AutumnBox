@@ -1,4 +1,5 @@
 ﻿using AutumnBox.GUI.ViewModel;
+using AutumnBox.Logging;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -31,9 +32,5 @@ namespace AutumnBox.GUI.View.Windows
         {
             (sender as TextBox).ScrollToEnd();
         }
-        //~LeafWindow()
-        //{
-        //    Trace.WriteLine("Leaf window ~");
-        //}
     }
 }

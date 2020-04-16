@@ -1,7 +1,9 @@
 ﻿using AutumnBox.Leafx.Container;
+using AutumnBox.Leafx.Container.Support;
 using AutumnBox.Logging;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 
@@ -28,8 +30,8 @@ namespace AutumnBox.Leafx.ObjectManagement
         /// <param name="sources"></param>
         public DependenciesInjector(object instance, params ILake[] sources)
         {
-            this.instance = instance ?? throw new System.ArgumentNullException(nameof(instance));
-            this.sources = sources ?? throw new System.ArgumentNullException(nameof(sources));
+            this.instance = instance ?? throw new ArgumentNullException(nameof(instance));
+            this.sources = sources ?? throw new ArgumentNullException(nameof(sources));
         }
 
         /// <summary>
@@ -37,7 +39,8 @@ namespace AutumnBox.Leafx.ObjectManagement
         /// </summary>
         public void Inject()
         {
-            foreach (var injectable in GetInjectables(instance.GetType()))
+            var injectables = GetInjectables(instance.GetType());
+            foreach (var injectable in injectables)
             {
                 try
                 {
@@ -73,8 +76,7 @@ namespace AutumnBox.Leafx.ObjectManagement
             }
             else
             {
-                var byIdResult = sources.Get(id);
-                return byIdResult != null ? byIdResult : sources.Get(t);
+                return sources.Get(id) ?? sources.Get(t);
             }
         }
 

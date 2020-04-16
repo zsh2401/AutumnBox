@@ -1,5 +1,6 @@
 ﻿using AutumnBox.Leafx.Container;
 using AutumnBox.Leafx.ObjectManagement;
+using AutumnBox.Logging;
 using AutumnBox.OpenFramework.Extension;
 using System;
 using System.Collections.Generic;
@@ -17,9 +18,17 @@ namespace AutumnBox.OpenFramework.Management.ExtTask
         {
             return new Task<object>(() =>
             {
-                threadReceiver(Thread.CurrentThread);
-                IClassExtension classExtension = (IClassExtension)new ObjectBuilder(extType, source).Build();
-                return classExtension.Main(extralArgs);
+                try
+                {
+                    threadReceiver(Thread.CurrentThread);
+                    IExtension classExtension = (IExtension)new ObjectBuilder(extType, source).Build();
+                    return classExtension.Main(extralArgs);
+                }
+                catch (Exception e)
+                {
+                    SLogger.Warn("ExtensionTask", "Uncaught error", e);
+                    return default;
+                }
             });
         }
     }

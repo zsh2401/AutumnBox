@@ -1,12 +1,9 @@
 ﻿using AutumnBox.GUI.MVVM;
 using AutumnBox.GUI.Services;
-
-using AutumnBox.GUI.Util.UI;
 using AutumnBox.GUI.View.LeafContent;
 using AutumnBox.GUI.View.Windows;
 using AutumnBox.Leafx.ObjectManagement;
 using AutumnBox.Logging;
-using AutumnBox.OpenFramework.Extension.Leaf;
 using AutumnBox.OpenFramework.Open.LKit;
 using HandyControl.Controls;
 using System;
@@ -39,6 +36,12 @@ namespace AutumnBox.GUI.ViewModel
             }
         }
         private Visibility lv;
+
+        [AutoInject]
+        private readonly IOperatingSystemService operatingSystemService;
+
+        [AutoInject]
+        private readonly ISubWindowDialogManager subWindowDialogManager;
 
         public Visibility ProgressBarVisibility
         {
@@ -253,8 +256,7 @@ namespace AutumnBox.GUI.ViewModel
             }
         }
 
-        [AutoInject]
-        private readonly IOperatingSystemService operatingSystemService;
+
 
         public void EnableHelpBtn(Action callback)
         {
@@ -335,10 +337,6 @@ namespace AutumnBox.GUI.ViewModel
             });
             View = null;
         }
-
-
-        [AutoInject]
-        private readonly ISubWindowDialogManager subWindowDialogManager;
 
         public void ShowMessage(string message)
         {

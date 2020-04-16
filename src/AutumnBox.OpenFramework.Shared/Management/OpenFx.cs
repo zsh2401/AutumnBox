@@ -91,11 +91,6 @@ namespace AutumnBox.OpenFramework.Management
             Lake.Register<ICommandExecutor, HestExecutor>();
             Lake.Register<IDevice>(() => Lake.Get<IBaseApi>().SelectedDevice);
             Lake.Register<ILeafUI>(() => Lake.Get<IBaseApi>().NewLeafUI());
-
-            if (Lake.Get<IAppManager>().IsDeveloperMode)
-            {
-                Lake.Get<INotificationManager>().Success($"{Lake.Size} components is registered");
-            }
         }
     }
 }

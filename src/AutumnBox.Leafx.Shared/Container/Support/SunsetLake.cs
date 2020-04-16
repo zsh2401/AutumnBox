@@ -13,7 +13,9 @@
 *
 * ==============================================================================
 */
+using AutumnBox.Logging;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 
 namespace AutumnBox.Leafx.Container.Support
@@ -26,7 +28,7 @@ namespace AutumnBox.Leafx.Container.Support
         /// <summary>
         /// 内部维护一个字典用于存储所有工厂
         /// </summary>
-        private readonly Dictionary<string, Func<object>> factories = new Dictionary<string, Func<object>>();
+        private readonly ConcurrentDictionary<string, Func<object>> factories = new ConcurrentDictionary<string, Func<object>>();
 
         /// <summary>
         /// 构造Sunset Lake
@@ -50,10 +52,7 @@ namespace AutumnBox.Leafx.Container.Support
         /// <returns></returns>
         public object GetComponent(string id)
         {
-            lock (factories)
-            {
-                return factories[id]();
-            }
+            return factories[id]();
         }
 
         /// <summary>
@@ -63,10 +62,12 @@ namespace AutumnBox.Leafx.Container.Support
         /// <param name="factory"></param>
         public void RegisterComponent(string id, Func<object> factory)
         {
-            lock (factories)
-            {
-                factories[id] = factory;
-            }
+            factories[id] = factory;
+        }
+
+        public IEnumerable<string> GetAll_ID()
+        {
+            return factories.Keys;
         }
     }
 }

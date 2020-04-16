@@ -16,62 +16,46 @@ namespace AutumnBox.GUI.Services.Impl
         private const int INDEX_OF_LANG_RES = 0;
         private const string DEFAULT_LANGUAGE_CODE = "en-US";
         private const string DEFAULT_LOADED_LANGUAGE = "zh-CN";
+
+        public event EventHandler LanguageChanged;
+
         public ILanguage Current
         {
             get => _current; set
             {
                 //屏蔽无用操作
-                if (value == null || value.GetHashCode() == Current.GetHashCode())
+                if (value == null && (Current as ILanguage)?.Equals(value) == true)
                 {
                     return;
                 }
-                App.Current.Resources.MergedDictionaries[INDEX_OF_LANG_RES] = _current.Resource;
+                if (!LoadedLanguages.Contains(value))
+                {
+                    LoadLanguage(value);
+                }
+                //设置语言资源
+                App.Current.Resources.MergedDictionaries[INDEX_OF_LANG_RES] = value.Resource;
+                //保存当前设置
                 _current = value;
+                //触发事件
                 LanguageChanged?.Invoke(this, new EventArgs());
             }
         }
-        private ILanguage _current = null;
+        private ILanguage _current;
 
-        public IEnumerable<ILanguage> Languages { get; }
+        public IEnumerable<ILanguage> LoadedLanguages => languages;
+        private readonly List<ILanguage> languages = new List<ILanguage>();
+
+        public ILanguage DefaultLanguage => this.FindLanguageByCode(DEFAULT_LANGUAGE_CODE);
 
         public LanguageManagerV2()
         {
-            Languages = from langInfo in Lang.Langs
-                        orderby langInfo.Item2 == DEFAULT_LANGUAGE_CODE descending
+            var langs = from langInfo in Lang.Langs
                         select new Language(langInfo.Item1, langInfo.Item2, langInfo.Item3);
+            languages.AddRange(langs);
 
-            _current = Languages.Where(l => l.LanCode == DEFAULT_LOADED_LANGUAGE).FirstOrDefault();
+            _current = LoadedLanguages.Where(l => l.LanCode == DEFAULT_LOADED_LANGUAGE).FirstOrDefault();
         }
 
-        public event EventHandler LanguageChanged;
-
-        public void ApplyByEnvoriment()
-        {
-            switch (Thread.CurrentThread.CurrentCulture.Name)
-            {
-                case "zh-TW":
-                case "zh-CN":
-                case "zh-SG":
-                case "zh-HK":
-                    ApplyByLanguageCode("zh-CN");
-                    break;
-                default:
-                    ApplyByLanguageCode(DEFAULT_LANGUAGE_CODE);
-                    break;
-            }
-        }
-
-        public void ApplyByLanguageCode(string langCode)
-        {
-            var result = Languages.Where(lang => lang.LanCode == langCode).FirstOrDefault();
-            if (result == null) result = Languages.Where(lang => lang.LanCode == DEFAULT_LANGUAGE_CODE).FirstOrDefault();
-            Current = result;
-        }
-
-        public void ApplyBySetting()
-        {
-            ApplyByLanguageCode(Settings.Default.Language);
-        }
 
         ~LanguageManagerV2()
         {
@@ -79,7 +63,7 @@ namespace AutumnBox.GUI.Services.Impl
             Settings.Default.Save();
         }
 
-        private class Language : ILanguage, IEquatable<Language>
+        private class Language : ILanguage, IEquatable<ILanguage>
         {
             public string LanCode { get; }
 
@@ -103,20 +87,18 @@ namespace AutumnBox.GUI.Services.Impl
                 {
                     throw new ArgumentException("message", nameof(langFileUri));
                 }
+
                 this.LanCode = langCode;
                 this.LangName = langName;
                 this.Resource = new ResourceDictionary() { Source = new Uri(langFileUri) };
             }
 
-            public bool Equals(ILanguage other)
+            public override bool Equals(object obj)
             {
-                return other != null &&
-       LanCode == other.LanCode &&
-       LangName == other.LangName &&
-       EqualityComparer<ResourceDictionary>.Default.Equals(Resource, other.Resource);
+                return Equals(obj as ILanguage);
             }
 
-            public bool Equals(Language other)
+            public bool Equals(ILanguage other)
             {
                 return other != null &&
                        LanCode == other.LanCode &&
@@ -133,11 +115,6 @@ namespace AutumnBox.GUI.Services.Impl
                 return hashCode;
             }
 
-            public override bool Equals(object obj)
-            {
-                return this.Equals(obj);
-            }
-
             public static bool operator ==(Language left, Language right)
             {
                 return EqualityComparer<Language>.Default.Equals(left, right);
@@ -147,6 +124,11 @@ namespace AutumnBox.GUI.Services.Impl
             {
                 return !(left == right);
             }
+        }
+
+        public void LoadLanguage(ILanguage language)
+        {
+            this.languages.Add(language);
         }
     }
 }

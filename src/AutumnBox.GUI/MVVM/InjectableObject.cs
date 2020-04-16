@@ -16,12 +16,12 @@ namespace AutumnBox.GUI.MVVM
         {
             if ((!IsDesignMode()) && InjectProperties)
             {
-                DependenciesInjector.Inject(this, App.Current?.Lake);
+                DependenciesInjector.Inject(this, App.Current.Lake);
             }
         }
         public bool IsDesignMode()
         {
-            return System.ComponentModel.DesignerProperties.GetIsInDesignMode(new DependencyObject());
+            return DesignerProperties.GetIsInDesignMode(new DependencyObject());
         }
     }
 }

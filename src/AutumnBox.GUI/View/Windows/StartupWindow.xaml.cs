@@ -14,6 +14,7 @@ namespace AutumnBox.GUI.View.Windows
     public partial class StartupWindow
     {
         private readonly AbstractAppLoader appLoader;
+
         public StartupWindow()
         {
             InitializeComponent();
@@ -35,23 +36,20 @@ namespace AutumnBox.GUI.View.Windows
         {
             App.Current.Dispatcher.Invoke(() =>
             {
-                SLogger<StartupWindow>.Info("Switching to MainWindowV3");
                 var mainWindow = new MainWindowV3();
                 App.Current.MainWindow = mainWindow;
-                this.Close();
+                Close();
                 mainWindow.Show();
-                SLogger<StartupWindow>.Info("Switched");
             });
         }
 
         private void AppLoader_StepFinished(object sender, StepFinishedEventArgs e)
         {
-            double progress = 100.0 * e.FinishedStep / e.TotalStepCount;
-            SLogger<StartupWindow>.Info($"{e.FinishedStep} / {e.TotalStepCount}");
-            App.Current.Dispatcher.Invoke(() =>
-            {
-                //ProgressBar.Value = progress;
-            });
+            //double progress = 100.0 * e.FinishedStep / e.TotalStepCount;
+            //App.Current.Dispatcher.Invoke(() =>
+            //{
+            //    ProgressBar.Value = progress;
+            //});
         }
 
         protected override void OnActivated(EventArgs e)

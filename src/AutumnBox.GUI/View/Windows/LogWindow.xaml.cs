@@ -2,6 +2,7 @@
 using AutumnBox.GUI.MVVM;
 using AutumnBox.GUI.ViewModel;
 using AutumnBox.Logging;
+using AutumnBox.Logging.Management;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -39,9 +40,9 @@ namespace AutumnBox.GUI.View.Windows
         private void CopySelected()
         {
             StringBuilder sb = new StringBuilder();
-            foreach (FormatLog log in LB.SelectedItems)
+            foreach (ILog log in LB.SelectedItems)
             {
-                sb.Append(log);
+                sb.Append(log.ToFormatedString());
             }
             Clipboard.SetText(sb.ToString());
         }

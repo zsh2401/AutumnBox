@@ -9,6 +9,7 @@
     <Import_RootNamespace>AutumnBox.Basic</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)AtmbBasicManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Calling\Adb\AdbCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Calling\Adb\RealtimeShellCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Calling\Adb\ShellCommand.cs" />

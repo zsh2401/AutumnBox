@@ -37,7 +37,7 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
-    <Optimize>true</Optimize>
+    <Optimize>false</Optimize>
     <OutputPath>..\..\dist\Debug\</OutputPath>
     <DefineConstants>TRACE;DEBUG;USE_LOCAL_API</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
@@ -145,7 +145,6 @@
     </Compile>
     <Compile Include="Model\ChoicerContentStartArgs.cs" />
     <Compile Include="Model\ExtensionWrapperDock.cs" />
-    <Compile Include="Model\FormatLog.cs" />
     <Compile Include="Model\LibDock.cs" />
     <Compile Include="Model\OpenSourceProject.cs" />
     <Compile Include="Model\Tip.cs" />
@@ -189,10 +188,9 @@
     <Compile Include="Services\ISubWindowDialog.cs" />
     <Compile Include="Services\ISubWindowDialogManager.cs" />
     <Compile Include="Services\ITabsManager.cs" />
+    <Compile Include="Services\LanguageManagerExtension.cs" />
     <Compile Include="Services\Messages.cs" />
     <Compile Include="Util\AppUnloader.cs" />
-    <Compile Include="Services\Impl\Debugging\LogEventArgs.cs" />
-    <Compile Include="Services\Impl\Debugging\ZhangBeiHaiLoggingStation.cs" />
     <Compile Include="Util\AutumnObjectExtension.cs" />
     <Compile Include="Util\DesignHelper.cs" />
     <Compile Include="Util\Extensions.cs" />
@@ -210,6 +208,7 @@
     <Compile Include="Services\ISoundService.cs" />
     <Compile Include="Services\IWindowManager.cs" />
     <Compile Include="Util\Loader\AbstractAppLoader.cs" />
+    <Compile Include="Util\Loader\AppLoaderFailedEventArgs.cs" />
     <Compile Include="Util\Loader\GeneralAppLoader.cs" />
     <Compile Include="Util\Loader\StepAttribute.cs" />
     <Compile Include="Util\Loader\StepFinishedEventArgs.cs" />

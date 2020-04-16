@@ -19,7 +19,7 @@ namespace AutumnBox.Tests.OpenFX.Leafx
         [TestMethod]
         public void ByIdSingletonTest()
         {
-            Assert.IsTrue((string)lake.Get("clear_dream") == TestFactory.TEST_STR);
+            Assert.IsTrue((string)lake.GetComponent("clear_dream") == TestFactory.TEST_STR);
 
         }
         [TestMethod]
@@ -31,7 +31,7 @@ namespace AutumnBox.Tests.OpenFX.Leafx
         [TestMethod]
         public void ByIdMultiTest()
         {
-            Assert.IsFalse(lake.Get("new_guid") == lake.Get("new_guid"));
+            Assert.IsFalse(lake.GetComponent("new_guid") == lake.GetComponent("new_guid"));
         }
 
         [TestMethod]
@@ -43,7 +43,7 @@ namespace AutumnBox.Tests.OpenFX.Leafx
         [TestMethod]
         public void PropertyTest()
         {
-            Assert.IsTrue(lake.Get("now") == lake.Get("now"));
+            Assert.IsTrue(lake.GetComponent("now") == lake.GetComponent("now"));
         }
 
         private class TestFactory

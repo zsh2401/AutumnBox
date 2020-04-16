@@ -8,7 +8,7 @@ using System.Windows;
 namespace AutumnBox.GUI.Services.Impl
 {
     [Component(Type = typeof(IOperatingSystemService))]
-    class OperatingSystem : IOperatingSystemService
+    internal class OperatingSystem : IOperatingSystemService
     {
         public bool HaveAdministratorPermission
         {

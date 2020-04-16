@@ -6,7 +6,6 @@
 using AutumnBox.GUI.MVVM;
 using AutumnBox.GUI.Properties;
 using AutumnBox.GUI.Services;
-using AutumnBox.GUI.Services.Impl.Debugging;
 using AutumnBox.GUI.View.Windows;
 using AutumnBox.Leafx.ObjectManagement;
 using System.Collections.Generic;
@@ -173,8 +172,9 @@ namespace AutumnBox.GUI.ViewModel
 
         public IEnumerable<ILanguage> Languages
         {
-            get => languageManager.Languages;
+            get => languageManager.LoadedLanguages;
         }
+
         public ILanguage SelectedLanguage
         {
             get => languageManager.Current;
@@ -227,7 +227,7 @@ namespace AutumnBox.GUI.ViewModel
             {
                 try
                 {
-                    Process.Start(ZhangBeiHaiLoggingStation.LOG_FLODER);
+                    Process.Start("./");
                 }
                 catch { }
             });
