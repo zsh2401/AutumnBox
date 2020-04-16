@@ -17,7 +17,7 @@ namespace AutumnBox.Logging
         /// <param name="message"></param>
         public static void Debug(object category, object message)
         {
-            LoggingManager.LogStation.Log(new Log(nameof(Debug), category, message));
+            LoggingManager.CoreLogger.Log(new Log(nameof(Debug), category, message));
         }
 
         /// <summary>
@@ -28,7 +28,7 @@ namespace AutumnBox.Logging
         /// <param name="e"></param>
         public static void Debug(object category, object message, Exception e)
         {
-            LoggingManager.LogStation.Log(new Log(nameof(Debug), category, message, e));
+            LoggingManager.CoreLogger.Log(new Log(nameof(Debug), category, message, e));
         }
 
         /// <summary>
@@ -39,7 +39,7 @@ namespace AutumnBox.Logging
         [Conditional("DEBUG")]
         public static void CDebug(object category, object message)
         {
-            LoggingManager.LogStation.Log(new Log(nameof(CDebug), category, message));
+            LoggingManager.CoreLogger.Log(new Log(nameof(CDebug), category, message));
         }
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace AutumnBox.Logging
         [Conditional("DEBUG")]
         public static void CDebug(object category, object message, Exception e)
         {
-            LoggingManager.LogStation.Log(new Log(nameof(CDebug), category, message, e));
+            LoggingManager.CoreLogger.Log(new Log(nameof(CDebug), category, message, e));
         }
 
         /// <summary>
@@ -60,7 +60,7 @@ namespace AutumnBox.Logging
         /// <param name="e"></param>
         public static void Exception(object category, Exception e)
         {
-            LoggingManager.LogStation.Log(new Log(nameof(Exception), category, e));
+            LoggingManager.CoreLogger.Log(new Log(nameof(Exception), category, e));
         }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace AutumnBox.Logging
         /// <param name="message"></param>
         public static void Info(object category, object message)
         {
-            LoggingManager.LogStation.Log(new Log(nameof(Info), category, message));
+            LoggingManager.CoreLogger.Log(new Log(nameof(Info), category, message));
         }
 
         /// <summary>
@@ -80,7 +80,7 @@ namespace AutumnBox.Logging
         /// <param name="message"></param>
         public static void Warn(object category, object message)
         {
-            LoggingManager.LogStation.Log(new Log(nameof(Warn), category, message));
+            LoggingManager.CoreLogger.Log(new Log(nameof(Warn), category, message));
         }
 
         /// <summary>
@@ -91,7 +91,7 @@ namespace AutumnBox.Logging
         /// <param name="e"></param>
         public static void Warn(object category, object message, Exception e)
         {
-            LoggingManager.LogStation.Log(new Log(nameof(Warn), category, message, e));
+            LoggingManager.CoreLogger.Log(new Log(nameof(Warn), category, message, e));
         }
     }
 }

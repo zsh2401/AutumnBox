@@ -23,5 +23,9 @@ namespace AutumnBox.Logging.Management
         /// 日志具体信息
         /// </summary>
         string Message { get; }
+        /// <summary>
+        /// 转换为格式化后的字符串
+        /// </summary>
+        string ToFormatedString();
     }
 }

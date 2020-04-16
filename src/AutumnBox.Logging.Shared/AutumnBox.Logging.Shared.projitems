@@ -11,6 +11,8 @@
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Internal\LoggerImpl.Generic.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)LoggerExtension.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Management\FSCoreLogger.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Management\ICoreLogger.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SLogger.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SLogger.Generic.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ILogger.cs" />

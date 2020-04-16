@@ -19,7 +19,7 @@ namespace AutumnBox.Logging
         /// <param name="message"></param>
         public static void Debug(object message)
         {
-            LoggingManager.LogStation.Log(new Log(nameof(Debug), Category, message));
+            LoggingManager.CoreLogger.Log(new Log(nameof(Debug), Category, message));
         }
 
         /// <summary>
@@ -29,7 +29,7 @@ namespace AutumnBox.Logging
         /// <param name="e"></param>
         public static void Debug(object message, Exception e)
         {
-            LoggingManager.LogStation.Log(new Log(nameof(Debug), Category, message, e));
+            LoggingManager.CoreLogger.Log(new Log(nameof(Debug), Category, message, e));
         }
 
         /// <summary>
@@ -39,7 +39,7 @@ namespace AutumnBox.Logging
         [Conditional("DEBUG")]
         public static void CDebug(object message)
         {
-            LoggingManager.LogStation.Log(new Log(nameof(CDebug), Category, message));
+            LoggingManager.CoreLogger.Log(new Log(nameof(CDebug), Category, message));
         }
         /// <summary>
         /// 写出一条带异常CDebug级别的日志信息,当你的程序集使用非DEBUG编译时,对此函数的调用会被忽略
@@ -48,7 +48,7 @@ namespace AutumnBox.Logging
         [Conditional("DEBUG")]
         public static void CDebug(object message, Exception e)
         {
-            LoggingManager.LogStation.Log(new Log(nameof(CDebug), Category, message, e));
+            LoggingManager.CoreLogger.Log(new Log(nameof(CDebug), Category, message, e));
         }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace AutumnBox.Logging
         /// <param name="e"></param>
         public static void Exception(Exception e)
         {
-            LoggingManager.LogStation.Log(new Log(nameof(Exception), Category, e));
+            LoggingManager.CoreLogger.Log(new Log(nameof(Exception), Category, e));
         }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace AutumnBox.Logging
         /// <param name="message"></param>
         public static void Info(object message)
         {
-            LoggingManager.LogStation.Log(new Log(nameof(Info), Category, message));
+            LoggingManager.CoreLogger.Log(new Log(nameof(Info), Category, message));
         }
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace AutumnBox.Logging
         /// <param name="message"></param>
         public static void Warn(object message)
         {
-            LoggingManager.LogStation.Log(new Log(nameof(Warn), Category, message));
+            LoggingManager.CoreLogger.Log(new Log(nameof(Warn), Category, message));
         }
 
         /// <summary>
@@ -85,7 +85,7 @@ namespace AutumnBox.Logging
         /// <param name="e"></param>
         public static void Warn(object message, Exception e)
         {
-            LoggingManager.LogStation.Log(new Log(nameof(Warn), Category, message, e));
+            LoggingManager.CoreLogger.Log(new Log(nameof(Warn), Category, message, e));
         }
     }
 }

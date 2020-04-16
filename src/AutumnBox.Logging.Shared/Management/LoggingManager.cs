@@ -11,25 +11,11 @@ namespace AutumnBox.Logging.Management
         /// <summary>
         /// 日志站
         /// </summary>
-        public static ILoggingStation LogStation { get; private set; } = new SimpleLoggingStation();
-        private static bool _locked = false;
-        /// <summary>
-        /// 初始化
-        /// </summary>
-        /// <param name="logStation"></param>
-        /// <param name="_lock"></param>
-        public static void SetLogStation(ILoggingStation logStation, bool _lock = false)
+        public static ICoreLogger CoreLogger { get; set; }
+        static LoggingManager()
         {
-            if (_locked) return;
-            if (logStation.GetType().GetCustomAttribute(typeof(HeritableStationAttribute)) != null)
-            {
-                foreach (var log in LogStation.Logs)
-                {
-                    logStation.Log(log);
-                }
-            }
-            LogStation = logStation;
-            _locked = _lock;
+            CoreLogger = new FSCoreLogger(new System.IO.FileInfo("test_log.log"));
+            CoreLogger.Initialize();
         }
     }
 }
