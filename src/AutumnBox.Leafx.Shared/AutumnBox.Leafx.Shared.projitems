@@ -21,7 +21,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)ObjectManagement\AutoInjectAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Container\Support\ComponentAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Container\ILake.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Container\Smart\AssemblyScanner.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Container\Support\SunsetLake.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Container\IRegisterableLake.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Container\LakeExtension.Getter.cs" />
@@ -40,5 +39,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Container\LakeExtension.Register.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Container\LakeExtension.Builder.cs" />
   </ItemGroup>
 </Project>
