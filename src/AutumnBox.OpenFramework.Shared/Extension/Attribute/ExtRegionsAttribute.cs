@@ -3,12 +3,13 @@
     /// <summary>
     /// 模块可用的区域
     /// </summary>
-    public class ExtRegionsAttribute : ExtInfoAttribute
+    public class ExtRegionsAttribute : ExtensionInfoAttribute
     {
         /// <summary>
         /// KEY
         /// </summary>
         public override string Key => ExtensionMetadataKeys.REGIONS;
+
         /// <summary>
         /// 构造
         /// </summary>
@@ -16,9 +17,5 @@
         public ExtRegionsAttribute(params string[] regions) : base(regions)
         {
         }
-        /// <summary>
-        /// 默认，适应所有区域
-        /// </summary>
-        public ExtRegionsAttribute() : base(null) { }
     }
 }

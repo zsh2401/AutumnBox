@@ -1,11 +1,12 @@
-﻿using System;
+﻿#nullable enable
 using System.Collections.Generic;
 using AutumnBox.Leafx.Container;
 using AutumnBox.Leafx.Container.Support;
 using AutumnBox.Leafx.ObjectManagement;
 using AutumnBox.Logging;
-using AutumnBox.OpenFramework.Extension.Leaf.Attributes;
+using AutumnBox.OpenFramework.Management.ExtInfo;
 using AutumnBox.OpenFramework.Open;
+using AutumnBox.OpenFramework.Open.LKit;
 
 namespace AutumnBox.OpenFramework.Extension.Leaf
 {
@@ -15,7 +16,7 @@ namespace AutumnBox.OpenFramework.Extension.Leaf
     public abstract class LeafExtensionBase : EmptyExtension, IClassExtension
     {
         [AutoInject]
-        private readonly ILake lake = null;
+        private ILake? lake = null;
 
         /// <summary>
         /// 入口函数,继承者无需关心
@@ -37,13 +38,25 @@ namespace AutumnBox.OpenFramework.Extension.Leaf
 
         private ILake GetSepLake()
         {
-            SunsetLake lake = new SunsetLake();
-            lake.RegisterSingleton<ILogger>(LoggerFactory.Auto(this.GetType().Name));
-            lake.RegisterSingleton<IClassTextDictionary>(() =>
+            SunsetLake s_lake = new SunsetLake();
+            s_lake.RegisterSingleton<ILogger>(LoggerFactory.Auto(this.GetType().Name));
+            s_lake.RegisterSingleton<IClassTextDictionary>(() =>
             {
                 return lake.Get<IClassTextReader>().Read(this);
             });
-            return lake;
+            s_lake.RegisterSingleton<IExtensionInfo>(() =>
+            {
+                return this.GetExtensionInfo();
+            });
+            s_lake.RegisterSingleton<ILeafUI>(() =>
+            {
+                ILeafUI leafUI = this.lake.Get<ILeafUI>();
+                IExtensionInfo inf = this.GetExtensionInfo();
+                leafUI.Title = inf.Name();
+                leafUI.Icon = inf.Icon();
+                return leafUI;
+            });
+            return s_lake;
         }
 
 

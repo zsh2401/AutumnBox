@@ -4,23 +4,26 @@
 ** desc： ...
 *************************************************/
 
-using System;
-
 namespace AutumnBox.OpenFramework.Extension
 {
     /// <summary>
     /// 拓展模块所有者特性
     /// </summary>
-    public class ExtAuthAttribute : ExtInfoI18NAttribute
+    public class ExtAuthAttribute : ExtensionI18NTextInfoAttribute
     {
+        /// <summary>
+        /// 模块所有者
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="defaultText"></param>
+        /// <param name="other"></param>
+        public ExtAuthAttribute(string defaultText, params string[] other) : base(defaultText, other)
+        {
+        }
 
         /// <summary>
         /// Key
         /// </summary>
         public override string Key => ExtensionMetadataKeys.AUTH;
-        /// <summary>
-        /// 构建
-        /// </summary>
-        public ExtAuthAttribute(params string[] pairsOfRegionAndValue) : base(pairsOfRegionAndValue) { }
     }
 }

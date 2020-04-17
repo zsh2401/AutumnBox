@@ -3,21 +3,31 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 
 namespace AutumnBox.OpenFramework.Extension
 {
+    /// <summary>
+    /// 自适应的国际化信息特性
+    /// </summary>
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
     public abstract class ExtensionI18NTextInfoAttribute : ExtensionInfoAttribute
     {
+        /// <summary>
+        /// 用于解析形如: zh-CN:你好 的正则解析器
+        /// </summary>
+        private static readonly Regex KVParseRegex =
+                new Regex(@"^(?<langcode>[a-z|A-Z|-]+):(?<text>[\s\S]+)$", RegexOptions.Compiled | RegexOptions.Multiline);
 
-        public sealed override string Key
-        {
-            get
-            {
-                return $"ExtensionTextI18NInfo-{this.GetType().Name}-{Id}";
-            }
-        }
+        /// <summary>
+        /// 强制要求覆写键
+        /// </summary>
+        public abstract override string Key { get; }
+
+        /// <summary>
+        /// 值
+        /// </summary>
         public sealed override object Value
         {
             get
@@ -34,25 +44,38 @@ namespace AutumnBox.OpenFramework.Extension
             }
         }
 
-        public string Id { get; }
-
+        /// <summary>
+        /// 默认文本值
+        /// </summary>
         private readonly string defaultText;
-        private readonly IDictionary<string, string> texts;
 
-        public ExtensionI18NTextInfoAttribute(string id,
-            string defaultText,
-            params (string langCode, string text)[] other)
+        /// <summary>
+        /// 内部维护所有地区代码以及文本内容
+        /// </summary>
+        private readonly IReadOnlyDictionary<string, string> texts;
+
+        /// <summary>
+        /// 构造
+        /// </summary>
+        /// <param name="defaultText"></param>
+        /// <param name="otherLanguageTexts"></param>
+        public ExtensionI18NTextInfoAttribute(string defaultText,
+            params string[] otherLanguageTexts)
         {
-            if (string.IsNullOrEmpty(id))
+            if (string.IsNullOrEmpty(defaultText))
             {
-                throw new ArgumentException("message", nameof(id));
+                throw new ArgumentException("message", nameof(defaultText));
             }
-            Id = id;
+
             this.defaultText = defaultText;
             var dictionary = new Dictionary<string, string>();
-            other.All((t) =>
+            otherLanguageTexts.All((text) =>
             {
-                dictionary.Add(t.langCode, t.text);
+                var match = KVParseRegex.Match(text);
+                if (match.Success)
+                {
+                    dictionary.Add(match.Result("${langcode}"), match.Result("${text}"));
+                }
                 return true;
             });
             texts = new ReadOnlyDictionary<string, string>(dictionary);

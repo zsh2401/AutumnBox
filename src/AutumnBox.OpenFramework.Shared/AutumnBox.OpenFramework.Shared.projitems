@@ -24,12 +24,11 @@
     <Compile Include="$(MSBuildThisFileDirectory)Extension\EmptyExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\IClassExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\IExtension.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Extension\Leaf\Attributes\LDoNotScanAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extension\Leaf\LDoNotScanAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Leaf\LeafConstants.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Leaf\LeafExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Leaf\LeafTerminatedException.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Extension\Leaf\Fast\LeafUIHelper.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Extension\Leaf\Attributes\LFromDataAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extension\Leaf\LeafUIExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Implementation\ClassTextReader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Implementation\DeviceManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Implementation\NotificationManager.cs" />
@@ -53,16 +52,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)Open\LakeProvider.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\LKit\ILeafUI.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\LKit\LeafUIEvents.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Extension\Leaf\Attributes\LMainAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extension\Leaf\LMainAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Leaf\LeafExtensionBase.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Extension\Leaf\Attributes\LPropertyAttribute.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Extension\Leaf\Attributes\LPropertySeviceAttribute.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Extension\Leaf\Attributes\LSignalReceiveAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Attribute\ExtensionAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\ExtensionMetadataKeys.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Extension\Attribute\ExtInfoI18NAttribute.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Extension\Attribute\IInformationAttribute.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Extension\Attribute\ExtInfoAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Attribute\ExtAuthAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Attribute\ExtDescAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Attribute\ExtDeveloperMode.cs" />
@@ -70,12 +63,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Attribute\ExtIconAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Attribute\ExtMinApiAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Attribute\ExtNameAttribute.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Extension\Attribute\ExtOfficialAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Attribute\ExtPriority.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Attribute\ExtRegionsAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Attribute\ExtRequiredDeviceStatesAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Attribute\ExtTargetApiAttribute.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Extension\Attribute\ExtTextAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Attribute\ExtVersionAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\ExtLibrary\Impl\ExtensionLibrarian.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\ExtLibrary\ILibrarian.cs" />
@@ -110,7 +101,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Open\LKit\ILeafDialog.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)Extension\Leaf\Fast\" />
     <Folder Include="$(MSBuildThisFileDirectory)Open\LKit\" />
     <Folder Include="$(MSBuildThisFileDirectory)Open\ADBKit\" />
   </ItemGroup>

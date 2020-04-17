@@ -5,16 +5,17 @@ using AutumnBox.OpenFramework.Open;
 using AutumnBox.OpenFramework.Open.LKit;
 using System.Threading;
 using AutumnBox.Leafx.Container;
+using AutumnBox.OpenFramework.Open.TextKit;
 
 namespace AutumnBox.OpenFramework.Extension.Extension.Leaf
 {
     /// <summary>
     /// LeafUI相关拓展函数
     /// </summary>
-    [ExtText("msg", "Do you have install the relative app?", "zh-cn:你似乎没有安装对应APP?")]
-    [ExtText("continue", "Continue forcely", "zh-cn:强行继续")]
-    [ExtText("ok", "Ok", "zh-cn:好")]
-    [ExtText("cancel", "Cancel", "zh-cn:取消")]
+    [ClassText("msg", "Do you have install the relative app?", "zh-cn:你似乎没有安装对应APP?")]
+    [ClassText("continue", "Continue forcely", "zh-cn:强行继续")]
+    [ClassText("ok", "Ok", "zh-cn:好")]
+    [ClassText("cancel", "Cancel", "zh-cn:取消")]
     public static class LeafUIHelper
     {
         /// <summary>
@@ -30,7 +31,6 @@ namespace AutumnBox.OpenFramework.Extension.Extension.Leaf
         /// <summary>
         /// 
         /// </summary>
-        /// <exception cref="LeafTerminatedException"></exception>
         /// <param name="ui"></param>
         /// <param name="tip"></param>
         public static void EFinish(this ILeafUI ui, string tip)
@@ -53,6 +53,7 @@ namespace AutumnBox.OpenFramework.Extension.Extension.Leaf
             text = LakeProvider.Lake.Get<IClassTextReader>().Read((typeof(LeafUIHelper)));
             SLogger.Debug(nameof(LeafUIHelper), $"{typeof(LeafUIHelper)}'s IClassTextManager created");
         }
+
         /// <summary>
         /// 检查是否安装APP并询问用户,如果处于不恰当情况,将停止LeafExtension执行流程
         /// </summary>

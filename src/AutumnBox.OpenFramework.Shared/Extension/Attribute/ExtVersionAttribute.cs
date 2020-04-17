@@ -10,33 +10,37 @@ namespace AutumnBox.OpenFramework.Extension
     /// <summary>
     /// 拓展模块版本号
     /// </summary>
-    public class ExtVersionAttribute : ExtInfoAttribute
+    public class ExtVersionAttribute : ExtensionInfoAttribute
     {
         /// <summary>
-        /// Key
+        /// 键
         /// </summary>
         public override string Key => ExtensionMetadataKeys.VERSION;
+
         /// <summary>
-        /// 构建
+        /// 标记完整的版本号
         /// </summary>
         /// <param name="major">主版本号</param>
         /// <param name="minor">辅版本号</param>
         /// <param name="build">构建号</param>
         public ExtVersionAttribute(int major, int minor, int build)
             : base(new Version(major, minor, build)) { }
+
         /// <summary>
-        /// 构建
+        /// 标记major minor版本号
         /// </summary>
         /// <param name="major"></param>
         /// <param name="minor"></param>
         public ExtVersionAttribute(int major, int minor)
             : this(major, minor, 0) { }
+
         /// <summary>
-        /// 构建
+        /// 仅标记主版本号
         /// </summary>
         /// <param name="major"></param>
         public ExtVersionAttribute(int major)
             : this(major, 0, 0) { }
+
         /// <summary>
         /// 无版本号
         /// </summary>

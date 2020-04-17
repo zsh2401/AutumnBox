@@ -8,17 +8,19 @@
 namespace AutumnBox.OpenFramework.Extension
 {
     /// <summary>
-    /// 拓展模块名
+    /// 拓展模块名标记
     /// </summary>
-    public class ExtNameAttribute : ExtInfoI18NAttribute
+    public class ExtNameAttribute : ExtensionI18NTextInfoAttribute
     {
         /// <summary>
-        /// 构造
+        /// 构造一个拓展模块名特性
         /// </summary>
-        /// <param name="pairsOfRegionsAndValue"></param>
-        public ExtNameAttribute(params string[] pairsOfRegionsAndValue) : base(pairsOfRegionsAndValue)
+        /// <param name="defaultText"></param>
+        /// <param name="otherLanguageTexts"></param>
+        public ExtNameAttribute(string defaultText, params string[] otherLanguageTexts) : base(defaultText, otherLanguageTexts)
         {
         }
+
         /// <summary>
         /// Key
         /// </summary>

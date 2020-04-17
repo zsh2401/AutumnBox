@@ -11,7 +11,7 @@ namespace AutumnBox.OpenFramework.Extension
         /// <summary>
         /// 主方法
         /// </summary>
-        /// <param name="argsDictionary">返回任意的结果,通常为NULL</param>
+        /// <param name="args">返回任意的结果,通常为NULL</param>
         /// <returns></returns>
         object Main(Dictionary<string, object> args);
     }

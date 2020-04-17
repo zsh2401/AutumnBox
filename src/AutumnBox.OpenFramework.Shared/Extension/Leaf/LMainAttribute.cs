@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AutumnBox.OpenFramework.Extension.Leaf.Attributes
+namespace AutumnBox.OpenFramework.Extension.Leaf
 {
 
     /// <summary>

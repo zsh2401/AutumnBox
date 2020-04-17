@@ -9,19 +9,19 @@ namespace AutumnBox.OpenFramework.Extension
     /// <summary>
     /// 拓展模块的目标API
     /// </summary>
-    public class ExtTargetApiAttribute : ExtInfoAttribute
+    public class ExtTargetApiAttribute : ExtensionInfoAttribute
     {
-        /// <summary>
-        /// Key
-        /// </summary>
-        public override string Key => ExtensionMetadataKeys.TARGET_ATMB_API;
         /// <summary>
         /// 构造
         /// </summary>
         /// <param name="value"></param>
-        public ExtTargetApiAttribute(int value) : base(value)
-        {
-        }
-        internal ExtTargetApiAttribute() : base(BuildInfo.API_LEVEL) { }
+        public ExtTargetApiAttribute(int value) :
+            base(ExtensionMetadataKeys.TARGET_ATMB_API, value)
+        { }
+
+
+        internal ExtTargetApiAttribute() :
+            base(ExtensionMetadataKeys.TARGET_ATMB_API, BuildInfo.API_LEVEL)
+        { }
     }
 }

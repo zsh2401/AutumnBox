@@ -4,24 +4,26 @@
 ** desc： ...
 *************************************************/
 
+using System;
+
 namespace AutumnBox.OpenFramework.Extension
 {
     /// <summary>
     /// 运行所需的最低秋之盒API
     /// </summary>
-    public class ExtMinApiAttribute : ExtInfoAttribute
+    public class ExtMinApiAttribute : ExtensionInfoAttribute
     {
-        /// <summary>
-        /// 使用标准key
-        /// </summary>
-        public override string Key => ExtensionMetadataKeys.MIN_ATMB_API;
         /// <summary>
         /// 默认构造
         /// </summary>
         /// <param name="value"></param>
-        public ExtMinApiAttribute(int value) : base(value)
+        public ExtMinApiAttribute(int value) :
+            base(ExtensionMetadataKeys.MIN_ATMB_API, value)
         {
         }
-        internal ExtMinApiAttribute() : base(BuildInfo.API_LEVEL) { }
+
+        internal ExtMinApiAttribute() :
+            base(ExtensionMetadataKeys.MIN_ATMB_API, BuildInfo.API_LEVEL)
+        { }
     }
 }

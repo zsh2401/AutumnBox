@@ -9,7 +9,7 @@ namespace AutumnBox.OpenFramework.Extension
     /// <summary>
     /// 拓展模块优先级
     /// </summary>
-    public class ExtPriority : ExtInfoAttribute
+    public class ExtPriority : ExtensionInfoAttribute
     {
 #pragma warning disable CS1591 // 缺少对公共可见类型或成员的 XML 注释
         public const int LOW = -1;
@@ -18,14 +18,10 @@ namespace AutumnBox.OpenFramework.Extension
         public const int ROYAL = 20;
 #pragma warning restore CS1591 // 缺少对公共可见类型或成员的 XML 注释
         /// <summary>
-        /// 使用标准KEY
-        /// </summary>
-        public override string Key => ExtensionMetadataKeys.PRIORITY;
-        /// <summary>
         /// 构造拓展模块优先级信息特性
         /// </summary>
         /// <param name="value"></param>
-        public ExtPriority(int value) : base(value)
+        public ExtPriority(int value = NORMAL) : base(ExtensionMetadataKeys.PRIORITY, value)
         {
         }
     }

@@ -11,17 +11,23 @@ namespace AutumnBox.OpenFramework.Extension
     /// 拓展模块运行所需的设备状态
     /// 秋之盒将确保只有设备符合该状态时才可以调用该模块
     /// </summary>
-    public class ExtRequiredDeviceStatesAttribute : ExtInfoAttribute
+    public class ExtRequiredDeviceStatesAttribute : ExtensionInfoAttribute
     {
         /// <summary>
-        /// Key
+        /// 任何状态
         /// </summary>
-        public override string Key => ExtensionMetadataKeys.REQ_DEV_STATE;
+        public const DeviceState ANY_STATE = AutumnBoxExtension.AllState;
+        /// <summary>
+        /// 无关状态
+        /// </summary>
+        public const DeviceState NO_MATTER = AutumnBoxExtension.NoMatter;
+
         /// <summary>
         /// 构造
         /// </summary>
         /// <param name="state"></param>
-        public ExtRequiredDeviceStatesAttribute(DeviceState state):base(state)
+        public ExtRequiredDeviceStatesAttribute(DeviceState state = NO_MATTER) :
+            base(ExtensionMetadataKeys.REQ_DEV_STATE, state)
         {
         }
     }

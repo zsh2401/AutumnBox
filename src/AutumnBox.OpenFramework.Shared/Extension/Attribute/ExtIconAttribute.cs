@@ -9,17 +9,17 @@ namespace AutumnBox.OpenFramework.Extension
     /// <summary>
     /// 拓展模块的图标
     /// </summary>
-    public class ExtIconAttribute : ExtInfoAttribute
+    public class ExtIconAttribute : ExtensionInfoAttribute
     {
         /// <summary>
-        /// 键
+        /// 构造拓展模块图标标记器
         /// </summary>
-        public override string Key => ExtensionMetadataKeys.ICON;
-        /// <summary>
-        /// 构造
-        /// </summary>
-        /// <param name="iconPath"></param>
-        public ExtIconAttribute(string iconPath) : base(iconPath)
+        /// <param name="iconSource">
+        /// 一个base64字符串或内部嵌入资源的图标地址
+        /// 如内嵌资源文件:  /Resources/Icons/icon.png
+        /// 则应传入值: Resources.Icons.icon.png
+        /// </param>
+        public ExtIconAttribute(string iconSource) : base(ExtensionMetadataKeys.ICON, iconSource)
         {
 
         }
