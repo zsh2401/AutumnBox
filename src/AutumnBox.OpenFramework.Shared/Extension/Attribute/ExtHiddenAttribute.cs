@@ -8,7 +8,7 @@
         /// <summary>
         /// KEY
         /// </summary>
-        public override string Key => ExtensionInformationKeys.IS_HIDDEN;
+        public override string Key => ExtensionMetadataKeys.IS_HIDDEN;
         /// <summary>
         /// 隐藏的拓展标记
         /// </summary>

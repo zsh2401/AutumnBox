@@ -22,6 +22,6 @@ namespace AutumnBox.OpenFramework.Extension
         /// <summary>
         /// Key
         /// </summary>
-        public override string Key => ExtensionInformationKeys.NAME;
+        public override string Key => ExtensionMetadataKeys.NAME;
     }
 }

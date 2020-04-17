@@ -17,7 +17,7 @@ namespace AutumnBox.OpenFramework.Extension
         /// <summary>
         /// Key
         /// </summary>
-        public override string Key => ExtensionInformationKeys.AUTH;
+        public override string Key => ExtensionMetadataKeys.AUTH;
         /// <summary>
         /// 构建
         /// </summary>

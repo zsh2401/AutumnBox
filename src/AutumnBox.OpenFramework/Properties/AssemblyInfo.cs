@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("zsh2401")]
 [assembly: AssemblyProduct("AutumnBox.OpenFramework")]
-[assembly: AssemblyCopyright("Copyright ©zsh2401  2018")]
+[assembly: AssemblyCopyright("Copyright ©zsh2401  2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

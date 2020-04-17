@@ -1,4 +1,4 @@
-﻿using AutumnBox.OpenFramework.Management.Wrapper;
+﻿using AutumnBox.OpenFramework.Management.ExtInfo;
 using System.Collections.Generic;
 
 namespace AutumnBox.OpenFramework.Management.ExtLibrary
@@ -12,24 +12,29 @@ namespace AutumnBox.OpenFramework.Management.ExtLibrary
         /// 代表该程序集的入口类的名称
         /// </summary>
         string Name { get; }
+
         /// <summary>
         /// 检查
         /// </summary>
         /// <returns></returns>
         bool Check();
+
         /// <summary>
         /// 准备
         /// </summary>
         void Ready();
+
         /// <summary>
         /// 重载
         /// </summary>
         void Reload();
+
         /// <summary>
         /// 获取该入口类所代表的程序集中的拓展的包装类
         /// </summary>
         /// <returns></returns>
-        IEnumerable<IExtensionWrapper> GetWrappers();
+        IEnumerable<IExtensionInfo> Extensions { get; }
+
         /// <summary>
         /// 当入口所代表的程序集被卸载时调用
         /// </summary>

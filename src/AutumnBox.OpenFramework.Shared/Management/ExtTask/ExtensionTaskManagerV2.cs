@@ -1,21 +1,26 @@
-﻿using AutumnBox.Leafx.Container.Support;
+﻿#nullable enable
+using AutumnBox.Leafx.Container.Support;
 using AutumnBox.Leafx.ObjectManagement;
 using AutumnBox.OpenFramework.Management.ExtLibrary;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Linq;
 using System.Threading.Tasks;
 using AutumnBox.Leafx.Container;
 using System.Threading;
 using AutumnBox.OpenFramework.Extension;
+using AutumnBox.OpenFramework.Management.ExtInfo;
+using AutumnBox.OpenFramework.Open;
+using AutumnBox.OpenFramework.Open.ADBKit;
+using AutumnBox.Basic.Device;
+using AutumnBox.OpenFramework.Exceptions;
 
 namespace AutumnBox.OpenFramework.Management.ExtTask
 {
     [Component(Type = typeof(IExtensionTaskManager))]
-    class ExtensionTaskManagerV2 : IExtensionTaskManager
+    internal sealed class ExtensionTaskManagerV2 : IExtensionTaskManager
     {
-        public IEnumerable<Task<object>> RunningTasks
+        public IEnumerable<Task<object?>> RunningTasks
         {
             get
             {
@@ -25,18 +30,23 @@ namespace AutumnBox.OpenFramework.Management.ExtTask
             }
         }
 
-        [AutoInject]
-        private readonly ILibsManager libsManager;
+        private readonly Dictionary<string, TaskInfo> taskInfos = new Dictionary<string, TaskInfo>();
 
         [AutoInject]
-        private readonly ILake lake;
+        private ILibsManager? libsManager;
 
-        public Type ExtensionOfTask(Task<object> task)
+        [AutoInject]
+        private ILake? lake;
+
+        [AutoInject]
+        private IDeviceManager? deviceManager;
+
+        public IExtensionInfo GetExtensionByTask(Task<object?> task)
         {
             var findResult = taskInfos.Where(kv => kv.Value.Task == task);
             if (findResult.Any())
             {
-                return findResult.FirstOrDefault().Value.ExtensionType;
+                return findResult.FirstOrDefault().Value.Extension;
             }
             else
             {
@@ -44,50 +54,29 @@ namespace AutumnBox.OpenFramework.Management.ExtTask
             }
         }
 
-        public Task<object> Start(string extensionClassName, Dictionary<string, object> extralArgs = null)
+        public Task<object?> Start(string id, Dictionary<string, object>? args = null)
         {
-            return Start(FindExtensionTypeByName(extensionClassName), extralArgs);
+            return Start(FindExtensionTypeById(id), args);
         }
 
-        private readonly Dictionary<string, TaskInfo> taskInfos = new Dictionary<string, TaskInfo>();
-
-        private class TaskInfo
+        public Task<object?> Start(IExtensionInfo inf, Dictionary<string, object>? args = null)
         {
-            public Task<object> Task { get; }
-            public Thread Thread { get; set; }
-            public Type ExtensionType { get; }
-            public TaskInfo(Task<object> task, Type extensionType)
-            {
-                if (task is null)
-                {
-                    throw new ArgumentNullException(nameof(task));
-                }
-                Task = task;
-                ExtensionType = extensionType;
-            }
-        }
-        private string GenerateId()
-        {
-            return Guid.NewGuid().ToString();
-        }
-
-        public Task<object> Start(Type t, Dictionary<string, object> extralArgs = null)
-        {
+            StateCheck(inf);
             string id = GenerateId();
-            var task = ExtensionTaskFactory.CreateTask(t, extralArgs, (thread) =>
+            var task = ExtensionTaskFactory.CreateTask(inf, args ?? new Dictionary<string, object>(), (thread) =>
             {
                 taskInfos[id].Thread = thread;
-            }, lake);
-            taskInfos[id] = new TaskInfo(task, t);
+            }, lake!);
+            taskInfos[id] = new TaskInfo(task, inf);
             task.Start();
             return task;
         }
 
-        private Type FindExtensionTypeByName(string className)
+        private IExtensionInfo FindExtensionTypeById(string id)
         {
-            var types = (from wrapper in libsManager.Wrappers()
-                         where wrapper.ExtensionType.Name == className
-                         select wrapper.ExtensionType);
+            var types = (from inf in libsManager.GetAllExtensions()
+                         where inf.Id == id
+                         select inf);
             if (types.Any())
             {
                 return types.First();
@@ -98,18 +87,47 @@ namespace AutumnBox.OpenFramework.Management.ExtTask
             }
         }
 
-        public void Terminate(Task<object> task)
+        public void Terminate(Task<object?> task)
         {
             var findResult = taskInfos.Where(kv => kv.Value.Task == task);
             if (findResult.Any() && findResult.FirstOrDefault().Value.Task.Status == TaskStatus.Running)
             {
-                findResult.FirstOrDefault().Value.Thread.Abort();
+                findResult?.FirstOrDefault().Value?.Thread?.Abort();
             }
         }
 
-        public Task<object> Start<TClassExtension>(Dictionary<string, object> extralArgs = null) where TClassExtension : IClassExtension
+        private string GenerateId()
         {
-            return Start(typeof(TClassExtension), extralArgs);
+            return Guid.NewGuid().ToString();
+        }
+
+        private void StateCheck(IExtensionInfo inf)
+        {
+            IDevice? currentDevice = deviceManager!.Selected;
+            bool isNoMatterDeviceState = (inf.RequireDeviceState() == AutumnBoxExtension.NoMatter);
+            bool deviceStateCorrect = inf.RequireDeviceState().HasFlag(currentDevice?.State);
+            bool runnable = isNoMatterDeviceState || deviceStateCorrect;
+
+            if (!runnable)
+            {
+                throw new DeviceStateIsNotCorrectException();
+            }
+        }
+
+        private class TaskInfo
+        {
+            public Task<object?> Task { get; }
+            public Thread? Thread { get; set; }
+            public IExtensionInfo Extension { get; }
+            public TaskInfo(Task<object?> task, IExtensionInfo extension)
+            {
+                if (task is null)
+                {
+                    throw new ArgumentNullException(nameof(task));
+                }
+                Task = task;
+                Extension = extension;
+            }
         }
     }
 }

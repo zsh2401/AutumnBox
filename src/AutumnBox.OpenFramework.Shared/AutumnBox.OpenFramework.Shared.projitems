@@ -11,20 +11,22 @@
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)BuildInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Exceptions\AccessDeniedException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Exceptions\DeviceStateIsNotCorrectException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Exceptions\ExtensionCanceledException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Exceptions\ExtensionCantBeStoppedException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Exceptions\LibrarianAlreadyCreatedOnceException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Exceptions\ServiceNotFoundException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Exceptions\UserDeniedException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Exceptions\WrapperAlreadyCreatedOnceException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extension\Attribute\ExtensionI18NTextInfoAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extension\Attribute\ExtensionInfoAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\AutumnBoxExtension.Constants.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\EmptyExtension.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Extension\FallExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\IClassExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\IExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Leaf\Attributes\LDoNotScanAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Leaf\LeafConstants.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Extension\Leaf\LeafExtensionHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extension\Leaf\LeafExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Leaf\LeafTerminatedException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Leaf\Fast\LeafUIHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Leaf\Attributes\LFromDataAttribute.cs" />
@@ -32,11 +34,13 @@
     <Compile Include="$(MSBuildThisFileDirectory)Implementation\DeviceManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Implementation\NotificationManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Implementation\XCardsManager.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Management\ExtLibrary\Impl\AssemblyBasedLibrarian.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Management\ExtInfo\ClassExtensionInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Management\ExtInfo\IExtensionProcedure.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Management\ExtInfo\IExtensionInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Management\ExtInfo\ValueReader.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Management\ExtLibrary\Impl\AssemblyLibrarian.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\ExtTask\ExtensionTaskFactory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\ExtTask\ExtensionTaskManagerV2.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Management\ExtWrapper\ExtensionAttributeReader.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Management\ExtWrapper\IExtensionAttributeReader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\IManagementObjectBuilder.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\ManagementObjectBuilder.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\OpenFx.cs" />
@@ -55,7 +59,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Leaf\Attributes\LPropertySeviceAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Leaf\Attributes\LSignalReceiveAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Attribute\ExtensionAttribute.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Extension\ExtensionInformationKeys.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extension\ExtensionMetadataKeys.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Attribute\ExtInfoI18NAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Attribute\IInformationAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Attribute\ExtInfoAttribute.cs" />
@@ -73,11 +77,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Attribute\ExtTargetApiAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Attribute\ExtTextAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Attribute\ExtVersionAttribute.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Management\ExtLibrary\Impl\DefaultLibrarian.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\ExtLibrary\Impl\ExtensionLibrarian.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\ExtLibrary\ILibrarian.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Management\ExtLibrary\LibrarianHelper.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Management\ExtWrapper\WrapperFilter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Management\ExtLibrary\LibrarianExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\IBaseApi.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\ILibsManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\ExtLibrary\Impl\DreamLibManager.cs" />
@@ -103,21 +105,16 @@
     <Compile Include="$(MSBuildThisFileDirectory)Open\IResourcesManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\ISoundService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\IUx.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Management\ExtTask\ExtensionExitCodes.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\ExtTask\IExtensionTaskManager.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Extension\ExtensionSignals.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\LKit\DialogClosedEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\LKit\ILeafDialog.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Management\ExtWrapper\ClassExtensionInfoReader.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Management\ExtWrapper\ClassExtensionScanner.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Management\ExtWrapper\ClassExtensionWrapper.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Management\ExtWrapper\IExtensionWrapper.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Management\ExtWrapper\IExtensionInfoDictionary.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)Extension\Attribute\" />
     <Folder Include="$(MSBuildThisFileDirectory)Extension\Leaf\Fast\" />
     <Folder Include="$(MSBuildThisFileDirectory)Open\LKit\" />
     <Folder Include="$(MSBuildThisFileDirectory)Open\ADBKit\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Management\ExtInfo\ExtensionInfoExtension.cs" />
   </ItemGroup>
 </Project>

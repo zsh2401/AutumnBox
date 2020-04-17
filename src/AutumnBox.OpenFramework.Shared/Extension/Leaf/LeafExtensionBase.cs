@@ -5,6 +5,7 @@ using AutumnBox.Leafx.Container.Support;
 using AutumnBox.Leafx.ObjectManagement;
 using AutumnBox.Logging;
 using AutumnBox.OpenFramework.Extension.Leaf.Attributes;
+using AutumnBox.OpenFramework.Open;
 
 namespace AutumnBox.OpenFramework.Extension.Leaf
 {
@@ -30,14 +31,18 @@ namespace AutumnBox.OpenFramework.Extension.Leaf
                 throw new InvalidOperationException("Lake has not been inject!");
             }
 #endif
-            var methodProxy = new MethodProxy(this, this.FindEntryPoint(), lake, GetLoggerLake());
+            var methodProxy = new MethodProxy(this, this.FindEntryPoint(), lake, GetSepLake());
             return methodProxy.Invoke(args ?? new Dictionary<string, object>());
         }
 
-        private ILake GetLoggerLake()
+        private ILake GetSepLake()
         {
             SunsetLake lake = new SunsetLake();
             lake.RegisterSingleton<ILogger>(LoggerFactory.Auto(this.GetType().Name));
+            lake.RegisterSingleton<IClassTextDictionary>(() =>
+            {
+                return lake.Get<IClassTextReader>().Read(this);
+            });
             return lake;
         }
 

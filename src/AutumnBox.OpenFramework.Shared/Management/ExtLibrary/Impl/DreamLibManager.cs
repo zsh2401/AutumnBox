@@ -68,9 +68,6 @@ namespace AutumnBox.OpenFramework.Management.ExtLibrary.Impl
                 }
             }
             return buffer;
-            //return from lib in libs
-            //       where SafeReady(lib)
-            //       select lib;
         }
         private IEnumerable<FileInfo> GetFiles()
         {

@@ -13,8 +13,8 @@
 *
 * ==============================================================================
 */
+using AutumnBox.OpenFramework.Management.ExtInfo;
 using AutumnBox.OpenFramework.Management.ExtLibrary;
-using AutumnBox.OpenFramework.Management.Wrapper;
 using System;
 using System.Collections.Generic;
 
@@ -28,7 +28,7 @@ namespace AutumnBox.OpenFramework.Open
         /// <summary>
         /// 获取所有拓展模块包装器
         /// </summary>
-        IEnumerable<IExtensionWrapper> Wrappers { get; }
+        IEnumerable<IExtensionInfo> Extensions { get; }
 
         /// <summary>
         /// 获取所有库管理器

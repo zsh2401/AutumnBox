@@ -20,7 +20,7 @@ namespace AutumnBox.OpenFramework.Extension
         /// <summary>
         /// 使用标准KEY
         /// </summary>
-        public override string Key => ExtensionInformationKeys.PRIORITY;
+        public override string Key => ExtensionMetadataKeys.PRIORITY;
         /// <summary>
         /// 构造拓展模块优先级信息特性
         /// </summary>

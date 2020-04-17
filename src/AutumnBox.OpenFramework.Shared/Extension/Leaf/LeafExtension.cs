@@ -1,73 +1,42 @@
 ﻿using AutumnBox.OpenFramework.Extension.Leaf.Attributes;
 using AutumnBox.OpenFramework.Management;
 using AutumnBox.OpenFramework.Management.ExtLibrary;
-using AutumnBox.OpenFramework.Management.Wrapper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using AutumnBox.Leafx.Container;
-using AutumnBox.Leafx.ObjectManagement;
+using AutumnBox.OpenFramework.Management.ExtInfo;
+using AutumnBox.OpenFramework.Open;
 
 namespace AutumnBox.OpenFramework.Extension.Leaf
 {
     /// <summary>
     /// LeafExtension的拓展函数
     /// </summary>
-    public static class LeafExtensionHelper
+    public static partial class LeafExtension
     {
         /// <summary>
-        /// 获取图标数组
+        /// 获取当前LeafExtension实例的信息
+        /// </summary>
+        /// <param name="classExtension"></param>
+        /// <param name="leafExtension"></param>
+        /// <returns></returns>
+        public static IExtensionInfo GetExtensionInfo(this IClassExtension classExtension)
+        {
+            var libsManager = LakeProvider.Lake.Get<ILibsManager>();
+            return (from extInfo in libsManager.GetAllExtensions()
+                    where (extInfo as ClassExtensionInfo)?.ClassExtensionType == classExtension.GetType()
+                    select extInfo).FirstOrDefault();
+        }
+
+
+
+        /// <summary>
+        /// 寻找一个LeafExtension的入口点函数
         /// </summary>
         /// <param name="leaf"></param>
         /// <returns></returns>
-        public static byte[] GetIconBytes(this LeafExtensionBase leaf)
-        {
-            var filted = from wrapper in OpenFx.Lake.Get<ILibsManager>().Wrappers()
-                         where wrapper.Info.ExtType == leaf.GetType()
-                         select wrapper;
-            var result = filted.First();
-            return result.Info.Icon;
-        }
-        /// <summary>
-        /// 获取信息
-        /// </summary>
-        /// <param name="leaf"></param>
-        /// <returns></returns>
-        public static IExtensionInfoDictionary GetInformations(this LeafExtensionBase leaf)
-        {
-            var filted = from wrapper in OpenFx.Lake.Get<ILibsManager>().Wrappers()
-                         where wrapper.Info.ExtType == leaf.GetType()
-                         select wrapper;
-            return filted.First().Info;
-        }
-        /// <summary>
-        /// 获取图标数组
-        /// </summary>
-        /// <param name="leaf"></param>
-        /// <returns></returns>
-        public static string GetName(this LeafExtensionBase leaf)
-        {
-            var filted = from wrapper in OpenFx.Lake.Get<ILibsManager>().Wrappers()
-                         where wrapper.Info.ExtType == leaf.GetType()
-                         select wrapper;
-            var result = filted.First();
-            return result.Info.Name;
-        }
-        /// <summary>
-        /// 通过抛出指定的异常中断模块主要流程
-        /// </summary>
-        /// <exception cref="LeafTerminatedException"></exception>
-        /// <param name="leaf"></param>
-        /// <param name="exitCode"></param>
-        public static void EndCurrentLeafThread(this LeafExtensionBase leaf, int exitCode = 0)
-        {
-            throw new LeafTerminatedException(exitCode);
-        }
-        internal static void InjectProperties(this LeafExtensionBase leaf, params ILake[] sources)
-        {
-            DependenciesInjector.Inject(leaf, sources);
-        }
         internal static MethodInfo FindEntryPoint(this LeafExtensionBase leaf)
         {
             if (leaf == null)
@@ -90,6 +59,7 @@ namespace AutumnBox.OpenFramework.Extension.Leaf
             if (result == null) return FindImplicitMain(methods) ?? throw new Exception($"Entry not found in {type.FullName}");
             else return result;
         }
+
         /// <summary>
         /// 判断是否是显式入口点
         /// </summary>
@@ -101,6 +71,7 @@ namespace AutumnBox.OpenFramework.Extension.Leaf
                        select method;
             return filt.Any() ? filt.First() : null;
         }
+
         /// <summary>
         /// 判断是否是隐式入口点
         /// </summary>
@@ -112,6 +83,7 @@ namespace AutumnBox.OpenFramework.Extension.Leaf
                        select method;
             return filt.Any() ? filt.First() : null;
         }
+
         /// <summary>
         /// 判断是否为IExtension.Main
         /// </summary>

@@ -2,9 +2,7 @@
 using AutumnBox.Leafx.ObjectManagement;
 using AutumnBox.OpenFramework.Management.ExtLibrary;
 using AutumnBox.OpenFramework.Management.ExtLibrary.Impl;
-using AutumnBox.OpenFramework.Management.Wrapper;
 using System;
-using System.Collections.Generic;
 using System.Reflection;
 
 namespace AutumnBox.OpenFramework.Management
@@ -13,13 +11,6 @@ namespace AutumnBox.OpenFramework.Management
     {
         [AutoInject]
         private ILake Lake { get; set; }
-
-        public IExtensionWrapper BuildExtensionWrapper(Type extensionType)
-        {
-            var builder = new ObjectBuilder(typeof(ClassExtensionWrapper), Lake);
-            var args = new Dictionary<string, object>() { { "t", extensionType } };
-            return (IExtensionWrapper)builder.Build(args);
-        }
 
         public ILibrarian BuildLibrarian(Type libType)
         {
@@ -37,7 +28,8 @@ namespace AutumnBox.OpenFramework.Management
             {
                 throw new ArgumentNullException(nameof(assembly));
             }
-            return new DefaultLibrarian(assembly);
+            var builder = new ObjectBuilder(typeof(AssemblyLibrarian), Lake);
+            return (AssemblyLibrarian)builder.Build();
         }
     }
 }

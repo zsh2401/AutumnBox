@@ -8,7 +8,7 @@
         /// <summary>
         /// KEY
         /// </summary>
-        public override string Key => ExtensionInformationKeys.REGIONS;
+        public override string Key => ExtensionMetadataKeys.REGIONS;
         /// <summary>
         /// 构造
         /// </summary>

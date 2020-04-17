@@ -8,7 +8,7 @@
         /// <summary>
         /// Key
         /// </summary>
-        public override string Key => ExtensionInformationKeys.IS_DEVELOPING;
+        public override string Key => ExtensionMetadataKeys.IS_DEVELOPING;
         /// <summary>
         /// 构造
         /// </summary>

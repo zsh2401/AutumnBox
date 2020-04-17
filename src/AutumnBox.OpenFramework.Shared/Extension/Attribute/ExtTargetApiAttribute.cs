@@ -14,7 +14,7 @@ namespace AutumnBox.OpenFramework.Extension
         /// <summary>
         /// Key
         /// </summary>
-        public override string Key => ExtensionInformationKeys.TARGET_ATMB_API;
+        public override string Key => ExtensionMetadataKeys.TARGET_ATMB_API;
         /// <summary>
         /// 构造
         /// </summary>
