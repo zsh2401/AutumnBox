@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
 using System.Management;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using AutumnBox.Basic.Calling.Cmd;
 using AutumnBox.Basic.Data;
 using AutumnBox.Logging;
