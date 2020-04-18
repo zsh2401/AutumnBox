@@ -1,4 +1,5 @@
-﻿/*
+﻿#nullable enable
+/*
 
 * ==============================================================================
 *
@@ -17,8 +18,18 @@ using System;
 
 namespace AutumnBox.Leafx.Container
 {
+    /// <summary>
+    /// 可动态注册湖
+    /// </summary>
     public interface IRegisterableLake : ILake
     {
-        void RegisterComponent(string id,Func<object> factory);
+        /// <summary>
+        /// 根据ID注册组件
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="factory"></param>
+        void RegisterComponent(string id, ComponentFactory factory);
     }
+
+    public delegate object? ComponentFactory();
 }

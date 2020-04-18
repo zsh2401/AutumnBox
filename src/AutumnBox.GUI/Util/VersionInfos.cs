@@ -64,7 +64,7 @@ namespace AutumnBox.GUI.Util
                                       where lib.Name == "AutumnBox Core Modules"
                                       select lib;
             if (coreLibFilterResult.Count() == 0) return new Version(0, 0, 1);
-            var assemblyLib = coreLibFilterResult.First() as AssemblyBasedLibrarian;
+            var assemblyLib = coreLibFilterResult.First() as AssemblyLibrarian;
             Assembly assembly = assemblyLib.ManagedAssembly;
             return assembly.GetName().Version;
         }

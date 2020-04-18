@@ -13,10 +13,9 @@
     mc:Ignorable="d"
     ShowTitle="False"
     Background="{DynamicResource DefaultBrush}"
-    NonClientAreaBackground="Transparent"
     WindowStartupLocation="CenterScreen"
         Icon="/Resources/Drawable/icon.ico"
-        Title="{DynamicResource AppNameWithVersion}" MinHeight="625" MinWidth="930" Height="625" Width="930">
+        Title="{DynamicResource AppNameWithVersion}" MinHeight="625" MinWidth="940" Height="625" Width="940">
     <Window.InputBindings>
         <KeyBinding Modifiers="Ctrl" Key="F1" Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoHelp}" />
         <KeyBinding Modifiers="Shift" Key="C" Command="{Binding Path=DataContext.OpenShell,ElementName=Menu}" CommandParameter="cmd.exe"/>
@@ -37,22 +36,25 @@
     </custom:NiceWindow.NonClientAreaContent>
 
     <Grid>
-        <hc:Divider VerticalAlignment="Top" Margin="0"/>
+
         <DockPanel>
             <hc:ScrollViewer Padding="0,0,0,22" DockPanel.Dock="Left">
                 <controls:XCardsViewer/>
             </hc:ScrollViewer>
             <controls:ExtensionsFinder DockPanel.Dock="Right"/>
-            <!--<controls:TabsViewer Padding="0,0,0,22" DockPanel.Dock="Right"/>-->
         </DockPanel>
-        <DockPanel VerticalAlignment="Bottom" Background="{DynamicResource BorderBrush}">
+        
+        <DockPanel VerticalAlignment="Bottom" Background="{DynamicResource DefaultBrush}">
             <hc:Divider LineStroke="{DynamicResource ThirdlyTextBrush}" DockPanel.Dock="Top" Margin="0"/>
             <controls:StatusBar  Height="22" DockPanel.Dock="Bottom"/>
         </DockPanel>
+        
         <Grid>
             <hc:ScrollViewer Margin="0,0,0,30" VerticalScrollBarVisibility="Hidden" VerticalAlignment="Top" HorizontalAlignment="Right" Grid.Column="1">
                 <StackPanel hc:Growl.Token="mainv3" hc:Growl.GrowlParent="True" Margin="0,10,10,10"/>
             </hc:ScrollViewer>
         </Grid>
+        
+        <hc:Divider VerticalAlignment="Top" Margin="0"/>
     </Grid>
 </custom:NiceWindow>

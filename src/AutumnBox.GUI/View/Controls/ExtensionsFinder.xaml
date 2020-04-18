@@ -19,7 +19,7 @@
         </ItemsControl.ItemsPanel>
         <ItemsControl.ItemTemplate>
             <DataTemplate>
-                <Button Background="{DynamicResource SecondaryRegionBrush}" Command="{Binding Execute}"  Margin="5" Height="60" Width="200"  ToolTip="{Binding ToolTip}" >
+                <Button Background="{DynamicResource DefaultBrush}" Command="{Binding Execute}"  Margin="5" Height="60" Width="200"  ToolTip="{Binding ToolTip}" >
                     <StackPanel Width="190"  Orientation="Horizontal" VerticalAlignment="Center">
                         <Image  RenderOptions.BitmapScalingMode="Fant" Width="40" Source="{Binding Icon}"/>
                         <StackPanel VerticalAlignment="Center" Margin="12,0,0,0">

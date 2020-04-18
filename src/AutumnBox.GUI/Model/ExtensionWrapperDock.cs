@@ -7,10 +7,7 @@ using AutumnBox.Basic.Device;
 using AutumnBox.GUI.MVVM;
 using AutumnBox.GUI.Util;
 using AutumnBox.OpenFramework.Extension;
-using AutumnBox.Leafx.Container;
 using AutumnBox.OpenFramework.Extension.Leaf;
-using AutumnBox.OpenFramework.Management.Wrapper;
-using AutumnBox.OpenFramework.Open;
 using System;
 using System.Collections.Generic;
 using System.Windows;
@@ -75,7 +72,7 @@ namespace AutumnBox.GUI.Model
         public ExtensionWrapperDock(IExtensionWrapper wrapper)
         {
             this.Wrapper = wrapper;
-            bool requiredRoot = wrapper.Info[ExtensionInformationKeys.ROOT] as bool? ?? false;
+            bool requiredRoot = wrapper.Info[ExtensionMetadataKeys.ROOT] as bool? ?? false;
             RootVisibily = requiredRoot ? Visibility.Visible : Visibility.Collapsed;
             Execute = new FlexiableCommand(p =>
             {

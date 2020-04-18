@@ -28,7 +28,7 @@ namespace AutumnBox.Leafx.Container.Support
         /// <summary>
         /// 内部维护一个字典用于存储所有工厂
         /// </summary>
-        private readonly ConcurrentDictionary<string, Func<object>> factories = new ConcurrentDictionary<string, Func<object>>();
+        private readonly ConcurrentDictionary<string, ComponentFactory> factories = new ConcurrentDictionary<string, ComponentFactory>();
 
         /// <summary>
         /// 构造Sunset Lake
@@ -43,7 +43,7 @@ namespace AutumnBox.Leafx.Container.Support
         /// <summary>
         /// 获取总记录量
         /// </summary>
-        public int Size => factories.Count;
+        public int Count => factories.Count;
 
         /// <summary>
         /// 根据id获取值
@@ -52,7 +52,14 @@ namespace AutumnBox.Leafx.Container.Support
         /// <returns></returns>
         public object GetComponent(string id)
         {
-            return factories[id]();
+            if (factories.TryGetValue(id, out ComponentFactory factory))
+            {
+                return factory();
+            }
+            else
+            {
+                throw new IdNotFoundException(id);
+            }
         }
 
         /// <summary>
@@ -60,14 +67,15 @@ namespace AutumnBox.Leafx.Container.Support
         /// </summary>
         /// <param name="id"></param>
         /// <param name="factory"></param>
-        public void RegisterComponent(string id, Func<object> factory)
+        public void RegisterComponent(string id, ComponentFactory factory)
         {
             factories[id] = factory;
         }
 
-        public IEnumerable<string> GetAll_ID()
-        {
-            return factories.Keys;
-        }
+        /// <summary>
+        /// 获取所有的ID
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<string> Ids => factories.Keys;
     }
 }

@@ -1,4 +1,5 @@
-﻿using AutumnBox.Leafx.ObjectManagement;
+﻿#nullable enable
+using AutumnBox.Leafx.ObjectManagement;
 using AutumnBox.Logging;
 using System;
 using System.Collections.Generic;
@@ -16,7 +17,7 @@ namespace AutumnBox.Leafx.Container
         /// <param name="t"></param>
         /// <param name="factory"></param>
         /// <returns></returns>
-        public static IRegisterableLake Register(this IRegisterableLake lake, Type t, Func<object> factory)
+        public static IRegisterableLake Register(this IRegisterableLake lake, Type t, ComponentFactory factory)
         {
             RegisterBase(lake, t, () => factory());
             return lake;
@@ -29,7 +30,7 @@ namespace AutumnBox.Leafx.Container
         /// <param name="lake"></param>
         /// <param name="factory"></param>
         /// <returns></returns>
-        public static IRegisterableLake Register<T>(this IRegisterableLake lake, Func<T> factory)
+        public static IRegisterableLake Register<T>(this IRegisterableLake lake, ComponentFactory factory)
         {
             RegisterBase(lake, typeof(T), () => factory());
             return lake;
@@ -73,7 +74,6 @@ namespace AutumnBox.Leafx.Container
             return lake;
         }
 
-
         /// <summary>
         /// 注册
         /// </summary>
@@ -81,7 +81,7 @@ namespace AutumnBox.Leafx.Container
         /// <param name="type"></param>
         /// <param name="factory"></param>
         /// <returns></returns>
-        public static IRegisterableLake RegisterSingleton(this IRegisterableLake lake, Type type, Func<object> factory)
+        public static IRegisterableLake RegisterSingleton(this IRegisterableLake lake, Type type, ComponentFactory factory)
         {
             RegisterSingletonBase(lake, type, factory);
             return lake;
@@ -94,7 +94,7 @@ namespace AutumnBox.Leafx.Container
         /// <param name="lake"></param>
         /// <param name="factory"></param>
         /// <returns></returns>
-        public static IRegisterableLake RegisterSingleton<T>(this IRegisterableLake lake, Func<object> factory)
+        public static IRegisterableLake RegisterSingleton<T>(this IRegisterableLake lake, ComponentFactory factory)
         {
             RegisterSingletonBase(lake, typeof(T), factory);
             return lake;
@@ -145,7 +145,7 @@ namespace AutumnBox.Leafx.Container
         /// <param name="id"></param>
         /// <param name="factory"></param>
         /// <returns></returns>
-        public static IRegisterableLake RegisterSingleton(this IRegisterableLake lake, string id, Func<object> factory)
+        public static IRegisterableLake RegisterSingleton(this IRegisterableLake lake, string id, ComponentFactory factory)
         {
             lake.RegisterSingletonBase(id, factory);
             return lake;
@@ -158,7 +158,7 @@ namespace AutumnBox.Leafx.Container
         /// <param name="id"></param>
         /// <param name="factory"></param>
         /// <returns></returns>
-        public static IRegisterableLake Register(this IRegisterableLake lake, string id, Func<object> factory)
+        public static IRegisterableLake Register(this IRegisterableLake lake, string id, ComponentFactory factory)
         {
             lake.RegisterBase(id, factory);
             return lake;
@@ -170,7 +170,8 @@ namespace AutumnBox.Leafx.Container
         /// <param name="lake"></param>
         /// <param name="target"></param>
         /// <param name="factory"></param>
-        private static void RegisterBase(this IRegisterableLake lake, Type target, Func<object> factory)
+        /// <exception cref="ArgumentNullException">参数为空</exception>
+        private static void RegisterBase(this IRegisterableLake lake, Type target, ComponentFactory factory)
         {
             if (target is null)
             {
@@ -185,7 +186,8 @@ namespace AutumnBox.Leafx.Container
         /// <param name="lake"></param>
         /// <param name="id"></param>
         /// <param name="factory"></param>
-        private static void RegisterBase(this IRegisterableLake lake, string id, Func<object> factory)
+        /// <exception cref="ArgumentNullException">参数为空</exception>
+        private static void RegisterBase(this IRegisterableLake lake, string id, ComponentFactory factory)
         {
             if (lake is null)
             {
@@ -210,7 +212,8 @@ namespace AutumnBox.Leafx.Container
         /// <param name="lake"></param>
         /// <param name="id"></param>
         /// <param name="factory"></param>
-        private static void RegisterSingletonBase(this IRegisterableLake lake, string id, Func<object> factory)
+        /// <exception cref="ArgumentNullException">参数为空</exception>
+        private static void RegisterSingletonBase(this IRegisterableLake lake, string id, ComponentFactory factory)
         {
             if (lake is null)
             {
@@ -227,7 +230,7 @@ namespace AutumnBox.Leafx.Container
                 throw new ArgumentNullException(nameof(factory));
             }
 
-            var lazy = new Lazy<object>(factory);
+            var lazy = new Lazy<object?>(() => factory);
             lake.RegisterComponent(id, () => lazy.Value);
         }
 
@@ -237,7 +240,8 @@ namespace AutumnBox.Leafx.Container
         /// <param name="lake"></param>
         /// <param name="target"></param>
         /// <param name="factory"></param>
-        private static void RegisterSingletonBase(this IRegisterableLake lake, Type target, Func<object> factory)
+        /// <exception cref="ArgumentNullException">参数为空</exception>
+        private static void RegisterSingletonBase(this IRegisterableLake lake, Type target, ComponentFactory factory)
         {
             lake.RegisterSingletonBase(GenerateIdByType(target), factory);
         }
@@ -247,8 +251,9 @@ namespace AutumnBox.Leafx.Container
         /// </summary>
         /// <param name="lake"></param>
         /// <param name="t"></param>
+        /// <exception cref="ArgumentNullException">参数为空</exception>
         /// <returns></returns>
-        private static Func<object> GetObjectBuilderOf(ILake lake, Type t)
+        private static ComponentFactory GetObjectBuilderOf(ILake lake, Type t)
         {
             if (lake is null)
             {
@@ -266,7 +271,6 @@ namespace AutumnBox.Leafx.Container
 
             return () =>
             {
-                SLogger.CDebug(null, "Creating");
                 ObjectBuilder objBuilder = new ObjectBuilder(t, lake);
                 var obj = objBuilder.Build();
                 return obj;
@@ -277,6 +281,7 @@ namespace AutumnBox.Leafx.Container
         /// 根据类型生成唯一ID
         /// </summary>
         /// <param name="t"></param>
+        /// <exception cref="ArgumentNullException">参数为空</exception>
         /// <returns></returns>
         public static string GenerateIdByType(Type t)
         {

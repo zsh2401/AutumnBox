@@ -22,7 +22,7 @@ namespace AutumnBox.GUI.Services.Impl
 
         private void Reorder()
         {
-            var result = from view in viewsWithP
+            var result = from view in viewsWithP    
                          orderby view.Item2 descending
                          select new ViewWrapper(view.Item1);
             App.Current.Dispatcher.Invoke(() =>

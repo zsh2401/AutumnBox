@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
 [assembly: AssemblyTitle("AutumnBox.Leafx")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("A serials of tools for develope AutumnBox faster and easier")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("AutumnBox.Leafx")]

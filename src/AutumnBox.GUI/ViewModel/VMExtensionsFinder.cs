@@ -6,8 +6,6 @@ using AutumnBox.GUI.Properties;
 using AutumnBox.Leafx.Container;
 using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.Management;
-using AutumnBox.OpenFramework.Management.ExtLibrary;
-using AutumnBox.OpenFramework.Management.Wrapper;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Input;
@@ -15,6 +13,9 @@ using AutumnBox.OpenFramework.Management.ExtTask;
 using AutumnBox.Logging;
 using AutumnBox.GUI.Services;
 using AutumnBox.Leafx.ObjectManagement;
+using AutumnBox.OpenFramework.Management.ExtInfo;
+using AutumnBox.OpenFramework.Exceptions;
+using AutumnBox.GUI.Util;
 
 namespace AutumnBox.GUI.ViewModel
 {
@@ -109,7 +110,7 @@ namespace AutumnBox.GUI.ViewModel
         private void Order()
         {
             Docks = from dock in Docks
-                    orderby dock.Wrapper.Info[ExtensionInformationKeys.PRIORITY] descending
+                    orderby dock.Wrapper.Info[ExtensionMetadataKeys.PRIORITY] descending
                     orderby dock.Execute.CanExecuteProp descending
                     select dock;
         }
@@ -132,24 +133,16 @@ namespace AutumnBox.GUI.ViewModel
             });
         }
 
-        private void StartExtension(IExtensionWrapper extensionWrapper)
+        private void StartExtension(IExtensionInfo inf)
         {
-            if (extensionWrapper == null) return;
-            bool isNMExt = extensionWrapper.Info.RequiredDeviceStates == AutumnBoxExtension.NoMatter;
-            bool isSelectingDevice = adbDevicesManager.SelectedDevice != null;
-            IDevice crtDev = adbDevicesManager.SelectedDevice;
-            DeviceState targetStates = extensionWrapper.Info.RequiredDeviceStates;
-
-            bool deviceConditionAllReady = isSelectingDevice && targetStates.HasFlag(crtDev.State);
-
-            //有关设备状态,并且设备状态正确,执行
-            //如果目标模块无关设备状态,直接执行
-            if (isNMExt || deviceConditionAllReady)
+            try
             {
-                OpenFx.Lake.Get<IExtensionTaskManager>().Start(extensionWrapper.ExtensionType);
+                this.GetComponent<IExtensionTaskManager>().Start(inf);
             }
-            else//不符合执行条件,警告
+            catch (DeviceStateIsNotCorrectException)
+            {
                 notificationManager.Warn("IS NOT TARGET STATE ERROR");
+            }
         }
     }
 }

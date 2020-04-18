@@ -1,4 +1,5 @@
-﻿/*
+﻿#nullable enable
+/*
 
 * ==============================================================================
 *
@@ -22,6 +23,12 @@ namespace AutumnBox.Leafx.ObjectManagement
 {
     public static class ArgsBuilder
     {
+        public static object?[] BuildArgs(IEnumerable<ILake> source, ParameterInfo[] parameterInfos)
+        {
+            List<object> result = new List<object>();
+            source.Get();
+        }
+
         public static object[] BuildArgs(
             IEnumerable<ILake> sources,
             Dictionary<string, object> extraArgs,
@@ -50,15 +57,27 @@ namespace AutumnBox.Leafx.ObjectManagement
         private static object GetFromSources(ParameterInfo pInfo, IEnumerable<ILake> sources)
         {
             if (sources == null) return null;
-            for (int i = sources.Count(); i >= 0; i--)
+            try
             {
-                try
-                {
-                    return sources.ElementAt(i).Get(pInfo.ParameterType);
-                }
-                catch { }
+                return sources.Get(pInfo.Name);
             }
-            return null;
+            catch
+            {
+                return sources.Get(pInfo.ParameterType);
+            }
+        }
+
+        private static object GetValue(ParameterInfo pInf, IEnumerable<ILake> sources)
+        {
+            if (sources == null) return null;
+            try
+            {
+                return sources.Get(pInf.Name) ?? sources.Get(pInf.ParameterType);
+            }
+            catch
+            {
+                return sources.Get(pInf.ParameterType);
+            }
         }
     }
 }
