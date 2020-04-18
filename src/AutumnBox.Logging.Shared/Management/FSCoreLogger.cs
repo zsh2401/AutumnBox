@@ -8,8 +8,14 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Logging.Management
 {
+    /// <summary>
+    ///基于文件系统的核心日志器
+    /// </summary>
     public class FSCoreLogger : ICoreLogger
     {
+        /// <summary>
+        /// 获取所有的log
+        /// </summary>
         public ObservableCollection<ILog> Logs { get; private set; }
 
         private readonly ConcurrentQueue<ILog> safeLogQueue;
@@ -17,6 +23,10 @@ namespace AutumnBox.Logging.Management
         private readonly CancellationTokenSource writeTokenSource;
         private readonly FileInfo logFile;
 
+        /// <summary>
+        /// 构建基于文件系统的日志处理器
+        /// </summary>
+        /// <param name="logFile"></param>
         public FSCoreLogger(FileInfo logFile)
         {
             Logs = new ObservableCollection<ILog>();
@@ -24,6 +34,9 @@ namespace AutumnBox.Logging.Management
             writeTokenSource = new CancellationTokenSource();
             this.logFile = logFile ?? throw new ArgumentNullException(nameof(logFile));
         }
+        /// <summary>
+        /// 初始化并开始工作
+        /// </summary>
         public void Initialize()
         {
             if (writeTask?.Status == TaskStatus.Running)
@@ -48,6 +61,10 @@ namespace AutumnBox.Logging.Management
             });
         }
 
+        /// <summary>
+        /// 处理日志
+        /// </summary>
+        /// <param name="log"></param>
         public void Log(ILog log)
         {
             safeLogQueue.Enqueue(log);
@@ -55,6 +72,9 @@ namespace AutumnBox.Logging.Management
             Console.WriteLine(log.ToFormatedString());
         }
 
+        /// <summary>
+        /// 析构并释放资源
+        /// </summary>
         public void Dispose()
         {
             writeTokenSource.Cancel();

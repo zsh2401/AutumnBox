@@ -26,7 +26,7 @@ namespace AutumnBox.OpenFramework.Open.TextKit
         /// <summary>
         /// 标准格式化字符串
         /// </summary>
-        public const string FMT = "ClassText-{0}";
+        public const string FMT = "ClassTextAttribute-{0}";
         /// <summary>
         /// 根据Id获取具体的键
         /// </summary>
