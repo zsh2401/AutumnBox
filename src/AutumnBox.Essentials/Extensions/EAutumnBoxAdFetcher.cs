@@ -13,20 +13,13 @@ namespace AutumnBox.Essentials.Extensions
         [LMain]
         public void EntryPoint(IAppManager appManager, IXCardsManager xCardsManager)
         {
-            try
+            return;
+            appManager.RunOnUIThread(() =>
             {
-                SLogger<EAutumnBoxAdFetcher>.Info($"XCARDMANAAGE:{xCardsManager}");
-                appManager.RunOnUIThread(() =>
-                {
-                    xCardsManager.Register(new AdCard());
-                });
-            }
-            catch (Exception e)
-            {
-                SLogger<EAutumnBoxAdFetcher>.Exception(e);
-            }
-
+                xCardsManager.Register(new AdCard());
+            });
         }
+
         private class AdCard : IXCard
         {
             public int Priority => 0;

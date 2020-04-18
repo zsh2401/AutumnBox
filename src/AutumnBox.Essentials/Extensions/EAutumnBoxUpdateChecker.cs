@@ -6,6 +6,7 @@ using AutumnBox.OpenFramework.Open.TextKit;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -22,6 +23,9 @@ namespace AutumnBox.Essentials.Extensions
         private const string STR_KEY_CHECKING_UPDATE = "checking_update";
         private const string STR_KEY_FAIL = "cant_check_update";
         private const string URL_UPDATE_CHECK_API = "";
+        private const string URL_API_SHOULD_UPDATE_CHECK_FMT = "http://aback.zsh2401.top/api/v2020/latest-version";
+
+        private readonly WebClient webClient = new WebClient() { Encoding = Encoding.UTF8 };
 
         [LMain]
         public void EntryPoint(INotificationManager notificationManager, IClassTextReader reader)

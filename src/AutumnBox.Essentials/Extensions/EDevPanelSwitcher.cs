@@ -8,6 +8,7 @@ namespace AutumnBox.Essentials.Extensions
 {
     [ExtName("ExtDevPanel Switcher")]
     [ExtDeveloperMode]
+    [ExtIcon("Resources.Icons.devpanelswitcher.png")]
     class EDevPanelSwitcher : LeafExtensionBase
     {
         [LMain]

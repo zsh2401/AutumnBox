@@ -59,8 +59,8 @@ namespace AutumnBox.Essentials.XCards
 
         public void Update()
         {
-            tbComponentSize.Text = $"Component Size: {lake.Size}";
-            tbFreeKitSize.Text = $"FreeKit Size: {LakeExtension.FreeKitRecordSize}";
+            tbComponentSize.Text = $"Component Count: {lake.Count}";
+            tbFreeKitSize.Text = $"FreeKit Count: {LakeExtension.FreeKitRecordSize}";
         }
 
         public void Dispose()
