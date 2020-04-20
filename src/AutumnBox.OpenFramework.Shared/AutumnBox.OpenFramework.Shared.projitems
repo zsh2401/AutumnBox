@@ -46,8 +46,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Open\ILanguageManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\INotificationManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\IXCardsManager.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Open\TextKit\ClassTextAttribute.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Open\TextKit\IClassTextReader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\IOpenFxManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\LakeProvider.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\LKit\ILeafUI.cs" />
@@ -74,7 +72,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Management\IBaseApi.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\ILibsManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\ExtLibrary\Impl\DreamLibManager.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Open\TextKit\IClassTextDictionary.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Implementation\ClassTextDictionary.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Implementation\Md5Impl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Implementation\OSImpl.cs" />
