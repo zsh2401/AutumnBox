@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using AutumnBox.Leafx.Container;
 using AutumnBox.Leafx.Container.Support;
+using AutumnBox.Leafx.Enhancement.ClassTextKit;
 using AutumnBox.Leafx.ObjectManagement;
 using AutumnBox.Logging;
 using AutumnBox.OpenFramework.Management.ExtInfo;
@@ -40,9 +41,9 @@ namespace AutumnBox.OpenFramework.Extension.Leaf
         {
             SunsetLake s_lake = new SunsetLake();
             s_lake.RegisterSingleton<ILogger>(LoggerFactory.Auto(this.GetType().Name));
-            s_lake.RegisterSingleton<IClassTextDictionary>(() =>
+            s_lake.RegisterSingleton<ClassTextReader>(() =>
             {
-                return lake.Get<IClassTextReader>().Read(this);
+                return ClassTextReader.GetReader(this);
             });
             s_lake.RegisterSingleton<IExtensionInfo>(() =>
             {

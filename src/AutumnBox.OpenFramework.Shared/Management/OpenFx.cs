@@ -80,7 +80,6 @@ namespace AutumnBox.OpenFramework.Management
             Lake.RegisterSingleton<IResourcesManager, ResManagerImpl>();
             Lake.RegisterSingleton<IAppManager, AppManagerImpl>();
             Lake.RegisterSingleton<IDeviceManager, DeviceManager>();
-            Lake.RegisterSingleton<IClassTextReader, ClassTextReader>();
             Lake.RegisterSingleton<ICompApi, CompImpl>();
             Lake.RegisterSingleton<INotificationManager, NotificationManager>();
             Lake.RegisterSingleton<IXCardsManager, XCardsManager>();

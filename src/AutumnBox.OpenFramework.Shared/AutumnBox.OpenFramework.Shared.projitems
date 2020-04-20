@@ -29,7 +29,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Leaf\LeafExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Leaf\LeafTerminatedException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Leaf\LeafUIExtension.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Implementation\ClassTextReader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Implementation\DeviceManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Implementation\NotificationManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Implementation\XCardsManager.cs" />
@@ -72,7 +71,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Management\IBaseApi.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\ILibsManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\ExtLibrary\Impl\DreamLibManager.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Implementation\ClassTextDictionary.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Implementation\Md5Impl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Implementation\OSImpl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Implementation\ResManagerImpl.cs" />

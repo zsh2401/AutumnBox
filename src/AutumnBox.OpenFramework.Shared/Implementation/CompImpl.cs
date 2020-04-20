@@ -11,11 +11,16 @@ using System.Reflection;
 
 namespace AutumnBox.OpenFramework.Implementation
 {
+    /// <summary>
+    /// CompApi的实现
+    /// </summary>
     [Component(Type = typeof(ICompApi))]
     class CompImpl : ICompApi
     {
+        ///<inheritdoc/>
         public Version SdkVersion { get; set; }
 
+        ///<inheritdoc/>
         public int ApiLevel
         {
             get
@@ -24,16 +29,19 @@ namespace AutumnBox.OpenFramework.Implementation
             }
         }
 
+        ///<inheritdoc/>
         public void IsolatedInvoke(Action act)
         {
             act?.Invoke();
         }
 
+        ///<inheritdoc/>
         public void IsolatedInvoke(int minSdk, Action act)
         {
             IsolatedInvoke(BuildInfo.API_LEVEL >= minSdk, act);
         }
 
+        ///<inheritdoc/>
         public void IsolatedInvoke(bool canRun, Action act)
         {
             if (canRun)
@@ -42,6 +50,7 @@ namespace AutumnBox.OpenFramework.Implementation
             }
         }
 
+        ///<inheritdoc/>
         public CompImpl()
         {
             Assembly asm = Assembly.GetExecutingAssembly();

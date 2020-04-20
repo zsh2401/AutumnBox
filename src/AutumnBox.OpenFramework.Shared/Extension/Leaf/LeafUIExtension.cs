@@ -5,7 +5,7 @@ using AutumnBox.OpenFramework.Open;
 using AutumnBox.OpenFramework.Open.LKit;
 using System.Threading;
 using AutumnBox.Leafx.Container;
-using AutumnBox.OpenFramework.Open.TextKit;
+using AutumnBox.Leafx.Enhancement.ClassTextKit;
 
 namespace AutumnBox.OpenFramework.Extension.Extension.Leaf
 {
@@ -47,12 +47,6 @@ namespace AutumnBox.OpenFramework.Extension.Extension.Leaf
             ui.Shutdown();
             Thread.CurrentThread.Abort();
         }
-        private static readonly IClassTextDictionary text;
-        static LeafUIHelper()
-        {
-            text = LakeProvider.Lake.Get<IClassTextReader>().Read((typeof(LeafUIHelper)));
-            SLogger.Debug(nameof(LeafUIHelper), $"{typeof(LeafUIHelper)}'s IClassTextManager created");
-        }
 
         /// <summary>
         /// 检查是否安装APP并询问用户,如果处于不恰当情况,将停止LeafExtension执行流程
@@ -63,12 +57,13 @@ namespace AutumnBox.OpenFramework.Extension.Extension.Leaf
 
         public static void AppPropertyCheck(this ILeafUI ui, IDevice device, string packageName)
         {
+            var classTextReader = ClassTextReader.GetReader(typeof(LeafUIHelper));
 #pragma warning disable CS0618 // 类型或成员已过时
             bool isInstall = new PackageManager(device).IsInstall(packageName) == true;
 #pragma warning restore CS0618 // 类型或成员已过时
             if (!isInstall)
             {
-                bool? choice = ui.DoChoice(text["msg"], text["ok"], text["continue"], text["cancel"]);
+                bool? choice = ui.DoChoice(classTextReader["msg"], classTextReader["ok"], classTextReader["continue"], classTextReader["cancel"]);
                 if (choice == null || choice == true) ui.EShutdown();
             }
         }
