@@ -14,6 +14,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Calling\Adb\RealtimeShellCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Calling\Adb\ShellCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Calling\Adb\SuCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Calling\AxiosExecutor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Calling\Cmd\WindowsCmdCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Calling\CommandExecutor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Calling\CommandExecutorExtension.cs" />
@@ -114,6 +115,11 @@
     <Compile Include="$(MSBuildThisFileDirectory)ManagedAdb\AdbClientWarpper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ManagedAdb\AdbResponse.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ManagedAdb\AdbResponseState.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ManagedAdb\CommandDriven\CommandStatus.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ManagedAdb\CommandDriven\ABADBManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ManagedAdb\CommandDriven\ICommandProcedure.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ManagedAdb\CommandDriven\ICommandDriver.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ManagedAdb\CommandDriven\ICommandResult.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ManagedAdb\DefaultAdbManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ManagedAdb\Extension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ManagedAdb\IAdbClient.cs" />
@@ -129,5 +135,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Util\NativeMethods.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Util\Settings.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Util\ThrowIf.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)ManagedAdb\SocketDriven\" />
   </ItemGroup>
 </Project>
