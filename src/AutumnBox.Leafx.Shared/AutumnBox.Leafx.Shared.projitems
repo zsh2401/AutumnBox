@@ -19,8 +19,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)Container\Support\ShouldAutoCreateException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Container\TypeNotFoundException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enhancement\ClassTextKit\ClassTextAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Enhancement\ClassTextKit\ClassTextCacheManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enhancement\ClassTextKit\ClassTextReader.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Message\MessageSubscriber.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Enhancement\ClassTextKit\ClassTextReader.Creators.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Enhancement\ClassTextKit\ClassTextReader.GenericRead.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ObjectManagement\AroundMethodArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ObjectManagement\AroundMethodAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ObjectManagement\AutoInjectAttribute.cs" />
@@ -37,15 +39,14 @@
     <Compile Include="$(MSBuildThisFileDirectory)ObjectManagement\ObjectBuilder.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ObjectManagement\ObjectManagementConstants.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ObjectManagement\DependenciesInjector.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Service\IMessage.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Service\IService.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Service\ServiceAttribute.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Service\ServiceScanner.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Container\LakeExtension.Register.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Container\LakeExtension.Builder.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Enhancement\ClassTextKit\ClassTextExtension.cs" />
   </ItemGroup>
 </Project>

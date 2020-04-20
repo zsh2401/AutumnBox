@@ -1,11 +1,20 @@
-﻿using System;
+﻿#nullable enable
+using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Collections.ObjectModel;
+using System.Reflection;
 
 namespace AutumnBox.Leafx.Enhancement.ClassTextKit
 {
-    public sealed class ClassTextReader
+    /// <summary>
+    /// 类文本读取器
+    /// </summary>
+    public sealed partial class ClassTextReader
     {
+        /// <summary>
+        /// 构造一个ClassText加载器
+        /// </summary>
+        /// <param name="type"></param>
         private ClassTextReader(Type type)
         {
             if (type is null)
@@ -13,26 +22,72 @@ namespace AutumnBox.Leafx.Enhancement.ClassTextKit
                 throw new ArgumentNullException(nameof(type));
             }
             Type = type;
+            var dc = new Dictionary<string, ClassTextAttribute>();
+            foreach (var attr in type.GetCustomAttributes<ClassTextAttribute>(true))
+            {
+                dc.Add(attr.Key, attr);
+            }
+            attributes = new ReadOnlyDictionary<string, ClassTextAttribute>(dc);
         }
 
+        /// <summary>
+        /// 装载的类型
+        /// </summary>
         public Type Type { get; }
 
-        public string this[string key] { get { } }
-        public bool TryGet(out string value)
+        /// <summary>
+        /// 内部维护特性字典
+        /// </summary>
+        private readonly ReadOnlyDictionary<string, ClassTextAttribute> attributes;
+
+        /// <summary>
+        /// 文本索引器
+        /// </summary>
+        /// <param name="key"></param>
+        /// <exception cref="ArgumentNullException">键为空</exception>
+        /// <exception cref="KeyNotFoundException">找不到键</exception>
+        /// <exception cref="InvalidOperationException">获取值时,特性内部异常</exception>
+        /// <returns></returns>
+        public string this[string key]
         {
+            get
+            {
+                if (key == null)
+                {
+                    throw new ArgumentNullException(nameof(key));
+                }
+                try
+                {
+                    return attributes[key].Value;
+                }
+                catch (KeyNotFoundException e)
+                {
+                    throw e;
+                }
+                catch (Exception e)
+                {
+                    throw new InvalidOperationException("Can not read key", e);
+                }
+            }
         }
 
-        public static ClassTextReader Load<TClass>()
+        /// <summary>
+        /// 尝试获取,不会抛出异常
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public bool TryGetValue(string key, out string? value)
         {
-            return new ClassTextReader(typeof(TClass));
-        }
-        public static ClassTextReader Load(object instance)
-        {
-            return new ClassTextReader(instance.GetType());
-        }
-        public static ClassTextReader Load(Type t)
-        {
-            return new ClassTextReader(t);
+            try
+            {
+                value = this[key];
+                return true;
+            }
+            catch
+            {
+                value = default;
+                return false;
+            }
         }
     }
 }

@@ -15,6 +15,7 @@
 * ==============================================================================
 */
 using AutumnBox.Leafx.Container;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -25,8 +26,7 @@ namespace AutumnBox.Leafx.ObjectManagement
     {
         public static object?[] BuildArgs(IEnumerable<ILake> source, ParameterInfo[] parameterInfos)
         {
-            List<object> result = new List<object>();
-            source.Get();
+            throw new NotImplementedException("TODO");
         }
 
         public static object[] BuildArgs(

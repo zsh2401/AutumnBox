@@ -5,7 +5,7 @@
   <PropertyGroup>
     <LangVersion>8.0</LangVersion>
   </PropertyGroup>
- <PropertyGroup>
+  <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{2CFF3B20-4778-47EF-8D8B-B106F7617954}</ProjectGuid>
@@ -101,6 +101,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Leafx\ClassTextTest.cs" />
     <Compile Include="OpenFX\LeafExtension\LeafExtensionTest.cs" />
     <Compile Include="OpenFX\Leafx\NamespaceComponentLoaderTest.cs" />
     <Compile Include="OpenFX\Leafx\ComponentFactoryTest.cs" />
