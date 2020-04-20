@@ -8,7 +8,7 @@
         /// <summary>
         /// 隐藏的拓展标记
         /// </summary>
-        public ExtHiddenAttribute(bool value = false) :
+        public ExtHiddenAttribute(bool value = true) :
             base(ExtensionMetadataKeys.IS_HIDDEN, value)
         {
         }

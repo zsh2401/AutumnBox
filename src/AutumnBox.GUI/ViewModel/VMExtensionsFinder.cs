@@ -1,16 +1,13 @@
-﻿using AutumnBox.Basic.Device;
-using AutumnBox.GUI.Model;
+﻿using AutumnBox.GUI.Model;
 using AutumnBox.GUI.MVVM;
 using AutumnBox.GUI.Properties;
 
 using AutumnBox.Leafx.Container;
-using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.Management;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Input;
 using AutumnBox.OpenFramework.Management.ExtTask;
-using AutumnBox.Logging;
 using AutumnBox.GUI.Services;
 using AutumnBox.Leafx.ObjectManagement;
 using AutumnBox.OpenFramework.Management.ExtInfo;
@@ -101,7 +98,7 @@ namespace AutumnBox.GUI.ViewModel
             var libsManager = OpenFx.Lake.Get<ILibsManager>();
             Docks = from dock in libsManager.GetAllExtensions().ToDocks()
                     where !dock.ExtensionInfo.Hidden()
-                    where !dock.ExtensionInfo.DeveloperMode() || Settings.Default.DeveloperMode
+                    where (!dock.ExtensionInfo.DeveloperMode()) || Settings.Default.DeveloperMode
                     where (!dock.ExtensionInfo.Regions().Any()) || dock.ExtensionInfo.Regions().Contains(LanguageManager.Current.LanCode)
                     select dock;
             Order();

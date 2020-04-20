@@ -1,4 +1,5 @@
-﻿using System;
+﻿#nullable enable
+using System;
 using System.Collections.Generic;
 
 namespace AutumnBox.OpenFramework.Extension
@@ -11,8 +12,8 @@ namespace AutumnBox.OpenFramework.Extension
         /// <summary>
         /// 主方法
         /// </summary>
-        /// <param name="args">返回任意的结果,通常为NULL</param>
-        /// <returns></returns>
-        object Main(Dictionary<string, object> args);
+        /// <param name="args">参数</param>
+        /// <returns>方法返回值</returns>
+        object? Main(Dictionary<string, object> args);
     }
 }

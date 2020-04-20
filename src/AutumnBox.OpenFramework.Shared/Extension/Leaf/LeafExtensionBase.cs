@@ -6,7 +6,6 @@ using AutumnBox.Leafx.Enhancement.ClassTextKit;
 using AutumnBox.Leafx.ObjectManagement;
 using AutumnBox.Logging;
 using AutumnBox.OpenFramework.Management.ExtInfo;
-using AutumnBox.OpenFramework.Open;
 using AutumnBox.OpenFramework.Open.LKit;
 
 namespace AutumnBox.OpenFramework.Extension.Leaf
@@ -17,7 +16,7 @@ namespace AutumnBox.OpenFramework.Extension.Leaf
     public abstract class LeafExtensionBase : EmptyExtension, IClassExtension
     {
         [AutoInject]
-        private ILake? lake = null;
+        readonly ILake? lake = null;
 
         /// <summary>
         /// 入口函数,继承者无需关心
@@ -51,7 +50,7 @@ namespace AutumnBox.OpenFramework.Extension.Leaf
             });
             s_lake.RegisterSingleton<ILeafUI>(() =>
             {
-                ILeafUI leafUI = this.lake.Get<ILeafUI>();
+                ILeafUI leafUI = this.lake!.Get<ILeafUI>();
                 IExtensionInfo inf = this.GetExtensionInfo();
                 leafUI.Title = inf.Name();
                 leafUI.Icon = inf.Icon();

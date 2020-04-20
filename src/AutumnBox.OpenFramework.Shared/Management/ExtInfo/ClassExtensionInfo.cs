@@ -115,9 +115,10 @@ namespace AutumnBox.OpenFramework.Management.ExtInfo
 
             public object? Run()
             {
-                var instance = (IClassExtension)new ObjectBuilder(classExtensionType, Source ?? new ILake[0]).Build(Args);
-                instance.Main(Args);
-                throw new NotImplementedException();
+                var source = Source ?? new ILake[0];
+                var objBuilder = new ObjectBuilder(classExtensionType, source);
+                var instance = (IExtension)objBuilder.Build(Args);
+                return instance.Main(Args ?? new Dictionary<string, object>());
             }
         }
     }

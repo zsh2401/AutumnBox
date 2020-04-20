@@ -36,9 +36,8 @@ namespace AutumnBox.Leafx.Container
                 {
                     return source.GetComponent(id);
                 }
-                catch (IdNotFoundException e)
+                catch (IdNotFoundException)
                 {
-                    throw e;
                 }
             }
             throw new IdNotFoundException($"Id {id} not found");
@@ -70,9 +69,8 @@ namespace AutumnBox.Leafx.Container
                 {
                     return source.Get(t);
                 }
-                catch (TypeNotFoundException e)
+                catch (TypeNotFoundException)
                 {
-                    throw e;
                 }
             }
             throw new TypeNotFoundException(t);

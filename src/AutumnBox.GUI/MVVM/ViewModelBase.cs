@@ -5,16 +5,12 @@
 *************************************************/
 
 using AutumnBox.GUI.Services;
-
-using AutumnBox.GUI.Util.UI;
-using AutumnBox.Leafx;
 using AutumnBox.Leafx.Container;
 using AutumnBox.Leafx.ObjectManagement;
 using AutumnBox.Logging;
 using System;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace AutumnBox.GUI.MVVM

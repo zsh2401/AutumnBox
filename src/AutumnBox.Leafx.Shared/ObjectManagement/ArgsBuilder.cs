@@ -34,38 +34,18 @@ namespace AutumnBox.Leafx.ObjectManagement
 
             foreach (var p in parameterInfos)
             {
-                try
-                {
-                    args.Add(GetFromExtraArgs(p, extraArgs));
-                }
-                catch
-                {
-                    try
-                    {
-                        args.Add(GetFromSources(p, sources));
-                    }
-                    catch
-                    {
-                        args.Add(default);
-                    }
-                }
-
+                args.Add(GetArgs(p, extraArgs, sources));
             }
             return args.ToArray();
         }
 
-        private static object? GetFromExtraArgs(ParameterInfo pInfo, Dictionary<string, object> args)
+        private static object? GetArgs(ParameterInfo pInfo, IDictionary<string, object> args, IEnumerable<ILake> sources)
         {
-            return args[pInfo.Name];
-        }
-
-        private static object? GetFromSources(ParameterInfo pInfo, IEnumerable<ILake> sources)
-        {
-            try
+            if (args.TryGetValue(pInfo.Name, out object? value) && (value == null || value?.GetType() == pInfo.GetType()))
             {
-                return sources.Get(pInfo.Name);
+                return value;
             }
-            catch
+            else
             {
                 return sources.Get(pInfo.ParameterType);
             }

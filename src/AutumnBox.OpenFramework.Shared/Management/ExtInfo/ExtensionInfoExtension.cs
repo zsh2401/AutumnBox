@@ -159,7 +159,7 @@ namespace AutumnBox.OpenFramework.Management.ExtInfo
         /// <returns></returns>
         public static bool Hidden(this IExtensionInfo extensionInfo)
         {
-            const bool DEFAULT_VALUE = false;
+            const bool DEFAULT_VALUE = true;
             try
             {
                 return extensionInfo.Metadata[ExtensionMetadataKeys.IS_HIDDEN]?.Invoke() as bool?

@@ -1,9 +1,8 @@
-﻿using AutumnBox.Leafx.Container;
-using AutumnBox.Leafx.Container.Support;
+﻿#nullable enable
+using AutumnBox.Leafx.Container;
 using AutumnBox.Logging;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 
@@ -44,15 +43,18 @@ namespace AutumnBox.Leafx.ObjectManagement
             {
                 try
                 {
-                    var value = GetValue(injectable.Attr.Id, injectable.ValueType);
-                    if (value != null)
-                    {
-                        injectable.Set(instance, value);
-                    }
-                    else
-                    {
-                        SLogger<DependenciesInjector>.Info($"Can not found component: {(injectable.Attr.Id ?? injectable.ValueType?.Name)}. Injecting of {instance.GetType().FullName}.{injectable.Name} is skipped");
-                    }
+                    object? value = GetValue(injectable.Attr.Id, injectable.ValueType!);
+#pragma warning disable CS8604 // 可能的 null 引用参数。
+                    injectable.Set(instance, value);
+#pragma warning restore CS8604 // 可能的 null 引用参数。
+                }
+                catch (IdNotFoundException)
+                {
+                    SLogger<DependenciesInjector>.Info($"Can not found component: {(injectable.Attr.Id ?? injectable.ValueType?.Name)}. Injecting of {instance.GetType().FullName}.{injectable.Name} is skipped");
+                }
+                catch (TypeNotFoundException)
+                {
+                    SLogger<DependenciesInjector>.Info($"Can not found component: {(injectable.Attr.Id ?? injectable.ValueType?.Name)}. Injecting of {instance.GetType().FullName}.{injectable.Name} is skipped");
                 }
                 catch (Exception e)
                 {
@@ -68,7 +70,7 @@ namespace AutumnBox.Leafx.ObjectManagement
         /// <param name="id"></param>
         /// <param name="t"></param>
         /// <returns></returns>
-        private object GetValue(string id, Type t)
+        private object? GetValue(string? id, Type t)
         {
             if (id == null)
             {
@@ -76,7 +78,14 @@ namespace AutumnBox.Leafx.ObjectManagement
             }
             else
             {
-                return sources.Get(id) ?? sources.Get(t);
+                try
+                {
+                    return sources.Get(id);
+                }
+                catch (IdNotFoundException)
+                {
+                    return sources.Get(t);
+                }
             }
         }
 
@@ -132,18 +141,22 @@ namespace AutumnBox.Leafx.ObjectManagement
             /// 期望被注入的类型
             /// </summary>
             public Type ValueType { get; }
+
             /// <summary>
             /// 名称
             /// </summary>
             public string Name { get; }
+
             /// <summary>
             /// 特性
             /// </summary>
             public AutoInjectAttribute Attr { get; }
+
             /// <summary>
             /// 设置器
             /// </summary>
-            private readonly Action<object, object> setter;
+            private readonly Action<object, object?> setter;
+
             /// <summary>
             /// 为属性构建可注入目标信息
             /// </summary>
@@ -156,10 +169,11 @@ namespace AutumnBox.Leafx.ObjectManagement
                 }
 
                 ValueType = property.PropertyType;
-                setter = (instance, v) => property.GetSetMethod(true).Invoke(instance, new object[] { v });
+                setter = (instance, v) => property.GetSetMethod(true).Invoke(instance, new object?[] { v });
                 Name = property.Name;
                 Attr = property.GetCustomAttribute<AutoInjectAttribute>();
             }
+
             /// <summary>
             /// 为字段构建可注入目标信息
             /// </summary>
@@ -175,12 +189,13 @@ namespace AutumnBox.Leafx.ObjectManagement
                 Name = field.Name;
                 Attr = field.GetCustomAttribute<AutoInjectAttribute>();
             }
+
             /// <summary>
             /// 进行设置(注入操作)
             /// </summary>
             /// <param name="instance"></param>
             /// <param name="value"></param>
-            public void Set(object instance, object value)
+            public void Set(object instance, object? value)
             {
                 setter(instance, value);
             }
