@@ -1,7 +1,6 @@
 ﻿using AutumnBox.Essentials.XCards;
 using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.Extension.Leaf;
-using AutumnBox.OpenFramework.Extension.Leaf.Attributes;
 using AutumnBox.OpenFramework.Open;
 
 namespace AutumnBox.Essentials.Extensions

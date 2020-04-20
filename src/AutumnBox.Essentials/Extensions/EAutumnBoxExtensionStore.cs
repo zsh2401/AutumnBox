@@ -1,5 +1,5 @@
 ﻿using AutumnBox.OpenFramework.Extension;
-using AutumnBox.OpenFramework.Extension.Leaf.Attributes;
+using AutumnBox.OpenFramework.Extension.Leaf;
 using System.Diagnostics;
 
 namespace AutumnBox.Essentials.Extensions

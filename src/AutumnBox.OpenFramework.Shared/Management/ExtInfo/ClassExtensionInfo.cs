@@ -20,7 +20,7 @@ namespace AutumnBox.OpenFramework.Management.ExtInfo
         public Type ClassExtensionType { get; private set; }
 
         /// <summary>
-        /// 构造一个拓展模块信息
+        /// 不参与缓存机制，构造一个拓展模块信息
         /// </summary>
         /// <param name="classExtensionType"></param>
         public ClassExtensionInfo(Type classExtensionType)
@@ -31,6 +31,26 @@ namespace AutumnBox.OpenFramework.Management.ExtInfo
             }
             this.ClassExtensionType = classExtensionType ?? throw new ArgumentNullException(nameof(classExtensionType));
             this.Metadata = ReadMetadata();
+        }
+
+        /// <summary>
+        /// 参与缓存机制，根据类型获取
+        /// </summary>
+        /// <param name="t"></param>
+        /// <returns></returns>
+        public static IExtensionInfo GetByType(Type t)
+        {
+            var cache = ExtensionInfoCacheManager.Cached;
+            if (cache.ContainsKey(t))
+            {
+                return cache[t];
+            }
+            else
+            {
+                var inf = new ClassExtensionInfo(t);
+                cache.Add(t, inf);
+                return inf;
+            }
         }
 
         /// <summary>

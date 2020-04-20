@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Essentials
 {
-    public class EssentialsLibrarin : ExtensionLibrarian
+    public class EssentialsLibrarin : AssemblyLibrarian
     {
         public static EssentialsLibrarin Current { get; private set; }
 
@@ -50,8 +50,8 @@ namespace AutumnBox.Essentials
             SLogger<EssentialsLibrarin>.Info($"{nameof(EssentialsLibrarin)}'s ready");
             notificationManager.Success("Essentials library is loaded");
 
-            extensionTaskManager.Start<EAutumnBoxUpdateChecker>();
-            extensionTaskManager.Start<EAutumnBoxAdFetcher>();
+            extensionTaskManager.Start("EAutumnBoxUpdateChecker");
+            extensionTaskManager.Start("EAutumnBoxAdFetcher");
 
             var componentLoader = new ClassComponentsLoader("AutumnBox.Essentials", rlake, this.GetType().Assembly);
             componentLoader.Do();

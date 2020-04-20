@@ -22,6 +22,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Attribute\ExtensionInfoAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\AutumnBoxExtension.Constants.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\EmptyExtension.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extension\IExtensionUsefulTools.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\IClassExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\IExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Leaf\LDoNotScanAttribute.cs" />
@@ -33,6 +34,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Implementation\NotificationManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Implementation\XCardsManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\ExtInfo\ClassExtensionInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Management\ExtInfo\ExtensionInfoCacheManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\ExtInfo\IExtensionProcedure.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\ExtInfo\IExtensionInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\ExtInfo\ValueReader.cs" />

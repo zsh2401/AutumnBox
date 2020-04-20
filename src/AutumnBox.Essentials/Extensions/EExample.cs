@@ -1,14 +1,12 @@
 ﻿using AutumnBox.Logging;
 using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.Extension.Leaf;
-using AutumnBox.OpenFramework.Extension.Leaf.Attributes;
 using AutumnBox.OpenFramework.Open.LKit;
 
 namespace AutumnBox.Essentials
 {
     [ExtName("Example Extension")]
     [ExtDeveloperMode]
-    [ExtOfficial]
     [ExtAuth("zsh2401")]
     class EExample : LeafExtensionBase
     {
@@ -19,7 +17,7 @@ namespace AutumnBox.Essentials
             using (ui)
             {
                 ui.Title = this.GetName();
-                ui.Icon = this.GetIconBytes();
+                ui.Icon = this.GetIcon();
                 ui.Show();
                 ui.WriteLine("Hello world!");
                 ui.Finish();

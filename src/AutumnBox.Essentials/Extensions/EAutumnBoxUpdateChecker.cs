@@ -1,15 +1,10 @@
-﻿using AutumnBox.OpenFramework.Extension;
+﻿using AutumnBox.Leafx.Enhancement.ClassTextKit;
+using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.Extension.Leaf;
-using AutumnBox.OpenFramework.Extension.Leaf.Attributes;
 using AutumnBox.OpenFramework.Open;
-using AutumnBox.OpenFramework.Open.TextKit;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace AutumnBox.Essentials.Extensions
 {
@@ -28,12 +23,11 @@ namespace AutumnBox.Essentials.Extensions
         private readonly WebClient webClient = new WebClient() { Encoding = Encoding.UTF8 };
 
         [LMain]
-        public void EntryPoint(INotificationManager notificationManager, IClassTextReader reader)
+        public void EntryPoint(INotificationManager notificationManager, ClassTextReader reader)
         {
-            var dictionary = reader.Read(this);
-            notificationManager.Info(dictionary[STR_KEY_CHECKING_UPDATE]);
+            notificationManager.Info(reader[STR_KEY_CHECKING_UPDATE]);
             Thread.Sleep(5000);
-            notificationManager.Warn(dictionary[STR_KEY_FAIL]);
+            notificationManager.Warn(reader[STR_KEY_FAIL]);
         }
     }
 }
