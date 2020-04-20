@@ -14,6 +14,7 @@ using AutumnBox.OpenFramework.Management.ExtInfo;
 using AutumnBox.OpenFramework.Exceptions;
 using AutumnBox.GUI.Util;
 using AutumnBox.OpenFramework.Management.ExtLibrary;
+using AutumnBox.Logging;
 
 namespace AutumnBox.GUI.ViewModel
 {
@@ -101,6 +102,13 @@ namespace AutumnBox.GUI.ViewModel
                     where (!dock.ExtensionInfo.DeveloperMode()) || Settings.Default.DeveloperMode
                     where (!dock.ExtensionInfo.Regions().Any()) || dock.ExtensionInfo.Regions().Contains(LanguageManager.Current.LanCode)
                     select dock;
+            //Docks = libsManager.GetAllExtensions().ToDocks()
+            //    .Where(dock =>
+            //    {
+            //        SLogger<VMExtensionsFinder>.CDebug($"hide: {dock.ExtensionInfo.Hidden()}");
+            //        return !dock.ExtensionInfo.Hidden();
+            //    });
+            //SLogger<VMExtensionsFinder>.CDebug($"There are {Docks.Count()} dock(s)");
             Order();
         }
 

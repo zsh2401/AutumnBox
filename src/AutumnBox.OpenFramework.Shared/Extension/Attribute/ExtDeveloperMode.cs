@@ -8,7 +8,7 @@
         /// <summary>
         /// 构造
         /// </summary>
-        public ExtDeveloperMode(bool value = false) :
+        public ExtDeveloperMode(bool value = true) :
             base(ExtensionMetadataKeys.IS_DEVELOPING, value)
         { }
     }

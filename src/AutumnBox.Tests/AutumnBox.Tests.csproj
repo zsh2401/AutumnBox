@@ -102,6 +102,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Leafx\ClassTextTest.cs" />
+    <Compile Include="OpenFX\ExtInf\ExtInfExtensionTest.cs" />
     <Compile Include="OpenFX\LeafExtension\LeafExtensionTest.cs" />
     <Compile Include="OpenFX\Leafx\NamespaceComponentLoaderTest.cs" />
     <Compile Include="OpenFX\Leafx\ComponentFactoryTest.cs" />
