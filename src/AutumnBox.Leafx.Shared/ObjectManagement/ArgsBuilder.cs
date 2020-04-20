@@ -24,39 +24,43 @@ namespace AutumnBox.Leafx.ObjectManagement
 {
     public static class ArgsBuilder
     {
-        public static object?[] BuildArgs(IEnumerable<ILake> source, ParameterInfo[] parameterInfos)
-        {
-            throw new NotImplementedException("TODO");
-        }
-
-        public static object[] BuildArgs(
+        public static object?[] BuildArgs(
             IEnumerable<ILake> sources,
             Dictionary<string, object> extraArgs,
             ParameterInfo[] parameterInfos)
         {
-            List<object> args = new List<object>();
+
+            List<object?> args = new List<object?>();
 
             foreach (var p in parameterInfos)
             {
-                args.Add(GetFromExtraArgs(p, extraArgs) ?? GetFromSources(p, sources) ?? null);
+                try
+                {
+                    args.Add(GetFromExtraArgs(p, extraArgs));
+                }
+                catch
+                {
+                    try
+                    {
+                        args.Add(GetFromSources(p, sources));
+                    }
+                    catch
+                    {
+                        args.Add(default);
+                    }
+                }
+
             }
             return args.ToArray();
         }
 
-        private static object GetFromExtraArgs(ParameterInfo pInfo, Dictionary<string, object> args)
+        private static object? GetFromExtraArgs(ParameterInfo pInfo, Dictionary<string, object> args)
         {
-            if (args.TryGetValue(pInfo.Name, out object value))
-            {
-                return value;
-            }
-            else
-            {
-                return null;
-            }
+            return args[pInfo.Name];
         }
-        private static object GetFromSources(ParameterInfo pInfo, IEnumerable<ILake> sources)
+
+        private static object? GetFromSources(ParameterInfo pInfo, IEnumerable<ILake> sources)
         {
-            if (sources == null) return null;
             try
             {
                 return sources.Get(pInfo.Name);
@@ -64,19 +68,6 @@ namespace AutumnBox.Leafx.ObjectManagement
             catch
             {
                 return sources.Get(pInfo.ParameterType);
-            }
-        }
-
-        private static object GetValue(ParameterInfo pInf, IEnumerable<ILake> sources)
-        {
-            if (sources == null) return null;
-            try
-            {
-                return sources.Get(pInf.Name) ?? sources.Get(pInf.ParameterType);
-            }
-            catch
-            {
-                return sources.Get(pInf.ParameterType);
             }
         }
     }

@@ -18,7 +18,7 @@ namespace AutumnBox.GUI.Model
         }
         private ILibrarian _lib;
 
-        public int Count => Lib.GetWrappers().Count();
+        public int Count => Lib.Extensions.Count();
         public LibDock(ILibrarian lib)
         {
             Lib = lib ?? throw new ArgumentNullException(nameof(lib));

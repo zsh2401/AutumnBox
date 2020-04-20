@@ -12,14 +12,40 @@ namespace AutumnBox.OpenFramework.Management.ExtLibrary.Impl
     {
         [AutoInject]
         private IManagementObjectBuilder mObjBuilder { get; set; }
+
         private const string PATTERN_DEFAULT = "*.dll";
         private const string PATTERN_ATMBEXT = "*.aext";
         private const string PATTERN_OEXT = "*.aoext";
+
         public IEnumerable<ILibrarian> Librarians { get; private set; }
 
         public void Reload()
         {
-            Librarians = Ready(Check(GetLibManagers(GetAssemblies(GetFiles()))));
+            Librarians = ReloadLibs(Check(GetLibManagers(GetAssemblies(GetFiles()))));
+            Librarians.All((lib) =>
+            {
+                SLogger<DreamLibManager>.Warn($"Call ready method: {lib.Name}");
+                SafeReady(lib);
+                return true;
+            });
+        }
+
+        private IEnumerable<ILibrarian> ReloadLibs(IEnumerable<ILibrarian> libs)
+        {
+            List<ILibrarian> reloaded = new List<ILibrarian>();
+            foreach (var lib in libs)
+            {
+                try
+                {
+                    lib.Reload();
+                    reloaded.Add(lib);
+                }
+                catch (Exception e)
+                {
+                    SLogger<DreamLibManager>.Warn($"An error occured when reloading lib {lib?.GetType().Name}", e);
+                }
+            }
+            return reloaded;
         }
 
         private IEnumerable<ILibrarian> Check(IEnumerable<ILibrarian> libs)
@@ -46,9 +72,7 @@ namespace AutumnBox.OpenFramework.Management.ExtLibrary.Impl
         {
             try
             {
-                SLogger<DreamLibManager>.Info("Ready");
                 lib.Ready();
-                lib.Reload();
                 return true;
             }
             catch (Exception e)
@@ -57,18 +81,7 @@ namespace AutumnBox.OpenFramework.Management.ExtLibrary.Impl
                 return false;
             }
         }
-        private IEnumerable<ILibrarian> Ready(IEnumerable<ILibrarian> libs)
-        {
-            List<ILibrarian> buffer = new List<ILibrarian>();
-            foreach (var lib in libs)
-            {
-                if (SafeReady(lib))
-                {
-                    buffer.Add(lib);
-                }
-            }
-            return buffer;
-        }
+
         private IEnumerable<FileInfo> GetFiles()
         {
             var extDir = new DirectoryInfo(BuildInfo.DEFAULT_EXTENSION_PATH);
@@ -80,6 +93,7 @@ namespace AutumnBox.OpenFramework.Management.ExtLibrary.Impl
             SLogger<DreamLibManager>.Debug($"There are {files.Count()} extension file");
             return files;
         }
+
         private IEnumerable<Assembly> GetAssemblies(IEnumerable<FileInfo> files)
         {
             var result = new List<Assembly>();
@@ -105,6 +119,7 @@ namespace AutumnBox.OpenFramework.Management.ExtLibrary.Impl
             SLogger<DreamLibManager>.Debug($"There are {result.Count()} assemblies");
             return result;
         }
+
         private IEnumerable<ILibrarian> GetLibManagers(IEnumerable<Assembly> assemblies)
         {
             var result = new List<ILibrarian>();

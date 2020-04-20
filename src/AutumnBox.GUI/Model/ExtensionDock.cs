@@ -15,34 +15,39 @@ using System.Windows.Media;
 using AutumnBox.GUI.Services;
 using AutumnBox.Leafx.ObjectManagement;
 using AutumnBox.OpenFramework.Management.ExtTask;
+using AutumnBox.OpenFramework.Exceptions;
+using AutumnBox.OpenFramework.Management.ExtInfo;
 
 namespace AutumnBox.GUI.Model
 {
-    internal class ExtensionWrapperDock : ModelBase
+    internal class ExtensionDock : ModelBase
     {
+        public string Name => ExtensionInfo.Name();
+
         public string ToolTip
         {
             get
             {
-                return Wrapper.Info.Name + Environment.NewLine +
-                     Wrapper.Info.FormatedDesc;
+                return $"{ExtensionInfo.Name()}{Environment.NewLine}{ExtensionInfo.Author()}";
             }
         }
-        public IExtensionWrapper Wrapper { get; private set; }
-        public string Name => Wrapper.Info.Name;
-        public IExtensionInfoDictionary Info => Wrapper.Info;
+
+        public IExtensionInfo ExtensionInfo { get; }
+
+
         public ImageSource Icon
         {
             get
             {
                 if (icon == null)
                 {
-                    icon = Wrapper.Info.Icon.ToExtensionIcon();
+                    icon = ExtensionInfo.Icon().ToExtensionIcon();
                 }
                 return icon;
             }
         }
         private ImageSource icon;
+
         public Visibility RootVisibily
         {
             get => _rootVisibily; set
@@ -67,13 +72,13 @@ namespace AutumnBox.GUI.Model
         private readonly IAdbDevicesManager devicesManager;
 
         [AutoInject]
-        private readonly Services.INotificationManager notificationManager;
+        private readonly INotificationManager notificationManager;
 
-        public ExtensionWrapperDock(IExtensionWrapper wrapper)
+        public ExtensionDock(IExtensionInfo extInf)
         {
-            this.Wrapper = wrapper;
-            bool requiredRoot = wrapper.Info[ExtensionMetadataKeys.ROOT] as bool? ?? false;
-            RootVisibily = requiredRoot ? Visibility.Visible : Visibility.Collapsed;
+            this.ExtensionInfo = extInf;
+            RootVisibily = extInf.NeedRoot() ? Visibility.Visible : Visibility.Collapsed;
+
             Execute = new FlexiableCommand(p =>
             {
                 ExecuteImpl();
@@ -85,37 +90,30 @@ namespace AutumnBox.GUI.Model
         {
             if (devicesManager.SelectedDevice == null)
             {
-                bool isNM = Wrapper.Info.RequiredDeviceStates == AutumnBoxExtension.NoMatter;
+                bool isNM = ExtensionInfo.RequiredDeviceState() == AutumnBoxExtension.NoMatter;
                 Execute.CanExecuteProp = isNM;
             }
             else
             {
-                Execute.CanExecuteProp = true;
+                Execute.CanExecuteProp = ExtensionInfo.RequiredDeviceState().HasFlag(devicesManager.SelectedDevice.State);
             }
         }
 
         private void ExecuteImpl()
         {
-            if (StateCheck())
+            try
             {
-                this.GetComponent<IExtensionTaskManager>().Start(Wrapper.ExtensionType);
+                this.GetComponent<IExtensionTaskManager>().Start(ExtensionInfo);
+            }
+            catch (DeviceStateIsNotCorrectException)
+            {
+                notificationManager.Warn(GetDeviceStateNotCorrectWarningMessage());
             }
         }
-        private bool StateCheck()
+
+        private string GetDeviceStateNotCorrectWarningMessage()
         {
-            var reqState = Wrapper.Info.RequiredDeviceStates;
-            var crtState = devicesManager.SelectedDevice?.State ?? 0;
-            if (reqState == LeafConstants.NoMatter) return true;
-            else if (reqState.HasFlag(crtState)) return true;
-            else
-            {
-                notificationManager.Warn(GetTip());
-                return false;
-            }
-        }
-        private string GetTip()
-        {
-            var reqState = Wrapper.Info.RequiredDeviceStates;
+            var reqState = ExtensionInfo.RequiredDeviceState();
             List<string> statesString = new List<string>();
             if (reqState.HasFlag(DeviceState.Poweron))
                 statesString.Add(App.Current.Resources[$"Dash.State.Poweron"].ToString());
@@ -137,12 +135,12 @@ namespace AutumnBox.GUI.Model
     }
     internal static class ExtensionWrapperDockExtensions
     {
-        public static IEnumerable<ExtensionWrapperDock> ToDocks(this IEnumerable<IExtensionWrapper> wrappers)
+        public static IEnumerable<ExtensionDock> ToDocks(this IEnumerable<IExtensionInfo> extInfos)
         {
-            List<ExtensionWrapperDock> result = new List<ExtensionWrapperDock>();
-            foreach (var wrapper in wrappers)
+            List<ExtensionDock> result = new List<ExtensionDock>();
+            foreach (var inf in extInfos)
             {
-                result.Add(new ExtensionWrapperDock(wrapper));
+                result.Add(new ExtensionDock(inf));
             }
             return result;
         }

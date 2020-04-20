@@ -14,7 +14,7 @@
         /// 构造
         /// </summary>
         /// <param name="regions"></param>
-        public ExtRegionsAttribute(params string[] regions) : base(regions)
+        public ExtRegionsAttribute(params string[] regions) : base(regions ?? new string[0])
         {
         }
     }

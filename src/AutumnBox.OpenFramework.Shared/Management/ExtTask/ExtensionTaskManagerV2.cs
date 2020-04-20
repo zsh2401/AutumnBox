@@ -104,13 +104,13 @@ namespace AutumnBox.OpenFramework.Management.ExtTask
         private void StateCheck(IExtensionInfo inf)
         {
             IDevice? currentDevice = deviceManager!.Selected;
-            bool isNoMatterDeviceState = (inf.RequireDeviceState() == AutumnBoxExtension.NoMatter);
-            bool deviceStateCorrect = inf.RequireDeviceState().HasFlag(currentDevice?.State);
+            bool isNoMatterDeviceState = (inf.RequiredDeviceState() == AutumnBoxExtension.NoMatter);
+            bool deviceStateCorrect = inf.RequiredDeviceState().HasFlag(currentDevice?.State ?? default);
             bool runnable = isNoMatterDeviceState || deviceStateCorrect;
 
             if (!runnable)
             {
-                throw new DeviceStateIsNotCorrectException();
+                throw new DeviceStateIsNotCorrectException(inf.RequiredDeviceState(), currentDevice?.State);
             }
         }
 

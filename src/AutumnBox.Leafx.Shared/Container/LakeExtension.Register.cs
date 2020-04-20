@@ -230,7 +230,7 @@ namespace AutumnBox.Leafx.Container
                 throw new ArgumentNullException(nameof(factory));
             }
 
-            var lazy = new Lazy<object?>(() => factory);
+            var lazy = new Lazy<object?>(() => factory());
             lake.RegisterComponent(id, () => lazy.Value);
         }
 
@@ -290,7 +290,7 @@ namespace AutumnBox.Leafx.Container
                 throw new ArgumentNullException(nameof(t));
             }
 
-            return $"__lake_extension_register_by_type_id_{t.FullName}";
+            return $"___lake_extension_register_by_type_id_{t.FullName}";
         }
     }
 }

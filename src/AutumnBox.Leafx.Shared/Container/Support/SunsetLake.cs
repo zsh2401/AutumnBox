@@ -28,7 +28,8 @@ namespace AutumnBox.Leafx.Container.Support
         /// <summary>
         /// 内部维护一个字典用于存储所有工厂
         /// </summary>
-        private readonly ConcurrentDictionary<string, ComponentFactory> factories = new ConcurrentDictionary<string, ComponentFactory>();
+        private readonly ConcurrentDictionary<string, ComponentFactory> factories
+            = new ConcurrentDictionary<string, ComponentFactory>();
 
         /// <summary>
         /// 构造Sunset Lake
@@ -52,6 +53,7 @@ namespace AutumnBox.Leafx.Container.Support
         /// <returns></returns>
         public object GetComponent(string id)
         {
+            SLogger<SunsetLake>.CDebug($"Getting {id}");
             if (factories.TryGetValue(id, out ComponentFactory factory))
             {
                 return factory();
@@ -69,6 +71,7 @@ namespace AutumnBox.Leafx.Container.Support
         /// <param name="factory"></param>
         public void RegisterComponent(string id, ComponentFactory factory)
         {
+            SLogger<SunsetLake>.CDebug($"Registering {id}");
             factories[id] = factory;
         }
 

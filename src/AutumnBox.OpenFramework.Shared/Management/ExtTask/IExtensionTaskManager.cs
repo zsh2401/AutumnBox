@@ -1,4 +1,5 @@
 ﻿#nullable enable
+using AutumnBox.OpenFramework.Exceptions;
 using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.Management.ExtInfo;
 using System;
@@ -22,15 +23,15 @@ namespace AutumnBox.OpenFramework.Management.ExtTask
         /// 获取该任务所运行的拓展模块
         /// </summary>
         /// <param name="task"></param>
-        /// <returns></returns>
-        IExtensionInfo GetExtensionByTask(Task<object?> task);
+        /// <returns>如果找到,则返回值,否则返回null</returns>
+        IExtensionInfo? GetExtensionByTask(Task<object?> task);
 
         /// <summary>
         /// 启动一个任务
         /// </summary>
         /// <param name="id"></param>
         /// <param name="args"></param>
-        /// <param name="extralArgs"></param>
+        /// <exception cref="DeviceStateIsNotCorrectException">目标设备状态与模块要求的不匹配</exception>
         /// <returns></returns>
         Task<object?> Start(string id, Dictionary<string, object>? args = null);
 
@@ -39,6 +40,7 @@ namespace AutumnBox.OpenFramework.Management.ExtTask
         /// </summary>
         /// <param name="extension"></param>
         /// <param name="args"></param>
+        /// <exception cref="DeviceStateIsNotCorrectException">目标设备状态与模块要求的不匹配</exception>
         /// <returns></returns>
         Task<object?> Start(IExtensionInfo extension, Dictionary<string, object>? args = null);
 

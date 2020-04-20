@@ -16,12 +16,13 @@ using AutumnBox.Leafx.ObjectManagement;
 using AutumnBox.OpenFramework.Management.ExtInfo;
 using AutumnBox.OpenFramework.Exceptions;
 using AutumnBox.GUI.Util;
+using AutumnBox.OpenFramework.Management.ExtLibrary;
 
 namespace AutumnBox.GUI.ViewModel
 {
     class VMExtensionsFinder : ViewModelBase
     {
-        public IEnumerable<ExtensionWrapperDock> Docks
+        public IEnumerable<ExtensionDock> Docks
         {
             get => _docks; set
             {
@@ -29,9 +30,9 @@ namespace AutumnBox.GUI.ViewModel
                 RaisePropertyChanged();
             }
         }
-        private IEnumerable<ExtensionWrapperDock> _docks;
+        private IEnumerable<ExtensionDock> _docks;
 
-        public ExtensionWrapperDock SelectedDock
+        public ExtensionDock SelectedDock
         {
             get => _selectedDock; set
             {
@@ -39,7 +40,7 @@ namespace AutumnBox.GUI.ViewModel
                 RaisePropertyChanged();
             }
         }
-        private ExtensionWrapperDock _selectedDock;
+        private ExtensionDock _selectedDock;
 
         public ICommand ClickItem
         {
@@ -98,19 +99,18 @@ namespace AutumnBox.GUI.ViewModel
         private void Load()
         {
             var libsManager = OpenFx.Lake.Get<ILibsManager>();
-            Docks = libsManager.Wrappers()
-                    .Region(LanguageManager.Current.LanCode)
-                    .Hide()
-                    .Dev(Settings.Default.DeveloperMode)
-                    .ToDocks();
-            SLogger<VMExtensionsFinder>.Info(Docks.Count());
+            Docks = from dock in libsManager.GetAllExtensions().ToDocks()
+                    where !dock.ExtensionInfo.Hidden()
+                    where !dock.ExtensionInfo.DeveloperMode() || Settings.Default.DeveloperMode
+                    where (!dock.ExtensionInfo.Regions().Any()) || dock.ExtensionInfo.Regions().Contains(LanguageManager.Current.LanCode)
+                    select dock;
             Order();
         }
 
         private void Order()
         {
             Docks = from dock in Docks
-                    orderby dock.Wrapper.Info[ExtensionMetadataKeys.PRIORITY] descending
+                    orderby dock.ExtensionInfo.Priority() descending
                     orderby dock.Execute.CanExecuteProp descending
                     select dock;
         }
@@ -121,14 +121,14 @@ namespace AutumnBox.GUI.ViewModel
             {
                 if (!Settings.Default.DoubleClickRunExt)
                 {
-                    StartExtension((p as ExtensionWrapperDock)?.Wrapper);
+                    StartExtension((p as ExtensionDock)?.ExtensionInfo);
                 }
             });
             DoubleClickItem = new FlexiableCommand((p) =>
             {
                 if (Settings.Default.DoubleClickRunExt)
                 {
-                    StartExtension((p as ExtensionWrapperDock)?.Wrapper);
+                    StartExtension((p as ExtensionDock)?.ExtensionInfo);
                 }
             });
         }

@@ -2,9 +2,9 @@
 using AutumnBox.Leafx.Container.Support;
 using AutumnBox.Logging;
 using AutumnBox.OpenFramework.Management;
+using AutumnBox.OpenFramework.Management.ExtInfo;
 using AutumnBox.OpenFramework.Management.ExtLibrary;
 using AutumnBox.OpenFramework.Management.ExtTask;
-using AutumnBox.OpenFramework.Management.Wrapper;
 using AutumnBox.OpenFramework.Open;
 using System;
 using System.Collections.Generic;
@@ -18,7 +18,7 @@ namespace AutumnBox.GUI.Services.Impl
     {
         public Task<object>[] RunningTasks => OpenFx.Lake.Get<IExtensionTaskManager>().RunningTasks.ToArray();
 
-        public IExtensionWrapper[] ExtensionWrappers => OpenFx.Lake.Get<ILibsManager>().Wrappers().ToArray();
+        public IExtensionInfo[] Extensions => OpenFx.Lake.Get<ILibsManager>().GetAllExtensions().ToArray();
 
         private ILogger logger = LoggerFactory.Auto(nameof(OpenFxManagerImpl));
         private readonly Queue<Action> handlers = new Queue<Action>();
@@ -31,7 +31,7 @@ namespace AutumnBox.GUI.Services.Impl
             logger.Info("Loading extensions");
             OpenFx.RefreshExtensionsList();
             ILibsManager libsManager = OpenFx.Lake.Get<ILibsManager>();
-            logger.Info($"There are {libsManager.Librarians.Count()} librarians and {libsManager.Wrappers().Count()} wrappers");
+            logger.Info($"There are {libsManager.Librarians.Count()} librarians and {libsManager.GetAllExtensions().Count()} wrappers");
             isLoaded = true;
             while (handlers.Any())
             {

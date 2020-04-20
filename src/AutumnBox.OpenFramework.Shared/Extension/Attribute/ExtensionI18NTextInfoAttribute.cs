@@ -1,4 +1,5 @@
-﻿using System;
+﻿#nullable enable
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -59,15 +60,11 @@ namespace AutumnBox.OpenFramework.Extension
         /// </summary>
         /// <param name="defaultText"></param>
         /// <param name="otherLanguageTexts"></param>
-        public ExtensionI18NTextInfoAttribute(string defaultText,
+        public ExtensionI18NTextInfoAttribute(string? defaultText,
             params string[] otherLanguageTexts)
         {
-            if (string.IsNullOrEmpty(defaultText))
-            {
-                throw new ArgumentException("message", nameof(defaultText));
-            }
 
-            this.defaultText = defaultText;
+            this.defaultText = defaultText ?? "";
             var dictionary = new Dictionary<string, string>();
             otherLanguageTexts.All((text) =>
             {

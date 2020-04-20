@@ -1,4 +1,5 @@
-﻿using AutumnBox.OpenFramework.Management.ExtInfo;
+﻿#nullable enable
+using AutumnBox.OpenFramework.Management.ExtInfo;
 using System.Collections.Generic;
 using System.Linq;
 
