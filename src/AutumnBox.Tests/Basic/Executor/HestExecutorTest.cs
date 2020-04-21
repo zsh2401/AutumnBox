@@ -1,4 +1,6 @@
-﻿using AutumnBox.Basic.Calling;
+﻿using AutumnBox.ADBProvider;
+using AutumnBox.Basic;
+using AutumnBox.Basic.Calling;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
@@ -12,9 +14,19 @@ namespace AutumnBox.Tests.Basic.Executor
     [TestClass]
     public class HestExecutorTest
     {
+        public HestExecutorTest()
+        {
+            BasicBooter.Load<Win32AdbManager>();
+        }
+        ~HestExecutorTest()
+        {
+            BasicBooter.Free();
+        }
+
         [TestMethod]
         public void PingTest()
         {
+
             bool outputReceived = false;
             var executor = new HestExecutor();
             executor.OutputReceived += (s, e) =>

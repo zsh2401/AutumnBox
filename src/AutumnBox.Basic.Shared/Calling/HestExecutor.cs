@@ -63,7 +63,7 @@ namespace AutumnBox.Basic.Calling
                 //记录开始时间
                 DateTime start = DateTime.Now;
                 //开始进程
-                commandProcedure = BasicBooter.AdbManager.OpenCommandProcedureManager().OpenCommand(fileName, args);
+                commandProcedure = BasicBooter.CommandProcedureManager.OpenCommand(fileName, args);
                 commandProcedure.OutputReceived += OnOutputReceived;
 
                 //触发事件

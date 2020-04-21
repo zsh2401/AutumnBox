@@ -1,6 +1,10 @@
-﻿using AutumnBox.Basic.ManagedAdb;
+﻿#nullable enable
+using AutumnBox.Basic.ManagedAdb;
 using AutumnBox.Basic.ManagedAdb.CommandDriven;
+using AutumnBox.Logging;
 using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Net;
 
@@ -8,6 +12,7 @@ namespace AutumnBox.Basic
 {
     public abstract class StandardAdbManager : IAdbManager
     {
+        protected HashSet<ICommandProcedureManager>? NotDisposedCpmSet;
         public DirectoryInfo AdbClientDirectory { get; }
 
         public IPEndPoint ServerEndPoint { get; }
@@ -16,8 +21,12 @@ namespace AutumnBox.Basic
 
         public StandardAdbManager()
         {
+            NotDisposedCpmSet = new HashSet<ICommandProcedureManager>();
             AdbClientDirectory = InitializeClientFiles();
+            var oldEnvPath = Environment.GetEnvironmentVariable("PATH");
+            Environment.SetEnvironmentVariable("PATH", $"{AdbClientDirectory};{oldEnvPath}");
             ServerEndPoint = InitializeServer();
+            Environment.SetEnvironmentVariable("ANDROID_ADB_SERVER_PORT", ServerEndPoint.Port.ToString());
         }
 
         protected abstract DirectoryInfo InitializeClientFiles();
@@ -27,8 +36,8 @@ namespace AutumnBox.Basic
         {
             lock (_lock)
             {
-                using var cpm = OpenCommandProcedureManager();
-                cpm.OpenCommand("adb.exe", "stop-server");
+                using var cmd = new MyCommandProcedure("adb.exe", (ushort)ServerEndPoint.Port, AdbClientDirectory, $"-P{ServerEndPoint.Port} kill-server");
+                cmd.Execute();
             }
         }
 
@@ -38,7 +47,19 @@ namespace AutumnBox.Basic
             {
                 throw new ObjectDisposedException(nameof(StandardAdbManager));
             }
-            return new LocalProcedureManager(AdbClientDirectory, (ushort)ServerEndPoint.Port);
+            var cpm = new LocalProcedureManager(AdbClientDirectory, (ushort)ServerEndPoint.Port);
+            NotDisposedCpmSet.Add(cpm);
+            cpm.Disposed += Cpm_Disposed;
+            return cpm;
+        }
+
+        private void Cpm_Disposed(object sender, EventArgs e)
+        {
+            if (sender is ICommandProcedureManager cpm)
+            {
+                cpm.Disposed -= Cpm_Disposed;
+                NotDisposedCpmSet?.Remove(cpm);
+            }
         }
 
         #region IDisposable Support
@@ -52,10 +73,26 @@ namespace AutumnBox.Basic
                 {
                     // TODO: 释放托管状态(托管对象)。
                 }
+                var _notDisposedCpm = NotDisposedCpmSet;
+                NotDisposedCpmSet = null;
+                foreach (var cpm in _notDisposedCpm)
+                {
+                    try
+                    {
+                        SLogger<StandardAdbManager>.CDebug("disposing");
+                        cpm.Dispose();
+                        SLogger<StandardAdbManager>.CDebug("disposed");
+                    }
+                    catch (Exception e)
+                    {
+                        SLogger<StandardAdbManager>.CDebug("can not dispose", e);
+                    }
+                }
+                _notDisposedCpm.Clear();
+
                 StopServer();
                 // TODO: 释放未托管的资源(未托管的对象)并在以下内容中替代终结器。
                 // TODO: 将大型字段设置为 null。
-
                 disposedValue = true;
             }
         }

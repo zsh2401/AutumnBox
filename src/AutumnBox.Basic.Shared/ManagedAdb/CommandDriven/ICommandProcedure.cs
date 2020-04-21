@@ -7,7 +7,7 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
     /// <summary>
     /// 命令事务进程
     /// </summary>
-    public interface ICommandProcedure : INotifyOutput, IDisposable
+    public interface ICommandProcedure : INotifyOutput, IDisposable, INotifyDisposed
     {
         /// <summary>
         /// 获取状态

@@ -354,12 +354,12 @@ namespace AutumnBox.Basic.Calling
                 FileName = fileName,
                 Arguments = args,
             };
-            if (ManagedAdb.Adb.Manager?.Server?.IsEnable == true)
-            {
-                string pathEnv = pInfo.EnvironmentVariables["path"];
-                pInfo.EnvironmentVariables["path"] = $"{ManagedAdb.Adb.AdbToolsDir.FullName};{pathEnv}";
-                pInfo.EnvironmentVariables["ANDROID_ADB_SERVER_PORT"] = ManagedAdb.Adb.Server.Port.ToString();
-            }
+            //if (ManagedAdb.Adb.Manager?.Server?.IsEnable == true)
+            //{
+            string pathEnv = pInfo.EnvironmentVariables["path"];
+            pInfo.EnvironmentVariables["path"] = $"{ManagedAdb.Adb.AdbToolsDir.FullName};{pathEnv}";
+            pInfo.EnvironmentVariables["ANDROID_ADB_SERVER_PORT"] = ManagedAdb.Adb.Server.Port.ToString();
+            //}
             return pInfo;
         }
 

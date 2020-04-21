@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.ManagedAdb.CommandDriven
 {
-    internal class MyCommandProcedure : ICommandProcedure
+    public class MyCommandProcedure : ICommandProcedure, INotifyDisposed
     {
         private Process? process;
         private OutputBuilder? outputBuilder;
@@ -40,8 +40,14 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
 
         public event OutputReceivedEventHandler? OutputReceived;
         public event EventHandler? Finished;
+        public event EventHandler Disposed;
 
-        public MyCommandProcedure(string fileName, ushort port, DirectoryInfo adbToolsDir, params string[] args)
+        public bool KillChildWhenDisposing { get; set; } = true;
+        public MyCommandProcedure(string fileName,
+            ushort port,
+            DirectoryInfo adbToolsDir,
+            params string[] args
+            )
         {
             if (string.IsNullOrEmpty(fileName))
             {
@@ -67,8 +73,9 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
                     RedirectStandardOutput = true,
                 }
             };
-            string pathEnv = process.StartInfo.EnvironmentVariables["path"];
-            process.StartInfo.EnvironmentVariables["path"] = $"{adbToolsDir.FullName};{pathEnv}";
+            string pathEnv = System.Environment.GetEnvironmentVariable("PATH");
+            var newPath = $"{adbToolsDir.FullName};{pathEnv}";
+            process.StartInfo.EnvironmentVariables["PATH"] = newPath;
             process.StartInfo.EnvironmentVariables["ANDROID_ADB_SERVER_PORT"] = port.ToString();
         }
 
@@ -152,14 +159,15 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
                 }
                 process!.OutputDataReceived -= Process_OutputDataReceived;
                 process!.ErrorDataReceived -= Process_ErrorDataReceived;
-                GreateKill(process.Id);
-                process.Dispose();
                 Cancel();
+                process.Dispose();
+
                 // TODO: 释放未托管的资源(未托管的对象)并在以下内容中替代终结器。
                 // TODO: 将大型字段设置为 null。
                 process = null;
                 outputBuilder = null;
                 disposedValue = true;
+                Disposed?.Invoke(this, new EventArgs());
             }
         }
 
@@ -193,9 +201,9 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
                 }
                 Process.GetProcessById(pid).Kill();
             }
-            catch (Exception e)
+            catch
             {
-                SLogger<MyCommandProcedure>.Warn("Can not kill process", e);
+                //SLogger<MyCommandProcedure>.Warn("Can not kill process", e);
                 /* process already exited */
             }
         }
@@ -204,7 +212,14 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
         {
             if (Status == CommandStatus.Executing)
             {
-                GreateKill(process!.Id);
+                if (KillChildWhenDisposing)
+                {
+                    GreateKill(process!.Id);
+                }
+                else
+                {
+                    process!.Kill();
+                }
             }
         }
     }

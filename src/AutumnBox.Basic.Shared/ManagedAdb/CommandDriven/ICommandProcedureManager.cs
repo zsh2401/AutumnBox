@@ -8,12 +8,12 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
     /// <summary>
     /// 命令驱动器
     /// </summary>
-    public interface ICommandProcedureManager : IDisposable
+    public interface ICommandProcedureManager : IDisposable,INotifyDisposed
     {
         /// <summary>
         /// 指示是否被释放
         /// </summary>
-        bool Disposed { get; }
+        bool DisposedValue { get; }
 
         /// <summary>
         /// 构建一个命令过程

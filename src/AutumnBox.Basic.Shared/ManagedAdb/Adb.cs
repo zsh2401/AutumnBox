@@ -27,32 +27,32 @@ namespace AutumnBox.Basic.ManagedAdb
         /// <summary>
         /// 服务器
         /// </summary>
-        public static IAdbServer Server => Manager.Server;
+        public static IAdbServer Server => throw new NotImplementedException();
 
         /// <summary>
         /// ADB文件
         /// </summary>
-        public static FileInfo AdbFile => Manager.AdbFile;
+        public static FileInfo AdbFile => throw new NotImplementedException();
 
         /// <summary>
         /// ADB文件路径
         /// </summary>
-        public static string AdbFilePath => Manager.AdbFile.FullName;
+        public static string AdbFilePath => throw new NotImplementedException();
 
         /// <summary>
         /// Fastboot文件
         /// </summary>
-        public static FileInfo FastbootFile => Manager.FastbootFile;
+        public static FileInfo FastbootFile => throw new NotImplementedException();
 
         /// <summary>
         /// Fastboot文件路径
         /// </summary>
-        public static string FastbootFilePath => Manager.FastbootFile.FullName;
+        public static string FastbootFilePath => throw new NotImplementedException();
 
         /// <summary>
         /// ADB文件夹路径
         /// </summary>
-        public static DirectoryInfo AdbToolsDir => Manager.ToolsDir;
+        public static DirectoryInfo AdbToolsDir => throw new NotImplementedException();
 
         /// <summary>
         /// 加载
