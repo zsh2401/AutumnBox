@@ -10,30 +10,47 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
     /// <summary>
     /// 基础的命令进程管理器
     /// </summary>
-    public class LocalProcedureManager : ICommandProcedureManager, INotifyDisposed
+    public class ProcedureManager : ICommandProcedureManager, INotifyDisposed
     {
-        private HashSet<ICommandProcedure>? commandProcedures;
+        /// <summary>
+        /// 内部维护尚未被析构的cp
+        /// </summary>
+        private HashSet<ICommandProcedure>? notDisposeds;
 
-        public LocalProcedureManager(DirectoryInfo? adbClientDir = null, ushort adbPort = 6605)
+        /// <summary>
+        /// 构建基础的命令进程管理器
+        /// </summary>
+        /// <param name="adbClientDir"></param>
+        /// <param name="adbPort"></param>
+        public ProcedureManager(DirectoryInfo? adbClientDir = null, ushort adbPort = 6605)
         {
-            commandProcedures = new HashSet<ICommandProcedure>();
+            notDisposeds = new HashSet<ICommandProcedure>();
             this.adbClientDir = adbClientDir ?? new DirectoryInfo(".");
             this.adbPort = adbPort;
         }
 
-        public event EventHandler Disposed;
+        /// <summary>
+        /// 析构完成事件
+        /// </summary>
+        public event EventHandler? Disposed;
 
         private readonly object openCommandLock = new object();
         private readonly DirectoryInfo adbClientDir;
         private readonly ushort adbPort;
 
+        /// <summary>
+        /// 打开新的命令
+        /// </summary>
+        /// <param name="commandName"></param>
+        /// <param name="args"></param>
+        /// <returns></returns>
         public ICommandProcedure OpenCommand(string commandName, params string[] args)
         {
             lock (openCommandLock)
             {
-                var commandProcedure = new MyCommandProcedure(commandName, adbPort, adbClientDir, args);
+                var commandProcedure = new CommandProcedure(commandName, adbPort, adbClientDir, args);
                 commandProcedure.Disposed += CommandProcedure_Disposed;
-                commandProcedures!.Add(commandProcedure);
+                notDisposeds!.Add(commandProcedure);
                 return commandProcedure;
             }
         }
@@ -43,20 +60,28 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
             if (sender is ICommandProcedure cp)
             {
                 cp.Disposed -= CommandProcedure_Disposed;
-                commandProcedures?.Remove(cp);
+                notDisposeds?.Remove(cp);
             }
         }
 
         #region IDisposable Support
+        /// <summary>
+        /// 指示是否被释放
+        /// </summary>
         public bool DisposedValue { get; private set; } = false;
+
+        /// <summary>
+        /// 释放函数内部实现
+        /// </summary>
+        /// <param name="disposing"></param>
         protected virtual void Dispose(bool disposing)
         {
             if (!DisposedValue)
             {
                 if (disposing)
                 {
-                    var _cps = this.commandProcedures;
-                    this.commandProcedures = null;
+                    var _cps = this.notDisposeds;
+                    this.notDisposeds = null;
                     _cps.All((p) =>
                     {
                         try
@@ -65,7 +90,7 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
                         }
                         catch (Exception e)
                         {
-                            SLogger<MyCommandProcedure>.CDebug("can not dispose command procedure", e);
+                            SLogger<CommandProcedure>.CDebug("can not dispose command procedure", e);
                         }
 
                         return true;
@@ -81,14 +106,18 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
             }
         }
 
-        //TODO: 仅当以上 Dispose(bool disposing) 拥有用于释放未托管资源的代码时才替代终结器。
-        ~LocalProcedureManager()
+       /// <summary>
+       /// ~
+       /// </summary>
+        ~ProcedureManager()
         {
             // 请勿更改此代码。将清理代码放入以上 Dispose(bool disposing) 中。
             Dispose(false);
         }
 
-        // 添加此代码以正确实现可处置模式。
+        /// <summary>
+        /// 析构接口
+        /// </summary>
         public void Dispose()
         {
             // 请勿更改此代码。将清理代码放入以上 Dispose(bool disposing) 中。

@@ -10,15 +10,31 @@ using System.Net;
 
 namespace AutumnBox.Basic
 {
+    /// <summary>
+    /// 标准的ADB管理器
+    /// </summary>
     public abstract class StandardAdbManager : IAdbManager
     {
+        /// <summary>
+        /// 内部维护尚未被析构的CPM
+        /// </summary>
         protected HashSet<ICommandProcedureManager>? NotDisposedCpmSet;
+
+        /// <summary>
+        /// ADB客户端文件夹
+        /// </summary>
         public DirectoryInfo AdbClientDirectory { get; }
 
+        /// <summary>
+        /// ADB服务器终端点
+        /// </summary>
         public IPEndPoint ServerEndPoint { get; }
 
         private readonly object _lock = new object();
 
+        /// <summary>
+        /// 构建标准ADB管理器
+        /// </summary>
         public StandardAdbManager()
         {
             NotDisposedCpmSet = new HashSet<ICommandProcedureManager>();
@@ -29,30 +45,51 @@ namespace AutumnBox.Basic
             Environment.SetEnvironmentVariable("ANDROID_ADB_SERVER_PORT", ServerEndPoint.Port.ToString());
         }
 
+        /// <summary>
+        /// 初始化客户端文件
+        /// </summary>
+        /// <returns></returns>
         protected abstract DirectoryInfo InitializeClientFiles();
+
+        /// <summary>
+        /// 初始化服务器
+        /// </summary>
+        /// <returns></returns>
         protected abstract IPEndPoint InitializeServer();
 
-        protected virtual void StopServer()
+        /// <summary>
+        /// 杀死服务器
+        /// </summary>
+        protected virtual void KillServer()
         {
             lock (_lock)
             {
-                using var cmd = new MyCommandProcedure("adb.exe", (ushort)ServerEndPoint.Port, AdbClientDirectory, $"-P{ServerEndPoint.Port} kill-server");
+                using var cmd = new CommandProcedure("adb.exe", (ushort)ServerEndPoint.Port, AdbClientDirectory, $"-P{ServerEndPoint.Port} kill-server");
                 cmd.Execute();
             }
         }
 
+        /// <summary>
+        /// 打开一个新的CPM
+        /// </summary>
+        /// <returns></returns>
         public virtual ICommandProcedureManager OpenCommandProcedureManager()
         {
             if (disposedValue)
             {
                 throw new ObjectDisposedException(nameof(StandardAdbManager));
             }
-            var cpm = new LocalProcedureManager(AdbClientDirectory, (ushort)ServerEndPoint.Port);
+            var cpm = new ProcedureManager(AdbClientDirectory, (ushort)ServerEndPoint.Port);
             NotDisposedCpmSet.Add(cpm);
             cpm.Disposed += Cpm_Disposed;
             return cpm;
         }
 
+        /// <summary>
+        /// 处理某个CPM被析构的事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Cpm_Disposed(object sender, EventArgs e)
         {
             if (sender is ICommandProcedureManager cpm)
@@ -65,6 +102,10 @@ namespace AutumnBox.Basic
         #region IDisposable Support
         private bool disposedValue = false; // 要检测冗余调用
 
+        /// <summary>
+        /// 析构
+        /// </summary>
+        /// <param name="disposing"></param>
         protected virtual void Dispose(bool disposing)
         {
             if (!disposedValue)
@@ -90,21 +131,25 @@ namespace AutumnBox.Basic
                 }
                 _notDisposedCpm.Clear();
 
-                StopServer();
+                KillServer();
                 // TODO: 释放未托管的资源(未托管的对象)并在以下内容中替代终结器。
                 // TODO: 将大型字段设置为 null。
                 disposedValue = true;
             }
         }
 
-        // TODO: 仅当以上 Dispose(bool disposing) 拥有用于释放未托管资源的代码时才替代终结器。
+        /// <summary>
+        /// 终结函数
+        /// </summary>
         ~StandardAdbManager()
         {
             // 请勿更改此代码。将清理代码放入以上 Dispose(bool disposing) 中。
             Dispose(false);
         }
 
-        // 添加此代码以正确实现可处置模式。
+        /// <summary>
+        /// 接口实现
+        /// </summary>
         public void Dispose()
         {
             // 请勿更改此代码。将清理代码放入以上 Dispose(bool disposing) 中。

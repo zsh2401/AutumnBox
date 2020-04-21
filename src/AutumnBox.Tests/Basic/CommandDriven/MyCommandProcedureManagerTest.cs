@@ -17,7 +17,7 @@ namespace AutumnBox.Tests.Basic.CommandDriven
         [TestMethod]
         public void ExitCodeTest()
         {
-            var cpm = new LocalProcedureManager();
+            var cpm = new ProcedureManager();
             using var command = cpm.OpenCommand("cmd.exe", "/c", "ping baidu.com");
             var result = command.Execute();
             Assert.IsTrue(result.ExitCode == 0);
@@ -31,7 +31,7 @@ namespace AutumnBox.Tests.Basic.CommandDriven
         public void OutputTest()
         {
             bool outputReceived = false;
-            var cpm = new LocalProcedureManager();
+            var cpm = new ProcedureManager();
             using var command = cpm.OpenCommand("cmd.exe", "/c", "ping baidu.com");
             command.OutputReceived += (s, e) =>
             {
@@ -46,7 +46,7 @@ namespace AutumnBox.Tests.Basic.CommandDriven
         [TestMethod]
         public void CommandExceptionTest()
         {
-            using var cpm = new LocalProcedureManager();
+            using var cpm = new ProcedureManager();
             using var cp = cpm.OpenCommand("asdasdsa");
             cp.Execute();
             Assert.IsTrue(cp.Status == CommandStatus.Failed);
@@ -58,7 +58,7 @@ namespace AutumnBox.Tests.Basic.CommandDriven
         {
             string randomStr = Guid.NewGuid().ToString();
             ushort randomPort = (ushort)new Random().Next(0, ushort.MaxValue);
-            using var cpm = new LocalProcedureManager(new DirectoryInfo(randomStr), randomPort);
+            using var cpm = new ProcedureManager(new DirectoryInfo(randomStr), randomPort);
 
             using var command1 = cpm.OpenCommand("cmd.exe", "/c", "echo %ANDROID_ADB_SERVER_PORT%");
             Assert.IsTrue(command1.Execute().Output.Contains(randomPort.ToString()));

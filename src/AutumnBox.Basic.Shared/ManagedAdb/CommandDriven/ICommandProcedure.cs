@@ -15,6 +15,16 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
         CommandStatus Status { get; }
 
         /// <summary>
+        /// 命令执行完毕
+        /// </summary>
+        event EventHandler Finished;
+
+        /// <summary>
+        /// 命令开始执行
+        /// </summary>
+        event EventHandler Executing;
+
+        /// <summary>
         /// 执行命令
         /// </summary>
         /// <exception cref="InvalidOperationException">操作无效,如命令已经在执行</exception>

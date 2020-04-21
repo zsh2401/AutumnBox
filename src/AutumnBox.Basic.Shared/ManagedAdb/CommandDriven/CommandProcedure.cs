@@ -12,13 +12,25 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.ManagedAdb.CommandDriven
 {
-    public class MyCommandProcedure : ICommandProcedure, INotifyDisposed
+    /// <summary>
+    /// 基础的命令流程
+    /// </summary>
+    public class CommandProcedure : ICommandProcedure, INotifyDisposed
     {
+        /// <summary>
+        /// 当前正在执行的进程
+        /// </summary>
         private Process? process;
+
+        /// <summary>
+        /// 输出内容构造器
+        /// </summary>
         private OutputBuilder? outputBuilder;
 
+        /// <inheritdoc/>
         public CommandStatus Status { get; private set; } = CommandStatus.Ready;
 
+        /// <inheritdoc/>
         public ICommandResult Result
         {
             get
@@ -36,14 +48,31 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
         }
         private ICommandResult _result = new MyCommandResult();
 
+        /// <inheritdoc/>
         public Exception? Exception { get; set; }
 
+        /// <inheritdoc/>
         public event OutputReceivedEventHandler? OutputReceived;
-        public event EventHandler? Finished;
-        public event EventHandler Disposed;
 
+        /// <inheritdoc/>
+        public event EventHandler? Finished;
+
+        /// <inheritdoc/>
+        public event EventHandler? Executing;
+
+        /// <summary>
+        /// 指示析构模式
+        /// </summary>
         public bool KillChildWhenDisposing { get; set; } = true;
-        public MyCommandProcedure(string fileName,
+
+        /// <summary>
+        /// 构建命令
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <param name="port"></param>
+        /// <param name="adbToolsDir"></param>
+        /// <param name="args"></param>
+        public CommandProcedure(string fileName,
             ushort port,
             DirectoryInfo adbToolsDir,
             params string[] args
@@ -79,6 +108,10 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
             process.StartInfo.EnvironmentVariables["ANDROID_ADB_SERVER_PORT"] = port.ToString();
         }
 
+        /// <inheritdoc/>
+        public event EventHandler? Disposed;
+
+        /// <inheritdoc/>
         public ICommandResult Execute()
         {
             if (Status != CommandStatus.Ready)
@@ -117,25 +150,41 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
             return Result;
         }
 
+        /// <summary>
+        /// 处理进程的错误数据
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Process_ErrorDataReceived(object sender, DataReceivedEventArgs e)
         {
             outputBuilder!.AppendOut(e.Data);
             OutputReceived?.Invoke(this, new OutputReceivedEventArgs(e, true));
         }
 
+        /// <summary>
+        /// 处理进程的标准输出数据
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Process_OutputDataReceived(object sender, DataReceivedEventArgs e)
         {
             outputBuilder!.AppendOut(e.Data);
             OutputReceived?.Invoke(this, new OutputReceivedEventArgs(e, false));
         }
 
+        /// <summary>
+        /// CommandResult的实现类
+        /// </summary>
         private class MyCommandResult : ICommandResult
         {
+            /// <inheritdoc/>
             public int? ExitCode { get; set; } = null;
 
+            /// <inheritdoc/>
             public Output Output { get; set; } = new Output();
         }
 
+        /// <inheritdoc/>
         public Task<ICommandResult> ExecuteAsync()
         {
             if (Status != CommandStatus.Ready)
@@ -148,7 +197,10 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
         #region IDisposable Support
         private bool disposedValue = false; // 要检测冗余调用
 
-
+        /// <summary>
+        /// 内部的虚析构函数
+        /// </summary>
+        /// <param name="disposing"></param>
         protected virtual void Dispose(bool disposing)
         {
             if (!disposedValue)
@@ -171,24 +223,10 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
             }
         }
 
-
-        // TODO: 仅当以上 Dispose(bool disposing) 拥有用于释放未托管资源的代码时才替代终结器。
-        // ~MyCommandProcedure()
-        // {
-        //   // 请勿更改此代码。将清理代码放入以上 Dispose(bool disposing) 中。
-        //   Dispose(false);
-        // }
-
-        // 添加此代码以正确实现可处置模式。
-        public void Dispose()
-        {
-            // 请勿更改此代码。将清理代码放入以上 Dispose(bool disposing) 中。
-            Dispose(true);
-            // TODO: 如果在以上内容中替代了终结器，则取消注释以下行。
-            // GC.SuppressFinalize(this);
-        }
-        #endregion
-
+        /// <summary>
+        /// "强杀进程"
+        /// </summary>
+        /// <param name="pid"></param>
         private static void GreateKill(int pid)
         {
             try
@@ -208,6 +246,17 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
             }
         }
 
+        /// <inheritdoc/>
+        public void Dispose()
+        {
+            // 请勿更改此代码。将清理代码放入以上 Dispose(bool disposing) 中。
+            Dispose(true);
+            // TODO: 如果在以上内容中替代了终结器，则取消注释以下行。
+            // GC.SuppressFinalize(this);
+        }
+        #endregion
+
+        /// <inheritdoc/>
         public void Cancel()
         {
             if (Status == CommandStatus.Executing)

@@ -1,11 +1,18 @@
-﻿using System;
+﻿#nullable enable
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace AutumnBox.Basic.ManagedAdb.CommandDriven
 {
+    /// <summary>
+    /// 可通知其释放完成
+    /// </summary>
     public interface INotifyDisposed
     {
-        event EventHandler Disposed;
+        /// <summary>
+        /// 当对象被释放后发生
+        /// </summary>
+        event EventHandler? Disposed;
     }
 }

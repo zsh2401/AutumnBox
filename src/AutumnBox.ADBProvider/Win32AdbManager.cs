@@ -30,7 +30,7 @@ namespace AutumnBox.ADBProvider
                 port = (ushort)random.Next(IPEndPoint.MinPort, IPEndPoint.MaxPort);
             } while (PortIsUsinngNow(port));
             using (var cmd =
-                new MyCommandProcedure("adb.exe", port,
+                new CommandProcedure("adb.exe", port,
                 this.AdbClientDirectory, $"-P{port} start-server"))
             {
                 cmd.KillChildWhenDisposing = false;
@@ -44,9 +44,9 @@ namespace AutumnBox.ADBProvider
             return new IPEndPoint(IPAddress.Parse("127.0.0.1"), port);
         }
 
-        protected override void StopServer()
+        protected override void KillServer()
         {
-            using (var cmd = new MyCommandProcedure("adb.exe",
+            using (var cmd = new CommandProcedure("adb.exe",
                 (ushort)ServerEndPoint.Port, AdbClientDirectory,
                 $"-P{ServerEndPoint.Port}",
                 " kill-server"))

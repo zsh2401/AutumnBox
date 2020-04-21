@@ -120,8 +120,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)ManagedAdb\CommandDriven\ICommandProcedure.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ManagedAdb\CommandDriven\ICommandProcedureManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ManagedAdb\CommandDriven\ICommandResult.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ManagedAdb\CommandDriven\MyCommandProcedure.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ManagedAdb\CommandDriven\MyProcedureManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ManagedAdb\CommandDriven\CommandProcedure.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ManagedAdb\CommandDriven\ProcedureManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ManagedAdb\Extension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ManagedAdb\IAdbClient.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ManagedAdb\IAdbManager.cs" />

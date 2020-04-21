@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace AutumnBox.Basic.ManagedAdb.CommandDriven
+﻿namespace AutumnBox.Basic.ManagedAdb.CommandDriven
 {
     /// <summary>
-    /// 命令执行窗台
+    /// 命令执行状态
     /// </summary>
     public enum CommandStatus
     {

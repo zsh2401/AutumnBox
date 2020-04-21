@@ -36,6 +36,10 @@ namespace AutumnBox.Basic
                 return _cachedCpm;
             }
         }
+
+        /// <summary>
+        /// 无需多言
+        /// </summary>
         private static ICommandProcedureManager? _cachedCpm = null;
 
         /// <summary>
