@@ -1,6 +1,8 @@
-﻿using System;
+﻿using AutumnBox.Basic.ManagedAdb.CommandDriven;
+using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Net;
 using System.Text;
 
 namespace AutumnBox.Basic.ManagedAdb
@@ -8,23 +10,21 @@ namespace AutumnBox.Basic.ManagedAdb
     /// <summary>
     /// Adb管理器
     /// </summary>
-    public interface IAdbManager
+    public interface IAdbManager : IDisposable
     {
         /// <summary>
-        /// ADB服务
+        /// 获取管理器
         /// </summary>
-        IAdbServer Server { get; }
+        ICommandProcedureManager OpenCommandProcedureManager();
+
         /// <summary>
-        /// ADB可执行文件信息
+        /// ADB客户端文件夹
         /// </summary>
-        FileInfo AdbFile { get; }
+        DirectoryInfo AdbClientDirectory { get; }
+
         /// <summary>
-        /// Fastboot可执行文件信息
+        /// 获取ADB服务地址
         /// </summary>
-        FileInfo FastbootFile { get; }
-        /// <summary>
-        /// Adb工具文件夹信息
-        /// </summary>
-        DirectoryInfo ToolsDir { get; }
+        IPEndPoint ServerEndPoint { get; }
     }
 }

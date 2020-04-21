@@ -101,6 +101,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Basic\CommandDriven\MyCommandProcedureManagerTest.cs" />
+    <Compile Include="Basic\Executor\HestExecutorTest.cs" />
     <Compile Include="Leafx\ClassTextTest.cs" />
     <Compile Include="OpenFX\ExtInf\ExtInfExtensionTest.cs" />
     <Compile Include="OpenFX\LeafExtension\LeafExtensionTest.cs" />

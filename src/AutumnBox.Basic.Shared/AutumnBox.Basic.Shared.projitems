@@ -9,12 +9,11 @@
     <Import_RootNamespace>AutumnBox.Basic</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)AtmbBasicManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)BasicBooter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Calling\Adb\AdbCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Calling\Adb\RealtimeShellCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Calling\Adb\ShellCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Calling\Adb\SuCommand.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Calling\AxiosExecutor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Calling\Cmd\WindowsCmdCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Calling\CommandExecutor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Calling\CommandExecutorExtension.cs" />
@@ -38,6 +37,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Data\Output.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\OutputBuilder.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\OutputReceivedEvent.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)StandardAdbManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Device\DeviceBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Device\DeviceCommander.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Device\DeviceExtension.Execute.cs" />
@@ -115,11 +115,13 @@
     <Compile Include="$(MSBuildThisFileDirectory)ManagedAdb\AdbClientWarpper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ManagedAdb\AdbResponse.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ManagedAdb\AdbResponseState.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ManagedAdb\BasicLoader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ManagedAdb\CommandDriven\CommandStatus.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ManagedAdb\CommandDriven\ABADBManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ManagedAdb\CommandDriven\ICommandProcedure.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ManagedAdb\CommandDriven\ICommandDriver.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ManagedAdb\CommandDriven\ICommandProcedureManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ManagedAdb\CommandDriven\ICommandResult.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ManagedAdb\CommandDriven\MyCommandProcedure.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ManagedAdb\CommandDriven\MyProcedureManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ManagedAdb\DefaultAdbManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ManagedAdb\Extension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ManagedAdb\IAdbClient.cs" />

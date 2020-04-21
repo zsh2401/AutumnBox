@@ -41,7 +41,7 @@ namespace AutumnBox.Leafx.ObjectManagement
 
         private static object? GetArgs(ParameterInfo pInfo, IDictionary<string, object> args, IEnumerable<ILake> sources)
         {
-            if (args.TryGetValue(pInfo.Name, out object? value) && (value == null || value?.GetType() == pInfo.GetType()))
+            if (args.TryGetValue(pInfo.Name, out object? value))
             {
                 return value;
             }

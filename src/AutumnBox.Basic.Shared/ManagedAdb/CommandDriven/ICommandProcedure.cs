@@ -1,18 +1,49 @@
-﻿using AutumnBox.Basic.Data;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿#nullable enable
+using AutumnBox.Basic.Data;
 using System.Threading.Tasks;
-
+using System;
 namespace AutumnBox.Basic.ManagedAdb.CommandDriven
 {
-    public interface ICommandProcedure : IDisposable
+    /// <summary>
+    /// 命令事务进程
+    /// </summary>
+    public interface ICommandProcedure : INotifyOutput, IDisposable
     {
-        event OutputReceivedEventHandler OutputReceived;
-        event OutputReceivedEventHandler ErrorReceived;
+        /// <summary>
+        /// 获取状态
+        /// </summary>
         CommandStatus Status { get; }
-        ICommandResult Result { get; }
-        Task<ICommandResult> ExecuteAsync();
+
+        /// <summary>
+        /// 执行命令
+        /// </summary>
+        /// <exception cref="InvalidOperationException">操作无效,如命令已经在执行</exception>
+        /// <returns></returns>
         ICommandResult Execute();
+
+        /// <summary>
+        /// 异步执行命令
+        /// </summary>
+        /// <exception cref="InvalidOperationException">操作无效,如命令已经在执行</exception>
+        /// <returns></returns>
+        Task<ICommandResult> ExecuteAsync();
+
+        /// <summary>
+        /// 取消执行
+        /// </summary>
+        /// <exception cref="InvalidOperationException">事务状态异常</exception>
+        void Cancel();
+
+        /// <summary>
+        /// 执行结果
+        /// </summary>
+        /// <exception cref="InvalidOperationException">事务状态异常</exception>
+        ICommandResult Result { get; }
+
+        /// <summary>
+        /// 获取发生的错误
+        /// </summary>
+        /// <exception cref="InvalidOperationException">事务状态异常</exception>
+        Exception? Exception { get; }
     }
 }

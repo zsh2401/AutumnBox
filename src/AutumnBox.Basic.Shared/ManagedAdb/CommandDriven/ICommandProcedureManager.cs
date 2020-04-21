@@ -1,0 +1,26 @@
+﻿#nullable enable
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace AutumnBox.Basic.ManagedAdb.CommandDriven
+{
+    /// <summary>
+    /// 命令驱动器
+    /// </summary>
+    public interface ICommandProcedureManager : IDisposable
+    {
+        /// <summary>
+        /// 指示是否被释放
+        /// </summary>
+        bool Disposed { get; }
+
+        /// <summary>
+        /// 构建一个命令过程
+        /// </summary>
+        /// <param name="commandName">命令名</param>
+        /// <param name="args">额外参数</param>
+        /// <returns>命令过程</returns>
+        ICommandProcedure OpenCommand(string commandName, params string[] args);
+    }
+}
