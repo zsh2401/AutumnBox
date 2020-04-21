@@ -5,7 +5,7 @@ using System.IO;
 using System.Net;
 using System.Text;
 
-namespace AutumnBox.Basic.ManagedAdb
+namespace AutumnBox.Basic.ManagedAdb.CommandDriven
 {
     /// <summary>
     /// Adb管理器
