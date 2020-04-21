@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutumnBox.Basic.Data;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -10,12 +11,14 @@ namespace AutumnBox.Basic.Calling
     /// <param name="sender"></param>
     /// <param name="e"></param>
     public delegate void CommandExecutedEventHandler(object sender, CommandExecutedEventArgs e);
+
     /// <summary>
     /// 命令开始执行的事件处理函数
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     public delegate void CommandExecutingEventHandler(object sender, CommandExecutingEventArgs e);
+
     /// <summary>
     /// 命令开始执行的事件参数
     /// </summary>
@@ -24,19 +27,23 @@ namespace AutumnBox.Basic.Calling
         /// <summary>
         /// 命令执行使用的时间
         /// </summary>
-        TimeSpan UsedTime { get; }
+        public TimeSpan UsedTime { get; }
+
         /// <summary>
         /// 命令执行的结果
         /// </summary>
-        ICommandResult Result { get; }
+        public CommandResult Result { get; }
+
         /// <summary>
         /// 命令的目标文件名
         /// </summary>
         public string FileName { get; }
+
         /// <summary>
         /// 参数
         /// </summary>
         public string Args { get; }
+
         /// <summary>
         /// 构造一个参数
         /// </summary>
@@ -44,8 +51,7 @@ namespace AutumnBox.Basic.Calling
         /// <param name="args">参数</param>
         /// <param name="result">结果,可为空</param>
         /// <param name="span"></param>
-
-        public CommandExecutedEventArgs(string fileName, string args, ICommandResult result, TimeSpan span)
+        public CommandExecutedEventArgs(string fileName, string args, CommandResult result, TimeSpan span)
         {
             if (string.IsNullOrEmpty(fileName))
             {
@@ -55,6 +61,7 @@ namespace AutumnBox.Basic.Calling
             FileName = fileName;
             Args = args;
             UsedTime = span;
+            Result = result;
         }
     }
     /// <summary>
@@ -66,10 +73,12 @@ namespace AutumnBox.Basic.Calling
         /// 命令文件名
         /// </summary>
         public string FileName { get; }
+
         /// <summary>
         /// 参数
         /// </summary>
         public string[] Args { get; }
+
         /// <summary>
         /// 构造一个命令执行中事件参数
         /// </summary>

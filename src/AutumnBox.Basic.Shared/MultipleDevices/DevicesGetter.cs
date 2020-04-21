@@ -5,8 +5,6 @@
 *************************************************/
 using System.Collections.Generic;
 using System.Linq;
-using AutumnBox.Basic.Calling.Adb;
-using AutumnBox.Basic.Calling.Fastboot;
 using AutumnBox.Basic.Device;
 
 namespace AutumnBox.Basic.MultipleDevices

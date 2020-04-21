@@ -72,7 +72,7 @@ namespace AutumnBox.Basic.Device.ManagementV2.OS
         /// </summary>
         /// <param name="uid">UID</param>
         /// <returns></returns>
-        public ICommandResult RemoveUser(int uid)
+        public CommandResult RemoveUser(int uid)
         {
             return executor.AdbShell(device, $"pm remove-user {uid}");
         }

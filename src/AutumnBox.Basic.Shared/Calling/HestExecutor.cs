@@ -1,38 +1,31 @@
 ﻿#nullable enable
 using System;
-using System.Diagnostics;
-using System.Management;
 using System.Threading.Tasks;
-using AutumnBox.Basic.Calling.Cmd;
 using AutumnBox.Basic.Data;
 using AutumnBox.Basic.ManagedAdb.CommandDriven;
-using AutumnBox.Logging;
 
 namespace AutumnBox.Basic.Calling
 {
     /// <summary>
     /// 优化的命令执行器
     /// </summary>
-    public class HestExecutor : ICommandExecutor
+    public class HestExecutor : ICommandExecutor, INotifyDisposed
     {
-        private class HestExecutorResult : ICommandResult
-        {
-            public int ExitCode { get; set; } = 0;
-
-            public Output Output { get; set; } = new Output();
-        }
         /// <summary>
         /// 执行器被析构时触发
         /// </summary>
         public event EventHandler? Disposed;
+
         /// <summary>
         /// 开始执行一条命令时触发
         /// </summary>
         public event CommandExecutingEventHandler? CommandExecuting;
+
         /// <summary>
         /// 一条命令执行完毕时触发
         /// </summary>
         public event CommandExecutedEventHandler? CommandExecuted;
+
         /// <summary>
         /// 接收到输出信息时触发
         /// </summary>
@@ -54,7 +47,7 @@ namespace AutumnBox.Basic.Calling
         /// <param name="fileName"></param>
         /// <param name="args"></param>
         /// <returns></returns>
-        public ICommandResult Execute(string fileName, string args)
+        public CommandResult Execute(string fileName, string args)
         {
             lock (_executingLock)
             {
@@ -74,7 +67,7 @@ namespace AutumnBox.Basic.Calling
                 DateTime end = DateTime.Now;
 
                 //构造结果对象
-                var result = new HestExecutorResult() { ExitCode = cmdResult.ExitCode ?? -1, Output = cmdResult.Output };
+                var result = new CommandResult(cmdResult.ExitCode, cmdResult.Output);
 
                 //触发结束事件
                 CommandExecuted?.Invoke(this, new CommandExecutedEventArgs(fileName, args, result, end - start));
@@ -90,7 +83,7 @@ namespace AutumnBox.Basic.Calling
         /// <param name="fileName"></param>
         /// <param name="args"></param>
         /// <returns></returns>
-        public Task<ICommandResult> ExecuteAsync(string fileName, string args)
+        public Task<CommandResult> ExecuteAsync(string fileName, string args)
         {
             return Task.Run(() => Execute(fileName, args));
         }
@@ -127,5 +120,6 @@ namespace AutumnBox.Basic.Calling
         {
             commandProcedure?.Dispose();
         }
+
     }
 }

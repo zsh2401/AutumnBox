@@ -10,30 +10,15 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)BasicBooter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Calling\Adb\AdbCommand.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Calling\Adb\RealtimeShellCommand.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Calling\Adb\ShellCommand.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Calling\Adb\SuCommand.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Calling\Cmd\WindowsCmdCommand.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Calling\CommandExecutor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Calling\CommandExecutorExtension.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Calling\CommandingObject.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Calling\CommandStation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Calling\CPMExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Calling\Events.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Calling\Fastboot\FastbootCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Calling\HestExecutor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Calling\ICommandExecutor.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Calling\ICommandResult.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Calling\CommandResultExtension.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Calling\IProcessBasedCommand.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Calling\IProcessBasedCommandResult.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Calling\ProcessBasedCommand.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Calling\ProcessExtension.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Calling\BasicCommandExecutor.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Calling\ProcessHelper.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Data\ICommandStationObject.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Util\ProcessExtension.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\CommandResult.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\INotifyOutput.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Data\IReceiveOutputByTo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\Output.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\OutputBuilder.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\OutputReceivedEvent.cs" />
@@ -115,7 +100,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)ManagedAdb\CommandDriven\CommandStatus.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ManagedAdb\CommandDriven\ICommandProcedure.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ManagedAdb\CommandDriven\ICommandProcedureManager.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ManagedAdb\CommandDriven\ICommandResult.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ManagedAdb\CommandDriven\CommandProcedure.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ManagedAdb\CommandDriven\ProcedureManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ManagedAdb\CommandDriven\IAdbManager.cs" />

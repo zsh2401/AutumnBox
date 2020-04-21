@@ -4,9 +4,6 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.Basic.Calling;
-using AutumnBox.Basic.Calling.Adb;
-using AutumnBox.Basic.Device.Management.AppFx;
-using AutumnBox.Basic.Device.Management.OS;
 using AutumnBox.Basic.Util;
 
 namespace AutumnBox.Basic.Device
@@ -22,9 +19,7 @@ namespace AutumnBox.Basic.Device
         /// <returns></returns>
         public static string GetProp(this IDevice device, string key)
         {
-           var result =  new ShellCommand(device, $"getprop {key}")
-                .Execute()
-                .ThrowIfExitCodeNotEqualsZero();
+            var result =  device.Shell($"getprop {key}").ThrowIfExitCodeNotEqualsZero();
             return result.Output.ToString().Trim();
         }
         /// <summary>
@@ -71,24 +66,12 @@ namespace AutumnBox.Basic.Device
         {
             ///话说是哪位鬼才想到的使用不验证 su 存在直接用 su -c 检查有没有 root 的？
             ///var command = new SuCommand(device, "ls");
-            
-            
+
+
             /// 这玩意太长，我是不满意
             /// 顺便在控制台执行的时候遇到了一些神奇的问题
             /// 话说啥时候 ShellCommand 负责解释的是 sh 而不是 adb -s <device> shell <cmd> 呢？
-            var testSuCommandAvailability = new ShellCommand(device,"echo id | su | grep uid=0 >/dev/null");
-            return testSuCommandAvailability.Execute().ExitCode == 0;
-        }
-        /// <summary>
-        /// 获取Shell命令对象
-        /// </summary>
-        /// <param name="device"></param>
-        /// <param name="sh"></param>
-        /// <returns></returns>
-        public static ProcessBasedCommand GetShellCommand(this IDevice device, string sh)
-        {
-            device.ThrowIfNotAlive();
-            return new ShellCommand(device, sh);
+            return device.Shell("echo id | su | grep uid=0 >/dev/null").ExitCode == 0;
         }
     }
 }

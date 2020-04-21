@@ -31,11 +31,11 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
         public CommandStatus Status { get; private set; } = CommandStatus.Ready;
 
         /// <inheritdoc/>
-        public ICommandResult Result
+        public CommandResult Result
         {
             get
             {
-                if (Status == CommandStatus.Ready || Status == CommandStatus.Executing)
+                if (_result == null || Status == CommandStatus.Ready || Status == CommandStatus.Executing)
                 {
                     throw new InvalidOperationException("Command procedure is not finished");
                 }
@@ -46,7 +46,7 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
                 _result = value;
             }
         }
-        private ICommandResult _result = new MyCommandResult();
+        private CommandResult? _result;
 
         /// <inheritdoc/>
         public Exception? Exception { get; set; }
@@ -72,10 +72,7 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
         /// <param name="port"></param>
         /// <param name="adbToolsDir"></param>
         /// <param name="args"></param>
-        public CommandProcedure(string fileName,
-            ushort port,
-            DirectoryInfo adbToolsDir,
-            params string[] args
+        public CommandProcedure(string fileName, params string[] args
             )
         {
             if (string.IsNullOrEmpty(fileName))
@@ -102,17 +99,13 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
                     RedirectStandardOutput = true,
                 }
             };
-            string pathEnv = System.Environment.GetEnvironmentVariable("PATH");
-            var newPath = $"{adbToolsDir.FullName};{pathEnv}";
-            process.StartInfo.EnvironmentVariables["PATH"] = newPath;
-            process.StartInfo.EnvironmentVariables["ANDROID_ADB_SERVER_PORT"] = port.ToString();
         }
 
         /// <inheritdoc/>
         public event EventHandler? Disposed;
 
         /// <inheritdoc/>
-        public ICommandResult Execute()
+        public CommandResult Execute()
         {
             if (Status != CommandStatus.Ready)
             {
@@ -121,6 +114,7 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
             try
             {
                 Status = CommandStatus.Executing;
+                Executing?.Invoke(this, new EventArgs());
                 process!.Start();
                 process.OutputDataReceived += Process_OutputDataReceived;
                 process.ErrorDataReceived += Process_ErrorDataReceived;
@@ -130,21 +124,13 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
                 process.CancelErrorRead();
                 process.CancelOutputRead();
                 this.Status = CommandStatus.Succeeded;
-                Result = new MyCommandResult()
-                {
-                    ExitCode = process.ExitCode,
-                    Output = outputBuilder!.ToOutput()
-                };
+                Result = new CommandResult(process.ExitCode, outputBuilder!.ToOutput());
             }
             catch (Exception e)
             {
                 Exception = e;
                 Status = CommandStatus.Failed;
-                Result = new MyCommandResult()
-                {
-                    ExitCode = -2401,
-                    Output = outputBuilder!.ToOutput()
-                };
+                Result = new CommandResult(1, outputBuilder!.ToOutput());
             }
             Finished?.Invoke(this, new EventArgs());
             return Result;
@@ -172,20 +158,8 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
             OutputReceived?.Invoke(this, new OutputReceivedEventArgs(e, false));
         }
 
-        /// <summary>
-        /// CommandResult的实现类
-        /// </summary>
-        private class MyCommandResult : ICommandResult
-        {
-            /// <inheritdoc/>
-            public int? ExitCode { get; set; } = null;
-
-            /// <inheritdoc/>
-            public Output Output { get; set; } = new Output();
-        }
-
         /// <inheritdoc/>
-        public Task<ICommandResult> ExecuteAsync()
+        public Task<CommandResult> ExecuteAsync()
         {
             if (Status != CommandStatus.Ready)
             {

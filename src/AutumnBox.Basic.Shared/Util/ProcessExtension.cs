@@ -3,7 +3,7 @@
 ** date:  2018/9/26 2:15:44 (UTC +8:00)
 ** desc： ...
 *************************************************/
-using AutumnBox.Basic.Calling.Cmd;
+using AutumnBox.Basic.ManagedAdb.CommandDriven;
 using AutumnBox.Logging;
 using System;
 using System.Diagnostics;
@@ -30,34 +30,31 @@ namespace AutumnBox.Basic.Calling
             {
                 Process.GetProcessById(process.Id);
             }
-            catch (ArgumentException)
+            catch (Exception)
             {
                 return false;
             }
             return true;
         }
+
         /// <summary>
         /// 使用Windows taskkill命令进行结束
         /// </summary>
         /// <param name="proc"></param>
         /// <exception cref="PlatformNotSupportedException">此命令仅支持WIN32平台,在其它平台调用将抛出此异常</exception>
-        public static void KillByTaskKill(this Process proc)
+        public static void TaskKill(this Process proc)
         {
             if (Environment.OSVersion.Platform == PlatformID.Win32NT)
             {
                 var logger = LoggerFactory.Auto(nameof(ProcessExtensions));
-                new WindowsCmdCommand($"taskkill /F /PID {proc.Id}")
-                    .To((e) =>
-                    {
-                        logger.Info(e.Text);
-                    })
-                    .Execute();
+                var cmd = new CommandProcedure("cmd.exe", $"/C taskkill /F /PID {proc.Id}");
             }
             else
             {
                 throw new PlatformNotSupportedException();
             }
         }
+
         /// <summary>
         /// Kill a process, and all of its children, grandchildren, etc.
         /// </summary>

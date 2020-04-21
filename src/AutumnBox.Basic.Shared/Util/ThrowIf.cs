@@ -27,6 +27,7 @@ namespace AutumnBox.Basic.Util
                 throw new DeviceHasNoSuException();
             }
         }
+
         /// <summary>
         /// 放返回码不为0时抛出异常
         /// </summary>
@@ -38,11 +39,12 @@ namespace AutumnBox.Basic.Util
                 throw new AdbShellCommandFailedException(result.Item1, result.Item2);
             }
         }
+
         /// <summary>
         /// 放返回码不为0时抛出异常
         /// </summary>
         /// <param name="result"></param>
-        public static IProcessBasedCommandResult ThrowIfShellExitCodeNotEqualsZero(this IProcessBasedCommandResult result)
+        public static CommandResult ThrowIfShellExitCodeNotEqualsZero(this CommandResult result)
         {
             if (result.ExitCode != 0)
             {
@@ -50,11 +52,12 @@ namespace AutumnBox.Basic.Util
             }
             return result;
         }
+
         /// <summary>
         /// 放返回码不为0时抛出异常
         /// </summary>
         /// <param name="result"></param>
-        public static IProcessBasedCommandResult ThrowIfExitCodeNotEqualsZero(this IProcessBasedCommandResult result)
+        public static CommandResult ThrowIfExitCodeNotEqualsZero(this CommandResult result)
         {
             if (result.ExitCode != 0)
             {
@@ -62,13 +65,14 @@ namespace AutumnBox.Basic.Util
             }
             return result;
         }
+
         /// <summary>
         /// 当ExitCode不为0时抛出异常
         /// </summary>
         /// <param name="result"></param>
         /// <exception cref="CommandErrorException"></exception>
         /// <returns></returns>
-        public static CommandExecutor.Result ThrowIfExitCodeIsNotZero(this CommandExecutor.Result result)
+        public static CommandResult ThrowIfExitCodeIsNotZero(this CommandResult result)
         {
             if (result.ExitCode != 0)
             {
@@ -76,6 +80,7 @@ namespace AutumnBox.Basic.Util
             }
             return result;
         }
+
         /// <summary>
         /// 当设备不存活时抛出
         /// </summary>

@@ -12,7 +12,7 @@ namespace AutumnBox.Basic.Device.ManagementV2.OS
     /// <summary>
     /// 提供一个长期存在的Shell控制功能
     /// </summary>
-    public class AndroidShell : IDisposable, INotifyOutput, IReceiveOutputByTo<AndroidShell>
+    public class AndroidShell : IDisposable, INotifyOutput
     {
         private IDevice device;
         private Process coreProcess;

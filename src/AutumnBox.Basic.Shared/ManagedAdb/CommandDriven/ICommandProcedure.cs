@@ -29,14 +29,14 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
         /// </summary>
         /// <exception cref="InvalidOperationException">操作无效,如命令已经在执行</exception>
         /// <returns></returns>
-        ICommandResult Execute();
+        CommandResult Execute();
 
         /// <summary>
         /// 异步执行命令
         /// </summary>
         /// <exception cref="InvalidOperationException">操作无效,如命令已经在执行</exception>
         /// <returns></returns>
-        Task<ICommandResult> ExecuteAsync();
+        Task<CommandResult> ExecuteAsync();
 
         /// <summary>
         /// 取消执行
@@ -48,7 +48,7 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
         /// 执行结果
         /// </summary>
         /// <exception cref="InvalidOperationException">事务状态异常</exception>
-        ICommandResult Result { get; }
+        CommandResult Result { get; }
 
         /// <summary>
         /// 获取发生的错误

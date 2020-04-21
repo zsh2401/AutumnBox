@@ -12,7 +12,7 @@ namespace AutumnBox.Basic.Device.Management.AppFx
     /// <summary>
     /// Activity管理器
     /// </summary>
-    public class ActivityManager : DeviceCommander, IReceiveOutputByTo<ActivityManager>
+    public class ActivityManager : DeviceCommander
     {
         /// <summary>
         /// 构造

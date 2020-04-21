@@ -3,9 +3,7 @@
 ** date:  2018/8/30 4:53:10 (UTC +8:00)
 ** desc： ...
 *************************************************/
-using AutumnBox.Basic.Calling.Adb;
 using AutumnBox.Basic.Util;
-using AutumnBox.Logging;
 using System;
 using System.Net;
 using System.Threading;
@@ -40,15 +38,15 @@ namespace AutumnBox.Basic.Device
             if (tryConnect)
             {
                 ip = this.GetLanIP();
-                //SLogger<UsbDevice>.Info(ip?.ToString() ?? "can not get ip info");
             }
             this.Adb($"tcpip {port}").ThrowIfExitCodeNotEqualsZero();
             Task.Run(() =>
             {
                 if (ip != null)
                 {
-                    Thread.Sleep(2000);
-                    new AdbCommand($"connect {ip}:{port}").Execute().ThrowIfExitCodeNotEqualsZero();
+                    Thread.Sleep(1500);
+                    using var cmd = BasicBooter.CommandProcedureManager.OpenCommand("adb.exe", $"connect {ip}:{port}");
+                    cmd.Execute().ThrowIfExitCodeNotEqualsZero();
                 }
             });
         }

@@ -1,4 +1,5 @@
 ﻿using AutumnBox.Basic.Calling;
+using AutumnBox.Basic.Data;
 using System;
 
 namespace AutumnBox.Basic.Device.ManagementV2.AppFx
@@ -28,7 +29,7 @@ namespace AutumnBox.Basic.Device.ManagementV2.AppFx
         /// <param name="pkgName"></param>
         /// <param name="activityClassName"></param>
         /// <param name="intent"></param>
-        public ICommandResult StartActivity(string pkgName, string activityClassName, Intent intent = null)
+        public CommandResult StartActivity(string pkgName, string activityClassName, Intent intent = null)
         {
             return executor.AdbShell(device, $"am start {pkgName}/.{activityClassName} {intent?.ToAdbArguments()}");
         }
@@ -38,7 +39,7 @@ namespace AutumnBox.Basic.Device.ManagementV2.AppFx
         /// <param name="componentNameString">组件名字符串</param>
         /// <param name="intent"></param>
         /// <exception cref="Exceptions.AdbShellCommandFailedException"></exception>
-        public ICommandResult StartActivity(string componentNameString, Intent intent = null)
+        public CommandResult StartActivity(string componentNameString, Intent intent = null)
         {
             return executor.AdbShell(device, $"am start -n {componentNameString} {intent?.ToAdbArguments()}");
         }
@@ -48,7 +49,7 @@ namespace AutumnBox.Basic.Device.ManagementV2.AppFx
         /// <param name="componentName"></param>
         /// <param name="intent"></param>
         /// <exception cref="Exceptions.AdbShellCommandFailedException"></exception>
-        public ICommandResult StartComponent(ComponentName componentName, Intent intent = null)
+        public CommandResult StartComponent(ComponentName componentName, Intent intent = null)
         {
             return executor.AdbShell(device, $"am start -n {componentName.ToString()} {intent?.ToAdbArguments()}");
         }
@@ -58,7 +59,7 @@ namespace AutumnBox.Basic.Device.ManagementV2.AppFx
         /// <param name="action"></param>
         /// <param name="intent"></param>
         /// <exception cref="Exceptions.AdbShellCommandFailedException"></exception>
-        public ICommandResult StartAction(string action, Intent intent)
+        public CommandResult StartAction(string action, Intent intent)
         {
             return executor.AdbShell(device, $"am start -a {action} {intent?.ToAdbArguments()}");
         }
@@ -68,7 +69,7 @@ namespace AutumnBox.Basic.Device.ManagementV2.AppFx
         /// <param name="category"></param>
         /// <param name="intent"></param>
         /// <exception cref="Exceptions.AdbShellCommandFailedException"></exception>
-        public ICommandResult StartCategory(string category, Intent intent)
+        public CommandResult StartCategory(string category, Intent intent)
         {
             return executor.AdbShell(device, $"am start -c {category} {intent?.ToAdbArguments()}");
         }
@@ -78,7 +79,7 @@ namespace AutumnBox.Basic.Device.ManagementV2.AppFx
         /// </summary>
         /// <param name="pkgName"></param>
         /// <exception cref="Exceptions.AdbShellCommandFailedException"></exception>
-        public ICommandResult ForceStop(string pkgName)
+        public CommandResult ForceStop(string pkgName)
         {
             return executor.AdbShell(device, $"am force-stop {pkgName}");
         }
@@ -89,7 +90,7 @@ namespace AutumnBox.Basic.Device.ManagementV2.AppFx
         /// <param name="pid"></param>
         /// <param name="level"></param>
         /// <exception cref="Exceptions.AdbShellCommandFailedException"></exception>
-        public ICommandResult TrimMemory(int pid, TrimMemoryLevel level)
+        public CommandResult TrimMemory(int pid, TrimMemoryLevel level)
         {
             return executor.AdbShell(device, $"am send-trim-memory {pid} {level}");
         }

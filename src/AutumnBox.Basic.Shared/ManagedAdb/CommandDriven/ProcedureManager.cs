@@ -48,7 +48,7 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
         {
             lock (openCommandLock)
             {
-                var commandProcedure = new CommandProcedure(commandName, adbPort, adbClientDir, args);
+                var commandProcedure = new CommandProcedure(commandName, args);
                 commandProcedure.Disposed += CommandProcedure_Disposed;
                 notDisposeds!.Add(commandProcedure);
                 return commandProcedure;
@@ -106,9 +106,9 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
             }
         }
 
-       /// <summary>
-       /// ~
-       /// </summary>
+        /// <summary>
+        /// ~
+        /// </summary>
         ~ProcedureManager()
         {
             // 请勿更改此代码。将清理代码放入以上 Dispose(bool disposing) 中。
