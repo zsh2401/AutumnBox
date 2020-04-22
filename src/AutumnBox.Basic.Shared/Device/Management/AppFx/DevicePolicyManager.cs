@@ -3,9 +3,8 @@
 ** date:  2018/9/28 4:14:43 (UTC +8:00)
 ** desc： ...
 *************************************************/
-using System;
 using System.Text;
-using AutumnBox.Basic.Data;
+using AutumnBox.Basic.Calling;
 using AutumnBox.Basic.Device.Management.OS;
 using AutumnBox.Basic.Util;
 
@@ -14,7 +13,7 @@ namespace AutumnBox.Basic.Device.Management.AppFx
     /// <summary>
     /// 没错,这就是DPM!
     /// </summary>
-    public sealed class DevicePolicyManager : DeviceCommander, IReceiveOutputByTo<DevicePolicyManager>
+    public sealed class DevicePolicyManager : DeviceCommander
     {
         /// <summary>
         /// 构造DPM实例
@@ -22,8 +21,9 @@ namespace AutumnBox.Basic.Device.Management.AppFx
         /// <param name="device"></param>
         public DevicePolicyManager(IDevice device) : base(device)
         {
-            ShellCommandHelper.CommandExistsCheck(device, "dpm");
+            //ShellCommandHelper.CommandExistsCheck(device, "dpm");
         }
+
         /// <summary>
         /// 设置ActiveAdmin
         /// </summary>
@@ -34,6 +34,7 @@ namespace AutumnBox.Basic.Device.Management.AppFx
         {
             SetActiveAdmin(cn.ToString(), uid);
         }
+
         /// <summary>
         /// Set active admin
         /// </summary>
@@ -48,9 +49,7 @@ namespace AutumnBox.Basic.Device.Management.AppFx
                 sb.Append($"--user {uid} ");
             }
             sb.Append(componentName);
-            CmdStation.GetShellCommand(Device, sb.ToString())
-                .To(RaiseOutput)
-                .Execute().
+            Executor.AdbShell(Device, sb.ToString()).
                 ThrowIfShellExitCodeNotEqualsZero();
         }
 
@@ -65,6 +64,7 @@ namespace AutumnBox.Basic.Device.Management.AppFx
         {
             SetProfileOwner(cn.ToString(), uid, name);
         }
+
         /// <summary>
         /// Set Profile Owner
         /// </summary>
@@ -84,9 +84,7 @@ namespace AutumnBox.Basic.Device.Management.AppFx
                 sb.Append($"--name {name} ");
             }
             sb.Append(componentName);
-            CmdStation.GetShellCommand(Device, sb.ToString())
-                .To(RaiseOutput)
-                .Execute().
+            Executor.AdbShell(Device, sb.ToString()).
                 ThrowIfShellExitCodeNotEqualsZero();
         }
 
@@ -101,6 +99,7 @@ namespace AutumnBox.Basic.Device.Management.AppFx
         {
             SetDeviceOwner(cn.ToString(), uid, name);
         }
+
         /// <summary>
         /// 设置Device Owner
         /// </summary>
@@ -121,9 +120,7 @@ namespace AutumnBox.Basic.Device.Management.AppFx
                 sb.Append($"--name {name} ");
             }
             sb.Append(componentName);
-            CmdStation.GetShellCommand(Device, sb.ToString())
-                .To(RaiseOutput)
-                .Execute().
+            Executor.AdbShell(Device, sb.ToString()).
                 ThrowIfShellExitCodeNotEqualsZero();
         }
 
@@ -137,6 +134,7 @@ namespace AutumnBox.Basic.Device.Management.AppFx
         {
             RemoveActiveAdmin(cn.ToString(), uid);
         }
+
         /// <summary>
         /// 移除ActiveAdmin
         /// </summary>
@@ -152,21 +150,8 @@ namespace AutumnBox.Basic.Device.Management.AppFx
                 sb.Append($"--user {uid} ");
             }
             sb.Append(componentName);
-            CmdStation.GetShellCommand(Device, sb.ToString())
-                .To(RaiseOutput)
-                .Execute().
+            Executor.AdbShell(Device, sb.ToString()).
                 ThrowIfShellExitCodeNotEqualsZero();
-        }
-
-        /// <summary>
-        /// 通过To模式订阅输出
-        /// </summary>
-        /// <param name="callback"></param>
-        /// <returns></returns>
-        public DevicePolicyManager To(Action<OutputReceivedEventArgs> callback)
-        {
-            RegisterToCallback(callback);
-            return this;
         }
     }
 }

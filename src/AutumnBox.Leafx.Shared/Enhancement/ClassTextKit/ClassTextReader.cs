@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Reflection;
 
 namespace AutumnBox.Leafx.Enhancement.ClassTextKit
@@ -9,7 +10,7 @@ namespace AutumnBox.Leafx.Enhancement.ClassTextKit
     /// <summary>
     /// 类文本读取器
     /// </summary>
-    public sealed partial class ClassTextReader
+    public partial class ClassTextReader
     {
         /// <summary>
         /// 构造一个ClassText加载器
@@ -25,7 +26,7 @@ namespace AutumnBox.Leafx.Enhancement.ClassTextKit
             var dc = new Dictionary<string, ClassTextAttribute>();
             foreach (var attr in type.GetCustomAttributes<ClassTextAttribute>(true))
             {
-                dc.Add(attr.Key, attr);
+                dc.Add(attr.Key.ToLower(), attr);
             }
             attributes = new ReadOnlyDictionary<string, ClassTextAttribute>(dc);
         }
@@ -41,46 +42,44 @@ namespace AutumnBox.Leafx.Enhancement.ClassTextKit
         private readonly ReadOnlyDictionary<string, ClassTextAttribute> attributes;
 
         /// <summary>
-        /// 文本索引器
+        /// 通过索引器的方式获取类文本值
         /// </summary>
-        /// <param name="key"></param>
-        /// <exception cref="ArgumentNullException">键为空</exception>
-        /// <exception cref="KeyNotFoundException">找不到键</exception>
-        /// <exception cref="InvalidOperationException">获取值时,特性内部异常</exception>
-        /// <returns></returns>
-        public string this[string key]
+        /// <param name="key">键</param>
+        /// <param name="regionCode">区域码,不填默认为当前线程区域码 ,如: zh-CN</param>
+        /// <exception cref="KeyNotFoundException">进行了检索,但没有找到对应的键</exception>
+        /// <returns>应获得类文本值</returns>
+        public string this[string key, string? regionCode = null]
         {
             get
             {
-                if (key == null)
-                {
-                    throw new ArgumentNullException(nameof(key));
-                }
-                try
-                {
-                    return attributes[key].Value;
-                }
-                catch (KeyNotFoundException e)
-                {
-                    throw e;
-                }
-                catch (Exception e)
-                {
-                    throw new InvalidOperationException("Can not read key", e);
-                }
+                return Get(key, regionCode);
             }
+        }
+
+        /// <summary>
+        /// 根据指定的区域码获取语言
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="_regionCode"></param>
+        /// <exception cref="KeyNotFoundException">进行了检索,但没有找到对应的键</exception>
+        /// <returns></returns>
+        public string Get(string key, string? _regionCode = null)
+        {
+            return attributes[key].GetText(_regionCode);
         }
 
         /// <summary>
         /// 尝试获取,不会抛出异常
         /// </summary>
+        /// <param name="key"></param>
         /// <param name="value"></param>
+        /// <param name="_regionCode"></param>
         /// <returns></returns>
-        public bool TryGetValue(string key, out string? value)
+        public bool TryGetValue(string key, out string? value, string? _regionCode = null)
         {
             try
             {
-                value = this[key];
+                value = Get(key, _regionCode);
                 return true;
             }
             catch

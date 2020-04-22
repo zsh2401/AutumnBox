@@ -3,9 +3,9 @@
 ** date:  2018/9/28 4:25:44 (UTC +8:00)
 ** desc： ...
 *************************************************/
-using AutumnBox.Basic.Calling.Adb;
 using AutumnBox.Basic.Exceptions;
 using AutumnBox.Basic.Util;
+using System;
 
 namespace AutumnBox.Basic.Device.Management.OS
 {
@@ -19,34 +19,16 @@ namespace AutumnBox.Basic.Device.Management.OS
         /// </summary>
         /// <param name="device"></param>
         /// <param name="cmd"></param>
+        [Obsolete("检测方式非常危险", true)]
         public static void CommandExistsCheck(IDevice device, string cmd)
         {
-            var result = new ShellCommand(device, cmd)
-               .Execute();
-            if (result.ExitCode == (int)LinuxReturnCode.KeyHasExpired)
-            {
-                throw new CommandNotFoundException(cmd);
-            }
-        }
-        /// <summary>
-        /// 测试是否可以正常执行某个命令
-        /// </summary>
-        /// <param name="device"></param>
-        /// <param name="cmd"></param>
-        public static void SupportCheck(IDevice device, string cmd)
-        {
-            var result = new ShellCommand(device, cmd)
-                .Execute();
-            switch (result.ExitCode)
-            {
-                case (int)LinuxReturnCode.None:
-                    break;
-                case (int)LinuxReturnCode.KeyHasExpired:
-                    throw new CommandNotFoundException(cmd);
-                default:
-                    throw new
-                   AdbShellCommandFailedException(result.Output,result.ExitCode);
-            }
+            throw new NotImplementedException();
+            //var result = new ShellCommand(device, cmd)
+            //   .Execute();
+            //if (result.ExitCode == (int)LinuxReturnCode.KeyHasExpired)
+            //{
+            //    throw new CommandNotFoundException(cmd);
+            //}
         }
     }
 }

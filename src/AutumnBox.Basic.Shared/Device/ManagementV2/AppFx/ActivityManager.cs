@@ -1,4 +1,6 @@
-﻿using AutumnBox.Basic.Calling;
+﻿#nullable enable
+using AutumnBox.Basic.Calling;
+using AutumnBox.Basic.Data;
 using System;
 
 namespace AutumnBox.Basic.Device.ManagementV2.AppFx
@@ -16,7 +18,7 @@ namespace AutumnBox.Basic.Device.ManagementV2.AppFx
         /// </summary>
         /// <param name="device"></param>
         /// <param name="executor"></param>
-        public ActivityManager(IDevice device, ICommandExecutor executor)
+        public ActivityManager(IDevice device, ICommandExecutor? executor = null)
         {
             this.device = device ?? throw new ArgumentNullException(nameof(device));
             this.executor = executor ?? throw new ArgumentNullException(nameof(executor));
@@ -28,60 +30,66 @@ namespace AutumnBox.Basic.Device.ManagementV2.AppFx
         /// <param name="pkgName"></param>
         /// <param name="activityClassName"></param>
         /// <param name="intent"></param>
-        public ICommandResult StartActivity(string pkgName, string activityClassName, Intent intent = null)
+        public CommandResult StartActivity(string pkgName, string activityClassName, Intent intent = null)
         {
             return executor.AdbShell(device, $"am start {pkgName}/.{activityClassName} {intent?.ToAdbArguments()}");
         }
+
         /// <summary>
         /// 启动一个Activity
         /// </summary>
         /// <param name="componentNameString">组件名字符串</param>
         /// <param name="intent"></param>
         /// <exception cref="Exceptions.AdbShellCommandFailedException"></exception>
-        public ICommandResult StartActivity(string componentNameString, Intent intent = null)
+        public CommandResult StartActivity(string componentNameString, Intent intent = null)
         {
             return executor.AdbShell(device, $"am start -n {componentNameString} {intent?.ToAdbArguments()}");
         }
+
         /// <summary>
         /// 启动一个组件，例如某个activity
         /// </summary>
         /// <param name="componentName"></param>
         /// <param name="intent"></param>
         /// <exception cref="Exceptions.AdbShellCommandFailedException"></exception>
-        public ICommandResult StartComponent(ComponentName componentName, Intent intent = null)
+        public CommandResult StartComponent(ComponentName componentName, Intent intent = null)
         {
             return executor.AdbShell(device, $"am start -n {componentName.ToString()} {intent?.ToAdbArguments()}");
         }
+
         /// <summary>
         /// 启动一个动作
         /// </summary>
         /// <param name="action"></param>
         /// <param name="intent"></param>
         /// <exception cref="Exceptions.AdbShellCommandFailedException"></exception>
-        public ICommandResult StartAction(string action, Intent intent)
+        public CommandResult StartAction(string action, Intent intent)
         {
             return executor.AdbShell(device, $"am start -a {action} {intent?.ToAdbArguments()}");
         }
+
         /// <summary>
         /// 启动一个Category
         /// </summary>
         /// <param name="category"></param>
         /// <param name="intent"></param>
         /// <exception cref="Exceptions.AdbShellCommandFailedException"></exception>
-        public ICommandResult StartCategory(string category, Intent intent)
+        public CommandResult StartCategory(string category, Intent intent)
         {
             return executor.AdbShell(device, $"am start -c {category} {intent?.ToAdbArguments()}");
         }
+
         /// <summary>
         /// 强制停止某个APP
         /// adb command:adb shell am force-stop com.qihoo360.mobilesafe
         /// </summary>
         /// <param name="pkgName"></param>
         /// <exception cref="Exceptions.AdbShellCommandFailedException"></exception>
-        public ICommandResult ForceStop(string pkgName)
+        public CommandResult ForceStop(string pkgName)
         {
             return executor.AdbShell(device, $"am force-stop {pkgName}");
         }
+
         /// <summary>
         /// 发送收紧内存的命令
         /// adb command example:adb shell am send-trim-memory 12345 RUNNING_LOW
@@ -89,7 +97,7 @@ namespace AutumnBox.Basic.Device.ManagementV2.AppFx
         /// <param name="pid"></param>
         /// <param name="level"></param>
         /// <exception cref="Exceptions.AdbShellCommandFailedException"></exception>
-        public ICommandResult TrimMemory(int pid, TrimMemoryLevel level)
+        public CommandResult TrimMemory(int pid, TrimMemoryLevel level)
         {
             return executor.AdbShell(device, $"am send-trim-memory {pid} {level}");
         }

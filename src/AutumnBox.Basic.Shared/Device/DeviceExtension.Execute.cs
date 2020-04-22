@@ -4,11 +4,8 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.Basic.Calling;
-using AutumnBox.Basic.Calling.Adb;
-using AutumnBox.Basic.Calling.Fastboot;
 using AutumnBox.Basic.Data;
-using AutumnBox.Basic.Device.Management.AppFx;
-using AutumnBox.Basic.Device.Management.OS;
+using AutumnBox.Basic.ManagedAdb.CommandDriven;
 using AutumnBox.Basic.Util;
 using System;
 
@@ -19,6 +16,8 @@ namespace AutumnBox.Basic.Device
     /// </summary>
     public static partial class DeviceExtension
     {
+        private static ICommandProcedureManager CPM => BasicBooter.CommandProcedureManager;
+
         /// <summary>
         /// 以SU权限执行Shell命令
         /// </summary>
@@ -27,70 +26,50 @@ namespace AutumnBox.Basic.Device
         /// <param name="suCheck"></param>
         /// <exception cref="Exceptions.DeviceHasNoSuException"></exception>
         /// <returns></returns>
-        public static Tuple<Output, int> Su(this IDevice device, string sh, bool suCheck = true)
+        public static CommandResult Su(this IDevice device, string sh, bool suCheck = true)
         {
             if (suCheck)
             {
                 device.ThrowIfHaveNoSu();
             }
-            var cmd = new SuCommand(device, sh);
-            var result = cmd.Execute();
-            return new Tuple<Output, int>(result.Output, result.ExitCode);
+            using var cmd = CPM.OpenShellCommand(device, "su -c", sh);
+            return cmd.Execute();
         }
+
         /// <summary>
         /// 执行shell命令
         /// </summary>
         /// <param name="device"></param>
         /// <param name="sh"></param>
         /// <returns></returns>
-        public static Tuple<Output, int> Shell(this IDevice device, string sh)
+        public static CommandResult Shell(this IDevice device, string sh)
         {
-            var cmd = new ShellCommand(device, sh);
-            var result = cmd.Execute();
-            return new Tuple<Output, int>(result.Output, result.ExitCode);
+            using var cmd = CPM.OpenShellCommand(device, sh);
+            return cmd.Execute();
         }
+
         /// <summary>
         /// 执行ADB命令
         /// </summary>
         /// <param name="device"></param>
         /// <param name="command"></param>
         /// <returns></returns>
-        public static Tuple<Output, int> Adb(this IDevice device, string command)
+        public static CommandResult Adb(this IDevice device, string command)
         {
-            var cmd = new AdbCommand(device, command);
-            var result = cmd.Execute();
-            return new Tuple<Output, int>(result.Output, result.ExitCode);
+            var cmd = CPM.OpenADBCommand(device, command);
+            return cmd.Execute();
         }
-        /// <summary>
-        /// 获取Adb命令对象
-        /// </summary>
-        /// <param name="device"></param>
-        /// <param name="command"></param>
-        /// <returns></returns>
-        public static AdbCommand GetAdb(this IDevice device, string command) {
-            return new AdbCommand(device, command);
-        }
-        /// <summary>
-        /// 获取Fastboot命令对象
-        /// </summary>
-        /// <param name="device"></param>
-        /// <param name="command"></param>
-        /// <returns></returns>
-        public static FastbootCommand GetFastboot(this IDevice device, string command)
-        {
-            return new FastbootCommand(device, command);
-        }
+
         /// <summary>
         /// 执行Fastboot命令
         /// </summary>
         /// <param name="device"></param>
         /// <param name="command"></param>
         /// <returns></returns>
-        public static Tuple<Output, int> Fastboot(this IDevice device, string command)
+        public static CommandResult Fastboot(this IDevice device, string command)
         {
-            var cmd = new FastbootCommand(device, command);
-            var result = cmd.Execute();
-            return new Tuple<Output, int>(result.Output, result.ExitCode);
+            using var cmd = CPM.OpenFastbootCommand(device, command);
+            return cmd.Execute();
         }
         /// <summary>
         /// 根据设备状态，判断使用adb还是fastboot执行命令
@@ -99,7 +78,7 @@ namespace AutumnBox.Basic.Device
         /// <param name="device"></param>
         /// <param name="command"></param>
         /// <returns></returns>
-        public static Tuple<Output, int> Auto(this IDevice device, string command)
+        public static CommandResult Auto(this IDevice device, string command)
         {
             if (device.State == DeviceState.Fastboot)
             {

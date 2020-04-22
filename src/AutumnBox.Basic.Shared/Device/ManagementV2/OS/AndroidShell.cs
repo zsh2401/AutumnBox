@@ -12,7 +12,7 @@ namespace AutumnBox.Basic.Device.ManagementV2.OS
     /// <summary>
     /// 提供一个长期存在的Shell控制功能
     /// </summary>
-    public class AndroidShell : IDisposable, INotifyOutput, IReceiveOutputByTo<AndroidShell>
+    public class AndroidShell : IDisposable, INotifyOutput
     {
         private IDevice device;
         private Process coreProcess;
@@ -40,10 +40,6 @@ namespace AutumnBox.Basic.Device.ManagementV2.OS
         /// </summary>
         public void Open()
         {
-            if (!Adb.Server.IsEnable)
-            {
-                throw new InvalidOperationException("Server is not enable!");
-            }
             var pInfo = new ProcessStartInfo()
             {
                 RedirectStandardError = CreateNoWindow,
@@ -51,8 +47,8 @@ namespace AutumnBox.Basic.Device.ManagementV2.OS
                 RedirectStandardInput = true,
                 UseShellExecute = false,
                 CreateNoWindow = CreateNoWindow,
-                FileName = Adb.AdbFilePath,
-                Arguments = $"-P{Adb.Server.Port} -s {device.SerialNumber} shell",
+                FileName = BasicBooter.AdbExecutableFile.ToString(),
+                Arguments = $"-P{BasicBooter.ServerEndPoint.Port} -s {device.SerialNumber} shell",
             };
             coreProcess = Process.Start(pInfo);
             coreProcess.OutputDataReceived += (s, e) => RaiseOutputReceived(e, false);

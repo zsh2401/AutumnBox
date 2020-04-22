@@ -42,7 +42,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutumnBox.Leafx", "AutumnBo
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		AutumnBox.Basic.Shared\AutumnBox.Basic.Shared.projitems*{2cff3b20-4778-47ef-8d8b-b106f7617954}*SharedItemsImports = 4
 		AutumnBox.Leafx.Shared\AutumnBox.Leafx.Shared.projitems*{2cff3b20-4778-47ef-8d8b-b106f7617954}*SharedItemsImports = 4
 		AutumnBox.Logging.Shared\AutumnBox.Logging.Shared.projitems*{2cff3b20-4778-47ef-8d8b-b106f7617954}*SharedItemsImports = 4
 		AutumnBox.OpenFramework.Shared\AutumnBox.OpenFramework.Shared.projitems*{2cff3b20-4778-47ef-8d8b-b106f7617954}*SharedItemsImports = 4
@@ -679,7 +678,7 @@ Global
 		{3A111486-25EA-48CB-9408-A7D69B81FC86} = {FA99B881-45A3-4D66-8ECE-9D65DFC57C48}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {E8E55705-AE5C-4952-B4C7-9D7F81C38731}
 		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.PolicyInjection.6.0.1304.0\lib\NET45
+		SolutionGuid = {E8E55705-AE5C-4952-B4C7-9D7F81C38731}
 	EndGlobalSection
 EndGlobal

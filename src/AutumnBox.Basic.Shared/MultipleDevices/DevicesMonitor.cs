@@ -40,7 +40,7 @@ namespace AutumnBox.Basic.MultipleDevices
         /// <summary>
         /// ¼ì²â¼ä¸ô
         /// </summary>
-        public int Interval { get; set; } = 2000;
+        public int Interval { get; set; } = 1000;
 
         /// <summary>
         /// ¿ªÊ¼

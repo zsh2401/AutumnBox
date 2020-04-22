@@ -1,8 +1,9 @@
 ﻿using AutumnBox.GUI.Services.Impl.OS;
 using AutumnBox.GUI.Util.Loader;
-using AutumnBox.Leafx.ObjectManagement;
-using AutumnBox.Logging;
+using AutumnBox.GUI.ViewModel;
+using AutumnBox.Leafx.Enhancement.ClassTextKit;
 using System;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Windows;
 
@@ -13,50 +14,61 @@ namespace AutumnBox.GUI.View.Windows
     /// </summary>
     public partial class StartupWindow
     {
-        private readonly AbstractAppLoader appLoader;
-
         public StartupWindow()
         {
             InitializeComponent();
-            appLoader = (AbstractAppLoader)new ObjectBuilder(typeof(GeneralAppLoader), App.Current.Lake).Build();
-            appLoader.StepFinished += AppLoader_StepFinished;
-            appLoader.Succeced += AppLoader_Succeced;
-            appLoader.Failed += AppLoader_Failed;
+            (DataContext as INotifyPropertyChanged).PropertyChanged += DataContextPropertyChanged;
         }
 
-        private void AppLoader_Failed(object sender, EventArgs e)
+        private void DataContextPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            App.Current.Dispatcher.Invoke(() =>
+            if (sender is VMStartup vmstartup)
             {
-                MessageBox.Show("Failed");
-            });
+                if (vmstartup.Loaded)
+                {
+                    App.Current.MainWindow = new MainWindowV3();
+                    App.Current.MainWindow.Show();
+                    Close();
+                }
+                else if (vmstartup.Exception != null)
+                {
+                    try
+                    {
+                        ErrorMessageBox.Show(this, vmstartup.Exception);
+                    }
+                    catch { }
+                    App.Current.Shutdown(0);
+                }
+            }
         }
 
-        private void AppLoader_Succeced(object sender, EventArgs e)
-        {
-            App.Current.Dispatcher.Invoke(() =>
-            {
-                var mainWindow = new MainWindowV3();
-                App.Current.MainWindow = mainWindow;
-                Close();
-                mainWindow.Show();
-            });
-        }
-
-        private void AppLoader_StepFinished(object sender, StepFinishedEventArgs e)
-        {
-            //double progress = 100.0 * e.FinishedStep / e.TotalStepCount;
-            //App.Current.Dispatcher.Invoke(() =>
-            //{
-            //    ProgressBar.Value = progress;
-            //});
-        }
 
         protected override void OnActivated(EventArgs e)
         {
             base.OnActivated(e);
-            _ = appLoader.LoadAsync();
             NativeMethods.SetForegroundWindow(Process.GetCurrentProcess().MainWindowHandle);
+        }
+
+        [ClassText("err_msg_fmt",
+            "Can not load AutumnBox\nStep name: {0}\nException name: {1}\nClick 'Yes' button to copy exception message to clipboard.\nSee more details in logs",
+            "zh-CN:无法加载秋之盒! \n 步骤名: {0}\n 异常名:{1} \n 点击是按钮,将完整错误信息复制到剪贴板中\n更多内容详见日志")]
+        [ClassText("err_title", "Fatal Error!", "致命问题")]
+        private class ErrorMessageBox
+        {
+            public static void Show(Window ownerWindow, AppLoadingException e)
+            {
+                string error_message_fmt = ClassTextReader.Read<ErrorMessageBox>("err_msg_fmt");
+                string error_message = string.Format(error_message_fmt, e.StepName, e.InnerException.InnerException.GetType().Name);
+                string error_title = ClassTextReader.Read<ErrorMessageBox>("err_title");
+                if (MessageBox.Show(ownerWindow,
+                    error_message,
+                    error_title,
+                    MessageBoxButton.YesNoCancel,
+                    MessageBoxImage.Error) == MessageBoxResult.Yes)
+                {
+                    try { Clipboard.SetText($"step name:{e.StepName}\nexception: {e.InnerException.InnerException}"); } catch { }
+                }
+            }
         }
     }
 }

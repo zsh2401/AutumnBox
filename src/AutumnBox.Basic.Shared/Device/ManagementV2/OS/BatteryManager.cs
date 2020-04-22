@@ -1,4 +1,5 @@
 ﻿using AutumnBox.Basic.Calling;
+using AutumnBox.Basic.Data;
 using AutumnBox.Logging;
 using System;
 using System.Collections.Generic;
@@ -147,7 +148,7 @@ namespace AutumnBox.Basic.Device.ManagementV2.OS
         /// 伪造电池充电状态
         /// </summary>
         /// <param name="isCharging"></param>
-        public ICommandResult SetChargeState(bool isCharging = true)
+        public CommandResult SetChargeState(bool isCharging = true)
         {
             int status = isCharging ? 2 : 1;
             return executor.AdbShell(device, $"dumpsys battery set status {status}");
@@ -156,7 +157,7 @@ namespace AutumnBox.Basic.Device.ManagementV2.OS
         /// 伪造电池电量
         /// </summary>
         /// <param name="level"></param>
-        public ICommandResult SetBatteryLevel(int level)
+        public CommandResult SetBatteryLevel(int level)
         {
             if (level <= 0) level = 0;
             else if (level > 100) level = 100;
@@ -165,14 +166,14 @@ namespace AutumnBox.Basic.Device.ManagementV2.OS
         /// <summary>
         /// 伪造拔出状态
         /// </summary>
-        public ICommandResult Unplug()
+        public CommandResult Unplug()
         {
             return executor.AdbShell(device, $"dumpsys battery unplug");
         }
         /// <summary>
         /// 伪造插入状态
         /// </summary>
-        public ICommandResult Plug()
+        public CommandResult Plug()
         {
             return executor.AdbShell(device, $"dumpsys battery plug");
         }

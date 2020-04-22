@@ -21,6 +21,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Attribute\ExtensionI18NTextInfoAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Attribute\ExtensionInfoAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\AutumnBoxExtension.Constants.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Util\ClassTextReaderExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\EmptyExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\IExtensionUsefulTools.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\IClassExtension.cs" />
@@ -100,6 +101,7 @@
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Open\LKit\" />
     <Folder Include="$(MSBuildThisFileDirectory)Open\ADBKit\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Util\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Management\ExtInfo\ExtensionInfoExtension.cs" />

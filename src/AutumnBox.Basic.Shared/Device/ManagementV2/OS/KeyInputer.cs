@@ -1,4 +1,5 @@
 ﻿using AutumnBox.Basic.Calling;
+using AutumnBox.Basic.Data;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -27,7 +28,7 @@ namespace AutumnBox.Basic.Device.ManagementV2.OS
         /// </summary>
         /// <param name="code"></param>
         /// <returns></returns>
-        public ICommandResult RaiseKeyEvent(AndroidKeyCode code)
+        public CommandResult RaiseKeyEvent(AndroidKeyCode code)
         {
             return RaiseKeyEvent((int)code);
         }
@@ -36,7 +37,7 @@ namespace AutumnBox.Basic.Device.ManagementV2.OS
         /// </summary>
         /// <param name="code"></param>
         /// <returns></returns>
-        public ICommandResult RaiseKeyEvent(int code)
+        public CommandResult RaiseKeyEvent(int code)
         {
             return executor.AdbShell(device, $"input keyevent {code}");
         }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutumnBox.Basic.Data;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -16,7 +17,7 @@ namespace AutumnBox.Basic.Calling
         /// <param name="result"></param>
         /// <exception cref="Exceptions.CommandErrorException">返回码不为0时抛出该异常</exception>
         /// <returns></returns>
-        public static ICommandResult ThrowIfError(this ICommandResult result)
+        public static CommandResult ThrowIfError(this CommandResult result)
         {
             if (result.ExitCode != STATUS_OK)
             {

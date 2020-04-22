@@ -3,8 +3,7 @@
 ** date:  2018/8/31 9:35:07 (UTC +8:00)
 ** desc： ...
 *************************************************/
-using System;
-using AutumnBox.Basic.Data;
+using AutumnBox.Basic.Calling;
 using AutumnBox.Basic.Util;
 
 namespace AutumnBox.Basic.Device.Management.AppFx
@@ -12,7 +11,7 @@ namespace AutumnBox.Basic.Device.Management.AppFx
     /// <summary>
     /// 广播发送器
     /// </summary>
-    public sealed class BroadcastSender : DeviceCommander,Data.IReceiveOutputByTo<BroadcastSender>
+    public sealed class BroadcastSender : DeviceCommander
     {
         /// <summary>
         /// 构造
@@ -27,22 +26,11 @@ namespace AutumnBox.Basic.Device.Management.AppFx
         /// <param name="broadcast">广播内容</param>
         /// <param name="intent"></param>
         /// <exception cref="Exceptions.AdbShellCommandFailedException"></exception>
-        public void Send(string broadcast,Intent intent=null)
+        public void Send(string broadcast, Intent intent = null)
         {
-            CmdStation.GetShellCommand(Device, 
-                $"am broadcast -a {broadcast} {intent?.ToAdbArguments()}")
-                .Execute()
-                .ThrowIfExitCodeNotEqualsZero(); ;
-        }
-        /// <summary>
-        /// 通过To模式订阅
-        /// </summary>
-        /// <param name="callback"></param>
-        /// <returns></returns>
-        public BroadcastSender To(Action<OutputReceivedEventArgs> callback)
-        {
-            RegisterToCallback(callback);
-            return this;
+            Executor.AdbShell(Device,
+                  $"am broadcast -a {broadcast} {intent?.ToAdbArguments()}")
+                  .ThrowIfExitCodeNotEqualsZero(); ;
         }
     }
 }

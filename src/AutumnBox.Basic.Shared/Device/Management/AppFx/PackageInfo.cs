@@ -24,7 +24,7 @@ namespace AutumnBox.Basic.Device.Management.AppFx
             get
             {
                 var result = Owner.Shell($"pm path {Name}");
-                return result.Item2 == 0;
+                return result.ExitCode == 0;
             }
         }
         /// <summary>
@@ -35,7 +35,7 @@ namespace AutumnBox.Basic.Device.Management.AppFx
             get
             {
                 if (!IsExist) { throw new PackageNotFoundException(Name); }
-                var exeResult = Owner.Shell($"dumpsys package {Name}").Item1;
+                var exeResult = Owner.Shell($"dumpsys package {Name}").Output;
                 var match = Regex.Match(exeResult.ToString(), mainActivityPattern);
                 if (match.Success)
                 {
@@ -77,7 +77,7 @@ namespace AutumnBox.Basic.Device.Management.AppFx
         }
         private void Precheck()
         {
-            
+
         }
         /// <summary>
         /// 卸载

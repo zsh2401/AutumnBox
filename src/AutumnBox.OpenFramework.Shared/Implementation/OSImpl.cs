@@ -1,4 +1,5 @@
-﻿using AutumnBox.Basic.Calling;
+﻿using AutumnBox.Basic;
+using AutumnBox.Basic.Calling;
 using AutumnBox.Basic.Data;
 using AutumnBox.Leafx.Container.Support;
 using AutumnBox.Logging;
@@ -43,7 +44,8 @@ namespace AutumnBox.OpenFramework.Implementation
             try
             {
                 var winDir = Environment.GetFolderPath(Environment.SpecialFolder.Windows);
-                var result = new ProcessBasedCommand($"{winDir}\\sysnative\\pnputil", $"-i -a {fileName}").Execute();
+                using var cmd = BasicBooter.CommandProcedureManager.OpenCMDCommand($"{winDir}\\sysnative\\pnputil", $"-i -a {fileName}");
+                var result = cmd.Execute();
                 return result.ExitCode == 0;
             }
             catch (Exception ex)

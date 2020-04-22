@@ -27,15 +27,25 @@ namespace AutumnBox.Leafx.Enhancement.ClassTextKit
         {
             get
             {
-                var currentRegionCode = Thread.CurrentThread.CurrentCulture.Name;
-                if (translatedTexts.TryGetValue(currentRegionCode, out string value))
-                {
-                    return value;
-                }
-                else
-                {
-                    return defaultText;
-                }
+                return GetText();
+            }
+        }
+
+        /// <summary>
+        /// 获取文本
+        /// </summary>
+        /// <param name="_regionCode">指定的区域码</param>
+        /// <returns>对应区域的文本</returns>
+        public string GetText(string? _regionCode = null)
+        {
+            var regionCode = _regionCode ?? Thread.CurrentThread.CurrentCulture.Name;
+            if (translatedTexts.TryGetValue(regionCode.ToLower(), out string value))
+            {
+                return value;
+            }
+            else
+            {
+                return defaultText;
             }
         }
 
@@ -80,11 +90,6 @@ namespace AutumnBox.Leafx.Enhancement.ClassTextKit
             this.Key = key;
 
             this.translatedTexts = ReadTranslatedText(translatedTexts);
-            this.translatedTexts.All(kv =>
-            {
-                Debug.WriteLine($"{kv.Key} {kv.Value}");
-                return true;
-            });
         }
 
         /// <summary>
@@ -106,7 +111,7 @@ namespace AutumnBox.Leafx.Enhancement.ClassTextKit
                 var match = RegionTextParseEngine.Match(t);
                 if (match.Success)
                 {
-                    result.Add(match.Result("${regionCode}"), match.Result("${text}"));
+                    result.Add(match.Result("${regionCode}").ToLower(), match.Result("${text}"));
                 }
             }
             return new ReadOnlyDictionary<string, string>(result);

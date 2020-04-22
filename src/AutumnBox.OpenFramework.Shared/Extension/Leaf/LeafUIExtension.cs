@@ -57,15 +57,16 @@ namespace AutumnBox.OpenFramework.Extension.Extension.Leaf
 
         public static void AppPropertyCheck(this ILeafUI ui, IDevice device, string packageName)
         {
-            var classTextReader = ClassTextReader.GetReader(typeof(LeafUIHelper));
-#pragma warning disable CS0618 // 类型或成员已过时
-            bool isInstall = new PackageManager(device).IsInstall(packageName) == true;
-#pragma warning restore CS0618 // 类型或成员已过时
-            if (!isInstall)
-            {
-                bool? choice = ui.DoChoice(classTextReader["msg"], classTextReader["ok"], classTextReader["continue"], classTextReader["cancel"]);
-                if (choice == null || choice == true) ui.EShutdown();
-            }
+            return;
+//            var classTextReader = ClassTextReader.GetReader(typeof(LeafUIHelper));
+//#pragma warning disable CS0618 // 类型或成员已过时
+//            bool isInstall = new PackageManager(device).IsInstall(packageName) == true;
+//#pragma warning restore CS0618 // 类型或成员已过时
+//            if (!isInstall)
+//            {
+//                bool? choice = ui.DoChoice(classTextReader["msg"], classTextReader["ok"], classTextReader["continue"], classTextReader["cancel"]);
+//                if (choice == null || choice == true) ui.EShutdown();
+//            }
         }
         /// <summary>
         /// 检查设备安卓版本

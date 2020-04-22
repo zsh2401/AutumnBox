@@ -31,7 +31,7 @@ namespace AutumnBox.Basic.Device
         /// </summary>
         public bool IsAlive()
         {
-            return State == DeviceState.Fastboot || this.Adb("get-state").Item2 == 0;
+            return State == DeviceState.Fastboot || this.Adb("get-state").ExitCode == 0;
         }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace AutumnBox.Basic.Device
             try
             {
                 exeResult.ThrowIfExitCodeNotEqualsZero();
-                var stateString = exeResult.Item1.ToString().Trim();
+                var stateString = exeResult.Output.ToString().Trim();
                 State = stateString.ToDeviceState();
             }
             catch

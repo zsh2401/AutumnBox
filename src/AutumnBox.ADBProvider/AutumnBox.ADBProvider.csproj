@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>AutumnBox.ADBProvider</RootNamespace>
     <AssemblyName>AutumnBox.ADBProvider</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />
@@ -42,16 +42,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdbProviderFactory.cs" />
-    <Compile Include="Support\Win32\Win32AdbManager.cs" />
-    <Compile Include="IAdbProvider.cs" />
+    <Compile Include="Win32AdbManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Support\Win32\Win32AdbProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AutumnBox.Basic\AutumnBox.Basic.csproj">
       <Project>{5276bfb4-b089-4e34-9c42-42ea019ef320}</Project>
       <Name>AutumnBox.Basic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AutumnBox.Logging\AutumnBox.Logging.csproj">
+      <Project>{f90cb434-6ed4-4244-9d78-c8016f0856c1}</Project>
+      <Name>AutumnBox.Logging</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
