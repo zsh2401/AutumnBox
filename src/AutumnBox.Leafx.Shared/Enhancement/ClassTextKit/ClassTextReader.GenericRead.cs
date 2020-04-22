@@ -18,7 +18,7 @@ namespace AutumnBox.Leafx.Enhancement.ClassTextKit
         /// <returns></returns>
         public static string Read<T>(string key)
         {
-            return GetReader<T>()[key];
+            return GetReader<T>().Get(key);
         }
     }
 }

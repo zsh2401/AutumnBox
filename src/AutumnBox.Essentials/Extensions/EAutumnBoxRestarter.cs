@@ -6,15 +6,21 @@ using AutumnBox.OpenFramework.Open;
 namespace AutumnBox.Essentials.Extensions
 {
     [ExtHidden]
-    [ClassText("confirm", "Are you sure?", "zh-cn:确定要重启吗?")]
+    [ExtName("Reboot AutumnBox")]
+    [ClassText("confirm", "Are you sure to restart AutumnBox?", "zh-CN:确定要重启吗?")]
     class EAutumnBoxRestarter : LeafExtensionBase
     {
         [LMain]
-        public void EntryPoint(IAppManager app, IUx ux, ClassTextReader reader)
+        public void EntryPoint(INotificationManager notificationManager,
+            IAppManager appManager)
         {
-            if (ux.DoYN(reader["confirm"]))
+
+            //notificationManager.Info(appManager.CurrentLanguageCode);
+            var task = notificationManager.Ask(this.RxGetClassText("confirm"));
+            task.Wait();
+            if (task.Result)
             {
-                app.RestartAppAsAdmin();
+                appManager.RestartAppAsAdmin();
             }
         }
     }

@@ -15,9 +15,14 @@ namespace AutumnBox.Tests.Leafx
         public void DefaultTextTest()
         {
             var reader = ClassTextReader.GetReader<ClassTextTest>();
-            Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("zh-CN");
-            bool right = reader[TEST_1_KEY] == "你好！我的梦！";
-            Assert.IsTrue(right);
+
+            Assert.IsTrue(reader[TEST_1_KEY] == TEST_1_DFT_VALUE);
+            Assert.IsTrue(reader[TEST_1_KEY, "zh-CN"] == "你好！我的梦！");
+
+            Assert.IsTrue(reader.Get(TEST_1_KEY) == TEST_1_DFT_VALUE);
+            Assert.IsTrue(reader.Get(TEST_1_KEY, "zh-CN") == "你好！我的梦！");
+
+            Assert.IsTrue(reader.Get(TEST_1_KEY, "zh-cn") == "你好！我的梦！");
         }
     }
 }
