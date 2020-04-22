@@ -49,7 +49,6 @@
     <Compile Include="Extensions\EAutumnBoxRestarter.cs" />
     <Compile Include="Extensions\EAutumnBoxExtensionStore.cs" />
     <Compile Include="Extensions\EAutumnBoxUpdateChecker.cs" />
-    <Compile Include="Extensions\EExample.cs" />
     <Compile Include="EssentialsLibrarin.cs" />
     <Compile Include="Extensions\EExtensionInstaller.cs" />
     <Compile Include="Extensions\EDevPanelSwitcher.cs" />
