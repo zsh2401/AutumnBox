@@ -171,11 +171,11 @@ namespace AutumnBox.Basic
         /// <summary>
         /// 终结函数
         /// </summary>
-        ~StandardAdbManager()
-        {
-            // 请勿更改此代码。将清理代码放入以上 Dispose(bool disposing) 中。
-            Dispose(false);
-        }
+        //~StandardAdbManager()
+        //{
+        //    // 请勿更改此代码。将清理代码放入以上 Dispose(bool disposing) 中。
+        //    Dispose(false);
+        //}
 
         /// <summary>
         /// 接口实现
@@ -185,7 +185,7 @@ namespace AutumnBox.Basic
             // 请勿更改此代码。将清理代码放入以上 Dispose(bool disposing) 中。
             Dispose(true);
             // TODO: 如果在以上内容中替代了终结器，则取消注释以下行。
-            GC.SuppressFinalize(this);
+            //GC.SuppressFinalize(this);
         }
         #endregion
     }

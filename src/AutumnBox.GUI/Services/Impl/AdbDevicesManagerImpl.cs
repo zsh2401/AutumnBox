@@ -60,7 +60,7 @@ namespace AutumnBox.GUI.Services.Impl
 
         public void Initialize()
         {
-            devicesMonitor.Start();
+            //devicesMonitor.Start();
         }
 
         #region IDisposable Support
