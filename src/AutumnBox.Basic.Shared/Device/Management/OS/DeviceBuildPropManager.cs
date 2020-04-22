@@ -11,7 +11,8 @@ namespace AutumnBox.Basic.Device.Management.OS
     /// <summary>
     /// build.prop管理器
     /// </summary>
-    public sealed class DeviceBuildPropManager : DeviceCommander, Data.IReceiveOutputByTo<DeviceBuildPropManager>
+    [Obsolete("无使用,即将移除", true)]
+    public sealed class DeviceBuildPropManager : DeviceCommander
     {
         /// <summary>
         /// 获取器
@@ -28,12 +29,12 @@ namespace AutumnBox.Basic.Device.Management.OS
             }
             set
             {
-                if (_getter != null)
-                {
-                    _setter.OutputReceived -= RaiseOutput;
-                }
-                _getter = value;
-                _getter.OutputReceived += RaiseOutput;
+                //if (_getter != null)
+                //{
+                //    _setter.OutputReceived -= RaiseOutput;
+                //}
+                //_getter = value;
+                //_getter.OutputReceived += RaiseOutput;
             }
         }
         private DeviceBuildPropGetter _getter;
@@ -52,12 +53,12 @@ namespace AutumnBox.Basic.Device.Management.OS
             }
             set
             {
-                if (_setter != null)
-                {
-                    _setter.OutputReceived -= RaiseOutput;
-                }
-                _setter = value;
-                _setter.OutputReceived += RaiseOutput;
+                //if (_setter != null)
+                //{
+                //    _setter.OutputReceived -= RaiseOutput;
+                //}
+                //_setter = value;
+                //_setter.OutputReceived += RaiseOutput;
             }
         }
         private DeviceBuildPropSetter _setter;
@@ -99,7 +100,7 @@ namespace AutumnBox.Basic.Device.Management.OS
             {
                 throw new ArgumentException("message", nameof(key));
             }
-            Getter.CmdStation = this.CmdStation;
+            //Getter.CmdStation = this.CmdStation;
             return Getter.Get(key);
         }
         /// <summary>
@@ -115,18 +116,8 @@ namespace AutumnBox.Basic.Device.Management.OS
                 throw new ArgumentException("message", nameof(key));
             }
 
-            Setter.CmdStation = this.CmdStation;
+            //Setter.CmdStation = this.CmdStation;
             Setter.Set(key, value);
-        }
-        /// <summary>
-        /// 通过To模式订阅输出
-        /// </summary>
-        /// <param name="callback"></param>
-        /// <returns></returns>
-        public DeviceBuildPropManager To(Action<OutputReceivedEventArgs> callback)
-        {
-            RegisterToCallback(callback);
-            return this;
         }
     }
 }

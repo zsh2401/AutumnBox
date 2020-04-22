@@ -5,6 +5,7 @@
 ** compiler: Visual Studio 2017
 ** desc： ...
 *********************************************************************************/
+using AutumnBox.Basic.Calling;
 using AutumnBox.Basic.Data;
 using AutumnBox.Logging;
 using System;
@@ -16,7 +17,7 @@ namespace AutumnBox.Basic.Device.Management.OS
     /// <summary>
     /// 设备Build.prop信息获取器
     /// </summary>
-    public class DeviceBuildPropGetter : DeviceCommander, Data.IReceiveOutputByTo<DeviceBuildPropGetter>
+    public class DeviceBuildPropGetter : DeviceCommander
     {
         private readonly ILogger logger;
         /// <summary>
@@ -121,11 +122,8 @@ namespace AutumnBox.Basic.Device.Management.OS
         /// <returns></returns>
         public string Get(string key)
         {
-            var exeResult = CmdStation.GetShellCommand(
-                Device,
-                $"getprop {key}")
-                .To(RaiseOutput)
-                .Execute();
+            var exeResult = Executor.AdbShell(
+                Device, $"getprop {key}");
             return exeResult.ExitCode == 0 ? exeResult.Output.ToString() : null;
         }
 
@@ -160,16 +158,6 @@ namespace AutumnBox.Basic.Device.Management.OS
         public void Reload()
         {
             loaded = GetFull();
-        }
-        /// <summary>
-        /// 通过To模式订阅输出事件
-        /// </summary>
-        /// <param name="callback"></param>
-        /// <returns></returns>
-        public DeviceBuildPropGetter To(Action<OutputReceivedEventArgs> callback)
-        {
-            RegisterToCallback(callback);
-            return this;
         }
     }
 }

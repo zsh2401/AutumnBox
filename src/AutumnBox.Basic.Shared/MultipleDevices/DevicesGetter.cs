@@ -5,6 +5,7 @@
 *************************************************/
 using System.Collections.Generic;
 using System.Linq;
+using AutumnBox.Basic.Calling;
 using AutumnBox.Basic.Device;
 
 namespace AutumnBox.Basic.MultipleDevices
@@ -14,21 +15,6 @@ namespace AutumnBox.Basic.MultipleDevices
     /// </summary>
     public class DevicesGetter : IDevicesGetter
     {
-        private const string ADB_DEVICES_COMMAND = "devices";
-        private const string FSB_DEVICES_COMMAND = "devices";
-        private readonly AdbCommand adbDevices;
-        private readonly FastbootCommand fastbootDevices;
-        /// <summary>
-        /// 构造器
-        /// </summary>
-        public DevicesGetter()
-        {
-            adbDevices = new AdbCommand(ADB_DEVICES_COMMAND);
-            fastbootDevices = new FastbootCommand(FSB_DEVICES_COMMAND);
-            adbDevices.NeverCreateNewWindow = true;
-            fastbootDevices.NeverCreateNewWindow = true;
-        }
-
         /// <summary>
         /// 获取
         /// </summary>
@@ -41,9 +27,14 @@ namespace AutumnBox.Basic.MultipleDevices
             return result;
         }
 
+        /// <summary>
+        /// 获取ADB设备
+        /// </summary>
+        /// <param name="devices"></param>
         private void Adb(List<IDevice> devices)
         {
-            var lineOutput = adbDevices.Execute().Output.LineOut;
+            using var cmd = BasicBooter.CommandProcedureManager.OpenADBCommand(null, "devices");
+            var lineOutput = cmd.Execute().Output.LineOut;
             for (int i = 1; i < lineOutput.Count(); i++)
             {
                 if (DeviceBase.TryParse(lineOutput[i], out IDevice device))
@@ -53,9 +44,14 @@ namespace AutumnBox.Basic.MultipleDevices
             }
         }
 
+        /// <summary>
+        /// 获取fastboot设备
+        /// </summary>
+        /// <param name="devices"></param>
         private void Fastboot(List<IDevice> devices)
         {
-            var lineOutput = fastbootDevices.Execute().Output.LineOut;
+            using var cmd = BasicBooter.CommandProcedureManager.OpenADBCommand(null, "devices");
+            var lineOutput = cmd.Execute().Output.LineOut;
             for (int i = 0; i < lineOutput.Count(); i++)
             {
                 if (DeviceBase.TryParse(lineOutput[i], out IDevice device))

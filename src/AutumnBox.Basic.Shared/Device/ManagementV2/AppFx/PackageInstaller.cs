@@ -1,8 +1,7 @@
 ﻿using AutumnBox.Basic.Calling;
+using AutumnBox.Basic.Data;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Text;
 
 namespace AutumnBox.Basic.Device.ManagementV2.AppFx
 {
@@ -27,7 +26,7 @@ namespace AutumnBox.Basic.Device.ManagementV2.AppFx
         /// 安装位于PC机上的APK文件
         /// </summary>
         /// <returns></returns>
-        public ICommandResult Install(FileInfo packageFile,
+        public CommandResult Install(FileInfo packageFile,
             bool allowDowngrade = true)
         {
             if (packageFile == null)

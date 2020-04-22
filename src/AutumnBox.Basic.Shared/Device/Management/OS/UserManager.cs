@@ -3,6 +3,7 @@
 ** date:  2018/2/21 23:44:34 (UTC +8:00)
 ** desc： ...
 *************************************************/
+using AutumnBox.Basic.Calling;
 using AutumnBox.Basic.Data;
 using AutumnBox.Basic.Util;
 using System;
@@ -15,7 +16,7 @@ namespace AutumnBox.Basic.Device.Management.OS
     /// <summary>
     /// 用户管理器
     /// </summary>
-    public class UserManager : DeviceCommander, IReceiveOutputByTo<UserManager>
+    public class UserManager : DeviceCommander
     {
         private const string PATTERN_USER_INFO = @"UserInfo{(?<id>\d+):(?<name>.+):";
         private static readonly Regex userInfoRegex;
@@ -59,10 +60,7 @@ namespace AutumnBox.Basic.Device.Management.OS
         /// <returns>用户</returns>
         public UserInfo[] GetUsers(bool ignoreZeroUser = true)
         {
-            var executeResult = CmdStation
-                .GetShellCommand(Device, "pm list users")
-                .To(RaiseOutput)
-                .Execute()
+            var executeResult = Executor.AdbShell(Device, "pm list users")
                 .ThrowIfShellExitCodeNotEqualsZero();
             return ParseOutput(executeResult.Output, ignoreZeroUser);
         }
@@ -73,21 +71,8 @@ namespace AutumnBox.Basic.Device.Management.OS
         /// <returns></returns>
         public void RemoveUser(int uid)
         {
-            CmdStation
-               .GetShellCommand(Device, $"pm remove-user {uid}")
-               .To(RaiseOutput)
-               .Execute()
+            Executor.AdbShell(Device, $"pm remove-user {uid}")
                .ThrowIfShellExitCodeNotEqualsZero();
-        }
-        /// <summary>
-        /// To模式订阅输出内容
-        /// </summary>
-        /// <param name="callback"></param>
-        /// <returns></returns>
-        public UserManager To(Action<OutputReceivedEventArgs> callback)
-        {
-            RegisterToCallback(callback);
-            return this;
         }
     }
 }

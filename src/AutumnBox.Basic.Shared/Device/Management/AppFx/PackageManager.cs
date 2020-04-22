@@ -17,7 +17,7 @@ namespace AutumnBox.Basic.Device.Management.AppFx
     /// 包管理器实现
     /// </summary>
     [Obsolete("等待重做,请勿使用,如需相关功能,请自行实现")]
-    public class PackageManager : DeviceCommander, IReceiveOutputByTo<PackageManager>
+    public class PackageManager : DeviceCommander
     {
         /// <summary>
         /// 构造
@@ -57,7 +57,7 @@ namespace AutumnBox.Basic.Device.Management.AppFx
         /// <returns></returns>
         public IEnumerable<PackageInfo> GetPackages()
         {
-            Output result = Device.Shell($"pm list packages").Item1;
+            Output result = Device.Shell($"pm list packages").Output;
             var matches = Regex.Matches(result.ToString(), packagesPattern);
             List<PackageInfo> packages = new List<PackageInfo>();
             foreach (Match m in matches)
@@ -85,7 +85,7 @@ namespace AutumnBox.Basic.Device.Management.AppFx
         public bool IsInstall(string pkgName)
         {
             var result = Device.Shell($"pm path {pkgName}");
-            return result.Item2 == 0;
+            return result.ExitCode == 0;
         }
 
         /// <summary>
@@ -95,7 +95,7 @@ namespace AutumnBox.Basic.Device.Management.AppFx
         /// <returns></returns>
         public string Path(string pkgName)
         {
-            return Device.Shell($"pm path").Item1.ToString();
+            return Device.Shell($"pm path").Output.ToString();
         }
 
         /// <summary>
@@ -116,17 +116,6 @@ namespace AutumnBox.Basic.Device.Management.AppFx
         {
             Device.Adb($"uninstall {pkgName}")
                  .ThrowIfExitCodeNotEqualsZero();
-        }
-
-        /// <summary>
-        /// 通过To模式订阅输出
-        /// </summary>
-        /// <param name="callback"></param>
-        /// <returns></returns>
-        public PackageManager To(Action<OutputReceivedEventArgs> callback)
-        {
-            RegisterToCallback(callback);
-            return this;
         }
     }
 }
