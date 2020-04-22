@@ -102,6 +102,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Basic\CommandDriven\MyCommandProcedureManagerTest.cs" />
+    <Compile Include="Basic\Devices\DevicesTest.cs" />
     <Compile Include="Basic\Executor\HestExecutorTest.cs" />
     <Compile Include="Basic\MADB\BooterTest.cs" />
     <Compile Include="Basic\MADB\Win32ManagerTest.cs" />

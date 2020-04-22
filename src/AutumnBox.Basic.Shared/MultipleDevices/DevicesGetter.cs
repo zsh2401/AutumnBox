@@ -50,7 +50,7 @@ namespace AutumnBox.Basic.MultipleDevices
         /// <param name="devices"></param>
         private void Fastboot(List<IDevice> devices)
         {
-            using var cmd = BasicBooter.CommandProcedureManager.OpenADBCommand(null, "devices");
+            using var cmd = BasicBooter.CommandProcedureManager.OpenFastbootCommand(null, "devices");
             var lineOutput = cmd.Execute().Output.LineOut;
             for (int i = 0; i < lineOutput.Count(); i++)
             {
