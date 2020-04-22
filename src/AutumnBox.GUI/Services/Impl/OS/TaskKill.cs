@@ -1,11 +1,5 @@
 ﻿using AutumnBox.Basic.Calling;
-using AutumnBox.Basic.Calling.Cmd;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using AutumnBox.Basic.ManagedAdb.CommandDriven;
 
 namespace AutumnBox.GUI.Services.Impl.OS
 {
@@ -13,10 +7,8 @@ namespace AutumnBox.GUI.Services.Impl.OS
     {
         public static void Kill(string exeName)
         {
-            using (var executor = new CommandExecutor())
-            {
-                executor.Cmd($"taskkill /F /IM {exeName} /T");
-            }
+            using var cmd = new CommandProcedure("cmd.exe", "/c", $"taskkill /F /IM {exeName} /T");
+            cmd.Execute();
         }
     }
 }

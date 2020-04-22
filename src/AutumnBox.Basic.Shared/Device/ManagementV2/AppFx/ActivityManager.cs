@@ -1,4 +1,5 @@
-﻿using AutumnBox.Basic.Calling;
+﻿#nullable enable
+using AutumnBox.Basic.Calling;
 using AutumnBox.Basic.Data;
 using System;
 
@@ -17,7 +18,7 @@ namespace AutumnBox.Basic.Device.ManagementV2.AppFx
         /// </summary>
         /// <param name="device"></param>
         /// <param name="executor"></param>
-        public ActivityManager(IDevice device, ICommandExecutor executor)
+        public ActivityManager(IDevice device, ICommandExecutor? executor = null)
         {
             this.device = device ?? throw new ArgumentNullException(nameof(device));
             this.executor = executor ?? throw new ArgumentNullException(nameof(executor));
@@ -33,6 +34,7 @@ namespace AutumnBox.Basic.Device.ManagementV2.AppFx
         {
             return executor.AdbShell(device, $"am start {pkgName}/.{activityClassName} {intent?.ToAdbArguments()}");
         }
+
         /// <summary>
         /// 启动一个Activity
         /// </summary>
@@ -43,6 +45,7 @@ namespace AutumnBox.Basic.Device.ManagementV2.AppFx
         {
             return executor.AdbShell(device, $"am start -n {componentNameString} {intent?.ToAdbArguments()}");
         }
+
         /// <summary>
         /// 启动一个组件，例如某个activity
         /// </summary>
@@ -53,6 +56,7 @@ namespace AutumnBox.Basic.Device.ManagementV2.AppFx
         {
             return executor.AdbShell(device, $"am start -n {componentName.ToString()} {intent?.ToAdbArguments()}");
         }
+
         /// <summary>
         /// 启动一个动作
         /// </summary>
@@ -63,6 +67,7 @@ namespace AutumnBox.Basic.Device.ManagementV2.AppFx
         {
             return executor.AdbShell(device, $"am start -a {action} {intent?.ToAdbArguments()}");
         }
+
         /// <summary>
         /// 启动一个Category
         /// </summary>
@@ -73,6 +78,7 @@ namespace AutumnBox.Basic.Device.ManagementV2.AppFx
         {
             return executor.AdbShell(device, $"am start -c {category} {intent?.ToAdbArguments()}");
         }
+
         /// <summary>
         /// 强制停止某个APP
         /// adb command:adb shell am force-stop com.qihoo360.mobilesafe
@@ -83,6 +89,7 @@ namespace AutumnBox.Basic.Device.ManagementV2.AppFx
         {
             return executor.AdbShell(device, $"am force-stop {pkgName}");
         }
+
         /// <summary>
         /// 发送收紧内存的命令
         /// adb command example:adb shell am send-trim-memory 12345 RUNNING_LOW

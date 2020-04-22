@@ -19,7 +19,7 @@ namespace AutumnBox.Tests.Basic.MADB
         {
             bool cpmDisposed = false;
             bool cmdDisposed = false;
-            BasicBooter.Load<Win32AdbManager>();
+            BasicBooter.Use<Win32AdbManager>();
             BasicBooter.CommandProcedureManager.Disposed += (s, e) => cpmDisposed = true;
             using var cmd = BasicBooter.CommandProcedureManager.OpenCommand("cmd.exe");
             cmd.Disposed += (s, e) => cmdDisposed = true;

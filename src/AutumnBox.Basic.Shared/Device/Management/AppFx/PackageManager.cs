@@ -3,7 +3,6 @@
 ** date:  2018/8/31 9:41:37 (UTC +8:00)
 ** desc： ...
 *************************************************/
-using AutumnBox.Basic.Calling;
 using AutumnBox.Basic.Data;
 using AutumnBox.Basic.Util;
 using System;
@@ -16,7 +15,7 @@ namespace AutumnBox.Basic.Device.Management.AppFx
     /// <summary>
     /// 包管理器实现
     /// </summary>
-    [Obsolete("等待重做,请勿使用,如需相关功能,请自行实现")]
+    [Obsolete("等待重做,请勿使用,如需相关功能,请自行实现", true)]
     public class PackageManager : DeviceCommander
     {
         /// <summary>

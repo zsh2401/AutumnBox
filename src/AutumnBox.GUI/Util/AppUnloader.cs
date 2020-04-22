@@ -3,9 +3,8 @@
 ** date:  2018/10/30 22:46:43 (UTC +8:00)
 ** desc： ...
 *************************************************/
-using AutumnBox.Basic.ManagedAdb;
+using AutumnBox.Basic;
 using AutumnBox.GUI.Properties;
-using AutumnBox.GUI.Services;
 using AutumnBox.GUI.Services.Impl.OS;
 using AutumnBox.OpenFramework.Management;
 
@@ -36,13 +35,8 @@ namespace AutumnBox.GUI.Util
                 }
                 Settings.Default.Save();
                 try { OpenFx.Unload(); } catch { }
-                if (Adb.Server?.IsEnable == true)
-                {
-                    var server = Adb.Server;
-                    Adb.Load(null);
-                    server.Kill();
-                    TaskKill.Kill("adb.exe");
-                }
+                BasicBooter.Free();
+                //TaskKill.Kill("adb.exe");
             }
             catch { }
         }

@@ -3,9 +3,7 @@
 ** date:  2018/8/31 9:39:08 (UTC +8:00)
 ** desc： ...
 *************************************************/
-using System;
 using AutumnBox.Basic.Calling;
-using AutumnBox.Basic.Data;
 using AutumnBox.Basic.Util;
 
 namespace AutumnBox.Basic.Device.Management.AppFx

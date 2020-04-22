@@ -12,7 +12,7 @@ namespace AutumnBox.Tests.Basic.MADB
         [TestMethod]
         public void LoadManager()
         {
-            BasicBooter.Load<Win32AdbManager>();
+            BasicBooter.Use<Win32AdbManager>();
 
             using var cpm = BasicBooter.CommandProcedureManager;
             using var cmd = cpm.OpenCommand("adb", "devices");

@@ -1,11 +1,12 @@
-﻿using AutumnBox.Basic.Calling.Adb;
-using AutumnBox.OpenFramework.Management;
+﻿using AutumnBox.OpenFramework.Management;
 using AutumnBox.OpenFramework.Management.ExtLibrary.Impl;
 using System;
 using System.Linq;
 using AutumnBox.Leafx.Container;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using AutumnBox.Basic;
+using AutumnBox.Basic.Calling;
 
 namespace AutumnBox.GUI.Util
 {
@@ -46,7 +47,8 @@ namespace AutumnBox.GUI.Util
 
         private static string GetAdbVersion()
         {
-            string versionOutput = new AdbCommand("version").Execute().Output;
+            using var cmd = BasicBooter.CommandProcedureManager.OpenADBCommand(null, "version");
+            string versionOutput = cmd.Execute().Output;
             var match = Regex.Match(versionOutput, @"[\w|\s]*[version\s](?<name>[\d|\.]+)([\r\n|\n]*)Version\s(?<code>\d+)", RegexOptions.Multiline);
             if (match.Success)
             {
@@ -71,7 +73,7 @@ namespace AutumnBox.GUI.Util
 
         static VersionInfos()
         {
-            Basic = typeof(Basic.ManagedAdb.LocalAdbServer).Assembly.GetName().Version;
+            Basic = typeof(BasicBooter).Assembly.GetName().Version;
             GUI = Self.Version;
             OpenFx = typeof(OpenFramework.BuildInfo).Assembly.GetName().Version;
             Logging = typeof(Logging.SLogger).Assembly.GetName().Version;

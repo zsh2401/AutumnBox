@@ -29,7 +29,7 @@ namespace AutumnBox.OpenFramework.Extension.Leaf
 #if !DEBUG
             if (lake == null)
             {
-                throw new InvalidOperationException("Lake has not been inject!");
+                throw new System.InvalidOperationException("Lake has not been inject!");
             }
 #endif
             var methodProxy = new MethodProxy(this, this.FindEntryPoint(), lake, GetSepLake());

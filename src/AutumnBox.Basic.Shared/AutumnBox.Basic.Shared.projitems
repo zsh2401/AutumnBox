@@ -59,7 +59,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Device\ManagementV2\OS\UserInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Device\ManagementV2\OS\UserManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Device\ManagementV2\OS\WindowManager.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Device\Management\AppFx\ActivityManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Device\Management\AppFx\BroadcastSender.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Device\Management\AppFx\ComponentName.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Device\Management\AppFx\DevicePolicyManager.cs" />
@@ -71,11 +70,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Device\Management\AppFx\PackageManagerInstallOption.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Device\Management\AppFx\ServiceManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Device\Management\AppFx\TrimMemoryLevel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Device\Management\Flash\DeviceImage.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Device\Management\Flash\DeviceImageFinder.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Device\Management\Flash\FastbootDeviceInfoGetter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Device\Management\Hardware\DeviceHardwareInfo.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Device\Management\Hardware\DeviceHardwareInfoGetter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Device\Management\OS\AndroidKeyCode.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Device\Management\OS\BuildPropKeys.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Device\Management\OS\DeviceBuildPropGetter.cs" />

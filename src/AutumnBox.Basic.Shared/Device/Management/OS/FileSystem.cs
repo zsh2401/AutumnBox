@@ -3,6 +3,7 @@
 ** date:  2018/8/31 9:46:08 (UTC +8:00)
 ** desc： ...
 *************************************************/
+using AutumnBox.Basic.Calling;
 using AutumnBox.Basic.Data;
 using AutumnBox.Basic.Util;
 
@@ -28,40 +29,34 @@ namespace AutumnBox.Basic.Device.Management.OS
         /// <returns></returns>
         public string Cat(string file)
         {
-            var result = CmdStation.GetShellCommand(Device, "cat " + file)
-                .To(RaiseOutput)
-                .Execute()
-                .ThrowIfShellExitCodeNotEqualsZero();
-            return result.Output.ToString();
+            return Executor.AdbShell(Device, "cat " + file)
+                   .ThrowIfShellExitCodeNotEqualsZero().Output.ToString();
         }
+
         /// <summary>
         /// 复制文件
         /// </summary>
         /// <param name="src"></param>
         /// <param name="target"></param>
         /// <param name="isDir"></param>
-
         public void Copy(string src, string target, bool isDir)
         {
-            var command = isDir ?
-                CmdStation.GetShellCommand(Device, $"cp -r {src} {target}")
-                : CmdStation.GetShellCommand(Device, $"cp {src} {target}");
-            command.To(RaiseOutput)
-                .Execute()
+            (isDir ?
+                Executor.AdbShell(Device, $"cp -r {src} {target}")
+                : Executor.AdbShell(Device, $"cp {src} {target}"))
                 .ThrowIfShellExitCodeNotEqualsZero();
         }
+
         /// <summary>
         /// 删除文件
         /// </summary>
         /// <param name="file"></param>
         public void Delete(string file)
         {
-            var result = CmdStation
-                .GetShellCommand(Device, $"rm -rf {file}")
-                .To(RaiseOutput)
-                .Execute()
-                .ThrowIfShellExitCodeNotEqualsZero();
+            Executor.AdbShell(Device, $"rm -rf {file}")
+                 .ThrowIfShellExitCodeNotEqualsZero();
         }
+
         /// <summary>
         /// 调用find命令寻找文件
         /// </summary>
@@ -69,25 +64,21 @@ namespace AutumnBox.Basic.Device.Management.OS
         /// <returns></returns>
         public Output Find(string name)
         {
-            var result = CmdStation
-                .GetShellCommand(Device, $"find {name}")
-                .To(RaiseOutput)
-                .Execute()
-                .ThrowIfShellExitCodeNotEqualsZero();
-            return result.Output;
+            return Executor
+                 .AdbShell(Device, $"find {name}")
+                 .ThrowIfShellExitCodeNotEqualsZero().Output;
         }
+
         /// <summary>
         /// 创建文件夹
         /// </summary>
         /// <param name="file"></param>
         public void Mkdir(string file)
         {
-            var result = CmdStation
-                .GetShellCommand(Device, $"mkdir {file}")
-                .To(RaiseOutput)
-                .Execute()
+            Executor.AdbShell(Device, $"mkdir {file}")
                 .ThrowIfShellExitCodeNotEqualsZero();
         }
+
         /// <summary>
         /// 移动文件
         /// </summary>
@@ -96,11 +87,9 @@ namespace AutumnBox.Basic.Device.Management.OS
         /// <param name="isDir"></param>
         public void Move(string src, string target, bool isDir)
         {
-            var command = isDir ?
-                CmdStation.GetShellCommand(Device, $"mv -r {src} {target}")
-                : CmdStation.GetShellCommand(Device, $"mv {src} {target}");
-            command.To(RaiseOutput)
-                .Execute()
+            (isDir ?
+                Executor.AdbShell(Device, $"mv -r {src} {target}")
+                : Executor.AdbShell(Device, $"mv {src} {target}"))
                 .ThrowIfShellExitCodeNotEqualsZero();
         }
     }

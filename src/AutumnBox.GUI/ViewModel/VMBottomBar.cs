@@ -1,16 +1,13 @@
-﻿using AutumnBox.Basic.Calling.Adb;
-using AutumnBox.GUI.MVVM;
+﻿using AutumnBox.GUI.MVVM;
 using AutumnBox.GUI.Util;
-
-using AutumnBox.OpenFramework.Open;
 using System.Linq;
-using AutumnBox.Leafx.Container;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using AutumnBox.Leafx.ObjectManagement;
 using AutumnBox.GUI.Services;
 using AutumnBox.OpenFramework.Management.ExtTask;
+using AutumnBox.Basic;
 
 namespace AutumnBox.GUI.ViewModel
 {
@@ -75,7 +72,7 @@ namespace AutumnBox.GUI.ViewModel
         public VMBottomBar()
         {
             if (IsDesignMode()) return;
-            Port = Basic.ManagedAdb.Adb.Server.Port;
+            Port = (ushort)BasicBooter.ServerEndPoint.Port;
             devicesManager.ConnectedDevicesChanged += (s, e) =>
             {
                 CountOfDevices = e.Devices?.Count() ?? 0;
@@ -94,7 +91,8 @@ namespace AutumnBox.GUI.ViewModel
 
         private void GetAdbVersion()
         {
-            string versionOutput = new AdbCommand("version").Execute().Output;
+            using var cmd = BasicBooter.CommandProcedureManager.OpenCommand("version");
+            string versionOutput = cmd.Execute().Output;
             var match = Regex.Match(versionOutput, @"[\w|\s]*[version\s](?<name>[\d|\.]+)([\r\n|\n]*)Version\s(?<code>\d+)", RegexOptions.Multiline);
             if (match.Success)
             {

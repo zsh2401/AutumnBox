@@ -10,7 +10,7 @@ namespace AutumnBox.Basic.Device
     /// <summary>
     /// 只要是向设备发出命令实现功能的类，理应该实现此类
     /// </summary>
-    public abstract class DeviceCommander : IDisposable, INotifyOutput
+    public abstract class DeviceCommander : IDisposable, INotifyOutput, INotifyDisposed
     {
         /// <summary>
         /// 接收到输出
@@ -52,6 +52,11 @@ namespace AutumnBox.Basic.Device
         private bool disposedValue = false; // 要检测冗余调用
 
         /// <summary>
+        /// 对象被释放后
+        /// </summary>
+        public event EventHandler? Disposed;
+
+        /// <summary>
         /// 可继承的释放函数
         /// </summary>
         /// <param name="disposing"></param>
@@ -68,6 +73,7 @@ namespace AutumnBox.Basic.Device
                 // TODO: 将大型字段设置为 null。
 
                 disposedValue = true;
+                Disposed?.Invoke(this, new EventArgs());
             }
         }
 

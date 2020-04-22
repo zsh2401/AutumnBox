@@ -1,10 +1,8 @@
 ﻿#nullable enable
-using AutumnBox.Basic.ManagedAdb;
 using AutumnBox.Basic.ManagedAdb.CommandDriven;
 using AutumnBox.Logging;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Net;
 
@@ -18,7 +16,7 @@ namespace AutumnBox.Basic
         /// <summary>
         /// 内部维护尚未被析构的CPM
         /// </summary>
-        protected HashSet<ICommandProcedureManager>? NotDisposedCpmSet;
+        protected HashSet<ICommandProcedureManager>? NotDisposedCpmSet { get; set; }
 
         /// <summary>
         /// ADB客户端文件夹
@@ -52,7 +50,7 @@ namespace AutumnBox.Basic
             }
         }
 
-        private readonly object _lock = new object();
+        private readonly object concurrentLock = new object();
 
         /// <summary>
         /// 构建标准ADB管理器
@@ -63,7 +61,7 @@ namespace AutumnBox.Basic
             AdbClientDirectory = InitializeClientFiles();
             var oldEnvPath = Environment.GetEnvironmentVariable("PATH");
             Environment.SetEnvironmentVariable("PATH", $"{AdbClientDirectory};{oldEnvPath}");
-            ServerEndPoint = InitializeServer();
+            ServerEndPoint = StartServer();
             Environment.SetEnvironmentVariable("ANDROID_ADB_SERVER_PORT", ServerEndPoint.Port.ToString());
         }
 
@@ -77,17 +75,24 @@ namespace AutumnBox.Basic
         /// 初始化服务器
         /// </summary>
         /// <returns></returns>
-        protected abstract IPEndPoint InitializeServer();
+        protected abstract IPEndPoint StartServer();
 
         /// <summary>
         /// 杀死服务器
         /// </summary>
         protected virtual void KillServer()
         {
-            lock (_lock)
+            lock (concurrentLock)
             {
-                using var cmd = new CommandProcedure("adb.exe", $"-P{ServerEndPoint.Port} kill-server");
+                using var cmd = new CommandProcedure(AdbExecutableFile.ToString(), $"-P{ServerEndPoint.Port} kill-server");
+                int line = 0;
+                cmd.OutputReceived += (s, e) =>
+                {
+                    line++;
+                    SLogger.Info(this, $"killing adb server {line}:{e.Text}");
+                };
                 cmd.Execute();
+                SLogger.Info(this, "server killed");
             }
         }
 
@@ -95,16 +100,19 @@ namespace AutumnBox.Basic
         /// 打开一个新的CPM
         /// </summary>
         /// <returns></returns>
-        public virtual ICommandProcedureManager OpenCommandProcedureManager()
+        public ICommandProcedureManager OpenCommandProcedureManager()
         {
-            if (disposedValue)
+            lock (concurrentLock)
             {
-                throw new ObjectDisposedException(nameof(StandardAdbManager));
+                if (disposedValue)
+                {
+                    throw new ObjectDisposedException(nameof(StandardAdbManager));
+                }
+                var cpm = new ProcedureManager(AdbClientDirectory, (ushort)ServerEndPoint.Port);
+                NotDisposedCpmSet?.Add(cpm);
+                cpm.Disposed += Cpm_Disposed;
+                return cpm;
             }
-            var cpm = new ProcedureManager(AdbClientDirectory, (ushort)ServerEndPoint.Port);
-            NotDisposedCpmSet?.Add(cpm);
-            cpm.Disposed += Cpm_Disposed;
-            return cpm;
         }
 
         /// <summary>
@@ -177,7 +185,7 @@ namespace AutumnBox.Basic
             // 请勿更改此代码。将清理代码放入以上 Dispose(bool disposing) 中。
             Dispose(true);
             // TODO: 如果在以上内容中替代了终结器，则取消注释以下行。
-            // GC.SuppressFinalize(this);
+            GC.SuppressFinalize(this);
         }
         #endregion
     }

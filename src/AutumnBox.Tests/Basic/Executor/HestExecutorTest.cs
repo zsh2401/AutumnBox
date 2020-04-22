@@ -16,7 +16,7 @@ namespace AutumnBox.Tests.Basic.Executor
     {
         public HestExecutorTest()
         {
-            BasicBooter.Load<Win32AdbManager>();
+            BasicBooter.Use<Win32AdbManager>();
         }
         ~HestExecutorTest()
         {

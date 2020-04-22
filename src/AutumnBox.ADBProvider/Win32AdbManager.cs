@@ -21,7 +21,7 @@ namespace AutumnBox.ADBProvider
             return toolsDir;
         }
 
-        protected override IPEndPoint InitializeServer()
+        protected override IPEndPoint StartServer()
         {
             var random = new Random();
             ushort port;
@@ -30,8 +30,7 @@ namespace AutumnBox.ADBProvider
                 port = (ushort)random.Next(IPEndPoint.MinPort, IPEndPoint.MaxPort);
             } while (PortIsUsinngNow(port));
             using (var cmd =
-                new CommandProcedure("adb.exe", port,
-                this.AdbClientDirectory, $"-P{port} start-server"))
+                new CommandProcedure("adb.exe", $"-P{port} start-server"))
             {
                 cmd.KillChildWhenDisposing = false;
                 cmd.OutputReceived += (s, e) =>
@@ -42,21 +41,6 @@ namespace AutumnBox.ADBProvider
                 cmd.Execute();
             }
             return new IPEndPoint(IPAddress.Parse("127.0.0.1"), port);
-        }
-
-        protected override void KillServer()
-        {
-            using (var cmd = new CommandProcedure("adb.exe",
-                (ushort)ServerEndPoint.Port, AdbClientDirectory,
-                $"-P{ServerEndPoint.Port}",
-                " kill-server"))
-            {
-                cmd.OutputReceived += (s, e) =>
-                {
-                    SLogger<Win32AdbManager>.Info($"adb server stopping: {e.Text}");
-                };
-                cmd.Execute();
-            }
         }
 
         private bool PortIsUsinngNow(ushort port)

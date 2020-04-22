@@ -1,4 +1,5 @@
 ﻿using AutumnBox.ADBProvider;
+using AutumnBox.Basic;
 using AutumnBox.Basic.ManagedAdb;
 using AutumnBox.Basic.Util;
 using AutumnBox.GUI.Services;
@@ -90,10 +91,8 @@ namespace AutumnBox.GUI.Util.Loader
                 Logger.Info("killing other adb processes");
                 operatingSystemService.KillProcess("adb.exe");
                 Logger.Info("autumnbox-adb-server is starting");
-                var adbManager = AdbProviderFactory.Get(true).AdbManager;
-                Adb.Load(adbManager);
-                Adb.Server.Start();
-                Logger.Info($"autumnbox-adb-server is started at {Adb.Server.IP}:{Adb.Server.Port}");
+                BasicBooter.Use<Win32AdbManager>();
+                Logger.Info($"autumnbox-adb-server is started at {BasicBooter.ServerEndPoint}");
             }
             catch (Exception e)
             {
