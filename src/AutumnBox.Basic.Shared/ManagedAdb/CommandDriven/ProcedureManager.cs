@@ -51,7 +51,7 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
             {
                 var commandProcedure = new CommandProcedure(commandName, args);
                 commandProcedure.Disposed += CommandProcedure_Disposed;
-                notDisposeds!.Add(commandProcedure);
+                notDisposeds?.Add(commandProcedure);
                 return commandProcedure;
             }
         }
