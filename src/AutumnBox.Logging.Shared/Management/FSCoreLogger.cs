@@ -55,6 +55,7 @@ namespace AutumnBox.Logging.Management
                             {
                                 sw.WriteLine(log.ToFormatedString());
                             }
+                            Thread.Sleep(100);
                         }
                     }
                 }

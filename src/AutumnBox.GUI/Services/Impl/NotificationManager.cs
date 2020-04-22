@@ -11,7 +11,7 @@ namespace AutumnBox.GUI.Services.Impl
     [Component(Type = typeof(INotificationManager))]
     sealed class NotificationManager : INotificationManager
     {
-        private const int STATE_CHECK_INTERVAL = 200;
+        private const int STATE_CHECK_INTERVAL = 300;
 
         public string Token { get; set; }
 

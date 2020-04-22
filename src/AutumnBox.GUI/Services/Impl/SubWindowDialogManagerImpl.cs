@@ -8,7 +8,7 @@ namespace AutumnBox.GUI.Services.Impl
     [Component(Type = typeof(ISubWindowDialogManager))]
     class SubWindowDialogManagerImpl : ISubWindowDialogManager
     {
-        private const int STATE_CHECK_INTERVAL = 100;
+        private const int STATE_CHECK_INTERVAL = 200;
         public Task<object> ShowDialog(string token, ISubWindowDialog dialog)
         {
             var hDialog = App.Current.Dispatcher.Invoke(() =>
