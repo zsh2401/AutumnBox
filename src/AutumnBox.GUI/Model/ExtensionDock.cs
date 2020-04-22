@@ -88,14 +88,14 @@ namespace AutumnBox.GUI.Model
 
         private void SelectedDevice(object sender, EventArgs e)
         {
+            bool isNM = ExtensionInfo.RequiredDeviceState() == AutumnBoxExtension.NoMatter;
             if (devicesManager.SelectedDevice == null)
             {
-                bool isNM = ExtensionInfo.RequiredDeviceState() == AutumnBoxExtension.NoMatter;
                 Execute.CanExecuteProp = isNM;
             }
             else
             {
-                Execute.CanExecuteProp = ExtensionInfo.RequiredDeviceState().HasFlag(devicesManager.SelectedDevice.State);
+                Execute.CanExecuteProp = isNM || ExtensionInfo.RequiredDeviceState().HasFlag(devicesManager.SelectedDevice.State);
             }
         }
 
