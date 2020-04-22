@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("zsh2401")]
 [assembly: AssemblyProduct("AutumnBox.OpenFramework")]
-[assembly: AssemblyCopyright("Copyright ©zsh2401  2020")]
+[assembly: AssemblyCopyright("Copyright ©zsh2401  2018-2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -32,6 +32,6 @@ using System.Runtime.InteropServices;
 // 可以指定所有值，也可以使用以下所示的 "*" 预置版本号和修订号
 //通过使用 "*"，如下所示:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("11.1.0")]
-[assembly: AssemblyFileVersion("11.1.0")]
-[assembly: AssemblyInformationalVersion("11.1.0")]
+[assembly: AssemblyVersion("11.1.2")]
+[assembly: AssemblyFileVersion("11.1.2")]
+[assembly: AssemblyInformationalVersion("11.1.2")]

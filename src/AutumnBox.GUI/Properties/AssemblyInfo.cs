@@ -24,7 +24,7 @@ using System.Windows;
 #endif
 [assembly: AssemblyCompany("zsh2401")]
 [assembly: AssemblyProduct("AutumnBox")]
-[assembly: AssemblyCopyright("Copyright © 2017 - 2019 zsh2401,All Rights Reserved")]
+[assembly: AssemblyCopyright("Copyright © 2017 - 2020 zsh2401,All Rights Reserved")]
 [assembly: AssemblyTrademark("AutumnBox")]
 [assembly: AssemblyCulture("")]
 [assembly: ComVisible(false)]
@@ -32,6 +32,6 @@ using System.Windows;
     ResourceDictionaryLocation.None, //主题特定资源词典所处位置
     ResourceDictionaryLocation.SourceAssembly //常规资源词典所处位置
 )]
-[assembly: AssemblyVersion("2020.4.22")]
-[assembly: AssemblyFileVersion("2020.4.22")]
+[assembly: AssemblyVersion("2020.4.23")]
+[assembly: AssemblyFileVersion("2020.4.23")]
 [assembly: NeutralResourcesLanguage("")]
