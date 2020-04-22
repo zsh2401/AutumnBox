@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace AutumnBox.Basic.ManagedAdb.CommandDriven
+namespace AutumnBox.Basic.Data
 {
     /// <summary>
     /// 可通知其释放完成

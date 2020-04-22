@@ -23,6 +23,16 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
         DirectoryInfo AdbClientDirectory { get; }
 
         /// <summary>
+        /// ADB可执行文件
+        /// </summary>
+        FileInfo AdbExecutableFile { get; }
+
+        /// <summary>
+        /// fastboot可执行文件
+        /// </summary>
+        FileInfo FastbootExecutableFile { get; }
+
+        /// <summary>
         /// 获取ADB服务地址
         /// </summary>
         IPEndPoint ServerEndPoint { get; }

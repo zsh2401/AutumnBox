@@ -1,4 +1,5 @@
 ﻿#nullable enable
+using AutumnBox.Basic.Data;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,7 +9,7 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
     /// <summary>
     /// 命令驱动器
     /// </summary>
-    public interface ICommandProcedureManager : IDisposable,INotifyDisposed
+    public interface ICommandProcedureManager : IDisposable, INotifyDisposed
     {
         /// <summary>
         /// 指示是否被释放

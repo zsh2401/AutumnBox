@@ -16,13 +16,14 @@
     <Compile Include="$(MSBuildThisFileDirectory)Calling\HestExecutor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Calling\ICommandExecutor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Calling\CommandResultExtension.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MultipleDevices\DevicesCollection.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Util\ProcessExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\CommandResult.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\INotifyOutput.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\Output.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\OutputBuilder.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\OutputReceivedEvent.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ManagedAdb\CommandDriven\INotifyDisposed.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\INotifyDisposed.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ManagedAdb\SocketDriven\Future.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)StandardAdbManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Device\DeviceBase.cs" />

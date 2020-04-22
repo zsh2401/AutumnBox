@@ -30,6 +30,28 @@ namespace AutumnBox.Basic
         /// </summary>
         public IPEndPoint ServerEndPoint { get; }
 
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        public virtual FileInfo AdbExecutableFile
+        {
+            get
+            {
+                return new FileInfo(Path.Combine(AdbClientDirectory.FullName, "adb.exe"));
+            }
+        }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        public virtual FileInfo FastbootExecutableFile
+        {
+            get
+            {
+                return new FileInfo(Path.Combine(AdbClientDirectory.FullName, "fastboot.exe"));
+            }
+        }
+
         private readonly object _lock = new object();
 
         /// <summary>
@@ -64,7 +86,7 @@ namespace AutumnBox.Basic
         {
             lock (_lock)
             {
-                using var cmd = new CommandProcedure("adb.exe", (ushort)ServerEndPoint.Port, AdbClientDirectory, $"-P{ServerEndPoint.Port} kill-server");
+                using var cmd = new CommandProcedure("adb.exe", $"-P{ServerEndPoint.Port} kill-server");
                 cmd.Execute();
             }
         }
@@ -80,7 +102,7 @@ namespace AutumnBox.Basic
                 throw new ObjectDisposedException(nameof(StandardAdbManager));
             }
             var cpm = new ProcedureManager(AdbClientDirectory, (ushort)ServerEndPoint.Port);
-            NotDisposedCpmSet.Add(cpm);
+            NotDisposedCpmSet?.Add(cpm);
             cpm.Disposed += Cpm_Disposed;
             return cpm;
         }
