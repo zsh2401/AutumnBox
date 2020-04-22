@@ -8,11 +8,10 @@ namespace AutumnBox.GUI.Util.Loader
 {
     class AppLoaderFailedEventArgs : EventArgs
     {
-        public AppLoaderFailedEventArgs(Exception e)
+        public AppLoaderFailedEventArgs(AppLoadingException e)
         {
             Exception = e;
         }
-
-        public Exception Exception { get; }
+        public AppLoadingException Exception { get; }
     }
 }

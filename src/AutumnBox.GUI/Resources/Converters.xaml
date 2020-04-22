@@ -5,6 +5,7 @@
     <converters:EndPointConverter x:Key="EndPointConverter"/>
     <converters:NonBoolConverter x:Key="NonBoolConverter"/>
     <converters:VisibleIf x:Key="VisibleIfConverter"/>
+    <converters:VisibleIfNot x:Key="VisibleIfNotConverter"/>
     <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
     <converters:ObjectEqualsToVisibilityConverter x:Key="ObjectEqualsToVisibilityConverter"></converters:ObjectEqualsToVisibilityConverter>
     <converters:BoolToVisibilityConverterParameter x:Key="VisibleIf_IsTrue">VisibleIf_IsTrue</converters:BoolToVisibilityConverterParameter>

@@ -212,6 +212,7 @@
     <Compile Include="Services\IWindowManager.cs" />
     <Compile Include="Util\Loader\AbstractAppLoader.cs" />
     <Compile Include="Util\Loader\AppLoaderFailedEventArgs.cs" />
+    <Compile Include="Util\Loader\AppLoadingException.cs" />
     <Compile Include="Util\Loader\GeneralAppLoader.cs" />
     <Compile Include="Util\Loader\StepAttribute.cs" />
     <Compile Include="Util\Loader\StepFinishedEventArgs.cs" />
@@ -260,6 +261,7 @@
     <Compile Include="ViewModel\VMLeafCards.cs" />
     <Compile Include="ViewModel\VMPanelMain.cs" />
     <Compile Include="ViewModel\VMSettingsDialog.cs" />
+    <Compile Include="ViewModel\VMStartup.cs" />
     <Compile Include="ViewModel\VMUpdateLogs.cs" />
     <Compile Include="View\Controls\DeviceSelector.xaml.cs">
       <DependentUpon>DeviceSelector.xaml</DependentUpon>

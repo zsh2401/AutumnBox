@@ -1,18 +1,14 @@
 ﻿using AutumnBox.ADBProvider;
 using AutumnBox.Basic;
-using AutumnBox.Basic.ManagedAdb;
 using AutumnBox.Basic.Util;
 using AutumnBox.GUI.Services;
 using AutumnBox.GUI.View.Controls;
 using AutumnBox.GUI.View.Windows;
-using AutumnBox.Leafx.ObjectManagement;
 using AutumnBox.Logging;
-using AutumnBox.Logging.Management;
 using AutumnBox.OpenFramework;
 using HandyControl.Data;
 using HandyControl.Tools;
 using System;
-using System.Diagnostics;
 using System.Linq;
 using System.Management;
 
@@ -97,14 +93,7 @@ namespace AutumnBox.GUI.Util.Loader
             catch (Exception e)
             {
                 Logger.Warn("there's some error happened while starting autumnbox-adb-server", e);
-                App.Current.Dispatcher.Invoke(() =>
-                {
-                    new AdbFailedWindow(e.Message)
-                    {
-                        Owner = App.Current.MainWindow
-                    }.ShowDialog();
-                });
-                OnError("Can't start adb server&client", e);
+                throw e;
             }
         }
 

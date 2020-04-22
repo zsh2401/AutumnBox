@@ -1,9 +1,11 @@
-﻿using AutumnBox.Leafx.ObjectManagement;
+﻿using AutumnBox.Leafx.Enhancement.ClassTextKit;
+using AutumnBox.Leafx.ObjectManagement;
 using AutumnBox.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -54,7 +56,7 @@ namespace AutumnBox.GUI.Util.Loader
                 }
                 catch (Exception e)
                 {
-                    OnError("Uncaught error", e);
+                    OnError("Uncaught error", new AppLoadingException(stepMethods.ElementAt(i).Name, e));
                     return;
                 }
             }
@@ -62,15 +64,14 @@ namespace AutumnBox.GUI.Util.Loader
             Succeced?.Invoke(this, new EventArgs());
         }
 
-        protected virtual void OnError(string msg, Exception e)
+        protected virtual void OnError(string msg, AppLoadingException e)
         {
-            Logger.Warn($"Can't load application: {msg}", e);
+            Logger.Warn($"can't load application: {msg}");
+            Logger.Warn($"message: {e.InnerException}");
+            Logger.Warn($"source: {e.InnerException.Source}");
+            Logger.Warn($"stack_trace: {e.InnerException.StackTrace}");
+            Thread.Sleep(200);//至少等待日志被写入到文件中
             Failed?.Invoke(this, new AppLoaderFailedEventArgs(e));
-            App.Current.Dispatcher.Invoke(() =>
-            {
-                MessageBox.Show(e.ToString(), "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
-                App.Current.Shutdown(1);
-            });
         }
     }
 }
