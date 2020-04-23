@@ -53,6 +53,7 @@ namespace AutumnBox.Basic.MultipleDevices
             }
             Task.Run(() =>
             {
+                Thread.CurrentThread.Name = "Device Monitor Loop Thread";
                 tokenSource = new CancellationTokenSource();
                 isStarted = true;
                 try

@@ -58,7 +58,12 @@ namespace AutumnBox.Basic.Calling
         /// <returns></returns>
         public static ICommandProcedure OpenCMDCommand(this ICommandProcedureManager cpm, params string[] args)
         {
-            return cpm.OpenCommand("cmd.exe", "/c", string.Join(" ", args));
+#if CROSS_PLATFORM
+            string fileName = System.Environment.OSVersion.Platform == System.PlatformID.Win32NT ? "cmd.exe" : "/bin/bash";
+#else
+            string fileName = "cmd.exe";
+#endif
+            return cpm.OpenCommand(fileName, "/c", string.Join(" ", args));
         }
     }
 }

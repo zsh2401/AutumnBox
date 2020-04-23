@@ -55,7 +55,14 @@ namespace AutumnBox.Logging.Management
                         {
                             if (safeLogQueue.Any() && safeLogQueue.TryDequeue(out ILog log))
                             {
-                                Logs.Add(log);
+                                try
+                                {
+                                    Logs.Add(log);
+                                }
+                                catch { }
+#if !DEBUG
+                                Console.WriteLine(log.ToFormatedString());
+#endif
                                 sw.WriteLine(log.ToFormatedString());
                             }
                             Thread.Sleep(10);
@@ -72,7 +79,9 @@ namespace AutumnBox.Logging.Management
         public void Log(ILog log)
         {
             safeLogQueue.Enqueue(log);
+#if DEBUG
             Console.WriteLine(log.ToFormatedString());
+#endif
         }
 
         /// <summary>

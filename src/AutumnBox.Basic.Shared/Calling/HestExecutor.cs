@@ -1,5 +1,6 @@
 ﻿#nullable enable
 using System;
+using System.Threading;
 using System.Threading.Tasks;
 using AutumnBox.Basic.Data;
 using AutumnBox.Basic.ManagedAdb.CommandDriven;
@@ -51,7 +52,7 @@ namespace AutumnBox.Basic.Calling
         {
             lock (_executingLock)
             {
-                if (isDisposed) throw new ObjectDisposedException(nameof(HestExecutor));
+                if (disposedValue) throw new ObjectDisposedException(nameof(HestExecutor));
 
                 //记录开始时间
                 DateTime start = DateTime.Now;
@@ -85,7 +86,11 @@ namespace AutumnBox.Basic.Calling
         /// <returns></returns>
         public Task<CommandResult> ExecuteAsync(string fileName, string args)
         {
-            return Task.Run(() => Execute(fileName, args));
+            return Task.Run(() =>
+            {
+                Thread.CurrentThread.Name = $"Hest Executor Async Thread : {fileName} {args}";
+                return Execute(fileName, args);
+            });
         }
 
         /// <summary>
@@ -99,27 +104,81 @@ namespace AutumnBox.Basic.Calling
         }
 
         /// <summary>
-        /// 是否已析构的依据
-        /// </summary>
-        private bool isDisposed = false;
-
-        /// <summary>
-        /// 析构本执行器
-        /// </summary>
-        public void Dispose()
-        {
-            isDisposed = true;
-            CancelCurrent();
-            try { Disposed?.Invoke(this, new EventArgs()); } catch { }
-        }
-
-        /// <summary>
-        /// 取消当前执行的任务
+        /// 取消当前任务
         /// </summary>
         public void CancelCurrent()
         {
             commandProcedure?.Dispose();
         }
+
+        #region IDisposable Support
+        private bool disposedValue = false; // 要检测冗余调用
+
+        /// <summary>
+        /// 可继承的释放函数
+        /// </summary>
+        /// <param name="disposing"></param>
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    commandProcedure?.Dispose();
+                    // TODO: 释放托管状态(托管对象)。
+                }
+
+                // TODO: 释放未托管的资源(未托管的对象)并在以下内容中替代终结器。
+                // TODO: 将大型字段设置为 null。
+                commandProcedure = null;
+                disposedValue = true;
+                Disposed?.Invoke(this, new EventArgs());
+            }
+        }
+
+        /// <summary>
+        /// 终结器
+        /// </summary>
+        ~HestExecutor()
+        {
+            // 请勿更改此代码。将清理代码放入以上 Dispose(bool disposing) 中。
+            Dispose(false);
+        }
+
+        /// <summary>
+        /// 释放函数
+        /// </summary>
+        public void Dispose()
+        {
+            // 请勿更改此代码。将清理代码放入以上 Dispose(bool disposing) 中。
+            Dispose(true);
+            // TODO: 如果在以上内容中替代了终结器，则取消注释以下行。
+            GC.SuppressFinalize(this);
+        }
+        #endregion
+
+        ///// <summary>
+        ///// 是否已析构的依据
+        ///// </summary>
+        //private bool isDisposed = false;
+
+        ///// <summary>
+        ///// 析构本执行器
+        ///// </summary>
+        //public void Dispose()
+        //{
+        //    isDisposed = true;
+        //    CancelCurrent();
+        //    try { Disposed?.Invoke(this, new EventArgs()); } catch { }
+        //}
+
+        ///// <summary>
+        ///// 取消当前执行的任务
+        ///// </summary>
+        //public void CancelCurrent()
+        //{
+        //    commandProcedure?.Dispose();
+        //}
 
     }
 }
