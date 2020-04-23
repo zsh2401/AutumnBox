@@ -5,19 +5,16 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:AutumnBox.GUI.View.Windows"
-         xmlns:util="clr-namespace:AutumnBox.GUI.Util"
-    xmlns:mvvm="clr-namespace:AutumnBox.GUI.MVVM"
     xmlns:panel="clr-namespace:AutumnBox.GUI.View.Panel"
     mc:Ignorable="d"
     ShowInTaskbar="False"
    ResizeMode="NoResize"
     WindowStartupLocation="CenterOwner"
-    NonClientAreaBackground="Transparent"
-      Background="{DynamicResource BlurWindowBackgroundBrush}"
+      Background="{DynamicResource RegionBrush}"
+    Icon="/Resources/Drawable/icon.ico"
     FontFamily="{DynamicResource AutumnBox.Font}"
-        Title="{DynamicResource AppNameWithVersion}" Height="430" Width="700">
-    <DockPanel Background="{DynamicResource BlurWindowBackgroundBrush}">
+        Title="{DynamicResource App.Name}" Height="430" Width="700">
+    <DockPanel >
         <panel:PanelAbout  Effect="{DynamicResource EffectShadow2}" DockPanel.Dock="Left"/>
         <panel:PanelUpdateLogs DockPanel.Dock="Right"/>
     </DockPanel>

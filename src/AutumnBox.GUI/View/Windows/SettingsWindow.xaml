@@ -11,38 +11,38 @@
     mc:Ignorable="d"
     ShowInTaskbar="False"
     ResizeMode="NoResize"
-    Background="{DynamicResource BlurWindowBackgroundBrush}"
-NonClientAreaBackground="Transparent"
+    Background="{DynamicResource RegionBrush}"
     WindowStartupLocation="CenterOwner"
     FontFamily="{DynamicResource AutumnBox.Font}"
-    Title="{DynamicResource ContentGuideTitleSettings}"
+    Title="{DynamicResource Settings.Title}"
+    Icon="/Resources/Drawable/icon.ico"
           Height="250" Width="400">
     <Window.DataContext>
         <viewmodel:VMSettingsDialog/>
     </Window.DataContext>
     <Grid>
         <TabControl Background="Transparent">
-            <TabItem Background="Transparent" Header="{DynamicResource PanelSettingsUx}">
+            <TabItem Background="Transparent" Header="{DynamicResource Settings.Ux}">
                 <StackPanel Margin="5" Orientation="Vertical">
                     <DockPanel Margin="5">
                         <ComboBox DockPanel.Dock="Right" ItemsSource="{Binding Languages}" DisplayMemberPath="{Binding LanguageDisplayMemberPath}" SelectedItem="{Binding SelectedLanguage}"/>
-                        <TextBlock DockPanel.Dock="Left" Margin="0,0,15,0"  VerticalAlignment="Center" Text="{DynamicResource PanelSettingsLanguage}"/>
+                        <TextBlock DockPanel.Dock="Left" Margin="0,0,15,0"  VerticalAlignment="Center" Text="{DynamicResource Settings.Language}"/>
                     </DockPanel>
                     <DockPanel Margin="5">
-                        <ToggleButton DockPanel.Dock="Right" Style="{DynamicResource ToggleButtonSwitch}" IsChecked="{Binding SoundEffectEnable}"  ToolTip="{DynamicResource PanelSettingsSounds}"/>
+                        <ToggleButton DockPanel.Dock="Right" Style="{DynamicResource ToggleButtonSwitch}" IsChecked="{Binding SoundEffectEnable}"  ToolTip="{DynamicResource Settings.Sounds}"/>
                         <StackPanel Orientation="Vertical" DockPanel.Dock="Left">
-                            <TextBlock Text="{DynamicResource PanelSettingsSounds}"/>
-                            <TextBlock Foreground="{DynamicResource SecondaryTextBrush}" TextWrapping="Wrap" FontSize="12" Text="{DynamicResource PanelSettingsSoundsTip}"/>
+                            <TextBlock Text="{DynamicResource Settings.Sounds}"/>
+                            <TextBlock Foreground="{DynamicResource SecondaryTextBrush}" TextWrapping="Wrap" FontSize="12" Text="{DynamicResource Settings.SoundsTip}"/>
                         </StackPanel>
                     </DockPanel>
                     <DockPanel Margin="5">
 
                         <StackPanel Orientation="Vertical" DockPanel.Dock="Left">
-                            <TextBlock Margin="0,0,0,10" Text="{DynamicResource PanelSettingsTheme}"/>
+                            <TextBlock Margin="0,0,0,10" Text="{DynamicResource Settings.Theme}"/>
                             <hc:ButtonGroup>
-                                <RadioButton  IsChecked="{Binding ShouldUseLightTheme}" Content="{DynamicResource PanelSettingsThemeLight}"/>
-                                <RadioButton IsChecked="{Binding ShouldUseAutoTheme}" Content="{DynamicResource PanelSettingsThemeAuto}"/>
-                                <RadioButton  IsChecked="{Binding ShouldUseDarkTheme}" Content="{DynamicResource PanelSettingsThemeDark}"/>
+                                <RadioButton  IsChecked="{Binding ShouldUseLightTheme}" Content="{DynamicResource Settings.ThemeLight}"/>
+                                <RadioButton IsChecked="{Binding ShouldUseAutoTheme}" Content="{DynamicResource Settings.ThemeAuto}"/>
+                                <RadioButton  IsChecked="{Binding ShouldUseDarkTheme}" Content="{DynamicResource Settings.ThemeDark}"/>
                             </hc:ButtonGroup>
                         </StackPanel>
                     </DockPanel>
@@ -52,50 +52,50 @@ NonClientAreaBackground="Transparent"
 
 
 
-            <TabItem Background="Transparent" Header="{DynamicResource PanelSettingsDebug}">
+            <TabItem Background="Transparent" Header="{DynamicResource Settings.Debug}">
                 <StackPanel  Margin="5">
 
                     <DockPanel Margin="5">
                         <ToggleButton Style="{DynamicResource ToggleButtonSwitch}" DockPanel.Dock="Right" IsChecked="{Binding DebugOnNext}"/>
                         <StackPanel DockPanel.Dock="Left">
-                            <TextBlock Text="{DynamicResource PanelSettingsLaunchDebugWindowOnNextLaunch}"/>
-                            <TextBlock Foreground="{DynamicResource SecondaryTextBrush}" TextWrapping="Wrap" FontSize="12" Text="{DynamicResource PanelSettingsLaunchDebugWindowOnNextLaunchTip}"/>
+                            <TextBlock Text="{DynamicResource Settings.LaunchDebugWindowOnNextLaunch}"/>
+                            <TextBlock Foreground="{DynamicResource SecondaryTextBrush}" TextWrapping="Wrap" FontSize="12" Text="{DynamicResource Settings.LaunchDebugWindowOnNextLaunchTip}"/>
                         </StackPanel>
 
                     </DockPanel>
                     <DockPanel Margin="5">
                         <ToggleButton Style="{DynamicResource ToggleButtonSwitch}" DockPanel.Dock="Right"  IsChecked="{Binding DeveloperMode}" />
                         <StackPanel DockPanel.Dock="Left">
-                            <TextBlock Text="{DynamicResource PanelSettingsDeveloperMode}"/>
-                            <TextBlock Foreground="{DynamicResource SecondaryTextBrush}" TextWrapping="Wrap" FontSize="12" Text="{DynamicResource PanelSettingsDeveloperModeTip}"/>
+                            <TextBlock Text="{DynamicResource Settings.DeveloperMode}"/>
+                            <TextBlock Foreground="{DynamicResource SecondaryTextBrush}" TextWrapping="Wrap" FontSize="12" Text="{DynamicResource Settings.DeveloperModeTip}"/>
                         </StackPanel>
                     </DockPanel>
                     <DockPanel Margin="5">
                         <ToggleButton Style="{DynamicResource ToggleButtonSwitch}" DockPanel.Dock="Right"  IsChecked="{Binding DisplayCmdWindow}" />
                         <StackPanel DockPanel.Dock="Left">
-                            <TextBlock Text="{DynamicResource PanelSettingsDisplayCmdWindow}"/>
-                            <TextBlock Foreground="{DynamicResource SecondaryTextBrush}" TextWrapping="Wrap" FontSize="12" Text="{DynamicResource PanelSettingsDisplayCmdWindowTip}"/>
+                            <TextBlock Text="{DynamicResource Settings.DisplayCmdWindow}"/>
+                            <TextBlock Foreground="{DynamicResource SecondaryTextBrush}" TextWrapping="Wrap" FontSize="12" Text="{DynamicResource Settings.DisplayCmdWindowTip}"/>
                         </StackPanel>
                     </DockPanel>
                 </StackPanel>
             </TabItem>
 
 
-            <TabItem Background="Transparent" Header="{DynamicResource PanelSettingsCmd}">
+            <TabItem Background="Transparent" Header="{DynamicResource Settings.Cmd}">
                 <StackPanel Margin="5" Orientation="Vertical">
                     <DockPanel Margin="5">
                         <ToggleButton DockPanel.Dock="Right" Style="{DynamicResource ToggleButtonSwitch}" IsChecked="{Binding UseEnvVarCmd}" />
                         <StackPanel DockPanel.Dock="Left" Orientation="Vertical">
-                            <TextBlock Text="{DynamicResource PanelSettingsEnvVarCmdWindow}"/>
-                            <TextBlock Foreground="{DynamicResource SecondaryTextBrush}" TextWrapping="Wrap" FontSize="12" Text="{DynamicResource PanelSettingsEnvVarCmdWindowTip}"/>
+                            <TextBlock Text="{DynamicResource Settings.EnvVarCmdWindow}"/>
+                            <TextBlock Foreground="{DynamicResource SecondaryTextBrush}" TextWrapping="Wrap" FontSize="12" Text="{DynamicResource Settings.EnvVarCmdWindowTip}"/>
                         </StackPanel>
 
                     </DockPanel>
                     <DockPanel IsEnabled="{Binding UseEnvVarCmd}" Margin="5">
                         <ToggleButton DockPanel.Dock="Right" Style="{DynamicResource ToggleButtonSwitch}" IsChecked="{Binding StartCmdAtDesktop}"/>
                         <StackPanel DockPanel.Dock="Left" Orientation="Vertical">
-                            <TextBlock Text="{DynamicResource PanelSettingsCmdAtDesktopTip}"/>
-                            <TextBlock Foreground="{DynamicResource SecondaryTextBrush}" TextWrapping="Wrap" FontSize="12" Text="{DynamicResource PanelSettingsCmdAtDesktopTip}"/>
+                            <TextBlock Text="{DynamicResource Settings.CmdAtDesktopTip}"/>
+                            <TextBlock Foreground="{DynamicResource SecondaryTextBrush}" TextWrapping="Wrap" FontSize="12" Text="{DynamicResource Settings.CmdAtDesktopTip}"/>
                         </StackPanel>
 
                     </DockPanel>

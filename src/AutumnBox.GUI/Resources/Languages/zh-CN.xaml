@@ -2,22 +2,13 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xml:space="preserve"
                     xmlns:s="clr-namespace:System;assembly=mscorlib">
-
-    <s:String x:Key="LanguageName">简体中文</s:String>
-    <s:String x:Key="LanguageCode">zh-CN</s:String>
-    
-    <s:String x:Key="AppName">秋之盒</s:String>
-        <s:String x:Key="LoadingAppName">AutumnBox 2020.4-BETA 1</s:String>
-    <s:String x:Key="AppNameWithVersion">秋之盒 2020.4</s:String>
-    <s:String x:Key="VersionTypePreview">预览版</s:String>
-    <s:String x:Key="VersionTypeStable">稳定版</s:String>
-    <s:String x:Key="VersionTypeBeta">内测版</s:String>
+    <s:String x:Key="App.Name">秋之盒</s:String>
+     <s:String x:Key="App.LoadingName">AutumnBox 2020.4-BETA 1</s:String>
+    <s:String x:Key="App.NameWithVersion">秋之盒 2020.4</s:String>
     
 
-    <s:String x:Key="AppDesc">开源,易用,免费的图形化ADB工具箱</s:String>
+    <s:String x:Key="App.Slogan">开源,易用,免费的图形化ADB工具箱</s:String>
      <s:String x:Key="TitleSuffixAdmin">[管理员模式]</s:String>
-    
-    <s:String x:Key="CurrentVersionHasBeenBanned">此版本秋之盒已被禁用!</s:String>
     
     <s:String x:Key="Menu.File">文件(_F)</s:String>
      <s:String x:Key="Menu.Restart">重启秋之盒(_R)</s:String>
@@ -47,22 +38,16 @@
        <s:String x:Key="Menu.DebugMode">调试模式</s:String>
         <s:String x:Key="Menu.RefreshHome">刷新主页</s:String>
     
-      <s:String x:Key="BottomBar.Port">端口</s:String>
-      <s:String x:Key="BottomBar.AdbVersion">ADB版本</s:String>
-    <s:String x:Key="BottomBar.Mode">运行模式</s:String>
-    <s:String x:Key="BottomBar.Mode.RunAsUser">秋之盒目前以&lt;用户&gt;权限运行</s:String>
-     <s:String x:Key="BottomBar.Mode.RunAsAdmin">秋之盒目前以&lt;管理员&gt;权限运行</s:String>
-    <s:String x:Key="BottomBar.Devices.Prev">监测中,已有</s:String>
-    <s:String x:Key="BottomBar.Devices.Suf">台设备连接</s:String>
-     <s:String x:Key="BottomBar.RunningTask">个正在执行的任务</s:String>
+      <s:String x:Key="StatusBar.Port">端口</s:String>
+      <s:String x:Key="StatusBar.AdbVersion">ADB版本</s:String>
+    <s:String x:Key="StatusBar.Mode">运行模式</s:String>
+    <s:String x:Key="StatusBar.Mode.RunAsUser">秋之盒目前以&lt;用户&gt;权限运行</s:String>
+     <s:String x:Key="StatusBar.Mode.RunAsAdmin">秋之盒目前以&lt;管理员&gt;权限运行</s:String>
+    <s:String x:Key="StatusBar.Devices.Prev">监测中,已有</s:String>
+    <s:String x:Key="StatusBar.Devices.Suf">台设备连接</s:String>
+     <s:String x:Key="StatusBar.RunningTask">个正在执行的任务</s:String>
     
-    <s:String x:Key="DeviceBarConnectHelp">如何连接设备?</s:String>
-    
-    
-          <s:String x:Key="Copy">复制</s:String>
-      <s:String x:Key="Home">主页</s:String>
-      <s:String x:Key="Functions">功能</s:String>
-      <s:String x:Key="More">更多</s:String>
+    <s:String x:Key="DeviceBar.ConnectingHelp">如何连接设备?</s:String>
     
     <s:String x:Key="StateNotRightTipFmt">该功能在设备处于[{0}]状态下时可用</s:String>
     
@@ -85,17 +70,10 @@
     <s:String x:Key="Dash.Battery.Level">电量</s:String>
     <s:String x:Key="Dash.Battery.Charging">充电状态</s:String>
     <s:String x:Key="Dash.Battery.Voltage">电池电压</s:String>
-      <s:String x:Key="Dash.Battery.Temperature">电池温度</s:String>
+    <s:String x:Key="Dash.Battery.Temperature">电池温度</s:String>
     <s:String x:Key="Dash.Boot.LastTime">上次重启</s:String>
-     <s:String x:Key="Dash.Boot.Time">开机时间</s:String>
-    
-     <s:String x:Key="Update.Failed">更新检查失败</s:String>
-    <s:String x:Key="Update.HaveAUpdate">检测到更新</s:String>
-     <s:String x:Key="Update.CheckingUpdate">正在检查更新!</s:String>
-    <s:String x:Key="Update.UpdateNow">立刻更新</s:String>
-     <s:String x:Key="Update.IsLatestVersion">当前已是最新版本</s:String>
-    <s:String x:Key="Update.Cancel">取消</s:String>
-    
+    <s:String x:Key="Dash.Boot.Time">开机时间</s:String>
+
     <s:String x:Key="Version.AutumnBox">秋之盒版本</s:String>
     <s:String x:Key="Version.GUI">图形界面</s:String>
     <s:String x:Key="Version.CoreModules">核心模块</s:String>
@@ -109,10 +87,9 @@
    <s:String x:Key="QQGroup">QQ群</s:String>
    <s:String x:Key="EMail">电子邮件</s:String>
     <s:String x:Key="OpenSource">开放源代码</s:String>
-        <s:String x:Key="UpdateCheck">更新</s:String>
     
-    <s:String x:Key="UserLicenseTitle">秋之盒使用协议 1.0</s:String>
-    <s:String x:Key="UserLicenseContent">本协议仍然在编写当中,最终解释权归zsh2401所有
+    <s:String x:Key="UserLicense.Name">秋之盒使用协议 1.0</s:String>
+    <s:String x:Key="UserLicense.Content">本协议仍然在编写当中,最终解释权归zsh2401所有
 欢迎您使用秋之盒-AutumnBox(下称本软件)。
 秋之盒基于LGPL3.0协议,并添加以下条例作为用户协议
 如果你点击下一步,则视为同意
@@ -135,155 +112,59 @@
     </s:String>
  <s:String x:Key="BtnOpenSourceLisence">开源协议</s:String>
     
-    <s:String x:Key="ContentGuideTitleSettings">一些设置</s:String>
-    <s:String x:Key="ContentGuideTitleLast">最后,有些东西需要你记住</s:String>
-    <s:String x:Key="ContentGuideOfficialWebsite">官网:</s:String>
-    <s:String x:Key="ContentGuideLinkOfficialWebsite">https://www.atmb.top</s:String>
-    <s:String x:Key="ContentGuideOfficialManual">说明书:</s:String>
-    <s:String x:Key="ContentGuideLinkOfficialManual">https://www.atmb.top/help</s:String>
-    <s:String x:Key="ContentGuideQQGroup">QQ群: 246177486</s:String>
-    <s:String x:Key="ContentGuideContact">联系开发者: zsh2401@163.com</s:String>
-     <s:String x:Key="ContentGuideBtnPrev">上一步</s:String>
-    <s:String x:Key="ContentGuideBtnNext">下一步</s:String>
-      <s:String x:Key="ContentGuideBtnFinish">完成</s:String>
-    <s:String x:Key="ContentGuideBtnCancel">取消</s:String>
+    <s:String x:Key="Guide.TitleSettings">一些设置</s:String>
+    <s:String x:Key="Guide.TitleLast">最后,有些东西需要你记住</s:String>
+    <s:String x:Key="Guide.OfficialWebsite">官网:</s:String>
+    <s:String x:Key="Guide.LinkOfficialWebsite">https://www.atmb.top</s:String>
+    <s:String x:Key="Guide.OfficialManual">说明书:</s:String>
+    <s:String x:Key="Guide.LinkOfficialManual">https://www.atmb.top/help</s:String>
+    <s:String x:Key="Guide.QQGroup">QQ群: 246177486</s:String>
+    <s:String x:Key="Guide.Contact">联系开发者: zsh2401@163.com</s:String>
+     <s:String x:Key="Guide.BtnPrev">上一步</s:String>
+    <s:String x:Key="Guide.BtnNext">下一步</s:String>
+      <s:String x:Key="Guide.BtnFinish">完成</s:String>
+    <s:String x:Key="Guide.BtnCancel">取消</s:String>
     
     <s:String x:Key="SignalSelectViewHint">选一个并单击! ^_^</s:String>
      <s:String x:Key="SignalSelectViewCancel">取消</s:String>
-    <!--Adb failed Window-->
-    <s:String x:Key="AdbFailedWindowGuide">查看在线说明书</s:String>
-    <s:String x:Key="AdbFailedWindowTitle">无法启动ADB服务!</s:String>
-     <s:String x:Key="AdbFailedWindowAdvice">你可以尝试:
-        * 关闭其他手机助手
-        * 重启电脑
-        * 打开任务管理器关闭ADB进程
-         或
-     </s:String>
-    <s:String x:Key="AdbFailedWindowCopyNotice">下列内容,并发送给你要问的人</s:String>
-    <s:String x:Key="AdbFailedWindowBtnCopy">复制</s:String>
     
      <!--LibsWindow-->
-    <s:String x:Key="LibsWindowTitle">已加载的拓展模块库</s:String>
-    <s:String x:Key="LibsWindowLoadedWrapper">加载的包装器: </s:String>
+    <s:String x:Key="LibsWindow.Title">已加载的拓展模块库</s:String>
     
-     <s:String x:Key="PanelTipHeader">卡片</s:String>
-     <s:String x:Key="PanelCstHeader">每日信息</s:String>
-     <s:String x:Key="PanelFailed">加载失败</s:String>
+     <!--Settings-->
+     <s:String x:Key="Settings.Title">设置</s:String>
+        <s:String x:Key="Settings.Theme">主题</s:String>
+      <s:String x:Key="Settings.ThemeLight">亮色</s:String>
+      <s:String x:Key="Settings.ThemeDark">暗色</s:String>
+      <s:String x:Key="Settings.ThemeAuto">自动</s:String>
+     <s:String x:Key="Settings.Ux">交互</s:String>
+    <s:String x:Key="Settings.Sounds">音效</s:String>
+    <s:String x:Key="Settings.SoundsTip">例如功能结束时的音效，但这需要该功能支持</s:String>
+    <s:String x:Key="Settings.Cmd">命令行</s:String>
+    <s:String x:Key="Settings.EnvVarCmdWindow">带有全局变量的命令行</s:String>
+    <s:String x:Key="Settings.EnvVarCmdWindowTip">这样,无论你在命令行中去到哪里,都可以使用秋之盒的ADB程序</s:String>
+    <s:String x:Key="Settings.CmdAtDesktop">在桌面启动命令行</s:String>
+    <s:String x:Key="Settings.CmdAtDesktopTip">启动命令行后,路径在桌面</s:String>
+    <s:String x:Key="Settings.Language">语言</s:String>
+    <s:String x:Key="Settings.Debug">调试</s:String>
+    <s:String x:Key="Settings.CreateDebugWindow">显示调试窗口</s:String>
+    <s:String x:Key="Settings.LaunchDebugWindowOnNextLaunch">在下次启动时显示调试窗口</s:String>
+    <s:String x:Key="Settings.LaunchDebugWindowOnNextLaunchTip">这是给开发者准备的</s:String>
+    <s:String x:Key="Settings.DeveloperMode">秋之盒调试模式</s:String>
+    <s:String x:Key="Settings.DeveloperModeTip">Logger.Debug()将可使用,开发中模块也会展示</s:String>
+    <s:String x:Key="Settings.DisplayCmdWindow">显示命令行窗口</s:String>
+    <s:String x:Key="Settings.DisplayCmdWindowTip">或许你可以通过这个来排查某些疑难杂症,仅在部分情况下支持</s:String>
     
-    <!--PanelHome-->
-        <s:String x:Key="PanelHomeUpdateLogs">更新日志</s:String>
-      <s:String x:Key="PanelHomeLink">链接</s:String>
-    <s:String x:Key="PanelHomeOpenSource">开源</s:String>
-    <s:String x:Key="PanelHomeOpenSourceTip">为了共同的进步与对用户的透明性,秋之盒现以LGPL 3.0协议开源</s:String>
-    <s:String x:Key="PanelHomeOpenSourceButton">开源相关</s:String>
+    <s:String x:Key="ExtensionsFinder.StateNotCorrectWarning">设备状态不正确</s:String>
     
-    <s:String x:Key="PanelHomeSupport">支持</s:String>
-    <s:String x:Key="PanelHomeSupportTip">我是一名学生,没有稳定的经济来源,我真的很希望你能够支持我,捐赠者将被永久记录</s:String>
-    <s:String x:Key="PanelDonate">捐赠</s:String>
-    <s:String x:Key="PanelDonaters">捐赠者名单</s:String>
-    
-    <s:String x:Key="PanelHomeHelp">帮助</s:String>
-    <s:String x:Key="PanelHomeReport">快速反馈</s:String>
-     <s:String x:Key="PanelHomeHelpTip">而有些人则需要一点小小的帮助</s:String>
-     <s:String x:Key="PanelHomeLinkHelp">设备连接帮助</s:String>
-     <s:String x:Key="PanelHomeManual">说明书</s:String>
-    <s:String x:Key="PanelHomeContact">联系</s:String>
-  
-    <s:String x:Key="PanelHomeOfficialWebsite">官网</s:String>
-    <s:String x:Key="PanelHomeJoinQQGroup">加入QQ群</s:String>
-    <s:String x:Key="PanelHomeSendMail">发送邮件</s:String>
-    
-        <!--UpdateWindow-->
-     <s:String x:Key="UpdateWindowBtnUpdate">立刻下载新版本!l</s:String>
-     <s:String x:Key="UpdateWindowTitle">检测到新版本</s:String>
-     <s:String x:Key="UpdateWindowBtnSkipVersion">跳过此版本</s:String>
-    
-        <!--PanelSettings-->
-    <s:String x:Key="PanelSettingsViewLogFloder">打开日志文件夹</s:String>
-    <s:String x:Key="PanelSettingsDoubleClickToStartExt">双击运行拓展模块</s:String>
-    <s:String x:Key="PanelSettingsDoubleClickToStartExtTip">否则单击就可运行</s:String>
-    <s:String x:Key="PanelSettingsTitleDontNeedUpdate">无需更新</s:String>
-    <s:String x:Key="PanelSettingsMsgDontNeedUpdate">无需任何更新,你已经是最新版本了</s:String>
-
-        <s:String x:Key="PanelSettingsTheme">主题</s:String>
-      <s:String x:Key="PanelSettingsThemeLight">亮色</s:String>
-      <s:String x:Key="PanelSettingsThemeDark">暗色</s:String>
-      <s:String x:Key="PanelSettingsThemeAuto">自动</s:String>
-    <s:String x:Key="PanelSettingsVersionInfo">版本信息</s:String>
-      <s:String x:Key="PanelSettingsUpdateCheck">更新检测</s:String>
-     <s:String x:Key="PanelSettingsUx">交互</s:String>
-    <s:String x:Key="PanelSettingsRandomTheme">随机主题</s:String>
-      <s:String x:Key="PanelSettingsRandomThemeTip">心中还是在怀抱着某种期许，像等待阳光在雨后降临</s:String>
-    <s:String x:Key="PanelSettingsSounds">音效</s:String>
-    <s:String x:Key="PanelSettingsSoundsTip">例如功能结束时的音效，但这需要该功能支持</s:String>
-    <s:String x:Key="PanelSettingsInterface">界面</s:String>
-    <s:String x:Key="PanelSettingsCmd">命令行</s:String>
-    <s:String x:Key="PanelSettingsReset">重设</s:String>
-    <s:String x:Key="PanelSettingsEnvVarCmdWindow">带有全局变量的命令行</s:String>
-    <s:String x:Key="PanelSettingsEnvVarCmdWindowTip">这样,无论你在命令行中去到哪里,都可以使用秋之盒的ADB程序</s:String>
-    <s:String x:Key="PanelSettingsCmdAtDesktop">在桌面启动命令行</s:String>
-    <s:String x:Key="PanelSettingsCmdAtDesktopTip">启动命令行后,路径在桌面</s:String>
-    <s:String x:Key="PanelSettingsOther">其它</s:String>
-    <s:String x:Key="PanelSettingsLanguage">语言</s:String>
-    <s:String x:Key="PanelSettingsDebug">调试</s:String>
-    <s:String x:Key="PanelSettingsSendToDesktop">创建快捷方式</s:String>
-    <s:String x:Key="PanelSettingsCreateDebugWindow">显示调试窗口</s:String>
-    <s:String x:Key="PanelSettingsLaunchDebugWindowOnNextLaunch">在下次启动时显示调试窗口</s:String>
-    <s:String x:Key="PanelSettingsLaunchDebugWindowOnNextLaunchTip">这是给开发者准备的</s:String>
-    <s:String x:Key="PanelSettingsDeveloperMode">秋之盒调试模式</s:String>
-    <s:String x:Key="PanelSettingsDeveloperModeTip">Logger.Debug()将可使用,开发中模块也会展示</s:String>
-    <s:String x:Key="PanelSettingsDisplayCmdWindow">显示命令行窗口</s:String>
-    <s:String x:Key="PanelSettingsDisplayCmdWindowTip">或许你可以通过这个来排查某些疑难杂症,仅在部分情况下支持</s:String>
-    <!--PanelExtensions-->
-      <s:String x:Key="PanelExtesnionTitleFmt">当设备处于{0}时可用</s:String>
-      <s:String x:Key="PanelExtesnionsDownloadExt">下载更多拓展模块</s:String>
-    <s:String x:Key="PanelExtensionsNoSelect">请在左边选择一个拓展/功能</s:String>
-    <s:String x:Key="PanelExtensionsAuthFmt">开发者:{0}</s:String>
-      <s:String x:Key="PanelExtensionsVersionFmt">版本:{0}</s:String>
-      <s:String x:Key="PanelExtensionsDescFmt">说明:{0}</s:String>
-    <s:String x:Key="PanelExtensionsNotFound">没有找到可用的拓展模块/功能</s:String>
-    <s:String x:Key="PanelExtensionsButtonEnabled">运行此拓展</s:String>
-    <s:String x:Key="PanelExtensionsButtonDisabled">此拓展不可在当前情况下运行</s:String>
-     <s:String x:Key="PanelExtensionsWhenCurrentDevicePoweron">当设备处于开机时可用</s:String>
-    <s:String x:Key="PanelExtensionsWhenCurrentDeviceRecovery">当设备处于恢复模式</s:String>
-    <s:String x:Key="PanelExtensionsWhenCurrentDeviceSideload">当设备处于Sideload</s:String>
-    <s:String x:Key="PanelExtensionsWhenCurrentDeviceFastboot">当设备处于Fastboot</s:String>
-    <s:String x:Key="PanelExtensionsWhenCurrentDeviceUnknown">当设备处于未知状态</s:String>
-    <s:String x:Key="PanelExtensionsWhenCurrentDeviceUnauthorized">当设备未授权USB调试时可用</s:String>
-     <s:String x:Key="PanelExtensionsWhenCurrentDeviceOffline">当设备处于异常离线时可用</s:String>
-     <s:String x:Key="PanelExtensionsWhenCurrentDeviceNoMatter">这些模块无需设备连接也可使用</s:String>
-     <!--PanelCurrentDevice-->
-     <s:String x:Key="PanelWhenCurrentDevicePoweron">当设备处于开机时可用</s:String>
-    <s:String x:Key="PanelWhenCurrentDeviceRecovery">当设备处于恢复模式</s:String>
-    <s:String x:Key="PanelWhenCurrentDeviceSideload">当设备处于Sideload</s:String>
-    <s:String x:Key="PanelWhenCurrentDeviceFastboot">当设备处于Fastboot</s:String>
-    <s:String x:Key="PanelWhenCurrentDeviceUnknown">当设备处于未知状态</s:String>
-    <s:String x:Key="PanelWhenCurrentDeviceUnauthorized">当设备未授权USB调试时可用</s:String>
-     <s:String x:Key="PanelWhenCurrentDeviceOffline">当设备处于异常离线时可用</s:String>
-    
-    <s:String x:Key="PanelCurrentDevicePoweron">开机</s:String>
-    <s:String x:Key="PanelCurrentDeviceRecovery">恢复模式</s:String>
-    <s:String x:Key="PanelCurrentDeviceSideload">Sideload</s:String>
-    <s:String x:Key="PanelCurrentDeviceFastboot">Fastboot</s:String>
-    <s:String x:Key="PanelCurrentDeviceUnknown">未知状态</s:String>
-    <s:String x:Key="PanelCurrentDeviceUnauthorized">未授权USB调试</s:String>
-     <s:String x:Key="PanelCurrentDeviceOffline">异常离线</s:String>
-    
-    <!--PanelReboot-->
-    <s:String x:Key="PanelRebootTitle">重启到</s:String>
-    <s:String x:Key="PanelRebootToSystem">系统</s:String>
-    <s:String x:Key="PanelRebootToRecovery">恢复模式</s:String>
-    <s:String x:Key="PanelRebootToFastboot">Fastboot</s:String>
-    <s:String x:Key="PanelRebootTo9008">9008</s:String>
-    
-    <!--PanelDevices-->
-    <s:String x:Key="PanelDevicesTitle">已连接设备列表</s:String>
-     <s:String x:Key="PanelHelpForConnectDevice">如何连接设备?</s:String>
-    <s:String x:Key="PanelDevicesConnectTo">网络连接新设备</s:String>
-     <s:String x:Key="PanelDevicesNoOne">没有设备连接</s:String>
-    <s:String x:Key="PanelDevicesDisconnect">断开当前设备网络连接</s:String>
-    <s:String x:Key="PanelDevicesEnableCurrent">开启当前设备网络调试</s:String>
-    
+    <s:String x:Key="DeviceState.Poweron">开机</s:String>
+    <s:String x:Key="DeviceState.Recovery">恢复模式</s:String>
+    <s:String x:Key="DeviceState.Sideload">Sideload</s:String>
+    <s:String x:Key="DeviceState.Fastboot">Fastboot</s:String>
+    <s:String x:Key="DeviceState.Unknown">未知状态</s:String>
+    <s:String x:Key="DeviceState.Unauthorized">未授权USB调试</s:String>
+    <s:String x:Key="DeviceState.Offline">异常离线</s:String>
+        
     <!--OpenFx-->
      <s:String x:Key="OpenFxBtnYes">好</s:String>
      <s:String x:Key="OpenFxBtnNo">取消</s:String>
@@ -299,8 +180,8 @@
      <s:String x:Key="OpenFxInstallBtnIgnore">强行继续!</s:String>
     <s:String x:Key="OpenFxInstallBtnOk">好吧</s:String>
     <s:String x:Key="OpenFxNoRoot">这个功能依赖于root，但你的设备没有root权限！请检查设备</s:String>
-      <s:String x:Key="OpenFxNoRootIgnore">忽略并继续</s:String>
-     <s:String x:Key="OpenFxExtensionFailed">功能/模块在运行时遇到严重异常，详情查看日志</s:String>
+     <s:String x:Key="OpenFxNoRootIgnore">忽略并继续</s:String>
+    <s:String x:Key="OpenFxExtensionFailed">功能/模块在运行时遇到严重异常，详情查看日志</s:String>
     <s:String x:Key="OpenFxNeedAdminPermission">此模块需要管理员权限,是否将秋之盒重启到管理员模式</s:String>
     <s:String x:Key="OpenFxLowAndroidVersionFmt">此模块要求安卓版本为{0},而您的设备并没有达到此标准</s:String>
     <s:String x:Key="OpenFxLowAndroidBtnIgnore">忽略并继续</s:String>
@@ -308,104 +189,45 @@
     <s:String x:Key="OpenFxLowAndroidBtnOk">好吧</s:String>
     <s:String x:Key="OpenFxOverhighAndroidVersionFmt">您的设备安卓版本太高了,此模块仅支持{0}以下的安卓版本</s:String>
     
-    <!--PanelDeviceDetails-->
-    <s:String x:Key="PanelDeviceDetailsToolTipDefault">没什么好解释的,顾名思义</s:String>
-    <s:String x:Key="PanelDeviceDetailsToolTipAndroidVersion">设备的安卓版本,从build.prop获取</s:String>
-    <s:String x:Key="PanelDeviceDetailsToolTipDpi">像素密度,如果修改过,则显示被修改后的DPI</s:String>
-    <s:String x:Key="PanelDeviceDetailsToolTipStorage">与厂商标识的存储空间不同，此处仅计算用户可用非保留存储空间</s:String>
-    <s:String x:Key="PanelDeviceDetailsToolTipSu">根据shell su命令进行检测，如果su命令不存在，则视为无root</s:String>
-    <s:String x:Key="PanelDeviceDetailsStateNotFound">未连接设备</s:String>
-    <s:String x:Key="PanelDeviceDetailsStateNotFoundTip">请尝试安装ADB驱动或关闭其他手机助手</s:String>
-    <s:String x:Key="PanelDeviceDetailsStatePoweron">设备开机</s:String>
-    <s:String x:Key="PanelDeviceDetailsStatePoweronTip">做你想做的</s:String>
-    <s:String x:Key="PanelDeviceDetailsStateRecovery">恢复模式</s:String>
-    <s:String x:Key="PanelDeviceDetailsStateRecoveryTip">...</s:String>
-    <s:String x:Key="PanelDeviceDetailsStateSideload">Sideload模式</s:String>
-    <s:String x:Key="PanelDeviceDetailsStateSideloadTip">...</s:String>
-    <s:String x:Key="PanelDeviceDetailsStateFastboot">Fastboot模式</s:String>
-    <s:String x:Key="PanelDeviceDetailsStateFastbootTip">...</s:String>
-    <s:String x:Key="PanelDeviceDetailsStateUnauthorized">未授权</s:String>
-    <s:String x:Key="PanelDeviceDetailsStateUnauthorizedTip">未获取USB调试权限,请前往手机授予</s:String>
-    <s:String x:Key="PanelDeviceDetailsStateOffline">异常离线</s:String>
-    <s:String x:Key="PanelDeviceDetailsStateOfflineTip">请尝试拔插手机</s:String>
-    <s:String x:Key="PanelDeviceDetailsStateUnknown">神奇的未知状态!</s:String>
-    <s:String x:Key="PanelDeviceDetailsStateUnknownTip">拔插手机，或重启秋之盒试试?</s:String>
-    <s:String x:Key="PanelDeviceDetailsHw">硬件信息</s:String>
-     <s:String x:Key="PanelDeviceDetailsBrand">厂商</s:String>
-    <s:String x:Key="PanelDeviceDetailsModel">型号</s:String>
-    <s:String x:Key="PanelDeviceDetailsProductName">代号</s:String>
-    <s:String x:Key="PanelDeviceDetailsScreen">屏幕</s:String>
-    <s:String x:Key="PanelDeviceDetailsStorage">存储分区</s:String>
-    <s:String x:Key="PanelDeviceDetailsRam">运行内存</s:String>
-    <s:String x:Key="PanelDeviceDetailsSw">软件信息</s:String>
-    <s:String x:Key="PanelDeviceDetailsRoot">Root</s:String>
-    <s:String x:Key="PanelDeviceDetailsAndroidVersion">Android</s:String>
-     <s:String x:Key="PanelDeviceDetailsScreenSize">分辨率</s:String>
-    <s:String x:Key="PanelDeviceDetailsDensity">DPI</s:String>
-    
-    <!--PanelMore-->
-      <s:String x:Key="PanelMoreEvenNoDevice">什么?没连接设备或设备状态异常?这些模块无需设备正常连接!</s:String>
-     <s:String x:Key="PanelMoreBtnOpenExtensionFloder">打开拓展模块文件夹</s:String>
-    <s:String x:Key="PanelMoreBtnHowToInstallExtension">如何安装拓展模块?</s:String>
-    <s:String x:Key="PanelMoreBtnViewLoadedModules">浏览已加载模块</s:String>
-     <s:String x:Key="PanelMoreExtensionsDownloadCenter">下载拓展模块</s:String>
-     <s:String x:Key="PanelMoreExtensionSlogan">使用各种模块,做你想做的事</s:String>
-    <s:String x:Key="PanelMoreExtensionApi">模块API版本</s:String>
-     <s:String x:Key="PanelMoreExtensionsDoc">模块开发文档</s:String>
-    <s:String x:Key="PanelMoreCommonlyUsed">玩机常用链接</s:String>
-    <s:String x:Key="PanelMoreLinkAICP">AICP-ROM</s:String>
-    <s:String x:Key="PanelMoreLinkRR">RR-ROM</s:String>
-    <s:String x:Key="PanelMoreLinkGapps">Open-Gapps</s:String>
-    <s:String x:Key="PanelMoreLinkMiuiLineFlash">MIUI线刷包</s:String>
-    <s:String x:Key="PanelMoreLinkDownloadMiFlash">下载MiFlash工具</s:String>
-    <s:String x:Key="PanelMoreLinkMiuiBBS">MIUI论坛</s:String>
-    <s:String x:Key="PanelMoreLinkMIUI">MIUI官网</s:String>
-    <s:String x:Key="PanelMoreLinkMokee">下载魔趣ROM</s:String>
-    <s:String x:Key="PanelMoreLinkMokeeBBS">魔趣论坛</s:String>
-    <s:String x:Key="PanelMoreLinkMtBBS">MT论坛</s:String>
-    <s:String x:Key="PanelMoreLinkLineageOS">LineageOS</s:String>
-    <s:String x:Key="PanelMoreLinkCoolapk">酷安网</s:String>
-    <s:String x:Key="PanelMoreOpenSourceLinks">感谢为开源做出贡献的人们(相关开源项目)</s:String>
-    <s:String x:Key="PanelMoreOSLinkAutumnBox">秋之盒</s:String>
-    <s:String x:Key="PanelMoreOSLinkIsland">Island</s:String>
-     <s:String x:Key="PanelMoreOSLink_MaterialDesignInXaml">MaterialDesignInXaml</s:String>
-    <s:String x:Key="PanelMoreOSLinkToolTip_MaterialDesignInXaml">MaterialDesignInXaml让秋之盒能以MD界面展示</s:String>
-    <s:String x:Key="PanelMoreOSLink_Magisk">Magisk</s:String>
-    <s:String x:Key="PanelMoreOSLink_TeamWin">TeamWin</s:String>
-    <s:String x:Key="PanelMoreOSLink_TeamWinToolTip">知道TWRP吗?</s:String>
-    <s:String x:Key="PanelMoreOSLink_BilibiliDM">bilibili弹幕姬</s:String>
-    <s:String x:Key="PanelMoreOSLinkToolTip_BilibiliDM">秋之盒的开发中,参考了许多该开源项目的代码</s:String>
-    <s:String x:Key="PanelMoreOSLink_awesome-adb">awesome-adb</s:String>
-    <s:String x:Key="PanelMoreOSLinkToolTip_awesome-adb">秋之盒中的许多adb命令是从这里参考来的</s:String>
-    <s:String x:Key="PanelMoreOSLink_AppOpsX">App Ops X</s:String>
-   <s:String x:Key="PanelMoreOSLink_ShizukuManager">Shizuku Manager</s:String>
-    <s:String x:Key="PanelMoreOSLink_Ice-Box-Docs">冰箱在线文档</s:String>
-    <s:String x:Key="PanelMoreOSLink_NewtonsoftJson">Newtonsoft.Json</s:String>
-    <s:String x:Key="PanelMoreOSLinkToolTip_NewtonsoftJson">Newtonsoft.Json是秋之盒的Json库,同时也是最著名而好用的.NET平台Json库</s:String>
-    <s:String x:Key="PanelMoreOSLink_TWRP">TWRP</s:String>
-    <s:String x:Key="PanelMoreOSLink_Linux">Linux</s:String>
-    <s:String x:Key="PanelMoreOSLink_DpmBox">Dpm Box</s:String>
-     <s:String x:Key="PanelMoreOSLink_WebsiteOfficial">秋之盒官网开源</s:String>
-     <s:String x:Key="PanelMoreOSLinkToolTip_DpmBox">友情添加:小黑屋开发者</s:String>
+    <s:String x:Key="More.Link.Title">玩机常用链接</s:String>
+    <s:String x:Key="More.Link.Text.AICP">AICP-ROM</s:String>
+    <s:String x:Key="More.Link.Text.RR">RR-ROM</s:String>
+    <s:String x:Key="More.Link.Text.Gapps">Open-Gapps</s:String>
+    <s:String x:Key="More.Link.Text.MiuiLineFlash">MIUI线刷包</s:String>
+    <s:String x:Key="More.Link.Text.DownloadMiFlash">下载MiFlash工具</s:String>
+    <s:String x:Key="More.Link.Text.MiuiBBS">MIUI论坛</s:String>
+    <s:String x:Key="More.Link.Text.MIUI">MIUI官网</s:String>
+    <s:String x:Key="More.Link.Text.Mokee">下载魔趣ROM</s:String>
+    <s:String x:Key="More.Link.Text.MokeeBBS">魔趣论坛</s:String>
+    <s:String x:Key="More.Link.Text.MtBBS">MT论坛</s:String>
+    <s:String x:Key="More.Link.Text.LineageOS">LineageOS</s:String>
+    <s:String x:Key="More.Link.Text.Coolapk">酷安网</s:String>
+    <s:String x:Key="More.Link.Text.OpenSourceLinks">感谢为开源做出贡献的人们(相关开源项目)</s:String>
+    <s:String x:Key="More.Link.Text.AutumnBox">秋之盒</s:String>
+    <s:String x:Key="More.Link.Text.Island">Island</s:String>
+    <s:String x:Key="More.Link.Text.Magisk">Magisk</s:String>
+    <s:String x:Key="More.Link.Text.TeamWin">TeamWin</s:String>
+    <s:String x:Key="More.Link.Tip.TeamWin">知道TWRP吗?</s:String>
+    <s:String x:Key="More.Link.Text.BilibiliDM">bilibili弹幕姬</s:String>
+    <s:String x:Key="More.Link.Tip.BilibiliDM">秋之盒的开发中,参考了许多该开源项目的代码</s:String>
+    <s:String x:Key="More.Link.Text.awesome-adb">awesome-adb</s:String>
+    <s:String x:Key="More.Link.Tip.awesome-adb">秋之盒中的许多adb命令是从这里参考来的</s:String>
+    <s:String x:Key="More.Link.Text.AppOpsX">App Ops X</s:String>
+    <s:String x:Key="More.Link.Text.ShizukuManager">Shizuku Manager</s:String>
+    <s:String x:Key="More.Link.Text.Ice-Box-Docs">冰箱在线文档</s:String>
+    <s:String x:Key="More.Link.Text.NewtonsoftJson">Newtonsoft.Json</s:String>
+    <s:String x:Key="More.Link.Tip.NewtonsoftJson">Newtonsoft.Json是秋之盒的Json库,同时也是最著名而好用的.NET平台Json库</s:String>
+    <s:String x:Key="More.Link.Text.TWRP">TWRP</s:String>
+    <s:String x:Key="More.Link.Text.Linux">Linux</s:String>
+    <s:String x:Key="More.Link.Text.DpmBox">Dpm Box</s:String>
+     <s:String x:Key="More.Link.Text.WebsiteOfficial">秋之盒官网开源</s:String>
     
     <!--OpenSourceWindow-->
-    <s:String x:Key="OpenSourceWindowTitle">开源</s:String>
-    <s:String x:Key="OpenSourceWindowDescription">  秋之盒现以LGPL3.0 (宽松的GNU公共协议)开源,请在必要时遵守开源协议
+    <s:String x:Key="OpenSource.Title">开源</s:String>
+    <s:String x:Key="OpenSource.Description">  秋之盒现以LGPL3.0 (宽松的GNU公共协议)开源,请在必要时遵守开源协议
         如果可以的话,希望能够标个星,这是对我开源代码的认可</s:String>
-    <s:String x:Key="OpenSourceWindowBtnAtmbRepo">秋之盒仓库</s:String>
-    <s:String x:Key="OpenSourceWindowBtnOfficialWebisteRepo">官网仓库</s:String>
-    
-    
-    <!--ContentConnectNetDevice-->
-    <s:String x:Key="ContentConnectNetDeviceIP">设备IP地址</s:String>
-    <s:String x:Key="ContentConnectNetDevicePort">该设备的网络调试端口</s:String>
-    <s:String x:Key="ContentConnectNetDeviceStateStringIPWrong">IP格式错误,请检查</s:String>
-    <s:String x:Key="ContentConnectNetDeviceStateStringPortWrong">端口格式错误,请检查</s:String>
-    <s:String x:Key="ContentConnectNetDeviceStateStringConnecting">连接中</s:String>
-    <s:String x:Key="ContentConnectNetDeviceStateStringFailed">连接失败</s:String>
-     <s:String x:Key="ContentConnectNetDeviceBtnConnect">连接</s:String>
-    <s:String x:Key="ContentConnectNetDeviceBtnCancel">取消</s:String>
-  
+    <s:String x:Key="OpenSource.AtmbRepo">秋之盒仓库</s:String>
+    <s:String x:Key="OpenSource.OfficialWebisteRepo">官网仓库</s:String>
     
     <!--ChoiceWindow-->
     <s:String x:Key="ChoiceWindowBtnCancel">取消</s:String>
@@ -418,10 +240,10 @@
      <s:String x:Key="LoadingWindowMessage">请耐心等待 :)</s:String>
     
 <!--LeafWindow-->
-     <s:String x:Key="LeafUITipRunning">运行中</s:String>
-            <s:String x:Key="LeafUICannotStop">这个模块无法中途停止</s:String>
-     <s:String x:Key="LeafUIBtnCopy">复制输出信息</s:String>
-     <s:String x:Key="LeafUIBtnTip">这些输出信息可以用于更好的解决你的问题</s:String>
+    <s:String x:Key="LeafUITipRunning">运行中</s:String>
+    <s:String x:Key="LeafUICannotStop">这个模块无法中途停止</s:String>
+    <s:String x:Key="LeafUIBtnCopy">复制输出信息</s:String>
+    <s:String x:Key="LeafUIBtnTip">这些输出信息可以用于更好的解决你的问题</s:String>
     <s:String x:Key="LeafUIEnableFullContentTip">显示专业输出信息</s:String>
     <s:String x:Key="LeafUITipCodeUnknown">结束</s:String>
     <s:String x:Key="LeafUITipCode0">成功</s:String>
@@ -429,15 +251,12 @@
     <s:String x:Key="LeafUITipCode-2">发生了严重异常</s:String>
     <s:String x:Key="LeafUITipCode-3">被用户强制终止</s:String>
     <s:String x:Key="LeafUITipCode-4">模块执行时被杀死</s:String>
-     <s:String x:Key="LeafUITipUnknow">非正常结束</s:String>
-    
-    
+    <s:String x:Key="LeafUITipUnknow">非正常结束</s:String>
     
         <!--PanelDonte-->
-    <s:String x:Key="PanelDonateBtnCaption">↑↑这里有捐赠者记录以及更多互惠互利的经济支援方式哦~</s:String>
-    <s:String x:Key="PanelDonateBtnPayPal">你还可以使用PayPal进行捐赠</s:String>
-     <s:String x:Key="PanelDonateBtnGotoDonatePage">浏览捐赠名单或其它互惠互利捐赠方式</s:String>
-    <s:String x:Key="PanelDonateDescription">赠人玫瑰,手留余香.
+    <s:String x:Key="Donate.PayPal">使用PayPal进行捐赠</s:String>
+     <s:String x:Key="Donate.Page">捐赠名单</s:String>
+    <s:String x:Key="Donate.Description">赠人玫瑰,手留余香.
     谢谢你对中国软件生态做出的贡献</s:String>
     
 
@@ -451,11 +270,6 @@ Newtonsoft.Json  | Google | Android | Linux | C# | Microsoft | HandyOrg
     </s:String>
     <!--关于信息-->
 
-    <s:String x:Key="warningOpenNetDebugging">
-        开启网络调试将带来不可预见的风险
-        请确保您的设备与电脑处于同一局域网下
-        请确保您已在开发者设置中打开网络调试
-    </s:String>
     <s:String x:Key="Contact">联系开发者</s:String>
     <s:String x:Key="Donate">捐赠开发者</s:String>
     

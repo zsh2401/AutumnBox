@@ -9,7 +9,9 @@
     mc:Ignorable="d"
         ResizeMode="NoResize"
     WindowStartupLocation="CenterScreen"
-    Title="{DynamicResource AppNameWithVersion}"
+    Background="{DynamicResource RegionBrush}"
+    Title="{DynamicResource App.Name}"
+    Icon="/Resources/Drawable/icon.ico"
     FontFamily="{DynamicResource AutumnBox.Font}"
         Height="300" Width="500">
     <Window.DataContext>
@@ -21,8 +23,8 @@
 
     <StackPanel  VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Vertical">
         <Image Source="/Resources/Drawable/icon.png" Height="100"/>
-        <TextBlock FontSize="40" Text="{DynamicResource AppNameWithVersion}"/>
-        <TextBlock FontSize="13" HorizontalAlignment="Center" Text="{DynamicResource AppDesc}"/>
+        <TextBlock FontSize="40" Text="{DynamicResource App.NameWithVersion}"/>
+        <TextBlock FontSize="13" HorizontalAlignment="Center" Text="{DynamicResource App.Slogan}"/>
     </StackPanel>
 
 </custom:NiceWindow>

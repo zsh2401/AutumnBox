@@ -15,13 +15,13 @@
         <viewmodel:VMAbout/>
     </UserControl.DataContext>
     <DockPanel>
-        <StackPanel DockPanel.Dock="Bottom">
+        <StackPanel DockPanel.Dock="Bottom" Margin="0,0,0,10">
             <TextBlock HorizontalAlignment="Center" Text="www.atmb.top" TextDecorations="Underline">
                 <TextBlock.InputBindings>
                     <MouseBinding MouseAction="LeftClick" Command="{Binding OpenUrl}" CommandParameter="{DynamicResource UrlOfficialWebsite}"/>
                 </TextBlock.InputBindings>
             </TextBlock>
-            <TextBlock HorizontalAlignment="Center" Text="{DynamicResource UserLicenseTitle}" TextDecorations="Underline">
+            <TextBlock HorizontalAlignment="Center" Text="{DynamicResource UserLicense.Name}" TextDecorations="Underline">
                 <TextBlock.InputBindings>
                     <MouseBinding MouseAction="LeftClick" Command="{Binding ShowWindowDialog}" CommandParameter="License"/>
                 </TextBlock.InputBindings>
@@ -31,21 +31,20 @@
                     <MouseBinding MouseAction="LeftClick" Command="{Binding ShowWindowDialog}" CommandParameter="OpenSource"/>
                 </TextBlock.InputBindings>
             </TextBlock>
-            <TextBlock Margin="0,5,0,5" VerticalAlignment="Bottom" HorizontalAlignment="Center" Text="Copyright © 2017 - 2019 zsh2401,All Rights Reserved"/>
         </StackPanel>
 
         <StackPanel DockPanel.Dock="Top">
             <StackPanel Margin="10" Orientation="Horizontal">
                 <Image Source="/Resources/Drawable/Icon.ico" Height="30" Margin="5"/>
                 <StackPanel>
-                    <TextBlock FontSize="20" Text="{DynamicResource AppNameWithVersion}"/>
-                    <TextBlock Text="{DynamicResource AppDesc}" Foreground="{DynamicResource SecondaryTextBrush}"/>
+                    <TextBlock FontSize="20" Text="{DynamicResource  App.NameWithVersion}"/>
+                    <TextBlock Text="{DynamicResource App.Slogan}" Foreground="{DynamicResource SecondaryTextBrush}"/>
                 </StackPanel>
             </StackPanel>
 
-            <controls:Shield Margin="2" HorizontalAlignment="Center" Subject="{DynamicResource EMail}" Status="zsh2401@163.com" Color="#d8624c"/>
+            <controls:Shield Command="{Binding OpenUrl}" CommandParameter="mailto:zsh2401@163.com" Margin="2" HorizontalAlignment="Center" Subject="{DynamicResource EMail}" Status="zsh2401@163.com" Color="#d8624c"/>
             <controls:Shield Margin="2" HorizontalAlignment="Center" Subject="{DynamicResource QQGroup}" Status="246177486" Color="#1182c3"/>
-            
+
             <DockPanel Margin="30,10,30,0">
                 <TextBlock DockPanel.Dock="Right" Text="{x:Static util:VersionInfos.GUIString}"/>
                 <TextBlock DockPanel.Dock="Left" Text="{DynamicResource Version.GUI}"/>
@@ -58,12 +57,12 @@
                 <TextBlock DockPanel.Dock="Right" Text="{x:Static util:VersionInfos.LoggingString}"/>
                 <TextBlock DockPanel.Dock="Left" Text="{DynamicResource Version.Logging}"/>
             </DockPanel>
-            
+
             <DockPanel Margin="30,0,30,0">
                 <TextBlock DockPanel.Dock="Right" Text="{x:Static util:VersionInfos.OpenFxString}"/>
                 <TextBlock DockPanel.Dock="Left" Text="{DynamicResource Version.OpenFx}"/>
             </DockPanel>
-            
+
             <DockPanel Margin="30,0,30,0">
                 <TextBlock DockPanel.Dock="Right" Text="{x:Static util:VersionInfos.CoreLibString}"/>
                 <TextBlock DockPanel.Dock="Left" Text="{DynamicResource Version.CoreModules}"/>

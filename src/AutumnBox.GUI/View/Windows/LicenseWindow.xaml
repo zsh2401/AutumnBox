@@ -11,13 +11,14 @@
     WindowStartupLocation="CenterOwner"
     FontFamily="{DynamicResource AutumnBox.Font}"
         ShowInTaskbar="False"
-    NonClientAreaBackground="Transparent"
+    Background="{DynamicResource RegionBrush}"
+    Icon="/Resources/Drawable/icon.ico"
     ResizeMode="NoResize"
-        Title="{DynamicResource UserLicenseTitle}" Height="300" Width="400">
+        Title="{DynamicResource UserLicense.Name}" Height="300" Width="400">
     <DockPanel Margin="5">
-        <TextBlock DockPanel.Dock="Top" Text="{DynamicResource UserLicenseTitle}" FontSize="25"/>
+        <TextBlock DockPanel.Dock="Top" Text="{DynamicResource UserLicense.Name}" FontSize="25"/>
         <TextBox DockPanel.Dock="Bottom" ScrollViewer.CanContentScroll="True" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-         ScrollViewer.VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" Background="Transparent" Style="{x:Null}" IsReadOnly="True" Text="{DynamicResource UserLicenseContent}"/>
+         ScrollViewer.VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" Background="Transparent" Style="{x:Null}" IsReadOnly="True" Text="{DynamicResource UserLicense.Content}"/>
 
     </DockPanel>
 </custom:NiceWindow>

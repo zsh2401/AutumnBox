@@ -12,10 +12,11 @@
     xmlns:viewmodel="clr-namespace:AutumnBox.GUI.ViewModel"
     mc:Ignorable="d"
     ShowTitle="False"
-    Background="{DynamicResource DefaultBrush}"
+    Background="{DynamicResource RegionBrush}"
+    FontFamily="{DynamicResource AutumnBox.Font}"
     WindowStartupLocation="CenterScreen"
         Icon="/Resources/Drawable/icon.ico"
-        Title="{DynamicResource AppNameWithVersion}" MinHeight="625" MinWidth="940" Height="625" Width="940">
+        Title="{DynamicResource App.NameWithVersion}" MinHeight="625" MinWidth="940" Height="625" Width="940">
     <Window.InputBindings>
         <KeyBinding Modifiers="Ctrl" Key="F1" Command="{Binding OpenGoUrl}" CommandParameter="{DynamicResource AGoHelp}" />
         <KeyBinding Modifiers="Shift" Key="C" Command="{Binding Path=DataContext.OpenShell,ElementName=Menu}" CommandParameter="cmd.exe"/>
@@ -44,8 +45,8 @@
             <controls:ExtensionsFinder DockPanel.Dock="Right"/>
         </DockPanel>
         
-        <DockPanel VerticalAlignment="Bottom" Background="{DynamicResource DefaultBrush}">
-            <hc:Divider LineStroke="{DynamicResource ThirdlyTextBrush}" DockPanel.Dock="Top" Margin="0"/>
+        <DockPanel VerticalAlignment="Bottom" Background="{DynamicResource RegionBrush}">
+            <hc:Divider  DockPanel.Dock="Top" Margin="0"/>
             <controls:StatusBar  Height="22" DockPanel.Dock="Bottom"/>
         </DockPanel>
         
