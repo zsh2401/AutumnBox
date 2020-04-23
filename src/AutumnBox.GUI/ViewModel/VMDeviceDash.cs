@@ -282,6 +282,7 @@ namespace AutumnBox.GUI.ViewModel
         {
             Task.Run(() =>
             {
+                Thread.CurrentThread.Name = "Device Dash Refresh Thread";
                 while (true)
                 {
                     Refresh();

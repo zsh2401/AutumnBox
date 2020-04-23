@@ -45,6 +45,7 @@ namespace AutumnBox.Logging.Management
             }
             writeTask = Task.Run(() =>
             {
+                Thread.CurrentThread.Name = "FS Core Logger Thread";
                 using (var fs = logFile.Open(FileMode.OpenOrCreate, FileAccess.Write))
                 {
                     using (var sw = new StreamWriter(fs))
@@ -53,6 +54,7 @@ namespace AutumnBox.Logging.Management
                         {
                             if (safeLogQueue.Any() && safeLogQueue.TryDequeue(out ILog log))
                             {
+                                Logs.Add(log);
                                 sw.WriteLine(log.ToFormatedString());
                             }
                             Thread.Sleep(100);
@@ -69,7 +71,6 @@ namespace AutumnBox.Logging.Management
         public void Log(ILog log)
         {
             safeLogQueue.Enqueue(log);
-            Logs.Add(log);
             Console.WriteLine(log.ToFormatedString());
         }
 

@@ -99,6 +99,8 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
                     RedirectStandardOutput = true,
                 }
             };
+            this.fileName = fileName;
+            this.args = args;
         }
 
         /// <inheritdoc/>
@@ -165,11 +167,17 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
             {
                 throw new InvalidOperationException("Command procedure is not ready!");
             }
-            return Task.Run(Execute);
+            return Task.Run(() =>
+            {
+                System.Threading.Thread.CurrentThread.Name = $"Command Procedure Thread: {fileName} {string.Join(" ",args)}";
+                return Execute();
+            });
         }
 
         #region IDisposable Support
         private bool disposedValue = false; // 要检测冗余调用
+        private readonly string fileName;
+        private readonly string[] args;
 
         /// <summary>
         /// 内部的虚析构函数

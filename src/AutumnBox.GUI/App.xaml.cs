@@ -19,6 +19,7 @@ using AutumnBox.Leafx.Container;
 using AutumnBox.Leafx.Container.Support;
 using System.Linq;
 using System.Reflection;
+using System.Threading;
 using System.Windows;
 namespace AutumnBox.GUI
 {
@@ -36,6 +37,7 @@ namespace AutumnBox.GUI
         public App() : base()
         {
             Current = this;
+            Thread.CurrentThread.Name = "Application Main Thread";
         }
 
         /// <summary>

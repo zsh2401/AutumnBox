@@ -81,6 +81,7 @@ namespace AutumnBox.GUI.ViewModel
             GetAdbVersion();
             Task.Run(() =>
             {
+                Thread.CurrentThread.Name = "Status Bar Information Update Thread";
                 while (true)
                 {
                     UpdateCountOfTaskRunning();
