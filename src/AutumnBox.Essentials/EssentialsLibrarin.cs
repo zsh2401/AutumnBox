@@ -48,10 +48,9 @@ namespace AutumnBox.Essentials
             base.Ready();
             Current = this;
             SLogger<EssentialsLibrarin>.Info($"{nameof(EssentialsLibrarin)}'s ready");
-            notificationManager.Success("Essentials library is loaded");
 
-            extensionTaskManager.Start("EAutumnBoxUpdateChecker");
-            extensionTaskManager.Start("EAutumnBoxAdFetcher");
+            extensionTaskManager.Start(nameof(EAutumnBoxUpdateChecker));
+            extensionTaskManager.Start(nameof(EAutumnBoxAdFetcher));
 
             var componentLoader = new ClassComponentsLoader("AutumnBox.Essentials", rlake, this.GetType().Assembly);
             componentLoader.Do();
