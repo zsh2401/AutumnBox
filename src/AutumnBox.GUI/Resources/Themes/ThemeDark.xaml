@@ -5,9 +5,6 @@
         <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Theme.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
-    <FontFamily x:Key="AutumnBox.Font">Microsoft YaHei Light</FontFamily>
-    <BitmapImage x:Key="DefaultExtensionIcon">../Drawable/Extension/defaultExtIcon.png</BitmapImage>
-
     <SolidColorBrush x:Key="BlurWindowBackgroundBrush" Color="{DynamicResource SecondaryRegionColor}"/>
 
 </ResourceDictionary>

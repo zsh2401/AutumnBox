@@ -5,12 +5,19 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                
+                <!--基础语言-->
                 <ResourceDictionary Source="/Resources/Languages/zh-CN.xaml"/>
+                <!--可变更语言-->
+                <ResourceDictionary Source="/Resources/Languages/en-US.xaml"/>
+                
+                <!--基础主题-->
                 <ResourceDictionary Source="/Resources/Themes/ThemeLight.xaml"/>
-                <ResourceDictionary Source="/View/Custom/NiceWindowStyle.xaml"/>
-                <ResourceDictionary Source="/Resources/Urls.xaml"/>
+                <!--可变更主题-->
+                <ResourceDictionary Source="/Resources/Themes/ThemeLight.xaml"/>
+                
+                <ResourceDictionary Source="/Resources/SomeAppResources.xaml"/>
                 <ResourceDictionary Source="/Resources/Converters.xaml"/>
-                <ResourceDictionary Source="/Resources/ApiUrls.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

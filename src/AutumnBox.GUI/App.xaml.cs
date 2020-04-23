@@ -37,6 +37,10 @@ namespace AutumnBox.GUI
         public App() : base()
         {
             Current = this;
+            FrameworkElement.StyleProperty.OverrideMetadata(typeof(Window), new FrameworkPropertyMetadata
+            {
+                DefaultValue = FindResource(typeof(Window))
+            });
             Thread.CurrentThread.Name = "Application Main Thread";
         }
 

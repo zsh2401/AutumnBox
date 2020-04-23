@@ -33,7 +33,7 @@ namespace AutumnBox.GUI.Services.Impl
                 Settings.Default.Save();
             }
         }
-        private const int INDEX_OF_THEME = 1;
+        private const int INDEX_OF_THEME = 3;
 
         private readonly ResourceDictionary LightTheme;
         private readonly ResourceDictionary DarkTheme;

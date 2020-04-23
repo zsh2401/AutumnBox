@@ -13,7 +13,7 @@ namespace AutumnBox.GUI.Services.Impl
     [Component(Type = typeof(ILanguageManager))]
     class LanguageManagerV2 : ILanguageManager
     {
-        private const int INDEX_OF_LANG_RES = 0;
+        private const int INDEX_OF_LANG_RES = 1;
         private const string DEFAULT_LANGUAGE_CODE = "en-US";
         private const string DEFAULT_LOADED_LANGUAGE = "zh-CN";
 

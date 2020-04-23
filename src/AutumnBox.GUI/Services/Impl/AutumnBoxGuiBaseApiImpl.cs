@@ -74,7 +74,7 @@ namespace AutumnBox.GUI.Services.Impl
 
         public string GetCurrentLanguageCode()
         {
-            return App.Current.Resources["LanguageCode"].ToString();
+            return this.GetComponent<ILanguageManager>().Current.LanCode;
         }
 
         public dynamic GetMainWindow()
