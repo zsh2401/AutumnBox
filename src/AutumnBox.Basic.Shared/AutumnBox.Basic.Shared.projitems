@@ -16,6 +16,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Calling\HestExecutor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Calling\ICommandExecutor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Calling\CommandResultExtension.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ManagedAdb\CommandDriven\CommandDrivenHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MultipleDevices\DevicesCollection.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Util\ProcessExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\CommandResult.cs" />
@@ -25,7 +26,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Data\OutputReceivedEvent.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\INotifyDisposed.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ManagedAdb\SocketDriven\Future.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)StandardAdbManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ManagedAdb\CommandDriven\StandardAdbManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Device\DeviceBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Device\DeviceCommander.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Device\DeviceExtension.Execute.cs" />

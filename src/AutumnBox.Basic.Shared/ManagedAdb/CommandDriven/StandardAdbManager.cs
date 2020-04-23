@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Net;
 
-namespace AutumnBox.Basic
+namespace AutumnBox.Basic.ManagedAdb.CommandDriven
 {
     /// <summary>
     /// 标准的ADB管理器
@@ -16,7 +16,7 @@ namespace AutumnBox.Basic
         /// <summary>
         /// 内部维护尚未被析构的CPM
         /// </summary>
-        protected HashSet<ICommandProcedureManager>? NotDisposedCpmSet { get; set; }
+        protected HashSet<ICommandProcedureManager>? OpeningDpmSet { get; set; }
 
         /// <summary>
         /// ADB客户端文件夹
@@ -57,12 +57,9 @@ namespace AutumnBox.Basic
         /// </summary>
         public StandardAdbManager()
         {
-            NotDisposedCpmSet = new HashSet<ICommandProcedureManager>();
+            OpeningDpmSet = new HashSet<ICommandProcedureManager>();
             AdbClientDirectory = InitializeClientFiles();
-            var oldEnvPath = Environment.GetEnvironmentVariable("PATH");
-            Environment.SetEnvironmentVariable("PATH", $"{AdbClientDirectory};{oldEnvPath}");
             ServerEndPoint = StartServer();
-            Environment.SetEnvironmentVariable("ANDROID_ADB_SERVER_PORT", ServerEndPoint.Port.ToString());
         }
 
         /// <summary>
@@ -75,7 +72,25 @@ namespace AutumnBox.Basic
         /// 初始化服务器
         /// </summary>
         /// <returns></returns>
-        protected abstract IPEndPoint StartServer();
+        protected virtual IPEndPoint StartServer(ushort port = 6605)
+        {
+            using var cmd = new CommandProcedure()
+            {
+                FileName = AdbExecutableFile.ToString(),
+                Arguments = $"-P{port} start-server",
+                DirectExecute = true,
+            };
+            cmd.InitializeAdbEnvironment(AdbClientDirectory, port);
+
+            int line = 0;
+            cmd.OutputReceived += (s, e) =>
+            {
+                line++;
+                SLogger.Info(this, $"statring adb server {line}:{e.Text}");
+            };
+            cmd.Execute();
+            return new IPEndPoint(IPAddress.Parse("127.0.0.1"), port);
+        }
 
         /// <summary>
         /// 杀死服务器
@@ -84,7 +99,14 @@ namespace AutumnBox.Basic
         {
             lock (concurrentLock)
             {
-                using var cmd = new CommandProcedure(AdbExecutableFile.ToString(), $"-P{ServerEndPoint.Port} kill-server");
+                using var cmd = new CommandProcedure()
+                {
+                    FileName = AdbExecutableFile.ToString(),
+                    Arguments = $"-P{ServerEndPoint.Port} kill-server",
+                    DirectExecute = true,
+                };
+                cmd.InitializeAdbEnvironment(AdbClientDirectory, (ushort)ServerEndPoint.Port);
+
                 int line = 0;
                 cmd.OutputReceived += (s, e) =>
                 {
@@ -102,14 +124,14 @@ namespace AutumnBox.Basic
         /// <returns></returns>
         public ICommandProcedureManager OpenCommandProcedureManager()
         {
+            if (disposedValue)
+            {
+                throw new ObjectDisposedException(nameof(StandardAdbManager));
+            }
             lock (concurrentLock)
             {
-                if (disposedValue)
-                {
-                    throw new ObjectDisposedException(nameof(StandardAdbManager));
-                }
                 var cpm = new ProcedureManager(AdbClientDirectory, (ushort)ServerEndPoint.Port);
-                NotDisposedCpmSet?.Add(cpm);
+                OpeningDpmSet?.Add(cpm);
                 cpm.Disposed += Cpm_Disposed;
                 return cpm;
             }
@@ -125,12 +147,17 @@ namespace AutumnBox.Basic
             if (sender is ICommandProcedureManager cpm)
             {
                 cpm.Disposed -= Cpm_Disposed;
-                NotDisposedCpmSet?.Remove(cpm);
+                OpeningDpmSet?.Remove(cpm);
             }
         }
 
         #region IDisposable Support
         private bool disposedValue = false; // 要检测冗余调用
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        public event EventHandler? Disposed;
 
         /// <summary>
         /// 析构
@@ -140,42 +167,39 @@ namespace AutumnBox.Basic
         {
             if (!disposedValue)
             {
+                var _notDisposedCpm = OpeningDpmSet;
+                OpeningDpmSet = null;
                 if (disposing)
                 {
-                    // TODO: 释放托管状态(托管对象)。
-                }
-                var _notDisposedCpm = NotDisposedCpmSet;
-                NotDisposedCpmSet = null;
-                foreach (var cpm in _notDisposedCpm)
-                {
-                    try
+                    foreach (var cpm in _notDisposedCpm)
                     {
-                        SLogger<StandardAdbManager>.CDebug("disposing");
-                        cpm.Dispose();
-                        SLogger<StandardAdbManager>.CDebug("disposed");
-                    }
-                    catch (Exception e)
-                    {
-                        SLogger<StandardAdbManager>.CDebug("can not dispose", e);
+                        try
+                        {
+                            cpm.Dispose();
+                        }
+                        catch (Exception e)
+                        {
+                            SLogger<StandardAdbManager>.CDebug("can not dispose", e);
+                        }
                     }
                 }
-                _notDisposedCpm.Clear();
-
+                _notDisposedCpm!.Clear();
                 KillServer();
                 // TODO: 释放未托管的资源(未托管的对象)并在以下内容中替代终结器。
                 // TODO: 将大型字段设置为 null。
                 disposedValue = true;
+                Disposed?.Invoke(this, new EventArgs());
             }
         }
 
         /// <summary>
         /// 终结函数
         /// </summary>
-        //~StandardAdbManager()
-        //{
-        //    // 请勿更改此代码。将清理代码放入以上 Dispose(bool disposing) 中。
-        //    Dispose(false);
-        //}
+        ~StandardAdbManager()
+        {
+            // 请勿更改此代码。将清理代码放入以上 Dispose(bool disposing) 中。
+            Dispose(false);
+        }
 
         /// <summary>
         /// 接口实现
@@ -185,7 +209,7 @@ namespace AutumnBox.Basic
             // 请勿更改此代码。将清理代码放入以上 Dispose(bool disposing) 中。
             Dispose(true);
             // TODO: 如果在以上内容中替代了终结器，则取消注释以下行。
-            //GC.SuppressFinalize(this);
+            GC.SuppressFinalize(this);
         }
         #endregion
     }

@@ -47,7 +47,11 @@ namespace AutumnBox.Basic.Calling
             if (Environment.OSVersion.Platform == PlatformID.Win32NT)
             {
                 var logger = LoggerFactory.Auto(nameof(ProcessExtensions));
-                var cmd = new CommandProcedure("cmd.exe", $"/C taskkill /F /PID {proc.Id}");
+                var cmd = new CommandProcedure()
+                {
+                    FileName = "taskkill",
+                    Arguments = $"/F /PID { proc.Id }"
+                };
             }
             else
             {

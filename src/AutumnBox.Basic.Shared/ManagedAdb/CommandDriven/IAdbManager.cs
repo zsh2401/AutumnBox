@@ -1,4 +1,5 @@
-﻿using AutumnBox.Basic.ManagedAdb.CommandDriven;
+﻿using AutumnBox.Basic.Data;
+using AutumnBox.Basic.ManagedAdb.CommandDriven;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -10,7 +11,7 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
     /// <summary>
     /// Adb管理器
     /// </summary>
-    public interface IAdbManager : IDisposable
+    public interface IAdbManager : IDisposable, INotifyDisposed
     {
         /// <summary>
         /// 获取管理器

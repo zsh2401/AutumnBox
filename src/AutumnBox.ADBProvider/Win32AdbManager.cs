@@ -1,7 +1,4 @@
-﻿using AutumnBox.Basic;
-using AutumnBox.Basic.ManagedAdb;
-using AutumnBox.Basic.ManagedAdb.CommandDriven;
-using AutumnBox.Logging;
+﻿using AutumnBox.Basic.ManagedAdb.CommandDriven;
 using System;
 using System.IO;
 using System.Net;
@@ -11,6 +8,9 @@ namespace AutumnBox.ADBProvider
 {
     public class Win32AdbManager : StandardAdbManager, IAdbManager
     {
+        private static readonly string[] files = { "adb.exe", "AdbWinApi.dll", "AdbWinUsbApi.dll", "fastboot.exe", "libwinpthread-1.dll" };
+        private const string FILES_NAMESPACE = "AutumnBox.ADBProvider.adb_tools";
+
         protected override DirectoryInfo InitializeClientFiles()
         {
             string temp = Environment.GetEnvironmentVariable("TEMP");
@@ -21,26 +21,16 @@ namespace AutumnBox.ADBProvider
             return toolsDir;
         }
 
-        protected override IPEndPoint StartServer()
+        protected override IPEndPoint StartServer(ushort port = 6605)
         {
+            //在随机端口启动ADB服务
             var random = new Random();
-            ushort port;
+            ushort _randomPort;
             do
             {
-                port = (ushort)random.Next(IPEndPoint.MinPort, IPEndPoint.MaxPort);
-            } while (PortIsUsinngNow(port));
-            using (var cmd =
-                new CommandProcedure("adb.exe", $"-P{port} start-server"))
-            {
-                cmd.KillChildWhenDisposing = false;
-                cmd.OutputReceived += (s, e) =>
-                {
-                    SLogger<Win32AdbManager>.Info($"adb server starting: {e.Text}");
-                };
-                cmd.Disposed += (s, e) => SLogger<Win32AdbManager>.Info("Command start-adb disposed");
-                cmd.Execute();
-            }
-            return new IPEndPoint(IPAddress.Parse("127.0.0.1"), port);
+                _randomPort = (ushort)random.Next(IPEndPoint.MinPort, IPEndPoint.MaxPort);
+            } while (PortIsUsinngNow(_randomPort));
+            return base.StartServer(_randomPort);
         }
 
         private bool PortIsUsinngNow(ushort port)
@@ -61,9 +51,6 @@ namespace AutumnBox.ADBProvider
             }
             return inUse;
         }
-
-        private static readonly string[] files = { "adb.exe", "AdbWinApi.dll", "AdbWinUsbApi.dll", "fastboot.exe", "libwinpthread-1.dll" };
-        private const string FILES_NAMESPACE = "AutumnBox.ADBProvider.adb_tools";
 
         public void ExtractFilesTo(DirectoryInfo dir)
         {

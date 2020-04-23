@@ -1,11 +1,9 @@
 ﻿#nullable enable
 using AutumnBox.Basic.Data;
-using AutumnBox.Logging;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Diagnostics;
-using System.IO;
-using System.Linq;
 using System.Management;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,7 +13,7 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
     /// <summary>
     /// 基础的命令流程
     /// </summary>
-    public class CommandProcedure : ICommandProcedure, INotifyDisposed
+    public sealed class CommandProcedure : ICommandProcedure, INotifyDisposed
     {
         /// <summary>
         /// 当前正在执行的进程
@@ -63,7 +61,32 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
         /// <summary>
         /// 指示析构模式
         /// </summary>
-        public bool KillChildWhenDisposing { get; set; } = true;
+        public bool KillChildProcessWhenDisposing { get; set; } = true;
+
+        /// <summary>
+        /// 目标文件名
+        /// </summary>
+        public string FileName { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 参数
+        /// </summary>
+        public string Arguments { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 直接执行亦或使用cmd.exe套壳执行
+        /// </summary>
+        public bool DirectExecute { get; set; } = false;
+
+        /// <summary>
+        /// 额外的Path环境变量
+        /// </summary>
+        public List<string> ExtraPathVariables { get; } = new List<string>();
+
+        /// <summary>
+        /// 额外的环境变量
+        /// </summary>
+        public StringDictionary ExtraEnvironmentVariables { get; } = new StringDictionary();
 
         /// <summary>
         /// 构建命令
@@ -72,35 +95,9 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
         /// <param name="port"></param>
         /// <param name="adbToolsDir"></param>
         /// <param name="args"></param>
-        public CommandProcedure(string fileName, params string[] args
-            )
+        public CommandProcedure()
         {
-            if (string.IsNullOrEmpty(fileName))
-            {
-                throw new ArgumentException("message", nameof(fileName));
-            }
-
-
-            if (args is null)
-            {
-                throw new ArgumentNullException(nameof(args));
-            }
-
             outputBuilder = new OutputBuilder();
-            process = new Process()
-            {
-                StartInfo = new ProcessStartInfo()
-                {
-                    FileName = fileName,
-                    Arguments = string.Join(" ", args),
-                    UseShellExecute = false,
-                    CreateNoWindow = true,
-                    RedirectStandardError = true,
-                    RedirectStandardOutput = true,
-                }
-            };
-            this.fileName = fileName;
-            this.args = args;
         }
 
         /// <inheritdoc/>
@@ -117,7 +114,7 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
             {
                 Status = CommandStatus.Executing;
                 Executing?.Invoke(this, new EventArgs());
-                process!.Start();
+                process = Process.Start(GetStartInfo());
                 process.OutputDataReceived += Process_OutputDataReceived;
                 process.ErrorDataReceived += Process_ErrorDataReceived;
                 process.BeginOutputReadLine();
@@ -136,6 +133,36 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
             }
             Finished?.Invoke(this, new EventArgs());
             return Result;
+        }
+
+        /// <summary>
+        /// 获取进程启动信息
+        /// </summary>
+        /// <returns></returns>
+        private ProcessStartInfo GetStartInfo()
+        {
+            var fileName = DirectExecute ? FileName : "cmd.exe";
+            var args = DirectExecute ? Arguments : $"/c {FileName} {Arguments}";
+            var pStartInfo = new ProcessStartInfo(fileName, args)
+            {
+                CreateNoWindow = true,
+                UseShellExecute = false,
+                RedirectStandardError = true,
+                RedirectStandardOutput = true
+            };
+
+            StringBuilder pathEnvSb = new StringBuilder(pStartInfo.EnvironmentVariables[CommandDrivenHelper.ENV_KEY_PATH]);
+            ExtraPathVariables.ForEach(p =>
+            {
+                pathEnvSb.Insert(0, $"{p};");
+            });
+            pStartInfo.EnvironmentVariables[CommandDrivenHelper.ENV_KEY_PATH] = pathEnvSb.ToString();
+
+            foreach (string key in ExtraEnvironmentVariables.Keys)
+            {
+                pStartInfo.EnvironmentVariables[key] = ExtraEnvironmentVariables[key];
+            }
+            return pStartInfo;
         }
 
         /// <summary>
@@ -169,42 +196,24 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
             }
             return Task.Run(() =>
             {
-                System.Threading.Thread.CurrentThread.Name = $"Command Procedure Thread: {fileName} {string.Join(" ",args)}";
+                System.Threading.Thread.CurrentThread.Name = $"Command Procedure Thread: {FileName} {string.Join(" ", Arguments)}";
                 return Execute();
             });
         }
 
-        #region IDisposable Support
-        private bool disposedValue = false; // 要检测冗余调用
-        private readonly string fileName;
-        private readonly string[] args;
-
-        /// <summary>
-        /// 内部的虚析构函数
-        /// </summary>
-        /// <param name="disposing"></param>
-        protected virtual void Dispose(bool disposing)
+        /// <inheritdoc/>
+        public void Cancel()
         {
-            if (!disposedValue)
+            if (Status == CommandStatus.Executing)
             {
-                if (disposing)
+                if (KillChildProcessWhenDisposing)
                 {
-                    // TODO: 释放托管状态(托管对象)。
+                    GreateKill(process!.Id);
                 }
-                if (Status != CommandStatus.Ready)
+                else
                 {
-                    process!.OutputDataReceived -= Process_OutputDataReceived;
-                    process!.ErrorDataReceived -= Process_ErrorDataReceived;
-                    Cancel();
-                    process?.Dispose();
+                    process!.Kill();
                 }
-
-                // TODO: 释放未托管的资源(未托管的对象)并在以下内容中替代终结器。
-                // TODO: 将大型字段设置为 null。
-                process = null;
-                outputBuilder = null;
-                disposedValue = true;
-                Disposed?.Invoke(this, new EventArgs());
             }
         }
 
@@ -226,9 +235,60 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
             }
             catch
             {
-                //SLogger<MyCommandProcedure>.Warn("Can not kill process", e);
                 /* process already exited */
             }
+        }
+        
+        #region IDisposable Support
+
+        /// <summary>
+        /// 指示是否被释放
+        /// </summary>
+        private bool disposedValue = false;
+
+        /// <summary>
+        /// 内部的虚析构函数
+        /// </summary>
+        /// <param name="disposing"></param>
+        private void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    // TODO: 释放托管状态(托管对象)。
+                    if (Status != CommandStatus.Ready)
+                    {
+                        if (process != null)
+                        {
+                            process.OutputDataReceived -= Process_OutputDataReceived;
+                            process.ErrorDataReceived -= Process_ErrorDataReceived;
+                            process.Dispose();
+                        }
+                    }
+                }
+                if (Status != CommandStatus.Ready)
+                {
+                    Cancel();
+                }
+
+                // TODO: 释放未托管的资源(未托管的对象)并在以下内容中替代终结器。
+                // TODO: 将大型字段设置为 null。
+                process = null;
+                outputBuilder = null;
+                disposedValue = true;
+                Disposed?.Invoke(this, new EventArgs());
+            }
+        }
+
+
+
+        /// <summary>
+        /// 终结器
+        /// </summary>
+        ~CommandProcedure()
+        {
+            Dispose(false);
         }
 
         /// <inheritdoc/>
@@ -237,24 +297,8 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
             // 请勿更改此代码。将清理代码放入以上 Dispose(bool disposing) 中。
             Dispose(true);
             // TODO: 如果在以上内容中替代了终结器，则取消注释以下行。
-            // GC.SuppressFinalize(this);
+            GC.SuppressFinalize(this);
         }
         #endregion
-
-        /// <inheritdoc/>
-        public void Cancel()
-        {
-            if (Status == CommandStatus.Executing)
-            {
-                if (KillChildWhenDisposing)
-                {
-                    GreateKill(process!.Id);
-                }
-                else
-                {
-                    process!.Kill();
-                }
-            }
-        }
     }
 }

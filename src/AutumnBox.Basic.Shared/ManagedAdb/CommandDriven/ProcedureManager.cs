@@ -49,7 +49,12 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
         {
             lock (openCommandLock)
             {
-                var commandProcedure = new CommandProcedure(commandName, args);
+                var commandProcedure = new CommandProcedure()
+                {
+                    FileName = commandName,
+                    Arguments = string.Join(" ", args)
+                };
+                commandProcedure.InitializeAdbEnvironment(this.adbClientDir, this.adbPort);
                 commandProcedure.Disposed += CommandProcedure_Disposed;
                 notDisposeds?.Add(commandProcedure);
                 return commandProcedure;
