@@ -50,6 +50,7 @@ namespace AutumnBox.Logging.Management
                 {
                     using (var sw = new StreamWriter(fs))
                     {
+                        sw.AutoFlush = true;
                         while (!writeTokenSource.IsCancellationRequested)
                         {
                             if (safeLogQueue.Any() && safeLogQueue.TryDequeue(out ILog log))
@@ -57,7 +58,7 @@ namespace AutumnBox.Logging.Management
                                 Logs.Add(log);
                                 sw.WriteLine(log.ToFormatedString());
                             }
-                            Thread.Sleep(100);
+                            Thread.Sleep(10);
                         }
                     }
                 }

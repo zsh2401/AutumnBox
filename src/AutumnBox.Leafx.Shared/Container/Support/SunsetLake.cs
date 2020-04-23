@@ -53,7 +53,7 @@ namespace AutumnBox.Leafx.Container.Support
         /// <returns></returns>
         public object GetComponent(string id)
         {
-            SLogger<SunsetLake>.CDebug($"Getting {id}");
+            //SLogger<SunsetLake>.CDebug($"Getting {id}");
             if (factories.TryGetValue(id, out ComponentFactory factory))
             {
                 return factory();
@@ -71,7 +71,7 @@ namespace AutumnBox.Leafx.Container.Support
         /// <param name="factory"></param>
         public void RegisterComponent(string id, ComponentFactory factory)
         {
-            SLogger<SunsetLake>.CDebug($"Registering {id}");
+            //SLogger<SunsetLake>.CDebug($"Registering {id}");
             factories[id] = factory;
         }
 
