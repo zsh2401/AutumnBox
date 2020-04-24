@@ -13,14 +13,14 @@ namespace AutumnBox.Logging.Management
     /// </summary>
     public class FSCoreLogger : ICoreLogger
     {
+        private readonly object _writeLock = new object();
+        private FileStream fileStream;
+        private StreamWriter streamWriter;
+
         /// <summary>
         /// 获取所有的log
         /// </summary>
         public ObservableCollection<ILog> Logs { get; private set; }
-
-        private readonly ConcurrentQueue<ILog> safeLogQueue;
-        private Task writeTask;
-        private readonly CancellationTokenSource writeTokenSource;
         private readonly FileInfo logFile;
 
         /// <summary>
@@ -30,46 +30,35 @@ namespace AutumnBox.Logging.Management
         public FSCoreLogger(FileInfo logFile)
         {
             Logs = new ObservableCollection<ILog>();
-            safeLogQueue = new ConcurrentQueue<ILog>();
-            writeTokenSource = new CancellationTokenSource();
             this.logFile = logFile ?? throw new ArgumentNullException(nameof(logFile));
         }
+
         /// <summary>
         /// 初始化并开始工作
         /// </summary>
         public void Initialize()
         {
-            if (writeTask?.Status == TaskStatus.Running)
+            fileStream = logFile.Open(FileMode.OpenOrCreate, FileAccess.Write);
+            streamWriter = new StreamWriter(fileStream)
             {
-                throw new InvalidOperationException($"{nameof(FSCoreLogger)} is already running");
-            }
-            writeTask = Task.Run(() =>
+                AutoFlush = true
+            };
+        }
+
+        /// <summary>
+        /// Log内部实现
+        /// </summary>
+        /// <param name="log"></param>
+        private void LogInternal(ILog log)
+        {
+            lock (_writeLock)//同步锁
             {
-                Thread.CurrentThread.Name = "FS Core Logger Thread";
-                using (var fs = logFile.Open(FileMode.OpenOrCreate, FileAccess.Write))
-                {
-                    using (var sw = new StreamWriter(fs))
-                    {
-                        sw.AutoFlush = true;
-                        while (!writeTokenSource.IsCancellationRequested)
-                        {
-                            if (safeLogQueue.Any() && safeLogQueue.TryDequeue(out ILog log))
-                            {
-                                try
-                                {
-                                    Logs.Add(log);
-                                }
-                                catch { }
 #if !DEBUG
-                                Console.WriteLine(log.ToFormatedString());
+                Console.WriteLine(log.ToFormatedString());
 #endif
-                                sw.WriteLine(log.ToFormatedString());
-                            }
-                            Thread.Sleep(10);
-                        }
-                    }
-                }
-            });
+                Logs.Add(log);
+                streamWriter.WriteLine(log.ToFormatedString());
+            }
         }
 
         /// <summary>
@@ -78,18 +67,60 @@ namespace AutumnBox.Logging.Management
         /// <param name="log"></param>
         public void Log(ILog log)
         {
-            safeLogQueue.Enqueue(log);
 #if DEBUG
             Console.WriteLine(log.ToFormatedString());
 #endif
+            Task.Run(() =>
+            {
+                LogInternal(log);
+            });
+        }
+
+        #region IDisposable Support
+        private bool disposedValue = false; // 要检测冗余调用
+
+        /// <summary>
+        /// 内部释放实现
+        /// </summary>
+        /// <param name="disposing"></param>
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    streamWriter.Dispose();
+                    fileStream.Dispose();
+                    // TODO: 释放托管状态(托管对象)。
+                }
+                streamWriter = null;
+                fileStream = null;
+                // TODO: 释放未托管的资源(未托管的对象)并在以下内容中替代终结器。
+                // TODO: 将大型字段设置为 null。
+
+                disposedValue = true;
+            }
         }
 
         /// <summary>
-        /// 析构并释放资源
+        /// 终结器
+        /// </summary>
+        ~FSCoreLogger()
+        {
+            // 请勿更改此代码。将清理代码放入以上 Dispose(bool disposing) 中。
+            Dispose(false);
+        }
+
+        /// <summary>
+        /// 释放器
         /// </summary>
         public void Dispose()
         {
-            writeTokenSource.Cancel();
+            // 请勿更改此代码。将清理代码放入以上 Dispose(bool disposing) 中。
+            Dispose(true);
+            // TODO: 如果在以上内容中替代了终结器，则取消注释以下行。
+            GC.SuppressFinalize(this);
         }
+        #endregion
     }
 }

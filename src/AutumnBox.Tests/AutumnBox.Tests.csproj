@@ -107,6 +107,7 @@
     <Compile Include="Basic\MADB\BooterTest.cs" />
     <Compile Include="Basic\MADB\Win32ManagerTest.cs" />
     <Compile Include="Leafx\ClassTextTest.cs" />
+    <Compile Include="Logging\LoggerTest.cs" />
     <Compile Include="OpenFX\ExtInf\ExtInfExtensionTest.cs" />
     <Compile Include="OpenFX\LeafExtension\LeafExtensionTest.cs" />
     <Compile Include="OpenFX\Leafx\NamespaceComponentLoaderTest.cs" />

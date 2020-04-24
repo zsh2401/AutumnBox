@@ -20,6 +20,10 @@ namespace AutumnBox.Logging.Management
         public const string LOG_DIR = "logs";
         static LoggingManager()
         {
+            if (!Directory.Exists(LOG_DIR))
+            {
+                Directory.CreateDirectory(LOG_DIR);
+            }
             var logFileName = DateTime.Now.ToString("yyy-MM-dd_HH-mm-ss") + ".log";
             var logFile = new FileInfo(Path.Combine(LOG_DIR, logFileName));
             CoreLogger = new FSCoreLogger(logFile);
