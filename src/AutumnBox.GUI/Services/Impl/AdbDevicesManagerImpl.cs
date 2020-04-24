@@ -10,14 +10,17 @@ using System.Threading.Tasks;
 namespace AutumnBox.GUI.Services.Impl
 {
     [Component(Type = typeof(IAdbDevicesManager))]
-    sealed class AdbDevicesManagerImpl : IAdbDevicesManager,IDisposable
+    sealed class AdbDevicesManagerImpl : IAdbDevicesManager, IDisposable
     {
         public IDevice SelectedDevice
         {
             get => _selectedDevice; set
             {
                 _selectedDevice = value;
-                DeviceSelectionChanged?.Invoke(this, new EventArgs());
+                App.Current.Dispatcher.Invoke(() =>
+                {
+                    DeviceSelectionChanged?.Invoke(this, new EventArgs());
+                });
             }
         }
         private IDevice _selectedDevice;
@@ -28,17 +31,7 @@ namespace AutumnBox.GUI.Services.Impl
 
         private DevicesMonitor devicesMonitor = new DevicesMonitor();
 
-        public event DevicesChangedHandler ConnectedDevicesChanged
-        {
-            add
-            {
-                devicesMonitor.DevicesChanged += value;
-            }
-            remove
-            {
-                devicesMonitor.DevicesChanged -= value;
-            }
-        }
+        public event DevicesChangedHandler ConnectedDevicesChanged;
 
         public AdbDevicesManagerImpl()
         {
@@ -56,6 +49,10 @@ namespace AutumnBox.GUI.Services.Impl
             {
                 SelectedDevice = null;
             }
+            App.Current.Dispatcher.Invoke(() =>
+            {
+                ConnectedDevicesChanged?.Invoke(this, e);
+            });
         }
 
         public void Initialize()

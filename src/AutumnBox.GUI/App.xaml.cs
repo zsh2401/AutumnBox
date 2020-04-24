@@ -1,3 +1,4 @@
+//#define STRICT_CHECK
 /* =============================================================================*\
 *
 * Filename: App.xaml.cs
@@ -61,6 +62,7 @@ namespace AutumnBox.GUI
                 Shutdown(0);
                 return;
             };
+
 #if DEBUG && STRICT_CHECK
             if (!Lang.FileCheck())
             {

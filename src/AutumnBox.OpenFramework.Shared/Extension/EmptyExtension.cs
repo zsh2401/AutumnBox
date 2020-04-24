@@ -14,6 +14,7 @@
     [ExtPriority(ExtPriority.NORMAL)]
     [ExtDeveloperMode(false)]
     [ExtHidden(false)]
+    [ExtNormalRunnablePolicy]
     public class EmptyExtension
     {
     }

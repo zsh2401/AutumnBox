@@ -97,18 +97,12 @@ namespace AutumnBox.GUI.ViewModel
         private void Load()
         {
             var libsManager = OpenFx.Lake.Get<ILibsManager>();
+            var devManager = OpenFx.Lake.Get<IAdbDevicesManager>();
             Docks = from dock in libsManager.GetAllExtensions().ToDocks()
                     where !dock.ExtensionInfo.Hidden()
                     where (!dock.ExtensionInfo.DeveloperMode()) || Settings.Default.DeveloperMode
                     where (!dock.ExtensionInfo.Regions().Any()) || dock.ExtensionInfo.Regions().Contains(LanguageManager.Current.LanCode)
                     select dock;
-            //Docks = libsManager.GetAllExtensions().ToDocks()
-            //    .Where(dock =>
-            //    {
-            //        SLogger<VMExtensionsFinder>.CDebug($"hide: {dock.ExtensionInfo.Hidden()}");
-            //        return !dock.ExtensionInfo.Hidden();
-            //    });
-            //SLogger<VMExtensionsFinder>.CDebug($"There are {Docks.Count()} dock(s)");
             Order();
         }
 

@@ -50,6 +50,7 @@
     <Compile Include="Extensions\EAutumnBoxExtensionStore.cs" />
     <Compile Include="Extensions\EAutumnBoxUpdateChecker.cs" />
     <Compile Include="EssentialsLibrarin.cs" />
+    <Compile Include="Extensions\EDeviceRebooter.cs" />
     <Compile Include="Extensions\EExtensionInstaller.cs" />
     <Compile Include="Extensions\EDevPanelSwitcher.cs" />
     <Compile Include="ExternalXCards\AdXCard.cs" />

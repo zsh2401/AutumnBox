@@ -17,6 +17,7 @@ using AutumnBox.Leafx.ObjectManagement;
 using AutumnBox.OpenFramework.Management.ExtTask;
 using AutumnBox.OpenFramework.Exceptions;
 using AutumnBox.OpenFramework.Management.ExtInfo;
+using AutumnBox.Logging;
 
 namespace AutumnBox.GUI.Model
 {
@@ -83,20 +84,14 @@ namespace AutumnBox.GUI.Model
             {
                 ExecuteImpl();
             });
-            devicesManager.DeviceSelectionChanged += SelectedDevice;
+            devicesManager.DeviceSelectionChanged += DeviceSelectionChanged;
         }
 
-        private void SelectedDevice(object sender, EventArgs e)
+        private void DeviceSelectionChanged(object sender, EventArgs e)
         {
-            bool isNM = ExtensionInfo.RequiredDeviceState() == AutumnBoxExtension.NoMatter;
-            if (devicesManager.SelectedDevice == null)
-            {
-                Execute.CanExecuteProp = isNM;
-            }
-            else
-            {
-                Execute.CanExecuteProp = isNM || ExtensionInfo.RequiredDeviceState().HasFlag(devicesManager.SelectedDevice.State);
-            }
+            SLogger.Info($"{ExtensionInfo.Name()}'s extension dock", "device selection changed: " + (devicesManager.SelectedDevice?.ToString() ?? "none"));
+            SLogger.Info($"{ExtensionInfo.Name()}'s extension dock", $"runnable?{ExtensionInfo.IsRunnableCheck(devicesManager.SelectedDevice)}");
+            Execute.CanExecuteProp = ExtensionInfo.IsRunnableCheck(devicesManager.SelectedDevice);
         }
 
         private void ExecuteImpl()

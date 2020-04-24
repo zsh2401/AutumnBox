@@ -74,6 +74,10 @@ namespace AutumnBox.OpenFramework.Management.ExtTask
 
         private IExtensionInfo FindExtensionTypeById(string id)
         {
+            if (libsManager == null)
+            {
+                throw new InvalidOperationException("Librarian has not been inject to here!");
+            }
             var types = (from inf in libsManager.GetAllExtensions()
                          where inf.Id == id
                          select inf);
@@ -104,11 +108,7 @@ namespace AutumnBox.OpenFramework.Management.ExtTask
         private void StateCheck(IExtensionInfo inf)
         {
             IDevice? currentDevice = deviceManager!.Selected;
-            bool isNoMatterDeviceState = (inf.RequiredDeviceState() == AutumnBoxExtension.NoMatter);
-            bool deviceStateCorrect = inf.RequiredDeviceState().HasFlag(currentDevice?.State ?? default);
-            bool runnable = isNoMatterDeviceState || deviceStateCorrect;
-
-            if (!runnable)
+            if (inf.IsRunnableCheck(currentDevice))
             {
                 throw new DeviceStateIsNotCorrectException(inf.RequiredDeviceState(), currentDevice?.State);
             }

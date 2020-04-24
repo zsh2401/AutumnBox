@@ -153,6 +153,26 @@ namespace AutumnBox.OpenFramework.Management.ExtInfo
         }
 
         /// <summary>
+        /// 可运行检查
+        /// </summary>
+        /// <param name="extInf"></param>
+        /// <param name="currentDevice"></param>
+        /// <returns></returns>
+        public static bool IsRunnableCheck(this IExtensionInfo extInf, IDevice? currentDevice)
+        {
+            const bool DEFAULT_VALUE = false;
+            try
+            {
+                var attr = (extInf.Metadata[ExtensionMetadataKeys.RUNNABLE_POLICY]() as ExtRunnableProlicyAttribute);
+                return attr!.IsRunnable(new RunnableCheckArgs(extInf, currentDevice));
+            }
+            catch
+            {
+                return DEFAULT_VALUE;
+            }
+        }
+
+        /// <summary>
         /// 获取是否隐藏
         /// </summary>
         /// <param name="extensionInfo"></param>

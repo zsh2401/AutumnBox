@@ -6,7 +6,7 @@ using AutumnBox.OpenFramework.Open;
 namespace AutumnBox.Essentials.Extensions
 {
     [ExtName("ExtDevPanel Switcher")]
-    [ExtHidden]
+    //[ExtHidden]
     [ExtDeveloperMode]
     [ExtIcon("Resources.Icons.devpanelswitcher.png")]
     class EDevPanelSwitcher : LeafExtensionBase

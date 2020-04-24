@@ -9,17 +9,7 @@ namespace AutumnBox.OpenFramework.Extension
         /// <summary>
         /// 键
         /// </summary>
-        public virtual string Key
-        {
-            get
-            {
-                if (_key != null) return _key;
-                return GetType().Name.TrimEnd("Attribute".ToCharArray());
-            }
-
-            protected set => _key = value;
-        }
-        private string? _key;
+        public virtual string Key { get; }
 
         /// <summary>
         /// 值
@@ -29,13 +19,17 @@ namespace AutumnBox.OpenFramework.Extension
         /// <summary>
         /// 标准键值对特性
         /// </summary>
-        public ExtensionInfoAttribute() { }
+        public ExtensionInfoAttribute()
+        {
+            Key = GetType().Name.TrimEnd("Attribute".ToCharArray());
+        }
         /// <summary>
         /// 标准键值对特性
         /// </summary>
         /// <param name="value"></param>
         public ExtensionInfoAttribute(object? value)
         {
+            Key = GetType().Name.TrimEnd("Attribute".ToCharArray());
             this.Value = value;
         }
         /// <summary>
