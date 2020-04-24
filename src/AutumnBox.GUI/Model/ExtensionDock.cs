@@ -89,8 +89,6 @@ namespace AutumnBox.GUI.Model
 
         private void DeviceSelectionChanged(object sender, EventArgs e)
         {
-            SLogger.Info($"{ExtensionInfo.Name()}'s extension dock", "device selection changed: " + (devicesManager.SelectedDevice?.ToString() ?? "none"));
-            SLogger.Info($"{ExtensionInfo.Name()}'s extension dock", $"runnable?{ExtensionInfo.IsRunnableCheck(devicesManager.SelectedDevice)}");
             Execute.CanExecuteProp = ExtensionInfo.IsRunnableCheck(devicesManager.SelectedDevice);
         }
 

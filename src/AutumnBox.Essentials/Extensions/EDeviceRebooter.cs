@@ -21,7 +21,7 @@ using AutumnBox.OpenFramework.Open.LKit;
 namespace AutumnBox.Essentials.Extensions
 {
     [ExtName("重启设备到恢复模式")]
-    [ExtRequiredDeviceStates(Basic.Device.DeviceState.Poweron)]
+    [ExtRequiredDeviceStates(DeviceState.Poweron)]
     public class EDeviceRebooter : LeafExtensionBase
     {
         [LMain]
@@ -30,8 +30,10 @@ namespace AutumnBox.Essentials.Extensions
             using (leafUI)
             {
                 leafUI.Show();
-                leafUI.DoYN("重启?", "是", "否");
-                device.Reboot2Recovery();
+                if (leafUI.DoYN("重启?", "是", "否"))
+                {
+                    device.Reboot2Recovery();
+                }
                 leafUI.Finish();
             }
         }

@@ -108,7 +108,7 @@ namespace AutumnBox.OpenFramework.Management.ExtTask
         private void StateCheck(IExtensionInfo inf)
         {
             IDevice? currentDevice = deviceManager!.Selected;
-            if (inf.IsRunnableCheck(currentDevice))
+            if (!inf.IsRunnableCheck(currentDevice))
             {
                 throw new DeviceStateIsNotCorrectException(inf.RequiredDeviceState(), currentDevice?.State);
             }
