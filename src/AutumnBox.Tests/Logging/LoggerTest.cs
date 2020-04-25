@@ -14,9 +14,11 @@
 * ==============================================================================
 */
 using AutumnBox.Logging;
+using AutumnBox.Logging.Management;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -28,33 +30,30 @@ namespace AutumnBox.Tests.Logging
     public class LoggerTest
     {
         [TestMethod]
-        public void PerformanceTest()
+        public void BufferedFsCoreLoggerSpeedTest()
         {
-            Stopwatch fisrtCallSW = new Stopwatch();
-            fisrtCallSW.Start();
-            SLogger<LoggerTest>.Info("First call");
-            fisrtCallSW.Stop();
-            SLogger<LoggerTest>.Info($"first call used time: {fisrtCallSW.ElapsedMilliseconds}ms");
-
-            var sw = new Stopwatch();
-            sw.Start();
-            Task.WaitAll(
-               Task.Run(WriteLog),
-               Task.Run(WriteLog),
-               Task.Run(WriteLog));
-            sw.Stop();
-            Debug.WriteLine("used " + sw.ElapsedMilliseconds + "ms");
+            LoggingManager.Use<BufferedFSCoreLogger>(false);
+            const int times = 1_000_000;
+            Task.WaitAll(Writing(1, times), Writing(1, times), Writing(1, times));
         }
-        int taskId = 0;
-        private const int time = 10000;
-        void WriteLog()
+
+        [TestMethod]
+        public void FsCoreLoggerSpeedTest()
         {
-            int mytask = taskId++;
-            for (int i = 0; i < time; i++)
+            //LoggingManager.Use<FSCoreLogger>(false);
+            const int times = 1_000_000;
+            Task.WaitAll(Writing(1, times), Writing(2, times), Writing(3, times));
+        }
+
+        public static async Task Writing(int taskId, int maxTime)
+        {
+            await Task.Run(() =>
             {
-                SLogger<LoggerTest>.Info($"{mytask}/{i++}");
-                SLogger<LoggerTest>.Info($"{mytask}/{i}");
-            }
+                for (int i = 0; i < maxTime; i++)
+                {
+                    SLogger<LoggerTest>.Info($"{taskId}/{i}");
+                }
+            });
         }
     }
 }

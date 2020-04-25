@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.Text;
 
 namespace AutumnBox.Logging.Management
@@ -13,15 +15,21 @@ namespace AutumnBox.Logging.Management
         /// <summary>
         /// 初始化
         /// </summary>
-        void Initialize();
+        void Initialize(ICoreLoggerInitializeArgs args);
+
         /// <summary>
         /// 处理日志
         /// </summary>
         /// <param name="log"></param>
         void Log(ILog log);
+
         /// <summary>
         /// 获取所有的日志
         /// </summary>
-        ObservableCollection<ILog> Logs { get; }
+        ILogsCollection Logs { get; }
+    }
+    public interface ILogsCollection : INotifyCollectionChanged, IEnumerable<ILog>, IEnumerable
+    {
+
     }
 }
