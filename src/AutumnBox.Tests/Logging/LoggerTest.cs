@@ -30,17 +30,17 @@ namespace AutumnBox.Tests.Logging
     public class LoggerTest
     {
         [TestMethod]
-        public void BufferedFsCoreLoggerSpeedTest()
+        public void EventDrivenFSCoreLoggerPerformanceTest()
         {
-            LoggingManager.Use<BufferedFSCoreLogger>(false);
+            LoggingManager.Use<EventDrivenFSCoreLogger>(false);
             const int times = 1_000_000;
             Task.WaitAll(Writing(1, times), Writing(1, times), Writing(1, times));
         }
 
         [TestMethod]
-        public void FsCoreLoggerSpeedTest()
+        public void BufferedFSCoreLoggerTest()
         {
-            //LoggingManager.Use<FSCoreLogger>(false);
+            LoggingManager.Use<BufferedFSCoreLogger>(false);
             const int times = 1_000_000;
             Task.WaitAll(Writing(1, times), Writing(2, times), Writing(3, times));
         }

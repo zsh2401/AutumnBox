@@ -19,7 +19,7 @@ namespace AutumnBox.Logging.Management
             {
                 if (_coreLogger == null)
                 {
-                    //Use<FSCoreLogger>();
+                    Use<BufferedFSCoreLogger>();
                 }
                 return _coreLogger;
             }

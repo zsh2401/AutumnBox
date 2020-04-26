@@ -12,6 +12,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Internal\LoggerImpl.Generic.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)LoggerExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\BufferedFSCoreLogger.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Management\EventDrivenFSCoreLogger.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\CoreLoggerBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\CoreLoggerInitializeArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\FSCoreLogger.cs" />

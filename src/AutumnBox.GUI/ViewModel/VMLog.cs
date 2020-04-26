@@ -9,7 +9,7 @@ namespace AutumnBox.GUI.ViewModel
 {
     class VMLog : ViewModelBase
     {
-        public ObservableCollection<ILog> Logs => loggingManager.CoreLogger.Logs;
+        public ILogsCollection Logs => loggingManager.CoreLogger.Logs;
 
         public string Title
         {

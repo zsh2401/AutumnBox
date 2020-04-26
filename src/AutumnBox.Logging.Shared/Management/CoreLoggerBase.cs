@@ -13,76 +13,113 @@
 *
 * ==============================================================================
 */
-using AutumnBox.Basic.Data;
 using System;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 
 namespace AutumnBox.Logging.Management
 {
-    abstract class CoreLoggerBase : ICoreLogger, INotifyDisposed
+    /// <summary>
+    /// 核心日志器的基础
+    /// </summary>
+    public abstract class CoreLoggerBase : ICoreLogger
     {
-        public ILogsCollection Logs => _logs;
-        private LogsCollection _logs = new LogsCollection();
-        private class LogsCollection : ObservableCollection<ILog>, ILogsCollection { }
-        protected void ThreadSafeAdd(ILog log)
+        /// <summary>
+        /// 已经记录过的日志
+        /// </summary>
+        public ILogsCollection Logs => LogsInner;
+
+        /// <summary>
+        /// 内部的Logs实现
+        /// </summary>
+        protected LogsCollection LogsInner { get; set; } = new LogsCollection();
+
+        /// <summary>
+        /// ILogsCollection的实现
+        /// </summary>
+        protected class LogsCollection : ObservableCollection<ILog>, ILogsCollection { }
+
+        private object _threadSafeLogsLock = new object();
+
+        /// <summary>
+        /// 线程安全地对Logs进行操作
+        /// </summary>
+        /// <param name="action"></param>
+        protected void ThreadSafeOperateLogsInner(Action action)
         {
-            lock (_logs)
+            if (action is null)
             {
-                _logs.Add(log);
+                throw new ArgumentNullException(nameof(action));
+            }
+
+            lock (_threadSafeLogsLock)
+            {
+                action();
             }
         }
-        protected void ThreadSafeResizeLogs()
+
+        /// <summary>
+        /// 异步地,线程安全地操作LogsInner
+        /// </summary>
+        /// <param name="action"></param>
+        /// <returns></returns>
+        protected async Task ThreadSafeOperateLogsInnerAsync(Action action)
         {
-            lock (_logs)
+            await Task.Run(() =>
             {
-                _logs.Clear();
-            }
+                ThreadSafeOperateLogsInner(action);
+            });
         }
-        protected Action<string> Writer { get; set; }
-        public void Initialize(ICoreLoggerInitializeArgs args)
-        {
-            OnInitialize(args);
-        }
-        protected virtual void OnInitialize(ICoreLoggerInitializeArgs args)
-        {
-            Writer = args.Writer;
-        }
-        public void Log(ILog log)
-        {
-            HandleLog(log);
-        }
-        protected abstract void HandleLog(ILog log);
-        protected virtual void DisposeManagedResource() { }
-        protected virtual void DisposeUnmanagedResources() { }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        /// <param name="args"></param>
+        public abstract void Initialize(ICoreLoggerInitializeArgs args);
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        /// <param name="log"></param>
+        public abstract void Log(ILog log);
 
         #region IDisposable Support
         private bool disposedValue = false; // 要检测冗余调用
 
+        /// <summary>
+        /// 释放后发生
+        /// </summary>
         public event EventHandler Disposed;
 
-        private void Dispose(bool disposing)
+        /// <summary>
+        /// 虚释放函数
+        /// </summary>
+        /// <param name="disposing"></param>
+        protected virtual void Dispose(bool disposing)
         {
             if (!disposedValue)
             {
                 if (disposing)
                 {
-                    DisposeManagedResource();
                 }
-                DisposeUnmanagedResources();
-                _logs = null;
+                LogsInner = null;
                 disposedValue = true;
                 Disposed?.Invoke(this, new EventArgs());
             }
         }
 
-        // TODO: 仅当以上 Dispose(bool disposing) 拥有用于释放未托管资源的代码时才替代终结器。
+        /// <summary>
+        /// 终结器
+        /// </summary>
         ~CoreLoggerBase()
         {
             // 请勿更改此代码。将清理代码放入以上 Dispose(bool disposing) 中。
             Dispose(false);
         }
 
-        // 添加此代码以正确实现可处置模式。
+        /// <summary>
+        /// 释放函数
+        /// </summary>
         public void Dispose()
         {
             // 请勿更改此代码。将清理代码放入以上 Dispose(bool disposing) 中。

@@ -6,78 +6,86 @@
 * Description: 
 *
 * Version: 1.0
-* Created: 2020/4/25 17:40:59
+* Created: 2020/4/27 1:27:36
 * Compiler: Visual Studio 2019
 *
 * Author: zsh2401
 *
 * ==============================================================================
 */
+
 using System;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace AutumnBox.Logging.Management
 {
-    class BufferedFSCoreLogger : CoreLoggerBase
+    /// <summary>
+    /// 缓冲的文件系统核心日志器
+    /// </summary>
+    public class BufferedFSCoreLogger : CoreLoggerBase
     {
-        private ConcurrentQueue<ILog> threadSafeBuffer = new ConcurrentQueue<ILog>();
+        private ConcurrentQueue<ILog> buffer = new ConcurrentQueue<ILog>();
         private FileStream fs;
         private StreamWriter sw;
-
-        private bool _cancelled = false;
-        protected override void OnInitialize(ICoreLoggerInitializeArgs args)
+        private Action<string> writer;
+        private DateTime programStartTime;
+        public override void Initialize(ICoreLoggerInitializeArgs args)
         {
-            base.OnInitialize(args);
+            programStartTime = Process.GetCurrentProcess().StartTime;
             fs = args.LogFile.Open(FileMode.OpenOrCreate, FileAccess.Write);
             sw = new StreamWriter(fs);
+            writer = args.Writer;
             Task.Run(() =>
             {
                 Thread.CurrentThread.Name = "BufferedFSCoreLogger Main Thread";
-                LoggingLoop();
+                Loop();
             });
         }
-
-        protected override void DisposeManagedResource()
+        private bool loopCancelled = false;
+        private void Loop()
         {
-            base.DisposeManagedResource();
-            _cancelled = true;
-            sw.Dispose();
-            fs.Dispose();
-        }
-
-        protected override void HandleLog(ILog log)
-        {
-            Task.Run(() =>
+            while (!loopCancelled)
             {
-                threadSafeBuffer.Enqueue(log);
-                ThreadSafeAdd(log);
-            });
-        }
-
-        private void LoggingLoop()
-        {
-            int time = 1;
-            while (!this._cancelled)
-            {
-                while (threadSafeBuffer.TryDequeue(out ILog logItem))
+                while (buffer.TryDequeue(out ILog log))
                 {
-                    sw.WriteLine(logItem.ToFormatedString());
-                    Writer?.Invoke(logItem.ToFormatedString());
+                    var fmtString = GetString(log);
+#if! DEBUG
+                    writer(fmtString);
+#endif
+                    sw.WriteLine(fmtString);
                 }
-                if (time % 102400 == 0)
-                {
-                    time = 1;
-                    ThreadSafeResizeLogs();
-                }
-                Thread.Sleep(10);
+                Thread.Sleep(10);//经过测试,性能最优的间隔
             }
+        }
+
+        private string GetString(ILog log)
+        {
+            TimeSpan span = log.Time - programStartTime;
+            string timeStr = $"{(int)span.TotalHours}:{span.Minutes}:{span.Seconds}:{span.Milliseconds}";
+            return $"[{timeStr}][{log.Category}/{log.Level}]{log.Message}";
+        }
+        public override void Log(ILog log)
+        {
+#if DEBUG
+            writer(GetString(log));
+#endif
+            buffer.Enqueue(log);//令人难以置信的是,不使用异步代码反而更快
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            loopCancelled = true;
+            if (disposing)
+            {
+                sw.Dispose();
+                fs.Dispose();
+            }
+            buffer = null;
+            base.Dispose(disposing);
         }
     }
 }
