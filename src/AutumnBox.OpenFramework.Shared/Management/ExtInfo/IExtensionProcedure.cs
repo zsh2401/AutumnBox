@@ -14,7 +14,7 @@ namespace AutumnBox.OpenFramework.Management.ExtInfo
         /// <summary>
         /// 注入源
         /// </summary>
-        ILake[]? Source { get; set; }
+        ILake? Source { get; set; }
         /// <summary>
         /// 额外参数
         /// </summary>

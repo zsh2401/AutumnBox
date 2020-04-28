@@ -1,4 +1,5 @@
-﻿using System;
+﻿#nullable enable
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using AutumnBox.Leafx.ObjectManagement;
@@ -6,24 +7,36 @@ namespace AutumnBox.Leafx.Container
 {
     public static partial class LakeExtension
     {
-        public static T CreateInstance<T>(this ILake lake)
+        private class EmptyLake : ILake
         {
-            return (T)new ObjectBuilder(typeof(T), lake).Build();
-        }
+            public int Count => 0;
 
-        public static T CreateInstance<T>(this IEnumerable<ILake> sources)
+            public object GetComponent(string id)
+            {
+                throw new IdNotFoundException(id);
+            }
+        }
+        public static ILake Empty
         {
-            return (T)new ObjectBuilder(typeof(T), sources.ToArray()).Build();
+            get
+            {
+                if (emptyLake is null)
+                {
+                    emptyLake = new EmptyLake();
+                }
+                return emptyLake;
+            }
+        }
+        private static ILake? emptyLake;
+
+        public static T CreateInstance<T>(this ILake source)
+        {
+            return (T)new ObjectBuilder(typeof(T), source).Build();
         }
 
         public static object CreateInstance(this ILake lake, Type t)
         {
             return new ObjectBuilder(t, lake).Build();
-        }
-
-        public static object CreateInstance(this IEnumerable<ILake> sources, Type t)
-        {
-            return new ObjectBuilder(t, sources.ToArray()).Build();
         }
 
         public static void InjectPropertyTo(this ILake lake, object instance)

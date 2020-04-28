@@ -22,33 +22,34 @@ using System.Reflection;
 
 namespace AutumnBox.Leafx.ObjectManagement
 {
-    public static class ArgsBuilder
+    public static class ParameterArrayBuilder
     {
         public static object?[] BuildArgs(
-            IEnumerable<ILake> sources,
+            ILake lake,
             Dictionary<string, object> extraArgs,
             ParameterInfo[] parameterInfos)
         {
-
             List<object?> args = new List<object?>();
-
             foreach (var p in parameterInfos)
             {
-                args.Add(GetArgs(p, extraArgs, sources));
+                if (extraArgs.TryGetValue(p.Name, out object value))
+                {
+                    args.Add(value);
+                }
+                else if (lake.TryGet(p.Name, out object? byNameValue))
+                {
+                    args.Add(byNameValue);
+                }
+                else if (lake.TryGet(p.ParameterType, out object? byTypeValue))
+                {
+                    args.Add(byTypeValue);
+                }
+                else
+                {
+                    args.Add(default);
+                }
             }
             return args.ToArray();
-        }
-
-        private static object? GetArgs(ParameterInfo pInfo, IDictionary<string, object> args, IEnumerable<ILake> sources)
-        {
-            if (args.TryGetValue(pInfo.Name, out object? value))
-            {
-                return value;
-            }
-            else
-            {
-                return sources.Get(pInfo.ParameterType);
-            }
         }
     }
 }

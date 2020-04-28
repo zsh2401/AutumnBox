@@ -1,5 +1,6 @@
 ﻿#nullable enable
 using AutumnBox.Leafx.Container;
+using AutumnBox.Leafx.Container.Support;
 using AutumnBox.Logging;
 using System;
 using System.Collections.Generic;
@@ -17,20 +18,21 @@ namespace AutumnBox.Leafx.ObjectManagement
         /// 即将被注入的实例
         /// </summary>
         private readonly object instance;
+
         /// <summary>
         /// 湖
         /// </summary>
-        private readonly ILake[] sources;
+        private readonly ILake source;
 
         /// <summary>
         /// 构造一个属性注入器
         /// </summary>
         /// <param name="instance"></param>
         /// <param name="sources"></param>
-        public DependenciesInjector(object instance, params ILake[] sources)
+        public DependenciesInjector(object instance, ILake source)
         {
             this.instance = instance ?? throw new ArgumentNullException(nameof(instance));
-            this.sources = sources ?? throw new ArgumentNullException(nameof(sources));
+            this.source = source ?? throw new ArgumentNullException(nameof(DependenciesInjector.source));
         }
 
         /// <summary>
@@ -72,20 +74,17 @@ namespace AutumnBox.Leafx.ObjectManagement
         /// <returns></returns>
         private object? GetValue(string? id, Type t)
         {
-            if (id == null)
+            if (id != null && source.TryGet(id, out object? byIdResult))
             {
-                return sources.Get(t);
+                return byIdResult;
+            }
+            else if (source.TryGet(t, out object? byTypeResult))
+            {
+                return byTypeResult;
             }
             else
             {
-                try
-                {
-                    return sources.Get(id);
-                }
-                catch (IdNotFoundException)
-                {
-                    return sources.Get(t);
-                }
+                return default;
             }
         }
 
@@ -102,7 +101,7 @@ namespace AutumnBox.Leafx.ObjectManagement
         /// <param name="sources"></param>
         public static void Inject(object instance, params ILake[] sources)
         {
-            new DependenciesInjector(instance, sources).Inject();
+            new DependenciesInjector(instance, new MergedLake(sources)).Inject();
         }
 
         /// <summary>

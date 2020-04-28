@@ -42,7 +42,7 @@ namespace AutumnBox.OpenFramework.Management.ExtInfo
         /// <summary>
         /// 源
         /// </summary>
-        public ILake[]? Source { get; set; }
+        public ILake? Source { get; set; }
 
         /// <summary>
         /// Main函数的额外参数
@@ -55,7 +55,7 @@ namespace AutumnBox.OpenFramework.Management.ExtInfo
         /// <returns></returns>
         public object? Run()
         {
-            var source = Source ?? new ILake[0];
+            var source = Source ?? LakeExtension.Empty;
             var objBuilder = new ObjectBuilder(classExtensionType, source);
             var instance = (IExtension)objBuilder.Build(Args);
             return instance.Main(Args ?? new Dictionary<string, object>());

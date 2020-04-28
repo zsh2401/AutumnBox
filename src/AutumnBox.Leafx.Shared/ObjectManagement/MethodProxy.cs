@@ -35,52 +35,21 @@ namespace AutumnBox.Leafx.ObjectManagement
         /// 被代理的方法
         /// </summary>
         private readonly MethodInfo method;
+        private readonly ILake source;
 
-        public List<ILake> Sources
+        public MethodProxy(object instance, string methodName, ILake source)
         {
-            get => _srcs; set
-            {
-                if (value == null)
-                {
-                    throw new ArgumentNullException();
-                }
-                _srcs = value;
-            }
-        }
-        private List<ILake> _srcs;
 
-        public MethodProxy(object instance, string methodName, params ILake[] sources)
-        {
-            if (string.IsNullOrEmpty(methodName))
-            {
-                throw new ArgumentException("message", nameof(methodName));
-            }
-
-            this.instance = instance ?? throw new ArgumentNullException(nameof(instance));
             this.method = FindMethodByName(methodName);
-            this.Sources = sources?.ToList() ?? new List<ILake>();
+            this.instance = instance;
+            this.source = source ?? throw new ArgumentNullException(nameof(source));
         }
 
-        public MethodProxy(object instance, MethodInfo method, params ILake[] sources)
+        public MethodProxy(object instance, MethodInfo method, ILake source)
         {
-            if (instance is null)
-            {
-                throw new ArgumentNullException(nameof(instance));
-            }
-
-            if (method is null)
-            {
-                throw new ArgumentNullException(nameof(method));
-            }
-
-            if (sources is null)
-            {
-                throw new ArgumentNullException(nameof(sources));
-            }
-
             this.instance = instance;
-            this.method = method;
-            this.Sources = sources?.ToList() ?? new List<ILake>();
+            this.method = method ?? throw new ArgumentNullException(nameof(method));
+            this.source = source ?? throw new ArgumentNullException(nameof(source));
         }
 
         private MethodInfo FindMethodByName(string methodName)
@@ -98,8 +67,8 @@ namespace AutumnBox.Leafx.ObjectManagement
         {
             if (instance == null) throw new InvalidOperationException("Please create instance before invoke method");
 
-            object[] args = ArgsBuilder.BuildArgs(
-                inject ? Sources : null,
+            object[] args = ParameterArrayBuilder.BuildArgs(
+                inject ? source : null,
                 extraArgs ?? new Dictionary<string, object>(),
                 method.GetParameters());
 
@@ -124,7 +93,7 @@ namespace AutumnBox.Leafx.ObjectManagement
             }
         }
 
-         public IEnumerable<AroundMethodAttribute> GetAroundAspects()
+        public IEnumerable<AroundMethodAttribute> GetAroundAspects()
         {
             return method.GetCustomAttributes<AroundMethodAttribute>();
         }

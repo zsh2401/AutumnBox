@@ -14,7 +14,7 @@ namespace AutumnBox.OpenFramework.Management.ExtTask
         internal static Task<object?> CreateTask(IExtensionInfo info,
             Dictionary<string, object> args,
             Action<Thread> threadReceiver,
-            params ILake[] source)
+            ILake source)
         {
             return new Task<object?>(() =>
             {

@@ -12,7 +12,7 @@ namespace AutumnBox.Tests.OpenFX.Leafx
         [TestMethod]
         public void CustomArgsTest()
         {
-            MethodProxy maxProxy = new MethodProxy(this, nameof(Max));
+            MethodProxy maxProxy = new MethodProxy(this, nameof(Max), LakeExtension.Empty);
             var args = new Dictionary<string, object>() { { "x", 1 }, { "y", 2 } };
             int result = (int)maxProxy.Invoke(args);
             Assert.IsTrue(result == 2);
@@ -38,7 +38,7 @@ namespace AutumnBox.Tests.OpenFX.Leafx
             IRegisterableLake lake2 = new SunsetLake();
             lake.RegisterSingleton<string>(TEST_STR);
 
-            MethodProxy maxProxy = new MethodProxy(this, nameof(HashCodeAdd), lake,lake2);
+            MethodProxy maxProxy = new MethodProxy(this, nameof(HashCodeAdd), MergedLake.From(lake, lake2));
             long result = (long)maxProxy.Invoke(new Dictionary<string, object>() { { "x", 3 } });
             long correctResult = HashCodeAdd(SUM, TEST_STR);
 

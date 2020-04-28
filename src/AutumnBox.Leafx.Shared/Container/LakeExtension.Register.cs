@@ -268,12 +268,7 @@ namespace AutumnBox.Leafx.Container
                 throw new InvalidOperationException("Could not create instance of interface or abstract class");
             }
 
-            return () =>
-            {
-                ObjectBuilder objBuilder = new ObjectBuilder(t, lake);
-                var obj = objBuilder.Build();
-                return obj;
-            };
+            return () => lake.CreateInstance(t);
         }
 
         /// <summary>

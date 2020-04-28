@@ -29,8 +29,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Container\LakeExtension.Getter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Container\LakeSourcesExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Container\Support\ComponentFactoryReader.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ObjectManagement\ArgsBuilder.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ObjectManagement\DependingObject.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ObjectManagement\ParameterArrayBuilder.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ObjectManagement\MethodProxy.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ObjectManagement\ObjectBuilder.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ObjectManagement\ObjectManagementConstants.cs" />

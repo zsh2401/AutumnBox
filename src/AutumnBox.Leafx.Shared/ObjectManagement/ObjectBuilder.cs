@@ -26,28 +26,22 @@ namespace AutumnBox.Leafx.ObjectManagement
     public sealed class ObjectBuilder
     {
         private readonly Type type;
+        private readonly ILake source;
 
-        public List<ILake> Sources { get; set; }
-
-        public ObjectBuilder(Type type, params ILake[] sources)
+        public ObjectBuilder(Type type, ILake source)
         {
-            if (type is null)
-            {
-                throw new ArgumentNullException(nameof(type));
-            }
-
-            this.type = type;
-            Sources = sources.ToList();
+            this.type = type ?? throw new ArgumentNullException(nameof(type));
+            this.source = source ?? throw new ArgumentNullException(nameof(source));
         }
 
         public object Build(Dictionary<string, object> extraArgs = null)
         {
             var constructor = type.GetConstructors(ObjectManagementConstants.BINDING_FLAGS)[0];
-            var args = ArgsBuilder.BuildArgs(
-                Sources,
+            var args = ParameterArrayBuilder.BuildArgs(
+                source,
                 extraArgs ?? new Dictionary<string, object>(), constructor.GetParameters());
             var instance =  constructor.Invoke(args);
-            new DependenciesInjector(instance, Sources.ToArray()).Inject();
+            new DependenciesInjector(instance, source).Inject();
             return instance;
         }
     }

@@ -32,7 +32,7 @@ namespace AutumnBox.OpenFramework.Extension.Leaf
                 throw new System.InvalidOperationException("Lake has not been inject!");
             }
 #endif
-            var methodProxy = new MethodProxy(this, this.FindEntryPoint(), lake, GetSepLake());
+            var methodProxy = new MethodProxy(this, this.FindEntryPoint(), MergedLake.From(lake, GetSepLake()));
             return methodProxy.Invoke(args ?? new Dictionary<string, object>());
         }
 
