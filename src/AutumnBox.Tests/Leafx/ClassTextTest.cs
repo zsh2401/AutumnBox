@@ -14,7 +14,7 @@ namespace AutumnBox.Tests.Leafx
         [TestMethod]
         public void DefaultTextTest()
         {
-            var reader = ClassTextReader.GetReader<ClassTextTest>();
+            var reader = ClassTextReaderCache.Acquire<ClassTextTest>();
 
             Assert.IsTrue(reader[TEST_1_KEY] == TEST_1_DFT_VALUE);
             Assert.IsTrue(reader[TEST_1_KEY, "zh-CN"] == "你好！我的梦！");

@@ -230,8 +230,7 @@ namespace AutumnBox.Leafx.Container
                 throw new ArgumentNullException(nameof(factory));
             }
 
-            var lazy = new Lazy<object?>(() => factory());
-            lake.RegisterComponent(id, () => lazy.Value);
+            lake.RegisterComponent(id, GetSingletonFactory(factory));
         }
 
         /// <summary>
@@ -291,6 +290,26 @@ namespace AutumnBox.Leafx.Container
             }
 
             return $"___lake_extension_register_by_type_id_{t.FullName}";
+        }
+
+        /// <summary>
+        /// 获取一个单例工厂
+        /// </summary>
+        /// <param name="factory"></param>
+        /// <returns></returns>
+        public static ComponentFactory GetSingletonFactory(ComponentFactory factory)
+        {
+            bool created = false;
+            object? cache = null;
+            return () =>
+            {
+                if (!created)
+                {
+                    created = true;
+                    cache = factory();
+                }
+                return cache;
+            };
         }
     }
 }

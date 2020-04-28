@@ -21,9 +21,19 @@ using System.Reflection;
 
 namespace AutumnBox.Leafx.ObjectManagement
 {
+    /// <summary>
+    /// 方法代理器
+    /// </summary>
     public sealed class MethodProxy
     {
+        /// <summary>
+        /// 执行方法的实例
+        /// </summary>
         private readonly object instance;
+
+        /// <summary>
+        /// 被代理的方法
+        /// </summary>
         private readonly MethodInfo method;
 
         public List<ILake> Sources

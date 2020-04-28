@@ -124,14 +124,12 @@ namespace AutumnBox.Leafx.Container
         /// <returns>是否成功获取</returns>
         public static bool TryGet(this ILake lake, string id, out object? value)
         {
-            if (lake is null)
+            if (lake is null || string.IsNullOrEmpty(id))
             {
-                throw new ArgumentNullException(nameof(lake));
-            }
-
-            if (string.IsNullOrEmpty(id))
-            {
-                throw new ArgumentException("message", nameof(id));
+#pragma warning disable CS8601 // 可能的 null 引用赋值。
+                value = default;
+#pragma warning restore CS8601 // 可能的 null 引用赋值。
+                return false;
             }
 
             try
@@ -153,13 +151,15 @@ namespace AutumnBox.Leafx.Container
         /// <typeparam name="T"></typeparam>
         /// <param name="lake"></param>
         /// <param name="value"></param>
-        /// <exception cref="ArgumentNullException">Lake为空</exception>
         /// <returns>是否成功获取到</returns>
         public static bool TryGet<T>(this ILake lake, out T value)
         {
             if (lake is null)
             {
-                throw new ArgumentNullException(nameof(lake));
+#pragma warning disable CS8601 // 可能的 null 引用赋值。
+                value = default;
+#pragma warning restore CS8601 // 可能的 null 引用赋值。
+                return false;
             }
 
             try

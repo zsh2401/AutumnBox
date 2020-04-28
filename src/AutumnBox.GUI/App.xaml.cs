@@ -94,7 +94,7 @@ namespace AutumnBox.GUI
         /// </summary>
         private void LoadComponent()
         {
-            new ClassComponentsLoader(
+            new NamespaceComponentScanner(
                 "AutumnBox.GUI.Services.Impl",
                 Current.Lake)
                 .Do();

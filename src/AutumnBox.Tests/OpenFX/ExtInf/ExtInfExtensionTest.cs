@@ -17,7 +17,7 @@ namespace AutumnBox.Tests.OpenFX.ExtInf
         [TestMethod]
         public void AttributeTest()
         {
-            var extInf = ClassExtensionInfo.GetByType(typeof(ETest));
+            var extInf = ClassExtensionInfoCache.Acquire(typeof(ETest));
             Assert.IsFalse(extInf.Hidden());
             Assert.IsTrue(extInf.Name() == "Wow");
         }

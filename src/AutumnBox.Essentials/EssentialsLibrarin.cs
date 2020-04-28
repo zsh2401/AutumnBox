@@ -52,7 +52,7 @@ namespace AutumnBox.Essentials
             extensionTaskManager.Start(nameof(EAutumnBoxUpdateChecker));
             extensionTaskManager.Start(nameof(EAutumnBoxAdFetcher));
 
-            var componentLoader = new ClassComponentsLoader("AutumnBox.Essentials", rlake, this.GetType().Assembly);
+            var componentLoader = new NamespaceComponentScanner("AutumnBox.Essentials", rlake, this.GetType().Assembly);
             componentLoader.Do();
         }
 
