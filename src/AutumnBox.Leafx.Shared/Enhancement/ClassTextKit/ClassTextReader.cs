@@ -16,7 +16,7 @@ namespace AutumnBox.Leafx.Enhancement.ClassTextKit
         /// 构造一个ClassText加载器
         /// </summary>
         /// <param name="type"></param>
-        private ClassTextReader(Type type)
+        public ClassTextReader(Type type)
         {
             if (type is null)
             {

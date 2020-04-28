@@ -18,7 +18,7 @@ namespace AutumnBox.OpenFramework.Extension
         /// <returns></returns>
         public static string GetName(this IClassExtension classExtension)
         {
-            var extInf = ClassExtensionInfo.GetByType(classExtension.GetType());
+            var extInf = ClassExtensionInfoCache.Acquire(classExtension.GetType());
             return extInf.Name();
         }
 
@@ -29,7 +29,7 @@ namespace AutumnBox.OpenFramework.Extension
         /// <returns></returns>
         public static byte[] GetIcon(this IClassExtension classExtension)
         {
-            var extInf = ClassExtensionInfo.GetByType(classExtension.GetType());
+            var extInf = ClassExtensionInfoCache.Acquire(classExtension.GetType());
             return extInf.Icon();
         }
     }

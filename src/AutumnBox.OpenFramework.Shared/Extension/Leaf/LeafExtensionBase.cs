@@ -42,7 +42,7 @@ namespace AutumnBox.OpenFramework.Extension.Leaf
             s_lake.RegisterSingleton<ILogger>(LoggerFactory.Auto(this.GetType().Name));
             s_lake.RegisterSingleton<ClassTextReader>(() =>
             {
-                return ClassTextReader.GetReader(this);
+                return ClassTextReaderCache.Acquire(this.GetType());
             });
             s_lake.RegisterSingleton<IExtensionInfo>(() =>
             {

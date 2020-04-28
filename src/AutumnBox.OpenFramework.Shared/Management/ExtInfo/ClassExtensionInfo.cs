@@ -34,26 +34,6 @@ namespace AutumnBox.OpenFramework.Management.ExtInfo
         }
 
         /// <summary>
-        /// 参与缓存机制，根据类型获取
-        /// </summary>
-        /// <param name="t"></param>
-        /// <returns></returns>
-        public static IExtensionInfo GetByType(Type t)
-        {
-            var cache = ExtensionInfoCacheManager.Cached;
-            if (cache.ContainsKey(t))
-            {
-                return cache[t];
-            }
-            else
-            {
-                var inf = new ClassExtensionInfo(t);
-                cache.Add(t, inf);
-                return inf;
-            }
-        }
-
-        /// <summary>
         /// 读取元数据
         /// </summary>
         /// <returns></returns>
@@ -99,27 +79,5 @@ namespace AutumnBox.OpenFramework.Management.ExtInfo
         /// 指示在该事务中,Lake的提供键
         /// </summary>
         public const string KEY_SOURCE_IN_EXTRA_ARGS = "classExtensionSource";
-
-        private class ClassExtensionProcedure : IExtensionProcedure
-        {
-            private readonly Type classExtensionType;
-
-            public ClassExtensionProcedure(Type classExtensionType)
-            {
-                this.classExtensionType = classExtensionType ?? throw new ArgumentNullException(nameof(classExtensionType));
-            }
-
-            public ILake[]? Source { get; set; }
-
-            public Dictionary<string, object>? Args { get; set; }
-
-            public object? Run()
-            {
-                var source = Source ?? new ILake[0];
-                var objBuilder = new ObjectBuilder(classExtensionType, source);
-                var instance = (IExtension)objBuilder.Build(Args);
-                return instance.Main(Args ?? new Dictionary<string, object>());
-            }
-        }
     }
 }

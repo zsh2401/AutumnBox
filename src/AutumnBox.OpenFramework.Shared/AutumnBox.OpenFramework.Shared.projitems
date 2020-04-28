@@ -24,6 +24,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Attribute\ExtNormalRunnablePolicyAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Attribute\RunnableCheckArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\AutumnBoxExtension.Constants.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Management\ExtInfo\ClassExtensionProcedure.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Util\ClassTextReaderExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\EmptyExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\IExtensionUsefulTools.cs" />
@@ -38,7 +39,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Implementation\NotificationManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Implementation\XCardsManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\ExtInfo\ClassExtensionInfo.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Management\ExtInfo\ExtensionInfoCacheManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Management\ExtInfo\ClassExtensionInfoCache.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\ExtInfo\IExtensionProcedure.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\ExtInfo\IExtensionInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\ExtInfo\ValueReader.cs" />

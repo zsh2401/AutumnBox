@@ -71,7 +71,7 @@ namespace AutumnBox.OpenFramework.Management.ExtInfo
 
             static byte[]? ReadAsBase64(string source)
             {
-                if (source.Contains("base64"))
+                if (source.StartsWith("__atmb_ext_base64_icon"))
                 {
                     return Convert.FromBase64String(source);
                 }

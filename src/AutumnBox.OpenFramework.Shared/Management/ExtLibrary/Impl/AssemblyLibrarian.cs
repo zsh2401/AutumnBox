@@ -102,7 +102,7 @@ namespace AutumnBox.OpenFramework.Management.ExtLibrary.Impl
         /// <returns></returns>
         protected virtual IExtensionInfo CreateExtensionInfo(Type extType)
         {
-            return ClassExtensionInfo.GetByType(extType);
+            return ClassExtensionInfoCache.Acquire(extType);
         }
 
         /// <summary>

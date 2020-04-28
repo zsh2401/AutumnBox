@@ -56,6 +56,10 @@ namespace AutumnBox.Logging.Management
 #if! DEBUG
                     writer(fmtString);
 #endif
+                    ThreadSafeOperateLogsInner(() =>
+                    {
+                        LogsInner.Add(log);
+                    });
                     sw.WriteLine(fmtString);
                 }
                 Thread.Sleep(10);//经过测试,性能最优的间隔

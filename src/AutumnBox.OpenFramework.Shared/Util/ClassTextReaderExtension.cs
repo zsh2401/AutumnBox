@@ -35,7 +35,7 @@ namespace AutumnBox.Leafx.Enhancement.ClassTextKit
         /// <returns>应得的文本,发生错误时将返回key值</returns>
         public static string RxGetClassText<T>(string key)
         {
-            return RxGet(ClassTextReader.GetReader<T>(), key);
+            return RxGet(ClassTextReaderCache.Acquire<T>(), key);
         }
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace AutumnBox.Leafx.Enhancement.ClassTextKit
         /// <returns>应得的文本,发生错误时将返回key值</returns>
         public static string RxGetClassText(this object obj, string key)
         {
-            return RxGet(ClassTextReader.GetReader(obj), key);
+            return RxGet(ClassTextReaderCache.Acquire(obj.GetType()), key);
         }
     }
 }

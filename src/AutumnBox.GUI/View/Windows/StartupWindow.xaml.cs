@@ -57,9 +57,10 @@ namespace AutumnBox.GUI.View.Windows
         {
             public static void Show(Window ownerWindow, AppLoadingException e)
             {
-                string error_message_fmt = ClassTextReader.Read<ErrorMessageBox>("err_msg_fmt");
+                var classTextReader = new ClassTextReader(typeof(ErrorMessageBox));//不使用缓存
+                string error_message_fmt = classTextReader["err_msg_fmt"];
                 string error_message = string.Format(error_message_fmt, e.StepName, e.InnerException.InnerException.GetType().Name);
-                string error_title = ClassTextReader.Read<ErrorMessageBox>("err_title");
+                string error_title = classTextReader["err_title"];
                 if (MessageBox.Show(ownerWindow,
                     error_message,
                     error_title,
