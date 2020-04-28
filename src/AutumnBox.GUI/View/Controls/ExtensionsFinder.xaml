@@ -19,13 +19,17 @@
         </ItemsControl.ItemsPanel>
         <ItemsControl.ItemTemplate>
             <DataTemplate>
-                <Button Background="{DynamicResource DefaultBrush}" Command="{Binding Execute}"  Margin="5" Height="60" Width="200"  ToolTip="{Binding ToolTip}" >
-                    <StackPanel Width="190"  Orientation="Horizontal" VerticalAlignment="Center">
+                <Button Background="{DynamicResource DefaultBrush}" HorizontalContentAlignment="Left" Command="{Binding Execute}"  Margin="5" Height="60" Width="200"  ToolTip="{Binding ToolTip}" >
+                    <StackPanel Margin="5" Orientation="Horizontal">
                         <Image  RenderOptions.BitmapScalingMode="Fant" Width="40" Source="{Binding Icon}"/>
-                        <StackPanel VerticalAlignment="Center" Margin="12,0,0,0">
-                            <TextBlock DockPanel.Dock="Top" VerticalAlignment="Center"  TextWrapping="Wrap" TextTrimming="WordEllipsis"  Text="{Binding Name}"/>
-                            <TextBlock DockPanel.Dock="Bottom"  Visibility="{Binding RootVisibily}" VerticalAlignment="Top" FontSize="11"  Foreground="Red">ROOT</TextBlock>
-                        </StackPanel>
+                        <DockPanel Margin="12,0,0,0">
+                            <TextBlock DockPanel.Dock="Bottom"  FontSize="11"  Text="{Binding Remarks}">
+                                <TextBlock.Foreground>
+                                    <SolidColorBrush Color="{Binding RemarksColor}"/>
+                                </TextBlock.Foreground>
+                            </TextBlock>
+                            <TextBlock DockPanel.Dock="Top" TextAlignment="Center" TextWrapping="Wrap" TextTrimming="WordEllipsis"  Text="{Binding Name}"/>
+                        </DockPanel>
                     </StackPanel>
                 </Button>
 

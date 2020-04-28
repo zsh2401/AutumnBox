@@ -77,6 +77,10 @@ namespace AutumnBox.GUI.ViewModel
 
         public VMExtensionsFinder()
         {
+            if (IsDesignMode())
+            {
+                return;
+            }
             InitCommand();
             RaisePropertyChangedOnDispatcher = true;
             openFxManager.WakeIfLoaded(() =>

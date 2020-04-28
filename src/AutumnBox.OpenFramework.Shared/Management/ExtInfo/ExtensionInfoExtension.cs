@@ -1,5 +1,6 @@
 ﻿#nullable enable
 using AutumnBox.Basic.Device;
+using AutumnBox.Logging;
 using AutumnBox.OpenFramework.Extension;
 using System;
 using System.Collections.Generic;
@@ -166,8 +167,9 @@ namespace AutumnBox.OpenFramework.Management.ExtInfo
                 var attr = (extInf.Metadata[ExtensionMetadataKeys.RUNNABLE_POLICY]() as ExtRunnableProlicyAttribute);
                 return attr!.IsRunnable(new RunnableCheckArgs(extInf, currentDevice));
             }
-            catch
+            catch (Exception e)
             {
+                SLogger.Warn(typeof(ExtensionInfoExtension).Name, "Could not finish runnable check", e);
                 return DEFAULT_VALUE;
             }
         }

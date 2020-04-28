@@ -5,7 +5,7 @@ using System.Diagnostics;
 namespace AutumnBox.Essentials.Extensions
 {
     [ExtHidden]
-    class EAutumnBoxExtensionStore
+    class EAutumnBoxExtensionStore : LeafExtensionBase
     {
         public const string URL_EXTENSION_STORE = "https://atmb.top/extensions/";
 

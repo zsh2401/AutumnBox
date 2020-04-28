@@ -1,5 +1,4 @@
 ﻿using AutumnBox.Essentials.Extensions;
-using AutumnBox.Essentials.Routines;
 using AutumnBox.Leafx.Container;
 using AutumnBox.Leafx.Container.Support;
 using AutumnBox.Leafx.ObjectManagement;
@@ -8,7 +7,6 @@ using AutumnBox.OpenFramework.Management.ExtLibrary.Impl;
 using AutumnBox.OpenFramework.Management.ExtTask;
 using AutumnBox.OpenFramework.Open;
 using System;
-using System.Reflection;
 using System.Threading.Tasks;
 
 namespace AutumnBox.Essentials
@@ -52,7 +50,7 @@ namespace AutumnBox.Essentials
             extensionTaskManager.Start(nameof(EAutumnBoxUpdateChecker));
             extensionTaskManager.Start(nameof(EAutumnBoxAdFetcher));
 
-            var componentLoader = new NamespaceComponentScanner("AutumnBox.Essentials", rlake, this.GetType().Assembly);
+            var componentLoader = new ClassComponentsLoader("AutumnBox.Essentials", rlake, this.GetType().Assembly);
             componentLoader.Do();
         }
 

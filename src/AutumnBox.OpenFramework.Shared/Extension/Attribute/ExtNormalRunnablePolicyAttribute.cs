@@ -15,6 +15,7 @@
 */
 
 using AutumnBox.Basic.Device;
+using AutumnBox.Logging;
 using AutumnBox.OpenFramework.Management.ExtInfo;
 
 namespace AutumnBox.OpenFramework.Extension
@@ -36,9 +37,9 @@ namespace AutumnBox.OpenFramework.Extension
             bool containsCurrentState = false;
             if (args.TargetDevice != null)
             {
-                containsCurrentState = args.TargetDevice.State.HasFlag(reqDeviceState);
+                containsCurrentState = reqDeviceState.HasFlag(args.TargetDevice.State);
             }
-            return isNM | containsCurrentState;
+            return isNM || containsCurrentState;
         }
     }
 }

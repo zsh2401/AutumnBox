@@ -27,7 +27,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Container\Support\SunsetLake.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Container\IRegisterableLake.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Container\LakeExtension.Getter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Container\LakeSourcesExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Container\Support\ComponentFactoryReader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ObjectManagement\ParameterArrayBuilder.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ObjectManagement\MethodProxy.cs" />

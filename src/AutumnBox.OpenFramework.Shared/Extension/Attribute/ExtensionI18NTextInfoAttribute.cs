@@ -1,4 +1,7 @@
 ﻿#nullable enable
+using AutumnBox.Leafx.Container;
+using AutumnBox.OpenFramework.Management;
+using AutumnBox.OpenFramework.Open;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -33,7 +36,7 @@ namespace AutumnBox.OpenFramework.Extension
         {
             get
             {
-                var langCode = Thread.CurrentThread.CurrentCulture.Name;
+                var langCode = LakeProvider.Lake.Get<IAppManager>().CurrentLanguageCode.ToLower();
                 if (texts.TryGetValue(langCode, out string text))
                 {
                     return text;
@@ -71,7 +74,7 @@ namespace AutumnBox.OpenFramework.Extension
                 var match = KVParseRegex.Match(text);
                 if (match.Success)
                 {
-                    dictionary.Add(match.Result("${langcode}"), match.Result("${text}"));
+                    dictionary.Add(match.Result("${langcode}").ToLower(), match.Result("${text}"));
                 }
                 return true;
             });

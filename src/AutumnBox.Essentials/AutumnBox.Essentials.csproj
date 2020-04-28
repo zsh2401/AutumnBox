@@ -52,16 +52,7 @@
     <Compile Include="Extensions\EAutumnBoxUpdateChecker.cs" />
     <Compile Include="EssentialsLibrarin.cs" />
     <Compile Include="Extensions\EDeviceRebooter.cs" />
-    <Compile Include="Extensions\EExtensionInstaller.cs" />
-    <Compile Include="Extensions\EDevPanelSwitcher.cs" />
-    <Compile Include="Extensions\ELogMonitor.cs" />
-    <Compile Include="ExternalXCards\AdXCard.cs" />
-    <Compile Include="ExternalXCards\MotdXCard.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Routines\AdLoader.cs" />
-    <Compile Include="Routines\MotdLoader.cs" />
-    <Compile Include="XCards\DevPanel.cs" />
-    <Compile Include="XCards\LogMonitorView.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AutumnBox.Basic\AutumnBox.Basic.csproj">
@@ -87,6 +78,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\Icons\devpanelswitcher.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Icons\reboot.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

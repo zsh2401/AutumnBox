@@ -49,15 +49,29 @@ namespace AutumnBox.GUI.Model
         }
         private ImageSource icon;
 
-        public Visibility RootVisibily
+        public Color RemarksColor
         {
-            get => _rootVisibily; set
+            get
             {
-                _rootVisibily = value;
+                return _remarksColor;
+            }
+            set
+            {
+                _remarksColor = value;
                 RaisePropertyChanged();
             }
         }
-        private Visibility _rootVisibily;
+        private Color _remarksColor;
+
+        private string _remarks;
+
+        public string Remarks
+        {
+            get { return _remarks; }
+            set { _remarks = value; RaisePropertyChanged(); }
+        }
+
+
 
         public FlexiableCommand Execute
         {
@@ -67,6 +81,8 @@ namespace AutumnBox.GUI.Model
                 RaisePropertyChanged();
             }
         }
+
+
         private FlexiableCommand _execute;
 
         [AutoInject]
@@ -78,8 +94,8 @@ namespace AutumnBox.GUI.Model
         public ExtensionDock(IExtensionInfo extInf)
         {
             this.ExtensionInfo = extInf;
-            RootVisibily = extInf.NeedRoot() ? Visibility.Visible : Visibility.Collapsed;
-
+            RemarksColor = extInf.NeedRoot() ? Colors.Red : Colors.GreenYellow;
+            Remarks = extInf.NeedRoot() ? "ROOT" : "---";
             Execute = new FlexiableCommand(p =>
             {
                 ExecuteImpl();
