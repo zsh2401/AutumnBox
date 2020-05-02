@@ -87,7 +87,6 @@ namespace AutumnBox.Leafx.Container
         /// <param name="lake"></param>
         /// <param name="t"></param>
         /// <param name="value"></param>
-        /// <exception cref="ArgumentNullException">输入参数为空</exception>
         /// <returns></returns>
         public static bool TryGet(this ILake lake, Type t, out object? value)
         {
@@ -120,7 +119,6 @@ namespace AutumnBox.Leafx.Container
         /// <param name="lake"></param>
         /// <param name="id"></param>
         /// <param name="value"></param>
-        /// <exception cref="ArgumentNullException">输入参数为空</exception>
         /// <returns>是否成功获取</returns>
         public static bool TryGet(this ILake lake, string id, out object? value)
         {
