@@ -29,20 +29,15 @@ namespace AutumnBox.Tests.Logging
     [TestClass]
     public class LoggerTest
     {
-        [TestMethod]
-        public void EventDrivenFSCoreLoggerPerformanceTest()
-        {
-            LoggingManager.Use<EventDrivenFSCoreLogger>(false);
-            const int times = 1_000_000;
-            Task.WaitAll(Writing(1, times), Writing(1, times), Writing(1, times));
-        }
 
         [TestMethod]
         public void BufferedFSCoreLoggerTest()
         {
-            LoggingManager.Use<BufferedFSCoreLogger>(false);
+            LoggingManager.Use(new AsyncBufferedFSCoreLogger());
             const int times = 1_000_000;
             Task.WaitAll(Writing(1, times), Writing(2, times), Writing(3, times));
+            Debug.WriteLine(LoggingManager.Logs.Count());
+            Assert.IsTrue(LoggingManager.Logs.Count() == times * 3);
         }
 
         public static async Task Writing(int taskId, int maxTime)

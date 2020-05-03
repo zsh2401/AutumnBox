@@ -4,7 +4,7 @@ namespace AutumnBox.GUI.Services
 {
     interface ILoggingManager
     {
-        ICoreLogger CoreLogger { get; }
+        ILogsCollection Logs { get; }
         void Initialize();
     }
 }

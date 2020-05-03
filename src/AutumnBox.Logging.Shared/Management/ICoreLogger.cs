@@ -13,23 +13,16 @@ namespace AutumnBox.Logging.Management
     public interface ICoreLogger : IDisposable
     {
         /// <summary>
-        /// 初始化
-        /// </summary>
-        void Initialize(ICoreLoggerInitializeArgs args);
-
-        /// <summary>
         /// 处理日志
         /// </summary>
         /// <param name="log"></param>
         void Log(ILog log);
-
-        /// <summary>
-        /// 获取所有的日志
-        /// </summary>
-        ILogsCollection Logs { get; }
     }
+
+    /// <summary>
+    /// 表示日志的记录集合
+    /// </summary>
     public interface ILogsCollection : INotifyCollectionChanged, IEnumerable<ILog>, IEnumerable
     {
-
     }
 }

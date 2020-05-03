@@ -23,10 +23,7 @@ namespace AutumnBox.Basic
                 {
                     throw new InvalidOperationException("Please load adb manager first!");
                 }
-                if (_cachedCpm == null || _cachedCpm.DisposedValue)
-                {
-                    _cachedCpm = _adbManager.OpenCommandProcedureManager();
-                }
+                _cachedCpm ??= _adbManager.OpenCommandProcedureManager();
                 _cachedCpm.Disposed += (s, e) =>
                 {
                     _cachedCpm = null;

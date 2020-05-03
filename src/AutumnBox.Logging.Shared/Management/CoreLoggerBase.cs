@@ -14,6 +14,7 @@
 * ==============================================================================
 */
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 
@@ -25,63 +26,54 @@ namespace AutumnBox.Logging.Management
     public abstract class CoreLoggerBase : ICoreLogger
     {
         /// <summary>
-        /// 已经记录过的日志
-        /// </summary>
-        public ILogsCollection Logs => LogsInner;
-
-        /// <summary>
-        /// 内部的Logs实现
-        /// </summary>
-        protected LogsCollection LogsInner { get; set; } = new LogsCollection();
-
-        /// <summary>
-        /// ILogsCollection的实现
-        /// </summary>
-        protected class LogsCollection : ObservableCollection<ILog>, ILogsCollection { }
-
-        private object _threadSafeLogsLock = new object();
-
-        /// <summary>
-        /// 线程安全地对Logs进行操作
-        /// </summary>
-        /// <param name="action"></param>
-        protected void ThreadSafeOperateLogsInner(Action action)
-        {
-            if (action is null)
-            {
-                throw new ArgumentNullException(nameof(action));
-            }
-
-            lock (_threadSafeLogsLock)
-            {
-                action();
-            }
-        }
-
-        /// <summary>
-        /// 异步地,线程安全地操作LogsInner
-        /// </summary>
-        /// <param name="action"></param>
-        /// <returns></returns>
-        protected async Task ThreadSafeOperateLogsInnerAsync(Action action)
-        {
-            await Task.Run(() =>
-            {
-                ThreadSafeOperateLogsInner(action);
-            });
-        }
-
-        /// <summary>
-        /// <inheritdoc/>
-        /// </summary>
-        /// <param name="args"></param>
-        public abstract void Initialize(ICoreLoggerInitializeArgs args);
-
-        /// <summary>
         /// <inheritdoc/>
         /// </summary>
         /// <param name="log"></param>
         public abstract void Log(ILog log);
+
+        /// <summary>
+        /// 将两个日志器合并
+        /// </summary>
+        /// <param name="left"></param>
+        /// <param name="right"></param>
+        /// <returns></returns>
+        public static CoreLoggerBase operator +(CoreLoggerBase left, CoreLoggerBase right)
+        {
+            if (left is MergedCoreLogger lmc)
+            {
+                lmc.Loggers.Add(right);
+                return lmc;
+            }
+            else if (right is MergedCoreLogger rmc)
+            {
+                rmc.Loggers.Add(left);
+                return rmc;
+            }
+            else
+            {
+                var mc = new MergedCoreLogger();
+                mc.Loggers.Add(left);
+                mc.Loggers.Add(right);
+                return mc;
+            }
+        }
+
+        /// <summary>
+        /// 合并日志器的实现
+        /// </summary>
+        private sealed class MergedCoreLogger : CoreLoggerBase
+        {
+            public List<CoreLoggerBase> Loggers { get; } = new List<CoreLoggerBase>();
+            public override void Log(ILog log)
+            {
+                Loggers.ForEach(logger => logger.Log(log));
+            }
+            protected override void Dispose(bool disposing)
+            {
+                Loggers.ForEach(logger => logger.Dispose(disposing));
+                base.Dispose(disposing);
+            }
+        }
 
         #region IDisposable Support
         private bool disposedValue = false; // 要检测冗余调用
@@ -102,7 +94,6 @@ namespace AutumnBox.Logging.Management
                 if (disposing)
                 {
                 }
-                LogsInner = null;
                 disposedValue = true;
                 Disposed?.Invoke(this, new EventArgs());
             }

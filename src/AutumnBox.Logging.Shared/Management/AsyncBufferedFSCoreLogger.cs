@@ -26,60 +26,78 @@ namespace AutumnBox.Logging.Management
     /// <summary>
     /// 缓冲的文件系统核心日志器
     /// </summary>
-    public class BufferedFSCoreLogger : CoreLoggerBase
+    public class AsyncBufferedFSCoreLogger : CoreLoggerBase
     {
         private ConcurrentQueue<ILog> buffer = new ConcurrentQueue<ILog>();
-        private FileStream fs;
-        private StreamWriter sw;
-        private Action<string> writer;
-        private DateTime programStartTime;
-        public override void Initialize(ICoreLoggerInitializeArgs args)
+        private readonly FileStream fs;
+        private readonly StreamWriter sw;
+
+        /// <summary>
+        /// 指示日志文件的存放文件夹
+        /// </summary>
+        public static DirectoryInfo LogsDirectory
         {
-            programStartTime = Process.GetCurrentProcess().StartTime;
-            fs = args.LogFile.Open(FileMode.OpenOrCreate, FileAccess.Write);
+            get
+            {
+                _logsDirectory ??= new DirectoryInfo("logs");
+                if (!_logsDirectory.Exists)
+                {
+                    _logsDirectory.Create();
+                }
+                return _logsDirectory;
+            }
+        }
+        private static DirectoryInfo _logsDirectory;
+
+        /// <summary>
+        /// 构建缓冲的记录到文件的核心日志器
+        /// </summary>
+        public AsyncBufferedFSCoreLogger()
+        {
+            string logFileName = $"{DateTime.Now:yyyy-MM-dd_HH-mm-ss}.log";
+            FileInfo logFile = new FileInfo(Path.Combine(LogsDirectory.FullName, logFileName));
+            fs = logFile.Open(FileMode.OpenOrCreate, FileAccess.Write);
             sw = new StreamWriter(fs);
-            writer = args.Writer;
             Task.Run(() =>
             {
                 Thread.CurrentThread.Name = "BufferedFSCoreLogger Main Thread";
                 Loop();
             });
         }
+
+        /// <summary>
+        /// 指示是否应停止循环
+        /// </summary>
         private bool loopCancelled = false;
+
+        /// <summary>
+        /// 循环读取内存缓冲区的日志,并写入到文件系统
+        /// </summary>
         private void Loop()
         {
             while (!loopCancelled)
             {
                 while (buffer.TryDequeue(out ILog log))
                 {
-                    var fmtString = GetString(log);
-#if! DEBUG
-                    writer(fmtString);
-#endif
-                    ThreadSafeOperateLogsInner(() =>
-                    {
-                        LogsInner.Add(log);
-                    });
-                    sw.WriteLine(fmtString);
+                    sw.WriteLine(log.ToFormatedString());
                 }
                 Thread.Sleep(10);//经过测试,性能最优的间隔
             }
         }
 
-        private string GetString(ILog log)
-        {
-            TimeSpan span = log.Time - programStartTime;
-            string timeStr = $"{(int)span.TotalHours}:{span.Minutes}:{span.Seconds}:{span.Milliseconds}";
-            return $"[{timeStr}][{log.Category}/{log.Level}]{log.Message}";
-        }
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        /// <param name="log"></param>
         public override void Log(ILog log)
         {
-#if DEBUG
-            writer(GetString(log));
-#endif
             buffer.Enqueue(log);//令人难以置信的是,不使用异步代码反而更快
         }
 
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        /// <param name="disposing"></param>
         protected override void Dispose(bool disposing)
         {
             loopCancelled = true;

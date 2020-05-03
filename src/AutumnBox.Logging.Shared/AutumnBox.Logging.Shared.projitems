@@ -11,21 +11,16 @@
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Internal\LoggerImpl.Generic.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)LoggerExtension.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Management\BufferedFSCoreLogger.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Management\EventDrivenFSCoreLogger.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Management\AsyncBufferedFSCoreLogger.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Management\ConsoleLogger.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\CoreLoggerBase.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Management\CoreLoggerInitializeArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\FSCoreLogger.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\ICoreLogger.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Management\ICoreLoggerInitializeArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SLogger.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SLogger.Generic.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ILogger.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\ILog.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Management\ILoggingStation.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Management\HeritableStationAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Internal\LoggerImpl.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Internal\SimpleLoggingStation.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)LoggerFactory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Internal\Log.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\LoggingManager.cs" />

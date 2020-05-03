@@ -6,11 +6,10 @@ namespace AutumnBox.GUI.Services.Impl
     [Component(Type = typeof(ILoggingManager))]
     sealed class LoggingManager : ILoggingManager
     {
-        public ICoreLogger CoreLogger => Logging.Management.LoggingManager.CoreLogger;
-
+        public ILogsCollection Logs => Logging.Management.LoggingManager.Logs;
         public void Initialize()
         {
-            _ = Logging.Management.LoggingManager.CoreLogger;
+            Logging.Management.LoggingManager.Use(new ConsoleLogger(true) + new AsyncBufferedFSCoreLogger());
         }
     }
 }

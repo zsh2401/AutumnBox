@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
-using System.Linq;
 
 namespace AutumnBox.Logging.Management
 {
@@ -13,58 +12,57 @@ namespace AutumnBox.Logging.Management
         /// <summary>
         /// 日志站
         /// </summary>
-        public static ICoreLogger CoreLogger
-        {
-            get
-            {
-                if (_coreLogger == null)
-                {
-                    Use<BufferedFSCoreLogger>();
-                }
-                return _coreLogger;
-            }
-        }
-        private static ICoreLogger _coreLogger;
+        internal static ICoreLogger CoreLogger => proxy;
 
         /// <summary>
-        /// 日志文件夹
+        /// 已记录的日志
         /// </summary>
-        public static DirectoryInfo DefaultLogsDirectory { get; }
+        public static ILogsCollection Logs => proxy.Logs;
 
         /// <summary>
-        /// 日志文件
+        /// 优化已记录日志
         /// </summary>
-        private static FileInfo LogFile { get; }
-
-        /// <summary>
-        /// 静态构造器,初始化属性
-        /// </summary>
+        public static void OptimizeLogsCollection() { }
+        private static readonly CoreLoggerProxy proxy = new CoreLoggerProxy();
         static LoggingManager()
         {
-            DefaultLogsDirectory = new DirectoryInfo("logs");
-            if (!DefaultLogsDirectory.Exists)
+            proxy.InnerLogger = new ConsoleLogger(false);
+        }
+        /// <summary>
+        /// 使用某个日志器
+        /// </summary>
+        /// <param name="coreLogger"></param>
+        public static void Use(ICoreLogger coreLogger)
+        {
+            if (coreLogger is null)
             {
-                DefaultLogsDirectory.Create();
+                throw new ArgumentNullException(nameof(coreLogger));
             }
-            var logFileName = DateTime.Now.ToString("yyy-MM-dd_HH-mm-ss") + ".log";
-            LogFile = new FileInfo(Path.Combine(DefaultLogsDirectory.FullName, logFileName));
+
+            proxy.InnerLogger = coreLogger;
         }
 
         /// <summary>
-        /// 使用CoreLogger
+        /// 核心日志器代理
         /// </summary>
-        /// <typeparam name="TCoreLogger"></typeparam>
-        public static void Use<TCoreLogger>(bool writeToStdOut = true) where TCoreLogger : ICoreLogger, new()
+        private class CoreLoggerProxy : ICoreLogger
         {
-            static void uselessWriter(string _) { }
-            static void consoleWriter(string msg) => Console.WriteLine(msg);
-            IEnumerable<ILog> pastLogs = _coreLogger?.Logs?.Any() == true ? _coreLogger.Logs.ToArray() : new ILog[0];
-            if (_coreLogger != null)
+            public class LogsCollection : ObservableCollection<ILog>, ILogsCollection { }
+            public LogsCollection Logs { get; } = new LogsCollection();
+            public ICoreLogger InnerLogger { get; set; }
+            public void Dispose()
             {
-                _coreLogger.Dispose();
+                InnerLogger.Dispose();
             }
-            _coreLogger = new TCoreLogger();
-            _coreLogger.Initialize(new CoreLoggerInitializeArgs(LogFile, DefaultLogsDirectory, writeToStdOut ? (Action<string>)consoleWriter : uselessWriter, pastLogs));
+
+            public void Log(ILog log)
+            {
+                lock (Logs)
+                {
+                    Logs.Add(log);
+                }
+                InnerLogger.Log(log);
+            }
         }
     }
 }
