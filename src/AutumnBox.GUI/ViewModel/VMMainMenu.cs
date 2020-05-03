@@ -46,11 +46,13 @@ namespace AutumnBox.GUI.ViewModel
         public ICommand OpenExtFloder { get; }
         public ICommand ViewGuide { get; }
         public ICommand ExtensionStore { get; }
-        public ICommand HowToInstallExtension { get; set; }
+        public ICommand HowToInstallExtension { get; }
+        public ICommand ViewLibs { get; }
 
         [AutoInject]
         private readonly IOpenFxManager openFxManager;
-
+        [AutoInject]
+        private readonly IWindowManager windowManager;
         public VMMainMenu()
         {
             HowToInstallExtension = new MVVMCommand(p => this.GetComponent<IExtensionTaskManager>().Start("EAutumnBoxGuideViewer", new System.Collections.Generic.Dictionary<string, object>() { { "path", "basic/install_extension" } }));
@@ -62,6 +64,7 @@ namespace AutumnBox.GUI.ViewModel
             OpenShell = new MVVMCommand(p => OpenShellMethod(p?.ToString()));
             InstallExtension = new MVVMCommand(p => openFxManager.RunExtension("EExtensionInstaller"));
             OpenExtFloder = new MVVMCommand(p => Process.Start(BuildInfo.DEFAULT_EXTENSION_PATH));
+            ViewLibs = new MVVMCommand(p => windowManager.ShowDialog("Libs"));
         }
         private static void OpenShellMethod(string fileName)
         {

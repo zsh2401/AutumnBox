@@ -1,4 +1,5 @@
-﻿/*************************************************
+﻿#nullable enable
+/*************************************************
 ** auth： zsh2401@163.com
 ** date:  2018/8/23 19:19:38 (UTC +8:00)
 ** desc： ...
@@ -23,10 +24,21 @@ namespace AutumnBox.OpenFramework.Management
     interface IBaseApi
     {
         /// <summary>
+        /// 语言变更了
+        /// </summary>
+        event EventHandler LanguageChanged;
+        /// <summary>
+        /// 调用某些不为人知的特殊API
+        /// 不建议任何第三方进行调用
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="arg"></param>
+        /// <returns></returns>
+        object? UnstableInternalApiCall(string message, object? arg=null);
+        /// <summary>
         /// 全局湖
         /// </summary>
         IRegisterableLake GlobalLake { get; }
-
         /// <summary>
         /// 发送一条普通的通知
         /// </summary>

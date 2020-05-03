@@ -16,7 +16,7 @@ namespace AutumnBox.OpenFramework.Extension.Extension.Leaf
     [ClassText("continue", "Continue forcely", "zh-cn:强行继续")]
     [ClassText("ok", "Ok", "zh-cn:好")]
     [ClassText("cancel", "Cancel", "zh-cn:取消")]
-    public static class LeafUIHelper
+    public static class LeafUIExtension
     {
         /// <summary>
         /// 
@@ -25,9 +25,10 @@ namespace AutumnBox.OpenFramework.Extension.Extension.Leaf
         /// <param name="exitCode"></param>
         public static void EFinish(this ILeafUI ui, int exitCode = 0)
         {
-            ui.Finish(exitCode);
+            ui.Finish(exitCode.ToString());
             Thread.CurrentThread.Abort();
         }
+
         /// <summary>
         /// 
         /// </summary>
@@ -38,6 +39,7 @@ namespace AutumnBox.OpenFramework.Extension.Extension.Leaf
             ui.Finish(tip);
             Thread.CurrentThread.Abort();
         }
+
         /// <summary>
         /// Shutdown
         /// </summary>
@@ -68,6 +70,7 @@ namespace AutumnBox.OpenFramework.Extension.Extension.Leaf
 //                if (choice == null || choice == true) ui.EShutdown();
 //            }
         }
+
         /// <summary>
         /// 检查设备安卓版本
         /// </summary>
@@ -81,6 +84,7 @@ namespace AutumnBox.OpenFramework.Extension.Extension.Leaf
         {
             throw new System.NotImplementedException();
         }
+
         /// <summary>
         /// 进行警告
         /// </summary>
@@ -90,6 +94,7 @@ namespace AutumnBox.OpenFramework.Extension.Extension.Leaf
         {
             throw new System.NotImplementedException();
         }
+
         /// <summary>
         /// 进行是否抉择
         /// </summary>
@@ -102,6 +107,7 @@ namespace AutumnBox.OpenFramework.Extension.Extension.Leaf
         {
             if (!ui.DoYN(msg, btnYes, btnNo)) ui.EShutdown();
         }
+
         /// <summary>
         /// 进行可取消的是否抉择
         /// </summary>

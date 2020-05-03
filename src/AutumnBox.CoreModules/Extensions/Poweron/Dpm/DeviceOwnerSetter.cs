@@ -211,7 +211,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.Dpm
         private void SetProgress(string keyOfTip, int progress)
         {
             string tip = TextManager[keyOfTip] ?? keyOfTip;
-            UI.Tip = tip;
+            UI.StatusInfo = tip;
             UI.Progress = progress;
             UI.WriteLine(tip);
         }

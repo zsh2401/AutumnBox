@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Threading.Tasks;
 
 namespace AutumnBox.OpenFramework.Open.LKit
@@ -9,38 +10,40 @@ namespace AutumnBox.OpenFramework.Open.LKit
     public interface ILeafUI : IDisposable
     {
         /// <summary>
-        /// 显示Leaf窗口内的交互Dialog
-        /// </summary>
-        /// <param name="dialog"></param>
-        Task<object> ShowLeafDialog(ILeafDialog dialog);
-        /// <summary>
         /// 图标
         /// </summary>
         byte[] Icon { get; set; }
+
         /// <summary>
         /// 标题
         /// </summary>
         string Title { get; set; }
+
         /// <summary>
         /// LeafUI高度
         /// </summary>
         int Height { get; set; }
+
         /// <summary>
         /// LeafUI宽度
         /// </summary>
         int Width { get; set; }
+
         /// <summary>
         /// 状态描述
         /// </summary>
-        string Tip { get; set; }
+        string StatusInfo { get; set; }
+
+        /// <summary>
+        /// 状态描述
+        /// </summary>
+        string StatusDescription { get; set; }
+
         /// <summary>
         /// 进度条
         /// </summary>
         int Progress { get; set; }
-        /// <summary>
-        /// 是否显示专业输出
-        /// </summary>
-        bool ProOutputVisible { get; set; }
+
         /// <summary>
         /// 请求退出时发生
         /// </summary>
@@ -51,57 +54,62 @@ namespace AutumnBox.OpenFramework.Open.LKit
         /// 显示界面
         /// </summary>
         void Show();
+
         /// <summary>
         /// 以Dialog的方式显示在秋之盒之上
         /// </summary>
         void ShowDialog();
+
         /// <summary>
-        /// 完成,进度将被置为完成,Tip将根据返回值决定,并且关闭按钮点击事件将不再被触发
+        /// 向界面传达完成的消息
         /// </summary>
-        /// <param name="exitCode">传入的返回值</param>
-        void Finish(int exitCode = 0);
-        /// <summary>
-        /// 完成,进度将被置为完成,Tip将会被设置为参数,并且关闭按钮点击事件将不再被触发
-        /// </summary>
-        /// <param name="tip">需要设置的Tip</param>
-        void Finish(string tip);
+        /// <param name="statusMessage">完成状态信息</param>
+        void Finish(string statusMessage = default);
+
         /// <summary>
         /// 界面将被强行关闭,没有任何提示与过程,不建议在正常情况下使用
         /// </summary>
         void Shutdown();
+
+        /// <summary>
+        /// 想详情写入一行
+        /// </summary>
+        /// <param name="_str"></param>
+        void WriteLineToDetails(string _str);
+
+        /// <summary>
+        /// 向详情写入信息
+        /// </summary>
+        /// <param name="_str"></param>
+        void WriteToDetails(string _str);
         #endregion
 
-        #region 输出函数
-        /// <summary>
-        /// 输出
-        /// </summary>
-        /// <param name="content"></param>
-        void WriteLine(object content);
-        /// <summary>
-        /// 写入一段输出内容,仅在开启详细输出时显示
-        /// </summary>
-        /// <param name="output"></param>
-        void WriteOutput(object output);
-        #endregion
         /// <summary>
         /// 开启帮助按钮
         /// </summary>
         /// <param name="callback"></param>
         void EnableHelpBtn(Action callback);
+
         /// <summary>
         /// 在UI线程中执行代码
         /// </summary>
         /// <param name="act"></param>
         void RunOnUIThread(Action act);
 
-        #region Leaf交互API
+        #region 增强交互API
+        /// <summary>
+        /// 显示Leaf窗口内的交互Dialog
+        /// </summary>
+        /// <param name="dialog"></param>
+        Task<object> ShowLeafDialog(ILeafDialog dialog);
+
         /// <summary>
         /// 让用户输入一些字符串
         /// </summary>
         /// <param name="hint"></param>
         /// <param name="_default"></param>
         /// <returns></returns>
-        string InputString(string hint = null, string _default = null);
+        string InputString(string hint, string _default = default);
 
         /// <summary>
         /// 显示一条信息,并阻塞至用户点击确认
@@ -137,16 +145,7 @@ namespace AutumnBox.OpenFramework.Open.LKit
         /// <param name="options">选项,至少要有一个值</param>
         /// <param name="hint">简要提示,传null为默认</param>
         /// <returns>被选择的那个对象,如果用户取消选择,返回为null</returns>
-        object SelectFrom(string hint, params object[] options);
-
-        /// <summary>
-        /// 8.23暂未实现!! 进行选择,将会阻塞至用户完成选择
-        /// </summary>
-        /// <param name="option">所有选项</param>
-        /// <param name="maxSelect">最多可选</param>
-        /// <returns>用户选择的所有选项,如果用户取消,则这个数组为null</returns>
-        object[] Select(object[] option, int maxSelect = 2);
-
+        object SelectOne(string hint, params object[] options);
         #endregion
     }
 }

@@ -12,7 +12,9 @@
     WindowStartupLocation="CenterOwner"
         x:Name="thisCtrl"
         ShowInTaskbar="False"
-        Title="{DynamicResource LibsWindowTitle}" ResizeMode="NoResize" Height="300" Width="400">
+    Background="{DynamicResource RegionBrush}"
+    Icon="/Resources/Drawable/icon.ico"
+        Title="Librarian Viewer" ResizeMode="NoResize" Height="300" Width="250">
     <Window.DataContext>
         <viewmodel:VMLibsView x:Name="mContext"/>
     </Window.DataContext>
@@ -20,13 +22,7 @@
         <ItemsControl ItemsSource="{Binding Libs}">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Button Width="300" Command="{Binding ShowInformation,ElementName=mContext}" CommandParameter="{Binding Lib}" Margin="20">
-                        <Button.ToolTip>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="{DynamicResource LibsWindowLoadedWrapper}"/>
-                                <TextBlock Text="{Binding Count}"/>
-                            </StackPanel>
-                        </Button.ToolTip>
+                    <Button Command="{Binding ShowInformation,ElementName=mContext}" CommandParameter="{Binding Lib}" Margin="10">
                         <TextBlock Text="{Binding Lib.Name}"/>
                     </Button>
                 </DataTemplate>

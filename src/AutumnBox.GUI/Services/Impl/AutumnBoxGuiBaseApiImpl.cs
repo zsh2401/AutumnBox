@@ -122,7 +122,16 @@ namespace AutumnBox.GUI.Services.Impl
             App.Current.Shutdown();
         }
 
+        public AutumnBoxGuiBaseApiImpl()
+        {
+            this.GetComponent<ILanguageManager>().LanguageChanged += (s, e) =>
+            {
+                LanguageChanged?.Invoke(this, new EventArgs());
+            };
+        }
         private static LoadingWindow loadingWindow;
+
+        public event EventHandler LanguageChanged;
 
         public event EventHandler Destorying
         {
@@ -300,6 +309,19 @@ namespace AutumnBox.GUI.Services.Impl
         public Task<bool> SendNotificationAsk(string msg)
         {
             return this.GetComponent<INotificationManager>().Ask(msg);
+        }
+
+        public object UnstableInternalApiCall(string message, object arg = null)
+        {
+            switch (message)
+            {
+                case "show_donate_window":
+                    this.GetComponent<IWindowManager>().Show("Donate");
+                    break;
+                default:
+                    break;
+            }
+            return null;
         }
     }
 }

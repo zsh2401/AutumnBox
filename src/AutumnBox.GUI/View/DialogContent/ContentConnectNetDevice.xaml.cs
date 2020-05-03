@@ -17,7 +17,7 @@ namespace AutumnBox.GUI.View.DialogContent
 
         public object ViewContent => this;
 
-        public event EventHandler<DialogClosedEventArgs> Closed;
+        public event EventHandler<DialogClosedEventArgs> RequestedClose;
 
         public class InputResult
         {
@@ -40,12 +40,12 @@ namespace AutumnBox.GUI.View.DialogContent
 
         private void Button_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            Closed?.Invoke(this, new DialogClosedEventArgs(new InputResult(TBIP.Text, TBPort.Text)));
+            RequestedClose?.Invoke(this, new DialogClosedEventArgs(new InputResult(TBIP.Text, TBPort.Text)));
         }
 
         private void Button_Click_1(object sender, System.Windows.RoutedEventArgs e)
         {
-            Closed?.Invoke(this, new DialogClosedEventArgs(null));
+            RequestedClose?.Invoke(this, new DialogClosedEventArgs(null));
         }
     }
 }

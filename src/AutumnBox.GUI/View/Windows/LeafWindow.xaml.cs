@@ -28,7 +28,7 @@ namespace AutumnBox.GUI.View.Windows
             (DataContext as VMLeafUI).View = this;
         }
 
-        private void TBOutput_TextChanged(object sender, TextChangedEventArgs e)
+        private void DetailsTextBoxTextChanged(object sender, TextChangedEventArgs e)
         {
             (sender as TextBox).ScrollToEnd();
         }

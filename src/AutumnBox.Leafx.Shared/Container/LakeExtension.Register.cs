@@ -152,6 +152,19 @@ namespace AutumnBox.Leafx.Container
         }
 
         /// <summary>
+        /// 根据ID注册单例
+        /// </summary>
+        /// <param name="lake"></param>
+        /// <param name="id"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static IRegisterableLake RegisterSingleton(this IRegisterableLake lake, string id, object value)
+        {
+            lake.RegisterSingletonBase(id, () => value);
+            return lake;
+        }
+
+        /// <summary>
         /// 使用id注册多例
         /// </summary>
         /// <param name="lake"></param>

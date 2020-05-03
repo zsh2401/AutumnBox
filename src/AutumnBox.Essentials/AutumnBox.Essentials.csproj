@@ -52,6 +52,7 @@
     <Compile Include="Extensions\EAutumnBoxUpdateChecker.cs" />
     <Compile Include="EssentialsLibrarin.cs" />
     <Compile Include="Extensions\EDeviceRebooter.cs" />
+    <Compile Include="Extensions\EEnableDonateCard.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -14,8 +14,10 @@
         d:DesignHeight="300" d:DesignWidth="450"
         FontFamily="{DynamicResource AutumnBox.Font}"
                          ShowInTaskbar="True"
+    Background="{DynamicResource RegionBrush}"
         WindowStartupLocation="CenterScreen"
            controls:Dialog.Token="{Binding Token}"
+    ResizeMode="NoResize"
         Title="{Binding Title}">
 
     <Window.DataContext>
@@ -24,24 +26,12 @@
     <Grid>
         <DockPanel>
             <StackPanel DockPanel.Dock="Top" Margin="5" VerticalAlignment="Top">
-                <controls:LoadingLine Visibility="{Binding LoadingLineVisibility}"/>
+                <ProgressBar Visibility="{Binding LoadingLineVisibility}" Style="{StaticResource ProgressBarFlat}" Margin="0" Value="110" Maximum="200" IsIndeterminate="True"/>
                 <ProgressBar Visibility="{Binding ProgressBarVisibility}" BorderBrush="Transparent" Background="Transparent"  Value="{Binding Progress}"/>
-                <TextBlock Margin="10" Text="{Binding Tip}" FontSize="25" />
+                <TextBlock Margin="5" Text="{Binding StatusInfo}" FontSize="30" />
+                <TextBlock Margin="5" Text="{Binding StatusDescription}" Height="50"/>
             </StackPanel>
-            <DockPanel Margin="3,0,3,3" DockPanel.Dock="Bottom">
-                <StackPanel  Orientation="Horizontal" DockPanel.Dock="Top" >
-
-                    <Button Margin="5" ToolTip="{DynamicResource LeafUIBtnTip}" FontSize="12" Content="{DynamicResource LeafUIBtnCopy}" Command="{Binding Copy}"/>
-                    <StackPanel Orientation="Horizontal">
-                        <ToggleButton Style="{DynamicResource ToggleButtonSwitch}" IsChecked="{Binding EnableFullContent}"/>
-                        <TextBlock VerticalAlignment="Center" Text="{DynamicResource LeafUIEnableFullContentTip}"/>
-                    </StackPanel>
-                </StackPanel>
-                <Grid DockPanel.Dock="Bottom" >
-                    <TextBox  Background="Transparent" Visibility="{Binding Converter={StaticResource BoolToVisibilityConverter},ConverterParameter={StaticResource VisibleIf_IsFalse},Path=EnableFullContent}"  TextChanged="TBOutput_TextChanged" IsReadOnly="True"  Style="{x:Null}"  Text="{Binding Content}" TextWrapping="Wrap"/>
-                    <TextBox   Background="Transparent" Visibility="{Binding Converter={StaticResource BoolToVisibilityConverter},ConverterParameter={StaticResource VisibleIf_IsTrue},Path=EnableFullContent}"  TextChanged="TBOutput_TextChanged" IsReadOnly="True"  Style="{x:Null}" Text="{Binding FullContent}" TextWrapping="Wrap"/>
-                </Grid>
-            </DockPanel>
+            <TextBox Margin="5" DockPanel.Dock="Bottom" IsReadOnly="True" Text="{Binding DetailsContent,Mode=OneWay}" TextChanged="DetailsTextBoxTextChanged"/>
         </DockPanel>
     </Grid>
 </custom:NiceWindow>

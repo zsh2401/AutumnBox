@@ -33,6 +33,10 @@ namespace AutumnBox.OpenFramework.Implementation
             {
                 baseApi.Destorying += AutumnBoxDestorying;
             });
+            baseApi.LanguageChanged += (s, e) =>
+            {
+                cards.ForEach(card => card.Update());
+            };
         }
 
         private void AutumnBoxDestorying(object sender, EventArgs e)
@@ -47,6 +51,7 @@ namespace AutumnBox.OpenFramework.Implementation
             baseApi.RunOnUIThread(() =>
             {
                 card.Create();
+                card.Update();
                 baseApi.AppendPanel(card.View, card.Priority);
                 cards.Add(card);
             });

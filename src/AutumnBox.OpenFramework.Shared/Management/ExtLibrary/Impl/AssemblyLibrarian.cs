@@ -3,13 +3,16 @@
 ** date:  2018/8/1 0:58:55 (UTC +8:00)
 ** desc： ...
 *************************************************/
+using AutumnBox.Leafx.ObjectManagement;
 using AutumnBox.Logging;
 using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.Management.ExtInfo;
+using AutumnBox.OpenFramework.Open;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Windows;
 
 namespace AutumnBox.OpenFramework.Management.ExtLibrary.Impl
 {
@@ -46,6 +49,16 @@ namespace AutumnBox.OpenFramework.Management.ExtLibrary.Impl
         /// </summary>
         public virtual int TargetApiLevel { get; } = BuildInfo.API_LEVEL;
 
+        /// <summary>
+        /// 获取版本号
+        /// </summary>
+        public virtual Version Version
+        {
+            get
+            {
+                return GetType().Assembly.GetName().Version;
+            }
+        }
         /// <summary>
         /// 拓展模块
         /// </summary>
@@ -106,11 +119,24 @@ namespace AutumnBox.OpenFramework.Management.ExtLibrary.Impl
         }
 
         /// <summary>
-        /// 当拓展模块程序集被卸载时调用
+        /// <inheritdoc/>
         /// </summary>
         public virtual void Destory()
         {
             SLogger.Info(this, $"librarian {Name}'s destorying");
+        }
+
+        [AutoInject]
+        IAppManager appManager;
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        public virtual void DisplayMessage()
+        {
+            appManager.RunOnUIThread(() =>
+            {
+                MessageBox.Show($"{this.Name}-v{this.Version}\nLoaded {this.Extensions.Count()} extension(s)", this.Name);
+            });
         }
     }
 }

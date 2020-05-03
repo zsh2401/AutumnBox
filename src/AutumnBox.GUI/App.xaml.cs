@@ -22,6 +22,8 @@ using System.Linq;
 using System.Reflection;
 using System.Threading;
 using System.Windows;
+using System.Windows.Threading;
+
 namespace AutumnBox.GUI
 {
 
@@ -31,6 +33,7 @@ namespace AutumnBox.GUI
     public partial class App : Application
     {
         public const int ERR_BANNED_VERSION = 2501;
+        public const string UI_DISPATCHER_ID = "uidspc";
 
         /// <summary>
         /// 构造应用
@@ -76,6 +79,7 @@ namespace AutumnBox.GUI
             this.GetComponent<IThemeManager>().Reload();
             base.OnStartup(e);
         }
+
         private bool CheckOther(string[] args)
         {
             var process = OtherProcessChecker.ThereIsOtherAutumnBoxProcess();
@@ -94,6 +98,7 @@ namespace AutumnBox.GUI
         /// </summary>
         private void LoadComponent()
         {
+            Current.Lake.RegisterSingleton(UI_DISPATCHER_ID, Dispatcher);
             new ClassComponentsLoader(
                 "AutumnBox.GUI.Services.Impl",
                 Current.Lake)

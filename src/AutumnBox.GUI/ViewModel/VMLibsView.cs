@@ -6,6 +6,7 @@ using AutumnBox.Leafx.Container;
 using System.Collections.Generic;
 using AutumnBox.GUI.Services;
 using AutumnBox.Leafx.ObjectManagement;
+using AutumnBox.OpenFramework.Management.ExtLibrary;
 
 namespace AutumnBox.GUI.ViewModel
 {
@@ -47,13 +48,17 @@ namespace AutumnBox.GUI.ViewModel
 
         public VMLibsView()
         {
+            if (IsDesignMode())
+            {
+                return;
+            }
             openFxManager.WakeIfLoaded(() =>
             {
                 Load();
             });
             ShowInformation = new FlexiableCommand((p) =>
             {
-                //(p as ILibrarian).ShowInformation();
+                (p as ILibrarian).DisplayMessage();
             });
         }
 

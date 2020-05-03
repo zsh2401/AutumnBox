@@ -30,6 +30,11 @@ namespace AutumnBox.OpenFramework.Management.ExtLibrary
         void Reload();
 
         /// <summary>
+        /// 显示信息
+        /// </summary>
+        void DisplayMessage();
+
+        /// <summary>
         /// 获取该入口类所代表的程序集中的拓展的包装类
         /// </summary>
         /// <returns></returns>
