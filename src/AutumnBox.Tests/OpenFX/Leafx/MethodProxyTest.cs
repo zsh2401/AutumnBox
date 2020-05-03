@@ -32,13 +32,13 @@ namespace AutumnBox.Tests.OpenFX.Leafx
         {
             const string TEST_STR = "test string";
             const int SUM = 3;
-            IRegisterableLake lake = new SunsetLake();
+            SunsetLake lake = new SunsetLake();
             lake.RegisterSingleton<string>("fuck");
 
-            IRegisterableLake lake2 = new SunsetLake();
+            SunsetLake lake2 = new SunsetLake();
             lake.RegisterSingleton<string>(TEST_STR);
 
-            MethodProxy maxProxy = new MethodProxy(this, nameof(HashCodeAdd), MergedLake.From(lake, lake2));
+            MethodProxy maxProxy = new MethodProxy(this, nameof(HashCodeAdd), lake + lake2);
             long result = (long)maxProxy.Invoke(new Dictionary<string, object>() { { "x", 3 } });
             long correctResult = HashCodeAdd(SUM, TEST_STR);
 

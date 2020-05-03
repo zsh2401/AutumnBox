@@ -43,4 +43,7 @@
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Enhancement\ClassTextKit\ClassTextExtension.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Container\LakeExtension.Quick.cs" />
+  </ItemGroup>
 </Project>

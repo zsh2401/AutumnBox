@@ -80,5 +80,16 @@ namespace AutumnBox.Leafx.Container.Support
         /// </summary>
         /// <returns></returns>
         public IEnumerable<string> Ids => factories.Keys;
+
+        /// <summary>
+        /// 将两个湖合并
+        /// </summary>
+        /// <param name="left"></param>
+        /// <param name="right"></param>
+        /// <returns></returns>
+        public static MergedLake operator +(SunsetLake left, ILake right)
+        {
+            return new MergedLake(left, right);
+        }
     }
 }

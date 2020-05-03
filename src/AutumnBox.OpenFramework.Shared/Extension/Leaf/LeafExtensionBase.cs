@@ -26,13 +26,11 @@ namespace AutumnBox.OpenFramework.Extension.Leaf
         [LDoNotScan]
         public object Main(Dictionary<string, object> args)
         {
-#if !DEBUG
             if (lake == null)
             {
                 throw new System.InvalidOperationException("Lake has not been inject!");
             }
-#endif
-            var methodProxy = new MethodProxy(this, this.FindEntryPoint(), MergedLake.From(lake, GetSepLake()));
+            var methodProxy = new MethodProxy(this, this.FindEntryPoint(), lake!.UniteWith(GetSepLake()));
             return methodProxy.Invoke(args ?? new Dictionary<string, object>());
         }
 

@@ -44,6 +44,18 @@ namespace AutumnBox.Leafx.Container.Support
         }
 
         /// <summary>
+        /// 将两个湖合并
+        /// </summary>
+        /// <param name="left"></param>
+        /// <param name="right"></param>
+        /// <returns></returns>
+        public static MergedLake operator +(MergedLake left, ILake right)
+        {
+            return new MergedLake(left, right);
+        }
+
+
+        /// <summary>
         /// <inheritdoc/>
         /// </summary>
         public int Count
