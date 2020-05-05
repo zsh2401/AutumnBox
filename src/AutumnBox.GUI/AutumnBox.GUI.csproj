@@ -146,11 +146,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Model\ChoicerContentStartArgs.cs" />
     <Compile Include="Model\ExtensionDock.cs" />
     <Compile Include="Model\LibDock.cs" />
     <Compile Include="Model\OpenSourceProject.cs" />
-    <Compile Include="Model\Tip.cs" />
     <Compile Include="Model\VersionInfo.cs" />
     <Compile Include="MVVM\FlexiableCommand.cs" />
     <Compile Include="MVVM\InjectableObject.cs" />

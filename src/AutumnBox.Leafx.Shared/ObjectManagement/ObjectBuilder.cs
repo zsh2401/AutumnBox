@@ -27,13 +27,22 @@ namespace AutumnBox.Leafx.ObjectManagement
     {
         private readonly Type type;
         private readonly ILake source;
-
+        /// <summary>
+        /// 创建一个对象构建器
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="source"></param>
         public ObjectBuilder(Type type, ILake source)
         {
             this.type = type ?? throw new ArgumentNullException(nameof(type));
             this.source = source ?? throw new ArgumentNullException(nameof(source));
         }
 
+        /// <summary>
+        /// 构建一个对象
+        /// </summary>
+        /// <param name="extraArgs"></param>
+        /// <returns></returns>
         public object Build(Dictionary<string, object> extraArgs = null)
         {
             var constructor = type.GetConstructors(ObjectManagementConstants.BINDING_FLAGS)[0];

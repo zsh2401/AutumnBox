@@ -1,20 +1,31 @@
-﻿using AutumnBox.Leafx.ObjectManagement;
-using AutumnBox.Logging;
+﻿using AutumnBox.Logging;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 
+#nullable enable
 namespace AutumnBox.Leafx.Container.Support
 {
+    /// <summary>
+    /// 表示程序集组件加载器，用于进行广泛的组件加载
+    /// <code>
+    /// var loader = new ClassComponentsLoader("Example.NameSpace",lake,AppDomain.CurrentDomain.GetAssemblies());
+    /// loader.Do();
+    /// </code>
+    /// </summary>
     public sealed class ClassComponentsLoader
     {
         private readonly string prefix;
         private readonly IRegisterableLake target;
         private readonly Assembly[] assemblies;
 
+        /// <summary>
+        /// 初始化ClassComponentsLoader
+        /// </summary>
+        /// <param name="prefix">命名空间前缀,如AutumnBox.GUI.Services</param>
+        /// <param name="target">被扫描组件的目标加载位置</param>
+        /// <param name="assemblies">指定扫描的程序集,如果不指定,则扫描全面当前APP加载的程序集</param>
         public ClassComponentsLoader(string prefix, IRegisterableLake target, params Assembly[] assemblies)
         {
             if (string.IsNullOrEmpty(prefix))
@@ -27,16 +38,14 @@ namespace AutumnBox.Leafx.Container.Support
                 throw new ArgumentNullException(nameof(target));
             }
 
-            if (assemblies is null)
-            {
-                throw new ArgumentNullException(nameof(assemblies));
-            }
-
             this.prefix = prefix;
             this.target = target;
-            this.assemblies = assemblies.Any() ? assemblies : AppDomain.CurrentDomain.GetAssemblies();
+            this.assemblies = assemblies ?? (assemblies.Any() ? assemblies : AppDomain.CurrentDomain.GetAssemblies());
         }
 
+        /// <summary>
+        /// 执行
+        /// </summary>
         public void Do()
         {
             List<Type> componentsResult = new List<Type>();

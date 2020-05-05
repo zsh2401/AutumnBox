@@ -35,16 +35,31 @@ namespace AutumnBox.Leafx.ObjectManagement
         /// 被代理的方法
         /// </summary>
         private readonly MethodInfo method;
+
+        /// <summary>
+        /// 用于IoC的组件源
+        /// </summary>
         private readonly ILake source;
 
+        /// <summary>
+        /// 构建一个方法代理器实例
+        /// </summary>
+        /// <param name="instance"></param>
+        /// <param name="methodName"></param>
+        /// <param name="source"></param>
         public MethodProxy(object instance, string methodName, ILake source)
         {
-
             this.method = FindMethodByName(methodName);
             this.instance = instance;
             this.source = source ?? throw new ArgumentNullException(nameof(source));
         }
 
+        /// <summary>
+        /// 构建一个方法代理器实例
+        /// </summary>
+        /// <param name="instance">实例</param>
+        /// <param name="method">方法</param>
+        /// <param name="source">依赖注入源</param>
         public MethodProxy(object instance, MethodInfo method, ILake source)
         {
             this.instance = instance;
@@ -52,6 +67,11 @@ namespace AutumnBox.Leafx.ObjectManagement
             this.source = source ?? throw new ArgumentNullException(nameof(source));
         }
 
+        /// <summary>
+        /// 根据方法名称找到方法
+        /// </summary>
+        /// <param name="methodName"></param>
+        /// <returns></returns>
         private MethodInfo FindMethodByName(string methodName)
         {
             var result = instance.GetType().GetMethod(methodName,
@@ -63,12 +83,17 @@ namespace AutumnBox.Leafx.ObjectManagement
             return result;
         }
 
-        public object Invoke(Dictionary<string, object> extraArgs = null, bool inject = true)
+        /// <summary>
+        /// 执行方法
+        /// </summary>
+        /// <param name="extraArgs"></param>
+        /// <returns></returns>
+        public object Invoke(Dictionary<string, object> extraArgs = null)
         {
             if (instance == null) throw new InvalidOperationException("Please create instance before invoke method");
 
             object[] args = ParameterArrayBuilder.BuildArgs(
-                inject ? source : null,
+                source,
                 extraArgs ?? new Dictionary<string, object>(),
                 method.GetParameters());
 
@@ -93,16 +118,25 @@ namespace AutumnBox.Leafx.ObjectManagement
             }
         }
 
+        /// <summary>
+        /// 获取所有环绕切面
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<AroundMethodAttribute> GetAroundAspects()
         {
             return method.GetCustomAttributes<AroundMethodAttribute>();
         }
 
-        public Func<object> GetInvoker(Dictionary<string, object> extraArgs = null, bool inject = true)
+        /// <summary>
+        /// 获取一个执行器
+        /// </summary>
+        /// <param name="extraArgs"></param>
+        /// <returns></returns>
+        public Func<object> GetInvoker(Dictionary<string, object> extraArgs = null)
         {
             return () =>
             {
-                return Invoke(extraArgs, inject);
+                return Invoke(extraArgs);
             };
         }
     }

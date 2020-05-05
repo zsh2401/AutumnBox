@@ -31,5 +31,9 @@ namespace AutumnBox.Leafx.Container
         void RegisterComponent(string id, ComponentFactory factory);
     }
 
+    /// <summary>
+    /// 组件工厂
+    /// </summary>
+    /// <returns></returns>
     public delegate object? ComponentFactory();
 }

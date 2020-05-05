@@ -13,11 +13,10 @@
 *
 * ==============================================================================
 */
-using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Text;
 
+#nullable enable
 namespace AutumnBox.Leafx.Container.Support
 {
     /// <summary>
@@ -40,7 +39,7 @@ namespace AutumnBox.Leafx.Container.Support
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public virtual object GetComponent(string id)
+        public virtual object? GetComponent(string id)
         {
             if (Factories.TryGetValue(id, out ComponentFactory factory))
             {

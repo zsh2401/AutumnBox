@@ -42,6 +42,15 @@ namespace AutumnBox.Leafx.ObjectManagement
         }
 
         /// <summary>
+        /// 移除某个缓存
+        /// </summary>
+        /// <param name="key"></param>
+        public static bool RemoveElement(TKey key)
+        {
+            return cache.Remove(key);
+        }
+
+        /// <summary>
         /// 已缓存数量
         /// </summary>
         public static int CachedCount => cache.Count;

@@ -74,12 +74,12 @@ namespace AutumnBox.Leafx.Container.Support
         public List<ILake> Lakes { get; }
 
         /// <summary>
-        /// <获取组件,依据Lakes倒序获取
+        /// 从Lakes中倒序遍历获取组件
         /// </summary>
         /// <param name="id"></param>
         /// <exception cref="IdNotFoundException">进行了检索,但指定的id未找到</exception>
         /// <returns></returns>
-        public override object GetComponent(string id)
+        public override object? GetComponent(string id)
         {
             var reversed = Lakes.ToArray().Reverse();
             foreach (var lake in reversed)

@@ -27,8 +27,8 @@ namespace AutumnBox.Leafx.ObjectManagement
         /// <summary>
         /// 构造一个属性注入器
         /// </summary>
-        /// <param name="instance"></param>
-        /// <param name="sources"></param>
+        /// <param name="instance">实例</param>
+        /// <param name="source">用于IoC的源</param>
         public DependenciesInjector(object instance, ILake source)
         {
             this.instance = instance ?? throw new ArgumentNullException(nameof(instance));
@@ -95,13 +95,23 @@ namespace AutumnBox.Leafx.ObjectManagement
             BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.FlattenHierarchy;
 
         /// <summary>
-        /// 静态的注入方法
+        /// 将依赖注入到实例中
         /// </summary>
         /// <param name="instance"></param>
-        /// <param name="sources"></param>
-        public static void Inject(object instance, params ILake[] sources)
+        /// <param name="source"></param>
+        public static void Inject(object instance, ILake source)
         {
-            new DependenciesInjector(instance, new MergedLake(sources)).Inject();
+            if (instance is null)
+            {
+                throw new ArgumentNullException(nameof(instance));
+            }
+
+            if (source is null)
+            {
+                throw new ArgumentNullException(nameof(source));
+            }
+
+            new DependenciesInjector(instance, source).Inject();
         }
 
         /// <summary>

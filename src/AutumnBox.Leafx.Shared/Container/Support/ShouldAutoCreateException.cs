@@ -17,17 +17,27 @@ using System;
 
 namespace AutumnBox.Leafx.Container.Support
 {
+    /// <summary>
+    /// 用于指示工厂函数应转为自动创建
+    /// </summary>
     public class ShouldAutoCreateException : Exception
     {
+        /// <summary>
+        /// 初始化ShouldAutoCreateException的新实例
+        /// </summary>
+        /// <param name="t"></param>
         public ShouldAutoCreateException(Type t) {
             if (t is null)
             {
                 throw new ArgumentNullException(nameof(t));
             }
 
-            T = t;
+            Type = t;
         }
 
-        public Type T { get; }
+        /// <summary>
+        /// 组件类型
+        /// </summary>
+        public Type Type { get; }
     }
 }
