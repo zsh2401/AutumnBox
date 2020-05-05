@@ -78,6 +78,8 @@
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.4.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
@@ -111,6 +113,7 @@
     <Compile Include="Basic\Executor\HestExecutorTest.cs" />
     <Compile Include="Basic\MADB\BooterTest.cs" />
     <Compile Include="Basic\MADB\Win32ManagerTest.cs" />
+    <Compile Include="Leafx\CacheTest.cs" />
     <Compile Include="Leafx\ClassTextTest.cs" />
     <Compile Include="Logging\LoggerTest.cs" />
     <Compile Include="OpenFX\ExtInf\ExtInfExtensionTest.cs" />

@@ -1,4 +1,5 @@
 ﻿#nullable enable
+using AutumnBox.Leafx.ObjectManagement;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -12,24 +13,20 @@ namespace AutumnBox.Leafx.Enhancement.ClassTextKit
     public static class ClassTextReaderCache
     {
         /// <summary>
-        /// 被缓存的读取器
+        /// 参与缓存机制，申请一个ClassTextReader
         /// </summary>
-        private readonly static IDictionary<Type, ClassTextReader> cached = new ConcurrentDictionary<Type, ClassTextReader>();
-
+        /// <param name="t"></param>
+        /// <returns></returns>
         public static ClassTextReader Acquire(Type t)
         {
-            if (cached.TryGetValue(t, out ClassTextReader reader))
-            {
-                return reader;
-            }
-            else
-            {
-                var classTextReader = new ClassTextReader(t);
-                cached.Add(t, classTextReader);
-                return classTextReader;
-            }
+            return ObjectCache<Type, ClassTextReader>.Acquire(t, () => new ClassTextReader(t));
         }
 
+        /// <summary>
+        /// 参与缓存机制，申请一个ClassTextReader
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
         public static ClassTextReader Acquire<T>()
         {
             return Acquire(typeof(T));
