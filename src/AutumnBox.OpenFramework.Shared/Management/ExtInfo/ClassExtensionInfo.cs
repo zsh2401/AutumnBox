@@ -1,18 +1,16 @@
-﻿#nullable enable
-using AutumnBox.Leafx.Container;
-using AutumnBox.OpenFramework.Extension;
+﻿using AutumnBox.OpenFramework.Extension;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Collections.ObjectModel;
-using AutumnBox.Leafx.ObjectManagement;
 
+#nullable enable
 namespace AutumnBox.OpenFramework.Management.ExtInfo
 {
     /// <summary>
     /// 拓展模块信息
     /// </summary>
-    public class ClassExtensionInfo : IExtensionInfo
+    public class ClassExtensionInfo : IExtensionInfo, IEquatable<ClassExtensionInfo?>
     {
         /// <summary>
         /// 相关的IClassExtension拓展模块类型
@@ -48,6 +46,55 @@ namespace AutumnBox.OpenFramework.Management.ExtInfo
         }
 
         /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public override bool Equals(object? obj)
+        {
+            return Equals(obj as ClassExtensionInfo);
+        }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
+        public bool Equals(ClassExtensionInfo? other)
+        {
+            return other != null &&
+                   EqualityComparer<Type>.Default.Equals(ClassExtensionType, other.ClassExtensionType) &&
+                   Id == other.Id &&
+                   EqualityComparer<IReadOnlyDictionary<string, ValueReader>>.Default.Equals(Metadata, other.Metadata);
+        }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        /// <returns></returns>
+        public override int GetHashCode()
+        {
+            int hashCode = 1439194382;
+            hashCode = hashCode * -1521134295 + EqualityComparer<Type>.Default.GetHashCode(ClassExtensionType);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Id);
+            hashCode = hashCode * -1521134295 + EqualityComparer<IReadOnlyDictionary<string, ValueReader>>.Default.GetHashCode(Metadata);
+            return hashCode;
+        }
+
+        /// <summary>
+        /// 与其它IExtensionInfo对比
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
+        public bool Equals(IExtensionInfo other)
+        {
+            return other != null &&
+                 Id == other.Id &&
+                 EqualityComparer<IReadOnlyDictionary<string, ValueReader>>.Default.Equals(Metadata, other.Metadata);
+        }
+
+
+        /// <summary>
         /// 拓展模块的唯一标识符
         /// </summary>
         public string Id
@@ -73,11 +120,33 @@ namespace AutumnBox.OpenFramework.Management.ExtInfo
         /// <summary>
         /// 获取
         /// </summary>
-        public IExtensionProcedure Procedure => new ClassExtensionProcedure(ClassExtensionType);
+        public IExtensionProcedure OpenProcedure() => new ClassExtensionProcedure(ClassExtensionType);
 
         /// <summary>
         /// 指示在该事务中,Lake的提供键
         /// </summary>
         public const string KEY_SOURCE_IN_EXTRA_ARGS = "classExtensionSource";
+
+        /// <summary>
+        /// 比较两个ClassExtensionInfo是否代表了同一个拓展
+        /// </summary>
+        /// <param name="left"></param>
+        /// <param name="right"></param>
+        /// <returns></returns>
+        public static bool operator ==(ClassExtensionInfo? left, ClassExtensionInfo? right)
+        {
+            return EqualityComparer<ClassExtensionInfo>.Default.Equals(left, right);
+        }
+
+        /// <summary>
+        /// 比较两个ClassExtensionInfo是否不是代表同一个拓展
+        /// </summary>
+        /// <param name="left"></param>
+        /// <param name="right"></param>
+        /// <returns></returns>
+        public static bool operator !=(ClassExtensionInfo? left, ClassExtensionInfo? right)
+        {
+            return !(left == right);
+        }
     }
 }

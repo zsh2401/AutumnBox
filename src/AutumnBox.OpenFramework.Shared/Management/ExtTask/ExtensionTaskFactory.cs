@@ -20,8 +20,8 @@ namespace AutumnBox.OpenFramework.Management.ExtTask
             {
                 try
                 {
-                    Thread.CurrentThread.Name = $"Extension-task-{info.Id}";
-                    var procedure = info.Procedure;
+                    Thread.CurrentThread.Name = $"Extension Task {info.Id}";
+                    using var procedure = info.OpenProcedure();
                     threadReceiver(Thread.CurrentThread);
                     procedure.Source = source;
                     procedure.Args = args;

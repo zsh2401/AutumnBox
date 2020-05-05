@@ -1,4 +1,5 @@
 ﻿#nullable enable
+using System;
 using System.Collections.Generic;
 
 namespace AutumnBox.OpenFramework.Management.ExtInfo
@@ -6,7 +7,7 @@ namespace AutumnBox.OpenFramework.Management.ExtInfo
     /// <summary>
     /// 拓展模块信息
     /// </summary>
-    public interface IExtensionInfo
+    public interface IExtensionInfo : IEquatable<IExtensionInfo>
     {
         /// <summary>
         /// 拓展模块唯一标识
@@ -22,6 +23,6 @@ namespace AutumnBox.OpenFramework.Management.ExtInfo
         /// 获取拓展模块运行器
         /// </summary>
         /// <returns></returns>
-        IExtensionProcedure Procedure { get; }
+        IExtensionProcedure OpenProcedure();
     }
 }
