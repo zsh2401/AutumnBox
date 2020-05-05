@@ -9,6 +9,7 @@
     <Import_RootNamespace>AutumnBox.Leafx</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Container\Support\LakeBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Container\Support\MergedLake.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Container\ComponentNotFoundException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Container\IdNotFoundException.cs" />

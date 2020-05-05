@@ -1,4 +1,5 @@
-﻿/*
+﻿#nullable enable
+/*
 
 * ==============================================================================
 *
@@ -22,7 +23,7 @@ namespace AutumnBox.Leafx.Container.Support
     /// <summary>
     /// 合并的Lake
     /// </summary>
-    public class MergedLake : ILake
+    public class MergedLake : LakeBase, ILake
     {
         /// <summary>
         /// 湖群
@@ -54,11 +55,10 @@ namespace AutumnBox.Leafx.Container.Support
             return new MergedLake(left, right);
         }
 
-
         /// <summary>
         /// <inheritdoc/>
         /// </summary>
-        public int Count
+        public override int Count
         {
             get
             {
@@ -79,7 +79,7 @@ namespace AutumnBox.Leafx.Container.Support
         /// <param name="id"></param>
         /// <exception cref="IdNotFoundException">进行了检索,但指定的id未找到</exception>
         /// <returns></returns>
-        public object GetComponent(string id)
+        public override object GetComponent(string id)
         {
             var reversed = Lakes.ToArray().Reverse();
             foreach (var lake in reversed)
@@ -94,14 +94,6 @@ namespace AutumnBox.Leafx.Container.Support
                 }
             }
             throw new IdNotFoundException(id);
-        }
-
-        /// <summary>
-        /// 将Lakes属性复制到新的数组中
-        /// </summary>
-        /// <returns></returns>
-        public ILake[] ToArray() {
-            return Lakes.ToArray();
         }
     }
 }

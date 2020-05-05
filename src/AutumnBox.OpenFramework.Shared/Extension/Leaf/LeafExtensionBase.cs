@@ -30,11 +30,11 @@ namespace AutumnBox.OpenFramework.Extension.Leaf
             {
                 throw new System.InvalidOperationException("Lake has not been inject!");
             }
-            var methodProxy = new MethodProxy(this, this.FindEntryPoint(), lake!.UniteWith(GetSepLake()));
+            var methodProxy = new MethodProxy(this, this.FindEntryPoint(), lake + GetSepLake(args));
             return methodProxy.Invoke(args ?? new Dictionary<string, object>());
         }
 
-        private ILake GetSepLake()
+        private SunsetLake GetSepLake(Dictionary<string, object> args)
         {
             SunsetLake s_lake = new SunsetLake();
             s_lake.RegisterSingleton<ILogger>(LoggerFactory.Auto(this.GetType().Name));
@@ -54,8 +54,14 @@ namespace AutumnBox.OpenFramework.Extension.Leaf
                 leafUI.Icon = inf.Icon();
                 return leafUI;
             });
+            s_lake.RegisterSingleton<Dictionary<string, object>>(() =>
+            {
+
+                return args ?? new Dictionary<string, object>();
+            });
             return s_lake;
         }
+
 
 
         #region IDisposable Support
@@ -79,14 +85,16 @@ namespace AutumnBox.OpenFramework.Extension.Leaf
                 disposedValue = true;
             }
         }
-        // TODO: 仅当以上 Dispose(bool disposing) 拥有用于释放未托管资源的代码时才替代终结器。
-        // ~LeafExtensionBase()
-        // {
-        //   // 请勿更改此代码。将清理代码放入以上 Dispose(bool disposing) 中。
-        //   Dispose(false);
-        // }
 
-        // 添加此代码以正确实现可处置模式。
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        ~LeafExtensionBase()
+        {
+            // 请勿更改此代码。将清理代码放入以上 Dispose(bool disposing) 中。
+            Dispose(false);
+        }
+
         /// <summary>
         /// 释放一个LeafExtension
         /// </summary>
