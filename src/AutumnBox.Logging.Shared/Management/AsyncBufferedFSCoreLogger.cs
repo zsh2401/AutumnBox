@@ -57,7 +57,10 @@ namespace AutumnBox.Logging.Management
             string logFileName = $"{DateTime.Now:yyyy-MM-dd_HH-mm-ss}.log";
             FileInfo logFile = new FileInfo(Path.Combine(LogsDirectory.FullName, logFileName));
             fs = logFile.Open(FileMode.OpenOrCreate, FileAccess.Write);
-            sw = new StreamWriter(fs);
+            sw = new StreamWriter(fs)
+            {
+                AutoFlush = true
+            };
             Task.Run(() =>
             {
                 Thread.CurrentThread.Name = "BufferedFSCoreLogger Main Thread";
@@ -103,6 +106,11 @@ namespace AutumnBox.Logging.Management
             loopCancelled = true;
             if (disposing)
             {
+                while (buffer.TryDequeue(out ILog log))
+                {
+                    sw.WriteLine(log.ToFormatedString());
+                }
+                sw.Flush();
                 sw.Dispose();
                 fs.Dispose();
             }

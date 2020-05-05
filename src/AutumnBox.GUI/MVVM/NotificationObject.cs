@@ -8,10 +8,14 @@ using System.Runtime.CompilerServices;
 
 namespace AutumnBox.GUI.MVVM
 {
-    public class NotificationObject :InjectableObject, INotifyPropertyChanged
+
+    /// <summary>
+    /// 表示可通知属性变化的类
+    /// </summary>
+    public class NotificationObject : InjectableObject, INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        protected virtual void RaisePropertyChanged([CallerMemberName]string propertyName=null)
+        protected virtual void RaisePropertyChanged([CallerMemberName]string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }

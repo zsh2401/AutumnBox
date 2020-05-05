@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.IO;
+using System.Threading.Tasks;
 
 namespace AutumnBox.Logging.Management
 {
@@ -48,8 +49,16 @@ namespace AutumnBox.Logging.Management
         private class CoreLoggerProxy : ICoreLogger
         {
             public class LogsCollection : ObservableCollection<ILog>, ILogsCollection { }
-            public LogsCollection Logs { get; } = new LogsCollection();
+            public LogsCollection Logs { get; private set; }
             public ICoreLogger InnerLogger { get; set; }
+            public CoreLoggerProxy()
+            {
+                //用这种奇葩方法初始化是为了防止线程问题
+                Task.WaitAll(Task.Run(() =>
+                {
+                    Logs = new LogsCollection();
+                }));
+            }
             public void Dispose()
             {
                 InnerLogger.Dispose();

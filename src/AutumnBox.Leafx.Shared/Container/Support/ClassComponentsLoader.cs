@@ -40,7 +40,7 @@ namespace AutumnBox.Leafx.Container.Support
 
             this.prefix = prefix;
             this.target = target;
-            this.assemblies = assemblies ?? (assemblies.Any() ? assemblies : AppDomain.CurrentDomain.GetAssemblies());
+            this.assemblies = assemblies?.Any() == true ? assemblies : AppDomain.CurrentDomain.GetAssemblies();
         }
 
         /// <summary>

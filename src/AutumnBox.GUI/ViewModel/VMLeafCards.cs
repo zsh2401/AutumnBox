@@ -23,7 +23,7 @@ namespace AutumnBox.GUI.ViewModel
     class VMLeafCards : ViewModelBase
     {
         [AutoInject]
-        public ILeafCardManager leafCardManager;
+        readonly ILeafCardManager? leafCardManager = null;
 
         public ObservableCollection<ViewWrapper> Views => leafCardManager.Views;
     }

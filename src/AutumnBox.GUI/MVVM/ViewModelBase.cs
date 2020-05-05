@@ -15,6 +15,9 @@ using System.Windows.Input;
 
 namespace AutumnBox.GUI.MVVM
 {
+    /// <summary>
+    /// 表示ViewModel基础类
+    /// </summary>
     internal class ViewModelBase : NotificationObject
     {
         public ICommand ShowWindowDialog

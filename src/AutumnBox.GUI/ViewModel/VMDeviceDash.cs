@@ -358,7 +358,7 @@ namespace AutumnBox.GUI.ViewModel
             Code = buildReader.Get(BuildKeys.ProductName);
             var wm = new WindowManager(Device, executor);
             var size = wm.Size;
-            ScreenPixel = $"{size.Width}x{size.Height}";
+            ScreenPixel = $"{size.Height}x{size.Width}";
         }
         private void RefreshBootTime()
         {

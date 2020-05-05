@@ -40,7 +40,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Container\LakeExtension.Register.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)Container\LakeExtension.Builder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Container\LakeExtension.ObjectManagement.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Enhancement\ClassTextKit\ClassTextExtension.cs" />
