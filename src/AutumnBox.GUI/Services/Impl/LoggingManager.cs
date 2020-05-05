@@ -9,7 +9,7 @@ namespace AutumnBox.GUI.Services.Impl
         public ILogsCollection Logs => Logging.Management.LoggingManager.Logs;
         public void Initialize()
         {
-            Logging.Management.LoggingManager.Use(new ConsoleLogger(true) + new AsyncBufferedFSCoreLogger());
+            Logging.Management.LoggingManager.Use(new ConsoleLogger(true) + new AsyncFileLogger());
         }
     }
 }

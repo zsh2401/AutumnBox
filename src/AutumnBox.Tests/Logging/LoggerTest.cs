@@ -40,6 +40,16 @@ namespace AutumnBox.Tests.Logging
             Assert.IsTrue(LoggingManager.Logs.Count() == times * 3);
         }
 
+        [TestMethod]
+        public void AsyncFileLoggerPerformanceTest()
+        {
+            LoggingManager.Use(new AsyncFileLogger());
+            const int times = 1_000_000;
+            Task.WaitAll(Writing(1, times), Writing(2, times), Writing(3, times));
+            Debug.WriteLine(LoggingManager.Logs.Count());
+            Assert.IsTrue(LoggingManager.Logs.Count() == times * 3);
+        }
+
         public static async Task Writing(int taskId, int maxTime)
         {
             await Task.Run(() =>

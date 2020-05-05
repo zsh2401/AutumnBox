@@ -24,7 +24,7 @@ using System.Threading.Tasks;
 namespace AutumnBox.Logging.Management
 {
     /// <summary>
-    /// 缓冲的文件系统核心日志器
+    /// (存在问题,析构时无法将剩下的日志输出)缓冲的文件系统核心日志器
     /// </summary>
     public class AsyncBufferedFSCoreLogger : CoreLoggerBase
     {
@@ -32,30 +32,15 @@ namespace AutumnBox.Logging.Management
         private readonly FileStream fs;
         private readonly StreamWriter sw;
 
-        /// <summary>
-        /// 指示日志文件的存放文件夹
-        /// </summary>
-        public static DirectoryInfo LogsDirectory
-        {
-            get
-            {
-                _logsDirectory ??= new DirectoryInfo("logs");
-                if (!_logsDirectory.Exists)
-                {
-                    _logsDirectory.Create();
-                }
-                return _logsDirectory;
-            }
-        }
-        private static DirectoryInfo _logsDirectory;
+
 
         /// <summary>
-        /// 构建缓冲的记录到文件的核心日志器
+        /// 构建 AsyncBufferedFSCoreLogger 的新实例
         /// </summary>
         public AsyncBufferedFSCoreLogger()
         {
             string logFileName = $"{DateTime.Now:yyyy-MM-dd_HH-mm-ss}.log";
-            FileInfo logFile = new FileInfo(Path.Combine(LogsDirectory.FullName, logFileName));
+            FileInfo logFile = new FileInfo(Path.Combine(AsyncFileLogger.LogsDirectory.FullName, logFileName));
             fs = logFile.Open(FileMode.OpenOrCreate, FileAccess.Write);
             sw = new StreamWriter(fs)
             {
