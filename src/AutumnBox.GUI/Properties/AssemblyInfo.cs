@@ -32,6 +32,6 @@ using System.Windows;
     ResourceDictionaryLocation.None, //主题特定资源词典所处位置
     ResourceDictionaryLocation.SourceAssembly //常规资源词典所处位置
 )]
-[assembly: AssemblyVersion("2020.4.23")]
-[assembly: AssemblyFileVersion("2020.4.23")]
+[assembly: AssemblyVersion("2020.5.5")]
+[assembly: AssemblyFileVersion("2020.5.5")]
 [assembly: NeutralResourcesLanguage("")]

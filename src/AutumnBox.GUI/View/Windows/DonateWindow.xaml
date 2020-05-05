@@ -33,8 +33,7 @@ Background="{DynamicResource RegionBrush}"
                 </controls:ButtonGroup>
             </StackPanel>
             <StackPanel VerticalAlignment="Center">
-                <TextBlock TextAlignment="Center" Margin="5" TextWrapping="Wrap" Text="赠人玫瑰,收留余香,感谢您为中国软件生态做出的贡献" FontSize="15" />
-                <TextBlock TextAlignment="Center" Margin="5" TextWrapping="Wrap" Text="We make a living by what we get. We make a life by what we give.--Winston Churchhill" FontSize="11" />
+                <TextBlock TextAlignment="Center" Margin="5" TextWrapping="Wrap" Text="{DynamicResource Donate.Description}" FontSize="15" />
                 <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
                     <Image Height="200" Margin="5" RenderOptions.BitmapScalingMode="Fant" Source="/AutumnBox.GUI;component/Resources/Drawable/Donate/alishop.png"/>
                     <Image Height="200" Margin="5"  RenderOptions.BitmapScalingMode="Fant" Source="/AutumnBox.GUI;component/Resources/Drawable/Donate/wechatpay.jpg"/>

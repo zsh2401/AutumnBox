@@ -6,8 +6,8 @@
     <s:String x:Key="LanguageCode">en-US</s:String>
     
     <s:String x:Key="AppName">AutumnBox</s:String>
-            <s:String x:Key="LoadingAppName">AutumnBox 2020.4-BETA 1</s:String>
-     <s:String x:Key="AppNameWithVersion">AutumnBox 2020.4</s:String>
+            <s:String x:Key="LoadingAppName">AutumnBox 2020.5-DEV</s:String>
+     <s:String x:Key="AppNameWithVersion">AutumnBox 2020.5-DEV</s:String>
     <s:String x:Key="VersionTypePreview">Preview</s:String>
     <s:String x:Key="VersionTypeStable">Stable</s:String>
     <s:String x:Key="VersionTypeBeta">BETA</s:String>
@@ -715,7 +715,7 @@ Agreement modification:
     <s:String x:Key="PanelDonateBtnCaption">Thanks....Thanks....Thanks....</s:String>
      <s:String x:Key="PanelDonateBtnGotoDonatePage">View donor list</s:String>
     <s:String x:Key="PanelDonateBtnPayPal">Use the PayPal</s:String>
-    <s:String x:Key="PanelDonateDescription">We make a living by what we get. We make a life by what we give.--Winston Churchhill</s:String>
+    <s:String x:Key="Donate.Description">We make a living by what we get. We make a life by what we give.--Winston Churchhill</s:String>
     
     <!--静态界面标记-->
     <s:String x:Key="ckbShowDebugWindowOnNextLaunch">Show debug window on next launch</s:String>
