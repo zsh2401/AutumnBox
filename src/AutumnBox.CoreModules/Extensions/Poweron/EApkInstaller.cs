@@ -5,13 +5,12 @@
 *************************************************/
 using AutumnBox.Basic.Calling;
 using AutumnBox.Basic.Device;
+using AutumnBox.Leafx.Enhancement.ClassTextKit;
+using AutumnBox.Leafx.ObjectManagement;
 using AutumnBox.Logging;
 using AutumnBox.OpenFramework.Extension;
-using AutumnBox.OpenFramework.LeafExtension;
-using AutumnBox.OpenFramework.LeafExtension.Attributes;
-using AutumnBox.OpenFramework.LeafExtension.Fast;
-using AutumnBox.OpenFramework.LeafExtension.Kit;
-using AutumnBox.OpenFramework.Open;
+using AutumnBox.OpenFramework.Extension.Leaf;
+using AutumnBox.OpenFramework.Open.LKit;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -22,48 +21,48 @@ namespace AutumnBox.CoreModules.Extensions
     [ExtDesc("可直接向手机安装APK,不过要注意允许USB安装哦!", "en-us:Install apk to device")]
     [ExtIcon("Icons.android.png")]
     [ExtRequiredDeviceStates(DeviceState.Poweron)]
-    [ExtText("title", "Select a apk file", "zh-cn:选择一个APK")]
-    [ExtText("filter", "Android APK file(*.apk)|*.apk", "zh-cn:安卓APK(*.apk)|*.apk")]
-    [ExtText("waiting", "waiting for user", "zh-cn:等待用户")]
-    [ExtText("status_fmt", "Installing {0}/{1}", "zh-cn:正在安装{0}/{1}个Apk")]
-    [ExtText("result_fmt", "Finished {0} success {1} error   {2} total", "zh-cn:完成 {0}个成功 {1}个失败 共{2}个")]
+    [ClassText("title", "Select a apk file", "zh-cn:选择一个APK")]
+    [ClassText("filter", "Android APK file(*.apk)|*.apk", "zh-cn:安卓APK(*.apk)|*.apk")]
+    [ClassText("waiting", "waiting for user", "zh-cn:等待用户")]
+    [ClassText("status_fmt", "Installing {0}/{1}", "zh-cn:正在安装{0}/{1}个Apk")]
+    [ClassText("result_fmt", "Finished {0} success {1} error   {2} total", "zh-cn:完成 {0}个成功 {1}个失败 共{2}个")]
     internal class EApkInstaller : LeafExtensionBase
     {
-        private readonly CommandExecutor executor = new CommandExecutor();
-        [LProperty]
-        public IDevice Device { get; set; }
-        [LProperty]
-        public ILeafUI UI { get; set; }
-        [LProperty]
-        public IClassTextDictionary Text { get; set; }
+        [AutoInject]
+        ICommandExecutor executor;
+
+        [AutoInject]
+        IDevice device;
+
+        [AutoInject]
+        ILeafUI ui;
+
         [LMain]
         public void EntryPoint()
         {
-            using (UI)
+            using (ui)
             {
-                UI.Title = this.GetName();
-                UI.Icon = this.GetIconBytes();
-                UI.Show();
+                ui.Show();
                 Microsoft.Win32.OpenFileDialog fileDialog = new Microsoft.Win32.OpenFileDialog();
                 fileDialog.Reset();
-                fileDialog.Title = Text["title"];
-                fileDialog.Filter = Text["filter"];
+                fileDialog.Title = this.RxGetClassText("title");
+                fileDialog.Filter = this.RxGetClassText("filter");
                 fileDialog.Multiselect = true;
-                UI.WriteLine(Text["waiting"]);
-                if (fileDialog.ShowDialog() != true) UI.EShutdown();
+                executor.OutputReceived += (s, e) => ui.WriteLineToDetails(e.Text);
+                ui.WriteLineToDetails(this.RxGetClassText("waiting"));
+                if (fileDialog.ShowDialog() != true) ui.EShutdown();
                 List<FileInfo> files = new List<FileInfo>();
                 foreach (string fileName in fileDialog.FileNames)
                 {
                     files.Add(new FileInfo(fileName));
                 }
                 Install(files);
-                UI.Finish(0);
+                ui.Finish(StatusMessages.Success);
             }
         }
 
         private void Install(List<FileInfo> files)
         {
-            executor.To(e => UI.WriteOutput(e.Text));
             int successed = 0;
             int error = 0;
             int currentInstalling = 1;
@@ -73,7 +72,7 @@ namespace AutumnBox.CoreModules.Extensions
             {
                 try
                 {
-                    var result = executor.Adb(Device, $"install -r -t -d \"{file.FullName}\"");
+                    var result = executor.Adb(device, $"install -r -t -d \"{file.FullName}\"");
                     if (result.ExitCode == 0)
                     {
                         successed++;
@@ -94,14 +93,14 @@ namespace AutumnBox.CoreModules.Extensions
                     SetTip(currentInstalling, totalCount);
                 }
             };
-            string fmtString = Text["result_fmt"];
-            UI.WriteLine(string.Format(fmtString, successed, error, totalCount));
+            string fmtString = this.RxGetClassText("result_fmt");
+            ui.StatusDescription = (string.Format(fmtString, successed, error, totalCount));
         }
 
         private void SetTip(double crt, double total)
         {
-            UI.Tip = string.Format(Text["status_fmt"], crt, total);
-            UI.WriteOutput(string.Format(Text["status_fmt"], crt, total));
+            ui.StatusInfo = string.Format(this.RxGetClassText("status_fmt"), crt, total);
+            ui.WriteLineToDetails(string.Format(this.RxGetClassText("status_fmt"), crt, total));
         }
     }
 }
