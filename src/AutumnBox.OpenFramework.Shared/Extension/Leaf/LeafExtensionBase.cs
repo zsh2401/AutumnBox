@@ -1,5 +1,7 @@
 ﻿#nullable enable
+using System;
 using System.Collections.Generic;
+using System.Reflection;
 using AutumnBox.Leafx.Container;
 using AutumnBox.Leafx.Container.Support;
 using AutumnBox.Leafx.Enhancement.ClassTextKit;
@@ -24,14 +26,21 @@ namespace AutumnBox.OpenFramework.Extension.Leaf
         /// <param name="args"></param>
         /// <returns></returns>
         [LDoNotScan]
-        public object Main(Dictionary<string, object> args)
+        public object? Main(Dictionary<string, object> args)
         {
             if (lake == null)
             {
-                throw new System.InvalidOperationException("Lake has not been inject!");
+                throw new InvalidOperationException("Lake has not been inject!");
             }
             var methodProxy = new MethodProxy(this, this.FindEntryPoint(), lake + GetSepLake(args));
-            return methodProxy.Invoke(args ?? new Dictionary<string, object>());
+            try
+            {
+                return methodProxy.Invoke(args ?? new Dictionary<string, object>());
+            }
+            catch(TargetInvocationException e)
+            {
+                throw e.InnerException;
+            }
         }
 
         private SunsetLake GetSepLake(Dictionary<string, object> args)

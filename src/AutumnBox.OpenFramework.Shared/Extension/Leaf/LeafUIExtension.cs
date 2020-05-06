@@ -7,7 +7,7 @@ using System.Threading;
 using AutumnBox.Leafx.Container;
 using AutumnBox.Leafx.Enhancement.ClassTextKit;
 
-namespace AutumnBox.OpenFramework.Extension.Extension.Leaf
+namespace AutumnBox.OpenFramework.Extension.Leaf
 {
     /// <summary>
     /// LeafUI相关拓展函数

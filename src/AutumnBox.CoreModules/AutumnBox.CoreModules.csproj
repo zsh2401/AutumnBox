@@ -12,6 +12,7 @@
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -153,6 +154,10 @@
       <Project>{55081483-1689-4e52-a4f1-22ab75ff8900}</Project>
       <Name>AutumnBox.GUI</Name>
       <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\AutumnBox.Leafx\AutumnBox.Leafx.csproj">
+      <Project>{3A111486-25EA-48CB-9408-A7D69B81FC86}</Project>
+      <Name>AutumnBox.Leafx</Name>
     </ProjectReference>
     <ProjectReference Include="..\AutumnBox.Logging\AutumnBox.Logging.csproj">
       <Project>{f90cb434-6ed4-4244-9d78-c8016f0856c1}</Project>

@@ -24,6 +24,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Attribute\ExtNormalRunnablePolicyAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Attribute\RunnableCheckArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\AutumnBoxExtension.Constants.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extension\StatusMessages.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\ExtInfo\ClassExtensionProcedure.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Util\ClassTextReaderExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\EmptyExtension.cs" />
@@ -33,7 +34,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Leaf\LDoNotScanAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Leaf\LeafConstants.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Leaf\LeafExtension.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Extension\Leaf\LeafTerminatedException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Leaf\LeafUIExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Implementation\DeviceManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Implementation\NotificationManager.cs" />

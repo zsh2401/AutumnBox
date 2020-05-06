@@ -87,6 +87,8 @@ namespace AutumnBox.Leafx.ObjectManagement
         /// 执行方法
         /// </summary>
         /// <param name="extraArgs"></param>
+        /// <exception cref="InvalidOperationException">实例不存在</exception>
+        /// <exception cref="TargetInvocationException">方法执行时抛出异常</exception>
         /// <returns></returns>
         public object Invoke(Dictionary<string, object> extraArgs = null)
         {
