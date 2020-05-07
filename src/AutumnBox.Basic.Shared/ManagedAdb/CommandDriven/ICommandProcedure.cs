@@ -28,6 +28,7 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
         /// 执行命令
         /// </summary>
         /// <exception cref="InvalidOperationException">操作无效,如命令已经在执行</exception>
+        /// <exception cref="ObjectDisposedException">已经被释放</exception>
         /// <returns></returns>
         CommandResult Execute();
 
@@ -35,6 +36,7 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
         /// 异步执行命令
         /// </summary>
         /// <exception cref="InvalidOperationException">操作无效,如命令已经在执行</exception>
+        /// <exception cref="ObjectDisposedException">已经被释放</exception>
         /// <returns></returns>
         Task<CommandResult> ExecuteAsync();
 
@@ -42,18 +44,18 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
         /// 取消执行
         /// </summary>
         /// <exception cref="InvalidOperationException">事务状态异常</exception>
+        /// <exception cref="ObjectDisposedException">对象已经被释放</exception>
         void Cancel();
 
         /// <summary>
         /// 执行结果
         /// </summary>
-        /// <exception cref="InvalidOperationException">事务状态异常</exception>
+        /// <exception cref="InvalidOperationException">事务暂未完成,没有结果</exception>
         CommandResult Result { get; }
 
         /// <summary>
-        /// 获取发生的错误
+        /// 获取内部发生的错误
         /// </summary>
-        /// <exception cref="InvalidOperationException">事务状态异常</exception>
         Exception? Exception { get; }
     }
 }

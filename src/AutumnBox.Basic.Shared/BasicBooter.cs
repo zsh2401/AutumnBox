@@ -14,7 +14,7 @@ namespace AutumnBox.Basic
         /// <summary>
         /// 获取一个已缓存的命令进程管理器
         /// </summary>
-        /// <exception cref="InvalidOperationException">操作无效</exception>
+        /// <exception cref="InvalidOperationException">ADB管理器未加载</exception>
         public static ICommandProcedureManager CommandProcedureManager
         {
             get
@@ -41,6 +41,7 @@ namespace AutumnBox.Basic
         /// 获取服务器终端点
         /// </summary>
         /// <exception cref="InvalidOperationException">操作无效</exception>
+        /// <exception cref="ObjectDisposedException">对象已经被释放</exception>
         public static IPEndPoint ServerEndPoint
         {
             get
@@ -65,7 +66,6 @@ namespace AutumnBox.Basic
                 return _adbManager.AdbExecutableFile;
             }
         }
-
 
         /// <summary>
         /// Fastboot可执行程序的位置

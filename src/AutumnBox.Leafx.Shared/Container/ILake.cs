@@ -16,13 +16,15 @@
 */
 
 using System;
+//using System.Collections;
+//using System.Collections.Generic;
 
 namespace AutumnBox.Leafx.Container
 {
     /// <summary>
     /// 标准的湖接口
     /// </summary>
-    public interface ILake
+    public interface ILake /*: IEnumerable, IEnumerable<ComponentFactory>*/
     {
         /// <summary>
         /// 组件数量
@@ -37,4 +39,9 @@ namespace AutumnBox.Leafx.Container
         /// <returns>被注册的值</returns>
         object? GetComponent(string id);
     }
+    //public interface LakeRecord
+    //{
+    //    string Id { get; }
+    //    ComponentFactory Factory { get; }
+    //}
 }

@@ -6,7 +6,7 @@ using System.Diagnostics;
 namespace AutumnBox.Logging
 {
     /// <summary>
-    /// 静态的Logger类
+    /// 提供一系列静态日志方法的静态Logger
     /// </summary>
     public static class SLogger
     {

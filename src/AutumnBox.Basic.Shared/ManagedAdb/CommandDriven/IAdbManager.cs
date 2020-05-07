@@ -16,6 +16,7 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
         /// <summary>
         /// 获取管理器
         /// </summary>
+        /// <exception cref="ObjectDisposedException">已经被释放</exception>
         ICommandProcedureManager OpenCommandProcedureManager();
 
         /// <summary>
@@ -29,13 +30,15 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
         FileInfo AdbExecutableFile { get; }
 
         /// <summary>
-        /// fastboot可执行文件
+        /// fastboot可执行文件   
         /// </summary>
         FileInfo FastbootExecutableFile { get; }
 
         /// <summary>
-        /// 获取ADB服务地址
+        /// 表示运行中的ADB SERVER地址
         /// </summary>
+        /// <exception cref="ObjectDisposedException">对象被释放</exception>
+        /// <exception cref="InvalidOperationException">服务状态异常</exception>
         IPEndPoint ServerEndPoint { get; }
     }
 }

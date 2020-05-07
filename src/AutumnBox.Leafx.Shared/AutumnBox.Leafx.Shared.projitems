@@ -9,6 +9,7 @@
     <Import_RootNamespace>AutumnBox.Leafx</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Base\NotificationObject.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Container\Support\LakeBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Container\Support\MergedLake.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Container\ComponentNotFoundException.cs" />
@@ -20,6 +21,11 @@
     <Compile Include="$(MSBuildThisFileDirectory)Enhancement\ClassTextKit\ClassTextAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enhancement\ClassTextKit\ClassTextReaderCache.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enhancement\ClassTextKit\ClassTextReader.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Logging\ILogger.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Logging\LoggerExtension.Log.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Logging\LoggerExtension.Quick.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Logging\LoggerImpl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Logging\SL.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ObjectManagement\AroundMethodArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ObjectManagement\AroundMethodAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ObjectManagement\AutoInjectAttribute.cs" />
@@ -29,7 +35,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Container\IRegisterableLake.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Container\LakeExtension.Getter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Container\Support\ComponentFactoryReader.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ObjectManagement\ObjectCache.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ObjectManagement\ObjectCache.KeyValue.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ObjectManagement\ParameterArrayBuilder.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ObjectManagement\MethodProxy.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ObjectManagement\ObjectBuilder.cs" />
@@ -47,5 +53,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Container\LakeExtension.Quick.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)ObjectManagement\ObjectCache.General.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Logging\LoggerExtension.ObjectLogging.cs" />
+    <None Include="$(MSBuildThisFileDirectory)Logging\README.md" />
   </ItemGroup>
 </Project>

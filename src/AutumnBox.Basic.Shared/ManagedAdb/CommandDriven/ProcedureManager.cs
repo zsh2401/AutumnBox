@@ -39,12 +39,7 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
         private readonly DirectoryInfo adbClientDir;
         private readonly ushort adbPort;
 
-        /// <summary>
-        /// 打开新的命令
-        /// </summary>
-        /// <param name="commandName"></param>
-        /// <param name="args"></param>
-        /// <returns></returns>
+       /// <inheritdoc/>
         public ICommandProcedure OpenCommand(string commandName, params string[] args)
         {
             lock (openCommandLock)

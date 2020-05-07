@@ -47,7 +47,7 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
         private CommandResult? _result;
 
         /// <inheritdoc/>
-        public Exception? Exception { get; set; }
+        public Exception? Exception { get; private set; }
 
         /// <inheritdoc/>
         public event OutputReceivedEventHandler? OutputReceived;
@@ -91,10 +91,6 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
         /// <summary>
         /// 构建命令
         /// </summary>
-        /// <param name="fileName"></param>
-        /// <param name="port"></param>
-        /// <param name="adbToolsDir"></param>
-        /// <param name="args"></param>
         public CommandProcedure()
         {
             outputBuilder = new OutputBuilder();
@@ -106,6 +102,10 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
         /// <inheritdoc/>
         public CommandResult Execute()
         {
+            if (disposedValue)
+            {
+                throw new ObjectDisposedException(nameof(CommandProcedure));
+            }
             if (Status != CommandStatus.Ready)
             {
                 throw new InvalidOperationException("Command procedure is not ready!");
@@ -194,6 +194,10 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
             {
                 throw new InvalidOperationException("Command procedure is not ready!");
             }
+            if (disposedValue)
+            {
+                throw new ObjectDisposedException(nameof(CommandProcedure));
+            }
             return Task.Run(() =>
             {
                 System.Threading.Thread.CurrentThread.Name = $"Command Procedure Thread: {FileName} {string.Join(" ", Arguments)}";
@@ -204,6 +208,10 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
         /// <inheritdoc/>
         public void Cancel()
         {
+            if (disposedValue)
+            {
+                throw new ObjectDisposedException(nameof(CommandProcedure));
+            }
             if (Status == CommandStatus.Executing)
             {
                 if (KillChildProcessWhenDisposing)
@@ -238,7 +246,7 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
                 /* process already exited */
             }
         }
-        
+
         #region IDisposable Support
 
         /// <summary>
@@ -267,7 +275,7 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
                         }
                     }
                 }
-                if (Status != CommandStatus.Ready)
+                if (Status == CommandStatus.Executing)
                 {
                     Cancel();
                 }
@@ -280,8 +288,6 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
                 Disposed?.Invoke(this, new EventArgs());
             }
         }
-
-
 
         /// <summary>
         /// 终结器

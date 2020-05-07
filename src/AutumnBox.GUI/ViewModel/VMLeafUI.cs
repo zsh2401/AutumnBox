@@ -90,8 +90,11 @@ namespace AutumnBox.GUI.ViewModel
         {
             lock (detailsLock)
             {
-                detailsBuilder.Append(newLineAtEnd ? content?.ToString() : $"{content?.ToString()}\n");
-                RaisePropertyChanged(nameof(DetailsContent));
+                App.Current.Dispatcher.Invoke(() =>
+                {
+                    detailsBuilder.Append(newLineAtEnd ? $"{content?.ToString()}\n" : content?.ToString());
+                    RaisePropertyChanged(nameof(DetailsContent));
+                });
             }
         }
 
