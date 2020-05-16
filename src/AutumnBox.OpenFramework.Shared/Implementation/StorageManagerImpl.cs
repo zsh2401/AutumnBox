@@ -1,7 +1,6 @@
-﻿using AutumnBox.Leafx.Container.Support;
+﻿using AutumnBox.Core;
+using AutumnBox.Leafx.Container.Support;
 using AutumnBox.OpenFramework.Open;
-using Newtonsoft.Json;
-using System;
 using System.IO;
 namespace AutumnBox.OpenFramework.Implementation
 {
@@ -84,26 +83,18 @@ namespace AutumnBox.OpenFramework.Implementation
 
         public TResult ReadJsonObject<TResult>(string jsonId)
         {
-            using (var fs = OpenFile(jsonId, false))
-            {
-                using (var sr = new StreamReader(fs))
-                {
-                    var json = sr.ReadToEnd();
-                    return JsonConvert.DeserializeObject<TResult>(json);
-                }
-            }
+            using var fs = OpenFile(jsonId, false);
+            using var sr = new StreamReader(fs);
+            var json = sr.ReadToEnd();
+            return JsonHelper.DeserializeObject<TResult>(json);
         }
 
         public void SaveJsonObject(string jsonId, object jsonObject)
         {
-            using (var fs = OpenFile(jsonId))
-            {
-                using (var sw = new StreamWriter(fs))
-                {
-                    var json = JsonConvert.SerializeObject(jsonObject);
-                    sw.Write(json);
-                }
-            }
+            using var fs = OpenFile(jsonId);
+            using var sw = new StreamWriter(fs);
+            var json = JsonHelper.SerializeObject(jsonObject);
+            sw.Write(json);
         }
 
         public void Restore()
