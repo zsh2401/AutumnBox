@@ -18,6 +18,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Calling\CommandResultExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\Size.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ManagedAdb\CommandDriven\CommandDrivenHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ManagedAdb\CommandDriven\Unix\UnixCPM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ModuleInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MultipleDevices\DevicesCollection.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Util\ProcessExtension.cs" />
