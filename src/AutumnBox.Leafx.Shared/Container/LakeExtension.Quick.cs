@@ -17,6 +17,7 @@
 using AutumnBox.Leafx.Container.Support;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace AutumnBox.Leafx.Container
@@ -28,16 +29,10 @@ namespace AutumnBox.Leafx.Container
         /// </summary>
         private class EmptyLake : ILake
         {
-            /// <summary>
             /// <inheritdoc/>
-            /// </summary>
             public int Count => 0;
 
-            /// <summary>
             /// <inheritdoc/>
-            /// </summary>
-            /// <param name="id"></param>
-            /// <returns></returns>
             public object GetComponent(string id)
             {
                 throw new IdNotFoundException(id);
@@ -58,13 +53,39 @@ namespace AutumnBox.Leafx.Container
         private static ILake? emptyLake;
 
         /// <summary>
+        /// 联合多个lake
+        /// </summary>
+        /// <param name="lakes">需要被联合的湖</param>
+        /// <exception cref="ArgumentNullException">参数为空</exception>
+        /// <returns>被联合的湖</returns>
+        public static ILake Unite(params ILake[] lakes)
+        {
+            if (lakes is null)
+            {
+                throw new ArgumentNullException(nameof(lakes));
+            }
+            return new MergedLake(lakes.ToArray());
+        }
+
+        /// <summary>
         /// 联合多个Lake
         /// </summary>
-        /// <param name="first"></param>
-        /// <param name="others"></param>
-        /// <returns></returns>
+        /// <param name="first">第一个湖</param>
+        /// <param name="others">其它湖</param>
+        /// <exception cref="ArgumentNullException">参数为空</exception>
+        /// <returns>被联合的湖</returns>
         public static ILake UniteWith(this ILake first, params ILake[] others)
         {
+            if (first is null)
+            {
+                throw new ArgumentNullException(nameof(first));
+            }
+
+            if (others is null)
+            {
+                throw new ArgumentNullException(nameof(others));
+            }
+
             List<ILake> tmp = new List<ILake>
             {
                 [0] = first

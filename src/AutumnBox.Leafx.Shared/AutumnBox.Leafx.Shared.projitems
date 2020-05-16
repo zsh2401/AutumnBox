@@ -10,6 +10,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Base\NotificationObject.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Container\ComponentFactory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Container\Support\LakeBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Container\Support\MergedLake.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Container\ComponentNotFoundException.cs" />
