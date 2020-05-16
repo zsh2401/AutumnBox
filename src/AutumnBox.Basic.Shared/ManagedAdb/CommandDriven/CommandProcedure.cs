@@ -5,7 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Diagnostics;
-using System.Management;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -235,7 +234,7 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
             ProcessKiller.FKill(pid);
         }
 
-        #region IDisposable Support
+#region IDisposable Support
 
         /// <summary>
         /// 指示是否被释放
@@ -293,6 +292,6 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
             // TODO: 如果在以上内容中替代了终结器，则取消注释以下行。
             GC.SuppressFinalize(this);
         }
-        #endregion
+#endregion
     }
 }

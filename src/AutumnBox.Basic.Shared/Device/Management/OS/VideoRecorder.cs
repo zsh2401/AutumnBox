@@ -4,7 +4,6 @@
 ** desc： ...
 *************************************************/
 using System;
-using System.Drawing;
 using System.IO;
 using AutumnBox.Basic.Calling;
 using AutumnBox.Basic.Data;

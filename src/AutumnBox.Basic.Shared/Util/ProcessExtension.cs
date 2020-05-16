@@ -4,11 +4,9 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.Basic.ManagedAdb.CommandDriven;
-using AutumnBox.Basic.Util;
 using AutumnBox.Logging;
 using System;
 using System.Diagnostics;
-using System.Management;
 
 namespace AutumnBox.Basic.Calling
 {

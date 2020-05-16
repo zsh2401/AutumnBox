@@ -4,7 +4,6 @@
 ** desc： ...
 *************************************************/
 using System;
-using System.Drawing;
 using System.Text.RegularExpressions;
 using System.Windows;
 using AutumnBox.Basic.Calling;
