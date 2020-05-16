@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("zsh2401")]
 [assembly: AssemblyProduct("AutumnBox.Core")]
-[assembly: AssemblyCopyright("Copyright ©zsh2401  2020")]
+[assembly: AssemblyCopyright("Copyright ©zsh2401  2017-2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -33,7 +33,7 @@ using System.Runtime.InteropServices;
 // [assembly: AssemblyVersion("1.0.*")]
 #if SDK
 [assembly: AssemblyVersion(AutumnBox.OpenFramework.BuildInfo.VERSION_STR)]
-[assembly: AssemblyFileVersion("2020.5.16")]
+[assembly: AssemblyFileVersion(AutumnBox.OpenFramework.BuildInfo.VERSION_STR)]
 #else
 [assembly: AssemblyVersion("2020.5.16")]
 [assembly: AssemblyFileVersion("2020.5.16")]

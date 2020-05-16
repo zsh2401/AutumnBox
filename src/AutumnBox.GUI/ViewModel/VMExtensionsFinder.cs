@@ -82,7 +82,7 @@ namespace AutumnBox.GUI.ViewModel
                 return;
             }
             InitCommand();
-            RaisePropertyChangedOnDispatcher = true;
+            RaisePropertyChangedOnUIThread = true;
             openFxManager.WakeIfLoaded(() =>
             {
                 Load();

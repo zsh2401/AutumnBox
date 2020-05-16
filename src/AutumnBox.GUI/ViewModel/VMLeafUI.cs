@@ -232,7 +232,7 @@ namespace AutumnBox.GUI.ViewModel
             {
                 return;
             }
-            RaisePropertyChangedOnDispatcher = true;
+            RaisePropertyChangedOnUIThread = true;
             Title = "LeafUI Window";
             Progress = -1;
             StatusInfo = App.Current.Resources["LeafUITipRunning"] as string;

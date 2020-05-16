@@ -69,7 +69,7 @@ namespace AutumnBox.GUI.ViewModel
 
         public VMStartup()
         {
-            RaisePropertyChangedOnDispatcher = true;
+            RaisePropertyChangedOnUIThread = true;
             var appLoader = new GeneralAppLoader();
             appLoader.StepFinished += AppLoader_StepFinished;
             appLoader.Succeced += AppLoader_Succeced;

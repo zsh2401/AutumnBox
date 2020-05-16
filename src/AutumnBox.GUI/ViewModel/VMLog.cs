@@ -26,7 +26,7 @@ namespace AutumnBox.GUI.ViewModel
 
         public VMLog()
         {
-            RaisePropertyChangedOnDispatcher = true;
+            RaisePropertyChangedOnUIThread = true;
             Title = "AutumnBox Debug Window-Select and Ctrl+C to copy";
         }
     }

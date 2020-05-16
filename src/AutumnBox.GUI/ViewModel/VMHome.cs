@@ -38,7 +38,7 @@ namespace AutumnBox.GUI.ViewModel
 
         public VMHome()
         {
-            RaisePropertyChangedOnDispatcher = true;
+            RaisePropertyChangedOnUIThread = true;
             //Settings = new HomeSettings();
             FetchSettings();
             Refresh = new MVVMCommand(p =>

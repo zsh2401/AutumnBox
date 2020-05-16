@@ -19,6 +19,6 @@
     <PackageReference Include="Avalonia.ReactiveUI" Version="0.9.0" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AutumnBox.Core.DNCore\AutumnBox.Core.DNCore.csproj" />
+    <ProjectReference Include="..\AutumnBox.CPCore\AutumnBox.CPCore.csproj" />
   </ItemGroup>
 </Project>

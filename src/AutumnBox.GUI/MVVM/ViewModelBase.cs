@@ -94,10 +94,10 @@ namespace AutumnBox.GUI.MVVM
             ShowWindow = _ShowWindowCommand;
         }
 
-        protected virtual bool RaisePropertyChangedOnDispatcher { get; set; } = false;
+        protected virtual bool RaisePropertyChangedOnUIThread { get; set; } = false;
         protected override void RaisePropertyChanged([CallerMemberName] string propertyName = null)
         {
-            if (RaisePropertyChangedOnDispatcher)
+            if (RaisePropertyChangedOnUIThread)
             {
                 App.Current.Dispatcher.Invoke(() =>
                 {

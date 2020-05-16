@@ -50,7 +50,7 @@ namespace AutumnBox.GUI.ViewModel
 
         public VMMainWindow()
         {
-            base.RaisePropertyChangedOnDispatcher = true;
+            base.RaisePropertyChangedOnUIThread = true;
             Sentence = sentenceService.Next();
             InitTitle();
             languageManager.LanguageChanged += (s, e) =>

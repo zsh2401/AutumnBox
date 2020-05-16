@@ -50,7 +50,7 @@
     <DebugType>none</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>..\..\dist\Release\</OutputPath>
-    <DefineConstants>TRACE;STAT RELEASE</DefineConstants>
+    <DefineConstants>TRACE;STAT RELEASE STRICT_LANG_CHECK</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
@@ -184,11 +184,13 @@
     <Compile Include="Services\Impl\OperatingSystem.cs" />
     <Compile Include="Services\Impl\SubWindowDialogManagerImpl.cs" />
     <Compile Include="Services\Impl\TabManager.cs" />
+    <Compile Include="Services\Impl\WallpaperManager.cs" />
     <Compile Include="Services\Impl\WindowManager.cs" />
     <Compile Include="Services\IOperatingSystemService.cs" />
     <Compile Include="Services\ISubWindowDialog.cs" />
     <Compile Include="Services\ISubWindowDialogManager.cs" />
     <Compile Include="Services\ITabsManager.cs" />
+    <Compile Include="Services\IWallpaperManager.cs" />
     <Compile Include="Services\LanguageManagerExtension.cs" />
     <Compile Include="Services\Messages.cs" />
     <Compile Include="Util\AppUnloader.cs" />
@@ -255,6 +257,7 @@
     <Compile Include="ViewModel\VMMainTabs.cs" />
     <Compile Include="ViewModel\VMMainWindow.cs" />
     <Compile Include="ViewModel\VMMainWindowV2.cs" />
+    <Compile Include="ViewModel\VMMainWindowV3.cs" />
     <Compile Include="ViewModel\VMOpenSource.cs" />
     <Compile Include="ViewModel\VMLeafCards.cs" />
     <Compile Include="ViewModel\VMPanelMain.cs" />

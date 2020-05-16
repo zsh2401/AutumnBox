@@ -209,7 +209,7 @@ namespace AutumnBox.GUI.ViewModel
 
         public VMSettingsDialog()
         {
-            RaisePropertyChangedOnDispatcher = true;
+            RaisePropertyChangedOnUIThread = true;
             ResetSettings = new MVVMCommand(ResetSettingsMethod);
             SendToDesktop = new MVVMCommand((_) =>
             {
