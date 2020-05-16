@@ -20,7 +20,7 @@ namespace AutumnBox.OpenFramework.Extension
     /// <summary>
     /// 模块是否可运行的策略检查器
     /// </summary>
-    public abstract class ExtRunnableProlicyAttribute : ExtensionInfoAttribute
+    public abstract class ExtRunnablePolicyAttribute : ExtensionInfoAttribute
     {
         /// <summary>
         /// <inheritdoc/>

@@ -20,7 +20,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Exceptions\WrapperAlreadyCreatedOnceException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Attribute\ExtensionI18NTextInfoAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Attribute\ExtensionInfoAttribute.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Extension\Attribute\ExtRunnableProlicyAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extension\Attribute\ExtRunnablePolicyAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Attribute\ExtNormalRunnablePolicyAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Attribute\RunnableCheckArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\AutumnBoxExtension.Constants.cs" />

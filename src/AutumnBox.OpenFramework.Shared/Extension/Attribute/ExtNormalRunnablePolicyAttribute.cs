@@ -23,7 +23,7 @@ namespace AutumnBox.OpenFramework.Extension
     /// <summary>
     /// 普通的运行策略
     /// </summary>
-    public class ExtNormalRunnablePolicyAttribute : ExtRunnableProlicyAttribute
+    public class ExtNormalRunnablePolicyAttribute : ExtRunnablePolicyAttribute
     {
         /// <summary>
         /// <inheritdoc/>

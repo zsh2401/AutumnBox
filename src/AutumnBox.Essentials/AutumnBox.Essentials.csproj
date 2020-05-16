@@ -62,7 +62,9 @@
     <Compile Include="Extensions\EAutumnBoxUpdateChecker.cs" />
     <Compile Include="EssentialsLibrarin.cs" />
     <Compile Include="Extensions\EDeviceRebooter.cs" />
-    <Compile Include="Extensions\EEnableDonateCard.cs" />
+    <Compile Include="Extensions\EDonateCardRegister.cs" />
+    <Compile Include="Extensions\ENetDeviceConnecter.cs" />
+    <Compile Include="Extensions\ENetDeviceDisconnecter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -72,7 +74,7 @@
     <EmbeddedResource Include="Resources\Icons\reboot.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AutumnBox.Core.Win32\AutumnBox.Core.csproj">
+    <ProjectReference Include="..\AutumnBox.Core\AutumnBox.Core.csproj">
       <Project>{57722f44-8dbe-46ee-8b7a-80237803a1ec}</Project>
       <Name>AutumnBox.Core</Name>
     </ProjectReference>

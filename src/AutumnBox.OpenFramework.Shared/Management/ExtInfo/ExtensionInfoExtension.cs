@@ -164,7 +164,7 @@ namespace AutumnBox.OpenFramework.Management.ExtInfo
             const bool DEFAULT_VALUE = false;
             try
             {
-                var attr = (extInf.Metadata[ExtensionMetadataKeys.RUNNABLE_POLICY]() as ExtRunnableProlicyAttribute);
+                var attr = (extInf.Metadata[ExtensionMetadataKeys.RUNNABLE_POLICY]() as ExtRunnablePolicyAttribute);
                 return attr!.IsRunnable(new RunnableCheckArgs(extInf, currentDevice));
             }
             catch (Exception e)

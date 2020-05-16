@@ -28,7 +28,7 @@ using System.Windows.Controls;
 namespace AutumnBox.Essentials.Extensions
 {
     [ExtHidden]
-    class EEnableDonateCard : LeafExtensionBase
+    class EDonateCardRegister : LeafExtensionBase
     {
         [LMain]
         public void EntryPoint(IXCardsManager xCardsManager, IBaseApi baseApi)

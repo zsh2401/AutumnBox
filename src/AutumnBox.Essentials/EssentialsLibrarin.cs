@@ -49,7 +49,7 @@ namespace AutumnBox.Essentials
 
             extensionTaskManager.Start(nameof(EAutumnBoxUpdateChecker));
             extensionTaskManager.Start(nameof(EAutumnBoxAdFetcher));
-            extensionTaskManager.Start(nameof(EEnableDonateCard));
+            extensionTaskManager.Start(nameof(EDonateCardRegister));
 
             var componentLoader = new ClassComponentsLoader("AutumnBox.Essentials", rlake, this.GetType().Assembly);
             componentLoader.Do();
