@@ -66,32 +66,16 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AutumnBox.Basic\AutumnBox.Basic.csproj">
-      <Project>{5276bfb4-b089-4e34-9c42-42ea019ef320}</Project>
-      <Name>AutumnBox.Basic</Name>
-      <Private>False</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\AutumnBox.Leafx\AutumnBox.Leafx.csproj">
-      <Project>{3a111486-25ea-48cb-9408-a7d69b81fc86}</Project>
-      <Name>AutumnBox.Leafx</Name>
-      <Private>False</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\AutumnBox.Logging\AutumnBox.Logging.csproj">
-      <Project>{f90cb434-6ed4-4244-9d78-c8016f0856c1}</Project>
-      <Name>AutumnBox.Logging</Name>
-      <Private>False</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\AutumnBox.OpenFramework\AutumnBox.OpenFramework.csproj">
-      <Project>{60988b1a-74b7-470a-aeba-6d7fe474614d}</Project>
-      <Name>AutumnBox.OpenFramework</Name>
-      <Private>False</Private>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Resources\Icons\devpanelswitcher.png" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\Icons\reboot.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AutumnBox.Core.Win32\AutumnBox.Core.csproj">
+      <Project>{57722f44-8dbe-46ee-8b7a-80237803a1ec}</Project>
+      <Name>AutumnBox.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -42,11 +42,18 @@ namespace AutumnBox.OpenFramework
         /// AutumnBox.OpenFramework的程序集名称
         /// </summary>
         internal const string AUTUMNBOX_LOGGING_ASSEMBLY_NAME = "AutumnBox.Logging";
+
+        /// <summary>
+        /// 字符化的版本号
+        /// </summary>
+#if SDK
+        public
+#endif
+        const string VERSION_STR = "11.3.0";
+
         static BuildInfo()
         {
-            Assembly asm = Assembly.GetExecutingAssembly();
-            FileVersionInfo info = FileVersionInfo.GetVersionInfo(asm.Location);
-            SDK_VERSION = new Version(info.FileMajorPart, info.FileMinorPart, info.FileBuildPart);
+            SDK_VERSION = new Version(VERSION_STR);
             API_LEVEL = SDK_VERSION.Major;
         }
     }

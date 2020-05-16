@@ -1,3 +1,3 @@
 @ECHO OFF
-nuget pack ../src/AutumnBox.OpenFramework/AutumnBox.OpenFramework.csproj -Prop Configuration=SDK -OutputDirectory out
+nuget pack ../src/AutumnBox.Core/AutumnBox.Core.csproj -Prop Configuration=SDK -OutputDirectory out
 PAUSE

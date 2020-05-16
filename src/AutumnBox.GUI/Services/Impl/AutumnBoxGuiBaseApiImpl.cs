@@ -55,7 +55,7 @@ namespace AutumnBox.GUI.Services.Impl
 
         public Version AutumnBoxBasicVersion => VersionInfos.Basic;
 
-        public IRegisterableLake GlobalLake => (IRegisterableLake)GLake.Lake;
+        public IRegisterableLake GlobalLake => (IRegisterableLake)App.Current.Lake;
 
         public void ShowDebugUI()
         {

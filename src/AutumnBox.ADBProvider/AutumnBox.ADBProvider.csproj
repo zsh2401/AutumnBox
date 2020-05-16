@@ -46,21 +46,17 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AutumnBox.Basic\AutumnBox.Basic.csproj">
-      <Project>{5276bfb4-b089-4e34-9c42-42ea019ef320}</Project>
-      <Name>AutumnBox.Basic</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\AutumnBox.Logging\AutumnBox.Logging.csproj">
-      <Project>{f90cb434-6ed4-4244-9d78-c8016f0856c1}</Project>
-      <Name>AutumnBox.Logging</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="adb_tools\adb.exe" />
     <EmbeddedResource Include="adb_tools\AdbWinApi.dll" />
     <EmbeddedResource Include="adb_tools\AdbWinUsbApi.dll" />
     <EmbeddedResource Include="adb_tools\fastboot.exe" />
     <EmbeddedResource Include="adb_tools\libwinpthread-1.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AutumnBox.Core\AutumnBox.Core.csproj">
+      <Project>{57722f44-8dbe-46ee-8b7a-80237803a1ec}</Project>
+      <Name>AutumnBox.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

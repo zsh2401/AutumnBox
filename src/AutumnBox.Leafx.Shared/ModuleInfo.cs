@@ -2,33 +2,32 @@
 
 * ==============================================================================
 *
-* Filename: GLake
+* Filename: ModuleInfo
 * Description: 
 *
 * Version: 1.0
-* Created: 2020/4/11 1:12:54
+* Created: 2020/5/16 20:17:54
 * Compiler: Visual Studio 2019
 *
 * Author: zsh2401
 *
 * ==============================================================================
 */
-using AutumnBox.Leafx.Container;
-using AutumnBox.Leafx.Container.Support;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace AutumnBox.Leafx
 {
-    public static class GLake
+    /// <summary>
+    /// 指示该模块的信息
+    /// </summary>
+    public static class ModuleInfo
     {
-        public static ILake Lake { get; }
-        static GLake()
-        {
-            Lake = new SunsetLake();
-        }
+        /// <summary>
+        /// 指示版本
+        /// </summary>
+        public static Version Version => Version.Parse(VERSION_STR);
+        const string VERSION_STR = "2020.5.16";
     }
 }

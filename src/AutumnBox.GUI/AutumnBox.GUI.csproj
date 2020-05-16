@@ -421,21 +421,9 @@
       <Project>{3274914b-cf88-4101-a74e-d408d16eba88}</Project>
       <Name>AutumnBox.ADBProvider</Name>
     </ProjectReference>
-    <ProjectReference Include="..\AutumnBox.Basic\AutumnBox.Basic.csproj">
-      <Project>{5276bfb4-b089-4e34-9c42-42ea019ef320}</Project>
-      <Name>AutumnBox.Basic</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\AutumnBox.Leafx\AutumnBox.Leafx.csproj">
-      <Project>{3a111486-25ea-48cb-9408-a7d69b81fc86}</Project>
-      <Name>AutumnBox.Leafx</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\AutumnBox.Logging\AutumnBox.Logging.csproj">
-      <Project>{f90cb434-6ed4-4244-9d78-c8016f0856c1}</Project>
-      <Name>AutumnBox.Logging</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\AutumnBox.OpenFramework\AutumnBox.OpenFramework.csproj">
-      <Project>{60988b1a-74b7-470a-aeba-6d7fe474614d}</Project>
-      <Name>AutumnBox.OpenFramework</Name>
+    <ProjectReference Include="..\AutumnBox.Core\AutumnBox.Core.csproj">
+      <Project>{57722f44-8dbe-46ee-8b7a-80237803a1ec}</Project>
+      <Name>AutumnBox.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

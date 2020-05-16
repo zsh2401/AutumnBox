@@ -8,20 +8,16 @@
     <owners>$author$</owners>
     <licenseUrl>https://github.com/zsh2401/AutumnBox/blob/master/LICENSE</licenseUrl>
     <projectUrl>http://github.com/zsh2401/AutumnBox</projectUrl>
-    <iconUrl>http://atmb.top/images/leaves.png</iconUrl>
+    <iconUrl>http://atmb.top/favicon.ico</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>$description$</description>
-    <releaseNotes>Let's develop autumnbox extensions!</releaseNotes>
+    <description>Let's develop AutumnBox extensions now!</description>
+    <releaseNotes>This version includes wew features and bug fixes</releaseNotes>
     <copyright>$copyright$</copyright>
     <tags>ADB AutumnBox</tags>
     <language>zh-CN</language>
   </metadata>
   <files>
-    <file src="bin\Sdk\AutumnBox.Basic.dll" target="lib/net45"/>
-  <file src="bin\Sdk\AutumnBox.Basic.xml" target="lib/net45"/>
-    <file src="bin\Sdk\AutumnBox.Logging.xml" target="lib/net45"/>
-    <file src="bin\Sdk\AutumnBox.Logging.dll" target="lib/net45"/>
-    <file src="bin\Sdk\AutumnBox.Leafx.xml" target="lib/net45"/>
-    <file src="bin\Sdk\AutumnBox.Leafx.dll" target="lib/net45"/>
+    <file src="bin\Sdk\AutumnBox.Core.dll" target="lib/net45"/>
+    <file src="bin\Sdk\AutumnBox.Core.xml" target="lib/net45"/>
   </files>
 </package>

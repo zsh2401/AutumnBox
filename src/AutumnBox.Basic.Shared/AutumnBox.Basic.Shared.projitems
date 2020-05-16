@@ -16,7 +16,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Calling\HestExecutor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Calling\ICommandExecutor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Calling\CommandResultExtension.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\Size.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ManagedAdb\CommandDriven\CommandDrivenHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ModuleInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MultipleDevices\DevicesCollection.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Util\ProcessExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\CommandResult.cs" />
@@ -106,6 +108,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)MultipleDevices\IDevicesGetter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Util\LinuxReturnCode.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Util\NativeMethods.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Util\ProcessKiller.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Util\Settings.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Util\ThrowIf.cs" />
   </ItemGroup>

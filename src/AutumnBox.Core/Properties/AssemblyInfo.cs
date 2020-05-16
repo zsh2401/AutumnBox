@@ -1,16 +1,15 @@
 ﻿using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // 有关程序集的一般信息由以下
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("AutumnBox.OpenFramework")]
-[assembly: AssemblyDescription("Let's develop AutumnBox Extension!")]
+[assembly: AssemblyTitle("AutumnBox.Core")]
+[assembly: AssemblyDescription("AutumnBox Core Library")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("zsh2401")]
-[assembly: AssemblyProduct("AutumnBox.OpenFramework")]
-[assembly: AssemblyCopyright("Copyright ©zsh2401  2018-2020")]
+[assembly: AssemblyProduct("AutumnBox.Core")]
+[assembly: AssemblyCopyright("Copyright ©zsh2401  2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +19,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // 如果此项目向 COM 公开，则下列 GUID 用于类型库的 ID
-[assembly: Guid("60988b1a-74b7-470a-aeba-6d7fe474614d")]
+[assembly: Guid("57722f44-8dbe-46ee-8b7a-80237803a1ec")]
 
 // 程序集的版本信息由下列四个值组成: 
 //
@@ -29,9 +28,13 @@ using System.Runtime.InteropServices;
 //      生成号
 //      修订号
 //
-// 可以指定所有值，也可以使用以下所示的 "*" 预置版本号和修订号
+//可以指定所有这些值，也可以使用“生成号”和“修订号”的默认值
 //通过使用 "*"，如下所示:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("11.2.1")]
-[assembly: AssemblyFileVersion("11.2.1")]
-[assembly: AssemblyInformationalVersion("11.2.1")]
+#if SDK
+[assembly: AssemblyVersion(AutumnBox.OpenFramework.BuildInfo.VERSION_STR)]
+[assembly: AssemblyFileVersion("2020.5.16")]
+#else
+[assembly: AssemblyVersion("2020.5.16")]
+[assembly: AssemblyFileVersion("2020.5.16")]
+#endif

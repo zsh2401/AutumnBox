@@ -51,7 +51,15 @@ namespace AutumnBox.GUI
         /// <summary>
         /// 获取全局湖对象
         /// </summary>
-        public IRegisterableLake Lake => (IRegisterableLake)GLake.Lake;
+        public IRegisterableLake Lake
+        {
+            get
+            {
+                _cache ??= new SunsetLake();
+                return _cache;
+            }
+        }
+        private IRegisterableLake _cache;
 
         /// <summary>
         /// 获取当前的应用

@@ -128,6 +128,10 @@ namespace AutumnBox.OpenFramework.Management.ExtLibrary.Impl
 
         [AutoInject]
         IAppManager appManager;
+
+        [AutoInject]
+        INotificationManager notificationManager;
+
         /// <summary>
         /// <inheritdoc/>
         /// </summary>
@@ -135,7 +139,7 @@ namespace AutumnBox.OpenFramework.Management.ExtLibrary.Impl
         {
             appManager.RunOnUIThread(() =>
             {
-                MessageBox.Show($"{this.Name}-v{this.Version}\nLoaded {this.Extensions.Count()} extension(s)", this.Name);
+                notificationManager.Info($"{this.Name}-v{this.Version}\nLoaded {this.Extensions.Count()} extension(s)");
             });
         }
     }

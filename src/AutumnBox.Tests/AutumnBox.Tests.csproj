@@ -136,10 +136,6 @@
       <Project>{3274914b-cf88-4101-a74e-d408d16eba88}</Project>
       <Name>AutumnBox.ADBProvider</Name>
     </ProjectReference>
-    <ProjectReference Include="..\AutumnBox.Basic\AutumnBox.Basic.csproj">
-      <Project>{5276bfb4-b089-4e34-9c42-42ea019ef320}</Project>
-      <Name>AutumnBox.Basic</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="..\AutumnBox.OpenFramework.Shared\AutumnBox.OpenFramework.Shared.projitems" Label="Shared" />
   <Import Project="..\AutumnBox.Leafx.Shared\AutumnBox.Leafx.Shared.projitems" Label="Shared" />
