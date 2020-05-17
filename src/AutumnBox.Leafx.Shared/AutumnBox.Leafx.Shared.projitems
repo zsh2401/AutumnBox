@@ -18,6 +18,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Container\Support\ClassComponentsLoader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Container\Support\ClassComponentRegister.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Container\Support\ShouldAutoCreateException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Container\Support\SnowLake.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Container\TypeNotFoundException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enhancement\ClassTextKit\ClassTextAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enhancement\ClassTextKit\ClassTextReaderCache.cs" />

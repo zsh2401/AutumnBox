@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AutumnBox.Tests.OpenFX.Leafx
+namespace AutumnBox.Tests.Leafx
 {
     [TestClass]
     public class NamespaceComponentLoaderTest

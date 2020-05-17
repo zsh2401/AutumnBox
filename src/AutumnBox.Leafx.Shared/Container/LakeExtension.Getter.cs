@@ -14,8 +14,11 @@
 *
 * ==============================================================================
 */
+using AutumnBox.Leafx.Container.Support;
 using AutumnBox.Logging;
 using System;
+using System.Collections.Generic;
+using System.Reflection;
 
 namespace AutumnBox.Leafx.Container
 {
@@ -24,6 +27,35 @@ namespace AutumnBox.Leafx.Container
     /// </summary>
     public static partial class LakeExtension
     {
+        /// <summary>
+        /// 获取多个具有同id的组件
+        /// </summary>
+        /// <param name="lake"></param>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public static IEnumerable<object> GetComponents(this ILake lake, string id)
+        {
+            const string METHOD_NAME = "GetComponents";
+            if (lake is null)
+            {
+                throw new ArgumentNullException(nameof(lake));
+            }
+
+            if (string.IsNullOrEmpty(id))
+            {
+                throw new ArgumentException("message", nameof(id));
+            }
+            var method = lake.GetType().GetMethod(METHOD_NAME, BindingFlags.Public | BindingFlags.Instance);
+            if (method == null || 
+                method.ReturnType != typeof(IEnumerable<object>) ||
+                method.GetParameters().Length != 1 ||
+                method.GetParameters()[0].ParameterType != typeof(string))
+            {
+                throw new NotSupportedException($"This lake ({lake?.GetType()?.FullName}) does not support: IEnumerable<object> GetComponents(string)");
+            }
+            return (IEnumerable<object>)method.Invoke(lake, new object[] { id });
+        }
+
         /// <summary>
         /// 泛型地获取一个值
         /// </summary>

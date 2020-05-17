@@ -118,11 +118,12 @@
     <Compile Include="Logging\LoggerTest.cs" />
     <Compile Include="OpenFX\ExtInf\ExtInfExtensionTest.cs" />
     <Compile Include="OpenFX\LeafExtension\LeafExtensionTest.cs" />
-    <Compile Include="OpenFX\Leafx\NamespaceComponentLoaderTest.cs" />
-    <Compile Include="OpenFX\Leafx\ComponentFactoryTest.cs" />
-    <Compile Include="OpenFX\Leafx\MethodProxyTest.cs" />
-    <Compile Include="OpenFX\Leafx\ObjectInjectorTest.cs" />
-    <Compile Include="OpenFX\Leafx\SunsetLakeTest.cs" />
+    <Compile Include="Leafx\NamespaceComponentLoaderTest.cs" />
+    <Compile Include="Leafx\ComponentFactoryTest.cs" />
+    <Compile Include="Leafx\MethodProxyTest.cs" />
+    <Compile Include="Leafx\ObjectInjectorTest.cs" />
+    <Compile Include="Leafx\SnowLakeTest.cs" />
+    <Compile Include="Leafx\SunsetLakeTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -136,10 +137,11 @@
       <Project>{3274914b-cf88-4101-a74e-d408d16eba88}</Project>
       <Name>AutumnBox.ADBProvider</Name>
     </ProjectReference>
+    <ProjectReference Include="..\AutumnBox.Core\AutumnBox.Core.csproj">
+      <Project>{57722f44-8dbe-46ee-8b7a-80237803a1ec}</Project>
+      <Name>AutumnBox.Core</Name>
+    </ProjectReference>
   </ItemGroup>
-  <Import Project="..\AutumnBox.OpenFramework.Shared\AutumnBox.OpenFramework.Shared.projitems" Label="Shared" />
-  <Import Project="..\AutumnBox.Leafx.Shared\AutumnBox.Leafx.Shared.projitems" Label="Shared" />
-  <Import Project="..\AutumnBox.Logging.Shared\AutumnBox.Logging.Shared.projitems" Label="Shared" />
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -4,7 +4,7 @@ using System;
 using AutumnBox.Leafx.Container.Support;
 using AutumnBox.Leafx.Container;
 
-namespace AutumnBox.Tests.OpenFX.Leafx
+namespace AutumnBox.Tests.Leafx
 {
     [TestClass]
     public class ComponentFactoryTest

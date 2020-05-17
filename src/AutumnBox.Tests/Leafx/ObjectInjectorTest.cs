@@ -4,7 +4,7 @@ using AutumnBox.Leafx.ObjectManagement;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
-namespace AutumnBox.Tests.OpenFX.Leafx
+namespace AutumnBox.Tests.Leafx
 {
     [TestClass]
     public class ObjectInjectorTest

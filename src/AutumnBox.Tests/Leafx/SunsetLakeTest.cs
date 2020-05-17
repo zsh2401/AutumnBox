@@ -3,7 +3,7 @@ using AutumnBox.Leafx.Container.Support;
 using AutumnBox.Leafx.ObjectManagement;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace AutumnBox.Tests.OpenFX.Leafx
+namespace AutumnBox.Tests.Leafx
 {
     [TestClass]
     public class SunsetLakeTest
