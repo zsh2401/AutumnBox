@@ -6,12 +6,13 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DefineConstants>TRACE;STRICT_NULLABLE </DefineConstants>
+    <DefineConstants>DEBUG;TRACE;CROSS_PLATFORM</DefineConstants>
     <DocumentationFile>D:\Source\AutumnBoxWorkingSpace\AutumnBox\src\AutumnBox.CPCore\AutumnBox.CPCore.xml</DocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <DocumentationFile>D:\Source\AutumnBoxWorkingSpace\AutumnBox\src\AutumnBox.CPCore\AutumnBox.CPCore.xml</DocumentationFile>
+    <DefineConstants>TRACE;CROSS_PLATFORM</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>
