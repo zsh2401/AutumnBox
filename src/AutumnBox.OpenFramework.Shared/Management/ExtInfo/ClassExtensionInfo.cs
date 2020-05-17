@@ -40,7 +40,7 @@ namespace AutumnBox.OpenFramework.Management.ExtInfo
             Dictionary<string, ValueReader> kvs = new Dictionary<string, ValueReader>();
             foreach (var infAttr in ClassExtensionType.GetCustomAttributes<ExtensionInfoAttribute>())
             {
-                kvs.Add(infAttr.Key, () => infAttr.Value);
+                kvs[infAttr.Key] = () => infAttr.Value;
             }
             return new ReadOnlyDictionary<string, ValueReader>(kvs);
         }

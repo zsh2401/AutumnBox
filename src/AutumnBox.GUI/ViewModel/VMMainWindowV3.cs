@@ -43,10 +43,6 @@ namespace AutumnBox.GUI.ViewModel
         public VMMainWindowV3()
         {
             RaisePropertyChangedOnUIThread = true;
-            Task.Run(() =>
-            {
-                wallpaperManager.SetBrush(new SolidColorBrush(Color.FromRgb(255, 0, 0)));
-            });
         }
     }
 }
