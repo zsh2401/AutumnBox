@@ -13,12 +13,9 @@
 *
 * ==============================================================================
 */
+#if USE_NT_JSON
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+#endif
 
 namespace AutumnBox.Core
 {
@@ -29,11 +26,15 @@ namespace AutumnBox.Core
     {
         public static T DeserializeObject<T>(string json)
         {
+#if USE_NT_JSON
             return JsonConvert.DeserializeObject<T>(json);
+#endif
         }
         public static string SerializeObject(object jsonObject)
         {
+#if USE_NT_JSON
             return JsonConvert.SerializeObject(jsonObject);
+#endif
         }
     }
 }
