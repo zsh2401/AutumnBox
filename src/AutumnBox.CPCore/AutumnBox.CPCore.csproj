@@ -18,4 +18,12 @@
     <PackageReference Include="System.Text.Json" Version="5.0.0-preview.3.20214.6" />
   </ItemGroup>
 
+  <Import Project="..\AutumnBox.Basic.Shared\AutumnBox.Basic.Shared.projitems" Label="Shared" />
+
+  <Import Project="..\AutumnBox.Leafx.Shared\AutumnBox.Leafx.Shared.projitems" Label="Shared" />
+
+  <Import Project="..\AutumnBox.Logging.Shared\AutumnBox.Logging.Shared.projitems" Label="Shared" />
+
+  <Import Project="..\AutumnBox.OpenFramework.Shared\AutumnBox.OpenFramework.Shared.projitems" Label="Shared" />
+
 </Project>

@@ -49,7 +49,7 @@ namespace AutumnBox.OpenFramework
 #if SDK
         public
 #endif
-        const string VERSION_STR = "11.3.0";
+        const string VERSION_STR = "11.3.1";
 
         static BuildInfo()
         {
